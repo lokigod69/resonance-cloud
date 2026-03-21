@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="R logo with play symbol and music note">
+  <defs>
+    <linearGradient id="bodyBlue" x1="90" y1="40" x2="420" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="38%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="playTeal" x1="210" y1="120" x2="350" y2="245" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5eead4"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </linearGradient>
+
+    <linearGradient id="gloss" x1="0" y1="50" x2="0" y2="290" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="iconShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#020617" flood-opacity="0.28"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#020617" flood-opacity="0.14"/>
+    </filter>
+
+    <filter id="playGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g transform="rotate(-2 256 256)" filter="url(#iconShadow)">
+    <!-- R stem -->
+    <rect x="94" y="54" width="76" height="404" rx="38" fill="url(#bodyBlue)"/>
+
+    <!-- R bowl, lighter and less bulky -->
+    <path
+      d="M 132 54
+         H 280
+         C 388 54 458 112 458 186
+         C 458 258 390 316 282 316
+         H 132
+         Z"
+      fill="url(#bodyBlue)"
+    />
+
+    <!-- Diagonal leg, shortened and cleaner -->
+    <path
+      d="M 236 250
+         Q 302 272 356 360
+         L 320 380
+         Q 270 312 176 280
+         Z"
+      fill="url(#bodyBlue)"
+    />
+
+    <!-- Music note head, more open and less cramped -->
+    <ellipse
+      cx="385" cy="420" rx="62" ry="42"
+      transform="rotate(-24 385 420)"
+      fill="url(#bodyBlue)"
+    />
+
+    <!-- Music note flag, shortened -->
+    <path
+      d="M 388 374
+         C 432 356 458 314 456 256
+         C 438 290 408 321 360 336
+         Z"
+      fill="url(#bodyBlue)"
+    />
+
+    <!-- Large black cavity -->
+    <path
+      d="M 196 108
+         Q 166 92 166 128
+         L 166 252
+         Q 166 286 196 270
+         L 372 192
+         Q 402 180 372 166
+         Z"
+      fill="#020617"
+    />
+
+    <!-- Teal play symbol with more breathing room -->
+    <path
+      d="M 224 136
+         Q 212 130 212 146
+         L 212 232
+         Q 212 248 224 242
+         L 334 192
+         Q 352 183 334 174
+         Z"
+      fill="url(#playTeal)"
+      filter="url(#playGlow)"
+    />
+
+    <!-- restrained highlights -->
+    <rect x="102" y="64" width="12" height="384" rx="6" fill="url(#gloss)" opacity="0.65"/>
+
+    <path
+      d="M 138 62
+         H 280
+         C 378 62 448 116 448 184"
+      fill="none"
+      stroke="url(#gloss)"
+      stroke-width="4"
+      stroke-linecap="round"
+      opacity="0.72"
+    />
+
+    <path
+      d="M 242 258
+         Q 298 278 348 358"
+      fill="none"
+      stroke="url(#gloss)"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      opacity="0.34"
+    />
+
+    <ellipse
+      cx="369" cy="408" rx="20" ry="9"
+      transform="rotate(-24 369 408)"
+      fill="#ffffff"
+      opacity="0.14"
+    />
+  </g>
+</svg>
