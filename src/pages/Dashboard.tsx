@@ -23,36 +23,54 @@ export default function Dashboard() {
 
     const code = inviteCode.trim().toUpperCase()
 
+    // Look up the code — must exist and not be redeemed
     const { data: invite, error: lookupError } = await supabase
       .from('invite_codes')
-      .select('*')
+      .select('id, code, credits, redeemed_by')
       .eq('code', code)
-      .is('redeemed_by', null)
-      .single()
+      .maybeSingle()
 
-    if (lookupError || !invite) {
-      setRedeemError('Invalid or already redeemed code.')
+    if (lookupError) {
+      console.error('Invite lookup error:', lookupError)
+      setRedeemError('Error looking up code. Please try again.')
       setRedeeming(false)
       return
     }
 
+    if (!invite) {
+      setRedeemError('Invalid invite code.')
+      setRedeeming(false)
+      return
+    }
+
+    if (invite.redeemed_by) {
+      setRedeemError('This code has already been redeemed.')
+      setRedeeming(false)
+      return
+    }
+
+    // Mark code as redeemed
     const { error: updateError } = await supabase
       .from('invite_codes')
       .update({ redeemed_by: profile.id, redeemed_at: new Date().toISOString() })
       .eq('id', invite.id)
+      .eq('redeemed_by', null)
 
     if (updateError) {
+      console.error('Invite update error:', updateError)
       setRedeemError('Failed to redeem code. Please try again.')
       setRedeeming(false)
       return
     }
 
+    // Add credits to profile
     const { error: creditError } = await supabase
       .from('profiles')
       .update({ credits: (profile.credits || 0) + invite.credits })
       .eq('id', profile.id)
 
     if (creditError) {
+      console.error('Credit update error:', creditError)
       setRedeemError('Code redeemed but failed to add credits. Contact admin.')
       setRedeeming(false)
       return
