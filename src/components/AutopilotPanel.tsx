@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Play, Square, ChevronDown, X, Loader, AlertCircle, CheckCircle } from 'lucide-react'
+import { Play, Square, X, Loader, AlertCircle } from 'lucide-react'
 import { startAutopilot, cancelAutopilot, resumeAutopilot, getAutopilotStatus, type AutopilotStatus } from '../api'
 import type { WordSummary } from '../api'
 
@@ -11,7 +11,7 @@ interface AutopilotPanelProps {
 
 export function AutopilotPanel({ words, onClose, onStatusChange }: AutopilotPanelProps) {
   const [status, setStatus] = useState<AutopilotStatus | null>(null)
-  const [selectedWords, setSelectedWords] = useState<string[]>([])
+  const [selectedWords] = useState<string[]>([])
   const [selectAll, setSelectAll] = useState(true)
   const [pauseAtSong, setPauseAtSong] = useState(false)
   const [starting, setStarting] = useState(false)

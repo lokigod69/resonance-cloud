@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getEnginesHealth, type EngineHealth } from '../api'
-import { RefreshCw, Activity } from 'lucide-react'
+import { RefreshCw } from 'lucide-react'
 
 export function EngineStatus() {
   const [engines, setEngines] = useState<EngineHealth[]>([])

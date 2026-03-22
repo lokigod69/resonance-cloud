@@ -84,7 +84,7 @@ export function WorkspaceManager({ onClose, onSwitch }: WorkspaceManagerProps) {
     if (!renameValue.trim()) return
     setError(null)
     try {
-      const result = await renameWorkspace(path, renameValue.trim())
+      await renameWorkspace(path, renameValue.trim())
       setRenamingPath(null)
       setRenameValue('')
       await load()

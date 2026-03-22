@@ -120,7 +120,7 @@ export function PipelineView({ detail, selectedStage, onSelectStage, runningStag
   const pipelineRunning = wordPipelineStatus?.running ?? false
   const pipelinePaused = wordPipelineStatus?.paused_for_song ?? false
   const pipelineError = wordPipelineStatus?.error ?? null
-  const pipelineDone = wordPipelineStatus && !wordPipelineStatus.running && !wordPipelineStatus.error && wordPipelineStatus.completed_stages.length > 0
+  const _pipelineDone = wordPipelineStatus && !wordPipelineStatus.running && !wordPipelineStatus.error && wordPipelineStatus.completed_stages.length > 0
 
   // Run Word button content
   const renderRunWordButton = () => {
