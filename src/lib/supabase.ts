@@ -12,6 +12,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 export type Profile = {
   id: string
   display_name: string | null
+  base_language: string | null
   role: 'learner' | 'admin'
   credits: number
   created_at: string

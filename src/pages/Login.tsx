@@ -75,7 +75,17 @@ export default function Login() {
         if (user && inviteCode.trim()) {
           await redeemInviteCode(user.id, inviteCode)
         }
-        navigate('/dashboard')
+        // Route new users to onboarding (only if they haven't completed it before)
+        const onboardingDone = localStorage.getItem('resonance_onboarding_done')
+        if (user && !onboardingDone) {
+          const { count } = await supabase
+            .from('decks')
+            .select('id', { count: 'exact', head: true })
+            .eq('user_id', user.id)
+          navigate(count === 0 ? '/onboarding' : '/dashboard')
+        } else {
+          navigate('/dashboard')
+        }
       }
     } finally {
       setLoading(false)

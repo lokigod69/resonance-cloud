@@ -1,29 +1,84 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Progress } from '@/components/ui/progress'
+import { Skeleton } from '@/components/ui/skeleton'
 import { Input } from '@/components/ui/input'
-import { Coins, Sparkles, Music } from 'lucide-react'
+import { Coins, Sparkles, Music, Plus, ChevronRight, Gift, Check, X } from 'lucide-react'
+
+type Deck = {
+  id: string
+  name: string | null
+  target_language: string
+  word_count: number
+  status: string
+  created_at: string
+}
+
+type WordStatus = {
+  deck_id: string
+  status: string
+}
+
+const LANGUAGE_FLAGS: Record<string, string> = {
+  German: '\ud83c\udde9\ud83c\uddea',
+  French: '\ud83c\uddeb\ud83c\uddf7',
+  Italian: '\ud83c\uddee\ud83c\uddf9',
+  English: '\ud83c\uddec\ud83c\udde7',
+  Bisaya: '\ud83c\uddf5\ud83c\udded',
+}
+
+function getStatusBadge(status: string, completed: number, total: number) {
+  if (status === 'generating') {
+    return (
+      <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
+        Generating ({completed}/{total})
+      </Badge>
+    )
+  }
+  if (status === 'complete') {
+    return (
+      <Badge variant="secondary" className="bg-green-500/20 text-green-400 border-green-500/30">
+        Ready
+      </Badge>
+    )
+  }
+  if (status === 'partial') {
+    return (
+      <Badge variant="secondary" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30">
+        Partial ({completed}/{total})
+      </Badge>
+    )
+  }
+  return (
+    <Badge variant="secondary">{status}</Badge>
+  )
+}
 
 export default function Dashboard() {
-  const { profile, refreshProfile } = useAuth()
+  const { profile, user, refreshProfile } = useAuth()
+  const [decks, setDecks] = useState<Deck[]>([])
+  const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
+  const [loading, setLoading] = useState(true)
+
+  // Redeem code state
+  const [redeemOpen, setRedeemOpen] = useState(false)
   const [inviteCode, setInviteCode] = useState('')
+  const [redeeming, setRedeeming] = useState(false)
   const [redeemError, setRedeemError] = useState<string | null>(null)
   const [redeemSuccess, setRedeemSuccess] = useState<string | null>(null)
-  const [redeeming, setRedeeming] = useState(false)
 
   async function handleRedeem() {
-    if (!inviteCode.trim() || !profile) return
-
+    if (!inviteCode.trim() || !user || !profile) return
     setRedeeming(true)
     setRedeemError(null)
     setRedeemSuccess(null)
 
     const code = inviteCode.trim().toUpperCase()
 
-    // Look up the code — must exist and not be redeemed
     const { data: invite, error: lookupError } = await supabase
       .from('invite_codes')
       .select('id, code, credits, redeemed_by')
@@ -31,131 +86,247 @@ export default function Dashboard() {
       .maybeSingle()
 
     if (lookupError) {
-      console.error('Invite lookup error:', lookupError)
-      setRedeemError('Error looking up code. Please try again.')
+      setRedeemError('Error looking up code.')
       setRedeeming(false)
       return
     }
-
     if (!invite) {
       setRedeemError('Invalid invite code.')
       setRedeeming(false)
       return
     }
-
     if (invite.redeemed_by) {
-      setRedeemError('This code has already been redeemed.')
+      setRedeemError('Already redeemed.')
       setRedeeming(false)
       return
     }
 
-    // Mark code as redeemed
     const { error: updateError } = await supabase
       .from('invite_codes')
-      .update({ redeemed_by: profile.id, redeemed_at: new Date().toISOString() })
+      .update({ redeemed_by: user.id, redeemed_at: new Date().toISOString() })
       .eq('id', invite.id)
-      .eq('redeemed_by', null)
+      .is('redeemed_by', null)
 
     if (updateError) {
-      console.error('Invite update error:', updateError)
-      setRedeemError('Failed to redeem code. Please try again.')
+      setRedeemError('Failed to redeem.')
       setRedeeming(false)
       return
     }
 
-    // Add credits to profile
-    const { error: creditError } = await supabase
+    const { data: freshProfile } = await supabase
       .from('profiles')
-      .update({ credits: (profile.credits || 0) + invite.credits })
-      .eq('id', profile.id)
+      .select('credits')
+      .eq('id', user.id)
+      .single()
 
-    if (creditError) {
-      console.error('Credit update error:', creditError)
-      setRedeemError('Code redeemed but failed to add credits. Contact admin.')
-      setRedeeming(false)
-      return
-    }
+    await supabase
+      .from('profiles')
+      .update({ credits: (freshProfile?.credits || 0) + invite.credits })
+      .eq('id', user.id)
 
-    setRedeemSuccess(`+${invite.credits} credits added!`)
+    setRedeemSuccess(`+${invite.credits} credits!`)
     setInviteCode('')
     await refreshProfile()
     setRedeeming(false)
+    setTimeout(() => {
+      setRedeemSuccess(null)
+      setRedeemOpen(false)
+    }, 2000)
   }
+
+  useEffect(() => {
+    if (!user) return
+
+    async function loadDecks() {
+      const { data: decksData } = await supabase
+        .from('decks')
+        .select('*')
+        .eq('user_id', user!.id)
+        .order('created_at', { ascending: false })
+
+      if (decksData) {
+        setDecks(decksData)
+
+        // Get word statuses for each deck
+        const deckIds = decksData.map((d) => d.id)
+        if (deckIds.length > 0) {
+          const { data: words } = await supabase
+            .from('words')
+            .select('deck_id, status')
+            .in('deck_id', deckIds)
+
+          if (words) {
+            const counts: Record<string, { completed: number; total: number }> = {}
+            for (const w of words as WordStatus[]) {
+              if (!counts[w.deck_id]) counts[w.deck_id] = { completed: 0, total: 0 }
+              counts[w.deck_id].total++
+              if (w.status === 'complete') counts[w.deck_id].completed++
+            }
+            setWordCounts(counts)
+          }
+        }
+      }
+      setLoading(false)
+    }
+
+    loadDecks()
+  }, [user])
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">
-          Welcome back, {profile?.display_name || 'Learner'}
-        </h1>
-        <p className="text-muted-foreground">
-          Here&apos;s your learning overview.
-        </p>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Credit Balance</CardTitle>
-            <Coins className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-4xl font-bold">{profile?.credits ?? 0}</div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Each word generation costs 1 credit
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-sm font-medium">Redeem Invite Code</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex gap-2">
+      {/* Header row */}
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">
+            Welcome back, {profile?.display_name || 'Learner'}
+          </h1>
+          <p className="text-muted-foreground mt-1">
+            Here's your learning overview.
+          </p>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          {/* Credit balance */}
+          <div className="glass rounded-xl px-5 py-3 flex items-center gap-3">
+            <Coins className="h-5 w-5 text-primary" />
+            <div>
+              <div className="text-2xl font-bold">{profile?.credits ?? 0}</div>
+              <div className="text-xs text-muted-foreground">credits</div>
+            </div>
+          </div>
+          {/* Redeem code */}
+          {redeemOpen ? (
+            <div className="glass rounded-xl px-4 py-2.5 flex items-center gap-2">
               <Input
-                placeholder="e.g. RESONANZ-TEST-001"
+                placeholder="Code"
                 value={inviteCode}
                 onChange={(e) => setInviteCode(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleRedeem()}
+                className="h-8 w-32 bg-white/5 border-white/10 text-sm uppercase"
+                autoFocus
+                disabled={redeeming}
               />
-              <Button onClick={handleRedeem} disabled={redeeming || !inviteCode.trim()}>
-                Redeem
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={handleRedeem}
+                disabled={redeeming || !inviteCode.trim()}
+                className="h-8 px-2"
+              >
+                {redeeming ? '...' : <Check className="h-4 w-4" />}
               </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => { setRedeemOpen(false); setRedeemError(null); setRedeemSuccess(null); setInviteCode('') }}
+                className="h-8 px-2"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+              {redeemError && (
+                <span className="text-xs text-destructive-foreground whitespace-nowrap">{redeemError}</span>
+              )}
+              {redeemSuccess && (
+                <span className="text-xs text-green-400 whitespace-nowrap">{redeemSuccess}</span>
+              )}
             </div>
-            {redeemError && (
-              <p className="text-sm text-destructive-foreground mt-2">{redeemError}</p>
-            )}
-            {redeemSuccess && (
-              <p className="text-sm text-green-600 dark:text-green-400 mt-2">{redeemSuccess}</p>
-            )}
-          </CardContent>
-        </Card>
+          ) : (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setRedeemOpen(true)}
+              className="border-white/10 h-auto py-3"
+            >
+              <Gift className="h-4 w-4 mr-1.5" />
+              Redeem
+            </Button>
+          )}
+        </div>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+      {/* Decks section */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-semibold flex items-center gap-2">
             <Music className="h-5 w-5" />
             Your Decks
-          </CardTitle>
-          <CardDescription>
-            Vocabulary decks with personalized music videos
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col items-center justify-center py-12 text-center">
-            <Sparkles className="h-12 w-12 text-muted-foreground/50 mb-4" />
-            <h3 className="text-lg font-medium">No decks yet</h3>
-            <p className="text-muted-foreground mt-1 mb-4">
-              Create your first deck to start learning!
+          </h2>
+          {decks.length > 0 && (
+            <Button asChild size="sm" variant="ghost">
+              <Link to="/generate">
+                <Plus className="h-4 w-4 mr-1" />
+                New Deck
+              </Link>
+            </Button>
+          )}
+        </div>
+
+        {loading ? (
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="glass rounded-xl p-5 space-y-3">
+                <Skeleton className="h-5 w-32 bg-white/10" />
+                <Skeleton className="h-4 w-20 bg-white/10" />
+                <Skeleton className="h-2 w-full bg-white/10" />
+              </div>
+            ))}
+          </div>
+        ) : decks.length === 0 ? (
+          /* Empty state */
+          <div className="glass rounded-xl p-12 flex flex-col items-center justify-center text-center">
+            <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+              <Sparkles className="h-8 w-8 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold">Create your first deck</h3>
+            <p className="text-muted-foreground mt-2 mb-6 max-w-sm">
+              Choose a language, add some words, and watch AI create unique music videos for each one.
             </p>
-            <Button asChild>
-              <Link to="/generate">Create a Deck</Link>
+            <Button asChild size="lg" className="glow-purple">
+              <Link to="/generate">
+                <Sparkles className="h-4 w-4 mr-2" />
+                Generate
+              </Link>
             </Button>
           </div>
-        </CardContent>
-      </Card>
+        ) : (
+          /* Deck grid */
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {decks.map((deck) => {
+              const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
+              const progress = counts.total > 0 ? (counts.completed / counts.total) * 100 : 0
+              const flag = LANGUAGE_FLAGS[deck.target_language] || ''
+              const displayName =
+                deck.name ||
+                `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString()}`
+
+              return (
+                <Link
+                  key={deck.id}
+                  to={`/deck/${deck.id}`}
+                  className="glass glass-hover rounded-xl p-5 space-y-3 transition-all duration-200 hover:scale-[1.02] hover:glow-purple group block"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="space-y-1">
+                      <h3 className="font-semibold group-hover:text-primary transition-colors">
+                        {displayName}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {flag} {deck.target_language} &middot; {counts.total} words
+                      </p>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors mt-1" />
+                  </div>
+
+                  {getStatusBadge(deck.status, counts.completed, counts.total)}
+
+                  {deck.status === 'generating' && (
+                    <Progress value={progress} className="h-1.5" />
+                  )}
+                </Link>
+              )
+            })}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

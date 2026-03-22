@@ -1,23 +1,49 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
 import { AppLayout } from '@/components/layout/AppLayout'
+import LandingPage from '@/pages/LandingPage'
 import Login from '@/pages/Login'
+import Onboarding from '@/pages/Onboarding'
 import Dashboard from '@/pages/Dashboard'
 import Generate from '@/pages/Generate'
 import DeckView from '@/pages/DeckView'
-import Study from '@/pages/Study'
+import VideoPlayer from '@/pages/VideoPlayer'
 import Settings from '@/pages/Settings'
 import Users from '@/pages/admin/Users'
 import Content from '@/pages/admin/Content'
 import Metrics from '@/pages/admin/Metrics'
+import Queue from '@/pages/admin/Queue'
+import Profiles from '@/pages/admin/Profiles'
 
 function ProtectedRoute() {
   const { session, loading } = useAuth()
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-muted-foreground">Loading...</p>
+      <div className="min-h-screen flex items-center justify-center gradient-bg">
+        <div className="glass rounded-xl px-8 py-4">
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!session) {
+    return <Navigate to="/login" replace />
+  }
+
+  return <Outlet />
+}
+
+function OnboardingRoute() {
+  const { session, loading } = useAuth()
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center gradient-bg">
+        <div className="glass rounded-xl px-8 py-4">
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
       </div>
     )
   }
@@ -34,8 +60,10 @@ function PublicRoute() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-muted-foreground">Loading...</p>
+      <div className="min-h-screen flex items-center justify-center gradient-bg">
+        <div className="glass rounded-xl px-8 py-4">
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
       </div>
     )
   }
@@ -57,24 +85,36 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
+          {/* Public routes */}
           <Route element={<PublicRoute />}>
+            <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
           </Route>
 
+          {/* Onboarding (auth required, no layout, no base_language check) */}
+          <Route element={<OnboardingRoute />}>
+            <Route path="/onboarding" element={<Onboarding />} />
+          </Route>
+
+          {/* Protected routes with layout */}
           <Route element={<ProtectedRoute />}>
+            {/* Video player is full-screen, no layout */}
+            <Route path="/deck/:id/word/:wordId" element={<VideoPlayer />} />
+
             <Route element={<AppLayout />}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/generate" element={<Generate />} />
               <Route path="/deck/:id" element={<DeckView />} />
-              <Route path="/study" element={<Study />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/admin/queue" element={<Queue />} />
+              <Route path="/admin/profiles" element={<Profiles />} />
               <Route path="/admin/users" element={<Users />} />
               <Route path="/admin/content" element={<Content />} />
               <Route path="/admin/metrics" element={<Metrics />} />
             </Route>
           </Route>
 
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
