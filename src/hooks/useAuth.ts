@@ -52,7 +52,15 @@ export function useAuthState(): AuthState {
   }, [fetchProfile])
 
   useEffect(() => {
+    // Safety timeout: if auth takes >5s, stop loading and redirect to login
+    const timeout = setTimeout(() => {
+      console.warn('[useAuth] Auth loading timeout — forcing loading=false')
+      setLoading(false)
+    }, 5000)
+
     supabase.auth.getSession().then(async ({ data: { session } }) => {
+      clearTimeout(timeout)
+      console.log('[useAuth] session state:', session?.user?.id ?? 'no-session')
       setSession(session)
       setUser(session?.user ?? null)
       if (session?.user) {
