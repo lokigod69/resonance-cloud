@@ -138,35 +138,38 @@ export default function Dashboard() {
     if (!user) return
 
     async function loadDecks() {
-      const { data: decksData } = await supabase
-        .from('decks')
-        .select('*')
-        .eq('user_id', user!.id)
-        .order('created_at', { ascending: false })
+      try {
+        const { data: decksData } = await supabase
+          .from('decks')
+          .select('*')
+          .eq('user_id', user!.id)
+          .order('created_at', { ascending: false })
 
-      if (decksData) {
-        setDecks(decksData)
+        if (decksData) {
+          setDecks(decksData)
 
-        // Get word statuses for each deck
-        const deckIds = decksData.map((d) => d.id)
-        if (deckIds.length > 0) {
-          const { data: words } = await supabase
-            .from('words')
-            .select('deck_id, status')
-            .in('deck_id', deckIds)
+          // Get word statuses for each deck
+          const deckIds = decksData.map((d) => d.id)
+          if (deckIds.length > 0) {
+            const { data: words } = await supabase
+              .from('words')
+              .select('deck_id, status')
+              .in('deck_id', deckIds)
 
-          if (words) {
-            const counts: Record<string, { completed: number; total: number }> = {}
-            for (const w of words as WordStatus[]) {
-              if (!counts[w.deck_id]) counts[w.deck_id] = { completed: 0, total: 0 }
-              counts[w.deck_id].total++
-              if (w.status === 'complete') counts[w.deck_id].completed++
+            if (words) {
+              const counts: Record<string, { completed: number; total: number }> = {}
+              for (const w of words as WordStatus[]) {
+                if (!counts[w.deck_id]) counts[w.deck_id] = { completed: 0, total: 0 }
+                counts[w.deck_id].total++
+                if (w.status === 'complete') counts[w.deck_id].completed++
+              }
+              setWordCounts(counts)
             }
-            setWordCounts(counts)
           }
         }
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
 
     loadDecks()

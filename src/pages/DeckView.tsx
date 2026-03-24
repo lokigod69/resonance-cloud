@@ -37,14 +37,17 @@ export default function DeckView() {
   const fetchData = useCallback(async () => {
     if (!id) return
 
-    const [deckRes, wordsRes] = await Promise.all([
-      supabase.from('decks').select('*').eq('id', id).single(),
-      supabase.from('words').select('*').eq('deck_id', id).order('created_at'),
-    ])
+    try {
+      const [deckRes, wordsRes] = await Promise.all([
+        supabase.from('decks').select('*').eq('id', id).single(),
+        supabase.from('words').select('*').eq('deck_id', id).order('created_at'),
+      ])
 
-    if (deckRes.data) setDeck(deckRes.data)
-    if (wordsRes.data) setWords(wordsRes.data)
-    setLoading(false)
+      if (deckRes.data) setDeck(deckRes.data)
+      if (wordsRes.data) setWords(wordsRes.data)
+    } finally {
+      setLoading(false)
+    }
   }, [id])
 
   useEffect(() => {

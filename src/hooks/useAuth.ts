@@ -52,26 +52,16 @@ export function useAuthState(): AuthState {
   }, [fetchProfile])
 
   useEffect(() => {
-    // Safety timeout: if auth takes >5s, stop loading and redirect to login
+    // Safety net: if onAuthStateChange never fires (e.g. network down), stop loading
     const timeout = setTimeout(() => {
       console.warn('[useAuth] Auth loading timeout — forcing loading=false')
       setLoading(false)
     }, 5000)
 
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      clearTimeout(timeout)
-      console.log('[useAuth] session state:', session?.user?.id ?? 'no-session')
-      setSession(session)
-      setUser(session?.user ?? null)
-      if (session?.user) {
-        // AWAIT the profile fetch before marking loading as done
-        await fetchProfile(session.user.id)
-      }
-      setLoading(false)
-    })
-
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (_event, session) => {
+        clearTimeout(timeout) // cancel safety net on first fire
+        console.log('[useAuth] session state:', session?.user?.id ?? 'no-session')
         setSession(session)
         setUser(session?.user ?? null)
         if (session?.user) {
@@ -83,7 +73,10 @@ export function useAuthState(): AuthState {
       }
     )
 
-    return () => subscription.unsubscribe()
+    return () => {
+      clearTimeout(timeout) // also clean up on unmount
+      subscription.unsubscribe()
+    }
   }, [fetchProfile])
 
   const signInWithEmail = async (email: string, password: string) => {
