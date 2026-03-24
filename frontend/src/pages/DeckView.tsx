@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, Play, AlertCircle, Sparkles } from 'lucide-react'
+import { ArrowLeft, Play, AlertCircle, Sparkles, Pencil, Plus, Check, X } from 'lucide-react'
 
 type Deck = {
   id: string
@@ -30,9 +30,12 @@ type Word = {
 
 export default function DeckView() {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
   const [deck, setDeck] = useState<Deck | null>(null)
   const [words, setWords] = useState<Word[]>([])
   const [loading, setLoading] = useState(true)
+  const [isRenaming, setIsRenaming] = useState(false)
+  const [renameTo, setRenameTo] = useState('')
 
   const fetchData = useCallback(async () => {
     if (!id) return
@@ -97,6 +100,33 @@ export default function DeckView() {
     deck.name ||
     `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString()}`
 
+  async function handleRename() {
+    if (!deck) return
+    const trimmed = renameTo.trim()
+    if (!trimmed || trimmed === displayName) {
+      setIsRenaming(false)
+      return
+    }
+    const { error } = await supabase
+      .from('decks')
+      .update({ name: trimmed })
+      .eq('id', deck.id)
+    if (!error) {
+      setDeck((prev) => prev ? { ...prev, name: trimmed } : prev)
+      setIsRenaming(false)
+    }
+  }
+
+  function startRenaming() {
+    setRenameTo(displayName)
+    setIsRenaming(true)
+  }
+
+  function cancelRenaming() {
+    setIsRenaming(false)
+    setRenameTo('')
+  }
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -107,7 +137,39 @@ export default function DeckView() {
           </Link>
         </Button>
         <div className="flex-1 space-y-2">
-          <h1 className="text-2xl font-bold tracking-tight">{displayName}</h1>
+          {isRenaming ? (
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={renameTo}
+                onChange={(e) => setRenameTo(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleRename()
+                  if (e.key === 'Escape') cancelRenaming()
+                }}
+                autoFocus
+                maxLength={100}
+                className="text-2xl font-bold tracking-tight bg-transparent border-b-2 border-primary outline-none text-foreground w-full"
+              />
+              <Button variant="ghost" size="icon" onClick={handleRename} className="shrink-0">
+                <Check className="h-4 w-4 text-green-400" />
+              </Button>
+              <Button variant="ghost" size="icon" onClick={cancelRenaming} className="shrink-0">
+                <X className="h-4 w-4 text-muted-foreground" />
+              </Button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 group/name">
+              <h1 className="text-2xl font-bold tracking-tight">{displayName}</h1>
+              <button
+                onClick={startRenaming}
+                className="opacity-0 group-hover/name:opacity-100 transition-opacity text-muted-foreground hover:text-foreground"
+                title="Rename deck"
+              >
+                <Pencil className="h-4 w-4" />
+              </button>
+            </div>
+          )}
           <div className="flex items-center gap-3 flex-wrap">
             <span className="text-sm text-muted-foreground">{deck.target_language}</span>
             {isGenerating ? (
@@ -206,11 +268,19 @@ export default function DeckView() {
       </div>
 
       {/* Footer actions */}
-      <div className="flex justify-center pt-4">
+      <div className="flex justify-center gap-3 pt-4">
+        <Button
+          variant="outline"
+          className="border-primary/30 text-primary hover:bg-primary/10"
+          onClick={() => navigate(`/generate?deckId=${deck.id}`)}
+        >
+          <Plus className="h-4 w-4 mr-2" />
+          Add Cards
+        </Button>
         <Button asChild variant="outline" className="border-white/10">
           <Link to="/generate">
             <Sparkles className="h-4 w-4 mr-2" />
-            Create Another Deck
+            New Deck
           </Link>
         </Button>
       </div>
