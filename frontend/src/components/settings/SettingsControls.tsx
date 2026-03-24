@@ -155,7 +155,7 @@ function LoraSelector({ value, allSettings, onChangeByKey }: {
   const isCustom = loraId === '__custom__'
   const selectedLora = loras.find(l => l.id === loraId)
 
-  useEffect(() => { getLoras().then(setLoras).catch(() => {}) }, [])
+  useEffect(() => { getLoras().then(setLoras).catch(e => console.warn('Failed to load LoRAs:', e.message)) }, [])
 
   return (
     <div className="flex flex-col gap-1.5">

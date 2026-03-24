@@ -2,7 +2,7 @@
  * API client for the Resonance Orchestrator backend.
  */
 
-const BASE = (import.meta.env.VITE_BACKEND_URL || '') + '/api'
+const BASE = (import.meta.env.VITE_BACKEND_URL || 'http://localhost:8090') + '/api'
 
 async function req<T>(path: string, opts?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, opts)
