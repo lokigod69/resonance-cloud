@@ -557,6 +557,18 @@ async def main() -> None:
     log.info("Workspace root: %s", WORKSPACE_ROOT)
     log.info("Poll interval: %ds", POLL_INTERVAL)
 
+    # Ensure system_settings row exists before polling
+    settings_check = sb.table("system_settings").select("*").eq("id", 1).maybe_single().execute()
+    if not settings_check.data:
+        log.warning("system_settings row missing — creating default (auto_approve=true, queue_paused=false)")
+        sb.table("system_settings").insert({
+            "id": 1,
+            "auto_approve": True,
+            "queue_paused": False,
+        }).execute()
+    elif not settings_check.data.get("auto_approve"):
+        log.warning("auto_approve is OFF — jobs will stay 'pending' until manually approved via admin Queue page")
+
     while True:
         try:
             # Check system settings (queue_paused + auto_approve)
