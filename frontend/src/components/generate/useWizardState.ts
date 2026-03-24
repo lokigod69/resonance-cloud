@@ -101,7 +101,7 @@ export interface GeneratePayload {
     movie_override: string | null
     word_count: number
     status: 'generating'
-  }
+  } | null
   wordList: string[]
   jobPayload: {
     user_id: string
@@ -115,12 +115,21 @@ export interface GeneratePayload {
   }
 }
 
+export interface ExistingDeck {
+  id: string
+  name: string | null
+  target_language: string
+  art_style: string | null
+  movie_override: string | null
+  word_count: number
+}
+
 export function useWizardState() {
   const [state, dispatch] = useReducer(wizardReducer, initialState)
 
   const buildPayload = useCallback(
-    (userId: string): GeneratePayload => {
-      const language = state.language!
+    (userId: string, existingDeck?: ExistingDeck): GeneratePayload => {
+      const language = existingDeck?.target_language ?? state.language!
       const movieOverride =
         state.vibe === 'movie' || state.vibe === 'specific_movie'
           ? state.movieTitle?.trim() || null
@@ -131,7 +140,7 @@ export function useWizardState() {
       const genre = state.genre === 'auto' ? undefined : state.genre || undefined
 
       return {
-        deckPayload: {
+        deckPayload: existingDeck ? null : {
           user_id: userId,
           name: `${language} Deck \u2014 ${new Date().toLocaleDateString()}`,
           target_language: language,
@@ -143,10 +152,11 @@ export function useWizardState() {
         wordList: state.words,
         jobPayload: {
           user_id: userId,
+          ...(existingDeck ? { deck_id: existingDeck.id } : {}),
           status: 'pending',
           target_language: language,
-          art_style: artStyle,
-          movie_override: movieOverride,
+          art_style: artStyle ?? existingDeck?.art_style ?? null,
+          movie_override: movieOverride ?? existingDeck?.movie_override ?? null,
           words_total: state.words.length,
           settings_override: {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
