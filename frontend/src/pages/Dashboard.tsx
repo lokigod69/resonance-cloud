@@ -58,7 +58,7 @@ function getStatusBadge(status: string, completed: number, total: number) {
 }
 
 export default function Dashboard() {
-  const { profile, user, refreshProfile, authError } = useAuth()
+  const { profile, user, authError } = useAuth()
   const [decks, setDecks] = useState<Deck[]>([])
   const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
   const [loading, setLoading] = useState(true)
