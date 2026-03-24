@@ -15,5 +15,6 @@ export type Profile = {
   base_language: string | null
   role: 'learner' | 'admin'
   credits: number
+  theme?: string
   created_at: string
 }

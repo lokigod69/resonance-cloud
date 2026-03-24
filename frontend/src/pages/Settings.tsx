@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
+import { useTheme, type Theme } from '@/contexts/ThemeContext'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import {
@@ -21,6 +22,7 @@ const LANGUAGES = [
 
 export default function Settings() {
   const { profile, user, signOut, refreshProfile } = useAuth()
+  const { theme, setTheme } = useTheme()
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
@@ -75,6 +77,41 @@ export default function Settings() {
               <Check className="h-3 w-3" /> Saved
             </span>
           )}
+        </div>
+      </div>
+
+      {/* Theme */}
+      <div className="glass rounded-xl p-6 space-y-4">
+        <div>
+          <h2 className="text-lg font-semibold">Theme</h2>
+          <p className="text-sm text-muted-foreground">
+            Choose how Resonance looks and feels.
+          </p>
+        </div>
+        <div className="grid grid-cols-3 gap-3">
+          {([
+            { id: 'standard' as Theme, label: 'Standard', desc: 'Dark & minimal', colors: ['oklch(0.13 0.008 280)', 'oklch(0.7 0.15 280)', 'oklch(0.22 0.015 280)'] },
+            { id: 'retro' as Theme, label: 'Retro', desc: '80s synth-wave', colors: ['#2F353B', '#BCA396', '#6A808C'] },
+            { id: 'soft' as Theme, label: 'Soft', desc: 'Warm & inviting', colors: ['#F5F3F0', '#C4918A', '#8BA888'] },
+          ]).map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setTheme(t.id)}
+              className={`p-4 rounded-lg border-2 transition-all text-left ${
+                theme === t.id
+                  ? 'border-primary glass-selected'
+                  : 'border-transparent glass glass-hover'
+              }`}
+            >
+              <div className="flex gap-1.5 mb-3">
+                {t.colors.map((c, i) => (
+                  <div key={i} className="w-6 h-6 rounded-sm border border-white/10" style={{ background: c }} />
+                ))}
+              </div>
+              <div className="font-medium text-sm">{t.label}</div>
+              <div className="text-xs text-muted-foreground">{t.desc}</div>
+            </button>
+          ))}
         </div>
       </div>
 

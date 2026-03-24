@@ -12,42 +12,11 @@ export default function Login() {
   const [isSignUp, setIsSignUp] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [inviteCode, setInviteCode] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
   const { signInWithEmail, signUpWithEmail, signInWithGoogle } = useAuth()
   const navigate = useNavigate()
-
-  async function redeemInviteCode(userId: string, code: string) {
-    const trimmed = code.trim().toUpperCase()
-    if (!trimmed) return
-
-    const { data: invite } = await supabase
-      .from('invite_codes')
-      .select('*')
-      .eq('code', trimmed)
-      .is('redeemed_by', null)
-      .single()
-
-    if (!invite) return
-
-    await supabase
-      .from('invite_codes')
-      .update({ redeemed_by: userId, redeemed_at: new Date().toISOString() })
-      .eq('id', invite.id)
-
-    await supabase.rpc('add_credits', { user_id: userId, amount: invite.credits })
-      .then(({ error }) => {
-        if (error) {
-          // Fallback: direct update if RPC doesn't exist yet
-          return supabase
-            .from('profiles')
-            .update({ credits: invite.credits })
-            .eq('id', userId)
-        }
-      })
-  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -70,12 +39,8 @@ export default function Login() {
           setError(error)
           return
         }
-        // Try to redeem invite code after login
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user && inviteCode.trim()) {
-          await redeemInviteCode(user.id, inviteCode)
-        }
         // Route new users to onboarding (only if they haven't completed it before)
+        const { data: { user } } = await supabase.auth.getUser()
         const onboardingDone = localStorage.getItem('resonance_onboarding_done')
         if (user && !onboardingDone) {
           const { count } = await supabase
@@ -132,19 +97,6 @@ export default function Login() {
                 minLength={6}
               />
             </div>
-
-            {!isSignUp && (
-              <div className="space-y-2">
-                <Label htmlFor="inviteCode">Invite Code (optional)</Label>
-                <Input
-                  id="inviteCode"
-                  type="text"
-                  placeholder="e.g. RESONANZ-TEST-001"
-                  value={inviteCode}
-                  onChange={(e) => setInviteCode(e.target.value)}
-                />
-              </div>
-            )}
 
             {error && (
               <p className="text-sm text-destructive-foreground">{error}</p>

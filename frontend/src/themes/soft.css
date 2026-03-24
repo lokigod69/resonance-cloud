@@ -1,0 +1,81 @@
+/* Soft theme — warm, muted, inviting light palette */
+.theme-soft {
+  --background: #F5F3F0;
+  --foreground: #3A3632;
+  --card: #FFFFFF;
+  --card-foreground: #3A3632;
+  --popover: #FFFFFF;
+  --popover-foreground: #3A3632;
+  --primary: #C4918A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #EDE9E4;
+  --secondary-foreground: #3A3632;
+  --muted: #EDE9E4;
+  --muted-foreground: #9B9389;
+  --accent: rgba(196, 145, 138, 0.2);
+  --accent-foreground: #3A3632;
+  --destructive: #D4766A;
+  --destructive-foreground: #D4766A;
+  --border: rgba(60, 50, 40, 0.1);
+  --input: #EDE9E4;
+  --ring: #C4918A;
+  --radius: 12px;
+  --sidebar: #F0EDE8;
+  --sidebar-foreground: #3A3632;
+  --sidebar-primary: #C4918A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EDE9E4;
+  --sidebar-accent-foreground: #3A3632;
+  --sidebar-border: rgba(60, 50, 40, 0.1);
+  --sidebar-ring: #C4918A;
+  --font-body: 'Inter', -apple-system, system-ui, sans-serif;
+  --font-mono: 'Inter', -apple-system, system-ui, sans-serif;
+  color-scheme: light;
+}
+
+/* Glass overrides for light theme */
+.theme-soft .glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(60, 50, 40, 0.08);
+  box-shadow: 0 2px 8px rgba(60, 50, 40, 0.06);
+}
+
+.theme-soft .glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(32px);
+  border: 1px solid rgba(60, 50, 40, 0.1);
+}
+
+.theme-soft .glass-hover:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(60, 50, 40, 0.15);
+}
+
+.theme-soft .glass-selected {
+  background: rgba(139, 168, 136, 0.15);
+  border-color: #8BA888;
+}
+
+/* Gradient background for soft theme */
+.theme-soft .gradient-bg {
+  background: linear-gradient(135deg, #F5F3F0 0%, #EDE9E4 50%, #F0EDE8 100%);
+}
+
+/* Glow overrides */
+.theme-soft .glow-purple {
+  box-shadow: 0 2px 12px rgba(196, 145, 138, 0.25);
+}
+
+.theme-soft .glow-green {
+  box-shadow: 0 2px 12px rgba(139, 168, 136, 0.3);
+}
+
+/* Softer text colors for elements using hardcoded white */
+.theme-soft .text-white\/90 {
+  color: #3A3632 !important;
+}
+
+.theme-soft .text-white\/50 {
+  color: #9B9389 !important;
+}

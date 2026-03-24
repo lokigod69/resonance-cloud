@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 import { ToastProvider } from '@/components/Toast'
 import { AppLayout } from '@/components/layout/AppLayout'
 import LandingPage from '@/pages/LandingPage'
@@ -88,6 +89,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <BrowserRouter>
+      <ThemeProvider>
       <ToastProvider>
       <AuthProvider>
         <Routes>
@@ -124,6 +126,7 @@ export default function App() {
         </Routes>
       </AuthProvider>
       </ToastProvider>
+      </ThemeProvider>
     </BrowserRouter>
   )
 }
