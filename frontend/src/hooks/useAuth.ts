@@ -80,7 +80,17 @@ export function useAuthState(): AuthState {
         setSession(session)
         setUser(session?.user ?? null)
         if (session?.user) {
-          await fetchProfile(session.user.id)
+          try {
+            await Promise.race([
+              fetchProfile(session.user.id),
+              new Promise<never>((_, reject) =>
+                setTimeout(() => reject(new Error('Profile fetch timed out')), 8000)
+              ),
+            ])
+          } catch {
+            console.error('[useAuth] Profile fetch timed out or failed')
+            setAuthError('Profile took too long to load. Please refresh.')
+          }
         } else {
           setProfile(null)
         }

@@ -212,6 +212,23 @@ export default function Dashboard() {
     )
   }
 
+  // Auth error but user is logged in (profile fetch failed/timed out)
+  if (authError && user) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <div className="glass rounded-xl p-8 flex flex-col items-center gap-4 max-w-sm text-center">
+          <AlertCircle className="h-10 w-10 text-yellow-400" />
+          <h2 className="text-lg font-semibold">Profile failed to load</h2>
+          <p className="text-sm text-muted-foreground">{authError}</p>
+          <Button onClick={() => window.location.reload()}>
+            <RefreshCw className="h-4 w-4 mr-2" />
+            Retry
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
   // Dashboard data error
   if (dashboardError) {
     return (
