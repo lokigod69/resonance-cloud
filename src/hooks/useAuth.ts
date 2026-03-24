@@ -7,6 +7,7 @@ export type AuthState = {
   user: User | null
   profile: Profile | null
   loading: boolean
+  authError: string | null
   signInWithEmail: (email: string, password: string) => Promise<{ error: string | null }>
   signUpWithEmail: (email: string, password: string) => Promise<{ error: string | null }>
   signInWithGoogle: () => Promise<{ error: string | null }>
@@ -29,18 +30,31 @@ export function useAuthState(): AuthState {
   const [user, setUser] = useState<User | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(true)
+  const [authError, setAuthError] = useState<string | null>(null)
   const profileFetchedRef = useRef(false)
 
   const fetchProfile = useCallback(async (userId: string) => {
-    console.log('[useAuth] fetchProfile called for:', userId)
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single()
-    console.log('[useAuth] fetchProfile result:', { credits: data?.credits, base_language: data?.base_language, error })
-    setProfile(data as Profile | null)
-    profileFetchedRef.current = true
+    try {
+      console.log('[useAuth] fetchProfile called for:', userId)
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single()
+      if (error) {
+        console.error('[useAuth] fetchProfile error:', error)
+        setAuthError('Failed to load profile')
+      } else {
+        setAuthError(null)
+      }
+      console.log('[useAuth] fetchProfile result:', { credits: data?.credits, base_language: data?.base_language, error })
+      setProfile(data as Profile | null)
+      profileFetchedRef.current = true
+    } catch (err) {
+      console.error('[useAuth] fetchProfile exception:', err)
+      setAuthError('Failed to load profile')
+      profileFetchedRef.current = true
+    }
   }, [])
 
   const refreshProfile = useCallback(async () => {
@@ -55,6 +69,7 @@ export function useAuthState(): AuthState {
     // Safety net: if onAuthStateChange never fires (e.g. network down), stop loading
     const timeout = setTimeout(() => {
       console.warn('[useAuth] Auth loading timeout — forcing loading=false')
+      setAuthError('Session timed out. Please try logging in again.')
       setLoading(false)
     }, 5000)
 
@@ -108,6 +123,7 @@ export function useAuthState(): AuthState {
     user,
     profile,
     loading,
+    authError,
     signInWithEmail,
     signUpWithEmail,
     signInWithGoogle,

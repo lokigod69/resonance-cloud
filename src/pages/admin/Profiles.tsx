@@ -43,6 +43,7 @@ export default function Profiles() {
   const [editNotes, setEditNotes] = useState('')
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
+  const [saveSuccess, setSaveSuccess] = useState(false)
   const [showCreate, setShowCreate] = useState(false)
   const [newLanguage, setNewLanguage] = useState(LANGUAGES[0])
   const [newName, setNewName] = useState('')
@@ -81,6 +82,8 @@ export default function Profiles() {
     const updated = profiles.find(p => p.id === selected.id)
     if (updated) selectProfile({ ...updated, name: editName, notes: editNotes, settings: editSettings })
     setSaving(false)
+    setSaveSuccess(true)
+    setTimeout(() => setSaveSuccess(false), 2000)
   }
 
   const activateProfile = async (profileId: string, language: string) => {
@@ -313,7 +316,13 @@ export default function Profiles() {
           {/* Save button */}
           <div className="flex-shrink-0 pt-2">
             <Separator className="mb-4" />
-            <div className="flex justify-end pb-4">
+            <div className="flex items-center justify-end gap-3 pb-4">
+              {saveSuccess && (
+                <span className="text-sm text-green-400 flex items-center gap-1">
+                  <Check className="h-4 w-4" />
+                  Saved!
+                </span>
+              )}
               <Button onClick={saveProfile} disabled={saving}>
                 <Save className="h-4 w-4 mr-2" />
                 {saving ? 'Saving...' : 'Save Profile'}

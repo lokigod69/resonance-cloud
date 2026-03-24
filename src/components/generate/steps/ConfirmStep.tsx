@@ -72,10 +72,10 @@ export default function ConfirmStep({ state, dispatch, onGenerate, submitting, e
         variants={rows}
         initial="hidden"
         animate="show"
-        className="glass rounded-2xl border border-white/10 p-6 w-full max-w-sm space-y-3"
+        className="glass rounded-2xl border border-white/10 p-6 w-full max-w-md divide-y divide-white/[0.06]"
       >
         {summaryItems.map((item) => (
-          <motion.div key={item.label} variants={row} className="flex items-center justify-between">
+          <motion.div key={item.label} variants={row} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
             <span className="text-xs text-white/40">{item.label}</span>
             <button
               type="button"

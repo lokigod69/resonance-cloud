@@ -118,6 +118,18 @@
     @apply bg-background text-foreground;
     margin: 0;
   }
+  .dark {
+    color-scheme: dark;
+  }
+  button,
+  [role="button"],
+  a,
+  summary,
+  select,
+  input[type="checkbox"],
+  input[type="radio"] {
+    cursor: pointer;
+  }
 }
 
 /* Glassmorphism utility classes */

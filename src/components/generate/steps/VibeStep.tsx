@@ -88,7 +88,7 @@ export default function VibeStep({ state, dispatch, onNext }: VibeStepProps) {
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && movieInput.trim()) confirmMovie()
               }}
-              placeholder="e.g., The Godfather, Blade Runner..."
+              placeholder="e.g., Lord of the Rings, Harry Potter..."
               autoFocus
               className="w-full rounded-xl px-4 py-3 text-sm text-white/90 placeholder:text-white/30
                 bg-white/[0.04] backdrop-blur-md border border-white/[0.06]

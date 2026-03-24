@@ -11,11 +11,11 @@ import type { LoraInfo, Voice } from '../../api'
 
 /* ── shared styles ── */
 
-const selectClass = 'w-40 bg-[var(--bg-base)] border border-[var(--border)] rounded px-2 py-1 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)] appearance-none cursor-pointer'
-const inputClass = 'w-40 bg-[var(--bg-base)] border border-[var(--border)] rounded px-2 py-1 text-xs text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)] text-right'
-const labelClass = 'text-xs text-[var(--text-secondary)]'
+const selectClass = 'w-40 bg-background border border-border rounded px-2 py-1 text-xs text-foreground focus:outline-none focus:border-ring appearance-none cursor-pointer [&>option]:bg-background [&>option]:text-foreground'
+const inputClass = 'w-40 bg-background border border-border rounded px-2 py-1 text-xs text-foreground focus:outline-none focus:border-ring text-right'
+const labelClass = 'text-xs text-muted-foreground'
 const rowClass = 'flex items-center py-1.5 gap-4'
-const helperClass = 'text-[10px] text-[var(--text-muted)] mt-0.5'
+const helperClass = 'text-[10px] text-muted-foreground mt-0.5'
 
 /* ── control components ── */
 
@@ -124,9 +124,9 @@ function SliderControl({ value, min, max, step, onChange }: {
         step={step}
         value={num}
         onChange={e => onChange(Number(e.target.value))}
-        className="w-24 accent-[var(--accent)]"
+        className="w-24 accent-[var(--ring)]"
       />
-      <span className="text-xs text-[var(--text-primary)] w-12 text-right font-mono">{num.toFixed(decimals)}</span>
+      <span className="text-xs text-[var(--foreground)] w-12 text-right font-mono">{num.toFixed(decimals)}</span>
     </div>
   )
 }
@@ -136,7 +136,7 @@ function ToggleControl({ value, onChange }: { value: unknown; onChange: (v: bool
   return (
     <button
       onClick={() => onChange(!on)}
-      className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${on ? 'bg-[var(--accent)]' : 'bg-[var(--border-bright)]'}`}
+      className={`w-10 h-5 rounded-full transition-colors relative cursor-pointer ${on ? 'bg-[var(--ring)]' : 'bg-[var(--border)]'}`}
     >
       <span className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-all ${on ? 'left-5.5' : 'left-0.5'}`} />
     </button>
@@ -194,7 +194,7 @@ function LoraSelector({ value, allSettings, onChangeByKey }: {
           <option value="__custom__">Custom path…</option>
         </select>
         {selectedLora && (
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border)]">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--secondary)] text-[var(--muted-foreground)] border border-[var(--border)]">
             {selectedLora.language_code.toUpperCase()} · {selectedLora.gender}
           </span>
         )}
@@ -202,7 +202,7 @@ function LoraSelector({ value, allSettings, onChangeByKey }: {
 
       {selectedLora && (
         <div className="flex items-center gap-2 pl-1">
-          <span className="text-[10px] text-[var(--text-muted)]">Checkpoint</span>
+          <span className="text-[10px] text-[var(--muted-foreground)]">Checkpoint</span>
           <select
             value={String(allSettings.lora_checkpoint ?? '')}
             onChange={e => onChangeByKey('lora_checkpoint', e.target.value)}
@@ -218,7 +218,7 @@ function LoraSelector({ value, allSettings, onChangeByKey }: {
       )}
 
       {selectedLora && (
-        <p className="text-[10px] text-[var(--text-muted)] pl-1">
+        <p className="text-[10px] text-[var(--muted-foreground)] pl-1">
           Recommended strength: {selectedLora.strength_range[0]} – {selectedLora.strength_range[1]}
         </p>
       )}
@@ -306,12 +306,12 @@ function VoiceSelector({ value, onChange }: {
           <option value="__custom__">Use custom ID…</option>
         </select>
         {selectedVoice?.language && (
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--bg-hover)] text-[var(--text-muted)] border border-[var(--border)]">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--accent)] text-[var(--muted-foreground)] border border-[var(--border)]">
             {selectedVoice.language}
           </span>
         )}
         {isInCustomMode && customVal && (
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--ring)]/15 text-[var(--ring)] border border-[var(--ring)]/30">
             Custom voice
           </span>
         )}
@@ -454,7 +454,7 @@ export function renderField(
       return (
         <div className={rowClass}>
           {labelNode}
-          <span className="text-xs text-[var(--text-muted)] italic">{txt}</span>
+          <span className="text-xs text-[var(--muted-foreground)] italic">{txt}</span>
         </div>
       )
     }
@@ -511,7 +511,7 @@ export function StageSettingsPanel({ stage, stageSettings, onChange, labelExtra 
 
       {visibleAdvanced.length > 0 && (
         <details className="mt-3 border border-[var(--border)] rounded">
-          <summary className="px-3 py-2 text-xs text-[var(--text-muted)] cursor-pointer hover:text-[var(--text-secondary)] select-none">
+          <summary className="px-3 py-2 text-xs text-[var(--muted-foreground)] cursor-pointer hover:text-[var(--muted-foreground)] select-none">
             Advanced Settings
           </summary>
           <div className="px-3 pb-2 divide-y divide-[var(--border)]">

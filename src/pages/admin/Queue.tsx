@@ -26,6 +26,7 @@ type Job = {
   words_completed: number
   words_failed: number
   profile_used: string | null
+  settings_override: Record<string, string> | null
   started_at: string | null
   completed_at: string | null
   error_message: string | null
@@ -301,6 +302,10 @@ export default function Queue() {
                 <div className="border-t border-border px-4 py-3 space-y-3 bg-accent/20">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
                     <div>
+                      <span className="text-muted-foreground">Job ID: </span>
+                      <span className="font-mono text-xs">{job.id.slice(0, 8)}</span>
+                    </div>
+                    <div>
                       <span className="text-muted-foreground">Art style: </span>
                       <span>{job.art_style || 'Auto'}</span>
                     </div>
@@ -316,6 +321,18 @@ export default function Queue() {
                       <span className="text-muted-foreground">Priority: </span>
                       <span>{job.priority}</span>
                     </div>
+                    {job.settings_override?.creative_direction && (
+                      <div>
+                        <span className="text-muted-foreground">Direction: </span>
+                        <span>{job.settings_override.creative_direction}</span>
+                      </div>
+                    )}
+                    {job.settings_override?.genre && (
+                      <div>
+                        <span className="text-muted-foreground">Genre: </span>
+                        <span>{job.settings_override.genre}</span>
+                      </div>
+                    )}
                     {job.started_at && (
                       <div>
                         <span className="text-muted-foreground">Started: </span>
@@ -326,6 +343,12 @@ export default function Queue() {
                       <div>
                         <span className="text-muted-foreground">Completed: </span>
                         <span>{formatTime(job.completed_at)}</span>
+                      </div>
+                    )}
+                    {job.started_at && job.completed_at && (
+                      <div>
+                        <span className="text-muted-foreground">Duration: </span>
+                        <span>{Math.round((new Date(job.completed_at).getTime() - new Date(job.started_at).getTime()) / 1000)}s</span>
                       </div>
                     )}
                     {job.error_message && (

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useCallback } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Input } from '@/components/ui/input'
-import { Coins, Sparkles, Music, Plus, ChevronRight, Gift, Check, X } from 'lucide-react'
+import { Coins, Sparkles, Music, Plus, ChevronRight, Gift, Check, X, AlertCircle, RefreshCw, LogIn } from 'lucide-react'
 
 type Deck = {
   id: string
@@ -59,10 +59,11 @@ function getStatusBadge(status: string, completed: number, total: number) {
 }
 
 export default function Dashboard() {
-  const { profile, user, refreshProfile } = useAuth()
+  const { profile, user, refreshProfile, authError } = useAuth()
   const [decks, setDecks] = useState<Deck[]>([])
   const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
   const [loading, setLoading] = useState(true)
+  const [dashboardError, setDashboardError] = useState<string | null>(null)
 
   // Redeem code state
   const [redeemOpen, setRedeemOpen] = useState(false)
@@ -134,46 +135,99 @@ export default function Dashboard() {
     }, 2000)
   }
 
-  useEffect(() => {
-    if (!user) return
+  const location = useLocation()
 
-    async function loadDecks() {
-      try {
-        const { data: decksData } = await supabase
-          .from('decks')
-          .select('*')
-          .eq('user_id', user!.id)
-          .order('created_at', { ascending: false })
+  const loadDecks = useCallback(async (userId: string) => {
+    try {
+      setDashboardError(null)
+      setLoading(true)
+      const { data: decksData, error: decksError } = await supabase
+        .from('decks')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false })
 
-        if (decksData) {
-          setDecks(decksData)
+      if (decksError) {
+        console.error('[Dashboard] Failed to load decks:', decksError)
+        setDashboardError('Failed to load your decks. Please try refreshing.')
+        return
+      }
 
-          // Get word statuses for each deck
-          const deckIds = decksData.map((d) => d.id)
-          if (deckIds.length > 0) {
-            const { data: words } = await supabase
-              .from('words')
-              .select('deck_id, status')
-              .in('deck_id', deckIds)
+      if (decksData) {
+        setDecks(decksData)
 
-            if (words) {
-              const counts: Record<string, { completed: number; total: number }> = {}
-              for (const w of words as WordStatus[]) {
-                if (!counts[w.deck_id]) counts[w.deck_id] = { completed: 0, total: 0 }
-                counts[w.deck_id].total++
-                if (w.status === 'complete') counts[w.deck_id].completed++
-              }
-              setWordCounts(counts)
+        // Get word statuses for each deck
+        const deckIds = decksData.map((d) => d.id)
+        if (deckIds.length > 0) {
+          const { data: words, error: wordsError } = await supabase
+            .from('words')
+            .select('deck_id, status')
+            .in('deck_id', deckIds)
+
+          if (wordsError) {
+            console.error('[Dashboard] Failed to load word statuses:', wordsError)
+          }
+
+          if (words) {
+            const counts: Record<string, { completed: number; total: number }> = {}
+            for (const w of words as WordStatus[]) {
+              if (!counts[w.deck_id]) counts[w.deck_id] = { completed: 0, total: 0 }
+              counts[w.deck_id].total++
+              if (w.status === 'complete') counts[w.deck_id].completed++
             }
+            setWordCounts(counts)
           }
         }
-      } finally {
-        setLoading(false)
       }
+    } catch (err) {
+      console.error('[Dashboard] Unexpected error:', err)
+      setDashboardError('Something went wrong. Please try refreshing.')
+    } finally {
+      setLoading(false)
     }
+  }, [])
 
-    loadDecks()
-  }, [user])
+  // Load decks when user is available or when navigating back to this page
+  useEffect(() => {
+    if (!user) {
+      setLoading(false)
+      return
+    }
+    loadDecks(user.id)
+  }, [user?.id, location.key, loadDecks])
+
+  // Auth-level error: session timed out or profile failed
+  if (authError && !user) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <div className="glass rounded-xl p-8 flex flex-col items-center gap-4 max-w-sm text-center">
+          <LogIn className="h-10 w-10 text-muted-foreground" />
+          <h2 className="text-lg font-semibold">Session expired</h2>
+          <p className="text-sm text-muted-foreground">{authError}</p>
+          <Button asChild>
+            <Link to="/login">Log in again</Link>
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
+  // Dashboard data error
+  if (dashboardError) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <div className="glass rounded-xl p-8 flex flex-col items-center gap-4 max-w-sm text-center">
+          <AlertCircle className="h-10 w-10 text-destructive" />
+          <h2 className="text-lg font-semibold">Something went wrong</h2>
+          <p className="text-sm text-muted-foreground">{dashboardError}</p>
+          <Button onClick={() => window.location.reload()}>
+            <RefreshCw className="h-4 w-4 mr-2" />
+            Refresh
+          </Button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-6">

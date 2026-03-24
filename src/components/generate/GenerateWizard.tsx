@@ -1,10 +1,13 @@
 import { useState, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { CheckCircle, ArrowLeft } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { useWizardState } from './useWizardState'
 import WizardProgress from './WizardProgress'
 import StepContainer from './shared/StepContainer'
+import PillButton from './shared/PillButton'
 import LanguageStep from './steps/LanguageStep'
 import WordsStep from './steps/WordsStep'
 import VibeStep from './steps/VibeStep'
@@ -14,10 +17,10 @@ import ConfirmStep from './steps/ConfirmStep'
 
 export default function GenerateWizard() {
   const { user, profile, refreshProfile } = useAuth()
-  const navigate = useNavigate()
   const { state, dispatch, buildPayload } = useWizardState()
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [generated, setGenerated] = useState(false)
   const prevStep = useRef(state.step)
 
   // Track direction for slide animation
@@ -83,7 +86,7 @@ export default function GenerateWizard() {
       if (creditError) throw new Error(creditError.message)
 
       await refreshProfile()
-      navigate(`/deck/${deck.id}`)
+      setGenerated(true)
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Something went wrong')
       setSubmitting(false)
@@ -123,6 +126,44 @@ export default function GenerateWizard() {
           />
         )
     }
+  }
+
+  if (generated) {
+    return (
+      <div className="max-w-4xl mx-auto flex flex-col items-center justify-center min-h-[60vh] px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+          className="flex flex-col items-center text-center gap-6"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: 'spring', stiffness: 400, damping: 20 }}
+          >
+            <CheckCircle className="h-16 w-16 text-green-400" />
+          </motion.div>
+
+          <div className="space-y-2">
+            <h2 className="text-2xl font-semibold text-white/90">
+              Your deck is being created!
+            </h2>
+            <p className="text-sm text-white/50 max-w-sm">
+              You'll find it on your dashboard when it's ready.
+              This page is safe to leave — generation continues in the background.
+            </p>
+          </div>
+
+          <Link to="/dashboard">
+            <PillButton glow>
+              <ArrowLeft className="h-4 w-4" />
+              Back to Dashboard
+            </PillButton>
+          </Link>
+        </motion.div>
+      </div>
+    )
   }
 
   return (
