@@ -15,6 +15,8 @@ import {
   RefreshCw,
   ChevronRight,
 } from 'lucide-react'
+import { StageSettingsPanel } from '@/components/settings/SettingsControls'
+import { STAGE_LABELS, STAGE_FIELDS } from '@/components/settings/fieldConfigs'
 
 type LanguageProfile = {
   id: string
@@ -25,82 +27,6 @@ type LanguageProfile = {
   notes: string | null
   created_at: string
   updated_at: string
-}
-
-// Settings schema — defines all editable fields per stage with their types
-const SETTINGS_SCHEMA: Record<string, { key: string; label: string; type: 'text' | 'number' | 'boolean' | 'select'; options?: string[] }[]> = {
-  concept: [
-    { key: 'lyric_mode', label: 'Lyric Mode', type: 'select', options: ['reliable', 'standard', 'creative'] },
-    { key: 'genre', label: 'Genre', type: 'text' },
-    { key: 'caption_style', label: 'Caption Style', type: 'select', options: ['production', 'descriptive', 'minimal'] },
-    { key: 'vocal_gender', label: 'Vocal Gender', type: 'select', options: ['female', 'male'] },
-    { key: 'duration', label: 'Duration (s)', type: 'number' },
-    { key: 'llm_model', label: 'LLM Model', type: 'text' },
-    { key: 'llm_temperature', label: 'LLM Temperature', type: 'number' },
-  ],
-  song: [
-    { key: 'duration', label: 'Duration (s)', type: 'number' },
-    { key: 'batch_size', label: 'Batch Size', type: 'number' },
-    { key: 'inference_steps', label: 'Inference Steps', type: 'number' },
-    { key: 'guidance_scale', label: 'Guidance Scale', type: 'number' },
-    { key: 'thinking', label: 'Thinking', type: 'boolean' },
-    { key: 'seed', label: 'Seed', type: 'number' },
-    { key: 'bpm', label: 'BPM', type: 'number' },
-    { key: 'shift', label: 'Shift', type: 'number' },
-    { key: 'lora_id', label: 'LoRA ID', type: 'text' },
-    { key: 'lora_id_base_path', label: 'LoRA Base Path', type: 'text' },
-    { key: 'lora_checkpoint', label: 'LoRA Checkpoint', type: 'text' },
-    { key: 'lora_path', label: 'LoRA Path', type: 'text' },
-    { key: 'lora_strength', label: 'LoRA Strength', type: 'number' },
-    { key: 'lora_trigger_phrase', label: 'LoRA Trigger', type: 'text' },
-  ],
-  images: [
-    { key: 'creative_direction', label: 'Creative Direction', type: 'select', options: ['auto', 'literal', 'editorial', 'cinematic', 'movie', 'movie_remix', 'provocative', 'minimal'] },
-    { key: 'visual_reference', label: 'Visual Reference', type: 'text' },
-    { key: 'frame_narrative', label: 'Frame Narrative', type: 'select', options: ['auto', 'series', 'triptych', 'diptych'] },
-    { key: 'image_count', label: 'Image Count', type: 'text' },
-    { key: 'aspect_ratio', label: 'Aspect Ratio', type: 'select', options: ['16:9', '9:16', '1:1', '4:3'] },
-    { key: 'art_style', label: 'Art Style', type: 'select', options: ['photorealistic', 'watercolor', 'oil_painting', 'noir', 'studio_ghibli', 'comic_book', 'pixel_art', 'synthwave', 'ukiyo_e', 'renaissance', 'pen_and_ink', 'retro_90s', 'knitted', 'expressionist', 'vintage_film', 'chiaroscuro', 'disney_animation', 'double_exposure', 'blue_eyed_samurai', 'invincible', 'big_mouth', 'random'] },
-    { key: 'word_in_image', label: 'Word in Image', type: 'boolean' },
-    { key: 'image_model', label: 'Image Model', type: 'select', options: ['fast', 'quality'] },
-    { key: 'llm_model', label: 'LLM Model', type: 'text' },
-    { key: 'movie_override', label: 'Movie Override', type: 'text' },
-  ],
-  video: [
-    { key: 'video_mode', label: 'Video Mode', type: 'select', options: ['ltx_fast', 'ltx_quality', 'ken_burns'] },
-    { key: 'duration', label: 'Duration (s)', type: 'number' },
-    { key: 'resolution', label: 'Resolution', type: 'select', options: ['720p', '1080p'] },
-    { key: 'fps', label: 'FPS', type: 'number' },
-    { key: 'transition_mode', label: 'Transition Mode', type: 'select', options: ['all_cut', 'all_fade', 'auto'] },
-    { key: 'motion_type', label: 'Motion Type', type: 'select', options: ['auto', 'pan', 'zoom', 'static'] },
-    { key: 'motion_speed', label: 'Motion Speed', type: 'select', options: ['slow', 'medium', 'fast'] },
-    { key: 'negative_prompt', label: 'Negative Prompt', type: 'text' },
-  ],
-  assembly: [
-    { key: 'assembly_mode', label: 'Assembly Mode', type: 'select', options: ['clean', 'word_card'] },
-    { key: 'gap_strategy', label: 'Gap Strategy', type: 'select', options: ['ping_pong', 'loop', 'freeze', 'black'] },
-    { key: 'overflow_strategy', label: 'Overflow Strategy', type: 'select', options: ['video_full', 'audio_full', 'trim'] },
-    { key: 'transition_type', label: 'Transition Type', type: 'select', options: ['cut', 'crossfade'] },
-    { key: 'silence_trim', label: 'Silence Trim', type: 'boolean' },
-    { key: 'lufs_normalize', label: 'LUFS Normalize', type: 'boolean' },
-  ],
-  bookend: [
-    { key: 'enabled', label: 'Enabled', type: 'boolean' },
-    { key: 'model_id', label: 'TTS Model ID', type: 'text' },
-    { key: 'voice_id', label: 'Voice ID', type: 'text' },
-    { key: 'fade_duration', label: 'Fade Duration (s)', type: 'number' },
-    { key: 'display_duration_min', label: 'Display Min (s)', type: 'number' },
-    { key: 'display_duration_max', label: 'Display Max (s)', type: 'number' },
-  ],
-}
-
-const STAGE_LABELS: Record<string, string> = {
-  concept: 'Concept',
-  song: 'Song',
-  images: 'Images',
-  video: 'Video',
-  assembly: 'Assembly',
-  bookend: 'Bookend',
 }
 
 const LANGUAGES = [
@@ -120,7 +46,7 @@ export default function Profiles() {
   const [showCreate, setShowCreate] = useState(false)
   const [newLanguage, setNewLanguage] = useState(LANGUAGES[0])
   const [newName, setNewName] = useState('')
-  const [expandedStage, setExpandedStage] = useState<string | null>('concept')
+  const [activeStage, setActiveStage] = useState('concept')
 
   const fetchProfiles = useCallback(async () => {
     const { data } = await supabase
@@ -309,7 +235,7 @@ export default function Profiles() {
 
       {/* Right Panel: Editor */}
       {selected ? (
-        <div className="flex-1 overflow-y-auto space-y-4">
+        <div className="flex-1 flex flex-col gap-4 min-h-0">
           {/* Profile header */}
           <div className="flex items-center justify-between">
             <div className="space-y-1">
@@ -355,93 +281,44 @@ export default function Profiles() {
 
           <Separator />
 
-          {/* Settings by stage */}
-          {Object.entries(SETTINGS_SCHEMA).map(([stage, fields]) => (
-            <div key={stage}>
-              <button
-                className="flex items-center gap-2 w-full text-left py-2 hover:text-foreground transition-colors"
-                onClick={() => setExpandedStage(expandedStage === stage ? null : stage)}
-              >
-                <ChevronRight
-                  className={`h-4 w-4 transition-transform ${expandedStage === stage ? 'rotate-90' : ''}`}
-                />
-                <span className="font-semibold text-sm">{STAGE_LABELS[stage]}</span>
-              </button>
-
-              {expandedStage === stage && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pl-6 pb-4">
-                  {fields.map(field => {
-                    const value = editSettings[stage]?.[field.key]
-
-                    if (field.type === 'boolean') {
-                      return (
-                        <div key={field.key} className="flex items-center gap-2">
-                          <button
-                            onClick={() => updateSetting(stage, field.key, !value)}
-                            className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${
-                              value ? 'bg-green-600' : 'bg-zinc-600'
-                            }`}
-                          >
-                            <span
-                              className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${
-                                value ? 'translate-x-5' : 'translate-x-1'
-                              }`}
-                            />
-                          </button>
-                          <Label className="text-xs">{field.label}</Label>
-                        </div>
-                      )
-                    }
-
-                    if (field.type === 'select') {
-                      return (
-                        <div key={field.key} className="space-y-1">
-                          <Label className="text-xs text-muted-foreground">{field.label}</Label>
-                          <select
-                            className="w-full rounded-md border border-border bg-background px-2 py-1 text-sm"
-                            value={(value as string) ?? ''}
-                            onChange={e => updateSetting(stage, field.key, e.target.value)}
-                          >
-                            <option value="">Default</option>
-                            {field.options?.map(opt => (
-                              <option key={opt} value={opt}>{opt}</option>
-                            ))}
-                          </select>
-                        </div>
-                      )
-                    }
-
-                    return (
-                      <div key={field.key} className="space-y-1">
-                        <Label className="text-xs text-muted-foreground">{field.label}</Label>
-                        <Input
-                          type={field.type === 'number' ? 'number' : 'text'}
-                          value={(value as string | number) ?? ''}
-                          onChange={e => {
-                            const v = field.type === 'number'
-                              ? (e.target.value === '' ? null : Number(e.target.value))
-                              : e.target.value
-                            updateSetting(stage, field.key, v)
-                          }}
-                          className="h-7 text-sm"
-                          step={field.type === 'number' ? 'any' : undefined}
-                        />
-                      </div>
-                    )
-                  })}
-                </div>
-              )}
+          {/* Settings: vertical tabs + panel */}
+          <div className="flex gap-4 min-h-0 flex-1">
+            {/* Vertical tab bar */}
+            <div className="w-36 flex-shrink-0 flex flex-col gap-0.5">
+              {Object.keys(STAGE_FIELDS).map(stage => (
+                <button
+                  key={stage}
+                  onClick={() => setActiveStage(stage)}
+                  className={`text-left px-3 py-2 rounded-md text-sm transition-colors ${
+                    activeStage === stage
+                      ? 'bg-primary/15 text-primary font-medium'
+                      : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                  }`}
+                >
+                  {STAGE_LABELS[stage]}
+                </button>
+              ))}
             </div>
-          ))}
 
-          <Separator />
+            {/* Settings content */}
+            <div className="flex-1 overflow-y-auto">
+              <StageSettingsPanel
+                stage={activeStage}
+                stageSettings={editSettings[activeStage] || {}}
+                onChange={(key, value) => updateSetting(activeStage, key, value)}
+              />
+            </div>
+          </div>
 
           {/* Save button */}
-          <div className="flex justify-end pb-4">
-            <Button onClick={saveProfile} disabled={saving}>
-              <Save className="h-4 w-4 mr-2" />
-              {saving ? 'Saving...' : 'Save Profile'}
-            </Button>
+          <div className="flex-shrink-0 pt-2">
+            <Separator className="mb-4" />
+            <div className="flex justify-end pb-4">
+              <Button onClick={saveProfile} disabled={saving}>
+                <Save className="h-4 w-4 mr-2" />
+                {saving ? 'Saving...' : 'Save Profile'}
+              </Button>
+            </div>
           </div>
         </div>
       ) : (
