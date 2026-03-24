@@ -43,7 +43,7 @@ from .models import (
     WorkspaceMeta, EngineHealthStatus, DefaultSettings
 )
 
-WORKSPACE_ROOT = Path(os.getenv("WORKSPACE_ROOT", "D:/CODING/ResonanceWorkspace"))
+WORKSPACE_ROOT = Path(os.getenv("WORKSPACE_ROOT", "D:/CODING/ResonanceTEST"))
 WORKSPACE_PATH = Path(os.getenv("WORKSPACE_PATH", str(WORKSPACE_ROOT / "workspace")))
 
 # Recent workspaces file lives in the orchestrator project directory

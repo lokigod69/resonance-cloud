@@ -43,7 +43,7 @@ from supabase import create_client, Client
 
 SUPABASE_URL = os.getenv("SUPABASE_URL", "")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY", "") or os.getenv("SUPABASE_KEY", "")
-WORKSPACE_ROOT = Path(os.getenv("WORKSPACE_ROOT", "D:/CODING/ResonanceWorkspace/content"))
+WORKSPACE_ROOT = Path(os.getenv("WORKSPACE_ROOT", "D:/CODING/ResonanceTEST/content"))
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 POLL_INTERVAL = int(os.getenv("JOB_RUNNER_POLL_INTERVAL", "30"))
 MAX_RETRIES = int(os.getenv("JOB_RUNNER_MAX_RETRIES", "2"))

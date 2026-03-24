@@ -124,7 +124,7 @@ export default function VideoPlayer() {
             {current.video_url ? (
               <video
                 key={videoKey}
-                src={current.video_url}
+                src={`${current.video_url}?t=${videoKey}`}
                 controls
                 autoPlay
                 className="w-full aspect-video"
