@@ -31,7 +31,7 @@ type LanguageProfile = {
 }
 
 const LANGUAGES = [
-  'German', 'French', 'Italian', 'Spanish', 'Portuguese', 'Japanese',
+  'English', 'German', 'French', 'Italian', 'Spanish', 'Portuguese', 'Japanese',
   'Korean', 'Mandarin', 'Arabic', 'Russian', 'Turkish', 'Hindi',
   'Dutch', 'Swedish', 'Polish', 'Greek', 'Thai', 'Vietnamese',
 ]

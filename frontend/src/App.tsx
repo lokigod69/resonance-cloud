@@ -16,6 +16,7 @@ import Content from '@/pages/admin/Content'
 import Metrics from '@/pages/admin/Metrics'
 import Queue from '@/pages/admin/Queue'
 import Profiles from '@/pages/admin/Profiles'
+import AdminRoute from '@/components/AdminRoute'
 
 function ProtectedRoute() {
   const { session, loading } = useAuth()
@@ -114,11 +115,13 @@ export default function App() {
               <Route path="/generate" element={<Generate />} />
               <Route path="/deck/:id" element={<DeckView />} />
               <Route path="/settings" element={<Settings />} />
-              <Route path="/admin/queue" element={<Queue />} />
-              <Route path="/admin/profiles" element={<Profiles />} />
-              <Route path="/admin/users" element={<Users />} />
-              <Route path="/admin/content" element={<Content />} />
-              <Route path="/admin/metrics" element={<Metrics />} />
+              <Route element={<AdminRoute />}>
+                <Route path="/admin/queue" element={<Queue />} />
+                <Route path="/admin/profiles" element={<Profiles />} />
+                <Route path="/admin/users" element={<Users />} />
+                <Route path="/admin/content" element={<Content />} />
+                <Route path="/admin/metrics" element={<Metrics />} />
+              </Route>
             </Route>
           </Route>
 

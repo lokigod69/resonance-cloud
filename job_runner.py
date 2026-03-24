@@ -19,6 +19,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -217,6 +218,163 @@ def extract_thumbnail(video_path: Path, output_path: Path) -> bool:
         return False
 
 
+# ─── Metadata Collection ─────────────────────────────────────────────────────
+
+# Maps stage names to their filesystem directory names
+_STAGE_DIRS = {
+    "images": "images",
+    "concept": "concept",
+    "song": "songs",
+    "video": "videos",
+    "assembly": "final",
+    "bookend": "bookend",
+}
+
+
+def _read_json(path: Path) -> dict[str, Any]:
+    """Read a JSON file, returning empty dict on failure."""
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _find_latest_meta(stage_dir: Path) -> dict[str, Any]:
+    """Find the latest generation-meta.json in a stage directory."""
+    if not stage_dir.exists():
+        return {}
+
+    # Concept stage: generation-meta.json is directly in the concept/ folder
+    direct = stage_dir / "generation-meta.json"
+    if direct.exists():
+        return _read_json(direct)
+
+    # Other stages: inside timestamped version subdirectories
+    version_dirs = sorted(
+        [d for d in stage_dir.iterdir() if d.is_dir()],
+        key=lambda d: d.name,
+    )
+    if not version_dirs:
+        return {}
+
+    meta_path = version_dirs[-1] / "generation-meta.json"
+    return _read_json(meta_path) if meta_path.exists() else {}
+
+
+def _find_latest_storyboard(images_dir: Path) -> dict[str, Any]:
+    """Find the latest storyboard.json from the images stage."""
+    if not images_dir.exists():
+        return {}
+    version_dirs = sorted(
+        [d for d in images_dir.iterdir() if d.is_dir()],
+        key=lambda d: d.name,
+    )
+    if not version_dirs:
+        return {}
+    sb_path = version_dirs[-1] / "storyboard.json"
+    return _read_json(sb_path) if sb_path.exists() else {}
+
+
+def collect_word_metadata(
+    word_dir: Path,
+    profile_name: str | None,
+    pipeline_duration: float,
+) -> dict[str, Any]:
+    """Collect generation metadata from filesystem into a summary dict."""
+    # Read per-stage meta
+    metas: dict[str, dict[str, Any]] = {}
+    stages_completed = []
+    for stage, folder in _STAGE_DIRS.items():
+        meta = _find_latest_meta(word_dir / folder)
+        if meta and meta.get("status") == "success":
+            stages_completed.append(stage)
+        metas[stage] = meta
+
+    # Storyboard data
+    sb = _find_latest_storyboard(word_dir / "images")
+
+    # Image meta
+    img = metas.get("images", {})
+    img_outputs = img.get("outputs", {})
+    img_steps = img.get("steps", {})
+    img_rendering = img_steps.get("image_rendering", {})
+
+    # Song meta
+    song = metas.get("song", {})
+    song_lora = song.get("lora", {})
+
+    # Video meta
+    vid = metas.get("video", {})
+
+    # Assembly meta
+    asm = metas.get("assembly", {})
+    asm_report = asm.get("assembly_report", {})
+
+    # Bookend meta
+    bke = metas.get("bookend", {})
+    bke_tts = bke.get("tts", {})
+
+    return {
+        "pipeline_duration_seconds": round(pipeline_duration, 2),
+        "stages_completed": stages_completed,
+
+        # Storyboard / creative
+        "creative_direction": sb.get("creative_direction") or img.get("settings", {}).get("creative_direction"),
+        "art_style": sb.get("art_style") or img.get("settings", {}).get("art_style"),
+        "movie_reference": sb.get("movie"),
+        "music_caption": sb.get("music_caption"),
+
+        # Images
+        "images": {
+            "count": img_outputs.get("images_generated"),
+            "refusals": img_rendering.get("scenes_failed", 0),
+            "duration_seconds": img.get("duration_seconds"),
+            "model": img_rendering.get("model") or img.get("settings", {}).get("image_model"),
+        },
+
+        # Concept
+        "concept": {
+            "duration_seconds": metas.get("concept", {}).get("duration_seconds"),
+            "caption_source": metas.get("concept", {}).get("outputs", {}).get("caption_source"),
+        },
+
+        # Song
+        "song": {
+            "duration_seconds": song.get("duration_seconds"),
+            "takes": len(song.get("outputs", {}).get("takes", [])) or None,
+        },
+
+        # Video
+        "video": {
+            "duration_seconds": vid.get("duration_seconds"),
+            "mode": vid.get("inputs", {}).get("settings_used", {}).get("video_mode"),
+        },
+
+        # Assembly
+        "assembly": {
+            "duration_seconds": asm.get("duration_seconds"),
+            "final_video_duration_seconds": asm.get("outputs", {}).get("duration_seconds"),
+            "lufs": asm_report.get("normalized_lufs"),
+        },
+
+        # Bookend
+        "bookend": {
+            "duration_seconds": bke.get("duration_seconds"),
+            "voice_id": bke_tts.get("voice_id"),
+            "tts_language": bke_tts.get("language_code"),
+        },
+
+        # LoRA
+        "lora": {
+            "path": song_lora.get("path"),
+            "strength": song_lora.get("strength"),
+            "trigger_phrase": song_lora.get("trigger_phrase"),
+        } if song_lora.get("active") else None,
+
+        "profile_used": profile_name,
+    }
+
+
 # ─── Upload Logic ─────────────────────────────────────────────────────────────
 
 async def upload_results(
@@ -225,9 +383,10 @@ async def upload_results(
     manifest_data: Any,
     user_id: str,
     deck_id: str,
+    word_slug_override: str | None = None,
 ) -> bool:
     """Upload final video + thumbnail to Supabase Storage, update word record."""
-    word_slug = word_record.get("word_slug", "")
+    word_slug = word_slug_override or word_record.get("word_slug") or word_dir.name
 
     # Determine final video path
     bookend_settings = manifest_data.settings.get("bookend", {})
@@ -328,6 +487,7 @@ async def process_word(
     )
 
     # Run pipeline stages with retry
+    pipeline_start = time.monotonic()
     for stage in STAGE_ORDER:
         success = False
         for attempt in range(MAX_RETRIES + 1):
@@ -364,11 +524,22 @@ async def process_word(
             }).eq("id", job["id"]).execute()
             return False
 
-    # All stages complete — upload results
+    # All stages complete — collect metadata before upload/cleanup
+    pipeline_duration = time.monotonic() - pipeline_start
+    word_metadata = None
+    try:
+        word_metadata = collect_word_metadata(
+            word_dir, job.get("profile_used"), pipeline_duration,
+        )
+    except Exception as e:
+        log.warning("  Metadata collection failed for %s: %s", word_slug_val, e)
+
+    # Upload results
     manifest_data = read_manifest(word_dir)
 
     uploaded = await upload_results(
-        word_record, word_dir, manifest_data, job["user_id"], job["deck_id"]
+        word_record, word_dir, manifest_data, job["user_id"], job["deck_id"],
+        word_slug_override=word_slug_val,
     )
     if not uploaded:
         sb.table("words").update({
@@ -377,6 +548,15 @@ async def process_word(
         }).eq("id", word_record["id"]).execute()
         sb.rpc("refund_credit", {"user_id_param": job["user_id"]}).execute()
         return False
+
+    # Write metadata to Supabase (after successful upload)
+    if word_metadata:
+        try:
+            sb.table("words").update({
+                "metadata": word_metadata,
+            }).eq("id", word_record["id"]).execute()
+        except Exception as e:
+            log.warning("  Failed to write metadata for %s: %s", word_slug_val, e)
 
     # Update job progress
     current_completed = sb.table("generation_jobs").select("words_completed") \
