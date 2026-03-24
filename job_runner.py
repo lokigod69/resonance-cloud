@@ -447,15 +447,16 @@ async def process_job(job: dict[str, Any]) -> None:
         .eq("id", user_id).single().execute()
     base_language = user_resp.data.get("base_language", "English") if user_resp.data else "English"
 
-    # Load words for this deck
+    # Load only pending words for this deck (skip already-complete/failed ones)
     words_resp = sb.table("words").select("*") \
         .eq("deck_id", deck_id) \
+        .eq("status", "pending") \
         .order("created_at") \
         .execute()
     words = words_resp.data or []
 
     if not words:
-        log.error("No words found for deck %s", deck_id)
+        log.error("No pending words found for deck %s", deck_id)
         sb.table("generation_jobs").update({
             "status": "failed",
             "error_message": "No words in deck",
@@ -535,8 +536,17 @@ async def process_job(job: dict[str, Any]) -> None:
         "completed_at": datetime.now(timezone.utc).isoformat(),
     }).eq("id", job_id).execute()
 
-    # Update deck status
-    deck_status = "complete" if final_status == "complete" else "partial"
+    # Update deck status based on ALL words in deck (not just this job's batch)
+    all_words_resp = sb.table("words").select("status") \
+        .eq("deck_id", deck_id).execute()
+    all_statuses = [w["status"] for w in (all_words_resp.data or [])]
+
+    if all(s == "complete" for s in all_statuses):
+        deck_status = "complete"
+    elif any(s == "complete" for s in all_statuses):
+        deck_status = "partial"
+    else:
+        deck_status = "failed"
     sb.table("decks").update({"status": deck_status}).eq("id", deck_id).execute()
 
     log.info("Job %s finished: %s (%d/%d succeeded)",
