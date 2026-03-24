@@ -57,6 +57,7 @@ export const ART_STYLE_GROUPS: ArtStyleGroup[] = [
     group: 'Illustration & Fantasy',
     styles: [
       { value: 'studio_ghibli', label: 'Studio Ghibli' },
+      { value: 'disney_animation', label: 'Disney Animation' },
       { value: 'anime', label: 'Anime / Cel Shading' },
       { value: 'storybook', label: 'Storybook Illustration' },
       { value: 'fantasy_art', label: 'Fantasy Art' },
@@ -81,6 +82,7 @@ export const ART_STYLE_GROUPS: ArtStyleGroup[] = [
     styles: [
       { value: 'vintage_film', label: 'Vintage Film / Polaroid' },
       { value: 'film_noir', label: 'Film Noir (B&W)' },
+      { value: 'double_exposure', label: 'Double Exposure' },
       { value: 'synthwave', label: 'Synthwave / Retrowave' },
       { value: 'retro_90s', label: 'Retro 90s' },
     ],
@@ -93,6 +95,9 @@ export const ART_STYLE_GROUPS: ArtStyleGroup[] = [
       { value: 'sketch', label: 'Sketch / Pencil' },
       { value: 'pen_and_ink', label: 'Pen and Ink' },
       { value: 'charcoal', label: 'Charcoal' },
+      { value: 'blue_eyed_samurai', label: 'Blue Eye Samurai' },
+      { value: 'invincible', label: 'Invincible' },
+      { value: 'big_mouth', label: 'Big Mouth' },
     ],
   },
 ]

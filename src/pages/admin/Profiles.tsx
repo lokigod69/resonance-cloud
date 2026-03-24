@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import { StageSettingsPanel } from '@/components/settings/SettingsControls'
 import { STAGE_LABELS, STAGE_FIELDS } from '@/components/settings/fieldConfigs'
+import { useToast } from '@/components/Toast'
 
 type LanguageProfile = {
   id: string
@@ -36,6 +37,7 @@ const LANGUAGES = [
 ]
 
 export default function Profiles() {
+  const { toast } = useToast()
   const [profiles, setProfiles] = useState<LanguageProfile[]>([])
   const [selected, setSelected] = useState<LanguageProfile | null>(null)
   const [editSettings, setEditSettings] = useState<Record<string, Record<string, unknown>>>({})
@@ -43,7 +45,6 @@ export default function Profiles() {
   const [editNotes, setEditNotes] = useState('')
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
-  const [saveSuccess, setSaveSuccess] = useState(false)
   const [showCreate, setShowCreate] = useState(false)
   const [newLanguage, setNewLanguage] = useState(LANGUAGES[0])
   const [newName, setNewName] = useState('')
@@ -82,8 +83,7 @@ export default function Profiles() {
     const updated = profiles.find(p => p.id === selected.id)
     if (updated) selectProfile({ ...updated, name: editName, notes: editNotes, settings: editSettings })
     setSaving(false)
-    setSaveSuccess(true)
-    setTimeout(() => setSaveSuccess(false), 2000)
+    toast('Profile saved', 'success')
   }
 
   const activateProfile = async (profileId: string, language: string) => {
@@ -317,12 +317,6 @@ export default function Profiles() {
           <div className="flex-shrink-0 pt-2">
             <Separator className="mb-4" />
             <div className="flex items-center justify-end gap-3 pb-4">
-              {saveSuccess && (
-                <span className="text-sm text-green-400 flex items-center gap-1">
-                  <Check className="h-4 w-4" />
-                  Saved!
-                </span>
-              )}
               <Button onClick={saveProfile} disabled={saving}>
                 <Save className="h-4 w-4 mr-2" />
                 {saving ? 'Saving...' : 'Save Profile'}

@@ -306,6 +306,10 @@ export default function Queue() {
                       <span className="font-mono text-xs">{job.id.slice(0, 8)}</span>
                     </div>
                     <div>
+                      <span className="text-muted-foreground">Language: </span>
+                      <span>{job.target_language}</span>
+                    </div>
+                    <div>
                       <span className="text-muted-foreground">Art style: </span>
                       <span>{job.art_style || 'Auto'}</span>
                     </div>
@@ -333,6 +337,10 @@ export default function Queue() {
                         <span>{job.settings_override.genre}</span>
                       </div>
                     )}
+                    <div>
+                      <span className="text-muted-foreground">Submitted: </span>
+                      <span>{formatTime(job.created_at)}</span>
+                    </div>
                     {job.started_at && (
                       <div>
                         <span className="text-muted-foreground">Started: </span>
