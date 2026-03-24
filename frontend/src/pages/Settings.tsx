@@ -92,7 +92,7 @@ export default function Settings() {
           {([
             { id: 'standard' as Theme, label: 'Standard', desc: 'Dark & minimal', colors: ['oklch(0.13 0.008 280)', 'oklch(0.7 0.15 280)', 'oklch(0.22 0.015 280)'] },
             { id: 'retro' as Theme, label: 'Retro', desc: '80s synth-wave', colors: ['#2F353B', '#BCA396', '#6A808C'] },
-            { id: 'soft' as Theme, label: 'Soft', desc: 'Warm & inviting', colors: ['#F5F3F0', '#C4918A', '#8BA888'] },
+            { id: 'soft' as Theme, label: 'Soft', desc: 'Warm & earthy dark', colors: ['#2A2520', '#C4918A', '#8BA888'] },
           ]).map((t) => (
             <button
               key={t.id}

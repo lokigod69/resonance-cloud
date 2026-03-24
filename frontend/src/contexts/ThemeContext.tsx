@@ -22,12 +22,8 @@ function applyThemeClass(theme: Theme) {
   VALID_THEMES.forEach((t) => html.classList.remove(`theme-${t}`))
   // Add current theme class
   html.classList.add(`theme-${theme}`)
-  // Manage dark class — soft theme is light mode, others are dark
-  if (theme === 'soft') {
-    html.classList.remove('dark')
-  } else {
-    html.classList.add('dark')
-  }
+  // All themes use dark mode
+  html.classList.add('dark')
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

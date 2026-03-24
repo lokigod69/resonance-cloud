@@ -1,55 +1,55 @@
-/* Soft theme — warm, muted, inviting light palette */
+/* Soft theme — warm dark palette with muted ochre and earthy tones */
 .theme-soft {
-  --background: #F5F3F0;
-  --foreground: #3A3632;
-  --card: #FFFFFF;
-  --card-foreground: #3A3632;
-  --popover: #FFFFFF;
-  --popover-foreground: #3A3632;
+  --background: #2A2520;
+  --foreground: #D4CCC4;
+  --card: #332E28;
+  --card-foreground: #D4CCC4;
+  --popover: #332E28;
+  --popover-foreground: #D4CCC4;
   --primary: #C4918A;
-  --primary-foreground: #FFFFFF;
-  --secondary: #EDE9E4;
-  --secondary-foreground: #3A3632;
-  --muted: #EDE9E4;
+  --primary-foreground: #2A2520;
+  --secondary: #3D3630;
+  --secondary-foreground: #D4CCC4;
+  --muted: #3D3630;
   --muted-foreground: #9B9389;
   --accent: rgba(196, 145, 138, 0.2);
-  --accent-foreground: #3A3632;
+  --accent-foreground: #D4CCC4;
   --destructive: #D4766A;
   --destructive-foreground: #D4766A;
-  --border: rgba(60, 50, 40, 0.1);
-  --input: #EDE9E4;
+  --border: rgba(212, 204, 196, 0.12);
+  --input: #3D3630;
   --ring: #C4918A;
   --radius: 12px;
-  --sidebar: #F0EDE8;
-  --sidebar-foreground: #3A3632;
+  --sidebar: #252019;
+  --sidebar-foreground: #D4CCC4;
   --sidebar-primary: #C4918A;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #EDE9E4;
-  --sidebar-accent-foreground: #3A3632;
-  --sidebar-border: rgba(60, 50, 40, 0.1);
+  --sidebar-primary-foreground: #2A2520;
+  --sidebar-accent: #3D3630;
+  --sidebar-accent-foreground: #D4CCC4;
+  --sidebar-border: rgba(212, 204, 196, 0.1);
   --sidebar-ring: #C4918A;
   --font-body: 'Inter', -apple-system, system-ui, sans-serif;
   --font-mono: 'Inter', -apple-system, system-ui, sans-serif;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
-/* Glass overrides for light theme */
+/* Glass overrides for dark warm theme */
 .theme-soft .glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(51, 46, 40, 0.7);
   backdrop-filter: blur(24px);
-  border: 1px solid rgba(60, 50, 40, 0.08);
-  box-shadow: 0 2px 8px rgba(60, 50, 40, 0.06);
+  border: 1px solid rgba(212, 204, 196, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .theme-soft .glass-strong {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(51, 46, 40, 0.85);
   backdrop-filter: blur(32px);
-  border: 1px solid rgba(60, 50, 40, 0.1);
+  border: 1px solid rgba(212, 204, 196, 0.1);
 }
 
 .theme-soft .glass-hover:hover {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(60, 50, 40, 0.15);
+  background: rgba(61, 54, 48, 0.85);
+  border-color: rgba(212, 204, 196, 0.15);
 }
 
 .theme-soft .glass-selected {
@@ -59,23 +59,14 @@
 
 /* Gradient background for soft theme */
 .theme-soft .gradient-bg {
-  background: linear-gradient(135deg, #F5F3F0 0%, #EDE9E4 50%, #F0EDE8 100%);
+  background: linear-gradient(135deg, #2A2520 0%, #332E28 50%, #2A2520 100%);
 }
 
 /* Glow overrides */
 .theme-soft .glow-purple {
-  box-shadow: 0 2px 12px rgba(196, 145, 138, 0.25);
+  box-shadow: 0 2px 12px rgba(196, 145, 138, 0.2);
 }
 
 .theme-soft .glow-green {
-  box-shadow: 0 2px 12px rgba(139, 168, 136, 0.3);
-}
-
-/* Softer text colors for elements using hardcoded white */
-.theme-soft .text-white\/90 {
-  color: #3A3632 !important;
-}
-
-.theme-soft .text-white\/50 {
-  color: #9B9389 !important;
+  box-shadow: 0 2px 12px rgba(139, 168, 136, 0.25);
 }

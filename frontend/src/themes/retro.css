@@ -63,19 +63,10 @@
   border-color: #BCA396;
 }
 
-/* CRT scanline overlay */
+/* CRT scanline overlay — disabled for readability, kept for reference */
+/* .crt-overlay is still rendered by ThemeContext but now invisible */
 .crt-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 2px,
-    rgba(0, 0, 0, 0.08) 2px,
-    rgba(0, 0, 0, 0.08) 4px
-  );
+  display: none;
 }
 
 /* Glow overrides */
