@@ -126,7 +126,11 @@ app = FastAPI(title="Resonance Orchestrator", version="1.0.0", lifespan=lifespan
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",
+        "https://resonanz.pro",
+        "https://www.resonanz.pro",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
