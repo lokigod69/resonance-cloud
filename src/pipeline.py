@@ -1,0 +1,806 @@
+"""Pipeline sequencing: builds payloads and orchestrates stage execution."""
+
+from __future__ import annotations
+import json
+import logging
+import glob as glob_module
+import os
+import random
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+import httpx
+
+logger = logging.getLogger(__name__)
+
+from .manifest import (
+    read_manifest, update_selection, add_lineage,
+    get_stage_versions, now_iso, write_manifest
+)
+from .settings import resolve_settings, load_defaults, resolve_random_art_style
+from .workspace import (
+    get_word_dir, create_version_dir, make_version_label, STAGE_FOLDERS
+)
+from .dispatcher import call_engine, EngineUnreachableError, PayloadError
+
+
+STAGE_ORDER = ['images', 'concept', 'song', 'video', 'assembly', 'bookend']
+
+# ---------------------------------------------------------------------------
+# Creative-direction auto-picker
+# ---------------------------------------------------------------------------
+_VALID_DIRECTIONS = {"literal", "editorial", "cinematic", "movie", "movie_remix", "provocative", "minimal"}
+
+_DIRECTION_WEIGHTS: dict[str, dict[str, int]] = {
+    "noun_concrete": {"literal": 30, "editorial": 20, "cinematic": 15, "movie": 15, "provocative": 10, "minimal": 5, "movie_remix": 5},
+    "noun_abstract": {"movie": 25, "cinematic": 25, "editorial": 15, "provocative": 15, "minimal": 10, "movie_remix": 5, "literal": 5},
+    "adjective":     {"cinematic": 25, "movie": 20, "editorial": 20, "provocative": 15, "literal": 10, "minimal": 5, "movie_remix": 5},
+    "verb":          {"cinematic": 25, "literal": 20, "movie": 20, "editorial": 15, "provocative": 10, "movie_remix": 5, "minimal": 5},
+    "default":       {"editorial": 20, "cinematic": 20, "movie": 20, "literal": 15, "provocative": 15, "minimal": 5, "movie_remix": 5},
+}
+
+_PICKER_SYSTEM_PROMPT = """\
+You are a creative director choosing the visual treatment for a vocabulary learning music video.
+
+Pick the ONE direction that makes this word most memorable as a visual.
+
+DIRECTIONS:
+- literal: Show the word's meaning directly. Clear, obvious, flashcard-style.
+- editorial: Clean, curated, magazine-quality composition.
+- cinematic: Dramatic lighting, emotional weight, implied narrative.
+- movie: Recreate an iconic movie scene connected to the word.
+- movie_remix: Iconic movie scene with one absurd element swapped.
+- provocative: Surreal, dreamlike, unexpected. Scroll-stopping.
+- minimal: Typography-dominant. The letterforms are the visual.
+
+PRINCIPLES:
+1. Distinctive visuals are remembered. Generic visuals are forgotten.
+2. Vary across a deck — not every noun needs literal, not every verb needs cinematic.
+3. Any direction can work for any word. Consider the unexpected pairing.
+4. If a mnemonic is provided and has a strong visual hook, factor it into your choice.
+5. The learner must still connect the visual to the word's meaning.
+
+Respond with ONLY a JSON object, no markdown fences:
+{"direction": "<direction>", "rationale": "<1-2 sentences>"}\
+"""
+
+
+def _resolve_creative_direction_random(manifest_data: Any) -> str:
+    """Fallback: pick a creative direction based on POS using weighted random."""
+    pos = ""
+    if manifest_data.enrichment and manifest_data.enrichment.pos:
+        pos = manifest_data.enrichment.pos.lower().strip()
+
+    if pos == "noun":
+        category = "noun_concrete"
+    elif pos in ("adj", "adjective"):
+        category = "adjective"
+    elif pos in ("verb", "v"):
+        category = "verb"
+    else:
+        category = "default"
+
+    weights = _DIRECTION_WEIGHTS[category]
+    directions = list(weights.keys())
+    return random.choices(directions, weights=list(weights.values()), k=1)[0]
+
+
+async def _resolve_creative_direction(manifest_data: Any, settings: dict) -> tuple[str, str]:
+    """Pick a creative direction via LLM, falling back to weighted random on failure.
+
+    Returns (direction, rationale).
+    """
+    api_key = os.environ.get("OPENROUTER_API_KEY", "")
+    if not api_key:
+        logger.warning("OPENROUTER_API_KEY not set — falling back to weighted random")
+        return _resolve_creative_direction_random(manifest_data), "fallback: weighted random (no API key)"
+
+    enrich = manifest_data.enrichment
+    pos = (enrich.pos or "unknown") if enrich else "unknown"
+    tags = (enrich.tags or "none") if enrich else "none"
+    if isinstance(tags, list):
+        tags = ", ".join(tags)
+    mnemonic = (enrich.mnemonic or "none provided") if enrich else "none provided"
+
+    user_prompt = (
+        f"WORD: {manifest_data.word_original}\n"
+        f"TRANSLATION: {manifest_data.translation}\n"
+        f"LANGUAGE: {manifest_data.language}\n"
+        f"PART OF SPEECH: {pos}\n"
+        f"TAGS: {tags}\n"
+        f"MNEMONIC: {mnemonic}\n\n"
+        f"Pick the best creative direction."
+    )
+
+    model = settings.get("llm_model", "deepseek/deepseek-v3.2")
+
+    try:
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            resp = await client.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "model": model,
+                    "temperature": 0.3,
+                    "max_tokens": 200,
+                    "messages": [
+                        {"role": "system", "content": _PICKER_SYSTEM_PROMPT},
+                        {"role": "user", "content": user_prompt},
+                    ],
+                },
+            )
+            resp.raise_for_status()
+
+        content = resp.json()["choices"][0]["message"]["content"]
+        parsed = json.loads(content)
+        direction = parsed["direction"]
+        rationale = parsed.get("rationale", "")
+
+        if direction not in _VALID_DIRECTIONS:
+            logger.warning("LLM picker returned invalid direction '%s' — falling back", direction)
+            return _resolve_creative_direction_random(manifest_data), "fallback: weighted random (invalid LLM direction)"
+
+        return direction, rationale
+
+    except Exception as e:
+        logger.warning("LLM picker failed (%s) — falling back to weighted random", e)
+        return _resolve_creative_direction_random(manifest_data), "fallback: weighted random"
+
+
+def resolve_lora_path(settings: dict) -> dict:
+    """Resolve lora_id + lora_checkpoint into lora_path for the Song Engine."""
+    s = dict(settings)
+    lora_id = s.get("lora_id")
+    if lora_id and lora_id != "__custom__":
+        base = Path(s.get("lora_id_base_path", ""))
+        checkpoint = s.get("lora_checkpoint", "")
+        if base.exists() and checkpoint:
+            resolved = base / checkpoint
+            if resolved.exists():
+                s["lora_path"] = str(resolved)
+    # Remove orchestrator-internal keys before sending to engine
+    for k in ("lora_id", "lora_id_base_path", "lora_checkpoint"):
+        s.pop(k, None)
+    return s
+
+STAGE_DIR_MAP = {
+    'concept': 'concept',
+    'song': 'songs',
+    'images': 'images',
+    'video': 'videos',
+    'assembly': 'final',
+    'bookend': 'bookend',
+}
+
+
+class PipelineError(Exception):
+    pass
+
+
+def build_concept_payload(
+    word_dir: Path,
+    manifest_data: Any,
+    settings: dict,
+    output_dir: Path,
+    images_version: str | None = None,
+) -> dict:
+    # Read music_caption from storyboard if images have already run
+    external_music_caption = None
+    if images_version:
+        storyboard_file = word_dir / "images" / images_version / "storyboard.json"
+        if storyboard_file.exists():
+            with open(storyboard_file, 'r', encoding='utf-8') as f:
+                storyboard = json.load(f)
+            external_music_caption = storyboard.get("music_caption")
+
+    enrich = manifest_data.enrichment
+    return {
+        "content": {
+            "word": manifest_data.word_original,
+            "translation": manifest_data.translation,
+            "language": manifest_data.language,
+            "language_code": manifest_data.language_code,
+            "external_music_caption": external_music_caption,
+            "mnemonic": enrich.mnemonic or "" if enrich else "",
+            "pos": enrich.pos or "" if enrich else "",
+        },
+        "settings": settings,
+        "output_dir": str(output_dir),
+        "metadata": {
+            "word": manifest_data.word_original,
+            "language": manifest_data.language,
+            "timestamp": now_iso(),
+        }
+    }
+
+
+def build_song_payload(
+    word_dir: Path,
+    manifest_data: Any,
+    settings: dict,
+    output_dir: Path,
+    concept_version: str,
+) -> dict:
+    concept_file = word_dir / "concept" / concept_version
+    with open(concept_file, 'r', encoding='utf-8') as f:
+        concept = json.load(f)
+
+    return {
+        "content": {
+            "word": manifest_data.word_original,
+            "translation": manifest_data.translation,
+            "language": manifest_data.language,
+            "language_code": manifest_data.language_code,
+            "lyrics": concept.get("lyrics", ""),
+            "music_caption": concept.get("music_caption", ""),
+        },
+        "settings": settings,
+        "output_dir": str(output_dir),
+        "metadata": {
+            "word": manifest_data.word_original,
+            "language": manifest_data.language,
+            "translation": manifest_data.translation,
+            "timestamp": now_iso(),
+            "concept_version": concept_version,
+        }
+    }
+
+
+def build_image_payload(
+    word_dir: Path,
+    manifest_data: Any,
+    settings: dict,
+    output_dir: Path,
+) -> dict:
+    # Build context with mnemonic/etymology when visual_reference is not "none"
+    context = None
+    if settings.get("visual_reference", "auto") != "none":
+        enrich = manifest_data.enrichment
+        mnemonic = (enrich.mnemonic or None) if enrich else None
+        etymology = (enrich.etymology or None) if enrich else None
+        if mnemonic or etymology:
+            context = {"mnemonic": mnemonic, "etymology": etymology}
+
+    return {
+        "content": {
+            "word": manifest_data.word_original,
+            "translation": manifest_data.translation,
+            "language": manifest_data.language,
+            "language_code": manifest_data.language_code,
+        },
+        "context": context,
+        "settings": settings,
+        "output_dir": str(output_dir),
+        "metadata": {
+            "word": manifest_data.word_original,
+            "language": manifest_data.language,
+            "translation": manifest_data.translation,
+            "timestamp": now_iso(),
+        }
+    }
+
+
+def build_video_payloads(
+    word_dir: Path,
+    manifest_data: Any,
+    settings: dict,
+    output_dir: Path,
+    images_version: str,
+    creative_direction: str = "",
+) -> list[dict]:
+    """Build one payload per scene in the storyboard."""
+    images_dir = word_dir / "images" / images_version
+    storyboard_file = images_dir / "storyboard.json"
+
+    storyboard = {}
+    scenes = []
+    if storyboard_file.exists():
+        with open(storyboard_file, 'r', encoding='utf-8') as f:
+            storyboard = json.load(f)
+        scenes = storyboard.get("scenes", [])
+
+    # Find scene images (named 001.png, 002.png, etc.), excluding thumbnails
+    image_files = sorted(
+        f for f in images_dir.glob("*.png")
+        if not f.name.startswith("thumb")
+    )
+
+    # Resolve transition mode (with backwards compat from boolean frame_transitions)
+    video_mode = settings.get("video_mode", "ken_burns")
+    if video_mode == "ltx":
+        video_mode = "ltx_fast"
+    ltx_modes = ("ltx_fast", "ltx_pro")
+    supports_transitions = video_mode in ltx_modes and len(image_files) >= 2
+
+    transition_mode = _resolve_transition_mode(settings, storyboard, supports_transitions, creative_direction)
+    logger.info("Transition mode: %s (supports_transitions=%s)", transition_mode, supports_transitions)
+
+    # Determine which boundaries get morphs (for N images: N-1 boundaries)
+    n = len(image_files)
+    morph_boundary = [False] * max(n - 1, 0)
+    if supports_transitions and n >= 2:
+        if transition_mode == "all_morph":
+            morph_boundary = [True] * (n - 1)
+        elif transition_mode == "morph_then_cut":
+            morph_boundary[0] = True  # Only first boundary morphs
+        elif transition_mode == "cut_then_morph" and n >= 3:
+            morph_boundary[1] = True  # Only second boundary morphs
+
+    # Resolve per-scene durations from storyboard (Tier 4)
+    scene_durations = _resolve_scene_durations(scenes, n, settings)
+
+    # Build one payload per image — ALL modes produce N clips
+    payloads = []
+    for i in range(n):
+        scene = scenes[i] if i < len(scenes) else {}
+        is_morph = i < len(morph_boundary) and morph_boundary[i]
+
+        # Morph clips use transition_prompt; standalone clips use video_prompt
+        video_prompt = _resolve_video_prompt(scene, use_transitions=is_morph)
+
+        # Engine reads video_prompt from settings, not content — inject per-payload
+        scene_settings = {**settings, "video_prompt": video_prompt}
+
+        # Override duration with per-scene allocation if available
+        if scene_durations[i] is not None:
+            scene_settings["duration"] = scene_durations[i]
+
+        # Resolve per-scene camera motion from storyboard when motion_type is "auto"
+        if scene_settings.get("motion_type") == "auto":
+            scene_camera = scene.get("camera_motion", {}) or {}
+            scene_settings["motion_type"] = scene_camera.get("type", "slow_zoom_in")
+            scene_settings["motion_speed"] = scene_camera.get("speed", scene_settings.get("motion_speed", "slow"))
+
+        content = {
+            "word": manifest_data.word_original,
+            "translation": manifest_data.translation,
+            "language": manifest_data.language,
+            "language_code": manifest_data.language_code,
+            "image_path": str(image_files[i]),
+            "scene_number": i + 1,
+            "video_prompt": video_prompt,
+            "camera_motion": scene.get("camera_motion", None),
+        }
+
+        # Add end_image for morph boundaries
+        if is_morph:
+            content["end_image_path"] = str(image_files[i + 1])
+
+        payload = {
+            "content": content,
+            "settings": scene_settings,
+            "output_dir": str(output_dir),
+            "metadata": {
+                "word": manifest_data.word_original,
+                "language": manifest_data.language,
+                "translation": manifest_data.translation,
+                "timestamp": now_iso(),
+                "image_version": images_version,
+                "scene_number": i + 1,
+            }
+        }
+        payloads.append(payload)
+
+        if is_morph:
+            logger.info(
+                "Morph payload %d: %s → %s, prompt_preview=%.80s",
+                i + 1, image_files[i].name, image_files[i + 1].name, video_prompt,
+            )
+        else:
+            logger.info(
+                "Standalone payload %d: %s, prompt_preview=%.80s",
+                i + 1, image_files[i].name, video_prompt,
+            )
+
+    logger.info("Built %d video payload(s) (transition_mode=%s)", len(payloads), transition_mode)
+    return payloads
+
+
+def _resolve_scene_durations(
+    scenes: list[dict],
+    num_images: int,
+    settings: dict,
+) -> list[int | None]:
+    """Extract and validate per-scene durations from storyboard.
+
+    Returns a list of durations (one per image). If the storyboard doesn't
+    include suggested_duration, returns [None, ...] and the global setting
+    is used.
+    """
+    default_dur = settings.get("duration", 6)
+    durations = []
+    for i in range(num_images):
+        scene = scenes[i] if i < len(scenes) else {}
+        sd = scene.get("suggested_duration")
+        if sd is not None:
+            try:
+                durations.append(max(3, min(10, int(sd))))
+            except (TypeError, ValueError):
+                durations.append(None)
+        else:
+            durations.append(None)
+
+    # If ALL scenes have durations, validate total and rebalance if needed
+    if all(d is not None for d in durations) and len(durations) > 1:
+        # Target duration comes from concept settings (song length)
+        target = settings.get("_target_duration", None)
+        if target and abs(sum(durations) - target) > 2:
+            scale = target / sum(durations)
+            durations = [max(3, min(10, round(d * scale))) for d in durations]
+            # Correct rounding drift: adjust the longest scene
+            drift = sum(durations) - target
+            if drift != 0:
+                # Find the scene with most room to adjust
+                if drift > 0:
+                    idx = max(range(len(durations)), key=lambda j: durations[j])
+                    durations[idx] = max(3, durations[idx] - drift)
+                else:
+                    idx = min(range(len(durations)), key=lambda j: durations[j])
+                    durations[idx] = min(10, durations[idx] - drift)
+            logger.info("Rebalanced scene durations to %s (target=%ds)", durations, target)
+
+    return durations
+
+
+# --- Tier 7: Auto-picker mapping from frame_narrative → transition_mode ---
+_TRANSITION_MODE_DEFAULTS: dict[str, str] = {
+    "collection": "all_cut",
+    "character": "all_cut",
+    "perspective": "all_morph",
+    "environment": "all_morph",
+    "narrative": "morph_then_cut",
+    "action": "morph_then_cut",
+}
+
+
+def _resolve_transition_mode(
+    settings: dict,
+    storyboard: dict,
+    supports_transitions: bool,
+    creative_direction: str = "",
+) -> str:
+    """Resolve the effective transition mode from settings + storyboard.
+
+    Priority:
+    1. Explicit transition_mode setting (not "auto") → use it
+    2. Movie/movie_remix creative direction → force all_cut
+    3. LLM's suggested_transition_mode (from storyboard)
+    4. Auto-picker: frame_narrative → default mapping
+    5. Legacy frame_transitions boolean → map to all_morph / all_cut
+    6. Default → "all_cut"
+    """
+    mode = settings.get("transition_mode", None)
+
+    if mode and mode not in ("auto", ""):
+        return mode
+
+    # Movie mode: force all_cut — LLM consistently suggests all_morph but
+    # movie scenes have completely different compositions, making morphs ugly.
+    if creative_direction in ("movie", "movie_remix"):
+        logger.info("Movie mode creative_direction=%s → forcing all_cut", creative_direction)
+        return "all_cut"
+
+    # Auto mode: check LLM suggestion first, then frame_narrative mapping
+    if mode == "auto" and supports_transitions:
+        # LLM-suggested transition mode
+        llm_suggestion = storyboard.get("suggested_transition_mode")
+        if llm_suggestion in ("all_cut", "morph_then_cut", "cut_then_morph", "all_morph"):
+            logger.info("Using LLM-suggested transition_mode=%s", llm_suggestion)
+            return llm_suggestion
+
+        # Fallback: derive from storyboard's frame_narrative
+        narrative = storyboard.get("frame_narrative", "")
+        auto_mode = _TRANSITION_MODE_DEFAULTS.get(narrative, "all_cut")
+        logger.info("Auto-picked transition_mode=%s from frame_narrative=%s", auto_mode, narrative)
+        return auto_mode
+
+    # Legacy boolean fallback
+    if settings.get("frame_transitions", False) and supports_transitions:
+        return "all_morph"
+
+    return "all_cut"
+
+
+def _resolve_video_prompt(scene: dict, use_transitions: bool = False) -> str:
+    """Extract video_prompt from a storyboard scene, with fallback.
+
+    When use_transitions is True:
+        Priority: transition_prompt → video_prompt → description → generic.
+    When use_transitions is False:
+        Priority: video_prompt → description → generic.
+        (transition_prompt is ignored entirely)
+    """
+    if use_transitions:
+        transition_prompt = scene.get("transition_prompt", None)
+        if transition_prompt and transition_prompt.strip():
+            return transition_prompt
+    # Standard fallback chain: video_prompt → description → generic
+    video_prompt = scene.get("video_prompt", "")
+    if not video_prompt.strip():
+        description = scene.get("description", "")
+        if description:
+            video_prompt = f"Cinematic motion: {description}"
+        else:
+            video_prompt = "Gentle cinematic motion of the scene, smooth and professional"
+    return video_prompt
+
+
+def build_assembly_payload(
+    word_dir: Path,
+    manifest_data: Any,
+    settings: dict,
+    output_dir: Path,
+    song_version: str,
+    video_version: str,
+) -> dict:
+    # song_version may be "run-001_20260304T123000/take_002.flac" or just folder
+    if '/' in song_version:
+        song_path = word_dir / "songs" / song_version
+    else:
+        # Find the first FLAC in the folder
+        song_dir = word_dir / "songs" / song_version
+        flacs = list(song_dir.glob("*.flac")) + list(song_dir.glob("*.wav")) + list(song_dir.glob("*.mp3"))
+        song_path = flacs[0] if flacs else song_dir / "output.flac"
+
+    video_dir = word_dir / "videos" / video_version
+    video_clips = sorted([str(f) for f in video_dir.glob("scene_*.mp4")])
+
+    return {
+        "content": {
+            "song_path": str(song_path),
+            "video_clips": video_clips,
+            "word": manifest_data.word_original,
+            "translation": manifest_data.translation,
+            "language": manifest_data.language,
+            "language_code": manifest_data.language_code,
+        },
+        "settings": settings,
+        "output_dir": str(output_dir),
+        "metadata": {
+            "word": manifest_data.word_original,
+            "language": manifest_data.language,
+            "translation": manifest_data.translation,
+            "timestamp": now_iso(),
+            "song_version": song_version,
+            "video_version": video_version,
+        }
+    }
+
+
+def build_bookend_payload(
+    word_dir: Path,
+    manifest_data: Any,
+    settings: dict,
+    output_dir: Path,
+) -> dict:
+    """Build the payload for the Bookend Engine (Stage 6)."""
+    selected_final = manifest_data.selected.final
+    if not selected_final:
+        raise PipelineError("No assembly version selected — cannot run bookend")
+
+    assembled_video = str(word_dir / "final" / selected_final / "final.mp4")
+
+    return {
+        "content": {
+            "assembled_video": assembled_video,
+            "word": manifest_data.word_original,
+            "translation": manifest_data.translation,
+            "language": manifest_data.language,
+            "language_code": manifest_data.language_code,
+        },
+        "settings": settings,
+        "output_dir": str(output_dir),
+        "metadata": {
+            "word": manifest_data.word_original,
+            "language": manifest_data.language,
+            "translation": manifest_data.translation,
+            "assembly_version": selected_final,
+            "timestamp": now_iso(),
+        },
+    }
+
+
+async def run_stage(
+    workspace_path: Path,
+    word_slug: str,
+    stage: str,
+) -> dict[str, Any]:
+    """
+    Execute one pipeline stage for one word.
+    Returns a result dict with status and details.
+    """
+    word_dir = get_word_dir(workspace_path, word_slug)
+    manifest_data = read_manifest(word_dir)
+    defaults = load_defaults(workspace_path)
+    settings = resolve_settings(stage, manifest_data.settings, defaults)
+
+    stage_folder = STAGE_DIR_MAP.get(stage, stage)
+    stage_dir = word_dir / stage_folder
+    from_versions: dict[str, str] = {}
+
+    try:
+        if stage == 'concept':
+            # Concept artifacts are files in concept/, not subdirectories.
+            # The engine writes e.g. standard_20260304T120000.json into output_dir.
+            label = make_version_label(stage, settings, stage_dir)
+            ts = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')
+            version_name = f"{label}_{ts}.json"
+            output_dir = stage_dir  # engine writes file directly into concept/
+            stage_dir.mkdir(parents=True, exist_ok=True)
+
+            # Concept now depends on images (storyboard provides music_caption)
+            images_version = manifest_data.selected.images
+            if not images_version:
+                raise PipelineError("No images selected. Run image stage first.")
+            from_versions = {"images": images_version}
+
+            # Resolve art_style_hint from image settings when use_art_style is enabled
+            if settings.get("use_art_style", False):
+                image_settings = resolve_settings('images', manifest_data.settings, defaults)
+                image_settings, _ = resolve_random_art_style(image_settings)
+                settings["art_style_hint"] = image_settings.get("art_style", "")
+
+            payload = build_concept_payload(word_dir, manifest_data, settings, output_dir, images_version)
+            result = await call_engine('concept', payload)
+            if result.get('status') == 'success':
+                output_files = result.get('output_paths', [])
+                if output_files:
+                    selected = Path(output_files[0]).name
+                    update_selection(word_dir, 'concept', selected)
+                add_lineage(word_dir, 'concept', version_name, from_versions, settings, 'success')
+            else:
+                add_lineage(word_dir, 'concept', version_name, from_versions, settings, 'failed')
+            return {"stage": stage, "version": version_name, "result": result}
+
+        elif stage in ('song', 'images', 'video', 'assembly', 'bookend'):
+            # All non-concept stages use versioned subdirectories
+            label = make_version_label(stage, settings, stage_dir)
+            output_dir, version_name = create_version_dir(stage_dir, label)
+        else:
+            raise PipelineError(f"Unknown stage: {stage}")
+
+        if stage == 'song':
+            settings = resolve_lora_path(settings)
+            concept_version = manifest_data.selected.concept
+            if not concept_version:
+                raise PipelineError("No concept selected. Run concept stage first.")
+            from_versions = {"concept": concept_version}
+            payload = build_song_payload(word_dir, manifest_data, settings, output_dir, concept_version)
+            result = await call_engine('song', payload)
+            status = result.get('status', 'failed')
+            add_lineage(word_dir, 'song', version_name, from_versions, settings, status)
+            if status == 'success':
+                # Auto-select first take if present
+                output_paths = result.get('output_paths', [])
+                if output_paths:
+                    first_take = output_paths[0]
+                    take_selection = f"{version_name}/{Path(first_take).name}"
+                    update_selection(word_dir, 'song', take_selection)
+            return {"stage": stage, "version": version_name, "result": result}
+
+        elif stage == 'images':
+            # Images is now stage 1 — no prior dependencies
+            from_versions = {}
+
+            # Inject vocal_gender from concept settings (not an image engine setting — injected by orchestrator)
+            concept_settings = resolve_settings('concept', manifest_data.settings, defaults)
+            settings['vocal_gender'] = concept_settings.get('vocal_gender', 'female')
+
+            # Resolve "random" art_style → concrete preset before dispatch
+            art_style_original = settings.get("art_style")
+            settings, art_style_resolved = resolve_random_art_style(settings)
+
+            # Resolve "auto" creative_direction → concrete direction before dispatch
+            cd_original = settings.get("creative_direction")
+            cd_rationale = ""
+            if cd_original == "auto":
+                resolved_cd, cd_rationale = await _resolve_creative_direction(manifest_data, settings)
+                settings["creative_direction"] = resolved_cd
+                logger.info("Auto-picked creative_direction=%s for %s (rationale=%s)",
+                            resolved_cd, manifest_data.word_original, cd_rationale)
+
+            payload = build_image_payload(word_dir, manifest_data, settings, output_dir)
+            result = await call_engine('images', payload)
+            status = result.get('status', 'failed')
+
+            # Record what was actually sent if random/auto was resolved
+            lineage_settings = dict(settings)
+            if art_style_resolved:
+                lineage_settings["art_style_setting"] = art_style_original
+                lineage_settings["art_style_resolved"] = art_style_resolved
+            if cd_original == "auto":
+                lineage_settings["creative_direction_setting"] = "auto"
+                lineage_settings["creative_direction_resolved"] = resolved_cd
+                lineage_settings["creative_direction_rationale"] = cd_rationale
+            add_lineage(word_dir, 'images', version_name, from_versions, lineage_settings, status)
+            if status in ('success', 'partial'):
+                update_selection(word_dir, 'images', version_name)
+            return {"stage": stage, "version": version_name, "result": result}
+
+        elif stage == 'video':
+            images_version = manifest_data.selected.images
+            if not images_version:
+                raise PipelineError("No images selected. Run image stage first.")
+            # Inject target duration from concept settings for scene duration rebalancing
+            concept_settings = resolve_settings('concept', manifest_data.settings, defaults)
+            settings = {**settings, "_target_duration": concept_settings.get("duration", 20)}
+            # Resolve creative_direction from images settings for transition mode override
+            images_settings = resolve_settings('images', manifest_data.settings, defaults)
+            creative_direction = images_settings.get('creative_direction', 'literal')
+            # If auto, read the actual resolved direction from the storyboard
+            if creative_direction == "auto":
+                sb_file = word_dir / "images" / images_version / "storyboard.json"
+                if sb_file.exists():
+                    with open(sb_file, 'r', encoding='utf-8') as f:
+                        sb_data = json.load(f)
+                    creative_direction = sb_data.get("creative_direction", "literal")
+            payloads = build_video_payloads(word_dir, manifest_data, settings, output_dir, images_version, creative_direction)
+            if not payloads:
+                raise PipelineError("No images found in selected image set.")
+
+            from_versions = {"images": images_version}
+            results = []
+            for vp in payloads:
+                vresult = await call_engine('video', vp)
+                results.append(vresult)
+
+            # Consider partial success if any succeeded
+            any_success = any(r.get('status') == 'success' for r in results)
+            all_success = all(r.get('status') == 'success' for r in results)
+            final_status = 'success' if all_success else ('partial' if any_success else 'failed')
+            add_lineage(word_dir, 'video', version_name, from_versions, settings, final_status)
+            if any_success:
+                update_selection(word_dir, 'video', version_name)
+
+            return {"stage": stage, "version": version_name, "result": {"status": final_status, "scene_results": results}}
+
+        elif stage == 'assembly':
+            # When bookend is enabled, force clean assembly mode (bookend handles word cards)
+            bookend_defaults = defaults.get('bookend', {})
+            bookend_word = manifest_data.settings.get('bookend', {})
+            if {**bookend_defaults, **bookend_word}.get('enabled', True):
+                settings['assembly_mode'] = 'clean'
+
+            song_version = manifest_data.selected.song
+            video_version = manifest_data.selected.video
+            if not song_version:
+                raise PipelineError("No song take selected. Select a song take first.")
+            if not video_version:
+                raise PipelineError("No video version selected. Run video stage first.")
+
+            from_versions = {"song": song_version, "video": video_version}
+            payload = build_assembly_payload(
+                word_dir, manifest_data, settings, output_dir, song_version, video_version
+            )
+            result = await call_engine('assembly', payload)
+            status = result.get('status', 'failed')
+            add_lineage(word_dir, 'assembly', version_name, from_versions, settings, status)
+            if status == 'success':
+                update_selection(word_dir, 'final', version_name)
+            return {"stage": stage, "version": version_name, "result": result}
+
+        elif stage == 'bookend':
+            # Check if bookend is enabled
+            if not settings.get('enabled', True):
+                return {"status": "skipped", "message": "Bookend disabled in settings"}
+
+            # Verify assembly is complete
+            if not manifest_data.selected.final:
+                raise PipelineError("No assembly version selected. Run assembly stage first.")
+
+            from_versions = {"assembly": manifest_data.selected.final}
+            payload = build_bookend_payload(word_dir, manifest_data, settings, output_dir)
+            result = await call_engine('bookend', payload)
+            status = result.get('status', 'failed')
+            add_lineage(word_dir, 'bookend', version_name, from_versions, settings, status)
+            if status == 'success':
+                update_selection(word_dir, 'bookend', version_name)
+            return {"stage": stage, "version": version_name, "result": result}
+
+    except (EngineUnreachableError, PayloadError, TimeoutError) as e:
+        add_lineage(word_dir, stage, version_name, from_versions, settings, 'failed')
+        raise PipelineError(str(e))
