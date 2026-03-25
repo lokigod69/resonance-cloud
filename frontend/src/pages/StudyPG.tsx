@@ -1,0 +1,300 @@
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '@/hooks/useAuth'
+import { supabase } from '@/lib/supabase'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Check, Clock, RotateCcw, Sparkles, BookOpen } from 'lucide-react'
+
+type StudyWord = {
+  id: string
+  word: string
+  translation: string | null
+  mnemonic: string | null
+  etymology: string | null
+  video_url: string | null
+  thumbnail_url: string | null
+  deck_id: string
+}
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+export default function StudyPG() {
+  const { user } = useAuth()
+  const navigate = useNavigate()
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const [words, setWords] = useState<StudyWord[]>([])
+  const [loading, setLoading] = useState(true)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [revealed, setRevealed] = useState(false)
+  const [sessionComplete, setSessionComplete] = useState(false)
+  const [reviewed, setReviewed] = useState(0)
+
+  const loadWords = useCallback(async () => {
+    if (!user) return
+    const { data } = await supabase
+      .from('words')
+      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, deck_id')
+      .eq('user_id', user.id)
+      .eq('status', 'complete')
+      .order('created_at', { ascending: true })
+
+    if (data && data.length > 0) {
+      setWords(shuffle(data))
+    } else {
+      setWords([])
+    }
+    setLoading(false)
+  }, [user])
+
+  useEffect(() => {
+    loadWords()
+  }, [loadWords])
+
+  const current = words[currentIndex] ?? null
+
+  const advance = useCallback(() => {
+    setReviewed((r) => r + 1)
+    setRevealed(false)
+    if (currentIndex + 1 >= words.length) {
+      setSessionComplete(true)
+    } else {
+      setCurrentIndex((i) => i + 1)
+    }
+  }, [currentIndex, words.length])
+
+  const replay = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0
+      videoRef.current.play().catch(() => {})
+    }
+  }, [])
+
+  const restart = useCallback(() => {
+    setWords((prev) => shuffle(prev))
+    setCurrentIndex(0)
+    setRevealed(false)
+    setSessionComplete(false)
+    setReviewed(0)
+  }, [])
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (sessionComplete) return
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault()
+        if (!revealed) setRevealed(true)
+        else advance()
+      }
+      if (e.key === 'r' || e.key === 'R') replay()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [revealed, advance, replay, sessionComplete])
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="w-12 h-12 rounded-full border-2 border-[var(--pg-accent-teal)] border-t-transparent animate-spin" />
+      </div>
+    )
+  }
+
+  if (words.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6 text-center">
+        <BookOpen className="h-12 w-12 text-white/15" />
+        <div>
+          <h2 className="text-xl font-bold font-display mb-2">No words ready to study yet</h2>
+          <p className="text-[var(--pg-text-dim)] text-sm max-w-sm">
+            Generate a deck first — once your videos are ready, they'll appear here for review.
+          </p>
+        </div>
+        <button
+          onClick={() => navigate('/generate')}
+          className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
+        >
+          <Sparkles className="h-4 w-4 inline mr-2" />
+          Generate a Deck
+        </button>
+      </div>
+    )
+  }
+
+  if (sessionComplete) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6 text-center">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+          className="w-20 h-20 rounded-full bg-[var(--pg-accent-green)]/20 border border-[var(--pg-accent-green)]/40 flex items-center justify-center"
+        >
+          <Check className="h-10 w-10 text-[var(--pg-accent-green)]" />
+        </motion.div>
+        <div>
+          <h2 className="text-2xl font-bold font-display mb-2">Session Complete</h2>
+          <p className="text-[var(--pg-text-dim)]">
+            You reviewed <span className="text-white font-semibold">{reviewed}</span> word{reviewed !== 1 ? 's' : ''}
+          </p>
+        </div>
+        <div className="flex gap-3">
+          <button
+            onClick={restart}
+            className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
+          >
+            <RotateCcw className="h-4 w-4 inline mr-2" />
+            Start Again
+          </button>
+          <button
+            onClick={() => navigate('/dashboard')}
+            className="px-6 py-3 rounded-xl border border-white/10 text-[var(--pg-text-dim)] font-display font-medium hover:bg-white/5 transition-all"
+          >
+            Dashboard
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="px-6 max-w-3xl mx-auto flex flex-col items-center">
+      {/* Progress bar */}
+      <div className="w-full max-w-md mb-8">
+        <div className="flex justify-between text-xs text-[var(--pg-text-dim)] mb-1.5">
+          <span>{currentIndex + 1} / {words.length}</span>
+          <span>{Math.round(((currentIndex) / words.length) * 100)}%</span>
+        </div>
+        <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full rounded-full bg-[var(--pg-accent-teal)]"
+            animate={{ width: `${((currentIndex) / words.length) * 100}%` }}
+            transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+          />
+        </div>
+      </div>
+
+      {/* Card */}
+      <AnimatePresence mode="wait">
+        {current && (
+          <motion.div
+            key={current.id}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -30, scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="w-full max-w-md"
+          >
+            {/* Video */}
+            <div className="pg-glass rounded-2xl overflow-hidden mb-6">
+              {current.video_url ? (
+                <video
+                  ref={videoRef}
+                  key={current.id}
+                  src={current.video_url}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full aspect-video object-cover"
+                />
+              ) : current.thumbnail_url ? (
+                <img
+                  src={current.thumbnail_url}
+                  alt={current.word}
+                  className="w-full aspect-video object-cover"
+                />
+              ) : (
+                <div className="w-full aspect-video bg-gradient-to-br from-white/5 to-transparent flex items-center justify-center">
+                  <BookOpen className="h-10 w-10 text-white/10" />
+                </div>
+              )}
+            </div>
+
+            {/* Word */}
+            <div className="text-center mb-6">
+              <h2 className="text-3xl font-bold font-display mb-3">{current.word}</h2>
+
+              {/* Reveal area */}
+              {revealed ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-2"
+                >
+                  {current.translation && (
+                    <p className="text-xl text-[var(--pg-accent-teal)]">{current.translation}</p>
+                  )}
+                  {current.mnemonic && (
+                    <p className="text-sm text-[var(--pg-text-dim)] italic max-w-sm mx-auto">
+                      {current.mnemonic}
+                    </p>
+                  )}
+                  {current.etymology && (
+                    <p className="text-xs max-w-sm mx-auto" style={{ color: 'var(--pg-text-dim)', opacity: 0.6 }}>
+                      {current.etymology}
+                    </p>
+                  )}
+                </motion.div>
+              ) : (
+                <button
+                  onClick={() => setRevealed(true)}
+                  className="px-6 py-2.5 rounded-xl border border-white/15 text-[var(--pg-text-dim)] text-sm font-display hover:bg-white/5 hover:text-white transition-all"
+                >
+                  Reveal Answer
+                </button>
+              )}
+            </div>
+
+            {/* Actions — only visible after reveal */}
+            {revealed && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="flex justify-center gap-3"
+              >
+                <button
+                  onClick={advance}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--pg-accent-green)]/15 border border-[var(--pg-accent-green)]/30 text-[var(--pg-accent-green)] text-sm font-display font-medium hover:bg-[var(--pg-accent-green)]/25 transition-all"
+                >
+                  <Check className="h-4 w-4" />
+                  Remembered
+                </button>
+                <button
+                  onClick={advance}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
+                >
+                  <Clock className="h-4 w-4" />
+                  Review Later
+                </button>
+                <button
+                  onClick={replay}
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
+                >
+                  <RotateCcw className="h-4 w-4" />
+                  Replay
+                </button>
+              </motion.div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Keyboard hints */}
+      <div className="mt-8 text-center text-xs" style={{ color: 'var(--pg-text-dim)', opacity: 0.5 }}>
+        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">Space</kbd> to reveal/advance
+        &nbsp;&middot;&nbsp;
+        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">R</kbd> to replay
+      </div>
+    </div>
+  )
+}

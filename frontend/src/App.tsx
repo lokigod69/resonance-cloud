@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+import { SkinProvider, useSkin } from '@/contexts/SkinContext'
 import { ToastProvider } from '@/components/Toast'
 import { AppLayout } from '@/components/layout/AppLayout'
+import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
 import LandingPage from '@/pages/LandingPage'
 import Login from '@/pages/Login'
 import Onboarding from '@/pages/Onboarding'
@@ -11,6 +13,11 @@ import Generate from '@/pages/Generate'
 import DeckView from '@/pages/DeckView'
 import VideoPlayer from '@/pages/VideoPlayer'
 import Settings from '@/pages/Settings'
+import Study from '@/pages/Study'
+import DashboardPG from '@/pages/DashboardPG'
+import GeneratePG from '@/pages/GeneratePG'
+import DeckViewPG from '@/pages/DeckViewPG'
+import StudyPG from '@/pages/StudyPG'
 import Users from '@/pages/admin/Users'
 import Content from '@/pages/admin/Content'
 import Metrics from '@/pages/admin/Metrics'
@@ -87,48 +94,75 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   return <AuthContext.Provider value={authState}>{children}</AuthContext.Provider>
 }
 
+function AppRoutes() {
+  const { skin } = useSkin()
+  const isPolishGlass = skin === 'polish-glass'
+
+  return (
+    <Routes>
+      {/* Public routes */}
+      <Route element={<PublicRoute />}>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+      </Route>
+
+      {/* Onboarding (auth required, no layout, no base_language check) */}
+      <Route element={<OnboardingRoute />}>
+        <Route path="/onboarding" element={<Onboarding />} />
+      </Route>
+
+      {/* Protected routes with layout */}
+      <Route element={<ProtectedRoute />}>
+        {/* Video player is full-screen, no layout */}
+        <Route path="/deck/:id/word/:wordId" element={<VideoPlayer />} />
+
+        {/* User-facing routes — skin-aware layout */}
+        {isPolishGlass ? (
+          <Route element={<PolishGlassLayout />}>
+            <Route path="/dashboard" element={<DashboardPG />} />
+            <Route path="/generate" element={<GeneratePG />} />
+            <Route path="/deck/:id" element={<DeckViewPG />} />
+            <Route path="/study" element={<StudyPG />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
+        ) : (
+          <Route element={<AppLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/generate" element={<Generate />} />
+            <Route path="/deck/:id" element={<DeckView />} />
+            <Route path="/study" element={<Study />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
+        )}
+
+        {/* Admin routes always use AppLayout regardless of skin */}
+        <Route element={<AppLayout />}>
+          <Route element={<AdminRoute />}>
+            <Route path="/admin/queue" element={<Queue />} />
+            <Route path="/admin/profiles" element={<Profiles />} />
+            <Route path="/admin/users" element={<Users />} />
+            <Route path="/admin/content" element={<Content />} />
+            <Route path="/admin/metrics" element={<Metrics />} />
+          </Route>
+        </Route>
+      </Route>
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <ThemeProvider>
+      <SkinProvider>
       <ToastProvider>
       <AuthProvider>
-        <Routes>
-          {/* Public routes */}
-          <Route element={<PublicRoute />}>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<Login />} />
-          </Route>
-
-          {/* Onboarding (auth required, no layout, no base_language check) */}
-          <Route element={<OnboardingRoute />}>
-            <Route path="/onboarding" element={<Onboarding />} />
-          </Route>
-
-          {/* Protected routes with layout */}
-          <Route element={<ProtectedRoute />}>
-            {/* Video player is full-screen, no layout */}
-            <Route path="/deck/:id/word/:wordId" element={<VideoPlayer />} />
-
-            <Route element={<AppLayout />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/generate" element={<Generate />} />
-              <Route path="/deck/:id" element={<DeckView />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route element={<AdminRoute />}>
-                <Route path="/admin/queue" element={<Queue />} />
-                <Route path="/admin/profiles" element={<Profiles />} />
-                <Route path="/admin/users" element={<Users />} />
-                <Route path="/admin/content" element={<Content />} />
-                <Route path="/admin/metrics" element={<Metrics />} />
-              </Route>
-            </Route>
-          </Route>
-
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <AppRoutes />
       </AuthProvider>
       </ToastProvider>
+      </SkinProvider>
       </ThemeProvider>
     </BrowserRouter>
   )

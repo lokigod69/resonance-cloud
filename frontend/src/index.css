@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme inline {
@@ -176,4 +177,84 @@
 /* Video player overlay */
 .video-overlay {
   background: radial-gradient(ellipse at center, transparent 40%, oklch(0.1 0.01 280 / 0.8) 100%);
+}
+
+/* ============================================
+   POLISH GLASS SKIN TOKENS
+   Active when <html> has class "skin-polish-glass"
+   ============================================ */
+
+.skin-polish-glass {
+  --pg-base-dark: #0a0a0c;
+  --pg-glass-panel-bg: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(20,20,30,0.8) 100%);
+  --pg-glass-border: rgba(255, 255, 255, 0.08);
+  --pg-glass-border-top: rgba(255, 255, 255, 0.25);
+  --pg-glass-border-left: rgba(255, 255, 255, 0.15);
+  --pg-glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.2);
+  --pg-accent-teal: #0de2c3;
+  --pg-accent-green: #34d399;
+  --pg-accent-rose: #f43f5e;
+  --pg-accent-gold: #fbbf24;
+  --pg-text-dim: #9ca3af;
+}
+
+/* Polish Glass utility class */
+.pg-glass {
+  background: var(--pg-glass-panel-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--pg-glass-border);
+  border-top: 1px solid var(--pg-glass-border-top);
+  border-left: 1px solid var(--pg-glass-border-left);
+  box-shadow: var(--pg-glass-shadow);
+}
+
+/* Polish Glass font */
+.font-display {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Polish Glass scrollbar hide */
+.pg-scrollbar-hide::-webkit-scrollbar { display: none; }
+.pg-scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Skin-aware glass overrides — remap existing utility classes when PG skin is active */
+.skin-polish-glass .glass {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(20,20,30,0.7) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-left-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.15);
+}
+
+.skin-polish-glass .glass-strong {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(20,20,30,0.85) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.3);
+  border-left-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.2);
+}
+
+.skin-polish-glass .glass-hover:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(20,20,30,0.75) 100%);
+  border-color: rgba(13, 226, 195, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(13, 226, 195, 0.1);
+}
+
+.skin-polish-glass .glass-selected {
+  background: rgba(13, 226, 195, 0.08);
+  border-color: rgba(13, 226, 195, 0.4);
+  box-shadow: 0 0 20px rgba(13, 226, 195, 0.2);
+}
+
+.skin-polish-glass .glow-purple {
+  box-shadow: 0 0 20px rgba(13, 226, 195, 0.2);
+}
+
+.skin-polish-glass .gradient-bg {
+  background: linear-gradient(135deg, #0a0a0c 0%, #0d1117 50%, #0a0a0c 100%);
 }

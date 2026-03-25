@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTheme, type Theme } from '@/contexts/ThemeContext'
+import { useSkin, type SkinId } from '@/contexts/SkinContext'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import {
@@ -23,6 +24,7 @@ const LANGUAGES = [
 export default function Settings() {
   const { profile, user, signOut, refreshProfile } = useAuth()
   const { theme, setTheme } = useTheme()
+  const { skin, setSkin } = useSkin()
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
@@ -110,6 +112,67 @@ export default function Settings() {
               </div>
               <div className="font-medium text-sm">{t.label}</div>
               <div className="text-xs text-muted-foreground">{t.desc}</div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Interface Skin */}
+      <div className="glass rounded-xl p-6 space-y-4">
+        <div>
+          <h2 className="text-lg font-semibold">Interface Skin</h2>
+          <p className="text-sm text-muted-foreground">
+            Switch between layout styles. Theme colors still apply.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          {([
+            {
+              id: 'default' as SkinId,
+              label: 'Classic',
+              desc: 'Sidebar navigation',
+              colors: ['oklch(0.7 0.15 280)', 'oklch(0.22 0.015 280)', 'oklch(0.13 0.008 280)'],
+            },
+            {
+              id: 'polish-glass' as SkinId,
+              label: 'Polish Glass',
+              desc: 'Cinematic top navigation',
+              colors: ['#0de2c3', '#f43f5e', '#fbbf24'],
+            },
+          ]).map((s) => (
+            <button
+              key={s.id}
+              onClick={() => {
+                setSkin(s.id)
+                // Best-effort Supabase persistence
+                if (user?.id) {
+                  Promise.resolve(
+                    supabase
+                      .from('profiles')
+                      .update({ skin: s.id } as any)
+                      .eq('id', user.id)
+                  ).catch(() => {})
+                }
+              }}
+              className={`p-4 rounded-lg border-2 transition-all text-left ${
+                skin === s.id
+                  ? s.id === 'polish-glass'
+                    ? 'border-[#0de2c3]/50 shadow-[0_0_15px_rgba(13,226,195,0.2)] glass-selected'
+                    : 'border-primary glass-selected'
+                  : 'border-transparent glass glass-hover'
+              }`}
+            >
+              <div className="flex gap-1.5 mb-3">
+                {s.colors.map((c, i) => (
+                  <div
+                    key={i}
+                    className="w-6 h-6 rounded-full border border-white/10"
+                    style={{ background: c }}
+                  />
+                ))}
+              </div>
+              <div className="font-medium text-sm">{s.label}</div>
+              <div className="text-xs text-muted-foreground">{s.desc}</div>
             </button>
           ))}
         </div>
