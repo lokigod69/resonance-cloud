@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, Play, AlertCircle, Sparkles, Pencil, Plus, Check, X } from 'lucide-react'
+import { ArrowLeft, Play, AlertCircle, Sparkles, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react'
 
 type Deck = {
   id: string
@@ -36,6 +36,10 @@ export default function DeckView() {
   const [loading, setLoading] = useState(true)
   const [isRenaming, setIsRenaming] = useState(false)
   const [renameTo, setRenameTo] = useState('')
+  const [viewerOpen, setViewerOpen] = useState(false)
+  const [viewerIndex, setViewerIndex] = useState(0)
+  const [videoKey, setVideoKey] = useState(0)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   const fetchData = useCallback(async () => {
     if (!id) return
@@ -72,7 +76,7 @@ export default function DeckView() {
         <Skeleton className="h-4 w-48 bg-white/10" />
         <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {Array.from({ length: 8 }).map((_, i) => (
-            <Skeleton key={i} className="aspect-square rounded-xl bg-white/10" />
+            <Skeleton key={i} className="aspect-video rounded-xl bg-white/10" />
           ))}
         </div>
       </div>
@@ -95,6 +99,8 @@ export default function DeckView() {
   const totalCount = words.length
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
+  const completeWords = words.filter((w) => w.status === 'complete')
+  const viewerWord = completeWords[viewerIndex]
 
   const displayName =
     deck.name ||
@@ -203,12 +209,19 @@ export default function DeckView() {
           return (
             <div key={word.id} className="relative group">
               {isComplete ? (
-                <Link
-                  to={`/deck/${deck.id}/word/${word.id}`}
-                  className="block glass glass-hover rounded-xl overflow-hidden transition-all duration-200 hover:scale-[1.03] hover:glow-purple"
+                <div
+                  onClick={() => {
+                    const idx = completeWords.findIndex(w => w.id === word.id)
+                    if (idx >= 0) {
+                      setViewerIndex(idx)
+                      setVideoKey(k => k + 1)
+                      setViewerOpen(true)
+                    }
+                  }}
+                  className="block glass glass-hover rounded-xl overflow-hidden transition-all duration-200 hover:scale-[1.03] hover:glow-purple cursor-pointer"
                 >
                   {/* Thumbnail */}
-                  <div className="aspect-square relative bg-white/5">
+                  <div className="aspect-video relative bg-white/5">
                     {word.thumbnail_url ? (
                       <img
                         src={word.thumbnail_url}
@@ -234,10 +247,10 @@ export default function DeckView() {
                       <p className="text-xs text-muted-foreground truncate">{word.translation}</p>
                     )}
                   </div>
-                </Link>
+                </div>
               ) : isFailed ? (
                 <div className="glass rounded-xl overflow-hidden opacity-50">
-                  <div className="aspect-square flex items-center justify-center bg-destructive/5">
+                  <div className="aspect-video flex items-center justify-center bg-destructive/5">
                     <AlertCircle className="h-8 w-8 text-destructive-foreground/50" />
                   </div>
                   <div className="p-3 space-y-0.5">
@@ -248,7 +261,7 @@ export default function DeckView() {
               ) : (
                 /* Pending / Processing */
                 <div className="glass rounded-xl overflow-hidden">
-                  <div className="aspect-square flex items-center justify-center">
+                  <div className="aspect-video flex items-center justify-center">
                     <div className="space-y-2 flex flex-col items-center">
                       <div className="h-8 w-8 rounded-full bg-primary/20 animate-pulse" />
                       <Skeleton className="h-3 w-16 bg-white/10" />
@@ -277,6 +290,144 @@ export default function DeckView() {
           <Plus className="h-4 w-4 mr-2" />
           Add Cards
         </Button>
+      </div>
+
+      {/* Video Viewer Modal */}
+      {viewerOpen && viewerWord && (
+        <VideoViewerModal
+          words={completeWords}
+          currentIndex={viewerIndex}
+          videoKey={videoKey}
+          videoRef={videoRef}
+          onClose={() => setViewerOpen(false)}
+          onNavigate={(idx) => {
+            setViewerIndex(idx)
+            setVideoKey(k => k + 1)
+          }}
+          onReplay={() => setVideoKey(k => k + 1)}
+        />
+      )}
+    </div>
+  )
+}
+
+function VideoViewerModal({
+  words,
+  currentIndex,
+  videoKey,
+  videoRef,
+  onClose,
+  onNavigate,
+  onReplay,
+}: {
+  words: Word[]
+  currentIndex: number
+  videoKey: number
+  videoRef: React.RefObject<HTMLVideoElement | null>
+  onClose: () => void
+  onNavigate: (idx: number) => void
+  onReplay: () => void
+}) {
+  const word = words[currentIndex]
+  const hasPrev = currentIndex > 0
+  const hasNext = currentIndex < words.length - 1
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft' && hasPrev) onNavigate(currentIndex - 1)
+      if (e.key === 'ArrowRight' && hasNext) onNavigate(currentIndex + 1)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose, onNavigate, currentIndex, hasPrev, hasNext])
+
+  if (!word) return null
+
+  return (
+    <div className="fixed inset-0 z-50 gradient-bg flex flex-col">
+      {/* Top bar */}
+      <div className="flex items-center justify-between px-4 py-3">
+        <button
+          onClick={onClose}
+          className="h-10 w-10 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors text-muted-foreground hover:text-foreground"
+        >
+          <X className="h-5 w-5" />
+        </button>
+        <span className="text-sm text-muted-foreground">
+          {currentIndex + 1} / {words.length}
+        </span>
+        <div className="w-10" />
+      </div>
+
+      {/* Video area */}
+      <div className="flex-1 flex items-center justify-center px-4 pb-4 relative">
+        {/* Prev button */}
+        {hasPrev && (
+          <button
+            onClick={() => onNavigate(currentIndex - 1)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+        )}
+
+        {/* Main content */}
+        <div className="w-full max-w-3xl space-y-6">
+          <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl">
+            {word.video_url ? (
+              <video
+                ref={videoRef}
+                key={videoKey}
+                src={`${word.video_url}?t=${videoKey}`}
+                autoPlay
+                playsInline
+                loop
+                className="w-full aspect-video"
+              />
+            ) : (
+              <div className="w-full aspect-video flex items-center justify-center bg-white/5">
+                <p className="text-muted-foreground">No video available</p>
+              </div>
+            )}
+          </div>
+
+          {/* Word info */}
+          <div className="text-center space-y-2">
+            <h1 className="text-4xl font-bold">{word.word}</h1>
+            {word.translation && (
+              <p className="text-xl text-muted-foreground">{word.translation}</p>
+            )}
+            {word.mnemonic && (
+              <p className="text-sm text-muted-foreground/70 max-w-lg mx-auto italic">
+                {word.mnemonic}
+              </p>
+            )}
+          </div>
+
+          {/* Replay */}
+          <div className="flex items-center justify-center">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onReplay}
+              className="border-white/10"
+            >
+              <RotateCcw className="h-4 w-4 mr-2" />
+              Replay
+            </Button>
+          </div>
+        </div>
+
+        {/* Next button */}
+        {hasNext && (
+          <button
+            onClick={() => onNavigate(currentIndex + 1)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+        )}
       </div>
     </div>
   )

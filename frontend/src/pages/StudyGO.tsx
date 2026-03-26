@@ -43,6 +43,8 @@ export default function StudyGO() {
   const wordsRef = useRef(words)
   wordsRef.current = words
   const [playingVideos, setPlayingVideos] = useState<Set<string>>(new Set())
+  const [showControls, setShowControls] = useState(true)
+  const controlsTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
   const loadWords = useCallback(async () => {
     if (!user) return
@@ -217,6 +219,24 @@ export default function StudyGO() {
     }
   }, [])
 
+  // ── Auto-hide video controls ──────────────────────────
+
+  const resetControlsTimer = useCallback(() => {
+    setShowControls(true)
+    clearTimeout(controlsTimer.current)
+    controlsTimer.current = setTimeout(() => setShowControls(false), 2500)
+  }, [])
+
+  // Show controls briefly when top card changes
+  useEffect(() => {
+    resetControlsTimer()
+  }, [cardOrder, resetControlsTimer])
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => clearTimeout(controlsTimer.current)
+  }, [])
+
   // ── Render ─────────────────────────────────────────────
 
   if (loading) {
@@ -288,35 +308,60 @@ export default function StudyGO() {
               onPointerUp={isTop ? handlePointerUp : undefined}
             >
               {/* Video area */}
-              <div className="video-wrapper">
-                {word.video_url ? (
-                  <video
-                    ref={(el) => {
-                      if (el) {
-                        videoRefs.current.set(word.id, el)
-                      } else {
-                        videoRefs.current.delete(word.id)
-                      }
-                    }}
-                    src={word.video_url}
-                    loop
-                    playsInline
-                  />
-                ) : word.thumbnail_url ? (
-                  <img
-                    src={word.thumbnail_url}
-                    alt={word.word}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
+              <div
+                className="video-wrapper"
+                onPointerMove={isTop ? resetControlsTimer : undefined}
+                onPointerLeave={isTop ? () => setShowControls(false) : undefined}
+                onClick={isTop ? (e) => {
+                  if (dragRef.current.isDragging) return
+                  if ((e.target as HTMLElement).closest('button')) return
+                  setShowControls(prev => !prev)
+                } : undefined}
+              >
+                {isTop ? (
+                  // Top card: render video element for playback
+                  word.video_url ? (
+                    <video
+                      ref={(el) => {
+                        if (el) {
+                          videoRefs.current.set(word.id, el)
+                        } else {
+                          videoRefs.current.delete(word.id)
+                        }
+                      }}
+                      src={word.video_url}
+                      loop
+                      playsInline
+                    />
+                  ) : word.thumbnail_url ? (
+                    <img
+                      src={word.thumbnail_url}
+                      alt={word.word}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--go-text-secondary)' }}>
+                      No media
+                    </div>
+                  )
                 ) : (
-                  <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--go-text-secondary)' }}>
-                    No media
-                  </div>
+                  // Behind cards: show thumbnail to avoid black video frames
+                  word.thumbnail_url ? (
+                    <img
+                      src={word.thumbnail_url}
+                      alt={word.word}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--go-text-secondary)', background: 'rgba(94, 106, 210, 0.1)' }}>
+                      {word.word}
+                    </div>
+                  )
                 )}
 
                 {/* Video controls overlay */}
                 {isTop && word.video_url && (
-                  <div className="controls">
+                  <div className={`controls transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                     <button
                       onClick={(e) => {
                         e.stopPropagation()
