@@ -303,6 +303,61 @@ def build_video_payloads(
             storyboard = json.load(f)
         scenes = storyboard.get("scenes", [])
 
+    # --- Text-to-video: build payloads from storyboard scenes (no images) ---
+    is_text_to_video = settings.get("text_to_video", False)
+    if is_text_to_video:
+        payloads = []
+        scene_durations = _resolve_scene_durations(scenes, len(scenes), settings)
+        for i, scene in enumerate(scenes):
+            video_prompt = scene.get("video_prompt", scene.get("description", ""))
+
+            scene_settings = {**settings}
+            if i < len(scene_durations) and scene_durations[i] is not None:
+                scene_settings["duration"] = scene_durations[i]
+            # Force all_cut — no morph transitions without images
+            scene_settings["transition_mode"] = "all_cut"
+
+            # Resolve per-scene camera motion from storyboard
+            if scene_settings.get("motion_type") == "auto":
+                scene_camera = scene.get("camera_motion", {}) or {}
+                scene_settings["motion_type"] = scene_camera.get("type", "slow_zoom_in")
+                scene_settings["motion_speed"] = scene_camera.get("speed", scene_settings.get("motion_speed", "slow"))
+
+            content = {
+                "word": manifest_data.word_original,
+                "translation": manifest_data.translation,
+                "language": manifest_data.language,
+                "language_code": manifest_data.language_code,
+                "image_path": None,
+                "scene_number": i + 1,
+                "video_prompt": video_prompt,
+                "text_to_video_prompt": video_prompt,
+                "camera_motion": scene.get("camera_motion", None),
+            }
+
+            payload = {
+                "content": content,
+                "settings": scene_settings,
+                "output_dir": str(output_dir),
+                "metadata": {
+                    "word": manifest_data.word_original,
+                    "language": manifest_data.language,
+                    "translation": manifest_data.translation,
+                    "timestamp": now_iso(),
+                    "image_version": images_version,
+                    "scene_number": i + 1,
+                },
+            }
+            payloads.append(payload)
+            logger.info(
+                "Text-to-video payload %d: prompt_preview=%.80s",
+                i + 1, video_prompt,
+            )
+        logger.info("Built %d text-to-video payload(s)", len(payloads))
+        return payloads
+
+    # --- Standard image-to-video path (unchanged) ---
+
     # Find scene images (named 001.png, 002.png, etc.), excluding thumbnails
     image_files = sorted(
         f for f in images_dir.glob("*.png")
@@ -686,6 +741,12 @@ async def run_stage(
             # Images is now stage 1 — no prior dependencies
             from_versions = {}
 
+            # If video mode is text-to-video, tell image engine to skip rendering
+            video_settings = resolve_settings('video', manifest_data.settings, defaults)
+            if video_settings.get('text_to_video', False):
+                settings['skip_rendering'] = True
+                logger.info("text_to_video=True in video settings — injecting skip_rendering=True into image settings")
+
             # Inject vocal_gender from concept settings (not an image engine setting — injected by orchestrator)
             concept_settings = resolve_settings('concept', manifest_data.settings, defaults)
             settings['vocal_gender'] = concept_settings.get('vocal_gender', 'female')
@@ -740,6 +801,8 @@ async def run_stage(
                     creative_direction = sb_data.get("creative_direction", "literal")
             payloads = build_video_payloads(word_dir, manifest_data, settings, output_dir, images_version, creative_direction)
             if not payloads:
+                if settings.get("text_to_video", False):
+                    raise PipelineError("No scenes found in storyboard for text-to-video.")
                 raise PipelineError("No images found in selected image set.")
 
             from_versions = {"images": images_version}
