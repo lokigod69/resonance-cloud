@@ -86,10 +86,8 @@
   width: clamp(320px, 85vw, 560px);
   height: clamp(360px, 70vh, 560px);
   border-radius: 20px;
-  background: var(--go-glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--go-glass-border);
+  background: #141822;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--go-glass-shadow);
   overflow: hidden;
   will-change: transform, filter;
@@ -533,22 +531,19 @@
   background: rgba(34, 197, 94, 0.35);
 }
 
-/* Art style scroll area */
-.skin-glass-orb .gen-art-scroll {
-  max-height: 50vh;
-  overflow-y: auto;
-  padding-right: 8px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+/* Art style collapsible categories */
+.skin-glass-orb .gen-category-expand {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+  margin-bottom: 0;
 }
 
-.skin-glass-orb .gen-art-scroll::-webkit-scrollbar {
-  width: 4px;
-}
-
-.skin-glass-orb .gen-art-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
+.skin-glass-orb .gen-category-expand.open {
+  max-height: 500px;
+  opacity: 1;
+  margin-bottom: 20px;
 }
 
 .skin-glass-orb .art-group-heading {
@@ -705,7 +700,4 @@
     font-size: 0.9rem;
   }
 
-  .skin-glass-orb .gen-art-scroll {
-    max-height: 40vh;
-  }
 }

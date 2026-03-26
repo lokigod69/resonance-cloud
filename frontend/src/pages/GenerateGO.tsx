@@ -30,6 +30,7 @@ export default function GenerateGO() {
   const [movieTitle, setMovieTitle] = useState('')
   const [showMovieInput, setShowMovieInput] = useState(false)
   const [artStyle, setArtStyle] = useState<string | null>(null)
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   const [genre, setGenre] = useState<string | null>(null)
   const [customGenre, setCustomGenre] = useState('')
   const [showCustomInput, setShowCustomInput] = useState(false)
@@ -112,8 +113,13 @@ export default function GenerateGO() {
 
   // ── Step 4: Art Style ─────────────────────────────
 
+  function handleCategoryClick(groupName: string) {
+    setExpandedCategory(prev => prev === groupName ? null : groupName)
+  }
+
   function handleArtStyleSelect(value: string | null) {
     setArtStyle(value)
+    setExpandedCategory(null)
     setStep(5)
   }
 
@@ -328,39 +334,49 @@ export default function GenerateGO() {
           {step === 4 ? (
             <>
               <h3>Art Style</h3>
-              <div className="gen-art-scroll">
-                {/* Auto option */}
-                <div className="gen-orb-row" style={{ marginBottom: 24 }}>
-                  <div
-                    className="gen-orb"
-                    onClick={() => handleArtStyleSelect(null)}
-                    style={{ background: 'rgba(94, 106, 210, 0.15)', borderColor: 'rgba(94, 106, 210, 0.4)' }}
-                  >
-                    Auto
-                  </div>
+              {/* Auto + Category orbs */}
+              <div className="gen-orb-row" style={{ flexWrap: 'wrap', marginBottom: 24 }}>
+                <div
+                  className="gen-orb"
+                  onClick={() => handleArtStyleSelect(null)}
+                  style={{ background: 'rgba(94, 106, 210, 0.15)', borderColor: 'rgba(94, 106, 210, 0.4)' }}
+                >
+                  Auto
                 </div>
-                {/* Grouped styles */}
                 {ART_STYLE_GROUPS.map(group => (
-                  <div key={group.group} style={{ marginBottom: 20 }}>
-                    <p className="art-group-heading">{group.group}</p>
-                    <div className="gen-orb-row" style={{ flexWrap: 'wrap' }}>
-                      {group.styles.map(style => (
-                        <div
-                          key={style.value}
-                          className={artStyle === style.value ? 'gen-orb selected' : 'gen-orb'}
-                          onClick={() => handleArtStyleSelect(style.value)}
-                        >
-                          {style.label}
-                        </div>
-                      ))}
-                    </div>
+                  <div
+                    key={group.group}
+                    className={`gen-orb${expandedCategory === group.group ? ' selected' : ''}`}
+                    onClick={() => handleCategoryClick(group.group)}
+                  >
+                    {group.group.split('&')[0].trim()}
                   </div>
                 ))}
               </div>
+              {/* Expanded category styles */}
+              {ART_STYLE_GROUPS.map(group => (
+                <div
+                  key={group.group}
+                  className={`gen-category-expand${expandedCategory === group.group ? ' open' : ''}`}
+                >
+                  <p className="art-group-heading">{group.group}</p>
+                  <div className="gen-orb-row" style={{ flexWrap: 'wrap' }}>
+                    {group.styles.map(style => (
+                      <div
+                        key={style.value}
+                        className={artStyle === style.value ? 'gen-orb selected' : 'gen-orb'}
+                        onClick={() => handleArtStyleSelect(style.value)}
+                      >
+                        {style.label}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </>
           ) : (
             <div className="gen-orb-row">
-              <div className="gen-orb selected breadcrumb" onClick={() => setStep(4)}>
+              <div className="gen-orb selected breadcrumb" onClick={() => { setStep(4); setExpandedCategory(null) }}>
                 {artStyle ? findStyleLabel(artStyle) : 'Auto'}
               </div>
             </div>
