@@ -1,9 +1,9 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
-import { useDrag } from '@use-gesture/react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
+import type { PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import {
   Coins,
@@ -316,117 +316,171 @@ function getDeckMeta(deck: Deck, wordCounts: ViewProps['wordCounts']) {
 /* ─── Stack View ─────────────────────────────────── */
 
 function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [dragX, setDragX] = useState(0)
-  const didSwipe = useRef(false)
+  const [cards, setCards] = useState(decks)
+  const topDragX = useMotionValue(0)
 
-  const bind = useDrag(
-    ({ movement: [mx], swipe: [swipeX], active, tap }) => {
-      if (tap) return
-      if (active) {
-        setDragX(mx)
-        return
-      }
-      setDragX(0)
-      if (swipeX === -1 && activeIndex < decks.length - 1) {
-        didSwipe.current = true
-        setActiveIndex((i) => i + 1)
-      } else if (swipeX === 1 && activeIndex > 0) {
-        didSwipe.current = true
-        setActiveIndex((i) => i - 1)
-      }
-    },
-    { axis: 'x', swipe: { distance: 20, velocity: 0.08 }, filterTaps: true }
-  )
+  // Sync cards with decks when decks change (e.g. after generation)
+  useEffect(() => {
+    setCards(decks)
+  }, [decks])
+
+  const handleSwipe = useCallback(() => {
+    topDragX.set(0)
+    setCards((prev) => {
+      const next = [...prev]
+      const topCard = next.shift()
+      if (topCard) next.push({ ...topCard, id: topCard.id + '-' + Date.now() })
+      return next
+    })
+  }, [topDragX])
 
   return (
     <div className="flex flex-col items-center">
-      <div {...bind()} className="relative w-full max-w-md h-[360px]" style={{ perspective: '1200px', touchAction: 'pan-y' }}>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-[400px] h-[550px]"
+      >
         <AnimatePresence>
-          {decks.map((deck, i) => {
-            const offset = i - activeIndex
-            if (Math.abs(offset) > 2) return null
-            const { counts, progress, flag, displayName } = getDeckMeta(deck, wordCounts)
-            const thumb = thumbnails[deck.id]
-
+          {cards.map((deck, i) => {
+            if (i > 3) return null
+            const isTop = i === 0
             return (
-              <motion.div
+              <StackCard
                 key={deck.id}
-                className="absolute inset-0 cursor-pointer"
-                style={{ transformStyle: 'preserve-3d' }}
-                initial={false}
-                animate={{
-                  x: offset === 0 ? dragX : 0,
-                  z: -Math.abs(offset) * 60,
-                  y: offset * 20,
-                  scale: 1 - Math.abs(offset) * 0.08,
-                  opacity: 1 - Math.abs(offset) * 0.3,
-                  rotateX: offset * -2,
-                }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                onClick={() => {
-                  if (didSwipe.current) {
-                    didSwipe.current = false
-                    return
-                  }
-                  if (offset === 0) onSelect(deck.id)
-                  else setActiveIndex(i)
-                }}
-              >
-                <div className="w-full h-full rounded-2xl overflow-hidden relative bg-[#12121a]">
-                  {/* Thumbnail background — full opacity, opaque card */}
-                  {thumb ? (
-                    <img
-                      src={thumb}
-                      alt=""
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--pg-accent-teal)]/10 to-[#12121a]" />
-                  )}
-                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.85) 100%)' }} />
-
-                  {/* Content */}
-                  <div className="relative h-full flex flex-col justify-end p-6">
-                    <p className="text-xs text-[var(--pg-text-dim)] mb-1 font-display">
-                      {flag} {deck.target_language}
-                    </p>
-                    <h3 className="text-xl font-bold font-display mb-2">{displayName}</h3>
-                    <div className="flex items-center gap-3 text-sm">
-                      <span className="text-[var(--pg-text-dim)]">{counts.total} words</span>
-                      {deck.status !== 'complete' && (
-                        <span className="text-[var(--pg-accent-gold)] text-xs">
-                          {deck.status === 'generating' ? `Generating ${counts.completed}/${counts.total}` : deck.status}
-                        </span>
-                      )}
-                    </div>
-                    {/* Progress bar */}
-                    <div className="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-[var(--pg-accent-teal)] transition-all"
-                        style={{ width: `${progress}%` }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                deck={deck}
+                index={i}
+                isTop={isTop}
+                topDragX={topDragX}
+                onSwipe={handleSwipe}
+                onClick={() => onSelect(deck.id.split('-')[0])}
+                wordCounts={wordCounts}
+                thumbnails={thumbnails}
+              />
             )
           })}
         </AnimatePresence>
-      </div>
+      </motion.div>
       {/* Dots indicator */}
       <div className="flex gap-2 mt-6">
-        {decks.map((deck, i) => (
-          <button
+        {cards.slice(0, decks.length).map((deck, i) => (
+          <div
             key={deck.id}
-            onClick={() => setActiveIndex(i)}
-            className={`w-2 h-2 rounded-full transition-all ${
-              i === activeIndex ? 'bg-[var(--pg-accent-teal)] w-6' : 'bg-white/20'
+            className={`h-2 rounded-full transition-all ${
+              i === 0 ? 'bg-[var(--pg-accent-teal)] w-6' : 'bg-white/20 w-2'
             }`}
           />
         ))}
       </div>
     </div>
+  )
+}
+
+/* ─── Stack Card ─────────────────────────────────── */
+
+interface StackCardProps {
+  deck: Deck
+  index: number
+  isTop: boolean
+  topDragX: ReturnType<typeof useMotionValue<number>>
+  onSwipe: () => void
+  onClick: () => void
+  wordCounts: ViewProps['wordCounts']
+  thumbnails: ViewProps['thumbnails']
+}
+
+function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts, thumbnails }: StackCardProps) {
+  const x = useMotionValue(0)
+  const { counts, progress, flag, displayName } = getDeckMeta(deck, wordCounts)
+  const thumb = thumbnails[deck.id.split('-')[0]]
+
+  useEffect(() => {
+    if (isTop) {
+      const unsub = x.on('change', (v) => topDragX.set(v))
+      return unsub
+    }
+  }, [isTop, x, topDragX])
+
+  const rotate = useTransform(
+    [x, topDragX],
+    (latest: number[]) => {
+      const [localX, parentDragX] = latest
+      if (isTop) return (localX / 300) * 15
+      if (index === 1) return (parentDragX / 300) * -8
+      return 0
+    }
+  )
+
+  const [isDragging, setIsDragging] = useState(false)
+
+  const handleDragEnd = (_event: unknown, info: PanInfo) => {
+    setTimeout(() => setIsDragging(false), 50)
+    if (Math.abs(info.offset.x) > 100) {
+      onSwipe()
+    }
+  }
+
+  return (
+    <motion.div
+      layout
+      drag={isTop ? 'x' : false}
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.9}
+      onDragStart={() => setIsDragging(true)}
+      onDragEnd={handleDragEnd}
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      animate={{
+        opacity: 1,
+        y: index * 20,
+        scale: 1 - index * 0.05,
+        zIndex: 10 - index,
+      }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      className={`absolute inset-0 bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden cursor-pointer active:cursor-grabbing flex flex-col group shadow-[0_30px_60px_rgba(0,0,0,0.6)] ${!isTop ? 'pointer-events-none' : ''}`}
+      style={{ x, rotate, touchAction: 'none', transformOrigin: 'bottom center' }}
+      onClick={() => {
+        if (isTop && !isDragging) onClick()
+      }}
+    >
+      {/* Thumbnail - OPAQUE, full coverage */}
+      <div className="h-[55%] w-full relative overflow-hidden bg-black/80">
+        {thumb ? (
+          <motion.img
+            src={thumb}
+            alt={displayName}
+            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(13,226,195,0.1) 0%, #0d0d12 100%)' }}>
+            <Sparkles className="h-10 w-10 text-white/10" />
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d0d12]" />
+        {!isTop && <div className="absolute inset-0 bg-black/60 z-50 transition-all duration-300 pointer-events-none" />}
+      </div>
+
+      {/* Content - SOLID background */}
+      <div className="flex-1 p-6 flex flex-col justify-between">
+        <div>
+          <p className="text-[var(--pg-accent-teal)] text-xs font-medium tracking-wide uppercase mb-2 font-display">
+            {flag} {deck.target_language}
+          </p>
+          <h2 className="text-2xl font-light text-white font-display">{displayName}</h2>
+        </div>
+        <div className="flex justify-between items-end">
+          <p className="text-[var(--pg-text-dim)] text-sm">{counts.total} Words</p>
+          <div className="flex items-center gap-2">
+            <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
+              <div className="h-full bg-[var(--pg-accent-teal)]" style={{ width: `${progress}%` }} />
+            </div>
+            <span className="text-xs text-gray-500">{progress}%</span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   )
 }
 
@@ -484,56 +538,76 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
 /* ─── Orbs View ──────────────────────────────────── */
 
 function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
+  const orbs = useMemo(() => {
+    const placed: { x: number; y: number; r: number }[] = []
+    return decks.map((deck, i) => {
+      let x = 0, y = 0, size = 0, isValid = false
+      let attempts = 0
+      while (!isValid && attempts < 150) {
+        const radius = 60 + Math.random() * 220
+        const angle = (i / decks.length) * Math.PI * 2 + Math.random() * 0.8
+        x = Math.cos(angle) * radius
+        y = Math.sin(angle) * radius
+        size = 60 + Math.random() * 40
+        const r = size / 2
+        isValid = true
+        for (const p of placed) {
+          const dist = Math.sqrt(Math.pow(p.x - x, 2) + Math.pow(p.y - y, 2))
+          if (dist < p.r + r + 15) {
+            isValid = false
+            break
+          }
+        }
+        attempts++
+      }
+      placed.push({ x, y, r: size / 2 })
+      return { deck, x, y, size, index: i }
+    })
+  }, [decks])
+
   return (
-    <div className="flex flex-wrap gap-6 justify-center py-8">
-      {decks.map((deck, i) => {
-        const { counts, progress, flag, displayName } = getDeckMeta(deck, wordCounts)
-        const thumb = thumbnails[deck.id]
-        const size = 140 + Math.min(counts.total, 20) * 4
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="w-full h-[600px] relative flex items-center justify-center"
+    >
+      {orbs.map((orb) => {
+        const { flag, displayName } = getDeckMeta(orb.deck, wordCounts)
+        const thumb = thumbnails[orb.deck.id]
 
         return (
-          <motion.button
-            key={deck.id}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: i * 0.08, type: 'spring', stiffness: 200 }}
-            onClick={() => onSelect(deck.id)}
-            className="relative group flex flex-col items-center gap-2"
-            style={{ animation: `pg-float ${3 + (i % 3) * 0.8}s ease-in-out infinite`, animationDelay: `${i * 0.4}s` }}
+          <motion.div
+            key={orb.deck.id}
+            onClick={() => onSelect(orb.deck.id)}
+            className="absolute rounded-full overflow-hidden border border-white/10 cursor-pointer shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(13,226,195,0.4)] hover:border-[var(--pg-accent-teal)]/50 z-10 transition-colors"
+            style={{ width: orb.size, height: orb.size }}
+            initial={{ x: 0, y: 0, opacity: 0 }}
+            animate={{
+              x: [orb.x - 10, orb.x + 10, orb.x - 10],
+              y: [orb.y - 10, orb.y + 10, orb.y - 10],
+              opacity: 1,
+            }}
+            transition={{
+              x: { repeat: Infinity, duration: 4 + Math.random() * 4, ease: 'easeInOut' },
+              y: { repeat: Infinity, duration: 5 + Math.random() * 4, ease: 'easeInOut' },
+              opacity: { duration: 0.8, delay: orb.index * 0.05 },
+            }}
+            whileHover={{ scale: 1.1, zIndex: 50 }}
           >
-            <div
-              className="rounded-full overflow-hidden border-2 border-white/10 group-hover:border-[var(--pg-accent-teal)]/50 transition-all shadow-[0_8px_32px_rgba(0,0,0,0.4)] group-hover:shadow-[0_0_30px_rgba(13,226,195,0.2)]"
-              style={{ width: size, height: size }}
-            >
-              {thumb ? (
-                <img src={thumb} alt="" className="w-full h-full object-cover" />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-[var(--pg-accent-teal)]/15 to-[var(--pg-accent-rose)]/10 flex items-center justify-center">
-                  <span className="text-3xl">{flag || '🎵'}</span>
-                </div>
-              )}
-              {/* Progress ring overlay */}
-              <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="2" />
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="48"
-                  fill="none"
-                  stroke="var(--pg-accent-teal)"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeDasharray={`${progress * 3.02} 302`}
-                  className="transition-all"
-                />
-              </svg>
-            </div>
-            <span className="text-xs font-display font-medium text-[var(--pg-text-dim)] group-hover:text-white transition-colors max-w-[120px] truncate">
-              {displayName}
-            </span>
-          </motion.button>
+            {thumb ? (
+              <img src={thumb} alt={displayName} className="w-full h-full object-cover" style={{ mixBlendMode: 'screen', opacity: 0.8 }} />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-[var(--pg-accent-teal)]/15 to-[var(--pg-accent-rose)]/10 flex items-center justify-center">
+                <span className="text-2xl">{flag || '🎵'}</span>
+              </div>
+            )}
+          </motion.div>
         )
       })}
-    </div>
+      {/* Radial vignette */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at center, transparent 0%, #0a0a0c 70%)' }} />
+    </motion.div>
   )
 }

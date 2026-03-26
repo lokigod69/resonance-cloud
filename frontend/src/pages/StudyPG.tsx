@@ -187,9 +187,9 @@ export default function StudyPG() {
   }
 
   return (
-    <div className="px-6 max-w-3xl mx-auto flex flex-col items-center">
+    <div className="px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center">
       {/* Progress bar */}
-      <div className="w-full max-w-md mb-8">
+      <div className="w-full max-w-2xl mb-8">
         <div className="flex justify-between text-xs text-[var(--pg-text-dim)] mb-1.5">
           <span>{currentIndex + 1} / {words.length}</span>
           <span>{Math.round(((currentIndex) / words.length) * 100)}%</span>
@@ -212,7 +212,7 @@ export default function StudyPG() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -30, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="w-full max-w-md"
+            className="w-full max-w-2xl"
           >
             {/* Video */}
             <div className="pg-glass rounded-2xl overflow-hidden mb-6 relative group/video">
