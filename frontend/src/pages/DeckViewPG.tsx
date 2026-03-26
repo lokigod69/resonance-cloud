@@ -8,6 +8,7 @@ import {
   ArrowLeft,
   Play,
   Pause,
+  Maximize,
   AlertCircle,
   Sparkles,
   Pencil,
@@ -83,17 +84,30 @@ export default function DeckViewPG() {
     }
   }, [words.length, activeIndex])
 
-  const [playingIndex, setPlayingIndex] = useState<number | null>(null)
+  const [videoActiveIndex, setVideoActiveIndex] = useState<number | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
-  // Auto-play next card when swiping while video was playing
-  const playingIndexRef = useRef(playingIndex)
-  playingIndexRef.current = playingIndex
+  // Auto-play next card when swiping while video was active
+  const videoActiveRef = useRef(videoActiveIndex)
+  videoActiveRef.current = videoActiveIndex
   useEffect(() => {
-    if (playingIndexRef.current !== null) {
-      setPlayingIndex(activeIndex)
+    if (videoActiveRef.current !== null) {
+      setVideoActiveIndex(activeIndex)
+      setIsPlaying(true)
     }
   }, [activeIndex])
+
+  // Play/pause video when isPlaying or videoActiveIndex changes
+  useEffect(() => {
+    const vid = videoRef.current
+    if (!vid) return
+    if (isPlaying) {
+      vid.play().catch(() => {})
+    } else {
+      vid.pause()
+    }
+  }, [isPlaying, videoActiveIndex])
 
   const [dragOffset, setDragOffset] = useState(0)
 
@@ -271,81 +285,114 @@ export default function DeckViewPG() {
                     transition={dragOffset !== 0 ? { type: 'tween', duration: 0 } : { type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div
-                      className={`w-full h-full bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative ${
+                      className={`w-full h-full bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative flex flex-col ${
                         !isComplete ? 'opacity-50' : ''
                       }`}
                       style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
                     >
-                      {/* Media area — video or thumbnail */}
-                      <div className="h-[60%] relative bg-black overflow-hidden">
-                        {isComplete && playingIndex === i ? (
-                          <>
-                            <video
-                              ref={videoRef}
-                              src={word.video_url!}
-                              autoPlay
-                              playsInline
-                              loop
-                              className="w-full h-full object-contain"
-                            />
+                      {/* Media area — 16:9 aspect ratio */}
+                      <div className="w-full relative bg-black overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                        {/* Video element — stays mounted once activated to preserve frame on pause */}
+                        {isComplete && videoActiveIndex === i && word.video_url && (
+                          <video
+                            ref={videoRef}
+                            src={word.video_url}
+                            playsInline
+                            loop
+                            className="absolute inset-0 w-full h-full object-contain z-[1]"
+                            onPlay={() => setIsPlaying(true)}
+                            onPause={() => setIsPlaying(false)}
+                          />
+                        )}
+
+                        {/* Thumbnail — shown when video not active, or as poster behind video */}
+                        {isComplete && word.thumbnail_url && videoActiveIndex !== i && (
+                          <img
+                            src={word.thumbnail_url}
+                            alt={word.word}
+                            className="absolute inset-0 w-full h-full object-cover"
+                          />
+                        )}
+
+                        {/* Placeholder for incomplete words */}
+                        {!isComplete && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
+                            <div className="h-8 w-8 rounded-full bg-white/10 animate-pulse" />
+                          </div>
+                        )}
+
+                        {/* Play overlay on thumbnail — click to start video */}
+                        {isComplete && offset === 0 && videoActiveIndex !== i && word.video_url && (
+                          <div
+                            className="absolute inset-0 z-[2] bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setVideoActiveIndex(i)
+                              setIsPlaying(true)
+                            }}
+                          >
+                            <div className="h-14 w-14 rounded-full bg-[var(--pg-accent-teal)]/30 backdrop-blur-sm flex items-center justify-center border border-[var(--pg-accent-teal)]/50 shadow-[0_0_20px_rgba(13,226,195,0.3)]">
+                              <Play className="h-7 w-7 text-[var(--pg-accent-teal)] fill-[var(--pg-accent-teal)]" />
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Video controls — play/pause + fullscreen */}
+                        {isComplete && videoActiveIndex === i && offset === 0 && (
+                          <div className="absolute bottom-3 left-3 flex gap-2 z-10">
                             <button
                               onClick={(e) => {
                                 e.stopPropagation()
-                                setPlayingIndex(null)
+                                setIsPlaying(!isPlaying)
                               }}
-                              className="absolute bottom-3 left-3 w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white z-10 hover:bg-black/80 transition-colors"
+                              className="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
                             >
-                              <Pause className="h-4 w-4" />
+                              {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
                             </button>
-                          </>
-                        ) : isComplete && word.thumbnail_url ? (
-                          <>
-                            <img
-                              src={word.thumbnail_url}
-                              alt={word.word}
-                              className="w-full h-full object-cover"
-                            />
-                            {offset === 0 && word.video_url && (
-                              <div
-                                className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
-                                onClick={(e) => {
-                                  e.stopPropagation()
-                                  setPlayingIndex(i)
-                                }}
-                              >
-                                <div className="h-14 w-14 rounded-full bg-[var(--pg-accent-teal)]/30 backdrop-blur-sm flex items-center justify-center border border-[var(--pg-accent-teal)]/50 shadow-[0_0_20px_rgba(13,226,195,0.3)]">
-                                  <Play className="h-7 w-7 text-[var(--pg-accent-teal)] fill-[var(--pg-accent-teal)]" />
-                                </div>
-                              </div>
-                            )}
-                          </>
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
-                            {isComplete ? (
-                              <Play className="h-10 w-10 text-white/20" />
-                            ) : (
-                              <div className="h-8 w-8 rounded-full bg-white/10 animate-pulse" />
-                            )}
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                if (videoRef.current) {
+                                  if (document.fullscreenElement) document.exitFullscreen()
+                                  else videoRef.current.requestFullscreen().catch(() => {})
+                                }
+                              }}
+                              className="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                            >
+                              <Maximize className="h-4 w-4" />
+                            </button>
                           </div>
                         )}
                       </div>
 
-                      {/* Info */}
-                      <div className="p-4 flex flex-col justify-center h-[40%] bg-[#0d0d12]">
-                        <p className="font-bold font-display text-lg">{word.word}</p>
-                        {isComplete && word.translation ? (
-                          <p className="text-sm text-[var(--pg-text-dim)] mt-1">{word.translation}</p>
-                        ) : !isComplete ? (
-                          <p className="text-xs text-[var(--pg-text-dim)] mt-1">
-                            {word.status === 'failed' ? 'Failed' : 'Processing...'}
-                          </p>
-                        ) : null}
-                        {isComplete && word.mnemonic && (
-                          <p className="text-xs mt-2 italic line-clamp-2" style={{ color: 'var(--pg-text-dim)', opacity: 0.7 }}>
-                            {word.mnemonic}
-                          </p>
+                      {/* Word info — centered, proper typography */}
+                      <div className="flex-1 min-h-0 p-6 flex flex-col justify-center items-center text-center bg-[#0d0d12] overflow-auto">
+                        {isComplete ? (
+                          <>
+                            <h2 className="text-2xl font-bold text-white mb-1">{word.word}</h2>
+                            {word.translation && (
+                              <p className="text-lg text-gray-300 mb-4">{word.translation}</p>
+                            )}
+                            {word.mnemonic && (
+                              <p className="text-sm italic text-gray-500 leading-relaxed max-w-lg">
+                                {word.mnemonic}
+                              </p>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-lg font-bold text-white">{word.word}</p>
+                            <p className="text-xs text-gray-500 mt-1">
+                              {word.status === 'failed' ? 'Failed' : 'Processing...'}
+                            </p>
+                          </>
                         )}
                       </div>
+
+                      {/* Dark overlay on non-active cards */}
+                      {offset !== 0 && (
+                        <div className="absolute inset-0 bg-black/60 z-20 pointer-events-none rounded-2xl" />
+                      )}
                     </div>
                   </motion.div>
                 )
