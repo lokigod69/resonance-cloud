@@ -182,11 +182,16 @@ def merge_settings(
 
 # ─── Retry Fallback Settings ──────────────────────────────────────────────────
 
-def get_fallback_overrides(stage: str, attempt: int) -> dict[str, Any]:
+def get_fallback_overrides(
+    stage: str, attempt: int, current_settings: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Return per-word setting overrides for retry attempts."""
     if stage == "images" and attempt >= 1:
         return {"creative_direction": "literal"}
     if stage == "video" and attempt >= 1:
+        # Don't fall back to ken_burns in text-to-video mode — no source images exist
+        if current_settings and current_settings.get("text_to_video", False):
+            return {}
         return {"video_mode": "ken_burns"}
     if stage == "song" and attempt >= 1:
         return {"batch_size": 1}
@@ -499,8 +504,16 @@ async def process_word(
             except Exception as e:
                 log.warning("    Stage %s attempt %d failed: %s", stage, attempt + 1, e)
                 if attempt < MAX_RETRIES:
-                    # Apply fallback settings for retry
-                    overrides = get_fallback_overrides(stage, attempt + 1)
+                    # Read current settings (defaults + per-word overrides) to inform fallback
+                    try:
+                        _defaults = load_defaults(workspace_path)
+                        _manifest = read_manifest(word_dir)
+                        _stage_defaults = _defaults.get(stage, {})
+                        _stage_overrides = _manifest.settings.get(stage, {})
+                        _stage_settings = {**_stage_defaults, **_stage_overrides}
+                    except Exception:
+                        _stage_settings = None
+                    overrides = get_fallback_overrides(stage, attempt + 1, _stage_settings)
                     if overrides:
                         log.info("    Retrying with fallback: %s", overrides)
                         from src.manifest import update_settings

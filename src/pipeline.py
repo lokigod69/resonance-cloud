@@ -311,7 +311,7 @@ def build_video_payloads(
         for i, scene in enumerate(scenes):
             video_prompt = scene.get("video_prompt", scene.get("description", ""))
 
-            scene_settings = {**settings}
+            scene_settings = {**settings, "video_prompt": video_prompt}
             if i < len(scene_durations) and scene_durations[i] is not None:
                 scene_settings["duration"] = scene_durations[i]
             # Force all_cut — no morph transitions without images

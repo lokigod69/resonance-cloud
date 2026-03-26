@@ -172,28 +172,47 @@ export default function DashboardGO() {
               className="deck-folder"
               onClick={() => navigate(`/deck/${deck.id}`)}
             >
-              {/* Background image layer (replaces ::before pseudo-element) */}
+              {/* Background image layer */}
               <div
                 className="deck-bg-layer"
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  zIndex: -1,
+                  zIndex: 0,
                   backgroundImage: thumb ? `url(${thumb})` : 'none',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  opacity: 0.2,
+                  opacity: 0.35,
                   borderRadius: '20px',
                   transition: 'opacity 0.3s',
                 }}
               />
-              <h3>{displayName}</h3>
-              <p>{deck.target_language} &bull; {counts.total} Words</p>
-              {deck.status !== 'complete' && (
-                <p style={{ color: 'var(--go-accent)', fontSize: '0.8rem', marginTop: 4 }}>
-                  {deck.status === 'generating' ? `Generating ${counts.completed}/${counts.total}` : deck.status}
-                </p>
-              )}
+              {/* Bottom gradient for text readability */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '60%',
+                  zIndex: 1,
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)',
+                  borderRadius: '0 0 20px 20px',
+                  pointerEvents: 'none',
+                }}
+              />
+              {/* Spacer to push text to bottom */}
+              <div style={{ flex: 1, position: 'relative', zIndex: 2 }} />
+              {/* Text at bottom center */}
+              <div style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
+                <h3 style={{ textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>{displayName}</h3>
+                <p style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{deck.target_language} &bull; {counts.total} Words</p>
+                {deck.status !== 'complete' && (
+                  <p style={{ color: 'var(--go-accent)', fontSize: '0.8rem', marginTop: 4, textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>
+                    {deck.status === 'generating' ? `Generating ${counts.completed}/${counts.total}` : deck.status}
+                  </p>
+                )}
+              </div>
             </div>
           )
         })}

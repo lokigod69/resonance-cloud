@@ -6,7 +6,7 @@
 import { useState, useEffect } from 'react'
 import type { FieldDef } from './fieldConfigs'
 import { STAGE_FIELDS } from './fieldConfigs'
-import { getLoras, getVoices } from '../../api'
+import { getLoras, getVoices, getSupabaseVoices } from '../../api'
 import type { LoraInfo, Voice } from '../../api'
 
 /* ── shared styles ── */
@@ -250,9 +250,15 @@ function VoiceSelector({ value, onChange }: {
   const [customVal, setCustomVal] = useState(currentId)
 
   useEffect(() => {
-    getVoices()
-      .then(v => { setVoices(v); setVoicesLoaded(true) })
-      .catch(() => { setVoicesLoaded(true) })
+    Promise.all([
+      getVoices().catch(() => [] as Voice[]),
+      getSupabaseVoices().catch(() => [] as Voice[]),
+    ]).then(([local, remote]) => {
+      const seen = new Set(local.map(v => v.voice_id))
+      const merged = [...local, ...remote.filter(v => !seen.has(v.voice_id))]
+      setVoices(merged)
+      setVoicesLoaded(true)
+    })
   }, [])
 
   // Sync custom mode once voices are loaded and current value isn't in the registry

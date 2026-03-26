@@ -5,7 +5,7 @@ import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, Play, AlertCircle, Sparkles, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react'
+import { ArrowLeft, Play, Pause, AlertCircle, Sparkles, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react'
 
 type Deck = {
   id: string
@@ -331,16 +331,35 @@ function VideoViewerModal({
   const word = words[currentIndex]
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < words.length - 1
+  const [isPlaying, setIsPlaying] = useState(true)
+
+  const togglePlayPause = useCallback(() => {
+    const vid = videoRef.current
+    if (!vid) return
+    if (vid.paused) {
+      vid.play()
+      setIsPlaying(true)
+    } else {
+      vid.pause()
+      setIsPlaying(false)
+    }
+  }, [videoRef])
+
+  // Reset playing state when navigating to a new word
+  useEffect(() => {
+    setIsPlaying(true)
+  }, [currentIndex])
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowLeft' && hasPrev) onNavigate(currentIndex - 1)
       if (e.key === 'ArrowRight' && hasNext) onNavigate(currentIndex + 1)
+      if (e.key === ' ') { e.preventDefault(); togglePlayPause() }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [onClose, onNavigate, currentIndex, hasPrev, hasNext])
+  }, [onClose, onNavigate, currentIndex, hasPrev, hasNext, togglePlayPause])
 
   if (!word) return null
 
@@ -361,19 +380,30 @@ function VideoViewerModal({
       </div>
 
       {/* Video area */}
-      <div className="flex-1 flex items-center justify-center px-4 pb-4 relative">
-        {/* Prev button */}
-        {hasPrev && (
-          <button
-            onClick={() => onNavigate(currentIndex - 1)}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"
-          >
-            <ChevronLeft className="h-6 w-6" />
-          </button>
-        )}
+      <div className="flex-1 flex items-center justify-center px-4 pb-4">
+        {/* Main content with arrows positioned relative to this container */}
+        <div className="w-full max-w-3xl space-y-6 relative">
+          {/* Prev arrow */}
+          {hasPrev && (
+            <button
+              onClick={() => onNavigate(currentIndex - 1)}
+              className="absolute -left-16 top-[25%] -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/50 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+          )}
 
-        {/* Main content */}
-        <div className="w-full max-w-3xl space-y-6">
+          {/* Next arrow */}
+          {hasNext && (
+            <button
+              onClick={() => onNavigate(currentIndex + 1)}
+              className="absolute -right-16 top-[25%] -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/50 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          )}
+
+          {/* Video container */}
           <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl">
             {word.video_url ? (
               <video
@@ -383,12 +413,23 @@ function VideoViewerModal({
                 autoPlay
                 playsInline
                 loop
-                className="w-full aspect-video"
+                onClick={togglePlayPause}
+                className="w-full aspect-video cursor-pointer"
               />
             ) : (
               <div className="w-full aspect-video flex items-center justify-center bg-white/5">
                 <p className="text-muted-foreground">No video available</p>
               </div>
+            )}
+
+            {/* Play/Pause overlay button */}
+            {word.video_url && (
+              <button
+                onClick={(e) => { e.stopPropagation(); togglePlayPause() }}
+                className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white z-20 hover:bg-black/80 transition-colors"
+              >
+                {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
+              </button>
             )}
           </div>
 
@@ -418,16 +459,6 @@ function VideoViewerModal({
             </Button>
           </div>
         </div>
-
-        {/* Next button */}
-        {hasNext && (
-          <button
-            onClick={() => onNavigate(currentIndex + 1)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors"
-          >
-            <ChevronRight className="h-6 w-6" />
-          </button>
-        )}
       </div>
     </div>
   )

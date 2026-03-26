@@ -339,6 +339,23 @@ export interface Voice {
 
 export const getVoices = () => req<Voice[]>('/voices')
 
+export const getSupabaseVoices = async (): Promise<Voice[]> => {
+  const { supabase } = await import('@/lib/supabase')
+  const { data } = await supabase
+    .from('voices')
+    .select('*')
+    .order('language')
+    .order('name')
+  return (data || []).map((row: Record<string, unknown>) => ({
+    id: String(row.id ?? row.voice_id ?? ''),
+    voice_id: String(row.voice_id ?? ''),
+    name: String(row.name ?? ''),
+    language: String(row.language ?? ''),
+    notes: String(row.notes ?? ''),
+    created_at: String(row.created_at ?? ''),
+  }))
+}
+
 export const createVoice = (data: { voice_id: string; name: string; language?: string; notes?: string }) =>
   req<Voice>('/voices', {
     method: 'POST',

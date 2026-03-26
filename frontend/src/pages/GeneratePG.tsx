@@ -741,96 +741,89 @@ function StepReview({
     {
       label: 'Language',
       value: langObj ? `${langObj.flag} ${langObj.value}` : (existingDeck?.target_language || '—'),
-      color: 'var(--pg-accent-teal)',
+      textColor: 'text-teal-400',
+      borderColor: 'border-teal-500/30',
       step: 0,
     },
     {
-      label: 'Words',
-      value: `${state.words.length} word${state.words.length !== 1 ? 's' : ''}`,
-      detail: state.words.join(', '),
-      color: 'var(--pg-accent-teal)',
+      label: 'Objects',
+      value: `${state.words.length} Memory Objects`,
+      textColor: 'text-white',
+      borderColor: 'border-white/20',
       step: 1,
     },
     {
       label: 'Vibe',
       value: vibeLabel + (state.movieTitle ? ` — ${state.movieTitle}` : ''),
-      color: 'var(--pg-accent-violet)',
+      textColor: 'text-violet-400',
+      borderColor: 'border-violet-500/30',
       step: 2,
     },
     {
-      label: 'Art Style',
+      label: 'Art',
       value: artLabel,
-      color: 'var(--pg-accent-rose)',
+      textColor: 'text-rose-400',
+      borderColor: 'border-rose-500/30',
       step: 3,
     },
     {
       label: 'Music',
       value: genreLabel,
-      color: 'var(--pg-accent-green)',
+      textColor: 'text-emerald-400',
+      borderColor: 'border-emerald-500/30',
       step: 4,
     },
   ]
 
   return (
-    <div className="text-center">
-      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Review your creation</h2>
-      <p className="text-[var(--pg-text-dim)] text-sm mb-8">Everything look good? Let's make some memories.</p>
+    <div className="w-full max-w-lg mx-auto mt-8">
+      <h2 className="text-5xl font-bold font-display tracking-tight mb-10 text-center text-white drop-shadow-md italic">
+        Synthesis Ready
+      </h2>
 
-      <div className="pg-glass rounded-2xl p-6 sm:p-8 max-w-lg mx-auto mb-8 text-left">
-        <div className="space-y-4">
-          {sections.map((s) => (
-            <button
-              key={s.label}
-              onClick={() => onJumpTo(s.step)}
-              className="w-full text-left pl-4 py-3 rounded-lg hover:bg-white/5 transition-colors group"
-              style={{ borderLeft: `3px solid ${s.color}` }}
-            >
-              <p className="text-xs font-display text-[var(--pg-text-dim)] uppercase tracking-wide mb-0.5">
-                {s.label}
-              </p>
-              <p className="font-display font-medium text-white group-hover:text-[var(--pg-accent-teal)] transition-colors">
-                {s.value}
-              </p>
-              {s.detail && (
-                <p className="text-xs text-[var(--pg-text-dim)] mt-0.5 line-clamp-2">{s.detail}</p>
-              )}
-            </button>
-          ))}
-        </div>
-
-        {/* Credits */}
-        <div className="mt-6 pt-4 border-t border-white/5 text-center">
-          <p className="text-sm text-[var(--pg-text-dim)]">
-            <span className="text-white font-semibold">{state.words.length}</span> credit{state.words.length !== 1 ? 's' : ''} will be used
-            <span className="mx-2">&middot;</span>
-            You have <span className="text-white font-semibold">{credits}</span>
-          </p>
-          {credits < state.words.length && (
-            <p className="text-xs text-[var(--pg-accent-rose)] mt-1">Not enough credits</p>
-          )}
-        </div>
+      <div className="space-y-4">
+        {sections.map((s) => (
+          <button
+            key={s.label}
+            onClick={() => onJumpTo(s.step)}
+            className={`w-full flex justify-between items-center pg-glass px-6 py-4 rounded-xl border-l-[3px] ${s.borderColor} hover:bg-white/5 transition-colors`}
+          >
+            <span className="text-gray-400 text-sm uppercase tracking-wider">{s.label}</span>
+            <span className={`font-medium ${s.textColor}`}>{s.value}</span>
+          </button>
+        ))}
       </div>
+
+      {/* Credits */}
+      <p className="text-center text-gray-500 text-sm mt-6">
+        {state.words.length} credit{state.words.length !== 1 ? 's' : ''} will be used &middot; You have {credits}
+      </p>
+      {credits < state.words.length && (
+        <p className="text-center text-xs text-rose-400 mt-1">Not enough credits</p>
+      )}
 
       {/* Error */}
       {error && (
-        <p className="text-sm text-[var(--pg-accent-rose)] mb-4">{error}</p>
+        <p className="text-center text-sm text-rose-400 mt-4">{error}</p>
       )}
 
       {/* Submit */}
-      <button
-        onClick={onSubmit}
-        disabled={submitting || credits < state.words.length}
-        className="px-10 py-4 rounded-full bg-white text-black font-display font-bold text-base hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-      >
-        {submitting ? (
-          <span className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full border-2 border-black/30 border-t-black animate-spin" />
-            Initializing...
-          </span>
-        ) : (
-          'Initialize Synthesis'
-        )}
-      </button>
+      <div className="mt-8 text-center pb-20">
+        <button
+          onClick={onSubmit}
+          disabled={submitting || credits < state.words.length}
+          className="px-10 py-4 rounded-full bg-white text-black font-display font-medium text-lg hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+        >
+          {submitting ? (
+            <span className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded-full border-2 border-black/30 border-t-black animate-spin" />
+              Initializing...
+            </span>
+          ) : (
+            'Initialize Synthesis'
+          )}
+        </button>
+      </div>
     </div>
   )
 }
