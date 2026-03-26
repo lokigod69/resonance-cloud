@@ -24,6 +24,7 @@ type Deck = {
   word_count: number
   status: string
   created_at: string
+  _key?: string // React key for stack cycling — id stays as original
 }
 
 type WordStatus = {
@@ -329,7 +330,7 @@ function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
     setCards((prev) => {
       const next = [...prev]
       const topCard = next.shift()
-      if (topCard) next.push({ ...topCard, id: topCard.id + '-' + Date.now() })
+      if (topCard) next.push({ ...topCard, _key: topCard.id + '-' + Date.now() })
       return next
     })
   }, [topDragX])
@@ -349,13 +350,13 @@ function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
             const isTop = i === 0
             return (
               <StackCard
-                key={deck.id}
+                key={deck._key || deck.id}
                 deck={deck}
                 index={i}
                 isTop={isTop}
                 topDragX={topDragX}
                 onSwipe={handleSwipe}
-                onClick={() => onSelect(deck.id.split('-')[0])}
+                onClick={() => onSelect(deck.id)}
                 wordCounts={wordCounts}
                 thumbnails={thumbnails}
               />
@@ -367,7 +368,7 @@ function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
       <div className="flex gap-2 mt-6">
         {cards.slice(0, decks.length).map((deck, i) => (
           <div
-            key={deck.id}
+            key={deck._key || deck.id}
             className={`h-2 rounded-full transition-all ${
               i === 0 ? 'bg-[var(--pg-accent-teal)] w-6' : 'bg-white/20 w-2'
             }`}
@@ -394,7 +395,7 @@ interface StackCardProps {
 function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts, thumbnails }: StackCardProps) {
   const x = useMotionValue(0)
   const { counts, progress, flag, displayName } = getDeckMeta(deck, wordCounts)
-  const thumb = thumbnails[deck.id.split('-')[0]]
+  const thumb = thumbnails[deck.id]
 
   useEffect(() => {
     if (isTop) {

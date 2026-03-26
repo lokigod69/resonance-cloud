@@ -82,16 +82,22 @@ export default function DeckViewPG() {
     }
   }, [words.length, activeIndex])
 
+  const [dragOffset, setDragOffset] = useState(0)
+
   const bind = useDrag(
-    ({ swipe: [swipeX], active }) => {
-      if (active) return
-      if (swipeX === -1 && activeIndex < words.length - 1) {
-        setActiveIndex((i) => i + 1)
-      } else if (swipeX === 1 && activeIndex > 0) {
-        setActiveIndex((i) => i - 1)
+    ({ movement: [mx], active }) => {
+      if (active) {
+        setDragOffset(mx)
+      } else {
+        if (mx < -120 && activeIndex < words.length - 1) {
+          setActiveIndex((i) => i + 1)
+        } else if (mx > 120 && activeIndex > 0) {
+          setActiveIndex((i) => i - 1)
+        }
+        setDragOffset(0)
       }
     },
-    { axis: 'x', swipe: { distance: 30, velocity: 0.1 } }
+    { axis: 'x', filterTaps: true }
   )
 
   if (loading) {
@@ -218,8 +224,8 @@ export default function DeckViewPG() {
         <div className="flex flex-col items-center">
           <div
             {...bind()}
-            className="relative w-full max-w-3xl h-[360px] sm:h-[420px] flex items-center justify-center touch-pan-y"
-            style={{ perspective: '1200px' }}
+            className="relative w-full max-w-3xl h-[360px] sm:h-[420px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+            style={{ perspective: '1200px', touchAction: 'none' }}
           >
             {/* Prev button */}
             {activeIndex > 0 && (
@@ -243,13 +249,13 @@ export default function DeckViewPG() {
                     className="absolute w-[220px] h-[320px] sm:w-[280px] sm:h-[380px]"
                     initial={false}
                     animate={{
-                      x: offset * 160,
+                      x: offset * 160 + dragOffset,
                       scale: offset === 0 ? 1 : 0.8,
                       opacity: offset === 0 ? 1 : 0.5,
                       zIndex: 10 - Math.abs(offset),
                       rotateY: offset * -8,
                     }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    transition={dragOffset !== 0 ? { type: 'tween', duration: 0 } : { type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div
                       className={`w-full h-full pg-glass rounded-2xl overflow-hidden relative ${
