@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
@@ -317,22 +317,31 @@ function getDeckMeta(deck: Deck, wordCounts: ViewProps['wordCounts']) {
 
 function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [dragX, setDragX] = useState(0)
+  const didSwipe = useRef(false)
 
   const bind = useDrag(
-    ({ swipe: [swipeX], active }) => {
-      if (active) return
+    ({ movement: [mx], swipe: [swipeX], active, tap }) => {
+      if (tap) return
+      if (active) {
+        setDragX(mx)
+        return
+      }
+      setDragX(0)
       if (swipeX === -1 && activeIndex < decks.length - 1) {
+        didSwipe.current = true
         setActiveIndex((i) => i + 1)
       } else if (swipeX === 1 && activeIndex > 0) {
+        didSwipe.current = true
         setActiveIndex((i) => i - 1)
       }
     },
-    { axis: 'x', swipe: { distance: 30, velocity: 0.1 } }
+    { axis: 'x', swipe: { distance: 20, velocity: 0.08 }, filterTaps: true }
   )
 
   return (
     <div className="flex flex-col items-center">
-      <div {...bind()} className="relative w-full max-w-md h-[360px] touch-pan-y" style={{ perspective: '1200px' }}>
+      <div {...bind()} className="relative w-full max-w-md h-[360px]" style={{ perspective: '1200px', touchAction: 'pan-y' }}>
         <AnimatePresence>
           {decks.map((deck, i) => {
             const offset = i - activeIndex
@@ -347,6 +356,7 @@ function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
                 style={{ transformStyle: 'preserve-3d' }}
                 initial={false}
                 animate={{
+                  x: offset === 0 ? dragX : 0,
                   z: -Math.abs(offset) * 60,
                   y: offset * 20,
                   scale: 1 - Math.abs(offset) * 0.08,
@@ -355,22 +365,26 @@ function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
                 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 onClick={() => {
+                  if (didSwipe.current) {
+                    didSwipe.current = false
+                    return
+                  }
                   if (offset === 0) onSelect(deck.id)
                   else setActiveIndex(i)
                 }}
               >
-                <div className="w-full h-full pg-glass rounded-2xl overflow-hidden relative">
-                  {/* Thumbnail background */}
+                <div className="w-full h-full rounded-2xl overflow-hidden relative bg-[#12121a]">
+                  {/* Thumbnail background — full opacity, opaque card */}
                   {thumb ? (
                     <img
                       src={thumb}
                       alt=""
-                      className="absolute inset-0 w-full h-full object-cover opacity-30"
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--pg-accent-teal)]/10 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--pg-accent-teal)]/10 to-[#12121a]" />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.85) 100%)' }} />
 
                   {/* Content */}
                   <div className="relative h-full flex flex-col justify-end p-6">
@@ -485,6 +499,7 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
             transition={{ delay: i * 0.08, type: 'spring', stiffness: 200 }}
             onClick={() => onSelect(deck.id)}
             className="relative group flex flex-col items-center gap-2"
+            style={{ animation: `pg-float ${3 + (i % 3) * 0.8}s ease-in-out infinite`, animationDelay: `${i * 0.4}s` }}
           >
             <div
               className="rounded-full overflow-hidden border-2 border-white/10 group-hover:border-[var(--pg-accent-teal)]/50 transition-all shadow-[0_8px_32px_rgba(0,0,0,0.4)] group-hover:shadow-[0_0_30px_rgba(13,226,195,0.2)]"

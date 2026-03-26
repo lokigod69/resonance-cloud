@@ -37,6 +37,11 @@ export default function StudyGO() {
 
   const dragRef = useRef({ isDragging: false, startX: 0, startY: 0 })
   const videoRefs = useRef<Map<string, HTMLVideoElement>>(new Map())
+  const cardElRefs = useRef<Map<string, HTMLDivElement>>(new Map())
+  const cardOrderRef = useRef(cardOrder)
+  cardOrderRef.current = cardOrder
+  const wordsRef = useRef(words)
+  wordsRef.current = words
   const [playingVideos, setPlayingVideos] = useState<Set<string>>(new Set())
 
   const loadWords = useCallback(async () => {
@@ -80,6 +85,26 @@ export default function StudyGO() {
     const rotation = deltaX * 0.05
     ;(e.currentTarget as HTMLElement).style.transform =
       `translate(${deltaX}px, ${deltaY}px) rotate(${rotation}deg)`
+
+    // Behind-card reactive physics
+    const order = cardOrderRef.current
+    const ws = wordsRef.current
+    if (order.length >= 2) {
+      const behindIdx = order[order.length - 2]
+      const behindWord = ws[behindIdx]
+      if (behindWord) {
+        const behindEl = cardElRefs.current.get(behindWord.id)
+        if (behindEl) {
+          const progress = Math.min(Math.abs(deltaX) / window.innerWidth, 1)
+          const reactiveScale = 0.95 + 0.05 * progress
+          const reactiveBrightness = 0.8 + 0.2 * progress
+          const behindX = -deltaX * 0.1
+          behindEl.style.transition = 'none'
+          behindEl.style.transform = `translateY(-20px) scale(${reactiveScale}) translateX(${behindX}px)`
+          behindEl.style.filter = `brightness(${reactiveBrightness})`
+        }
+      }
+    }
   }, [])
 
   const throwCard = useCallback((el: HTMLElement, direction: 1 | -1) => {
@@ -112,6 +137,22 @@ export default function StudyGO() {
     dragRef.current.isDragging = false
     const deltaX = e.clientX - dragRef.current.startX
     const el = e.currentTarget as HTMLElement
+
+    // Reset behind-card to resting position
+    const order = cardOrderRef.current
+    const ws = wordsRef.current
+    if (order.length >= 2) {
+      const behindIdx = order[order.length - 2]
+      const behindWord = ws[behindIdx]
+      if (behindWord) {
+        const behindEl = cardElRefs.current.get(behindWord.id)
+        if (behindEl) {
+          behindEl.style.transition = 'transform 0.3s ease, filter 0.3s ease'
+          behindEl.style.transform = 'translateY(-20px) scale(0.95)'
+          behindEl.style.filter = 'brightness(0.8)'
+        }
+      }
+    }
 
     if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
       throwCard(el, deltaX > 0 ? 1 : -1)
@@ -229,6 +270,10 @@ export default function StudyGO() {
           return (
             <div
               key={word.id}
+              ref={el => {
+                if (el) cardElRefs.current.set(word.id, el)
+                else cardElRefs.current.delete(word.id)
+              }}
               className="video-card"
               style={{
                 transform: `translateY(${yOffset}px) scale(${scale})`,
@@ -254,7 +299,6 @@ export default function StudyGO() {
                     }}
                     src={word.video_url}
                     loop
-                    muted
                     playsInline
                   />
                 ) : word.thumbnail_url ? (
@@ -278,7 +322,7 @@ export default function StudyGO() {
                         toggleVideo(word.id)
                       }}
                     >
-                      <span className="material-symbols-outlined" style={{ fontSize: '1.2rem' }}>
+                      <span className="material-symbols-outlined" style={{ fontSize: '1.5rem' }}>
                         {playingVideos.has(word.id) ? 'pause' : 'play_arrow'}
                       </span>
                     </button>

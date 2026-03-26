@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, Clock, RotateCcw, Sparkles, BookOpen } from 'lucide-react'
+import { Check, Clock, RotateCcw, Sparkles, BookOpen, Play, Pause, Volume2, VolumeX } from 'lucide-react'
 
 type StudyWord = {
   id: string
@@ -36,6 +36,8 @@ export default function StudyPG() {
   const [revealed, setRevealed] = useState(false)
   const [sessionComplete, setSessionComplete] = useState(false)
   const [reviewed, setReviewed] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [isMuted, setIsMuted] = useState(true)
 
   const loadWords = useCallback(async () => {
     if (!user) return
@@ -85,6 +87,23 @@ export default function StudyPG() {
     setReviewed(0)
   }, [])
 
+  const togglePlay = useCallback(() => {
+    if (!videoRef.current) return
+    if (videoRef.current.paused) {
+      videoRef.current.play().catch(() => {})
+      setIsPlaying(true)
+    } else {
+      videoRef.current.pause()
+      setIsPlaying(false)
+    }
+  }, [])
+
+  const toggleMute = useCallback(() => {
+    if (!videoRef.current) return
+    videoRef.current.muted = !videoRef.current.muted
+    setIsMuted(videoRef.current.muted)
+  }, [])
+
   // Keyboard shortcuts
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -95,10 +114,12 @@ export default function StudyPG() {
         else advance()
       }
       if (e.key === 'r' || e.key === 'R') replay()
+      if (e.key === 'm' || e.key === 'M') toggleMute()
+      if (e.key === 'p' || e.key === 'P') togglePlay()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [revealed, advance, replay, sessionComplete])
+  }, [revealed, advance, replay, sessionComplete, toggleMute, togglePlay])
 
   if (loading) {
     return (
@@ -194,18 +215,52 @@ export default function StudyPG() {
             className="w-full max-w-md"
           >
             {/* Video */}
-            <div className="pg-glass rounded-2xl overflow-hidden mb-6">
+            <div className="pg-glass rounded-2xl overflow-hidden mb-6 relative group/video">
               {current.video_url ? (
-                <video
-                  ref={videoRef}
-                  key={current.id}
-                  src={current.video_url}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full aspect-video object-cover"
-                />
+                <>
+                  <video
+                    ref={videoRef}
+                    key={current.id}
+                    src={current.video_url}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full aspect-video object-cover"
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                  />
+                  {/* Video controls overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover/video:opacity-100 transition-opacity">
+                    <button
+                      onClick={togglePlay}
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                      title={isPlaying ? 'Pause' : 'Play'}
+                    >
+                      {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                    </button>
+                    <button
+                      onClick={toggleMute}
+                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                      title={isMuted ? 'Unmute' : 'Mute'}
+                    >
+                      {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+                    </button>
+                    {isMuted && (
+                      <span className="text-xs text-white/60 ml-1">Tap to hear the song</span>
+                    )}
+                  </div>
+                  {/* Persistent unmute badge when muted */}
+                  {isMuted && (
+                    <button
+                      onClick={toggleMute}
+                      className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-xs text-white/80 hover:bg-black/80 transition-colors"
+                    >
+                      <VolumeX className="h-3.5 w-3.5" />
+                      Unmute
+                    </button>
+                  )}
+                </>
               ) : current.thumbnail_url ? (
                 <img
                   src={current.thumbnail_url}
@@ -291,9 +346,13 @@ export default function StudyPG() {
 
       {/* Keyboard hints */}
       <div className="mt-8 text-center text-xs" style={{ color: 'var(--pg-text-dim)', opacity: 0.5 }}>
-        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">Space</kbd> to reveal/advance
+        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">Space</kbd> reveal/advance
         &nbsp;&middot;&nbsp;
-        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">R</kbd> to replay
+        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">R</kbd> replay
+        &nbsp;&middot;&nbsp;
+        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">P</kbd> play/pause
+        &nbsp;&middot;&nbsp;
+        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">M</kbd> mute/unmute
       </div>
     </div>
   )

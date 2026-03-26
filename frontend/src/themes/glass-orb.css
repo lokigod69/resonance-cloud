@@ -83,8 +83,8 @@
 /* ── Video Card ───────────────────────────────────── */
 .skin-glass-orb .video-card {
   position: absolute;
-  width: 460px;
-  height: 420px;
+  width: clamp(320px, 85vw, 560px);
+  height: clamp(360px, 70vh, 560px);
   border-radius: 20px;
   background: var(--go-glass-bg);
   backdrop-filter: blur(16px);
@@ -133,12 +133,12 @@
 }
 
 .skin-glass-orb .controls button {
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: white;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +148,7 @@
 }
 
 .skin-glass-orb .controls button:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .skin-glass-orb .video-card .card-info {
@@ -367,7 +367,255 @@
   font-size: 0.9rem;
 }
 
+/* ── Generate Orb Flow ────────────────────────────── */
+.skin-glass-orb .gen-container {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 80px 20px 120px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.skin-glass-orb .gen-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.skin-glass-orb .gen-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.skin-glass-orb .gen-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.skin-glass-orb .gen-section {
+  margin-bottom: 40px;
+  animation: genSectionFade 0.5s ease forwards;
+}
+
+.skin-glass-orb .gen-section h3 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--go-text-secondary);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.skin-glass-orb .gen-orb-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.skin-glass-orb .gen-orb {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 10px 20px -10px rgba(255, 255, 255, 0.6),
+    inset 0 -10px 20px -10px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: white;
+  user-select: none;
+  text-align: center;
+  padding: 8px;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.skin-glass-orb .gen-orb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(94, 106, 210, 0.4);
+}
+
+.skin-glass-orb .gen-orb.selected {
+  transform: scale(1.2);
+  background: rgba(94, 106, 210, 0.25);
+  border-color: rgba(94, 106, 210, 0.8);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 2px 2px 10px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(94, 106, 210, 0.6);
+}
+
+.skin-glass-orb .gen-orb.selected.breadcrumb {
+  transform: scale(0.65);
+  cursor: pointer;
+}
+
+.skin-glass-orb .gen-orb.ignored {
+  transform: scale(0);
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.skin-glass-orb .gen-orb-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Word orbs */
+.skin-glass-orb .gen-orb.word-orb {
+  animation: wordOrbSpawn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.skin-glass-orb .gen-orb.word-orb:hover {
+  transform: scale(0.9);
+  opacity: 0.7;
+}
+
+/* Input orb */
+.skin-glass-orb .gen-orb.input-orb {
+  cursor: text;
+}
+
+.skin-glass-orb .gen-orb.input-orb:hover {
+  transform: scale(1.05);
+}
+
+.skin-glass-orb .gen-orb.input-orb input {
+  width: 80%;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+  font-family: inherit;
+}
+
+.skin-glass-orb .gen-orb.input-orb input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Forge / advance button */
+.skin-glass-orb .gen-orb.forge-btn {
+  background: rgba(94, 106, 210, 0.15);
+  border-color: rgba(94, 106, 210, 0.5);
+}
+
+.skin-glass-orb .gen-orb.forge-btn:hover {
+  background: rgba(94, 106, 210, 0.3);
+  transform: scale(1.15);
+}
+
+.skin-glass-orb .gen-orb.check-btn {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.6);
+  font-size: 1.4rem;
+}
+
+.skin-glass-orb .gen-orb.check-btn:hover {
+  background: rgba(34, 197, 94, 0.35);
+}
+
+/* Art style scroll area */
+.skin-glass-orb .gen-art-scroll {
+  max-height: 50vh;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.skin-glass-orb .gen-art-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.skin-glass-orb .gen-art-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+.skin-glass-orb .art-group-heading {
+  color: var(--go-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Forge orb (submit) */
+.skin-glass-orb .forge-orb {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #5e6ad2, #9a66d8);
+  box-shadow: 0 0 80px rgba(94, 106, 210, 0.6);
+  animation: pulseForge 3s infinite ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 40px auto;
+  transition: filter 0.3s;
+  user-select: none;
+}
+
+.skin-glass-orb .forge-orb:hover {
+  filter: brightness(1.2);
+}
+
+.skin-glass-orb .forge-orb.synthesizing {
+  animation: pulseForge 1s infinite ease-in-out;
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* Summary tags */
+.skin-glass-orb .gen-summary-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.8rem;
+  color: var(--go-text-secondary);
+  text-transform: capitalize;
+}
+
 /* ── Keyframes ────────────────────────────────────── */
+@keyframes wordOrbSpawn {
+  from { transform: scale(0) translateX(50px); opacity: 0; }
+  to { transform: scale(1) translateX(0); opacity: 1; }
+}
+
+@keyframes genSectionFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes pulseForge {
   0% { transform: scale(0.95); box-shadow: 0 0 40px rgba(94, 106, 210, 0.4); }
   50% { transform: scale(1.05); box-shadow: 0 0 100px rgba(94, 106, 210, 0.9); }
@@ -425,5 +673,39 @@
   .skin-glass-orb .orb {
     width: 40px;
     height: 40px;
+  }
+
+  /* Generate orbs mobile */
+  .skin-glass-orb .gen-container {
+    padding: 70px 12px 100px;
+  }
+
+  .skin-glass-orb .gen-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+
+  .skin-glass-orb .gen-orb-row {
+    gap: 14px;
+  }
+
+  .skin-glass-orb .gen-orb {
+    width: 80px;
+    height: 80px;
+    font-size: 0.75rem;
+  }
+
+  .skin-glass-orb .gen-orb.input-orb input {
+    font-size: 0.75rem;
+  }
+
+  .skin-glass-orb .forge-orb {
+    width: 160px;
+    height: 160px;
+    font-size: 0.9rem;
+  }
+
+  .skin-glass-orb .gen-art-scroll {
+    max-height: 40vh;
   }
 }

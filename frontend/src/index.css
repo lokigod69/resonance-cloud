@@ -196,6 +196,7 @@
   --pg-accent-green: #34d399;
   --pg-accent-rose: #f43f5e;
   --pg-accent-gold: #fbbf24;
+  --pg-accent-violet: #8b5cf6;
   --pg-text-dim: #9ca3af;
 }
 
@@ -258,4 +259,9 @@
 
 .skin-polish-glass .gradient-bg {
   background: linear-gradient(135deg, #0a0a0c 0%, #0d1117 50%, #0a0a0c 100%);
+}
+
+@keyframes pg-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }

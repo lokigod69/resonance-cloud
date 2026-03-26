@@ -218,7 +218,7 @@ export default function DeckViewPG() {
         <div className="flex flex-col items-center">
           <div
             {...bind()}
-            className="relative w-full max-w-3xl h-[420px] flex items-center justify-center touch-pan-y"
+            className="relative w-full max-w-3xl h-[360px] sm:h-[420px] flex items-center justify-center touch-pan-y"
             style={{ perspective: '1200px' }}
           >
             {/* Prev button */}
@@ -240,10 +240,10 @@ export default function DeckViewPG() {
                 return (
                   <motion.div
                     key={word.id}
-                    className="absolute w-[280px] h-[380px]"
+                    className="absolute w-[220px] h-[320px] sm:w-[280px] sm:h-[380px]"
                     initial={false}
                     animate={{
-                      x: offset * 200,
+                      x: offset * 160,
                       scale: offset === 0 ? 1 : 0.8,
                       opacity: offset === 0 ? 1 : 0.5,
                       zIndex: 10 - Math.abs(offset),
