@@ -17,6 +17,8 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react'
 
 type Deck = {
@@ -84,6 +86,7 @@ export default function DeckViewPG() {
     }
   }, [words.length, activeIndex])
 
+  const [infoCollapsed, setInfoCollapsed] = useState(false)
   const [videoActiveIndex, setVideoActiveIndex] = useState<number | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -226,8 +229,6 @@ export default function DeckViewPG() {
           )}
           <div className="flex items-center gap-3 mt-1 text-sm">
             <span className="text-[var(--pg-text-dim)]">{deck.target_language}</span>
-            <span className="text-[var(--pg-text-dim)]">&middot;</span>
-            <span className="text-[var(--pg-text-dim)]">{completedCount}/{totalCount} ready</span>
             {isGenerating && (
               <span className="text-[var(--pg-accent-gold)] flex items-center gap-1 text-xs">
                 <Sparkles className="h-3 w-3 animate-pulse" />
@@ -251,7 +252,7 @@ export default function DeckViewPG() {
         <div className="flex flex-col items-center">
           <div
             {...bind()}
-            className="relative w-full max-w-4xl h-[70vh] max-h-[620px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+            className="relative w-full max-w-4xl h-[80vh] max-h-[770px] flex items-center justify-center cursor-grab active:cursor-grabbing"
             style={{ perspective: '1200px', touchAction: 'none' }}
           >
             {/* Prev button */}
@@ -273,7 +274,7 @@ export default function DeckViewPG() {
                 return (
                   <motion.div
                     key={word.id}
-                    className="absolute w-[92vw] max-w-[800px] h-[70vh] max-h-[600px]"
+                    className="absolute w-[92vw] max-w-[800px] h-[80vh] max-h-[750px]"
                     initial={false}
                     animate={{
                       x: offset * 200 + dragOffset,
@@ -365,29 +366,59 @@ export default function DeckViewPG() {
                         )}
                       </div>
 
-                      {/* Word info — centered, proper typography */}
-                      <div className="flex-1 min-h-0 p-6 flex flex-col justify-center items-center text-center bg-[#0d0d12] overflow-auto">
-                        {isComplete ? (
-                          <>
-                            <h2 className="text-2xl font-bold text-white mb-1">{word.word}</h2>
-                            {word.translation && (
-                              <p className="text-lg text-gray-300 mb-4">{word.translation}</p>
-                            )}
-                            {word.mnemonic && (
-                              <p className="text-sm italic text-gray-500 leading-relaxed max-w-lg">
-                                {word.mnemonic}
-                              </p>
-                            )}
-                          </>
-                        ) : (
-                          <>
-                            <p className="text-lg font-bold text-white">{word.word}</p>
-                            <p className="text-xs text-gray-500 mt-1">
-                              {word.status === 'failed' ? 'Failed' : 'Processing...'}
-                            </p>
-                          </>
-                        )}
+                      {/* Collapse toggle handle */}
+                      <div
+                        className="flex justify-center py-2 bg-[#0d0d12] cursor-pointer hover:bg-white/5 transition-colors"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setInfoCollapsed(!infoCollapsed)
+                        }}
+                      >
+                        <div className="flex flex-col items-center gap-0.5">
+                          <div className="w-[60px] h-1 rounded-full bg-white/20" />
+                          {infoCollapsed ? (
+                            <ChevronDown className="h-3 w-3 text-white/30" />
+                          ) : (
+                            <ChevronUp className="h-3 w-3 text-white/30" />
+                          )}
+                        </div>
                       </div>
+
+                      {/* Word info — collapsible */}
+                      <AnimatePresence initial={false}>
+                        {!infoCollapsed && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: 'easeInOut' }}
+                            className="overflow-hidden bg-[#0d0d12]"
+                          >
+                            <div className="p-6 flex flex-col items-center text-center">
+                              {isComplete ? (
+                                <>
+                                  <h2 className="text-2xl font-bold text-white mb-1">{word.word}</h2>
+                                  {word.translation && (
+                                    <p className="text-lg text-gray-300 mb-3">{word.translation}</p>
+                                  )}
+                                  {word.mnemonic && (
+                                    <p className="text-sm italic text-gray-500 leading-relaxed max-w-lg">
+                                      {word.mnemonic}
+                                    </p>
+                                  )}
+                                </>
+                              ) : (
+                                <>
+                                  <p className="text-lg font-bold text-white">{word.word}</p>
+                                  <p className="text-xs text-gray-500 mt-1">
+                                    {word.status === 'failed' ? 'Failed' : 'Processing...'}
+                                  </p>
+                                </>
+                              )}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
 
                       {/* Dark overlay on non-active cards */}
                       {offset !== 0 && (

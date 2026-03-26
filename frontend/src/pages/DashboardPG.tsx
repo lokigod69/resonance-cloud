@@ -593,7 +593,7 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
         )
       })}
       {/* Radial vignette */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at center, transparent 0%, #0a0a0c 70%)' }} />
+      <div className="absolute inset-0 pointer-events-none opacity-40" style={{ background: 'radial-gradient(circle at center, transparent 0%, #0a0a0c 90%)' }} />
     </motion.div>
   )
 }

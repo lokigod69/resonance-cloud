@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, Clock, RotateCcw, Sparkles, BookOpen, Play, Pause, Volume2, VolumeX } from 'lucide-react'
+import { Check, Clock, RotateCcw, Sparkles, BookOpen, Play, Pause, Volume2, VolumeX, ChevronLeft, ChevronRight } from 'lucide-react'
 
 type StudyWord = {
   id: string
@@ -104,6 +104,20 @@ export default function StudyPG() {
     setIsMuted(videoRef.current.muted)
   }, [])
 
+  const skipPrev = useCallback(() => {
+    if (currentIndex > 0) {
+      setCurrentIndex((i) => i - 1)
+      setRevealed(false)
+    }
+  }, [currentIndex])
+
+  const skipNext = useCallback(() => {
+    if (currentIndex < words.length - 1) {
+      setCurrentIndex((i) => i + 1)
+      setRevealed(false)
+    }
+  }, [currentIndex, words.length])
+
   // Keyboard shortcuts
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -113,13 +127,15 @@ export default function StudyPG() {
         if (!revealed) setRevealed(true)
         else advance()
       }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); skipPrev() }
+      if (e.key === 'ArrowRight') { e.preventDefault(); skipNext() }
       if (e.key === 'r' || e.key === 'R') replay()
       if (e.key === 'm' || e.key === 'M') toggleMute()
       if (e.key === 'p' || e.key === 'P') togglePlay()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [revealed, advance, replay, sessionComplete, toggleMute, togglePlay])
+  }, [revealed, advance, replay, sessionComplete, toggleMute, togglePlay, skipPrev, skipNext])
 
   if (loading) {
     return (
@@ -203,7 +219,28 @@ export default function StudyPG() {
         </div>
       </div>
 
-      {/* Card */}
+      {/* Card + skip arrows */}
+      <div className="relative w-full max-w-2xl flex items-center">
+        {/* Left skip arrow */}
+        {currentIndex > 0 && (
+          <button
+            onClick={skipPrev}
+            className="absolute -left-16 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+        )}
+
+        {/* Right skip arrow */}
+        {currentIndex < words.length - 1 && (
+          <button
+            onClick={skipNext}
+            className="absolute -right-16 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        )}
+
       <AnimatePresence mode="wait">
         {current && (
           <motion.div
@@ -212,7 +249,7 @@ export default function StudyPG() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -30, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="w-full max-w-2xl"
+            className="w-full"
           >
             {/* Video */}
             <div className="pg-glass rounded-2xl overflow-hidden mb-6 relative group/video">
@@ -226,7 +263,8 @@ export default function StudyPG() {
                     loop
                     muted
                     playsInline
-                    className="w-full aspect-video object-cover"
+                    className="w-full aspect-video object-contain bg-black cursor-pointer"
+                    onClick={togglePlay}
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
                   />
@@ -246,20 +284,7 @@ export default function StudyPG() {
                     >
                       {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
                     </button>
-                    {isMuted && (
-                      <span className="text-xs text-white/60 ml-1">Tap to hear the song</span>
-                    )}
                   </div>
-                  {/* Persistent unmute badge when muted */}
-                  {isMuted && (
-                    <button
-                      onClick={toggleMute}
-                      className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 text-xs text-white/80 hover:bg-black/80 transition-colors"
-                    >
-                      <VolumeX className="h-3.5 w-3.5" />
-                      Unmute
-                    </button>
-                  )}
                 </>
               ) : current.thumbnail_url ? (
                 <img
@@ -286,15 +311,15 @@ export default function StudyPG() {
                   className="space-y-2"
                 >
                   {current.translation && (
-                    <p className="text-xl text-[var(--pg-accent-teal)]">{current.translation}</p>
+                    <p className="text-xl text-gray-300 mt-1">{current.translation}</p>
                   )}
                   {current.mnemonic && (
-                    <p className="text-sm text-[var(--pg-text-dim)] italic max-w-sm mx-auto">
+                    <p className="text-sm italic text-gray-500 mt-3 max-w-lg mx-auto leading-relaxed">
                       {current.mnemonic}
                     </p>
                   )}
                   {current.etymology && (
-                    <p className="text-xs max-w-sm mx-auto" style={{ color: 'var(--pg-text-dim)', opacity: 0.6 }}>
+                    <p className="text-xs text-gray-600 mt-2 max-w-lg mx-auto leading-relaxed">
                       {current.etymology}
                     </p>
                   )}
@@ -302,7 +327,7 @@ export default function StudyPG() {
               ) : (
                 <button
                   onClick={() => setRevealed(true)}
-                  className="px-6 py-2.5 rounded-xl border border-white/15 text-[var(--pg-text-dim)] text-sm font-display hover:bg-white/5 hover:text-white transition-all"
+                  className="px-8 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur text-white tracking-widest uppercase text-sm font-display hover:bg-white/10 transition-all"
                 >
                   Reveal Answer
                 </button>
@@ -343,16 +368,19 @@ export default function StudyPG() {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
 
       {/* Keyboard hints */}
       <div className="mt-8 text-center text-xs" style={{ color: 'var(--pg-text-dim)', opacity: 0.5 }}>
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">Space</kbd> reveal/advance
         &nbsp;&middot;&nbsp;
+        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">←</kbd><kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">→</kbd> skip
+        &nbsp;&middot;&nbsp;
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">R</kbd> replay
         &nbsp;&middot;&nbsp;
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">P</kbd> play/pause
         &nbsp;&middot;&nbsp;
-        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">M</kbd> mute/unmute
+        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">M</kbd> mute
       </div>
     </div>
   )
