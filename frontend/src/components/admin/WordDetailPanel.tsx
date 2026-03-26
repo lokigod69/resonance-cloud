@@ -58,12 +58,12 @@ export default function WordDetailPanel({
         </DialogHeader>
 
         {/* Video Player */}
-        <div className="rounded-lg overflow-hidden bg-zinc-900 aspect-video flex items-center justify-center">
+        <div className="relative rounded-lg overflow-hidden bg-zinc-900 aspect-video w-full flex items-center justify-center">
           {word.video_url ? (
             <video
               src={word.video_url}
               controls
-              className="w-full h-full"
+              className="absolute inset-0 w-full h-full object-contain"
               preload="metadata"
             />
           ) : (
