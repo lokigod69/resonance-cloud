@@ -204,20 +204,7 @@ export default function StudyPG() {
 
   return (
     <div className="px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center">
-      {/* Progress bar */}
-      <div className="w-full max-w-2xl mb-8">
-        <div className="flex justify-between text-xs text-[var(--pg-text-dim)] mb-1.5">
-          <span>{currentIndex + 1} / {words.length}</span>
-          <span>{Math.round(((currentIndex) / words.length) * 100)}%</span>
-        </div>
-        <div className="h-1 bg-white/10 rounded-full overflow-hidden">
-          <motion.div
-            className="h-full rounded-full bg-[var(--pg-accent-teal)]"
-            animate={{ width: `${((currentIndex) / words.length) * 100}%` }}
-            transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-          />
-        </div>
-      </div>
+      {/* Progress bar removed — backend study tracking not built yet */}
 
       {/* Card + skip arrows */}
       <div className="relative w-full max-w-2xl flex items-center">

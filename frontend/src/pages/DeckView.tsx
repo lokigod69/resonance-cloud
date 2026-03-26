@@ -381,30 +381,29 @@ function VideoViewerModal({
 
       {/* Video area */}
       <div className="flex-1 flex items-center justify-center px-4 pb-4">
-        {/* Main content with arrows positioned relative to this container */}
-        <div className="w-full max-w-3xl space-y-6 relative">
-          {/* Prev arrow */}
-          {hasPrev && (
-            <button
-              onClick={() => onNavigate(currentIndex - 1)}
-              className="absolute -left-16 top-[25%] -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/50 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/10 transition-colors"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-          )}
-
-          {/* Next arrow */}
-          {hasNext && (
-            <button
-              onClick={() => onNavigate(currentIndex + 1)}
-              className="absolute -right-16 top-[25%] -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/50 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/10 transition-colors"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-          )}
-
-          {/* Video container */}
+        {/* Main content */}
+        <div className="w-full max-w-3xl space-y-6">
+          {/* Video container with arrows */}
           <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl">
+            {/* Prev arrow — centered on video */}
+            {hasPrev && (
+              <button
+                onClick={() => onNavigate(currentIndex - 1)}
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/50 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+            )}
+
+            {/* Next arrow — centered on video */}
+            {hasNext && (
+              <button
+                onClick={() => onNavigate(currentIndex + 1)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 h-12 w-12 rounded-full bg-black/50 border border-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+            )}
             {word.video_url ? (
               <video
                 ref={videoRef}

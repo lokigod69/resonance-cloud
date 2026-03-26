@@ -38,17 +38,7 @@
   font-size: 18px;
 }
 
-/* Hard shadow buttons */
-.theme-retro button,
-.theme-retro [role="button"] {
-  box-shadow: 3px 3px 0 #1A1D20;
-}
-
-.theme-retro button:active,
-.theme-retro [role="button"]:active {
-  box-shadow: 1px 1px 0 #1A1D20;
-  transform: translate(2px, 2px);
-}
+/* Buttons — no 3D bevel, clean flat style */
 
 /* Glass overrides for retro feel */
 .theme-retro .glass {
