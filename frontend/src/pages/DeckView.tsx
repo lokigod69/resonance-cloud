@@ -268,7 +268,7 @@ export default function DeckView() {
       </div>
 
       {/* Footer actions */}
-      <div className="flex justify-center gap-3 pt-4">
+      <div className="flex justify-center pt-4">
         <Button
           variant="outline"
           className="border-primary/30 text-primary hover:bg-primary/10"
@@ -276,12 +276,6 @@ export default function DeckView() {
         >
           <Plus className="h-4 w-4 mr-2" />
           Add Cards
-        </Button>
-        <Button asChild variant="outline" className="border-white/10">
-          <Link to="/generate">
-            <Sparkles className="h-4 w-4 mr-2" />
-            New Deck
-          </Link>
         </Button>
       </div>
     </div>

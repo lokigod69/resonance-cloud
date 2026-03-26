@@ -187,7 +187,6 @@ export default function DashboardGO() {
                   transition: 'opacity 0.3s',
                 }}
               />
-              <div className="folder-icon">✧</div>
               <h3>{displayName}</h3>
               <p>{deck.target_language} &bull; {counts.total} Words</p>
               {deck.status !== 'complete' && (

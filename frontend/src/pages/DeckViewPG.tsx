@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { useDrag } from '@use-gesture/react'
@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import {
   ArrowLeft,
   Play,
+  Pause,
   AlertCircle,
   Sparkles,
   Pencil,
@@ -81,6 +82,18 @@ export default function DeckViewPG() {
       setActiveIndex(words.length - 1)
     }
   }, [words.length, activeIndex])
+
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+
+  // Auto-play next card when swiping while video was playing
+  const playingIndexRef = useRef(playingIndex)
+  playingIndexRef.current = playingIndex
+  useEffect(() => {
+    if (playingIndexRef.current !== null) {
+      setPlayingIndex(activeIndex)
+    }
+  }, [activeIndex])
 
   const [dragOffset, setDragOffset] = useState(0)
 
@@ -259,23 +272,53 @@ export default function DeckViewPG() {
                   >
                     <div
                       className={`w-full h-full bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative ${
-                        offset === 0 && isComplete ? 'cursor-pointer' : ''
-                      } ${!isComplete ? 'opacity-50' : ''}`}
+                        !isComplete ? 'opacity-50' : ''
+                      }`}
                       style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
-                      onClick={() => {
-                        if (offset === 0 && isComplete) {
-                          navigate(`/deck/${deck.id}/word/${word.id}`)
-                        }
-                      }}
                     >
-                      {/* Thumbnail */}
-                      <div className="h-[60%] relative bg-white/5 overflow-hidden">
-                        {isComplete && word.thumbnail_url ? (
-                          <img
-                            src={word.thumbnail_url}
-                            alt={word.word}
-                            className="w-full h-full object-cover"
-                          />
+                      {/* Media area — video or thumbnail */}
+                      <div className="h-[60%] relative bg-black overflow-hidden">
+                        {isComplete && playingIndex === i ? (
+                          <>
+                            <video
+                              ref={videoRef}
+                              src={word.video_url!}
+                              autoPlay
+                              playsInline
+                              loop
+                              className="w-full h-full object-contain"
+                            />
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                setPlayingIndex(null)
+                              }}
+                              className="absolute bottom-3 left-3 w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white z-10 hover:bg-black/80 transition-colors"
+                            >
+                              <Pause className="h-4 w-4" />
+                            </button>
+                          </>
+                        ) : isComplete && word.thumbnail_url ? (
+                          <>
+                            <img
+                              src={word.thumbnail_url}
+                              alt={word.word}
+                              className="w-full h-full object-cover"
+                            />
+                            {offset === 0 && word.video_url && (
+                              <div
+                                className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  setPlayingIndex(i)
+                                }}
+                              >
+                                <div className="h-14 w-14 rounded-full bg-[var(--pg-accent-teal)]/30 backdrop-blur-sm flex items-center justify-center border border-[var(--pg-accent-teal)]/50 shadow-[0_0_20px_rgba(13,226,195,0.3)]">
+                                  <Play className="h-7 w-7 text-[var(--pg-accent-teal)] fill-[var(--pg-accent-teal)]" />
+                                </div>
+                              </div>
+                            )}
+                          </>
                         ) : (
                           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
                             {isComplete ? (
@@ -283,14 +326,6 @@ export default function DeckViewPG() {
                             ) : (
                               <div className="h-8 w-8 rounded-full bg-white/10 animate-pulse" />
                             )}
-                          </div>
-                        )}
-                        {/* Play overlay for active complete cards */}
-                        {isComplete && offset === 0 && (
-                          <div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <div className="h-14 w-14 rounded-full bg-[var(--pg-accent-teal)]/30 backdrop-blur-sm flex items-center justify-center border border-[var(--pg-accent-teal)]/50 shadow-[0_0_20px_rgba(13,226,195,0.3)]">
-                              <Play className="h-7 w-7 text-[var(--pg-accent-teal)] fill-[var(--pg-accent-teal)]" />
-                            </div>
                           </div>
                         )}
                       </div>
