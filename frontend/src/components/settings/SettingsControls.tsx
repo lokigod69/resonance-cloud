@@ -493,18 +493,27 @@ export function StageSettingsPanel({ stage, stageSettings, onChange, labelExtra 
   labelExtra?: (field: FieldDef) => React.ReactNode
 }) {
   const fields = STAGE_FIELDS[stage] || []
+
+  // Merge field defaults into stageSettings so condition functions (e.g. isLtx)
+  // work even when the saved profile is missing keys like video_mode.
+  const merged: Record<string, unknown> = {}
+  for (const f of fields) {
+    if (f.default !== undefined) merged[f.key] = f.default
+  }
+  Object.assign(merged, stageSettings)
+
   const mainFields = fields.filter(f => !f.advanced)
   const advancedFields = fields.filter(f => f.advanced)
 
-  const visibleMain = mainFields.filter(f => !f.condition || f.condition(stageSettings))
-  const visibleAdvanced = advancedFields.filter(f => !f.condition || f.condition(stageSettings))
+  const visibleMain = mainFields.filter(f => !f.condition || f.condition(merged))
+  const visibleAdvanced = advancedFields.filter(f => !f.condition || f.condition(merged))
 
   return (
     <div className="space-y-0.5">
       <div className="divide-y divide-[var(--border)]">
         {visibleMain.map((field, i) => (
           <div key={`${field.key}-${i}`}>
-            {renderField(field, stageSettings[field.key], v => onChange(field.key, v), labelExtra?.(field), stageSettings, onChange)}
+            {renderField(field, merged[field.key], v => onChange(field.key, v), labelExtra?.(field), merged, onChange)}
           </div>
         ))}
       </div>
@@ -517,7 +526,7 @@ export function StageSettingsPanel({ stage, stageSettings, onChange, labelExtra 
           <div className="px-3 pb-2 divide-y divide-[var(--border)]">
             {visibleAdvanced.map((field, i) => (
               <div key={`${field.key}-${i}`}>
-                {renderField(field, stageSettings[field.key], v => onChange(field.key, v), labelExtra?.(field), stageSettings, onChange)}
+                {renderField(field, merged[field.key], v => onChange(field.key, v), labelExtra?.(field), merged, onChange)}
               </div>
             ))}
           </div>
