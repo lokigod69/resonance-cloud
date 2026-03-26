@@ -224,7 +224,7 @@ export default function DeckViewPG() {
         <div className="flex flex-col items-center">
           <div
             {...bind()}
-            className="relative w-full max-w-3xl h-[360px] sm:h-[420px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+            className="relative w-full max-w-4xl h-[70vh] max-h-[620px] flex items-center justify-center cursor-grab active:cursor-grabbing"
             style={{ perspective: '1200px', touchAction: 'none' }}
           >
             {/* Prev button */}
@@ -246,25 +246,24 @@ export default function DeckViewPG() {
                 return (
                   <motion.div
                     key={word.id}
-                    className="absolute w-[220px] h-[320px] sm:w-[280px] sm:h-[380px]"
+                    className="absolute w-[92vw] max-w-[800px] h-[70vh] max-h-[600px]"
                     initial={false}
                     animate={{
-                      x: offset * 160 + dragOffset,
-                      scale: offset === 0 ? 1 : 0.8,
-                      opacity: offset === 0 ? 1 : 0.5,
+                      x: offset * 200 + dragOffset,
+                      scale: offset === 0 ? 1 : 0.85,
+                      opacity: offset === 0 ? 1 : 0.4,
                       zIndex: 10 - Math.abs(offset),
-                      rotateY: offset * -8,
+                      rotateY: offset * -5,
                     }}
                     transition={dragOffset !== 0 ? { type: 'tween', duration: 0 } : { type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div
-                      className={`w-full h-full pg-glass rounded-2xl overflow-hidden relative ${
-                        isComplete ? 'cursor-pointer' : 'opacity-50'
-                      }`}
+                      className={`w-full h-full bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative ${
+                        offset === 0 && isComplete ? 'cursor-pointer' : ''
+                      } ${!isComplete ? 'opacity-50' : ''}`}
+                      style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
                       onClick={() => {
-                        if (offset !== 0) {
-                          setActiveIndex(i)
-                        } else if (isComplete) {
+                        if (offset === 0 && isComplete) {
                           navigate(`/deck/${deck.id}/word/${word.id}`)
                         }
                       }}
@@ -297,7 +296,7 @@ export default function DeckViewPG() {
                       </div>
 
                       {/* Info */}
-                      <div className="p-4 flex flex-col justify-center h-[40%]">
+                      <div className="p-4 flex flex-col justify-center h-[40%] bg-[#0d0d12]">
                         <p className="font-bold font-display text-lg">{word.word}</p>
                         {isComplete && word.translation ? (
                           <p className="text-sm text-[var(--pg-text-dim)] mt-1">{word.translation}</p>
@@ -354,20 +353,13 @@ export default function DeckViewPG() {
       )}
 
       {/* Footer actions */}
-      <div className="flex justify-center gap-3 pt-8">
+      <div className="flex justify-center pt-8">
         <button
           onClick={() => navigate(`/generate?deckId=${deck.id}`)}
           className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
         >
           <Plus className="h-4 w-4 inline mr-1.5" />
           Add Cards
-        </button>
-        <button
-          onClick={() => navigate('/generate')}
-          className="px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
-        >
-          <Sparkles className="h-4 w-4 inline mr-1.5" />
-          New Deck
         </button>
       </div>
     </div>

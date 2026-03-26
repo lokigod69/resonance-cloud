@@ -394,7 +394,7 @@ interface StackCardProps {
 
 function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts, thumbnails }: StackCardProps) {
   const x = useMotionValue(0)
-  const { counts, progress, flag, displayName } = getDeckMeta(deck, wordCounts)
+  const { counts, flag, displayName } = getDeckMeta(deck, wordCounts)
   const thumb = thumbnails[deck.id]
 
   useEffect(() => {
@@ -471,15 +471,7 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
           </p>
           <h2 className="text-2xl font-light text-white font-display">{displayName}</h2>
         </div>
-        <div className="flex justify-between items-end">
-          <p className="text-[var(--pg-text-dim)] text-sm">{counts.total} Words</p>
-          <div className="flex items-center gap-2">
-            <div className="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
-              <div className="h-full bg-[var(--pg-accent-teal)]" style={{ width: `${progress}%` }} />
-            </div>
-            <span className="text-xs text-gray-500">{progress}%</span>
-          </div>
-        </div>
+        <p className="text-[var(--pg-text-dim)] text-sm">{counts.total} Words</p>
       </div>
     </motion.div>
   )
@@ -491,7 +483,7 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {decks.map((deck, i) => {
-        const { counts, progress, flag, displayName } = getDeckMeta(deck, wordCounts)
+        const { counts, flag, displayName } = getDeckMeta(deck, wordCounts)
         const thumb = thumbnails[deck.id]
 
         return (
@@ -521,13 +513,6 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
               <p className="text-xs text-[var(--pg-text-dim)]">
                 {flag} {deck.target_language} &middot; {counts.total} words
               </p>
-              {/* Progress bar */}
-              <div className="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-[var(--pg-accent-teal)] transition-all"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
             </div>
           </motion.button>
         )
