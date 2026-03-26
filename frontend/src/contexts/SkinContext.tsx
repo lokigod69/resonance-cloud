@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 
-export type SkinId = 'default' | 'polish-glass'
+export type SkinId = 'default' | 'polish-glass' | 'glass-orb'
 
 interface SkinContextValue {
   skin: SkinId
@@ -8,7 +8,7 @@ interface SkinContextValue {
 }
 
 const STORAGE_KEY = 'resonance-skin'
-const VALID_SKINS: SkinId[] = ['default', 'polish-glass']
+const VALID_SKINS: SkinId[] = ['default', 'polish-glass', 'glass-orb']
 
 const SkinContext = createContext<SkinContextValue>({
   skin: 'default',
@@ -24,10 +24,9 @@ export function SkinProvider({ children }: { children: ReactNode }) {
   // Apply/remove skin class on <html>
   useEffect(() => {
     const html = document.documentElement
-    html.classList.remove('skin-polish-glass')
-    if (skin === 'polish-glass') {
-      html.classList.add('skin-polish-glass')
-    }
+    html.classList.remove('skin-polish-glass', 'skin-glass-orb')
+    if (skin === 'polish-glass') html.classList.add('skin-polish-glass')
+    if (skin === 'glass-orb') html.classList.add('skin-glass-orb')
   }, [skin])
 
   const setSkin = (newSkin: SkinId) => {

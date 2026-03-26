@@ -18,6 +18,10 @@ import DashboardPG from '@/pages/DashboardPG'
 import GeneratePG from '@/pages/GeneratePG'
 import DeckViewPG from '@/pages/DeckViewPG'
 import StudyPG from '@/pages/StudyPG'
+import GlassOrbLayout from '@/components/layout/GlassOrbLayout'
+import DashboardGO from '@/pages/DashboardGO'
+import GenerateGO from '@/pages/GenerateGO'
+import StudyGO from '@/pages/StudyGO'
 import Users from '@/pages/admin/Users'
 import Content from '@/pages/admin/Content'
 import Metrics from '@/pages/admin/Metrics'
@@ -96,7 +100,6 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
 function AppRoutes() {
   const { skin } = useSkin()
-  const isPolishGlass = skin === 'polish-glass'
 
   return (
     <Routes>
@@ -117,7 +120,15 @@ function AppRoutes() {
         <Route path="/deck/:id/word/:wordId" element={<VideoPlayer />} />
 
         {/* User-facing routes — skin-aware layout */}
-        {isPolishGlass ? (
+        {skin === 'glass-orb' ? (
+          <Route element={<GlassOrbLayout />}>
+            <Route path="/dashboard" element={<DashboardGO />} />
+            <Route path="/generate" element={<GenerateGO />} />
+            <Route path="/deck/:id" element={<DeckView />} /> {/* TODO: create DeckViewGO */}
+            <Route path="/study" element={<StudyGO />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
+        ) : skin === 'polish-glass' ? (
           <Route element={<PolishGlassLayout />}>
             <Route path="/dashboard" element={<DashboardPG />} />
             <Route path="/generate" element={<GeneratePG />} />

@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+/* ── Glass Orb Skin Variables ─────────────────────── */
+.skin-glass-orb {
+  --go-bg-color: #0d0f14;
+  --go-glass-bg: rgba(20, 24, 34, 0.45);
+  --go-glass-border: rgba(255, 255, 255, 0.15);
+  --go-glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --go-accent: #5e6ad2;
+  --go-text-primary: #ffffff;
+  --go-text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Body-level styles → scoped to layout root ────── */
+.skin-glass-orb .go-root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--go-bg-color);
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(94, 106, 210, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(210, 94, 160, 0.1), transparent 25%);
+  color: var(--go-text-primary);
+  font-family: 'Nunito', sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Scoped scrollbar hiding */
+.skin-glass-orb .go-root::-webkit-scrollbar {
+  display: none;
+}
+.skin-glass-orb .go-root {
+  scrollbar-width: none;
+}
+
+/* ── Global Nav ───────────────────────────────────── */
+.skin-glass-orb .global-nav {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 999;
+  display: flex;
+  gap: 12px;
+}
+
+.skin-glass-orb .global-nav button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--go-glass-bg);
+  border: 1px solid var(--go-glass-border);
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s, background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skin-glass-orb .global-nav button:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Deck Container (Study) ───────────────────────── */
+.skin-glass-orb .deck-container {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+/* ── Video Card ───────────────────────────────────── */
+.skin-glass-orb .video-card {
+  position: absolute;
+  width: 460px;
+  height: 420px;
+  border-radius: 20px;
+  background: var(--go-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--go-glass-border);
+  box-shadow: var(--go-glass-shadow);
+  overflow: hidden;
+  will-change: transform, filter;
+  display: flex;
+  flex-direction: column;
+  transform-origin: 50% 100%;
+  cursor: grab;
+}
+
+.skin-glass-orb .video-card:active {
+  cursor: grabbing;
+}
+
+.skin-glass-orb .video-card .video-wrapper {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  background-color: #000;
+  border-bottom: 1px solid var(--go-glass-border);
+}
+
+.skin-glass-orb .video-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.skin-glass-orb .video-card .controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.skin-glass-orb .controls button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+}
+
+.skin-glass-orb .controls button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.skin-glass-orb .video-card .card-info {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  max-height: 200px;
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+.skin-glass-orb .card-info h2 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.skin-glass-orb .card-info p {
+  font-size: 0.9rem;
+  color: var(--go-text-secondary);
+  line-height: 1.4;
+}
+
+/* ── Study Controls ───────────────────────────────── */
+.skin-glass-orb .study-controls {
+  margin-top: auto;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-shrink: 0;
+  padding-top: 16px;
+  pointer-events: auto;
+}
+
+.skin-glass-orb .reveal-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.skin-glass-orb .reveal-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.skin-glass-orb .grade-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.skin-glass-orb .grade-btn.pass {
+  background: rgba(34, 197, 94, 0.4);
+  border: 1px solid rgba(34, 197, 94, 0.6);
+}
+
+.skin-glass-orb .grade-btn.fail {
+  background: rgba(239, 68, 68, 0.4);
+  border: 1px solid rgba(239, 68, 68, 0.6);
+}
+
+.skin-glass-orb .grade-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* ── Orb Navigation Dock ──────────────────────────── */
+.skin-glass-orb .orb-dock-container {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 10;
+  padding-bottom: 12px;
+}
+
+.skin-glass-orb .orb-dock {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.skin-glass-orb .orb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--go-glass-bg);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    inset -4px -4px 10px rgba(0, 0, 0, 0.6),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.4),
+    0 4px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.skin-glass-orb .orb::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 30%;
+  height: 30%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.skin-glass-orb .orb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  mix-blend-mode: overlay;
+}
+
+.skin-glass-orb .orb:hover,
+.skin-glass-orb .orb.active {
+  transform: translateY(-16px) scale(1.2);
+  box-shadow:
+    inset -4px -4px 10px rgba(0, 0, 0, 0.7),
+    inset 4px 4px 12px rgba(255, 255, 255, 0.6),
+    0 10px 20px rgba(0, 0, 0, 0.8),
+    0 0 15px var(--go-accent);
+}
+
+/* ── Dashboard Styles ─────────────────────────────── */
+.skin-glass-orb .dashboard-header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.skin-glass-orb .dashboard-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  font-weight: 300;
+}
+
+.skin-glass-orb .dashboard-header p {
+  color: var(--go-text-secondary);
+}
+
+.skin-glass-orb .decks-grid {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 0 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.skin-glass-orb .deck-folder {
+  position: relative;
+  width: 320px;
+  height: 400px;
+  z-index: 1;
+  background: var(--go-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--go-glass-border);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: var(--go-glass-shadow);
+  overflow: hidden;
+}
+
+.skin-glass-orb .deck-folder:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.skin-glass-orb .deck-folder:hover .deck-bg-layer {
+  opacity: 0.4;
+}
+
+.skin-glass-orb .deck-folder .folder-icon {
+  font-size: 3rem;
+  margin-bottom: auto;
+  color: var(--go-accent);
+}
+
+.skin-glass-orb .deck-folder h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.skin-glass-orb .deck-folder p {
+  color: var(--go-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ── Keyframes ────────────────────────────────────── */
+@keyframes pulseForge {
+  0% { transform: scale(0.95); box-shadow: 0 0 40px rgba(94, 106, 210, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 100px rgba(94, 106, 210, 0.9); }
+  100% { transform: scale(0.95); box-shadow: 0 0 40px rgba(94, 106, 210, 0.4); }
+}
+
+/* ── Mobile Responsive ────────────────────────────── */
+@media (max-width: 768px) {
+  .skin-glass-orb .decks-grid {
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    padding-bottom: 60px;
+    height: 100%;
+    justify-content: flex-start;
+  }
+
+  .skin-glass-orb .deck-folder {
+    width: 100%;
+    max-width: 320px;
+    height: 300px;
+  }
+
+  .skin-glass-orb .global-nav {
+    top: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+
+  .skin-glass-orb .global-nav button {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .skin-glass-orb .video-card {
+    width: 92vw;
+    height: 65vh;
+    max-height: 540px;
+  }
+
+  .skin-glass-orb .video-card .video-wrapper {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .skin-glass-orb .orb-dock-container {
+    padding-bottom: 20px;
+  }
+
+  .skin-glass-orb .orb-dock {
+    gap: 12px;
+  }
+
+  .skin-glass-orb .orb {
+    width: 40px;
+    height: 40px;
+  }
+}

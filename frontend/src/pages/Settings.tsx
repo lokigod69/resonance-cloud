@@ -125,7 +125,7 @@ export default function Settings() {
             Switch between layout styles. Theme colors still apply.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-3 gap-3">
           {([
             {
               id: 'default' as SkinId,
@@ -138,6 +138,12 @@ export default function Settings() {
               label: 'Polish Glass',
               desc: 'Cinematic top navigation',
               colors: ['#0de2c3', '#f43f5e', '#fbbf24'],
+            },
+            {
+              id: 'glass-orb' as SkinId,
+              label: 'Glass Orb',
+              desc: 'Physics-based card swiping with orb navigation',
+              colors: ['#5e6ad2', '#f43f5e', '#22c55e'],
             },
           ]).map((s) => (
             <button
@@ -158,7 +164,9 @@ export default function Settings() {
                 skin === s.id
                   ? s.id === 'polish-glass'
                     ? 'border-[#0de2c3]/50 shadow-[0_0_15px_rgba(13,226,195,0.2)] glass-selected'
-                    : 'border-primary glass-selected'
+                    : s.id === 'glass-orb'
+                      ? 'border-[#5e6ad2]/60 shadow-[0_0_15px_rgba(94,106,210,0.4)] glass-selected'
+                      : 'border-primary glass-selected'
                   : 'border-transparent glass glass-hover'
               }`}
             >
