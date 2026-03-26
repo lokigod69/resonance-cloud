@@ -86,8 +86,10 @@
   width: clamp(320px, 85vw, 560px);
   height: clamp(360px, 70vh, 560px);
   border-radius: 20px;
-  background: #141822;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--go-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--go-glass-border);
   box-shadow: var(--go-glass-shadow);
   overflow: hidden;
   will-change: transform, filter;
@@ -157,6 +159,9 @@
   max-height: 200px;
   overflow-y: auto;
   pointer-events: auto;
+  background: rgba(20, 24, 34, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .skin-glass-orb .card-info h2 {

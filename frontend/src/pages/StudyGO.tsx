@@ -264,7 +264,7 @@ export default function StudyGO() {
           const depth = i // 0 = top
           const yOffset = depth * -20
           const scale = 1 - depth * 0.05
-          const brightness = 1 - depth * 0.2
+          const brightness = depth === 0 ? 1 : depth === 1 ? 0.7 : 0.5
           const isTop = depth === 0
 
           return (
@@ -278,6 +278,7 @@ export default function StudyGO() {
               style={{
                 transform: `translateY(${yOffset}px) scale(${scale})`,
                 filter: `brightness(${brightness})`,
+                opacity: depth >= 3 ? 0 : 1,
                 zIndex: 4 - depth,
                 pointerEvents: isTop ? 'auto' : 'none',
                 transition: isTop ? undefined : 'transform 0.3s ease, filter 0.3s ease',
