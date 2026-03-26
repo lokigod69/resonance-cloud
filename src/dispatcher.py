@@ -17,7 +17,7 @@ class EngineConfig:
     ENGINES = {
         'concept': {'port': 8080, 'timeout': 30, 'name': 'Concept Engine'},
         'song':    {'port': 8000, 'timeout': 300, 'name': 'Song Engine'},
-        'images':  {'port': 8082, 'timeout': 300, 'name': 'Image Engine'},
+        'images':  {'port': 8082, 'timeout': 900, 'name': 'Image Engine'},
         'video':   {'port': 8086, 'timeout': 600, 'name': 'Video Engine'},
         'assembly':{'port': 8085, 'timeout': 120, 'name': 'Assembly Engine'},
         'bookend': {'port': 8087, 'timeout': 120, 'name': 'Bookend Engine'},
