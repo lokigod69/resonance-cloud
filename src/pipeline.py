@@ -460,45 +460,126 @@ def _resolve_scene_durations(
     num_images: int,
     settings: dict,
 ) -> list[int | None]:
-    """Extract and validate per-scene durations from storyboard.
+    """Extract per-scene durations from storyboard and snap to valid fal.ai enum values.
+
+    For LTX modes, durations are snapped to valid enum values (6, 8, 10 for Pro;
+    6, 8, 10, 12, 14, 16, 18, 20 for Fast). Total never exceeds target duration.
+    For Ken Burns and Kling modes, arbitrary integer durations are kept as before.
 
     Returns a list of durations (one per image). If the storyboard doesn't
     include suggested_duration, returns [None, ...] and the global setting
     is used.
     """
-    default_dur = settings.get("duration", 6)
-    durations = []
+    video_mode = settings.get("video_mode", "ltx_fast")
+    target = settings.get("_target_duration", None)
+
+    # Determine valid duration enum set based on video mode
+    valid_durations = _get_valid_durations(video_mode)
+
+    # Extract raw durations from storyboard
+    raw_durations: list[int | None] = []
     for i in range(num_images):
         scene = scenes[i] if i < len(scenes) else {}
         sd = scene.get("suggested_duration")
         if sd is not None:
             try:
-                durations.append(max(3, min(10, int(sd))))
+                raw_durations.append(int(sd))
             except (TypeError, ValueError):
-                durations.append(None)
+                raw_durations.append(None)
         else:
-            durations.append(None)
+            raw_durations.append(None)
 
-    # If ALL scenes have durations, validate total and rebalance if needed
-    if all(d is not None for d in durations) and len(durations) > 1:
-        # Target duration comes from concept settings (song length)
-        target = settings.get("_target_duration", None)
-        if target and abs(sum(durations) - target) > 2:
-            scale = target / sum(durations)
-            durations = [max(3, min(10, round(d * scale))) for d in durations]
-            # Correct rounding drift: adjust the longest scene
-            drift = sum(durations) - target
-            if drift != 0:
-                # Find the scene with most room to adjust
-                if drift > 0:
-                    idx = max(range(len(durations)), key=lambda j: durations[j])
-                    durations[idx] = max(3, durations[idx] - drift)
-                else:
-                    idx = min(range(len(durations)), key=lambda j: durations[j])
-                    durations[idx] = min(10, durations[idx] - drift)
-            logger.info("Rebalanced scene durations to %s (target=%ds)", durations, target)
+    # If no valid duration set (ken_burns, kling, etc.), use legacy clamping
+    if valid_durations is None:
+        durations = [max(3, min(10, d)) if d is not None else None for d in raw_durations]
+        if all(d is not None for d in durations) and len(durations) > 1 and target:
+            if abs(sum(durations) - target) > 2:
+                scale = target / sum(durations)
+                durations = [max(3, min(10, round(d * scale))) for d in durations]
+                drift = sum(durations) - target
+                if drift != 0:
+                    if drift > 0:
+                        idx = max(range(len(durations)), key=lambda j: durations[j])
+                        durations[idx] = max(3, durations[idx] - drift)
+                    else:
+                        idx = min(range(len(durations)), key=lambda j: durations[j])
+                        durations[idx] = min(10, durations[idx] - drift)
+                logger.info("Rebalanced scene durations to %s (target=%ds)", durations, target)
+        return durations
+
+    # LTX modes: snap to valid enum values using greedy fill algorithm
+    min_dur = min(valid_durations)
+    max_dur = max(valid_durations)
+
+    # Start every scene at minimum valid duration
+    durations = [min_dur] * num_images
+
+    if target and target > 0:
+        # Build a priority list: scenes with higher storyboard-suggested durations
+        # get upgraded first. Scenes without suggestions get lowest priority.
+        scene_priorities = []
+        for i in range(num_images):
+            suggested = raw_durations[i] if raw_durations[i] is not None else 0
+            scene_priorities.append((suggested, i))
+        scene_priorities.sort(reverse=True)
+
+        # Greedy fill: upgrade scenes to next valid duration step without exceeding target
+        changed = True
+        while changed:
+            changed = False
+            for _, i in scene_priorities:
+                current = durations[i]
+                # Find next valid step up
+                next_up = None
+                for v in sorted(valid_durations):
+                    if v > current:
+                        next_up = v
+                        break
+                if next_up is None:
+                    continue
+                new_total = sum(durations) - current + next_up
+                if new_total <= target:
+                    durations[i] = next_up
+                    changed = True
+
+        logger.info(
+            "Resolved scene durations to %s (total=%ds, target=%ds, mode=%s)",
+            durations, sum(durations), target, video_mode,
+        )
+    else:
+        # No target — snap each storyboard suggestion down to nearest valid value
+        for i in range(num_images):
+            if raw_durations[i] is not None:
+                durations[i] = _snap_down(raw_durations[i], valid_durations)
 
     return durations
+
+
+# --- Valid fal.ai duration enums per video mode ---
+
+_LTX_PRO_DURATIONS = sorted([6, 8, 10])
+_LTX_FAST_DURATIONS = sorted([6, 8, 10, 12, 14, 16, 18, 20])
+
+
+def _get_valid_durations(video_mode: str) -> list[int] | None:
+    """Return sorted list of valid durations for the video mode, or None for unconstrained modes."""
+    if video_mode in ("ltx_pro",):
+        return _LTX_PRO_DURATIONS
+    if video_mode in ("ltx_fast", "ltx"):
+        return _LTX_FAST_DURATIONS
+    # Ken Burns, Kling, and other modes: no enum constraint
+    return None
+
+
+def _snap_down(value: int, valid: list[int]) -> int:
+    """Snap a value down to the nearest valid duration. Minimum is valid[0]."""
+    result = valid[0]
+    for v in valid:
+        if v <= value:
+            result = v
+        else:
+            break
+    return result
 
 
 # --- Tier 7: Auto-picker mapping from frame_narrative → transition_mode ---
@@ -747,9 +828,12 @@ async def run_stage(
                 settings['skip_rendering'] = True
                 logger.info("text_to_video=True in video settings — injecting skip_rendering=True into image settings")
 
-            # Inject vocal_gender from concept settings (not an image engine setting — injected by orchestrator)
+            # Inject vocal_gender and clip_duration from concept settings
             concept_settings = resolve_settings('concept', manifest_data.settings, defaults)
             settings['vocal_gender'] = concept_settings.get('vocal_gender', 'female')
+            # Sync clip_duration with actual song duration so image count auto-calculation
+            # and LLM duration prompts match the real song length
+            settings['clip_duration'] = concept_settings.get('duration', 20)
 
             # Resolve "random" art_style → concrete preset before dispatch
             art_style_original = settings.get("art_style")

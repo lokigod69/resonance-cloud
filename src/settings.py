@@ -64,6 +64,7 @@ DEFAULT_SETTINGS = {
         "visual_reference": "auto",
         "frame_narrative": "auto",
         "image_count": "auto",
+        "clip_duration": 20,
         "aspect_ratio": "16:9",
         "art_style": "photorealistic",
         "word_in_image": True,

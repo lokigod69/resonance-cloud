@@ -28,6 +28,7 @@ import {
   RefreshCw,
   Search,
   ImageOff,
+  Zap,
 } from 'lucide-react'
 import { useToast } from '@/components/Toast'
 import WordDetailPanel from '@/components/admin/WordDetailPanel'
@@ -135,6 +136,7 @@ export default function Content() {
   const [deleteWordTarget, setDeleteWordTarget] = useState<WordRecord | null>(null)
   const [deleteDeckTarget, setDeleteDeckTarget] = useState<Deck | null>(null)
   const [regenerateTarget, setRegenerateTarget] = useState<WordRecord | null>(null)
+  const [smartRetryTarget, setSmartRetryTarget] = useState<WordRecord | null>(null)
   const [actionLoading, setActionLoading] = useState(false)
 
   // -------------------------------------------------------------------------
@@ -413,6 +415,65 @@ export default function Content() {
     }
   }
 
+  const confirmSmartRetry = async () => {
+    const word = smartRetryTarget
+    if (!word) return
+    setActionLoading(true)
+    try {
+      const { data: ownerProfile } = await supabase
+        .from('profiles')
+        .select('credits, display_name')
+        .eq('id', word.user_id)
+        .single()
+
+      if (!ownerProfile || ownerProfile.credits < 1) {
+        toast(`${ownerProfile?.display_name || 'User'} has 0 credits — cannot retry`, 'error')
+        setActionLoading(false)
+        setSmartRetryTarget(null)
+        return
+      }
+
+      const deck = decks.find(d => d.id === word.deck_id)
+
+      // Preserve video_url, thumbnail_url, metadata — only reset status + error
+      await supabase.from('words').update({
+        status: 'pending',
+        error_message: null,
+      }).eq('id', word.id)
+
+      await supabase.from('generation_jobs').insert({
+        user_id: word.user_id,
+        deck_id: word.deck_id,
+        status: 'approved',
+        priority: 0,
+        target_language: deck?.target_language || 'Unknown',
+        art_style: deck?.art_style || null,
+        words_total: 1,
+        words_completed: 0,
+        words_failed: 0,
+      })
+
+      await supabase
+        .from('profiles')
+        .update({ credits: ownerProfile.credits - 1 })
+        .eq('id', word.user_id)
+
+      await supabase
+        .from('decks')
+        .update({ status: 'generating' })
+        .eq('id', word.deck_id)
+
+      await fetchDecks()
+      await fetchWords(word.deck_id)
+      toast('Smart retry — only failed stages will re-run', 'success')
+    } catch (err) {
+      toast('Failed to create smart retry job', 'error')
+    } finally {
+      setActionLoading(false)
+      setSmartRetryTarget(null)
+    }
+  }
+
   // -------------------------------------------------------------------------
   // Render
   // -------------------------------------------------------------------------
@@ -640,11 +701,21 @@ export default function Content() {
                             >
                               <Flag className={`h-4 w-4 ${word.needs_review ? 'text-orange-400' : ''}`} />
                             </Button>
+                            {word.status === 'failed' && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => setSmartRetryTarget(word)}
+                                title="Smart Retry (reuse completed stages)"
+                              >
+                                <Zap className="h-4 w-4 text-yellow-400" />
+                              </Button>
+                            )}
                             <Button
                               variant="ghost"
                               size="sm"
                               onClick={() => setRegenerateTarget(word)}
-                              title="Regenerate"
+                              title="Full Regenerate"
                             >
                               <RefreshCw className="h-4 w-4" />
                             </Button>
@@ -715,13 +786,13 @@ export default function Content() {
         </DialogContent>
       </Dialog>
 
-      {/* Regenerate Confirmation */}
+      {/* Regenerate Confirmation (full) */}
       <Dialog open={!!regenerateTarget} onOpenChange={(v) => !v && setRegenerateTarget(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Regenerate Word</DialogTitle>
+            <DialogTitle>Full Regenerate</DialogTitle>
             <DialogDescription>
-              Regenerate <strong>{regenerateTarget?.word}</strong>? This will create a new generation job. Cost: 1 credit (deducted from the word owner's balance).
+              Regenerate <strong>{regenerateTarget?.word}</strong> from scratch? All stages will re-run. Cost: 1 credit.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
@@ -729,7 +800,27 @@ export default function Content() {
               Cancel
             </Button>
             <Button onClick={confirmRegenerate} disabled={actionLoading}>
-              {actionLoading ? 'Creating job…' : 'Regenerate'}
+              {actionLoading ? 'Creating job…' : 'Full Regenerate'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Smart Retry Confirmation */}
+      <Dialog open={!!smartRetryTarget} onOpenChange={(v) => !v && setSmartRetryTarget(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Smart Retry: {smartRetryTarget?.word}</DialogTitle>
+            <DialogDescription>
+              Re-run only the failed stages. Completed stages (images, video, etc.) will be reused. Cost: 1 credit.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setSmartRetryTarget(null)} disabled={actionLoading}>
+              Cancel
+            </Button>
+            <Button onClick={confirmSmartRetry} disabled={actionLoading}>
+              {actionLoading ? 'Retrying…' : 'Smart Retry'}
             </Button>
           </DialogFooter>
         </DialogContent>

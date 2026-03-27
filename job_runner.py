@@ -198,6 +198,54 @@ def get_fallback_overrides(
     return {}
 
 
+# ─── Smart Retry Helpers ─────────────────────────────────────────────────────
+
+def _validate_artifacts(word_dir: Path, stage: str, selected: str) -> bool:
+    """Check that a completed stage's output files actually exist on disk."""
+    folder_map = {
+        'concept': 'concept', 'song': 'songs', 'images': 'images',
+        'video': 'videos', 'assembly': 'final', 'bookend': 'bookend',
+    }
+    base = word_dir / folder_map[stage]
+
+    if stage == 'images':
+        d = base / selected
+        return d.is_dir() and any(d.glob("*.png"))
+    elif stage == 'concept':
+        return (base / selected).is_file()
+    elif stage == 'song':
+        # Format: "run-001_ts/take_001.flac"
+        parts = selected.split('/')
+        if len(parts) == 2:
+            return (base / parts[0] / parts[1]).is_file()
+        return (base / selected).is_dir()
+    elif stage == 'video':
+        d = base / selected
+        return d.is_dir() and any(d.glob("scene_*.mp4"))
+    elif stage == 'assembly':
+        return (base / selected / "final.mp4").is_file()
+    elif stage == 'bookend':
+        return (base / selected / "final.mp4").is_file()
+    return False
+
+
+def get_incomplete_stages(
+    word_dir: Path,
+    manifest_data: Any,
+    bookend_enabled: bool = True,
+) -> list[str]:
+    """Return stages that need (re-)running based on manifest selected fields + artifact existence."""
+    stages: list[str] = []
+    for stage in STAGE_ORDER:
+        if stage == 'bookend' and not bookend_enabled:
+            continue
+        field = 'final' if stage == 'assembly' else stage
+        selected = getattr(manifest_data.selected, field, None)
+        if selected is None or not _validate_artifacts(word_dir, stage, selected):
+            stages.append(stage)
+    return stages
+
+
 # ─── Thumbnail Extraction ────────────────────────────────────────────────────
 
 def extract_thumbnail(video_path: Path, output_path: Path) -> bool:
@@ -473,7 +521,7 @@ async def process_word(
 
     log.info("  Processing word: %s (%s)", word_text, word_slug_val)
 
-    # Create word folder and manifest
+    # Create word folder
     word_dir = create_word_folder(workspace_path, word_slug_val)
     enrichment_data = {
         "pos": enrichment.get("pos"),
@@ -481,19 +529,55 @@ async def process_word(
         "etymology": enrichment.get("etymology"),
         "mnemonic": enrichment.get("mnemonic"),
     }
-    create_manifest(
-        word_dir=word_dir,
-        word_original=word_text,
-        word_slug=word_slug_val,
-        translation=translation,
-        language=language,
-        language_code=lang_code,
-        enrichment_data=enrichment_data,
-    )
+
+    # Smart retry: check for existing manifest with completed stages
+    manifest_file = word_dir / "manifest.json"
+    is_smart_retry = False
+    stages_to_run: list[str] = list(STAGE_ORDER)
+
+    if manifest_file.exists():
+        try:
+            existing_manifest = read_manifest(word_dir)
+            # Resolve bookend enabled from workspace defaults + word settings
+            _defaults = load_defaults(workspace_path)
+            _be = {**_defaults.get('bookend', {}), **existing_manifest.settings.get('bookend', {})}
+            bookend_on = _be.get('enabled', True)
+
+            incomplete = get_incomplete_stages(word_dir, existing_manifest, bookend_on)
+
+            if incomplete and len(incomplete) < len(STAGE_ORDER):
+                skipped = [s for s in STAGE_ORDER if s not in incomplete]
+                log.info("  Smart retry: running %s, skipping %s", incomplete, skipped)
+                stages_to_run = incomplete
+                is_smart_retry = True
+            else:
+                log.info("  Manifest exists but all stages incomplete — full run")
+                stages_to_run = list(STAGE_ORDER)
+        except Exception as e:
+            log.warning("  Failed to read existing manifest: %s — creating fresh", e)
+            create_manifest(
+                word_dir=word_dir,
+                word_original=word_text,
+                word_slug=word_slug_val,
+                translation=translation,
+                language=language,
+                language_code=lang_code,
+                enrichment_data=enrichment_data,
+            )
+    else:
+        create_manifest(
+            word_dir=word_dir,
+            word_original=word_text,
+            word_slug=word_slug_val,
+            translation=translation,
+            language=language,
+            language_code=lang_code,
+            enrichment_data=enrichment_data,
+        )
 
     # Run pipeline stages with retry
     pipeline_start = time.monotonic()
-    for stage in STAGE_ORDER:
+    for stage in stages_to_run:
         success = False
         for attempt in range(MAX_RETRIES + 1):
             try:
@@ -546,6 +630,11 @@ async def process_word(
         )
     except Exception as e:
         log.warning("  Metadata collection failed for %s: %s", word_slug_val, e)
+
+    # Annotate metadata with smart retry info
+    if word_metadata and is_smart_retry:
+        word_metadata["smart_retry"] = True
+        word_metadata["stages_skipped"] = [s for s in STAGE_ORDER if s not in stages_to_run]
 
     # Upload results
     manifest_data = read_manifest(word_dir)

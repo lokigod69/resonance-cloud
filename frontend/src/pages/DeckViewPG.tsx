@@ -19,8 +19,12 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
+  RotateCcw,
+  Trash2,
 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
+import { useAuth } from '@/hooks/useAuth'
+import { useToast } from '@/components/Toast'
 
 type Deck = {
   id: string
@@ -57,6 +61,78 @@ export default function DeckViewPG() {
   const [isRenaming, setIsRenaming] = useState(false)
   const [renameTo, setRenameTo] = useState('')
   const [activeIndex, setActiveIndex] = useState(0)
+  const { user, profile, refreshProfile } = useAuth()
+  const { toast } = useToast()
+  const [retrying, setRetrying] = useState<string | null>(null)
+  const [deleting, setDeleting] = useState<string | null>(null)
+
+  const handleRetry = async (word: Word) => {
+    if (!user || !profile || profile.credits < 1) {
+      toast('No credits remaining', 'error')
+      return
+    }
+    setRetrying(word.id)
+    try {
+      await supabase.from('words').update({
+        status: 'pending',
+        error_message: null,
+      }).eq('id', word.id)
+
+      await supabase.from('generation_jobs').insert({
+        user_id: user.id,
+        deck_id: id,
+        status: 'approved',
+        priority: 0,
+        target_language: deck?.target_language || 'Unknown',
+        art_style: deck?.art_style || null,
+        words_total: 1,
+        words_completed: 0,
+        words_failed: 0,
+      })
+
+      await supabase.from('profiles')
+        .update({ credits: profile.credits - 1 })
+        .eq('id', user.id)
+
+      await supabase.from('decks')
+        .update({ status: 'generating' })
+        .eq('id', id)
+
+      await refreshProfile()
+      const { data } = await supabase.from('words').select('*').eq('deck_id', id).order('created_at')
+      if (data) setWords(data)
+      toast('Retrying generation...', 'success')
+    } catch {
+      toast('Retry failed', 'error')
+    } finally {
+      setRetrying(null)
+    }
+  }
+
+  const handleDeleteWord = async (word: Word) => {
+    if (!confirm(`Remove "${word.word}" from this deck?`)) return
+    setDeleting(word.id)
+    try {
+      // Clean up storage files if they exist
+      if (user && (word.video_url || word.thumbnail_url)) {
+        const prefix = `${user.id}/${id}/${word.word}`
+        await supabase.storage.from('videos').remove([`${prefix}/video.mp4`, `${prefix}/thumb.jpg`]).catch(() => {})
+      }
+      await supabase.from('words').delete().eq('id', word.id)
+      const remaining = words.filter(w => w.id !== word.id)
+      setWords(remaining)
+      // Update deck word count and status
+      const allComplete = remaining.length > 0 && remaining.every(w => w.status === 'complete')
+      const someComplete = remaining.some(w => w.status === 'complete')
+      const newStatus = allComplete ? 'complete' : someComplete ? 'partial' : 'draft'
+      await supabase.from('decks').update({ word_count: remaining.length, status: newStatus }).eq('id', id)
+      toast('Word removed', 'success')
+    } catch {
+      toast('Failed to remove word', 'error')
+    } finally {
+      setDeleting(null)
+    }
+  }
 
   const fetchData = useCallback(async () => {
     if (!id) return
@@ -415,8 +491,28 @@ export default function DeckViewPG() {
                                 <>
                                   <p className="text-lg font-bold text-white">{word.word}</p>
                                   <p className="text-xs text-gray-500 mt-1">
-                                    {word.status === 'failed' ? 'Failed' : 'Processing...'}
+                                    {word.status === 'failed' ? 'Failed to generate' : 'Processing...'}
                                   </p>
+                                  {word.status === 'failed' && (
+                                    <div className="flex gap-2 mt-3">
+                                      <button
+                                        onClick={() => handleRetry(word)}
+                                        disabled={retrying === word.id}
+                                        className="px-3 py-1.5 text-xs font-medium bg-white/10 hover:bg-white/20 rounded-lg transition-colors disabled:opacity-50"
+                                      >
+                                        <RotateCcw className="h-3 w-3 inline mr-1" />
+                                        {retrying === word.id ? 'Retrying...' : 'Retry'}
+                                      </button>
+                                      <button
+                                        onClick={() => handleDeleteWord(word)}
+                                        disabled={deleting === word.id}
+                                        className="px-3 py-1.5 text-xs text-red-400 hover:text-red-300 bg-white/5 hover:bg-white/10 rounded-lg transition-colors disabled:opacity-50"
+                                      >
+                                        <Trash2 className="h-3 w-3 inline mr-1" />
+                                        Remove
+                                      </button>
+                                    </div>
+                                  )}
                                 </>
                               )}
                             </div>

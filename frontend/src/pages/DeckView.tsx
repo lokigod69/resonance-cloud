@@ -5,8 +5,10 @@ import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, Play, Pause, AlertCircle, Sparkles, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Maximize } from 'lucide-react'
+import { ArrowLeft, Play, Pause, AlertCircle, Sparkles, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Maximize, Trash2 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
+import { useAuth } from '@/hooks/useAuth'
+import { useToast } from '@/components/Toast'
 
 type Deck = {
   id: string
@@ -46,6 +48,78 @@ export default function DeckView() {
   const [viewerIndex, setViewerIndex] = useState(0)
   const [videoKey, setVideoKey] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const { user, profile, refreshProfile } = useAuth()
+  const { toast } = useToast()
+  const [retrying, setRetrying] = useState<string | null>(null)
+  const [deleting, setDeleting] = useState<string | null>(null)
+
+  const handleRetry = async (word: Word) => {
+    if (!user || !profile || profile.credits < 1) {
+      toast('No credits remaining', 'error')
+      return
+    }
+    setRetrying(word.id)
+    try {
+      await supabase.from('words').update({
+        status: 'pending',
+        error_message: null,
+      }).eq('id', word.id)
+
+      await supabase.from('generation_jobs').insert({
+        user_id: user.id,
+        deck_id: id,
+        status: 'approved',
+        priority: 0,
+        target_language: deck?.target_language || 'Unknown',
+        art_style: deck?.art_style || null,
+        words_total: 1,
+        words_completed: 0,
+        words_failed: 0,
+      })
+
+      await supabase.from('profiles')
+        .update({ credits: profile.credits - 1 })
+        .eq('id', user.id)
+
+      await supabase.from('decks')
+        .update({ status: 'generating' })
+        .eq('id', id)
+
+      await refreshProfile()
+      const { data } = await supabase.from('words').select('*').eq('deck_id', id).order('created_at')
+      if (data) setWords(data)
+      toast('Retrying generation...', 'success')
+    } catch {
+      toast('Retry failed', 'error')
+    } finally {
+      setRetrying(null)
+    }
+  }
+
+  const handleDeleteWord = async (word: Word) => {
+    if (!confirm(`Remove "${word.word}" from this deck?`)) return
+    setDeleting(word.id)
+    try {
+      // Clean up storage files if they exist
+      if (user && (word.video_url || word.thumbnail_url)) {
+        const prefix = `${user.id}/${id}/${word.word}`
+        await supabase.storage.from('videos').remove([`${prefix}/video.mp4`, `${prefix}/thumb.jpg`]).catch(() => {})
+      }
+      await supabase.from('words').delete().eq('id', word.id)
+      const remaining = words.filter(w => w.id !== word.id)
+      setWords(remaining)
+      // Update deck word count and status
+      const allComplete = remaining.length > 0 && remaining.every(w => w.status === 'complete')
+      const someComplete = remaining.some(w => w.status === 'complete')
+      const newStatus = allComplete ? 'complete' : someComplete ? 'partial' : 'draft'
+      await supabase.from('decks').update({ word_count: remaining.length, status: newStatus }).eq('id', id)
+      toast('Word removed', 'success')
+    } catch {
+      toast('Failed to remove word', 'error')
+    } finally {
+      setDeleting(null)
+    }
+  }
 
   const fetchData = useCallback(async () => {
     if (!id) return
@@ -264,13 +338,34 @@ export default function DeckView() {
                   </div>
                 </div>
               ) : isFailed ? (
-                <div className="glass rounded-xl overflow-hidden opacity-50">
+                <div className="glass rounded-xl overflow-hidden opacity-70">
                   <div className="aspect-video flex items-center justify-center bg-destructive/5">
                     <AlertCircle className="h-8 w-8 text-destructive-foreground/50" />
                   </div>
-                  <div className="p-3 space-y-0.5">
+                  <div className="p-3 space-y-1.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
                     <p className="text-xs text-destructive-foreground">Could not generate</p>
+                    <div className="flex gap-1.5 pt-1">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="h-7 text-xs gap-1"
+                        onClick={() => handleRetry(word)}
+                        disabled={retrying === word.id}
+                      >
+                        <RotateCcw className="h-3 w-3" />
+                        {retrying === word.id ? 'Retrying...' : 'Retry'}
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-7 text-xs text-destructive-foreground/50 hover:text-destructive-foreground"
+                        onClick={() => handleDeleteWord(word)}
+                        disabled={deleting === word.id}
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               ) : (
