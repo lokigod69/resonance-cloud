@@ -5,7 +5,7 @@ import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, Play, Pause, AlertCircle, Sparkles, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react'
+import { ArrowLeft, Play, Pause, AlertCircle, Sparkles, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Maximize } from 'lucide-react'
 
 type Deck = {
   id: string
@@ -200,14 +200,15 @@ export default function DeckView() {
       </div>
 
       {/* Word Grid */}
-      <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="w-full max-w-5xl mx-auto px-4 py-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-items-center">
         {words.map((word) => {
           const isComplete = word.status === 'complete'
           const isFailed = word.status === 'failed'
           const isPending = word.status === 'pending' || word.status === 'processing'
 
           return (
-            <div key={word.id} className="relative group">
+            <div key={word.id} className="relative group w-full max-w-[280px]">
               {isComplete ? (
                 <div
                   onClick={() => {
@@ -278,6 +279,7 @@ export default function DeckView() {
             </div>
           )
         })}
+      </div>
       </div>
 
       {/* Footer actions */}
@@ -423,12 +425,27 @@ function VideoViewerModal({
 
             {/* Play/Pause overlay button */}
             {word.video_url && (
-              <button
-                onClick={(e) => { e.stopPropagation(); togglePlayPause() }}
-                className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white z-20 hover:bg-black/80 transition-colors"
-              >
-                {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
-              </button>
+              <>
+                <button
+                  onClick={(e) => { e.stopPropagation(); togglePlayPause() }}
+                  className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white z-20 hover:bg-black/80 transition-colors"
+                >
+                  {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    if (document.fullscreenElement) {
+                      document.exitFullscreen()
+                    } else {
+                      videoRef.current?.requestFullscreen()
+                    }
+                  }}
+                  className="absolute bottom-4 left-20 w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white z-20 hover:bg-black/80 transition-colors"
+                >
+                  <Maximize className="h-5 w-5" />
+                </button>
+              </>
             )}
           </div>
 

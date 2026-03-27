@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import { Loader } from 'lucide-react'
 
 type Deck = {
   id: string
@@ -187,6 +188,23 @@ export default function DashboardGO() {
                   transition: 'opacity 0.3s',
                 }}
               />
+              {/* Placeholder for decks with no thumbnail */}
+              {!thumb && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    zIndex: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                    borderRadius: '20px',
+                  }}
+                >
+                  <Loader className="w-8 h-8 text-gray-600 animate-spin" />
+                </div>
+              )}
               {/* Bottom gradient for text readability */}
               <div
                 style={{
