@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Coins, Sparkles, Music, Plus, ChevronRight, AlertCircle, RefreshCw, LogIn } from 'lucide-react'
+import { Coins, Sparkles, Music, Plus, AlertCircle, RefreshCw, LogIn } from 'lucide-react'
 
 type Deck = {
   id: string
@@ -61,6 +61,7 @@ export default function Dashboard() {
   const { profile, user, authError } = useAuth()
   const [decks, setDecks] = useState<Deck[]>([])
   const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
+  const [deckThumbs, setDeckThumbs] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(true)
   const [dashboardError, setDashboardError] = useState<string | null>(null)
 
@@ -105,6 +106,23 @@ export default function Dashboard() {
               if (w.status === 'complete') counts[w.deck_id].completed++
             }
             setWordCounts(counts)
+          }
+
+          // Fetch first thumbnail per deck
+          const { data: thumbData } = await supabase
+            .from('words')
+            .select('deck_id, thumbnail_url')
+            .in('deck_id', deckIds)
+            .eq('status', 'complete')
+            .not('thumbnail_url', 'is', null)
+            .order('created_at', { ascending: true })
+
+          if (thumbData) {
+            const thumbs: Record<string, string> = {}
+            for (const t of thumbData as { deck_id: string; thumbnail_url: string }[]) {
+              if (!thumbs[t.deck_id]) thumbs[t.deck_id] = t.thumbnail_url
+            }
+            setDeckThumbs(thumbs)
           }
         }
       }
@@ -245,11 +263,12 @@ export default function Dashboard() {
           </div>
         ) : (
           /* Deck grid */
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
             {decks.map((deck) => {
               const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
               const progress = counts.total > 0 ? (counts.completed / counts.total) * 100 : 0
               const flag = LANGUAGE_FLAGS[deck.target_language] || ''
+              const thumb = deckThumbs[deck.id]
               const displayName =
                 deck.name ||
                 `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString()}`
@@ -258,25 +277,38 @@ export default function Dashboard() {
                 <Link
                   key={deck.id}
                   to={`/deck/${deck.id}`}
-                  className="glass glass-hover rounded-xl p-5 space-y-3 transition-all duration-200 hover:scale-[1.02] hover:glow-purple group block"
+                  className="glass glass-hover rounded-xl overflow-hidden transition-all duration-200 hover:scale-[1.02] hover:glow-purple group block"
                 >
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-1">
-                      <h3 className="font-semibold group-hover:text-primary transition-colors">
-                        {displayName}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {flag} {deck.target_language} &middot; {counts.total} words
-                      </p>
-                    </div>
-                    <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors mt-1" />
+                  {/* Thumbnail */}
+                  <div className="aspect-video relative bg-white/5">
+                    {thumb ? (
+                      <img
+                        src={thumb}
+                        alt={displayName}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
+                        <Music className="h-8 w-8 text-primary/30" />
+                      </div>
+                    )}
                   </div>
 
-                  {getStatusBadge(deck.status, counts.completed, counts.total)}
+                  {/* Info */}
+                  <div className="p-4 space-y-2">
+                    <h3 className="font-semibold text-sm truncate group-hover:text-primary transition-colors">
+                      {displayName}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      {flag} {deck.target_language} &middot; {counts.total} words
+                    </p>
 
-                  {deck.status === 'generating' && (
-                    <Progress value={progress} className="h-1.5" />
-                  )}
+                    {getStatusBadge(deck.status, counts.completed, counts.total)}
+
+                    {deck.status === 'generating' && (
+                      <Progress value={progress} className="h-1.5" />
+                    )}
+                  </div>
                 </Link>
               )
             })}

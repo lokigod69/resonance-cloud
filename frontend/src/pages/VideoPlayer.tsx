@@ -10,14 +10,20 @@ import {
   RotateCcw,
   X,
 } from 'lucide-react'
+import WordInfoPanel from '@/components/WordInfoPanel'
 
 type Word = {
   id: string
   word: string
   translation: string | null
   mnemonic: string | null
+  etymology: string | null
+  pos: string | null
+  article: string | null
+  rating: number | null
   status: string
   video_url: string | null
+  metadata: Record<string, unknown> | null
 }
 
 export default function VideoPlayer() {
@@ -33,7 +39,7 @@ export default function VideoPlayer() {
     async function load() {
       const { data } = await supabase
         .from('words')
-        .select('id, word, translation, mnemonic, status, video_url')
+        .select('id, word, translation, mnemonic, etymology, pos, article, rating, metadata, status, video_url')
         .eq('deck_id', deckId)
         .eq('status', 'complete')
         .order('created_at')
@@ -47,6 +53,14 @@ export default function VideoPlayer() {
   const current = currentIndex >= 0 ? words[currentIndex] : null
   const prev = currentIndex > 0 ? words[currentIndex - 1] : null
   const next = currentIndex < words.length - 1 ? words[currentIndex + 1] : null
+
+  async function handleRate(wordId: string, rating: number) {
+    await supabase
+      .from('words')
+      .update({ rating, rated_at: new Date().toISOString() })
+      .eq('id', wordId)
+    setWords((prev) => prev.map((w) => (w.id === wordId ? { ...w, rating } : w)))
+  }
 
   const goTo = useCallback(
     (wId: string) => {
@@ -137,17 +151,7 @@ export default function VideoPlayer() {
           </div>
 
           {/* Word info */}
-          <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold">{current.word}</h1>
-            {current.translation && (
-              <p className="text-xl text-muted-foreground">{current.translation}</p>
-            )}
-            {current.mnemonic && (
-              <p className="text-sm text-muted-foreground/70 max-w-lg mx-auto italic">
-                {current.mnemonic}
-              </p>
-            )}
-          </div>
+          <WordInfoPanel word={current} onRate={handleRate} />
 
           {/* Controls */}
           <div className="flex items-center justify-center gap-3">

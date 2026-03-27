@@ -113,6 +113,7 @@ export default function WordDetailPanel({
 
               <MetaSection title="Creative Direction">
                 <MetaRow label="Direction" value={meta.creative_direction as string | undefined} />
+                <MetaRow label="Rationale" value={meta.creative_direction_rationale as string | undefined} />
                 <MetaRow label="Art Style" value={meta.art_style as string | undefined} />
                 <MetaRow label="Movie Reference" value={meta.movie_reference as string | undefined} />
                 <MetaRow label="Music Caption" value={meta.music_caption as string | undefined} />

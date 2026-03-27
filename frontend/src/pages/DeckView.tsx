@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ArrowLeft, Play, Pause, AlertCircle, Sparkles, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Maximize } from 'lucide-react'
+import WordInfoPanel from '@/components/WordInfoPanel'
 
 type Deck = {
   id: string
@@ -22,9 +23,14 @@ type Word = {
   word: string
   translation: string | null
   mnemonic: string | null
+  etymology: string | null
+  pos: string | null
+  article: string | null
+  rating: number | null
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  metadata: Record<string, unknown> | null
   created_at: string
 }
 
@@ -105,6 +111,14 @@ export default function DeckView() {
   const displayName =
     deck.name ||
     `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString()}`
+
+  async function handleRate(wordId: string, rating: number) {
+    await supabase
+      .from('words')
+      .update({ rating, rated_at: new Date().toISOString() })
+      .eq('id', wordId)
+    setWords((prev) => prev.map((w) => (w.id === wordId ? { ...w, rating } : w)))
+  }
 
   async function handleRename() {
     if (!deck) return
@@ -307,6 +321,7 @@ export default function DeckView() {
             setVideoKey(k => k + 1)
           }}
           onReplay={() => setVideoKey(k => k + 1)}
+          onRate={handleRate}
         />
       )}
     </div>
@@ -321,6 +336,7 @@ function VideoViewerModal({
   onClose,
   onNavigate,
   onReplay,
+  onRate,
 }: {
   words: Word[]
   currentIndex: number
@@ -329,6 +345,7 @@ function VideoViewerModal({
   onClose: () => void
   onNavigate: (idx: number) => void
   onReplay: () => void
+  onRate: (wordId: string, rating: number) => void
 }) {
   const word = words[currentIndex]
   const hasPrev = currentIndex > 0
@@ -450,17 +467,7 @@ function VideoViewerModal({
           </div>
 
           {/* Word info */}
-          <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold">{word.word}</h1>
-            {word.translation && (
-              <p className="text-xl text-muted-foreground">{word.translation}</p>
-            )}
-            {word.mnemonic && (
-              <p className="text-sm text-muted-foreground/70 max-w-lg mx-auto italic">
-                {word.mnemonic}
-              </p>
-            )}
-          </div>
+          <WordInfoPanel word={word} onRate={onRate} />
 
           {/* Replay */}
           <div className="flex items-center justify-center">

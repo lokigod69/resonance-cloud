@@ -20,6 +20,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from 'lucide-react'
+import WordInfoPanel from '@/components/WordInfoPanel'
 
 type Deck = {
   id: string
@@ -36,9 +37,14 @@ type Word = {
   word: string
   translation: string | null
   mnemonic: string | null
+  etymology: string | null
+  pos: string | null
+  article: string | null
+  rating: number | null
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  metadata: Record<string, unknown> | null
   created_at: string
 }
 
@@ -172,6 +178,14 @@ export default function DeckViewPG() {
       setDeck((prev) => (prev ? { ...prev, name: trimmed } : prev))
       setIsRenaming(false)
     }
+  }
+
+  async function handleRate(wordId: string, rating: number) {
+    await supabase
+      .from('words')
+      .update({ rating, rated_at: new Date().toISOString() })
+      .eq('id', wordId)
+    setWords((prev) => prev.map((w) => (w.id === wordId ? { ...w, rating } : w)))
   }
 
   function startRenaming() {
@@ -396,17 +410,7 @@ export default function DeckViewPG() {
                           >
                             <div className="p-6 flex flex-col items-center text-center">
                               {isComplete ? (
-                                <>
-                                  <h2 className="text-2xl font-bold text-white mb-1">{word.word}</h2>
-                                  {word.translation && (
-                                    <p className="text-lg text-gray-300 mb-3">{word.translation}</p>
-                                  )}
-                                  {word.mnemonic && (
-                                    <p className="text-sm italic text-gray-500 leading-relaxed max-w-lg">
-                                      {word.mnemonic}
-                                    </p>
-                                  )}
-                                </>
+                                <WordInfoPanel word={word} onRate={handleRate} />
                               ) : (
                                 <>
                                   <p className="text-lg font-bold text-white">{word.word}</p>
