@@ -10,6 +10,7 @@ interface ConfirmStepProps {
   onGenerate: () => void
   submitting: boolean
   error: string | null
+  existingDeck?: boolean
 }
 
 function getLanguageLabel(value: string | null) {
@@ -48,7 +49,7 @@ const row = {
   show: { opacity: 1, x: 0 },
 }
 
-export default function ConfirmStep({ state, dispatch, onGenerate, submitting, error }: ConfirmStepProps) {
+export default function ConfirmStep({ state, dispatch, onGenerate, submitting, error, existingDeck }: ConfirmStepProps) {
   const summaryItems = [
     { label: 'Language', value: getLanguageLabel(state.language), step: 1 as const },
     { label: 'Words', value: `${state.words.length} word${state.words.length !== 1 ? 's' : ''}`, step: 2 as const },
@@ -66,6 +67,24 @@ export default function ConfirmStep({ state, dispatch, onGenerate, submitting, e
       >
         Ready to create
       </motion.h2>
+
+      {/* Deck name input */}
+      {!existingDeck && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-md mb-6"
+        >
+          <input
+            type="text"
+            value={state.deckName}
+            onChange={(e) => dispatch({ type: 'SET_DECK_NAME', name: e.target.value })}
+            placeholder="Name your deck..."
+            maxLength={50}
+            className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-center text-sm placeholder-white/30 outline-none focus:border-white/30 transition-colors"
+          />
+        </motion.div>
+      )}
 
       {/* Summary */}
       <motion.div

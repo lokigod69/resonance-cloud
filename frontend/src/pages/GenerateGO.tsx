@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
+import { supabase } from '@/lib/supabase'
 import { LANGUAGES, VIBES, ART_STYLE_GROUPS, MAX_WORDS } from '@/components/generate/wizardData'
 import { submitGeneration } from '@/components/generate/submitGeneration'
-import type { GeneratePayload } from '@/components/generate/useWizardState'
+import type { GeneratePayload, ExistingDeck } from '@/components/generate/useWizardState'
 
 const GO_GENRES = [
   { value: 'auto', label: 'Auto' },
@@ -34,10 +35,32 @@ export default function GenerateGO() {
   const [genre, setGenre] = useState<string | null>(null)
   const [customGenre, setCustomGenre] = useState('')
   const [showCustomInput, setShowCustomInput] = useState(false)
+  const [deckName, setDeckName] = useState('')
 
   // Submit
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  // "Add Cards" mode: existing deck via ?deckId=xxx
+  const [searchParams] = useSearchParams()
+  const deckIdParam = searchParams.get('deckId')
+  const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
+
+  useEffect(() => {
+    if (!deckIdParam) return
+    supabase
+      .from('decks')
+      .select('id, name, target_language, art_style, movie_override, word_count')
+      .eq('id', deckIdParam)
+      .single()
+      .then(({ data }) => {
+        if (data) {
+          setExistingDeck(data)
+          setLanguage(data.target_language)
+          setStep(2) // skip language selection
+        }
+      })
+  }, [deckIdParam])
 
   // Scroll refs
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -61,6 +84,7 @@ export default function GenerateGO() {
   // ── Step 1: Language ──────────────────────────────
 
   function handleLanguageSelect(value: string) {
+    if (existingDeck) return // language is locked when adding to existing deck
     if (step > 1 && language === value) {
       setLanguage(null)
       setStep(1)
@@ -171,9 +195,9 @@ export default function GenerateGO() {
           : genre || undefined
 
       const payload: GeneratePayload = {
-        deckPayload: {
+        deckPayload: existingDeck ? null : {
           user_id: user.id,
-          name: `${language} Deck — ${new Date().toLocaleDateString()}`,
+          name: deckName.trim() || `${language} Deck — ${new Date().toLocaleDateString()}`,
           target_language: language,
           art_style: artStyle,
           movie_override: movieOverride,
@@ -183,10 +207,11 @@ export default function GenerateGO() {
         wordList: words,
         jobPayload: {
           user_id: user.id,
+          ...(existingDeck ? { deck_id: existingDeck.id } : {}),
           status: 'pending',
           target_language: language,
-          art_style: artStyle,
-          movie_override: movieOverride,
+          art_style: artStyle ?? existingDeck?.art_style ?? null,
+          movie_override: movieOverride ?? existingDeck?.movie_override ?? null,
           words_total: words.length,
           settings_override: {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
@@ -195,9 +220,9 @@ export default function GenerateGO() {
         },
       }
 
-      await submitGeneration(user.id, payload)
+      await submitGeneration(user.id, payload, existingDeck ?? undefined)
       await refreshProfile()
-      navigate('/dashboard')
+      navigate(existingDeck ? `/deck/${existingDeck.id}` : '/dashboard')
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Something went wrong')
       setSubmitting(false)
@@ -422,11 +447,31 @@ export default function GenerateGO() {
       {step >= 6 && (
         <div ref={el => { sectionRefs.current[5] = el }} className="gen-section" style={{ textAlign: 'center' }}>
           <h3 style={{ fontSize: '2.2rem', color: 'white', fontWeight: 300, marginBottom: 8 }}>
-            Synthesis Ready
+            {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
           </h3>
+          {existingDeck && (
+            <p style={{ color: 'var(--go-accent, #8b5cf6)', marginBottom: 8, fontSize: '0.85rem' }}>
+              Adding to: {existingDeck.name || `${existingDeck.target_language} Deck`}
+            </p>
+          )}
           <p style={{ color: 'var(--go-text-secondary)', marginBottom: 16, fontSize: '0.9rem' }}>
             {words.length} word{words.length !== 1 ? 's' : ''} · {findLanguageLabel(language!)} · {credits} credits
           </p>
+
+          {/* Deck name input */}
+          {!existingDeck && (
+            <div style={{ marginBottom: 24 }}>
+              <input
+                type="text"
+                value={deckName}
+                onChange={(e) => setDeckName(e.target.value)}
+                placeholder="Name your deck..."
+                maxLength={50}
+                className="w-full max-w-sm mx-auto block p-3 rounded-lg bg-transparent border border-white/15 outline-none focus:border-[var(--go-accent,#8b5cf6)]/50 transition-colors text-center font-semibold text-white placeholder:text-gray-500"
+                style={{ fontFamily: "'Nunito', sans-serif" }}
+              />
+            </div>
+          )}
 
           {/* Summary tags */}
           <div className="gen-orb-row" style={{ marginBottom: 32, gap: 12, opacity: 0.6 }}>

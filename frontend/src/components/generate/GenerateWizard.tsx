@@ -99,6 +99,7 @@ export default function GenerateWizard() {
             onGenerate={handleGenerate}
             submitting={submitting}
             error={error}
+            existingDeck={!!existingDeck}
           />
         )
     }

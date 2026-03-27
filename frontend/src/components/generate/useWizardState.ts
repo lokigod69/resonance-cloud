@@ -10,6 +10,7 @@ export interface WizardState {
   movieTitle: string | null
   artStyle: string | null
   genre: string | null
+  deckName: string
 }
 
 export type WizardAction =
@@ -21,6 +22,7 @@ export type WizardAction =
   | { type: 'SET_MOVIE_TITLE'; title: string }
   | { type: 'SET_ART_STYLE'; style: string | null }
   | { type: 'SET_GENRE'; genre: string | null }
+  | { type: 'SET_DECK_NAME'; name: string }
   | { type: 'GO_TO_STEP'; step: 1 | 2 | 3 | 4 | 5 | 6 }
   | { type: 'CHOOSE_PATH'; path: 'quick' | 'custom' }
   | { type: 'NEXT_STEP' }
@@ -35,6 +37,7 @@ const initialState: WizardState = {
   movieTitle: null,
   artStyle: null,
   genre: null,
+  deckName: '',
 }
 
 function wizardReducer(state: WizardState, action: WizardAction): WizardState {
@@ -67,6 +70,9 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
 
     case 'SET_GENRE':
       return { ...state, genre: action.genre }
+
+    case 'SET_DECK_NAME':
+      return { ...state, deckName: action.name }
 
     case 'GO_TO_STEP':
       return { ...state, step: action.step }
@@ -142,7 +148,7 @@ export function useWizardState() {
       return {
         deckPayload: existingDeck ? null : {
           user_id: userId,
-          name: `${language} Deck \u2014 ${new Date().toLocaleDateString()}`,
+          name: state.deckName.trim() || `${language} Deck \u2014 ${new Date().toLocaleDateString()}`,
           target_language: language,
           art_style: artStyle,
           movie_override: movieOverride,

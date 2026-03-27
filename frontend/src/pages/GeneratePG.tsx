@@ -276,6 +276,7 @@ export default function GeneratePG() {
           {pgStep === 5 && (
             <StepReview
               state={state}
+              dispatch={dispatch}
               credits={profile?.credits ?? 0}
               onSubmit={handleGenerate}
               submitting={submitting}
@@ -715,6 +716,7 @@ function StepMusic({
 
 function StepReview({
   state,
+  dispatch,
   credits,
   onSubmit,
   submitting,
@@ -723,6 +725,7 @@ function StepReview({
   existingDeck,
 }: {
   state: import('@/components/generate/useWizardState').WizardState
+  dispatch: React.Dispatch<import('@/components/generate/useWizardState').WizardAction>
   credits: number
   onSubmit: () => void
   submitting: boolean
@@ -780,6 +783,21 @@ function StepReview({
       <h2 className="text-5xl font-bold font-display tracking-tight mb-10 text-center text-white drop-shadow-md italic">
         Synthesis Ready
       </h2>
+
+      {/* Deck name input */}
+      {!existingDeck && (
+        <div className="mb-8">
+          <input
+            type="text"
+            value={state.deckName}
+            onChange={(e) => dispatch({ type: 'SET_DECK_NAME', name: e.target.value })}
+            placeholder="Name your deck..."
+            maxLength={50}
+            className="w-full max-w-md mx-auto block p-4 rounded-xl bg-transparent border border-white/10 outline-none focus:border-teal-500/50 transition-colors text-center text-lg font-light text-white placeholder:text-gray-600"
+            style={{ fontFamily: 'var(--font-display, inherit)' }}
+          />
+        </div>
+      )}
 
       <div className="space-y-4">
         {sections.map((s) => (
