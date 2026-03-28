@@ -12,7 +12,6 @@ import Dashboard from '@/pages/Dashboard'
 import Generate from '@/pages/Generate'
 import DeckView from '@/pages/DeckView'
 import VideoPlayer from '@/pages/VideoPlayer'
-import Settings from '@/pages/Settings'
 import Study from '@/pages/Study'
 import DashboardPG from '@/pages/DashboardPG'
 import GeneratePG from '@/pages/GeneratePG'
@@ -117,21 +116,19 @@ function AppRoutes() {
         <Route path="/deck/:id/word/:wordId" element={<VideoPlayer />} />
 
         {/* User-facing routes — skin-aware layout */}
-        {skin === 'glass-orb' ? (
+        {skin === 'orbs' ? (
           <Route element={<GlassOrbLayout />}>
             <Route path="/dashboard" element={<DashboardGO />} />
             <Route path="/generate" element={<GenerateGO />} />
             <Route path="/deck/:id" element={<DeckView />} /> {/* TODO: create DeckViewGO */}
             <Route path="/study" element={<StudyGO />} />
-            <Route path="/settings" element={<Settings />} />
           </Route>
-        ) : skin === 'polish-glass' ? (
+        ) : skin === 'glassy' ? (
           <Route element={<PolishGlassLayout />}>
             <Route path="/dashboard" element={<DashboardPG />} />
             <Route path="/generate" element={<GeneratePG />} />
             <Route path="/deck/:id" element={<DeckViewPG />} />
             <Route path="/study" element={<StudyPG />} />
-            <Route path="/settings" element={<Settings />} />
           </Route>
         ) : (
           <Route element={<AppLayout />}>
@@ -139,7 +136,6 @@ function AppRoutes() {
             <Route path="/generate" element={<Generate />} />
             <Route path="/deck/:id" element={<DeckView />} />
             <Route path="/study" element={<Study />} />
-            <Route path="/settings" element={<Settings />} />
           </Route>
         )}
 

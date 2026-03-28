@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 
-export type SkinId = 'default' | 'polish-glass' | 'glass-orb'
+export type SkinId = 'classic' | 'glassy' | 'orbs'
 
 interface SkinContextValue {
   skin: SkinId
@@ -8,25 +8,44 @@ interface SkinContextValue {
 }
 
 const STORAGE_KEY = 'resonance-skin'
-const VALID_SKINS: SkinId[] = ['default', 'polish-glass', 'glass-orb']
+const VALID_SKINS: SkinId[] = ['classic', 'glassy', 'orbs']
+
+// Map old stored/DB values to new skin IDs
+const LEGACY_MAP: Record<string, SkinId> = {
+  'default': 'classic',
+  'polish-glass': 'glassy',
+  'glass-orb': 'orbs',
+}
+
+function migrateSkinId(raw: string | null): SkinId {
+  if (!raw) return 'classic'
+  if (VALID_SKINS.includes(raw as SkinId)) return raw as SkinId
+  if (raw in LEGACY_MAP) return LEGACY_MAP[raw]
+  return 'classic'
+}
 
 const SkinContext = createContext<SkinContextValue>({
-  skin: 'default',
+  skin: 'classic',
   setSkin: () => {},
 })
 
 export function SkinProvider({ children }: { children: ReactNode }) {
   const [skin, setSkinState] = useState<SkinId>(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) as SkinId | null
-    return stored && VALID_SKINS.includes(stored) ? stored : 'default'
+    const raw = localStorage.getItem(STORAGE_KEY)
+    const resolved = migrateSkinId(raw)
+    // Write back if migrated from legacy value
+    if (raw && raw !== resolved) {
+      localStorage.setItem(STORAGE_KEY, resolved)
+    }
+    return resolved
   })
 
   // Apply/remove skin class on <html>
   useEffect(() => {
     const html = document.documentElement
-    html.classList.remove('skin-polish-glass', 'skin-glass-orb')
-    if (skin === 'polish-glass') html.classList.add('skin-polish-glass')
-    if (skin === 'glass-orb') html.classList.add('skin-glass-orb')
+    html.classList.remove('skin-glassy', 'skin-orbs')
+    if (skin === 'glassy') html.classList.add('skin-glassy')
+    if (skin === 'orbs') html.classList.add('skin-orbs')
   }, [skin])
 
   const setSkin = (newSkin: SkinId) => {

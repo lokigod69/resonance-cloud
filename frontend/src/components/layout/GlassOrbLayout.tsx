@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
+import ProfileModal from '@/components/ProfileModal'
 
 const navItems = [
   { icon: 'grid_view', path: '/dashboard', label: 'Dashboard' },
   { icon: 'auto_awesome', path: '/generate', label: 'Generate' },
   { icon: 'style', path: '/study', label: 'Study' },
-  { icon: 'settings', path: '/settings', label: 'Settings' },
 ]
 
 export default function GlassOrbLayout() {
@@ -15,6 +15,7 @@ export default function GlassOrbLayout() {
   const location = useLocation()
   const { profile } = useAuth()
   const [redeemOpen, setRedeemOpen] = useState(false)
+  const [profileOpen, setProfileOpen] = useState(false)
 
   return (
     <div className="go-root">
@@ -57,9 +58,18 @@ export default function GlassOrbLayout() {
             <span className="material-symbols-outlined">{item.icon}</span>
           </button>
         ))}
+
+        {/* Profile button */}
+        <button
+          onClick={() => setProfileOpen(true)}
+          title="Profile"
+        >
+          <span className="material-symbols-outlined">person</span>
+        </button>
       </div>
       <Outlet />
       <RedeemCodeDialog open={redeemOpen} onOpenChange={setRedeemOpen} />
+      <ProfileModal open={profileOpen} onOpenChange={setProfileOpen} />
     </div>
   )
 }

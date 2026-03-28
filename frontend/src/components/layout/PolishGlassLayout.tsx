@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Coins } from 'lucide-react'
+import { Menu, X, Coins, User } from 'lucide-react'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
+import ProfileModal from '@/components/ProfileModal'
 
 const navItems = [
   { label: 'Dashboard', path: '/dashboard' },
   { label: 'Generate', path: '/generate' },
   { label: 'Study', path: '/study' },
-  { label: 'Settings', path: '/settings' },
 ]
 
 export default function PolishGlassLayout() {
@@ -18,6 +18,7 @@ export default function PolishGlassLayout() {
   const { profile } = useAuth()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [redeemOpen, setRedeemOpen] = useState(false)
+  const [profileOpen, setProfileOpen] = useState(false)
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -65,11 +66,13 @@ export default function PolishGlassLayout() {
             <Coins className="h-3.5 w-3.5" />
             <span>{profile?.credits ?? 0}</span>
           </button>
-          {profile?.display_name && (
-            <span className="text-xs text-gray-500 ml-2">
-              {profile.display_name}
-            </span>
-          )}
+          <button
+            onClick={() => setProfileOpen(true)}
+            className="ml-2 p-1.5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
+            title="Profile"
+          >
+            <User className="h-4 w-4" />
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -112,11 +115,13 @@ export default function PolishGlassLayout() {
                 <Coins className="h-4 w-4" />
                 {profile?.credits ?? 0} credits
               </button>
-              {profile?.display_name && (
-                <div className="px-4 pt-3 mt-1 border-t border-white/5">
-                  <span className="text-xs text-gray-500">{profile.display_name}</span>
-                </div>
-              )}
+              <button
+                onClick={() => { setProfileOpen(true); setMobileOpen(false) }}
+                className="w-full text-left px-4 py-3 rounded-xl font-display font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2"
+              >
+                <User className="h-4 w-4" />
+                Profile
+              </button>
             </div>
           </motion.div>
         )}
@@ -128,6 +133,7 @@ export default function PolishGlassLayout() {
       </main>
 
       <RedeemCodeDialog open={redeemOpen} onOpenChange={setRedeemOpen} />
+      <ProfileModal open={profileOpen} onOpenChange={setProfileOpen} />
     </div>
   )
 }

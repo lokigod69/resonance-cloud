@@ -204,30 +204,28 @@ export default function StudyPG() {
   }
 
   return (
-    <div className="px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center">
+    <div className="px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
       {/* Progress bar removed — backend study tracking not built yet */}
 
       {/* Card + skip arrows */}
       <div className="relative w-full max-w-2xl flex items-center">
-        {/* Left skip arrow */}
-        {currentIndex > 0 && (
-          <button
-            onClick={skipPrev}
-            className="absolute -left-16 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-        )}
+        {/* Left skip arrow — always visible */}
+        <button
+          onClick={skipPrev}
+          disabled={currentIndex === 0}
+          className="absolute -left-16 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-black/40 disabled:hover:text-white/60"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
 
-        {/* Right skip arrow */}
-        {currentIndex < words.length - 1 && (
-          <button
-            onClick={skipNext}
-            className="absolute -right-16 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-        )}
+        {/* Right skip arrow — always visible */}
+        <button
+          onClick={skipNext}
+          disabled={currentIndex >= words.length - 1}
+          className="absolute -right-16 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-black/40 disabled:hover:text-white/60"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
 
       <AnimatePresence mode="wait">
         {current && (

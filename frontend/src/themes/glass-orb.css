@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
-/* ── Glass Orb Skin Variables ─────────────────────── */
-.skin-glass-orb {
+/* ── Orbs Skin Variables ─────────────────────── */
+.skin-orbs {
   --go-bg-color: #0d0f14;
   --go-glass-bg: rgba(20, 24, 34, 0.45);
   --go-glass-border: rgba(255, 255, 255, 0.15);
@@ -13,7 +13,7 @@
 }
 
 /* ── Body-level styles → scoped to layout root ────── */
-.skin-glass-orb .go-root {
+.skin-orbs .go-root {
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -31,15 +31,15 @@
 }
 
 /* Scoped scrollbar hiding */
-.skin-glass-orb .go-root::-webkit-scrollbar {
+.skin-orbs .go-root::-webkit-scrollbar {
   display: none;
 }
-.skin-glass-orb .go-root {
+.skin-orbs .go-root {
   scrollbar-width: none;
 }
 
 /* ── Global Nav ───────────────────────────────────── */
-.skin-glass-orb .global-nav {
+.skin-orbs .global-nav {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -48,7 +48,7 @@
   gap: 12px;
 }
 
-.skin-glass-orb .global-nav button {
+.skin-orbs .global-nav button {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -64,13 +64,13 @@
   justify-content: center;
 }
 
-.skin-glass-orb .global-nav button:hover {
+.skin-orbs .global-nav button:hover {
   transform: scale(1.1);
   background: rgba(255, 255, 255, 0.1);
 }
 
 /* ── Deck Container (Study) ───────────────────────── */
-.skin-glass-orb .deck-container {
+.skin-orbs .deck-container {
   flex: 1;
   width: 100%;
   position: relative;
@@ -81,7 +81,7 @@
 }
 
 /* ── Video Card ───────────────────────────────────── */
-.skin-glass-orb .video-card {
+.skin-orbs .video-card {
   position: absolute;
   width: clamp(320px, 85vw, 560px);
   height: clamp(360px, 70vh, 560px);
@@ -99,11 +99,11 @@
   cursor: grab;
 }
 
-.skin-glass-orb .video-card:active {
+.skin-orbs .video-card:active {
   cursor: grabbing;
 }
 
-.skin-glass-orb .video-card .video-wrapper {
+.skin-orbs .video-card .video-wrapper {
   width: 100%;
   position: relative;
   background-color: transparent;
@@ -111,14 +111,14 @@
   aspect-ratio: 16 / 9;
 }
 
-.skin-glass-orb .video-card video {
+.skin-orbs .video-card video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   pointer-events: none;
 }
 
-.skin-glass-orb .video-card .controls {
+.skin-orbs .video-card .controls {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -132,7 +132,7 @@
   pointer-events: auto;
 }
 
-.skin-glass-orb .controls button {
+.skin-orbs .controls button {
   background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: white;
@@ -147,11 +147,11 @@
   transition: background 0.2s;
 }
 
-.skin-glass-orb .controls button:hover {
+.skin-orbs .controls button:hover {
   background: rgba(0, 0, 0, 0.8);
 }
 
-.skin-glass-orb .video-card .card-info {
+.skin-orbs .video-card .card-info {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -164,19 +164,19 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-.skin-glass-orb .card-info h2 {
+.skin-orbs .card-info h2 {
   font-size: 1.25rem;
   margin-bottom: 8px;
 }
 
-.skin-glass-orb .card-info p {
+.skin-orbs .card-info p {
   font-size: 0.9rem;
   color: var(--go-text-secondary);
   line-height: 1.4;
 }
 
 /* ── Study Controls ───────────────────────────────── */
-.skin-glass-orb .study-controls {
+.skin-orbs .study-controls {
   margin-top: auto;
   margin-bottom: 12px;
   display: flex;
@@ -187,7 +187,7 @@
   pointer-events: auto;
 }
 
-.skin-glass-orb .reveal-btn {
+.skin-orbs .reveal-btn {
   width: 100%;
   padding: 10px;
   border-radius: 8px;
@@ -199,11 +199,11 @@
   transition: background 0.2s;
 }
 
-.skin-glass-orb .reveal-btn:hover {
+.skin-orbs .reveal-btn:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.skin-glass-orb .grade-btn {
+.skin-orbs .grade-btn {
   flex: 1;
   padding: 10px;
   border-radius: 8px;
@@ -218,23 +218,23 @@
   transition: transform 0.2s, filter 0.2s;
 }
 
-.skin-glass-orb .grade-btn.pass {
+.skin-orbs .grade-btn.pass {
   background: rgba(34, 197, 94, 0.4);
   border: 1px solid rgba(34, 197, 94, 0.6);
 }
 
-.skin-glass-orb .grade-btn.fail {
+.skin-orbs .grade-btn.fail {
   background: rgba(239, 68, 68, 0.4);
   border: 1px solid rgba(239, 68, 68, 0.6);
 }
 
-.skin-glass-orb .grade-btn:hover {
+.skin-orbs .grade-btn:hover {
   transform: scale(1.05);
   filter: brightness(1.2);
 }
 
 /* ── Orb Navigation Dock ──────────────────────────── */
-.skin-glass-orb .orb-dock-container {
+.skin-orbs .orb-dock-container {
   width: 100%;
   height: 100px;
   display: flex;
@@ -244,7 +244,7 @@
   padding-bottom: 12px;
 }
 
-.skin-glass-orb .orb-dock {
+.skin-orbs .orb-dock {
   display: flex;
   gap: 16px;
   align-items: flex-end;
@@ -253,7 +253,7 @@
   flex-wrap: wrap;
 }
 
-.skin-glass-orb .orb {
+.skin-orbs .orb {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -269,7 +269,7 @@
   overflow: hidden;
 }
 
-.skin-glass-orb .orb::after {
+.skin-orbs .orb::after {
   content: '';
   position: absolute;
   top: 10%;
@@ -281,7 +281,7 @@
   pointer-events: none;
 }
 
-.skin-glass-orb .orb img {
+.skin-orbs .orb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -289,8 +289,8 @@
   mix-blend-mode: overlay;
 }
 
-.skin-glass-orb .orb:hover,
-.skin-glass-orb .orb.active {
+.skin-orbs .orb:hover,
+.skin-orbs .orb.active {
   transform: translateY(-16px) scale(1.2);
   box-shadow:
     inset -4px -4px 10px rgba(0, 0, 0, 0.7),
@@ -300,22 +300,22 @@
 }
 
 /* ── Dashboard Styles ─────────────────────────────── */
-.skin-glass-orb .dashboard-header {
+.skin-orbs .dashboard-header {
   text-align: center;
   padding: 60px 20px 40px;
 }
 
-.skin-glass-orb .dashboard-header h1 {
+.skin-orbs .dashboard-header h1 {
   font-size: 2.5rem;
   margin-bottom: 8px;
   font-weight: 300;
 }
 
-.skin-glass-orb .dashboard-header p {
+.skin-orbs .dashboard-header p {
   color: var(--go-text-secondary);
 }
 
-.skin-glass-orb .decks-grid {
+.skin-orbs .decks-grid {
   display: flex;
   justify-content: center;
   gap: 32px;
@@ -325,7 +325,7 @@
   flex-wrap: wrap;
 }
 
-.skin-glass-orb .deck-folder {
+.skin-orbs .deck-folder {
   position: relative;
   width: 320px;
   height: 400px;
@@ -344,36 +344,36 @@
   overflow: hidden;
 }
 
-.skin-glass-orb .deck-folder:hover {
+.skin-orbs .deck-folder:hover {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-.skin-glass-orb .deck-folder:hover .deck-bg-layer {
+.skin-orbs .deck-folder:hover .deck-bg-layer {
   opacity: 0.5;
 }
 
-.skin-glass-orb .deck-folder .folder-icon {
+.skin-orbs .deck-folder .folder-icon {
   font-size: 3rem;
   margin-bottom: auto;
   color: var(--go-accent);
 }
 
-.skin-glass-orb .deck-folder h3 {
+.skin-orbs .deck-folder h3 {
   font-size: 1.5rem;
   margin-bottom: 8px;
   text-align: center;
 }
 
-.skin-glass-orb .deck-folder p {
+.skin-orbs .deck-folder p {
   color: var(--go-text-secondary);
   font-size: 0.9rem;
   text-align: center;
 }
 
 /* ── Generate Orb Flow ────────────────────────────── */
-.skin-glass-orb .gen-container {
+.skin-orbs .gen-container {
   flex: 1;
   overflow-y: auto;
   min-height: 0;
@@ -382,25 +382,25 @@
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
-.skin-glass-orb .gen-container::-webkit-scrollbar {
+.skin-orbs .gen-container::-webkit-scrollbar {
   width: 4px;
 }
 
-.skin-glass-orb .gen-container::-webkit-scrollbar-track {
+.skin-orbs .gen-container::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.skin-glass-orb .gen-container::-webkit-scrollbar-thumb {
+.skin-orbs .gen-container::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 2px;
 }
 
-.skin-glass-orb .gen-section {
+.skin-orbs .gen-section {
   margin-bottom: 40px;
   animation: genSectionFade 0.5s ease forwards;
 }
 
-.skin-glass-orb .gen-section h3 {
+.skin-orbs .gen-section h3 {
   font-size: 1.8rem;
   font-weight: 300;
   color: var(--go-text-secondary);
@@ -408,14 +408,14 @@
   margin-bottom: 24px;
 }
 
-.skin-glass-orb .gen-orb-row {
+.skin-orbs .gen-orb-row {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 24px;
 }
 
-.skin-glass-orb .gen-orb {
+.skin-orbs .gen-orb {
   width: 110px;
   height: 110px;
   border-radius: 50%;
@@ -444,12 +444,12 @@
   flex-shrink: 0;
 }
 
-.skin-glass-orb .gen-orb:hover {
+.skin-orbs .gen-orb:hover {
   transform: scale(1.1);
   box-shadow: 0 10px 25px rgba(94, 106, 210, 0.4);
 }
 
-.skin-glass-orb .gen-orb.selected {
+.skin-orbs .gen-orb.selected {
   transform: scale(1.2);
   background: rgba(94, 106, 210, 0.25);
   border-color: rgba(94, 106, 210, 0.8);
@@ -459,12 +459,12 @@
     0 0 40px rgba(94, 106, 210, 0.6);
 }
 
-.skin-glass-orb .gen-orb.selected.breadcrumb {
+.skin-orbs .gen-orb.selected.breadcrumb {
   transform: scale(0.65);
   cursor: pointer;
 }
 
-.skin-glass-orb .gen-orb.ignored {
+.skin-orbs .gen-orb.ignored {
   transform: scale(0);
   opacity: 0;
   width: 0;
@@ -476,32 +476,32 @@
   pointer-events: none;
 }
 
-.skin-glass-orb .gen-orb-label {
+.skin-orbs .gen-orb-label {
   font-size: 0.75rem;
   font-weight: 500;
   opacity: 0.9;
 }
 
 /* Word orbs */
-.skin-glass-orb .gen-orb.word-orb {
+.skin-orbs .gen-orb.word-orb {
   animation: wordOrbSpawn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-.skin-glass-orb .gen-orb.word-orb:hover {
+.skin-orbs .gen-orb.word-orb:hover {
   transform: scale(0.9);
   opacity: 0.7;
 }
 
 /* Input orb */
-.skin-glass-orb .gen-orb.input-orb {
+.skin-orbs .gen-orb.input-orb {
   cursor: text;
 }
 
-.skin-glass-orb .gen-orb.input-orb:hover {
+.skin-orbs .gen-orb.input-orb:hover {
   transform: scale(1.05);
 }
 
-.skin-glass-orb .gen-orb.input-orb input {
+.skin-orbs .gen-orb.input-orb input {
   width: 80%;
   background: transparent;
   border: none;
@@ -513,33 +513,33 @@
   font-family: inherit;
 }
 
-.skin-glass-orb .gen-orb.input-orb input::placeholder {
+.skin-orbs .gen-orb.input-orb input::placeholder {
   color: rgba(255, 255, 255, 0.4);
 }
 
 /* Forge / advance button */
-.skin-glass-orb .gen-orb.forge-btn {
+.skin-orbs .gen-orb.forge-btn {
   background: rgba(94, 106, 210, 0.15);
   border-color: rgba(94, 106, 210, 0.5);
 }
 
-.skin-glass-orb .gen-orb.forge-btn:hover {
+.skin-orbs .gen-orb.forge-btn:hover {
   background: rgba(94, 106, 210, 0.3);
   transform: scale(1.15);
 }
 
-.skin-glass-orb .gen-orb.check-btn {
+.skin-orbs .gen-orb.check-btn {
   background: rgba(34, 197, 94, 0.2);
   border-color: rgba(34, 197, 94, 0.6);
   font-size: 1.4rem;
 }
 
-.skin-glass-orb .gen-orb.check-btn:hover {
+.skin-orbs .gen-orb.check-btn:hover {
   background: rgba(34, 197, 94, 0.35);
 }
 
 /* Art style collapsible categories */
-.skin-glass-orb .gen-category-expand {
+.skin-orbs .gen-category-expand {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
@@ -547,13 +547,13 @@
   margin-bottom: 0;
 }
 
-.skin-glass-orb .gen-category-expand.open {
+.skin-orbs .gen-category-expand.open {
   max-height: 500px;
   opacity: 1;
   margin-bottom: 20px;
 }
 
-.skin-glass-orb .art-group-heading {
+.skin-orbs .art-group-heading {
   color: var(--go-text-secondary);
   font-size: 0.8rem;
   font-weight: 600;
@@ -564,7 +564,7 @@
 }
 
 /* Forge orb (submit) */
-.skin-glass-orb .forge-orb {
+.skin-orbs .forge-orb {
   width: 220px;
   height: 220px;
   border-radius: 50%;
@@ -585,18 +585,18 @@
   user-select: none;
 }
 
-.skin-glass-orb .forge-orb:hover {
+.skin-orbs .forge-orb:hover {
   filter: brightness(1.2);
 }
 
-.skin-glass-orb .forge-orb.synthesizing {
+.skin-orbs .forge-orb.synthesizing {
   animation: pulseForge 1s infinite ease-in-out;
   opacity: 0.7;
   cursor: wait;
 }
 
 /* Summary tags */
-.skin-glass-orb .gen-summary-tag {
+.skin-orbs .gen-summary-tag {
   display: inline-block;
   padding: 4px 14px;
   border-radius: 20px;
@@ -626,7 +626,7 @@
 
 /* ── Mobile Responsive ────────────────────────────── */
 @media (max-width: 768px) {
-  .skin-glass-orb .decks-grid {
+  .skin-orbs .decks-grid {
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
@@ -635,68 +635,68 @@
     justify-content: flex-start;
   }
 
-  .skin-glass-orb .deck-folder {
+  .skin-orbs .deck-folder {
     width: 100%;
     max-width: 320px;
     height: 300px;
   }
 
-  .skin-glass-orb .global-nav {
+  .skin-orbs .global-nav {
     top: 16px;
     right: 16px;
     gap: 8px;
   }
 
-  .skin-glass-orb .global-nav button {
+  .skin-orbs .global-nav button {
     width: 36px;
     height: 36px;
     font-size: 1rem;
   }
 
-  .skin-glass-orb .video-card {
+  .skin-orbs .video-card {
     width: 92vw;
     height: 65vh;
     max-height: 540px;
   }
 
-  .skin-glass-orb .orb-dock-container {
+  .skin-orbs .orb-dock-container {
     padding-bottom: 20px;
   }
 
-  .skin-glass-orb .orb-dock {
+  .skin-orbs .orb-dock {
     gap: 12px;
   }
 
-  .skin-glass-orb .orb {
+  .skin-orbs .orb {
     width: 40px;
     height: 40px;
   }
 
   /* Generate orbs mobile */
-  .skin-glass-orb .gen-container {
+  .skin-orbs .gen-container {
     padding: 70px 12px 100px;
   }
 
-  .skin-glass-orb .gen-section h3 {
+  .skin-orbs .gen-section h3 {
     font-size: 1.3rem;
     margin-bottom: 16px;
   }
 
-  .skin-glass-orb .gen-orb-row {
+  .skin-orbs .gen-orb-row {
     gap: 14px;
   }
 
-  .skin-glass-orb .gen-orb {
+  .skin-orbs .gen-orb {
     width: 80px;
     height: 80px;
     font-size: 0.75rem;
   }
 
-  .skin-glass-orb .gen-orb.input-orb input {
+  .skin-orbs .gen-orb.input-orb input {
     font-size: 0.75rem;
   }
 
-  .skin-glass-orb .forge-orb {
+  .skin-orbs .forge-orb {
     width: 160px;
     height: 160px;
     font-size: 0.9rem;

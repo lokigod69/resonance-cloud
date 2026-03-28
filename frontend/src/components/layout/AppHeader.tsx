@@ -9,17 +9,13 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
 import {
-  LogOut,
-  User,
   Music,
   LayoutDashboard,
   Sparkles,
   BookOpen,
-  Settings,
   Coins,
   Menu,
   ListOrdered,
@@ -29,12 +25,12 @@ import {
   BarChart3,
 } from 'lucide-react'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
+import ProfileModal from '@/components/ProfileModal'
 
 const mainNav = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/generate', label: 'Generate', icon: Sparkles },
   { to: '/study', label: 'Study', icon: BookOpen },
-  { to: '/settings', label: 'Settings', icon: Settings },
 ]
 
 const adminNav = [
@@ -46,11 +42,12 @@ const adminNav = [
 ]
 
 export function AppHeader() {
-  const { profile, user, signOut } = useAuth()
+  const { profile, user } = useAuth()
   const location = useLocation()
   const isAdmin = profile?.role === 'admin'
   const [mobileOpen, setMobileOpen] = useState(false)
   const [redeemOpen, setRedeemOpen] = useState(false)
+  const [profileOpen, setProfileOpen] = useState(false)
 
   const displayName = profile?.display_name || user?.email?.split('@')[0] || 'User'
   const initials = displayName
@@ -187,31 +184,17 @@ export function AppHeader() {
           <span>{profile?.credits ?? 0}</span>
         </button>
 
-        {/* Profile dropdown */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2 px-2">
-              <Avatar className="h-7 w-7">
-                <AvatarFallback className="text-xs">{initials}</AvatarFallback>
-              </Avatar>
-              <span className="hidden sm:inline text-sm">{displayName}</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem disabled>
-              <User className="mr-2 h-4 w-4" />
-              {user?.email}
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={signOut}>
-              <LogOut className="mr-2 h-4 w-4" />
-              Sign Out
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {/* Profile button → opens modal */}
+        <Button variant="ghost" className="flex items-center gap-2 px-2" onClick={() => setProfileOpen(true)}>
+          <Avatar className="h-7 w-7">
+            <AvatarFallback className="text-xs">{initials}</AvatarFallback>
+          </Avatar>
+          <span className="hidden sm:inline text-sm">{displayName}</span>
+        </Button>
       </div>
 
       <RedeemCodeDialog open={redeemOpen} onOpenChange={setRedeemOpen} />
+      <ProfileModal open={profileOpen} onOpenChange={setProfileOpen} />
     </header>
   )
 }

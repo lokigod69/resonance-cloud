@@ -179,20 +179,20 @@ export default function Settings() {
         <div className="grid grid-cols-3 gap-3">
           {([
             {
-              id: 'default' as SkinId,
+              id: 'classic' as SkinId,
               label: 'Classic',
               desc: 'Clean header navigation',
               colors: ['oklch(0.7 0.15 280)', 'oklch(0.22 0.015 280)', 'oklch(0.13 0.008 280)'],
             },
             {
-              id: 'polish-glass' as SkinId,
-              label: 'Polish Glass',
+              id: 'glassy' as SkinId,
+              label: 'Glassy',
               desc: 'Cinematic top navigation',
               colors: ['#0de2c3', '#f43f5e', '#fbbf24'],
             },
             {
-              id: 'glass-orb' as SkinId,
-              label: 'Glass Orb',
+              id: 'orbs' as SkinId,
+              label: 'Orbs',
               desc: 'Physics-based card swiping with orb navigation',
               colors: ['#5e6ad2', '#f43f5e', '#22c55e'],
             },
@@ -213,9 +213,9 @@ export default function Settings() {
               }}
               className={`p-4 rounded-lg border-2 transition-all text-left ${
                 skin === s.id
-                  ? s.id === 'polish-glass'
+                  ? s.id === 'glassy'
                     ? 'border-[#0de2c3]/50 shadow-[0_0_15px_rgba(13,226,195,0.2)] glass-selected'
-                    : s.id === 'glass-orb'
+                    : s.id === 'orbs'
                       ? 'border-[#5e6ad2]/60 shadow-[0_0_15px_rgba(94,106,210,0.4)] glass-selected'
                       : 'border-primary glass-selected'
                   : 'border-transparent glass glass-hover'

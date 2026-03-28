@@ -181,11 +181,11 @@
 }
 
 /* ============================================
-   POLISH GLASS SKIN TOKENS
-   Active when <html> has class "skin-polish-glass"
+   GLASSY SKIN TOKENS
+   Active when <html> has class "skin-glassy"
    ============================================ */
 
-.skin-polish-glass {
+.skin-glassy {
   --pg-base-dark: #0a0a0c;
   --pg-glass-panel-bg: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(20,20,30,0.8) 100%);
   --pg-glass-border: rgba(255, 255, 255, 0.08);
@@ -200,7 +200,7 @@
   --pg-text-dim: #9ca3af;
 }
 
-/* Polish Glass utility class */
+/* Glassy utility class */
 .pg-glass {
   background: var(--pg-glass-panel-bg);
   backdrop-filter: blur(20px);
@@ -211,17 +211,17 @@
   box-shadow: var(--pg-glass-shadow);
 }
 
-/* Polish Glass font */
+/* Glassy font */
 .font-display {
   font-family: 'Outfit', sans-serif;
 }
 
-/* Polish Glass scrollbar hide */
+/* Glassy scrollbar hide */
 .pg-scrollbar-hide::-webkit-scrollbar { display: none; }
 .pg-scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* Skin-aware glass overrides — remap existing utility classes when PG skin is active */
-.skin-polish-glass .glass {
+.skin-glassy .glass {
   background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(20,20,30,0.7) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -231,7 +231,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.15);
 }
 
-.skin-polish-glass .glass-strong {
+.skin-glassy .glass-strong {
   background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(20,20,30,0.85) 100%);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -241,23 +241,23 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.2);
 }
 
-.skin-polish-glass .glass-hover:hover {
+.skin-glassy .glass-hover:hover {
   background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(20,20,30,0.75) 100%);
   border-color: rgba(13, 226, 195, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(13, 226, 195, 0.1);
 }
 
-.skin-polish-glass .glass-selected {
+.skin-glassy .glass-selected {
   background: rgba(13, 226, 195, 0.08);
   border-color: rgba(13, 226, 195, 0.4);
   box-shadow: 0 0 20px rgba(13, 226, 195, 0.2);
 }
 
-.skin-polish-glass .glow-purple {
+.skin-glassy .glow-purple {
   box-shadow: 0 0 20px rgba(13, 226, 195, 0.2);
 }
 
-.skin-polish-glass .gradient-bg {
+.skin-glassy .gradient-bg {
   background: linear-gradient(135deg, #0a0a0c 0%, #0d1117 50%, #0a0a0c 100%);
 }
 

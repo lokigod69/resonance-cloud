@@ -2,10 +2,9 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, Play, Pause, AlertCircle, Sparkles, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Maximize, Trash2 } from 'lucide-react'
+import { ArrowLeft, Play, Pause, AlertCircle, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Maximize, Trash2, CheckCircle2, Loader2, AlertTriangle } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import { useAuth } from '@/hooks/useAuth'
 import { useToast } from '@/components/Toast'
@@ -243,7 +242,7 @@ export default function DeckView() {
                 }}
                 autoFocus
                 maxLength={100}
-                className="text-2xl font-bold tracking-tight bg-transparent border-b-2 border-primary outline-none text-foreground w-full"
+                className="text-2xl font-bold tracking-tight bg-transparent border-b-2 border-primary outline-none text-foreground max-w-md"
               />
               <Button variant="ghost" size="icon" onClick={handleRename} className="shrink-0">
                 <Check className="h-4 w-4 text-green-400" />
@@ -264,21 +263,20 @@ export default function DeckView() {
               </button>
             </div>
           )}
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-2">
             <span className="text-sm text-muted-foreground">{deck.target_language}</span>
             {isGenerating ? (
-              <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
-                <Sparkles className="h-3 w-3 mr-1 animate-pulse" />
-                Generating — {completedCount} of {totalCount}
-              </Badge>
+              <span title={`Generating ${completedCount} of ${totalCount}`}>
+                <Loader2 className="h-4 w-4 text-primary animate-spin" />
+              </span>
             ) : deck.status === 'complete' ? (
-              <Badge variant="secondary" className="bg-green-500/20 text-green-400 border-green-500/30">
-                Ready
-              </Badge>
+              <span title="Ready">
+                <CheckCircle2 className="h-4 w-4 text-green-400" />
+              </span>
             ) : (
-              <Badge variant="secondary" className="bg-yellow-500/20 text-yellow-400 border-yellow-500/30">
-                Partial ({completedCount}/{totalCount})
-              </Badge>
+              <span title={`Partial (${completedCount}/${totalCount})`}>
+                <AlertTriangle className="h-4 w-4 text-yellow-400" />
+              </span>
             )}
           </div>
           {isGenerating && (

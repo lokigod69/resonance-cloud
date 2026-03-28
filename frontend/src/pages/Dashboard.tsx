@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Skeleton } from '@/components/ui/skeleton'
-import { Coins, Sparkles, Music, Plus, AlertCircle, RefreshCw, LogIn } from 'lucide-react'
+import { Sparkles, Music, AlertCircle, RefreshCw, LogIn } from 'lucide-react'
 
 type Deck = {
   id: string
@@ -196,25 +196,13 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       {/* Header row */}
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">
-            Welcome back, {profile?.display_name || user?.email?.split('@')[0] || 'Learner'}
-          </h1>
-          <p className="text-muted-foreground mt-1">
-            Here's your learning overview.
-          </p>
-        </div>
-        <div className="flex items-center gap-2 shrink-0">
-          {/* Credit balance */}
-          <div className="glass rounded-xl px-5 py-3 flex items-center gap-3">
-            <Coins className="h-5 w-5 text-primary" />
-            <div>
-              <div className="text-2xl font-bold">{profile?.credits ?? 0}</div>
-              <div className="text-xs text-muted-foreground">credits</div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">
+          Welcome back, {profile?.display_name || user?.email?.split('@')[0] || 'Learner'}
+        </h1>
+        <p className="text-muted-foreground mt-1">
+          Here's your learning overview.
+        </p>
       </div>
 
       {/* Decks section */}
@@ -224,14 +212,6 @@ export default function Dashboard() {
             <Music className="h-5 w-5" />
             Your Decks
           </h2>
-          {decks.length > 0 && (
-            <Button asChild size="sm" variant="ghost">
-              <Link to="/generate">
-                <Plus className="h-4 w-4 mr-1" />
-                New Deck
-              </Link>
-            </Button>
-          )}
         </div>
 
         {loading ? (
