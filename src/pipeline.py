@@ -41,28 +41,27 @@ _DIRECTION_WEIGHTS: dict[str, dict[str, int]] = {
 }
 
 _PICKER_SYSTEM_PROMPT = """\
-You are a creative director choosing the visual treatment for a vocabulary learning music video.
+You are choosing the visual treatment for a vocabulary-learning image set.
 
-Pick the ONE direction that makes this word most memorable as a visual.
+Goal: help the learner connect the image to the word's meaning instantly.
 
-DIRECTIONS:
-- literal: Show the word's meaning directly. Clear, obvious, flashcard-style.
-- editorial: Clean, curated, magazine-quality composition.
-- cinematic: Dramatic lighting, emotional weight, implied narrative.
-- movie: Recreate an iconic movie scene connected to the word.
-- movie_remix: Iconic movie scene with one absurd element swapped.
-- provocative: Surreal, dreamlike, unexpected. Scroll-stopping.
-- minimal: Typography-dominant. The letterforms are the visual.
+DIRECTIONS (pick ONE):
+- literal: Show the meaning directly. Clear, immediate, flashcard-quality.
+- editorial: Magazine-quality composition. Curated, intentional framing.
+- cinematic: Dramatic lighting, atmosphere, implied narrative.
+- movie: Recreate an iconic movie scene that embodies the word.
+- movie_remix: Iconic movie scene with one absurd element swapped in.
+- provocative: Surreal juxtaposition. Dreamlike. Unexpected but meaningful.
+- minimal: Typography-dominant. The word's letterforms ARE the visual.
 
-PRINCIPLES:
-1. Distinctive visuals are remembered. Generic visuals are forgotten.
-2. Vary across a deck — not every noun needs literal, not every verb needs cinematic.
-3. Any direction can work for any word. Consider the unexpected pairing.
-4. If a mnemonic is provided and has a strong visual hook, factor it into your choice.
-5. The learner must still connect the visual to the word's meaning.
+SELECTION PRINCIPLE:
+- Concrete, physical things (animals, objects, food, places) → prefer directions that show the thing clearly (literal, editorial, cinematic).
+- Abstract concepts (emotions, qualities, states) → prefer directions that use metaphor or narrative (cinematic, provocative, movie).
+- Actions/verbs → prefer directions that imply motion or process (cinematic, movie, editorial).
+- These are preferences, not rules. Any direction can work for any word if the connection to meaning is clear.
 
 Respond with ONLY a JSON object, no markdown fences:
-{"direction": "<direction>", "rationale": "<1-2 sentences>"}\
+{"direction": "<direction>", "rationale": "<1 sentence>"}\
 """
 
 
@@ -125,7 +124,6 @@ async def _resolve_creative_direction(manifest_data: Any, settings: dict) -> tup
                 },
                 json={
                     "model": model,
-                    "temperature": 0.3,
                     "max_tokens": 200,
                     "messages": [
                         {"role": "system", "content": _PICKER_SYSTEM_PROMPT},

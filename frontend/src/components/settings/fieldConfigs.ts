@@ -44,7 +44,6 @@ export const CONCEPT_FIELDS: FieldDef[] = [
   { key: 'visual_hint', label: 'Visual Hint', type: 'toggle', default: false },
   { key: 'use_art_style', label: 'Use Art Style for Music', type: 'toggle', default: false },
   { key: 'llm_model', label: 'LLM Model', type: 'dropdown', options: ['deepseek/deepseek-v3.2', 'deepseek/deepseek-v3.2-speciale', 'deepseek/deepseek-chat-v3-0324', 'moonshotai/kimi-k2.5', 'google/gemini-2.5-flash', 'anthropic/claude-3.5-haiku', 'mistralai/mistral-small'], default: 'deepseek/deepseek-v3.2', optionLabels: { 'deepseek/deepseek-v3.2': 'DeepSeek V3.2', 'deepseek/deepseek-v3.2-speciale': 'DeepSeek V3.2 Speciale', 'deepseek/deepseek-chat-v3-0324': 'DeepSeek V3 (legacy)' }, advanced: true },
-  { key: 'llm_temperature', label: 'LLM Temperature', type: 'slider', min: 0, max: 1, step: 0.05, default: 0.7, advanced: true },
 ]
 
 export const SONG_FIELDS: FieldDef[] = [

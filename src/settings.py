@@ -42,7 +42,6 @@ DEFAULT_SETTINGS = {
         "visual_hint": False,
         "use_art_style": False,
         "llm_model": "deepseek/deepseek-v3.2",
-        "llm_temperature": 0.7
     },
     "song": {
         "duration": 20,
@@ -68,7 +67,7 @@ DEFAULT_SETTINGS = {
         "aspect_ratio": "16:9",
         "art_style": "photorealistic",
         "word_in_image": True,
-        "image_model": "fast",
+        "image_model": "quality",
         "llm_model": "deepseek/deepseek-v3.2",
     },
     "video": {

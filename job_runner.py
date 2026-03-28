@@ -121,7 +121,6 @@ async def run_enrichment(
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
                 ],
-                "temperature": 0.3,
             },
         )
         resp.raise_for_status()
