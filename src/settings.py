@@ -8,27 +8,14 @@ from typing import Any
 
 
 ART_STYLE_PRESETS = [
-    "photorealistic",
-    "watercolor",
-    "oil_painting",
-    "noir",
-    "studio_ghibli",
-    "comic_book",
-    "pixel_art",
-    "synthwave",
-    "ukiyo_e",
-    "renaissance",
-    "pen_and_ink",
-    "retro_90s",
-    "knitted",
-    "expressionist",
-    "vintage_film",
-    "chiaroscuro",
-    "disney_animation",
-    "double_exposure",
-    "blue_eyed_samurai",
-    "invincible",
-    "big_mouth",
+    "photorealistic", "oil_painting", "watercolor", "surrealism", "pop_art",
+    "chiaroscuro", "art_nouveau", "ukiyo_e", "van_gogh",
+    "studio_ghibli", "anime", "comic_book", "disney_animation",
+    "one_piece_style", "rick_and_morty_style",
+    "pixel_art", "synthwave", "cyberpunk", "vaporwave", "glitch_art",
+    "knitted", "claymation", "origami", "stained_glass",
+    "noir", "vintage_film", "double_exposure",
+    "pen_and_ink", "charcoal_sketch", "steampunk",
 ]
 
 DEFAULT_SETTINGS = {
