@@ -758,6 +758,7 @@ async def process_job(job: dict[str, Any]) -> None:
     for word_rec in words:
         e = enrichment_map.get(word_rec["word"].lower(), {})
         sb.table("words").update({
+            "word": e.get("word_target", word_rec["word"]),
             "translation": e.get("translation", ""),
             "mnemonic": e.get("mnemonic", ""),
             "etymology": e.get("etymology", ""),
