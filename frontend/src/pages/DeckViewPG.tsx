@@ -24,7 +24,9 @@ import {
   Trash2,
 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
+import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
+import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { useToast } from '@/components/Toast'
 
 type Deck = {
@@ -178,6 +180,9 @@ export default function DeckViewPG() {
   const [videoActiveIndex, setVideoActiveIndex] = useState<number | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement | null>(null)
+
+  const activeWord = words[activeIndex] ?? { id: '', video_url: null, thumbnail_url: null }
+  const { activeVideoUrl, activeThumbnailUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(activeWord)
 
   // Auto-play next card when swiping while video was active
   const videoActiveRef = useRef(videoActiveIndex)
@@ -390,10 +395,11 @@ export default function DeckViewPG() {
                       {/* Media area — 16:9 aspect ratio */}
                       <div className="w-full relative bg-black overflow-hidden" style={{ aspectRatio: '16/9' }}>
                         {/* Video element — stays mounted once activated to preserve frame on pause */}
-                        {isComplete && videoActiveIndex === i && word.video_url && (
+                        {isComplete && videoActiveIndex === i && (offset === 0 ? activeVideoUrl : word.video_url) && (
                           <video
                             ref={videoRef}
-                            src={word.video_url}
+                            key={offset === 0 ? `${word.id}-${version}` : word.id}
+                            src={(offset === 0 ? activeVideoUrl : word.video_url)!}
                             playsInline
                             loop
                             className="absolute inset-0 w-full h-full object-contain z-[1]"
@@ -403,9 +409,9 @@ export default function DeckViewPG() {
                         )}
 
                         {/* Thumbnail — shown when video not active, or as poster behind video */}
-                        {isComplete && word.thumbnail_url && videoActiveIndex !== i && (
+                        {isComplete && (offset === 0 ? activeThumbnailUrl : word.thumbnail_url) && videoActiveIndex !== i && (
                           <img
-                            src={word.thumbnail_url}
+                            src={(offset === 0 ? activeThumbnailUrl : word.thumbnail_url)!}
                             alt={word.word}
                             className="absolute inset-0 w-full h-full object-cover"
                           />
@@ -432,6 +438,22 @@ export default function DeckViewPG() {
                               <Play className="h-7 w-7 text-[var(--pg-accent-teal)] fill-[var(--pg-accent-teal)]" />
                             </div>
                           </div>
+                        )}
+
+                        {/* Version badge */}
+                        {isComplete && offset === 0 && (
+                          <VersionBadge
+                            version={version}
+                            hasAlt={hasAltVersion}
+                            onToggle={() => {
+                              toggleVersion()
+                              // Force video reload if video is active
+                              if (videoActiveIndex === i) {
+                                setIsPlaying(true)
+                              }
+                            }}
+                            className="absolute top-3 right-3"
+                          />
                         )}
 
                         {/* Video controls — play/pause + fullscreen */}

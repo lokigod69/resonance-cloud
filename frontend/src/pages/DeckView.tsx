@@ -6,7 +6,9 @@ import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { ArrowLeft, Play, Pause, AlertCircle, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Maximize, Trash2, CheckCircle2, Loader2, AlertTriangle } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
+import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
+import { useVideoVersion, getStoredVersion } from '@/hooks/useVideoVersion'
 import { useToast } from '@/components/Toast'
 
 type Deck = {
@@ -331,6 +333,12 @@ export default function DeckView() {
                         <Play className="h-6 w-6 text-white fill-white" />
                       </div>
                     </div>
+                    {/* Version indicator on card */}
+                    {word.video_url_b && (
+                      <span className="absolute top-2 right-2 px-1.5 py-0.5 rounded-full bg-black/60 border border-white/20 text-white text-[10px] font-medium backdrop-blur-sm z-10">
+                        {getStoredVersion(word.id).toUpperCase()}
+                      </span>
+                    )}
                   </div>
                   {/* Info */}
                   <div className="p-3 space-y-0.5">
@@ -449,6 +457,7 @@ function VideoViewerModal({
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < words.length - 1
   const [isPlaying, setIsPlaying] = useState(true)
+  const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(word ?? { id: '', video_url: null, thumbnail_url: null })
 
   const togglePlayPause = useCallback(() => {
     const vid = videoRef.current
@@ -521,11 +530,11 @@ function VideoViewerModal({
                 <ChevronRight className="h-6 w-6" />
               </button>
             )}
-            {word.video_url ? (
+            {activeVideoUrl ? (
               <video
                 ref={videoRef}
-                key={videoKey}
-                src={`${word.video_url}?t=${videoKey}`}
+                key={`${videoKey}-${version}`}
+                src={`${activeVideoUrl}?t=${videoKey}`}
                 autoPlay
                 playsInline
                 loop
@@ -538,8 +547,16 @@ function VideoViewerModal({
               </div>
             )}
 
+            {/* Version badge */}
+            <VersionBadge
+              version={version}
+              hasAlt={hasAltVersion}
+              onToggle={() => { toggleVersion(); onReplay() }}
+              className="absolute top-4 right-4"
+            />
+
             {/* Play/Pause overlay button */}
-            {word.video_url && (
+            {activeVideoUrl && (
               <>
                 <button
                   onClick={(e) => { e.stopPropagation(); togglePlayPause() }}

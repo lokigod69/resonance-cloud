@@ -11,6 +11,8 @@ import {
   X,
 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
+import VersionBadge from '@/components/VersionBadge'
+import { useVideoVersion } from '@/hooks/useVideoVersion'
 
 type Word = {
   id: string
@@ -23,6 +25,8 @@ type Word = {
   rating: number | null
   status: string
   video_url: string | null
+  video_url_b: string | null
+  thumbnail_url_b: string | null
   metadata: Record<string, unknown> | null
 }
 
@@ -39,7 +43,7 @@ export default function VideoPlayer() {
     async function load() {
       const { data } = await supabase
         .from('words')
-        .select('id, word, translation, mnemonic, etymology, pos, article, rating, metadata, status, video_url')
+        .select('id, word, translation, mnemonic, etymology, pos, article, rating, metadata, status, video_url, video_url_b, thumbnail_url_b')
         .eq('deck_id', deckId)
         .eq('status', 'complete')
         .order('created_at')
@@ -53,6 +57,7 @@ export default function VideoPlayer() {
   const current = currentIndex >= 0 ? words[currentIndex] : null
   const prev = currentIndex > 0 ? words[currentIndex - 1] : null
   const next = currentIndex < words.length - 1 ? words[currentIndex + 1] : null
+  const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
 
   async function handleRate(wordId: string, rating: number) {
     await supabase
@@ -135,10 +140,10 @@ export default function VideoPlayer() {
         <div className="w-full max-w-3xl space-y-6">
           {/* Video */}
           <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl">
-            {current.video_url ? (
+            {activeVideoUrl ? (
               <video
-                key={videoKey}
-                src={`${current.video_url}?t=${videoKey}`}
+                key={`${videoKey}-${version}`}
+                src={`${activeVideoUrl}?t=${videoKey}`}
                 controls
                 autoPlay
                 className="w-full aspect-video"
@@ -148,6 +153,12 @@ export default function VideoPlayer() {
                 <p className="text-muted-foreground">No video available</p>
               </div>
             )}
+            <VersionBadge
+              version={version}
+              hasAlt={hasAltVersion}
+              onToggle={() => { toggleVersion(); setVideoKey(k => k + 1) }}
+              className="absolute top-4 right-4"
+            />
           </div>
 
           {/* Word info */}

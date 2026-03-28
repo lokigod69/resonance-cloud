@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { getStoredVersion } from '@/hooks/useVideoVersion'
 
 type StudyWord = {
   id: string
@@ -12,6 +13,8 @@ type StudyWord = {
   etymology: string | null
   video_url: string | null
   thumbnail_url: string | null
+  video_url_b: string | null
+  thumbnail_url_b: string | null
   deck_id: string
 }
 
@@ -51,7 +54,7 @@ export default function StudyGO() {
     if (!user) return
     const { data } = await supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, deck_id')
+      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, deck_id')
       .eq('user_id', user.id)
       .eq('status', 'complete')
       .order('created_at', { ascending: true })
@@ -282,6 +285,9 @@ export default function StudyGO() {
         {visibleIndices.map((wordIdx, i) => {
           const word = words[wordIdx]
           if (!word) return null
+          const ver = getStoredVersion(word.id)
+          const videoSrc = ver === 'b' && word.video_url_b ? word.video_url_b : word.video_url
+          const thumbSrc = ver === 'b' && word.thumbnail_url_b ? word.thumbnail_url_b : word.thumbnail_url
           const depth = i // 0 = top
           const yOffset = depth * -20
           const scale = 1 - depth * 0.05
@@ -321,7 +327,7 @@ export default function StudyGO() {
               >
                 {isTop ? (
                   // Top card: render video element for playback
-                  word.video_url ? (
+                  videoSrc ? (
                     <video
                       ref={(el) => {
                         if (el) {
@@ -330,13 +336,13 @@ export default function StudyGO() {
                           videoRefs.current.delete(word.id)
                         }
                       }}
-                      src={word.video_url}
+                      src={videoSrc}
                       loop
                       playsInline
                     />
-                  ) : word.thumbnail_url ? (
+                  ) : thumbSrc ? (
                     <img
-                      src={word.thumbnail_url}
+                      src={thumbSrc}
                       alt={word.word}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
@@ -347,9 +353,9 @@ export default function StudyGO() {
                   )
                 ) : (
                   // Behind cards: show thumbnail to avoid black video frames
-                  word.thumbnail_url ? (
+                  thumbSrc ? (
                     <img
-                      src={word.thumbnail_url}
+                      src={thumbSrc}
                       alt={word.word}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />

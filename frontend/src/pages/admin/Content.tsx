@@ -65,6 +65,8 @@ type WordRecord = {
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  video_url_b: string | null
+  thumbnail_url_b: string | null
   error_message: string | null
   retry_count: number
   metadata: Record<string, unknown> | null

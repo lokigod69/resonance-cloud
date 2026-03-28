@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, Clock, RotateCcw, Sparkles, BookOpen, Play, Pause, Volume2, VolumeX, ChevronLeft, ChevronRight } from 'lucide-react'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { useVideoVersion } from '@/hooks/useVideoVersion'
 
 type StudyWord = {
   id: string
@@ -14,6 +15,8 @@ type StudyWord = {
   etymology: string | null
   video_url: string | null
   thumbnail_url: string | null
+  video_url_b: string | null
+  thumbnail_url_b: string | null
   deck_id: string
 }
 
@@ -44,7 +47,7 @@ export default function StudyPG() {
     if (!user) return
     const { data } = await supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, deck_id')
+      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, deck_id')
       .eq('user_id', user.id)
       .eq('status', 'complete')
       .order('created_at', { ascending: true })
@@ -62,6 +65,7 @@ export default function StudyPG() {
   }, [loadWords])
 
   const current = words[currentIndex] ?? null
+  const { activeVideoUrl, activeThumbnailUrl } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
 
   const advance = useCallback(() => {
     setReviewed((r) => r + 1)
@@ -239,12 +243,12 @@ export default function StudyPG() {
           >
             {/* Video */}
             <div className="pg-glass rounded-2xl overflow-hidden mb-6 relative group/video">
-              {current.video_url ? (
+              {activeVideoUrl ? (
                 <>
                   <video
                     ref={videoRef}
                     key={current.id}
-                    src={current.video_url}
+                    src={activeVideoUrl}
                     autoPlay
                     loop
                     muted
@@ -272,9 +276,9 @@ export default function StudyPG() {
                     </button>
                   </div>
                 </>
-              ) : current.thumbnail_url ? (
+              ) : activeThumbnailUrl ? (
                 <img
-                  src={current.thumbnail_url}
+                  src={activeThumbnailUrl}
                   alt={current.word}
                   className="w-full aspect-video object-cover"
                 />

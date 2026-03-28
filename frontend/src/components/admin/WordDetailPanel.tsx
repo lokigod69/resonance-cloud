@@ -21,6 +21,8 @@ type WordRecord = {
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  video_url_b: string | null
+  thumbnail_url_b: string | null
   error_message: string | null
   retry_count: number
   metadata: Record<string, unknown> | null
@@ -57,22 +59,40 @@ export default function WordDetailPanel({
           </DialogTitle>
         </DialogHeader>
 
-        {/* Video Player */}
-        <div className="relative rounded-lg overflow-hidden bg-zinc-900 aspect-video w-full flex items-center justify-center">
-          {word.video_url ? (
-            <video
-              src={word.video_url}
-              controls
-              className="absolute inset-0 w-full h-full object-contain"
-              preload="metadata"
-            />
-          ) : (
-            <div className="flex flex-col items-center gap-2 text-muted-foreground">
-              <Video className="h-10 w-10" />
-              <span className="text-sm">No video available</span>
-            </div>
-          )}
+        {/* Video Player — Version A */}
+        <div className="space-y-1">
+          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Version A</p>
+          <div className="relative rounded-lg overflow-hidden bg-zinc-900 aspect-video w-full flex items-center justify-center">
+            {word.video_url ? (
+              <video
+                src={word.video_url}
+                controls
+                className="absolute inset-0 w-full h-full object-contain"
+                preload="metadata"
+              />
+            ) : (
+              <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                <Video className="h-10 w-10" />
+                <span className="text-sm">No video available</span>
+              </div>
+            )}
+          </div>
         </div>
+
+        {/* Video Player — Version B */}
+        {word.video_url_b && (
+          <div className="space-y-1">
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Version B</p>
+            <div className="relative rounded-lg overflow-hidden bg-zinc-900 aspect-video w-full flex items-center justify-center">
+              <video
+                src={word.video_url_b}
+                controls
+                className="absolute inset-0 w-full h-full object-contain"
+                preload="metadata"
+              />
+            </div>
+          </div>
+        )}
 
         {/* Word Info */}
         <div className="grid grid-cols-2 gap-3 text-sm">
