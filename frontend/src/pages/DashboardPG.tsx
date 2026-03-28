@@ -216,7 +216,7 @@ export default function DashboardPG() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold font-display tracking-tight">
-            Welcome back, {profile?.display_name || user?.email?.split('@')[0] || 'Learner'}
+            Welcome{profile?.display_name ? `, ${profile.display_name}` : ''}
           </h1>
           <p className="text-[var(--pg-text-dim)] mt-1 text-sm">
             {decks.length} deck{decks.length !== 1 ? 's' : ''} &middot;{' '}

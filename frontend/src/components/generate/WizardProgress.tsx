@@ -42,7 +42,7 @@ function buildPills(state: WizardState): PillDef[] {
     pills.push({ key: 'lang', label: getLanguageLabel(state.language), step: 1 })
   }
   if (state.words.length > 0 && state.step > 2) {
-    pills.push({ key: 'words', label: `${state.words.length} words`, step: 2 })
+    pills.push({ key: 'words', label: `${state.words.length} word${state.words.length !== 1 ? 's' : ''}`, step: 2 })
   }
   if (state.vibe && state.step > 3) {
     let label = getVibeLabel(state.vibe)

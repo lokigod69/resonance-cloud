@@ -49,6 +49,8 @@ type Word = {
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  video_url_b: string | null
+  thumbnail_url_b: string | null
   metadata: Record<string, unknown> | null
   created_at: string
 }
@@ -117,7 +119,10 @@ export default function DeckViewPG() {
       // Clean up storage files if they exist
       if (user && (word.video_url || word.thumbnail_url)) {
         const prefix = `${user.id}/${id}/${word.word}`
-        await supabase.storage.from('videos').remove([`${prefix}/video.mp4`, `${prefix}/thumb.jpg`]).catch(() => {})
+        await supabase.storage.from('videos').remove([
+          `${prefix}/video.mp4`, `${prefix}/thumb.jpg`,
+          `${prefix}/video_b.mp4`, `${prefix}/thumb_b.jpg`,
+        ]).catch(() => {})
       }
       await supabase.from('words').delete().eq('id', word.id)
       const remaining = words.filter(w => w.id !== word.id)

@@ -55,7 +55,7 @@ export default function VibeStep({ state, dispatch, onNext }: VibeStepProps) {
         variants={container}
         initial="hidden"
         animate="show"
-        className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-lg w-full"
+        className="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-lg w-full"
       >
         {VIBES.map((vibe) => (
           <motion.div key={vibe.value} variants={item}>

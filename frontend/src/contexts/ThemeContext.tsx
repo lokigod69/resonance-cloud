@@ -1,10 +1,17 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import { supabase } from '../lib/supabase'
 
-export type Theme = 'standard' | 'retro' | 'soft'
+export type Theme = 'midnight' | 'rainy-day' | 'deep-blue' | 'red-wine' | 'slate'
 
-const VALID_THEMES: Theme[] = ['standard', 'retro', 'soft']
+const VALID_THEMES: Theme[] = ['midnight', 'rainy-day', 'deep-blue', 'red-wine', 'slate']
 const STORAGE_KEY = 'resonance-theme'
+
+// Migrate old theme names to new ones
+const MIGRATION_MAP: Record<string, Theme> = {
+  standard: 'midnight',
+  retro: 'midnight',
+  soft: 'midnight',
+}
 
 interface ThemeContextType {
   theme: Theme
@@ -12,7 +19,7 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: 'standard',
+  theme: 'midnight',
   setTheme: () => {},
 })
 
@@ -28,12 +35,15 @@ function applyThemeClass(theme: Theme) {
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
-    // Read from localStorage immediately to avoid flash
-    const saved = localStorage.getItem(STORAGE_KEY) as Theme
-    if (saved && VALID_THEMES.includes(saved)) {
-      return saved
+    const saved = localStorage.getItem(STORAGE_KEY)
+    // Migrate old theme names
+    const migrated = MIGRATION_MAP[saved as string] ?? saved
+    if (migrated && VALID_THEMES.includes(migrated as Theme)) {
+      // Persist migration if value changed
+      if (migrated !== saved) localStorage.setItem(STORAGE_KEY, migrated)
+      return migrated as Theme
     }
-    return 'standard'
+    return 'midnight'
   })
 
   // Apply theme class on mount and whenever theme changes
@@ -65,7 +75,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
-      {theme === 'retro' && <div className="crt-overlay" />}
     </ThemeContext.Provider>
   )
 }

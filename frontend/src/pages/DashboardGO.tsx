@@ -158,7 +158,7 @@ export default function DashboardGO() {
   return (
     <div style={{ overflowY: 'auto', height: '100%' }}>
       <div className="dashboard-header">
-        <h1>Welcome back, {profile?.display_name || user?.email?.split('@')[0] || 'Learner'}</h1>
+        <h1>Welcome{profile?.display_name ? `, ${profile.display_name}` : ''}</h1>
         <p>{decks.length} deck{decks.length !== 1 ? 's' : ''} &middot; {profile?.credits ?? 0} credits</p>
       </div>
 
@@ -225,7 +225,7 @@ export default function DashboardGO() {
               {/* Text at bottom center */}
               <div style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
                 <h3 style={{ textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>{displayName}</h3>
-                <p style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{deck.target_language} &bull; {counts.total} Words</p>
+                <p style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{deck.target_language} &bull; {counts.total} {counts.total === 1 ? 'Word' : 'Words'}</p>
                 {deck.status !== 'complete' && (
                   <p style={{ color: 'var(--go-accent)', fontSize: '0.8rem', marginTop: 4, textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>
                     {deck.status === 'generating' ? `Generating ${counts.completed}/${counts.total}` : deck.status}

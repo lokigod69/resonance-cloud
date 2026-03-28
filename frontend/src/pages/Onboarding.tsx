@@ -56,6 +56,26 @@ export default function Onboarding() {
 
     const code = inviteCode.trim().toUpperCase()
 
+    try {
+      // Try the atomic RPC function first (available after migration)
+      const { data, error: rpcError } = await supabase.rpc('redeem_invite_code', { code_text: code })
+      if (!rpcError && data) {
+        const result = data as { success: boolean; credits_awarded?: number; error?: string }
+        if (!result.success) {
+          setRedeemError(result.error || 'Failed to redeem code.')
+        } else {
+          setRedeemSuccess({ credits: result.credits_awarded || 0 })
+          setInviteCode('')
+          await refreshProfile()
+        }
+        setRedeeming(false)
+        return
+      }
+    } catch {
+      // RPC not available — fall through to legacy flow
+    }
+
+    // Legacy fallback (pre-migration: old invite_codes schema with redeemed_by)
     const { data: invite, error: lookupError } = await supabase
       .from('invite_codes')
       .select('id, code, credits, redeemed_by')
@@ -92,7 +112,6 @@ export default function Onboarding() {
       return
     }
 
-    // Add credits
     const { data: profile } = await supabase
       .from('profiles')
       .select('credits')

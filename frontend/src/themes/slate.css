@@ -1,0 +1,76 @@
+/* Slate theme — flat gray, muted accent, minimal & quiet */
+.theme-slate {
+  --background: #1E2227;
+  --foreground: #B3B3B3;
+  --card: #334155;
+  --card-foreground: #B3B3B3;
+  --popover: #1E2227;
+  --popover-foreground: #B3B3B3;
+  --primary: #9A9894;
+  --primary-foreground: #1E2227;
+  --secondary: #2A2F36;
+  --secondary-foreground: #B3B3B3;
+  --muted: #2A2F36;
+  --muted-foreground: #656C76;
+  --accent: rgba(154, 152, 148, 0.15);
+  --accent-foreground: #B3B3B3;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: rgba(101, 108, 118, 0.2);
+  --input: #334155;
+  --ring: #9A9894;
+  --radius: 0.625rem;
+  --sidebar: #181b1f;
+  --sidebar-foreground: #B3B3B3;
+  --sidebar-primary: #9A9894;
+  --sidebar-primary-foreground: #1E2227;
+  --sidebar-accent: rgba(154, 152, 148, 0.12);
+  --sidebar-accent-foreground: #B3B3B3;
+  --sidebar-border: rgba(101, 108, 118, 0.15);
+  --sidebar-ring: #9A9894;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  color-scheme: dark;
+}
+
+/* Glass overrides */
+.theme-slate .glass {
+  background: rgba(51, 65, 85, 0.35);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(101, 108, 118, 0.2);
+}
+
+.theme-slate .glass-strong {
+  background: rgba(51, 65, 85, 0.5);
+  backdrop-filter: blur(32px);
+  border: 1px solid rgba(101, 108, 118, 0.25);
+}
+
+.theme-slate .glass-hover:hover {
+  background: rgba(51, 65, 85, 0.45);
+  border-color: rgba(154, 152, 148, 0.2);
+}
+
+.theme-slate .glass-selected {
+  background: rgba(154, 152, 148, 0.12);
+  border-color: rgba(154, 152, 148, 0.4);
+}
+
+/* Gradient background utility — flat for slate */
+.theme-slate .gradient-bg {
+  background: #1E2227;
+}
+
+/* Glow overrides */
+.theme-slate .glow-purple {
+  box-shadow: 0 0 20px rgba(154, 152, 148, 0.15);
+}
+
+.theme-slate .glow-green {
+  box-shadow: 0 0 20px rgba(154, 152, 148, 0.25);
+}
+
+/* Video overlay */
+.theme-slate .video-overlay {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(30, 34, 39, 0.8) 100%);
+}

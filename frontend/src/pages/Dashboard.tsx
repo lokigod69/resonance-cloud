@@ -198,7 +198,7 @@ export default function Dashboard() {
       {/* Header row */}
       <div>
         <h1 className="text-3xl font-bold tracking-tight">
-          Welcome back, {profile?.display_name || user?.email?.split('@')[0] || 'Learner'}
+          Welcome{profile?.display_name ? `, ${profile.display_name}` : ''}
         </h1>
         <p className="text-muted-foreground mt-1">
           Here's your learning overview.
@@ -226,7 +226,7 @@ export default function Dashboard() {
           </div>
         ) : decks.length === 0 ? (
           /* Empty state */
-          <div className="glass rounded-xl p-12 flex flex-col items-center justify-center text-center">
+          <div className="glass rounded-xl p-12 flex flex-col items-center justify-center text-center max-w-md mx-auto">
             <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
               <Sparkles className="h-8 w-8 text-primary" />
             </div>

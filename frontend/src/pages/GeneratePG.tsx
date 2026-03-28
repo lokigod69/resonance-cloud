@@ -517,7 +517,7 @@ function StepVibe({
       <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Set the creative direction</h2>
       <p className="text-[var(--pg-text-dim)] text-sm mb-10">Choose how AI interprets your words visually</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
         {VIBES.map((vibe, i) => {
           const isSelected = effectiveVibe === vibe.value
           return (
@@ -525,9 +525,10 @@ function StepVibe({
               key={vibe.value}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.03 }}
               transition={{ delay: i * 0.06, ...PG_TRANSITION }}
               onClick={() => dispatch({ type: 'SET_VIBE', vibe: vibe.value })}
-              className={`pg-glass rounded-2xl p-5 text-left transition-all ${
+              className={`pg-glass rounded-2xl p-5 text-left transition-all hover:brightness-110 ${
                 isSelected
                   ? 'shadow-[0_0_25px_rgba(139,92,246,0.2)]'
                   : 'hover:shadow-[0_0_20px_rgba(139,92,246,0.1)]'

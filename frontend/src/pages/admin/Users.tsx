@@ -26,6 +26,10 @@ import {
   Search,
   Shield,
   Coins,
+  Gift,
+  ToggleLeft,
+  ToggleRight,
+  Plus,
 } from 'lucide-react'
 import { useToast } from '@/components/Toast'
 
@@ -35,12 +39,22 @@ import { useToast } from '@/components/Toast'
 
 type Profile = {
   id: string
+  email?: string | null
   display_name: string | null
   base_language: string | null
   role: 'learner' | 'admin'
   credits: number
   created_at: string
   updated_at: string
+}
+
+type InviteCode = {
+  id: string
+  code: string
+  credits: number
+  max_uses: number | null
+  is_active: boolean
+  created_at: string
 }
 
 type UserDeck = {
@@ -94,7 +108,7 @@ function timeAgo(iso: string): string {
 }
 
 function displayName(profile: Profile): string {
-  return profile.display_name || profile.id.slice(0, 8)
+  return profile.display_name || profile.email || profile.id.slice(0, 8)
 }
 
 // ---------------------------------------------------------------------------
@@ -120,6 +134,14 @@ export default function Users() {
   const [roleFilter, setRoleFilter] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
 
+  // Invite codes
+  const [inviteCodes, setInviteCodes] = useState<InviteCode[]>([])
+  const [inviteCodesAvailable, setInviteCodesAvailable] = useState(true)
+  const [newCode, setNewCode] = useState('')
+  const [newCredits, setNewCredits] = useState('10')
+  const [newMaxUses, setNewMaxUses] = useState('')
+  const [creatingCode, setCreatingCode] = useState(false)
+
   // Role change dialog
   const [roleChangeTarget, setRoleChangeTarget] = useState<{
     user: AggregatedUser
@@ -138,6 +160,19 @@ export default function Users() {
       supabase.from('decks').select('id, user_id'),
       supabase.from('words').select('id, user_id, status'),
     ])
+
+    // Fetch invite codes (may fail if table doesn't exist yet)
+    const codesRes = await supabase
+      .from('invite_codes')
+      .select('*')
+      .order('created_at', { ascending: false })
+    if (codesRes.error) {
+      setInviteCodesAvailable(false)
+      setInviteCodes([])
+    } else {
+      setInviteCodesAvailable(true)
+      setInviteCodes((codesRes.data || []) as InviteCode[])
+    }
 
     const profiles = (profilesRes.data || []) as Profile[]
     const decks = (decksRes.data || []) as { id: string; user_id: string }[]
@@ -208,8 +243,9 @@ export default function Users() {
       const q = searchQuery.toLowerCase()
       result = result.filter(u => {
         const name = (u.display_name || '').toLowerCase()
+        const email = (u.email || '').toLowerCase()
         const idPrefix = u.id.slice(0, 8).toLowerCase()
-        return name.includes(q) || idPrefix.includes(q)
+        return name.includes(q) || email.includes(q) || idPrefix.includes(q)
       })
     }
     return result
@@ -287,6 +323,51 @@ export default function Users() {
   }
 
   // -------------------------------------------------------------------------
+  // Invite code actions
+  // -------------------------------------------------------------------------
+
+  const handleCreateCode = async () => {
+    const code = newCode.trim().toUpperCase()
+    const credits = parseInt(newCredits, 10)
+    const maxUses = newMaxUses.trim() ? parseInt(newMaxUses, 10) : null
+    if (!code) { toast('Enter a code', 'error'); return }
+    if (!credits || credits < 1) { toast('Credits must be at least 1', 'error'); return }
+    setCreatingCode(true)
+    try {
+      const { error } = await supabase.from('invite_codes').insert({
+        code,
+        credits,
+        max_uses: maxUses,
+      })
+      if (error) {
+        toast(error.message, 'error')
+      } else {
+        toast(`Created code ${code}`, 'success')
+        setNewCode('')
+        setNewCredits('10')
+        setNewMaxUses('')
+        await load()
+      }
+    } catch {
+      toast('Failed to create code', 'error')
+    } finally {
+      setCreatingCode(false)
+    }
+  }
+
+  const handleToggleCode = async (codeId: string, currentlyActive: boolean) => {
+    const { error } = await supabase
+      .from('invite_codes')
+      .update({ is_active: !currentlyActive })
+      .eq('id', codeId)
+    if (error) {
+      toast('Failed to update code', 'error')
+    } else {
+      await load()
+    }
+  }
+
+  // -------------------------------------------------------------------------
   // Render
   // -------------------------------------------------------------------------
 
@@ -327,7 +408,7 @@ export default function Users() {
         <div className="relative flex-1 min-w-[200px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search by name or ID..."
+            placeholder="Search by name, email, or ID..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             className="pl-9"
@@ -357,10 +438,13 @@ export default function Users() {
                   <ChevronRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
                 )}
 
-                {/* Name */}
-                <span className="font-medium truncate min-w-[100px]">
-                  {displayName(user)}
-                </span>
+                {/* Name + Email */}
+                <div className="min-w-[100px]">
+                  <span className="font-medium truncate block">{displayName(user)}</span>
+                  {user.email && (
+                    <span className="text-xs text-muted-foreground truncate block">{user.email}</span>
+                  )}
+                </div>
 
                 {/* Role badge */}
                 <span className={`px-2 py-0.5 rounded text-xs font-medium capitalize ${ROLE_COLORS[user.role] || ''}`}>
@@ -534,11 +618,107 @@ export default function Users() {
         )}
       </div>
 
-      {/* Invite Codes Note */}
-      <Card className="p-4">
-        <p className="text-sm text-muted-foreground">
-          Invite code management will be available once the invite_codes table is created in the database.
-        </p>
+      {/* Invite Codes */}
+      <Card className="p-4 space-y-4">
+        <h2 className="text-lg font-semibold flex items-center gap-2">
+          <Gift className="h-5 w-5" />
+          Invite Codes
+        </h2>
+
+        {!inviteCodesAvailable ? (
+          <p className="text-sm text-muted-foreground">
+            Invite code management will be available once the invite_codes table is created in the database.
+          </p>
+        ) : (
+          <>
+            {/* Create new code */}
+            <div className="flex flex-wrap gap-2 items-end">
+              <div className="space-y-1">
+                <label className="text-xs text-muted-foreground">Code</label>
+                <Input
+                  placeholder="e.g. RESONANZ-TEST-001"
+                  value={newCode}
+                  onChange={e => setNewCode(e.target.value)}
+                  className="w-[220px] uppercase tracking-wider"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="text-xs text-muted-foreground">Credits</label>
+                <Input
+                  type="number"
+                  min={1}
+                  value={newCredits}
+                  onChange={e => setNewCredits(e.target.value)}
+                  className="w-[80px]"
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="text-xs text-muted-foreground">Max Uses</label>
+                <Input
+                  type="number"
+                  min={1}
+                  placeholder="∞"
+                  value={newMaxUses}
+                  onChange={e => setNewMaxUses(e.target.value)}
+                  className="w-[80px]"
+                />
+              </div>
+              <Button
+                size="sm"
+                onClick={handleCreateCode}
+                disabled={creatingCode || !newCode.trim()}
+              >
+                <Plus className="h-3.5 w-3.5 mr-1" />
+                {creatingCode ? 'Creating...' : 'Create'}
+              </Button>
+            </div>
+
+            {/* Codes list */}
+            {inviteCodes.length === 0 ? (
+              <p className="text-sm text-muted-foreground">No invite codes yet.</p>
+            ) : (
+              <div className="space-y-1">
+                {inviteCodes.map(ic => (
+                  <div
+                    key={ic.id}
+                    className="flex items-center gap-3 px-3 py-2 rounded-md bg-accent/30"
+                  >
+                    <span className="font-mono text-sm font-medium tracking-wider">
+                      {ic.code}
+                    </span>
+                    <span className="flex items-center gap-1 text-sm">
+                      <Coins className="h-3.5 w-3.5 text-yellow-400" />
+                      {ic.credits}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {ic.max_uses != null ? `max ${ic.max_uses} uses` : 'Unlimited'}
+                    </span>
+                    <span
+                      className={`px-2 py-0.5 rounded text-xs font-medium ${
+                        ic.is_active
+                          ? 'bg-green-500/20 text-green-400'
+                          : 'bg-zinc-500/20 text-zinc-400'
+                      }`}
+                    >
+                      {ic.is_active ? 'Active' : 'Inactive'}
+                    </span>
+                    <button
+                      className="ml-auto text-muted-foreground hover:text-foreground transition-colors"
+                      onClick={() => handleToggleCode(ic.id, ic.is_active)}
+                      title={ic.is_active ? 'Deactivate' : 'Activate'}
+                    >
+                      {ic.is_active ? (
+                        <ToggleRight className="h-5 w-5 text-green-400" />
+                      ) : (
+                        <ToggleLeft className="h-5 w-5" />
+                      )}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
       </Card>
 
       {/* Role Change Confirmation */}

@@ -31,7 +31,7 @@ load_dotenv()
 
 from src.pipeline import run_stage, STAGE_ORDER
 from src.settings import save_defaults, load_defaults, DEFAULT_SETTINGS
-from src.manifest import create_manifest, read_manifest
+from src.manifest import create_manifest, read_manifest, update_selection
 from src.workspace import create_word_folder, get_word_dir
 from src.slugify import slugify, language_to_code
 from src.dispatcher import check_all_engines
@@ -270,6 +270,31 @@ def extract_thumbnail(video_path: Path, output_path: Path) -> bool:
         return False
 
 
+# ─── A/B Dual-Take Helpers ───────────────────────────────────────────────────
+
+def get_song_takes(word_dir: Path, manifest_data: Any) -> list[str]:
+    """Return available song take paths from the selected song run directory.
+
+    Each entry is a relative path like ``"run-001_ts/take_001.flac"`` suitable
+    for passing to ``update_selection(word_dir, 'song', ...)``.
+    """
+    current_song = manifest_data.selected.song
+    if not current_song or "/" not in current_song:
+        return [current_song] if current_song else []
+
+    run_dir_name = current_song.split("/")[0]
+    run_dir = word_dir / "songs" / run_dir_name
+    if not run_dir.exists():
+        return [current_song]
+
+    takes = sorted(
+        f"{run_dir_name}/{f.name}"
+        for f in run_dir.iterdir()
+        if f.suffix in (".flac", ".wav", ".mp3") and f.name.startswith("take_")
+    )
+    return takes if takes else [current_song]
+
+
 # ─── Metadata Collection ─────────────────────────────────────────────────────
 
 # Maps stage names to their filesystem directory names
@@ -497,6 +522,115 @@ async def upload_results(
     return True
 
 
+def _resolve_final_video(word_dir: Path, manifest_data: Any) -> Path | None:
+    """Resolve the final video path from a manifest (bookend > assembly fallback)."""
+    bookend_settings = manifest_data.settings.get("bookend", {})
+    bookend_enabled = bookend_settings.get("enabled", True)
+
+    if bookend_enabled and manifest_data.selected.bookend:
+        return word_dir / "bookend" / manifest_data.selected.bookend / "final.mp4"
+    elif manifest_data.selected.final:
+        return word_dir / "final" / manifest_data.selected.final / "final.mp4"
+    return None
+
+
+def _upload_video_and_thumb(
+    video_path: Path,
+    word_dir: Path,
+    storage_video_key: str,
+    storage_thumb_key: str,
+    thumb_suffix: str = "",
+) -> tuple[str | None, str | None]:
+    """Upload a video + extracted thumbnail to Supabase Storage.
+
+    Returns (video_url, thumb_url) or (None, None) on failure.
+    """
+    if not video_path.exists():
+        log.error("Video file missing: %s", video_path)
+        return None, None
+
+    thumb_path = word_dir / f"thumb{thumb_suffix}.jpg"
+    extract_thumbnail(video_path, thumb_path)
+
+    try:
+        with open(video_path, "rb") as f:
+            sb.storage.from_("videos").upload(
+                storage_video_key, f.read(),
+                file_options={"content-type": "video/mp4", "upsert": "true"},
+            )
+        if thumb_path.exists():
+            with open(thumb_path, "rb") as f:
+                sb.storage.from_("videos").upload(
+                    storage_thumb_key, f.read(),
+                    file_options={"content-type": "image/jpeg", "upsert": "true"},
+                )
+    except Exception as e:
+        log.error("Upload failed for %s: %s", storage_video_key, e)
+        return None, None
+
+    video_url = sb.storage.from_("videos").get_public_url(storage_video_key)
+    thumb_url = sb.storage.from_("videos").get_public_url(storage_thumb_key) if thumb_path.exists() else None
+    return video_url, thumb_url
+
+
+async def upload_ab_results(
+    word_record: dict[str, Any],
+    word_dir: Path,
+    user_id: str,
+    deck_id: str,
+    word_slug: str,
+    manifest_a: Any,
+    manifest_b: Any | None = None,
+) -> bool:
+    """Upload A/B video versions to Supabase Storage and update the word record.
+
+    Version A uploads to ``video.mp4`` / ``thumb.jpg`` (backward compatible).
+    Version B uploads to ``video_b.mp4`` / ``thumb_b.jpg`` (new).
+    """
+    prefix = f"{user_id}/{deck_id}/{word_slug}"
+
+    # ── Version A (required) ──
+    video_a = _resolve_final_video(word_dir, manifest_a)
+    if not video_a:
+        log.error("No final video for version A (%s)", word_slug)
+        return False
+
+    video_url_a, thumb_url_a = _upload_video_and_thumb(
+        video_a, word_dir,
+        f"{prefix}/video.mp4", f"{prefix}/thumb.jpg",
+    )
+    if not video_url_a:
+        return False
+
+    # ── Version B (optional) ──
+    video_url_b, thumb_url_b = None, None
+    if manifest_b is not None:
+        video_b = _resolve_final_video(word_dir, manifest_b)
+        if video_b:
+            video_url_b, thumb_url_b = _upload_video_and_thumb(
+                video_b, word_dir,
+                f"{prefix}/video_b.mp4", f"{prefix}/thumb_b.jpg",
+                thumb_suffix="_b",
+            )
+            if not video_url_b:
+                log.warning("Version B upload failed for %s — continuing with A only", word_slug)
+
+    # ── Update word record ──
+    update_data: dict[str, Any] = {
+        "status": "complete",
+        "video_url": video_url_a,
+    }
+    if thumb_url_a:
+        update_data["thumbnail_url"] = thumb_url_a
+    # Always write B fields: set URLs if B exists, null them out if not
+    # (prevents stale B URLs persisting from a previous generation)
+    update_data["video_url_b"] = video_url_b
+    update_data["thumbnail_url_b"] = thumb_url_b
+
+    sb.table("words").update(update_data).eq("id", word_record["id"]).execute()
+    return True
+
+
 # ─── Word Processing ─────────────────────────────────────────────────────────
 
 async def process_word(
@@ -574,9 +708,12 @@ async def process_word(
             enrichment_data=enrichment_data,
         )
 
-    # Run pipeline stages with retry
+    # Run shared pipeline stages (images, concept, song, video) with retry
+    AB_STAGES = {'assembly', 'bookend'}
     pipeline_start = time.monotonic()
     for stage in stages_to_run:
+        if stage in AB_STAGES:
+            continue  # Handled by A/B loop below
         success = False
         for attempt in range(MAX_RETRIES + 1):
             try:
@@ -620,7 +757,96 @@ async def process_word(
             }).eq("id", job["id"]).execute()
             return False
 
-    # All stages complete — collect metadata before upload/cleanup
+    # ── A/B dual-take loop ───────────────────────────────────────────────────
+    # Run assembly + bookend once per song take (A = first take, B = second).
+    # run_stage() re-reads the manifest each call, so update_selection() before
+    # each iteration makes assembly pick up the correct song take automatically.
+    # Version dirs auto-increment (clean-001, clean-002, bookend-001, bookend-002).
+    # Bookend TTS is generated once and reused on the second run (zero API cost).
+
+    manifest_data = read_manifest(word_dir)
+    takes = get_song_takes(word_dir, manifest_data)
+    take_a = takes[0] if takes else None
+    take_b = takes[1] if len(takes) >= 2 else None
+
+    ab_stages_to_run = [s for s in ('assembly', 'bookend') if s in stages_to_run]
+
+    # Resolve bookend-enabled for version B fallback (when smart retry skips A/B stages)
+    _defaults_ab = load_defaults(workspace_path)
+    _be_ab = {**_defaults_ab.get('bookend', {}), **manifest_data.settings.get('bookend', {})}
+    _bookend_on = _be_ab.get('enabled', True)
+    _full_ab_stages = ['assembly', 'bookend'] if _bookend_on else ['assembly']
+
+    ab_manifests: dict[str, Any] = {}
+
+    for label, take in [('a', take_a), ('b', take_b)]:
+        if take is None:
+            continue
+
+        # Determine which A/B stages need running for this version
+        version_ab_stages = list(ab_stages_to_run)
+        if not version_ab_stages and label == 'a':
+            # Smart retry already completed assembly+bookend for A
+            ab_manifests['a'] = read_manifest(word_dir)
+            continue
+        elif not version_ab_stages and label == 'b':
+            # B always needs assembly+bookend (never ran before)
+            version_ab_stages = list(_full_ab_stages)
+
+        log.info("  === Version %s: %s ===", label.upper(), take)
+        update_selection(word_dir, 'song', take)
+
+        version_ok = True
+        for stage in version_ab_stages:
+            stage_ok = False
+            for attempt in range(MAX_RETRIES + 1):
+                try:
+                    log.info("    [%s] Stage %s (attempt %d)", label.upper(), stage, attempt + 1)
+                    await run_stage(workspace_path, word_slug_val, stage)
+                    stage_ok = True
+                    break
+                except Exception as e:
+                    log.warning("    [%s] Stage %s attempt %d failed: %s",
+                                label.upper(), stage, attempt + 1, e)
+                    if attempt < MAX_RETRIES:
+                        try:
+                            _defaults = load_defaults(workspace_path)
+                            _manifest = read_manifest(word_dir)
+                            _stage_defaults = _defaults.get(stage, {})
+                            _stage_overrides = _manifest.settings.get(stage, {})
+                            _stage_settings = {**_stage_defaults, **_stage_overrides}
+                        except Exception:
+                            _stage_settings = None
+                        overrides = get_fallback_overrides(stage, attempt + 1, _stage_settings)
+                        if overrides:
+                            log.info("    [%s] Retrying with fallback: %s", label.upper(), overrides)
+                            from src.manifest import update_settings
+                            update_settings(word_dir, stage, overrides)
+
+            if not stage_ok:
+                version_ok = False
+                break
+
+        if version_ok:
+            ab_manifests[label] = read_manifest(word_dir)
+        elif label == 'a':
+            # Version A failed = entire word fails
+            log.error("  Word %s: version A failed at stage %s", word_slug_val, stage)
+            sb.table("words").update({
+                "status": "failed",
+                "error_message": f"Failed at assembly/bookend (version A)",
+                "retry_count": MAX_RETRIES + 1,
+            }).eq("id", word_record["id"]).execute()
+            sb.rpc("refund_credit", {"user_id_param": job["user_id"]}).execute()
+            sb.table("generation_jobs").update({
+                "words_failed": job.get("words_failed", 0) + 1,
+            }).eq("id", job["id"]).execute()
+            return False
+        else:
+            # Version B failed = degrade gracefully, continue with A only
+            log.warning("  Version B failed for %s — continuing with A only", word_slug_val)
+
+    # ── Collect metadata and upload ──────────────────────────────────────────
     pipeline_duration = time.monotonic() - pipeline_start
     word_metadata = None
     try:
@@ -630,17 +856,22 @@ async def process_word(
     except Exception as e:
         log.warning("  Metadata collection failed for %s: %s", word_slug_val, e)
 
-    # Annotate metadata with smart retry info
-    if word_metadata and is_smart_retry:
-        word_metadata["smart_retry"] = True
-        word_metadata["stages_skipped"] = [s for s in STAGE_ORDER if s not in stages_to_run]
+    # Annotate metadata with smart retry and A/B info
+    if word_metadata:
+        if is_smart_retry:
+            word_metadata["smart_retry"] = True
+            word_metadata["stages_skipped"] = [s for s in STAGE_ORDER if s not in stages_to_run]
+        word_metadata["ab_takes"] = {
+            "a": take_a,
+            "b": take_b if take_b and 'b' in ab_manifests else None,
+        }
 
-    # Upload results
-    manifest_data = read_manifest(word_dir)
-
-    uploaded = await upload_results(
-        word_record, word_dir, manifest_data, job["user_id"], job["deck_id"],
-        word_slug_override=word_slug_val,
+    # Upload A/B results
+    uploaded = await upload_ab_results(
+        word_record, word_dir, job["user_id"], job["deck_id"],
+        word_slug_val,
+        manifest_a=ab_manifests.get('a', read_manifest(word_dir)),
+        manifest_b=ab_manifests.get('b'),
     )
     if not uploaded:
         sb.table("words").update({

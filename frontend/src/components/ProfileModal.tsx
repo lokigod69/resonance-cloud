@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { useSkin, type SkinId } from '@/contexts/SkinContext'
+import { useTheme, type Theme } from '@/contexts/ThemeContext'
 import { supabase } from '@/lib/supabase'
 import {
   Dialog,
@@ -33,6 +34,14 @@ const SKINS: { id: SkinId; label: string }[] = [
   { id: 'orbs', label: 'Orbs' },
 ]
 
+const THEMES: { id: Theme; label: string; bg: string }[] = [
+  { id: 'midnight', label: 'Midnight', bg: 'oklch(0.13 0.008 280)' },
+  { id: 'rainy-day', label: 'Rainy Day', bg: 'linear-gradient(to top left, #263141, #3D4B5F)' },
+  { id: 'deep-blue', label: 'Deep Blue', bg: 'linear-gradient(to top left, #0A1842, #152D73)' },
+  { id: 'red-wine', label: 'Red Wine', bg: '#220C15' },
+  { id: 'slate', label: 'Slate', bg: '#1E2227' },
+]
+
 interface ProfileModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -41,6 +50,7 @@ interface ProfileModalProps {
 export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) {
   const { profile, user, signOut, refreshProfile } = useAuth()
   const { skin, setSkin } = useSkin()
+  const { theme, setTheme } = useTheme()
 
   const [displayName, setDisplayName] = useState(profile?.display_name || '')
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
@@ -122,6 +132,26 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                 >
                   {s.label}
                 </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Theme Selector */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Theme</label>
+            <div className="flex gap-2">
+              {THEMES.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => setTheme(t.id)}
+                  title={t.label}
+                  className={`w-[46px] h-[30px] rounded-md border-2 transition-all ${
+                    theme === t.id
+                      ? 'border-primary ring-2 ring-primary/30'
+                      : 'border-border hover:border-muted-foreground'
+                  }`}
+                  style={{ background: t.bg }}
+                />
               ))}
             </div>
           </div>
