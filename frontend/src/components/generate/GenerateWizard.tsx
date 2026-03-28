@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { CheckCircle, ArrowLeft } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
+import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
 import { useWizardState } from './useWizardState'
 import type { ExistingDeck } from './useWizardState'
@@ -19,6 +20,7 @@ import ConfirmStep from './steps/ConfirmStep'
 
 export default function GenerateWizard() {
   const { user, profile, refreshProfile } = useAuth()
+  const { toast } = useToast()
   const { state, dispatch, buildPayload } = useWizardState()
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -55,6 +57,14 @@ export default function GenerateWizard() {
     if (state.words.length === 0) return
     if (!existingDeck && !state.language) return
 
+    const credits = profile.credits ?? 0
+    if (credits < state.words.length) {
+      const msg = `Not enough credits. You have ${credits} but need ${state.words.length}. Redeem an invite code to get more.`
+      setError(msg)
+      toast(msg, 'error')
+      return
+    }
+
     setSubmitting(true)
     setError(null)
 
@@ -64,7 +74,9 @@ export default function GenerateWizard() {
       await refreshProfile()
       setGenerated(true)
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
+      const msg = err instanceof Error ? err.message : 'Something went wrong'
+      setError(msg)
+      toast(msg, 'error')
       setSubmitting(false)
     }
   }

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
+import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
 import { LANGUAGES, VIBES, ART_STYLE_GROUPS, MAX_WORDS } from '@/components/generate/wizardData'
 import { submitGeneration } from '@/components/generate/submitGeneration'
@@ -19,6 +20,7 @@ const GO_GENRES = [
 
 export default function GenerateGO() {
   const { user, profile, refreshProfile } = useAuth()
+  const { toast } = useToast()
   const navigate = useNavigate()
 
   const [step, setStep] = useState(1)
@@ -177,6 +179,14 @@ export default function GenerateGO() {
 
   async function handleInitialize() {
     if (!user || !language || words.length === 0) return
+
+    if (credits < words.length) {
+      const msg = `Not enough credits. You have ${credits} but need ${words.length}. Redeem an invite code to get more.`
+      setError(msg)
+      toast(msg, 'error')
+      return
+    }
+
     setSubmitting(true)
     setError(null)
 
@@ -224,7 +234,9 @@ export default function GenerateGO() {
       await refreshProfile()
       navigate(existingDeck ? `/deck/${existingDeck.id}` : '/dashboard')
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
+      const msg = err instanceof Error ? err.message : 'Something went wrong'
+      setError(msg)
+      toast(msg, 'error')
       setSubmitting(false)
     }
   }
@@ -480,9 +492,15 @@ export default function GenerateGO() {
             <span className="gen-summary-tag">{genre === 'custom' ? customGenre : genre}</span>
           </div>
 
+          {credits < words.length && (
+            <p style={{ color: '#f87171', marginBottom: 16, fontSize: '0.85rem' }}>
+              Not enough credits — you need {words.length} but have {credits}. Redeem an invite code to get more.
+            </p>
+          )}
           <div
-            className={`forge-orb${submitting ? ' synthesizing' : ''}`}
-            onClick={!submitting ? handleInitialize : undefined}
+            className={`forge-orb${submitting ? ' synthesizing' : ''}${credits < words.length ? ' disabled' : ''}`}
+            onClick={!submitting && credits >= words.length ? handleInitialize : undefined}
+            style={credits < words.length ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
           >
             {submitting ? 'Synthesizing...' : 'Initialize'}
           </div>

@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, X, Sparkles, Zap, Check, ArrowLeft, Film } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
+import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
 import { useWizardState } from '@/components/generate/useWizardState'
 import type { ExistingDeck } from '@/components/generate/useWizardState'
@@ -24,6 +25,7 @@ const STEP_LABELS = ['Language', 'Words', 'Vibe', 'Art Style', 'Music', 'Review'
 
 export default function GeneratePG() {
   const { user, profile, refreshProfile } = useAuth()
+  const { toast } = useToast()
   const { state, dispatch, buildPayload } = useWizardState()
 
   const [pgStep, setPgStep] = useState(0)
@@ -59,6 +61,14 @@ export default function GeneratePG() {
     if (!user || !profile) return
     if (state.words.length === 0) return
     if (!existingDeck && !state.language) return
+
+    const cachedCredits = profile.credits ?? 0
+    if (cachedCredits < state.words.length) {
+      const msg = `Not enough credits. You have ${cachedCredits} but need ${state.words.length}. Redeem an invite code to get more.`
+      setError(msg)
+      toast(msg, 'error')
+      return
+    }
 
     setSubmitting(true)
     setError(null)
@@ -139,7 +149,9 @@ export default function GeneratePG() {
       await refreshProfile()
       setGenerated(true)
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
+      const msg = err instanceof Error ? err.message : 'Something went wrong'
+      setError(msg)
+      toast(msg, 'error')
       setSubmitting(false)
     }
   }
