@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 
 type StudyWord = {
   id: string
@@ -242,7 +243,7 @@ export default function StudyGO() {
   if (loading) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-        <p style={{ color: 'var(--go-text-secondary)' }}>Loading study cards...</p>
+        <LoadingIndicator text="Loading study cards" />
       </div>
     )
   }

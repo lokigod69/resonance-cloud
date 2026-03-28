@@ -3,6 +3,7 @@ import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { Loader } from 'lucide-react'
+import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 
 type Deck = {
   id: string
@@ -124,7 +125,7 @@ export default function DashboardGO() {
   if (loading) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-        <p style={{ color: 'var(--go-text-secondary)' }}>Loading decks...</p>
+        <LoadingIndicator text="Loading decks" />
       </div>
     )
   }
@@ -157,7 +158,7 @@ export default function DashboardGO() {
   return (
     <div style={{ overflowY: 'auto', height: '100%' }}>
       <div className="dashboard-header">
-        <h1>Welcome back, {profile?.display_name || 'Learner'}</h1>
+        <h1>Welcome back, {profile?.display_name || user?.email?.split('@')[0] || 'Learner'}</h1>
         <p>{decks.length} deck{decks.length !== 1 ? 's' : ''} &middot; {profile?.credits ?? 0} credits</p>
       </div>
 

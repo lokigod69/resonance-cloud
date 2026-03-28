@@ -4,6 +4,7 @@ import { supabase } from '@/lib/supabase'
 import { useDrag } from '@use-gesture/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import {
   ArrowLeft,
   Play,
@@ -215,7 +216,7 @@ export default function DeckViewPG() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="w-12 h-12 rounded-full border-2 border-[var(--pg-accent-teal)] border-t-transparent animate-spin" />
+        <LoadingIndicator text="Loading deck" />
       </div>
     )
   }

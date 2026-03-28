@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Coins, LogOut, Check } from 'lucide-react'
+import { Input } from '@/components/ui/input'
 
 const LANGUAGES = [
   { value: 'English', label: 'English' },
@@ -26,8 +27,27 @@ export default function Settings() {
   const { theme, setTheme } = useTheme()
   const { skin, setSkin } = useSkin()
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
+  const [displayName, setDisplayName] = useState(profile?.display_name || '')
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
+  const [nameSaving, setNameSaving] = useState(false)
+  const [nameSaved, setNameSaved] = useState(false)
+
+  async function handleSaveDisplayName() {
+    if (!user) return
+    setNameSaving(true)
+    setNameSaved(false)
+
+    await supabase
+      .from('profiles')
+      .update({ display_name: displayName.trim() || null })
+      .eq('id', user.id)
+
+    await refreshProfile()
+    setNameSaving(false)
+    setNameSaved(true)
+    setTimeout(() => setNameSaved(false), 2000)
+  }
 
   async function handleSaveLanguage(value: string) {
     setBaseLanguage(value)
@@ -75,6 +95,37 @@ export default function Settings() {
           </Select>
           {saving && <span className="text-sm text-muted-foreground">Saving...</span>}
           {saved && (
+            <span className="text-sm text-green-400 flex items-center gap-1">
+              <Check className="h-3 w-3" /> Saved
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Display Name */}
+      <div className="glass rounded-xl p-6 space-y-4">
+        <div>
+          <h2 className="text-lg font-semibold">Display Name</h2>
+          <p className="text-sm text-muted-foreground">
+            Your name shown throughout the app.
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <Input
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSaveDisplayName()}
+            placeholder="Enter your name"
+            className="bg-white/5 border-white/10 max-w-xs"
+          />
+          <Button
+            size="sm"
+            onClick={handleSaveDisplayName}
+            disabled={nameSaving}
+          >
+            {nameSaving ? 'Saving...' : 'Save'}
+          </Button>
+          {nameSaved && (
             <span className="text-sm text-green-400 flex items-center gap-1">
               <Check className="h-3 w-3" /> Saved
             </span>
@@ -130,7 +181,7 @@ export default function Settings() {
             {
               id: 'default' as SkinId,
               label: 'Classic',
-              desc: 'Sidebar navigation',
+              desc: 'Clean header navigation',
               colors: ['oklch(0.7 0.15 280)', 'oklch(0.22 0.015 280)', 'oklch(0.13 0.008 280)'],
             },
             {

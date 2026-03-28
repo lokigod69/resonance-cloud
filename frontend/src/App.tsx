@@ -28,6 +28,7 @@ import Metrics from '@/pages/admin/Metrics'
 import Queue from '@/pages/admin/Queue'
 import Profiles from '@/pages/admin/Profiles'
 import AdminRoute from '@/components/AdminRoute'
+import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 
 function ProtectedRoute() {
   const { session, loading } = useAuth()
@@ -35,12 +36,8 @@ function ProtectedRoute() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center gradient-bg">
-        <div className="glass rounded-xl px-8 py-4 flex items-center gap-3">
-          <svg className="h-4 w-4 animate-spin text-muted-foreground" viewBox="0 0 24 24" fill="none">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-          </svg>
-          <p className="text-muted-foreground">Loading...</p>
+        <div className="glass rounded-xl px-8 py-6">
+          <LoadingIndicator />
         </div>
       </div>
     )
@@ -59,8 +56,8 @@ function OnboardingRoute() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center gradient-bg">
-        <div className="glass rounded-xl px-8 py-4">
-          <p className="text-muted-foreground">Loading...</p>
+        <div className="glass rounded-xl px-8 py-6">
+          <LoadingIndicator />
         </div>
       </div>
     )
@@ -79,8 +76,8 @@ function PublicRoute() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center gradient-bg">
-        <div className="glass rounded-xl px-8 py-4">
-          <p className="text-muted-foreground">Loading...</p>
+        <div className="glass rounded-xl px-8 py-6">
+          <LoadingIndicator />
         </div>
       </div>
     )

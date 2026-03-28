@@ -4,6 +4,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, Clock, RotateCcw, Sparkles, BookOpen, Play, Pause, Volume2, VolumeX, ChevronLeft, ChevronRight } from 'lucide-react'
+import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 
 type StudyWord = {
   id: string
@@ -140,7 +141,7 @@ export default function StudyPG() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="w-12 h-12 rounded-full border-2 border-[var(--pg-accent-teal)] border-t-transparent animate-spin" />
+        <LoadingIndicator text="Loading study cards" />
       </div>
     )
   }

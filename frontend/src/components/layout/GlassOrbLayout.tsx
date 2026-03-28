@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { useAuth } from '@/hooks/useAuth'
+import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 
 const navItems = [
   { icon: 'grid_view', path: '/dashboard', label: 'Dashboard' },
@@ -10,10 +13,33 @@ const navItems = [
 export default function GlassOrbLayout() {
   const navigate = useNavigate()
   const location = useLocation()
+  const { profile } = useAuth()
+  const [redeemOpen, setRedeemOpen] = useState(false)
 
   return (
     <div className="go-root">
       <div className="global-nav">
+        {/* Credits button */}
+        <button
+          onClick={() => setRedeemOpen(true)}
+          title="Credits"
+          style={{
+            width: 'auto',
+            height: 44,
+            borderRadius: 22,
+            paddingLeft: 12,
+            paddingRight: 14,
+            fontSize: '0.8rem',
+            fontWeight: 600,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '5px',
+          }}
+        >
+          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>toll</span>
+          {profile?.credits ?? 0}
+        </button>
+
         {navItems.map((item) => (
           <button
             key={item.path}
@@ -33,6 +59,7 @@ export default function GlassOrbLayout() {
         ))}
       </div>
       <Outlet />
+      <RedeemCodeDialog open={redeemOpen} onOpenChange={setRedeemOpen} />
     </div>
   )
 }

@@ -199,7 +199,7 @@ export default function Dashboard() {
       <div className="flex items-start justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">
-            Welcome back, {profile?.display_name || 'Learner'}
+            Welcome back, {profile?.display_name || user?.email?.split('@')[0] || 'Learner'}
           </h1>
           <p className="text-muted-foreground mt-1">
             Here's your learning overview.

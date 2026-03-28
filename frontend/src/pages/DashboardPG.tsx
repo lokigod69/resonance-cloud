@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase'
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
 import type { PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import {
   Coins,
   Sparkles,
@@ -181,10 +182,7 @@ export default function DashboardPG() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 rounded-full border-2 border-[var(--pg-accent-teal)] border-t-transparent animate-spin" />
-          <p className="text-[var(--pg-text-dim)] text-sm font-display">Loading decks...</p>
-        </div>
+        <LoadingIndicator text="Loading decks" />
       </div>
     )
   }
@@ -218,7 +216,7 @@ export default function DashboardPG() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold font-display tracking-tight">
-            Welcome back, {profile?.display_name || 'Learner'}
+            Welcome back, {profile?.display_name || user?.email?.split('@')[0] || 'Learner'}
           </h1>
           <p className="text-[var(--pg-text-dim)] mt-1 text-sm">
             {decks.length} deck{decks.length !== 1 ? 's' : ''} &middot;{' '}
