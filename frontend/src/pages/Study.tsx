@@ -12,13 +12,14 @@ import {
   BookOpen,
   Play,
   Pause,
-  Volume2,
-  VolumeX,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
+import { useVideoVolume } from '@/hooks/useVideoVolume'
+import { VolumeControl } from '@/components/VolumeControl'
+import { FullscreenButton } from '@/components/FullscreenButton'
 
 type StudyWord = {
   id: string
@@ -54,7 +55,7 @@ export default function Study() {
   const [sessionComplete, setSessionComplete] = useState(false)
   const [reviewed, setReviewed] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
-  const [isMuted, setIsMuted] = useState(true)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef)
 
   const loadWords = useCallback(async () => {
     if (!user) return
@@ -116,11 +117,7 @@ export default function Study() {
     }
   }, [])
 
-  const toggleMute = useCallback(() => {
-    if (!videoRef.current) return
-    videoRef.current.muted = !videoRef.current.muted
-    setIsMuted(videoRef.current.muted)
-  }, [])
+  // toggleMute provided by useVideoVolume hook
 
   const skipPrev = useCallback(() => {
     if (currentIndex > 0) {
@@ -269,13 +266,17 @@ export default function Study() {
                       >
                         {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                       </button>
-                      <button
-                        onClick={toggleMute}
-                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                        title={isMuted ? 'Unmute' : 'Mute'}
-                      >
-                        {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-                      </button>
+                      <VolumeControl
+                        volume={volume}
+                        isMuted={isMuted}
+                        onVolumeChange={setVolume}
+                        onToggleMute={toggleMute}
+                        buttonClassName="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                      />
+                      <FullscreenButton
+                        targetRef={videoRef}
+                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors ml-auto"
+                      />
                     </div>
                   </>
                 ) : activeThumbnailUrl ? (

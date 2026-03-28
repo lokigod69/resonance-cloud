@@ -2,8 +2,12 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import { Play, Pause } from 'lucide-react'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { getStoredVersion } from '@/hooks/useVideoVersion'
+import { useVideoVolume } from '@/hooks/useVideoVolume'
+import { VolumeControl } from '@/components/VolumeControl'
+import { FullscreenButton } from '@/components/FullscreenButton'
 
 type StudyWord = {
   id: string
@@ -49,6 +53,8 @@ export default function StudyGO() {
   const [playingVideos, setPlayingVideos] = useState<Set<string>>(new Set())
   const [showControls, setShowControls] = useState(true)
   const controlsTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const topVideoRef = useRef<HTMLVideoElement | null>(null)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(topVideoRef)
 
   const loadWords = useCallback(async () => {
     if (!user) return
@@ -199,6 +205,7 @@ export default function StudyGO() {
 
     // Play top card video and sync button state
     const topVideo = videoRefs.current.get(topWord.id)
+    topVideoRef.current = topVideo ?? null
     if (topVideo) {
       topVideo.play().catch(() => {})
       setPlayingVideos(new Set([topWord.id]))
@@ -369,16 +376,31 @@ export default function StudyGO() {
                 {/* Video controls overlay */}
                 {isTop && word.video_url && (
                   <div className={`controls transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        toggleVideo(word.id)
-                      }}
-                    >
-                      <span className="material-symbols-outlined" style={{ fontSize: '1.5rem' }}>
-                        {playingVideos.has(word.id) ? 'pause' : 'play_arrow'}
-                      </span>
-                    </button>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, width: '100%' }}>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          toggleVideo(word.id)
+                        }}
+                      >
+                        {playingVideos.has(word.id) ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6" />}
+                      </button>
+                      <VolumeControl
+                        volume={volume}
+                        isMuted={isMuted}
+                        onVolumeChange={setVolume}
+                        onToggleMute={toggleMute}
+                        iconSize={20}
+                        buttonClassName=""
+                      />
+                      <div style={{ marginLeft: 'auto' }}>
+                        <FullscreenButton
+                          targetRef={topVideoRef}
+                          iconSize={20}
+                          className=""
+                        />
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>

@@ -9,7 +9,6 @@ import {
   ArrowLeft,
   Play,
   Pause,
-  Maximize,
   AlertCircle,
   Sparkles,
   Pencil,
@@ -27,6 +26,9 @@ import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
+import { useVideoVolume } from '@/hooks/useVideoVolume'
+import { VolumeControl } from '@/components/VolumeControl'
+import { FullscreenButton } from '@/components/FullscreenButton'
 import { useToast } from '@/components/Toast'
 
 type Deck = {
@@ -183,6 +185,7 @@ export default function DeckViewPG() {
 
   const activeWord = words[activeIndex] ?? { id: '', video_url: null, thumbnail_url: null }
   const { activeVideoUrl, activeThumbnailUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(activeWord)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
 
   // Auto-play next card when swiping while video was active
   const videoActiveRef = useRef(videoActiveIndex)
@@ -456,9 +459,9 @@ export default function DeckViewPG() {
                           />
                         )}
 
-                        {/* Video controls — play/pause + fullscreen */}
+                        {/* Video controls — play/pause + volume + fullscreen */}
                         {isComplete && videoActiveIndex === i && offset === 0 && (
-                          <div className="absolute bottom-3 left-3 flex gap-2 z-10">
+                          <div className="absolute bottom-0 left-0 right-0 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent z-10">
                             <button
                               onClick={(e) => {
                                 e.stopPropagation()
@@ -468,18 +471,17 @@ export default function DeckViewPG() {
                             >
                               {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
                             </button>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                if (videoRef.current) {
-                                  if (document.fullscreenElement) document.exitFullscreen()
-                                  else videoRef.current.requestFullscreen().catch(() => {})
-                                }
-                              }}
-                              className="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
-                            >
-                              <Maximize className="h-4 w-4" />
-                            </button>
+                            <VolumeControl
+                              volume={volume}
+                              isMuted={isMuted}
+                              onVolumeChange={setVolume}
+                              onToggleMute={toggleMute}
+                              buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                            />
+                            <FullscreenButton
+                              targetRef={videoRef}
+                              className="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors ml-auto"
+                            />
                           </div>
                         )}
                       </div>

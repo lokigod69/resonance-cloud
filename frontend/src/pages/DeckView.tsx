@@ -4,11 +4,14 @@ import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, Play, Pause, AlertCircle, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Maximize, Trash2, CheckCircle2, Loader2, AlertTriangle } from 'lucide-react'
+import { ArrowLeft, Play, Pause, AlertCircle, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion, getStoredVersion } from '@/hooks/useVideoVersion'
+import { useVideoVolume } from '@/hooks/useVideoVolume'
+import { VolumeControl } from '@/components/VolumeControl'
+import { FullscreenButton } from '@/components/FullscreenButton'
 import { useToast } from '@/components/Toast'
 
 type Deck = {
@@ -458,6 +461,7 @@ function VideoViewerModal({
   const hasNext = currentIndex < words.length - 1
   const [isPlaying, setIsPlaying] = useState(true)
   const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(word ?? { id: '', video_url: null, thumbnail_url: null })
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
 
   const togglePlayPause = useCallback(() => {
     const vid = videoRef.current
@@ -557,29 +561,29 @@ function VideoViewerModal({
               className="absolute top-4 right-4"
             />
 
-            {/* Play/Pause overlay button */}
+            {/* Video controls overlay */}
             {activeVideoUrl && (
-              <>
+              <div className="absolute bottom-0 left-0 right-0 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent z-20">
                 <button
                   onClick={(e) => { e.stopPropagation(); togglePlayPause() }}
-                  className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white z-20 hover:bg-black/80 transition-colors"
+                  className="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
                 >
                   {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
                 </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    if (document.fullscreenElement) {
-                      document.exitFullscreen()
-                    } else {
-                      videoRef.current?.requestFullscreen()
-                    }
-                  }}
-                  className="absolute bottom-4 left-20 w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white z-20 hover:bg-black/80 transition-colors"
-                >
-                  <Maximize className="h-5 w-5" />
-                </button>
-              </>
+                <VolumeControl
+                  volume={volume}
+                  isMuted={isMuted}
+                  onVolumeChange={setVolume}
+                  onToggleMute={toggleMute}
+                  iconSize={20}
+                  buttonClassName="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                />
+                <FullscreenButton
+                  targetRef={videoRef}
+                  iconSize={20}
+                  className="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors ml-auto"
+                />
+              </div>
             )}
           </div>
 
