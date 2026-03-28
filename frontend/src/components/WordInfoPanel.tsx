@@ -49,7 +49,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
         <p className="text-xl text-muted-foreground">{word.translation}</p>
       )}
       {word.mnemonic && (
-        <p className="text-sm text-muted-foreground/70 max-w-lg mx-auto italic">
+        <p className="text-sm text-muted-foreground/70 max-w-2xl mx-auto italic">
           {word.mnemonic}
         </p>
       )}
@@ -61,7 +61,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
 
       {/* Expandable metadata */}
       {showMetadata && (
-        <div className="mt-4 pt-4 border-t border-white/10 space-y-3 text-sm max-w-lg mx-auto">
+        <div className="mt-4 pt-4 border-t border-white/10 space-y-3 text-sm max-w-2xl mx-auto">
           {word.etymology && (
             <div className="flex justify-between gap-4">
               <span className="text-gray-500 shrink-0">Etymology</span>
@@ -88,7 +88,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
           {word.metadata?.art_style && (
             <div className="flex justify-between gap-4">
               <span className="text-gray-500 shrink-0">Art Style</span>
-              <span className="text-gray-300 text-right">
+              <span className="text-gray-300 text-right truncate max-w-[280px]" title={word.metadata.art_style}>
                 {word.metadata.art_style}
               </span>
             </div>
@@ -96,8 +96,8 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
           {word.metadata?.music_caption && (
             <div className="flex justify-between gap-4">
               <span className="text-gray-500 shrink-0">Music</span>
-              <span className="text-gray-300 text-right text-xs leading-relaxed">
-                {word.metadata.music_caption}
+              <span className="text-gray-300 text-right">
+                {word.metadata.music_caption.split(',')[0]}
               </span>
             </div>
           )}

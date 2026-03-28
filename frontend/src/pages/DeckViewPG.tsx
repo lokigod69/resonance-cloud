@@ -22,7 +22,7 @@ import {
   RotateCcw,
   Trash2,
 } from 'lucide-react'
-import WordInfoPanel from '@/components/WordInfoPanel'
+import StarRating from '@/components/ui/StarRating'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
@@ -378,7 +378,7 @@ export default function DeckViewPG() {
                 return (
                   <motion.div
                     key={word.id}
-                    className="absolute w-[92vw] max-w-[800px] h-[80vh] max-h-[750px]"
+                    className="absolute w-[92vw] max-w-[800px] h-[80vh] max-h-[750px] flex items-center justify-center"
                     initial={false}
                     animate={{
                       x: offset * 200 + dragOffset,
@@ -390,7 +390,7 @@ export default function DeckViewPG() {
                     transition={dragOffset !== 0 ? { type: 'tween', duration: 0 } : { type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div
-                      className={`w-full h-full bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative flex flex-col ${
+                      className={`w-full bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative flex flex-col ${
                         !isComplete ? 'opacity-50' : ''
                       }`}
                       style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
@@ -405,7 +405,7 @@ export default function DeckViewPG() {
                             src={(offset === 0 ? activeVideoUrl : word.video_url)!}
                             playsInline
                             loop
-                            className="absolute inset-0 w-full h-full object-contain z-[1]"
+                            className="absolute inset-0 w-full h-full object-cover z-[1]"
                             onPlay={() => setIsPlaying(true)}
                             onPause={() => setIsPlaying(false)}
                           />
@@ -486,69 +486,125 @@ export default function DeckViewPG() {
                         )}
                       </div>
 
-                      {/* Collapse toggle handle */}
-                      <div
-                        className="flex justify-center py-2 bg-[#0d0d12] cursor-pointer hover:bg-white/5 transition-colors"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          setInfoCollapsed(!infoCollapsed)
-                        }}
-                      >
-                        <div className="flex flex-col items-center gap-0.5">
-                          <div className="w-[60px] h-1 rounded-full bg-white/20" />
-                          {infoCollapsed ? (
-                            <ChevronDown className="h-3 w-3 text-white/30" />
-                          ) : (
-                            <ChevronUp className="h-3 w-3 text-white/30" />
-                          )}
-                        </div>
+                      {/* Word info — always visible */}
+                      <div className="px-6 pt-4 pb-2 flex flex-col items-center text-center bg-[#0d0d12]">
+                        {isComplete ? (
+                          <>
+                            <h2 className="text-2xl font-bold text-white">{word.word}</h2>
+                            {word.translation && (
+                              <p className="text-base text-gray-400 mt-1">{word.translation}</p>
+                            )}
+                            {word.mnemonic && (
+                              <p className="text-sm text-gray-500/70 italic mt-1 max-w-2xl">{word.mnemonic}</p>
+                            )}
+                            <div className="flex justify-center mt-2">
+                              <StarRating rating={word.rating ?? null} onChange={(r) => handleRate(word.id, r)} />
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-lg font-bold text-white">{word.word}</p>
+                            <p className="text-xs text-gray-500 mt-1">
+                              {word.status === 'failed' ? 'Failed to generate' : 'Processing...'}
+                            </p>
+                            {word.status === 'failed' && (
+                              <div className="flex gap-2 mt-3">
+                                <button
+                                  onClick={() => handleRetry(word)}
+                                  disabled={retrying === word.id}
+                                  className="px-3 py-1.5 text-xs font-medium bg-white/10 hover:bg-white/20 rounded-lg transition-colors disabled:opacity-50"
+                                >
+                                  <RotateCcw className="h-3 w-3 inline mr-1" />
+                                  {retrying === word.id ? 'Retrying...' : 'Retry'}
+                                </button>
+                                <button
+                                  onClick={() => handleDeleteWord(word)}
+                                  disabled={deleting === word.id}
+                                  className="px-3 py-1.5 text-xs text-red-400 hover:text-red-300 bg-white/5 hover:bg-white/10 rounded-lg transition-colors disabled:opacity-50"
+                                >
+                                  <Trash2 className="h-3 w-3 inline mr-1" />
+                                  Remove
+                                </button>
+                              </div>
+                            )}
+                          </>
+                        )}
                       </div>
 
-                      {/* Word info — collapsible */}
-                      <AnimatePresence initial={false}>
-                        {!infoCollapsed && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.25, ease: 'easeInOut' }}
-                            className="overflow-hidden bg-[#0d0d12]"
-                          >
-                            <div className="p-6 flex flex-col items-center text-center">
-                              {isComplete ? (
-                                <WordInfoPanel word={word} onRate={handleRate} />
-                              ) : (
-                                <>
-                                  <p className="text-lg font-bold text-white">{word.word}</p>
-                                  <p className="text-xs text-gray-500 mt-1">
-                                    {word.status === 'failed' ? 'Failed to generate' : 'Processing...'}
-                                  </p>
-                                  {word.status === 'failed' && (
-                                    <div className="flex gap-2 mt-3">
-                                      <button
-                                        onClick={() => handleRetry(word)}
-                                        disabled={retrying === word.id}
-                                        className="px-3 py-1.5 text-xs font-medium bg-white/10 hover:bg-white/20 rounded-lg transition-colors disabled:opacity-50"
-                                      >
-                                        <RotateCcw className="h-3 w-3 inline mr-1" />
-                                        {retrying === word.id ? 'Retrying...' : 'Retry'}
-                                      </button>
-                                      <button
-                                        onClick={() => handleDeleteWord(word)}
-                                        disabled={deleting === word.id}
-                                        className="px-3 py-1.5 text-xs text-red-400 hover:text-red-300 bg-white/5 hover:bg-white/10 rounded-lg transition-colors disabled:opacity-50"
-                                      >
-                                        <Trash2 className="h-3 w-3 inline mr-1" />
-                                        Remove
-                                      </button>
-                                    </div>
-                                  )}
-                                </>
-                              )}
+                      {/* Expandable metadata */}
+                      {(() => {
+                        const meta = word.metadata as { creative_direction?: string; art_style?: string; music_caption?: string } | null
+                        const hasExpandable = isComplete && (word.etymology || word.pos || meta?.creative_direction || meta?.art_style || meta?.music_caption)
+                        if (!hasExpandable) return null
+                        return (
+                          <>
+                            <div
+                              className="flex justify-center py-1.5 bg-[#0d0d12] cursor-pointer hover:bg-white/5 transition-colors"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                setInfoCollapsed(!infoCollapsed)
+                              }}
+                            >
+                              <div className="flex flex-col items-center gap-0.5">
+                                <div className="w-10 h-0.5 rounded-full bg-white/20" />
+                                {infoCollapsed ? (
+                                  <ChevronDown className="h-3 w-3 text-white/30" />
+                                ) : (
+                                  <ChevronUp className="h-3 w-3 text-white/30" />
+                                )}
+                              </div>
                             </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                            <AnimatePresence initial={false}>
+                              {!infoCollapsed && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: 'auto', opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.25, ease: 'easeInOut' }}
+                                  className="overflow-hidden bg-[#0d0d12]"
+                                >
+                                  <div className="px-6 pb-4 pt-2 space-y-2.5 text-sm max-w-2xl mx-auto">
+                                    {word.etymology && (
+                                      <div className="flex justify-between gap-4">
+                                        <span className="text-gray-500 shrink-0">Etymology</span>
+                                        <span className="text-gray-300 text-right">{word.etymology}</span>
+                                      </div>
+                                    )}
+                                    {word.pos && (
+                                      <div className="flex justify-between">
+                                        <span className="text-gray-500">Part of Speech</span>
+                                        <span className="text-gray-300">
+                                          {word.pos}{word.article ? ` \u00b7 ${word.article}` : ''}
+                                        </span>
+                                      </div>
+                                    )}
+                                    {meta?.creative_direction && (
+                                      <div className="flex justify-between">
+                                        <span className="text-gray-500">Creative Direction</span>
+                                        <span className="text-teal-400 capitalize">{meta.creative_direction}</span>
+                                      </div>
+                                    )}
+                                    {meta?.art_style && (
+                                      <div className="flex justify-between gap-4">
+                                        <span className="text-gray-500 shrink-0">Art Style</span>
+                                        <span className="text-gray-300 text-right truncate max-w-[280px]" title={meta.art_style}>
+                                          {meta.art_style}
+                                        </span>
+                                      </div>
+                                    )}
+                                    {meta?.music_caption && (
+                                      <div className="flex justify-between gap-4">
+                                        <span className="text-gray-500 shrink-0">Music</span>
+                                        <span className="text-gray-300 text-right">{meta.music_caption.split(',')[0]}</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </>
+                        )
+                      })()}
 
                       {/* Dark overlay on non-active cards */}
                       {offset !== 0 && (
