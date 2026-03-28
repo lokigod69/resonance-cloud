@@ -38,7 +38,7 @@ const THEMES: { id: Theme; label: string; bg: string }[] = [
   { id: 'midnight', label: 'Midnight', bg: 'oklch(0.13 0.008 280)' },
   { id: 'rainy-day', label: 'Rainy Day', bg: 'linear-gradient(to top left, #263141, #3D4B5F)' },
   { id: 'deep-blue', label: 'Deep Blue', bg: 'linear-gradient(to top left, #0A1842, #152D73)' },
-  { id: 'red-wine', label: 'Red Wine', bg: '#220C15' },
+  { id: 'red-wine', label: 'Red Wine', bg: 'linear-gradient(145deg, #220C15, #2D1520, #1A0A12)' },
   { id: 'slate', label: 'Slate', bg: '#1E2227' },
 ]
 

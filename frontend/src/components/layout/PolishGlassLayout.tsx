@@ -34,6 +34,8 @@ export default function PolishGlassLayout() {
     <div className="w-screen min-h-screen relative bg-[var(--pg-base-dark,#0a0a0c)] text-white overflow-x-hidden overflow-y-auto selection:bg-teal-500/30 font-sans pg-scrollbar-hide">
       {/* Cinematic ambient glow */}
       <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-teal-900/10 rounded-full blur-[120px] pointer-events-none z-0" />
+      {/* Perspective dot grid */}
+      <div className="pg-dot-grid" aria-hidden="true" />
 
       {/* Top Navigation */}
       <nav className="fixed top-0 left-0 w-full px-4 sm:px-6 py-4 sm:py-6 flex justify-between items-center z-50 pointer-events-auto bg-[#0a0a0c]/80 backdrop-blur-md">

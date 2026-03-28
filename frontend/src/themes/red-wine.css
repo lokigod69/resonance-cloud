@@ -1,4 +1,4 @@
-/* Red Wine theme — flat burgundy, deep pink accent */
+/* Red Wine theme — burgundy gradient, warm pink accent */
 .theme-red-wine {
   --background: #220C15;
   --foreground: #DCEAEC;
@@ -6,71 +6,101 @@
   --card-foreground: #DCEAEC;
   --popover: #220C15;
   --popover-foreground: #DCEAEC;
-  --primary: #C62F6C;
+  --primary: #B8346A;
   --primary-foreground: #DCEAEC;
   --secondary: #3A0E20;
   --secondary-foreground: #DCEAEC;
   --muted: #3A0E20;
   --muted-foreground: #95B2B8;
-  --accent: rgba(198, 47, 108, 0.15);
+  --accent: rgba(184, 52, 106, 0.15);
   --accent-foreground: #DCEAEC;
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: rgba(149, 178, 184, 0.12);
   --input: #4E122A;
-  --ring: #C62F6C;
+  --ring: #B8346A;
   --radius: 0.625rem;
   --sidebar: #1a0810;
   --sidebar-foreground: #DCEAEC;
-  --sidebar-primary: #C62F6C;
+  --sidebar-primary: #B8346A;
   --sidebar-primary-foreground: #DCEAEC;
-  --sidebar-accent: rgba(198, 47, 108, 0.12);
+  --sidebar-accent: rgba(184, 52, 106, 0.12);
   --sidebar-accent-foreground: #DCEAEC;
   --sidebar-border: rgba(149, 178, 184, 0.1);
-  --sidebar-ring: #C62F6C;
+  --sidebar-ring: #B8346A;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
   color-scheme: dark;
 }
 
+/* Subtle gradient background — fixed so it doesn't scroll */
+.theme-red-wine body {
+  background: linear-gradient(145deg, #220C15 0%, #2D1520 50%, #1A0A12 100%);
+  background-attachment: fixed;
+}
+
+/* Edge vignette — darkens page edges for depth */
+.theme-red-wine body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(34, 12, 21, 0.4) 100%);
+}
+
 /* Glass overrides */
 .theme-red-wine .glass {
-  background: rgba(78, 18, 42, 0.35);
+  background: rgba(78, 18, 42, 0.25);
   backdrop-filter: blur(24px);
   border: 1px solid rgba(149, 178, 184, 0.12);
 }
 
 .theme-red-wine .glass-strong {
-  background: rgba(78, 18, 42, 0.5);
+  background: rgba(78, 18, 42, 0.4);
   backdrop-filter: blur(32px);
   border: 1px solid rgba(149, 178, 184, 0.15);
 }
 
 .theme-red-wine .glass-hover:hover {
-  background: rgba(78, 18, 42, 0.45);
-  border-color: rgba(198, 47, 108, 0.2);
+  background: rgba(78, 18, 42, 0.35);
+  border-color: rgba(184, 52, 106, 0.2);
 }
 
 .theme-red-wine .glass-selected {
-  background: rgba(198, 47, 108, 0.12);
-  border-color: rgba(198, 47, 108, 0.4);
+  background: rgba(184, 52, 106, 0.12);
+  border-color: rgba(184, 52, 106, 0.4);
 }
 
-/* Gradient background utility — flat for red wine */
+/* Gradient background utility */
 .theme-red-wine .gradient-bg {
-  background: linear-gradient(135deg, #220C15 0%, #4E122A 100%);
+  background: linear-gradient(145deg, #220C15 0%, #2D1520 50%, #1A0A12 100%);
 }
 
 /* Glow overrides */
 .theme-red-wine .glow-purple {
-  box-shadow: 0 0 20px rgba(198, 47, 108, 0.15);
+  box-shadow: 0 0 20px rgba(184, 52, 106, 0.15);
 }
 
 .theme-red-wine .glow-green {
-  box-shadow: 0 0 20px rgba(198, 47, 108, 0.25);
+  box-shadow: 0 0 20px rgba(184, 52, 106, 0.25);
 }
 
 /* Video overlay */
 .theme-red-wine .video-overlay {
   background: radial-gradient(ellipse at center, transparent 40%, rgba(34, 12, 21, 0.8) 100%);
+}
+
+/* Ambient gradient shift */
+.theme-red-wine body {
+  animation: rw-shift 30s ease-in-out infinite alternate;
+}
+
+@keyframes rw-shift {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  100% { filter: hue-rotate(5deg) brightness(1.02); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-red-wine body { animation: none; }
 }

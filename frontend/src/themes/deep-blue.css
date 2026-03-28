@@ -80,3 +80,17 @@
 .theme-deep-blue .video-overlay {
   background: radial-gradient(ellipse at center, transparent 40%, rgba(10, 24, 66, 0.8) 100%);
 }
+
+/* Ambient gradient shift */
+.theme-deep-blue body {
+  animation: db-shift 30s ease-in-out infinite alternate;
+}
+
+@keyframes db-shift {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  100% { filter: hue-rotate(8deg) brightness(1.03); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-deep-blue body { animation: none; }
+}

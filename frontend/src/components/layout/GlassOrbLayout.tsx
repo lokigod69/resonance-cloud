@@ -19,6 +19,7 @@ export default function GlassOrbLayout() {
 
   return (
     <div className="go-root">
+      <div className="go-aurora" aria-hidden="true" />
       <div className="global-nav">
         {/* Credits button */}
         <button

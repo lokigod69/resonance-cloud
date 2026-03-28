@@ -38,6 +38,50 @@
   scrollbar-width: none;
 }
 
+/* ── Ambient Aurora ──────────────────────────────── */
+.skin-orbs .go-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.skin-orbs .go-aurora::before,
+.skin-orbs .go-aurora::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+  will-change: transform;
+}
+
+.skin-orbs .go-aurora::before {
+  width: 50vw;
+  height: 50vw;
+  top: 10%;
+  left: -10%;
+  background: #5e6ad2;
+  animation: auroraA 20s ease-in-out infinite alternate;
+}
+
+.skin-orbs .go-aurora::after {
+  width: 40vw;
+  height: 40vw;
+  bottom: 5%;
+  right: -5%;
+  background: #d25ea0;
+  animation: auroraB 25s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skin-orbs .go-aurora::before,
+  .skin-orbs .go-aurora::after {
+    animation: none;
+  }
+}
+
 /* ── Global Nav ───────────────────────────────────── */
 .skin-orbs .global-nav {
   position: absolute;
@@ -608,6 +652,16 @@
 }
 
 /* ── Keyframes ────────────────────────────────────── */
+@keyframes auroraA {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(15%, -10%) scale(1.1); }
+}
+
+@keyframes auroraB {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-10%, 15%) scale(1.15); }
+}
+
 @keyframes wordOrbSpawn {
   from { transform: scale(0) translateX(50px); opacity: 0; }
   to { transform: scale(1) translateX(0); opacity: 1; }
