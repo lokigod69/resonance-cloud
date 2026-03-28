@@ -539,6 +539,8 @@ function VideoViewerModal({
                 playsInline
                 loop
                 onClick={togglePlayPause}
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
                 className="w-full aspect-video cursor-pointer"
               />
             ) : (

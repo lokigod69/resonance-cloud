@@ -194,7 +194,7 @@ export default function DeckViewPG() {
     }
   }, [activeIndex])
 
-  // Play/pause video when isPlaying or videoActiveIndex changes
+  // Play/pause video when isPlaying, videoActiveIndex, or version changes
   useEffect(() => {
     const vid = videoRef.current
     if (!vid) return
@@ -203,7 +203,7 @@ export default function DeckViewPG() {
     } else {
       vid.pause()
     }
-  }, [isPlaying, videoActiveIndex])
+  }, [isPlaying, videoActiveIndex, version])
 
   const [dragOffset, setDragOffset] = useState(0)
 

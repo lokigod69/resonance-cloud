@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 
 const STORAGE_KEY = 'resonance-video-version'
 
@@ -33,6 +33,16 @@ export function useVideoVersion(word: WordWithVersions) {
     const map = readVersionMap()
     return map[word.id] ?? 'a'
   })
+
+  // Re-read stored preference when word changes
+  useEffect(() => {
+    if (!word.video_url_b) {
+      setVersion('a')
+      return
+    }
+    const map = readVersionMap()
+    setVersion(map[word.id] ?? 'a')
+  }, [word.id, word.video_url_b])
 
   const toggleVersion = useCallback(() => {
     const next = version === 'a' ? 'b' : 'a'
