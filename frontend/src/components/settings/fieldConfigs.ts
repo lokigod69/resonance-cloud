@@ -65,7 +65,7 @@ export const IMAGE_FIELDS: FieldDef[] = [
   { key: 'creative_direction', label: 'Creative Direction', type: 'dropdown', options: ['auto', 'literal', 'editorial', 'cinematic', 'provocative', 'minimal', 'movie', 'movie_remix'], default: 'auto' },
   { key: 'movie_override', label: 'Movie', type: 'text', placeholder: 'Auto-pick (leave empty)', helper: 'Constrain all scenes to this movie', condition: s => s.creative_direction === 'movie' || s.creative_direction === 'movie_remix' },
   { key: 'visual_reference', label: 'Visual Reference', type: 'dropdown', options: ['auto', 'etymology', 'mnemonic', 'none'], default: 'auto' },
-  { key: 'frame_narrative', label: 'Frame Narrative', type: 'dropdown', options: ['auto', 'perspective', 'action', 'environment', 'narrative', 'character', 'collection'], default: 'auto' },
+  { key: 'frame_narrative', label: 'Frame Narrative', type: 'dropdown', options: ['auto', 'scale', 'action', 'environment', 'narrative', 'context', 'collection'], default: 'auto' },
   { key: 'image_count', label: 'Image Count', type: 'dropdown', options: ['auto', 1, 2, 3, 4, 5, 6, 7, 8], default: 'auto' },
   { key: 'art_style', label: 'Art Style', type: 'combo', options: ['none', 'auto', 'random'], comboPresetGroups: [
     { label: 'Core', items: ['photorealistic'] },

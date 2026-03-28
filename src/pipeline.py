@@ -585,11 +585,6 @@ def _snap_down(value: int, valid: list[int]) -> int:
 # --- Tier 7: Auto-picker mapping from frame_narrative → transition_mode ---
 _TRANSITION_MODE_DEFAULTS: dict[str, str] = {
     "collection": "all_cut",
-    "character": "all_cut",
-    "perspective": "all_morph",
-    "environment": "all_morph",
-    "narrative": "morph_then_cut",
-    "action": "morph_then_cut",
 }
 
 
