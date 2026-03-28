@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Coins, User } from 'lucide-react'
+import { Menu, X, Coins, User, Shield } from 'lucide-react'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import ProfileModal from '@/components/ProfileModal'
 
@@ -24,6 +24,8 @@ export default function PolishGlassLayout() {
   useEffect(() => {
     setMobileOpen(false)
   }, [location.pathname])
+
+  const isAdmin = profile?.role === 'admin'
 
   const isActive = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + '/')
@@ -59,6 +61,19 @@ export default function PolishGlassLayout() {
               {item.label}
             </button>
           ))}
+          {isAdmin && (
+            <button
+              onClick={() => navigate('/admin/queue')}
+              className={`cursor-pointer hover:-translate-y-0.5 transform hover:scale-105 transition-all outline-none flex items-center gap-1.5 ${
+                isActive('/admin')
+                  ? 'text-white drop-shadow-md'
+                  : 'text-gray-300 hover:text-[var(--pg-accent-teal)]'
+              }`}
+            >
+              <Shield className="h-3.5 w-3.5" />
+              Admin
+            </button>
+          )}
           <button
             onClick={() => setRedeemOpen(true)}
             className="flex items-center gap-1.5 ml-4 border-l border-white/10 pl-4 text-xs text-gray-400 hover:text-[var(--pg-accent-teal)] transition-colors"
@@ -108,6 +123,19 @@ export default function PolishGlassLayout() {
                   {item.label}
                 </button>
               ))}
+              {isAdmin && (
+                <button
+                  onClick={() => { navigate('/admin/queue'); setMobileOpen(false) }}
+                  className={`w-full text-left px-4 py-3 rounded-xl font-display font-medium transition-all flex items-center gap-2 ${
+                    isActive('/admin')
+                      ? 'text-white bg-white/5'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  <Shield className="h-4 w-4" />
+                  Admin
+                </button>
+              )}
               <button
                 onClick={() => { setRedeemOpen(true); setMobileOpen(false) }}
                 className="w-full text-left px-4 py-3 rounded-xl font-display font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2"

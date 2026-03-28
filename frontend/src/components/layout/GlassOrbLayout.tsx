@@ -59,6 +59,24 @@ export default function GlassOrbLayout() {
           </button>
         ))}
 
+        {/* Admin button (admin only) */}
+        {profile?.role === 'admin' && (
+          <button
+            onClick={() => navigate('/admin/queue')}
+            title="Admin"
+            style={{
+              boxShadow: location.pathname.startsWith('/admin')
+                ? '0 0 12px rgba(94, 106, 210, 0.6)'
+                : undefined,
+              borderColor: location.pathname.startsWith('/admin')
+                ? 'rgba(94, 106, 210, 0.6)'
+                : undefined,
+            }}
+          >
+            <span className="material-symbols-outlined">admin_panel_settings</span>
+          </button>
+        )}
+
         {/* Profile button */}
         <button
           onClick={() => setProfileOpen(true)}
