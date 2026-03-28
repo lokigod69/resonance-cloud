@@ -32,7 +32,7 @@ DEFAULT_SETTINGS = {
     },
     "song": {
         "duration": 20,
-        "batch_size": 4,
+        "batch_size": 2,
         "inference_steps": 50,
         "guidance_scale": 8.0,
         "thinking": True,
@@ -47,23 +47,23 @@ DEFAULT_SETTINGS = {
     },
     "images": {
         "creative_direction": "auto",
-        "visual_reference": "auto",
+        "visual_reference": "none",
         "frame_narrative": "auto",
         "image_count": "auto",
         "clip_duration": 20,
         "aspect_ratio": "16:9",
-        "art_style": "photorealistic",
+        "art_style": "auto",
         "word_in_image": True,
         "image_model": "quality",
-        "llm_model": "deepseek/deepseek-v3.2",
+        "llm_model": "x-ai/grok-4.1-fast",
     },
     "video": {
         "video_mode": "ltx_fast",
         "duration": 6,
         "resolution": "1080p",
         "fps": 24,
-        "frame_transitions": False,
-        "transition_mode": "all_cut",
+        "frame_transitions": True,
+        "transition_mode": "auto",
         "negative_prompt": "blur, distort, and low quality",
         "cfg_scale": 0.5,
         "seed": -1,
@@ -72,7 +72,7 @@ DEFAULT_SETTINGS = {
     },
     "assembly": {
         "assembly_mode": "clean",
-        "gap_strategy": "ping_pong",
+        "gap_strategy": "fade_black",
         "overflow_strategy": "video_full",
         "transition": "cut",
         "transition_duration": 0.5,
@@ -91,7 +91,7 @@ DEFAULT_SETTINGS = {
         "audio_codec": "aac",
         "audio_bitrate": "320k",
         "output_resolution": "1080p",
-        "output_fps": 24
+        "output_fps": 25
     },
     "bookend": {
         "enabled": True,
@@ -101,11 +101,11 @@ DEFAULT_SETTINGS = {
         "display_duration_max": 4.0,
         "display_buffer_pct": 1.0,
         "fade_duration": 0.5,
-        "font": "Noto Sans",
+        "font": "Bebas Neue",
         "font_size": 144,
         "text_color": "auto",
         "background_color": "#000000",
-        "show_translation": True,
+        "show_translation": False,
         "show_phonetic": False,
     }
 }
