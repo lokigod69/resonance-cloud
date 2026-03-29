@@ -15,7 +15,7 @@ export default function CtaFooterSection() {
           Ready to learn differently?
         </h2>
         <p className="text-lg text-muted-foreground mb-8">
-          Sign up free. Create your first music videos.
+          Sign up free. Get 10 credits. Create your first music videos.
         </p>
         <motion.div
           className="inline-block rounded-md"
@@ -31,7 +31,7 @@ export default function CtaFooterSection() {
           <Button size="lg" asChild className="text-lg px-8 py-6">
             <Link to="/login?mode=signup">
               <Sparkles className="h-5 w-5 mr-2" />
-              Get started
+              Get started — it's free
             </Link>
           </Button>
         </motion.div>
