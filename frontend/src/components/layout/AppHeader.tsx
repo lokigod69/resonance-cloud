@@ -23,6 +23,7 @@ import {
   Users,
   FileText,
   BarChart3,
+  Mic,
 } from 'lucide-react'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import ProfileModal from '@/components/ProfileModal'
@@ -38,6 +39,7 @@ const adminNav = [
   { to: '/admin/profiles', label: 'Profiles', icon: Languages },
   { to: '/admin/users', label: 'Users', icon: Users },
   { to: '/admin/content', label: 'Content', icon: FileText },
+  { to: '/admin/voices', label: 'Voices', icon: Mic },
   { to: '/admin/metrics', label: 'Metrics', icon: BarChart3 },
 ]
 

@@ -11,6 +11,7 @@ import {
   Music,
   ListOrdered,
   Languages,
+  Mic,
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
@@ -29,6 +30,7 @@ const adminNav = [
   { to: '/admin/profiles', label: 'Profiles', icon: Languages },
   { to: '/admin/users', label: 'Users', icon: Users },
   { to: '/admin/content', label: 'Content', icon: FileText },
+  { to: '/admin/voices', label: 'Voices', icon: Mic },
   { to: '/admin/metrics', label: 'Metrics', icon: BarChart3 },
 ]
 

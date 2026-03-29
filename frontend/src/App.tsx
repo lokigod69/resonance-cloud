@@ -26,6 +26,7 @@ import Content from '@/pages/admin/Content'
 import Metrics from '@/pages/admin/Metrics'
 import Queue from '@/pages/admin/Queue'
 import Profiles from '@/pages/admin/Profiles'
+import Voices from '@/pages/admin/Voices'
 import AdminRoute from '@/components/AdminRoute'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 
@@ -147,6 +148,7 @@ function AppRoutes() {
             <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/content" element={<Content />} />
             <Route path="/admin/metrics" element={<Metrics />} />
+            <Route path="/admin/voices" element={<Voices />} />
           </Route>
         </Route>
       </Route>
