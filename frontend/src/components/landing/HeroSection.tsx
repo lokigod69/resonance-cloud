@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Music, Sparkles, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { HERO_VIDEO_URL } from './landingData'
 
 export default function HeroSection() {
   const reducedMotion = useReducedMotion()
@@ -16,8 +17,19 @@ export default function HeroSection() {
         }
 
   return (
-    <section className="relative min-h-screen flex flex-col">
-      {/* TODO: Add looping muted <video> background at 30-40% opacity */}
+    <section className="relative min-h-screen flex flex-col overflow-hidden">
+      {/* Background video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-30"
+      >
+        <source src={HERO_VIDEO_URL} type="video/mp4" />
+      </video>
+      {/* Dark gradient overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
 
       {/* Nav */}
       <header className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 backdrop-blur-md bg-background/60 border-b border-white/5">
@@ -36,7 +48,7 @@ export default function HeroSection() {
       </header>
 
       {/* Hero content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-6 text-center">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center">
         <div className="max-w-3xl space-y-8">
           {/* Badge */}
           <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-muted-foreground">
@@ -50,7 +62,7 @@ export default function HeroSection() {
             className="text-5xl md:text-7xl font-bold tracking-tight leading-tight"
           >
             Learn any language through{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[oklch(0.7_0.15_280)] to-[oklch(0.65_0.18_320)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
               AI music videos
             </span>
           </motion.h1>
@@ -63,23 +75,38 @@ export default function HeroSection() {
             Type a word. Get a personalized music video that makes it stick.
           </motion.p>
 
-          {/* CTA */}
-          <motion.div {...fadeUp(0.3)} className="pt-4">
-            <Button size="lg" asChild className="glow-purple text-lg px-8 py-6">
-              <Link to="/login">
-                <Sparkles className="h-5 w-5 mr-2" />
-                Try it free
-              </Link>
-            </Button>
+          {/* CTA with glow pulse */}
+          <motion.div
+            {...fadeUp(0.3)}
+            className="pt-4"
+          >
+            <motion.div
+              className="inline-block rounded-md"
+              animate={reducedMotion ? {} : {
+                boxShadow: [
+                  '0 0 20px oklch(0.5 0.15 280 / 0.2)',
+                  '0 0 40px oklch(0.5 0.15 280 / 0.4)',
+                  '0 0 20px oklch(0.5 0.15 280 / 0.2)',
+                ],
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
+            >
+              <Button size="lg" asChild className="text-lg px-8 py-6">
+                <Link to="/login">
+                  <Sparkles className="h-5 w-5 mr-2" />
+                  Try it free
+                </Link>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </main>
 
       {/* Scroll indicator */}
-      <div className="pb-8 flex justify-center">
+      <div className="relative z-10 pb-8 flex justify-center">
         <motion.div
           animate={reducedMotion ? {} : { y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' as const }}
           className="text-muted-foreground/40"
         >
           <ChevronDown className="h-6 w-6" />

@@ -5,7 +5,7 @@ import StaggerContainer, { staggerScaleItem } from './StaggerContainer'
 
 export default function LanguagesSection() {
   return (
-    <section className="py-24 px-6 text-center">
+    <section className="py-24 px-6 text-center border-t border-white/[0.03]">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <ScrollReveal className="mb-12">

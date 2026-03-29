@@ -1,13 +1,32 @@
 // Static data for the landing page sections
-// TODO: Replace gradient placeholders with real Supabase storage thumbnail URLs
+// Thumbnails and videos served from Supabase Storage (public bucket)
+
+const SB = 'https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/object/public/videos'
+
+function thumb(userId: string, deckId: string, slug: string) {
+  return `${SB}/${userId}/${deckId}/${slug}/thumb.jpg`
+}
+function video(userId: string, deckId: string, slug: string) {
+  return `${SB}/${userId}/${deckId}/${slug}/video.mp4`
+}
+
+// User/deck IDs for showcase content
+const U1 = '8e2a8380-8822-46a4-9190-9c34c6313fd1'
+const U2 = 'ef7a3c72-69cf-42a6-8c5f-2592f99c56f7'
+const D_FR1 = '5fb91369-c4cf-479a-b9ee-886dc6e2d093'
+const D_DE1 = '80482d3e-b7f8-4844-8105-6827771427fc'
+const D_FR2 = '008ba7fd-65af-4730-9933-2e53ac072379'
+const D_EN = '631b2cea-66b5-4969-b7fc-7ed722ad1301'
+
+export const HERO_VIDEO_URL = video(U2, D_FR2, 'riviere')
 
 export const DEMO_WORDS = [
-  { word: 'rivière', translation: 'river', language: 'French', flag: '🇫🇷', gradient: 'from-indigo-500/30 to-purple-500/30' },
-  { word: 'Fuchs', translation: 'fox', language: 'German', flag: '🇩🇪', gradient: 'from-amber-500/30 to-orange-500/30' },
-  { word: 'schreien', translation: 'to scream', language: 'German', flag: '🇩🇪', gradient: 'from-red-500/30 to-pink-500/30' },
-  { word: 'chameau', translation: 'camel', language: 'French', flag: '🇫🇷', gradient: 'from-teal-500/30 to-cyan-500/30' },
-  { word: 'Peur', translation: 'fear', language: 'French', flag: '🇫🇷', gradient: 'from-violet-500/30 to-fuchsia-500/30' },
-  { word: 'ferocious', translation: 'wild', language: 'English', flag: '🇬🇧', gradient: 'from-emerald-500/30 to-green-500/30' },
+  { word: 'rivière', translation: 'river', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'riviere') },
+  { word: 'Fuchs', translation: 'fox', language: 'German', flag: '🇩🇪', thumbnail: thumb(U1, D_DE1, 'fuchs') },
+  { word: 'chameau', translation: 'camel', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'chameau') },
+  { word: 'Peur', translation: 'fear', language: 'French', flag: '🇫🇷', thumbnail: thumb(U1, D_FR1, 'peur') },
+  { word: 'ferocious', translation: 'wild', language: 'English', flag: '🇬🇧', thumbnail: thumb(U2, D_EN, 'ferocious') },
+  { word: 'liberté', translation: 'freedom', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'liberte') },
 ]
 
 export const LANGUAGES = [

@@ -8,7 +8,7 @@ const ICONS = [Keyboard, Sparkles, Brain]
 
 export default function HowItWorksSection() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-24 px-6 border-t border-white/[0.03]">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <ScrollReveal className="text-center mb-16">
