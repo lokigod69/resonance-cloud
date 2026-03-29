@@ -253,11 +253,6 @@ export default function GenerateGO() {
     return value
   }
 
-  function findLanguageLabel(value: string): string {
-    const l = LANGUAGES.find(lang => lang.value === value)
-    return l ? `${l.flag} ${l.label}` : value
-  }
-
   // ── Render ────────────────────────────────────────
 
   return (
@@ -467,7 +462,7 @@ export default function GenerateGO() {
             </p>
           )}
           <p style={{ color: 'var(--go-text-secondary)', marginBottom: 16, fontSize: '0.9rem' }}>
-            {words.length} word{words.length !== 1 ? 's' : ''} · {findLanguageLabel(language!)} · {credits} credits
+            {words.length} word{words.length !== 1 ? 's' : ''} · {words.length} credit{words.length !== 1 ? 's' : ''}
           </p>
 
           {/* Deck name input */}
@@ -484,13 +479,6 @@ export default function GenerateGO() {
               />
             </div>
           )}
-
-          {/* Summary tags */}
-          <div className="gen-orb-row" style={{ marginBottom: 32, gap: 12, opacity: 0.6 }}>
-            <span className="gen-summary-tag">{vibe === 'specific_movie' ? `Movie: ${movieTitle}` : vibe}</span>
-            <span className="gen-summary-tag">{artStyle ? findStyleLabel(artStyle) : 'Auto style'}</span>
-            <span className="gen-summary-tag">{genre === 'custom' ? customGenre : genre}</span>
-          </div>
 
           {credits < words.length && (
             <p style={{ color: '#f87171', marginBottom: 16, fontSize: '0.85rem' }}>

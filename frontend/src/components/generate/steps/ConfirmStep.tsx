@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { Sparkles, Loader2 } from 'lucide-react'
 import PillButton from '../shared/PillButton'
-import { LANGUAGES, VIBES, GENRES, ART_STYLE_GROUPS } from '../wizardData'
 import type { WizardState, WizardAction } from '../useWizardState'
 
 interface ConfirmStepProps {
@@ -13,51 +12,7 @@ interface ConfirmStepProps {
   existingDeck?: boolean
 }
 
-function getLanguageLabel(value: string | null) {
-  const lang = LANGUAGES.find((l) => l.value === value)
-  return lang ? `${lang.flag} ${lang.label}` : '—'
-}
-
-function getVibeLabel(value: string | null) {
-  if (!value) return 'Auto'
-  const vibe = VIBES.find((v) => v.value === value)
-  return vibe?.label ?? 'Auto'
-}
-
-function getArtStyleLabel(value: string | null) {
-  if (!value) return 'Normal'
-  for (const group of ART_STYLE_GROUPS) {
-    const style = group.styles.find((s) => s.value === value)
-    if (style) return style.label
-  }
-  return value
-}
-
-function getGenreLabel(value: string | null) {
-  if (!value) return 'Auto'
-  const genre = GENRES.find((g) => g.value === value)
-  return genre?.label ?? 'Auto'
-}
-
-const rows = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
-}
-
-const row = {
-  hidden: { opacity: 0, x: -15 },
-  show: { opacity: 1, x: 0 },
-}
-
 export default function ConfirmStep({ state, dispatch, onGenerate, submitting, error, existingDeck }: ConfirmStepProps) {
-  const summaryItems = [
-    { label: 'Language', value: getLanguageLabel(state.language), step: 1 as const },
-    { label: 'Words', value: `${state.words.length} word${state.words.length !== 1 ? 's' : ''}`, step: 2 as const },
-    { label: 'Vibe', value: getVibeLabel(state.vibe), step: 3 as const },
-    { label: 'Art Style', value: getArtStyleLabel(state.artStyle), step: 4 as const },
-    { label: 'Music', value: getGenreLabel(state.genre), step: 5 as const },
-  ]
-
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
       <motion.h2
@@ -86,39 +41,10 @@ export default function ConfirmStep({ state, dispatch, onGenerate, submitting, e
         </motion.div>
       )}
 
-      {/* Summary */}
-      <motion.div
-        variants={rows}
-        initial="hidden"
-        animate="show"
-        className="glass rounded-2xl border border-white/10 p-6 w-full max-w-md divide-y divide-white/[0.06]"
-      >
-        {summaryItems.map((item) => (
-          <motion.div key={item.label} variants={row} className="flex items-center justify-between py-3 first:pt-0 last:pb-0">
-            <span className="text-xs text-white/40">{item.label}</span>
-            <button
-              type="button"
-              onClick={() => dispatch({ type: 'GO_TO_STEP', step: item.step })}
-              className="inline-flex items-center rounded-full px-3 py-1
-                bg-white/[0.06] border border-white/10
-                text-sm text-white/80 hover:bg-white/[0.1] hover:border-white/20
-                transition-colors cursor-pointer"
-            >
-              {item.value}
-            </button>
-          </motion.div>
-        ))}
-
-        {/* Movie title if set */}
-        {state.movieTitle && (
-          <motion.div variants={row} className="flex items-center justify-between">
-            <span className="text-xs text-white/40">Movie</span>
-            <span className="text-sm text-white/80 rounded-full px-3 py-1 bg-white/[0.06] border border-white/10">
-              {state.movieTitle}
-            </span>
-          </motion.div>
-        )}
-      </motion.div>
+      {/* Credits */}
+      <p className="text-sm text-white/50 mb-4">
+        {state.words.length} credit{state.words.length !== 1 ? 's' : ''} will be used
+      </p>
 
       {/* Error */}
       {error && (

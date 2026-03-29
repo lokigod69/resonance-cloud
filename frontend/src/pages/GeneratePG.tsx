@@ -293,7 +293,6 @@ export default function GeneratePG() {
               onSubmit={handleGenerate}
               submitting={submitting}
               error={error}
-              onJumpTo={setPgStep}
               existingDeck={existingDeck}
             />
           )}
@@ -734,7 +733,6 @@ function StepReview({
   onSubmit,
   submitting,
   error,
-  onJumpTo,
   existingDeck,
 }: {
   state: import('@/components/generate/useWizardState').WizardState
@@ -743,54 +741,8 @@ function StepReview({
   onSubmit: () => void
   submitting: boolean
   error: string | null
-  onJumpTo: (step: number) => void
   existingDeck: ExistingDeck | null
 }) {
-  const vibeLabel = VIBES.find((v) => v.value === (state.vibe || 'auto'))?.label || 'Auto'
-  const artLabel = state.artStyle
-    ? ART_STYLE_GROUPS.flatMap((g) => g.styles).find((s) => s.value === state.artStyle)?.label || state.artStyle
-    : 'Normal (AI decides)'
-  const genreLabel = GENRES.find((g) => g.value === (state.genre || 'auto'))?.label || 'Auto'
-  const langObj = LANGUAGES.find((l) => l.value === state.language)
-
-  const sections = [
-    {
-      label: 'Language',
-      value: langObj ? `${langObj.flag} ${langObj.value}` : (existingDeck?.target_language || '—'),
-      textColor: 'text-teal-400',
-      borderColor: 'border-teal-500/30',
-      step: 0,
-    },
-    {
-      label: 'Objects',
-      value: `${state.words.length} Memory Objects`,
-      textColor: 'text-white',
-      borderColor: 'border-white/20',
-      step: 1,
-    },
-    {
-      label: 'Vibe',
-      value: vibeLabel + (state.movieTitle ? ` — ${state.movieTitle}` : ''),
-      textColor: 'text-violet-400',
-      borderColor: 'border-violet-500/30',
-      step: 2,
-    },
-    {
-      label: 'Art',
-      value: artLabel,
-      textColor: 'text-rose-400',
-      borderColor: 'border-rose-500/30',
-      step: 3,
-    },
-    {
-      label: 'Music',
-      value: genreLabel,
-      textColor: 'text-emerald-400',
-      borderColor: 'border-emerald-500/30',
-      step: 4,
-    },
-  ]
-
   return (
     <div className="w-full max-w-lg mx-auto mt-8">
       <h2 className="text-5xl font-bold font-display tracking-tight mb-10 text-center text-white drop-shadow-md italic">
@@ -812,22 +764,9 @@ function StepReview({
         </div>
       )}
 
-      <div className="space-y-4">
-        {sections.map((s) => (
-          <button
-            key={s.label}
-            onClick={() => onJumpTo(s.step)}
-            className={`w-full flex justify-between items-center pg-glass px-6 py-4 rounded-xl border-l-[3px] ${s.borderColor} hover:bg-white/5 transition-colors`}
-          >
-            <span className="text-gray-400 text-sm uppercase tracking-wider">{s.label}</span>
-            <span className={`font-medium ${s.textColor}`}>{s.value}</span>
-          </button>
-        ))}
-      </div>
-
       {/* Credits */}
       <p className="text-center text-gray-500 text-sm mt-6">
-        {state.words.length} credit{state.words.length !== 1 ? 's' : ''} will be used &middot; You have {credits}
+        {state.words.length} credit{state.words.length !== 1 ? 's' : ''} will be used
       </p>
       {credits < state.words.length && (
         <p className="text-center text-xs text-rose-400 mt-1">Not enough credits</p>
