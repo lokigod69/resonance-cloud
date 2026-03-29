@@ -21,7 +21,7 @@ const D_EN = '631b2cea-66b5-4969-b7fc-7ed722ad1301'
 export const HERO_VIDEO_URL = vid(U2, D_FR2, 'riviere')
 
 export const DEMO_WORDS = [
-  { word: 'rivière', translation: 'river', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'riviere'), videoUrl: vid(U2, D_FR2, 'riviere') },
+  { word: 'ciel', translation: 'sky', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'ciel'), videoUrl: vid(U2, D_FR2, 'ciel') },
   { word: 'Fuchs', translation: 'fox', language: 'German', flag: '🇩🇪', thumbnail: thumb(U1, D_DE1, 'fuchs'), videoUrl: vid(U1, D_DE1, 'fuchs') },
   { word: 'chameau', translation: 'camel', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'chameau'), videoUrl: vid(U2, D_FR2, 'chameau') },
   { word: 'Peur', translation: 'fear', language: 'French', flag: '🇫🇷', thumbnail: thumb(U1, D_FR1, 'peur'), videoUrl: vid(U1, D_FR1, 'peur') },
@@ -30,12 +30,12 @@ export const DEMO_WORDS = [
 ]
 
 export const LANGUAGES = [
-  { label: 'German', flag: '🇩🇪' },
-  { label: 'French', flag: '🇫🇷' },
-  { label: 'Italian', flag: '🇮🇹' },
-  { label: 'English', flag: '🇬🇧' },
-  { label: 'Tagalog', flag: '🇵🇭' },
-  { label: 'Bisaya', flag: '🇵🇭' },
+  { label: 'German', flag: '🇩🇪', color: '#FFD700' },
+  { label: 'French', flag: '🇫🇷', color: '#4A90D9' },
+  { label: 'Italian', flag: '🇮🇹', color: '#4CAF50' },
+  { label: 'English', flag: '🇬🇧', color: '#E53935' },
+  { label: 'Tagalog', flag: '🇵🇭', color: '#FF6B35' },
+  { label: 'Bisaya', flag: '🇵🇭', color: '#AB47BC' },
 ]
 
 export const STEPS = [

@@ -29,7 +29,7 @@ export default function CtaFooterSection() {
           transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
         >
           <Button size="lg" asChild className="text-lg px-8 py-6">
-            <Link to="/login">
+            <Link to="/login?mode=signup">
               <Sparkles className="h-5 w-5 mr-2" />
               Get started
             </Link>

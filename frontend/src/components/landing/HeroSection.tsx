@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-import { Music, Sparkles, ChevronDown } from 'lucide-react'
+import { Sparkles, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { HERO_VIDEO_URL } from './landingData'
 
@@ -45,11 +45,11 @@ export default function HeroSection() {
           <source src={HERO_VIDEO_URL} type="video/mp4" />
         </motion.video>
 
-        {/* Vignette overlay — dark center zone for readable text, video visible at edges */}
+        {/* Vignette overlay — fully opaque center, video only at edges */}
         <div
           className="absolute inset-0"
           style={{
-            background: `radial-gradient(ellipse 60% 70% at center, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.3) 70%, transparent 100%)`,
+            background: `radial-gradient(ellipse 55% 60% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.2) 100%)`,
           }}
         />
         {/* Bottom fade for section transition */}
@@ -57,16 +57,16 @@ export default function HeroSection() {
 
         {/* Nav — fixed, frosted glass */}
         <header className="absolute top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 backdrop-blur-md bg-black/30 border-b border-white/5">
-          <div className="flex items-center gap-2">
-            <Music className="h-6 w-6 text-primary" />
+          <Link to="/" className="flex items-center gap-2">
+            <img src="/favicon.svg" alt="Resonance" className="h-7 w-7" />
             <span className="font-bold text-xl">Resonance</span>
-          </div>
+          </Link>
           <div className="flex items-center gap-3">
             <Button variant="ghost" asChild>
               <Link to="/login">Sign In</Link>
             </Button>
             <Button asChild>
-              <Link to="/login">Get Started</Link>
+              <Link to="/login?mode=signup">Get Started</Link>
             </Button>
           </div>
         </header>
@@ -116,7 +116,7 @@ export default function HeroSection() {
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
               >
                 <Button size="lg" asChild className="text-lg px-8 py-6">
-                  <Link to="/login">
+                  <Link to="/login?mode=signup">
                     <Sparkles className="h-5 w-5 mr-2" />
                     Try it free
                   </Link>

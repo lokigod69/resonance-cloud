@@ -42,10 +42,16 @@ export default function LanguagesSection() {
               custom={i}
               variants={reducedMotion ? undefined : langVariant}
               whileHover={{ scale: 1.08 }}
-              className="glass rounded-2xl p-6 cursor-default"
+              className="rounded-2xl p-6 cursor-default border border-white/5 transition-colors duration-200"
+              style={{
+                background: `linear-gradient(135deg, ${lang.color}20 0%, ${lang.color}08 100%)`,
+                borderBottom: `2px solid ${lang.color}60`,
+              }}
             >
               <div className="text-4xl mb-2">{lang.flag}</div>
-              <p className="text-sm font-medium">{lang.label}</p>
+              <p className="text-sm font-medium" style={{ color: lang.color }}>
+                {lang.label}
+              </p>
             </motion.div>
           ))}
         </motion.div>
