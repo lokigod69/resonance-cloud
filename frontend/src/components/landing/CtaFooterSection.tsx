@@ -8,7 +8,7 @@ export default function CtaFooterSection() {
   const reducedMotion = useReducedMotion()
 
   return (
-    <section className="py-32 px-6 text-center border-t border-white/[0.03]">
+    <section className="py-32 px-6 text-center bg-[#0a0b12]">
       {/* CTA */}
       <ScrollReveal direction="blur" className="max-w-2xl mx-auto mb-24">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">

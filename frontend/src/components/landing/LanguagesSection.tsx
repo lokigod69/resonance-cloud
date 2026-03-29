@@ -1,11 +1,26 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { LANGUAGES } from './landingData'
 import ScrollReveal from './ScrollReveal'
-import StaggerContainer, { staggerScaleItem } from './StaggerContainer'
+
+const langVariant = {
+  hidden: { opacity: 0, scale: 0.5 },
+  visible: (i: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 300,
+      damping: 15,
+      delay: i * 0.08,
+    },
+  }),
+}
 
 export default function LanguagesSection() {
+  const reducedMotion = useReducedMotion()
+
   return (
-    <section className="py-24 px-6 text-center border-t border-white/[0.03]">
+    <section className="py-24 px-6 text-center bg-[#0d0e16]">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <ScrollReveal className="mb-12">
@@ -15,11 +30,17 @@ export default function LanguagesSection() {
         </ScrollReveal>
 
         {/* Language grid */}
-        <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-          {LANGUAGES.map((lang) => (
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {LANGUAGES.map((lang, i) => (
             <motion.div
               key={lang.label}
-              variants={staggerScaleItem}
+              custom={i}
+              variants={reducedMotion ? undefined : langVariant}
               whileHover={{ scale: 1.08 }}
               className="glass rounded-2xl p-6 cursor-default"
             >
@@ -27,7 +48,7 @@ export default function LanguagesSection() {
               <p className="text-sm font-medium">{lang.label}</p>
             </motion.div>
           ))}
-        </StaggerContainer>
+        </motion.div>
 
         {/* Footer text */}
         <ScrollReveal delay={0.3} className="mt-8">

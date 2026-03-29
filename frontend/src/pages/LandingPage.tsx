@@ -6,7 +6,7 @@ import CtaFooterSection from '@/components/landing/CtaFooterSection'
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen gradient-bg text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a0a14] text-foreground overflow-x-hidden">
       <HeroSection />
       <DemoReelSection />
       <HowItWorksSection />

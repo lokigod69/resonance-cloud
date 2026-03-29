@@ -6,7 +6,7 @@ const SB = 'https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/object/public/vi
 function thumb(userId: string, deckId: string, slug: string) {
   return `${SB}/${userId}/${deckId}/${slug}/thumb.jpg`
 }
-function video(userId: string, deckId: string, slug: string) {
+function vid(userId: string, deckId: string, slug: string) {
   return `${SB}/${userId}/${deckId}/${slug}/video.mp4`
 }
 
@@ -18,15 +18,15 @@ const D_DE1 = '80482d3e-b7f8-4844-8105-6827771427fc'
 const D_FR2 = '008ba7fd-65af-4730-9933-2e53ac072379'
 const D_EN = '631b2cea-66b5-4969-b7fc-7ed722ad1301'
 
-export const HERO_VIDEO_URL = video(U2, D_FR2, 'riviere')
+export const HERO_VIDEO_URL = vid(U2, D_FR2, 'riviere')
 
 export const DEMO_WORDS = [
-  { word: 'rivière', translation: 'river', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'riviere') },
-  { word: 'Fuchs', translation: 'fox', language: 'German', flag: '🇩🇪', thumbnail: thumb(U1, D_DE1, 'fuchs') },
-  { word: 'chameau', translation: 'camel', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'chameau') },
-  { word: 'Peur', translation: 'fear', language: 'French', flag: '🇫🇷', thumbnail: thumb(U1, D_FR1, 'peur') },
-  { word: 'ferocious', translation: 'wild', language: 'English', flag: '🇬🇧', thumbnail: thumb(U2, D_EN, 'ferocious') },
-  { word: 'liberté', translation: 'freedom', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'liberte') },
+  { word: 'rivière', translation: 'river', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'riviere'), videoUrl: vid(U2, D_FR2, 'riviere') },
+  { word: 'Fuchs', translation: 'fox', language: 'German', flag: '🇩🇪', thumbnail: thumb(U1, D_DE1, 'fuchs'), videoUrl: vid(U1, D_DE1, 'fuchs') },
+  { word: 'chameau', translation: 'camel', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'chameau'), videoUrl: vid(U2, D_FR2, 'chameau') },
+  { word: 'Peur', translation: 'fear', language: 'French', flag: '🇫🇷', thumbnail: thumb(U1, D_FR1, 'peur'), videoUrl: vid(U1, D_FR1, 'peur') },
+  { word: 'ferocious', translation: 'wild', language: 'English', flag: '🇬🇧', thumbnail: thumb(U2, D_EN, 'ferocious'), videoUrl: vid(U2, D_EN, 'ferocious') },
+  { word: 'liberté', translation: 'freedom', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'liberte'), videoUrl: vid(U2, D_FR2, 'liberte') },
 ]
 
 export const LANGUAGES = [
