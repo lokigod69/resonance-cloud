@@ -106,10 +106,11 @@ def build_suno_payload(concept_data: dict) -> dict:
         "prompt": lyrics,
         "customMode": True,
         "instrumental": False,
-        "model": "V4",
-        "style": style[:200],
+        "model": "V5_5",
+        "style": style[:1000],
         "title": title[:80],
         "vocalGender": suno_gender,
+        "callBackUrl": "https://resonanz.pro/api/suno/callback",
     }
 
 
