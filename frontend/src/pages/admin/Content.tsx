@@ -215,6 +215,26 @@ export default function Content() {
   }, [decks, userFilter, languageFilter, statusFilter, searchQuery, deckWords])
 
   // -------------------------------------------------------------------------
+  // Word-level rating filter
+  // -------------------------------------------------------------------------
+
+  const filterWordsByRating = useCallback((words: WordRecord[]) => {
+    if (ratingFilter === 'all') return words
+    return words.filter(w => {
+      switch (ratingFilter) {
+        case 'unrated': return w.rating === null
+        case 'rated': return w.rating !== null
+        case '5': return w.rating === 5
+        case '4+': return w.rating !== null && w.rating >= 4
+        case '3+': return w.rating !== null && w.rating >= 3
+        case '2+': return w.rating !== null && w.rating >= 2
+        case '1': return w.rating === 1
+        default: return true
+      }
+    })
+  }, [ratingFilter])
+
+  // -------------------------------------------------------------------------
   // Expand/collapse deck
   // -------------------------------------------------------------------------
 
@@ -611,7 +631,9 @@ export default function Content() {
 
                 {/* Word count */}
                 <span className="text-sm text-muted-foreground whitespace-nowrap">
-                  {deck.word_count} {deck.word_count === 1 ? 'word' : 'words'}
+                  {ratingFilter !== 'all' && deckWords[deck.id]
+                    ? `${filterWordsByRating(deckWords[deck.id]).length}/${deck.word_count} words`
+                    : `${deck.word_count} ${deck.word_count === 1 ? 'word' : 'words'}`}
                 </span>
 
                 {/* Status badge */}
@@ -648,9 +670,13 @@ export default function Content() {
                     <p className="px-4 py-4 text-sm text-muted-foreground">
                       No words in this deck
                     </p>
+                  ) : filterWordsByRating(deckWords[deck.id]).length === 0 ? (
+                    <p className="px-4 py-4 text-sm text-muted-foreground">
+                      No words match the current rating filter
+                    </p>
                   ) : (
                     <div className="divide-y divide-border">
-                      {deckWords[deck.id].map(word => (
+                      {filterWordsByRating(deckWords[deck.id]).map(word => (
                         <div
                           key={word.id}
                           className="flex items-center gap-3 px-4 py-2.5 hover:bg-accent/30 transition-colors"

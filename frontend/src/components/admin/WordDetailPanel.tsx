@@ -6,6 +6,7 @@ import {
 } from '@/components/ui/dialog'
 import { Video, ChevronDown, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
+import StarRating from '@/components/ui/StarRating'
 
 type WordRecord = {
   id: string
@@ -26,6 +27,8 @@ type WordRecord = {
   error_message: string | null
   retry_count: number
   metadata: Record<string, unknown> | null
+  rating: number | null
+  rated_at: string | null
   needs_review: boolean
   created_at: string
 }
@@ -108,6 +111,21 @@ export default function WordDetailPanel({
           </div>
           <InfoRow label="Status" value={word.status} />
           <InfoRow label="Retry Count" value={String(word.retry_count)} />
+          <div>
+            <span className="text-muted-foreground">Rating: </span>
+            {word.rating ? (
+              <span className="inline-flex items-center gap-2">
+                <StarRating rating={word.rating} readOnly size={16} />
+                {word.rated_at && (
+                  <span className="text-xs text-muted-foreground">
+                    {new Date(word.rated_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </span>
+                )}
+              </span>
+            ) : (
+              <span className="text-muted-foreground">Not yet rated</span>
+            )}
+          </div>
           {word.error_message && (
             <div className="col-span-2">
               <span className="text-muted-foreground">Error: </span>
