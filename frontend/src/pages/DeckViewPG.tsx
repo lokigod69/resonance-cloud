@@ -193,7 +193,7 @@ export default function DeckViewPG() {
     words[activeIndex]?.id ?? '',
     videoRef,
   )
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false, suno.hasSuno ? true : undefined)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
   const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
   const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
 
@@ -430,6 +430,7 @@ export default function DeckViewPG() {
                             onPlay={() => setIsPlaying(true)}
                             onPause={() => setIsPlaying(false)}
                             onTimeUpdate={offset === 0 && suno.hasSuno ? suno.handleTimeUpdate : undefined}
+                            onEnded={offset === 0 && suno.hasSuno ? suno.handleVideoEnded : undefined}
                           />
                         )}
 

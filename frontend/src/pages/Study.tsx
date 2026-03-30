@@ -35,7 +35,7 @@ export default function Study() {
     words[currentIndex]?.id ?? '',
     videoRef,
   )
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, true, suno.hasSuno ? true : undefined)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, true)
   const { isPlaying, togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)
   const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
   const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
@@ -243,6 +243,7 @@ export default function Study() {
                       onPlay={() => { onPlay(); suno.handleVideoPlay() }}
                       onPause={() => { onPause(); suno.handleVideoPause() }}
                       onTimeUpdate={suno.hasSuno ? suno.handleTimeUpdate : undefined}
+                      onEnded={suno.hasSuno ? suno.handleVideoEnded : undefined}
                     />
                     <audio
                       ref={suno.sunoAudioRef}

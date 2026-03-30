@@ -482,7 +482,7 @@ function VideoViewerModal({
     `${word?.id ?? ''}-${videoKey}`,
     videoRef,
   )
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false, suno.hasSuno ? true : undefined)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
   const { isPlaying, setIsPlaying, togglePlay, onPlay, onPause } = useVideoPlayback(videoRef)
   const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
   const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
@@ -559,6 +559,7 @@ function VideoViewerModal({
                   onPlay={() => { onPlay(); suno.handleVideoPlay() }}
                   onPause={() => { onPause(); suno.handleVideoPause() }}
                   onTimeUpdate={suno.hasSuno ? suno.handleTimeUpdate : undefined}
+                  onEnded={suno.hasSuno ? suno.handleVideoEnded : undefined}
                   className="w-full aspect-video cursor-pointer"
                 />
                 <audio
