@@ -1,47 +1,25 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '@/hooks/useAuth'
-import { supabase } from '@/lib/supabase'
 import { Play, Pause } from 'lucide-react'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { getStoredVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { VolumeControl } from '@/components/VolumeControl'
 import { FullscreenButton } from '@/components/FullscreenButton'
-
-type StudyWord = {
-  id: string
-  word: string
-  translation: string | null
-  mnemonic: string | null
-  etymology: string | null
-  video_url: string | null
-  thumbnail_url: string | null
-  video_url_b: string | null
-  thumbnail_url_b: string | null
-  deck_id: string
-}
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr]
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
+import { useStudySession } from '@/hooks/useStudySession'
 
 const SWIPE_THRESHOLD = 120
+const MAX_RETRIES = 3
 
 export default function StudyGO() {
-  const { user } = useAuth()
   const navigate = useNavigate()
 
-  const [words, setWords] = useState<StudyWord[]>([])
+  const { words, loading, recordAttempt } = useStudySession()
+
   const [cardOrder, setCardOrder] = useState<number[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [retryCount, setRetryCount] = useState<Map<string, number>>(new Map())
 
   const dragRef = useRef({ isDragging: false, startX: 0, startY: 0 })
   const videoRefs = useRef<Map<string, HTMLVideoElement>>(new Map())
@@ -56,34 +34,16 @@ export default function StudyGO() {
   const topVideoRef = useRef<HTMLVideoElement | null>(null)
   const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(topVideoRef)
 
-  const loadWords = useCallback(async () => {
-    if (!user) return
-    const { data } = await supabase
-      .from('words')
-      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, deck_id')
-      .eq('user_id', user.id)
-      .eq('status', 'complete')
-      .order('created_at', { ascending: true })
-
-    if (data && data.length > 0) {
-      const shuffled = shuffle(data)
-      setWords(shuffled)
-      // cardOrder: indices into words array. Last element = top card.
-      setCardOrder([...Array(shuffled.length).keys()].reverse())
-    } else {
-      setWords([])
-    }
-    setLoading(false)
-  }, [user])
-
+  // Initialize cardOrder when words load from hook
   useEffect(() => {
-    loadWords()
-  }, [loadWords])
+    if (words.length > 0 && cardOrder.length === 0) {
+      setCardOrder([...Array(words.length).keys()].reverse())
+    }
+  }, [words, cardOrder.length])
 
   // ── Drag handlers (pointer events, NOT state) ──────────
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
-    // Don't start drag on buttons
     if (e.target instanceof HTMLButtonElement) return
     if ((e.target as HTMLElement).closest('button')) return
     dragRef.current = { isDragging: true, startX: e.clientX, startY: e.clientY }
@@ -119,30 +79,77 @@ export default function StudyGO() {
     }
   }, [])
 
-  const throwCard = useCallback((el: HTMLElement, direction: 1 | -1) => {
-    // Animate off screen
+  // Animate card off-screen (shared animation for both pass and fail)
+  const animateThrow = useCallback((el: HTMLElement, direction: 1 | -1) => {
     el.style.transition = 'transform 0.4s ease-out, opacity 0.4s ease-out'
     el.style.transform = `translateX(${window.innerWidth * direction}px) rotate(${direction * 30}deg)`
     el.style.opacity = '0'
-
-    // Reset revealed immediately
     setRevealed(false)
+  }, [])
 
+  // Normal card rotation: move top card to bottom of stack
+  const rotateCard = useCallback(() => {
+    setCardOrder(prev => {
+      const next = [...prev]
+      const top = next.pop()!
+      next.unshift(top)
+      return next
+    })
+    setCurrentIndex(prev => (prev + 1) % words.length)
+  }, [words.length])
+
+  // Retry card: insert failed card ~5 positions deep so it reappears after ~5 swipes
+  const retryCard = useCallback((failedIdx: number) => {
+    setCardOrder(prev => {
+      const next = [...prev]
+      next.pop() // remove top card
+      const insertPos = Math.max(0, next.length - 5)
+      next.splice(insertPos, 0, failedIdx)
+      return next
+    })
+    setCurrentIndex(prev => (prev + 1) % words.length)
+  }, [words.length])
+
+  const handlePass = useCallback((el: HTMLElement) => {
+    const topIdx = cardOrderRef.current[cardOrderRef.current.length - 1]
+    const word = wordsRef.current[topIdx]
+    if (word) recordAttempt(word.id, true)
+
+    animateThrow(el, 1)
     setTimeout(() => {
-      // V3: Reset styles BEFORE state updates to avoid stale element
       el.style.transition = ''
       el.style.transform = ''
       el.style.opacity = ''
-
-      setCardOrder(prev => {
-        const next = [...prev]
-        const top = next.pop()!
-        next.unshift(top)
-        return next
-      })
-      setCurrentIndex(prev => (prev + 1) % words.length)
+      rotateCard()
     }, 400)
-  }, [words.length])
+  }, [recordAttempt, animateThrow, rotateCard])
+
+  const handleFail = useCallback((el: HTMLElement) => {
+    const topIdx = cardOrderRef.current[cardOrderRef.current.length - 1]
+    const word = wordsRef.current[topIdx]
+    if (!word) return
+
+    recordAttempt(word.id, false)
+
+    const currentRetries = retryCount.get(word.id) ?? 0
+    const shouldRetry = currentRetries < MAX_RETRIES
+
+    if (shouldRetry) {
+      setRetryCount(prev => new Map(prev).set(word.id, currentRetries + 1))
+    }
+
+    animateThrow(el, -1)
+    setTimeout(() => {
+      el.style.transition = ''
+      el.style.transform = ''
+      el.style.opacity = ''
+      if (shouldRetry) {
+        retryCard(topIdx)
+      } else {
+        rotateCard()
+      }
+    }, 400)
+  }, [recordAttempt, animateThrow, rotateCard, retryCard, retryCount])
 
   const handlePointerUp = useCallback((e: React.PointerEvent) => {
     if (!dragRef.current.isDragging) return
@@ -167,14 +174,18 @@ export default function StudyGO() {
     }
 
     if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
-      throwCard(el, deltaX > 0 ? 1 : -1)
+      if (deltaX > 0) {
+        handlePass(el)
+      } else {
+        handleFail(el)
+      }
     } else {
       // Snap back
       el.style.transition = 'transform 0.3s ease'
       el.style.transform = ''
       setTimeout(() => { el.style.transition = '' }, 300)
     }
-  }, [throwCard])
+  }, [handlePass, handleFail])
 
   // ── Orb dock jump ──────────────────────────────────────
 
@@ -185,7 +196,7 @@ export default function StudyGO() {
       return next
     })
     setCurrentIndex(targetWordIndex)
-    setRevealed(false) // V10: always reset revealed on jump
+    setRevealed(false)
   }, [])
 
   // ── Auto-play top card video, pause all others ────────
@@ -437,7 +448,7 @@ export default function StudyGO() {
                         onClick={(e) => {
                           e.stopPropagation()
                           const card = (e.currentTarget as HTMLElement).closest('.video-card') as HTMLElement
-                          if (card) throwCard(card, -1)
+                          if (card) handleFail(card)
                         }}
                       >
                         ✘
@@ -447,7 +458,7 @@ export default function StudyGO() {
                         onClick={(e) => {
                           e.stopPropagation()
                           const card = (e.currentTarget as HTMLElement).closest('.video-card') as HTMLElement
-                          if (card) throwCard(card, 1)
+                          if (card) handlePass(card)
                         }}
                       >
                         ✔

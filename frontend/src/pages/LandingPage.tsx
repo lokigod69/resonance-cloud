@@ -15,7 +15,7 @@ export default function LandingPage() {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover opacity-60"
         >
           <source src={HERO_VIDEO_URL} type="video/mp4" />
         </video>

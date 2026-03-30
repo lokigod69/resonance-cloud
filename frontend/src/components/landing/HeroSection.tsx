@@ -45,7 +45,13 @@ export default function HeroSection() {
       >
         <div className="relative">
           {/* Frosted backdrop — tight dark card behind text only, no gradient bleed */}
-          <div className="absolute -inset-x-8 -inset-y-6 bg-black/75 backdrop-blur-xl rounded-3xl" />
+          <div className="absolute -inset-x-12 -inset-y-10 rounded-[2.5rem]"
+               style={{
+                 background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0) 100%)',
+                 backdropFilter: 'blur(16px)',
+                 WebkitBackdropFilter: 'blur(16px)',
+               }}
+          />
 
           <div className="relative z-10 max-w-3xl space-y-8 px-4">
             {/* Badge */}

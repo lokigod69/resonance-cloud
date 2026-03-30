@@ -32,6 +32,7 @@ import {
 } from 'lucide-react'
 import { useToast } from '@/components/Toast'
 import WordDetailPanel from '@/components/admin/WordDetailPanel'
+import StarRating from '@/components/ui/StarRating'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -70,6 +71,8 @@ type WordRecord = {
   error_message: string | null
   retry_count: number
   metadata: Record<string, unknown> | null
+  rating: number | null
+  rated_at: string | null
   needs_review: boolean
   created_at: string
 }
@@ -132,6 +135,7 @@ export default function Content() {
   const [userFilter, setUserFilter] = useState('all')
   const [languageFilter, setLanguageFilter] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all')
+  const [ratingFilter, setRatingFilter] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
 
   // Confirmation dialogs
@@ -542,6 +546,22 @@ export default function Content() {
           </SelectContent>
         </Select>
 
+        <Select value={ratingFilter} onValueChange={setRatingFilter}>
+          <SelectTrigger className="w-[150px]">
+            <SelectValue placeholder="All Ratings" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Ratings</SelectItem>
+            <SelectItem value="unrated">Unrated</SelectItem>
+            <SelectItem value="rated">Rated (any)</SelectItem>
+            <SelectItem value="5">★★★★★ (5)</SelectItem>
+            <SelectItem value="4+">★★★★ (4+)</SelectItem>
+            <SelectItem value="3+">★★★ (3+)</SelectItem>
+            <SelectItem value="2+">★★ (2+)</SelectItem>
+            <SelectItem value="1">★ (1)</SelectItem>
+          </SelectContent>
+        </Select>
+
         <div className="relative flex-1 min-w-[200px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
@@ -669,6 +689,13 @@ export default function Content() {
                           <span className={`px-2 py-0.5 rounded text-xs font-medium capitalize ${STATUS_COLORS[word.status] || ''}`}>
                             {word.status}
                           </span>
+
+                          {/* Rating */}
+                          {word.rating ? (
+                            <StarRating rating={word.rating} readOnly size={14} />
+                          ) : (
+                            <span className="text-xs text-muted-foreground">Unrated</span>
+                          )}
 
                           {/* Needs review indicator */}
                           {word.needs_review && (
