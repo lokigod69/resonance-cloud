@@ -1,7 +1,9 @@
 import { useRef, useEffect, useCallback, useState, type RefObject } from 'react'
 
-const SUNO_AUDIO_START_DELAY = 3  // seconds: bookend TTS before Suno starts
-const FADE_DURATION = 2           // seconds: fade Suno out before video end
+const SUNO_FADE_IN_START = 2.0    // seconds — Suno begins fading in, video mutes
+const SUNO_FADE_IN_END = 3.0      // seconds — Suno at full volume
+const SUNO_FADE_OUT_START = 22.5  // seconds — Suno begins fading out
+const SUNO_FADE_OUT_END = 24.0    // seconds — Suno silent, end TTS bookend plays
 
 /**
  * Manages Suno audio overlay on video playback.
@@ -74,7 +76,8 @@ export function useSunoAudio(
       vid.muted = true
     } else {
       // Restore dynamic state based on current position
-      vid.muted = vid.currentTime >= SUNO_AUDIO_START_DELAY
+      const t = vid.currentTime
+      vid.muted = t >= SUNO_FADE_IN_START && t < SUNO_FADE_OUT_END
     }
   }, [videoRef])
 
@@ -88,35 +91,50 @@ export function useSunoAudio(
     const audio = sunoAudioRef.current
     if (!hasSuno || !vid || !audio) return
 
-    const { currentTime, duration } = vid
+    const { currentTime } = vid
 
-    if (currentTime < SUNO_AUDIO_START_DELAY) {
-      // ── Bookend TTS zone ──────────────────────────────────────────────────
-      // Video audio (ACE-Step pronunciation) should be heard; Suno is silent.
+    if (currentTime < SUNO_FADE_IN_START) {
+      // ── Pre-Suno TTS zone (0 – 2.0s) ──────────────────────────────────────
+      // Opening bookend TTS is audible; Suno is silent and reset.
       if (!userMutedRef.current) vid.muted = false
       if (!audio.paused) {
         audio.pause()
         audio.currentTime = 0
       }
-      audio.volume = 1.0  // reset so it's ready when Suno zone begins
-    } else {
-      // ── Suno zone ─────────────────────────────────────────────────────────
-      // Mute video ACE-Step audio; let Suno track play.
-      if (!userMutedRef.current) {
-        vid.muted = true
-        if (audio.paused) {
-          audio.play().catch(() => {})
-        }
+      audio.volume = 0
+
+    } else if (currentTime < SUNO_FADE_IN_END) {
+      // ── Fade-in zone (2.0 – 3.0s) ─────────────────────────────────────────
+      // Video audio mutes; Suno ramps from 0 → 1 (linear).
+      if (!userMutedRef.current) vid.muted = true
+      const progress = (currentTime - SUNO_FADE_IN_START) / (SUNO_FADE_IN_END - SUNO_FADE_IN_START)
+      audio.volume = progress
+      if (audio.paused && !vid.paused) {
+        audio.play().catch(() => {})
       }
 
-      // Quadratic fade-out in last FADE_DURATION seconds
-      const timeRemaining = Number.isFinite(duration) ? duration - currentTime : Infinity
-      if (timeRemaining <= FADE_DURATION) {
-        const progress = 1 - timeRemaining / FADE_DURATION  // 0 → 1
-        audio.volume = Math.max(0, 1 - progress * progress)
-      } else {
-        audio.volume = 1.0
+    } else if (currentTime < SUNO_FADE_OUT_START) {
+      // ── Full Suno zone (3.0 – 22.5s) ──────────────────────────────────────
+      // Video muted; Suno at full volume.
+      if (!userMutedRef.current) vid.muted = true
+      audio.volume = 1.0
+      if (audio.paused && !vid.paused) {
+        audio.play().catch(() => {})
       }
+
+    } else if (currentTime < SUNO_FADE_OUT_END) {
+      // ── Fade-out zone (22.5 – 24.0s) ──────────────────────────────────────
+      // Suno fades out via quadratic ease-out (1 → 0).
+      if (!userMutedRef.current) vid.muted = true
+      const progress = (currentTime - SUNO_FADE_OUT_START) / (SUNO_FADE_OUT_END - SUNO_FADE_OUT_START)
+      audio.volume = Math.max(0, 1 - progress * progress)
+
+    } else {
+      // ── End TTS zone (24.0s+) ──────────────────────────────────────────────
+      // Closing bookend TTS is audible; Suno is silent.
+      if (!userMutedRef.current) vid.muted = false
+      if (!audio.paused) audio.pause()
+      audio.volume = 0
     }
   }, [hasSuno, videoRef])
 

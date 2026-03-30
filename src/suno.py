@@ -179,6 +179,7 @@ async def generate_song(
 
         # Step 3: Poll for completion
         elapsed = 0
+        copyright_retried = False
         while elapsed < MAX_POLL_TIME:
             await asyncio.sleep(POLL_INTERVAL)
             elapsed += POLL_INTERVAL
@@ -215,6 +216,34 @@ async def generate_song(
 
             if task_status == "fail":
                 error_msg = data.get("errorMessage", "Unknown error")
+                if "copyright" in error_msg.lower() and not copyright_retried:
+                    copyright_retried = True
+                    logger.warning(
+                        "Copyright rejection for '%s', retrying with bare word prompt",
+                        concept_data["word"],
+                    )
+                    simplified_payload = {**payload, "prompt": concept_data["word"]}
+                    try:
+                        retry_resp = await client.post(
+                            f"{KIE_API_BASE}/generate",
+                            json=simplified_payload,
+                            headers={
+                                "Authorization": f"Bearer {api_key}",
+                                "Content-Type": "application/json",
+                            },
+                        )
+                        retry_resp.raise_for_status()
+                        retry_result = retry_resp.json()
+                    except httpx.HTTPError as retry_err:
+                        logger.warning("Copyright retry API call failed: %s", retry_err)
+                    else:
+                        if retry_result.get("code") == 200:
+                            new_task_id = retry_result.get("data", {}).get("taskId")
+                            if new_task_id:
+                                task_id = new_task_id
+                                elapsed = 0
+                                logger.info("Copyright retry task created: %s", task_id)
+                                continue
                 return {
                     "audio_url": None, "task_id": task_id, "status": "error",
                     "error": f"Suno generation failed: {error_msg}",

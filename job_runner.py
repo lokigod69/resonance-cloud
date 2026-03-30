@@ -36,6 +36,7 @@ from src.workspace import create_word_folder, get_word_dir
 from src.slugify import slugify, language_to_code
 from src.dispatcher import check_all_engines
 from src.models import Enrichment
+from src.suno import generate_song as suno_generate_song
 
 import httpx
 from supabase import create_client, Client
@@ -896,6 +897,36 @@ async def process_word(
     sb.table("generation_jobs").update({
         "words_completed": current_completed + 1,
     }).eq("id", job["id"]).execute()
+
+    # Trigger Suno full-song generation as a non-blocking background task.
+    # Non-fatal: word is complete regardless of whether Suno succeeds.
+    if not word_record.get("suno_audio_url"):
+        async def _generate_suno_bg(
+            _word_slug: str = word_slug_val,
+            _user_id: str = job["user_id"],
+            _deck_id: str = job["deck_id"],
+            _word_id: str = word_record["id"],
+        ) -> None:
+            try:
+                result = await suno_generate_song(
+                    str(WORKSPACE_ROOT), _user_id, _deck_id, _word_slug
+                )
+                if result and result.get("status") == "success" and result.get("audio_url"):
+                    sb.table("words").update({
+                        "suno_audio_url": result["audio_url"],
+                        "suno_task_id": result.get("task_id"),
+                    }).eq("id", _word_id).execute()
+                    log.info("  Suno song ready for %s", _word_slug)
+                else:
+                    log.warning(
+                        "  Suno generation for %s: %s",
+                        _word_slug,
+                        result.get("error") if result else "no result",
+                    )
+            except Exception as exc:
+                log.warning("  Suno generation failed for %s: %s", _word_slug, exc)
+
+        asyncio.create_task(_generate_suno_bg())
 
     log.info("  Word %s complete", word_slug_val)
     return True
