@@ -8,7 +8,6 @@ import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import {
   ArrowLeft,
   Play,
-  Pause,
   AlertCircle,
   Sparkles,
   Pencil,
@@ -27,8 +26,7 @@ import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
-import { VolumeControl } from '@/components/VolumeControl'
-import { FullscreenButton } from '@/components/FullscreenButton'
+import { VideoControls } from '@/components/VideoControls'
 import { useToast } from '@/components/Toast'
 
 type Deck = {
@@ -461,28 +459,17 @@ export default function DeckViewPG() {
 
                         {/* Video controls — play/pause + volume + fullscreen */}
                         {isComplete && videoActiveIndex === i && offset === 0 && (
-                          <div className="absolute bottom-0 left-0 right-0 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent z-10">
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                setIsPlaying(!isPlaying)
-                              }}
-                              className="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
-                            >
-                              {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
-                            </button>
-                            <VolumeControl
-                              volume={volume}
-                              isMuted={isMuted}
-                              onVolumeChange={setVolume}
-                              onToggleMute={toggleMute}
-                              buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
-                            />
-                            <FullscreenButton
-                              targetRef={videoRef}
-                              className="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors ml-auto"
-                            />
-                          </div>
+                          <VideoControls
+                            isPlaying={isPlaying}
+                            onTogglePlay={() => setIsPlaying(!isPlaying)}
+                            volume={volume}
+                            isMuted={isMuted}
+                            onVolumeChange={setVolume}
+                            onToggleMute={toggleMute}
+                            fullscreenRef={videoRef}
+                            buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                            className="z-10"
+                          />
                         )}
                       </div>
 

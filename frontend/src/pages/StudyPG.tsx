@@ -1,112 +1,86 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '@/hooks/useAuth'
-import { supabase } from '@/lib/supabase'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, Clock, RotateCcw, Sparkles, BookOpen, Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Check, Clock, RotateCcw, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
-import { VolumeControl } from '@/components/VolumeControl'
-import { FullscreenButton } from '@/components/FullscreenButton'
-
-type StudyWord = {
-  id: string
-  word: string
-  translation: string | null
-  mnemonic: string | null
-  etymology: string | null
-  video_url: string | null
-  thumbnail_url: string | null
-  video_url_b: string | null
-  thumbnail_url_b: string | null
-  deck_id: string
-}
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr]
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
+import { useVideoPlayback } from '@/hooks/useVideoPlayback'
+import { VideoControls } from '@/components/VideoControls'
+import { useStudySession } from '@/hooks/useStudySession'
 
 export default function StudyPG() {
-  const { user } = useAuth()
   const navigate = useNavigate()
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  const [words, setWords] = useState<StudyWord[]>([])
-  const [loading, setLoading] = useState(true)
+  const { words, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession()
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [sessionComplete, setSessionComplete] = useState(false)
   const [reviewed, setReviewed] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
+  const visitedIdsRef = useRef<Set<string>>(new Set())
   const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef)
-
-  const loadWords = useCallback(async () => {
-    if (!user) return
-    const { data } = await supabase
-      .from('words')
-      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, deck_id')
-      .eq('user_id', user.id)
-      .eq('status', 'complete')
-      .order('created_at', { ascending: true })
-
-    if (data && data.length > 0) {
-      setWords(shuffle(data))
-    } else {
-      setWords([])
-    }
-    setLoading(false)
-  }, [user])
-
-  useEffect(() => {
-    loadWords()
-  }, [loadWords])
+  const { isPlaying, togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)
 
   const current = words[currentIndex] ?? null
   const { activeVideoUrl, activeThumbnailUrl } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
 
-  const advance = useCallback(() => {
+  const advanceToNext = useCallback(() => {
     setReviewed((r) => r + 1)
     setRevealed(false)
-    if (currentIndex + 1 >= words.length) {
+    if (current) visitedIdsRef.current.add(current.id)
+
+    // Check retry pocket
+    const retryId = consumeRetry()
+    if (retryId) {
+      const idx = words.findIndex((w) => w.id === retryId)
+      if (idx !== -1) {
+        setCurrentIndex(idx)
+        return
+      }
+    }
+
+    // Linear advance, skipping visited
+    let next = currentIndex + 1
+    while (next < words.length && visitedIdsRef.current.has(words[next].id)) next++
+    if (next >= words.length) {
+      // Before ending session, drain any pending retries even if gap not fully met
+      const forcedRetryId = consumeRetry(true)
+      if (forcedRetryId) {
+        const idx = words.findIndex((w) => w.id === forcedRetryId)
+        if (idx !== -1) {
+          setCurrentIndex(idx)
+          return
+        }
+      }
       setSessionComplete(true)
     } else {
-      setCurrentIndex((i) => i + 1)
+      setCurrentIndex(next)
     }
-  }, [currentIndex, words.length])
+  }, [current, currentIndex, words, consumeRetry])
 
-  const replay = useCallback(() => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0
-      videoRef.current.play().catch(() => {})
-    }
-  }, [])
+  const handleRemembered = useCallback(() => {
+    if (!current) return
+    recordAttempt(current.id, true)
+    advanceToNext()
+  }, [current, recordAttempt, advanceToNext])
+
+  const handleReviewLater = useCallback(() => {
+    if (!current) return
+    recordAttempt(current.id, false)
+    scheduleRetry(current.id)
+    advanceToNext()
+  }, [current, recordAttempt, scheduleRetry, advanceToNext])
 
   const restart = useCallback(() => {
-    setWords((prev) => shuffle(prev))
+    restartSession()
     setCurrentIndex(0)
     setRevealed(false)
     setSessionComplete(false)
     setReviewed(0)
-  }, [])
-
-  const togglePlay = useCallback(() => {
-    if (!videoRef.current) return
-    if (videoRef.current.paused) {
-      videoRef.current.play().catch(() => {})
-      setIsPlaying(true)
-    } else {
-      videoRef.current.pause()
-      setIsPlaying(false)
-    }
-  }, [])
-
-  // toggleMute provided by useVideoVolume hook
+    visitedIdsRef.current = new Set()
+  }, [restartSession])
 
   const skipPrev = useCallback(() => {
     if (currentIndex > 0) {
@@ -129,7 +103,7 @@ export default function StudyPG() {
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault()
         if (!revealed) setRevealed(true)
-        else advance()
+        else handleRemembered()
       }
       if (e.key === 'ArrowLeft') { e.preventDefault(); skipPrev() }
       if (e.key === 'ArrowRight') { e.preventDefault(); skipNext() }
@@ -139,7 +113,7 @@ export default function StudyPG() {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [revealed, advance, replay, sessionComplete, toggleMute, togglePlay, skipPrev, skipNext])
+  }, [revealed, handleRemembered, replay, sessionComplete, toggleMute, togglePlay, skipPrev, skipNext])
 
   if (loading) {
     return (
@@ -186,6 +160,12 @@ export default function StudyPG() {
           <p className="text-[var(--pg-text-dim)]">
             You reviewed <span className="text-white font-semibold">{reviewed}</span> word{reviewed !== 1 ? 's' : ''}
           </p>
+          <p className="text-sm mt-1" style={{ color: 'var(--pg-text-dim)' }}>
+            <span style={{ color: 'var(--pg-accent-green)' }}>{sessionStats.remembered} remembered</span>
+            {sessionStats.reviewLater > 0 && (
+              <span className="ml-2" style={{ color: '#fb923c' }}>{sessionStats.reviewLater} need review</span>
+            )}
+          </p>
         </div>
         <div className="flex gap-3">
           <button
@@ -208,8 +188,6 @@ export default function StudyPG() {
 
   return (
     <div className="px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
-      {/* Progress bar removed — backend study tracking not built yet */}
-
       {/* Card + skip arrows */}
       <div className="relative w-full max-w-2xl flex items-center">
         {/* Left skip arrow — always visible */}
@@ -254,30 +232,18 @@ export default function StudyPG() {
                     playsInline
                     className="w-full aspect-video object-contain bg-black cursor-pointer"
                     onClick={togglePlay}
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
+                    onPlay={onPlay}
+                    onPause={onPause}
                   />
-                  {/* Video controls overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover/video:opacity-100 transition-opacity">
-                    <button
-                      onClick={togglePlay}
-                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                      title={isPlaying ? 'Pause' : 'Play'}
-                    >
-                      {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-                    </button>
-                    <VolumeControl
-                      volume={volume}
-                      isMuted={isMuted}
-                      onVolumeChange={setVolume}
-                      onToggleMute={toggleMute}
-                      buttonClassName="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                    />
-                    <FullscreenButton
-                      targetRef={videoRef}
-                      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors ml-auto"
-                    />
-                  </div>
+                  <VideoControls
+                    isPlaying={isPlaying}
+                    onTogglePlay={togglePlay}
+                    volume={volume}
+                    isMuted={isMuted}
+                    onVolumeChange={setVolume}
+                    onToggleMute={toggleMute}
+                    fullscreenRef={videoRef}
+                  />
                 </>
               ) : activeThumbnailUrl ? (
                 <img
@@ -336,14 +302,14 @@ export default function StudyPG() {
                 className="flex justify-center gap-3"
               >
                 <button
-                  onClick={advance}
+                  onClick={handleRemembered}
                   className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--pg-accent-green)]/15 border border-[var(--pg-accent-green)]/30 text-[var(--pg-accent-green)] text-sm font-display font-medium hover:bg-[var(--pg-accent-green)]/25 transition-all"
                 >
                   <Check className="h-4 w-4" />
                   Remembered
                 </button>
                 <button
-                  onClick={advance}
+                  onClick={handleReviewLater}
                   className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
                 >
                   <Clock className="h-4 w-4" />

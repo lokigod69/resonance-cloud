@@ -105,6 +105,8 @@ export function VolumeControl({
           opacity: showSlider ? 1 : 0,
         }}
         onClick={e => e.stopPropagation()}
+        onPointerDown={e => e.stopPropagation()}
+        onTouchStart={e => e.stopPropagation()}
       >
         <input
           type="range"
@@ -114,6 +116,7 @@ export function VolumeControl({
           value={displayVolume}
           onChange={handleSliderChange}
           className="volume-slider w-full cursor-pointer"
+          style={{ touchAction: 'pan-x' }}
         />
       </div>
     </div>

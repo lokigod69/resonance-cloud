@@ -4,14 +4,14 @@ import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, Play, Pause, AlertCircle, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle } from 'lucide-react'
+import { ArrowLeft, AlertCircle, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion, getStoredVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
-import { VolumeControl } from '@/components/VolumeControl'
-import { FullscreenButton } from '@/components/FullscreenButton'
+import { useVideoPlayback } from '@/hooks/useVideoPlayback'
+import { VideoControls } from '@/components/VideoControls'
 import { useToast } from '@/components/Toast'
 
 type Deck = {
@@ -459,37 +459,25 @@ function VideoViewerModal({
   const word = words[currentIndex]
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < words.length - 1
-  const [isPlaying, setIsPlaying] = useState(true)
   const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(word ?? { id: '', video_url: null, thumbnail_url: null })
   const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
-
-  const togglePlayPause = useCallback(() => {
-    const vid = videoRef.current
-    if (!vid) return
-    if (vid.paused) {
-      vid.play()
-      setIsPlaying(true)
-    } else {
-      vid.pause()
-      setIsPlaying(false)
-    }
-  }, [videoRef])
+  const { isPlaying, setIsPlaying, togglePlay, onPlay, onPause } = useVideoPlayback(videoRef)
 
   // Reset playing state when navigating to a new word
   useEffect(() => {
     setIsPlaying(true)
-  }, [currentIndex])
+  }, [currentIndex, setIsPlaying])
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose()
       if (e.key === 'ArrowLeft' && hasPrev) onNavigate(currentIndex - 1)
       if (e.key === 'ArrowRight' && hasNext) onNavigate(currentIndex + 1)
-      if (e.key === ' ') { e.preventDefault(); togglePlayPause() }
+      if (e.key === ' ') { e.preventDefault(); togglePlay() }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [onClose, onNavigate, currentIndex, hasPrev, hasNext, togglePlayPause])
+  }, [onClose, onNavigate, currentIndex, hasPrev, hasNext, togglePlay])
 
   if (!word) return null
 
@@ -542,9 +530,9 @@ function VideoViewerModal({
                 autoPlay
                 playsInline
                 loop
-                onClick={togglePlayPause}
-                onPlay={() => setIsPlaying(true)}
-                onPause={() => setIsPlaying(false)}
+                onClick={togglePlay}
+                onPlay={onPlay}
+                onPause={onPause}
                 className="w-full aspect-video cursor-pointer"
               />
             ) : (
@@ -563,27 +551,18 @@ function VideoViewerModal({
 
             {/* Video controls overlay */}
             {activeVideoUrl && (
-              <div className="absolute bottom-0 left-0 right-0 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent z-20">
-                <button
-                  onClick={(e) => { e.stopPropagation(); togglePlayPause() }}
-                  className="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
-                >
-                  {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
-                </button>
-                <VolumeControl
-                  volume={volume}
-                  isMuted={isMuted}
-                  onVolumeChange={setVolume}
-                  onToggleMute={toggleMute}
-                  iconSize={20}
-                  buttonClassName="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
-                />
-                <FullscreenButton
-                  targetRef={videoRef}
-                  iconSize={20}
-                  className="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors ml-auto"
-                />
-              </div>
+              <VideoControls
+                isPlaying={isPlaying}
+                onTogglePlay={togglePlay}
+                volume={volume}
+                isMuted={isMuted}
+                onVolumeChange={setVolume}
+                onToggleMute={toggleMute}
+                fullscreenRef={videoRef}
+                iconSize={20}
+                buttonClassName="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                className="z-20"
+              />
             )}
           </div>
 
