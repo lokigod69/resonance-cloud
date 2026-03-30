@@ -189,26 +189,8 @@ export default function StudyPG() {
 
   return (
     <div className="px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
-      {/* Card + skip arrows */}
-      <div className="relative w-full max-w-2xl flex items-center">
-        {/* Left skip arrow — always visible */}
-        <button
-          onClick={skipPrev}
-          disabled={currentIndex === 0}
-          className="absolute -left-16 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-black/40 disabled:hover:text-white/60"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-
-        {/* Right skip arrow — always visible */}
-        <button
-          onClick={skipNext}
-          disabled={currentIndex >= words.length - 1}
-          className="absolute -right-16 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-black/40 disabled:hover:text-white/60"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-
+      {/* Card + content */}
+      <div className="w-full max-w-2xl">
       <AnimatePresence mode="wait">
         {current && (
           <motion.div
@@ -219,8 +201,26 @@ export default function StudyPG() {
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="w-full"
           >
-            {/* Video */}
-            <div className="pg-glass rounded-2xl overflow-hidden mb-6 relative group/video">
+            {/* Video with arrows anchored to it */}
+            <div className="relative pg-glass rounded-2xl overflow-hidden mb-6 group/video">
+              {/* Left skip arrow — centered on video */}
+              <button
+                onClick={skipPrev}
+                disabled={currentIndex === 0}
+                className="absolute -left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-black/40 disabled:hover:text-white/60"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              {/* Right skip arrow — centered on video */}
+              <button
+                onClick={skipNext}
+                disabled={currentIndex >= words.length - 1}
+                className="absolute -right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-black/40 disabled:hover:text-white/60"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+
               {activeVideoUrl ? (
                 <>
                   <video

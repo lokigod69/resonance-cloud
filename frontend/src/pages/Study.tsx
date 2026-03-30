@@ -188,26 +188,8 @@ export default function Study() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4">
-      {/* Card + skip arrows */}
-      <div className="relative w-full max-w-2xl flex items-center">
-        {/* Left skip arrow — always visible */}
-        <button
-          onClick={skipPrev}
-          disabled={currentIndex === 0}
-          className="absolute -left-14 z-20 w-10 h-10 rounded-full border border-border bg-background/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all disabled:opacity-20 disabled:cursor-not-allowed"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-
-        {/* Right skip arrow — always visible */}
-        <button
-          onClick={skipNext}
-          disabled={currentIndex >= words.length - 1}
-          className="absolute -right-14 z-20 w-10 h-10 rounded-full border border-border bg-background/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all disabled:opacity-20 disabled:cursor-not-allowed"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-
+      {/* Card + content */}
+      <div className="w-full max-w-2xl">
         <AnimatePresence mode="wait">
           {current && (
             <motion.div
@@ -218,8 +200,26 @@ export default function Study() {
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               className="w-full"
             >
-              {/* Video */}
-              <div className="rounded-xl border border-border overflow-hidden mb-6 relative group/video">
+              {/* Video with arrows anchored to it */}
+              <div className="relative rounded-xl border border-border overflow-hidden mb-6 group/video">
+                {/* Left skip arrow — centered on video */}
+                <button
+                  onClick={skipPrev}
+                  disabled={currentIndex === 0}
+                  className="absolute -left-14 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-border bg-background/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all disabled:opacity-20 disabled:cursor-not-allowed"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+
+                {/* Right skip arrow — centered on video */}
+                <button
+                  onClick={skipNext}
+                  disabled={currentIndex >= words.length - 1}
+                  className="absolute -right-14 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-border bg-background/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all disabled:opacity-20 disabled:cursor-not-allowed"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+
                 {activeVideoUrl ? (
                   <>
                     <video

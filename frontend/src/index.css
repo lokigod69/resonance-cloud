@@ -439,11 +439,11 @@ input[type="range"].volume-slider::-moz-range-track {
 }
 
 /* ============================================
-   GLASSY SKIN TOKENS
-   Active when <html> has class "skin-glassy"
+   PG DESIGN TOKENS (shared by both skins)
+   GeneratePG wizard uses these in Classic too
    ============================================ */
 
-.skin-glassy {
+:root {
   --pg-base-dark: #0a0a0c;
   --pg-glass-panel-bg: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(20,20,30,0.8) 100%);
   --pg-glass-border: rgba(255, 255, 255, 0.08);

@@ -236,15 +236,17 @@ export default function DeckView() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-start gap-4">
-        <Button asChild variant="ghost" size="icon" className="mt-1">
-          <Link to="/dashboard">
-            <ArrowLeft className="h-5 w-5" />
-          </Link>
-        </Button>
-        <div className="flex-1 space-y-2">
+      <div className="text-center">
+        <div className="flex items-center gap-2 mb-4">
+          <Button asChild variant="ghost" size="icon">
+            <Link to="/dashboard">
+              <ArrowLeft className="h-5 w-5" />
+            </Link>
+          </Button>
+        </div>
+        <div className="space-y-2">
           {isRenaming ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2">
               <input
                 type="text"
                 value={renameTo}
@@ -255,7 +257,7 @@ export default function DeckView() {
                 }}
                 autoFocus
                 maxLength={100}
-                className="text-2xl font-bold tracking-tight bg-transparent border-b-2 border-primary outline-none text-foreground max-w-md"
+                className="text-2xl font-bold tracking-tight bg-transparent border-b-2 border-primary outline-none text-foreground max-w-md text-center"
               />
               <Button variant="ghost" size="icon" onClick={handleRename} className="shrink-0">
                 <Check className="h-4 w-4 text-green-400" />
@@ -265,7 +267,7 @@ export default function DeckView() {
               </Button>
             </div>
           ) : (
-            <div className="flex items-center gap-2 group/name">
+            <div className="flex items-center justify-center gap-2 group/name">
               <h1 className="text-2xl font-bold tracking-tight">{displayName}</h1>
               <button
                 onClick={startRenaming}
@@ -276,7 +278,7 @@ export default function DeckView() {
               </button>
             </div>
           )}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <span className="text-sm text-muted-foreground">{deck.target_language}</span>
             {isGenerating ? (
               <span title={`Generating ${completedCount} of ${totalCount}`}>
@@ -293,21 +295,21 @@ export default function DeckView() {
             )}
           </div>
           {isGenerating && (
-            <Progress value={progress} className="h-2 max-w-md" />
+            <Progress value={progress} className="h-2 max-w-md mx-auto" />
           )}
         </div>
       </div>
 
       {/* Word Grid */}
       <div className="w-full max-w-5xl mx-auto px-4 py-8">
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-items-center">
+      <div className="flex flex-wrap justify-center gap-4">
         {words.map((word) => {
           const isComplete = word.status === 'complete'
           const isFailed = word.status === 'failed'
           const isPending = word.status === 'pending' || word.status === 'processing'
 
           return (
-            <div key={word.id} className="relative group w-full max-w-[280px]">
+            <div key={word.id} className="relative group w-[280px]">
               {isComplete ? (
                 <div
                   onClick={() => {
