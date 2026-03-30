@@ -21,9 +21,6 @@ interface WordInfoPanelProps {
     } | null
   }
   onRate: (wordId: string, rating: number) => void
-  deckId?: string
-  userId?: string
-  onWordUpdate?: (wordId: string, updates: Record<string, unknown>) => void
 }
 
 const hasMetadata = (word: WordInfoPanelProps['word']) =>
@@ -33,7 +30,7 @@ const hasMetadata = (word: WordInfoPanelProps['word']) =>
   word.metadata?.art_style ||
   word.metadata?.music_caption
 
-export default function WordInfoPanel({ word, onRate, deckId, userId, onWordUpdate }: WordInfoPanelProps) {
+export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
   const [showMetadata, setShowMetadata] = useState(false)
 
   return (

@@ -605,9 +605,6 @@ function VideoViewerModal({
           <WordInfoPanel
             word={word}
             onRate={onRate}
-            deckId={deckId}
-            userId={userId}
-            onWordUpdate={onWordUpdate}
           />
 
           {/* Replay */}
