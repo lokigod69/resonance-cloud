@@ -14,13 +14,10 @@ import DeckView from '@/pages/DeckView'
 import VideoPlayer from '@/pages/VideoPlayer'
 import Study from '@/pages/Study'
 import DashboardPG from '@/pages/DashboardPG'
-import GeneratePG from '@/pages/GeneratePG'
+
 import DeckViewPG from '@/pages/DeckViewPG'
 import StudyPG from '@/pages/StudyPG'
-import GlassOrbLayout from '@/components/layout/GlassOrbLayout'
-import DashboardGO from '@/pages/DashboardGO'
 import GenerateGO from '@/pages/GenerateGO'
-import StudyGO from '@/pages/StudyGO'
 import Users from '@/pages/admin/Users'
 import Content from '@/pages/admin/Content'
 import Metrics from '@/pages/admin/Metrics'
@@ -117,17 +114,10 @@ function AppRoutes() {
         <Route path="/deck/:id/word/:wordId" element={<VideoPlayer />} />
 
         {/* User-facing routes — skin-aware layout */}
-        {skin === 'orbs' ? (
-          <Route element={<GlassOrbLayout />}>
-            <Route path="/dashboard" element={<DashboardGO />} />
-            <Route path="/generate" element={<GenerateGO />} />
-            <Route path="/deck/:id" element={<DeckView />} /> {/* TODO: create DeckViewGO */}
-            <Route path="/study" element={<StudyGO />} />
-          </Route>
-        ) : skin === 'glassy' ? (
+        {skin === 'glassy' ? (
           <Route element={<PolishGlassLayout />}>
             <Route path="/dashboard" element={<DashboardPG />} />
-            <Route path="/generate" element={<GeneratePG />} />
+            <Route path="/generate" element={<GenerateGO />} />
             <Route path="/deck/:id" element={<DeckViewPG />} />
             <Route path="/study" element={<StudyPG />} />
           </Route>

@@ -31,7 +31,6 @@ const LANGUAGES = [
 const SKINS: { id: SkinId; label: string }[] = [
   { id: 'classic', label: 'Classic' },
   { id: 'glassy', label: 'Glassy' },
-  { id: 'orbs', label: 'Orbs' },
 ]
 
 const THEMES: { id: Theme; label: string; bg: string }[] = [
@@ -119,7 +118,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
           {/* Skin Selector */}
           <div className="space-y-2">
             <label className="text-sm font-medium">Skin</label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 gap-2">
               {SKINS.map((s) => (
                 <button
                   key={s.id}

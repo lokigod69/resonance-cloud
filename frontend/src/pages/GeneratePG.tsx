@@ -749,6 +749,38 @@ function StepReview({
         Synthesis Ready
       </h2>
 
+      {/* Selection summary */}
+      <div className="flex flex-wrap justify-center gap-3 mb-10">
+        {state.language && (
+          <span className="px-4 py-2 rounded-full text-sm font-medium"
+            style={{ background: 'rgba(13, 226, 195, 0.12)', border: '1px solid rgba(13, 226, 195, 0.3)', color: '#0de2c3' }}>
+            🌐 {state.language}
+          </span>
+        )}
+        <span className="px-4 py-2 rounded-full text-sm font-medium"
+          style={{ background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(255, 255, 255, 0.15)', color: 'rgba(255,255,255,0.8)' }}>
+          📝 {state.words.length} word{state.words.length !== 1 ? 's' : ''}
+        </span>
+        {state.vibe && state.vibe !== 'auto' && (
+          <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
+            style={{ background: 'rgba(244, 63, 94, 0.12)', border: '1px solid rgba(244, 63, 94, 0.3)', color: '#f43f5e' }}>
+            🎭 {state.vibe === 'specific_movie' ? 'Movie' : state.vibe}{state.movieTitle ? `: ${state.movieTitle}` : ''}
+          </span>
+        )}
+        {state.artStyle && (
+          <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
+            style={{ background: 'rgba(139, 92, 246, 0.12)', border: '1px solid rgba(139, 92, 246, 0.3)', color: '#8b5cf6' }}>
+            🎨 {state.artStyle}
+          </span>
+        )}
+        {state.genre && state.genre !== 'auto' && (
+          <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
+            style={{ background: 'rgba(251, 191, 36, 0.12)', border: '1px solid rgba(251, 191, 36, 0.3)', color: '#fbbf24' }}>
+            🎵 {state.genre}
+          </span>
+        )}
+      </div>
+
       {/* Deck name input */}
       {!existingDeck && (
         <div className="mb-8">

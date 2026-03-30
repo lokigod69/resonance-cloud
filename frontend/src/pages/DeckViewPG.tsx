@@ -398,7 +398,7 @@ export default function DeckViewPG() {
                       style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
                     >
                       {/* Media area — 16:9 aspect ratio */}
-                      <div className="w-full relative bg-black overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                      <div className="w-full relative bg-black overflow-hidden group/video" style={{ aspectRatio: '16/9' }}>
                         {/* Video element — stays mounted once activated to preserve frame on pause */}
                         {isComplete && videoActiveIndex === i && (offset === 0 ? activeVideoUrl : word.video_url) && (
                           <video

@@ -72,7 +72,7 @@ export function VideoControls({
     ? `transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`
     : 'opacity-0 group-hover/video:opacity-100 transition-opacity'
 
-  const baseClasses = `absolute bottom-0 left-0 right-0 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent ${visibilityClasses}`
+  const baseClasses = `absolute bottom-0 left-0 right-0 z-10 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent ${visibilityClasses}`
 
   return (
     <div

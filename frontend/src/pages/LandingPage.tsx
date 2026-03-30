@@ -9,13 +9,13 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden">
       {/* Layer 1: Fixed video background — stays behind everything */}
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-slate-900 via-slate-950 to-black">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-contain opacity-60"
         >
           <source src={HERO_VIDEO_URL} type="video/mp4" />
         </video>

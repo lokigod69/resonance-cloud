@@ -516,7 +516,7 @@ function VideoViewerModal({
         {/* Main content */}
         <div className="w-full max-w-3xl space-y-6">
           {/* Video container with arrows */}
-          <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl">
+          <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl group/video">
             {/* Prev arrow — centered on video */}
             {hasPrev && (
               <button

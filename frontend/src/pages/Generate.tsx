@@ -1,5 +1,5 @@
-import GenerateWizard from '@/components/generate/GenerateWizard'
+import GeneratePG from './GeneratePG'
 
 export default function Generate() {
-  return <GenerateWizard />
+  return <GeneratePG />
 }

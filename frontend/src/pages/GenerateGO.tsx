@@ -280,7 +280,7 @@ export default function GenerateGO() {
           {step === 2 ? (
             <>
               <h3>Seed Words</h3>
-              <div className="gen-orb-row" style={{ flexWrap: 'wrap' }}>
+              <div className="gen-orb-row">
                 {words.map((word, i) => (
                   <div
                     key={`${word}-${i}`}
@@ -330,7 +330,7 @@ export default function GenerateGO() {
       {step >= 3 && (
         <div ref={el => { sectionRefs.current[2] = el }} className="gen-section">
           {step === 3 && <h3>Select Visual Context</h3>}
-          <div className="gen-orb-row" style={{ flexWrap: 'wrap' }}>
+          <div className="gen-orb-row">
             {VIBES.map(v => (
               <div
                 key={v.value}
@@ -367,7 +367,7 @@ export default function GenerateGO() {
             <>
               <h3>Art Style</h3>
               {/* Auto + Category orbs */}
-              <div className="gen-orb-row" style={{ flexWrap: 'wrap', marginBottom: 24 }}>
+              <div className="gen-orb-row" style={{ marginBottom: 24 }}>
                 <div
                   className="gen-orb"
                   onClick={() => handleArtStyleSelect(null)}
@@ -392,7 +392,7 @@ export default function GenerateGO() {
                   className={`gen-category-expand${expandedCategory === group.group ? ' open' : ''}`}
                 >
                   <p className="art-group-heading">{group.group}</p>
-                  <div className="gen-orb-row" style={{ flexWrap: 'wrap' }}>
+                  <div className="gen-orb-row">
                     {group.styles.map(style => (
                       <div
                         key={style.value}
@@ -420,7 +420,7 @@ export default function GenerateGO() {
       {step >= 5 && (
         <div ref={el => { sectionRefs.current[4] = el }} className="gen-section">
           {step === 5 && <h3>Aural Atmosphere</h3>}
-          <div className="gen-orb-row" style={{ flexWrap: 'wrap' }}>
+          <div className="gen-orb-row">
             {GO_GENRES.map(g => (
               <div
                 key={g.value}
@@ -464,6 +464,30 @@ export default function GenerateGO() {
           <p style={{ color: 'var(--go-text-secondary)', marginBottom: 16, fontSize: '0.9rem' }}>
             {words.length} word{words.length !== 1 ? 's' : ''} · {words.length} credit{words.length !== 1 ? 's' : ''}
           </p>
+
+          {/* Selection summary tags */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginBottom: 24 }}>
+            {language && (
+              <span className="gen-summary-tag" style={{ borderColor: 'rgba(94, 106, 210, 0.4)', color: '#7c85e0' }}>
+                🌐 {language}
+              </span>
+            )}
+            {vibe && vibe !== 'auto' && (
+              <span className="gen-summary-tag" style={{ borderColor: 'rgba(210, 94, 160, 0.4)', color: '#d25ea0' }}>
+                🎭 {vibe === 'specific_movie' ? `Movie${movieTitle ? `: ${movieTitle}` : ''}` : vibe}
+              </span>
+            )}
+            {artStyle && (
+              <span className="gen-summary-tag" style={{ borderColor: 'rgba(139, 92, 246, 0.4)', color: '#8b5cf6' }}>
+                🎨 {artStyle}
+              </span>
+            )}
+            {genre && genre !== 'auto' && (
+              <span className="gen-summary-tag" style={{ borderColor: 'rgba(251, 191, 36, 0.4)', color: '#fbbf24' }}>
+                🎵 {genre}
+              </span>
+            )}
+          </div>
 
           {/* Deck name input */}
           {!existingDeck && (

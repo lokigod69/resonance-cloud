@@ -8,6 +8,7 @@ import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { useVideoPlayback } from '@/hooks/useVideoPlayback'
 import { VideoControls } from '@/components/VideoControls'
 import { useStudySession } from '@/hooks/useStudySession'
+import OrbDock from '@/components/OrbDock'
 
 export default function StudyPG() {
   const navigate = useNavigate()
@@ -328,6 +329,16 @@ export default function StudyPG() {
         )}
       </AnimatePresence>
       </div>
+
+      {/* Orb thumbnail dock — word navigation */}
+      <OrbDock
+        words={words}
+        currentIndex={currentIndex}
+        onSelect={(i) => {
+          setCurrentIndex(i)
+          setRevealed(false)
+        }}
+      />
 
       {/* Keyboard hints */}
       <div className="mt-8 text-center text-xs" style={{ color: 'var(--pg-text-dim)', opacity: 0.5 }}>

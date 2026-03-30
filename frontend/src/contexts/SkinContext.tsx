@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 
-export type SkinId = 'classic' | 'glassy' | 'orbs'
+export type SkinId = 'classic' | 'glassy'
 
 interface SkinContextValue {
   skin: SkinId
@@ -8,13 +8,14 @@ interface SkinContextValue {
 }
 
 const STORAGE_KEY = 'resonance-skin'
-const VALID_SKINS: SkinId[] = ['classic', 'glassy', 'orbs']
+const VALID_SKINS: SkinId[] = ['classic', 'glassy']
 
 // Map old stored/DB values to new skin IDs
 const LEGACY_MAP: Record<string, SkinId> = {
   'default': 'classic',
   'polish-glass': 'glassy',
-  'glass-orb': 'orbs',
+  'glass-orb': 'classic',   // Orbs users → Classic (has Orbs-style dashboard now)
+  'orbs': 'classic',         // Direct orbs value → Classic
 }
 
 function migrateSkinId(raw: string | null): SkinId {
@@ -43,9 +44,8 @@ export function SkinProvider({ children }: { children: ReactNode }) {
   // Apply/remove skin class on <html>
   useEffect(() => {
     const html = document.documentElement
-    html.classList.remove('skin-glassy', 'skin-orbs')
+    html.classList.remove('skin-glassy')
     if (skin === 'glassy') html.classList.add('skin-glassy')
-    if (skin === 'orbs') html.classList.add('skin-orbs')
   }, [skin])
 
   const setSkin = (newSkin: SkinId) => {

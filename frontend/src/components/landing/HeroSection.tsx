@@ -45,11 +45,11 @@ export default function HeroSection() {
       >
         <div className="relative">
           {/* Frosted backdrop — tight dark card behind text only, no gradient bleed */}
-          <div className="absolute -inset-x-12 -inset-y-10 rounded-[2.5rem]"
+          <div className="absolute -inset-x-16 -inset-y-12 rounded-[3rem]"
                style={{
-                 background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0) 100%)',
-                 backdropFilter: 'blur(16px)',
-                 WebkitBackdropFilter: 'blur(16px)',
+                 background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.15) 70%, transparent 100%)',
+                 backdropFilter: 'blur(20px)',
+                 WebkitBackdropFilter: 'blur(20px)',
                }}
           />
 
