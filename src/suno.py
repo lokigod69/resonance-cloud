@@ -16,7 +16,7 @@ import httpx
 logger = logging.getLogger(__name__)
 
 KIE_API_BASE = "https://api.kie.ai/api/v1"
-POLL_INTERVAL = 5       # seconds between status checks
+POLL_INTERVAL = 10      # seconds between status checks
 MAX_POLL_TIME = 180     # max seconds to wait (3 minutes)
 
 
@@ -185,7 +185,7 @@ async def generate_song(
 
             try:
                 status_resp = await client.get(
-                    f"{KIE_API_BASE}/music/detail",
+                    f"{KIE_API_BASE}/generate/record-info",
                     params={"taskId": task_id},
                     headers={"Authorization": f"Bearer {api_key}"},
                 )
@@ -198,23 +198,30 @@ async def generate_song(
             logger.info("SUNO POLL RESPONSE (elapsed %ds): %s", elapsed, json.dumps(status_data)[:1000])
 
             data = status_data.get("data", {})
+            task_status = data.get("status", "")
 
-            # Try to extract audio URL from various known response shapes
-            audio_url = _extract_audio_url(data)
-
-            # Check for failure status
-            status = None
-            if isinstance(data, dict):
-                status = data.get("status", "")
-            if status in ("failed", "error"):
+            if task_status == "SUCCESS":
+                # Extract audio URL from response.sunoData[0].audioUrl
+                suno_data = data.get("response", {}).get("sunoData", [])
+                if suno_data and isinstance(suno_data, list) and len(suno_data) > 0:
+                    audio_url = suno_data[0].get("audioUrl")
+                    if audio_url:
+                        logger.info("Suno song ready: %s", audio_url)
+                        return {"audio_url": audio_url, "task_id": task_id, "status": "success", "error": None}
                 return {
                     "audio_url": None, "task_id": task_id, "status": "error",
-                    "error": f"Suno generation failed: {json.dumps(status_data)[:500]}",
+                    "error": f"SUCCESS but no audioUrl in response: {json.dumps(status_data)[:500]}",
                 }
 
-            if audio_url:
-                logger.info("Suno song ready: %s", audio_url)
-                return {"audio_url": audio_url, "task_id": task_id, "status": "success", "error": None}
+            if task_status == "fail":
+                error_msg = data.get("errorMessage", "Unknown error")
+                return {
+                    "audio_url": None, "task_id": task_id, "status": "error",
+                    "error": f"Suno generation failed: {error_msg}",
+                }
+
+            # "waiting", "queuing", "generating" — keep polling
+            logger.info("Suno task %s status: %s (elapsed %ds)", task_id, task_status, elapsed)
 
         # Timeout
         return {
@@ -223,26 +230,4 @@ async def generate_song(
         }
 
 
-def _extract_audio_url(data) -> str | None:
-    """Try multiple field names/shapes to find the audio URL in kie.ai response."""
-    if isinstance(data, dict):
-        # Direct fields
-        for key in ("audio_url", "audioUrl", "song_url", "songUrl", "media_url", "mediaUrl"):
-            if data.get(key):
-                return data[key]
-        # Nested tracks/songs array
-        for array_key in ("tracks", "songs", "data", "items", "music"):
-            items = data.get(array_key)
-            if isinstance(items, list) and len(items) > 0:
-                first = items[0]
-                if isinstance(first, dict):
-                    for key in ("audio_url", "audioUrl", "song_url", "songUrl", "media_url", "mediaUrl"):
-                        if first.get(key):
-                            return first[key]
-    elif isinstance(data, list) and len(data) > 0:
-        first = data[0]
-        if isinstance(first, dict):
-            for key in ("audio_url", "audioUrl", "song_url", "songUrl", "media_url", "mediaUrl"):
-                if first.get(key):
-                    return first[key]
     return None
