@@ -3,7 +3,7 @@ import { Music, Loader2 } from 'lucide-react'
 import { AudioPlayer } from '@/components/AudioPlayer'
 import { generateSunoSong } from '@/api'
 import { supabase } from '@/lib/supabase'
-import { useToast } from '@/hooks/use-toast'
+import { useToast } from '@/components/Toast'
 
 interface SunoPlayerProps {
   wordId: string
@@ -42,10 +42,10 @@ export default function SunoPlayer({
 
       setLocalAudioUrl(result.audio_url)
       onAudioGenerated?.(result.audio_url)
-      toast({ title: 'Song generated', description: 'Full song is ready to play.' })
+      toast('Full song is ready to play', 'success')
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Unknown error'
-      toast({ title: 'Song generation failed', description: msg, variant: 'destructive' })
+      toast(`Song generation failed: ${msg}`, 'error')
     } finally {
       setLoading(false)
     }

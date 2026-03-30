@@ -170,10 +170,10 @@ export default function Content() {
         }
         return updated
       })
-      toast({ title: 'Song generated', description: `Full song ready for "${word.word}".` })
+      toast(`Full song ready for "${word.word}"`, 'success')
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Unknown error'
-      toast({ title: 'Song generation failed', description: msg, variant: 'destructive' })
+      toast(`Song generation failed: ${msg}`, 'error')
     } finally {
       setSunoGeneratingId(null)
     }
