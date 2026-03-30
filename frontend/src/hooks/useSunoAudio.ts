@@ -109,7 +109,7 @@ export function useSunoAudio(
       if (!userMutedRef.current) vid.muted = true
       const progress = (currentTime - SUNO_FADE_IN_START) / (SUNO_FADE_IN_END - SUNO_FADE_IN_START)
       audio.volume = progress
-      if (audio.paused && !vid.paused) {
+      if (audio.paused && !audio.ended && !vid.paused) {
         audio.play().catch(() => {})
       }
 
@@ -118,7 +118,7 @@ export function useSunoAudio(
       // Video muted; Suno at full volume.
       if (!userMutedRef.current) vid.muted = true
       audio.volume = 1.0
-      if (audio.paused && !vid.paused) {
+      if (audio.paused && !audio.ended && !vid.paused) {
         audio.play().catch(() => {})
       }
 

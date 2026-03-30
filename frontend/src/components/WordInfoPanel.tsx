@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Info } from 'lucide-react'
 import StarRating from '@/components/ui/StarRating'
-import SunoPlayer from '@/components/SunoPlayer'
 
 interface WordInfoPanelProps {
   word: {
@@ -64,20 +63,6 @@ export default function WordInfoPanel({ word, onRate, deckId, userId, onWordUpda
       <div className="flex justify-center">
         <StarRating rating={word.rating ?? null} onChange={(r) => onRate(word.id, r)} />
       </div>
-
-      {/* Suno full song player */}
-      {deckId && userId && word.word_slug && (
-        <div className="flex justify-center">
-          <SunoPlayer
-            wordId={word.id}
-            wordSlug={word.word_slug}
-            deckId={deckId}
-            userId={userId}
-            audioUrl={word.suno_audio_url ?? null}
-            onAudioGenerated={(url) => onWordUpdate?.(word.id, { suno_audio_url: url })}
-          />
-        </div>
-      )}
 
       {/* Expandable metadata */}
       {showMetadata && (
