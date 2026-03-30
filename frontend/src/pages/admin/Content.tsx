@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useMemo } from 'react'
+import { useEffect, useState, useCallback, useMemo, useRef } from 'react'
 import { supabase } from '@/lib/supabase'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -31,6 +31,8 @@ import {
   Zap,
   Music,
   Loader2,
+  Play,
+  Square,
 } from 'lucide-react'
 import { useToast } from '@/components/Toast'
 import { generateSunoSong } from '@/api'
@@ -150,6 +152,21 @@ export default function Content() {
   const [smartRetryTarget, setSmartRetryTarget] = useState<WordRecord | null>(null)
   const [actionLoading, setActionLoading] = useState(false)
   const [sunoGeneratingId, setSunoGeneratingId] = useState<string | null>(null)
+  const [playingAudioId, setPlayingAudioId] = useState<string | null>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
+
+  const handlePlayAudio = useCallback((word: WordRecord) => {
+    const el = audioRef.current
+    if (!el) return
+    if (playingAudioId === word.id) {
+      el.pause()
+      setPlayingAudioId(null)
+    } else {
+      el.src = word.suno_audio_url!
+      el.play()
+      setPlayingAudioId(word.id)
+    }
+  }, [playingAudioId])
 
   const handleSunoGenerate = useCallback(async (word: WordRecord) => {
     if (!word.word_slug || !word.deck_id || !word.user_id || sunoGeneratingId) return
@@ -769,11 +786,8 @@ export default function Content() {
                             </span>
                           )}
 
-                          {/* Spacer */}
-                          <div className="flex-1" />
-
                           {/* Actions */}
-                          <div className="flex items-center gap-1 flex-shrink-0">
+                          <div className="flex items-center gap-1 flex-shrink-0 ml-auto">
                             <Button
                               variant="ghost"
                               size="sm"
@@ -791,19 +805,49 @@ export default function Content() {
                               <Flag className={`h-4 w-4 ${word.needs_review ? 'text-orange-400' : ''}`} />
                             </Button>
                             {word.status === 'complete' && (
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => handleSunoGenerate(word)}
-                                disabled={sunoGeneratingId === word.id}
-                                title={word.suno_audio_url ? 'Regenerate Full Song' : 'Generate Full Song'}
-                              >
-                                {sunoGeneratingId === word.id ? (
-                                  <Loader2 className="h-4 w-4 animate-spin text-purple-400" />
-                                ) : (
-                                  <Music className={`h-4 w-4 ${word.suno_audio_url ? 'text-green-400' : 'text-purple-400'}`} />
-                                )}
-                              </Button>
+                              word.suno_audio_url ? (
+                                <div className="flex items-center gap-0.5">
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => handlePlayAudio(word)}
+                                    title={playingAudioId === word.id ? 'Stop' : 'Play Song'}
+                                  >
+                                    {playingAudioId === word.id ? (
+                                      <Square className="h-4 w-4 text-green-400 fill-green-400" />
+                                    ) : (
+                                      <Play className="h-4 w-4 text-green-400 fill-green-400" />
+                                    )}
+                                  </Button>
+                                  <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={() => handleSunoGenerate(word)}
+                                    disabled={sunoGeneratingId === word.id}
+                                    title="Regenerate Full Song"
+                                  >
+                                    {sunoGeneratingId === word.id ? (
+                                      <Loader2 className="h-4 w-4 animate-spin text-purple-400" />
+                                    ) : (
+                                      <Music className="h-4 w-4 text-purple-400" />
+                                    )}
+                                  </Button>
+                                </div>
+                              ) : (
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => handleSunoGenerate(word)}
+                                  disabled={sunoGeneratingId === word.id}
+                                  title="Generate Full Song"
+                                >
+                                  {sunoGeneratingId === word.id ? (
+                                    <Loader2 className="h-4 w-4 animate-spin text-purple-400" />
+                                  ) : (
+                                    <Music className="h-4 w-4 text-purple-400" />
+                                  )}
+                                </Button>
+                              )
                             )}
                             {word.status === 'failed' && (
                               <Button
@@ -842,6 +886,13 @@ export default function Content() {
           ))
         )}
       </div>
+
+      {/* Hidden audio element for inline playback */}
+      <audio
+        ref={audioRef}
+        onEnded={() => setPlayingAudioId(null)}
+        onError={() => setPlayingAudioId(null)}
+      />
 
       {/* Word Detail Panel */}
       <WordDetailPanel
