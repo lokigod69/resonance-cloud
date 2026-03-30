@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, type RefObject } from 'react'
+import { useState, useCallback, type RefObject } from 'react'
 
 /**
  * Manages play/pause/replay state for a single <video> element.
