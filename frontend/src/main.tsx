@@ -6,6 +6,7 @@ import './themes/rainy-day.css'
 import './themes/deep-blue.css'
 import './themes/red-wine.css'
 import './themes/slate.css'
+import './themes/warm-linen.css'
 import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(

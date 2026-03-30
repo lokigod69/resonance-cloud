@@ -145,9 +145,10 @@ export default function Settings() {
           {([
             { id: 'midnight' as Theme, label: 'Midnight', desc: 'Dark & minimal', colors: ['oklch(0.13 0.008 280)', 'oklch(0.7 0.15 280)', 'oklch(0.22 0.015 280)'] },
             { id: 'rainy-day' as Theme, label: 'Rainy Day', desc: 'Steel-blue gradient', colors: ['#263141', '#8EC1D6', '#3D4B5F'] },
-            { id: 'deep-blue' as Theme, label: 'Deep Blue', desc: 'Navy gradient', colors: ['#0A1842', '#2A92F5', '#152D73'] },
+            { id: 'deep-blue' as Theme, label: 'Deep Blue', desc: 'Soft navy', colors: ['#111D3A', '#4DA3F7', '#1A3568'] },
             { id: 'red-wine' as Theme, label: 'Red Wine', desc: 'Burgundy & pink', colors: ['#220C15', '#C62F6C', '#4E122A'] },
             { id: 'slate' as Theme, label: 'Slate', desc: 'Muted gray', colors: ['#1E2227', '#9A9894', '#334155'] },
+            { id: 'warm-linen' as Theme, label: 'Warm Linen', desc: 'Light & warm', colors: ['#F3EFEB', '#8B7355', '#EBE6E0'] },
           ]).map((t) => (
             <button
               key={t.id}

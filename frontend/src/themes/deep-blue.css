@@ -1,33 +1,33 @@
-/* Deep Blue theme — navy gradient, vivid blue accent */
+/* Deep Blue theme — softer navy gradient, vivid blue accent */
 .theme-deep-blue {
-  --background: #0A1842;
+  --background: #111D3A;
   --foreground: #CBD5E1;
-  --card: #152D73;
+  --card: #1A3568;
   --card-foreground: #CBD5E1;
-  --popover: #0A1842;
+  --popover: #111D3A;
   --popover-foreground: #CBD5E1;
-  --primary: #2A92F5;
-  --primary-foreground: #071030;
-  --secondary: #112060;
+  --primary: #4DA3F7;
+  --primary-foreground: #0D1628;
+  --secondary: #162952;
   --secondary-foreground: #CBD5E1;
-  --muted: #112060;
-  --muted-foreground: #6B9FD6;
-  --accent: rgba(42, 146, 245, 0.15);
+  --muted: #162952;
+  --muted-foreground: #7BAED6;
+  --accent: rgba(77, 163, 247, 0.15);
   --accent-foreground: #CBD5E1;
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: rgba(37, 114, 205, 0.2);
-  --input: #152D73;
-  --ring: #2A92F5;
+  --border: rgba(55, 120, 200, 0.18);
+  --input: #1A3568;
+  --ring: #4DA3F7;
   --radius: 0.625rem;
-  --sidebar: #071030;
+  --sidebar: #0D1628;
   --sidebar-foreground: #CBD5E1;
-  --sidebar-primary: #2A92F5;
-  --sidebar-primary-foreground: #071030;
-  --sidebar-accent: rgba(42, 146, 245, 0.12);
+  --sidebar-primary: #4DA3F7;
+  --sidebar-primary-foreground: #0D1628;
+  --sidebar-accent: rgba(77, 163, 247, 0.12);
   --sidebar-accent-foreground: #CBD5E1;
-  --sidebar-border: rgba(37, 114, 205, 0.15);
-  --sidebar-ring: #2A92F5;
+  --sidebar-border: rgba(55, 120, 200, 0.12);
+  --sidebar-ring: #4DA3F7;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
   color-scheme: dark;
@@ -35,50 +35,50 @@
 
 /* Gradient page background — fixed so it doesn't scroll */
 .theme-deep-blue body {
-  background: linear-gradient(to top left, #0A1842, #152D73);
+  background: linear-gradient(to top left, #111D3A, #1A3568);
   background-attachment: fixed;
 }
 
 /* Glass overrides */
 .theme-deep-blue .glass {
-  background: rgba(43, 76, 168, 0.25);
+  background: rgba(50, 80, 145, 0.22);
   backdrop-filter: blur(24px);
-  border: 1px solid rgba(37, 114, 205, 0.2);
+  border: 1px solid rgba(55, 120, 200, 0.18);
 }
 
 .theme-deep-blue .glass-strong {
-  background: rgba(43, 76, 168, 0.4);
+  background: rgba(50, 80, 145, 0.35);
   backdrop-filter: blur(32px);
-  border: 1px solid rgba(37, 114, 205, 0.25);
+  border: 1px solid rgba(55, 120, 200, 0.22);
 }
 
 .theme-deep-blue .glass-hover:hover {
-  background: rgba(43, 76, 168, 0.35);
-  border-color: rgba(42, 146, 245, 0.25);
+  background: rgba(50, 80, 145, 0.3);
+  border-color: rgba(77, 163, 247, 0.25);
 }
 
 .theme-deep-blue .glass-selected {
-  background: rgba(42, 146, 245, 0.12);
-  border-color: rgba(42, 146, 245, 0.4);
+  background: rgba(77, 163, 247, 0.12);
+  border-color: rgba(77, 163, 247, 0.4);
 }
 
 /* Gradient background utility */
 .theme-deep-blue .gradient-bg {
-  background: linear-gradient(135deg, #0A1842 0%, #152D73 100%);
+  background: linear-gradient(135deg, #111D3A 0%, #1A3568 100%);
 }
 
 /* Glow overrides */
 .theme-deep-blue .glow-purple {
-  box-shadow: 0 0 20px rgba(42, 146, 245, 0.15);
+  box-shadow: 0 0 20px rgba(77, 163, 247, 0.15);
 }
 
 .theme-deep-blue .glow-green {
-  box-shadow: 0 0 20px rgba(42, 146, 245, 0.25);
+  box-shadow: 0 0 20px rgba(77, 163, 247, 0.25);
 }
 
 /* Video overlay */
 .theme-deep-blue .video-overlay {
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(10, 24, 66, 0.8) 100%);
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(17, 29, 58, 0.8) 100%);
 }
 
 /* Ambient gradient shift */
