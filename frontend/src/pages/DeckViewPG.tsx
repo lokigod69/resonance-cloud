@@ -22,6 +22,7 @@ import {
   Trash2,
 } from 'lucide-react'
 import StarRating from '@/components/ui/StarRating'
+import SunoPlayer from '@/components/SunoPlayer'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
@@ -42,6 +43,7 @@ type Deck = {
 type Word = {
   id: string
   word: string
+  word_slug: string | null
   translation: string | null
   mnemonic: string | null
   etymology: string | null
@@ -53,6 +55,8 @@ type Word = {
   thumbnail_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
+  suno_audio_url: string | null
+  suno_task_id: string | null
   metadata: Record<string, unknown> | null
   created_at: string
 }
@@ -584,6 +588,20 @@ export default function DeckViewPG() {
                                         <span className="text-gray-500 shrink-0">Music</span>
                                         <span className="text-gray-300 text-right">{meta.music_caption.split(',')[0]}</span>
                                       </div>
+                                    )}
+                                    {/* Suno full song */}
+                                    {word.word_slug && id && user?.id && (
+                                      <SunoPlayer
+                                        wordId={word.id}
+                                        wordSlug={word.word_slug}
+                                        deckId={id}
+                                        userId={user.id}
+                                        audioUrl={word.suno_audio_url}
+                                        onAudioGenerated={(url) => {
+                                          setWords(prev => prev.map(w => w.id === word.id ? { ...w, suno_audio_url: url } : w))
+                                        }}
+                                        className="pt-2"
+                                      />
                                     )}
                                   </div>
                                 </motion.div>

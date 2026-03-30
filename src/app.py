@@ -1457,6 +1457,28 @@ def _compute_stages_detail(word_dir: Path, m: Any) -> dict:
     return detail
 
 
+# ─── Suno full song generation ────────────────────────────────────────────────
+
+from .suno import generate_song as suno_generate_song
+
+
+class SunoGenerateRequest(BaseModel):
+    word_slug: str
+    deck_id: str
+    user_id: str
+
+
+@app.post("/api/suno/generate")
+async def suno_generate(req: SunoGenerateRequest):
+    """Generate a full song for a word via kie.ai Suno API."""
+    result = await suno_generate_song(
+        str(WORKSPACE_ROOT), req.user_id, req.deck_id, req.word_slug
+    )
+    if result["status"] == "error":
+        raise HTTPException(status_code=500, detail=result["error"])
+    return result
+
+
 # ─── Serve React frontend ─────────────────────────────────────────────────────
 
 frontend_dist = Path(__file__).parent.parent / "frontend" / "dist"

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Info } from 'lucide-react'
 import StarRating from '@/components/ui/StarRating'
+import SunoPlayer from '@/components/SunoPlayer'
 
 interface WordInfoPanelProps {
   word: {
@@ -12,6 +13,8 @@ interface WordInfoPanelProps {
     pos?: string | null
     article?: string | null
     rating?: number | null
+    word_slug?: string | null
+    suno_audio_url?: string | null
     metadata?: {
       creative_direction?: string
       art_style?: string
@@ -19,6 +22,9 @@ interface WordInfoPanelProps {
     } | null
   }
   onRate: (wordId: string, rating: number) => void
+  deckId?: string
+  userId?: string
+  onWordUpdate?: (wordId: string, updates: Record<string, unknown>) => void
 }
 
 const hasMetadata = (word: WordInfoPanelProps['word']) =>
@@ -28,7 +34,7 @@ const hasMetadata = (word: WordInfoPanelProps['word']) =>
   word.metadata?.art_style ||
   word.metadata?.music_caption
 
-export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
+export default function WordInfoPanel({ word, onRate, deckId, userId, onWordUpdate }: WordInfoPanelProps) {
   const [showMetadata, setShowMetadata] = useState(false)
 
   return (
@@ -58,6 +64,20 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
       <div className="flex justify-center">
         <StarRating rating={word.rating ?? null} onChange={(r) => onRate(word.id, r)} />
       </div>
+
+      {/* Suno full song player */}
+      {deckId && userId && word.word_slug && (
+        <div className="flex justify-center">
+          <SunoPlayer
+            wordId={word.id}
+            wordSlug={word.word_slug}
+            deckId={deckId}
+            userId={userId}
+            audioUrl={word.suno_audio_url ?? null}
+            onAudioGenerated={(url) => onWordUpdate?.(word.id, { suno_audio_url: url })}
+          />
+        </div>
+      )}
 
       {/* Expandable metadata */}
       {showMetadata && (

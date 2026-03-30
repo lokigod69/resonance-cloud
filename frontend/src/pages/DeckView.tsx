@@ -27,6 +27,7 @@ type Deck = {
 type Word = {
   id: string
   word: string
+  word_slug: string | null
   translation: string | null
   mnemonic: string | null
   etymology: string | null
@@ -38,6 +39,8 @@ type Word = {
   thumbnail_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
+  suno_audio_url: string | null
+  suno_task_id: string | null
   metadata: Record<string, unknown> | null
   created_at: string
 }
@@ -567,7 +570,15 @@ function VideoViewerModal({
           </div>
 
           {/* Word info */}
-          <WordInfoPanel word={word} onRate={onRate} />
+          <WordInfoPanel
+            word={word}
+            onRate={onRate}
+            deckId={id}
+            userId={user?.id}
+            onWordUpdate={(wordId, updates) => {
+              setWords(prev => prev.map(w => w.id === wordId ? { ...w, ...updates } : w))
+            }}
+          />
 
           {/* Replay */}
           <div className="flex items-center justify-center">

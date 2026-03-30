@@ -12,11 +12,13 @@ import {
 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
+import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
 
 type Word = {
   id: string
   word: string
+  word_slug: string | null
   translation: string | null
   mnemonic: string | null
   etymology: string | null
@@ -27,12 +29,15 @@ type Word = {
   video_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
+  suno_audio_url: string | null
+  suno_task_id: string | null
   metadata: Record<string, unknown> | null
 }
 
 export default function VideoPlayer() {
   const { id: deckId, wordId } = useParams<{ id: string; wordId: string }>()
   const navigate = useNavigate()
+  const { user } = useAuth()
 
   const [words, setWords] = useState<Word[]>([])
   const [loading, setLoading] = useState(true)
@@ -43,7 +48,7 @@ export default function VideoPlayer() {
     async function load() {
       const { data } = await supabase
         .from('words')
-        .select('id, word, translation, mnemonic, etymology, pos, article, rating, metadata, status, video_url, video_url_b, thumbnail_url_b')
+        .select('id, word, word_slug, translation, mnemonic, etymology, pos, article, rating, metadata, status, video_url, video_url_b, thumbnail_url_b, suno_audio_url, suno_task_id')
         .eq('deck_id', deckId)
         .eq('status', 'complete')
         .order('created_at')
@@ -162,7 +167,15 @@ export default function VideoPlayer() {
           </div>
 
           {/* Word info */}
-          <WordInfoPanel word={current} onRate={handleRate} />
+          <WordInfoPanel
+            word={current}
+            onRate={handleRate}
+            deckId={deckId}
+            userId={user?.id}
+            onWordUpdate={(wId, updates) => {
+              setWords(prev => prev.map(w => w.id === wId ? { ...w, ...updates } : w))
+            }}
+          />
 
           {/* Controls */}
           <div className="flex items-center justify-center gap-3">

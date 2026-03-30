@@ -29,8 +29,11 @@ import {
   Search,
   ImageOff,
   Zap,
+  Music,
+  Loader2,
 } from 'lucide-react'
 import { useToast } from '@/components/Toast'
+import { generateSunoSong } from '@/api'
 import WordDetailPanel from '@/components/admin/WordDetailPanel'
 import StarRating from '@/components/ui/StarRating'
 
@@ -74,6 +77,8 @@ type WordRecord = {
   rating: number | null
   rated_at: string | null
   needs_review: boolean
+  suno_audio_url: string | null
+  suno_task_id: string | null
   created_at: string
 }
 
@@ -144,6 +149,35 @@ export default function Content() {
   const [regenerateTarget, setRegenerateTarget] = useState<WordRecord | null>(null)
   const [smartRetryTarget, setSmartRetryTarget] = useState<WordRecord | null>(null)
   const [actionLoading, setActionLoading] = useState(false)
+  const [sunoGeneratingId, setSunoGeneratingId] = useState<string | null>(null)
+
+  const handleSunoGenerate = useCallback(async (word: WordRecord) => {
+    if (!word.word_slug || !word.deck_id || !word.user_id || sunoGeneratingId) return
+    setSunoGeneratingId(word.id)
+    try {
+      const result = await generateSunoSong(word.word_slug, word.deck_id, word.user_id)
+      await supabase
+        .from('words')
+        .update({ suno_audio_url: result.audio_url, suno_task_id: result.task_id })
+        .eq('id', word.id)
+      // Update local state
+      setDeckWords(prev => {
+        const updated = { ...prev }
+        for (const [deckId, words] of Object.entries(updated)) {
+          updated[deckId] = words.map(w =>
+            w.id === word.id ? { ...w, suno_audio_url: result.audio_url, suno_task_id: result.task_id } : w
+          )
+        }
+        return updated
+      })
+      toast({ title: 'Song generated', description: `Full song ready for "${word.word}".` })
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Unknown error'
+      toast({ title: 'Song generation failed', description: msg, variant: 'destructive' })
+    } finally {
+      setSunoGeneratingId(null)
+    }
+  }, [sunoGeneratingId, toast])
 
   // -------------------------------------------------------------------------
   // Data fetching
@@ -756,6 +790,21 @@ export default function Content() {
                             >
                               <Flag className={`h-4 w-4 ${word.needs_review ? 'text-orange-400' : ''}`} />
                             </Button>
+                            {word.status === 'complete' && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => handleSunoGenerate(word)}
+                                disabled={sunoGeneratingId === word.id}
+                                title={word.suno_audio_url ? 'Regenerate Full Song' : 'Generate Full Song'}
+                              >
+                                {sunoGeneratingId === word.id ? (
+                                  <Loader2 className="h-4 w-4 animate-spin text-purple-400" />
+                                ) : (
+                                  <Music className={`h-4 w-4 ${word.suno_audio_url ? 'text-green-400' : 'text-purple-400'}`} />
+                                )}
+                              </Button>
+                            )}
                             {word.status === 'failed' && (
                               <Button
                                 variant="ghost"

@@ -472,3 +472,17 @@ export const mediaUrl = (slug: string, path: string) =>
 
 export const workspaceMediaUrl = (workspace: string, slug: string, path: string) =>
   `${BASE}/media/ws/${encodeURIComponent(workspace)}/${slug}/${path}`
+
+// ─── Suno full song generation ──────────────────────────────────────────────
+
+export interface SunoGenerateResult {
+  audio_url: string
+  task_id: string
+}
+
+export const generateSunoSong = (wordSlug: string, deckId: string, userId: string) =>
+  req<SunoGenerateResult>('/suno/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ word_slug: wordSlug, deck_id: deckId, user_id: userId }),
+  })
