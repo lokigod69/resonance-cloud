@@ -12,6 +12,7 @@ export type StudyWord = {
   thumbnail_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
+  suno_audio_url: string | null
   deck_id: string
 }
 
@@ -79,7 +80,7 @@ export function useStudySession() {
     const [wordsRes, attemptsRes] = await Promise.all([
       supabase
         .from('words')
-        .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, deck_id')
+        .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_audio_url, deck_id')
         .eq('user_id', user.id)
         .eq('status', 'complete')
         .order('created_at', { ascending: true }),

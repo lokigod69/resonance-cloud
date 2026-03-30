@@ -63,7 +63,7 @@ def read_concept_data(workspace_root: str, user_id: str, deck_id: str, word_slug
             try:
                 with open(concept_path, "r", encoding="utf-8") as f:
                     concept = json.load(f)
-                lyrics = concept.get("lyrics", "")
+                lyrics = concept.get("suno_lyrics") or concept.get("lyrics", "")
                 music_caption = concept.get("music_caption", "")
             except (json.JSONDecodeError, IOError) as e:
                 logger.warning("Failed to read concept file %s: %s", concept_path, e)
@@ -76,8 +76,8 @@ def read_concept_data(workspace_root: str, user_id: str, deck_id: str, word_slug
                 try:
                     with open(json_file, "r", encoding="utf-8") as f:
                         concept = json.load(f)
-                    if concept.get("lyrics"):
-                        lyrics = concept["lyrics"]
+                    if concept.get("suno_lyrics") or concept.get("lyrics"):
+                        lyrics = concept.get("suno_lyrics") or concept.get("lyrics", "")
                         music_caption = concept.get("music_caption", music_caption)
                         break
                 except (json.JSONDecodeError, IOError):

@@ -11,6 +11,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion, getStoredVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { useVideoPlayback } from '@/hooks/useVideoPlayback'
+import { useSunoAudio } from '@/hooks/useSunoAudio'
 import { VideoControls } from '@/components/VideoControls'
 import { useToast } from '@/components/Toast'
 
@@ -476,8 +477,15 @@ function VideoViewerModal({
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < words.length - 1
   const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(word ?? { id: '', video_url: null, thumbnail_url: null })
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
+  const suno = useSunoAudio(
+    word?.suno_audio_url ?? null,
+    `${word?.id ?? ''}-${videoKey}`,
+    videoRef,
+  )
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false, suno.hasSuno ? true : undefined)
   const { isPlaying, setIsPlaying, togglePlay, onPlay, onPause } = useVideoPlayback(videoRef)
+  const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
+  const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
 
   // Reset playing state when navigating to a new word
   useEffect(() => {
@@ -539,18 +547,28 @@ function VideoViewerModal({
               </button>
             )}
             {activeVideoUrl ? (
-              <video
-                ref={videoRef}
-                key={`${videoKey}-${version}`}
-                src={`${activeVideoUrl}?t=${videoKey}`}
-                autoPlay
-                playsInline
-                loop
-                onClick={togglePlay}
-                onPlay={onPlay}
-                onPause={onPause}
-                className="w-full aspect-video cursor-pointer"
-              />
+              <>
+                <video
+                  ref={videoRef}
+                  key={`${videoKey}-${version}`}
+                  src={`${activeVideoUrl}?t=${videoKey}`}
+                  autoPlay
+                  playsInline
+                  loop
+                  onClick={togglePlay}
+                  onPlay={() => { onPlay(); suno.handleVideoPlay() }}
+                  onPause={() => { onPause(); suno.handleVideoPause() }}
+                  onTimeUpdate={suno.hasSuno ? suno.handleTimeUpdate : undefined}
+                  className="w-full aspect-video cursor-pointer"
+                />
+                <audio
+                  ref={suno.sunoAudioRef}
+                  key={`suno-${word?.id}-${videoKey}`}
+                  src={word?.suno_audio_url ?? undefined}
+                  preload={word?.suno_audio_url ? 'auto' : 'none'}
+                  onError={suno.handleSunoError}
+                />
+              </>
             ) : (
               <div className="w-full aspect-video flex items-center justify-center bg-white/5">
                 <p className="text-muted-foreground">No video available</p>
@@ -571,9 +589,9 @@ function VideoViewerModal({
                 isPlaying={isPlaying}
                 onTogglePlay={togglePlay}
                 volume={volume}
-                isMuted={isMuted}
+                isMuted={effectiveIsMuted}
                 onVolumeChange={setVolume}
-                onToggleMute={toggleMute}
+                onToggleMute={effectiveToggleMute}
                 fullscreenRef={videoRef}
                 iconSize={20}
                 buttonClassName="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
