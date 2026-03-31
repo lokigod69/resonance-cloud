@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useEffect } from 'react'
+import { useRef, useState, useCallback, useEffect, useMemo } from 'react'
 
 export interface MusicTrack {
   id: string
@@ -27,8 +27,11 @@ function buildShuffleOrder(length: number): number[] {
 export function useMusicPlayer(tracks: MusicTrack[]) {
   const audioRef = useRef<HTMLAudioElement>(null)
 
-  // queue = only playable tracks (have a URL and no error)
-  const queue = tracks.filter((t) => !!t.suno_audio_url && !t.error)
+  // Stable reference — only recomputed when tracks identity changes
+  const queue = useMemo(
+    () => tracks.filter((t) => !!t.suno_audio_url && !t.error),
+    [tracks],
+  )
 
   const [currentQueueIdx, setCurrentQueueIdx] = useState<number | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -85,24 +88,29 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
       return
     }
 
-    setCurrentQueueIdx((prev) => {
-      if (prev === null) return 0
-      let nextIdx: number
-      if (shuffle && shuffleOrder.length === queue.length) {
-        const pos = shuffleOrder.indexOf(prev)
-        const nextPos = (pos + 1) % shuffleOrder.length
-        nextIdx = shuffleOrder[nextPos]
+    // Compute next index outside the updater so we can call setIsPlaying
+    // as a separate side-effect (state updaters must be pure — no side effects)
+    const prev = currentQueueIdx
+    let nextIdx: number
+    if (prev === null) {
+      nextIdx = 0
+    } else if (shuffle && shuffleOrder.length === queue.length) {
+      const pos = shuffleOrder.indexOf(prev)
+      nextIdx = shuffleOrder[(pos + 1) % shuffleOrder.length]
+    } else {
+      nextIdx = prev + 1
+    }
+
+    if (nextIdx >= queue.length) {
+      if (repeatMode === 'all') {
+        setCurrentQueueIdx(0)
       } else {
-        nextIdx = prev + 1
+        setIsPlaying(false) // called outside updater ✓
       }
-      if (nextIdx >= queue.length) {
-        if (repeatMode === 'all') return 0
-        setIsPlaying(false)
-        return prev
-      }
-      return nextIdx
-    })
-  }, [queue.length, repeatMode, shuffle, shuffleOrder])
+      return
+    }
+    setCurrentQueueIdx(nextIdx)
+  }, [queue.length, repeatMode, shuffle, shuffleOrder, currentQueueIdx])
 
   const play = useCallback(
     (trackId: string) => {

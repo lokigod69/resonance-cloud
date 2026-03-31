@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 interface OrbVisualizerProps {
   thumbnailUrl: string | null
@@ -36,9 +37,7 @@ export function OrbVisualizer({
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animFrameRef = useRef<number>(0)
   const timeRef = useRef(0)
-  // Current animated heights (lerped toward target)
   const currentHeightsRef = useRef<Float32Array>(new Float32Array(BAR_COUNT))
-  // Base heights from PRNG, keyed to the word seed
   const baseHeightsRef = useRef<Float32Array>(new Float32Array(BAR_COUNT))
   const analyserRef = useRef<AnalyserNode | null>(null)
   const audioCtxRef = useRef<AudioContext | null>(null)
@@ -53,10 +52,19 @@ export function OrbVisualizer({
     }
   }, [word])
 
-  // Attempt real-time audio setup on mount
+  // Set up Web Audio API once on mount — lives for the full page lifetime.
+  // OrbVisualizer must NOT be keyed on track ID or this setup breaks on every track change.
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
+
+    // Resume suspended AudioContext on user-initiated play (Chrome autoplay policy)
+    const resumeCtx = () => {
+      if (audioCtxRef.current?.state === 'suspended') {
+        audioCtxRef.current.resume().catch(() => {})
+      }
+    }
+    audio.addEventListener('play', resumeCtx)
 
     try {
       const ctx = new AudioContext()
@@ -75,6 +83,7 @@ export function OrbVisualizer({
     }
 
     return () => {
+      audio.removeEventListener('play', resumeCtx)
       audioCtxRef.current?.close().catch(() => {})
       audioCtxRef.current = null
       analyserRef.current = null
@@ -82,7 +91,7 @@ export function OrbVisualizer({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // Animation loop
+  // Animation loop — re-runs only when isPlaying or size changes
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -95,24 +104,32 @@ export function OrbVisualizer({
       if (!ctx) return
 
       const dpr = window.devicePixelRatio || 1
-      if (canvas!.width !== totalSize * dpr) {
-        canvas!.width = totalSize * dpr
-        canvas!.height = totalSize * dpr
-        ctx.scale(dpr, dpr)
+      const physW = Math.round(totalSize * dpr)
+
+      // Resize only when needed (avoids resetting ctx state every frame)
+      if (canvas!.width !== physW || canvas!.height !== physW) {
+        canvas!.width = physW
+        canvas!.height = physW
       }
 
+      // Always re-apply the DPR transform — ctx.scale() accumulates,
+      // setTransform() replaces, so this is safe to call every frame.
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       ctx.clearRect(0, 0, totalSize, totalSize)
 
       const cx = totalSize / 2
       const cy = totalSize / 2
+      timeRef.current += 0.016
 
-      timeRef.current += 0.016 // ~60fps
+      // Sample frequency data once per frame, not per bar
+      if (visualizerModeRef.current === 'realtime' && analyserRef.current) {
+        analyserRef.current.getByteFrequencyData(freqDataRef.current)
+      }
 
       for (let i = 0; i < BAR_COUNT; i++) {
         let targetHeight: number
 
-        if (visualizerModeRef.current === 'realtime' && analyserRef.current) {
-          analyserRef.current.getByteFrequencyData(freqDataRef.current)
+        if (visualizerModeRef.current === 'realtime') {
           const binIndex = Math.floor((i / BAR_COUNT) * freqDataRef.current.length)
           targetHeight = (freqDataRef.current[binIndex] / 255) * MAX_BAR_LEN
         } else if (isPlaying) {
@@ -120,11 +137,10 @@ export function OrbVisualizer({
           const wave = 0.5 + 0.5 * Math.sin(timeRef.current * 1.8 + i * 0.2)
           targetHeight = base * wave * MAX_BAR_LEN
         } else {
-          // Paused — settle to low
           targetHeight = baseHeightsRef.current[i] * 0.12 * MAX_BAR_LEN
         }
 
-        // Lerp toward target
+        // Exponential smoothing toward target
         const lerpSpeed = isPlaying ? 0.15 : 0.06
         currentHeightsRef.current[i] +=
           (targetHeight - currentHeightsRef.current[i]) * lerpSpeed
@@ -178,25 +194,39 @@ export function OrbVisualizer({
           animation: isPlaying ? 'orbBreath 3s ease-in-out infinite' : 'none',
         }}
       >
-        {thumbnailUrl ? (
-          <img
-            src={thumbnailUrl}
-            alt={word}
-            className="w-full h-full object-cover"
-            draggable={false}
-          />
-        ) : (
-          <div
-            className="w-full h-full flex items-center justify-center"
-            style={{
-              background: 'linear-gradient(135deg, rgba(94,106,210,0.3) 0%, rgba(20,24,34,0.9) 100%)',
-            }}
-          >
-            <span className="text-white/60 font-light text-center px-4 text-sm leading-tight">
-              {word}
-            </span>
-          </div>
-        )}
+        {/* Thumbnail crossfades inside the orb when track changes */}
+        <AnimatePresence mode="wait">
+          {thumbnailUrl ? (
+            <motion.img
+              key={thumbnailUrl}
+              src={thumbnailUrl}
+              alt={word}
+              className="absolute inset-0 w-full h-full object-cover"
+              draggable={false}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          ) : (
+            <motion.div
+              key={`fallback-${word}`}
+              className="absolute inset-0 w-full h-full flex items-center justify-center"
+              style={{
+                background:
+                  'linear-gradient(135deg, rgba(94,106,210,0.3) 0%, rgba(20,24,34,0.9) 100%)',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="text-white/60 font-light text-center px-4 text-sm leading-tight">
+                {word}
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <style>{`

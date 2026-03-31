@@ -224,43 +224,44 @@ export default function MusicPG() {
           </div>
         ) : (
           <>
-            {/* Orb with crossfade transition */}
+            {/* OrbVisualizer stays mounted — keying it on track ID would destroy
+                the AudioContext on every track change, causing audio silence.
+                Thumbnail crossfade is handled internally inside OrbVisualizer. */}
+            <OrbVisualizer
+              thumbnailUrl={currentTrack?.thumbnail_url ?? null}
+              word={currentTrack?.word ?? ''}
+              isPlaying={isPlaying}
+              audioRef={player.audioRef}
+              size={orbSize}
+            />
+
+            {/* Word info — animate this on track change (safe, no audio impact) */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentTrack?.id ?? 'empty'}
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.92 }}
-                transition={{ duration: 0.28, ease: 'easeInOut' }}
+                className="text-center max-w-xs"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2 }}
               >
-                <OrbVisualizer
-                  thumbnailUrl={currentTrack?.thumbnail_url ?? null}
-                  word={currentTrack?.word ?? ''}
-                  isPlaying={isPlaying}
-                  audioRef={player.audioRef}
-                  size={orbSize}
-                />
+                {currentTrack ? (
+                  <>
+                    <h2 className="text-2xl font-semibold text-white leading-tight">
+                      {currentTrack.word}
+                    </h2>
+                    {currentTrack.translation && (
+                      <p className="text-gray-400 mt-1">{currentTrack.translation}</p>
+                    )}
+                    <p className="text-sm text-gray-600 mt-1">
+                      {[currentTrack.genre, formatTime(duration)].filter(Boolean).join(' · ')}
+                    </p>
+                  </>
+                ) : (
+                  <p className="text-gray-600 text-sm">Select a song to play</p>
+                )}
               </motion.div>
             </AnimatePresence>
-
-            {/* Word info */}
-            <div className="text-center max-w-xs">
-              {currentTrack ? (
-                <>
-                  <h2 className="text-2xl font-semibold text-white leading-tight">
-                    {currentTrack.word}
-                  </h2>
-                  {currentTrack.translation && (
-                    <p className="text-gray-400 mt-1">{currentTrack.translation}</p>
-                  )}
-                  <p className="text-sm text-gray-600 mt-1">
-                    {[currentTrack.genre, formatTime(duration)].filter(Boolean).join(' · ')}
-                  </p>
-                </>
-              ) : (
-                <p className="text-gray-600 text-sm">Select a song to play</p>
-              )}
-            </div>
 
             {/* Playback controls */}
             <div className="flex items-center gap-2">
