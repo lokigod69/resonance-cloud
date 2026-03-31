@@ -3,6 +3,7 @@ import { useState, useCallback, useRef, useEffect, type RefObject } from 'react'
 export function useVideoVolume(
   videoRef: RefObject<HTMLVideoElement | null>,
   initialMuted = true,
+  skipMuteControl = false,
 ) {
   const [volume, setVolumeState] = useState(1)
   const [isMuted, setIsMuted] = useState(initialMuted)
@@ -13,8 +14,10 @@ export function useVideoVolume(
     const vid = videoRef.current
     if (!vid) return
     vid.volume = volume
-    vid.muted = isMuted
-  }, [videoRef, volume, isMuted])
+    if (!skipMuteControl) {
+      vid.muted = isMuted
+    }
+  }, [videoRef, volume, isMuted, skipMuteControl])
 
   const setVolume = useCallback((v: number) => {
     const clamped = Math.max(0, Math.min(1, v))

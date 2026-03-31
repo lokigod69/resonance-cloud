@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { useDrag } from '@use-gesture/react'
@@ -71,6 +71,7 @@ export default function DeckViewPG() {
   const [isRenaming, setIsRenaming] = useState(false)
   const [renameTo, setRenameTo] = useState('')
   const [activeIndex, setActiveIndex] = useState(0)
+  const [navKey, setNavKey] = useState(0)
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
   const [retrying, setRetrying] = useState<string | null>(null)
@@ -191,12 +192,41 @@ export default function DeckViewPG() {
   const activeSunoUrl = (version === 'b' ? words[activeIndex]?.suno_audio_url_b : words[activeIndex]?.suno_audio_url) ?? null
   const suno = useSunoAudio(
     activeSunoUrl,
-    words[activeIndex]?.id ?? '',
+    `${words[activeIndex]?.id ?? ''}-${navKey}`,
     videoRef,
   )
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false, suno.hasSuno)
   const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
   const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
+
+  const [sunoVolume, setSunoVolume] = useState(1.0)
+
+  const handleVolumeChange = useCallback((v: number) => {
+    if (suno.hasSuno) {
+      const clamped = Math.max(0, Math.min(1, v))
+      const audio = suno.sunoAudioRef.current
+      if (audio) audio.volume = clamped
+      setSunoVolume(clamped)
+    } else {
+      setVolume(v)
+    }
+  }, [suno.hasSuno, suno.sunoAudioRef, setVolume])
+
+  // Pause audio synchronously before navKey change or component unmount.
+  // useLayoutEffect cleanup fires before DOM mutations, so sunoAudioRef is still valid.
+  useLayoutEffect(() => {
+    return () => {
+      suno.sunoAudioRef.current?.pause()
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navKey])
+
+  // Pause video on page leave
+  useEffect(() => {
+    return () => {
+      videoRef.current?.pause()
+    }
+  }, [])
 
   // Auto-play next card when swiping while video was active
   const videoActiveRef = useRef(videoActiveIndex)
@@ -239,8 +269,10 @@ export default function DeckViewPG() {
       } else {
         if (mx < -120 && activeIndex < words.length - 1) {
           setActiveIndex((i) => i + 1)
+          setNavKey(k => k + 1)
         } else if (mx > 120 && activeIndex > 0) {
           setActiveIndex((i) => i - 1)
+          setNavKey(k => k + 1)
         }
         setDragOffset(0)
       }
@@ -384,7 +416,7 @@ export default function DeckViewPG() {
             {/* Prev button */}
             {activeIndex > 0 && (
               <button
-                onClick={() => setActiveIndex((i) => i - 1)}
+                onClick={() => { setActiveIndex((i) => i - 1); setNavKey(k => k + 1) }}
                 className="absolute left-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-colors"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -423,7 +455,7 @@ export default function DeckViewPG() {
                         {isComplete && videoActiveIndex === i && (offset === 0 ? activeVideoUrl : word.video_url) && (
                           <video
                             ref={videoRef}
-                            key={offset === 0 ? `${word.id}-${version}` : word.id}
+                            key={offset === 0 ? `${word.id}-${navKey}-${version}` : word.id}
                             src={(offset === 0 ? activeVideoUrl : word.video_url)!}
                             playsInline
                             loop
@@ -439,7 +471,7 @@ export default function DeckViewPG() {
                         {offset === 0 && (
                           <audio
                             ref={suno.sunoAudioRef}
-                            key={`${words[activeIndex]?.id}-${version}`}
+                            key={`${words[activeIndex]?.id}-${navKey}-${version}`}
                             src={activeSunoUrl ?? undefined}
                             preload={activeSunoUrl ? 'auto' : 'none'}
                             onError={suno.handleSunoError}
@@ -485,7 +517,7 @@ export default function DeckViewPG() {
                             hasAlt={hasAltVersion}
                             onToggle={() => {
                               toggleVersion()
-                              // Force video reload if video is active
+                              setNavKey(k => k + 1)
                               if (videoActiveIndex === i) {
                                 setIsPlaying(true)
                               }
@@ -499,9 +531,9 @@ export default function DeckViewPG() {
                           <VideoControls
                             isPlaying={isPlaying}
                             onTogglePlay={() => setIsPlaying(!isPlaying)}
-                            volume={volume}
+                            volume={suno.hasSuno ? sunoVolume : volume}
                             isMuted={effectiveIsMuted}
-                            onVolumeChange={setVolume}
+                            onVolumeChange={handleVolumeChange}
                             onToggleMute={effectiveToggleMute}
                             fullscreenRef={videoRef}
                             buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
@@ -643,7 +675,7 @@ export default function DeckViewPG() {
             {/* Next button */}
             {activeIndex < words.length - 1 && (
               <button
-                onClick={() => setActiveIndex((i) => i + 1)}
+                onClick={() => { setActiveIndex((i) => i + 1); setNavKey(k => k + 1) }}
                 className="absolute right-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-colors"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -656,7 +688,7 @@ export default function DeckViewPG() {
             {words.map((word, i) => (
               <button
                 key={word.id}
-                onClick={() => setActiveIndex(i)}
+                onClick={() => { setActiveIndex(i); setNavKey(k => k + 1) }}
                 className={`h-1.5 rounded-full transition-all ${
                   i === activeIndex
                     ? 'w-6 bg-[var(--pg-accent-teal)]'
