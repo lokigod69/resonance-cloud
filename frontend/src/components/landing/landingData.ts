@@ -17,6 +17,10 @@ const D_FR1 = '5fb91369-c4cf-479a-b9ee-886dc6e2d093'
 const D_DE1 = '80482d3e-b7f8-4844-8105-6827771427fc'
 const D_FR2 = '008ba7fd-65af-4730-9933-2e53ac072379'
 const D_EN = '631b2cea-66b5-4969-b7fc-7ed722ad1301'
+const D_DE2 = '8190dd5d-09f8-4728-bec0-eead7d6d6445'  // U2 German: furz, frigide, lahmarschig
+const D_DE3 = '3c060627-befa-4337-a51e-ceb127c9d284'  // U2 German: ferkelchen
+const D_EN2 = '5944c032-2c2d-4ed4-93ff-95db27a092a8'  // U1 English: garbage-truck
+const D_FR3 = '0437adf6-91ed-4d8f-9172-ae37e66c0a6a'  // U1 French: oublier
 
 // TODO: Consider a more abstract/atmospheric hero video without large in-video text
 export const HERO_VIDEO_URL = vid(U2, D_FR2, 'riviere')
@@ -24,11 +28,16 @@ export const HERO_VIDEO_URL = vid(U2, D_FR2, 'riviere')
 export const DEMO_WORDS = [
   { word: 'ciel', translation: 'sky', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'ciel'), videoUrl: vid(U2, D_FR2, 'ciel') },
   { word: 'Fuchs', translation: 'fox', language: 'German', flag: '🇩🇪', thumbnail: thumb(U1, D_DE1, 'fuchs'), videoUrl: vid(U1, D_DE1, 'fuchs') },
-  // TODO: Replace placeholder with correct user_id/deck_id for 'fart' once confirmed in Supabase storage
-  { word: 'fart', translation: 'speed', language: 'Norwegian', flag: '🇳🇴', thumbnail: thumb(U2, D_FR2, 'fart'), videoUrl: vid(U2, D_FR2, 'fart') },
+  { word: 'furz', translation: 'fart', language: 'German', flag: '🇩🇪', thumbnail: thumb(U2, D_DE2, 'furz'), videoUrl: vid(U2, D_DE2, 'furz') },
   { word: 'Peur', translation: 'fear', language: 'French', flag: '🇫🇷', thumbnail: thumb(U1, D_FR1, 'peur'), videoUrl: vid(U1, D_FR1, 'peur') },
   { word: 'ferocious', translation: 'wild', language: 'English', flag: '🇬🇧', thumbnail: thumb(U2, D_EN, 'ferocious'), videoUrl: vid(U2, D_EN, 'ferocious') },
   { word: 'liberté', translation: 'freedom', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'liberte'), videoUrl: vid(U2, D_FR2, 'liberte') },
+  { word: 'garbage truck', translation: 'garbage truck', language: 'English', flag: '🇬🇧', thumbnail: thumb(U1, D_EN2, 'garbage-truck'), videoUrl: vid(U1, D_EN2, 'garbage-truck') },
+  { word: 'oublier', translation: 'to forget', language: 'French', flag: '🇫🇷', thumbnail: thumb(U1, D_FR3, 'oublier'), videoUrl: vid(U1, D_FR3, 'oublier') },
+  { word: 'Ferkelchen', translation: 'piglet', language: 'German', flag: '🇩🇪', thumbnail: thumb(U2, D_DE3, 'ferkelchen'), videoUrl: vid(U2, D_DE3, 'ferkelchen') },
+  { word: 'frigide', translation: 'frigid', language: 'German', flag: '🇩🇪', thumbnail: thumb(U2, D_DE2, 'frigide'), videoUrl: vid(U2, D_DE2, 'frigide') },
+  { word: 'chameau', translation: 'camel', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'chameau'), videoUrl: vid(U2, D_FR2, 'chameau') },
+  { word: 'lahmarschig', translation: 'sluggish', language: 'German', flag: '🇩🇪', thumbnail: thumb(U2, D_DE2, 'lahmarschig'), videoUrl: vid(U2, D_DE2, 'lahmarschig') },
 ]
 
 export const LANGUAGES = [
