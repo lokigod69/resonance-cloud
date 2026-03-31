@@ -1,13 +1,12 @@
 import HeroSection from '@/components/landing/HeroSection'
-import DemoReelSection from '@/components/landing/DemoReelSection'
-import HowItWorksSection from '@/components/landing/HowItWorksSection'
+import ScrollStorySection from '@/components/landing/ScrollStorySection'
 import LanguagesSection from '@/components/landing/LanguagesSection'
 import CtaFooterSection from '@/components/landing/CtaFooterSection'
 import { HERO_VIDEO_URL } from '@/components/landing/landingData'
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen text-foreground overflow-x-hidden">
+    <div className="min-h-screen text-foreground overflow-x-clip">
       {/* Layer 1: Fixed video background — stays behind everything */}
       <div className="fixed inset-0 z-0 bg-gradient-to-b from-slate-900 via-slate-950 to-black">
         <video
@@ -33,8 +32,7 @@ export default function LandingPage() {
       <div className="relative z-20">
         {/* Gradient fade from transparent → section bg for smooth transition */}
         <div className="h-16 bg-gradient-to-b from-transparent to-[#0d0e16]" />
-        <DemoReelSection />
-        <HowItWorksSection />
+        <ScrollStorySection />
         <LanguagesSection />
         <CtaFooterSection />
       </div>
