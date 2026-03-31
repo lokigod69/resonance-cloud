@@ -42,7 +42,7 @@ export function OrbVisualizer({
   const analyserRef = useRef<AnalyserNode | null>(null)
   const audioCtxRef = useRef<AudioContext | null>(null)
   const visualizerModeRef = useRef<'realtime' | 'simulated'>('simulated')
-  const freqDataRef = useRef<Uint8Array>(new Uint8Array(0))
+  const freqDataRef = useRef<Uint8Array<ArrayBuffer>>(new Uint8Array(0))
 
   // Regenerate base heights when word changes
   useEffect(() => {
