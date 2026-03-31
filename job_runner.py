@@ -903,7 +903,7 @@ async def process_word(
     # Auto-generate Suno song if enabled in workspace settings
     try:
         _suno_settings = load_defaults(workspace_path).get("suno", {})
-        if _suno_settings.get("enabled", False):
+        if _suno_settings.get("enabled", True):
             if word_record.get("suno_audio_url"):
                 log.info("  [Suno] Skipping %s — suno_audio_url already exists", word_slug_val)
             else:
