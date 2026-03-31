@@ -14,6 +14,7 @@ import { useVideoPlayback } from '@/hooks/useVideoPlayback'
 import { useSunoAudio } from '@/hooks/useSunoAudio'
 import { VideoControls } from '@/components/VideoControls'
 import { useToast } from '@/components/Toast'
+import { VerbCycler } from '@/components/ui/VerbCycler'
 
 type Deck = {
   id: string
@@ -298,6 +299,9 @@ export default function DeckView() {
           </div>
           {isGenerating && (
             <Progress value={progress} className="h-2 max-w-md mx-auto" />
+          )}
+          {isGenerating && (
+            <VerbCycler className="mt-1" />
           )}
         </div>
       </div>

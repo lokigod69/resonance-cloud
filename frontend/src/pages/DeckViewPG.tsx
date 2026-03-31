@@ -29,6 +29,7 @@ import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { useSunoAudio } from '@/hooks/useSunoAudio'
 import { VideoControls } from '@/components/VideoControls'
 import { useToast } from '@/components/Toast'
+import { VerbCycler } from '@/components/ui/VerbCycler'
 
 type Deck = {
   id: string
@@ -401,6 +402,9 @@ export default function DeckViewPG() {
                 style={{ width: `${progress}%` }}
               />
             </div>
+          )}
+          {isGenerating && (
+            <VerbCycler className="mt-2" />
           )}
         </div>
       </div>
