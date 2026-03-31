@@ -37,6 +37,7 @@ LANGUAGE_CODE_MAP = {
     'thai': 'th',
     'vietnamese': 'vi',
     'indonesian': 'id',
+    'bisaya': 'ceb',
     'cebuano': 'ceb',
     'tagalog': 'tl',
     'malay': 'ms',
