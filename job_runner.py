@@ -898,40 +898,30 @@ async def process_word(
         "words_completed": current_completed + 1,
     }).eq("id", job["id"]).execute()
 
-    # Trigger Suno full-song generation as a non-blocking background task.
-    # Non-fatal: word is complete regardless of whether Suno succeeds.
-    if word_record.get("suno_audio_url"):
-        log.info("  [Suno] Skipping %s — suno_audio_url already exists", word_slug_val)
-    else:
-        log.info("  [Suno] Spawning background song generation for %s", word_slug_val)
-        async def _generate_suno_bg(
-            _word_slug: str = word_slug_val,
-            _user_id: str = job["user_id"],
-            _deck_id: str = job["deck_id"],
-            _word_id: str = word_record["id"],
-        ) -> None:
-            try:
-                result = await suno_generate_song(
-                    str(WORKSPACE_ROOT), _user_id, _deck_id, _word_slug
-                )
-                if result and result.get("status") == "success" and result.get("audio_url"):
-                    sb.table("words").update({
-                        "suno_audio_url": result["audio_url"],
-                        "suno_task_id": result.get("task_id"),
-                    }).eq("id", _word_id).execute()
-                    log.info("  Suno song ready for %s", _word_slug)
-                else:
-                    log.warning(
-                        "  Suno generation for %s: %s",
-                        _word_slug,
-                        result.get("error") if result else "no result",
-                    )
-            except Exception as exc:
-                log.warning("  Suno generation failed for %s: %s", _word_slug, exc)
-
-        asyncio.create_task(_generate_suno_bg())
-
     log.info("  Word %s complete", word_slug_val)
+
+    # Auto-generate Suno song if enabled in workspace settings
+    try:
+        _suno_settings = load_defaults(workspace_path).get("suno", {})
+        if _suno_settings.get("enabled", False):
+            if word_record.get("suno_audio_url"):
+                log.info("  [Suno] Skipping %s — suno_audio_url already exists", word_slug_val)
+            else:
+                log.info("  [Suno] Auto-generating for %s...", word_slug_val)
+                _suno_result = await suno_generate_song(
+                    str(workspace_path.parent), job["user_id"], job["deck_id"], word_slug_val
+                )
+                if _suno_result and _suno_result.get("status") == "success" and _suno_result.get("audio_url"):
+                    sb.table("words").update({
+                        "suno_audio_url": _suno_result["audio_url"],
+                        "suno_task_id": _suno_result.get("task_id"),
+                    }).eq("id", word_record["id"]).execute()
+                    log.info("  [Suno] Done: %s", _suno_result["audio_url"])
+                else:
+                    log.warning("  [Suno] Failed: %s", _suno_result.get("error") if _suno_result else "no result")
+    except Exception as _e:
+        log.error("  [Suno] Error: %s", _e)
+
     return True
 
 
