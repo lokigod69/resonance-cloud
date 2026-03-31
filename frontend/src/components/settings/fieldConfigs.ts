@@ -44,7 +44,7 @@ export const CONCEPT_FIELDS: FieldDef[] = [
   { key: 'duration', label: 'Duration', type: 'dropdown', options: [15, 20, 30, 60], default: 20 },
   { key: 'visual_hint', label: 'Visual Hint', type: 'toggle', default: false },
   { key: 'use_art_style', label: 'Use Art Style for Music', type: 'toggle', default: false },
-  { key: 'llm_model', label: 'LLM Model', type: 'dropdown', options: ['deepseek/deepseek-v3.2', 'deepseek/deepseek-v3.2-speciale', 'deepseek/deepseek-chat-v3-0324', 'moonshotai/kimi-k2.5', 'google/gemini-2.5-flash', 'anthropic/claude-3.5-haiku', 'mistralai/mistral-small'], default: 'deepseek/deepseek-v3.2', optionLabels: { 'deepseek/deepseek-v3.2': 'DeepSeek V3.2', 'deepseek/deepseek-v3.2-speciale': 'DeepSeek V3.2 Speciale', 'deepseek/deepseek-chat-v3-0324': 'DeepSeek V3 (legacy)' }, advanced: true },
+  { key: 'llm_model', label: 'LLM Model', type: 'dropdown', options: ['deepseek/deepseek-v3.2', 'deepseek/deepseek-v3.2-speciale', 'deepseek/deepseek-chat-v3-0324', 'moonshotai/kimi-k2.5', 'google/gemini-2.5-flash', 'anthropic/claude-3.5-haiku', 'mistralai/mistral-small', 'qwen/qwen3.6-plus-preview:free'], default: 'deepseek/deepseek-v3.2', optionLabels: { 'deepseek/deepseek-v3.2': 'DeepSeek V3.2', 'deepseek/deepseek-v3.2-speciale': 'DeepSeek V3.2 Speciale', 'deepseek/deepseek-chat-v3-0324': 'DeepSeek V3 (legacy)' }, advanced: true },
 ]
 
 export const SONG_FIELDS: FieldDef[] = [
@@ -112,7 +112,7 @@ export const IMAGE_FIELDS: FieldDef[] = [
   } },
   { key: 'word_in_image', label: 'Word in Image', type: 'toggle', default: true },
   { key: 'image_model', label: 'Image Model', type: 'dropdown', options: ['fast', 'quality'], default: 'quality' },
-  { key: 'llm_model', label: 'LLM Model', type: 'dropdown', options: ['deepseek/deepseek-v3.2', 'deepseek/deepseek-v3.2-speciale', 'google/gemini-3.1-flash-lite-preview', 'x-ai/grok-4.1-fast'], default: 'x-ai/grok-4.1-fast', advanced: true },
+  { key: 'llm_model', label: 'LLM Model', type: 'dropdown', options: ['deepseek/deepseek-v3.2', 'deepseek/deepseek-v3.2-speciale', 'google/gemini-3.1-flash-lite-preview', 'x-ai/grok-4.1-fast', 'qwen/qwen3.6-plus-preview:free'], default: 'x-ai/grok-4.1-fast', advanced: true },
 ]
 
 export const isKling = (s: Record<string, unknown>) =>
