@@ -1130,8 +1130,14 @@ def _parse_workspace_identity() -> tuple[str, str] | None:
 async def _maybe_trigger_suno(word_slug: str) -> None:
     """Auto-trigger Suno generation if enabled in settings and workspace supports it."""
     try:
+        logger.info("[Suno] Checking auto-trigger for %s...", word_slug)
         defaults = load_defaults(WORKSPACE_PATH)
         if not defaults.get("suno", {}).get("enabled", False):
+            logger.info(
+                "[Suno] Skipping %s: auto-trigger disabled (suno.enabled=false in %s)",
+                word_slug,
+                WORKSPACE_PATH / "settings-defaults.json",
+            )
             return
 
         identity = _parse_workspace_identity()
@@ -1139,6 +1145,7 @@ async def _maybe_trigger_suno(word_slug: str) -> None:
             logger.warning("[Suno] Cannot auto-trigger: workspace '%s' is not a cloud workspace", WORKSPACE_PATH.name)
             return
         user_id, deck_id = identity
+        logger.info("[Suno] Workspace identity: user_id=%s, deck_id=%s", user_id, deck_id)
 
         word_dir = get_word_dir(WORKSPACE_PATH, word_slug)
         m = read_manifest(word_dir)

@@ -900,7 +900,10 @@ async def process_word(
 
     # Trigger Suno full-song generation as a non-blocking background task.
     # Non-fatal: word is complete regardless of whether Suno succeeds.
-    if not word_record.get("suno_audio_url"):
+    if word_record.get("suno_audio_url"):
+        log.info("  [Suno] Skipping %s — suno_audio_url already exists", word_slug_val)
+    else:
+        log.info("  [Suno] Spawning background song generation for %s", word_slug_val)
         async def _generate_suno_bg(
             _word_slug: str = word_slug_val,
             _user_id: str = job["user_id"],

@@ -118,6 +118,8 @@ def build_suno_payload(concept_data: dict) -> dict:
     suno_gender = "m" if gender.lower().startswith("m") else "f"
 
     style = concept_data["music_caption"] or "Pop"
+    # Strip "clear diction" — helpful for ACE-Step but may trigger kie.ai copyright filter
+    style = style.replace(", clear diction", "").replace("clear diction, ", "").replace("clear diction", "")
     title = concept_data["word"]
     lyrics = concept_data["lyrics"] or concept_data["word"]
 
@@ -235,14 +237,30 @@ async def generate_song(
                 }
 
             if task_status == "fail":
-                error_msg = data.get("errorMessage", "Unknown error")
+                # kie.ai may put errorMessage at top level OR nested inside response.sunoData[0]
+                error_msg = (
+                    data.get("errorMessage")
+                    or (data.get("response", {}).get("sunoData") or [{}])[0].get("errorMessage")
+                    or "Unknown error"
+                )
+                logger.warning(
+                    "SUNO TASK FAILED (elapsed %ds) — data: %s",
+                    elapsed,
+                    json.dumps(data),
+                )
+                logger.warning("Resolved error_msg: %r", error_msg)
                 if "copyright" in error_msg.lower() and not copyright_retried:
                     copyright_retried = True
                     logger.warning(
-                        "Copyright rejection for '%s', retrying with bare word prompt",
+                        "Copyright rejection for '%s', retrying with bare word + minimal style",
                         concept_data["word"],
                     )
-                    simplified_payload = {**payload, "prompt": concept_data["word"]}
+                    simplified_payload = {
+                        **payload,
+                        "prompt": concept_data["word"],
+                        "style": "pop",
+                        "title": f"song {concept_data['word']}",
+                    }
                     try:
                         retry_resp = await client.post(
                             f"{KIE_API_BASE}/generate",
