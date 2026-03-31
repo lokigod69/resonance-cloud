@@ -13,8 +13,8 @@ export function useVideoVolume(
   useEffect(() => {
     const vid = videoRef.current
     if (!vid) return
-    vid.volume = volume
     if (!skipMuteControl) {
+      vid.volume = volume
       vid.muted = isMuted
     }
   }, [videoRef, volume, isMuted, skipMuteControl])

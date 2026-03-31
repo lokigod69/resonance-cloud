@@ -27,10 +27,21 @@ export default function StudyPG() {
     words[currentIndex]?.id ?? '',
     videoRef,
   )
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, true)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, true, suno.hasSuno)
   const { isPlaying, togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)
   const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
   const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
+  const [sunoVolume, setSunoVolume] = useState(1.0)
+  const handleVolumeChange = useCallback((v: number) => {
+    if (suno.hasSuno) {
+      const clamped = Math.max(0, Math.min(1, v))
+      const audio = suno.sunoAudioRef.current
+      if (audio) audio.volume = clamped
+      setSunoVolume(clamped)
+    } else {
+      setVolume(v)
+    }
+  }, [suno.hasSuno, suno.sunoAudioRef, setVolume])
 
   const current = words[currentIndex] ?? null
   const { activeVideoUrl, activeThumbnailUrl } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
@@ -215,7 +226,7 @@ export default function StudyPG() {
               <button
                 onClick={skipPrev}
                 disabled={currentIndex === 0}
-                className="absolute -left-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-black/40 disabled:hover:text-white/60"
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all opacity-0 group-hover/video:opacity-100 disabled:opacity-0 disabled:cursor-not-allowed disabled:hover:opacity-0"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -224,7 +235,7 @@ export default function StudyPG() {
               <button
                 onClick={skipNext}
                 disabled={currentIndex >= words.length - 1}
-                className="absolute -right-16 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-black/40 disabled:hover:text-white/60"
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all opacity-0 group-hover/video:opacity-100 disabled:opacity-0 disabled:cursor-not-allowed disabled:hover:opacity-0"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -256,9 +267,9 @@ export default function StudyPG() {
                   <VideoControls
                     isPlaying={isPlaying}
                     onTogglePlay={togglePlay}
-                    volume={volume}
+                    volume={suno.hasSuno ? sunoVolume : volume}
                     isMuted={effectiveIsMuted}
-                    onVolumeChange={setVolume}
+                    onVolumeChange={handleVolumeChange}
                     onToggleMute={effectiveToggleMute}
                     fullscreenRef={videoRef}
                   />

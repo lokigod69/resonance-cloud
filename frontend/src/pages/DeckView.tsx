@@ -473,10 +473,21 @@ function VideoViewerModal({
     `${word?.id ?? ''}-${videoKey}`,
     videoRef,
   )
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false, suno.hasSuno)
   const { isPlaying, setIsPlaying, togglePlay, onPlay, onPause } = useVideoPlayback(videoRef)
   const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
   const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
+  const [sunoVolume, setSunoVolume] = useState(1.0)
+  const handleVolumeChange = useCallback((v: number) => {
+    if (suno.hasSuno) {
+      const clamped = Math.max(0, Math.min(1, v))
+      const audio = suno.sunoAudioRef.current
+      if (audio) audio.volume = clamped
+      setSunoVolume(clamped)
+    } else {
+      setVolume(v)
+    }
+  }, [suno.hasSuno, suno.sunoAudioRef, setVolume])
 
   // Reset playing state when navigating to a new word
   useEffect(() => {
@@ -580,9 +591,9 @@ function VideoViewerModal({
               <VideoControls
                 isPlaying={isPlaying}
                 onTogglePlay={togglePlay}
-                volume={volume}
+                volume={suno.hasSuno ? sunoVolume : volume}
                 isMuted={effectiveIsMuted}
-                onVolumeChange={setVolume}
+                onVolumeChange={handleVolumeChange}
                 onToggleMute={effectiveToggleMute}
                 fullscreenRef={videoRef}
                 iconSize={20}
