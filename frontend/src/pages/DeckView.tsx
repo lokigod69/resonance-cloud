@@ -437,11 +437,6 @@ export default function DeckView() {
           }}
           onReplay={() => setVideoKey(k => k + 1)}
           onRate={handleRate}
-          deckId={id}
-          userId={user?.id}
-          onWordUpdate={(wordId, updates) => {
-            setWords(prev => prev.map(w => w.id === wordId ? { ...w, ...updates } : w))
-          }}
         />
       )}
     </div>
@@ -457,9 +452,6 @@ function VideoViewerModal({
   onNavigate,
   onReplay,
   onRate,
-  deckId,
-  userId,
-  onWordUpdate,
 }: {
   words: Word[]
   currentIndex: number
@@ -469,9 +461,6 @@ function VideoViewerModal({
   onNavigate: (idx: number) => void
   onReplay: () => void
   onRate: (wordId: string, rating: number) => void
-  deckId?: string
-  userId?: string
-  onWordUpdate?: (wordId: string, updates: Record<string, unknown>) => void
 }) {
   const word = words[currentIndex]
   const hasPrev = currentIndex > 0

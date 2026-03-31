@@ -12,7 +12,6 @@ import {
 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
-import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
 
 type Word = {
@@ -37,8 +36,6 @@ type Word = {
 export default function VideoPlayer() {
   const { id: deckId, wordId } = useParams<{ id: string; wordId: string }>()
   const navigate = useNavigate()
-  const { user } = useAuth()
-
   const [words, setWords] = useState<Word[]>([])
   const [loading, setLoading] = useState(true)
   const [videoKey, setVideoKey] = useState(0)
@@ -170,11 +167,6 @@ export default function VideoPlayer() {
           <WordInfoPanel
             word={current}
             onRate={handleRate}
-            deckId={deckId}
-            userId={user?.id}
-            onWordUpdate={(wId, updates) => {
-              setWords(prev => prev.map(w => w.id === wId ? { ...w, ...updates } : w))
-            }}
           />
 
           {/* Controls */}
