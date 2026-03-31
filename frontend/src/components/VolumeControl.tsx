@@ -87,22 +87,20 @@ export function VolumeControl({
   return (
     <div
       ref={groupRef}
-      className={`flex items-center gap-1 ${className}`}
+      className={`relative flex items-center gap-1 ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button
-        onClick={handleMuteClick}
-        className={buttonClassName}
-        title={isMuted ? 'Unmute' : 'Mute'}
-      >
-        <VolumeIcon style={{ width: iconSize, height: iconSize }} />
-      </button>
+      {/* Slider: absolutely positioned to the left of the button, out of flex flow */}
       <div
-        className="overflow-hidden transition-all duration-200"
+        className="absolute overflow-hidden transition-all duration-200"
         style={{
           width: showSlider ? 80 : 0,
           opacity: showSlider ? 1 : 0,
+          right: '2rem',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          pointerEvents: showSlider ? 'auto' : 'none',
         }}
         onClick={e => e.stopPropagation()}
         onPointerDown={e => e.stopPropagation()}
@@ -119,6 +117,14 @@ export function VolumeControl({
           style={{ touchAction: 'pan-x' }}
         />
       </div>
+
+      <button
+        onClick={handleMuteClick}
+        className={buttonClassName}
+        title={isMuted ? 'Unmute' : 'Mute'}
+      >
+        <VolumeIcon style={{ width: iconSize, height: iconSize }} />
+      </button>
     </div>
   )
 }

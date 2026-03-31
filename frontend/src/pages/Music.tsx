@@ -5,8 +5,19 @@ import { useAuth } from '@/hooks/useAuth'
 import { useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { PlaylistRow } from '@/components/music/PlaylistRow'
 import { PlayerBar } from '@/components/music/PlayerBar'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 type DeckOption = { id: string; name: string }
+
+// Module-level cache — survives component unmount/remount within the same browser session
+type MusicCache = { tracks: MusicTrack[]; decks: DeckOption[]; userId: string }
+let _musicCache: MusicCache | null = null
 
 function mapToTrack(row: Record<string, unknown>): MusicTrack {
   const meta = row.metadata as Record<string, unknown> | null
@@ -49,9 +60,18 @@ export default function Music() {
     player.markError(trackId)
   }, [player])
 
-  // Fetch data
+  // Fetch data (with module-level cache to avoid reload on every navigation)
   useEffect(() => {
     if (!user) return
+
+    // Serve from cache if it belongs to the same user
+    if (_musicCache && _musicCache.userId === user.id) {
+      setAllTracks(_musicCache.tracks)
+      setDecks(_musicCache.decks)
+      setLoading(false)
+      return
+    }
+
     setLoading(true)
 
     supabase
@@ -67,14 +87,17 @@ export default function Music() {
       .then(({ data }) => {
         if (!data) return
         const mapped = (data as Record<string, unknown>[]).map(mapToTrack)
-        setAllTracks(mapped)
 
         // Collect unique decks for filter
         const seen = new Map<string, string>()
         for (const t of mapped) {
           if (!seen.has(t.deck_id)) seen.set(t.deck_id, t.deckName)
         }
-        setDecks(Array.from(seen.entries()).map(([id, name]) => ({ id, name })))
+        const deckList = Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
+
+        _musicCache = { tracks: mapped, decks: deckList, userId: user.id }
+        setAllTracks(mapped)
+        setDecks(deckList)
         setLoading(false)
       })
   }, [user])
@@ -130,18 +153,28 @@ export default function Music() {
 
         {/* Deck filter */}
         {decks.length > 1 && (
-          <select
-            value={deckFilter}
-            onChange={(e) => setDeckFilter(e.target.value)}
-            className="text-sm bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-gray-200 focus:outline-none focus:border-white/30 cursor-pointer"
-          >
-            <option value="all">All Songs</option>
-            {decks.map((d) => (
-              <option key={d.id} value={d.id}>
-                {d.name}
-              </option>
-            ))}
-          </select>
+          <Select value={deckFilter} onValueChange={setDeckFilter}>
+            <SelectTrigger
+              size="sm"
+              className="w-[180px] bg-white/5 border-white/10 text-gray-200 hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+            >
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="bg-gray-900 border-white/10 text-gray-200">
+              <SelectItem value="all" className="focus:bg-white/10 focus:text-white">
+                All Songs
+              </SelectItem>
+              {decks.map((d) => (
+                <SelectItem
+                  key={d.id}
+                  value={d.id}
+                  className="focus:bg-white/10 focus:text-white"
+                >
+                  {d.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         )}
       </div>
 

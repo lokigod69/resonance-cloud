@@ -2,6 +2,9 @@ import { useRef, useState, useEffect } from 'react'
 import { Music } from 'lucide-react'
 import type { MusicTrack } from '@/hooks/useMusicPlayer'
 
+// Duration cache: persists across component remounts within the same browser session
+const durationCache = new Map<string, number>()
+
 interface PlaylistRowProps {
   track: MusicTrack
   isActive: boolean
@@ -41,7 +44,10 @@ function Equalizer() {
 }
 
 export function PlaylistRow({ track, isActive, isPlaying, onClick }: PlaylistRowProps) {
-  const [duration, setDuration] = useState<number | null>(track.duration)
+  const [duration, setDuration] = useState<number | null>(() => {
+    if (track.duration !== null) return track.duration
+    return durationCache.get(track.suno_audio_url ?? '') ?? null
+  })
   const probeRef = useRef<HTMLAudioElement | null>(null)
 
   // Probe duration via lightweight audio element (preload=metadata, no actual playback)
@@ -51,7 +57,10 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick }: PlaylistRow
     audio.preload = 'metadata'
     probeRef.current = audio
 
-    const handleMeta = () => setDuration(audio.duration)
+    const handleMeta = () => {
+      durationCache.set(track.suno_audio_url!, audio.duration)
+      setDuration(audio.duration)
+    }
     audio.addEventListener('loadedmetadata', handleMeta)
     audio.src = track.suno_audio_url
 
@@ -71,7 +80,7 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick }: PlaylistRow
       onClick={isDisabled ? undefined : onClick}
       onKeyDown={isDisabled ? undefined : (e) => e.key === 'Enter' && onClick()}
       className={[
-        'flex items-center gap-3 px-4 py-2.5 border-b border-white/5 transition-colors',
+        'flex items-center gap-3 px-4 py-1.5 border-b border-white/5 transition-colors',
         isActive ? 'bg-white/5' : '',
         isDisabled
           ? 'opacity-40 cursor-default'

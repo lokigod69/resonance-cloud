@@ -27,6 +27,8 @@ function makeRng(seed: string): () => number {
 
 const BAR_COUNT = 80
 const BAR_GAP = 2
+const DOT_RADIUS = 1.5
+const DOT_SPACING = 4
 
 export function SimulatedWaveform({ seed, progress, onSeek, className }: SimulatedWaveformProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -70,27 +72,39 @@ export function SimulatedWaveform({ seed, progress, onSeek, className }: Simulat
 
     const bars = barsRef.current
     const totalGap = BAR_GAP * (BAR_COUNT - 1)
-    const barW = Math.max(1, (w - totalGap) / BAR_COUNT)
+    const colW = Math.max(1, (w - totalGap) / BAR_COUNT)
     const playedUntil = progress * BAR_COUNT
+    const centerY = h / 2
 
     for (let i = 0; i < BAR_COUNT; i++) {
       const barH = bars[i] * h
-      const x = i * (barW + BAR_GAP)
-      const y = (h - barH) / 2
+      const colX = i * (colW + BAR_GAP) + colW / 2
 
-      const played = i < playedUntil
-      const partial = i >= Math.floor(playedUntil) && i < Math.ceil(playedUntil)
+      const isPlayed = i < playedUntil
+      const isPartial = i === Math.floor(playedUntil) && playedUntil < BAR_COUNT
 
-      if (partial) {
-        // Partially played bar: split fill
+      // Compute dot grid for this column
+      const numDots = Math.max(1, Math.round(barH / DOT_SPACING))
+      const span = (numDots - 1) * DOT_SPACING
+      const topY = centerY - span / 2
+
+      if (isPartial) {
+        // Partial column: dots below midpoint are played, above are unplayed
         const frac = playedUntil - Math.floor(playedUntil)
-        ctx.fillStyle = 'rgba(255,255,255,0.15)'
-        ctx.fillRect(x, y, barW, barH)
-        ctx.fillStyle = 'var(--accent, #06b6d4)'
-        ctx.fillRect(x, y, barW * frac, barH)
+        const playedDots = Math.round(frac * numDots)
+        for (let d = 0; d < numDots; d++) {
+          ctx.fillStyle = d < playedDots ? 'var(--accent, #06b6d4)' : 'rgba(255,255,255,0.15)'
+          ctx.beginPath()
+          ctx.arc(colX, topY + d * DOT_SPACING, DOT_RADIUS, 0, Math.PI * 2)
+          ctx.fill()
+        }
       } else {
-        ctx.fillStyle = played ? 'var(--accent, #06b6d4)' : 'rgba(255,255,255,0.15)'
-        ctx.fillRect(x, y, barW, barH)
+        ctx.fillStyle = isPlayed ? 'var(--accent, #06b6d4)' : 'rgba(255,255,255,0.15)'
+        for (let d = 0; d < numDots; d++) {
+          ctx.beginPath()
+          ctx.arc(colX, topY + d * DOT_SPACING, DOT_RADIUS, 0, Math.PI * 2)
+          ctx.fill()
+        }
       }
     }
   }, [progress, seed])
