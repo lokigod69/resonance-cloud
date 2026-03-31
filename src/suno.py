@@ -12,12 +12,31 @@ import asyncio
 from pathlib import Path
 
 import httpx
+from supabase import create_client as supabase_create_client
 
 logger = logging.getLogger(__name__)
 
 KIE_API_BASE = "https://api.kie.ai/api/v1"
 POLL_INTERVAL = 10      # seconds between status checks
 MAX_POLL_TIME = 180     # max seconds to wait (3 minutes)
+
+
+def _write_to_supabase(deck_id: str, word_slug: str, audio_url: str, task_id: str | None) -> None:
+    """Write suno_audio_url and suno_task_id to Supabase words table."""
+    supabase_url = os.getenv("SUPABASE_URL", "")
+    supabase_key = os.getenv("SUPABASE_SERVICE_KEY", "")
+    if not supabase_url or not supabase_key:
+        logger.warning("Supabase credentials not set — skipping suno_audio_url write")
+        return
+    try:
+        sb = supabase_create_client(supabase_url, supabase_key)
+        sb.table("words").update({
+            "suno_audio_url": audio_url,
+            "suno_task_id": task_id,
+        }).eq("deck_id", deck_id).eq("word_slug", word_slug).execute()
+        logger.info("Wrote suno_audio_url to Supabase for %s/%s", deck_id, word_slug)
+    except Exception as e:
+        logger.error("Failed to write suno_audio_url to Supabase: %s", e)
 
 
 def get_api_key() -> str:
@@ -208,6 +227,7 @@ async def generate_song(
                     audio_url = suno_data[0].get("audioUrl")
                     if audio_url:
                         logger.info("Suno song ready: %s", audio_url)
+                        _write_to_supabase(deck_id, word_slug, audio_url, task_id)
                         return {"audio_url": audio_url, "task_id": task_id, "status": "success", "error": None}
                 return {
                     "audio_url": None, "task_id": task_id, "status": "error",

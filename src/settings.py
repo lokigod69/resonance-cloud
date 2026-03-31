@@ -107,7 +107,10 @@ DEFAULT_SETTINGS = {
         "background_color": "#000000",
         "show_translation": False,
         "show_phonetic": False,
-    }
+    },
+    "suno": {
+        "enabled": False,
+    },
 }
 
 

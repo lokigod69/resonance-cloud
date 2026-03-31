@@ -32,6 +32,7 @@ export const STAGE_LABELS: Record<string, string> = {
   video: 'Video Engine',
   assembly: 'Assembly Engine',
   bookend: 'Bookend Engine',
+  suno: 'Suno Engine',
 }
 
 export const CONCEPT_FIELDS: FieldDef[] = [
@@ -185,6 +186,16 @@ export const BOOKEND_FIELDS: FieldDef[] = [
   { key: 'show_phonetic', label: 'Show Phonetic (IPA)', type: 'toggle', default: false, helper: 'Display IPA phonetic transcription (not yet implemented in engine)', condition: s => s.enabled !== false },
 ]
 
+export const SUNO_FIELDS: FieldDef[] = [
+  {
+    key: 'enabled',
+    label: 'Auto-Generate Suno Song',
+    type: 'toggle',
+    default: false,
+    helper: 'Automatically generate a Suno V5.5 song after pipeline completes (~6¢ per word)',
+  },
+]
+
 export const STAGE_FIELDS: Record<string, FieldDef[]> = {
   concept: CONCEPT_FIELDS,
   song: SONG_FIELDS,
@@ -192,4 +203,5 @@ export const STAGE_FIELDS: Record<string, FieldDef[]> = {
   video: VIDEO_FIELDS,
   assembly: ASSEMBLY_FIELDS,
   bookend: BOOKEND_FIELDS,
+  suno: SUNO_FIELDS,
 }

@@ -1108,12 +1108,52 @@ async def _run_autopilot(word_slugs: list[str]):
 
                 autopilot_state["progress"].append(f"  ✓ {slug}/{stage} done")
 
+            if not word_errors and not autopilot_state["cancelled"]:
+                await _maybe_trigger_suno(slug)
             autopilot_state["done"] += 1
 
     finally:
         autopilot_state["running"] = False
         autopilot_state["current_word"] = None
         autopilot_state["current_stage"] = None
+
+
+def _parse_workspace_identity() -> tuple[str, str] | None:
+    """Extract (user_id, deck_id) from WORKSPACE_PATH name (cloud_{user_id}_{deck_id}).
+    Returns None if workspace is not in the expected format."""
+    parts = WORKSPACE_PATH.name.split('_', 2)
+    if len(parts) == 3 and parts[0] == 'cloud':
+        return parts[1], parts[2]
+    return None
+
+
+async def _maybe_trigger_suno(word_slug: str) -> None:
+    """Auto-trigger Suno generation if enabled in settings and workspace supports it."""
+    try:
+        defaults = load_defaults(WORKSPACE_PATH)
+        if not defaults.get("suno", {}).get("enabled", False):
+            return
+
+        identity = _parse_workspace_identity()
+        if not identity:
+            logger.warning("[Suno] Cannot auto-trigger: workspace '%s' is not a cloud workspace", WORKSPACE_PATH.name)
+            return
+        user_id, deck_id = identity
+
+        word_dir = get_word_dir(WORKSPACE_PATH, word_slug)
+        m = read_manifest(word_dir)
+        if not m.selected.bookend:
+            logger.info("[Suno] Skipping auto-trigger for %s: bookend not selected", word_slug)
+            return
+
+        logger.info("[Suno] Auto-generating for %s...", word_slug)
+        result = await suno_generate_song(str(WORKSPACE_PATH.parent), user_id, deck_id, word_slug)
+        if result.get("status") == "success":
+            logger.info("[Suno] Success for %s: %s", word_slug, result.get("audio_url", "N/A"))
+        else:
+            logger.warning("[Suno] Failed for %s: %s", word_slug, result.get("error", "unknown"))
+    except Exception as e:
+        logger.error("[Suno] Error for %s: %s", word_slug, e)
 
 
 def _get_incomplete_stages(word_dir: Path, m: Any) -> list[str]:
@@ -1253,6 +1293,7 @@ async def _run_word_pipeline(word_slug: str):
         # Mark completed if we got through all stages without error
         if not state["error"] and not state["cancelled"]:
             state["progress"].append("Pipeline complete")
+            await _maybe_trigger_suno(word_slug)
 
     finally:
         state["running"] = False
