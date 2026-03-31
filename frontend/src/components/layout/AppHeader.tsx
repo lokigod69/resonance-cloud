@@ -32,6 +32,7 @@ const mainNav = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/generate', label: 'Generate', icon: Sparkles },
   { to: '/study', label: 'Study', icon: BookOpen },
+  { to: '/music', label: 'Music', icon: Music },
 ]
 
 const adminNav = [

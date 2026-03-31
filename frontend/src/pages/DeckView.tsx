@@ -41,6 +41,7 @@ type Word = {
   video_url_b: string | null
   thumbnail_url_b: string | null
   suno_audio_url: string | null
+  suno_audio_url_b: string | null
   suno_task_id: string | null
   metadata: Record<string, unknown> | null
   created_at: string
@@ -466,8 +467,9 @@ function VideoViewerModal({
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < words.length - 1
   const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(word ?? { id: '', video_url: null, thumbnail_url: null })
+  const activeSunoUrl = (version === 'b' ? word?.suno_audio_url_b : word?.suno_audio_url) ?? null
   const suno = useSunoAudio(
-    word?.suno_audio_url ?? null,
+    activeSunoUrl,
     `${word?.id ?? ''}-${videoKey}`,
     videoRef,
   )
@@ -553,9 +555,9 @@ function VideoViewerModal({
                 />
                 <audio
                   ref={suno.sunoAudioRef}
-                  key={`suno-${word?.id}-${videoKey}`}
-                  src={word?.suno_audio_url ?? undefined}
-                  preload={word?.suno_audio_url ? 'auto' : 'none'}
+                  key={`suno-${word?.id}-${videoKey}-${version}`}
+                  src={activeSunoUrl ?? undefined}
+                  preload={activeSunoUrl ? 'auto' : 'none'}
                   onError={suno.handleSunoError}
                 />
               </>

@@ -899,7 +899,6 @@ async def process_word(
     }).eq("id", job["id"]).execute()
 
     log.info("  Word %s complete", word_slug_val)
-    log.info("[DEBUG] Reached post-pipeline suno block for %s", word_slug_val)
 
     # Auto-generate Suno song if enabled in workspace settings
     try:
@@ -912,12 +911,8 @@ async def process_word(
                 _suno_result = await suno_generate_song(
                     str(workspace_path.parent), job["user_id"], job["deck_id"], word_slug_val
                 )
-                if _suno_result and _suno_result.get("status") == "success" and _suno_result.get("audio_url"):
-                    sb.table("words").update({
-                        "suno_audio_url": _suno_result["audio_url"],
-                        "suno_task_id": _suno_result.get("task_id"),
-                    }).eq("id", word_record["id"]).execute()
-                    log.info("  [Suno] Done: %s", _suno_result["audio_url"])
+                if _suno_result and _suno_result.get("status") == "success":
+                    log.info("  [Suno] Done: %s", _suno_result.get("audio_url"))
                 else:
                     log.warning("  [Suno] Failed: %s", _suno_result.get("error") if _suno_result else "no result")
     except Exception as _e:

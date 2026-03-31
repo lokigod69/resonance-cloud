@@ -165,7 +165,7 @@ export default function Queue() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 max-w-6xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -222,7 +222,7 @@ export default function Queue() {
       </div>
 
       {/* Job List */}
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         {jobs.length === 0 ? (
           <Card className="p-8 text-center text-muted-foreground">
             No generation jobs yet
@@ -232,7 +232,7 @@ export default function Queue() {
             <Card key={job.id} className="overflow-hidden">
               {/* Job Row */}
               <div
-                className="flex items-center gap-4 px-4 py-3 cursor-pointer hover:bg-accent/50 transition-colors"
+                className="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-accent/50 transition-colors"
                 onClick={() => expandJob(job.id)}
               >
                 {/* Status badge */}

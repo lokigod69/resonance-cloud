@@ -564,7 +564,7 @@ export default function Content() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 max-w-6xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -645,7 +645,7 @@ export default function Content() {
       </div>
 
       {/* Deck List */}
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         {filteredDecks.length === 0 ? (
           <Card className="p-8 text-center text-muted-foreground">
             {decks.length === 0
@@ -657,7 +657,7 @@ export default function Content() {
             <Card key={deck.id} className="overflow-hidden">
               {/* Deck row */}
               <div
-                className="flex items-center gap-4 px-4 py-3 cursor-pointer hover:bg-accent/50 transition-colors"
+                className="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-accent/50 transition-colors"
                 onClick={() => toggleDeck(deck.id)}
               >
                 {/* Chevron */}
@@ -730,7 +730,7 @@ export default function Content() {
                       {filterWordsByRating(deckWords[deck.id]).map(word => (
                         <div
                           key={word.id}
-                          className="flex items-center gap-3 px-4 py-2.5 hover:bg-accent/30 transition-colors"
+                          className="flex items-center gap-3 px-4 py-2 hover:bg-accent/30 transition-colors text-sm"
                         >
                           {/* Thumbnail */}
                           <div className="h-10 w-10 rounded bg-zinc-800 flex-shrink-0 overflow-hidden flex items-center justify-center">

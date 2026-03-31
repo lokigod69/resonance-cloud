@@ -21,8 +21,11 @@ POLL_INTERVAL = 10      # seconds between status checks
 MAX_POLL_TIME = 180     # max seconds to wait (3 minutes)
 
 
-def _write_to_supabase(deck_id: str, word_slug: str, audio_url: str, task_id: str | None) -> None:
-    """Write suno_audio_url and suno_task_id to Supabase words table."""
+def _write_to_supabase(
+    deck_id: str, word_slug: str, audio_url: str, task_id: str | None,
+    audio_url_b: str | None = None,
+) -> None:
+    """Write suno_audio_url, suno_audio_url_b, and suno_task_id to Supabase words table."""
     supabase_url = os.getenv("SUPABASE_URL", "")
     supabase_key = os.getenv("SUPABASE_SERVICE_KEY", "")
     if not supabase_url or not supabase_key:
@@ -30,10 +33,10 @@ def _write_to_supabase(deck_id: str, word_slug: str, audio_url: str, task_id: st
         return
     try:
         sb = supabase_create_client(supabase_url, supabase_key)
-        sb.table("words").update({
-            "suno_audio_url": audio_url,
-            "suno_task_id": task_id,
-        }).eq("deck_id", deck_id).eq("word_slug", word_slug).execute()
+        update: dict = {"suno_audio_url": audio_url, "suno_task_id": task_id}
+        if audio_url_b:
+            update["suno_audio_url_b"] = audio_url_b
+        sb.table("words").update(update).eq("deck_id", deck_id).eq("word_slug", word_slug).execute()
         logger.info("Wrote suno_audio_url to Supabase for %s/%s", deck_id, word_slug)
     except Exception as e:
         logger.error("Failed to write suno_audio_url to Supabase: %s", e)
@@ -181,7 +184,7 @@ async def generate_song(
             logger.error("Suno API call failed: %s", e)
             return {"audio_url": None, "task_id": None, "status": "error", "error": f"Suno API error: {e}"}
 
-        logger.info("SUNO GENERATE RESPONSE: %s", json.dumps(result)[:1000])
+        logger.debug("SUNO GENERATE RESPONSE: %s", json.dumps(result)[:1000])
 
         if result.get("code") != 200:
             return {
@@ -217,20 +220,21 @@ async def generate_song(
                 logger.warning("Poll failed (elapsed %ds): %s", elapsed, e)
                 continue
 
-            logger.info("SUNO POLL RESPONSE (elapsed %ds): %s", elapsed, json.dumps(status_data)[:1000])
+            logger.debug("SUNO POLL RESPONSE (elapsed %ds): %s", elapsed, json.dumps(status_data)[:1000])
 
             data = status_data.get("data", {})
             task_status = data.get("status", "")
 
             if task_status == "SUCCESS":
-                # Extract audio URL from response.sunoData[0].audioUrl
+                # Extract audio URLs from response.sunoData — [0] is track A, [1] is track B
                 suno_data = data.get("response", {}).get("sunoData", [])
                 if suno_data and isinstance(suno_data, list) and len(suno_data) > 0:
                     audio_url = suno_data[0].get("audioUrl")
+                    audio_url_b = suno_data[1].get("audioUrl") if len(suno_data) > 1 else None
                     if audio_url:
-                        logger.info("Suno song ready: %s", audio_url)
-                        _write_to_supabase(deck_id, word_slug, audio_url, task_id)
-                        return {"audio_url": audio_url, "task_id": task_id, "status": "success", "error": None}
+                        logger.info("Suno song ready: %s%s", audio_url, f" (B: {audio_url_b})" if audio_url_b else "")
+                        _write_to_supabase(deck_id, word_slug, audio_url, task_id, audio_url_b)
+                        return {"audio_url": audio_url, "audio_url_b": audio_url_b, "task_id": task_id, "status": "success", "error": None}
                 return {
                     "audio_url": None, "task_id": task_id, "status": "error",
                     "error": f"SUCCESS but no audioUrl in response: {json.dumps(status_data)[:500]}",
@@ -244,11 +248,11 @@ async def generate_song(
                     or "Unknown error"
                 )
                 logger.warning(
-                    "SUNO TASK FAILED (elapsed %ds) — data: %s",
+                    "SUNO TASK FAILED (elapsed %ds) — error: %s — data: %s",
                     elapsed,
-                    json.dumps(data),
+                    error_msg,
+                    json.dumps(data)[:500],
                 )
-                logger.warning("Resolved error_msg: %r", error_msg)
                 if "copyright" in error_msg.lower() and not copyright_retried:
                     copyright_retried = True
                     logger.warning(
@@ -297,4 +301,4 @@ async def generate_song(
         }
 
 
-    return None
+    return {"status": "error", "error": "unexpected: no code path returned"}

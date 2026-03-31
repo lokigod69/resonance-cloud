@@ -380,7 +380,7 @@ export default function Users() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 max-w-6xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -417,7 +417,7 @@ export default function Users() {
       </div>
 
       {/* User List */}
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         {filteredUsers.length === 0 ? (
           <Card className="p-8 text-center text-muted-foreground">
             {users.length === 0
@@ -429,7 +429,7 @@ export default function Users() {
             <Card key={user.id} className="overflow-hidden">
               {/* User row */}
               <div
-                className="flex items-center gap-4 px-4 py-3 cursor-pointer hover:bg-accent/50 transition-colors"
+                className="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-accent/50 transition-colors"
                 onClick={() => toggleUser(user.id)}
               >
                 {expandedUserId === user.id ? (
@@ -475,7 +475,7 @@ export default function Users() {
 
               {/* Expanded detail */}
               {expandedUserId === user.id && (
-                <div className="border-t border-border bg-accent/20 px-4 py-4 space-y-5">
+                <div className="border-t border-border bg-accent/20 px-4 py-3 space-y-4">
                   {/* Credit Management */}
                   <div>
                     <h3 className="text-sm font-medium mb-3 flex items-center gap-2">

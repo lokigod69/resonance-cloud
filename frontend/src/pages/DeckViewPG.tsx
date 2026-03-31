@@ -56,6 +56,7 @@ type Word = {
   video_url_b: string | null
   thumbnail_url_b: string | null
   suno_audio_url: string | null
+  suno_audio_url_b: string | null
   suno_task_id: string | null
   metadata: Record<string, unknown> | null
   created_at: string
@@ -187,8 +188,9 @@ export default function DeckViewPG() {
 
   const activeWord = words[activeIndex] ?? { id: '', video_url: null, thumbnail_url: null }
   const { activeVideoUrl, activeThumbnailUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(activeWord)
+  const activeSunoUrl = (version === 'b' ? words[activeIndex]?.suno_audio_url_b : words[activeIndex]?.suno_audio_url) ?? null
   const suno = useSunoAudio(
-    words[activeIndex]?.suno_audio_url ?? null,
+    activeSunoUrl,
     words[activeIndex]?.id ?? '',
     videoRef,
   )
@@ -437,9 +439,9 @@ export default function DeckViewPG() {
                         {offset === 0 && (
                           <audio
                             ref={suno.sunoAudioRef}
-                            key={words[activeIndex]?.id}
-                            src={words[activeIndex]?.suno_audio_url ?? undefined}
-                            preload={words[activeIndex]?.suno_audio_url ? 'auto' : 'none'}
+                            key={`${words[activeIndex]?.id}-${version}`}
+                            src={activeSunoUrl ?? undefined}
+                            preload={activeSunoUrl ? 'auto' : 'none'}
                             onError={suno.handleSunoError}
                           />
                         )}

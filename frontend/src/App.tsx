@@ -24,6 +24,7 @@ import Metrics from '@/pages/admin/Metrics'
 import Queue from '@/pages/admin/Queue'
 import Profiles from '@/pages/admin/Profiles'
 import Voices from '@/pages/admin/Voices'
+import Music from '@/pages/Music'
 import AdminRoute from '@/components/AdminRoute'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 
@@ -120,6 +121,7 @@ function AppRoutes() {
             <Route path="/generate" element={<GenerateGO />} />
             <Route path="/deck/:id" element={<DeckViewPG />} />
             <Route path="/study" element={<StudyPG />} />
+            <Route path="/music" element={<Music />} />
           </Route>
         ) : (
           <Route element={<AppLayout />}>
@@ -127,6 +129,7 @@ function AppRoutes() {
             <Route path="/generate" element={<Generate />} />
             <Route path="/deck/:id" element={<DeckView />} />
             <Route path="/study" element={<Study />} />
+            <Route path="/music" element={<Music />} />
           </Route>
         )}
 

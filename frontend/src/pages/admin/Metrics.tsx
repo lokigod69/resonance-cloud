@@ -318,7 +318,7 @@ export default function Metrics() {
   const maxProfileUsage = Math.max(...Object.values(metrics.profileUsage), 1)
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 max-w-6xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
