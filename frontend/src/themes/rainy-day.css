@@ -1,33 +1,33 @@
-/* Rainy Day theme — steel-blue gradient, calm & overcast */
+/* Tokyo Night theme — dark navy with vibrant blue accents */
 .theme-rainy-day {
-  --background: #263141;
-  --foreground: #CBD5E1;
-  --card: #3D4B5F;
-  --card-foreground: #CBD5E1;
-  --popover: #263141;
-  --popover-foreground: #CBD5E1;
-  --primary: #8EC1D6;
-  --primary-foreground: #1a2a35;
-  --secondary: #334455;
-  --secondary-foreground: #CBD5E1;
-  --muted: #334455;
-  --muted-foreground: #8799AF;
-  --accent: rgba(142, 193, 214, 0.15);
-  --accent-foreground: #CBD5E1;
+  --background: #1a1b2e;
+  --foreground: #c0caf5;
+  --card: #24283b;
+  --card-foreground: #c0caf5;
+  --popover: #1a1b2e;
+  --popover-foreground: #c0caf5;
+  --primary: #7aa2f7;
+  --primary-foreground: #1a1b2e;
+  --secondary: #292e42;
+  --secondary-foreground: #c0caf5;
+  --muted: #292e42;
+  --muted-foreground: #565f89;
+  --accent: rgba(122, 162, 247, 0.15);
+  --accent-foreground: #c0caf5;
   --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: rgba(135, 153, 175, 0.15);
-  --input: #3D4B5F;
-  --ring: #8EC1D6;
+  --destructive-foreground: #f7768e;
+  --border: rgba(86, 95, 137, 0.25);
+  --input: #24283b;
+  --ring: #7aa2f7;
   --radius: 0.625rem;
-  --sidebar: #1e2b38;
-  --sidebar-foreground: #CBD5E1;
-  --sidebar-primary: #8EC1D6;
-  --sidebar-primary-foreground: #1a2a35;
-  --sidebar-accent: rgba(142, 193, 214, 0.12);
-  --sidebar-accent-foreground: #CBD5E1;
-  --sidebar-border: rgba(135, 153, 175, 0.12);
-  --sidebar-ring: #8EC1D6;
+  --sidebar: #16161e;
+  --sidebar-foreground: #c0caf5;
+  --sidebar-primary: #7aa2f7;
+  --sidebar-primary-foreground: #1a1b2e;
+  --sidebar-accent: rgba(122, 162, 247, 0.12);
+  --sidebar-accent-foreground: #c0caf5;
+  --sidebar-border: rgba(86, 95, 137, 0.2);
+  --sidebar-ring: #7aa2f7;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
   color-scheme: dark;
@@ -35,50 +35,50 @@
 
 /* Gradient page background — fixed so it doesn't scroll */
 .theme-rainy-day body {
-  background: linear-gradient(to top left, #263141, #324050, #3D4B5F);
+  background: linear-gradient(to top left, #1a1b2e, #1f2335, #24283b);
   background-attachment: fixed;
 }
 
 /* Glass overrides */
 .theme-rainy-day .glass {
-  background: rgba(61, 75, 95, 0.4);
+  background: rgba(36, 40, 59, 0.4);
   backdrop-filter: blur(24px);
-  border: 1px solid rgba(135, 153, 175, 0.15);
+  border: 1px solid rgba(86, 95, 137, 0.25);
 }
 
 .theme-rainy-day .glass-strong {
-  background: rgba(61, 75, 95, 0.6);
+  background: rgba(36, 40, 59, 0.6);
   backdrop-filter: blur(32px);
-  border: 1px solid rgba(135, 153, 175, 0.2);
+  border: 1px solid rgba(86, 95, 137, 0.3);
 }
 
 .theme-rainy-day .glass-hover:hover {
-  background: rgba(61, 75, 95, 0.55);
-  border-color: rgba(142, 193, 214, 0.2);
+  background: rgba(36, 40, 59, 0.55);
+  border-color: rgba(122, 162, 247, 0.2);
 }
 
 .theme-rainy-day .glass-selected {
-  background: rgba(142, 193, 214, 0.12);
-  border-color: rgba(142, 193, 214, 0.4);
+  background: rgba(122, 162, 247, 0.12);
+  border-color: rgba(122, 162, 247, 0.4);
 }
 
 /* Gradient background utility */
 .theme-rainy-day .gradient-bg {
-  background: linear-gradient(135deg, #263141 0%, #3D4B5F 100%);
+  background: linear-gradient(135deg, #1a1b2e 0%, #24283b 100%);
 }
 
 /* Glow overrides */
 .theme-rainy-day .glow-purple {
-  box-shadow: 0 0 20px rgba(142, 193, 214, 0.15);
+  box-shadow: 0 0 20px rgba(122, 162, 247, 0.15);
 }
 
 .theme-rainy-day .glow-green {
-  box-shadow: 0 0 20px rgba(142, 193, 214, 0.25);
+  box-shadow: 0 0 20px rgba(122, 162, 247, 0.25);
 }
 
 /* Video overlay */
 .theme-rainy-day .video-overlay {
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(38, 49, 65, 0.8) 100%);
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(26, 27, 46, 0.8) 100%);
 }
 
 /* Ambient gradient shift */
@@ -98,5 +98,5 @@
 /* Improve card/glass edge visibility against same-hue background */
 .theme-rainy-day .glass,
 .theme-rainy-day .glass-strong {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.08);
 }

@@ -144,7 +144,7 @@ export default function Settings() {
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
           {([
             { id: 'midnight' as Theme, label: 'Midnight', desc: 'Dark & minimal', colors: ['oklch(0.13 0.008 280)', 'oklch(0.7 0.15 280)', 'oklch(0.22 0.015 280)'] },
-            { id: 'rainy-day' as Theme, label: 'Rainy Day', desc: 'Steel-blue gradient', colors: ['#263141', '#8EC1D6', '#3D4B5F'] },
+            { id: 'rainy-day' as Theme, label: 'Tokyo Night', desc: 'Dark navy & blue', colors: ['#1a1b2e', '#7aa2f7', '#24283b'] },
             { id: 'deep-blue' as Theme, label: 'Deep Blue', desc: 'Soft navy', colors: ['#111D3A', '#4DA3F7', '#1A3568'] },
             { id: 'red-wine' as Theme, label: 'Red Wine', desc: 'Burgundy & pink', colors: ['#220C15', '#C62F6C', '#4E122A'] },
             { id: 'slate' as Theme, label: 'Slate', desc: 'Muted gray', colors: ['#1E2227', '#9A9894', '#334155'] },
