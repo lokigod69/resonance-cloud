@@ -233,7 +233,6 @@ export default function MusicPG() {
               thumbnailUrl={currentTrack?.thumbnail_url ?? null}
               word={currentTrack?.word ?? ''}
               isPlaying={isPlaying}
-              audioRef={player.audioRef}
               size={orbSize}
             />
 

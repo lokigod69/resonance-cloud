@@ -5,7 +5,7 @@ interface OrbVisualizerProps {
   thumbnailUrl: string | null
   word: string
   isPlaying: boolean
-  audioRef: React.RefObject<HTMLAudioElement | null>
+  audioRef?: React.RefObject<HTMLAudioElement | null>
   size?: number
 }
 
@@ -54,8 +54,10 @@ export function OrbVisualizer({
 
   // Set up Web Audio API once on mount — lives for the full page lifetime.
   // OrbVisualizer must NOT be keyed on track ID or this setup breaks on every track change.
+  // audioRef is optional — when not provided the visualizer stays in simulated mode,
+  // which avoids the CORS zeroing issue on CDN-hosted audio.
   useEffect(() => {
-    const audio = audioRef.current
+    const audio = audioRef?.current
     if (!audio) return
 
     // Resume suspended AudioContext on user-initiated play (Chrome autoplay policy)
