@@ -758,10 +758,13 @@ async def process_word(
             }).eq("id", job["id"]).execute()
             return False
 
-    # ── A/B dual-take loop ───────────────────────────────────────────────────
-    # Run assembly + bookend once per song take (A = first take, B = second).
+    # ── A/B dual-take loop (two passes: assemblies first, bookends second) ────
+    # Pass 1 assembles all takes. Version A assembly failure is fatal; Version B
+    # assembly failure degrades gracefully to A-only. Pass 2 applies bookends
+    # independently — a bookend failure is non-fatal for both versions.
+    # _resolve_final_video() handles bookend→assembly fallback at upload time.
     # run_stage() re-reads the manifest each call, so update_selection() before
-    # each iteration makes assembly pick up the correct song take automatically.
+    # each assembly makes it pick up the correct song take automatically.
     # Version dirs auto-increment (clean-001, clean-002, bookend-001, bookend-002).
     # Bookend TTS is generated once and reused on the second run (zero API cost).
 
@@ -779,63 +782,70 @@ async def process_word(
     _full_ab_stages = ['assembly', 'bookend'] if _bookend_on else ['assembly']
 
     ab_manifests: dict[str, Any] = {}
+    _assembled_labels: set[str] = set()     # labels with a successful assembly
+    _assembly_finals: dict[str, str] = {}   # label -> selected.final version name (set when assembly runs)
 
+    # ── Pass 1: Assemblies ───────────────────────────────────────────────────
     for label, take in [('a', take_a), ('b', take_b)]:
         if take is None:
             continue
 
-        # Determine which A/B stages need running for this version
-        version_ab_stages = list(ab_stages_to_run)
-        if not version_ab_stages and label == 'a':
-            # Smart retry already completed assembly+bookend for A
-            ab_manifests['a'] = read_manifest(word_dir)
-            continue
-        elif not version_ab_stages and label == 'b':
+        # Determine which stages this label needs (mirrors original per-label logic)
+        stages_for_label = list(ab_stages_to_run)
+        if not stages_for_label and label == 'b':
             # B always needs assembly+bookend (never ran before)
-            version_ab_stages = list(_full_ab_stages)
+            stages_for_label = list(_full_ab_stages)
 
-        log.info("  === Version %s: %s ===", label.upper(), take)
+        # Smart retry: A already complete — snapshot manifest and skip both passes
+        if not stages_for_label and label == 'a':
+            log.info("  === Version A: already complete (smart retry) ===")
+            ab_manifests['a'] = read_manifest(word_dir)
+            _assembled_labels.add('a')
+            continue
+
+        if 'assembly' not in stages_for_label:
+            # Assembly already done for this label (smart retry, only bookend needed)
+            _assembled_labels.add(label)
+            continue
+
+        log.info("  === Version %s assembly: %s ===", label.upper(), take)
         update_selection(word_dir, 'song', take)
 
-        version_ok = True
-        for stage in version_ab_stages:
-            stage_ok = False
-            for attempt in range(MAX_RETRIES + 1):
-                try:
-                    log.info("    [%s] Stage %s (attempt %d)", label.upper(), stage, attempt + 1)
-                    await run_stage(workspace_path, word_slug_val, stage)
-                    stage_ok = True
-                    break
-                except Exception as e:
-                    log.warning("    [%s] Stage %s attempt %d failed: %s",
-                                label.upper(), stage, attempt + 1, e)
-                    if attempt < MAX_RETRIES:
-                        try:
-                            _defaults = load_defaults(workspace_path)
-                            _manifest = read_manifest(word_dir)
-                            _stage_defaults = _defaults.get(stage, {})
-                            _stage_overrides = _manifest.settings.get(stage, {})
-                            _stage_settings = {**_stage_defaults, **_stage_overrides}
-                        except Exception:
-                            _stage_settings = None
-                        overrides = get_fallback_overrides(stage, attempt + 1, _stage_settings)
-                        if overrides:
-                            log.info("    [%s] Retrying with fallback: %s", label.upper(), overrides)
-                            from src.manifest import update_settings
-                            update_settings(word_dir, stage, overrides)
-
-            if not stage_ok:
-                version_ok = False
+        assembly_ok = False
+        for attempt in range(MAX_RETRIES + 1):
+            try:
+                log.info("    [%s] Stage assembly (attempt %d)", label.upper(), attempt + 1)
+                await run_stage(workspace_path, word_slug_val, 'assembly')
+                assembly_ok = True
                 break
+            except Exception as e:
+                log.warning("    [%s] Stage assembly attempt %d failed: %s",
+                            label.upper(), attempt + 1, e)
+                if attempt < MAX_RETRIES:
+                    try:
+                        _defaults = load_defaults(workspace_path)
+                        _manifest = read_manifest(word_dir)
+                        _stage_defaults = _defaults.get('assembly', {})
+                        _stage_overrides = _manifest.settings.get('assembly', {})
+                        _stage_settings = {**_stage_defaults, **_stage_overrides}
+                    except Exception:
+                        _stage_settings = None
+                    overrides = get_fallback_overrides('assembly', attempt + 1, _stage_settings)
+                    if overrides:
+                        log.info("    [%s] Retrying assembly with fallback: %s", label.upper(), overrides)
+                        from src.manifest import update_settings
+                        update_settings(word_dir, 'assembly', overrides)
 
-        if version_ok:
-            ab_manifests[label] = read_manifest(word_dir)
+        if assembly_ok:
+            _assembled_labels.add(label)
+            # Snapshot selected.final immediately so Pass 2 can restore it before
+            # running bookend (prevents take_b's assembly from overwriting take_a's).
+            _assembly_finals[label] = read_manifest(word_dir).selected.final or ''
         elif label == 'a':
-            # Version A failed = entire word fails
-            log.error("  Word %s: version A failed at stage %s", word_slug_val, stage)
+            log.error("  Word %s: version A assembly failed", word_slug_val)
             sb.table("words").update({
                 "status": "failed",
-                "error_message": f"Failed at assembly/bookend (version A)",
+                "error_message": "Failed at assembly (version A)",
                 "retry_count": MAX_RETRIES + 1,
             }).eq("id", word_record["id"]).execute()
             sb.rpc("refund_credit", {"user_id_param": job["user_id"]}).execute()
@@ -844,8 +854,68 @@ async def process_word(
             }).eq("id", job["id"]).execute()
             return False
         else:
-            # Version B failed = degrade gracefully, continue with A only
-            log.warning("  Version B failed for %s — continuing with A only", word_slug_val)
+            # Version B assembly failed — degrade gracefully, continue with A only
+            log.warning("  Version B assembly failed for %s — continuing with A only", word_slug_val)
+
+    # ── Pass 2: Bookends ─────────────────────────────────────────────────────
+    for label, take in [('a', take_a), ('b', take_b)]:
+        if label not in _assembled_labels:
+            continue  # take was None, or Version B assembly failed
+
+        stages_for_label = list(ab_stages_to_run)
+        if not stages_for_label and label == 'b':
+            stages_for_label = list(_full_ab_stages)
+
+        if not stages_for_label:
+            # Smart retry: A already complete, manifest already snapshotted in Pass 1
+            continue
+
+        if 'bookend' not in stages_for_label:
+            # Bookend disabled or not needed — snapshot manifest after assembly
+            ab_manifests[label] = read_manifest(word_dir)
+            continue
+
+        # Restore selected.final to this label's assembly version before running
+        # bookend. Required because Pass 1 leaves the manifest pointing to the
+        # last assembly (take_b), which would cause take_a's bookend to use the
+        # wrong assembled video. Only applies when assembly actually ran in Pass 1.
+        if label in _assembly_finals and _assembly_finals[label]:
+            update_selection(word_dir, 'final', _assembly_finals[label])
+
+        log.info("  === Version %s bookend ===", label.upper())
+
+        bookend_ok = False
+        for attempt in range(MAX_RETRIES + 1):
+            try:
+                log.info("    [%s] Stage bookend (attempt %d)", label.upper(), attempt + 1)
+                await run_stage(workspace_path, word_slug_val, 'bookend')
+                bookend_ok = True
+                break
+            except Exception as e:
+                log.warning("    [%s] Stage bookend attempt %d failed: %s",
+                            label.upper(), attempt + 1, e)
+                if attempt < MAX_RETRIES:
+                    try:
+                        _defaults = load_defaults(workspace_path)
+                        _manifest = read_manifest(word_dir)
+                        _stage_defaults = _defaults.get('bookend', {})
+                        _stage_overrides = _manifest.settings.get('bookend', {})
+                        _stage_settings = {**_stage_defaults, **_stage_overrides}
+                    except Exception:
+                        _stage_settings = None
+                    overrides = get_fallback_overrides('bookend', attempt + 1, _stage_settings)
+                    if overrides:
+                        log.info("    [%s] Retrying bookend with fallback: %s", label.upper(), overrides)
+                        from src.manifest import update_settings
+                        update_settings(word_dir, 'bookend', overrides)
+
+        if not bookend_ok:
+            log.warning("    [%s] Bookend failed for %s — assembly fallback will be used at upload",
+                        label.upper(), word_slug_val)
+
+        # Snapshot manifest whether bookend succeeded or not.
+        # _resolve_final_video() picks bookend if present, otherwise falls back to assembly.
+        ab_manifests[label] = read_manifest(word_dir)
 
     # ── Collect metadata and upload ──────────────────────────────────────────
     pipeline_duration = time.monotonic() - pipeline_start
