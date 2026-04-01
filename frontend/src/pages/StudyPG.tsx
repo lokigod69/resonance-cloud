@@ -226,7 +226,7 @@ export default function StudyPG() {
               <button
                 onClick={skipPrev}
                 disabled={currentIndex === 0}
-                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all opacity-0 group-hover/video:opacity-100 disabled:opacity-0 disabled:cursor-not-allowed disabled:hover:opacity-0"
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all opacity-40 sm:opacity-0 sm:group-hover/video:opacity-100 disabled:!opacity-0 disabled:cursor-not-allowed"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -235,7 +235,7 @@ export default function StudyPG() {
               <button
                 onClick={skipNext}
                 disabled={currentIndex >= words.length - 1}
-                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all opacity-0 group-hover/video:opacity-100 disabled:opacity-0 disabled:cursor-not-allowed disabled:hover:opacity-0"
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:bg-black/60 transition-all opacity-40 sm:opacity-0 sm:group-hover/video:opacity-100 disabled:!opacity-0 disabled:cursor-not-allowed"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -328,25 +328,25 @@ export default function StudyPG() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="flex justify-center gap-3"
+                className="flex flex-col sm:flex-row justify-center items-center gap-3"
               >
                 <button
                   onClick={handleRemembered}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--pg-accent-green)]/15 border border-[var(--pg-accent-green)]/30 text-[var(--pg-accent-green)] text-sm font-display font-medium hover:bg-[var(--pg-accent-green)]/25 transition-all"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--pg-accent-green)]/15 border border-[var(--pg-accent-green)]/30 text-[var(--pg-accent-green)] text-sm font-display font-medium hover:bg-[var(--pg-accent-green)]/25 transition-all"
                 >
                   <Check className="h-4 w-4" />
                   Remembered
                 </button>
                 <button
                   onClick={handleReviewLater}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
                 >
                   <Clock className="h-4 w-4" />
                   Review Later
                 </button>
                 <button
                   onClick={replay}
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
                 >
                   <RotateCcw className="h-4 w-4" />
                   Replay
@@ -369,7 +369,7 @@ export default function StudyPG() {
       />
 
       {/* Keyboard hints */}
-      <div className="mt-8 text-center text-xs" style={{ color: 'var(--pg-text-dim)', opacity: 0.5 }}>
+      <div className="hidden md:block mt-8 text-center text-xs" style={{ color: 'var(--pg-text-dim)', opacity: 0.5 }}>
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">Space</kbd> reveal/advance
         &nbsp;&middot;&nbsp;
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">←</kbd><kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">→</kbd> skip

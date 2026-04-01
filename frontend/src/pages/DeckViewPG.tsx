@@ -410,18 +410,19 @@ export default function DeckViewPG() {
       </div>
 
       {/* Carousel */}
+      <div className="-mx-6 sm:mx-0">
       {words.length > 0 ? (
         <div className="flex flex-col items-center">
           <div
             {...bind()}
-            className="relative w-full max-w-4xl h-[80vh] max-h-[770px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+            className="group/carousel relative w-full max-w-4xl h-[80vh] max-h-[770px] flex items-center justify-center cursor-grab active:cursor-grabbing"
             style={{ perspective: '1200px', touchAction: 'none' }}
           >
             {/* Prev button */}
             {activeIndex > 0 && (
               <button
                 onClick={() => { setActiveIndex((i) => i - 1); setNavKey(k => k + 1) }}
-                className="absolute left-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-colors"
+                className="absolute left-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-60 sm:opacity-0 sm:group-hover/carousel:opacity-100"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -436,10 +437,11 @@ export default function DeckViewPG() {
                 return (
                   <motion.div
                     key={word.id}
-                    className="absolute w-[92vw] max-w-[800px] h-[80vh] max-h-[750px] flex items-center justify-center"
+                    // w-[calc(100vw-32px)] = 16px margin each side; carousel is full-bleed via -mx-6 wrapper above
+                    className="absolute w-[calc(100vw-32px)] max-w-[800px] h-[80vh] max-h-[750px] flex items-center justify-center"
                     initial={false}
                     animate={{
-                      x: offset * 200 + dragOffset,
+                      x: offset * (typeof window !== 'undefined' && window.innerWidth < 640 ? 100 : 200) + dragOffset,
                       scale: offset === 0 ? 1 : 0.85,
                       opacity: offset === 0 ? 1 : 0.4,
                       zIndex: 10 - Math.abs(offset),
@@ -680,7 +682,7 @@ export default function DeckViewPG() {
             {activeIndex < words.length - 1 && (
               <button
                 onClick={() => { setActiveIndex((i) => i + 1); setNavKey(k => k + 1) }}
-                className="absolute right-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-colors"
+                className="absolute right-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-60 sm:opacity-0 sm:group-hover/carousel:opacity-100"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -710,6 +712,7 @@ export default function DeckViewPG() {
           <p className="text-[var(--pg-text-dim)]">No words in this deck yet.</p>
         </div>
       )}
+      </div> {/* end -mx-6 bleed wrapper — escapes parent px-6 on mobile, restored at sm: */}
 
       {/* Footer actions */}
       <div className="flex justify-center pt-8">

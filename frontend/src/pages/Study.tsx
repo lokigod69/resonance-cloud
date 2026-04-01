@@ -214,7 +214,7 @@ export default function Study() {
                 <button
                   onClick={skipPrev}
                   disabled={currentIndex === 0}
-                  className="absolute -left-14 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-border bg-background/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all disabled:opacity-20 disabled:cursor-not-allowed"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 border border-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all opacity-70 hover:opacity-100 disabled:opacity-20 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="h-5 w-5" />
                 </button>
@@ -223,7 +223,7 @@ export default function Study() {
                 <button
                   onClick={skipNext}
                   disabled={currentIndex >= words.length - 1}
-                  className="absolute -right-14 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full border border-border bg-background/80 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent transition-all disabled:opacity-20 disabled:cursor-not-allowed"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 border border-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all opacity-70 hover:opacity-100 disabled:opacity-20 disabled:cursor-not-allowed"
                 >
                   <ChevronRight className="h-5 w-5" />
                 </button>
@@ -317,21 +317,21 @@ export default function Study() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="flex justify-center gap-3"
+                  className="flex flex-col sm:flex-row justify-center items-center gap-3"
                 >
                   <Button
                     onClick={handleRemembered}
                     variant="outline"
-                    className="bg-green-500/10 border-green-500/30 text-green-400 hover:bg-green-500/20 hover:text-green-300"
+                    className="w-full sm:w-auto bg-green-500/10 border-green-500/30 text-green-400 hover:bg-green-500/20 hover:text-green-300"
                   >
                     <Check className="h-4 w-4 mr-2" />
                     Remembered
                   </Button>
-                  <Button variant="outline" onClick={handleReviewLater}>
+                  <Button variant="outline" onClick={handleReviewLater} className="w-full sm:w-auto">
                     <Clock className="h-4 w-4 mr-2" />
                     Review Later
                   </Button>
-                  <Button variant="outline" onClick={replay}>
+                  <Button variant="outline" onClick={replay} className="w-full sm:w-auto">
                     <RotateCcw className="h-4 w-4 mr-2" />
                     Replay
                   </Button>
@@ -343,7 +343,7 @@ export default function Study() {
       </div>
 
       {/* Keyboard hints */}
-      <div className="mt-8 text-center text-xs text-muted-foreground/50">
+      <div className="hidden md:block mt-8 text-center text-xs text-muted-foreground/50">
         <kbd className="px-1.5 py-0.5 rounded border border-border text-[10px]">Space</kbd> reveal/advance
         &nbsp;&middot;&nbsp;
         <kbd className="px-1.5 py-0.5 rounded border border-border text-[10px]">&larr;</kbd><kbd className="px-1.5 py-0.5 rounded border border-border text-[10px]">&rarr;</kbd> skip

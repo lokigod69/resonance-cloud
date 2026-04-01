@@ -23,13 +23,13 @@ export default function HeroSection() {
   return (
     <section className="relative h-screen">
       {/* Nav — fixed, frosted glass */}
-      <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 backdrop-blur-md bg-black/30 border-b border-white/5">
+      <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-4 py-4 sm:px-6 md:px-12 backdrop-blur-md bg-black/30 border-b border-white/5">
         <Link to="/" className="flex items-center gap-2">
           <img src="/favicon.svg" alt="Resonance" className="h-7 w-7" />
           <span className="font-bold text-xl">Resonance</span>
         </Link>
         <div className="flex items-center gap-3">
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" asChild className="hidden sm:inline-flex">
             <Link to="/login">Sign In</Link>
           </Button>
           <Button asChild>
@@ -63,7 +63,7 @@ export default function HeroSection() {
             {/* Headline */}
             <motion.h1
               {...fadeUp(0.1)}
-              className="text-5xl md:text-7xl font-bold tracking-tight leading-tight"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
             >
               Learn any language through{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">

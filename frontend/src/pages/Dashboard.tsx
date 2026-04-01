@@ -170,7 +170,7 @@ export default function Dashboard() {
       <div className="classic-aurora" aria-hidden="true" />
 
       <div className="classic-dashboard-header">
-        <h1>Welcome{profile?.display_name ? `, ${profile.display_name}` : ''}</h1>
+        <h1 className="break-words overflow-hidden">Welcome{profile?.display_name ? `, ${profile.display_name}` : ''}</h1>
         <p>{decks.length} deck{decks.length !== 1 ? 's' : ''} &middot; {profile?.credits ?? 0} credits</p>
       </div>
 

@@ -145,7 +145,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   key={t.id}
                   onClick={() => setTheme(t.id)}
                   title={t.label}
-                  className={`w-[46px] h-[30px] rounded-md border-2 transition-all ${
+                  className={`w-[46px] h-[38px] rounded-md border-2 transition-all ${
                     theme === t.id
                       ? 'border-primary ring-2 ring-primary/30'
                       : 'border-border hover:border-muted-foreground'

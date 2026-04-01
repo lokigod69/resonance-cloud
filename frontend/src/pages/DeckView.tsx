@@ -315,7 +315,7 @@ export default function DeckView() {
           const isPending = word.status === 'pending' || word.status === 'processing'
 
           return (
-            <div key={word.id} className="relative group w-[280px]">
+            <div key={word.id} className="relative group w-full max-w-[280px]">
               {isComplete ? (
                 <div
                   onClick={() => {
@@ -528,7 +528,7 @@ function VideoViewerModal({
       </div>
 
       {/* Video area */}
-      <div className="flex-1 flex items-center justify-center px-4 pb-4">
+      <div className="flex-1 flex items-center justify-center px-4 pb-4 overflow-y-auto">
         {/* Main content */}
         <div className="w-full max-w-3xl space-y-6">
           {/* Video container with arrows */}

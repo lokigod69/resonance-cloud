@@ -28,7 +28,7 @@ export default function StarRating({ rating, onChange, size = 20, readOnly = fal
               e.stopPropagation()
               onChange?.(star)
             }}
-            className="cursor-pointer hover:scale-110 transition-transform"
+            className="p-1.5 cursor-pointer hover:scale-110 transition-transform"
           >
             <Star
               size={size}

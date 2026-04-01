@@ -39,7 +39,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
       {hasMetadata(word) && (
         <button
           onClick={() => setShowMetadata(!showMetadata)}
-          className="absolute top-0 right-0 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+          className="absolute top-0 right-0 w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
         >
           <Info size={14} />
         </button>

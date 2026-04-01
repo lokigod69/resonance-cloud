@@ -214,8 +214,8 @@ export default function DashboardPG() {
     <div className="px-6 max-w-6xl mx-auto">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-3xl font-bold font-display tracking-tight">
+        <div className="min-w-0">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate">
             Welcome{profile?.display_name ? `, ${profile.display_name}` : ''}
           </h1>
           <p className="text-[var(--pg-text-dim)] mt-1 text-sm">
@@ -340,7 +340,7 @@ function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-[400px] h-[550px]"
+        className="relative w-full max-w-[400px] h-[480px] sm:h-[550px]"
       >
         <AnimatePresence>
           {cards.map((deck, i) => {
@@ -528,7 +528,8 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
       let x = 0, y = 0, size = 0, isValid = false
       let attempts = 0
       while (!isValid && attempts < 150) {
-        const radius = 60 + Math.random() * 220
+        const maxRadius = typeof window !== 'undefined' ? Math.min(280, (window.innerWidth - 80) / 2) : 280
+        const radius = 60 + Math.random() * (maxRadius - 60)
         const angle = (i / decks.length) * Math.PI * 2 + Math.random() * 0.8
         x = Math.cos(angle) * radius
         y = Math.sin(angle) * radius

@@ -48,6 +48,12 @@ export default function PolishGlassLayout() {
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
 
+        {/* Mobile credits — visible only on mobile */}
+        <span className="flex sm:hidden items-center gap-1 text-xs text-gray-400 ml-auto mr-2">
+          <Coins className="w-3.5 h-3.5" />
+          <span>{profile?.credits ?? 0}</span>
+        </span>
+
         {/* Desktop centered nav with icons */}
         <div className="hidden sm:flex items-center gap-1 mx-auto">
           {navItems.map((item) => (
