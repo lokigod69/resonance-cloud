@@ -35,7 +35,7 @@
 
 /* Gradient page background — fixed so it doesn't scroll */
 .theme-deep-blue body {
-  background: linear-gradient(to top left, #111D3A, #1A3568);
+  background: linear-gradient(to top left, #111D3A, #162951, #1A3568);
   background-attachment: fixed;
 }
 
@@ -93,4 +93,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .theme-deep-blue body { animation: none; }
+}
+
+/* Improve card/glass edge visibility against same-hue background */
+.theme-deep-blue .glass,
+.theme-deep-blue .glass-strong {
+  border-color: rgba(255, 255, 255, 0.12);
 }

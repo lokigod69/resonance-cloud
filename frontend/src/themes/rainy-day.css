@@ -35,7 +35,7 @@
 
 /* Gradient page background — fixed so it doesn't scroll */
 .theme-rainy-day body {
-  background: linear-gradient(to top left, #263141, #3D4B5F);
+  background: linear-gradient(to top left, #263141, #324050, #3D4B5F);
   background-attachment: fixed;
 }
 
@@ -93,4 +93,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .theme-rainy-day body { animation: none; }
+}
+
+/* Improve card/glass edge visibility against same-hue background */
+.theme-rainy-day .glass,
+.theme-rainy-day .glass-strong {
+  border-color: rgba(255, 255, 255, 0.12);
 }
