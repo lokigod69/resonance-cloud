@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 import asyncio
 from pathlib import Path
 
@@ -123,6 +124,8 @@ def build_suno_payload(concept_data: dict) -> dict:
     style = concept_data["music_caption"] or "Pop"
     # Strip "clear diction" — helpful for ACE-Step but may trigger kie.ai copyright filter
     style = style.replace(", clear diction", "").replace("clear diction, ", "").replace("clear diction", "")
+    # Remap language names Suno may not recognize
+    style = re.sub(r"(?i)\b(bisaya|cebuano)\b", "Filipino", style)
     title = concept_data["word"]
     lyrics = concept_data["lyrics"] or concept_data["word"]
 
