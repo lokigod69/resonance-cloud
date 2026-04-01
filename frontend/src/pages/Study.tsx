@@ -214,7 +214,7 @@ export default function Study() {
                 <button
                   onClick={skipPrev}
                   disabled={currentIndex === 0}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 border border-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all opacity-70 hover:opacity-100 disabled:opacity-20 disabled:cursor-not-allowed"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-background/80 hover:bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-all opacity-60 sm:opacity-0 sm:group-hover/video:opacity-100 disabled:opacity-20 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="h-5 w-5" />
                 </button>
@@ -223,7 +223,7 @@ export default function Study() {
                 <button
                   onClick={skipNext}
                   disabled={currentIndex >= words.length - 1}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 border border-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all opacity-70 hover:opacity-100 disabled:opacity-20 disabled:cursor-not-allowed"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-background/80 hover:bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-all opacity-60 sm:opacity-0 sm:group-hover/video:opacity-100 disabled:opacity-20 disabled:cursor-not-allowed"
                 >
                   <ChevronRight className="h-5 w-5" />
                 </button>

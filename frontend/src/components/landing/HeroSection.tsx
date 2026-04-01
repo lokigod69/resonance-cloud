@@ -99,6 +99,10 @@ export default function HeroSection() {
                   </Link>
                 </Button>
               </motion.div>
+              <p className="mt-3 text-sm text-white/50 sm:hidden">
+                Already have an account?{' '}
+                <Link to="/login" className="text-white/80 hover:text-white underline underline-offset-2">Sign in</Link>
+              </p>
             </motion.div>
           </div>
         </div>
