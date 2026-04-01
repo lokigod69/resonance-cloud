@@ -9,7 +9,7 @@ interface VolumeControlProps {
   className?: string
   buttonClassName?: string
   iconSize?: number
-  popDirection?: 'left' | 'up'
+  popDirection?: 'left' | 'up' | 'right'
 }
 
 const isTouchDevice = () =>
@@ -102,6 +102,13 @@ export function VolumeControl({
           bottom: 'calc(100% + 6px)',
           left: '50%',
           transform: 'translateX(-50%)',
+          pointerEvents: showSlider ? 'auto' : 'none',
+        } : popDirection === 'right' ? {
+          width: showSlider ? 80 : 0,
+          opacity: showSlider ? 1 : 0,
+          left: '2rem',
+          top: '50%',
+          transform: 'translateY(-50%)',
           pointerEvents: showSlider ? 'auto' : 'none',
         } : {
           width: showSlider ? 80 : 0,

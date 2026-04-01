@@ -179,7 +179,7 @@ export default function MusicPG() {
   return (
     <div className="flex flex-col min-h-full pb-4">
       {/* Header */}
-      <div className="pt-6 pb-2 px-6 flex justify-center">
+      <div className="sticky top-0 z-40 bg-gray-950 pt-6 pb-2 px-6 flex justify-center">
       <div className="flex items-center gap-3 flex-wrap w-full max-w-2xl">
         <MusicIcon className="h-5 w-5 text-[#5e6ad2] shrink-0" />
         <h1 className="text-lg font-semibold text-white">Your Music</h1>

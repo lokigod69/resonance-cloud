@@ -72,34 +72,44 @@ export function VideoControls({
     ? `transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`
     : 'opacity-0 group-hover/video:opacity-100 transition-opacity'
 
-  const baseClasses = `absolute bottom-0 left-0 right-0 z-10 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent ${visibilityClasses}`
-
   return (
-    <div
-      className={`${baseClasses} ${className}`}
-      onPointerMove={isAutoHide ? resetAutoHide : undefined}
-      onClick={isAutoHide ? resetAutoHide : undefined}
-    >
-      <button
-        onClick={(e) => { e.stopPropagation(); onTogglePlay() }}
-        className={buttonClassName}
-        title={isPlaying ? 'Pause' : 'Play'}
+    <>
+      {/* Mute/Volume — top-left, slider extends rightward */}
+      <div
+        className={`absolute top-3 left-3 z-10 ${visibilityClasses} ${className}`}
+        onPointerMove={isAutoHide ? resetAutoHide : undefined}
+        onClick={isAutoHide ? resetAutoHide : undefined}
       >
-        {isPlaying ? <Pause style={{ width: iconSize, height: iconSize }} /> : <Play style={{ width: iconSize, height: iconSize }} />}
-      </button>
-      <VolumeControl
-        volume={volume}
-        isMuted={isMuted}
-        onVolumeChange={onVolumeChange}
-        onToggleMute={onToggleMute}
-        iconSize={iconSize}
-        buttonClassName={buttonClassName}
-      />
-      <FullscreenButton
-        targetRef={fullscreenRef}
-        iconSize={iconSize}
-        className={`${buttonClassName} ml-auto`}
-      />
-    </div>
+        <VolumeControl
+          volume={volume}
+          isMuted={isMuted}
+          onVolumeChange={onVolumeChange}
+          onToggleMute={onToggleMute}
+          iconSize={iconSize}
+          buttonClassName={buttonClassName}
+          popDirection="right"
+        />
+      </div>
+
+      {/* Bottom bar: play + fullscreen */}
+      <div
+        className={`absolute bottom-0 left-0 right-0 z-10 flex items-center gap-2 p-3 bg-gradient-to-t from-black/70 to-transparent ${visibilityClasses} ${className}`}
+        onPointerMove={isAutoHide ? resetAutoHide : undefined}
+        onClick={isAutoHide ? resetAutoHide : undefined}
+      >
+        <button
+          onClick={(e) => { e.stopPropagation(); onTogglePlay() }}
+          className={buttonClassName}
+          title={isPlaying ? 'Pause' : 'Play'}
+        >
+          {isPlaying ? <Pause style={{ width: iconSize, height: iconSize }} /> : <Play style={{ width: iconSize, height: iconSize }} />}
+        </button>
+        <FullscreenButton
+          targetRef={fullscreenRef}
+          iconSize={iconSize}
+          className={`${buttonClassName} ml-auto`}
+        />
+      </div>
+    </>
   )
 }

@@ -140,7 +140,7 @@ export default function Music() {
   return (
     <div className="flex flex-col min-h-full pb-20">
       {/* Page header */}
-      <div className="px-6 pt-6 pb-4">
+      <div className="sticky top-0 z-40 bg-gray-950 px-6 pt-6 pb-4">
         <div className="flex items-center gap-3 mb-4">
           <MusicIcon className="h-6 w-6 text-[var(--accent,#06b6d4)]" />
           <h1 className="text-xl font-semibold text-white">Your Music</h1>
