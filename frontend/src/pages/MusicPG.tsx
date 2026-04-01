@@ -179,7 +179,8 @@ export default function MusicPG() {
   return (
     <div className="flex flex-col min-h-full pb-4">
       {/* Header */}
-      <div className="pt-6 px-6 pb-2 flex items-center gap-3 flex-wrap">
+      <div className="pt-6 pb-2 px-6 flex justify-center">
+      <div className="flex items-center gap-3 flex-wrap w-full max-w-2xl">
         <MusicIcon className="h-5 w-5 text-[#5e6ad2] shrink-0" />
         <h1 className="text-lg font-semibold text-white">Your Music</h1>
         {!loading && (
@@ -211,6 +212,7 @@ export default function MusicPG() {
             </SelectContent>
           </Select>
         )}
+      </div>
       </div>
 
       {/* Central area */}
@@ -318,50 +320,48 @@ export default function MusicPG() {
                 <Shuffle size={15} />
               </button>
             </div>
+
+            {/* Progress / seek bar + volume — prominent, below controls */}
+            <div className="w-full max-w-md flex items-center gap-3">
+              <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-9 text-right">
+                {formatTime(currentTime)}
+              </span>
+
+              <div
+                ref={progressBarRef}
+                className="flex-1 h-1.5 bg-white/10 rounded-full cursor-pointer group"
+                onClick={handleSeekClick}
+              >
+                <div
+                  className="h-full bg-[#5e6ad2] rounded-full transition-none group-hover:bg-[#7b87e8]"
+                  style={{ width: `${progress * 100}%` }}
+                />
+              </div>
+
+              <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-9">
+                {formatTime(duration)}
+              </span>
+
+              <VolumeControl
+                volume={volume}
+                isMuted={isMuted}
+                onVolumeChange={player.setVolume}
+                onToggleMute={player.toggleMute}
+                buttonClassName="w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:text-white hover:bg-white/10 transition-colors"
+                iconSize={15}
+              />
+            </div>
           </>
         )}
       </div>
 
-      {/* Bottom section */}
+      {/* Bottom: orb thumbnails pinned near bottom */}
       {!loading && filteredTracks.length > 0 && (
-        <div>
-          <OrbThumbnailRow
-            tracks={filteredTracks}
-            currentTrackId={currentTrack?.id ?? null}
-            onTrackSelect={player.play}
-          />
-
-          {/* Progress bar + volume */}
-          <div className="mt-3 px-6 flex items-center gap-3">
-            <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-9 text-right">
-              {formatTime(currentTime)}
-            </span>
-
-            <div
-              ref={progressBarRef}
-              className="flex-1 h-1 bg-white/10 rounded-full cursor-pointer group"
-              onClick={handleSeekClick}
-            >
-              <div
-                className="h-full bg-[#5e6ad2] rounded-full transition-none group-hover:bg-[#7b87e8]"
-                style={{ width: `${progress * 100}%` }}
-              />
-            </div>
-
-            <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-9">
-              {formatTime(duration)}
-            </span>
-
-            <VolumeControl
-              volume={volume}
-              isMuted={isMuted}
-              onVolumeChange={player.setVolume}
-              onToggleMute={player.toggleMute}
-              buttonClassName="w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:text-white hover:bg-white/10 transition-colors"
-              iconSize={15}
-            />
-          </div>
-        </div>
+        <OrbThumbnailRow
+          tracks={filteredTracks}
+          currentTrackId={currentTrack?.id ?? null}
+          onTrackSelect={player.play}
+        />
       )}
 
       {/* Hidden audio element — owned by useMusicPlayer */}

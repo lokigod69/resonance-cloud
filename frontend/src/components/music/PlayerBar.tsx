@@ -160,6 +160,7 @@ export function PlayerBar({
           onToggleMute={onToggleMute}
           buttonClassName="w-8 h-8 flex items-center justify-center rounded-md text-gray-500 hover:text-white hover:bg-white/10 transition-colors"
           iconSize={14}
+          popDirection="up"
         />
       </div>
     </div>

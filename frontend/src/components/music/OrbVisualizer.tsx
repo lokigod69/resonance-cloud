@@ -121,15 +121,18 @@ export function OrbVisualizer({
       const cy = totalSize / 2
       timeRef.current += 0.016
 
-      // Sample frequency data once per frame, not per bar
+      // Sample frequency data once per frame, not per bar.
+      // Fall back to simulated if context is suspended or CORS blocks analysis.
+      let hasRealtimeSignal = false
       if (visualizerModeRef.current === 'realtime' && analyserRef.current) {
         analyserRef.current.getByteFrequencyData(freqDataRef.current)
+        hasRealtimeSignal = freqDataRef.current.some(v => v > 0)
       }
 
       for (let i = 0; i < BAR_COUNT; i++) {
         let targetHeight: number
 
-        if (visualizerModeRef.current === 'realtime') {
+        if (hasRealtimeSignal) {
           const binIndex = Math.floor((i / BAR_COUNT) * freqDataRef.current.length)
           targetHeight = (freqDataRef.current[binIndex] / 255) * MAX_BAR_LEN
         } else if (isPlaying) {

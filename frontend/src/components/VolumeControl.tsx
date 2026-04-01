@@ -9,6 +9,7 @@ interface VolumeControlProps {
   className?: string
   buttonClassName?: string
   iconSize?: number
+  popDirection?: 'left' | 'up'
 }
 
 const isTouchDevice = () =>
@@ -22,6 +23,7 @@ export function VolumeControl({
   className = '',
   buttonClassName = 'p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors',
   iconSize = 16,
+  popDirection = 'left',
 }: VolumeControlProps) {
   const [showSlider, setShowSlider] = useState(false)
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -91,10 +93,17 @@ export function VolumeControl({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Slider: absolutely positioned to the left of the button, out of flex flow */}
+      {/* Slider: absolutely positioned out of flex flow */}
       <div
         className="absolute overflow-hidden transition-all duration-200"
-        style={{
+        style={popDirection === 'up' ? {
+          width: showSlider ? 80 : 0,
+          opacity: showSlider ? 1 : 0,
+          bottom: 'calc(100% + 6px)',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          pointerEvents: showSlider ? 'auto' : 'none',
+        } : {
           width: showSlider ? 80 : 0,
           opacity: showSlider ? 1 : 0,
           right: '2rem',
