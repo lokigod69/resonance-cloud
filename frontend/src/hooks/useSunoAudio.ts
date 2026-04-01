@@ -213,14 +213,34 @@ export function useSunoAudio(
     if (vid) vid.muted = false
   }, [videoRef])
 
+  // ─── Load success ────────────────────────────────────────────────────────────
+
+  const handleSunoLoad = useCallback(() => {
+    console.info('[Suno] Audio loaded for word:', resetKey, 'URL:', sunoAudioUrl?.slice(-40))
+  }, [resetKey, sunoAudioUrl])
+
   // ─── Error fallback ─────────────────────────────────────────────────────────
 
   const handleSunoError = useCallback(() => {
     setHasError(true)
-    // Unmute video so user still hears something
-    const vid = videoRef.current
-    if (vid) vid.muted = false
-  }, [videoRef])
+    // Cancel any running fade — the audio element is dead
+    if (fadeRafRef.current !== null) {
+      cancelAnimationFrame(fadeRafRef.current)
+      fadeRafRef.current = null
+    }
+    // Pause the broken audio element
+    const audio = sunoAudioRef.current
+    if (audio) {
+      audio.pause()
+      audio.volume = 0
+    }
+    // Do NOT unmute the video here — let the next render cycle handle it.
+    // When hasSuno flips to false on re-render:
+    //   - skipMuteControl becomes false
+    //   - useVideoVolume effect takes over vid.muted/vid.volume
+    //   - handleTimeUpdate detaches (no more zone logic)
+    console.warn('[Suno] Audio failed to load — falling back to ACE-Step')
+  }, [sunoAudioRef])
 
   return {
     sunoAudioRef,
@@ -231,6 +251,7 @@ export function useSunoAudio(
     handleVideoPause,
     handleVideoEnded,
     handleTimeUpdate,
+    handleSunoLoad,
     handleSunoError,
     resetSuno,
   }

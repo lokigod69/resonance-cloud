@@ -248,7 +248,6 @@ export default function StudyPG() {
                     src={activeVideoUrl}
                     autoPlay
                     loop
-                    muted
                     playsInline
                     className="w-full aspect-video object-contain bg-black cursor-pointer"
                     onClick={togglePlay}
@@ -262,6 +261,7 @@ export default function StudyPG() {
                     key={current.id}
                     src={current.suno_audio_url ?? undefined}
                     preload={current.suno_audio_url ? 'auto' : 'none'}
+                    onCanPlayThrough={suno.handleSunoLoad}
                     onError={suno.handleSunoError}
                   />
                   <VideoControls
