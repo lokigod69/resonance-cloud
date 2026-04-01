@@ -105,6 +105,7 @@ DEFAULT_SETTINGS = {
         "font_size": 144,
         "text_color": "auto",
         "background_color": "#000000",
+        "gradient_background": False,
         "show_translation": False,
         "show_phonetic": False,
     },

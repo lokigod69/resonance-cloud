@@ -182,6 +182,7 @@ export const BOOKEND_FIELDS: FieldDef[] = [
   { key: 'font_size', label: 'Font Size', type: 'slider', min: 24, max: 200, step: 4, default: 144, helper: 'Font size at 1080p (scales proportionally at other resolutions)', condition: s => s.enabled !== false, advanced: true },
   { key: 'text_color', label: 'Text Color', type: 'combo', options: ['auto', 'white'], default: 'auto', helper: 'Text color on word card. "auto" extracts from assembled video.', condition: s => s.enabled !== false, advanced: true },
   { key: 'background_color', label: 'Background Color', type: 'text', placeholder: '#000000', default: '#000000', condition: s => s.enabled !== false, advanced: true },
+  { key: 'gradient_background', label: 'Gradient Background', type: 'toggle', default: false, helper: 'Tint background with a radial gradient extracted from the scene images', condition: s => s.enabled !== false },
   { key: 'show_translation', label: 'Show Translation', type: 'toggle', default: false, helper: 'Display L1 translation below the target word', condition: s => s.enabled !== false },
   { key: 'show_phonetic', label: 'Show Phonetic (IPA)', type: 'toggle', default: false, helper: 'Display IPA phonetic transcription (not yet implemented in engine)', condition: s => s.enabled !== false },
 ]
