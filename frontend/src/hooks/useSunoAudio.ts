@@ -51,8 +51,8 @@ export function useSunoAudio(
     const tick = () => {
       const elapsed  = performance.now() - startTime
       const progress = Math.min(elapsed / durationMs, 1.0)
-      // Quadratic ease-out: natural-sounding fade (fast start, slow finish)
-      audio.volume = startVolume * (1 - progress) * (1 - progress)
+      // Quadratic ease-in: stays full, sharp drop at the end (no mushy tail)
+      audio.volume = startVolume * (1 - progress * progress)
       if (progress < 1.0 && !audio.paused) {
         fadeRafRef.current = requestAnimationFrame(tick)
       } else {

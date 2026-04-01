@@ -560,7 +560,6 @@ function VideoViewerModal({
                   src={`${activeVideoUrl}?t=${videoKey}`}
                   autoPlay
                   playsInline
-                  loop
                   onClick={togglePlay}
                   onPlay={() => { onPlay(); suno.handleVideoPlay() }}
                   onPause={() => { onPause(); suno.handleVideoPause() }}
