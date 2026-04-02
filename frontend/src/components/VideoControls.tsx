@@ -32,6 +32,8 @@ interface VideoControlsProps {
   buttonClassName?: string
   /** Icon size for volume and fullscreen buttons */
   iconSize?: number
+  /** When true, skips rendering the top-left VolumeControl so the caller can render it externally */
+  renderVolumeExternal?: boolean
 }
 
 export function VideoControls({
@@ -46,6 +48,7 @@ export function VideoControls({
   className = '',
   buttonClassName = 'p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors',
   iconSize = 16,
+  renderVolumeExternal = false,
 }: VideoControlsProps) {
   // Auto-hide logic for non-hover mode
   const [showControls, setShowControls] = useState(true)
@@ -75,21 +78,23 @@ export function VideoControls({
   return (
     <>
       {/* Mute/Volume — top-left, slider extends rightward */}
-      <div
-        className={`absolute top-3 left-3 z-10 ${visibilityClasses} ${className}`}
-        onPointerMove={isAutoHide ? resetAutoHide : undefined}
-        onClick={isAutoHide ? resetAutoHide : undefined}
-      >
-        <VolumeControl
-          volume={volume}
-          isMuted={isMuted}
-          onVolumeChange={onVolumeChange}
-          onToggleMute={onToggleMute}
-          iconSize={iconSize}
-          buttonClassName={buttonClassName}
-          popDirection="right"
-        />
-      </div>
+      {!renderVolumeExternal && (
+        <div
+          className={`absolute top-3 left-3 z-10 ${visibilityClasses} ${className}`}
+          onPointerMove={isAutoHide ? resetAutoHide : undefined}
+          onClick={isAutoHide ? resetAutoHide : undefined}
+        >
+          <VolumeControl
+            volume={volume}
+            isMuted={isMuted}
+            onVolumeChange={onVolumeChange}
+            onToggleMute={onToggleMute}
+            iconSize={iconSize}
+            buttonClassName={buttonClassName}
+            popDirection="right"
+          />
+        </div>
+      )}
 
       {/* Bottom bar: play + fullscreen */}
       <div

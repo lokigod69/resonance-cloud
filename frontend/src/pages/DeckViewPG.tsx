@@ -29,6 +29,7 @@ import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { useSunoAudio } from '@/hooks/useSunoAudio'
 import { VideoControls } from '@/components/VideoControls'
+import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 
@@ -414,9 +415,24 @@ export default function DeckViewPG() {
       <div className="-mx-6 sm:mx-0">
       {words.length > 0 ? (
         <div className="flex flex-col items-center">
+          {/* Outer wrapper: group/carousel lives here so VolumeControl can respond to hover */}
+          <div className="group/carousel relative w-full max-w-4xl">
+            {videoActiveIndex === activeIndex && (
+              <div className="absolute top-3 left-3 z-30 opacity-0 group-hover/carousel:opacity-100 transition-opacity">
+                <VolumeControl
+                  volume={suno.hasSuno ? sunoVolume : volume}
+                  isMuted={effectiveIsMuted}
+                  onVolumeChange={handleVolumeChange}
+                  onToggleMute={effectiveToggleMute}
+                  popDirection="right"
+                  iconSize={16}
+                  buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                />
+              </div>
+            )}
           <div
             {...bind()}
-            className="group/carousel relative w-full max-w-4xl h-[80vh] max-h-[770px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+            className="relative w-full h-[80vh] max-h-[770px] flex items-center justify-center cursor-grab active:cursor-grabbing"
             style={{ perspective: '1200px', touchAction: 'none' }}
           >
             {/* Prev button */}
@@ -544,6 +560,7 @@ export default function DeckViewPG() {
                             fullscreenRef={videoRef}
                             buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
                             className="z-10"
+                            renderVolumeExternal={true}
                           />
                         )}
                       </div>
@@ -687,6 +704,7 @@ export default function DeckViewPG() {
                 <ChevronRight className="h-5 w-5" />
               </button>
             )}
+          </div>
           </div>
 
           {/* Dots */}
