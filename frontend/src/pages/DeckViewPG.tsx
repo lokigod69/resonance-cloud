@@ -224,6 +224,13 @@ export default function DeckViewPG() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navKey])
 
+  // Pause video when navigating to a different card
+  useLayoutEffect(() => {
+    return () => {
+      videoRef.current?.pause()
+    }
+  }, [activeIndex])
+
   // Pause video on page leave
   useEffect(() => {
     return () => {
@@ -458,7 +465,7 @@ export default function DeckViewPG() {
                     className="absolute w-[calc(100vw-32px)] max-w-[800px] h-[80vh] max-h-[750px] flex items-center justify-center"
                     initial={false}
                     animate={{
-                      x: offset * (typeof window !== 'undefined' && window.innerWidth < 640 ? 100 : 200) + dragOffset,
+                      x: offset * (typeof window !== 'undefined' && window.innerWidth < 640 ? 100 : 200) + (offset === 0 ? dragOffset : 0),
                       scale: offset === 0 ? 1 : 0.85,
                       opacity: offset === 0 ? 1 : 0.4,
                       zIndex: 10 - Math.abs(offset),
@@ -481,7 +488,7 @@ export default function DeckViewPG() {
                             key={offset === 0 ? `${word.id}-${navKey}-${version}` : word.id}
                             src={(offset === 0 ? activeVideoUrl : word.video_url)!}
                             playsInline
-                            className="absolute inset-0 w-full h-full object-cover z-[1]"
+                            className="absolute inset-0 w-full h-full object-cover z-[1] pointer-events-none"
                             onPlay={() => setIsPlaying(true)}
                             onPause={() => setIsPlaying(false)}
                             onTimeUpdate={offset === 0 && suno.hasSuno ? suno.handleTimeUpdate : undefined}
