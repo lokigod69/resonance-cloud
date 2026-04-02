@@ -305,3 +305,19 @@ async def generate_song(
 
 
     return {"status": "error", "error": "unexpected: no code path returned"}
+
+
+async def download_suno_audio(url: str, dest_path: Path) -> Path:
+    """Download a Suno MP3 from kie.ai CDN to a local file."""
+    dest_path.parent.mkdir(parents=True, exist_ok=True)
+    async with httpx.AsyncClient(timeout=60.0) as client:
+        response = await client.get(url)
+        response.raise_for_status()
+        content_length = response.headers.get("content-length")
+        if content_length and len(response.content) < int(content_length):
+            raise RuntimeError(
+                f"Suno download truncated: got {len(response.content)} bytes, "
+                f"expected {content_length}"
+            )
+        dest_path.write_bytes(response.content)
+    return dest_path

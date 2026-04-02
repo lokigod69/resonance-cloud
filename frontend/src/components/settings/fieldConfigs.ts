@@ -195,6 +195,27 @@ export const SUNO_FIELDS: FieldDef[] = [
     default: false,
     helper: 'Automatically generate a Suno V5.5 song after pipeline completes (~6¢ per word)',
   },
+  {
+    key: 'outro_mode',
+    label: 'Outro Mode',
+    type: 'dropdown',
+    options: ['fade_out', 'clean_cut'],
+    optionLabels: { fade_out: 'Fade Out', clean_cut: 'Clean Cut' },
+    default: 'fade_out',
+    helper: 'Fade Out: Suno fades over black. Clean Cut: Suno hard-cuts, silent word card shown.',
+    condition: (s: any) => s.enabled !== false,
+  },
+  {
+    key: 'fade_tail_duration',
+    label: 'Fade Tail Duration',
+    type: 'slider',
+    min: 1.0,
+    max: 4.0,
+    step: 0.5,
+    default: 2.5,
+    helper: 'Seconds of Suno fade-out after video ends (Fade Out mode only)',
+    condition: (s: any) => s.enabled !== false && s.outro_mode === 'fade_out',
+  },
 ]
 
 export const STAGE_FIELDS: Record<string, FieldDef[]> = {

@@ -36,7 +36,7 @@ from src.workspace import create_word_folder, get_word_dir
 from src.slugify import slugify, language_to_code
 from src.dispatcher import check_all_engines
 from src.models import Enrichment
-from src.suno import generate_song as suno_generate_song
+from src.suno import generate_song as suno_generate_song, download_suno_audio
 
 import httpx
 from supabase import create_client, Client
@@ -294,6 +294,49 @@ def get_song_takes(word_dir: Path, manifest_data: Any) -> list[str]:
         if f.suffix in (".flac", ".wav", ".mp3") and f.name.startswith("take_")
     )
     return takes if takes else [current_song]
+
+
+# ─── Suno Audio Helpers ──────────────────────────────────────────────────────
+
+def _probe_clip_durations(video_dir: Path) -> float:
+    """Return total duration of all scene_*.mp4 clips in video_dir."""
+    total = 0.0
+    for clip in sorted(video_dir.glob("scene_*.mp4")):
+        probe = subprocess.run(
+            ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
+             "-of", "csv=p=0", str(clip)],
+            capture_output=True, text=True, timeout=10,
+        )
+        total += float(probe.stdout.strip())
+    return total
+
+
+def _probe_audio_duration(audio_path: Path) -> float:
+    """Return duration of an audio file in seconds."""
+    probe = subprocess.run(
+        ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
+         "-of", "csv=p=0", str(audio_path)],
+        capture_output=True, text=True, timeout=10,
+    )
+    return float(probe.stdout.strip())
+
+
+def _trim_suno_mp3(
+    input_path: Path, output_path: Path,
+    trim_to: float, fade_start: float, fade_duration: float,
+) -> Path:
+    """Trim and fade-out an MP3 file. fade_duration=0 skips the fade filter."""
+    af = f"afade=t=out:st={fade_start}:d={fade_duration}" if fade_duration > 0 else "anull"
+    cmd = [
+        "ffmpeg", "-y", "-i", str(input_path),
+        "-t", str(trim_to),
+        "-af", af,
+        str(output_path),
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+    if result.returncode != 0:
+        raise RuntimeError(f"ffmpeg trim failed: {result.stderr[-300:]}")
+    return output_path
 
 
 # ─── Metadata Collection ─────────────────────────────────────────────────────
@@ -712,9 +755,20 @@ async def process_word(
     # Run shared pipeline stages (images, concept, song, video) with retry
     AB_STAGES = {'assembly', 'bookend'}
     pipeline_start = time.monotonic()
+
+    suno_task = None
+    suno_settings = load_defaults(workspace_path).get("suno", {})
+    suno_enabled = suno_settings.get("enabled", False)
+
     for stage in stages_to_run:
         if stage in AB_STAGES:
             continue  # Handled by A/B loop below
+
+        # When Suno is enabled, force ACE-Step to single take — it's now just a fallback
+        if stage == "song" and suno_enabled:
+            from src.manifest import update_settings
+            update_settings(word_dir, "song", {"batch_size": 1})
+
         success = False
         for attempt in range(MAX_RETRIES + 1):
             try:
@@ -758,164 +812,337 @@ async def process_word(
             }).eq("id", job["id"]).execute()
             return False
 
-    # ── A/B dual-take loop (two passes: assemblies first, bookends second) ────
-    # Pass 1 assembles all takes. Version A assembly failure is fatal; Version B
-    # assembly failure degrades gracefully to A-only. Pass 2 applies bookends
-    # independently — a bookend failure is non-fatal for both versions.
-    # _resolve_final_video() handles bookend→assembly fallback at upload time.
-    # run_stage() re-reads the manifest each call, so update_selection() before
-    # each assembly makes it pick up the correct song take automatically.
-    # Version dirs auto-increment (clean-001, clean-002, bookend-001, bookend-002).
-    # Bookend TTS is generated once and reused on the second run (zero API cost).
+        # After song: clear the batch_size=1 override so re-runs without Suno use the
+        # workspace default (typically 2 takes).
+        if stage == "song" and suno_enabled:
+            from src.manifest import update_settings
+            update_settings(word_dir, "song", {"batch_size": None})
 
-    manifest_data = read_manifest(word_dir)
-    takes = get_song_takes(word_dir, manifest_data)
-    take_a = takes[0] if takes else None
-    take_b = takes[1] if len(takes) >= 2 else None
+        # After concept: fire Suno generation in the background while song+video run
+        # Guard: skip if suno_audio_url already exists (prevents double billing on re-runs)
+        if stage == "concept" and suno_enabled and not word_record.get("suno_audio_url"):
+            log.info("  [Suno] Firing background task after concept stage")
+            suno_task = asyncio.create_task(
+                suno_generate_song(
+                    str(workspace_path.parent), job["user_id"], job["deck_id"], word_slug_val
+                )
+            )
 
-    ab_stages_to_run = [s for s in ('assembly', 'bookend') if s in stages_to_run]
+    # ── Await Suno task and download audio ──────────────────────────────────
+    suno_audio_paths = None   # (path_a, path_b|None, clip_duration) if Suno ready
+    suno_dir: Path | None = None
 
-    # Resolve bookend-enabled for version B fallback (when smart retry skips A/B stages)
-    _defaults_ab = load_defaults(workspace_path)
-    _be_ab = {**_defaults_ab.get('bookend', {}), **manifest_data.settings.get('bookend', {})}
-    _bookend_on = _be_ab.get('enabled', True)
-    _full_ab_stages = ['assembly', 'bookend'] if _bookend_on else ['assembly']
+    if suno_task is not None:
+        try:
+            suno_result = await suno_task
+        except Exception as _e:
+            log.error("  [Suno] Background task failed: %s", _e)
+            suno_result = None
 
-    ab_manifests: dict[str, Any] = {}
-    _assembled_labels: set[str] = set()     # labels with a successful assembly
-    _assembly_finals: dict[str, str] = {}   # label -> selected.final version name (set when assembly runs)
-
-    # ── Pass 1: Assemblies ───────────────────────────────────────────────────
-    for label, take in [('a', take_a), ('b', take_b)]:
-        if take is None:
-            continue
-
-        # Determine which stages this label needs (mirrors original per-label logic)
-        stages_for_label = list(ab_stages_to_run)
-        if not stages_for_label and label == 'b':
-            # B always needs assembly+bookend (never ran before)
-            stages_for_label = list(_full_ab_stages)
-
-        # Smart retry: A already complete — snapshot manifest and skip both passes
-        if not stages_for_label and label == 'a':
-            log.info("  === Version A: already complete (smart retry) ===")
-            ab_manifests['a'] = read_manifest(word_dir)
-            _assembled_labels.add('a')
-            continue
-
-        if 'assembly' not in stages_for_label:
-            # Assembly already done for this label (smart retry, only bookend needed)
-            _assembled_labels.add(label)
-            continue
-
-        log.info("  === Version %s assembly: %s ===", label.upper(), take)
-        update_selection(word_dir, 'song', take)
-
-        assembly_ok = False
-        for attempt in range(MAX_RETRIES + 1):
-            try:
-                log.info("    [%s] Stage assembly (attempt %d)", label.upper(), attempt + 1)
-                await run_stage(workspace_path, word_slug_val, 'assembly')
-                assembly_ok = True
-                break
-            except Exception as e:
-                log.warning("    [%s] Stage assembly attempt %d failed: %s",
-                            label.upper(), attempt + 1, e)
-                if attempt < MAX_RETRIES:
-                    try:
-                        _defaults = load_defaults(workspace_path)
-                        _manifest = read_manifest(word_dir)
-                        _stage_defaults = _defaults.get('assembly', {})
-                        _stage_overrides = _manifest.settings.get('assembly', {})
-                        _stage_settings = {**_stage_defaults, **_stage_overrides}
-                    except Exception:
-                        _stage_settings = None
-                    overrides = get_fallback_overrides('assembly', attempt + 1, _stage_settings)
-                    if overrides:
-                        log.info("    [%s] Retrying assembly with fallback: %s", label.upper(), overrides)
-                        from src.manifest import update_settings
-                        update_settings(word_dir, 'assembly', overrides)
-
-        if assembly_ok:
-            _assembled_labels.add(label)
-            # Snapshot selected.final immediately so Pass 2 can restore it before
-            # running bookend (prevents take_b's assembly from overwriting take_a's).
-            _assembly_finals[label] = read_manifest(word_dir).selected.final or ''
-        elif label == 'a':
-            log.error("  Word %s: version A assembly failed", word_slug_val)
-            sb.table("words").update({
-                "status": "failed",
-                "error_message": "Failed at assembly (version A)",
-                "retry_count": MAX_RETRIES + 1,
-            }).eq("id", word_record["id"]).execute()
-            sb.rpc("refund_credit", {"user_id_param": job["user_id"]}).execute()
-            sb.table("generation_jobs").update({
-                "words_failed": job.get("words_failed", 0) + 1,
-            }).eq("id", job["id"]).execute()
-            return False
+        if suno_result and suno_result.get("status") == "success":
+            audio_url_a = suno_result.get("audio_url")
+            audio_url_b = suno_result.get("audio_url_b")
+            if audio_url_a:
+                suno_dir = word_dir / "songs" / "suno"
+                suno_dir.mkdir(parents=True, exist_ok=True)
+                try:
+                    path_a = await download_suno_audio(audio_url_a, suno_dir / "suno_a.mp3")
+                    path_b = await download_suno_audio(audio_url_b, suno_dir / "suno_b.mp3") \
+                             if audio_url_b else None
+                    manifest_snap = read_manifest(word_dir)
+                    video_version = manifest_snap.selected.video
+                    if not video_version:
+                        raise ValueError("No video version selected in manifest")
+                    clip_duration = _probe_clip_durations(word_dir / "videos" / video_version)
+                    suno_duration_a = _probe_audio_duration(path_a)
+                    _outro_mode_guard = suno_settings.get("outro_mode", "fade_out")
+                    _fade_tail_guard = float(suno_settings.get("fade_tail_duration", 2.5))
+                    _min_required = (clip_duration + _fade_tail_guard) if _outro_mode_guard == "fade_out" else clip_duration
+                    if suno_duration_a >= _min_required:
+                        suno_audio_paths = (path_a, path_b, clip_duration)
+                        log.info("  [Suno] Audio ready: %.1fs clips", clip_duration)
+                    else:
+                        log.warning(
+                            "  [Suno] Audio too short (%.1fs < %.1fs required) — falling back to ACE-Step",
+                            suno_duration_a, _min_required,
+                        )
+                except Exception as _dl_e:
+                    log.error("  [Suno] Download failed: %s — falling back to ACE-Step", _dl_e)
+            else:
+                log.warning("  [Suno] API returned status=success but no audio URL — falling back to ACE-Step")
         else:
-            # Version B assembly failed — degrade gracefully, continue with A only
-            log.warning("  Version B assembly failed for %s — continuing with A only", word_slug_val)
+            log.warning("  [Suno] Generation failed: %s",
+                        suno_result.get("error") if suno_result else "no result")
 
-    # ── Pass 2: Bookends ─────────────────────────────────────────────────────
-    for label, take in [('a', take_a), ('b', take_b)]:
-        if label not in _assembled_labels:
-            continue  # take was None, or Version B assembly failed
+    # ── Assembly + Bookend ───────────────────────────────────────────────────
+    # Initialize both manifest dicts before the if/else so the upload section
+    # always has them in scope regardless of which path ran.
+    ab_manifests: dict[str, Any] = {}
+    suno_ab_manifests: dict[str, Any] = {}
+    take_a: str | None = None
+    take_b: str | None = None
 
-        stages_for_label = list(ab_stages_to_run)
-        if not stages_for_label and label == 'b':
-            stages_for_label = list(_full_ab_stages)
+    if suno_audio_paths is not None:
+        # ── SUNO PATH ────────────────────────────────────────────────────────
+        # Run assembly+bookend with Suno audio. Two passes (assemblies first,
+        # bookends second) mirrors the ACE-Step structure.
+        assert suno_dir is not None
+        _suno_path_a, _suno_path_b, clip_duration = suno_audio_paths
+        outro_mode = suno_settings.get("outro_mode", "fade_out")
+        fade_tail = float(suno_settings.get("fade_tail_duration", 2.5))
 
-        if not stages_for_label:
-            # Smart retry: A already complete, manifest already snapshotted in Pass 1
-            continue
+        from src.manifest import update_settings
 
-        if 'bookend' not in stages_for_label:
-            # Bookend disabled or not needed — snapshot manifest after assembly
-            ab_manifests[label] = read_manifest(word_dir)
-            continue
+        # Trim Suno audio according to outro_mode
+        if outro_mode == "fade_out":
+            trim_to = clip_duration + fade_tail
+            trimmed_a = _trim_suno_mp3(_suno_path_a, suno_dir / "take_suno_a.mp3",
+                                       trim_to, clip_duration, fade_tail)
+            trimmed_b = _trim_suno_mp3(_suno_path_b, suno_dir / "take_suno_b.mp3",
+                                       trim_to, clip_duration, fade_tail) \
+                        if _suno_path_b else None
+        else:  # clean_cut — trim to exact clip duration with micro-fade to avoid click
+            _fade_start = max(0.0, clip_duration - 0.1)
+            trimmed_a = _trim_suno_mp3(_suno_path_a, suno_dir / "take_suno_a.mp3",
+                                       clip_duration, _fade_start, 0.1)
+            trimmed_b = _trim_suno_mp3(_suno_path_b, suno_dir / "take_suno_b.mp3",
+                                       clip_duration, _fade_start, 0.1) \
+                        if _suno_path_b else None
 
-        # Restore selected.final to this label's assembly version before running
-        # bookend. Required because Pass 1 leaves the manifest pointing to the
-        # last assembly (take_b), which would cause take_a's bookend to use the
-        # wrong assembled video. Only applies when assembly actually ran in Pass 1.
-        if label in _assembly_finals and _assembly_finals[label]:
-            update_selection(word_dir, 'final', _assembly_finals[label])
+        suno_takes = [("a", trimmed_a)]
+        if trimmed_b:
+            suno_takes.append(("b", trimmed_b))
 
-        log.info("  === Version %s bookend ===", label.upper())
+        suno_assembled_labels: set[str] = set()
+        suno_assembly_finals: dict[str, str] = {}
 
-        bookend_ok = False
-        for attempt in range(MAX_RETRIES + 1):
-            try:
-                log.info("    [%s] Stage bookend (attempt %d)", label.upper(), attempt + 1)
-                await run_stage(workspace_path, word_slug_val, 'bookend')
-                bookend_ok = True
-                break
-            except Exception as e:
-                log.warning("    [%s] Stage bookend attempt %d failed: %s",
-                            label.upper(), attempt + 1, e)
-                if attempt < MAX_RETRIES:
+        try:
+            # Pass 1: Assemblies
+            for label, mp3_path in suno_takes:
+                song_version = f"suno/{mp3_path.name}"
+                update_selection(word_dir, "song", song_version)
+
+                asm_overrides: dict[str, Any] = {
+                    "silence_trim": False, "lufs_normalize": False, "gap_strategy": "fade_black",
+                }
+                update_settings(word_dir, "assembly", asm_overrides)
+
+                asm_ok = False
+                for attempt in range(MAX_RETRIES + 1):
                     try:
-                        _defaults = load_defaults(workspace_path)
-                        _manifest = read_manifest(word_dir)
-                        _stage_defaults = _defaults.get('bookend', {})
-                        _stage_overrides = _manifest.settings.get('bookend', {})
-                        _stage_settings = {**_stage_defaults, **_stage_overrides}
-                    except Exception:
-                        _stage_settings = None
-                    overrides = get_fallback_overrides('bookend', attempt + 1, _stage_settings)
-                    if overrides:
-                        log.info("    [%s] Retrying bookend with fallback: %s", label.upper(), overrides)
-                        from src.manifest import update_settings
-                        update_settings(word_dir, 'bookend', overrides)
+                        log.info("  === Suno %s assembly (attempt %d) ===",
+                                 label.upper(), attempt + 1)
+                        await run_stage(workspace_path, word_slug_val, "assembly")
+                        asm_ok = True
+                        break
+                    except Exception as e:
+                        log.warning("  [Suno %s] assembly attempt %d failed: %s",
+                                    label.upper(), attempt + 1, e)
 
-        if not bookend_ok:
-            log.warning("    [%s] Bookend failed for %s — assembly fallback will be used at upload",
-                        label.upper(), word_slug_val)
+                if asm_ok:
+                    suno_assembled_labels.add(label)
+                    suno_assembly_finals[label] = read_manifest(word_dir).selected.final or ""
+                elif label == "a":
+                    log.error("  [Suno] Version A assembly failed — falling back to ACE-Step")
+                    suno_audio_paths = None   # fall through to ACE-Step below
+                    break
+                else:
+                    log.warning("  [Suno] Version B assembly failed — A only")
 
-        # Snapshot manifest whether bookend succeeded or not.
-        # _resolve_final_video() picks bookend if present, otherwise falls back to assembly.
-        ab_manifests[label] = read_manifest(word_dir)
+            # Pass 2: Bookends (only if Suno assembly path survived)
+            if suno_audio_paths is not None:
+                for label, _mp3 in suno_takes:
+                    if label not in suno_assembled_labels:
+                        continue
+
+                    if label in suno_assembly_finals and suno_assembly_finals[label]:
+                        update_selection(word_dir, "final", suno_assembly_finals[label])
+
+                    if outro_mode == "fade_out":
+                        update_settings(word_dir, "bookend", {"skip_outro": True})
+                    else:
+                        update_settings(word_dir, "bookend", {"outro_mode": "silent"})
+
+                    bk_ok = False
+                    for attempt in range(MAX_RETRIES + 1):
+                        try:
+                            log.info("  === Suno %s bookend (attempt %d) ===",
+                                     label.upper(), attempt + 1)
+                            await run_stage(workspace_path, word_slug_val, "bookend")
+                            bk_ok = True
+                            break
+                        except Exception as e:
+                            log.warning("  [Suno %s] bookend attempt %d failed: %s",
+                                        label.upper(), attempt + 1, e)
+
+                    if not bk_ok:
+                        log.warning("  [Suno %s] bookend failed — assembly fallback at upload",
+                                    label.upper())
+
+                    suno_ab_manifests[label] = read_manifest(word_dir)
+
+        finally:
+            # Always restore overrides so resolve_settings() uses workspace defaults
+            # for subsequent words — even if assembly A failed or an exception occurred.
+            update_settings(word_dir, "assembly", {
+                "silence_trim": None, "lufs_normalize": None, "gap_strategy": None,
+            })
+            update_settings(word_dir, "bookend", {"skip_outro": None, "outro_mode": None})
+
+    if suno_audio_paths is None:
+        # ── ACE-STEP PATH (Suno disabled, failed, or Suno A assembly failed) ──
+        # Standard two-pass A/B pipeline. When Suno is enabled, force single take
+        # (take_b=None) — Suno is primary; generating 2 ACE-Step takes wastes GPU.
+        manifest_data = read_manifest(word_dir)
+        takes = get_song_takes(word_dir, manifest_data)
+        take_a = takes[0] if takes else None
+        take_b = None if suno_enabled else (takes[1] if len(takes) >= 2 else None)
+
+        ab_stages_to_run = [s for s in ('assembly', 'bookend') if s in stages_to_run]
+
+        # Resolve bookend-enabled for version B fallback (when smart retry skips A/B stages)
+        _defaults_ab = load_defaults(workspace_path)
+        _be_ab = {**_defaults_ab.get('bookend', {}), **manifest_data.settings.get('bookend', {})}
+        _bookend_on = _be_ab.get('enabled', True)
+        _full_ab_stages = ['assembly', 'bookend'] if _bookend_on else ['assembly']
+
+        _assembled_labels: set[str] = set()     # labels with a successful assembly
+        _assembly_finals: dict[str, str] = {}   # label -> selected.final version name
+
+        # ── Pass 1: Assemblies ───────────────────────────────────────────────────
+        for label, take in [('a', take_a), ('b', take_b)]:
+            if take is None:
+                continue
+
+            # Determine which stages this label needs (mirrors original per-label logic)
+            stages_for_label = list(ab_stages_to_run)
+            if not stages_for_label and label == 'b':
+                # B always needs assembly+bookend (never ran before)
+                stages_for_label = list(_full_ab_stages)
+
+            # Smart retry: A already complete — snapshot manifest and skip both passes
+            if not stages_for_label and label == 'a':
+                log.info("  === Version A: already complete (smart retry) ===")
+                ab_manifests['a'] = read_manifest(word_dir)
+                _assembled_labels.add('a')
+                continue
+
+            if 'assembly' not in stages_for_label:
+                # Assembly already done for this label (smart retry, only bookend needed)
+                _assembled_labels.add(label)
+                continue
+
+            log.info("  === Version %s assembly: %s ===", label.upper(), take)
+            update_selection(word_dir, 'song', take)
+
+            assembly_ok = False
+            for attempt in range(MAX_RETRIES + 1):
+                try:
+                    log.info("    [%s] Stage assembly (attempt %d)", label.upper(), attempt + 1)
+                    await run_stage(workspace_path, word_slug_val, 'assembly')
+                    assembly_ok = True
+                    break
+                except Exception as e:
+                    log.warning("    [%s] Stage assembly attempt %d failed: %s",
+                                label.upper(), attempt + 1, e)
+                    if attempt < MAX_RETRIES:
+                        try:
+                            _defaults = load_defaults(workspace_path)
+                            _manifest = read_manifest(word_dir)
+                            _stage_defaults = _defaults.get('assembly', {})
+                            _stage_overrides = _manifest.settings.get('assembly', {})
+                            _stage_settings = {**_stage_defaults, **_stage_overrides}
+                        except Exception:
+                            _stage_settings = None
+                        overrides = get_fallback_overrides('assembly', attempt + 1, _stage_settings)
+                        if overrides:
+                            log.info("    [%s] Retrying assembly with fallback: %s",
+                                     label.upper(), overrides)
+                            from src.manifest import update_settings
+                            update_settings(word_dir, 'assembly', overrides)
+
+            if assembly_ok:
+                _assembled_labels.add(label)
+                # Snapshot selected.final immediately so Pass 2 can restore it before
+                # running bookend (prevents take_b's assembly from overwriting take_a's).
+                _assembly_finals[label] = read_manifest(word_dir).selected.final or ''
+            elif label == 'a':
+                log.error("  Word %s: version A assembly failed", word_slug_val)
+                sb.table("words").update({
+                    "status": "failed",
+                    "error_message": "Failed at assembly (version A)",
+                    "retry_count": MAX_RETRIES + 1,
+                }).eq("id", word_record["id"]).execute()
+                sb.rpc("refund_credit", {"user_id_param": job["user_id"]}).execute()
+                sb.table("generation_jobs").update({
+                    "words_failed": job.get("words_failed", 0) + 1,
+                }).eq("id", job["id"]).execute()
+                return False
+            else:
+                # Version B assembly failed — degrade gracefully, continue with A only
+                log.warning("  Version B assembly failed for %s — continuing with A only",
+                            word_slug_val)
+
+        # ── Pass 2: Bookends ─────────────────────────────────────────────────────
+        for label, take in [('a', take_a), ('b', take_b)]:
+            if label not in _assembled_labels:
+                continue  # take was None, or Version B assembly failed
+
+            stages_for_label = list(ab_stages_to_run)
+            if not stages_for_label and label == 'b':
+                stages_for_label = list(_full_ab_stages)
+
+            if not stages_for_label:
+                # Smart retry: A already complete, manifest already snapshotted in Pass 1
+                continue
+
+            if 'bookend' not in stages_for_label:
+                # Bookend disabled or not needed — snapshot manifest after assembly
+                ab_manifests[label] = read_manifest(word_dir)
+                continue
+
+            # Restore selected.final to this label's assembly version before running
+            # bookend. Required because Pass 1 leaves the manifest pointing to the
+            # last assembly (take_b), which would cause take_a's bookend to use the
+            # wrong assembled video. Only applies when assembly actually ran in Pass 1.
+            if label in _assembly_finals and _assembly_finals[label]:
+                update_selection(word_dir, 'final', _assembly_finals[label])
+
+            log.info("  === Version %s bookend ===", label.upper())
+
+            bookend_ok = False
+            for attempt in range(MAX_RETRIES + 1):
+                try:
+                    log.info("    [%s] Stage bookend (attempt %d)", label.upper(), attempt + 1)
+                    await run_stage(workspace_path, word_slug_val, 'bookend')
+                    bookend_ok = True
+                    break
+                except Exception as e:
+                    log.warning("    [%s] Stage bookend attempt %d failed: %s",
+                                label.upper(), attempt + 1, e)
+                    if attempt < MAX_RETRIES:
+                        try:
+                            _defaults = load_defaults(workspace_path)
+                            _manifest = read_manifest(word_dir)
+                            _stage_defaults = _defaults.get('bookend', {})
+                            _stage_overrides = _manifest.settings.get('bookend', {})
+                            _stage_settings = {**_stage_defaults, **_stage_overrides}
+                        except Exception:
+                            _stage_settings = None
+                        overrides = get_fallback_overrides('bookend', attempt + 1, _stage_settings)
+                        if overrides:
+                            log.info("    [%s] Retrying bookend with fallback: %s",
+                                     label.upper(), overrides)
+                            from src.manifest import update_settings
+                            update_settings(word_dir, 'bookend', overrides)
+
+            if not bookend_ok:
+                log.warning("    [%s] Bookend failed for %s — assembly fallback will be used at upload",
+                            label.upper(), word_slug_val)
+
+            # Snapshot manifest whether bookend succeeded or not.
+            # _resolve_final_video() picks bookend if present, otherwise falls back to assembly.
+            ab_manifests[label] = read_manifest(word_dir)
 
     # ── Collect metadata and upload ──────────────────────────────────────────
     pipeline_duration = time.monotonic() - pipeline_start
@@ -933,16 +1160,25 @@ async def process_word(
             word_metadata["smart_retry"] = True
             word_metadata["stages_skipped"] = [s for s in STAGE_ORDER if s not in stages_to_run]
         word_metadata["ab_takes"] = {
-            "a": take_a,
-            "b": take_b if take_b and 'b' in ab_manifests else None,
+            "a": "suno_a" if suno_ab_manifests else take_a,
+            "b": ("suno_b" if "b" in suno_ab_manifests else None)
+                 if suno_ab_manifests else (take_b if take_b and 'b' in ab_manifests else None),
         }
+
+    # Determine which manifests to upload (Suno path or ACE-Step path)
+    if suno_ab_manifests:
+        _upload_manifest_a = suno_ab_manifests.get("a", read_manifest(word_dir))
+        _upload_manifest_b = suno_ab_manifests.get("b")
+    else:
+        _upload_manifest_a = ab_manifests.get("a", read_manifest(word_dir))
+        _upload_manifest_b = ab_manifests.get("b")
 
     # Upload A/B results
     uploaded = await upload_ab_results(
         word_record, word_dir, job["user_id"], job["deck_id"],
         word_slug_val,
-        manifest_a=ab_manifests.get('a', read_manifest(word_dir)),
-        manifest_b=ab_manifests.get('b'),
+        manifest_a=_upload_manifest_a,
+        manifest_b=_upload_manifest_b,
     )
     if not uploaded:
         sb.table("words").update({
@@ -969,24 +1205,6 @@ async def process_word(
     }).eq("id", job["id"]).execute()
 
     log.info("  Word %s complete", word_slug_val)
-
-    # Auto-generate Suno song if enabled in workspace settings
-    try:
-        _suno_settings = load_defaults(workspace_path).get("suno", {})
-        if _suno_settings.get("enabled", False):
-            if word_record.get("suno_audio_url"):
-                log.info("  [Suno] Skipping %s — suno_audio_url already exists", word_slug_val)
-            else:
-                log.info("  [Suno] Auto-generating for %s...", word_slug_val)
-                _suno_result = await suno_generate_song(
-                    str(workspace_path.parent), job["user_id"], job["deck_id"], word_slug_val
-                )
-                if _suno_result and _suno_result.get("status") == "success":
-                    log.info("  [Suno] Done: %s", _suno_result.get("audio_url"))
-                else:
-                    log.warning("  [Suno] Failed: %s", _suno_result.get("error") if _suno_result else "no result")
-    except Exception as _e:
-        log.error("  [Suno] Error: %s", _e)
 
     return True
 

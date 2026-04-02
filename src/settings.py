@@ -111,6 +111,8 @@ DEFAULT_SETTINGS = {
     },
     "suno": {
         "enabled": False,
+        "outro_mode": "fade_out",        # "fade_out" or "clean_cut"
+        "fade_tail_duration": 2.5,       # seconds of Suno audio bleed in fade_out mode
     },
 }
 
