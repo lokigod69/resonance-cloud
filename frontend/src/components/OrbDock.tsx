@@ -4,6 +4,8 @@
  * Shows each word as a small glass orb with thumbnail preview.
  */
 
+import { useEffect, useRef } from 'react'
+
 type OrbDockWord = {
   id: string
   word: string
@@ -17,12 +19,19 @@ interface OrbDockProps {
 }
 
 export default function OrbDock({ words, currentIndex, onSelect }: OrbDockProps) {
+  const activeRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    activeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  }, [currentIndex])
+
   return (
     <div className="orb-dock-container">
       <div className="orb-dock">
         {words.map((word, index) => (
           <div
             key={word.id}
+            ref={index === currentIndex ? activeRef : null}
             className={`orb${index === currentIndex ? ' active' : ''}`}
             onClick={() => onSelect(index)}
             title={word.word}

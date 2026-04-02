@@ -254,21 +254,25 @@
 /* ── Orb Navigation Dock (Study Mode) ─────────────── */
 .skin-glassy .orb-dock-container {
   width: 100%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  max-height: 220px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   z-index: 10;
-  padding-bottom: 12px;
+  padding: 8px 0;
+}
+
+.skin-glassy .orb-dock-container::-webkit-scrollbar {
+  display: none;
 }
 
 .skin-glassy .orb-dock {
-  display: flex;
-  gap: 16px;
-  align-items: flex-end;
-  justify-content: center;
-  height: 100%;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  justify-items: center;
+  padding: 0 16px;
 }
 
 .skin-glassy .orb {
@@ -309,7 +313,7 @@
 
 .skin-glassy .orb:hover,
 .skin-glassy .orb.active {
-  transform: translateY(-16px) scale(1.2);
+  transform: scale(1.15);
   box-shadow:
     inset -4px -4px 10px rgba(0, 0, 0, 0.7),
     inset 4px 4px 12px rgba(255, 255, 255, 0.6),
@@ -336,17 +340,9 @@
 
 /* ── Mobile Responsive ────────────────────────────── */
 @media (max-width: 768px) {
-  .skin-glassy .orb-dock-container {
-    padding-bottom: 20px;
-  }
-
-  .skin-glassy .orb-dock {
-    gap: 12px;
-  }
-
   .skin-glassy .orb {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
   }
 
   /* Generate orbs mobile */
