@@ -34,6 +34,7 @@ export function useSunoAudio(
   const userMutedRef = useRef(false)
   // rAF handle for the Zone 4 fade-out loop — null when no fade is running.
   const fadeRafRef = useRef<number | null>(null)
+  const introRafRef = useRef<number | null>(null)
   const [isMuted, setIsMuted] = useState(false)
   const [hasError, setHasError] = useState(false)
 
@@ -64,12 +65,41 @@ export function useSunoAudio(
     fadeRafRef.current = requestAnimationFrame(tick)
   }, [])
 
+  // ─── Zone 1→2 precision monitor (~60fps, replaces timeupdate for the mute) ──
+  //
+  // timeupdate fires only ~4×/s. This rAF loop polls video.currentTime at
+  // ~60fps during Zone 1 so the mute fires within ~16ms of crossing
+  // INTRO_TTS_END instead of up to 250ms late.
+
+  const startIntroMonitor = useCallback(() => {
+    if (introRafRef.current !== null) return  // already running
+    const poll = () => {
+      const vid = videoRef.current
+      if (!vid || vid.paused) {
+        // Paused — stop polling; Zone 1 entry on next timeupdate restarts it
+        introRafRef.current = null
+        return
+      }
+      if (vid.currentTime >= INTRO_TTS_END) {
+        if (!userMutedRef.current) vid.muted = true
+        introRafRef.current = null
+        return
+      }
+      introRafRef.current = requestAnimationFrame(poll)
+    }
+    introRafRef.current = requestAnimationFrame(poll)
+  }, [videoRef])
+
   // ─── Reset ──────────────────────────────────────────────────────────────────
 
   const resetSuno = useCallback(() => {
     if (fadeRafRef.current !== null) {
       cancelAnimationFrame(fadeRafRef.current)
       fadeRafRef.current = null
+    }
+    if (introRafRef.current !== null) {
+      cancelAnimationFrame(introRafRef.current)
+      introRafRef.current = null
     }
     const audio = sunoAudioRef.current
     if (audio) {
@@ -98,6 +128,10 @@ export function useSunoAudio(
       if (fadeRafRef.current !== null) {
         cancelAnimationFrame(fadeRafRef.current)
         fadeRafRef.current = null
+      }
+      if (introRafRef.current !== null) {
+        cancelAnimationFrame(introRafRef.current)
+        introRafRef.current = null
       }
     }
   }, [])
@@ -152,10 +186,17 @@ export function useSunoAudio(
         cancelAnimationFrame(fadeRafRef.current)
         fadeRafRef.current = null
       }
+      // Cancel any stale intro monitor from a previous cycle, then restart.
+      // A fresh monitor is needed each cycle (loop or word change).
+      if (introRafRef.current !== null) {
+        cancelAnimationFrame(introRafRef.current)
+        introRafRef.current = null
+      }
       audio.pause()
       audio.currentTime = 0
       audio.volume = 0
       if (!userMutedRef.current) vid.muted = false
+      startIntroMonitor()
 
     } else if (currentTime < FADE_IN_END) {
       // ── Zone 2: Fade-in (2.0 – 3.0s) ────────────────────────────────────
@@ -185,7 +226,7 @@ export function useSunoAudio(
         startFadeOut(audio, FADE_OUT_DURATION * 1000)
       }
     }
-  }, [hasSuno, videoRef, startFadeOut])
+  }, [hasSuno, videoRef, startFadeOut, startIntroMonitor])
 
   // ─── Pause ──────────────────────────────────────────────────────────────────
 
