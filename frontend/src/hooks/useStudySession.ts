@@ -112,6 +112,12 @@ export function useStudySession(deckId?: string | null) {
     fetchAndSort()
   }, [fetchAndSort])
 
+  useEffect(() => {
+    retryQueueRef.current = []
+    retryCountRef.current = new Map()
+    setSessionStats({ remembered: 0, reviewLater: 0 })
+  }, [deckId])
+
   const recordAttempt = useCallback(
     (wordId: string, knewIt: boolean) => {
       if (!user) return
