@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, Clock, RotateCcw, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
@@ -10,18 +10,53 @@ import { useSunoAudio } from '@/hooks/useSunoAudio'
 import { VideoControls } from '@/components/VideoControls'
 import { useStudySession } from '@/hooks/useStudySession'
 import OrbDock from '@/components/OrbDock'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { useAuth } from '@/hooks/useAuth'
+import { supabase } from '@/lib/supabase'
+
+type DeckOption = { id: string; name: string | null }
 
 export default function StudyPG() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const deckParam = searchParams.get('deck')
+  const { user } = useAuth()
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  const { words, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession()
+  const [deckFilter, setDeckFilter] = useState<string>(deckParam ?? 'all')
+  const [decks, setDecks] = useState<DeckOption[]>([])
+
+  useEffect(() => {
+    if (!user) return
+    supabase
+      .from('decks')
+      .select('id, name')
+      .eq('user_id', user.id)
+      .then(({ data }) => { if (data) setDecks(data) })
+  }, [user])
+
+  const { words, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession(deckFilter === 'all' ? null : deckFilter)
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [sessionComplete, setSessionComplete] = useState(false)
   const [reviewed, setReviewed] = useState(0)
   const visitedIdsRef = useRef<Set<string>>(new Set())
+
+  // Reset session state when deck filter changes
+  useEffect(() => {
+    setCurrentIndex(0)
+    setRevealed(false)
+    setSessionComplete(false)
+    setReviewed(0)
+    visitedIdsRef.current = new Set()
+  }, [deckFilter])
   const suno = useSunoAudio(
     words[currentIndex]?.suno_audio_url ?? null,
     words[currentIndex]?.id ?? '',
@@ -144,22 +179,29 @@ export default function StudyPG() {
   }
 
   if (words.length === 0) {
+    const isFiltered = deckFilter !== 'all'
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6 text-center">
         <BookOpen className="h-12 w-12 text-white/15" />
         <div>
-          <h2 className="text-xl font-bold font-display mb-2">No words ready to study yet</h2>
+          <h2 className="text-xl font-bold font-display mb-2">
+            {isFiltered ? 'No cards ready to study in this deck' : 'No words ready to study yet'}
+          </h2>
           <p className="text-[var(--pg-text-dim)] text-sm max-w-sm">
-            Generate a deck first — once your videos are ready, they'll appear here for review.
+            {isFiltered
+              ? 'Add cards to this deck and wait for videos to finish processing.'
+              : "Generate a deck first — once your videos are ready, they'll appear here for review."}
           </p>
         </div>
-        <button
-          onClick={() => navigate('/generate')}
-          className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
-        >
-          <Sparkles className="h-4 w-4 inline mr-2" />
-          Generate a Deck
-        </button>
+        {!isFiltered && (
+          <button
+            onClick={() => navigate('/generate')}
+            className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
+          >
+            <Sparkles className="h-4 w-4 inline mr-2" />
+            Generate a Deck
+          </button>
+        )}
       </div>
     )
   }
@@ -210,6 +252,29 @@ export default function StudyPG() {
     <div className="px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
       {/* Card + content */}
       <div className="w-full max-w-2xl">
+        {/* Deck filter */}
+        {decks.length > 1 && (
+          <div className="flex justify-end mb-4">
+            <Select value={deckFilter} onValueChange={setDeckFilter}>
+              <SelectTrigger
+                size="sm"
+                className="w-[200px] bg-white/5 border-white/10 text-gray-200 hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="bg-gray-900 border-white/10 text-gray-200">
+                <SelectItem value="all" className="focus:bg-white/10 focus:text-white">
+                  All Decks
+                </SelectItem>
+                {decks.map((d) => (
+                  <SelectItem key={d.id} value={d.id} className="focus:bg-white/10 focus:text-white">
+                    {d.name ?? 'Untitled'}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        )}
       <AnimatePresence mode="wait">
         {current && (
           <motion.div

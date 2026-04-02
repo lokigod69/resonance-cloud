@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, AlertCircle, Pencil, Plus, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play } from 'lucide-react'
+import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
@@ -417,7 +417,15 @@ export default function DeckView() {
       </div>
 
       {/* Footer actions */}
-      <div className="flex justify-center pt-4">
+      <div className="flex gap-3 justify-center pt-4">
+        <Button
+          variant="outline"
+          className="border-primary/30 text-primary hover:bg-primary/10"
+          onClick={() => navigate(`/study?deck=${deck.id}`)}
+        >
+          <BookOpen className="h-4 w-4 mr-2" />
+          Study
+        </Button>
         <Button
           variant="outline"
           className="border-primary/30 text-primary hover:bg-primary/10"

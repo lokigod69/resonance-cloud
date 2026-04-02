@@ -12,6 +12,7 @@ import {
   Sparkles,
   Pencil,
   Plus,
+  BookOpen,
   Check,
   X,
   ChevronLeft,
@@ -714,7 +715,14 @@ export default function DeckViewPG() {
       </div> {/* end -mx-6 bleed wrapper — escapes parent px-6 on mobile, restored at sm: */}
 
       {/* Footer actions */}
-      <div className="flex justify-center pt-8">
+      <div className="flex gap-3 justify-center pt-8">
+        <button
+          onClick={() => navigate(`/study?deck=${deck.id}`)}
+          className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
+        >
+          <BookOpen className="h-4 w-4 inline mr-1.5" />
+          Study
+        </button>
         <button
           onClick={() => navigate(`/generate?deckId=${deck.id}`)}
           className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"

@@ -64,7 +64,7 @@ function sortByHeat(
   ]
 }
 
-export function useStudySession() {
+export function useStudySession(deckId?: string | null) {
   const { user } = useAuth()
   const [words, setWords] = useState<StudyWord[]>([])
   const [loading, setLoading] = useState(true)
@@ -77,13 +77,15 @@ export function useStudySession() {
     if (!user) return
     setLoading(true)
 
+    let wordsQuery = supabase
+      .from('words')
+      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_audio_url, deck_id')
+      .eq('user_id', user.id)
+      .eq('status', 'complete')
+    if (deckId) wordsQuery = wordsQuery.eq('deck_id', deckId)
+
     const [wordsRes, attemptsRes] = await Promise.all([
-      supabase
-        .from('words')
-        .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_audio_url, deck_id')
-        .eq('user_id', user.id)
-        .eq('status', 'complete')
-        .order('created_at', { ascending: true }),
+      wordsQuery.order('created_at', { ascending: true }),
       supabase
         .from('recall_attempts')
         .select('word_id, knew_it, created_at')
@@ -104,7 +106,7 @@ export function useStudySession() {
 
     setWords(sortByHeat(rawWords, latestAttempt))
     setLoading(false)
-  }, [user])
+  }, [user, deckId])
 
   useEffect(() => {
     fetchAndSort()
