@@ -28,7 +28,6 @@ type Word = {
   video_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
-  suno_audio_url: string | null
   suno_task_id: string | null
   metadata: Record<string, unknown> | null
 }
@@ -45,7 +44,7 @@ export default function VideoPlayer() {
     async function load() {
       const { data } = await supabase
         .from('words')
-        .select('id, word, word_slug, translation, mnemonic, etymology, pos, article, rating, metadata, status, video_url, video_url_b, thumbnail_url_b, suno_audio_url, suno_task_id')
+        .select('id, word, word_slug, translation, mnemonic, etymology, pos, article, rating, metadata, status, video_url, video_url_b, thumbnail_url_b, suno_task_id')
         .eq('deck_id', deckId)
         .eq('status', 'complete')
         .order('created_at')

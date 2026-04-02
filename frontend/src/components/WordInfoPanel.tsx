@@ -13,7 +13,6 @@ interface WordInfoPanelProps {
     article?: string | null
     rating?: number | null
     word_slug?: string | null
-    suno_audio_url?: string | null
     metadata?: {
       creative_direction?: string
       art_style?: string

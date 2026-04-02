@@ -11,7 +11,6 @@ import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion, getStoredVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { useVideoPlayback } from '@/hooks/useVideoPlayback'
-import { useSunoAudio } from '@/hooks/useSunoAudio'
 import { VideoControls } from '@/components/VideoControls'
 import { useToast } from '@/components/Toast'
 import { VerbCycler } from '@/components/ui/VerbCycler'
@@ -479,27 +478,8 @@ function VideoViewerModal({
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < words.length - 1
   const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(word ?? { id: '', video_url: null, thumbnail_url: null })
-  const activeSunoUrl = (version === 'b' ? word?.suno_audio_url_b : word?.suno_audio_url) ?? null
-  const suno = useSunoAudio(
-    activeSunoUrl,
-    `${word?.id ?? ''}-${videoKey}`,
-    videoRef,
-  )
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false, suno.hasSuno)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
   const { isPlaying, setIsPlaying, togglePlay, onPlay, onPause } = useVideoPlayback(videoRef)
-  const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
-  const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
-  const [sunoVolume, setSunoVolume] = useState(1.0)
-  const handleVolumeChange = useCallback((v: number) => {
-    if (suno.hasSuno) {
-      const clamped = Math.max(0, Math.min(1, v))
-      const audio = suno.sunoAudioRef.current
-      if (audio) audio.volume = clamped
-      setSunoVolume(clamped)
-    } else {
-      setVolume(v)
-    }
-  }, [suno.hasSuno, suno.sunoAudioRef, setVolume])
 
   // Reset playing state when navigating to a new word
   useEffect(() => {
@@ -569,18 +549,9 @@ function VideoViewerModal({
                   autoPlay
                   playsInline
                   onClick={togglePlay}
-                  onPlay={() => { onPlay(); suno.handleVideoPlay() }}
-                  onPause={() => { onPause(); suno.handleVideoPause() }}
-                  onTimeUpdate={suno.hasSuno ? suno.handleTimeUpdate : undefined}
-                  onEnded={suno.hasSuno ? suno.handleVideoEnded : undefined}
+                  onPlay={onPlay}
+                  onPause={onPause}
                   className="w-full aspect-video cursor-pointer"
-                />
-                <audio
-                  ref={suno.sunoAudioRef}
-                  key={`suno-${word?.id}-${videoKey}-${version}`}
-                  src={activeSunoUrl ?? undefined}
-                  preload={activeSunoUrl ? 'auto' : 'none'}
-                  onError={suno.handleSunoError}
                 />
               </>
             ) : (
@@ -602,10 +573,10 @@ function VideoViewerModal({
               <VideoControls
                 isPlaying={isPlaying}
                 onTogglePlay={togglePlay}
-                volume={suno.hasSuno ? sunoVolume : volume}
-                isMuted={effectiveIsMuted}
-                onVolumeChange={handleVolumeChange}
-                onToggleMute={effectiveToggleMute}
+                volume={volume}
+                isMuted={isMuted}
+                onVolumeChange={setVolume}
+                onToggleMute={toggleMute}
                 fullscreenRef={videoRef}
                 iconSize={20}
                 buttonClassName="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"

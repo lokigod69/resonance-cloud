@@ -27,7 +27,6 @@ import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
-import { useSunoAudio } from '@/hooks/useSunoAudio'
 import { VideoControls } from '@/components/VideoControls'
 import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
@@ -192,37 +191,7 @@ export default function DeckViewPG() {
 
   const activeWord = words[activeIndex] ?? { id: '', video_url: null, thumbnail_url: null }
   const { activeVideoUrl, activeThumbnailUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(activeWord)
-  const activeSunoUrl = (version === 'b' ? words[activeIndex]?.suno_audio_url_b : words[activeIndex]?.suno_audio_url) ?? null
-  const suno = useSunoAudio(
-    activeSunoUrl,
-    `${words[activeIndex]?.id ?? ''}-${navKey}`,
-    videoRef,
-  )
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false, suno.hasSuno)
-  const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
-  const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
-
-  const [sunoVolume, setSunoVolume] = useState(1.0)
-
-  const handleVolumeChange = useCallback((v: number) => {
-    if (suno.hasSuno) {
-      const clamped = Math.max(0, Math.min(1, v))
-      const audio = suno.sunoAudioRef.current
-      if (audio) audio.volume = clamped
-      setSunoVolume(clamped)
-    } else {
-      setVolume(v)
-    }
-  }, [suno.hasSuno, suno.sunoAudioRef, setVolume])
-
-  // Pause audio synchronously before navKey change or component unmount.
-  // useLayoutEffect cleanup fires before DOM mutations, so sunoAudioRef is still valid.
-  useLayoutEffect(() => {
-    return () => {
-      suno.sunoAudioRef.current?.pause()
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navKey])
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
 
   // Pause video when navigating to a different card
   useLayoutEffect(() => {
@@ -258,17 +227,6 @@ export default function DeckViewPG() {
       vid.pause()
     }
   }, [isPlaying, videoActiveIndex, version])
-
-  // Sync Suno audio with video play/pause (DeckViewPG drives play via state, not DOM events)
-  useEffect(() => {
-    if (!suno.hasSuno) return
-    if (isPlaying && videoActiveIndex === activeIndex) {
-      suno.handleVideoPlay()
-    } else {
-      suno.handleVideoPause()
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPlaying, videoActiveIndex, activeIndex, suno.hasSuno])
 
   const [dragOffset, setDragOffset] = useState(0)
 
@@ -427,10 +385,10 @@ export default function DeckViewPG() {
             {videoActiveIndex === activeIndex && (
               <div className="absolute top-3 left-3 z-30 opacity-0 group-hover/carousel:opacity-100 transition-opacity">
                 <VolumeControl
-                  volume={suno.hasSuno ? sunoVolume : volume}
-                  isMuted={effectiveIsMuted}
-                  onVolumeChange={handleVolumeChange}
-                  onToggleMute={effectiveToggleMute}
+                  volume={volume}
+                  isMuted={isMuted}
+                  onVolumeChange={setVolume}
+                  onToggleMute={toggleMute}
                   popDirection="right"
                   iconSize={16}
                   buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
@@ -491,19 +449,6 @@ export default function DeckViewPG() {
                             className="absolute inset-0 w-full h-full object-cover z-[1] pointer-events-none"
                             onPlay={() => setIsPlaying(true)}
                             onPause={() => setIsPlaying(false)}
-                            onTimeUpdate={offset === 0 && suno.hasSuno ? suno.handleTimeUpdate : undefined}
-                            onEnded={offset === 0 && suno.hasSuno ? suno.handleVideoEnded : undefined}
-                          />
-                        )}
-
-                        {/* Suno audio overlay — always mounted for the center card */}
-                        {offset === 0 && (
-                          <audio
-                            ref={suno.sunoAudioRef}
-                            key={`${words[activeIndex]?.id}-${navKey}-${version}`}
-                            src={activeSunoUrl ?? undefined}
-                            preload={activeSunoUrl ? 'auto' : 'none'}
-                            onError={suno.handleSunoError}
                           />
                         )}
 
@@ -560,10 +505,10 @@ export default function DeckViewPG() {
                           <VideoControls
                             isPlaying={isPlaying}
                             onTogglePlay={() => setIsPlaying(!isPlaying)}
-                            volume={suno.hasSuno ? sunoVolume : volume}
-                            isMuted={effectiveIsMuted}
-                            onVolumeChange={handleVolumeChange}
-                            onToggleMute={effectiveToggleMute}
+                            volume={volume}
+                            isMuted={isMuted}
+                            onVolumeChange={setVolume}
+                            onToggleMute={toggleMute}
                             fullscreenRef={videoRef}
                             buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
                             className="z-10"

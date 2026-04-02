@@ -22,7 +22,6 @@ import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { useVideoPlayback } from '@/hooks/useVideoPlayback'
-import { useSunoAudio } from '@/hooks/useSunoAudio'
 import { VideoControls } from '@/components/VideoControls'
 import { useStudySession } from '@/hooks/useStudySession'
 import { useAuth } from '@/hooks/useAuth'
@@ -65,15 +64,8 @@ export default function Study() {
     setReviewed(0)
     visitedIdsRef.current = new Set()
   }, [deckFilter])
-  const suno = useSunoAudio(
-    words[currentIndex]?.suno_audio_url ?? null,
-    words[currentIndex]?.id ?? '',
-    videoRef,
-  )
   const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, true)
   const { isPlaying, togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)
-  const effectiveIsMuted = suno.hasSuno ? suno.isMuted : isMuted
-  const effectiveToggleMute = suno.hasSuno ? suno.toggleMute : toggleMute
 
   const current = words[currentIndex] ?? null
   const { activeVideoUrl, activeThumbnailUrl } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
@@ -301,29 +293,19 @@ export default function Study() {
                       src={activeVideoUrl}
                       autoPlay
                       loop
-                      muted
                       playsInline
                       className="w-full aspect-video object-contain bg-black cursor-pointer"
                       onClick={togglePlay}
-                      onPlay={() => { onPlay(); suno.handleVideoPlay() }}
-                      onPause={() => { onPause(); suno.handleVideoPause() }}
-                      onTimeUpdate={suno.hasSuno ? suno.handleTimeUpdate : undefined}
-                      onEnded={suno.hasSuno ? suno.handleVideoEnded : undefined}
-                    />
-                    <audio
-                      ref={suno.sunoAudioRef}
-                      key={current.id}
-                      src={current.suno_audio_url ?? undefined}
-                      preload={current.suno_audio_url ? 'auto' : 'none'}
-                      onError={suno.handleSunoError}
+                      onPlay={onPlay}
+                      onPause={onPause}
                     />
                     <VideoControls
                       isPlaying={isPlaying}
                       onTogglePlay={togglePlay}
                       volume={volume}
-                      isMuted={effectiveIsMuted}
+                      isMuted={isMuted}
                       onVolumeChange={setVolume}
-                      onToggleMute={effectiveToggleMute}
+                      onToggleMute={toggleMute}
                       fullscreenRef={videoRef}
                     />
                   </>
