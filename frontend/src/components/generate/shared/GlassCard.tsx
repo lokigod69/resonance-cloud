@@ -7,15 +7,16 @@ interface GlassCardProps {
   onClick?: () => void
   children: React.ReactNode
   className?: string
+  hoverStyle?: { borderColor?: string; boxShadow?: string }
 }
 
-export default function GlassCard({ selected, disabled, onClick, children, className }: GlassCardProps) {
+export default function GlassCard({ selected, disabled, onClick, children, className, hoverStyle }: GlassCardProps) {
   return (
     <motion.button
       type="button"
       onClick={onClick}
       disabled={disabled}
-      whileHover={disabled ? undefined : { scale: 1.03 }}
+      whileHover={disabled ? undefined : { scale: 1.03, ...hoverStyle }}
       whileTap={disabled ? undefined : { scale: 0.97 }}
       className={cn(
         'glass rounded-2xl border border-white/10 p-5 text-left transition-colors duration-200',

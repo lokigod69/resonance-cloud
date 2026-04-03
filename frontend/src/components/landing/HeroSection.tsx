@@ -10,6 +10,8 @@ export default function HeroSection() {
   // Scroll-driven parallax: text floats up and fades
   const textY = useTransform(scrollY, [0, 500], [0, -200])
   const textOpacity = useTransform(scrollY, [0, 400], [1, 0])
+  // Backdrop fades faster — reveals video before text disappears
+  const backdropOpacity = useTransform(scrollY, [0, 300], [1, 0])
 
   const fadeUp = (delay: number) =>
     reducedMotion
@@ -44,13 +46,15 @@ export default function HeroSection() {
         className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center z-20"
       >
         <div className="relative">
-          {/* Frosted backdrop — tight dark card behind text only, no gradient bleed */}
-          <div className="absolute -inset-x-16 -inset-y-12 rounded-[3rem]"
-               style={{
-                 background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.15) 70%, transparent 100%)',
-                 backdropFilter: 'blur(20px)',
-                 WebkitBackdropFilter: 'blur(20px)',
-               }}
+          {/* Frosted backdrop — fades independently from text, revealing video on scroll */}
+          <motion.div
+            className="absolute -inset-x-16 -inset-y-12 rounded-[3rem]"
+            style={{
+              opacity: reducedMotion ? 1 : backdropOpacity,
+              background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.60) 40%, rgba(0,0,0,0.25) 70%, transparent 100%)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+            }}
           />
 
           <div className="relative z-10 max-w-3xl space-y-8 px-4">

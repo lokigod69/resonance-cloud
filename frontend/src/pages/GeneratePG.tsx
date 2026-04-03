@@ -361,15 +361,15 @@ function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
             key={lang.value}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -4, borderColor: lang.color, boxShadow: `0 0 20px ${lang.color}20` }}
             transition={{ delay: i * 0.08, ...PG_TRANSITION }}
             onClick={() => onSelect(lang.value)}
-            className="pg-glass rounded-2xl p-6 text-left hover:border-[var(--pg-accent-teal)]/30 hover:shadow-[0_0_20px_rgba(13,226,195,0.15)] hover:-translate-y-1 transition-all group"
+            className="pg-glass rounded-2xl p-6 text-left transition-all"
           >
             <span className="text-4xl block mb-3">{lang.flag}</span>
-            <p className="font-display font-semibold text-white group-hover:text-[var(--pg-accent-teal)] transition-colors">
-              {lang.value}
+            <p className="font-display font-semibold text-white transition-colors">
+              {lang.label}
             </p>
-            <p className="text-xs text-[var(--pg-text-dim)]">{lang.label}</p>
           </motion.button>
         ))}
       </div>

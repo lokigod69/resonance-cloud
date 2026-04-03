@@ -3,7 +3,7 @@ import { LANGUAGES } from './landingData'
 import ScrollReveal from './ScrollReveal'
 
 const langVariant = {
-  hidden: { opacity: 0, scale: 0.5 },
+  hidden: { opacity: 0, scale: 0.1 },
   visible: (i: number) => ({
     opacity: 1,
     scale: 1,
@@ -11,7 +11,7 @@ const langVariant = {
       type: 'spring' as const,
       stiffness: 300,
       damping: 15,
-      delay: i * 0.08,
+      delay: i * 0.15,
     },
   }),
 }

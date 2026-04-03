@@ -48,36 +48,47 @@ export default function ScrollStorySection() {
     offset: ['start start', 'end end'],
   })
 
-  // Demo heading + waveform fade out
-  const demoHeadingOpacity = useTransform(scrollYProgress, [0.10, 0.25], [1, 0])
-  const waveformOpacity = useTransform(scrollYProgress, [0.15, 0.30], [1, 0])
+  // === PHASE A: Cards scale in from small (0.00 → 0.20) ===
+  // Shared scale for all cards — grows from 30% to full size
+  const cardsScale = useTransform(scrollYProgress, [0.00, 0.20], [0.3, 1])
 
-  // Row 1 card dispersal
-  const leftRow1X = useTransform(scrollYProgress, [0.15, 0.40], [0, -1200])
-  const rightRow1X = useTransform(scrollYProgress, [0.15, 0.40], [0, 1200])
-  const row1Opacity = useTransform(scrollYProgress, [0.15, 0.35], [1, 0])
+  // Demo heading: fades in at start, fades out before Phase B
+  const demoHeadingOpacity = useTransform(scrollYProgress, [0.00, 0.10, 0.28], [0, 1, 0])
 
-  // Row 2 card dispersal (slightly delayed for stagger effect)
-  const leftRow2X = useTransform(scrollYProgress, [0.17, 0.42], [0, -1200])
-  const rightRow2X = useTransform(scrollYProgress, [0.17, 0.42], [0, 1200])
-  const row2Opacity = useTransform(scrollYProgress, [0.17, 0.37], [1, 0])
+  // Combined opacity per row: fade IN during Phase A, hold, fade OUT during Phase B
+  // Row 1 (leads)
+  const row1Opacity = useTransform(scrollYProgress, [0.00, 0.12, 0.22, 0.42], [0, 1, 1, 0])
+  // Row 2 (slightly delayed stagger)
+  const row2Opacity = useTransform(scrollYProgress, [0.02, 0.14, 0.24, 0.44], [0, 1, 1, 0])
 
-  // How It Works heading fade in
-  const howHeadingOpacity = useTransform(scrollYProgress, [0.30, 0.45], [0, 1])
+  // === PHASE B: Cards disperse to sides (0.22 → 0.48) ===
+  // Row 1 x-movement
+  const leftRow1X = useTransform(scrollYProgress, [0.22, 0.48], [0, -1200])
+  const rightRow1X = useTransform(scrollYProgress, [0.22, 0.48], [0, 1200])
+  // Row 2 slightly delayed
+  const leftRow2X = useTransform(scrollYProgress, [0.24, 0.50], [0, -1200])
+  const rightRow2X = useTransform(scrollYProgress, [0.24, 0.50], [0, 1200])
 
-  // Step 1: grows from center, moves left
-  const step1Scale = useTransform(scrollYProgress, [0.35, 0.55], [0.3, 1])
-  const step1Opacity = useTransform(scrollYProgress, [0.35, 0.55], [0, 1])
-  const step1X = useTransform(scrollYProgress, [0.35, 0.55], [0, -350])
+  // === PHASE C: How It Works + Waveform (0.45 → 0.90) ===
+  // Waveform fades IN after cards are gone
+  const waveformOpacity = useTransform(scrollYProgress, [0.50, 0.65], [0, 1])
+
+  // "How it works" heading
+  const howHeadingOpacity = useTransform(scrollYProgress, [0.45, 0.58], [0, 1])
+
+  // Step 1: grows from center, fans left
+  const step1Scale = useTransform(scrollYProgress, [0.48, 0.60], [0.3, 1])
+  const step1Opacity = useTransform(scrollYProgress, [0.48, 0.60], [0, 1])
+  const step1X = useTransform(scrollYProgress, [0.48, 0.60], [0, -350])
 
   // Step 2: grows at center, stays centered
-  const step2Scale = useTransform(scrollYProgress, [0.50, 0.70], [0.3, 1])
-  const step2Opacity = useTransform(scrollYProgress, [0.50, 0.70], [0, 1])
+  const step2Scale = useTransform(scrollYProgress, [0.58, 0.70], [0.3, 1])
+  const step2Opacity = useTransform(scrollYProgress, [0.58, 0.70], [0, 1])
 
-  // Step 3: grows from center, moves right
-  const step3Scale = useTransform(scrollYProgress, [0.65, 0.85], [0.3, 1])
-  const step3Opacity = useTransform(scrollYProgress, [0.65, 0.85], [0, 1])
-  const step3X = useTransform(scrollYProgress, [0.65, 0.85], [0, 350])
+  // Step 3: grows from center, fans right
+  const step3Scale = useTransform(scrollYProgress, [0.68, 0.80], [0.3, 1])
+  const step3Opacity = useTransform(scrollYProgress, [0.68, 0.80], [0, 1])
+  const step3X = useTransform(scrollYProgress, [0.68, 0.80], [0, 350])
 
   // Fallback: mobile or reduced motion — render original sections unchanged
   if (!isDesktop || reducedMotion === true) {
@@ -98,15 +109,15 @@ export default function ScrollStorySection() {
   return (
     <section
       ref={containerRef}
-      style={{ height: '350vh', background: '#0c0d14' }}
+      style={{ height: '450vh', background: '#0c0d14' }}
     >
       {/* Sticky viewport — stays pinned while container scrolls past */}
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
 
         {/* Phase 1: Demo reel layer */}
-        <div style={{ position: 'absolute', inset: 0, zIndex: 1 }} className="flex flex-col items-center justify-center gap-2 px-6">
+        <div style={{ position: 'absolute', inset: 0, zIndex: 1 }} className="flex flex-col items-center justify-center px-6">
 
-          {/* Demo heading — fades out */}
+          {/* Demo heading — fades in at start, out before dispersal */}
           <motion.div
             style={{ opacity: demoHeadingOpacity }}
             className="absolute top-16 inset-x-0 text-center px-6"
@@ -117,41 +128,42 @@ export default function ScrollStorySection() {
             </p>
           </motion.div>
 
-          {/* Card rows + waveform, centered vertically */}
+          {/* Card rows — split left/right so each half can slide its own direction */}
           <div className="flex flex-col gap-2 mt-20">
             {/* Row 1 */}
-            <div className="flex gap-6 justify-center">
-              {ROW_1.map((w, i) => (
-                <motion.div
-                  key={w.word}
-                  style={{
-                    x: i < 3 ? leftRow1X : rightRow1X,
-                    opacity: row1Opacity,
-                  }}
-                >
-                  <StaticCardSlot w={w} />
-                </motion.div>
-              ))}
+            <div className="flex justify-center">
+              {/* Left half slides left */}
+              <motion.div
+                className="flex gap-6"
+                style={{ x: leftRow1X, opacity: row1Opacity, scale: cardsScale }}
+              >
+                {ROW_1.slice(0, 3).map(w => <StaticCardSlot key={w.word} w={w} />)}
+              </motion.div>
+              {/* Right half slides right */}
+              <motion.div
+                className="flex gap-6 ml-6"
+                style={{ x: rightRow1X, opacity: row1Opacity, scale: cardsScale }}
+              >
+                {ROW_1.slice(3).map(w => <StaticCardSlot key={w.word} w={w} />)}
+              </motion.div>
             </div>
 
-            {/* Waveform divider — fades out */}
-            <motion.div style={{ opacity: waveformOpacity }}>
-              <WaveformDivider />
-            </motion.div>
-
-            {/* Row 2 */}
-            <div className="flex gap-6 justify-center">
-              {ROW_2.map((w, i) => (
-                <motion.div
-                  key={w.word}
-                  style={{
-                    x: i < 3 ? leftRow2X : rightRow2X,
-                    opacity: row2Opacity,
-                  }}
-                >
-                  <StaticCardSlot w={w} />
-                </motion.div>
-              ))}
+            {/* Row 2 (staggered slightly after row 1) */}
+            <div className="flex justify-center">
+              {/* Left half slides left */}
+              <motion.div
+                className="flex gap-6"
+                style={{ x: leftRow2X, opacity: row2Opacity, scale: cardsScale }}
+              >
+                {ROW_2.slice(0, 3).map(w => <StaticCardSlot key={w.word} w={w} />)}
+              </motion.div>
+              {/* Right half slides right */}
+              <motion.div
+                className="flex gap-6 ml-6"
+                style={{ x: rightRow2X, opacity: row2Opacity, scale: cardsScale }}
+              >
+                {ROW_2.slice(3).map(w => <StaticCardSlot key={w.word} w={w} />)}
+              </motion.div>
             </div>
           </div>
         </div>
@@ -159,7 +171,7 @@ export default function ScrollStorySection() {
         {/* Phase 2: How It Works layer */}
         <div style={{ position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none' }}>
 
-          {/* "How it works" heading — fades in */}
+          {/* "How it works" heading — fades in after cards clear */}
           <motion.div
             style={{ opacity: howHeadingOpacity }}
             className="absolute top-16 inset-x-0 text-center"
@@ -197,6 +209,20 @@ export default function ScrollStorySection() {
               </motion.div>
             )
           })}
+
+          {/* Waveform — appears AFTER cards are gone, positioned below step cards */}
+          <motion.div
+            style={{
+              position: 'absolute',
+              bottom: '8%',
+              left: 0,
+              right: 0,
+              opacity: waveformOpacity,
+              pointerEvents: 'none',
+            }}
+          >
+            <WaveformDivider />
+          </motion.div>
         </div>
 
       </div>

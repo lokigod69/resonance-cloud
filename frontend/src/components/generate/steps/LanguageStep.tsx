@@ -76,6 +76,7 @@ export default function LanguageStep({ state, dispatch, existingDeck }: Language
               selected={state.language === lang.value}
               onClick={() => dispatch({ type: 'SET_LANGUAGE', language: lang.value })}
               className="flex flex-col items-center gap-2 py-6"
+              hoverStyle={{ borderColor: lang.color, boxShadow: `0 0 20px ${lang.color}20` }}
             >
               <span className="text-3xl">{lang.flag}</span>
               <span className="text-sm font-medium text-white/80">{lang.label}</span>

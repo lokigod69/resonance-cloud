@@ -12,7 +12,7 @@ export default function CtaFooterSection() {
       {/* CTA */}
       <ScrollReveal direction="blur" className="max-w-2xl mx-auto mb-24">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">
-          Ready to learn differently?
+          Ready to learn differentl<span style={{ display: 'inline-block', transform: 'rotate(45deg)', transformOrigin: 'bottom center' }}>y</span>?
         </h2>
         <p className="text-lg text-muted-foreground mb-8">
           Sign up free. Get 10 credits. Create your first music videos.
