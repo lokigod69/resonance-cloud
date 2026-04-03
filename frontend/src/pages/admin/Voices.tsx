@@ -48,6 +48,7 @@ const LANGUAGES = [
   { name: 'Vietnamese', code: 'vi' },
   { name: 'Tagalog', code: 'fil' },
   { name: 'Cebuano', code: 'fil' },
+  { name: 'Indonesian', code: 'id' },
 ]
 
 export default function Voices() {
