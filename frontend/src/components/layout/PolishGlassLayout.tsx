@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom'
+import { Outlet, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Coins, User, Shield, LayoutDashboard, Sparkles, BookOpen, Music } from 'lucide-react'
@@ -14,7 +14,6 @@ const navItems = [
 ]
 
 export default function PolishGlassLayout() {
-  const navigate = useNavigate()
   const location = useLocation()
   const { profile } = useAuth()
   const [mobileOpen, setMobileOpen] = useState(false)
