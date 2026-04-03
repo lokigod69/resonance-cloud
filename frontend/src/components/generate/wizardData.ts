@@ -4,6 +4,7 @@ export const LANGUAGES = [
   { value: 'Italian', label: 'Italiano', flag: '\ud83c\uddee\ud83c\uddf9' },
   { value: 'English', label: 'English', flag: '\ud83c\uddec\ud83c\udde7' },
   { value: 'Bisaya', label: 'Bisaya', flag: '\ud83c\uddf5\ud83c\udded' },
+  { value: 'Indonesian', label: 'Bahasa Indonesia', flag: '\ud83c\uddee\ud83c\udde9' },
 ] as const
 
 export const VIBES = [

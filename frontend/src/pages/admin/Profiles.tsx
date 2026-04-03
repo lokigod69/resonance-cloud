@@ -33,7 +33,7 @@ type LanguageProfile = {
 const LANGUAGES = [
   'English', 'German', 'French', 'Italian', 'Spanish', 'Portuguese', 'Japanese',
   'Korean', 'Mandarin', 'Arabic', 'Russian', 'Turkish', 'Hindi',
-  'Dutch', 'Swedish', 'Polish', 'Greek', 'Thai', 'Vietnamese', 'Bisaya',
+  'Dutch', 'Swedish', 'Polish', 'Greek', 'Thai', 'Vietnamese', 'Bisaya', 'Indonesian',
 ]
 
 export default function Profiles() {
