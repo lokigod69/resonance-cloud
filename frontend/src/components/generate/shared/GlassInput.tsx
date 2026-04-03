@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, X, Plus } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -10,7 +10,12 @@ interface GlassInputProps {
   disabled?: boolean
 }
 
-export function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProps) {
+export interface GlassInputHandle {
+  flush: () => void
+}
+
+export const GlassInput = forwardRef<GlassInputHandle, GlassInputProps>(
+function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProps, ref) {
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -26,6 +31,8 @@ export function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassIn
     onLock(trimmed)
     setValue('')
   }
+
+  useImperativeHandle(ref, () => ({ flush: handleSubmit }))
 
   return (
     <motion.div
@@ -72,7 +79,7 @@ export function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassIn
       </motion.button>
     </motion.div>
   )
-}
+})
 
 interface LockedWordProps {
   word: string

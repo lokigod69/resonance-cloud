@@ -55,6 +55,7 @@ export default function Study() {
   const [sessionComplete, setSessionComplete] = useState(false)
   const [reviewed, setReviewed] = useState(0)
   const visitedIdsRef = useRef<Set<string>>(new Set())
+  const wasPlayingRef = useRef(true)
 
   // Reset session state when deck filter changes
   useEffect(() => {
@@ -71,6 +72,7 @@ export default function Study() {
   const { activeVideoUrl, activeThumbnailUrl } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
 
   const advanceToNext = useCallback(() => {
+    wasPlayingRef.current = !(videoRef.current?.paused ?? false)
     setReviewed((r) => r + 1)
     setRevealed(false)
     if (current) visitedIdsRef.current.add(current.id)
@@ -103,6 +105,12 @@ export default function Study() {
       setCurrentIndex(next)
     }
   }, [current, currentIndex, words, consumeRetry])
+
+  useEffect(() => {
+    if (!wasPlayingRef.current && videoRef.current) {
+      videoRef.current.pause()
+    }
+  }, [current?.id])
 
   const handleRemembered = useCallback(() => {
     if (!current) return
@@ -231,7 +239,7 @@ export default function Study() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4">
       {/* Card + content */}
-      <div className="w-full max-w-2xl">
+      <div className="w-full max-w-4xl">
         {/* Deck filter */}
         {decks.length > 1 && (
           <div className="flex justify-end mb-4">
@@ -292,6 +300,7 @@ export default function Study() {
                       key={current.id}
                       src={activeVideoUrl}
                       autoPlay
+                      muted={isMuted}
                       loop
                       playsInline
                       className="w-full aspect-video object-contain bg-black cursor-pointer"

@@ -210,10 +210,12 @@ export default function DeckViewPG() {
   // Auto-play next card when swiping while video was active
   const videoActiveRef = useRef(videoActiveIndex)
   videoActiveRef.current = videoActiveIndex
+  const isPlayingRef = useRef(isPlaying)
+  isPlayingRef.current = isPlaying
   useEffect(() => {
     if (videoActiveRef.current !== null) {
       setVideoActiveIndex(activeIndex)
-      setIsPlaying(true)
+      setIsPlaying(isPlayingRef.current)
     }
   }, [activeIndex])
 
@@ -449,6 +451,11 @@ export default function DeckViewPG() {
                             className="absolute inset-0 w-full h-full object-cover z-[1] pointer-events-none"
                             onPlay={() => setIsPlaying(true)}
                             onPause={() => setIsPlaying(false)}
+                            onEnded={() => {
+                              if (videoRef.current) {
+                                videoRef.current.currentTime = 0
+                              }
+                            }}
                           />
                         )}
 

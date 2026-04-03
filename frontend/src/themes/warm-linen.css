@@ -86,6 +86,11 @@
   color: #2C2825;
 }
 
+/* Nav bar always has a dark background — keep active item white */
+.theme-warm-linen nav .text-white {
+  color: white;
+}
+
 /* Classic dashboard overrides for light mode */
 .theme-warm-linen .classic-dashboard-wrapper {
   color: #2C2825;

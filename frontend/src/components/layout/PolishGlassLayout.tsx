@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Coins, User, Shield, LayoutDashboard, Sparkles, BookOpen, Music } from 'lucide-react'
@@ -57,9 +57,9 @@ export default function PolishGlassLayout() {
         {/* Desktop centered nav with icons */}
         <div className="hidden sm:flex items-center gap-1 mx-auto">
           {navItems.map((item) => (
-            <button
+            <Link
               key={item.path}
-              onClick={() => navigate(item.path)}
+              to={item.path}
               className={`flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer ${
                 isActive(item.path)
                   ? 'bg-white/10 text-white'
@@ -68,11 +68,11 @@ export default function PolishGlassLayout() {
             >
               <item.icon className="h-5 w-5" />
               {item.label}
-            </button>
+            </Link>
           ))}
           {isAdmin && (
-            <button
-              onClick={() => navigate('/admin/queue')}
+            <Link
+              to="/admin/queue"
               className={`flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer ${
                 isActive('/admin')
                   ? 'bg-white/10 text-white'
@@ -81,7 +81,7 @@ export default function PolishGlassLayout() {
             >
               <Shield className="h-5 w-5" />
               Admin
-            </button>
+            </Link>
           )}
         </div>
 
@@ -116,9 +116,9 @@ export default function PolishGlassLayout() {
           >
             <div className="flex flex-col p-4 gap-1">
               {navItems.map((item) => (
-                <button
+                <Link
                   key={item.path}
-                  onClick={() => navigate(item.path)}
+                  to={item.path}
                   className={`w-full text-left px-4 py-3 rounded-xl font-display font-medium transition-all flex items-center gap-2 ${
                     isActive(item.path)
                       ? 'text-white bg-white/5'
@@ -127,11 +127,11 @@ export default function PolishGlassLayout() {
                 >
                   <item.icon className="h-4 w-4" />
                   {item.label}
-                </button>
+                </Link>
               ))}
               {isAdmin && (
-                <button
-                  onClick={() => { navigate('/admin/queue'); setMobileOpen(false) }}
+                <Link
+                  to="/admin/queue"
                   className={`w-full text-left px-4 py-3 rounded-xl font-display font-medium transition-all flex items-center gap-2 ${
                     isActive('/admin')
                       ? 'text-white bg-white/5'
@@ -140,7 +140,7 @@ export default function PolishGlassLayout() {
                 >
                   <Shield className="h-4 w-4" />
                   Admin
-                </button>
+                </Link>
               )}
               <button
                 onClick={() => { setRedeemOpen(true); setMobileOpen(false) }}

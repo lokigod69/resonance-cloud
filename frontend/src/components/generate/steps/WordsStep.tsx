@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Sparkles, Wand2 } from 'lucide-react'
-import { GlassInput, WordChips } from '../shared/GlassInput'
+import { GlassInput, WordChips, type GlassInputHandle } from '../shared/GlassInput'
 import PillButton from '../shared/PillButton'
 import { MAX_WORDS } from '../wizardData'
 import type { WizardState, WizardAction } from '../useWizardState'
@@ -14,6 +14,7 @@ interface WordsStepProps {
 
 export default function WordsStep({ state, dispatch, onQuickGenerate }: WordsStepProps) {
   const [error, setError] = useState<string | null>(null)
+  const glassInputRef = useRef<GlassInputHandle>(null)
   const wordCount = state.words.length
   const isFull = wordCount >= MAX_WORDS
 
@@ -31,6 +32,7 @@ export default function WordsStep({ state, dispatch, onQuickGenerate }: WordsSte
   }
 
   function handleQuickGenerate() {
+    glassInputRef.current?.flush()
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
     onQuickGenerate()
   }
@@ -56,7 +58,7 @@ export default function WordsStep({ state, dispatch, onQuickGenerate }: WordsSte
 
       <div className="w-full max-w-md space-y-5">
         {/* Word input */}
-        {!isFull && <GlassInput onLock={handleLock} autoFocus placeholder="Type a word and press Enter" />}
+        {!isFull && <GlassInput ref={glassInputRef} onLock={handleLock} autoFocus placeholder="Type a word and press Enter" />}
 
         {/* Locked words */}
         {wordCount > 0 && (
@@ -96,7 +98,7 @@ export default function WordsStep({ state, dispatch, onQuickGenerate }: WordsSte
               </PillButton>
               <PillButton
                 variant="secondary"
-                onClick={() => dispatch({ type: 'CHOOSE_PATH', path: 'custom' })}
+                onClick={() => { glassInputRef.current?.flush(); dispatch({ type: 'CHOOSE_PATH', path: 'custom' }) }}
               >
                 <Wand2 className="h-4 w-4" />
                 Customize

@@ -485,7 +485,7 @@ function StepWords({
             className="flex flex-col sm:flex-row gap-3 justify-center"
           >
             <button
-              onClick={onQuickGenerate}
+              onClick={() => { addWord(); onQuickGenerate() }}
               disabled={submitting}
               className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all shadow-[0_0_20px_rgba(13,226,195,0.15)] disabled:opacity-50"
             >
@@ -493,7 +493,7 @@ function StepWords({
               {submitting ? 'Generating...' : 'Quick Generate'}
             </button>
             <button
-              onClick={onCustomize}
+              onClick={() => { addWord(); onCustomize() }}
               disabled={submitting}
               className="px-6 py-3 rounded-xl border border-white/10 text-[var(--pg-text-dim)] font-display font-medium hover:bg-white/5 hover:text-white transition-all disabled:opacity-50"
             >

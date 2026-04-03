@@ -480,10 +480,12 @@ function VideoViewerModal({
   const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(word ?? { id: '', video_url: null, thumbnail_url: null })
   const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
   const { isPlaying, setIsPlaying, togglePlay, onPlay, onPause } = useVideoPlayback(videoRef)
+  const isPlayingRef = useRef(isPlaying)
+  isPlayingRef.current = isPlaying
 
-  // Reset playing state when navigating to a new word
+  // Preserve playing/paused state when navigating to a new word
   useEffect(() => {
-    setIsPlaying(true)
+    setIsPlaying(isPlayingRef.current)
   }, [currentIndex, setIsPlaying])
 
   useEffect(() => {
@@ -551,6 +553,11 @@ function VideoViewerModal({
                   onClick={togglePlay}
                   onPlay={onPlay}
                   onPause={onPause}
+                  onEnded={() => {
+                    if (videoRef.current) {
+                      videoRef.current.currentTime = 0
+                    }
+                  }}
                   className="w-full aspect-video cursor-pointer"
                 />
               </>
