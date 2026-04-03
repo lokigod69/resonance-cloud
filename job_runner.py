@@ -890,6 +890,7 @@ async def process_word(
         _suno_path_a, _suno_path_b, clip_duration = suno_audio_paths
         outro_mode = suno_settings.get("outro_mode", "fade_out")
         fade_tail = float(suno_settings.get("fade_tail_duration", 2.5))
+        bookend_defaults = load_defaults(workspace_path).get("bookend", {})
 
         from src.manifest import update_settings
 
@@ -923,7 +924,10 @@ async def process_word(
                 update_selection(word_dir, "song", song_version)
 
                 asm_overrides: dict[str, Any] = {
-                    "silence_trim": False, "lufs_normalize": False, "gap_strategy": "fade_black",
+                    "silence_trim": False, "lufs_normalize": False, "gap_strategy": "word_card",
+                    "word_card_show_translation": True,
+                    "word_card_font": bookend_defaults.get("font", "Bebas Neue"),
+                    "word_card_font_size": min(144, int(bookend_defaults.get("font_size", 92))),
                 }
                 update_settings(word_dir, "assembly", asm_overrides)
 
@@ -986,6 +990,7 @@ async def process_word(
             # for subsequent words — even if assembly A failed or an exception occurred.
             update_settings(word_dir, "assembly", {
                 "silence_trim": None, "lufs_normalize": None, "gap_strategy": None,
+                "word_card_show_translation": None, "word_card_font": None, "word_card_font_size": None,
             })
             update_settings(word_dir, "bookend", {"skip_outro": None, "outro_mode": None})
 
