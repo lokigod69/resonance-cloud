@@ -689,6 +689,207 @@ async def upload_ab_results(
     return True
 
 
+# ─── Suno Bake-In ─────────────────────────────────────────────────────────────
+
+async def bake_suno_into_word(
+    workspace_path: Path,
+    word_dir: Path,
+    word_slug: str,
+    word_record: dict[str, Any],
+    suno_settings: dict[str, Any],
+    bookend_defaults: dict[str, Any],
+    skip_suno_guard: bool = False,
+) -> dict[str, Any]:
+    """
+    Generate Suno audio, trim, run assembly+bookend for one word.
+
+    Does NOT call upload_ab_results() — callers handle upload themselves.
+
+    Args:
+        skip_suno_guard: If False, skips generation when suno_audio_url already
+            exists on the word record (prevents double billing on normal pipeline
+            re-runs). Set True for explicit retry jobs.
+
+    Returns:
+        success (bool): True if Suno bake-in completed and produced manifests.
+        suno_ab_manifests (dict): {"a": manifest, "b": manifest} on success.
+        error (str | None): Human-readable error message on failure.
+    """
+    user_id = word_record["user_id"]
+    deck_id = word_record["deck_id"]
+
+    # Guard: skip if suno_audio_url already set (prevents double billing on re-runs)
+    if not skip_suno_guard and word_record.get("suno_audio_url"):
+        log.info("  [Suno] Skipping bake-in: suno_audio_url already set for %s", word_slug)
+        return {"success": False, "suno_ab_manifests": {}, "error": "already_set"}
+
+    # Step 1: Generate Suno audio
+    log.info("  [Suno] Generating audio for %s", word_slug)
+    try:
+        suno_result = await suno_generate_song(
+            str(workspace_path.parent), user_id, deck_id, word_slug
+        )
+    except Exception as _e:
+        log.error("  [Suno] Generation failed: %s", _e)
+        return {"success": False, "suno_ab_manifests": {}, "error": str(_e)}
+
+    # Step 2: Download and validate audio
+    if not (suno_result and suno_result.get("status") == "success"):
+        error_msg = suno_result.get("error") if suno_result else "no result from Suno"
+        log.warning("  [Suno] Generation failed: %s", error_msg)
+        return {"success": False, "suno_ab_manifests": {}, "error": error_msg}
+
+    audio_url_a = suno_result.get("audio_url")
+    audio_url_b = suno_result.get("audio_url_b")
+
+    if not audio_url_a:
+        msg = "Suno API returned status=success but no audio URL"
+        log.warning("  [Suno] %s", msg)
+        return {"success": False, "suno_ab_manifests": {}, "error": msg}
+
+    suno_dir = word_dir / "songs" / "suno"
+    suno_dir.mkdir(parents=True, exist_ok=True)
+
+    try:
+        path_a = await download_suno_audio(audio_url_a, suno_dir / "suno_a.mp3")
+        path_b = await download_suno_audio(audio_url_b, suno_dir / "suno_b.mp3") \
+                 if audio_url_b else None
+
+        manifest_snap = read_manifest(word_dir)
+        video_version = manifest_snap.selected.video
+        if not video_version:
+            raise ValueError("No video version selected in manifest")
+
+        clip_duration = _probe_clip_durations(word_dir / "videos" / video_version)
+        suno_duration_a = _probe_audio_duration(path_a)
+        _outro_mode_guard = suno_settings.get("outro_mode", "fade_out")
+        _fade_tail_guard = float(suno_settings.get("fade_tail_duration", 2.5))
+        _min_required = (clip_duration + _fade_tail_guard) if _outro_mode_guard == "fade_out" else clip_duration
+
+        if suno_duration_a < _min_required:
+            msg = f"Suno audio too short ({suno_duration_a:.1f}s < {_min_required:.1f}s required)"
+            log.warning("  [Suno] %s", msg)
+            return {"success": False, "suno_ab_manifests": {}, "error": msg}
+
+        log.info("  [Suno] Audio ready: %.1fs clips", clip_duration)
+
+    except Exception as _dl_e:
+        log.error("  [Suno] Download/probe failed: %s", _dl_e)
+        return {"success": False, "suno_ab_manifests": {}, "error": str(_dl_e)}
+
+    # Step 3: Trim audio
+    outro_mode = suno_settings.get("outro_mode", "fade_out")
+    fade_tail = float(suno_settings.get("fade_tail_duration", 2.5))
+
+    from src.manifest import update_settings as _update_settings
+
+    if outro_mode == "fade_out":
+        trim_to = clip_duration + fade_tail
+        trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
+                                   trim_to, clip_duration, fade_tail)
+        trimmed_b = _trim_suno_mp3(path_b, suno_dir / "take_suno_b.mp3",
+                                   trim_to, clip_duration, fade_tail) \
+                    if path_b else None
+    else:  # clean_cut — trim to exact clip duration with micro-fade to avoid click
+        _fade_start = max(0.0, clip_duration - 0.1)
+        trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
+                                   clip_duration, _fade_start, 0.1)
+        trimmed_b = _trim_suno_mp3(path_b, suno_dir / "take_suno_b.mp3",
+                                   clip_duration, _fade_start, 0.1) \
+                    if path_b else None
+
+    suno_takes = [("a", trimmed_a)]
+    if trimmed_b:
+        suno_takes.append(("b", trimmed_b))
+
+    # Step 4: Assembly + Bookend
+    suno_assembled_labels: set[str] = set()
+    suno_assembly_finals: dict[str, str] = {}
+    suno_ab_manifests: dict[str, Any] = {}
+    _assembly_a_failed = False
+
+    try:
+        # Pass 1: Assemblies
+        for label, mp3_path in suno_takes:
+            song_version = f"suno/{mp3_path.name}"
+            update_selection(word_dir, "song", song_version)
+
+            asm_overrides: dict[str, Any] = {
+                "silence_trim": False, "lufs_normalize": False, "gap_strategy": "word_card",
+                "word_card_show_translation": True,
+                "word_card_font": bookend_defaults.get("font", "Bebas Neue"),
+                "word_card_font_size": min(144, int(bookend_defaults.get("font_size", 92))),
+            }
+            _update_settings(word_dir, "assembly", asm_overrides)
+
+            asm_ok = False
+            for attempt in range(MAX_RETRIES + 1):
+                try:
+                    log.info("  === Suno %s assembly (attempt %d) ===",
+                             label.upper(), attempt + 1)
+                    await run_stage(workspace_path, word_slug, "assembly")
+                    asm_ok = True
+                    break
+                except Exception as e:
+                    log.warning("  [Suno %s] assembly attempt %d failed: %s",
+                                label.upper(), attempt + 1, e)
+
+            if asm_ok:
+                suno_assembled_labels.add(label)
+                suno_assembly_finals[label] = read_manifest(word_dir).selected.final or ""
+            elif label == "a":
+                log.error("  [Suno] Version A assembly failed")
+                _assembly_a_failed = True
+                break
+            else:
+                log.warning("  [Suno] Version B assembly failed — A only")
+
+        # Pass 2: Bookends (only if Pass 1 version A succeeded)
+        if not _assembly_a_failed:
+            for label, _mp3 in suno_takes:
+                if label not in suno_assembled_labels:
+                    continue
+
+                if label in suno_assembly_finals and suno_assembly_finals[label]:
+                    update_selection(word_dir, "final", suno_assembly_finals[label])
+
+                if outro_mode == "fade_out":
+                    _update_settings(word_dir, "bookend", {"skip_outro": True})
+                else:
+                    _update_settings(word_dir, "bookend", {"outro_mode": "silent"})
+
+                bk_ok = False
+                for attempt in range(MAX_RETRIES + 1):
+                    try:
+                        log.info("  === Suno %s bookend (attempt %d) ===",
+                                 label.upper(), attempt + 1)
+                        await run_stage(workspace_path, word_slug, "bookend")
+                        bk_ok = True
+                        break
+                    except Exception as e:
+                        log.warning("  [Suno %s] bookend attempt %d failed: %s",
+                                    label.upper(), attempt + 1, e)
+
+                if not bk_ok:
+                    log.warning("  [Suno %s] bookend failed — assembly fallback at upload",
+                                label.upper())
+
+                suno_ab_manifests[label] = read_manifest(word_dir)
+
+    finally:
+        # Always restore overrides — even if an exception occurred mid-loop
+        _update_settings(word_dir, "assembly", {
+            "silence_trim": None, "lufs_normalize": None, "gap_strategy": None,
+            "word_card_show_translation": None, "word_card_font": None, "word_card_font_size": None,
+        })
+        _update_settings(word_dir, "bookend", {"skip_outro": None, "outro_mode": None})
+
+    if _assembly_a_failed:
+        return {"success": False, "suno_ab_manifests": {}, "error": "Suno version A assembly failed"}
+
+    return {"success": True, "suno_ab_manifests": suno_ab_manifests, "error": None}
+
+
 # ─── Word Processing ─────────────────────────────────────────────────────────
 
 async def process_word(
@@ -770,7 +971,6 @@ async def process_word(
     AB_STAGES = {'assembly', 'bookend'}
     pipeline_start = time.monotonic()
 
-    suno_task = None
     suno_settings = load_defaults(workspace_path).get("suno", {})
     suno_enabled = suno_settings.get("enabled", False)
 
@@ -832,183 +1032,29 @@ async def process_word(
             from src.manifest import update_settings
             update_settings(word_dir, "song", {"batch_size": None})
 
-        # After concept: fire Suno generation in the background while song+video run
-        # Guard: skip if suno_audio_url already exists (prevents double billing on re-runs)
-        if stage == "concept" and suno_enabled and not word_record.get("suno_audio_url"):
-            log.info("  [Suno] Firing background task after concept stage")
-            suno_task = asyncio.create_task(
-                suno_generate_song(
-                    str(workspace_path.parent), job["user_id"], job["deck_id"], word_slug_val
-                )
-            )
-
-    # ── Await Suno task and download audio ──────────────────────────────────
-    suno_audio_paths = None   # (path_a, path_b|None, clip_duration) if Suno ready
-    suno_dir: Path | None = None
-
-    if suno_task is not None:
-        try:
-            suno_result = await suno_task
-        except Exception as _e:
-            log.error("  [Suno] Background task failed: %s", _e)
-            suno_result = None
-
-        if suno_result and suno_result.get("status") == "success":
-            audio_url_a = suno_result.get("audio_url")
-            audio_url_b = suno_result.get("audio_url_b")
-            if audio_url_a:
-                suno_dir = word_dir / "songs" / "suno"
-                suno_dir.mkdir(parents=True, exist_ok=True)
-                try:
-                    path_a = await download_suno_audio(audio_url_a, suno_dir / "suno_a.mp3")
-                    path_b = await download_suno_audio(audio_url_b, suno_dir / "suno_b.mp3") \
-                             if audio_url_b else None
-                    manifest_snap = read_manifest(word_dir)
-                    video_version = manifest_snap.selected.video
-                    if not video_version:
-                        raise ValueError("No video version selected in manifest")
-                    clip_duration = _probe_clip_durations(word_dir / "videos" / video_version)
-                    suno_duration_a = _probe_audio_duration(path_a)
-                    _outro_mode_guard = suno_settings.get("outro_mode", "fade_out")
-                    _fade_tail_guard = float(suno_settings.get("fade_tail_duration", 2.5))
-                    _min_required = (clip_duration + _fade_tail_guard) if _outro_mode_guard == "fade_out" else clip_duration
-                    if suno_duration_a >= _min_required:
-                        suno_audio_paths = (path_a, path_b, clip_duration)
-                        log.info("  [Suno] Audio ready: %.1fs clips", clip_duration)
-                    else:
-                        log.warning(
-                            "  [Suno] Audio too short (%.1fs < %.1fs required) — falling back to ACE-Step",
-                            suno_duration_a, _min_required,
-                        )
-                except Exception as _dl_e:
-                    log.error("  [Suno] Download failed: %s — falling back to ACE-Step", _dl_e)
-            else:
-                log.warning("  [Suno] API returned status=success but no audio URL — falling back to ACE-Step")
-        else:
-            log.warning("  [Suno] Generation failed: %s",
-                        suno_result.get("error") if suno_result else "no result")
-
-    # ── Assembly + Bookend ───────────────────────────────────────────────────
-    # Initialize both manifest dicts before the if/else so the upload section
-    # always has them in scope regardless of which path ran.
-    ab_manifests: dict[str, Any] = {}
+    # ── Suno bake-in ─────────────────────────────────────────────────────────
     suno_ab_manifests: dict[str, Any] = {}
+
+    if suno_enabled:
+        _bake_result = await bake_suno_into_word(
+            workspace_path=workspace_path,
+            word_dir=word_dir,
+            word_slug=word_slug_val,
+            word_record=word_record,
+            suno_settings=suno_settings,
+            bookend_defaults=load_defaults(workspace_path).get("bookend", {}),
+            skip_suno_guard=False,
+        )
+        suno_ab_manifests = _bake_result.get("suno_ab_manifests", {})
+        if not _bake_result["success"]:
+            log.info("  [Suno] Bake-in did not produce audio — proceeding with ACE-Step")
+
+    # ── Assembly + Bookend (ACE-Step path) ───────────────────────────────────
+    ab_manifests: dict[str, Any] = {}
     take_a: str | None = None
     take_b: str | None = None
 
-    if suno_audio_paths is not None:
-        # ── SUNO PATH ────────────────────────────────────────────────────────
-        # Run assembly+bookend with Suno audio. Two passes (assemblies first,
-        # bookends second) mirrors the ACE-Step structure.
-        assert suno_dir is not None
-        _suno_path_a, _suno_path_b, clip_duration = suno_audio_paths
-        outro_mode = suno_settings.get("outro_mode", "fade_out")
-        fade_tail = float(suno_settings.get("fade_tail_duration", 2.5))
-        bookend_defaults = load_defaults(workspace_path).get("bookend", {})
-
-        from src.manifest import update_settings
-
-        # Trim Suno audio according to outro_mode
-        if outro_mode == "fade_out":
-            trim_to = clip_duration + fade_tail
-            trimmed_a = _trim_suno_mp3(_suno_path_a, suno_dir / "take_suno_a.mp3",
-                                       trim_to, clip_duration, fade_tail)
-            trimmed_b = _trim_suno_mp3(_suno_path_b, suno_dir / "take_suno_b.mp3",
-                                       trim_to, clip_duration, fade_tail) \
-                        if _suno_path_b else None
-        else:  # clean_cut — trim to exact clip duration with micro-fade to avoid click
-            _fade_start = max(0.0, clip_duration - 0.1)
-            trimmed_a = _trim_suno_mp3(_suno_path_a, suno_dir / "take_suno_a.mp3",
-                                       clip_duration, _fade_start, 0.1)
-            trimmed_b = _trim_suno_mp3(_suno_path_b, suno_dir / "take_suno_b.mp3",
-                                       clip_duration, _fade_start, 0.1) \
-                        if _suno_path_b else None
-
-        suno_takes = [("a", trimmed_a)]
-        if trimmed_b:
-            suno_takes.append(("b", trimmed_b))
-
-        suno_assembled_labels: set[str] = set()
-        suno_assembly_finals: dict[str, str] = {}
-
-        try:
-            # Pass 1: Assemblies
-            for label, mp3_path in suno_takes:
-                song_version = f"suno/{mp3_path.name}"
-                update_selection(word_dir, "song", song_version)
-
-                asm_overrides: dict[str, Any] = {
-                    "silence_trim": False, "lufs_normalize": False, "gap_strategy": "word_card",
-                    "word_card_show_translation": True,
-                    "word_card_font": bookend_defaults.get("font", "Bebas Neue"),
-                    "word_card_font_size": min(144, int(bookend_defaults.get("font_size", 92))),
-                }
-                update_settings(word_dir, "assembly", asm_overrides)
-
-                asm_ok = False
-                for attempt in range(MAX_RETRIES + 1):
-                    try:
-                        log.info("  === Suno %s assembly (attempt %d) ===",
-                                 label.upper(), attempt + 1)
-                        await run_stage(workspace_path, word_slug_val, "assembly")
-                        asm_ok = True
-                        break
-                    except Exception as e:
-                        log.warning("  [Suno %s] assembly attempt %d failed: %s",
-                                    label.upper(), attempt + 1, e)
-
-                if asm_ok:
-                    suno_assembled_labels.add(label)
-                    suno_assembly_finals[label] = read_manifest(word_dir).selected.final or ""
-                elif label == "a":
-                    log.error("  [Suno] Version A assembly failed — falling back to ACE-Step")
-                    suno_audio_paths = None   # fall through to ACE-Step below
-                    break
-                else:
-                    log.warning("  [Suno] Version B assembly failed — A only")
-
-            # Pass 2: Bookends (only if Suno assembly path survived)
-            if suno_audio_paths is not None:
-                for label, _mp3 in suno_takes:
-                    if label not in suno_assembled_labels:
-                        continue
-
-                    if label in suno_assembly_finals and suno_assembly_finals[label]:
-                        update_selection(word_dir, "final", suno_assembly_finals[label])
-
-                    if outro_mode == "fade_out":
-                        update_settings(word_dir, "bookend", {"skip_outro": True})
-                    else:
-                        update_settings(word_dir, "bookend", {"outro_mode": "silent"})
-
-                    bk_ok = False
-                    for attempt in range(MAX_RETRIES + 1):
-                        try:
-                            log.info("  === Suno %s bookend (attempt %d) ===",
-                                     label.upper(), attempt + 1)
-                            await run_stage(workspace_path, word_slug_val, "bookend")
-                            bk_ok = True
-                            break
-                        except Exception as e:
-                            log.warning("  [Suno %s] bookend attempt %d failed: %s",
-                                        label.upper(), attempt + 1, e)
-
-                    if not bk_ok:
-                        log.warning("  [Suno %s] bookend failed — assembly fallback at upload",
-                                    label.upper())
-
-                    suno_ab_manifests[label] = read_manifest(word_dir)
-
-        finally:
-            # Always restore overrides so resolve_settings() uses workspace defaults
-            # for subsequent words — even if assembly A failed or an exception occurred.
-            update_settings(word_dir, "assembly", {
-                "silence_trim": None, "lufs_normalize": None, "gap_strategy": None,
-                "word_card_show_translation": None, "word_card_font": None, "word_card_font_size": None,
-            })
-            update_settings(word_dir, "bookend", {"skip_outro": None, "outro_mode": None})
-
-    if suno_audio_paths is None:
+    if not suno_ab_manifests:
         # ── ACE-STEP PATH (Suno disabled, failed, or Suno A assembly failed) ──
         # Standard two-pass A/B pipeline. When Suno is enabled, force single take
         # (take_b=None) — Suno is primary; generating 2 ACE-Step takes wastes GPU.
@@ -1228,6 +1274,112 @@ async def process_word(
     return True
 
 
+# ─── Suno Retry Job ──────────────────────────────────────────────────────────
+
+async def process_suno_retry_job(job: dict[str, Any]) -> None:
+    """Process a suno_retry job from the queue.
+
+    Looks up the target word, validates disk prerequisites, calls
+    bake_suno_into_word(), uploads the result, and updates both the
+    word record and the job record in Supabase.
+    """
+    job_id = job["id"]
+    word_id = job.get("target_word_id")
+
+    log.info("[SunoRetry] Processing job %s for word %s", job_id, word_id)
+
+    sb.table("generation_jobs").update({
+        "status": "processing",
+        "started_at": datetime.now(timezone.utc).isoformat(),
+    }).eq("id", job_id).execute()
+
+    try:
+        if not word_id:
+            raise ValueError("Job has no target_word_id")
+
+        # Fetch word record
+        word_resp = sb.table("words").select("*").eq("id", word_id).single().execute()
+        word = word_resp.data
+        if not word:
+            raise ValueError(f"Word {word_id} not found in Supabase")
+
+        user_id = word["user_id"]
+        deck_id = word["deck_id"]
+        word_slug = word["word_slug"]
+
+        if not word_slug:
+            raise ValueError(f"Word {word_id} has no word_slug — cannot locate workspace directory")
+
+        # Build workspace paths — must match process_word()/process_job() exactly
+        workspace_path = WORKSPACE_ROOT / f"cloud_{user_id}_{deck_id}"
+        word_dir = workspace_path / word_slug
+
+        # Validate prerequisites
+        if not word_dir.exists():
+            raise FileNotFoundError(
+                f"Word directory not found: {word_dir}. "
+                "The workspace may have been cleaned up — re-generate the word to retry."
+            )
+        if not (word_dir / "manifest.json").exists():
+            raise FileNotFoundError(f"Manifest not found in {word_dir}")
+        if not (workspace_path / "settings-defaults.json").exists():
+            raise FileNotFoundError(f"settings-defaults.json not found in {workspace_path}")
+
+        # Load settings
+        defaults = load_defaults(workspace_path)
+        suno_settings = defaults.get("suno", {})
+        bookend_defaults = defaults.get("bookend", {})
+
+        if not suno_settings.get("enabled", False):
+            raise ValueError(
+                "Suno is not enabled in this workspace's settings-defaults.json. "
+                "Enable suno.enabled before retrying."
+            )
+
+        # Run Suno bake-in
+        bake_result = await bake_suno_into_word(
+            workspace_path=workspace_path,
+            word_dir=word_dir,
+            word_slug=word_slug,
+            word_record=word,
+            suno_settings=suno_settings,
+            bookend_defaults=bookend_defaults,
+            skip_suno_guard=True,  # Retry: always re-generate even if suno_audio_url exists
+        )
+
+        if not bake_result["success"]:
+            raise RuntimeError(bake_result.get("error") or "Suno bake-in failed")
+
+        # Upload results
+        suno_ab = bake_result["suno_ab_manifests"]
+        manifest_a = suno_ab.get("a", read_manifest(word_dir))
+        manifest_b = suno_ab.get("b")
+
+        uploaded = await upload_ab_results(
+            word, word_dir, user_id, deck_id, word_slug,
+            manifest_a=manifest_a,
+            manifest_b=manifest_b,
+        )
+        if not uploaded:
+            raise RuntimeError("upload_ab_results() failed for Suno retry")
+
+        sb.table("generation_jobs").update({
+            "status": "complete",
+            "words_completed": 1,
+            "completed_at": datetime.now(timezone.utc).isoformat(),
+        }).eq("id", job_id).execute()
+        log.info("[SunoRetry] Job %s completed successfully", job_id)
+
+    except Exception as exc:
+        log.error("[SunoRetry] Job %s failed: %s", job_id, exc, exc_info=True)
+        sb.table("generation_jobs").update({
+            "status": "failed",
+            "words_failed": 1,
+            "error_message": str(exc)[:500],
+            "completed_at": datetime.now(timezone.utc).isoformat(),
+        }).eq("id", job_id).execute()
+
+
 # ─── Job Processing ──────────────────────────────────────────────────────────
 
 async def process_job(job: dict[str, Any]) -> None:
@@ -1442,7 +1594,7 @@ async def main() -> None:
             job_resp = sb.table("generation_jobs") \
                 .select("*") \
                 .eq("status", "approved") \
-                .order("priority") \
+                .order("priority", desc=True) \
                 .order("created_at") \
                 .limit(1) \
                 .execute()
@@ -1453,7 +1605,10 @@ async def main() -> None:
                 continue
 
             job = job_resp.data[0]
-            await process_job(job)
+            if job.get("job_type") == "suno_retry":
+                await process_suno_retry_job(job)
+            else:
+                await process_job(job)
 
         except KeyboardInterrupt:
             log.info("Shutting down")

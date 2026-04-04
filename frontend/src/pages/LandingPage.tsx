@@ -1,5 +1,6 @@
 import HeroSection from '@/components/landing/HeroSection'
 import ScrollStorySection from '@/components/landing/ScrollStorySection'
+import VoiceTutorSection from '@/components/landing/VoiceTutorSection'
 import LanguagesSection from '@/components/landing/LanguagesSection'
 import CtaFooterSection from '@/components/landing/CtaFooterSection'
 import { HERO_VIDEO_URL } from '@/components/landing/landingData'
@@ -34,6 +35,7 @@ export default function LandingPage() {
         {/* Gradient fade from transparent → section bg for smooth transition */}
         <div className="h-16 bg-gradient-to-b from-transparent to-[#0d0e16]" />
         <ScrollStorySection />
+        <VoiceTutorSection />
         <LanguagesSection />
         <CtaFooterSection />
       </div>

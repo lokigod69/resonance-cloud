@@ -1,10 +1,12 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { type TutorVoice, getVoicesForLanguage } from '@/voiceRegistry'
 
 export type TutorStatus = 'idle' | 'recording' | 'processing' | 'playing' | 'error'
 
 export interface TutorMessage {
   role: 'user' | 'assistant'
   content: string
+  revealed: boolean
 }
 
 interface VoiceChatResponse {
@@ -16,14 +18,37 @@ interface VoiceChatResponse {
 
 export interface UseVoiceTutorReturn {
   language: string | null
+  voice: TutorVoice | null
   status: TutorStatus
   messages: TutorMessage[]
   error: string | null
   isSupported: boolean
   startRecording: () => Promise<void>
   stopRecording: () => void
-  initConversation: (lang: string) => Promise<void>
+  selectLanguage: (lang: string) => void
+  startConversation: (voice: TutorVoice) => Promise<void>
+  changeVoice: () => void
+  newChat: () => Promise<void>
   resetConversation: () => void
+}
+
+function saveVoicePreference(language: string, voiceId: string) {
+  try {
+    const prefs = JSON.parse(localStorage.getItem('voiceTutorPrefs') || '{}')
+    prefs[language] = voiceId
+    localStorage.setItem('voiceTutorPrefs', JSON.stringify(prefs))
+  } catch {
+    // localStorage unavailable
+  }
+}
+
+function getSavedVoicePreference(language: string): string | null {
+  try {
+    const prefs = JSON.parse(localStorage.getItem('voiceTutorPrefs') || '{}')
+    return prefs[language] || null
+  } catch {
+    return null
+  }
 }
 
 function blobToBase64(blob: Blob): Promise<string> {
@@ -66,6 +91,7 @@ function getMimeType(): string {
 
 export function useVoiceTutor(): UseVoiceTutorReturn {
   const [language, setLanguage] = useState<string | null>(null)
+  const [voice, setVoice] = useState<TutorVoice | null>(null)
   const [status, setStatus] = useState<TutorStatus>('idle')
   const [messages, setMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -73,12 +99,16 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
   const chunksRef = useRef<Blob[]>([])
-  // Mirror messages in a ref so callbacks always have fresh data
   const messagesRef = useRef<TutorMessage[]>([])
+  const voiceRef = useRef<TutorVoice | null>(null)
 
   useEffect(() => {
     messagesRef.current = messages
   }, [messages])
+
+  useEffect(() => {
+    voiceRef.current = voice
+  }, [voice])
 
   // Cleanup on unmount
   useEffect(() => {
@@ -93,15 +123,19 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     typeof MediaRecorder !== 'undefined'
 
   const callVoiceChat = useCallback(
-    async (audio_base64: string | null, lang: string): Promise<VoiceChatResponse> => {
+    async (audio_base64: string | null, lang: string, v?: TutorVoice): Promise<VoiceChatResponse> => {
+      const body: Record<string, unknown> = {
+        audio_base64,
+        language: lang,
+        history: messagesRef.current.slice(-20),
+      }
+      if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
+      if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
+
       const res = await fetch('/api/voice-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          audio_base64,
-          language: lang,
-          history: messagesRef.current.slice(-20),
-        }),
+        body: JSON.stringify(body),
       })
 
       if (!res.ok) {
@@ -114,31 +148,105 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     [],
   )
 
-  const initConversation = useCallback(
-    async (lang: string) => {
+  // Reveal the last assistant message after 1.5s
+  const scheduleReveal = useCallback(() => {
+    setTimeout(() => {
+      setMessages((prev) =>
+        prev.map((m, i) => (i === prev.length - 1 ? { ...m, revealed: true } : m)),
+      )
+    }, 1500)
+  }, [])
+
+  const fetchAndPlayGreeting = useCallback(
+    async (lang: string, v: TutorVoice) => {
+      setStatus('processing')
+      const data = await callVoiceChat(null, lang, v)
+      const msg: TutorMessage = { role: 'assistant', content: data.ai_text, revealed: false }
+      setMessages([msg])
+      messagesRef.current = [msg]
+      setStatus('playing')
+      const audioPromise = playAudioBase64(data.audio_base64, data.audio_format)
+      scheduleReveal()
+      await audioPromise
+      setStatus('idle')
+    },
+    [callVoiceChat, scheduleReveal],
+  )
+
+  const selectLanguage = useCallback(
+    (lang: string) => {
       setLanguage(lang)
+      setVoice(null)
+      voiceRef.current = null
       setMessages([])
       messagesRef.current = []
       setError(null)
-      setStatus('processing')
+      setStatus('idle')
 
+      const voices = getVoicesForLanguage(lang)
+      const savedId = getSavedVoicePreference(lang)
+      const autoVoice =
+        savedId
+          ? (voices.find((v) => v.id === savedId) ?? (voices.length === 1 ? voices[0] : null))
+          : voices.length === 1
+          ? voices[0]
+          : null
+
+      if (autoVoice) {
+        setVoice(autoVoice)
+        voiceRef.current = autoVoice
+        fetchAndPlayGreeting(lang, autoVoice).catch((err) => {
+          setError(err instanceof Error ? err.message : 'Failed to start conversation')
+          setStatus('error')
+        })
+      }
+    },
+    [fetchAndPlayGreeting],
+  )
+
+  const startConversation = useCallback(
+    async (selectedVoice: TutorVoice) => {
+      const lang = language
+      if (!lang) return
+      setVoice(selectedVoice)
+      voiceRef.current = selectedVoice
+      saveVoicePreference(lang, selectedVoice.id)
+      setMessages([])
+      messagesRef.current = []
+      setError(null)
       try {
-        const data = await callVoiceChat(null, lang)
-
-        const assistantMsg: TutorMessage = { role: 'assistant', content: data.ai_text }
-        setMessages([assistantMsg])
-
-        setStatus('playing')
-        await playAudioBase64(data.audio_base64, data.audio_format)
-        setStatus('idle')
+        await fetchAndPlayGreeting(lang, selectedVoice)
       } catch (err) {
-        const msg = err instanceof Error ? err.message : 'Failed to start conversation'
-        setError(msg)
+        setError(err instanceof Error ? err.message : 'Failed to start conversation')
         setStatus('error')
       }
     },
-    [callVoiceChat],
+    [language, fetchAndPlayGreeting],
   )
+
+  const changeVoice = useCallback(() => {
+    setVoice(null)
+    voiceRef.current = null
+    setMessages([])
+    messagesRef.current = []
+    setError(null)
+    setStatus('idle')
+  }, [])
+
+  const newChat = useCallback(async () => {
+    const lang = language
+    const v = voiceRef.current
+    if (!lang || !v) return
+    setMessages([])
+    messagesRef.current = []
+    setError(null)
+    try {
+      await fetchAndPlayGreeting(lang, v)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
+      setStatus('error')
+    }
+  }, [language, fetchAndPlayGreeting])
 
   const startRecording = useCallback(async () => {
     if (!isSupported) {
@@ -163,7 +271,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       }
 
       recorder.onstop = async () => {
-        // Stop mic tracks after recording ends
         stream.getTracks().forEach((t) => t.stop())
         streamRef.current = null
 
@@ -171,23 +278,26 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         chunksRef.current = []
 
         const currentLang = language
+        const currentVoice = voiceRef.current
         if (!currentLang) return
 
         setStatus('processing')
 
         try {
           const audio_base64 = await blobToBase64(audioBlob)
-          const data = await callVoiceChat(audio_base64, currentLang)
+          const data = await callVoiceChat(audio_base64, currentLang, currentVoice ?? undefined)
 
           setMessages((prev) => {
             const next = [...prev]
-            if (data.user_text) next.push({ role: 'user', content: data.user_text })
-            next.push({ role: 'assistant', content: data.ai_text })
+            if (data.user_text) next.push({ role: 'user', content: data.user_text, revealed: true })
+            next.push({ role: 'assistant', content: data.ai_text, revealed: false })
             return next
           })
 
           setStatus('playing')
-          await playAudioBase64(data.audio_base64, data.audio_format)
+          const audioPromise = playAudioBase64(data.audio_base64, data.audio_format)
+          scheduleReveal()
+          await audioPromise
           setStatus('idle')
         } catch (err) {
           const msg = err instanceof Error ? err.message : 'Something went wrong. Tap to try again.'
@@ -208,7 +318,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       }
       setStatus('error')
     }
-  }, [isSupported, language, callVoiceChat])
+  }, [isSupported, language, callVoiceChat, scheduleReveal])
 
   const stopRecording = useCallback(() => {
     const recorder = mediaRecorderRef.current
@@ -219,18 +329,18 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   }, [])
 
   const resetConversation = useCallback(() => {
-    // Stop any active recording
     const recorder = mediaRecorderRef.current
     if (recorder && recorder.state === 'recording') {
       recorder.stop()
     }
     mediaRecorderRef.current = null
 
-    // Stop mic stream
     streamRef.current?.getTracks().forEach((t) => t.stop())
     streamRef.current = null
 
     setLanguage(null)
+    setVoice(null)
+    voiceRef.current = null
     setMessages([])
     messagesRef.current = []
     setError(null)
@@ -239,13 +349,17 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
 
   return {
     language,
+    voice,
     status,
     messages,
     error,
     isSupported,
     startRecording,
     stopRecording,
-    initConversation,
+    selectLanguage,
+    startConversation,
+    changeVoice,
+    newChat,
     resetConversation,
   }
 }

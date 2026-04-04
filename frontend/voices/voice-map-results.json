@@ -1,0 +1,770 @@
+[
+  {
+    "name": "Jon",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "daec1b31-288a-45ba-a2c0-df0619f562a0",
+    "elevenLabsId": "sB7vwSCyX0tQmU24cW2C"
+  },
+  {
+    "name": "Drew",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "9f63c271-6025-40a8-9e14-e2b8809625fb",
+    "elevenLabsId": "q0IMILNRPxOgtBTS4taI"
+  },
+  {
+    "name": "Pharao",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "8127e716-0c58-4065-abcf-7b0b912fd400",
+    "elevenLabsId": "J2FGlQG8Gd7x8uEDt2H8"
+  },
+  {
+    "name": "Andy",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "3f44e679-8b82-47f6-b95a-2ad352e4718e",
+    "elevenLabsId": "P4DhdyNCB4Nl6MA0sL45"
+  },
+  {
+    "name": "Austin",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "6ae04a4b-3357-4e9e-b960-e7b579db6880",
+    "elevenLabsId": "Bj9UqZbhQsanLzgalpEG"
+  },
+  {
+    "name": "Theo",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "26596326-2a67-4ba0-991a-c5f56197bea7",
+    "elevenLabsId": "UmQN7jS1Ee8B1czsUtQh"
+  },
+  {
+    "name": "Jamal",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "44fbbf55-16b9-4fee-9b3f-5f062f3d2047",
+    "elevenLabsId": "6OzrBCQf8cjERkYgzSg8"
+  },
+  {
+    "name": "Marcus",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "10f047af-92a9-493d-a079-51418d3bf8c0",
+    "elevenLabsId": "1sl7XMHkUEezwYy9NbJU"
+  },
+  {
+    "name": "DeclanSage",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "c13e5a31-cbdd-4354-8282-f02b03ff9541",
+    "elevenLabsId": "kqVT88a5QfII1HNAEPTJ"
+  },
+  {
+    "name": "Jacob",
+    "language": "en",
+    "languageName": "English",
+    "gender": "male",
+    "mistralVoiceId": "51693642-1f7b-49d6-abaa-ac1f6053d675",
+    "elevenLabsId": "Dgd9MUMSyPeTgbbDIZ0t"
+  },
+  {
+    "name": "Hope",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "b20117b6-f11c-461f-9978-19968c237e32",
+    "elevenLabsId": "zGjIP4SZlMnY9m93k97r"
+  },
+  {
+    "name": "Serena",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "8aa47c25-0dca-46cc-8713-ca5178f261ed",
+    "elevenLabsId": "RGb96Dcl0k5eVje8EBch"
+  },
+  {
+    "name": "Cherie",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "f1826e7a-060f-4bff-b37e-d9a364349895",
+    "elevenLabsId": "vr5WKaGvRWsoaX5LCVax"
+  },
+  {
+    "name": "Katherine",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "82a4760d-fbcc-47d0-ab37-f347f6b04553",
+    "elevenLabsId": "NtS6nEHDYMQC9QczMQuq"
+  },
+  {
+    "name": "Monika",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "182386f4-8c1b-4f09-8063-9382b10dc7f8",
+    "elevenLabsId": "ZUrEGyu8GFMwnHbvLhv2"
+  },
+  {
+    "name": "Haley",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "00aa8234-5bdc-49b3-8e35-207dbb2966cd",
+    "elevenLabsId": "JaTIvIdCTgQ8y41GSR7d"
+  },
+  {
+    "name": "Renee",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "2b151ae1-38ba-41f2-a40d-b1a59e116bf3",
+    "elevenLabsId": "mgpcWiEXIWuENJCy8ADX"
+  },
+  {
+    "name": "Danielle",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "c50c6385-37ad-4dff-bb22-005dac3950fc",
+    "elevenLabsId": "FVQMzxJGPUBtfz1Azdoy"
+  },
+  {
+    "name": "Siren",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "80b94be2-89d6-402c-986d-bf5c49796a42",
+    "elevenLabsId": "eXpIbVcVbLo8ZJQDlDnl"
+  },
+  {
+    "name": "Valory",
+    "language": "en",
+    "languageName": "English",
+    "gender": "female",
+    "mistralVoiceId": "4c38b533-79bd-4f74-b704-fba2f703fe16",
+    "elevenLabsId": "VhxAIIZM8IRmnl5fyeyk"
+  },
+  {
+    "name": "MarcoTrox",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "male",
+    "mistralVoiceId": "7342cde6-d6af-4ec5-953e-63773cd87a8c",
+    "elevenLabsId": "W71zT1VwIFFx3mMGH2uZ"
+  },
+  {
+    "name": "Mario",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "male",
+    "mistralVoiceId": "8aabef59-029d-43fd-ad20-e0e798924f5d",
+    "elevenLabsId": "irAl0cku0Hx4TEUJ8d1Q"
+  },
+  {
+    "name": "Brando",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "male",
+    "mistralVoiceId": "92a33343-0073-4254-938c-0b2b3433bffc",
+    "elevenLabsId": "o4b57JYAECRMJyCEXyIE"
+  },
+  {
+    "name": "Marco",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "male",
+    "mistralVoiceId": "63e9828a-67e2-4344-88bb-29c6dc3a8d73",
+    "elevenLabsId": "13Cuh3NuYvWOVQtLbRN8"
+  },
+  {
+    "name": "Gulio",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "male",
+    "mistralVoiceId": "28f74a8b-8e24-4b47-9814-0f04cda9b908",
+    "elevenLabsId": "wNIMZNAVa95a3UpgwWJr"
+  },
+  {
+    "name": "Chris",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "male",
+    "mistralVoiceId": "02f44db2-c0b2-477d-9564-e91412781b36",
+    "elevenLabsId": "g1X9mrbeBlMAWtcs2Dfp"
+  },
+  {
+    "name": "Sami",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "female",
+    "mistralVoiceId": "8b783bc6-a038-44ca-8609-2b5e7bff9acf",
+    "elevenLabsId": "kAzI34nYjizE0zON6rXv"
+  },
+  {
+    "name": "Toca",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "female",
+    "mistralVoiceId": "b1b82ff6-3d65-4b91-94db-c630c8d808a9",
+    "elevenLabsId": "fNmw8sukfGuvWVOp33Ge"
+  },
+  {
+    "name": "Elettra",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "female",
+    "mistralVoiceId": "38647032-b1b5-4f8e-8ef6-04ac11925296",
+    "elevenLabsId": "G0q9AYE8QsarSbMtaIEu"
+  },
+  {
+    "name": "Tiziana",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "female",
+    "mistralVoiceId": "4c9441cf-5521-44d5-a172-dd22e8e73f97",
+    "elevenLabsId": "RXoaSpLaWTEckJgPUBG3"
+  },
+  {
+    "name": "Ginevra",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "female",
+    "mistralVoiceId": "a4583ee3-dbbd-4753-84b5-94183dbf51ea",
+    "elevenLabsId": "QITiGyM4owEZrBEf0QV8"
+  },
+  {
+    "name": "Rita",
+    "language": "it",
+    "languageName": "Italian",
+    "gender": "female",
+    "mistralVoiceId": "36accaba-07eb-4f20-a6e6-229e18f2875d",
+    "elevenLabsId": "jlhiuC3oLEP3JDAx1ECk"
+  },
+  {
+    "name": "Yann",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "male",
+    "mistralVoiceId": "1292f393-9deb-4dcf-a860-96c3b2dc55eb",
+    "elevenLabsId": "nr2EGJNe96rzn9FRlTId"
+  },
+  {
+    "name": "Paul",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "male",
+    "mistralVoiceId": "79baf749-f978-4086-aaf7-7d3e689b432e",
+    "elevenLabsId": "ecxPjiGTvAfpGEams6ec"
+  },
+  {
+    "name": "Guillame",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "male",
+    "mistralVoiceId": "1fb7ead7-b581-4899-af8a-cf4df48bff6d",
+    "elevenLabsId": "ohItIVrXTBI80RrUECOD"
+  },
+  {
+    "name": "Martin",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "male",
+    "mistralVoiceId": "efe8c4d3-4635-4476-978a-fde3223c5f21",
+    "elevenLabsId": "a5n9pJUnAhX4fn7lx3uo"
+  },
+  {
+    "name": "Frederic",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "male",
+    "mistralVoiceId": "f2124e6b-f7ac-4f23-a589-c33ebacb376f",
+    "elevenLabsId": "oziFLKtaxVDHQAh7o45V"
+  },
+  {
+    "name": "Jonathan",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "male",
+    "mistralVoiceId": "83755e47-a3eb-4980-94c6-72df60c7eb12",
+    "elevenLabsId": "7c65Pcpdzr0GkR748U7h"
+  },
+  {
+    "name": "Anna",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "female",
+    "mistralVoiceId": "253f7b5b-56f3-435c-b9c5-5a2e77f45737",
+    "elevenLabsId": "PSVUmed8NvS8aUA3d5oO"
+  },
+  {
+    "name": "Claire",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "female",
+    "mistralVoiceId": "99104b5b-e943-4598-878d-0a881a45baef",
+    "elevenLabsId": "HuLbOdhRlvQQN8oPP0AJ"
+  },
+  {
+    "name": "Koraly",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "female",
+    "mistralVoiceId": "1cf7f022-409f-4806-ad2e-68ef96a39834",
+    "elevenLabsId": "GYzIdoKkRyANjBvkKYfO"
+  },
+  {
+    "name": "Emelie",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "female",
+    "mistralVoiceId": "9357c120-c0a5-4bac-b489-228bf41670eb",
+    "elevenLabsId": "d3AXX0BlgJHYFCuH9X88"
+  },
+  {
+    "name": "Caroline",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "female",
+    "mistralVoiceId": "369f83f7-8180-48f2-97a7-448cb08359e6",
+    "elevenLabsId": "kwhMCf63M8O3rCfnQ3oQ"
+  },
+  {
+    "name": "Delphine",
+    "language": "fr",
+    "languageName": "French",
+    "gender": "female",
+    "mistralVoiceId": "90d15a8a-0243-40b0-8c48-a0fed37a7976",
+    "elevenLabsId": "WvErJnWn6OcGO9sG2kqK"
+  },
+  {
+    "name": "Michael",
+    "language": "de",
+    "languageName": "German",
+    "gender": "male",
+    "mistralVoiceId": "0b1de138-ab7a-4ce1-a0ad-acde214ab936",
+    "elevenLabsId": "87AwpS6yC86wa2WglbsK"
+  },
+  {
+    "name": "Helmut",
+    "language": "de",
+    "languageName": "German",
+    "gender": "male",
+    "mistralVoiceId": "702a91dc-4c42-408b-916d-e407eafcc9c7",
+    "elevenLabsId": "dFA3XRddYScy6ylAYTIO"
+  },
+  {
+    "name": "Thomas",
+    "language": "de",
+    "languageName": "German",
+    "gender": "male",
+    "mistralVoiceId": "77f67837-55e2-46d1-af07-83cb10bfe20a",
+    "elevenLabsId": "ruSJRhA64v8HAqiqKXVw"
+  },
+  {
+    "name": "Wolf",
+    "language": "de",
+    "languageName": "German",
+    "gender": "male",
+    "mistralVoiceId": "74389084-c56a-4378-9dbf-0b3c696bb327",
+    "elevenLabsId": "2OcnG4mH3jIMtWz3vKus"
+  },
+  {
+    "name": "Leon",
+    "language": "de",
+    "languageName": "German",
+    "gender": "male",
+    "mistralVoiceId": "6fb5cb3c-9c07-4072-93e6-c7e1a0484efd",
+    "elevenLabsId": "re2r5d74PqDzicySNW0I"
+  },
+  {
+    "name": "Hopsi",
+    "language": "de",
+    "languageName": "German",
+    "gender": "male",
+    "mistralVoiceId": "e9f04b5a-4776-4f7c-9618-3a289f5ae07b",
+    "elevenLabsId": "ygoBNrnmTEdu5NtDTmAY"
+  },
+  {
+    "name": "WhisperSoul",
+    "language": "de",
+    "languageName": "German",
+    "gender": "male",
+    "mistralVoiceId": "99e06bfc-6608-41b3-aedf-4bc98ae73520",
+    "elevenLabsId": "JgWQ8DAY3rJt6oPhbvxv"
+  },
+  {
+    "name": "Ramona",
+    "language": "de",
+    "languageName": "German",
+    "gender": "female",
+    "mistralVoiceId": "3c98c9be-afa8-4dd7-b878-ea26ca15dccb",
+    "elevenLabsId": "r0fLdYmTH96Lr4s10B6K"
+  },
+  {
+    "name": "Irene",
+    "language": "de",
+    "languageName": "German",
+    "gender": "female",
+    "mistralVoiceId": "bb9f8e8b-9c03-496e-89a2-94fc27b4fe40",
+    "elevenLabsId": "nGISSznGHAgSTKaMXEPO"
+  },
+  {
+    "name": "Mila",
+    "language": "de",
+    "languageName": "German",
+    "gender": "female",
+    "mistralVoiceId": "5eea3a34-f977-4bbc-9a67-4050588ebc83",
+    "elevenLabsId": "dCnu06FiOZma2KVNUoPZ"
+  },
+  {
+    "name": "Kerstin",
+    "language": "de",
+    "languageName": "German",
+    "gender": "female",
+    "mistralVoiceId": "1102bcf8-c761-40b7-a6b8-3ba33b70aa46",
+    "elevenLabsId": "jcAyfPfetMVssD2GY44N"
+  },
+  {
+    "name": "Enia",
+    "language": "de",
+    "languageName": "German",
+    "gender": "female",
+    "mistralVoiceId": "44baf039-31db-4602-bbcf-cacfca9320aa",
+    "elevenLabsId": "WHaUUVTDq47Yqc9aDbkH"
+  },
+  {
+    "name": "AnnaDE",
+    "language": "de",
+    "languageName": "German",
+    "gender": "female",
+    "mistralVoiceId": "dcc89e44-9e80-452e-b8d2-350caeaa5cef",
+    "elevenLabsId": "DEZHhPbmb8LVZmWufkCh"
+  },
+  {
+    "name": "Lucy",
+    "language": "de",
+    "languageName": "German",
+    "gender": "female",
+    "mistralVoiceId": "14630722-c283-4a0c-8ec6-2072da9ec7a7",
+    "elevenLabsId": "E0OS48T5F0KU7O2NInWS"
+  },
+  {
+    "name": "David",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "male",
+    "mistralVoiceId": "f53b2f80-efe9-4dd0-8101-c25bc5ef6428",
+    "elevenLabsId": "qRUgOhnxGASxirG4fKjv"
+  },
+  {
+    "name": "Abel",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "male",
+    "mistralVoiceId": "a3c743c4-643a-4627-b603-61b52b03e37c",
+    "elevenLabsId": "452WrNT9o8dphaYW5YGU"
+  },
+  {
+    "name": "God",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "male",
+    "mistralVoiceId": "931b3137-00f4-4fc3-af40-46acbb098470",
+    "elevenLabsId": "HNSF1CTQmub252yhXROX"
+  },
+  {
+    "name": "Abuelo",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "male",
+    "mistralVoiceId": "a266c6b5-dc4e-40dc-9587-d1b85b172ffb",
+    "elevenLabsId": "Yb8JGzcZyW5YYzenhRCm"
+  },
+  {
+    "name": "Salvatore",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "male",
+    "mistralVoiceId": "db72ff49-145d-46fd-9f3b-d59d4c5bb90d",
+    "elevenLabsId": "t3eeeqhBjrUqcrPvDqUn"
+  },
+  {
+    "name": "Ludovico",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "male",
+    "mistralVoiceId": "fd890ec2-8af7-4420-8a7e-a876529e0845",
+    "elevenLabsId": "GTY55jD77hLBRrnQOhNk"
+  },
+  {
+    "name": "Sandra",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "female",
+    "mistralVoiceId": "51a306cc-d7f5-449b-afc9-9c74fa600fba",
+    "elevenLabsId": "rEVYTKPqwSMhytFPayIb"
+  },
+  {
+    "name": "Carolina",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "female",
+    "mistralVoiceId": "20c4028f-ec23-47ae-af8a-fb2e0615abd8",
+    "elevenLabsId": "cIBxLwfshLYhRB9lCXEg"
+  },
+  {
+    "name": "Sheila",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "female",
+    "mistralVoiceId": "e2d19eb5-4605-4082-bc40-e8ab076ea7bb",
+    "elevenLabsId": "h3l1RP4XfcWsPwoRp9G6"
+  },
+  {
+    "name": "Gabriela",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "female",
+    "mistralVoiceId": "88ae25a4-1b5f-4355-92eb-4e1875f344a7",
+    "elevenLabsId": "gxSxrhNNXvdHpOH0EHjV"
+  },
+  {
+    "name": "Jehnny",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "female",
+    "mistralVoiceId": "81c93ea2-3f2d-4126-9326-c6c5e8402164",
+    "elevenLabsId": "FXGrCtY3PEyfqczBAlqm"
+  },
+  {
+    "name": "Gabi",
+    "language": "es",
+    "languageName": "Spanish",
+    "gender": "female",
+    "mistralVoiceId": "66a7f942-e9ec-477f-9ff8-f2d917243d92",
+    "elevenLabsId": "a0MaQpDjx7p7bZmqzFp1"
+  },
+  {
+    "name": "Arnold",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "male",
+    "mistralVoiceId": "66dedc7f-4aac-47bc-9553-c716bad193d6",
+    "elevenLabsId": "ZYCQDYoXnl78dNdU6JeG"
+  },
+  {
+    "name": "Matheus",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "male",
+    "mistralVoiceId": "be33dc88-02fb-4fa5-96d6-2e93b387c4b4",
+    "elevenLabsId": "36rVQA1AOIPwpA3Hg1tC"
+  },
+  {
+    "name": "Lax",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "male",
+    "mistralVoiceId": "59d94a4d-251b-418a-bc98-6d4daa62c2d4",
+    "elevenLabsId": "tS45q0QcrDHqHoaWdCDR"
+  },
+  {
+    "name": "Will",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "male",
+    "mistralVoiceId": "23b2543a-74eb-4fc1-b79a-ebca9eb06b25",
+    "elevenLabsId": "h96v1HCJtcisNNeagp0R"
+  },
+  {
+    "name": "Paulo",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "male",
+    "mistralVoiceId": "11b75c82-85b7-44a2-8cef-a3e4d6224020",
+    "elevenLabsId": "Qrdut83w0Cr152Yb4Xn3"
+  },
+  {
+    "name": "Leni",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "female",
+    "mistralVoiceId": "92606271-c4e9-4937-9d97-2afa7ec6d47e",
+    "elevenLabsId": "rdBSfr2PAUTCe39SX2fo"
+  },
+  {
+    "name": "Scheila",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "female",
+    "mistralVoiceId": "66cda1e5-80b0-4d46-a9b4-5c3a2e4dbdd1",
+    "elevenLabsId": "cyD08lEy76q03ER1jZ7y"
+  },
+  {
+    "name": "Yasmin",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "female",
+    "mistralVoiceId": "80d1df25-564a-47b6-9325-bb61277c8464",
+    "elevenLabsId": "lWq4KDY8znfkV0DrK8Vb"
+  },
+  {
+    "name": "Raquel",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "female",
+    "mistralVoiceId": "085a2255-38b3-498b-97d5-261b1ec9547e",
+    "elevenLabsId": "GDzHdQOi6jjf8zaXhCYD"
+  },
+  {
+    "name": "Keren",
+    "language": "pt",
+    "languageName": "Portuguese",
+    "gender": "female",
+    "mistralVoiceId": "7f0aa586-98e8-45b6-a26f-8c93f838a2f4",
+    "elevenLabsId": "33B4UnXyTNbgLmdEDh5P"
+  },
+  {
+    "name": "Robert",
+    "language": "nl",
+    "languageName": "Dutch",
+    "gender": "male",
+    "mistralVoiceId": "abb53d6c-f34d-45bd-80fe-dec09262879c",
+    "elevenLabsId": "cblS8WYNsiBLGnlV6jjx"
+  },
+  {
+    "name": "Arjen",
+    "language": "nl",
+    "languageName": "Dutch",
+    "gender": "male",
+    "mistralVoiceId": "689a076a-a367-4323-8d7d-801ebc25c2f0",
+    "elevenLabsId": "62klqbsYqbynbr66ypRt"
+  },
+  {
+    "name": "Melanie",
+    "language": "nl",
+    "languageName": "Dutch",
+    "gender": "female",
+    "mistralVoiceId": "b6ed2ec1-bace-4d5e-88c2-ee1d881c115d",
+    "elevenLabsId": "SXBL9NbvTrjsJQYay2kT"
+  },
+  {
+    "name": "Ruth",
+    "language": "nl",
+    "languageName": "Dutch",
+    "gender": "female",
+    "mistralVoiceId": "41d64204-5ced-4019-bec4-98ab1af2d73e",
+    "elevenLabsId": "YUdpWWny7k5yb4QCeweX"
+  },
+  {
+    "name": "Viraj",
+    "language": "hi",
+    "languageName": "Hindi",
+    "gender": "male",
+    "mistralVoiceId": "8d64aa15-aa57-416a-8b79-48ca54e72685",
+    "elevenLabsId": "K24eC7JpUgk8zMtQYrpV"
+  },
+  {
+    "name": "Aaditya",
+    "language": "hi",
+    "languageName": "Hindi",
+    "gender": "male",
+    "mistralVoiceId": "ec3dec08-19c2-445c-a06b-7b1587d3ce65",
+    "elevenLabsId": "DQuoFsZ3oda1diTerwpq"
+  },
+  {
+    "name": "Bunty",
+    "language": "hi",
+    "languageName": "Hindi",
+    "gender": "male",
+    "mistralVoiceId": "4810864d-bc52-48fa-bd98-97d74bbc43a9",
+    "elevenLabsId": "ibbx9zDYGvLgtYzRbqqG"
+  },
+  {
+    "name": "Kanika",
+    "language": "hi",
+    "languageName": "Hindi",
+    "gender": "female",
+    "mistralVoiceId": "8dfc9345-ba80-4f88-91e8-92205ca53807",
+    "elevenLabsId": "K2Byg54sHB1oHegvENtI"
+  },
+  {
+    "name": "Tripti",
+    "language": "hi",
+    "languageName": "Hindi",
+    "gender": "female",
+    "mistralVoiceId": "d1df2044-5b13-4cbc-9c07-570342a580f2",
+    "elevenLabsId": "1Z7Y8o9cvUeWq8oLKgMY"
+  },
+  {
+    "name": "Sara",
+    "language": "hi",
+    "languageName": "Hindi",
+    "gender": "female",
+    "mistralVoiceId": "aa5e52cd-4260-4ef7-bea6-a30ae66434a5",
+    "elevenLabsId": "vghiSqG5ezdhd8F3tKAD"
+  },
+  {
+    "name": "Adam",
+    "language": "ar",
+    "languageName": "Arabic",
+    "gender": "male",
+    "mistralVoiceId": "bf0ecf1c-1f6e-47bf-a64c-d83c6ee78725",
+    "elevenLabsId": "9SPZl4Mlgwj7QT4gVprb"
+  },
+  {
+    "name": "Yousef",
+    "language": "ar",
+    "languageName": "Arabic",
+    "gender": "male",
+    "mistralVoiceId": "414a56c0-f4de-4ec1-8f8a-2bfffe963a1c",
+    "elevenLabsId": "ZCXYdzd5Evtsll2EdoCi"
+  },
+  {
+    "name": "Omar",
+    "language": "ar",
+    "languageName": "Arabic",
+    "gender": "male",
+    "mistralVoiceId": "b35622cc-b2ae-4dbf-9c28-277a21585d4a",
+    "elevenLabsId": "xvhpbk8otnNHtT3fjCpr"
+  },
+  {
+    "name": "Salma",
+    "language": "ar",
+    "languageName": "Arabic",
+    "gender": "female",
+    "mistralVoiceId": "cbf6b6ae-4e88-4cab-aa95-261891957592",
+    "elevenLabsId": "B5xxC4eQoOFJnY4R5XkI"
+  },
+  {
+    "name": "SaraAR",
+    "language": "ar",
+    "languageName": "Arabic",
+    "gender": "female",
+    "mistralVoiceId": "afc7b096-cc10-48dd-9b41-a1add4e8a665",
+    "elevenLabsId": "XTa3iQyMA6f1qrI4F6kZ"
+  },
+  {
+    "name": "Yasmine",
+    "language": "ar",
+    "languageName": "Arabic",
+    "gender": "female",
+    "mistralVoiceId": "b106c1c5-2ec2-4576-b634-9cff6099abcf",
+    "elevenLabsId": "L10lEremDiJfPicq5CPh"
+  }
+]

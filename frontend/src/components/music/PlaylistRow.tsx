@@ -10,6 +10,9 @@ interface PlaylistRowProps {
   isActive: boolean
   isPlaying: boolean
   onClick: () => void
+  onRetry?: () => void
+  isRetrying?: boolean
+  retryStatus?: string
 }
 
 function formatDuration(s: number): string {
@@ -43,7 +46,7 @@ function Equalizer() {
   )
 }
 
-export function PlaylistRow({ track, isActive, isPlaying, onClick }: PlaylistRowProps) {
+export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRetrying, retryStatus }: PlaylistRowProps) {
   const [duration, setDuration] = useState<number | null>(() => {
     if (track.duration !== null) return track.duration
     return durationCache.get(track.suno_audio_url ?? '') ?? null
@@ -83,7 +86,7 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick }: PlaylistRow
         'flex items-center gap-3 px-4 py-3 border-b border-white/5 transition-colors',
         isActive ? 'bg-white/5' : '',
         isDisabled
-          ? 'opacity-40 cursor-default'
+          ? 'opacity-60 cursor-default'
           : 'cursor-pointer hover:bg-white/5',
       ].join(' ')}
     >
@@ -124,15 +127,31 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick }: PlaylistRow
         </span>
       )}
 
-      {/* Duration / status */}
-      <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-10 text-right">
-        {track.error
-          ? <span className="text-red-500/70 font-sans text-[10px]">—</span>
-          : !hasAudio
-          ? <span className="text-gray-600 font-sans text-[10px]">—</span>
-          : duration !== null
-          ? formatDuration(duration)
-          : '…'}
+      {/* Duration / retry status */}
+      <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 text-right">
+        {track.error ? (
+          <span className="text-red-500/70 font-sans text-[10px]">—</span>
+        ) : hasAudio ? (
+          <span className="w-10 inline-block">
+            {duration !== null ? formatDuration(duration) : '…'}
+          </span>
+        ) : isRetrying ? (
+          <span className="text-gray-400 font-sans text-[10px] flex items-center gap-1">
+            <svg className="animate-spin h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+            </svg>
+            {retryStatus === 'processing' ? 'Generating…' : 'Queued'}
+          </span>
+        ) : (
+          <button
+            onClick={(e) => { e.stopPropagation(); onRetry?.() }}
+            className="text-[10px] text-gray-500 hover:text-[var(--accent,#06b6d4)] transition-colors font-sans px-1 py-0.5 rounded hover:bg-white/5"
+            title="Retry Suno generation"
+          >
+            ↻ Retry
+          </button>
+        )}
       </span>
     </div>
   )

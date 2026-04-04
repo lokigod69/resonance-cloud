@@ -49,6 +49,15 @@ export const LANGUAGES = [
   { label: 'Bisaya', flag: '🇵🇭', color: '#AB47BC' },
 ]
 
+export const TUTOR_MOCK_CONVERSATION = [
+  { role: 'user', text: 'Ich möchte ein Bier bestellen, bitte.' },
+  { role: 'assistant', text: 'Sehr gut! Du könntest auch sagen: "Ich hätte gerne ein Bier." Das klingt etwas höflicher. Möchtest du das im Restaurant üben?' },
+  { role: 'user', text: 'Ja, ich hätte gerne ein Bier und eine Brezel.' },
+  { role: 'assistant', text: 'Fast perfekt! Es heißt "eine Brezel" — und du hast es richtig gesagt! 🥨 Was möchtest du noch bestellen?' },
+]
+
+export const TUTOR_MOCK_LANGUAGE = { label: 'German', flag: '🇩🇪' }
+
 export const STEPS = [
   {
     title: 'Type your words',
