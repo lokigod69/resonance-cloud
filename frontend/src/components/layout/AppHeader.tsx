@@ -125,7 +125,7 @@ export function AppHeader() {
       {/* Logo */}
       <Link to="/dashboard" className="flex items-center gap-2 shrink-0">
         <Music className="h-5 w-5" />
-        <span className="font-bold text-lg hidden sm:inline">Resonance</span>
+        <span className="font-bold text-base sm:text-lg">Resonance</span>
       </Link>
 
       {/* Desktop nav — center */}

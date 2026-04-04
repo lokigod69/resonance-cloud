@@ -80,7 +80,7 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick }: PlaylistRow
       onClick={isDisabled ? undefined : onClick}
       onKeyDown={isDisabled ? undefined : (e) => e.key === 'Enter' && onClick()}
       className={[
-        'flex items-center gap-3 px-4 py-1.5 border-b border-white/5 transition-colors',
+        'flex items-center gap-3 px-4 py-3 border-b border-white/5 transition-colors',
         isActive ? 'bg-white/5' : '',
         isDisabled
           ? 'opacity-40 cursor-default'
@@ -88,7 +88,7 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick }: PlaylistRow
       ].join(' ')}
     >
       {/* Thumbnail / equalizer */}
-      <div className="w-10 h-10 rounded shrink-0 overflow-hidden bg-white/5 flex items-center justify-center">
+      <div className="w-14 h-14 rounded shrink-0 overflow-hidden bg-white/5 flex items-center justify-center">
         {isActive && isPlaying ? (
           <Equalizer />
         ) : track.thumbnail_url ? (
@@ -104,11 +104,11 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick }: PlaylistRow
 
       {/* Word + translation */}
       <div className="flex-1 min-w-0">
-        <p className={`text-sm font-medium truncate ${isActive ? 'text-white' : 'text-gray-200'}`}>
+        <p className={`text-base font-medium truncate ${isActive ? 'text-white' : 'text-gray-200'}`}>
           {track.word}
         </p>
         {track.translation && (
-          <p className="text-xs text-gray-500 truncate">{track.translation}</p>
+          <p className="text-sm text-gray-500 truncate">{track.translation}</p>
         )}
       </div>
 

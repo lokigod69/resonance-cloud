@@ -447,6 +447,7 @@ export default function DeckViewPG() {
                             ref={videoRef}
                             key={offset === 0 ? `${word.id}-${navKey}-${version}` : word.id}
                             src={(offset === 0 ? activeVideoUrl : word.video_url)!}
+                            muted={isMuted}
                             playsInline
                             className="absolute inset-0 w-full h-full object-cover z-[1] pointer-events-none"
                             onPlay={() => setIsPlaying(true)}

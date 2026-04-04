@@ -187,7 +187,21 @@ def get_fallback_overrides(
 ) -> dict[str, Any]:
     """Return per-word setting overrides for retry attempts."""
     if stage == "images" and attempt >= 1:
-        return {"creative_direction": "literal"}
+        current_model = (current_settings or {}).get("llm_model", "")
+        fallback_model = (
+            "deepseek/deepseek-v3.2"
+            if current_model == "x-ai/grok-4.1-fast"
+            else "x-ai/grok-4.1-fast"
+        )
+        return {"creative_direction": "literal", "llm_model": fallback_model}
+    if stage == "concept" and attempt >= 1:
+        current_model = (current_settings or {}).get("llm_model", "")
+        fallback_model = (
+            "deepseek/deepseek-v3.2"
+            if current_model == "x-ai/grok-4.1-fast"
+            else "x-ai/grok-4.1-fast"
+        )
+        return {"llm_model": fallback_model}
     if stage == "video" and attempt >= 1:
         # Don't fall back to ken_burns in text-to-video mode — no source images exist
         if current_settings and current_settings.get("text_to_video", False):

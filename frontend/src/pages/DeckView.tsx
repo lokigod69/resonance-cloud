@@ -12,6 +12,7 @@ import { useVideoVersion, getStoredVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { useVideoPlayback } from '@/hooks/useVideoPlayback'
 import { VideoControls } from '@/components/VideoControls'
+import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 
@@ -307,7 +308,7 @@ export default function DeckView() {
 
       {/* Word Grid */}
       <div className="w-full max-w-5xl mx-auto px-4 py-8">
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-4 [touch-action:pan-y]">
         {words.map((word) => {
           const isComplete = word.status === 'complete'
           const isFailed = word.status === 'failed'
@@ -325,7 +326,7 @@ export default function DeckView() {
                       setViewerOpen(true)
                     }
                   }}
-                  className="block glass glass-hover rounded-xl overflow-hidden transition-all duration-200 hover:scale-[1.03] hover:glow-purple cursor-pointer"
+                  className="block glass glass-hover rounded-xl overflow-hidden transition-[background-color,box-shadow,border-color] duration-200 [@media(hover:hover)]:hover:scale-[1.03] hover:glow-purple cursor-pointer active:scale-[0.98]"
                 >
                   {/* Thumbnail */}
                   <div className="aspect-video relative bg-white/5">
@@ -522,7 +523,22 @@ function VideoViewerModal({
         {/* Main content */}
         <div className="w-full max-w-3xl space-y-6">
           {/* Video container with arrows */}
-          <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl group/video">
+          <div className="relative group/video">
+            {/* Volume control — outside overflow-hidden so slider isn't clipped */}
+            {activeVideoUrl && (
+              <div className="absolute top-3 left-3 z-30 opacity-0 group-hover/video:opacity-100 transition-opacity">
+                <VolumeControl
+                  volume={volume}
+                  isMuted={isMuted}
+                  onVolumeChange={setVolume}
+                  onToggleMute={toggleMute}
+                  popDirection="right"
+                  iconSize={20}
+                  buttonClassName="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                />
+              </div>
+            )}
+            <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl">
             {/* Prev arrow — centered on video */}
             {hasPrev && (
               <button
@@ -549,6 +565,7 @@ function VideoViewerModal({
                   key={`${videoKey}-${version}`}
                   src={`${activeVideoUrl}?t=${videoKey}`}
                   autoPlay
+                  muted={isMuted}
                   playsInline
                   onClick={togglePlay}
                   onPlay={onPlay}
@@ -588,8 +605,10 @@ function VideoViewerModal({
                 iconSize={20}
                 buttonClassName="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
                 className="z-20"
+                renderVolumeExternal={true}
               />
             )}
+            </div>
           </div>
 
           {/* Word info */}

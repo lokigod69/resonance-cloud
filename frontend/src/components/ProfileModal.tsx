@@ -145,7 +145,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   key={t.id}
                   onClick={() => setTheme(t.id)}
                   title={t.label}
-                  className={`w-[46px] h-[38px] rounded-md border-2 transition-all ${
+                  className={`w-[46px] h-[44px] rounded-md border-2 transition-all ${
                     theme === t.id
                       ? 'border-primary ring-2 ring-primary/30'
                       : 'border-border hover:border-muted-foreground'
@@ -164,7 +164,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSaveDisplayName()}
-                onBlur={handleSaveDisplayName}
+                onBlur={() => { if (open) handleSaveDisplayName() }}
                 placeholder="Enter your name"
                 className="bg-white/5 border-border"
               />
