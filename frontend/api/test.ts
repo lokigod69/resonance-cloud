@@ -1,5 +1,3 @@
-export const config = { runtime: 'edge' }
-
 export function GET(_req: Request): Response {
   return new Response(JSON.stringify({ ok: true, time: new Date().toISOString(), runtime: 'edge' }), {
     status: 200,
