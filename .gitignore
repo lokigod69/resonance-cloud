@@ -34,5 +34,6 @@ Thumbs.db
 *.pth
 *.wav
 *.mp3
+!frontend/public/voices/*.mp3
 *.flac
 *.mp4
