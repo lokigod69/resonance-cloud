@@ -195,6 +195,7 @@ export async function POST(req: Request): Promise<Response> {
     const resolvedMime = mime_type || 'audio/webm'
     const extension = resolvedMime.includes('mp4') ? 'mp4' : 'webm'
     const audioBuffer = Buffer.from(audio_base64, 'base64')
+    console.log(`[voice-chat] STT upload: mime=${resolvedMime}, ext=${extension}, size=${audioBuffer.length} bytes`)
     const audioBlob = new Blob([audioBuffer], { type: resolvedMime })
 
     const formData = new FormData()

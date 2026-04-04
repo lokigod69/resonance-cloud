@@ -23,6 +23,7 @@ export interface UseVoiceTutorReturn {
   messages: TutorMessage[]
   error: string | null
   isSupported: boolean
+  pendingAudio: { base64: string; format: string } | null
   startRecording: () => Promise<void>
   stopRecording: () => void
   selectLanguage: (lang: string) => void
@@ -30,6 +31,7 @@ export interface UseVoiceTutorReturn {
   changeVoice: () => void
   newChat: () => Promise<void>
   resetConversation: () => void
+  playPendingAudio: () => Promise<void>
 }
 
 function saveVoicePreference(language: string, voiceId: string) {
@@ -96,6 +98,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const [status, setStatus] = useState<TutorStatus>('idle')
   const [messages, setMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
+  const [pendingAudio, setPendingAudio] = useState<{ base64: string; format: string } | null>(null)
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
@@ -165,6 +168,18 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     [],
   )
 
+  const playPendingAudio = useCallback(async () => {
+    if (!pendingAudio) return
+    setStatus('playing')
+    try {
+      await playAudioBase64(pendingAudio.base64, pendingAudio.format)
+    } catch {
+      // ignore playback errors — user can tap again or proceed
+    }
+    setPendingAudio(null)
+    setStatus('idle')
+  }, [pendingAudio])
+
   // Reveal the last assistant message after 1.5s
   const scheduleReveal = useCallback(() => {
     setTimeout(() => {
@@ -178,16 +193,13 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     async (lang: string, v: TutorVoice) => {
       setStatus('processing')
       const data = await callVoiceChat(null, lang, v)
-      const msg: TutorMessage = { role: 'assistant', content: data.ai_text, revealed: false }
+      const msg: TutorMessage = { role: 'assistant', content: data.ai_text, revealed: true }
       setMessages([msg])
       messagesRef.current = [msg]
-      setStatus('playing')
-      const audioPromise = playAudioBase64(data.audio_base64, data.audio_format)
-      scheduleReveal()
-      await audioPromise
+      setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
       setStatus('idle')
     },
-    [callVoiceChat, scheduleReveal],
+    [callVoiceChat],
   )
 
   const selectLanguage = useCallback(
@@ -246,6 +258,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     voiceRef.current = null
     setMessages([])
     messagesRef.current = []
+    setPendingAudio(null)
     setError(null)
     setStatus('idle')
   }, [])
@@ -256,6 +269,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     if (!lang || !v) return
     setMessages([])
     messagesRef.current = []
+    setPendingAudio(null)
     setError(null)
     try {
       await fetchAndPlayGreeting(lang, v)
@@ -361,6 +375,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     voiceRef.current = null
     setMessages([])
     messagesRef.current = []
+    setPendingAudio(null)
     setError(null)
     setStatus('idle')
   }, [])
@@ -372,6 +387,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     messages,
     error,
     isSupported,
+    pendingAudio,
+    playPendingAudio,
     startRecording,
     stopRecording,
     selectLanguage,

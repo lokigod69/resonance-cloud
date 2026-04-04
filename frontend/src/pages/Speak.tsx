@@ -284,7 +284,18 @@ export default function Speak() {
                   <span>🎧</span> Listen...
                 </span>
               ) : (
-                <p>{msg.content}</p>
+                <>
+                  <p>{msg.content}</p>
+                  {tutor.pendingAudio && msg.role === 'assistant' && i === tutor.messages.length - 1 && (
+                    <button
+                      onClick={tutor.playPendingAudio}
+                      className="mt-2 flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+                    >
+                      <Play className="h-3.5 w-3.5 fill-current" />
+                      <span>Tap to hear</span>
+                    </button>
+                  )}
+                </>
               )}
             </div>
           </div>
