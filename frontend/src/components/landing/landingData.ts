@@ -41,12 +41,16 @@ export const DEMO_WORDS = [
 ]
 
 export const LANGUAGES = [
-  { label: 'German', flag: '🇩🇪', color: '#FFD700' },
-  { label: 'French', flag: '🇫🇷', color: '#4A90D9' },
-  { label: 'Italian', flag: '🇮🇹', color: '#4CAF50' },
-  { label: 'English', flag: '🇬🇧', color: '#E53935' },
-  { label: 'Tagalog', flag: '🇵🇭', color: '#FF6B35' },
-  { label: 'Bisaya', flag: '🇵🇭', color: '#AB47BC' },
+  { label: 'German',     flag: '🇩🇪', color: '#FFD700' },
+  { label: 'French',     flag: '🇫🇷', color: '#4A90D9' },
+  { label: 'Italian',    flag: '🇮🇹', color: '#4CAF50' },
+  { label: 'English',    flag: '🇬🇧', color: '#E53935' },
+  { label: 'Tagalog',    flag: '🇵🇭', color: '#FF6B35' },
+  { label: 'Bisaya',     flag: '🇵🇭', color: '#AB47BC' },
+  { label: 'Indonesian', flag: '🇮🇩', color: '#009688' },
+  { label: 'Dutch',      flag: '🇳🇱', color: '#E65100' },
+  { label: 'Spanish',    flag: '🇪🇸', color: '#C62828' },
+  { label: 'Hindi',      flag: '🇮🇳', color: '#F9A825' },
 ]
 
 export const TUTOR_MOCK_CONVERSATION = [

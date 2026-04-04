@@ -86,9 +86,9 @@ export default function ScrollStorySection() {
   const step2Opacity = useTransform(scrollYProgress, [0.58, 0.70], [0, 1])
 
   // Step 3: grows from center, fans right
-  const step3Scale = useTransform(scrollYProgress, [0.68, 0.80], [0.3, 1])
-  const step3Opacity = useTransform(scrollYProgress, [0.68, 0.80], [0, 1])
-  const step3X = useTransform(scrollYProgress, [0.68, 0.80], [0, 350])
+  const step3Scale = useTransform(scrollYProgress, [0.63, 0.75], [0.3, 1])
+  const step3Opacity = useTransform(scrollYProgress, [0.63, 0.75], [0, 1])
+  const step3X = useTransform(scrollYProgress, [0.63, 0.75], [0, 350])
 
   // Fallback: mobile or reduced motion — render original sections unchanged
   if (!isDesktop || reducedMotion === true) {
@@ -109,7 +109,7 @@ export default function ScrollStorySection() {
   return (
     <section
       ref={containerRef}
-      style={{ height: '450vh', background: '#0c0d14' }}
+      style={{ height: '550vh', background: '#0c0d14' }}
     >
       {/* Sticky viewport — stays pinned while container scrolls past */}
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
