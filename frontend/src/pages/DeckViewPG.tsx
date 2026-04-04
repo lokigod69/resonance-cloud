@@ -406,7 +406,7 @@ export default function DeckViewPG() {
           <div
             {...bind()}
             className="relative w-full h-[80vh] max-h-[770px] flex items-center justify-center cursor-grab active:cursor-grabbing"
-            style={{ perspective: '1200px', touchAction: 'none' }}
+            style={{ perspective: '1200px', touchAction: 'pan-y' }}
           >
             {/* Prev button */}
             {activeIndex > 0 && (
@@ -429,6 +429,7 @@ export default function DeckViewPG() {
                     key={word.id}
                     // w-[calc(100vw-32px)] = 16px margin each side; carousel is full-bleed via -mx-6 wrapper above
                     className="absolute w-[calc(100vw-32px)] max-w-[800px] h-[80vh] max-h-[750px] flex items-center justify-center"
+                    style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
                     initial={false}
                     animate={{
                       x: offset * (typeof window !== 'undefined' && window.innerWidth < 640 ? 100 : 200) + (offset === 0 ? dragOffset : 0),
@@ -491,7 +492,6 @@ export default function DeckViewPG() {
                               setVideoActiveIndex(i)
                               setIsPlaying(true)
                             }}
-                            onPointerDown={(e) => e.stopPropagation()}
                           >
                             <div className="h-14 w-14 rounded-full bg-[var(--pg-accent-teal)]/30 backdrop-blur-sm flex items-center justify-center border border-[var(--pg-accent-teal)]/50 shadow-[0_0_20px_rgba(13,226,195,0.3)]">
                               <Play className="h-7 w-7 text-[var(--pg-accent-teal)] fill-[var(--pg-accent-teal)]" />

@@ -36,7 +36,7 @@ from src.workspace import create_word_folder, get_word_dir
 from src.slugify import slugify, language_to_code
 from src.dispatcher import check_all_engines
 from src.models import Enrichment
-from src.suno import generate_song as suno_generate_song, download_suno_audio
+from src.suno import generate_song as suno_generate_song, download_suno_audio, fetch_existing_task
 
 import httpx
 from supabase import create_client, Client
@@ -51,6 +51,7 @@ POLL_INTERVAL = int(os.getenv("JOB_RUNNER_POLL_INTERVAL", "30"))
 MAX_RETRIES = int(os.getenv("JOB_RUNNER_MAX_RETRIES", "2"))
 CLEANUP_WORKSPACES = os.getenv("JOB_RUNNER_CLEANUP", "false").lower() == "true"
 SUNO_MIN_USABLE_DURATION = 12.0
+SUNO_MAX_USABLE_DURATION = 150.0  # 2.5 minutes — reject glitched ultra-long Suno tracks
 
 logging.basicConfig(
     level=logging.INFO,
@@ -724,15 +725,35 @@ async def bake_suno_into_word(
         log.info("  [Suno] Skipping bake-in: suno_audio_url already set for %s", word_slug)
         return {"success": False, "suno_ab_manifests": {}, "error": "already_set"}
 
-    # Step 1: Generate Suno audio
-    log.info("  [Suno] Generating audio for %s", word_slug)
-    try:
-        suno_result = await suno_generate_song(
-            str(workspace_path.parent), user_id, deck_id, word_slug
-        )
-    except Exception as _e:
-        log.error("  [Suno] Generation failed: %s", _e)
-        return {"success": False, "suno_ab_manifests": {}, "error": str(_e)}
+    # Step 1: Generate Suno audio (or re-poll an existing task from a previous timeout)
+    existing_task_id = word_record.get("suno_task_id")
+    suno_result: dict[str, Any] | None = None
+
+    if existing_task_id and not word_record.get("suno_audio_url"):
+        # A task ID is stored but no audio URL — the task may have completed after a timeout
+        log.info("  [Suno] Re-polling existing task %s for %s", existing_task_id, word_slug)
+        try:
+            repoll = await fetch_existing_task(existing_task_id)
+            if repoll["status"] == "success":
+                log.info("  [Suno] Existing task %s complete — skipping new generation", existing_task_id)
+                suno_result = repoll
+            elif repoll["status"] == "pending":
+                log.info("  [Suno] Task %s still in progress on kie.ai — generating fresh", existing_task_id)
+            else:
+                log.info("  [Suno] Task %s failed/expired (%s) — generating fresh",
+                         existing_task_id, repoll.get("error", ""))
+        except Exception as _rp_e:
+            log.warning("  [Suno] Re-poll failed: %s — generating fresh", _rp_e)
+
+    if suno_result is None or suno_result.get("status") != "success":
+        log.info("  [Suno] Generating audio for %s", word_slug)
+        try:
+            suno_result = await suno_generate_song(
+                str(workspace_path.parent), user_id, deck_id, word_slug
+            )
+        except Exception as _e:
+            log.error("  [Suno] Generation failed: %s", _e)
+            return {"success": False, "suno_ab_manifests": {}, "error": str(_e)}
 
     # Step 2: Download and validate audio
     if not (suno_result and suno_result.get("status") == "success"):
@@ -766,6 +787,11 @@ async def bake_suno_into_word(
         if suno_duration_a < SUNO_MIN_USABLE_DURATION:
             msg = (f"Suno audio too short to be usable "
                    f"({suno_duration_a:.1f}s < {SUNO_MIN_USABLE_DURATION}s)")
+            log.warning("  [Suno] %s", msg)
+            return {"success": False, "suno_ab_manifests": {}, "error": msg}
+        if suno_duration_a > SUNO_MAX_USABLE_DURATION:
+            msg = (f"Track A rejected: {suno_duration_a:.1f}s exceeds max "
+                   f"{SUNO_MAX_USABLE_DURATION}s")
             log.warning("  [Suno] %s", msg)
             return {"success": False, "suno_ab_manifests": {}, "error": msg}
 
@@ -819,6 +845,10 @@ async def bake_suno_into_word(
                     log.info("  [Suno] Track B too short (%.1fs < %ss) — "
                              "skipping B, using A only",
                              suno_duration_b, SUNO_MIN_USABLE_DURATION)
+                    trimmed_b = None
+                elif suno_duration_b > SUNO_MAX_USABLE_DURATION:
+                    log.warning("  [Suno] Track B rejected: %.1fs exceeds max %.1fs — "
+                                "using A only", suno_duration_b, SUNO_MAX_USABLE_DURATION)
                     trimmed_b = None
                 else:
                     trim_to_b, fade_start_b, actual_fade_b = _fade_params(suno_duration_b)
@@ -1091,6 +1121,21 @@ async def process_word(
         suno_ab_manifests = _bake_result.get("suno_ab_manifests", {})
         if not _bake_result["success"]:
             log.info("  [Suno] Bake-in did not produce audio — proceeding with ACE-Step")
+            if "timed out" in (_bake_result.get("error") or "").lower():
+                # kie.ai may finish the task after the polling window — queue one deferred retry
+                try:
+                    sb.table("generation_jobs").insert({
+                        "user_id": job["user_id"],
+                        "deck_id": job["deck_id"],
+                        "job_type": "suno_retry",
+                        "target_word_id": word_record["id"],
+                        "priority": -2,  # Below manual retries (-1)
+                        "status": "pending",
+                        "settings": {},
+                    }).execute()
+                    log.info("  [Suno] Auto-queued deferred retry for word %s", word_record["id"])
+                except Exception as _q_e:
+                    log.warning("  [Suno] Failed to auto-queue retry: %s", _q_e)
 
     # ── Assembly + Bookend (ACE-Step path) ───────────────────────────────────
     ab_manifests: dict[str, Any] = {}

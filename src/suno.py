@@ -204,6 +204,19 @@ async def generate_song(
 
         logger.info("Suno task created: %s", task_id)
 
+        # Best-effort: write suno_task_id immediately so it's available if polling times out.
+        # If this write fails, log a warning and continue — generation must not be aborted.
+        try:
+            _sb_url = os.getenv("SUPABASE_URL", "")
+            _sb_key = os.getenv("SUPABASE_SERVICE_KEY", "")
+            if _sb_url and _sb_key:
+                _sb_early = supabase_create_client(_sb_url, _sb_key)
+                _sb_early.table("words").update({"suno_task_id": task_id}) \
+                    .eq("deck_id", deck_id).eq("word_slug", word_slug).execute()
+                logger.debug("Wrote suno_task_id early for %s/%s", deck_id, word_slug)
+        except Exception as _early_e:
+            logger.warning("Failed to write suno_task_id early: %s", _early_e)
+
         # Step 3: Poll for completion
         elapsed = 0
         copyright_retried = False
@@ -305,6 +318,65 @@ async def generate_song(
 
 
     return {"status": "error", "error": "unexpected: no code path returned"}
+
+
+async def fetch_existing_task(task_id: str) -> dict:
+    """
+    Single-shot re-poll for a previously submitted kie.ai task.
+
+    Does NOT loop or wait — one GET request, immediate return.
+    Does NOT write anything to Supabase — the caller is responsible.
+
+    Return shapes (same keys as generate_song() so callers are interchangeable):
+      Success:  {"status": "success",  "task_id": ..., "audio_url": ..., "audio_url_b": ..., "error": None}
+      Pending:  {"status": "pending",  "task_id": ..., "audio_url": None, "audio_url_b": None, "error": "..."}
+      Failure:  {"status": "error",    "task_id": ..., "audio_url": None, "audio_url_b": None, "error": "..."}
+    """
+    api_key = get_api_key()
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        try:
+            resp = await client.get(
+                f"{KIE_API_BASE}/generate/record-info",
+                params={"taskId": task_id},
+                headers={"Authorization": f"Bearer {api_key}"},
+            )
+            resp.raise_for_status()
+            data = resp.json().get("data", {})
+        except httpx.HTTPError as e:
+            logger.warning("fetch_existing_task: HTTP error for %s: %s", task_id, e)
+            return {"status": "error", "task_id": task_id,
+                    "audio_url": None, "audio_url_b": None, "error": str(e)}
+
+    task_status = data.get("status", "")
+
+    if task_status == "SUCCESS":
+        suno_data = data.get("response", {}).get("sunoData", [])
+        if suno_data and isinstance(suno_data, list) and len(suno_data) > 0:
+            audio_url = suno_data[0].get("audioUrl")
+            audio_url_b = suno_data[1].get("audioUrl") if len(suno_data) > 1 else None
+            if audio_url:
+                logger.info("fetch_existing_task: task %s complete, audio found", task_id)
+                return {"status": "success", "task_id": task_id,
+                        "audio_url": audio_url, "audio_url_b": audio_url_b, "error": None}
+        return {"status": "error", "task_id": task_id,
+                "audio_url": None, "audio_url_b": None,
+                "error": "Task SUCCESS but no audioUrl in response"}
+
+    if task_status in ("waiting", "queuing", "generating"):
+        logger.info("fetch_existing_task: task %s still in progress (%s)", task_id, task_status)
+        return {"status": "pending", "task_id": task_id,
+                "audio_url": None, "audio_url_b": None, "error": "Task still in progress"}
+
+    # "fail" or empty/unknown status
+    error_msg = (
+        data.get("errorMessage")
+        or (data.get("response", {}).get("sunoData") or [{}])[0].get("errorMessage")
+        or f"Task status: {task_status or 'unknown'}"
+    )
+    logger.info("fetch_existing_task: task %s failed/expired: %s", task_id, error_msg)
+    return {"status": "error", "task_id": task_id,
+            "audio_url": None, "audio_url_b": None,
+            "error": f"Task failed on kie.ai: {error_msg}"}
 
 
 async def download_suno_audio(url: str, dest_path: Path) -> Path:
