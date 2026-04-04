@@ -132,7 +132,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       const body: Record<string, unknown> = {
         audio_base64,
         language: lang,
-        history: messagesRef.current.slice(-20),
+        history: messagesRef.current.slice(-20).map(({ role, content }) => ({ role, content })),
         mime_type: mimeTypeRef.current,
       }
       if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
