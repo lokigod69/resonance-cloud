@@ -66,7 +66,8 @@ function blobToBase64(blob: Blob): Promise<string> {
 function playAudioBase64(base64: string, format: string): Promise<void> {
   return new Promise((resolve, reject) => {
     const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
-    const blob = new Blob([bytes], { type: `audio/${format}` })
+    const mimeMap: Record<string, string> = { mp3: 'audio/mpeg', wav: 'audio/wav', pcm: 'audio/pcm' }
+    const blob = new Blob([bytes], { type: mimeMap[format] || `audio/${format}` })
     const url = URL.createObjectURL(blob)
     const audio = new Audio(url)
     audio.onended = () => {
@@ -101,6 +102,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const chunksRef = useRef<Blob[]>([])
   const messagesRef = useRef<TutorMessage[]>([])
   const voiceRef = useRef<TutorVoice | null>(null)
+  const mimeTypeRef = useRef<string>('audio/webm')
 
   useEffect(() => {
     messagesRef.current = messages
@@ -128,6 +130,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         audio_base64,
         language: lang,
         history: messagesRef.current.slice(-20),
+        mime_type: mimeTypeRef.current,
       }
       if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
       if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
@@ -274,6 +277,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       streamRef.current = stream
 
       const mimeType = getMimeType()
+      mimeTypeRef.current = mimeType || 'audio/webm'
       const recorder = mimeType
         ? new MediaRecorder(stream, { mimeType })
         : new MediaRecorder(stream)

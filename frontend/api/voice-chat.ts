@@ -14,6 +14,7 @@ interface RequestBody {
   history: Message[]
   voice_id?: string
   elevenlabs_voice_id?: string
+  mime_type?: string
 }
 
 const LANGUAGE_CONFIG: Record<string, { name: string; nativeName: string; encouragement: string; fillers: string }> = {
@@ -153,19 +154,11 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Content-Type',
 }
 
+export async function OPTIONS(): Promise<Response> {
+  return new Response(null, { status: 204, headers: CORS_HEADERS })
+}
+
 export async function POST(req: Request): Promise<Response> {
-  // Handle CORS preflight
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: CORS_HEADERS })
-  }
-
-  if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
-    })
-  }
-
   let body: RequestBody
   try {
     body = await req.json()
@@ -176,7 +169,7 @@ export async function POST(req: Request): Promise<Response> {
     })
   }
 
-  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id } = body
+  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type } = body
 
   console.log(`[voice-chat] Request received — language: ${language}, has_audio: ${!!audio_base64}, has_voice_id: ${!!voice_id}`)
 
@@ -199,11 +192,13 @@ export async function POST(req: Request): Promise<Response> {
   let user_text = ''
 
   if (audio_base64) {
+    const resolvedMime = mime_type || 'audio/webm'
+    const extension = resolvedMime.includes('mp4') ? 'mp4' : 'webm'
     const audioBuffer = Buffer.from(audio_base64, 'base64')
-    const audioBlob = new Blob([audioBuffer], { type: 'audio/webm' })
+    const audioBlob = new Blob([audioBuffer], { type: resolvedMime })
 
     const formData = new FormData()
-    formData.append('file', audioBlob, 'audio.webm')
+    formData.append('file', audioBlob, `audio.${extension}`)
     formData.append('model', 'whisper-large-v3')
     formData.append('response_format', 'json')
 
