@@ -1,6 +1,6 @@
 // Vercel Serverless Function — Voice Tutor pipeline
 // POST /api/voice-chat
-// Body: { audio_base64: string|null, language: string, history: Message[] }
+// Body: { audio_base64: string|null, language: string, history: Message[], mime_type?: string }
 // Returns: { user_text, ai_text, audio_base64, audio_format }
 
 interface Message {
