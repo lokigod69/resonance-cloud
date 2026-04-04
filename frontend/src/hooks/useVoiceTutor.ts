@@ -26,6 +26,7 @@ export interface UseVoiceTutorReturn {
   pendingAudio: { base64: string; format: string } | null
   startRecording: () => Promise<void>
   stopRecording: () => void
+  stopRecordingIfActive: () => void
   selectLanguage: (lang: string) => void
   startConversation: (voice: TutorVoice) => Promise<void>
   changeVoice: () => void
@@ -106,6 +107,9 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const messagesRef = useRef<TutorMessage[]>([])
   const voiceRef = useRef<TutorVoice | null>(null)
   const mimeTypeRef = useRef<string>('audio/webm')
+  const statusRef = useRef<TutorStatus>('idle')
+  const recordingStartTime = useRef<number>(0)
+  const discardRecordingRef = useRef<boolean>(false)
 
   useEffect(() => {
     messagesRef.current = messages
@@ -114,6 +118,10 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   useEffect(() => {
     voiceRef.current = voice
   }, [voice])
+
+  useEffect(() => {
+    statusRef.current = status
+  }, [status])
 
   // Cleanup on unmount
   useEffect(() => {
@@ -291,15 +299,32 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       return
     }
 
+    // Guard: don't start if already recording or processing
+    if (statusRef.current === 'recording' || statusRef.current === 'processing') {
+      return
+    }
+
+    // Clean up any leaked stream from a previous stuck recording
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(t => t.stop())
+      streamRef.current = null
+    }
+    if (mediaRecorderRef.current) {
+      mediaRecorderRef.current = null
+    }
+
+    discardRecordingRef.current = false
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       streamRef.current = stream
 
       const mimeType = getMimeType()
-      mimeTypeRef.current = mimeType || 'audio/webm'
       const recorder = mimeType
         ? new MediaRecorder(stream, { mimeType })
         : new MediaRecorder(stream)
+      // Use recorder's actual mimeType — authoritative, especially on Safari
+      mimeTypeRef.current = recorder.mimeType || mimeType || 'audio/webm'
 
       chunksRef.current = []
 
@@ -308,10 +333,15 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       }
 
       recorder.onstop = async () => {
+        if (discardRecordingRef.current) {
+          discardRecordingRef.current = false
+          return
+        }
+
         stream.getTracks().forEach((t) => t.stop())
         streamRef.current = null
 
-        const audioBlob = new Blob(chunksRef.current, { type: mimeType || 'audio/webm' })
+        const audioBlob = new Blob(chunksRef.current, { type: mimeTypeRef.current })
         chunksRef.current = []
 
         const currentLang = language
@@ -344,6 +374,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       }
 
       mediaRecorderRef.current = recorder
+      recordingStartTime.current = Date.now()
       recorder.start()
       setError(null)
       setStatus('recording')
@@ -360,10 +391,29 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const stopRecording = useCallback(() => {
     const recorder = mediaRecorderRef.current
     if (recorder && recorder.state === 'recording') {
+      const duration = Date.now() - recordingStartTime.current
+      if (duration < 500) {
+        // Too short — discard without sending to API
+        discardRecordingRef.current = true
+        recorder.stop()
+        if (streamRef.current) {
+          streamRef.current.getTracks().forEach(t => t.stop())
+          streamRef.current = null
+        }
+        mediaRecorderRef.current = null
+        setStatus('idle')
+        return
+      }
       recorder.stop()
     }
     mediaRecorderRef.current = null
   }, [])
+
+  const stopRecordingIfActive = useCallback(() => {
+    if (statusRef.current === 'recording') {
+      stopRecording()
+    }
+  }, [stopRecording])
 
   const resetConversation = useCallback(() => {
     const recorder = mediaRecorderRef.current
@@ -396,6 +446,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     playPendingAudio,
     startRecording,
     stopRecording,
+    stopRecordingIfActive,
     selectLanguage,
     startConversation,
     changeVoice,

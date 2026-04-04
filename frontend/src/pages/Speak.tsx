@@ -222,9 +222,9 @@ export default function Speak() {
 
   // ── State 3: Conversation ───────────────────────────────────────────────────
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)] overflow-hidden">
+    <div className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col bg-gray-950">
       {/* Conversation header */}
-      <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md z-10">
+      <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
         <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
         <button
           onClick={tutor.resetConversation}
@@ -319,7 +319,11 @@ export default function Speak() {
       </div>
 
       {/* Footer: mic controls */}
-      <div className="shrink-0 border-t border-white/5 bg-gray-950/80 backdrop-blur-md z-10">
+      <div
+        className="shrink-0 border-t border-white/5 bg-gray-950/80 backdrop-blur-md select-none"
+        style={{ WebkitTouchCallout: 'none' }}
+        onContextMenu={(e) => e.preventDefault()}
+      >
         <div className="px-4 py-5 max-w-5xl mx-auto w-full">
         {tutor.status === 'error' && tutor.error && (
           <p className="text-red-400 text-xs text-center mb-3">{tutor.error}</p>
@@ -343,13 +347,12 @@ export default function Speak() {
               e.currentTarget.setPointerCapture(e.pointerId)
               if (!isBusy) tutor.startRecording()
             }}
-            onPointerUp={() => {
-              if (tutor.status === 'recording') tutor.stopRecording()
-            }}
-            onPointerLeave={() => {
-              if (tutor.status === 'recording') tutor.stopRecording()
-            }}
+            onPointerUp={() => tutor.stopRecordingIfActive()}
+            onPointerCancel={() => tutor.stopRecordingIfActive()}
+            onPointerLeave={() => tutor.stopRecordingIfActive()}
+            onContextMenu={(e) => e.preventDefault()}
             disabled={isBusy}
+            style={{ WebkitTouchCallout: 'none' }}
             className={`w-16 h-16 rounded-full flex items-center justify-center transition-all select-none touch-none ${
               tutor.status === 'recording'
                 ? 'bg-red-600 animate-pulse scale-110'
