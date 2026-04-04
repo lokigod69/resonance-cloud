@@ -28,17 +28,16 @@ import Music from '@/pages/Music'
 import MusicPG from '@/pages/MusicPG'
 import Speak from '@/pages/Speak'
 import AdminRoute from '@/components/AdminRoute'
-import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 
 function ProtectedRoute() {
   const { session, loading } = useAuth()
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center gradient-bg">
-        <div className="glass rounded-xl px-8 py-6">
-          <LoadingIndicator />
-        </div>
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+        <ParticleSpinner preset="spirograph" size={160} />
+        <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
       </div>
     )
   }
@@ -55,10 +54,9 @@ function OnboardingRoute() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center gradient-bg">
-        <div className="glass rounded-xl px-8 py-6">
-          <LoadingIndicator />
-        </div>
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+        <ParticleSpinner preset="spirograph" size={160} />
+        <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
       </div>
     )
   }
@@ -75,10 +73,9 @@ function PublicRoute() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center gradient-bg">
-        <div className="glass rounded-xl px-8 py-6">
-          <LoadingIndicator />
-        </div>
+      <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+        <ParticleSpinner preset="spirograph" size={160} />
+        <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
       </div>
     )
   }

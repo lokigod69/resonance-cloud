@@ -3,7 +3,7 @@ import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { Loader, Music } from 'lucide-react'
-import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 
 type Deck = {
   id: string
@@ -140,8 +140,9 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '60vh' }}>
-        <LoadingIndicator text="Loading decks" />
+      <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
+        <ParticleSpinner preset="rose" size={140} />
+        <p className="text-sm text-muted-foreground opacity-60">Loading decks...</p>
       </div>
     )
   }

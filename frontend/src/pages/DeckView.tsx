@@ -15,6 +15,7 @@ import { VideoControls } from '@/components/VideoControls'
 import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
 import { VerbCycler } from '@/components/ui/VerbCycler'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 
 type Deck = {
   id: string
@@ -166,14 +167,9 @@ export default function DeckView() {
 
   if (loading) {
     return (
-      <div className="space-y-6">
-        <Skeleton className="h-8 w-64 bg-white/10" />
-        <Skeleton className="h-4 w-48 bg-white/10" />
-        <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Skeleton key={i} className="aspect-video rounded-xl bg-white/10" />
-          ))}
-        </div>
+      <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
+        <ParticleSpinner preset="spiral" size={140} />
+        <p className="text-sm text-muted-foreground opacity-60">Loading deck...</p>
       </div>
     )
   }

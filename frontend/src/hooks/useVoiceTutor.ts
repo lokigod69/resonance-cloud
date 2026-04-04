@@ -240,14 +240,21 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       setVoice(selectedVoice)
       voiceRef.current = selectedVoice
       saveVoicePreference(lang, selectedVoice.id)
-      setMessages([])
-      messagesRef.current = []
       setError(null)
-      try {
-        await fetchAndPlayGreeting(lang, selectedVoice)
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to start conversation')
-        setStatus('error')
+
+      if (messagesRef.current.length === 0) {
+        // Fresh conversation — fetch greeting
+        setMessages([])
+        messagesRef.current = []
+        try {
+          await fetchAndPlayGreeting(lang, selectedVoice)
+        } catch (err) {
+          setError(err instanceof Error ? err.message : 'Failed to start conversation')
+          setStatus('error')
+        }
+      } else {
+        // Voice change with existing history — keep history, just swap voice
+        setStatus('idle')
       }
     },
     [language, fetchAndPlayGreeting],
@@ -256,8 +263,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const changeVoice = useCallback(() => {
     setVoice(null)
     voiceRef.current = null
-    setMessages([])
-    messagesRef.current = []
     setPendingAudio(null)
     setError(null)
     setStatus('idle')

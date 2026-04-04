@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabase'
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
 import type { PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import {
   Coins,
   Sparkles,
@@ -181,8 +181,9 @@ export default function DashboardPG() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <LoadingIndicator text="Loading decks" />
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <ParticleSpinner preset="rose" size={140} />
+        <p className="text-sm text-muted-foreground opacity-60">Loading decks...</p>
       </div>
     )
   }

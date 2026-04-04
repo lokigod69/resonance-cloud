@@ -7,7 +7,7 @@ interface VerbCyclerProps {
   className?: string
 }
 
-export function VerbCycler({ intervalMs = 2500, className }: VerbCyclerProps) {
+export function VerbCycler({ intervalMs = 5000, className }: VerbCyclerProps) {
   const [verb, setVerb] = useState(() => getRandomVerb())
   const [visible, setVisible] = useState(true)
   const reducedMotion = useRef(

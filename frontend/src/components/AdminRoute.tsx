@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Lock } from 'lucide-react'
-import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 
 export default function AdminRoute() {
   const { profile, loading } = useAuth()
@@ -17,8 +17,8 @@ export default function AdminRoute() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <LoadingIndicator />
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <ParticleSpinner preset="rose" size={120} />
       </div>
     )
   }

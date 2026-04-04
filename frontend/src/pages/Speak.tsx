@@ -222,9 +222,10 @@ export default function Speak() {
 
   // ── State 3: Conversation ───────────────────────────────────────────────────
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)]">
+    <div className="flex flex-col h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)] overflow-hidden">
       {/* Conversation header */}
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-gray-950 shrink-0 max-w-5xl mx-auto w-full">
+      <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md z-10">
+        <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
         <button
           onClick={tutor.resetConversation}
           className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
@@ -259,6 +260,7 @@ export default function Speak() {
           <RotateCcw className="h-3.5 w-3.5" />
           New Chat
         </button>
+        </div>
       </div>
 
       {/* Chat area */}
@@ -317,7 +319,8 @@ export default function Speak() {
       </div>
 
       {/* Footer: mic controls */}
-      <div className="shrink-0 border-t border-white/5 bg-gray-950 px-4 py-5 max-w-5xl mx-auto w-full">
+      <div className="shrink-0 border-t border-white/5 bg-gray-950/80 backdrop-blur-md z-10">
+        <div className="px-4 py-5 max-w-5xl mx-auto w-full">
         {tutor.status === 'error' && tutor.error && (
           <p className="text-red-400 text-xs text-center mb-3">{tutor.error}</p>
         )}
@@ -372,6 +375,7 @@ export default function Speak() {
               />
             )}
           </button>
+        </div>
         </div>
       </div>
     </div>

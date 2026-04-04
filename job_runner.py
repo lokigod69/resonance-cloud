@@ -50,6 +50,7 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 POLL_INTERVAL = int(os.getenv("JOB_RUNNER_POLL_INTERVAL", "30"))
 MAX_RETRIES = int(os.getenv("JOB_RUNNER_MAX_RETRIES", "2"))
 CLEANUP_WORKSPACES = os.getenv("JOB_RUNNER_CLEANUP", "false").lower() == "true"
+SUNO_MIN_USABLE_DURATION = 12.0
 
 logging.basicConfig(
     level=logging.INFO,
@@ -762,14 +763,15 @@ async def bake_suno_into_word(
 
         clip_duration = _probe_clip_durations(word_dir / "videos" / video_version)
         suno_duration_a = _probe_audio_duration(path_a)
-        _outro_mode_guard = suno_settings.get("outro_mode", "fade_out")
-        _fade_tail_guard = float(suno_settings.get("fade_tail_duration", 2.5))
-        _min_required = (clip_duration + _fade_tail_guard) if _outro_mode_guard == "fade_out" else clip_duration
-
-        if suno_duration_a < _min_required:
-            msg = f"Suno audio too short ({suno_duration_a:.1f}s < {_min_required:.1f}s required)"
+        if suno_duration_a < SUNO_MIN_USABLE_DURATION:
+            msg = (f"Suno audio too short to be usable "
+                   f"({suno_duration_a:.1f}s < {SUNO_MIN_USABLE_DURATION}s)")
             log.warning("  [Suno] %s", msg)
             return {"success": False, "suno_ab_manifests": {}, "error": msg}
+
+        if suno_duration_a < clip_duration:
+            log.info("  [Suno] Audio shorter than video (%.1fs < %.1fs) — "
+                     "will trim video to match", suno_duration_a, clip_duration)
 
         log.info("  [Suno] Audio ready: %.1fs clips", clip_duration)
 
@@ -783,20 +785,57 @@ async def bake_suno_into_word(
 
     from src.manifest import update_settings as _update_settings
 
-    if outro_mode == "fade_out":
-        trim_to = clip_duration + fade_tail
-        trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
-                                   trim_to, clip_duration, fade_tail)
-        trimmed_b = _trim_suno_mp3(path_b, suno_dir / "take_suno_b.mp3",
-                                   trim_to, clip_duration, fade_tail) \
-                    if path_b else None
-    else:  # clean_cut — trim to exact clip duration with micro-fade to avoid click
-        _fade_start = max(0.0, clip_duration - 0.1)
-        trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
-                                   clip_duration, _fade_start, 0.1)
-        trimmed_b = _trim_suno_mp3(path_b, suno_dir / "take_suno_b.mp3",
-                                   clip_duration, _fade_start, 0.1) \
-                    if path_b else None
+    try:
+        if outro_mode == "fade_out":
+            def _fade_params(dur: float) -> tuple[float, float, float]:
+                """Return (trim_to, fade_start, actual_fade) for a given duration.
+
+                Three cases:
+                - Normal: audio long enough for full fade tail beyond video end
+                - Medium: audio covers the video but not the full fade tail
+                - Short: audio shorter than the video itself
+                """
+                if fade_tail == 0:
+                    # User explicitly wants no fade — respect it at all durations
+                    return min(dur, clip_duration), min(dur, clip_duration), 0
+                if dur >= clip_duration + fade_tail:
+                    # Normal: full fade tail in the overflow zone
+                    return clip_duration + fade_tail, clip_duration, fade_tail
+                if dur >= clip_duration:
+                    # Medium: covers video but not full tail — place short fade
+                    # before clip_duration so it survives the assembly trim
+                    micro = min(0.5, fade_tail, dur - clip_duration + 0.5)
+                    return clip_duration, clip_duration - micro, micro
+                # Short: audio shorter than video — assembly trims video to match
+                actual = min(0.5, dur * 0.05)
+                return dur, dur - actual, actual
+
+            trim_to_a, fade_start_a, actual_fade_a = _fade_params(suno_duration_a)
+            trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
+                                       trim_to_a, fade_start_a, actual_fade_a)
+            if path_b:
+                suno_duration_b = _probe_audio_duration(path_b)
+                if suno_duration_b < SUNO_MIN_USABLE_DURATION:
+                    log.info("  [Suno] Track B too short (%.1fs < %ss) — "
+                             "skipping B, using A only",
+                             suno_duration_b, SUNO_MIN_USABLE_DURATION)
+                    trimmed_b = None
+                else:
+                    trim_to_b, fade_start_b, actual_fade_b = _fade_params(suno_duration_b)
+                    trimmed_b = _trim_suno_mp3(path_b, suno_dir / "take_suno_b.mp3",
+                                               trim_to_b, fade_start_b, actual_fade_b)
+            else:
+                trimmed_b = None
+        else:  # clean_cut — trim to exact clip duration with micro-fade to avoid click
+            _fade_start = max(0.0, clip_duration - 0.1)
+            trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
+                                       clip_duration, _fade_start, 0.1)
+            trimmed_b = _trim_suno_mp3(path_b, suno_dir / "take_suno_b.mp3",
+                                       clip_duration, _fade_start, 0.1) \
+                        if path_b else None
+    except Exception as e:
+        log.warning("  [Suno] Trim failed: %s — proceeding with ACE-Step", e)
+        return {"success": False, "suno_ab_manifests": {}, "error": str(e)}
 
     suno_takes = [("a", trimmed_a)]
     if trimmed_b:
@@ -815,7 +854,10 @@ async def bake_suno_into_word(
             update_selection(word_dir, "song", song_version)
 
             asm_overrides: dict[str, Any] = {
-                "silence_trim": False, "lufs_normalize": False, "gap_strategy": "word_card",
+                "silence_trim": False,
+                "lufs_normalize": False,
+                "gap_strategy": "word_card",
+                "overflow_strategy": "trim",
                 "word_card_show_translation": True,
                 "word_card_font": bookend_defaults.get("font", "Bebas Neue"),
                 "word_card_font_size": min(144, int(bookend_defaults.get("font_size", 92))),
@@ -880,6 +922,7 @@ async def bake_suno_into_word(
         # Always restore overrides — even if an exception occurred mid-loop
         _update_settings(word_dir, "assembly", {
             "silence_trim": None, "lufs_normalize": None, "gap_strategy": None,
+            "overflow_strategy": None,
             "word_card_show_translation": None, "word_card_font": None, "word_card_font_size": None,
         })
         _update_settings(word_dir, "bookend", {"skip_outro": None, "outro_mode": None})
