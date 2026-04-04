@@ -227,9 +227,10 @@ export async function POST(req: Request): Promise<Response> {
   const systemPrompt = buildSystemPrompt(language)
   const lang = LANGUAGE_CONFIG[language]
 
+  const cleanHistory = history.slice(-20).map(({ role, content }) => ({ role, content }))
   const messages: Message[] = [
     { role: 'system', content: systemPrompt },
-    ...history.slice(-20), // cap at last 20 messages
+    ...cleanHistory,
   ]
 
   if (user_text) {
