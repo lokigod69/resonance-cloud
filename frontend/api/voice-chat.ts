@@ -106,7 +106,9 @@ async function generateSpeech(
       body: JSON.stringify(ttsBody),
     }, 20000, 'Mistral TTS')
     if (!response.ok) throw new Error(`Mistral TTS failed: ${response.status}`)
-    return Buffer.from(await response.arrayBuffer())
+    const ttsJson = await response.json() as { audio_data?: string }
+    if (!ttsJson.audio_data) throw new Error('Mistral TTS returned no audio_data field')
+    return Buffer.from(ttsJson.audio_data, 'base64')
   } else {
     const elevenKey = process.env.ELEVENLABS_API_KEY
     if (!elevenKey) throw new Error('ELEVENLABS_API_KEY not configured')
