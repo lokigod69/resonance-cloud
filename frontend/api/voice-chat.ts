@@ -99,11 +99,11 @@ async function generateSpeech(
     } else {
       ttsBody.voice = language === 'ar' ? 'en_paul_confident' : 'en_paul_cheerful'
     }
-    const response = await fetch('https://api.mistral.ai/v1/audio/speech', {
+    const response = await fetchWithTimeout('https://api.mistral.ai/v1/audio/speech', {
       method: 'POST',
       headers: { Authorization: `Bearer ${mistralKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify(ttsBody),
-    })
+    }, 20000, 'Mistral TTS')
     if (!response.ok) throw new Error(`Mistral TTS failed: ${response.status}`)
     return Buffer.from(await response.arrayBuffer())
   } else {
@@ -112,7 +112,7 @@ async function generateSpeech(
     const resolvedElVoiceId = elevenLabsVoiceId || ELEVENLABS_FALLBACK[language]
     if (!resolvedElVoiceId) throw new Error(`No TTS voice configured for language: ${language}`)
     const voiceId = resolvedElVoiceId
-    const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+    const response = await fetchWithTimeout(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
       method: 'POST',
       headers: { 'xi-api-key': elevenKey, 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -120,10 +120,31 @@ async function generateSpeech(
         model_id: 'eleven_multilingual_v2',
         voice_settings: { stability: 0.5, similarity_boost: 0.75 },
       }),
-    })
+    }, 20000, 'ElevenLabs TTS')
     if (!response.ok) throw new Error(`ElevenLabs TTS failed: ${response.status}`)
     return Buffer.from(await response.arrayBuffer())
   }
+}
+
+function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, label: string): Promise<Response> {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), timeoutMs)
+  console.log(`[voice-chat] ${label} — starting (${timeoutMs}ms timeout)`)
+  return fetch(url, { ...options, signal: controller.signal })
+    .then((res) => {
+      clearTimeout(timer)
+      console.log(`[voice-chat] ${label} — completed (status ${res.status})`)
+      return res
+    })
+    .catch((err) => {
+      clearTimeout(timer)
+      if (err.name === 'AbortError') {
+        console.error(`[voice-chat] ${label} — TIMED OUT after ${timeoutMs}ms`)
+        throw new Error(`${label} timed out after ${timeoutMs / 1000}s`)
+      }
+      console.error(`[voice-chat] ${label} — FAILED:`, err.message)
+      throw err
+    })
 }
 
 const CORS_HEADERS = {
@@ -157,6 +178,8 @@ export default async function handler(req: Request): Promise<Response> {
 
   const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id } = body
 
+  console.log(`[voice-chat] Request received — language: ${language}, has_audio: ${!!audio_base64}, has_voice_id: ${!!voice_id}`)
+
   if (!language || !LANGUAGE_CONFIG[language]) {
     return new Response(JSON.stringify({ error: `Unsupported language: ${language}` }), {
       status: 400,
@@ -184,11 +207,11 @@ export default async function handler(req: Request): Promise<Response> {
     formData.append('model', 'whisper-large-v3')
     formData.append('response_format', 'json')
 
-    const sttRes = await fetch('https://api.groq.com/openai/v1/audio/transcriptions', {
+    const sttRes = await fetchWithTimeout('https://api.groq.com/openai/v1/audio/transcriptions', {
       method: 'POST',
       headers: { Authorization: `Bearer ${groqKey}` },
       body: formData,
-    })
+    }, 15000, 'Groq STT')
 
     if (!sttRes.ok) {
       const errText = await sttRes.text()
@@ -222,7 +245,7 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   // ── Step 3: LLM response (Groq, OpenAI-compatible, ~750 tok/s on LPU) ───────
-  const llmRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+  const llmRes = await fetchWithTimeout('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${groqKey}`,
@@ -233,7 +256,7 @@ export default async function handler(req: Request): Promise<Response> {
       messages,
       max_tokens: 200,
     }),
-  })
+  }, 20000, 'Groq LLM')
 
   if (!llmRes.ok) {
     const errText = await llmRes.text()

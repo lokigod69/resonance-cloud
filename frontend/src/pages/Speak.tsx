@@ -37,7 +37,7 @@ function VoiceAvatar({ name, gender }: { name: string; gender: string }) {
   const sat = gender === 'female' ? '65%' : '55%'
   return (
     <div
-      className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0"
+      className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
       style={{ backgroundColor: `hsl(${hue}, ${sat}, 45%)` }}
     >
       {name.charAt(0).toUpperCase()}
@@ -182,7 +182,7 @@ export default function Speak() {
               </div>
             )}
 
-            <div className="space-y-3">
+            <div className="space-y-1.5">
               {voices.map((voice) => {
                 const isPlaying = playingVoiceId === voice.id
                 return (
@@ -190,7 +190,7 @@ export default function Speak() {
                     key={voice.id}
                     onClick={() => tutor.startConversation(voice)}
                     disabled={isStarting}
-                    className={`w-full flex items-center gap-4 px-4 py-3 rounded-xl border transition-all text-left
+                    className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg border transition-all text-left
                       ${isPlaying
                         ? 'bg-gray-800/80 border-cyan-500/40 animate-pulse'
                         : 'bg-gray-800/50 border-white/5 hover:bg-gray-700/60 hover:border-white/10'
@@ -198,17 +198,17 @@ export default function Speak() {
                       disabled:opacity-50 disabled:cursor-not-allowed`}
                   >
                     <VoiceAvatar name={voice.name} gender={voice.gender} />
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 flex items-center gap-2">
                       <p className="text-sm font-medium text-white">{voice.name}</p>
-                      <p className="text-xs text-gray-400 capitalize">{voice.gender}</p>
+                      <p className="text-xs text-gray-500 capitalize">{voice.gender}</p>
                     </div>
                     <button
                       onClick={(e) => toggleSample(e, voice)}
                       disabled={isStarting}
-                      className="p-2 rounded-lg text-gray-400 hover:text-cyan-400 hover:bg-white/5 transition-colors shrink-0"
+                      className="p-1.5 rounded-md text-gray-400 hover:text-cyan-400 hover:bg-white/5 transition-colors shrink-0"
                       title={isPlaying ? 'Stop preview' : 'Preview voice'}
                     >
-                      {isPlaying ? <Square className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                      {isPlaying ? <Square className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
                     </button>
                   </button>
                 )
@@ -224,7 +224,7 @@ export default function Speak() {
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)]">
       {/* Conversation header */}
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-gray-950 shrink-0">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-gray-950 shrink-0 max-w-5xl mx-auto w-full">
         <button
           onClick={tutor.resetConversation}
           className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
@@ -264,7 +264,7 @@ export default function Speak() {
       {/* Chat area */}
       <div
         ref={chatRef}
-        className="flex-1 overflow-y-auto px-4 py-4 space-y-3"
+        className="flex-1 overflow-y-auto px-4 py-4 space-y-3 max-w-5xl mx-auto w-full"
         style={{ scrollbarWidth: 'thin' }}
       >
         {tutor.messages.map((msg, i) => (
@@ -306,7 +306,7 @@ export default function Speak() {
       </div>
 
       {/* Footer: mic controls */}
-      <div className="shrink-0 border-t border-white/5 bg-gray-950 px-4 py-5">
+      <div className="shrink-0 border-t border-white/5 bg-gray-950 px-4 py-5 max-w-5xl mx-auto w-full">
         {tutor.status === 'error' && tutor.error && (
           <p className="text-red-400 text-xs text-center mb-3">{tutor.error}</p>
         )}

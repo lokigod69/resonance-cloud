@@ -132,11 +132,25 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
       if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
 
-      const res = await fetch('/api/voice-chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      })
+      const controller = new AbortController()
+      const timer = setTimeout(() => controller.abort(), 30000)
+
+      let res: Response
+      try {
+        res = await fetch('/api/voice-chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+          signal: controller.signal,
+        })
+      } catch (err) {
+        clearTimeout(timer)
+        if (err instanceof Error && err.name === 'AbortError') {
+          throw new Error('Request timed out — please try again')
+        }
+        throw err
+      }
+      clearTimeout(timer)
 
       if (!res.ok) {
         const errJson = await res.json().catch(() => ({ error: 'Request failed' }))
