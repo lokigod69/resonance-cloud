@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Coins, User, Shield, LayoutDashboard, Sparkles, BookOpen, Music } from 'lucide-react'
+import { Menu, X, Coins, User, Shield, LayoutDashboard, Sparkles, BookOpen, Music, Mic } from 'lucide-react'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import ProfileModal from '@/components/ProfileModal'
 
@@ -11,6 +11,7 @@ const navItems = [
   { label: 'Generate', path: '/generate', icon: Sparkles },
   { label: 'Study', path: '/study', icon: BookOpen },
   { label: 'Music', path: '/music', icon: Music },
+  { label: 'Speak', path: '/speak', icon: Mic },
 ]
 
 export default function PolishGlassLayout() {

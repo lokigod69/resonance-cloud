@@ -26,6 +26,7 @@ import Profiles from '@/pages/admin/Profiles'
 import Voices from '@/pages/admin/Voices'
 import Music from '@/pages/Music'
 import MusicPG from '@/pages/MusicPG'
+import Speak from '@/pages/Speak'
 import AdminRoute from '@/components/AdminRoute'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 
@@ -123,6 +124,7 @@ function AppRoutes() {
             <Route path="/deck/:id" element={<DeckViewPG />} />
             <Route path="/study" element={<StudyPG />} />
             <Route path="/music" element={<MusicPG />} />
+            <Route path="/speak" element={<Speak />} />
           </Route>
         ) : (
           <Route element={<AppLayout />}>
@@ -131,6 +133,7 @@ function AppRoutes() {
             <Route path="/deck/:id" element={<DeckView />} />
             <Route path="/study" element={<Study />} />
             <Route path="/music" element={<Music />} />
+            <Route path="/speak" element={<Speak />} />
           </Route>
         )}
 

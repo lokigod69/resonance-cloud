@@ -326,7 +326,7 @@ export default function DeckView() {
                       setViewerOpen(true)
                     }
                   }}
-                  className="block glass glass-hover rounded-xl overflow-hidden transition-[background-color,box-shadow,border-color] duration-200 [@media(hover:hover)]:hover:scale-[1.03] hover:glow-purple cursor-pointer active:scale-[0.98]"
+                  className="block glass glass-hover rounded-xl overflow-hidden transition-[background-color,box-shadow,border-color,transform] duration-200 [@media(hover:hover)]:hover:scale-[1.03] hover:glow-purple cursor-pointer active:scale-[0.98]"
                 >
                   {/* Thumbnail */}
                   <div className="aspect-video relative bg-white/5">
@@ -334,6 +334,7 @@ export default function DeckView() {
                       <img
                         src={word.thumbnail_url}
                         alt={word.word}
+                        loading="lazy"
                         className="w-full h-full object-cover"
                       />
                     ) : (

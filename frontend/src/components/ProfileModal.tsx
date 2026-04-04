@@ -70,6 +70,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
 
   async function handleSaveDisplayName() {
     if (!user) return
+    if ((displayName.trim() || null) === profile?.display_name) return
     setNameSaving(true)
     setNameSaved(false)
     await supabase
@@ -144,6 +145,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                 <button
                   key={t.id}
                   onClick={() => setTheme(t.id)}
+                  aria-label={t.label}
                   title={t.label}
                   className={`w-[46px] h-[44px] rounded-md border-2 transition-all ${
                     theme === t.id

@@ -33,6 +33,7 @@ const mainNav = [
   { to: '/generate', label: 'Generate', icon: Sparkles },
   { to: '/study', label: 'Study', icon: BookOpen },
   { to: '/music', label: 'Music', icon: Music },
+  { to: '/speak', label: 'Speak', icon: Mic },
 ]
 
 const adminNav = [
