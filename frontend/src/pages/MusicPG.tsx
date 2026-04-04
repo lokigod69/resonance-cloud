@@ -119,7 +119,7 @@ export default function MusicPG() {
       `)
       .eq('user_id', user.id)
       .eq('status', 'complete')
-      .order('created_at')
+      .order('created_at', { ascending: false })
       .then(({ data }) => {
         if (!data) return
         const mapped = (data as Record<string, unknown>[]).map(mapToTrack)

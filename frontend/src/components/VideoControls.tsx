@@ -73,7 +73,7 @@ export function VideoControls({
   const isAutoHide = typeof visibility === 'object'
   const visibilityClasses = isAutoHide
     ? `transition-opacity duration-300 ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`
-    : 'opacity-0 group-hover/video:opacity-100 transition-opacity'
+    : 'opacity-100 md:opacity-0 md:group-hover/video:opacity-100 transition-opacity'
 
   return (
     <>

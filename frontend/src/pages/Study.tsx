@@ -18,7 +18,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react'
-import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { useVideoPlayback } from '@/hooks/useVideoPlayback'
@@ -65,7 +65,7 @@ export default function Study() {
     setReviewed(0)
     visitedIdsRef.current = new Set()
   }, [deckFilter])
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, true)
+  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
   const { isPlaying, togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)
 
   const current = words[currentIndex] ?? null
@@ -169,8 +169,9 @@ export default function Study() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <LoadingIndicator text="Loading study cards" />
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <ParticleSpinner preset="heart" size={140} />
+        <p className="text-sm text-muted-foreground opacity-60">Loading study cards...</p>
       </div>
     )
   }

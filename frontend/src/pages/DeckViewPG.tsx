@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 import { useDrag } from '@use-gesture/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import {
   ArrowLeft,
   Play,
@@ -73,7 +73,7 @@ export default function DeckViewPG() {
   const [isRenaming, setIsRenaming] = useState(false)
   const [renameTo, setRenameTo] = useState('')
   const [activeIndex, setActiveIndex] = useState(0)
-  const [navKey, setNavKey] = useState(0)
+
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
   const [retrying, setRetrying] = useState<string | null>(null)
@@ -224,7 +224,11 @@ export default function DeckViewPG() {
     const vid = videoRef.current
     if (!vid) return
     if (isPlaying) {
-      vid.play().catch(() => {})
+      vid.play().catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.warn('Video play failed:', err.message)
+        }
+      })
     } else {
       vid.pause()
     }
@@ -239,10 +243,8 @@ export default function DeckViewPG() {
       } else {
         if (mx < -120 && activeIndex < words.length - 1) {
           setActiveIndex((i) => i + 1)
-          setNavKey(k => k + 1)
         } else if (mx > 120 && activeIndex > 0) {
           setActiveIndex((i) => i - 1)
-          setNavKey(k => k + 1)
         }
         setDragOffset(0)
       }
@@ -252,8 +254,9 @@ export default function DeckViewPG() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <LoadingIndicator text="Loading deck" />
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
+        <ParticleSpinner preset="spiral" size={140} />
+        <p className="text-sm text-muted-foreground opacity-60">Loading deck...</p>
       </div>
     )
   }
@@ -364,19 +367,22 @@ export default function DeckViewPG() {
               </span>
             )}
           </div>
-          {isGenerating && (
-            <div className="mt-2 h-1 bg-white/10 rounded-full overflow-hidden max-w-md">
-              <div
-                className="h-full rounded-full bg-[var(--pg-accent-teal)] transition-all"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          )}
-          {isGenerating && (
-            <VerbCycler className="mt-2" />
-          )}
         </div>
       </div>
+
+    {/* Generation progress showcase */}
+    {isGenerating && (
+      <div className="flex flex-col items-center gap-6 mb-8">
+        <ParticleSpinner preset="starburst" size={200} />
+        <VerbCycler intervalMs={5000} />
+        <div className="w-full max-w-md h-1 bg-white/10 rounded-full overflow-hidden">
+          <div
+            className="h-full rounded-full bg-[var(--pg-accent-teal)] transition-all"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      </div>
+    )}
 
       {/* Carousel */}
       <div className="-mx-6 sm:mx-0">
@@ -385,7 +391,7 @@ export default function DeckViewPG() {
           {/* Outer wrapper: group/carousel lives here so VolumeControl can respond to hover */}
           <div className="group/carousel relative w-full max-w-4xl">
             {videoActiveIndex === activeIndex && (
-              <div className="absolute top-3 left-3 z-30 opacity-0 group-hover/carousel:opacity-100 transition-opacity">
+              <div className="absolute top-3 left-3 z-30 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 transition-opacity">
                 <VolumeControl
                   volume={volume}
                   isMuted={isMuted}
@@ -405,8 +411,8 @@ export default function DeckViewPG() {
             {/* Prev button */}
             {activeIndex > 0 && (
               <button
-                onClick={() => { setActiveIndex((i) => i - 1); setNavKey(k => k + 1) }}
-                className="absolute left-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-60 sm:opacity-0 sm:group-hover/carousel:opacity-100"
+                onClick={() => setActiveIndex((i) => i - 1)}
+                className="hidden md:flex absolute left-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-0 group-hover/carousel:opacity-100"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -445,7 +451,7 @@ export default function DeckViewPG() {
                         {isComplete && videoActiveIndex === i && (offset === 0 ? activeVideoUrl : word.video_url) && (
                           <video
                             ref={videoRef}
-                            key={offset === 0 ? `${word.id}-${navKey}-${version}` : word.id}
+                            key={`${word.id}-${version}`}
                             src={(offset === 0 ? activeVideoUrl : word.video_url)!}
                             muted={isMuted}
                             playsInline
@@ -476,15 +482,16 @@ export default function DeckViewPG() {
                           </div>
                         )}
 
-                        {/* Play overlay on thumbnail — click to start video */}
+                        {/* Play overlay on thumbnail — click/tap to start video */}
                         {isComplete && offset === 0 && videoActiveIndex !== i && word.video_url && (
                           <div
-                            className="absolute inset-0 z-[2] bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
+                            className="absolute inset-0 z-[2] bg-black/30 opacity-100 md:opacity-0 md:hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation()
                               setVideoActiveIndex(i)
                               setIsPlaying(true)
                             }}
+                            onPointerDown={(e) => e.stopPropagation()}
                           >
                             <div className="h-14 w-14 rounded-full bg-[var(--pg-accent-teal)]/30 backdrop-blur-sm flex items-center justify-center border border-[var(--pg-accent-teal)]/50 shadow-[0_0_20px_rgba(13,226,195,0.3)]">
                               <Play className="h-7 w-7 text-[var(--pg-accent-teal)] fill-[var(--pg-accent-teal)]" />
@@ -499,7 +506,6 @@ export default function DeckViewPG() {
                             hasAlt={hasAltVersion}
                             onToggle={() => {
                               toggleVersion()
-                              setNavKey(k => k + 1)
                               if (videoActiveIndex === i) {
                                 setIsPlaying(true)
                               }
@@ -658,8 +664,8 @@ export default function DeckViewPG() {
             {/* Next button */}
             {activeIndex < words.length - 1 && (
               <button
-                onClick={() => { setActiveIndex((i) => i + 1); setNavKey(k => k + 1) }}
-                className="absolute right-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-60 sm:opacity-0 sm:group-hover/carousel:opacity-100"
+                onClick={() => setActiveIndex((i) => i + 1)}
+                className="hidden md:flex absolute right-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-0 group-hover/carousel:opacity-100"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -672,7 +678,7 @@ export default function DeckViewPG() {
             {words.map((word, i) => (
               <button
                 key={word.id}
-                onClick={() => { setActiveIndex(i); setNavKey(k => k + 1) }}
+                onClick={() => setActiveIndex(i)}
                 className={`h-1.5 rounded-full transition-all ${
                   i === activeIndex
                     ? 'w-6 bg-[var(--pg-accent-teal)]'
