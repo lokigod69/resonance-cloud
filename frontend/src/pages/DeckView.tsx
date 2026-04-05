@@ -16,6 +16,7 @@ import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { useTranslation } from '@/hooks/useTranslation'
 
 type Deck = {
   id: string
@@ -63,6 +64,7 @@ export default function DeckView() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
+  const { t } = useTranslation()
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
 
@@ -169,7 +171,7 @@ export default function DeckView() {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
         <ParticleSpinner preset="spiral" size={140} />
-        <p className="text-sm text-muted-foreground opacity-60">Loading deck...</p>
+        <p className="text-sm text-muted-foreground opacity-60">{t('deckview.loadingDeck')}</p>
       </div>
     )
   }
@@ -178,9 +180,9 @@ export default function DeckView() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
         <AlertCircle className="h-12 w-12 text-muted-foreground/50 mb-4" />
-        <h2 className="text-xl font-semibold">Deck not found</h2>
+        <h2 className="text-xl font-semibold">{t('deckview.notFound')}</h2>
         <Button asChild variant="ghost" className="mt-4">
-          <Link to="/dashboard">Back to Decks</Link>
+          <Link to="/dashboard">{t('common.backToDecks')}</Link>
         </Button>
       </div>
     )
@@ -272,7 +274,7 @@ export default function DeckView() {
               <button
                 onClick={startRenaming}
                 className="opacity-0 group-hover/name:opacity-100 transition-opacity text-muted-foreground hover:text-foreground"
-                title="Rename deck"
+                title={t('deckview.renameDeck')}
               >
                 <Pencil className="h-4 w-4" />
               </button>
@@ -367,7 +369,7 @@ export default function DeckView() {
                   </div>
                   <div className="p-3 space-y-1.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
-                    <p className="text-xs text-destructive-foreground">Could not generate</p>
+                    <p className="text-xs text-destructive-foreground">{t('deckview.couldNotGenerate')}</p>
                     <div className="flex gap-1.5 pt-1">
                       <Button
                         size="sm"
@@ -377,7 +379,7 @@ export default function DeckView() {
                         disabled={retrying === word.id}
                       >
                         <RotateCcw className="h-3 w-3" />
-                        {retrying === word.id ? 'Retrying...' : 'Retry'}
+                        {retrying === word.id ? t('deckview.retrying') : t('common.retry')}
                       </Button>
                       <Button
                         size="sm"
@@ -403,7 +405,7 @@ export default function DeckView() {
                   <div className="p-3 space-y-0.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
                     <p className="text-xs text-muted-foreground">
-                      {isPending ? 'Queued' : 'Processing...'}
+                      {isPending ? t('deckview.queued') : t('deckview.processing')}
                     </p>
                   </div>
                 </div>
@@ -422,7 +424,7 @@ export default function DeckView() {
           onClick={() => navigate(`/study?deck=${deck.id}`)}
         >
           <BookOpen className="h-4 w-4 mr-2" />
-          Study
+          {t('deckview.study')}
         </Button>
         <Button
           variant="outline"
@@ -430,7 +432,7 @@ export default function DeckView() {
           onClick={() => navigate(`/generate?deckId=${deck.id}`)}
         >
           <Plus className="h-4 w-4 mr-2" />
-          Add Cards
+          {t('deckview.addCards')}
         </Button>
       </div>
 
