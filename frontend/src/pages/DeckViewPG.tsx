@@ -449,6 +449,7 @@ export default function DeckViewPG() {
                 const offset = i - activeIndex
                 if (Math.abs(offset) > 2) return null
                 const isComplete = word.status === 'complete'
+                const isPending = word.status === 'pending' || word.status === 'processing'
 
                 return (
                   <motion.div
@@ -593,7 +594,7 @@ export default function DeckViewPG() {
                           <>
                             <p className="text-lg font-bold text-white">{word.word}</p>
                             <p className="text-xs text-gray-500 mt-1">
-                              {word.status === 'failed' ? t('deckview.failed') : t('deckview.processing')}
+                              {word.status === 'failed' ? t('deckview.failed') : isPending ? t('deckview.queued') : t('deckview.processing')}
                             </p>
                             {word.status === 'failed' && (
                               <div className="flex gap-2 mt-3">
