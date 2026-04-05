@@ -237,7 +237,9 @@ export default function DeckViewPG() {
   const [dragOffset, setDragOffset] = useState(0)
 
   const bind = useDrag(
-    ({ movement: [mx], active }) => {
+    (state) => {
+      const { movement: [mx], active } = state
+      console.log('[DRAG] handler fired', { first: state.first, active: state.active, movement: state.movement })
       if (active) {
         setDragOffset(mx)
       } else {
@@ -405,6 +407,7 @@ export default function DeckViewPG() {
             )}
           <div
             {...bind()}
+            onPointerDownCapture={(e) => console.log('[BIND-TARGET] pointerdown', e.target, e.currentTarget)}
             className="relative w-full h-[80vh] max-h-[770px] flex items-center justify-center cursor-grab active:cursor-grabbing"
             style={{ perspective: '1200px', touchAction: 'pan-y' }}
           >
@@ -430,6 +433,7 @@ export default function DeckViewPG() {
                     // w-[calc(100vw-32px)] = 16px margin each side; carousel is full-bleed via -mx-6 wrapper above
                     className="absolute w-[calc(100vw-32px)] max-w-[800px] h-[80vh] max-h-[750px] flex items-center justify-center"
                     style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
+                    onPointerDown={(e) => console.log('[CARD]', offset, 'pointerdown', e.target)}
                     initial={false}
                     animate={{
                       x: offset * (typeof window !== 'undefined' && window.innerWidth < 640 ? 100 : 200) + (offset === 0 ? dragOffset : 0),
@@ -487,6 +491,7 @@ export default function DeckViewPG() {
                         {isComplete && offset === 0 && videoActiveIndex !== i && word.video_url && (
                           <div
                             className="absolute inset-0 z-[2] bg-black/30 opacity-100 md:opacity-0 md:hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
+                            onPointerDown={(e) => console.log('[PLAY-OVERLAY] pointerdown', e.target)}
                             onClick={(e) => {
                               e.stopPropagation()
                               setVideoActiveIndex(i)

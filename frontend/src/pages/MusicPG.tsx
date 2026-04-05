@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 
 type DeckOption = { id: string; name: string }
 
@@ -218,7 +219,7 @@ export default function MusicPG() {
       {/* Central area */}
       <div className="flex-1 flex flex-col items-center justify-center gap-4 min-h-0 py-4 px-6">
         {loading ? (
-          <div className="text-gray-500 text-sm">Loading songs…</div>
+          <LoadingIndicator text="Loading songs" />
         ) : filteredTracks.length === 0 ? (
           <div className="flex flex-col items-center gap-3">
             <MusicIcon className="h-10 w-10 text-gray-700" />

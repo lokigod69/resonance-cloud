@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 
 // Active retry job statuses (a job in these states has not yet completed)
 const ACTIVE_STATUSES = ['pending', 'approved', 'processing'] as const
@@ -305,8 +306,8 @@ export default function Music() {
       <div className="flex-1">
         <div className="max-w-5xl mx-auto w-full px-6">
         {loading ? (
-          <div className="flex items-center justify-center py-20 text-gray-500 text-sm">
-            Loading songs…
+          <div className="flex items-center justify-center py-20">
+            <LoadingIndicator text="Loading songs" />
           </div>
         ) : filteredTracks.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 gap-3">

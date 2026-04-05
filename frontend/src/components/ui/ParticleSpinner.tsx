@@ -169,7 +169,7 @@ export function ParticleSpinner({ preset, size = 120, random = false, className 
   return (
     <canvas
       ref={canvasRef}
-      style={{ width: size, height: size }}
+      style={{ width: size, height: size, maxWidth: '80vw', maxHeight: '80vw' }}
       className={cn(className)}
     />
   )
