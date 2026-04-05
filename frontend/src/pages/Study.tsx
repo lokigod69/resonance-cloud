@@ -238,7 +238,7 @@ export default function Study() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4">
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-0 sm:px-4">
       {/* Card + content */}
       <div className="w-full max-w-4xl">
         {/* Deck filter */}
@@ -275,7 +275,7 @@ export default function Study() {
               className="w-full"
             >
               {/* Video with arrows anchored to it */}
-              <div className="relative rounded-xl border border-border overflow-hidden mb-6 group/video">
+              <div className="relative rounded-none sm:rounded-xl border border-border overflow-hidden mb-6 group/video">
                 {/* Left skip arrow — centered on video */}
                 <button
                   onClick={skipPrev}

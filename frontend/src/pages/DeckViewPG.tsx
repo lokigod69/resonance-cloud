@@ -234,6 +234,43 @@ export default function DeckViewPG() {
     }
   }, [isPlaying, videoActiveIndex, version])
 
+  // Resume playback after iOS fullscreen exit (webkitendfullscreen fires on the video element)
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const handleFullscreenExit = () => {
+      setTimeout(() => {
+        if (video && !video.paused) return
+        video.play().catch(() => {})
+        setIsPlaying(true)
+      }, 300)
+    }
+
+    video.addEventListener('webkitendfullscreen', handleFullscreenExit)
+    return () => {
+      video.removeEventListener('webkitendfullscreen', handleFullscreenExit)
+    }
+  }, [activeIndex, videoRef.current]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Resume playback after standard fullscreen exit (Chrome, Firefox, etc.)
+  useEffect(() => {
+    const handleChange = () => {
+      if (!document.fullscreenElement) {
+        const video = videoRef.current
+        if (video) {
+          setTimeout(() => {
+            video.play().catch(() => {})
+            setIsPlaying(true)
+          }, 300)
+        }
+      }
+    }
+
+    document.addEventListener('fullscreenchange', handleChange)
+    return () => document.removeEventListener('fullscreenchange', handleChange)
+  }, [])
+
   const [dragOffset, setDragOffset] = useState(0)
 
   const bind = useDrag(
@@ -391,7 +428,7 @@ export default function DeckViewPG() {
           {/* Outer wrapper: group/carousel lives here so VolumeControl can respond to hover */}
           <div className="group/carousel relative w-full max-w-4xl">
             {videoActiveIndex === activeIndex && (
-              <div className="absolute top-3 left-3 z-30 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 transition-opacity">
+              <div className="absolute top-3 left-5 z-30 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 transition-opacity">
                 <VolumeControl
                   volume={volume}
                   isMuted={isMuted}
@@ -399,7 +436,7 @@ export default function DeckViewPG() {
                   onToggleMute={toggleMute}
                   popDirection="right"
                   iconSize={16}
-                  buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                  buttonClassName="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
                 />
               </div>
             )}
@@ -493,8 +530,8 @@ export default function DeckViewPG() {
                               setIsPlaying(true)
                             }}
                           >
-                            <div className="h-14 w-14 rounded-full bg-[var(--pg-accent-teal)]/30 backdrop-blur-sm flex items-center justify-center border border-[var(--pg-accent-teal)]/50 shadow-[0_0_20px_rgba(13,226,195,0.3)]">
-                              <Play className="h-7 w-7 text-[var(--pg-accent-teal)] fill-[var(--pg-accent-teal)]" />
+                            <div className="h-10 w-10 md:h-14 md:w-14 rounded-full bg-[var(--pg-accent-teal)]/30 backdrop-blur-sm flex items-center justify-center border border-[var(--pg-accent-teal)]/50 shadow-[0_0_20px_rgba(13,226,195,0.3)]">
+                              <Play className="h-5 w-5 md:h-7 md:w-7 text-[var(--pg-accent-teal)] fill-[var(--pg-accent-teal)]" />
                             </div>
                           </div>
                         )}
@@ -524,7 +561,7 @@ export default function DeckViewPG() {
                             onVolumeChange={setVolume}
                             onToggleMute={toggleMute}
                             fullscreenRef={videoRef}
-                            buttonClassName="w-10 h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                            buttonClassName="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
                             className="z-10"
                             renderVolumeExternal={true}
                           />

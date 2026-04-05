@@ -239,7 +239,7 @@ export default function StudyPG() {
   }
 
   return (
-    <div className="px-4 sm:px-6 max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
+    <div className="px-0 sm:px-4 md:px-6 max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
       {/* Card + content */}
       <div className="w-full max-w-4xl">
         {/* Deck filter */}
@@ -276,7 +276,7 @@ export default function StudyPG() {
             className="w-full"
           >
             {/* Video with arrows anchored to it */}
-            <div className="relative pg-glass rounded-2xl overflow-hidden mb-6 group/video">
+            <div className="relative pg-glass rounded-none sm:rounded-2xl overflow-hidden mb-6 group/video">
               {/* Left skip arrow — centered on video */}
               <button
                 onClick={skipPrev}

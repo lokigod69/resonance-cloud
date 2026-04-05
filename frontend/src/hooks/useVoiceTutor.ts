@@ -126,7 +126,14 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   // Cleanup on unmount
   useEffect(() => {
     return () => {
-      streamRef.current?.getTracks().forEach((t) => t.stop())
+      if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
+        try { mediaRecorderRef.current.stop() } catch { /* ignore */ }
+      }
+      mediaRecorderRef.current = null
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(t => t.stop())
+        streamRef.current = null
+      }
     }
   }, [])
 
@@ -292,6 +299,23 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     }
   }, [language, fetchAndPlayGreeting])
 
+  /**
+   * Acquire a MediaStream if one isn't already active.
+   * Kept alive across recordings to avoid iOS Safari re-prompting for mic permission.
+   */
+  const ensureStream = useCallback(async (): Promise<MediaStream> => {
+    if (streamRef.current) {
+      const tracks = streamRef.current.getTracks()
+      const allAlive = tracks.length > 0 && tracks.every(t => t.readyState === 'live')
+      if (allAlive) return streamRef.current
+      // Stream died (e.g., user revoked permission in OS settings) — clean up
+      streamRef.current = null
+    }
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+    streamRef.current = stream
+    return stream
+  }, [])
+
   const startRecording = useCallback(async () => {
     if (!isSupported) {
       setError('Audio recording is not supported in this browser. Please try Chrome or Safari.')
@@ -304,20 +328,15 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       return
     }
 
-    // Clean up any leaked stream from a previous stuck recording
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach(t => t.stop())
-      streamRef.current = null
-    }
     if (mediaRecorderRef.current) {
+      try { mediaRecorderRef.current.stop() } catch { /* ignore */ }
       mediaRecorderRef.current = null
     }
 
     discardRecordingRef.current = false
 
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
-      streamRef.current = stream
+      const stream = await ensureStream()
 
       const mimeType = getMimeType()
       const recorder = mimeType
@@ -337,9 +356,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
           discardRecordingRef.current = false
           return
         }
-
-        stream.getTracks().forEach((t) => t.stop())
-        streamRef.current = null
 
         const audioBlob = new Blob(chunksRef.current, { type: mimeTypeRef.current })
         chunksRef.current = []
@@ -386,7 +402,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       }
       setStatus('error')
     }
-  }, [isSupported, language, callVoiceChat, scheduleReveal])
+  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream])
 
   const stopRecording = useCallback(() => {
     const recorder = mediaRecorderRef.current
@@ -396,10 +412,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         // Too short — discard without sending to API
         discardRecordingRef.current = true
         recorder.stop()
-        if (streamRef.current) {
-          streamRef.current.getTracks().forEach(t => t.stop())
-          streamRef.current = null
-        }
         mediaRecorderRef.current = null
         setStatus('idle')
         return
@@ -415,15 +427,19 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     }
   }, [stopRecording])
 
-  const resetConversation = useCallback(() => {
-    const recorder = mediaRecorderRef.current
-    if (recorder && recorder.state === 'recording') {
-      recorder.stop()
+  const releaseStream = useCallback(() => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(t => t.stop())
+      streamRef.current = null
     }
-    mediaRecorderRef.current = null
+    if (mediaRecorderRef.current) {
+      try { mediaRecorderRef.current.stop() } catch { /* ignore */ }
+      mediaRecorderRef.current = null
+    }
+  }, [])
 
-    streamRef.current?.getTracks().forEach((t) => t.stop())
-    streamRef.current = null
+  const resetConversation = useCallback(() => {
+    releaseStream()
 
     setLanguage(null)
     setVoice(null)
@@ -433,7 +449,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
-  }, [])
+  }, [releaseStream])
 
   return {
     language,
