@@ -1,6 +1,11 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { type TutorVoice, getVoicesForLanguage } from '@/voiceRegistry'
 
+const IS_SAFARI = typeof navigator !== 'undefined' && (
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+  || /iPad|iPhone|iPod/.test(navigator.userAgent)
+)
+
 export type TutorStatus = 'idle' | 'recording' | 'processing' | 'playing' | 'error'
 
 export interface TutorMessage {
@@ -114,10 +119,7 @@ function getMimeType(): string {
   // Safari/iOS reports WebM as supported but the implementation is buggy —
   // MediaRecorder produces zero ondataavailable events with WebM.
   // Always use audio/mp4 on Safari.
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-    || /iPad|iPhone|iPod/.test(navigator.userAgent)
-
-  const types = isSafari
+  const types = IS_SAFARI
     ? ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm']
     : ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4']
 
@@ -549,7 +551,13 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
 
       mediaRecorderRef.current = recorder
       recordingStartTime.current = Date.now()
-      recorder.start(250) // 250ms timeslice — prevents 0-byte ondataavailable on iOS Safari
+      // Safari's MediaRecorder doesn't reliably support the timeslice parameter —
+      // ondataavailable may never fire. Use start() without timeslice on Safari.
+      if (IS_SAFARI) {
+        recorder.start()  // Single ondataavailable on stop()
+      } else {
+        recorder.start(250)  // Periodic chunks every 250ms
+      }
       setError(null)
       setPendingAudio(null)
       setStatus('recording')
