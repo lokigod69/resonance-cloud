@@ -427,19 +427,6 @@ export default function DeckViewPG() {
         <div className="flex flex-col items-center">
           {/* Outer wrapper: group/carousel lives here so VolumeControl can respond to hover */}
           <div className="group/carousel relative w-full max-w-4xl">
-            {videoActiveIndex === activeIndex && (
-              <div className="absolute top-3 left-5 z-30 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 transition-opacity">
-                <VolumeControl
-                  volume={volume}
-                  isMuted={isMuted}
-                  onVolumeChange={setVolume}
-                  onToggleMute={toggleMute}
-                  popDirection="right"
-                  iconSize={16}
-                  buttonClassName="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
-                />
-              </div>
-            )}
           <div
             {...bind()}
             className="relative w-full h-[80vh] max-h-[770px] flex items-center justify-center cursor-grab active:cursor-grabbing"
@@ -549,6 +536,21 @@ export default function DeckViewPG() {
                             }}
                             className="absolute top-3 right-3"
                           />
+                        )}
+
+                        {/* VolumeControl — moves with the card */}
+                        {offset === 0 && (
+                          <div className="absolute top-3 left-3 z-10 opacity-100 md:opacity-0 md:group-hover/video:opacity-100 transition-opacity">
+                            <VolumeControl
+                              volume={volume}
+                              isMuted={isMuted}
+                              onVolumeChange={setVolume}
+                              onToggleMute={toggleMute}
+                              popDirection="right"
+                              iconSize={16}
+                              buttonClassName="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+                            />
+                          </div>
                         )}
 
                         {/* Video controls — play/pause + volume + fullscreen */}
