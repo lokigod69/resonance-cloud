@@ -201,8 +201,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         supabase.from('speak_conversations')
           .update({ ended_at: new Date().toISOString() })
           .eq('id', convId)
-          .then(() => {})
-          .catch(() => {})
+          .then(() => {}, () => {})
       }
     }
   }, [])
