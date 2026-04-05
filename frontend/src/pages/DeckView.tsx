@@ -570,7 +570,9 @@ function VideoViewerModal({
                   onEnded={() => {
                     if (videoRef.current) {
                       videoRef.current.currentTime = 0
+                      videoRef.current.pause()
                     }
+                    setIsPlaying(false)
                   }}
                   className="w-full aspect-video cursor-pointer"
                 />

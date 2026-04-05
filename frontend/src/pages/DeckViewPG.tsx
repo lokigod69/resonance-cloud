@@ -486,7 +486,9 @@ export default function DeckViewPG() {
                             onEnded={() => {
                               if (videoRef.current) {
                                 videoRef.current.currentTime = 0
+                                videoRef.current.pause()
                               }
+                              setIsPlaying(false)
                             }}
                           />
                         )}
