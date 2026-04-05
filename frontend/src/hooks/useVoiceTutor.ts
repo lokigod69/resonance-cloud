@@ -25,7 +25,6 @@ export interface UseVoiceTutorReturn {
   error: string | null
   isSupported: boolean
   pendingAudio: { base64: string; format: string } | null
-  debugLog: string[]
   startRecording: () => Promise<void>
   stopRecording: () => void
   stopRecordingIfActive: () => void
@@ -136,11 +135,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const [messages, setMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
   const [pendingAudio, setPendingAudio] = useState<{ base64: string; format: string } | null>(null)
-  const [debugLog, setDebugLog] = useState<string[]>([])
-
-  const addDebug = useCallback((msg: string) => {
-    setDebugLog(prev => [...prev.slice(-10), `${new Date().toLocaleTimeString()}: ${msg}`])
-  }, [])
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
@@ -297,14 +291,19 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       setMessages([msg])
       messagesRef.current = [msg]
 
-      // Try auto-play, fall back to Tap to hear
-      try {
-        setStatus('playing')
-        await playAudio(data.audio_base64, data.audio_format)
-        setStatus('idle')
-      } catch {
-        // Auto-play blocked — fall back to Tap to hear
-        setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
+      if (data.audio_base64) {
+        // Try auto-play, fall back to Tap to hear
+        try {
+          setStatus('playing')
+          await playAudio(data.audio_base64, data.audio_format)
+          setStatus('idle')
+        } catch {
+          // Auto-play blocked — fall back to Tap to hear
+          setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
+          setStatus('idle')
+        }
+      } else {
+        // TTS failed on server — show text only, no error
         setStatus('idle')
       }
     },
@@ -455,8 +454,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       return
     }
 
-    addDebug('startRecording called')
-
     // Guard: don't start if already recording or processing
     if (statusRef.current === 'recording' || statusRef.current === 'processing') {
       return
@@ -474,11 +471,9 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     try {
       // Unlock AudioContext on mic press (user gesture) — enables onstop auto-play on iOS
       await ensureAudioContext()
-      addDebug('AudioContext ready')
 
       const stream = await ensureStream()
       acquiringStreamRef.current = false
-      addDebug(`Stream acquired: ${stream.getTracks().length} tracks`)
 
       const mimeType = getMimeType()
       const recorder = mimeType
@@ -486,17 +481,14 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         : new MediaRecorder(stream)
       // Use recorder's actual mimeType — authoritative, especially on Safari
       mimeTypeRef.current = recorder.mimeType || mimeType || 'audio/webm'
-      addDebug(`Recorder created: mimeType=${recorder.mimeType}`)
 
       chunksRef.current = []
 
       recorder.ondataavailable = (e: BlobEvent) => {
-        addDebug(`Chunk: ${e.data.size} bytes`)
         if (e.data.size > 0) chunksRef.current.push(e.data)
       }
 
       recorder.onstop = async () => {
-        addDebug(`onstop fired. chunks=${chunksRef.current.length}`)
         if (discardRecordingRef.current) {
           discardRecordingRef.current = false
           return
@@ -504,12 +496,10 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
 
         const audioBlob = new Blob(chunksRef.current, { type: mimeTypeRef.current })
         chunksRef.current = []
-        addDebug(`Blob: ${audioBlob.size} bytes, type=${audioBlob.type}`)
 
         // Guard: if no audio data was captured (iOS Safari quirk), silently discard
         if (audioBlob.size < 100) {
           // No valid audio recording can be under 1KB — this is just container headers
-          addDebug(`DISCARDED: blob too small (${audioBlob.size} bytes)`)
           setStatus('idle')
           return
         }
@@ -522,10 +512,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
 
         try {
           const audio_base64 = await blobToBase64(audioBlob)
-          addDebug(`base64 length: ${audio_base64.length}`)
-          addDebug('Calling API...')
           const data = await callVoiceChat(audio_base64, currentLang, currentVoice ?? undefined)
-          addDebug(`API response: ${data.ai_text?.substring(0, 30)}...`)
 
           setMessages((prev) => {
             const next = [...prev]
@@ -537,15 +524,20 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
           // Reveal AI text after 1.5s regardless of whether audio plays
           scheduleReveal()
 
-          // Play via AudioContext (unlocked on mic press) — works from onstop on iOS.
-          // Falls back to pendingAudio if AudioContext unavailable or decoding fails.
-          try {
-            setStatus('playing')
-            await playAudio(data.audio_base64, data.audio_format)
-            setStatus('idle')
-          } catch {
-            // AudioContext failed — fall back to Tap to hear
-            setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
+          if (data.audio_base64) {
+            // Play via AudioContext (unlocked on mic press) — works from onstop on iOS.
+            // Falls back to pendingAudio if AudioContext unavailable or decoding fails.
+            try {
+              setStatus('playing')
+              await playAudio(data.audio_base64, data.audio_format)
+              setStatus('idle')
+            } catch {
+              // AudioContext failed — fall back to Tap to hear
+              setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
+              setStatus('idle')
+            }
+          } else {
+            // TTS failed on server — show text only, no error
             setStatus('idle')
           }
         } catch (err) {
@@ -558,7 +550,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       mediaRecorderRef.current = recorder
       recordingStartTime.current = Date.now()
       recorder.start(250) // 250ms timeslice — prevents 0-byte ondataavailable on iOS Safari
-      addDebug('Recorder started (250ms timeslice)')
       setError(null)
       setPendingAudio(null)
       setStatus('recording')
@@ -571,17 +562,14 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       }
       setStatus('error')
     }
-  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream, ensureAudioContext, playAudio, addDebug])
+  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream, ensureAudioContext, playAudio])
 
   const stopRecording = useCallback(() => {
     const recorder = mediaRecorderRef.current
-    addDebug(`stopRecording: recorder=${!!recorder}, state=${recorder?.state}`)
     if (recorder && recorder.state === 'recording') {
       const duration = Date.now() - recordingStartTime.current
-      addDebug(`Duration: ${duration}ms`)
       if (duration < 500) {
         // Too short — discard without sending to API
-        addDebug(`DISCARDED: too short (${duration}ms)`)
         discardRecordingRef.current = true
         recorder.stop()
         mediaRecorderRef.current = null
@@ -591,7 +579,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       recorder.stop()
     }
     mediaRecorderRef.current = null
-  }, [addDebug])
+  }, [])
 
   const stopRecordingIfActive = useCallback(() => {
     if (statusRef.current === 'recording') {
@@ -638,7 +626,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     error,
     isSupported,
     pendingAudio,
-    debugLog,
     playPendingAudio,
     startRecording,
     stopRecording,

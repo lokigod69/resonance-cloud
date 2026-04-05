@@ -423,17 +423,17 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   const ttsText = sanitizeForTTS(ai_text)
-  let audioBuffer: Buffer
+  let audio_base64_out = ''
+  const audio_format = 'mp3'
+
   try {
-    audioBuffer = await generateSpeech(ttsText, language, mistralKey, voice_id, elevenlabs_voice_id)
-  } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err)
-    return new Response(JSON.stringify({ error: `TTS failed: ${msg}` }), {
-      status: 502,
-      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
-    })
+    const audioBuffer = await generateSpeech(ttsText, language, mistralKey, voice_id, elevenlabs_voice_id)
+    audio_base64_out = audioBuffer.toString('base64')
+  } catch (ttsErr) {
+    // TTS failed — log it but don't fail the whole request
+    console.warn('[voice-chat] TTS failed, returning text-only response:', ttsErr instanceof Error ? ttsErr.message : ttsErr)
+    // audio_base64_out stays empty — client will show text without audio
   }
-  const audio_base64_out = audioBuffer.toString('base64')
 
   // ── Step 5: Return response ────────────────────────────────────────────────
   return new Response(
@@ -441,7 +441,7 @@ export async function POST(req: Request): Promise<Response> {
       user_text,
       ai_text,
       audio_base64: audio_base64_out,
-      audio_format: 'mp3',
+      audio_format,
     }),
     {
       status: 200,

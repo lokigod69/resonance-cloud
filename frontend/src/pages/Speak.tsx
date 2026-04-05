@@ -381,15 +381,6 @@ export default function Speak() {
         <div ref={bottomRef} />
       </div>
 
-      {/* Temporary debug panel — REMOVE AFTER DEBUGGING */}
-      {tutor.debugLog.length > 0 && (
-        <div className="shrink-0 max-h-32 overflow-y-auto px-4 py-2 bg-black/80 border-t border-yellow-500/30 font-mono text-[10px] text-yellow-400 space-y-0.5">
-          {tutor.debugLog.map((line, i) => (
-            <div key={i}>{line}</div>
-          ))}
-        </div>
-      )}
-
       {/* Footer: mic controls */}
       <div
         className="shrink-0 border-t border-white/5 bg-gray-950/80 backdrop-blur-md select-none"
