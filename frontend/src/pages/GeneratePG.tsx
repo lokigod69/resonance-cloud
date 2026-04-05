@@ -14,12 +14,13 @@ import {
   GENRES,
   MAX_WORDS,
 } from '@/components/generate/wizardData'
+import { FlagIcon } from '@/components/ui/FlagIcon'
+import { useTranslation } from '@/hooks/useTranslation'
 
 /* ─── Constants ─────────────────────────────────── */
 
 const PG_EASE = [0.16, 1, 0.3, 1] as const
 const PG_TRANSITION = { duration: 0.5, ease: PG_EASE }
-const STEP_LABELS = ['Language', 'Words', 'Vibe', 'Art Style', 'Music', 'Review']
 
 /* ─── Main Component ────────────────────────────── */
 
@@ -35,6 +36,8 @@ export default function GeneratePG() {
   const wordInputRef = useRef<HTMLInputElement>(null)
 
   // "Add Cards" mode: existing deck via ?deckId=xxx
+  const { t } = useTranslation()
+
   const [searchParams] = useSearchParams()
   const deckIdParam = searchParams.get('deckId')
   const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
@@ -64,7 +67,7 @@ export default function GeneratePG() {
 
     const cachedCredits = profile.credits ?? 0
     if (cachedCredits < state.words.length) {
-      const msg = `Not enough credits. You have ${cachedCredits} but need ${state.words.length}. Redeem an invite code to get more.`
+      const msg = t('generate.notEnoughCreditsDetail', { have: cachedCredits, need: state.words.length })
       setError(msg)
       toast(msg, 'error')
       return
@@ -86,7 +89,7 @@ export default function GeneratePG() {
       const wordCount = state.words.length
 
       if (freshCredits < wordCount) {
-        throw new Error(`Not enough credits. You have ${freshCredits} but need ${wordCount}.`)
+        throw new Error(t('generate.notEnoughCreditsDetail', { have: freshCredits, need: wordCount }))
       }
 
       const { deckPayload, wordList, jobPayload } = buildPayload(user.id, existingDeck ?? undefined)
@@ -201,7 +204,7 @@ export default function GeneratePG() {
               animate={{ opacity: [0.7, 1, 0.7] }}
               transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
             >
-              Forging Memories
+              {t('generate.forgingMemories')}
             </motion.h2>
             <p className="text-sm text-[var(--pg-text-dim)] max-w-sm">
               {existingDeck
@@ -215,7 +218,7 @@ export default function GeneratePG() {
             className="px-6 py-3 rounded-full pg-glass text-sm font-display font-medium text-[var(--pg-accent-teal)] hover:bg-white/5 transition-all"
           >
             <ArrowLeft className="h-4 w-4 inline mr-2" />
-            {existingDeck ? 'Back to Deck' : 'Back to Decks'}
+            {existingDeck ? t('generate.backToDeck') : t('common.backToDecks')}
           </Link>
         </motion.div>
       </div>
@@ -313,6 +316,11 @@ function BreadcrumbPills({
   setPgStep: (s: number) => void
   existingDeck: boolean
 }) {
+  const { t } = useTranslation()
+  const STEP_LABELS = [
+    t('generate.stepLanguage'), t('generate.stepWords'), t('generate.stepVibe'),
+    t('generate.stepArtStyle'), t('generate.stepMusic'), t('generate.stepReview'),
+  ]
   const startIndex = existingDeck ? 1 : 0
 
   return (
@@ -350,10 +358,11 @@ function BreadcrumbPills({
 /* ─── Step 0: Language ──────────────────────────── */
 
 function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
+  const { t } = useTranslation()
   return (
     <div className="text-center">
-      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Choose your language</h2>
-      <p className="text-[var(--pg-text-dim)] text-sm mb-10">Select the language you want to learn</p>
+      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">{t('generate.chooseLanguage')}</h2>
+      <p className="text-[var(--pg-text-dim)] text-sm mb-10">{t('generate.chooseLanguageSub')}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-2xl mx-auto">
         {LANGUAGES.map((lang, i) => (
@@ -366,7 +375,7 @@ function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
             onClick={() => onSelect(lang.value)}
             className="pg-glass rounded-2xl p-6 text-left transition-all"
           >
-            <span className="text-4xl block mb-3">{lang.flag}</span>
+            <FlagIcon code={lang.code} className="w-12 h-auto block mb-3" />
             <p className="font-display font-semibold text-white transition-colors">
               {lang.label}
             </p>
@@ -394,6 +403,7 @@ function StepWords({
   onCustomize: () => void
   submitting: boolean
 }) {
+  const { t } = useTranslation()
   const [inputValue, setInputValue] = useState('')
   const [inputError, setInputError] = useState<string | null>(null)
 
@@ -401,11 +411,11 @@ function StepWords({
     const trimmed = inputValue.trim()
     if (!trimmed) return
     if (words.length >= MAX_WORDS) {
-      setInputError(`Maximum ${MAX_WORDS} words`)
+      setInputError(t('generate.maxWords', { max: MAX_WORDS }))
       return
     }
     if (words.some((w) => w.toLowerCase() === trimmed.toLowerCase())) {
-      setInputError('Word already added')
+      setInputError(t('generate.wordExists'))
       return
     }
     dispatch({ type: 'ADD_WORD', word: trimmed })
@@ -418,7 +428,7 @@ function StepWords({
     <div className="text-center max-w-lg mx-auto">
       <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Add your words</h2>
       <p className="text-[var(--pg-text-dim)] text-sm mb-8">
-        {words.length} of {MAX_WORDS} words
+        {t('generate.wordCount', { count: words.length, max: MAX_WORDS })}
       </p>
 
       {/* Input */}
@@ -429,7 +439,7 @@ function StepWords({
           value={inputValue}
           onChange={(e) => { setInputValue(e.target.value); setInputError(null) }}
           onKeyDown={(e) => { if (e.key === 'Enter') addWord() }}
-          placeholder="Type a word..."
+          placeholder={t('generate.typeWord')}
           maxLength={60}
           className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 font-display text-base outline-none focus:border-[var(--pg-accent-teal)]/50 transition-colors"
         />
@@ -520,13 +530,14 @@ function StepVibe({
   dispatch: React.Dispatch<import('@/components/generate/useWizardState').WizardAction>
   onContinue: () => void
 }) {
+  const { t } = useTranslation()
   const effectiveVibe = selected || 'auto'
   const needsMovie = effectiveVibe === 'movie' || effectiveVibe === 'specific_movie'
 
   return (
     <div className="text-center">
-      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Set the creative direction</h2>
-      <p className="text-[var(--pg-text-dim)] text-sm mb-10">Choose how AI interprets your words visually</p>
+      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">{t('generate.setDirection')}</h2>
+      <p className="text-[var(--pg-text-dim)] text-sm mb-10">{t('generate.setDirectionSub')}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8 px-4">
         {VIBES.map((vibe, i) => {
@@ -569,14 +580,14 @@ function StepVibe({
             <div className="flex items-center gap-2 mb-2">
               <Film className="h-4 w-4 text-[var(--pg-accent-violet)]" />
               <label className="text-sm font-display text-[var(--pg-text-dim)]">
-                {effectiveVibe === 'specific_movie' ? 'Which film?' : 'Film name (optional)'}
+                {effectiveVibe === 'specific_movie' ? t('generate.whichFilm') : t('generate.filmPlaceholder')}
               </label>
             </div>
             <input
               type="text"
               value={movieTitle || ''}
               onChange={(e) => dispatch({ type: 'SET_MOVIE_TITLE', title: e.target.value })}
-              placeholder="e.g. Blade Runner, Amélie..."
+              placeholder={t('generate.filmExample')}
               className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 font-display text-base outline-none focus:border-[var(--pg-accent-violet)]/50 transition-colors"
             />
           </motion.div>
@@ -604,10 +615,11 @@ function StepArtStyle({
   dispatch: React.Dispatch<import('@/components/generate/useWizardState').WizardAction>
   onContinue: () => void
 }) {
+  const { t } = useTranslation()
   return (
     <div className="text-center">
-      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Choose an art style</h2>
-      <p className="text-[var(--pg-text-dim)] text-sm mb-8">Pick the visual treatment for your cards</p>
+      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">{t('generate.chooseArtStyle')}</h2>
+      <p className="text-[var(--pg-text-dim)] text-sm mb-8">{t('generate.chooseArtStyleSub')}</p>
 
       <div className="max-w-3xl mx-auto max-h-[55vh] overflow-y-auto px-4" style={{ scrollbarWidth: 'none' }}>
         {/* Normal / AI decides */}
@@ -621,9 +633,9 @@ function StepArtStyle({
           style={{ borderColor: selected === null ? 'var(--pg-accent-rose)' : undefined }}
         >
           <p className={`font-display font-semibold ${selected === null ? 'text-[var(--pg-accent-rose)]' : 'text-white'}`}>
-            Normal
+            {t('generate.normalStyle')}
           </p>
-          <p className="text-xs text-[var(--pg-text-dim)]">AI decides the best visual style per word</p>
+          <p className="text-xs text-[var(--pg-text-dim)]">{t('generate.normalStyleDesc')}</p>
         </button>
 
         {/* Grouped styles */}
@@ -681,12 +693,13 @@ function StepMusic({
   dispatch: React.Dispatch<import('@/components/generate/useWizardState').WizardAction>
   onContinue: () => void
 }) {
+  const { t } = useTranslation()
   const effectiveGenre = selected || 'auto'
 
   return (
     <div className="text-center">
-      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Pick a genre</h2>
-      <p className="text-[var(--pg-text-dim)] text-sm mb-10">Choose the music style for your videos</p>
+      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">{t('generate.pickGenre')}</h2>
+      <p className="text-[var(--pg-text-dim)] text-sm mb-10">{t('generate.pickGenreSub')}</p>
 
       <div className="flex flex-wrap gap-3 justify-center max-w-lg mx-auto mb-10 px-4">
         {GENRES.map((genre, i) => {
@@ -743,10 +756,11 @@ function StepReview({
   error: string | null
   existingDeck: ExistingDeck | null
 }) {
+  const { t, tp } = useTranslation()
   return (
     <div className="w-full max-w-lg mx-auto mt-8">
       <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight mb-10 text-center text-white drop-shadow-md italic">
-        Synthesis Ready
+        {t('generate.synthesisReady')}
       </h2>
 
       {/* Selection summary */}
@@ -759,7 +773,7 @@ function StepReview({
         )}
         <span className="px-4 py-2 rounded-full text-sm font-medium"
           style={{ background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(255, 255, 255, 0.15)', color: 'rgba(255,255,255,0.8)' }}>
-          📝 {state.words.length} word{state.words.length !== 1 ? 's' : ''}
+          📝 {tp('dashboard.wordCount', state.words.length)}
         </span>
         {state.vibe && state.vibe !== 'auto' && (
           <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
@@ -788,7 +802,7 @@ function StepReview({
             type="text"
             value={state.deckName}
             onChange={(e) => dispatch({ type: 'SET_DECK_NAME', name: e.target.value })}
-            placeholder="Name your deck..."
+            placeholder={t('generate.deckNamePlaceholder')}
             maxLength={50}
             className="w-full max-w-md mx-auto block p-4 rounded-xl bg-transparent border border-white/10 outline-none focus:border-teal-500/50 transition-colors text-center text-lg font-light text-white placeholder:text-gray-600"
             style={{ fontFamily: 'var(--font-display, inherit)' }}
@@ -798,10 +812,10 @@ function StepReview({
 
       {/* Credits */}
       <p className="text-center text-gray-500 text-sm mt-6">
-        {state.words.length} credit{state.words.length !== 1 ? 's' : ''} will be used
+        {tp('generate.creditsUsed', state.words.length)}
       </p>
       {credits < state.words.length && (
-        <p className="text-center text-xs text-rose-400 mt-1">Not enough credits</p>
+        <p className="text-center text-xs text-rose-400 mt-1">{t('generate.notEnoughCredits')}</p>
       )}
 
       {/* Error */}
@@ -819,10 +833,10 @@ function StepReview({
           {submitting ? (
             <span className="flex items-center gap-2">
               <div className="w-4 h-4 rounded-full border-2 border-black/30 border-t-black animate-spin" />
-              Initializing...
+              {t('generate.initializing')}
             </span>
           ) : (
-            'Initialize Synthesis'
+            t('generate.initializeSynthesis')
           )}
         </button>
       </div>
