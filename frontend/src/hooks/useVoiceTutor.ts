@@ -66,7 +66,25 @@ function blobToBase64(blob: Blob): Promise<string> {
   })
 }
 
-function playAudioBase64(base64: string, format: string): Promise<void> {
+/**
+ * Play base64-encoded audio through the Web Audio API.
+ * AudioContext must already be unlocked (resumed) before calling.
+ */
+async function playAudioViaContext(base64: string, _format: string, ctx: AudioContext): Promise<void> {
+  const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
+  const arrayBuffer = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
+  const audioBuffer = await ctx.decodeAudioData(arrayBuffer as ArrayBuffer)
+  return new Promise<void>((resolve) => {
+    const source = ctx.createBufferSource()
+    source.buffer = audioBuffer
+    source.connect(ctx.destination)
+    source.onended = () => resolve()
+    source.start(0)
+  })
+}
+
+/** Fallback: play via HTMLAudioElement (works on desktop, blocked by iOS in non-gesture contexts) */
+function playAudioViaElement(base64: string, format: string): Promise<void> {
   return new Promise((resolve, reject) => {
     const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
     const mimeMap: Record<string, string> = { mp3: 'audio/mpeg', wav: 'audio/wav', pcm: 'audio/pcm' }
@@ -103,6 +121,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
+  const audioContextRef = useRef<AudioContext | null>(null)
   const chunksRef = useRef<Blob[]>([])
   const messagesRef = useRef<TutorMessage[]>([])
   const voiceRef = useRef<TutorVoice | null>(null)
@@ -133,6 +152,10 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       if (streamRef.current) {
         streamRef.current.getTracks().forEach(t => t.stop())
         streamRef.current = null
+      }
+      if (audioContextRef.current) {
+        audioContextRef.current.close().catch(() => {})
+        audioContextRef.current = null
       }
     }
   }, [])
@@ -183,17 +206,44 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     [],
   )
 
+  /**
+   * Ensure the AudioContext is created and in 'running' state.
+   * Must be called inside a user gesture on iOS to "unlock" it.
+   * Once unlocked, audio can be played from any context (including onstop callbacks).
+   */
+  const ensureAudioContext = useCallback(async () => {
+    if (!audioContextRef.current) {
+      audioContextRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
+    }
+    if (audioContextRef.current.state === 'suspended') {
+      await audioContextRef.current.resume()
+    }
+    return audioContextRef.current
+  }, [])
+
+  /**
+   * Play audio using AudioContext if available and running, falling back to HTMLAudioElement.
+   */
+  const playAudio = useCallback(async (base64: string, format: string) => {
+    if (audioContextRef.current && audioContextRef.current.state === 'running') {
+      await playAudioViaContext(base64, format, audioContextRef.current)
+      return
+    }
+    await playAudioViaElement(base64, format)
+  }, [])
+
   const playPendingAudio = useCallback(async () => {
     if (!pendingAudio) return
+    await ensureAudioContext()  // Unlock AudioContext on "Tap to hear" gesture
     setStatus('playing')
     try {
-      await playAudioBase64(pendingAudio.base64, pendingAudio.format)
+      await playAudio(pendingAudio.base64, pendingAudio.format)
     } catch {
       // ignore playback errors — user can tap again or proceed
     }
     setPendingAudio(null)
     setStatus('idle')
-  }, [pendingAudio])
+  }, [pendingAudio, ensureAudioContext, playAudio])
 
   // Reveal the last assistant message after 1.5s
   const scheduleReveal = useCallback(() => {
@@ -336,6 +386,9 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     discardRecordingRef.current = false
 
     try {
+      // Unlock AudioContext on mic press (user gesture) — enables onstop auto-play on iOS
+      await ensureAudioContext()
+
       const stream = await ensureStream()
 
       const mimeType = getMimeType()
@@ -360,6 +413,12 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         const audioBlob = new Blob(chunksRef.current, { type: mimeTypeRef.current })
         chunksRef.current = []
 
+        // Guard: if no audio data was captured (iOS Safari quirk), silently discard
+        if (audioBlob.size === 0) {
+          setStatus('idle')
+          return
+        }
+
         const currentLang = language
         const currentVoice = voiceRef.current
         if (!currentLang) return
@@ -380,13 +439,14 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
           // Reveal AI text after 1.5s regardless of whether audio plays
           scheduleReveal()
 
-          // Try auto-play (works on desktop). Fall back to pendingAudio on iOS
-          // where onstop is not a user gesture and audio.play() is blocked.
+          // Play via AudioContext (unlocked on mic press) — works from onstop on iOS.
+          // Falls back to pendingAudio if AudioContext unavailable or decoding fails.
           try {
             setStatus('playing')
-            await playAudioBase64(data.audio_base64, data.audio_format)
+            await playAudio(data.audio_base64, data.audio_format)
             setStatus('idle')
           } catch {
+            // AudioContext failed — fall back to Tap to hear
             setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
             setStatus('idle')
           }
@@ -399,7 +459,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
 
       mediaRecorderRef.current = recorder
       recordingStartTime.current = Date.now()
-      recorder.start()
+      recorder.start(250) // 250ms timeslice — prevents 0-byte ondataavailable on iOS Safari
       setError(null)
       setPendingAudio(null)
       setStatus('recording')
@@ -411,7 +471,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       }
       setStatus('error')
     }
-  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream])
+  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream, ensureAudioContext, playAudio])
 
   const stopRecording = useCallback(() => {
     const recorder = mediaRecorderRef.current
@@ -436,7 +496,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     }
   }, [stopRecording])
 
-  const releaseStream = useCallback(() => {
+  const releaseResources = useCallback(() => {
     if (streamRef.current) {
       streamRef.current.getTracks().forEach(t => t.stop())
       streamRef.current = null
@@ -445,10 +505,14 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       try { mediaRecorderRef.current.stop() } catch { /* ignore */ }
       mediaRecorderRef.current = null
     }
+    if (audioContextRef.current) {
+      audioContextRef.current.close().catch(() => {})
+      audioContextRef.current = null
+    }
   }, [])
 
   const resetConversation = useCallback(() => {
-    releaseStream()
+    releaseResources()
 
     setLanguage(null)
     setVoice(null)
@@ -458,7 +522,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
-  }, [releaseStream])
+  }, [releaseResources])
 
   return {
     language,
