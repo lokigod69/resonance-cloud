@@ -484,7 +484,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         chunksRef.current = []
 
         // Guard: if no audio data was captured (iOS Safari quirk), silently discard
-        if (audioBlob.size < 1000) {
+        if (audioBlob.size < 100) {
           // No valid audio recording can be under 1KB — this is just container headers
           setStatus('idle')
           return
