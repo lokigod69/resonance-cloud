@@ -31,6 +31,7 @@ import { VideoControls } from '@/components/VideoControls'
 import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
 import { VerbCycler } from '@/components/ui/VerbCycler'
+import { useTranslation } from '@/hooks/useTranslation'
 
 type Deck = {
   id: string
@@ -76,6 +77,7 @@ export default function DeckViewPG() {
 
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
+  const { t } = useTranslation()
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
 
@@ -293,7 +295,7 @@ export default function DeckViewPG() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <ParticleSpinner preset="spiral" size={140} />
-        <p className="text-sm text-muted-foreground opacity-60">Loading deck...</p>
+        <p className="text-sm text-muted-foreground opacity-60">{t('deckview.loadingDeck')}</p>
       </div>
     )
   }
@@ -302,9 +304,9 @@ export default function DeckViewPG() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-6">
         <AlertCircle className="h-12 w-12 text-white/20 mb-4" />
-        <h2 className="text-xl font-semibold font-display">Deck not found</h2>
+        <h2 className="text-xl font-semibold font-display">{t('deckview.notFound')}</h2>
         <Button asChild variant="ghost" className="mt-4">
-          <Link to="/dashboard">Back to Decks</Link>
+          <Link to="/dashboard">{t('common.backToDecks')}</Link>
         </Button>
       </div>
     )
@@ -400,7 +402,7 @@ export default function DeckViewPG() {
             {isGenerating && (
               <span className="text-[var(--pg-accent-gold)] flex items-center gap-1 text-xs">
                 <Sparkles className="h-3 w-3 animate-pulse" />
-                Generating...
+                {t('deckview.generating')}
               </span>
             )}
           </div>
@@ -591,7 +593,7 @@ export default function DeckViewPG() {
                           <>
                             <p className="text-lg font-bold text-white">{word.word}</p>
                             <p className="text-xs text-gray-500 mt-1">
-                              {word.status === 'failed' ? 'Failed to generate' : 'Processing...'}
+                              {word.status === 'failed' ? t('deckview.failed') : t('deckview.processing')}
                             </p>
                             {word.status === 'failed' && (
                               <div className="flex gap-2 mt-3">
@@ -601,7 +603,7 @@ export default function DeckViewPG() {
                                   className="px-3 py-1.5 text-xs font-medium bg-white/10 hover:bg-white/20 rounded-lg transition-colors disabled:opacity-50"
                                 >
                                   <RotateCcw className="h-3 w-3 inline mr-1" />
-                                  {retrying === word.id ? 'Retrying...' : 'Retry'}
+                                  {retrying === word.id ? t('deckview.retrying') : t('common.retry')}
                                 </button>
                                 <button
                                   onClick={() => handleDeleteWord(word)}
@@ -609,7 +611,7 @@ export default function DeckViewPG() {
                                   className="px-3 py-1.5 text-xs text-red-400 hover:text-red-300 bg-white/5 hover:bg-white/10 rounded-lg transition-colors disabled:opacity-50"
                                 >
                                   <Trash2 className="h-3 w-3 inline mr-1" />
-                                  Remove
+                                  {t('deckview.remove')}
                                 </button>
                               </div>
                             )}
@@ -652,13 +654,13 @@ export default function DeckViewPG() {
                                   <div className="px-6 pb-4 pt-2 space-y-2.5 text-sm max-w-2xl mx-auto">
                                     {word.etymology && (
                                       <div className="flex justify-between gap-4">
-                                        <span className="text-gray-500 shrink-0">Etymology</span>
+                                        <span className="text-gray-500 shrink-0">{t('deckview.etymology')}</span>
                                         <span className="text-gray-300 text-right">{word.etymology}</span>
                                       </div>
                                     )}
                                     {word.pos && (
                                       <div className="flex justify-between">
-                                        <span className="text-gray-500">Part of Speech</span>
+                                        <span className="text-gray-500">{t('deckview.partOfSpeech')}</span>
                                         <span className="text-gray-300">
                                           {word.pos}{word.article ? ` \u00b7 ${word.article}` : ''}
                                         </span>
@@ -666,13 +668,13 @@ export default function DeckViewPG() {
                                     )}
                                     {meta?.creative_direction && (
                                       <div className="flex justify-between">
-                                        <span className="text-gray-500">Creative Direction</span>
+                                        <span className="text-gray-500">{t('deckview.creativeDirection')}</span>
                                         <span className="text-teal-400 capitalize">{meta.creative_direction}</span>
                                       </div>
                                     )}
                                     {meta?.art_style && (
                                       <div className="flex justify-between gap-4">
-                                        <span className="text-gray-500 shrink-0">Art Style</span>
+                                        <span className="text-gray-500 shrink-0">{t('deckview.artStyle')}</span>
                                         <span className="text-gray-300 text-right truncate max-w-[280px]" title={meta.art_style}>
                                           {meta.art_style}
                                         </span>
@@ -680,7 +682,7 @@ export default function DeckViewPG() {
                                     )}
                                     {meta?.music_caption && (
                                       <div className="flex justify-between gap-4">
-                                        <span className="text-gray-500 shrink-0">Music</span>
+                                        <span className="text-gray-500 shrink-0">{t('deckview.music')}</span>
                                         <span className="text-gray-300 text-right">{meta.music_caption.split(',')[0]}</span>
                                       </div>
                                     )}
@@ -734,7 +736,7 @@ export default function DeckViewPG() {
       ) : (
         <div className="flex flex-col items-center justify-center py-20 text-center">
           <Sparkles className="h-10 w-10 text-white/10 mb-4" />
-          <p className="text-[var(--pg-text-dim)]">No words in this deck yet.</p>
+          <p className="text-[var(--pg-text-dim)]">{t('deckview.noWords')}</p>
         </div>
       )}
       </div> {/* end -mx-6 bleed wrapper — escapes parent px-6 on mobile, restored at sm: */}
@@ -746,14 +748,14 @@ export default function DeckViewPG() {
           className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
         >
           <BookOpen className="h-4 w-4 inline mr-1.5" />
-          Study
+          {t('deckview.study')}
         </button>
         <button
           onClick={() => navigate(`/generate?deckId=${deck.id}`)}
           className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
         >
           <Plus className="h-4 w-4 inline mr-1.5" />
-          Add Cards
+          {t('deckview.addCards')}
         </button>
       </div>
     </div>
