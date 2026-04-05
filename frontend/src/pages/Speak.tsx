@@ -330,26 +330,26 @@ export default function Speak() {
         )}
 
         <p className="text-xs text-gray-500 text-center mb-3 h-4">
-          {tutor.status === 'idle' && 'Tap and hold to speak'}
+          {tutor.status === 'idle' && 'Tap to speak'}
           {tutor.status === 'recording' && (
-            <span className="text-red-400">Recording… release to send</span>
+            <span className="text-red-400">Recording — tap to send</span>
           )}
           {tutor.status === 'processing' && 'Thinking…'}
           {tutor.status === 'playing' && (
             <span className="text-cyan-400">Speaking…</span>
           )}
-          {tutor.status === 'error' && 'Tap and hold to try again'}
+          {tutor.status === 'error' && 'Tap to try again'}
         </p>
 
         <div className="flex justify-center">
           <button
-            onPointerDown={(e) => {
-              e.currentTarget.setPointerCapture(e.pointerId)
-              if (!isBusy) tutor.startRecording()
+            onClick={() => {
+              if (tutor.status === 'recording') {
+                tutor.stopRecordingIfActive()
+              } else if (!isBusy) {
+                tutor.startRecording()
+              }
             }}
-            onPointerUp={() => tutor.stopRecordingIfActive()}
-            onPointerCancel={() => tutor.stopRecordingIfActive()}
-            onPointerLeave={() => tutor.stopRecordingIfActive()}
             onContextMenu={(e) => e.preventDefault()}
             disabled={isBusy}
             style={{ WebkitTouchCallout: 'none' }}
@@ -364,18 +364,16 @@ export default function Speak() {
                 ? 'bg-gray-800 hover:bg-gray-700'
                 : 'bg-gray-800 hover:bg-gray-700 active:scale-95'
             }`}
-            aria-label={tutor.status === 'recording' ? 'Recording — release to send' : 'Hold to speak'}
+            aria-label={tutor.status === 'recording' ? 'Tap to send' : 'Tap to speak'}
           >
             {tutor.status === 'processing' ? (
               <Loader2 className="h-7 w-7 text-gray-400 animate-spin" />
             ) : tutor.status === 'playing' ? (
               <Volume2 className="h-7 w-7 text-cyan-300" />
+            ) : tutor.status === 'recording' ? (
+              <Square className="h-6 w-6 text-white fill-white" />
             ) : (
-              <Mic
-                className={`h-7 w-7 ${
-                  tutor.status === 'recording' ? 'text-white' : 'text-gray-300'
-                }`}
-              />
+              <Mic className="h-7 w-7 text-gray-300" />
             )}
           </button>
         </div>

@@ -431,12 +431,12 @@ function StepWords({
           onKeyDown={(e) => { if (e.key === 'Enter') addWord() }}
           placeholder="Type a word..."
           maxLength={60}
-          className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 font-display text-sm outline-none focus:border-[var(--pg-accent-teal)]/50 transition-colors"
+          className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 font-display text-base outline-none focus:border-[var(--pg-accent-teal)]/50 transition-colors"
         />
         <button
           onClick={addWord}
           disabled={!inputValue.trim() || words.length >= MAX_WORDS}
-          className="p-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] hover:bg-[var(--pg-accent-teal)]/30 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+          className="p-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] hover:bg-[var(--pg-accent-teal)]/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Plus className="h-5 w-5" />
         </button>
@@ -456,17 +456,17 @@ function StepWords({
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-display font-medium border"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-display font-medium border max-w-[200px]"
               style={{
                 backgroundColor: 'rgba(13, 226, 195, 0.1)',
                 borderColor: 'rgba(13, 226, 195, 0.3)',
                 color: 'var(--pg-accent-teal)',
               }}
             >
-              {word}
+              <span className="truncate">{word}</span>
               <button
                 onClick={() => dispatch({ type: 'REMOVE_WORD', index: i })}
-                className="hover:text-white transition-colors"
+                className="hover:text-white transition-colors shrink-0"
               >
                 <X className="h-3.5 w-3.5" />
               </button>
@@ -528,7 +528,7 @@ function StepVibe({
       <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Set the creative direction</h2>
       <p className="text-[var(--pg-text-dim)] text-sm mb-10">Choose how AI interprets your words visually</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8 px-4">
         {VIBES.map((vibe, i) => {
           const isSelected = effectiveVibe === vibe.value
           return (
@@ -577,7 +577,7 @@ function StepVibe({
               value={movieTitle || ''}
               onChange={(e) => dispatch({ type: 'SET_MOVIE_TITLE', title: e.target.value })}
               placeholder="e.g. Blade Runner, Amélie..."
-              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 font-display text-sm outline-none focus:border-[var(--pg-accent-violet)]/50 transition-colors"
+              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 font-display text-base outline-none focus:border-[var(--pg-accent-violet)]/50 transition-colors"
             />
           </motion.div>
         )}
@@ -609,7 +609,7 @@ function StepArtStyle({
       <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Choose an art style</h2>
       <p className="text-[var(--pg-text-dim)] text-sm mb-8">Pick the visual treatment for your cards</p>
 
-      <div className="max-w-3xl mx-auto max-h-[55vh] overflow-y-auto pr-1" style={{ scrollbarWidth: 'none' }}>
+      <div className="max-w-3xl mx-auto max-h-[55vh] overflow-y-auto px-4" style={{ scrollbarWidth: 'none' }}>
         {/* Normal / AI decides */}
         <button
           onClick={() => dispatch({ type: 'SET_ART_STYLE', style: null })}
@@ -688,7 +688,7 @@ function StepMusic({
       <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Pick a genre</h2>
       <p className="text-[var(--pg-text-dim)] text-sm mb-10">Choose the music style for your videos</p>
 
-      <div className="flex flex-wrap gap-3 justify-center max-w-lg mx-auto mb-10">
+      <div className="flex flex-wrap gap-3 justify-center max-w-lg mx-auto mb-10 px-4">
         {GENRES.map((genre, i) => {
           const isSelected = effectiveGenre === genre.value
           return (

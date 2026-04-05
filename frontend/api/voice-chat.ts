@@ -122,13 +122,26 @@ async function generateSpeech(
     } else {
       ttsBody.voice = language === 'ar' ? 'en_paul_confident' : 'en_paul_cheerful'
     }
-    const response = await fetchWithTimeout('https://api.mistral.ai/v1/audio/speech', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${mistralKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(ttsBody),
-    }, 20000, 'Mistral TTS')
-    if (!response.ok) throw new Error(`Mistral TTS failed: ${response.status}`)
-    const ttsJson = await response.json() as { audio_data?: string }
+    let ttsResponse: Response | null = null
+    for (let attempt = 0; attempt < 2; attempt++) {
+      ttsResponse = await fetchWithTimeout('https://api.mistral.ai/v1/audio/speech', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${mistralKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ttsBody),
+      }, 20000, 'Mistral TTS')
+      if (ttsResponse.ok) break
+      if (attempt === 0) {
+        console.warn(`Mistral TTS attempt 1 failed with ${ttsResponse.status}, retrying...`)
+        await new Promise(r => setTimeout(r, 500))
+      }
+    }
+    if (!ttsResponse || !ttsResponse.ok) {
+      throw new Error(`Mistral TTS failed: ${ttsResponse?.status ?? 'unknown'}`)
+    }
+    const ttsJson = await ttsResponse.json() as { audio_data?: string }
     if (!ttsJson.audio_data) throw new Error('Mistral TTS returned no audio_data field')
     return Buffer.from(ttsJson.audio_data, 'base64')
   } else {

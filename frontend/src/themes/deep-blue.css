@@ -81,18 +81,23 @@
   background: radial-gradient(ellipse at center, transparent 40%, rgba(17, 29, 58, 0.8) 100%);
 }
 
-/* Ambient gradient shift */
-.theme-deep-blue body {
+/* Ambient gradient shift — on ::before to avoid breaking position:fixed on iOS Safari */
+.theme-deep-blue body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
   animation: db-shift 30s ease-in-out infinite alternate;
 }
 
 @keyframes db-shift {
-  0% { filter: hue-rotate(0deg) brightness(1); }
-  100% { filter: hue-rotate(8deg) brightness(1.03); }
+  0%   { backdrop-filter: hue-rotate(0deg) brightness(1); }
+  100% { backdrop-filter: hue-rotate(8deg) brightness(1.03); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .theme-deep-blue body { animation: none; }
+  .theme-deep-blue body::before { animation: none; }
 }
 
 /* Improve card/glass edge visibility against same-hue background */

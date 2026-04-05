@@ -129,6 +129,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const statusRef = useRef<TutorStatus>('idle')
   const recordingStartTime = useRef<number>(0)
   const discardRecordingRef = useRef<boolean>(false)
+  const acquiringStreamRef = useRef(false)
 
   useEffect(() => {
     messagesRef.current = messages
@@ -257,14 +258,27 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const fetchAndPlayGreeting = useCallback(
     async (lang: string, v: TutorVoice) => {
       setStatus('processing')
+
+      // Unlock AudioContext on the user gesture (voice/language card click)
+      await ensureAudioContext()
+
       const data = await callVoiceChat(null, lang, v)
       const msg: TutorMessage = { role: 'assistant', content: data.ai_text, revealed: true }
       setMessages([msg])
       messagesRef.current = [msg]
-      setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
-      setStatus('idle')
+
+      // Try auto-play, fall back to Tap to hear
+      try {
+        setStatus('playing')
+        await playAudio(data.audio_base64, data.audio_format)
+        setStatus('idle')
+      } catch {
+        // Auto-play blocked — fall back to Tap to hear
+        setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
+        setStatus('idle')
+      }
     },
-    [callVoiceChat],
+    [callVoiceChat, ensureAudioContext, playAudio],
   )
 
   const selectLanguage = useCallback(
@@ -377,6 +391,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     if (statusRef.current === 'recording' || statusRef.current === 'processing') {
       return
     }
+    if (acquiringStreamRef.current) return
 
     if (mediaRecorderRef.current) {
       try { mediaRecorderRef.current.stop() } catch { /* ignore */ }
@@ -384,12 +399,14 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     }
 
     discardRecordingRef.current = false
+    acquiringStreamRef.current = true
 
     try {
       // Unlock AudioContext on mic press (user gesture) — enables onstop auto-play on iOS
       await ensureAudioContext()
 
       const stream = await ensureStream()
+      acquiringStreamRef.current = false
 
       const mimeType = getMimeType()
       const recorder = mimeType
@@ -464,6 +481,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       setPendingAudio(null)
       setStatus('recording')
     } catch (err) {
+      acquiringStreamRef.current = false
       if (err instanceof DOMException && err.name === 'NotAllowedError') {
         setError('Microphone access denied. Please allow microphone access in your browser settings.')
       } else {

@@ -6,7 +6,6 @@ import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { useVideoPlayback } from '@/hooks/useVideoPlayback'
-import { VideoControls } from '@/components/VideoControls'
 import { useStudySession } from '@/hooks/useStudySession'
 import OrbDock from '@/components/OrbDock'
 import {
@@ -57,8 +56,8 @@ export default function StudyPG() {
     setReviewed(0)
     visitedIdsRef.current = new Set()
   }, [deckFilter])
-  const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
-  const { isPlaying, togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)
+  const { isMuted, toggleMute } = useVideoVolume(videoRef, false)
+  const { togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)
 
   const current = words[currentIndex] ?? null
   const { activeVideoUrl, activeThumbnailUrl } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
@@ -296,30 +295,19 @@ export default function StudyPG() {
               </button>
 
               {activeVideoUrl ? (
-                <>
-                  <video
-                    ref={videoRef}
-                    key={current.id}
-                    src={activeVideoUrl}
-                    autoPlay
-                    muted={isMuted}
-                    loop
-                    playsInline
-                    className="w-full aspect-video object-contain bg-black cursor-pointer"
-                    onClick={togglePlay}
-                    onPlay={onPlay}
-                    onPause={onPause}
-                  />
-                  <VideoControls
-                    isPlaying={isPlaying}
-                    onTogglePlay={togglePlay}
-                    volume={volume}
-                    isMuted={isMuted}
-                    onVolumeChange={setVolume}
-                    onToggleMute={toggleMute}
-                    fullscreenRef={videoRef}
-                  />
-                </>
+                <video
+                  ref={videoRef}
+                  key={current.id}
+                  src={activeVideoUrl}
+                  autoPlay
+                  muted={isMuted}
+                  loop
+                  playsInline
+                  className="w-full aspect-video object-contain bg-black cursor-pointer"
+                  onClick={togglePlay}
+                  onPlay={onPlay}
+                  onPause={onPause}
+                />
               ) : activeThumbnailUrl ? (
                 <img
                   src={activeThumbnailUrl}
@@ -334,7 +322,7 @@ export default function StudyPG() {
             </div>
 
             {/* Word */}
-            <div className="text-center mb-6">
+            <div className="text-center mb-6 px-4">
               <h2 className="text-3xl font-bold font-display mb-3">{current.word}</h2>
 
               {/* Reveal area */}
@@ -380,18 +368,20 @@ export default function StudyPG() {
                 <button
                   onClick={handleReviewLater}
                   aria-label="Review Later"
-                  className="w-16 h-16 rounded-full bg-red-500/15 border-2 border-red-500/40 text-red-400 flex items-center justify-center hover:bg-red-500/25 hover:border-red-500/60 transition-all"
+                  className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:rounded-2xl sm:px-10 sm:py-4 bg-red-500/15 border-2 border-red-500/40 text-red-400 flex items-center justify-center gap-2 hover:bg-red-500/25 hover:border-red-500/60 transition-all"
                 >
-                  <X className="h-7 w-7" />
+                  <X className="h-7 w-7 sm:h-5 sm:w-5" />
+                  <span className="hidden sm:inline text-sm font-display font-medium">Review Later</span>
                 </button>
 
                 {/* Remembered — green ✓ */}
                 <button
                   onClick={handleRemembered}
                   aria-label="Remembered"
-                  className="w-16 h-16 rounded-full bg-[var(--pg-accent-green)]/15 border-2 border-[var(--pg-accent-green)]/40 text-[var(--pg-accent-green)] flex items-center justify-center hover:bg-[var(--pg-accent-green)]/25 hover:border-[var(--pg-accent-green)]/60 transition-all"
+                  className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:rounded-2xl sm:px-10 sm:py-4 bg-[var(--pg-accent-green)]/15 border-2 border-[var(--pg-accent-green)]/40 text-[var(--pg-accent-green)] flex items-center justify-center gap-2 hover:bg-[var(--pg-accent-green)]/25 hover:border-[var(--pg-accent-green)]/60 transition-all"
                 >
-                  <Check className="h-7 w-7" />
+                  <Check className="h-7 w-7 sm:h-5 sm:w-5" />
+                  <span className="hidden sm:inline text-sm font-display font-medium">Remembered</span>
                 </button>
               </motion.div>
             )}

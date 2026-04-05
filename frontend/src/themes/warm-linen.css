@@ -133,16 +133,21 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
-/* Ambient subtle shimmer */
-.theme-warm-linen body {
+/* Ambient subtle shimmer — on ::before to avoid breaking position:fixed on iOS Safari */
+.theme-warm-linen body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
   animation: wl-shift 30s ease-in-out infinite alternate;
 }
 
 @keyframes wl-shift {
-  0% { filter: brightness(1); }
-  100% { filter: brightness(1.02); }
+  0%   { backdrop-filter: brightness(1); }
+  100% { backdrop-filter: brightness(1.02); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .theme-warm-linen body { animation: none; }
+  .theme-warm-linen body::before { animation: none; }
 }

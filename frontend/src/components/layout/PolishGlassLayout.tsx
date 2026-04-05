@@ -49,10 +49,13 @@ export default function PolishGlassLayout() {
         </button>
 
         {/* Mobile credits — visible only on mobile */}
-        <span className="flex sm:hidden items-center gap-1 text-xs text-gray-400 ml-auto mr-2">
+        <button
+          onClick={() => setRedeemOpen(true)}
+          className="flex sm:hidden items-center gap-1 text-xs text-gray-400 ml-auto mr-2 hover:text-[var(--pg-accent-teal)] transition-colors"
+        >
           <Coins className="w-3.5 h-3.5" />
           <span>{profile?.credits ?? 0}</span>
-        </span>
+        </button>
 
         {/* Mobile profile button — visible only on mobile */}
         <button
@@ -151,20 +154,6 @@ export default function PolishGlassLayout() {
                   Admin
                 </Link>
               )}
-              <button
-                onClick={() => { setRedeemOpen(true); setMobileOpen(false) }}
-                className="w-full text-left px-4 py-3 rounded-xl font-display font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2"
-              >
-                <Coins className="h-4 w-4" />
-                {profile?.credits ?? 0} credits
-              </button>
-              <button
-                onClick={() => { setProfileOpen(true); setMobileOpen(false) }}
-                className="w-full text-left px-4 py-3 rounded-xl font-display font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-all flex items-center gap-2"
-              >
-                <User className="h-4 w-4" />
-                Profile
-              </button>
             </div>
           </motion.div>
         )}
