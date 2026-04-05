@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-mo
 import type { PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { FlagIcon } from '@/components/ui/FlagIcon'
 import {
   Coins,
   Sparkles,
@@ -17,6 +18,7 @@ import {
   Grid3X3,
   Circle,
 } from 'lucide-react'
+import { useTranslation } from '@/hooks/useTranslation'
 
 type Deck = {
   id: string
@@ -35,13 +37,6 @@ type WordStatus = {
 
 type ViewMode = 'stack' | 'grid' | 'orbs'
 
-const LANGUAGE_FLAGS: Record<string, string> = {
-  German: '🇩🇪',
-  French: '🇫🇷',
-  Italian: '🇮🇹',
-  English: '🇬🇧',
-  Bisaya: '🇵🇭',
-}
 
 export default function DashboardPG() {
   const { profile, user, authError } = useAuth()
@@ -49,6 +44,8 @@ export default function DashboardPG() {
   const location = useLocation()
 
   const [decks, setDecks] = useState<Deck[]>([])
+  const { t, tp, locale } = useTranslation()
+
   const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
   const [deckThumbnails, setDeckThumbnails] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(true)
@@ -137,10 +134,10 @@ export default function DashboardPG() {
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 px-6">
         <div className="pg-glass rounded-2xl p-8 flex flex-col items-center gap-4 max-w-sm text-center">
           <LogIn className="h-10 w-10 text-[var(--pg-text-dim)]" />
-          <h2 className="text-lg font-semibold font-display">Session expired</h2>
+          <h2 className="text-lg font-semibold font-display">{t('error.sessionExpired')}</h2>
           <p className="text-sm text-[var(--pg-text-dim)]">{authError}</p>
           <Button asChild>
-            <Link to="/login">Log in again</Link>
+            <Link to="/login">{t('dashboard.loginAgain')}</Link>
           </Button>
         </div>
       </div>
@@ -152,11 +149,11 @@ export default function DashboardPG() {
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 px-6">
         <div className="pg-glass rounded-2xl p-8 flex flex-col items-center gap-4 max-w-sm text-center">
           <AlertCircle className="h-10 w-10 text-[var(--pg-accent-gold)]" />
-          <h2 className="text-lg font-semibold font-display">Profile failed to load</h2>
+          <h2 className="text-lg font-semibold font-display">{t('error.profileFailed')}</h2>
           <p className="text-sm text-[var(--pg-text-dim)]">{authError}</p>
           <Button onClick={() => window.location.reload()}>
             <RefreshCw className="h-4 w-4 mr-2" />
-            Retry
+            {t('common.retry')}
           </Button>
         </div>
       </div>
@@ -168,11 +165,11 @@ export default function DashboardPG() {
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 px-6">
         <div className="pg-glass rounded-2xl p-8 flex flex-col items-center gap-4 max-w-sm text-center">
           <AlertCircle className="h-10 w-10 text-[var(--pg-accent-rose)]" />
-          <h2 className="text-lg font-semibold font-display">Something went wrong</h2>
+          <h2 className="text-lg font-semibold font-display">{t('error.somethingWrong')}</h2>
           <p className="text-sm text-[var(--pg-text-dim)]">{dashboardError}</p>
           <Button onClick={() => window.location.reload()}>
             <RefreshCw className="h-4 w-4 mr-2" />
-            Refresh
+            {t('common.refresh')}
           </Button>
         </div>
       </div>
@@ -183,7 +180,7 @@ export default function DashboardPG() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <ParticleSpinner preset="rose" size={140} />
-        <p className="text-sm text-muted-foreground opacity-60">Loading decks...</p>
+        <p className="text-sm text-muted-foreground opacity-60">{t('dashboard.loadingDecks')}</p>
       </div>
     )
   }
@@ -195,9 +192,9 @@ export default function DashboardPG() {
           <Sparkles className="h-10 w-10 text-[var(--pg-accent-teal)]" />
         </div>
         <div className="text-center">
-          <h2 className="text-2xl font-bold font-display mb-2">Create your first deck</h2>
+          <h2 className="text-2xl font-bold font-display mb-2">{t('dashboard.createFirst')}</h2>
           <p className="text-[var(--pg-text-dim)] max-w-sm">
-            Choose a language, add some words, and watch AI create unique music videos for each one.
+            {t('dashboard.createFirstBody')}
           </p>
         </div>
         <button
@@ -205,7 +202,7 @@ export default function DashboardPG() {
           className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all shadow-[0_0_20px_rgba(13,226,195,0.2)]"
         >
           <Sparkles className="h-4 w-4 inline mr-2" />
-          Generate
+          {t('dashboard.generate')}
         </button>
       </div>
     )
@@ -217,12 +214,14 @@ export default function DashboardPG() {
       <div className="flex items-center justify-between mb-8">
         <div className="min-w-0">
           <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate">
-            Welcome{profile?.display_name ? `, ${profile.display_name}` : ''}
+            {profile?.display_name
+              ? t('dashboard.welcomeUser', { name: profile.display_name })
+              : t('dashboard.welcome')}
           </h1>
           <p className="text-[var(--pg-text-dim)] mt-1 text-sm">
-            {decks.length} deck{decks.length !== 1 ? 's' : ''} &middot;{' '}
+            {tp('dashboard.deckCount', decks.length)} &middot;{' '}
             <span className="inline-flex items-center gap-1">
-              <Coins className="h-3 w-3" /> {profile?.credits ?? 0} credits
+              <Coins className="h-3 w-3" /> {t('dashboard.credits', { count: profile?.credits ?? 0 })}
             </span>
           </p>
         </div>
@@ -230,9 +229,9 @@ export default function DashboardPG() {
           {/* View mode toggle */}
           <div className="flex gap-1 pg-glass rounded-lg p-1">
             {([
-              { mode: 'stack' as ViewMode, icon: Layers, label: 'Stack' },
-              { mode: 'grid' as ViewMode, icon: Grid3X3, label: 'Grid' },
-              { mode: 'orbs' as ViewMode, icon: Circle, label: 'Orbs' },
+              { mode: 'stack' as ViewMode, icon: Layers, label: t('dashboard.viewStack') },
+              { mode: 'grid' as ViewMode, icon: Grid3X3, label: t('dashboard.viewGrid') },
+              { mode: 'orbs' as ViewMode, icon: Circle, label: t('dashboard.viewOrbs') },
             ]).map(({ mode, icon: Icon, label }) => (
               <button
                 key={mode}
@@ -251,7 +250,7 @@ export default function DashboardPG() {
           <button
             onClick={() => navigate('/generate')}
             className="p-2.5 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] hover:bg-[var(--pg-accent-teal)]/30 transition-all"
-            title="New Deck"
+            title={t('dashboard.newDeck')}
           >
             <Plus className="h-5 w-5" />
           </button>
@@ -304,13 +303,13 @@ interface ViewProps {
   onSelect: (id: string) => void
 }
 
-function getDeckMeta(deck: Deck, wordCounts: ViewProps['wordCounts']) {
+function getDeckMeta(deck: Deck, wordCounts: ViewProps['wordCounts'], locale?: string) {
   const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
   const progress = counts.total > 0 ? Math.round((counts.completed / counts.total) * 100) : 0
-  const flag = LANGUAGE_FLAGS[deck.target_language] || ''
+  const dateLocale = locale === 'de' ? 'de-DE' : 'en-US'
   const displayName =
-    deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString()}`
-  return { counts, progress, flag, displayName }
+    deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(dateLocale)}`
+  return { counts, progress, displayName }
 }
 
 /* ─── Stack View ─────────────────────────────────── */
@@ -393,7 +392,8 @@ interface StackCardProps {
 
 function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts, thumbnails }: StackCardProps) {
   const x = useMotionValue(0)
-  const { counts, flag, displayName } = getDeckMeta(deck, wordCounts)
+  const { tp, locale } = useTranslation()
+  const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
   const thumb = thumbnails[deck.id]
 
   useEffect(() => {
@@ -466,11 +466,11 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
       <div className="flex-1 p-6 flex flex-col justify-between">
         <div>
           <p className="text-[var(--pg-accent-teal)] text-xs font-medium tracking-wide uppercase mb-2 font-display">
-            {flag} {deck.target_language}
+            <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {deck.target_language}
           </p>
           <h2 className="text-2xl font-light text-white font-display">{displayName}</h2>
         </div>
-        <p className="text-[var(--pg-text-dim)] text-sm">{counts.total} Words</p>
+        <p className="text-[var(--pg-text-dim)] text-sm">{tp('dashboard.wordCount', counts.total)}</p>
       </div>
     </motion.div>
   )
@@ -479,10 +479,11 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
 /* ─── Grid View ──────────────────────────────────── */
 
 function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
+  const { tp, locale } = useTranslation()
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {decks.map((deck, i) => {
-        const { counts, flag, displayName } = getDeckMeta(deck, wordCounts)
+        const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
         const thumb = thumbnails[deck.id]
 
         return (
@@ -510,7 +511,7 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
                 {displayName}
               </h3>
               <p className="text-xs text-[var(--pg-text-dim)]">
-                {flag} {deck.target_language} &middot; {counts.total} words
+                <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {deck.target_language} &middot; {tp('dashboard.wordCount', counts.total)}
               </p>
             </div>
           </motion.button>
@@ -560,7 +561,7 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
       className="w-full h-[600px] relative flex items-center justify-center"
     >
       {orbs.map((orb) => {
-        const { flag, displayName } = getDeckMeta(orb.deck, wordCounts)
+        const { displayName } = getDeckMeta(orb.deck, wordCounts)
         const thumb = thumbnails[orb.deck.id]
 
         return (
@@ -586,7 +587,7 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
               <img src={thumb} alt={displayName} className="w-full h-full object-cover" style={{ mixBlendMode: 'screen', opacity: 0.8 }} />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-[var(--pg-accent-teal)]/15 to-[var(--pg-accent-rose)]/10 flex items-center justify-center">
-                <span className="text-2xl">{flag || '🎵'}</span>
+                <FlagIcon code={orb.deck.target_language} className="w-8 h-auto" />
               </div>
             )}
           </motion.div>
