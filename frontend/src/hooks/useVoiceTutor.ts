@@ -112,7 +112,16 @@ function getNativeLanguage(): string {
 }
 
 function getMimeType(): string {
-  const types = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4']
+  // Safari/iOS reports WebM as supported but the implementation is buggy —
+  // MediaRecorder produces zero ondataavailable events with WebM.
+  // Always use audio/mp4 on Safari.
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+    || /iPad|iPhone|iPod/.test(navigator.userAgent)
+
+  const types = isSafari
+    ? ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm']
+    : ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4']
+
   for (const type of types) {
     if (MediaRecorder.isTypeSupported(type)) return type
   }
