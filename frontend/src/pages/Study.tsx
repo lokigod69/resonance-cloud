@@ -25,6 +25,7 @@ import { useVideoPlayback } from '@/hooks/useVideoPlayback'
 import { useStudySession } from '@/hooks/useStudySession'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import { useTranslation } from '@/hooks/useTranslation'
 
 type DeckOption = { id: string; name: string | null }
 
@@ -33,6 +34,7 @@ export default function Study() {
   const [searchParams] = useSearchParams()
   const deckParam = searchParams.get('deck')
   const { user } = useAuth()
+  const { t, tp } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const [deckFilter, setDeckFilter] = useState<string>(deckParam ?? 'all')
@@ -170,7 +172,7 @@ export default function Study() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <ParticleSpinner preset="heart" size={140} />
-        <p className="text-sm text-muted-foreground opacity-60">Loading study cards...</p>
+        <p className="text-sm text-muted-foreground opacity-60">{t('study.loadingCards')}</p>
       </div>
     )
   }
@@ -182,18 +184,18 @@ export default function Study() {
         <BookOpen className="h-12 w-12 text-muted-foreground/50" />
         <div>
           <h2 className="text-xl font-bold mb-2">
-            {isFiltered ? 'No cards ready to study in this deck' : 'No words ready to study yet'}
+            {isFiltered ? t('study.noCardsReady') : t('study.noWordsReady')}
           </h2>
           <p className="text-muted-foreground text-sm max-w-sm">
             {isFiltered
-              ? 'Add cards to this deck and wait for videos to finish processing.'
-              : 'Generate a deck first — once your videos are ready, they\'ll appear here for review.'}
+              ? t('study.addCardsHint')
+              : t('study.generateFirst')}
           </p>
         </div>
         {!isFiltered && (
           <Button onClick={() => navigate('/generate')}>
             <Sparkles className="h-4 w-4 mr-2" />
-            Generate a Deck
+            {t('study.generateDeck')}
           </Button>
         )}
       </div>
@@ -212,24 +214,24 @@ export default function Study() {
           <Check className="h-10 w-10 text-green-400" />
         </motion.div>
         <div>
-          <h2 className="text-2xl font-bold mb-2">Session Complete</h2>
+          <h2 className="text-2xl font-bold mb-2">{t('study.sessionComplete')}</h2>
           <p className="text-muted-foreground">
-            You reviewed <span className="text-foreground font-semibold">{reviewed}</span> word{reviewed !== 1 ? 's' : ''}
+            {tp('study.wordsReviewed', reviewed)}
           </p>
           <p className="text-sm text-muted-foreground mt-1">
-            <span className="text-green-400">{sessionStats.remembered} remembered</span>
+            <span className="text-green-400">{t('study.remembered', { count: sessionStats.remembered })}</span>
             {sessionStats.reviewLater > 0 && (
-              <span className="text-orange-400 ml-2">{sessionStats.reviewLater} need review</span>
+              <span className="text-orange-400 ml-2">{t('study.needReview', { count: sessionStats.reviewLater })}</span>
             )}
           </p>
         </div>
         <div className="flex gap-3">
           <Button onClick={restart}>
             <RotateCcw className="h-4 w-4 mr-2" />
-            Start Again
+            {t('study.startAgain')}
           </Button>
           <Button variant="outline" onClick={() => navigate('/dashboard')}>
-            Decks
+            {t('nav.decks')}
           </Button>
         </div>
       </div>
@@ -252,7 +254,7 @@ export default function Study() {
               </SelectTrigger>
               <SelectContent className="bg-gray-900 border-white/10 text-gray-200">
                 <SelectItem value="all" className="focus:bg-white/10 focus:text-white">
-                  All Decks
+                  {t('study.allDecks')}
                 </SelectItem>
                 {decks.map((d) => (
                   <SelectItem key={d.id} value={d.id} className="focus:bg-white/10 focus:text-white">
@@ -351,7 +353,7 @@ export default function Study() {
                     onClick={() => setRevealed(true)}
                     className="px-8 py-3 rounded-full tracking-widest uppercase text-sm"
                   >
-                    Reveal Answer
+                    {t('study.revealAnswer')}
                   </Button>
                 )}
               </div>
@@ -371,7 +373,7 @@ export default function Study() {
                     className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:rounded-2xl sm:px-10 sm:py-4 bg-red-500/15 border-2 border-red-500/40 text-red-400 flex items-center justify-center gap-2 hover:bg-red-500/25 hover:border-red-500/60 transition-all"
                   >
                     <X className="h-7 w-7 sm:h-5 sm:w-5" />
-                    <span className="hidden sm:inline text-sm font-medium">Review Later</span>
+                    <span className="hidden sm:inline text-sm font-medium">{t('study.reviewLater')}</span>
                   </button>
 
                   {/* Remembered — green ✓ */}
@@ -381,7 +383,7 @@ export default function Study() {
                     className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:rounded-2xl sm:px-10 sm:py-4 bg-green-500/15 border-2 border-green-500/40 text-green-400 flex items-center justify-center gap-2 hover:bg-green-500/25 hover:border-green-500/60 transition-all"
                   >
                     <Check className="h-7 w-7 sm:h-5 sm:w-5" />
-                    <span className="hidden sm:inline text-sm font-medium">Remembered</span>
+                    <span className="hidden sm:inline text-sm font-medium">{t('study.rememberedAction')}</span>
                   </button>
                 </motion.div>
               )}
