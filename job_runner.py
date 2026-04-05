@@ -1099,6 +1099,29 @@ async def process_word(
             }).eq("id", job["id"]).execute()
             return False
 
+        # After images: extract storyboard-generated mnemonic and write back to manifest + Supabase
+        if stage == "images":
+            try:
+                images_manifest = read_manifest(word_dir)
+                images_version = images_manifest.selected.images
+                if images_version:
+                    storyboard_path = word_dir / "images" / images_version / "storyboard.json"
+                    if storyboard_path.exists():
+                        import json as _json
+                        storyboard_data = _json.loads(storyboard_path.read_text(encoding="utf-8"))
+                        storyboard_mnemonic = storyboard_data.get("mnemonic_text")
+                        if storyboard_mnemonic and isinstance(storyboard_mnemonic, str) and len(storyboard_mnemonic.strip()) > 10:
+                            storyboard_mnemonic = storyboard_mnemonic.strip()
+                            log.info("  Storyboard mnemonic: %s", storyboard_mnemonic[:80])
+                            images_manifest.enrichment.mnemonic = storyboard_mnemonic
+                            from src.manifest import write_manifest
+                            write_manifest(word_dir, images_manifest)
+                            sb.table("words").update({
+                                "mnemonic": storyboard_mnemonic,
+                            }).eq("id", word_record["id"]).execute()
+            except Exception as _e:
+                log.warning("  Failed to extract storyboard mnemonic: %s", _e)
+
         # After song: clear the batch_size=1 override so re-runs without Suno use the
         # workspace default (typically 2 takes).
         if stage == "song" and suno_enabled:
