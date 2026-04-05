@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, RefreshCw, MessageSquarePlus } from 'lucide-react'
+import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, RefreshCw, MessageSquarePlus, History } from 'lucide-react'
 import { useVoiceTutor } from '@/hooks/useVoiceTutor'
 import { getVoicesForLanguage, type TutorVoice } from '@/voiceRegistry'
+import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
 
 const LANGUAGES = [
   { code: 'en', flag: '🇬🇧', nativeName: 'English' },
@@ -51,6 +52,7 @@ export default function Speak() {
   const chatRef = useRef<HTMLDivElement>(null)
   const sampleAudioRef = useRef<HTMLAudioElement | null>(null)
   const [playingVoiceId, setPlayingVoiceId] = useState<string | null>(null)
+  const [historyOpen, setHistoryOpen] = useState(false)
 
   const selectedLang = LANGUAGES.find((l) => l.code === tutor.language)
 
@@ -315,6 +317,15 @@ export default function Speak() {
         </button>
 
         <button
+          onClick={() => setHistoryOpen(true)}
+          className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
+          title="Conversation history"
+        >
+          <History className="h-3.5 w-3.5" />
+          <span className="hidden sm:inline">History</span>
+        </button>
+
+        <button
           onClick={tutor.newChat}
           disabled={isBusy}
           className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 shrink-0"
@@ -380,6 +391,11 @@ export default function Speak() {
 
         <div ref={bottomRef} />
       </div>
+
+      <SpeakHistoryPanel
+        open={historyOpen}
+        onClose={() => setHistoryOpen(false)}
+      />
 
       {/* Footer: mic controls */}
       <div

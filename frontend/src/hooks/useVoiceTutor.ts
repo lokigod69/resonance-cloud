@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { type TutorVoice, getVoicesForLanguage } from '@/voiceRegistry'
+import { supabase } from '@/lib/supabase'
 
 const IS_SAFARI = typeof navigator !== 'undefined' && (
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
@@ -61,6 +62,15 @@ function getSavedVoicePreference(language: string): string | null {
     return null
   }
 }
+
+// ── Speak history persistence helpers ─────────────────────────────────────────
+
+async function getConversationUserId(): Promise<string | null> {
+  const { data: { user } } = await supabase.auth.getUser()
+  return user?.id ?? null
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 function blobToBase64(blob: Blob): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -150,6 +160,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const recordingStartTime = useRef<number>(0)
   const discardRecordingRef = useRef<boolean>(false)
   const acquiringStreamRef = useRef(false)
+  const conversationIdRef = useRef<string | null>(null)
+  const convMessageCountRef = useRef<number>(0)
 
   useEffect(() => {
     messagesRef.current = messages
@@ -182,6 +194,16 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         audioContextRef.current.close().catch(() => {})
         audioContextRef.current = null
       }
+      // Fire-and-forget: mark conversation ended when user navigates away
+      if (conversationIdRef.current) {
+        const convId = conversationIdRef.current
+        conversationIdRef.current = null
+        supabase.from('speak_conversations')
+          .update({ ended_at: new Date().toISOString() })
+          .eq('id', convId)
+          .then(() => {})
+          .catch(() => {})
+      }
     }
   }, [])
 
@@ -189,6 +211,77 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     typeof navigator !== 'undefined' &&
     !!navigator.mediaDevices?.getUserMedia &&
     typeof MediaRecorder !== 'undefined'
+
+  // ── Speak history: fire-and-forget persistence ────────────────────────────
+
+  const createConversation = useCallback(async (lang: string, greeting: string) => {
+    try {
+      const userId = await getConversationUserId()
+      if (!userId) return
+
+      const id = crypto.randomUUID()
+      conversationIdRef.current = id
+      convMessageCountRef.current = 1
+
+      await supabase.from('speak_conversations').insert({
+        id,
+        user_id: userId,
+        language: lang,
+        voice_name: voiceRef.current?.name ?? null,
+        level: levelRef.current ?? null,
+        message_count: 1,
+        title: greeting.slice(0, 80),
+        started_at: new Date().toISOString(),
+      })
+
+      await supabase.from('speak_messages').insert({
+        conversation_id: id,
+        role: 'assistant',
+        content: greeting,
+      })
+    } catch (err) {
+      console.warn('[speak-history] Failed to create conversation:', err)
+    }
+  }, [])
+
+  const persistMessages = useCallback(async (userText: string | null, aiText: string) => {
+    const convId = conversationIdRef.current
+    if (!convId) return
+
+    try {
+      const rows: Array<{ conversation_id: string; role: string; content: string }> = []
+      if (userText) rows.push({ conversation_id: convId, role: 'user', content: userText })
+      rows.push({ conversation_id: convId, role: 'assistant', content: aiText })
+
+      await supabase.from('speak_messages').insert(rows)
+
+      convMessageCountRef.current += rows.length
+      await supabase.rpc('increment_speak_message_count', {
+        conv_id: convId,
+        inc: rows.length,
+      })
+    } catch (err) {
+      console.warn('[speak-history] Failed to persist messages:', err)
+    }
+  }, [])
+
+  const endConversation = useCallback(async () => {
+    const convId = conversationIdRef.current
+    if (!convId) return
+
+    conversationIdRef.current = null
+    convMessageCountRef.current = 0
+
+    try {
+      await supabase.from('speak_conversations')
+        .update({ ended_at: new Date().toISOString() })
+        .eq('id', convId)
+    } catch (err) {
+      console.warn('[speak-history] Failed to end conversation:', err)
+    }
+  }, [])
+
+  // ─────────────────────────────────────────────────────────────────────────
 
   const callVoiceChat = useCallback(
     async (audio_base64: string | null, lang: string, v?: TutorVoice): Promise<VoiceChatResponse> => {
@@ -292,6 +385,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       const msg: TutorMessage = { role: 'assistant', content: data.ai_text, revealed: true }
       setMessages([msg])
       messagesRef.current = [msg]
+      createConversation(lang, data.ai_text)
 
       if (data.audio_base64) {
         // Try auto-play, fall back to Tap to hear
@@ -309,11 +403,12 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         setStatus('idle')
       }
     },
-    [callVoiceChat, ensureAudioContext, playAudio],
+    [callVoiceChat, ensureAudioContext, playAudio, createConversation],
   )
 
   const selectLanguage = useCallback(
     (lang: string) => {
+      endConversation()
       setLanguage(lang)
       setVoice(null)
       voiceRef.current = null
@@ -350,7 +445,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         // No saved level → voice is set, level is null → State 2.5 (level picker) renders
       }
     },
-    [fetchAndPlayGreeting],
+    [fetchAndPlayGreeting, endConversation],
   )
 
   const startConversation = useCallback(
@@ -420,6 +515,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     const lang = language
     const v = voiceRef.current
     if (!lang || !v) return
+    endConversation()
     setMessages([])
     messagesRef.current = []
     setPendingAudio(null)
@@ -430,7 +526,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       setError(err instanceof Error ? err.message : 'Something went wrong')
       setStatus('error')
     }
-  }, [language, fetchAndPlayGreeting])
+  }, [language, fetchAndPlayGreeting, endConversation])
 
   /**
    * Acquire a MediaStream if one isn't already active.
@@ -522,6 +618,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
             next.push({ role: 'assistant', content: data.ai_text, revealed: false })
             return next
           })
+          persistMessages(data.user_text || null, data.ai_text)
 
           // Reveal AI text after 1.5s regardless of whether audio plays
           scheduleReveal()
@@ -570,7 +667,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       }
       setStatus('error')
     }
-  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream, ensureAudioContext, playAudio])
+  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream, ensureAudioContext, playAudio, persistMessages])
 
   const stopRecording = useCallback(() => {
     const recorder = mediaRecorderRef.current
@@ -611,6 +708,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   }, [])
 
   const resetConversation = useCallback(() => {
+    endConversation()
     releaseResources()
 
     setLanguage(null)
@@ -623,7 +721,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
-  }, [releaseResources])
+  }, [releaseResources, endConversation])
 
   return {
     language,

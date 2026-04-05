@@ -1,0 +1,270 @@
+import { useEffect, useState } from 'react'
+import { X, ArrowLeft, Mic, ChevronRight } from 'lucide-react'
+import { supabase } from '@/lib/supabase'
+import { useAuth } from '@/hooks/useAuth'
+
+interface Conversation {
+  id: string
+  language: string
+  voice_name: string | null
+  level: string | null
+  message_count: number
+  title: string | null
+  started_at: string
+  ended_at: string | null
+}
+
+interface Message {
+  id: string
+  conversation_id: string
+  role: 'user' | 'assistant'
+  content: string
+  created_at: string
+}
+
+interface SpeakHistoryPanelProps {
+  open: boolean
+  onClose: () => void
+}
+
+const LANGUAGE_FLAGS: Record<string, { flag: string; name: string }> = {
+  en:  { flag: '🇬🇧', name: 'English' },
+  de:  { flag: '🇩🇪', name: 'Deutsch' },
+  fr:  { flag: '🇫🇷', name: 'Français' },
+  it:  { flag: '🇮🇹', name: 'Italiano' },
+  es:  { flag: '🇪🇸', name: 'Español' },
+  pt:  { flag: '🇵🇹', name: 'Português' },
+  nl:  { flag: '🇳🇱', name: 'Nederlands' },
+  hi:  { flag: '🇮🇳', name: 'हिन्दी' },
+  ar:  { flag: '🇸🇦', name: 'العربية' },
+  fil: { flag: '🇵🇭', name: 'Filipino' },
+  id:  { flag: '🇮🇩', name: 'Bahasa Indonesia' },
+  ko:  { flag: '🇰🇷', name: '한국어' },
+}
+
+const LEVEL_EMOJI: Record<string, string> = {
+  zero:         '🌱',
+  beginner:     '📗',
+  intermediate: '📘',
+  advanced:     '📕',
+}
+
+function formatDate(iso: string): string {
+  const date = new Date(iso)
+  const now = new Date()
+  const diffMs = now.getTime() - date.getTime()
+  const diffMins = Math.floor(diffMs / 60000)
+  const diffHours = Math.floor(diffMs / 3600000)
+  const diffDays = Math.floor(diffMs / 86400000)
+
+  if (diffMins < 1) return 'Just now'
+  if (diffMins < 60) return `${diffMins}m ago`
+  if (diffHours < 24) return `${diffHours}h ago`
+  if (diffDays === 1) return 'Yesterday'
+  if (diffDays < 7) return `${diffDays} days ago`
+
+  return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
+}
+
+export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
+  const { user } = useAuth()
+  const [conversations, setConversations] = useState<Conversation[]>([])
+  const [loading, setLoading] = useState(false)
+  const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [messages, setMessages] = useState<Message[]>([])
+  const [messagesLoading, setMessagesLoading] = useState(false)
+
+  // Load conversations when panel opens
+  useEffect(() => {
+    if (!open || !user) return
+
+    setLoading(true)
+    setSelectedId(null)
+    setMessages([])
+
+    supabase
+      .from('speak_conversations')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('started_at', { ascending: false })
+      .limit(50)
+      .then(({ data, error }) => {
+        if (!error && data) setConversations(data as Conversation[])
+        setLoading(false)
+      })
+  }, [open, user])
+
+  // Load messages when a conversation is selected
+  useEffect(() => {
+    if (!selectedId) return
+
+    setMessagesLoading(true)
+    supabase
+      .from('speak_messages')
+      .select('*')
+      .eq('conversation_id', selectedId)
+      .order('created_at', { ascending: true })
+      .then(({ data, error }) => {
+        if (!error && data) setMessages(data as Message[])
+        setMessagesLoading(false)
+      })
+  }, [selectedId])
+
+  const selectedConversation = conversations.find((c) => c.id === selectedId)
+
+  return (
+    <div
+      className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-40 flex flex-col bg-gray-950/95 backdrop-blur-xl transition-transform duration-300"
+      style={{ transform: open ? 'translateX(0)' : 'translateX(100%)' }}
+    >
+      {/* ── Header ── */}
+      <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
+        <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
+          {selectedId ? (
+            <button
+              onClick={() => { setSelectedId(null); setMessages([]) }}
+              className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+              title="Back to history"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </button>
+          ) : (
+            <div className="w-9" /> // spacer to balance close button
+          )}
+
+          <div className="flex-1 min-w-0">
+            {selectedConversation ? (
+              <div className="flex items-center gap-2">
+                <span className="text-lg">{LANGUAGE_FLAGS[selectedConversation.language]?.flag ?? '🌐'}</span>
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-white truncate">
+                    {LANGUAGE_FLAGS[selectedConversation.language]?.name ?? selectedConversation.language}
+                    {selectedConversation.voice_name && (
+                      <span className="text-gray-400 font-normal"> · {selectedConversation.voice_name}</span>
+                    )}
+                  </p>
+                  <p className="text-xs text-gray-500">{formatDate(selectedConversation.started_at)}</p>
+                </div>
+              </div>
+            ) : (
+              <p className="text-sm font-semibold text-white">Conversation History</p>
+            )}
+          </div>
+
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+            title="Close history"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+      </div>
+
+      {/* ── Content ── */}
+      <div className="flex-1 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
+        <div className="max-w-5xl mx-auto w-full px-4 py-4">
+
+          {/* ── Conversation List ── */}
+          {!selectedId && (
+            <>
+              {loading && (
+                <div className="flex items-center justify-center py-16 text-gray-500 text-sm">
+                  Loading…
+                </div>
+              )}
+
+              {!loading && conversations.length === 0 && (
+                <div className="flex flex-col items-center justify-center py-20 gap-3 text-center">
+                  <Mic className="h-10 w-10 text-gray-700" />
+                  <p className="text-gray-400 text-sm font-medium">No conversations yet</p>
+                  <p className="text-gray-600 text-xs max-w-xs">Start chatting to build your history!</p>
+                </div>
+              )}
+
+              {!loading && conversations.length > 0 && (
+                <div className="space-y-2">
+                  {conversations.map((conv) => {
+                    const lang = LANGUAGE_FLAGS[conv.language]
+                    const levelEmoji = conv.level ? LEVEL_EMOJI[conv.level] : null
+                    return (
+                      <button
+                        key={conv.id}
+                        onClick={() => setSelectedId(conv.id)}
+                        className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left"
+                      >
+                        <span className="text-2xl shrink-0">{lang?.flag ?? '🌐'}</span>
+
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 mb-0.5">
+                            <span className="text-sm font-medium text-white truncate">
+                              {lang?.name ?? conv.language}
+                            </span>
+                            {levelEmoji && <span className="text-sm">{levelEmoji}</span>}
+                          </div>
+                          {conv.title && (
+                            <p className="text-xs text-gray-400 truncate">{conv.title}</p>
+                          )}
+                        </div>
+
+                        <div className="flex flex-col items-end gap-1 shrink-0">
+                          <span className="text-xs text-gray-500">{formatDate(conv.started_at)}</span>
+                          {conv.message_count > 0 && (
+                            <span className="text-xs bg-gray-700/60 text-gray-400 px-1.5 py-0.5 rounded-full">
+                              {conv.message_count}
+                            </span>
+                          )}
+                        </div>
+
+                        <ChevronRight className="h-4 w-4 text-gray-600 shrink-0" />
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+            </>
+          )}
+
+          {/* ── Transcript View ── */}
+          {selectedId && (
+            <>
+              {messagesLoading && (
+                <div className="flex items-center justify-center py-16 text-gray-500 text-sm">
+                  Loading…
+                </div>
+              )}
+
+              {!messagesLoading && messages.length === 0 && (
+                <div className="flex items-center justify-center py-16 text-gray-600 text-sm">
+                  No messages in this conversation.
+                </div>
+              )}
+
+              {!messagesLoading && messages.length > 0 && (
+                <div className="space-y-3">
+                  {messages.map((msg) => (
+                    <div
+                      key={msg.id}
+                      className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                    >
+                      <div
+                        className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                          msg.role === 'user'
+                            ? 'bg-cyan-900/50 text-white rounded-br-sm'
+                            : 'bg-gray-800/60 text-gray-100 rounded-bl-sm'
+                        }`}
+                      >
+                        {msg.content}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+
+        </div>
+      </div>
+    </div>
+  )
+}
