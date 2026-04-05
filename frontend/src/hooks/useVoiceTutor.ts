@@ -377,11 +377,19 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
             return next
           })
 
-          setStatus('playing')
-          const audioPromise = playAudioBase64(data.audio_base64, data.audio_format)
+          // Reveal AI text after 1.5s regardless of whether audio plays
           scheduleReveal()
-          await audioPromise
-          setStatus('idle')
+
+          // Try auto-play (works on desktop). Fall back to pendingAudio on iOS
+          // where onstop is not a user gesture and audio.play() is blocked.
+          try {
+            setStatus('playing')
+            await playAudioBase64(data.audio_base64, data.audio_format)
+            setStatus('idle')
+          } catch {
+            setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
+            setStatus('idle')
+          }
         } catch (err) {
           const msg = err instanceof Error ? err.message : 'Something went wrong. Tap to try again.'
           setError(msg)
@@ -393,6 +401,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       recordingStartTime.current = Date.now()
       recorder.start()
       setError(null)
+      setPendingAudio(null)
       setStatus('recording')
     } catch (err) {
       if (err instanceof DOMException && err.name === 'NotAllowedError') {
