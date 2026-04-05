@@ -19,6 +19,7 @@ interface VoiceChatResponse {
 export interface UseVoiceTutorReturn {
   language: string | null
   voice: TutorVoice | null
+  level: string | null
   status: TutorStatus
   messages: TutorMessage[]
   error: string | null
@@ -29,7 +30,9 @@ export interface UseVoiceTutorReturn {
   stopRecordingIfActive: () => void
   selectLanguage: (lang: string) => void
   startConversation: (voice: TutorVoice) => Promise<void>
+  selectLevel: (level: string) => Promise<void>
   changeVoice: () => void
+  changeLevel: () => void
   newChat: () => Promise<void>
   resetConversation: () => void
   playPendingAudio: () => Promise<void>
@@ -103,6 +106,10 @@ function playAudioViaElement(base64: string, format: string): Promise<void> {
   })
 }
 
+function getNativeLanguage(): string {
+  return (typeof navigator !== 'undefined' ? navigator.language?.slice(0, 2) : null) || 'en'
+}
+
 function getMimeType(): string {
   const types = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4']
   for (const type of types) {
@@ -114,6 +121,7 @@ function getMimeType(): string {
 export function useVoiceTutor(): UseVoiceTutorReturn {
   const [language, setLanguage] = useState<string | null>(null)
   const [voice, setVoice] = useState<TutorVoice | null>(null)
+  const [level, setLevel] = useState<string | null>(null)
   const [status, setStatus] = useState<TutorStatus>('idle')
   const [messages, setMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -125,6 +133,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const chunksRef = useRef<Blob[]>([])
   const messagesRef = useRef<TutorMessage[]>([])
   const voiceRef = useRef<TutorVoice | null>(null)
+  const levelRef = useRef<string | null>(null)
   const mimeTypeRef = useRef<string>('audio/webm')
   const statusRef = useRef<TutorStatus>('idle')
   const recordingStartTime = useRef<number>(0)
@@ -142,6 +151,10 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   useEffect(() => {
     statusRef.current = status
   }, [status])
+
+  useEffect(() => {
+    levelRef.current = level
+  }, [level])
 
   // Cleanup on unmount
   useEffect(() => {
@@ -173,6 +186,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         language: lang,
         history: messagesRef.current.slice(-20).map(({ role, content }) => ({ role, content })),
         mime_type: mimeTypeRef.current,
+        level: levelRef.current || 'intermediate',
+        native_language: getNativeLanguage(),
       }
       if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
       if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
@@ -286,6 +301,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       setLanguage(lang)
       setVoice(null)
       voiceRef.current = null
+      setLevel(null)
+      levelRef.current = null
       setMessages([])
       messagesRef.current = []
       setError(null)
@@ -303,10 +320,18 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       if (autoVoice) {
         setVoice(autoVoice)
         voiceRef.current = autoVoice
-        fetchAndPlayGreeting(lang, autoVoice).catch((err) => {
-          setError(err instanceof Error ? err.message : 'Failed to start conversation')
-          setStatus('error')
-        })
+
+        const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
+        if (savedLevel) {
+          // Both voice and level are saved — skip both pickers, go straight to conversation
+          setLevel(savedLevel)
+          levelRef.current = savedLevel
+          fetchAndPlayGreeting(lang, autoVoice).catch((err) => {
+            setError(err instanceof Error ? err.message : 'Failed to start conversation')
+            setStatus('error')
+          })
+        }
+        // No saved level → voice is set, level is null → State 2.5 (level picker) renders
       }
     },
     [fetchAndPlayGreeting],
@@ -321,18 +346,38 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       saveVoicePreference(lang, selectedVoice.id)
       setError(null)
 
+      // Voice change with existing history — restore saved level, skip level picker
+      const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
+      if (savedLevel && messagesRef.current.length > 0) {
+        setLevel(savedLevel)
+        levelRef.current = savedLevel
+        setStatus('idle')
+        return
+      }
+      // Otherwise leave level null → State 2.5 (level picker) renders
+    },
+    [language],
+  )
+
+  const selectLevel = useCallback(
+    async (selectedLevel: string) => {
+      setStatus('processing')
+      setLevel(selectedLevel)
+      levelRef.current = selectedLevel
+      if (language) {
+        localStorage.setItem(`voice-tutor-level-${language}`, selectedLevel)
+      }
+      const lang = language
+      const v = voiceRef.current
+      if (!lang || !v) return
       if (messagesRef.current.length === 0) {
-        // Fresh conversation — fetch greeting
-        setMessages([])
-        messagesRef.current = []
         try {
-          await fetchAndPlayGreeting(lang, selectedVoice)
+          await fetchAndPlayGreeting(lang, v)
         } catch (err) {
           setError(err instanceof Error ? err.message : 'Failed to start conversation')
           setStatus('error')
         }
       } else {
-        // Voice change with existing history — keep history, just swap voice
         setStatus('idle')
       }
     },
@@ -342,6 +387,14 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const changeVoice = useCallback(() => {
     setVoice(null)
     voiceRef.current = null
+    setPendingAudio(null)
+    setError(null)
+    setStatus('idle')
+  }, [])
+
+  const changeLevel = useCallback(() => {
+    setLevel(null)
+    levelRef.current = null
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
@@ -535,6 +588,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setLanguage(null)
     setVoice(null)
     voiceRef.current = null
+    setLevel(null)
+    levelRef.current = null
     setMessages([])
     messagesRef.current = []
     setPendingAudio(null)
@@ -545,6 +600,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   return {
     language,
     voice,
+    level,
     status,
     messages,
     error,
@@ -556,7 +612,9 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     stopRecordingIfActive,
     selectLanguage,
     startConversation,
+    selectLevel,
     changeVoice,
+    changeLevel,
     newChat,
     resetConversation,
   }

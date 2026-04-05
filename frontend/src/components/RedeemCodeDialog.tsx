@@ -147,7 +147,7 @@ export function RedeemCodeDialog({
           {!redeemSuccess ? (
             <div className="space-y-2">
               <Input
-                placeholder="e.g. RESONANZ-TEST-001"
+                placeholder="Enter invite code"
                 value={inviteCode}
                 onChange={(e) => setInviteCode(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleRedeem()}

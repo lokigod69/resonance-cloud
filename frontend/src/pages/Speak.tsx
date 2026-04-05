@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Mic, Volume2, ArrowLeft, RotateCcw, Loader2, Play, Square, RefreshCw } from 'lucide-react'
+import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, RefreshCw, MessageSquarePlus } from 'lucide-react'
 import { useVoiceTutor } from '@/hooks/useVoiceTutor'
 import { getVoicesForLanguage, type TutorVoice } from '@/voiceRegistry'
 
@@ -220,6 +220,58 @@ export default function Speak() {
     )
   }
 
+  // ── State 2.5: Level Picker ────────────────────────────────────────────────
+  if (!tutor.level) {
+    return (
+      <div className="flex flex-col min-h-full pb-20">
+        {/* Header */}
+        <div className="sticky top-0 z-40 bg-gray-950 pt-4 pb-3 border-b border-white/5">
+          <div className="max-w-2xl mx-auto w-full px-4 flex items-center gap-3">
+            <button
+              onClick={tutor.changeVoice}
+              className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+              title="Back to voice selection"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </button>
+            <span className="text-xl">{selectedLang?.flag}</span>
+            <span className="text-sm font-medium text-white">{selectedLang?.nativeName}</span>
+          </div>
+        </div>
+
+        <div className="flex-1 flex items-start justify-center px-6 pt-6">
+          <div className="w-full max-w-sm">
+            <h2 className="text-xl font-semibold text-white mb-2">
+              How much {selectedLang?.nativeName} do you know?
+            </h2>
+            <p className="text-sm text-gray-400 mb-8">This helps me adjust how I speak with you.</p>
+
+            <div className="grid grid-cols-1 gap-3">
+              {[
+                { level: 'zero',         emoji: '🌱', title: 'Complete Zero',  desc: "I don't know any words yet" },
+                { level: 'beginner',     emoji: '📗', title: 'Beginner',       desc: 'I know basics — hello, thank you, numbers' },
+                { level: 'intermediate', emoji: '📘', title: 'Intermediate',   desc: 'I can hold a simple conversation' },
+                { level: 'advanced',     emoji: '📕', title: 'Advanced',       desc: 'I want fluent practice and corrections' },
+              ].map((opt) => (
+                <button
+                  key={opt.level}
+                  onClick={() => tutor.selectLevel(opt.level)}
+                  className="flex items-center gap-4 px-5 py-4 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left"
+                >
+                  <span className="text-2xl">{opt.emoji}</span>
+                  <div>
+                    <p className="text-sm font-medium text-white">{opt.title}</p>
+                    <p className="text-xs text-gray-400">{opt.desc}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   // ── State 3: Conversation ───────────────────────────────────────────────────
   return (
     <div className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col bg-gray-950">
@@ -243,22 +295,33 @@ export default function Speak() {
         </div>
 
         <button
+          onClick={tutor.changeLevel}
+          className="flex items-center gap-1 px-2.5 py-1.5 text-xs text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-colors shrink-0"
+          title="Change level"
+        >
+          <span className="text-sm">
+            {tutor.level === 'zero' ? '🌱' : tutor.level === 'beginner' ? '📗' : tutor.level === 'intermediate' ? '📘' : '📕'}
+          </span>
+          <span className="hidden sm:inline">Level</span>
+        </button>
+
+        <button
           onClick={tutor.changeVoice}
           className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
           title="Change voice"
         >
           <RefreshCw className="h-3 w-3" />
-          Voice
+          <span className="hidden sm:inline">Voice</span>
         </button>
 
         <button
           onClick={tutor.newChat}
           disabled={isBusy}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 shrink-0"
+          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 shrink-0"
           title="New conversation"
         >
-          <RotateCcw className="h-3.5 w-3.5" />
-          New Chat
+          <MessageSquarePlus className="h-3.5 w-3.5" />
+          <span className="hidden sm:inline">New Chat</span>
         </button>
         </div>
       </div>

@@ -91,6 +91,11 @@
   color: white;
 }
 
+/* Hardcoded dark containers (e.g. Speak page chat) — restore white text */
+.theme-warm-linen .bg-gray-950 .text-white {
+  color: white;
+}
+
 /* Classic dashboard overrides for light mode */
 .theme-warm-linen .classic-dashboard-wrapper {
   color: #2C2825;
