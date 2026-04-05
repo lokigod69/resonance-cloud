@@ -54,6 +54,15 @@ export default function PolishGlassLayout() {
           <span>{profile?.credits ?? 0}</span>
         </span>
 
+        {/* Mobile profile button — visible only on mobile */}
+        <button
+          onClick={() => setProfileOpen(true)}
+          className="flex sm:hidden items-center justify-center p-1.5 rounded-full hover:bg-white/10 transition-colors ml-1"
+          aria-label="Settings"
+        >
+          <User className="h-4 w-4 text-gray-300" />
+        </button>
+
         {/* Desktop centered nav with icons */}
         <div className="hidden sm:flex items-center gap-1 mx-auto">
           {navItems.map((item) => (

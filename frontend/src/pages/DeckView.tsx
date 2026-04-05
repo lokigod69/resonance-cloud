@@ -191,6 +191,7 @@ export default function DeckView() {
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
   const completeWords = words.filter((w) => w.status === 'complete')
+  const cardMaxWidth = completeWords.length === 1 ? 'max-w-[480px]' : 'max-w-[280px]'
   const viewerWord = completeWords[viewerIndex]
 
   const displayName =
@@ -311,7 +312,7 @@ export default function DeckView() {
           const isPending = word.status === 'pending' || word.status === 'processing'
 
           return (
-            <div key={word.id} className="relative group w-full max-w-[280px]">
+            <div key={word.id} className={`relative group w-full ${cardMaxWidth}`}>
               {isComplete ? (
                 <div
                   onClick={() => {
@@ -516,7 +517,7 @@ function VideoViewerModal({
       </div>
 
       {/* Video area */}
-      <div className="flex-1 flex items-center justify-center px-4 pb-4 overflow-y-auto">
+      <div className="flex-1 flex items-center justify-center px-4 pb-4 overflow-y-auto h-0">
         {/* Main content */}
         <div className="w-full max-w-3xl space-y-6">
           {/* Video container with arrows */}

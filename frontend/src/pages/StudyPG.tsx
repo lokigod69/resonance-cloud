@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Check, Clock, RotateCcw, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Check, X, RotateCcw, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useVideoVersion } from '@/hooks/useVideoVersion'
 import { useVideoVolume } from '@/hooks/useVideoVolume'
@@ -374,28 +374,24 @@ export default function StudyPG() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="flex flex-col sm:flex-row justify-center items-center gap-3"
+                className="flex justify-center items-center gap-8"
               >
-                <button
-                  onClick={handleRemembered}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--pg-accent-green)]/15 border border-[var(--pg-accent-green)]/30 text-[var(--pg-accent-green)] text-sm font-display font-medium hover:bg-[var(--pg-accent-green)]/25 transition-all"
-                >
-                  <Check className="h-4 w-4" />
-                  Remembered
-                </button>
+                {/* Review Later — red ✕ */}
                 <button
                   onClick={handleReviewLater}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
+                  aria-label="Review Later"
+                  className="w-16 h-16 rounded-full bg-red-500/15 border-2 border-red-500/40 text-red-400 flex items-center justify-center hover:bg-red-500/25 hover:border-red-500/60 transition-all"
                 >
-                  <Clock className="h-4 w-4" />
-                  Review Later
+                  <X className="h-7 w-7" />
                 </button>
+
+                {/* Remembered — green ✓ */}
                 <button
-                  onClick={replay}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-[var(--pg-text-dim)] text-sm font-display font-medium hover:bg-white/5 transition-all"
+                  onClick={handleRemembered}
+                  aria-label="Remembered"
+                  className="w-16 h-16 rounded-full bg-[var(--pg-accent-green)]/15 border-2 border-[var(--pg-accent-green)]/40 text-[var(--pg-accent-green)] flex items-center justify-center hover:bg-[var(--pg-accent-green)]/25 hover:border-[var(--pg-accent-green)]/60 transition-all"
                 >
-                  <RotateCcw className="h-4 w-4" />
-                  Replay
+                  <Check className="h-7 w-7" />
                 </button>
               </motion.div>
             )}
@@ -419,8 +415,6 @@ export default function StudyPG() {
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">Space</kbd> reveal/advance
         &nbsp;&middot;&nbsp;
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">←</kbd><kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">→</kbd> skip
-        &nbsp;&middot;&nbsp;
-        <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">R</kbd> replay
         &nbsp;&middot;&nbsp;
         <kbd className="px-1.5 py-0.5 rounded border border-white/10 text-[10px]">P</kbd> play/pause
         &nbsp;&middot;&nbsp;

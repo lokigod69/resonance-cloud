@@ -110,17 +110,20 @@ export function PlayerBar({
       </div>
 
       {/* Center: waveform + time */}
-      <div className="flex-1 flex items-center gap-3 min-w-0">
+      <div className="flex-1 flex items-center gap-2 sm:gap-3 min-w-0 justify-center sm:justify-start">
         <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-10 text-right">
           {formatTime(currentTime)}
         </span>
 
-        <SimulatedWaveform
-          seed={currentTrack?.id ?? ''}
-          progress={progress}
-          onSeek={onSeek}
-          className="flex-1 h-8"
-        />
+        {/* Waveform — desktop only */}
+        <div className="hidden sm:block flex-1 h-8 min-w-0">
+          <SimulatedWaveform
+            seed={currentTrack?.id ?? ''}
+            progress={progress}
+            onSeek={onSeek}
+            className="w-full h-full"
+          />
+        </div>
 
         <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-10">
           {formatTime(duration)}
