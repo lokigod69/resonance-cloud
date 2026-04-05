@@ -1130,7 +1130,7 @@ async def process_word(
                         "job_type": "suno_retry",
                         "target_word_id": word_record["id"],
                         "priority": -2,  # Below manual retries (-1)
-                        "status": "pending",
+                        "status": "approved",
                         "settings": {},
                     }).execute()
                     log.info("  [Suno] Auto-queued deferred retry for word %s", word_record["id"])

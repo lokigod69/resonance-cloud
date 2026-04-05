@@ -158,7 +158,7 @@ export default function Music() {
     const { error } = await supabase.from('generation_jobs').insert({
       user_id: user.id,
       deck_id: deckId,
-      status: 'pending',
+      status: 'approved',
       priority: -1,
       job_type: 'suno_retry',
       target_word_id: wordId,
