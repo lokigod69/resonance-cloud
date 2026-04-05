@@ -4,6 +4,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { Loader, Music } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { useTranslation } from '@/hooks/useTranslation'
 
 type Deck = {
   id: string
@@ -23,6 +24,8 @@ export default function Dashboard() {
   const { profile, user, authError } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
+
+  const { t, tp } = useTranslation()
 
   const [decks, setDecks] = useState<Deck[]>([])
   const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
@@ -103,9 +106,9 @@ export default function Dashboard() {
   if (authError && !user) {
     return (
       <div className="classic-dashboard-header">
-        <h1>Session expired</h1>
+        <h1>{t('error.sessionExpired')}</h1>
         <p>{authError}</p>
-        <Link to="/login" className="classic-accent-link">Log in again</Link>
+        <Link to="/login" className="classic-accent-link">{t('dashboard.loginAgain')}</Link>
       </div>
     )
   }
@@ -113,14 +116,14 @@ export default function Dashboard() {
   if (authError && user) {
     return (
       <div className="classic-dashboard-header">
-        <h1>Profile failed to load</h1>
+        <h1>{t('error.profileFailed')}</h1>
         <p>{authError}</p>
         <button
           onClick={() => window.location.reload()}
           className="classic-accent-link"
           style={{ background: 'none', border: 'none', cursor: 'pointer' }}
         >
-          Retry
+          {t('common.retry')}
         </button>
       </div>
     )
@@ -129,10 +132,10 @@ export default function Dashboard() {
   if (dashboardError) {
     return (
       <div className="classic-dashboard-header">
-        <h1>Something went wrong</h1>
+        <h1>{t('error.somethingWrong')}</h1>
         <p>{dashboardError}</p>
         <button onClick={() => window.location.reload()} className="classic-accent-link" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-          Refresh
+          {t('common.refresh')}
         </button>
       </div>
     )
@@ -142,7 +145,7 @@ export default function Dashboard() {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
         <ParticleSpinner preset="rose" size={140} />
-        <p className="text-sm text-muted-foreground opacity-60">Loading decks...</p>
+        <p className="text-sm text-muted-foreground opacity-60">{t('dashboard.loadingDecks')}</p>
       </div>
     )
   }
@@ -152,13 +155,13 @@ export default function Dashboard() {
       <div className="classic-dashboard-wrapper">
         <div className="classic-aurora" aria-hidden="true" />
         <div className="classic-dashboard-header">
-          <h1>Create your first deck</h1>
-          <p>Choose a language, add some words, and watch AI create unique music videos for each one.</p>
+          <h1>{t('dashboard.createFirst')}</h1>
+          <p>{t('dashboard.createFirstBody')}</p>
           <button
             onClick={() => navigate('/generate')}
             className="classic-accent-btn"
           >
-            Generate
+            {t('dashboard.generate')}
           </button>
         </div>
       </div>
@@ -171,8 +174,12 @@ export default function Dashboard() {
       <div className="classic-aurora" aria-hidden="true" />
 
       <div className="classic-dashboard-header">
-        <h1 className="truncate">Welcome{profile?.display_name ? `, ${profile.display_name}` : ''}</h1>
-        <p>{decks.length} deck{decks.length !== 1 ? 's' : ''} &middot; {profile?.credits ?? 0} credits</p>
+        <h1 className="truncate">
+          {profile?.display_name
+            ? t('dashboard.welcomeUser', { name: profile.display_name })
+            : t('dashboard.welcome')}
+        </h1>
+        <p>{tp('dashboard.deckCount', decks.length)} &middot; {t('dashboard.credits', { count: profile?.credits ?? 0 })}</p>
       </div>
 
       <div className="classic-decks-grid">
@@ -211,10 +218,10 @@ export default function Dashboard() {
               {/* Text at bottom center */}
               <div style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
                 <h3 style={{ textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>{displayName}</h3>
-                <p style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{deck.target_language} &bull; {counts.total} {counts.total === 1 ? 'Word' : 'Words'}</p>
+                <p style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{deck.target_language} &bull; {tp('dashboard.wordCount', counts.total)}</p>
                 {deck.status !== 'complete' && (
                   <p className="classic-deck-status">
-                    {deck.status === 'generating' ? `Generating ${counts.completed}/${counts.total}` : deck.status}
+                    {deck.status === 'generating' ? t('dashboard.generating', { completed: counts.completed, total: counts.total }) : deck.status}
                   </p>
                 )}
               </div>
