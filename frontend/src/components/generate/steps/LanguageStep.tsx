@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import GlassCard from '../shared/GlassCard'
 import { LANGUAGES } from '../wizardData'
 import type { WizardState, WizardAction, ExistingDeck } from '../useWizardState'
+import { FlagIcon } from '@/components/ui/FlagIcon'
 
 interface LanguageStepProps {
   state: WizardState
@@ -38,7 +39,7 @@ export default function LanguageStep({ state, dispatch, existingDeck }: Language
           </h2>
           {lang && (
             <div className="flex items-center gap-2 mt-2">
-              <span className="text-3xl">{lang.flag}</span>
+              <FlagIcon code={lang.code} className="w-10 h-auto" />
               <span className="text-lg font-medium text-white/80">{lang.label}</span>
             </div>
           )}
@@ -78,7 +79,7 @@ export default function LanguageStep({ state, dispatch, existingDeck }: Language
               className="flex flex-col items-center gap-2 py-6"
               hoverStyle={{ borderColor: lang.color, boxShadow: `0 0 20px ${lang.color}20` }}
             >
-              <span className="text-3xl">{lang.flag}</span>
+              <FlagIcon code={lang.code} className="w-10 h-auto" />
               <span className="text-sm font-medium text-white/80">{lang.label}</span>
             </GlassCard>
           </motion.div>

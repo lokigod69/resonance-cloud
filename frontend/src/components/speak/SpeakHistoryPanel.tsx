@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { X, ArrowLeft, Mic, ChevronRight } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
+import { FlagIcon } from '@/components/ui/FlagIcon'
 
 interface Conversation {
   id: string
@@ -27,19 +28,19 @@ interface SpeakHistoryPanelProps {
   onClose: () => void
 }
 
-const LANGUAGE_FLAGS: Record<string, { flag: string; name: string }> = {
-  en:  { flag: '🇬🇧', name: 'English' },
-  de:  { flag: '🇩🇪', name: 'Deutsch' },
-  fr:  { flag: '🇫🇷', name: 'Français' },
-  it:  { flag: '🇮🇹', name: 'Italiano' },
-  es:  { flag: '🇪🇸', name: 'Español' },
-  pt:  { flag: '🇵🇹', name: 'Português' },
-  nl:  { flag: '🇳🇱', name: 'Nederlands' },
-  hi:  { flag: '🇮🇳', name: 'हिन्दी' },
-  ar:  { flag: '🇸🇦', name: 'العربية' },
-  fil: { flag: '🇵🇭', name: 'Filipino' },
-  id:  { flag: '🇮🇩', name: 'Bahasa Indonesia' },
-  ko:  { flag: '🇰🇷', name: '한국어' },
+const LANGUAGE_NAMES: Record<string, string> = {
+  en:  'English',
+  de:  'Deutsch',
+  fr:  'Français',
+  it:  'Italiano',
+  es:  'Español',
+  pt:  'Português',
+  nl:  'Nederlands',
+  hi:  'हिन्दी',
+  ar:  'العربية',
+  fil: 'Filipino',
+  id:  'Bahasa Indonesia',
+  ko:  '한국어',
 }
 
 const LEVEL_EMOJI: Record<string, string> = {
@@ -135,10 +136,10 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
           <div className="flex-1 min-w-0">
             {selectedConversation ? (
               <div className="flex items-center gap-2">
-                <span className="text-lg">{LANGUAGE_FLAGS[selectedConversation.language]?.flag ?? '🌐'}</span>
+                <FlagIcon code={selectedConversation.language} className="w-6 h-auto" />
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-white truncate">
-                    {LANGUAGE_FLAGS[selectedConversation.language]?.name ?? selectedConversation.language}
+                    {LANGUAGE_NAMES[selectedConversation.language] ?? selectedConversation.language}
                     {selectedConversation.voice_name && (
                       <span className="text-gray-400 font-normal"> · {selectedConversation.voice_name}</span>
                     )}
@@ -185,7 +186,6 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
               {!loading && conversations.length > 0 && (
                 <div className="space-y-2">
                   {conversations.map((conv) => {
-                    const lang = LANGUAGE_FLAGS[conv.language]
                     const levelEmoji = conv.level ? LEVEL_EMOJI[conv.level] : null
                     return (
                       <button
@@ -193,12 +193,12 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
                         onClick={() => setSelectedId(conv.id)}
                         className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left"
                       >
-                        <span className="text-2xl shrink-0">{lang?.flag ?? '🌐'}</span>
+                        <FlagIcon code={conv.language} className="w-7 h-auto shrink-0" />
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5 mb-0.5">
                             <span className="text-sm font-medium text-white truncate">
-                              {lang?.name ?? conv.language}
+                              {LANGUAGE_NAMES[conv.language] ?? conv.language}
                             </span>
                             {levelEmoji && <span className="text-sm">{levelEmoji}</span>}
                           </div>

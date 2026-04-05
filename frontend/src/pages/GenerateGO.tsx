@@ -4,6 +4,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
 import { LANGUAGES, VIBES, ART_STYLE_GROUPS, MAX_WORDS } from '@/components/generate/wizardData'
+import { FlagIcon } from '@/components/ui/FlagIcon'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import type { GeneratePayload, ExistingDeck } from '@/components/generate/useWizardState'
 
@@ -267,7 +268,7 @@ export default function GenerateGO() {
               className={orbClass(1, lang.value, language)}
               onClick={() => handleLanguageSelect(lang.value)}
             >
-              <span style={{ fontSize: '1.8rem', lineHeight: 1 }}>{lang.flag}</span>
+              <FlagIcon code={lang.code} className="w-10 h-auto" />
               <span className="gen-orb-label">{lang.label}</span>
             </div>
           ))}

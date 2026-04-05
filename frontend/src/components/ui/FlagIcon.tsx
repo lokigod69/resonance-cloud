@@ -65,6 +65,6 @@ export function FlagIcon({ code, className = 'w-8' }: FlagIconProps) {
     LANG_CODE_MAP[lower] ||
     COUNTRY_CODE_MAP[code.toUpperCase()] ||
     LANG_CODE_MAP[LANG_NAME_MAP[lower]]
-  if (!Flag) return <span className={className}>{code}</span>
+  if (!Flag) return null
   return <Flag className={`${className} inline-block rounded-sm`} />
 }

@@ -44,7 +44,7 @@ export default function DashboardPG() {
   const location = useLocation()
 
   const [decks, setDecks] = useState<Deck[]>([])
-  const { t, tp, locale } = useTranslation()
+  const { t, tp } = useTranslation()
 
   const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
   const [deckThumbnails, setDeckThumbnails] = useState<Record<string, string>>({})

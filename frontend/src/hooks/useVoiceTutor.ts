@@ -13,6 +13,8 @@ export interface TutorMessage {
   role: 'user' | 'assistant'
   content: string
   revealed: boolean
+  audioBase64?: string
+  audioFormat?: string
 }
 
 interface VoiceChatResponse {
@@ -42,6 +44,7 @@ export interface UseVoiceTutorReturn {
   newChat: () => Promise<void>
   resetConversation: () => void
   playPendingAudio: () => Promise<void>
+  replayMessageAudio: (message: TutorMessage) => Promise<void>
 }
 
 function saveVoicePreference(language: string, voiceId: string) {
@@ -381,7 +384,13 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       await ensureAudioContext()
 
       const data = await callVoiceChat(null, lang, v)
-      const msg: TutorMessage = { role: 'assistant', content: data.ai_text, revealed: true }
+      const msg: TutorMessage = {
+        role: 'assistant',
+        content: data.ai_text,
+        revealed: true,
+        audioBase64: data.audio_base64 || undefined,
+        audioFormat: data.audio_format || undefined,
+      }
       setMessages([msg])
       messagesRef.current = [msg]
       createConversation(lang, data.ai_text)
@@ -614,7 +623,13 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
           setMessages((prev) => {
             const next = [...prev]
             if (data.user_text) next.push({ role: 'user', content: data.user_text, revealed: true })
-            next.push({ role: 'assistant', content: data.ai_text, revealed: false })
+            next.push({
+              role: 'assistant',
+              content: data.ai_text,
+              revealed: false,
+              audioBase64: data.audio_base64 || undefined,
+              audioFormat: data.audio_format || undefined,
+            })
             return next
           })
           persistMessages(data.user_text || null, data.ai_text)
@@ -722,6 +737,12 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setStatus('idle')
   }, [releaseResources, endConversation])
 
+  const replayMessageAudio = useCallback(async (message: TutorMessage) => {
+    if (!message.audioBase64 || message.role !== 'assistant') return
+    if (statusRef.current === 'playing') return
+    await playAudio(message.audioBase64, message.audioFormat || 'mp3')
+  }, [playAudio])
+
   return {
     language,
     voice,
@@ -742,5 +763,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     changeLevel,
     newChat,
     resetConversation,
+    replayMessageAudio,
   }
 }

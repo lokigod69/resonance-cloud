@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { LANGUAGES } from './landingData'
 import ScrollReveal from './ScrollReveal'
+import { FlagIcon } from '@/components/ui/FlagIcon'
 
 const langVariant = {
   hidden: { opacity: 0, scale: 0.1 },
@@ -48,7 +49,7 @@ export default function LanguagesSection() {
                 borderBottom: `2px solid ${lang.color}60`,
               }}
             >
-              <div className="text-4xl mb-2">{lang.flag}</div>
+              <div className="mb-2"><FlagIcon code={lang.code} className="w-12 h-auto" /></div>
               <p className="text-sm font-medium" style={{ color: lang.color }}>
                 {lang.label}
               </p>

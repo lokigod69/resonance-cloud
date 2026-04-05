@@ -1,15 +1,23 @@
+import type { ReactNode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LANGUAGES, VIBES, GENRES, ART_STYLE_GROUPS } from './wizardData'
 import type { WizardState, WizardAction } from './useWizardState'
+import { FlagIcon } from '@/components/ui/FlagIcon'
 
 interface WizardProgressProps {
   state: WizardState
   dispatch: React.Dispatch<WizardAction>
 }
 
-function getLanguageLabel(value: string) {
+function getLanguageLabel(value: string): ReactNode {
   const lang = LANGUAGES.find((l) => l.value === value)
-  return lang ? `${lang.flag} ${lang.label}` : value
+  if (!lang) return value
+  return (
+    <span className="inline-flex items-center gap-1">
+      <FlagIcon code={lang.code} className="w-4 h-auto" />
+      {lang.label}
+    </span>
+  )
 }
 
 function getVibeLabel(value: string) {
@@ -32,7 +40,7 @@ function getGenreLabel(value: string) {
 
 interface PillDef {
   key: string
-  label: string
+  label: ReactNode
   step: 1 | 2 | 3 | 4 | 5 | 6
 }
 

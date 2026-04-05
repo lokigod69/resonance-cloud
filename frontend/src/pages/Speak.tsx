@@ -1,22 +1,23 @@
 import { useEffect, useRef, useState } from 'react'
-import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, RefreshCw, MessageSquarePlus, History } from 'lucide-react'
+import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, RefreshCw, MessageSquarePlus, History, Signal } from 'lucide-react'
 import { useVoiceTutor } from '@/hooks/useVoiceTutor'
 import { getVoicesForLanguage, type TutorVoice } from '@/voiceRegistry'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
+import { FlagIcon } from '@/components/ui/FlagIcon'
 
 const LANGUAGES = [
-  { code: 'en', flag: '🇬🇧', nativeName: 'English' },
-  { code: 'de', flag: '🇩🇪', nativeName: 'Deutsch' },
-  { code: 'fr', flag: '🇫🇷', nativeName: 'Français' },
-  { code: 'it', flag: '🇮🇹', nativeName: 'Italiano' },
-  { code: 'es', flag: '🇪🇸', nativeName: 'Español' },
-  { code: 'pt', flag: '🇵🇹', nativeName: 'Português' },
-  { code: 'nl', flag: '🇳🇱', nativeName: 'Nederlands' },
-  { code: 'hi', flag: '🇮🇳', nativeName: 'हिन्दी' },
-  { code: 'ar',  flag: '🇸🇦', nativeName: 'العربية' },
-  { code: 'fil', flag: '🇵🇭', nativeName: 'Filipino' },
-  { code: 'id',  flag: '🇮🇩', nativeName: 'Bahasa Indonesia' },
-  { code: 'ko',  flag: '🇰🇷', nativeName: '한국어' },
+  { code: 'en', nativeName: 'English' },
+  { code: 'de', nativeName: 'Deutsch' },
+  { code: 'fr', nativeName: 'Français' },
+  { code: 'it', nativeName: 'Italiano' },
+  { code: 'es', nativeName: 'Español' },
+  { code: 'pt', nativeName: 'Português' },
+  { code: 'nl', nativeName: 'Nederlands' },
+  { code: 'hi', nativeName: 'हिन्दी' },
+  { code: 'ar',  nativeName: 'العربية' },
+  { code: 'fil', nativeName: 'Filipino' },
+  { code: 'id',  nativeName: 'Bahasa Indonesia' },
+  { code: 'ko',  nativeName: '한국어' },
 ]
 
 function TypingIndicator() {
@@ -118,7 +119,7 @@ export default function Speak() {
                   disabled={tutor.status === 'processing'}
                   className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span className="text-3xl">{lang.flag}</span>
+                  <FlagIcon code={lang.code} className="w-10 h-auto" />
                   <span className="text-sm font-medium text-gray-200 text-center leading-tight">
                     {lang.nativeName}
                   </span>
@@ -161,7 +162,7 @@ export default function Speak() {
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
-            <span className="text-xl">{selectedLang?.flag}</span>
+            <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
             <span className="text-sm font-medium text-white">{selectedLang?.nativeName}</span>
           </div>
         </div>
@@ -236,7 +237,7 @@ export default function Speak() {
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
-            <span className="text-xl">{selectedLang?.flag}</span>
+            <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
             <span className="text-sm font-medium text-white">{selectedLang?.nativeName}</span>
           </div>
         </div>
@@ -289,7 +290,7 @@ export default function Speak() {
         </button>
 
         <div className="flex items-center gap-2 flex-1 min-w-0">
-          <span className="text-xl shrink-0">{selectedLang?.flag}</span>
+          <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
           <div className="min-w-0">
             <p className="text-sm font-medium text-white truncate">{tutor.voice.name}</p>
             <p className="text-xs text-gray-500 truncate">{selectedLang?.nativeName}</p>
@@ -302,7 +303,7 @@ export default function Speak() {
           title="Change level"
         >
           <span className="text-sm">
-            {tutor.level === 'zero' ? '🌱' : tutor.level === 'beginner' ? '📗' : tutor.level === 'intermediate' ? '📘' : '📕'}
+            {tutor.level === 'zero' ? '🌱' : tutor.level === 'beginner' ? '📗' : tutor.level === 'intermediate' ? '📘' : tutor.level === 'advanced' ? '📕' : <Signal className="w-4 h-4" />}
           </span>
           <span className="hidden sm:inline">Level</span>
         </button>
@@ -349,10 +350,11 @@ export default function Speak() {
             className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
+              onClick={msg.role === 'assistant' && msg.audioBase64 ? () => tutor.replayMessageAudio(msg) : undefined}
               className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed transition-opacity duration-500 ${
                 msg.role === 'user'
                   ? 'bg-cyan-900/50 text-white rounded-br-sm opacity-100'
-                  : `bg-gray-800/60 text-gray-100 rounded-bl-sm ${msg.revealed ? 'opacity-100' : 'opacity-0'}`
+                  : `bg-gray-800/60 text-gray-100 rounded-bl-sm ${msg.revealed ? 'opacity-100' : 'opacity-0'}${msg.audioBase64 ? ' cursor-pointer active:bg-gray-700/60 transition-colors' : ''}`
               }`}
             >
               {msg.role === 'assistant' && !msg.revealed ? (
