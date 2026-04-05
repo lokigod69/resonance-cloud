@@ -29,5 +29,17 @@ export function useTranslation() {
     return str;
   };
 
-  return { t, locale };
+  /**
+   * Pluralization helper.
+   * tp('dashboard.deckCount', count) resolves to:
+   *   count === 1 → 'dashboard.deckCount.one'
+   *   count !== 1 → 'dashboard.deckCount.other'
+   * Additional vars can be passed as a third argument.
+   */
+  const tp = (keyBase: string, count: number, vars?: Record<string, string | number>): string => {
+    const pluralKey = count === 1 ? `${keyBase}.one` : `${keyBase}.other`;
+    return t(pluralKey, { count, ...vars });
+  };
+
+  return { t, tp, locale };
 }
