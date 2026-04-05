@@ -215,7 +215,7 @@ export default function GeneratePG() {
             className="px-6 py-3 rounded-full pg-glass text-sm font-display font-medium text-[var(--pg-accent-teal)] hover:bg-white/5 transition-all"
           >
             <ArrowLeft className="h-4 w-4 inline mr-2" />
-            {existingDeck ? 'Back to Deck' : 'Back to Dashboard'}
+            {existingDeck ? 'Back to Deck' : 'Back to Decks'}
           </Link>
         </motion.div>
       </div>

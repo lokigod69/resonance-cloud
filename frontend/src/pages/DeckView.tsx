@@ -180,7 +180,7 @@ export default function DeckView() {
         <AlertCircle className="h-12 w-12 text-muted-foreground/50 mb-4" />
         <h2 className="text-xl font-semibold">Deck not found</h2>
         <Button asChild variant="ghost" className="mt-4">
-          <Link to="/dashboard">Back to Dashboard</Link>
+          <Link to="/dashboard">Back to Decks</Link>
         </Button>
       </div>
     )

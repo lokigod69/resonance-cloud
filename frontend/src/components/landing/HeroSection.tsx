@@ -30,14 +30,6 @@ export default function HeroSection() {
           <img src="/favicon.svg" alt="Resonance" className="h-7 w-7" />
           <span className="font-bold text-xl">Resonance</span>
         </Link>
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" asChild className="hidden sm:inline-flex">
-            <Link to="/login">Sign In</Link>
-          </Button>
-          <Button asChild>
-            <Link to="/login?mode=signup">Get Started</Link>
-          </Button>
-        </div>
       </header>
 
       {/* Hero content — floats up and fades on scroll */}
@@ -99,11 +91,11 @@ export default function HeroSection() {
                 <Button size="lg" asChild className="text-lg px-8 py-6">
                   <Link to="/login?mode=signup">
                     <Sparkles className="h-5 w-5 mr-2" />
-                    Try it free
+                    Start Learning — It's Free
                   </Link>
                 </Button>
               </motion.div>
-              <p className="mt-3 text-sm text-white/50 sm:hidden">
+              <p className="mt-3 text-sm text-white/50">
                 Already have an account?{' '}
                 <Link to="/login" className="text-white/80 hover:text-white underline underline-offset-2">Sign in</Link>
               </p>

@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { DEMO_WORDS } from './landingData'
 import ScrollReveal from './ScrollReveal'
 import WaveformDivider from './WaveformDivider'
+import { FlagIcon } from '@/components/ui/FlagIcon'
 
 const cardVariants = {
   hidden: { opacity: 0, y: 80, rotateX: 15, scale: 0.9 },
@@ -68,7 +69,7 @@ export default function DemoReelSection() {
 
         {/* Content at bottom */}
         <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
-          <p className="text-xs text-white/50">{w.flag} {w.language}</p>
+          <p className="text-xs text-white/50"><FlagIcon code={w.language} className="w-4 h-auto" /> {w.language}</p>
           <p className="text-xl font-bold text-white">{w.word}</p>
           <p className="text-sm text-white/60">{w.translation}</p>
         </div>

@@ -230,7 +230,7 @@ export default function StudyPG() {
             onClick={() => navigate('/dashboard')}
             className="px-6 py-3 rounded-xl border border-white/10 text-[var(--pg-text-dim)] font-display font-medium hover:bg-white/5 transition-all"
           >
-            Dashboard
+            Decks
           </button>
         </div>
       </div>

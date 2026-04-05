@@ -148,7 +148,7 @@ export default function GenerateWizard() {
           <Link to={existingDeck ? `/deck/${existingDeck.id}` : '/dashboard'}>
             <PillButton glow>
               <ArrowLeft className="h-4 w-4" />
-              {existingDeck ? 'Back to Deck' : 'Back to Dashboard'}
+              {existingDeck ? 'Back to Deck' : 'Back to Decks'}
             </PillButton>
           </Link>
         </motion.div>

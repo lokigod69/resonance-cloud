@@ -11,6 +11,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Coins, Check, Gift } from 'lucide-react'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export function RedeemCodeDialog({
   open,
@@ -20,6 +21,7 @@ export function RedeemCodeDialog({
   onOpenChange: (open: boolean) => void
 }) {
   const { user, profile, refreshProfile } = useAuth()
+  const { t } = useTranslation()
 
   const [inviteCode, setInviteCode] = useState('')
   const [redeeming, setRedeeming] = useState(false)
@@ -39,7 +41,7 @@ export function RedeemCodeDialog({
       if (!rpcError && data) {
         const result = data as { success: boolean; credits_awarded?: number; error?: string }
         if (!result.success) {
-          setRedeemError(result.error || 'Failed to redeem code.')
+          setRedeemError(result.error || t('credits.errorFailed'))
         } else {
           setRedeemSuccess({ credits: result.credits_awarded || 0 })
           setInviteCode('')
@@ -60,19 +62,19 @@ export function RedeemCodeDialog({
       .maybeSingle()
 
     if (lookupError) {
-      setRedeemError('Error looking up code. Please try again.')
+      setRedeemError(t('credits.errorLookup'))
       setRedeeming(false)
       return
     }
 
     if (!invite) {
-      setRedeemError('Invalid invite code.')
+      setRedeemError(t('credits.errorInvalid'))
       setRedeeming(false)
       return
     }
 
     if (invite.redeemed_by) {
-      setRedeemError('This code has already been redeemed.')
+      setRedeemError(t('credits.errorRedeemed'))
       setRedeeming(false)
       return
     }
@@ -84,7 +86,7 @@ export function RedeemCodeDialog({
       .is('redeemed_by', null)
 
     if (updateError) {
-      setRedeemError('Failed to redeem code. Please try again.')
+      setRedeemError(t('credits.errorFailed'))
       setRedeeming(false)
       return
     }
@@ -122,10 +124,10 @@ export function RedeemCodeDialog({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Coins className="h-5 w-5 text-primary" />
-            Credits
+            {t('credits.heading')}
           </DialogTitle>
           <DialogDescription>
-            Your credit balance and code redemption
+            {t('credits.description')}
           </DialogDescription>
         </DialogHeader>
 
@@ -133,7 +135,7 @@ export function RedeemCodeDialog({
         <div className="flex items-center justify-center py-4">
           <div className="text-center">
             <div className="text-4xl font-bold">{profile?.credits ?? 0}</div>
-            <div className="text-sm text-muted-foreground mt-1">credits available</div>
+            <div className="text-sm text-muted-foreground mt-1">{t('credits.available')}</div>
           </div>
         </div>
 
@@ -141,13 +143,13 @@ export function RedeemCodeDialog({
         <div className="space-y-3 border-t border-border pt-4">
           <div className="flex items-center gap-2 text-sm font-medium">
             <Gift className="h-4 w-4" />
-            Redeem an invite code
+            {t('credits.redeemHeading')}
           </div>
 
           {!redeemSuccess ? (
             <div className="space-y-2">
               <Input
-                placeholder="Enter invite code"
+                placeholder={t('credits.placeholder')}
                 value={inviteCode}
                 onChange={(e) => setInviteCode(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleRedeem()}
@@ -161,7 +163,7 @@ export function RedeemCodeDialog({
                 onClick={handleRedeem}
                 disabled={redeeming || !inviteCode.trim()}
               >
-                {redeeming ? 'Redeeming...' : 'Redeem Code'}
+                {redeeming ? t('credits.redeeming') : t('credits.redeemButton')}
               </Button>
             </div>
           ) : (
@@ -170,7 +172,7 @@ export function RedeemCodeDialog({
                 <Check className="h-5 w-5 text-green-400" />
               </div>
               <p className="text-sm font-medium">
-                +{redeemSuccess.credits} credits added!
+                {t('credits.added', { count: redeemSuccess.credits })}
               </p>
             </div>
           )}

@@ -31,7 +31,7 @@ export default function CtaFooterSection() {
           <Button size="lg" asChild className="text-lg px-8 py-6">
             <Link to="/login?mode=signup">
               <Sparkles className="h-5 w-5 mr-2" />
-              Get started — it's free
+              Start Learning — It's Free
             </Link>
           </Button>
         </motion.div>

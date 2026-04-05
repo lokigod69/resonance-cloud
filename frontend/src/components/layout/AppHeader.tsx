@@ -27,14 +27,7 @@ import {
 } from 'lucide-react'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import ProfileModal from '@/components/ProfileModal'
-
-const mainNav = [
-  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/generate', label: 'Generate', icon: Sparkles },
-  { to: '/study', label: 'Study', icon: BookOpen },
-  { to: '/music', label: 'Music', icon: Music },
-  { to: '/speak', label: 'Speak', icon: Mic },
-]
+import { useTranslation } from '@/hooks/useTranslation'
 
 const adminNav = [
   { to: '/admin/queue', label: 'Job Queue', icon: ListOrdered },
@@ -47,11 +40,20 @@ const adminNav = [
 
 export function AppHeader() {
   const { profile, user } = useAuth()
+  const { t } = useTranslation()
   const location = useLocation()
   const isAdmin = profile?.role === 'admin'
   const [mobileOpen, setMobileOpen] = useState(false)
   const [redeemOpen, setRedeemOpen] = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
+
+  const mainNav = [
+    { to: '/dashboard', label: t('nav.decks'), icon: LayoutDashboard },
+    { to: '/generate', label: t('nav.generate'), icon: Sparkles },
+    { to: '/study', label: t('nav.study'), icon: BookOpen },
+    { to: '/music', label: t('nav.music'), icon: Music },
+    { to: '/speak', label: t('nav.speak'), icon: Mic },
+  ]
 
   const displayName = profile?.display_name || user?.email?.split('@')[0] || 'User'
   const initials = displayName

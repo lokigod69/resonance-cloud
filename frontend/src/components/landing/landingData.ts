@@ -26,31 +26,31 @@ const D_FR3 = '0437adf6-91ed-4d8f-9172-ae37e66c0a6a'  // U1 French: oublier
 export const HERO_VIDEO_URL = vid(U2, D_FR2, 'riviere')
 
 export const DEMO_WORDS = [
-  { word: 'ciel', translation: 'sky', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'ciel'), videoUrl: vid(U2, D_FR2, 'ciel') },
-  { word: 'Fuchs', translation: 'fox', language: 'German', flag: '🇩🇪', thumbnail: thumb(U1, D_DE1, 'fuchs'), videoUrl: vid(U1, D_DE1, 'fuchs') },
-  { word: 'furz', translation: 'fart', language: 'German', flag: '🇩🇪', thumbnail: thumb(U2, D_DE2, 'furz'), videoUrl: vid(U2, D_DE2, 'furz') },
-  { word: 'Peur', translation: 'fear', language: 'French', flag: '🇫🇷', thumbnail: thumb(U1, D_FR1, 'peur'), videoUrl: vid(U1, D_FR1, 'peur') },
-  { word: 'ferocious', translation: 'wild', language: 'English', flag: '🇬🇧', thumbnail: thumb(U2, D_EN, 'ferocious'), videoUrl: vid(U2, D_EN, 'ferocious') },
-  { word: 'liberté', translation: 'freedom', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'liberte'), videoUrl: vid(U2, D_FR2, 'liberte') },
-  { word: 'garbage truck', translation: 'garbage truck', language: 'English', flag: '🇬🇧', thumbnail: thumb(U1, D_EN2, 'garbage-truck'), videoUrl: vid(U1, D_EN2, 'garbage-truck') },
-  { word: 'oublier', translation: 'to forget', language: 'French', flag: '🇫🇷', thumbnail: thumb(U1, D_FR3, 'oublier'), videoUrl: vid(U1, D_FR3, 'oublier') },
-  { word: 'Ferkelchen', translation: 'piglet', language: 'German', flag: '🇩🇪', thumbnail: thumb(U2, D_DE3, 'ferkelchen'), videoUrl: vid(U2, D_DE3, 'ferkelchen') },
-  { word: 'frigide', translation: 'frigid', language: 'German', flag: '🇩🇪', thumbnail: thumb(U2, D_DE2, 'frigide'), videoUrl: vid(U2, D_DE2, 'frigide') },
-  { word: 'chameau', translation: 'camel', language: 'French', flag: '🇫🇷', thumbnail: thumb(U2, D_FR2, 'chameau'), videoUrl: vid(U2, D_FR2, 'chameau') },
-  { word: 'lahmarschig', translation: 'sluggish', language: 'German', flag: '🇩🇪', thumbnail: thumb(U2, D_DE2, 'lahmarschig'), videoUrl: vid(U2, D_DE2, 'lahmarschig') },
+  { word: 'ciel', translation: 'sky', language: 'French', thumbnail: thumb(U2, D_FR2, 'ciel'), videoUrl: vid(U2, D_FR2, 'ciel') },
+  { word: 'Fuchs', translation: 'fox', language: 'German', thumbnail: thumb(U1, D_DE1, 'fuchs'), videoUrl: vid(U1, D_DE1, 'fuchs') },
+  { word: 'furz', translation: 'fart', language: 'German', thumbnail: thumb(U2, D_DE2, 'furz'), videoUrl: vid(U2, D_DE2, 'furz') },
+  { word: 'Peur', translation: 'fear', language: 'French', thumbnail: thumb(U1, D_FR1, 'peur'), videoUrl: vid(U1, D_FR1, 'peur') },
+  { word: 'ferocious', translation: 'wild', language: 'English', thumbnail: thumb(U2, D_EN, 'ferocious'), videoUrl: vid(U2, D_EN, 'ferocious') },
+  { word: 'liberté', translation: 'freedom', language: 'French', thumbnail: thumb(U2, D_FR2, 'liberte'), videoUrl: vid(U2, D_FR2, 'liberte') },
+  { word: 'garbage truck', translation: 'garbage truck', language: 'English', thumbnail: thumb(U1, D_EN2, 'garbage-truck'), videoUrl: vid(U1, D_EN2, 'garbage-truck') },
+  { word: 'oublier', translation: 'to forget', language: 'French', thumbnail: thumb(U1, D_FR3, 'oublier'), videoUrl: vid(U1, D_FR3, 'oublier') },
+  { word: 'Ferkelchen', translation: 'piglet', language: 'German', thumbnail: thumb(U2, D_DE3, 'ferkelchen'), videoUrl: vid(U2, D_DE3, 'ferkelchen') },
+  { word: 'frigide', translation: 'frigid', language: 'German', thumbnail: thumb(U2, D_DE2, 'frigide'), videoUrl: vid(U2, D_DE2, 'frigide') },
+  { word: 'chameau', translation: 'camel', language: 'French', thumbnail: thumb(U2, D_FR2, 'chameau'), videoUrl: vid(U2, D_FR2, 'chameau') },
+  { word: 'lahmarschig', translation: 'sluggish', language: 'German', thumbnail: thumb(U2, D_DE2, 'lahmarschig'), videoUrl: vid(U2, D_DE2, 'lahmarschig') },
 ]
 
 export const LANGUAGES = [
-  { label: 'German',     flag: '🇩🇪', color: '#FFD700' },
-  { label: 'French',     flag: '🇫🇷', color: '#4A90D9' },
-  { label: 'Italian',    flag: '🇮🇹', color: '#4CAF50' },
-  { label: 'English',    flag: '🇬🇧', color: '#E53935' },
-  { label: 'Tagalog',    flag: '🇵🇭', color: '#FF6B35' },
-  { label: 'Bisaya',     flag: '🇵🇭', color: '#AB47BC' },
-  { label: 'Indonesian', flag: '🇮🇩', color: '#009688' },
-  { label: 'Dutch',      flag: '🇳🇱', color: '#E65100' },
-  { label: 'Spanish',    flag: '🇪🇸', color: '#C62828' },
-  { label: 'Hindi',      flag: '🇮🇳', color: '#F9A825' },
+  { label: 'German',     code: 'de',  color: '#FFD700' },
+  { label: 'French',     code: 'fr',  color: '#4A90D9' },
+  { label: 'Italian',    code: 'it',  color: '#4CAF50' },
+  { label: 'English',    code: 'en',  color: '#E53935' },
+  { label: 'Tagalog',    code: 'fil', color: '#FF6B35' },
+  { label: 'Bisaya',     code: 'ceb', color: '#AB47BC' },
+  { label: 'Indonesian', code: 'id',  color: '#009688' },
+  { label: 'Dutch',      code: 'nl',  color: '#E65100' },
+  { label: 'Spanish',    code: 'es',  color: '#C62828' },
+  { label: 'Hindi',      code: 'hi',  color: '#F9A825' },
 ]
 
 export const TUTOR_MOCK_CONVERSATION = [
@@ -60,7 +60,7 @@ export const TUTOR_MOCK_CONVERSATION = [
   { role: 'assistant', text: 'Fast perfekt! Es heißt "eine Brezel" — und du hast es richtig gesagt! 🥨 Was möchtest du noch bestellen?' },
 ]
 
-export const TUTOR_MOCK_LANGUAGE = { label: 'German', flag: '🇩🇪' }
+export const TUTOR_MOCK_LANGUAGE = { label: 'German', code: 'de' }
 
 export const STEPS = [
   {

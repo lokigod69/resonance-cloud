@@ -234,7 +234,7 @@ export default function Onboarding() {
               className="w-full h-12"
               onClick={handleFinish}
             >
-              {redeemSuccess ? 'Go to Dashboard' : 'Skip for now'}
+              {redeemSuccess ? 'Go to Decks' : 'Skip for now'}
               <ChevronRight className="h-4 w-4 ml-2" />
             </Button>
           </div>

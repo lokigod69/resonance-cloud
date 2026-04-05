@@ -1,10 +1,10 @@
 export const LANGUAGES = [
-  { value: 'German',     label: 'Deutsch',          flag: '\ud83c\udde9\ud83c\uddea', color: '#f59e0b' },
-  { value: 'French',     label: 'Fran\u00e7ais',    flag: '\ud83c\uddeb\ud83c\uddf7', color: '#3b82f6' },
-  { value: 'Italian',    label: 'Italiano',          flag: '\ud83c\uddee\ud83c\uddf9', color: '#22c55e' },
-  { value: 'English',    label: 'English',           flag: '\ud83c\uddec\ud83c\udde7', color: '#6366f1' },
-  { value: 'Bisaya',     label: 'Bisaya',            flag: '\ud83c\uddf5\ud83c\udded', color: '#ef4444' },
-  { value: 'Indonesian', label: 'Bahasa Indonesia',  flag: '\ud83c\uddee\ud83c\udde9', color: '#f97316' },
+  { value: 'German',     label: 'Deutsch',          code: 'de',  color: '#f59e0b' },
+  { value: 'French',     label: 'Français',         code: 'fr',  color: '#3b82f6' },
+  { value: 'Italian',    label: 'Italiano',          code: 'it',  color: '#22c55e' },
+  { value: 'English',    label: 'English',           code: 'en',  color: '#6366f1' },
+  { value: 'Bisaya',     label: 'Bisaya',            code: 'ceb', color: '#ef4444' },
+  { value: 'Indonesian', label: 'Bahasa Indonesia',  code: 'id',  color: '#f97316' },
 ] as const
 
 export const VIBES = [

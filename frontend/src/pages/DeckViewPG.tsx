@@ -304,7 +304,7 @@ export default function DeckViewPG() {
         <AlertCircle className="h-12 w-12 text-white/20 mb-4" />
         <h2 className="text-xl font-semibold font-display">Deck not found</h2>
         <Button asChild variant="ghost" className="mt-4">
-          <Link to="/dashboard">Back to Dashboard</Link>
+          <Link to="/dashboard">Back to Decks</Link>
         </Button>
       </div>
     )

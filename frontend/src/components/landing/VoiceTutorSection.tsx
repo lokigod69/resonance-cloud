@@ -1,6 +1,7 @@
 import { Mic, Globe, Volume2, ChevronLeft, RotateCcw } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 import { TUTOR_MOCK_CONVERSATION, TUTOR_MOCK_LANGUAGE } from './landingData'
+import { FlagIcon } from '@/components/ui/FlagIcon'
 
 export default function VoiceTutorSection() {
   return (
@@ -28,7 +29,7 @@ export default function VoiceTutorSection() {
                   <ChevronLeft className="h-5 w-5" />
                 </div>
                 <div className="flex items-center gap-2 flex-1">
-                  <span className="text-xl">{TUTOR_MOCK_LANGUAGE.flag}</span>
+                  <FlagIcon code={TUTOR_MOCK_LANGUAGE.code} className="w-7 h-auto" />
                   <span className="text-sm font-medium text-white">{TUTOR_MOCK_LANGUAGE.label}</span>
                 </div>
                 <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-gray-600">

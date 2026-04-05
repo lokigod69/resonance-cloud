@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { LogOut, Check } from 'lucide-react'
+import { useTranslation } from '@/hooks/useTranslation'
 
 const LANGUAGES = [
   { value: 'English', label: 'English' },
@@ -49,6 +50,7 @@ interface ProfileModalProps {
 
 export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) {
   const { profile, user, signOut, refreshProfile } = useAuth()
+  const { t } = useTranslation()
   const { skin, setSkin } = useSkin()
   const { theme, setTheme } = useTheme()
 
@@ -113,13 +115,13 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Profile</DialogTitle>
+          <DialogTitle>{t('profile.heading')}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-6 py-2">
           {/* Skin Selector */}
           <div className="space-y-2">
-            <label className="text-sm font-medium">Skin</label>
+            <label className="text-sm font-medium">{t('profile.skin')}</label>
             <div className="grid grid-cols-2 gap-2">
               {SKINS.map((s) => (
                 <button
@@ -139,20 +141,20 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
 
           {/* Theme Selector */}
           <div className="space-y-2">
-            <label className="text-sm font-medium">Theme</label>
+            <label className="text-sm font-medium">{t('profile.theme')}</label>
             <div className="flex gap-2">
-              {THEMES.map((t) => (
+              {THEMES.map((themeOption) => (
                 <button
-                  key={t.id}
-                  onClick={() => setTheme(t.id)}
-                  aria-label={t.label}
-                  title={t.label}
+                  key={themeOption.id}
+                  onClick={() => setTheme(themeOption.id)}
+                  aria-label={themeOption.label}
+                  title={themeOption.label}
                   className={`w-[46px] h-[44px] rounded-md border-2 transition-all ${
-                    theme === t.id
+                    theme === themeOption.id
                       ? 'border-primary ring-2 ring-primary/30'
                       : 'border-border hover:border-muted-foreground'
                   }`}
-                  style={{ background: t.bg }}
+                  style={{ background: themeOption.bg }}
                 />
               ))}
             </div>
@@ -160,20 +162,20 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
 
           {/* Display Name */}
           <div className="space-y-2">
-            <label className="text-sm font-medium">Display Name</label>
+            <label className="text-sm font-medium">{t('profile.displayName')}</label>
             <div className="flex items-center gap-2">
               <Input
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSaveDisplayName()}
                 onBlur={() => { if (open) handleSaveDisplayName() }}
-                placeholder="Enter your name"
+                placeholder={t('profile.displayNamePlaceholder')}
                 className="bg-white/5 border-border"
               />
-              {nameSaving && <span className="text-xs text-muted-foreground shrink-0">Saving...</span>}
+              {nameSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
               {nameSaved && (
                 <span className="text-xs text-green-400 flex items-center gap-1 shrink-0">
-                  <Check className="h-3 w-3" /> Saved
+                  <Check className="h-3 w-3" /> {t('profile.saved')}
                 </span>
               )}
             </div>
@@ -181,11 +183,11 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
 
           {/* Base Language */}
           <div className="space-y-2">
-            <label className="text-sm font-medium">Base Language</label>
+            <label className="text-sm font-medium">{t('profile.baseLanguage')}</label>
             <div className="flex items-center gap-2">
               <Select value={baseLanguage} onValueChange={handleSaveLanguage}>
                 <SelectTrigger className="bg-white/5 border-border">
-                  <SelectValue placeholder="Select language" />
+                  <SelectValue placeholder={t('profile.selectLanguage')} />
                 </SelectTrigger>
                 <SelectContent>
                   {LANGUAGES.map((lang) => (
@@ -195,10 +197,10 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   ))}
                 </SelectContent>
               </Select>
-              {langSaving && <span className="text-xs text-muted-foreground shrink-0">Saving...</span>}
+              {langSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
               {langSaved && (
                 <span className="text-xs text-green-400 flex items-center gap-1 shrink-0">
-                  <Check className="h-3 w-3" /> Saved
+                  <Check className="h-3 w-3" /> {t('profile.saved')}
                 </span>
               )}
             </div>
@@ -206,14 +208,14 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
 
           {/* Email (read-only) */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-muted-foreground">Email</label>
+            <label className="text-sm font-medium text-muted-foreground">{t('profile.email')}</label>
             <p className="text-sm text-muted-foreground">{user?.email}</p>
           </div>
 
           {/* Sign Out */}
           <Button variant="outline" onClick={signOut} className="w-full border-border">
             <LogOut className="h-4 w-4 mr-2" />
-            Sign Out
+            {t('profile.signOut')}
           </Button>
         </div>
       </DialogContent>

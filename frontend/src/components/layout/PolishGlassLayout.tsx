@@ -5,18 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Coins, User, Shield, LayoutDashboard, Sparkles, BookOpen, Music, Mic } from 'lucide-react'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import ProfileModal from '@/components/ProfileModal'
-
-const navItems = [
-  { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
-  { label: 'Generate', path: '/generate', icon: Sparkles },
-  { label: 'Study', path: '/study', icon: BookOpen },
-  { label: 'Music', path: '/music', icon: Music },
-  { label: 'Speak', path: '/speak', icon: Mic },
-]
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function PolishGlassLayout() {
   const location = useLocation()
   const { profile } = useAuth()
+  const { t } = useTranslation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [redeemOpen, setRedeemOpen] = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
@@ -27,6 +21,14 @@ export default function PolishGlassLayout() {
   }, [location.pathname])
 
   const isAdmin = profile?.role === 'admin'
+
+  const navItems = [
+    { label: t('nav.decks'), path: '/dashboard', icon: LayoutDashboard },
+    { label: t('nav.generate'), path: '/generate', icon: Sparkles },
+    { label: t('nav.study'), path: '/study', icon: BookOpen },
+    { label: t('nav.music'), path: '/music', icon: Music },
+    { label: t('nav.speak'), path: '/speak', icon: Mic },
+  ]
 
   const isActive = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + '/')

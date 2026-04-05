@@ -229,7 +229,7 @@ export default function Study() {
             Start Again
           </Button>
           <Button variant="outline" onClick={() => navigate('/dashboard')}>
-            Dashboard
+            Decks
           </Button>
         </div>
       </div>

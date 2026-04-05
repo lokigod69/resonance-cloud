@@ -20,7 +20,7 @@ import { Menu } from 'lucide-react'
 import { useState } from 'react'
 
 const mainNav = [
-  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/dashboard', label: 'Decks', icon: LayoutDashboard },
   { to: '/generate', label: 'Generate', icon: Sparkles },
   { to: '/study', label: 'Study', icon: BookOpen },
 ]
