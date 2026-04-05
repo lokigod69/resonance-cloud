@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/select'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import { useTranslation } from '@/hooks/useTranslation'
 
 type DeckOption = { id: string; name: string | null }
 
@@ -25,6 +26,7 @@ export default function StudyPG() {
   const [searchParams] = useSearchParams()
   const deckParam = searchParams.get('deck')
   const { user } = useAuth()
+  const { t, tp } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const [deckFilter, setDeckFilter] = useState<string>(deckParam ?? 'all')
@@ -162,7 +164,7 @@ export default function StudyPG() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <ParticleSpinner preset="heart" size={140} />
-        <p className="text-sm text-muted-foreground opacity-60">Loading study cards...</p>
+        <p className="text-sm text-muted-foreground opacity-60">{t('study.loadingCards')}</p>
       </div>
     )
   }
@@ -174,12 +176,12 @@ export default function StudyPG() {
         <BookOpen className="h-12 w-12 text-white/15" />
         <div>
           <h2 className="text-xl font-bold font-display mb-2">
-            {isFiltered ? 'No cards ready to study in this deck' : 'No words ready to study yet'}
+            {isFiltered ? t('study.noCardsReady') : t('study.noWordsReady')}
           </h2>
           <p className="text-[var(--pg-text-dim)] text-sm max-w-sm">
             {isFiltered
-              ? 'Add cards to this deck and wait for videos to finish processing.'
-              : "Generate a deck first — once your videos are ready, they'll appear here for review."}
+              ? t('study.addCardsHint')
+              : t('study.generateFirst')}
           </p>
         </div>
         {!isFiltered && (
@@ -188,7 +190,7 @@ export default function StudyPG() {
             className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
           >
             <Sparkles className="h-4 w-4 inline mr-2" />
-            Generate a Deck
+            {t('study.generateDeck')}
           </button>
         )}
       </div>
@@ -207,14 +209,14 @@ export default function StudyPG() {
           <Check className="h-10 w-10 text-[var(--pg-accent-green)]" />
         </motion.div>
         <div>
-          <h2 className="text-2xl font-bold font-display mb-2">Session Complete</h2>
+          <h2 className="text-2xl font-bold font-display mb-2">{t('study.sessionComplete')}</h2>
           <p className="text-[var(--pg-text-dim)]">
-            You reviewed <span className="text-white font-semibold">{reviewed}</span> word{reviewed !== 1 ? 's' : ''}
+            {tp('study.wordsReviewed', reviewed)}
           </p>
           <p className="text-sm mt-1" style={{ color: 'var(--pg-text-dim)' }}>
-            <span style={{ color: 'var(--pg-accent-green)' }}>{sessionStats.remembered} remembered</span>
+            <span style={{ color: 'var(--pg-accent-green)' }}>{t('study.remembered', { count: sessionStats.remembered })}</span>
             {sessionStats.reviewLater > 0 && (
-              <span className="ml-2" style={{ color: '#fb923c' }}>{sessionStats.reviewLater} need review</span>
+              <span className="ml-2" style={{ color: '#fb923c' }}>{t('study.needReview', { count: sessionStats.reviewLater })}</span>
             )}
           </p>
         </div>
@@ -224,13 +226,13 @@ export default function StudyPG() {
             className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
           >
             <RotateCcw className="h-4 w-4 inline mr-2" />
-            Start Again
+            {t('study.startAgain')}
           </button>
           <button
             onClick={() => navigate('/dashboard')}
             className="px-6 py-3 rounded-xl border border-white/10 text-[var(--pg-text-dim)] font-display font-medium hover:bg-white/5 transition-all"
           >
-            Decks
+            {t('nav.decks')}
           </button>
         </div>
       </div>
@@ -253,7 +255,7 @@ export default function StudyPG() {
               </SelectTrigger>
               <SelectContent className="bg-gray-900 border-white/10 text-gray-200">
                 <SelectItem value="all" className="focus:bg-white/10 focus:text-white">
-                  All Decks
+                  {t('study.allDecks')}
                 </SelectItem>
                 {decks.map((d) => (
                   <SelectItem key={d.id} value={d.id} className="focus:bg-white/10 focus:text-white">
@@ -351,7 +353,7 @@ export default function StudyPG() {
                   onClick={() => setRevealed(true)}
                   className="px-8 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur text-white tracking-widest uppercase text-sm font-display hover:bg-white/10 transition-all"
                 >
-                  Reveal Answer
+                  {t('study.revealAnswer')}
                 </button>
               )}
             </div>
@@ -371,7 +373,7 @@ export default function StudyPG() {
                   className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:rounded-2xl sm:px-10 sm:py-4 bg-red-500/15 border-2 border-red-500/40 text-red-400 flex items-center justify-center gap-2 hover:bg-red-500/25 hover:border-red-500/60 transition-all"
                 >
                   <X className="h-7 w-7 sm:h-5 sm:w-5" />
-                  <span className="hidden sm:inline text-sm font-display font-medium">Review Later</span>
+                  <span className="hidden sm:inline text-sm font-display font-medium">{t('study.reviewLater')}</span>
                 </button>
 
                 {/* Remembered — green ✓ */}
@@ -381,7 +383,7 @@ export default function StudyPG() {
                   className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:rounded-2xl sm:px-10 sm:py-4 bg-[var(--pg-accent-green)]/15 border-2 border-[var(--pg-accent-green)]/40 text-[var(--pg-accent-green)] flex items-center justify-center gap-2 hover:bg-[var(--pg-accent-green)]/25 hover:border-[var(--pg-accent-green)]/60 transition-all"
                 >
                   <Check className="h-7 w-7 sm:h-5 sm:w-5" />
-                  <span className="hidden sm:inline text-sm font-display font-medium">Remembered</span>
+                  <span className="hidden sm:inline text-sm font-display font-medium">{t('study.rememberedAction')}</span>
                 </button>
               </motion.div>
             )}
