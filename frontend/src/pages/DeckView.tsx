@@ -480,6 +480,7 @@ function VideoViewerModal({
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < words.length - 1
   const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(word ?? { id: '', video_url: null, thumbnail_url: null })
+  const { t } = useTranslation()
   const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
   const { isPlaying, setIsPlaying, togglePlay, onPlay, onPause } = useVideoPlayback(videoRef)
   const isPlayingRef = useRef(isPlaying)
