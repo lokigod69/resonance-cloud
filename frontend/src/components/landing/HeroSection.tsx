@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-import { Sparkles, ChevronDown } from 'lucide-react'
+import { ChevronDown, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
 
@@ -23,10 +23,6 @@ export default function HeroSection() {
           animate: { opacity: 1, y: 0 },
           transition: { duration: 0.6, ease: 'easeOut' as const, delay },
         }
-
-  // Headline split: gradient span on the language-specific term
-  const headlinePart1 = t('landing.headlinePart1')
-  const headlinePart2 = t('landing.headlinePart2')
 
   return (
     <section className="relative h-screen">
@@ -56,26 +52,32 @@ export default function HeroSection() {
           />
 
           <div className="relative z-10 max-w-3xl space-y-8 px-4">
-            {/* Badge */}
-            <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white/70 bg-white/5 border border-white/10">
-              <Sparkles className="h-4 w-4 text-primary" />
-              {t('landing.badge')}
+            {/* Headline — stacked typography */}
+            <motion.div {...fadeUp(0)} className="flex flex-col items-center text-center">
+              <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+                {t('landing.headlineWord')}
+              </h1>
+              <p className="text-2xl sm:text-3xl md:text-4xl text-white/80 mt-2">
+                <span className="text-lg sm:text-xl md:text-2xl font-light text-white/50 mr-2">
+                  {t('landing.headlineBy')}
+                </span>
+                <span className="font-semibold">
+                  {t('landing.headlineMelody')}
+                </span>
+              </p>
+              <p className="text-2xl sm:text-3xl md:text-4xl text-white/80 mt-1">
+                <span className="text-lg sm:text-xl md:text-2xl font-light text-white/50 mr-2">
+                  {t('landing.headlineAnd')}
+                </span>
+                <span className="font-semibold">
+                  {t('landing.headlineMotion')}
+                </span>
+              </p>
             </motion.div>
 
-            {/* Headline */}
-            <motion.h1
-              {...fadeUp(0.1)}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
-            >
-              {headlinePart1}{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
-                {headlinePart2}
-              </span>
-            </motion.h1>
-
-            {/* Subtitle */}
+            {/* Subheadline */}
             <motion.p
-              {...fadeUp(0.2)}
+              {...fadeUp(0.1)}
               className="text-lg md:text-xl text-white/60 max-w-xl mx-auto leading-relaxed"
             >
               {t('landing.subheadline')}
