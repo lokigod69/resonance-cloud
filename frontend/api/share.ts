@@ -1,5 +1,5 @@
 // Vercel Serverless Function — Share page OG meta tag server
-// GET /api/v/[id]
+// GET /api/share?id=<shareId>
 // Returns HTML with Open Graph tags for link previews (WhatsApp, iMessage, etc.)
 // Social crawlers read the OG tags; browsers get redirected to /share/:id (SPA route)
 
@@ -23,8 +23,7 @@ interface SharedWordData {
 
 export async function GET(req: Request): Promise<Response> {
   const url = new URL(req.url)
-  const segments = url.pathname.split('/')
-  const shareId = segments[segments.length - 1]
+  const shareId = url.searchParams.get('id')
 
   if (!shareId) {
     return Response.redirect(`${url.origin}/`, 302)

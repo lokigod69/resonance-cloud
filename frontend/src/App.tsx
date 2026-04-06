@@ -100,6 +100,7 @@ function AppRoutes() {
     <Routes>
       {/* Fully public routes — no auth, no redirect */}
       <Route path="/share/:shareId" element={<SharePage />} />
+      <Route path="/v/:shareId" element={<SharePage />} />
 
       {/* Public routes */}
       <Route element={<PublicRoute />}>
