@@ -182,6 +182,14 @@ const VOICES: VoiceEntry[] = [
   { elevenLabsId: 'KlstlYt9VVf3zgie2Oht', name: 'Sola',        language: 'ko', languageName: 'Korean',     gender: 'female', voxtralSupported: false },
   { elevenLabsId: 'Lb7qkOn5hF8p7qfCDH8q', name: 'Annie',       language: 'ko', languageName: 'Korean',     gender: 'female', voxtralSupported: false },
 
+  // ── Style Tutor ElevenLabs Voices (need cloning) ──────
+
+  { elevenLabsId: 'ImsA1Fn5TNc843fFdz99', name: 'char_jaxon_it',  language: 'it', languageName: 'Italian', gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'ML23UVoFL5mI6APbRAeR', name: 'char_kael_de',   language: 'de', languageName: 'German',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'NGvcmUPD43NnZx39Pe12', name: 'char_briggs_de', language: 'de', languageName: 'German',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'R89ZQJowZAEgiPNyC3dQ', name: 'char_briggs_fr', language: 'fr', languageName: 'French',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'YKrm0N1EAM9Bw27j8kuD', name: 'char_briggs_es', language: 'es', languageName: 'Spanish', gender: 'male', voxtralSupported: true },
+
   // ── Character Voices ────────────────────────────────────
 
   // Marcus Aurelius

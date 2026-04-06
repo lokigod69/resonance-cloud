@@ -79,7 +79,7 @@ export const CHARACTER_REGISTRY: TutorCharacter[] = [
       en: '44fbbf55-16b9-4fee-9b3f-5f062f3d2047', // Jamal
       de: '6fb5cb3c-9c07-4072-93e6-c7e1a0484efd', // Leon
       fr: 'f2124e6b-f7ac-4f23-a589-c33ebacb376f', // Frederic
-      // it: ElevenLabs ID ImsA1Fn5TNc843fFdz99 — use fallback
+      it: 'b9afa78e-55c5-462c-babd-1f8e131484fc', // cloned from EL ImsA1Fn5TNc843fFdz99
       es: 'a3c743c4-643a-4627-b603-61b52b03e37c', // Abel
     },
   },
@@ -185,7 +185,7 @@ export const CHARACTER_REGISTRY: TutorCharacter[] = [
     avatarUrl: '',
     voices: {
       en: '26596326-2a67-4ba0-991a-c5f56197bea7', // Theo
-      // de: ElevenLabs ID ML23UVoFL5mI6APbRAeR — use fallback
+      de: 'f6f36fce-e9f8-4220-9577-a2759f134089', // cloned from EL ML23UVoFL5mI6APbRAeR
       fr: 'efe8c4d3-4635-4476-978a-fde3223c5f21', // Martin
       it: '28f74a8b-8e24-4b47-9814-0f04cda9b908', // Gulio
       es: 'a266c6b5-dc4e-40dc-9587-d1b85b172ffb', // Abuelo
@@ -203,10 +203,10 @@ export const CHARACTER_REGISTRY: TutorCharacter[] = [
     avatarUrl: '',
     voices: {
       en: '3f44e679-8b82-47f6-b95a-2ad352e4718e', // Andy
-      // de: ElevenLabs ID NGvcmUPD43NnZx39Pe12 — use fallback
-      // fr: ElevenLabs ID R89ZQJowZAEgiPNyC3dQ — use fallback
+      de: 'a5952ced-3e25-41a0-982b-4956561d4843', // cloned from EL NGvcmUPD43NnZx39Pe12
+      fr: '42fe5e43-3c76-45a3-9f35-0a1d7368388d', // cloned from EL R89ZQJowZAEgiPNyC3dQ
       it: '92a33343-0073-4254-938c-0b2b3433bffc', // Brando
-      // es: ElevenLabs ID YKrm0N1EAM9Bw27j8kuD — use fallback
+      es: 'c8941697-aed0-4fac-beae-31ff8b9d0cd5', // cloned from EL YKrm0N1EAM9Bw27j8kuD
     },
   },
 
