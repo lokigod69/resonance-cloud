@@ -181,6 +181,124 @@ const VOICES: VoiceEntry[] = [
   { elevenLabsId: '0oqpliV6dVSr9XomngOW', name: 'Jini',        language: 'ko', languageName: 'Korean',     gender: 'female', voxtralSupported: false },
   { elevenLabsId: 'KlstlYt9VVf3zgie2Oht', name: 'Sola',        language: 'ko', languageName: 'Korean',     gender: 'female', voxtralSupported: false },
   { elevenLabsId: 'Lb7qkOn5hF8p7qfCDH8q', name: 'Annie',       language: 'ko', languageName: 'Korean',     gender: 'female', voxtralSupported: false },
+
+  // ── Character Voices ────────────────────────────────────
+
+  // Marcus Aurelius
+  { elevenLabsId: 'xkDz8dF9GIt1kG06c9Of', name: 'char_marcus_aurelius_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'iMHt6G42evkXunaDU065', name: 'char_marcus_aurelius_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'ViSNE020Z1wEV4uZomv5', name: 'char_marcus_aurelius_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'JfznbVXrGXYh0gZo9Lcp', name: 'char_marcus_aurelius_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'LnGOA2SxH2fX1e1iNzEp', name: 'char_marcus_aurelius_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Nietzsche
+  { elevenLabsId: 'ktrGUw7rURIQyMrQZqCu', name: 'char_nietzsche_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 't7N67yv6R8AKFjJI6K7I', name: 'char_nietzsche_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'f5ChBqjF2YtYo8iKr4UV', name: 'char_nietzsche_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'EOVAuWqgSZN2Oel78Psj', name: 'char_nietzsche_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'WEXRePkZGpmcFLvCOaB1', name: 'char_nietzsche_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Jesus
+  { elevenLabsId: 'Xju4Klbc1r0SkckSAl5Q', name: 'char_jesus_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'QtXsTvuI72CiSlfxczvg', name: 'char_jesus_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'aJ8RRtqcgodjLrJKLb0K', name: 'char_jesus_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'MTgv1KRJpUnc34UMGTHK', name: 'char_jesus_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: '8mBRP99B2Ng2QwsJMFQl', name: 'char_jesus_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Buddha
+  { elevenLabsId: 'tTZ0TVc9Q1bbWngiduLK', name: 'char_buddha_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: '2UgXc8Ykz3785pihgwYC', name: 'char_buddha_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'Jrq4GqCKqYpigdQsZRkP', name: 'char_buddha_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'YpCv81OHYUqjcik0cjn5', name: 'char_buddha_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: '9TcPbUAhHnAV8mzFDAWU', name: 'char_buddha_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Socrates
+  { elevenLabsId: '7fbQ7yJuEo56rYjrYaEh', name: 'char_socrates_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'EQIVtVkE7IWwwaRgwyPi', name: 'char_socrates_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: '5l4ttmr4SKNgi0HnOelT', name: 'char_socrates_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'JfjzwHPmCw6p6fdGVt4Y', name: 'char_socrates_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'orF2qy9215xjwqqxqsWW', name: 'char_socrates_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Aristotle
+  { elevenLabsId: 'zQzvQBubVkDWYuqJYMFn', name: 'char_aristotle_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'fNQuGwgi0iD0nacRyExh', name: 'char_aristotle_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'hqfrgApggtO1785R4Fsn', name: 'char_aristotle_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'ts9siqBZkKbGEMralWeB', name: 'char_aristotle_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'U9jmr7kY6mMqS39kfA01', name: 'char_aristotle_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Oscar Wilde
+  { elevenLabsId: 'NmpxQl3ZUbfh8HgoNCGM', name: 'char_oscar_wilde_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'NV8D9kv4W21bIe2GkOiE', name: 'char_oscar_wilde_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'EIe4oLyymVX7lKVYli9m', name: 'char_oscar_wilde_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'mJSddcekWUkB3BOnjPFb', name: 'char_oscar_wilde_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: '9F4C8ztpNUmXkdDDbz3J', name: 'char_oscar_wilde_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Kafka
+  { elevenLabsId: 'pw8bioilqsSn2jApHYwT', name: 'char_kafka_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'JNpQqni9iUx1Jxy9h0P1', name: 'char_kafka_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'I0ZNjxaJrLklKmZK1mlA', name: 'char_kafka_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'j3UNUUQhiTpAHRamlKzR', name: 'char_kafka_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'rpqlUOplj0Q0PIilat8h', name: 'char_kafka_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Da Vinci
+  { elevenLabsId: 'G17SuINrv2H9FC6nvetn', name: 'char_leonardo_da_vinci_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'Gng1FdSGZlhs6jKgzAxL', name: 'char_leonardo_da_vinci_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'GFj5Qf6cNQ3Lgp8VKBwc', name: 'char_leonardo_da_vinci_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'nNt0YcINdGadGcTx5fBM', name: 'char_leonardo_da_vinci_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'GwtqU7RCQKrjzJ0dGhqT', name: 'char_leonardo_da_vinci_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Tesla
+  { elevenLabsId: 'uju3wxzG5OhpWcoi3SMy', name: 'char_tesla_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'VW65tSwHD38MQYBDtKGy', name: 'char_tesla_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'hqfrgApggtO1785R4Fsn', name: 'char_tesla_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: '3rL9ZxRgBgIkh4tcbrEH', name: 'char_tesla_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'aPujh6S6yqHdNZ7Rn18L', name: 'char_tesla_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Napoleon
+  { elevenLabsId: 'I1T6PEfqPxl45yKRN4aS', name: 'char_napoleon_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'MLFHn2hZ3zKifXrugl26', name: 'char_napoleon_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'f37Tyb9RuhPPJKa60pUr', name: 'char_napoleon_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'aTTiK3YzK3dXETpuDE2h', name: 'char_napoleon_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'HJZsH9Tm3FtUeJzIjWVE', name: 'char_napoleon_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Dostoyevsky
+  { elevenLabsId: 'Bj9UqZbhQsanLzgalpEG', name: 'char_dostoyevsky_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: '0oTMoyM0wBOiv66gewih', name: 'char_dostoyevsky_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'R89ZQJowZAEgiPNyC3dQ', name: 'char_dostoyevsky_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'mENvyIA7PhaLVkVtBgsA', name: 'char_dostoyevsky_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'ZCh4e9eZSUf41K4cmCEL', name: 'char_dostoyevsky_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Loki
+  { elevenLabsId: '5bh6Hc8SO3Yh1skN9Cqm', name: 'char_loki_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'VvmLPzhPQHSqLOL9D1R7', name: 'char_loki_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'XRxOSfsrfY33DhTprCzb', name: 'char_loki_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'GOAZNavLupajyL3YafaD', name: 'char_loki_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'PHKlYg202ODwQRa3Fxuo', name: 'char_loki_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Zeus
+  { elevenLabsId: 'goT3UYdM9bhm0n2lmKQx', name: 'char_zeus_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'NBqeXKdZHweef6y0B67V', name: 'char_zeus_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'UBXZKOKbt62aLQHhc1Jm', name: 'char_zeus_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'w3aQQZqtgGo2o2fsmvQ2', name: 'char_zeus_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'k8cFOyAg7B9qwBlDDNTC', name: 'char_zeus_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Aphrodite (DE and ES only — EN/FR/IT use existing voice names)
+  { elevenLabsId: 'r0fLdYmTH96Lr4s10B6K', name: 'char_aphrodite_de', language: 'de', languageName: 'German',   gender: 'female', voxtralSupported: true },
+  { elevenLabsId: 'nbcvT3C2tyOd2OsRAtUf', name: 'char_aphrodite_es', language: 'es', languageName: 'Spanish',  gender: 'female', voxtralSupported: true },
+
+  // Shiva
+  { elevenLabsId: 'gReW7Niq8gxrfgxuUsmj', name: 'char_shiva_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'czb8zR3V35utWZxvKd9a', name: 'char_shiva_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'a5n9pJUnAhX4fn7lx3uo', name: 'char_shiva_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'xsSg7GkDPDhaGZpbKOLn', name: 'char_shiva_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'Vpv1YgvVd6CHIzOTiTt8', name: 'char_shiva_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
+
+  // Kierkegaard
+  { elevenLabsId: 'sPzOOqSRgtzdT8DPbJYh', name: 'char_kierkegaard_en', language: 'en', languageName: 'English',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'gGjaVIGkCSfKUIBYtNT2', name: 'char_kierkegaard_de', language: 'de', languageName: 'German',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: '7c65Pcpdzr0GkR748U7h', name: 'char_kierkegaard_fr', language: 'fr', languageName: 'French',   gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'mgIrMWapSjeoucJqRfnQ', name: 'char_kierkegaard_it', language: 'it', languageName: 'Italian',  gender: 'male', voxtralSupported: true },
+  { elevenLabsId: 'dlGxemPxFMTY7iXagmOj', name: 'char_kierkegaard_es', language: 'es', languageName: 'Spanish',  gender: 'male', voxtralSupported: true },
 ]
 
 // ============================================================

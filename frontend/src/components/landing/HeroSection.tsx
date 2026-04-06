@@ -53,27 +53,23 @@ export default function HeroSection() {
 
           <div className="relative z-10 max-w-3xl space-y-8 px-4">
             {/* Headline — stacked typography */}
-            <motion.div {...fadeUp(0)} className="flex flex-col items-center text-center">
-              <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+            <motion.h1 {...fadeUp(0)} className="flex flex-col items-center text-center gap-0">
+              <span className="font-display text-6xl sm:text-7xl md:text-8xl font-bold uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-purple-400 via-purple-300 to-purple-400">
                 {t('landing.headlineWord')}
-              </h1>
-              <p className="text-2xl sm:text-3xl md:text-4xl text-white/80 mt-2">
-                <span className="text-lg sm:text-xl md:text-2xl font-light text-white/50 mr-2">
-                  {t('landing.headlineBy')}
-                </span>
-                <span className="font-semibold">
-                  {t('landing.headlineMelody')}
-                </span>
-              </p>
-              <p className="text-2xl sm:text-3xl md:text-4xl text-white/80 mt-1">
-                <span className="text-lg sm:text-xl md:text-2xl font-light text-white/50 mr-2">
-                  {t('landing.headlineAnd')}
-                </span>
-                <span className="font-semibold">
-                  {t('landing.headlineMotion')}
-                </span>
-              </p>
-            </motion.div>
+              </span>
+              <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
+                {t('landing.headlineBy')}
+              </span>
+              <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-purple-300 via-blue-300 to-blue-400">
+                {t('landing.headlineMelody')}
+              </span>
+              <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
+                {t('landing.headlineAnd')}
+              </span>
+              <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-blue-400 via-blue-300 to-blue-400">
+                {t('landing.headlineMotion')}
+              </span>
+            </motion.h1>
 
             {/* Subheadline */}
             <motion.p

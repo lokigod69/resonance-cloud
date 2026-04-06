@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import { type TutorVoice, getVoicesForLanguage } from '@/voiceRegistry'
-import { type TutorCharacter, getCharacterById, resolveCharacterVoice } from '@/characterRegistry'
+import { type TutorVoice } from '@/voiceRegistry'
+import { type TutorCharacter, resolveCharacterVoice } from '@/characterRegistry'
 import { supabase } from '@/lib/supabase'
 
 const IS_SAFARI = typeof navigator !== 'undefined' && (
@@ -60,15 +60,6 @@ function saveVoicePreference(language: string, voiceId: string) {
   }
 }
 
-function getSavedVoicePreference(language: string): string | null {
-  try {
-    const prefs = JSON.parse(localStorage.getItem('voiceTutorPrefs') || '{}')
-    return prefs[language] || null
-  } catch {
-    return null
-  }
-}
-
 function saveCharacterPreference(language: string, characterId: string) {
   try {
     const prefs = JSON.parse(localStorage.getItem('voiceTutorCharPrefs') || '{}')
@@ -76,15 +67,6 @@ function saveCharacterPreference(language: string, characterId: string) {
     localStorage.setItem('voiceTutorCharPrefs', JSON.stringify(prefs))
   } catch {
     // localStorage unavailable
-  }
-}
-
-function getSavedCharacterPreference(language: string): string | null {
-  try {
-    const prefs = JSON.parse(localStorage.getItem('voiceTutorCharPrefs') || '{}')
-    return prefs[language] || null
-  } catch {
-    return null
   }
 }
 
@@ -113,7 +95,12 @@ function blobToBase64(blob: Blob): Promise<string> {
  * Play base64-encoded audio through the Web Audio API.
  * AudioContext must already be unlocked (resumed) before calling.
  */
-async function playAudioViaContext(base64: string, _format: string, ctx: AudioContext): Promise<void> {
+async function playAudioViaContext(
+  base64: string,
+  _format: string,
+  ctx: AudioContext,
+  onSourceCreated?: (source: AudioBufferSourceNode) => void,
+): Promise<void> {
   const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
   const arrayBuffer = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
   const audioBuffer = await ctx.decodeAudioData(arrayBuffer as ArrayBuffer)
@@ -122,12 +109,17 @@ async function playAudioViaContext(base64: string, _format: string, ctx: AudioCo
     source.buffer = audioBuffer
     source.connect(ctx.destination)
     source.onended = () => resolve()
+    onSourceCreated?.(source)
     source.start(0)
   })
 }
 
 /** Fallback: play via HTMLAudioElement (works on desktop, blocked by iOS in non-gesture contexts) */
-function playAudioViaElement(base64: string, format: string): Promise<void> {
+function playAudioViaElement(
+  base64: string,
+  format: string,
+  onElementCreated?: (audio: HTMLAudioElement) => void,
+): Promise<void> {
   return new Promise((resolve, reject) => {
     const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
     const mimeMap: Record<string, string> = { mp3: 'audio/mpeg', wav: 'audio/wav', pcm: 'audio/pcm' }
@@ -142,6 +134,7 @@ function playAudioViaElement(base64: string, format: string): Promise<void> {
       URL.revokeObjectURL(url)
       reject(new Error('Audio playback failed'))
     }
+    onElementCreated?.(audio)
     audio.play().catch(reject)
   })
 }
@@ -189,6 +182,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const acquiringStreamRef = useRef(false)
   const conversationIdRef = useRef<string | null>(null)
   const convMessageCountRef = useRef<number>(0)
+  const activeSourceRef = useRef<AudioBufferSourceNode | null>(null)
+  const activeAudioElRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     messagesRef.current = messages
@@ -213,6 +208,14 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   // Cleanup on unmount
   useEffect(() => {
     return () => {
+      if (activeSourceRef.current) {
+        try { activeSourceRef.current.stop() } catch { /* ignore */ }
+        activeSourceRef.current = null
+      }
+      if (activeAudioElRef.current) {
+        activeAudioElRef.current.pause()
+        activeAudioElRef.current = null
+      }
       if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
         try { mediaRecorderRef.current.stop() } catch { /* ignore */ }
       }
@@ -385,16 +388,38 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     return audioContextRef.current
   }, [])
 
+  /** Stop any currently playing audio (AudioBufferSourceNode or HTMLAudioElement). */
+  const stopAudio = useCallback(() => {
+    if (activeSourceRef.current) {
+      try { activeSourceRef.current.stop() } catch { /* already stopped */ }
+      activeSourceRef.current = null
+    }
+    if (activeAudioElRef.current) {
+      const el = activeAudioElRef.current
+      activeAudioElRef.current = null
+      el.pause()
+      el.currentTime = 0
+      el.dispatchEvent(new Event('ended'))
+    }
+  }, [])
+
   /**
    * Play audio using AudioContext if available and running, falling back to HTMLAudioElement.
    */
   const playAudio = useCallback(async (base64: string, format: string) => {
+    stopAudio()
     if (audioContextRef.current && audioContextRef.current.state === 'running') {
-      await playAudioViaContext(base64, format, audioContextRef.current)
+      await playAudioViaContext(base64, format, audioContextRef.current, (source) => {
+        activeSourceRef.current = source
+      })
+      activeSourceRef.current = null
       return
     }
-    await playAudioViaElement(base64, format)
-  }, [])
+    await playAudioViaElement(base64, format, (audio) => {
+      activeAudioElRef.current = audio
+    })
+    activeAudioElRef.current = null
+  }, [stopAudio])
 
   const playPendingAudio = useCallback(async () => {
     if (!pendingAudio) return
@@ -470,66 +495,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       messagesRef.current = []
       setError(null)
       setStatus('idle')
-
-      // Check for saved character preference first
-      const savedCharId = getSavedCharacterPreference(lang)
-      if (savedCharId) {
-        const char = getCharacterById(savedCharId)
-        if (char) {
-          const resolved = resolveCharacterVoice(char, lang)
-          const syntheticVoice: TutorVoice = {
-            id: `char_${char.id}_${lang}`,
-            name: char.name,
-            language: lang,
-            gender: char.gender,
-            mistralVoiceId: resolved.mistralVoiceId,
-            elevenLabsId: resolved.elevenLabsId,
-            sampleUrl: '',
-          }
-          setCharacter(char)
-          characterRef.current = char
-          setVoice(syntheticVoice)
-          voiceRef.current = syntheticVoice
-
-          const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
-          if (savedLevel) {
-            setLevel(savedLevel)
-            levelRef.current = savedLevel
-            fetchAndPlayGreeting(lang, syntheticVoice).catch((err) => {
-              setError(err instanceof Error ? err.message : 'Failed to start conversation')
-              setStatus('error')
-            })
-          }
-          return
-        }
-      }
-
-      // Fallback: check for saved voice preference (legacy / no character)
-      const voices = getVoicesForLanguage(lang)
-      const savedId = getSavedVoicePreference(lang)
-      const autoVoice =
-        savedId
-          ? (voices.find((v) => v.id === savedId) ?? (voices.length === 1 ? voices[0] : null))
-          : voices.length === 1
-          ? voices[0]
-          : null
-
-      if (autoVoice) {
-        setVoice(autoVoice)
-        voiceRef.current = autoVoice
-
-        const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
-        if (savedLevel) {
-          setLevel(savedLevel)
-          levelRef.current = savedLevel
-          fetchAndPlayGreeting(lang, autoVoice).catch((err) => {
-            setError(err instanceof Error ? err.message : 'Failed to start conversation')
-            setStatus('error')
-          })
-        }
-      }
     },
-    [fetchAndPlayGreeting, endConversation],
+    [endConversation],
   )
 
   const startConversation = useCallback(
@@ -618,6 +585,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   )
 
   const changeVoice = useCallback(() => {
+    stopAudio()
     endConversation()
     setVoice(null)
     voiceRef.current = null
@@ -628,20 +596,22 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
-  }, [endConversation])
+  }, [endConversation, stopAudio])
 
   const changeLevel = useCallback(() => {
+    stopAudio()
     setLevel(null)
     levelRef.current = null
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
-  }, [])
+  }, [stopAudio])
 
   const newChat = useCallback(async () => {
     const lang = language
     const v = voiceRef.current
     if (!lang || !v) return
+    stopAudio()
     endConversation()
     setMessages([])
     messagesRef.current = []
@@ -653,7 +623,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       setError(err instanceof Error ? err.message : 'Something went wrong')
       setStatus('error')
     }
-  }, [language, fetchAndPlayGreeting, endConversation])
+  }, [language, fetchAndPlayGreeting, endConversation, stopAudio])
 
   /**
    * Acquire a MediaStream if one isn't already active.
@@ -841,6 +811,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   }, [])
 
   const resetConversation = useCallback(() => {
+    stopAudio()
     endConversation()
     releaseResources()
 
@@ -856,7 +827,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
-  }, [releaseResources, endConversation])
+  }, [releaseResources, endConversation, stopAudio])
 
   const replayMessageAudio = useCallback(async (message: TutorMessage) => {
     if (!message.audioBase64 || message.role !== 'assistant') return

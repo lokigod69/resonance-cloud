@@ -34,7 +34,9 @@ function StaticCardSlot({ w }: { w: typeof DEMO_WORDS[0] }) {
 export default function ScrollStorySection() {
   const reducedMotion = useReducedMotion()
   const { t } = useLandingLocale()
-  const [isDesktop, setIsDesktop] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
+  )
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)')
@@ -129,7 +131,7 @@ export default function ScrollStorySection() {
           {/* Demo heading — fades in at start, out before dispersal */}
           <motion.div
             style={{ opacity: demoHeadingOpacity }}
-            className="absolute top-16 inset-x-0 text-center px-6"
+            className="absolute top-16 inset-x-0 text-center px-6 will-change-[opacity] [backface-visibility:hidden]"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('landing.demoHeading')}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -140,7 +142,7 @@ export default function ScrollStorySection() {
           {/* Card rows — split left/right so each half can slide its own direction */}
           <div className="flex flex-col gap-2 mt-20">
             {/* Row 1 */}
-            <div className="flex justify-center">
+            <div className="flex justify-center gap-6">
               {/* Left half slides left */}
               <motion.div
                 className="flex gap-6"
@@ -150,7 +152,7 @@ export default function ScrollStorySection() {
               </motion.div>
               {/* Right half slides right */}
               <motion.div
-                className="flex gap-6 ml-6"
+                className="flex gap-6"
                 style={{ x: rightRow1X, opacity: row1Opacity, scale: cardsScale }}
               >
                 {ROW_1.slice(3).map(w => <StaticCardSlot key={w.word} w={w} />)}
@@ -158,7 +160,7 @@ export default function ScrollStorySection() {
             </div>
 
             {/* Row 2 (staggered slightly after row 1) */}
-            <div className="flex justify-center">
+            <div className="flex justify-center gap-6">
               {/* Left half slides left */}
               <motion.div
                 className="flex gap-6"
@@ -168,7 +170,7 @@ export default function ScrollStorySection() {
               </motion.div>
               {/* Right half slides right */}
               <motion.div
-                className="flex gap-6 ml-6"
+                className="flex gap-6"
                 style={{ x: rightRow2X, opacity: row2Opacity, scale: cardsScale }}
               >
                 {ROW_2.slice(3).map(w => <StaticCardSlot key={w.word} w={w} />)}
