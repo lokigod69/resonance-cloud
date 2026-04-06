@@ -5,7 +5,16 @@ interface CharacterGridProps {
   disabled?: boolean
 }
 
-function CharacterAvatar({ name, gender }: { name: string; gender: string }) {
+function CharacterAvatar({ name, gender, avatarUrl }: { name: string; gender: string; avatarUrl?: string }) {
+  if (avatarUrl) {
+    return (
+      <img
+        src={avatarUrl}
+        alt={name}
+        className="w-14 h-14 rounded-full object-cover shrink-0"
+      />
+    )
+  }
   const hue = name.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) % 360
   const sat = gender === 'female' ? '65%' : '55%'
   return (
@@ -35,7 +44,7 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
               disabled={disabled}
               className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <CharacterAvatar name={char.name} gender={char.gender} />
+              <CharacterAvatar name={char.name} gender={char.gender} avatarUrl={char.avatarUrl} />
               <span className="text-xs font-medium text-white truncate w-full text-center">{char.name}</span>
               <span className="text-[10px] text-gray-500 truncate w-full text-center leading-tight">{char.subtitle}</span>
             </button>
@@ -57,7 +66,7 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
               disabled={disabled}
               className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <CharacterAvatar name={char.name} gender={char.gender} />
+              <CharacterAvatar name={char.name} gender={char.gender} avatarUrl={char.avatarUrl} />
               <span className="text-xs font-medium text-white truncate w-full text-center">{char.name}</span>
               <span className="text-[10px] text-gray-500 truncate w-full text-center leading-tight">{char.subtitle}</span>
             </button>
