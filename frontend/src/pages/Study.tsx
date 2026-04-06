@@ -364,13 +364,13 @@ export default function Study() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="flex justify-center items-center gap-8"
+                  className="flex gap-3 w-full max-w-md mx-auto"
                 >
                   {/* Review Later — red ✕ */}
                   <button
                     onClick={handleReviewLater}
                     aria-label="Review Later"
-                    className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:rounded-2xl sm:px-10 sm:py-4 bg-red-500/15 border-2 border-red-500/40 text-red-400 flex items-center justify-center gap-2 hover:bg-red-500/25 hover:border-red-500/60 transition-all"
+                    className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:flex-1 sm:rounded-2xl sm:py-4 bg-red-500/15 border-2 border-red-500/40 text-red-400 flex items-center justify-center gap-2 hover:bg-red-500/25 hover:border-red-500/60 transition-all"
                   >
                     <X className="h-7 w-7 sm:h-5 sm:w-5" />
                     <span className="hidden sm:inline text-sm font-medium">{t('study.reviewLater')}</span>
@@ -380,7 +380,7 @@ export default function Study() {
                   <button
                     onClick={handleRemembered}
                     aria-label="Remembered"
-                    className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:rounded-2xl sm:px-10 sm:py-4 bg-green-500/15 border-2 border-green-500/40 text-green-400 flex items-center justify-center gap-2 hover:bg-green-500/25 hover:border-green-500/60 transition-all"
+                    className="w-16 h-16 rounded-full sm:w-auto sm:h-auto sm:flex-1 sm:rounded-2xl sm:py-4 bg-green-500/15 border-2 border-green-500/40 text-green-400 flex items-center justify-center gap-2 hover:bg-green-500/25 hover:border-green-500/60 transition-all"
                   >
                     <Check className="h-7 w-7 sm:h-5 sm:w-5" />
                     <span className="hidden sm:inline text-sm font-medium">{t('study.rememberedAction')}</span>
@@ -392,16 +392,6 @@ export default function Study() {
         </AnimatePresence>
       </div>
 
-      {/* Keyboard hints */}
-      <div className="hidden md:block mt-8 text-center text-xs text-muted-foreground/50">
-        <kbd className="px-1.5 py-0.5 rounded border border-border text-[10px]">Space</kbd> reveal/advance
-        &nbsp;&middot;&nbsp;
-        <kbd className="px-1.5 py-0.5 rounded border border-border text-[10px]">&larr;</kbd><kbd className="px-1.5 py-0.5 rounded border border-border text-[10px]">&rarr;</kbd> skip
-        &nbsp;&middot;&nbsp;
-        <kbd className="px-1.5 py-0.5 rounded border border-border text-[10px]">P</kbd> play/pause
-        &nbsp;&middot;&nbsp;
-        <kbd className="px-1.5 py-0.5 rounded border border-border text-[10px]">M</kbd> mute
-      </div>
     </div>
   )
 }
