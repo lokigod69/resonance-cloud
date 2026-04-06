@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { LANGUAGES } from './landingData'
 import ScrollReveal from './ScrollReveal'
 import { FlagIcon } from '@/components/ui/FlagIcon'
+import { useLandingLocale } from '@/hooks/useLandingLocale'
 
 const langVariant = {
   hidden: { opacity: 0, scale: 0.1 },
@@ -19,6 +20,7 @@ const langVariant = {
 
 export default function LanguagesSection() {
   const reducedMotion = useReducedMotion()
+  const { t } = useLandingLocale()
 
   return (
     <section className="py-24 px-6 text-center bg-[#0d0e16]">
@@ -51,7 +53,7 @@ export default function LanguagesSection() {
             >
               <div className="mb-2"><FlagIcon code={lang.code} className="w-12 h-auto" /></div>
               <p className="text-sm font-medium" style={{ color: lang.color }}>
-                {lang.label}
+                {t(`langName.${lang.label}`)}
               </p>
             </motion.div>
           ))}

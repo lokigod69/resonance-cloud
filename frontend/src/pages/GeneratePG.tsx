@@ -83,7 +83,7 @@ export default function GeneratePG() {
         .eq('id', user.id)
         .single()
 
-      if (profileError || !freshProfile) throw new Error('Could not verify credit balance')
+      if (profileError || !freshProfile) throw new Error(t('generate.couldNotVerifyCredits'))
 
       const freshCredits = freshProfile.credits ?? 0
       const wordCount = state.words.length
@@ -152,7 +152,7 @@ export default function GeneratePG() {
       await refreshProfile()
       setGenerated(true)
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Something went wrong'
+      const msg = err instanceof Error ? err.message : t('common.somethingWentWrong')
       setError(msg)
       toast(msg, 'error')
       setSubmitting(false)
@@ -209,7 +209,7 @@ export default function GeneratePG() {
             <p className="text-sm text-[var(--pg-text-dim)] max-w-sm">
               {existingDeck
                 ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
-                : "Your deck is being created. Generation continues in the background — this page is safe to leave."}
+                : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
             </p>
           </div>
 
@@ -426,7 +426,7 @@ function StepWords({
 
   return (
     <div className="text-center max-w-lg mx-auto">
-      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">Add your words</h2>
+      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">{t('generate.addWords')}</h2>
       <p className="text-[var(--pg-text-dim)] text-sm mb-8">
         {t('generate.wordCount', { count: words.length, max: MAX_WORDS })}
       </p>
@@ -500,7 +500,7 @@ function StepWords({
               className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all shadow-[0_0_20px_rgba(13,226,195,0.15)] disabled:opacity-50"
             >
               <Zap className="h-4 w-4 inline mr-2" />
-              {submitting ? 'Generating...' : 'Quick Generate'}
+              {submitting ? t('deckview.generating') : t('generate.quickGenerate')}
             </button>
             <button
               onClick={() => { addWord(); onCustomize() }}
@@ -508,7 +508,7 @@ function StepWords({
               className="px-6 py-3 rounded-xl border border-white/10 text-[var(--pg-text-dim)] font-display font-medium hover:bg-white/5 hover:text-white transition-all disabled:opacity-50"
             >
               <Sparkles className="h-4 w-4 inline mr-2" />
-              Customize
+              {t('generate.customize')}
             </button>
           </motion.div>
         )}
@@ -598,7 +598,7 @@ function StepVibe({
         onClick={onContinue}
         className="px-8 py-3 rounded-xl bg-[var(--pg-accent-violet)]/20 border border-[var(--pg-accent-violet)]/40 text-[var(--pg-accent-violet)] font-display font-semibold hover:bg-[var(--pg-accent-violet)]/30 transition-all"
       >
-        Continue
+        {t('generate.continue')}
       </button>
     </div>
   )
@@ -675,7 +675,7 @@ function StepArtStyle({
           onClick={onContinue}
           className="px-8 py-3 rounded-xl bg-[var(--pg-accent-rose)]/20 border border-[var(--pg-accent-rose)]/40 text-[var(--pg-accent-rose)] font-display font-semibold hover:bg-[var(--pg-accent-rose)]/30 transition-all"
         >
-          Continue
+          {t('generate.continue')}
         </button>
       </div>
     </div>
@@ -731,7 +731,7 @@ function StepMusic({
         onClick={onContinue}
         className="px-8 py-3 rounded-xl bg-[var(--pg-accent-green)]/20 border border-[var(--pg-accent-green)]/40 text-[var(--pg-accent-green)] font-display font-semibold hover:bg-[var(--pg-accent-green)]/30 transition-all"
       >
-        Continue
+        {t('generate.continue')}
       </button>
     </div>
   )

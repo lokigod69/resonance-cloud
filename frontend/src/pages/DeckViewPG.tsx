@@ -21,6 +21,7 @@ import {
   ChevronUp,
   RotateCcw,
   Trash2,
+  Share2,
 } from 'lucide-react'
 import StarRating from '@/components/ui/StarRating'
 import VersionBadge from '@/components/VersionBadge'
@@ -32,6 +33,7 @@ import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { useTranslation } from '@/hooks/useTranslation'
+import { getOrCreateShareLink } from '@/lib/shareWord'
 
 type Deck = {
   id: string
@@ -77,13 +79,15 @@ export default function DeckViewPG() {
 
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
+  const [sharing, setSharing] = useState(false)
+  const [shareSuccess, setShareSuccess] = useState(false)
 
   const handleRetry = async (word: Word) => {
     if (!user || !profile || profile.credits < 1) {
-      toast('No credits remaining', 'error')
+      toast(t('deckview.noCredits'), 'error')
       return
     }
     setRetrying(word.id)
@@ -116,16 +120,16 @@ export default function DeckViewPG() {
       await refreshProfile()
       const { data } = await supabase.from('words').select('*').eq('deck_id', id).order('created_at')
       if (data) setWords(data)
-      toast('Retrying generation...', 'success')
+      toast(t('deckview.retryingGeneration'), 'success')
     } catch {
-      toast('Retry failed', 'error')
+      toast(t('deckview.retryFailed'), 'error')
     } finally {
       setRetrying(null)
     }
   }
 
   const handleDeleteWord = async (word: Word) => {
-    if (!confirm(`Remove "${word.word}" from this deck?`)) return
+    if (!confirm(t('deckview.confirmRemove', { word: word.word }))) return
     setDeleting(word.id)
     try {
       // Clean up storage files if they exist
@@ -144,9 +148,9 @@ export default function DeckViewPG() {
       const someComplete = remaining.some(w => w.status === 'complete')
       const newStatus = allComplete ? 'complete' : someComplete ? 'partial' : 'draft'
       await supabase.from('decks').update({ word_count: remaining.length, status: newStatus }).eq('id', id)
-      toast('Word removed', 'success')
+      toast(t('deckview.wordRemoved'), 'success')
     } catch {
-      toast('Failed to remove word', 'error')
+      toast(t('deckview.removeFailed'), 'error')
     } finally {
       setDeleting(null)
     }
@@ -317,7 +321,7 @@ export default function DeckViewPG() {
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
   const displayName =
-    deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString()}`
+    deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : 'en-US')}`
 
   async function handleRename() {
     if (!deck) return
@@ -342,6 +346,45 @@ export default function DeckViewPG() {
       .update({ rating, rated_at: new Date().toISOString() })
       .eq('id', wordId)
     setWords((prev) => prev.map((w) => (w.id === wordId ? { ...w, rating } : w)))
+  }
+
+  async function handleShare(word: Word) {
+    setSharing(true)
+    setShareSuccess(false)
+    const url = await getOrCreateShareLink(word.id)
+    if (!url) {
+      setSharing(false)
+      return
+    }
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `${word.word}${word.translation ? ` — ${word.translation}` : ''}`,
+          text: word.mnemonic || `Learn "${word.word}" with Resonance`,
+          url,
+        })
+      } catch (err) {
+        if ((err as Error).name !== 'AbortError') {
+          console.error('[share] Native share failed:', err)
+        }
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(url)
+        setShareSuccess(true)
+        setTimeout(() => setShareSuccess(false), 2000)
+      } catch {
+        const input = document.createElement('input')
+        input.value = url
+        document.body.appendChild(input)
+        input.select()
+        document.execCommand('copy')
+        document.body.removeChild(input)
+        setShareSuccess(true)
+        setTimeout(() => setShareSuccess(false), 2000)
+      }
+    }
+    setSharing(false)
   }
 
   function startRenaming() {
@@ -589,6 +632,14 @@ export default function DeckViewPG() {
                             <div className="flex justify-center mt-2">
                               <StarRating rating={word.rating ?? null} onChange={(r) => handleRate(word.id, r)} />
                             </div>
+                            <button
+                              onClick={() => handleShare(word)}
+                              disabled={sharing}
+                              className="flex items-center gap-2 px-4 py-2 mt-3 rounded-lg border border-white/10 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-colors disabled:opacity-50"
+                            >
+                              <Share2 className="w-4 h-4" />
+                              {sharing ? 'Sharing...' : shareSuccess ? 'Link copied!' : 'Share'}
+                            </button>
                           </>
                         ) : (
                           <>

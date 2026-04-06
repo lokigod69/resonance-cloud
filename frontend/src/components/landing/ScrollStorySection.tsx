@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { Keyboard, Sparkles, Brain } from 'lucide-react'
-import { DEMO_WORDS, STEPS } from './landingData'
+import { DEMO_WORDS } from './landingData'
+import { useLandingLocale } from '@/hooks/useLandingLocale'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import DemoReelSection from './DemoReelSection'
 import HowItWorksSection from './HowItWorksSection'
@@ -32,6 +33,7 @@ function StaticCardSlot({ w }: { w: typeof DEMO_WORDS[0] }) {
 
 export default function ScrollStorySection() {
   const reducedMotion = useReducedMotion()
+  const { t } = useLandingLocale()
   const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
@@ -105,6 +107,12 @@ export default function ScrollStorySection() {
     { scale: step1Scale, opacity: step1Opacity, x: step1X },
     { scale: step2Scale, opacity: step2Opacity },
     { scale: step3Scale, opacity: step3Opacity, x: step3X },
+  ]
+
+  const steps = [
+    { title: t('landing.step1Title'), description: t('landing.step1Desc') },
+    { title: t('landing.step2Title'), description: t('landing.step2Desc') },
+    { title: t('landing.step3Title'), description: t('landing.step3Desc') },
   ]
 
   return (
@@ -181,7 +189,7 @@ export default function ScrollStorySection() {
           </motion.div>
 
           {/* Step cards — all start at center, fan out sequentially */}
-          {STEPS.map((step, i) => {
+          {steps.map((step, i) => {
             const Icon = ICONS[i]
             const anim = stepAnimations[i]
             return (

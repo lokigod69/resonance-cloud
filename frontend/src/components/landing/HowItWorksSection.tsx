@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Keyboard, Sparkles, Brain, ChevronRight } from 'lucide-react'
-import { STEPS } from './landingData'
 import ScrollReveal from './ScrollReveal'
+import { useLandingLocale } from '@/hooks/useLandingLocale'
 
 const ICONS = [Keyboard, Sparkles, Brain]
 
@@ -14,6 +14,13 @@ const directions = [
 
 export default function HowItWorksSection() {
   const reducedMotion = useReducedMotion()
+  const { t } = useLandingLocale()
+
+  const steps = [
+    { title: t('landing.step1Title'), description: t('landing.step1Desc') },
+    { title: t('landing.step2Title'), description: t('landing.step2Desc') },
+    { title: t('landing.step3Title'), description: t('landing.step3Desc') },
+  ]
 
   return (
     <section className="py-32 px-6 bg-[#0c0d14]">
@@ -25,7 +32,7 @@ export default function HowItWorksSection() {
 
         {/* Steps with connector arrows */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-6 md:gap-0">
-          {STEPS.map((step, i) => {
+          {steps.map((step, i) => {
             const Icon = ICONS[i]
             const dir = directions[i]
             return (

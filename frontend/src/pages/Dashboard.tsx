@@ -44,7 +44,7 @@ export default function Dashboard() {
         .order('created_at', { ascending: false })
 
       if (decksError) {
-        setDashboardError('Failed to load your decks. Please try refreshing.')
+        setDashboardError(t('deckview.failedToLoad'))
         return
       }
 
@@ -89,7 +89,7 @@ export default function Dashboard() {
         }
       }
     } catch {
-      setDashboardError('Something went wrong. Please try refreshing.')
+      setDashboardError(t('common.somethingWentWrong'))
     } finally {
       setLoading(false)
     }

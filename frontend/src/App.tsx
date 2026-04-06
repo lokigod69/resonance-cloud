@@ -29,6 +29,7 @@ import MusicPG from '@/pages/MusicPG'
 import Speak from '@/pages/Speak'
 import AdminRoute from '@/components/AdminRoute'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import SharePage from '@/pages/SharePage'
 
 function ProtectedRoute() {
   const { session, loading } = useAuth()
@@ -97,6 +98,9 @@ function AppRoutes() {
 
   return (
     <Routes>
+      {/* Fully public routes — no auth, no redirect */}
+      <Route path="/share/:shareId" element={<SharePage />} />
+
       {/* Public routes */}
       <Route element={<PublicRoute />}>
         <Route path="/" element={<LandingPage />} />

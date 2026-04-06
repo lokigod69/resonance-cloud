@@ -3,19 +3,21 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import ScrollReveal from './ScrollReveal'
+import { useLandingLocale } from '@/hooks/useLandingLocale'
 
 export default function CtaFooterSection() {
   const reducedMotion = useReducedMotion()
+  const { t } = useLandingLocale()
 
   return (
     <section className="py-16 md:py-32 px-6 text-center bg-[#0a0b12]">
       {/* CTA */}
       <ScrollReveal direction="blur" className="max-w-2xl mx-auto mb-24">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">
-          Ready to learn differentl<span style={{ display: 'inline-block', transform: 'rotate(45deg)', transformOrigin: 'bottom center' }}>y</span>?
+          {t('landing.ctaHeadline')}
         </h2>
         <p className="text-lg text-muted-foreground mb-8">
-          Sign up free. Get 10 credits. Create your first music videos.
+          {t('landing.ctaSubline')}
         </p>
         <motion.div
           className="inline-block rounded-md"
@@ -31,7 +33,7 @@ export default function CtaFooterSection() {
           <Button size="lg" asChild className="text-lg px-8 py-6">
             <Link to="/login?mode=signup">
               <Sparkles className="h-5 w-5 mr-2" />
-              Start Learning — It's Free
+              {t('landing.cta')}
             </Link>
           </Button>
         </motion.div>
@@ -40,7 +42,7 @@ export default function CtaFooterSection() {
       {/* Footer */}
       <footer className="border-t border-white/5 pt-8 text-sm text-muted-foreground space-y-1">
         <p>Resonance · resonanz.pro</p>
-        <p>Built with AI. Designed for memory.</p>
+        <p>{t('landing.footer')}</p>
       </footer>
     </section>
   )

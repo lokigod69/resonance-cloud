@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { useTranslation } from '@/hooks/useTranslation'
 
 // Active retry job statuses (a job in these states has not yet completed)
 const ACTIVE_STATUSES = ['pending', 'approved', 'processing'] as const
@@ -43,6 +44,7 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
 }
 
 export default function Music() {
+  const { t } = useTranslation()
   const { user } = useAuth()
   const [allTracks, setAllTracks] = useState<MusicTrack[]>([])
   const [errorTrackIds, setErrorTrackIds] = useState<Set<string>>(new Set())
@@ -55,12 +57,12 @@ export default function Music() {
   const retryPollRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // Merge error state into tracks
-  const tracks: MusicTrack[] = allTracks.map((t) =>
-    errorTrackIds.has(t.id) ? { ...t, error: true } : t,
+  const tracks: MusicTrack[] = allTracks.map((track) =>
+    errorTrackIds.has(track.id) ? { ...track, error: true } : track,
   )
 
   const filteredTracks =
-    deckFilter === 'all' ? tracks : tracks.filter((t) => t.deck_id === deckFilter)
+    deckFilter === 'all' ? tracks : tracks.filter((track) => track.deck_id === deckFilter)
 
   const player = useMusicPlayer(filteredTracks)
 
@@ -266,10 +268,10 @@ export default function Music() {
         <div className="max-w-5xl mx-auto w-full px-6">
         <div className="flex items-center gap-3 mb-4">
           <MusicIcon className="h-6 w-6 text-[var(--accent,#06b6d4)]" />
-          <h1 className="text-xl font-semibold text-white">Your Music</h1>
+          <h1 className="text-xl font-semibold text-white">{t('music.yourMusic')}</h1>
           {!loading && (
             <span className="text-sm text-gray-500">
-              {songsWithAudio} of {totalSongs} songs
+              {t('music.songCount', { current: songsWithAudio, total: totalSongs })}
             </span>
           )}
         </div>
@@ -285,7 +287,7 @@ export default function Music() {
             </SelectTrigger>
             <SelectContent className="bg-gray-900 border-white/10 text-gray-200">
               <SelectItem value="all" className="focus:bg-white/10 focus:text-white">
-                All Songs
+                {t('music.allSongs')}
               </SelectItem>
               {decks.map((d) => (
                 <SelectItem
@@ -307,12 +309,12 @@ export default function Music() {
         <div className="max-w-5xl mx-auto w-full px-6">
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <LoadingIndicator text="Loading songs" />
+            <LoadingIndicator text={t('music.loadingSongs')} />
           </div>
         ) : filteredTracks.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 gap-3">
             <MusicIcon className="h-10 w-10 text-gray-700" />
-            <p className="text-gray-500 text-sm">No words generated yet.</p>
+            <p className="text-gray-500 text-sm">{t('music.noSongs')}</p>
           </div>
         ) : (
           <div className="border-t border-white/5">

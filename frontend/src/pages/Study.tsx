@@ -258,7 +258,7 @@ export default function Study() {
                 </SelectItem>
                 {decks.map((d) => (
                   <SelectItem key={d.id} value={d.id} className="focus:bg-white/10 focus:text-white">
-                    {d.name ?? 'Untitled'}
+                    {d.name ?? t('study.untitled')}
                   </SelectItem>
                 ))}
               </SelectContent>

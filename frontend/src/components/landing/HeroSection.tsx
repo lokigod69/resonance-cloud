@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { Sparkles, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useLandingLocale } from '@/hooks/useLandingLocale'
 
 export default function HeroSection() {
   const reducedMotion = useReducedMotion()
   const { scrollY } = useScroll()
+  const { t, locale } = useLandingLocale()
 
   // Scroll-driven parallax: text floats up and fades
   const textY = useTransform(scrollY, [0, 500], [0, -200])
@@ -21,6 +23,10 @@ export default function HeroSection() {
           animate: { opacity: 1, y: 0 },
           transition: { duration: 0.6, ease: 'easeOut' as const, delay },
         }
+
+  // Headline split: keep gradient span on the language-specific term
+  const headlinePart1 = locale === 'de' ? 'Lerne jede Sprache mit' : 'Learn any language through'
+  const headlinePart2 = locale === 'de' ? 'KI-Musikvideos' : 'AI music videos'
 
   return (
     <section className="relative h-screen">
@@ -53,7 +59,7 @@ export default function HeroSection() {
             {/* Badge */}
             <motion.div {...fadeUp(0)} className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white/70 bg-white/5 border border-white/10">
               <Sparkles className="h-4 w-4 text-primary" />
-              AI-powered language learning
+              {t('landing.badge')}
             </motion.div>
 
             {/* Headline */}
@@ -61,9 +67,9 @@ export default function HeroSection() {
               {...fadeUp(0.1)}
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
             >
-              Learn any language through{' '}
+              {headlinePart1}{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
-                AI music videos
+                {headlinePart2}
               </span>
             </motion.h1>
 
@@ -72,7 +78,7 @@ export default function HeroSection() {
               {...fadeUp(0.2)}
               className="text-lg md:text-xl text-white/60 max-w-xl mx-auto leading-relaxed"
             >
-              Type a word. Get a personalized music video that makes it stick.
+              {t('landing.subheadline')}
             </motion.p>
 
             {/* CTA with glow pulse */}
@@ -91,13 +97,13 @@ export default function HeroSection() {
                 <Button size="lg" asChild className="text-lg px-8 py-6">
                   <Link to="/login?mode=signup">
                     <Sparkles className="h-5 w-5 mr-2" />
-                    Start Learning — It's Free
+                    {t('landing.cta')}
                   </Link>
                 </Button>
               </motion.div>
               <p className="mt-3 text-sm text-white/50">
-                Already have an account?{' '}
-                <Link to="/login" className="text-white/80 hover:text-white underline underline-offset-2">Sign in</Link>
+                {t('landing.signInPrompt')}{' '}
+                <Link to="/login" className="text-white/80 hover:text-white underline underline-offset-2">{t('landing.signIn')}</Link>
               </p>
             </motion.div>
           </div>

@@ -20,6 +20,19 @@ export const LANGUAGE_TO_LOCALE: Record<string, Locale> = {
   // Future: French: 'fr', Italian: 'it', etc.
 };
 
+// Shared translation function builder — used by useTranslation and useLandingLocale
+export function createT(locale: Locale) {
+  return (key: string, vars?: Record<string, string | number>): string => {
+    let str = translations[locale]?.[key] ?? translations.en?.[key] ?? key;
+    if (vars) {
+      for (const [varName, value] of Object.entries(vars)) {
+        str = str.replace(new RegExp(`\\{${varName}\\}`, 'g'), String(value));
+      }
+    }
+    return str;
+  };
+}
+
 export const translations: Record<Locale, Record<string, string>> = {
   en: {
     // ── Navigation ──
@@ -159,6 +172,116 @@ export const translations: Record<Locale, Record<string, string>> = {
     'study.revealAnswer': 'Reveal Answer',
     'study.reviewLater': 'Review Later',
     'study.rememberedAction': 'Remembered',
+
+    // ── Music ──
+    'music.yourMusic': 'Your Music',
+    'music.songCount': '{current} of {total} songs',
+    'music.allSongs': 'All Songs',
+    'music.loadingSongs': 'Loading songs',
+    'music.noSongs': 'No words generated yet.',
+    'music.retry': 'Retry',
+
+    // ── Speak ──
+    'speak.voiceTutor': 'Voice Tutor',
+    'speak.chooseLang': 'Choose a language to practice',
+    'speak.browserWarning': 'Your browser may not support audio recording. Chrome or Safari recommended.',
+    'speak.startingConversation': 'Starting conversation…',
+    'speak.chooseVoice': "Choose your tutor's voice",
+    'speak.voiceInstruction': 'Tap a card to start, or preview with the play button',
+    'speak.howMuch': 'How much {language} do you know?',
+    'speak.levelHint': 'This helps me adjust how I speak with you.',
+    'speak.levelZero': 'Complete Zero',
+    'speak.levelZeroDesc': "I don't know any words yet",
+    'speak.levelBeginner': 'Beginner',
+    'speak.levelBeginnerDesc': 'I know basics — hello, thank you, numbers',
+    'speak.levelIntermediate': 'Intermediate',
+    'speak.levelIntermediateDesc': 'I can hold a simple conversation',
+    'speak.levelAdvanced': 'Advanced',
+    'speak.levelAdvancedDesc': 'I want fluent practice and corrections',
+    'speak.listening': 'Listen...',
+    'speak.tapToHear': 'Tap to hear',
+    'speak.waitingGreeting': 'Waiting for tutor to greet you…',
+    'speak.tapToSpeak': 'Tap to speak',
+    'speak.recording': 'Recording — tap to send',
+    'speak.thinking': 'Thinking…',
+    'speak.speaking': 'Speaking…',
+    'speak.tapRetry': 'Tap to try again',
+
+    // ── VerbCycler ──
+    'verb.composing': 'Composing',
+    'verb.imagining': 'Imagining',
+    'verb.painting': 'Painting',
+    'verb.rendering': 'Rendering',
+    'verb.assembling': 'Assembling',
+    'verb.harmonizing': 'Harmonizing',
+    'verb.illustrating': 'Illustrating',
+    'verb.animating': 'Animating',
+    'verb.dreaming': 'Dreaming',
+    'verb.crafting': 'Crafting',
+    'verb.synthesizing': 'Synthesizing',
+    'verb.conjuring': 'Conjuring',
+
+    // ── Generate (missed strings) ──
+    'generate.addWords': 'Add your words',
+    'generate.quickGenerate': 'Quick Generate',
+    'generate.customize': 'Customize',
+    'generate.continue': 'Continue',
+    'generate.deckBeingCreated': 'Your deck is being created!',
+    'generate.backgroundNotice': 'Generation continues in the background. You can close this page.',
+    'generate.couldNotVerifyCredits': 'Could not verify credit balance',
+
+    // ── DeckView (missed strings) ──
+    'deckview.noVideo': 'No video available',
+    'deckview.replay': 'Replay',
+    'deckview.statusGenerating': 'Generating {completed} of {total}',
+    'deckview.statusReady': 'Ready',
+    'deckview.statusPartial': 'Partial ({completed}/{total})',
+    'deckview.confirmRemove': 'Remove "{word}" from this deck?',
+    'deckview.noCredits': 'No credits remaining',
+    'deckview.retryingGeneration': 'Retrying generation...',
+    'deckview.retryFailed': 'Retry failed',
+    'deckview.wordRemoved': 'Word removed',
+    'deckview.removeFailed': 'Failed to remove word',
+    'deckview.failedToLoad': 'Failed to load your decks. Please try again.',
+
+    // ── Study (missed strings) ──
+    'study.untitled': 'Untitled',
+
+    // ── Speak (missed header labels) ──
+    'speak.level': 'Level',
+    'speak.voice': 'Voice',
+    'speak.history': 'History',
+    'speak.newChat': 'New Chat',
+
+    // ── Common (missed) ──
+    'common.somethingWentWrong': 'Something went wrong. Please try again.',
+
+    // ── Landing Page ──
+    'landing.badge': 'AI-powered language learning',
+    'landing.headline': 'Learn any language through AI music videos',
+    'landing.subheadline': 'Type a word. Get a personalized music video that makes it stick.',
+    'landing.cta': "Start Learning — It's Free",
+    'landing.signInPrompt': 'Already have an account?',
+    'landing.signIn': 'Sign in',
+    'landing.step1Title': 'Type your words',
+    'landing.step1Desc': 'Choose a language, type your vocabulary, pick a style.',
+    'landing.step2Title': 'AI creates your video',
+    'landing.step2Desc': 'AI composes a song, generates images, and assembles a unique music video for every word.',
+    'landing.step3Title': 'Watch & remember',
+    'landing.step3Desc': 'Study with built-in tools. Multi-sensory learning that sticks.',
+    'landing.ctaHeadline': 'Ready to learn differently?',
+    'landing.ctaSubline': 'Sign up free. Get 10 credits. Create your first music videos.',
+    'landing.footer': 'Built with AI. Designed for memory.',
+    'langName.German': 'German',
+    'langName.French': 'French',
+    'langName.Italian': 'Italian',
+    'langName.English': 'English',
+    'langName.Tagalog': 'Tagalog',
+    'langName.Bisaya': 'Bisaya',
+    'langName.Indonesian': 'Indonesian',
+    'langName.Dutch': 'Dutch',
+    'langName.Spanish': 'Spanish',
+    'langName.Hindi': 'Hindi',
   },
 
   de: {
@@ -299,5 +422,115 @@ export const translations: Record<Locale, Record<string, string>> = {
     'study.revealAnswer': 'Antwort aufdecken',
     'study.reviewLater': 'Später wiederholen',
     'study.rememberedAction': 'Gemerkt',
+
+    // ── Music ──
+    'music.yourMusic': 'Deine Musik',
+    'music.songCount': '{current} von {total} Liedern',
+    'music.allSongs': 'Alle Lieder',
+    'music.loadingSongs': 'Lieder werden geladen',
+    'music.noSongs': 'Noch keine Wörter erstellt.',
+    'music.retry': 'Wiederholen',
+
+    // ── Speak ──
+    'speak.voiceTutor': 'Sprachtutor',
+    'speak.chooseLang': 'Wähle eine Sprache zum Üben',
+    'speak.browserWarning': 'Dein Browser unterstützt möglicherweise keine Audioaufnahme. Chrome oder Safari empfohlen.',
+    'speak.startingConversation': 'Gespräch wird gestartet…',
+    'speak.chooseVoice': 'Wähle die Stimme deines Tutors',
+    'speak.voiceInstruction': 'Tippe auf eine Karte, um zu starten, oder höre mit dem Play-Button rein',
+    'speak.howMuch': 'Wie viel {language} kannst du?',
+    'speak.levelHint': 'Das hilft mir, mich an dein Niveau anzupassen.',
+    'speak.levelZero': 'Absoluter Anfänger',
+    'speak.levelZeroDesc': 'Ich kenne noch keine Wörter',
+    'speak.levelBeginner': 'Anfänger',
+    'speak.levelBeginnerDesc': 'Ich kenne Grundlagen — Hallo, Danke, Zahlen',
+    'speak.levelIntermediate': 'Mittelstufe',
+    'speak.levelIntermediateDesc': 'Ich kann ein einfaches Gespräch führen',
+    'speak.levelAdvanced': 'Fortgeschritten',
+    'speak.levelAdvancedDesc': 'Ich möchte fließend üben und korrigiert werden',
+    'speak.listening': 'Hört zu...',
+    'speak.tapToHear': 'Tippen zum Anhören',
+    'speak.waitingGreeting': 'Warte auf die Begrüßung…',
+    'speak.tapToSpeak': 'Zum Sprechen tippen',
+    'speak.recording': 'Aufnahme — tippen zum Senden',
+    'speak.thinking': 'Denkt nach…',
+    'speak.speaking': 'Spricht…',
+    'speak.tapRetry': 'Tippen zum erneuten Versuch',
+
+    // ── VerbCycler ──
+    'verb.composing': 'Komponiert',
+    'verb.imagining': 'Erträumt',
+    'verb.painting': 'Malt',
+    'verb.rendering': 'Rendert',
+    'verb.assembling': 'Baut zusammen',
+    'verb.harmonizing': 'Harmonisiert',
+    'verb.illustrating': 'Illustriert',
+    'verb.animating': 'Animiert',
+    'verb.dreaming': 'Träumt',
+    'verb.crafting': 'Formt',
+    'verb.synthesizing': 'Synthetisiert',
+    'verb.conjuring': 'Beschwört',
+
+    // ── Generate (missed strings) ──
+    'generate.addWords': 'Füge deine Wörter hinzu',
+    'generate.quickGenerate': 'Schnell erstellen',
+    'generate.customize': 'Anpassen',
+    'generate.continue': 'Weiter',
+    'generate.deckBeingCreated': 'Dein Deck wird erstellt!',
+    'generate.backgroundNotice': 'Die Erstellung läuft im Hintergrund weiter. Du kannst diese Seite schließen.',
+    'generate.couldNotVerifyCredits': 'Guthaben konnte nicht überprüft werden',
+
+    // ── DeckView (missed strings) ──
+    'deckview.noVideo': 'Kein Video verfügbar',
+    'deckview.replay': 'Nochmal abspielen',
+    'deckview.statusGenerating': '{completed} von {total} wird erstellt',
+    'deckview.statusReady': 'Fertig',
+    'deckview.statusPartial': 'Teilweise ({completed}/{total})',
+    'deckview.confirmRemove': '"{word}" aus diesem Deck entfernen?',
+    'deckview.noCredits': 'Keine Credits mehr',
+    'deckview.retryingGeneration': 'Erstellung wird wiederholt...',
+    'deckview.retryFailed': 'Wiederholung fehlgeschlagen',
+    'deckview.wordRemoved': 'Wort entfernt',
+    'deckview.removeFailed': 'Wort konnte nicht entfernt werden',
+    'deckview.failedToLoad': 'Decks konnten nicht geladen werden. Bitte erneut versuchen.',
+
+    // ── Study (missed strings) ──
+    'study.untitled': 'Unbenannt',
+
+    // ── Speak (missed header labels) ──
+    'speak.level': 'Stufe',
+    'speak.voice': 'Stimme',
+    'speak.history': 'Verlauf',
+    'speak.newChat': 'Neues Gespräch',
+
+    // ── Common (missed) ──
+    'common.somethingWentWrong': 'Etwas ist schiefgelaufen. Bitte erneut versuchen.',
+
+    // ── Landing Page ──
+    'landing.badge': 'KI-gestütztes Sprachenlernen',
+    'landing.headline': 'Lerne jede Sprache mit KI-Musikvideos',
+    'landing.subheadline': 'Gib ein Wort ein. Bekomme ein personalisiertes Musikvideo, das im Kopf bleibt.',
+    'landing.cta': 'Jetzt kostenlos starten',
+    'landing.signInPrompt': 'Schon ein Konto?',
+    'landing.signIn': 'Anmelden',
+    'landing.step1Title': 'Gib deine Wörter ein',
+    'landing.step1Desc': 'Wähle eine Sprache, tippe dein Vokabular, wähle einen Stil.',
+    'landing.step2Title': 'KI erstellt dein Video',
+    'landing.step2Desc': 'KI komponiert einen Song, generiert Bilder und erstellt ein einzigartiges Musikvideo für jedes Wort.',
+    'landing.step3Title': 'Anschauen & merken',
+    'landing.step3Desc': 'Lerne mit eingebauten Tools. Multisensorisches Lernen, das hängen bleibt.',
+    'landing.ctaHeadline': 'Bereit, anders zu lernen?',
+    'landing.ctaSubline': 'Kostenlos registrieren. 10 Credits erhalten. Deine ersten Musikvideos erstellen.',
+    'landing.footer': 'Mit KI gebaut. Für dein Gedächtnis gemacht.',
+    'langName.German': 'Deutsch',
+    'langName.French': 'Französisch',
+    'langName.Italian': 'Italienisch',
+    'langName.English': 'Englisch',
+    'langName.Tagalog': 'Tagalog',
+    'langName.Bisaya': 'Bisaya',
+    'langName.Indonesian': 'Indonesisch',
+    'langName.Dutch': 'Niederländisch',
+    'langName.Spanish': 'Spanisch',
+    'langName.Hindi': 'Hindi',
   },
 };

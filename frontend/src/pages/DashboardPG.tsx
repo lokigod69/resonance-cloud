@@ -64,7 +64,7 @@ export default function DashboardPG() {
 
       if (decksError) {
         console.error('[Dashboard] Failed to load decks:', decksError)
-        setDashboardError('Failed to load your decks. Please try refreshing.')
+        setDashboardError(t('deckview.failedToLoad'))
         return
       }
 
@@ -114,7 +114,7 @@ export default function DashboardPG() {
       }
     } catch (err) {
       console.error('[Dashboard] Unexpected error:', err)
-      setDashboardError('Something went wrong. Please try refreshing.')
+      setDashboardError(t('common.somethingWentWrong'))
     } finally {
       setLoading(false)
     }

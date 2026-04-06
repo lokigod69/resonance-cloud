@@ -4,6 +4,7 @@ import { useVoiceTutor } from '@/hooks/useVoiceTutor'
 import { getVoicesForLanguage, type TutorVoice } from '@/voiceRegistry'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
 import { FlagIcon } from '@/components/ui/FlagIcon'
+import { useTranslation } from '@/hooks/useTranslation'
 
 const LANGUAGES = [
   { code: 'en', nativeName: 'English' },
@@ -48,6 +49,7 @@ function VoiceAvatar({ name, gender }: { name: string; gender: string }) {
 }
 
 export default function Speak() {
+  const { t } = useTranslation()
   const tutor = useVoiceTutor()
   const bottomRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)
@@ -97,9 +99,9 @@ export default function Speak() {
           <div className="max-w-2xl mx-auto w-full px-6">
             <div className="flex items-center gap-3 mb-1">
               <Mic className="h-6 w-6 text-[var(--accent,#06b6d4)]" />
-              <h1 className="text-xl font-semibold text-white">Voice Tutor</h1>
+              <h1 className="text-xl font-semibold text-white">{t('speak.voiceTutor')}</h1>
             </div>
-            <p className="text-sm text-gray-400">Choose a language to practice</p>
+            <p className="text-sm text-gray-400">{t('speak.chooseLang')}</p>
           </div>
         </div>
 
@@ -107,7 +109,7 @@ export default function Speak() {
           <div className="w-full max-w-2xl">
             {!tutor.isSupported && (
               <div className="mb-6 px-4 py-3 rounded-lg bg-yellow-900/30 border border-yellow-700/40 text-yellow-300 text-sm">
-                Your browser may not support audio recording. Chrome or Safari recommended.
+                {t('speak.browserWarning')}
               </div>
             )}
 
@@ -130,7 +132,7 @@ export default function Speak() {
             {tutor.status === 'processing' && (
               <div className="flex items-center justify-center gap-2 mt-8 text-gray-400 text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Starting conversation…
+                {t('speak.startingConversation')}
               </div>
             )}
 
@@ -169,13 +171,13 @@ export default function Speak() {
 
         <div className="flex-1 flex items-start justify-center px-6 pt-6">
           <div className="w-full max-w-2xl">
-            <h2 className="text-base font-semibold text-white mb-1">Choose your tutor's voice</h2>
-            <p className="text-sm text-gray-400 mb-5">Tap a card to start, or preview with the play button</p>
+            <h2 className="text-base font-semibold text-white mb-1">{t('speak.chooseVoice')}</h2>
+            <p className="text-sm text-gray-400 mb-5">{t('speak.voiceInstruction')}</p>
 
             {isStarting && (
               <div className="flex items-center gap-2 mb-4 text-gray-400 text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Starting conversation…
+                {t('speak.startingConversation')}
               </div>
             )}
 
@@ -245,16 +247,16 @@ export default function Speak() {
         <div className="flex-1 flex items-start justify-center px-6 pt-6">
           <div className="w-full max-w-sm">
             <h2 className="text-xl font-semibold text-white mb-2">
-              How much {selectedLang?.nativeName} do you know?
+              {t('speak.howMuch', { language: selectedLang?.nativeName ?? '' })}
             </h2>
-            <p className="text-sm text-gray-400 mb-8">This helps me adjust how I speak with you.</p>
+            <p className="text-sm text-gray-400 mb-8">{t('speak.levelHint')}</p>
 
             <div className="grid grid-cols-1 gap-3">
               {[
-                { level: 'zero',         emoji: '🌱', title: 'Complete Zero',  desc: "I don't know any words yet" },
-                { level: 'beginner',     emoji: '📗', title: 'Beginner',       desc: 'I know basics — hello, thank you, numbers' },
-                { level: 'intermediate', emoji: '📘', title: 'Intermediate',   desc: 'I can hold a simple conversation' },
-                { level: 'advanced',     emoji: '📕', title: 'Advanced',       desc: 'I want fluent practice and corrections' },
+                { level: 'zero',         emoji: '🌱', title: t('speak.levelZero'),         desc: t('speak.levelZeroDesc') },
+                { level: 'beginner',     emoji: '📗', title: t('speak.levelBeginner'),     desc: t('speak.levelBeginnerDesc') },
+                { level: 'intermediate', emoji: '📘', title: t('speak.levelIntermediate'), desc: t('speak.levelIntermediateDesc') },
+                { level: 'advanced',     emoji: '📕', title: t('speak.levelAdvanced'),     desc: t('speak.levelAdvancedDesc') },
               ].map((opt) => (
                 <button
                   key={opt.level}
@@ -305,7 +307,7 @@ export default function Speak() {
           <span className="text-sm">
             {tutor.level === 'zero' ? '🌱' : tutor.level === 'beginner' ? '📗' : tutor.level === 'intermediate' ? '📘' : tutor.level === 'advanced' ? '📕' : <Signal className="w-4 h-4" />}
           </span>
-          <span className="hidden sm:inline">Level</span>
+          <span className="hidden sm:inline">{t('speak.level')}</span>
         </button>
 
         <button
@@ -314,7 +316,7 @@ export default function Speak() {
           title="Change voice"
         >
           <RefreshCw className="h-3 w-3" />
-          <span className="hidden sm:inline">Voice</span>
+          <span className="hidden sm:inline">{t('speak.voice')}</span>
         </button>
 
         <button
@@ -323,7 +325,7 @@ export default function Speak() {
           title="Conversation history"
         >
           <History className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">History</span>
+          <span className="hidden sm:inline">{t('speak.history')}</span>
         </button>
 
         <button
@@ -333,7 +335,7 @@ export default function Speak() {
           title="New conversation"
         >
           <MessageSquarePlus className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">New Chat</span>
+          <span className="hidden sm:inline">{t('speak.newChat')}</span>
         </button>
         </div>
       </div>
@@ -359,7 +361,7 @@ export default function Speak() {
             >
               {msg.role === 'assistant' && !msg.revealed ? (
                 <span className="flex items-center gap-1.5 text-gray-400 text-sm italic">
-                  <span>🎧</span> Listen...
+                  <span>🎧</span> {t('speak.listening')}
                 </span>
               ) : (
                 <>
@@ -370,7 +372,7 @@ export default function Speak() {
                       className="mt-2 flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
                     >
                       <Play className="h-3.5 w-3.5 fill-current" />
-                      <span>Tap to hear</span>
+                      <span>{t('speak.tapToHear')}</span>
                     </button>
                   )}
                 </>
@@ -387,7 +389,7 @@ export default function Speak() {
 
         {tutor.messages.length === 0 && tutor.status !== 'processing' && (
           <div className="flex items-center justify-center h-full text-gray-600 text-sm">
-            Waiting for tutor to greet you…
+            {t('speak.waitingGreeting')}
           </div>
         )}
 
@@ -411,15 +413,15 @@ export default function Speak() {
         )}
 
         <p className="text-xs text-gray-500 text-center mb-3 h-4">
-          {tutor.status === 'idle' && 'Tap to speak'}
+          {tutor.status === 'idle' && t('speak.tapToSpeak')}
           {tutor.status === 'recording' && (
-            <span className="text-red-400">Recording — tap to send</span>
+            <span className="text-red-400">{t('speak.recording')}</span>
           )}
-          {tutor.status === 'processing' && 'Thinking…'}
+          {tutor.status === 'processing' && t('speak.thinking')}
           {tutor.status === 'playing' && (
-            <span className="text-cyan-400">Speaking…</span>
+            <span className="text-cyan-400">{t('speak.speaking')}</span>
           )}
-          {tutor.status === 'error' && 'Tap to try again'}
+          {tutor.status === 'error' && t('speak.tapRetry')}
         </p>
 
         <div className="flex justify-center">

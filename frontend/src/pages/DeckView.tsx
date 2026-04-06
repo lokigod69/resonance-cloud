@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play } from 'lucide-react'
+import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play, Share2 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
@@ -17,6 +17,7 @@ import { useToast } from '@/components/Toast'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useTranslation } from '@/hooks/useTranslation'
+import { getOrCreateShareLink } from '@/lib/shareWord'
 
 type Deck = {
   id: string
@@ -64,13 +65,13 @@ export default function DeckView() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
 
   const handleRetry = async (word: Word) => {
     if (!user || !profile || profile.credits < 1) {
-      toast('No credits remaining', 'error')
+      toast(t('deckview.noCredits'), 'error')
       return
     }
     setRetrying(word.id)
@@ -103,16 +104,16 @@ export default function DeckView() {
       await refreshProfile()
       const { data } = await supabase.from('words').select('*').eq('deck_id', id).order('created_at')
       if (data) setWords(data)
-      toast('Retrying generation...', 'success')
+      toast(t('deckview.retryingGeneration'), 'success')
     } catch {
-      toast('Retry failed', 'error')
+      toast(t('deckview.retryFailed'), 'error')
     } finally {
       setRetrying(null)
     }
   }
 
   const handleDeleteWord = async (word: Word) => {
-    if (!confirm(`Remove "${word.word}" from this deck?`)) return
+    if (!confirm(t('deckview.confirmRemove', { word: word.word }))) return
     setDeleting(word.id)
     try {
       // Clean up storage files if they exist
@@ -131,9 +132,9 @@ export default function DeckView() {
       const someComplete = remaining.some(w => w.status === 'complete')
       const newStatus = allComplete ? 'complete' : someComplete ? 'partial' : 'draft'
       await supabase.from('decks').update({ word_count: remaining.length, status: newStatus }).eq('id', id)
-      toast('Word removed', 'success')
+      toast(t('deckview.wordRemoved'), 'success')
     } catch {
-      toast('Failed to remove word', 'error')
+      toast(t('deckview.removeFailed'), 'error')
     } finally {
       setDeleting(null)
     }
@@ -198,7 +199,7 @@ export default function DeckView() {
 
   const displayName =
     deck.name ||
-    `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString()}`
+    `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : 'en-US')}`
 
   async function handleRate(wordId: string, rating: number) {
     await supabase
@@ -283,15 +284,15 @@ export default function DeckView() {
           <div className="flex items-center justify-center gap-2">
             <span className="text-sm text-muted-foreground">{deck.target_language}</span>
             {isGenerating ? (
-              <span title={`Generating ${completedCount} of ${totalCount}`}>
+              <span title={t('deckview.statusGenerating', { completed: completedCount, total: totalCount })}>
                 <Loader2 className="h-4 w-4 text-primary animate-spin" />
               </span>
             ) : deck.status === 'complete' ? (
-              <span title="Ready">
+              <span title={t('deckview.statusReady')}>
                 <CheckCircle2 className="h-4 w-4 text-green-400" />
               </span>
             ) : (
-              <span title={`Partial (${completedCount}/${totalCount})`}>
+              <span title={t('deckview.statusPartial', { completed: completedCount, total: totalCount })}>
                 <AlertTriangle className="h-4 w-4 text-yellow-400" />
               </span>
             )}
@@ -483,6 +484,47 @@ function VideoViewerModal({
   const { isPlaying, setIsPlaying, togglePlay, onPlay, onPause } = useVideoPlayback(videoRef)
   const isPlayingRef = useRef(isPlaying)
   isPlayingRef.current = isPlaying
+  const [sharing, setSharing] = useState(false)
+  const [shareSuccess, setShareSuccess] = useState(false)
+
+  async function handleShare() {
+    setSharing(true)
+    setShareSuccess(false)
+    const url = await getOrCreateShareLink(word.id)
+    if (!url) {
+      setSharing(false)
+      return
+    }
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `${word.word}${word.translation ? ` — ${word.translation}` : ''}`,
+          text: word.mnemonic || `Learn "${word.word}" with Resonance`,
+          url,
+        })
+      } catch (err) {
+        if ((err as Error).name !== 'AbortError') {
+          console.error('[share] Native share failed:', err)
+        }
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(url)
+        setShareSuccess(true)
+        setTimeout(() => setShareSuccess(false), 2000)
+      } catch {
+        const input = document.createElement('input')
+        input.value = url
+        document.body.appendChild(input)
+        input.select()
+        document.execCommand('copy')
+        document.body.removeChild(input)
+        setShareSuccess(true)
+        setTimeout(() => setShareSuccess(false), 2000)
+      }
+    }
+    setSharing(false)
+  }
 
   // Preserve playing/paused state when navigating to a new word
   useEffect(() => {
@@ -582,7 +624,7 @@ function VideoViewerModal({
               </>
             ) : (
               <div className="w-full aspect-video flex items-center justify-center bg-white/5">
-                <p className="text-muted-foreground">No video available</p>
+                <p className="text-muted-foreground">{t('deckview.noVideo')}</p>
               </div>
             )}
 
@@ -619,8 +661,8 @@ function VideoViewerModal({
             onRate={onRate}
           />
 
-          {/* Replay */}
-          <div className="flex items-center justify-center">
+          {/* Replay + Share */}
+          <div className="flex items-center justify-center gap-3">
             <Button
               variant="outline"
               size="sm"
@@ -628,7 +670,17 @@ function VideoViewerModal({
               className="border-white/10"
             >
               <RotateCcw className="h-4 w-4 mr-2" />
-              Replay
+              {t('deckview.replay')}
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleShare}
+              disabled={sharing}
+              className="border-white/10"
+            >
+              <Share2 className="h-4 w-4 mr-2" />
+              {sharing ? 'Sharing...' : shareSuccess ? 'Copied!' : 'Share'}
             </Button>
           </div>
         </div>

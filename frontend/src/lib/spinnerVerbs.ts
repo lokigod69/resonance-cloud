@@ -23,10 +23,25 @@ export const SPINNER_VERBS = [
   'Zesting', 'Zigzagging',
 ]
 
-export function getRandomVerb(exclude?: string): string {
+export const SPINNER_VERBS_DE = [
+  'Komponiert',
+  'Erträumt',
+  'Malt',
+  'Rendert',
+  'Baut zusammen',
+  'Harmonisiert',
+  'Illustriert',
+  'Animiert',
+  'Träumt',
+  'Formt',
+  'Synthetisiert',
+  'Beschwört',
+]
+
+export function getRandomVerb(exclude?: string, verbs: string[] = SPINNER_VERBS): string {
   let verb: string
   do {
-    verb = SPINNER_VERBS[Math.floor(Math.random() * SPINNER_VERBS.length)]
-  } while (verb === exclude && SPINNER_VERBS.length > 1)
+    verb = verbs[Math.floor(Math.random() * verbs.length)]
+  } while (verb === exclude && verbs.length > 1)
   return verb
 }

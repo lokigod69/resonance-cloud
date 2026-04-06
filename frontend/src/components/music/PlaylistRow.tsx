@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { Music } from 'lucide-react'
 import type { MusicTrack } from '@/hooks/useMusicPlayer'
+import { useTranslation } from '@/hooks/useTranslation'
 
 // Duration cache: persists across component remounts within the same browser session
 const durationCache = new Map<string, number>()
@@ -47,6 +48,7 @@ function Equalizer() {
 }
 
 export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRetrying, retryStatus }: PlaylistRowProps) {
+  const { t } = useTranslation()
   const [duration, setDuration] = useState<number | null>(() => {
     if (track.duration !== null) return track.duration
     return durationCache.get(track.suno_audio_url ?? '') ?? null
@@ -141,7 +143,7 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRe
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
             </svg>
-            {retryStatus === 'processing' ? 'Generating…' : 'Queued'}
+            {retryStatus === 'processing' ? t('deckview.generating') : t('deckview.queued')}
           </span>
         ) : (
           <button
@@ -149,7 +151,7 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRe
             className="text-[10px] text-gray-500 hover:text-[var(--accent,#06b6d4)] transition-colors font-sans px-1 py-0.5 rounded hover:bg-white/5"
             title="Retry Suno generation"
           >
-            ↻ Retry
+            ↻ {t('music.retry')}
           </button>
         )}
       </span>

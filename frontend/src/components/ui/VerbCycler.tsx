@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
-import { getRandomVerb } from '@/lib/spinnerVerbs'
+import { getRandomVerb, SPINNER_VERBS_DE } from '@/lib/spinnerVerbs'
+import { useTranslation } from '@/hooks/useTranslation'
 
 interface VerbCyclerProps {
   intervalMs?: number
@@ -8,7 +9,10 @@ interface VerbCyclerProps {
 }
 
 export function VerbCycler({ intervalMs = 5000, className }: VerbCyclerProps) {
-  const [verb, setVerb] = useState(() => getRandomVerb())
+  const { locale } = useTranslation()
+  const verbs = locale === 'de' ? SPINNER_VERBS_DE : undefined  // undefined = default EN list
+
+  const [verb, setVerb] = useState(() => getRandomVerb(undefined, verbs))
   const [visible, setVisible] = useState(true)
   const reducedMotion = useRef(
     typeof window !== 'undefined' &&
@@ -22,19 +26,19 @@ export function VerbCycler({ intervalMs = 5000, className }: VerbCyclerProps) {
 
     const interval = setInterval(() => {
       if (reducedMotion.current) {
-        setVerb(getRandomVerb(verbRef.current))
+        setVerb(getRandomVerb(verbRef.current, verbs))
         return
       }
       setVisible(false)
       const timeout = setTimeout(() => {
-        setVerb(getRandomVerb(verbRef.current))
+        setVerb(getRandomVerb(verbRef.current, verbs))
         setVisible(true)
       }, fadeOut)
       return () => clearTimeout(timeout)
     }, intervalMs)
 
     return () => clearInterval(interval)
-  }, [intervalMs])
+  }, [intervalMs, verbs])
 
   return (
     <p
