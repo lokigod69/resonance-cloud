@@ -27,7 +27,7 @@ export default function HowItWorksSection() {
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <ScrollReveal className="text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold">How it works</h2>
+          <h2 className="text-3xl md:text-5xl font-bold">{t('landing.howItWorks')}</h2>
         </ScrollReveal>
 
         {/* Steps with connector arrows */}
@@ -64,7 +64,7 @@ export default function HowItWorksSection() {
                     viewport={{ once: true }}
                     transition={{ type: 'spring' as const, stiffness: 300, damping: 15, delay: 0.3 + i * 0.2 }}
                   >
-                    Step {i + 1}
+                    {t('landing.step', { n: i + 1 })}
                   </motion.span>
 
                   {/* Icon */}

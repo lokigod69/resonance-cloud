@@ -4,6 +4,7 @@ import { DEMO_WORDS } from './landingData'
 import ScrollReveal from './ScrollReveal'
 import WaveformDivider from './WaveformDivider'
 import { FlagIcon } from '@/components/ui/FlagIcon'
+import { useLandingLocale } from '@/hooks/useLandingLocale'
 
 const cardVariants = {
   hidden: { opacity: 0, y: 80, rotateX: 15, scale: 0.9 },
@@ -26,6 +27,7 @@ const ROW_2 = DEMO_WORDS.slice(6)
 export default function DemoReelSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const reducedMotion = useReducedMotion()
+  const { t } = useLandingLocale()
 
   function CardSlot({ w, i, indexOffset = 0 }: { w: typeof DEMO_WORDS[0]; i: number; indexOffset?: number }) {
     const absIndex = indexOffset + i
@@ -82,9 +84,9 @@ export default function DemoReelSection() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <ScrollReveal className="text-center mb-14">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">See what AI creates</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('landing.demoHeading')}</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Every word becomes a unique music video. Run it on automatic or choose your own style, genre, and creative direction.
+            {t('landing.demoDescription')}
           </p>
         </ScrollReveal>
 

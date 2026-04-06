@@ -199,7 +199,7 @@ export default function DeckView() {
 
   const displayName =
     deck.name ||
-    `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : 'en-US')}`
+    `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US')}`
 
   async function handleRate(wordId: string, rating: number) {
     await supabase

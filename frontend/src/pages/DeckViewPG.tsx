@@ -321,7 +321,7 @@ export default function DeckViewPG() {
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
   const displayName =
-    deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : 'en-US')}`
+    deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US')}`
 
   async function handleRename() {
     if (!deck) return

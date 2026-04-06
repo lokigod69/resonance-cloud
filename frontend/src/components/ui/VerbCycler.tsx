@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
-import { getRandomVerb, SPINNER_VERBS_DE } from '@/lib/spinnerVerbs'
+import { getRandomVerb, SPINNER_VERBS_DE, SPINNER_VERBS_FR } from '@/lib/spinnerVerbs'
 import { useTranslation } from '@/hooks/useTranslation'
 
 interface VerbCyclerProps {
@@ -10,7 +10,7 @@ interface VerbCyclerProps {
 
 export function VerbCycler({ intervalMs = 5000, className }: VerbCyclerProps) {
   const { locale } = useTranslation()
-  const verbs = locale === 'de' ? SPINNER_VERBS_DE : undefined  // undefined = default EN list
+  const verbs = locale === 'de' ? SPINNER_VERBS_DE : locale === 'fr' ? SPINNER_VERBS_FR : undefined
 
   const [verb, setVerb] = useState(() => getRandomVerb(undefined, verbs))
   const [visible, setVisible] = useState(true)

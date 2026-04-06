@@ -17,6 +17,17 @@ interface RequestBody {
   mime_type?: string
   level?: string
   native_language?: string
+  character_name?: string
+  character_tier?: 'style' | 'persona' | 'public'
+  character_identity?: string
+  character_directive?: string
+}
+
+interface CharacterPayload {
+  name: string
+  tier: 'style' | 'persona' | 'public'
+  identity?: string
+  directive: string
 }
 
 const LANGUAGE_CONFIG: Record<string, { name: string; nativeName: string; encouragement: string; fillers: string }> = {
@@ -123,19 +134,14 @@ LANGUAGE MIX: Speak about 80% in ${targetLang} and 20% in ${nativeLang}.
   }
 }
 
-function buildSystemPrompt(languageCode: string, level: string, nativeLang: string): string {
+function buildSystemPrompt(languageCode: string, level: string, nativeLang: string, character?: CharacterPayload): string {
   const lang = LANGUAGE_CONFIG[languageCode]
   if (!lang) throw new Error(`Unsupported language: ${languageCode}`)
 
   const nativeLangName = LANGUAGE_CONFIG[nativeLang]?.name || NATIVE_LANGUAGE_NAMES[nativeLang] || 'English'
   const levelInstructions = getLevelInstructions(lang.name, nativeLangName, level)
 
-  return `You are a friendly, patient language tutor helping someone practice ${lang.name} (${lang.nativeName}).
-The student's native language is ${nativeLangName}.
-
-${levelInstructions}
-
-GENERAL RULES:
+  const generalRules = `GENERAL RULES:
 - Keep responses SHORT: 1-3 sentences maximum. This is spoken conversation, not a lecture.
 - Correct mistakes naturally: repeat what they said correctly, then continue. Do NOT lecture about grammar rules unless asked.
 - NEVER use parenthetical stage directions like (slowly), (whispering), (laughing). Your text will be read aloud by a speech engine — it cannot act, only speak.
@@ -144,9 +150,44 @@ GENERAL RULES:
 - Stay on conversational topics: daily life, hobbies, food, travel, culture, weather, family.
 - If asked about unrelated topics (politics, math, coding, etc.), redirect warmly back to practicing ${lang.name}.
 - Never break character. You are a language tutor, not a general AI assistant.
-- Use natural conversational fillers in ${lang.name}: ${lang.fillers}
+- Use natural conversational fillers in ${lang.name}: ${lang.fillers}`
+
+  // ── No character: current default behavior ──
+  if (!character) {
+    return `You are a friendly, patient language tutor helping someone practice ${lang.name} (${lang.nativeName}).
+The student's native language is ${nativeLangName}.
+
+${levelInstructions}
+
+${generalRules}
 
 PERSONALITY: Warm, encouraging, patient. Curious about the student's life to generate natural topics. Like a friend who happens to be a native speaker.`
+  }
+
+  // ── Style Tutor: directive replaces PERSONALITY ──
+  if (character.tier === 'style') {
+    return `You are ${character.name}, a language tutor with a distinctive teaching style helping someone practice ${lang.name} (${lang.nativeName}).
+The student's native language is ${nativeLangName}.
+
+${levelInstructions}
+
+${generalRules}
+
+TEACHING STYLE: ${character.directive}`
+  }
+
+  // ── Persona / Public: full identity + tutoring role bridge ──
+  return `You are ${character.name}. ${character.identity || ''}
+
+TUTORING ROLE: You are also a language tutor helping this student practice ${lang.name}. Your personality and speaking style shape HOW you teach — the metaphors you use, the topics you discuss, the way you encourage or challenge the student. But you still follow all level rules and language mix ratios below. You never break the teaching flow to monologue about your mythology, philosophy, or personal history unless it naturally serves the language lesson. Teaching comes first; character comes through in how you teach.
+The student's native language is ${nativeLangName}.
+
+${levelInstructions}
+
+${generalRules}
+
+CHARACTER STYLE: ${character.directive}
+Remember: you are ${character.name}. Stay in character throughout the conversation.`
 }
 
 /**
@@ -273,7 +314,11 @@ export async function POST(req: Request): Promise<Response> {
     })
   }
 
-  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en' } = body
+  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive } = body
+
+  const character: CharacterPayload | undefined = character_name && character_tier && character_directive
+    ? { name: character_name, tier: character_tier, identity: character_identity, directive: character_directive }
+    : undefined
 
   console.log(`[voice-chat] Request received — language: ${language}, has_audio: ${!!audio_base64}, has_voice_id: ${!!voice_id}`)
 
@@ -326,7 +371,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   // ── Step 2: Build LLM messages ─────────────────────────────────────────────
-  const systemPrompt = buildSystemPrompt(language, level, native_language)
+  const systemPrompt = buildSystemPrompt(language, level, native_language, character)
   const lang = LANGUAGE_CONFIG[language]
 
   const cleanHistory = history.slice(-20).map(({ role, content }) => ({ role, content }))
@@ -373,11 +418,14 @@ export async function POST(req: Request): Promise<Response> {
   } else {
     // No audio, no text — initial greeting request
     const nativeLangName = LANGUAGE_CONFIG[native_language]?.name || NATIVE_LANGUAGE_NAMES[native_language] || 'English'
+    const charIntro = character
+      ? ` IN CHARACTER as ${character.name}. Introduce yourself briefly (one sentence about who you are), then`
+      : ''
     const greetingInstruction = level === 'zero'
-      ? `[SYSTEM: The student just joined to learn ${lang.name}. They know ZERO words. Greet them warmly in ${nativeLangName}, tell them you're excited to teach them their first words in ${lang.name}, and teach them how to say "hello" in ${lang.name}. Keep it to 2-3 sentences.]`
+      ? `[SYSTEM: The student just joined to learn ${lang.name}. They know ZERO words. Greet them warmly${charIntro ? charIntro : ` in ${nativeLangName}, tell them you're excited to teach them their first words in ${lang.name}, and`} teach them how to say "hello" in ${lang.name}. Keep it to 2-3 sentences.]`
       : level === 'beginner'
-      ? `[SYSTEM: The student just joined to practice ${lang.name}. They know basic words. Greet them with a simple sentence in ${lang.name}, then add a friendly line in ${nativeLangName}. Ask a simple question they can answer with basic vocabulary.]`
-      : `[SYSTEM: The student just joined to practice ${lang.name}. Greet them warmly in ${lang.name} and ask a simple opening question to start the conversation. Keep it to 1-2 sentences.]`
+      ? `[SYSTEM: The student just joined to practice ${lang.name}. They know basic words.${charIntro ? ` Greet them${charIntro}` : ` Greet them with a simple sentence in ${lang.name}, then add a friendly line in ${nativeLangName}.`} Ask a simple question they can answer with basic vocabulary.]`
+      : `[SYSTEM: The student just joined to practice ${lang.name}.${charIntro ? ` Greet them${charIntro}` : ''} Greet them warmly in ${lang.name} and ask a simple opening question to start the conversation. Keep it to 1-2 sentences.]`
     messages.push({ role: 'user', content: greetingInstruction })
   }
 

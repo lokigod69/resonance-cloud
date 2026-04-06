@@ -306,7 +306,7 @@ interface ViewProps {
 function getDeckMeta(deck: Deck, wordCounts: ViewProps['wordCounts'], locale?: string) {
   const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
   const progress = counts.total > 0 ? Math.round((counts.completed / counts.total) * 100) : 0
-  const dateLocale = locale === 'de' ? 'de-DE' : 'en-US'
+  const dateLocale = locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US'
   const displayName =
     deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(dateLocale)}`
   return { counts, progress, displayName }

@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { type TutorVoice, getVoicesForLanguage } from '@/voiceRegistry'
+import { type TutorCharacter, getCharacterById, resolveCharacterVoice } from '@/characterRegistry'
 import { supabase } from '@/lib/supabase'
 
 const IS_SAFARI = typeof navigator !== 'undefined' && (
@@ -27,6 +28,7 @@ interface VoiceChatResponse {
 export interface UseVoiceTutorReturn {
   language: string | null
   voice: TutorVoice | null
+  character: TutorCharacter | null
   level: string | null
   status: TutorStatus
   messages: TutorMessage[]
@@ -38,6 +40,7 @@ export interface UseVoiceTutorReturn {
   stopRecordingIfActive: () => void
   selectLanguage: (lang: string) => void
   startConversation: (voice: TutorVoice) => Promise<void>
+  startConversationWithCharacter: (char: TutorCharacter) => void
   selectLevel: (level: string) => Promise<void>
   changeVoice: () => void
   changeLevel: () => void
@@ -60,6 +63,25 @@ function saveVoicePreference(language: string, voiceId: string) {
 function getSavedVoicePreference(language: string): string | null {
   try {
     const prefs = JSON.parse(localStorage.getItem('voiceTutorPrefs') || '{}')
+    return prefs[language] || null
+  } catch {
+    return null
+  }
+}
+
+function saveCharacterPreference(language: string, characterId: string) {
+  try {
+    const prefs = JSON.parse(localStorage.getItem('voiceTutorCharPrefs') || '{}')
+    prefs[language] = characterId
+    localStorage.setItem('voiceTutorCharPrefs', JSON.stringify(prefs))
+  } catch {
+    // localStorage unavailable
+  }
+}
+
+function getSavedCharacterPreference(language: string): string | null {
+  try {
+    const prefs = JSON.parse(localStorage.getItem('voiceTutorCharPrefs') || '{}')
     return prefs[language] || null
   } catch {
     return null
@@ -145,6 +167,7 @@ function getMimeType(): string {
 export function useVoiceTutor(): UseVoiceTutorReturn {
   const [language, setLanguage] = useState<string | null>(null)
   const [voice, setVoice] = useState<TutorVoice | null>(null)
+  const [character, setCharacter] = useState<TutorCharacter | null>(null)
   const [level, setLevel] = useState<string | null>(null)
   const [status, setStatus] = useState<TutorStatus>('idle')
   const [messages, setMessages] = useState<TutorMessage[]>([])
@@ -157,6 +180,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const chunksRef = useRef<Blob[]>([])
   const messagesRef = useRef<TutorMessage[]>([])
   const voiceRef = useRef<TutorVoice | null>(null)
+  const characterRef = useRef<TutorCharacter | null>(null)
   const levelRef = useRef<string | null>(null)
   const mimeTypeRef = useRef<string>('audio/webm')
   const statusRef = useRef<TutorStatus>('idle')
@@ -173,6 +197,10 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   useEffect(() => {
     voiceRef.current = voice
   }, [voice])
+
+  useEffect(() => {
+    characterRef.current = character
+  }, [character])
 
   useEffect(() => {
     statusRef.current = status
@@ -229,7 +257,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         id,
         user_id: userId,
         language: lang,
-        voice_name: voiceRef.current?.name ?? null,
+        voice_name: characterRef.current?.name ?? voiceRef.current?.name ?? null,
+        character_id: characterRef.current?.id ?? null,
         level: levelRef.current ?? null,
         message_count: 1,
         title: greeting.slice(0, 80),
@@ -295,8 +324,21 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         level: levelRef.current || 'intermediate',
         native_language: getNativeLanguage(),
       }
-      if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
-      if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
+
+      // Voice + character resolution
+      const currentChar = characterRef.current
+      if (currentChar) {
+        const resolved = resolveCharacterVoice(currentChar, lang)
+        if (resolved.mistralVoiceId) body.voice_id = resolved.mistralVoiceId
+        if (resolved.elevenLabsId) body.elevenlabs_voice_id = resolved.elevenLabsId
+        body.character_name = currentChar.name
+        body.character_tier = currentChar.tier
+        if (currentChar.identity) body.character_identity = currentChar.identity
+        body.character_directive = currentChar.directive
+      } else {
+        if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
+        if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
+      }
 
       const controller = new AbortController()
       const timer = setTimeout(() => controller.abort(), 30000)
@@ -420,6 +462,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       setLanguage(lang)
       setVoice(null)
       voiceRef.current = null
+      setCharacter(null)
+      characterRef.current = null
       setLevel(null)
       levelRef.current = null
       setMessages([])
@@ -427,6 +471,40 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       setError(null)
       setStatus('idle')
 
+      // Check for saved character preference first
+      const savedCharId = getSavedCharacterPreference(lang)
+      if (savedCharId) {
+        const char = getCharacterById(savedCharId)
+        if (char) {
+          const resolved = resolveCharacterVoice(char, lang)
+          const syntheticVoice: TutorVoice = {
+            id: `char_${char.id}_${lang}`,
+            name: char.name,
+            language: lang,
+            gender: char.gender,
+            mistralVoiceId: resolved.mistralVoiceId,
+            elevenLabsId: resolved.elevenLabsId,
+            sampleUrl: '',
+          }
+          setCharacter(char)
+          characterRef.current = char
+          setVoice(syntheticVoice)
+          voiceRef.current = syntheticVoice
+
+          const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
+          if (savedLevel) {
+            setLevel(savedLevel)
+            levelRef.current = savedLevel
+            fetchAndPlayGreeting(lang, syntheticVoice).catch((err) => {
+              setError(err instanceof Error ? err.message : 'Failed to start conversation')
+              setStatus('error')
+            })
+          }
+          return
+        }
+      }
+
+      // Fallback: check for saved voice preference (legacy / no character)
       const voices = getVoicesForLanguage(lang)
       const savedId = getSavedVoicePreference(lang)
       const autoVoice =
@@ -442,7 +520,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
 
         const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
         if (savedLevel) {
-          // Both voice and level are saved — skip both pickers, go straight to conversation
           setLevel(savedLevel)
           levelRef.current = savedLevel
           fetchAndPlayGreeting(lang, autoVoice).catch((err) => {
@@ -450,7 +527,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
             setStatus('error')
           })
         }
-        // No saved level → voice is set, level is null → State 2.5 (level picker) renders
       }
     },
     [fetchAndPlayGreeting, endConversation],
@@ -476,6 +552,44 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       // Otherwise leave level null → State 2.5 (level picker) renders
     },
     [language],
+  )
+
+  const startConversationWithCharacter = useCallback(
+    (char: TutorCharacter) => {
+      const lang = language
+      if (!lang) return
+
+      const resolved = resolveCharacterVoice(char, lang)
+      const syntheticVoice: TutorVoice = {
+        id: `char_${char.id}_${lang}`,
+        name: char.name,
+        language: lang,
+        gender: char.gender,
+        mistralVoiceId: resolved.mistralVoiceId,
+        elevenLabsId: resolved.elevenLabsId,
+        sampleUrl: '',
+      }
+
+      setCharacter(char)
+      characterRef.current = char
+      setVoice(syntheticVoice)
+      voiceRef.current = syntheticVoice
+      saveCharacterPreference(lang, char.id)
+      setError(null)
+
+      // Check for saved level — skip level picker if available
+      const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
+      if (savedLevel) {
+        setLevel(savedLevel)
+        levelRef.current = savedLevel
+        fetchAndPlayGreeting(lang, syntheticVoice).catch((err) => {
+          setError(err instanceof Error ? err.message : 'Failed to start conversation')
+          setStatus('error')
+        })
+      }
+      // Otherwise level is null → State 2.5 (level picker) renders
+    },
+    [language, fetchAndPlayGreeting],
   )
 
   const selectLevel = useCallback(
@@ -504,12 +618,17 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   )
 
   const changeVoice = useCallback(() => {
+    endConversation()
     setVoice(null)
     voiceRef.current = null
+    setCharacter(null)
+    characterRef.current = null
+    setMessages([])
+    messagesRef.current = []
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
-  }, [])
+  }, [endConversation])
 
   const changeLevel = useCallback(() => {
     setLevel(null)
@@ -728,6 +847,8 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setLanguage(null)
     setVoice(null)
     voiceRef.current = null
+    setCharacter(null)
+    characterRef.current = null
     setLevel(null)
     levelRef.current = null
     setMessages([])
@@ -746,6 +867,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   return {
     language,
     voice,
+    character,
     level,
     status,
     messages,
@@ -758,6 +880,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     stopRecordingIfActive,
     selectLanguage,
     startConversation,
+    startConversationWithCharacter,
     selectLevel,
     changeVoice,
     changeLevel,

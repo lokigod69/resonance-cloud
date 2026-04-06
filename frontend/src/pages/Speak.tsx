@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, RefreshCw, MessageSquarePlus, History, Signal } from 'lucide-react'
 import { useVoiceTutor } from '@/hooks/useVoiceTutor'
-import { getVoicesForLanguage, type TutorVoice } from '@/voiceRegistry'
+import { CharacterGrid } from '@/components/speak/CharacterGrid'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -35,26 +35,11 @@ function TypingIndicator() {
   )
 }
 
-function VoiceAvatar({ name, gender }: { name: string; gender: string }) {
-  const hue = name.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) % 360
-  const sat = gender === 'female' ? '65%' : '55%'
-  return (
-    <div
-      className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
-      style={{ backgroundColor: `hsl(${hue}, ${sat}, 45%)` }}
-    >
-      {name.charAt(0).toUpperCase()}
-    </div>
-  )
-}
-
 export default function Speak() {
   const { t } = useTranslation()
   const tutor = useVoiceTutor()
   const bottomRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)
-  const sampleAudioRef = useRef<HTMLAudioElement | null>(null)
-  const [playingVoiceId, setPlayingVoiceId] = useState<string | null>(null)
   const [historyOpen, setHistoryOpen] = useState(false)
 
   const selectedLang = LANGUAGES.find((l) => l.code === tutor.language)
@@ -63,31 +48,6 @@ export default function Speak() {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [tutor.messages.length, tutor.status])
-
-  // Stop sample audio when leaving voice picker
-  useEffect(() => {
-    if (tutor.voice !== null) {
-      sampleAudioRef.current?.pause()
-      sampleAudioRef.current = null
-      setPlayingVoiceId(null)
-    }
-  }, [tutor.voice])
-
-  function toggleSample(e: React.MouseEvent, voice: TutorVoice) {
-    e.stopPropagation()
-    if (playingVoiceId === voice.id) {
-      sampleAudioRef.current?.pause()
-      sampleAudioRef.current = null
-      setPlayingVoiceId(null)
-      return
-    }
-    sampleAudioRef.current?.pause()
-    const audio = new Audio(voice.sampleUrl)
-    audio.onended = () => setPlayingVoiceId(null)
-    sampleAudioRef.current = audio
-    audio.play().catch(() => setPlayingVoiceId(null))
-    setPlayingVoiceId(voice.id)
-  }
 
   const isBusy = tutor.status === 'processing' || tutor.status === 'playing'
 
@@ -147,9 +107,8 @@ export default function Speak() {
     )
   }
 
-  // ── State 2: Voice Picker ───────────────────────────────────────────────────
+  // ── State 2: Character Selection ─────────────────────────────────────────────
   if (!tutor.voice) {
-    const voices = getVoicesForLanguage(tutor.language)
     const isStarting = tutor.status === 'processing'
 
     return (
@@ -171,8 +130,8 @@ export default function Speak() {
 
         <div className="flex-1 flex items-start justify-center px-6 pt-6">
           <div className="w-full max-w-2xl">
-            <h2 className="text-base font-semibold text-white mb-1">{t('speak.chooseVoice')}</h2>
-            <p className="text-sm text-gray-400 mb-5">{t('speak.voiceInstruction')}</p>
+            <h2 className="text-base font-semibold text-white mb-1">Choose your tutor</h2>
+            <p className="text-sm text-gray-400 mb-5">Pick a teaching style or character</p>
 
             {isStarting && (
               <div className="flex items-center gap-2 mb-4 text-gray-400 text-sm">
@@ -187,38 +146,10 @@ export default function Speak() {
               </div>
             )}
 
-            <div className="space-y-1.5">
-              {voices.map((voice) => {
-                const isPlaying = playingVoiceId === voice.id
-                return (
-                  <button
-                    key={voice.id}
-                    onClick={() => tutor.startConversation(voice)}
-                    disabled={isStarting}
-                    className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg border transition-all text-left
-                      ${isPlaying
-                        ? 'bg-gray-800/80 border-cyan-500/40 animate-pulse'
-                        : 'bg-gray-800/50 border-white/5 hover:bg-gray-700/60 hover:border-white/10'
-                      }
-                      disabled:opacity-50 disabled:cursor-not-allowed`}
-                  >
-                    <VoiceAvatar name={voice.name} gender={voice.gender} />
-                    <div className="flex-1 min-w-0 flex items-center gap-2">
-                      <p className="text-sm font-medium text-white">{voice.name}</p>
-                      <p className="text-xs text-gray-500 capitalize">{voice.gender}</p>
-                    </div>
-                    <button
-                      onClick={(e) => toggleSample(e, voice)}
-                      disabled={isStarting}
-                      className="p-1.5 rounded-md text-gray-400 hover:text-cyan-400 hover:bg-white/5 transition-colors shrink-0"
-                      title={isPlaying ? 'Stop preview' : 'Preview voice'}
-                    >
-                      {isPlaying ? <Square className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
-                    </button>
-                  </button>
-                )
-              })}
-            </div>
+            <CharacterGrid
+              onSelect={(char) => tutor.startConversationWithCharacter(char)}
+              disabled={isStarting}
+            />
           </div>
         </div>
       </div>
@@ -294,8 +225,10 @@ export default function Speak() {
         <div className="flex items-center gap-2 flex-1 min-w-0">
           <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
           <div className="min-w-0">
-            <p className="text-sm font-medium text-white truncate">{tutor.voice.name}</p>
-            <p className="text-xs text-gray-500 truncate">{selectedLang?.nativeName}</p>
+            <p className="text-sm font-medium text-white truncate">{tutor.character?.name ?? tutor.voice.name}</p>
+            <p className="text-xs text-gray-500 truncate">
+              {tutor.character?.subtitle ? `${tutor.character.subtitle} · ` : ''}{selectedLang?.nativeName}
+            </p>
           </div>
         </div>
 
@@ -313,10 +246,10 @@ export default function Speak() {
         <button
           onClick={tutor.changeVoice}
           className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
-          title="Change voice"
+          title="Change tutor"
         >
           <RefreshCw className="h-3 w-3" />
-          <span className="hidden sm:inline">{t('speak.voice')}</span>
+          <span className="hidden sm:inline">Tutor</span>
         </button>
 
         <button

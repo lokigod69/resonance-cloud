@@ -16,6 +16,11 @@ const BROWSER_LANG_TO_LOCALE: Record<string, Locale> = {
   'de-DE': 'de',
   'de-AT': 'de',
   'de-CH': 'de',
+  fr: 'fr',
+  'fr-FR': 'fr',
+  'fr-CA': 'fr',
+  'fr-BE': 'fr',
+  'fr-CH': 'fr',
 };
 
 export function useLandingLocale() {
@@ -23,7 +28,7 @@ export function useLandingLocale() {
     // 1. Check URL parameter: ?lang=de
     const params = new URLSearchParams(window.location.search);
     const langParam = params.get('lang');
-    if (langParam === 'de') return 'de';
+    if (langParam === 'de' || langParam === 'fr') return langParam;
 
     // 2. Check browser language (full tag first, then primary subtag)
     const browserLang = navigator.language;

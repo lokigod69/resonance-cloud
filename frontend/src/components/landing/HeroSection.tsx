@@ -7,7 +7,7 @@ import { useLandingLocale } from '@/hooks/useLandingLocale'
 export default function HeroSection() {
   const reducedMotion = useReducedMotion()
   const { scrollY } = useScroll()
-  const { t, locale } = useLandingLocale()
+  const { t } = useLandingLocale()
 
   // Scroll-driven parallax: text floats up and fades
   const textY = useTransform(scrollY, [0, 500], [0, -200])
@@ -24,9 +24,9 @@ export default function HeroSection() {
           transition: { duration: 0.6, ease: 'easeOut' as const, delay },
         }
 
-  // Headline split: keep gradient span on the language-specific term
-  const headlinePart1 = locale === 'de' ? 'Lerne jede Sprache mit' : 'Learn any language through'
-  const headlinePart2 = locale === 'de' ? 'KI-Musikvideos' : 'AI music videos'
+  // Headline split: gradient span on the language-specific term
+  const headlinePart1 = t('landing.headlinePart1')
+  const headlinePart2 = t('landing.headlinePart2')
 
   return (
     <section className="relative h-screen">

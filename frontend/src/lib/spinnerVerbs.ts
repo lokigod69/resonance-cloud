@@ -38,6 +38,21 @@ export const SPINNER_VERBS_DE = [
   'Beschwört',
 ]
 
+export const SPINNER_VERBS_FR = [
+  'Compose',
+  'Imagine',
+  'Peint',
+  'Rend',
+  'Assemble',
+  'Harmonise',
+  'Illustre',
+  'Anime',
+  'Rêve',
+  'Façonne',
+  'Synthétise',
+  'Invoque',
+]
+
 export function getRandomVerb(exclude?: string, verbs: string[] = SPINNER_VERBS): string {
   let verb: string
   do {

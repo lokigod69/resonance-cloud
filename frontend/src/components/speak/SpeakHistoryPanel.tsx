@@ -3,11 +3,13 @@ import { X, ArrowLeft, Mic, ChevronRight } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
 import { FlagIcon } from '@/components/ui/FlagIcon'
+import { getCharacterById } from '@/characterRegistry'
 
 interface Conversation {
   id: string
   language: string
   voice_name: string | null
+  character_id: string | null
   level: string | null
   message_count: number
   title: string | null
@@ -140,9 +142,11 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-white truncate">
                     {LANGUAGE_NAMES[selectedConversation.language] ?? selectedConversation.language}
-                    {selectedConversation.voice_name && (
-                      <span className="text-gray-400 font-normal"> · {selectedConversation.voice_name}</span>
-                    )}
+                    {(() => {
+                      const cName = selectedConversation.character_id ? getCharacterById(selectedConversation.character_id)?.name : null
+                      const dName = cName || selectedConversation.voice_name
+                      return dName ? <span className="text-gray-400 font-normal"> · {dName}</span> : null
+                    })()}
                   </p>
                   <p className="text-xs text-gray-500">{formatDate(selectedConversation.started_at)}</p>
                 </div>
@@ -187,6 +191,8 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
                 <div className="space-y-2">
                   {conversations.map((conv) => {
                     const levelEmoji = conv.level ? LEVEL_EMOJI[conv.level] : null
+                    const charName = conv.character_id ? getCharacterById(conv.character_id)?.name : null
+                    const displayName = charName || conv.voice_name
                     return (
                       <button
                         key={conv.id}
@@ -200,6 +206,9 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
                             <span className="text-sm font-medium text-white truncate">
                               {LANGUAGE_NAMES[conv.language] ?? conv.language}
                             </span>
+                            {displayName && (
+                              <span className="text-xs text-gray-400 truncate">· {displayName}</span>
+                            )}
                             {levelEmoji && <span className="text-sm">{levelEmoji}</span>}
                           </div>
                           {conv.title && (

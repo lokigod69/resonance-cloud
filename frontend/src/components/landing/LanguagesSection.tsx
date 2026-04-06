@@ -28,7 +28,7 @@ export default function LanguagesSection() {
         {/* Header */}
         <ScrollReveal className="mb-12">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            10 languages. Your vocabulary.
+            {t('landing.languagesHeading')}
           </h2>
         </ScrollReveal>
 
@@ -61,7 +61,7 @@ export default function LanguagesSection() {
 
         {/* Footer text */}
         <ScrollReveal delay={0.3} className="mt-8">
-          <p className="text-muted-foreground text-sm">More languages coming soon.</p>
+          <p className="text-muted-foreground text-sm">{t('landing.languagesComingSoon')}</p>
         </ScrollReveal>
       </div>
     </section>

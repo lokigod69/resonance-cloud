@@ -131,9 +131,9 @@ export default function ScrollStorySection() {
             style={{ opacity: demoHeadingOpacity }}
             className="absolute top-16 inset-x-0 text-center px-6"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">See what AI creates</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('landing.demoHeading')}</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Every word becomes a unique music video. Run it on automatic or choose your own style, genre, and creative direction.
+              {t('landing.demoDescription')}
             </p>
           </motion.div>
 
@@ -185,7 +185,7 @@ export default function ScrollStorySection() {
             style={{ opacity: howHeadingOpacity }}
             className="absolute top-16 inset-x-0 text-center"
           >
-            <h2 className="text-3xl md:text-5xl font-bold">How it works</h2>
+            <h2 className="text-3xl md:text-5xl font-bold">{t('landing.howItWorks')}</h2>
           </motion.div>
 
           {/* Step cards — all start at center, fan out sequentially */}
@@ -208,7 +208,7 @@ export default function ScrollStorySection() {
                 className="glass rounded-2xl p-8 text-center w-72"
               >
                 <span className="inline-block text-xs font-semibold bg-primary/20 text-primary rounded-full px-3 py-1 mb-4">
-                  Step {i + 1}
+                  {t('landing.step', { n: i + 1 })}
                 </span>
                 <div className="mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
                   <Icon className="h-7 w-7 text-primary" />
