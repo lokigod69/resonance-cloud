@@ -42,6 +42,7 @@ export interface UseVoiceTutorReturn {
   startConversationWithCharacter: (char: TutorCharacter) => void
   selectLevel: (level: string) => Promise<void>
   changeVoice: () => void
+  cancelChangeVoice: () => void
   changeLevel: () => void
   cancelLevelChange: () => void
   newChat: () => Promise<void>
@@ -159,6 +160,15 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const messagesRef = useRef<TutorMessage[]>([])
   const voiceRef = useRef<TutorVoice | null>(null)
   const characterRef = useRef<TutorCharacter | null>(null)
+  const previousStateRef = useRef<{
+    voice: TutorVoice
+    character: TutorCharacter
+    messages: TutorMessage[]
+    studyMode: boolean
+    studyWords: Array<{ word: string; translation: string }>
+    conversationId: string | null
+    messageCount: number
+  } | null>(null)
   const levelRef = useRef<string | null>(null)
   const mimeTypeRef = useRef<string>('audio/webm')
   const statusRef = useRef<TutorStatus>('idle')
@@ -496,6 +506,10 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       const lang = language
       if (!lang) return
 
+      // End any prior conversation (e.g. when switching tutors via changeVoice)
+      endConversation()
+      previousStateRef.current = null
+
       const resolved = resolveCharacterVoice(char, lang)
       const syntheticVoice: TutorVoice = {
         id: `char_${char.id}_${lang}`,
@@ -525,7 +539,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       }
       // Otherwise level is null → State 2.5 (level picker) renders
     },
-    [language, fetchAndPlayGreeting],
+    [language, fetchAndPlayGreeting, endConversation],
   )
 
   const selectLevel = useCallback(
@@ -554,8 +568,21 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   )
 
   const changeVoice = useCallback(() => {
+    // Snapshot full conversation state so cancelChangeVoice can restore it
+    if (voiceRef.current && characterRef.current) {
+      previousStateRef.current = {
+        voice: voiceRef.current,
+        character: characterRef.current,
+        messages: messagesRef.current,
+        studyMode: studyModeRef.current,
+        studyWords: studyWordsRef.current,
+        conversationId: conversationIdRef.current,
+        messageCount: convMessageCountRef.current,
+      }
+    }
     stopAudio()
-    endConversation()
+    // Don't call endConversation() — deferred to startConversationWithCharacter
+    // so cancelChangeVoice can restore the live session
     setVoice(null)
     voiceRef.current = null
     setCharacter(null)
@@ -568,7 +595,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     studyModeRef.current = false
     studyWordsRef.current = []
     setStudyMode(false)
-  }, [endConversation, stopAudio])
+  }, [stopAudio])
 
   const toggleStudyMode = useCallback((words: Array<{ word: string; translation: string }>) => {
     const newMode = !studyModeRef.current
@@ -815,6 +842,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     voiceRef.current = null
     setCharacter(null)
     characterRef.current = null
+    previousStateRef.current = null
     setLevel(null)
     levelRef.current = null
     setMessages([])
@@ -826,6 +854,26 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     studyWordsRef.current = []
     setStudyMode(false)
   }, [releaseResources, endConversation, stopAudio])
+
+  const cancelChangeVoice = useCallback(() => {
+    const prev = previousStateRef.current
+    if (prev) {
+      setVoice(prev.voice)
+      voiceRef.current = prev.voice
+      setCharacter(prev.character)
+      characterRef.current = prev.character
+      setMessages(prev.messages)
+      messagesRef.current = prev.messages
+      studyModeRef.current = prev.studyMode
+      studyWordsRef.current = prev.studyWords
+      setStudyMode(prev.studyMode)
+      conversationIdRef.current = prev.conversationId
+      convMessageCountRef.current = prev.messageCount
+      previousStateRef.current = null
+    } else {
+      resetConversation()
+    }
+  }, [resetConversation])
 
   const replayMessageAudio = useCallback(async (message: TutorMessage) => {
     if (!message.audioBase64 || message.role !== 'assistant') return
@@ -851,6 +899,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     startConversationWithCharacter,
     selectLevel,
     changeVoice,
+    cancelChangeVoice,
     changeLevel,
     cancelLevelChange,
     newChat,

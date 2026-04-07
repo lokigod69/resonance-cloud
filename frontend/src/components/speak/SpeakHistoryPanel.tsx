@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { X, ArrowLeft, Mic, ChevronRight } from 'lucide-react'
+import { X, ArrowLeft, Mic, ChevronRight, Trash2 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
 import { FlagIcon } from '@/components/ui/FlagIcon'
@@ -115,6 +115,23 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
 
   const selectedConversation = conversations.find((c) => c.id === selectedId)
 
+  const deleteConversation = async (convId: string, e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (!user) return
+    const { error } = await supabase
+      .from('speak_conversations')
+      .delete()
+      .eq('id', convId)
+      .eq('user_id', user.id)
+    if (!error) {
+      setConversations((prev) => prev.filter((c) => c.id !== convId))
+      if (selectedId === convId) {
+        setSelectedId(null)
+        setMessages([])
+      }
+    }
+  }
+
   return (
     <div
       className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-40 flex flex-col bg-gray-950/95 backdrop-blur-xl transition-transform duration-300"
@@ -194,10 +211,13 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
                     const charName = conv.character_id ? getCharacterById(conv.character_id)?.name : null
                     const displayName = charName || conv.voice_name
                     return (
-                      <button
+                      <div
                         key={conv.id}
+                        role="button"
+                        tabIndex={0}
                         onClick={() => setSelectedId(conv.id)}
-                        className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left"
+                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedId(conv.id) }}
+                        className="group w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left cursor-pointer"
                       >
                         <FlagIcon code={conv.language} className="w-7 h-auto shrink-0" />
 
@@ -225,8 +245,16 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
                           )}
                         </div>
 
+                        <button
+                          onClick={(e) => deleteConversation(conv.id, e)}
+                          className="p-1 rounded text-gray-500 hover:text-red-400 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0"
+                          title="Delete conversation"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+
                         <ChevronRight className="h-4 w-4 text-gray-600 shrink-0" />
-                      </button>
+                      </div>
                     )
                   })}
                 </div>

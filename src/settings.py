@@ -54,7 +54,7 @@ DEFAULT_SETTINGS = {
         "aspect_ratio": "16:9",
         "art_style": "auto",
         "word_in_image": True,
-        "use_color_palette": False,
+        "use_color_palette": True,
         "image_model": "quality",
         "llm_model": "x-ai/grok-4.1-fast",
     },

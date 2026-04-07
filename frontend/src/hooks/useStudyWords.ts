@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import { LANGUAGES } from '@/lib/languages'
 
 export type StudyWordLite = { word: string; translation: string }
 
@@ -32,6 +33,10 @@ export function useStudyWords(language: string | null) {
         setStudyWords([])
         return
       }
+
+      // Convert 2-letter code (from Speak page) to full name (stored in decks)
+      const langEntry = LANGUAGES.find(l => l.code === language)
+      const targetLanguage = langEntry?.value ?? language
       setLoading(true)
 
       // 1. Decks for this user + language
@@ -39,7 +44,7 @@ export function useStudyWords(language: string | null) {
         .from('decks')
         .select('id')
         .eq('user_id', user.id)
-        .eq('target_language', language)
+        .eq('target_language', targetLanguage)
 
       const deckIds = (decksRes.data ?? []).map((d) => d.id as string)
       if (deckIds.length === 0) {
