@@ -164,7 +164,7 @@ export default function Speak() {
         <div className="sticky top-0 z-40 bg-gray-950 pt-4 pb-3 border-b border-white/5">
           <div className="max-w-2xl mx-auto w-full px-4 flex items-center gap-3">
             <button
-              onClick={tutor.changeVoice}
+              onClick={tutor.cancelLevelChange}
               className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
               title="Back to voice selection"
             >

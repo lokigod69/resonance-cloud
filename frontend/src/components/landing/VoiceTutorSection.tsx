@@ -2,8 +2,11 @@ import { Mic, Globe, Volume2, ChevronLeft, RotateCcw } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 import { TUTOR_MOCK_CONVERSATION, TUTOR_MOCK_LANGUAGE } from './landingData'
 import { FlagIcon } from '@/components/ui/FlagIcon'
+import { useLandingLocale } from '@/hooks/useLandingLocale'
 
 export default function VoiceTutorSection() {
+  const { t } = useLandingLocale()
+
   return (
     <section className="bg-[#0c0d14] py-24 px-6">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
@@ -11,10 +14,10 @@ export default function VoiceTutorSection() {
         {/* Header text */}
         <ScrollReveal className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Your personal AI tutor
+            {t('landing.tutorHeading')}
           </h2>
           <p className="text-base sm:text-lg text-white/50 max-w-xl mx-auto leading-relaxed">
-            Practice speaking in 12 languages. Have real conversations with AI that corrects your grammar, models pronunciation, and feels like chatting with a native friend.
+            {t('landing.tutorDescription')}
           </p>
         </ScrollReveal>
 

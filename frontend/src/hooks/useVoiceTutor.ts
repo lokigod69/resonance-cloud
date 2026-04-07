@@ -39,35 +39,15 @@ export interface UseVoiceTutorReturn {
   stopRecording: () => void
   stopRecordingIfActive: () => void
   selectLanguage: (lang: string) => void
-  startConversation: (voice: TutorVoice) => Promise<void>
   startConversationWithCharacter: (char: TutorCharacter) => void
   selectLevel: (level: string) => Promise<void>
   changeVoice: () => void
   changeLevel: () => void
+  cancelLevelChange: () => void
   newChat: () => Promise<void>
   resetConversation: () => void
   playPendingAudio: () => Promise<void>
   replayMessageAudio: (message: TutorMessage) => Promise<void>
-}
-
-function saveVoicePreference(language: string, voiceId: string) {
-  try {
-    const prefs = JSON.parse(localStorage.getItem('voiceTutorPrefs') || '{}')
-    prefs[language] = voiceId
-    localStorage.setItem('voiceTutorPrefs', JSON.stringify(prefs))
-  } catch {
-    // localStorage unavailable
-  }
-}
-
-function saveCharacterPreference(language: string, characterId: string) {
-  try {
-    const prefs = JSON.parse(localStorage.getItem('voiceTutorCharPrefs') || '{}')
-    prefs[language] = characterId
-    localStorage.setItem('voiceTutorCharPrefs', JSON.stringify(prefs))
-  } catch {
-    // localStorage unavailable
-  }
 }
 
 // ── Speak history persistence helpers ─────────────────────────────────────────
@@ -499,28 +479,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     [endConversation],
   )
 
-  const startConversation = useCallback(
-    async (selectedVoice: TutorVoice) => {
-      const lang = language
-      if (!lang) return
-      setVoice(selectedVoice)
-      voiceRef.current = selectedVoice
-      saveVoicePreference(lang, selectedVoice.id)
-      setError(null)
-
-      // Voice change with existing history — restore saved level, skip level picker
-      const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
-      if (savedLevel && messagesRef.current.length > 0) {
-        setLevel(savedLevel)
-        levelRef.current = savedLevel
-        setStatus('idle')
-        return
-      }
-      // Otherwise leave level null → State 2.5 (level picker) renders
-    },
-    [language],
-  )
-
   const startConversationWithCharacter = useCallback(
     (char: TutorCharacter) => {
       const lang = language
@@ -541,7 +499,6 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       characterRef.current = char
       setVoice(syntheticVoice)
       voiceRef.current = syntheticVoice
-      saveCharacterPreference(lang, char.id)
       setError(null)
 
       // Check for saved level — skip level picker if available
@@ -600,12 +557,28 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
 
   const changeLevel = useCallback(() => {
     stopAudio()
-    setLevel(null)
-    levelRef.current = null
+    endConversation()
+    setMessages([])
+    messagesRef.current = []
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
-  }, [stopAudio])
+    setLevel(null)
+    levelRef.current = null
+  }, [stopAudio, endConversation])
+
+  const cancelLevelChange = useCallback(() => {
+    // If we had a level before (came from conversation), restore it
+    const savedLevel = language ? localStorage.getItem(`voice-tutor-level-${language}`) : null
+    if (savedLevel && voiceRef.current) {
+      setLevel(savedLevel)
+      levelRef.current = savedLevel
+      setStatus('idle')
+    } else {
+      // First-time setup — back goes to character grid
+      changeVoice()
+    }
+  }, [language, changeVoice])
 
   const newChat = useCallback(async () => {
     const lang = language
@@ -850,11 +823,11 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     stopRecording,
     stopRecordingIfActive,
     selectLanguage,
-    startConversation,
     startConversationWithCharacter,
     selectLevel,
     changeVoice,
     changeLevel,
+    cancelLevelChange,
     newChat,
     resetConversation,
     replayMessageAudio,

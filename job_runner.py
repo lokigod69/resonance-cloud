@@ -154,24 +154,50 @@ async def run_enrichment(
 
 # ─── Settings Merge ───────────────────────────────────────────────────────────
 
+# Maps wizard settings_override keys to their (stage, field) location in the
+# per-engine settings tree. Keys not in this map are ignored (forward-compat
+# for future wizard fields — unknown keys must not crash the runner).
+SETTINGS_OVERRIDE_MAP: dict[str, tuple[str, str]] = {
+    "genre": ("concept", "genre"),
+    "creative_direction": ("images", "creative_direction"),
+    "art_style": ("images", "art_style"),
+    "visual_reference": ("images", "visual_reference"),
+    "frame_narrative": ("images", "frame_narrative"),
+}
+
+
 def merge_settings(
     profile_settings: dict[str, Any],
     art_style: str | None,
     movie_override: str | None,
+    settings_override: dict[str, Any] | None = None,
 ) -> dict[str, dict[str, Any]]:
     """
-    Three-layer merge:
-      Layer 1: Active language profile (base)
-      Layer 2: User preferences (art_style, movie_override)
-    Result is written once as settings-defaults.json.
+    Three-layer merge (lowest priority → highest priority):
+      Layer 1: Hardcoded DEFAULT_SETTINGS + active language profile
+      Layer 2: settings_override from the frontend wizard (user's engine picks)
+      Layer 3: Legacy top-level art_style / movie_override fields (backward compat)
+    Result is written once as settings-defaults.json for the deck workspace.
     """
-    # Start with hardcoded defaults, overlay profile
+    # Layer 1: Start with hardcoded defaults, overlay active profile
     merged: dict[str, dict[str, Any]] = {}
     for stage, defaults in DEFAULT_SETTINGS.items():
         profile_stage = profile_settings.get(stage, {})
         merged[stage] = {**defaults, **profile_stage}
 
-    # Apply user overrides into image settings
+    # Layer 2: Apply frontend wizard overrides (genre, creative_direction, ...)
+    if settings_override:
+        for key, value in settings_override.items():
+            if value is None or value == "":
+                continue
+            mapping = SETTINGS_OVERRIDE_MAP.get(key)
+            if mapping is None:
+                log.debug("Unknown settings_override key %r — ignored", key)
+                continue
+            stage, field = mapping
+            merged.setdefault(stage, {})[field] = value
+
+    # Layer 3: Legacy user overrides (highest priority for backward compat)
     if art_style:
         merged.setdefault("images", {})["art_style"] = art_style
     if movie_override:
@@ -1537,11 +1563,16 @@ async def process_job(job: dict[str, Any]) -> None:
     else:
         log.warning("No active language profile for %s — using defaults", target_language)
 
-    # Merge settings
+    # Merge settings. settings_override carries the wizard's engine-specific
+    # picks (genre, creative_direction, ...) that the user chose on the frontend.
+    settings_override = job.get("settings_override") or {}
+    if settings_override:
+        log.info("User settings_override: %s", settings_override)
     merged = merge_settings(
         profile_settings,
         job.get("art_style"),
         job.get("movie_override"),
+        settings_override=settings_override,
     )
 
     # Get user's base language

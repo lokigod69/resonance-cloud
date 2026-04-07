@@ -54,7 +54,7 @@ export default function HeroSection() {
           <div className="relative z-10 max-w-3xl space-y-8 px-4">
             {/* Headline — stacked typography */}
             <motion.h1 {...fadeUp(0)} className="flex flex-col items-center text-center gap-0">
-              <span className="font-display text-6xl sm:text-7xl md:text-8xl font-bold uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-purple-400 via-purple-300 to-purple-400">
+              <span className="font-display text-6xl sm:text-7xl md:text-8xl font-bold lowercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-purple-400 via-purple-300 to-purple-400">
                 {t('landing.headlineWord')}
               </span>
               <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
@@ -72,12 +72,20 @@ export default function HeroSection() {
             </motion.h1>
 
             {/* Subheadline */}
-            <motion.p
-              {...fadeUp(0.1)}
-              className="text-lg md:text-xl text-white/60 max-w-xl mx-auto leading-relaxed"
-            >
-              {t('landing.subheadline')}
-            </motion.p>
+            <div>
+              <motion.p
+                {...fadeUp(0.1)}
+                className="text-lg md:text-xl text-white/60 max-w-xl mx-auto leading-relaxed"
+              >
+                {t('landing.subheadlineMain')}
+              </motion.p>
+              <motion.p
+                {...fadeUp(0.15)}
+                className="text-base md:text-lg text-white/55 max-w-xl mx-auto mt-1"
+              >
+                {t('landing.subheadlineAccent')}
+              </motion.p>
+            </div>
 
             {/* CTA with glow pulse */}
             <motion.div {...fadeUp(0.3)} className="pt-4">

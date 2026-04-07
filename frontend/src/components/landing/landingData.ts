@@ -63,18 +63,3 @@ export const TUTOR_MOCK_CONVERSATION = [
 ]
 
 export const TUTOR_MOCK_LANGUAGE = { label: 'German', code: 'de' }
-
-export const STEPS = [
-  {
-    title: 'Type your words',
-    description: 'Choose a language, type your vocabulary, pick a style.',
-  },
-  {
-    title: 'AI creates your video',
-    description: 'AI composes a song, generates images, and assembles a unique music video for every word.',
-  },
-  {
-    title: 'Watch & remember',
-    description: 'Study with built-in tools. Multi-sensory learning that sticks.',
-  },
-]
