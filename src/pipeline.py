@@ -67,8 +67,10 @@ Respond with ONLY a JSON object, no markdown fences:
 
 def _resolve_creative_direction_random(manifest_data: Any) -> str:
     """Fallback: pick a creative direction based on POS using weighted random."""
+    # Phrases have no meaningful POS — fall through to default category.
+    is_phrase = getattr(manifest_data, "input_type", "word") == "phrase"
     pos = ""
-    if manifest_data.enrichment and manifest_data.enrichment.pos:
+    if not is_phrase and manifest_data.enrichment and manifest_data.enrichment.pos:
         pos = manifest_data.enrichment.pos.lower().strip()
 
     if pos == "noun":
@@ -95,12 +97,20 @@ async def _resolve_creative_direction(manifest_data: Any, settings: dict) -> tup
         logger.warning("OPENROUTER_API_KEY not set — falling back to weighted random")
         return _resolve_creative_direction_random(manifest_data), "fallback: weighted random (no API key)"
 
+    # Phrases skip enrichment in the LLM picker prompt — mnemonic/pos/tags are
+    # word-only metadata and would mislead the picker for multi-word inputs.
+    is_phrase = getattr(manifest_data, "input_type", "word") == "phrase"
     enrich = manifest_data.enrichment
-    pos = (enrich.pos or "unknown") if enrich else "unknown"
-    tags = (enrich.tags or "none") if enrich else "none"
-    if isinstance(tags, list):
-        tags = ", ".join(tags)
-    mnemonic = (enrich.mnemonic or "none provided") if enrich else "none provided"
+    if is_phrase:
+        pos = "unknown"
+        tags = "none"
+        mnemonic = "none provided"
+    else:
+        pos = (enrich.pos or "unknown") if enrich else "unknown"
+        tags = (enrich.tags or "none") if enrich else "none"
+        if isinstance(tags, list):
+            tags = ", ".join(tags)
+        mnemonic = (enrich.mnemonic or "none provided") if enrich else "none provided"
 
     user_prompt = (
         f"WORD: {manifest_data.word_original}\n"
@@ -196,6 +206,7 @@ def build_concept_payload(
             external_music_caption = storyboard.get("music_caption")
 
     enrich = manifest_data.enrichment
+    is_phrase = manifest_data.input_type == "phrase"
     return {
         "content": {
             "word": manifest_data.word_original,
@@ -203,8 +214,9 @@ def build_concept_payload(
             "language": manifest_data.language,
             "language_code": manifest_data.language_code,
             "external_music_caption": external_music_caption,
-            "mnemonic": enrich.mnemonic or "" if enrich else "",
-            "pos": enrich.pos or "" if enrich else "",
+            "mnemonic": "" if is_phrase else (enrich.mnemonic or "" if enrich else ""),
+            "pos": "" if is_phrase else (enrich.pos or "" if enrich else ""),
+            "input_type": manifest_data.input_type,
         },
         "settings": settings,
         "output_dir": str(output_dir),
@@ -254,9 +266,11 @@ def build_image_payload(
     settings: dict,
     output_dir: Path,
 ) -> dict:
-    # Build context with mnemonic/etymology when visual_reference is not "none"
+    # Build context with mnemonic/etymology when visual_reference is not "none".
+    # Phrases skip enrichment context — etymology/mnemonic are nonsensical for phrases.
+    is_phrase = manifest_data.input_type == "phrase"
     context = None
-    if settings.get("visual_reference", "auto") != "none":
+    if not is_phrase and settings.get("visual_reference", "auto") != "none":
         enrich = manifest_data.enrichment
         mnemonic = (enrich.mnemonic or None) if enrich else None
         etymology = (enrich.etymology or None) if enrich else None
@@ -269,6 +283,7 @@ def build_image_payload(
             "translation": manifest_data.translation,
             "language": manifest_data.language,
             "language_code": manifest_data.language_code,
+            "input_type": manifest_data.input_type,
         },
         "context": context,
         "settings": settings,
@@ -869,13 +884,25 @@ async def run_stage(
             # Resolve creative_direction from images settings for transition mode override
             images_settings = resolve_settings('images', manifest_data.settings, defaults)
             creative_direction = images_settings.get('creative_direction', 'literal')
-            # If auto, read the actual resolved direction from the storyboard
+            # If auto, read the resolved direction from manifest lineage (authoritative).
+            # storyboard.json has LLM free-text; lineage settings_snapshot is the source of truth.
             if creative_direction == "auto":
-                sb_file = word_dir / "images" / images_version / "storyboard.json"
-                if sb_file.exists():
-                    with open(sb_file, 'r', encoding='utf-8') as f:
-                        sb_data = json.load(f)
-                    creative_direction = sb_data.get("creative_direction", "literal")
+                _resolved: str | None = None
+                _images_entries = [e for e in manifest_data.lineage if e.stage == "images"]
+                if _images_entries:
+                    _latest = _images_entries[-1]  # lineage is append-only chronological
+                    _resolved = (
+                        _latest.settings_snapshot.get("creative_direction_resolved")
+                        or _latest.settings_snapshot.get("creative_direction")
+                    )
+                # Last-resort: legacy storyboard.json read (for very old content without lineage data)
+                if not _resolved:
+                    sb_file = word_dir / "images" / images_version / "storyboard.json"
+                    if sb_file.exists():
+                        with open(sb_file, 'r', encoding='utf-8') as f:
+                            sb_data = json.load(f)
+                        _resolved = sb_data.get("creative_direction")
+                creative_direction = _resolved or "literal"
             payloads = build_video_payloads(word_dir, manifest_data, settings, output_dir, images_version, creative_direction)
             if not payloads:
                 if settings.get("text_to_video", False):

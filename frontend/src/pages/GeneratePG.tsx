@@ -440,7 +440,7 @@ function StepWords({
           onChange={(e) => { setInputValue(e.target.value); setInputError(null) }}
           onKeyDown={(e) => { if (e.key === 'Enter') addWord() }}
           placeholder={t('generate.typeWord')}
-          maxLength={60}
+          maxLength={50}
           className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 font-display text-base outline-none focus:border-[var(--pg-accent-teal)]/50 transition-colors"
         />
         <button

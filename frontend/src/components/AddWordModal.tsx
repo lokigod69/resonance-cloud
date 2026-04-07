@@ -65,13 +65,14 @@ export function AddWordModal({ onClose, onAdded }: AddWordModalProps) {
         <form onSubmit={handleSubmit} className="p-5 space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-xs text-[var(--text-muted)] block mb-1">Word *</label>
+              <label className="text-xs text-[var(--text-muted)] block mb-1">Word or phrase *</label>
               <input
                 type="text"
                 value={word}
                 onChange={e => setWord(e.target.value)}
                 className="w-full bg-[var(--bg-base)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)]"
-                placeholder="e.g. Schadenfreude"
+                placeholder="e.g. Schadenfreude, guten Morgen"
+                maxLength={50}
                 autoFocus
                 required
               />

@@ -1,11 +1,15 @@
-export const LANGUAGES = [
-  { value: 'German',     label: 'Deutsch',          code: 'de',  color: '#f59e0b' },
-  { value: 'French',     label: 'Français',         code: 'fr',  color: '#3b82f6' },
-  { value: 'Italian',    label: 'Italiano',          code: 'it',  color: '#22c55e' },
-  { value: 'English',    label: 'English',           code: 'en',  color: '#6366f1' },
-  { value: 'Bisaya',     label: 'Bisaya',            code: 'ceb', color: '#ef4444' },
-  { value: 'Indonesian', label: 'Bahasa Indonesia',  code: 'id',  color: '#f97316' },
-] as const
+import { WIZARD_LANGUAGES } from '@/lib/languages'
+
+// Wizard tile data, derived from the shared LANGUAGES module.
+// `label` here is the native-only name (e.g. 'Deutsch'), not the 'Native (English)' form.
+// `color` falls back to the landing palette if a wizardColor isn't defined.
+export const LANGUAGES: { value: string; label: string; code: string; color: string }[] =
+  WIZARD_LANGUAGES.map((l) => ({
+    value: l.value,
+    label: l.nativeName,
+    code: l.code,
+    color: l.wizardColor ?? l.landingColor ?? '#6b7280',
+  }))
 
 export const VIBES = [
   { value: 'auto', label: 'Auto', description: 'AI picks the best direction per word' },

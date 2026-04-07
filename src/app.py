@@ -17,7 +17,7 @@ from fastapi import FastAPI, UploadFile, File, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, field_validator
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -654,7 +654,7 @@ async def remove_preset(slug: str):
 
 
 class AddWordRequest(BaseModel):
-    word: str
+    word: str = Field(..., max_length=50)
     translation: str
     language: str
     mnemonic: Optional[str] = None
@@ -662,16 +662,28 @@ class AddWordRequest(BaseModel):
     example: Optional[str] = None
     tags: Optional[str] = None
 
+    @field_validator("word", mode="before")
+    @classmethod
+    def normalize_word(cls, v: Any) -> Any:
+        """Strip ends and collapse internal whitespace runs (NBSP, tabs, double-space)
+        to a single space BEFORE max_length is enforced. Phrases like 'guten\u00a0Morgen'
+        and trailing whitespace then get a fair length budget."""
+        if isinstance(v, str):
+            return re.sub(r'\s+', ' ', v.strip())
+        return v
+
 
 @app.post("/api/words")
 async def add_word(body: AddWordRequest):
-    """Add a single word manually."""
-    word = body.word.strip()
+    """Add a single word or short phrase manually."""
+    word = body.word  # already stripped + whitespace-normalized by validator
     translation = body.translation.strip()
     language = body.language.strip()
 
     if not word or not translation or not language:
         raise HTTPException(400, "word, translation, and language are required")
+
+    input_type = "phrase" if " " in word else "word"
 
     word_slug = slugify(word)
     lang_code = language_to_code(language)
@@ -699,6 +711,7 @@ async def add_word(body: AddWordRequest):
         language=language,
         language_code=lang_code,
         enrichment_data=enrichment if enrichment else None,
+        input_type=input_type,
     )
 
     return {"ok": True, "word_slug": word_slug}

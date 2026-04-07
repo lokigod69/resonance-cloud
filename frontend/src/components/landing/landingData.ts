@@ -1,5 +1,7 @@
 // Static data for the landing page sections
 // Language names used in DEMO_WORDS must be resolvable by FlagIcon's LANG_NAME_MAP
+import { LANDING_LANGUAGES } from '@/lib/languages'
+
 type DemoLanguage = 'French' | 'German' | 'English' | 'Italian' | 'Spanish' | 'Portuguese' | 'Dutch' | 'Hindi' | 'Arabic' | 'Filipino' | 'Tagalog' | 'Bisaya' | 'Indonesian' | 'Korean'
 // Thumbnails and videos served from Supabase Storage (public bucket)
 
@@ -42,18 +44,34 @@ export const DEMO_WORDS: { word: string; translation: string; language: DemoLang
   { word: 'lahmarschig', translation: 'sluggish', language: 'German', thumbnail: thumb(U2, D_DE2, 'lahmarschig'), videoUrl: vid(U2, D_DE2, 'lahmarschig') },
 ]
 
-export const LANGUAGES = [
-  { label: 'German',     code: 'de',  color: '#FFD700' },
-  { label: 'French',     code: 'fr',  color: '#4A90D9' },
-  { label: 'Italian',    code: 'it',  color: '#4CAF50' },
-  { label: 'English',    code: 'en',  color: '#E53935' },
-  { label: 'Tagalog',    code: 'fil', color: '#FF6B35' },
-  { label: 'Bisaya',     code: 'ceb', color: '#AB47BC' },
-  { label: 'Indonesian', code: 'id',  color: '#009688' },
-  { label: 'Dutch',      code: 'nl',  color: '#E65100' },
-  { label: 'Spanish',    code: 'es',  color: '#C62828' },
-  { label: 'Hindi',      code: 'hi',  color: '#F9A825' },
+// Landing showcase chips, derived from the shared LANGUAGES module.
+// `label` is the English name (matches existing landing UI behavior).
+//
+// Display order is locked to match the historical landing layout. New languages
+// are appended at the end so existing chip positions don't shift.
+const LANDING_ORDER = [
+  'German',
+  'French',
+  'Italian',
+  'English',
+  'Tagalog',
+  'Bisaya',
+  'Indonesian',
+  'Dutch',
+  'Spanish',
+  'Hindi',
+  'Korean',
 ]
+
+export const LANGUAGES: { label: string; code: string; color: string }[] =
+  LANDING_ORDER
+    .map((name) => LANDING_LANGUAGES.find((l) => l.value === name))
+    .filter((l): l is NonNullable<typeof l> => l !== undefined)
+    .map((l) => ({
+      label: l.value,
+      code: l.code,
+      color: l.landingColor ?? '#6b7280',
+    }))
 
 export const TUTOR_MOCK_CONVERSATION = [
   { role: 'user', text: 'Ich möchte ein Bier bestellen, bitte.' },

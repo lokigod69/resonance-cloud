@@ -1,7 +1,7 @@
 """Pydantic models for the Resonance Orchestrator."""
 
 from __future__ import annotations
-from typing import Any, Optional
+from typing import Any, Literal, Optional
 from pydantic import BaseModel, Field
 
 
@@ -48,6 +48,7 @@ class Manifest(BaseModel):
     language_code: str
     created_at: str
     updated_at: str
+    input_type: Literal["word", "phrase"] = "word"
     enrichment: Enrichment = Enrichment()
     selected: Selected = Selected()
     settings: dict[str, dict[str, Any]] = {

@@ -3,10 +3,14 @@
 from __future__ import annotations
 import csv
 import io
+import logging
+import re
 from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 from .slugify import slugify, language_to_code
 from .workspace import create_word_folder, list_word_dirs, write_workspace_meta, meta_path
@@ -120,6 +124,14 @@ def import_csv(
             errors.append(f"Row missing required data: {norm}")
             continue
 
+        # Normalize whitespace: collapse NBSP/tabs/double-space to single space
+        word = re.sub(r'\s+', ' ', word.strip())
+
+        # Enforce 50-char cap (matches HTTP add_word and slug max_length)
+        if len(word) > 50:
+            errors.append(f"Word exceeds 50-char limit (got {len(word)}): {word[:30]}...")
+            continue
+
         word_slug = slugify(word)
         language_code = language_to_code(language)
         languages_seen.add(language)
@@ -140,6 +152,7 @@ def import_csv(
             enrichment[col] = norm.get(col, '')
 
         try:
+            input_type = "phrase" if " " in word else "word"
             create_word_folder(workspace_path, word_slug)
             create_manifest(
                 word_dir=word_dir,
@@ -149,6 +162,7 @@ def import_csv(
                 language=language,
                 language_code=language_code,
                 enrichment_data=enrichment if enrichment else None,
+                input_type=input_type,
             )
             imported.append(word_slug)
         except Exception as e:

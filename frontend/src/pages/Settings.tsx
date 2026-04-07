@@ -13,14 +13,7 @@ import {
 } from '@/components/ui/select'
 import { Coins, LogOut, Check } from 'lucide-react'
 import { Input } from '@/components/ui/input'
-
-const LANGUAGES = [
-  { value: 'English', label: 'English' },
-  { value: 'German', label: 'Deutsch (German)' },
-  { value: 'French', label: 'Fran\u00e7ais (French)' },
-  { value: 'Italian', label: 'Italiano (Italian)' },
-  { value: 'Bisaya', label: 'Bisaya' },
-]
+import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 
 export default function Settings() {
   const { profile, user, signOut, refreshProfile } = useAuth()
@@ -86,9 +79,9 @@ export default function Settings() {
               <SelectValue placeholder="Select language" />
             </SelectTrigger>
             <SelectContent>
-              {LANGUAGES.map((lang) => (
+              {BASE_LANGUAGES.map((lang) => (
                 <SelectItem key={lang.value} value={lang.value}>
-                  {lang.label}
+                  {getDisplayLabel(lang)}
                 </SelectItem>
               ))}
             </SelectContent>

@@ -13,11 +13,14 @@
 
 export type Locale = 'en' | 'de' | 'fr';
 
-// Map from base_language profile values to locale codes
+// Map from base_language profile values to locale codes.
+// Korean intentionally maps to 'en' — Korean users see the English UI
+// because we don't ship a Korean translation of the app interface.
 export const LANGUAGE_TO_LOCALE: Record<string, Locale> = {
   English: 'en',
   German: 'de',
   French: 'fr',
+  Korean: 'en',
 };
 
 // Shared translation function builder — used by useTranslation and useLandingLocale
@@ -109,7 +112,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.stepReview': 'Review',
     'generate.chooseLanguage': 'Choose your language',
     'generate.chooseLanguageSub': 'Select the language you want to learn',
-    'generate.typeWord': 'Type a word...',
+    'generate.typeWord': 'Type a word or phrase...',
     'generate.wordCount': '{count} of {max} words',
     'generate.maxWords': 'Maximum {max} words',
     'generate.wordExists': 'Word already added',
@@ -279,7 +282,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'landing.demoDescription': 'Every word becomes a unique symbol, captured in visual and auditive style. Choose your own creative direction.',
     'landing.tutorHeading': 'Your personal voice tutor',
     'landing.tutorDescription': 'Practice speaking your favorite language. Have real conversations with different personas and characters to improve your grammar and pronunciation. Feels like chatting with a friend.',
-    'landing.languagesHeading': '10 languages. Your vocabulary.',
+    'landing.languagesHeading': '11 languages. Your vocabulary.',
     'landing.languagesComingSoon': 'More languages coming soon.',
     'landing.ctaHeadline': 'Ready to learn differently?',
     'landing.ctaSubline': 'Sign up free and create your first memories.',
@@ -294,6 +297,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Dutch': 'Dutch',
     'langName.Spanish': 'Spanish',
     'langName.Hindi': 'Hindi',
+    'langName.Korean': 'Korean',
   },
 
   de: {
@@ -371,7 +375,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.stepReview': 'Überprüfen',
     'generate.chooseLanguage': 'Wähle deine Sprache',
     'generate.chooseLanguageSub': 'Welche Sprache möchtest du lernen?',
-    'generate.typeWord': 'Wort eingeben...',
+    'generate.typeWord': 'Wort oder Phrase eingeben...',
     'generate.wordCount': '{count} von {max} Wörtern',
     'generate.maxWords': 'Maximal {max} Wörter',
     'generate.wordExists': 'Wort bereits hinzugefügt',
@@ -541,7 +545,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'landing.demoDescription': 'Jedes Wort wird zu einem einzigartigen Symbol, eingefangen in visuellem und auditivem Stil. Wähle deine eigene kreative Richtung.',
     'landing.tutorHeading': 'Dein persönlicher Sprach-Tutor',
     'landing.tutorDescription': 'Übe deine Lieblingssprache zu sprechen. Führe echte Gespräche mit verschiedenen Personas und Charakteren, um deine Grammatik und Aussprache zu verbessern. Fühlt sich an wie ein Chat mit einem Freund.',
-    'landing.languagesHeading': '10 Sprachen. Dein Vokabular.',
+    'landing.languagesHeading': '11 Sprachen. Dein Vokabular.',
     'landing.languagesComingSoon': 'Weitere Sprachen folgen.',
     'landing.ctaHeadline': 'Bereit, anders zu lernen?',
     'landing.ctaSubline': 'Melde dich kostenlos an und erstelle deine ersten Erinnerungen.',
@@ -556,6 +560,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Dutch': 'Niederländisch',
     'langName.Spanish': 'Spanisch',
     'langName.Hindi': 'Hindi',
+    'langName.Korean': 'Koreanisch',
   },
 
   fr: {
@@ -633,7 +638,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.stepReview': 'Vérifier',
     'generate.chooseLanguage': 'Choisis ta langue',
     'generate.chooseLanguageSub': 'Quelle langue veux-tu apprendre ?',
-    'generate.typeWord': 'Tape un mot...',
+    'generate.typeWord': 'Tape un mot ou une phrase...',
     'generate.wordCount': '{count} sur {max} mots',
     'generate.maxWords': 'Maximum {max} mots',
     'generate.wordExists': 'Mot déjà ajouté',
@@ -803,7 +808,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'landing.demoDescription': 'Chaque mot devient un symbole unique, capturé dans un style visuel et auditif. Choisis ta propre direction créative.',
     'landing.tutorHeading': 'Ton tuteur vocal personnel',
     'landing.tutorDescription': 'Pratique ta langue préférée à l\'oral. Mène de vraies conversations avec différents personnages pour améliorer ta grammaire et ta prononciation. On dirait une discussion avec un ami.',
-    'landing.languagesHeading': '10 langues. Ton vocabulaire.',
+    'landing.languagesHeading': '11 langues. Ton vocabulaire.',
     'landing.languagesComingSoon': 'D\'autres langues arrivent bientôt.',
     'landing.ctaHeadline': 'Prêt à apprendre autrement ?',
     'landing.ctaSubline': 'Inscris-toi gratuitement et crée tes premiers souvenirs.',
@@ -818,5 +823,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Dutch': 'Néerlandais',
     'langName.Spanish': 'Espagnol',
     'langName.Hindi': 'Hindi',
+    'langName.Korean': 'Coréen',
   },
 };

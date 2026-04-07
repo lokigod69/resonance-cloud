@@ -12,14 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Music, ChevronRight, Gift, Check } from 'lucide-react'
-
-const LANGUAGES = [
-  { value: 'English', label: 'English' },
-  { value: 'German', label: 'Deutsch (German)' },
-  { value: 'French', label: 'Fran\u00e7ais (French)' },
-  { value: 'Italian', label: 'Italiano (Italian)' },
-  { value: 'Bisaya', label: 'Bisaya' },
-]
+import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 
 export default function Onboarding() {
   const { user, refreshProfile } = useAuth()
@@ -165,9 +158,9 @@ export default function Onboarding() {
                 <SelectValue placeholder="Select your language" />
               </SelectTrigger>
               <SelectContent>
-                {LANGUAGES.map((lang) => (
+                {BASE_LANGUAGES.map((lang) => (
                   <SelectItem key={lang.value} value={lang.value}>
-                    {lang.label}
+                    {getDisplayLabel(lang)}
                   </SelectItem>
                 ))}
               </SelectContent>

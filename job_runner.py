@@ -16,6 +16,7 @@ import asyncio
 import json
 import logging
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -477,12 +478,32 @@ def collect_word_metadata(
     bke = metas.get("bookend", {})
     bke_tts = bke.get("tts", {})
 
+    # Resolved creative_direction from manifest lineage (authoritative).
+    # storyboard.json has LLM free-text; lineage settings_snapshot is the source of truth.
+    creative_direction_resolved: str | None = None
+    try:
+        _manifest = read_manifest(word_dir)
+        _images_entries = [e for e in _manifest.lineage if e.stage == "images"]
+        if _images_entries:
+            _latest = _images_entries[-1]  # lineage is append-only chronological
+            creative_direction_resolved = (
+                _latest.settings_snapshot.get("creative_direction_resolved")
+                or _latest.settings_snapshot.get("creative_direction")
+            )
+    except (FileNotFoundError, Exception):
+        # Manifest missing or unreadable — fall back to legacy sources below.
+        pass
+
     return {
         "pipeline_duration_seconds": round(pipeline_duration, 2),
         "stages_completed": stages_completed,
 
         # Storyboard / creative
-        "creative_direction": sb.get("creative_direction") or img.get("settings", {}).get("creative_direction"),
+        "creative_direction": (
+            creative_direction_resolved
+            or sb.get("creative_direction")
+            or img.get("settings", {}).get("creative_direction")
+        ),
         "art_style": sb.get("art_style") or img.get("settings", {}).get("art_style"),
         "movie_reference": sb.get("movie"),
         "music_caption": sb.get("music_caption"),
@@ -997,8 +1018,11 @@ async def process_word(
     workspace_path: Path,
     enrichment: dict[str, Any],
 ) -> bool:
-    """Process a single word through the full pipeline. Returns True on success."""
-    word_text = enrichment.get("word_target", word_record["word"])
+    """Process a single word (or short phrase) through the full pipeline. Returns True on success."""
+    raw_word_text = enrichment.get("word_target", word_record["word"])
+    # Normalize whitespace: strip ends, collapse internal runs (NBSP, tabs, double-space) to single space
+    word_text = re.sub(r'\s+', ' ', raw_word_text.strip()) if isinstance(raw_word_text, str) else raw_word_text
+    input_type = "phrase" if " " in word_text else "word"
     word_slug_val = slugify(word_text)
     language = job["target_language"]
     lang_code = language_to_code(language)
@@ -1054,6 +1078,7 @@ async def process_word(
                 language=language,
                 language_code=lang_code,
                 enrichment_data=enrichment_data,
+                input_type=input_type,
             )
     else:
         create_manifest(
@@ -1064,6 +1089,7 @@ async def process_word(
             language=language,
             language_code=lang_code,
             enrichment_data=enrichment_data,
+            input_type=input_type,
         )
 
     # Run shared pipeline stages (images, concept, song, video) with retry

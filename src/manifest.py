@@ -44,8 +44,9 @@ def create_manifest(
     language: str,
     language_code: str,
     enrichment_data: dict[str, Any] | None = None,
+    input_type: str = "word",
 ) -> Manifest:
-    """Create and write a new manifest for a newly imported word."""
+    """Create and write a new manifest for a newly imported word or phrase."""
     ts = now_iso()
 
     enrichment = Enrichment()
@@ -75,6 +76,7 @@ def create_manifest(
         language_code=language_code,
         created_at=ts,
         updated_at=ts,
+        input_type=input_type,
         enrichment=enrichment,
     )
     write_manifest(word_dir, manifest)

@@ -20,14 +20,7 @@ import {
 } from '@/components/ui/select'
 import { LogOut, Check } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
-
-const LANGUAGES = [
-  { value: 'English', label: 'English' },
-  { value: 'German', label: 'Deutsch (German)' },
-  { value: 'French', label: 'Fran\u00e7ais (French)' },
-  { value: 'Italian', label: 'Italiano (Italian)' },
-  { value: 'Bisaya', label: 'Bisaya' },
-]
+import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 
 const SKINS: { id: SkinId; label: string }[] = [
   { id: 'classic', label: 'Classic' },
@@ -190,9 +183,9 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   <SelectValue placeholder={t('profile.selectLanguage')} />
                 </SelectTrigger>
                 <SelectContent>
-                  {LANGUAGES.map((lang) => (
+                  {BASE_LANGUAGES.map((lang) => (
                     <SelectItem key={lang.value} value={lang.value}>
-                      {lang.label}
+                      {getDisplayLabel(lang)}
                     </SelectItem>
                   ))}
                 </SelectContent>
