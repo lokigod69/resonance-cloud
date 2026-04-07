@@ -46,6 +46,8 @@ export interface UseVoiceTutorReturn {
   cancelLevelChange: () => void
   newChat: () => Promise<void>
   resetConversation: () => void
+  studyMode: boolean
+  toggleStudyMode: (words: Array<{ word: string; translation: string }>) => void
   playPendingAudio: () => Promise<void>
   replayMessageAudio: (message: TutorMessage) => Promise<void>
 }
@@ -146,6 +148,9 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   const [messages, setMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
   const [pendingAudio, setPendingAudio] = useState<{ base64: string; format: string } | null>(null)
+  const [studyMode, setStudyMode] = useState(false)
+  const studyModeRef = useRef(false)
+  const studyWordsRef = useRef<Array<{ word: string; translation: string }>>([])
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
@@ -323,6 +328,10 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
       }
 
+      if (studyModeRef.current && studyWordsRef.current.length > 0) {
+        body.study_words = studyWordsRef.current
+      }
+
       const controller = new AbortController()
       const timer = setTimeout(() => controller.abort(), 30000)
 
@@ -475,6 +484,9 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
       messagesRef.current = []
       setError(null)
       setStatus('idle')
+      studyModeRef.current = false
+      studyWordsRef.current = []
+      setStudyMode(false)
     },
     [endConversation],
   )
@@ -553,7 +565,17 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
+    studyModeRef.current = false
+    studyWordsRef.current = []
+    setStudyMode(false)
   }, [endConversation, stopAudio])
+
+  const toggleStudyMode = useCallback((words: Array<{ word: string; translation: string }>) => {
+    const newMode = !studyModeRef.current
+    studyModeRef.current = newMode
+    setStudyMode(newMode)
+    studyWordsRef.current = newMode ? words : []
+  }, [])
 
   const changeLevel = useCallback(() => {
     stopAudio()
@@ -800,6 +822,9 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
+    studyModeRef.current = false
+    studyWordsRef.current = []
+    setStudyMode(false)
   }, [releaseResources, endConversation, stopAudio])
 
   const replayMessageAudio = useCallback(async (message: TutorMessage) => {
@@ -831,5 +856,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     newChat,
     resetConversation,
     replayMessageAudio,
+    studyMode,
+    toggleStudyMode,
   }
 }

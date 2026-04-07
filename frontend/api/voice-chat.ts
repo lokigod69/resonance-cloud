@@ -21,6 +21,7 @@ interface RequestBody {
   character_tier?: 'style' | 'persona' | 'public'
   character_identity?: string
   character_directive?: string
+  study_words?: Array<{ word: string; translation: string }>
 }
 
 interface CharacterPayload {
@@ -134,12 +135,23 @@ LANGUAGE MIX: Speak about 80% in ${targetLang} and 20% in ${nativeLang}.
   }
 }
 
-function buildSystemPrompt(languageCode: string, level: string, nativeLang: string, character?: CharacterPayload): string {
+function buildStudyAddendum(studyWords?: Array<{ word: string; translation: string }>): string {
+  if (!studyWords || studyWords.length === 0) return ''
+  const list = studyWords.map((w) => `${w.word} (${w.translation})`).join(', ')
+  return `
+
+STUDY FOCUS: The student is currently working on these words:
+${list}
+Find natural moments to use these words in conversation. Don't list them or quiz the student directly — weave them into what you're already talking about. Use 2-3 per exchange, not all at once.`
+}
+
+function buildSystemPrompt(languageCode: string, level: string, nativeLang: string, character?: CharacterPayload, studyWords?: Array<{ word: string; translation: string }>): string {
   const lang = LANGUAGE_CONFIG[languageCode]
   if (!lang) throw new Error(`Unsupported language: ${languageCode}`)
 
   const nativeLangName = LANGUAGE_CONFIG[nativeLang]?.name || NATIVE_LANGUAGE_NAMES[nativeLang] || 'English'
   const levelInstructions = getLevelInstructions(lang.name, nativeLangName, level)
+  const studyAddendum = buildStudyAddendum(studyWords)
 
   const generalRules = `GENERAL RULES:
 - Keep responses SHORT: 1-3 sentences maximum. This is spoken conversation, not a lecture.
@@ -161,7 +173,7 @@ ${levelInstructions}
 
 ${generalRules}
 
-PERSONALITY: Warm, encouraging, patient. Curious about the student's life to generate natural topics. Like a friend who happens to be a native speaker.`
+PERSONALITY: Warm, encouraging, patient. Curious about the student's life to generate natural topics. Like a friend who happens to be a native speaker.${studyAddendum}`
   }
 
   // ── Style Tutor: directive replaces PERSONALITY ──
@@ -173,7 +185,7 @@ ${levelInstructions}
 
 ${generalRules}
 
-TEACHING STYLE: ${character.directive}`
+TEACHING STYLE: ${character.directive}${studyAddendum}`
   }
 
   // ── Persona / Public: full identity + tutoring role bridge ──
@@ -187,7 +199,7 @@ ${levelInstructions}
 ${generalRules}
 
 CHARACTER STYLE: ${character.directive}
-Remember: you are ${character.name}. Stay in character throughout the conversation.`
+Remember: you are ${character.name}. Stay in character throughout the conversation.${studyAddendum}`
 }
 
 /**
@@ -314,7 +326,7 @@ export async function POST(req: Request): Promise<Response> {
     })
   }
 
-  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive } = body
+  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words } = body
 
   const character: CharacterPayload | undefined = character_name && character_tier && character_directive
     ? { name: character_name, tier: character_tier, identity: character_identity, directive: character_directive }
@@ -371,7 +383,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   // ── Step 2: Build LLM messages ─────────────────────────────────────────────
-  const systemPrompt = buildSystemPrompt(language, level, native_language, character)
+  const systemPrompt = buildSystemPrompt(language, level, native_language, character, study_words)
   const lang = LANGUAGE_CONFIG[language]
 
   const cleanHistory = history.slice(-20).map(({ role, content }) => ({ role, content }))

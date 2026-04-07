@@ -1,25 +1,24 @@
 import { useEffect, useRef, useState } from 'react'
 import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, RefreshCw, MessageSquarePlus, History, Signal } from 'lucide-react'
 import { useVoiceTutor } from '@/hooks/useVoiceTutor'
+import { useStudyWords } from '@/hooks/useStudyWords'
 import { CharacterGrid } from '@/components/speak/CharacterGrid'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
+import { SPEAK_LANGUAGES } from '@/lib/languages'
 
-const LANGUAGES = [
-  { code: 'en', nativeName: 'English' },
-  { code: 'de', nativeName: 'Deutsch' },
-  { code: 'fr', nativeName: 'Français' },
-  { code: 'it', nativeName: 'Italiano' },
-  { code: 'es', nativeName: 'Español' },
-  { code: 'pt', nativeName: 'Português' },
-  { code: 'nl', nativeName: 'Nederlands' },
-  { code: 'hi', nativeName: 'हिन्दी' },
-  { code: 'ar',  nativeName: 'العربية' },
-  { code: 'fil', nativeName: 'Filipino' },
-  { code: 'id',  nativeName: 'Bahasa Indonesia' },
-  { code: 'ko',  nativeName: '한국어' },
-]
+// Display order is locked to match the historical Speak grid layout so user
+// muscle memory is preserved. New languages should be appended at the end.
+const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar', 'fil', 'id', 'ko']
+
+const LANGUAGES = SPEAK_ORDER
+  .map((code) => SPEAK_LANGUAGES.find((l) => l.code === code))
+  .filter((l): l is NonNullable<typeof l> => l !== undefined)
+  .map((l) => ({
+    code: l.code,
+    nativeName: l.nativeName,
+  }))
 
 function TypingIndicator() {
   return (
@@ -38,6 +37,7 @@ function TypingIndicator() {
 export default function Speak() {
   const { t } = useTranslation()
   const tutor = useVoiceTutor()
+  const studyWords = useStudyWords(tutor.language)
   const bottomRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)
   const [historyOpen, setHistoryOpen] = useState(false)
@@ -202,6 +202,21 @@ export default function Speak() {
                 </button>
               ))}
             </div>
+
+            {studyWords.hasWords && (
+              <div className="mt-6 flex justify-center">
+                <button
+                  onClick={() => tutor.toggleStudyMode(studyWords.studyWords)}
+                  className={`px-4 py-2 rounded-full text-sm border transition-colors ${
+                    tutor.studyMode
+                      ? 'bg-cyan-900/40 border-cyan-500/50 text-cyan-200'
+                      : 'bg-gray-800/50 border-white/10 text-gray-300 hover:bg-gray-700/60'
+                  }`}
+                >
+                  {tutor.studyMode ? '📖 Study Mode ON' : 'Study my words'}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -242,6 +257,21 @@ export default function Speak() {
           </span>
           <span className="hidden sm:inline">{t('speak.level')}</span>
         </button>
+
+        {studyWords.hasWords && (
+          <button
+            onClick={() => tutor.toggleStudyMode(studyWords.studyWords)}
+            className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs transition-colors shrink-0 ${
+              tutor.studyMode
+                ? 'bg-cyan-900/40 text-cyan-200 hover:bg-cyan-900/60'
+                : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10'
+            }`}
+            title={tutor.studyMode ? 'Study Mode ON' : 'Study my words'}
+          >
+            <span className="text-sm">📖</span>
+            <span className="hidden sm:inline">{tutor.studyMode ? 'Study ON' : 'Study'}</span>
+          </button>
+        )}
 
         <button
           onClick={tutor.changeVoice}
