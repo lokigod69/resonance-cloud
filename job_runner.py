@@ -87,6 +87,11 @@ For each word, provide:
 
 Handle both directions: if the user typed a {base_language} word, figure out the {target_language} equivalent.
 
+If the input contains multiple words forming a phrase or sentence (e.g., "I love hot dogs",
+"good morning", "thank you"), treat the ENTIRE input as the learning target. Do NOT extract
+individual words from it. Set word_target to the full phrase translated into {target_language}.
+Translate the complete phrase, not individual words.
+
 Respond with a JSON array. Each element must have exactly these keys:
 {{"input_word": "...", "word_target": "...", "translation": "...", "mnemonic": "...", "etymology": "...", "pos": "...", "article": "..."}}
 
@@ -1019,7 +1024,14 @@ async def process_word(
     enrichment: dict[str, Any],
 ) -> bool:
     """Process a single word (or short phrase) through the full pipeline. Returns True on success."""
-    raw_word_text = enrichment.get("word_target", word_record["word"])
+    # For phrases, always use the original word from the DB, not the enrichment target
+    # (enrichment may have extracted a single word from a phrase)
+    original_word = word_record["word"]
+    is_phrase = " " in original_word.strip()
+    if is_phrase:
+        raw_word_text = original_word
+    else:
+        raw_word_text = enrichment.get("word_target", original_word)
     # Normalize whitespace: strip ends, collapse internal runs (NBSP, tabs, double-space) to single space
     word_text = re.sub(r'\s+', ' ', raw_word_text.strip()) if isinstance(raw_word_text, str) else raw_word_text
     input_type = "phrase" if " " in word_text else "word"
@@ -1634,14 +1646,25 @@ async def process_job(job: dict[str, Any]) -> None:
     # Write enrichment data to Supabase word records
     for word_rec in words:
         e = enrichment_map.get(word_rec["word"].lower(), {})
-        sb.table("words").update({
-            "word": e.get("word_target", word_rec["word"]),
+        original_word = word_rec["word"]
+        is_phrase = " " in original_word.strip()
+
+        update_data: dict[str, Any] = {
             "translation": e.get("translation", ""),
             "mnemonic": e.get("mnemonic", ""),
             "etymology": e.get("etymology", ""),
             "pos": e.get("pos", ""),
             "article": e.get("article"),
-        }).eq("id", word_rec["id"]).execute()
+        }
+
+        # Only overwrite the word column for single words
+        # (spelling correction, target-language mapping).
+        # Phrases must remain untouched to avoid the LLM
+        # extracting a single word from a multi-word input.
+        if not is_phrase:
+            update_data["word"] = e.get("word_target", original_word)
+
+        sb.table("words").update(update_data).eq("id", word_rec["id"]).execute()
 
     # Create workspace
     workspace_path = WORKSPACE_ROOT / f"cloud_{user_id}_{deck_id}"
