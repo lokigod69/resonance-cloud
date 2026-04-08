@@ -6,7 +6,8 @@ import { CharacterGrid } from '@/components/speak/CharacterGrid'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
-import { SPEAK_LANGUAGES } from '@/lib/languages'
+import { useAuth } from '@/hooks/useAuth'
+import { SPEAK_LANGUAGES, LANGUAGES as ALL_LANGUAGES } from '@/lib/languages'
 
 // Display order is locked to match the historical Speak grid layout so user
 // muscle memory is preserved. New languages should be appended at the end.
@@ -36,7 +37,11 @@ function TypingIndicator() {
 
 export default function Speak() {
   const { t } = useTranslation()
-  const tutor = useVoiceTutor()
+  const { profile } = useAuth()
+  // Convert profile.base_language (e.g. "German") → 2-letter code ("de").
+  // Backend voice-chat expects the 2-letter code as native_language.
+  const baseLangCode = ALL_LANGUAGES.find((l) => l.value === profile?.base_language)?.code
+  const tutor = useVoiceTutor(baseLangCode)
   const studyWords = useStudyWords(tutor.language)
   const bottomRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)

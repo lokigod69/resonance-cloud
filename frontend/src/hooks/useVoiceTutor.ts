@@ -122,10 +122,6 @@ function playAudioViaElement(
   })
 }
 
-function getNativeLanguage(): string {
-  return (typeof navigator !== 'undefined' ? navigator.language?.slice(0, 2) : null) || 'en'
-}
-
 function getMimeType(): string {
   // Safari/iOS reports WebM as supported but the implementation is buggy —
   // MediaRecorder produces zero ondataavailable events with WebM.
@@ -140,7 +136,14 @@ function getMimeType(): string {
   return ''
 }
 
-export function useVoiceTutor(): UseVoiceTutorReturn {
+export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
+  const baseLangRef = useRef<string | undefined>(baseLang)
+  useEffect(() => { baseLangRef.current = baseLang }, [baseLang])
+  const resolveNativeLanguage = (): string => {
+    if (baseLangRef.current) return baseLangRef.current
+    return (typeof navigator !== 'undefined' ? navigator.language?.slice(0, 2) : null) || 'en'
+  }
+
   const [language, setLanguage] = useState<string | null>(null)
   const [voice, setVoice] = useState<TutorVoice | null>(null)
   const [character, setCharacter] = useState<TutorCharacter | null>(null)
@@ -168,6 +171,14 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     studyWords: Array<{ word: string; translation: string }>
     conversationId: string | null
     messageCount: number
+  } | null>(null)
+  const previousLevelStateRef = useRef<{
+    level: string | null
+    messages: TutorMessage[]
+    conversationId: string | null
+    messageCount: number
+    studyMode: boolean
+    studyWords: Array<{ word: string; translation: string }>
   } | null>(null)
   const levelRef = useRef<string | null>(null)
   const mimeTypeRef = useRef<string>('audio/webm')
@@ -320,7 +331,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         history: messagesRef.current.slice(-20).map(({ role, content }) => ({ role, content })),
         mime_type: mimeTypeRef.current,
         level: levelRef.current || 'intermediate',
-        native_language: getNativeLanguage(),
+        native_language: resolveNativeLanguage(),
       }
 
       // Voice + character resolution
@@ -544,6 +555,19 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
 
   const selectLevel = useCallback(
     async (selectedLevel: string) => {
+      // User committed to a new level — end any deferred prior conversation
+      // and drop the snapshot so cancel can't resurrect it later.
+      if (previousLevelStateRef.current) {
+        const staleConvId = previousLevelStateRef.current.conversationId
+        if (staleConvId && staleConvId !== conversationIdRef.current) {
+          supabase.from('speak_conversations')
+            .update({ ended_at: new Date().toISOString() })
+            .eq('id', staleConvId)
+            .then(() => {}, () => {})
+        }
+        previousLevelStateRef.current = null
+      }
+      endConversation()
       setStatus('processing')
       setLevel(selectedLevel)
       levelRef.current = selectedLevel
@@ -564,10 +588,12 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
         setStatus('idle')
       }
     },
-    [language, fetchAndPlayGreeting],
+    [language, fetchAndPlayGreeting, endConversation],
   )
 
   const changeVoice = useCallback(() => {
+    // Switching tutor invalidates any pending level-picker snapshot
+    previousLevelStateRef.current = null
     // Snapshot full conversation state so cancelChangeVoice can restore it
     if (voiceRef.current && characterRef.current) {
       previousStateRef.current = {
@@ -605,8 +631,20 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
   }, [])
 
   const changeLevel = useCallback(() => {
+    // Snapshot current state so cancelLevelChange can restore it.
+    // Do NOT call endConversation() — defer like changeVoice does, so the
+    // backend session stays alive and cancel can resume the live conversation.
+    if (levelRef.current && voiceRef.current) {
+      previousLevelStateRef.current = {
+        level: levelRef.current,
+        messages: messagesRef.current,
+        conversationId: conversationIdRef.current,
+        messageCount: convMessageCountRef.current,
+        studyMode: studyModeRef.current,
+        studyWords: studyWordsRef.current,
+      }
+    }
     stopAudio()
-    endConversation()
     setMessages([])
     messagesRef.current = []
     setPendingAudio(null)
@@ -614,17 +652,31 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setStatus('idle')
     setLevel(null)
     levelRef.current = null
-  }, [stopAudio, endConversation])
+  }, [stopAudio])
 
   const cancelLevelChange = useCallback(() => {
-    // If we had a level before (came from conversation), restore it
+    const prev = previousLevelStateRef.current
+    if (prev) {
+      setLevel(prev.level)
+      levelRef.current = prev.level
+      setMessages(prev.messages)
+      messagesRef.current = prev.messages
+      conversationIdRef.current = prev.conversationId
+      convMessageCountRef.current = prev.messageCount
+      studyModeRef.current = prev.studyMode
+      studyWordsRef.current = prev.studyWords
+      setStudyMode(prev.studyMode)
+      setStatus('idle')
+      previousLevelStateRef.current = null
+      return
+    }
+    // Fallback: no snapshot — try localStorage, else go back to character grid
     const savedLevel = language ? localStorage.getItem(`voice-tutor-level-${language}`) : null
     if (savedLevel && voiceRef.current) {
       setLevel(savedLevel)
       levelRef.current = savedLevel
       setStatus('idle')
     } else {
-      // First-time setup — back goes to character grid
       changeVoice()
     }
   }, [language, changeVoice])
@@ -843,6 +895,7 @@ export function useVoiceTutor(): UseVoiceTutorReturn {
     setCharacter(null)
     characterRef.current = null
     previousStateRef.current = null
+    previousLevelStateRef.current = null
     setLevel(null)
     levelRef.current = null
     setMessages([])
