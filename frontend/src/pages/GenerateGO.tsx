@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
 import { LANGUAGES, VIBES, ART_STYLE_GROUPS, MAX_WORDS } from '@/components/generate/wizardData'
@@ -22,6 +23,7 @@ const GO_GENRES = [
 export default function GenerateGO() {
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
+  const { activeLanguage } = useLanguage()
   const navigate = useNavigate()
 
   const [step, setStep] = useState(1)
@@ -64,6 +66,16 @@ export default function GenerateGO() {
         }
       })
   }, [deckIdParam])
+
+  // Pre-seed from LanguageContext (fires when context resolves async). Only seeds if
+  // the local language state is still empty — never overwrites a manual choice.
+  useEffect(() => {
+    if (deckIdParam) return
+    if (language) return
+    if (activeLanguage) {
+      setLanguage(activeLanguage)
+    }
+  }, [deckIdParam, language, activeLanguage])
 
   // Scroll refs
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])

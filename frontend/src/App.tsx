@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { SkinProvider, useSkin } from '@/contexts/SkinContext'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 import { ToastProvider } from '@/components/Toast'
 import { AppLayout } from '@/components/layout/AppLayout'
 import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
@@ -164,7 +165,9 @@ export default function App() {
       <SkinProvider>
       <ToastProvider>
       <AuthProvider>
-        <AppRoutes />
+        <LanguageProvider>
+          <AppRoutes />
+        </LanguageProvider>
       </AuthProvider>
       </ToastProvider>
       </SkinProvider>

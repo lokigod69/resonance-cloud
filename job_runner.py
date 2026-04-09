@@ -841,11 +841,13 @@ async def bake_suno_into_word(
                    f"({suno_duration_a:.1f}s < {SUNO_MIN_USABLE_DURATION}s)")
             log.warning("  [Suno] %s", msg)
             return {"success": False, "suno_ab_manifests": {}, "error": msg}
+        skip_track_a = False
         if suno_duration_a > SUNO_MAX_USABLE_DURATION:
-            msg = (f"Track A rejected: {suno_duration_a:.1f}s exceeds max "
-                   f"{SUNO_MAX_USABLE_DURATION}s")
-            log.warning("  [Suno] %s", msg)
-            return {"success": False, "suno_ab_manifests": {}, "error": msg}
+            log.warning(
+                "  [Suno] Track A rejected: %.1fs exceeds max %.1fs — will try Track B",
+                suno_duration_a, SUNO_MAX_USABLE_DURATION,
+            )
+            skip_track_a = True
 
         if suno_duration_a < clip_duration:
             log.info("  [Suno] Audio shorter than video (%.1fs < %.1fs) — "
@@ -888,19 +890,51 @@ async def bake_suno_into_word(
                 actual = min(0.5, dur * 0.05)
                 return dur, dur - actual, actual
 
-            trim_to_a, fade_start_a, actual_fade_a = _fade_params(suno_duration_a)
-            trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
-                                       trim_to_a, fade_start_a, actual_fade_a)
+            if not skip_track_a:
+                trim_to_a, fade_start_a, actual_fade_a = _fade_params(suno_duration_a)
+                trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
+                                           trim_to_a, fade_start_a, actual_fade_a)
+            else:
+                trimmed_a = None
             if path_b:
                 suno_duration_b = _probe_audio_duration(path_b)
-                if suno_duration_b < SUNO_MIN_USABLE_DURATION:
+                if skip_track_a and suno_duration_b > SUNO_MAX_USABLE_DURATION:
+                    # Both tracks oversized — pick shorter, force-truncate to clip_duration
+                    log.warning(
+                        "  [Suno] Both tracks oversized (A=%.1fs, B=%.1fs) — "
+                        "truncating shorter to %.1fs with %.1fs fade",
+                        suno_duration_a, suno_duration_b, clip_duration, fade_tail,
+                    )
+                    if suno_duration_a <= suno_duration_b:
+                        force_src = path_a
+                        force_out = suno_dir / "take_suno_a.mp3"
+                        use_label_a = True
+                    else:
+                        force_src = path_b
+                        force_out = suno_dir / "take_suno_b.mp3"
+                        use_label_a = False
+
+                    fstart = max(0.0, clip_duration - fade_tail) if fade_tail > 0 else clip_duration
+                    forced = _trim_suno_mp3(force_src, force_out,
+                                            clip_duration, fstart, fade_tail)
+                    if not forced:
+                        return {"success": False, "suno_ab_manifests": {},
+                                "error": "Both Suno tracks oversized and truncation failed"}
+
+                    if use_label_a:
+                        trimmed_a = forced
+                        skip_track_a = False   # A is now usable (force-truncated)
+                        trimmed_b = None
+                    else:
+                        trimmed_b = forced
+                        # skip_track_a stays True; B is the sole usable take
+                elif suno_duration_b < SUNO_MIN_USABLE_DURATION:
                     log.info("  [Suno] Track B too short (%.1fs < %ss) — "
-                             "skipping B, using A only",
-                             suno_duration_b, SUNO_MIN_USABLE_DURATION)
+                             "skipping B", suno_duration_b, SUNO_MIN_USABLE_DURATION)
                     trimmed_b = None
                 elif suno_duration_b > SUNO_MAX_USABLE_DURATION:
-                    log.warning("  [Suno] Track B rejected: %.1fs exceeds max %.1fs — "
-                                "using A only", suno_duration_b, SUNO_MAX_USABLE_DURATION)
+                    log.warning("  [Suno] Track B rejected: %.1fs exceeds max %.1fs",
+                                suno_duration_b, SUNO_MAX_USABLE_DURATION)
                     trimmed_b = None
                 else:
                     trim_to_b, fade_start_b, actual_fade_b = _fade_params(suno_duration_b)
@@ -908,18 +942,30 @@ async def bake_suno_into_word(
                                                trim_to_b, fade_start_b, actual_fade_b)
             else:
                 trimmed_b = None
+
+            if skip_track_a and not trimmed_b:
+                return {"success": False, "suno_ab_manifests": {},
+                        "error": "Track A oversized and no usable Track B"}
         else:  # clean_cut — trim to exact clip duration with micro-fade to avoid click
             _fade_start = max(0.0, clip_duration - 0.1)
-            trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
-                                       clip_duration, _fade_start, 0.1)
+            if not skip_track_a:
+                trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
+                                           clip_duration, _fade_start, 0.1)
+            else:
+                trimmed_a = None
             trimmed_b = _trim_suno_mp3(path_b, suno_dir / "take_suno_b.mp3",
                                        clip_duration, _fade_start, 0.1) \
                         if path_b else None
+            if skip_track_a and not trimmed_b:
+                return {"success": False, "suno_ab_manifests": {},
+                        "error": "Track A oversized and no usable Track B"}
     except Exception as e:
         log.warning("  [Suno] Trim failed: %s — proceeding with ACE-Step", e)
         return {"success": False, "suno_ab_manifests": {}, "error": str(e)}
 
-    suno_takes = [("a", trimmed_a)]
+    suno_takes: list[tuple[str, Any]] = []
+    if not skip_track_a and trimmed_a:
+        suno_takes.append(("a", trimmed_a))
     if trimmed_b:
         suno_takes.append(("b", trimmed_b))
 
@@ -966,7 +1012,10 @@ async def bake_suno_into_word(
                 _assembly_a_failed = True
                 break
             else:
-                log.warning("  [Suno] Version B assembly failed — A only")
+                if "a" in suno_assembled_labels or not skip_track_a:
+                    log.warning("  [Suno] Version B assembly failed — falling back to A only")
+                else:
+                    log.warning("  [Suno] Version B assembly failed — no fallback available")
 
         # Pass 2: Bookends (only if Pass 1 version A succeeded)
         if not _assembly_a_failed:
@@ -1011,6 +1060,13 @@ async def bake_suno_into_word(
 
     if _assembly_a_failed:
         return {"success": False, "suno_ab_manifests": {}, "error": "Suno version A assembly failed"}
+
+    if not suno_assembled_labels:
+        return {
+            "success": False,
+            "suno_ab_manifests": {},
+            "error": "No Suno takes assembled successfully",
+        }
 
     return {"success": True, "suno_ab_manifests": suno_ab_manifests, "error": None}
 
@@ -1218,7 +1274,6 @@ async def process_word(
                         "target_word_id": word_record["id"],
                         "priority": -2,  # Below manual retries (-1)
                         "status": "approved",
-                        "settings": {},
                     }).execute()
                     log.info("  [Suno] Auto-queued deferred retry for word %s", word_record["id"])
                 except Exception as _q_e:
@@ -1649,12 +1704,23 @@ async def process_job(job: dict[str, Any]) -> None:
         original_word = word_rec["word"]
         is_phrase = " " in original_word.strip()
 
+        raw_tags = e.get("tags", "")
+        if isinstance(raw_tags, list):
+            tags_str = ", ".join(str(t) for t in raw_tags)
+        else:
+            tags_str = raw_tags or ""
+
         update_data: dict[str, Any] = {
             "translation": e.get("translation", ""),
             "mnemonic": e.get("mnemonic", ""),
             "etymology": e.get("etymology", ""),
             "pos": e.get("pos", ""),
             "article": e.get("article"),
+            "synonyms": e.get("synonyms", "") or "",
+            "ipa": e.get("ipa", "") or "",
+            "example": e.get("example", "") or "",
+            "example_gloss": e.get("example_gloss", "") or "",
+            "tags": tags_str,
         }
 
         # Only overwrite the word column for single words

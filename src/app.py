@@ -6,14 +6,16 @@ import json
 import os
 import re
 import shutil
-import glob as glob_module
+import time
 from pathlib import Path
 from typing import Any, Optional
 
-from collections import Counter
+from collections import Counter, defaultdict
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, UploadFile, File, HTTPException, Form
+import httpx
+
+from fastapi import FastAPI, UploadFile, File, HTTPException, Form, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -39,9 +41,7 @@ from .workspace import make_version_label, create_version_dir
 from .slugify import slugify, language_to_code, SUPPORTED_LANGUAGES
 from .workspace import create_word_folder, write_workspace_meta
 from .manifest import create_manifest
-from .models import (
-    WorkspaceMeta, EngineHealthStatus, DefaultSettings
-)
+from .models import WorkspaceMeta
 
 WORKSPACE_ROOT = Path(os.getenv("WORKSPACE_ROOT", "D:/CODING/ResonanceTEST"))
 WORKSPACE_PATH = Path(os.getenv("WORKSPACE_PATH", str(WORKSPACE_ROOT / "workspace")))
@@ -135,6 +135,119 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ─── Word suggestion (LLM category picker) ───────────────────────────────────
+
+# Simple in-memory rate limiter (resets on restart, per-worker only — fine for test phase)
+_suggest_rate_limit: dict[str, list[float]] = defaultdict(list)
+SUGGEST_RATE_LIMIT = 10  # max calls per minute per IP
+SUGGEST_RATE_WINDOW = 60  # seconds
+
+
+class SuggestWordsRequest(BaseModel):
+    category: str = Field(..., min_length=1, max_length=100)
+    target_language: str = Field(..., min_length=1, max_length=50)
+    base_language: str = Field("English", min_length=1, max_length=50)
+    count: int = Field(5, ge=1, le=10)
+
+
+_SUGGEST_SYSTEM_PROMPT_TEMPLATE = (
+    "You are a vocabulary suggestion engine. Given a category and target language, "
+    "suggest exactly {count} words or short phrases that a language learner would find "
+    "interesting and useful.\n\n"
+    "CRITICAL: Respond with ONLY valid JSON. No markdown, no explanation, no code blocks.\n\n"
+    "Output format:\n"
+    "{{\n"
+    '  "words": [\n'
+    "    {{\n"
+    '      "word": "word/phrase in target language",\n'
+    '      "translation": "translation in {base_language}"\n'
+    "    }}\n"
+    "  ]\n"
+    "}}\n\n"
+    "Rules:\n"
+    "- Choose culturally authentic, interesting vocabulary — not boring textbook words\n"
+    '- For "Random Mix": pick from varied categories and difficulty levels\n'
+    "- All {count} entries must be unique\n"
+    "- Keep translations concise (1-4 words)\n"
+    "- For phrases: keep them short (2-5 words in target language)"
+)
+
+
+@app.post("/api/suggest-words")
+async def suggest_words(body: SuggestWordsRequest, request: Request):
+    # TODO: Add Supabase JWT auth before production (in-memory rate limit below is per-worker).
+    # TODO: Sanitize category/target_language inputs before production to reduce
+    # prompt-injection surface (length caps already applied via Pydantic).
+    client_ip = request.client.host if request.client else "unknown"
+    now = time.time()
+    _suggest_rate_limit[client_ip] = [
+        t for t in _suggest_rate_limit[client_ip] if now - t < SUGGEST_RATE_WINDOW
+    ]
+    if len(_suggest_rate_limit[client_ip]) >= SUGGEST_RATE_LIMIT:
+        raise HTTPException(status_code=429, detail="Too many requests. Please wait a moment.")
+    _suggest_rate_limit[client_ip].append(now)
+
+    api_key = os.environ.get("OPENROUTER_API_KEY", "")
+    if not api_key:
+        raise HTTPException(status_code=500, detail="OPENROUTER_API_KEY not set")
+
+    model = DEFAULT_SETTINGS["concept"].get("llm_model", "deepseek/deepseek-v3.2")
+    count = body.count
+
+    system_prompt = _SUGGEST_SYSTEM_PROMPT_TEMPLATE.format(
+        count=count, base_language=body.base_language
+    )
+    user_prompt = (
+        f"Suggest {count} {body.category} words/phrases for learning {body.target_language}.\n"
+        f"Make them interesting, natural, and actually useful for real conversations."
+    )
+
+    try:
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            resp = await client.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "model": model,
+                    "max_tokens": 500,
+                    "messages": [
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt},
+                    ],
+                },
+            )
+            resp.raise_for_status()
+        content = resp.json()["choices"][0]["message"]["content"]
+        stripped = content.strip()
+        if stripped.startswith("```"):
+            stripped = re.sub(r"^```[a-zA-Z]*\n?", "", stripped)
+            stripped = re.sub(r"\n?```$", "", stripped)
+        parsed = json.loads(stripped)
+        words = parsed.get("words", [])
+        if not isinstance(words, list) or not words:
+            raise ValueError("LLM response missing 'words' array")
+        cleaned = [
+            {"word": str(w.get("word", "")).strip(), "translation": str(w.get("translation", "")).strip()}
+            for w in words
+            if isinstance(w, dict) and w.get("word")
+        ]
+        if not cleaned:
+            raise ValueError("No valid word entries in LLM response")
+        return {"words": cleaned}
+    except HTTPException:
+        raise
+    except httpx.HTTPStatusError as e:
+        status = 429 if e.response.status_code == 429 else 502
+        raise HTTPException(status_code=status, detail="Word suggestion service unavailable")
+    except (json.JSONDecodeError, KeyError, ValueError):
+        raise HTTPException(status_code=502, detail="Invalid response from word suggestion service")
+    except httpx.HTTPError:
+        raise HTTPException(status_code=502, detail="Word suggestion service unreachable")
+
 
 # ─── Autopilot state (simple in-memory) ───────────────────────────────────────
 

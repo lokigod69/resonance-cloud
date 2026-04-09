@@ -196,9 +196,12 @@ def build_concept_payload(
     output_dir: Path,
     images_version: str | None = None,
 ) -> dict:
-    # Read music_caption from storyboard if images have already run
+    # Read music_caption from storyboard if images have already run.
+    # Only inherit storyboard music_caption when user hasn't specified a genre —
+    # an explicit genre must override the storyboard's auto-generated caption.
+    user_genre = settings.get("genre") or "auto"
     external_music_caption = None
-    if images_version:
+    if images_version and user_genre == "auto":
         storyboard_file = word_dir / "images" / images_version / "storyboard.json"
         if storyboard_file.exists():
             with open(storyboard_file, 'r', encoding='utf-8') as f:

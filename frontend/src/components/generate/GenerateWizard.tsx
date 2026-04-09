@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { CheckCircle, ArrowLeft } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
 import { useWizardState } from './useWizardState'
@@ -21,6 +22,7 @@ import ConfirmStep from './steps/ConfirmStep'
 export default function GenerateWizard() {
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
+  const { activeLanguage } = useLanguage()
   const { state, dispatch, buildPayload } = useWizardState()
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -47,6 +49,16 @@ export default function GenerateWizard() {
         }
       })
   }, [deckIdParam, dispatch])
+
+  // Pre-seed from LanguageContext (fires when context resolves async). Only seeds if
+  // the wizard's own language state is still empty — never overwrites a manual choice.
+  useEffect(() => {
+    if (deckIdParam) return
+    if (state.language) return
+    if (activeLanguage) {
+      dispatch({ type: 'PRESELECT_LANGUAGE', language: activeLanguage })
+    }
+  }, [deckIdParam, state.language, activeLanguage, dispatch])
 
   // Track direction for slide animation
   const direction: 1 | -1 = state.step >= prevStep.current ? 1 : -1

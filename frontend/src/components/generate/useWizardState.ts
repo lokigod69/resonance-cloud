@@ -15,6 +15,7 @@ export interface WizardState {
 
 export type WizardAction =
   | { type: 'SET_LANGUAGE'; language: string }
+  | { type: 'PRESELECT_LANGUAGE'; language: string }
   | { type: 'ADD_WORD'; word: string }
   | { type: 'REMOVE_WORD'; index: number }
   | { type: 'SET_WORDS'; words: string[] }
@@ -44,6 +45,10 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
   switch (action.type) {
     case 'SET_LANGUAGE':
       return { ...state, language: action.language, step: 2 }
+
+    case 'PRESELECT_LANGUAGE':
+      // Set language without advancing step — for context-seeded pre-fill
+      return { ...state, language: action.language }
 
     case 'ADD_WORD': {
       const trimmed = action.word.trim()

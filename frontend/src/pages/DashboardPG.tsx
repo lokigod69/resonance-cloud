@@ -1,3 +1,5 @@
+// TODO: DashboardPG does not yet have language tabs, word library, or stats bar.
+// These features are currently Classic-skin only. Glassy skin update is planned.
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'

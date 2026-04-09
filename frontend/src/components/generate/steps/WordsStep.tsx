@@ -5,6 +5,8 @@ import { GlassInput, WordChips, type GlassInputHandle } from '../shared/GlassInp
 import PillButton from '../shared/PillButton'
 import { MAX_WORDS } from '../wizardData'
 import type { WizardState, WizardAction } from '../useWizardState'
+import { useSkin } from '@/contexts/SkinContext'
+import CategoryPicker from './CategoryPicker'
 
 interface WordsStepProps {
   state: WizardState
@@ -17,6 +19,14 @@ export default function WordsStep({ state, dispatch, onQuickGenerate }: WordsSte
   const glassInputRef = useRef<GlassInputHandle>(null)
   const wordCount = state.words.length
   const isFull = wordCount >= MAX_WORDS
+  const { skin } = useSkin()
+  const classicPickerEnabled = skin !== 'glassy'
+  // Picker gated to initial entry (wordCount === 0). This prevents CategoryPicker's
+  // SET_WORDS dispatch from wiping words the user already typed manually — once
+  // any manual words exist, the picker is no longer reachable for this step.
+  const [inputMode, setInputMode] = useState<'picker' | 'manual'>(
+    classicPickerEnabled && wordCount === 0 ? 'picker' : 'manual'
+  )
 
   function handleLock(word: string) {
     if (state.words.some((w) => w.toLowerCase() === word.toLowerCase())) {
@@ -57,8 +67,28 @@ export default function WordsStep({ state, dispatch, onQuickGenerate }: WordsSte
       </motion.p>
 
       <div className="w-full max-w-md space-y-5">
+        {classicPickerEnabled && inputMode === 'picker' && (
+          <CategoryPicker
+            state={state}
+            dispatch={dispatch}
+            onConfirm={() => dispatch({ type: 'CHOOSE_PATH', path: 'custom' })}
+            onSwitchToManual={() => setInputMode('manual')}
+          />
+        )}
+
         {/* Word input */}
-        {!isFull && <GlassInput ref={glassInputRef} onLock={handleLock} autoFocus placeholder="Type a word and press Enter" />}
+        {inputMode === 'manual' && !isFull && <GlassInput ref={glassInputRef} onLock={handleLock} autoFocus placeholder="Type a word and press Enter" />}
+
+        {/* Back to categories — only available before any manual words are locked */}
+        {classicPickerEnabled && inputMode === 'manual' && wordCount === 0 && (
+          <button
+            type="button"
+            onClick={() => setInputMode('picker')}
+            className="text-xs text-white/40 hover:text-white/70 transition"
+          >
+            ← Back to Categories
+          </button>
+        )}
 
         {/* Locked words */}
         {wordCount > 0 && (
