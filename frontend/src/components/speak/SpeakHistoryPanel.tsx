@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { X, ArrowLeft, Mic, ChevronRight, Trash2 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
+import { useTranslation } from '@/hooks/useTranslation'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { getCharacterById } from '@/characterRegistry'
 
@@ -15,6 +16,13 @@ interface Conversation {
   title: string | null
   started_at: string
   ended_at: string | null
+  corrections: Correction[] | null
+}
+
+interface Correction {
+  original: string
+  corrected: string
+  explanation: string
 }
 
 interface Message {
@@ -28,6 +36,7 @@ interface Message {
 interface SpeakHistoryPanelProps {
   open: boolean
   onClose: () => void
+  baseLangCode?: string
 }
 
 const LANGUAGE_NAMES: Record<string, string> = {
@@ -69,13 +78,16 @@ function formatDate(iso: string): string {
   return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
 }
 
-export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
+export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryPanelProps) {
   const { user } = useAuth()
+  const { t } = useTranslation()
   const [conversations, setConversations] = useState<Conversation[]>([])
   const [loading, setLoading] = useState(false)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const [messagesLoading, setMessagesLoading] = useState(false)
+  const [corrections, setCorrections] = useState<Correction[] | null>(null)
+  const [correctionsLoading, setCorrectionsLoading] = useState(false)
 
   // Load conversations when panel opens
   useEffect(() => {
@@ -99,7 +111,10 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
 
   // Load messages when a conversation is selected
   useEffect(() => {
-    if (!selectedId) return
+    if (!selectedId) {
+      setCorrections(null)
+      return
+    }
 
     setMessagesLoading(true)
     supabase
@@ -111,9 +126,42 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
         if (!error && data) setMessages(data as Message[])
         setMessagesLoading(false)
       })
-  }, [selectedId])
+
+    // Hydrate cached corrections if present
+    const conv = conversations.find((c) => c.id === selectedId)
+    setCorrections(conv?.corrections ?? null)
+  }, [selectedId, conversations])
 
   const selectedConversation = conversations.find((c) => c.id === selectedId)
+
+  const fetchHistoryCorrections = async () => {
+    if (!selectedConversation || correctionsLoading || messages.length < 4) return
+    setCorrectionsLoading(true)
+    try {
+      const res = await fetch('/api/voice-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          mode: 'corrections',
+          transcript: messages.map((m) => ({ role: m.role, content: m.content })),
+          language: selectedConversation.language,
+          native_language: baseLangCode || 'en',
+        }),
+      })
+      const data = await res.json()
+      const list: Correction[] = Array.isArray(data.corrections) ? data.corrections : []
+      setCorrections(list)
+      await supabase.from('speak_conversations')
+        .update({ corrections: list })
+        .eq('id', selectedConversation.id)
+      setConversations((prev) => prev.map((c) => c.id === selectedConversation.id ? { ...c, corrections: list } : c))
+    } catch (err) {
+      console.error('Corrections fetch failed:', err)
+      setCorrections([])
+    } finally {
+      setCorrectionsLoading(false)
+    }
+  }
 
   const deleteConversation = async (convId: string, e: React.MouseEvent) => {
     e.stopPropagation()
@@ -295,6 +343,36 @@ export function SpeakHistoryPanel({ open, onClose }: SpeakHistoryPanelProps) {
                       </div>
                     </div>
                   ))}
+
+                  {messages.length >= 4 && (
+                    <div className="mt-6 flex flex-col items-center gap-4">
+                      {corrections === null ? (
+                        <button
+                          onClick={fetchHistoryCorrections}
+                          disabled={correctionsLoading}
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors border border-white/10 disabled:opacity-50"
+                        >
+                          <span>📝</span>
+                          <span>{correctionsLoading ? t('speak.reviewLoading') : t('speak.reviewButton')}</span>
+                        </button>
+                      ) : corrections.length === 0 ? (
+                        <div className="text-center text-sm text-green-400/80 px-4 py-3 bg-green-900/20 rounded-lg">
+                          ✅ {t('speak.reviewPerfect')}
+                        </div>
+                      ) : (
+                        <div className="w-full max-w-lg space-y-3">
+                          <p className="text-xs text-gray-500 text-center mb-2">{t('speak.reviewTitle')}</p>
+                          {corrections.map((c, i) => (
+                            <div key={i} className="bg-white/5 rounded-lg p-3 space-y-1">
+                              <p className="text-sm text-red-400/80 line-through">{c.original}</p>
+                              <p className="text-sm text-green-400/80">{c.corrected}</p>
+                              <p className="text-xs text-gray-500">{c.explanation}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
             </>

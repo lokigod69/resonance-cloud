@@ -46,6 +46,40 @@ export default function Speak() {
   const bottomRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)
   const [historyOpen, setHistoryOpen] = useState(false)
+  type Correction = { original: string; corrected: string; explanation: string }
+  const [corrections, setCorrections] = useState<Correction[] | null>(null)
+  const [correctionsLoading, setCorrectionsLoading] = useState(false)
+
+  // Reset corrections when conversation changes (new chat, voice change, etc.)
+  useEffect(() => {
+    setCorrections(null)
+  }, [tutor.conversationId])
+
+  const fetchCorrections = async () => {
+    if (correctionsLoading || tutor.messages.length < 4) return
+    setCorrectionsLoading(true)
+    try {
+      const res = await fetch('/api/voice-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          mode: 'corrections',
+          transcript: tutor.messages.map((m) => ({ role: m.role, content: m.content })),
+          language: tutor.language,
+          native_language: baseLangCode || 'en',
+        }),
+      })
+      const data = await res.json()
+      const list: Correction[] = Array.isArray(data.corrections) ? data.corrections : []
+      setCorrections(list)
+      tutor.saveCorrections(list)
+    } catch (err) {
+      console.error('Corrections fetch failed:', err)
+      setCorrections([])
+    } finally {
+      setCorrectionsLoading(false)
+    }
+  }
 
   const selectedLang = LANGUAGES.find((l) => l.code === tutor.language)
 
@@ -162,7 +196,7 @@ export default function Speak() {
   }
 
   // ── State 2.5: Level Picker ────────────────────────────────────────────────
-  if (!tutor.level) {
+  if (!tutor.level || tutor.showLevelPicker) {
     return (
       <div className="flex flex-col min-h-full pb-20">
         {/* Header */}
@@ -237,7 +271,7 @@ export default function Speak() {
         <button
           onClick={tutor.resetConversation}
           className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
-          title="Back to language selection"
+          title={t('speak.backTooltip')}
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
@@ -254,8 +288,8 @@ export default function Speak() {
 
         <button
           onClick={tutor.changeLevel}
-          className="flex items-center gap-1 px-2.5 py-1.5 text-xs text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-colors shrink-0"
-          title="Change level"
+          className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
+          title={t('speak.levelTooltip')}
         >
           <span className="text-sm">
             {tutor.level === 'zero' ? '🌱' : tutor.level === 'beginner' ? '📗' : tutor.level === 'intermediate' ? '📘' : tutor.level === 'advanced' ? '📕' : <Signal className="w-4 h-4" />}
@@ -271,26 +305,39 @@ export default function Speak() {
                 ? 'bg-cyan-900/40 text-cyan-200 hover:bg-cyan-900/60'
                 : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10'
             }`}
-            title={tutor.studyMode ? 'Study Mode ON' : 'Study my words'}
+            title={tutor.studyMode ? t('speak.studyOnTooltip') : t('speak.studyTooltip')}
           >
             <span className="text-sm">📖</span>
-            <span className="hidden sm:inline">{tutor.studyMode ? 'Study ON' : 'Study'}</span>
+            <span className="hidden sm:inline">{tutor.studyMode ? t('speak.studyOn') : t('speak.study')}</span>
           </button>
         )}
 
         <button
+          onClick={tutor.toggleListenMode}
+          className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs transition-colors shrink-0 ${
+            tutor.listenMode
+              ? 'bg-purple-900/40 text-purple-200 hover:bg-purple-900/60'
+              : 'text-gray-400 hover:text-white hover:bg-white/5'
+          }`}
+          title={tutor.listenMode ? t('speak.listenOnTooltip') : t('speak.listenTooltip')}
+        >
+          <span className="text-sm">🎧</span>
+          <span className="hidden sm:inline">{tutor.listenMode ? t('speak.listenOn') : t('speak.listen')}</span>
+        </button>
+
+        <button
           onClick={tutor.changeVoice}
           className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
-          title="Change tutor"
+          title={t('speak.tutorTooltip')}
         >
           <RefreshCw className="h-3 w-3" />
-          <span className="hidden sm:inline">Tutor</span>
+          <span className="hidden sm:inline">{t('speak.tutor')}</span>
         </button>
 
         <button
           onClick={() => setHistoryOpen(true)}
           className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
-          title="Conversation history"
+          title={t('speak.historyTooltip')}
         >
           <History className="h-3.5 w-3.5" />
           <span className="hidden sm:inline">{t('speak.history')}</span>
@@ -300,7 +347,7 @@ export default function Speak() {
           onClick={tutor.newChat}
           disabled={isBusy}
           className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 shrink-0"
-          title="New conversation"
+          title={t('speak.newChatTooltip')}
         >
           <MessageSquarePlus className="h-3.5 w-3.5" />
           <span className="hidden sm:inline">{t('speak.newChat')}</span>
@@ -320,16 +367,19 @@ export default function Speak() {
             className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              onClick={msg.role === 'assistant' && msg.audioBase64 ? () => tutor.replayMessageAudio(msg) : undefined}
+              onClick={msg.role === 'assistant' ? () => {
+                if (tutor.listenMode && !msg.revealed) tutor.revealMessage(i)
+                if (msg.audioBase64) tutor.replayMessageAudio(msg)
+              } : undefined}
               className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed transition-opacity duration-500 ${
                 msg.role === 'user'
                   ? 'bg-cyan-900/50 text-white rounded-br-sm opacity-100'
-                  : `bg-gray-800/60 text-gray-100 rounded-bl-sm ${msg.revealed ? 'opacity-100' : 'opacity-0'}${msg.audioBase64 ? ' cursor-pointer active:bg-gray-700/60 transition-colors' : ''}`
+                  : `bg-gray-800/60 text-gray-100 rounded-bl-sm ${msg.revealed || tutor.listenMode ? 'opacity-100' : 'opacity-0'}${msg.audioBase64 || (tutor.listenMode && !msg.revealed) ? ' cursor-pointer active:bg-gray-700/60 transition-colors' : ''}`
               }`}
             >
               {msg.role === 'assistant' && !msg.revealed ? (
                 <span className="flex items-center gap-1.5 text-gray-400 text-sm italic">
-                  <span>🎧</span> {t('speak.listening')}
+                  <span>🔊</span> {tutor.listenMode ? t('speak.tapToReveal') : t('speak.listening')}
                 </span>
               ) : (
                 <>
@@ -349,6 +399,45 @@ export default function Speak() {
           </div>
         ))}
 
+        {tutor.messages.length >= 4 && (
+          <div className="mt-6 flex flex-col items-center gap-4">
+            {corrections === null ? (
+              <button
+                onClick={fetchCorrections}
+                disabled={correctionsLoading}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors border border-white/10 disabled:opacity-50"
+              >
+                {correctionsLoading ? (
+                  <>
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                    <span>{t('speak.reviewLoading')}</span>
+                  </>
+                ) : (
+                  <>
+                    <span>📝</span>
+                    <span>{t('speak.reviewButton')}</span>
+                  </>
+                )}
+              </button>
+            ) : corrections.length === 0 ? (
+              <div className="text-center text-sm text-green-400/80 px-4 py-3 bg-green-900/20 rounded-lg">
+                ✅ {t('speak.reviewPerfect')}
+              </div>
+            ) : (
+              <div className="w-full max-w-lg space-y-3">
+                <p className="text-xs text-gray-500 text-center mb-2">{t('speak.reviewTitle')}</p>
+                {corrections.map((c, i) => (
+                  <div key={i} className="bg-white/5 rounded-lg p-3 space-y-1">
+                    <p className="text-sm text-red-400/80 line-through">{c.original}</p>
+                    <p className="text-sm text-green-400/80">{c.corrected}</p>
+                    <p className="text-xs text-gray-500">{c.explanation}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
         {tutor.status === 'processing' && (
           <div className="flex justify-start">
             <TypingIndicator />
@@ -367,6 +456,7 @@ export default function Speak() {
       <SpeakHistoryPanel
         open={historyOpen}
         onClose={() => setHistoryOpen(false)}
+        baseLangCode={baseLangCode}
       />
 
       {/* Footer: mic controls */}

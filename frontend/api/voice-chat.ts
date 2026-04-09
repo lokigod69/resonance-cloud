@@ -315,8 +315,114 @@ export async function OPTIONS(): Promise<Response> {
   return new Response(null, { status: 204, headers: CORS_HEADERS })
 }
 
+async function handleCorrections(body: {
+  transcript?: Array<{ role: string; content: string }>
+  language?: string
+  native_language?: string
+}): Promise<Response> {
+  const groqKey = process.env.GROQ_API_KEY
+  if (!groqKey) {
+    return new Response(JSON.stringify({ error: 'GROQ_API_KEY not configured' }), {
+      status: 500,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    })
+  }
+
+  const transcript = body.transcript || []
+  const language = body.language || 'en'
+  const native_language = body.native_language || 'en'
+
+  if (transcript.length < 4) {
+    return new Response(JSON.stringify({ error: 'Not enough conversation to review' }), {
+      status: 400,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    })
+  }
+
+  const userMessages = transcript.filter((m) => m.role === 'user')
+  if (userMessages.length === 0) {
+    return new Response(JSON.stringify({ error: 'No user messages to review' }), {
+      status: 400,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    })
+  }
+
+  const langName = LANGUAGE_CONFIG[language]?.name || language
+  const nativeName = LANGUAGE_CONFIG[native_language]?.name || NATIVE_LANGUAGE_NAMES[native_language] || 'English'
+
+  const systemPrompt = `You are a language teacher reviewing a student's ${langName} conversation practice. The student's native language is ${nativeName}.
+
+Analyze ONLY the student's messages (role: "user") for errors in:
+- Grammar
+- Word choice / vocabulary
+- Sentence structure
+- Common expressions (if they used an unnatural phrasing)
+
+For each error found, provide:
+- "original": what the student said (exact quote)
+- "corrected": the correct version
+- "explanation": brief explanation in ${nativeName} of what was wrong and why the correction is better
+
+If the student made no significant errors, return an empty array.
+Be encouraging but honest. Focus on errors that would matter in real conversation — ignore minor stylistic preferences.
+
+Respond with a JSON object of the form {"corrections": [{"original": "...", "corrected": "...", "explanation": "..."}]}.
+If no errors: {"corrections": []}`
+
+  try {
+    const llmRes = await fetchWithTimeout('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${groqKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: JSON.stringify(transcript) },
+        ],
+        response_format: { type: 'json_object' },
+      }),
+    }, 30000, 'Groq Corrections')
+
+    if (!llmRes.ok) {
+      const errText = await llmRes.text()
+      return new Response(JSON.stringify({ error: `Groq LLM failed: ${errText}` }), {
+        status: 502,
+        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      })
+    }
+
+    const llmJson = await llmRes.json() as { choices: Array<{ message: { content: string } }> }
+    const text = llmJson.choices?.[0]?.message?.content?.trim() || '[]'
+
+    let corrections: unknown
+    try {
+      corrections = JSON.parse(text)
+    } catch {
+      corrections = []
+    }
+    if (!Array.isArray(corrections)) {
+      const obj = corrections as Record<string, unknown>
+      corrections = obj.corrections || obj.errors || []
+    }
+    if (!Array.isArray(corrections)) corrections = []
+
+    return new Response(JSON.stringify({ corrections }), {
+      status: 200,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    })
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err instanceof Error ? err.message : 'Corrections failed' }), {
+      status: 502,
+      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    })
+  }
+}
+
 export async function POST(req: Request): Promise<Response> {
-  let body: RequestBody
+  let body: RequestBody & { mode?: string; transcript?: Array<{ role: string; content: string }> }
   try {
     body = await req.json()
   } catch {
@@ -324,6 +430,10 @@ export async function POST(req: Request): Promise<Response> {
       status: 400,
       headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
     })
+  }
+
+  if (body.mode === 'corrections') {
+    return handleCorrections(body)
   }
 
   const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words } = body
@@ -433,11 +543,20 @@ export async function POST(req: Request): Promise<Response> {
     const charIntro = character
       ? ` IN CHARACTER as ${character.name}. Introduce yourself briefly (one sentence about who you are), then`
       : ''
-    const greetingInstruction = level === 'zero'
-      ? `[SYSTEM: The student just joined to learn ${lang.name}. They know ZERO words. Greet them warmly${charIntro ? charIntro : ` in ${nativeLangName}, tell them you're excited to teach them their first words in ${lang.name}, and`} teach them how to say "hello" in ${lang.name}. Keep it to 2-3 sentences.]`
-      : level === 'beginner'
-      ? `[SYSTEM: The student just joined to practice ${lang.name}. They know basic words.${charIntro ? ` Greet them${charIntro}` : ` Greet them with a simple sentence in ${lang.name}, then add a friendly line in ${nativeLangName}.`} Ask a simple question they can answer with basic vocabulary.]`
-      : `[SYSTEM: The student just joined to practice ${lang.name}.${charIntro ? ` Greet them${charIntro}` : ''} Greet them warmly in ${lang.name} and ask a simple opening question to start the conversation. Keep it to 1-2 sentences.]`
+    const hasStudyWords = study_words && study_words.length > 0
+    let greetingInstruction: string
+    if (level === 'zero') {
+      if (hasStudyWords) {
+        const w = study_words![Math.floor(Math.random() * study_words!.length)]
+        greetingInstruction = `[SYSTEM: This is the start of a new conversation. Greet the student warmly in ${nativeLangName} (their native language).${charIntro ? charIntro : ''} Then introduce the ${lang.name} word "${w.word}" (which means "${w.translation}"). Explain it simply, give a short example, and ask them to try saying it. Keep it to 2-3 sentences. Stay in character.]`
+      } else {
+        greetingInstruction = `[SYSTEM: This is the start of a new conversation. Greet the student warmly in ${nativeLangName} (their native language).${charIntro ? charIntro : ''} Then pick ONE simple ${lang.name} word to teach — VARY your choice each time, do NOT always pick "hello". Good options: a greeting, a polite word (please, thank you, sorry), a feeling (happy, tired, hungry), a common object, a number, a color. Explain it simply and ask them to try saying it. Keep it to 2-3 sentences. Stay in character.]`
+      }
+    } else if (level === 'beginner') {
+      greetingInstruction = `[SYSTEM: This is the start of a new conversation. Greet them with a simple sentence in ${lang.name}${charIntro ? charIntro : ''}, and follow up in ${nativeLangName} if needed. Ask a simple opening question. VARY your opener — do not always start the same way. Keep it to 2-3 sentences. Stay in character.]`
+    } else {
+      greetingInstruction = `[SYSTEM: This is the start of a new conversation.${charIntro ? charIntro : ''} Greet them warmly in ${lang.name} and ask a simple opening question. VARY your opener — sometimes ask about their day, sometimes share something interesting, sometimes pose a fun question. Keep it to 1-2 sentences. Stay in character.]`
+    }
     messages.push({ role: 'user', content: greetingInstruction })
   }
 

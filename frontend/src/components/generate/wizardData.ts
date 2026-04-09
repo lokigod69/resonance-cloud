@@ -142,6 +142,7 @@ export const GENRES = [
   { value: 'folk', label: 'Folk' },
   { value: 'r&b', label: 'R&B' },
   { value: 'reggae', label: 'Reggae' },
+  { value: 'custom', label: 'Custom' },
 ] as const
 
 export const MAX_WORDS = 10
