@@ -1,4 +1,5 @@
 // src/hooks/useTranslation.ts
+import { useMemo } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { createT, LANGUAGE_TO_LOCALE, type Locale } from '@/lib/translations';
 
@@ -16,19 +17,21 @@ import { createT, LANGUAGE_TO_LOCALE, type Locale } from '@/lib/translations';
 export function useTranslation() {
   const { profile } = useAuth();
   const locale: Locale = LANGUAGE_TO_LOCALE[profile?.base_language ?? ''] ?? 'en';
-  const t = createT(locale);
 
-  /**
-   * Pluralization helper.
-   * tp('dashboard.deckCount', count) resolves to:
-   *   count === 1 → 'dashboard.deckCount.one'
-   *   count !== 1 → 'dashboard.deckCount.other'
-   * Additional vars can be passed as a third argument.
-   */
-  const tp = (keyBase: string, count: number, vars?: Record<string, string | number>): string => {
-    const pluralKey = count === 1 ? `${keyBase}.one` : `${keyBase}.other`;
-    return t(pluralKey, { count, ...vars });
-  };
+  // Memoize t and tp so their identities are stable across renders for a given
+  // locale. Without this, every render produces a new t, which cascades through
+  // any useCallback/useEffect that depends on t and causes infinite re-render
+  // loops (see Dashboard.tsx loadDecks flicker bug).
+  const t = useMemo(() => createT(locale), [locale]);
+
+  const tp = useMemo(
+    () =>
+      (keyBase: string, count: number, vars?: Record<string, string | number>): string => {
+        const pluralKey = count === 1 ? `${keyBase}.one` : `${keyBase}.other`;
+        return t(pluralKey, { count, ...vars });
+      },
+    [t]
+  );
 
   return { t, tp, locale };
 }
