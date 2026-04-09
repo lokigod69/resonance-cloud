@@ -694,7 +694,23 @@ function StepMusic({
   onContinue: () => void
 }) {
   const { t } = useTranslation()
+  const PRESET_GENRE_VALUES = GENRES
+    .filter((g) => g.value !== 'custom' && g.value !== 'auto')
+    .map((g) => g.value) as string[]
+  const isCustomGenre = (genre: string | null): boolean =>
+    genre !== null && genre !== 'auto' && !PRESET_GENRE_VALUES.includes(genre)
+
+  const [customText, setCustomText] = useState(isCustomGenre(selected) ? (selected as string) : '')
+  const [showCustomInput, setShowCustomInput] = useState(isCustomGenre(selected))
+
   const effectiveGenre = selected || 'auto'
+
+  function confirmCustom() {
+    const trimmed = customText.trim().toLowerCase()
+    if (!trimmed || trimmed === 'auto' || trimmed === 'custom') return
+    dispatch({ type: 'SET_GENRE', genre: trimmed })
+    setShowCustomInput(false)
+  }
 
   return (
     <div className="text-center">
@@ -703,14 +719,24 @@ function StepMusic({
 
       <div className="flex flex-wrap gap-3 justify-center max-w-lg mx-auto mb-10 px-4">
         {GENRES.map((genre, i) => {
-          const isSelected = effectiveGenre === genre.value
+          const isCustomChip = genre.value === 'custom'
+          const isSelected = isCustomChip
+            ? showCustomInput || isCustomGenre(selected)
+            : effectiveGenre === genre.value
           return (
             <motion.button
               key={genre.value}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.04, type: 'spring', stiffness: 300, damping: 25 }}
-              onClick={() => dispatch({ type: 'SET_GENRE', genre: genre.value })}
+              onClick={() => {
+                if (isCustomChip) {
+                  setShowCustomInput(true)
+                } else {
+                  setShowCustomInput(false)
+                  dispatch({ type: 'SET_GENRE', genre: genre.value })
+                }
+              }}
               className={`px-5 py-2.5 rounded-full text-sm font-display font-medium transition-all border ${
                 isSelected
                   ? 'text-[var(--pg-accent-green)] shadow-[0_0_15px_rgba(52,211,153,0.2)]'
@@ -722,10 +748,56 @@ function StepMusic({
               }}
             >
               {genre.label}
+              {isCustomChip && isCustomGenre(selected) && !showCustomInput && (
+                <span className="block text-xs text-[var(--pg-accent-green)]/80 mt-0.5">{selected}</span>
+              )}
             </motion.button>
           )
         })}
       </div>
+
+      <AnimatePresence>
+        {showCustomInput && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            className="mx-auto mb-10 w-full max-w-md space-y-3 overflow-hidden px-4"
+          >
+            <input
+              type="text"
+              value={customText}
+              onChange={(e) => setCustomText(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && customText.trim()) confirmCustom()
+              }}
+              placeholder="e.g. melodic techno, bossa nova..."
+              maxLength={40}
+              aria-label="Custom genre"
+              autoFocus
+              className="w-full rounded-xl px-4 py-3 text-sm text-white/90 placeholder:text-white/30
+                bg-white/[0.04] backdrop-blur-md border border-white/[0.08]
+                outline-none transition-all duration-200
+                focus:border-[var(--pg-accent-green)]/60 focus:bg-white/[0.06]"
+            />
+            {isCustomGenre(selected) && selected !== customText.trim().toLowerCase() && (
+              <div className="text-xs text-[var(--pg-accent-green)]/80 text-center">Current: {selected}</div>
+            )}
+            <div className="flex justify-center">
+              <button
+                type="button"
+                onClick={confirmCustom}
+                disabled={!customText.trim()}
+                className="px-6 py-2.5 rounded-full text-sm font-display font-semibold border text-[var(--pg-accent-green)] border-[var(--pg-accent-green)]/50 bg-[var(--pg-accent-green)]/10 hover:bg-[var(--pg-accent-green)]/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+              >
+                <span className="sr-only">Confirm genre</span>
+                <span aria-hidden="true">✓</span>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <button
         onClick={onContinue}

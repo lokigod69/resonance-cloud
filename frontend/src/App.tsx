@@ -15,6 +15,8 @@ import DeckView from '@/pages/DeckView'
 import VideoPlayer from '@/pages/VideoPlayer'
 import Study from '@/pages/Study'
 import DashboardPG from '@/pages/DashboardPG'
+import Decks from '@/pages/Decks'
+import DecksPG from '@/pages/DecksPG'
 
 import DeckViewPG from '@/pages/DeckViewPG'
 import StudyPG from '@/pages/StudyPG'
@@ -123,6 +125,7 @@ function AppRoutes() {
         {skin === 'glassy' ? (
           <Route element={<PolishGlassLayout />}>
             <Route path="/dashboard" element={<DashboardPG />} />
+            <Route path="/decks" element={<DecksPG />} />
             <Route path="/generate" element={<GenerateGO />} />
             <Route path="/deck/:id" element={<DeckViewPG />} />
             <Route path="/study" element={<StudyPG />} />
@@ -132,6 +135,7 @@ function AppRoutes() {
         ) : (
           <Route element={<AppLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/decks" element={<Decks />} />
             <Route path="/generate" element={<Generate />} />
             <Route path="/deck/:id" element={<DeckView />} />
             <Route path="/study" element={<Study />} />

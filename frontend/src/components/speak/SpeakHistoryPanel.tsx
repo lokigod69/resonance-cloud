@@ -17,6 +17,10 @@ interface Conversation {
   started_at: string
   ended_at: string | null
   corrections: Correction[] | null
+  mode?: string | null
+  scenario_id?: string | null
+  npc_name?: string | null
+  context_variant?: string | null
 }
 
 interface Correction {
@@ -201,22 +205,28 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
           )}
 
           <div className="flex-1 min-w-0">
-            {selectedConversation ? (
-              <div className="flex items-center gap-2">
-                <FlagIcon code={selectedConversation.language} className="w-6 h-auto" />
-                <div className="min-w-0">
-                  <p className="text-sm font-medium text-white truncate">
-                    {LANGUAGE_NAMES[selectedConversation.language] ?? selectedConversation.language}
-                    {(() => {
-                      const cName = selectedConversation.character_id ? getCharacterById(selectedConversation.character_id)?.name : null
-                      const dName = cName || selectedConversation.voice_name
-                      return dName ? <span className="text-gray-400 font-normal"> · {dName}</span> : null
-                    })()}
-                  </p>
-                  <p className="text-xs text-gray-500">{formatDate(selectedConversation.started_at)}</p>
+            {selectedConversation ? (() => {
+              const isRoleplay = selectedConversation.mode === 'roleplay'
+              const cName = selectedConversation.character_id ? getCharacterById(selectedConversation.character_id)?.name : null
+              const transcriptTitle = isRoleplay
+                ? (selectedConversation.title ?? 'Roleplay')
+                : (LANGUAGE_NAMES[selectedConversation.language] ?? selectedConversation.language)
+              const transcriptSub = isRoleplay
+                ? selectedConversation.npc_name
+                : (cName || selectedConversation.voice_name)
+              return (
+                <div className="flex items-center gap-2">
+                  <FlagIcon code={selectedConversation.language} className="w-6 h-auto" />
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-white truncate">
+                      {transcriptTitle}
+                      {transcriptSub ? <span className="text-gray-400 font-normal"> · {transcriptSub}</span> : null}
+                    </p>
+                    <p className="text-xs text-gray-500">{formatDate(selectedConversation.started_at)}</p>
+                  </div>
                 </div>
-              </div>
-            ) : (
+              )
+            })() : (
               <p className="text-sm font-semibold text-white">Conversation History</p>
             )}
           </div>
@@ -255,9 +265,13 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
               {!loading && conversations.length > 0 && (
                 <div className="space-y-2">
                   {conversations.map((conv) => {
+                    const isRoleplay = conv.mode === 'roleplay'
                     const levelEmoji = conv.level ? LEVEL_EMOJI[conv.level] : null
                     const charName = conv.character_id ? getCharacterById(conv.character_id)?.name : null
-                    const displayName = charName || conv.voice_name
+                    const displayName = isRoleplay ? conv.npc_name : (charName || conv.voice_name)
+                    const displayTitle = isRoleplay
+                      ? (conv.title || 'Roleplay')
+                      : (LANGUAGE_NAMES[conv.language] ?? conv.language)
                     return (
                       <div
                         key={conv.id}
@@ -271,16 +285,20 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5 mb-0.5">
+                            {isRoleplay && <span className="text-sm">🎭</span>}
                             <span className="text-sm font-medium text-white truncate">
-                              {LANGUAGE_NAMES[conv.language] ?? conv.language}
+                              {displayTitle}
                             </span>
                             {displayName && (
                               <span className="text-xs text-gray-400 truncate">· {displayName}</span>
                             )}
                             {levelEmoji && <span className="text-sm">{levelEmoji}</span>}
                           </div>
-                          {conv.title && (
+                          {!isRoleplay && conv.title && (
                             <p className="text-xs text-gray-400 truncate">{conv.title}</p>
+                          )}
+                          {isRoleplay && (
+                            <p className="text-xs text-gray-500 truncate">{LANGUAGE_NAMES[conv.language] ?? conv.language}</p>
                           )}
                         </div>
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Coins, User, Shield, LayoutDashboard, Sparkles, BookOpen, Music, Mic } from 'lucide-react'
+import { Menu, X, Coins, User, Shield, LayoutDashboard, Library, Sparkles, BookOpen, Music, Mic } from 'lucide-react'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import ProfileModal from '@/components/ProfileModal'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -23,7 +23,8 @@ export default function PolishGlassLayout() {
   const isAdmin = profile?.role === 'admin'
 
   const navItems = [
-    { label: t('nav.decks'), path: '/dashboard', icon: LayoutDashboard },
+    { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
+    { label: t('nav.decks'), path: '/decks', icon: Library },
     { label: t('nav.generate'), path: '/generate', icon: Sparkles },
     { label: t('nav.study'), path: '/study', icon: BookOpen },
     { label: t('nav.music'), path: '/music', icon: Music },

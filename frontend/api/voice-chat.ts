@@ -22,6 +22,8 @@ interface RequestBody {
   character_identity?: string
   character_directive?: string
   study_words?: Array<{ word: string; translation: string }>
+  mode?: 'corrections' | 'roleplay'
+  scenarioPrompt?: string
 }
 
 interface CharacterPayload {
@@ -145,13 +147,28 @@ ${list}
 Find natural moments to use these words in conversation. Don't list them or quiz the student directly — weave them into what you're already talking about. Use 2-3 per exchange, not all at once.`
 }
 
-function buildSystemPrompt(languageCode: string, level: string, nativeLang: string, character?: CharacterPayload, studyWords?: Array<{ word: string; translation: string }>): string {
+function buildSystemPrompt(languageCode: string, level: string, nativeLang: string, character?: CharacterPayload, studyWords?: Array<{ word: string; translation: string }>, scenarioPrompt?: string): string {
   const lang = LANGUAGE_CONFIG[languageCode]
   if (!lang) throw new Error(`Unsupported language: ${languageCode}`)
 
   const nativeLangName = LANGUAGE_CONFIG[nativeLang]?.name || NATIVE_LANGUAGE_NAMES[nativeLang] || 'English'
   const levelInstructions = getLevelInstructions(lang.name, nativeLangName, level)
   const studyAddendum = buildStudyAddendum(studyWords)
+
+  // ── Roleplay mode: NPC scenario, no tutor persona ──
+  if (scenarioPrompt) {
+    return `${scenarioPrompt}
+
+${levelInstructions}
+
+GENERAL RULES:
+- Keep responses to 1–3 sentences. This is a spoken conversation.
+- Never break character to correct grammar mid-scene. Stay in the scenario.
+- If the user speaks in the wrong language, respond only in ${lang.name} as your character would — as if you did not understand.
+- Do not say "let's practice" or refer to language learning. You are not a tutor in this mode.
+- One question or prompt per turn to keep the conversation moving.
+- Natural fillers and reactions are welcome. No stage directions.`
+  }
 
   const generalRules = `GENERAL RULES:
 - Keep responses SHORT: 1-3 sentences maximum. This is spoken conversation, not a lecture.
@@ -422,7 +439,7 @@ If no errors: {"corrections": []}`
 }
 
 export async function POST(req: Request): Promise<Response> {
-  let body: RequestBody & { mode?: string; transcript?: Array<{ role: string; content: string }> }
+  let body: RequestBody & { mode?: string; transcript?: Array<{ role: string; content: string }>; message?: string }
   try {
     body = await req.json()
   } catch {
@@ -436,7 +453,9 @@ export async function POST(req: Request): Promise<Response> {
     return handleCorrections(body)
   }
 
-  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words } = body
+  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words, scenarioPrompt } = body
+  const isRoleplay = body.mode === 'roleplay' && !!scenarioPrompt
+  const roleplayText = typeof body.message === 'string' ? body.message : null
 
   const character: CharacterPayload | undefined = character_name && character_tier && character_directive
     ? { name: character_name, tier: character_tier, identity: character_identity, directive: character_directive }
@@ -462,7 +481,17 @@ export async function POST(req: Request): Promise<Response> {
 
   let user_text = ''
 
-  if (audio_base64) {
+  // Roleplay text path: client may send text (including the __ROLEPLAY_OPEN__ sentinel)
+  // instead of audio. Skip STT entirely in that case. Always self-contained:
+  // if message is absent, default to the scene-open instruction so the roleplay
+  // branch never falls through to the freeform greeting path.
+  if (isRoleplay && !audio_base64) {
+    if (!roleplayText || roleplayText === '__ROLEPLAY_OPEN__') {
+      user_text = '[Begin the scene. Deliver your opening line now. Do not wait for the user.]'
+    } else {
+      user_text = roleplayText
+    }
+  } else if (audio_base64) {
     const resolvedMime = mime_type || 'audio/webm'
     const extension = resolvedMime.includes('mp4') ? 'mp4' : 'webm'
     const audioBuffer = Buffer.from(audio_base64, 'base64')
@@ -493,7 +522,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   // ── Step 2: Build LLM messages ─────────────────────────────────────────────
-  const systemPrompt = buildSystemPrompt(language, level, native_language, character, study_words)
+  const systemPrompt = buildSystemPrompt(language, level, native_language, character, study_words, isRoleplay ? scenarioPrompt : undefined)
   const lang = LANGUAGE_CONFIG[language]
 
   const cleanHistory = history.slice(-20).map(({ role, content }) => ({ role, content }))

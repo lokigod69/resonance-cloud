@@ -209,6 +209,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.thinking': 'Thinking…',
     'speak.speaking': 'Speaking…',
     'speak.tapRetry': 'Tap to try again',
+    'speak.roleplayTab': 'Roleplay',
+    'speak.freeformTab': 'Freeform',
+    'speak.chooseCategory': 'Choose a scenario',
+    'speak.surpriseMe': 'Surprise me',
+    'speak.startScenario': 'Start',
+    'speak.scenarioActive': 'Scenario active',
 
     // ── VerbCycler ──
     'verb.composing': 'Composing',
@@ -491,6 +497,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.thinking': 'Denkt nach…',
     'speak.speaking': 'Spricht…',
     'speak.tapRetry': 'Tippen zum erneuten Versuch',
+    'speak.roleplayTab': 'Rollenspiel',
+    'speak.freeformTab': 'Freies Gespräch',
+    'speak.chooseCategory': 'Szenario wählen',
+    'speak.surpriseMe': 'Überrasch mich',
+    'speak.startScenario': 'Starten',
+    'speak.scenarioActive': 'Szenario aktiv',
 
     // ── VerbCycler ──
     'verb.composing': 'Komponiert',
@@ -773,6 +785,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.thinking': 'Réflexion…',
     'speak.speaking': 'Parle…',
     'speak.tapRetry': 'Appuie pour réessayer',
+    'speak.roleplayTab': 'Jeu de rôle',
+    'speak.freeformTab': 'Conversation libre',
+    'speak.chooseCategory': 'Choisir un scénario',
+    'speak.surpriseMe': 'Surprends-moi',
+    'speak.startScenario': 'Commencer',
+    'speak.scenarioActive': 'Scénario actif',
 
     // ── VerbCycler ──
     'verb.composing': 'Compose',

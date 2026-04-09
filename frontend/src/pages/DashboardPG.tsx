@@ -1,26 +1,16 @@
-// TODO: DashboardPG does not yet have language tabs, word library, or stats bar.
-// These features are currently Classic-skin only. Glassy skin update is planned.
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
-import type { PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
-import { FlagIcon } from '@/components/ui/FlagIcon'
-import {
-  Coins,
-  Sparkles,
-  Plus,
-  AlertCircle,
-  RefreshCw,
-  LogIn,
-  Layers,
-  Grid3X3,
-  Circle,
-} from 'lucide-react'
+import { AlertCircle, RefreshCw, LogIn } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
+import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDetailModal'
+import WordLibrary from '@/components/dashboard/WordLibrary'
+import { QUOTES } from '@/data/quotes'
+import { getLanguageName } from '@/lib/languageNames'
 
 type Deck = {
   id: string
@@ -29,30 +19,23 @@ type Deck = {
   word_count: number
   status: string
   created_at: string
-  _key?: string // React key for stack cycling — id stays as original
 }
-
-type WordStatus = {
-  deck_id: string
-  status: string
-}
-
-type ViewMode = 'stack' | 'grid' | 'orbs'
-
 
 export default function DashboardPG() {
   const { profile, user, authError } = useAuth()
+  const { activeLanguage, setActiveLanguage } = useLanguage()
   const navigate = useNavigate()
   const location = useLocation()
 
   const [decks, setDecks] = useState<Deck[]>([])
-  const { t, tp } = useTranslation()
+  const { t } = useTranslation()
 
-  const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
-  const [deckThumbnails, setDeckThumbnails] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(true)
   const [dashboardError, setDashboardError] = useState<string | null>(null)
-  const [viewMode, setViewMode] = useState<ViewMode>('stack')
+
+  const [libraryWords, setLibraryWords] = useState<LibraryWord[]>([])
+  const [libraryLoading, setLibraryLoading] = useState(false)
+  const [selectedWord, setSelectedWord] = useState<LibraryWord | null>(null)
 
   const loadDecks = useCallback(async (userId: string) => {
     try {
@@ -65,62 +48,19 @@ export default function DashboardPG() {
         .order('created_at', { ascending: false })
 
       if (decksError) {
-        console.error('[Dashboard] Failed to load decks:', decksError)
         setDashboardError(t('deckview.failedToLoad'))
         return
       }
 
       if (decksData) {
         setDecks(decksData)
-
-        const deckIds = decksData.map((d) => d.id)
-        if (deckIds.length > 0) {
-          const { data: words, error: wordsError } = await supabase
-            .from('words')
-            .select('deck_id, status')
-            .in('deck_id', deckIds)
-
-          if (wordsError) {
-            console.error('[Dashboard] Failed to load word statuses:', wordsError)
-          }
-
-          if (words) {
-            const counts: Record<string, { completed: number; total: number }> = {}
-            for (const w of words as WordStatus[]) {
-              if (!counts[w.deck_id]) counts[w.deck_id] = { completed: 0, total: 0 }
-              counts[w.deck_id].total++
-              if (w.status === 'complete') counts[w.deck_id].completed++
-            }
-            setWordCounts(counts)
-          }
-
-          // Fetch first complete word thumbnail per deck
-          const { data: thumbWords } = await supabase
-            .from('words')
-            .select('deck_id, thumbnail_url')
-            .in('deck_id', deckIds)
-            .eq('status', 'complete')
-            .not('thumbnail_url', 'is', null)
-            .order('created_at', { ascending: true })
-
-          if (thumbWords) {
-            const thumbs: Record<string, string> = {}
-            for (const w of thumbWords as { deck_id: string; thumbnail_url: string }[]) {
-              if (!thumbs[w.deck_id]) {
-                thumbs[w.deck_id] = w.thumbnail_url
-              }
-            }
-            setDeckThumbnails(thumbs)
-          }
-        }
       }
-    } catch (err) {
-      console.error('[Dashboard] Unexpected error:', err)
+    } catch {
       setDashboardError(t('common.somethingWentWrong'))
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [t])
 
   useEffect(() => {
     if (!user) {
@@ -130,7 +70,67 @@ export default function DashboardPG() {
     loadDecks(user.id)
   }, [user?.id, location.key, loadDecks])
 
-  // Auth-level error states (same logic as original Dashboard)
+  const availableLanguages = useMemo(() => {
+    return Array.from(new Set(decks.map((d) => d.target_language))).filter(Boolean)
+  }, [decks])
+
+  useEffect(() => {
+    if (availableLanguages.length === 0) {
+      if (activeLanguage) setActiveLanguage(null)
+      return
+    }
+    if (!activeLanguage || !availableLanguages.includes(activeLanguage)) {
+      setActiveLanguage(availableLanguages[0])
+    }
+  }, [availableLanguages, activeLanguage, setActiveLanguage])
+
+  useEffect(() => {
+    if (!user || !activeLanguage) {
+      setLibraryWords([])
+      return
+    }
+    let cancelled = false
+    const load = async () => {
+      setLibraryLoading(true)
+      try {
+        const { data: deckRows } = await supabase
+          .from('decks')
+          .select('id')
+          .eq('user_id', user.id)
+          .eq('target_language', activeLanguage)
+        const deckIds = (deckRows ?? []).map((d) => d.id)
+        if (deckIds.length === 0) {
+          if (!cancelled) setLibraryWords([])
+          return
+        }
+        const { data: wordRows } = await supabase
+          .from('words')
+          .select(
+            'id, word, word_slug, translation, mnemonic, etymology, pos, article, video_url, thumbnail_url, metadata, deck_id, created_at'
+          )
+          .eq('status', 'complete')
+          .in('deck_id', deckIds)
+          .order('created_at', { ascending: false })
+        if (!cancelled) setLibraryWords((wordRows ?? []) as LibraryWord[])
+      } finally {
+        if (!cancelled) setLibraryLoading(false)
+      }
+    }
+    load()
+    return () => {
+      cancelled = true
+    }
+  }, [user?.id, activeLanguage, location.key])
+
+  const totalWords = decks.reduce((sum, d) => sum + (d.word_count ?? 0), 0)
+  const level = Math.floor(totalWords / 10) + 1
+
+  const quote = useMemo(() => QUOTES[Math.floor(Math.random() * QUOTES.length)], [])
+
+  const handleWatchVideo = (word: LibraryWord) => {
+    navigate(`/deck/${word.deck_id}/word/${word.id}`)
+  }
+
   if (authError && !user) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 px-6">
@@ -187,416 +187,139 @@ export default function DashboardPG() {
     )
   }
 
-  if (decks.length === 0) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6">
-        <div className="w-20 h-20 rounded-full bg-[var(--pg-accent-teal)]/10 flex items-center justify-center border border-[var(--pg-accent-teal)]/30">
-          <Sparkles className="h-10 w-10 text-[var(--pg-accent-teal)]" />
-        </div>
-        <div className="text-center">
-          <h2 className="text-2xl font-bold font-display mb-2">{t('dashboard.createFirst')}</h2>
-          <p className="text-[var(--pg-text-dim)] max-w-sm">
-            {t('dashboard.createFirstBody')}
-          </p>
-        </div>
-        <button
-          onClick={() => navigate('/generate')}
-          className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all shadow-[0_0_20px_rgba(13,226,195,0.2)]"
-        >
-          <Sparkles className="h-4 w-4 inline mr-2" />
-          {t('dashboard.generate')}
-        </button>
-      </div>
-    )
-  }
+  const showEmptyState = decks.length === 0 && libraryWords.length === 0
 
   return (
-    <div className="px-6 max-w-6xl mx-auto">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="min-w-0">
-          <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate">
-            {profile?.display_name
-              ? t('dashboard.welcomeUser', { name: profile.display_name })
-              : t('dashboard.welcome')}
-          </h1>
-          <p className="text-[var(--pg-text-dim)] mt-1 text-sm">
-            {tp('dashboard.deckCount', decks.length)} &middot;{' '}
-            <span className="inline-flex items-center gap-1">
-              <Coins className="h-3 w-3" /> {t('dashboard.credits', { count: profile?.credits ?? 0 })}
-            </span>
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          {/* View mode toggle */}
-          <div className="flex gap-1 pg-glass rounded-lg p-1">
-            {([
-              { mode: 'stack' as ViewMode, icon: Layers, label: t('dashboard.viewStack') },
-              { mode: 'grid' as ViewMode, icon: Grid3X3, label: t('dashboard.viewGrid') },
-              { mode: 'orbs' as ViewMode, icon: Circle, label: t('dashboard.viewOrbs') },
-            ]).map(({ mode, icon: Icon, label }) => (
-              <button
-                key={mode}
-                onClick={() => setViewMode(mode)}
-                className={`p-2 rounded-md transition-all ${
-                  viewMode === mode
-                    ? 'bg-white/10 text-white'
-                    : 'text-[var(--pg-text-dim)] hover:text-white'
-                }`}
-                title={label}
-              >
-                <Icon className="h-4 w-4" />
-              </button>
-            ))}
+    <div className="w-full max-w-full overflow-x-hidden">
+      <div className="px-4 sm:px-6 max-w-4xl mx-auto">
+        {/* Welcome */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="min-w-0">
+            <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate text-white">
+              {profile?.display_name
+                ? t('dashboard.welcomeUser', { name: profile.display_name })
+                : t('dashboard.welcome')}
+            </h1>
+            <p className="text-white/50 mt-1 text-sm">
+              {t('dashboard.credits', { count: profile?.credits ?? 0 })}
+            </p>
           </div>
-          <button
-            onClick={() => navigate('/generate')}
-            className="p-2.5 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] hover:bg-[var(--pg-accent-teal)]/30 transition-all"
-            title={t('dashboard.newDeck')}
-          >
-            <Plus className="h-5 w-5" />
-          </button>
         </div>
-      </div>
 
-      {/* View modes */}
-      <AnimatePresence mode="wait">
-        {viewMode === 'stack' && (
-          <motion.div key="stack" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <StackView
-              decks={decks}
-              wordCounts={wordCounts}
-              thumbnails={deckThumbnails}
-              onSelect={(id) => navigate(`/deck/${id}`)}
-            />
-          </motion.div>
-        )}
-        {viewMode === 'grid' && (
-          <motion.div key="grid" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <GridView
-              decks={decks}
-              wordCounts={wordCounts}
-              thumbnails={deckThumbnails}
-              onSelect={(id) => navigate(`/deck/${id}`)}
-            />
-          </motion.div>
-        )}
-        {viewMode === 'orbs' && (
-          <motion.div key="orbs" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <OrbsView
-              decks={decks}
-              wordCounts={wordCounts}
-              thumbnails={deckThumbnails}
-              onSelect={(id) => navigate(`/deck/${id}`)}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  )
-}
+        {!showEmptyState && (
+          <>
+            {/* Stats row */}
+            <div className="grid grid-cols-3 gap-3 mb-6">
+              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 text-center">
+                <div className="text-3xl font-bold text-white">{totalWords}</div>
+                <div className="text-xs text-white/50 mt-1">words</div>
+              </div>
+              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 text-center">
+                <div className="text-3xl font-bold text-white">{decks.length}</div>
+                <div className="text-xs text-white/50 mt-1">decks</div>
+              </div>
+              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 text-center">
+                <div className="text-3xl font-bold text-white">L{level}</div>
+                <div className="text-xs text-white/50 mt-1">level</div>
+              </div>
+            </div>
 
-/* ─── Shared props ───────────────────────────────── */
-
-interface ViewProps {
-  decks: Deck[]
-  wordCounts: Record<string, { completed: number; total: number }>
-  thumbnails: Record<string, string>
-  onSelect: (id: string) => void
-}
-
-function getDeckMeta(deck: Deck, wordCounts: ViewProps['wordCounts'], locale?: string) {
-  const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
-  const progress = counts.total > 0 ? Math.round((counts.completed / counts.total) * 100) : 0
-  const dateLocale = locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US'
-  const displayName =
-    deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(dateLocale)}`
-  return { counts, progress, displayName }
-}
-
-/* ─── Stack View ─────────────────────────────────── */
-
-function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
-  const [cards, setCards] = useState(decks)
-  const topDragX = useMotionValue(0)
-
-  // Sync cards with decks when decks change (e.g. after generation)
-  useEffect(() => {
-    setCards(decks)
-  }, [decks])
-
-  const handleSwipe = useCallback(() => {
-    topDragX.set(0)
-    setCards((prev) => {
-      const next = [...prev]
-      const topCard = next.shift()
-      if (topCard) next.push({ ...topCard, _key: topCard.id + '-' + Date.now() })
-      return next
-    })
-  }, [topDragX])
-
-  return (
-    <div className="flex flex-col items-center">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        className="relative w-full max-w-[400px] h-[480px] sm:h-[550px]"
-      >
-        <AnimatePresence>
-          {cards.map((deck, i) => {
-            if (i > 3) return null
-            const isTop = i === 0
-            return (
-              <StackCard
-                key={deck._key || deck.id}
-                deck={deck}
-                index={i}
-                isTop={isTop}
-                topDragX={topDragX}
-                onSwipe={handleSwipe}
-                onClick={() => onSelect(deck.id)}
-                wordCounts={wordCounts}
-                thumbnails={thumbnails}
-              />
-            )
-          })}
-        </AnimatePresence>
-      </motion.div>
-      {/* Dots indicator */}
-      <div className="flex gap-2 mt-6">
-        {cards.slice(0, decks.length).map((deck, i) => (
-          <div
-            key={deck._key || deck.id}
-            className={`h-2 rounded-full transition-all ${
-              i === 0 ? 'bg-[var(--pg-accent-teal)] w-6' : 'bg-white/20 w-2'
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-/* ─── Stack Card ─────────────────────────────────── */
-
-interface StackCardProps {
-  deck: Deck
-  index: number
-  isTop: boolean
-  topDragX: ReturnType<typeof useMotionValue<number>>
-  onSwipe: () => void
-  onClick: () => void
-  wordCounts: ViewProps['wordCounts']
-  thumbnails: ViewProps['thumbnails']
-}
-
-function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts, thumbnails }: StackCardProps) {
-  const x = useMotionValue(0)
-  const { tp, locale } = useTranslation()
-  const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
-  const thumb = thumbnails[deck.id]
-
-  useEffect(() => {
-    if (isTop) {
-      const unsub = x.on('change', (v) => topDragX.set(v))
-      return unsub
-    }
-  }, [isTop, x, topDragX])
-
-  const rotate = useTransform(
-    [x, topDragX],
-    (latest: number[]) => {
-      const [localX, parentDragX] = latest
-      if (isTop) return (localX / 300) * 15
-      if (index === 1) return (parentDragX / 300) * -8
-      return 0
-    }
-  )
-
-  const [isDragging, setIsDragging] = useState(false)
-
-  const handleDragEnd = (_event: unknown, info: PanInfo) => {
-    setTimeout(() => setIsDragging(false), 50)
-    if (Math.abs(info.offset.x) > 100) {
-      onSwipe()
-    }
-  }
-
-  return (
-    <motion.div
-      layout
-      drag={isTop ? 'x' : false}
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.9}
-      onDragStart={() => setIsDragging(true)}
-      onDragEnd={handleDragEnd}
-      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-      animate={{
-        opacity: 1,
-        y: index * 20,
-        scale: 1 - index * 0.05,
-        zIndex: 10 - index,
-      }}
-      exit={{ opacity: 0, scale: 0.8 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      className={`absolute inset-0 bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden cursor-pointer active:cursor-grabbing flex flex-col group shadow-[0_30px_60px_rgba(0,0,0,0.6)] ${!isTop ? 'pointer-events-none' : ''}`}
-      style={{ x, rotate, touchAction: 'none', transformOrigin: 'bottom center' }}
-      onClick={() => {
-        if (isTop && !isDragging) onClick()
-      }}
-    >
-      {/* Thumbnail - OPAQUE, full coverage */}
-      <div className="h-[55%] w-full relative overflow-hidden bg-black/80">
-        {thumb ? (
-          <motion.img
-            src={thumb}
-            alt={displayName}
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(13,226,195,0.1) 0%, #0d0d12 100%)' }}>
-            <Sparkles className="h-10 w-10 text-white/10" />
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d0d12]" />
-        {!isTop && <div className="absolute inset-0 bg-black/60 z-50 transition-all duration-300 pointer-events-none" />}
-      </div>
-
-      {/* Content - SOLID background */}
-      <div className="flex-1 p-6 flex flex-col justify-between">
-        <div>
-          <p className="text-[var(--pg-accent-teal)] text-xs font-medium tracking-wide uppercase mb-2 font-display">
-            <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {deck.target_language}
-          </p>
-          <h2 className="text-2xl font-light text-white font-display">{displayName}</h2>
-        </div>
-        <p className="text-[var(--pg-text-dim)] text-sm">{tp('dashboard.wordCount', counts.total)}</p>
-      </div>
-    </motion.div>
-  )
-}
-
-/* ─── Grid View ──────────────────────────────────── */
-
-function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
-  const { tp, locale } = useTranslation()
-  return (
-    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      {decks.map((deck, i) => {
-        const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
-        const thumb = thumbnails[deck.id]
-
-        return (
-          <motion.button
-            key={deck.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.05 }}
-            onClick={() => onSelect(deck.id)}
-            className="text-left pg-glass rounded-2xl overflow-hidden hover:shadow-[0_0_25px_rgba(13,226,195,0.15)] hover:border-[var(--pg-accent-teal)]/30 transition-all group"
-          >
-            {/* Thumbnail */}
-            <div className="aspect-[16/9] relative bg-white/5 overflow-hidden">
-              {thumb ? (
-                <img src={thumb} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              ) : (
-                <div className="w-full h-full bg-gradient-to-br from-[var(--pg-accent-teal)]/5 to-transparent flex items-center justify-center">
-                  <Sparkles className="h-8 w-8 text-white/10" />
+            {/* Sticky language tabs */}
+            {availableLanguages.length > 1 && (
+              <div className="sticky top-16 z-10 bg-background/80 backdrop-blur-sm py-2 -mx-4 px-4 mb-2">
+                <div className="flex gap-2 overflow-x-auto sm:justify-center sm:flex-wrap sm:overflow-visible scrollbar-none">
+                  {availableLanguages.map((lang) => {
+                    const isActive = lang === activeLanguage
+                    return (
+                      <button
+                        key={lang}
+                        onClick={() => setActiveLanguage(lang)}
+                        className={`flex-shrink-0 min-h-[44px] px-4 py-2 rounded-full text-sm border transition-all ${
+                          isActive
+                            ? 'bg-white/15 border-white/40 text-white'
+                            : 'border-white/10 text-white/40 hover:text-white/70 hover:border-white/25'
+                        }`}
+                      >
+                        {getLanguageName(lang)}
+                      </button>
+                    )
+                  })}
                 </div>
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            </div>
-            <div className="p-4">
-              <h3 className="font-semibold font-display text-sm mb-1 group-hover:text-[var(--pg-accent-teal)] transition-colors">
-                {displayName}
-              </h3>
-              <p className="text-xs text-[var(--pg-text-dim)]">
-                <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {deck.target_language} &middot; {tp('dashboard.wordCount', counts.total)}
-              </p>
-            </div>
-          </motion.button>
-        )
-      })}
-    </div>
-  )
-}
-
-/* ─── Orbs View ──────────────────────────────────── */
-
-function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
-  const orbs = useMemo(() => {
-    const placed: { x: number; y: number; r: number }[] = []
-    return decks.map((deck, i) => {
-      let x = 0, y = 0, size = 0, isValid = false
-      let attempts = 0
-      while (!isValid && attempts < 150) {
-        const maxRadius = typeof window !== 'undefined' ? Math.min(280, (window.innerWidth - 80) / 2) : 280
-        const radius = 60 + Math.random() * (maxRadius - 60)
-        const angle = (i / decks.length) * Math.PI * 2 + Math.random() * 0.8
-        x = Math.cos(angle) * radius
-        y = Math.sin(angle) * radius
-        size = 60 + Math.random() * 40
-        const r = size / 2
-        isValid = true
-        for (const p of placed) {
-          const dist = Math.sqrt(Math.pow(p.x - x, 2) + Math.pow(p.y - y, 2))
-          if (dist < p.r + r + 15) {
-            isValid = false
-            break
-          }
-        }
-        attempts++
-      }
-      placed.push({ x, y, r: size / 2 })
-      return { deck, x, y, size, index: i }
-    })
-  }, [decks])
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="w-full h-[600px] relative flex items-center justify-center"
-    >
-      {orbs.map((orb) => {
-        const { displayName } = getDeckMeta(orb.deck, wordCounts)
-        const thumb = thumbnails[orb.deck.id]
-
-        return (
-          <motion.div
-            key={orb.deck.id}
-            onClick={() => onSelect(orb.deck.id)}
-            className="absolute rounded-full overflow-hidden border border-white/10 cursor-pointer shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(13,226,195,0.4)] hover:border-[var(--pg-accent-teal)]/50 z-10 transition-colors"
-            style={{ width: orb.size, height: orb.size }}
-            initial={{ x: 0, y: 0, opacity: 0 }}
-            animate={{
-              x: [orb.x - 10, orb.x + 10, orb.x - 10],
-              y: [orb.y - 10, orb.y + 10, orb.y - 10],
-              opacity: 1,
-            }}
-            transition={{
-              x: { repeat: Infinity, duration: 4 + Math.random() * 4, ease: 'easeInOut' },
-              y: { repeat: Infinity, duration: 5 + Math.random() * 4, ease: 'easeInOut' },
-              opacity: { duration: 0.8, delay: orb.index * 0.05 },
-            }}
-            whileHover={{ scale: 1.1, zIndex: 50 }}
-          >
-            {thumb ? (
-              <img src={thumb} alt={displayName} className="w-full h-full object-cover" style={{ mixBlendMode: 'screen', opacity: 0.8 }} />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-[var(--pg-accent-teal)]/15 to-[var(--pg-accent-rose)]/10 flex items-center justify-center">
-                <FlagIcon code={orb.deck.target_language} className="w-8 h-auto" />
               </div>
             )}
-          </motion.div>
-        )
-      })}
-      {/* Radial vignette */}
-      <div className="absolute inset-0 pointer-events-none opacity-40" style={{ background: 'radial-gradient(circle at center, transparent 0%, #0a0a0c 90%)' }} />
-    </motion.div>
+
+            {/* Word count line */}
+            {activeLanguage && (
+              <p className="text-white/40 text-sm mb-4">
+                {libraryWords.length} words in {getLanguageName(activeLanguage)}
+              </p>
+            )}
+
+            {/* Word library */}
+            <div className="mb-4">
+              {libraryLoading ? (
+                <div className="flex justify-center py-8">
+                  <ParticleSpinner preset="rose" size={80} />
+                </div>
+              ) : (
+                <WordLibrary
+                  words={libraryWords}
+                  onWordClick={(w) => setSelectedWord(w)}
+                  emptyMessage={
+                    activeLanguage
+                      ? `No words yet in ${activeLanguage}. Generate some!`
+                      : 'No words yet.'
+                  }
+                />
+              )}
+            </div>
+
+            {/* Generate button */}
+            <button
+              onClick={() => navigate('/generate')}
+              className="mt-6 w-full rounded-2xl bg-white/10 border border-white/20 text-white py-4 font-semibold hover:bg-white/20 transition-colors"
+            >
+              ✦ Generate New Words
+            </button>
+          </>
+        )}
+
+        {showEmptyState && (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <div className="relative w-32 h-32 mb-8">
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="absolute inset-0 rounded-full border border-white/20 animate-ping"
+                  style={{ animationDelay: `${i * 0.6}s`, animationDuration: '2s' }}
+                />
+              ))}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-white/20" />
+              </div>
+            </div>
+            <p className="text-white/60 text-lg font-medium mb-2">Your vocabulary awaits</p>
+            <p className="text-white/30 text-sm mb-6">Generate your first words to begin</p>
+            <button
+              onClick={() => navigate('/generate')}
+              className="rounded-xl bg-white/10 border border-white/20 text-white px-6 py-3 hover:bg-white/20 transition-colors"
+            >
+              Generate First Words
+            </button>
+          </div>
+        )}
+
+        {/* Quote */}
+        <div className="mt-12 mb-8 text-center max-w-2xl mx-auto px-4">
+          <p className="text-white/30 text-sm italic">"{quote}"</p>
+        </div>
+      </div>
+
+      <WordDetailModal
+        word={selectedWord}
+        onClose={() => setSelectedWord(null)}
+        onWatchVideo={handleWatchVideo}
+      />
+    </div>
   )
 }

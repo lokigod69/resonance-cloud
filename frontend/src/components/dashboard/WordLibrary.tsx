@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import { Play } from 'lucide-react'
 import type { LibraryWord } from './WordDetailModal'
 
 type SortMode = 'recent' | 'az' | 'za'
@@ -84,27 +83,21 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
           {emptyMessage ?? 'No words to show.'}
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {visible.map((word) => (
             <button
               key={word.id}
               onClick={() => onWordClick(word)}
-              className="relative text-left p-3 min-h-[64px] rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition-all group overflow-hidden"
+              className="h-16 rounded-xl border border-border/50 bg-card hover:bg-accent/40 px-4 py-3 flex items-center justify-between gap-3 transition-colors cursor-pointer text-left"
             >
-              {word.video_url && (
-                <span
-                  className="absolute top-2 right-2 w-5 h-5 rounded-full bg-black/40 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity"
-                  aria-label="Has video"
-                >
-                  <Play size={10} className="text-white translate-x-[1px]" />
-                </span>
-              )}
-              <div className="text-sm font-medium text-white break-words pr-6 leading-tight">
+              <span className="font-semibold text-base flex-1 min-w-0 truncate">
                 {word.article ? `${word.article} ` : ''}
                 {word.word}
-              </div>
+              </span>
               {word.translation && (
-                <div className="text-xs text-white/55 truncate mt-1">{word.translation}</div>
+                <span className="text-sm text-muted-foreground flex-shrink-0 truncate max-w-[45%] text-right">
+                  {word.translation}
+                </span>
               )}
             </button>
           ))}

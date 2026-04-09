@@ -19,6 +19,7 @@ import {
   Coins,
   Menu,
   ListOrdered,
+  Library,
   Languages,
   Users,
   FileText,
@@ -48,7 +49,8 @@ export function AppHeader() {
   const [profileOpen, setProfileOpen] = useState(false)
 
   const mainNav = [
-    { to: '/dashboard', label: t('nav.decks'), icon: LayoutDashboard },
+    { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { to: '/decks', label: t('nav.decks'), icon: Library },
     { to: '/generate', label: t('nav.generate'), icon: Sparkles },
     { to: '/study', label: t('nav.study'), icon: BookOpen },
     { to: '/music', label: t('nav.music'), icon: Music },

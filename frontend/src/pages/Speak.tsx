@@ -4,6 +4,13 @@ import { useVoiceTutor } from '@/hooks/useVoiceTutor'
 import { useStudyWords } from '@/hooks/useStudyWords'
 import { CharacterGrid } from '@/components/speak/CharacterGrid'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
+import {
+  SCENARIO_CATEGORIES,
+  drawScenes,
+  type RoleplayScenario,
+  type ScenarioCategory,
+  ROLEPLAY_SCENARIOS,
+} from '@/data/roleplayScenarios'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useAuth } from '@/hooks/useAuth'
@@ -46,6 +53,10 @@ export default function Speak() {
   const bottomRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)
   const [historyOpen, setHistoryOpen] = useState(false)
+  const [speakMode, setSpeakMode] = useState<'freeform' | 'roleplay'>('freeform')
+  const [selectedCategory, setSelectedCategory] = useState<ScenarioCategory | null>(null)
+  const [drawnScenes, setDrawnScenes] = useState<RoleplayScenario[]>([])
+  const [pickedScene, setPickedScene] = useState<RoleplayScenario | null>(null)
   type Correction = { original: string; corrected: string; explanation: string }
   const [corrections, setCorrections] = useState<Correction[] | null>(null)
   const [correctionsLoading, setCorrectionsLoading] = useState(false)
@@ -54,6 +65,15 @@ export default function Speak() {
   useEffect(() => {
     setCorrections(null)
   }, [tutor.conversationId])
+
+  // Clear roleplay UI state when leaving language/category flow
+  useEffect(() => {
+    if (!tutor.language) {
+      setSelectedCategory(null)
+      setDrawnScenes([])
+      setPickedScene(null)
+    }
+  }, [tutor.language])
 
   const fetchCorrections = async () => {
     if (correctionsLoading || tutor.messages.length < 4) return
@@ -106,6 +126,29 @@ export default function Speak() {
 
         <div className="flex-1 flex items-start justify-center px-6 pt-6">
           <div className="w-full max-w-2xl">
+            <div className="flex gap-2 mb-6 justify-center">
+              <button
+                onClick={() => setSpeakMode('freeform')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  speakMode === 'freeform'
+                    ? 'bg-purple-600 text-white'
+                    : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/60'
+                }`}
+              >
+                {t('speak.freeformTab')}
+              </button>
+              <button
+                onClick={() => setSpeakMode('roleplay')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  speakMode === 'roleplay'
+                    ? 'bg-purple-600 text-white'
+                    : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/60'
+                }`}
+              >
+                🎭 {t('speak.roleplayTab')}
+              </button>
+            </div>
+
             {!tutor.isSupported && (
               <div className="mb-6 px-4 py-3 rounded-lg bg-yellow-900/30 border border-yellow-700/40 text-yellow-300 text-sm">
                 {t('speak.browserWarning')}
@@ -139,6 +182,135 @@ export default function Speak() {
               <div className="mt-6 px-4 py-3 rounded-lg bg-red-900/30 border border-red-700/40 text-red-300 text-sm">
                 {tutor.error}
               </div>
+            )}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // ── State 2 (Roleplay): Category → Scene → Level picker ─────────────────────
+  if (speakMode === 'roleplay' && !tutor.voice) {
+    const isStarting = tutor.status === 'processing'
+    const goBack = () => {
+      if (pickedScene) setPickedScene(null)
+      else if (selectedCategory) { setSelectedCategory(null); setDrawnScenes([]) }
+      else tutor.resetConversation()
+    }
+
+    return (
+      <div className="flex flex-col min-h-full pb-20">
+        <div className="sticky top-0 z-40 bg-gray-950 pt-4 pb-3 border-b border-white/5">
+          <div className="max-w-2xl mx-auto w-full px-4 flex items-center gap-3">
+            <button
+              onClick={goBack}
+              className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+              title="Back"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </button>
+            <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
+            <span className="text-sm font-medium text-white">{selectedLang?.nativeName}</span>
+            <span className="text-xs text-gray-500 ml-2">🎭 {t('speak.roleplayTab')}</span>
+          </div>
+        </div>
+
+        <div className="flex-1 flex items-start justify-center px-6 pt-6">
+          <div className="w-full max-w-2xl">
+            {tutor.status === 'error' && tutor.error && (
+              <div className="mb-4 px-4 py-3 rounded-lg bg-red-900/30 border border-red-700/40 text-red-300 text-sm">
+                {tutor.error}
+              </div>
+            )}
+
+            {/* Category picker */}
+            {!selectedCategory && (
+              <>
+                <h2 className="text-base font-semibold text-white mb-1">{t('speak.chooseCategory')}</h2>
+                <p className="text-sm text-gray-400 mb-5">Pick a scenario type</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {SCENARIO_CATEGORIES.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => {
+                        setSelectedCategory(cat.id)
+                        setDrawnScenes(drawScenes(cat.id, 3))
+                      }}
+                      className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all"
+                    >
+                      <span className="text-3xl">{cat.emoji}</span>
+                      <span className="text-sm font-medium text-gray-200 text-center leading-tight">
+                        {cat.label}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {/* Scene picker */}
+            {selectedCategory && !pickedScene && (
+              <>
+                <h2 className="text-base font-semibold text-white mb-1">{SCENARIO_CATEGORIES.find(c => c.id === selectedCategory)?.label}</h2>
+                <p className="text-sm text-gray-400 mb-5">Pick a scene</p>
+                <div className="space-y-3 mb-4">
+                  {drawnScenes.map((scene) => (
+                    <button
+                      key={scene.id}
+                      onClick={() => setPickedScene(scene)}
+                      className="w-full flex flex-col items-start gap-1 px-5 py-4 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left"
+                    >
+                      <span className="text-sm font-medium text-white">{scene.title}</span>
+                      <span className="text-xs text-gray-400">{scene.description}</span>
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={() => {
+                    const pool = ROLEPLAY_SCENARIOS.filter((s) => s.category === selectedCategory)
+                    const surprise = pool[Math.floor(Math.random() * pool.length)]
+                    setPickedScene(surprise)
+                  }}
+                  className="w-full px-4 py-3 rounded-xl text-sm text-purple-300 border border-purple-700/40 hover:bg-purple-900/20 transition-colors"
+                >
+                  🎲 {t('speak.surpriseMe')}
+                </button>
+              </>
+            )}
+
+            {/* Level picker (roleplay) */}
+            {pickedScene && (
+              <>
+                <h2 className="text-xl font-semibold text-white mb-2">{pickedScene.title}</h2>
+                <p className="text-sm text-gray-400 mb-6">{pickedScene.description}</p>
+                {isStarting && (
+                  <div className="flex items-center gap-2 mb-4 text-gray-400 text-sm">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    {t('speak.startingConversation')}
+                  </div>
+                )}
+                <div className="grid grid-cols-1 gap-3 max-w-sm">
+                  {[
+                    { level: 'zero',         emoji: '🌱', title: t('speak.levelZero'),         desc: t('speak.levelZeroDesc') },
+                    { level: 'beginner',     emoji: '📗', title: t('speak.levelBeginner'),     desc: t('speak.levelBeginnerDesc') },
+                    { level: 'intermediate', emoji: '📘', title: t('speak.levelIntermediate'), desc: t('speak.levelIntermediateDesc') },
+                    { level: 'advanced',     emoji: '📕', title: t('speak.levelAdvanced'),     desc: t('speak.levelAdvancedDesc') },
+                  ].map((opt) => (
+                    <button
+                      key={opt.level}
+                      onClick={() => tutor.startRoleplay(pickedScene, tutor.language!, opt.level)}
+                      disabled={isStarting}
+                      className="flex items-center gap-4 px-5 py-4 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left disabled:opacity-50"
+                    >
+                      <span className="text-2xl">{opt.emoji}</span>
+                      <div>
+                        <p className="text-sm font-medium text-white">{opt.title}</p>
+                        <p className="text-xs text-gray-400">{opt.desc}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </>
             )}
           </div>
         </div>
@@ -279,13 +451,25 @@ export default function Speak() {
         <div className="flex items-center gap-2 flex-1 min-w-0">
           <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
           <div className="min-w-0">
-            <p className="text-sm font-medium text-white truncate">{tutor.character?.name ?? tutor.voice.name}</p>
-            <p className="text-xs text-gray-500 truncate">
-              {tutor.character?.subtitle ? `${tutor.character.subtitle} · ` : ''}{selectedLang?.nativeName}
-            </p>
+            {tutor.isRoleplayMode ? (
+              <>
+                <p className="text-sm font-medium text-white truncate">🎭 {tutor.activeScenario?.title}</p>
+                <p className="text-xs text-gray-500 truncate">
+                  {tutor.activeNpcName} · {selectedLang?.nativeName}
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-sm font-medium text-white truncate">{tutor.character?.name ?? tutor.voice.name}</p>
+                <p className="text-xs text-gray-500 truncate">
+                  {tutor.character?.subtitle ? `${tutor.character.subtitle} · ` : ''}{selectedLang?.nativeName}
+                </p>
+              </>
+            )}
           </div>
         </div>
 
+        {!tutor.isRoleplayMode && (
         <button
           onClick={tutor.changeLevel}
           className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
@@ -296,8 +480,9 @@ export default function Speak() {
           </span>
           <span className="hidden sm:inline">{t('speak.level')}</span>
         </button>
+        )}
 
-        {studyWords.hasWords && (
+        {!tutor.isRoleplayMode && studyWords.hasWords && (
           <button
             onClick={() => tutor.toggleStudyMode(studyWords.studyWords)}
             className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs transition-colors shrink-0 ${
@@ -312,6 +497,7 @@ export default function Speak() {
           </button>
         )}
 
+        {!tutor.isRoleplayMode && (
         <button
           onClick={tutor.toggleListenMode}
           className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs transition-colors shrink-0 ${
@@ -324,7 +510,9 @@ export default function Speak() {
           <span className="text-sm">🎧</span>
           <span className="hidden sm:inline">{tutor.listenMode ? t('speak.listenOn') : t('speak.listen')}</span>
         </button>
+        )}
 
+        {!tutor.isRoleplayMode && (
         <button
           onClick={tutor.changeVoice}
           className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
@@ -333,6 +521,7 @@ export default function Speak() {
           <RefreshCw className="h-3 w-3" />
           <span className="hidden sm:inline">{t('speak.tutor')}</span>
         </button>
+        )}
 
         <button
           onClick={() => setHistoryOpen(true)}

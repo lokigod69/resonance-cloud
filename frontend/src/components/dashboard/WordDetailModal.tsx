@@ -99,6 +99,11 @@ function WordDetailBody({ word, onWatchVideo }: { word: LibraryWord; onWatchVide
 
   return (
     <div className="p-5 pt-12 sm:p-7 sm:pt-10 pb-[env(safe-area-inset-bottom,1rem)] space-y-4 text-white">
+      {word.thumbnail_url && (
+        <div className="w-full h-48 rounded-xl overflow-hidden mb-4 -mt-2">
+          <img src={word.thumbnail_url} alt={word.word} className="w-full h-full object-cover" />
+        </div>
+      )}
       {/* Headline */}
       <div className="space-y-1">
         <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight break-words">{displayWord}</h2>
