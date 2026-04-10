@@ -37,7 +37,7 @@ from src.workspace import create_word_folder, get_word_dir
 from src.slugify import slugify, language_to_code
 from src.dispatcher import check_all_engines
 from src.models import Enrichment
-from src.suno import generate_song as suno_generate_song, download_suno_audio, fetch_existing_task
+from src.suno import generate_song as suno_generate_song, download_suno_audio, fetch_existing_task, _write_to_supabase as suno_write_to_supabase
 
 import httpx
 from supabase import create_client, Client
@@ -486,6 +486,7 @@ def collect_word_metadata(
     # Resolved creative_direction from manifest lineage (authoritative).
     # storyboard.json has LLM free-text; lineage settings_snapshot is the source of truth.
     creative_direction_resolved: str | None = None
+    concept_music_caption: str | None = None
     try:
         _manifest = read_manifest(word_dir)
         _images_entries = [e for e in _manifest.lineage if e.stage == "images"]
@@ -495,6 +496,13 @@ def collect_word_metadata(
                 _latest.settings_snapshot.get("creative_direction_resolved")
                 or _latest.settings_snapshot.get("creative_direction")
             )
+        # Read music_caption from concept file (authoritative — reflects actual genre used by Suno)
+        _concept_version = _manifest.selected.concept
+        if _concept_version:
+            _concept_file = word_dir / "concept" / _concept_version
+            if _concept_file.exists():
+                _concept_data = json.loads(_concept_file.read_text(encoding="utf-8"))
+                concept_music_caption = _concept_data.get("music_caption")
     except (FileNotFoundError, Exception):
         # Manifest missing or unreadable — fall back to legacy sources below.
         pass
@@ -511,7 +519,7 @@ def collect_word_metadata(
         ),
         "art_style": sb.get("art_style") or img.get("settings", {}).get("art_style"),
         "movie_reference": sb.get("movie"),
-        "music_caption": sb.get("music_caption"),
+        "music_caption": concept_music_caption or sb.get("music_caption"),
 
         # Images
         "images": {
@@ -685,6 +693,43 @@ def _upload_video_and_thumb(
     return video_url, thumb_url
 
 
+def _upload_suno_to_storage(
+    user_id: str,
+    deck_id: str,
+    word_slug: str,
+    word_id: str,
+    path_a: Path,
+    path_b: Path | None,
+) -> None:
+    """Upload raw Suno MP3s to Supabase Storage and write permanent URLs to words table."""
+    storage_prefix = f"{user_id}/{deck_id}/{word_slug}"
+    update: dict[str, str | None] = {}
+
+    # Track A
+    storage_key_a = f"{storage_prefix}/suno_a.mp3"
+    with open(path_a, "rb") as f:
+        sb.storage.from_("audio").upload(
+            storage_key_a, f.read(),
+            file_options={"content-type": "audio/mpeg", "upsert": "true"},
+        )
+    update["suno_storage_url"] = sb.storage.from_("audio").get_public_url(storage_key_a)
+
+    # Track B (if present)
+    if path_b and path_b.exists():
+        storage_key_b = f"{storage_prefix}/suno_b.mp3"
+        with open(path_b, "rb") as f:
+            sb.storage.from_("audio").upload(
+                storage_key_b, f.read(),
+                file_options={"content-type": "audio/mpeg", "upsert": "true"},
+            )
+        update["suno_storage_url_b"] = sb.storage.from_("audio").get_public_url(storage_key_b)
+    else:
+        update["suno_storage_url_b"] = None
+
+    sb.table("words").update(update).eq("id", word_id).execute()
+    log.info("  [Suno] Uploaded permanent audio to Supabase Storage for %s", word_slug)
+
+
 async def upload_ab_results(
     word_record: dict[str, Any],
     word_dir: Path,
@@ -789,6 +834,12 @@ async def bake_suno_into_word(
             if repoll["status"] == "success":
                 log.info("  [Suno] Existing task %s complete — skipping new generation", existing_task_id)
                 suno_result = repoll
+                # Persist CDN URLs to DB (fetch_existing_task does not write to Supabase)
+                suno_write_to_supabase(
+                    deck_id, word_slug,
+                    repoll["audio_url"], existing_task_id,
+                    repoll.get("audio_url_b"),
+                )
             elif repoll["status"] == "pending":
                 log.info("  [Suno] Task %s still in progress on kie.ai — generating fresh", existing_task_id)
             else:
@@ -828,6 +879,19 @@ async def bake_suno_into_word(
         path_a = await download_suno_audio(audio_url_a, suno_dir / "suno_a.mp3")
         path_b = await download_suno_audio(audio_url_b, suno_dir / "suno_b.mp3") \
                  if audio_url_b else None
+
+        # Persist raw MP3s to Supabase Storage (permanent URLs)
+        try:
+            _upload_suno_to_storage(
+                user_id=user_id,
+                deck_id=deck_id,
+                word_slug=word_slug,
+                word_id=word_record["id"],
+                path_a=path_a,
+                path_b=path_b,
+            )
+        except Exception as _upload_err:
+            log.warning("  [Suno] Storage upload failed (non-fatal): %s", _upload_err)
 
         manifest_snap = read_manifest(word_dir)
         video_version = manifest_snap.selected.video
