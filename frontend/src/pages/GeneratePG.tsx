@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, X, Sparkles, Zap, Check, ArrowLeft, Film } from 'lucide-react'
+import { Check, ArrowLeft, Film } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
@@ -14,7 +14,6 @@ import {
   VIBES,
   ART_STYLE_GROUPS,
   GENRES,
-  MAX_WORDS,
 } from '@/components/generate/wizardData'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
