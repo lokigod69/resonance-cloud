@@ -164,6 +164,7 @@ export default function GenerateGO() {
       setShowMovieInput(true)
     } else {
       setShowMovieInput(false)
+      setMovieTitle('')
       setStep(4)
     }
   }

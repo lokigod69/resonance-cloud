@@ -65,7 +65,11 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
       return { ...state, words: action.words.slice(0, MAX_WORDS) }
 
     case 'SET_VIBE':
-      return { ...state, vibe: action.vibe }
+      return {
+        ...state,
+        vibe: action.vibe,
+        movieTitle: action.vibe === 'specific_movie' ? state.movieTitle : null,
+      }
 
     case 'SET_MOVIE_TITLE':
       return { ...state, movieTitle: action.title }
