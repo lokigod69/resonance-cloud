@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Loader2, RefreshCw, Sparkles, X } from 'lucide-react'
+import { Loader2, RefreshCw, Sparkles, Wand2, X, Zap } from 'lucide-react'
 import PillButton from '../shared/PillButton'
 import { CATEGORY_GROUPS } from '@/data/categories'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -29,11 +29,12 @@ interface CategoryPickerProps {
   dispatch: React.Dispatch<WizardAction>
   onConfirm: () => void
   onSwitchToManual: () => void
+  onQuickGenerate?: (words: string[]) => void
 }
 
 const SUGGEST_COUNT = 5
 
-export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToManual }: CategoryPickerProps) {
+export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToManual, onQuickGenerate }: CategoryPickerProps) {
   const { activeLanguage } = useLanguage()
   const [mode, setMode] = useState<Mode>('idle')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
@@ -134,19 +135,19 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
         animate={{ opacity: 1, y: 0 }}
         className="w-full space-y-5"
       >
-        <div className="max-h-[50vh] overflow-y-auto pr-1 space-y-5">
+        <div className="w-full space-y-5 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
           {CATEGORY_GROUPS.map((group) => (
             <div key={group.label}>
-              <h3 className="text-xs uppercase tracking-wider text-white/40 mb-2">{group.label}</h3>
+              <h3 className="text-xs uppercase tracking-wider text-white/40 mb-2"><span aria-hidden="true">{group.emoji}</span> {group.label}</h3>
               <div className="flex flex-wrap gap-2">
                 {group.categories.map((cat) => (
                   <button
-                    key={cat}
+                    key={cat.name}
                     type="button"
-                    onClick={() => fetchSuggestions(cat)}
-                    className="rounded-full px-4 py-2 min-h-[44px] text-sm text-white/80 bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/20 transition"
+                    onClick={() => fetchSuggestions(cat.name)}
+                    className="inline-flex items-center gap-1 rounded-full px-4 py-2 min-h-[44px] text-sm text-white/80 bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/20 transition"
                   >
-                    {cat}
+                    <span aria-hidden="true">{cat.emoji}</span> {cat.name}
                   </button>
                 ))}
               </div>
@@ -242,9 +243,24 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
       {error && <p className="text-xs text-red-400">{error}</p>}
 
       <div className="flex flex-col items-center gap-3 pt-2">
-        <PillButton glow onClick={handleGenerateDeck}>
-          <Sparkles className="h-4 w-4" />
-          Generate Deck
+        {onQuickGenerate && (
+          <PillButton
+            glow
+            onClick={() => {
+              const words = slots.map((s) => s.word.trim()).filter((w) => w.length > 0)
+              if (words.length === 0) { setError('Add at least one word'); return }
+              dispatch({ type: 'SET_WORDS', words })
+              dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
+              onQuickGenerate(words)
+            }}
+          >
+            <Zap className="h-4 w-4" />
+            Quick Generate
+          </PillButton>
+        )}
+        <PillButton variant={onQuickGenerate ? 'secondary' : undefined} glow={!onQuickGenerate} onClick={handleGenerateDeck}>
+          <Wand2 className="h-4 w-4" />
+          Customize
         </PillButton>
         <PillButton
           variant="secondary"

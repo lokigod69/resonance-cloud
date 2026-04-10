@@ -477,6 +477,7 @@ export const workspaceMediaUrl = (workspace: string, slug: string, path: string)
 
 export interface SunoGenerateResult {
   audio_url: string
+  storage_url?: string
   task_id: string
 }
 

@@ -22,6 +22,7 @@ interface WordDetailModalProps {
   word: LibraryWord | null
   onClose: () => void
   onWatchVideo: (word: LibraryWord) => void
+  deckName?: string
 }
 
 function metaString(metadata: Record<string, unknown> | null | undefined, key: string): string | null {
@@ -44,7 +45,7 @@ function metaArray(metadata: Record<string, unknown> | null | undefined, key: st
   return null
 }
 
-export default function WordDetailModal({ word, onClose, onWatchVideo }: WordDetailModalProps) {
+export default function WordDetailModal({ word, onClose, onWatchVideo, deckName }: WordDetailModalProps) {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -80,7 +81,7 @@ export default function WordDetailModal({ word, onClose, onWatchVideo }: WordDet
               <X size={20} />
             </button>
 
-            <WordDetailBody word={word} onWatchVideo={onWatchVideo} />
+            <WordDetailBody word={word} onWatchVideo={onWatchVideo} deckName={deckName} />
           </motion.div>
         </motion.div>
       )}
@@ -88,7 +89,7 @@ export default function WordDetailModal({ word, onClose, onWatchVideo }: WordDet
   )
 }
 
-function WordDetailBody({ word, onWatchVideo }: { word: LibraryWord; onWatchVideo: (w: LibraryWord) => void }) {
+function WordDetailBody({ word, onWatchVideo, deckName }: { word: LibraryWord; onWatchVideo: (w: LibraryWord) => void; deckName?: string }) {
   const ipa = metaString(word.metadata, 'ipa')
   const example = metaString(word.metadata, 'example')
   const exampleGloss = metaString(word.metadata, 'example_gloss') ?? metaString(word.metadata, 'example_translation')
@@ -113,6 +114,11 @@ function WordDetailBody({ word, onWatchVideo }: { word: LibraryWord; onWatchVide
           <span className="inline-block mt-1 px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-full bg-white/10 text-white/70 border border-white/15">
             {word.pos}
           </span>
+        )}
+        {deckName && (
+          <p className="text-xs text-white/40 mt-1">
+            From: <span className="font-medium text-white/60">{deckName}</span>
+          </p>
         )}
       </div>
 

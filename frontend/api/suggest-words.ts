@@ -33,7 +33,8 @@ function buildSystemPrompt(count: number, baseLang: string): string {
     `- For "Random Mix": pick from varied categories and difficulty levels\n` +
     `- All ${count} entries must be unique\n` +
     `- Keep translations concise (1-4 words)\n` +
-    `- For phrases: keep them short (2-5 words in target language)`
+    `- For phrases: keep them short (2-5 words in target language)\n` +
+    `- If suggesting acronyms or abbreviations (e.g. FOMO, ASAP, IYKYK), spell them with dots between letters (e.g. "F.O.M.O." not "FOMO")`
   )
 }
 

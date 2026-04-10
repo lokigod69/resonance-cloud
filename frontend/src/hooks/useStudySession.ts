@@ -12,8 +12,13 @@ export type StudyWord = {
   thumbnail_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
+  suno_storage_url: string | null
+  suno_storage_url_b: string | null
+  suno_audio_url: string | null
   deck_id: string
 }
+
+export type StudyMode = 'video' | 'audio' | 'flashcard'
 
 type RetryItem = { wordId: string; cardsSeen: number }
 
@@ -63,7 +68,7 @@ function sortByHeat(
   ]
 }
 
-export function useStudySession(deckId?: string | null) {
+export function useStudySession(deckId?: string | null, studyMode: StudyMode = 'video', language?: string | null) {
   const { user } = useAuth()
   const [words, setWords] = useState<StudyWord[]>([])
   const [loading, setLoading] = useState(true)
@@ -72,16 +77,37 @@ export function useStudySession(deckId?: string | null) {
   // Track total retries per word across consume/re-schedule cycles (fixes infinite retry bug)
   const retryCountRef = useRef<Map<string, number>>(new Map())
 
-  const fetchAndSort = useCallback(async () => {
+  const fetchAndSort = useCallback(async (isStale?: () => boolean) => {
     if (!user) return
     setLoading(true)
 
+    // When filtering by language (no specific deck), find deck IDs for that language first
+    let langDeckIds: string[] | null = null
+    if (!deckId && language) {
+      const { data: langDecks } = await supabase
+        .from('decks')
+        .select('id')
+        .eq('user_id', user.id)
+        .eq('target_language', language)
+      if (isStale?.()) return
+      langDeckIds = langDecks?.map(d => d.id) ?? []
+      if (langDeckIds.length === 0) {
+        setWords([])
+        setLoading(false)
+        return
+      }
+    }
+
     let wordsQuery = supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, deck_id')
+      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id')
       .eq('user_id', user.id)
       .eq('status', 'complete')
-    if (deckId) wordsQuery = wordsQuery.eq('deck_id', deckId)
+    if (deckId) {
+      wordsQuery = wordsQuery.eq('deck_id', deckId)
+    } else if (langDeckIds) {
+      wordsQuery = wordsQuery.in('deck_id', langDeckIds)
+    }
 
     const [wordsRes, attemptsRes] = await Promise.all([
       wordsQuery.order('created_at', { ascending: true }),
@@ -89,10 +115,17 @@ export function useStudySession(deckId?: string | null) {
         .from('recall_attempts')
         .select('word_id, knew_it, created_at')
         .eq('user_id', user.id)
+        .eq('study_mode', studyMode)
         .order('created_at', { ascending: false }),
     ])
 
-    const rawWords: StudyWord[] = wordsRes.data ?? []
+    if (isStale?.()) return
+
+    let rawWords: StudyWord[] = wordsRes.data ?? []
+    // Audio mode: only include words that have a Suno audio URL
+    if (studyMode === 'audio') {
+      rawWords = rawWords.filter(w => w.suno_storage_url || w.suno_audio_url)
+    }
     const rawAttempts = attemptsRes.data ?? []
 
     // Build map: word_id → most recent attempt (first occurrence since sorted desc)
@@ -105,17 +138,19 @@ export function useStudySession(deckId?: string | null) {
 
     setWords(sortByHeat(rawWords, latestAttempt))
     setLoading(false)
-  }, [user, deckId])
+  }, [user, deckId, studyMode, language])
 
   useEffect(() => {
-    fetchAndSort()
+    let stale = false
+    fetchAndSort(() => stale)
+    return () => { stale = true }
   }, [fetchAndSort])
 
   useEffect(() => {
     retryQueueRef.current = []
     retryCountRef.current = new Map()
     setSessionStats({ remembered: 0, reviewLater: 0 })
-  }, [deckId])
+  }, [deckId, studyMode, language])
 
   const recordAttempt = useCallback(
     (wordId: string, knewIt: boolean) => {
@@ -124,7 +159,7 @@ export function useStudySession(deckId?: string | null) {
       // Fire-and-forget Supabase insert
       supabase
         .from('recall_attempts')
-        .insert({ user_id: user.id, word_id: wordId, knew_it: knewIt })
+        .insert({ user_id: user.id, word_id: wordId, knew_it: knewIt, study_mode: studyMode })
         .then(({ error }) => {
           if (error) console.error('[study] recall insert failed:', error)
         })
@@ -147,7 +182,7 @@ export function useStudySession(deckId?: string | null) {
         retryQueueRef.current = retryQueueRef.current.filter((item) => item.wordId !== wordId)
       }
     },
-    [user],
+    [user, studyMode],
   )
 
   const scheduleRetry = useCallback((wordId: string) => {

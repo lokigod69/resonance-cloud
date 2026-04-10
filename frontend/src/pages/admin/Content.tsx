@@ -79,6 +79,7 @@ type WordRecord = {
   rating: number | null
   rated_at: string | null
   needs_review: boolean
+  suno_storage_url: string | null
   suno_audio_url: string | null
   suno_task_id: string | null
   created_at: string
@@ -162,7 +163,7 @@ export default function Content() {
       el.pause()
       setPlayingAudioId(null)
     } else {
-      el.src = word.suno_audio_url!
+      el.src = (word.suno_storage_url ?? word.suno_audio_url)!
       el.play()
       setPlayingAudioId(word.id)
     }
@@ -175,14 +176,23 @@ export default function Content() {
       const result = await generateSunoSong(word.word_slug, word.deck_id, word.user_id)
       await supabase
         .from('words')
-        .update({ suno_audio_url: result.audio_url, suno_task_id: result.task_id })
+        .update({
+          suno_audio_url: result.audio_url,
+          suno_storage_url: result.storage_url ?? result.audio_url,
+          suno_task_id: result.task_id,
+        })
         .eq('id', word.id)
       // Update local state
       setDeckWords(prev => {
         const updated = { ...prev }
         for (const [deckId, words] of Object.entries(updated)) {
           updated[deckId] = words.map(w =>
-            w.id === word.id ? { ...w, suno_audio_url: result.audio_url, suno_task_id: result.task_id } : w
+            w.id === word.id ? {
+              ...w,
+              suno_audio_url: result.audio_url,
+              suno_storage_url: result.storage_url ?? result.audio_url,
+              suno_task_id: result.task_id,
+            } : w
           )
         }
         return updated
@@ -805,7 +815,7 @@ export default function Content() {
                               <Flag className={`h-4 w-4 ${word.needs_review ? 'text-orange-400' : ''}`} />
                             </Button>
                             {word.status === 'complete' && (
-                              word.suno_audio_url ? (
+                              (word.suno_storage_url ?? word.suno_audio_url) ? (
                                 <div className="flex items-center gap-0.5">
                                   <Button
                                     variant="ghost"

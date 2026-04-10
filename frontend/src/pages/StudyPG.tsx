@@ -1,12 +1,8 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, X, RotateCcw, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
-import { useVideoVersion } from '@/hooks/useVideoVersion'
-import { useVideoVolume } from '@/hooks/useVideoVolume'
-import { useVideoPlayback } from '@/hooks/useVideoPlayback'
-import { useStudySession } from '@/hooks/useStudySession'
 import OrbDock from '@/components/OrbDock'
 import {
   Select,
@@ -15,150 +11,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useAuth } from '@/hooks/useAuth'
-import { supabase } from '@/lib/supabase'
+import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
-
-type DeckOption = { id: string; name: string | null }
 
 export default function StudyPG() {
   const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
-  const deckParam = searchParams.get('deck')
-  const { user } = useAuth()
   const { t, tp } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  const [deckFilter, setDeckFilter] = useState<string>(deckParam ?? 'all')
-  const [decks, setDecks] = useState<DeckOption[]>([])
-
-  useEffect(() => {
-    if (!user) return
-    supabase
-      .from('decks')
-      .select('id, name')
-      .eq('user_id', user.id)
-      .then(({ data }) => { if (data) setDecks(data) })
-  }, [user])
-
-  const { words, loading, sessionStats, recordAttempt, scheduleRetry, consumeRetry, restart: restartSession } = useStudySession(deckFilter === 'all' ? null : deckFilter)
-
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [revealed, setRevealed] = useState(false)
-  const [sessionComplete, setSessionComplete] = useState(false)
-  const [reviewed, setReviewed] = useState(0)
-  const visitedIdsRef = useRef<Set<string>>(new Set())
-  const wasPlayingRef = useRef(true)
-
-  // Reset session state when deck filter changes
-  useEffect(() => {
-    setCurrentIndex(0)
-    setRevealed(false)
-    setSessionComplete(false)
-    setReviewed(0)
-    visitedIdsRef.current = new Set()
-  }, [deckFilter])
-  const { isMuted, toggleMute } = useVideoVolume(videoRef, false)
-  const { togglePlay, replay, onPlay, onPause } = useVideoPlayback(videoRef)
-
-  const current = words[currentIndex] ?? null
-  const { activeVideoUrl, activeThumbnailUrl } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
-
-  const advanceToNext = useCallback(() => {
-    wasPlayingRef.current = !(videoRef.current?.paused ?? false)
-    setReviewed((r) => r + 1)
-    setRevealed(false)
-    if (current) visitedIdsRef.current.add(current.id)
-
-    // Check retry pocket
-    const retryId = consumeRetry()
-    if (retryId) {
-      const idx = words.findIndex((w) => w.id === retryId)
-      if (idx !== -1) {
-        setCurrentIndex(idx)
-        return
-      }
-    }
-
-    // Linear advance, skipping visited
-    let next = currentIndex + 1
-    while (next < words.length && visitedIdsRef.current.has(words[next].id)) next++
-    if (next >= words.length) {
-      // Before ending session, drain any pending retries even if gap not fully met
-      const forcedRetryId = consumeRetry(true)
-      if (forcedRetryId) {
-        const idx = words.findIndex((w) => w.id === forcedRetryId)
-        if (idx !== -1) {
-          setCurrentIndex(idx)
-          return
-        }
-      }
-      setSessionComplete(true)
-    } else {
-      setCurrentIndex(next)
-    }
-  }, [current, currentIndex, words, consumeRetry])
-
-  useEffect(() => {
-    if (!wasPlayingRef.current && videoRef.current) {
-      videoRef.current.pause()
-    }
-  }, [current?.id])
-
-  const handleRemembered = useCallback(() => {
-    if (!current) return
-    recordAttempt(current.id, true)
-    advanceToNext()
-  }, [current, recordAttempt, advanceToNext])
-
-  const handleReviewLater = useCallback(() => {
-    if (!current) return
-    recordAttempt(current.id, false)
-    scheduleRetry(current.id)
-    advanceToNext()
-  }, [current, recordAttempt, scheduleRetry, advanceToNext])
-
-  const restart = useCallback(() => {
-    restartSession()
-    setCurrentIndex(0)
-    setRevealed(false)
-    setSessionComplete(false)
-    setReviewed(0)
-    visitedIdsRef.current = new Set()
-  }, [restartSession])
-
-  const skipPrev = useCallback(() => {
-    if (currentIndex > 0) {
-      setCurrentIndex((i) => i - 1)
-      setRevealed(false)
-    }
-  }, [currentIndex])
-
-  const skipNext = useCallback(() => {
-    if (currentIndex < words.length - 1) {
-      setCurrentIndex((i) => i + 1)
-      setRevealed(false)
-    }
-  }, [currentIndex, words.length])
-
-  // Keyboard shortcuts
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (sessionComplete) return
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault()
-        if (!revealed) setRevealed(true)
-        else handleRemembered()
-      }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); skipPrev() }
-      if (e.key === 'ArrowRight') { e.preventDefault(); skipNext() }
-      if (e.key === 'r' || e.key === 'R') replay()
-      if (e.key === 'm' || e.key === 'M') toggleMute()
-      if (e.key === 'p' || e.key === 'P') togglePlay()
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [revealed, handleRemembered, replay, sessionComplete, toggleMute, togglePlay, skipPrev, skipNext])
+  const {
+    words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
+    revealed, setRevealed, decks, deckFilter, setDeckFilter,
+    activeVideoUrl, activeThumbnailUrl, isMuted, togglePlay, onPlay, onPause,
+    handleRemembered, handleReviewLater, restart, selectIndex, skipPrev, skipNext,
+  } = useStudyUI({ videoRef, studyMode: 'video' })
 
   if (loading) {
     return (
@@ -396,10 +262,7 @@ export default function StudyPG() {
       <OrbDock
         words={words}
         currentIndex={currentIndex}
-        onSelect={(i) => {
-          setCurrentIndex(i)
-          setRevealed(false)
-        }}
+        onSelect={selectIndex}
       />
 
     </div>

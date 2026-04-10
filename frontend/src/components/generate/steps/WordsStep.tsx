@@ -79,6 +79,7 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
               onCustomize?.()
             }}
             onSwitchToManual={() => setInputMode('manual')}
+            onQuickGenerate={onQuickGenerate}
           />
         )}
 

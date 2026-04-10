@@ -20,6 +20,9 @@ import DecksPG from '@/pages/DecksPG'
 
 import DeckViewPG from '@/pages/DeckViewPG'
 import StudyPG from '@/pages/StudyPG'
+import StudyModeSelector from '@/pages/StudyModeSelector'
+import StudyFlashcard from '@/pages/StudyFlashcard'
+import StudyAudio from '@/pages/StudyAudio'
 import GenerateGO from '@/pages/GenerateGO'
 import Users from '@/pages/admin/Users'
 import Content from '@/pages/admin/Content'
@@ -128,7 +131,10 @@ function AppRoutes() {
             <Route path="/decks" element={<DecksPG />} />
             <Route path="/generate" element={<GenerateGO />} />
             <Route path="/deck/:id" element={<DeckViewPG />} />
-            <Route path="/study" element={<StudyPG />} />
+            <Route path="/study" element={<StudyModeSelector />} />
+            <Route path="/study/video" element={<StudyPG />} />
+            <Route path="/study/flashcard" element={<StudyFlashcard />} />
+            <Route path="/study/audio" element={<StudyAudio />} />
             <Route path="/music" element={<MusicPG />} />
             <Route path="/speak" element={<Speak />} />
           </Route>
@@ -138,7 +144,10 @@ function AppRoutes() {
             <Route path="/decks" element={<Decks />} />
             <Route path="/generate" element={<Generate />} />
             <Route path="/deck/:id" element={<DeckView />} />
-            <Route path="/study" element={<Study />} />
+            <Route path="/study" element={<StudyModeSelector />} />
+            <Route path="/study/video" element={<Study />} />
+            <Route path="/study/flashcard" element={<StudyFlashcard />} />
+            <Route path="/study/audio" element={<StudyAudio />} />
             <Route path="/music" element={<Music />} />
             <Route path="/speak" element={<Speak />} />
           </Route>

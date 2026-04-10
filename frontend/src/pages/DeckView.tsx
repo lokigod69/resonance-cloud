@@ -44,6 +44,8 @@ type Word = {
   thumbnail_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
+  suno_storage_url: string | null
+  suno_storage_url_b: string | null
   suno_audio_url: string | null
   suno_audio_url_b: string | null
   suno_task_id: string | null

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
@@ -9,20 +9,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import {
-  Check,
-  X,
-  RotateCcw,
-  Sparkles,
-  BookOpen,
-  ChevronLeft,
-  ChevronRight,
-} from 'lucide-react'
+import { Check, X, RotateCcw, Sparkles, BookOpen } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
 
-export default function Study() {
+const STORAGE_KEY = 'resonance-study-mode'
+
+export default function StudyFlashcard() {
   const navigate = useNavigate()
   const { t, tp } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -30,9 +24,24 @@ export default function Study() {
   const {
     words, current, currentIndex, loading, sessionComplete, sessionStats, reviewed,
     revealed, setRevealed, decks, deckFilter, setDeckFilter,
-    activeVideoUrl, activeThumbnailUrl, isMuted, togglePlay, onPlay, onPause,
-    handleRemembered, handleReviewLater, restart, skipPrev, skipNext,
-  } = useStudyUI({ videoRef, studyMode: 'video' })
+    handleRemembered, handleReviewLater, restart,
+  } = useStudyUI({ videoRef, studyMode: 'flashcard' })
+
+  // Persist last-used mode
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, 'flashcard')
+  }, [])
+
+  // Flashcard-specific keyboard shortcuts (1/2 for review/remember)
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (sessionComplete || !revealed) return
+      if (e.key === '1') { e.preventDefault(); handleReviewLater() }
+      if (e.key === '2') { e.preventDefault(); handleRemembered() }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [sessionComplete, revealed, handleReviewLater, handleRemembered])
 
   if (loading) {
     return (
@@ -53,9 +62,7 @@ export default function Study() {
             {isFiltered ? t('study.noCardsReady') : t('study.noWordsReady')}
           </h2>
           <p className="text-muted-foreground text-sm max-w-sm">
-            {isFiltered
-              ? t('study.addCardsHint')
-              : t('study.generateFirst')}
+            {isFiltered ? t('study.addCardsHintFlashcard') : t('study.generateFirstFlashcard')}
           </p>
         </div>
         {!isFiltered && (
@@ -97,7 +104,7 @@ export default function Study() {
             {t('study.startAgain')}
           </Button>
           <Button variant="outline" onClick={() => navigate('/dashboard')}>
-            {t('nav.decks')}
+            {t('study.backToDecks')}
           </Button>
         </div>
       </div>
@@ -105,9 +112,8 @@ export default function Study() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-0 sm:px-4">
-      {/* Card + content */}
-      <div className="w-full max-w-4xl">
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4">
+      <div className="w-full max-w-xl">
         {/* Deck filter */}
         {decks.length > 1 && (
           <div className="flex justify-end mb-4">
@@ -131,6 +137,12 @@ export default function Study() {
             </Select>
           </div>
         )}
+
+        {/* Progress counter */}
+        <p className="text-center text-sm text-muted-foreground mb-6">
+          {currentIndex + 1} / {words.length}
+        </p>
+
         <AnimatePresence mode="wait">
           {current && (
             <motion.div
@@ -141,58 +153,13 @@ export default function Study() {
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               className="w-full"
             >
-              {/* Video with arrows anchored to it */}
-              <div className="relative rounded-none sm:rounded-xl border border-border overflow-hidden mb-6 group/video">
-                {/* Left skip arrow — centered on video */}
-                <button
-                  onClick={skipPrev}
-                  disabled={currentIndex === 0}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-background/80 hover:bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-all opacity-60 sm:opacity-0 sm:group-hover/video:opacity-100 disabled:opacity-20 disabled:cursor-not-allowed"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-
-                {/* Right skip arrow — centered on video */}
-                <button
-                  onClick={skipNext}
-                  disabled={currentIndex >= words.length - 1}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-background/80 hover:bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-all opacity-60 sm:opacity-0 sm:group-hover/video:opacity-100 disabled:opacity-20 disabled:cursor-not-allowed"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-
-                {activeVideoUrl ? (
-                  <video
-                    ref={videoRef}
-                    key={current.id}
-                    src={activeVideoUrl}
-                    autoPlay
-                    muted={isMuted}
-                    loop
-                    playsInline
-                    className="w-full aspect-video object-contain bg-black cursor-pointer"
-                    onClick={togglePlay}
-                    onPlay={onPlay}
-                    onPause={onPause}
-                  />
-                ) : activeThumbnailUrl ? (
-                  <img
-                    src={activeThumbnailUrl}
-                    alt={current.word}
-                    className="w-full aspect-video object-cover"
-                  />
-                ) : (
-                  <div className="w-full aspect-video bg-muted flex items-center justify-center">
-                    <BookOpen className="h-10 w-10 text-muted-foreground/30" />
-                  </div>
-                )}
+              {/* Flashcard */}
+              <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 backdrop-blur-sm min-h-[280px] sm:min-h-[340px] flex flex-col items-center justify-center px-6 py-10 mb-6">
+                <h2 className="text-3xl sm:text-4xl font-bold text-center">{current.word}</h2>
               </div>
 
-              {/* Word */}
-              <div className="text-center mb-6 px-4">
-                <h2 className="text-3xl font-bold mb-3">{current.word}</h2>
-
-                {/* Reveal area */}
+              {/* Reveal area */}
+              <div className="text-center mb-6">
                 {revealed ? (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -200,16 +167,11 @@ export default function Study() {
                     className="space-y-2"
                   >
                     {current.translation && (
-                      <p className="text-xl text-muted-foreground mt-1">{current.translation}</p>
+                      <p className="text-xl text-muted-foreground">{current.translation}</p>
                     )}
                     {current.mnemonic && (
                       <p className="text-sm italic text-muted-foreground/70 mt-3 max-w-lg mx-auto leading-relaxed">
                         {current.mnemonic}
-                      </p>
-                    )}
-                    {current.etymology && (
-                      <p className="text-xs text-muted-foreground/50 mt-2 max-w-lg mx-auto leading-relaxed">
-                        {current.etymology}
                       </p>
                     )}
                   </motion.div>
@@ -232,7 +194,6 @@ export default function Study() {
                   transition={{ delay: 0.1 }}
                   className="flex gap-3 w-full max-w-md mx-auto"
                 >
-                  {/* Review Later — red ✕ */}
                   <button
                     onClick={handleReviewLater}
                     aria-label="Review Later"
@@ -242,7 +203,6 @@ export default function Study() {
                     <span className="hidden sm:inline text-sm font-medium">{t('study.reviewLater')}</span>
                   </button>
 
-                  {/* Remembered — green ✓ */}
                   <button
                     onClick={handleRemembered}
                     aria-label="Remembered"
@@ -257,7 +217,6 @@ export default function Study() {
           )}
         </AnimatePresence>
       </div>
-
     </div>
   )
 }

@@ -7,6 +7,7 @@ export interface MusicTrack {
   word: string
   translation: string | null
   thumbnail_url: string | null
+  suno_storage_url: string | null
   suno_audio_url: string | null
   genre: string | null
   duration: number | null
@@ -29,7 +30,7 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
 
   // Stable reference — only recomputed when tracks identity changes
   const queue = useMemo(
-    () => tracks.filter((t) => !!t.suno_audio_url && !t.error),
+    () => tracks.filter((t) => !!(t.suno_storage_url ?? t.suno_audio_url) && !t.error),
     [tracks],
   )
 
@@ -56,14 +57,15 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
-    if (!currentTrack?.suno_audio_url) {
+    const audioUrl = currentTrack?.suno_storage_url ?? currentTrack?.suno_audio_url
+    if (!audioUrl) {
       audio.src = ''
       setIsPlaying(false)
       setCurrentTime(0)
       setDuration(0)
       return
     }
-    audio.src = currentTrack.suno_audio_url
+    audio.src = audioUrl
     audio.load()
     audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
   }, [currentTrack?.id])

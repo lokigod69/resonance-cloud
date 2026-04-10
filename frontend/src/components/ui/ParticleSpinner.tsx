@@ -15,21 +15,52 @@ export interface ParticleSpinnerProps {
   className?: string
 }
 
+function parseCSSColor(raw: string): { r: number; g: number; b: number } | null {
+  if (!raw) return null
+  // Direct hex
+  const hex = raw.match(/^#([0-9a-f]{6})$/i)
+  if (hex) {
+    const n = parseInt(hex[1], 16)
+    return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 }
+  }
+  // Direct rgb()
+  const rgb = raw.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
+  if (rgb) return { r: +rgb[1], g: +rgb[2], b: +rgb[3] }
+  // oklch, hsl, or other formats — let the browser resolve it
+  try {
+    const temp = document.createElement('div')
+    temp.style.color = raw
+    temp.style.display = 'none'
+    document.body.appendChild(temp)
+    try {
+      const computed = getComputedStyle(temp).color
+      const m = computed.match(/(\d+),\s*(\d+),\s*(\d+)/)
+      if (m) return { r: +m[1], g: +m[2], b: +m[3] }
+    } finally {
+      document.body.removeChild(temp)
+    }
+  } catch { /* ignore */ }
+  return null
+}
+
 function getThemeColor(): { r: number; g: number; b: number } {
   try {
     const style = getComputedStyle(document.documentElement)
     const accent = style.getPropertyValue('--color-accent').trim()
-    if (accent) {
-      const hex = accent.match(/^#([0-9a-f]{6})$/i)
-      if (hex) {
-        const n = parseInt(hex[1], 16)
-        return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 }
-      }
-      const rgb = accent.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
-      if (rgb) return { r: +rgb[1], g: +rgb[2], b: +rgb[3] }
-    }
+    const parsed = parseCSSColor(accent)
+    if (parsed) return parsed
   } catch { /* ignore */ }
   return { r: 200, g: 210, b: 230 }
+}
+
+function getThemeBackground(): { r: number; g: number; b: number } {
+  try {
+    const style = getComputedStyle(document.documentElement)
+    const bg = style.getPropertyValue('--background').trim()
+    const parsed = parseCSSColor(bg)
+    if (parsed) return parsed
+  } catch { /* ignore */ }
+  return { r: 0, g: 0, b: 0 }
 }
 
 type PlotFn = (p: number, ds: number) => readonly [number, number]
@@ -117,6 +148,8 @@ export function ParticleSpinner({ preset, size = 120, random = false, className 
     const presets = buildPresets(size)
     const { fn: plotFn, scale } = presets[activePreset]
     const tc = getThemeColor()
+    const bg = getThemeBackground()
+    const isLight = bg.r + bg.g + bg.b > 384
     const N = size >= 200 ? 3000 : 2000
     const cx = size / 2
     const cy = size / 2
@@ -128,14 +161,17 @@ export function ParticleSpinner({ preset, size = 120, random = false, className 
       // Breathing scale — very subtle, drives the detailScale parameter
       const ds = 0.7 + Math.sin(time * 3) * 0.02
 
-      // ── Fade trail: semi-transparent black overlay builds persistent glow ──
+      // ── Fade trail: semi-transparent overlay converges canvas to theme background ──
       ctx.globalCompositeOperation = 'source-over'
-      ctx.fillStyle = 'rgba(0,0,0,0.12)'
+      ctx.fillStyle = `rgba(${bg.r},${bg.g},${bg.b},0.12)`
       ctx.fillRect(0, 0, size, size)
 
       // ── Pass 1: full-curve background glow (very dim, same color each frame) ──
-      ctx.globalCompositeOperation = 'lighter'
-      ctx.fillStyle = `rgba(${tc.r},${tc.g},${tc.b},0.04)`
+      // On light themes, additive blending saturates to white — use source-over instead
+      ctx.globalCompositeOperation = isLight ? 'source-over' : 'lighter'
+      ctx.fillStyle = isLight
+        ? `rgba(${tc.r},${tc.g},${tc.b},0.06)`
+        : `rgba(${tc.r},${tc.g},${tc.b},0.04)`
       for (let i = 0; i < N; i++) {
         const p = i / N
         const [x, y] = plotFn(p, ds)
@@ -153,7 +189,10 @@ export function ParticleSpinner({ preset, size = 120, random = false, className 
         const [x, y] = plotFn(p, ds)
         const alpha = 0.1 + bright * 0.7
         const sz = 0.8 + bright * 1.5
-        ctx.fillStyle = `rgba(255,255,255,${alpha})`
+        // On light themes, draw dark trail instead of white (which would be invisible)
+        ctx.fillStyle = isLight
+          ? `rgba(${tc.r},${tc.g},${tc.b},${alpha})`
+          : `rgba(255,255,255,${alpha})`
         ctx.fillRect(cx + x * scale - sz / 2, cy - y * scale - sz / 2, sz, sz)
       }
 

@@ -51,31 +51,32 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRe
   const { t } = useTranslation()
   const [duration, setDuration] = useState<number | null>(() => {
     if (track.duration !== null) return track.duration
-    return durationCache.get(track.suno_audio_url ?? '') ?? null
+    return durationCache.get((track.suno_storage_url ?? track.suno_audio_url) ?? '') ?? null
   })
   const probeRef = useRef<HTMLAudioElement | null>(null)
 
   // Probe duration via lightweight audio element (preload=metadata, no actual playback)
   useEffect(() => {
-    if (!track.suno_audio_url || duration !== null) return
+    const url = track.suno_storage_url ?? track.suno_audio_url
+    if (!url || duration !== null) return
     const audio = new Audio()
     audio.preload = 'metadata'
     probeRef.current = audio
 
     const handleMeta = () => {
-      durationCache.set(track.suno_audio_url!, audio.duration)
+      durationCache.set(url, audio.duration)
       setDuration(audio.duration)
     }
     audio.addEventListener('loadedmetadata', handleMeta)
-    audio.src = track.suno_audio_url
+    audio.src = url
 
     return () => {
       audio.removeEventListener('loadedmetadata', handleMeta)
       audio.src = ''
     }
-  }, [track.suno_audio_url, duration])
+  }, [track.suno_storage_url, track.suno_audio_url, duration])
 
-  const hasAudio = !!track.suno_audio_url && !track.error
+  const hasAudio = !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
   const isDisabled = !hasAudio
 
   return (

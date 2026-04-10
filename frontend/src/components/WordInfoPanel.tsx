@@ -2,6 +2,15 @@ import { useState } from 'react'
 import { Info } from 'lucide-react'
 import StarRating from '@/components/ui/StarRating'
 
+/** Truncate art style at first ' — ' or ',' for clean row display */
+function formatArtStyle(value: string): string {
+  const dashIdx = value.indexOf(' — ');
+  const commaIdx = value.indexOf(',');
+  const cutPoints = [dashIdx, commaIdx].filter(i => i > 0);
+  const cutIdx = cutPoints.length ? Math.min(...cutPoints) : -1;
+  return cutIdx > 0 ? value.slice(0, cutIdx) : value;
+}
+
 interface WordInfoPanelProps {
   word: {
     id: string
@@ -90,7 +99,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
             <div className="flex justify-between gap-4">
               <span className="text-gray-500 shrink-0">Art Style</span>
               <span className="text-gray-300 text-right truncate max-w-[280px]" title={word.metadata.art_style}>
-                {word.metadata.art_style}
+                {formatArtStyle(word.metadata.art_style)}
               </span>
             </div>
           )}

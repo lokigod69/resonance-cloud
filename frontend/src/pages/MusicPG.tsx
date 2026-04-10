@@ -32,6 +32,7 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
     word: row.word as string,
     translation: (row.translation as string | null) ?? null,
     thumbnail_url: (row.thumbnail_url as string | null) ?? null,
+    suno_storage_url: (row.suno_storage_url as string | null) ?? null,
     suno_audio_url: (row.suno_audio_url as string | null) ?? null,
     genre: rawCaption ? rawCaption.split(',')[0].trim() : null,
     duration: null,
@@ -115,7 +116,7 @@ export default function MusicPG() {
       .from('words')
       .select(`
         id, deck_id, word, translation,
-        thumbnail_url, suno_audio_url, metadata, created_at,
+        thumbnail_url, suno_storage_url, suno_audio_url, metadata, created_at,
         decks(id, name)
       `)
       .eq('user_id', user.id)
@@ -174,7 +175,7 @@ export default function MusicPG() {
     [player],
   )
 
-  const songsWithAudio = filteredTracks.filter((t) => t.suno_audio_url && !t.error).length
+  const songsWithAudio = filteredTracks.filter((t) => (t.suno_storage_url ?? t.suno_audio_url) && !t.error).length
   const totalSongs = filteredTracks.length
 
   return (

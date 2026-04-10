@@ -132,8 +132,10 @@ export default function DashboardPG() {
 
   const quote = useMemo(() => QUOTES[Math.floor(Math.random() * QUOTES.length)], [])
 
+  const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? 'Untitled'])), [decks])
+
   const handleWatchVideo = (word: LibraryWord) => {
-    navigate(`/deck/${word.deck_id}/word/${word.id}`)
+    navigate(`/deck/${word.deck_id}/word/${word.id}?returnTo=/dashboard`)
   }
 
   if (authError && !user) {
@@ -324,6 +326,7 @@ export default function DashboardPG() {
         word={selectedWord}
         onClose={() => setSelectedWord(null)}
         onWatchVideo={handleWatchVideo}
+        deckName={selectedWord ? deckNameMap.get(selectedWord.deck_id) : undefined}
       />
     </div>
   )

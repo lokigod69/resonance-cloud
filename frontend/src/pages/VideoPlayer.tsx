@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate, useSearchParams, Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -35,6 +35,9 @@ type Word = {
 export default function VideoPlayer() {
   const { id: deckId, wordId } = useParams<{ id: string; wordId: string }>()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const rawReturnTo = searchParams.get('returnTo')
+  const returnTo = rawReturnTo?.startsWith('/') ? rawReturnTo : null
   const [words, setWords] = useState<Word[]>([])
   const [loading, setLoading] = useState(true)
   const [videoKey, setVideoKey] = useState(0)
@@ -70,10 +73,11 @@ export default function VideoPlayer() {
 
   const goTo = useCallback(
     (wId: string) => {
-      navigate(`/deck/${deckId}/word/${wId}`, { replace: true })
+      const params = returnTo ? `?returnTo=${encodeURIComponent(returnTo)}` : ''
+      navigate(`/deck/${deckId}/word/${wId}${params}`, { replace: true })
       setVideoKey((k) => k + 1)
     },
-    [deckId, navigate]
+    [deckId, navigate, returnTo]
   )
 
   // Keyboard navigation
@@ -81,11 +85,11 @@ export default function VideoPlayer() {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'ArrowLeft' && prev) goTo(prev.id)
       if (e.key === 'ArrowRight' && next) goTo(next.id)
-      if (e.key === 'Escape') navigate(`/deck/${deckId}`)
+      if (e.key === 'Escape') navigate(returnTo || `/deck/${deckId}`)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [prev, next, goTo, navigate, deckId])
+  }, [prev, next, goTo, navigate, deckId, returnTo])
 
   if (loading) {
     return (
@@ -100,7 +104,7 @@ export default function VideoPlayer() {
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
         <p className="text-muted-foreground mb-4">Video not found</p>
         <Button asChild variant="ghost">
-          <Link to={`/deck/${deckId}`}>Back to Deck</Link>
+          <Link to={returnTo || `/deck/${deckId}`}>Back</Link>
         </Button>
       </div>
     )
@@ -113,7 +117,7 @@ export default function VideoPlayer() {
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => navigate(`/deck/${deckId}`)}
+          onClick={() => navigate(returnTo || `/deck/${deckId}`)}
           className="text-muted-foreground hover:text-foreground"
         >
           <X className="h-5 w-5" />
@@ -147,6 +151,7 @@ export default function VideoPlayer() {
                 src={`${activeVideoUrl}?t=${videoKey}`}
                 controls
                 autoPlay
+                playsInline
                 className="w-full aspect-video"
               />
             ) : (
@@ -182,10 +187,10 @@ export default function VideoPlayer() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate(`/deck/${deckId}`)}
+              onClick={() => navigate(returnTo || `/deck/${deckId}`)}
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Deck
+              {returnTo ? 'Back' : 'Back to Deck'}
             </Button>
           </div>
 
