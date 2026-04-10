@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, X, Sparkles, Zap, Check, ArrowLeft, Film } from 'lucide-react'
@@ -35,7 +35,6 @@ export default function GeneratePG() {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [generated, setGenerated] = useState(false)
-  const wordInputRef = useRef<HTMLInputElement>(null)
 
   // "Add Cards" mode: existing deck via ?deckId=xxx
   const { t } = useTranslation()
@@ -401,137 +400,6 @@ function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
   )
 }
 
-/* ─── Step 1: Words ─────────────────────────────── */
-// DEPRECATED: replaced by shared WordsStep component with CategoryPicker
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function _StepWords_DEPRECATED({
-  words,
-  dispatch,
-  inputRef,
-  onQuickGenerate,
-  onCustomize,
-  submitting,
-}: {
-  words: string[]
-  dispatch: React.Dispatch<import('@/components/generate/useWizardState').WizardAction>
-  inputRef: React.RefObject<HTMLInputElement | null>
-  onQuickGenerate: () => void
-  onCustomize: () => void
-  submitting: boolean
-}) {
-  const { t } = useTranslation()
-  const [inputValue, setInputValue] = useState('')
-  const [inputError, setInputError] = useState<string | null>(null)
-
-  function addWord() {
-    const trimmed = inputValue.trim()
-    if (!trimmed) return
-    if (words.length >= MAX_WORDS) {
-      setInputError(t('generate.maxWords', { max: MAX_WORDS }))
-      return
-    }
-    if (words.some((w) => w.toLowerCase() === trimmed.toLowerCase())) {
-      setInputError(t('generate.wordExists'))
-      return
-    }
-    dispatch({ type: 'ADD_WORD', word: trimmed })
-    setInputValue('')
-    setInputError(null)
-    inputRef.current?.focus()
-  }
-
-  return (
-    <div className="text-center max-w-lg mx-auto">
-      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">{t('generate.addWords')}</h2>
-      <p className="text-[var(--pg-text-dim)] text-sm mb-8">
-        {t('generate.wordCount', { count: words.length, max: MAX_WORDS })}
-      </p>
-
-      {/* Input */}
-      <div className="flex gap-2 mb-6">
-        <input
-          ref={inputRef}
-          type="text"
-          value={inputValue}
-          onChange={(e) => { setInputValue(e.target.value); setInputError(null) }}
-          onKeyDown={(e) => { if (e.key === 'Enter') addWord() }}
-          placeholder={t('generate.typeWord')}
-          maxLength={50}
-          className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 font-display text-base outline-none focus:border-[var(--pg-accent-teal)]/50 transition-colors"
-        />
-        <button
-          onClick={addWord}
-          disabled={!inputValue.trim() || words.length >= MAX_WORDS}
-          className="p-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] hover:bg-[var(--pg-accent-teal)]/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <Plus className="h-5 w-5" />
-        </button>
-      </div>
-
-      {inputError && (
-        <p className="text-xs text-[var(--pg-accent-rose)] mb-4">{inputError}</p>
-      )}
-
-      {/* Word pills */}
-      <div className="flex flex-wrap gap-2 justify-center mb-8 min-h-[40px]">
-        <AnimatePresence>
-          {words.map((word, i) => (
-            <motion.span
-              key={word}
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-display font-medium border max-w-[200px]"
-              style={{
-                backgroundColor: 'rgba(13, 226, 195, 0.1)',
-                borderColor: 'rgba(13, 226, 195, 0.3)',
-                color: 'var(--pg-accent-teal)',
-              }}
-            >
-              <span className="truncate">{word}</span>
-              <button
-                onClick={() => dispatch({ type: 'REMOVE_WORD', index: i })}
-                className="hover:text-white transition-colors shrink-0"
-              >
-                <X className="h-3.5 w-3.5" />
-              </button>
-            </motion.span>
-          ))}
-        </AnimatePresence>
-      </div>
-
-      {/* Action buttons */}
-      <AnimatePresence>
-        {words.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="flex flex-col sm:flex-row gap-3 justify-center"
-          >
-            <button
-              onClick={() => { addWord(); onQuickGenerate() }}
-              disabled={submitting}
-              className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all shadow-[0_0_20px_rgba(13,226,195,0.15)] disabled:opacity-50"
-            >
-              <Zap className="h-4 w-4 inline mr-2" />
-              {submitting ? t('deckview.generating') : t('generate.quickGenerate')}
-            </button>
-            <button
-              onClick={() => { addWord(); onCustomize() }}
-              disabled={submitting}
-              className="px-6 py-3 rounded-xl border border-white/10 text-[var(--pg-text-dim)] font-display font-medium hover:bg-white/5 hover:text-white transition-all disabled:opacity-50"
-            >
-              <Sparkles className="h-4 w-4 inline mr-2" />
-              {t('generate.customize')}
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  )
-}
 
 /* ─── Step 2: Vibe ──────────────────────────────── */
 

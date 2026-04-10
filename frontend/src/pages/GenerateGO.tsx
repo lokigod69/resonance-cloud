@@ -522,7 +522,7 @@ export default function GenerateGO() {
           )}
           <div
             className={`forge-orb${submitting ? ' synthesizing' : ''}${credits < words.length ? ' disabled' : ''}`}
-            onClick={!submitting && credits >= words.length ? handleInitialize : undefined}
+            onClick={!submitting && credits >= words.length ? () => handleInitialize() : undefined}
             style={credits < words.length ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
           >
             {submitting ? 'Synthesizing...' : 'Initialize'}
