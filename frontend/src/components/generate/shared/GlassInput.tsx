@@ -11,7 +11,8 @@ interface GlassInputProps {
 }
 
 export interface GlassInputHandle {
-  flush: () => void
+  /** Flush any typed-but-unlocked text. Returns the flushed word, or null if input was empty. */
+  flush: () => string | null
 }
 
 export const GlassInput = forwardRef<GlassInputHandle, GlassInputProps>(
@@ -27,9 +28,10 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
 
   function handleSubmit() {
     const trimmed = value.trim()
-    if (!trimmed) return
+    if (!trimmed) return null
     onLock(trimmed)
     setValue('')
+    return trimmed
   }
 
   useImperativeHandle(ref, () => ({ flush: handleSubmit }))

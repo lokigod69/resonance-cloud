@@ -88,14 +88,24 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
             <button
               key={word.id}
               onClick={() => onWordClick(word)}
-              className="h-16 rounded-xl border border-border/50 bg-card hover:bg-accent/40 px-4 py-3 flex items-center justify-between gap-3 transition-colors cursor-pointer text-left"
+              className="min-h-[64px] rounded-xl border border-border/50 bg-card hover:bg-accent/40 px-4 py-3 flex items-center gap-3 transition-colors cursor-pointer text-left"
             >
-              <span className="font-semibold text-base flex-1 min-w-0 truncate">
-                {word.article ? `${word.article} ` : ''}
+              {word.thumbnail_url ? (
+                <img
+                  src={word.thumbnail_url}
+                  alt=""
+                  className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="w-10 h-10 rounded-lg bg-muted/30 flex-shrink-0" />
+              )}
+              <span className="font-semibold text-base flex-1 min-w-0 break-words">
+                {(word.article && word.article !== 'null') ? `${word.article} ` : ''}
                 {word.word}
               </span>
               {word.translation && (
-                <span className="text-sm text-muted-foreground flex-shrink-0 truncate max-w-[45%] text-right">
+                <span className="text-sm text-muted-foreground flex-shrink-0 max-w-[45%] text-right break-words">
                   {word.translation}
                 </span>
               )}

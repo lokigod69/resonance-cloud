@@ -56,7 +56,7 @@ export default function GenerateWizard() {
     if (deckIdParam) return
     if (state.language) return
     if (activeLanguage) {
-      dispatch({ type: 'PRESELECT_LANGUAGE', language: activeLanguage })
+      dispatch({ type: 'SET_LANGUAGE', language: activeLanguage })
     }
   }, [deckIdParam, state.language, activeLanguage, dispatch])
 

@@ -128,11 +128,12 @@ export default function Dashboard() {
   }, [user?.id, activeLanguage, location.key])
 
   const stats = useMemo(() => {
-    const deckCount = decks.length
-    const wordCount = decks.reduce((sum, d) => sum + (d.word_count ?? 0), 0)
+    const source = activeLanguage ? decks.filter((d) => d.target_language === activeLanguage) : decks
+    const deckCount = source.length
+    const wordCount = source.reduce((sum, d) => sum + (d.word_count ?? 0), 0)
     const level = `L${Math.floor(wordCount / 10) + 1}`
     return { deckCount, wordCount, level }
-  }, [decks])
+  }, [decks, activeLanguage])
 
   const handleWatchVideo = (word: LibraryWord) => {
     navigate(`/deck/${word.deck_id}/word/${word.id}`)
@@ -195,7 +196,7 @@ export default function Dashboard() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="classic-dashboard-header">
-          <h1 className="truncate">
+          <h1 className="break-words">
             {profile?.display_name
               ? t('dashboard.welcomeUser', { name: profile.display_name })
               : t('dashboard.welcome')}
@@ -222,15 +223,15 @@ export default function Dashboard() {
 
             {/* Sticky language tabs */}
             {availableLanguages.length > 1 && (
-              <div className="sticky top-16 z-10 bg-background/80 backdrop-blur-sm py-2 -mx-4 sm:-mx-6 px-4 sm:px-6 mb-2">
-                <div className="flex gap-2 overflow-x-auto sm:justify-center sm:flex-wrap sm:overflow-visible scrollbar-none">
+              <div className="sticky top-16 z-10 bg-background/80 backdrop-blur-sm py-2 mb-2">
+                <div className="flex gap-2 flex-wrap justify-center">
                   {availableLanguages.map((lang) => {
                     const isActive = lang === activeLanguage
                     return (
                       <button
                         key={lang}
                         onClick={() => setActiveLanguage(lang)}
-                        className={`flex-shrink-0 min-h-[44px] px-4 py-2 rounded-full text-sm border transition-all ${
+                        className={`min-h-[44px] px-3 py-2 rounded-full text-sm border transition-all ${
                           isActive
                             ? 'bg-white/15 border-white/40 text-white shadow-[0_0_20px_rgba(255,255,255,0.1)]'
                             : 'border-white/10 text-white/60 hover:text-white/90 hover:border-white/25'

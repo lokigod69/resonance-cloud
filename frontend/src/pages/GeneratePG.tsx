@@ -3,10 +3,12 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, X, Sparkles, Zap, Check, ArrowLeft, Film } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
 import { useWizardState } from '@/components/generate/useWizardState'
 import type { ExistingDeck } from '@/components/generate/useWizardState'
+import WordsStep from '@/components/generate/steps/WordsStep'
 import {
   LANGUAGES,
   VIBES,
@@ -58,16 +60,29 @@ export default function GeneratePG() {
       })
   }, [deckIdParam, dispatch])
 
+  // Pre-seed from LanguageContext (dashboard language tab). Only seeds if
+  // the wizard's own language state is still empty — never overwrites a manual choice.
+  const { activeLanguage } = useLanguage()
+  useEffect(() => {
+    if (deckIdParam) return
+    if (state.language) return
+    if (activeLanguage) {
+      dispatch({ type: 'SET_LANGUAGE', language: activeLanguage })
+      setPgStep(1) // skip language selection — mirrors deckIdParam path
+    }
+  }, [deckIdParam, state.language, activeLanguage, dispatch])
+
   /* ─── Submit (mirrors GenerateWizard.handleGenerate) ─── */
 
-  async function handleGenerate() {
+  async function handleGenerate(wordsOverride?: string[]) {
     if (!user || !profile) return
-    if (state.words.length === 0) return
+    const effectiveWords = wordsOverride ?? state.words
+    if (effectiveWords.length === 0) return
     if (!existingDeck && !state.language) return
 
     const cachedCredits = profile.credits ?? 0
-    if (cachedCredits < state.words.length) {
-      const msg = t('generate.notEnoughCreditsDetail', { have: cachedCredits, need: state.words.length })
+    if (cachedCredits < effectiveWords.length) {
+      const msg = t('generate.notEnoughCreditsDetail', { have: cachedCredits, need: effectiveWords.length })
       setError(msg)
       toast(msg, 'error')
       return
@@ -86,13 +101,18 @@ export default function GeneratePG() {
       if (profileError || !freshProfile) throw new Error(t('generate.couldNotVerifyCredits'))
 
       const freshCredits = freshProfile.credits ?? 0
-      const wordCount = state.words.length
+      const wordCount = effectiveWords.length
 
       if (freshCredits < wordCount) {
         throw new Error(t('generate.notEnoughCreditsDetail', { have: freshCredits, need: wordCount }))
       }
 
-      const { deckPayload, wordList, jobPayload } = buildPayload(user.id, existingDeck ?? undefined)
+      const { deckPayload, jobPayload } = buildPayload(user.id, existingDeck ?? undefined)
+      // Use explicit word list instead of buildPayload's closure-captured state.words.
+      // Also patch word counts that buildPayload derived from the (possibly stale) state.
+      const wordList = effectiveWords
+      if (deckPayload) deckPayload.word_count = wordList.length
+      jobPayload.words_total = wordList.length
 
       let targetDeckId: string
 
@@ -161,11 +181,11 @@ export default function GeneratePG() {
 
   /* ─── Quick Generate path ─── */
 
-  function handleQuickGenerate() {
-    // Clear custom selections (vibe/art/genre → null) then submit immediately.
-    // buildPayload handles nulls correctly: null vibe → auto, null art → AI decides, null genre → auto.
+  function handleQuickGenerate(words: string[]) {
+    // Clear custom selections (vibe/art/genre → null) then submit with the
+    // explicit word list provided by WordsStep (avoids stale-closure race).
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
-    handleGenerate()
+    handleGenerate(words)
   }
 
   /* ─── Generated state ─── */
@@ -254,16 +274,11 @@ export default function GeneratePG() {
             />
           )}
           {pgStep === 1 && (
-            <StepWords
-              words={state.words}
+            <WordsStep
+              state={state}
               dispatch={dispatch}
-              inputRef={wordInputRef}
               onQuickGenerate={handleQuickGenerate}
-              onCustomize={() => {
-                dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
-                setPgStep(2)
-              }}
-              submitting={submitting}
+              onCustomize={() => setPgStep(2)}
             />
           )}
           {pgStep === 2 && (
@@ -387,8 +402,9 @@ function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
 }
 
 /* ─── Step 1: Words ─────────────────────────────── */
-
-function StepWords({
+// DEPRECATED: replaced by shared WordsStep component with CategoryPicker
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function _StepWords_DEPRECATED({
   words,
   dispatch,
   inputRef,

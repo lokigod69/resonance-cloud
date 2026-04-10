@@ -6,6 +6,10 @@ import { CATEGORY_GROUPS } from '@/data/categories'
 import { useLanguage } from '@/contexts/LanguageContext'
 import type { WizardState, WizardAction } from '../useWizardState'
 
+// NOTE: suggest-words endpoint requires the local orchestrator (port 8090).
+// In production (Vercel), this feature is non-functional until the endpoint
+// is deployed as a serverless function. See cloud migration plan.
+
 type Mode = 'idle' | 'picking' | 'loading' | 'preview'
 
 interface FilledSlot {
@@ -130,23 +134,25 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
         animate={{ opacity: 1, y: 0 }}
         className="w-full space-y-5"
       >
-        {CATEGORY_GROUPS.map((group) => (
-          <div key={group.label}>
-            <h3 className="text-xs uppercase tracking-wider text-white/40 mb-2">{group.label}</h3>
-            <div className="flex flex-wrap gap-2">
-              {group.categories.map((cat) => (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => fetchSuggestions(cat)}
-                  className="rounded-full px-4 py-2 min-h-[40px] text-sm text-white/80 bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/20 transition"
-                >
-                  {cat}
-                </button>
-              ))}
+        <div className="max-h-[50vh] overflow-y-auto pr-1 space-y-5">
+          {CATEGORY_GROUPS.map((group) => (
+            <div key={group.label}>
+              <h3 className="text-xs uppercase tracking-wider text-white/40 mb-2">{group.label}</h3>
+              <div className="flex flex-wrap gap-2">
+                {group.categories.map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => fetchSuggestions(cat)}
+                    className="rounded-full px-4 py-2 min-h-[44px] text-sm text-white/80 bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:border-white/20 transition"
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
         {error && <p className="text-xs text-red-400">{error}</p>}
         <button
           type="button"

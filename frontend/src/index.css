@@ -250,9 +250,15 @@ input[type="range"].volume-slider::-moz-range-track {
 }
 
 .classic-dashboard-header h1 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin-bottom: 8px;
   font-weight: 300;
+}
+
+@media (min-width: 640px) {
+  .classic-dashboard-header h1 {
+    font-size: 2.5rem;
+  }
 }
 
 .classic-dashboard-header p {

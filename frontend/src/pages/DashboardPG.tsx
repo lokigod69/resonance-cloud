@@ -122,7 +122,12 @@ export default function DashboardPG() {
     }
   }, [user?.id, activeLanguage, location.key])
 
-  const totalWords = decks.reduce((sum, d) => sum + (d.word_count ?? 0), 0)
+  const filteredDecks = useMemo(
+    () => (activeLanguage ? decks.filter((d) => d.target_language === activeLanguage) : decks),
+    [decks, activeLanguage]
+  )
+  const totalWords = filteredDecks.reduce((sum, d) => sum + (d.word_count ?? 0), 0)
+  const deckCount = filteredDecks.length
   const level = Math.floor(totalWords / 10) + 1
 
   const quote = useMemo(() => QUOTES[Math.floor(Math.random() * QUOTES.length)], [])
@@ -195,7 +200,7 @@ export default function DashboardPG() {
         {/* Welcome */}
         <div className="flex items-center justify-between mb-6">
           <div className="min-w-0">
-            <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate text-white">
+            <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight break-words text-white">
               {profile?.display_name
                 ? t('dashboard.welcomeUser', { name: profile.display_name })
                 : t('dashboard.welcome')}
@@ -215,7 +220,7 @@ export default function DashboardPG() {
                 <div className="text-xs text-white/50 mt-1">words</div>
               </div>
               <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 text-center">
-                <div className="text-3xl font-bold text-white">{decks.length}</div>
+                <div className="text-3xl font-bold text-white">{deckCount}</div>
                 <div className="text-xs text-white/50 mt-1">decks</div>
               </div>
               <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 text-center">
@@ -226,15 +231,15 @@ export default function DashboardPG() {
 
             {/* Sticky language tabs */}
             {availableLanguages.length > 1 && (
-              <div className="sticky top-16 z-10 bg-background/80 backdrop-blur-sm py-2 -mx-4 px-4 mb-2">
-                <div className="flex gap-2 overflow-x-auto sm:justify-center sm:flex-wrap sm:overflow-visible scrollbar-none">
+              <div className="sticky top-16 z-10 bg-background/80 backdrop-blur-sm py-2 mb-2">
+                <div className="flex gap-2 flex-wrap justify-center">
                   {availableLanguages.map((lang) => {
                     const isActive = lang === activeLanguage
                     return (
                       <button
                         key={lang}
                         onClick={() => setActiveLanguage(lang)}
-                        className={`flex-shrink-0 min-h-[44px] px-4 py-2 rounded-full text-sm border transition-all ${
+                        className={`min-h-[44px] px-3 py-2 rounded-full text-sm border transition-all ${
                           isActive
                             ? 'bg-white/15 border-white/40 text-white'
                             : 'border-white/10 text-white/40 hover:text-white/70 hover:border-white/25'

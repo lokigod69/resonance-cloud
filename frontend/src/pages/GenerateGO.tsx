@@ -7,7 +7,8 @@ import { supabase } from '@/lib/supabase'
 import { LANGUAGES, VIBES, ART_STYLE_GROUPS, MAX_WORDS } from '@/components/generate/wizardData'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { submitGeneration } from '@/components/generate/submitGeneration'
-import type { GeneratePayload, ExistingDeck } from '@/components/generate/useWizardState'
+import type { GeneratePayload, ExistingDeck, WizardState, WizardAction } from '@/components/generate/useWizardState'
+import WordsStep from '@/components/generate/steps/WordsStep'
 
 const GO_GENRES = [
   { value: 'auto', label: 'Auto' },
@@ -31,7 +32,6 @@ export default function GenerateGO() {
   // Selections
   const [language, setLanguage] = useState<string | null>(null)
   const [words, setWords] = useState<string[]>([])
-  const [wordInput, setWordInput] = useState('')
   const [vibe, setVibe] = useState<string | null>(null)
   const [movieTitle, setMovieTitle] = useState('')
   const [showMovieInput, setShowMovieInput] = useState(false)
@@ -74,6 +74,7 @@ export default function GenerateGO() {
     if (language) return
     if (activeLanguage) {
       setLanguage(activeLanguage)
+      setStep(2) // skip language selection — mirrors deckIdParam path
     }
   }, [deckIdParam, language, activeLanguage])
 
@@ -111,17 +112,41 @@ export default function GenerateGO() {
 
   // ── Step 2: Words ─────────────────────────────────
 
-  function handleWordKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key !== 'Enter') return
-    const trimmed = wordInput.trim()
-    if (!trimmed || words.length >= MAX_WORDS) return
-    if (words.some(w => w.toLowerCase() === trimmed.toLowerCase())) return
-    setWords(prev => [...prev, trimmed])
-    setWordInput('')
-  }
+  // Adapter so the shared WordsStep (which expects WizardState/WizardAction)
+  // can drive GenerateGO's local useState-based flow.
+  const wordsStepState = {
+    words,
+    language,
+    vibe: null,
+    artStyle: null,
+    genre: null,
+    movieTitle: '',
+    deckName: '',
+    path: 'undecided',
+  } as unknown as WizardState
 
-  function handleRemoveWord(index: number) {
-    setWords(prev => prev.filter((_, i) => i !== index))
+  const wordsStepDispatch: React.Dispatch<WizardAction> = (action) => {
+    switch (action.type) {
+      case 'ADD_WORD':
+        setWords(prev =>
+          prev.some(w => w.toLowerCase() === action.word.toLowerCase())
+            ? prev
+            : [...prev, action.word].slice(0, MAX_WORDS),
+        )
+        break
+      case 'REMOVE_WORD':
+        setWords(prev => prev.filter((_, i) => i !== action.index))
+        break
+      case 'SET_WORDS':
+        setWords(action.words.slice(0, MAX_WORDS))
+        break
+      case 'CHOOSE_PATH':
+        if (action.path === 'custom') setStep(3)
+        // 'quick' is handled via onQuickGenerate prop below
+        break
+      default:
+        break
+    }
   }
 
   // ── Step 3: Vibe ──────────────────────────────────
@@ -190,11 +215,12 @@ export default function GenerateGO() {
 
   // ── Step 6: Submit ────────────────────────────────
 
-  async function handleInitialize() {
-    if (!user || !language || words.length === 0) return
+  async function handleInitialize(wordsOverride?: string[]) {
+    const effectiveWords = wordsOverride ?? words
+    if (!user || !language || effectiveWords.length === 0) return
 
-    if (credits < words.length) {
-      const msg = `Not enough credits. You have ${credits} but need ${words.length}. Redeem an invite code to get more.`
+    if (credits < effectiveWords.length) {
+      const msg = `Not enough credits. You have ${credits} but need ${effectiveWords.length}. Redeem an invite code to get more.`
       setError(msg)
       toast(msg, 'error')
       return
@@ -224,10 +250,10 @@ export default function GenerateGO() {
           target_language: language,
           art_style: artStyle,
           movie_override: movieOverride,
-          word_count: words.length,
+          word_count: effectiveWords.length,
           status: 'generating',
         },
-        wordList: words,
+        wordList: effectiveWords,
         jobPayload: {
           user_id: user.id,
           ...(existingDeck ? { deck_id: existingDeck.id } : {}),
@@ -235,7 +261,7 @@ export default function GenerateGO() {
           target_language: language,
           art_style: artStyle ?? existingDeck?.art_style ?? null,
           movie_override: movieOverride ?? existingDeck?.movie_override ?? null,
-          words_total: words.length,
+          words_total: effectiveWords.length,
           settings_override: {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
             ...(genreValue ? { genre: genreValue } : {}),
@@ -291,44 +317,16 @@ export default function GenerateGO() {
       {step >= 2 && (
         <div ref={el => { sectionRefs.current[1] = el }} className="gen-section">
           {step === 2 ? (
-            <>
-              <h3>Seed Words</h3>
-              <div className="gen-orb-row">
-                {words.map((word, i) => (
-                  <div
-                    key={`${word}-${i}`}
-                    className="gen-orb word-orb"
-                    style={{
-                      background: `hsla(${(i * 40) % 360}, 70%, 50%, 0.2)`,
-                      borderColor: `hsla(${(i * 40) % 360}, 70%, 50%, 0.6)`,
-                    }}
-                    onClick={() => handleRemoveWord(i)}
-                    title="Click to remove"
-                  >
-                    {word}
-                  </div>
-                ))}
-                {words.length < MAX_WORDS && (
-                  <div className="gen-orb input-orb">
-                    <input
-                      value={wordInput}
-                      onChange={e => setWordInput(e.target.value)}
-                      onKeyDown={handleWordKeyDown}
-                      placeholder="Type word..."
-                      autoFocus
-                    />
-                  </div>
-                )}
-                {words.length > 0 && (
-                  <div className="gen-orb forge-btn" onClick={() => setStep(3)}>
-                    <span className="material-symbols-outlined" style={{ fontSize: '1.5rem' }}>arrow_forward</span>
-                  </div>
-                )}
-              </div>
+            <div className="glass-card">
+              <WordsStep
+                state={wordsStepState}
+                dispatch={wordsStepDispatch}
+                onQuickGenerate={handleInitialize}
+              />
               <p style={{ textAlign: 'center', color: 'var(--go-text-secondary)', fontSize: '0.8rem', marginTop: 12 }}>
                 {words.length}/{MAX_WORDS} words · {credits} credits available
               </p>
-            </>
+            </div>
           ) : (
             <div className="gen-orb-row">
               <div className="gen-orb selected breadcrumb" onClick={() => setStep(2)}>
