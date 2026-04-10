@@ -116,11 +116,13 @@ export default function Speak() {
       <div className="flex flex-col min-h-full pb-20">
         <div className="sticky top-0 z-40 bg-gray-950 pt-6 pb-4">
           <div className="max-w-2xl mx-auto w-full px-6">
-            <div className="flex items-center gap-3 mb-1">
-              <Mic className="h-6 w-6 text-[var(--accent,#06b6d4)]" />
-              <h1 className="text-xl font-semibold text-white">{t('speak.voiceTutor')}</h1>
+            <div className="flex flex-col items-center">
+              <div className="flex items-center gap-3">
+                <Mic className="h-6 w-6 text-[var(--accent,#06b6d4)]" />
+                <h1 className="text-xl font-semibold text-white">{t('speak.voiceTutor')}</h1>
+              </div>
+              <p className="text-sm text-gray-400 text-center mt-1">{t('speak.chooseLang')}</p>
             </div>
-            <p className="text-sm text-gray-400">{t('speak.chooseLang')}</p>
           </div>
         </div>
 

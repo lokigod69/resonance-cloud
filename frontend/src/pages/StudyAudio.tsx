@@ -186,11 +186,11 @@ export default function StudyAudio() {
       <div className="w-full max-w-xl">
         {/* Deck filter */}
         {decks.length > 1 && (
-          <div className="flex justify-end mb-4">
+          <div className="flex justify-center mb-4">
             <Select value={deckFilter} onValueChange={setDeckFilter}>
               <SelectTrigger
                 size="sm"
-                className="w-[200px] bg-white/5 border-white/10 text-gray-200 hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+                className="w-[200px] bg-white/5 dark:bg-white/5 border-white/10 dark:border-white/10 text-gray-200 hover:bg-white/10 dark:hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
               >
                 <SelectValue />
               </SelectTrigger>
@@ -358,7 +358,7 @@ export default function StudyAudio() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="flex gap-3 w-full max-w-md mx-auto"
+                  className="flex justify-center gap-3 w-full max-w-md mx-auto"
                 >
                   <button
                     onClick={handleReviewLater}

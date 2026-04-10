@@ -138,8 +138,8 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
         <div className="w-full space-y-5 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
           {CATEGORY_GROUPS.map((group) => (
             <div key={group.label}>
-              <h3 className="text-xs uppercase tracking-wider text-white/40 mb-2"><span aria-hidden="true">{group.emoji}</span> {group.label}</h3>
-              <div className="flex flex-wrap gap-2">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-white/60 mb-3 text-center"><span aria-hidden="true">{group.emoji}</span> {group.label}</h3>
+              <div className={`flex flex-wrap gap-2 ${group.categories.length === 1 ? 'justify-center' : ''}`}>
                 {group.categories.map((cat) => (
                   <button
                     key={cat.name}

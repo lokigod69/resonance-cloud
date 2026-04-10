@@ -5,7 +5,8 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
-import { AlertCircle, RefreshCw, LogIn } from 'lucide-react'
+import { AlertCircle, RefreshCw, LogIn, Info } from 'lucide-react'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { useTranslation } from '@/hooks/useTranslation'
 import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDetailModal'
 import WordLibrary from '@/components/dashboard/WordLibrary'
@@ -200,17 +201,15 @@ export default function DashboardPG() {
     <div className="w-full max-w-full overflow-x-hidden">
       <div className="px-4 sm:px-6 max-w-4xl mx-auto">
         {/* Welcome */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="min-w-0">
-            <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight break-words text-white">
-              {profile?.display_name
-                ? t('dashboard.welcomeUser', { name: profile.display_name })
-                : t('dashboard.welcome')}
-            </h1>
-            <p className="text-white/50 mt-1 text-sm">
-              {t('dashboard.credits', { count: profile?.credits ?? 0 })}
-            </p>
-          </div>
+        <div className="flex flex-col items-center text-center mb-6">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight break-words text-white">
+            {profile?.display_name
+              ? t('dashboard.welcomeUser', { name: profile.display_name })
+              : t('dashboard.welcome')}
+          </h1>
+          <p className="text-white/50 mt-1 text-sm">
+            {t('dashboard.credits', { count: profile?.credits ?? 0 })}
+          </p>
         </div>
 
         {!showEmptyState && (
@@ -226,8 +225,22 @@ export default function DashboardPG() {
                 <div className="text-xs text-white/50 mt-1">decks</div>
               </div>
               <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 text-center">
-                <div className="text-3xl font-bold text-white">L{level}</div>
-                <div className="text-xs text-white/50 mt-1">level</div>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="cursor-help">
+                        <div className="text-3xl font-bold text-white inline-flex items-center gap-1">
+                          L{level}
+                          <Info className="h-4 w-4 text-white/40" />
+                        </div>
+                        <div className="text-xs text-white/50 mt-1">level</div>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{t('dashboard.levelTooltip', { count: String(totalWords) })}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
             </div>
 
@@ -318,7 +331,9 @@ export default function DashboardPG() {
 
         {/* Quote */}
         <div className="mt-12 mb-8 text-center max-w-2xl mx-auto px-4">
-          <p className="text-white/30 text-sm italic">"{quote}"</p>
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <p className="text-white/50 text-base italic leading-relaxed">"{quote}"</p>
+          </div>
         </div>
       </div>
 

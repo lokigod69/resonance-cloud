@@ -3,7 +3,8 @@ import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
-import { Sparkles } from 'lucide-react'
+import { Sparkles, Info } from 'lucide-react'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useTranslation } from '@/hooks/useTranslation'
 import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDetailModal'
@@ -218,9 +219,19 @@ export default function Dashboard() {
                 <span className="text-white font-semibold text-lg">{stats.deckCount}</span>{' '}
                 <span className="text-white/50 text-xs sm:text-sm">decks</span>
               </div>
-              <div>
-                <span className="text-white font-semibold text-lg">{stats.level}</span>
-              </div>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="cursor-help inline-flex items-center gap-1">
+                      <span className="text-white font-semibold text-lg">{stats.level}</span>
+                      <Info className="h-3.5 w-3.5 text-white/40" />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{t('dashboard.levelTooltip', { count: String(stats.wordCount) })}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
 
             {/* Sticky language tabs */}
@@ -313,7 +324,9 @@ export default function Dashboard() {
 
         {/* Quote */}
         <div className="mt-12 mb-8 text-center max-w-2xl mx-auto px-4">
-          <p className="text-sm text-muted-foreground italic">"{quote}"</p>
+          <div className="bg-card/80 border border-border/50 rounded-xl p-6">
+            <p className="text-base text-muted-foreground italic leading-relaxed">"{quote}"</p>
+          </div>
         </div>
       </div>
 

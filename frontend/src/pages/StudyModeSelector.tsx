@@ -40,6 +40,7 @@ export default function StudyModeSelector() {
 
   const [deckName, setDeckName] = useState<string | null>(null)
   const [allDecks, setAllDecks] = useState<{ id: string; name: string | null; target_language: string }[]>([])
+  const [decksLoaded, setDecksLoaded] = useState(false)
   const [lastUsed, setLastUsed] = useState<string | null>(() => {
     try { return localStorage.getItem(STORAGE_KEY) } catch { return null }
   })
@@ -51,7 +52,7 @@ export default function StudyModeSelector() {
       .from('decks')
       .select('id, name, target_language')
       .eq('user_id', user.id)
-      .then(({ data }) => { if (data) setAllDecks(data) })
+      .then(({ data }) => { if (data) setAllDecks(data); setDecksLoaded(true) })
   }, [user])
 
   // Derive available languages
@@ -89,13 +90,13 @@ export default function StudyModeSelector() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-6">
       <div className="w-full max-w-2xl">
-        {/* Language selector */}
-        {availableLanguages.length > 1 && !deckParam && (
+        {/* Language selector — only render once loaded and multi-language */}
+        {!deckParam && decksLoaded && availableLanguages.length > 1 && (
           <div className="flex justify-center mb-4">
             <Select value={activeLanguage ?? ''} onValueChange={setActiveLanguage}>
               <SelectTrigger
                 size="sm"
-                className="w-[200px] bg-white/5 border-white/10 text-gray-200 hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+                className="w-[200px] bg-white/5 dark:bg-white/5 border-white/10 dark:border-white/10 text-gray-200 hover:bg-white/10 dark:hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
               >
                 <SelectValue placeholder={t('study.language')} />
               </SelectTrigger>
@@ -110,14 +111,12 @@ export default function StudyModeSelector() {
           </div>
         )}
 
-        {/* Deck context */}
-        <p className="text-center text-sm text-gray-400 mb-2">
-          {deckParam && deckName
-            ? t('study.studyingDeck', { name: deckName })
-            : activeLanguage
-              ? t('study.studyingLanguage', { language: activeLanguage })
-              : t('study.studyingAll')}
-        </p>
+        {/* Deck context — only show when studying a specific deck (language is already in dropdown) */}
+        {deckParam && deckName && (
+          <p className="text-center text-sm text-gray-400 mb-2">
+            {t('study.studyingDeck', { name: deckName })}
+          </p>
+        )}
 
         {/* Title */}
         <h1 className="text-2xl font-bold text-center mb-8">{t('study.chooseMode')}</h1>
