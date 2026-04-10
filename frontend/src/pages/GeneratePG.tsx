@@ -74,6 +74,7 @@ export default function GeneratePG() {
 
   async function handleGenerate(wordsOverride?: string[]) {
     if (!user || !profile) return
+    const isQuickGenerate = wordsOverride !== undefined
     const effectiveWords = wordsOverride ?? state.words
     if (effectiveWords.length === 0) return
     if (!existingDeck && !state.language) return
@@ -111,6 +112,15 @@ export default function GeneratePG() {
       const wordList = effectiveWords
       if (deckPayload) deckPayload.word_count = wordList.length
       jobPayload.words_total = wordList.length
+      if (isQuickGenerate) {
+        if (deckPayload) {
+          deckPayload.art_style = null
+          deckPayload.movie_override = null
+        }
+        jobPayload.art_style = existingDeck?.art_style ?? null
+        jobPayload.movie_override = existingDeck?.movie_override ?? null
+        jobPayload.settings_override = {}
+      }
 
       let targetDeckId: string
 
@@ -275,7 +285,7 @@ export default function GeneratePG() {
             <WordsStep
               state={state}
               dispatch={dispatch}
-              onQuickGenerate={handleQuickGenerate}
+              onQuickGenerate={(words) => handleQuickGenerate(words)}
               onCustomize={() => setPgStep(2)}
             />
           )}
@@ -306,7 +316,7 @@ export default function GeneratePG() {
               state={state}
               dispatch={dispatch}
               credits={profile?.credits ?? 0}
-              onSubmit={handleGenerate}
+              onSubmit={() => handleGenerate()}
               submitting={submitting}
               error={error}
               existingDeck={existingDeck}

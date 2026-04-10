@@ -64,14 +64,16 @@ export default function GenerateWizard() {
   const direction: 1 | -1 = state.step >= prevStep.current ? 1 : -1
   prevStep.current = state.step
 
-  async function handleGenerate() {
+  async function handleGenerate(wordsOverride?: string[]) {
     if (!user || !profile) return
-    if (state.words.length === 0) return
+    const isQuickGenerate = wordsOverride !== undefined
+    const effectiveWords = wordsOverride ?? state.words
+    if (effectiveWords.length === 0) return
     if (!existingDeck && !state.language) return
 
     const credits = profile.credits ?? 0
-    if (credits < state.words.length) {
-      const msg = `Not enough credits. You have ${credits} but need ${state.words.length}. Redeem an invite code to get more.`
+    if (credits < effectiveWords.length) {
+      const msg = `Not enough credits. You have ${credits} but need ${effectiveWords.length}. Redeem an invite code to get more.`
       setError(msg)
       toast(msg, 'error')
       return
@@ -82,6 +84,18 @@ export default function GenerateWizard() {
 
     try {
       const payload = buildPayload(user.id, existingDeck ?? undefined)
+      payload.wordList = effectiveWords
+      if (payload.deckPayload) payload.deckPayload.word_count = effectiveWords.length
+      payload.jobPayload.words_total = effectiveWords.length
+      if (isQuickGenerate) {
+        if (payload.deckPayload) {
+          payload.deckPayload.art_style = null
+          payload.deckPayload.movie_override = null
+        }
+        payload.jobPayload.art_style = existingDeck?.art_style ?? null
+        payload.jobPayload.movie_override = existingDeck?.movie_override ?? null
+        payload.jobPayload.settings_override = {}
+      }
       await submitGeneration(user.id, payload, existingDeck ?? undefined)
       await refreshProfile()
       setGenerated(true)
@@ -106,7 +120,7 @@ export default function GenerateWizard() {
           <WordsStep
             state={state}
             dispatch={dispatch}
-            onQuickGenerate={handleGenerate}
+            onQuickGenerate={(words) => handleGenerate(words)}
           />
         )
       case 3:
@@ -120,7 +134,7 @@ export default function GenerateWizard() {
           <ConfirmStep
             state={state}
             dispatch={dispatch}
-            onGenerate={handleGenerate}
+            onGenerate={() => handleGenerate()}
             submitting={submitting}
             error={error}
             existingDeck={!!existingDeck}

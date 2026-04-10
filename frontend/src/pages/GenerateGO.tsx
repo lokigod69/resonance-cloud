@@ -216,6 +216,7 @@ export default function GenerateGO() {
   // ── Step 6: Submit ────────────────────────────────
 
   async function handleInitialize(wordsOverride?: string[]) {
+    const isQuickGenerate = wordsOverride !== undefined
     const effectiveWords = wordsOverride ?? words
     if (!user || !language || effectiveWords.length === 0) return
 
@@ -231,24 +232,27 @@ export default function GenerateGO() {
 
     try {
       const movieOverride =
-        vibe === 'movie' || vibe === 'specific_movie'
+        !isQuickGenerate && (vibe === 'movie' || vibe === 'specific_movie')
           ? movieTitle.trim() || null
           : null
       const creativeDirection =
-        vibe === 'specific_movie' ? 'movie'
+        isQuickGenerate ? undefined
+          : vibe === 'specific_movie' ? 'movie'
           : vibe === 'auto' ? undefined
           : vibe || undefined
       const genreValue =
-        genre === 'auto' ? undefined
+        isQuickGenerate ? undefined
+          : genre === 'auto' ? undefined
           : genre === 'custom' ? customGenre.trim() || undefined
           : genre || undefined
+      const artStyleValue = isQuickGenerate ? null : artStyle
 
       const payload: GeneratePayload = {
         deckPayload: existingDeck ? null : {
           user_id: user.id,
           name: deckName.trim() || `${language} Deck — ${new Date().toLocaleDateString()}`,
           target_language: language,
-          art_style: artStyle,
+          art_style: artStyleValue,
           movie_override: movieOverride,
           word_count: effectiveWords.length,
           status: 'generating',
@@ -259,7 +263,7 @@ export default function GenerateGO() {
           ...(existingDeck ? { deck_id: existingDeck.id } : {}),
           status: 'pending',
           target_language: language,
-          art_style: artStyle ?? existingDeck?.art_style ?? null,
+          art_style: artStyleValue ?? existingDeck?.art_style ?? null,
           movie_override: movieOverride ?? existingDeck?.movie_override ?? null,
           words_total: effectiveWords.length,
           settings_override: {
@@ -321,7 +325,7 @@ export default function GenerateGO() {
               <WordsStep
                 state={wordsStepState}
                 dispatch={wordsStepDispatch}
-                onQuickGenerate={handleInitialize}
+                onQuickGenerate={(words) => handleInitialize(words)}
               />
               <p style={{ textAlign: 'center', color: 'var(--go-text-secondary)', fontSize: '0.8rem', marginTop: 12 }}>
                 {words.length}/{MAX_WORDS} words · {credits} credits available
