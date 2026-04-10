@@ -557,13 +557,16 @@ export default function Speak() {
           >
             <div
               onClick={msg.role === 'assistant' ? () => {
-                if (tutor.listenMode && !msg.revealed) tutor.revealMessage(i)
-                if (msg.audioBase64) tutor.replayMessageAudio(msg)
+                if (tutor.listenMode && !msg.revealed) {
+                  tutor.revealMessage(i)
+                } else if (msg.audioBase64) {
+                  tutor.replayMessageAudio(msg)
+                }
               } : undefined}
               className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed transition-opacity duration-500 ${
                 msg.role === 'user'
                   ? 'bg-cyan-900/50 text-white rounded-br-sm opacity-100'
-                  : `bg-gray-800/60 text-gray-100 rounded-bl-sm ${msg.revealed || tutor.listenMode ? 'opacity-100' : 'opacity-0'}${msg.audioBase64 || (tutor.listenMode && !msg.revealed) ? ' cursor-pointer active:bg-gray-700/60 transition-colors' : ''}`
+                  : `bg-gray-800/60 text-gray-100 rounded-bl-sm ${!tutor.listenMode || msg.revealed ? 'opacity-100' : 'opacity-0'}${msg.audioBase64 || (tutor.listenMode && !msg.revealed) ? ' cursor-pointer active:bg-gray-700/60 transition-colors' : ''}`
               }`}
             >
               {msg.role === 'assistant' && !msg.revealed ? (

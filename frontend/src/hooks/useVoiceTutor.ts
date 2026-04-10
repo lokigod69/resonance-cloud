@@ -46,7 +46,7 @@ export interface UseVoiceTutorReturn {
   stopRecording: () => void
   stopRecordingIfActive: () => void
   selectLanguage: (lang: string) => void
-  startConversationWithCharacter: (char: TutorCharacter) => void
+  startConversationWithCharacter: (char: TutorCharacter) => Promise<void>
   startRoleplay: (scenario: RoleplayScenario, language: string, level: string) => Promise<void>
   isRoleplayMode: boolean
   activeScenario: RoleplayScenario | null
@@ -100,11 +100,13 @@ async function playAudioViaContext(
   _format: string,
   ctx: AudioContext,
   onSourceCreated?: (source: AudioBufferSourceNode) => void,
+  isAborted?: () => boolean,
 ): Promise<void> {
   const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
   const arrayBuffer = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
   const audioBuffer = await ctx.decodeAudioData(arrayBuffer as ArrayBuffer)
   return new Promise<void>((resolve) => {
+    if (isAborted?.()) { resolve(); return }
     const source = ctx.createBufferSource()
     source.buffer = audioBuffer
     source.connect(ctx.destination)
@@ -119,6 +121,7 @@ function playAudioViaElement(
   base64: string,
   format: string,
   onElementCreated?: (audio: HTMLAudioElement) => void,
+  isAborted?: () => boolean,
 ): Promise<void> {
   return new Promise((resolve, reject) => {
     const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
@@ -135,6 +138,11 @@ function playAudioViaElement(
       reject(new Error('Audio playback failed'))
     }
     onElementCreated?.(audio)
+    if (isAborted?.()) {
+      URL.revokeObjectURL(url)
+      resolve()
+      return
+    }
     audio.play().catch(reject)
   })
 }
@@ -216,6 +224,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const convMessageCountRef = useRef<number>(0)
   const activeSourceRef = useRef<AudioBufferSourceNode | null>(null)
   const activeAudioElRef = useRef<HTMLAudioElement | null>(null)
+  const playbackGenerationRef = useRef(0)
 
   useEffect(() => {
     messagesRef.current = messages
@@ -463,6 +472,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
   /** Stop any currently playing audio (AudioBufferSourceNode or HTMLAudioElement). */
   const stopAudio = useCallback(() => {
+    playbackGenerationRef.current++
     if (activeSourceRef.current) {
       try { activeSourceRef.current.stop() } catch { /* already stopped */ }
       activeSourceRef.current = null
@@ -481,16 +491,18 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
    */
   const playAudio = useCallback(async (base64: string, format: string) => {
     stopAudio()
+    const generation = ++playbackGenerationRef.current
+    const isAborted = () => playbackGenerationRef.current !== generation
     if (audioContextRef.current && audioContextRef.current.state === 'running') {
       await playAudioViaContext(base64, format, audioContextRef.current, (source) => {
         activeSourceRef.current = source
-      })
+      }, isAborted)
       activeSourceRef.current = null
       return
     }
     await playAudioViaElement(base64, format, (audio) => {
       activeAudioElRef.current = audio
-    })
+    }, isAborted)
     activeAudioElRef.current = null
   }, [stopAudio])
 
@@ -557,6 +569,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
   const selectLanguage = useCallback(
     (lang: string) => {
+      stopAudio()
       endConversation()
       setLanguage(lang)
       setVoice(null)
@@ -580,13 +593,16 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       scenarioPromptRef.current = null
       roleplayMetaRef.current = null
     },
-    [endConversation],
+    [endConversation, stopAudio],
   )
 
   const startConversationWithCharacter = useCallback(
-    (char: TutorCharacter) => {
+    async (char: TutorCharacter) => {
       const lang = language
       if (!lang) return
+
+      // iOS: unlock AudioContext on the user gesture before any await
+      await ensureAudioContext()
 
       // Defensive: ensure roleplay state is cleared if entering freeform from any path
       isRoleplayRef.current = false
@@ -629,11 +645,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       }
       // Otherwise level is null → State 2.5 (level picker) renders
     },
-    [language, fetchAndPlayGreeting, endConversation],
+    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext],
   )
 
   const startRoleplay = useCallback(
     async (scenario: RoleplayScenario, lang: string, selectedLevel: string) => {
+      await ensureAudioContext()
       endConversation()
       previousStateRef.current = null
 
@@ -689,7 +706,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         setStatus('error')
       }
     },
-    [endConversation, fetchAndPlayGreeting],
+    [endConversation, fetchAndPlayGreeting, ensureAudioContext],
   )
 
   const selectLevel = useCallback(
@@ -768,6 +785,13 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       ))
       messagesRef.current = messagesRef.current.map((m) =>
         m.role === 'assistant' && !m.revealed ? { ...m, revealed: true } : m
+      )
+    } else {
+      setMessages((prev) => prev.map((m) =>
+        m.role === 'assistant' ? { ...m, revealed: false } : m
+      ))
+      messagesRef.current = messagesRef.current.map((m) =>
+        m.role === 'assistant' ? { ...m, revealed: false } : m
       )
     }
   }, [])
