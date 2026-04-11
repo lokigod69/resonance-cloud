@@ -19,7 +19,6 @@ import os
 import re
 import subprocess
 import sys
-import tempfile
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -33,10 +32,9 @@ load_dotenv()
 from src.pipeline import run_stage, STAGE_ORDER
 from src.settings import save_defaults, load_defaults, DEFAULT_SETTINGS
 from src.manifest import create_manifest, read_manifest, update_selection
-from src.workspace import create_word_folder, get_word_dir
+from src.workspace import create_word_folder
 from src.slugify import slugify, language_to_code
 from src.dispatcher import check_all_engines
-from src.models import Enrichment
 from src.suno import generate_song as suno_generate_song, download_suno_audio, fetch_existing_task, _write_to_supabase as suno_write_to_supabase
 
 import httpx
@@ -573,74 +571,6 @@ def collect_word_metadata(
 
 
 # ─── Upload Logic ─────────────────────────────────────────────────────────────
-
-async def upload_results(
-    word_record: dict[str, Any],
-    word_dir: Path,
-    manifest_data: Any,
-    user_id: str,
-    deck_id: str,
-    word_slug_override: str | None = None,
-) -> bool:
-    """Upload final video + thumbnail to Supabase Storage, update word record."""
-    word_slug = word_slug_override or word_record.get("word_slug") or word_dir.name
-
-    # Determine final video path
-    bookend_settings = manifest_data.settings.get("bookend", {})
-    bookend_enabled = bookend_settings.get("enabled", True)
-
-    if bookend_enabled and manifest_data.selected.bookend:
-        video_path = word_dir / "bookend" / manifest_data.selected.bookend / "final.mp4"
-    elif manifest_data.selected.final:
-        video_path = word_dir / "final" / manifest_data.selected.final / "final.mp4"
-    else:
-        log.error("No final video found for %s", word_slug)
-        return False
-
-    if not video_path.exists():
-        log.error("Final video file missing: %s", video_path)
-        return False
-
-    # Extract thumbnail
-    thumb_path = word_dir / "thumb.jpg"
-    extract_thumbnail(video_path, thumb_path)
-
-    # Upload video
-    storage_video_path = f"{user_id}/{deck_id}/{word_slug}/video.mp4"
-    storage_thumb_path = f"{user_id}/{deck_id}/{word_slug}/thumb.jpg"
-
-    try:
-        with open(video_path, "rb") as f:
-            sb.storage.from_("videos").upload(
-                storage_video_path, f.read(),
-                file_options={"content-type": "video/mp4", "upsert": "true"},
-            )
-
-        if thumb_path.exists():
-            with open(thumb_path, "rb") as f:
-                sb.storage.from_("videos").upload(
-                    storage_thumb_path, f.read(),
-                    file_options={"content-type": "image/jpeg", "upsert": "true"},
-                )
-    except Exception as e:
-        log.error("Upload failed for %s: %s", word_slug, e)
-        return False
-
-    # Get public URLs
-    video_url = sb.storage.from_("videos").get_public_url(storage_video_path)
-    thumb_url = sb.storage.from_("videos").get_public_url(storage_thumb_path) if thumb_path.exists() else None
-
-    # Update word record
-    update_data: dict[str, Any] = {
-        "status": "complete",
-        "video_url": video_url,
-    }
-    if thumb_url:
-        update_data["thumbnail_url"] = thumb_url
-
-    sb.table("words").update(update_data).eq("id", word_record["id"]).execute()
-    return True
-
 
 def _resolve_final_video(word_dir: Path, manifest_data: Any) -> Path | None:
     """Resolve the final video path from a manifest (bookend > assembly fallback)."""

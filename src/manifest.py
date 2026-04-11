@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 import json
-import os
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
-from .models import Manifest, LineageEntry, Selected, Enrichment
+from .models import Manifest, LineageEntry, Enrichment
 
 
 def now_iso() -> str:
@@ -136,17 +135,6 @@ def remove_version(word_dir: Path, stage: str, version: str) -> Manifest:
     m.lineage = [e for e in m.lineage if not (e.stage == stage and e.version == version)]
     write_manifest(word_dir, m)
     return m
-
-
-def get_stage_versions(word_dir: Path, stage: str) -> list[str]:
-    """List all version folders/files for a given stage."""
-    stage_dir = word_dir / _stage_folder(stage)
-    if not stage_dir.exists():
-        return []
-    if stage == 'concept':
-        return sorted([f.name for f in stage_dir.glob('*.json') if f.name != 'generation-meta.json'])
-    else:
-        return sorted([d.name for d in stage_dir.iterdir() if d.is_dir()])
 
 
 def _stage_folder(stage: str) -> str:

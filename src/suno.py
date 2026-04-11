@@ -316,10 +316,6 @@ async def generate_song(
             "error": f"Timed out after {MAX_POLL_TIME}s waiting for Suno generation",
         }
 
-
-    return {"status": "error", "error": "unexpected: no code path returned"}
-
-
 async def fetch_existing_task(task_id: str) -> dict:
     """
     Single-shot re-poll for a previously submitted kie.ai task.

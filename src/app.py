@@ -27,7 +27,7 @@ load_dotenv()
 from .workspace import get_word_dir, list_word_dirs, read_workspace_meta
 from .manifest import (
     read_manifest, write_manifest, update_selection,
-    update_settings, get_stage_versions, now_iso, add_lineage, remove_version
+    update_settings, now_iso, add_lineage, remove_version
 )
 from .settings import load_defaults, save_defaults, DEFAULT_SETTINGS
 from .voices import load_voices, add_voice, update_voice, delete_voice

@@ -3,7 +3,6 @@
 from __future__ import annotations
 import json
 import logging
-import glob as glob_module
 import os
 import random
 from datetime import datetime, timezone
@@ -16,11 +15,11 @@ logger = logging.getLogger(__name__)
 
 from .manifest import (
     read_manifest, update_selection, add_lineage,
-    get_stage_versions, now_iso, write_manifest
+    now_iso
 )
 from .settings import resolve_settings, load_defaults, resolve_random_art_style
 from .workspace import (
-    get_word_dir, create_version_dir, make_version_label, STAGE_FOLDERS
+    get_word_dir, create_version_dir, make_version_label
 )
 from .dispatcher import call_engine, EngineUnreachableError, PayloadError
 

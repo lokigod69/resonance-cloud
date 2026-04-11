@@ -1,13 +1,10 @@
 """Engine HTTP dispatch: calls engines, handles responses."""
 
 from __future__ import annotations
-import json
 import os
-from pathlib import Path
 from typing import Any
 
 import httpx
-from pydantic_settings import BaseSettings
 
 from .models import EngineHealthStatus
 from .manifest import now_iso
