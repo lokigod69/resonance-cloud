@@ -7,17 +7,15 @@ orchestrator HTTP server.
 
 CRITICAL: Never import from src.app — only from src.pipeline,
 src.settings, src.manifest, src.workspace, src.slugify, src.dispatcher,
-src.models.
+src.models, src.suno.
 """
 
 from __future__ import annotations
 
 import asyncio
-import json
 import logging
 import os
 import re
-import subprocess
 import sys
 import time
 from datetime import datetime, timezone
@@ -35,9 +33,11 @@ from src.manifest import create_manifest, read_manifest, update_selection
 from src.workspace import create_word_folder
 from src.slugify import slugify, language_to_code
 from src.dispatcher import check_all_engines
-from src.suno import generate_song as suno_generate_song, download_suno_audio, fetch_existing_task, _write_to_supabase as suno_write_to_supabase
-
-import httpx
+from src.services.enrichment import run_enrichment
+from src.services.metadata import collect_word_metadata
+from src.services.publishing import upload_ab_results
+from src.services.stage_helpers import get_fallback_overrides, get_incomplete_stages
+from src.services.suno_bakein import bake_suno_into_word
 from supabase import create_client, Client
 
 # ─── Configuration ────────────────────────────────────────────────────────────
@@ -45,12 +45,9 @@ from supabase import create_client, Client
 SUPABASE_URL = os.getenv("SUPABASE_URL", "")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY", "") or os.getenv("SUPABASE_KEY", "")
 WORKSPACE_ROOT = Path(os.getenv("WORKSPACE_ROOT", "D:/CODING/ResonanceTEST/content"))
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 POLL_INTERVAL = int(os.getenv("JOB_RUNNER_POLL_INTERVAL", "30"))
 MAX_RETRIES = int(os.getenv("JOB_RUNNER_MAX_RETRIES", "2"))
 CLEANUP_WORKSPACES = os.getenv("JOB_RUNNER_CLEANUP", "false").lower() == "true"
-SUNO_MIN_USABLE_DURATION = 12.0
-SUNO_MAX_USABLE_DURATION = 150.0  # 2.5 minutes — reject glitched ultra-long Suno tracks
 
 logging.basicConfig(
     level=logging.INFO,
@@ -70,93 +67,6 @@ def get_supabase() -> Client:
 
 sb: Client = get_supabase()
 
-# ─── Enrichment ───────────────────────────────────────────────────────────────
-
-ENRICHMENT_SYSTEM_PROMPT = """You are a language learning assistant. Given a list of vocabulary words,
-produce enrichment data for each word. The user is learning {target_language} and speaks {base_language}.
-
-For each word, provide:
-- word_target: the word in {target_language} (correct it if the user typed it in {base_language})
-- translation: translation into {base_language}
-- mnemonic: a memorable connection between the word and its meaning (1–2 sentences)
-- etymology: word origin and root connections (1 sentence)
-- pos: part of speech (noun, verb, adjective, adverb, etc.)
-- article: grammatical article if applicable (e.g., "der", "die", "das" for German; "le", "la" for French). null if the language has no articles or it doesn't apply.
-
-Handle both directions: if the user typed a {base_language} word, figure out the {target_language} equivalent.
-
-If the input contains multiple words forming a phrase or sentence (e.g., "I love hot dogs",
-"good morning", "thank you"), treat the ENTIRE input as the learning target. Do NOT extract
-individual words from it. Set word_target to the full phrase translated into {target_language}.
-Translate the complete phrase, not individual words.
-
-Respond with a JSON array. Each element must have exactly these keys:
-{{"input_word": "...", "word_target": "...", "translation": "...", "mnemonic": "...", "etymology": "...", "pos": "...", "article": "..."}}
-
-No extra commentary — only the JSON array."""
-
-
-async def run_enrichment(
-    words: list[dict[str, Any]],
-    target_language: str,
-    base_language: str,
-    llm_model: str = "deepseek/deepseek-v3.2",
-) -> list[dict[str, Any]]:
-    """Batch-enrich all words in a deck via OpenRouter LLM call."""
-    if not OPENROUTER_API_KEY:
-        log.warning("OPENROUTER_API_KEY not set — skipping enrichment")
-        return [{"input_word": w["word"], "word_target": w["word"],
-                 "translation": "", "mnemonic": "", "etymology": "",
-                 "pos": "", "article": None} for w in words]
-
-    word_list = ", ".join(w["word"] for w in words)
-    system_prompt = ENRICHMENT_SYSTEM_PROMPT.format(
-        target_language=target_language, base_language=base_language
-    )
-    user_prompt = f"Enrich these {target_language} vocabulary words: {word_list}"
-
-    async with httpx.AsyncClient(timeout=60) as client:
-        resp = await client.post(
-            "https://openrouter.ai/api/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": llm_model,
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-            },
-        )
-        resp.raise_for_status()
-        data = resp.json()
-
-    content = data["choices"][0]["message"]["content"]
-    # Strip markdown code fences if present
-    content = content.strip()
-    if content.startswith("```"):
-        lines = content.split("\n")
-        # Remove first and last fence lines
-        lines = lines[1:] if lines[0].startswith("```") else lines
-        if lines and lines[-1].strip() == "```":
-            lines = lines[:-1]
-        content = "\n".join(lines)
-
-    try:
-        enriched = json.loads(content)
-    except json.JSONDecodeError:
-        log.error("Failed to parse enrichment LLM response: %s", content[:500])
-        return [{"input_word": w["word"], "word_target": w["word"],
-                 "translation": "", "mnemonic": "", "etymology": "",
-                 "pos": "", "article": None} for w in words]
-
-    # Build lookup by input_word for matching back to word records
-    return enriched
-
-
-# ─── Settings Merge ───────────────────────────────────────────────────────────
 
 # Maps wizard settings_override keys to their (stage, field) location in the
 # per-engine settings tree. Keys not in this map are ignored (forward-compat
@@ -212,112 +122,8 @@ def merge_settings(
     return merged
 
 
-# ─── Retry Fallback Settings ──────────────────────────────────────────────────
+# A/B Dual-Take Helpers
 
-def get_fallback_overrides(
-    stage: str, attempt: int, current_settings: dict[str, Any] | None = None,
-) -> dict[str, Any]:
-    """Return per-word setting overrides for retry attempts."""
-    if stage == "images" and attempt >= 1:
-        current_model = (current_settings or {}).get("llm_model", "")
-        fallback_model = (
-            "deepseek/deepseek-v3.2"
-            if current_model == "x-ai/grok-4.1-fast"
-            else "x-ai/grok-4.1-fast"
-        )
-        return {"creative_direction": "literal", "llm_model": fallback_model}
-    if stage == "concept" and attempt >= 1:
-        current_model = (current_settings or {}).get("llm_model", "")
-        fallback_model = (
-            "deepseek/deepseek-v3.2"
-            if current_model == "x-ai/grok-4.1-fast"
-            else "x-ai/grok-4.1-fast"
-        )
-        return {"llm_model": fallback_model}
-    if stage == "video" and attempt >= 1:
-        # Don't fall back to ken_burns in text-to-video mode — no source images exist
-        if current_settings and current_settings.get("text_to_video", False):
-            return {}
-        return {"video_mode": "ken_burns"}
-    if stage == "song" and attempt >= 1:
-        return {"batch_size": 1}
-    return {}
-
-
-# ─── Smart Retry Helpers ─────────────────────────────────────────────────────
-
-def _validate_artifacts(word_dir: Path, stage: str, selected: str) -> bool:
-    """Check that a completed stage's output files actually exist on disk."""
-    folder_map = {
-        'concept': 'concept', 'song': 'songs', 'images': 'images',
-        'video': 'videos', 'assembly': 'final', 'bookend': 'bookend',
-    }
-    base = word_dir / folder_map[stage]
-
-    if stage == 'images':
-        d = base / selected
-        return d.is_dir() and any(d.glob("*.png"))
-    elif stage == 'concept':
-        return (base / selected).is_file()
-    elif stage == 'song':
-        # Format: "run-001_ts/take_001.flac"
-        parts = selected.split('/')
-        if len(parts) == 2:
-            return (base / parts[0] / parts[1]).is_file()
-        return (base / selected).is_dir()
-    elif stage == 'video':
-        d = base / selected
-        return d.is_dir() and any(d.glob("scene_*.mp4"))
-    elif stage == 'assembly':
-        return (base / selected / "final.mp4").is_file()
-    elif stage == 'bookend':
-        return (base / selected / "final.mp4").is_file()
-    return False
-
-
-def get_incomplete_stages(
-    word_dir: Path,
-    manifest_data: Any,
-    bookend_enabled: bool = True,
-) -> list[str]:
-    """Return stages that need (re-)running based on manifest selected fields + artifact existence."""
-    stages: list[str] = []
-    for stage in STAGE_ORDER:
-        if stage == 'bookend' and not bookend_enabled:
-            continue
-        field = 'final' if stage == 'assembly' else stage
-        selected = getattr(manifest_data.selected, field, None)
-        if selected is None or not _validate_artifacts(word_dir, stage, selected):
-            stages.append(stage)
-    return stages
-
-
-# ─── Thumbnail Extraction ────────────────────────────────────────────────────
-
-def extract_thumbnail(video_path: Path, output_path: Path) -> bool:
-    """Extract a JPEG thumbnail at ~33% of video duration using FFmpeg."""
-    try:
-        # Get duration
-        probe = subprocess.run(
-            ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
-             "-of", "csv=p=0", str(video_path)],
-            capture_output=True, text=True, timeout=10,
-        )
-        duration = float(probe.stdout.strip())
-        seek_time = duration * 0.33
-
-        subprocess.run(
-            ["ffmpeg", "-y", "-ss", str(seek_time), "-i", str(video_path),
-             "-frames:v", "1", "-q:v", "2", str(output_path)],
-            capture_output=True, timeout=30,
-        )
-        return output_path.exists()
-    except Exception as e:
-        log.warning("Thumbnail extraction failed: %s", e)
-        return False
-
-
-# ─── A/B Dual-Take Helpers ───────────────────────────────────────────────────
 
 def get_song_takes(word_dir: Path, manifest_data: Any) -> list[str]:
     """Return available song take paths from the selected song run directory.
@@ -342,730 +148,6 @@ def get_song_takes(word_dir: Path, manifest_data: Any) -> list[str]:
     return takes if takes else [current_song]
 
 
-# ─── Suno Audio Helpers ──────────────────────────────────────────────────────
-
-def _probe_clip_durations(video_dir: Path) -> float:
-    """Return total duration of all scene_*.mp4 clips in video_dir."""
-    total = 0.0
-    for clip in sorted(video_dir.glob("scene_*.mp4")):
-        probe = subprocess.run(
-            ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
-             "-of", "csv=p=0", str(clip)],
-            capture_output=True, text=True, timeout=10,
-        )
-        total += float(probe.stdout.strip())
-    return total
-
-
-def _probe_audio_duration(audio_path: Path) -> float:
-    """Return duration of an audio file in seconds."""
-    probe = subprocess.run(
-        ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
-         "-of", "csv=p=0", str(audio_path)],
-        capture_output=True, text=True, timeout=10,
-    )
-    return float(probe.stdout.strip())
-
-
-def _trim_suno_mp3(
-    input_path: Path, output_path: Path,
-    trim_to: float, fade_start: float, fade_duration: float,
-) -> Path:
-    """Trim and fade-out an MP3 file. fade_duration=0 skips the fade filter."""
-    af = f"afade=t=out:st={fade_start}:d={fade_duration}" if fade_duration > 0 else "anull"
-    cmd = [
-        "ffmpeg", "-y", "-i", str(input_path),
-        "-t", str(trim_to),
-        "-af", af,
-        str(output_path),
-    ]
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
-    if result.returncode != 0:
-        raise RuntimeError(f"ffmpeg trim failed: {result.stderr[-300:]}")
-    return output_path
-
-
-# ─── Metadata Collection ─────────────────────────────────────────────────────
-
-# Maps stage names to their filesystem directory names
-_STAGE_DIRS = {
-    "images": "images",
-    "concept": "concept",
-    "song": "songs",
-    "video": "videos",
-    "assembly": "final",
-    "bookend": "bookend",
-}
-
-
-def _read_json(path: Path) -> dict[str, Any]:
-    """Read a JSON file, returning empty dict on failure."""
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
-
-
-def _find_latest_meta(stage_dir: Path) -> dict[str, Any]:
-    """Find the latest generation-meta.json in a stage directory."""
-    if not stage_dir.exists():
-        return {}
-
-    # Concept stage: generation-meta.json is directly in the concept/ folder
-    direct = stage_dir / "generation-meta.json"
-    if direct.exists():
-        return _read_json(direct)
-
-    # Other stages: inside timestamped version subdirectories
-    version_dirs = sorted(
-        [d for d in stage_dir.iterdir() if d.is_dir()],
-        key=lambda d: d.name,
-    )
-    if not version_dirs:
-        return {}
-
-    meta_path = version_dirs[-1] / "generation-meta.json"
-    return _read_json(meta_path) if meta_path.exists() else {}
-
-
-def _find_latest_storyboard(images_dir: Path) -> dict[str, Any]:
-    """Find the latest storyboard.json from the images stage."""
-    if not images_dir.exists():
-        return {}
-    version_dirs = sorted(
-        [d for d in images_dir.iterdir() if d.is_dir()],
-        key=lambda d: d.name,
-    )
-    if not version_dirs:
-        return {}
-    sb_path = version_dirs[-1] / "storyboard.json"
-    return _read_json(sb_path) if sb_path.exists() else {}
-
-
-def collect_word_metadata(
-    word_dir: Path,
-    profile_name: str | None,
-    pipeline_duration: float,
-) -> dict[str, Any]:
-    """Collect generation metadata from filesystem into a summary dict."""
-    # Read per-stage meta
-    metas: dict[str, dict[str, Any]] = {}
-    stages_completed = []
-    for stage, folder in _STAGE_DIRS.items():
-        meta = _find_latest_meta(word_dir / folder)
-        if meta and meta.get("status") == "success":
-            stages_completed.append(stage)
-        metas[stage] = meta
-
-    # Storyboard data
-    sb = _find_latest_storyboard(word_dir / "images")
-
-    # Image meta
-    img = metas.get("images", {})
-    img_outputs = img.get("outputs", {})
-    img_steps = img.get("steps", {})
-    img_rendering = img_steps.get("image_rendering", {})
-
-    # Song meta
-    song = metas.get("song", {})
-    song_lora = song.get("lora", {})
-
-    # Video meta
-    vid = metas.get("video", {})
-
-    # Assembly meta
-    asm = metas.get("assembly", {})
-    asm_report = asm.get("assembly_report", {})
-
-    # Bookend meta
-    bke = metas.get("bookend", {})
-    bke_tts = bke.get("tts", {})
-
-    # Resolved creative_direction from manifest lineage (authoritative).
-    # storyboard.json has LLM free-text; lineage settings_snapshot is the source of truth.
-    creative_direction_resolved: str | None = None
-    concept_music_caption: str | None = None
-    try:
-        _manifest = read_manifest(word_dir)
-        _images_entries = [e for e in _manifest.lineage if e.stage == "images"]
-        if _images_entries:
-            _latest = _images_entries[-1]  # lineage is append-only chronological
-            creative_direction_resolved = (
-                _latest.settings_snapshot.get("creative_direction_resolved")
-                or _latest.settings_snapshot.get("creative_direction")
-            )
-        # Read music_caption from concept file (authoritative — reflects actual genre used by Suno)
-        _concept_version = _manifest.selected.concept
-        if _concept_version:
-            _concept_file = word_dir / "concept" / _concept_version
-            if _concept_file.exists():
-                _concept_data = json.loads(_concept_file.read_text(encoding="utf-8"))
-                concept_music_caption = _concept_data.get("music_caption")
-    except (FileNotFoundError, Exception):
-        # Manifest missing or unreadable — fall back to legacy sources below.
-        pass
-
-    return {
-        "pipeline_duration_seconds": round(pipeline_duration, 2),
-        "stages_completed": stages_completed,
-
-        # Storyboard / creative
-        "creative_direction": (
-            creative_direction_resolved
-            or sb.get("creative_direction")
-            or img.get("settings", {}).get("creative_direction")
-        ),
-        "art_style": sb.get("art_style") or img.get("settings", {}).get("art_style"),
-        "movie_reference": sb.get("movie"),
-        "music_caption": concept_music_caption or sb.get("music_caption"),
-
-        # Images
-        "images": {
-            "count": img_outputs.get("images_generated"),
-            "refusals": img_rendering.get("scenes_failed", 0),
-            "duration_seconds": img.get("duration_seconds"),
-            "model": img_rendering.get("model") or img.get("settings", {}).get("image_model"),
-        },
-
-        # Concept
-        "concept": {
-            "duration_seconds": metas.get("concept", {}).get("duration_seconds"),
-            "caption_source": metas.get("concept", {}).get("outputs", {}).get("caption_source"),
-        },
-
-        # Song
-        "song": {
-            "duration_seconds": song.get("duration_seconds"),
-            "takes": len(song.get("outputs", {}).get("takes", [])) or None,
-        },
-
-        # Video
-        "video": {
-            "duration_seconds": vid.get("duration_seconds"),
-            "mode": vid.get("inputs", {}).get("settings_used", {}).get("video_mode"),
-        },
-
-        # Assembly
-        "assembly": {
-            "duration_seconds": asm.get("duration_seconds"),
-            "final_video_duration_seconds": asm.get("outputs", {}).get("duration_seconds"),
-            "lufs": asm_report.get("normalized_lufs"),
-        },
-
-        # Bookend
-        "bookend": {
-            "duration_seconds": bke.get("duration_seconds"),
-            "voice_id": bke_tts.get("voice_id"),
-            "tts_language": bke_tts.get("language_code"),
-        },
-
-        # LoRA
-        "lora": {
-            "path": song_lora.get("path"),
-            "strength": song_lora.get("strength"),
-            "trigger_phrase": song_lora.get("trigger_phrase"),
-        } if song_lora.get("active") else None,
-
-        "profile_used": profile_name,
-    }
-
-
-# ─── Upload Logic ─────────────────────────────────────────────────────────────
-
-def _resolve_final_video(word_dir: Path, manifest_data: Any) -> Path | None:
-    """Resolve the final video path from a manifest (bookend > assembly fallback)."""
-    bookend_settings = manifest_data.settings.get("bookend", {})
-    bookend_enabled = bookend_settings.get("enabled", True)
-
-    if bookend_enabled and manifest_data.selected.bookend:
-        return word_dir / "bookend" / manifest_data.selected.bookend / "final.mp4"
-    elif manifest_data.selected.final:
-        return word_dir / "final" / manifest_data.selected.final / "final.mp4"
-    return None
-
-
-def _upload_video_and_thumb(
-    video_path: Path,
-    word_dir: Path,
-    storage_video_key: str,
-    storage_thumb_key: str,
-    thumb_suffix: str = "",
-) -> tuple[str | None, str | None]:
-    """Upload a video + extracted thumbnail to Supabase Storage.
-
-    Returns (video_url, thumb_url) or (None, None) on failure.
-    """
-    if not video_path.exists():
-        log.error("Video file missing: %s", video_path)
-        return None, None
-
-    thumb_path = word_dir / f"thumb{thumb_suffix}.jpg"
-    extract_thumbnail(video_path, thumb_path)
-
-    try:
-        with open(video_path, "rb") as f:
-            sb.storage.from_("videos").upload(
-                storage_video_key, f.read(),
-                file_options={"content-type": "video/mp4", "upsert": "true"},
-            )
-        if thumb_path.exists():
-            with open(thumb_path, "rb") as f:
-                sb.storage.from_("videos").upload(
-                    storage_thumb_key, f.read(),
-                    file_options={"content-type": "image/jpeg", "upsert": "true"},
-                )
-    except Exception as e:
-        log.error("Upload failed for %s: %s", storage_video_key, e)
-        return None, None
-
-    video_url = sb.storage.from_("videos").get_public_url(storage_video_key)
-    thumb_url = sb.storage.from_("videos").get_public_url(storage_thumb_key) if thumb_path.exists() else None
-    return video_url, thumb_url
-
-
-def _upload_suno_to_storage(
-    user_id: str,
-    deck_id: str,
-    word_slug: str,
-    word_id: str,
-    path_a: Path,
-    path_b: Path | None,
-) -> None:
-    """Upload raw Suno MP3s to Supabase Storage and write permanent URLs to words table."""
-    storage_prefix = f"{user_id}/{deck_id}/{word_slug}"
-    update: dict[str, str | None] = {}
-
-    # Track A
-    storage_key_a = f"{storage_prefix}/suno_a.mp3"
-    with open(path_a, "rb") as f:
-        sb.storage.from_("audio").upload(
-            storage_key_a, f.read(),
-            file_options={"content-type": "audio/mpeg", "upsert": "true"},
-        )
-    update["suno_storage_url"] = sb.storage.from_("audio").get_public_url(storage_key_a)
-
-    # Track B (if present)
-    if path_b and path_b.exists():
-        storage_key_b = f"{storage_prefix}/suno_b.mp3"
-        with open(path_b, "rb") as f:
-            sb.storage.from_("audio").upload(
-                storage_key_b, f.read(),
-                file_options={"content-type": "audio/mpeg", "upsert": "true"},
-            )
-        update["suno_storage_url_b"] = sb.storage.from_("audio").get_public_url(storage_key_b)
-    else:
-        update["suno_storage_url_b"] = None
-
-    sb.table("words").update(update).eq("id", word_id).execute()
-    log.info("  [Suno] Uploaded permanent audio to Supabase Storage for %s", word_slug)
-
-
-async def upload_ab_results(
-    word_record: dict[str, Any],
-    word_dir: Path,
-    user_id: str,
-    deck_id: str,
-    word_slug: str,
-    manifest_a: Any,
-    manifest_b: Any | None = None,
-) -> bool:
-    """Upload A/B video versions to Supabase Storage and update the word record.
-
-    Version A uploads to ``video.mp4`` / ``thumb.jpg`` (backward compatible).
-    Version B uploads to ``video_b.mp4`` / ``thumb_b.jpg`` (new).
-    """
-    prefix = f"{user_id}/{deck_id}/{word_slug}"
-
-    # ── Version A (required) ──
-    video_a = _resolve_final_video(word_dir, manifest_a)
-    if not video_a:
-        log.error("No final video for version A (%s)", word_slug)
-        return False
-
-    video_url_a, thumb_url_a = _upload_video_and_thumb(
-        video_a, word_dir,
-        f"{prefix}/video.mp4", f"{prefix}/thumb.jpg",
-    )
-    if not video_url_a:
-        return False
-
-    # ── Version B (optional) ──
-    video_url_b, thumb_url_b = None, None
-    if manifest_b is not None:
-        video_b = _resolve_final_video(word_dir, manifest_b)
-        if video_b:
-            video_url_b, thumb_url_b = _upload_video_and_thumb(
-                video_b, word_dir,
-                f"{prefix}/video_b.mp4", f"{prefix}/thumb_b.jpg",
-                thumb_suffix="_b",
-            )
-            if not video_url_b:
-                log.warning("Version B upload failed for %s — continuing with A only", word_slug)
-
-    # ── Update word record ──
-    update_data: dict[str, Any] = {
-        "status": "complete",
-        "video_url": video_url_a,
-    }
-    if thumb_url_a:
-        update_data["thumbnail_url"] = thumb_url_a
-    # Always write B fields: set URLs if B exists, null them out if not
-    # (prevents stale B URLs persisting from a previous generation)
-    update_data["video_url_b"] = video_url_b
-    update_data["thumbnail_url_b"] = thumb_url_b
-
-    sb.table("words").update(update_data).eq("id", word_record["id"]).execute()
-    return True
-
-
-# ─── Suno Bake-In ─────────────────────────────────────────────────────────────
-
-async def bake_suno_into_word(
-    workspace_path: Path,
-    word_dir: Path,
-    word_slug: str,
-    word_record: dict[str, Any],
-    suno_settings: dict[str, Any],
-    bookend_defaults: dict[str, Any],
-    skip_suno_guard: bool = False,
-) -> dict[str, Any]:
-    """
-    Generate Suno audio, trim, run assembly+bookend for one word.
-
-    Does NOT call upload_ab_results() — callers handle upload themselves.
-
-    Args:
-        skip_suno_guard: If False, skips generation when suno_audio_url already
-            exists on the word record (prevents double billing on normal pipeline
-            re-runs). Set True for explicit retry jobs.
-
-    Returns:
-        success (bool): True if Suno bake-in completed and produced manifests.
-        suno_ab_manifests (dict): {"a": manifest, "b": manifest} on success.
-        error (str | None): Human-readable error message on failure.
-    """
-    user_id = word_record["user_id"]
-    deck_id = word_record["deck_id"]
-
-    # Guard: skip if suno_audio_url already set (prevents double billing on re-runs)
-    if not skip_suno_guard and word_record.get("suno_audio_url"):
-        log.info("  [Suno] Skipping bake-in: suno_audio_url already set for %s", word_slug)
-        return {"success": False, "suno_ab_manifests": {}, "error": "already_set"}
-
-    # Step 1: Generate Suno audio (or re-poll an existing task from a previous timeout)
-    existing_task_id = word_record.get("suno_task_id")
-    suno_result: dict[str, Any] | None = None
-
-    if existing_task_id and not word_record.get("suno_audio_url"):
-        # A task ID is stored but no audio URL — the task may have completed after a timeout
-        log.info("  [Suno] Re-polling existing task %s for %s", existing_task_id, word_slug)
-        try:
-            repoll = await fetch_existing_task(existing_task_id)
-            if repoll["status"] == "success":
-                log.info("  [Suno] Existing task %s complete — skipping new generation", existing_task_id)
-                suno_result = repoll
-                # Persist CDN URLs to DB (fetch_existing_task does not write to Supabase)
-                suno_write_to_supabase(
-                    deck_id, word_slug,
-                    repoll["audio_url"], existing_task_id,
-                    repoll.get("audio_url_b"),
-                )
-            elif repoll["status"] == "pending":
-                log.info("  [Suno] Task %s still in progress on kie.ai — generating fresh", existing_task_id)
-            else:
-                log.info("  [Suno] Task %s failed/expired (%s) — generating fresh",
-                         existing_task_id, repoll.get("error", ""))
-        except Exception as _rp_e:
-            log.warning("  [Suno] Re-poll failed: %s — generating fresh", _rp_e)
-
-    if suno_result is None or suno_result.get("status") != "success":
-        log.info("  [Suno] Generating audio for %s", word_slug)
-        try:
-            suno_result = await suno_generate_song(
-                str(workspace_path.parent), user_id, deck_id, word_slug
-            )
-        except Exception as _e:
-            log.error("  [Suno] Generation failed: %s", _e)
-            return {"success": False, "suno_ab_manifests": {}, "error": str(_e)}
-
-    # Step 2: Download and validate audio
-    if not (suno_result and suno_result.get("status") == "success"):
-        error_msg = suno_result.get("error") if suno_result else "no result from Suno"
-        log.warning("  [Suno] Generation failed: %s", error_msg)
-        return {"success": False, "suno_ab_manifests": {}, "error": error_msg}
-
-    audio_url_a = suno_result.get("audio_url")
-    audio_url_b = suno_result.get("audio_url_b")
-
-    if not audio_url_a:
-        msg = "Suno API returned status=success but no audio URL"
-        log.warning("  [Suno] %s", msg)
-        return {"success": False, "suno_ab_manifests": {}, "error": msg}
-
-    suno_dir = word_dir / "songs" / "suno"
-    suno_dir.mkdir(parents=True, exist_ok=True)
-
-    try:
-        path_a = await download_suno_audio(audio_url_a, suno_dir / "suno_a.mp3")
-        path_b = await download_suno_audio(audio_url_b, suno_dir / "suno_b.mp3") \
-                 if audio_url_b else None
-
-        # Persist raw MP3s to Supabase Storage (permanent URLs)
-        try:
-            _upload_suno_to_storage(
-                user_id=user_id,
-                deck_id=deck_id,
-                word_slug=word_slug,
-                word_id=word_record["id"],
-                path_a=path_a,
-                path_b=path_b,
-            )
-        except Exception as _upload_err:
-            log.warning("  [Suno] Storage upload failed (non-fatal): %s", _upload_err)
-
-        manifest_snap = read_manifest(word_dir)
-        video_version = manifest_snap.selected.video
-        if not video_version:
-            raise ValueError("No video version selected in manifest")
-
-        clip_duration = _probe_clip_durations(word_dir / "videos" / video_version)
-        suno_duration_a = _probe_audio_duration(path_a)
-        if suno_duration_a < SUNO_MIN_USABLE_DURATION:
-            msg = (f"Suno audio too short to be usable "
-                   f"({suno_duration_a:.1f}s < {SUNO_MIN_USABLE_DURATION}s)")
-            log.warning("  [Suno] %s", msg)
-            return {"success": False, "suno_ab_manifests": {}, "error": msg}
-        skip_track_a = False
-        if suno_duration_a > SUNO_MAX_USABLE_DURATION:
-            log.warning(
-                "  [Suno] Track A rejected: %.1fs exceeds max %.1fs — will try Track B",
-                suno_duration_a, SUNO_MAX_USABLE_DURATION,
-            )
-            skip_track_a = True
-
-        if suno_duration_a < clip_duration:
-            log.info("  [Suno] Audio shorter than video (%.1fs < %.1fs) — "
-                     "will trim video to match", suno_duration_a, clip_duration)
-
-        log.info("  [Suno] Audio ready: %.1fs clips", clip_duration)
-
-    except Exception as _dl_e:
-        log.error("  [Suno] Download/probe failed: %s", _dl_e)
-        return {"success": False, "suno_ab_manifests": {}, "error": str(_dl_e)}
-
-    # Step 3: Trim audio
-    outro_mode = suno_settings.get("outro_mode", "fade_out")
-    fade_tail = float(suno_settings.get("fade_tail_duration", 2.5))
-
-    from src.manifest import update_settings as _update_settings
-
-    try:
-        if outro_mode == "fade_out":
-            def _fade_params(dur: float) -> tuple[float, float, float]:
-                """Return (trim_to, fade_start, actual_fade) for a given duration.
-
-                Three cases:
-                - Normal: audio long enough for full fade tail beyond video end
-                - Medium: audio covers the video but not the full fade tail
-                - Short: audio shorter than the video itself
-                """
-                if fade_tail == 0:
-                    # User explicitly wants no fade — respect it at all durations
-                    return min(dur, clip_duration), min(dur, clip_duration), 0
-                if dur >= clip_duration + fade_tail:
-                    # Normal: full fade tail in the overflow zone
-                    return clip_duration + fade_tail, clip_duration, fade_tail
-                if dur >= clip_duration:
-                    # Medium: covers video but not full tail — place short fade
-                    # before clip_duration so it survives the assembly trim
-                    micro = min(0.5, fade_tail, dur - clip_duration + 0.5)
-                    return clip_duration, clip_duration - micro, micro
-                # Short: audio shorter than video — assembly trims video to match
-                actual = min(0.5, dur * 0.05)
-                return dur, dur - actual, actual
-
-            if not skip_track_a:
-                trim_to_a, fade_start_a, actual_fade_a = _fade_params(suno_duration_a)
-                trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
-                                           trim_to_a, fade_start_a, actual_fade_a)
-            else:
-                trimmed_a = None
-            if path_b:
-                suno_duration_b = _probe_audio_duration(path_b)
-                if skip_track_a and suno_duration_b > SUNO_MAX_USABLE_DURATION:
-                    # Both tracks oversized — pick shorter, force-truncate to clip_duration
-                    log.warning(
-                        "  [Suno] Both tracks oversized (A=%.1fs, B=%.1fs) — "
-                        "truncating shorter to %.1fs with %.1fs fade",
-                        suno_duration_a, suno_duration_b, clip_duration, fade_tail,
-                    )
-                    if suno_duration_a <= suno_duration_b:
-                        force_src = path_a
-                        force_out = suno_dir / "take_suno_a.mp3"
-                        use_label_a = True
-                    else:
-                        force_src = path_b
-                        force_out = suno_dir / "take_suno_b.mp3"
-                        use_label_a = False
-
-                    fstart = max(0.0, clip_duration - fade_tail) if fade_tail > 0 else clip_duration
-                    forced = _trim_suno_mp3(force_src, force_out,
-                                            clip_duration, fstart, fade_tail)
-                    if not forced:
-                        return {"success": False, "suno_ab_manifests": {},
-                                "error": "Both Suno tracks oversized and truncation failed"}
-
-                    if use_label_a:
-                        trimmed_a = forced
-                        skip_track_a = False   # A is now usable (force-truncated)
-                        trimmed_b = None
-                    else:
-                        trimmed_b = forced
-                        # skip_track_a stays True; B is the sole usable take
-                elif suno_duration_b < SUNO_MIN_USABLE_DURATION:
-                    log.info("  [Suno] Track B too short (%.1fs < %ss) — "
-                             "skipping B", suno_duration_b, SUNO_MIN_USABLE_DURATION)
-                    trimmed_b = None
-                elif suno_duration_b > SUNO_MAX_USABLE_DURATION:
-                    log.warning("  [Suno] Track B rejected: %.1fs exceeds max %.1fs",
-                                suno_duration_b, SUNO_MAX_USABLE_DURATION)
-                    trimmed_b = None
-                else:
-                    trim_to_b, fade_start_b, actual_fade_b = _fade_params(suno_duration_b)
-                    trimmed_b = _trim_suno_mp3(path_b, suno_dir / "take_suno_b.mp3",
-                                               trim_to_b, fade_start_b, actual_fade_b)
-            else:
-                trimmed_b = None
-
-            if skip_track_a and not trimmed_b:
-                return {"success": False, "suno_ab_manifests": {},
-                        "error": "Track A oversized and no usable Track B"}
-        else:  # clean_cut — trim to exact clip duration with micro-fade to avoid click
-            _fade_start = max(0.0, clip_duration - 0.1)
-            if not skip_track_a:
-                trimmed_a = _trim_suno_mp3(path_a, suno_dir / "take_suno_a.mp3",
-                                           clip_duration, _fade_start, 0.1)
-            else:
-                trimmed_a = None
-            trimmed_b = _trim_suno_mp3(path_b, suno_dir / "take_suno_b.mp3",
-                                       clip_duration, _fade_start, 0.1) \
-                        if path_b else None
-            if skip_track_a and not trimmed_b:
-                return {"success": False, "suno_ab_manifests": {},
-                        "error": "Track A oversized and no usable Track B"}
-    except Exception as e:
-        log.warning("  [Suno] Trim failed: %s — proceeding with ACE-Step", e)
-        return {"success": False, "suno_ab_manifests": {}, "error": str(e)}
-
-    suno_takes: list[tuple[str, Any]] = []
-    if not skip_track_a and trimmed_a:
-        suno_takes.append(("a", trimmed_a))
-    if trimmed_b:
-        suno_takes.append(("b", trimmed_b))
-
-    # Step 4: Assembly + Bookend
-    suno_assembled_labels: set[str] = set()
-    suno_assembly_finals: dict[str, str] = {}
-    suno_ab_manifests: dict[str, Any] = {}
-    _assembly_a_failed = False
-
-    try:
-        # Pass 1: Assemblies
-        for label, mp3_path in suno_takes:
-            song_version = f"suno/{mp3_path.name}"
-            update_selection(word_dir, "song", song_version)
-
-            asm_overrides: dict[str, Any] = {
-                "silence_trim": False,
-                "lufs_normalize": False,
-                "gap_strategy": "word_card",
-                "overflow_strategy": "trim",
-                "word_card_show_translation": True,
-                "word_card_font": bookend_defaults.get("font", "Bebas Neue"),
-                "word_card_font_size": min(144, int(bookend_defaults.get("font_size", 92))),
-            }
-            _update_settings(word_dir, "assembly", asm_overrides)
-
-            asm_ok = False
-            for attempt in range(MAX_RETRIES + 1):
-                try:
-                    log.info("  === Suno %s assembly (attempt %d) ===",
-                             label.upper(), attempt + 1)
-                    await run_stage(workspace_path, word_slug, "assembly")
-                    asm_ok = True
-                    break
-                except Exception as e:
-                    log.warning("  [Suno %s] assembly attempt %d failed: %s",
-                                label.upper(), attempt + 1, e)
-
-            if asm_ok:
-                suno_assembled_labels.add(label)
-                suno_assembly_finals[label] = read_manifest(word_dir).selected.final or ""
-            elif label == "a":
-                log.error("  [Suno] Version A assembly failed")
-                _assembly_a_failed = True
-                break
-            else:
-                if "a" in suno_assembled_labels or not skip_track_a:
-                    log.warning("  [Suno] Version B assembly failed — falling back to A only")
-                else:
-                    log.warning("  [Suno] Version B assembly failed — no fallback available")
-
-        # Pass 2: Bookends (only if Pass 1 version A succeeded)
-        if not _assembly_a_failed:
-            for label, _mp3 in suno_takes:
-                if label not in suno_assembled_labels:
-                    continue
-
-                if label in suno_assembly_finals and suno_assembly_finals[label]:
-                    update_selection(word_dir, "final", suno_assembly_finals[label])
-
-                if outro_mode == "fade_out":
-                    _update_settings(word_dir, "bookend", {"skip_outro": True})
-                else:
-                    _update_settings(word_dir, "bookend", {"outro_mode": "silent"})
-
-                bk_ok = False
-                for attempt in range(MAX_RETRIES + 1):
-                    try:
-                        log.info("  === Suno %s bookend (attempt %d) ===",
-                                 label.upper(), attempt + 1)
-                        await run_stage(workspace_path, word_slug, "bookend")
-                        bk_ok = True
-                        break
-                    except Exception as e:
-                        log.warning("  [Suno %s] bookend attempt %d failed: %s",
-                                    label.upper(), attempt + 1, e)
-
-                if not bk_ok:
-                    log.warning("  [Suno %s] bookend failed — assembly fallback at upload",
-                                label.upper())
-
-                suno_ab_manifests[label] = read_manifest(word_dir)
-
-    finally:
-        # Always restore overrides — even if an exception occurred mid-loop
-        _update_settings(word_dir, "assembly", {
-            "silence_trim": None, "lufs_normalize": None, "gap_strategy": None,
-            "overflow_strategy": None,
-            "word_card_show_translation": None, "word_card_font": None, "word_card_font_size": None,
-        })
-        _update_settings(word_dir, "bookend", {"skip_outro": None, "outro_mode": None})
-
-    if _assembly_a_failed:
-        return {"success": False, "suno_ab_manifests": {}, "error": "Suno version A assembly failed"}
-
-    if not suno_assembled_labels:
-        return {
-            "success": False,
-            "suno_ab_manifests": {},
-            "error": "No Suno takes assembled successfully",
-        }
-
-    return {"success": True, "suno_ab_manifests": suno_ab_manifests, "error": None}
-
-
-# ─── Word Processing ─────────────────────────────────────────────────────────
 
 async def process_word(
     job: dict[str, Any],
@@ -1247,6 +329,7 @@ async def process_word(
 
     if suno_enabled:
         _bake_result = await bake_suno_into_word(
+            sb,
             workspace_path=workspace_path,
             word_dir=word_dir,
             word_slug=word_slug_val,
@@ -1254,6 +337,7 @@ async def process_word(
             suno_settings=suno_settings,
             bookend_defaults=load_defaults(workspace_path).get("bookend", {}),
             skip_suno_guard=False,
+            max_retries=MAX_RETRIES,
         )
         suno_ab_manifests = _bake_result.get("suno_ab_manifests", {})
         if not _bake_result["success"]:
@@ -1464,6 +548,7 @@ async def process_word(
 
     # Upload A/B results
     uploaded = await upload_ab_results(
+        sb,
         word_record, word_dir, job["user_id"], job["deck_id"],
         word_slug_val,
         manifest_a=_upload_manifest_a,
@@ -1562,6 +647,7 @@ async def process_suno_retry_job(job: dict[str, Any]) -> None:
 
         # Run Suno bake-in
         bake_result = await bake_suno_into_word(
+            sb,
             workspace_path=workspace_path,
             word_dir=word_dir,
             word_slug=word_slug,
@@ -1569,6 +655,7 @@ async def process_suno_retry_job(job: dict[str, Any]) -> None:
             suno_settings=suno_settings,
             bookend_defaults=bookend_defaults,
             skip_suno_guard=True,  # Retry: always re-generate even if suno_audio_url exists
+            max_retries=MAX_RETRIES,
         )
 
         if not bake_result["success"]:
@@ -1580,6 +667,7 @@ async def process_suno_retry_job(job: dict[str, Any]) -> None:
         manifest_b = suno_ab.get("b")
 
         uploaded = await upload_ab_results(
+            sb,
             word, word_dir, user_id, deck_id, word_slug,
             manifest_a=manifest_a,
             manifest_b=manifest_b,
