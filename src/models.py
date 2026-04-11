@@ -5,7 +5,7 @@ from typing import Any, Literal, Optional
 from pydantic import BaseModel, Field
 
 
-# â”€â”€â”€ Manifest models â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# --- Manifest models ---------------------------------------------------
 
 class Enrichment(BaseModel):
     pos: Optional[str] = None
@@ -59,7 +59,7 @@ class Manifest(BaseModel):
     approved: bool = False
 
 
-# â”€â”€â”€ Workspace / health models â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# --- Workspace / health models ------------------------------------------
 
 class WorkspaceMeta(BaseModel):
     name: str

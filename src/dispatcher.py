@@ -54,10 +54,15 @@ class EngineUnreachableError(Exception):
 async def call_engine(engine: str, payload: dict[str, Any], endpoint: str = "/run") -> dict[str, Any]:
     """
     POST payload to engine endpoint (default /run).
-    All engines return HTTP 200 for both success and failure.
-    422 = bad payload (orchestrator bug).
+    Engines return HTTP 200 on success with status in body.
+    On failure, engines may return 200 with status:"failed",
+    422 for validation errors, or 400/500 for other failures.
     Pre-flight check verifies engine reachability before sending payload.
     """
+    if os.getenv("DISPATCH_MODE", "http") == "direct":
+        from src.cloud_dispatcher import call_engine_direct
+        return await call_engine_direct(engine, payload, endpoint)
+
     base_url = EngineConfig.url(engine)
     url = f"{base_url}{endpoint}"
     timeout = EngineConfig.timeout(engine)
