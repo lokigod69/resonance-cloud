@@ -164,9 +164,7 @@ async def bake_suno_into_word(
     if suno_result is None or suno_result.get("status") != "success":
         log.info("  [Suno] Generating audio for %s", word_slug)
         try:
-            suno_result = await suno_generate_song(
-                str(workspace_path.parent), user_id, deck_id, word_slug
-            )
+            suno_result = await suno_generate_song(word_dir, deck_id, word_slug)
         except Exception as _e:
             log.error("  [Suno] Generation failed: %s", _e)
             return {"success": False, "suno_ab_manifests": {}, "error": str(_e)}

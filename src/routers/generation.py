@@ -391,7 +391,7 @@ async def _maybe_trigger_suno(word_slug: str) -> None:
             return
 
         logger.info("[Suno] Auto-generating for %s...", word_slug)
-        result = await suno_generate_song(str(state.WORKSPACE_PATH.parent), user_id, deck_id, word_slug)
+        result = await suno_generate_song(word_dir, deck_id, word_slug)
         if result.get("status") == "success":
             logger.info("[Suno] Success for %s: %s", word_slug, result.get("audio_url", "N/A"))
         else:

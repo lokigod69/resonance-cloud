@@ -11,8 +11,9 @@ from fastapi.staticfiles import StaticFiles
 
 from . import state
 from .manifest import read_manifest
+from .routers import health
+from .storage import STORAGE_MODE
 from .workspace import list_word_dirs, read_workspace_meta, write_workspace_meta
-from .routers import generation, health, media, settings, suno, words, workspace
 
 
 def _backfill_workspace_languages():
@@ -59,8 +60,9 @@ def _backfill_workspace_names():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    _backfill_workspace_languages()
-    _backfill_workspace_names()
+    if STORAGE_MODE != "cloud":
+        _backfill_workspace_languages()
+        _backfill_workspace_names()
     yield
 
 
@@ -78,21 +80,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(workspace.router)
-app.include_router(words.router)
-app.include_router(generation.router)
-app.include_router(settings.router)
-app.include_router(suno.router)
-app.include_router(media.router)
 app.include_router(health.router)
 
-frontend_dist = Path(__file__).parent.parent / "frontend" / "dist"
-if frontend_dist.exists():
-    app.mount("/assets", StaticFiles(directory=str(frontend_dist / "assets")), name="assets")
+if STORAGE_MODE != "cloud":
+    from .routers import generation, media, settings, suno, words, workspace
 
-    @app.get("/{full_path:path}")
-    async def serve_spa(full_path: str):
-        index = frontend_dist / "index.html"
-        if index.exists():
-            return FileResponse(str(index))
-        return JSONResponse({"error": "Frontend not built"}, status_code=404)
+    app.include_router(workspace.router)
+    app.include_router(words.router)
+    app.include_router(generation.router)
+    app.include_router(settings.router)
+    app.include_router(suno.router)
+    app.include_router(media.router)
+
+    frontend_dist = Path(__file__).parent.parent / "frontend" / "dist"
+    if frontend_dist.exists():
+        app.mount("/assets", StaticFiles(directory=str(frontend_dist / "assets")), name="assets")
+
+        @app.get("/{full_path:path}")
+        async def serve_spa(full_path: str):
+            index = frontend_dist / "index.html"
+            if index.exists():
+                return FileResponse(str(index))
+            return JSONResponse({"error": "Frontend not built"}, status_code=404)

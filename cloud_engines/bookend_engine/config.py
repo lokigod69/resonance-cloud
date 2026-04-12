@@ -1,12 +1,22 @@
+import logging
 import os
 import subprocess
 from pathlib import Path
+from typing import Optional
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
+logger = logging.getLogger(__name__)
+
 LOCAL_FONTS_DIR = Path(__file__).resolve().parent / "fonts"
+WINDOWS_FONTS_DIR = Path("C:/Windows/Fonts")
+LINUX_FONT_DIRS = [
+    Path("/usr/share/fonts"),
+    Path("/usr/local/share/fonts"),
+    Path("/usr/share/fonts/truetype"),
+]
 
 # Map font names to likely TTF filenames (checked in order)
 FONT_MAP = {
@@ -42,48 +52,120 @@ def find_font(requested_font: str) -> str:
     Find the font file path for the requested font name.
 
     Search order:
-    1. Known filenames in local fonts/ directory
-    2. Known filenames in C:/Windows/Fonts
-    3. Partial name match in local fonts/
-    4. Partial name match in C:/Windows/Fonts
-    5. Fallback chain (Noto Sans -> Arial -> Segoe UI)
+    1. Local bundled fonts directory
+    2. fc-list / fontconfig
+    3. Direct system font directory search
+    4. Fallback chain (Noto Sans -> Arial -> Segoe UI)
+    5. RuntimeError
 
-    Returns the full path to the .ttf file.
+    Returns the full path to the .ttf or .otf file.
     """
-    win_fonts = Path("C:/Windows/Fonts")
-    search_dirs = [d for d in [LOCAL_FONTS_DIR, win_fonts] if d.exists()]
+    path = _find_font_path(requested_font)
+    if path:
+        return path
 
-    # 1-2: Try known filenames for the requested font
-    if requested_font in FONT_MAP:
-        for directory in search_dirs:
-            for fname in FONT_MAP[requested_font]:
-                path = directory / fname
-                if path.exists():
-                    return str(path)
-
-    # 3-4: Partial name match across both directories
-    normalized = requested_font.lower().replace(" ", "")
-    for directory in search_dirs:
-        for f in directory.iterdir():
-            if f.suffix.lower() in (".ttf", ".otf") and normalized in f.name.lower():
-                return str(f)
-
-    # 5: Fallback chain
     for fallback in FALLBACK_CHAIN:
         if fallback == requested_font:
             continue
-        if fallback in FONT_MAP:
-            for directory in search_dirs:
-                for fname in FONT_MAP[fallback]:
-                    path = directory / fname
-                    if path.exists():
-                        return str(path)
-
-    # Last resort
-    last_resort = win_fonts / "arial.ttf"
-    if last_resort.exists():
-        return str(last_resort)
+        path = _find_font_path(fallback)
+        if path:
+            logger.info("Font '%s' not found, using fallback '%s' -> %s", requested_font, fallback, path)
+            return path
 
     raise RuntimeError(
         f"No suitable font found. Tried: {requested_font}, {', '.join(FALLBACK_CHAIN)}"
     )
+
+
+def _find_font_path(font_name: str) -> Optional[str]:
+    local_dirs = [LOCAL_FONTS_DIR]
+    path = _search_known_filenames(font_name, local_dirs)
+    if path:
+        return path
+
+    path = _search_partial(font_name, local_dirs)
+    if path:
+        return path
+
+    path = _find_font_fc_list(font_name)
+    if path:
+        return path
+
+    system_dirs = _get_system_font_dirs()
+    path = _search_known_filenames(font_name, system_dirs)
+    if path:
+        return path
+
+    return _search_partial(font_name, system_dirs)
+
+
+def _get_system_font_dirs() -> list[Path]:
+    directories = [WINDOWS_FONTS_DIR]
+    if not _has_fontconfig():
+        directories.extend(LINUX_FONT_DIRS)
+    return [directory for directory in directories if directory.exists()]
+
+
+def _search_known_filenames(font_name: str, directories: list[Path]) -> Optional[str]:
+    filenames = FONT_MAP.get(font_name, [])
+    for directory in directories:
+        if not directory.exists():
+            continue
+        for filename in filenames:
+            path = directory / filename
+            if path.exists():
+                return str(path)
+    return None
+
+
+def _search_partial(font_name: str, directories: list[Path]) -> Optional[str]:
+    normalized = _normalize_font_name(font_name)
+    for directory in directories:
+        if not directory.exists():
+            continue
+        for ext in ("*.ttf", "*.otf"):
+            for font_file in directory.rglob(ext):
+                if normalized in _normalize_font_name(font_file.name):
+                    return str(font_file)
+    return None
+
+
+def _normalize_font_name(value: str) -> str:
+    return value.lower().replace(" ", "").replace("-", "").replace("_", "")
+
+
+def _has_fontconfig() -> bool:
+    try:
+        result = subprocess.run(
+            ["fc-list", "--version"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        return result.returncode == 0
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return False
+
+
+def _find_font_fc_list(font_name: str) -> Optional[str]:
+    """Find a font using fc-list (fontconfig)."""
+    try:
+        result = subprocess.run(
+            ["fc-list", f":family={font_name}", "file"],
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            for line in result.stdout.strip().split("\n"):
+                path = line.split(":")[0].strip()
+                if path and Path(path).is_file():
+                    if "Bold" in path and "Italic" not in path:
+                        return path
+            first_line = result.stdout.strip().split("\n")[0]
+            path = first_line.split(":")[0].strip()
+            if path and Path(path).is_file():
+                return path
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        pass
+    return None

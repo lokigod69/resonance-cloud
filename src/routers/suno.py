@@ -7,7 +7,7 @@ import httpx
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from ..state import WORKSPACE_ROOT
+from .. import state
 from ..suno import generate_song as suno_generate_song
 
 logger = logging.getLogger(__name__)
@@ -23,9 +23,8 @@ class SunoGenerateRequest(BaseModel):
 
 @router.post("/api/suno/generate")
 async def suno_generate(req: SunoGenerateRequest):
-    result = await suno_generate_song(
-        str(WORKSPACE_ROOT), req.user_id, req.deck_id, req.word_slug
-    )
+    word_dir = state.WORKSPACE_ROOT / f"cloud_{req.user_id}_{req.deck_id}" / req.word_slug
+    result = await suno_generate_song(word_dir, req.deck_id, req.word_slug)
     if result["status"] == "error":
         raise HTTPException(status_code=500, detail=result["error"])
 

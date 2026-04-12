@@ -50,13 +50,11 @@ def get_api_key() -> str:
     return key
 
 
-def read_concept_data(workspace_root: str, user_id: str, deck_id: str, word_slug: str) -> dict:
+def read_concept_data(word_dir: Path) -> dict:
     """
     Read concept data from local manifest and concept artifact files.
     Returns dict with: lyrics, music_caption, language, vocal_gender, word, translation.
     """
-    word_dir = Path(workspace_root) / f"cloud_{user_id}_{deck_id}" / word_slug
-
     # Read manifest
     manifest_path = word_dir / "manifest.json"
     if not manifest_path.exists():
@@ -141,9 +139,7 @@ def build_suno_payload(concept_data: dict) -> dict:
     }
 
 
-async def generate_song(
-    workspace_root: str, user_id: str, deck_id: str, word_slug: str
-) -> dict:
+async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
     """
     Full flow: read concept data → call Suno API → poll → return audio URL.
     Returns: { audio_url, task_id, status, error }
@@ -152,7 +148,7 @@ async def generate_song(
 
     # Step 1: Read concept data
     try:
-        concept_data = read_concept_data(workspace_root, user_id, deck_id, word_slug)
+        concept_data = read_concept_data(word_dir)
     except FileNotFoundError as e:
         return {"audio_url": None, "task_id": None, "status": "error", "error": str(e)}
 

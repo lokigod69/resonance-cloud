@@ -38,13 +38,13 @@ from src.services.metadata import collect_word_metadata
 from src.services.publishing import upload_ab_results
 from src.services.stage_helpers import get_fallback_overrides, get_incomplete_stages
 from src.services.suno_bakein import bake_suno_into_word
+from src.storage import STORAGE_MODE, create_job_workspace, get_job_workspace_path, get_workspace_root
 from supabase import create_client, Client
 
 # ─── Configuration ────────────────────────────────────────────────────────────
 
 SUPABASE_URL = os.getenv("SUPABASE_URL", "")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY", "") or os.getenv("SUPABASE_KEY", "")
-WORKSPACE_ROOT = Path(os.getenv("WORKSPACE_ROOT", "D:/CODING/ResonanceTEST/content"))
 POLL_INTERVAL = int(os.getenv("JOB_RUNNER_POLL_INTERVAL", "30"))
 MAX_RETRIES = int(os.getenv("JOB_RUNNER_MAX_RETRIES", "2"))
 CLEANUP_WORKSPACES = os.getenv("JOB_RUNNER_CLEANUP", "false").lower() == "true"
@@ -620,7 +620,7 @@ async def process_suno_retry_job(job: dict[str, Any]) -> None:
             raise ValueError(f"Word {word_id} has no word_slug — cannot locate workspace directory")
 
         # Build workspace paths — must match process_word()/process_job() exactly
-        workspace_path = WORKSPACE_ROOT / f"cloud_{user_id}_{deck_id}"
+        workspace_path = get_job_workspace_path(user_id=user_id, deck_id=deck_id)
         word_dir = workspace_path / word_slug
 
         # Validate prerequisites
@@ -815,8 +815,7 @@ async def process_job(job: dict[str, Any]) -> None:
         sb.table("words").update(update_data).eq("id", word_rec["id"]).execute()
 
     # Create workspace
-    workspace_path = WORKSPACE_ROOT / f"cloud_{user_id}_{deck_id}"
-    workspace_path.mkdir(parents=True, exist_ok=True)
+    workspace_path = create_job_workspace(user_id=user_id, deck_id=deck_id)
     log.info("Workspace: %s", workspace_path)
 
     # Write merged settings once
@@ -884,7 +883,10 @@ async def process_job(job: dict[str, Any]) -> None:
              job_id, final_status, words_succeeded, total)
 
     # Optional cleanup
-    if CLEANUP_WORKSPACES and workspace_path.exists():
+    if STORAGE_MODE == "cloud":
+        # Cloud cleanup deferred - suno retry may still need this workspace.
+        pass
+    elif CLEANUP_WORKSPACES and workspace_path.exists():
         import shutil
         shutil.rmtree(workspace_path, ignore_errors=True)
         log.info("Cleaned up workspace: %s", workspace_path)
@@ -895,7 +897,7 @@ async def process_job(job: dict[str, Any]) -> None:
 async def main() -> None:
     log.info("Resonance Job Runner starting")
     log.info("Supabase: %s", SUPABASE_URL)
-    log.info("Workspace root: %s", WORKSPACE_ROOT)
+    log.info("Workspace root: %s", get_workspace_root())
     log.info("Poll interval: %ds", POLL_INTERVAL)
 
     # Ensure system_settings row exists before polling
