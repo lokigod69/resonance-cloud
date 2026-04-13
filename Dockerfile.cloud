@@ -1,0 +1,63 @@
+FROM python:3.11-slim
+
+# System dependencies
+# - ffmpeg: video assembly + bookend (includes ffprobe)
+# - fonts-noto-core: Noto Sans for assembly/bookend word cards (Latin, Cyrillic, etc.)
+# - fonts-noto-cjk: CJK fallback fonts (Korean, Japanese, Chinese) — code actively
+#   searches for "Noto Sans CJK*" in assembly_engine/word_card.py and
+#   bookend_engine/word_card.py. Without this, CJK text renders as tofu boxes.
+#   Adds ~120MB to image but covers all supported languages.
+# - fontconfig: fc-list font discovery (used by assembly + bookend)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    fonts-noto-core \
+    fonts-noto-cjk \
+    fontconfig \
+    && rm -rf /var/lib/apt/lists/* \
+    && fc-cache -f -v
+
+# Create app directory
+WORKDIR /app
+
+# Install Python dependencies first (Docker layer caching)
+COPY requirements.cloud.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy orchestrator source
+COPY src/ /app/src/
+COPY job_runner.py /app/job_runner.py
+COPY start_cloud.py /app/start_cloud.py
+
+# Copy cloud engine packages (vendored copies from Prompt 01)
+COPY cloud_engines/ /app/cloud_engines/
+
+# Bookend bundled fonts are inside cloud_engines/bookend_engine/fonts/
+# They're already copied by the line above — no separate COPY needed.
+
+# NOTE: main.py is NOT copied. It runs the FastAPI admin server with
+# uvicorn + hot-reload, which is a local dev tool. Cloud mode runs
+# start_cloud.py instead.
+
+# PYTHONPATH: /app is the working directory.
+# Imports like `from src.storage import ...` and `from cloud_engines.image_engine import ...`
+# resolve relative to /app.
+ENV PYTHONPATH=/app
+
+# Cloud mode defaults
+ENV STORAGE_MODE=cloud
+ENV DISPATCH_MODE=direct
+ENV MUSIC_MODE=suno
+ENV PYTHONUNBUFFERED=1
+
+# Workspace root — MUST be backed by persistent storage (Railway volume).
+# Suno retry jobs depend on workspace files surviving container restarts.
+# /data/ is the conventional Railway volume mount point.
+ENV CLOUD_WORKSPACE_ROOT=/data/resonance/workspaces
+
+# Health check port (lightweight HTTP server in start_cloud.py)
+# NOTE: Railway may inject a PORT env var. The health server reads
+# HEALTH_PORT first, then falls back to PORT, then defaults to 8091.
+EXPOSE 8091
+
+# Start job runner + health check
+CMD ["python", "start_cloud.py"]

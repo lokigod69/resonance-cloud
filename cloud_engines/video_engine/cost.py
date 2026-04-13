@@ -7,6 +7,8 @@ provider pricing changes. Per ENGINE_VIDEO_v1_1.md Section 9.
 
 from __future__ import annotations
 
+from .config import VIDEO_BACKEND
+
 RATES: dict[str, dict] = {
     "ken_burns": {"type": "free"},
     "ltx_fast": {"type": "flat", "cost": 0.20},
@@ -31,6 +33,15 @@ def estimate_cost(video_mode: str, duration: int) -> float:
     Returns:
         Estimated cost in USD. 0.0 for Ken Burns.
     """
+    # Self-hosted LTX: RunPod L40S pricing (~$0.86/hr)
+    if VIDEO_BACKEND == "self_hosted" and video_mode in ("ltx_fast", "ltx_pro", "ltx"):
+        rate_per_second = 0.86 / 3600
+        if video_mode == "ltx_pro":
+            estimated_gpu_seconds = (duration / 6.0) * 540
+        else:
+            estimated_gpu_seconds = (duration / 6.0) * 90
+        return round(estimated_gpu_seconds * rate_per_second, 4)
+
     r = RATES.get(video_mode, RATES["ltx"])
 
     if r["type"] == "free":

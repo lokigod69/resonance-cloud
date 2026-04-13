@@ -1,0 +1,48 @@
+# Git
+.git
+.gitignore
+
+# Virtual environments
+.venv
+venv
+
+# Frontend (deployed separately on Vercel)
+frontend/
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+
+# Environment files (secrets — passed via Docker env vars)
+.env
+.env.*
+
+# Development files
+*.bat
+*.md
+*.csv
+
+# main.py — local dev server, not needed in cloud
+main.py
+
+# Tests
+tests/
+test_*.py
+conftest.py
+
+# Scripts (backfill utilities, not needed at runtime)
+scripts/
+
+# Migration planning docs
+migration/
+docs/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

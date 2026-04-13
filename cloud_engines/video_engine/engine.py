@@ -90,12 +90,36 @@ def generate_video(payload: VideoPayload) -> VideoResult:
         thumb_path = str(output_dir / thumb_filename)
 
         # --- Step 6: Generate video ---
-        generation_result = adapter.generate(
-            image_path=payload.content.image_path,
-            content=payload.content,
-            settings=adjusted_settings,
-            output_path=video_path,
-        )
+        try:
+            generation_result = adapter.generate(
+                image_path=payload.content.image_path,
+                content=payload.content,
+                settings=adjusted_settings,
+                output_path=video_path,
+            )
+        except Exception as e:
+            if (
+                config.VIDEO_BACKEND == "self_hosted"
+                and payload.settings.video_mode in ("ltx_fast", "ltx_pro", "ltx")
+            ):
+                logger.warning(
+                    f"Self-hosted LTX failed, falling back to fal.ai: {e}"
+                )
+                from .adapters.ltx import LTXAdapter
+
+                fallback = LTXAdapter(tier=payload.settings.video_mode)
+                fallback_settings = fallback.validate_settings(payload.settings)
+
+                adapter = fallback
+                adjusted_settings = fallback_settings
+                generation_result = adapter.generate(
+                    image_path=payload.content.image_path,
+                    content=payload.content,
+                    settings=adjusted_settings,
+                    output_path=video_path,
+                )
+            else:
+                raise
 
         # --- Step 7: Ensure thumbnail exists ---
         if not Path(thumb_path).exists():
@@ -227,7 +251,8 @@ def _write_generation_meta(
 
     Per ENGINE_VIDEO_v1_1.md Section 11: this is written ALWAYS, even on failure.
     """
-    settings_used = (adjusted_settings or payload.settings).model_dump()
+    settings_for_meta = adjusted_settings or payload.settings
+    settings_used = settings_for_meta.model_dump()
     # Include camera motion in settings_used for traceability (it lives on content, not settings)
     if payload.content.camera_motion:
         settings_used["camera_motion"] = payload.content.camera_motion
@@ -249,11 +274,12 @@ def _write_generation_meta(
             file_size_bytes=generation_result.get("file_size_bytes"),
         )
 
-    # Build cost section
-    est_cost = estimate_cost(video_mode, payload.settings.duration)
+    # Build cost section — use adjusted/snapped duration, not raw requested duration
+    actual_duration = settings_for_meta.duration
+    est_cost = estimate_cost(video_mode, actual_duration)
     cost = GenerationMetaCost(
         estimated_usd=est_cost,
-        duration_seconds=float(payload.settings.duration),
+        duration_seconds=float(actual_duration),
         provider=adapter.provider_name if adapter else "unknown",
         model=adapter.model_name if adapter else "unknown",
     )

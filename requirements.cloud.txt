@@ -1,0 +1,29 @@
+# Resonance Cloud — Python dependencies for Docker image
+# Excludes GPU/ML libraries (torch, diffusers, gradio) and unused packages
+# (pydantic-settings, psycopg2-binary).
+
+# ─── Core Framework ─────────────────────────────────────────
+fastapi>=0.135.1          # app.py (app factory, still imported in cloud mode)
+uvicorn>=0.41.0           # main.py (not used in cloud, but harmless to include)
+
+# ─── HTTP / Data ─────────────────────────────────────────────
+httpx>=0.28.1             # All engines + orchestrator (HTTP client for external APIs)
+pydantic>=2.12.5          # All engines + orchestrator (data models)
+
+# ─── Environment / Uploads ───────────────────────────────────
+python-dotenv>=1.2.2      # Orchestrator + engines (.env loading)
+python-multipart>=0.0.22  # FastAPI file uploads
+
+# ─── Database ────────────────────────────────────────────────
+supabase>=2.0.0           # job_runner.py, suno.py, routers (Supabase client)
+
+# ─── Image / Video ───────────────────────────────────────────
+Pillow                    # Assembly + Bookend (word cards) + Image engine (fallback PNG)
+numpy                     # Bookend word_card.py:127 (radial gradient rendering)
+
+# ─── AI Provider SDKs ───────────────────────────────────────
+google-genai              # Image engine renderer.py:18 (Gemini — NOT google-generativeai)
+fal-client                # Video engine upload.py:36 (fal.ai image upload, lazy import)
+
+# ─── NLP ─────────────────────────────────────────────────────
+pyphen                    # Concept engine syllables.py:13 (hyphenation / syllable splitting)

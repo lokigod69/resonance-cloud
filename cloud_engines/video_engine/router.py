@@ -7,6 +7,7 @@ video_mode from settings and returns the appropriate adapter.
 from __future__ import annotations
 
 from .adapters.base import VideoProviderAdapter
+from .config import VIDEO_BACKEND
 
 
 def get_adapter(video_mode: str) -> VideoProviderAdapter:
@@ -27,6 +28,10 @@ def get_adapter(video_mode: str) -> VideoProviderAdapter:
     if video_mode == "ken_burns":
         from .adapters.ken_burns import KenBurnsAdapter
         return KenBurnsAdapter()
+
+    elif VIDEO_BACKEND == "self_hosted" and video_mode in ("ltx_fast", "ltx_pro", "ltx"):
+        from .adapters.ltx_selfhosted import LTXSelfHostedAdapter
+        return LTXSelfHostedAdapter(tier=video_mode)
 
     elif video_mode in ("ltx_fast", "ltx_pro", "ltx"):
         from .adapters.ltx import LTXAdapter

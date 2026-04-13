@@ -20,6 +20,13 @@ logger = logging.getLogger(__name__)
 
 FAL_KEY: str = os.environ.get("FAL_KEY", "")
 
+# --- GPU Worker (self-hosted LTX backend) ---
+
+VIDEO_BACKEND: str = os.getenv("VIDEO_BACKEND", "fal")
+GPU_WORKER_URL: str = os.getenv("GPU_WORKER_URL", "")
+GPU_WORKER_TOKEN: str = os.getenv("GPU_WORKER_TOKEN", "")
+GPU_WORKER_TIMEOUT: int = int(os.getenv("GPU_WORKER_TIMEOUT", "600"))
+
 # --- Resolution Map ---
 
 RESOLUTION_MAP: dict[str, tuple[int, int]] = {

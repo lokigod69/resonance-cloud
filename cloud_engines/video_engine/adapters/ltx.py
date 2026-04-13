@@ -20,6 +20,19 @@ from ..download import download_video, extract_thumbnail
 from ..models import VideoContent, VideoSettings
 from ..upload import upload_image
 from .base import VideoProviderAdapter
+from .ltx_shared import (
+    _CAMERA_LANGUAGE,
+    _CONSTRAINT_PREFIX,
+    _I2V_DURATIONS,
+    _NEGATIVE_SUFFIX,
+    _SPEED_LANGUAGE,
+    _T2V_FAST_DURATIONS,
+    _T2V_PRO_DURATIONS,
+    _TEXT_TO_VIDEO_PREFIX,
+    _snap_duration,
+    build_ltx_negative,
+    build_ltx_prompt,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -32,65 +45,6 @@ TEXT_TO_VIDEO_ENDPOINTS: dict[str, str] = {
     "ltx_fast": "fal-ai/ltx-2.3/text-to-video/fast",
     "ltx_pro": "fal-ai/ltx-2.3/text-to-video",
     "ltx": "fal-ai/ltx-2.3/text-to-video/fast",  # backward compat → fast
-}
-# Valid duration enums accepted by fal.ai LTX 2.3 endpoints.
-# Pro text-to-video only supports up to 10s; all others support up to 20s.
-_I2V_DURATIONS = (6, 8, 10, 12, 14, 16, 18, 20)
-_T2V_PRO_DURATIONS = (6, 8, 10)
-_T2V_FAST_DURATIONS = (6, 8, 10, 12, 14, 16, 18, 20)
-
-
-def _snap_duration(requested: int, valid: tuple[int, ...]) -> int:
-    """Round a requested duration to the nearest valid fal.ai enum value.
-
-    On ties (equidistant from two values), rounds UP so users get at least
-    as much duration as they asked for.
-    """
-    return min(valid, key=lambda v: (abs(v - requested), -v))
-
-# --- Tier 1: Constraint prefix to prevent LTX hallucination / subject drift ---
-_CONSTRAINT_PREFIX = (
-    "Maintain the exact subject, species, and scene composition shown in the image "
-    "throughout. Do not introduce new characters, objects, or transform the subject. "
-    "Subtle, naturalistic motion only. "
-)
-_TEXT_TO_VIDEO_PREFIX = (
-    "Generate a high-quality cinematic scene with consistent visual style "
-    "throughout. Maintain the subject's appearance, the environment, and "
-    "all visual details exactly as described for the entire duration. "
-)
-_NEGATIVE_SUFFIX = (
-    ", morphing, transformation, species change, subject replacement, sudden scene change"
-)
-
-# --- Tier 2: Camera motion → natural language for LTX prompt ---
-_CAMERA_LANGUAGE: dict[str, str] = {
-    # Basic Ken Burns types
-    "slow_zoom_in": "Camera slowly pushes in closer to the subject",
-    "slow_zoom_out": "Camera gradually pulls back to reveal the wider scene",
-    "pan_left": "Camera pans smoothly from right to left across the scene",
-    "pan_right": "Camera pans smoothly from left to right across the scene",
-    "pan_up": "Camera tilts upward gradually",
-    "pan_down": "Camera tilts downward gradually",
-    "static": "",
-    # Cinematic extended types
-    "dolly_in": "The camera moves physically forward toward the subject, creating depth parallax",
-    "dolly_out": "The camera pulls physically backward away from the subject, revealing the surroundings",
-    "orbit_left": "The camera orbits around the subject in a clockwise arc, maintaining focus on center",
-    "orbit_right": "The camera orbits around the subject in a counter-clockwise arc, maintaining focus on center",
-    "tracking_left": "The camera tracks laterally to the left alongside the subject",
-    "tracking_right": "The camera tracks laterally to the right alongside the subject",
-    "crane_up": "The camera rises vertically upward in a crane movement, looking down as it ascends",
-    "crane_down": "The camera descends vertically downward in a crane movement",
-    "push_in": "The camera slowly and deliberately pushes in toward the subject with intent",
-    "pull_out": "The camera slowly pulls away from the subject, creating emotional distance",
-    "handheld": "The camera has subtle natural handheld movement with slight organic sway",
-}
-_SPEED_LANGUAGE: dict[str, str] = {
-    "very_slow": "very slowly and subtly",
-    "slow": "at a gentle, steady pace",
-    "medium": "at a moderate, noticeable pace",
-    "fast": "quickly and dynamically",
 }
 
 
@@ -175,26 +129,13 @@ class LTXAdapter(VideoProviderAdapter):
             valid = _I2V_DURATIONS
         duration = _snap_duration(settings.duration, valid)
 
-        # Step 3: Build prompt with appropriate prefix + camera motion
-        if is_text_to_video:
-            base_prompt = (
-                content.text_to_video_prompt
-                if content.text_to_video_prompt
-                else content.video_prompt
-            )
-            prompt_parts = [_TEXT_TO_VIDEO_PREFIX, base_prompt]
-        else:
-            prompt_parts = [_CONSTRAINT_PREFIX, content.video_prompt]
-
-        # Append camera motion instruction if available (I2V only — T2V prompts
-        # already contain camera direction baked in by the storyboard LLM)
-        if not is_text_to_video and content.camera_motion:
-            motion_type = content.camera_motion.get("type", "static")
-            speed = content.camera_motion.get("speed", "slow")
-            camera_instruction = _CAMERA_LANGUAGE.get(motion_type, "")
-            if camera_instruction:
-                speed_mod = _SPEED_LANGUAGE.get(speed, "at a gentle pace")
-                prompt_parts.append(f"Camera movement: {camera_instruction} {speed_mod}.")
+        # Step 3: Build prompt with shared helpers (identical logic)
+        final_prompt = build_ltx_prompt(
+            video_prompt=content.video_prompt,
+            camera_motion=content.camera_motion,
+            is_t2v=is_text_to_video,
+            text_to_video_prompt=content.text_to_video_prompt,
+        )
 
         if is_text_to_video and content.camera_motion:
             motion_type_val = content.camera_motion.get("type", "")
@@ -204,11 +145,7 @@ class LTXAdapter(VideoProviderAdapter):
                     motion_type_val,
                 )
 
-        final_prompt = " ".join(prompt_parts)
-
-        # Enhanced negative prompt
-        base_negative = settings.negative_prompt or "blur, distort, and low quality"
-        enhanced_negative = f"{base_negative}{_NEGATIVE_SUFFIX}"
+        enhanced_negative = build_ltx_negative(settings.negative_prompt)
 
         # Build request
         if is_text_to_video:
