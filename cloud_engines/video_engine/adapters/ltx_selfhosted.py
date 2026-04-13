@@ -74,23 +74,6 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
         rate_per_second = 0.86 / 3600
         return round(estimated_gpu_seconds * rate_per_second, 4)
 
-    @staticmethod
-    def _quality_for_mode(video_mode: str) -> str:
-        """Map pipeline video_mode to the worker quality field."""
-        return "pro" if video_mode == "ltx_pro" else "fast"
-
-    @staticmethod
-    def _extract_error_detail(response: httpx.Response) -> Any:
-        """Return the most useful validation error payload from the worker."""
-        try:
-            payload = response.json()
-        except ValueError:
-            return response.text or "Validation error"
-
-        if isinstance(payload, dict):
-            return payload.get("error") or payload.get("detail") or payload
-        return payload
-
     def generate(
         self,
         image_path: Optional[str],
@@ -123,29 +106,25 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
             text_to_video_prompt=content.text_to_video_prompt,
         )
         final_negative = build_ltx_negative(settings.negative_prompt)
-        quality = self._quality_for_mode(settings.video_mode)
 
-        form_fields = {
+        form_data = {
             "prompt": final_prompt,
             "negative_prompt": final_negative,
             "duration": str(settings.duration),
             "resolution": settings.resolution,
             "seed": str(settings.seed),
-            "quality": quality,
-            "job_id": "",
+            "quality": self._quality,
             "scene_number": str(content.scene_number),
         }
 
-        files_to_close: list[Any] = []
-        multipart_fields: list[tuple[str, Any]] = [
-            (key, (None, value)) for key, value in form_fields.items()
-        ]
+        files_to_close: list = []
+        files_dict: dict = {}
 
         try:
             if not is_text_to_video and image_path and Path(image_path).exists():
                 fh = open(image_path, "rb")
                 files_to_close.append(fh)
-                multipart_fields.append(("image", (Path(image_path).name, fh, "image/png")))
+                files_dict["image"] = ("image.png", fh, "image/png")
 
             if (
                 not is_text_to_video
@@ -154,9 +133,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
             ):
                 fh2 = open(content.end_image_path, "rb")
                 files_to_close.append(fh2)
-                multipart_fields.append(
-                    ("end_image", (Path(content.end_image_path).name, fh2, "image/png"))
-                )
+                files_dict["end_image"] = ("end_image.png", fh2, "image/png")
 
             headers = {"Authorization": f"Bearer {GPU_WORKER_TOKEN}"}
             max_retries = 5
@@ -171,7 +148,8 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                 ) as client:
                     response = client.post(
                         f"{GPU_WORKER_URL}/generate",
-                        files=multipart_fields,
+                        data=form_data,
+                        files=files_dict if files_dict else None,
                         headers=headers,
                     )
 
@@ -195,7 +173,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                     )
 
                 if response.status_code == 422:
-                    detail = self._extract_error_detail(response)
+                    detail = response.json().get("detail", "Validation error")
                     raise ValueError(f"GPU worker rejected request: {detail}")
 
                 response.raise_for_status()
