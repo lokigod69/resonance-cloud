@@ -241,8 +241,8 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                     )
 
                 try:
-                    poll_read_timeout = max(min(remaining, 30), 1.0)
-                    poll_connect_timeout = max(min(remaining, 10), 1.0)
+                    poll_read_timeout = max(min(remaining, 30), 0.1)
+                    poll_connect_timeout = max(min(remaining, 10), 0.1)
                     with httpx.Client(
                         timeout=httpx.Timeout(poll_read_timeout, connect=poll_connect_timeout)
                     ) as client:
