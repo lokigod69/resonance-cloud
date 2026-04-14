@@ -26,6 +26,7 @@ VIDEO_BACKEND: str = os.getenv("VIDEO_BACKEND", "fal")
 GPU_WORKER_URL: str = os.getenv("GPU_WORKER_URL", "")
 GPU_WORKER_TOKEN: str = os.getenv("GPU_WORKER_TOKEN", "")
 GPU_WORKER_TIMEOUT: int = int(os.getenv("GPU_WORKER_TIMEOUT", "600"))
+GPU_WORKER_POLL_INTERVAL: int = int(os.getenv("GPU_WORKER_POLL_INTERVAL", "5"))
 
 # --- Resolution Map ---
 

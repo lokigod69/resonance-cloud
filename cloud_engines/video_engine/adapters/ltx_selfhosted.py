@@ -1,4 +1,4 @@
-"""Self-hosted LTX GPU worker adapter."""
+"""Self-hosted LTX GPU worker adapter (async job pattern)."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from typing import Any, Optional
 
 import httpx
 
-from ..config import GPU_WORKER_TIMEOUT, GPU_WORKER_TOKEN, GPU_WORKER_URL
+from ..config import GPU_WORKER_POLL_INTERVAL, GPU_WORKER_TIMEOUT, GPU_WORKER_TOKEN, GPU_WORKER_URL
 from ..download import extract_thumbnail
 from ..models import VideoContent, VideoSettings
 from .base import VideoProviderAdapter
@@ -26,7 +26,10 @@ logger = logging.getLogger(__name__)
 
 
 class LTXSelfHostedAdapter(VideoProviderAdapter):
-    """Adapter that calls the self-hosted LTX GPU worker instead of fal.ai."""
+    """Adapter that calls the self-hosted LTX GPU worker instead of fal.ai.
+
+    Uses an async job pattern: submit -> poll -> download.
+    """
 
     def __init__(self, tier: str = "ltx_fast") -> None:
         valid_tiers = {"ltx_fast", "ltx_pro", "ltx"}
@@ -83,14 +86,14 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
     ) -> dict[str, Any]:
         """Generate video via the self-hosted GPU worker.
 
-        engine.py currently reads these keys from the result dict:
+        Uses async job pattern: submit job -> poll for completion -> download result.
+
+        engine.py reads these keys from the result dict:
         - resolution
         - fps
         - duration_seconds
         - file_size_bytes
         - fal_request_id
-
-        engine.py does not read seed from the result dict.
         """
         if not GPU_WORKER_URL:
             raise RuntimeError("GPU_WORKER_URL not set")
@@ -136,52 +139,175 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                 files_dict["end_image"] = ("end_image.png", fh2, "image/png")
 
             headers = {"Authorization": f"Bearer {GPU_WORKER_TOKEN}"}
-            max_retries = 5
-            response = None
 
-            for attempt in range(max_retries):
+            # ── Phase 1: Submit job ──────────────────────────────────────
+            submit_response = None
+            max_submit_retries = 5
+
+            for attempt in range(max_submit_retries):
                 for fh in files_to_close:
                     fh.seek(0)
 
                 with httpx.Client(
-                    timeout=httpx.Timeout(GPU_WORKER_TIMEOUT, connect=30)
+                    timeout=httpx.Timeout(60, connect=30)
                 ) as client:
-                    response = client.post(
+                    submit_response = client.post(
                         f"{GPU_WORKER_URL}/generate",
                         data=form_data,
                         files=files_dict if files_dict else None,
                         headers=headers,
                     )
 
-                if response.status_code == 503:
-                    retry_after = int(response.headers.get("Retry-After", "10"))
+                if submit_response.status_code == 503:
+                    retry_after = int(submit_response.headers.get("Retry-After", "10"))
                     logger.warning(
-                        "GPU worker busy (attempt %s/%s), retrying in %ss",
+                        "GPU worker busy on submit (attempt %s/%s), retrying in %ss",
                         attempt + 1,
-                        max_retries,
+                        max_submit_retries,
                         retry_after,
                     )
-                    if attempt < max_retries - 1:
+                    if attempt < max_submit_retries - 1:
                         time.sleep(retry_after)
                         continue
+                    raise RuntimeError("GPU worker busy after max submit retries")
 
-                    raise RuntimeError("GPU worker busy after max retries")
-
-                if response.status_code == 401:
+                if submit_response.status_code == 401:
                     raise RuntimeError(
                         "GPU worker auth failed - check GPU_WORKER_TOKEN"
                     )
 
-                if response.status_code == 422:
-                    detail = response.json().get("detail", "Validation error")
+                if submit_response.status_code == 422:
+                    try:
+                        detail = submit_response.json().get("error", "Validation error")
+                    except Exception:
+                        detail = submit_response.text
                     raise ValueError(f"GPU worker rejected request: {detail}")
 
-                response.raise_for_status()
+                if submit_response.status_code != 202:
+                    try:
+                        err = submit_response.json().get("error", submit_response.text)
+                    except Exception:
+                        err = submit_response.text
+                    raise RuntimeError(
+                        f"GPU worker submit failed ({submit_response.status_code}): {err}"
+                    )
+
+                # 202 Accepted — job queued successfully
                 break
 
-            with open(output_path, "wb") as f:
-                f.write(response.content)
+            job_data = submit_response.json()
+            job_id = job_data["job_id"]
+            logger.info("Self-hosted LTX job submitted: %s", job_id)
 
+            # ── Phase 2: Poll for completion ─────────────────────────────
+            poll_start = time.time()
+            last_log_time = poll_start
+            consecutive_errors = 0
+            max_consecutive_errors = 10
+            job_status: dict = {}
+
+            while True:
+                elapsed = time.time() - poll_start
+                if elapsed > GPU_WORKER_TIMEOUT:
+                    raise TimeoutError(
+                        f"Self-hosted LTX job {job_id} timed out after {int(elapsed)}s. "
+                        f"GPU_WORKER_TIMEOUT={GPU_WORKER_TIMEOUT}s."
+                    )
+
+                time.sleep(GPU_WORKER_POLL_INTERVAL)
+
+                try:
+                    with httpx.Client(
+                        timeout=httpx.Timeout(30, connect=10)
+                    ) as client:
+                        poll_response = client.get(
+                            f"{GPU_WORKER_URL}/jobs/{job_id}",
+                            headers=headers,
+                        )
+                except httpx.HTTPError as e:
+                    consecutive_errors += 1
+                    logger.warning(
+                        "Poll request error for job %s (%s/%s): %s",
+                        job_id,
+                        consecutive_errors,
+                        max_consecutive_errors,
+                        e,
+                    )
+                    if consecutive_errors >= max_consecutive_errors:
+                        raise ConnectionError(
+                            f"Lost connection to GPU worker after "
+                            f"{consecutive_errors} consecutive poll failures "
+                            f"for job {job_id}: {e}"
+                        ) from e
+                    continue
+
+                if poll_response.status_code != 200:
+                    consecutive_errors += 1
+                    logger.warning(
+                        "Poll request failed (%s) for job %s (%s/%s), retrying...",
+                        poll_response.status_code,
+                        job_id,
+                        consecutive_errors,
+                        max_consecutive_errors,
+                    )
+                    if consecutive_errors >= max_consecutive_errors:
+                        raise ConnectionError(
+                            f"GPU worker returned {consecutive_errors} consecutive "
+                            f"non-200 responses for job {job_id}"
+                        )
+                    continue
+
+                # Successful poll — reset error counter
+                consecutive_errors = 0
+                job_status = poll_response.json()
+                status = job_status.get("status")
+
+                if status == "complete":
+                    logger.info(
+                        "Self-hosted LTX job %s complete (%.0fs)",
+                        job_id,
+                        time.time() - poll_start,
+                    )
+                    break
+
+                if status == "failed":
+                    error_msg = job_status.get("error", "Unknown error")
+                    raise RuntimeError(
+                        f"Self-hosted LTX job {job_id} failed: {error_msg}"
+                    )
+
+                # Still queued or processing — log every ~30 seconds
+                progress = job_status.get("progress", 0)
+                now = time.time()
+                if now - last_log_time >= 30:
+                    logger.info(
+                        "Self-hosted LTX job %s: %s (%.0f%%, %.0fs elapsed)",
+                        job_id,
+                        status,
+                        progress * 100,
+                        elapsed,
+                    )
+                    last_log_time = now
+
+            # ── Phase 3: Download result ─────────────────────────────────
+            with httpx.Client(
+                timeout=httpx.Timeout(120, connect=30)
+            ) as client:
+                dl_response = client.get(
+                    f"{GPU_WORKER_URL}/jobs/{job_id}/result",
+                    headers=headers,
+                )
+
+            if dl_response.status_code != 200:
+                raise RuntimeError(
+                    f"Failed to download result for job {job_id}: "
+                    f"HTTP {dl_response.status_code}"
+                )
+
+            with open(output_path, "wb") as f:
+                f.write(dl_response.content)
+
+            # ── Post-processing ──────────────────────────────────────────
             thumb_path = output_path.replace(".mp4", "_thumb.jpg")
             try:
                 extract_thumbnail(output_path, thumb_path)
@@ -189,16 +315,18 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                 logger.warning(f"Thumbnail extraction failed (non-fatal): {e}")
 
             file_size = Path(output_path).stat().st_size
-            fps = int(response.headers.get("X-Fps", "24"))
+
+            # Extract metadata from the poll response
+            meta = job_status.get("metadata") or {}
 
             return {
-                "resolution": settings.resolution,
-                "fps": fps,
+                "resolution": meta.get("resolution", settings.resolution),
+                "fps": meta.get("fps", 24),
                 "duration_seconds": float(
-                    response.headers.get("X-Duration", settings.duration)
+                    meta.get("duration", settings.duration)
                 ),
                 "file_size_bytes": file_size,
-                "fal_request_id": response.headers.get("X-Request-Id"),
+                "fal_request_id": meta.get("request_id"),
             }
 
         finally:

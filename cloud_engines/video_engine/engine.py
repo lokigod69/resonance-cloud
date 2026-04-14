@@ -90,36 +90,12 @@ def generate_video(payload: VideoPayload) -> VideoResult:
         thumb_path = str(output_dir / thumb_filename)
 
         # --- Step 6: Generate video ---
-        try:
-            generation_result = adapter.generate(
-                image_path=payload.content.image_path,
-                content=payload.content,
-                settings=adjusted_settings,
-                output_path=video_path,
-            )
-        except Exception as e:
-            if (
-                config.VIDEO_BACKEND == "self_hosted"
-                and payload.settings.video_mode in ("ltx_fast", "ltx_pro", "ltx")
-            ):
-                logger.warning(
-                    f"Self-hosted LTX failed, falling back to fal.ai: {e}"
-                )
-                from .adapters.ltx import LTXAdapter
-
-                fallback = LTXAdapter(tier=payload.settings.video_mode)
-                fallback_settings = fallback.validate_settings(payload.settings)
-
-                adapter = fallback
-                adjusted_settings = fallback_settings
-                generation_result = adapter.generate(
-                    image_path=payload.content.image_path,
-                    content=payload.content,
-                    settings=adjusted_settings,
-                    output_path=video_path,
-                )
-            else:
-                raise
+        generation_result = adapter.generate(
+            image_path=payload.content.image_path,
+            content=payload.content,
+            settings=adjusted_settings,
+            output_path=video_path,
+        )
 
         # --- Step 7: Ensure thumbnail exists ---
         if not Path(thumb_path).exists():
@@ -156,6 +132,12 @@ def generate_video(payload: VideoPayload) -> VideoResult:
             message=str(e), retryable=True, type="connection_error"
         )
         logger.error(f"Connection error: {e}")
+
+    except TimeoutError as e:
+        error = VideoError(
+            message=str(e), retryable=True, type="timeout_error"
+        )
+        logger.error(f"Timeout error: {e}")
 
     except RuntimeError as e:
         error = VideoError(
