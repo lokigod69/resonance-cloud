@@ -28,6 +28,11 @@ GPU_WORKER_TOKEN: str = os.getenv("GPU_WORKER_TOKEN", "")
 GPU_WORKER_TIMEOUT: int = int(os.getenv("GPU_WORKER_TIMEOUT", "600"))
 GPU_WORKER_POLL_INTERVAL: int = int(os.getenv("GPU_WORKER_POLL_INTERVAL", "5"))
 
+# --- RunPod Serverless ---
+
+RUNPOD_API_KEY: str = os.getenv("RUNPOD_API_KEY", "")
+RUNPOD_ENDPOINT_ID: str = os.getenv("RUNPOD_ENDPOINT_ID", "")
+
 # --- Resolution Map ---
 
 RESOLUTION_MAP: dict[str, tuple[int, int]] = {

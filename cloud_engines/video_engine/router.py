@@ -29,6 +29,10 @@ def get_adapter(video_mode: str) -> VideoProviderAdapter:
         from .adapters.ken_burns import KenBurnsAdapter
         return KenBurnsAdapter()
 
+    elif VIDEO_BACKEND == "runpod" and video_mode in ("ltx_fast", "ltx_pro", "ltx"):
+        from .adapters.ltx_runpod import LTXRunPodAdapter
+        return LTXRunPodAdapter(tier=video_mode)
+
     elif VIDEO_BACKEND == "self_hosted" and video_mode in ("ltx_fast", "ltx_pro", "ltx"):
         from .adapters.ltx_selfhosted import LTXSelfHostedAdapter
         return LTXSelfHostedAdapter(tier=video_mode)

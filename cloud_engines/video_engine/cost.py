@@ -34,7 +34,7 @@ def estimate_cost(video_mode: str, duration: int) -> float:
         Estimated cost in USD. 0.0 for Ken Burns.
     """
     # Self-hosted LTX: RunPod L40S pricing (~$0.86/hr)
-    if VIDEO_BACKEND == "self_hosted" and video_mode in ("ltx_fast", "ltx_pro", "ltx"):
+    if VIDEO_BACKEND in ("self_hosted", "runpod") and video_mode in ("ltx_fast", "ltx_pro", "ltx"):
         rate_per_second = 0.86 / 3600
         if video_mode == "ltx_pro":
             estimated_gpu_seconds = (duration / 6.0) * 540
