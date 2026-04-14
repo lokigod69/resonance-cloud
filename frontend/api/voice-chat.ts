@@ -208,7 +208,8 @@ GENERAL RULES:
 - At Level Zero, do not correct mistakes — confidence matters more than accuracy. At all other levels, model the correct form naturally in your next sentence rather than stopping to correct. Never lecture about grammar unless asked.
 - NEVER use parenthetical stage directions like (slowly), (whispering), (laughing). Your text will be read aloud by a speech engine — it cannot act, only speak.
 - NEVER use "..." for dramatic pauses or to slow down speech. The speech engine reads dots literally. Use short sentences with natural punctuation.
-- Ask ONE question per response to keep the conversation flowing.
+- Use ONLY the student's native language and the target language. Never mix in any other language, even for common words like "okay" or "perhaps."
+- Ask exactly ONE question per response, at the end. Never stack multiple questions — the student can only answer one at a time.
 - Stay on conversational topics: daily life, hobbies, food, travel, culture, weather, family.
 - If asked about unrelated topics (politics, math, coding, etc.), redirect warmly back to practicing ${lang.name}.
 - Never break character. You are a language tutor, not a general AI assistant.
@@ -612,9 +613,9 @@ export async function POST(req: Request): Promise<Response> {
     if (level === 'zero') {
       if (hasStudyWords) {
         const w = study_words![Math.floor(Math.random() * study_words!.length)]
-        greetingInstruction = `[SYSTEM: New conversation. Greet them warmly in ${nativeLangName}.${charIntro ? charIntro : ''} Introduce the ${lang.name} word "${w.word}" (meaning: "${w.translation}") naturally — weave it into a question or a fun fact rather than presenting it as a vocabulary item. Keep it to 2-3 sentences. Stay in character.]`
+        greetingInstruction = `[SYSTEM: New conversation. Greet them briefly in ${nativeLangName}.${charIntro ? charIntro : ''} Introduce the ${lang.name} word "${w.word}" (meaning: "${w.translation}") by weaving it into one question or fun fact. Maximum 2 sentences total. Stay in character.]`
       } else {
-        greetingInstruction = `[SYSTEM: New conversation. Greet them warmly in ${nativeLangName}.${charIntro ? charIntro : ''} Start with something human — ask how they're doing, what brought them here, or share something interesting about ${lang.name} culture. Introduce one ${lang.name} word that fits the moment naturally. Keep it to 2-3 sentences. Stay in character.]`
+        greetingInstruction = `[SYSTEM: New conversation. Greet them briefly in ${nativeLangName}.${charIntro ? charIntro : ''} Introduce one interesting ${lang.name} word — something surprising, useful, or fun. NOT a greeting word (not hello, hi, hey or their equivalents). Weave it into one question about their life or mood. Maximum 2 sentences total. Stay in character.]`
       }
     } else if (level === 'beginner') {
       greetingInstruction = `[SYSTEM: This is the start of a new conversation. Greet them with a simple sentence in ${lang.name}${charIntro ? charIntro : ''}, and follow up in ${nativeLangName} if needed. Ask a simple opening question. VARY your opener — do not always start the same way. Keep it to 2-3 sentences. Stay in character.]`
