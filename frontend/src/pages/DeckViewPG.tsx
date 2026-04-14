@@ -90,6 +90,7 @@ export default function DeckViewPG() {
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
   const [sharing, setSharing] = useState(false)
+  const [deletingDeck, setDeletingDeck] = useState(false)
   const [shareSuccess, setShareSuccess] = useState(false)
 
   // ── Edit mode state ──
@@ -166,6 +167,37 @@ export default function DeckViewPG() {
       toast(t('deckview.removeFailed'), 'error')
     } finally {
       setDeleting(null)
+    }
+  }
+
+  const handleDeleteDeck = async () => {
+    if (!deck || !confirm(t('deckview.confirmDeleteDeck'))) return
+    setDeletingDeck(true)
+    try {
+      // Safety guard: verify deck is actually empty
+      const { count, error: countError } = await supabase
+        .from('words')
+        .select('id', { count: 'exact', head: true })
+        .eq('deck_id', deck.id)
+      if (countError) {
+        toast(t('deckview.deleteError'), 'error')
+        return
+      }
+      if (count && count > 0) {
+        toast(t('deckview.deckNotEmpty'), 'error')
+        return
+      }
+      const { error } = await supabase.from('decks').delete().eq('id', deck.id)
+      if (error) {
+        toast(t('deckview.deleteError'), 'error')
+        return
+      }
+      toast(t('deckview.deckDeleted'), 'success')
+      navigate('/dashboard')
+    } catch {
+      toast(t('deckview.deleteError'), 'error')
+    } finally {
+      setDeletingDeck(false)
     }
   }
 
@@ -930,24 +962,39 @@ export default function DeckViewPG() {
             </button>
           </>
         )}
-        <button
-          onClick={() => {
-            if (editMode) {
-              setEditMode(false)
-              setSelectedWords(new Set())
-            } else {
-              setEditMode(true)
-              setSelectedWords(new Set())
-            }
-          }}
-          className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
-        >
-          {editMode ? (
-            <><X className="h-4 w-4 inline mr-1.5" />{t('deckview.done')}</>
-          ) : (
-            <><PencilLine className="h-4 w-4 inline mr-1.5" />{t('deckview.editDeck')}</>
-          )}
-        </button>
+        {words.length === 0 ? (
+          <button
+            onClick={handleDeleteDeck}
+            disabled={deletingDeck}
+            className="px-5 py-2.5 rounded-xl border border-red-500/40 text-red-400 text-sm font-display font-medium hover:bg-red-500/10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+          >
+            {deletingDeck ? (
+              <Loader2 className="h-4 w-4 inline mr-1.5 animate-spin" />
+            ) : (
+              <Trash2 className="h-4 w-4 inline mr-1.5" />
+            )}
+            {t('deckview.deleteDeck')}
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              if (editMode) {
+                setEditMode(false)
+                setSelectedWords(new Set())
+              } else {
+                setEditMode(true)
+                setSelectedWords(new Set())
+              }
+            }}
+            className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
+          >
+            {editMode ? (
+              <><X className="h-4 w-4 inline mr-1.5" />{t('deckview.done')}</>
+            ) : (
+              <><PencilLine className="h-4 w-4 inline mr-1.5" />{t('deckview.editDeck')}</>
+            )}
+          </button>
+        )}
       </div>
 
       {/* Edit mode action bar */}
