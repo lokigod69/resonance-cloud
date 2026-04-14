@@ -177,7 +177,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                         retry_after,
                     )
                     if attempt < max_submit_retries - 1:
-                        time.sleep(retry_after)
+                        time.sleep(min(retry_after, max(remaining, 0)))
                         continue
                     raise RuntimeError("GPU worker busy after max submit retries")
 
@@ -226,6 +226,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                     )
 
                 time.sleep(min(GPU_WORKER_POLL_INTERVAL, remaining))
+                remaining = deadline - time.monotonic()
 
                 try:
                     poll_timeout = min(30, max(remaining, 5))
