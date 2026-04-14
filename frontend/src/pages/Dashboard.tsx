@@ -128,12 +128,10 @@ export default function Dashboard() {
     }
   }, [user?.id, activeLanguage, location.key])
 
-  const stats = useMemo(() => {
-    const source = activeLanguage ? decks.filter((d) => d.target_language === activeLanguage) : decks
-    const deckCount = source.length
-    const wordCount = source.reduce((sum, d) => sum + (d.word_count ?? 0), 0)
-    return { deckCount, wordCount }
-  }, [decks, activeLanguage])
+  const globalWordCount = useMemo(
+    () => decks.reduce((sum, d) => sum + (d.word_count ?? 0), 0),
+    [decks]
+  )
 
   const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? 'Untitled'])), [decks])
 
@@ -203,22 +201,14 @@ export default function Dashboard() {
               ? t('dashboard.welcomeUser', { name: profile.display_name })
               : t('dashboard.welcome')}
           </h1>
-          <p>{t('dashboard.credits', { count: profile?.credits ?? 0 })}</p>
         </div>
 
         {!showEmptyState && (
           <>
-            {/* Stats row */}
-            <div className="flex gap-6 text-sm text-foreground/70 justify-center mb-6">
-              <div>
-                <span className="text-foreground font-semibold text-lg">{stats.wordCount}</span>{' '}
-                <span className="text-foreground/50 text-xs sm:text-sm">words</span>
-              </div>
-              <div>
-                <span className="text-foreground font-semibold text-lg">{stats.deckCount}</span>{' '}
-                <span className="text-foreground/50 text-xs sm:text-sm">decks</span>
-              </div>
-              <LevelBadge wordCount={stats.wordCount} />
+            {/* Level display */}
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <span className="text-foreground/70 text-sm font-medium">{t('dashboard.level')}</span>
+              <LevelBadge wordCount={globalWordCount} />
             </div>
 
             {/* Sticky language tabs */}

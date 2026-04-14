@@ -123,12 +123,10 @@ export default function DashboardPG() {
     }
   }, [user?.id, activeLanguage, location.key])
 
-  const filteredDecks = useMemo(
-    () => (activeLanguage ? decks.filter((d) => d.target_language === activeLanguage) : decks),
-    [decks, activeLanguage]
+  const globalWordCount = useMemo(
+    () => decks.reduce((sum, d) => sum + (d.word_count ?? 0), 0),
+    [decks]
   )
-  const totalWords = filteredDecks.reduce((sum, d) => sum + (d.word_count ?? 0), 0)
-  const deckCount = filteredDecks.length
   const quote = useMemo(() => QUOTES[Math.floor(Math.random() * QUOTES.length)], [])
 
   const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? 'Untitled'])), [decks])
@@ -205,26 +203,14 @@ export default function DashboardPG() {
               ? t('dashboard.welcomeUser', { name: profile.display_name })
               : t('dashboard.welcome')}
           </h1>
-          <p className="text-foreground/50 mt-1 text-sm">
-            {t('dashboard.credits', { count: profile?.credits ?? 0 })}
-          </p>
         </div>
 
         {!showEmptyState && (
           <>
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-3 mb-6">
-              <div className="rounded-2xl bg-foreground/5 border border-foreground/10 backdrop-blur-sm p-4 text-center">
-                <div className="text-3xl font-bold text-foreground">{totalWords}</div>
-                <div className="text-xs text-foreground/50 mt-1">words</div>
-              </div>
-              <div className="rounded-2xl bg-foreground/5 border border-foreground/10 backdrop-blur-sm p-4 text-center">
-                <div className="text-3xl font-bold text-foreground">{deckCount}</div>
-                <div className="text-xs text-foreground/50 mt-1">decks</div>
-              </div>
-              <div className="rounded-2xl bg-foreground/5 border border-foreground/10 backdrop-blur-sm p-4 flex items-center justify-center">
-                <LevelBadge wordCount={totalWords} />
-              </div>
+            {/* Level display */}
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <span className="text-foreground/70 text-sm font-medium">{t('dashboard.level')}</span>
+              <LevelBadge wordCount={globalWordCount} />
             </div>
 
             {/* Sticky language tabs */}

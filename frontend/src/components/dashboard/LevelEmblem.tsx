@@ -21,7 +21,12 @@ function getLevelColor(level: number): string {
 // Base shield path (28x28 viewBox) — classic pointed-bottom shape
 const SHIELD = 'M14 2.5 C9.5 2.5 4 5 4 10.5 C4 17.5 14 25.5 14 25.5 C14 25.5 24 17.5 24 10.5 C24 5 18.5 2.5 14 2.5 Z'
 
-export function getLevelEmblem(level: number): React.ReactElement {
+interface LevelEmblemProps {
+  level: number
+  size?: number
+}
+
+export default function LevelEmblem({ level, size = 36 }: LevelEmblemProps) {
   const vis = Math.min(level, 10)
   const color = getLevelColor(level)
   const filled = vis >= 2
@@ -30,8 +35,8 @@ export function getLevelEmblem(level: number): React.ReactElement {
 
   return (
     <svg
-      width={28}
-      height={28}
+      width={size}
+      height={size}
       viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

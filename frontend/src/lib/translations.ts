@@ -87,6 +87,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ── Dashboard ──
     'dashboard.welcome': 'Welcome',
     'dashboard.welcomeUser': 'Welcome, {name}',
+    'dashboard.level': 'Level',
     'dashboard.createFirst': 'Create your first deck',
     'dashboard.createFirstBody': 'Choose a language, add some words, and watch AI create unique music videos for each one.',
     'dashboard.generate': 'Generate',
@@ -420,6 +421,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ── Dashboard ──
     'dashboard.welcome': 'Willkommen',
     'dashboard.welcomeUser': 'Willkommen, {name}',
+    'dashboard.level': 'Level',
     'dashboard.createFirst': 'Erstelle dein erstes Deck',
     'dashboard.createFirstBody': 'Wähle eine Sprache, gib ein paar Wörter ein und sieh zu, wie KI für jedes Wort einzigartige Musikvideos erstellt.',
     'dashboard.generate': 'Erstellen',
@@ -753,6 +755,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ── Dashboard ──
     'dashboard.welcome': 'Bienvenue',
     'dashboard.welcomeUser': 'Bienvenue, {name}',
+    'dashboard.level': 'Niveau',
     'dashboard.createFirst': 'Crée ton premier deck',
     'dashboard.createFirstBody': 'Choisis une langue, ajoute des mots et regarde l\'IA créer des clips musicaux uniques pour chacun.',
     'dashboard.generate': 'Créer',
