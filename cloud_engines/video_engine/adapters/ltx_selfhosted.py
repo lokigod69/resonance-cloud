@@ -100,6 +100,9 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
         if not GPU_WORKER_TOKEN:
             raise RuntimeError("GPU_WORKER_TOKEN not set")
 
+        # End-to-end deadline — all phases (submit, poll, download) share this budget
+        deadline = time.monotonic() + GPU_WORKER_TIMEOUT
+
         is_text_to_video = settings.text_to_video
 
         final_prompt = build_ltx_prompt(
@@ -145,11 +148,18 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
             max_submit_retries = 5
 
             for attempt in range(max_submit_retries):
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise TimeoutError(
+                        f"GPU worker timeout ({GPU_WORKER_TIMEOUT}s) exceeded before submit"
+                    )
+
                 for fh in files_to_close:
                     fh.seek(0)
 
+                submit_timeout = min(60, remaining)
                 with httpx.Client(
-                    timeout=httpx.Timeout(60, connect=30)
+                    timeout=httpx.Timeout(submit_timeout, connect=min(30, remaining))
                 ) as client:
                     submit_response = client.post(
                         f"{GPU_WORKER_URL}/generate",
@@ -200,25 +210,27 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
             logger.info("Self-hosted LTX job submitted: %s", job_id)
 
             # ── Phase 2: Poll for completion ─────────────────────────────
-            poll_start = time.time()
+            poll_start = time.monotonic()
             last_log_time = poll_start
             consecutive_errors = 0
             max_consecutive_errors = 10
             job_status: dict = {}
 
             while True:
-                elapsed = time.time() - poll_start
-                if elapsed > GPU_WORKER_TIMEOUT:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    elapsed = time.monotonic() - poll_start
                     raise TimeoutError(
-                        f"Self-hosted LTX job {job_id} timed out after {int(elapsed)}s. "
-                        f"GPU_WORKER_TIMEOUT={GPU_WORKER_TIMEOUT}s."
+                        f"Self-hosted LTX job {job_id} timed out after {int(elapsed)}s polling. "
+                        f"GPU_WORKER_TIMEOUT={GPU_WORKER_TIMEOUT}s (end-to-end)."
                     )
 
-                time.sleep(GPU_WORKER_POLL_INTERVAL)
+                time.sleep(min(GPU_WORKER_POLL_INTERVAL, remaining))
 
                 try:
+                    poll_timeout = min(30, max(remaining, 5))
                     with httpx.Client(
-                        timeout=httpx.Timeout(30, connect=10)
+                        timeout=httpx.Timeout(poll_timeout, connect=min(10, max(remaining, 2)))
                     ) as client:
                         poll_response = client.get(
                             f"{GPU_WORKER_URL}/jobs/{job_id}",
@@ -266,7 +278,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                     logger.info(
                         "Self-hosted LTX job %s complete (%.0fs)",
                         job_id,
-                        time.time() - poll_start,
+                        time.monotonic() - poll_start,
                     )
                     break
 
@@ -278,8 +290,9 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
 
                 # Still queued or processing — log every ~30 seconds
                 progress = job_status.get("progress", 0)
-                now = time.time()
+                now = time.monotonic()
                 if now - last_log_time >= 30:
+                    elapsed = now - poll_start
                     logger.info(
                         "Self-hosted LTX job %s: %s (%.0f%%, %.0fs elapsed)",
                         job_id,
@@ -290,8 +303,16 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                     last_log_time = now
 
             # ── Phase 3: Download result ─────────────────────────────────
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise TimeoutError(
+                    f"GPU worker timeout ({GPU_WORKER_TIMEOUT}s) exceeded before download, "
+                    f"job_id={job_id}"
+                )
+
+            dl_timeout = min(120, remaining)
             with httpx.Client(
-                timeout=httpx.Timeout(120, connect=30)
+                timeout=httpx.Timeout(dl_timeout, connect=min(30, remaining))
             ) as client:
                 dl_response = client.get(
                     f"{GPU_WORKER_URL}/jobs/{job_id}/result",
