@@ -48,8 +48,8 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
               onClick={() => setFilter(f)}
               className={`px-3 py-2 min-h-[36px] text-xs rounded-full border transition-colors capitalize ${
                 filter === f
-                  ? 'bg-white/15 border-white/30 text-white'
-                  : 'border-white/10 text-white/55 hover:text-white/80 hover:border-white/20'
+                  ? 'bg-foreground/15 border-foreground/30 text-foreground'
+                  : 'border-foreground/10 text-foreground/55 hover:text-foreground/80 hover:border-foreground/20'
               }`}
             >
               {f}
@@ -67,8 +67,8 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
               onClick={() => setSort(value)}
               className={`px-3 py-2 min-h-[36px] text-xs rounded-full border transition-colors ${
                 sort === value
-                  ? 'bg-white/15 border-white/30 text-white'
-                  : 'border-white/10 text-white/55 hover:text-white/80 hover:border-white/20'
+                  ? 'bg-foreground/15 border-foreground/30 text-foreground'
+                  : 'border-foreground/10 text-foreground/55 hover:text-foreground/80 hover:border-foreground/20'
               }`}
             >
               {label}
@@ -79,7 +79,7 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
 
       {/* Grid */}
       {visible.length === 0 ? (
-        <div className="text-center py-12 text-white/50 text-sm">
+        <div className="text-center py-12 text-foreground/50 text-sm">
           {emptyMessage ?? 'No words to show.'}
         </div>
       ) : (

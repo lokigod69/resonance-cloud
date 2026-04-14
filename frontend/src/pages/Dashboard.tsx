@@ -209,14 +209,14 @@ export default function Dashboard() {
         {!showEmptyState && (
           <>
             {/* Stats row */}
-            <div className="flex gap-6 text-sm text-white/70 justify-center mb-6">
+            <div className="flex gap-6 text-sm text-foreground/70 justify-center mb-6">
               <div>
-                <span className="text-white font-semibold text-lg">{stats.wordCount}</span>{' '}
-                <span className="text-white/50 text-xs sm:text-sm">words</span>
+                <span className="text-foreground font-semibold text-lg">{stats.wordCount}</span>{' '}
+                <span className="text-foreground/50 text-xs sm:text-sm">words</span>
               </div>
               <div>
-                <span className="text-white font-semibold text-lg">{stats.deckCount}</span>{' '}
-                <span className="text-white/50 text-xs sm:text-sm">decks</span>
+                <span className="text-foreground font-semibold text-lg">{stats.deckCount}</span>{' '}
+                <span className="text-foreground/50 text-xs sm:text-sm">decks</span>
               </div>
               <LevelBadge wordCount={stats.wordCount} />
             </div>
@@ -233,8 +233,8 @@ export default function Dashboard() {
                         onClick={() => setActiveLanguage(lang)}
                         className={`min-h-[44px] px-3 py-2 rounded-full text-sm border transition-all ${
                           isActive
-                            ? 'bg-white/15 border-white/40 text-white shadow-[0_0_20px_rgba(255,255,255,0.1)]'
-                            : 'border-white/10 text-white/60 hover:text-white/90 hover:border-white/25'
+                            ? 'bg-foreground/15 border-foreground/40 text-foreground'
+                            : 'border-foreground/10 text-foreground/60 hover:text-foreground/90 hover:border-foreground/25'
                         }`}
                       >
                         {getLanguageName(lang)}
@@ -275,7 +275,7 @@ export default function Dashboard() {
             <div className="mt-8 flex justify-center">
               <button
                 onClick={() => navigate('/generate')}
-                className="w-full sm:w-auto min-h-[52px] px-8 py-4 rounded-full bg-white/10 hover:bg-white/15 border border-white/25 text-white font-semibold flex items-center justify-center gap-2 transition-colors"
+                className="w-full sm:w-auto min-h-[52px] px-8 py-4 rounded-full bg-foreground/10 hover:bg-foreground/15 border border-foreground/25 text-foreground font-semibold flex items-center justify-center gap-2 transition-colors"
               >
                 <Sparkles size={16} />
                 Generate New Words

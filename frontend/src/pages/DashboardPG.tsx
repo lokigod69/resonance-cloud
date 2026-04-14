@@ -200,12 +200,12 @@ export default function DashboardPG() {
       <div className="px-4 sm:px-6 max-w-4xl mx-auto">
         {/* Welcome */}
         <div className="flex flex-col items-center text-center mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight break-words text-white">
+          <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight break-words text-foreground">
             {profile?.display_name
               ? t('dashboard.welcomeUser', { name: profile.display_name })
               : t('dashboard.welcome')}
           </h1>
-          <p className="text-white/50 mt-1 text-sm">
+          <p className="text-foreground/50 mt-1 text-sm">
             {t('dashboard.credits', { count: profile?.credits ?? 0 })}
           </p>
         </div>
@@ -214,15 +214,15 @@ export default function DashboardPG() {
           <>
             {/* Stats row */}
             <div className="grid grid-cols-3 gap-3 mb-6">
-              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 text-center">
-                <div className="text-3xl font-bold text-white">{totalWords}</div>
-                <div className="text-xs text-white/50 mt-1">words</div>
+              <div className="rounded-2xl bg-foreground/5 border border-foreground/10 backdrop-blur-sm p-4 text-center">
+                <div className="text-3xl font-bold text-foreground">{totalWords}</div>
+                <div className="text-xs text-foreground/50 mt-1">words</div>
               </div>
-              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 text-center">
-                <div className="text-3xl font-bold text-white">{deckCount}</div>
-                <div className="text-xs text-white/50 mt-1">decks</div>
+              <div className="rounded-2xl bg-foreground/5 border border-foreground/10 backdrop-blur-sm p-4 text-center">
+                <div className="text-3xl font-bold text-foreground">{deckCount}</div>
+                <div className="text-xs text-foreground/50 mt-1">decks</div>
               </div>
-              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 flex items-center justify-center">
+              <div className="rounded-2xl bg-foreground/5 border border-foreground/10 backdrop-blur-sm p-4 flex items-center justify-center">
                 <LevelBadge wordCount={totalWords} />
               </div>
             </div>
@@ -239,8 +239,8 @@ export default function DashboardPG() {
                         onClick={() => setActiveLanguage(lang)}
                         className={`min-h-[44px] px-3 py-2 rounded-full text-sm border transition-all ${
                           isActive
-                            ? 'bg-white/15 border-white/40 text-white'
-                            : 'border-white/10 text-white/40 hover:text-white/70 hover:border-white/25'
+                            ? 'bg-foreground/15 border-foreground/40 text-foreground'
+                            : 'border-foreground/10 text-foreground/40 hover:text-foreground/70 hover:border-foreground/25'
                         }`}
                       >
                         {getLanguageName(lang)}
@@ -253,7 +253,7 @@ export default function DashboardPG() {
 
             {/* Word count line */}
             {activeLanguage && (
-              <p className="text-white/40 text-sm mb-4">
+              <p className="text-foreground/40 text-sm mb-4">
                 {libraryWords.length} words in {getLanguageName(activeLanguage)}
               </p>
             )}
@@ -280,7 +280,7 @@ export default function DashboardPG() {
             {/* Generate button */}
             <button
               onClick={() => navigate('/generate')}
-              className="mt-6 w-full rounded-2xl bg-white/10 border border-white/20 text-white py-4 font-semibold hover:bg-white/20 transition-colors"
+              className="mt-6 w-full rounded-2xl bg-foreground/10 border border-foreground/20 text-foreground py-4 font-semibold hover:bg-foreground/20 transition-colors"
             >
               ✦ Generate New Words
             </button>
@@ -293,19 +293,19 @@ export default function DashboardPG() {
               {[0, 1, 2].map((i) => (
                 <div
                   key={i}
-                  className="absolute inset-0 rounded-full border border-white/20 animate-ping"
+                  className="absolute inset-0 rounded-full border border-foreground/20 animate-ping"
                   style={{ animationDelay: `${i * 0.6}s`, animationDuration: '2s' }}
                 />
               ))}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-8 rounded-full bg-white/20" />
+                <div className="w-8 h-8 rounded-full bg-foreground/20" />
               </div>
             </div>
-            <p className="text-white/60 text-lg font-medium mb-2">Your vocabulary awaits</p>
-            <p className="text-white/30 text-sm mb-6">Generate your first words to begin</p>
+            <p className="text-foreground/60 text-lg font-medium mb-2">Your vocabulary awaits</p>
+            <p className="text-foreground/30 text-sm mb-6">Generate your first words to begin</p>
             <button
               onClick={() => navigate('/generate')}
-              className="rounded-xl bg-white/10 border border-white/20 text-white px-6 py-3 hover:bg-white/20 transition-colors"
+              className="rounded-xl bg-foreground/10 border border-foreground/20 text-foreground px-6 py-3 hover:bg-foreground/20 transition-colors"
             >
               Generate First Words
             </button>
@@ -314,8 +314,8 @@ export default function DashboardPG() {
 
         {/* Quote */}
         <div className="mt-12 mb-8 text-center max-w-2xl mx-auto px-4">
-          <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-            <p className="text-white/50 text-base italic leading-relaxed">"{quote}"</p>
+          <div className="bg-foreground/5 border border-foreground/10 rounded-xl p-6">
+            <p className="text-foreground/50 text-base italic leading-relaxed">"{quote}"</p>
           </div>
         </div>
       </div>
