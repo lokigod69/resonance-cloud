@@ -3,8 +3,8 @@ import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
-import { Sparkles, Info } from 'lucide-react'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Sparkles } from 'lucide-react'
+import LevelBadge from '@/components/dashboard/LevelBadge'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useTranslation } from '@/hooks/useTranslation'
 import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDetailModal'
@@ -132,8 +132,7 @@ export default function Dashboard() {
     const source = activeLanguage ? decks.filter((d) => d.target_language === activeLanguage) : decks
     const deckCount = source.length
     const wordCount = source.reduce((sum, d) => sum + (d.word_count ?? 0), 0)
-    const level = `L${Math.floor(wordCount / 10) + 1}`
-    return { deckCount, wordCount, level }
+    return { deckCount, wordCount }
   }, [decks, activeLanguage])
 
   const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? 'Untitled'])), [decks])
@@ -219,19 +218,7 @@ export default function Dashboard() {
                 <span className="text-white font-semibold text-lg">{stats.deckCount}</span>{' '}
                 <span className="text-white/50 text-xs sm:text-sm">decks</span>
               </div>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <div className="cursor-help inline-flex items-center gap-1">
-                      <span className="text-white font-semibold text-lg">{stats.level}</span>
-                      <Info className="h-3.5 w-3.5 text-white/40" />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{t('dashboard.levelTooltip', { count: String(stats.wordCount) })}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <LevelBadge wordCount={stats.wordCount} />
             </div>
 
             {/* Sticky language tabs */}

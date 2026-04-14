@@ -4,7 +4,9 @@ import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
-import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play, Share2 } from 'lucide-react'
+import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play, Share2, PencilLine } from 'lucide-react'
+import { useMoveWords } from '@/hooks/useMoveWords'
+import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
@@ -70,6 +72,12 @@ export default function DeckView() {
   const { t, locale } = useTranslation()
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
+
+  // ── Edit mode state ──
+  const [editMode, setEditMode] = useState(false)
+  const [selectedWords, setSelectedWords] = useState<Set<string>>(new Set())
+  const [showDeckPicker, setShowDeckPicker] = useState(false)
+  const { moveWords, moving } = useMoveWords(id!)
 
   const handleRetry = async (word: Word) => {
     if (!user || !profile || profile.credits < 1) {
@@ -308,6 +316,42 @@ export default function DeckView() {
         </div>
       </div>
 
+      {/* Quick-select bar (edit mode) */}
+      {editMode && (
+        <div className="w-full max-w-5xl mx-auto px-4 pt-4 flex flex-wrap gap-2 justify-center">
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-8 text-xs border-white/10"
+            onClick={() => {
+              const selectable = words.filter(w => w.status !== 'pending' && w.status !== 'processing')
+              setSelectedWords(new Set(selectable.map(w => w.id)))
+            }}
+          >
+            {t('deckview.selectAll')}
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-8 text-xs border-white/10"
+            onClick={() => {
+              const failed = words.filter(w => w.status === 'failed')
+              setSelectedWords(new Set(failed.map(w => w.id)))
+            }}
+          >
+            {t('deckview.selectFailed')}
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-8 text-xs border-white/10"
+            onClick={() => setSelectedWords(new Set())}
+          >
+            {t('deckview.clearSelection')}
+          </Button>
+        </div>
+      )}
+
       {/* Word Grid */}
       <div className="w-full max-w-5xl mx-auto px-4 py-8">
       <div className="flex flex-wrap justify-center gap-4 [touch-action:pan-y]">
@@ -316,11 +360,23 @@ export default function DeckView() {
           const isFailed = word.status === 'failed'
           const isPending = word.status === 'pending' || word.status === 'processing'
 
+          const isSelectable = word.status !== 'pending' && word.status !== 'processing'
+          const isSelected = selectedWords.has(word.id)
+
           return (
             <div key={word.id} className={`relative group w-full ${cardMaxWidth}`}>
               {isComplete ? (
                 <div
                   onClick={() => {
+                    if (editMode && isSelectable) {
+                      setSelectedWords(prev => {
+                        const next = new Set(prev)
+                        if (next.has(word.id)) next.delete(word.id)
+                        else next.add(word.id)
+                        return next
+                      })
+                      return
+                    }
                     const idx = completeWords.findIndex(w => w.id === word.id)
                     if (idx >= 0) {
                       setViewerIndex(idx)
@@ -328,8 +384,22 @@ export default function DeckView() {
                       setViewerOpen(true)
                     }
                   }}
-                  className="block glass glass-hover rounded-xl overflow-hidden transition-[background-color,box-shadow,border-color,transform] duration-200 [@media(hover:hover)]:hover:scale-[1.03] hover:glow-purple cursor-pointer active:scale-[0.98]"
+                  className={`block glass glass-hover rounded-xl overflow-hidden transition-[background-color,box-shadow,border-color,transform] duration-200 cursor-pointer active:scale-[0.98] ${
+                    editMode && isSelected
+                      ? 'ring-2 ring-emerald-400 border-emerald-400/30'
+                      : '[@media(hover:hover)]:hover:scale-[1.03] hover:glow-purple'
+                  }`}
                 >
+                  {/* Edit mode checkbox */}
+                  {editMode && isSelectable && (
+                    <div className={`absolute top-2 left-2 z-10 w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs transition-colors ${
+                      isSelected
+                        ? 'bg-emerald-400 border-emerald-400 text-black'
+                        : 'bg-black/40 border-white/40 backdrop-blur-sm'
+                    }`}>
+                      {isSelected && <Check className="h-3.5 w-3.5" />}
+                    </div>
+                  )}
                   {/* Thumbnail */}
                   <div className="aspect-video relative bg-white/5">
                     {word.thumbnail_url ? (
@@ -366,34 +436,60 @@ export default function DeckView() {
                   </div>
                 </div>
               ) : isFailed ? (
-                <div className="glass rounded-xl overflow-hidden opacity-70">
+                <div
+                  className={`glass rounded-xl overflow-hidden opacity-70 ${
+                    editMode ? 'cursor-pointer' : ''
+                  } ${editMode && isSelected ? 'ring-2 ring-emerald-400 border-emerald-400/30 opacity-100' : ''}`}
+                  onClick={() => {
+                    if (editMode && isSelectable) {
+                      setSelectedWords(prev => {
+                        const next = new Set(prev)
+                        if (next.has(word.id)) next.delete(word.id)
+                        else next.add(word.id)
+                        return next
+                      })
+                    }
+                  }}
+                >
+                  {/* Edit mode checkbox */}
+                  {editMode && isSelectable && (
+                    <div className={`absolute top-2 left-2 z-10 w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs transition-colors ${
+                      isSelected
+                        ? 'bg-emerald-400 border-emerald-400 text-black'
+                        : 'bg-black/40 border-white/40 backdrop-blur-sm'
+                    }`}>
+                      {isSelected && <Check className="h-3.5 w-3.5" />}
+                    </div>
+                  )}
                   <div className="aspect-video flex items-center justify-center bg-destructive/5">
                     <AlertCircle className="h-8 w-8 text-destructive-foreground/50" />
                   </div>
                   <div className="p-3 space-y-1.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
                     <p className="text-xs text-destructive-foreground">{t('deckview.couldNotGenerate')}</p>
-                    <div className="flex gap-1.5 pt-1">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="h-7 text-xs gap-1"
-                        onClick={() => handleRetry(word)}
-                        disabled={retrying === word.id}
-                      >
-                        <RotateCcw className="h-3 w-3" />
-                        {retrying === word.id ? t('deckview.retrying') : t('common.retry')}
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="h-7 text-xs text-destructive-foreground/50 hover:text-destructive-foreground"
-                        onClick={() => handleDeleteWord(word)}
-                        disabled={deleting === word.id}
-                      >
-                        <Trash2 className="h-3 w-3" />
-                      </Button>
-                    </div>
+                    {!editMode && (
+                      <div className="flex gap-1.5 pt-1">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="h-7 text-xs gap-1"
+                          onClick={(e) => { e.stopPropagation(); handleRetry(word) }}
+                          disabled={retrying === word.id}
+                        >
+                          <RotateCcw className="h-3 w-3" />
+                          {retrying === word.id ? t('deckview.retrying') : t('common.retry')}
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="h-7 text-xs text-destructive-foreground/50 hover:text-destructive-foreground"
+                          onClick={(e) => { e.stopPropagation(); handleDeleteWord(word) }}
+                          disabled={deleting === word.id}
+                        >
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </div>
               ) : (
@@ -421,23 +517,68 @@ export default function DeckView() {
 
       {/* Footer actions */}
       <div className="flex gap-3 justify-center pt-4">
+        {!editMode && (
+          <>
+            <Button
+              variant="outline"
+              className="border-primary/30 text-primary hover:bg-primary/10"
+              onClick={() => navigate(`/study?deck=${deck.id}`)}
+            >
+              <BookOpen className="h-4 w-4 mr-2" />
+              {t('deckview.study')}
+            </Button>
+            <Button
+              variant="outline"
+              className="border-primary/30 text-primary hover:bg-primary/10"
+              onClick={() => navigate(`/generate?deckId=${deck.id}`)}
+            >
+              <Plus className="h-4 w-4 mr-2" />
+              {t('deckview.addCards')}
+            </Button>
+          </>
+        )}
         <Button
           variant="outline"
           className="border-primary/30 text-primary hover:bg-primary/10"
-          onClick={() => navigate(`/study?deck=${deck.id}`)}
+          onClick={() => {
+            if (editMode) {
+              setEditMode(false)
+              setSelectedWords(new Set())
+            } else {
+              setEditMode(true)
+              setSelectedWords(new Set())
+            }
+          }}
         >
-          <BookOpen className="h-4 w-4 mr-2" />
-          {t('deckview.study')}
-        </Button>
-        <Button
-          variant="outline"
-          className="border-primary/30 text-primary hover:bg-primary/10"
-          onClick={() => navigate(`/generate?deckId=${deck.id}`)}
-        >
-          <Plus className="h-4 w-4 mr-2" />
-          {t('deckview.addCards')}
+          {editMode ? (
+            <><X className="h-4 w-4 mr-2" />{t('deckview.done')}</>
+          ) : (
+            <><PencilLine className="h-4 w-4 mr-2" />{t('deckview.editDeck')}</>
+          )}
         </Button>
       </div>
+
+      {/* Edit mode action bar */}
+      {editMode && selectedWords.size > 0 && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+          <div className="flex items-center justify-between px-6 py-3 max-w-5xl mx-auto">
+            <span className="text-sm text-white/70">
+              {t('deckview.nSelected', { count: selectedWords.size })}
+            </span>
+            <Button
+              size="sm"
+              disabled={moving}
+              onClick={() => setShowDeckPicker(true)}
+              className="bg-emerald-500 hover:bg-emerald-600 text-black font-medium"
+            >
+              {moving ? (
+                <Loader2 className="h-4 w-4 animate-spin mr-2" />
+              ) : null}
+              {t('deckview.moveToDeck')}
+            </Button>
+          </div>
+        </div>
+      )}
 
       {/* Video Viewer Modal */}
       {viewerOpen && viewerWord && (
@@ -453,6 +594,31 @@ export default function DeckView() {
           }}
           onReplay={() => setVideoKey(k => k + 1)}
           onRate={handleRate}
+        />
+      )}
+
+      {/* Deck Picker */}
+      {deck && (
+        <DeckPickerSheet
+          open={showDeckPicker}
+          onClose={() => setShowDeckPicker(false)}
+          onSelectDeck={async (targetDeckId) => {
+            setShowDeckPicker(false)
+            const wordIds = Array.from(selectedWords)
+            const result = await moveWords(wordIds, targetDeckId)
+            if (result.success) {
+              setWords(prev => prev.filter(w => !selectedWords.has(w.id)))
+              setSelectedWords(new Set())
+              setEditMode(false)
+              setDeck(prev => prev ? { ...prev, word_count: Math.max(0, prev.word_count - wordIds.length) } : prev)
+              toast(t('deckview.wordsMoved', { count: wordIds.length }), 'success')
+            } else {
+              toast(result.error || t('deckview.moveFailed'), 'error')
+            }
+          }}
+          sourceDeckId={id!}
+          targetLanguage={deck.target_language}
+          selectedCount={selectedWords.size}
         />
       )}
     </div>

@@ -86,54 +86,87 @@ const ELEVENLABS_FALLBACK: Record<string, string> = {
 }
 
 function getLevelInstructions(targetLang: string, nativeLang: string, level: string): string {
+  // Same-language mode: drop bilingual framing, focus on depth and enrichment
+  if (targetLang === nativeLang) {
+    switch (level) {
+      case 'zero':
+        return `LEVEL: VOCABULARY BUILDER — The student wants to expand their ${targetLang} vocabulary.
+
+- Speak entirely in ${targetLang}.
+- You receive text transcriptions of speech, not audio. If the student's reply shows they understood, that is success. Move forward. Never ask them to say the same word again.
+- Introduce 1-2 interesting or uncommon words per turn. Give a brief meaning, use it in a sentence, and connect it to what you're talking about.
+- Let the conversation guide what you teach. If they mention food, share a vivid food-related word. If they mention feelings, teach a more precise emotion word.
+- Make every turn interesting — share word origins, surprising meanings, or cultural context behind expressions.`
+
+      case 'beginner':
+        return `LEVEL: EXPRESSION BUILDER — The student wants to speak ${targetLang} more naturally.
+
+- Speak entirely in ${targetLang}.
+- You receive text transcriptions, not audio. If the student's response shows they understood or tried, that is success. Never ask them to repeat a phrase.
+- Focus on natural phrasing — when the student says something that's correct but stiff, show them a more natural way to express it by weaving it into your reply.
+- Introduce common expressions, phrasal constructions, and everyday idioms that make speech sound fluent rather than textbook.
+- Keep conversations real — ask about their life, react to what they say, share interesting observations. Build confidence through genuine engagement.`
+
+      case 'advanced':
+        return `LEVEL: MASTERY — The student wants to refine and deepen their ${targetLang}.
+
+- Speak entirely in ${targetLang} at full native complexity.
+- When you notice awkward phrasing, model a more polished version in your next sentence. If a pattern recurs, mention it briefly — but never let correction dominate the conversation.
+- Push for depth: challenge their opinions, introduce hypothetical scenarios, ask questions that require nuance. Make them think precisely.
+- Introduce register — show the difference between casual, professional, and formal ways to express the same idea. Explore tone, connotation, and word choice.
+- Discuss whatever interests them at full intellectual depth: philosophy, culture, humor, storytelling, debate.`
+
+      default: // intermediate
+        return `LEVEL: FLUENCY PRACTICE — The student wants more natural, expressive ${targetLang}.
+
+- Speak entirely in ${targetLang}.
+- Match their level — if they speak simply, keep it accessible. If they stretch for complex ideas, meet them there.
+- Introduce useful connectors, collocations, and transitions (words like "however," "actually," "on the other hand") that make speech flow naturally.
+- Have real conversations — discuss opinions, share observations, explore topics they care about. The conversation itself is the practice.
+- When they express an idea awkwardly, show a smoother version naturally in your reply without stopping to explain.`
+    }
+  }
+
   switch (level) {
     case 'zero':
-      return `LEVEL: COMPLETE ZERO — The student knows NO words in ${targetLang}. This is their very first exposure.
+      return `LEVEL: COMPLETE ZERO — The student is just starting with ${targetLang}.
 
-LANGUAGE MIX: Speak about 70% in ${nativeLang} and 30% in ${targetLang}.
-- Introduce ONE new word or very short phrase per turn.
-- Always say the new word in ${targetLang}, then immediately explain it in ${nativeLang}.
-- Ask the student to repeat the word back to you.
-- Use simple, encouraging ${nativeLang} to keep them comfortable.
-- Build vocabulary slowly: greetings first, then thank you, yes, no, please, numbers 1-5.
-- Celebrate every attempt, even if pronunciation is rough.
-- If the student tries to say something in ${targetLang}, praise them enthusiastically.
-- Keep the mood light and fun — this should feel like a game, not a class.`
+LANGUAGE MIX: About 70% ${nativeLang}, 30% ${targetLang}.
+- You receive text transcriptions of speech, not audio. If the student's reply contains the target word or a recognizable attempt, that is success. Move forward. Never ask them to say the same word again.
+- Weave 1-2 new words into natural conversation each turn. Say the word, give a brief meaning, and use it in a sentence or question — like a friend sharing their language, not a teacher running a drill.
+- Let the conversation guide what you teach. If the student mentions they're tired, teach them the word for "tired." If they talk about food, teach a food word. Read their mood and match it.
+- Occasionally ask what ${targetLang} words they already know — it gives them a chance to show off and feel confident. Build on whatever they share by teaching related words.
+- Every turn should feel like progress. Share a fun cultural detail, a surprising word origin, or an interesting fact about ${targetLang} to keep things alive.`
 
     case 'beginner':
-      return `LEVEL: BEGINNER — The student knows basic words (hello, thank you, numbers, simple phrases).
+      return `LEVEL: BEGINNER — The student knows basic words and simple phrases in ${targetLang}.
 
-LANGUAGE MIX: Speak about 50% in ${targetLang} and 50% in ${nativeLang}.
-- Use simple, short sentences in ${targetLang} (3-6 words).
-- After each ${targetLang} sentence, give a brief ${nativeLang} explanation if it contains new vocabulary.
-- When the student speaks in ${nativeLang}, gently suggest how to say it in ${targetLang} and ask them to try.
-- Introduce 2-3 new words per conversation, repeating them naturally.
-- If the student doesn't understand after one try, switch fully to ${nativeLang} to explain, then try ${targetLang} again.
-- Ask simple questions they can answer with words they know.`
+LANGUAGE MIX: About 50% ${nativeLang}, 50% ${targetLang}.
+- Speak in short, natural ${targetLang} sentences and let context do the teaching. If a sentence has a new word, briefly clarify in ${nativeLang} and keep going.
+- You receive text transcriptions, not audio. If the student's response shows they understood or tried, that is success. Never ask them to repeat a word.
+- When the student uses ${nativeLang}, respond with the ${targetLang} version woven into your reply — show them how to say it, don't assign it.
+- Build on what they know. If they use a word correctly, introduce a related one. If they talk about their day, teach words that fit their story.
+- Keep conversations real — ask about their life, share a cultural insight, react to what they say. A beginner can have an interesting conversation with the right support.`
 
     case 'advanced':
-      return `LEVEL: ADVANCED — The student wants fluent practice and detailed corrections.
+      return `LEVEL: ADVANCED — The student wants fluent, challenging practice in ${targetLang}.
 
-LANGUAGE MIX: Speak 95-100% in ${targetLang}. Only use ${nativeLang} if explicitly asked.
-- Speak naturally as a native speaker would — normal speed, natural expressions, idioms.
-- Use varied vocabulary and complex sentence structures.
-- Correct grammar mistakes specifically: say what they said, then the correct version, then briefly explain why (all in ${targetLang}).
-- Challenge them with questions that require longer, more complex answers.
-- Introduce idioms, slang, and cultural expressions naturally.
-- If they make the same mistake twice, point it out directly but kindly.
-- Discuss deeper topics: opinions, hypotheticals, cultural differences, current events.
-- Push them to express nuance.`
+LANGUAGE MIX: 95-100% ${targetLang}. Use ${nativeLang} only if explicitly asked.
+- Speak as you would to a fellow native speaker — natural speed, idioms, slang, cultural references. Don't simplify.
+- When you notice a grammar pattern they struggle with, model the correct form once in your next sentence. If the same error recurs, mention it briefly — but never let correction dominate the conversation.
+- Push for depth: ask follow-up questions, challenge their opinions, introduce hypothetical scenarios. Make them think in ${targetLang}, not just speak it.
+- Introduce register — show them the difference between casual, polite, and formal ways to express the same idea. This is what separates fluent from advanced.
+- Discuss whatever interests them at full intellectual depth: philosophy, culture, current events, personal dilemmas, humor, storytelling.`
 
     default: // intermediate
-      return `LEVEL: INTERMEDIATE — The student can hold a simple conversation.
+      return `LEVEL: INTERMEDIATE — The student can hold a conversation in ${targetLang} with support.
 
-LANGUAGE MIX: Speak about 80% in ${targetLang} and 20% in ${nativeLang}.
-- Speak primarily in ${targetLang}. The student needs immersion.
-- When the student seems confused or asks for help, briefly explain in ${nativeLang}.
-- Match the student's complexity. Simple words from them → simple responses. Complex grammar → you can be more advanced.
-- If the student speaks in ${nativeLang}, respond in ${targetLang} but at a simpler level.
-- If the student speaks ${nativeLang} for 2+ turns in a row, gently ask if they'd like to try in ${targetLang}, then give them a simple sentence to start with.
-- Correct mistakes by naturally repeating what they said correctly, then continue.`
+LANGUAGE MIX: About 80% ${targetLang}, 20% ${nativeLang}.
+- Speak primarily in ${targetLang}. Switch to ${nativeLang} only when the student is visibly stuck or asks for help.
+- Match their level — if they speak simply, keep it accessible. If they stretch for complex ideas, meet them there.
+- If the student falls back to ${nativeLang} for multiple turns, gently invite them back to ${targetLang} by offering a simple way to express what they're trying to say.
+- Have real conversations — discuss opinions, share cultural context, explore topics they care about. At this level, the conversation itself is the lesson.
+- Introduce useful expressions, collocations, and connectors (words like "however," "actually," "by the way" in ${targetLang}) that make speech sound more natural.`
   }
 }
 
@@ -172,7 +205,7 @@ GENERAL RULES:
 
   const generalRules = `GENERAL RULES:
 - Keep responses SHORT: 1-3 sentences maximum. This is spoken conversation, not a lecture.
-- Correct mistakes naturally: repeat what they said correctly, then continue. Do NOT lecture about grammar rules unless asked.
+- At Level Zero, do not correct mistakes — confidence matters more than accuracy. At all other levels, model the correct form naturally in your next sentence rather than stopping to correct. Never lecture about grammar unless asked.
 - NEVER use parenthetical stage directions like (slowly), (whispering), (laughing). Your text will be read aloud by a speech engine — it cannot act, only speak.
 - NEVER use "..." for dramatic pauses or to slow down speech. The speech engine reads dots literally. Use short sentences with natural punctuation.
 - Ask ONE question per response to keep the conversation flowing.
@@ -202,7 +235,8 @@ ${levelInstructions}
 
 ${generalRules}
 
-TEACHING STYLE: ${character.directive}${studyAddendum}`
+TEACHING STYLE: ${character.directive}
+Let your interests and domain shape what vocabulary you teach.${studyAddendum}`
   }
 
   // ── Persona / Public: full identity + tutoring role bridge ──
@@ -216,6 +250,7 @@ ${levelInstructions}
 ${generalRules}
 
 CHARACTER STYLE: ${character.directive}
+Let your interests and domain shape what vocabulary you teach.
 Remember: you are ${character.name}. Stay in character throughout the conversation.${studyAddendum}`
 }
 
@@ -577,9 +612,9 @@ export async function POST(req: Request): Promise<Response> {
     if (level === 'zero') {
       if (hasStudyWords) {
         const w = study_words![Math.floor(Math.random() * study_words!.length)]
-        greetingInstruction = `[SYSTEM: This is the start of a new conversation. Greet the student warmly in ${nativeLangName} (their native language).${charIntro ? charIntro : ''} Then introduce the ${lang.name} word "${w.word}" (which means "${w.translation}"). Explain it simply, give a short example, and ask them to try saying it. Keep it to 2-3 sentences. Stay in character.]`
+        greetingInstruction = `[SYSTEM: New conversation. Greet them warmly in ${nativeLangName}.${charIntro ? charIntro : ''} Introduce the ${lang.name} word "${w.word}" (meaning: "${w.translation}") naturally — weave it into a question or a fun fact rather than presenting it as a vocabulary item. Keep it to 2-3 sentences. Stay in character.]`
       } else {
-        greetingInstruction = `[SYSTEM: This is the start of a new conversation. Greet the student warmly in ${nativeLangName} (their native language).${charIntro ? charIntro : ''} Then pick ONE simple ${lang.name} word to teach — VARY your choice each time, do NOT always pick "hello". Good options: a greeting, a polite word (please, thank you, sorry), a feeling (happy, tired, hungry), a common object, a number, a color. Explain it simply and ask them to try saying it. Keep it to 2-3 sentences. Stay in character.]`
+        greetingInstruction = `[SYSTEM: New conversation. Greet them warmly in ${nativeLangName}.${charIntro ? charIntro : ''} Start with something human — ask how they're doing, what brought them here, or share something interesting about ${lang.name} culture. Introduce one ${lang.name} word that fits the moment naturally. Keep it to 2-3 sentences. Stay in character.]`
       }
     } else if (level === 'beginner') {
       greetingInstruction = `[SYSTEM: This is the start of a new conversation. Greet them with a simple sentence in ${lang.name}${charIntro ? charIntro : ''}, and follow up in ${nativeLangName} if needed. Ask a simple opening question. VARY your opener — do not always start the same way. Keep it to 2-3 sentences. Stay in character.]`

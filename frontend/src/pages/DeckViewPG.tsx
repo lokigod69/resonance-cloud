@@ -22,7 +22,12 @@ import {
   RotateCcw,
   Trash2,
   Share2,
+  PencilLine,
+  Loader2,
+  AlertTriangle,
 } from 'lucide-react'
+import { useMoveWords } from '@/hooks/useMoveWords'
+import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
 import StarRating from '@/components/ui/StarRating'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
@@ -86,6 +91,12 @@ export default function DeckViewPG() {
   const [deleting, setDeleting] = useState<string | null>(null)
   const [sharing, setSharing] = useState(false)
   const [shareSuccess, setShareSuccess] = useState(false)
+
+  // ── Edit mode state ──
+  const [editMode, setEditMode] = useState(false)
+  const [selectedWords, setSelectedWords] = useState<Set<string>>(new Set())
+  const [showDeckPicker, setShowDeckPicker] = useState(false)
+  const { moveWords, moving } = useMoveWords(id!)
 
   const handleRetry = async (word: Word) => {
     if (!user || !profile || profile.credits < 1) {
@@ -191,6 +202,15 @@ export default function DeckViewPG() {
       setActiveIndex(words.length - 1)
     }
   }, [words.length, activeIndex])
+
+  // Pause video and reset playback state when entering edit mode
+  useEffect(() => {
+    if (editMode) {
+      videoRef.current?.pause()
+      setIsPlaying(false)
+      setVideoActiveIndex(null)
+    }
+  }, [editMode])
 
   const [infoCollapsed, setInfoCollapsed] = useState(false)
   const [videoActiveIndex, setVideoActiveIndex] = useState<number | null>(null)
@@ -468,8 +488,101 @@ export default function DeckViewPG() {
       </div>
     )}
 
-      {/* Carousel */}
+      {/* Carousel / Edit Grid */}
       <div className="-mx-6 sm:mx-0">
+      {editMode ? (
+        /* ── Edit mode: flat thumbnail grid ── */
+        <div className="px-4 sm:px-0">
+          {/* Quick-select bar */}
+          <div className="flex flex-wrap gap-2 justify-center mb-4">
+            <button
+              className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-white/60 hover:text-white hover:bg-white/5 transition-colors"
+              onClick={() => {
+                const selectable = words.filter(w => w.status !== 'pending' && w.status !== 'processing')
+                setSelectedWords(new Set(selectable.map(w => w.id)))
+              }}
+            >
+              {t('deckview.selectAll')}
+            </button>
+            <button
+              className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-white/60 hover:text-white hover:bg-white/5 transition-colors"
+              onClick={() => {
+                const failed = words.filter(w => w.status === 'failed')
+                setSelectedWords(new Set(failed.map(w => w.id)))
+              }}
+            >
+              {t('deckview.selectFailed')}
+            </button>
+            <button
+              className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-white/60 hover:text-white hover:bg-white/5 transition-colors"
+              onClick={() => setSelectedWords(new Set())}
+            >
+              {t('deckview.clearSelection')}
+            </button>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {words.filter(w => w.status !== 'pending' && w.status !== 'processing').map(word => {
+              const isSelected = selectedWords.has(word.id)
+              const isFailed = word.status === 'failed'
+
+              return (
+                <div
+                  key={word.id}
+                  onClick={() => {
+                    setSelectedWords(prev => {
+                      const next = new Set(prev)
+                      if (next.has(word.id)) next.delete(word.id)
+                      else next.add(word.id)
+                      return next
+                    })
+                  }}
+                  className={`relative rounded-xl overflow-hidden cursor-pointer border transition-all
+                    bg-[#0d0d12] ${
+                    isSelected
+                      ? 'ring-2 ring-[var(--pg-accent-teal)] border-[var(--pg-accent-teal)]/30'
+                      : 'border-white/5 hover:border-white/10'
+                  }`}
+                >
+                  {/* Checkbox */}
+                  <div className={`absolute top-2 left-2 z-10 w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs transition-colors ${
+                    isSelected
+                      ? 'bg-[var(--pg-accent-teal)] border-[var(--pg-accent-teal)] text-black'
+                      : 'bg-black/40 border-white/40 backdrop-blur-sm'
+                  }`}>
+                    {isSelected && <Check className="h-3.5 w-3.5" />}
+                  </div>
+
+                  {/* Thumbnail */}
+                  <div className="aspect-[4/3] relative">
+                    {word.thumbnail_url ? (
+                      <img src={word.thumbnail_url} alt={word.word} className="w-full h-full object-cover" />
+                    ) : isFailed ? (
+                      <div className="w-full h-full flex items-center justify-center bg-red-950/20">
+                        <AlertTriangle className="h-6 w-6 text-red-400" />
+                      </div>
+                    ) : (
+                      <div className="w-full h-full bg-white/5 flex items-center justify-center">
+                        <Play className="h-6 w-6 text-white/20" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Word info */}
+                  <div className="p-2.5">
+                    <p className="text-sm font-medium font-display truncate">{word.word}</p>
+                    {word.translation && (
+                      <p className="text-xs text-[var(--pg-text-dim)] truncate">{word.translation}</p>
+                    )}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      ) : (
+        /* ── Normal mode: carousel ── */
+      <>
       {words.length > 0 ? (
         <div className="flex flex-col items-center">
           {/* Outer wrapper: group/carousel lives here so VolumeControl can respond to hover */}
@@ -793,25 +906,97 @@ export default function DeckViewPG() {
           <p className="text-[var(--pg-text-dim)]">{t('deckview.noWords')}</p>
         </div>
       )}
-      </div> {/* end -mx-6 bleed wrapper — escapes parent px-6 on mobile, restored at sm: */}
+      </>
+      )}
+      </div> {/* end -mx-6 bleed wrapper */}
 
       {/* Footer actions */}
       <div className="flex gap-3 justify-center pt-8">
+        {!editMode && (
+          <>
+            <button
+              onClick={() => navigate(`/study?deck=${deck.id}`)}
+              className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
+            >
+              <BookOpen className="h-4 w-4 inline mr-1.5" />
+              {t('deckview.study')}
+            </button>
+            <button
+              onClick={() => navigate(`/generate?deckId=${deck.id}`)}
+              className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
+            >
+              <Plus className="h-4 w-4 inline mr-1.5" />
+              {t('deckview.addCards')}
+            </button>
+          </>
+        )}
         <button
-          onClick={() => navigate(`/study?deck=${deck.id}`)}
+          onClick={() => {
+            if (editMode) {
+              setEditMode(false)
+              setSelectedWords(new Set())
+            } else {
+              setEditMode(true)
+              setSelectedWords(new Set())
+            }
+          }}
           className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
         >
-          <BookOpen className="h-4 w-4 inline mr-1.5" />
-          {t('deckview.study')}
-        </button>
-        <button
-          onClick={() => navigate(`/generate?deckId=${deck.id}`)}
-          className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
-        >
-          <Plus className="h-4 w-4 inline mr-1.5" />
-          {t('deckview.addCards')}
+          {editMode ? (
+            <><X className="h-4 w-4 inline mr-1.5" />{t('deckview.done')}</>
+          ) : (
+            <><PencilLine className="h-4 w-4 inline mr-1.5" />{t('deckview.editDeck')}</>
+          )}
         </button>
       </div>
+
+      {/* Edit mode action bar */}
+      {editMode && selectedWords.size > 0 && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+          <div className="flex items-center justify-between px-6 py-3 max-w-5xl mx-auto">
+            <span className="text-sm text-white/70 font-display">
+              {t('deckview.nSelected', { count: selectedWords.size })}
+            </span>
+            <button
+              disabled={moving}
+              onClick={() => setShowDeckPicker(true)}
+              className="px-5 py-2 rounded-xl bg-[var(--pg-accent-teal)] text-black text-sm font-display font-semibold hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition-all flex items-center gap-2"
+            >
+              {moving && <Loader2 className="h-4 w-4 animate-spin" />}
+              {t('deckview.moveToDeck')}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Deck Picker */}
+      {deck && (
+        <DeckPickerSheet
+          open={showDeckPicker}
+          onClose={() => setShowDeckPicker(false)}
+          onSelectDeck={async (targetDeckId) => {
+            setShowDeckPicker(false)
+            const wordIds = Array.from(selectedWords)
+            const result = await moveWords(wordIds, targetDeckId)
+            if (result.success) {
+              setWords(prev => prev.filter(w => !selectedWords.has(w.id)))
+              setSelectedWords(new Set())
+              setEditMode(false)
+              setDeck(prev => prev ? { ...prev, word_count: Math.max(0, prev.word_count - wordIds.length) } : prev)
+              // Reset activeIndex to stay in bounds
+              if (activeIndex >= words.length - wordIds.length) {
+                setActiveIndex(Math.max(0, words.length - wordIds.length - 1))
+              }
+              toast(t('deckview.wordsMoved', { count: wordIds.length }), 'success')
+            } else {
+              toast(result.error || t('deckview.moveFailed'), 'error')
+            }
+          }}
+          sourceDeckId={id!}
+          targetLanguage={deck.target_language}
+          selectedCount={selectedWords.size}
+        />
+      )}
     </div>
   )
 }

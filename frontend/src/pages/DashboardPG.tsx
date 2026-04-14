@@ -5,8 +5,8 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
-import { AlertCircle, RefreshCw, LogIn, Info } from 'lucide-react'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { AlertCircle, RefreshCw, LogIn } from 'lucide-react'
+import LevelBadge from '@/components/dashboard/LevelBadge'
 import { useTranslation } from '@/hooks/useTranslation'
 import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDetailModal'
 import WordLibrary from '@/components/dashboard/WordLibrary'
@@ -129,8 +129,6 @@ export default function DashboardPG() {
   )
   const totalWords = filteredDecks.reduce((sum, d) => sum + (d.word_count ?? 0), 0)
   const deckCount = filteredDecks.length
-  const level = Math.floor(totalWords / 10) + 1
-
   const quote = useMemo(() => QUOTES[Math.floor(Math.random() * QUOTES.length)], [])
 
   const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? 'Untitled'])), [decks])
@@ -224,23 +222,8 @@ export default function DashboardPG() {
                 <div className="text-3xl font-bold text-white">{deckCount}</div>
                 <div className="text-xs text-white/50 mt-1">decks</div>
               </div>
-              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 text-center">
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <div className="cursor-help">
-                        <div className="text-3xl font-bold text-white inline-flex items-center gap-1">
-                          L{level}
-                          <Info className="h-4 w-4 text-white/40" />
-                        </div>
-                        <div className="text-xs text-white/50 mt-1">level</div>
-                      </div>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{t('dashboard.levelTooltip', { count: String(totalWords) })}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+              <div className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 flex items-center justify-center">
+                <LevelBadge wordCount={totalWords} />
               </div>
             </div>
 
