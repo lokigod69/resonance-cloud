@@ -177,7 +177,12 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                         retry_after,
                     )
                     if attempt < max_submit_retries - 1:
-                        time.sleep(min(retry_after, max(remaining, 0)))
+                        remaining = deadline - time.monotonic()
+                        if remaining <= 0:
+                            raise TimeoutError(
+                                f"GPU worker timeout ({GPU_WORKER_TIMEOUT}s) exceeded during submit retries"
+                            )
+                        time.sleep(min(retry_after, remaining))
                         continue
                     raise RuntimeError("GPU worker busy after max submit retries")
 
@@ -228,10 +233,18 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                 time.sleep(min(GPU_WORKER_POLL_INTERVAL, remaining))
                 remaining = deadline - time.monotonic()
 
+                if remaining <= 0:
+                    elapsed = time.monotonic() - poll_start
+                    raise TimeoutError(
+                        f"Self-hosted LTX job {job_id} timed out after {int(elapsed)}s polling. "
+                        f"GPU_WORKER_TIMEOUT={GPU_WORKER_TIMEOUT}s (end-to-end)."
+                    )
+
                 try:
-                    poll_timeout = min(30, max(remaining, 5))
+                    poll_read_timeout = max(min(remaining, 30), 1.0)
+                    poll_connect_timeout = max(min(remaining, 10), 1.0)
                     with httpx.Client(
-                        timeout=httpx.Timeout(poll_timeout, connect=min(10, max(remaining, 2)))
+                        timeout=httpx.Timeout(poll_read_timeout, connect=poll_connect_timeout)
                     ) as client:
                         poll_response = client.get(
                             f"{GPU_WORKER_URL}/jobs/{job_id}",
