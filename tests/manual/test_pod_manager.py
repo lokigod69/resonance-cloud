@@ -41,9 +41,12 @@ def main() -> None:
         assert token1 == token2
         print(f"   Same URL returned: {url2}")
 
-        print("\n=== 3. record_activity ===")
-        pod_manager.record_activity()
-        print(f"   Activity recorded at {pod_manager._last_activity:.1f}")
+        print("\n=== 3. acquire_use/release_use ===")
+        pod_manager.acquire_use()
+        assert pod_manager._active_jobs == 1, "active_jobs should increment"
+        pod_manager.release_use()
+        assert pod_manager._active_jobs == 0, "active_jobs should decrement"
+        print(f"   active_jobs reset and activity recorded at {pod_manager._last_activity:.1f}")
 
         print("\n=== 4. idle_check with last_activity forced to 0: should terminate ===")
         pod_id = pod_manager._pod_id

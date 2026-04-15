@@ -10,7 +10,8 @@ State model:
 
 Entry points:
     ensure_pod_ready()   - used by adapter before submit
-    record_activity()    - used by adapter after successful job
+    acquire_use()        - used by adapter immediately before job submit
+    release_use()        - used by adapter in finally after job completes/fails
     idle_check()         - called periodically from start_cloud.py
     cleanup_orphans()    - called once at startup
 """
@@ -335,13 +336,6 @@ def release_use() -> None:
     global _active_jobs, _last_activity
     with _lock:
         _active_jobs = max(0, _active_jobs - 1)
-        _last_activity = time.monotonic()
-
-
-def record_activity() -> None:
-    """Mark pod as recently used. Called after each successful job."""
-    global _last_activity
-    with _lock:
         _last_activity = time.monotonic()
 
 
