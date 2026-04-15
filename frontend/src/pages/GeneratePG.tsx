@@ -73,7 +73,11 @@ export default function GeneratePG() {
   /* ─── Submit (mirrors GenerateWizard.handleGenerate) ─── */
 
   async function handleGenerate(wordsOverride?: string[]) {
-    if (!user || !profile) return
+    if (!user) return
+    if (!profile) {
+      toast('Profile not loaded — please refresh and try again.', 'error')
+      return
+    }
     const isQuickGenerate = wordsOverride !== undefined
     const effectiveWords = wordsOverride ?? state.words
     if (effectiveWords.length === 0) return
