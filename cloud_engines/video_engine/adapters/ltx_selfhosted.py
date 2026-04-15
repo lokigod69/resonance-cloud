@@ -95,10 +95,16 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
         - file_size_bytes
         - fal_request_id
         """
-        if not GPU_WORKER_URL:
-            raise RuntimeError("GPU_WORKER_URL not set")
-        if not GPU_WORKER_TOKEN:
-            raise RuntimeError("GPU_WORKER_TOKEN not set")
+        # Resolve worker URL/token.
+        # Level 1 (manual override): GPU_WORKER_URL env var set -> use it directly.
+        # Level 2 (auto): GPU_WORKER_URL empty -> pod_manager creates/reuses a pod.
+        worker_url = GPU_WORKER_URL
+        worker_token = GPU_WORKER_TOKEN
+        if not worker_url:
+            from ..pod_manager import ensure_pod_ready
+            worker_url, worker_token = ensure_pod_ready()
+        elif not worker_token:
+            raise RuntimeError("GPU_WORKER_URL set but GPU_WORKER_TOKEN missing")
 
         # End-to-end deadline — all phases (submit, poll, download) share this budget
         deadline = time.monotonic() + GPU_WORKER_TIMEOUT
@@ -141,7 +147,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                 files_to_close.append(fh2)
                 files_dict["end_image"] = ("end_image.png", fh2, "image/png")
 
-            headers = {"Authorization": f"Bearer {GPU_WORKER_TOKEN}"}
+            headers = {"Authorization": f"Bearer {worker_token}"}
 
             # ── Phase 1: Submit job ──────────────────────────────────────
             submit_response = None
@@ -162,7 +168,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                     timeout=httpx.Timeout(submit_timeout, connect=min(30, remaining))
                 ) as client:
                     submit_response = client.post(
-                        f"{GPU_WORKER_URL}/generate",
+                        f"{worker_url}/generate",
                         data=form_data,
                         files=files_dict if files_dict else None,
                         headers=headers,
@@ -247,7 +253,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                         timeout=httpx.Timeout(poll_read_timeout, connect=poll_connect_timeout)
                     ) as client:
                         poll_response = client.get(
-                            f"{GPU_WORKER_URL}/jobs/{job_id}",
+                            f"{worker_url}/jobs/{job_id}",
                             headers=headers,
                         )
                 except httpx.HTTPError as e:
@@ -329,7 +335,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                 timeout=httpx.Timeout(dl_timeout, connect=min(30, remaining))
             ) as client:
                 dl_response = client.get(
-                    f"{GPU_WORKER_URL}/jobs/{job_id}/result",
+                    f"{worker_url}/jobs/{job_id}/result",
                     headers=headers,
                 )
 
@@ -353,6 +359,11 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
 
             # Extract metadata from the poll response
             meta = job_status.get("metadata") or {}
+
+            # Level 2: mark activity so pod_manager's idle timer resets
+            if not GPU_WORKER_URL:
+                from ..pod_manager import record_activity
+                record_activity()
 
             return {
                 "resolution": meta.get("resolution", settings.resolution),
