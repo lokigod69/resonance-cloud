@@ -16,6 +16,7 @@ Entry points:
 """
 from __future__ import annotations
 
+from datetime import datetime, timezone
 import logging
 import secrets
 import threading
@@ -349,6 +350,10 @@ def cleanup_orphans() -> None:
     Prevents billing leaks from crashed orchestrator instances. Never raises -
     best-effort. Acquires lock so it's safe to call concurrently with other
     entry points.
+
+    NOTE: This cleanup assumes a single orchestrator replica (Railway's default).
+    If running multiple replicas, pod ownership must be tracked via a durable
+    store or pod labels/tags instead of pod name alone.
     """
     if not RUNPOD_API_KEY:
         logger.info("RunPod: RUNPOD_API_KEY not set, skipping orphan cleanup")
@@ -374,6 +379,40 @@ def cleanup_orphans() -> None:
         for pod in pods:
             pod_id = pod.get("id")
             name = pod.get("name")
-            if name == RUNPOD_POD_NAME and pod_id and pod_id != _pod_id:
-                logger.info("RunPod: Orphan pod %s found - terminating", pod_id)
-                _terminate_pod_locked(pod_id)
+            if name != RUNPOD_POD_NAME or not pod_id or pod_id == _pod_id:
+                continue
+
+            pod_age_seconds = None
+            last_started_at = pod.get("lastStartedAt")
+            if isinstance(last_started_at, str):
+                try:
+                    started_at = datetime.fromisoformat(last_started_at.replace("Z", "+00:00"))
+                    pod_age_seconds = max(
+                        0.0,
+                        (datetime.now(timezone.utc) - started_at).total_seconds(),
+                    )
+                except ValueError:
+                    pod_age_seconds = None
+
+            if pod_age_seconds is None:
+                uptime_seconds = pod.get("uptimeSeconds")
+                if isinstance(uptime_seconds, (int, float)):
+                    pod_age_seconds = float(uptime_seconds)
+
+            if pod_age_seconds is None:
+                runtime = pod.get("runtime")
+                if isinstance(runtime, dict):
+                    uptime_seconds = runtime.get("uptimeSecs")
+                    if isinstance(uptime_seconds, (int, float)):
+                        pod_age_seconds = float(uptime_seconds)
+
+            if pod_age_seconds is not None and pod_age_seconds < 600:
+                logger.info(
+                    "RunPod: Skipping recent pod %s (age=%.0fs) - may belong to an active startup",
+                    pod_id,
+                    pod_age_seconds,
+                )
+                continue
+
+            logger.info("RunPod: Orphan pod %s found - terminating", pod_id)
+            _terminate_pod_locked(pod_id)
