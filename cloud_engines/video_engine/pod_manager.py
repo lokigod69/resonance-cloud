@@ -216,3 +216,125 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
             logger.info("RunPod: Pod %s /health not yet reachable: %s", pod_id, e)
 
         time.sleep(_HEALTH_CHECK_INTERVAL)
+
+
+def _terminate_pod_locked(pod_id: str) -> None:
+    """DELETE pod via RunPod API. Caller must hold _lock. Idempotent."""
+    global _pod_status
+    _pod_status = "terminating"
+    try:
+        with httpx.Client(timeout=httpx.Timeout(30.0, connect=10.0)) as client:
+            resp = client.delete(f"{_RUNPOD_API_BASE}/pods/{pod_id}", headers=_api_headers())
+        if resp.status_code in (200, 204, 404):
+            logger.info("RunPod: Pod %s terminated", pod_id)
+        else:
+            logger.warning(
+                "RunPod: Pod %s terminate returned HTTP %s: %s",
+                pod_id, resp.status_code, resp.text[:200],
+            )
+    except httpx.HTTPError as e:
+        logger.warning("RunPod: Pod %s terminate network error: %s", pod_id, e)
+    finally:
+        _reset_state()
+
+
+def _quick_health_check(url: str, token: str) -> bool:
+    """Quick probe: is the worker still alive? Returns True if healthy."""
+    try:
+        with httpx.Client(timeout=httpx.Timeout(5.0, connect=3.0)) as client:
+            resp = client.get(f"{url}/health", headers={"Authorization": f"Bearer {token}"})
+        return resp.status_code == 200 and resp.json().get("model_loaded") is True
+    except httpx.HTTPError:
+        return False
+
+
+def ensure_pod_ready() -> Tuple[str, str]:
+    """Return (pod_url, worker_auth_token). Creates pod if necessary.
+
+    Thread-safe: serialized by _lock. If a pod is already ready, returns
+    immediately. If creating/starting, caller waits for the in-flight creation
+    to complete (via the same lock).
+    """
+    with _lock:
+        # Fast path: ready and healthy
+        if _pod_status == "ready" and _pod_id and _pod_url and _worker_auth_token:
+            if _quick_health_check(_pod_url, _worker_auth_token):
+                return _pod_url, _worker_auth_token
+            logger.warning(
+                "RunPod: Ready pod %s failed health check - terminating and recreating",
+                _pod_id,
+            )
+            _terminate_pod_locked(_pod_id)
+
+        # Need to create
+        pod_id, auth_token = _create_pod()
+        try:
+            url = _wait_for_pod_ready(pod_id, auth_token, RUNPOD_POD_STARTUP_TIMEOUT)
+        except Exception:
+            # _wait_for_pod_ready already terminated on timeout; ensure state reset
+            if _pod_status != "idle":
+                _reset_state()
+            raise
+        assert _worker_auth_token is not None
+        return url, _worker_auth_token
+
+
+def record_activity() -> None:
+    """Mark pod as recently used. Called after each successful job."""
+    global _last_activity
+    with _lock:
+        _last_activity = time.monotonic()
+
+
+def idle_check() -> None:
+    """If pod is ready and idle past timeout, terminate it.
+
+    Called periodically by start_cloud.py's background task.
+    """
+    with _lock:
+        if _pod_status != "ready" or not _pod_id:
+            return
+        idle_seconds = time.monotonic() - _last_activity
+        if idle_seconds < RUNPOD_IDLE_TIMEOUT:
+            return
+        logger.info(
+            "RunPod: Pod %s idle for %.0fs (timeout=%ds) - terminating",
+            _pod_id, idle_seconds, RUNPOD_IDLE_TIMEOUT,
+        )
+        _terminate_pod_locked(_pod_id)
+
+
+def cleanup_orphans() -> None:
+    """Terminate any leftover 'resonance-gpu-worker' pods. Called at startup.
+
+    Prevents billing leaks from crashed orchestrator instances. Never raises -
+    best-effort. Acquires lock so it's safe to call concurrently with other
+    entry points.
+    """
+    if not RUNPOD_API_KEY:
+        logger.info("RunPod: RUNPOD_API_KEY not set, skipping orphan cleanup")
+        return
+    try:
+        with httpx.Client(timeout=httpx.Timeout(30.0, connect=10.0)) as client:
+            resp = client.get(f"{_RUNPOD_API_BASE}/pods", headers=_api_headers())
+        if resp.status_code != 200:
+            logger.warning(
+                "RunPod: List pods for orphan cleanup returned HTTP %s",
+                resp.status_code,
+            )
+            return
+        pods = resp.json()
+        # API may return list directly or wrap in {"pods": [...]} - handle both
+        if isinstance(pods, dict):
+            pods = pods.get("pods", pods.get("data", []))
+    except httpx.HTTPError as e:
+        logger.warning("RunPod: Orphan cleanup list failed: %s", e)
+        return
+
+    with _lock:
+        for pod in pods:
+            pod_id = pod.get("id")
+            name = pod.get("name")
+            if name == RUNPOD_POD_NAME and pod_id and pod_id != _pod_id:
+                logger.info("RunPod: Orphan pod %s found - terminating", pod_id)
+                _terminate_pod_locked(pod_id)
