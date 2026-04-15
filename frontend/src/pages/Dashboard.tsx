@@ -213,8 +213,8 @@ export default function Dashboard() {
 
             {/* Sticky language tabs */}
             {availableLanguages.length > 1 && (
-              <div className="sticky top-16 z-10 bg-background/80 backdrop-blur-sm py-2 mb-2">
-                <div className="flex gap-2 flex-wrap justify-center">
+              <div className="sticky top-16 z-10 mb-3 flex justify-center px-1 py-2">
+                <div className="inline-flex w-fit max-w-full flex-wrap justify-center gap-2 rounded-2xl border border-border/50 bg-card/80 px-3 py-3 shadow-sm backdrop-blur-sm">
                   {availableLanguages.map((lang) => {
                     const isActive = lang === activeLanguage
                     return (
@@ -223,7 +223,7 @@ export default function Dashboard() {
                         onClick={() => setActiveLanguage(lang)}
                         className={`min-h-[44px] px-3 py-2 rounded-full text-sm border transition-all ${
                           isActive
-                            ? 'bg-foreground/15 border-foreground/40 text-foreground'
+                            ? 'bg-foreground/15 border-foreground/40 text-foreground shadow-sm'
                             : 'border-foreground/10 text-foreground/60 hover:text-foreground/90 hover:border-foreground/25'
                         }`}
                       >

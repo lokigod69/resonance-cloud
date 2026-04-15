@@ -215,8 +215,8 @@ export default function DashboardPG() {
 
             {/* Sticky language tabs */}
             {availableLanguages.length > 1 && (
-              <div className="sticky top-16 z-10 bg-background/80 backdrop-blur-sm py-2 mb-2">
-                <div className="flex gap-2 flex-wrap justify-center">
+              <div className="sticky top-16 z-10 mb-3 flex justify-center px-1 py-2">
+                <div className="pg-glass inline-flex w-fit max-w-full flex-wrap justify-center gap-2 rounded-2xl px-3 py-3">
                   {availableLanguages.map((lang) => {
                     const isActive = lang === activeLanguage
                     return (
@@ -225,8 +225,8 @@ export default function DashboardPG() {
                         onClick={() => setActiveLanguage(lang)}
                         className={`min-h-[44px] px-3 py-2 rounded-full text-sm border transition-all ${
                           isActive
-                            ? 'bg-foreground/15 border-foreground/40 text-foreground'
-                            : 'border-foreground/10 text-foreground/40 hover:text-foreground/70 hover:border-foreground/25'
+                            ? 'bg-foreground/15 border-foreground/25 text-foreground shadow-sm'
+                            : 'border-foreground/10 text-foreground/50 hover:text-foreground/80 hover:border-foreground/20'
                         }`}
                       >
                         {getLanguageName(lang)}

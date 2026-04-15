@@ -217,7 +217,7 @@ export default function Decks() {
         </div>
       )}
 
-      <div className="flex justify-end mb-6 px-4">
+      <div className="flex justify-center mb-8 px-4">
         <button
           onClick={() => navigate('/generate')}
           className="w-full sm:w-auto flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/35 text-sm font-medium text-white transition-colors"
