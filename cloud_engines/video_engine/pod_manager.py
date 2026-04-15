@@ -48,6 +48,7 @@ _pod_url: Optional[str] = None
 _pod_status: str = "idle"  # idle | creating | starting | ready | terminating
 _worker_auth_token: Optional[str] = None
 _last_activity: float = 0.0
+_active_jobs: int = 0
 
 
 def _api_headers() -> dict[str, str]:
@@ -61,12 +62,13 @@ def _api_headers() -> dict[str, str]:
 
 def _reset_state() -> None:
     """Reset all pod state to idle. Caller must hold _lock."""
-    global _pod_id, _pod_url, _pod_status, _worker_auth_token, _last_activity
+    global _pod_id, _pod_url, _pod_status, _worker_auth_token, _last_activity, _active_jobs
     _pod_id = None
     _pod_url = None
     _pod_status = "idle"
     _worker_auth_token = None
     _last_activity = 0.0
+    _active_jobs = 0
 
 
 def _create_pod() -> tuple[str, str]:
@@ -159,7 +161,7 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
     Returns the proxy URL. On timeout or failure, terminates the pod and raises.
     Caller must hold _lock.
     """
-    global _pod_url, _pod_status
+    global _pod_url, _pod_status, _last_activity
 
     deadline = time.monotonic() + timeout
 
@@ -207,6 +209,7 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
                     logger.info("RunPod: Pod %s health check passed - worker ready", pod_id)
                     _pod_url = proxy_url
                     _pod_status = "ready"
+                    _last_activity = time.monotonic()
                     return proxy_url
                 logger.info(
                     "RunPod: Pod %s health: status=%s model_loaded=%s",
@@ -255,6 +258,7 @@ def ensure_pod_ready() -> Tuple[str, str]:
     immediately. If creating/starting, caller waits for the in-flight creation
     to complete (via the same lock).
     """
+    global _last_activity
     with _lock:
         # Fast path: ready and healthy
         if _pod_status == "ready" and _pod_id and _pod_url and _worker_auth_token:
@@ -270,6 +274,7 @@ def ensure_pod_ready() -> Tuple[str, str]:
         pod_id, auth_token = _create_pod()
         try:
             url = _wait_for_pod_ready(pod_id, auth_token, RUNPOD_POD_STARTUP_TIMEOUT)
+            _last_activity = time.monotonic()
         except Exception:
             # _wait_for_pod_ready already terminated on timeout; ensure state reset
             if _pod_status != "idle":
@@ -277,6 +282,21 @@ def ensure_pod_ready() -> Tuple[str, str]:
             raise
         assert _worker_auth_token is not None
         return url, _worker_auth_token
+
+
+def acquire_use() -> None:
+    """Mark pod as in-use. Called before job starts."""
+    global _active_jobs
+    with _lock:
+        _active_jobs += 1
+
+
+def release_use() -> None:
+    """Mark job complete. Called in finally block after job ends."""
+    global _active_jobs, _last_activity
+    with _lock:
+        _active_jobs = max(0, _active_jobs - 1)
+        _last_activity = time.monotonic()
 
 
 def record_activity() -> None:
@@ -293,6 +313,8 @@ def idle_check() -> None:
     """
     with _lock:
         if _pod_status != "ready" or not _pod_id:
+            return
+        if _active_jobs > 0:
             return
         idle_seconds = time.monotonic() - _last_activity
         if idle_seconds < RUNPOD_IDLE_TIMEOUT:

@@ -100,9 +100,12 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
         # Level 2 (auto): GPU_WORKER_URL empty -> pod_manager creates/reuses a pod.
         worker_url = GPU_WORKER_URL
         worker_token = GPU_WORKER_TOKEN
+        level2_release = None
         if not worker_url:
-            from ..pod_manager import ensure_pod_ready
+            from ..pod_manager import acquire_use, ensure_pod_ready, release_use
             worker_url, worker_token = ensure_pod_ready()
+            acquire_use()
+            level2_release = release_use
         elif not worker_token:
             raise RuntimeError("GPU_WORKER_URL set but GPU_WORKER_TOKEN missing")
 
@@ -360,11 +363,6 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
             # Extract metadata from the poll response
             meta = job_status.get("metadata") or {}
 
-            # Level 2: mark activity so pod_manager's idle timer resets
-            if not GPU_WORKER_URL:
-                from ..pod_manager import record_activity
-                record_activity()
-
             return {
                 "resolution": meta.get("resolution", settings.resolution),
                 "fps": meta.get("fps", 24),
@@ -376,6 +374,8 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
             }
 
         finally:
+            if level2_release is not None:
+                level2_release()
             for fh in files_to_close:
                 try:
                     fh.close()
