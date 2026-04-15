@@ -122,7 +122,12 @@ def _create_pod() -> tuple[str, str]:
             continue
 
         if resp.status_code in (200, 201):
-            data = resp.json()
+            try:
+                data = resp.json()
+            except ValueError:
+                raise RuntimeError(
+                    f"RunPod create returned {resp.status_code} with non-JSON body: {resp.text[:200]}"
+                )
             pod_id = data.get("id")
             if not pod_id:
                 raise RuntimeError(f"RunPod create response missing 'id' field: {str(data)[:200]}")
@@ -276,7 +281,7 @@ def _quick_health_check(url: str, token: str) -> bool:
         with httpx.Client(timeout=httpx.Timeout(5.0, connect=3.0)) as client:
             resp = client.get(f"{url}/health", headers={"Authorization": f"Bearer {token}"})
         return resp.status_code == 200 and resp.json().get("model_loaded") is True
-    except httpx.HTTPError:
+    except (httpx.HTTPError, ValueError):
         return False
 
 
@@ -299,9 +304,9 @@ def ensure_pod_ready() -> Tuple[str, str]:
             )
             _terminate_pod_locked(_pod_id)
 
-        # Need to create
-        pod_id, auth_token = _create_pod()
         try:
+            # Need to create
+            pod_id, auth_token = _create_pod()
             url = _wait_for_pod_ready(pod_id, auth_token, RUNPOD_POD_STARTUP_TIMEOUT)
             _last_activity = time.monotonic()
         except Exception:
