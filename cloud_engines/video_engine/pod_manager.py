@@ -254,6 +254,22 @@ def _terminate_pod_locked(pod_id: str) -> None:
         _reset_state()
 
 
+def _terminate_orphan(pod_id: str) -> None:
+    """DELETE an orphan pod without touching module state. Best-effort."""
+    try:
+        with httpx.Client(timeout=httpx.Timeout(30.0, connect=10.0)) as client:
+            resp = client.delete(f"{_RUNPOD_API_BASE}/pods/{pod_id}", headers=_api_headers())
+        if resp.status_code in (200, 204, 404):
+            logger.info("RunPod: Orphan pod %s terminated", pod_id)
+        else:
+            logger.warning(
+                "RunPod: Orphan %s terminate returned HTTP %s: %s",
+                pod_id, resp.status_code, resp.text[:200],
+            )
+    except httpx.HTTPError as e:
+        logger.warning("RunPod: Orphan %s terminate error: %s", pod_id, e)
+
+
 def _quick_health_check(url: str, token: str) -> bool:
     """Quick probe: is the worker still alive? Returns True if healthy."""
     try:
@@ -416,6 +432,6 @@ def cleanup_orphans() -> None:
                     continue
 
                 logger.info("RunPod: Orphan pod %s found - terminating", pod_id)
-                _terminate_pod_locked(pod_id)
+                _terminate_orphan(pod_id)
     except Exception:
         logger.exception("RunPod: Orphan cleanup failed (non-fatal)")
