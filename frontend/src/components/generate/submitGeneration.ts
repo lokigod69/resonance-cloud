@@ -1,13 +1,25 @@
 import { supabase } from '@/lib/supabase'
 import type { GeneratePayload, ExistingDeck } from './useWizardState'
 
+type SubmitGenerationOptions = {
+  cachedCredits?: number
+}
+
 export async function submitGeneration(
   userId: string,
   payload: GeneratePayload,
-  existingDeck?: ExistingDeck
+  existingDeck?: ExistingDeck,
+  options?: SubmitGenerationOptions
 ): Promise<string> {
   const { deckPayload, wordList, jobPayload } = payload
   const wordCount = wordList.length
+
+  const { data: { session } } = await supabase.auth.getSession()
+  console.log('[submitGeneration] session state:', {
+    hasSession: !!session,
+    hasToken: !!session?.access_token,
+    userId: session?.user?.id,
+  })
 
   // Fresh credit check
   const { data: freshProfile, error: profileError } = await supabase
@@ -16,11 +28,23 @@ export async function submitGeneration(
     .eq('id', userId)
     .single()
 
-  if (profileError || !freshProfile) throw new Error('Could not verify credit balance')
+  if (profileError) {
+    console.error('[submitGeneration] profile credit check failed:', {
+      userId,
+      message: profileError.message,
+      code: 'code' in profileError ? profileError.code : undefined,
+      details: 'details' in profileError ? profileError.details : undefined,
+      hint: 'hint' in profileError ? profileError.hint : undefined,
+    })
+  }
 
-  const freshCredits = freshProfile.credits ?? 0
-  if (freshCredits < wordCount) {
-    throw new Error(`Not enough credits. You have ${freshCredits} but need ${wordCount}.`)
+  const availableCredits = freshProfile?.credits ?? options?.cachedCredits
+  if (typeof availableCredits !== 'number') {
+    throw new Error(profileError?.message || 'Could not verify credit balance')
+  }
+
+  if (availableCredits < wordCount) {
+    throw new Error(`Not enough credits. You have ${availableCredits} but need ${wordCount}.`)
   }
 
   let targetDeckId: string
@@ -80,7 +104,7 @@ export async function submitGeneration(
   // Deduct credits
   const { error: creditError } = await supabase
     .from('profiles')
-    .update({ credits: freshCredits - wordCount })
+    .update({ credits: availableCredits - wordCount })
     .eq('id', userId)
   if (creditError) throw new Error(creditError.message)
 

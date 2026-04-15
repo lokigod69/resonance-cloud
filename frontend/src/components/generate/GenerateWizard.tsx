@@ -20,7 +20,7 @@ import MusicStep from './steps/MusicStep'
 import ConfirmStep from './steps/ConfirmStep'
 
 export default function GenerateWizard() {
-  const { user, refreshProfile } = useAuth()
+  const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { activeLanguage } = useLanguage()
   const { state, dispatch, buildPayload } = useWizardState()
@@ -87,7 +87,12 @@ export default function GenerateWizard() {
         payload.jobPayload.movie_override = existingDeck?.movie_override ?? null
         payload.jobPayload.settings_override = {}
       }
-      await submitGeneration(user.id, payload, existingDeck ?? undefined)
+      await submitGeneration(
+        user.id,
+        payload,
+        existingDeck ?? undefined,
+        { cachedCredits: profile?.credits }
+      )
       await refreshProfile()
       setGenerated(true)
     } catch (err: unknown) {

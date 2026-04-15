@@ -6,6 +6,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
+import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useWizardState } from '@/components/generate/useWizardState'
 import type { ExistingDeck } from '@/components/generate/useWizardState'
 import WordsStep from '@/components/generate/steps/WordsStep'
@@ -83,21 +84,6 @@ export default function GeneratePG() {
     setError(null)
 
     try {
-      const { data: freshProfile, error: profileError } = await supabase
-        .from('profiles')
-        .select('credits')
-        .eq('id', user.id)
-        .single()
-
-      if (profileError || !freshProfile) throw new Error(t('generate.couldNotVerifyCredits'))
-
-      const freshCredits = freshProfile.credits ?? 0
-      const wordCount = effectiveWords.length
-
-      if (freshCredits < wordCount) {
-        throw new Error(t('generate.notEnoughCreditsDetail', { have: freshCredits, need: wordCount }))
-      }
-
       const { deckPayload, jobPayload } = buildPayload(user.id, existingDeck ?? undefined)
       // Use explicit word list instead of buildPayload's closure-captured state.words.
       // Also patch word counts that buildPayload derived from the (possibly stale) state.
@@ -114,60 +100,12 @@ export default function GeneratePG() {
         jobPayload.settings_override = {}
       }
 
-      let targetDeckId: string
-
-      if (existingDeck) {
-        targetDeckId = existingDeck.id
-
-        const wordRows = wordList.map((w) => ({
-          deck_id: targetDeckId,
-          user_id: user.id,
-          word: w,
-          status: 'pending',
-        }))
-        const { error: wordsError } = await supabase.from('words').insert(wordRows)
-        if (wordsError) throw new Error(wordsError.message)
-
-        const { error: jobError } = await supabase
-          .from('generation_jobs')
-          .insert({ ...jobPayload, deck_id: targetDeckId })
-        if (jobError) throw new Error(jobError.message)
-
-        const { error: deckUpdateError } = await supabase
-          .from('decks')
-          .update({ status: 'generating', word_count: existingDeck.word_count + wordCount })
-          .eq('id', targetDeckId)
-        if (deckUpdateError) throw new Error(deckUpdateError.message)
-      } else {
-        const { data: deck, error: deckError } = await supabase
-          .from('decks')
-          .insert(deckPayload!)
-          .select('id')
-          .single()
-
-        if (deckError || !deck) throw new Error(deckError?.message || 'Failed to create deck')
-        targetDeckId = deck.id
-
-        const wordRows = wordList.map((w) => ({
-          deck_id: targetDeckId,
-          user_id: user.id,
-          word: w,
-          status: 'pending',
-        }))
-        const { error: wordsError } = await supabase.from('words').insert(wordRows)
-        if (wordsError) throw new Error(wordsError.message)
-
-        const { error: jobError } = await supabase
-          .from('generation_jobs')
-          .insert({ ...jobPayload, deck_id: targetDeckId })
-        if (jobError) throw new Error(jobError.message)
-      }
-
-      const { error: creditError } = await supabase
-        .from('profiles')
-        .update({ credits: freshCredits - wordCount })
-        .eq('id', user.id)
-      if (creditError) throw new Error(creditError.message)
+      await submitGeneration(
+        user.id,
+        { deckPayload, wordList, jobPayload },
+        existingDeck ?? undefined,
+        { cachedCredits: profile?.credits }
+      )
 
       await refreshProfile()
       setGenerated(true)

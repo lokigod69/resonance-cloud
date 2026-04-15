@@ -267,7 +267,12 @@ export default function GenerateGO() {
         },
       }
 
-      await submitGeneration(user.id, payload, existingDeck ?? undefined)
+      await submitGeneration(
+        user.id,
+        payload,
+        existingDeck ?? undefined,
+        { cachedCredits: profile?.credits }
+      )
       await refreshProfile()
       navigate(existingDeck ? `/deck/${existingDeck.id}` : '/dashboard')
     } catch (err: unknown) {
