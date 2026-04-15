@@ -67,3 +67,152 @@ def _reset_state() -> None:
     _pod_status = "idle"
     _worker_auth_token = None
     _last_activity = 0.0
+
+
+def _create_pod() -> tuple[str, str]:
+    """Create a pod. Returns (pod_id, worker_auth_token).
+
+    Caller must hold _lock. Tries each volume with the full GPU list in one
+    RunPod API call (gpuTypeIds array). On success, returns immediately -
+    readiness polling is done by _wait_for_pod_ready.
+    """
+    global _pod_id, _pod_status, _worker_auth_token
+
+    if not RUNPOD_VOLUME_IDS:
+        raise RuntimeError("RUNPOD_VOLUME_IDS not set - at least one network volume ID required")
+
+    gpu_types = [RUNPOD_GPU_TYPE] + [g for g in RUNPOD_FALLBACK_GPU_TYPES if g != RUNPOD_GPU_TYPE]
+    auth_token = secrets.token_urlsafe(32)
+
+    last_error: Optional[str] = None
+    for volume_id in RUNPOD_VOLUME_IDS:
+        payload = {
+            "name": RUNPOD_POD_NAME,
+            "imageName": RUNPOD_DOCKER_IMAGE,
+            "gpuTypeIds": gpu_types,
+            "gpuCount": 1,
+            "gpuTypePriority": "availability",
+            "containerDiskInGb": 10,
+            "volumeInGb": 0,
+            "networkVolumeId": volume_id,
+            "ports": ["8080/http"],
+            "dockerStartCmd": ["uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "8080"],
+            "env": {
+                "WORKER_AUTH_TOKEN": auth_token,
+                "DIFFUSERS_MODEL_DIR": "/workspace/models/ltx-2.3-diffusers",
+                "UPSAMPLER_MODEL_DIR": "/workspace/models/ltx-2.3-upsampler",
+                "LORA_DIR": "/workspace/models/loras",
+            },
+            "interruptible": False,
+        }
+        logger.info("RunPod: Creating pod (volume=%s, gpus=%s)", volume_id, gpu_types)
+        try:
+            with httpx.Client(timeout=httpx.Timeout(60.0, connect=15.0)) as client:
+                resp = client.post(
+                    f"{_RUNPOD_API_BASE}/pods",
+                    json=payload,
+                    headers=_api_headers(),
+                )
+        except httpx.HTTPError as e:
+            last_error = f"network error: {e}"
+            logger.warning("RunPod: Pod create failed (volume=%s): %s", volume_id, last_error)
+            continue
+
+        if resp.status_code in (200, 201):
+            data = resp.json()
+            pod_id = data["id"]
+            _pod_id = pod_id
+            _worker_auth_token = auth_token
+            _pod_status = "creating"
+            logger.info(
+                "RunPod: Pod %s created (portMappings=%s), waiting for ready...",
+                pod_id, data.get("portMappings"),
+            )
+            return pod_id, auth_token
+
+        # Availability-related rejections: try next volume
+        body_text = resp.text
+        last_error = f"HTTP {resp.status_code}: {body_text[:200]}"
+        if resp.status_code in (400, 404, 409, 503):
+            logger.warning(
+                "RunPod: GPU unavailable in volume %s - %s. Trying next volume...",
+                volume_id, last_error,
+            )
+            continue
+        if resp.status_code == 401:
+            raise RuntimeError("RunPod auth failed - check RUNPOD_API_KEY")
+        # Other errors: stop looping
+        raise RuntimeError(f"RunPod create pod failed: {last_error}")
+
+    logger.error("RunPod: No GPU available in any region (last error: %s)", last_error)
+    raise RuntimeError(f"No GPU available in any region. Last error: {last_error}")
+
+
+def _proxy_url_for_pod(pod_id: str) -> str:
+    """RunPod public proxy URL for port 8080 on the pod."""
+    return f"https://{pod_id}-8080.proxy.runpod.net"
+
+
+def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
+    """Poll RunPod until pod is RUNNING, then worker /health until model_loaded.
+
+    Returns the proxy URL. On timeout or failure, terminates the pod and raises.
+    Caller must hold _lock.
+    """
+    global _pod_url, _pod_status
+
+    deadline = time.monotonic() + timeout
+
+    # Phase A: wait for desiredStatus == RUNNING with ports populated
+    while True:
+        if time.monotonic() > deadline:
+            _terminate_pod_locked(pod_id)
+            raise TimeoutError(f"Pod {pod_id} did not enter RUNNING state within {timeout}s")
+
+        try:
+            with httpx.Client(timeout=httpx.Timeout(30.0, connect=10.0)) as client:
+                resp = client.get(f"{_RUNPOD_API_BASE}/pods/{pod_id}", headers=_api_headers())
+                resp.raise_for_status()
+                data = resp.json()
+        except httpx.HTTPError as e:
+            logger.warning("RunPod: Poll pod %s failed: %s", pod_id, e)
+            time.sleep(_POD_STATUS_POLL_INTERVAL)
+            continue
+
+        status = data.get("desiredStatus", "")
+        ports = data.get("portMappings") or {}
+        if status == "RUNNING" and ports:
+            break
+        logger.info("RunPod: Pod %s status=%s, waiting...", pod_id, status)
+        time.sleep(_POD_STATUS_POLL_INTERVAL)
+
+    proxy_url = _proxy_url_for_pod(pod_id)
+    _pod_status = "starting"
+
+    # Phase B: wait for worker /health to report model_loaded
+    while True:
+        if time.monotonic() > deadline:
+            _terminate_pod_locked(pod_id)
+            raise TimeoutError(f"Pod {pod_id} health check did not pass within {timeout}s")
+
+        try:
+            with httpx.Client(timeout=httpx.Timeout(15.0, connect=5.0)) as client:
+                resp = client.get(
+                    f"{proxy_url}/health",
+                    headers={"Authorization": f"Bearer {auth_token}"},
+                )
+            if resp.status_code == 200:
+                health = resp.json()
+                if health.get("model_loaded") is True and health.get("status") == "healthy":
+                    logger.info("RunPod: Pod %s health check passed - worker ready", pod_id)
+                    _pod_url = proxy_url
+                    _pod_status = "ready"
+                    return proxy_url
+                logger.info(
+                    "RunPod: Pod %s health: status=%s model_loaded=%s",
+                    pod_id, health.get("status"), health.get("model_loaded"),
+                )
+        except httpx.HTTPError as e:
+            logger.info("RunPod: Pod %s /health not yet reachable: %s", pod_id, e)
+
+        time.sleep(_HEALTH_CHECK_INTERVAL)
