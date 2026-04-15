@@ -33,6 +33,23 @@ GPU_WORKER_POLL_INTERVAL: int = int(os.getenv("GPU_WORKER_POLL_INTERVAL", "5"))
 RUNPOD_API_KEY: str = os.getenv("RUNPOD_API_KEY", "")
 RUNPOD_ENDPOINT_ID: str = os.getenv("RUNPOD_ENDPOINT_ID", "")
 
+# --- RunPod Pod Automation (Level 2) ---
+# When GPU_WORKER_URL is empty AND RUNPOD_API_KEY is set, pod_manager
+# creates/terminates pods dynamically. When GPU_WORKER_URL is set, Level 2 is
+# bypassed and the adapter uses that fixed URL (manual override).
+
+RUNPOD_VOLUME_IDS: list[str] = [
+    v.strip() for v in os.getenv("RUNPOD_VOLUME_IDS", "").split(",") if v.strip()
+]
+RUNPOD_GPU_TYPE: str = os.getenv("RUNPOD_GPU_TYPE", "NVIDIA L40S")
+RUNPOD_FALLBACK_GPU_TYPES: list[str] = [
+    g.strip() for g in os.getenv("RUNPOD_FALLBACK_GPU_TYPES", "").split(",") if g.strip()
+]
+RUNPOD_DOCKER_IMAGE: str = os.getenv("RUNPOD_DOCKER_IMAGE", "lokiii69/ltx-worker:diffusers-v1")
+RUNPOD_IDLE_TIMEOUT: int = int(os.getenv("RUNPOD_IDLE_TIMEOUT", "300"))
+RUNPOD_POD_STARTUP_TIMEOUT: int = int(os.getenv("RUNPOD_POD_STARTUP_TIMEOUT", "300"))
+RUNPOD_POD_NAME: str = os.getenv("RUNPOD_POD_NAME", "resonance-gpu-worker")
+
 # --- Resolution Map ---
 
 RESOLUTION_MAP: dict[str, tuple[int, int]] = {
