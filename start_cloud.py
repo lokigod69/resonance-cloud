@@ -137,10 +137,27 @@ async def main():
     health_thread = Thread(target=start_health_server, daemon=True)
     health_thread.start()
 
-    # 2. Recover stuck jobs from previous container lifecycle
+    # 2. Level 2 pod automation: orphan cleanup + idle checker.
+    #    No-op if RUNPOD_API_KEY is unset.
+    from cloud_engines.video_engine import pod_manager
+
+    logger.info("Cleaning up any orphan RunPod pods from previous instances...")
+    await asyncio.to_thread(pod_manager.cleanup_orphans)
+
+    async def _pod_idle_loop() -> None:
+        while True:
+            await asyncio.sleep(60)
+            try:
+                await asyncio.to_thread(pod_manager.idle_check)
+            except Exception:
+                logger.exception("pod_manager.idle_check failed")
+
+    asyncio.create_task(_pod_idle_loop())
+
+    # 3. Recover stuck jobs from previous container lifecycle
     await recover_stuck_jobs()
 
-    # 3. Import and run the job runner's main loop
+    # 4. Import and run the job runner's main loop
     #
     # SIDE EFFECTS AT IMPORT TIME:
     #   - load_dotenv() runs (line 28 of job_runner.py)
