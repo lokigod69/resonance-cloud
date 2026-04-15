@@ -38,9 +38,9 @@ import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import SharePage from '@/pages/SharePage'
 
 function ProtectedRoute() {
-  const { session, loading } = useAuth()
+  const { session, loading: authLoading } = useAuth()
 
-  if (loading) {
+  if (authLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
         <ParticleSpinner preset="spirograph" size={160} />
@@ -57,9 +57,9 @@ function ProtectedRoute() {
 }
 
 function OnboardingRoute() {
-  const { session, loading } = useAuth()
+  const { session, loading: authLoading } = useAuth()
 
-  if (loading) {
+  if (authLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
         <ParticleSpinner preset="spirograph" size={160} />
@@ -76,9 +76,9 @@ function OnboardingRoute() {
 }
 
 function PublicRoute() {
-  const { session, loading } = useAuth()
+  const { session, loading: authLoading } = useAuth()
 
-  if (loading) {
+  if (authLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
         <ParticleSpinner preset="spirograph" size={160} />

@@ -44,7 +44,7 @@ function TypingIndicator() {
 
 export default function Speak() {
   const { t } = useTranslation()
-  const { profile, loading: profileLoading } = useAuth()
+  const { profile } = useAuth()
   // Convert profile.base_language (e.g. "German") → 2-letter code ("de").
   // Backend voice-chat expects the 2-letter code as native_language.
   const baseLangCode = ALL_LANGUAGES.find((l) => l.value === profile?.base_language)?.code
@@ -162,7 +162,7 @@ export default function Speak() {
                 <button
                   key={lang.code}
                   onClick={() => tutor.selectLanguage(lang.code)}
-                  disabled={tutor.status === 'processing' || (!profile && profileLoading)}
+                  disabled={tutor.status === 'processing'}
                   className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <FlagIcon code={lang.code} className="w-10 h-auto" />

@@ -19,3 +19,5 @@ export type Profile = {
   theme?: string
   created_at: string
 }
+
+export type AuthProfile = Pick<Profile, 'display_name' | 'base_language' | 'role' | 'credits'>

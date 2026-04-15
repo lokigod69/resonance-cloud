@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Loader2, RefreshCw, Sparkles, Wand2, X, Zap } from 'lucide-react'
 import PillButton from '../shared/PillButton'
 import { CATEGORY_GROUPS } from '@/data/categories'
+import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import type { WizardState, WizardAction } from '../useWizardState'
 
@@ -35,6 +36,7 @@ interface CategoryPickerProps {
 const SUGGEST_COUNT = 5
 
 export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToManual, onQuickGenerate }: CategoryPickerProps) {
+  const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
   const [mode, setMode] = useState<Mode>('idle')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
@@ -42,6 +44,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
   const [error, setError] = useState<string | null>(null)
 
   const targetLanguage = state.language || activeLanguage
+  const baseLanguage = profile?.base_language || 'English'
 
   async function fetchSuggestions(category: string) {
     if (!targetLanguage) {
@@ -58,7 +61,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
         body: JSON.stringify({
           category,
           target_language: targetLanguage,
-          base_language: 'English',
+          base_language: baseLanguage,
           count: SUGGEST_COUNT,
         }),
       })

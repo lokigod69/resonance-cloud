@@ -40,7 +40,7 @@ const adminNav = [
 ]
 
 export function AppHeader() {
-  const { profile, user } = useAuth()
+  const { profile, user, profileLoading } = useAuth()
   const { t } = useTranslation()
   const location = useLocation()
   const isAdmin = profile?.role === 'admin'
@@ -189,7 +189,7 @@ export function AppHeader() {
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg glass glass-hover text-sm font-medium transition-colors"
         >
           <Coins className="h-4 w-4 text-primary" />
-          <span>{profile?.credits ?? 0}</span>
+          <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
         </button>
 
         {/* Profile button → opens modal */}

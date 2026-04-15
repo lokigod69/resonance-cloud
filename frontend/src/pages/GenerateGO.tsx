@@ -221,13 +221,6 @@ export default function GenerateGO() {
     const effectiveWords = wordsOverride ?? words
     if (!user || !language || effectiveWords.length === 0) return
 
-    if (credits < effectiveWords.length) {
-      const msg = `Not enough credits. You have ${credits} but need ${effectiveWords.length}. Redeem an invite code to get more.`
-      setError(msg)
-      toast(msg, 'error')
-      return
-    }
-
     setSubmitting(true)
     setError(null)
 
@@ -287,7 +280,7 @@ export default function GenerateGO() {
 
   // ── Render helpers ────────────────────────────────
 
-  const credits = profile?.credits ?? 0
+  const credits = profile?.credits
 
   function findStyleLabel(value: string): string {
     for (const g of ART_STYLE_GROUPS) {
@@ -329,7 +322,7 @@ export default function GenerateGO() {
                 onQuickGenerate={(words) => handleInitialize(words)}
               />
               <p style={{ textAlign: 'center', color: 'var(--go-text-secondary)', fontSize: '0.8rem', marginTop: 12 }}>
-                {words.length}/{MAX_WORDS} words · {credits} credits available
+                {words.length}/{MAX_WORDS} words · {typeof credits === 'number' ? `${credits} credits available` : 'Credits check on generate'}
               </p>
             </div>
           ) : (
@@ -520,15 +513,15 @@ export default function GenerateGO() {
             </div>
           )}
 
-          {credits < words.length && (
+          {typeof credits === 'number' && credits < words.length && (
             <p style={{ color: '#f87171', marginBottom: 16, fontSize: '0.85rem' }}>
               Not enough credits — you need {words.length} but have {credits}. Redeem an invite code to get more.
             </p>
           )}
           <div
-            className={`forge-orb${submitting ? ' synthesizing' : ''}${credits < words.length ? ' disabled' : ''}`}
-            onClick={!submitting && credits >= words.length ? () => handleInitialize() : undefined}
-            style={credits < words.length ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
+            className={`forge-orb${submitting ? ' synthesizing' : ''}${typeof credits === 'number' && credits < words.length ? ' disabled' : ''}`}
+            onClick={!submitting && (typeof credits !== 'number' || credits >= words.length) ? () => handleInitialize() : undefined}
+            style={typeof credits === 'number' && credits < words.length ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
           >
             {submitting ? 'Synthesizing...' : 'Initialize'}
           </div>

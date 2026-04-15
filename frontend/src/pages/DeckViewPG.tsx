@@ -84,7 +84,7 @@ export default function DeckViewPG() {
   const [renameTo, setRenameTo] = useState('')
   const [activeIndex, setActiveIndex] = useState(0)
 
-  const { user, profile, refreshProfile } = useAuth()
+  const { user, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { t, locale } = useTranslation()
   const [retrying, setRetrying] = useState<string | null>(null)
@@ -100,12 +100,21 @@ export default function DeckViewPG() {
   const { moveWords, moving } = useMoveWords(id!)
 
   const handleRetry = async (word: Word) => {
-    if (!user || !profile || profile.credits < 1) {
-      toast(t('deckview.noCredits'), 'error')
-      return
-    }
+    if (!user) return
     setRetrying(word.id)
     try {
+      const { data: freshProfile, error: profileError } = await supabase
+        .from('profiles')
+        .select('credits')
+        .eq('id', user.id)
+        .single()
+
+      const freshCredits = freshProfile?.credits ?? 0
+      if (profileError || freshCredits < 1) {
+        toast(t('deckview.noCredits'), 'error')
+        return
+      }
+
       await supabase.from('words').update({
         status: 'pending',
         error_message: null,
@@ -124,7 +133,7 @@ export default function DeckViewPG() {
       })
 
       await supabase.from('profiles')
-        .update({ credits: profile.credits - 1 })
+        .update({ credits: freshCredits - 1 })
         .eq('id', user.id)
 
       await supabase.from('decks')

@@ -20,7 +20,7 @@ export function RedeemCodeDialog({
   open: boolean
   onOpenChange: (open: boolean) => void
 }) {
-  const { user, profile, refreshProfile } = useAuth()
+  const { user, profile, profileLoading, refreshProfile } = useAuth()
   const { t } = useTranslation()
 
   const [inviteCode, setInviteCode] = useState('')
@@ -134,7 +134,7 @@ export function RedeemCodeDialog({
         {/* Balance */}
         <div className="flex items-center justify-center py-4">
           <div className="text-center">
-            <div className="text-4xl font-bold">{profile?.credits ?? 0}</div>
+            <div className="text-4xl font-bold">{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</div>
             <div className="text-sm text-muted-foreground mt-1">{t('credits.available')}</div>
           </div>
         </div>

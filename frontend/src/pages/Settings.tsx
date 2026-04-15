@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTheme, type Theme } from '@/contexts/ThemeContext'
 import { useSkin, type SkinId } from '@/contexts/SkinContext'
@@ -16,7 +16,7 @@ import { Input } from '@/components/ui/input'
 import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 
 export default function Settings() {
-  const { profile, user, signOut, refreshProfile } = useAuth()
+  const { profile, profileLoading, user, signOut, refreshProfile } = useAuth()
   const { theme, setTheme } = useTheme()
   const { skin, setSkin } = useSkin()
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
@@ -25,6 +25,11 @@ export default function Settings() {
   const [saved, setSaved] = useState(false)
   const [nameSaving, setNameSaving] = useState(false)
   const [nameSaved, setNameSaved] = useState(false)
+
+  useEffect(() => {
+    setBaseLanguage(profile?.base_language || '')
+    setDisplayName(profile?.display_name || '')
+  }, [profile?.base_language, profile?.display_name])
 
   async function handleSaveDisplayName() {
     if (!user) return
@@ -250,7 +255,7 @@ export default function Settings() {
               <p className="text-sm text-muted-foreground">Each word generation costs 1 credit</p>
             </div>
           </div>
-          <span className="text-3xl font-bold">{profile?.credits ?? 0}</span>
+          <span className="text-3xl font-bold">{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
         </div>
       </div>
 

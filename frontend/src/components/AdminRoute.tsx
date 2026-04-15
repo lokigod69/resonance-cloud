@@ -9,13 +9,13 @@ import { Lock } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 
 export default function AdminRoute() {
-  const { profile, loading } = useAuth()
+  const { profile, loading: authLoading, profileLoading } = useAuth()
   const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem('admin_unlocked') === 'true')
   const [pin, setPin] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [checking, setChecking] = useState(false)
 
-  if (loading) {
+  if (authLoading || profileLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <ParticleSpinner preset="rose" size={120} />

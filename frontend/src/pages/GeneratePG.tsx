@@ -74,22 +74,10 @@ export default function GeneratePG() {
 
   async function handleGenerate(wordsOverride?: string[]) {
     if (!user) return
-    if (!profile) {
-      toast('Profile not loaded — please refresh and try again.', 'error')
-      return
-    }
     const isQuickGenerate = wordsOverride !== undefined
     const effectiveWords = wordsOverride ?? state.words
     if (effectiveWords.length === 0) return
     if (!existingDeck && !state.language) return
-
-    const cachedCredits = profile.credits ?? 0
-    if (cachedCredits < effectiveWords.length) {
-      const msg = t('generate.notEnoughCreditsDetail', { have: cachedCredits, need: effectiveWords.length })
-      setError(msg)
-      toast(msg, 'error')
-      return
-    }
 
     setSubmitting(true)
     setError(null)
@@ -319,7 +307,7 @@ export default function GeneratePG() {
             <StepReview
               state={state}
               dispatch={dispatch}
-              credits={profile?.credits ?? 0}
+              credits={profile?.credits}
               onSubmit={() => handleGenerate()}
               submitting={submitting}
               error={error}
@@ -719,7 +707,7 @@ function StepReview({
 }: {
   state: import('@/components/generate/useWizardState').WizardState
   dispatch: React.Dispatch<import('@/components/generate/useWizardState').WizardAction>
-  credits: number
+  credits: number | undefined
   onSubmit: () => void
   submitting: boolean
   error: string | null
@@ -783,7 +771,7 @@ function StepReview({
       <p className="text-center text-gray-500 text-sm mt-6">
         {tp('generate.creditsUsed', state.words.length)}
       </p>
-      {credits < state.words.length && (
+      {typeof credits === 'number' && credits < state.words.length && (
         <p className="text-center text-xs text-rose-400 mt-1">{t('generate.notEnoughCredits')}</p>
       )}
 
@@ -796,7 +784,7 @@ function StepReview({
       <div className="mt-8 text-center pb-20">
         <button
           onClick={onSubmit}
-          disabled={submitting || credits < state.words.length}
+          disabled={submitting || (typeof credits === 'number' && credits < state.words.length)}
           className="px-10 py-4 rounded-full bg-white text-black font-display font-medium text-lg hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           {submitting ? (

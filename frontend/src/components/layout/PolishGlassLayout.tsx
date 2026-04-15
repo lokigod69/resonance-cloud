@@ -9,7 +9,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 
 export default function PolishGlassLayout() {
   const location = useLocation()
-  const { profile } = useAuth()
+  const { profile, profileLoading } = useAuth()
   const { t } = useTranslation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [redeemOpen, setRedeemOpen] = useState(false)
@@ -57,7 +57,7 @@ export default function PolishGlassLayout() {
           className="flex sm:hidden items-center gap-1 text-xs text-gray-400 ml-auto mr-2 hover:text-[var(--pg-accent-teal)] transition-colors"
         >
           <Coins className="w-3.5 h-3.5" />
-          <span>{profile?.credits ?? 0}</span>
+          <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
         </button>
 
         {/* Mobile profile button — visible only on mobile */}
@@ -107,7 +107,7 @@ export default function PolishGlassLayout() {
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm font-medium text-gray-300 hover:text-[var(--pg-accent-teal)] hover:bg-white/10 transition-colors"
           >
             <Coins className="h-3.5 w-3.5" />
-            <span>{profile?.credits ?? 0}</span>
+            <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
           </button>
           <button
             onClick={() => setProfileOpen(true)}

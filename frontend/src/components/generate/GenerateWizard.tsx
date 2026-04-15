@@ -20,7 +20,7 @@ import MusicStep from './steps/MusicStep'
 import ConfirmStep from './steps/ConfirmStep'
 
 export default function GenerateWizard() {
-  const { user, profile, refreshProfile } = useAuth()
+  const { user, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { activeLanguage } = useLanguage()
   const { state, dispatch, buildPayload } = useWizardState()
@@ -65,19 +65,11 @@ export default function GenerateWizard() {
   prevStep.current = state.step
 
   async function handleGenerate(wordsOverride?: string[]) {
-    if (!user || !profile) return
+    if (!user) return
     const isQuickGenerate = wordsOverride !== undefined
     const effectiveWords = wordsOverride ?? state.words
     if (effectiveWords.length === 0) return
     if (!existingDeck && !state.language) return
-
-    const credits = profile.credits ?? 0
-    if (credits < effectiveWords.length) {
-      const msg = `Not enough credits. You have ${credits} but need ${effectiveWords.length}. Redeem an invite code to get more.`
-      setError(msg)
-      toast(msg, 'error')
-      return
-    }
 
     setSubmitting(true)
     setError(null)
@@ -86,7 +78,6 @@ export default function GenerateWizard() {
       const payload = buildPayload(user.id, existingDeck ?? undefined)
       payload.wordList = effectiveWords
       if (payload.deckPayload) payload.deckPayload.word_count = effectiveWords.length
-      payload.jobPayload.words_total = effectiveWords.length
       if (isQuickGenerate) {
         if (payload.deckPayload) {
           payload.deckPayload.art_style = null
