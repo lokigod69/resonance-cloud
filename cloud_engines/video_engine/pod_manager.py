@@ -122,7 +122,9 @@ def _create_pod() -> tuple[str, str]:
 
         if resp.status_code in (200, 201):
             data = resp.json()
-            pod_id = data["id"]
+            pod_id = data.get("id")
+            if not pod_id:
+                raise RuntimeError(f"RunPod create response missing 'id' field: {str(data)[:200]}")
             _pod_id = pod_id
             _worker_auth_token = auth_token
             _pod_status = "creating"
@@ -175,7 +177,12 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
             with httpx.Client(timeout=httpx.Timeout(30.0, connect=10.0)) as client:
                 resp = client.get(f"{_RUNPOD_API_BASE}/pods/{pod_id}", headers=_api_headers())
                 resp.raise_for_status()
-                data = resp.json()
+                try:
+                    data = resp.json()
+                except ValueError:
+                    logger.warning("RunPod: Pod %s status response not valid JSON", pod_id)
+                    time.sleep(_POD_STATUS_POLL_INTERVAL)
+                    continue
         except httpx.HTTPError as e:
             logger.warning("RunPod: Poll pod %s failed: %s", pod_id, e)
             time.sleep(_POD_STATUS_POLL_INTERVAL)
@@ -204,7 +211,12 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
                     headers={"Authorization": f"Bearer {auth_token}"},
                 )
             if resp.status_code == 200:
-                health = resp.json()
+                try:
+                    health = resp.json()
+                except ValueError:
+                    logger.warning("RunPod: Pod %s health response not valid JSON", pod_id)
+                    time.sleep(_HEALTH_CHECK_INTERVAL)
+                    continue
                 if health.get("model_loaded") is True and health.get("status") == "healthy":
                     logger.info("RunPod: Pod %s health check passed - worker ready", pod_id)
                     _pod_url = proxy_url
@@ -276,9 +288,14 @@ def ensure_pod_ready() -> Tuple[str, str]:
             url = _wait_for_pod_ready(pod_id, auth_token, RUNPOD_POD_STARTUP_TIMEOUT)
             _last_activity = time.monotonic()
         except Exception:
-            # _wait_for_pod_ready already terminated on timeout; ensure state reset
-            if _pod_status != "idle":
-                _reset_state()
+            # Best-effort terminate - pod may be running even if readiness failed
+            if _pod_id and _pod_status != "idle":
+                leaked_pod_id = _pod_id
+                try:
+                    _terminate_pod_locked(leaked_pod_id)
+                except Exception:
+                    logger.warning("RunPod: Failed to terminate pod %s during cleanup", leaked_pod_id)
+                    _reset_state()
             raise
         assert _worker_auth_token is not None
         return url, _worker_auth_token
