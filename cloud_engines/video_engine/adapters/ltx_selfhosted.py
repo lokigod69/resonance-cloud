@@ -104,7 +104,6 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
         if not worker_url:
             from ..pod_manager import acquire_use, ensure_pod_ready, release_use
             worker_url, worker_token = ensure_pod_ready()
-            acquire_use()
             level2_release = release_use
         elif not worker_token:
             raise RuntimeError("GPU_WORKER_URL set but GPU_WORKER_TOKEN missing")
@@ -134,6 +133,9 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
 
         files_to_close: list = []
         files_dict: dict = {}
+
+        if level2_release is not None:
+            acquire_use()
 
         try:
             if not is_text_to_video and image_path and Path(image_path).exists():
