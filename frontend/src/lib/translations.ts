@@ -21,6 +21,7 @@ export const LANGUAGE_TO_LOCALE: Record<string, Locale> = {
   German: 'de',
   French: 'fr',
   Korean: 'en',
+  Spanish: 'en',
 };
 
 // Shared translation function builder — used by useTranslation and useLandingLocale

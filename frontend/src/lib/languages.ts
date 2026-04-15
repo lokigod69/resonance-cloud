@@ -40,7 +40,7 @@ export const LANGUAGES: Language[] = [
   { value: 'Korean',     nativeName: '한국어',             code: 'ko',  landingColor: '#CD2E3A', wizardColor: '#a855f7', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Indonesian', nativeName: 'Bahasa Indonesia',  code: 'id',  landingColor: '#009688', wizardColor: '#f97316',                isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Dutch',      nativeName: 'Nederlands',        code: 'nl',  landingColor: '#E65100',                                                         isLanding: true,  isSpeak: true },
-  { value: 'Spanish',    nativeName: 'Español',           code: 'es',  landingColor: '#C62828',                                                         isLanding: true,  isSpeak: true },
+  { value: 'Spanish',    nativeName: 'Español',           code: 'es',  landingColor: '#C62828', wizardColor: '#ec4c47', isBase: true,  isWizard: true,  isLanding: true,  isSpeak: true },
   { value: 'Hindi',      nativeName: 'हिन्दी',              code: 'hi',  landingColor: '#F9A825',                                                         isLanding: true,  isSpeak: true },
   { value: 'Portuguese', nativeName: 'Português',         code: 'pt',                                                                                                     isSpeak: true },
   { value: 'Arabic',     nativeName: 'العربية',           code: 'ar',                                                                                                     isSpeak: true },
