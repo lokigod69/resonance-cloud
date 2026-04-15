@@ -88,75 +88,88 @@ def _create_pod() -> tuple[str, str]:
     gpu_types = [RUNPOD_GPU_TYPE] + [g for g in RUNPOD_FALLBACK_GPU_TYPES if g != RUNPOD_GPU_TYPE]
     auth_token = secrets.token_urlsafe(32)
 
+    MAX_CREATE_RETRIES = 3
+    RETRY_DELAY_SECONDS = 30
     last_error: Optional[str] = None
-    for volume_id in RUNPOD_VOLUME_IDS:
-        payload = {
-            "name": RUNPOD_POD_NAME,
-            "imageName": RUNPOD_DOCKER_IMAGE,
-            "gpuTypeIds": gpu_types,
-            "gpuCount": 1,
-            "gpuTypePriority": "availability",
-            "containerDiskInGb": 10,
-            "volumeInGb": 0,
-            "networkVolumeId": volume_id,
-            "ports": ["8080/http"],
-            "dockerStartCmd": ["uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "8080"],
-            "env": {
-                "WORKER_AUTH_TOKEN": auth_token,
-                "DIFFUSERS_MODEL_DIR": "/workspace/models/ltx-2.3-diffusers",
-                "UPSAMPLER_MODEL_DIR": "/workspace/models/ltx-2.3-upsampler",
-                "LORA_DIR": "/workspace/models/loras",
-            },
-            "interruptible": False,
-        }
-        logger.info("RunPod: Creating pod (volume=%s, gpus=%s)", volume_id, gpu_types)
-        try:
-            with httpx.Client(timeout=httpx.Timeout(60.0, connect=15.0)) as client:
-                resp = client.post(
-                    f"{_RUNPOD_API_BASE}/pods",
-                    json=payload,
-                    headers=_api_headers(),
-                )
-        except httpx.HTTPError as e:
-            last_error = f"network error: {e}"
-            logger.warning("RunPod: Pod create failed (volume=%s): %s", volume_id, last_error)
-            continue
-
-        if resp.status_code in (200, 201):
-            try:
-                data = resp.json()
-            except ValueError:
-                raise RuntimeError(
-                    f"RunPod create returned {resp.status_code} with non-JSON body: {resp.text[:200]}"
-                )
-            pod_id = data.get("id")
-            if not pod_id:
-                raise RuntimeError(f"RunPod create response missing 'id' field: {str(data)[:200]}")
-            _pod_id = pod_id
-            _worker_auth_token = auth_token
-            _pod_status = "creating"
+    for attempt in range(1, MAX_CREATE_RETRIES + 1):
+        for volume_id in RUNPOD_VOLUME_IDS:
+            payload = {
+                "name": RUNPOD_POD_NAME,
+                "imageName": RUNPOD_DOCKER_IMAGE,
+                "gpuTypeIds": gpu_types,
+                "gpuCount": 1,
+                "gpuTypePriority": "availability",
+                "containerDiskInGb": 10,
+                "volumeInGb": 0,
+                "networkVolumeId": volume_id,
+                "ports": ["8080/http"],
+                "dockerStartCmd": ["uvicorn", "src.app:app", "--host", "0.0.0.0", "--port", "8080"],
+                "env": {
+                    "WORKER_AUTH_TOKEN": auth_token,
+                    "DIFFUSERS_MODEL_DIR": "/workspace/models/ltx-2.3-diffusers",
+                    "UPSAMPLER_MODEL_DIR": "/workspace/models/ltx-2.3-upsampler",
+                    "LORA_DIR": "/workspace/models/loras",
+                },
+                "interruptible": False,
+            }
             logger.info(
-                "RunPod: Pod %s created (portMappings=%s), waiting for ready...",
-                pod_id, data.get("portMappings"),
+                "RunPod: Creating pod (attempt=%d/%d, volume=%s, gpus=%s)",
+                attempt, MAX_CREATE_RETRIES, volume_id, gpu_types,
             )
-            return pod_id, auth_token
+            try:
+                with httpx.Client(timeout=httpx.Timeout(60.0, connect=15.0)) as client:
+                    resp = client.post(
+                        f"{_RUNPOD_API_BASE}/pods",
+                        json=payload,
+                        headers=_api_headers(),
+                    )
+            except httpx.HTTPError as e:
+                last_error = f"network error: {e}"
+                logger.warning("RunPod: Pod create failed (volume=%s): %s", volume_id, last_error)
+                continue
 
-        # Availability-related rejections: try next volume
-        body_text = resp.text
-        last_error = f"HTTP {resp.status_code}: {body_text[:200]}"
-        if resp.status_code in (400, 404, 409, 503):
+            if resp.status_code in (200, 201):
+                try:
+                    data = resp.json()
+                except ValueError:
+                    raise RuntimeError(
+                        f"RunPod create returned {resp.status_code} with non-JSON body: {resp.text[:200]}"
+                    )
+                pod_id = data.get("id")
+                if not pod_id:
+                    raise RuntimeError(f"RunPod create response missing 'id' field: {str(data)[:200]}")
+                _pod_id = pod_id
+                _worker_auth_token = auth_token
+                _pod_status = "creating"
+                logger.info(
+                    "RunPod: Pod %s created (portMappings=%s), waiting for ready...",
+                    pod_id, data.get("portMappings"),
+                )
+                return pod_id, auth_token
+
+            # Availability-related rejections: try next volume
+            body_text = resp.text
+            last_error = f"HTTP {resp.status_code}: {body_text[:200]}"
+            if resp.status_code in (400, 404, 409, 500, 503):
+                logger.warning(
+                    "RunPod: GPU unavailable in volume %s - %s. Trying next volume...",
+                    volume_id, last_error,
+                )
+                continue
+            if resp.status_code == 401:
+                raise RuntimeError("RunPod auth failed - check RUNPOD_API_KEY")
+            # Other errors: stop looping
+            raise RuntimeError(f"RunPod create pod failed: {last_error}")
+
+        if attempt < MAX_CREATE_RETRIES:
             logger.warning(
-                "RunPod: GPU unavailable in volume %s - %s. Trying next volume...",
-                volume_id, last_error,
+                "RunPod: No GPU available in any region (attempt %d/%d). Retrying in %ds...",
+                attempt, MAX_CREATE_RETRIES, RETRY_DELAY_SECONDS,
             )
-            continue
-        if resp.status_code == 401:
-            raise RuntimeError("RunPod auth failed - check RUNPOD_API_KEY")
-        # Other errors: stop looping
-        raise RuntimeError(f"RunPod create pod failed: {last_error}")
+            time.sleep(RETRY_DELAY_SECONDS)
 
-    logger.error("RunPod: No GPU available in any region (last error: %s)", last_error)
-    raise RuntimeError(f"No GPU available in any region. Last error: {last_error}")
+    logger.error("RunPod: No GPU available after %d attempts", MAX_CREATE_RETRIES)
+    raise RuntimeError(f"No GPU available after {MAX_CREATE_RETRIES} attempts. Last error: {last_error}")
 
 
 def _proxy_url_for_pod(pod_id: str) -> str:
