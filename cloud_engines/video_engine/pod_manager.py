@@ -359,60 +359,63 @@ def cleanup_orphans() -> None:
         logger.info("RunPod: RUNPOD_API_KEY not set, skipping orphan cleanup")
         return
     try:
-        with httpx.Client(timeout=httpx.Timeout(30.0, connect=10.0)) as client:
-            resp = client.get(f"{_RUNPOD_API_BASE}/pods", headers=_api_headers())
-        if resp.status_code != 200:
-            logger.warning(
-                "RunPod: List pods for orphan cleanup returned HTTP %s",
-                resp.status_code,
-            )
+        try:
+            with httpx.Client(timeout=httpx.Timeout(30.0, connect=10.0)) as client:
+                resp = client.get(f"{_RUNPOD_API_BASE}/pods", headers=_api_headers())
+            if resp.status_code != 200:
+                logger.warning(
+                    "RunPod: List pods for orphan cleanup returned HTTP %s",
+                    resp.status_code,
+                )
+                return
+            pods = resp.json()
+            # API may return list directly or wrap in {"pods": [...]} - handle both
+            if isinstance(pods, dict):
+                pods = pods.get("pods", pods.get("data", []))
+        except httpx.HTTPError as e:
+            logger.warning("RunPod: Orphan cleanup list failed: %s", e)
             return
-        pods = resp.json()
-        # API may return list directly or wrap in {"pods": [...]} - handle both
-        if isinstance(pods, dict):
-            pods = pods.get("pods", pods.get("data", []))
-    except httpx.HTTPError as e:
-        logger.warning("RunPod: Orphan cleanup list failed: %s", e)
-        return
 
-    with _lock:
-        for pod in pods:
-            pod_id = pod.get("id")
-            name = pod.get("name")
-            if name != RUNPOD_POD_NAME or not pod_id or pod_id == _pod_id:
-                continue
+        with _lock:
+            for pod in pods:
+                pod_id = pod.get("id")
+                name = pod.get("name")
+                if name != RUNPOD_POD_NAME or not pod_id or pod_id == _pod_id:
+                    continue
 
-            pod_age_seconds = None
-            last_started_at = pod.get("lastStartedAt")
-            if isinstance(last_started_at, str):
-                try:
-                    started_at = datetime.fromisoformat(last_started_at.replace("Z", "+00:00"))
-                    pod_age_seconds = max(
-                        0.0,
-                        (datetime.now(timezone.utc) - started_at).total_seconds(),
-                    )
-                except ValueError:
-                    pod_age_seconds = None
+                pod_age_seconds = None
+                last_started_at = pod.get("lastStartedAt")
+                if isinstance(last_started_at, str):
+                    try:
+                        started_at = datetime.fromisoformat(last_started_at.replace("Z", "+00:00"))
+                        pod_age_seconds = max(
+                            0.0,
+                            (datetime.now(timezone.utc) - started_at).total_seconds(),
+                        )
+                    except ValueError:
+                        pod_age_seconds = None
 
-            if pod_age_seconds is None:
-                uptime_seconds = pod.get("uptimeSeconds")
-                if isinstance(uptime_seconds, (int, float)):
-                    pod_age_seconds = float(uptime_seconds)
-
-            if pod_age_seconds is None:
-                runtime = pod.get("runtime")
-                if isinstance(runtime, dict):
-                    uptime_seconds = runtime.get("uptimeSecs")
+                if pod_age_seconds is None:
+                    uptime_seconds = pod.get("uptimeSeconds")
                     if isinstance(uptime_seconds, (int, float)):
                         pod_age_seconds = float(uptime_seconds)
 
-            if pod_age_seconds is not None and pod_age_seconds < 600:
-                logger.info(
-                    "RunPod: Skipping recent pod %s (age=%.0fs) - may belong to an active startup",
-                    pod_id,
-                    pod_age_seconds,
-                )
-                continue
+                if pod_age_seconds is None:
+                    runtime = pod.get("runtime")
+                    if isinstance(runtime, dict):
+                        uptime_seconds = runtime.get("uptimeSecs")
+                        if isinstance(uptime_seconds, (int, float)):
+                            pod_age_seconds = float(uptime_seconds)
 
-            logger.info("RunPod: Orphan pod %s found - terminating", pod_id)
-            _terminate_pod_locked(pod_id)
+                if pod_age_seconds is not None and pod_age_seconds < 600:
+                    logger.info(
+                        "RunPod: Skipping recent pod %s (age=%.0fs) - may belong to an active startup",
+                        pod_id,
+                        pod_age_seconds,
+                    )
+                    continue
+
+                logger.info("RunPod: Orphan pod %s found - terminating", pod_id)
+                _terminate_pod_locked(pod_id)
+    except Exception:
+        logger.exception("RunPod: Orphan cleanup failed (non-fatal)")
