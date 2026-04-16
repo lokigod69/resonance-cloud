@@ -21,6 +21,7 @@ from .ltx_shared import (
     build_ltx_negative,
     build_ltx_prompt,
 )
+from src.cost_logger import log_cost
 
 logger = logging.getLogger(__name__)
 
@@ -364,6 +365,25 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
 
             # Extract metadata from the poll response
             meta = job_status.get("metadata") or {}
+
+            # Cost tracking
+            _gpu_seconds_est = (settings.duration / 6.0) * (540 if self._quality == "pro" else 90)
+            log_cost(
+                stage="video",
+                provider="runpod",
+                model=self.model_name,
+                status="success",
+                usage_metrics={
+                    "duration_seconds": settings.duration,
+                    "resolution": settings.resolution,
+                    "video_mode": self.tier,
+                    "quality": self._quality,
+                    "job_id": job_id,
+                    "gpu_seconds_estimated": _gpu_seconds_est,
+                },
+                estimated_cost_usd=self.estimate_cost(settings),
+                duration_ms=int((time.monotonic() - deadline + GPU_WORKER_TIMEOUT) * 1000),
+            )
 
             return {
                 "resolution": meta.get("resolution", settings.resolution),

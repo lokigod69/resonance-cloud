@@ -12,6 +12,7 @@ import {
   ListOrdered,
   Languages,
   Mic,
+  DollarSign,
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
@@ -32,6 +33,7 @@ const adminNav = [
   { to: '/admin/content', label: 'Content', icon: FileText },
   { to: '/admin/voices', label: 'Voices', icon: Mic },
   { to: '/admin/metrics', label: 'Metrics', icon: BarChart3 },
+  { to: '/admin/costs', label: 'Costs', icon: DollarSign },
 ]
 
 function NavContent({ onNavigate }: { onNavigate?: () => void }) {

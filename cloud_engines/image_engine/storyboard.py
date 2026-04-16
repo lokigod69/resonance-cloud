@@ -10,6 +10,8 @@ import json
 import logging
 import re
 import time
+
+from src.cost_logger import estimate_openrouter_cost, log_cost
 from typing import Optional, Union
 
 import httpx
@@ -199,6 +201,19 @@ def _call_openrouter(
     content = choices[0].get("message", {}).get("content", "")
     if not content or not content.strip():
         raise RuntimeError("OpenRouter returned empty content")
+
+    log_cost(
+        stage="images_storyboard",
+        provider="openrouter",
+        model=model,
+        status="success",
+        usage_metrics={
+            "prompt_tokens": usage.get("prompt_tokens"),
+            "completion_tokens": usage.get("completion_tokens"),
+            "total_tokens": usage.get("total_tokens"),
+        },
+        estimated_cost_usd=estimate_openrouter_cost(model, usage),
+    )
 
     logger.info(
         "Storyboard LLM call completed (model=%s, tokens=%s)",

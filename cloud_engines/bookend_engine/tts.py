@@ -9,6 +9,7 @@ import httpx
 
 from .config import get_api_key
 from .models import TtsResult
+from src.cost_logger import estimate_elevenlabs_cost, log_cost
 
 logger = logging.getLogger(__name__)
 
@@ -97,6 +98,18 @@ async def generate_pronunciation(
                 output.parent.mkdir(parents=True, exist_ok=True)
                 output.write_bytes(response.content)
                 duration = probe_audio_duration(str(output))
+                log_cost(
+                    stage="bookend",
+                    provider="elevenlabs",
+                    model=model_id,
+                    status="success",
+                    usage_metrics={
+                        "characters_used": len(word),
+                        "voice_id": voice_id,
+                        "language_code": language_code,
+                    },
+                    estimated_cost_usd=estimate_elevenlabs_cost(len(word)),
+                )
                 return TtsResult(
                     audio_path=str(output),
                     duration_seconds=duration,

@@ -38,6 +38,7 @@ from .config import (
     RUNPOD_POD_STARTUP_TIMEOUT,
     RUNPOD_VOLUME_IDS,
 )
+from src.cost_logger import log_cost
 
 logger = logging.getLogger(__name__)
 
@@ -53,6 +54,25 @@ _pod_status: str = "idle"  # idle | creating | starting | ready | terminating
 _worker_auth_token: Optional[str] = None
 _last_activity: float = 0.0
 _active_jobs: int = 0
+_pod_gpu_type: Optional[str] = None  # Actual GPU assigned by RunPod
+_pod_created_at: float = 0.0         # monotonic timestamp of pod creation
+
+# Per-GPU hourly rates (USD) — RunPod community cloud pricing
+# Keys must match RunPod API gpuTypeId / displayName exactly.
+# These are the GPUs in RUNPOD_GPU_TYPE + RUNPOD_FALLBACK_GPU_TYPES (48GB+ VRAM).
+_GPU_HOURLY_RATES: dict[str, float] = {
+    # Primary
+    "NVIDIA L40S":                                      0.86,  # 48 GB
+    # Fallback list (ordered cheapest-first in env var)
+    "NVIDIA RTX A6000":                                 0.49,  # 48 GB
+    "NVIDIA L40":                                       0.99,  # 48 GB
+    "NVIDIA RTX 6000 Ada Generation":                   0.77,  # 48 GB
+    "NVIDIA A100 80GB PCIe":                            1.39,  # 80 GB
+    "NVIDIA A100-SXM4-80GB":                            1.39,  # 80 GB
+    "NVIDIA RTX PRO 6000 Blackwell Server Edition":     1.89,  # 96 GB
+    "NVIDIA RTX PRO 6000 Blackwell Workstation Edition": 1.89, # 96 GB
+}
+_GPU_RATE_DEFAULT = 1.89  # Fallback: assume RTX PRO 6000 rate to avoid undercount
 
 
 def _api_headers() -> dict[str, str]:
@@ -125,13 +145,15 @@ def _extract_gpu_type(response: dict) -> Optional[str]:
 
 def _reset_state() -> None:
     """Reset all pod state to idle. Caller must hold _lock."""
-    global _pod_id, _pod_url, _pod_status, _worker_auth_token, _last_activity, _active_jobs
+    global _pod_id, _pod_url, _pod_status, _worker_auth_token, _last_activity, _active_jobs, _pod_gpu_type, _pod_created_at
     _pod_id = None
     _pod_url = None
     _pod_status = "idle"
     _worker_auth_token = None
     _last_activity = 0.0
     _active_jobs = 0
+    _pod_gpu_type = None
+    _pod_created_at = 0.0
 
 
 def _create_pod() -> tuple[str, str]:
@@ -220,7 +242,9 @@ def _create_pod() -> tuple[str, str]:
                 _pod_id = pod_id
                 _worker_auth_token = auth_token
                 _pod_status = "creating"
+                _pod_created_at = time.monotonic()
                 assigned_gpu = _extract_gpu_type(data)
+                _pod_gpu_type = assigned_gpu
                 logger.info(
                     "RunPod: Pod %s created in volume %s (gpu=%s, portMappings=%s), waiting for ready...",
                     pod_id, volume_id, assigned_gpu or "unknown", data.get("portMappings"),
@@ -326,6 +350,8 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
         if not gpu_logged:
             gpu_hint = _extract_gpu_type(data)
             if gpu_hint:
+                global _pod_gpu_type
+                _pod_gpu_type = gpu_hint
                 logger.info("RunPod: Pod %s assigned GPU: %s", pod_id, gpu_hint)
                 gpu_logged = True
 
@@ -394,6 +420,25 @@ def _terminate_pod_locked(pod_id: str) -> None:
     except httpx.HTTPError as e:
         logger.warning("RunPod: Pod %s terminate network error: %s", pod_id, e)
     finally:
+        # Log pod lifecycle cost before resetting state
+        if _pod_created_at > 0:
+            _approx_uptime = time.monotonic() - _pod_created_at
+            _gpu_name = _pod_gpu_type or "unknown"
+            _hourly_rate = _GPU_HOURLY_RATES.get(_gpu_name, _GPU_RATE_DEFAULT)
+            _estimated_cost = round((_approx_uptime / 3600) * _hourly_rate, 4)
+            log_cost(
+                stage="video_infrastructure",
+                provider="runpod",
+                model="pod_lifecycle",
+                status="terminated",
+                usage_metrics={
+                    "pod_id": pod_id,
+                    "gpu_type": _gpu_name,
+                    "gpu_hourly_rate": _hourly_rate,
+                    "uptime_seconds": round(_approx_uptime, 1),
+                },
+                estimated_cost_usd=_estimated_cost,
+            )
         _reset_state()
 
 

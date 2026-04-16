@@ -5,9 +5,12 @@ from __future__ import annotations
 import json
 import logging
 import os
+import time
 from typing import Any
 
 import httpx
+
+from src.cost_logger import estimate_openrouter_cost, log_cost
 
 log = logging.getLogger(__name__)
 
@@ -56,6 +59,7 @@ async def run_enrichment(
     )
     user_prompt = f"Enrich these {target_language} vocabulary words: {word_list}"
 
+    _call_start = time.monotonic()
     async with httpx.AsyncClient(timeout=60) as client:
         resp = await client.post(
             "https://openrouter.ai/api/v1/chat/completions",
@@ -73,6 +77,23 @@ async def run_enrichment(
         )
         resp.raise_for_status()
         data = resp.json()
+
+    _elapsed_ms = int((time.monotonic() - _call_start) * 1000)
+    usage = data.get("usage", {})
+    log_cost(
+        stage="enrichment",
+        provider="openrouter",
+        model=llm_model,
+        status="success",
+        usage_metrics={
+            "prompt_tokens": usage.get("prompt_tokens"),
+            "completion_tokens": usage.get("completion_tokens"),
+            "total_tokens": usage.get("total_tokens"),
+            "words_in_batch": len(words),
+        },
+        estimated_cost_usd=estimate_openrouter_cost(llm_model, usage),
+        duration_ms=_elapsed_ms,
+    )
 
     content = data["choices"][0]["message"]["content"]
     # Strip markdown code fences if present

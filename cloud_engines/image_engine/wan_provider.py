@@ -25,6 +25,7 @@ import httpx
 from PIL import Image as PILImage
 
 from .prompt_compiler import compile_scene_to_text
+from src.cost_logger import log_cost, KIE_WAN_COST_PER_IMAGE
 
 logger = logging.getLogger(__name__)
 
@@ -130,6 +131,8 @@ def render_scene_wan(
     save_result = _download_and_save(image_url, output_path)
     if save_result is not None:
         return {**save_result, "prompt_text": prompt_text}
+
+    # Cost is tracked by renderer.py render_all_scenes() — no separate logging here
 
     return {
         "success": True,

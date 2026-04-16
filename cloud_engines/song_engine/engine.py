@@ -42,6 +42,7 @@ from .models import (
     TakeInfo,
 )
 from .params import build_acestep_params
+from src.cost_logger import log_cost
 
 logger = logging.getLogger(__name__)
 
@@ -128,6 +129,22 @@ def generate_song(payload: SongPayload) -> SongResult:
             logger.warning(warning)
 
         status = "success"
+
+        # Cost tracking — ACE-Step is self-hosted, $0 variable cost
+        log_cost(
+            stage="song",
+            provider="self_hosted",
+            model="acestep-v15-sft",
+            status="success",
+            usage_metrics={
+                "batch_size": len(output_paths),
+                "inference_steps": params.inference_steps if params else None,
+                "duration_seconds": params.duration if params else None,
+                "backend": backend.backend_name if backend else "unknown",
+            },
+            estimated_cost_usd=0.0,
+            duration_ms=int((time.monotonic() - start_time) * 1000),
+        )
 
     except ValueError as e:
         # Validation errors — not retryable

@@ -15,6 +15,8 @@ from pathlib import Path
 import httpx
 from supabase import create_client as supabase_create_client
 
+from src.cost_logger import log_cost, KIE_SUNO_COST_PER_SONG
+
 logger = logging.getLogger(__name__)
 
 KIE_API_BASE = "https://api.kie.ai/api/v1"
@@ -246,6 +248,15 @@ async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
                     if audio_url:
                         logger.info("Suno song ready: %s%s", audio_url, f" (B: {audio_url_b})" if audio_url_b else "")
                         _write_to_supabase(deck_id, word_slug, audio_url, task_id, audio_url_b)
+                        log_cost(
+                            stage="song",
+                            provider="kie_ai",
+                            model="suno_v5_5",
+                            status="success",
+                            usage_metrics={"task_id": task_id, "has_track_b": audio_url_b is not None},
+                            estimated_cost_usd=KIE_SUNO_COST_PER_SONG,
+                            duration_ms=int(elapsed * 1000),
+                        )
                         return {"audio_url": audio_url, "audio_url_b": audio_url_b, "task_id": task_id, "status": "success", "error": None}
                 return {
                     "audio_url": None, "task_id": task_id, "status": "error",

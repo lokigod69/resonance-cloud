@@ -8,8 +8,11 @@ from __future__ import annotations
 
 import logging
 import os
+import time
 
 import httpx
+
+from src.cost_logger import estimate_openrouter_cost, log_cost
 
 logger = logging.getLogger(__name__)
 
@@ -59,6 +62,7 @@ class OpenRouterClient:
             "max_tokens": max_tokens,
         }
 
+        _call_start = time.monotonic()
         try:
             resp = self._client.post(
                 OPENROUTER_ENDPOINT,
@@ -69,8 +73,18 @@ class OpenRouterClient:
                 },
             )
         except httpx.ConnectError as e:
+            log_cost(
+                stage="concept", provider="openrouter", model=model,
+                status="failed", error_message=str(e),
+                duration_ms=int((time.monotonic() - _call_start) * 1000),
+            )
             raise ConnectionError(f"Failed to connect to OpenRouter: {e}") from e
         except httpx.TimeoutException as e:
+            log_cost(
+                stage="concept", provider="openrouter", model=model,
+                status="failed", error_message=str(e),
+                duration_ms=int((time.monotonic() - _call_start) * 1000),
+            )
             raise ConnectionError(f"OpenRouter request timed out: {e}") from e
 
         if resp.status_code != 200:
@@ -95,5 +109,21 @@ class OpenRouterClient:
         if not content or not content.strip():
             raise RuntimeError("OpenRouter returned empty content")
 
-        logger.info("LLM call completed (model=%s, tokens=%s)", model, data.get("usage", {}))
+        usage = data.get("usage", {})
+        _elapsed_ms = int((time.monotonic() - _call_start) * 1000)
+        log_cost(
+            stage="concept",
+            provider="openrouter",
+            model=model,
+            status="success",
+            usage_metrics={
+                "prompt_tokens": usage.get("prompt_tokens"),
+                "completion_tokens": usage.get("completion_tokens"),
+                "total_tokens": usage.get("total_tokens"),
+            },
+            estimated_cost_usd=estimate_openrouter_cost(model, usage),
+            duration_ms=_elapsed_ms,
+        )
+
+        logger.info("LLM call completed (model=%s, tokens=%s)", model, usage)
         return content.strip()

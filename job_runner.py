@@ -39,6 +39,7 @@ from src.services.publishing import upload_ab_results
 from src.services.stage_helpers import get_fallback_overrides, get_incomplete_stages
 from src.services.suno_bakein import bake_suno_into_word
 from src.storage import STORAGE_MODE, create_job_workspace, get_job_workspace_path, get_workspace_root
+from src.cost_logger import set_word_context, clear_word_context
 from supabase import create_client, Client
 
 # ─── Configuration ────────────────────────────────────────────────────────────
@@ -180,6 +181,14 @@ async def process_word(
 
     log.info("  Processing word: %s (%s)", word_text, word_slug_val)
 
+    # Set cost tracking context for this word
+    set_word_context(
+        user_id=job["user_id"],
+        deck_id=job["deck_id"],
+        word_slug=word_slug_val,
+        word_id=word_record.get("id"),
+    )
+
     # Create word folder
     word_dir = create_word_folder(workspace_path, word_slug_val)
     enrichment_data = {
@@ -293,6 +302,7 @@ async def process_word(
             sb.table("generation_jobs").update({
                 "words_failed": job.get("words_failed", 0) + 1,
             }).eq("id", job["id"]).execute()
+            clear_word_context()
             return False
 
         # After images: extract storyboard-generated mnemonic and write back to manifest + Supabase
@@ -560,6 +570,7 @@ async def process_word(
             "error_message": "Upload failed",
         }).eq("id", word_record["id"]).execute()
         sb.rpc("refund_credit", {"user_id_param": job["user_id"]}).execute()
+        clear_word_context()
         return False
 
     # Write metadata to Supabase (after successful upload)
@@ -580,6 +591,7 @@ async def process_word(
 
     log.info("  Word %s complete", word_slug_val)
 
+    clear_word_context()
     return True
 
 

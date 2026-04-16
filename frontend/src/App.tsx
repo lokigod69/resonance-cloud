@@ -27,6 +27,7 @@ import GenerateGO from '@/pages/GenerateGO'
 import Users from '@/pages/admin/Users'
 import Content from '@/pages/admin/Content'
 import Metrics from '@/pages/admin/Metrics'
+import Costs from '@/pages/admin/Costs'
 import Queue from '@/pages/admin/Queue'
 import Profiles from '@/pages/admin/Profiles'
 import Voices from '@/pages/admin/Voices'
@@ -161,6 +162,7 @@ function AppRoutes() {
             <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/content" element={<Content />} />
             <Route path="/admin/metrics" element={<Metrics />} />
+            <Route path="/admin/costs" element={<Costs />} />
             <Route path="/admin/voices" element={<Voices />} />
           </Route>
         </Route>

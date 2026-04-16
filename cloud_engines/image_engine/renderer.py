@@ -27,6 +27,7 @@ from .models import (
     Storyboard,
     resolve_frame_narrative,
 )
+from src.cost_logger import estimate_gemini_image_cost, log_cost, KIE_WAN_COST_PER_IMAGE
 
 logger = logging.getLogger(__name__)
 
@@ -709,6 +710,27 @@ def render_all_scenes(
 
         scene_elapsed = time.monotonic() - scene_start
         per_scene_seconds.append(round(scene_elapsed, 2))
+
+        # ── Cost tracking ────────────────────────────────────────
+        _is_wan = model_id.startswith("wan/")
+        log_cost(
+            stage="images_rendering",
+            provider="kie_ai" if _is_wan else "gemini",
+            model=model_id,
+            status="success" if result.success else "failed",
+            usage_metrics={
+                "scene_number": scene.scene_number,
+                "aspect_ratio": aspect_ratio,
+                "safety_blocked": result.safety_blocked,
+                "chained": effective_reference is not None,
+            },
+            estimated_cost_usd=(
+                KIE_WAN_COST_PER_IMAGE if _is_wan
+                else estimate_gemini_image_cost(model_id)
+            ),
+            duration_ms=int(scene_elapsed * 1000),
+            error_message=result.error_message if not result.success else None,
+        )
 
         if result.success:
             logger.info("Scene %d rendered in %.1fs", scene.scene_number, scene_elapsed)

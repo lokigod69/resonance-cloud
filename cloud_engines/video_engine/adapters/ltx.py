@@ -33,6 +33,7 @@ from .ltx_shared import (
     build_ltx_negative,
     build_ltx_prompt,
 )
+from src.cost_logger import log_cost
 
 logger = logging.getLogger(__name__)
 
@@ -197,6 +198,24 @@ class LTXAdapter(VideoProviderAdapter):
         # Step 5: Parse response
         video_url = result["video"]["url"]
         fal_request_id = result.get("request_id")
+
+        # Cost tracking
+        _poll_elapsed_ms = int((time.time() - poll_start) * 1000)
+        log_cost(
+            stage="video",
+            provider="fal_ai",
+            model=self.model_name,
+            status="success",
+            usage_metrics={
+                "duration_seconds": duration,
+                "resolution": settings.resolution,
+                "video_mode": self.tier,
+                "fal_request_id": fal_request_id,
+                "text_to_video": is_text_to_video,
+            },
+            estimated_cost_usd=estimate_cost(self.tier, duration),
+            duration_ms=_poll_elapsed_ms,
+        )
 
         # Step 6: Download
         download_video(video_url, output_path)
