@@ -27,6 +27,7 @@ from typing import Optional, Tuple
 import httpx
 
 from .config import (
+    RUNPOD_429_MAX_RETRIES,
     RUNPOD_API_KEY,
     RUNPOD_DOCKER_IMAGE,
     RUNPOD_FALLBACK_GPU_TYPES,
@@ -60,6 +61,43 @@ def _api_headers() -> dict[str, str]:
         "Authorization": f"Bearer {RUNPOD_API_KEY}",
         "Content-Type": "application/json",
     }
+
+
+def _parse_retry_after(header_value: Optional[str], default: int) -> int:
+    """Parse the Retry-After header as integer seconds, bounded [1, 300].
+
+    Retry-After may be an integer or HTTP-date. We only handle integer seconds;
+    anything else falls back to the default. Cap at 300s to avoid pathological
+    server values blocking the job for minutes.
+    """
+    if not header_value:
+        return default
+    try:
+        return max(1, min(300, int(header_value)))
+    except ValueError:
+        return default
+
+
+def _extract_gpu_type(response: dict) -> Optional[str]:
+    """Best-effort GPU identifier from a RunPod pod payload.
+
+    RunPod may return the assigned GPU under several shapes across endpoints.
+    Try each known path; return None if nothing matches. On None, the diagnostic
+    'poll response keys=...' log still reveals the real field name for future
+    tightening.
+    """
+    machine = response.get("machine") or {}
+    if isinstance(machine, dict):
+        if machine.get("gpuDisplayName"):
+            return str(machine["gpuDisplayName"])
+        if machine.get("gpuTypeId"):
+            return str(machine["gpuTypeId"])
+    if response.get("gpuTypeId"):
+        return str(response["gpuTypeId"])
+    gpu_list = response.get("gpuTypeIds")
+    if isinstance(gpu_list, list) and gpu_list:
+        return str(gpu_list[0])
+    return None
 
 
 def _reset_state() -> None:
@@ -98,7 +136,9 @@ def _create_pod() -> tuple[str, str]:
                 "imageName": RUNPOD_DOCKER_IMAGE,
                 "gpuTypeIds": gpu_types,
                 "gpuCount": 1,
-                "gpuTypePriority": "availability",
+                # "custom" honors gpuTypeIds ordering (cheapest-first); "availability"
+                # would ignore our cost ordering. Enum per RunPod OpenAPI.
+                "gpuTypePriority": "custom",
                 "containerDiskInGb": 10,
                 "volumeInGb": 0,
                 "networkVolumeId": volume_id,
@@ -123,6 +163,22 @@ def _create_pod() -> tuple[str, str]:
                         json=payload,
                         headers=_api_headers(),
                     )
+                    retry_count = 0
+                    while resp.status_code == 429 and retry_count < RUNPOD_429_MAX_RETRIES:
+                        retry_count += 1
+                        retry_after = _parse_retry_after(
+                            resp.headers.get("Retry-After"), default=30
+                        )
+                        logger.warning(
+                            "RunPod: Rate limited (429), sleeping %ds before retry %d/%d (volume=%s)",
+                            retry_after, retry_count, RUNPOD_429_MAX_RETRIES, volume_id,
+                        )
+                        time.sleep(retry_after)
+                        resp = client.post(
+                            f"{_RUNPOD_API_BASE}/pods",
+                            json=payload,
+                            headers=_api_headers(),
+                        )
             except httpx.HTTPError as e:
                 last_error = f"network error: {e}"
                 logger.warning("RunPod: Pod create failed (volume=%s): %s", volume_id, last_error)
@@ -141,16 +197,32 @@ def _create_pod() -> tuple[str, str]:
                 _pod_id = pod_id
                 _worker_auth_token = auth_token
                 _pod_status = "creating"
+                assigned_gpu = _extract_gpu_type(data)
                 logger.info(
-                    "RunPod: Pod %s created (portMappings=%s), waiting for ready...",
-                    pod_id, data.get("portMappings"),
+                    "RunPod: Pod %s created in volume %s (gpu=%s, portMappings=%s), waiting for ready...",
+                    pod_id, volume_id, assigned_gpu or "unknown", data.get("portMappings"),
                 )
                 return pod_id, auth_token
 
-            # Availability-related rejections: try next volume
             body_text = resp.text
             last_error = f"HTTP {resp.status_code}: {body_text[:200]}"
-            if resp.status_code in (400, 404, 409, 500, 503):
+            if resp.status_code == 429:
+                # Retries exhausted above
+                logger.error(
+                    "RunPod: 429 rate-limit persisted after %d retries for volume %s, skipping",
+                    RUNPOD_429_MAX_RETRIES, volume_id,
+                )
+                continue
+            if resp.status_code == 400:
+                # TODO: consider alerting - 400 means RunPod rejected our payload
+                # (bad GPU enum, invalid volume, malformed body). Not a capacity issue.
+                logger.error(
+                    "RunPod: Invalid pod config (400) for volume %s: %s. "
+                    "This is NOT a capacity issue - check payload/GPU enum/volume ID. Skipping.",
+                    volume_id, last_error,
+                )
+                continue
+            if resp.status_code in (404, 409, 500, 503):
                 logger.warning(
                     "RunPod: GPU unavailable in volume %s - %s. Trying next volume...",
                     volume_id, last_error,
@@ -186,6 +258,7 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
     global _pod_url, _pod_status, _last_activity
 
     deadline = time.monotonic() + timeout
+    gpu_logged = False
 
     # Phase A: wait for desiredStatus == RUNNING (portMappings is not populated
     # for HTTP-proxy pods; Phase B is the true readiness gate via /health)
@@ -214,6 +287,12 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
             pod_id, list(data.keys()), data.get("portMappings"),
             data.get("status"), data.get("desiredStatus"),
         )
+
+        if not gpu_logged:
+            gpu_hint = _extract_gpu_type(data)
+            if gpu_hint:
+                logger.info("RunPod: Pod %s assigned GPU: %s", pod_id, gpu_hint)
+                gpu_logged = True
 
         status = data.get("desiredStatus", "")
         if status == "RUNNING":

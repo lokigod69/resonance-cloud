@@ -49,6 +49,7 @@ RUNPOD_DOCKER_IMAGE: str = os.getenv("RUNPOD_DOCKER_IMAGE", "lokiii69/ltx-worker
 RUNPOD_IDLE_TIMEOUT: int = int(os.getenv("RUNPOD_IDLE_TIMEOUT", "300"))
 RUNPOD_POD_STARTUP_TIMEOUT: int = int(os.getenv("RUNPOD_POD_STARTUP_TIMEOUT", "600"))
 RUNPOD_POD_NAME: str = os.getenv("RUNPOD_POD_NAME", "resonance-gpu-worker")
+RUNPOD_429_MAX_RETRIES: int = int(os.getenv("RUNPOD_429_MAX_RETRIES", "3"))
 
 # --- Resolution Map ---
 
