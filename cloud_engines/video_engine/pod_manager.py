@@ -28,6 +28,8 @@ from typing import Optional, Tuple
 import httpx
 
 from .config import (
+    POD_PREWARM_ENABLED,
+    POD_PREWARM_STALE_SECONDS,
     RUNPOD_429_MAX_RETRIES,
     RUNPOD_API_KEY,
     RUNPOD_DOCKER_IMAGE,
@@ -56,6 +58,12 @@ _last_activity: float = 0.0
 _active_jobs: int = 0
 _pod_gpu_type: Optional[str] = None  # Actual GPU assigned by RunPod
 _pod_created_at: float = 0.0         # monotonic timestamp of pod creation
+
+# Pipeline-driven pre-warm tracking. Keys are word_id strings; values are the
+# time.monotonic() when the word entered processing. idle_check refuses to
+# terminate while this dict is non-empty (keep-alive during upstream stages).
+_upcoming_words: dict[str, float] = {}
+_prewarm_in_flight: bool = False
 
 # Per-GPU hourly rates (USD) — RunPod community cloud pricing
 # Keys must match RunPod API gpuTypeId / displayName exactly.
@@ -145,7 +153,7 @@ def _extract_gpu_type(response: dict) -> Optional[str]:
 
 def _reset_state() -> None:
     """Reset all pod state to idle. Caller must hold _lock."""
-    global _pod_id, _pod_url, _pod_status, _worker_auth_token, _last_activity, _active_jobs, _pod_gpu_type, _pod_created_at
+    global _pod_id, _pod_url, _pod_status, _worker_auth_token, _last_activity, _active_jobs, _pod_gpu_type, _pod_created_at, _prewarm_in_flight
     _pod_id = None
     _pod_url = None
     _pod_status = "idle"
@@ -154,6 +162,8 @@ def _reset_state() -> None:
     _active_jobs = 0
     _pod_gpu_type = None
     _pod_created_at = 0.0
+    _upcoming_words.clear()
+    _prewarm_in_flight = False
 
 
 def _create_pod() -> tuple[str, str]:
@@ -521,17 +531,97 @@ def release_use() -> None:
         _last_activity = time.monotonic()
 
 
+def notify_upcoming_video(word_id: str) -> None:
+    """Signal that a word entered processing and will reach video stage.
+
+    Called by job_runner at the start of process_word when "video" is in the
+    scheduled stages. Triggers an async pod cold-start if the pod is idle, so
+    creation overlaps upstream stages (images/concept/song). Also registers
+    the word in _upcoming_words so idle_check will not terminate the pod
+    mid-pipeline. Idempotent. No-op when POD_PREWARM_ENABLED is false.
+    """
+    global _last_activity, _prewarm_in_flight
+    if not POD_PREWARM_ENABLED:
+        return
+    start_prewarm = False
+    with _lock:
+        _upcoming_words[word_id] = time.monotonic()
+        _last_activity = time.monotonic()
+        if _pod_status == "idle" and not _prewarm_in_flight:
+            _prewarm_in_flight = True
+            start_prewarm = True
+    if start_prewarm:
+        logger.info("RunPod: Pre-warming pod for upcoming word %s", word_id)
+        threading.Thread(
+            target=_run_prewarm,
+            daemon=True,
+            name=f"pod-prewarm-{str(word_id)[:8]}",
+        ).start()
+
+
+def cancel_upcoming_video(word_id: str) -> None:
+    """Clear an expected video-stage entry.
+
+    Called when a word either reaches video (acquire_use takes over) or fails
+    in a pre-video stage. Idempotent - no-op if word_id is not tracked.
+    """
+    global _last_activity
+    with _lock:
+        if _upcoming_words.pop(word_id, None) is not None:
+            _last_activity = time.monotonic()
+
+
+def _run_prewarm() -> None:
+    """Background thread body: call ensure_pod_ready. Exceptions logged, not raised.
+
+    Re-checks _upcoming_words at entry to avoid a wasted cold-start if the word
+    was already cancelled during thread spawn. ensure_pod_ready uses the module
+    lock internally (existing pattern) and handles its own error recovery.
+    """
+    global _prewarm_in_flight
+    try:
+        with _lock:
+            if not _upcoming_words:
+                logger.info("RunPod: Pre-warm skipped - no upcoming words (already cancelled)")
+                return
+        ensure_pod_ready()
+        logger.info("RunPod: Pre-warm complete - pod ready for upstream pipeline")
+    except Exception as exc:
+        logger.warning("RunPod: Pre-warm failed (non-fatal): %s", exc)
+    finally:
+        with _lock:
+            _prewarm_in_flight = False
+
+
 def idle_check() -> None:
     """If pod is ready and idle past timeout, terminate it.
 
-    Called periodically by start_cloud.py's background task.
+    Called periodically by start_cloud.py's background task. Considers
+    _upcoming_words so that words traversing pre-video stages keep the pod
+    alive across the 300s idle timer. Stale entries (e.g. from a crashed
+    job_runner) are garbage-collected here.
     """
     with _lock:
+        # Stale-entry GC (runs regardless of pod state)
+        now = time.monotonic()
+        stale = [
+            wid for wid, ts in _upcoming_words.items()
+            if now - ts >= POD_PREWARM_STALE_SECONDS
+        ]
+        for wid in stale:
+            del _upcoming_words[wid]
+            logger.warning(
+                "RunPod: Stale _upcoming_words entry removed: %s (age >= %ds)",
+                wid, POD_PREWARM_STALE_SECONDS,
+            )
+
         if _pod_status != "ready" or not _pod_id:
             return
         if _active_jobs > 0:
             return
-        idle_seconds = time.monotonic() - _last_activity
+        if _upcoming_words:
+            return
+        idle_seconds = now - _last_activity
         if idle_seconds < RUNPOD_IDLE_TIMEOUT:
             return
         logger.info(

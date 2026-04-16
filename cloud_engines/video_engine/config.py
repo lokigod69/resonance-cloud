@@ -51,6 +51,13 @@ RUNPOD_POD_STARTUP_TIMEOUT: int = int(os.getenv("RUNPOD_POD_STARTUP_TIMEOUT", "6
 RUNPOD_POD_NAME: str = os.getenv("RUNPOD_POD_NAME", "resonance-gpu-worker")
 RUNPOD_429_MAX_RETRIES: int = int(os.getenv("RUNPOD_429_MAX_RETRIES", "3"))
 
+# Pod pre-warm: when a word enters processing, notify pod_manager so the pod
+# cold-starts in parallel with upstream stages (images/concept/song) instead of
+# lazily on video-stage arrival. Also keeps the pod alive while any word is
+# upstream of video, so the 300s idle timer does not fire mid-pipeline.
+POD_PREWARM_ENABLED: bool = os.getenv("POD_PREWARM_ENABLED", "true").lower() == "true"
+POD_PREWARM_STALE_SECONDS: int = int(os.getenv("POD_PREWARM_STALE_SECONDS", "1200"))
+
 # --- Resolution Map ---
 
 RESOLUTION_MAP: dict[str, tuple[int, int]] = {

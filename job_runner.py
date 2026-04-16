@@ -40,6 +40,7 @@ from src.services.stage_helpers import get_fallback_overrides, get_incomplete_st
 from src.services.suno_bakein import bake_suno_into_word
 from src.storage import STORAGE_MODE, create_job_workspace, get_job_workspace_path, get_workspace_root
 from src.cost_logger import set_word_context, clear_word_context
+from cloud_engines.video_engine.pod_manager import notify_upcoming_video, cancel_upcoming_video
 from supabase import create_client, Client
 
 # ─── Configuration ────────────────────────────────────────────────────────────
@@ -252,9 +253,20 @@ async def process_word(
     suno_settings = load_defaults(workspace_path).get("suno", {})
     suno_enabled = suno_settings.get("enabled", False)
 
+    # Pipeline-driven pod pre-warm: trigger cold-start if video stage is
+    # scheduled, so the pod warms in parallel with images/concept/song.
+    # No-op when POD_PREWARM_ENABLED is false or in local storage mode.
+    if "video" in stages_to_run:
+        notify_upcoming_video(word_record["id"])
+
     for stage in stages_to_run:
         if stage in AB_STAGES:
             continue  # Handled by A/B loop below
+
+        # Hand off pre-warm tracking to acquire_use (fired inside the video
+        # adapter). Idempotent, safe if notify was never called.
+        if stage == "video":
+            cancel_upcoming_video(word_record["id"])
 
         # When Suno is enabled, force ACE-Step to single take — it's now just a fallback
         if stage == "song" and suno_enabled:
@@ -287,6 +299,10 @@ async def process_word(
                         update_settings(word_dir, stage, overrides)
 
         if not success:
+            # Release pre-warm tracking. Idempotent: no-op if already cancelled
+            # at video-stage entry or never notified.
+            cancel_upcoming_video(word_record["id"])
+
             log.error("  Word %s failed at stage %s after %d attempts",
                       word_slug_val, stage, MAX_RETRIES + 1)
             sb.table("words").update({
