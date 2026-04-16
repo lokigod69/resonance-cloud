@@ -18,6 +18,7 @@ Entry points:
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 import logging
 import secrets
 import threading
@@ -63,29 +64,51 @@ def _api_headers() -> dict[str, str]:
     }
 
 
-def _parse_retry_after(header_value: Optional[str], default: int) -> int:
-    """Parse the Retry-After header as integer seconds, bounded [1, 300].
+_RETRY_AFTER_MAX = 120  # Upper bound on a single Retry-After sleep (seconds)
 
-    Retry-After may be an integer or HTTP-date. We only handle integer seconds;
-    anything else falls back to the default. Cap at 300s to avoid pathological
-    server values blocking the job for minutes.
+
+def _parse_retry_after(header_value: Optional[str], default: int) -> int:
+    """Parse the Retry-After header per RFC 7231 §7.1.3, bounded [1, 120].
+
+    Accepts integer seconds OR HTTP-date. Cap of 120s prevents a pathological
+    server value (e.g. Retry-After: 3600) from blocking for hours across the
+    retry budget.
     """
     if not header_value:
         return default
+    stripped = header_value.strip()
     try:
-        return max(1, min(300, int(header_value)))
+        return max(1, min(_RETRY_AFTER_MAX, int(stripped)))
     except ValueError:
+        pass
+    try:
+        target = parsedate_to_datetime(stripped)
+    except (TypeError, ValueError):
         return default
+    if target is None:
+        return default
+    if target.tzinfo is None:
+        target = target.replace(tzinfo=timezone.utc)
+    delta = (target - datetime.now(timezone.utc)).total_seconds()
+    return max(1, min(_RETRY_AFTER_MAX, int(delta)))
 
 
 def _extract_gpu_type(response: dict) -> Optional[str]:
     """Best-effort GPU identifier from a RunPod pod payload.
 
-    RunPod may return the assigned GPU under several shapes across endpoints.
-    Try each known path; return None if nothing matches. On None, the diagnostic
-    'poll response keys=...' log still reveals the real field name for future
-    tightening.
+    Per RunPod OpenAPI, pod responses may carry GPU info in three places:
+        1. top-level `gpu` object with `displayName`
+        2. `machine.gpuDisplayName` / `machine.gpuTypeId`
+        3. `gpuTypeId` / `gpuTypeIds` (POST echo)
+    Return None if nothing matches. On None, the diagnostic 'poll response
+    keys=...' log still reveals the real field name for future tightening.
     """
+    gpu = response.get("gpu")
+    if isinstance(gpu, dict):
+        if gpu.get("displayName"):
+            return str(gpu["displayName"])
+        if gpu.get("id"):
+            return str(gpu["id"])
     machine = response.get("machine") or {}
     if isinstance(machine, dict):
         if machine.get("gpuDisplayName"):
@@ -216,13 +239,25 @@ def _create_pod() -> tuple[str, str]:
             if resp.status_code == 400:
                 # TODO: consider alerting - 400 means RunPod rejected our payload
                 # (bad GPU enum, invalid volume, malformed body). Not a capacity issue.
+                # If ALL volumes return 400 it will fire once per (attempt, volume),
+                # so up to MAX_CREATE_RETRIES × len(RUNPOD_VOLUME_IDS) ERROR lines
+                # before the outer loop raises. Loud is intentional for config bugs.
                 logger.error(
                     "RunPod: Invalid pod config (400) for volume %s: %s. "
                     "This is NOT a capacity issue - check payload/GPU enum/volume ID. Skipping.",
                     volume_id, last_error,
                 )
                 continue
-            if resp.status_code in (404, 409, 500, 503):
+            if resp.status_code == 404:
+                # 404 on POST /v1/pods is anomalous - endpoint missing, account
+                # issue, or API moved. Not a capacity issue; log loudly.
+                logger.error(
+                    "RunPod: Unexpected 404 on pod create for volume %s: %s. "
+                    "This is NOT a capacity issue - check API base URL / account status.",
+                    volume_id, last_error,
+                )
+                continue
+            if resp.status_code in (409, 500, 503):
                 logger.warning(
                     "RunPod: GPU unavailable in volume %s - %s. Trying next volume...",
                     volume_id, last_error,

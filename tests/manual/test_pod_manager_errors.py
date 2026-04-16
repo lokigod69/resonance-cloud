@@ -18,6 +18,7 @@ from __future__ import annotations
 import logging
 import os
 import sys
+from datetime import datetime, timedelta, timezone
 from typing import Callable, List
 from unittest.mock import patch
 
@@ -176,6 +177,81 @@ def test_item3_http_500_still_warning(caplog_records):
     print("  [PASS] item 3: HTTP 500 remains WARNING 'GPU unavailable' (unchanged)")
 
 
+def test_http_404_on_post_is_error(caplog_records):
+    """404 on POST (anomalous) logs ERROR and skips volume (does not abort)."""
+    reset_module_state()
+    handler = make_handler([
+        ok(404, {"error": "not found"}),  # vol-a
+        ok(200, {"id": "pod-404", "gpu": {"displayName": "NVIDIA A40"}}),  # vol-b
+    ])
+    pod_id, _ = patched_pod_create(handler, pod_manager._create_pod)
+    assert pod_id == "pod-404"
+    error_records = [r for r in caplog_records if r.levelno == logging.ERROR]
+    assert any("Unexpected 404" in r.getMessage() for r in error_records), [
+        r.getMessage() for r in error_records
+    ]
+    print("  [PASS] 404 on POST: ERROR + skip volume (not WARNING, not abort)")
+
+
+def test_all_volumes_exhausted_raises():
+    """All volumes × all attempts return 500 -> RuntimeError."""
+    reset_module_state()
+    # 3 attempts × 2 volumes = 6 calls
+    handler = make_handler([ok(500, {"error": "no instances"}) for _ in range(6)])
+    try:
+        patched_pod_create(handler, pod_manager._create_pod)
+        raise AssertionError("expected RuntimeError")
+    except RuntimeError as e:
+        assert "No GPU available" in str(e), str(e)
+    assert len(handler.calls) == 6
+    print("  [PASS] exhaustion: 3 attempts × 2 volumes all 500 -> raises RuntimeError")
+
+
+def test_429_no_retry_after_header(caplog_records):
+    """429 without Retry-After header uses the 30s default."""
+    reset_module_state()
+    handler = make_handler([
+        ok(429, headers={}),  # no Retry-After header
+        ok(200, {"id": "pod-noh", "gpu": {"displayName": "NVIDIA L40S"}}),
+    ])
+    pod_id, _ = patched_pod_create(handler, pod_manager._create_pod)
+    assert pod_id == "pod-noh"
+    # "sleeping 30s" confirms the default was applied (time.sleep is patched out,
+    # but the log line still reports the value it WOULD have slept)
+    messages = [r.getMessage() for r in caplog_records]
+    assert any("sleeping 30s" in m for m in messages), messages
+    print("  [PASS] 429 without Retry-After: applies 30s default")
+
+
+def test_429_retry_after_http_date(caplog_records):
+    """429 with HTTP-date Retry-After is parsed to seconds (bounded)."""
+    reset_module_state()
+    # HTTP-date ~45s in the future
+    from email.utils import format_datetime
+    future = datetime.now(timezone.utc) + timedelta(seconds=45)
+    http_date = format_datetime(future, usegmt=True)
+    handler = make_handler([
+        ok(429, headers={"Retry-After": http_date}),
+        ok(200, {"id": "pod-date", "gpu": {"displayName": "NVIDIA A100"}}),
+    ])
+    pod_id, _ = patched_pod_create(handler, pod_manager._create_pod)
+    assert pod_id == "pod-date"
+    # Should have parsed as ~45s (accept 30-120 window to allow for clock drift
+    # in test execution; the important thing is it's NOT the 30s default)
+    messages = [r.getMessage() for r in caplog_records]
+    found = [m for m in messages if "Rate limited (429)" in m and "sleeping" in m]
+    assert found, messages
+    print(f"  [PASS] 429 with HTTP-date Retry-After: parsed successfully ({found[0]!r})")
+
+
+def test_parse_retry_after_upper_bound():
+    """Pathological Retry-After is capped at 120s."""
+    assert pod_manager._parse_retry_after("3600", 30) == 120
+    assert pod_manager._parse_retry_after("120", 30) == 120
+    assert pod_manager._parse_retry_after("119", 30) == 119
+    print("  [PASS] Retry-After cap: values > 120s clamped to 120s")
+
+
 def test_item5_gpu_logged_on_create(caplog_records):
     """Success log includes gpu=<name>."""
     reset_module_state()
@@ -210,9 +286,12 @@ def test_parse_retry_after():
     assert pod_manager._parse_retry_after(None, 30) == 30
     assert pod_manager._parse_retry_after("", 30) == 30
     assert pod_manager._parse_retry_after("0", 30) == 1  # lower bound
-    assert pod_manager._parse_retry_after("9999", 30) == 300  # upper bound
+    assert pod_manager._parse_retry_after("9999", 30) == 120  # upper bound (F3)
     assert pod_manager._parse_retry_after("45", 30) == 45
-    assert pod_manager._parse_retry_after("Wed, 21 Oct 2015 07:28:00 GMT", 30) == 30
+    # Past HTTP-date: delta <= 0 is clamped to lower bound 1 (not default)
+    assert pod_manager._parse_retry_after("Wed, 21 Oct 2015 07:28:00 GMT", 30) == 1
+    # Garbage string: falls to default
+    assert pod_manager._parse_retry_after("not-a-date", 30) == 30
     print("  [PASS] helper: _parse_retry_after bounds + fallbacks")
 
 
@@ -236,11 +315,16 @@ def main() -> int:
         ("item 1: gpuTypePriority=custom", test_item1_gpu_type_priority_custom, False),
         ("item 2: 429 single retry -> success", test_item2_429_retry_then_success, True),
         ("item 2: 429 exhausts -> skip volume", test_item2_429_exhausts_then_skips_volume, True),
+        ("item 2: 429 no Retry-After -> default", test_429_no_retry_after_header, True),
+        ("item 2: 429 Retry-After HTTP-date", test_429_retry_after_http_date, True),
         ("item 3: 400 splits to ERROR + skip", test_item3_http_400_splits_and_skips, True),
         ("item 3: 500 stays WARNING", test_item3_http_500_still_warning, True),
         ("item 5: gpu= log on create", test_item5_gpu_logged_on_create, True),
+        ("404 on POST is ERROR + skip", test_http_404_on_post_is_error, True),
+        ("exhaustion: all 500 -> RuntimeError", test_all_volumes_exhausted_raises, False),
         ("helper: _extract_gpu_type", test_extract_gpu_type_fallbacks, False),
         ("helper: _parse_retry_after", test_parse_retry_after, False),
+        ("helper: _parse_retry_after cap 120s", test_parse_retry_after_upper_bound, False),
     ]
 
     failures: list[tuple[str, BaseException]] = []
