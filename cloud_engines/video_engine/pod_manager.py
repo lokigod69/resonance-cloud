@@ -28,6 +28,7 @@ from typing import Optional, Tuple
 import httpx
 
 from .config import (
+    GPU_WORKER_URL,
     POD_PREWARM_ENABLED,
     POD_PREWARM_STALE_SECONDS,
     RUNPOD_429_MAX_RETRIES,
@@ -39,6 +40,7 @@ from .config import (
     RUNPOD_POD_NAME,
     RUNPOD_POD_STARTUP_TIMEOUT,
     RUNPOD_VOLUME_IDS,
+    VIDEO_BACKEND,
 )
 from src.cost_logger import log_cost
 
@@ -531,6 +533,23 @@ def release_use() -> None:
         _last_activity = time.monotonic()
 
 
+def _prewarm_applicable() -> bool:
+    """True iff this deployment will actually use pod_manager for video.
+
+    pod_manager is only active when VIDEO_BACKEND=="self_hosted" AND
+    GPU_WORKER_URL is empty (auto-create path) AND RUNPOD_API_KEY is set.
+    In every other configuration (fal, kling, runpod-serverless, manual
+    GPU_WORKER_URL override, or local mode with no key) the pre-warm signal
+    must be a no-op so we don't spin up pods the video stage will never call.
+    """
+    return (
+        POD_PREWARM_ENABLED
+        and VIDEO_BACKEND == "self_hosted"
+        and not GPU_WORKER_URL
+        and bool(RUNPOD_API_KEY)
+    )
+
+
 def notify_upcoming_video(word_id: str) -> None:
     """Signal that a word entered processing and will reach video stage.
 
@@ -538,10 +557,11 @@ def notify_upcoming_video(word_id: str) -> None:
     scheduled stages. Triggers an async pod cold-start if the pod is idle, so
     creation overlaps upstream stages (images/concept/song). Also registers
     the word in _upcoming_words so idle_check will not terminate the pod
-    mid-pipeline. Idempotent. No-op when POD_PREWARM_ENABLED is false.
+    mid-pipeline. Idempotent. Full no-op unless pod_manager will actually be
+    used by the video stage (see _prewarm_applicable).
     """
     global _last_activity, _prewarm_in_flight
-    if not POD_PREWARM_ENABLED:
+    if not _prewarm_applicable():
         return
     start_prewarm = False
     with _lock:
@@ -564,6 +584,8 @@ def cancel_upcoming_video(word_id: str) -> None:
 
     Called when a word either reaches video (acquire_use takes over) or fails
     in a pre-video stage. Idempotent - no-op if word_id is not tracked.
+    Safe to call in any configuration: if notify was a no-op, the dict is
+    empty and pop() returns None.
     """
     global _last_activity
     with _lock:

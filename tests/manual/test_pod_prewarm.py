@@ -34,6 +34,10 @@ os.environ.setdefault("RUNPOD_API_KEY", "test-api-key")
 os.environ.setdefault("RUNPOD_VOLUME_IDS", "vol-a,vol-b")
 os.environ.setdefault("RUNPOD_GPU_TYPE", "NVIDIA L40S")
 os.environ.setdefault("RUNPOD_FALLBACK_GPU_TYPES", "NVIDIA A40,NVIDIA A100 80GB PCIe")
+# _prewarm_applicable guard requires self_hosted backend with empty
+# GPU_WORKER_URL; set both so the feature is active under test.
+os.environ.setdefault("VIDEO_BACKEND", "self_hosted")
+os.environ.pop("GPU_WORKER_URL", None)
 # Pre-warm knobs: short stale window and idle timeout so tests run fast.
 os.environ.setdefault("POD_PREWARM_ENABLED", "true")
 os.environ.setdefault("POD_PREWARM_STALE_SECONDS", "5")
@@ -290,6 +294,81 @@ def test_10_disabled_is_full_noop():
     assert len(handler.calls) == 0
 
 
+def test_11_prewarm_succeeds_then_word_fails_idle_terminates():
+    """Item 9 coverage: prewarm -> cancel (images failure) -> idle_check terminates.
+
+    Simulates the common real-world failure path: pod warms up, word fails in a
+    pre-video stage, dict empties, idle timer elapses, pod is terminated.
+    """
+    reset_module_state()
+    # Phase A: prewarm successfully creates a pod.
+    create_handler = make_successful_ensure_handler("pod-wasted")
+    with patch.object(pod_manager.httpx, "Client", MockClientFactory(create_handler)):
+        with patch.object(pod_manager.time, "sleep", lambda _s: None):
+            pod_manager.notify_upcoming_video("w-fail-later")
+            wait_for_prewarm_threads()
+    assert pod_manager._pod_status == "ready", pod_manager._pod_status
+    assert "w-fail-later" in pod_manager._upcoming_words
+
+    # Phase B: simulate images-stage failure in job_runner -> cancel fires.
+    pod_manager.cancel_upcoming_video("w-fail-later")
+    assert pod_manager._upcoming_words == {}
+
+    # Phase C: time passes (force _last_activity into the past), idle_check runs.
+    pod_manager._last_activity = time.monotonic() - 10  # > RUNPOD_IDLE_TIMEOUT=1
+    terminate_handler = make_handler([ok(200, {})])  # DELETE /pods/pod-wasted
+    with patch.object(pod_manager.httpx, "Client", MockClientFactory(terminate_handler)):
+        with patch.object(pod_manager.time, "sleep", lambda _s: None):
+            pod_manager.idle_check()
+
+    assert pod_manager._pod_status == "idle", pod_manager._pod_status
+    assert pod_manager._pod_id is None
+    assert len(terminate_handler.calls) == 1
+    assert terminate_handler.calls[0].method == "DELETE"
+
+
+def test_12_guard_wrong_backend_is_noop():
+    """VIDEO_BACKEND != self_hosted -> notify is a full no-op (no wasted pod)."""
+    reset_module_state()
+    handler = make_handler([])
+    with patch.object(pod_manager, "VIDEO_BACKEND", "fal"):
+        with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+            pod_manager.notify_upcoming_video("w-fal")
+            wait_for_prewarm_threads(timeout=1.0)
+
+    assert pod_manager._upcoming_words == {}
+    assert pod_manager._prewarm_in_flight is False
+    assert len(handler.calls) == 0
+
+
+def test_13_guard_manual_worker_url_is_noop():
+    """GPU_WORKER_URL set (manual override) -> notify is no-op, pod_manager unused."""
+    reset_module_state()
+    handler = make_handler([])
+    with patch.object(pod_manager, "GPU_WORKER_URL", "http://my-gpu-box:8080"):
+        with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+            pod_manager.notify_upcoming_video("w-manual")
+            wait_for_prewarm_threads(timeout=1.0)
+
+    assert pod_manager._upcoming_words == {}
+    assert pod_manager._prewarm_in_flight is False
+    assert len(handler.calls) == 0
+
+
+def test_14_guard_no_api_key_is_noop():
+    """RUNPOD_API_KEY empty (local mode) -> notify is no-op, no thread spawned."""
+    reset_module_state()
+    handler = make_handler([])
+    with patch.object(pod_manager, "RUNPOD_API_KEY", ""):
+        with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+            pod_manager.notify_upcoming_video("w-local")
+            wait_for_prewarm_threads(timeout=1.0)
+
+    assert pod_manager._upcoming_words == {}
+    assert pod_manager._prewarm_in_flight is False
+    assert len(handler.calls) == 0
+
+
 # ---------- runner ----------
 
 class ListHandler(logging.Handler):
@@ -317,6 +396,10 @@ def main() -> int:
         ("8: prewarm failure -> idle", test_8_prewarm_failure_returns_state_to_idle),
         ("9: cancel idempotent", test_9_cancel_is_idempotent),
         ("10: disabled -> full noop", test_10_disabled_is_full_noop),
+        ("11: prewarm-then-fail -> idle terminates", test_11_prewarm_succeeds_then_word_fails_idle_terminates),
+        ("12: guard - wrong backend -> noop", test_12_guard_wrong_backend_is_noop),
+        ("13: guard - manual worker url -> noop", test_13_guard_manual_worker_url_is_noop),
+        ("14: guard - no api key -> noop", test_14_guard_no_api_key_is_noop),
     ]
 
     failures: list[tuple[str, BaseException]] = []
