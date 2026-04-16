@@ -47,7 +47,7 @@ RUNPOD_FALLBACK_GPU_TYPES: list[str] = [
 ]
 RUNPOD_DOCKER_IMAGE: str = os.getenv("RUNPOD_DOCKER_IMAGE", "lokiii69/ltx-worker:diffusers-v1")
 RUNPOD_IDLE_TIMEOUT: int = int(os.getenv("RUNPOD_IDLE_TIMEOUT", "300"))
-RUNPOD_POD_STARTUP_TIMEOUT: int = int(os.getenv("RUNPOD_POD_STARTUP_TIMEOUT", "300"))
+RUNPOD_POD_STARTUP_TIMEOUT: int = int(os.getenv("RUNPOD_POD_STARTUP_TIMEOUT", "600"))
 RUNPOD_POD_NAME: str = os.getenv("RUNPOD_POD_NAME", "resonance-gpu-worker")
 
 # --- Resolution Map ---

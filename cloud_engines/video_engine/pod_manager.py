@@ -187,7 +187,8 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
 
     deadline = time.monotonic() + timeout
 
-    # Phase A: wait for desiredStatus == RUNNING with ports populated
+    # Phase A: wait for desiredStatus == RUNNING (portMappings is not populated
+    # for HTTP-proxy pods; Phase B is the true readiness gate via /health)
     while True:
         if time.monotonic() > deadline:
             _terminate_pod_locked(pod_id)
@@ -208,11 +209,20 @@ def _wait_for_pod_ready(pod_id: str, auth_token: str, timeout: float) -> str:
             time.sleep(_POD_STATUS_POLL_INTERVAL)
             continue
 
+        logger.info(
+            "RunPod: Pod %s poll response keys=%s portMappings=%s status=%s desiredStatus=%s",
+            pod_id, list(data.keys()), data.get("portMappings"),
+            data.get("status"), data.get("desiredStatus"),
+        )
+
         status = data.get("desiredStatus", "")
-        ports = data.get("portMappings") or {}
-        if status == "RUNNING" and ports:
+        if status == "RUNNING":
             break
-        logger.info("RunPod: Pod %s status=%s, waiting...", pod_id, status)
+        logger.info(
+            "RunPod: Pod %s desiredStatus=%s, runtime=%s, elapsed=%.0fs",
+            pod_id, data.get("desiredStatus"), data.get("runtime"),
+            time.monotonic() - (deadline - timeout),
+        )
         time.sleep(_POD_STATUS_POLL_INTERVAL)
 
     proxy_url = _proxy_url_for_pod(pod_id)
