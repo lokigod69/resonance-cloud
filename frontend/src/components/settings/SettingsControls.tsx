@@ -410,9 +410,12 @@ export function renderField(
 
     case 'toggle':
       return (
-        <div className={rowClass}>
-          {labelNode}
-          <ToggleControl value={effectiveValue} onChange={v => onChange(v)} />
+        <div>
+          <div className={rowClass}>
+            {labelNode}
+            <ToggleControl value={effectiveValue} onChange={v => onChange(v)} />
+          </div>
+          {field.helper && <p className={`${helperClass} text-right`}>{field.helper}</p>}
         </div>
       )
 

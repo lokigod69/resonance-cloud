@@ -67,6 +67,7 @@ export const IMAGE_FIELDS: FieldDef[] = [
   { key: 'visual_reference', label: 'Visual Reference', type: 'dropdown', options: ['auto', 'etymology', 'mnemonic', 'none'], default: 'none' },
   { key: 'frame_narrative', label: 'Frame Narrative', type: 'dropdown', options: ['auto', 'scale', 'action', 'environment', 'narrative', 'context', 'collection'], default: 'auto' },
   { key: 'image_count', label: 'Image Count', type: 'dropdown', options: ['auto', 1, 2, 3, 4, 5, 6, 7, 8], default: 'auto' },
+  { key: 'short_mode', label: 'Short Mode', type: 'toggle', default: false, helper: '15-second cards with 2–3 scenes instead of 20 seconds' },
   { key: 'art_style', label: 'Art Style', type: 'combo', options: ['none', 'auto', 'random'], comboPresetGroups: [
     { label: 'Photographic', items: ['photorealistic', 'noir', 'vintage_film', 'double_exposure', 'polaroid'] },
     { label: 'Classic Fine Art', items: [
