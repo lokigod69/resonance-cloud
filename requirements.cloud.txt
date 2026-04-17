@@ -1,6 +1,7 @@
 # Resonance Cloud — Python dependencies for Docker image
-# Excludes GPU/ML libraries (torch, diffusers, gradio) and unused packages
-# (pydantic-settings, psycopg2-binary).
+# Excludes GPU/ML libraries (torch, diffusers) and unused packages
+# (pydantic-settings, psycopg2-binary). Cloud mode runs the Suno placeholder
+# path for the song stage — no self-hosted music backend is bundled.
 
 # ─── Core Framework ─────────────────────────────────────────
 fastapi>=0.135.1          # app.py (app factory, still imported in cloud mode)

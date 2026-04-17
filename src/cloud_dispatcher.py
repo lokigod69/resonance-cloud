@@ -106,7 +106,7 @@ _PAYLOAD_ADAPTERS = {
 # Song placeholder for Suno-only mode
 # ---------------------------------------------------------------------------
 
-MUSIC_MODE = os.getenv("MUSIC_MODE", "acestep")  # "acestep" or "suno"
+MUSIC_MODE = os.getenv("MUSIC_MODE", "suno")  # "suno" (the only supported mode; "acestep" backend removed)
 
 
 def _create_song_placeholder(payload: dict) -> dict:
