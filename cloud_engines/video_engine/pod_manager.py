@@ -30,6 +30,7 @@ import httpx
 from .config import (
     GPU_WORKER_URL,
     POD_PREWARM_ENABLED,
+    POD_PREWARM_JOB_STALE_SECONDS,
     POD_PREWARM_STALE_SECONDS,
     RUNPOD_429_MAX_RETRIES,
     RUNPOD_API_KEY,
@@ -65,6 +66,9 @@ _pod_created_at: float = 0.0         # monotonic timestamp of pod creation
 # time.monotonic() when the word entered processing. idle_check refuses to
 # terminate while this dict is non-empty (keep-alive during upstream stages).
 _upcoming_words: dict[str, float] = {}
+# Parallel job-level tracking populated by Hook B in job_runner.main(), ~30s
+# earlier than the word-level signal. Keyed by generation_jobs.id.
+_upcoming_jobs: dict[str, float] = {}
 _prewarm_in_flight: bool = False
 
 # Per-GPU hourly rates (USD) — RunPod community cloud pricing
@@ -165,6 +169,7 @@ def _reset_state() -> None:
     _pod_gpu_type = None
     _pod_created_at = 0.0
     _upcoming_words.clear()
+    _upcoming_jobs.clear()
     _prewarm_in_flight = False
 
 
@@ -593,18 +598,62 @@ def cancel_upcoming_video(word_id: str) -> None:
             _last_activity = time.monotonic()
 
 
+def notify_upcoming_job(job_id: str) -> None:
+    """Signal that a job was picked up by the runner and will need a pod.
+
+    Fired at Hook B in job_runner.main() — the moment the runner claims a
+    job from the approved queue, which is ~30s earlier than the per-word
+    notify_upcoming_video signal. Mirrors notify_upcoming_video: populates
+    _upcoming_jobs for keep-alive and triggers an async cold-start if the
+    pod is idle. Idempotent. Full no-op unless _prewarm_applicable().
+    """
+    global _last_activity, _prewarm_in_flight
+    if not _prewarm_applicable():
+        return
+    start_prewarm = False
+    with _lock:
+        _upcoming_jobs[job_id] = time.monotonic()
+        _last_activity = time.monotonic()
+        if _pod_status == "idle" and not _prewarm_in_flight:
+            _prewarm_in_flight = True
+            start_prewarm = True
+    if start_prewarm:
+        logger.info("RunPod: Pre-warming pod for upcoming job %s", job_id)
+        threading.Thread(
+            target=_run_prewarm,
+            daemon=True,
+            name=f"pod-prewarm-{str(job_id)[:8]}",
+        ).start()
+
+
+def cancel_upcoming_job(job_id: str) -> None:
+    """Clear a job from pre-warm tracking.
+
+    Called at process_job exit (success or failure) via try/finally in
+    job_runner.main(). Idempotent - no-op if job_id is not tracked. Removing
+    from _upcoming_jobs does not terminate the pod; termination is gated by
+    idle_check seeing all keep-alive signals clear AND the idle window
+    elapsing.
+    """
+    global _last_activity
+    with _lock:
+        if _upcoming_jobs.pop(job_id, None) is not None:
+            _last_activity = time.monotonic()
+
+
 def _run_prewarm() -> None:
     """Background thread body: call ensure_pod_ready. Exceptions logged, not raised.
 
-    Re-checks _upcoming_words at entry to avoid a wasted cold-start if the word
-    was already cancelled during thread spawn. ensure_pod_ready uses the module
-    lock internally (existing pattern) and handles its own error recovery.
+    Re-checks both _upcoming_words AND _upcoming_jobs at entry to avoid a
+    wasted cold-start if all tracking entries were cancelled during thread
+    spawn. ensure_pod_ready uses the module lock internally (existing
+    pattern) and handles its own error recovery.
     """
     global _prewarm_in_flight
     try:
         with _lock:
-            if not _upcoming_words:
-                logger.info("RunPod: Pre-warm skipped - no upcoming words (already cancelled)")
+            if not _upcoming_words and not _upcoming_jobs:
+                logger.info("RunPod: Pre-warm skipped - no upcoming work (already cancelled)")
                 return
         ensure_pod_ready()
         logger.info("RunPod: Pre-warm complete - pod ready for upstream pipeline")
@@ -618,10 +667,14 @@ def _run_prewarm() -> None:
 def idle_check() -> None:
     """If pod is ready and idle past timeout, terminate it.
 
-    Called periodically by start_cloud.py's background task. Considers
-    _upcoming_words so that words traversing pre-video stages keep the pod
-    alive across the 300s idle timer. Stale entries (e.g. from a crashed
-    job_runner) are garbage-collected here.
+    Called periodically by start_cloud.py's background task. Considers both
+    _upcoming_words (word-level keep-alive, populated inside process_word)
+    and _upcoming_jobs (job-level keep-alive, Hook B, populated at job
+    pickup in job_runner.main) so that queued-or-upstream work keeps the
+    pod alive across the RUNPOD_IDLE_TIMEOUT window. Stale entries in
+    either dict (e.g. from a crashed job_runner) are garbage-collected
+    here using POD_PREWARM_STALE_SECONDS and POD_PREWARM_JOB_STALE_SECONDS
+    respectively.
     """
     with _lock:
         # Stale-entry GC (runs regardless of pod state)
@@ -636,12 +689,24 @@ def idle_check() -> None:
                 "RunPod: Stale _upcoming_words entry removed: %s (age >= %ds)",
                 wid, POD_PREWARM_STALE_SECONDS,
             )
+        stale_jobs = [
+            jid for jid, ts in _upcoming_jobs.items()
+            if now - ts >= POD_PREWARM_JOB_STALE_SECONDS
+        ]
+        for jid in stale_jobs:
+            del _upcoming_jobs[jid]
+            logger.warning(
+                "RunPod: Stale _upcoming_jobs entry removed: %s (age >= %ds)",
+                jid, POD_PREWARM_JOB_STALE_SECONDS,
+            )
 
         if _pod_status != "ready" or not _pod_id:
             return
         if _active_jobs > 0:
             return
         if _upcoming_words:
+            return
+        if _upcoming_jobs:
             return
         idle_seconds = now - _last_activity
         if idle_seconds < RUNPOD_IDLE_TIMEOUT:

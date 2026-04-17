@@ -40,7 +40,12 @@ from src.services.stage_helpers import get_fallback_overrides, get_incomplete_st
 from src.services.suno_bakein import bake_suno_into_word
 from src.storage import STORAGE_MODE, create_job_workspace, get_job_workspace_path, get_workspace_root
 from src.cost_logger import set_word_context, clear_word_context
-from cloud_engines.video_engine.pod_manager import notify_upcoming_video, cancel_upcoming_video
+from cloud_engines.video_engine.pod_manager import (
+    notify_upcoming_video,
+    cancel_upcoming_video,
+    notify_upcoming_job,
+    cancel_upcoming_job,
+)
 from supabase import create_client, Client
 
 # ─── Configuration ────────────────────────────────────────────────────────────
@@ -975,9 +980,18 @@ async def main() -> None:
 
             job = job_resp.data[0]
             if job.get("job_type") == "suno_retry":
+                # Suno retries run assembly + bookend only (CPU, Railway);
+                # no pod needed, so skip pre-warm.
                 await process_suno_retry_job(job)
             else:
-                await process_job(job)
+                # Hook B: job-level pre-warm. Keeps the pod alive across
+                # the runner's poll-interval gap and cold-starts it in
+                # parallel with enrichment/settings/workspace setup.
+                notify_upcoming_job(job["id"])
+                try:
+                    await process_job(job)
+                finally:
+                    cancel_upcoming_job(job["id"])
 
         except KeyboardInterrupt:
             log.info("Shutting down")
