@@ -103,88 +103,6 @@ class SongPayload(BaseModel):
 # --- Ace-Step Communication Models ---
 
 
-class AceStepParams(BaseModel):
-    """Complete parameter set sent to Ace-Step.
-
-    Includes both user-configurable and hardcoded parameters.
-    Per ENGINE_SONG.md Section 4.1.
-    """
-
-    # From input (not settings)
-    caption: str
-    lyrics: str
-    vocal_language: str
-    task_type: str = "text2music"
-
-    # User-configurable
-    duration: int = 30
-    inference_steps: int = 50
-    guidance_scale: float = 7.5
-    thinking: bool = True
-    batch_size: int = 4
-    seed: Union[int, list[int]] = -1
-    bpm: Optional[int] = None
-
-    # Hardcoded — per ENGINE_SONG.md Section 4.1
-    shift: float = 2.5
-    infer_method: str = "ode"
-    use_cot_caption: bool = False
-    use_cot_language: bool = False
-    use_cot_metas: bool = False
-    audio_format: str = "flac"
-    enable_normalization: bool = True
-    normalization_db: float = -1.0
-    lm_temperature: float = 0.85
-    lm_top_k: int = 0
-    lm_top_p: float = 0.9
-    lm_cfg_scale: float = 2.0
-
-    # LoRA state — used by Gradio backend for ensure_lora_state(), NOT sent to generation call
-    lora_path: Optional[str] = None
-    lora_strength: float = 0.75
-
-    def to_http_payload(self) -> dict[str, Any]:
-        """Convert to the JSON payload for POST /release_task."""
-        payload = {
-            "caption": self.caption,
-            "lyrics": self.lyrics,
-            "vocal_language": self.vocal_language,
-            "task_type": self.task_type,
-            "duration": self.duration,
-            "inference_steps": self.inference_steps,
-            "guidance_scale": self.guidance_scale,
-            "thinking": self.thinking,
-            "batch_size": self.batch_size,
-            "shift": self.shift,
-            "infer_method": self.infer_method,
-            "use_cot_caption": self.use_cot_caption,
-            "use_cot_language": self.use_cot_language,
-            "use_cot_metas": self.use_cot_metas,
-            "audio_format": self.audio_format,
-            "enable_normalization": self.enable_normalization,
-            "normalization_db": self.normalization_db,
-            "lm_temperature": self.lm_temperature,
-            "lm_top_k": self.lm_top_k,
-            "lm_top_p": self.lm_top_p,
-            "lm_cfg_scale": self.lm_cfg_scale,
-        }
-
-        if self.bpm is not None:
-            payload["bpm"] = self.bpm
-
-        # Seed handling
-        if isinstance(self.seed, list):
-            payload["seeds"] = self.seed
-            payload["use_random_seed"] = False
-        elif self.seed == -1:
-            payload["use_random_seed"] = True
-        else:
-            payload["seed"] = self.seed
-            payload["use_random_seed"] = False
-
-        return payload
-
-
 class TakeInfo(BaseModel):
     """Information about a single generated take."""
 
@@ -264,23 +182,6 @@ class GenerationMetaOutputs(BaseModel):
     requested_duration: int = 30
 
 
-class GenerationMetaAceStep(BaseModel):
-    """Ace-Step configuration record in generation-meta.json."""
-
-    backend: str
-    url: str
-    model: str = "acestep-v15-sft"
-    infer_method: str = "ode"
-    shift: float = 2.5
-    thinking: bool = True
-    use_cot_caption: bool = False
-    use_cot_language: bool = False
-    use_cot_metas: bool = False
-    enable_normalization: bool = True
-    normalization_db: float = -1.0
-    lm_temperature: float = 0.85
-
-
 class GenerationMetaLoraConstraints(BaseModel):
     """LoRA constraint overrides applied during generation."""
 
@@ -323,7 +224,6 @@ class GenerationMeta(BaseModel):
     context: GenerationMetaContext
     inputs: GenerationMetaInputs
     outputs: Optional[GenerationMetaOutputs] = None
-    acestep: Optional[GenerationMetaAceStep] = None
     lora: Optional[GenerationMetaLora] = None
     timing: Optional[AceStepTiming] = None
     reproducibility: Optional[GenerationMetaReproducibility] = None

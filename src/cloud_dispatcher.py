@@ -38,7 +38,6 @@ def _ensure_engines_loaded():
     from cloud_engines.concept_engine.models import ConceptPayload
     from cloud_engines.image_engine.engine import generate_images
     from cloud_engines.image_engine.models import ImagePayload
-    from cloud_engines.song_engine.engine import generate_song
     from cloud_engines.song_engine.models import SongPayload
     from cloud_engines.video_engine.engine import generate_video
     from cloud_engines.video_engine.models import VideoPayload
@@ -50,7 +49,6 @@ def _ensure_engines_loaded():
     _engines.update({
         "concept": generate_concept,
         "images": generate_images,      # key is "images", NOT "image"
-        "song": generate_song,
         "video": generate_video,
         "assembly": assemble,
         "bookend": wrap,
