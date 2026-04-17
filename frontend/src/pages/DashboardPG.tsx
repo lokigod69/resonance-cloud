@@ -12,7 +12,6 @@ import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDe
 import WordLibrary from '@/components/dashboard/WordLibrary'
 import { QUOTES } from '@/data/quotes'
 import type { Locale } from '@/lib/translations'
-import { getLanguageName } from '@/lib/languageNames'
 
 type Deck = {
   id: string
@@ -131,7 +130,7 @@ export default function DashboardPG() {
   const quoteList = QUOTES[locale as Locale] ?? QUOTES.en
   const quote = useMemo(() => quoteList[Math.floor(Math.random() * quoteList.length)], [quoteList])
 
-  const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? 'Untitled'])), [decks])
+  const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? t('study.untitled')])), [decks, t])
 
   const handleWatchVideo = (word: LibraryWord) => {
     navigate(`/deck/${word.deck_id}/word/${word.id}?returnTo=/dashboard`)
@@ -231,7 +230,7 @@ export default function DashboardPG() {
                             : 'border-foreground/10 text-foreground/50 hover:text-foreground/80 hover:border-foreground/20'
                         }`}
                       >
-                        {getLanguageName(lang)}
+                        {t(`langName.${lang}`)}
                       </button>
                     )
                   })}
