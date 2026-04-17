@@ -57,6 +57,7 @@ RUNPOD_429_MAX_RETRIES: int = int(os.getenv("RUNPOD_429_MAX_RETRIES", "3"))
 # upstream of video, so the 300s idle timer does not fire mid-pipeline.
 POD_PREWARM_ENABLED: bool = os.getenv("POD_PREWARM_ENABLED", "true").lower() == "true"
 POD_PREWARM_STALE_SECONDS: int = int(os.getenv("POD_PREWARM_STALE_SECONDS", "1200"))
+POD_PREWARM_JOB_STALE_SECONDS: int = int(os.getenv("POD_PREWARM_JOB_STALE_SECONDS", "3600"))
 
 # --- Resolution Map ---
 

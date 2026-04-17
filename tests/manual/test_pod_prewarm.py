@@ -369,6 +369,137 @@ def test_14_guard_no_api_key_is_noop():
     assert len(handler.calls) == 0
 
 
+# ---------- job-level pre-warm tests (Hook B) ----------
+
+def test_15_notify_job_adds_to_upcoming_jobs():
+    """notify_upcoming_job populates _upcoming_jobs when prewarm applicable."""
+    reset_module_state()
+    # Bring pod to "ready" so notify does not trigger a cold-start thread.
+    pod_manager._pod_status = "ready"
+    pod_manager._pod_id = "pod-ready"
+    pod_manager._pod_url = "https://pod-ready-8080.proxy.runpod.net"
+    pod_manager._worker_auth_token = "tok"
+    pod_manager._last_activity = time.monotonic()
+
+    handler = make_handler([])
+    with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+        pod_manager.notify_upcoming_job("job-1")
+        wait_for_prewarm_threads(timeout=1.0)
+
+    assert "job-1" in pod_manager._upcoming_jobs, pod_manager._upcoming_jobs
+    assert pod_manager._upcoming_words == {}
+    assert len(handler.calls) == 0
+
+
+def test_16_notify_job_noop_when_not_applicable():
+    """notify_upcoming_job is a full no-op when VIDEO_BACKEND != self_hosted."""
+    reset_module_state()
+    prior_activity = pod_manager._last_activity
+    handler = make_handler([])
+    with patch.object(pod_manager, "VIDEO_BACKEND", "fal"):
+        with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+            pod_manager.notify_upcoming_job("job-fal")
+            wait_for_prewarm_threads(timeout=1.0)
+
+    assert pod_manager._upcoming_jobs == {}
+    assert pod_manager._prewarm_in_flight is False
+    assert pod_manager._last_activity == prior_activity
+    assert len(handler.calls) == 0
+
+
+def test_17_notify_job_triggers_prewarm_when_idle():
+    """notify_upcoming_job on an idle pod spawns a prewarm thread that cold-starts."""
+    reset_module_state()
+    handler = make_successful_ensure_handler("pod-job-prewarm")
+
+    with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+        with patch.object(pod_manager.time, "sleep", lambda _s: None):
+            pod_manager.notify_upcoming_job("job-warm")
+            wait_for_prewarm_threads()
+
+    assert pod_manager._pod_status == "ready", pod_manager._pod_status
+    assert pod_manager._pod_id == "pod-job-prewarm"
+    assert "job-warm" in pod_manager._upcoming_jobs
+    assert pod_manager._upcoming_words == {}
+    assert pod_manager._prewarm_in_flight is False
+    assert len(handler.calls) == 3
+
+
+def test_18_cancel_job_removes_and_bumps_activity():
+    """cancel_upcoming_job removes entry and refreshes _last_activity."""
+    reset_module_state()
+    pod_manager._upcoming_jobs["job-1"] = time.monotonic() - 100
+    pod_manager._last_activity = 0.0
+
+    pod_manager.cancel_upcoming_job("job-1")
+
+    assert "job-1" not in pod_manager._upcoming_jobs
+    assert pod_manager._last_activity > 0.0
+
+
+def test_19_cancel_job_idempotent():
+    """cancel_upcoming_job for an unknown job_id is a no-op and does not raise."""
+    reset_module_state()
+    prior_activity = pod_manager._last_activity
+
+    pod_manager.cancel_upcoming_job("never-seen-job")
+
+    assert pod_manager._upcoming_jobs == {}
+    assert pod_manager._last_activity == prior_activity
+
+
+def test_20_idle_check_keeps_pod_alive_for_upcoming_jobs():
+    """idle_check must not terminate while _upcoming_jobs is non-empty."""
+    reset_module_state()
+    pod_manager._pod_status = "ready"
+    pod_manager._pod_id = "pod-stay-alive-job"
+    pod_manager._pod_url = "https://pod-stay-alive-job-8080.proxy.runpod.net"
+    pod_manager._worker_auth_token = "tok"
+    pod_manager._last_activity = time.monotonic() - 3600
+    pod_manager._upcoming_jobs["job-1"] = time.monotonic()
+    # _upcoming_words intentionally empty
+
+    handler = make_handler([])  # any HTTP call = termination attempt = fail
+    with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+        pod_manager.idle_check()
+
+    assert pod_manager._pod_status == "ready"
+    assert pod_manager._pod_id == "pod-stay-alive-job"
+    assert len(handler.calls) == 0
+
+
+def test_21_stale_jobs_gc():
+    """idle_check GCs _upcoming_jobs entries past POD_PREWARM_JOB_STALE_SECONDS."""
+    reset_module_state()
+    # Override the job stale threshold to 5s for this test, matching the
+    # test-env value already used for POD_PREWARM_STALE_SECONDS.
+    with patch.object(pod_manager, "POD_PREWARM_JOB_STALE_SECONDS", 5):
+        pod_manager._upcoming_jobs["stale-job"] = time.monotonic() - 10
+        pod_manager._upcoming_jobs["fresh-job"] = time.monotonic()
+        pod_manager._pod_status = "idle"
+
+        handler = make_handler([])
+        with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+            pod_manager.idle_check()
+
+        assert "stale-job" not in pod_manager._upcoming_jobs
+        assert "fresh-job" in pod_manager._upcoming_jobs
+
+
+def test_22_word_and_job_dicts_are_independent():
+    """cancel_upcoming_video does not affect _upcoming_jobs, and vice versa."""
+    reset_module_state()
+    pod_manager._upcoming_words["w1"] = time.monotonic()
+    pod_manager._upcoming_jobs["j1"] = time.monotonic()
+
+    pod_manager.cancel_upcoming_video("w1")
+    assert pod_manager._upcoming_words == {}
+    assert "j1" in pod_manager._upcoming_jobs
+
+    pod_manager.cancel_upcoming_job("j1")
+    assert pod_manager._upcoming_jobs == {}
+
+
 # ---------- runner ----------
 
 class ListHandler(logging.Handler):
@@ -400,6 +531,14 @@ def main() -> int:
         ("12: guard - wrong backend -> noop", test_12_guard_wrong_backend_is_noop),
         ("13: guard - manual worker url -> noop", test_13_guard_manual_worker_url_is_noop),
         ("14: guard - no api key -> noop", test_14_guard_no_api_key_is_noop),
+        ("15: notify_job adds to _upcoming_jobs", test_15_notify_job_adds_to_upcoming_jobs),
+        ("16: notify_job noop when not applicable", test_16_notify_job_noop_when_not_applicable),
+        ("17: notify_job triggers prewarm when idle", test_17_notify_job_triggers_prewarm_when_idle),
+        ("18: cancel_job removes + bumps activity", test_18_cancel_job_removes_and_bumps_activity),
+        ("19: cancel_job idempotent", test_19_cancel_job_idempotent),
+        ("20: idle_check keeps alive for _upcoming_jobs", test_20_idle_check_keeps_pod_alive_for_upcoming_jobs),
+        ("21: stale _upcoming_jobs GC", test_21_stale_jobs_gc),
+        ("22: word and job dicts independent", test_22_word_and_job_dicts_are_independent),
     ]
 
     failures: list[tuple[str, BaseException]] = []
