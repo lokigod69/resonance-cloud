@@ -128,6 +128,10 @@ class ImageSettings(BaseModel):
         default=False,
         description="Skip image rendering (storyboard-only mode for text-to-video)",
     )
+    short_mode: bool = Field(
+        default=False,
+        description="Short mode: force 15s total across 2-3 scenes with per-scene durations in [3, 10]",
+    )
 
     @field_validator("creative_direction")
     @classmethod

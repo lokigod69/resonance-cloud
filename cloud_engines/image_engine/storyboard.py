@@ -66,6 +66,7 @@ def generate_storyboard(
 
     # Build prompts
     text_to_video = settings.skip_rendering
+    short_mode = settings.short_mode
     system_prompt = build_system_prompt(
         word=content.word,
         translation=content.translation,
@@ -76,6 +77,7 @@ def generate_storyboard(
         aspect_ratio=settings.aspect_ratio,
         image_count_raw=settings.image_count,
         text_to_video=text_to_video,
+        short_mode=short_mode,
     )
     is_auto_count = settings.image_count == "auto"
     user_prompt = build_user_prompt(

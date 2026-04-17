@@ -51,6 +51,7 @@ DEFAULT_SETTINGS = {
         "frame_narrative": "auto",
         "image_count": "auto",
         "clip_duration": 20,
+        "short_mode": False,
         "aspect_ratio": "16:9",
         "art_style": "auto",
         "word_in_image": True,

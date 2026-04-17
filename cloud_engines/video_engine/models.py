@@ -76,6 +76,10 @@ class VideoSettings(BaseModel):
     text_to_video: bool = Field(
         default=False, description="Use text-to-video endpoint (no source image needed)"
     )
+    short_mode: bool = Field(
+        default=False,
+        description="Short-mode bypass: skip the legacy enum-snap in LTX adapters so arbitrary per-scene durations reach the worker",
+    )
     seed: int = Field(
         default=-1, description="Generation seed: -1 for random, any positive int for reproducibility"
     )

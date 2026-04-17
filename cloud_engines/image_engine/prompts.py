@@ -24,6 +24,7 @@ def build_system_prompt(
     aspect_ratio: str = "16:9",
     image_count_raw: Union[str, int] = 1,
     text_to_video: bool = False,
+    short_mode: bool = False,
 ) -> str:
     """Assemble the complete system prompt from settings.
 
@@ -60,7 +61,7 @@ def build_system_prompt(
     # Frame narrative: auto-picker preamble OR specific mode block
     if is_auto_mode:
         image_count_instruction = _image_count_instruction(
-            image_count_raw, settings.clip_duration
+            image_count_raw, settings.clip_duration, short_mode=short_mode
         )
         parts.append(_auto_picker_block(image_count_instruction))
     elif scene_count > 1:
@@ -70,7 +71,9 @@ def build_system_prompt(
 
     # Image count instruction (when NOT auto-picking — auto-picker embeds its own)
     if not is_auto_mode:
-        parts.append(_image_count_instruction(image_count_raw, settings.clip_duration))
+        parts.append(_image_count_instruction(
+            image_count_raw, settings.clip_duration, short_mode=short_mode
+        ))
 
     parts.extend([
         _art_style_block(settings.art_style),
@@ -100,7 +103,7 @@ def build_system_prompt(
         parts.append(_transition_prompt_block())
 
     parts.extend([
-        _duration_allocation_block(settings.clip_duration, scene_count),
+        _duration_allocation_block(settings.clip_duration, scene_count, short_mode=short_mode),
     ])
 
     # Output schema — swap for text-to-video
@@ -703,11 +706,15 @@ _RECOMMENDED_RANGE: dict[int, str] = {
 }
 
 
-def _image_count_instruction(image_count: Union[str, int], clip_duration: int) -> str:
+def _image_count_instruction(
+    image_count: Union[str, int],
+    clip_duration: int,
+    short_mode: bool = False,
+) -> str:
     """Return image count instruction — auto (LLM picks) or fixed."""
     if image_count == "auto":
-        recommended = _RECOMMENDED_RANGE.get(clip_duration, "2-3")
-        return (
+        recommended = "2-3" if short_mode else _RECOMMENDED_RANGE.get(clip_duration, "2-3")
+        body = (
             'Also choose the image count (the "scene_count" field). Consider:\n'
             f"- The clip duration is {clip_duration} seconds.\n"
             f"- For a {clip_duration}s clip, {recommended} images is the sweet spot.\n"
@@ -719,6 +726,9 @@ def _image_count_instruction(image_count: Union[str, int], clip_duration: int) -
             "  narrative arcs. NARRATIVE benefits from 3 for setup + action + result.\n"
             "  COLLECTION can use 2-3 depending on how many distinct meanings the word has."
         )
+        if short_mode:
+            body += "\n- Short mode: the card is exactly 15 seconds total across 2 or 3 scenes."
+        return body
     return (
         f"You must design exactly {image_count} scene(s). Do not suggest a different count.\n"
         "If this count feels limiting for your chosen mode, adapt your creative approach —\n"
@@ -1488,10 +1498,22 @@ def _output_schema_text_to_video_block(aspect_ratio: str = "16:9", creative_dire
     )
 
 
-def _duration_allocation_block(total_duration: int, scene_count: int) -> str:
+def _duration_allocation_block(
+    total_duration: int,
+    scene_count: int,
+    short_mode: bool = False,
+) -> str:
     """Instruct the LLM to allocate per-scene durations for video animation."""
     if scene_count <= 1:
         return ""
+    if short_mode:
+        return (
+            "=== SCENE DURATION ALLOCATION ===\n\n"
+            "For short mode, choose 2 or 3 scenes and assign each scene a "
+            '"suggested_duration" between 3 and 10 seconds so the total is exactly '
+            "15 seconds, giving less time to quick beats and more time to shots "
+            "that need to breathe."
+        )
     return (
         "=== SCENE DURATION ALLOCATION ===\n\n"
         f"Your scenes will be animated as video clips to accompany a {total_duration}-second song.\n"

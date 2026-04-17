@@ -110,6 +110,7 @@ async def bake_suno_into_word(
     suno_settings: dict[str, Any],
     bookend_defaults: dict[str, Any],
     skip_suno_guard: bool = False,
+    short_mode: bool = False,
     max_retries: int = 2,
 ) -> dict[str, Any]:
     """
@@ -361,7 +362,7 @@ async def bake_suno_into_word(
                 "silence_trim": False,
                 "lufs_normalize": False,
                 "gap_strategy": "word_card",
-                "overflow_strategy": "trim",
+                "overflow_strategy": "video_full" if short_mode else "trim",
                 "word_card_show_translation": True,
                 "word_card_font": bookend_defaults.get("font", "Bebas Neue"),
                 "word_card_font_size": min(144, int(bookend_defaults.get("font_size", 92))),

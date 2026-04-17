@@ -24,6 +24,12 @@ from .workspace import (
 from .dispatcher import call_engine, EngineUnreachableError, PayloadError
 
 
+def _short_mode_from_images(manifest_data: Any, defaults: dict) -> bool:
+    """Resolve images.short_mode from defaults + per-word overrides."""
+    images_settings = resolve_settings("images", manifest_data.settings, defaults)
+    return bool(images_settings.get("short_mode", False))
+
+
 STAGE_ORDER = ['images', 'concept', 'song', 'video', 'assembly', 'bookend']
 
 # ---------------------------------------------------------------------------
@@ -504,6 +510,21 @@ def _resolve_scene_durations(
         else:
             raw_durations.append(None)
 
+    # Short-mode: normalize to exactly target seconds across 2+ scenes.
+    # Return before the legacy enum/clamp paths; the adapter bypass will
+    # accept arbitrary per-scene durations downstream.
+    if settings.get("short_mode", False) and num_images >= 2:
+        normalized = _normalize_short_mode_durations(
+            raw_durations,
+            target=(target or 15),
+        )
+        logger.info(
+            "Short-mode scene durations normalized to %s (sum=%ds)",
+            normalized,
+            sum(normalized),
+        )
+        return normalized
+
     # If no valid duration set (ken_burns, kling, etc.), use legacy clamping
     if valid_durations is None:
         durations = [max(3, min(10, d)) if d is not None else None for d in raw_durations]
@@ -595,6 +616,41 @@ def _snap_down(value: int, valid: list[int]) -> int:
         else:
             break
     return result
+
+
+def _normalize_short_mode_durations(
+    raw_durations: list[int | None],
+    target: int = 15,
+    min_dur: int = 3,
+    max_dur: int = 10,
+) -> list[int]:
+    """Normalize storyboard durations so they sum to exactly `target`.
+
+    Clamps each value to [min_dur, max_dur] (None -> midpoint), then nudges
+    the smallest/largest in-bounds scene by 1s until the sum equals target.
+    """
+    midpoint = (min_dur + max_dur) // 2  # 6
+    durations = [
+        max(min_dur, min(max_dur, int(d) if d is not None else midpoint))
+        for d in raw_durations
+    ]
+
+    while sum(durations) != target:
+        delta = target - sum(durations)
+        step = 1 if delta > 0 else -1
+        if step > 0:
+            candidates = [i for i, v in enumerate(durations) if v < max_dur]
+            if not candidates:
+                break
+            idx = min(candidates, key=lambda i: durations[i])
+        else:
+            candidates = [i for i, v in enumerate(durations) if v > min_dur]
+            if not candidates:
+                break
+            idx = max(candidates, key=lambda i: durations[i])
+        durations[idx] += step
+
+    return durations
 
 
 # --- Tier 7: Auto-picker mapping from frame_narrative → transition_mode ---
@@ -790,6 +846,10 @@ async def run_stage(
                 image_settings, _ = resolve_random_art_style(image_settings)
                 settings["art_style_hint"] = image_settings.get("art_style", "")
 
+            # Short-mode: force concept duration to 15s
+            if _short_mode_from_images(manifest_data, defaults):
+                settings["duration"] = 15
+
             payload = build_concept_payload(word_dir, manifest_data, settings, output_dir, images_version)
             result = await call_engine('concept', payload)
             if result.get('status') == 'success':
@@ -811,6 +871,9 @@ async def run_stage(
 
         if stage == 'song':
             settings = resolve_lora_path(settings)
+            # Short-mode: force song duration to 15s
+            if _short_mode_from_images(manifest_data, defaults):
+                settings["duration"] = 15
             concept_version = manifest_data.selected.concept
             if not concept_version:
                 raise PipelineError("No concept selected. Run concept stage first.")
@@ -844,6 +907,12 @@ async def run_stage(
             # Sync clip_duration with actual song duration so image count auto-calculation
             # and LLM duration prompts match the real song length
             settings['clip_duration'] = concept_settings.get('duration', 20)
+
+            # Short-mode coercion: force 15s and image_count to auto unless already 2 or 3
+            if settings.get("short_mode", False):
+                settings["clip_duration"] = 15
+                if settings.get("image_count") not in ("auto", 2, 3):
+                    settings["image_count"] = "auto"
 
             # Resolve "random" art_style → concrete preset before dispatch
             art_style_original = settings.get("art_style")
@@ -880,9 +949,12 @@ async def run_stage(
             images_version = manifest_data.selected.images
             if not images_version:
                 raise PipelineError("No images selected. Run image stage first.")
-            # Inject target duration from concept settings for scene duration rebalancing
+            # Inject target duration from concept settings for scene duration rebalancing.
+            # Short-mode forces target to 15s and threads the flag through to the adapter.
             concept_settings = resolve_settings('concept', manifest_data.settings, defaults)
-            settings = {**settings, "_target_duration": concept_settings.get("duration", 20)}
+            _short = _short_mode_from_images(manifest_data, defaults)
+            _target = 15 if _short else concept_settings.get("duration", 20)
+            settings = {**settings, "_target_duration": _target, "short_mode": _short}
             # Resolve creative_direction from images settings for transition mode override
             images_settings = resolve_settings('images', manifest_data.settings, defaults)
             creative_direction = images_settings.get('creative_direction', 'literal')

@@ -28,7 +28,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from src.pipeline import run_stage, STAGE_ORDER
-from src.settings import save_defaults, load_defaults, DEFAULT_SETTINGS
+from src.settings import save_defaults, load_defaults, DEFAULT_SETTINGS, resolve_settings
 from src.manifest import create_manifest, read_manifest, update_selection
 from src.workspace import create_word_folder
 from src.slugify import slugify, language_to_code
@@ -430,6 +430,9 @@ async def process_word(
     suno_ab_manifests: dict[str, Any] = {}
 
     if suno_enabled:
+        _manifest = read_manifest(word_dir)
+        _images_settings = resolve_settings("images", _manifest.settings, load_defaults(workspace_path))
+        _short_mode = bool(_images_settings.get("short_mode", False))
         _bake_result = await bake_suno_into_word(
             sb,
             workspace_path=workspace_path,
@@ -439,6 +442,7 @@ async def process_word(
             suno_settings=suno_settings,
             bookend_defaults=load_defaults(workspace_path).get("bookend", {}),
             skip_suno_guard=False,
+            short_mode=_short_mode,
             max_retries=MAX_RETRIES,
         )
         suno_ab_manifests = _bake_result.get("suno_ab_manifests", {})
@@ -749,6 +753,10 @@ async def process_suno_retry_job(job: dict[str, Any]) -> None:
                 "Enable suno.enabled before retrying."
             )
 
+        manifest_data = read_manifest(word_dir)
+        images_settings = resolve_settings("images", manifest_data.settings, defaults)
+        short_mode = bool(images_settings.get("short_mode", False))
+
         # Run Suno bake-in
         bake_result = await bake_suno_into_word(
             sb,
@@ -759,6 +767,7 @@ async def process_suno_retry_job(job: dict[str, Any]) -> None:
             suno_settings=suno_settings,
             bookend_defaults=bookend_defaults,
             skip_suno_guard=True,  # Retry: always re-generate even if suno_audio_url exists
+            short_mode=short_mode,
             max_retries=MAX_RETRIES,
         )
 

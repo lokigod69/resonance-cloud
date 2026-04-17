@@ -53,6 +53,11 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
         if adjusted.resolution not in ("1080p", "1440p", "2160p"):
             adjusted.resolution = "1080p"
 
+        # Short-mode bypass: mirror the RunPod adapter so self-hosted GPU
+        # workers also accept arbitrary durations.
+        if getattr(adjusted, "short_mode", False):
+            return adjusted
+
         if adjusted.text_to_video and self.tier == "ltx_pro":
             valid = _T2V_PRO_DURATIONS
         elif adjusted.text_to_video:
