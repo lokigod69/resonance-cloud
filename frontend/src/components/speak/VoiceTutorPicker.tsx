@@ -1,6 +1,7 @@
 import { CharacterGrid } from './CharacterGrid'
 import { GeminiModeVoicePicker, type GeminiSelection } from './GeminiModeVoicePicker'
 import type { TutorCharacter } from '@/characterRegistry'
+import type { GeminiPickerStage } from '@/hooks/useVoiceTutor'
 
 export type SpeakProvider = 'voxtral' | 'gemini'
 
@@ -9,10 +10,16 @@ interface VoiceTutorPickerProps {
   language: string
   disabled?: boolean
   onVoxtralSelect: (char: TutorCharacter) => void
-  onGeminiSelect: (selection: GeminiSelection) => void
-  initialGeminiModeId?: string | null
-  initialGeminiVoiceName?: string | null
-  initialGeminiAccentId?: string | null
+  onGeminiStart: (selection: GeminiSelection) => void
+  geminiStage: GeminiPickerStage
+  geminiModeId?: string | null
+  geminiVoiceName?: string | null
+  geminiAccentId?: string | null
+  onGeminiModeChange: (modeId: string) => void
+  onGeminiVoiceChange: (voiceName: string) => void
+  onGeminiAccentChange: (accentId: string) => void
+  onGeminiStageChange: (stage: GeminiPickerStage) => void
+  onGeminiBackToProviders: () => void
 }
 
 export function VoiceTutorPicker({
@@ -20,20 +27,32 @@ export function VoiceTutorPicker({
   language,
   disabled,
   onVoxtralSelect,
-  onGeminiSelect,
-  initialGeminiModeId,
-  initialGeminiVoiceName,
-  initialGeminiAccentId,
+  onGeminiStart,
+  geminiStage,
+  geminiModeId,
+  geminiVoiceName,
+  geminiAccentId,
+  onGeminiModeChange,
+  onGeminiVoiceChange,
+  onGeminiAccentChange,
+  onGeminiStageChange,
+  onGeminiBackToProviders,
 }: VoiceTutorPickerProps) {
   if (provider === 'gemini') {
     return (
       <GeminiModeVoicePicker
         language={language}
         disabled={disabled}
-        onSelect={onGeminiSelect}
-        initialModeId={initialGeminiModeId}
-        initialVoiceName={initialGeminiVoiceName}
-        initialAccentId={initialGeminiAccentId}
+        stage={geminiStage}
+        selectedModeId={geminiModeId}
+        selectedVoiceName={geminiVoiceName}
+        selectedAccentId={geminiAccentId}
+        onModeChange={onGeminiModeChange}
+        onVoiceChange={onGeminiVoiceChange}
+        onAccentChange={onGeminiAccentChange}
+        onStageChange={onGeminiStageChange}
+        onBackToProviders={onGeminiBackToProviders}
+        onStart={onGeminiStart}
       />
     )
   }

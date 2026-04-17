@@ -1,3 +1,5 @@
+import { generateGeminiTtsFromPrompt } from './_shared/geminiTts'
+
 // Vercel Serverless Function — Voice Tutor pipeline
 // POST /api/voice-chat
 // Body: { audio_base64: string|null, language: string, history: Message[], mime_type?: string }
@@ -234,30 +236,6 @@ const GEMINI_VOICE_NAMES: ReadonlySet<string> = new Set([
   'Kore', 'Laomedeia', 'Leda', 'Pulcherrima', 'Rasalgethi', 'Sadachbia',
   'Sadaltager', 'Schedar', 'Sulafat', 'Umbriel', 'Zephyr', 'Zubenelgenubi',
 ])
-
-const GEMINI_TTS_MODEL = 'gemini-3.1-flash-tts-preview'
-const GEMINI_TTS_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_TTS_MODEL}:generateContent`
-
-/** Wrap raw 16-bit PCM (mono, 24kHz) in a 44-byte WAV header. Gemini returns
- *  raw PCM; clients expect a playable WAV file. */
-function wrapPcmAsWav(pcmBuffer: Buffer, sampleRate = 24000, channels = 1, sampleWidth = 2): Buffer {
-  const pcmLength = pcmBuffer.length
-  const header = Buffer.alloc(44)
-  header.write('RIFF', 0, 'ascii')
-  header.writeUInt32LE(36 + pcmLength, 4)
-  header.write('WAVE', 8, 'ascii')
-  header.write('fmt ', 12, 'ascii')
-  header.writeUInt32LE(16, 16)
-  header.writeUInt16LE(1, 20)
-  header.writeUInt16LE(channels, 22)
-  header.writeUInt32LE(sampleRate, 24)
-  header.writeUInt32LE(sampleRate * channels * sampleWidth, 28)
-  header.writeUInt16LE(channels * sampleWidth, 32)
-  header.writeUInt16LE(sampleWidth * 8, 34)
-  header.write('data', 36, 'ascii')
-  header.writeUInt32LE(pcmLength, 40)
-  return Buffer.concat([header, pcmBuffer])
-}
 
 function getGeminiMode(id: string) {
   return GEMINI_CHARACTER_MODES.find((m) => m.id === id)
@@ -572,9 +550,6 @@ async function generateGeminiSpeech(
   text: string,
   options: GeminiSpeechOptions,
 ): Promise<Buffer> {
-  const apiKey = process.env.GOOGLE_AI_API_KEY
-  if (!apiKey) throw new Error('GOOGLE_AI_API_KEY not configured')
-
   const mode = getGeminiMode(options.characterModeId)
   if (!mode) throw new Error(`Unknown Gemini character mode: ${options.characterModeId}`)
   if (!GEMINI_VOICE_NAMES.has(options.voiceName)) {
@@ -586,45 +561,8 @@ async function generateGeminiSpeech(
   const fullPrompt = accentSuffix
     ? `${mode.geminiStylePrompt}\n\n${accentSuffix}\n\n---\n\nNow speak this text:\n\n"${text}"`
     : `${mode.geminiStylePrompt}\n\n---\n\nNow speak this text:\n\n"${text}"`
-
-  let response: Response | null = null
-  for (let attempt = 0; attempt < 2; attempt++) {
-    response = await fetchWithTimeout(GEMINI_TTS_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'x-goog-api-key': apiKey,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: fullPrompt }] }],
-        generationConfig: {
-          responseModalities: ['AUDIO'],
-          speechConfig: {
-            voiceConfig: { prebuiltVoiceConfig: { voiceName: options.voiceName } },
-          },
-        },
-      }),
-    }, 20000, 'Gemini TTS')
-    if (response.ok) break
-    if (attempt === 0) {
-      console.warn(`Gemini TTS attempt 1 failed with ${response.status}, retrying...`)
-      await new Promise((r) => setTimeout(r, 500))
-    }
-  }
-
-  if (!response || !response.ok) {
-    const errText = response ? await response.text().catch(() => '') : ''
-    throw new Error(`Gemini TTS failed: ${response?.status ?? 'unknown'} ${errText.slice(0, 200)}`)
-  }
-
-  const data = await response.json() as {
-    candidates?: Array<{ content?: { parts?: Array<{ inlineData?: { data?: string; mimeType?: string } }> } }>
-  }
-  const inline = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData
-  if (!inline?.data) throw new Error('Gemini TTS returned no inlineData')
-
-  const pcm = Buffer.from(inline.data, 'base64')
-  return wrapPcmAsWav(pcm)
+  const result = await generateGeminiTtsFromPrompt(fullPrompt, options.voiceName)
+  return result.audio
 }
 
 function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, label: string): Promise<Response> {

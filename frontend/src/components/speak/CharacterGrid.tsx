@@ -46,7 +46,6 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
             >
               <CharacterAvatar name={char.name} gender={char.gender} avatarUrl={char.avatarUrl} />
               <span className="text-xs font-medium text-white truncate w-full text-center">{char.name}</span>
-              <span className="text-[10px] text-gray-500 truncate w-full text-center leading-tight">{char.subtitle}</span>
             </button>
           ))}
         </div>
@@ -68,7 +67,6 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
             >
               <CharacterAvatar name={char.name} gender={char.gender} avatarUrl={char.avatarUrl} />
               <span className="text-xs font-medium text-white truncate w-full text-center">{char.name}</span>
-              <span className="text-[10px] text-gray-500 truncate w-full text-center leading-tight">{char.subtitle}</span>
             </button>
           ))}
         </div>

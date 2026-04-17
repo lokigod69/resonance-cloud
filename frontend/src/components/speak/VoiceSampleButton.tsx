@@ -1,40 +1,26 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Play, Square, Loader2 } from 'lucide-react'
-import { playAudioViaElement } from '@/lib/audioUtils'
+import { Loader2, Play, Square } from 'lucide-react'
 
 interface VoiceSampleButtonProps {
   voiceName: string
   language: string
-  characterModeId: string
-  version: number
-  accentId: string
   /** The voiceName currently playing (or null). Parent-managed mutual exclusion. */
   nowPlaying: string | null
   onPlayStart: (voiceName: string) => void
   onPlayEnd: () => void
 }
 
-interface SampleCacheEntry {
-  base64: string
-  format: string
-}
+// Session-scoped cache of public sample URLs. Samples are neutral-only, keyed by
+// voice + language. The server no longer generates audio on demand.
+const sampleUrlCache = new Map<string, string>()
 
-// Session-scoped in-memory cache of already-generated samples. Keyed by
-// `${voiceName}|${language}|${characterModeId}|v${version}|${accentId}`.
-// The server persists to storage + DB; this avoids hitting the API again
-// within the same session even before localStorage/DB cache wins.
-const sampleCache = new Map<string, SampleCacheEntry>()
-
-function cacheKey(voiceName: string, language: string, characterModeId: string, version: number, accentId: string) {
-  return `${voiceName}|${language}|${characterModeId}|v${version}|${accentId}`
+function cacheKey(voiceName: string, language: string) {
+  return `${voiceName}|${language}`
 }
 
 export function VoiceSampleButton({
   voiceName,
   language,
-  characterModeId,
-  version,
-  accentId,
   nowPlaying,
   onPlayStart,
   onPlayEnd,
@@ -46,34 +32,52 @@ export function VoiceSampleButton({
 
   const isPlaying = nowPlaying === voiceName
 
-  // Stop (or abort in-flight generation) if another button takes over.
-  // The `abortedRef.current = true` must fire even when audioElRef is still
-  // null — otherwise a cold-miss fetch in progress will race to completion
-  // and start playing under the next button's audio.
-  useEffect(() => {
-    if (!isPlaying) {
-      abortedRef.current = true
-      if (audioElRef.current) {
-        try {
-          audioElRef.current.pause()
-          audioElRef.current.currentTime = 0
-        } catch { /* ignore */ }
-        audioElRef.current = null
-      }
-    }
-  }, [isPlaying])
-
-  const stop = useCallback(() => {
+  const stopPlayback = useCallback(() => {
     abortedRef.current = true
     if (audioElRef.current) {
-      try {
-        audioElRef.current.pause()
-        audioElRef.current.currentTime = 0
-      } catch { /* ignore */ }
+      const audio = audioElRef.current
       audioElRef.current = null
+      try { audio.pause() } catch { /* ignore */ }
+      try { audio.currentTime = 0 } catch { /* ignore */ }
+      try { audio.dispatchEvent(new Event('ended')) } catch { /* ignore */ }
+      try { audio.removeAttribute('src') } catch { /* ignore */ }
+      try { audio.src = '' } catch { /* ignore */ }
+      try { audio.load() } catch { /* ignore */ }
     }
+  }, [])
+
+  // Stop (or abort in-flight URL fetch) if another button takes over.
+  useEffect(() => {
+    if (!isPlaying) {
+      stopPlayback()
+    }
+  }, [isPlaying, stopPlayback])
+
+  useEffect(() => {
+    return () => {
+      stopPlayback()
+    }
+  }, [stopPlayback])
+
+  const stop = useCallback(() => {
+    stopPlayback()
     onPlayEnd()
-  }, [onPlayEnd])
+  }, [onPlayEnd, stopPlayback])
+
+  const playFromUrl = useCallback(async (url: string) => {
+    await new Promise<void>((resolve, reject) => {
+      const audio = new Audio(url)
+      audio.preload = 'auto'
+      audio.onended = () => resolve()
+      audio.onerror = () => reject(new Error('Audio playback failed'))
+      audioElRef.current = audio
+      if (abortedRef.current) {
+        resolve()
+        return
+      }
+      audio.play().catch(reject)
+    })
+  }, [])
 
   const play = useCallback(async () => {
     if (isPlaying) {
@@ -85,10 +89,10 @@ export function VoiceSampleButton({
     onPlayStart(voiceName)
     abortedRef.current = false
 
-    const key = cacheKey(voiceName, language, characterModeId, version, accentId)
-    let entry = sampleCache.get(key)
+    const key = cacheKey(voiceName, language)
+    let url = sampleUrlCache.get(key)
 
-    if (!entry) {
+    if (!url) {
       setLoading(true)
       try {
         const res = await fetch('/api/voice-sample', {
@@ -97,19 +101,16 @@ export function VoiceSampleButton({
           body: JSON.stringify({
             voice_name: voiceName,
             language,
-            character_mode_id: characterModeId,
-            version,
-            accent_id: accentId,
           }),
         })
         if (!res.ok) {
           const errJson = await res.json().catch(() => ({ error: 'Request failed' }))
           throw new Error(errJson.error ?? `HTTP ${res.status}`)
         }
-        const data = await res.json() as { audio_base64?: string; audio_format?: string }
-        if (!data.audio_base64) throw new Error('No audio returned')
-        entry = { base64: data.audio_base64, format: data.audio_format ?? 'wav' }
-        sampleCache.set(key, entry)
+        const data = await res.json() as { url?: string }
+        if (!data.url) throw new Error('No sample URL returned')
+        url = data.url
+        sampleUrlCache.set(key, url)
       } catch (err) {
         setLoading(false)
         setError(err instanceof Error ? err.message : 'Sample failed')
@@ -119,38 +120,33 @@ export function VoiceSampleButton({
       setLoading(false)
     }
 
-    if (abortedRef.current) {
+    if (abortedRef.current || !url) {
       onPlayEnd()
       return
     }
 
     try {
-      await playAudioViaElement(
-        entry.base64,
-        entry.format,
-        (audio) => { audioElRef.current = audio },
-        () => abortedRef.current,
-      )
+      await playFromUrl(url)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Playback failed')
     } finally {
       audioElRef.current = null
       if (!abortedRef.current) onPlayEnd()
     }
-  }, [voiceName, language, characterModeId, version, accentId, isPlaying, stop, onPlayStart, onPlayEnd])
+  }, [isPlaying, language, onPlayEnd, onPlayStart, playFromUrl, stop, voiceName])
 
   const title = error
     ? `Failed: ${error}`
     : isPlaying
     ? 'Stop sample'
     : loading
-    ? 'Generating sample…'
+    ? 'Loading sample...'
     : 'Play voice sample'
 
   return (
     <button
       type="button"
-      onClick={(e) => { e.stopPropagation(); play() }}
+      onClick={(e) => { e.stopPropagation(); void play() }}
       disabled={loading}
       title={title}
       aria-label={title}

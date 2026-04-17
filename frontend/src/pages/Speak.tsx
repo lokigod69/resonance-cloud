@@ -50,6 +50,7 @@ export default function Speak() {
   // Backend voice-chat expects the 2-letter code as native_language.
   const baseLangCode = ALL_LANGUAGES.find((l) => l.value === profile?.base_language)?.code
   const tutor = useVoiceTutor(baseLangCode)
+  const stopAllAudio = tutor.stopAllAudio
   const studyWords = useStudyWords(tutor.language)
   const bottomRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)
@@ -75,6 +76,12 @@ export default function Speak() {
       setPickedScene(null)
     }
   }, [tutor.language])
+
+  useEffect(() => {
+    return () => {
+      stopAllAudio()
+    }
+  }, [stopAllAudio])
 
   const fetchCorrections = async () => {
     if (correctionsLoading || tutor.messages.length < 4) return
@@ -344,23 +351,6 @@ export default function Speak() {
 
         <div className="flex-1 flex items-start justify-center px-6 pt-6">
           <div className="w-full max-w-2xl">
-            <div className="flex items-center justify-between gap-3 mb-4">
-              <div>
-                <h2 className="text-base font-semibold text-white">Choose your tutor</h2>
-                <p className="text-sm text-gray-400">
-                  {tutor.provider === 'gemini'
-                    ? 'Pick a character mode, then pick a voice'
-                    : 'Pick a teaching style or character'}
-                </p>
-              </div>
-              <ProviderToggle
-                value={tutor.provider}
-                onChange={tutor.setProvider}
-                disabled={!!tutor.conversationId || isBusy}
-                disabledReason="End the current conversation to switch providers."
-              />
-            </div>
-
             {isStarting && (
               <div className="flex items-center gap-2 mb-4 text-gray-400 text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -374,23 +364,44 @@ export default function Speak() {
               </div>
             )}
 
+            {tutor.provider === 'voxtral' && (
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <div>
+                  <h2 className="text-base font-semibold text-white">Choose your tutor</h2>
+                  <p className="text-sm text-gray-400">Pick a teaching style or character</p>
+                </div>
+                <ProviderToggle
+                  value={tutor.provider}
+                  onChange={tutor.setProvider}
+                  disabled={!!tutor.conversationId || isBusy}
+                  disabledReason="End the current conversation to switch providers."
+                />
+              </div>
+            )}
+
             <VoiceTutorPicker
               provider={tutor.provider}
               language={tutor.language!}
               disabled={isStarting}
               onVoxtralSelect={(char) => tutor.startConversationWithCharacter(char)}
-              onGeminiSelect={({ mode, voiceName, accentId }) =>
+              onGeminiStart={({ mode, voiceName, accentId }) =>
                 tutor.startConversationWithGemini({
                   characterModeId: mode.id,
-                  characterModeName: mode.name,
+                  characterModeName: mode.displayName,
                   voiceName,
                   version: mode.version,
                   accentId,
                 })
               }
-              initialGeminiModeId={tutor.geminiModeId}
-              initialGeminiVoiceName={tutor.geminiVoiceName}
-              initialGeminiAccentId={tutor.geminiAccentId}
+              geminiStage={tutor.geminiPickerStage}
+              geminiModeId={tutor.geminiModeId}
+              geminiVoiceName={tutor.geminiVoiceName}
+              geminiAccentId={tutor.geminiAccentId}
+              onGeminiModeChange={(modeId) => tutor.setGeminiModeId(modeId)}
+              onGeminiVoiceChange={(voiceName) => tutor.setGeminiVoiceName(voiceName)}
+              onGeminiAccentChange={(accentId) => tutor.setGeminiAccentId(accentId)}
+              onGeminiStageChange={(stage) => tutor.setGeminiPickerStage(stage)}
+              onGeminiBackToProviders={() => tutor.setProvider('voxtral')}
             />
           </div>
         </div>
@@ -492,9 +503,7 @@ export default function Speak() {
             ) : (
               <>
                 <p className="text-sm font-medium text-white truncate">{tutor.character?.name ?? tutor.voice.name}</p>
-                <p className="text-xs text-gray-500 truncate">
-                  {tutor.character?.subtitle ? `${tutor.character.subtitle} · ` : ''}{selectedLang?.nativeName}
-                </p>
+                <p className="text-xs text-gray-500 truncate">{selectedLang?.nativeName}</p>
               </>
             )}
           </div>

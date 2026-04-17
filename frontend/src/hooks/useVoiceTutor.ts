@@ -34,6 +34,7 @@ interface VoiceChatResponse {
 }
 
 export type SpeakProvider = 'voxtral' | 'gemini'
+export type GeminiPickerStage = 'voice' | 'mode' | 'accent'
 
 export interface GeminiTutorParams {
   characterModeId: string
@@ -85,6 +86,12 @@ export interface UseVoiceTutorReturn {
   geminiModeId: string | null
   geminiVoiceName: string | null
   geminiAccentId: string
+  geminiPickerStage: GeminiPickerStage
+  setGeminiModeId: (modeId: string | null) => void
+  setGeminiVoiceName: (voiceName: string | null) => void
+  setGeminiAccentId: (accentId: string) => void
+  setGeminiPickerStage: (stage: GeminiPickerStage) => void
+  stopAllAudio: () => void
 }
 
 const LS_PROVIDER = 'resonance_speak_provider'
@@ -161,6 +168,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const [geminiModeId, setGeminiModeId] = useState<string | null>(() => readStored(LS_GEMINI_MODE))
   const [geminiVoiceName, setGeminiVoiceName] = useState<string | null>(() => readStored(LS_GEMINI_VOICE))
   const [geminiAccentId, setGeminiAccentId] = useState<string>(() => readStored(LS_GEMINI_ACCENT) ?? DEFAULT_ACCENT_ID)
+  const [geminiPickerStage, setGeminiPickerStageState] = useState<GeminiPickerStage>('voice')
   const providerRef = useRef<SpeakProvider>(provider)
   const geminiModeIdRef = useRef<string | null>(geminiModeId)
   const geminiVoiceNameRef = useRef<string | null>(geminiVoiceName)
@@ -221,6 +229,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const activeSourceRef = useRef<AudioBufferSourceNode | null>(null)
   const activeAudioElRef = useRef<HTMLAudioElement | null>(null)
   const playbackGenerationRef = useRef(0)
+  const audioTaskGenerationRef = useRef(0)
 
   useEffect(() => {
     messagesRef.current = messages
@@ -261,41 +270,6 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     geminiAccentIdRef.current = geminiAccentId
     writeStored(LS_GEMINI_ACCENT, geminiAccentId)
   }, [geminiAccentId])
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (activeSourceRef.current) {
-        try { activeSourceRef.current.stop() } catch { /* ignore */ }
-        activeSourceRef.current = null
-      }
-      if (activeAudioElRef.current) {
-        activeAudioElRef.current.pause()
-        activeAudioElRef.current = null
-      }
-      if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
-        try { mediaRecorderRef.current.stop() } catch { /* ignore */ }
-      }
-      mediaRecorderRef.current = null
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach(t => t.stop())
-        streamRef.current = null
-      }
-      if (audioContextRef.current) {
-        audioContextRef.current.close().catch(() => {})
-        audioContextRef.current = null
-      }
-      // Fire-and-forget: mark conversation ended when user navigates away
-      if (conversationIdRef.current) {
-        const convId = conversationIdRef.current
-        conversationIdRef.current = null
-        supabase.from('speak_conversations')
-          .update({ ended_at: new Date().toISOString() })
-          .eq('id', convId)
-          .then(() => {}, () => {})
-      }
-    }
-  }, [])
 
   const isSupported =
     typeof navigator !== 'undefined' &&
@@ -528,27 +502,74 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     return audioContextRef.current
   }, [])
 
-  /** Stop any currently playing audio (AudioBufferSourceNode or HTMLAudioElement). */
-  const stopAudio = useCallback(() => {
+  const stopPlayback = useCallback((invalidateTasks: boolean) => {
+    if (invalidateTasks) {
+      audioTaskGenerationRef.current++
+    }
     playbackGenerationRef.current++
     if (activeSourceRef.current) {
-      try { activeSourceRef.current.stop() } catch { /* already stopped */ }
+      const source = activeSourceRef.current
       activeSourceRef.current = null
+      try { source.stop(0) } catch { /* already stopped */ }
+      try { source.disconnect() } catch { /* ignore */ }
     }
     if (activeAudioElRef.current) {
       const el = activeAudioElRef.current
       activeAudioElRef.current = null
-      el.pause()
-      el.currentTime = 0
-      el.dispatchEvent(new Event('ended'))
+      const src = el.src
+      try { el.pause() } catch { /* ignore */ }
+      try { el.currentTime = 0 } catch { /* ignore */ }
+      try { el.dispatchEvent(new Event('ended')) } catch { /* ignore */ }
+      try { el.removeAttribute('src') } catch { /* ignore */ }
+      try { el.src = '' } catch { /* ignore */ }
+      try { el.load() } catch { /* ignore */ }
+      if (src.startsWith('blob:')) {
+        try { URL.revokeObjectURL(src) } catch { /* ignore */ }
+      }
     }
   }, [])
+
+  const stopAllAudio = useCallback(() => {
+    stopPlayback(true)
+    setPendingAudio(null)
+    if (statusRef.current === 'playing') {
+      setStatus('idle')
+    }
+  }, [stopPlayback])
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      stopAllAudio()
+      if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
+        try { mediaRecorderRef.current.stop() } catch { /* ignore */ }
+      }
+      mediaRecorderRef.current = null
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach(t => t.stop())
+        streamRef.current = null
+      }
+      if (audioContextRef.current) {
+        audioContextRef.current.close().catch(() => {})
+        audioContextRef.current = null
+      }
+      // Fire-and-forget: mark conversation ended when user navigates away
+      if (conversationIdRef.current) {
+        const convId = conversationIdRef.current
+        conversationIdRef.current = null
+        supabase.from('speak_conversations')
+          .update({ ended_at: new Date().toISOString() })
+          .eq('id', convId)
+          .then(() => {}, () => {})
+      }
+    }
+  }, [stopAllAudio])
 
   /**
    * Play audio using AudioContext if available and running, falling back to HTMLAudioElement.
    */
   const playAudio = useCallback(async (base64: string, format: string) => {
-    stopAudio()
+    stopPlayback(false)
     const generation = ++playbackGenerationRef.current
     const isAborted = () => playbackGenerationRef.current !== generation
     if (audioContextRef.current && audioContextRef.current.state === 'running') {
@@ -562,17 +583,20 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       activeAudioElRef.current = audio
     }, isAborted)
     activeAudioElRef.current = null
-  }, [stopAudio])
+  }, [stopPlayback])
 
   const playPendingAudio = useCallback(async () => {
     if (!pendingAudio) return
+    const taskGeneration = audioTaskGenerationRef.current
     await ensureAudioContext()  // Unlock AudioContext on "Tap to hear" gesture
+    if (audioTaskGenerationRef.current !== taskGeneration) return
     setStatus('playing')
     try {
       await playAudio(pendingAudio.base64, pendingAudio.format)
     } catch {
       // ignore playback errors — user can tap again or proceed
     }
+    if (audioTaskGenerationRef.current !== taskGeneration) return
     setPendingAudio(null)
     setStatus('idle')
   }, [pendingAudio, ensureAudioContext, playAudio])
@@ -589,12 +613,15 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
   const fetchAndPlayGreeting = useCallback(
     async (lang: string, v: TutorVoice) => {
+      const taskGeneration = audioTaskGenerationRef.current
       setStatus('processing')
 
       // Unlock AudioContext on the user gesture (voice/language card click)
       await ensureAudioContext()
+      if (audioTaskGenerationRef.current !== taskGeneration) return
 
       const data = await callVoiceChat(null, lang, v)
+      if (audioTaskGenerationRef.current !== taskGeneration) return
       const msg: TutorMessage = {
         role: 'assistant',
         content: data.ai_text,
@@ -611,14 +638,17 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         try {
           setStatus('playing')
           await playAudio(data.audio_base64, data.audio_format)
+          if (audioTaskGenerationRef.current !== taskGeneration) return
           setStatus('idle')
         } catch {
           // Auto-play blocked — fall back to Tap to hear
+          if (audioTaskGenerationRef.current !== taskGeneration) return
           setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
           setStatus('idle')
         }
       } else {
         // TTS failed on server — show text only, no error
+        if (audioTaskGenerationRef.current !== taskGeneration) return
         setStatus('idle')
       }
     },
@@ -627,7 +657,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
   const selectLanguage = useCallback(
     (lang: string) => {
-      stopAudio()
+      stopAllAudio()
       endConversation()
       setLanguage(lang)
       setVoice(null)
@@ -650,8 +680,9 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       setActiveNpcName(null)
       scenarioPromptRef.current = null
       roleplayMetaRef.current = null
+      setGeminiPickerStageState('voice')
     },
-    [endConversation, stopAudio],
+    [endConversation, stopAllAudio],
   )
 
   const startConversationWithCharacter = useCallback(
@@ -672,6 +703,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       setActiveNpcName(null)
 
       // End any prior conversation (e.g. when switching tutors via changeVoice)
+      stopAllAudio()
       endConversation()
       previousStateRef.current = null
 
@@ -697,14 +729,16 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       if (savedLevel) {
         setLevel(savedLevel)
         levelRef.current = savedLevel
-        fetchAndPlayGreeting(lang, syntheticVoice).catch((err) => {
+        try {
+          await fetchAndPlayGreeting(lang, syntheticVoice)
+        } catch (err) {
           setError(err instanceof Error ? err.message : 'Failed to start conversation')
           setStatus('error')
-        })
+        }
       }
       // Otherwise level is null → State 2.5 (level picker) renders
     },
-    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS],
+    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS, stopAllAudio],
   )
 
   const startConversationWithGemini = useCallback(
@@ -723,6 +757,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       setActiveScenario(null)
       setActiveNpcName(null)
 
+      stopAllAudio()
       endConversation()
       previousStateRef.current = null
 
@@ -747,6 +782,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       const nextAccent = params.accentId ?? DEFAULT_ACCENT_ID
       setGeminiAccentId(nextAccent)
       geminiAccentIdRef.current = nextAccent
+      setGeminiPickerStageState('accent')
       setVoice(syntheticVoice)
       voiceRef.current = syntheticVoice
       setError(null)
@@ -755,13 +791,15 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       if (savedLevel) {
         setLevel(savedLevel)
         levelRef.current = savedLevel
-        fetchAndPlayGreeting(lang, syntheticVoice).catch((err) => {
+        try {
+          await fetchAndPlayGreeting(lang, syntheticVoice)
+        } catch (err) {
           setError(err instanceof Error ? err.message : 'Failed to start conversation')
           setStatus('error')
-        })
+        }
       }
     },
-    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS],
+    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS, stopAllAudio],
   )
 
   // Provider toggle preserves the Gemini mode/voice selection so users can
@@ -769,9 +807,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   // is cleared because those ARE provider-specific.
   const setProvider = useCallback((next: SpeakProvider) => {
     if (next === providerRef.current) return
-    stopAudio()
+    stopAllAudio()
     setProviderState(next)
     providerRef.current = next
+    setGeminiPickerStageState('voice')
     setVoice(null)
     voiceRef.current = null
     setCharacter(null)
@@ -781,12 +820,13 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
-  }, [stopAudio])
+  }, [stopAllAudio])
 
   const startRoleplay = useCallback(
     async (scenario: RoleplayScenario, lang: string, selectedLevel: string) => {
       primeAudioForIOS()
       await ensureAudioContext()
+      stopAllAudio()
       endConversation()
       previousStateRef.current = null
 
@@ -842,7 +882,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         setStatus('error')
       }
     },
-    [endConversation, fetchAndPlayGreeting, ensureAudioContext, primeAudioForIOS],
+    [endConversation, fetchAndPlayGreeting, ensureAudioContext, primeAudioForIOS, stopAllAudio],
   )
 
   const selectLevel = useCallback(
@@ -891,9 +931,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         geminiAccentId: geminiAccentIdRef.current,
       }
     }
-    stopAudio()
+    stopAllAudio()
     // Don't call endConversation() — deferred to startConversationWith* so
     // cancelChangeVoice can restore the live session.
+    if (providerRef.current === 'gemini') {
+      setGeminiPickerStageState('voice')
+    }
     setVoice(null)
     voiceRef.current = null
     setCharacter(null)
@@ -909,7 +952,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     setStudyMode(false)
     listenModeRef.current = false
     setListenMode(false)
-  }, [stopAudio])
+  }, [stopAllAudio])
 
   const toggleStudyMode = useCallback((words: Array<{ word: string; translation: string }>) => {
     const newMode = !studyModeRef.current
@@ -948,9 +991,9 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   }, [])
 
   const changeLevel = useCallback(() => {
-    stopAudio()
+    stopAllAudio()
     setShowLevelPicker(true)
-  }, [stopAudio])
+  }, [stopAllAudio])
 
   const cancelLevelChange = useCallback(() => {
     setShowLevelPicker(false)
@@ -964,7 +1007,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     const lang = language
     const v = voiceRef.current
     if (!lang || !v) return
-    stopAudio()
+    stopAllAudio()
     endConversation()
     setMessages([])
     messagesRef.current = []
@@ -976,7 +1019,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       setError(err instanceof Error ? err.message : 'Something went wrong')
       setStatus('error')
     }
-  }, [language, fetchAndPlayGreeting, endConversation, stopAudio])
+  }, [language, fetchAndPlayGreeting, endConversation, stopAllAudio])
 
   /**
    * Acquire a MediaStream if one isn't already active.
@@ -1055,6 +1098,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
         const currentLang = language
         const currentVoice = voiceRef.current
+        const taskGeneration = audioTaskGenerationRef.current
         if (!currentLang) return
 
         setStatus('processing')
@@ -1062,6 +1106,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         try {
           const audio_base64 = await blobToBase64(audioBlob)
           const data = await callVoiceChat(audio_base64, currentLang, currentVoice ?? undefined)
+          if (audioTaskGenerationRef.current !== taskGeneration) return
 
           setMessages((prev) => {
             const next = [...prev]
@@ -1086,14 +1131,17 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
             try {
               setStatus('playing')
               await playAudio(data.audio_base64, data.audio_format)
+              if (audioTaskGenerationRef.current !== taskGeneration) return
               setStatus('idle')
             } catch {
               // AudioContext failed — fall back to Tap to hear
+              if (audioTaskGenerationRef.current !== taskGeneration) return
               setPendingAudio({ base64: data.audio_base64, format: data.audio_format })
               setStatus('idle')
             }
           } else {
             // TTS failed on server — show text only, no error
+            if (audioTaskGenerationRef.current !== taskGeneration) return
             setStatus('idle')
           }
         } catch (err) {
@@ -1165,7 +1213,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   }, [])
 
   const resetConversation = useCallback(() => {
-    stopAudio()
+    stopAllAudio()
     endConversation()
     releaseResources()
 
@@ -1195,7 +1243,8 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     setActiveNpcName(null)
     scenarioPromptRef.current = null
     roleplayMetaRef.current = null
-  }, [releaseResources, endConversation, stopAudio])
+    setGeminiPickerStageState('voice')
+  }, [releaseResources, endConversation, stopAllAudio])
 
   const cancelChangeVoice = useCallback(() => {
     const prev = previousStateRef.current
@@ -1276,5 +1325,11 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     geminiModeId,
     geminiVoiceName,
     geminiAccentId,
+    geminiPickerStage,
+    setGeminiModeId,
+    setGeminiVoiceName,
+    setGeminiAccentId,
+    setGeminiPickerStage: setGeminiPickerStageState,
+    stopAllAudio,
   }
 }
