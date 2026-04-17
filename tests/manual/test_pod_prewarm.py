@@ -500,6 +500,180 @@ def test_22_word_and_job_dicts_are_independent():
     assert pod_manager._upcoming_jobs == {}
 
 
+# ---------- Hook B try/finally invariant (adversarial-review H1) ----------
+#
+# These tests guard the contract in job_runner.main()'s Hook B block:
+#
+#     notify_upcoming_job(job["id"])
+#     try:
+#         await process_job(job)
+#     finally:
+#         cancel_upcoming_job(job["id"])
+#
+# Specifically, they protect against a refactor from `try/finally` to
+# `try/except Exception: pass` + trailing cancel — which would leave the
+# dict correctly empty but silently swallow exceptions, breaking the outer
+# main()'s error-logging path.
+#
+# Strategy: (a) an AST structural assertion that the try has no except
+# handlers and has cancel_upcoming_job in its finally; (b) a runtime
+# behavioral assertion that mirrors the block's semantics and verifies
+# both "cancel fires on exception" AND "exception propagates".
+
+
+def test_23_hook_b_is_pure_try_finally_in_source():
+    """Structurally verify job_runner.main() wraps process_job in a pure try/finally.
+
+    Reads job_runner.py source and walks its AST to find the try-block whose
+    body calls process_job() and whose finally calls cancel_upcoming_job().
+    Asserts that try has NO except handlers. A refactor to try/except:pass
+    would add a handler and fail this assertion.
+    """
+    import ast
+    from pathlib import Path
+
+    orch_root = Path(__file__).resolve().parents[2]
+    src = (orch_root / "job_runner.py").read_text(encoding="utf-8")
+    tree = ast.parse(src)
+
+    main_fn = None
+    for node in ast.walk(tree):
+        if isinstance(node, ast.AsyncFunctionDef) and node.name == "main":
+            main_fn = node
+            break
+    assert main_fn is not None, "could not find async main() in job_runner.py"
+
+    def _call_name(call: ast.Call) -> str:
+        if isinstance(call.func, ast.Name):
+            return call.func.id
+        if isinstance(call.func, ast.Attribute):
+            return call.func.attr
+        return ""
+
+    hook_b_try = None
+    for node in ast.walk(main_fn):
+        if not isinstance(node, ast.Try):
+            continue
+        body_call_names = {
+            _call_name(c) for c in ast.walk(ast.Module(body=node.body, type_ignores=[]))
+            if isinstance(c, ast.Call)
+        }
+        if "process_job" not in body_call_names:
+            continue
+        finally_call_names = {
+            _call_name(c) for c in ast.walk(ast.Module(body=node.finalbody, type_ignores=[]))
+            if isinstance(c, ast.Call)
+        }
+        if "cancel_upcoming_job" in finally_call_names:
+            hook_b_try = node
+            break
+
+    assert hook_b_try is not None, (
+        "Hook B invariant broken: expected a try-block in job_runner.main() whose body "
+        "calls process_job() and whose finally calls cancel_upcoming_job()."
+    )
+    assert hook_b_try.handlers == [], (
+        f"Hook B invariant broken: try-block must have NO except handlers "
+        f"(pure try/finally). Found {len(hook_b_try.handlers)} handler(s). "
+        "Do NOT replace `finally` with `except: pass + trailing cancel` — "
+        "that would swallow exceptions and silence the outer main() error path."
+    )
+    # Also assert notify_upcoming_job fires BEFORE the try (sibling statement
+    # immediately preceding it at the same block level).
+    siblings = None
+    for container in ast.walk(main_fn):
+        for attr in ("body", "orelse", "finalbody"):
+            block = getattr(container, attr, None)
+            if isinstance(block, list) and hook_b_try in block:
+                siblings = block
+                break
+        if siblings is not None:
+            break
+    assert siblings is not None, "could not locate hook_b_try's containing block"
+    idx = siblings.index(hook_b_try)
+    assert idx > 0, "Hook B try must be preceded by notify_upcoming_job(...)"
+    prev = siblings[idx - 1]
+    prev_calls = {
+        _call_name(c) for c in ast.walk(ast.Module(body=[prev], type_ignores=[]))
+        if isinstance(c, ast.Call)
+    }
+    assert "notify_upcoming_job" in prev_calls, (
+        "Hook B invariant broken: statement immediately before the try-block "
+        "must call notify_upcoming_job(...). Found calls: %s" % sorted(prev_calls)
+    )
+
+
+def test_24_hook_b_runtime_propagates_exception_and_cancels():
+    """Runtime proof that Hook B's try/finally cancels on exception AND propagates.
+
+    Mirrors the Hook B block literally with a raising stub in place of
+    process_job. Async/await exception semantics are identical to sync for
+    this shape; using sync keeps the test in the existing asyncio-free style
+    and exercises the same CPython exception-unwinding machinery the
+    production block relies on.
+    """
+    reset_module_state()
+    # Bring pod to "ready" so notify_upcoming_job is a no-HTTP path.
+    pod_manager._pod_status = "ready"
+    pod_manager._pod_id = "pod-hookb"
+    pod_manager._pod_url = "https://pod-hookb-8080.proxy.runpod.net"
+    pod_manager._worker_auth_token = "tok"
+    pod_manager._last_activity = time.monotonic()
+
+    class _SimulatedProcessJobError(RuntimeError):
+        pass
+
+    def hook_b_block(job_id: str) -> None:
+        # Literal mirror of job_runner.main()'s Hook B block.
+        pod_manager.notify_upcoming_job(job_id)
+        try:
+            raise _SimulatedProcessJobError("simulated process_job failure")
+        finally:
+            pod_manager.cancel_upcoming_job(job_id)
+
+    # Any HTTP call during this flow would indicate the pod state path is
+    # wrong (cold-start attempt); handler raises if it sees one.
+    handler = make_handler([])
+    raised = False
+    with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+        try:
+            hook_b_block("job-err")
+        except _SimulatedProcessJobError:
+            raised = True
+
+    assert raised, "Hook B must propagate exceptions from the try body, not swallow them"
+    assert "job-err" not in pod_manager._upcoming_jobs, pod_manager._upcoming_jobs
+    assert pod_manager._upcoming_jobs == {}
+    assert len(handler.calls) == 0
+
+
+def test_25_hook_b_runtime_cancels_on_success():
+    """Success path: Hook B's finally must fire cancel even on normal return."""
+    reset_module_state()
+    pod_manager._pod_status = "ready"
+    pod_manager._pod_id = "pod-hookb-ok"
+    pod_manager._pod_url = "https://pod-hookb-ok-8080.proxy.runpod.net"
+    pod_manager._worker_auth_token = "tok"
+    pod_manager._last_activity = time.monotonic()
+
+    invocations: list[str] = []
+
+    def hook_b_block(job_id: str) -> None:
+        pod_manager.notify_upcoming_job(job_id)
+        try:
+            invocations.append("ran")  # simulated successful process_job
+        finally:
+            pod_manager.cancel_upcoming_job(job_id)
+
+    handler = make_handler([])
+    with patch.object(pod_manager.httpx, "Client", MockClientFactory(handler)):
+        hook_b_block("job-ok")
+
+    assert invocations == ["ran"]
+    assert "job-ok" not in pod_manager._upcoming_jobs
+    assert pod_manager._upcoming_jobs == {}
+
+
 # ---------- runner ----------
 
 class ListHandler(logging.Handler):
@@ -539,6 +713,9 @@ def main() -> int:
         ("20: idle_check keeps alive for _upcoming_jobs", test_20_idle_check_keeps_pod_alive_for_upcoming_jobs),
         ("21: stale _upcoming_jobs GC", test_21_stale_jobs_gc),
         ("22: word and job dicts independent", test_22_word_and_job_dicts_are_independent),
+        ("23: Hook B source is pure try/finally", test_23_hook_b_is_pure_try_finally_in_source),
+        ("24: Hook B propagates exception + cancels", test_24_hook_b_runtime_propagates_exception_and_cancels),
+        ("25: Hook B cancels on success", test_25_hook_b_runtime_cancels_on_success),
     ]
 
     failures: list[tuple[str, BaseException]] = []

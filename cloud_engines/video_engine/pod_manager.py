@@ -644,9 +644,10 @@ def cancel_upcoming_job(job_id: str) -> None:
 def _run_prewarm() -> None:
     """Background thread body: call ensure_pod_ready. Exceptions logged, not raised.
 
-    Re-checks _upcoming_words at entry to avoid a wasted cold-start if the word
-    was already cancelled during thread spawn. ensure_pod_ready uses the module
-    lock internally (existing pattern) and handles its own error recovery.
+    Re-checks both _upcoming_words AND _upcoming_jobs at entry to avoid a
+    wasted cold-start if all tracking entries were cancelled during thread
+    spawn. ensure_pod_ready uses the module lock internally (existing
+    pattern) and handles its own error recovery.
     """
     global _prewarm_in_flight
     try:
@@ -666,10 +667,14 @@ def _run_prewarm() -> None:
 def idle_check() -> None:
     """If pod is ready and idle past timeout, terminate it.
 
-    Called periodically by start_cloud.py's background task. Considers
-    _upcoming_words so that words traversing pre-video stages keep the pod
-    alive across the 300s idle timer. Stale entries (e.g. from a crashed
-    job_runner) are garbage-collected here.
+    Called periodically by start_cloud.py's background task. Considers both
+    _upcoming_words (word-level keep-alive, populated inside process_word)
+    and _upcoming_jobs (job-level keep-alive, Hook B, populated at job
+    pickup in job_runner.main) so that queued-or-upstream work keeps the
+    pod alive across the RUNPOD_IDLE_TIMEOUT window. Stale entries in
+    either dict (e.g. from a crashed job_runner) are garbage-collected
+    here using POD_PREWARM_STALE_SECONDS and POD_PREWARM_JOB_STALE_SECONDS
+    respectively.
     """
     with _lock:
         # Stale-entry GC (runs regardless of pod state)
