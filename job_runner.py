@@ -38,7 +38,9 @@ from src.services.metadata import collect_word_metadata
 from src.services.publishing import upload_ab_results
 from src.services.stage_helpers import get_fallback_overrides, get_incomplete_stages
 from src.services.suno_bakein import bake_suno_into_word
+from src.suno import read_concept_data, submit_song
 from src.storage import STORAGE_MODE, create_job_workspace, get_job_workspace_path, get_workspace_root
+import httpx
 from src.cost_logger import set_word_context, clear_word_context
 from cloud_engines.video_engine.pod_manager import notify_upcoming_video, cancel_upcoming_video
 from supabase import create_client, Client
@@ -349,6 +351,80 @@ async def process_word(
         if stage == "song" and suno_enabled:
             from src.manifest import update_settings
             update_settings(word_dir, "song", {"batch_size": None})
+
+        # After song: submit Suno task in parallel with video generation.
+        # Bake-in's 3-state guard (completed / in-flight / not-started) picks
+        # up whatever state this leaves behind, so this is safe to skip on
+        # any error path (bake-in will fall back to fresh submit).
+        if (
+            stage == "song"
+            and STORAGE_MODE == "cloud"
+            and suno_enabled
+            and success
+        ):
+            word_record_for_suno: dict[str, Any] = {}
+            try:
+                word_record_for_suno = (
+                    sb.table("words")
+                    .select("id, suno_task_id, suno_audio_url")
+                    .eq("deck_id", job["deck_id"])
+                    .eq("word_slug", word_slug_val)
+                    .single()
+                    .execute()
+                    .data
+                ) or {}
+                if word_record_for_suno.get("suno_task_id"):
+                    log.info(
+                        "  [Song] Suno task %s already submitted for %s; skipping",
+                        word_record_for_suno["suno_task_id"], word_slug_val,
+                    )
+                elif word_record_for_suno.get("suno_audio_url"):
+                    log.info(
+                        "  [Song] Suno already complete for %s; skipping submit",
+                        word_slug_val,
+                    )
+                else:
+                    log.info(
+                        "  [Song] Submitting Suno task for %s (parallel generation)",
+                        word_slug_val,
+                    )
+                    try:
+                        concept_data = read_concept_data(word_dir)
+                    except FileNotFoundError as _ce:
+                        log.warning(
+                            "  [Song] Concept file missing for %s (%s); bake-in will submit fresh",
+                            word_slug_val, _ce,
+                        )
+                        concept_data = None
+                    if concept_data is not None:
+                        new_task_id = await submit_song(
+                            job["deck_id"], word_slug_val, concept_data,
+                        )
+                        log.info(
+                            "  [Song] Submitted Suno task %s for %s",
+                            new_task_id, word_slug_val,
+                        )
+            except (httpx.TimeoutException, httpx.RequestError) as _e:
+                log.warning(
+                    "  [Song] Suno submit timeout/network error for %s; queueing suno_retry: %s",
+                    word_slug_val, _e,
+                )
+                try:
+                    sb.table("generation_jobs").insert({
+                        "user_id": job["user_id"],
+                        "deck_id": job["deck_id"],
+                        "job_type": "suno_retry",
+                        "target_word_id": word_record_for_suno.get("id") or word_record["id"],
+                        "priority": -2,  # Below manual retries
+                        "status": "approved",
+                    }).execute()
+                except Exception as _qe:
+                    log.warning("  [Song] Failed to queue suno_retry: %s", _qe)
+            except Exception as _e:
+                log.warning(
+                    "  [Song] Suno submit failed for %s (bake-in will fall back): %s",
+                    word_slug_val, _e,
+                )
 
     # ── Suno bake-in ─────────────────────────────────────────────────────────
     suno_ab_manifests: dict[str, Any] = {}

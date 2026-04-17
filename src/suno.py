@@ -24,6 +24,15 @@ POLL_INTERVAL = 10      # seconds between status checks
 MAX_POLL_TIME = 180     # max seconds to wait (3 minutes)
 
 
+def _get_sb_client():
+    """Return a module-level-ish Supabase client, or None if creds missing."""
+    supabase_url = os.getenv("SUPABASE_URL", "")
+    supabase_key = os.getenv("SUPABASE_SERVICE_KEY", "")
+    if not supabase_url or not supabase_key:
+        return None
+    return supabase_create_client(supabase_url, supabase_key)
+
+
 def _write_to_supabase(
     deck_id: str, word_slug: str, audio_url: str, task_id: str | None,
     audio_url_b: str | None = None,
@@ -141,10 +150,102 @@ def build_suno_payload(concept_data: dict) -> dict:
     }
 
 
+async def submit_song(deck_id: str, word_slug: str, concept_data: dict) -> str:
+    """
+    Submit a kie.ai Suno generation task for this word and persist the task_id
+    to Supabase. Returns the task_id string.
+
+    Idempotency gate: if the words row already has suno_audio_url set, returns
+    an empty string (caller treats as "already complete"). If suno_task_id is
+    already set but audio_url is not, returns the existing task_id (caller may
+    poll it). Otherwise POSTs /generate, persists the new task_id, and returns it.
+
+    Raises httpx.HTTPError / httpx.TimeoutException on network failure, and
+    RuntimeError on non-200 response or missing taskId.
+    """
+    # Idempotency gate (covers both song-stage submit AND _maybe_trigger_suno)
+    sb = _get_sb_client()
+    if sb is not None:
+        try:
+            existing = (
+                sb.table("words")
+                .select("suno_task_id, suno_audio_url")
+                .eq("deck_id", deck_id)
+                .eq("word_slug", word_slug)
+                .single()
+                .execute()
+                .data
+            ) or {}
+        except Exception as _lookup_e:
+            logger.warning("[Suno] Idempotency lookup failed for %s/%s: %s — proceeding with fresh submit",
+                           deck_id, word_slug, _lookup_e)
+            existing = {}
+        if existing.get("suno_audio_url"):
+            logger.info("[Suno] Already complete for %s; skipping submit", word_slug)
+            return ""
+        if existing.get("suno_task_id"):
+            logger.info("[Suno] Task %s already submitted for %s; returning existing id",
+                        existing["suno_task_id"], word_slug)
+            return existing["suno_task_id"]
+
+    api_key = get_api_key()
+
+    if not concept_data.get("lyrics"):
+        raise RuntimeError("No lyrics found in concept data. Generate the word video first.")
+
+    logger.info(
+        "Submitting Suno song for '%s' — style: %s",
+        concept_data["word"],
+        concept_data["music_caption"][:60] if concept_data["music_caption"] else "(none)",
+    )
+
+    payload = build_suno_payload(concept_data)
+
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        resp = await client.post(
+            f"{KIE_API_BASE}/generate",
+            json=payload,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+        )
+        resp.raise_for_status()
+        result = resp.json()
+
+    logger.debug("SUNO GENERATE RESPONSE: %s", json.dumps(result)[:1000])
+
+    if result.get("code") != 200:
+        raise RuntimeError(
+            f"Suno API returned code {result.get('code')}: {json.dumps(result)[:500]}"
+        )
+
+    task_id = result.get("data", {}).get("taskId")
+    if not task_id:
+        raise RuntimeError(f"No taskId in response: {json.dumps(result)[:500]}")
+
+    logger.info("Suno task created: %s", task_id)
+
+    # Persist task_id immediately so bake-in / retry paths can discover it.
+    try:
+        if sb is not None:
+            sb.table("words").update({"suno_task_id": task_id}) \
+                .eq("deck_id", deck_id).eq("word_slug", word_slug).execute()
+            logger.debug("Wrote suno_task_id for %s/%s", deck_id, word_slug)
+    except Exception as _persist_e:
+        logger.warning("Failed to write suno_task_id: %s", _persist_e)
+
+    return task_id
+
+
 async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
     """
-    Full flow: read concept data → call Suno API → poll → return audio URL.
+    Full flow: read concept data → submit via submit_song() → poll → return audio URL.
     Returns: { audio_url, task_id, status, error }
+
+    submit_song() carries the idempotency gate, so this function is safe to call
+    when a task is already submitted (it will pick up and poll the existing task)
+    or already complete (it will short-circuit to success using the persisted URL).
     """
     api_key = get_api_key()
 
@@ -160,61 +261,48 @@ async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
             "error": "No lyrics found in concept data. Generate the word video first.",
         }
 
-    logger.info(
-        "Generating Suno song for '%s' — style: %s",
-        concept_data["word"],
-        concept_data["music_caption"][:60] if concept_data["music_caption"] else "(none)",
-    )
+    # Step 2: Submit (with idempotency) — may return existing task_id or "" if complete.
+    try:
+        task_id = await submit_song(deck_id, word_slug, concept_data)
+    except httpx.HTTPError as e:
+        logger.error("Suno API call failed: %s", e)
+        return {"audio_url": None, "task_id": None, "status": "error", "error": f"Suno API error: {e}"}
+    except RuntimeError as e:
+        return {"audio_url": None, "task_id": None, "status": "error", "error": str(e)}
 
-    # Step 2: Call Suno API
+    # If submit_song signaled "already complete" via empty task_id, fetch the
+    # persisted URL and return success. This keeps _maybe_trigger_suno idempotent.
+    if not task_id:
+        sb_client = _get_sb_client()
+        if sb_client is not None:
+            try:
+                row = (
+                    sb_client.table("words")
+                    .select("suno_task_id, suno_audio_url, suno_audio_url_b")
+                    .eq("deck_id", deck_id)
+                    .eq("word_slug", word_slug)
+                    .single()
+                    .execute()
+                    .data
+                ) or {}
+                return {
+                    "audio_url": row.get("suno_audio_url"),
+                    "audio_url_b": row.get("suno_audio_url_b"),
+                    "task_id": row.get("suno_task_id"),
+                    "status": "success",
+                    "error": None,
+                }
+            except Exception as _e:
+                logger.warning("generate_song: failed to re-read completed row: %s", _e)
+        return {
+            "audio_url": None, "task_id": None, "status": "success",
+            "audio_url_b": None, "error": None,
+        }
+
+    # Rebuild payload for copyright-retry path below (not persisted by submit_song).
     payload = build_suno_payload(concept_data)
 
     async with httpx.AsyncClient(timeout=30.0) as client:
-        try:
-            resp = await client.post(
-                f"{KIE_API_BASE}/generate",
-                json=payload,
-                headers={
-                    "Authorization": f"Bearer {api_key}",
-                    "Content-Type": "application/json",
-                },
-            )
-            resp.raise_for_status()
-            result = resp.json()
-        except httpx.HTTPError as e:
-            logger.error("Suno API call failed: %s", e)
-            return {"audio_url": None, "task_id": None, "status": "error", "error": f"Suno API error: {e}"}
-
-        logger.debug("SUNO GENERATE RESPONSE: %s", json.dumps(result)[:1000])
-
-        if result.get("code") != 200:
-            return {
-                "audio_url": None, "task_id": None, "status": "error",
-                "error": f"Suno API returned code {result.get('code')}: {json.dumps(result)[:500]}",
-            }
-
-        task_id = result.get("data", {}).get("taskId")
-        if not task_id:
-            return {
-                "audio_url": None, "task_id": None, "status": "error",
-                "error": f"No taskId in response: {json.dumps(result)[:500]}",
-            }
-
-        logger.info("Suno task created: %s", task_id)
-
-        # Best-effort: write suno_task_id immediately so it's available if polling times out.
-        # If this write fails, log a warning and continue — generation must not be aborted.
-        try:
-            _sb_url = os.getenv("SUPABASE_URL", "")
-            _sb_key = os.getenv("SUPABASE_SERVICE_KEY", "")
-            if _sb_url and _sb_key:
-                _sb_early = supabase_create_client(_sb_url, _sb_key)
-                _sb_early.table("words").update({"suno_task_id": task_id}) \
-                    .eq("deck_id", deck_id).eq("word_slug", word_slug).execute()
-                logger.debug("Wrote suno_task_id early for %s/%s", deck_id, word_slug)
-        except Exception as _early_e:
-            logger.warning("Failed to write suno_task_id early: %s", _early_e)
-
         # Step 3: Poll for completion
         elapsed = 0
         copyright_retried = False
