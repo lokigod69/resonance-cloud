@@ -209,7 +209,7 @@ export default function DecksPG() {
       <div className="flex items-center justify-between mb-8">
         <div className="min-w-0">
           <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate">
-            Your Decks
+            {t('decks.title')}
           </h1>
           <p className="text-[var(--pg-text-dim)] mt-1 text-sm">
             {tp('dashboard.deckCount', decks.length)}

@@ -40,6 +40,7 @@ export function createT(locale: Locale) {
 export const translations: Record<Locale, Record<string, string>> = {
   en: {
     // ── Navigation ──
+    'nav.dashboard': 'Dashboard',
     'nav.decks': 'Decks',
     'nav.generate': 'Generate',
     'nav.study': 'Study',
@@ -92,6 +93,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     'dashboard.createFirst': 'Create your first deck',
     'dashboard.createFirstBody': 'Choose a language, add some words, and watch AI create unique music videos for each one.',
     'dashboard.generate': 'Generate',
+    'dashboard.wordsInLanguage': '{count} words in {language}',
+    'dashboard.noWordsInLanguage': 'No words yet in {language}. Generate some!',
+    'dashboard.noWordsYet': 'No words yet.',
+    'dashboard.vocabularyAwaits': 'Your vocabulary awaits',
+    'dashboard.generateFirstHint': 'Generate your first words to begin',
+    'dashboard.generateFirstWords': 'Generate First Words',
     'dashboard.loadingDecks': 'Loading decks...',
     'dashboard.loginAgain': 'Log in again',
     'dashboard.newDeck': 'New Deck',
@@ -300,6 +307,18 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.cards.one': 'card',
     'deckview.cards.other': 'cards',
 
+    // ── WordLibrary ──
+    'wordLibrary.all': 'All',
+    'wordLibrary.words': 'Words',
+    'wordLibrary.phrases': 'Phrases',
+    'wordLibrary.recent': 'Recent',
+    'wordLibrary.az': 'A-Z',
+    'wordLibrary.za': 'Z-A',
+    'wordLibrary.noWords': 'No words to show.',
+
+    // ── Decks ──
+    'decks.title': 'Your Decks',
+
     // ── Study (missed strings) ──
     'study.untitled': 'Untitled',
 
@@ -374,6 +393,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
   de: {
     // ── Navigation ──
+    'nav.dashboard': 'Dashboard',
     'nav.decks': 'Decks',
     'nav.generate': 'Erstellen',
     'nav.study': 'Lernen',
@@ -425,7 +445,13 @@ export const translations: Record<Locale, Record<string, string>> = {
     'dashboard.level': 'Level',
     'dashboard.createFirst': 'Erstelle dein erstes Deck',
     'dashboard.createFirstBody': 'Wähle eine Sprache, gib ein paar Wörter ein und sieh zu, wie KI für jedes Wort einzigartige Musikvideos erstellt.',
-    'dashboard.generate': 'Erstellen',
+    'dashboard.generate': 'Generieren',
+    'dashboard.wordsInLanguage': '{count} Wörter auf {language}',
+    'dashboard.noWordsInLanguage': 'Noch keine Wörter auf {language}. Erstelle welche!',
+    'dashboard.noWordsYet': 'Noch keine Wörter.',
+    'dashboard.vocabularyAwaits': 'Dein Wortschatz wartet',
+    'dashboard.generateFirstHint': 'Erstelle deine ersten Wörter, um zu starten',
+    'dashboard.generateFirstWords': 'Erste Wörter erstellen',
     'dashboard.loadingDecks': 'Decks werden geladen...',
     'dashboard.loginAgain': 'Erneut anmelden',
     'dashboard.newDeck': 'Neues Deck',
@@ -634,6 +660,18 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.confirmRemove': '"{word}" aus diesem Deck entfernen?',
     'deckview.noCredits': 'Keine Credits mehr',
 
+    // ── WordLibrary ──
+    'wordLibrary.all': 'Alle',
+    'wordLibrary.words': 'Wörter',
+    'wordLibrary.phrases': 'Phrasen',
+    'wordLibrary.recent': 'Neueste',
+    'wordLibrary.az': 'A-Z',
+    'wordLibrary.za': 'Z-A',
+    'wordLibrary.noWords': 'Keine Wörter zum Anzeigen.',
+
+    // ── Decks ──
+    'decks.title': 'Deine Decks',
+
     // ── Study (missed strings) ──
     'study.untitled': 'Unbenannt',
 
@@ -708,6 +746,7 @@ export const translations: Record<Locale, Record<string, string>> = {
 
   fr: {
     // ── Navigation ──
+    'nav.dashboard': 'Dashboard',
     'nav.decks': 'Decks',
     'nav.generate': 'Créer',
     'nav.study': 'Étudier',
@@ -759,7 +798,13 @@ export const translations: Record<Locale, Record<string, string>> = {
     'dashboard.level': 'Niveau',
     'dashboard.createFirst': 'Crée ton premier deck',
     'dashboard.createFirstBody': 'Choisis une langue, ajoute des mots et regarde l\'IA créer des clips musicaux uniques pour chacun.',
-    'dashboard.generate': 'Créer',
+    'dashboard.generate': 'Générer',
+    'dashboard.wordsInLanguage': '{count} mots en {language}',
+    'dashboard.noWordsInLanguage': 'Pas encore de mots en {language}. Générez-en !',
+    'dashboard.noWordsYet': 'Pas encore de mots.',
+    'dashboard.vocabularyAwaits': 'Votre vocabulaire vous attend',
+    'dashboard.generateFirstHint': 'Générez vos premiers mots pour commencer',
+    'dashboard.generateFirstWords': 'Générer les premiers mots',
     'dashboard.loadingDecks': 'Chargement des decks...',
     'dashboard.loginAgain': 'Se reconnecter',
     'dashboard.newDeck': 'Nouveau Deck',
@@ -967,6 +1012,18 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.statusPartial': 'Partiel ({completed}/{total})',
     'deckview.confirmRemove': 'Supprimer « {word} » de ce deck ?',
     'deckview.noCredits': 'Plus de crédits',
+
+    // ── WordLibrary ──
+    'wordLibrary.all': 'Tout',
+    'wordLibrary.words': 'Mots',
+    'wordLibrary.phrases': 'Phrases',
+    'wordLibrary.recent': 'Récents',
+    'wordLibrary.az': 'A-Z',
+    'wordLibrary.za': 'Z-A',
+    'wordLibrary.noWords': 'Aucun mot à afficher.',
+
+    // ── Decks ──
+    'decks.title': 'Vos Decks',
 
     // ── Study (additional) ──
     'study.untitled': 'Sans titre',

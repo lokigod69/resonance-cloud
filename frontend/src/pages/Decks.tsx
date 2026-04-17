@@ -193,7 +193,7 @@ export default function Decks() {
       <div className="classic-aurora" aria-hidden="true" />
 
       <div className="classic-dashboard-header">
-        <h1>Your Decks</h1>
+        <h1>{t('decks.title')}</h1>
       </div>
 
       {availableLanguages.length > 1 && (
@@ -223,7 +223,7 @@ export default function Decks() {
           className="w-full sm:w-auto flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/35 text-sm font-medium text-white transition-colors"
         >
           <Sparkles size={14} />
-          Generate New Words
+          {t('dashboard.generate')}
         </button>
       </div>
 
