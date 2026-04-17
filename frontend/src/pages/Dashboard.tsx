@@ -10,7 +10,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDetailModal'
 import WordLibrary from '@/components/dashboard/WordLibrary'
 import { QUOTES } from '@/data/quotes'
-
+import type { Locale } from '@/lib/translations'
 
 type Deck = {
   id: string
@@ -27,7 +27,7 @@ export default function Dashboard() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
 
   const [decks, setDecks] = useState<Deck[]>([])
   const [loading, setLoading] = useState(true)
@@ -133,13 +133,14 @@ export default function Dashboard() {
     [decks]
   )
 
-  const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? t('study.untitled')])), [decks])
+  const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? t('study.untitled')])), [decks, t])
 
   const handleWatchVideo = (word: LibraryWord) => {
     navigate(`/deck/${word.deck_id}/word/${word.id}?returnTo=/dashboard`)
   }
 
-  const quote = useMemo(() => QUOTES[Math.floor(Math.random() * QUOTES.length)], [])
+  const quoteList = QUOTES[locale as Locale] ?? QUOTES.en
+  const quote = useMemo(() => quoteList[Math.floor(Math.random() * quoteList.length)], [quoteList])
 
   if (authError && !user) {
     return (
@@ -194,7 +195,7 @@ export default function Dashboard() {
     <div className="classic-dashboard-wrapper w-full max-w-full overflow-x-hidden">
       <div className="classic-aurora" aria-hidden="true" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col min-h-[calc(100vh-80px)]">
         <div className="classic-dashboard-header">
           <h1 className="break-words">
             {profile?.display_name
@@ -214,7 +215,7 @@ export default function Dashboard() {
             {/* Sticky language tabs */}
             {availableLanguages.length > 1 && (
               <div className="sticky top-16 z-10 mb-3 flex justify-center px-1 py-2">
-                <div className="inline-flex w-fit max-w-full flex-wrap justify-center gap-2 rounded-2xl border border-border/50 bg-card/80 px-3 py-3 shadow-sm backdrop-blur-sm">
+                <div className="inline-flex w-fit max-w-full flex-wrap justify-center gap-2 px-1 py-1">
                   {availableLanguages.map((lang) => {
                     const isActive = lang === activeLanguage
                     return (
@@ -254,8 +255,8 @@ export default function Dashboard() {
                   onWordClick={(w) => setSelectedWord(w)}
                   emptyMessage={
                     activeLanguage
-                      ? `No words yet in ${activeLanguage}. Generate some!`
-                      : 'No words yet.'
+                      ? t('dashboard.noWordsInLanguage', { language: t(`langName.${activeLanguage}`) })
+                      : t('dashboard.noWordsYet')
                   }
                 />
               )}
@@ -268,7 +269,7 @@ export default function Dashboard() {
                 className="w-full sm:w-auto min-h-[52px] px-8 py-4 rounded-full bg-foreground/10 hover:bg-foreground/15 border border-foreground/25 text-foreground font-semibold flex items-center justify-center gap-2 transition-colors"
               >
                 <Sparkles size={16} />
-                Generate New Words
+                {t('dashboard.generate')}
               </button>
             </div>
           </>
@@ -288,19 +289,19 @@ export default function Dashboard() {
                 <div className="w-8 h-8 rounded-full bg-accent" />
               </div>
             </div>
-            <p className="text-foreground text-lg font-medium mb-2">Your vocabulary awaits</p>
-            <p className="text-muted-foreground text-sm mb-6">Generate your first words to begin</p>
+            <p className="text-foreground text-lg font-medium mb-2">{t('dashboard.vocabularyAwaits')}</p>
+            <p className="text-muted-foreground text-sm mb-6">{t('dashboard.generateFirstHint')}</p>
             <button
               onClick={() => navigate('/generate')}
               className="rounded-xl bg-accent/20 border border-border px-6 py-3 hover:bg-accent/30 transition-colors"
             >
-              Generate First Words
+              {t('dashboard.generateFirstWords')}
             </button>
           </div>
         )}
 
         {/* Quote */}
-        <div className="mt-12 mb-8 text-center max-w-2xl mx-auto px-4">
+        <div className="mt-auto pt-12 pb-8 text-center max-w-2xl mx-auto px-4">
           <div className="bg-card/80 border border-border/50 rounded-xl p-6">
             <p className="text-base text-muted-foreground italic leading-relaxed">"{quote}"</p>
           </div>

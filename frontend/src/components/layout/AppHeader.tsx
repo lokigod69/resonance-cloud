@@ -51,7 +51,7 @@ export function AppHeader() {
   const [profileOpen, setProfileOpen] = useState(false)
 
   const mainNav = [
-    { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { to: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
     { to: '/decks', label: t('nav.decks'), icon: Library },
     { to: '/generate', label: t('nav.generate'), icon: Sparkles },
     { to: '/study', label: t('nav.study'), icon: BookOpen },
@@ -68,7 +68,7 @@ export function AppHeader() {
     .slice(0, 2)
 
   return (
-    <header className="flex items-center border-b border-border px-4 md:px-6 py-2 bg-background gap-2">
+    <header className="flex items-center border-b border-border px-4 md:px-6 py-2 bg-background gap-2 sticky top-0 z-40">
       {/* Mobile hamburger */}
       <div className="md:hidden">
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>

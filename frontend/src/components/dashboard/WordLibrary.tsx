@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import type { LibraryWord } from './WordDetailModal'
+import { useTranslation } from '@/hooks/useTranslation'
 
 type SortMode = 'recent' | 'az' | 'za'
 type FilterMode = 'all' | 'words' | 'phrases'
@@ -16,6 +17,7 @@ function isPhrase(word: LibraryWord): boolean {
 }
 
 export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLibraryProps) {
+  const { t } = useTranslation()
   const [sort, setSort] = useState<SortMode>('recent')
   const [filter, setFilter] = useState<FilterMode>('all')
 
@@ -42,25 +44,25 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
       {/* Controls */}
       <div className="flex flex-wrap gap-2 items-center justify-between">
         <div className="flex gap-1 flex-wrap">
-          {(['all', 'words', 'phrases'] as const).map((f) => (
+          {([['all', t('wordLibrary.all')], ['words', t('wordLibrary.words')], ['phrases', t('wordLibrary.phrases')]] as const).map(([f, label]) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-3 py-2 min-h-[36px] text-xs rounded-full border transition-colors capitalize ${
+              className={`px-3 py-2 min-h-[36px] text-xs rounded-full border transition-colors ${
                 filter === f
                   ? 'bg-foreground/15 border-foreground/30 text-foreground'
                   : 'border-foreground/10 text-foreground/55 hover:text-foreground/80 hover:border-foreground/20'
               }`}
             >
-              {f}
+              {label}
             </button>
           ))}
         </div>
         <div className="flex gap-1 flex-wrap">
           {([
-            ['recent', 'Recent'],
-            ['az', 'A–Z'],
-            ['za', 'Z–A'],
+            ['recent', t('wordLibrary.recent')],
+            ['az', t('wordLibrary.az')],
+            ['za', t('wordLibrary.za')],
           ] as const).map(([value, label]) => (
             <button
               key={value}
@@ -80,7 +82,7 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
       {/* Grid */}
       {visible.length === 0 ? (
         <div className="text-center py-12 text-foreground/50 text-sm">
-          {emptyMessage ?? 'No words to show.'}
+          {emptyMessage ?? t('wordLibrary.noWords')}
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

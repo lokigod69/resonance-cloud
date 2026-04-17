@@ -23,7 +23,7 @@ export default function PolishGlassLayout() {
   const isAdmin = profile?.role === 'admin'
 
   const navItems = [
-    { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
+    { label: t('nav.dashboard'), path: '/dashboard', icon: LayoutDashboard },
     { label: t('nav.decks'), path: '/decks', icon: Library },
     { label: t('nav.generate'), path: '/generate', icon: Sparkles },
     { label: t('nav.study'), path: '/study', icon: BookOpen },
