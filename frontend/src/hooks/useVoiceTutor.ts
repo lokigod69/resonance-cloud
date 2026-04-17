@@ -490,6 +490,30 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   )
 
   /**
+   * Synchronous iOS audio unlock. Must be called inside a user-gesture handler
+   * before any await. Creates the AudioContext if needed, resumes it, and plays
+   * a 1-frame silent buffer so later playback survives async gaps on iOS Safari.
+   */
+  const primeAudioForIOS = useCallback(() => {
+    try {
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
+      }
+      const ctx = audioContextRef.current
+      if (ctx.state === 'suspended') {
+        void ctx.resume()
+      }
+      const buffer = ctx.createBuffer(1, 1, 22050)
+      const source = ctx.createBufferSource()
+      source.buffer = buffer
+      source.connect(ctx.destination)
+      source.start(0)
+    } catch (err) {
+      console.warn('[useVoiceTutor] iOS audio prime failed:', err)
+    }
+  }, [])
+
+  /**
    * Ensure the AudioContext is created and in 'running' state.
    * Must be called inside a user gesture on iOS to "unlock" it.
    * Once unlocked, audio can be played from any context (including onstop callbacks).
@@ -632,6 +656,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
   const startConversationWithCharacter = useCallback(
     async (char: TutorCharacter) => {
+      primeAudioForIOS()
       const lang = language
       if (!lang) return
 
@@ -679,11 +704,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       }
       // Otherwise level is null → State 2.5 (level picker) renders
     },
-    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext],
+    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS],
   )
 
   const startConversationWithGemini = useCallback(
     async (params: GeminiTutorParams) => {
+      primeAudioForIOS()
       const lang = language
       if (!lang) return
 
@@ -735,7 +761,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         })
       }
     },
-    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext],
+    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS],
   )
 
   // Provider toggle preserves the Gemini mode/voice selection so users can
@@ -759,6 +785,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
   const startRoleplay = useCallback(
     async (scenario: RoleplayScenario, lang: string, selectedLevel: string) => {
+      primeAudioForIOS()
       await ensureAudioContext()
       endConversation()
       previousStateRef.current = null
@@ -815,11 +842,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         setStatus('error')
       }
     },
-    [endConversation, fetchAndPlayGreeting, ensureAudioContext],
+    [endConversation, fetchAndPlayGreeting, ensureAudioContext, primeAudioForIOS],
   )
 
   const selectLevel = useCallback(
     async (selectedLevel: string) => {
+      primeAudioForIOS()
       const isInitial = !levelRef.current
       setLevel(selectedLevel)
       levelRef.current = selectedLevel
@@ -840,7 +868,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         }
       }
     },
-    [language, fetchAndPlayGreeting],
+    [language, fetchAndPlayGreeting, primeAudioForIOS],
   )
 
   const changeVoice = useCallback(() => {
@@ -968,6 +996,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   }, [])
 
   const startRecording = useCallback(async () => {
+    primeAudioForIOS()
     if (!isSupported) {
       setError('Audio recording is not supported in this browser. Please try Chrome or Safari.')
       setStatus('error')
@@ -1095,7 +1124,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       }
       setStatus('error')
     }
-  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream, ensureAudioContext, playAudio, persistMessages])
+  }, [isSupported, language, callVoiceChat, scheduleReveal, ensureStream, ensureAudioContext, playAudio, persistMessages, primeAudioForIOS])
 
   const stopRecording = useCallback(() => {
     const recorder = mediaRecorderRef.current
