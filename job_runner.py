@@ -988,8 +988,24 @@ async def process_job(job: dict[str, Any]) -> None:
 
     # Optional cleanup
     if STORAGE_MODE == "cloud":
-        # Cloud cleanup deferred - suno retry may still need this workspace.
-        pass
+        # Cloud cleanup deferred — suno retry may still need this workspace.
+        # Track volume usage so we catch accumulation before /data fills up.
+        try:
+            import shutil
+            disk = shutil.disk_usage("/data")
+            pct = 100 * disk.used / disk.total
+            usage_msg = (
+                f"/data usage: {disk.used / 1e9:.1f}GB / {disk.total / 1e9:.1f}GB "
+                f"({pct:.0f}%)"
+            )
+            if pct >= 95:
+                log.error("[disk] CRITICAL %s — cleanup required", usage_msg)
+            elif pct >= 80:
+                log.warning("[disk] HIGH %s — monitor closely", usage_msg)
+            else:
+                log.info("[disk] %s", usage_msg)
+        except Exception as _disk_e:
+            log.debug("[disk] usage check failed: %s", _disk_e)
     elif CLEANUP_WORKSPACES and workspace_path.exists():
         import shutil
         shutil.rmtree(workspace_path, ignore_errors=True)
