@@ -5,6 +5,8 @@ import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { getCharacterById } from '@/characterRegistry'
+import { GEMINI_CHARACTER_MODES } from '@/data/geminiCharacterModes'
+import { GEMINI_ACCENTS } from '@/data/geminiAccents'
 
 interface Conversation {
   id: string
@@ -21,6 +23,33 @@ interface Conversation {
   scenario_id?: string | null
   npc_name?: string | null
   context_variant?: string | null
+  provider?: 'voxtral' | 'gemini' | null
+  gemini_character_mode_id?: string | null
+  gemini_voice_name?: string | null
+  gemini_accent_id?: string | null
+}
+
+function getGeminiModeName(id: string | null | undefined): string {
+  if (!id) return ''
+  const mode = GEMINI_CHARACTER_MODES.find((m) => m.id === id)
+  return mode?.name ?? id
+}
+
+function getGeminiAccentName(id: string | null | undefined): string {
+  if (!id || id === 'none') return ''
+  const accent = GEMINI_ACCENTS.find((a) => a.id === id)
+  return accent?.name ?? id
+}
+
+function buildGeminiDisplayName(conv: Conversation): string {
+  const modeName = getGeminiModeName(conv.gemini_character_mode_id)
+  const voice = conv.gemini_voice_name ?? conv.voice_name ?? ''
+  const accentName = getGeminiAccentName(conv.gemini_accent_id)
+  const parts: string[] = []
+  if (modeName) parts.push(modeName)
+  if (voice) parts.push(voice)
+  if (accentName) parts.push(accentName)
+  return parts.join(' · ')
 }
 
 interface Correction {
@@ -207,13 +236,16 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
           <div className="flex-1 min-w-0">
             {selectedConversation ? (() => {
               const isRoleplay = selectedConversation.mode === 'roleplay'
+              const isGemini = selectedConversation.provider === 'gemini'
               const cName = selectedConversation.character_id ? getCharacterById(selectedConversation.character_id)?.name : null
               const transcriptTitle = isRoleplay
                 ? (selectedConversation.title ?? 'Roleplay')
                 : (LANGUAGE_NAMES[selectedConversation.language] ?? selectedConversation.language)
               const transcriptSub = isRoleplay
                 ? selectedConversation.npc_name
-                : (cName || selectedConversation.voice_name)
+                : isGemini
+                  ? buildGeminiDisplayName(selectedConversation)
+                  : (cName || selectedConversation.voice_name)
               return (
                 <div className="flex items-center gap-2">
                   <FlagIcon code={selectedConversation.language} className="w-6 h-auto" />
@@ -221,6 +253,11 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                     <p className="text-sm font-medium text-white truncate">
                       {transcriptTitle}
                       {transcriptSub ? <span className="text-gray-400 font-normal"> · {transcriptSub}</span> : null}
+                      {isGemini && (
+                        <span className="ml-2 align-middle inline-block text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-900/50 text-cyan-300 border border-cyan-500/30">
+                          Gemini
+                        </span>
+                      )}
                     </p>
                     <p className="text-xs text-gray-500">{formatDate(selectedConversation.started_at)}</p>
                   </div>
@@ -266,9 +303,14 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                 <div className="space-y-2">
                   {conversations.map((conv) => {
                     const isRoleplay = conv.mode === 'roleplay'
+                    const isGemini = conv.provider === 'gemini'
                     const levelEmoji = conv.level ? LEVEL_EMOJI[conv.level] : null
                     const charName = conv.character_id ? getCharacterById(conv.character_id)?.name : null
-                    const displayName = isRoleplay ? conv.npc_name : (charName || conv.voice_name)
+                    const displayName = isRoleplay
+                      ? conv.npc_name
+                      : isGemini
+                        ? buildGeminiDisplayName(conv)
+                        : (charName || conv.voice_name)
                     const displayTitle = isRoleplay
                       ? (conv.title || 'Roleplay')
                       : (LANGUAGE_NAMES[conv.language] ?? conv.language)
@@ -284,13 +326,18 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                         <FlagIcon code={conv.language} className="w-7 h-auto shrink-0" />
 
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-1.5 mb-0.5">
+                          <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
                             {isRoleplay && <span className="text-sm">🎭</span>}
                             <span className="text-sm font-medium text-white truncate">
                               {displayTitle}
                             </span>
                             {displayName && (
                               <span className="text-xs text-gray-400 truncate">· {displayName}</span>
+                            )}
+                            {isGemini && (
+                              <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-900/50 text-cyan-300 border border-cyan-500/30 shrink-0">
+                                Gemini
+                              </span>
                             )}
                             {levelEmoji && <span className="text-sm">{levelEmoji}</span>}
                           </div>

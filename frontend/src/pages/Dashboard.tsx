@@ -10,7 +10,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDetailModal'
 import WordLibrary from '@/components/dashboard/WordLibrary'
 import { QUOTES } from '@/data/quotes'
-import { getLanguageName } from '@/lib/languageNames'
+
 
 type Deck = {
   id: string
@@ -133,7 +133,7 @@ export default function Dashboard() {
     [decks]
   )
 
-  const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? 'Untitled'])), [decks])
+  const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? t('study.untitled')])), [decks])
 
   const handleWatchVideo = (word: LibraryWord) => {
     navigate(`/deck/${word.deck_id}/word/${word.id}?returnTo=/dashboard`)
@@ -227,7 +227,7 @@ export default function Dashboard() {
                             : 'border-foreground/10 text-foreground/60 hover:text-foreground/90 hover:border-foreground/25'
                         }`}
                       >
-                        {getLanguageName(lang)}
+                        {t(`langName.${lang}`)}
                       </button>
                     )
                   })}
@@ -238,7 +238,7 @@ export default function Dashboard() {
             {/* Word count line */}
             {activeLanguage && (
               <p className="text-xs text-muted-foreground mb-4 text-center sm:text-left">
-                {libraryWords.length} words in {getLanguageName(activeLanguage)}
+                {t('dashboard.wordsInLanguage', { count: libraryWords.length, language: t(`langName.${activeLanguage}`) })}
               </p>
             )}
 

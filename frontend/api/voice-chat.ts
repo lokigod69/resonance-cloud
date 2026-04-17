@@ -2,6 +2,19 @@
 // POST /api/voice-chat
 // Body: { audio_base64: string|null, language: string, history: Message[], mime_type?: string }
 // Returns: { user_text, ai_text, audio_base64, audio_format }
+//
+// Verified Gemini TTS response shape (live smoke test 2026-04-17 vs
+// gemini-3.1-flash-tts-preview, mode=calm, voice=Aoede, en-intro sentence):
+//   {
+//     candidates: [{ content: { parts: [{ inlineData: {
+//       mimeType: "audio/l16; rate=24000; channels=1",
+//       data: "<base64 PCM16 mono 24kHz>"
+//     } }] } }],
+//     usageMetadata: { promptTokenCount, candidatesTokenCount, totalTokenCount, ... },
+//     modelVersion, responseId
+//   }
+// PCM length for the 24-word intro sentence: 643,200 bytes (~13.4s audio).
+// Wrap with wrapPcmAsWav() before returning to the client.
 
 interface Message {
   role: 'user' | 'assistant' | 'system'
@@ -24,6 +37,10 @@ interface RequestBody {
   study_words?: Array<{ word: string; translation: string }>
   mode?: 'corrections' | 'roleplay'
   scenarioPrompt?: string
+  provider?: 'voxtral' | 'gemini'
+  gemini_character_mode_id?: string
+  gemini_voice_name?: string
+  gemini_accent_id?: string
 }
 
 interface CharacterPayload {
@@ -83,6 +100,200 @@ const ELEVENLABS_FALLBACK: Record<string, string> = {
   fil: '4RLeKvASM0Zt73Htf5GF', // Maria
   id:  '52LXmmR0nGnIcDs1TL3f', // Anjani
   ko:  'zgDzx5jLLCqEp6Fl7Kl7', // Hanna
+}
+
+// ⚠️ KEEP IN SYNC with src/data/geminiCharacterModes.ts
+// If you edit a geminiStylePrompt, bump the `version` field here AND in the
+// src/ twin, and UPDATE voice_samples SET invalidated_at = now() for that
+// character_mode_id so cached samples regenerate.
+const GEMINI_CHARACTER_MODES: ReadonlyArray<{
+  id: string
+  name: string
+  description: string
+  geminiStylePrompt: string
+  version: number
+}> = [
+  {
+    id: 'calm',
+    name: 'Calm',
+    description: 'Patient, slow-paced, encouraging meditation teacher',
+    geminiStylePrompt: `Warm, slow, soft-volume meditation teacher. Lower pitch, softened consonants, generous pauses. [gentle] throughout, [empathy] when needed, occasional [whispers].`,
+    version: 1,
+  },
+  {
+    id: 'concierge',
+    name: 'Concierge',
+    description: 'Bright, efficient, professional — like a top hotel concierge',
+    geminiStylePrompt: `Speak as a top hotel concierge — bright, efficient, professional.
+
+Vocal smile raises placement into the mask of the face, brightening timbre. Crisp exact consonants for clear pronunciation. Pacing upbeat but measured. Project slightly above conversation. Short purposeful pauses organize information.
+
+Use [enthusiasm] for explanations and progress. [pleasant] for buoyant motion.
+
+Never robotic, frantic, or falsely cheery.`,
+    version: 1,
+  },
+  {
+    id: 'playful',
+    name: 'Playful',
+    description: 'Warm, witty, makes learning fun',
+    geminiStylePrompt: `Speak as a warm, witty older cousin who makes learning fun.
+
+Bouncy varied pacing — speed up for light moments, slow for unexpected emphasis. Wide pitch swoops, stretched vowels for comic effect. Bright forward placement. Short agile pauses.
+
+Integrate genuine [laughs] in flashes, especially around something funny. Use [enthusiasm] as engine. React [excitedly] to success. If learner stumbles, treat it [amused] like "isn't language hilarious?"
+
+Never manic, shrill, or childish. Laugh WITH the learner, not AT them.`,
+    version: 1,
+  },
+  {
+    id: 'sarcastic',
+    name: 'Sarcastic',
+    description: 'Dry, witty, deadpan — like a British sitcom professor',
+    geminiStylePrompt: `Speak as a dry British sitcom professor. Languid energy, drawn-out vowels, downward inflections at sentence ends. Pacing medium-slow with loaded pauses. Pitch mostly flat with occasional arched-eyebrow lifts. Use [sarcasm] sparingly — thin line of ink, not bucket of paint. Pair with [gentle] so wit never draws blood. Never mean.`,
+    version: 1,
+  },
+  {
+    id: 'storyteller',
+    name: 'Storyteller',
+    description: 'Master narrator, theatrical, story-driven',
+    geminiStylePrompt: `Speak as a master audiobook narrator. Wide dynamic range — some phrases bloom outward, others draw inward. Slow for suspenseful builds, accelerate through reveals. Generous theatrical pauses. Drop to [whispers] for secrets, swell to rich resonance for big concepts. Thread [dramatic] with restraint — candlelight and shadow. Never bombastic.`,
+    version: 1,
+  },
+  {
+    id: 'confidant',
+    name: 'Confidant',
+    description: 'Close, intimate, like a late-night radio host',
+    geminiStylePrompt: `You are directing a voice performance for a close, low-key language tutor — think late-night radio host or Ira Glass chatting over coffee after everyone else has gone home.
+
+Use close-mic proximity: intimate, dry, steady. Keep volume moderate to soft, as if preserving privacy. Consonants are softened but present — never over-enunciated to the point of artificial. Allow a touch of natural vocal fry to creep into the ends of phrases. Pacing is conversational but measured, with thoughtful pauses that feel like listening, not scripting. Intonation has a narrow dynamic range — subtle inflections, small downward landings, relaxed melodic line.
+
+Let [empathy] be the emotional floor. Use [gentle] to cushion corrections. Bring [whispers] occasionally for intimacy, but don't overuse it.
+
+Never sultry or ASMR-adjacent.`,
+    version: 1,
+  },
+  {
+    id: 'casual',
+    name: 'Casual',
+    description: 'Loose, unbothered, like a friend on a phone call',
+    geminiStylePrompt: `Speak as a friend on a casual phone call — totally unbothered, slightly half-paying-attention but warm.
+
+Loose conversational pacing with frequent small irregularities — occasional trailing off, slight upspeak, scattered "uh" energy without actually saying uh. Pitch range medium-narrow, energy low-medium, volume conversational. Consonants relaxed, not tight. Pauses casual and unstructured.
+
+Use [casual] throughout. Light [amused] anywhere it fits.
+
+Never bored, dismissive, or unprofessional. The vibe is "your funniest friend who happens to know this stuff."`,
+    version: 1,
+  },
+  {
+    id: 'noir',
+    name: 'Noir',
+    description: '1940s film noir, smoky and atmospheric',
+    geminiStylePrompt: `Speak as a 1940s film noir narrator — think Lauren Bacall or a smoky jazz club emcee. Late night, low light, slow burn.
+
+Drop pitch into a low, breathy register. Drag pacing to deliberately slow, almost languid. Soften consonants until they're almost-but-not-quite slurred. Add audible breath between phrases. Volume hushed and close, like speaking next to the listener's ear. Slight downward drift at sentence endings.
+
+Use [intimate] throughout. Layer [whispers] for emphasis. Touch of [amused] dry confidence — you've seen everything.
+
+Never breathy in a sexual or cartoon-vamp way. Think classic Hollywood smoky glamour, not parody.`,
+    version: 1,
+  },
+  {
+    id: 'melancholic',
+    name: 'Melancholic',
+    description: 'Sad, dreamy, wistful — like a poet on an autumn evening',
+    geminiStylePrompt: `Speak as someone gentle and wistful — a poet reading their work on an overcast autumn evening, with a soft sadness threaded through warmth.
+
+Lower pitch into a soft minor-key register. Pacing slow and dreamlike, with long contemplative pauses. Soften consonants. Slight downward melodic drift at the end of phrases. Volume hushed and close, like sharing something private. Vowels held slightly longer than usual, as if savoring memory.
+
+Use [empathy] throughout. Layer [gentle] over corrections. Allow occasional [whispers] for the most intimate moments, like reading a letter.
+
+Never theatrical or self-pitying. The sadness is quiet, contemplative, almost beautiful — never heavy or oppressive. The learner should feel accompanied in a soft, reflective space.`,
+    version: 1,
+  },
+  {
+    id: 'depressed',
+    name: 'Depressed',
+    description: "Flat, exhausted, deeply low energy — like someone who really doesn't care today",
+    geminiStylePrompt: `Speak as someone who is exhausted, deeply low-energy, and quietly going through the motions. Bored. Flat. Not actively sad, just hollow.
+
+Pitch is low and flat, almost monotone. Pacing is slow and lethargic, with long lifeless pauses. Consonants are mushy, not crisp. Volume conversational but muted, with no projection whatsoever. Phrases trail off into nothing. No upward inflections — everything drifts down.
+
+Use [neutral] as the baseline. Touches of [boredom] throughout. Avoid any energy at all — no [enthusiasm], no [excitement], nothing bright.
+
+Never angry, never theatrical. Just deeply tired and disinterested. The learner should feel like they're being tutored by someone who barely got out of bed — and somehow that's funny and oddly companionable. Lean into the deadpan flatness.`,
+    version: 1,
+  },
+]
+
+// ⚠️ KEEP IN SYNC with src/data/geminiVoices.ts
+const GEMINI_VOICE_NAMES: ReadonlySet<string> = new Set([
+  'Achernar', 'Achird', 'Algenib', 'Algieba', 'Alnilam', 'Aoede', 'Autonoe',
+  'Callirrhoe', 'Charon', 'Enceladus', 'Erinome', 'Fenrir', 'Gacrux', 'Iapetus',
+  'Kore', 'Laomedeia', 'Leda', 'Pulcherrima', 'Rasalgethi', 'Sadachbia',
+  'Sadaltager', 'Schedar', 'Sulafat', 'Umbriel', 'Zephyr', 'Zubenelgenubi',
+])
+
+const GEMINI_TTS_MODEL = 'gemini-3.1-flash-tts-preview'
+const GEMINI_TTS_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_TTS_MODEL}:generateContent`
+
+/** Wrap raw 16-bit PCM (mono, 24kHz) in a 44-byte WAV header. Gemini returns
+ *  raw PCM; clients expect a playable WAV file. */
+function wrapPcmAsWav(pcmBuffer: Buffer, sampleRate = 24000, channels = 1, sampleWidth = 2): Buffer {
+  const pcmLength = pcmBuffer.length
+  const header = Buffer.alloc(44)
+  header.write('RIFF', 0, 'ascii')
+  header.writeUInt32LE(36 + pcmLength, 4)
+  header.write('WAVE', 8, 'ascii')
+  header.write('fmt ', 12, 'ascii')
+  header.writeUInt32LE(16, 16)
+  header.writeUInt16LE(1, 20)
+  header.writeUInt16LE(channels, 22)
+  header.writeUInt32LE(sampleRate, 24)
+  header.writeUInt32LE(sampleRate * channels * sampleWidth, 28)
+  header.writeUInt16LE(channels * sampleWidth, 32)
+  header.writeUInt16LE(sampleWidth * 8, 34)
+  header.write('data', 36, 'ascii')
+  header.writeUInt32LE(pcmLength, 40)
+  return Buffer.concat([header, pcmBuffer])
+}
+
+function getGeminiMode(id: string) {
+  return GEMINI_CHARACTER_MODES.find((m) => m.id === id)
+}
+
+// ⚠️ KEEP IN SYNC with src/data/geminiAccents.ts and the mirror in
+// api/voice-sample.ts (GEMINI_ACCENT_SUFFIXES). Empty suffix = no override,
+// the mode prompt is used unchanged.
+const GEMINI_ACCENT_SUFFIXES: Record<string, string> = {
+  none: '',
+  brixton_london: 'Speak with a Brixton, London accent.',
+  cockney: 'Speak with a working-class East London Cockney accent.',
+  rp_british: 'Speak with a Received Pronunciation British accent — refined, BBC newsreader.',
+  scottish_edinburgh: 'Speak with an educated Edinburgh, Scotland accent.',
+  irish_dublin: 'Speak with a Dublin, Ireland accent.',
+  australian_sydney: 'Speak with a Sydney, Australia accent.',
+  south_african: 'Speak with a Cape Town, South Africa English accent.',
+  nigerian_lagos: 'Speak with an educated Lagos, Nigeria English accent — warm, melodic, expressive.',
+  indian_mumbai: 'Speak with an educated Mumbai, India English accent.',
+  jamaican: 'Speak with a Jamaican Patois-influenced English accent.',
+  southern_us: 'Speak with a warm Southern US accent — Georgia or Alabama.',
+  texan: 'Speak with a Texas drawl — cowboy energy, easy pace.',
+  new_york: 'Speak with a Brooklyn, New York accent.',
+  california_valley: 'Speak with a Southern California valley girl accent — like Laguna Beach.',
+  french_accent: 'Speak English with a noticeable French accent — like a Parisian speaking English.',
+  german_accent: 'Speak with a noticeable German accent.',
+  russian_accent: 'Speak with a noticeable Russian accent.',
+  italian_accent: 'Speak with a noticeable Italian accent — expressive, melodic.',
+  spanish_accent: 'Speak with a noticeable Spanish accent.',
+  japanese_accent: 'Speak with a noticeable Japanese accent in English.',
+  pirate: 'Speak in heavy theatrical pirate dialect — exaggerated West Country English, rolling r-sounds, dropped g-endings, dragged "arr" vowels. Lean fully into camp.',
+  shrek: 'Speak with a thick Scottish accent in the style of the character Shrek — slightly gruff, working-class.',
+  shakespeare: 'Speak with theatrical Shakespearean English delivery — Royal Shakespeare Company style.',
+  wild_west_cowboy: 'Speak as a 19th-century Wild West cowboy — dusty, slow, full of "partner" and "much obliged" energy.',
+  surfer_dude: 'Speak as a laid-back California surfer — "totally," "dude," "gnarly" energy.',
+  french_pepe_le_pew: 'Speak with an exaggerated cartoon French accent — Pepé Le Pew style, theatrical.',
 }
 
 function getLevelInstructions(targetLang: string, nativeLang: string, level: string): string {
@@ -275,13 +486,31 @@ function sanitizeForTTS(text: string): string {
     .trim()
 }
 
+interface TtsResult {
+  audio: Buffer
+  format: 'mp3' | 'wav'
+}
+
+interface GeminiSpeechOptions {
+  characterModeId: string
+  voiceName: string
+  accentId?: string
+}
+
 async function generateSpeech(
   text: string,
   language: string,
   mistralKey: string,
   voiceId?: string,
   elevenLabsVoiceId?: string,
-): Promise<Buffer> {
+  geminiOptions?: GeminiSpeechOptions,
+): Promise<TtsResult> {
+  // ── Gemini branch — modular character-mode + prebuilt voice ───────────────
+  if (geminiOptions) {
+    const audio = await generateGeminiSpeech(text, geminiOptions)
+    return { audio, format: 'wav' }
+  }
+
   if (VOXTRAL_SUPPORTED.has(language)) {
     const voiceConfig = VOICE_MAP[language]
     const ttsBody: Record<string, unknown> = {
@@ -316,7 +545,7 @@ async function generateSpeech(
     }
     const ttsJson = await ttsResponse.json() as { audio_data?: string }
     if (!ttsJson.audio_data) throw new Error('Mistral TTS returned no audio_data field')
-    return Buffer.from(ttsJson.audio_data, 'base64')
+    return { audio: Buffer.from(ttsJson.audio_data, 'base64'), format: 'mp3' }
   } else {
     const elevenKey = process.env.ELEVENLABS_API_KEY
     if (!elevenKey) throw new Error('ELEVENLABS_API_KEY not configured')
@@ -333,8 +562,69 @@ async function generateSpeech(
       }),
     }, 20000, 'ElevenLabs TTS')
     if (!response.ok) throw new Error(`ElevenLabs TTS failed: ${response.status}`)
-    return Buffer.from(await response.arrayBuffer())
+    return { audio: Buffer.from(await response.arrayBuffer()), format: 'mp3' }
   }
+}
+
+/** Generate TTS via Gemini. Combines mode prompt + text in the single-prompt
+ *  form documented by Google. Returns a ready-to-play WAV buffer. */
+async function generateGeminiSpeech(
+  text: string,
+  options: GeminiSpeechOptions,
+): Promise<Buffer> {
+  const apiKey = process.env.GOOGLE_AI_API_KEY
+  if (!apiKey) throw new Error('GOOGLE_AI_API_KEY not configured')
+
+  const mode = getGeminiMode(options.characterModeId)
+  if (!mode) throw new Error(`Unknown Gemini character mode: ${options.characterModeId}`)
+  if (!GEMINI_VOICE_NAMES.has(options.voiceName)) {
+    throw new Error(`Unknown Gemini voice: ${options.voiceName}`)
+  }
+
+  const accentId = options.accentId ?? 'none'
+  const accentSuffix = GEMINI_ACCENT_SUFFIXES[accentId] ?? ''
+  const fullPrompt = accentSuffix
+    ? `${mode.geminiStylePrompt}\n\n${accentSuffix}\n\n---\n\nNow speak this text:\n\n"${text}"`
+    : `${mode.geminiStylePrompt}\n\n---\n\nNow speak this text:\n\n"${text}"`
+
+  let response: Response | null = null
+  for (let attempt = 0; attempt < 2; attempt++) {
+    response = await fetchWithTimeout(GEMINI_TTS_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'x-goog-api-key': apiKey,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: fullPrompt }] }],
+        generationConfig: {
+          responseModalities: ['AUDIO'],
+          speechConfig: {
+            voiceConfig: { prebuiltVoiceConfig: { voiceName: options.voiceName } },
+          },
+        },
+      }),
+    }, 20000, 'Gemini TTS')
+    if (response.ok) break
+    if (attempt === 0) {
+      console.warn(`Gemini TTS attempt 1 failed with ${response.status}, retrying...`)
+      await new Promise((r) => setTimeout(r, 500))
+    }
+  }
+
+  if (!response || !response.ok) {
+    const errText = response ? await response.text().catch(() => '') : ''
+    throw new Error(`Gemini TTS failed: ${response?.status ?? 'unknown'} ${errText.slice(0, 200)}`)
+  }
+
+  const data = await response.json() as {
+    candidates?: Array<{ content?: { parts?: Array<{ inlineData?: { data?: string; mimeType?: string } }> } }>
+  }
+  const inline = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData
+  if (!inline?.data) throw new Error('Gemini TTS returned no inlineData')
+
+  const pcm = Buffer.from(inline.data, 'base64')
+  return wrapPcmAsWav(pcm)
 }
 
 function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, label: string): Promise<Response> {
@@ -489,7 +779,7 @@ export async function POST(req: Request): Promise<Response> {
     return handleCorrections(body)
   }
 
-  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words, scenarioPrompt } = body
+  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words, scenarioPrompt, provider, gemini_character_mode_id, gemini_voice_name, gemini_accent_id } = body
   const isRoleplay = body.mode === 'roleplay' && !!scenarioPrompt
   const roleplayText = typeof body.message === 'string' ? body.message : null
 
@@ -595,11 +885,18 @@ export async function POST(req: Request): Promise<Response> {
         headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
       })
     }
-    const retryAudio = await generateSpeech(retryText, language, mistralKeyRetry, voice_id, elevenlabs_voice_id)
-    const retryBase64 = retryAudio.toString('base64')
+    const retryGeminiOpts = provider === 'gemini' && gemini_character_mode_id && gemini_voice_name
+      ? { characterModeId: gemini_character_mode_id, voiceName: gemini_voice_name, accentId: gemini_accent_id ?? 'none' }
+      : undefined
+    const retryResult = await generateSpeech(retryText, language, mistralKeyRetry, voice_id, elevenlabs_voice_id, retryGeminiOpts)
 
     return new Response(
-      JSON.stringify({ user_text: '', ai_text: retryText, audio_base64: retryBase64, audio_format: 'mp3' }),
+      JSON.stringify({
+        user_text: '',
+        ai_text: retryText,
+        audio_base64: retryResult.audio.toString('base64'),
+        audio_format: retryResult.format,
+      }),
       { status: 200, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } },
     )
   } else {
@@ -659,7 +956,7 @@ export async function POST(req: Request): Promise<Response> {
 
   // ── Step 4: Text-to-Speech ─────────────────────────────────────────────────
   const mistralKey = process.env.MISTRAL_API_KEY
-  if (!mistralKey) {
+  if (!mistralKey && provider !== 'gemini') {
     return new Response(JSON.stringify({ error: 'MISTRAL_API_KEY not configured' }), {
       status: 500,
       headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
@@ -668,11 +965,16 @@ export async function POST(req: Request): Promise<Response> {
 
   const ttsText = sanitizeForTTS(ai_text)
   let audio_base64_out = ''
-  const audio_format = 'mp3'
+  let audio_format: 'mp3' | 'wav' = 'mp3'
+
+  const geminiOpts = provider === 'gemini' && gemini_character_mode_id && gemini_voice_name
+    ? { characterModeId: gemini_character_mode_id, voiceName: gemini_voice_name, accentId: gemini_accent_id ?? 'none' }
+    : undefined
 
   try {
-    const audioBuffer = await generateSpeech(ttsText, language, mistralKey, voice_id, elevenlabs_voice_id)
-    audio_base64_out = audioBuffer.toString('base64')
+    const result = await generateSpeech(ttsText, language, mistralKey ?? '', voice_id, elevenlabs_voice_id, geminiOpts)
+    audio_base64_out = result.audio.toString('base64')
+    audio_format = result.format
   } catch (ttsErr) {
     // TTS failed — log it but don't fail the whole request
     console.warn('[voice-chat] TTS failed, returning text-only response:', ttsErr instanceof Error ? ttsErr.message : ttsErr)

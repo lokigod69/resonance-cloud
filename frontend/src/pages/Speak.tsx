@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, RefreshCw, MessageSquarePlus, History, Signal } from 'lucide-react'
 import { useVoiceTutor } from '@/hooks/useVoiceTutor'
 import { useStudyWords } from '@/hooks/useStudyWords'
-import { CharacterGrid } from '@/components/speak/CharacterGrid'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
+import { VoiceTutorPicker } from '@/components/speak/VoiceTutorPicker'
+import { ProviderToggle } from '@/components/speak/ProviderToggle'
 import {
   SCENARIO_CATEGORIES,
   drawScenes,
@@ -343,8 +344,22 @@ export default function Speak() {
 
         <div className="flex-1 flex items-start justify-center px-6 pt-6">
           <div className="w-full max-w-2xl">
-            <h2 className="text-base font-semibold text-white mb-1">Choose your tutor</h2>
-            <p className="text-sm text-gray-400 mb-5">Pick a teaching style or character</p>
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <div>
+                <h2 className="text-base font-semibold text-white">Choose your tutor</h2>
+                <p className="text-sm text-gray-400">
+                  {tutor.provider === 'gemini'
+                    ? 'Pick a character mode, then pick a voice'
+                    : 'Pick a teaching style or character'}
+                </p>
+              </div>
+              <ProviderToggle
+                value={tutor.provider}
+                onChange={tutor.setProvider}
+                disabled={!!tutor.conversationId || isBusy}
+                disabledReason="End the current conversation to switch providers."
+              />
+            </div>
 
             {isStarting && (
               <div className="flex items-center gap-2 mb-4 text-gray-400 text-sm">
@@ -359,9 +374,23 @@ export default function Speak() {
               </div>
             )}
 
-            <CharacterGrid
-              onSelect={(char) => tutor.startConversationWithCharacter(char)}
+            <VoiceTutorPicker
+              provider={tutor.provider}
+              language={tutor.language!}
               disabled={isStarting}
+              onVoxtralSelect={(char) => tutor.startConversationWithCharacter(char)}
+              onGeminiSelect={({ mode, voiceName, accentId }) =>
+                tutor.startConversationWithGemini({
+                  characterModeId: mode.id,
+                  characterModeName: mode.name,
+                  voiceName,
+                  version: mode.version,
+                  accentId,
+                })
+              }
+              initialGeminiModeId={tutor.geminiModeId}
+              initialGeminiVoiceName={tutor.geminiVoiceName}
+              initialGeminiAccentId={tutor.geminiAccentId}
             />
           </div>
         </div>

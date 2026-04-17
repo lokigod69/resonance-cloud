@@ -2,6 +2,7 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import { type TutorVoice, TUTOR_VOICES, getVoicesForLanguage } from '@/voiceRegistry'
 import { type TutorCharacter, resolveCharacterVoice } from '@/characterRegistry'
 import { supabase } from '@/lib/supabase'
+import { playAudioViaContext, playAudioViaElement } from '@/lib/audioUtils'
 import {
   type RoleplayScenario,
   pickContextVariant,
@@ -32,6 +33,16 @@ interface VoiceChatResponse {
   audio_format: string
 }
 
+export type SpeakProvider = 'voxtral' | 'gemini'
+
+export interface GeminiTutorParams {
+  characterModeId: string
+  characterModeName: string
+  voiceName: string
+  version: number
+  accentId?: string
+}
+
 export interface UseVoiceTutorReturn {
   language: string | null
   voice: TutorVoice | null
@@ -47,6 +58,7 @@ export interface UseVoiceTutorReturn {
   stopRecordingIfActive: () => void
   selectLanguage: (lang: string) => void
   startConversationWithCharacter: (char: TutorCharacter) => Promise<void>
+  startConversationWithGemini: (params: GeminiTutorParams) => Promise<void>
   startRoleplay: (scenario: RoleplayScenario, language: string, level: string) => Promise<void>
   isRoleplayMode: boolean
   activeScenario: RoleplayScenario | null
@@ -68,6 +80,34 @@ export interface UseVoiceTutorReturn {
   replayMessageAudio: (message: TutorMessage) => Promise<void>
   saveCorrections: (corrections: unknown) => Promise<void>
   conversationId: string | null
+  provider: SpeakProvider
+  setProvider: (provider: SpeakProvider) => void
+  geminiModeId: string | null
+  geminiVoiceName: string | null
+  geminiAccentId: string
+}
+
+const LS_PROVIDER = 'resonance_speak_provider'
+const LS_GEMINI_MODE = 'resonance_speak_gemini_mode_id'
+const LS_GEMINI_VOICE = 'resonance_speak_gemini_voice_name'
+const LS_GEMINI_ACCENT = 'resonance_speak_gemini_accent_id'
+const DEFAULT_ACCENT_ID = 'none'
+
+function readStoredProvider(): SpeakProvider {
+  if (typeof window === 'undefined') return 'voxtral'
+  const raw = window.localStorage.getItem(LS_PROVIDER)
+  return raw === 'gemini' ? 'gemini' : 'voxtral'
+}
+
+function readStored(key: string): string | null {
+  if (typeof window === 'undefined') return null
+  return window.localStorage.getItem(key)
+}
+
+function writeStored(key: string, value: string | null) {
+  if (typeof window === 'undefined') return
+  if (value === null) window.localStorage.removeItem(key)
+  else window.localStorage.setItem(key, value)
 }
 
 // ── Speak history persistence helpers ─────────────────────────────────────────
@@ -88,62 +128,6 @@ function blobToBase64(blob: Blob): Promise<string> {
     }
     reader.onerror = reject
     reader.readAsDataURL(blob)
-  })
-}
-
-/**
- * Play base64-encoded audio through the Web Audio API.
- * AudioContext must already be unlocked (resumed) before calling.
- */
-async function playAudioViaContext(
-  base64: string,
-  _format: string,
-  ctx: AudioContext,
-  onSourceCreated?: (source: AudioBufferSourceNode) => void,
-  isAborted?: () => boolean,
-): Promise<void> {
-  const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
-  const arrayBuffer = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength)
-  const audioBuffer = await ctx.decodeAudioData(arrayBuffer as ArrayBuffer)
-  return new Promise<void>((resolve) => {
-    if (isAborted?.()) { resolve(); return }
-    const source = ctx.createBufferSource()
-    source.buffer = audioBuffer
-    source.connect(ctx.destination)
-    source.onended = () => resolve()
-    onSourceCreated?.(source)
-    source.start(0)
-  })
-}
-
-/** Fallback: play via HTMLAudioElement (works on desktop, blocked by iOS in non-gesture contexts) */
-function playAudioViaElement(
-  base64: string,
-  format: string,
-  onElementCreated?: (audio: HTMLAudioElement) => void,
-  isAborted?: () => boolean,
-): Promise<void> {
-  return new Promise((resolve, reject) => {
-    const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0))
-    const mimeMap: Record<string, string> = { mp3: 'audio/mpeg', wav: 'audio/wav', pcm: 'audio/pcm' }
-    const blob = new Blob([bytes], { type: mimeMap[format] || `audio/${format}` })
-    const url = URL.createObjectURL(blob)
-    const audio = new Audio(url)
-    audio.onended = () => {
-      URL.revokeObjectURL(url)
-      resolve()
-    }
-    audio.onerror = () => {
-      URL.revokeObjectURL(url)
-      reject(new Error('Audio playback failed'))
-    }
-    onElementCreated?.(audio)
-    if (isAborted?.()) {
-      URL.revokeObjectURL(url)
-      resolve()
-      return
-    }
-    audio.play().catch(reject)
   })
 }
 
@@ -173,6 +157,14 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const [voice, setVoice] = useState<TutorVoice | null>(null)
   const [character, setCharacter] = useState<TutorCharacter | null>(null)
   const [level, setLevel] = useState<string | null>(null)
+  const [provider, setProviderState] = useState<SpeakProvider>(() => readStoredProvider())
+  const [geminiModeId, setGeminiModeId] = useState<string | null>(() => readStored(LS_GEMINI_MODE))
+  const [geminiVoiceName, setGeminiVoiceName] = useState<string | null>(() => readStored(LS_GEMINI_VOICE))
+  const [geminiAccentId, setGeminiAccentId] = useState<string>(() => readStored(LS_GEMINI_ACCENT) ?? DEFAULT_ACCENT_ID)
+  const providerRef = useRef<SpeakProvider>(provider)
+  const geminiModeIdRef = useRef<string | null>(geminiModeId)
+  const geminiVoiceNameRef = useRef<string | null>(geminiVoiceName)
+  const geminiAccentIdRef = useRef<string>(geminiAccentId)
   const [status, setStatus] = useState<TutorStatus>('idle')
   const [messages, setMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -207,12 +199,16 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const characterRef = useRef<TutorCharacter | null>(null)
   const previousStateRef = useRef<{
     voice: TutorVoice
-    character: TutorCharacter
+    character: TutorCharacter | null
     messages: TutorMessage[]
     studyMode: boolean
     studyWords: Array<{ word: string; translation: string }>
     conversationId: string | null
     messageCount: number
+    provider: SpeakProvider
+    geminiModeId: string | null
+    geminiVoiceName: string | null
+    geminiAccentId: string
   } | null>(null)
   const levelRef = useRef<string | null>(null)
   const mimeTypeRef = useRef<string>('audio/webm')
@@ -245,6 +241,26 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   useEffect(() => {
     levelRef.current = level
   }, [level])
+
+  useEffect(() => {
+    providerRef.current = provider
+    writeStored(LS_PROVIDER, provider)
+  }, [provider])
+
+  useEffect(() => {
+    geminiModeIdRef.current = geminiModeId
+    writeStored(LS_GEMINI_MODE, geminiModeId)
+  }, [geminiModeId])
+
+  useEffect(() => {
+    geminiVoiceNameRef.current = geminiVoiceName
+    writeStored(LS_GEMINI_VOICE, geminiVoiceName)
+  }, [geminiVoiceName])
+
+  useEffect(() => {
+    geminiAccentIdRef.current = geminiAccentId
+    writeStored(LS_GEMINI_ACCENT, geminiAccentId)
+  }, [geminiAccentId])
 
   // Cleanup on unmount
   useEffect(() => {
@@ -299,16 +315,25 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       convMessageCountRef.current = 1
 
       const rp = roleplayMetaRef.current
+      const isGemini = providerRef.current === 'gemini'
       await supabase.from('speak_conversations').insert({
         id,
         user_id: userId,
         language: lang,
-        voice_name: rp ? rp.npcName : (characterRef.current?.name ?? voiceRef.current?.name ?? null),
-        character_id: rp ? null : (characterRef.current?.id ?? null),
+        voice_name: rp
+          ? rp.npcName
+          : (isGemini
+              ? geminiVoiceNameRef.current
+              : (characterRef.current?.name ?? voiceRef.current?.name ?? null)),
+        character_id: rp || isGemini ? null : (characterRef.current?.id ?? null),
         level: levelRef.current ?? null,
         message_count: 1,
         title: rp ? rp.title : greeting.slice(0, 80),
         started_at: new Date().toISOString(),
+        provider: providerRef.current,
+        gemini_character_mode_id: isGemini ? geminiModeIdRef.current : null,
+        gemini_voice_name: isGemini ? geminiVoiceNameRef.current : null,
+        gemini_accent_id: isGemini ? geminiAccentIdRef.current : null,
         ...(rp
           ? {
               mode: 'roleplay',
@@ -392,19 +417,28 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         native_language: resolveNativeLanguage(),
       }
 
-      // Voice + character resolution
-      const currentChar = characterRef.current
-      if (currentChar) {
-        const resolved = resolveCharacterVoice(currentChar, lang)
-        if (resolved.mistralVoiceId) body.voice_id = resolved.mistralVoiceId
-        if (resolved.elevenLabsId) body.elevenlabs_voice_id = resolved.elevenLabsId
-        body.character_name = currentChar.name
-        body.character_tier = currentChar.tier
-        if (currentChar.identity) body.character_identity = currentChar.identity
-        body.character_directive = currentChar.directive
+      // Provider + Voice + character resolution
+      if (providerRef.current === 'gemini' && geminiModeIdRef.current && geminiVoiceNameRef.current) {
+        body.provider = 'gemini'
+        body.gemini_character_mode_id = geminiModeIdRef.current
+        body.gemini_voice_name = geminiVoiceNameRef.current
+        body.gemini_accent_id = geminiAccentIdRef.current
+        // Intentionally no character_* fields — Gemini mode is TTS-only;
+        // style prompt must not leak into the LLM (buildSystemPrompt).
       } else {
-        if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
-        if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
+        const currentChar = characterRef.current
+        if (currentChar) {
+          const resolved = resolveCharacterVoice(currentChar, lang)
+          if (resolved.mistralVoiceId) body.voice_id = resolved.mistralVoiceId
+          if (resolved.elevenLabsId) body.elevenlabs_voice_id = resolved.elevenLabsId
+          body.character_name = currentChar.name
+          body.character_tier = currentChar.tier
+          if (currentChar.identity) body.character_identity = currentChar.identity
+          body.character_directive = currentChar.directive
+        } else {
+          if (v?.mistralVoiceId) body.voice_id = v.mistralVoiceId
+          if (v?.elevenLabsId) body.elevenlabs_voice_id = v.elevenLabsId
+        }
       }
 
       if (studyModeRef.current && studyWordsRef.current.length > 0) {
@@ -648,6 +682,81 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     [language, fetchAndPlayGreeting, endConversation, ensureAudioContext],
   )
 
+  const startConversationWithGemini = useCallback(
+    async (params: GeminiTutorParams) => {
+      const lang = language
+      if (!lang) return
+
+      await ensureAudioContext()
+
+      // Clear roleplay + prior Voxtral character — Gemini has no character tier
+      isRoleplayRef.current = false
+      scenarioPromptRef.current = null
+      roleplayMetaRef.current = null
+      setIsRoleplayMode(false)
+      setActiveScenario(null)
+      setActiveNpcName(null)
+
+      endConversation()
+      previousStateRef.current = null
+
+      // Synthetic voice so the rest of the state machine (greeting, conversation
+      // header, replay buttons) works unchanged. `TutorCharacter` is left null
+      // for Gemini since mode prompts are TTS-only and must not influence the LLM.
+      const syntheticVoice: TutorVoice = {
+        id: `gemini_${params.characterModeId}_${params.voiceName}_${lang}`,
+        name: `${params.characterModeName} · ${params.voiceName}`,
+        language: lang,
+        gender: 'female',
+        mistralVoiceId: '',
+        sampleUrl: '',
+      }
+
+      setCharacter(null)
+      characterRef.current = null
+      setGeminiModeId(params.characterModeId)
+      geminiModeIdRef.current = params.characterModeId
+      setGeminiVoiceName(params.voiceName)
+      geminiVoiceNameRef.current = params.voiceName
+      const nextAccent = params.accentId ?? DEFAULT_ACCENT_ID
+      setGeminiAccentId(nextAccent)
+      geminiAccentIdRef.current = nextAccent
+      setVoice(syntheticVoice)
+      voiceRef.current = syntheticVoice
+      setError(null)
+
+      const savedLevel = localStorage.getItem(`voice-tutor-level-${lang}`)
+      if (savedLevel) {
+        setLevel(savedLevel)
+        levelRef.current = savedLevel
+        fetchAndPlayGreeting(lang, syntheticVoice).catch((err) => {
+          setError(err instanceof Error ? err.message : 'Failed to start conversation')
+          setStatus('error')
+        })
+      }
+    },
+    [language, fetchAndPlayGreeting, endConversation, ensureAudioContext],
+  )
+
+  // Provider toggle preserves the Gemini mode/voice selection so users can
+  // flip back without re-picking. Active state (voice, character, messages)
+  // is cleared because those ARE provider-specific.
+  const setProvider = useCallback((next: SpeakProvider) => {
+    if (next === providerRef.current) return
+    stopAudio()
+    setProviderState(next)
+    providerRef.current = next
+    setVoice(null)
+    voiceRef.current = null
+    setCharacter(null)
+    characterRef.current = null
+    setMessages([])
+    messagesRef.current = []
+    setPendingAudio(null)
+    setError(null)
+    setStatus('idle')
+  }, [stopAudio])
+
   const startRoleplay = useCallback(
     async (scenario: RoleplayScenario, lang: string, selectedLevel: string) => {
       await ensureAudioContext()
@@ -735,8 +844,11 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   )
 
   const changeVoice = useCallback(() => {
-    // Snapshot full conversation state so cancelChangeVoice can restore it
-    if (voiceRef.current && characterRef.current) {
+    // Snapshot full conversation state so cancelChangeVoice can restore it.
+    // Voxtral: character is non-null. Gemini: character is null but the
+    // provider + mode + voice triple identifies the session. Snapshot on
+    // `voiceRef.current` alone so both providers can be restored.
+    if (voiceRef.current) {
       previousStateRef.current = {
         voice: voiceRef.current,
         character: characterRef.current,
@@ -745,11 +857,15 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         studyWords: studyWordsRef.current,
         conversationId: conversationIdRef.current,
         messageCount: convMessageCountRef.current,
+        provider: providerRef.current,
+        geminiModeId: geminiModeIdRef.current,
+        geminiVoiceName: geminiVoiceNameRef.current,
+        geminiAccentId: geminiAccentIdRef.current,
       }
     }
     stopAudio()
-    // Don't call endConversation() — deferred to startConversationWithCharacter
-    // so cancelChangeVoice can restore the live session
+    // Don't call endConversation() — deferred to startConversationWith* so
+    // cancelChangeVoice can restore the live session.
     setVoice(null)
     voiceRef.current = null
     setCharacter(null)
@@ -1067,6 +1183,16 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       conversationIdRef.current = prev.conversationId
       setConversationId(prev.conversationId)
       convMessageCountRef.current = prev.messageCount
+      // Restore provider + Gemini selection so the in-flight session is whole.
+      // callVoiceChat reads the refs, so keep those in sync with state.
+      setProviderState(prev.provider)
+      providerRef.current = prev.provider
+      setGeminiModeId(prev.geminiModeId)
+      geminiModeIdRef.current = prev.geminiModeId
+      setGeminiVoiceName(prev.geminiVoiceName)
+      geminiVoiceNameRef.current = prev.geminiVoiceName
+      setGeminiAccentId(prev.geminiAccentId)
+      geminiAccentIdRef.current = prev.geminiAccentId
       previousStateRef.current = null
     } else {
       resetConversation()
@@ -1095,6 +1221,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     stopRecordingIfActive,
     selectLanguage,
     startConversationWithCharacter,
+    startConversationWithGemini,
     startRoleplay,
     isRoleplayMode,
     activeScenario,
@@ -1115,5 +1242,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     revealMessage,
     saveCorrections,
     conversationId,
+    provider,
+    setProvider,
+    geminiModeId,
+    geminiVoiceName,
+    geminiAccentId,
   }
 }
