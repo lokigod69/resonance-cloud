@@ -35,7 +35,7 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
     <div className="space-y-5">
       {/* Style Tutors */}
       <div>
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Style Tutors</h3>
+        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">STYLE TUTORS</h3>
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
           {styleTutors.map((char) => (
             <button
@@ -56,7 +56,7 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
 
       {/* Persona + Public Characters */}
       <div>
-        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Characters</h3>
+        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">CHARACTERS</h3>
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
           {personaCharacters.map((char) => (
             <button

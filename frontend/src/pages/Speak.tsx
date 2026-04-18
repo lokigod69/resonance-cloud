@@ -374,14 +374,10 @@ export default function Speak() {
               </div>
             )}
 
-            {/* Provider toggle + heading live on the voice-selection screen,
+            {/* Provider toggle lives on the voice-selection screen,
                 not on the Gemini mode+accent stage. */}
             {!isGeminiModeStage && (
-              <div className="flex items-center justify-between gap-3 mb-4">
-                <div>
-                  <h2 className="text-base font-semibold text-white">Choose your tutor</h2>
-                  <p className="text-sm text-gray-400">Pick a teaching style or character</p>
-                </div>
+              <div className="mb-4">
                 <ProviderToggle
                   value={tutor.provider}
                   onChange={tutor.setProvider}

@@ -475,6 +475,34 @@ interface GeminiSpeechOptions {
   accentId?: string
 }
 
+function buildGeminiTtsPrompt(
+  text: string,
+  language: string,
+  modePrompt: string,
+  accentSuffix: string,
+): string {
+  const lang = LANGUAGE_CONFIG[language]
+  const languageLabel = lang ? `${lang.name} (${language})` : language
+
+  return [
+    '# PERFORMANCE DIRECTIONS',
+    modePrompt,
+    accentSuffix ? `\n${accentSuffix}` : '',
+    '',
+    '# OUTPUT RULES',
+    'Read only the transcript inside the <transcript> tags.',
+    'Read the transcript exactly as written.',
+    `The transcript language is ${languageLabel}. Keep every word in that language.`,
+    'Do not translate, paraphrase, summarize, answer, or add commentary.',
+    'Do not substitute English words or words from any other language.',
+    'If accent or style directions conflict with the transcript language, preserve the transcript language and treat the accent only as a light delivery color.',
+    '',
+    '<transcript>',
+    text,
+    '</transcript>',
+  ].filter(Boolean).join('\n')
+}
+
 async function generateSpeech(
   text: string,
   language: string,
@@ -485,7 +513,7 @@ async function generateSpeech(
 ): Promise<TtsResult> {
   // ── Gemini branch — modular character-mode + prebuilt voice ───────────────
   if (geminiOptions) {
-    const audio = await generateGeminiSpeech(text, geminiOptions)
+    const audio = await generateGeminiSpeech(text, language, geminiOptions)
     return { audio, format: 'wav' }
   }
 
@@ -548,6 +576,7 @@ async function generateSpeech(
  *  form documented by Google. Returns a ready-to-play WAV buffer. */
 async function generateGeminiSpeech(
   text: string,
+  language: string,
   options: GeminiSpeechOptions,
 ): Promise<Buffer> {
   const mode = getGeminiMode(options.characterModeId)
@@ -558,9 +587,7 @@ async function generateGeminiSpeech(
 
   const accentId = options.accentId ?? 'none'
   const accentSuffix = GEMINI_ACCENT_SUFFIXES[accentId] ?? ''
-  const fullPrompt = accentSuffix
-    ? `${mode.geminiStylePrompt}\n\n${accentSuffix}\n\n---\n\nNow speak this text:\n\n"${text}"`
-    : `${mode.geminiStylePrompt}\n\n---\n\nNow speak this text:\n\n"${text}"`
+  const fullPrompt = buildGeminiTtsPrompt(text, language, mode.geminiStylePrompt, accentSuffix)
   const result = await generateGeminiTtsFromPrompt(fullPrompt, options.voiceName)
   return result.audio
 }

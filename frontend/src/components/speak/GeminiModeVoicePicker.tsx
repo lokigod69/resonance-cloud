@@ -33,6 +33,11 @@ const GROUP_LABELS: Record<GeminiAccent['group'], string> = {
   theatrical: 'Theatrical',
 }
 
+const SECTION_LABEL_CLASS = 'text-xs font-semibold text-gray-400 uppercase tracking-wider'
+const FOOTER_SAFE_AREA_STYLE = {
+  paddingBottom: 'max(0.25rem, env(safe-area-inset-bottom))',
+}
+
 export function GeminiModeVoicePicker({
   language,
   disabled,
@@ -68,12 +73,11 @@ export function GeminiModeVoicePicker({
   if (stage === 'voice') {
     return (
       <div className="flex flex-col min-h-[70vh]">
-        <div className="mb-5">
-          <h3 className="text-xl font-semibold text-white">Choose a voice</h3>
-          <p className="mt-1 text-sm text-gray-400">Listen to a neutral sample, then continue.</p>
+        <div className="mb-3">
+          <p className={SECTION_LABEL_CLASS}>VOICE STYLES</p>
         </div>
 
-        <div className="flex-1 space-y-2 overflow-y-auto pr-1">
+        <div className="flex-1 space-y-2 pr-1">
           {GEMINI_VOICES.map((voice) => {
             const selected = selectedVoiceName === voice.name
             return (
@@ -104,7 +108,10 @@ export function GeminiModeVoicePicker({
           })}
         </div>
 
-        <div className="sticky bottom-0 pt-4 pb-1 bg-gradient-to-t from-gray-950 via-gray-950/95 to-transparent">
+        <div
+          className="sticky bottom-0 pt-4 bg-gradient-to-t from-gray-950 via-gray-950/95 to-transparent"
+          style={FOOTER_SAFE_AREA_STYLE}
+        >
           <button
             type="button"
             onClick={() => {
@@ -123,21 +130,19 @@ export function GeminiModeVoicePicker({
 
   const summary = [
     selectedVoiceName,
-    selectedMode?.name ?? 'Pick a mode',
+    selectedMode?.name ?? 'Pick a vibe',
     selectedAccent.id === 'none' ? 'No accent' : selectedAccent.name,
   ]
     .filter(Boolean)
-    .join(' · ')
+    .join(' / ')
 
   return (
     <div className="flex flex-col min-h-[70vh]">
-      <div className="mb-5">
-        <h3 className="text-xl font-semibold text-white">Choose a mode</h3>
-        <p className="mt-1 text-sm text-gray-400">Pick the speaking style. Accent is optional.</p>
+      <div className="mb-3">
+        <p className={SECTION_LABEL_CLASS}>Choose a vibe</p>
       </div>
 
-      <div className="flex-1 flex flex-col gap-3 overflow-y-auto pr-1">
-        {/* Mode list — collapses to a single pill when accent is expanded. */}
+      <div className="flex-1 flex flex-col gap-4 pr-1">
         {accentExpanded ? (
           <button
             type="button"
@@ -146,8 +151,8 @@ export function GeminiModeVoicePicker({
             className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-2xl border border-cyan-500/40 bg-cyan-900/30 text-left text-sm text-white hover:bg-cyan-900/50 transition-colors disabled:opacity-50"
           >
             <span>
-              <span className="text-xs text-gray-400 mr-2">Mode:</span>
-              <span className="font-medium">{selectedMode?.name ?? 'Pick one'}</span>
+              <span className="text-xs text-gray-400 mr-2">Vibe:</span>
+              <span className="font-medium">{selectedMode?.name ?? 'Pick a vibe'}</span>
             </span>
             <ChevronUp className="h-4 w-4 text-cyan-300" />
           </button>
@@ -175,10 +180,9 @@ export function GeminiModeVoicePicker({
           </div>
         )}
 
-        {/* Accent accordion header — always visible. */}
         <button
           type="button"
-          onClick={() => setAccentExpanded((v) => !v)}
+          onClick={() => setAccentExpanded((value) => !value)}
           disabled={disabled}
           aria-expanded={accentExpanded}
           className={`w-full flex items-center justify-between gap-3 px-4 py-4 rounded-2xl border text-left transition-colors disabled:opacity-50 ${
@@ -188,8 +192,11 @@ export function GeminiModeVoicePicker({
           }`}
         >
           <span className="flex flex-col">
-            <span className="text-base font-medium text-white">Accents (optional)</span>
-            <span className="text-xs text-gray-400 mt-0.5">
+            <span className="text-base font-medium text-white">Accents (experimental)</span>
+            <span className="text-xs text-amber-200/90 mt-1">
+              Note: accents can override the voice&apos;s natural gender or tone.
+            </span>
+            <span className="text-xs text-gray-400 mt-1">
               {selectedAccent.id === 'none' ? 'No accent selected' : selectedAccent.name}
             </span>
           </span>
@@ -236,7 +243,7 @@ export function GeminiModeVoicePicker({
 
       <div
         className="sticky bottom-0 pt-4 bg-gradient-to-t from-gray-950 via-gray-950/95 to-transparent"
-        style={{ paddingBottom: 'max(0.25rem, env(safe-area-inset-bottom))' }}
+        style={FOOTER_SAFE_AREA_STYLE}
       >
         <p className="text-xs text-gray-400 mb-2 truncate" title={summary}>
           {summary}
