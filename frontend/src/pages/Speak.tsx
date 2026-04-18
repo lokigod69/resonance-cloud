@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, RefreshCw, MessageSquarePlus, History, Signal } from 'lucide-react'
+import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, UserRoundCog, MessageSquarePlus, History, Signal } from 'lucide-react'
 import { useVoiceTutor } from '@/hooks/useVoiceTutor'
 import { useStudyWords } from '@/hooks/useStudyWords'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
@@ -328,17 +328,27 @@ export default function Speak() {
     )
   }
 
-  // ── State 2: Character Selection ─────────────────────────────────────────────
+  // ── State 2: Character / Voice Selection ────────────────────────────────────
   if (!tutor.voice) {
     const isStarting = tutor.status === 'processing'
+    const isGeminiModeStage = tutor.provider === 'gemini' && tutor.geminiPickerStage === 'mode'
+    const goBack = () => {
+      if (isGeminiModeStage) {
+        tutor.setGeminiPickerStage('voice')
+      } else {
+        tutor.cancelChangeVoice()
+      }
+    }
+    const providerToggleDisabled =
+      (!!tutor.conversationId && !tutor.isChangingVoice) || isBusy
 
     return (
       <div className="flex flex-col min-h-full pb-20">
-        {/* Header */}
+        {/* Header — single Back button */}
         <div className="sticky top-0 z-40 bg-gray-950 pt-4 pb-3 border-b border-white/5">
           <div className="max-w-2xl mx-auto w-full px-4 flex items-center gap-3">
             <button
-              onClick={tutor.cancelChangeVoice}
+              onClick={goBack}
               className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
               title="Back"
             >
@@ -364,7 +374,9 @@ export default function Speak() {
               </div>
             )}
 
-            {tutor.provider === 'voxtral' && (
+            {/* Provider toggle + heading live on the voice-selection screen,
+                not on the Gemini mode+accent stage. */}
+            {!isGeminiModeStage && (
               <div className="flex items-center justify-between gap-3 mb-4">
                 <div>
                   <h2 className="text-base font-semibold text-white">Choose your tutor</h2>
@@ -373,7 +385,7 @@ export default function Speak() {
                 <ProviderToggle
                   value={tutor.provider}
                   onChange={tutor.setProvider}
-                  disabled={!!tutor.conversationId || isBusy}
+                  disabled={providerToggleDisabled}
                   disabledReason="End the current conversation to switch providers."
                 />
               </div>
@@ -383,16 +395,27 @@ export default function Speak() {
               provider={tutor.provider}
               language={tutor.language!}
               disabled={isStarting}
-              onVoxtralSelect={(char) => tutor.startConversationWithCharacter(char)}
-              onGeminiStart={({ mode, voiceName, accentId }) =>
-                tutor.startConversationWithGemini({
+              onVoxtralSelect={(char) => {
+                if (tutor.isChangingVoice) {
+                  tutor.applyVoxtralCharacterChange(char)
+                } else {
+                  tutor.startConversationWithCharacter(char)
+                }
+              }}
+              onGeminiStart={({ mode, voiceName, accentId }) => {
+                const params = {
                   characterModeId: mode.id,
                   characterModeName: mode.displayName,
                   voiceName,
                   version: mode.version,
                   accentId,
-                })
-              }
+                }
+                if (tutor.isChangingVoice) {
+                  tutor.applyGeminiVoiceChange(params)
+                } else {
+                  tutor.startConversationWithGemini(params)
+                }
+              }}
               geminiStage={tutor.geminiPickerStage}
               geminiModeId={tutor.geminiModeId}
               geminiVoiceName={tutor.geminiVoiceName}
@@ -401,7 +424,7 @@ export default function Speak() {
               onGeminiVoiceChange={(voiceName) => tutor.setGeminiVoiceName(voiceName)}
               onGeminiAccentChange={(accentId) => tutor.setGeminiAccentId(accentId)}
               onGeminiStageChange={(stage) => tutor.setGeminiPickerStage(stage)}
-              onGeminiBackToProviders={() => tutor.setProvider('voxtral')}
+              confirmLabel={tutor.isChangingVoice ? 'Use this voice' : 'Start conversation'}
             />
           </div>
         </div>
@@ -555,10 +578,11 @@ export default function Speak() {
         {!tutor.isRoleplayMode && (
         <button
           onClick={tutor.changeVoice}
-          className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
+          disabled={tutor.status === 'recording'}
+          className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
           title={t('speak.tutorTooltip')}
         >
-          <RefreshCw className="h-3 w-3" />
+          <UserRoundCog className="h-3.5 w-3.5" />
           <span className="hidden sm:inline">{t('speak.tutor')}</span>
         </button>
         )}

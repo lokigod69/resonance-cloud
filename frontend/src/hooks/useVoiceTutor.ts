@@ -34,7 +34,7 @@ interface VoiceChatResponse {
 }
 
 export type SpeakProvider = 'voxtral' | 'gemini'
-export type GeminiPickerStage = 'voice' | 'mode' | 'accent'
+export type GeminiPickerStage = 'voice' | 'mode'
 
 export interface GeminiTutorParams {
   characterModeId: string
@@ -92,6 +92,9 @@ export interface UseVoiceTutorReturn {
   setGeminiAccentId: (accentId: string) => void
   setGeminiPickerStage: (stage: GeminiPickerStage) => void
   stopAllAudio: () => void
+  isChangingVoice: boolean
+  applyGeminiVoiceChange: (params: GeminiTutorParams) => Promise<void>
+  applyVoxtralCharacterChange: (char: TutorCharacter) => Promise<void>
 }
 
 const LS_PROVIDER = 'resonance_speak_provider'
@@ -179,6 +182,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const [pendingAudio, setPendingAudio] = useState<{ base64: string; format: string } | null>(null)
   const [showLevelPicker, setShowLevelPicker] = useState(false)
   const [conversationId, setConversationId] = useState<string | null>(null)
+  const [isChangingVoice, setIsChangingVoice] = useState(false)
   const [studyMode, setStudyMode] = useState(false)
   const studyModeRef = useRef(false)
   const studyWordsRef = useRef<Array<{ word: string; translation: string }>>([])
@@ -474,8 +478,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         audioContextRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
       }
       const ctx = audioContextRef.current
-      if (ctx.state === 'suspended') {
-        void ctx.resume()
+      // iOS adds 'interrupted' (ring switch, Control Center, phone call) —
+      // not in the standard AudioContextState union but we still need to resume.
+      if (ctx.state !== 'running' && ctx.state !== 'closed') {
+        void ctx.resume().catch(() => {})
       }
       const buffer = ctx.createBuffer(1, 1, 22050)
       const source = ctx.createBufferSource()
@@ -496,10 +502,11 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     if (!audioContextRef.current) {
       audioContextRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
     }
-    if (audioContextRef.current.state === 'suspended') {
-      await audioContextRef.current.resume()
+    const ctx = audioContextRef.current
+    if (ctx.state !== 'running' && ctx.state !== 'closed') {
+      await ctx.resume().catch(() => {})
     }
-    return audioContextRef.current
+    return ctx
   }, [])
 
   const stopPlayback = useCallback((invalidateTasks: boolean) => {
@@ -566,13 +573,16 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   }, [stopAllAudio])
 
   /**
-   * Play audio using AudioContext if available and running, falling back to HTMLAudioElement.
+   * Play audio via HTMLAudioElement on Safari/iOS, or AudioContext elsewhere.
+   * iOS routes AudioContext output to the ringer audio-session category, which
+   * can be silently downgraded after an idle wait; HTMLAudioElement uses the
+   * media category, matching the reliable voice-sample playback path.
    */
   const playAudio = useCallback(async (base64: string, format: string) => {
     stopPlayback(false)
     const generation = ++playbackGenerationRef.current
     const isAborted = () => playbackGenerationRef.current !== generation
-    if (audioContextRef.current && audioContextRef.current.state === 'running') {
+    if (!IS_SAFARI && audioContextRef.current && audioContextRef.current.state === 'running') {
       await playAudioViaContext(base64, format, audioContextRef.current, (source) => {
         activeSourceRef.current = source
       }, isAborted)
@@ -782,7 +792,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       const nextAccent = params.accentId ?? DEFAULT_ACCENT_ID
       setGeminiAccentId(nextAccent)
       geminiAccentIdRef.current = nextAccent
-      setGeminiPickerStageState('accent')
+      setGeminiPickerStageState('mode')
       setVoice(syntheticVoice)
       voiceRef.current = syntheticVoice
       setError(null)
@@ -802,9 +812,122 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     [language, fetchAndPlayGreeting, endConversation, ensureAudioContext, primeAudioForIOS, stopAllAudio],
   )
 
+  // Hot-swap (Part 3): change the active voice/character mid-conversation
+  // without ending the dialogue. Preserves messages, conversationId, level,
+  // study/listen modes; updates the existing speak_conversations row so
+  // history persistence reflects the new provider/voice/mode/accent.
+  const applyGeminiVoiceChange = useCallback(
+    async (params: GeminiTutorParams) => {
+      primeAudioForIOS()
+      const lang = language
+      if (!lang) return
+
+      await ensureAudioContext()
+      stopAllAudio()
+
+      setProviderState('gemini')
+      providerRef.current = 'gemini'
+      setGeminiModeId(params.characterModeId)
+      geminiModeIdRef.current = params.characterModeId
+      setGeminiVoiceName(params.voiceName)
+      geminiVoiceNameRef.current = params.voiceName
+      const nextAccent = params.accentId ?? DEFAULT_ACCENT_ID
+      setGeminiAccentId(nextAccent)
+      geminiAccentIdRef.current = nextAccent
+      setGeminiPickerStageState('voice')
+
+      const syntheticVoice: TutorVoice = {
+        id: `gemini_${params.characterModeId}_${params.voiceName}_${lang}`,
+        name: `${params.characterModeName} · ${params.voiceName}`,
+        language: lang,
+        gender: 'female',
+        mistralVoiceId: '',
+        sampleUrl: '',
+      }
+      setCharacter(null)
+      characterRef.current = null
+      setVoice(syntheticVoice)
+      voiceRef.current = syntheticVoice
+
+      const convId = conversationIdRef.current
+      if (convId) {
+        try {
+          await supabase.from('speak_conversations').update({
+            provider: 'gemini',
+            gemini_character_mode_id: params.characterModeId,
+            gemini_voice_name: params.voiceName,
+            gemini_accent_id: nextAccent,
+            voice_name: params.voiceName,
+            character_id: null,
+          }).eq('id', convId)
+        } catch (err) {
+          console.warn('[speak-history] Failed to apply voice swap:', err)
+        }
+      }
+
+      previousStateRef.current = null
+      setIsChangingVoice(false)
+      setError(null)
+      setStatus('idle')
+    },
+    [language, ensureAudioContext, primeAudioForIOS, stopAllAudio],
+  )
+
+  const applyVoxtralCharacterChange = useCallback(
+    async (char: TutorCharacter) => {
+      primeAudioForIOS()
+      const lang = language
+      if (!lang) return
+
+      await ensureAudioContext()
+      stopAllAudio()
+
+      const resolved = resolveCharacterVoice(char, lang)
+      const syntheticVoice: TutorVoice = {
+        id: `char_${char.id}_${lang}`,
+        name: char.name,
+        language: lang,
+        gender: char.gender,
+        mistralVoiceId: resolved.mistralVoiceId,
+        elevenLabsId: resolved.elevenLabsId,
+        sampleUrl: '',
+      }
+
+      setProviderState('voxtral')
+      providerRef.current = 'voxtral'
+      setCharacter(char)
+      characterRef.current = char
+      setVoice(syntheticVoice)
+      voiceRef.current = syntheticVoice
+
+      const convId = conversationIdRef.current
+      if (convId) {
+        try {
+          await supabase.from('speak_conversations').update({
+            provider: 'voxtral',
+            character_id: char.id,
+            voice_name: char.name,
+            gemini_character_mode_id: null,
+            gemini_voice_name: null,
+            gemini_accent_id: null,
+          }).eq('id', convId)
+        } catch (err) {
+          console.warn('[speak-history] Failed to apply voice swap:', err)
+        }
+      }
+
+      previousStateRef.current = null
+      setIsChangingVoice(false)
+      setError(null)
+      setStatus('idle')
+    },
+    [language, ensureAudioContext, primeAudioForIOS, stopAllAudio],
+  )
+
   // Provider toggle preserves the Gemini mode/voice selection so users can
   // flip back without re-picking. Active state (voice, character, messages)
-  // is cleared because those ARE provider-specific.
+  // is cleared because those ARE provider-specific — EXCEPT during a hot-swap
+  // (mid-conversation voice change) where the history must survive the toggle.
   const setProvider = useCallback((next: SpeakProvider) => {
     if (next === providerRef.current) return
     stopAllAudio()
@@ -815,8 +938,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     voiceRef.current = null
     setCharacter(null)
     characterRef.current = null
-    setMessages([])
-    messagesRef.current = []
+    if (!conversationIdRef.current) {
+      setMessages([])
+      messagesRef.current = []
+    }
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
@@ -932,8 +1057,11 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       }
     }
     stopAllAudio()
-    // Don't call endConversation() — deferred to startConversationWith* so
-    // cancelChangeVoice can restore the live session.
+    // Hot-swap: if we're inside a live conversation, keep history/studyMode/
+    // listenMode/conversationId in place so the next turn uses the new voice
+    // without restarting the dialogue.
+    const isHotSwap = !!conversationIdRef.current
+    setIsChangingVoice(isHotSwap)
     if (providerRef.current === 'gemini') {
       setGeminiPickerStageState('voice')
     }
@@ -941,17 +1069,19 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     voiceRef.current = null
     setCharacter(null)
     characterRef.current = null
-    setMessages([])
-    messagesRef.current = []
+    if (!isHotSwap) {
+      setMessages([])
+      messagesRef.current = []
+      studyModeRef.current = false
+      studyWordsRef.current = []
+      setStudyMode(false)
+      listenModeRef.current = false
+      setListenMode(false)
+    }
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
     setShowLevelPicker(false)
-    studyModeRef.current = false
-    studyWordsRef.current = []
-    setStudyMode(false)
-    listenModeRef.current = false
-    setListenMode(false)
   }, [stopAllAudio])
 
   const toggleStudyMode = useCallback((words: Array<{ word: string; translation: string }>) => {
@@ -1231,6 +1361,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     setPendingAudio(null)
     setError(null)
     setStatus('idle')
+    setIsChangingVoice(false)
     studyModeRef.current = false
     studyWordsRef.current = []
     setStudyMode(false)
@@ -1272,6 +1403,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       setGeminiAccentId(prev.geminiAccentId)
       geminiAccentIdRef.current = prev.geminiAccentId
       previousStateRef.current = null
+      setIsChangingVoice(false)
     } else {
       resetConversation()
     }
@@ -1331,5 +1463,8 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     setGeminiAccentId,
     setGeminiPickerStage: setGeminiPickerStageState,
     stopAllAudio,
+    isChangingVoice,
+    applyGeminiVoiceChange,
+    applyVoxtralCharacterChange,
   }
 }

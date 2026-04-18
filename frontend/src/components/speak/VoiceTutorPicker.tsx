@@ -19,7 +19,7 @@ interface VoiceTutorPickerProps {
   onGeminiVoiceChange: (voiceName: string) => void
   onGeminiAccentChange: (accentId: string) => void
   onGeminiStageChange: (stage: GeminiPickerStage) => void
-  onGeminiBackToProviders: () => void
+  confirmLabel?: string
 }
 
 export function VoiceTutorPicker({
@@ -36,7 +36,7 @@ export function VoiceTutorPicker({
   onGeminiVoiceChange,
   onGeminiAccentChange,
   onGeminiStageChange,
-  onGeminiBackToProviders,
+  confirmLabel,
 }: VoiceTutorPickerProps) {
   if (provider === 'gemini') {
     return (
@@ -51,8 +51,8 @@ export function VoiceTutorPicker({
         onVoiceChange={onGeminiVoiceChange}
         onAccentChange={onGeminiAccentChange}
         onStageChange={onGeminiStageChange}
-        onBackToProviders={onGeminiBackToProviders}
         onStart={onGeminiStart}
+        confirmLabel={confirmLabel}
       />
     )
   }
