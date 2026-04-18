@@ -583,16 +583,24 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     const generation = ++playbackGenerationRef.current
     const isAborted = () => playbackGenerationRef.current !== generation
     if (audioContextRef.current && audioContextRef.current.state === 'running') {
+      const own: { node: AudioBufferSourceNode | null } = { node: null }
       await playAudioViaContext(base64, format, audioContextRef.current, (source) => {
+        own.node = source
         activeSourceRef.current = source
       }, isAborted)
-      activeSourceRef.current = null
+      if (activeSourceRef.current === own.node) {
+        activeSourceRef.current = null
+      }
       return
     }
+    const own: { el: HTMLAudioElement | null } = { el: null }
     await playAudioViaElement(base64, format, (audio) => {
+      own.el = audio
       activeAudioElRef.current = audio
     }, isAborted)
-    activeAudioElRef.current = null
+    if (activeAudioElRef.current === own.el) {
+      activeAudioElRef.current = null
+    }
   }, [stopPlayback])
 
   const playPendingAudio = useCallback(async () => {
