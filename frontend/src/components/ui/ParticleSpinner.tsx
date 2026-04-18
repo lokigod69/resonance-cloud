@@ -120,9 +120,9 @@ function buildPresets(size: number): Record<Preset, { fn: PlotFn; scale: number 
   return {
     rose:       { fn: makeRose(8),  scale: size * 0.38 },
     starburst:  { fn: makeRose(66), scale: size * 0.38 },
-    spiral:     { fn: spiralFn,     scale: size * 2.5  },
-    spirograph: { fn: spirographFn, scale: size * 2.5  },
-    heart:      { fn: heartFn,      scale: size * 1.8  },
+    spiral:     { fn: spiralFn,     scale: size * 0.86 },
+    spirograph: { fn: spirographFn, scale: size * 1.16 },
+    heart:      { fn: heartFn,      scale: size * 0.67 },
   }
 }
 

@@ -556,8 +556,13 @@ export default function DeckView() {
       </div>
       </div>
 
-      {/* Footer actions */}
-      <div className="flex gap-3 justify-center pt-4">
+      {/* Footer actions — layout adapts to button count:
+          editMode=true  → 1 button (Done)              → centered at natural width
+          editMode=false → 3 buttons (Study/Add/Edit|Delete) → 3-col grid */}
+      <div className={editMode
+        ? 'flex justify-center pt-4'
+        : 'grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 max-w-xl mx-auto'
+      }>
         {!editMode && (
           <>
             <Button

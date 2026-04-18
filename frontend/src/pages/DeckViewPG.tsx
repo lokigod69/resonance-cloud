@@ -951,8 +951,13 @@ export default function DeckViewPG() {
       )}
       </div> {/* end -mx-6 bleed wrapper */}
 
-      {/* Footer actions */}
-      <div className="flex gap-3 justify-center pt-8">
+      {/* Footer actions — layout adapts to button count:
+          editMode=true  → 1 button (Done)              → centered at natural width
+          editMode=false → 3 buttons (Study/Add/Edit|Delete) → 3-col grid */}
+      <div className={editMode
+        ? 'flex justify-center pt-8'
+        : 'grid grid-cols-1 sm:grid-cols-3 gap-3 pt-8 max-w-xl mx-auto'
+      }>
         {!editMode && (
           <>
             <button

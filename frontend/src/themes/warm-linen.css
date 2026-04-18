@@ -91,7 +91,19 @@
   color: white;
 }
 
-/* Hardcoded dark containers (e.g. Speak page chat) — restore white text */
+/* Glassy skin keeps its intentionally-dark backgrounds even under Warm Linen.
+   Carve out utility colors inside .skin-glassy so hamburger/menu/sheet items
+   (which are not <nav>) read as white instead of the global dark-brown override. */
+.theme-warm-linen .skin-glassy .text-white,
+.theme-warm-linen.skin-glassy .text-white {
+  color: white;
+}
+.theme-warm-linen .skin-glassy .text-gray-400,
+.theme-warm-linen.skin-glassy .text-gray-400 {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Hardcoded bg-gray-950 dark containers — Speak page (chat shell, sticky headers, composer), SpeakHistoryPanel, MusicPG header, SharePage, landing VoiceTutorSection — restore white text */
 .theme-warm-linen .bg-gray-950 .text-white {
   color: white;
 }

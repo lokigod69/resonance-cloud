@@ -86,15 +86,15 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRe
       onClick={isDisabled ? undefined : onClick}
       onKeyDown={isDisabled ? undefined : (e) => e.key === 'Enter' && onClick()}
       className={[
-        'flex items-center gap-3 px-4 py-3 border-b border-white/5 transition-colors',
-        isActive ? 'bg-white/5' : '',
+        'flex items-center gap-3 px-4 py-3 border-b border-border transition-colors',
+        isActive ? 'bg-accent/20' : '',
         isDisabled
           ? 'opacity-60 cursor-default'
-          : 'cursor-pointer hover:bg-white/5',
+          : 'cursor-pointer hover:bg-accent/10',
       ].join(' ')}
     >
       {/* Thumbnail / equalizer */}
-      <div className="w-14 h-14 rounded shrink-0 overflow-hidden bg-white/5 flex items-center justify-center">
+      <div className="w-14 h-14 rounded shrink-0 overflow-hidden bg-card/50 flex items-center justify-center">
         {isActive && isPlaying ? (
           <Equalizer />
         ) : track.thumbnail_url ? (
@@ -104,34 +104,41 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRe
             className="w-full h-full object-cover"
           />
         ) : (
-          <Music size={16} className="text-gray-600" />
+          <Music size={16} className="text-muted-foreground" />
         )}
       </div>
 
       {/* Word + translation */}
       <div className="flex-1 min-w-0">
-        <p className={`text-base font-medium truncate ${isActive ? 'text-white' : 'text-gray-200'}`}>
+        <p className={`text-base truncate ${isActive ? 'text-foreground font-semibold' : 'text-foreground/75 font-medium'}`}>
           {track.word}
         </p>
         {track.translation && (
-          <p className="text-sm text-gray-500 truncate">{track.translation}</p>
+          <p className="text-sm text-muted-foreground truncate">{track.translation}</p>
         )}
       </div>
 
       {/* Deck name */}
-      <p className="hidden sm:block text-xs text-gray-600 truncate max-w-[120px] shrink-0">
+      <p className="hidden sm:block text-xs text-muted-foreground truncate max-w-[120px] shrink-0">
         {track.deckName}
       </p>
 
       {/* Genre badge */}
       {track.genre && (
-        <span className="hidden md:inline-flex text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-gray-500 shrink-0 truncate max-w-[100px]">
+        <span className="hidden md:inline-flex text-[10px] px-2 py-0.5 rounded-full bg-card/50 text-muted-foreground shrink-0 truncate max-w-[100px]">
           {track.genre}
         </span>
       )}
 
-      {/* Duration / retry status */}
-      <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 text-right">
+      {/* Duration / retry status.
+          NOTE: The `text-red-500/70` below is an intentional token-system exception.
+          Destructive/error icons are semantically theme-independent — a delete/error
+          indicator should read as "danger red" in every theme, not flavored to the
+          active palette. `text-destructive` resolves to a dark red that disappears on
+          dark themes, and `text-destructive-foreground` is the text color FOR USE ON
+          destructive surfaces (e.g. white on warm-linen), not a bright error-text
+          token. Do not re-tokenize for a single consumer. */}
+      <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 text-right">
         {track.error ? (
           <span className="text-red-500/70 font-sans text-[10px]">—</span>
         ) : hasAudio ? (
@@ -139,7 +146,7 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRe
             {duration !== null ? formatDuration(duration) : '…'}
           </span>
         ) : isRetrying ? (
-          <span className="text-gray-400 font-sans text-[10px] flex items-center gap-1">
+          <span className="text-muted-foreground font-sans text-[10px] flex items-center gap-1">
             <svg className="animate-spin h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden>
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
@@ -149,7 +156,7 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRe
         ) : (
           <button
             onClick={(e) => { e.stopPropagation(); onRetry?.() }}
-            className="text-[10px] text-gray-500 hover:text-[var(--accent,#06b6d4)] transition-colors font-sans px-1 py-0.5 rounded hover:bg-white/5"
+            className="text-[10px] text-muted-foreground hover:text-[var(--accent,#06b6d4)] transition-colors font-sans px-1 py-0.5 rounded hover:bg-accent/10"
             title="Retry Suno generation"
           >
             ↻ {t('music.retry')}

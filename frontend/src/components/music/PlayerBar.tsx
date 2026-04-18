@@ -67,7 +67,7 @@ export function PlayerBar({
   const RepeatIcon = repeatMode === 'one' ? Repeat1 : Repeat
 
   return (
-    <div className="fixed bottom-0 inset-x-0 h-16 bg-gray-900/90 backdrop-blur-sm border-t border-white/10 z-50 flex items-center px-4 gap-4">
+    <div className="fixed bottom-0 inset-x-0 h-16 bg-secondary backdrop-blur-sm border-t border-border z-50 flex items-center px-4 gap-4">
       {/* Hidden audio element — owned by useMusicPlayer */}
       <audio
         ref={audioRef}
@@ -84,7 +84,7 @@ export function PlayerBar({
         <button
           onClick={onPrev}
           disabled={!currentTrack}
-          className="w-8 h-8 flex items-center justify-center rounded-md text-gray-400 hover:text-white hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className="w-8 h-8 flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
           aria-label="Previous"
         >
           <SkipBack size={16} />
@@ -93,7 +93,7 @@ export function PlayerBar({
         <button
           onClick={onTogglePlay}
           disabled={!currentTrack}
-          className="w-9 h-9 flex items-center justify-center rounded-full bg-white text-gray-900 hover:bg-white/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className="w-9 h-9 flex items-center justify-center rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? <Pause size={16} /> : <Play size={16} className="ml-0.5" />}
@@ -102,7 +102,7 @@ export function PlayerBar({
         <button
           onClick={onNext}
           disabled={!currentTrack}
-          className="w-8 h-8 flex items-center justify-center rounded-md text-gray-400 hover:text-white hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className="w-8 h-8 flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
           aria-label="Next"
         >
           <SkipForward size={16} />
@@ -111,7 +111,7 @@ export function PlayerBar({
 
       {/* Center: waveform + time */}
       <div className="flex-1 flex items-center gap-2 sm:gap-3 min-w-0 justify-center sm:justify-start">
-        <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-10 text-right">
+        <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 w-10 text-right">
           {formatTime(currentTime)}
         </span>
 
@@ -125,7 +125,7 @@ export function PlayerBar({
           />
         </div>
 
-        <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-10">
+        <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 w-10">
           {formatTime(duration)}
         </span>
       </div>
@@ -135,7 +135,7 @@ export function PlayerBar({
         <button
           onClick={onToggleShuffle}
           className={`w-8 h-8 flex items-center justify-center rounded-md transition-colors ${
-            shuffle ? 'text-[var(--accent,#06b6d4)]' : 'text-gray-500 hover:text-white hover:bg-white/10'
+            shuffle ? 'text-[var(--accent,#06b6d4)]' : 'text-muted-foreground hover:text-foreground hover:bg-white/10'
           }`}
           aria-label="Shuffle"
           title="Shuffle"
@@ -148,7 +148,7 @@ export function PlayerBar({
           className={`w-8 h-8 flex items-center justify-center rounded-md transition-colors ${
             repeatMode !== 'off'
               ? 'text-[var(--accent,#06b6d4)]'
-              : 'text-gray-500 hover:text-white hover:bg-white/10'
+              : 'text-muted-foreground hover:text-foreground hover:bg-white/10'
           }`}
           aria-label={`Repeat: ${repeatMode}`}
           title={repeatMode === 'off' ? 'Repeat off' : repeatMode === 'all' ? 'Repeat all' : 'Repeat one'}
@@ -161,7 +161,7 @@ export function PlayerBar({
           isMuted={isMuted}
           onVolumeChange={onSetVolume}
           onToggleMute={onToggleMute}
-          buttonClassName="w-8 h-8 flex items-center justify-center rounded-md text-gray-500 hover:text-white hover:bg-white/10 transition-colors"
+          buttonClassName="w-8 h-8 flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
           iconSize={14}
           popDirection="up"
         />

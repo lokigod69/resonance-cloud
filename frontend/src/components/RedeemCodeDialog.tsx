@@ -131,12 +131,16 @@ export function RedeemCodeDialog({
           </DialogDescription>
         </DialogHeader>
 
-        {/* Balance */}
-        <div className="flex items-center justify-center py-4">
-          <div className="text-center">
-            <div className="text-4xl font-bold">{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</div>
-            <div className="text-sm text-muted-foreground mt-1">{t('credits.available')}</div>
-          </div>
+        {/* Balance —
+            Root-cause note: DialogContent's inner wrapper is `display: grid` (dialog.tsx:78).
+            The previous outer `flex justify-center` wrapper made its child shrink-wrap to the
+            width of the longest line ("credits available"), so `text-center` on that narrow
+            inner box had no visible effect on the short number above. Making the block itself
+            span the full grid-item width lets `text-center` center the number within the
+            dialog's full horizontal axis. */}
+        <div className="text-center py-4">
+          <div className="text-4xl font-bold">{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</div>
+          <div className="text-sm text-muted-foreground mt-1">{t('credits.available')}</div>
         </div>
 
         {/* Redeem section */}
