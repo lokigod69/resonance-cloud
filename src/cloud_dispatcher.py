@@ -11,6 +11,7 @@ This module replicates what each engine's ui/app.py /run endpoint does:
 Engine result status values are "success" or "failed" — never "error".
 (Exceptions: Image engine also uses "partial", Bookend uses str.)
 """
+import asyncio
 import copy
 import inspect
 import logging
@@ -180,8 +181,10 @@ async def call_engine_direct(
         return await _handle_assembly_trim(payload)
 
     # --- Handle Song stage in Suno-only mode ---
+    # _create_song_placeholder spawns a blocking ffmpeg subprocess, so run it
+    # in a worker thread to keep the orchestrator event loop free (§6.6).
     if engine == "song" and MUSIC_MODE == "suno":
-        return _create_song_placeholder(payload)
+        return await asyncio.to_thread(_create_song_placeholder, payload)
 
     # --- Validate engine name ---
     if engine not in _engines:
@@ -204,10 +207,17 @@ async def call_engine_direct(
         # Step 2: Construct typed Pydantic model from raw dict
         typed_payload = PayloadClass.model_validate(adapted)
 
-        # Step 3: Call the engine function
-        result = engine_fn(typed_payload)
+        # Step 3: Call the engine function.
+        # Sync engine functions (image/video/concept/assembly) run CPU-heavy or
+        # blocking I/O — wrap them in asyncio.to_thread so the orchestrator
+        # event loop keeps draining queues (§6.6).
+        if inspect.iscoroutinefunction(engine_fn):
+            result = await engine_fn(typed_payload)
+        else:
+            result = await asyncio.to_thread(engine_fn, typed_payload)
 
-        # Step 4: If the function is async (Bookend), await it
+        # Step 4: If the function returned an awaitable (unusual, but preserved
+        # for backward-compatibility), await it.
         if inspect.isawaitable(result):
             result = await result
 
@@ -246,7 +256,11 @@ async def _handle_assembly_trim(payload: dict) -> dict:
 
     try:
         typed_payload = _trim_payload_class.model_validate(payload)
-        result = _trim_fn(typed_payload)
+        # Same sync-wrap policy as the main dispatch path.
+        if inspect.iscoroutinefunction(_trim_fn):
+            result = await _trim_fn(typed_payload)
+        else:
+            result = await asyncio.to_thread(_trim_fn, typed_payload)
 
         if inspect.isawaitable(result):
             result = await result

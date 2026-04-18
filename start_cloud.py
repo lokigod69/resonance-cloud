@@ -1,50 +1,38 @@
-"""
-Cloud startup script.
+"""Cloud startup script.
+
+Design ref: PIPELINE_REFACTOR_DESIGN_V4_FINAL.md §8.3, §10.
 
 Runs:
-1. Stuck job recovery (reset jobs left in 'processing' by previous container)
-2. Health check HTTP server on a background thread
-3. Job runner main loop (foreground — the primary process)
+1. Env pre-flight (fail fast on missing POD_URL/POD_AUTH_TOKEN/Supabase).
+2. Health check HTTP server on a background thread.
+3. The orchestrator main loop (foreground). Its startup recovery gate runs
+   synchronously before any worker starts.
 
-The FastAPI admin server (app.py / main.py) is NOT started in cloud mode.
-The job runner polls Supabase for jobs and processes them using direct
-engine function calls (DISPATCH_MODE=direct).
+HIGH-5: this module does NOT call logging.basicConfig. The orchestrator's
+job_runner.py owns logging configuration (with correlation-ID format). Any
+basicConfig here would steal the format from job_runner's format (first call
+wins) and drop word_id/stage fields from deployed log lines.
 
-IMPORTANT: Importing job_runner triggers module-level side effects:
-  - load_dotenv() runs at line 28 (harmless — env vars are set via Docker)
-  - A Supabase client is created via get_supabase() at line 68
-  - If SUPABASE_URL or SUPABASE_KEY are missing, sys.exit(1) fires at line 64
-Therefore, all environment variables MUST be set before this script runs.
+HIGH-7: only POD_URL / POD_AUTH_TOKEN are accepted. No GPU_WORKER_* fallback
+at the startup gate.
 """
+
+from __future__ import annotations
+
 import asyncio
+import json
+import logging
 import os
 import sys
-import logging
-import json
-from datetime import datetime, timedelta, timezone
 from threading import Thread
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-)
 logger = logging.getLogger("cloud")
 
 
 # ─── Health Check Server ──────────────────────────────────────────────
 
 def start_health_server():
-    """
-    Minimal HTTP server for Railway/Render liveness checks.
-
-    Port resolution order:
-      1. HEALTH_PORT env var (explicit override)
-      2. PORT env var (Railway injects this)
-      3. 8091 (default fallback)
-
-    This avoids the common Railway failure mode where the platform routes
-    traffic to $PORT but the app listens on a hardcoded different port.
-    """
+    """Minimal HTTP server for Railway/Render liveness checks."""
     from http.server import HTTPServer, BaseHTTPRequestHandler
 
     class HealthHandler(BaseHTTPRequestHandler):
@@ -65,62 +53,40 @@ def start_health_server():
                 self.end_headers()
 
         def log_message(self, format, *args):
-            pass  # Suppress per-request access logs
+            return
 
     port = int(os.getenv("HEALTH_PORT") or os.getenv("PORT") or "8091")
     server = HTTPServer(("0.0.0.0", port), HealthHandler)
-    logger.info(f"Health check server listening on port {port}")
+    logger.info("Health check server listening on port %s", port)
     server.serve_forever()
 
 
-# ─── Stuck Job Recovery ───────────────────────────────────────────────
+# ─── Env Checks ───────────────────────────────────────────────────────
 
-async def recover_stuck_jobs():
+def _check_required_env() -> None:
+    """Fail fast if any required env var is missing.
+
+    HIGH-7: POD_URL / POD_AUTH_TOKEN only. Legacy GPU_WORKER_* no longer
+    accepted at the gate. Sir Robert should set POD_URL/POD_AUTH_TOKEN in
+    Railway.
     """
-    On startup, reset any jobs stuck in 'processing' status.
+    missing: list[str] = []
 
-    When a container dies mid-pipeline, jobs stay in 'processing' forever.
-    The job runner has NO existing stuck-job recovery logic — this is net-new.
+    if not os.getenv("SUPABASE_URL"):
+        missing.append("SUPABASE_URL")
+    if not os.getenv("SUPABASE_SERVICE_KEY") and not os.getenv("SUPABASE_KEY"):
+        missing.append("SUPABASE_SERVICE_KEY (or SUPABASE_KEY)")
+    if not os.getenv("POD_URL"):
+        missing.append("POD_URL")
+    if not os.getenv("POD_AUTH_TOKEN"):
+        missing.append("POD_AUTH_TOKEN")
 
-    This resets them to 'approved' so they'll be re-picked-up by the polling loop.
-    Only resets jobs stuck for > 30 minutes to avoid resetting a job that was
-    JUST picked up by a concurrent worker (if any).
-
-    The `started_at` column exists in `generation_jobs` (confirmed in
-    migration file `20260322210000_phase2a_tables.sql`, set by job_runner
-    at lines 602 and 710).
-    """
-    try:
-        from supabase import create_client
-
-        supabase_url = os.getenv("SUPABASE_URL")
-        supabase_key = os.getenv("SUPABASE_SERVICE_KEY") or os.getenv("SUPABASE_KEY")
-
-        if not supabase_url or not supabase_key:
-            logger.warning("Supabase credentials not set — skipping stuck job recovery")
-            return
-
-        sb = create_client(supabase_url, supabase_key)
-        stale_threshold = (datetime.now(timezone.utc) - timedelta(minutes=30)).isoformat()
-
-        result = (
-            sb.table("generation_jobs")
-            .update({
-                "status": "approved",
-                "error_message": "Reset after container restart",
-            })
-            .eq("status", "processing")
-            .lt("started_at", stale_threshold)
-            .execute()
+    if missing:
+        logger.error(
+            "Orchestrator startup aborted: missing env var(s): %s",
+            ", ".join(missing),
         )
-
-        if result.data:
-            logger.warning(f"Reset {len(result.data)} stuck jobs back to 'approved'")
-        else:
-            logger.info("No stuck jobs found")
-
-    except Exception as e:
-        logger.error(f"Stuck job recovery failed (non-fatal): {e}")
+        sys.exit(1)
 
 
 # ─── Main ─────────────────────────────────────────────────────────────
@@ -128,48 +94,21 @@ async def recover_stuck_jobs():
 async def main():
     logger.info("=" * 60)
     logger.info("Resonance Cloud — Starting")
-    logger.info(f"  STORAGE_MODE  = {os.getenv('STORAGE_MODE', 'local')}")
-    logger.info(f"  DISPATCH_MODE = {os.getenv('DISPATCH_MODE', 'http')}")
-    logger.info(f"  MUSIC_MODE    = {os.getenv('MUSIC_MODE', 'suno')}")
+    logger.info("  STORAGE_MODE  = %s", os.getenv("STORAGE_MODE", "local"))
+    logger.info("  DISPATCH_MODE = %s", os.getenv("DISPATCH_MODE", "http"))
+    logger.info("  MUSIC_MODE    = %s", os.getenv("MUSIC_MODE", "suno"))
     logger.info("=" * 60)
 
-    # 1. Start health server in background
+    _check_required_env()
+
     health_thread = Thread(target=start_health_server, daemon=True)
     health_thread.start()
 
-    # 2. Level 2 pod automation: orphan cleanup + idle checker.
-    #    No-op if RUNPOD_API_KEY is unset.
-    from cloud_engines.video_engine import pod_manager
-
-    logger.info("Cleaning up any orphan RunPod pods from previous instances...")
-    await asyncio.to_thread(pod_manager.cleanup_orphans)
-
-    async def _pod_idle_loop() -> None:
-        while True:
-            await asyncio.sleep(60)
-            try:
-                await asyncio.to_thread(pod_manager.idle_check)
-            except Exception:
-                logger.exception("pod_manager.idle_check failed")
-
-    asyncio.create_task(_pod_idle_loop())
-
-    # 3. Recover stuck jobs from previous container lifecycle
-    await recover_stuck_jobs()
-
-    # 4. Import and run the job runner's main loop
-    #
-    # SIDE EFFECTS AT IMPORT TIME:
-    #   - load_dotenv() runs (line 28 of job_runner.py)
-    #   - Supabase client created via get_supabase() (line 68)
-    #   - sys.exit(1) if SUPABASE_URL/KEY missing (line 64)
-    #
-    # This creates a SECOND Supabase client (the first was created in
-    # recover_stuck_jobs). This is slightly wasteful but harmless — the
-    # job runner needs its own long-lived client for the polling loop.
-    #
-    logger.info("Starting job runner polling loop...")
+    # Hand off to the orchestrator. job_runner.main() owns logging format,
+    # signal handlers, and recovery gate ordering.
     from job_runner import main as job_runner_main
+
+    logger.info("Starting orchestrator main loop...")
     await job_runner_main()
 
 

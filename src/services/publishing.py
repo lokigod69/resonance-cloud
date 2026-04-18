@@ -139,7 +139,6 @@ async def upload_ab_results(
 
     # —— Update word record ——
     update_data: dict[str, Any] = {
-        "status": "complete",
         "video_url": video_url_a,
     }
     if thumb_url_a:
