@@ -7,15 +7,15 @@ interface ProviderToggleProps {
   disabledReason?: string
 }
 
-const OPTIONS: Array<{ id: SpeakProvider; label: string }> = [
-  { id: 'voxtral', label: 'Voxtral' },
-  { id: 'gemini',  label: 'Gemini' },
+const OPTIONS: Array<{ id: SpeakProvider; short: string; full: string }> = [
+  { id: 'voxtral', short: 'VOX', full: 'Voxtral' },
+  { id: 'gemini',  short: 'GEM', full: 'Gemini'  },
 ]
 
 export function ProviderToggle({ value, onChange, disabled, disabledReason }: ProviderToggleProps) {
   return (
     <div
-      className="inline-flex items-center p-1 rounded-full bg-gray-800/60 border border-white/5"
+      className="grid grid-cols-2 gap-2 w-full"
       title={disabled ? disabledReason : undefined}
       aria-label="TTS provider"
     >
@@ -27,14 +27,15 @@ export function ProviderToggle({ value, onChange, disabled, disabledReason }: Pr
             type="button"
             onClick={() => { if (!disabled && !selected) onChange(opt.id) }}
             disabled={disabled}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-              selected
-                ? 'bg-cyan-600 text-white'
-                : 'text-gray-300 hover:text-white'
-            } disabled:opacity-50 disabled:cursor-not-allowed`}
             aria-pressed={selected}
+            aria-label={opt.full}
+            className={`h-14 rounded-2xl text-2xl font-bold tracking-widest transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+              selected
+                ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-900/40'
+                : 'bg-gray-800/60 text-gray-300 border border-white/10 hover:bg-gray-700/70 hover:text-white'
+            }`}
           >
-            {opt.label}
+            {opt.short}
           </button>
         )
       })}
