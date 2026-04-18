@@ -386,7 +386,11 @@ export default function Speak() {
                   value={tutor.provider}
                   onChange={tutor.setProvider}
                   disabled={providerToggleDisabled}
-                  disabledReason="End the current conversation to switch providers."
+                  disabledReason={
+                    isBusy && !tutor.isChangingVoice
+                      ? 'Wait for the response to finish…'
+                      : 'End the current conversation to switch providers.'
+                  }
                 />
               </div>
             )}
@@ -578,7 +582,7 @@ export default function Speak() {
         {!tutor.isRoleplayMode && (
         <button
           onClick={tutor.changeVoice}
-          disabled={tutor.status === 'recording'}
+          disabled={tutor.status === 'recording' || tutor.status === 'processing'}
           className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
           title={t('speak.tutorTooltip')}
         >

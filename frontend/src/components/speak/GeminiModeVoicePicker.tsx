@@ -234,7 +234,10 @@ export function GeminiModeVoicePicker({
         )}
       </div>
 
-      <div className="sticky bottom-0 pt-4 pb-1 bg-gradient-to-t from-gray-950 via-gray-950/95 to-transparent">
+      <div
+        className="sticky bottom-0 pt-4 bg-gradient-to-t from-gray-950 via-gray-950/95 to-transparent"
+        style={{ paddingBottom: 'max(0.25rem, env(safe-area-inset-bottom))' }}
+      >
         <p className="text-xs text-gray-400 mb-2 truncate" title={summary}>
           {summary}
         </p>
