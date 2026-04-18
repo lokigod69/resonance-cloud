@@ -16,6 +16,14 @@ const IS_SAFARI = typeof navigator !== 'undefined' && (
   || /iPad|iPhone|iPod/.test(navigator.userAgent)
 )
 
+// 15ms silent MP3 (VBR220-260 Joint Stereo, ~2.2KB) via
+// github.com/Experience-Monks/silent-mp3-datauri. Looped as an HTMLAudioElement
+// to force iOS' audio session onto the "media" channel. Without this, Web
+// Audio stays on the "ringer" channel and the first post-async playback is
+// silently dropped until a MediaStream (e.g. mic) activates the session.
+// Pattern per swevans/unmute: play continuously; the session category persists.
+const SILENT_MP3_DATA_URL = 'data:audio/mpeg;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAADAAAGhgBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVWqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqr///////////////////////////////////////////8AAAA5TEFNRTMuOThyAc0AAAAAAAAAABSAJAiqQgAAgAAABobxtI73AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//uQxAACFEII9ACZ/sJZwWEoEb8w/////N//////JcxjHjf+7/v/H2PzCCFAiDtGeyBCIx7bJJ1mmEEMy6g8mm2c8nrGABB4h2Mkmn//4z/73u773R5qHHu/j/w7Kxkzh5lWRWdsifCkNAnY9Zc1HvDAhjhSHdFkHFzLmabt/AQxSg2wwzLhHIJOBnAWwVY4zrhIYhhc2kvhYDfQ4hDi2Gmh5KyFn8EcGIrHAngNgIwVIEMf5bzbAiTRoAD///8z/KVhkkWEle6IX+d/z4fvH3BShK1e5kmjkCMoxVmXhd4ROlTKo3iipasvTilY21q19ta30/v/0/idPX1v8PNxJL6ramnOVsdvMv2akO0iSYIzdJFirtzWXCZicS9vHqvSKyqm5XJBdqBwPxyfJdykhWTZ0G0ZyTZGpLKxsNwwoRhsx3tZfhwmeOBVISm3impAC/IT/8hP/EKEM1KMdVdVKM2rHV4x7HVXZvbVVKN/qq8CiV9VL9jjH/6l6qf7MBCjZmOqsAibjcP+qqqv0oxqpa/NVW286hPo1nz2L/h8+jXt//uSxCmDU2IK/ECN98KKtE5IYzNoCfbw+u9i5r8PoadUMFPKqWL4LK3T/LCraMSHGkW4bpLXR/E6LlHOVQxmslKVJ8IULktMN06N0FKCpHCoYsjC4F+Z0NVqdNFoGSTjSiyjzLdnZ2fNqTi2eHKONONKLMPMKLONKLMPQRJGlFxZRoKcJFAYEeIFiRQkUWUeYfef//Ko04soswso40UJAgMw8wosososy0EalnZyjQUGBRQGIFggOWUacWUeYmuadrZziQKKEgQsQLAhQkUJAgMQDghltLO1onp0cpkNInSFMqlYeSEJ5AHsqFdOwy1DA2sRmRJKxdKRfLhfLw5BzUxBTUUzLjk4LjJVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjk4LjJVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/7ksRRA8AAAaQAAAAgAAA0gAAABFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU='
+
 export type TutorStatus = 'idle' | 'recording' | 'processing' | 'playing' | 'error'
 
 export interface TutorMessage {
@@ -205,6 +213,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
   const audioContextRef = useRef<AudioContext | null>(null)
+  const silentPrimerRef = useRef<HTMLAudioElement | null>(null)
   const chunksRef = useRef<Blob[]>([])
   const messagesRef = useRef<TutorMessage[]>([])
   const voiceRef = useRef<TutorVoice | null>(null)
@@ -469,8 +478,14 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
   /**
    * Synchronous iOS audio unlock. Must be called inside a user-gesture handler
-   * before any await. Creates the AudioContext if needed, resumes it, and plays
-   * a 1-frame silent buffer so later playback survives async gaps on iOS Safari.
+   * before any await. Dual-primer pattern per swevans/unmute:
+   *   1. AudioContext silent buffer — unlocks Web Audio API output.
+   *   2. HTMLAudioElement looping a silent MP3 — forces iOS' audio session
+   *      onto the "media" channel instead of "ringer". Without #2, first
+   *      Web Audio playback after a multi-second async gap is silently
+   *      dropped on iOS (ringer channel not fully activated) until a
+   *      MediaStream flips the session. The HTMLAudioElement primer
+   *      achieves the same category-commit without mic permission cost.
    */
   const primeAudioForIOS = useCallback(() => {
     try {
@@ -490,6 +505,24 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       source.start(ctx.currentTime)
     } catch (err) {
       console.warn('[useVoiceTutor] iOS audio prime failed:', err)
+    }
+
+    try {
+      if (!silentPrimerRef.current) {
+        const el = new Audio(SILENT_MP3_DATA_URL)
+        el.loop = true
+        el.setAttribute('playsinline', 'true')
+        silentPrimerRef.current = el
+      }
+      const primer = silentPrimerRef.current
+      if (primer.paused) {
+        // Must start inside the user gesture; the resulting play Promise may
+        // reject silently on older iOS — that's fine, the attempt itself is
+        // what flips the audio session category.
+        void primer.play().catch(() => {})
+      }
+    } catch (err) {
+      console.warn('[useVoiceTutor] iOS silent primer failed:', err)
     }
   }, [])
 
@@ -559,6 +592,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       if (audioContextRef.current) {
         audioContextRef.current.close().catch(() => {})
         audioContextRef.current = null
+      }
+      if (silentPrimerRef.current) {
+        try { silentPrimerRef.current.pause() } catch { /* ignore */ }
+        silentPrimerRef.current = null
       }
       // Fire-and-forget: mark conversation ended when user navigates away
       if (conversationIdRef.current) {
@@ -1348,6 +1385,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     if (audioContextRef.current) {
       audioContextRef.current.close().catch(() => {})
       audioContextRef.current = null
+    }
+    if (silentPrimerRef.current) {
+      try { silentPrimerRef.current.pause() } catch { /* ignore */ }
+      silentPrimerRef.current = null
     }
   }, [])
 
