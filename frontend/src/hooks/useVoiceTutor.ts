@@ -582,7 +582,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     stopPlayback(false)
     const generation = ++playbackGenerationRef.current
     const isAborted = () => playbackGenerationRef.current !== generation
-    if (!IS_SAFARI && audioContextRef.current && audioContextRef.current.state === 'running') {
+    if (audioContextRef.current && audioContextRef.current.state === 'running') {
       await playAudioViaContext(base64, format, audioContextRef.current, (source) => {
         activeSourceRef.current = source
       }, isAborted)
