@@ -605,6 +605,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
   const playPendingAudio = useCallback(async () => {
     if (!pendingAudio) return
+    if (statusRef.current === 'playing') return
     const taskGeneration = audioTaskGenerationRef.current
     await ensureAudioContext()  // Unlock AudioContext on "Tap to hear" gesture
     if (audioTaskGenerationRef.current !== taskGeneration) return
