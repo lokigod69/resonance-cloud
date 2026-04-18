@@ -366,22 +366,16 @@ function buildGreetingInstruction(
   character: CharacterPayload | undefined,
   studyWord: { word: string; translation: string } | null,
 ): string {
-  const charIntro = character
-    ? ` IN CHARACTER as ${character.name}. Introduce yourself in one sentence, then`
-    : ''
+  const charPrefix = character ? `You are ${character.name}. ` : ''
 
   if (level === 'zero') {
     if (studyWord) {
-      return `[SYSTEM: Start a new conversation. Greet them briefly in ${nativeLangName}.${charIntro} Introduce the ${targetLangName} word "${studyWord.word}" (meaning: "${studyWord.translation}") by weaving it into one open question. Do not prescribe what they should talk about — let them steer. Maximum 2 sentences total. Stay in character.]`
+      return `${charPrefix}Greet the student warmly in ${nativeLangName} and introduce the ${targetLangName} word "${studyWord.word}" (meaning: "${studyWord.translation}").`
     }
-    return `[SYSTEM: Start a new conversation. Greet them briefly in ${nativeLangName}.${charIntro} Ask one open question that invites them to say anything — do not prescribe a topic. Avoid weekend, hobby, and "cozy" framings; let the learner lead. Maximum 2 sentences total. Stay in character.]`
+    return `${charPrefix}Greet the student warmly in ${nativeLangName} and introduce one useful ${targetLangName} word with its ${nativeLangName} translation.`
   }
 
-  if (level === 'beginner') {
-    return `[SYSTEM: Start a new conversation. Greet them warmly in ${targetLangName}${charIntro}, following up briefly in ${nativeLangName} only if needed. Ask one open question that invites them to say anything. Do not prescribe a topic — no weekend, hobby, or "cozy" framings. 2-3 sentences total. Stay in character.]`
-  }
-
-  return `[SYSTEM: Start a new conversation.${charIntro} Greet them warmly in ${targetLangName} and ask one open question that invites them to say anything. Do not prescribe a topic — no weekend, hobby, or "cozy" framings. Let the conversation flow based on what they answer. 1-2 sentences. Stay in character.]`
+  return `${charPrefix}Greet the student warmly in ${targetLangName} and ask one question to start a conversation.`
 }
 
 function buildStudyAddendum(studyWords?: Array<{ word: string; translation: string }>): string {
@@ -899,6 +893,8 @@ export async function POST(req: Request): Promise<Response> {
     messages.push({ role: 'user', content: greetingInstruction })
   }
 
+  const isGreeting = !user_text && !audio_base64
+
   // ── Step 3: LLM response (Groq, OpenAI-compatible, ~750 tok/s on LPU) ───────
   const llmRes = await fetchWithTimeout('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
@@ -910,6 +906,10 @@ export async function POST(req: Request): Promise<Response> {
       model: 'llama-3.3-70b-versatile',
       messages,
       max_tokens: 200,
+      // Greetings use a deliberately minimal prompt; raise temperature so the
+      // LLM explores more varied openers instead of locking onto one phrasing
+      // across every call. Non-greeting turns keep the Groq default.
+      ...(isGreeting ? { temperature: 1.0 } : {}),
     }),
   }, 20000, 'Groq LLM')
 
