@@ -43,6 +43,7 @@ interface RequestBody {
   gemini_character_mode_id?: string
   gemini_voice_name?: string
   gemini_accent_id?: string
+  gemini_vibe_directive?: string
 }
 
 interface CharacterPayload {
@@ -388,7 +389,7 @@ ${list}
 Find natural moments to use these words in conversation. Don't list them or quiz the student directly — weave them into what you're already talking about. Use 2-3 per exchange, not all at once.`
 }
 
-function buildSystemPrompt(languageCode: string, level: string, nativeLang: string, character?: CharacterPayload, studyWords?: Array<{ word: string; translation: string }>, scenarioPrompt?: string): string {
+function buildSystemPrompt(languageCode: string, level: string, nativeLang: string, character?: CharacterPayload, studyWords?: Array<{ word: string; translation: string }>, scenarioPrompt?: string, geminiVibeDirective?: string): string {
   const lang = LANGUAGE_CONFIG[languageCode]
   if (!lang) throw new Error(`Unsupported language: ${languageCode}`)
 
@@ -422,6 +423,22 @@ GENERAL RULES:
 - If asked about unrelated topics (politics, math, coding, etc.), redirect warmly back to practicing ${lang.name}.
 - Never break character. You are a language tutor, not a general AI assistant.
 - Use natural conversational fillers in ${lang.name}: ${lang.fillers}`
+
+  // ── Gemini provider with vibe directive: colour conversation by vibe ──
+  // The vibe picks the PERSONALITY layer so the LLM's text output matches the
+  // flavour of the voice, not just the TTS pronunciation. Keeps universal
+  // level + general rules intact.
+  if (!character && geminiVibeDirective) {
+    return `You are a language tutor with a distinct personality, helping someone practice ${lang.name} (${lang.nativeName}).
+The student's native language is ${nativeLangName}.
+
+PERSONALITY: ${geminiVibeDirective}
+Let this personality colour what you say and how you engage — not just the voice.
+
+${levelInstructions}
+
+${generalRules}${studyAddendum}`
+  }
 
   // ── No character: current default behavior ──
   if (!character) {
@@ -763,7 +780,7 @@ export async function POST(req: Request): Promise<Response> {
     return handleCorrections(body)
   }
 
-  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words, scenarioPrompt, provider, gemini_character_mode_id, gemini_voice_name, gemini_accent_id } = body
+  const { audio_base64, language, history = [], voice_id, elevenlabs_voice_id, mime_type, level = 'intermediate', native_language = 'en', character_name, character_tier, character_identity, character_directive, study_words, scenarioPrompt, provider, gemini_character_mode_id, gemini_voice_name, gemini_accent_id, gemini_vibe_directive } = body
   const isRoleplay = body.mode === 'roleplay' && !!scenarioPrompt
   const roleplayText = typeof body.message === 'string' ? body.message : null
 
@@ -832,7 +849,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   // ── Step 2: Build LLM messages ─────────────────────────────────────────────
-  const systemPrompt = buildSystemPrompt(language, level, native_language, character, study_words, isRoleplay ? scenarioPrompt : undefined)
+  const systemPrompt = buildSystemPrompt(language, level, native_language, character, study_words, isRoleplay ? scenarioPrompt : undefined, gemini_vibe_directive)
   const lang = LANGUAGE_CONFIG[language]
 
   const cleanHistory = history.slice(-20).map(({ role, content }) => ({ role, content }))
