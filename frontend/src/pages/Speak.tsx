@@ -331,9 +331,11 @@ export default function Speak() {
   // ── State 2: Character / Voice Selection ────────────────────────────────────
   if (!tutor.voice) {
     const isStarting = tutor.status === 'processing'
-    const isGeminiModeStage = tutor.provider === 'gemini' && tutor.geminiPickerStage === 'mode'
+    const isGeminiVoiceStage = tutor.provider === 'gemini' && tutor.geminiPickerStage === 'voice'
     const goBack = () => {
-      if (isGeminiModeStage) {
+      if (tutor.provider === 'gemini' && tutor.geminiPickerStage === 'accent') {
+        tutor.setGeminiPickerStage('mode')
+      } else if (tutor.provider === 'gemini' && tutor.geminiPickerStage === 'mode') {
         tutor.setGeminiPickerStage('voice')
       } else {
         tutor.cancelChangeVoice()
@@ -341,6 +343,7 @@ export default function Speak() {
     }
     const providerToggleDisabled =
       (!!tutor.conversationId && !tutor.isChangingVoice) || isBusy
+    const showProviderToggle = tutor.provider === 'voxtral' || isGeminiVoiceStage
 
     return (
       <div className="flex flex-col min-h-full pb-20">
@@ -375,8 +378,8 @@ export default function Speak() {
             )}
 
             {/* Provider toggle lives on the voice-selection screen,
-                not on the Gemini mode+accent stage. */}
-            {!isGeminiModeStage && (
+                not on the Gemini mode or accent stages. */}
+            {showProviderToggle && (
               <div className="mb-4">
                 <ProviderToggle
                   value={tutor.provider}
