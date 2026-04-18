@@ -53,19 +53,19 @@ interface CharacterPayload {
   directive: string
 }
 
-const LANGUAGE_CONFIG: Record<string, { name: string; nativeName: string; encouragement: string; fillers: string }> = {
-  en: { name: 'English', nativeName: 'English', encouragement: 'Great job! / Well done! / That\'s right!', fillers: 'Well, So, You know, Actually' },
-  de: { name: 'German', nativeName: 'Deutsch', encouragement: 'Sehr gut! / Prima! / Genau!', fillers: 'Also, Na ja, Weißt du, Eigentlich' },
-  fr: { name: 'French', nativeName: 'Français', encouragement: 'Très bien! / Bravo! / C\'est parfait!', fillers: 'Alors, Bon, Tu sais, En fait' },
-  it: { name: 'Italian', nativeName: 'Italiano', encouragement: 'Molto bene! / Bravissimo! / Perfetto!', fillers: 'Allora, Dunque, Sai, In realtà' },
-  es: { name: 'Spanish', nativeName: 'Español', encouragement: '¡Muy bien! / ¡Excelente! / ¡Perfecto!', fillers: 'Bueno, Pues, Sabes, En realidad' },
-  pt: { name: 'Portuguese', nativeName: 'Português', encouragement: 'Muito bem! / Ótimo! / Perfeito!', fillers: 'Então, Bom, Sabes, Na verdade' },
-  nl: { name: 'Dutch', nativeName: 'Nederlands', encouragement: 'Heel goed! / Prima! / Uitstekend!', fillers: 'Nou, Dus, Weet je, Eigenlijk' },
-  hi: { name: 'Hindi', nativeName: 'हिन्दी', encouragement: 'बहुत अच्छा! / शाबाश! / बिल्कुल सही!', fillers: 'तो, अच्छा, देखो, वैसे' },
-  ar:  { name: 'Arabic',    nativeName: 'العربية',          encouragement: '!أحسنت / !ممتاز / !رائع',             fillers: 'يعني / طيب / فعلاً' },
-  fil: { name: 'Filipino',  nativeName: 'Filipino',         encouragement: 'Magaling! / Napakahusay! / Tama!',     fillers: 'Kaya, So, Alam mo, Talaga' },
-  id:  { name: 'Indonesian', nativeName: 'Bahasa Indonesia', encouragement: 'Bagus sekali! / Hebat! / Benar!',      fillers: 'Jadi, Nah, Tau nggak, Sebenarnya' },
-  ko:  { name: 'Korean',    nativeName: '한국어',            encouragement: '잘했어요! / 훌륭해요! / 맞아요!',        fillers: '음, 그러니까, 있잖아, 사실은' },
+const LANGUAGE_CONFIG: Record<string, { name: string; nativeName: string; encouragement: string }> = {
+  en: { name: 'English', nativeName: 'English', encouragement: 'Great job! / Well done! / That\'s right!' },
+  de: { name: 'German', nativeName: 'Deutsch', encouragement: 'Sehr gut! / Prima! / Genau!' },
+  fr: { name: 'French', nativeName: 'Français', encouragement: 'Très bien! / Bravo! / C\'est parfait!' },
+  it: { name: 'Italian', nativeName: 'Italiano', encouragement: 'Molto bene! / Bravissimo! / Perfetto!' },
+  es: { name: 'Spanish', nativeName: 'Español', encouragement: '¡Muy bien! / ¡Excelente! / ¡Perfecto!' },
+  pt: { name: 'Portuguese', nativeName: 'Português', encouragement: 'Muito bem! / Ótimo! / Perfeito!' },
+  nl: { name: 'Dutch', nativeName: 'Nederlands', encouragement: 'Heel goed! / Prima! / Uitstekend!' },
+  hi: { name: 'Hindi', nativeName: 'हिन्दी', encouragement: 'बहुत अच्छा! / शाबाश! / बिल्कुल सही!' },
+  ar:  { name: 'Arabic',    nativeName: 'العربية',          encouragement: '!أحسنت / !ممتاز / !رائع' },
+  fil: { name: 'Filipino',  nativeName: 'Filipino',         encouragement: 'Magaling! / Napakahusay! / Tama!' },
+  id:  { name: 'Indonesian', nativeName: 'Bahasa Indonesia', encouragement: 'Bagus sekali! / Hebat! / Benar!' },
+  ko:  { name: 'Korean',    nativeName: '한국어',            encouragement: '잘했어요! / 훌륭해요! / 맞아요!' },
 }
 
 // Native language names for browser language codes not in LANGUAGE_CONFIG
@@ -366,17 +366,31 @@ function buildGreetingInstruction(
   nativeLangName: string,
   character: CharacterPayload | undefined,
   studyWord: { word: string; translation: string } | null,
+  geminiVibeDirective: string | undefined,
 ): string {
-  const charPrefix = character ? `You are ${character.name}. ` : ''
+  // Personality prefix adjacent to the open-conversation line so the LLM
+  // can't drift into a generic "Hello" template. Voxtral path prepends the
+  // character identity+directive; Gemini path prepends the vibe directive.
+  let personalityPrefix = ''
+  if (character) {
+    if (character.tier === 'style') {
+      personalityPrefix = `You are ${character.name}. ${character.directive}\n\n`
+    } else {
+      const identity = character.identity ? `${character.identity} ` : ''
+      personalityPrefix = `You are ${character.name}. ${identity}${character.directive}\n\n`
+    }
+  } else if (geminiVibeDirective) {
+    personalityPrefix = `${geminiVibeDirective}\n\n`
+  }
 
   if (level === 'zero') {
     if (studyWord) {
-      return `${charPrefix}Greet the student warmly in ${nativeLangName} and introduce the ${targetLangName} word "${studyWord.word}" (meaning: "${studyWord.translation}").`
+      return `${personalityPrefix}Open the conversation in ${nativeLangName}. Be true to who you are. Naturally weave in the word "${studyWord.word}" (${targetLangName}, meaning "${studyWord.translation}") — not as a vocabulary lesson.`
     }
-    return `${charPrefix}Greet the student warmly in ${nativeLangName} and introduce one useful ${targetLangName} word with its ${nativeLangName} translation.`
+    return `${personalityPrefix}Open the conversation in ${nativeLangName}. Be true to who you are. Slip in one useful ${targetLangName} word naturally — not as a vocabulary lesson.`
   }
 
-  return `${charPrefix}Greet the student warmly in ${targetLangName} and ask one question to start a conversation.`
+  return `${personalityPrefix}Open the conversation in ${targetLangName}. Be true to who you are.`
 }
 
 function buildStudyAddendum(studyWords?: Array<{ word: string; translation: string }>): string {
@@ -902,7 +916,7 @@ export async function POST(req: Request): Promise<Response> {
     const studyWord = study_words && study_words.length > 0
       ? study_words[Math.floor(Math.random() * study_words.length)]
       : null
-    const greetingInstruction = buildGreetingInstruction(level, lang.name, nativeLangName, character, studyWord)
+    const greetingInstruction = buildGreetingInstruction(level, lang.name, nativeLangName, character, studyWord, gemini_vibe_directive)
     messages.push({ role: 'user', content: greetingInstruction })
   }
 

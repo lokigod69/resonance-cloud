@@ -783,6 +783,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       stopAllAudio()
       endConversation()
       previousStateRef.current = null
+      // Clear prior message history so the greeting request does not carry
+      // stale turns (possibly from a different language) into the new session.
+      setMessages([])
+      messagesRef.current = []
 
       const resolved = resolveCharacterVoice(char, lang)
       const syntheticVoice: TutorVoice = {
@@ -837,6 +841,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       stopAllAudio()
       endConversation()
       previousStateRef.current = null
+      // Clear prior message history so the greeting request does not carry
+      // stale turns (possibly from a different language) into the new session.
+      setMessages([])
+      messagesRef.current = []
 
       // Synthetic voice so the rest of the state machine (greeting, conversation
       // header, replay buttons) works unchanged. `TutorCharacter` is left null
