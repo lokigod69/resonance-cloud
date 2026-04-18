@@ -359,6 +359,31 @@ LANGUAGE MIX: About 80% ${targetLang}, 20% ${nativeLang}.
   }
 }
 
+function buildGreetingInstruction(
+  level: string,
+  targetLangName: string,
+  nativeLangName: string,
+  character: CharacterPayload | undefined,
+  studyWord: { word: string; translation: string } | null,
+): string {
+  const charIntro = character
+    ? ` IN CHARACTER as ${character.name}. Introduce yourself in one sentence, then`
+    : ''
+
+  if (level === 'zero') {
+    if (studyWord) {
+      return `[SYSTEM: Start a new conversation. Greet them briefly in ${nativeLangName}.${charIntro} Introduce the ${targetLangName} word "${studyWord.word}" (meaning: "${studyWord.translation}") by weaving it into one open question. Do not prescribe what they should talk about — let them steer. Maximum 2 sentences total. Stay in character.]`
+    }
+    return `[SYSTEM: Start a new conversation. Greet them briefly in ${nativeLangName}.${charIntro} Ask one open question that invites them to say anything — do not prescribe a topic. Avoid weekend, hobby, and "cozy" framings; let the learner lead. Maximum 2 sentences total. Stay in character.]`
+  }
+
+  if (level === 'beginner') {
+    return `[SYSTEM: Start a new conversation. Greet them warmly in ${targetLangName}${charIntro}, following up briefly in ${nativeLangName} only if needed. Ask one open question that invites them to say anything. Do not prescribe a topic — no weekend, hobby, or "cozy" framings. 2-3 sentences total. Stay in character.]`
+  }
+
+  return `[SYSTEM: Start a new conversation.${charIntro} Greet them warmly in ${targetLangName} and ask one open question that invites them to say anything. Do not prescribe a topic — no weekend, hobby, or "cozy" framings. Let the conversation flow based on what they answer. 1-2 sentences. Stay in character.]`
+}
+
 function buildStudyAddendum(studyWords?: Array<{ word: string; translation: string }>): string {
   if (!studyWords || studyWords.length === 0) return ''
   const list = studyWords.map((w) => `${w.word} (${w.translation})`).join(', ')
@@ -867,23 +892,10 @@ export async function POST(req: Request): Promise<Response> {
   } else {
     // No audio, no text — initial greeting request
     const nativeLangName = LANGUAGE_CONFIG[native_language]?.name || NATIVE_LANGUAGE_NAMES[native_language] || 'English'
-    const charIntro = character
-      ? ` IN CHARACTER as ${character.name}. Introduce yourself briefly (one sentence about who you are), then`
-      : ''
-    const hasStudyWords = study_words && study_words.length > 0
-    let greetingInstruction: string
-    if (level === 'zero') {
-      if (hasStudyWords) {
-        const w = study_words![Math.floor(Math.random() * study_words!.length)]
-        greetingInstruction = `[SYSTEM: New conversation. Greet them briefly in ${nativeLangName}.${charIntro ? charIntro : ''} Introduce the ${lang.name} word "${w.word}" (meaning: "${w.translation}") by weaving it into one question or fun fact. Maximum 2 sentences total. Stay in character.]`
-      } else {
-        greetingInstruction = `[SYSTEM: New conversation. Greet them briefly in ${nativeLangName}.${charIntro ? charIntro : ''} Introduce one interesting ${lang.name} word — something surprising, useful, or fun. NOT a greeting word (not hello, hi, hey or their equivalents). Weave it into one question about their life or mood. Maximum 2 sentences total. Stay in character.]`
-      }
-    } else if (level === 'beginner') {
-      greetingInstruction = `[SYSTEM: This is the start of a new conversation. Greet them with a simple sentence in ${lang.name}${charIntro ? charIntro : ''}, and follow up in ${nativeLangName} if needed. Ask a simple opening question. VARY your opener — do not always start the same way. Keep it to 2-3 sentences. Stay in character.]`
-    } else {
-      greetingInstruction = `[SYSTEM: This is the start of a new conversation.${charIntro ? charIntro : ''} Greet them warmly in ${lang.name} and ask a simple opening question. VARY your opener — sometimes ask about their day, sometimes share something interesting, sometimes pose a fun question. Keep it to 1-2 sentences. Stay in character.]`
-    }
+    const studyWord = study_words && study_words.length > 0
+      ? study_words[Math.floor(Math.random() * study_words.length)]
+      : null
+    const greetingInstruction = buildGreetingInstruction(level, lang.name, nativeLangName, character, studyWord)
     messages.push({ role: 'user', content: greetingInstruction })
   }
 
