@@ -33,7 +33,12 @@ export async function playAudioViaContext(
     source.connect(ctx.destination)
     source.onended = () => resolve()
     onSourceCreated?.(source)
-    source.start(0)
+    // Schedule at currentTime (not 0) — iOS Safari has historically dropped
+    // buffers scheduled in the past; the `when < currentTime` edge case has
+    // a WebKit bug where `onended` fires but no audio reaches hardware.
+    // First-turn playback runs several seconds after context creation, so
+    // currentTime > 0 and start(0) would be past-time scheduling.
+    source.start(ctx.currentTime)
   })
 }
 

@@ -34,7 +34,7 @@ interface VoiceChatResponse {
 }
 
 export type SpeakProvider = 'voxtral' | 'gemini'
-export type GeminiPickerStage = 'voice' | 'mode'
+export type GeminiPickerStage = 'voice' | 'mode' | 'accent'
 
 export interface GeminiTutorParams {
   characterModeId: string
@@ -487,7 +487,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       const source = ctx.createBufferSource()
       source.buffer = buffer
       source.connect(ctx.destination)
-      source.start(0)
+      source.start(ctx.currentTime)
     } catch (err) {
       console.warn('[useVoiceTutor] iOS audio prime failed:', err)
     }
