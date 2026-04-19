@@ -368,29 +368,51 @@ function buildGreetingInstruction(
   studyWord: { word: string; translation: string } | null,
   geminiVibeDirective: string | undefined,
 ): string {
-  // Personality prefix adjacent to the open-conversation line so the LLM
-  // can't drift into a generic "Hello" template. Voxtral path prepends the
-  // character identity+directive; Gemini path prepends the vibe directive.
-  let personalityPrefix = ''
+  // Voxtral character path — unchanged. Character identity + directive still
+  // prepended here, consistent with the persona-tier contract.
+  let characterPrefix = ''
   if (character) {
     if (character.tier === 'style') {
-      personalityPrefix = `You are ${character.name}. ${character.directive}\n\n`
+      characterPrefix = `You are ${character.name}. ${character.directive}\n\n`
     } else {
       const identity = character.identity ? `${character.identity} ` : ''
-      personalityPrefix = `You are ${character.name}. ${identity}${character.directive}\n\n`
+      characterPrefix = `You are ${character.name}. ${identity}${character.directive}\n\n`
     }
-  } else if (geminiVibeDirective) {
-    personalityPrefix = `${geminiVibeDirective}\n\n`
   }
+
+  // Gemini path: vibe text lives ONLY in the system PERSONALITY block.
+  // Never concatenated into this user message — see single-injection
+  // invariant. Argument kept in signature for call-site stability.
+  void geminiVibeDirective
 
   if (level === 'zero') {
+    // TODO(word-suggest): Extract the introduced target-language word and return
+    // as structured metadata on the response (e.g. introducedWord: { word, translation }),
+    // so the client can offer a one-tap "generate a deck card from this word" action
+    // after the greeting. Not implemented now — reserving the hook.
     if (studyWord) {
-      return `${personalityPrefix}Open the conversation in ${nativeLangName}. Be true to who you are. Naturally weave in the word "${studyWord.word}" (${targetLangName}, meaning "${studyWord.translation}") — not as a vocabulary lesson.`
+      return `${characterPrefix}Greet briefly in ${nativeLangName}. Naturally weave in the ${targetLangName} word "${studyWord.word}" (meaning "${studyWord.translation}") — say it, give its meaning, use it in a short sentence. End with a simple question. Two or three short sentences.`
     }
-    return `${personalityPrefix}Open the conversation in ${nativeLangName}. Be true to who you are. Slip in one useful ${targetLangName} word naturally — not as a vocabulary lesson.`
+    return `${characterPrefix}Greet briefly in ${nativeLangName}. Introduce one ${targetLangName} word: say the word, give its ${nativeLangName} meaning, and use it in one short sentence. End with a simple question. Keep it to two or three short sentences.`
   }
 
-  return `${personalityPrefix}Open the conversation in ${targetLangName}. Be true to who you are.`
+  if (level === 'beginner') {
+    // TODO(word-suggest): Extract the introduced target-language word and return
+    // as structured metadata on the response (e.g. introducedWord: { word, translation }),
+    // so the client can offer a one-tap "generate a deck card from this word" action
+    // after the greeting. Not implemented now — reserving the hook.
+    if (studyWord) {
+      return `${characterPrefix}Open warmly in ${nativeLangName}. Weave the ${targetLangName} word "${studyWord.word}" (meaning "${studyWord.translation}") into your greeting naturally. End with one question. Three sentences.`
+    }
+    return `${characterPrefix}Open warmly in ${nativeLangName}. Weave in one ${targetLangName} word naturally — not as a vocabulary lesson. End with one question. Three sentences.`
+  }
+
+  if (level === 'advanced') {
+    return `${characterPrefix}Open the conversation in ${targetLangName}. Be true to who you are. Keep it natural.`
+  }
+
+  // intermediate (default / fallback)
+  return `${characterPrefix}Open the conversation in ${targetLangName} with light ${nativeLangName} support where helpful. Be conversational and brief. End with one question.`
 }
 
 function buildStudyAddendum(studyWords?: Array<{ word: string; translation: string }>): string {
@@ -436,14 +458,21 @@ GENERAL RULES:
 
   // ── Gemini provider with vibe directive: colour conversation by vibe ──
   // The vibe picks the PERSONALITY layer so the LLM's text output matches the
-  // flavour of the voice, not just the TTS pronunciation. Keeps universal
-  // level + general rules intact.
+  // flavour of the voice, not just the TTS pronunciation. Client sends a
+  // level-scaled tier (flavor/hint/directive) — server does no re-selection.
+  //
+  // The "Let this personality colour..." line is a content-drift license:
+  // harmless at intermediate/advanced where character expression is the
+  // point, but at zero/beginner it overrides the pedagogical brevity the
+  // greeting structure is trying to impose. Gate it by level.
   if (!character && geminiVibeDirective) {
+    const colourLine = (level === 'zero' || level === 'beginner')
+      ? ''
+      : '\nLet this personality colour what you say and how you engage — not just the voice.'
     return `You are a language tutor with a distinct personality, helping someone practice ${lang.name} (${lang.nativeName}).
 The student's native language is ${nativeLangName}.
 
-PERSONALITY: ${geminiVibeDirective}
-Let this personality colour what you say and how you engage — not just the voice.
+PERSONALITY: ${geminiVibeDirective}${colourLine}
 
 ${levelInstructions}
 

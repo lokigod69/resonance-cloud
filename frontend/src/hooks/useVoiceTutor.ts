@@ -414,9 +414,18 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
         body.gemini_accent_id = geminiAccentIdRef.current
         // Inject a lightweight vibe directive so the LLM can colour text to
         // match the selected Gemini mode (not just TTS pronunciation).
+        // Level-scaled: 'zero' gets the lightest "flavor" tier, 'beginner'
+        // the "hint" tier, 'intermediate'/'advanced' the full directive.
+        // Single-injection invariant: server never re-prepends this string
+        // into the greeting user message.
         const vibeMode = getGeminiCharacterMode(geminiModeIdRef.current)
-        if (vibeMode?.geminiVibeDirective) {
-          body.gemini_vibe_directive = vibeMode.geminiVibeDirective
+        if (vibeMode) {
+          const currentLevel = levelRef.current || 'intermediate'
+          const tier =
+            currentLevel === 'zero'     ? vibeMode.geminiVibeFlavor :
+            currentLevel === 'beginner' ? vibeMode.geminiVibeHint :
+                                          vibeMode.geminiVibeDirective
+          body.gemini_vibe_directive = tier
         }
         // Intentionally no character_* fields — Gemini mode stays TTS-only
         // for the style prompt; the vibe directive above is the text-layer
