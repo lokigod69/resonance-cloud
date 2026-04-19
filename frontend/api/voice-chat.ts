@@ -368,51 +368,54 @@ function buildGreetingInstruction(
   studyWord: { word: string; translation: string } | null,
   geminiVibeDirective: string | undefined,
 ): string {
-  // Voxtral character path — unchanged. Character identity + directive still
-  // prepended here, consistent with the persona-tier contract.
-  let characterPrefix = ''
+  // ── Voxtral path: character present ─────────────────────────────────────
+  // Byte-for-byte revert to 33c15d1. Character identity + directive are
+  // prepended to the greeting user message as a personality anchor so the
+  // LLM can't drift into a generic "Hello" template.
   if (character) {
+    let personalityPrefix = ''
     if (character.tier === 'style') {
-      characterPrefix = `You are ${character.name}. ${character.directive}\n\n`
+      personalityPrefix = `You are ${character.name}. ${character.directive}\n\n`
     } else {
       const identity = character.identity ? `${character.identity} ` : ''
-      characterPrefix = `You are ${character.name}. ${identity}${character.directive}\n\n`
+      personalityPrefix = `You are ${character.name}. ${identity}${character.directive}\n\n`
     }
+
+    if (level === 'zero') {
+      if (studyWord) {
+        return `${personalityPrefix}Open the conversation in ${nativeLangName}. Be true to who you are. Naturally weave in the word "${studyWord.word}" (${targetLangName}, meaning "${studyWord.translation}") — not as a vocabulary lesson.`
+      }
+      return `${personalityPrefix}Open the conversation in ${nativeLangName}. Be true to who you are. Slip in one useful ${targetLangName} word naturally — not as a vocabulary lesson.`
+    }
+
+    return `${personalityPrefix}Open the conversation in ${targetLangName}. Be true to who you are.`
   }
 
-  // Gemini path: vibe text lives ONLY in the system PERSONALITY block.
-  // Never concatenated into this user message — see single-injection
+  // ── Gemini path: no character, vibe tier lives ONLY in system PERSONALITY
+  // block. Never concatenated into this user message — single-injection
   // invariant. Argument kept in signature for call-site stability.
   void geminiVibeDirective
 
   if (level === 'zero') {
-    // TODO(word-suggest): Extract the introduced target-language word and return
-    // as structured metadata on the response (e.g. introducedWord: { word, translation }),
-    // so the client can offer a one-tap "generate a deck card from this word" action
-    // after the greeting. Not implemented now — reserving the hook.
     if (studyWord) {
-      return `${characterPrefix}Greet briefly in ${nativeLangName}. Naturally weave in the ${targetLangName} word "${studyWord.word}" (meaning "${studyWord.translation}") — say it, give its meaning, use it in a short sentence. End with a simple question. Two or three short sentences.`
+      return `Open in ${nativeLangName} with a short welcome. Naturally weave in the ${targetLangName} word "${studyWord.word}" (meaning "${studyWord.translation}") — say it, give its meaning, use it in a short sentence. End with a simple question. Two or three short sentences.`
     }
-    return `${characterPrefix}Greet briefly in ${nativeLangName}. Introduce one ${targetLangName} word: say the word, give its ${nativeLangName} meaning, and use it in one short sentence. End with a simple question. Keep it to two or three short sentences.`
+    return `Open in ${nativeLangName} with a short welcome. Introduce one ${targetLangName} word: say the word, give its ${nativeLangName} meaning, and use it in one short sentence. End with a simple question. Keep it to two or three short sentences.`
   }
 
   if (level === 'beginner') {
-    // TODO(word-suggest): Extract the introduced target-language word and return
-    // as structured metadata on the response (e.g. introducedWord: { word, translation }),
-    // so the client can offer a one-tap "generate a deck card from this word" action
-    // after the greeting. Not implemented now — reserving the hook.
     if (studyWord) {
-      return `${characterPrefix}Open warmly in ${nativeLangName}. Weave the ${targetLangName} word "${studyWord.word}" (meaning "${studyWord.translation}") into your greeting naturally. End with one question. Three sentences.`
+      return `Open in ${nativeLangName}. Weave the ${targetLangName} word "${studyWord.word}" (meaning "${studyWord.translation}") into your greeting naturally. End with one question. Three sentences.`
     }
-    return `${characterPrefix}Open warmly in ${nativeLangName}. Weave in one ${targetLangName} word naturally — not as a vocabulary lesson. End with one question. Three sentences.`
+    return `Open in ${nativeLangName}. Weave in one ${targetLangName} word naturally — not as a vocabulary lesson. End with one question. Three sentences.`
   }
 
   if (level === 'advanced') {
-    return `${characterPrefix}Open the conversation in ${targetLangName}. Be true to who you are. Keep it natural.`
+    return `Open the conversation in ${targetLangName}. Be true to who you are. Keep it natural.`
   }
 
   // intermediate (default / fallback)
-  return `${characterPrefix}Open the conversation in ${targetLangName} with light ${nativeLangName} support where helpful. Be conversational and brief. End with one question.`
+  return `Open the conversation in ${targetLangName} with light ${nativeLangName} support where helpful. Be conversational and brief. End with one question.`
 }
 
 function buildStudyAddendum(studyWords?: Array<{ word: string; translation: string }>): string {
