@@ -369,10 +369,15 @@ function buildGreetingInstruction(
   geminiVibeDirective: string | undefined,
 ): string {
   // ── Voxtral path: character present ─────────────────────────────────────
-  // Byte-for-byte revert to 33c15d1. Character identity + directive are
-  // prepended to the greeting user message as a personality anchor so the
-  // LLM can't drift into a generic "Hello" template.
+  // Character L0 uses a bounded bilingual opener. Higher levels stay on the
+  // existing character path for now so this change is isolated to the
+  // regression investigated from 33c15d1.
   if (character) {
+    if (level === 'zero') {
+      const sentenceLimit = character.tier === 'style' ? '1-3' : '2-4'
+      return `Open the conversation. Greet the student in ${nativeLangName} in your own voice, and include some ${targetLangName} naturally — by switching, echoing, or using both. End with an open question that invites them to share something about themselves. ${sentenceLimit} sentences.`
+    }
+
     let personalityPrefix = ''
     if (character.tier === 'style') {
       personalityPrefix = `You are ${character.name}. ${character.directive}\n\n`
