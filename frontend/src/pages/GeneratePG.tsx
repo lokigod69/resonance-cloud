@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, ArrowLeft, Film } from 'lucide-react'
@@ -39,6 +39,7 @@ export default function GeneratePG() {
   const [error, setError] = useState<string | null>(null)
   const [generated, setGenerated] = useState(false)
   const [generatedDeckId, setGeneratedDeckId] = useState<string | null>(null)
+  const hasNavigatedToDeckRef = useRef(false)
 
   // "Add Cards" mode: existing deck via ?deckId=xxx
   const { t } = useTranslation()
@@ -79,17 +80,18 @@ export default function GeneratePG() {
     return () => window.clearTimeout(timeoutId)
   }, [deckIdParam, state.language, activeLanguage, dispatch])
 
-   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
-   const { jobStatus, jobsAhead, queuePaused, hasChecked } = useQueuePosition(queueDeckId ?? undefined, {
-     enabled: generated && !!queueDeckId,
-   })
+  const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
+  const { jobStatus, jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(queueDeckId ?? undefined, {
+    enabled: generated && !!queueDeckId,
+  })
 
-   useEffect(() => {
-     if (!generated || !queueDeckId) return
-     if (jobStatus === 'processing') {
-       navigate(`/deck/${queueDeckId}`)
-     }
-   }, [generated, jobStatus, navigate, queueDeckId])
+  useEffect(() => {
+    if (!generated || !queueDeckId || hasNavigatedToDeckRef.current) return
+    if (jobStatus === 'processing' || (hasChecked && !jobStatus && !shouldShowQueue)) {
+      hasNavigatedToDeckRef.current = true
+      navigate(`/deck/${queueDeckId}`)
+    }
+  }, [generated, hasChecked, jobStatus, navigate, queueDeckId, shouldShowQueue])
 
   /* ─── Submit (mirrors GenerateWizard.handleGenerate) ─── */
 

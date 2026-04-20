@@ -51,6 +51,7 @@ export default function GenerateGO() {
   const [error, setError] = useState<string | null>(null)
   const [generated, setGenerated] = useState(false)
   const [generatedDeckId, setGeneratedDeckId] = useState<string | null>(null)
+  const hasNavigatedToDeckRef = useRef(false)
 
   // "Add Cards" mode: existing deck via ?deckId=xxx
   const [searchParams] = useSearchParams()
@@ -89,16 +90,17 @@ export default function GenerateGO() {
   }, [deckIdParam, language, activeLanguage])
 
    const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
-   const { jobStatus, jobsAhead, queuePaused, hasChecked } = useQueuePosition(queueDeckId ?? undefined, {
+   const { jobStatus, jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(queueDeckId ?? undefined, {
      enabled: generated && !!queueDeckId,
    })
 
    useEffect(() => {
-     if (!generated || !queueDeckId) return
-     if (jobStatus === 'processing') {
+     if (!generated || !queueDeckId || hasNavigatedToDeckRef.current) return
+     if (jobStatus === 'processing' || (hasChecked && !jobStatus && !shouldShowQueue)) {
+       hasNavigatedToDeckRef.current = true
        navigate(`/deck/${queueDeckId}`)
      }
-   }, [generated, jobStatus, navigate, queueDeckId])
+   }, [generated, hasChecked, jobStatus, navigate, queueDeckId, shouldShowQueue])
 
   // Scroll refs
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])

@@ -522,7 +522,7 @@ export default function DeckViewPG() {
         </div>
       </div>
 
-    {(!hasChecked || shouldShowQueue) && (
+    {deck?.status === 'generating' && (!hasChecked || shouldShowQueue) && (
       <div className="mb-8">
         <QueuePositionDisplay
           jobsAhead={jobsAhead}

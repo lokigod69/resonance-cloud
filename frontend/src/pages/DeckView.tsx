@@ -353,7 +353,7 @@ export default function DeckView() {
               </span>
             )}
           </div>
-          {(!hasChecked || shouldShowQueue) && (
+          {deck?.status === 'generating' && (!hasChecked || shouldShowQueue) && (
             <div className="mx-auto mt-4 w-full max-w-3xl px-4">
               <QueuePositionDisplay jobsAhead={jobsAhead} queuePaused={queuePaused} hasChecked={hasChecked} />
             </div>
