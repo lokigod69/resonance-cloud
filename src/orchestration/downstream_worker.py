@@ -159,6 +159,37 @@ class DownstreamWorker:
             state.clear_log_context()
             return
 
+        import os
+        log.info(
+            "DIAG downstream_worker workspace resolution: "
+            "word_id=%s word_slug=%s "
+            "_workspace_path_raw=%r "
+            "workspace_path=%s is_absolute=%s exists=%s "
+            "cwd=%s",
+            word_id, word_slug,
+            word.get("_workspace_path"),
+            workspace_path, workspace_path.is_absolute(), workspace_path.exists(),
+            os.getcwd(),
+        )
+        if workspace_path.exists():
+            try:
+                log.info(
+                    "DIAG downstream_worker workspace listing: word_slug=%s contents=%s",
+                    word_slug, os.listdir(workspace_path)[:30],
+                )
+                word_dir = workspace_path / word_slug
+                log.info(
+                    "DIAG downstream_worker word_dir: path=%s exists=%s",
+                    word_dir, word_dir.exists(),
+                )
+                if word_dir.exists():
+                    log.info(
+                        "DIAG downstream_worker word_dir listing: contents=%s",
+                        os.listdir(word_dir)[:30],
+                    )
+            except Exception as e:
+                log.warning("DIAG downstream_worker listing error: %s", e)
+
         # Dispatch into the branch. Each branch is responsible for preparing
         # the word state up to `current_stage='uploading'`, after which
         # _upload_and_complete takes over.

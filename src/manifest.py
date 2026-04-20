@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 import json
+import logging
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 from .models import Manifest, LineageEntry, Enrichment
+
+log = logging.getLogger(__name__)
 
 
 def now_iso() -> str:
@@ -21,6 +24,15 @@ def read_manifest(word_dir: Path) -> Manifest:
     """Read and parse manifest.json from a word directory."""
     mp = manifest_path(word_dir)
     if not mp.exists():
+        import os
+        log.error(
+            "DIAG manifest.read failed: word_dir=%s is_absolute=%s exists=%s "
+            "parent_exists=%s parent_listing=%s cwd=%s",
+            word_dir, word_dir.is_absolute(), word_dir.exists(),
+            word_dir.parent.exists() if word_dir.parent else False,
+            os.listdir(word_dir.parent) if word_dir.parent.exists() else "N/A",
+            os.getcwd(),
+        )
         raise FileNotFoundError(f"No manifest.json in {word_dir}")
     with open(mp, 'r', encoding='utf-8') as f:
         data = json.load(f)
