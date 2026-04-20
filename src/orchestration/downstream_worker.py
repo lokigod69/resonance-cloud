@@ -651,6 +651,7 @@ class DownstreamWorker:
         word_slug: str,
     ) -> bool:
         from src.services.publishing import upload_ab_results
+        from src.services.metadata import collect_word_metadata
         from src.manifest import read_manifest
 
         word_id = word["id"]
@@ -704,6 +705,49 @@ class DownstreamWorker:
             )
             return False
 
+        # Collect + write generation metadata (regression restoration:
+        # pre-refactor 08e9726^:job_runner.py:627-680).
+        word_metadata: Optional[dict[str, Any]] = None
+        try:
+            timer = state.timer_for(word_id)
+            pipeline_duration = sum(timer.durations_ms().values()) / 1000.0
+            profile_used = await self._read_profile_used(fresh.get("deck_id"))
+            word_metadata = collect_word_metadata(
+                word_dir, profile_used, pipeline_duration,
+            )
+        except Exception as e:
+            log.warning(
+                "downstream_worker: metadata collection failed word=%s: %s",
+                word_id, e,
+            )
+
+        if word_metadata:
+            suno_ab = word.get("_suno_ab_manifests") or {}
+            ab_manifests_dict = word.get("_ab_manifests") or {}
+            take_a = word.get("_take_a")
+            take_b = word.get("_take_b")
+            word_metadata["ab_takes"] = {
+                "a": "suno_a" if suno_ab else take_a,
+                "b": ("suno_b" if "b" in suno_ab else None)
+                     if suno_ab
+                     else (take_b if take_b and "b" in ab_manifests_dict else None),
+            }
+
+            def _meta_write(wid=word_id, m=word_metadata):
+                return (
+                    self.sb.table("words")
+                      .update({"metadata": m})
+                      .eq("id", wid)
+                      .execute()
+                )
+            try:
+                await asyncio.to_thread(_meta_write)
+            except Exception as e:
+                log.warning(
+                    "downstream_worker: metadata write failed word=%s: %s",
+                    word_id, e,
+                )
+
         ok = await state.transition_stage(
             self.sb, word_id,
             new_stage="complete",
@@ -735,6 +779,29 @@ class DownstreamWorker:
             if f.suffix in (".flac", ".wav", ".mp3") and f.name.startswith("take_")
         )
         return takes if takes else [current_song]
+
+    async def _read_profile_used(self, deck_id: Optional[str]) -> Optional[str]:
+        if not deck_id:
+            return None
+
+        def _read():
+            return (
+                self.sb.table("generation_jobs")
+                  .select("profile_used")
+                  .eq("deck_id", deck_id)
+                  .eq("status", "processing")
+                  .order("created_at", desc=True)
+                  .limit(1)
+                  .execute()
+            )
+        try:
+            resp = await asyncio.to_thread(_read)
+        except Exception:
+            return None
+        rows = list(getattr(resp, "data", None) or [])
+        if not rows:
+            return None
+        return rows[0].get("profile_used")
 
     async def _bump_job_words_completed(self, deck_id: Optional[str]) -> None:
         if not deck_id:

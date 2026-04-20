@@ -235,10 +235,67 @@ class UpstreamWorker:
             )
             return False
 
+        if stage == "images":
+            await self._post_images_mnemonic_writeback(word, workspace_path, word_slug)
+
         if stage == "song":
             await self._post_song_suno_submit(word, workspace_path, word_slug)
 
         return True
+
+    async def _post_images_mnemonic_writeback(
+        self,
+        word: dict[str, Any],
+        workspace_path: Path,
+        word_slug: str,
+    ) -> None:
+        """Overwrite words.mnemonic with the storyboard's `mnemonic_text`.
+
+        The storyboard writes mnemonic_text in base_language (matches
+        `translation`); enrichment's mnemonic has no language anchor.
+        Restores pre-refactor behavior from 08e9726^:job_runner.py:326-347.
+        """
+        import json as _json
+        from src.manifest import read_manifest, write_manifest
+
+        word_dir = workspace_path / word_slug
+        try:
+            images_manifest = read_manifest(word_dir)
+            images_version = images_manifest.selected.images
+            if not images_version:
+                return
+            storyboard_path = word_dir / "images" / images_version / "storyboard.json"
+            if not storyboard_path.exists():
+                return
+            storyboard_data = _json.loads(storyboard_path.read_text(encoding="utf-8"))
+            storyboard_mnemonic = storyboard_data.get("mnemonic_text")
+            if not (
+                storyboard_mnemonic
+                and isinstance(storyboard_mnemonic, str)
+                and len(storyboard_mnemonic.strip()) > 10
+            ):
+                return
+            storyboard_mnemonic = storyboard_mnemonic.strip()
+            log.info(
+                "upstream_worker: storyboard mnemonic word=%s: %s",
+                word["id"], storyboard_mnemonic[:80],
+            )
+            images_manifest.enrichment.mnemonic = storyboard_mnemonic
+            write_manifest(word_dir, images_manifest)
+
+            def _write(wid=word["id"], mn=storyboard_mnemonic):
+                return (
+                    self.sb.table("words")
+                      .update({"mnemonic": mn})
+                      .eq("id", wid)
+                      .execute()
+                )
+            await asyncio.to_thread(_write)
+        except Exception as e:
+            log.warning(
+                "upstream_worker: storyboard mnemonic extract failed word=%s: %s",
+                word["id"], e,
+            )
 
     async def _post_song_suno_submit(
         self,
