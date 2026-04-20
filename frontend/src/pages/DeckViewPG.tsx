@@ -1,5 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { supabase } from '@/lib/supabase'
 import { useDrag } from '@use-gesture/react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -36,6 +37,7 @@ import { useVideoVolume } from '@/hooks/useVideoVolume'
 import { VideoControls } from '@/components/VideoControls'
 import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
+import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
@@ -87,6 +89,9 @@ export default function DeckViewPG() {
   const { user, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { t, locale } = useTranslation()
+  const { jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(id, {
+    enabled: !!id && deck?.status === 'generating',
+  })
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
   const [sharing, setSharing] = useState(false)
@@ -235,7 +240,7 @@ export default function DeckViewPG() {
     if (!deck || deck.status !== 'generating') return
     const interval = setInterval(fetchData, 30000)
     return () => clearInterval(interval)
-  }, [deck?.status, fetchData])
+  }, [deck, fetchData])
 
   // Keep activeIndex in bounds when words update
   useEffect(() => {
@@ -264,15 +269,17 @@ export default function DeckViewPG() {
 
   // Pause video when navigating to a different card
   useLayoutEffect(() => {
+    const video = videoRef.current
     return () => {
-      videoRef.current?.pause()
+      video?.pause()
     }
   }, [activeIndex])
 
   // Pause video on page leave
   useEffect(() => {
+    const video = videoRef.current
     return () => {
-      videoRef.current?.pause()
+      video?.pause()
     }
   }, [])
 
@@ -514,6 +521,17 @@ export default function DeckViewPG() {
           </div>
         </div>
       </div>
+
+    {(!hasChecked || shouldShowQueue) && (
+      <div className="mb-8">
+        <QueuePositionDisplay
+          jobsAhead={jobsAhead}
+          queuePaused={queuePaused}
+          hasChecked={hasChecked}
+          variant="glassy"
+        />
+      </div>
+    )}
 
     {/* Generation progress showcase */}
     {isGenerating && (

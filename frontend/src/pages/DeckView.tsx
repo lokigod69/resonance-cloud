@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
@@ -16,6 +17,7 @@ import { useVideoPlayback } from '@/hooks/useVideoPlayback'
 import { VideoControls } from '@/components/VideoControls'
 import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
+import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -70,6 +72,9 @@ export default function DeckView() {
   const { user, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { t, locale } = useTranslation()
+  const { jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(id, {
+    enabled: !!id && deck?.status === 'generating',
+  })
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
   const [deletingDeck, setDeletingDeck] = useState(false)
@@ -217,7 +222,7 @@ export default function DeckView() {
 
     const interval = setInterval(fetchData, 30000)
     return () => clearInterval(interval)
-  }, [deck?.status, fetchData])
+  }, [deck, fetchData])
 
   if (loading) {
     return (
@@ -348,6 +353,11 @@ export default function DeckView() {
               </span>
             )}
           </div>
+          {(!hasChecked || shouldShowQueue) && (
+            <div className="mx-auto mt-4 w-full max-w-3xl px-4">
+              <QueuePositionDisplay jobsAhead={jobsAhead} queuePaused={queuePaused} hasChecked={hasChecked} />
+            </div>
+          )}
           {isGenerating && (
             <Progress value={progress} className="h-2 max-w-md mx-auto" />
           )}
@@ -714,9 +724,12 @@ function VideoViewerModal({
   const { volume, isMuted, setVolume, toggleMute } = useVideoVolume(videoRef, false)
   const { isPlaying, setIsPlaying, togglePlay, onPlay, onPause } = useVideoPlayback(videoRef)
   const isPlayingRef = useRef(isPlaying)
-  isPlayingRef.current = isPlaying
   const [sharing, setSharing] = useState(false)
   const [shareSuccess, setShareSuccess] = useState(false)
+
+  useEffect(() => {
+    isPlayingRef.current = isPlaying
+  }, [isPlaying])
 
   async function handleShare() {
     setSharing(true)

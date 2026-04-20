@@ -147,6 +147,13 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.initializeSynthesis': 'Initialize Synthesis',
     'generate.backToDeck': 'Back to Deck',
 
+    // ── Queue ──
+    'queue.checking': 'Checking your queue position…',
+    'queue.generating': 'Generating…',
+    'queue.paused': 'Queue paused — your job is saved and will start when it resumes.',
+    'queue.jobsAhead': 'jobs ahead',
+    'queue.estimated': 'Estimated wait: ~{duration}',
+
     // ── DeckView ──
     'deckview.loadingDeck': 'Loading deck...',
     'deckview.notFound': 'Deck not found',
@@ -465,40 +472,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     'dashboard.viewGrid': 'Raster',
     'dashboard.viewOrbs': 'Orbs',
 
-    // ── Generate ──
-    'generate.stepLanguage': 'Sprache',
-    'generate.stepWords': 'Wörter',
-    'generate.stepVibe': 'Stimmung',
-    'generate.stepArtStyle': 'Kunststil',
-    'generate.stepMusic': 'Musik',
-    'generate.stepReview': 'Überprüfen',
-    'generate.chooseLanguage': 'Wähle deine Sprache',
-    'generate.chooseLanguageSub': 'Welche Sprache möchtest du lernen?',
-    'generate.typeWord': 'Wort oder Phrase eingeben...',
-    'generate.wordCount': '{count} von {max} Wörtern',
-    'generate.maxWords': 'Maximal {max} Wörter',
-    'generate.wordExists': 'Wort bereits hinzugefügt',
-    'generate.setDirection': 'Kreative Richtung wählen',
-    'generate.setDirectionSub': 'Bestimme, wie die KI deine Wörter visuell interpretiert',
-    'generate.whichFilm': 'Welcher Film?',
-    'generate.filmPlaceholder': 'Filmname (optional)',
-    'generate.filmExample': 'z.B. Blade Runner, Amélie...',
-    'generate.chooseArtStyle': 'Kunststil wählen',
-    'generate.chooseArtStyleSub': 'Wähle den visuellen Stil für deine Karten',
-    'generate.normalStyle': 'Normal',
-    'generate.normalStyleDesc': 'KI wählt den besten Stil pro Wort',
-    'generate.pickGenre': 'Genre wählen',
-    'generate.pickGenreSub': 'Wähle den Musikstil für deine Videos',
-    'generate.synthesisReady': 'Synthese bereit',
-    'generate.deckNamePlaceholder': 'Deck benennen...',
-    'generate.creditsUsed.one': '{count} Credit wird verwendet',
-    'generate.creditsUsed.other': '{count} Credits werden verwendet',
-    'generate.notEnoughCredits': 'Nicht genug Credits',
-    'generate.notEnoughCreditsDetail': 'Nicht genug Credits. Du hast {have}, brauchst aber {need}. Löse einen Einladungscode ein, um mehr zu bekommen.',
-    'generate.forgingMemories': 'Erinnerungen werden geschmiedet',
-    'generate.initializing': 'Initialisierung...',
-    'generate.initializeSynthesis': 'Synthese starten',
-    'generate.backToDeck': 'Zurück zum Deck',
+    // ── Queue ──
+    'queue.checking': 'Deine Warteschlangenposition wird ermittelt…',
+    'queue.generating': 'Wird generiert…',
+    'queue.paused': 'Warteschlange pausiert — dein Auftrag ist gespeichert und startet, sobald sie fortgesetzt wird.',
+    'queue.jobsAhead': 'Aufträge vor dir',
+    'queue.estimated': 'Geschätzte Wartezeit: ~{duration}',
 
     // ── DeckView ──
     'deckview.loadingDeck': 'Deck wird geladen...',
@@ -818,7 +797,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     'dashboard.viewGrid': 'Grille',
     'dashboard.viewOrbs': 'Orbs',
 
-    // ── Generate ──
+    // ── Queue ──
+    'queue.checking': 'Vérification de votre position…',
+    'queue.generating': 'Génération en cours…',
+    'queue.paused': 'File en pause — votre tâche est enregistrée et démarrera à la reprise.',
+    'queue.jobsAhead': 'travaux en attente',
+    'queue.estimated': 'Attente estimée : ~{duration}',
     'generate.stepLanguage': 'Langue',
     'generate.stepWords': 'Mots',
     'generate.stepVibe': 'Ambiance',

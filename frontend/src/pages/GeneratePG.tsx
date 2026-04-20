@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, ArrowLeft, Film } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
+import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useWizardState } from '@/components/generate/useWizardState'
 import type { ExistingDeck } from '@/components/generate/useWizardState'
@@ -17,6 +18,7 @@ import {
   GENRES,
 } from '@/components/generate/wizardData'
 import { FlagIcon } from '@/components/ui/FlagIcon'
+import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
 
 /* ─── Constants ─────────────────────────────────── */
@@ -30,11 +32,13 @@ export default function GeneratePG() {
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { state, dispatch, buildPayload } = useWizardState()
+  const navigate = useNavigate()
 
   const [pgStep, setPgStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [generated, setGenerated] = useState(false)
+  const [generatedDeckId, setGeneratedDeckId] = useState<string | null>(null)
 
   // "Add Cards" mode: existing deck via ?deckId=xxx
   const { t } = useTranslation()
@@ -65,11 +69,27 @@ export default function GeneratePG() {
   useEffect(() => {
     if (deckIdParam) return
     if (state.language) return
-    if (activeLanguage) {
-      dispatch({ type: 'SET_LANGUAGE', language: activeLanguage })
-      setPgStep(1) // skip language selection — mirrors deckIdParam path
-    }
+    if (!activeLanguage) return
+
+    dispatch({ type: 'SET_LANGUAGE', language: activeLanguage })
+    const timeoutId = window.setTimeout(() => {
+      setPgStep(1)
+    }, 0)
+
+    return () => window.clearTimeout(timeoutId)
   }, [deckIdParam, state.language, activeLanguage, dispatch])
+
+   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
+   const { jobStatus, jobsAhead, queuePaused, hasChecked } = useQueuePosition(queueDeckId ?? undefined, {
+     enabled: generated && !!queueDeckId,
+   })
+
+   useEffect(() => {
+     if (!generated || !queueDeckId) return
+     if (jobStatus === 'processing') {
+       navigate(`/deck/${queueDeckId}`)
+     }
+   }, [generated, jobStatus, navigate, queueDeckId])
 
   /* ─── Submit (mirrors GenerateWizard.handleGenerate) ─── */
 
@@ -100,7 +120,7 @@ export default function GeneratePG() {
         jobPayload.settings_override = {}
       }
 
-      await submitGeneration(
+      const targetDeckId = await submitGeneration(
         user.id,
         { deckPayload, wordList, jobPayload },
         existingDeck ?? undefined,
@@ -108,6 +128,7 @@ export default function GeneratePG() {
       )
 
       await refreshProfile()
+      setGeneratedDeckId(targetDeckId)
       setGenerated(true)
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : t('common.somethingWentWrong')
@@ -135,35 +156,29 @@ export default function GeneratePG() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-          className="flex flex-col items-center text-center gap-8"
+          className="flex w-full max-w-xl flex-col items-center text-center gap-8"
         >
-          {/* Spinning gradient orb */}
-          <div className="relative">
-            <motion.div
-              className="w-24 h-24 rounded-full"
-              style={{
-                background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
-              }}
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 3, ease: 'linear' }}
+          {queueDeckId ? (
+            <QueuePositionDisplay
+              jobsAhead={jobsAhead}
+              queuePaused={queuePaused}
+              hasChecked={hasChecked}
+              variant="glassy"
+              className="w-full"
             />
-            <div
-              className="absolute inset-0 rounded-full blur-xl"
-              style={{
-                background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
-                opacity: 0.4,
-              }}
-            />
-          </div>
+          ) : (
+            <div className="w-full rounded-[32px] border border-white/10 bg-white/5 px-6 py-8 shadow-[0_20px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+              <motion.h2
+                className="text-3xl font-bold font-display"
+                animate={{ opacity: [0.7, 1, 0.7] }}
+                transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+              >
+                {t('queue.generating')}
+              </motion.h2>
+            </div>
+          )}
 
           <div className="space-y-2">
-            <motion.h2
-              className="text-3xl font-bold font-display"
-              animate={{ opacity: [0.7, 1, 0.7] }}
-              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-            >
-              {t('generate.forgingMemories')}
-            </motion.h2>
             <p className="text-sm text-[var(--pg-text-dim)] max-w-sm">
               {existingDeck
                 ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
@@ -172,11 +187,11 @@ export default function GeneratePG() {
           </div>
 
           <Link
-            to={existingDeck ? `/deck/${existingDeck.id}` : '/dashboard'}
+            to={queueDeckId ? `/deck/${queueDeckId}` : existingDeck ? `/deck/${existingDeck.id}` : '/dashboard'}
             className="px-6 py-3 rounded-full pg-glass text-sm font-display font-medium text-[var(--pg-accent-teal)] hover:bg-white/5 transition-all"
           >
             <ArrowLeft className="h-4 w-4 inline mr-2" />
-            {existingDeck ? t('generate.backToDeck') : t('common.backToDecks')}
+            {queueDeckId ? t('generate.backToDeck') : t('common.backToDecks')}
           </Link>
         </motion.div>
       </div>

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
@@ -7,6 +8,8 @@ import { supabase } from '@/lib/supabase'
 import { LANGUAGES, VIBES, ART_STYLE_GROUPS, MAX_WORDS } from '@/components/generate/wizardData'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { submitGeneration } from '@/components/generate/submitGeneration'
+import { useQueuePosition } from '@/hooks/useQueuePosition'
+import { useTranslation } from '@/hooks/useTranslation'
 import type { GeneratePayload, ExistingDeck, WizardState, WizardAction } from '@/components/generate/useWizardState'
 import WordsStep from '@/components/generate/steps/WordsStep'
 
@@ -25,6 +28,7 @@ export default function GenerateGO() {
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { activeLanguage } = useLanguage()
+  const { t } = useTranslation()
   const navigate = useNavigate()
 
   const [step, setStep] = useState(1)
@@ -45,6 +49,8 @@ export default function GenerateGO() {
   // Submit
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [generated, setGenerated] = useState(false)
+  const [generatedDeckId, setGeneratedDeckId] = useState<string | null>(null)
 
   // "Add Cards" mode: existing deck via ?deckId=xxx
   const [searchParams] = useSearchParams()
@@ -72,11 +78,27 @@ export default function GenerateGO() {
   useEffect(() => {
     if (deckIdParam) return
     if (language) return
-    if (activeLanguage) {
+    if (!activeLanguage) return
+
+    const timeoutId = window.setTimeout(() => {
       setLanguage(activeLanguage)
-      setStep(2) // skip language selection — mirrors deckIdParam path
-    }
+      setStep(2)
+    }, 0)
+
+    return () => window.clearTimeout(timeoutId)
   }, [deckIdParam, language, activeLanguage])
+
+   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
+   const { jobStatus, jobsAhead, queuePaused, hasChecked } = useQueuePosition(queueDeckId ?? undefined, {
+     enabled: generated && !!queueDeckId,
+   })
+
+   useEffect(() => {
+     if (!generated || !queueDeckId) return
+     if (jobStatus === 'processing') {
+       navigate(`/deck/${queueDeckId}`)
+     }
+   }, [generated, jobStatus, navigate, queueDeckId])
 
   // Scroll refs
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -267,14 +289,15 @@ export default function GenerateGO() {
         },
       }
 
-      await submitGeneration(
+      const targetDeckId = await submitGeneration(
         user.id,
         payload,
         existingDeck ?? undefined,
         { cachedCredits: profile?.credits }
       )
       await refreshProfile()
-      navigate(existingDeck ? `/deck/${existingDeck.id}` : '/dashboard')
+      setGeneratedDeckId(targetDeckId)
+      setGenerated(true)
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Something went wrong'
       setError(msg)
@@ -294,6 +317,42 @@ export default function GenerateGO() {
     }
     return value
   }
+
+   if (generated) {
+     return (
+       <div className="gen-container">
+         <div className="gen-section" style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
+          {queueDeckId ? (
+             <QueuePositionDisplay
+               jobsAhead={jobsAhead}
+               queuePaused={queuePaused}
+               hasChecked={hasChecked}
+               variant="glassy"
+             />
+           ) : (
+             <div className="glass-card" style={{ padding: '2rem 1.5rem' }}>
+               <h3 style={{ marginBottom: 0 }}>{t('queue.generating')}</h3>
+             </div>
+           )}
+
+           <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.95rem', marginTop: 18 }}>
+             {existingDeck
+               ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
+               : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
+           </p>
+
+           <button
+             type="button"
+             className="gen-orb selected breadcrumb"
+             style={{ marginTop: 20 }}
+             onClick={() => navigate(queueDeckId ? `/deck/${queueDeckId}` : '/dashboard')}
+           >
+             {queueDeckId ? t('generate.backToDeck') : t('common.backToDecks')}
+           </button>
+         </div>
+       </div>
+     )
+   }
 
   // ── Render ────────────────────────────────────────
 
