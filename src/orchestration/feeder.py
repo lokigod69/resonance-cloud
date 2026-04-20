@@ -662,6 +662,13 @@ async def bootstrap_job(
             "etymology": e.get("etymology"),
             "mnemonic": e.get("mnemonic"),
         }
+        identity = {
+            "word_id": word_rec.get("id"),
+            "deck_id": word_rec.get("deck_id"),
+            "user_id": word_rec.get("user_id"),
+            "job_id": word_rec.get("generation_job_id"),
+            "attempt": None,
+        }
         create_manifest(
             word_dir=word_dir,
             word_original=word_text,
@@ -671,6 +678,7 @@ async def bootstrap_job(
             language_code=lang_code,
             enrichment_data=enrichment_data,
             input_type=input_type,
+            identity=identity,
         )
 
         prepared.append((word_rec, word_dir, word_slug))

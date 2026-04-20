@@ -56,8 +56,14 @@ def create_manifest(
     language_code: str,
     enrichment_data: dict[str, Any] | None = None,
     input_type: str = "word",
+    identity: dict[str, Any] | None = None,
 ) -> Manifest:
-    """Create and write a new manifest for a newly imported word or phrase."""
+    """Create and write a new manifest for a newly imported word or phrase.
+
+    `identity` is optional observability metadata (word_id, deck_id, user_id,
+    job_id). Populated by the cloud worker; left None on router-created
+    manifests.
+    """
     ts = now_iso()
 
     enrichment = Enrichment()
@@ -89,6 +95,7 @@ def create_manifest(
         updated_at=ts,
         input_type=input_type,
         enrichment=enrichment,
+        identity=identity,
     )
     write_manifest(word_dir, manifest)
     return manifest

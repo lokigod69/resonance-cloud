@@ -18,6 +18,8 @@ from __future__ import annotations
 import logging
 import re
 
+from src.services.events import logged_llm_call
+
 from .caption import (
     build_caption_prompt_for_combined,
     generate_caption,
@@ -72,6 +74,7 @@ def generate_lyrics(
     skip_article: bool = False,
     language_code: str = "",
     external_music_caption: str | None = None,
+    identity: dict | None = None,
 ) -> tuple[LyricsResult, CaptionResult]:
     """Generate lyrics and caption for a word.
 
@@ -104,8 +107,8 @@ def generate_lyrics(
         external_music_caption = _patch_vocal_gender(external_music_caption, settings.vocal_gender)
 
     if settings.lyric_mode in TEMPLATE_MODES:
-        return _generate_template_path(word, translation, language, settings, syllable_info, llm_client, article, skip_article, language_code, external_music_caption)
-    return _generate_llm_path(word, translation, language, settings, syllable_info, llm_client, article, external_music_caption)
+        return _generate_template_path(word, translation, language, settings, syllable_info, llm_client, article, skip_article, language_code, external_music_caption, identity)
+    return _generate_llm_path(word, translation, language, settings, syllable_info, llm_client, article, external_music_caption, identity)
 
 
 # ---------------------------------------------------------------------------
@@ -123,6 +126,7 @@ def _generate_template_path(
     skip_article: bool = False,
     language_code: str = "",
     external_music_caption: str | None = None,
+    identity: dict | None = None,
 ) -> tuple[LyricsResult, CaptionResult]:
     """Template lyrics + caption. 0 LLM calls with external caption, 1 without."""
     if settings.lyric_mode == "reliable":
@@ -134,11 +138,11 @@ def _generate_template_path(
                     source="storyboard", language_injected=False,
                 )
             else:
-                caption_result = generate_caption(word, translation, language, settings, llm_client)
+                caption_result = generate_caption(word, translation, language, settings, llm_client, identity=identity)
         else:
             # No enrichment article, POS allows it — need LLM for article discovery
             article, llm_caption_result = generate_caption_with_article(
-                word, translation, language, settings, llm_client, language_code,
+                word, translation, language, settings, llm_client, language_code, identity=identity,
             )
             if external_music_caption:
                 # Discard LLM caption, use external
@@ -171,7 +175,7 @@ def _generate_template_path(
             source="storyboard", language_injected=False,
         )
     else:
-        caption_result = generate_caption(word, translation, language, settings, llm_client)
+        caption_result = generate_caption(word, translation, language, settings, llm_client, identity=identity)
 
     return lyrics_result, caption_result
 
@@ -189,6 +193,7 @@ def _generate_llm_path(
     llm_client: OpenRouterClient,
     article: str = "",
     external_music_caption: str | None = None,
+    identity: dict | None = None,
 ) -> tuple[LyricsResult, CaptionResult]:
     """LLM call for lyrics (and caption if no external caption). Total: 1 LLM call."""
     prompt = _build_combined_prompt(
@@ -196,22 +201,47 @@ def _generate_llm_path(
         external_caption=external_music_caption,
     )
 
-    raw_response = llm_client.generate(
-        prompt=prompt,
-        model=settings.llm_model,
-        max_tokens=512,
-    )
+    ident = identity or {}
+    with logged_llm_call(
+        stage="concept",
+        sub_step="lyrics_combined_llm",
+        word_id=ident.get("word_id"),
+        deck_id=ident.get("deck_id"),
+        user_id=ident.get("user_id"),
+        job_id=ident.get("job_id"),
+        attempt=ident.get("attempt"),
+        model_provider="openrouter",
+        model_name=settings.llm_model,
+        system_prompt="",
+        user_prompt=prompt,
+        metadata={
+            "lyric_mode": settings.lyric_mode,
+            "has_external_caption": bool(external_music_caption),
+        },
+    ) as ev:
+        result = llm_client.generate(
+            prompt=prompt,
+            model=settings.llm_model,
+            max_tokens=512,
+        )
+        ev.record_response(
+            response_body=result.content,
+            tokens_in=result.tokens_in,
+            tokens_out=result.tokens_out,
+            cost_usd=result.cost_usd,
+            request_id=result.request_id,
+        )
 
     if external_music_caption:
         # Parse lyrics-only response, use external caption
-        lyrics_result = _parse_lyrics_only_response(raw_response, word, settings, syllable_info, article)
+        lyrics_result = _parse_lyrics_only_response(result.content, word, settings, syllable_info, article)
         caption_result = CaptionResult(
             caption=external_music_caption, visual_hint=None,
             source="storyboard", language_injected=False,
         )
         return lyrics_result, caption_result
 
-    return _parse_combined_response(raw_response, word, language, settings, syllable_info, article)
+    return _parse_combined_response(result.content, word, language, settings, syllable_info, article)
 
 
 def _build_combined_prompt(

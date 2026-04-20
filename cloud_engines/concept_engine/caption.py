@@ -10,6 +10,8 @@ from __future__ import annotations
 import logging
 import re
 
+from src.services.events import logged_llm_call
+
 from .article import KNOWN_ARTICLES
 from .llm_client import OpenRouterClient
 from .models import CaptionResult, ConceptSettings
@@ -23,6 +25,7 @@ def generate_caption(
     language: str,
     settings: ConceptSettings,
     llm_client: OpenRouterClient,
+    identity: dict | None = None,
 ) -> CaptionResult:
     """Generate a music caption via LLM. Always makes one API call.
 
@@ -32,16 +35,36 @@ def generate_caption(
         language: Full language name (e.g. "German").
         settings: Concept settings (genre, vocal_gender, visual_hint, etc.).
         llm_client: OpenRouter client instance.
+        identity: Optional dict with word_id/deck_id/user_id/job_id/attempt
+            for observability correlation. Missing keys default to None.
 
     Returns:
         CaptionResult with caption, optional visual_hint, and metadata.
     """
     prompt = _build_caption_prompt(word, translation, language, settings)
-    raw_response = llm_client.generate(
-        prompt=prompt,
-        model=settings.llm_model,
-    )
-    return _parse_caption_response(raw_response, language, settings)
+    ident = identity or {}
+    with logged_llm_call(
+        stage="concept",
+        sub_step="caption_llm",
+        word_id=ident.get("word_id"),
+        deck_id=ident.get("deck_id"),
+        user_id=ident.get("user_id"),
+        job_id=ident.get("job_id"),
+        attempt=ident.get("attempt"),
+        model_provider="openrouter",
+        model_name=settings.llm_model,
+        system_prompt="",
+        user_prompt=prompt,
+    ) as ev:
+        result = llm_client.generate(prompt=prompt, model=settings.llm_model)
+        ev.record_response(
+            response_body=result.content,
+            tokens_in=result.tokens_in,
+            tokens_out=result.tokens_out,
+            cost_usd=result.cost_usd,
+            request_id=result.request_id,
+        )
+    return _parse_caption_response(result.content, language, settings)
 
 
 def build_caption_prompt_for_combined(
@@ -65,6 +88,7 @@ def generate_caption_with_article(
     settings: ConceptSettings,
     llm_client: OpenRouterClient,
     language_code: str = "",
+    identity: dict | None = None,
 ) -> tuple[str, CaptionResult]:
     """Generate article + caption via a single LLM call (reliable mode).
 
@@ -75,12 +99,33 @@ def generate_caption_with_article(
         article_string is "" for articleless languages, otherwise e.g. "der", "la".
     """
     prompt = _build_reliable_prompt(word, translation, language, settings)
-    raw_response = llm_client.generate(
-        prompt=prompt,
-        model=settings.llm_model,
-        max_tokens=256,
-    )
-    return _parse_reliable_response(raw_response, language, settings, language_code)
+    ident = identity or {}
+    with logged_llm_call(
+        stage="concept",
+        sub_step="caption_with_article_llm",
+        word_id=ident.get("word_id"),
+        deck_id=ident.get("deck_id"),
+        user_id=ident.get("user_id"),
+        job_id=ident.get("job_id"),
+        attempt=ident.get("attempt"),
+        model_provider="openrouter",
+        model_name=settings.llm_model,
+        system_prompt="",
+        user_prompt=prompt,
+    ) as ev:
+        result = llm_client.generate(
+            prompt=prompt,
+            model=settings.llm_model,
+            max_tokens=256,
+        )
+        ev.record_response(
+            response_body=result.content,
+            tokens_in=result.tokens_in,
+            tokens_out=result.tokens_out,
+            cost_usd=result.cost_usd,
+            request_id=result.request_id,
+        )
+    return _parse_reliable_response(result.content, language, settings, language_code)
 
 
 def parse_caption_from_combined(

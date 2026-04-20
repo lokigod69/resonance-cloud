@@ -9,6 +9,7 @@ from __future__ import annotations
 import logging
 import os
 import time
+from dataclasses import dataclass
 
 import httpx
 
@@ -18,6 +19,23 @@ logger = logging.getLogger(__name__)
 
 OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_TIMEOUT = 30.0
+
+
+@dataclass
+class LLMCallResult:
+    """Result of one OpenRouter chat-completion call.
+
+    `content` is the assistant's reply text. The other fields carry the
+    provider's usage/cost accounting so the caller can forward them to
+    observability (pipeline_events) without re-parsing the response.
+    """
+
+    content: str
+    tokens_in: int | None
+    tokens_out: int | None
+    cost_usd: float | None
+    latency_ms: int
+    request_id: str | None
 
 
 class OpenRouterClient:
@@ -41,8 +59,8 @@ class OpenRouterClient:
         prompt: str,
         model: str = "deepseek/deepseek-v3.2",
         max_tokens: int = 256,
-    ) -> str:
-        """Send a chat completion request and return the response content.
+    ) -> LLMCallResult:
+        """Send a chat completion request and return content + usage.
 
         Args:
             prompt: The user message to send.
@@ -50,7 +68,7 @@ class OpenRouterClient:
             max_tokens: Maximum tokens in the response.
 
         Returns:
-            The text content of the first choice.
+            LLMCallResult with content and per-call usage/cost accounting.
 
         Raises:
             ConnectionError: Network or connection issues.
@@ -111,6 +129,7 @@ class OpenRouterClient:
 
         usage = data.get("usage", {})
         _elapsed_ms = int((time.monotonic() - _call_start) * 1000)
+        estimated_cost = estimate_openrouter_cost(model, usage)
         log_cost(
             stage="concept",
             provider="openrouter",
@@ -121,9 +140,16 @@ class OpenRouterClient:
                 "completion_tokens": usage.get("completion_tokens"),
                 "total_tokens": usage.get("total_tokens"),
             },
-            estimated_cost_usd=estimate_openrouter_cost(model, usage),
+            estimated_cost_usd=estimated_cost,
             duration_ms=_elapsed_ms,
         )
 
         logger.info("LLM call completed (model=%s, tokens=%s)", model, usage)
-        return content.strip()
+        return LLMCallResult(
+            content=content.strip(),
+            tokens_in=usage.get("prompt_tokens"),
+            tokens_out=usage.get("completion_tokens"),
+            cost_usd=estimated_cost,
+            latency_ms=_elapsed_ms,
+            request_id=data.get("id"),
+        )

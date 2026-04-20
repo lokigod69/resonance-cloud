@@ -57,6 +57,10 @@ class Manifest(BaseModel):
     lineage: list[LineageEntry] = []
     muted: bool = False
     approved: bool = False
+    # Observability identity — populated by the cloud worker (feeder.py) from the
+    # Supabase word record. Null in non-cloud code paths (router-created manifests).
+    # Keys: word_id, deck_id, user_id, job_id (all str | None) and attempt (int | None).
+    identity: Optional[dict[str, Any]] = None
 
 
 # --- Workspace / health models ------------------------------------------

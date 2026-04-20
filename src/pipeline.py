@@ -215,6 +215,7 @@ def build_concept_payload(
 
     enrich = manifest_data.enrichment
     is_phrase = manifest_data.input_type == "phrase"
+    identity = manifest_data.identity or {}
     return {
         "content": {
             "word": manifest_data.word_original,
@@ -232,6 +233,11 @@ def build_concept_payload(
             "word": manifest_data.word_original,
             "language": manifest_data.language,
             "timestamp": now_iso(),
+            "word_id": identity.get("word_id"),
+            "deck_id": identity.get("deck_id"),
+            "user_id": identity.get("user_id"),
+            "job_id": identity.get("job_id"),
+            "attempt": identity.get("attempt"),
         }
     }
 

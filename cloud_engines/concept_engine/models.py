@@ -98,11 +98,21 @@ class ConceptSettings(BaseModel):
 
 
 class ConceptMetadata(BaseModel):
-    """Metadata included with the payload for traceability."""
+    """Metadata included with the payload for traceability.
+
+    Identity fields (word_id / deck_id / user_id / job_id / attempt) are optional
+    and used by observability (pipeline_events). Missing values are fine —
+    callers who don't have them pass None.
+    """
 
     word: str
     language: str
     timestamp: str
+    word_id: str | None = None
+    deck_id: str | None = None
+    user_id: str | None = None
+    job_id: str | None = None
+    attempt: int | None = None
 
 
 class ConceptPayload(BaseModel):

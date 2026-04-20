@@ -16,12 +16,16 @@ import httpx
 from supabase import create_client as supabase_create_client
 
 from src.cost_logger import log_cost, KIE_SUNO_COST_PER_SONG
+from src.services.events import logged_api_call, write_event_row
 
 logger = logging.getLogger(__name__)
 
 KIE_API_BASE = "https://api.kie.ai/api/v1"
 POLL_INTERVAL = 10      # seconds between status checks
 MAX_POLL_TIME = 180     # max seconds to wait (3 minutes)
+
+# $0.06 per kie.ai Suno submit returns 2 songs (A/B); ~$0.03 effective per song.
+KIE_SUNO_COST_PER_SUBMIT = 0.06
 
 
 def _get_sb_client():
@@ -150,7 +154,15 @@ def build_suno_payload(concept_data: dict) -> dict:
     }
 
 
-async def submit_song(deck_id: str, word_slug: str, concept_data: dict) -> str:
+async def submit_song(
+    deck_id: str,
+    word_slug: str,
+    concept_data: dict,
+    *,
+    word_id: str | None = None,
+    user_id: str | None = None,
+    job_id: str | None = None,
+) -> str:
     """
     Submit a kie.ai Suno generation task for this word and persist the task_id
     to Supabase. Returns the task_id string.
@@ -159,6 +171,9 @@ async def submit_song(deck_id: str, word_slug: str, concept_data: dict) -> str:
     an empty string (caller treats as "already complete"). If suno_task_id is
     already set but audio_url is not, returns the existing task_id (caller may
     poll it). Otherwise POSTs /generate, persists the new task_id, and returns it.
+
+    Identity kwargs (word_id / user_id / job_id) are used for pipeline_events
+    correlation; all default to None.
 
     Raises httpx.HTTPError / httpx.TimeoutException on network failure, and
     RuntimeError on non-200 response or missing taskId.
@@ -201,17 +216,44 @@ async def submit_song(deck_id: str, word_slug: str, concept_data: dict) -> str:
 
     payload = build_suno_payload(concept_data)
 
-    async with httpx.AsyncClient(timeout=30.0) as client:
-        resp = await client.post(
-            f"{KIE_API_BASE}/generate",
-            json=payload,
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
+    with logged_api_call(
+        stage="suno_bakein",
+        sub_step="submit",
+        event_source="suno_bakein",
+        word_id=word_id,
+        deck_id=deck_id,
+        user_id=user_id,
+        job_id=job_id,
+        attempt=1,
+        model_provider="kie_ai",
+        model_name="suno_v5_5",
+        system_prompt=payload["style"],
+        user_prompt=payload["prompt"],
+        cost_usd=KIE_SUNO_COST_PER_SUBMIT,
+        metadata={
+            "model_variant": payload["model"],
+            "lyrics_line_count": len(payload["prompt"].splitlines()),
+            "music_caption": concept_data.get("music_caption", ""),
+            "title": payload["title"],
+            "vocal_gender": payload["vocalGender"],
+        },
+    ) as ev:
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            resp = await client.post(
+                f"{KIE_API_BASE}/generate",
+                json=payload,
+                headers={
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                },
+            )
+            resp.raise_for_status()
+            result = resp.json()
+        ev.record_response(
+            response_body=json.dumps(result),
+            request_body=json.dumps(payload),
+            request_id=(result.get("data") or {}).get("taskId"),
         )
-        resp.raise_for_status()
-        result = resp.json()
 
     logger.debug("SUNO GENERATE RESPONSE: %s", json.dumps(result)[:1000])
 
@@ -238,7 +280,55 @@ async def submit_song(deck_id: str, word_slug: str, concept_data: dict) -> str:
     return task_id
 
 
-async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
+def _emit_poll_final_event(
+    *,
+    word_id: str | None,
+    deck_id: str | None,
+    user_id: str | None,
+    job_id: str | None,
+    task_id: str | None,
+    status: str,
+    final_status_data: dict | None,
+    poll_cycles: int,
+    status_transitions: list[str],
+    elapsed_ms: int,
+    error_message: str | None = None,
+) -> None:
+    """Write a single 'poll_final' event summarising the poll-loop outcome.
+
+    Never raises — write_event_row() is non-blocking.
+    """
+    write_event_row(
+        stage="suno_bakein",
+        sub_step="poll_final",
+        event_source="suno_bakein",
+        status=status,
+        word_id=word_id,
+        deck_id=deck_id,
+        user_id=user_id,
+        job_id=job_id,
+        model_provider="kie_ai",
+        model_name="suno_v5_5",
+        latency_ms=elapsed_ms,
+        request_id=task_id,
+        error_message=error_message,
+        response_body=json.dumps(final_status_data) if final_status_data is not None else None,
+        metadata={
+            "poll_cycles": poll_cycles,
+            "status_transitions": status_transitions,
+        },
+    )
+
+
+async def generate_song(
+    word_dir: Path,
+    deck_id: str,
+    word_slug: str,
+    *,
+    word_id: str | None = None,
+    user_id: str | None = None,
+    job_id: str | None = None,
+) -> dict:
     """
     Full flow: read concept data → submit via submit_song() → poll → return audio URL.
     Returns: { audio_url, task_id, status, error }
@@ -246,6 +336,9 @@ async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
     submit_song() carries the idempotency gate, so this function is safe to call
     when a task is already submitted (it will pick up and poll the existing task)
     or already complete (it will short-circuit to success using the persisted URL).
+
+    Identity kwargs (word_id / user_id / job_id) are used for pipeline_events
+    correlation; all default to None.
     """
     api_key = get_api_key()
 
@@ -263,7 +356,10 @@ async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
 
     # Step 2: Submit (with idempotency) — may return existing task_id or "" if complete.
     try:
-        task_id = await submit_song(deck_id, word_slug, concept_data)
+        task_id = await submit_song(
+            deck_id, word_slug, concept_data,
+            word_id=word_id, user_id=user_id, job_id=job_id,
+        )
     except httpx.HTTPError as e:
         logger.error("Suno API call failed: %s", e)
         return {"audio_url": None, "task_id": None, "status": "error", "error": f"Suno API error: {e}"}
@@ -306,6 +402,10 @@ async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
         # Step 3: Poll for completion
         elapsed = 0
         copyright_retried = False
+        poll_cycles = 0
+        status_transitions: list[str] = []
+        final_status_data: dict | None = None
+
         while elapsed < MAX_POLL_TIME:
             await asyncio.sleep(POLL_INTERVAL)
             elapsed += POLL_INTERVAL
@@ -322,10 +422,15 @@ async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
                 logger.warning("Poll failed (elapsed %ds): %s", elapsed, e)
                 continue
 
+            poll_cycles += 1
+            final_status_data = status_data
+
             logger.debug("SUNO POLL RESPONSE (elapsed %ds): %s", elapsed, json.dumps(status_data)[:1000])
 
             data = status_data.get("data", {})
             task_status = data.get("status", "")
+            if task_status and (not status_transitions or status_transitions[-1] != task_status):
+                status_transitions.append(task_status)
 
             if task_status == "SUCCESS":
                 # Extract audio URLs from response.sunoData — [0] is track A, [1] is track B
@@ -345,10 +450,26 @@ async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
                             estimated_cost_usd=KIE_SUNO_COST_PER_SONG,
                             duration_ms=int(elapsed * 1000),
                         )
+                        _emit_poll_final_event(
+                            word_id=word_id, deck_id=deck_id, user_id=user_id, job_id=job_id,
+                            task_id=task_id, status="success",
+                            final_status_data=final_status_data,
+                            poll_cycles=poll_cycles, status_transitions=status_transitions,
+                            elapsed_ms=int(elapsed * 1000),
+                        )
                         return {"audio_url": audio_url, "audio_url_b": audio_url_b, "task_id": task_id, "status": "success", "error": None}
+                missing_url_err = f"SUCCESS but no audioUrl in response: {json.dumps(status_data)[:500]}"
+                _emit_poll_final_event(
+                    word_id=word_id, deck_id=deck_id, user_id=user_id, job_id=job_id,
+                    task_id=task_id, status="failed",
+                    final_status_data=final_status_data,
+                    poll_cycles=poll_cycles, status_transitions=status_transitions,
+                    elapsed_ms=int(elapsed * 1000),
+                    error_message=missing_url_err,
+                )
                 return {
                     "audio_url": None, "task_id": task_id, "status": "error",
-                    "error": f"SUCCESS but no audioUrl in response: {json.dumps(status_data)[:500]}",
+                    "error": missing_url_err,
                 }
 
             if task_status == "fail":
@@ -376,27 +497,60 @@ async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
                         "style": "pop",
                         "title": f"song {concept_data['word']}",
                     }
-                    try:
-                        retry_resp = await client.post(
-                            f"{KIE_API_BASE}/generate",
-                            json=simplified_payload,
-                            headers={
-                                "Authorization": f"Bearer {api_key}",
-                                "Content-Type": "application/json",
+                    with logged_api_call(
+                        stage="suno_bakein",
+                        sub_step="copyright_retry",
+                        event_source="suno_bakein",
+                        word_id=word_id, deck_id=deck_id, user_id=user_id, job_id=job_id,
+                        attempt=2,
+                        model_provider="kie_ai",
+                        model_name="suno_v5_5",
+                        system_prompt=simplified_payload["style"],
+                        user_prompt=simplified_payload["prompt"],
+                        metadata={
+                            "original_error": error_msg,
+                            "retry_payload_diff": {
+                                "prompt": {"from": payload["prompt"][:200], "to": simplified_payload["prompt"]},
+                                "style": {"from": payload["style"][:200], "to": simplified_payload["style"]},
+                                "title": {"from": payload["title"], "to": simplified_payload["title"]},
                             },
-                        )
-                        retry_resp.raise_for_status()
-                        retry_result = retry_resp.json()
-                    except httpx.HTTPError as retry_err:
-                        logger.warning("Copyright retry API call failed: %s", retry_err)
-                    else:
-                        if retry_result.get("code") == 200:
-                            new_task_id = retry_result.get("data", {}).get("taskId")
-                            if new_task_id:
-                                task_id = new_task_id
-                                elapsed = 0
-                                logger.info("Copyright retry task created: %s", task_id)
-                                continue
+                        },
+                    ) as retry_ev:
+                        retry_result = None
+                        try:
+                            retry_resp = await client.post(
+                                f"{KIE_API_BASE}/generate",
+                                json=simplified_payload,
+                                headers={
+                                    "Authorization": f"Bearer {api_key}",
+                                    "Content-Type": "application/json",
+                                },
+                            )
+                            retry_resp.raise_for_status()
+                            retry_result = retry_resp.json()
+                            retry_ev.record_response(
+                                response_body=json.dumps(retry_result),
+                                request_body=json.dumps(simplified_payload),
+                                request_id=(retry_result.get("data") or {}).get("taskId"),
+                            )
+                        except httpx.HTTPError as retry_err:
+                            logger.warning("Copyright retry API call failed: %s", retry_err)
+                            retry_result = None
+                    if retry_result is not None and retry_result.get("code") == 200:
+                        new_task_id = retry_result.get("data", {}).get("taskId")
+                        if new_task_id:
+                            task_id = new_task_id
+                            elapsed = 0
+                            logger.info("Copyright retry task created: %s", task_id)
+                            continue
+                _emit_poll_final_event(
+                    word_id=word_id, deck_id=deck_id, user_id=user_id, job_id=job_id,
+                    task_id=task_id, status="failed",
+                    final_status_data=final_status_data,
+                    poll_cycles=poll_cycles, status_transitions=status_transitions,
+                    elapsed_ms=int(elapsed * 1000),
+                    error_message=error_msg,
+                )
                 return {
                     "audio_url": None, "task_id": task_id, "status": "error",
                     "error": f"Suno generation failed: {error_msg}",
@@ -406,9 +560,18 @@ async def generate_song(word_dir: Path, deck_id: str, word_slug: str) -> dict:
             logger.info("Suno task %s status: %s (elapsed %ds)", task_id, task_status, elapsed)
 
         # Timeout
+        timeout_err = f"Timed out after {MAX_POLL_TIME}s waiting for Suno generation"
+        _emit_poll_final_event(
+            word_id=word_id, deck_id=deck_id, user_id=user_id, job_id=job_id,
+            task_id=task_id, status="failed",
+            final_status_data=final_status_data,
+            poll_cycles=poll_cycles, status_transitions=status_transitions,
+            elapsed_ms=int(elapsed * 1000),
+            error_message=timeout_err,
+        )
         return {
             "audio_url": None, "task_id": task_id, "status": "error",
-            "error": f"Timed out after {MAX_POLL_TIME}s waiting for Suno generation",
+            "error": timeout_err,
         }
 
 async def fetch_existing_task(task_id: str) -> dict:

@@ -9,6 +9,7 @@ from typing import Any
 
 from src.manifest import read_manifest, update_selection
 from src.pipeline import run_stage
+from src.services.events import write_event_row
 from src.suno import (
     _write_to_supabase as suno_write_to_supabase,
     download_suno_audio,
@@ -165,7 +166,12 @@ async def bake_suno_into_word(
     if suno_result is None or suno_result.get("status") != "success":
         log.info("  [Suno] Generating audio for %s", word_slug)
         try:
-            suno_result = await suno_generate_song(word_dir, deck_id, word_slug)
+            suno_result = await suno_generate_song(
+                word_dir, deck_id, word_slug,
+                word_id=word_record.get("id"),
+                user_id=user_id,
+                job_id=word_record.get("generation_job_id"),
+            )
         except Exception as _e:
             log.error("  [Suno] Generation failed: %s", _e)
             return {"success": False, "suno_ab_manifests": {}, "error": str(_e)}
@@ -213,6 +219,10 @@ async def bake_suno_into_word(
 
         clip_duration = _probe_clip_durations(word_dir / "videos" / video_version)
         suno_duration_a = _probe_audio_duration(path_a)
+        # Populated by the fade_out branch below when path_b exists; stays None
+        # for clean_cut mode or when Track B wasn't probed (audio_probe event
+        # accepts null here).
+        suno_duration_b: float | None = None
         if suno_duration_a < SUNO_MIN_USABLE_DURATION:
             msg = (f"Suno audio too short to be usable "
                    f"({suno_duration_a:.1f}s < {SUNO_MIN_USABLE_DURATION}s)")
@@ -339,6 +349,29 @@ async def bake_suno_into_word(
     except Exception as e:
         log.warning("  [Suno] Trim failed: %s — proceeding with ACE-Step", e)
         return {"success": False, "suno_ab_manifests": {}, "error": str(e)}
+
+    # Emit audio_probe event now that storage upload succeeded, Track A duration
+    # is known, and Track B duration is known when we probed it. Non-blocking.
+    try:
+        write_event_row(
+            stage="suno_bakein",
+            sub_step="audio_probe",
+            event_source="suno_bakein",
+            status="success",
+            word_id=word_record.get("id"),
+            deck_id=deck_id,
+            user_id=user_id,
+            job_id=word_record.get("generation_job_id"),
+            metadata={
+                "duration_seconds_a": suno_duration_a,
+                "duration_seconds_b": suno_duration_b,
+                "file_size_bytes_a": path_a.stat().st_size if path_a.exists() else None,
+                "file_size_bytes_b": path_b.stat().st_size if path_b and path_b.exists() else None,
+                "clip_duration_seconds": clip_duration,
+            },
+        )
+    except Exception as _probe_err:
+        log.warning("  [Suno] Audio probe event write failed (non-fatal): %s", _probe_err)
 
     suno_takes: list[tuple[str, Any]] = []
     if not skip_track_a and trimmed_a:

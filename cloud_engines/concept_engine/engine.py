@@ -79,6 +79,16 @@ def generate_concept(payload: ConceptPayload) -> ConceptResult:
         is_phrase = payload.content.input_type == "phrase"
         lang_code = payload.content.language_code
 
+        # Identity for observability (pipeline_events). Missing values are fine —
+        # this is additive to ConceptMetadata and older callers pass None.
+        identity = {
+            "word_id": payload.metadata.word_id,
+            "deck_id": payload.metadata.deck_id,
+            "user_id": payload.metadata.user_id,
+            "job_id": payload.metadata.job_id,
+            "attempt": payload.metadata.attempt,
+        }
+
         # Step 2: Analyze syllables — skipped for phrases (word-only concept)
         if is_phrase:
             # Placeholder values; word_length_class must satisfy Literal["short","medium","long"]
@@ -140,6 +150,7 @@ def generate_concept(payload: ConceptPayload) -> ConceptResult:
                 caption_result = generate_caption(
                     payload.content.word, payload.content.translation,
                     payload.content.language, payload.settings, llm_client,
+                    identity=identity,
                 )
         else:
             lyrics_result, caption_result = generate_lyrics(
@@ -153,6 +164,7 @@ def generate_concept(payload: ConceptPayload) -> ConceptResult:
                 article=article,
                 skip_article=skip_article,
                 external_music_caption=payload.content.external_music_caption,
+                identity=identity,
             )
 
         lyrics_source = lyrics_result.source
