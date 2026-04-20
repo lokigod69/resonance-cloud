@@ -386,13 +386,6 @@ function buildGreetingInstruction(
       personalityPrefix = `You are ${character.name}. ${identity}${character.directive}\n\n`
     }
 
-    if (level === 'zero') {
-      if (studyWord) {
-        return `${personalityPrefix}Open the conversation in ${nativeLangName}. Be true to who you are. Naturally weave in the word "${studyWord.word}" (${targetLangName}, meaning "${studyWord.translation}") — not as a vocabulary lesson.`
-      }
-      return `${personalityPrefix}Open the conversation in ${nativeLangName}. Be true to who you are. Slip in one useful ${targetLangName} word naturally — not as a vocabulary lesson.`
-    }
-
     return `${personalityPrefix}Open the conversation in ${targetLangName}. Be true to who you are.`
   }
 
