@@ -58,6 +58,7 @@ export async function submitGeneration(
       user_id: userId,
       word: w,
       status: 'pending',
+      current_stage: 'pending',
     }))
     const { error: wordsError } = await supabase.from('words').insert(wordRows)
     if (wordsError) throw new Error(wordsError.message)
@@ -91,6 +92,7 @@ export async function submitGeneration(
       user_id: userId,
       word: w,
       status: 'pending',
+      current_stage: 'pending',
     }))
     const { error: wordsError } = await supabase.from('words').insert(wordRows)
     if (wordsError) throw new Error(wordsError.message)

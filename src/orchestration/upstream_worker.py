@@ -81,12 +81,10 @@ class UpstreamWorker:
             log.warning("upstream_worker: word=%s vanished", word_id)
             return
 
-        workspace_path = Path(word.get("_workspace_path") or "")
-        if not workspace_path or not workspace_path.exists():
-            from src.storage import get_job_workspace_path
-            workspace_path = get_job_workspace_path(
-                user_id=fresh["user_id"], deck_id=fresh["deck_id"],
-            )
+        from src.storage import get_job_workspace_path
+        workspace_path = get_job_workspace_path(
+            user_id=fresh["user_id"], deck_id=fresh["deck_id"],
+        )
 
         word_slug = fresh.get("word_slug")
         if not word_slug:

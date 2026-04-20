@@ -699,7 +699,6 @@ async def bootstrap_job(
 
     # Push words in deck order. `put()` blocks on capacity.
     for word_rec in exposed:
-        word_rec["_workspace_path"] = str(workspace_path)
         await upstream_queue.put(word_rec)
 
     log.info(
