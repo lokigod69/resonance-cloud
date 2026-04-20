@@ -22,8 +22,8 @@ produce enrichment data for each word. The user is learning {target_language} an
 For each word, provide:
 - word_target: the word in {target_language} (correct it if the user typed it in {base_language})
 - translation: translation into {base_language}
-- mnemonic: a memorable connection between the word and its meaning (1–2 sentences)
-- etymology: word origin and root connections (1 sentence)
+- mnemonic: a memorable connection between the word and its meaning (1–2 sentences), written in {base_language}
+- etymology: word origin and root connections (1 sentence), written in {base_language}
 - pos: part of speech (noun, verb, adjective, adverb, etc.)
 - article: grammatical article if applicable (e.g., "der", "die", "das" for German; "le", "la" for French). null if the language has no articles or it doesn't apply.
 
