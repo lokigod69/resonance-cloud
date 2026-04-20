@@ -1,14 +1,12 @@
 -- Queue position RPC and supporting index for learner-facing queue display.
--- Purely additive: one partial index + one SECURITY DEFINER read-only function.
--- Does NOT alter any existing table, column, constraint, RLS policy, index,
--- trigger, or function. Does NOT modify worker code paths or how
--- generation_jobs transitions through pending/approved/processing/complete/failed.
+-- Uses CREATE INDEX CONCURRENTLY because the current public.generation_jobs row
+-- count could not be verified locally. Product owner should run
+-- SELECT count(*) FROM generation_jobs; before applying if they want to
+-- reassess whether a non-concurrent CREATE INDEX would be acceptable.
+
+DROP INDEX IF EXISTS public.idx_generation_jobs_active_queue_order;
 
 BEGIN;
-
-CREATE INDEX IF NOT EXISTS idx_generation_jobs_active_queue_order
-  ON public.generation_jobs (priority DESC, created_at ASC, id ASC)
-  WHERE status IN ('pending', 'approved', 'processing');
 
 CREATE OR REPLACE FUNCTION public.get_my_queue_position(p_deck_id uuid)
 RETURNS TABLE (
@@ -32,7 +30,7 @@ BEGIN
 
   RETURN QUERY
   WITH target_job AS (
-    SELECT gj.id, gj.status, gj.priority, gj.created_at
+    SELECT gj.id, gj.status, gj.created_at
     FROM public.generation_jobs gj
     WHERE gj.user_id = v_user_id
       AND gj.deck_id = p_deck_id
@@ -48,26 +46,14 @@ BEGIN
   SELECT
     tj.id AS job_id,
     tj.status AS job_status,
-    CASE
-      WHEN tj.status = 'processing' THEN 0
-      ELSE COUNT(ahead.id)::integer
-    END AS jobs_ahead,
+    COUNT(ahead.id)::integer AS jobs_ahead,
     COALESCE(sr.queue_paused, false) AS queue_paused
   FROM target_job tj
-  CROSS JOIN settings_row sr
+  LEFT JOIN settings_row sr
+    ON true
   LEFT JOIN public.generation_jobs ahead
-    ON tj.status IN ('pending', 'approved')
-   AND (
-     ahead.status = 'processing'
-     OR (
-       ahead.status IN ('pending', 'approved')
-       AND (
-         ahead.priority > tj.priority
-         OR (ahead.priority = tj.priority AND ahead.created_at < tj.created_at)
-         OR (ahead.priority = tj.priority AND ahead.created_at = tj.created_at AND ahead.id < tj.id)
-       )
-     )
-   )
+    ON ahead.status IN ('pending', 'approved', 'processing')
+   AND ahead.created_at < tj.created_at
   GROUP BY tj.id, tj.status, sr.queue_paused;
 END;
 $$;
@@ -75,10 +61,14 @@ $$;
 REVOKE ALL ON FUNCTION public.get_my_queue_position(uuid) FROM PUBLIC;
 GRANT EXECUTE ON FUNCTION public.get_my_queue_position(uuid) TO authenticated;
 
+COMMIT;
+
+CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_generation_jobs_active_created_at
+  ON public.generation_jobs (created_at)
+  WHERE status IN ('pending', 'approved', 'processing');
+
 -- Rollback:
+-- DROP INDEX IF EXISTS public.idx_generation_jobs_active_created_at;
 -- BEGIN;
 --   DROP FUNCTION IF EXISTS public.get_my_queue_position(uuid);
---   DROP INDEX IF EXISTS public.idx_generation_jobs_active_queue_order;
 -- COMMIT;
-
-COMMIT;
