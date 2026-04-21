@@ -8,7 +8,6 @@ import {
 import { buildVoxtralSystemPrompt, buildVoxtralGreeting } from './prompts/voxtral'
 import { buildGeminiSystemPrompt, buildGeminiGreeting } from './prompts/gemini'
 import { buildGenericSystemPrompt, buildGenericGreeting } from './prompts/_shared/generic'
-import { buildGrokSystemPrompt, buildGrokGreeting } from './prompts/grok'
 
 // Vercel Serverless Function — Voice Tutor pipeline
 // POST /api/voice-chat
@@ -49,7 +48,7 @@ interface RequestBody {
   study_words?: Array<{ word: string; translation: string }>
   mode?: 'corrections' | 'roleplay'
   scenarioPrompt?: string
-  provider?: 'voxtral' | 'gemini' | 'grok'
+  provider?: 'voxtral' | 'gemini'
   gemini_character_mode_id?: string
   gemini_voice_name?: string
   gemini_accent_id?: string
@@ -253,12 +252,11 @@ const GEMINI_ACCENT_SUFFIXES: Record<string, string> = {
 
 // ────────────────────────────────────────────────────────────────────────────
 // Provider-specific prompt construction lives in api/prompts/{voxtral,gemini,
-// grok,_shared/generic}.ts. Routing (see POST handler) is inference-based —
+// _shared/generic}.ts. Routing (see POST handler) is inference-based —
 // matches current dispatch: Gemini requires gemini_vibe_directive + no
 // character; Voxtral requires character; else Generic. The frontend only sets
 // body.provider for Gemini today, so explicit provider === 'voxtral' would
-// miss Voxtral traffic entirely. Provider === 'grok' is reserved for a future
-// frontend flag that forces the stub in prompts/grok.ts to throw.
+// miss Voxtral traffic entirely.
 // ────────────────────────────────────────────────────────────────────────────
 
 /**
@@ -632,9 +630,7 @@ export async function POST(req: Request): Promise<Response> {
   // ── Step 2: Build LLM messages ─────────────────────────────────────────────
   const effectiveScenario = isRoleplay ? scenarioPrompt : undefined
   let systemPrompt: string
-  if (provider === 'grok') {
-    systemPrompt = buildGrokSystemPrompt()
-  } else if (!character && gemini_vibe_directive) {
+  if (!character && gemini_vibe_directive) {
     systemPrompt = buildGeminiSystemPrompt({
       language,
       level,
@@ -718,9 +714,7 @@ export async function POST(req: Request): Promise<Response> {
       ? study_words[Math.floor(Math.random() * study_words.length)]
       : null
     let greetingInstruction: string
-    if (provider === 'grok') {
-      greetingInstruction = buildGrokGreeting()
-    } else if (character) {
+    if (character) {
       greetingInstruction = buildVoxtralGreeting({
         level,
         targetLangName: lang.name,
@@ -825,3 +819,4 @@ export async function POST(req: Request): Promise<Response> {
     },
   )
 }
+
