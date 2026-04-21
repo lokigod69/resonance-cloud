@@ -834,6 +834,8 @@ export default function Speak() {
     )
   }
 
+  if (!tutor.voice) return null
+
   return (
     <div className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col bg-gray-950">
       <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
