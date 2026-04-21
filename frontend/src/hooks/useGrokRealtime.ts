@@ -532,6 +532,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   }, [teardownSession])
 
   const startSession = useCallback(async (params: StartGrokSessionParams) => {
+    // iOS audio unlock must run inside the user gesture before any await.
+    primeAudioForIOS()
     await teardownSession()
 
     conversationIdRef.current = crypto.randomUUID()
@@ -546,7 +548,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     setError(null)
 
     await connectAndConfigure(params)
-  }, [connectAndConfigure, teardownSession])
+  }, [connectAndConfigure, primeAudioForIOS, teardownSession])
 
   useEffect(() => {
     mountedRef.current = true

@@ -85,7 +85,8 @@ export async function POST(req: Request): Promise<Response> {
 
   const text = await response.text()
   if (!response.ok) {
-    return json({ error: 'Token exchange failed', detail: text }, 502)
+    console.error('[grok-token] xAI realtime client secret failed:', response.status, text)
+    return json({ error: 'Token exchange failed' }, 502)
   }
 
   return new Response(text, {
