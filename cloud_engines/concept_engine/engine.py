@@ -20,7 +20,7 @@ load_dotenv()
 from . import __version__
 from .article import resolve_article
 from .llm_client import OpenRouterClient
-from .lyrics import generate_lyrics, _patch_vocal_gender
+from .lyrics import LLM_MODES, generate_lyrics, _patch_vocal_gender
 from .caption import generate_caption
 from .templates import count_word_occurrences, generate_phrase_suno_lyrics, generate_reliable, generate_suno_lyrics
 from .models import (
@@ -177,9 +177,15 @@ def generate_concept(payload: ConceptPayload) -> ConceptResult:
         else:
             llm_calls = 1
 
-        # Step 5: Build concept artifact
+        # Step 5: Build concept artifact.
+        # For LLM lyric modes (Niveau Levels 2-4: contextual/creative/dramatic),
+        # the LLM output IS the suno_lyrics — one generation, written to both
+        # fields. For template modes (reliable/minimal/standard, i.e. Level 1
+        # plus legacy-only), keep the separate suno template.
         genre_mode = "auto" if payload.settings.genre == "auto" else "manual"
-        if is_phrase:
+        if payload.settings.lyric_mode in LLM_MODES:
+            suno_lyrics = lyrics_result.lyrics
+        elif is_phrase:
             suno_lyrics = generate_phrase_suno_lyrics(payload.content.word, lang_code)
         else:
             suno_lyrics = generate_suno_lyrics(word=payload.content.word, article=article)
