@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import QueuePositionDisplay from '@/components/QueuePositionDisplay'
+import { motion } from 'framer-motion'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
@@ -324,37 +324,63 @@ export default function GenerateGO() {
      return (
        <div className="gen-container">
          <div className="gen-section" style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
-          {queueDeckId ? (
-             <QueuePositionDisplay
-               jobsAhead={jobsAhead}
-               queuePaused={queuePaused}
-               hasChecked={hasChecked}
-               variant="glassy"
-             />
-           ) : (
-             <div className="glass-card" style={{ padding: '2rem 1.5rem' }}>
-               <h3 style={{ marginBottom: 0 }}>{t('queue.generating')}</h3>
-             </div>
-           )}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+              <div className="relative">
+                <motion.div
+                  className="w-24 h-24 rounded-full"
+                  style={{
+                    background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
+                  }}
+                  animate={{ rotate: 360 }}
+                  transition={{ repeat: Infinity, duration: 3, ease: 'linear' }}
+                />
+                <div
+                  className="absolute inset-0 rounded-full blur-xl"
+                  style={{
+                    background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
+                    opacity: 0.4,
+                  }}
+                />
+              </div>
 
-           <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.95rem', marginTop: 18 }}>
-             {existingDeck
-               ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
-               : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
-           </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+                <motion.h2
+                  style={{ margin: 0, color: 'var(--go-text-primary)', fontSize: '1.875rem', fontWeight: 700 }}
+                  animate={{ opacity: [0.7, 1, 0.7] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+                >
+                  {t('generate.forgingMemories')}
+                </motion.h2>
+                <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.95rem', margin: 0, maxWidth: 360 }}>
+                  {existingDeck
+                    ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
+                    : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
+                </p>
+                {hasChecked && queuePaused && (
+                  <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
+                    {t('queue.paused')}
+                  </p>
+                )}
+                {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
+                  <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
+                    {jobsAhead} {t('queue.jobsAhead')}
+                  </p>
+                )}
+              </div>
 
-           <button
-             type="button"
-             className="gen-orb selected breadcrumb"
-             style={{ marginTop: 20 }}
-             onClick={() => navigate(queueDeckId ? `/deck/${queueDeckId}` : '/dashboard')}
-           >
-             {queueDeckId ? t('generate.backToDeck') : t('common.backToDecks')}
-           </button>
-         </div>
-       </div>
-     )
-   }
+              <button
+                type="button"
+                className="gen-orb selected breadcrumb"
+                style={{ marginTop: 20 }}
+                onClick={() => navigate(queueDeckId ? `/deck/${queueDeckId}` : existingDeck ? `/deck/${existingDeck.id}` : '/dashboard')}
+              >
+                {queueDeckId ? t('generate.backToDeck') : t('common.backToDecks')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )
+    }
 
   // ── Render ────────────────────────────────────────
 

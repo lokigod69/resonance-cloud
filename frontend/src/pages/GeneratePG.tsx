@@ -6,7 +6,6 @@ import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
-import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useWizardState } from '@/components/generate/useWizardState'
 import type { ExistingDeck } from '@/components/generate/useWizardState'
@@ -160,40 +159,55 @@ export default function GeneratePG() {
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
           className="flex w-full max-w-xl flex-col items-center text-center gap-8"
         >
-          {queueDeckId ? (
-            <QueuePositionDisplay
-              jobsAhead={jobsAhead}
-              queuePaused={queuePaused}
-              hasChecked={hasChecked}
-              variant="glassy"
-              className="w-full"
+          <div className="relative">
+            <motion.div
+              className="w-24 h-24 rounded-full"
+              style={{
+                background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
+              }}
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 3, ease: 'linear' }}
             />
-          ) : (
-            <div className="w-full rounded-[32px] border border-white/10 bg-white/5 px-6 py-8 shadow-[0_20px_70px_rgba(0,0,0,0.35)] backdrop-blur-xl">
-              <motion.h2
-                className="text-3xl font-bold font-display"
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-              >
-                {t('queue.generating')}
-              </motion.h2>
-            </div>
-          )}
+            <div
+              className="absolute inset-0 rounded-full blur-xl"
+              style={{
+                background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
+                opacity: 0.4,
+              }}
+            />
+          </div>
 
           <div className="space-y-2">
+            <motion.h2
+              className="text-3xl font-bold font-display"
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+            >
+              {t('generate.forgingMemories')}
+            </motion.h2>
             <p className="text-sm text-[var(--pg-text-dim)] max-w-sm">
               {existingDeck
                 ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
                 : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
             </p>
+            {hasChecked && queuePaused && (
+              <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
+                {t('queue.paused')}
+              </p>
+            )}
+            {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
+              <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
+                {jobsAhead} {t('queue.jobsAhead')}
+              </p>
+            )}
           </div>
 
           <Link
-            to={queueDeckId ? `/deck/${queueDeckId}` : existingDeck ? `/deck/${existingDeck.id}` : '/dashboard'}
+            to={existingDeck ? `/deck/${existingDeck.id}` : '/dashboard'}
             className="px-6 py-3 rounded-full pg-glass text-sm font-display font-medium text-[var(--pg-accent-teal)] hover:bg-white/5 transition-all"
           >
             <ArrowLeft className="h-4 w-4 inline mr-2" />
-            {queueDeckId ? t('generate.backToDeck') : t('common.backToDecks')}
+            {existingDeck ? t('generate.backToDeck') : t('common.backToDecks')}
           </Link>
         </motion.div>
       </div>
