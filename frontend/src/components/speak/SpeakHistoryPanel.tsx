@@ -23,10 +23,12 @@ interface Conversation {
   scenario_id?: string | null
   npc_name?: string | null
   context_variant?: string | null
-  provider?: 'voxtral' | 'gemini' | null
+  provider?: 'voxtral' | 'gemini' | 'grok' | null
   gemini_character_mode_id?: string | null
   gemini_voice_name?: string | null
   gemini_accent_id?: string | null
+  grok_voice?: string | null
+  grok_category?: string | null
 }
 
 function getGeminiModeName(id: string | null | undefined): string {
@@ -50,6 +52,25 @@ function buildGeminiDisplayName(conv: Conversation): string {
   if (voice) parts.push(voice)
   if (accentName) parts.push(accentName)
   return parts.join(' · ')
+}
+
+const GROK_CATEGORY_LABELS: Record<string, string> = {
+  travel: 'Travel',
+  business: 'Business',
+  romance: 'Romance',
+  philosophy: 'Philosophy',
+  daily_life: 'Daily Life',
+  food: 'Food',
+  arts: 'Arts',
+  news: 'News',
+}
+
+function buildGrokDisplayName(conv: Conversation): string {
+  const categoryName = conv.grok_category
+    ? (GROK_CATEGORY_LABELS[conv.grok_category] ?? conv.grok_category)
+    : 'Free Chat'
+  const voice = conv.grok_voice ?? conv.voice_name ?? ''
+  return voice ? `${categoryName} · ${voice}` : categoryName
 }
 
 interface Correction {
@@ -237,13 +258,16 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
             {selectedConversation ? (() => {
               const isRoleplay = selectedConversation.mode === 'roleplay'
               const isGemini = selectedConversation.provider === 'gemini'
+              const isGrok = selectedConversation.provider === 'grok'
               const cName = selectedConversation.character_id ? getCharacterById(selectedConversation.character_id)?.name : null
               const transcriptTitle = isRoleplay
                 ? (selectedConversation.title ?? 'Roleplay')
                 : (LANGUAGE_NAMES[selectedConversation.language] ?? selectedConversation.language)
               const transcriptSub = isRoleplay
                 ? selectedConversation.npc_name
-                : isGemini
+                : isGrok
+                  ? buildGrokDisplayName(selectedConversation)
+                  : isGemini
                   ? buildGeminiDisplayName(selectedConversation)
                   : (cName || selectedConversation.voice_name)
               return (
@@ -256,6 +280,11 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                       {isGemini && (
                         <span className="ml-2 align-middle inline-block text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-900/50 text-cyan-300 border border-cyan-500/30">
                           Gemini
+                        </span>
+                      )}
+                      {isGrok && (
+                        <span className="ml-2 align-middle inline-block text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-violet-900/50 text-violet-300 border border-violet-500/30">
+                          Grok
                         </span>
                       )}
                     </p>
@@ -304,11 +333,14 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                   {conversations.map((conv) => {
                     const isRoleplay = conv.mode === 'roleplay'
                     const isGemini = conv.provider === 'gemini'
+                    const isGrok = conv.provider === 'grok'
                     const levelEmoji = conv.level ? LEVEL_EMOJI[conv.level] : null
                     const charName = conv.character_id ? getCharacterById(conv.character_id)?.name : null
                     const displayName = isRoleplay
                       ? conv.npc_name
-                      : isGemini
+                      : isGrok
+                        ? buildGrokDisplayName(conv)
+                        : isGemini
                         ? buildGeminiDisplayName(conv)
                         : (charName || conv.voice_name)
                     const displayTitle = isRoleplay
@@ -337,6 +369,11 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                             {isGemini && (
                               <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-900/50 text-cyan-300 border border-cyan-500/30 shrink-0">
                                 Gemini
+                              </span>
+                            )}
+                            {isGrok && (
+                              <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-violet-900/50 text-violet-300 border border-violet-500/30 shrink-0">
+                                Grok
                               </span>
                             )}
                             {levelEmoji && <span className="text-sm">{levelEmoji}</span>}

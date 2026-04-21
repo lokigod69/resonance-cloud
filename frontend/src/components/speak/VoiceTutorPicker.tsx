@@ -1,9 +1,12 @@
 import { CharacterGrid } from './CharacterGrid'
 import { GeminiModeVoicePicker, type GeminiSelection } from './GeminiModeVoicePicker'
+import { GrokPicker } from './GrokPicker'
 import type { TutorCharacter } from '@/characterRegistry'
+import type { GrokCategory } from '@/data/grokCategories'
+import type { GrokVoice } from '@/data/grokVoices'
 import type { GeminiPickerStage } from '@/hooks/useVoiceTutor'
 
-export type SpeakProvider = 'voxtral' | 'gemini'
+export type SpeakProvider = 'voxtral' | 'gemini' | 'grok'
 
 interface VoiceTutorPickerProps {
   provider: SpeakProvider
@@ -20,6 +23,11 @@ interface VoiceTutorPickerProps {
   onGeminiAccentChange: (accentId: string) => void
   onGeminiStageChange: (stage: GeminiPickerStage) => void
   confirmLabel?: string
+  grokSelectedVoice?: GrokVoice | null
+  grokSelectedCategory?: GrokCategory | 'free_chat' | null
+  onGrokVoiceSelect?: (voice: GrokVoice) => void
+  onGrokCategorySelect?: (category: GrokCategory | 'free_chat') => void
+  onGrokStart?: () => void
 }
 
 export function VoiceTutorPicker({
@@ -37,6 +45,11 @@ export function VoiceTutorPicker({
   onGeminiAccentChange,
   onGeminiStageChange,
   confirmLabel,
+  grokSelectedVoice,
+  grokSelectedCategory,
+  onGrokVoiceSelect,
+  onGrokCategorySelect,
+  onGrokStart,
 }: VoiceTutorPickerProps) {
   if (provider === 'gemini') {
     return (
@@ -53,6 +66,18 @@ export function VoiceTutorPicker({
         onStageChange={onGeminiStageChange}
         onStart={onGeminiStart}
         confirmLabel={confirmLabel}
+      />
+    )
+  } else if (provider === 'grok') {
+    return (
+      <GrokPicker
+        language={language}
+        selectedVoice={grokSelectedVoice ?? null}
+        selectedCategory={grokSelectedCategory ?? null}
+        onSelectVoice={(voice) => onGrokVoiceSelect?.(voice)}
+        onSelectCategory={(category) => onGrokCategorySelect?.(category)}
+        onStart={() => onGrokStart?.()}
+        isStarting={!!disabled}
       />
     )
   }
