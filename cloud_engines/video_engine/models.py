@@ -101,6 +101,11 @@ class VideoMetadata(BaseModel):
     timestamp: str = Field(
         default_factory=lambda: datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     )
+    word_id: str | None = None
+    deck_id: str | None = None
+    user_id: str | None = None
+    job_id: str | None = None
+    attempt: int | None = None
     image_version: Optional[str] = None
     scene_number: int = 1
 

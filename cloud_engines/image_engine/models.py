@@ -221,6 +221,11 @@ class ImageMetadata(BaseModel):
     language: str
     translation: str
     timestamp: str
+    word_id: str | None = None
+    deck_id: str | None = None
+    user_id: str | None = None
+    job_id: str | None = None
+    attempt: int | None = None
     concept_version: Optional[str] = None
 
 
