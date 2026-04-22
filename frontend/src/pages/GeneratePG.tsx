@@ -266,13 +266,20 @@ export default function GeneratePG() {
             />
           )}
           {pgStep === 4 && (
-            <StepMusic
-              selected={state.genre}
+            <StepNiveau
+              selected={state.lyricMode}
               dispatch={dispatch}
               onContinue={() => setPgStep(5)}
             />
           )}
           {pgStep === 5 && (
+            <StepMusic
+              selected={state.genre}
+              dispatch={dispatch}
+              onContinue={() => setPgStep(6)}
+            />
+          )}
+          {pgStep === 6 && (
             <StepReview
               state={state}
               dispatch={dispatch}
@@ -303,7 +310,8 @@ function BreadcrumbPills({
   const { t } = useTranslation()
   const STEP_LABELS = [
     t('generate.stepLanguage'), t('generate.stepWords'), t('generate.stepVibe'),
-    t('generate.stepArtStyle'), t('generate.stepMusic'), t('generate.stepReview'),
+    t('generate.stepArtStyle'), t('generate.stepNiveau'),
+    t('generate.stepMusic'), t('generate.stepReview'),
   ]
   const startIndex = existingDeck ? 1 : 0
 
@@ -536,7 +544,66 @@ function StepArtStyle({
   )
 }
 
-/* ─── Step 4: Music ─────────────────────────────── */
+/* ─── Step 4: Niveau ────────────────────────────── */
+
+const NIVEAU_OPTIONS: ReadonlyArray<{ key: 'auto' | 'standard' | 'phrase' | 'story' | 'song'; value: string | null }> = [
+  { key: 'auto',     value: null },
+  { key: 'standard', value: 'reliable' },
+  { key: 'phrase',   value: 'contextual' },
+  { key: 'story',    value: 'creative' },
+  { key: 'song',     value: 'dramatic' },
+]
+
+function StepNiveau({
+  selected,
+  dispatch,
+  onContinue,
+}: {
+  selected: string | null
+  dispatch: React.Dispatch<import('@/components/generate/useWizardState').WizardAction>
+  onContinue: () => void
+}) {
+  const { t } = useTranslation()
+  return (
+    <div className="text-center">
+      <h2 className="text-3xl font-bold font-display tracking-tight mb-2">{t('generate.chooseNiveau')}</h2>
+      <p className="text-[var(--pg-text-dim)] text-sm mb-10">{t('generate.chooseNiveauSub')}</p>
+
+      <div className="flex flex-wrap gap-3 justify-center max-w-2xl mx-auto mb-10 px-4">
+        {NIVEAU_OPTIONS.map((opt, i) => {
+          const isSelected = selected === opt.value
+          return (
+            <motion.button
+              key={opt.key}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.05, type: 'spring', stiffness: 300, damping: 25 }}
+              onClick={() => dispatch({ type: 'SET_LYRIC_MODE', mode: opt.value })}
+              className={`pg-glass rounded-2xl px-5 py-3 text-left transition-all ${
+                isSelected ? 'shadow-[0_0_20px_rgba(13,226,195,0.2)]' : 'hover:shadow-[0_0_15px_rgba(13,226,195,0.1)]'
+              }`}
+              style={{ borderColor: isSelected ? 'var(--pg-accent-teal)' : undefined, minWidth: 160 }}
+            >
+              <p className={`font-display font-semibold ${isSelected ? 'text-[var(--pg-accent-teal)]' : 'text-white'}`}>
+                {t(`generate.niveau.${opt.key}`)}
+              </p>
+              <p className="text-xs text-[var(--pg-text-dim)]">{t(`generate.niveau.${opt.key}Desc`)}</p>
+            </motion.button>
+          )
+        })}
+      </div>
+
+      <button
+        onClick={onContinue}
+        className="px-8 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all"
+      >
+        {t('generate.continue')}
+      </button>
+    </div>
+  )
+}
+
+/* ─── Step 5: Music ─────────────────────────────── */
 
 function StepMusic({
   selected,

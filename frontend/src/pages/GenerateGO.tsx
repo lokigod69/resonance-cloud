@@ -42,6 +42,7 @@ export default function GenerateGO() {
   const [artStyle, setArtStyle] = useState<string | null>(null)
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   const [genre, setGenre] = useState<string | null>(null)
+  const [lyricMode, setLyricMode] = useState<string | null>(null)
   const [customGenre, setCustomGenre] = useState('')
   const [showCustomInput, setShowCustomInput] = useState(false)
   const [deckName, setDeckName] = useState('')
@@ -212,14 +213,21 @@ export default function GenerateGO() {
     setStep(5)
   }
 
-  // ── Step 5: Genre ─────────────────────────────────
+  // ── Step 5: Niveau ────────────────────────────────
+
+  function handleLyricModeSelect(value: string | null) {
+    setLyricMode(value)
+    setStep(6)
+  }
+
+  // ── Step 6: Genre ─────────────────────────────────
 
   function handleGenreSelect(value: string) {
-    if (step > 5 && genre === value) {
+    if (step > 6 && genre === value) {
       setGenre(null)
       setCustomGenre('')
       setShowCustomInput(false)
-      setStep(5)
+      setStep(6)
       return
     }
     setGenre(value)
@@ -227,18 +235,18 @@ export default function GenerateGO() {
       setShowCustomInput(true)
     } else {
       setShowCustomInput(false)
-      setStep(6)
+      setStep(7)
     }
   }
 
   function handleCustomGenreConfirm() {
     if (customGenre.trim()) {
       setShowCustomInput(false)
-      setStep(6)
+      setStep(7)
     }
   }
 
-  // ── Step 6: Submit ────────────────────────────────
+  // ── Step 7: Submit ────────────────────────────────
 
   async function handleInitialize(wordsOverride?: string[]) {
     const isQuickGenerate = wordsOverride !== undefined
@@ -287,6 +295,7 @@ export default function GenerateGO() {
           settings_override: {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
             ...(genreValue ? { genre: genreValue } : {}),
+            ...(!isQuickGenerate && lyricMode ? { lyric_mode: lyricMode } : {}),
           },
         },
       }
@@ -517,22 +526,64 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 5: Genre ── */}
+      {/* ── Step 5: Niveau ── */}
       {step >= 5 && (
         <div ref={el => { sectionRefs.current[4] = el }} className="gen-section">
-          {step === 5 && <h3>Aural Atmosphere</h3>}
+          {step === 5 ? (
+            <>
+              <h3>Niveau</h3>
+              <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.9rem', marginBottom: 16, textAlign: 'center' }}>
+                How should the lyrics treat the word?
+              </p>
+              <div className="gen-orb-row">
+                {([
+                  { key: 'auto',     label: 'Auto',     desc: 'Smart pick',        value: null as string | null },
+                  { key: 'standard', label: 'Standard', desc: 'Word-focused',      value: 'reliable' as string | null },
+                  { key: 'phrase',   label: 'Phrase',   desc: 'Short expressions', value: 'contextual' as string | null },
+                  { key: 'story',    label: 'Story',    desc: 'Narrative',         value: 'creative' as string | null },
+                  { key: 'song',     label: 'Song',     desc: 'Full song',         value: 'dramatic' as string | null },
+                ] as const).map(opt => (
+                  <div
+                    key={opt.key}
+                    className={lyricMode === opt.value ? 'gen-orb selected' : 'gen-orb'}
+                    onClick={() => handleLyricModeSelect(opt.value)}
+                  >
+                    <span className="gen-orb-label">{opt.label}</span>
+                    <span style={{ display: 'block', fontSize: '0.7rem', opacity: 0.6, marginTop: 2 }}>{opt.desc}</span>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="gen-orb-row">
+              <div className="gen-orb selected breadcrumb" onClick={() => setStep(5)}>
+                {lyricMode === 'reliable' ? 'Standard'
+                  : lyricMode === 'contextual' ? 'Phrase'
+                  : lyricMode === 'creative' ? 'Story'
+                  : lyricMode === 'dramatic' ? 'Song'
+                  : 'Auto'}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ── Step 6: Genre ── */}
+      {step >= 6 && (
+        <div ref={el => { sectionRefs.current[5] = el }} className="gen-section">
+          {step === 6 && <h3>Aural Atmosphere</h3>}
           <div className="gen-orb-row">
             {GO_GENRES.map(g => (
               <div
                 key={g.value}
-                className={orbClass(5, g.value, genre)}
+                className={orbClass(6, g.value, genre)}
                 onClick={() => handleGenreSelect(g.value)}
               >
                 {g.label}
               </div>
             ))}
           </div>
-          {showCustomInput && step === 5 && (
+          {showCustomInput && step === 6 && (
             <div className="gen-orb-row" style={{ marginTop: 16 }}>
               <div className="gen-orb input-orb">
                 <input
@@ -551,9 +602,9 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 6: Initialize ── */}
-      {step >= 6 && (
-        <div ref={el => { sectionRefs.current[5] = el }} className="gen-section" style={{ textAlign: 'center' }}>
+      {/* ── Step 7: Initialize ── */}
+      {step >= 7 && (
+        <div ref={el => { sectionRefs.current[6] = el }} className="gen-section" style={{ textAlign: 'center' }}>
           <h3 style={{ fontSize: '2.2rem', color: 'white', fontWeight: 300, marginBottom: 8 }}>
             {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
           </h3>

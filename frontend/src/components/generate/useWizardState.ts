@@ -10,6 +10,7 @@ export interface WizardState {
   movieTitle: string | null
   artStyle: string | null
   genre: string | null
+  lyricMode: string | null
   deckName: string
 }
 
@@ -23,6 +24,7 @@ export type WizardAction =
   | { type: 'SET_MOVIE_TITLE'; title: string }
   | { type: 'SET_ART_STYLE'; style: string | null }
   | { type: 'SET_GENRE'; genre: string | null }
+  | { type: 'SET_LYRIC_MODE'; mode: string | null }
   | { type: 'SET_DECK_NAME'; name: string }
   | { type: 'GO_TO_STEP'; step: 1 | 2 | 3 | 4 | 5 | 6 }
   | { type: 'CHOOSE_PATH'; path: 'quick' | 'custom' }
@@ -38,6 +40,7 @@ const initialState: WizardState = {
   movieTitle: null,
   artStyle: null,
   genre: null,
+  lyricMode: null,
   deckName: '',
 }
 
@@ -79,6 +82,9 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
 
     case 'SET_GENRE':
       return { ...state, genre: action.genre }
+
+    case 'SET_LYRIC_MODE':
+      return { ...state, lyricMode: action.mode }
 
     case 'SET_DECK_NAME':
       return { ...state, deckName: action.name }
@@ -153,6 +159,7 @@ export function useWizardState() {
       const creativeDirection =
         state.vibe === 'specific_movie' ? 'movie' : state.vibe === 'auto' ? undefined : state.vibe || undefined
       const genre = state.genre === 'auto' ? undefined : state.genre || undefined
+      const lyricMode = state.lyricMode || undefined
 
       return {
         deckPayload: existingDeck ? null : {
@@ -176,6 +183,7 @@ export function useWizardState() {
           settings_override: {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
             ...(genre ? { genre } : {}),
+            ...(lyricMode ? { lyric_mode: lyricMode } : {}),
           },
         },
       }
