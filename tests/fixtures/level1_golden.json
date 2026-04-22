@@ -1,0 +1,14 @@
+{
+  "lyrics": "[Verse - Steady]\nder Arzt...\nArzt...\n\n[Chorus - Building]\nArzt!\nder Arzt!\n\n[Outro - Fading]\nder Arzt...",
+  "suno_lyrics": "[Verse]\nder Arzt\nArzt\n\n[Chorus]\nArzt\nArzt\n\n[Outro]\nder Arzt",
+  "generation_info": {
+    "lyric_mode": "reliable",
+    "genre_mode": "auto",
+    "syllable_count": 1,
+    "word_length_class": "short",
+    "llm_calls": 0,
+    "lyrics_source": "template",
+    "caption_source": "storyboard",
+    "article_used": "der"
+  }
+}

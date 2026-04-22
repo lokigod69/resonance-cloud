@@ -1,14 +1,17 @@
 """Lyric generation for the Concept Engine.
 
 Routes to template-based or LLM-based generation depending on lyric_mode.
-For template modes (minimal/standard/dramatic): generates lyrics locally,
+For template modes (minimal/standard/reliable): generates lyrics locally,
 then calls caption.py for the music caption (1 LLM call).
-For LLM modes (contextual/creative): builds a combined prompt that returns
-both caption and lyrics in one call (1 LLM call).
+For LLM modes (contextual/creative/dramatic): builds a combined prompt
+that returns both caption and lyrics in one call (1 LLM call).
 
 When an external_music_caption is provided (from the image engine storyboard),
 template modes skip the LLM call entirely (0 calls), and LLM modes only
 generate lyrics (1 call, no caption in prompt).
+
+Dramatic mode ("Song" level) is LLM-based and receives the resolved
+music_caption in its prompt so the lyrics match the musical style.
 
 Maximum LLM calls per generation: 0 or 1.
 """
@@ -28,14 +31,14 @@ from .caption import (
 )
 from .llm_client import OpenRouterClient
 from .models import CaptionResult, ConceptSettings, LyricsResult, SyllableInfo
-from .templates import count_word_occurrences, generate_dramatic, generate_minimal, generate_reliable, generate_standard
+from .templates import count_word_occurrences, generate_minimal, generate_reliable, generate_standard
 
 logger = logging.getLogger(__name__)
 
 # Template modes that use hardcoded lyrics (zero LLM cost for lyrics)
-TEMPLATE_MODES = ("minimal", "standard", "dramatic", "reliable")
+TEMPLATE_MODES = ("minimal", "standard", "reliable")
 # LLM modes that combine caption + lyrics in one call
-LLM_MODES = ("contextual", "creative")
+LLM_MODES = ("contextual", "creative", "dramatic")
 
 
 _VOCAL_GENDER_RE = re.compile(
@@ -160,8 +163,6 @@ def _generate_template_path(
     # Generate lyrics locally (with article prefix on first occurrence)
     if settings.lyric_mode == "minimal":
         lyrics = generate_minimal(word, syllable_info, settings.duration, article=article, caption_style=settings.caption_style)
-    elif settings.lyric_mode == "dramatic":
-        lyrics = generate_dramatic(word, syllable_info, settings.syllable_chop, settings.duration, article=article, caption_style=settings.caption_style)
     else:  # standard
         lyrics = generate_standard(word, syllable_info, settings.duration, article=article, caption_style=settings.caption_style)
 
@@ -222,7 +223,7 @@ def _generate_llm_path(
         result = llm_client.generate(
             prompt=prompt,
             model=settings.llm_model,
-            max_tokens=512,
+            max_tokens=1024,
         )
         ev.record_response(
             response_body=result.content,
@@ -235,13 +236,33 @@ def _generate_llm_path(
     if external_music_caption:
         # Parse lyrics-only response, use external caption
         lyrics_result = _parse_lyrics_only_response(result.content, word, settings, syllable_info, article)
+        lyrics_result = _apply_intro_opener(lyrics_result, word, article)
         caption_result = CaptionResult(
             caption=external_music_caption, visual_hint=None,
             source="storyboard", language_injected=False,
         )
         return lyrics_result, caption_result
 
-    return _parse_combined_response(result.content, word, language, settings, syllable_info, article)
+    lyrics_result, caption_result = _parse_combined_response(
+        result.content, word, language, settings, syllable_info, article,
+    )
+    lyrics_result = _apply_intro_opener(lyrics_result, word, article)
+    return lyrics_result, caption_result
+
+
+def _apply_intro_opener(lyrics_result: LyricsResult, word: str, article: str) -> LyricsResult:
+    """Return a new LyricsResult with the deterministic [Intro] opener prepended.
+
+    Recounts word repetitions since the opener contributes one occurrence of
+    the target word (article-prefixed when applicable).
+    """
+    new_lyrics = _prepend_intro_opener(lyrics_result.lyrics, word, article)
+    new_reps = count_word_occurrences(new_lyrics, word)
+    return LyricsResult(
+        lyrics=new_lyrics,
+        source=lyrics_result.source,
+        word_repetitions=new_reps,
+    )
 
 
 def _build_combined_prompt(
@@ -256,8 +277,15 @@ def _build_combined_prompt(
     """Build the lyrics prompt, optionally combined with caption (Section 8.3).
 
     When external_caption is provided, builds a lyrics-only prompt (no caption section).
+    For dramatic mode, the external_caption (if provided) is threaded into the
+    lyrics prompt as MUSIC STYLE context. When no external_caption is provided
+    and mode is dramatic, the lyrics section references the caption being
+    generated in SECTION 1 above.
     """
-    lyrics_section = _build_lyrics_prompt(word, translation, language, settings, syllable_info, article)
+    lyrics_section = _build_lyrics_prompt(
+        word, translation, language, settings, syllable_info, article,
+        music_caption=external_caption,
+    )
 
     if external_caption:
         # Lyrics-only prompt — caption comes from storyboard
@@ -297,10 +325,19 @@ def _build_lyrics_prompt(
     settings: ConceptSettings,
     syllable_info: SyllableInfo,
     article: str = "",
+    music_caption: str | None = None,
 ) -> str:
-    """Build the lyrics section of the combined prompt (Section 4.4)."""
+    """Build the lyrics section of the combined prompt (Section 4.4).
+
+    The music_caption parameter is used only by dramatic mode — when present,
+    it describes the musical style so the LLM can match the song's structure.
+    When dramatic mode runs without an external caption, the lyrics prompt
+    references SECTION 1 (where the caption is being generated in the same call).
+    """
     if settings.lyric_mode == "contextual":
         return _contextual_lyrics_prompt(word, translation, language, syllable_info, settings.duration, article)
+    if settings.lyric_mode == "dramatic":
+        return _dramatic_lyrics_prompt(word, translation, language, article, music_caption)
     return _creative_lyrics_prompt(word, translation, language, syllable_info, settings.duration, article)
 
 
@@ -308,7 +345,7 @@ def _contextual_lyrics_prompt(
     word: str, translation: str, language: str, syllable_info: SyllableInfo,
     duration: int = 30, article: str = "",
 ) -> str:
-    """Contextual mode lyrics prompt from Section 4.4."""
+    """Contextual mode lyrics prompt (Phrase / Level 2)."""
     reps = "2-3" if duration == 15 else "3-5"
     word_info = f'TARGET WORD: {word} ({translation})' if translation else f'TARGET WORD: {word}'
     article_line = ""
@@ -344,8 +381,8 @@ def _creative_lyrics_prompt(
     word: str, translation: str, language: str, syllable_info: SyllableInfo,
     duration: int = 30, article: str = "",
 ) -> str:
-    """Creative mode lyrics prompt from Section 4.4."""
-    reps = "2-3" if duration == 15 else "3-4"
+    """Creative mode lyrics prompt (Story / Level 3)."""
+    reps = "5-6" if duration == 15 else "6-8"
     word_info = f'TARGET WORD: {word} ({translation})' if translation else f'TARGET WORD: {word}'
     article_line = ""
     if article:
@@ -354,27 +391,119 @@ def _creative_lyrics_prompt(
             f'NEVER use any other article with this word.\n'
         )
     return (
-        f'You are writing lyrics for a {duration}-second vocabulary learning song.\n'
+        f'You are writing song lyrics for a vocabulary learning flashcard.\n'
         f'\n'
         f'{word_info}\n'
         f'LANGUAGE: {language}\n'
         f'SYLLABLE COUNT: {syllable_info.count}\n'
         f'{article_line}'
         f'\n'
-        f'Write short, poetic lyrics following these rules:\n'
-        f'- The target word MUST appear {reps} times as the clear centerpiece\n'
-        f'- Weave in 2-3 meaning-related words in {language} (synonyms, associated concepts)\n'
-        f'- Use a maximum of 5 unique non-target words total\n'
-        f'- Use Ace-Step section tags: [Verse], [Chorus], [Spoken Word], [Outro]\n'
+        f'Write lyrics that follow these rules:\n'
+        f'- Write several short verses or a verse+chorus structure\n'
+        f'  that features the target word naturally throughout.\n'
+        f'- Use chorus-style repetition: the chorus or hook should repeat the target\n'
+        f'  word multiple times to aid memorability. The repetition should feel like\n'
+        f'  a song hook, not a drill.\n'
+        f'- Use Ace-Step section tags: [Verse], [Chorus], [Bridge], [Outro]\n'
         f'- You may add one energy descriptor per tag\n'
-        f'- Keep lines short: 1-4 words per line\n'
-        f'- Use "..." for pauses and "!" for emphasis\n'
+        f'- The target word must appear at least {reps} times across the full lyrics\n'
+        f'- Use natural sentences in {language}, with idiomatic flavor\n'
+        f'- Keep lines short: 2-8 words per line\n'
         f'- NEVER include translation or English words\n'
         f'- NEVER split the target word into parts\n'
         f'- Prioritize musicality — these should feel like real song lyrics, not a language drill\n'
-        f'- This is a {duration}-second song — keep it brief\n'
         f'- Output ONLY the lyrics, no explanation'
     )
+
+
+def _dramatic_lyrics_prompt(
+    word: str, translation: str, language: str,
+    article: str = "", music_caption: str | None = None,
+) -> str:
+    """Dramatic mode lyrics prompt (Song / Level 4).
+
+    Repurposed from the old template-based dramatic. Full-length, genre-aware
+    song whose structure adapts to the provided music_caption. If music_caption
+    is None (no external caption + combined-prompt case), the prompt references
+    SECTION 1 of the combined call where the caption is being generated.
+    """
+    word_info = f'TARGET WORD: {word} ({translation})' if translation else f'TARGET WORD: {word}'
+    article_line = ""
+    if article:
+        article_line = (
+            f'GRAMMATICAL ARTICLE: {article} — always use "{article} {word}" on the first mention. '
+            f'NEVER use any other article with this word.\n'
+        )
+    if music_caption:
+        music_style_line = f'MUSIC STYLE: {music_caption}\n'
+        style_match_intro = 'Match the song\'s structure to the music style described above:\n'
+    else:
+        music_style_line = 'MUSIC STYLE: (see [SECTION 1: MUSIC CAPTION] above — match this lyrics structure to the caption you are generating there)\n'
+        style_match_intro = 'Match the song\'s structure to the music caption you are generating in SECTION 1:\n'
+    return (
+        f'You are writing full song lyrics for a vocabulary learning music video.\n'
+        f'\n'
+        f'{word_info}\n'
+        f'LANGUAGE: {language}\n'
+        f'{article_line}'
+        f'{music_style_line}'
+        f'\n'
+        f'Write a real, full-length song that follows these rules EXACTLY:\n'
+        f'\n'
+        f'1. Write a full song. The target word should be a thematic\n'
+        f'   anchor, appearing multiple times across the song, but the lyrics should feel\n'
+        f'   like a real song about that word\'s meaning — not a vocabulary drill.\n'
+        f'\n'
+        f'2. {style_match_intro}'
+        f'   - Pop / rock / folk: tight verse + chorus + bridge structure.\n'
+        f'   - Rap / hip-hop / techno: looser, denser flow with fewer hard section breaks.\n'
+        f'   - Orchestral / cinematic / ambient: sparser lines, more breathing room.\n'
+        f'   - Jazz / R&B: organic structure, hook-driven.\n'
+        f'\n'
+        f'3. Use Ace-Step section tags appropriate to the structure: [Verse], [Chorus],\n'
+        f'   [Bridge], [Pre-Chorus], [Outro], etc.\n'
+        f'\n'
+        f'4. The target word must appear at least 8 times across the full lyrics.\n'
+        f'\n'
+        f'5. Use natural, song-like {language} lyrics.\n'
+        f'\n'
+        f'6. NEVER include translation, English words (unless target language is English),\n'
+        f'   or words from any other language.\n'
+        f'\n'
+        f'7. Output ONLY the lyrics, no commentary.'
+    )
+
+
+# ---------------------------------------------------------------------------
+# Deterministic [Intro] opener
+# ---------------------------------------------------------------------------
+
+# Matches a leading [Intro...] section (the tag line plus any following content
+# lines that don't themselves open a new section), up to and including any
+# trailing blank lines. Content lines are identified as lines that don't start
+# with "[" — we stop when we hit either a blank line (consumed as part of the
+# match) or the next section tag (not consumed).
+_LEADING_INTRO_SECTION = re.compile(
+    r"^\s*\[intro[^\]]*\]\s*\n(?:[^\[\n][^\n]*\n)*\n*",
+    re.IGNORECASE,
+)
+
+
+def _prepend_intro_opener(lyrics: str, word: str, article: str) -> str:
+    """Guarantee the lyrics begin with a deterministic [Intro] opener.
+
+    Ensures the target word (article-prefixed when available) lands inside the
+    first seconds of the generated song, regardless of what the LLM produced.
+
+    If the LLM's output already begins with its own [Intro] section, that
+    section is stripped first to avoid duplicate intros. Sections introduced
+    by other tags ([Verse], [Chorus], etc.) are left in place.
+
+    Pure: string in, string out, no side effects.
+    """
+    cleaned = _LEADING_INTRO_SECTION.sub("", lyrics.lstrip(), count=1)
+    opener_line = f"{article} {word}" if article else word
+    return f"[Intro]\n{opener_line}\n\n{cleaned}"
 
 
 # ---------------------------------------------------------------------------
