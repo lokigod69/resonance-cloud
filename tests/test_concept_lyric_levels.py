@@ -17,9 +17,7 @@ from __future__ import annotations
 
 import json
 import sys
-import types
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 
@@ -102,12 +100,16 @@ def fake_llm_client():
 
 
 @pytest.fixture(autouse=True)
-def patch_openrouter_client(monkeypatch):
-    """Replace OpenRouterClient so engine.generate_concept never hits the network."""
-    def make_fake(*args, **kwargs):
-        return FakeLLMClient()
+def patch_openrouter_client(monkeypatch, fake_llm_client):
+    """Replace OpenRouterClient so engine.generate_concept uses our fake.
+
+    The engine instantiates one client per call to generate_concept(); the
+    fixture hands it the same FakeLLMClient instance the test sees, so tests
+    can inspect fake_llm_client.call_count and .last_prompt directly.
+    """
     monkeypatch.setattr(
-        "cloud_engines.concept_engine.engine.OpenRouterClient", make_fake
+        "cloud_engines.concept_engine.engine.OpenRouterClient",
+        lambda *a, **kw: fake_llm_client,
     )
 
 
@@ -191,44 +193,48 @@ def test_dramatic_removed_from_templates_module():
 
 
 # ---------------------------------------------------------------------------
-# [Intro] opener rule tests
+# Prompt-level checks — [Intro] instruction is GONE from all three prompts.
+# The opener is now guaranteed by post-processing, not by asking the LLM.
 # ---------------------------------------------------------------------------
 
-def test_intro_opener_with_article():
+def test_contextual_prompt_has_no_intro_instruction():
     prompt = _contextual_lyrics_prompt(
         word="Buch", translation="book", language="German",
         syllable_info=_syl(), duration=30, article="das",
     )
-    assert "[Intro]" in prompt
+    assert "[Intro]" not in prompt
+    assert "STRUCTURE RULE" not in prompt
+    # Article line still present (separate concern, kept as-is).
     assert "das Buch" in prompt
 
 
-def test_intro_opener_without_article():
+def test_contextual_prompt_without_article_has_no_intro_instruction():
     prompt = _contextual_lyrics_prompt(
         word="chaek", translation="book", language="Korean",
         syllable_info=_syl(), duration=30, article="",
     )
-    assert "[Intro]" in prompt
-    # Opener body should have just "chaek" on its own line — no leading space.
-    assert "\nchaek\n" in prompt
-    assert "\n chaek" not in prompt
+    assert "[Intro]" not in prompt
+    assert "STRUCTURE RULE" not in prompt
+    assert "GRAMMATICAL ARTICLE" not in prompt
 
 
-def test_creative_prompt_has_intro_opener():
+def test_creative_prompt_has_no_intro_instruction():
     prompt = _creative_lyrics_prompt(
         word="Buch", translation="book", language="German",
         syllable_info=_syl(), duration=30, article="das",
     )
-    assert "[Intro]" in prompt
+    assert "[Intro]" not in prompt
+    assert "STRUCTURE RULE" not in prompt
     assert "das Buch" in prompt
 
 
-def test_dramatic_prompt_has_intro_opener():
+def test_dramatic_prompt_has_no_intro_instruction():
     prompt = _dramatic_lyrics_prompt(
         word="Buch", translation="book", language="German",
         article="das", music_caption="warm folk",
     )
-    assert "[Intro]" in prompt
+    assert "[Intro]" not in prompt
+    assert "STRUCTURE RULE" not in prompt
     assert "das Buch" in prompt
 
 
@@ -246,8 +252,8 @@ def test_dramatic_prompt_references_caption_section_when_missing():
         word="Buch", translation="book", language="German",
         article="das", music_caption=None,
     )
-    assert "[Intro]" in prompt
     assert "SECTION 1" in prompt
+    assert "[Intro]" not in prompt
 
 
 # ---------------------------------------------------------------------------
@@ -334,8 +340,12 @@ def test_level1_reliable_does_not_unify(tmp_path):
     # because the two template generators produce different structures.
 
 
-def test_level1_reliable_llm_call_count_is_zero_with_external_caption(tmp_path):
-    """Verify Level 1 with external caption makes 0 LLM calls."""
+def test_level1_reliable_llm_call_count_is_zero_with_external_caption(tmp_path, fake_llm_client):
+    """Verify Level 1 with external caption makes 0 LLM calls.
+
+    Asserts both the engine's bookkeeping (llm_calls in generation_info) AND
+    the actual invocation count on the fake client — they must agree.
+    """
     payload = make_payload(
         lyric_mode="reliable", output_dir=tmp_path,
         external_music_caption="warm folk guitar, female vocal",
@@ -344,139 +354,157 @@ def test_level1_reliable_llm_call_count_is_zero_with_external_caption(tmp_path):
     assert result.status == "success"
     artifact = _read_artifact(tmp_path)
     assert artifact["generation_info"]["llm_calls"] == 0
+    assert fake_llm_client.call_count == 0
 
 
-def test_llm_modes_llm_call_count_is_one_with_external_caption(tmp_path):
-    """Verify Levels 2-4 with external caption each make exactly 1 LLM call."""
+def test_llm_modes_llm_call_count_is_one_with_external_caption(tmp_path, fake_llm_client):
+    """Verify Levels 2-4 with external caption each make exactly 1 LLM call.
+
+    Asserts both the engine's bookkeeping AND the actual invocation count
+    on the fake client. Resets call_count between modes because the same
+    fake client is shared within the test.
+    """
     for mode in ("contextual", "creative", "dramatic"):
         output_dir = tmp_path / mode
         output_dir.mkdir()
+        fake_llm_client.call_count = 0
         payload = make_payload(lyric_mode=mode, output_dir=output_dir)
         result = generate_concept(payload)
         assert result.status == "success", f"{mode} failed: {result.error}"
         artifact = _read_artifact(output_dir)
         assert artifact["generation_info"]["llm_calls"] == 1, \
-            f"{mode}: expected 1 LLM call, got {artifact['generation_info']['llm_calls']}"
+            f"{mode}: expected 1 LLM call in bookkeeping, got {artifact['generation_info']['llm_calls']}"
+        assert fake_llm_client.call_count == 1, \
+            f"{mode}: expected 1 actual LLM invocation, got {fake_llm_client.call_count}"
 
 
 # ---------------------------------------------------------------------------
 # Article-less language: prompt opener uses bare word
 # ---------------------------------------------------------------------------
 
-def test_articleless_language_opener(tmp_path):
-    """Korean word: article should be empty, prompt should instruct '[Intro]\\n{word}'."""
-    captured: dict = {}
+def test_articleless_language_opener(tmp_path, fake_llm_client):
+    """Korean word: no article → final artifact opens with '[Intro]\\nchaek\\n\\n'.
 
-    class CapturingLLMClient(FakeLLMClient):
-        def generate(self, prompt, model, max_tokens):
-            captured["prompt"] = prompt
-            return super().generate(prompt, model, max_tokens)
+    The prompt no longer mentions [Intro] (that instruction was removed). The
+    deterministic prepend is responsible for the opener.
+    """
+    payload = make_payload(
+        word="chaek", translation="book",
+        language="Korean", language_code="ko",
+        lyric_mode="contextual",
+        mnemonic="", pos="noun",
+        output_dir=tmp_path,
+    )
+    result = generate_concept(payload)
+    assert result.status == "success", result.error
 
-    with patch(
-        "cloud_engines.concept_engine.engine.OpenRouterClient",
-        lambda *a, **kw: CapturingLLMClient(),
-    ):
-        payload = make_payload(
-            word="chaek", translation="book",
-            language="Korean", language_code="ko",
-            lyric_mode="contextual",
-            mnemonic="", pos="noun",
-            output_dir=tmp_path,
-        )
-        result = generate_concept(payload)
-        assert result.status == "success", result.error
-
-    prompt = captured["prompt"]
-    assert "[Intro]" in prompt
-    # The opener body should be "[Intro]\nchaek" with no leading space.
-    assert "\nchaek\n" in prompt
-    assert "\n chaek" not in prompt
-    # There should be no GRAMMATICAL ARTICLE line for Korean.
+    prompt = fake_llm_client.last_prompt
+    # Prompt-level checks: [Intro] instruction removed, no phantom article.
+    assert "[Intro]" not in prompt
+    assert "STRUCTURE RULE" not in prompt
     assert "GRAMMATICAL ARTICLE" not in prompt
+
+    # Artifact-level check: opener is prepended with bare word, no leading space.
+    artifact = _read_artifact(tmp_path)
+    assert artifact["lyrics"].startswith("[Intro]\nchaek\n\n")
+    assert "[Intro]\n chaek" not in artifact["lyrics"]
 
 
 # ---------------------------------------------------------------------------
 # Phrase + dramatic
 # ---------------------------------------------------------------------------
 
-def test_phrase_dramatic(tmp_path):
-    captured: dict = {}
+def test_phrase_dramatic(tmp_path, fake_llm_client):
+    """Phrase + dramatic level: opener uses the bare phrase; caption is threaded.
 
-    class CapturingLLMClient(FakeLLMClient):
-        def generate(self, prompt, model, max_tokens):
-            captured["prompt"] = prompt
-            return super().generate(prompt, model, max_tokens)
+    Prompt no longer mentions [Intro]; the deterministic prepend inserts
+    '[Intro]\\nI love pizza\\n\\n' at the top of the final lyrics.
+    """
+    payload = make_payload(
+        word="I love pizza", translation="",
+        language="English", language_code="en",
+        lyric_mode="dramatic",
+        mnemonic="", pos="",
+        external_music_caption="upbeat pop with synths, male vocal",
+        input_type="phrase",
+        output_dir=tmp_path,
+    )
+    result = generate_concept(payload)
+    assert result.status == "success", result.error
 
-    with patch(
-        "cloud_engines.concept_engine.engine.OpenRouterClient",
-        lambda *a, **kw: CapturingLLMClient(),
-    ):
-        payload = make_payload(
-            word="I love pizza", translation="",
-            language="English", language_code="en",
-            lyric_mode="dramatic",
-            mnemonic="", pos="",
-            external_music_caption="upbeat pop with synths, male vocal",
-            input_type="phrase",
-            output_dir=tmp_path,
-        )
-        result = generate_concept(payload)
-        assert result.status == "success", result.error
-
-    prompt = captured["prompt"]
-    # Phrase is the target, opener uses the bare phrase (no article).
-    assert "[Intro]" in prompt
-    assert "\nI love pizza\n" in prompt
-    # Music caption must be threaded through.
+    prompt = fake_llm_client.last_prompt
+    # [Intro] instruction is gone from the prompt.
+    assert "[Intro]" not in prompt
+    assert "STRUCTURE RULE" not in prompt
+    # Target phrase is referenced as the TARGET WORD; music caption threaded.
+    assert "I love pizza" in prompt
     assert "upbeat pop with synths" in prompt
-    # Artifact: lyrics == suno_lyrics (unified).
+
+    # Artifact: lyrics == suno_lyrics (unified) and opens with the deterministic intro.
     artifact = _read_artifact(tmp_path)
     assert artifact["lyrics"] == artifact["suno_lyrics"]
-    assert artifact["lyrics"].startswith("[Intro]")
+    assert artifact["lyrics"].startswith("[Intro]\nI love pizza\n\n")
 
 
 # ---------------------------------------------------------------------------
-# Level 1 regression
+# Level 1 regression — golden comparison of full generate_concept() output
 # ---------------------------------------------------------------------------
 
-def test_level1_reliable_template_unchanged_production():
-    """Level 1 reliable template output, caption_style=production, is unchanged.
+_LEVEL1_GOLDEN_PATH = (
+    Path(__file__).resolve().parent / "fixtures" / "level1_golden.json"
+)
 
-    Compares byte-for-byte against the known pre-change output.
-    """
-    from cloud_engines.concept_engine.templates import generate_reliable
-    output = generate_reliable(word="Buch", article="das", duration=30, caption_style="production")
-    expected = (
-        "[Verse - Steady]\n"
-        "das Buch...\n"
-        "Buch...\n"
-        "\n"
-        "[Chorus - Building]\n"
-        "Buch!\n"
-        "das Buch!\n"
-        "\n"
-        "[Outro - Fading]\n"
-        "das Buch..."
+
+def _build_canonical_reliable_payload(output_dir: Path) -> ConceptPayload:
+    """Canonical Level 1 payload used to capture and compare the golden."""
+    return ConceptPayload(
+        content=ConceptContent(
+            word="Arzt",
+            translation="doctor",
+            language="German",
+            language_code="de",
+            enrichment=Enrichment(mnemonic="DER Arzt (masculine)", pos="noun"),
+            external_music_caption="melodic indie pop at 120 BPM, female vocal, bright",
+            input_type="word",
+        ),
+        settings=ConceptSettings(
+            lyric_mode="reliable",
+            duration=30,
+        ),
+        output_dir=str(output_dir),
+        metadata=ConceptMetadata(
+            word="Arzt", language="German", timestamp="20260422T000000",
+        ),
     )
-    assert output == expected
-    assert "[Intro]" not in output  # Level 1 gets no intro tag
 
 
-def test_level1_reliable_template_unchanged_vocal_forward():
-    """Level 1 reliable template, caption_style=vocal_forward, opens with [Spoken Word]."""
-    from cloud_engines.concept_engine.templates import generate_reliable
-    output = generate_reliable(word="Buch", article="das", duration=30, caption_style="vocal_forward")
-    assert output.startswith("[Spoken Word]")
-    assert "[Intro]" not in output
+def test_level_1_regression_vs_main(tmp_path):
+    """Level 1 full-engine output is byte-identical to the stored golden.
 
+    Captures drift in any part of the reliable path: template text,
+    suno template, article resolution, or engine bookkeeping. Seeded
+    so generate_suno_lyrics's random article placement is deterministic.
+    """
+    import random as _random
 
-def test_level1_suno_template_unchanged(tmp_path):
-    """The single-word Suno template is unchanged for Level 1."""
-    from cloud_engines.concept_engine.templates import generate_suno_lyrics
-    output = generate_suno_lyrics(word="Buch", article="das")
-    assert "[Verse]" in output
-    assert "[Chorus]" in output
-    assert "[Outro]" in output
+    golden = json.loads(_LEVEL1_GOLDEN_PATH.read_text(encoding="utf-8"))
+    _random.seed(42)
+    payload = _build_canonical_reliable_payload(tmp_path)
+    result = generate_concept(payload)
+    assert result.status == "success", result.error
+
+    artifact = _read_artifact(tmp_path)
+    assert artifact["lyrics"] == golden["lyrics"], (
+        "Level 1 lyrics drifted from golden — investigate before regenerating fixture."
+    )
+    assert artifact["suno_lyrics"] == golden["suno_lyrics"], (
+        "Level 1 suno_lyrics drifted from golden."
+    )
+    # generation_info: compare the stable fields (llm_calls, sources, article_used)
+    for key in ("llm_calls", "lyrics_source", "caption_source", "article_used", "lyric_mode"):
+        assert artifact["generation_info"][key] == golden["generation_info"][key], (
+            f"generation_info.{key} drifted: {artifact['generation_info'][key]!r} vs {golden['generation_info'][key]!r}"
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -584,3 +612,157 @@ def test_dramatic_override_triggers_llm_path_end_to_end(tmp_path):
     assert artifact["generation_info"]["llm_calls"] == 1
     # lyric_mode recorded correctly.
     assert artifact["generation_info"]["lyric_mode"] == "dramatic"
+
+
+# ---------------------------------------------------------------------------
+# Opener contract — the deterministic [Intro] prepend always fires
+# ---------------------------------------------------------------------------
+#
+# These tests mock the LLM to return output that does NOT already start with
+# the correct [Intro] block. They prove the post-processor guarantees the
+# opener regardless of what the LLM emits.
+
+def _set_raw_lyrics_response(fake_llm_client, raw_lyrics: str) -> None:
+    """Make the fake client return a LYRICS:-prefixed response verbatim."""
+    fake_llm_client._response_text = f"LYRICS:\n{raw_lyrics}"
+
+
+def test_opener_prepended_when_llm_returns_verse_only(tmp_path, fake_llm_client):
+    """LLM emits [Verse] with no [Intro] → opener is prepended."""
+    _set_raw_lyrics_response(
+        fake_llm_client,
+        "[Verse]\nSomething else entirely\nMore lyrics",
+    )
+    payload = make_payload(
+        word="Arzt", translation="doctor",
+        language="German", language_code="de",
+        mnemonic="DER Arzt (masculine)", pos="noun",
+        lyric_mode="dramatic",
+        output_dir=tmp_path,
+    )
+    result = generate_concept(payload)
+    assert result.status == "success", result.error
+    artifact = _read_artifact(tmp_path)
+    assert artifact["lyrics"].startswith("[Intro]\nder Arzt\n\n")
+    assert "[Verse]\nSomething else entirely" in artifact["lyrics"]
+
+
+def test_opener_overrides_llm_variant_intro_tag(tmp_path, fake_llm_client):
+    """LLM emits '[Intro - Dramatic]' multi-line → defensive strip + prepend.
+
+    The final output must contain exactly ONE [Intro] section, and it must
+    be our deterministic form — not the LLM's variant-tagged intro.
+    """
+    _set_raw_lyrics_response(
+        fake_llm_client,
+        "[Intro - Dramatic]\nder Arzt\nsomething\n\n[Verse]\nbody",
+    )
+    payload = make_payload(
+        word="Arzt", translation="doctor",
+        language="German", language_code="de",
+        mnemonic="DER Arzt (masculine)", pos="noun",
+        lyric_mode="dramatic",
+        output_dir=tmp_path,
+    )
+    result = generate_concept(payload)
+    assert result.status == "success", result.error
+    artifact = _read_artifact(tmp_path)
+    lyrics = artifact["lyrics"]
+    # Deterministic opener at the top.
+    assert lyrics.startswith("[Intro]\nder Arzt\n\n")
+    # LLM's variant tag and its extra content line are stripped.
+    assert "[Intro - Dramatic]" not in lyrics
+    assert "something" not in lyrics
+    # Exactly one [Intro] section (case-insensitive count of "[intro").
+    assert lyrics.lower().count("[intro") == 1
+
+
+def test_opener_overrides_llm_intro_with_wrong_word(tmp_path, fake_llm_client):
+    """LLM emits [Intro] with the WRONG word → our opener replaces it."""
+    _set_raw_lyrics_response(
+        fake_llm_client,
+        "[Intro]\nDIFFERENT WORD\n\n[Verse]\nbody",
+    )
+    payload = make_payload(
+        word="Arzt", translation="doctor",
+        language="German", language_code="de",
+        mnemonic="DER Arzt (masculine)", pos="noun",
+        lyric_mode="dramatic",
+        output_dir=tmp_path,
+    )
+    result = generate_concept(payload)
+    assert result.status == "success", result.error
+    artifact = _read_artifact(tmp_path)
+    lyrics = artifact["lyrics"]
+    assert lyrics.startswith("[Intro]\nder Arzt\n\n")
+    assert "DIFFERENT WORD" not in lyrics
+    assert lyrics.lower().count("[intro") == 1
+
+
+def test_opener_articleless_korean_has_no_leading_space(tmp_path, fake_llm_client):
+    """Korean (article="") → opener is '[Intro]\\nchaek\\n\\n' (no leading space)."""
+    _set_raw_lyrics_response(
+        fake_llm_client,
+        "[Verse]\nchaek is a book\n",
+    )
+    payload = make_payload(
+        word="chaek", translation="book",
+        language="Korean", language_code="ko",
+        mnemonic="", pos="noun",
+        lyric_mode="contextual",
+        output_dir=tmp_path,
+    )
+    result = generate_concept(payload)
+    assert result.status == "success", result.error
+    artifact = _read_artifact(tmp_path)
+    assert artifact["lyrics"].startswith("[Intro]\nchaek\n\n")
+    assert "[Intro]\n chaek" not in artifact["lyrics"]
+
+
+def test_opener_phrase_uses_bare_phrase(tmp_path, fake_llm_client):
+    """Phrase input (article="") → opener is '[Intro]\\n{phrase}\\n\\n'.
+
+    Also exercises the defensive strip: the LLM's variant intro tag is
+    stripped and replaced by the deterministic opener.
+    """
+    _set_raw_lyrics_response(
+        fake_llm_client,
+        "[Intro - Flowing]\nWrong\n\n[Verse]\nTest\n",
+    )
+    payload = make_payload(
+        word="I love pizza", translation="",
+        language="English", language_code="en",
+        mnemonic="", pos="",
+        lyric_mode="creative",
+        input_type="phrase",
+        output_dir=tmp_path,
+    )
+    result = generate_concept(payload)
+    assert result.status == "success", result.error
+    artifact = _read_artifact(tmp_path)
+    lyrics = artifact["lyrics"]
+    assert lyrics.startswith("[Intro]\nI love pizza\n\n")
+    assert "[Intro - Flowing]" not in lyrics
+    assert "Wrong" not in lyrics
+    assert "[Verse]\nTest" in lyrics
+
+
+def test_opener_single_intro_when_llm_already_correct(tmp_path, fake_llm_client):
+    """LLM already emits '[Intro]\\nder Arzt\\n\\n[Verse]...' → exactly ONE [Intro]."""
+    _set_raw_lyrics_response(
+        fake_llm_client,
+        "[Intro]\nder Arzt\n\n[Verse]\nbody",
+    )
+    payload = make_payload(
+        word="Arzt", translation="doctor",
+        language="German", language_code="de",
+        mnemonic="DER Arzt (masculine)", pos="noun",
+        lyric_mode="dramatic",
+        output_dir=tmp_path,
+    )
+    result = generate_concept(payload)
+    assert result.status == "success", result.error
+    artifact = _read_artifact(tmp_path)
+    lyrics = artifact["lyrics"]
+    assert lyrics.startswith("[Intro]\nder Arzt\n\n")
+    assert lyrics.lower().count("[intro") == 1

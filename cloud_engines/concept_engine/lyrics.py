@@ -236,13 +236,33 @@ def _generate_llm_path(
     if external_music_caption:
         # Parse lyrics-only response, use external caption
         lyrics_result = _parse_lyrics_only_response(result.content, word, settings, syllable_info, article)
+        lyrics_result = _apply_intro_opener(lyrics_result, word, article)
         caption_result = CaptionResult(
             caption=external_music_caption, visual_hint=None,
             source="storyboard", language_injected=False,
         )
         return lyrics_result, caption_result
 
-    return _parse_combined_response(result.content, word, language, settings, syllable_info, article)
+    lyrics_result, caption_result = _parse_combined_response(
+        result.content, word, language, settings, syllable_info, article,
+    )
+    lyrics_result = _apply_intro_opener(lyrics_result, word, article)
+    return lyrics_result, caption_result
+
+
+def _apply_intro_opener(lyrics_result: LyricsResult, word: str, article: str) -> LyricsResult:
+    """Return a new LyricsResult with the deterministic [Intro] opener prepended.
+
+    Recounts word repetitions since the opener contributes one occurrence of
+    the target word (article-prefixed when applicable).
+    """
+    new_lyrics = _prepend_intro_opener(lyrics_result.lyrics, word, article)
+    new_reps = count_word_occurrences(new_lyrics, word)
+    return LyricsResult(
+        lyrics=new_lyrics,
+        source=lyrics_result.source,
+        word_repetitions=new_reps,
+    )
 
 
 def _build_combined_prompt(
@@ -321,24 +341,6 @@ def _build_lyrics_prompt(
     return _creative_lyrics_prompt(word, translation, language, syllable_info, settings.duration, article)
 
 
-def _intro_opener_rule(word: str, article: str) -> str:
-    """Return the [Intro] opener instruction block inserted into Levels 2-4 prompts.
-
-    The opener guarantees the target word (article-prefixed when applicable) lands
-    inside the first 15 seconds of audio even for long songs.
-    """
-    if article:
-        opener_body = f"[Intro]\n{article} {word}"
-    else:
-        opener_body = f"[Intro]\n{word}"
-    return (
-        f'IMPORTANT — STRUCTURE RULE:\n'
-        f'The very first section of the lyrics MUST be:\n'
-        f'{opener_body}\n'
-        f'This [Intro] section must come before any [Verse], [Chorus], [Spoken Word], [Bridge], or [Outro] tag.\n'
-    )
-
-
 def _contextual_lyrics_prompt(
     word: str, translation: str, language: str, syllable_info: SyllableInfo,
     duration: int = 30, article: str = "",
@@ -360,13 +362,11 @@ def _contextual_lyrics_prompt(
         f'SYLLABLE COUNT: {syllable_info.count}\n'
         f'{article_line}'
         f'\n'
-        f'{_intro_opener_rule(word, article)}'
-        f'\n'
         f'Write short, structured lyrics following these rules:\n'
-        f'- After the [Intro], the target word MUST appear {reps} more times\n'
+        f'- The target word MUST appear {reps} times\n'
         f'- Add 1-2 very short phrases (3-5 words) in {language} that USE the target word naturally\n'
         f'- Phrases must use simple, high-frequency vocabulary — no rare words\n'
-        f'- After the [Intro], use Ace-Step section tags: [Verse], [Chorus], [Spoken Word], [Outro]\n'
+        f'- Use Ace-Step section tags: [Verse], [Chorus], [Spoken Word], [Outro]\n'
         f'- You may add one energy descriptor per tag (e.g., [Verse - Gentle])\n'
         f'- Keep lines short: 1-4 words per line\n'
         f'- Use "..." for pauses and "!" for emphasis\n'
@@ -398,17 +398,15 @@ def _creative_lyrics_prompt(
         f'SYLLABLE COUNT: {syllable_info.count}\n'
         f'{article_line}'
         f'\n'
-        f'{_intro_opener_rule(word, article)}'
-        f'\n'
         f'Write lyrics that follow these rules:\n'
-        f'- After the [Intro], write several short verses or a verse+chorus structure\n'
+        f'- Write several short verses or a verse+chorus structure\n'
         f'  that features the target word naturally throughout.\n'
         f'- Use chorus-style repetition: the chorus or hook should repeat the target\n'
         f'  word multiple times to aid memorability. The repetition should feel like\n'
         f'  a song hook, not a drill.\n'
-        f'- After the [Intro], use Ace-Step section tags: [Verse], [Chorus], [Bridge], [Outro]\n'
+        f'- Use Ace-Step section tags: [Verse], [Chorus], [Bridge], [Outro]\n'
         f'- You may add one energy descriptor per tag\n'
-        f'- The target word must appear at least {reps} times across the full lyrics (counting the [Intro])\n'
+        f'- The target word must appear at least {reps} times across the full lyrics\n'
         f'- Use natural sentences in {language}, with idiomatic flavor\n'
         f'- Keep lines short: 2-8 words per line\n'
         f'- NEVER include translation or English words\n'
@@ -450,11 +448,9 @@ def _dramatic_lyrics_prompt(
         f'{article_line}'
         f'{music_style_line}'
         f'\n'
-        f'{_intro_opener_rule(word, article)}'
-        f'\n'
         f'Write a real, full-length song that follows these rules EXACTLY:\n'
         f'\n'
-        f'1. After the [Intro], write a full song. The target word should be a thematic\n'
+        f'1. Write a full song. The target word should be a thematic\n'
         f'   anchor, appearing multiple times across the song, but the lyrics should feel\n'
         f'   like a real song about that word\'s meaning — not a vocabulary drill.\n'
         f'\n'
@@ -467,7 +463,7 @@ def _dramatic_lyrics_prompt(
         f'3. Use Ace-Step section tags appropriate to the structure: [Verse], [Chorus],\n'
         f'   [Bridge], [Pre-Chorus], [Outro], etc.\n'
         f'\n'
-        f'4. The target word must appear at least 8 times across the full lyrics (counting the [Intro]).\n'
+        f'4. The target word must appear at least 8 times across the full lyrics.\n'
         f'\n'
         f'5. Use natural, song-like {language} lyrics.\n'
         f'\n'
@@ -476,6 +472,38 @@ def _dramatic_lyrics_prompt(
         f'\n'
         f'7. Output ONLY the lyrics, no commentary.'
     )
+
+
+# ---------------------------------------------------------------------------
+# Deterministic [Intro] opener
+# ---------------------------------------------------------------------------
+
+# Matches a leading [Intro...] section (the tag line plus any following content
+# lines that don't themselves open a new section), up to and including any
+# trailing blank lines. Content lines are identified as lines that don't start
+# with "[" — we stop when we hit either a blank line (consumed as part of the
+# match) or the next section tag (not consumed).
+_LEADING_INTRO_SECTION = re.compile(
+    r"^\s*\[intro[^\]]*\]\s*\n(?:[^\[\n][^\n]*\n)*\n*",
+    re.IGNORECASE,
+)
+
+
+def _prepend_intro_opener(lyrics: str, word: str, article: str) -> str:
+    """Guarantee the lyrics begin with a deterministic [Intro] opener.
+
+    Ensures the target word (article-prefixed when available) lands inside the
+    first seconds of the generated song, regardless of what the LLM produced.
+
+    If the LLM's output already begins with its own [Intro] section, that
+    section is stripped first to avoid duplicate intros. Sections introduced
+    by other tags ([Verse], [Chorus], etc.) are left in place.
+
+    Pure: string in, string out, no side effects.
+    """
+    cleaned = _LEADING_INTRO_SECTION.sub("", lyrics.lstrip(), count=1)
+    opener_line = f"{article} {word}" if article else word
+    return f"[Intro]\n{opener_line}\n\n{cleaned}"
 
 
 # ---------------------------------------------------------------------------
