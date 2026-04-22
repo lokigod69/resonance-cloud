@@ -291,8 +291,6 @@ def build_image_payload(
         if mnemonic or etymology:
             context = {"mnemonic": mnemonic, "etymology": etymology}
 
-    identity = manifest_data.identity or {}
-
     return {
         "content": {
             "word": manifest_data.word_original,
@@ -309,11 +307,6 @@ def build_image_payload(
             "language": manifest_data.language,
             "translation": manifest_data.translation,
             "timestamp": now_iso(),
-            "word_id": identity.get("word_id"),
-            "deck_id": identity.get("deck_id"),
-            "user_id": identity.get("user_id"),
-            "job_id": identity.get("job_id"),
-            "attempt": identity.get("attempt"),
         }
     }
 
@@ -329,7 +322,6 @@ def build_video_payloads(
     """Build one payload per scene in the storyboard."""
     images_dir = word_dir / "images" / images_version
     storyboard_file = images_dir / "storyboard.json"
-    identity = manifest_data.identity or {}
 
     storyboard = {}
     scenes = []
@@ -381,11 +373,6 @@ def build_video_payloads(
                     "timestamp": now_iso(),
                     "image_version": images_version,
                     "scene_number": i + 1,
-                    "word_id": identity.get("word_id"),
-                    "deck_id": identity.get("deck_id"),
-                    "user_id": identity.get("user_id"),
-                    "job_id": identity.get("job_id"),
-                    "attempt": identity.get("attempt"),
                 },
             }
             payloads.append(payload)
@@ -476,11 +463,6 @@ def build_video_payloads(
                 "timestamp": now_iso(),
                 "image_version": images_version,
                 "scene_number": i + 1,
-                "word_id": identity.get("word_id"),
-                "deck_id": identity.get("deck_id"),
-                "user_id": identity.get("user_id"),
-                "job_id": identity.get("job_id"),
-                "attempt": identity.get("attempt"),
             }
         }
         payloads.append(payload)
@@ -774,7 +756,6 @@ def build_assembly_payload(
 
     video_dir = word_dir / "videos" / video_version
     video_clips = sorted([str(f) for f in video_dir.glob("scene_*.mp4")])
-    identity = manifest_data.identity or {}
 
     return {
         "content": {
@@ -794,11 +775,6 @@ def build_assembly_payload(
             "timestamp": now_iso(),
             "song_version": song_version,
             "video_version": video_version,
-            "word_id": identity.get("word_id"),
-            "deck_id": identity.get("deck_id"),
-            "user_id": identity.get("user_id"),
-            "job_id": identity.get("job_id"),
-            "attempt": identity.get("attempt"),
         }
     }
 
@@ -815,7 +791,6 @@ def build_bookend_payload(
         raise PipelineError("No assembly version selected — cannot run bookend")
 
     assembled_video = str(word_dir / "final" / selected_final / "final.mp4")
-    identity = manifest_data.identity or {}
 
     return {
         "content": {
@@ -833,11 +808,6 @@ def build_bookend_payload(
             "translation": manifest_data.translation,
             "assembly_version": selected_final,
             "timestamp": now_iso(),
-            "word_id": identity.get("word_id"),
-            "deck_id": identity.get("deck_id"),
-            "user_id": identity.get("user_id"),
-            "job_id": identity.get("job_id"),
-            "attempt": identity.get("attempt"),
         },
     }
 

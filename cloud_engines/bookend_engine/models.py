@@ -62,13 +62,8 @@ class BookendMetadata(BaseModel):
     word: str
     language: str
     translation: str
-    timestamp: str                         # ISO 8601
-    word_id: str | None = None
-    deck_id: str | None = None
-    user_id: str | None = None
-    job_id: str | None = None
-    attempt: int | None = None
     assembly_version: str                  # Which assembly version was wrapped
+    timestamp: str                         # ISO 8601
 
 
 class BookendPayload(BaseModel):
