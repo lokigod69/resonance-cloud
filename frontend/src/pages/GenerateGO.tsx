@@ -241,6 +241,7 @@ export default function GenerateGO() {
 
   function handleCustomGenreConfirm() {
     if (customGenre.trim()) {
+      setGenre(customGenre.trim())
       setShowCustomInput(false)
       setStep(7)
     }

@@ -721,7 +721,16 @@ function StepMusic({
       </AnimatePresence>
 
       <button
-        onClick={onContinue}
+        onClick={() => {
+          // Auto-commit pending custom genre text if user skipped the green button
+          if (showCustomInput || selected === 'custom') {
+            const trimmed = customText.trim().toLowerCase()
+            if (!trimmed || trimmed === 'auto' || trimmed === 'custom') return
+            dispatch({ type: 'SET_GENRE', genre: trimmed })
+            setShowCustomInput(false)
+          }
+          onContinue()
+        }}
         className="px-8 py-3 rounded-xl bg-[var(--pg-accent-green)]/20 border border-[var(--pg-accent-green)]/40 text-[var(--pg-accent-green)] font-display font-semibold hover:bg-[var(--pg-accent-green)]/30 transition-all"
       >
         {t('generate.continue')}
