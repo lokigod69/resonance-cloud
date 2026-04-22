@@ -20,13 +20,13 @@ Addressed the three medium findings + test-quality gaps from the adversarial rev
 
 ## Commits Added
 
-To be captured after commit. Single commit on `feat/lyric-levels-backend`:
+Single commit on `feat/lyric-levels-backend`:
 
 ```
-fix(concept): enforce [Intro] opener deterministically, strengthen tests
+c03e14f fix(concept): enforce [Intro] opener deterministically, strengthen tests
 ```
 
-*(Hash will be listed post-commit — `git log --oneline cf0da5a..HEAD` on the branch.)*
+`git log --oneline cf0da5a..HEAD` → one commit, `c03e14f`.
 
 ---
 
