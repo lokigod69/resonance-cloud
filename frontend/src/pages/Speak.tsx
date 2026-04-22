@@ -71,6 +71,10 @@ export default function Speak() {
   const grok = useGrokRealtime()
   const endGrokSession = grok.endSession
   const stopAllAudio = tutor.stopAllAudio
+  const endGrokSessionRef = useRef(endGrokSession)
+  const stopAllAudioRef = useRef(stopAllAudio)
+  useEffect(() => { endGrokSessionRef.current = endGrokSession }, [endGrokSession])
+  useEffect(() => { stopAllAudioRef.current = stopAllAudio }, [stopAllAudio])
   const studyWords = useStudyWords(tutor.language)
   const bottomRef = useRef<HTMLDivElement>(null)
   const chatRef = useRef<HTMLDivElement>(null)
@@ -225,15 +229,15 @@ export default function Speak() {
       setGrokLevel(null)
       clearGrokUiState()
       setActiveProvider('voxtral')
-      void endGrokSession()
+      void endGrokSessionRef.current()
       return
     }
 
     const savedLevel = localStorage.getItem(`voice-tutor-level-${tutor.language}`)
     setGrokLevel(isGrokLevel(savedLevel) ? savedLevel : null)
     clearGrokUiState()
-    void endGrokSession()
-  }, [endGrokSession, tutor.language])
+    void endGrokSessionRef.current()
+  }, [tutor.language])
 
   useEffect(() => {
     if (speakMode === 'roleplay' && grokSessionActive) {
@@ -244,10 +248,10 @@ export default function Speak() {
 
   useEffect(() => {
     return () => {
-      stopAllAudio()
-      void endGrokSession()
+      stopAllAudioRef.current()
+      void endGrokSessionRef.current()
     }
-  }, [endGrokSession, stopAllAudio])
+  }, [])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })

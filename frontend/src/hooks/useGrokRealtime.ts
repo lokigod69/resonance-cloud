@@ -64,6 +64,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const currentUserIdRef = useRef<string | null>(null)
   const endingSessionRef = useRef(false)
   const mountedRef = useRef(true)
+  const isConnectedRef = useRef(false)
+  const statusRef = useRef<GrokStatus>('idle')
 
   const primeAudioForIOS = useCallback(() => {
     try {
@@ -380,9 +382,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }
     if (mountedRef.current) {
       setIsListening(false)
-      if (status === 'listening') setStatus(isConnected ? 'idle' : 'idle')
+      if (statusRef.current === 'listening') setStatus(isConnectedRef.current ? 'idle' : 'idle')
     }
-  }, [isConnected, status])
+  }, [])
 
   const teardownSession = useCallback(async () => {
     endingSessionRef.current = true
@@ -421,6 +423,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     await updateEndedAt(closingConversationId)
     endingSessionRef.current = false
   }, [resetAudioQueue, stopListening, updateEndedAt])
+
+  const teardownSessionRef = useRef(teardownSession)
+  useEffect(() => { teardownSessionRef.current = teardownSession }, [teardownSession])
 
   const connectAndConfigure = useCallback(async (params: StartGrokSessionParams): Promise<void> => {
     primeAudioForIOS()
@@ -550,13 +555,16 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     await connectAndConfigure(params)
   }, [connectAndConfigure, primeAudioForIOS, teardownSession])
 
+  useEffect(() => { isConnectedRef.current = isConnected }, [isConnected])
+  useEffect(() => { statusRef.current = status }, [status])
+
   useEffect(() => {
     mountedRef.current = true
     return () => {
       mountedRef.current = false
-      void teardownSession()
+      void teardownSessionRef.current()
     }
-  }, [teardownSession])
+  }, [])
 
   return {
     status,
