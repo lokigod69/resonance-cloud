@@ -351,12 +351,12 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       },
     })
 
-    const json = await response.json().catch(() => null) as { client_secret?: { value?: string } | null; error?: string } | null
+    const json = await response.json().catch(() => null) as { value?: string; error?: string } | null
     if (!response.ok) {
       throw new Error(json?.error || 'Failed to fetch Grok token')
     }
 
-    const token = json?.client_secret?.value
+    const token = json?.value
     if (!token) {
       throw new Error('Token exchange returned no client secret')
     }
