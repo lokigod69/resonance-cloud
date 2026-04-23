@@ -18,6 +18,7 @@ IMAGE_LLM_DEFAULT: str = os.environ.get("IMAGE_LLM_DEFAULT", "deepseek/deepseek-
 # --- Image Model Configuration (Step B) ---
 GOOGLE_AI_API_KEY: str = os.environ.get("GOOGLE_AI_API_KEY", "")
 KIE_API_KEY: str = os.environ.get("KIE_API_KEY", "")
+FAL_KEY: str = os.environ.get("FAL_KEY", "")
 IMAGE_MODEL_FAST: str = os.environ.get("IMAGE_MODEL_FAST", "gemini-2.5-flash-image")
 IMAGE_MODEL_QUALITY: str = os.environ.get("IMAGE_MODEL_QUALITY", "gemini-3-pro-image-preview")
 

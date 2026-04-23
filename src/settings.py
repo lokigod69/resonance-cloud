@@ -56,7 +56,7 @@ DEFAULT_SETTINGS = {
         "art_style": "auto",
         "word_in_image": True,
         "use_color_palette": True,
-        "image_model": "quality",
+        "image_model": "flux_pro",
         "llm_model": "x-ai/grok-4.1-fast",
     },
     "video": {

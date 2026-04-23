@@ -18,6 +18,7 @@ from typing import Optional
 from google import genai
 from google.genai import types
 from PIL import Image, ImageDraw, ImageFont
+from src.services.events import logged_api_call
 
 from . import config
 from .models import (
@@ -27,9 +28,19 @@ from .models import (
     Storyboard,
     resolve_frame_narrative,
 )
-from src.cost_logger import estimate_gemini_image_cost, log_cost, KIE_WAN_COST_PER_IMAGE
+from src.cost_logger import (
+    estimate_gemini_image_cost,
+    log_cost,
+    KIE_WAN_COST_PER_IMAGE,
+    KIE_FLUX_PRO_COST_PER_IMAGE,
+    FAL_ZTURBO_COST_PER_IMAGE,
+)
 
 logger = logging.getLogger(__name__)
+
+
+class _ProviderRenderError(RuntimeError):
+    """Internal sentinel so provider failures log a failed event before fallback."""
 
 # Retry constants
 TIMEOUT_RETRY_DELAY = 5.0
@@ -68,21 +79,28 @@ RATE_LIMIT_BASE_DELAY = 2.0
 
 
 def resolve_model_id(image_model: str) -> str:
-    """Resolve image_model setting value to an actual model ID.
+    """Resolve image_model setting value to an actual provider model ID.
 
     Args:
-        image_model: 'fast', 'quality', 'wan_fast', or 'wan_quality'.
+        image_model: 'flux_pro', 'zturbo', or 'wan_fallback'.
 
     Returns:
-        Actual model ID string.
+        Concrete provider model ID string. i2i variants are selected
+        inside the dispatch block in render_scene when a reference image
+        is provided.
+
+    Raises:
+        ValueError: on any value outside the whitelist. The Pydantic
+            validator upstream guards the enum, so reaching this branch
+            means a missing enum case here.
     """
-    if image_model == "fast":
-        return config.IMAGE_MODEL_FAST
-    if image_model == "wan_fast":
+    if image_model == "flux_pro":
+        return "flux-2/pro-text-to-image"
+    if image_model == "zturbo":
+        return "fal-ai/z-image/turbo"
+    if image_model == "wan_fallback":
         return "wan/2-7-image"
-    if image_model == "wan_quality":
-        return "wan/2-7-image-pro"
-    return config.IMAGE_MODEL_QUALITY
+    raise ValueError(f"unknown image_model: {image_model}")
 
 
 CHAIN_INSTRUCTIONS: dict[str, Optional[str]] = {
@@ -170,6 +188,18 @@ _FALLBACK_CHAIN_INSTRUCTION_WAN = (
     "Use it ONLY for subject identity — generate a fresh composition as described "
     "in the prompt below. DO NOT reproduce the reference layout or framing."
 )
+
+# ---------------------------------------------------------------------------
+# Flux 2 Pro / Z-Image-Turbo chain-instruction scaffolds (v1 = clones of
+# the Gemini-flavoured table). Tuning is post-ship empirical work — see
+# FU1 in docs/superpowers/plans/... for the follow-up.
+# ---------------------------------------------------------------------------
+
+CHAIN_INSTRUCTIONS_FLUX: dict[str, Optional[str]] = dict(CHAIN_INSTRUCTIONS)
+_FALLBACK_CHAIN_INSTRUCTION_FLUX = _FALLBACK_CHAIN_INSTRUCTION
+
+CHAIN_INSTRUCTIONS_ZTURBO: dict[str, Optional[str]] = dict(CHAIN_INSTRUCTIONS)
+_FALLBACK_CHAIN_INSTRUCTION_ZTURBO = _FALLBACK_CHAIN_INSTRUCTION
 
 # ---------------------------------------------------------------------------
 # Art-style rendering preambles
@@ -460,6 +490,12 @@ def render_scene(
     word: str = "",
     palette: Optional[list[str]] = None,
     use_color_palette: bool = False,
+    *,
+    word_id: str | None = None,
+    deck_id: str | None = None,
+    user_id: str | None = None,
+    job_id: str | None = None,
+    attempt: int | None = None,
 ) -> RenderResult:
     """Render a single scene to PNG via Gemini.
 
@@ -486,6 +522,190 @@ def render_scene(
     """
     scene_number = int(output_path.stem)
 
+    # --- Kie Flux 2 Pro route ---
+    if model_id.startswith("flux-2/"):
+        from .kie_provider import render_scene_kie_flux
+        from .wan_provider import _upload_for_chaining
+
+        flux_input_urls = None
+        if reference_image_path and reference_image_path.exists() and chain_instruction:
+            api_key = os.environ.get("KIE_API_KEY", "")
+            if api_key:
+                ref_url = _upload_for_chaining(reference_image_path, api_key)
+                if ref_url:
+                    flux_input_urls = [ref_url]
+                    model_id = "flux-2/pro-image-to-image"
+                    logger.info("Scene %d: Flux chaining via %s", scene_number, ref_url)
+                else:
+                    logger.warning(
+                        "Scene %d: Flux upload failed, rendering without reference",
+                        scene_number,
+                    )
+
+        prompt_payload = image_prompt.model_dump(exclude_none=True)
+        request_payload = {
+            "model": model_id,
+            "aspect_ratio": aspect_ratio,
+            "chain_instruction": chain_instruction,
+            "input_urls": flux_input_urls,
+            "use_color_palette": use_color_palette,
+            "image_prompt": prompt_payload,
+        }
+        flux_result: Optional[dict] = None
+        try:
+            with logged_api_call(
+                stage="images",
+                sub_step="render_scene",
+                event_source="engine",
+                word_id=word_id,
+                deck_id=deck_id,
+                user_id=user_id,
+                job_id=job_id,
+                attempt=attempt,
+                metadata={
+                    "scene_number": scene_number,
+                    "chained": reference_image_path is not None,
+                    "reference_image": (
+                        reference_image_path.name
+                        if reference_image_path is not None
+                        else None
+                    ),
+                    "output_path": output_path.name,
+                },
+            ) as ev:
+                flux_result = render_scene_kie_flux(
+                    image_prompt=prompt_payload,
+                    model_id=model_id,
+                    output_path=output_path,
+                    aspect_ratio=aspect_ratio,
+                    chain_instruction=chain_instruction,
+                    input_urls=flux_input_urls,
+                    use_color_palette=use_color_palette,
+                )
+                ev._model_provider = flux_result.get("provider_name")
+                ev._model_name = flux_result.get("model_name")
+                ev.record_response(
+                    response_body=flux_result.get("response_body"),
+                    request_body=json.dumps(request_payload, ensure_ascii=False),
+                    request_id=flux_result.get("request_id"),
+                    cost_usd=flux_result.get("cost_estimate_usd"),
+                    scene_number=scene_number,
+                    provider=flux_result.get("provider_name"),
+                    output_file=flux_result.get("file_path"),
+                    safety_blocked=False,
+                )
+                if not flux_result["success"]:
+                    raise _ProviderRenderError(
+                        flux_result.get("error_message") or "Provider render failed"
+                    )
+        except _ProviderRenderError:
+            pass
+        if flux_result and flux_result["success"]:
+            return RenderResult(
+                success=True,
+                scene_number=scene_number,
+                file_path=output_path.name,
+                prompt_json=flux_result.get("prompt_text", ""),
+                provider_name=flux_result.get("provider_name"),
+                model_name=flux_result.get("model_name"),
+                request_id=flux_result.get("request_id"),
+                cost_estimate_usd=flux_result.get("cost_estimate_usd"),
+                response_body=flux_result.get("response_body"),
+            )
+        # Flux failed — fall through to Wan fallback
+        logger.warning(
+            "Scene %d: Flux render failed (%s), falling back to Wan",
+            scene_number, (flux_result or {}).get("error_message", "unknown"),
+        )
+        model_id = "wan/2-7-image"
+
+    # --- Fal Z-Image-Turbo route ---
+    if model_id.startswith("fal-ai/"):
+        from .fal_provider import render_scene_fal_zturbo_sync
+
+        if reference_image_path and reference_image_path.exists() and chain_instruction:
+            model_id = "fal-ai/z-image/turbo/image-to-image"
+            fal_ref = reference_image_path
+            logger.info(
+                "Scene %d: Fal chaining via local %s",
+                scene_number, fal_ref.name,
+            )
+        else:
+            fal_ref = None
+
+        prompt_payload = image_prompt.model_dump(exclude_none=True)
+        request_payload = {
+            "model": model_id,
+            "aspect_ratio": aspect_ratio,
+            "chain_instruction": chain_instruction,
+            "reference_image": fal_ref.name if fal_ref else None,
+            "use_color_palette": use_color_palette,
+            "image_prompt": prompt_payload,
+        }
+        fal_result: Optional[dict] = None
+        try:
+            with logged_api_call(
+                stage="images",
+                sub_step="render_scene",
+                event_source="engine",
+                word_id=word_id,
+                deck_id=deck_id,
+                user_id=user_id,
+                job_id=job_id,
+                attempt=attempt,
+                metadata={
+                    "scene_number": scene_number,
+                    "chained": fal_ref is not None,
+                    "reference_image": fal_ref.name if fal_ref else None,
+                    "output_path": output_path.name,
+                },
+            ) as ev:
+                fal_result = render_scene_fal_zturbo_sync(
+                    image_prompt=prompt_payload,
+                    model_id=model_id,
+                    output_path=output_path,
+                    aspect_ratio=aspect_ratio,
+                    chain_instruction=chain_instruction,
+                    reference_image_path=fal_ref,
+                    use_color_palette=use_color_palette,
+                )
+                ev._model_provider = fal_result.get("provider_name")
+                ev._model_name = fal_result.get("model_name")
+                ev.record_response(
+                    response_body=fal_result.get("response_body"),
+                    request_body=json.dumps(request_payload, ensure_ascii=False),
+                    request_id=fal_result.get("request_id"),
+                    cost_usd=fal_result.get("cost_estimate_usd"),
+                    scene_number=scene_number,
+                    provider=fal_result.get("provider_name"),
+                    output_file=fal_result.get("file_path"),
+                    safety_blocked=False,
+                )
+                if not fal_result["success"]:
+                    raise _ProviderRenderError(
+                        fal_result.get("error_message") or "Provider render failed"
+                    )
+        except _ProviderRenderError:
+            pass
+        if fal_result and fal_result["success"]:
+            return RenderResult(
+                success=True,
+                scene_number=scene_number,
+                file_path=output_path.name,
+                prompt_json=fal_result.get("prompt_text", ""),
+                provider_name=fal_result.get("provider_name"),
+                model_name=fal_result.get("model_name"),
+                request_id=fal_result.get("request_id"),
+                cost_estimate_usd=fal_result.get("cost_estimate_usd"),
+                response_body=fal_result.get("response_body"),
+            )
+        # Fal failed — fall through to Wan fallback
+        logger.warning(
+            "Scene %d: Fal render failed (%s), falling back to Wan",
+            scene_number, (fal_result or {}).get("error_message", "unknown"),
+        )
+        model_id = "wan/2-7-image"
+
     # --- Wan 2.7 route ---
     if model_id.startswith("wan/"):
         from .wan_provider import render_scene_wan, _upload_for_chaining
@@ -501,33 +721,103 @@ def render_scene(
                 else:
                     logger.warning("Scene %d: Wan upload failed, rendering without reference", scene_number)
 
-        wan_result = render_scene_wan(
-            image_prompt=image_prompt.model_dump(exclude_none=True),
-            model_id=model_id,
-            output_path=output_path,
-            aspect_ratio=aspect_ratio,
-            chain_instruction=chain_instruction,
-            input_urls=wan_input_urls,
-            use_color_palette=use_color_palette,
-        )
+        prompt_payload = image_prompt.model_dump(exclude_none=True)
+        request_payload = {
+            "model": model_id,
+            "aspect_ratio": aspect_ratio,
+            "chain_instruction": chain_instruction,
+            "input_urls": wan_input_urls,
+            "use_color_palette": use_color_palette,
+            "image_prompt": prompt_payload,
+        }
+        try:
+            with logged_api_call(
+                stage="images",
+                sub_step="render_scene",
+                event_source="engine",
+                word_id=word_id,
+                deck_id=deck_id,
+                user_id=user_id,
+                job_id=job_id,
+                attempt=attempt,
+                metadata={
+                    "scene_number": scene_number,
+                    "chained": reference_image_path is not None,
+                    "reference_image": (
+                        reference_image_path.name
+                        if reference_image_path is not None
+                        else None
+                    ),
+                    "output_path": output_path.name,
+                },
+            ) as ev:
+                wan_result = render_scene_wan(
+                    image_prompt=prompt_payload,
+                    model_id=model_id,
+                    output_path=output_path,
+                    aspect_ratio=aspect_ratio,
+                    chain_instruction=chain_instruction,
+                    input_urls=wan_input_urls,
+                    use_color_palette=use_color_palette,
+                )
+                ev._model_provider = wan_result.get("provider_name")
+                ev._model_name = wan_result.get("model_name")
+                ev.record_response(
+                    response_body=wan_result.get("response_body"),
+                    request_body=json.dumps(request_payload, ensure_ascii=False),
+                    request_id=wan_result.get("request_id"),
+                    cost_usd=wan_result.get("cost_estimate_usd"),
+                    scene_number=scene_number,
+                    provider=wan_result.get("provider_name"),
+                    output_file=wan_result.get("file_path"),
+                    safety_blocked=False,
+                )
+                if not wan_result["success"]:
+                    raise _ProviderRenderError(
+                        wan_result.get("error_message") or "Provider render failed"
+                    )
+        except _ProviderRenderError:
+            pass
         if wan_result["success"]:
             return RenderResult(
                 success=True,
                 scene_number=scene_number,
                 file_path=output_path.name,
                 prompt_json=wan_result.get("prompt_text", ""),
+                provider_name=wan_result.get("provider_name"),
+                model_name=wan_result.get("model_name"),
+                request_id=wan_result.get("request_id"),
+                cost_estimate_usd=wan_result.get("cost_estimate_usd"),
+                response_body=wan_result.get("response_body"),
             )
-        # Wan failed — fall back to Gemini quality for this scene
+        # Wan failed — typographic fallback (terminal; no cascade to Gemini).
         logger.warning(
-            "Scene %d: Wan render failed (%s), falling back to Gemini",
+            "Scene %d: Wan render failed (%s), using typographic fallback",
             scene_number, wan_result.get("error_message", "unknown"),
         )
-        if model_id == "wan/2-7-image":
-            model_id = config.IMAGE_MODEL_FAST
-        else:
-            model_id = config.IMAGE_MODEL_QUALITY
-        # Fall through to Gemini code below
+        fallback_bytes = _generate_fallback_image(word, palette or [], output_path)
+        if fallback_bytes is not None:
+            output_path.write_bytes(fallback_bytes)
+            return RenderResult(
+                success=True,
+                scene_number=scene_number,
+                file_path=output_path.name,
+                prompt_json=wan_result.get("prompt_text", ""),
+                safety_blocked=True,
+                model_name=model_id,
+            )
+        return RenderResult(
+            success=False,
+            scene_number=scene_number,
+            error_message=(
+                f"Wan render failed and typographic fallback failed: "
+                f"{wan_result.get('error_message', 'unknown')}"
+            ),
+            prompt_json=wan_result.get("prompt_text", ""),
+            model_name=model_id,
+        )
 
+    # Gemini path — retained but not reachable from current enum. Do not remove.
     # Stringify the image_prompt to JSON (sent verbatim per spec)
     prompt_dict = image_prompt.model_dump(exclude_none=True)
     prompt_json = json.dumps(prompt_dict, ensure_ascii=False)
@@ -546,6 +836,7 @@ def render_scene(
             scene_number=scene_number,
             error_message="Google AI API key is required. Set GOOGLE_AI_API_KEY.",
             prompt_json=prompt_json,
+            model_name=model_id,
         )
 
     # Build parts list — optionally prepend reference image
@@ -590,6 +881,7 @@ def render_scene(
             scene_number=scene_number,
             error_message="All retry attempts exhausted",
             prompt_json=prompt_json,
+            model_name=model_id,
         )
 
     # Extract image data from response
@@ -614,6 +906,7 @@ def render_scene(
             scene_number=scene_number,
             error_message="Content blocked by safety filter — all recovery attempts failed",
             prompt_json=prompt_json,
+            model_name=model_id,
         )
 
     # Save PNG
@@ -634,6 +927,7 @@ def render_scene(
         file_path=output_path.name,
         prompt_json=prompt_json,
         safety_blocked=is_refusal,
+        model_name=model_id,
     )
 
 
@@ -643,6 +937,12 @@ def render_all_scenes(
     output_dir: Path,
     aspect_ratio: str = "16:9",
     use_color_palette: bool = False,
+    *,
+    word_id: str | None = None,
+    deck_id: str | None = None,
+    user_id: str | None = None,
+    job_id: str | None = None,
+    attempt: int | None = None,
 ) -> tuple[list[RenderResult], RenderingStepMeta]:
     """Render all scenes from a storyboard.
 
@@ -660,11 +960,19 @@ def render_all_scenes(
     per_scene_seconds: list[float] = []
     previous_image_path: Optional[Path] = None
 
-    # Resolve mode-specific chain instruction (Wan vs Gemini)
+    # Resolve mode-specific chain instruction by provider family
     resolved_mode = resolve_frame_narrative(storyboard.frame_narrative)
     if model_id.startswith("wan/"):
         chain_instruction = CHAIN_INSTRUCTIONS_WAN.get(
             resolved_mode, _FALLBACK_CHAIN_INSTRUCTION_WAN
+        )
+    elif model_id.startswith("flux-2/"):
+        chain_instruction = CHAIN_INSTRUCTIONS_FLUX.get(
+            resolved_mode, _FALLBACK_CHAIN_INSTRUCTION_FLUX
+        )
+    elif model_id.startswith("fal-ai/"):
+        chain_instruction = CHAIN_INSTRUCTIONS_ZTURBO.get(
+            resolved_mode, _FALLBACK_CHAIN_INSTRUCTION_ZTURBO
         )
     else:
         chain_instruction = CHAIN_INSTRUCTIONS.get(
@@ -695,6 +1003,11 @@ def render_all_scenes(
             word=storyboard.word,
             palette=storyboard.shared_palette,
             use_color_palette=use_color_palette,
+            word_id=word_id,
+            deck_id=deck_id,
+            user_id=user_id,
+            job_id=job_id,
+            attempt=attempt,
         )
         results.append(result)
 
@@ -712,10 +1025,22 @@ def render_all_scenes(
         per_scene_seconds.append(round(scene_elapsed, 2))
 
         # ── Cost tracking ────────────────────────────────────────
-        _is_wan = model_id.startswith("wan/")
+        if model_id.startswith("wan/"):
+            provider_label = "kie_ai"
+            cost_usd = KIE_WAN_COST_PER_IMAGE
+        elif model_id.startswith("flux-2/"):
+            provider_label = "kie_ai"
+            cost_usd = KIE_FLUX_PRO_COST_PER_IMAGE
+        elif model_id.startswith("fal-ai/"):
+            provider_label = "fal_ai"
+            cost_usd = FAL_ZTURBO_COST_PER_IMAGE
+        else:
+            provider_label = "gemini"
+            cost_usd = estimate_gemini_image_cost(model_id)
+
         log_cost(
             stage="images_rendering",
-            provider="kie_ai" if _is_wan else "gemini",
+            provider=provider_label,
             model=model_id,
             status="success" if result.success else "failed",
             usage_metrics={
@@ -724,10 +1049,7 @@ def render_all_scenes(
                 "safety_blocked": result.safety_blocked,
                 "chained": effective_reference is not None,
             },
-            estimated_cost_usd=(
-                KIE_WAN_COST_PER_IMAGE if _is_wan
-                else estimate_gemini_image_cost(model_id)
-            ),
+            estimated_cost_usd=cost_usd,
             duration_ms=int(scene_elapsed * 1000),
             error_message=result.error_message if not result.success else None,
         )

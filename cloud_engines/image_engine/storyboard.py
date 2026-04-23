@@ -15,6 +15,7 @@ from src.cost_logger import estimate_openrouter_cost, log_cost
 from typing import Optional, Union
 
 import httpx
+from src.services.events import logged_llm_call
 
 from . import config
 from .models import (
@@ -39,6 +40,12 @@ def generate_storyboard(
     content: ImageContent,
     context: Optional[ImageContext],
     settings: ImageSettings,
+    *,
+    word_id: str | None = None,
+    deck_id: str | None = None,
+    user_id: str | None = None,
+    job_id: str | None = None,
+    attempt: int | None = None,
 ) -> tuple[Union[Storyboard, StoryboardTextToVideo], StoryboardStepMeta, dict]:
     """Generate a storyboard via LLM.
 
@@ -78,6 +85,7 @@ def generate_storyboard(
         image_count_raw=settings.image_count,
         text_to_video=text_to_video,
         short_mode=short_mode,
+        image_model=settings.image_model,
     )
     is_auto_count = settings.image_count == "auto"
     user_prompt = build_user_prompt(
@@ -95,12 +103,43 @@ def generate_storyboard(
             "OpenRouter API key is required. Set OPENROUTER_API_KEY environment variable."
         )
 
-    raw_response, usage = _call_openrouter(
+    llm_cost: float | None = None
+    with logged_llm_call(
+        stage="images",
+        sub_step="storyboard_llm",
+        event_source="engine",
+        word_id=word_id,
+        deck_id=deck_id,
+        user_id=user_id,
+        job_id=job_id,
+        attempt=attempt,
+        model_provider="openrouter",
+        model_name=settings.llm_model,
         system_prompt=system_prompt,
         user_prompt=user_prompt,
-        model=settings.llm_model,
-        api_key=api_key,
-    )
+        metadata={
+            "scene_count": scene_count,
+            "creative_direction": settings.creative_direction,
+            "frame_narrative": settings.frame_narrative,
+            "art_style": settings.art_style,
+            "skip_rendering": settings.skip_rendering,
+            "short_mode": settings.short_mode,
+        },
+    ) as ev:
+        raw_response, usage, request_id = _call_openrouter(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            model=settings.llm_model,
+            api_key=api_key,
+        )
+        llm_cost = estimate_openrouter_cost(settings.llm_model, usage)
+        ev.record_response(
+            response_body=raw_response,
+            tokens_in=usage.get("prompt_tokens"),
+            tokens_out=usage.get("completion_tokens"),
+            cost_usd=llm_cost,
+            request_id=request_id,
+        )
 
     # Parse JSON response (pass art_style for post-process style overwrite)
     storyboard = _parse_storyboard_json(
@@ -131,6 +170,7 @@ def generate_storyboard(
         prompt_tokens=usage.get("prompt_tokens"),
         completion_tokens=usage.get("completion_tokens"),
         duration_seconds=round(elapsed, 2),
+        cost_estimate_usd=llm_cost,
     )
 
     debug = {
@@ -147,7 +187,7 @@ def _call_openrouter(
     user_prompt: str,
     model: str,
     api_key: str,
-) -> tuple[str, dict]:
+) -> tuple[str, dict, str | None]:
     """Call OpenRouter chat completions API.
 
     Args:
@@ -221,7 +261,7 @@ def _call_openrouter(
         "Storyboard LLM call completed (model=%s, tokens=%s)",
         model, usage,
     )
-    return content.strip(), usage
+    return content.strip(), usage, data.get("id")
 
 
 _FUZZY_MODE_MAP: dict[str, str] = {

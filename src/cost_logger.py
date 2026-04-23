@@ -20,6 +20,8 @@ __all__ = [
     "GEMINI_DEFAULT_COST_PER_IMAGE",
     "KIE_SUNO_COST_PER_SONG",
     "KIE_WAN_COST_PER_IMAGE",
+    "KIE_FLUX_PRO_COST_PER_IMAGE",
+    "FAL_ZTURBO_COST_PER_IMAGE",
 ]
 
 
@@ -74,6 +76,8 @@ GEMINI_COST_PER_IMAGE: dict[str, float] = {}
 GEMINI_DEFAULT_COST_PER_IMAGE: float = 0.0
 KIE_SUNO_COST_PER_SONG: float = 0.0
 KIE_WAN_COST_PER_IMAGE: float = 0.0
+KIE_FLUX_PRO_COST_PER_IMAGE: float = 0.035
+FAL_ZTURBO_COST_PER_IMAGE: float = 0.010
 
 
 def estimate_openrouter_cost(model: str, usage: dict[str, Any]) -> float:

@@ -70,7 +70,7 @@ def resolve_frame_narrative(frame_narrative: str) -> str:
     """Resolve legacy mode names to new names. Pass-through for new names and 'auto'."""
     return MODE_ALIASES.get(frame_narrative, frame_narrative)
 CLIP_DURATIONS = (5, 10, 15, 20, 30)
-IMAGE_MODELS = ("fast", "quality", "wan_fast", "wan_quality")
+IMAGE_MODELS = ("flux_pro", "zturbo", "wan_fallback")
 ASPECT_RATIOS = ("16:9", "1:1", "9:16")
 VISUAL_REFERENCES = ("auto", "etymology", "mnemonic", "none")
 
@@ -119,7 +119,7 @@ class ImageSettings(BaseModel):
     word_in_image: bool = Field(default=True)
     use_color_palette: bool = Field(default=False)
     llm_model: str = Field(default="deepseek/deepseek-v3.2")
-    image_model: str = Field(default="fast")
+    image_model: str = Field(default="flux_pro")
     visual_reference: str = Field(default="none")
     movie_override: Optional[str] = None
     movies_blacklist: list[str] = Field(default_factory=list)
@@ -444,6 +444,11 @@ class RenderResult(BaseModel):
     error_message: Optional[str] = None
     prompt_json: Optional[str] = None
     safety_blocked: bool = False
+    provider_name: Optional[str] = None
+    model_name: Optional[str] = None
+    request_id: Optional[str] = None
+    cost_estimate_usd: Optional[float] = None
+    response_body: Optional[str] = None
 
 
 class ImageError(BaseModel):

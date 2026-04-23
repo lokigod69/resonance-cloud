@@ -25,6 +25,7 @@ def build_system_prompt(
     image_count_raw: Union[str, int] = 1,
     text_to_video: bool = False,
     short_mode: bool = False,
+    image_model: str = "",
 ) -> str:
     """Assemble the complete system prompt from settings.
 
@@ -83,6 +84,8 @@ def build_system_prompt(
     # Word-in-image block — skip for text-to-video (no image rendering)
     if not text_to_video:
         parts.append(_word_in_image_block(settings.word_in_image, word, language))
+
+    parts.append(_image_model_block(image_model))
 
     parts.extend([
         _context_block(context),
@@ -163,6 +166,17 @@ def _role_block(word: str, translation: str, language: str) -> str:
         f"TRANSLATION: {translation}\n"
         f"LANGUAGE: {language}"
     )
+
+
+def _image_model_block(image_model: str) -> Optional[str]:
+    """Placeholder for future per-image-model prompt variants.
+
+    Returns None today; content ships in a later PR once prompting
+    research returns. The `"\\n\\n".join(p for p in parts if p)`
+    assembly in build_system_prompt filters out falsy values, so
+    appending this helper's result is safe even while it's a no-op.
+    """
+    return None
 
 
 def _movie_override_block(movie_name: str) -> str:
