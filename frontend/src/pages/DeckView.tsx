@@ -361,7 +361,7 @@ export default function DeckView() {
           {isGenerating && (
             <Progress value={progress} className="h-2 max-w-md mx-auto" />
           )}
-          {isGenerating && (
+          {isGenerating && hasChecked && !shouldShowQueue && (
             <VerbCycler className="mt-1" />
           )}
         </div>

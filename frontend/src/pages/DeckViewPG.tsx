@@ -537,7 +537,7 @@ export default function DeckViewPG() {
     {isGenerating && (
       <div className="flex flex-col items-center gap-6 mb-8">
         <ParticleSpinner preset="starburst" size={200} />
-        <VerbCycler intervalMs={5000} />
+        {hasChecked && !shouldShowQueue && <VerbCycler intervalMs={5000} />}
         <div className="w-full max-w-md h-1 bg-white/10 rounded-full overflow-hidden">
           <div
             className="h-full rounded-full bg-[var(--pg-accent-teal)] transition-all"
