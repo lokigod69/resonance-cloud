@@ -26,6 +26,8 @@ path.
 
 from __future__ import annotations
 
+import asyncio
+import functools
 import logging
 import os
 import time
@@ -40,16 +42,35 @@ RESPONSE_OFFLOAD_THRESHOLD_BYTES = 256 * 1024
 STORAGE_BUCKET = "pipeline-events"
 
 
+@functools.lru_cache(maxsize=1)
 def _get_client():
     url = os.getenv("SUPABASE_URL", "")
-    key = os.getenv("SUPABASE_SERVICE_KEY", "")
-    if not url or not key:
+    service_key = os.getenv("SUPABASE_SERVICE_KEY", "") or os.getenv("SUPABASE_KEY", "")
+    if not url or not service_key:
         return None
     try:
-        return create_client(url, key)
+        return create_client(url, service_key)
     except Exception as e:  # pragma: no cover — defensive
         logger.warning("events: supabase client init failed: %s", e)
         return None
+
+
+def _get_client_safe():
+    client = _get_client()
+    if client is None:
+        cache_clear = getattr(_get_client, "cache_clear", None)
+        if callable(cache_clear):
+            cache_clear()
+    return client
+
+
+def _submit_write(row: dict[str, Any]) -> None:
+    try:
+        asyncio.get_running_loop()
+    except RuntimeError:
+        _write_event(row)
+        return
+    asyncio.ensure_future(asyncio.to_thread(_write_event, row))
 
 
 class logged_llm_call:
@@ -145,7 +166,7 @@ class logged_llm_call:
         )
 
         try:
-            _write_event(row)
+            _submit_write(row)
         except Exception as e:  # pragma: no cover — defensive belt
             logger.warning(
                 "events: write failed (stage=%s sub_step=%s): %s",
@@ -274,7 +295,7 @@ def write_event_row(
         "metadata": metadata or {},
     }
     try:
-        _write_event(row)
+        _submit_write(row)
     except Exception as e:  # pragma: no cover — defensive belt
         logger.warning(
             "events: write_event_row failed (stage=%s sub_step=%s): %s",
@@ -287,7 +308,7 @@ def _write_event(row: dict[str, Any]) -> None:
 
     Never raises. Any failure is logged as a warning.
     """
-    sb = _get_client()
+    sb = _get_client_safe()
     if sb is None:
         logger.warning(
             "events: supabase creds missing — event dropped (stage=%s sub_step=%s)",
@@ -296,6 +317,7 @@ def _write_event(row: dict[str, Any]) -> None:
         return
 
     response_body = row.get("response_body")
+    uploaded_storage_key: str | None = None
     if isinstance(response_body, str):
         body_bytes = response_body.encode("utf-8")
         if len(body_bytes) > RESPONSE_OFFLOAD_THRESHOLD_BYTES:
@@ -313,6 +335,7 @@ def _write_event(row: dict[str, Any]) -> None:
                 row["id"] = str(event_id)
                 row["response_body"] = None
                 row["response_ref"] = storage_key
+                uploaded_storage_key = storage_key
             except Exception as e:
                 logger.warning(
                     "events: offload upload failed (%s) — writing row without payload", e,
@@ -330,3 +353,8 @@ def _write_event(row: dict[str, Any]) -> None:
             "events: insert failed (stage=%s sub_step=%s): %s",
             row.get("stage"), row.get("sub_step"), e,
         )
+        if uploaded_storage_key is not None:
+            try:
+                sb.storage.from_(STORAGE_BUCKET).remove([uploaded_storage_key])
+            except Exception as cleanup_exc:
+                logger.warning("events: orphan cleanup failed: %s", cleanup_exc)

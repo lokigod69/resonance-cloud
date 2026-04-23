@@ -13,7 +13,8 @@ Covers:
 
 from __future__ import annotations
 
-from unittest.mock import MagicMock, patch
+import asyncio
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 
@@ -27,6 +28,7 @@ from src.services import events
 class _FakeStorage:
     def __init__(self):
         self.uploads: list[tuple[str, bytes, dict]] = []
+        self.removes: list[list[str]] = []
 
     def from_(self, bucket: str):
         self._bucket = bucket
@@ -35,6 +37,10 @@ class _FakeStorage:
     def upload(self, key: str, data: bytes, file_options: dict | None = None):
         self.uploads.append((key, data, file_options or {}))
         return {"Key": key}
+
+    def remove(self, keys: list[str]):
+        self.removes.append(keys)
+        return {"data": []}
 
 
 class _FakeTable:
@@ -298,4 +304,123 @@ def test_write_event_row_missing_creds_swallows(monkeypatch):
         sub_step="audio_probe",
         status="success",
     )
+    # No exception â†’ pass.
+
+
+# ---------------------------------------------------------------------------
+# H1: Supabase client fallback + cache safety
+# ---------------------------------------------------------------------------
+
+def test_get_client_safe_falls_back_to_supabase_key(monkeypatch):
+    events._get_client.cache_clear()
+    monkeypatch.setenv("SUPABASE_URL", "https://example.supabase.co")
+    monkeypatch.delenv("SUPABASE_SERVICE_KEY", raising=False)
+    monkeypatch.setenv("SUPABASE_KEY", "fallback-key")
+
+    client = object()
+    with patch.object(events, "create_client", return_value=client) as mock_create:
+        assert events._get_client_safe() is client
+
+    mock_create.assert_called_once_with("https://example.supabase.co", "fallback-key")
+    events._get_client.cache_clear()
+
+
+def test_get_client_safe_clears_none_cache_and_allows_retry(monkeypatch):
+    events._get_client.cache_clear()
+    monkeypatch.setenv("SUPABASE_URL", "https://example.supabase.co")
+    monkeypatch.delenv("SUPABASE_SERVICE_KEY", raising=False)
+    monkeypatch.delenv("SUPABASE_KEY", raising=False)
+
+    client = object()
+    with patch.object(events, "create_client", return_value=client) as mock_create:
+        assert events._get_client_safe() is None
+        assert events._get_client.cache_info().currsize == 0
+
+        monkeypatch.setenv("SUPABASE_KEY", "retry-key")
+        assert events._get_client_safe() is client
+
+    mock_create.assert_called_once_with("https://example.supabase.co", "retry-key")
+    events._get_client.cache_clear()
+
+
+# ---------------------------------------------------------------------------
+# H2: async dispatch helper
+# ---------------------------------------------------------------------------
+
+def test_submit_write_uses_to_thread_when_loop_running():
+    row = {"stage": "suno_bakein", "sub_step": "submit"}
+
+    async def _exercise():
+        with patch("src.services.events.asyncio.to_thread", new=AsyncMock(return_value=None)) as mock_to_thread:
+            events._submit_write(row)
+            await asyncio.sleep(0)
+            mock_to_thread.assert_called_once_with(events._write_event, row)
+
+    asyncio.run(_exercise())
+
+
+def test_submit_write_calls_write_event_directly_without_running_loop():
+    row = {"stage": "suno_bakein", "sub_step": "audio_probe"}
+
+    with patch("src.services.events._write_event") as mock_write:
+        events._submit_write(row)
+
+    mock_write.assert_called_once_with(row)
+
+
+# ---------------------------------------------------------------------------
+# H4: orphan cleanup after upload + insert failure
+# ---------------------------------------------------------------------------
+
+def test_insert_failure_after_successful_offload_removes_orphan(monkeypatch):
+    sb = _FakeSupabase()
+
+    class _BoomExecute:
+        def execute(self):
+            raise RuntimeError("db-down")
+
+    def _boom_insert(self, row):
+        return _BoomExecute()
+
+    monkeypatch.setattr(_FakeTable, "insert", _boom_insert)
+    monkeypatch.setattr(events, "_get_client", lambda: sb)
+
+    events._write_event({
+        "stage": "concept",
+        "sub_step": "lyrics_combined_llm",
+        "response_body": "x" * (events.RESPONSE_OFFLOAD_THRESHOLD_BYTES + 1),
+        "metadata": {},
+    })
+
+    assert len(sb.storage.uploads) == 1
+    storage_key, _data_bytes, _opts = sb.storage.uploads[0]
+    assert sb.storage.removes == [[storage_key]]
+
+
+def test_orphan_cleanup_failure_is_swallowed(monkeypatch, caplog):
+    sb = _FakeSupabase()
+
+    class _BoomExecute:
+        def execute(self):
+            raise RuntimeError("db-down")
+
+    def _boom_insert(self, row):
+        return _BoomExecute()
+
+    def _boom_remove(self, keys):
+        raise RuntimeError("cleanup-down")
+
+    monkeypatch.setattr(_FakeTable, "insert", _boom_insert)
+    monkeypatch.setattr(_FakeStorage, "remove", _boom_remove)
+    monkeypatch.setattr(events, "_get_client", lambda: sb)
+
+    with caplog.at_level("WARNING", logger=events.__name__):
+        events._write_event({
+            "stage": "concept",
+            "sub_step": "lyrics_combined_llm",
+            "response_body": "x" * (events.RESPONSE_OFFLOAD_THRESHOLD_BYTES + 1),
+            "metadata": {},
+        })
+
+    assert "events: orphan cleanup failed: cleanup-down" in caplog.text
     # No exception → pass.
