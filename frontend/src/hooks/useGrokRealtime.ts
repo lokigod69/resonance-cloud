@@ -56,6 +56,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const conversationIdRef = useRef<string | null>(null)
   const sessionParamsRef = useRef<StartGrokSessionParams | null>(null)
   const currentAssistantIndexRef = useRef<number | null>(null)
+  const pendingAssistantContentRef = useRef<string>('')
   const workletModuleLoadedRef = useRef(false)
   const pendingPcmChunksRef = useRef<Int16Array[]>([])
   const pendingPcmSampleCountRef = useRef(0)
@@ -224,7 +225,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         voice_name: params.voice,
         character_id: null,
         level: params.level,
-        message_count: 1,
+        message_count: 0,
         title: null,
         started_at: new Date().toISOString(),
         provider: 'grok',
@@ -241,11 +242,32 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }
   }, [])
 
+  const persistSpeakMessage = useCallback(async (role: 'user' | 'assistant', content: string) => {
+    const conversationId = conversationIdRef.current
+    if (!conversationId || !content) return
+    await persistConversationStart()
+    try {
+      await supabase.from('speak_messages').insert({
+        conversation_id: conversationId,
+        role,
+        content,
+      })
+      await supabase.rpc('increment_speak_message_count', {
+        conv_id: conversationId,
+        inc: 1,
+      })
+    } catch (err) {
+      console.warn('[grok-realtime] Failed to persist message:', err)
+    }
+  }, [persistConversationStart])
+
   const appendAssistantDelta = useCallback((delta: string) => {
     if (!delta) return
     if (!conversationInsertedRef.current) {
       void persistConversationStart()
     }
+
+    pendingAssistantContentRef.current += delta
 
     setMessages((prev) => {
       const existingIndex = currentAssistantIndexRef.current
@@ -305,14 +327,21 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       }
       case 'response.done': {
         await flushPendingAudio()
+        const finalAssistantText = pendingAssistantContentRef.current
+        pendingAssistantContentRef.current = ''
         currentAssistantIndexRef.current = null
+        if (finalAssistantText) {
+          void persistSpeakMessage('assistant', finalAssistantText)
+        }
         if (mountedRef.current && audioQueueRef.current.length === 0) {
           setStatus('idle')
         }
         break
       }
       case 'conversation.item.input_audio_transcription.completed': {
-        appendUserTranscript(typeof payload.transcript === 'string' ? payload.transcript : '')
+        const transcript = typeof payload.transcript === 'string' ? payload.transcript : ''
+        appendUserTranscript(transcript)
+        void persistSpeakMessage('user', transcript)
         break
       }
       case 'input_audio_buffer.speech_started': {
@@ -336,7 +365,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       default:
         break
     }
-  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, resetAudioQueue])
+  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, resetAudioQueue])
 
   const fetchEphemeralToken = useCallback(async (): Promise<string> => {
     const { data, error: sessionError } = await supabase.auth.getSession()
@@ -613,6 +642,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     conversationInsertedRef.current = false
     endedConversationIdsRef.current.delete(conversationIdRef.current)
     currentAssistantIndexRef.current = null
+    pendingAssistantContentRef.current = ''
     pendingPcmChunksRef.current = []
     pendingPcmSampleCountRef.current = 0
     playheadRef.current = 0
