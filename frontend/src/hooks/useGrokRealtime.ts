@@ -5,7 +5,7 @@ import { buildGrokSessionConfig } from '@/lib/grokSessionConfig'
 import { supabase } from '@/lib/supabase'
 import type { GrokLevel } from '@/lib/grokPedagogy'
 
-export type GrokStatus = 'idle' | 'connecting' | 'listening' | 'speaking' | 'error'
+export type GrokStatus = 'idle' | 'connecting' | 'recording' | 'thinking' | 'speaking' | 'error'
 
 export interface GrokMessage {
   role: 'user' | 'assistant'
@@ -27,11 +27,10 @@ export interface UseGrokRealtimeReturn {
   messages: GrokMessage[]
   error: string | null
   isConnected: boolean
-  isListening: boolean
   startSession: (params: StartGrokSessionParams) => Promise<void>
   endSession: () => Promise<void>
   startListening: () => void
-  stopListening: () => void
+  sendTurn: () => void
 }
 
 const SILENT_MP3_URL = '/silent.mp3'
@@ -53,6 +52,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const streamRef = useRef<MediaStream | null>(null)
   const audioQueueRef = useRef<AudioBufferSourceNode[]>([])
   const playheadRef = useRef(0)
+  const pendingInputFlushResolveRef = useRef<(() => void) | null>(null)
   const conversationIdRef = useRef<string | null>(null)
   const sessionParamsRef = useRef<StartGrokSessionParams | null>(null)
   const currentAssistantIndexRef = useRef<number | null>(null)
@@ -184,14 +184,14 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       if (audioQueueRef.current.length === 0) {
         playheadRef.current = 0
         if (mountedRef.current) {
-          setStatus(isListening ? 'listening' : (isConnected ? 'idle' : 'idle'))
+          setStatus('idle')
         }
       }
     }
 
     source.start(startAt)
     if (mountedRef.current) setStatus('speaking')
-  }, [ensureAudioContext, isConnected, isListening])
+  }, [ensureAudioContext])
 
   const flushPendingAudio = useCallback(async () => {
     if (pendingPcmSampleCountRef.current === 0) return
@@ -307,7 +307,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         await flushPendingAudio()
         currentAssistantIndexRef.current = null
         if (mountedRef.current && audioQueueRef.current.length === 0) {
-          setStatus(isListening ? 'listening' : 'idle')
+          setStatus('idle')
         }
         break
       }
@@ -317,7 +317,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       }
       case 'input_audio_buffer.speech_started': {
         resetAudioQueue()
-        if (mountedRef.current) setStatus('listening')
+        if (mountedRef.current) setStatus('recording')
         break
       }
       case 'error': {
@@ -336,7 +336,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       default:
         break
     }
-  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, isListening, resetAudioQueue])
+  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, resetAudioQueue])
 
   const fetchEphemeralToken = useCallback(async (): Promise<string> => {
     const { data, error: sessionError } = await supabase.auth.getSession()
@@ -366,12 +366,26 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     return token
   }, [])
 
-  const stopListening = useCallback(() => {
-    if (workletRef.current) {
-      workletRef.current.port.onmessage = null
-      try { workletRef.current.disconnect() } catch { /* ignore */ }
-      workletRef.current = null
-    }
+  const flushPendingInputAudio = useCallback(async () => {
+    const worklet = workletRef.current
+    if (!worklet) return
+
+    await new Promise<void>((resolve) => {
+      let settled = false
+      const complete = () => {
+        if (settled) return
+        settled = true
+        pendingInputFlushResolveRef.current = null
+        clearTimeout(timeoutId)
+        resolve()
+      }
+      const timeoutId = window.setTimeout(complete, 100)
+      pendingInputFlushResolveRef.current = complete
+      worklet.port.postMessage({ type: 'flush' })
+    })
+  }, [])
+
+  const pauseListeningCapture = useCallback(() => {
     if (micSourceRef.current) {
       try { micSourceRef.current.disconnect() } catch { /* ignore */ }
       micSourceRef.current = null
@@ -380,11 +394,23 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       streamRef.current.getTracks().forEach((track) => track.stop())
       streamRef.current = null
     }
+  }, [])
+
+  const stopListening = useCallback(() => {
+    pendingInputFlushResolveRef.current?.()
+    pendingInputFlushResolveRef.current = null
+    if (workletRef.current) {
+      try { workletRef.current.port.postMessage({ type: 'reset' }) } catch { /* ignore */ }
+      workletRef.current.port.onmessage = null
+      try { workletRef.current.disconnect() } catch { /* ignore */ }
+      workletRef.current = null
+    }
+    pauseListeningCapture()
     if (mountedRef.current) {
       setIsListening(false)
-      if (statusRef.current === 'listening') setStatus(isConnectedRef.current ? 'idle' : 'idle')
+      if (statusRef.current === 'recording') setStatus('idle')
     }
-  }, [])
+  }, [pauseListeningCapture])
 
   const teardownSession = useCallback(async () => {
     endingSessionRef.current = true
@@ -497,6 +523,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     if (isListening) return
 
     try {
+      setError(null)
       primeAudioForIOS()
       const ctx = await ensureAudioContext()
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
@@ -512,6 +539,10 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       source.connect(worklet)
 
       worklet.port.onmessage = (event: MessageEvent<{ type?: string; data?: string }>) => {
+        if (event.data?.type === 'flush_complete') {
+          pendingInputFlushResolveRef.current?.()
+          return
+        }
         if (event.data?.type !== 'pcm' || !event.data.data) return
         const ws = wsRef.current
         if (!ws || ws.readyState !== WebSocket.OPEN) return
@@ -524,13 +555,40 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       micSourceRef.current = source
       workletRef.current = worklet
       setIsListening(true)
-      setStatus('listening')
+      setStatus('recording')
     } catch (err) {
       console.error('[grok-realtime] Failed to start listening:', err)
       setError(err instanceof Error ? err.message : 'Failed to start microphone')
       setStatus('error')
     }
   }, [ensureAudioContext, isListening, primeAudioForIOS])
+
+  const sendTurn = useCallback(async () => {
+    if (statusRef.current !== 'recording') return
+
+    const ws = wsRef.current
+    if (!ws || ws.readyState !== WebSocket.OPEN) {
+      stopListening()
+      setError('Grok session is not connected')
+      setStatus('error')
+      return
+    }
+
+    try {
+      pauseListeningCapture()
+      await flushPendingInputAudio()
+      ws.send(JSON.stringify({ type: 'input_audio_buffer.commit' }))
+      ws.send(JSON.stringify({ type: 'response.create' }))
+      stopListening()
+      setError(null)
+      setStatus('thinking')
+    } catch (err) {
+      console.error('[grok-realtime] Failed to send turn:', err)
+      stopListening()
+      setError(err instanceof Error ? err.message : 'Failed to send audio turn')
+      setStatus('error')
+    }
+  }, [flushPendingInputAudio, pauseListeningCapture, stopListening])
 
   const endSession = useCallback(async () => {
     await teardownSession()
@@ -571,10 +629,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     messages,
     error,
     isConnected,
-    isListening,
     startSession,
     endSession,
     startListening,
-    stopListening,
+    sendTurn,
   }
 }

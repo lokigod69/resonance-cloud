@@ -10,6 +10,32 @@ class GrokPcmDownsampler extends AudioWorkletProcessor {
     this.ratio = this.sourceRate / this.targetRate
     this.acc = 0
     this.buffer = []
+    this.port.onmessage = (event) => {
+      if (event.data?.type === 'flush') {
+        this.flushBuffer(true)
+      } else if (event.data?.type === 'reset') {
+        this.buffer = []
+        this.acc = 0
+      }
+    }
+  }
+
+  flushBuffer(notify = false) {
+    if (this.buffer.length > 0) {
+      const bytes = new Uint8Array(this.buffer.length * 2)
+      const dv = new DataView(bytes.buffer)
+      for (let i = 0; i < this.buffer.length; i++) {
+        dv.setInt16(i * 2, this.buffer[i], true)
+      }
+      let bin = ''
+      for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i])
+      this.port.postMessage({ type: 'pcm', data: bin })
+      this.buffer = []
+    }
+
+    if (notify) {
+      this.port.postMessage({ type: 'flush_complete' })
+    }
   }
 
   process(inputs) {
@@ -33,15 +59,7 @@ class GrokPcmDownsampler extends AudioWorkletProcessor {
 
     // Flush every ~100ms worth of samples (2400 samples at 24 kHz).
     if (this.buffer.length >= 2400) {
-      const bytes = new Uint8Array(this.buffer.length * 2)
-      const dv = new DataView(bytes.buffer)
-      for (let i = 0; i < this.buffer.length; i++) {
-        dv.setInt16(i * 2, this.buffer[i], true)
-      }
-      let bin = ''
-      for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i])
-      this.port.postMessage({ type: 'pcm', data: bin })
-      this.buffer = []
+      this.flushBuffer()
     }
 
     return true

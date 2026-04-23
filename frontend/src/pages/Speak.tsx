@@ -90,6 +90,7 @@ export default function Speak() {
   const [grokLevel, setGrokLevel] = useState<GrokLevel | null>(null)
   const [showGrokLevelPicker, setShowGrokLevelPicker] = useState(false)
   const [grokSessionActive, setGrokSessionActive] = useState(false)
+  const [grokShowTranscript, setGrokShowTranscript] = useState(false)
 
   type Correction = { original: string; corrected: string; explanation: string }
   const [corrections, setCorrections] = useState<Correction[] | null>(null)
@@ -125,11 +126,15 @@ export default function Speak() {
     return GROK_CATEGORY_LABELS[category]
   }
 
+  const grokCategoryLabel = getGrokCategoryLabel(selectedGrokCategory)
+  const grokHeaderName = selectedGrokVoice ? `${grokCategoryLabel} · ${selectedGrokVoice}` : grokCategoryLabel
+
   const clearGrokUiState = () => {
     setSelectedGrokVoice(null)
     setSelectedGrokCategory(null)
     setShowGrokLevelPicker(false)
     setGrokSessionActive(false)
+    setGrokShowTranscript(false)
   }
 
   const fetchCorrections = async () => {
@@ -164,6 +169,7 @@ export default function Speak() {
     if (!tutor.language || !selectedLang || !selectedGrokVoice || !selectedGrokCategory) return
 
     setCorrections(null)
+    setGrokShowTranscript(false)
     setGrokSessionActive(true)
     try {
       await grok.startSession({
@@ -211,8 +217,15 @@ export default function Speak() {
     setActiveProvider('voxtral')
   }
 
-  const startNewGrokConversation = async () => {
+  const handleEndGrokConversation = async () => {
     await grok.endSession()
+    setCorrections(null)
+    setGrokSessionActive(false)
+    setGrokShowTranscript(grok.messages.length > 0)
+  }
+
+  const startNewGrokConversation = () => {
+    setGrokShowTranscript(false)
     setGrokSessionActive(false)
     setCorrections(null)
   }
@@ -647,9 +660,128 @@ export default function Speak() {
     )
   }
 
+  if (grokShowTranscript && grok.messages.length > 0) {
+    return (
+      <div className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col bg-gray-950">
+        <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
+          <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
+            <div className="flex items-center gap-2 flex-1 min-w-0">
+              <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-white truncate">{grokHeaderName}</p>
+                <p className="text-xs text-gray-500 truncate">{t('speak.conversationEnded')}</p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setHistoryOpen(true)}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
+              title={t('speak.historyTooltip')}
+            >
+              <History className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">{t('speak.history')}</span>
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={chatRef}
+          className="flex-1 overflow-y-auto px-4 py-4 space-y-3 max-w-5xl mx-auto w-full"
+          style={{ scrollbarWidth: 'thin' }}
+        >
+          {grok.messages.map((msg, i) => (
+            <div
+              key={`${msg.role}-${msg.timestamp}-${i}`}
+              className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            >
+              <div
+                className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                  msg.role === 'user'
+                    ? 'bg-violet-900/50 text-white rounded-br-sm'
+                    : 'bg-gray-800/60 text-gray-100 rounded-bl-sm'
+                }`}
+              >
+                <p>{msg.content}</p>
+              </div>
+            </div>
+          ))}
+
+          <div ref={bottomRef} />
+        </div>
+
+        <SpeakHistoryPanel
+          open={historyOpen}
+          onClose={() => setHistoryOpen(false)}
+          baseLangCode={baseLangCode}
+        />
+
+        <div className="shrink-0 border-t border-white/5 bg-gray-950/80 backdrop-blur-md">
+          <div className="px-4 py-5 max-w-5xl mx-auto w-full">
+            <div className="flex justify-center">
+              <button
+                onClick={startNewGrokConversation}
+                className="px-5 py-3 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-500 transition-colors"
+              >
+                {t('speak.startNewConversation')}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   if (activeProvider === 'grok' && grokSessionActive) {
-    const grokCategoryLabel = getGrokCategoryLabel(selectedGrokCategory)
-    const grokHeaderName = selectedGrokVoice ? `${grokCategoryLabel} · ${selectedGrokVoice}` : grokCategoryLabel
+    const grokButtonDisabled =
+      grok.status === 'connecting' ||
+      grok.status === 'thinking' ||
+      grok.status === 'speaking'
+    const grokStatusLabel =
+      grok.status === 'recording'
+        ? t('speak.listeningNow')
+        : grok.status === 'thinking'
+          ? t('speak.thinking')
+          : grok.status === 'speaking'
+            ? t('speak.speaking')
+            : grok.status === 'connecting'
+              ? t('speak.startingConversation')
+              : grok.status === 'error'
+                ? grok.error || t('speak.tapRetry')
+                : t('speak.tapToSpeak')
+    const grokStatusClass =
+      grok.status === 'recording'
+        ? 'text-red-300'
+        : grok.status === 'thinking'
+          ? 'text-slate-300'
+          : grok.status === 'speaking'
+            ? 'text-violet-300'
+            : grok.status === 'connecting'
+              ? 'text-gray-400'
+              : grok.status === 'error'
+                ? 'text-red-300'
+                : 'text-blue-200'
+    const grokButtonOuterClass =
+      grok.status === 'idle'
+        ? 'border-blue-400/30 bg-blue-500/10 shadow-[0_0_46px_rgba(37,99,235,0.35)]'
+        : grok.status === 'recording'
+          ? 'border-red-400/60 bg-gradient-to-br from-fuchsia-500/20 via-red-500/10 to-blue-500/10 shadow-[0_0_52px_rgba(239,68,68,0.35)] animate-pulse'
+          : grok.status === 'thinking'
+            ? 'border-slate-400/20 bg-slate-500/10 shadow-[0_0_32px_rgba(148,163,184,0.2)] animate-pulse'
+            : grok.status === 'speaking'
+              ? 'border-violet-400/35 bg-violet-500/10 shadow-[0_0_44px_rgba(139,92,246,0.28)]'
+              : grok.status === 'connecting'
+                ? 'border-gray-500/30 bg-gray-500/10 shadow-[0_0_24px_rgba(148,163,184,0.16)]'
+                : 'border-red-400/30 bg-red-500/5 shadow-[0_0_28px_rgba(239,68,68,0.18)]'
+    const grokButtonInnerClass =
+      grok.status === 'idle' || grok.status === 'recording'
+        ? 'bg-blue-600 text-white'
+        : grok.status === 'thinking'
+          ? 'bg-slate-700 text-slate-100'
+          : grok.status === 'speaking'
+            ? 'bg-violet-700 text-violet-100'
+            : grok.status === 'connecting'
+              ? 'bg-gray-700 text-gray-200'
+              : 'bg-gray-800 text-red-100'
 
     return (
       <div className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col bg-gray-950">
@@ -681,91 +813,75 @@ export default function Speak() {
             </button>
 
             <button
-              onClick={() => { void startNewGrokConversation() }}
-              disabled={grok.status === 'connecting'}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 shrink-0"
-              title={t('speak.newChatTooltip')}
+              onClick={() => { void handleEndGrokConversation() }}
+              className="hidden sm:inline-flex px-3 py-1.5 rounded-lg text-xs text-red-200 bg-red-950/40 border border-red-500/20 hover:bg-red-950/60 transition-colors shrink-0"
+              title={t('speak.endConversation')}
             >
-              <MessageSquarePlus className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">{t('speak.newChat')}</span>
+              {t('speak.endConversation')}
             </button>
           </div>
         </div>
 
         <div
           ref={chatRef}
-          className="flex-1 overflow-y-auto px-4 py-4 space-y-3 max-w-5xl mx-auto w-full"
+          className="flex-1 overflow-y-auto px-6 py-8 max-w-5xl mx-auto w-full"
           style={{ scrollbarWidth: 'thin' }}
         >
-          {grok.messages.map((msg, i) => (
-            <div
-              key={`${msg.role}-${msg.timestamp}-${i}`}
-              className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
-              <div
-                className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
-                  msg.role === 'user'
-                    ? 'bg-violet-900/50 text-white rounded-br-sm'
-                    : 'bg-gray-800/60 text-gray-100 rounded-bl-sm'
-                }`}
-              >
-                <p>{msg.content}</p>
-              </div>
-            </div>
-          ))}
-
-          {grok.messages.length >= 4 && (
-            <div className="mt-6 flex flex-col items-center gap-4">
-              {corrections === null ? (
-                <button
-                  onClick={fetchCorrections}
-                  disabled={correctionsLoading}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors border border-white/10 disabled:opacity-50"
-                >
-                  {correctionsLoading ? (
-                    <>
-                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                      <span>{t('speak.reviewLoading')}</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>📝</span>
-                      <span>{t('speak.reviewButton')}</span>
-                    </>
-                  )}
-                </button>
-              ) : corrections.length === 0 ? (
-                <div className="text-center text-sm text-green-400/80 px-4 py-3 bg-green-900/20 rounded-lg">
-                  ✅ {t('speak.reviewPerfect')}
-                </div>
-              ) : (
-                <div className="w-full max-w-lg space-y-3">
-                  <p className="text-xs text-gray-500 text-center mb-2">{t('speak.reviewTitle')}</p>
-                  {corrections.map((c, i) => (
-                    <div key={i} className="bg-white/5 rounded-lg p-3 space-y-1">
-                      <p className="text-sm text-red-400/80 line-through">{c.original}</p>
-                      <p className="text-sm text-green-400/80">{c.corrected}</p>
-                      <p className="text-xs text-gray-500">{c.explanation}</p>
-                    </div>
-                  ))}
-                </div>
+          <div className="mx-auto flex min-h-full max-w-xl flex-col items-center justify-center gap-8 text-center">
+            <div className="space-y-2">
+              <p className={`text-xs font-medium uppercase tracking-[0.28em] transition-colors duration-300 ${grokStatusClass}`}>
+                {grokStatusLabel}
+              </p>
+              {grok.status === 'error' && grok.error && (
+                <p className="text-xs text-gray-500">{t('speak.tapRetry')}</p>
               )}
             </div>
-          )}
 
-          {grok.status === 'connecting' && (
-            <div className="flex justify-start">
-              <TypingIndicator />
-            </div>
-          )}
+            <button
+              onClick={() => {
+                if (grok.status === 'idle' || grok.status === 'error') {
+                  grok.startListening()
+                } else if (grok.status === 'recording') {
+                  grok.sendTurn()
+                }
+              }}
+              onContextMenu={(e) => e.preventDefault()}
+              disabled={grokButtonDisabled}
+              style={{ WebkitTouchCallout: 'none' }}
+              className={`relative flex h-28 w-28 items-center justify-center rounded-full p-4 transition-all duration-300 select-none touch-none ${
+                grokButtonDisabled
+                  ? 'cursor-not-allowed opacity-90'
+                  : 'cursor-pointer hover:scale-[1.03] active:scale-95'
+              }`}
+              aria-label={
+                grok.status === 'recording'
+                  ? t('speak.recording')
+                  : grok.status === 'error'
+                    ? t('speak.tapRetry')
+                    : t('speak.tapToSpeak')
+              }
+            >
+              <span aria-hidden className={`absolute inset-0 rounded-full border transition-all duration-300 ${grokButtonOuterClass}`} />
+              <span className={`relative flex h-20 w-20 items-center justify-center rounded-full transition-all duration-300 ${grokButtonInnerClass}`}>
+                {grok.status === 'connecting' || grok.status === 'thinking' ? (
+                  <Loader2 className="h-8 w-8 animate-spin" />
+                ) : grok.status === 'speaking' ? (
+                  <Volume2 className="h-8 w-8" />
+                ) : grok.status === 'recording' ? (
+                  <Square className="h-7 w-7 fill-current" />
+                ) : (
+                  <Mic className="h-8 w-8" />
+                )}
+              </span>
+            </button>
 
-          {grok.messages.length === 0 && grok.status !== 'connecting' && (
-            <div className="flex items-center justify-center h-full text-gray-600 text-sm">
-              {t('speak.waitingGreeting')}
-            </div>
-          )}
-
-          <div ref={bottomRef} />
+            <button
+              onClick={() => { void handleEndGrokConversation() }}
+              className="text-sm text-gray-400 hover:text-white transition-colors sm:hidden"
+            >
+              {t('speak.endConversation')}
+            </button>
+          </div>
         </div>
 
         <SpeakHistoryPanel
@@ -773,67 +889,6 @@ export default function Speak() {
           onClose={() => setHistoryOpen(false)}
           baseLangCode={baseLangCode}
         />
-
-        <div
-          className="shrink-0 border-t border-white/5 bg-gray-950/80 backdrop-blur-md select-none"
-          style={{ WebkitTouchCallout: 'none' }}
-          onContextMenu={(e) => e.preventDefault()}
-        >
-          <div className="px-4 py-5 max-w-5xl mx-auto w-full">
-            {grok.error && (
-              <p className="text-red-400 text-xs text-center mb-3">{grok.error}</p>
-            )}
-
-            <p className="text-xs text-gray-500 text-center mb-3 h-4">
-              {grok.status === 'idle' && t('speak.tapToSpeak')}
-              {grok.status === 'listening' && (
-                <span className="text-red-400">{t('speak.recording')}</span>
-              )}
-              {grok.status === 'connecting' && t('speak.thinking')}
-              {grok.status === 'speaking' && (
-                <span className="text-violet-300">{t('speak.speaking')}</span>
-              )}
-              {grok.status === 'error' && t('speak.tapRetry')}
-            </p>
-
-            <div className="flex justify-center">
-              <button
-                onClick={() => {
-                  if (grok.isListening) {
-                    grok.stopListening()
-                  } else if (grok.status !== 'connecting') {
-                    grok.startListening()
-                  }
-                }}
-                onContextMenu={(e) => e.preventDefault()}
-                disabled={grok.status === 'connecting'}
-                style={{ WebkitTouchCallout: 'none' }}
-                className={`w-16 h-16 rounded-full flex items-center justify-center transition-all select-none touch-none ${
-                  grok.isListening
-                    ? 'bg-red-600 animate-pulse scale-110'
-                    : grok.status === 'connecting'
-                      ? 'bg-gray-700 cursor-not-allowed'
-                      : grok.status === 'speaking'
-                        ? 'bg-violet-700'
-                        : grok.status === 'error'
-                          ? 'bg-gray-800 hover:bg-gray-700'
-                          : 'bg-gray-800 hover:bg-gray-700 active:scale-95'
-                }`}
-                aria-label={grok.isListening ? 'Tap to stop listening' : 'Tap to speak'}
-              >
-                {grok.status === 'connecting' ? (
-                  <Loader2 className="h-7 w-7 text-gray-400 animate-spin" />
-                ) : grok.status === 'speaking' ? (
-                  <Volume2 className="h-7 w-7 text-violet-200" />
-                ) : grok.isListening ? (
-                  <Square className="h-6 w-6 text-white fill-white" />
-                ) : (
-                  <Mic className="h-7 w-7 text-gray-300" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     )
   }

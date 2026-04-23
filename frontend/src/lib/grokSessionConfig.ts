@@ -17,7 +17,7 @@ export interface GrokSessionConfig {
   session: {
     voice: GrokVoice
     instructions: string
-    turn_detection: { type: 'server_vad' }
+    turn_detection: null
     tools: Array<{ type: 'web_search' }>
     audio: {
       input: { format: { type: 'audio/pcm'; rate: 24000 } }
@@ -43,7 +43,7 @@ export function buildGrokSessionConfig(p: BuildGrokSessionParams): GrokSessionCo
     session: {
       voice: p.voice,
       instructions,
-      turn_detection: { type: 'server_vad' },
+      turn_detection: null,
       tools: [{ type: 'web_search' }],
       audio: {
         input: { format: { type: 'audio/pcm', rate: 24000 } },
