@@ -368,20 +368,28 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
   const flushPendingInputAudio = useCallback(async () => {
     const worklet = workletRef.current
-    if (!worklet) return
+    if (!worklet) return false
 
-    await new Promise<void>((resolve) => {
+    return await new Promise<boolean>((resolve) => {
       let settled = false
-      const complete = () => {
+      const complete = (timedOut: boolean) => {
         if (settled) return
         settled = true
         pendingInputFlushResolveRef.current = null
         clearTimeout(timeoutId)
-        resolve()
+        resolve(timedOut)
       }
-      const timeoutId = window.setTimeout(complete, 100)
-      pendingInputFlushResolveRef.current = complete
-      worklet.port.postMessage({ type: 'flush' })
+      const timeoutId = window.setTimeout(() => {
+        console.warn('[grok-realtime] Timed out waiting for input flush before commit')
+        complete(true)
+      }, 300)
+      pendingInputFlushResolveRef.current = () => complete(false)
+      try {
+        worklet.port.postMessage({ type: 'flush_and_stop' })
+      } catch (err) {
+        console.warn('[grok-realtime] Failed to request input flush before commit:', err)
+        complete(true)
+      }
     })
   }, [])
 
@@ -577,9 +585,10 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     try {
       pauseListeningCapture()
       await flushPendingInputAudio()
+      stopListening()
+      if (endingSessionRef.current || wsRef.current !== ws || ws.readyState !== WebSocket.OPEN) return
       ws.send(JSON.stringify({ type: 'input_audio_buffer.commit' }))
       ws.send(JSON.stringify({ type: 'response.create' }))
-      stopListening()
       setError(null)
       setStatus('thinking')
     } catch (err) {

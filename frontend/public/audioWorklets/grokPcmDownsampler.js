@@ -10,12 +10,17 @@ class GrokPcmDownsampler extends AudioWorkletProcessor {
     this.ratio = this.sourceRate / this.targetRate
     this.acc = 0
     this.buffer = []
+    this.stopped = false
     this.port.onmessage = (event) => {
-      if (event.data?.type === 'flush') {
+      if (event.data?.type === 'flush_and_stop') {
+        this.stopped = true
+        this.flushBuffer(true)
+      } else if (event.data?.type === 'flush') {
         this.flushBuffer(true)
       } else if (event.data?.type === 'reset') {
         this.buffer = []
         this.acc = 0
+        this.stopped = false
       }
     }
   }
@@ -39,6 +44,7 @@ class GrokPcmDownsampler extends AudioWorkletProcessor {
   }
 
   process(inputs) {
+    if (this.stopped) return true
     const input = inputs[0]
     if (!input || input.length === 0) return true
     const channel = input[0]
