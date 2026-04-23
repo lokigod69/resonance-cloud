@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-import { ChevronDown, Sparkles } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
 
@@ -23,6 +23,16 @@ export default function HeroSection() {
           animate: { opacity: 1, y: 0 },
           transition: { duration: 0.6, ease: 'easeOut' as const, delay },
         }
+
+  const ctaGlow = reducedMotion
+    ? {}
+    : {
+        boxShadow: [
+          '0 0 20px oklch(0.5 0.15 280 / 0.2)',
+          '0 0 40px oklch(0.5 0.15 280 / 0.4)',
+          '0 0 20px oklch(0.5 0.15 280 / 0.2)',
+        ],
+      }
 
   return (
     <section className="relative h-screen">
@@ -54,7 +64,7 @@ export default function HeroSection() {
           <div className="relative z-10 max-w-3xl space-y-8 px-4">
             {/* Headline — stacked typography */}
             <motion.h1 {...fadeUp(0)} className="flex flex-col items-center text-center gap-0">
-              <span className="font-display text-6xl sm:text-7xl md:text-8xl font-bold lowercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-purple-400 via-purple-300 to-purple-400">
+              <span className="font-display text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-purple-400 via-purple-300 to-purple-400">
                 {t('landing.headlineWord')}
               </span>
               <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
@@ -89,28 +99,26 @@ export default function HeroSection() {
 
             {/* CTA with glow pulse */}
             <motion.div {...fadeUp(0.3)} className="pt-4">
-              <motion.div
-                className="inline-block rounded-md"
-                animate={reducedMotion ? {} : {
-                  boxShadow: [
-                    '0 0 20px oklch(0.5 0.15 280 / 0.2)',
-                    '0 0 40px oklch(0.5 0.15 280 / 0.4)',
-                    '0 0 20px oklch(0.5 0.15 280 / 0.2)',
-                  ],
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
-              >
-                <Button size="lg" asChild className="text-lg px-8 py-6">
-                  <Link to="/login?mode=signup">
-                    <Sparkles className="h-5 w-5 mr-2" />
-                    {t('landing.cta')}
-                  </Link>
-                </Button>
-              </motion.div>
-              <p className="mt-3 text-sm text-white/50">
-                {t('landing.signInPrompt')}{' '}
-                <Link to="/login" className="text-white/80 hover:text-white underline underline-offset-2">{t('landing.signIn')}</Link>
-              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+                <motion.div
+                  className="rounded-md"
+                  animate={ctaGlow}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
+                >
+                  <Button size="lg" asChild className="w-full text-lg px-8 py-6 sm:w-[180px]">
+                    <Link to="/login">{t('landing.signIn')}</Link>
+                  </Button>
+                </motion.div>
+                <motion.div
+                  className="rounded-md"
+                  animate={ctaGlow}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
+                >
+                  <Button size="lg" asChild className="w-full text-lg px-8 py-6 sm:w-[180px]">
+                    <Link to="/login?mode=signup">{t('landing.signUp')}</Link>
+                  </Button>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>

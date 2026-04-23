@@ -122,11 +122,11 @@ export function RedeemCodeDialog({
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
+          <DialogTitle className="flex items-center justify-center gap-2">
             <Coins className="h-5 w-5 text-primary" />
             {t('credits.heading')}
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-center sm:text-center">
             {t('credits.description')}
           </DialogDescription>
         </DialogHeader>
@@ -145,7 +145,7 @@ export function RedeemCodeDialog({
 
         {/* Redeem section */}
         <div className="space-y-3 border-t border-border pt-4">
-          <div className="flex items-center gap-2 text-sm font-medium">
+          <div className="flex items-center justify-center gap-2 text-sm font-medium">
             <Gift className="h-4 w-4" />
             {t('credits.redeemHeading')}
           </div>
