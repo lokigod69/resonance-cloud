@@ -81,11 +81,11 @@ export function buildGeminiGreeting(input: GeminiGreetingInput): string {
     : ''
 
   if (level === 'zero') {
-    return `Open the conversation with the student. Use ${nativeLangName} and ${targetLangName} together naturally — mix them however feels right. Let your mood come through.${studyAddendum}`
+    return `Open with a ${targetLangName} greeting, then continue in a mix of ${targetLangName} and ${nativeLangName}. Let your mood come through.${studyAddendum}`
   }
 
   if (level === 'beginner') {
-    return `Open the conversation with the student in ${targetLangName}, with some ${nativeLangName} for scaffolding. Let your mood come through.${studyAddendum}`
+    return `Open with a ${targetLangName} greeting, then continue mostly in ${targetLangName} with some ${nativeLangName} when needed. Let your mood come through.${studyAddendum}`
   }
 
   // advanced / intermediate / fallback

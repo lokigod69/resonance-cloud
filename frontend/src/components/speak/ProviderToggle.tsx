@@ -9,9 +9,9 @@ interface ProviderToggleProps {
 }
 
 const OPTIONS: Array<{ id: SpeakProvider; short: string; full: string }> = [
+  { id: 'grok',    short: 'GROK', full: 'Grok'   },
   { id: 'voxtral', short: 'VOX', full: 'Voxtral' },
   { id: 'gemini',  short: 'GEM', full: 'Gemini'  },
-  { id: 'grok',    short: 'GROK', full: 'Grok'   },
 ]
 
 export function ProviderToggle({ value, onChange, disabled, disabledReason, language }: ProviderToggleProps) {

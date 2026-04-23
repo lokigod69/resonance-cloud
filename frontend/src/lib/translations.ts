@@ -80,6 +80,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'common.loading': 'Loading...',
     'common.retry': 'Retry',
     'common.refresh': 'Refresh',
+    'common.cancel': 'Cancel',
 
     // ── Errors ──
     'error.sessionExpired': 'Session expired',
@@ -370,6 +371,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.historyTooltip': 'Conversation history',
     'speak.newChatTooltip': 'New conversation',
     'speak.backTooltip': 'Back to language selection',
+    'speak.studyModeOnToast': 'Study mode on — your vocabulary words will weave into the conversation',
+    'speak.studyModeOffToast': 'Study mode off',
+    'speak.newChatConfirmTitle': 'Start a new conversation?',
+    'speak.newChatConfirmDescription': 'This will end the current conversation. You can revisit it in History.',
+    'speak.newChatConfirmAction': 'Start new conversation',
 
     // ── Common (missed) ──
     'common.somethingWentWrong': 'Something went wrong. Please try again.',

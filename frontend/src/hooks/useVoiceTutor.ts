@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
 import { type TutorVoice, TUTOR_VOICES, getVoicesForLanguage } from '@/voiceRegistry'
 import { type TutorCharacter, resolveCharacterVoice } from '@/characterRegistry'
 import { supabase } from '@/lib/supabase'
@@ -43,7 +43,7 @@ interface VoiceChatResponse {
   audio_format: string
 }
 
-export type SpeakProvider = 'voxtral' | 'gemini'
+export type SpeakProvider = 'voxtral' | 'gemini' | 'grok'
 export type GeminiPickerStage = 'voice' | 'mode' | 'accent'
 
 export interface GeminiTutorParams {
@@ -94,6 +94,7 @@ export interface UseVoiceTutorReturn {
   provider: SpeakProvider
   setProvider: (provider: SpeakProvider) => void
   geminiModeId: string | null
+  geminiModeName: string | null
   geminiVoiceName: string | null
   geminiAccentId: string
   geminiPickerStage: GeminiPickerStage
@@ -114,9 +115,12 @@ const LS_GEMINI_ACCENT = 'resonance_speak_gemini_accent_id'
 const DEFAULT_ACCENT_ID = 'none'
 
 function readStoredProvider(): SpeakProvider {
-  if (typeof window === 'undefined') return 'voxtral'
+  if (typeof window === 'undefined') return 'grok'
   const raw = window.localStorage.getItem(LS_PROVIDER)
-  return raw === 'gemini' ? 'gemini' : 'voxtral'
+  if (raw === 'gemini') return 'gemini'
+  if (raw === 'voxtral') return 'voxtral'
+  if (raw === 'grok') return 'grok'
+  return 'grok'
 }
 
 function readStored(key: string): string | null {
@@ -186,6 +190,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
   const geminiModeIdRef = useRef<string | null>(geminiModeId)
   const geminiVoiceNameRef = useRef<string | null>(geminiVoiceName)
   const geminiAccentIdRef = useRef<string>(geminiAccentId)
+  const geminiModeName = useMemo(
+    () => (geminiModeId ? getGeminiCharacterMode(geminiModeId)?.displayName ?? null : null),
+    [geminiModeId],
+  )
   const [status, setStatus] = useState<TutorStatus>('idle')
   const [messages, setMessages] = useState<TutorMessage[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -860,7 +868,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       // for Gemini since mode prompts are TTS-only and must not influence the LLM.
       const syntheticVoice: TutorVoice = {
         id: `gemini_${params.characterModeId}_${params.voiceName}_${lang}`,
-        name: `${params.characterModeName} · ${params.voiceName}`,
+        name: params.voiceName,
         language: lang,
         gender: 'female',
         mistralVoiceId: '',
@@ -922,7 +930,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
       const syntheticVoice: TutorVoice = {
         id: `gemini_${params.characterModeId}_${params.voiceName}_${lang}`,
-        name: `${params.characterModeName} · ${params.voiceName}`,
+        name: params.voiceName,
         language: lang,
         gender: 'female',
         mistralVoiceId: '',
@@ -1543,6 +1551,7 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
     provider,
     setProvider,
     geminiModeId,
+    geminiModeName,
     geminiVoiceName,
     geminiAccentId,
     geminiPickerStage,

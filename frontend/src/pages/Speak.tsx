@@ -19,6 +19,15 @@ import {
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useAuth } from '@/hooks/useAuth'
+import { useToast } from '@/components/Toast'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from '@/components/ui/dialog'
 import { SPEAK_LANGUAGES, LANGUAGES as ALL_LANGUAGES } from '@/lib/languages'
 
 const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar', 'fil', 'id', 'ko']
@@ -63,8 +72,13 @@ function isGrokLevel(value: string | null): value is GrokLevel {
   return value === 'zero' || value === 'beginner' || value === 'intermediate' || value === 'advanced'
 }
 
+const defaultProviderFor = (lang: string | null | undefined): SpeakProvider => {
+  return lang === 'fil' ? 'voxtral' : 'grok'
+}
+
 export default function Speak() {
   const { t } = useTranslation()
+  const { toast } = useToast()
   const { profile } = useAuth()
   const baseLangCode = ALL_LANGUAGES.find((l) => l.value === profile?.base_language)?.code
   const tutor = useVoiceTutor(baseLangCode)
@@ -80,8 +94,9 @@ export default function Speak() {
   const chatRef = useRef<HTMLDivElement>(null)
 
   const [historyOpen, setHistoryOpen] = useState(false)
+  const [newChatConfirmOpen, setNewChatConfirmOpen] = useState(false)
   const [speakMode, setSpeakMode] = useState<'freeform' | 'roleplay'>('freeform')
-  const [activeProvider, setActiveProvider] = useState<SpeakProvider>('voxtral')
+  const [activeProvider, setActiveProvider] = useState<SpeakProvider>('grok')
   const [selectedCategory, setSelectedCategory] = useState<ScenarioCategory | null>(null)
   const [drawnScenes, setDrawnScenes] = useState<RoleplayScenario[]>([])
   const [pickedScene, setPickedScene] = useState<RoleplayScenario | null>(null)
@@ -214,7 +229,7 @@ export default function Speak() {
     await grok.endSession()
     clearGrokUiState()
     tutor.resetConversation()
-    setActiveProvider('voxtral')
+    setActiveProvider(defaultProviderFor(tutor.language))
   }
 
   const handleEndGrokConversation = async () => {
@@ -241,7 +256,7 @@ export default function Speak() {
       setPickedScene(null)
       setGrokLevel(null)
       clearGrokUiState()
-      setActiveProvider('voxtral')
+      setActiveProvider(defaultProviderFor(tutor.language))
       void endGrokSessionRef.current()
       return
     }
@@ -250,6 +265,10 @@ export default function Speak() {
     setGrokLevel(isGrokLevel(savedLevel) ? savedLevel : null)
     clearGrokUiState()
     void endGrokSessionRef.current()
+    if (tutor.language === 'fil' && activeProvider === 'grok') {
+      setActiveProvider('voxtral')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tutor.language])
 
   useEffect(() => {
@@ -470,14 +489,14 @@ export default function Speak() {
     )
   }
 
-  if ((activeProvider === 'grok' && !grokSessionActive && !showGrokLevelPicker) || (activeProvider !== 'grok' && !tutor.voice)) {
+  if ((activeProvider === 'grok' && !grokSessionActive && !showGrokLevelPicker && !grokShowTranscript) || (activeProvider !== 'grok' && !tutor.voice)) {
     const isStarting = activeProvider === 'grok' ? grok.status === 'connecting' : tutor.status === 'processing'
     const isGeminiVoiceStage = activeProvider !== 'grok' && tutor.provider === 'gemini' && tutor.geminiPickerStage === 'voice'
     const goBack = () => {
       if (activeProvider === 'grok') {
         clearGrokUiState()
         tutor.resetConversation()
-        setActiveProvider('voxtral')
+        setActiveProvider(defaultProviderFor(tutor.language))
         return
       }
 
@@ -920,7 +939,11 @@ export default function Speak() {
               ) : (
                 <>
                   <p className="text-sm font-medium text-white truncate">{tutor.character?.name ?? tutor.voice.name}</p>
-                  <p className="text-xs text-gray-500 truncate">{selectedLang?.nativeName}</p>
+                  <p className="text-xs text-gray-500 truncate">
+                    {tutor.geminiModeName
+                      ? `${tutor.geminiModeName}${selectedLang?.nativeName ? ` · ${selectedLang.nativeName}` : ''}`
+                      : selectedLang?.nativeName}
+                  </p>
                 </>
               )}
             </div>
@@ -941,7 +964,11 @@ export default function Speak() {
 
           {!tutor.isRoleplayMode && studyWords.hasWords && (
             <button
-              onClick={() => tutor.toggleStudyMode(studyWords.studyWords)}
+              onClick={() => {
+                tutor.toggleStudyMode(studyWords.studyWords)
+                const nextMode = !tutor.studyMode
+                toast(nextMode ? t('speak.studyModeOnToast') : t('speak.studyModeOffToast'), 'info')
+              }}
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs transition-colors shrink-0 ${
                 tutor.studyMode
                   ? 'bg-cyan-900/40 text-cyan-200 hover:bg-cyan-900/60'
@@ -991,7 +1018,7 @@ export default function Speak() {
           </button>
 
           <button
-            onClick={tutor.newChat}
+            onClick={() => setNewChatConfirmOpen(true)}
             disabled={isBusy}
             className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 shrink-0"
             title={t('speak.newChatTooltip')}
@@ -1111,6 +1138,32 @@ export default function Speak() {
         onClose={() => setHistoryOpen(false)}
         baseLangCode={baseLangCode}
       />
+
+      <Dialog open={newChatConfirmOpen} onOpenChange={setNewChatConfirmOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>{t('speak.newChatConfirmTitle')}</DialogTitle>
+            <DialogDescription>{t('speak.newChatConfirmDescription')}</DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <button
+              onClick={() => setNewChatConfirmOpen(false)}
+              className="px-4 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5"
+            >
+              {t('common.cancel')}
+            </button>
+            <button
+              onClick={() => {
+                setNewChatConfirmOpen(false)
+                void tutor.newChat()
+              }}
+              className="px-4 py-2 rounded-lg text-sm bg-blue-600 text-white hover:bg-blue-500"
+            >
+              {t('speak.newChatConfirmAction')}
+            </button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <div
         className="shrink-0 border-t border-white/5 bg-gray-950/80 backdrop-blur-md select-none"
