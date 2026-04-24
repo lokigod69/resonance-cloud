@@ -29,3 +29,19 @@
 - Files/lines: `frontend/src/pages/Music.tsx:262-276`, `frontend/src/pages/MusicPG.tsx:178-191`, `frontend/src/lib/translations.ts:235`, `frontend/src/lib/translations.ts:595`, `frontend/src/lib/translations.ts:983`.
 - Root cause: both Music skins compute playable/total counts and render them in the header; translations still include `music.songCount`.
 - Fix applied: removed the count calculations/rendering from both pages, removed the dead `music.songCount` translations, and used the existing localized `music.yourMusic` key in Glassy so EN/DE/FR headers remain correct.
+
+## Fix Pass - Items A and B
+
+### Item A - Repeat off must stop at the end
+- Root cause: `frontend/src/hooks/useMusicPlayer.ts:101-104` wrapped linear end-of-track playback back to index `0`, which recreated repeat-all behavior with repeat off.
+- Fix applied: `frontend/src/hooks/useMusicPlayer.ts:100-106` now stops only the linear non-shuffle branch at the end by pausing the audio, setting `isPlaying` false, and returning without changing the selected track. The shuffle branch at `frontend/src/hooks/useMusicPlayer.ts:97-99` was left unchanged. The manual `next()` button path at `frontend/src/hooks/useMusicPlayer.ts:132-142` is separate from `advanceNext` and was left unchanged.
+
+### Item B - Mobile scrubber touch target
+- Root cause: `frontend/src/components/music/PlayerBar.tsx:128-140` reused the `volume-slider` class, whose rendered mobile range was a 4px-tall track.
+- Fix applied: `frontend/src/components/music/PlayerBar.tsx:70-108` adds shared seek-from-position handlers, `frontend/src/components/music/PlayerBar.tsx:111` gives the mobile player bar a two-row `h-20` layout while keeping `sm:h-16`, and `frontend/src/components/music/PlayerBar.tsx:207-232` replaces the raw 4px range with a 44px mobile seek target plus a thin accent visual track. The desktop waveform at `frontend/src/components/music/PlayerBar.tsx:197-205` remains `hidden sm:block`.
+
+### Verification
+- `npm run build` passed.
+- Mobile Classic was checked in a 375x667 Playwright viewport with mocked Supabase data. The seek input and wrapper both rendered at `x=64, y=624, width=247, height=44`; the fixed player bar rendered at `height=80`, with no horizontal overflow.
+- Mobile tap/drag seek was checked against a mocked 120s media duration: tapping near 75% set `currentTime` to `89.8785`, and dragging back near 25% set `currentTime` to `29.6356`.
+- Desktop Classic was checked at 768px width: the mobile seek wrapper computed `display: none`, and the waveform container computed `display: block` with `height=32`.

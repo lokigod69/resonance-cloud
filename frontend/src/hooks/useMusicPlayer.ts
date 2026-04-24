@@ -99,9 +99,13 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
       nextIdx = shuffleOrder[(pos + 1) % shuffleOrder.length]
     } else {
       nextIdx = prev + 1
+      if (nextIdx >= queue.length) {
+        audioRef.current?.pause()
+        setIsPlaying(false)
+        return
+      }
     }
 
-    if (nextIdx >= queue.length) nextIdx = 0
     setCurrentQueueIdx(nextIdx)
   }, [queue.length, repeatMode, shuffle, shuffleOrder, currentQueueIdx])
 

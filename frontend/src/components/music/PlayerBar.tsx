@@ -2,7 +2,7 @@ import { SkipBack, SkipForward, Play, Pause, Repeat, Repeat1, Shuffle } from 'lu
 import { VolumeControl } from '@/components/VolumeControl'
 import { SimulatedWaveform } from './SimulatedWaveform'
 import type { MusicTrack, RepeatMode } from '@/hooks/useMusicPlayer'
-import type { RefObject } from 'react'
+import type { MouseEvent, PointerEvent, RefObject, TouchEvent } from 'react'
 
 function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return '0:00'
@@ -65,9 +65,50 @@ export function PlayerBar({
   const progress = duration > 0 ? currentTime / duration : 0
 
   const RepeatIcon = repeatMode === 'one' ? Repeat1 : Repeat
+  const seekDisabled = !currentTrack || duration <= 0
+
+  const seekFromClientX = (clientX: number, target: HTMLDivElement) => {
+    if (seekDisabled) return
+    const rect = target.getBoundingClientRect()
+    const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width))
+    onSeek(ratio)
+  }
+
+  const handleMobileSeekPointerDown = (e: PointerEvent<HTMLDivElement>) => {
+    seekFromClientX(e.clientX, e.currentTarget)
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId)
+    } catch {
+      // Some synthetic/mobile events do not expose a capturable pointer.
+    }
+  }
+
+  const handleMobileSeekPointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    if (e.buttons !== 1) return
+    seekFromClientX(e.clientX, e.currentTarget)
+  }
+
+  const handleMobileSeekMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    seekFromClientX(e.clientX, e.currentTarget)
+  }
+
+  const handleMobileSeekMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (e.buttons !== 1) return
+    seekFromClientX(e.clientX, e.currentTarget)
+  }
+
+  const handleMobileSeekTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    const touch = e.touches[0]
+    if (touch) seekFromClientX(touch.clientX, e.currentTarget)
+  }
+
+  const handleMobileSeekTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    const touch = e.touches[0]
+    if (touch) seekFromClientX(touch.clientX, e.currentTarget)
+  }
 
   return (
-    <div className="fixed bottom-0 inset-x-0 h-16 bg-secondary backdrop-blur-sm border-t border-border z-50 flex items-center px-4 gap-4">
+    <div className="fixed bottom-0 inset-x-0 h-20 sm:h-16 bg-secondary backdrop-blur-sm border-t border-border z-50 flex flex-wrap sm:flex-nowrap items-center px-4 gap-x-4 gap-y-0 sm:gap-4">
       {/* Hidden audio element — owned by useMusicPlayer */}
       <audio
         ref={audioRef}
@@ -79,8 +120,46 @@ export function PlayerBar({
         onPause={onPause}
       />
 
+      <style>{`
+        .music-mobile-seek {
+          -webkit-appearance: none;
+          appearance: none;
+          background: transparent;
+          cursor: pointer;
+          touch-action: pan-x;
+        }
+        .music-mobile-seek::-webkit-slider-runnable-track {
+          height: 44px;
+          background: transparent;
+          border: 0;
+        }
+        .music-mobile-seek::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 18px;
+          height: 18px;
+          margin-top: 13px;
+          border-radius: 9999px;
+          border: 2px solid var(--background, #0f172a);
+          background: var(--accent, #06b6d4);
+          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+        }
+        .music-mobile-seek::-moz-range-track {
+          height: 44px;
+          background: transparent;
+          border: 0;
+        }
+        .music-mobile-seek::-moz-range-thumb {
+          width: 18px;
+          height: 18px;
+          border-radius: 9999px;
+          border: 2px solid var(--background, #0f172a);
+          background: var(--accent, #06b6d4);
+          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+        }
+      `}</style>
+
       {/* Left: transport controls */}
-      <div className="flex items-center gap-2 shrink-0">
+      <div className="order-1 flex items-center gap-2 shrink-0">
         <button
           onClick={onPrev}
           disabled={!currentTrack}
@@ -110,7 +189,7 @@ export function PlayerBar({
       </div>
 
       {/* Center: waveform + time */}
-      <div className="flex-1 flex items-center gap-2 sm:gap-3 min-w-0 justify-center sm:justify-start">
+      <div className="order-3 sm:order-2 basis-full sm:basis-auto flex-1 flex items-center gap-2 sm:gap-3 min-w-0 justify-center sm:justify-start">
         <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 w-10 text-right">
           {formatTime(currentTime)}
         </span>
@@ -125,20 +204,33 @@ export function PlayerBar({
           />
         </div>
 
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.001"
-          value={progress}
-          disabled={!currentTrack || duration <= 0}
-          onChange={(e) => onSeek(Number(e.currentTarget.value))}
-          className="volume-slider sm:hidden flex-1 min-w-12 disabled:opacity-40"
-          aria-label="Seek"
-          style={{
-            background: `linear-gradient(to right, var(--accent,#06b6d4) 0%, var(--accent,#06b6d4) ${progress * 100}%, rgba(255,255,255,0.2) ${progress * 100}%, rgba(255,255,255,0.2) 100%)`,
-          }}
-        />
+        <div
+          className="relative sm:hidden flex-1 min-w-0 h-11 flex items-center cursor-pointer"
+          onPointerDown={handleMobileSeekPointerDown}
+          onPointerMove={handleMobileSeekPointerMove}
+          onMouseDown={handleMobileSeekMouseDown}
+          onMouseMove={handleMobileSeekMouseMove}
+          onTouchStart={handleMobileSeekTouchStart}
+          onTouchMove={handleMobileSeekTouchMove}
+        >
+          <div className="absolute left-0 right-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-white/20 pointer-events-none">
+            <div
+              className="h-full rounded-full bg-[var(--accent,#06b6d4)]"
+              style={{ width: `${progress * 100}%` }}
+            />
+          </div>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.001"
+            value={progress}
+            disabled={seekDisabled}
+            onChange={(e) => onSeek(Number(e.currentTarget.value))}
+            className="music-mobile-seek pointer-events-none absolute inset-0 w-full h-11 disabled:opacity-40"
+            aria-label="Seek"
+          />
+        </div>
 
         <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 w-10">
           {formatTime(duration)}
@@ -146,7 +238,7 @@ export function PlayerBar({
       </div>
 
       {/* Right: shuffle, repeat, volume */}
-      <div className="flex items-center gap-1 shrink-0">
+      <div className="order-2 sm:order-3 ml-auto sm:ml-0 flex items-center gap-1 shrink-0">
         <button
           onClick={onToggleShuffle}
           className={`w-8 h-8 flex items-center justify-center rounded-md transition-colors ${
