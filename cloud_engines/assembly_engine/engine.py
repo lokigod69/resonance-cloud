@@ -23,7 +23,9 @@ import shutil
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
+
+from src.services.events import write_event_row
 
 from . import __version__, audio, config, ffmpeg_builder, gaps, timing, video, word_card
 from .models import (
@@ -290,6 +292,29 @@ def assemble(payload: AssemblyPayload) -> AssemblyResult:
             file_size=file_size,
             valid_clip_names=valid_clip_names,
             error=error,
+        )
+        write_event_row(
+            stage="assembly",
+            sub_step="summary",
+            status=status,
+            event_source="engine",
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
+            cost_usd=0.0,
+            error_message=error.message if error else None,
+            error_type=error.type if error else None,
+            latency_ms=int(elapsed * 1000),
+            metadata=_build_assembly_event_metadata(
+                payload=payload,
+                audio_report=audio_report,
+                timing_plan=timing_plan,
+                output_paths=output_paths,
+                file_size=file_size,
+                valid_clip_names=valid_clip_names,
+            ),
         )
 
     return AssemblyResult(
@@ -564,57 +589,10 @@ def _write_generation_meta(
         )
 
     # Build assembly report
-    assembly_report = None
-    if audio_report or timing_plan:
-        assembly_report = AssemblyReport(
-            original_song_duration=(
-                round(audio_report.original_duration, 2) if audio_report else None
-            ),
-            trimmed_silence_start=(
-                round(audio_report.trimmed_silence_start, 2) if audio_report else 0.0
-            ),
-            trimmed_silence_end=(
-                round(audio_report.trimmed_silence_end, 2) if audio_report else 0.0
-            ),
-            effective_song_duration=(
-                round(audio_report.effective_duration, 2) if audio_report else None
-            ),
-            total_clip_duration=(
-                round(timing_plan.total_clip_duration, 2) if timing_plan else None
-            ),
-            gap_seconds=(
-                round(timing_plan.gap, 2) if timing_plan else None
-            ),
-            gap_strategy_applied=(
-                timing_plan.strategy_to_apply if timing_plan else None
-            ),
-            original_lufs=(
-                round(audio_report.original_lufs, 2)
-                if audio_report and audio_report.original_lufs is not None
-                else None
-            ),
-            normalized_lufs=(
-                round(audio_report.normalized_lufs, 2)
-                if audio_report and audio_report.normalized_lufs is not None
-                else None
-            ),
-            word_card_intro_duration=(
-                round(timing_plan.word_card_intro_duration, 2) if timing_plan else 0.0
-            ),
-            word_card_outro_duration=(
-                round(timing_plan.word_card_outro_duration, 2) if timing_plan else 0.0
-            ),
-            clips_trimmed=(
-                timing_plan is not None
-                and timing_plan.gap < -0.01
-                and timing_plan.strategy_to_apply == "trim"
-            ),
-            clips_looped=(
-                timing_plan is not None
-                and timing_plan.gap > 0.01
-                and timing_plan.strategy_to_apply in ("ping_pong", "loop")
-            ),
-        )
+    assembly_report = _build_assembly_report(
+        audio_report=audio_report,
+        timing_plan=timing_plan,
+    )
 
     # Build the complete meta object
     meta = GenerationMeta(
@@ -657,3 +635,99 @@ def _write_generation_meta(
     except Exception as e:
         # Even if meta writing fails, don't crash the engine
         logger.error(f"Failed to write generation-meta.json: {e}")
+
+
+def _build_assembly_report(
+    *,
+    audio_report: Optional[AudioProcessingReport],
+    timing_plan: Optional[TimingPlan],
+) -> AssemblyReport | None:
+    if not (audio_report or timing_plan):
+        return None
+    return AssemblyReport(
+        original_song_duration=(
+            round(audio_report.original_duration, 2) if audio_report else None
+        ),
+        trimmed_silence_start=(
+            round(audio_report.trimmed_silence_start, 2) if audio_report else 0.0
+        ),
+        trimmed_silence_end=(
+            round(audio_report.trimmed_silence_end, 2) if audio_report else 0.0
+        ),
+        effective_song_duration=(
+            round(audio_report.effective_duration, 2) if audio_report else None
+        ),
+        total_clip_duration=(
+            round(timing_plan.total_clip_duration, 2) if timing_plan else None
+        ),
+        gap_seconds=(
+            round(timing_plan.gap, 2) if timing_plan else None
+        ),
+        gap_strategy_applied=(
+            timing_plan.strategy_to_apply if timing_plan else None
+        ),
+        original_lufs=(
+            round(audio_report.original_lufs, 2)
+            if audio_report and audio_report.original_lufs is not None
+            else None
+        ),
+        normalized_lufs=(
+            round(audio_report.normalized_lufs, 2)
+            if audio_report and audio_report.normalized_lufs is not None
+            else None
+        ),
+        word_card_intro_duration=(
+            round(timing_plan.word_card_intro_duration, 2) if timing_plan else 0.0
+        ),
+        word_card_outro_duration=(
+            round(timing_plan.word_card_outro_duration, 2) if timing_plan else 0.0
+        ),
+        clips_trimmed=(
+            timing_plan is not None
+            and timing_plan.gap < -0.01
+            and timing_plan.strategy_to_apply == "trim"
+        ),
+        clips_looped=(
+            timing_plan is not None
+            and timing_plan.gap > 0.01
+            and timing_plan.strategy_to_apply in ("ping_pong", "loop")
+        ),
+    )
+
+
+def _build_assembly_event_metadata(
+    *,
+    payload: AssemblyPayload,
+    audio_report: Optional[AudioProcessingReport],
+    timing_plan: Optional[TimingPlan],
+    output_paths: list[str],
+    file_size: Optional[int],
+    valid_clip_names: list[str],
+) -> dict[str, Any]:
+    report = _build_assembly_report(audio_report=audio_report, timing_plan=timing_plan)
+    metadata = report.model_dump(exclude_none=True) if report is not None else {}
+    metadata.update(
+        {
+            "measured_lufs": (
+                round(audio_report.normalized_lufs, 2)
+                if audio_report and audio_report.normalized_lufs is not None
+                else (
+                    round(audio_report.original_lufs, 2)
+                    if audio_report and audio_report.original_lufs is not None
+                    else None
+                )
+            ),
+            "target_lufs": payload.settings.target_lufs,
+            "gap_strategy": timing_plan.strategy_to_apply if timing_plan else None,
+            "final_video_duration": (
+                round(audio_report.effective_duration, 2)
+                if audio_report
+                else None
+            ),
+            "output_files": output_paths,
+            "file_size_bytes": file_size,
+            "video_clips_used": valid_clip_names,
+            "cost_estimation": "none",
+        }
+    )
+    return metadata

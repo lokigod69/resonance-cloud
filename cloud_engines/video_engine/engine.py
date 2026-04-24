@@ -95,6 +95,11 @@ def generate_video(payload: VideoPayload) -> VideoResult:
             content=payload.content,
             settings=adjusted_settings,
             output_path=video_path,
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
         )
 
         # --- Step 7: Ensure thumbnail exists ---

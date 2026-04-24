@@ -10,6 +10,7 @@ import httpx
 from .config import get_api_key
 from .models import TtsResult
 from src.cost_logger import estimate_elevenlabs_cost, log_cost
+from src.services.events import logged_api_call
 
 logger = logging.getLogger(__name__)
 
@@ -34,6 +35,12 @@ async def generate_pronunciation(
     output_path: str,
     previous_tts_path: str | None = None,
     language_code: str | None = None,
+    *,
+    word_id: str | None = None,
+    deck_id: str | None = None,
+    user_id: str | None = None,
+    job_id: str | None = None,
+    attempt: int | None = None,
 ) -> TtsResult:
     """
     Call ElevenLabs TTS API for the target word.
@@ -42,26 +49,6 @@ async def generate_pronunciation(
     Reuses previous TTS file if provided.
     """
     output = Path(output_path)
-
-    # Skip if already generated in THIS output dir
-    if output.exists() and output.stat().st_size > 0:
-        duration = probe_audio_duration(str(output))
-        return TtsResult(
-            audio_path=str(output),
-            duration_seconds=duration,
-            characters_used=0,  # 0 because we didn't call the API
-        )
-
-    # Reuse TTS from a previous bookend version if available
-    if previous_tts_path and Path(previous_tts_path).exists():
-        output.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(previous_tts_path, str(output))
-        duration = probe_audio_duration(str(output))
-        return TtsResult(
-            audio_path=str(output),
-            duration_seconds=duration,
-            characters_used=0,
-        )
 
     logger.info(f"TTS: word='{word}', lang='{language_code}', model='{model_id}'")
 
@@ -89,62 +76,148 @@ async def generate_pronunciation(
         body["language_code"] = to_elevenlabs_lang(language_code)
 
     max_retries = 3
-    for attempt in range(max_retries):
-        try:
-            async with httpx.AsyncClient(timeout=30.0) as client:
-                response = await client.post(url, headers=headers, json=body)
+    language_code_elevenlabs = to_elevenlabs_lang(language_code) if language_code else None
+    with logged_api_call(
+        stage="bookend",
+        sub_step="tts_call",
+        event_source="engine",
+        word_id=word_id,
+        deck_id=deck_id,
+        user_id=user_id,
+        job_id=job_id,
+        attempt=attempt,
+        model_provider="elevenlabs",
+        model_name=model_id,
+        user_prompt=word,
+        metadata={
+            "voice_id": voice_id,
+            "language_code": language_code,
+            "language_code_elevenlabs": language_code_elevenlabs,
+            "cost_estimation": "stub",
+            "retry_count": 0,
+        },
+    ) as ev:
+        if output.exists() and output.stat().st_size > 0:
+            duration = probe_audio_duration(str(output))
+            ev.record_response(
+                response_body=json.dumps({"cache_hit": "output_path"}, ensure_ascii=False),
+                request_body=json.dumps(body, ensure_ascii=False),
+                voice_id=voice_id,
+                characters_used=0,
+                retry_count=0,
+                reused_output=True,
+            )
+            return TtsResult(
+                audio_path=str(output),
+                duration_seconds=duration,
+                characters_used=0,
+            )
 
-            if response.status_code == 200:
-                output.parent.mkdir(parents=True, exist_ok=True)
-                output.write_bytes(response.content)
-                duration = probe_audio_duration(str(output))
-                log_cost(
-                    stage="bookend",
-                    provider="elevenlabs",
-                    model=model_id,
-                    status="success",
-                    usage_metrics={
-                        "characters_used": len(word),
-                        "voice_id": voice_id,
-                        "language_code": language_code,
-                    },
-                    estimated_cost_usd=estimate_elevenlabs_cost(len(word)),
-                )
-                return TtsResult(
-                    audio_path=str(output),
-                    duration_seconds=duration,
-                    characters_used=len(word),
-                )
+        if previous_tts_path and Path(previous_tts_path).exists():
+            output.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(previous_tts_path, str(output))
+            duration = probe_audio_duration(str(output))
+            ev.record_response(
+                response_body=json.dumps({"cache_hit": "previous_tts"}, ensure_ascii=False),
+                request_body=json.dumps(body, ensure_ascii=False),
+                voice_id=voice_id,
+                characters_used=0,
+                retry_count=0,
+                reused_previous_tts=True,
+            )
+            return TtsResult(
+                audio_path=str(output),
+                duration_seconds=duration,
+                characters_used=0,
+            )
 
-            elif response.status_code == 429:
-                wait = 2**attempt  # 1s, 2s, 4s
-                await asyncio.sleep(wait)
-                continue
+        ev.record_response(
+            request_body=json.dumps(body, ensure_ascii=False),
+            voice_id=voice_id,
+            characters_used=len(word),
+            retry_count=0,
+        )
 
-            elif response.status_code == 401:
-                raise RuntimeError("ElevenLabs API key is invalid (401 Unauthorized)")
+        for retry_index in range(max_retries):
+            try:
+                async with httpx.AsyncClient(timeout=30.0) as client:
+                    response = await client.post(url, headers=headers, json=body)
 
-            elif response.status_code >= 500:
-                if attempt < max_retries - 1:
-                    await asyncio.sleep(2)
+                if response.status_code == 200:
+                    output.parent.mkdir(parents=True, exist_ok=True)
+                    output.write_bytes(response.content)
+                    duration = probe_audio_duration(str(output))
+                    log_cost(
+                        stage="bookend",
+                        provider="elevenlabs",
+                        model=model_id,
+                        status="success",
+                        usage_metrics={
+                            "characters_used": len(word),
+                            "voice_id": voice_id,
+                            "language_code": language_code,
+                        },
+                        estimated_cost_usd=estimate_elevenlabs_cost(len(word)),
+                    )
+                    ev.record_response(
+                        response_body=json.dumps(
+                            {
+                                "status_code": response.status_code,
+                                "content_length": len(response.content),
+                            },
+                            ensure_ascii=False,
+                        ),
+                        request_body=json.dumps(body, ensure_ascii=False),
+                        request_id=response.headers.get("request-id")
+                        or response.headers.get("x-request-id"),
+                        voice_id=voice_id,
+                        characters_used=len(word),
+                        retry_count=retry_index,
+                        audio_duration_seconds=duration,
+                    )
+                    return TtsResult(
+                        audio_path=str(output),
+                        duration_seconds=duration,
+                        characters_used=len(word),
+                    )
+
+                if response.status_code == 429:
+                    wait = 2**retry_index
+                    ev.record_response(
+                        retry_count=retry_index + 1,
+                        last_status_code=response.status_code,
+                    )
+                    await asyncio.sleep(wait)
                     continue
-                raise RuntimeError(
-                    f"ElevenLabs server error: {response.status_code}"
-                )
 
-            else:
+                if response.status_code == 401:
+                    raise RuntimeError("ElevenLabs API key is invalid (401 Unauthorized)")
+
+                if response.status_code >= 500:
+                    if retry_index < max_retries - 1:
+                        ev.record_response(
+                            retry_count=retry_index + 1,
+                            last_status_code=response.status_code,
+                        )
+                        await asyncio.sleep(2)
+                        continue
+                    raise RuntimeError(
+                        f"ElevenLabs server error: {response.status_code}"
+                    )
+
                 raise RuntimeError(
                     f"ElevenLabs API error: {response.status_code} — "
                     f"{response.text[:200]}"
                 )
 
-        except httpx.TimeoutException:
-            if attempt < max_retries - 1:
-                await asyncio.sleep(2)
-                continue
-            raise RuntimeError("ElevenLabs API timeout after retries")
+            except httpx.TimeoutException:
+                ev.record_response(retry_count=retry_index + 1, last_error="timeout")
+                if retry_index < max_retries - 1:
+                    await asyncio.sleep(2)
+                    continue
+                raise RuntimeError("ElevenLabs API timeout after retries")
 
-    raise RuntimeError("ElevenLabs API failed after all retries")
+        raise RuntimeError("ElevenLabs API failed after all retries")
 
 
 def normalize_tts_audio(tts_path: str, target_lufs: float = -14.0) -> str:

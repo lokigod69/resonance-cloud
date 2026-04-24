@@ -135,6 +135,19 @@ async def bake_suno_into_word(
     # Guard: skip if suno_audio_url already set (prevents double billing on re-runs)
     if not skip_suno_guard and word_record.get("suno_audio_url"):
         log.info("  [Suno] Skipping bake-in: suno_audio_url already set for %s", word_slug)
+        write_event_row(
+            stage="suno_bakein",
+            sub_step="bake_suno",
+            status="skipped",
+            event_source="suno_bakein",
+            word_id=word_record.get("id"),
+            deck_id=deck_id,
+            user_id=user_id,
+            job_id=word_record.get("generation_job_id"),
+            model_provider="kie_ai",
+            model_name="suno_v5_5",
+            metadata={"reason": "already_baked"},
+        )
         return {"success": False, "suno_ab_manifests": {}, "error": "already_set"}
 
     # Step 1: Generate Suno audio (or re-poll an existing task from a previous timeout)
@@ -145,7 +158,27 @@ async def bake_suno_into_word(
         # A task ID is stored but no audio URL — the task may have completed after a timeout
         log.info("  [Suno] Re-polling existing task %s for %s", existing_task_id, word_slug)
         try:
-            repoll = await fetch_existing_task(existing_task_id)
+            write_event_row(
+                stage="suno_bakein",
+                sub_step="poll_resumed",
+                status="success",
+                event_source="suno_bakein",
+                word_id=word_record.get("id"),
+                deck_id=deck_id,
+                user_id=user_id,
+                job_id=word_record.get("generation_job_id"),
+                model_provider="kie_ai",
+                model_name="suno_v5_5",
+                request_id=existing_task_id,
+                metadata={"reason": "existing_task_id", "task_id": existing_task_id},
+            )
+            repoll = await fetch_existing_task(
+                existing_task_id,
+                word_id=word_record.get("id"),
+                deck_id=deck_id,
+                user_id=user_id,
+                job_id=word_record.get("generation_job_id"),
+            )
             if repoll["status"] == "success":
                 log.info("  [Suno] Existing task %s complete — skipping new generation", existing_task_id)
                 suno_result = repoll

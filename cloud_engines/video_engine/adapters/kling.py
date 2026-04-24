@@ -9,11 +9,13 @@ Per ENGINE_VIDEO_v1_1.md Section 3.4:
 
 from __future__ import annotations
 
+import json
 import logging
 import time
 from pathlib import Path
 from typing import Any, Optional
 
+from src.services.events import logged_api_call
 from ..cost import estimate_cost
 from ..download import download_video, extract_thumbnail
 from ..models import VideoContent, VideoSettings
@@ -75,6 +77,12 @@ class KlingAdapter(VideoProviderAdapter):
         content: VideoContent,
         settings: VideoSettings,
         output_path: str,
+        *,
+        word_id: str | None = None,
+        deck_id: str | None = None,
+        user_id: str | None = None,
+        job_id: str | None = None,
+        attempt: int | None = None,
     ) -> dict[str, Any]:
         """Generate video via Kling on Fal.ai.
 
@@ -85,93 +93,117 @@ class KlingAdapter(VideoProviderAdapter):
         4. Download result video
         5. Extract thumbnail
         """
-        if image_path is None:
-            raise ValueError(
-                "Kling mode requires a source image (text-to-video is not supported)"
-            )
-
-        if content.end_image_path:
-            logger.warning(
-                "Kling mode does not support end_image_path (frame transitions). "
-                "Ignoring end image and proceeding with single image generation."
-            )
-
-        import fal_client
-
-        # Step 1: Upload
-        image_url = upload_image(image_path)
-
-        # Step 2: Round duration — MUST be string "5" or "10"
-        kling_duration = self._round_duration(settings.duration)
-        actual_duration = int(kling_duration)
-
-        # Step 3: Build request
-        arguments: dict[str, Any] = {
-            "image_url": image_url,
-            "prompt": content.video_prompt,
-            "duration": kling_duration,  # STRING, not int!
-            "aspect_ratio": "16:9",
-            "negative_prompt": settings.negative_prompt,
-            "cfg_scale": settings.cfg_scale,
-        }
-
-        logger.info(
-            f"Kling ({self.tier}): submitting {kling_duration}s generation"
-        )
-
-        # Step 4: Submit and poll with reduced frequency (3s interval)
-        MAX_POLL_SECONDS = 300  # 5 minutes max wait
-        handle = fal_client.submit(self.endpoint, arguments=arguments)
-        poll_start = time.time()
-        for _event in handle.iter_events(with_logs=False, interval=3.0):
-            elapsed = time.time() - poll_start
-            if elapsed > MAX_POLL_SECONDS:
-                raise TimeoutError(
-                    f"Fal.ai job did not complete after {int(elapsed)}s. "
-                    f"Request ID: {handle.request_id}. Retry or check Fal.ai dashboard."
-                )
-            if int(elapsed) % 30 < 4:
-                logger.info(f"Kling: waiting for Fal.ai... {int(elapsed)}s elapsed")
-        result = handle.get()
-
-        # Step 5: Parse response
-        video_url = result["video"]["url"]
-        fal_request_id = result.get("request_id")
-
-        # Cost tracking
-        _poll_elapsed_ms = int((time.time() - poll_start) * 1000)
-        log_cost(
+        request_id: str | None = None
+        with logged_api_call(
             stage="video",
-            provider="fal_ai",
-            model=self.model_name,
-            status="success",
-            usage_metrics={
-                "duration_seconds": actual_duration,
-                "kling_duration": kling_duration,
+            sub_step="generate_kling",
+            event_source="engine",
+            word_id=word_id,
+            deck_id=deck_id,
+            user_id=user_id,
+            job_id=job_id,
+            attempt=attempt,
+            model_provider=self.provider_name,
+            model_name=self.model_name,
+            user_prompt=content.video_prompt,
+            metadata={
+                "scene_number": content.scene_number,
                 "video_mode": self.tier,
-                "fal_request_id": fal_request_id,
+                "source_image_path": image_path,
+                "text_to_video": settings.text_to_video,
             },
-            estimated_cost_usd=estimate_cost(self.tier, settings.duration),
-            duration_ms=_poll_elapsed_ms,
-        )
+        ) as ev:
+            if image_path is None:
+                raise ValueError(
+                    "Kling mode requires a source image (text-to-video is not supported)"
+                )
 
-        # Step 6: Download
-        download_video(video_url, output_path)
+            if content.end_image_path:
+                logger.warning(
+                    "Kling mode does not support end_image_path (frame transitions). "
+                    "Ignoring end image and proceeding with single image generation."
+                )
 
-        # Step 7: Extract thumbnail
-        thumb_path = output_path.replace(".mp4", "_thumb.jpg")
-        try:
-            extract_thumbnail(output_path, thumb_path)
-        except RuntimeError as e:
-            logger.warning(f"Thumbnail extraction failed (non-fatal): {e}")
+            import fal_client
 
-        file_size = Path(output_path).stat().st_size
-        return {
-            "duration_seconds": float(actual_duration),
-            "kling_duration": kling_duration,
-            "resolution": None,  # Kling determines its own resolution
-            "file_size_bytes": file_size,
-            "fal_request_id": fal_request_id,
-            "video_url": video_url,
-            "tier": self.tier,
-        }
+            image_url = upload_image(image_path)
+            kling_duration = self._round_duration(settings.duration)
+            actual_duration = int(kling_duration)
+
+            arguments: dict[str, Any] = {
+                "image_url": image_url,
+                "prompt": content.video_prompt,
+                "duration": kling_duration,
+                "aspect_ratio": "16:9",
+                "negative_prompt": settings.negative_prompt,
+                "cfg_scale": settings.cfg_scale,
+            }
+
+            logger.info(
+                "Kling (%s): submitting %ss generation",
+                self.tier,
+                kling_duration,
+            )
+
+            max_poll_seconds = 300
+            handle = fal_client.submit(self.endpoint, arguments=arguments)
+            request_id = handle.request_id
+            ev.record_response(request_id=request_id)
+            poll_start = time.time()
+            for _event in handle.iter_events(with_logs=False, interval=3.0):
+                elapsed = time.time() - poll_start
+                if elapsed > max_poll_seconds:
+                    raise TimeoutError(
+                        f"Fal.ai job did not complete after {int(elapsed)}s. "
+                        f"Request ID: {handle.request_id}. Retry or check Fal.ai dashboard."
+                    )
+                if int(elapsed) % 30 < 4:
+                    logger.info("Kling: waiting for Fal.ai... %ss elapsed", int(elapsed))
+            result = handle.get()
+
+            video_url = result["video"]["url"]
+            fal_request_id = result.get("request_id") or request_id
+            request_id = fal_request_id
+
+            poll_elapsed_ms = int((time.time() - poll_start) * 1000)
+            cost_usd = estimate_cost(self.tier, settings.duration)
+            log_cost(
+                stage="video",
+                provider="fal_ai",
+                model=self.model_name,
+                status="success",
+                usage_metrics={
+                    "duration_seconds": actual_duration,
+                    "kling_duration": kling_duration,
+                    "video_mode": self.tier,
+                    "fal_request_id": fal_request_id,
+                },
+                estimated_cost_usd=cost_usd,
+                duration_ms=poll_elapsed_ms,
+            )
+
+            download_video(video_url, output_path)
+
+            thumb_path = output_path.replace(".mp4", "_thumb.jpg")
+            try:
+                extract_thumbnail(output_path, thumb_path)
+            except RuntimeError as e:
+                logger.warning(f"Thumbnail extraction failed (non-fatal): {e}")
+
+            result_metadata = {
+                "duration_seconds": float(actual_duration),
+                "kling_duration": kling_duration,
+                "resolution": None,
+                "file_size_bytes": Path(output_path).stat().st_size,
+                "fal_request_id": fal_request_id,
+                "video_url": video_url,
+                "tier": self.tier,
+            }
+            ev.record_response(
+                response_body=json.dumps(result, ensure_ascii=False),
+                request_body=json.dumps(arguments, ensure_ascii=False),
+                request_id=request_id,
+                cost_usd=cost_usd,
+                **result_metadata,
+            )
+            return result_metadata

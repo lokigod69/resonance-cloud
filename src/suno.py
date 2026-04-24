@@ -197,10 +197,37 @@ async def submit_song(
             existing = {}
         if existing.get("suno_audio_url"):
             logger.info("[Suno] Already complete for %s; skipping submit", word_slug)
+            write_event_row(
+                stage="suno_bakein",
+                sub_step="submit",
+                event_source="suno_bakein",
+                status="skipped",
+                word_id=word_id,
+                deck_id=deck_id,
+                user_id=user_id,
+                job_id=job_id,
+                model_provider="kie_ai",
+                model_name="suno_v5_5",
+                metadata={"reason": "already_complete"},
+            )
             return ""
         if existing.get("suno_task_id"):
             logger.info("[Suno] Task %s already submitted for %s; returning existing id",
                         existing["suno_task_id"], word_slug)
+            write_event_row(
+                stage="suno_bakein",
+                sub_step="submit",
+                event_source="suno_bakein",
+                status="skipped",
+                word_id=word_id,
+                deck_id=deck_id,
+                user_id=user_id,
+                job_id=job_id,
+                model_provider="kie_ai",
+                model_name="suno_v5_5",
+                request_id=existing["suno_task_id"],
+                metadata={"reason": "task_already_submitted"},
+            )
             return existing["suno_task_id"]
 
     api_key = get_api_key()
@@ -574,7 +601,14 @@ async def generate_song(
             "error": timeout_err,
         }
 
-async def fetch_existing_task(task_id: str) -> dict:
+async def fetch_existing_task(
+    task_id: str,
+    *,
+    word_id: str | None = None,
+    deck_id: str | None = None,
+    user_id: str | None = None,
+    job_id: str | None = None,
+) -> dict:
     """
     Single-shot re-poll for a previously submitted kie.ai task.
 
@@ -587,19 +621,38 @@ async def fetch_existing_task(task_id: str) -> dict:
       Failure:  {"status": "error",    "task_id": ..., "audio_url": None, "audio_url_b": None, "error": "..."}
     """
     api_key = get_api_key()
-    async with httpx.AsyncClient(timeout=30.0) as client:
-        try:
-            resp = await client.get(
-                f"{KIE_API_BASE}/generate/record-info",
-                params={"taskId": task_id},
-                headers={"Authorization": f"Bearer {api_key}"},
+    try:
+        with logged_api_call(
+            stage="suno_bakein",
+            sub_step="fetch_existing_task",
+            event_source="suno_bakein",
+            word_id=word_id,
+            deck_id=deck_id,
+            user_id=user_id,
+            job_id=job_id,
+            model_provider="kie_ai",
+            model_name="suno_v5_5",
+            metadata={"task_id": task_id},
+        ) as ev:
+            async with httpx.AsyncClient(timeout=30.0) as client:
+                resp = await client.get(
+                    f"{KIE_API_BASE}/generate/record-info",
+                    params={"taskId": task_id},
+                    headers={"Authorization": f"Bearer {api_key}"},
+                )
+                resp.raise_for_status()
+                response_json = resp.json()
+                data = response_json.get("data", {})
+            ev.record_response(
+                response_body=json.dumps(response_json),
+                request_body=json.dumps({"taskId": task_id}),
+                request_id=task_id,
+                task_status=data.get("status"),
             )
-            resp.raise_for_status()
-            data = resp.json().get("data", {})
-        except httpx.HTTPError as e:
-            logger.warning("fetch_existing_task: HTTP error for %s: %s", task_id, e)
-            return {"status": "error", "task_id": task_id,
-                    "audio_url": None, "audio_url_b": None, "error": str(e)}
+    except httpx.HTTPError as e:
+        logger.warning("fetch_existing_task: HTTP error for %s: %s", task_id, e)
+        return {"status": "error", "task_id": task_id,
+                "audio_url": None, "audio_url_b": None, "error": str(e)}
 
     task_status = data.get("status", "")
 

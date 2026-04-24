@@ -749,6 +749,7 @@ def render_scene(
                         else None
                     ),
                     "output_path": output_path.name,
+                    "cost_estimation": "stub",
                 },
             ) as ev:
                 wan_result = render_scene_wan(

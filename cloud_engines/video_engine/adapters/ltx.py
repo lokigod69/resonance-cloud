@@ -10,11 +10,13 @@ Per ENGINE_VIDEO_v1_1.md Section 3.3:
 
 from __future__ import annotations
 
+import json
 import logging
 import time
 from pathlib import Path
 from typing import Any, Optional
 
+from src.services.events import logged_api_call
 from ..cost import estimate_cost
 from ..download import download_video, extract_thumbnail
 from ..models import VideoContent, VideoSettings
@@ -95,6 +97,12 @@ class LTXAdapter(VideoProviderAdapter):
         content: VideoContent,
         settings: VideoSettings,
         output_path: str,
+        *,
+        word_id: str | None = None,
+        deck_id: str | None = None,
+        user_id: str | None = None,
+        job_id: str | None = None,
+        attempt: int | None = None,
     ) -> dict[str, Any]:
         """Generate video via LTX on Fal.ai.
 
@@ -105,134 +113,164 @@ class LTXAdapter(VideoProviderAdapter):
         import fal_client
 
         is_text_to_video = settings.text_to_video
+        request_id: str | None = None
 
-        # Select endpoint
-        if is_text_to_video:
-            endpoint = TEXT_TO_VIDEO_ENDPOINTS.get(self.tier, TEXT_TO_VIDEO_ENDPOINTS["ltx_fast"])
-        else:
-            endpoint = self.endpoint
-
-        # Step 1: Upload images (image-to-video only)
-        image_url = None
-        end_image_url = None
-        if not is_text_to_video:
-            image_url = upload_image(image_path)
-            if content.end_image_path:
-                end_image_url = upload_image(content.end_image_path)
-
-        # Step 2: Snap duration to valid fal.ai enum (defensive — normally
-        # already done by validate_settings, but guard against direct calls)
-        if is_text_to_video and self.tier == "ltx_pro":
-            valid = _T2V_PRO_DURATIONS
-        elif is_text_to_video:
-            valid = _T2V_FAST_DURATIONS
-        else:
-            valid = _I2V_DURATIONS
-        duration = _snap_duration(settings.duration, valid)
-
-        # Step 3: Build prompt with shared helpers (identical logic)
-        final_prompt = build_ltx_prompt(
-            video_prompt=content.video_prompt,
-            camera_motion=content.camera_motion,
-            is_t2v=is_text_to_video,
-            text_to_video_prompt=content.text_to_video_prompt,
-        )
-
-        if is_text_to_video and content.camera_motion:
-            motion_type_val = content.camera_motion.get("type", "")
-            if motion_type_val and motion_type_val != "static":
-                logger.debug(
-                    "T2V: camera instruction '%s' not appended (embedded in video_prompt)",
-                    motion_type_val,
-                )
-
-        enhanced_negative = build_ltx_negative(settings.negative_prompt)
-
-        # Build request
-        if is_text_to_video:
-            arguments: dict[str, Any] = {
-                "prompt": final_prompt,
-                "negative_prompt": enhanced_negative,
-                "duration": duration,
-                "resolution": settings.resolution,
-                "aspect_ratio": "16:9",
-                "generate_audio": False,
-            }
-        else:
-            arguments = {
-                "image_url": image_url,
-                "prompt": final_prompt,
-                "negative_prompt": enhanced_negative,
-                "duration": duration,
-                "resolution": settings.resolution,
-                "aspect_ratio": "auto",
-                "generate_audio": False,
-            }
-            if end_image_url:
-                arguments["end_image_url"] = end_image_url
-
-        if settings.seed >= 0:
-            arguments["seed"] = settings.seed
-
-        mode_label = "text-to-video" if is_text_to_video else "image-to-video"
-        logger.info(
-            f"LTX: submitting {mode_label} duration={duration}s "
-            f"at {settings.resolution} via {endpoint}"
-        )
-
-        # Step 4: Submit and poll with reduced frequency (2s interval)
-        MAX_POLL_SECONDS = 300  # 5 minutes max wait
-        handle = fal_client.submit(endpoint, arguments=arguments)
-        poll_start = time.time()
-        for _event in handle.iter_events(with_logs=False, interval=2.0):
-            elapsed = time.time() - poll_start
-            if elapsed > MAX_POLL_SECONDS:
-                raise TimeoutError(
-                    f"Fal.ai job did not complete after {int(elapsed)}s. "
-                    f"Request ID: {handle.request_id}. Retry or check Fal.ai dashboard."
-                )
-            if int(elapsed) % 30 < 3:
-                logger.info(f"LTX: waiting for Fal.ai... {int(elapsed)}s elapsed")
-        result = handle.get()
-
-        # Step 5: Parse response
-        video_url = result["video"]["url"]
-        fal_request_id = result.get("request_id")
-
-        # Cost tracking
-        _poll_elapsed_ms = int((time.time() - poll_start) * 1000)
-        log_cost(
+        with logged_api_call(
             stage="video",
-            provider="fal_ai",
-            model=self.model_name,
-            status="success",
-            usage_metrics={
-                "duration_seconds": duration,
-                "resolution": settings.resolution,
+            sub_step="generate_ltx_fal",
+            event_source="engine",
+            word_id=word_id,
+            deck_id=deck_id,
+            user_id=user_id,
+            job_id=job_id,
+            attempt=attempt,
+            model_provider=self.provider_name,
+            model_name=self.model_name,
+            user_prompt=(
+                content.text_to_video_prompt
+                if is_text_to_video
+                else content.video_prompt
+            ),
+            metadata={
+                "scene_number": content.scene_number,
                 "video_mode": self.tier,
-                "fal_request_id": fal_request_id,
+                "source_image_path": image_path,
+                "end_image_path": content.end_image_path,
                 "text_to_video": is_text_to_video,
             },
-            estimated_cost_usd=estimate_cost(self.tier, duration),
-            duration_ms=_poll_elapsed_ms,
-        )
+        ) as ev:
+            if is_text_to_video:
+                endpoint = TEXT_TO_VIDEO_ENDPOINTS.get(
+                    self.tier, TEXT_TO_VIDEO_ENDPOINTS["ltx_fast"]
+                )
+            else:
+                endpoint = self.endpoint
 
-        # Step 6: Download
-        download_video(video_url, output_path)
+            image_url = None
+            end_image_url = None
+            if not is_text_to_video:
+                image_url = upload_image(image_path)
+                if content.end_image_path:
+                    end_image_url = upload_image(content.end_image_path)
 
-        # Step 7: Extract thumbnail
-        thumb_path = output_path.replace(".mp4", "_thumb.jpg")
-        try:
-            extract_thumbnail(output_path, thumb_path)
-        except RuntimeError as e:
-            logger.warning(f"Thumbnail extraction failed (non-fatal): {e}")
+            if is_text_to_video and self.tier == "ltx_pro":
+                valid = _T2V_PRO_DURATIONS
+            elif is_text_to_video:
+                valid = _T2V_FAST_DURATIONS
+            else:
+                valid = _I2V_DURATIONS
+            duration = _snap_duration(settings.duration, valid)
 
-        file_size = Path(output_path).stat().st_size
-        return {
-            "duration_seconds": duration,
-            "resolution": settings.resolution,
-            "file_size_bytes": file_size,
-            "fal_request_id": fal_request_id,
-            "video_url": video_url,
-            "seed": settings.seed if settings.seed >= 0 else None,
-        }
+            final_prompt = build_ltx_prompt(
+                video_prompt=content.video_prompt,
+                camera_motion=content.camera_motion,
+                is_t2v=is_text_to_video,
+                text_to_video_prompt=content.text_to_video_prompt,
+            )
+
+            if is_text_to_video and content.camera_motion:
+                motion_type_val = content.camera_motion.get("type", "")
+                if motion_type_val and motion_type_val != "static":
+                    logger.debug(
+                        "T2V: camera instruction '%s' not appended (embedded in video_prompt)",
+                        motion_type_val,
+                    )
+
+            enhanced_negative = build_ltx_negative(settings.negative_prompt)
+
+            if is_text_to_video:
+                arguments: dict[str, Any] = {
+                    "prompt": final_prompt,
+                    "negative_prompt": enhanced_negative,
+                    "duration": duration,
+                    "resolution": settings.resolution,
+                    "aspect_ratio": "16:9",
+                    "generate_audio": False,
+                }
+            else:
+                arguments = {
+                    "image_url": image_url,
+                    "prompt": final_prompt,
+                    "negative_prompt": enhanced_negative,
+                    "duration": duration,
+                    "resolution": settings.resolution,
+                    "aspect_ratio": "auto",
+                    "generate_audio": False,
+                }
+                if end_image_url:
+                    arguments["end_image_url"] = end_image_url
+
+            if settings.seed >= 0:
+                arguments["seed"] = settings.seed
+
+            mode_label = "text-to-video" if is_text_to_video else "image-to-video"
+            logger.info(
+                "LTX: submitting %s duration=%ss at %s via %s",
+                mode_label,
+                duration,
+                settings.resolution,
+                endpoint,
+            )
+
+            max_poll_seconds = 300
+            handle = fal_client.submit(endpoint, arguments=arguments)
+            request_id = handle.request_id
+            ev.record_response(request_id=request_id)
+            poll_start = time.time()
+            for _event in handle.iter_events(with_logs=False, interval=2.0):
+                elapsed = time.time() - poll_start
+                if elapsed > max_poll_seconds:
+                    raise TimeoutError(
+                        f"Fal.ai job did not complete after {int(elapsed)}s. "
+                        f"Request ID: {handle.request_id}. Retry or check Fal.ai dashboard."
+                    )
+                if int(elapsed) % 30 < 3:
+                    logger.info("LTX: waiting for Fal.ai... %ss elapsed", int(elapsed))
+            result = handle.get()
+
+            video_url = result["video"]["url"]
+            fal_request_id = result.get("request_id") or request_id
+            request_id = fal_request_id
+
+            poll_elapsed_ms = int((time.time() - poll_start) * 1000)
+            cost_usd = estimate_cost(self.tier, duration)
+            log_cost(
+                stage="video",
+                provider="fal_ai",
+                model=self.model_name,
+                status="success",
+                usage_metrics={
+                    "duration_seconds": duration,
+                    "resolution": settings.resolution,
+                    "video_mode": self.tier,
+                    "fal_request_id": fal_request_id,
+                    "text_to_video": is_text_to_video,
+                },
+                estimated_cost_usd=cost_usd,
+                duration_ms=poll_elapsed_ms,
+            )
+
+            download_video(video_url, output_path)
+
+            thumb_path = output_path.replace(".mp4", "_thumb.jpg")
+            try:
+                extract_thumbnail(output_path, thumb_path)
+            except RuntimeError as e:
+                logger.warning(f"Thumbnail extraction failed (non-fatal): {e}")
+
+            result_metadata = {
+                "duration_seconds": duration,
+                "resolution": settings.resolution,
+                "file_size_bytes": Path(output_path).stat().st_size,
+                "fal_request_id": fal_request_id,
+                "video_url": video_url,
+                "seed": settings.seed if settings.seed >= 0 else None,
+            }
+            ev.record_response(
+                response_body=json.dumps(result, ensure_ascii=False),
+                request_body=json.dumps(arguments, ensure_ascii=False),
+                request_id=request_id,
+                cost_usd=cost_usd,
+                **result_metadata,
+            )
+            return result_metadata

@@ -15,6 +15,7 @@ import subprocess
 from pathlib import Path
 from typing import Any, Optional
 
+from src.services.events import logged_api_call
 from .. import config
 from ..cost import estimate_cost
 from ..download import extract_thumbnail
@@ -85,6 +86,12 @@ class KenBurnsAdapter(VideoProviderAdapter):
         content: VideoContent,
         settings: VideoSettings,
         output_path: str,
+        *,
+        word_id: str | None = None,
+        deck_id: str | None = None,
+        user_id: str | None = None,
+        job_id: str | None = None,
+        attempt: int | None = None,
     ) -> dict[str, Any]:
         """Generate a Ken Burns animated clip using FFMPEG.
 
@@ -94,107 +101,129 @@ class KenBurnsAdapter(VideoProviderAdapter):
         3. Encode as H.264 MP4
         4. Extract thumbnail
         """
-        if image_path is None:
-            raise ValueError(
-                "Ken Burns mode requires a source image (text-to-video is not supported)"
+        with logged_api_call(
+            stage="video",
+            sub_step="generate_ken_burns",
+            event_source="engine",
+            word_id=word_id,
+            deck_id=deck_id,
+            user_id=user_id,
+            job_id=job_id,
+            attempt=attempt,
+            model_provider=self.provider_name,
+            model_name=self.model_name,
+            user_prompt=content.video_prompt,
+            cost_usd=0.0,
+            metadata={
+                "scene_number": content.scene_number,
+                "video_mode": settings.video_mode,
+                "source_image_path": image_path,
+                "text_to_video": settings.text_to_video,
+                "cost_estimation": "none",
+            },
+        ) as ev:
+            if image_path is None:
+                raise ValueError(
+                    "Ken Burns mode requires a source image (text-to-video is not supported)"
+                )
+
+            if content.end_image_path:
+                logger.warning(
+                    "Ken Burns mode does not support end_image_path (frame transitions). "
+                    "Ignoring end image and proceeding with single image animation."
+                )
+
+            image_path_p = Path(image_path)
+            if not image_path_p.is_file():
+                raise FileNotFoundError(f"Source image not found: {image_path}")
+
+            output_path_p = Path(output_path)
+            temp_dir = output_path_p.parent
+            scaled_path = str(temp_dir / f"_scaled_{output_path_p.stem}.png")
+
+            _scale_image(image_path, scaled_path)
+            width, height = _probe_image_size(scaled_path)
+
+            motion = content.camera_motion or {}
+            motion_type = motion.get("type", "static")
+            motion_speed = motion.get("speed", "slow")
+            if motion_type in _EXTENDED_TO_BASIC:
+                motion_type = _EXTENDED_TO_BASIC[motion_type]
+            if motion_speed == "fast":
+                motion_speed = "medium"
+            total_frames = settings.duration * settings.fps
+
+            out_w = width // 2
+            out_h = height // 2
+            zoompan_filter = _build_zoompan_filter(
+                motion_type=motion_type,
+                motion_speed=motion_speed,
+                total_frames=total_frames,
+                src_w=width,
+                src_h=height,
+                out_w=out_w,
+                out_h=out_h,
             )
 
-        if content.end_image_path:
-            logger.warning(
-                "Ken Burns mode does not support end_image_path (frame transitions). "
-                "Ignoring end image and proceeding with single image animation."
+            cmd = [
+                "ffmpeg", "-y",
+                "-loop", "1",
+                "-i", config.posix_path(scaled_path),
+                "-vf", zoompan_filter,
+                "-t", str(settings.duration),
+                "-c:v", "libx264",
+                "-pix_fmt", "yuv420p",
+                "-preset", "medium",
+                config.posix_path(output_path),
+            ]
+
+            logger.info(
+                "Ken Burns: %s (%s), %ss @ %sfps",
+                motion_type,
+                motion_speed,
+                settings.duration,
+                settings.fps,
+            )
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=120,
             )
 
-        image_path_p = Path(image_path)
-        if not image_path_p.is_file():
-            raise FileNotFoundError(f"Source image not found: {image_path}")
+            if result.returncode != 0:
+                raise RuntimeError(
+                    f"FFMPEG Ken Burns generation failed (exit {result.returncode}): "
+                    f"{result.stderr[:500]}"
+                )
 
-        output_path_p = Path(output_path)
-        temp_dir = output_path_p.parent
-        scaled_path = str(temp_dir / f"_scaled_{output_path_p.stem}.png")
+            thumb_path = output_path.replace(".mp4", "_thumb.jpg")
+            try:
+                extract_thumbnail(output_path, thumb_path)
+            except RuntimeError as e:
+                logger.warning(f"Thumbnail extraction failed (non-fatal): {e}")
 
-        # Step 1: Scale image 2x
-        _scale_image(image_path, scaled_path)
+            try:
+                Path(scaled_path).unlink(missing_ok=True)
+            except Exception:
+                pass
 
-        # Step 2: Get image dimensions after scaling
-        width, height = _probe_image_size(scaled_path)
-
-        # Step 3: Build zoompan filter
-        motion = content.camera_motion or {}
-        motion_type = motion.get("type", "static")
-        motion_speed = motion.get("speed", "slow")
-        # Map extended cinematic types to basic Ken Burns equivalents
-        if motion_type in _EXTENDED_TO_BASIC:
-            motion_type = _EXTENDED_TO_BASIC[motion_type]
-        # Ken Burns doesn't support fast speed; clamp to medium
-        if motion_speed == "fast":
-            motion_speed = "medium"
-        total_frames = settings.duration * settings.fps
-
-        # Output dimensions (half of scaled = original size)
-        out_w = width // 2
-        out_h = height // 2
-
-        zoompan_filter = _build_zoompan_filter(
-            motion_type=motion_type,
-            motion_speed=motion_speed,
-            total_frames=total_frames,
-            src_w=width,
-            src_h=height,
-            out_w=out_w,
-            out_h=out_h,
-        )
-
-        # Step 4: Run FFMPEG
-        cmd = [
-            "ffmpeg", "-y",
-            "-loop", "1",
-            "-i", config.posix_path(scaled_path),
-            "-vf", zoompan_filter,
-            "-t", str(settings.duration),
-            "-c:v", "libx264",
-            "-pix_fmt", "yuv420p",
-            "-preset", "medium",
-            config.posix_path(output_path),
-        ]
-
-        logger.info(f"Ken Burns: {motion_type} ({motion_speed}), {settings.duration}s @ {settings.fps}fps")
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=120,
-        )
-
-        if result.returncode != 0:
-            raise RuntimeError(
-                f"FFMPEG Ken Burns generation failed (exit {result.returncode}): "
-                f"{result.stderr[:500]}"
+            result_metadata = {
+                "duration_seconds": float(settings.duration),
+                "resolution": f"{out_w}x{out_h}",
+                "fps": settings.fps,
+                "file_size_bytes": Path(output_path).stat().st_size,
+                "motion_type": motion_type,
+                "motion_speed": motion_speed,
+            }
+            ev.record_response(
+                response_body=str(result_metadata),
+                request_body=str({"output_path": output_path}),
+                cost_usd=0.0,
+                cost_estimation="none",
+                **result_metadata,
             )
-
-        # Step 5: Extract thumbnail
-        thumb_path = output_path.replace(".mp4", "_thumb.jpg")
-        try:
-            extract_thumbnail(output_path, thumb_path)
-        except RuntimeError as e:
-            logger.warning(f"Thumbnail extraction failed (non-fatal): {e}")
-
-        # Step 6: Cleanup scaled image
-        try:
-            Path(scaled_path).unlink(missing_ok=True)
-        except Exception:
-            pass
-
-        # Build result metadata
-        file_size = Path(output_path).stat().st_size
-        return {
-            "duration_seconds": float(settings.duration),
-            "resolution": f"{out_w}x{out_h}",
-            "fps": settings.fps,
-            "file_size_bytes": file_size,
-            "motion_type": motion_type,
-            "motion_speed": motion_speed,
-        }
+            return result_metadata
 
 
 def _scale_image(input_path: str, output_path: str) -> None:

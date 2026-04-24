@@ -336,7 +336,14 @@ class UpstreamWorker:
             return
 
         async def _once():
-            await submit_song(fresh["deck_id"], word_slug, concept_data)
+            await submit_song(
+                fresh["deck_id"],
+                word_slug,
+                concept_data,
+                word_id=fresh["id"],
+                user_id=fresh["user_id"],
+                job_id=fresh.get("generation_job_id"),
+            )
 
         try:
             await retry.run_stage_with_budget(stage="song", run_once=_once)

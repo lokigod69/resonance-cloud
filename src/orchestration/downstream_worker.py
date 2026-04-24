@@ -472,7 +472,14 @@ class DownstreamWorker:
             return
 
         try:
-            await submit_song(word["deck_id"], word_slug, concept_data)
+            await submit_song(
+                word["deck_id"],
+                word_slug,
+                concept_data,
+                word_id=word["id"],
+                user_id=word["user_id"],
+                job_id=word.get("generation_job_id"),
+            )
             await state.mark_music_state(self.sb, word["id"], music_state="submitted")
         except Exception as e:
             log.warning(

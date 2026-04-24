@@ -93,6 +93,11 @@ def generate_images(payload: ImagePayload) -> ImageResult:
             content=payload.content,
             context=payload.context,
             settings=payload.settings,
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
         )
 
         # --- Step 4: Write storyboard.json ---
@@ -116,6 +121,11 @@ def generate_images(payload: ImagePayload) -> ImageResult:
                 output_dir=output_dir,
                 aspect_ratio=payload.settings.aspect_ratio,
                 use_color_palette=payload.settings.use_color_palette,
+                word_id=payload.metadata.word_id,
+                deck_id=payload.metadata.deck_id,
+                user_id=payload.metadata.user_id,
+                job_id=payload.metadata.job_id,
+                attempt=payload.metadata.attempt,
             )
         else:
             # Text-to-video mode: storyboard only, no image rendering

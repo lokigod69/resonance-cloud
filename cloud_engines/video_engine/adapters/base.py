@@ -35,6 +35,12 @@ class VideoProviderAdapter(ABC):
         content: VideoContent,
         settings: VideoSettings,
         output_path: str,
+        *,
+        word_id: str | None = None,
+        deck_id: str | None = None,
+        user_id: str | None = None,
+        job_id: str | None = None,
+        attempt: int | None = None,
     ) -> dict[str, Any]:
         """Generate a video clip and save it to output_path.
 

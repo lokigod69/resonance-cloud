@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
+from src.services.events import write_event_row
 
 from .color import extract_background_tint, extract_dominant_color
 from .config import find_font, get_ffmpeg_version
@@ -42,6 +43,10 @@ async def wrap(payload: BookendPayload) -> BookendResult:
     status = "failed"
     error: BookendError | None = None
     output_paths: list[str] = []
+    tts_result: TtsResult | None = None
+    assembled_duration: float | None = None
+    timing: dict[str, float] | None = None
+    final_info: dict | None = None
 
     meta = BookendGenerationMeta(
         status="failed",
@@ -107,13 +112,18 @@ async def wrap(payload: BookendPayload) -> BookendResult:
                         previous_tts = str(candidate)
                         break
 
-        tts_result: TtsResult = await generate_pronunciation(
+        tts_result = await generate_pronunciation(
             word=payload.content.word,
             voice_id=payload.settings.voice_id,
             model_id=payload.settings.model_id,
             output_path=str(tts_output),
             previous_tts_path=previous_tts,
             language_code=payload.content.language_code,
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
         )
 
         meta.tts = {
@@ -305,5 +315,48 @@ async def wrap(payload: BookendPayload) -> BookendResult:
                 json.dump(meta.model_dump(exclude_none=True), f, indent=2)
         except Exception as meta_err:
             logger.error(f"Failed to write generation-meta.json: {meta_err}")
+        write_event_row(
+            stage="bookend",
+            sub_step="summary",
+            status=status,
+            event_source="engine",
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
+            cost_usd=0.0,
+            error_message=error.message if error else None,
+            error_type=error.type if error else None,
+            latency_ms=int((time.monotonic() - start_time) * 1000),
+            metadata={
+                "voice_id": payload.settings.voice_id,
+                "model_id": payload.settings.model_id,
+                "skip_outro": payload.settings.skip_outro,
+                "outro_mode": payload.settings.outro_mode,
+                "tts_characters_used": (
+                    tts_result.characters_used if tts_result is not None else None
+                ),
+                "tts_duration_seconds": (
+                    tts_result.duration_seconds if tts_result is not None else None
+                ),
+                "assembled_video_duration": assembled_duration,
+                "intro_duration_seconds": (
+                    timing.get("intro_duration") if timing is not None else None
+                ),
+                "outro_duration_seconds": (
+                    timing.get("outro_duration") if timing is not None else None
+                ),
+                "total_duration_seconds": (
+                    final_info.get("duration") if final_info is not None else None
+                ),
+                "resolution": (
+                    f"{final_info['width']}x{final_info['height']}"
+                    if final_info is not None
+                    else None
+                ),
+                "cost_estimation": "none",
+            },
+        )
 
     return BookendResult(status=status, output_paths=output_paths, error=error)

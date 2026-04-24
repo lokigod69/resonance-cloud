@@ -24,8 +24,6 @@ from .kie_common import (
     _upload_for_chaining,
     _err,
 )
-from src.cost_logger import KIE_WAN_COST_PER_IMAGE
-
 logger = logging.getLogger(__name__)
 
 # Wan model IDs on kie.ai
@@ -69,7 +67,7 @@ def render_scene_wan(
             provider_name (str)
             model_name (str)
             request_id (str | None)
-            cost_estimate_usd (float)
+            cost_estimate_usd (float | None)
     """
     api_key = os.environ.get("KIE_API_KEY", "")
     if not api_key:
@@ -77,7 +75,7 @@ def render_scene_wan(
             "KIE_API_KEY not set in environment",
             "",
             provider_name="wan",
-            cost_estimate_usd=KIE_WAN_COST_PER_IMAGE,
+            cost_estimate_usd=None,
             model_id=model_id,
         )
 
@@ -123,7 +121,7 @@ def render_scene_wan(
             "prompt_text": prompt_text,
             "model_name": model_id,
             "provider_name": "wan",
-            "cost_estimate_usd": KIE_WAN_COST_PER_IMAGE,
+            "cost_estimate_usd": None,
         }
 
     logger.info("Wan task created: %s", task_id)
@@ -137,7 +135,7 @@ def render_scene_wan(
             "model_name": model_id,
             "provider_name": "wan",
             "request_id": task_id,
-            "cost_estimate_usd": KIE_WAN_COST_PER_IMAGE,
+            "cost_estimate_usd": None,
         }
 
     # --- Extract result URL ---
@@ -147,7 +145,7 @@ def render_scene_wan(
             f"Wan task succeeded but no result URL found in: {json.dumps(result_data)[:300]}",
             prompt_text,
             provider_name="wan",
-            cost_estimate_usd=KIE_WAN_COST_PER_IMAGE,
+            cost_estimate_usd=None,
             model_id=model_id,
             request_id=task_id,
         )
@@ -161,7 +159,7 @@ def render_scene_wan(
             "model_name": model_id,
             "provider_name": "wan",
             "request_id": task_id,
-            "cost_estimate_usd": KIE_WAN_COST_PER_IMAGE,
+            "cost_estimate_usd": None,
         }
 
     # Cost is tracked by renderer.py render_all_scenes() — no separate logging here
@@ -175,5 +173,5 @@ def render_scene_wan(
         "provider_name": "wan",
         "model_name": model_id,
         "request_id": task_id,
-        "cost_estimate_usd": KIE_WAN_COST_PER_IMAGE,
+        "cost_estimate_usd": None,
     }
