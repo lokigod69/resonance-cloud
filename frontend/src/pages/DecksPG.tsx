@@ -19,6 +19,7 @@ import {
   Waves,
   ChevronLeft,
   ChevronRight,
+  Music,
 } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 
@@ -558,6 +559,9 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
   return (
     <div className="water-decks-stage">
       <div className="water-decks-haze" aria-hidden="true" />
+      <div className="water-decks-horizon" aria-hidden="true" />
+      <div className="water-decks-caustics" aria-hidden="true" />
+      <div className="water-decks-active-glow" aria-hidden="true" />
       <div className="water-decks-floor" aria-hidden="true" />
 
       <button
@@ -645,6 +649,7 @@ function WaterDeckCard({ deck, offset, isActive, wordCounts, thumbnails, onClick
   const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
   const thumb = thumbnails[deck.id]
   const distance = Math.abs(offset)
+  const isGenerating = deck.status === 'generating'
 
   return (
     <motion.button
@@ -653,27 +658,27 @@ function WaterDeckCard({ deck, offset, isActive, wordCounts, thumbnails, onClick
       onClick={onClick}
       initial={{ opacity: 0, scale: 0.84, y: 28 }}
       animate={{
-        opacity: isActive ? 1 : distance === 1 ? 0.74 : 0.38,
-        x: offset * 230,
-        y: distance * 18,
-        scale: isActive ? 1 : distance === 1 ? 0.82 : 0.68,
-        rotateY: offset * -19,
-        rotateZ: offset * -2.5,
-        zIndex: 20 - distance,
+        opacity: isActive ? 1 : distance === 1 ? 0.78 : 0.34,
+        x: offset * 256,
+        y: isActive ? 0 : distance * 24,
+        scale: isActive ? 1 : distance === 1 ? 0.78 : 0.62,
+        rotateY: offset * -24,
+        rotateZ: offset * -1.8,
+        zIndex: 30 - distance,
       }}
       exit={{ opacity: 0, scale: 0.76, y: 34 }}
       transition={{ type: 'spring', stiffness: 260, damping: 30 }}
       aria-label={isActive ? `Open ${displayName}` : `Focus ${displayName}`}
     >
       <div className="water-deck-card-shell">
+        <div className="water-deck-rim" aria-hidden="true" />
         <div className="water-deck-image">
-          {thumb ? (
-            <img src={thumb} alt="" />
-          ) : (
-            <div className="water-deck-placeholder">
-              <Sparkles className="h-10 w-10" />
-            </div>
-          )}
+          <WaterDeckArtwork
+            deck={deck}
+            displayName={displayName}
+            isGenerating={isGenerating}
+            thumbnail={thumb}
+          />
           <div className="water-deck-image-shade" />
         </div>
 
@@ -683,18 +688,52 @@ function WaterDeckCard({ deck, offset, isActive, wordCounts, thumbnails, onClick
             <span>{deck.target_language}</span>
           </p>
           <h2>{displayName}</h2>
-          <p className="water-deck-count">{tp('dashboard.wordCount', counts.total)}</p>
+          <p className="water-deck-count">
+            {tp('dashboard.wordCount', counts.total)}
+            {deck.status !== 'complete' ? <span>{deck.status}</span> : null}
+          </p>
         </div>
       </div>
 
       <div className="water-deck-reflection" aria-hidden="true">
-        {thumb ? (
-          <img src={thumb} alt="" />
-        ) : (
-          <div className="water-deck-reflection-fallback" />
-        )}
+        <WaterDeckArtwork
+          deck={deck}
+          displayName={displayName}
+          isGenerating={isGenerating}
+          thumbnail={thumb}
+          reflection
+        />
       </div>
     </motion.button>
+  )
+}
+
+interface WaterDeckArtworkProps {
+  deck: Deck
+  displayName: string
+  isGenerating: boolean
+  thumbnail?: string
+  reflection?: boolean
+}
+
+function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, reflection = false }: WaterDeckArtworkProps) {
+  const Icon = isGenerating ? Sparkles : Music
+
+  if (thumbnail) {
+    return <img src={thumbnail} alt={reflection ? '' : displayName} />
+  }
+
+  return (
+    <div className="water-deck-fallback">
+      <div className="water-deck-fallback-caustics" aria-hidden="true" />
+      <div className="water-deck-fallback-icon">
+        <Icon className="h-9 w-9" />
+      </div>
+      <div className="water-deck-fallback-meta">
+        <FlagIcon code={deck.target_language} className="w-6 h-auto" />
+        <span>{deck.target_language}</span>
+      </div>
+    </div>
   )
 }
 
