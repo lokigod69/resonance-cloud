@@ -5,6 +5,9 @@
   --f-color-yellow-hypersail: #FFF200;
   --f-color-yellow: #F6E500;
   --f-color-ui-0: #FFFFFF;
+  /* Intentional OLED comfort deviation from DESIGN-ferrari.md pure white.
+     Use warm paper for filled white surfaces; keep #FFFFFF available for text and strokes. */
+  --f-color-warm-paper: #F2EFE8;
   --f-color-ui-20: #D2D2D2;
   --f-color-ui-90: #303030;
   --f-color-black: #000000;

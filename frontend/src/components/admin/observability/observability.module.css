@@ -32,7 +32,7 @@
 }
 
 .layoutButtonActive {
-  background: var(--f-color-ui-0);
+  background: var(--f-color-warm-paper);
   color: var(--f-color-black);
 }
 
@@ -112,6 +112,21 @@
   --text-primary: var(--f-color-ui-0);
   --text-muted: var(--f-color-black-50);
   --border: var(--f-color-ui-90);
+}
+
+.finalVideo {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  background: var(--f-color-black);
+  border-bottom: 1px solid var(--f-color-ui-90);
+  color: var(--f-color-ui-0);
+}
+
+.finalVideoPlayer {
+  width: 100%;
+  max-height: 68vh;
+  background: var(--f-color-black);
 }
 
 .eventRow {

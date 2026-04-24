@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import AggregatorSnapshot from '@/components/admin/observability/AggregatorSnapshot'
+import FinalVideo from '@/components/admin/observability/FinalVideo'
 import FailureNotice from '@/components/admin/observability/FailureNotice'
 import LayoutSelector, { type WordLayoutMode } from '@/components/admin/observability/LayoutSelector'
 import SunoTracks from '@/components/admin/observability/SunoTracks'
@@ -14,6 +15,7 @@ import {
   type PipelineEvent,
   type WordRow,
 } from '@/lib/observability'
+import { supabase } from '@/lib/supabase'
 import { useFerrariTitle } from '@/layouts/FerrariAdminLayout'
 
 const CANONICAL_STAGES = ['concept', 'images', 'video', 'assembly', 'bookend', 'suno_bakein']
@@ -25,12 +27,24 @@ function getStoredLayout(): WordLayoutMode {
   return stored === 'A' || stored === 'B' || stored === 'C' ? stored : 'A'
 }
 
+async function fetchFinalVideoUrl(wordId: string): Promise<string | null> {
+  const { data, error } = await supabase
+    .from('words')
+    .select('video_url')
+    .eq('id', wordId)
+    .maybeSingle()
+
+  if (error) throw error
+  return ((data as { video_url?: string | null } | null)?.video_url) ?? null
+}
+
 export default function ObservabilityWordDetail() {
   useFerrariTitle('Word detail')
 
   const { wordId } = useParams()
   const [word, setWord] = useState<WordRow | null>(null)
   const [events, setEvents] = useState<PipelineEvent[]>([])
+  const [finalVideoUrl, setFinalVideoUrl] = useState<string | null>(null)
   const [layout, setLayout] = useState<WordLayoutMode>(getStoredLayout)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -44,15 +58,19 @@ export default function ObservabilityWordDetail() {
     if (!wordId) return
 
     let cancelled = false
+    setLoading(true)
+    setError(null)
 
     Promise.all([
       fetchWordWithMetadata(wordId),
       fetchPipelineEventsForWord(wordId),
+      fetchFinalVideoUrl(wordId),
     ])
-      .then(([wordRow, pipelineEvents]) => {
+      .then(([wordRow, pipelineEvents, videoUrl]) => {
         if (cancelled) return
         setWord(wordRow)
         setEvents(pipelineEvents)
+        setFinalVideoUrl(videoUrl)
       })
       .catch((err) => {
         if (cancelled) return
@@ -91,10 +109,11 @@ export default function ObservabilityWordDetail() {
 
   return (
     <>
-      <LayoutSelector value={layout} onChange={handleLayoutChange} />
       <FailureNotice events={failedEvents} />
+      <FinalVideo src={finalVideoUrl} />
       <SunoTracks wordId={wordId} />
       <AggregatorSnapshot metadata={word?.metadata ?? null} />
+      <LayoutSelector value={layout} onChange={handleLayoutChange} />
       {layout === 'A' && <WordScrollLayout {...layoutProps} />}
       {layout === 'B' && <WordTabsLayout {...layoutProps} />}
       {layout === 'C' && <WordPanelsLayout {...layoutProps} />}

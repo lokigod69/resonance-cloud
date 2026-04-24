@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useMemo, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -28,14 +29,11 @@ import {
   RefreshCw,
   Search,
   ImageOff,
-  Zap,
-  Music,
-  Loader2,
   Play,
   Square,
+  Activity,
 } from 'lucide-react'
 import { useToast } from '@/components/Toast'
-import { generateSunoSong } from '@/api'
 import WordDetailPanel from '@/components/admin/WordDetailPanel'
 import StarRating from '@/components/ui/StarRating'
 
@@ -149,62 +147,24 @@ export default function Content() {
   // Confirmation dialogs
   const [deleteWordTarget, setDeleteWordTarget] = useState<WordRecord | null>(null)
   const [deleteDeckTarget, setDeleteDeckTarget] = useState<Deck | null>(null)
-  const [regenerateTarget, setRegenerateTarget] = useState<WordRecord | null>(null)
-  const [smartRetryTarget, setSmartRetryTarget] = useState<WordRecord | null>(null)
   const [actionLoading, setActionLoading] = useState(false)
-  const [sunoGeneratingId, setSunoGeneratingId] = useState<string | null>(null)
   const [playingAudioId, setPlayingAudioId] = useState<string | null>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
 
   const handlePlayAudio = useCallback((word: WordRecord) => {
     const el = audioRef.current
+    const trackAUrl = word.suno_storage_url ?? word.suno_audio_url
     if (!el) return
     if (playingAudioId === word.id) {
       el.pause()
       setPlayingAudioId(null)
     } else {
-      el.src = (word.suno_storage_url ?? word.suno_audio_url)!
+      if (!trackAUrl) return
+      el.src = trackAUrl
       el.play()
       setPlayingAudioId(word.id)
     }
   }, [playingAudioId])
-
-  const handleSunoGenerate = useCallback(async (word: WordRecord) => {
-    if (!word.word_slug || !word.deck_id || !word.user_id || sunoGeneratingId) return
-    setSunoGeneratingId(word.id)
-    try {
-      const result = await generateSunoSong(word.word_slug, word.deck_id, word.user_id)
-      await supabase
-        .from('words')
-        .update({
-          suno_audio_url: result.audio_url,
-          suno_storage_url: result.storage_url ?? result.audio_url,
-          suno_task_id: result.task_id,
-        })
-        .eq('id', word.id)
-      // Update local state
-      setDeckWords(prev => {
-        const updated = { ...prev }
-        for (const [deckId, words] of Object.entries(updated)) {
-          updated[deckId] = words.map(w =>
-            w.id === word.id ? {
-              ...w,
-              suno_audio_url: result.audio_url,
-              suno_storage_url: result.storage_url ?? result.audio_url,
-              suno_task_id: result.task_id,
-            } : w
-          )
-        }
-        return updated
-      })
-      toast(`Full song ready for "${word.word}"`, 'success')
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : 'Unknown error'
-      toast(`Song generation failed: ${msg}`, 'error')
-    } finally {
-      setSunoGeneratingId(null)
-    }
-  }, [sunoGeneratingId, toast])
 
   // -------------------------------------------------------------------------
   // Data fetching
@@ -430,134 +390,6 @@ export default function Content() {
     } finally {
       setActionLoading(false)
       setDeleteDeckTarget(null)
-    }
-  }
-
-  const confirmRegenerate = async () => {
-    const word = regenerateTarget
-    if (!word) return
-    setActionLoading(true)
-    try {
-      // Check credits
-      const { data: ownerProfile } = await supabase
-        .from('profiles')
-        .select('credits, display_name')
-        .eq('id', word.user_id)
-        .single()
-
-      if (!ownerProfile || ownerProfile.credits < 1) {
-        toast(`${ownerProfile?.display_name || 'User'} has 0 credits — cannot regenerate`, 'error')
-        setActionLoading(false)
-        setRegenerateTarget(null)
-        return
-      }
-
-      const deck = decks.find(d => d.id === word.deck_id)
-
-      // 1. Reset word
-      await supabase.from('words').update({
-        status: 'pending',
-        video_url: null,
-        thumbnail_url: null,
-        error_message: null,
-        retry_count: 0,
-        metadata: null,
-        needs_review: false,
-      }).eq('id', word.id)
-
-      // 2. Create generation job
-      await supabase.from('generation_jobs').insert({
-        user_id: word.user_id,
-        deck_id: word.deck_id,
-        status: 'approved',
-        priority: 0,
-        target_language: deck?.target_language || 'Unknown',
-        art_style: deck?.art_style || null,
-        words_total: 1,
-        words_completed: 0,
-        words_failed: 0,
-      })
-
-      // 3. Deduct credit
-      await supabase
-        .from('profiles')
-        .update({ credits: ownerProfile.credits - 1 })
-        .eq('id', word.user_id)
-
-      // 4. Update deck status
-      await supabase
-        .from('decks')
-        .update({ status: 'generating' })
-        .eq('id', word.deck_id)
-
-      // 5. Refresh
-      await fetchDecks()
-      await fetchWords(word.deck_id)
-      toast('Regeneration job created — it will be picked up by the job runner', 'success')
-    } catch (err) {
-      toast('Failed to create regeneration job', 'error')
-    } finally {
-      setActionLoading(false)
-      setRegenerateTarget(null)
-    }
-  }
-
-  const confirmSmartRetry = async () => {
-    const word = smartRetryTarget
-    if (!word) return
-    setActionLoading(true)
-    try {
-      const { data: ownerProfile } = await supabase
-        .from('profiles')
-        .select('credits, display_name')
-        .eq('id', word.user_id)
-        .single()
-
-      if (!ownerProfile || ownerProfile.credits < 1) {
-        toast(`${ownerProfile?.display_name || 'User'} has 0 credits — cannot retry`, 'error')
-        setActionLoading(false)
-        setSmartRetryTarget(null)
-        return
-      }
-
-      const deck = decks.find(d => d.id === word.deck_id)
-
-      // Preserve video_url, thumbnail_url, metadata — only reset status + error
-      await supabase.from('words').update({
-        status: 'pending',
-        error_message: null,
-      }).eq('id', word.id)
-
-      await supabase.from('generation_jobs').insert({
-        user_id: word.user_id,
-        deck_id: word.deck_id,
-        status: 'approved',
-        priority: 0,
-        target_language: deck?.target_language || 'Unknown',
-        art_style: deck?.art_style || null,
-        words_total: 1,
-        words_completed: 0,
-        words_failed: 0,
-      })
-
-      await supabase
-        .from('profiles')
-        .update({ credits: ownerProfile.credits - 1 })
-        .eq('id', word.user_id)
-
-      await supabase
-        .from('decks')
-        .update({ status: 'generating' })
-        .eq('id', word.deck_id)
-
-      await fetchDecks()
-      await fetchWords(word.deck_id)
-      toast('Smart retry — only failed stages will re-run', 'success')
-    } catch (err) {
-      toast('Failed to create smart retry job', 'error')
-    } finally {
-      setActionLoading(false)
-      setSmartRetryTarget(null)
     }
   }
 
@@ -814,68 +646,38 @@ export default function Content() {
                             >
                               <Flag className={`h-4 w-4 ${word.needs_review ? 'text-orange-400' : ''}`} />
                             </Button>
-                            {word.status === 'complete' && (
-                              (word.suno_storage_url ?? word.suno_audio_url) ? (
-                                <div className="flex items-center gap-0.5">
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => handlePlayAudio(word)}
-                                    title={playingAudioId === word.id ? 'Stop' : 'Play Song'}
-                                  >
-                                    {playingAudioId === word.id ? (
-                                      <Square className="h-4 w-4 text-green-400 fill-green-400" />
-                                    ) : (
-                                      <Play className="h-4 w-4 text-green-400 fill-green-400" />
-                                    )}
-                                  </Button>
-                                  <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => handleSunoGenerate(word)}
-                                    disabled={sunoGeneratingId === word.id}
-                                    title="Regenerate Full Song"
-                                  >
-                                    {sunoGeneratingId === word.id ? (
-                                      <Loader2 className="h-4 w-4 animate-spin text-purple-400" />
-                                    ) : (
-                                      <Music className="h-4 w-4 text-purple-400" />
-                                    )}
-                                  </Button>
-                                </div>
-                              ) : (
-                                <Button
-                                  variant="ghost"
-                                  size="sm"
-                                  onClick={() => handleSunoGenerate(word)}
-                                  disabled={sunoGeneratingId === word.id}
-                                  title="Generate Full Song"
-                                >
-                                  {sunoGeneratingId === word.id ? (
-                                    <Loader2 className="h-4 w-4 animate-spin text-purple-400" />
-                                  ) : (
-                                    <Music className="h-4 w-4 text-purple-400" />
-                                  )}
-                                </Button>
-                              )
-                            )}
-                            {word.status === 'failed' && (
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => setSmartRetryTarget(word)}
-                                title="Smart Retry (reuse completed stages)"
-                              >
-                                <Zap className="h-4 w-4 text-yellow-400" />
-                              </Button>
-                            )}
                             <Button
                               variant="ghost"
                               size="sm"
-                              onClick={() => setRegenerateTarget(word)}
-                              title="Full Regenerate"
+                              onClick={() => handlePlayAudio(word)}
+                              disabled={!(word.suno_storage_url ?? word.suno_audio_url)}
+                              title={
+                                word.suno_storage_url ?? word.suno_audio_url
+                                  ? playingAudioId === word.id ? 'Stop Track A' : 'Play Track A'
+                                  : 'Track A unavailable'
+                              }
+                              aria-label={
+                                word.suno_storage_url ?? word.suno_audio_url
+                                  ? playingAudioId === word.id ? 'Stop Track A' : 'Play Track A'
+                                  : 'Track A unavailable'
+                              }
                             >
-                              <RefreshCw className="h-4 w-4" />
+                              {playingAudioId === word.id ? (
+                                <Square className="h-4 w-4 text-green-400 fill-green-400" />
+                              ) : (
+                                <Play className="h-4 w-4 text-green-400 fill-green-400" />
+                              )}
+                            </Button>
+                            <Button
+                              asChild
+                              variant="ghost"
+                              size="sm"
+                              title="Observability"
+                              aria-label="Observability"
+                            >
+                              <Link to={`/admin/observability/word/${word.id}`}>
+                                <Activity className="h-4 w-4" />
+                              </Link>
                             </Button>
                             <Button
                               variant="ghost"
@@ -951,45 +753,6 @@ export default function Content() {
         </DialogContent>
       </Dialog>
 
-      {/* Regenerate Confirmation (full) */}
-      <Dialog open={!!regenerateTarget} onOpenChange={(v) => !v && setRegenerateTarget(null)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Full Regenerate</DialogTitle>
-            <DialogDescription>
-              Regenerate <strong>{regenerateTarget?.word}</strong> from scratch? All stages will re-run. Cost: 1 credit.
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button variant="ghost" onClick={() => setRegenerateTarget(null)} disabled={actionLoading}>
-              Cancel
-            </Button>
-            <Button onClick={confirmRegenerate} disabled={actionLoading}>
-              {actionLoading ? 'Creating job…' : 'Full Regenerate'}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Smart Retry Confirmation */}
-      <Dialog open={!!smartRetryTarget} onOpenChange={(v) => !v && setSmartRetryTarget(null)}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Smart Retry: {smartRetryTarget?.word}</DialogTitle>
-            <DialogDescription>
-              Re-run only the failed stages. Completed stages (images, video, etc.) will be reused. Cost: 1 credit.
-            </DialogDescription>
-          </DialogHeader>
-          <DialogFooter>
-            <Button variant="ghost" onClick={() => setSmartRetryTarget(null)} disabled={actionLoading}>
-              Cancel
-            </Button>
-            <Button onClick={confirmSmartRetry} disabled={actionLoading}>
-              {actionLoading ? 'Retrying…' : 'Smart Retry'}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
     </div>
   )
 }
