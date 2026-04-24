@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
-import type { PointerEvent } from 'react'
+import type { CSSProperties } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
+import { motion, AnimatePresence, animate, useMotionValue, useTransform } from 'framer-motion'
 import type { PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
@@ -40,6 +40,8 @@ type WordStatus = {
 }
 
 type ViewMode = 'stack' | 'grid' | 'orbs' | 'water'
+
+const WATER_DECK_SPACING = 256
 
 export default function DecksPG() {
   const { user, authError } = useAuth()
@@ -212,45 +214,45 @@ export default function DecksPG() {
   return (
     <div className={viewMode === 'water' ? 'water-decks-page px-6' : 'px-6 max-w-6xl mx-auto'}>
       <div className={viewMode === 'water' ? 'water-decks-header max-w-6xl mx-auto' : ''}>
-        <div className="flex items-center justify-between mb-8">
-        <div className="min-w-0">
-          <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate">
-            {t('decks.title')}
-          </h1>
-          <p className="text-[var(--pg-text-dim)] mt-1 text-sm">
-            {tp('dashboard.deckCount', decks.length)}
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1 pg-glass rounded-lg p-1">
-            {([
-              { mode: 'stack' as ViewMode, icon: Layers, label: t('dashboard.viewStack') },
-              { mode: 'grid' as ViewMode, icon: Grid3X3, label: t('dashboard.viewGrid') },
-              { mode: 'orbs' as ViewMode, icon: Circle, label: t('dashboard.viewOrbs') },
-              { mode: 'water' as ViewMode, icon: Waves, label: 'Water view' },
-            ]).map(({ mode, icon: Icon, label }) => (
-              <button
-                key={mode}
-                onClick={() => setViewMode(mode)}
-                className={`p-2 rounded-md transition-all ${
-                  viewMode === mode
-                    ? 'bg-white/10 text-white'
-                    : 'text-[var(--pg-text-dim)] hover:text-white'
-                }`}
-                title={label}
-              >
-                <Icon className="h-4 w-4" />
-              </button>
-            ))}
+        <div className="decks-glass-header">
+          <div className="decks-glass-title min-w-0">
+            <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate">
+              {t('decks.title')}
+            </h1>
+            <p className="text-[var(--pg-text-dim)] mt-1 text-sm">
+              {tp('dashboard.deckCount', decks.length)}
+            </p>
           </div>
-          <button
-            onClick={() => navigate('/generate')}
-            className="p-2.5 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] hover:bg-[var(--pg-accent-teal)]/30 transition-all"
-            title={t('dashboard.newDeck')}
-          >
-            <Plus className="h-5 w-5" />
-          </button>
-        </div>
+          <div className="decks-glass-actions">
+            <div className="decks-view-toggle flex gap-1 pg-glass rounded-lg p-1">
+              {([
+                { mode: 'stack' as ViewMode, icon: Layers, label: t('dashboard.viewStack') },
+                { mode: 'water' as ViewMode, icon: Waves, label: 'Water view' },
+                { mode: 'grid' as ViewMode, icon: Grid3X3, label: t('dashboard.viewGrid') },
+                { mode: 'orbs' as ViewMode, icon: Circle, label: t('dashboard.viewOrbs') },
+              ]).map(({ mode, icon: Icon, label }) => (
+                <button
+                  key={mode}
+                  onClick={() => setViewMode(mode)}
+                  className={`p-2 rounded-md transition-all ${
+                    viewMode === mode
+                      ? 'bg-white/10 text-white'
+                      : 'text-[var(--pg-text-dim)] hover:text-white'
+                  }`}
+                  title={label}
+                >
+                  <Icon className="h-4 w-4" />
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => navigate('/generate')}
+              className="decks-glass-add p-2.5 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] hover:bg-[var(--pg-accent-teal)]/30 transition-all"
+              title={t('dashboard.newDeck')}
+            >
+              <Plus className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -373,16 +375,6 @@ function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
           })}
         </AnimatePresence>
       </motion.div>
-      <div className="flex gap-2 mt-6">
-        {cards.slice(0, decks.length).map((deck, i) => (
-          <div
-            key={deck._key || deck.id}
-            className={`h-2 rounded-full transition-all ${
-              i === 0 ? 'bg-[var(--pg-accent-teal)] w-6' : 'bg-white/20 w-2'
-            }`}
-          />
-        ))}
-      </div>
     </div>
   )
 }
@@ -534,7 +526,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
   const [activeIndex, setActiveIndex] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const suppressClickRef = useRef(false)
-  const dragStartRef = useRef<{ x: number; y: number; time: number; pointerId: number } | null>(null)
+  const dragX = useMotionValue(0)
 
   useEffect(() => {
     setActiveIndex((index) => Math.min(index, Math.max(decks.length - 1, 0)))
@@ -559,76 +551,34 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
     }, delay)
   }, [])
 
-  const handleRailPointerDown = useCallback((event: PointerEvent<HTMLDivElement>) => {
-    if (event.button !== 0) return
-    dragStartRef.current = {
-      x: event.clientX,
-      y: event.clientY,
-      time: performance.now(),
-      pointerId: event.pointerId,
-    }
-    suppressClickRef.current = false
-  }, [])
-
-  const handleRailPointerMove = useCallback((event: PointerEvent<HTMLDivElement>) => {
-    const start = dragStartRef.current
-    if (!start) return
-
-    const offsetX = event.clientX - start.x
-    const offsetY = event.clientY - start.y
-    const isHorizontalDrag = Math.abs(offsetX) > 12 && Math.abs(offsetX) > Math.abs(offsetY) * 0.65
-
-    if (isHorizontalDrag) {
-      suppressClickRef.current = true
-      setIsDragging(true)
-      if (!event.currentTarget.hasPointerCapture(start.pointerId)) {
-        event.currentTarget.setPointerCapture(start.pointerId)
-      }
-    }
-  }, [])
-
-  const handleRailPointerUp = useCallback((event: PointerEvent<HTMLDivElement>) => {
-    const start = dragStartRef.current
-    if (!start) return
-
-    const offsetX = event.clientX - start.x
-    const elapsed = Math.max(performance.now() - start.time, 1)
-    const velocityX = (offsetX / elapsed) * 1000
-    const didDrag = suppressClickRef.current || Math.abs(offsetX) > 12
-
-    dragStartRef.current = null
-    if (event.currentTarget.hasPointerCapture(start.pointerId)) {
-      event.currentTarget.releasePointerCapture(start.pointerId)
-    }
-
-    if (!didDrag) {
-      resetDragState()
-      return
-    }
-
+  const handleRailDragStart = useCallback(() => {
+    setIsDragging(true)
     suppressClickRef.current = true
-    if (offsetX < -70 || velocityX < -450) {
-      goNext()
-    } else if (offsetX > 70 || velocityX > 450) {
-      goPrevious()
-    }
-    resetDragState(160)
-  }, [goNext, goPrevious, resetDragState])
+  }, [])
 
-  const handleRailPointerCancel = useCallback((event: PointerEvent<HTMLDivElement>) => {
-    const start = dragStartRef.current
-    dragStartRef.current = null
-    if (start && event.currentTarget.hasPointerCapture(start.pointerId)) {
-      event.currentTarget.releasePointerCapture(start.pointerId)
+  const handleRailDragEnd = useCallback((_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const offsetX = info.offset.x
+    const velocityX = info.velocity.x
+    const distance = Math.abs(offsetX)
+    const speed = Math.abs(velocityX)
+
+    if (distance > 70 || speed > 450) {
+      const direction = offsetX < 0 || velocityX < -450 ? 1 : -1
+      const velocityJump = speed > 900 ? Math.floor(speed / 900) : 1
+      const distanceJump = Math.max(1, Math.round(distance / WATER_DECK_SPACING))
+      const jump = Math.min(3, Math.max(velocityJump, distanceJump))
+      goToIndex(activeIndex + direction * jump)
     }
-    resetDragState(80)
-  }, [resetDragState])
+
+    animate(dragX, 0, { type: 'spring', stiffness: 360, damping: 32 })
+    resetDragState(180)
+  }, [activeIndex, dragX, goToIndex, resetDragState])
 
   const visibleDecks = decks
     .map((deck, index) => ({ deck, index, offset: index - activeIndex }))
     .filter(({ offset }) => Math.abs(offset) <= 2)
 
-  const progress = decks.length > 0 ? ((activeIndex + 1) / decks.length) * 100 : 0
+  const scrubberProgress = decks.length > 1 ? (activeIndex / (decks.length - 1)) * 100 : 0
 
   return (
     <div className="water-decks-stage">
@@ -650,12 +600,32 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
 
       <motion.div
         className={`water-decks-rail ${isDragging ? 'is-dragging' : ''}`}
-        onPointerDown={handleRailPointerDown}
-        onPointerMove={handleRailPointerMove}
-        onPointerUp={handleRailPointerUp}
-        onPointerCancel={handleRailPointerCancel}
-        style={{ touchAction: 'pan-y' }}
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.18}
+        dragMomentum={false}
+        onDragStart={handleRailDragStart}
+        onDragEnd={handleRailDragEnd}
+        style={{ x: dragX, touchAction: 'pan-y' }}
       >
+        <div className="water-decks-halo-layer" aria-hidden="true">
+          {visibleDecks.map(({ index, offset }) => {
+            const distance = Math.abs(offset)
+            return (
+              <motion.div
+                key={`halo-${index}`}
+                className={`water-deck-halo water-deck-halo-${distance}`}
+                initial={false}
+                animate={{
+                  x: offset * WATER_DECK_SPACING,
+                  opacity: offset === 0 ? 0.82 : distance === 1 ? 0.38 : 0.16,
+                  scale: offset === 0 ? 1 : distance === 1 ? 0.72 : 0.5,
+                }}
+                transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+              />
+            )
+          })}
+        </div>
         <AnimatePresence initial={false}>
           {visibleDecks.map(({ deck, index, offset }) => (
             <WaterDeckCard
@@ -688,11 +658,21 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
         <ChevronRight className="h-5 w-5" />
       </button>
 
-      <div className="water-decks-progress" aria-label={`Deck ${activeIndex + 1} of ${decks.length}`}>
+      <div
+        className="water-decks-scrubber-wrap"
+        aria-label={`Deck ${activeIndex + 1} of ${decks.length}`}
+        style={{ '--water-scrubber-progress': `${scrubberProgress}%` } as CSSProperties}
+      >
         <span>{activeIndex + 1}</span>
-        <div className="water-decks-progress-track" aria-hidden="true">
-          <div style={{ width: `${progress}%` }} />
-        </div>
+        <input
+          className="water-decks-scrubber"
+          type="range"
+          min={0}
+          max={Math.max(decks.length - 1, 0)}
+          value={activeIndex}
+          onChange={(event) => goToIndex(Number(event.currentTarget.value))}
+          aria-label="Browse decks"
+        />
         <span>{decks.length}</span>
       </div>
     </div>
@@ -723,7 +703,7 @@ function WaterDeckCard({ deck, offset, isActive, wordCounts, thumbnails, onClick
       initial={{ opacity: 0, scale: 0.84, y: 28 }}
       animate={{
         opacity: isActive ? 1 : distance === 1 ? 0.78 : 0.34,
-        x: offset * 256,
+        x: offset * WATER_DECK_SPACING,
         y: isActive ? 0 : distance * 24,
         scale: isActive ? 1 : distance === 1 ? 0.78 : 0.62,
         rotateY: offset * -24,

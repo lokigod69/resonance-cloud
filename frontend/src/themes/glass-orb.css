@@ -1490,3 +1490,313 @@
     font-size: 0.7rem;
   }
 }
+
+/* Watery Decks Phase 4 polish */
+.skin-glassy .decks-glass-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 0 28px;
+  padding: 14px 16px 14px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025)),
+    rgba(6, 13, 22, 0.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 18px 48px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.skin-glassy .decks-glass-header::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(111, 236, 232, 0.11), transparent 44%),
+    radial-gradient(ellipse at 88% 100%, rgba(121, 176, 255, 0.08), transparent 44%);
+}
+
+.skin-glassy .decks-glass-title h1 {
+  text-shadow: 0 1px 22px rgba(84, 226, 241, 0.1);
+}
+
+.skin-glassy .decks-glass-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.skin-glassy .decks-view-toggle {
+  border-color: rgba(255, 255, 255, 0.09);
+  background: rgba(3, 15, 24, 0.34);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+.skin-glassy .decks-glass-add {
+  box-shadow:
+    0 12px 30px rgba(8, 176, 188, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.skin-glassy .water-decks-header .decks-glass-header {
+  margin-bottom: 16px;
+  background:
+    linear-gradient(135deg, rgba(168, 232, 255, 0.085), rgba(55, 177, 212, 0.035)),
+    rgba(3, 18, 28, 0.22);
+}
+
+.skin-glassy .water-decks-stage {
+  min-height: min(710px, calc(100dvh - 154px));
+  margin-top: -4px;
+}
+
+.skin-glassy .water-decks-rail {
+  overflow: visible;
+  user-select: none;
+}
+
+.skin-glassy .water-decks-rail.is-dragging .water-deck-card {
+  cursor: grabbing;
+}
+
+.skin-glassy .water-decks-active-glow {
+  opacity: 0.28;
+  filter: blur(14px);
+}
+
+.skin-glassy .water-decks-halo-layer {
+  position: absolute;
+  left: 50%;
+  top: 420px;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.skin-glassy .water-deck-halo {
+  position: absolute;
+  left: -170px;
+  top: -44px;
+  width: 340px;
+  height: 118px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 46%, rgba(213, 255, 255, 0.36) 0%, rgba(83, 231, 247, 0.22) 22%, rgba(23, 141, 202, 0.12) 48%, transparent 74%),
+    repeating-radial-gradient(ellipse at 50% 50%, rgba(185, 251, 255, 0.14) 0 1px, transparent 1px 18px);
+  filter: blur(7px);
+  mix-blend-mode: screen;
+  transform: perspective(720px) rotateX(68deg);
+  transform-origin: center;
+}
+
+.skin-glassy .water-deck-halo-1 {
+  filter: blur(8px);
+}
+
+.skin-glassy .water-deck-halo-2 {
+  filter: blur(9px);
+}
+
+.skin-glassy .water-deck-reflection {
+  height: 92px;
+  margin-top: 4px;
+  opacity: 0;
+  filter: blur(3px) saturate(0.62) brightness(0.58);
+  border-radius: 0 0 42px 42px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.08) 36%, transparent 82%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.08) 36%, transparent 82%);
+}
+
+.skin-glassy .water-deck-card-active .water-deck-reflection {
+  opacity: 0.12;
+}
+
+.skin-glassy .water-deck-card:not(.water-deck-card-active) .water-deck-reflection {
+  opacity: 0;
+}
+
+.skin-glassy .water-deck-reflection::after {
+  background:
+    radial-gradient(ellipse at 50% 8%, rgba(180, 250, 255, 0.13), transparent 36%),
+    linear-gradient(180deg, rgba(2, 18, 27, 0.06), transparent 72%);
+}
+
+.skin-glassy .water-decks-scrubber-wrap {
+  position: relative;
+  z-index: 7;
+  display: grid;
+  grid-template-columns: auto minmax(180px, 280px) auto;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  margin: -42px auto 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: rgba(224, 241, 247, 0.76);
+  font-size: 0.74rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  background: rgba(4, 22, 32, 0.36);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.skin-glassy .water-decks-scrubber {
+  width: 100%;
+  min-width: 0;
+  height: 24px;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: transparent;
+  touch-action: manipulation;
+}
+
+.skin-glassy .water-decks-scrubber::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(77, 224, 238, 0.9) 0%, rgba(184, 251, 255, 0.96) var(--water-scrubber-progress), rgba(209, 237, 246, 0.16) var(--water-scrubber-progress), rgba(209, 237, 246, 0.16) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.skin-glassy .water-decks-scrubber::-webkit-slider-thumb {
+  width: 18px;
+  height: 18px;
+  margin-top: -6.5px;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 999px;
+  border: 1px solid rgba(230, 255, 255, 0.84);
+  background:
+    radial-gradient(circle at 35% 30%, white, rgba(179, 252, 255, 0.96) 34%, rgba(46, 204, 224, 0.96) 100%);
+  box-shadow:
+    0 0 0 4px rgba(69, 214, 236, 0.14),
+    0 0 18px rgba(66, 219, 239, 0.48);
+}
+
+.skin-glassy .water-decks-scrubber::-moz-range-track {
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(209, 237, 246, 0.16);
+}
+
+.skin-glassy .water-decks-scrubber::-moz-range-progress {
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(77, 224, 238, 0.9), rgba(184, 251, 255, 0.96));
+}
+
+.skin-glassy .water-decks-scrubber::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(230, 255, 255, 0.84);
+  background: rgba(116, 236, 246, 0.98);
+  box-shadow:
+    0 0 0 4px rgba(69, 214, 236, 0.14),
+    0 0 18px rgba(66, 219, 239, 0.48);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skin-glassy .water-deck-halo {
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .skin-glassy .decks-glass-header {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding: 13px;
+    border-radius: 16px;
+  }
+
+  .skin-glassy .decks-glass-title {
+    flex: 1 1 180px;
+  }
+
+  .skin-glassy .decks-glass-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .skin-glassy .water-decks-stage {
+    min-height: min(570px, calc(100dvh - 154px));
+    margin-top: -2px;
+  }
+
+  .skin-glassy .water-decks-rail {
+    height: 468px;
+    padding-top: 28px;
+    perspective: 820px;
+  }
+
+  .skin-glassy .water-deck-card {
+    width: min(82vw, 360px);
+  }
+
+  .skin-glassy .water-deck-card-shell {
+    height: min(408px, calc(100dvh - 282px));
+    min-height: 342px;
+  }
+
+  .skin-glassy .water-decks-halo-layer {
+    top: 374px;
+  }
+
+  .skin-glassy .water-deck-halo {
+    left: -130px;
+    top: -34px;
+    width: 260px;
+    height: 86px;
+    filter: blur(8px);
+  }
+
+  .skin-glassy .water-deck-reflection {
+    display: none;
+  }
+
+  .skin-glassy .water-decks-active-glow {
+    opacity: 0.16;
+  }
+
+  .skin-glassy .water-decks-floor,
+  .skin-glassy .water-decks-caustics {
+    bottom: 54px;
+    height: 180px;
+    opacity: 0.28;
+  }
+
+  .skin-glassy .water-decks-scrubber-wrap {
+    grid-template-columns: auto minmax(160px, 1fr) auto;
+    width: min(100% - 28px, 342px);
+    margin-top: -28px;
+    padding: 9px 11px;
+    font-size: 0.72rem;
+  }
+
+  .skin-glassy .water-decks-scrubber {
+    height: 28px;
+  }
+}
