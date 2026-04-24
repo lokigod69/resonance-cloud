@@ -173,7 +173,7 @@ async def run_enrichment(
     words: list[dict[str, Any]],
     target_language: str,
     base_language: str,
-    llm_model: str = "deepseek/deepseek-v3.2",
+    llm_model: str = "deepseek/deepseek-v4-flash",
 ) -> list[dict[str, Any]]:
     """Batch-enrich all words in a deck via OpenRouter LLM call."""
     if not OPENROUTER_API_KEY:

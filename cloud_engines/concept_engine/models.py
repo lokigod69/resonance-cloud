@@ -56,7 +56,7 @@ class ConceptSettings(BaseModel):
     syllable_chop: bool = Field(default=False, description="Experimental syllable chopping (dramatic mode only)")
     duration: int = Field(default=30, description="Song duration in seconds")
     visual_hint: bool = Field(default=False, description="Whether to generate a visual mood tag")
-    llm_model: str = Field(default="deepseek/deepseek-v3.2", description="OpenRouter model ID")
+    llm_model: str = Field(default="deepseek/deepseek-v4-flash", description="OpenRouter model ID")
 
     @field_validator("genre", mode="before")
     @classmethod

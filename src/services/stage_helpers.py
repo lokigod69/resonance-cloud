@@ -18,7 +18,7 @@ def get_fallback_overrides(
     if stage == "images" and attempt >= 1:
         current_model = (current_settings or {}).get("llm_model", "")
         fallback_model = (
-            "deepseek/deepseek-v3.2"
+            "deepseek/deepseek-v4-flash"
             if current_model == "x-ai/grok-4.1-fast"
             else "x-ai/grok-4.1-fast"
         )
@@ -26,7 +26,7 @@ def get_fallback_overrides(
     if stage == "concept" and attempt >= 1:
         current_model = (current_settings or {}).get("llm_model", "")
         fallback_model = (
-            "deepseek/deepseek-v3.2"
+            "deepseek/deepseek-v4-flash"
             if current_model == "x-ai/grok-4.1-fast"
             else "x-ai/grok-4.1-fast"
         )

@@ -28,7 +28,7 @@ DEFAULT_SETTINGS = {
         "duration": 20,
         "visual_hint": False,
         "use_art_style": False,
-        "llm_model": "deepseek/deepseek-v3.2",
+        "llm_model": "deepseek/deepseek-v4-flash",
     },
     "song": {
         "duration": 20,
