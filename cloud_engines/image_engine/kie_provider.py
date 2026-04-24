@@ -6,12 +6,12 @@ INVESTIGATION_KIE_API_CONTRACT.md §1/§2:
 
   t2i model: "flux-2/pro-text-to-image"
   i2i model: "flux-2/pro-image-to-image"
-  input for t2i: {prompt, aspect_ratio, resolution: "2K", nsfw_checker: False}
-  input for i2i: {prompt, input_urls, aspect_ratio, resolution: "2K", nsfw_checker: False}
+  input for t2i: {prompt, aspect_ratio, resolution: "1K", nsfw_checker: False}
+  input for i2i: {prompt, input_urls, aspect_ratio, resolution: "1K", nsfw_checker: False}
 
-Flux 2 Pro at resolution=2K + aspect_ratio=16:9 returns ~2048-class 16:9,
-not exactly 1920×1080, so we post-process with PIL resize-to-cover +
-center-crop + LANCZOS before saving.
+Flux 2 Pro exposes categorical 1K/2K resolution tiers, not exact pixel
+dimensions, so we post-process with PIL resize-to-cover + center-crop +
+LANCZOS before saving.
 """
 
 from __future__ import annotations
@@ -87,7 +87,7 @@ def render_scene_kie_flux(
     input_block: dict = {
         "prompt": prompt_text,
         "aspect_ratio": aspect_ratio,
-        "resolution": "2K",
+        "resolution": "1K",
         "nsfw_checker": False,
     }
     if model_id == FLUX_I2I_MODEL:
