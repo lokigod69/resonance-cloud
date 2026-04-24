@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { Mic, Volume2, ArrowLeft, Loader2, Play, Square, UserRoundCog, MessageSquarePlus, History, Signal } from 'lucide-react'
 import { useVoiceTutor } from '@/hooks/useVoiceTutor'
 import { useGrokRealtime } from '@/hooks/useGrokRealtime'
@@ -33,6 +33,8 @@ import { SPEAK_LANGUAGES, LANGUAGES as ALL_LANGUAGES } from '@/lib/languages'
 
 const SPEAK_ORDER = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'hi', 'ar', 'fil', 'id', 'ko']
 const GROK_LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
+const DEFAULT_GROK_VOICE: GrokVoice = 'eve'
+const DEFAULT_GROK_CATEGORY: GrokCategory | 'free_chat' = 'free_chat'
 
 const LANGUAGES = SPEAK_ORDER
   .map((code) => SPEAK_LANGUAGES.find((l) => l.code === code))
@@ -69,6 +71,30 @@ function TypingIndicator() {
   )
 }
 
+function SpeakRippleField() {
+  return <div className="speak-ripple-field" aria-hidden="true" />
+}
+
+function SpeakSelectionShell({
+  children,
+  maxWidth = 'max-w-6xl',
+  className = '',
+}: {
+  children: ReactNode
+  maxWidth?: string
+  className?: string
+}) {
+  return (
+    <div className={`speak-page-shell relative isolate min-h-full overflow-hidden ${className}`}>
+      <div className="speak-page-aura" aria-hidden="true" />
+      <SpeakRippleField />
+      <div className={`relative z-10 mx-auto w-full ${maxWidth} px-4 py-6 sm:px-6 sm:py-8 lg:px-8`}>
+        {children}
+      </div>
+    </div>
+  )
+}
+
 function isGrokLevel(value: string | null): value is GrokLevel {
   return value === 'zero' || value === 'beginner' || value === 'intermediate' || value === 'advanced'
 }
@@ -101,8 +127,8 @@ export default function Speak() {
   const [selectedCategory, setSelectedCategory] = useState<ScenarioCategory | null>(null)
   const [drawnScenes, setDrawnScenes] = useState<RoleplayScenario[]>([])
   const [pickedScene, setPickedScene] = useState<RoleplayScenario | null>(null)
-  const [selectedGrokVoice, setSelectedGrokVoice] = useState<GrokVoice | null>(null)
-  const [selectedGrokCategory, setSelectedGrokCategory] = useState<GrokCategory | 'free_chat' | null>(null)
+  const [selectedGrokVoice, setSelectedGrokVoice] = useState<GrokVoice | null>(DEFAULT_GROK_VOICE)
+  const [selectedGrokCategory, setSelectedGrokCategory] = useState<GrokCategory | 'free_chat' | null>(DEFAULT_GROK_CATEGORY)
   const [grokLevel, setGrokLevel] = useState<GrokLevel | null>(null)
   const [grokPickerStep, setGrokPickerStep] = useState<GrokPickerStep>('voice')
   const [grokSessionActive, setGrokSessionActive] = useState(false)
@@ -146,8 +172,8 @@ export default function Speak() {
   const grokHeaderName = selectedGrokVoice ? `${grokCategoryLabel} · ${selectedGrokVoice}` : grokCategoryLabel
 
   const clearGrokUiState = () => {
-    setSelectedGrokVoice(null)
-    setSelectedGrokCategory(null)
+    setSelectedGrokVoice(DEFAULT_GROK_VOICE)
+    setSelectedGrokCategory(DEFAULT_GROK_CATEGORY)
     setGrokPickerStep('voice')
     setGrokSessionActive(false)
     setGrokShowTranscript(false)
@@ -302,60 +328,64 @@ export default function Speak() {
 
   if (!tutor.language) {
     return (
-      <div className="flex flex-col min-h-full pb-20">
-        <div className="sticky top-0 z-40 bg-gray-950 pt-6 pb-4">
-          <div className="max-w-2xl mx-auto w-full px-6">
+      <SpeakSelectionShell className="pb-20">
+        <div className="pt-2 pb-4">
+          <div className="max-w-3xl mx-auto w-full px-2">
             <div className="flex flex-col items-center">
               <div className="flex items-center gap-3">
-                <Mic className="h-6 w-6 text-[var(--accent,#06b6d4)]" />
-                <h1 className="text-xl font-semibold text-white">{t('speak.voiceTutor')}</h1>
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] shadow-[0_18px_50px_rgba(15,23,42,0.45)] backdrop-blur-xl">
+                  <Mic className="h-5 w-5 text-indigo-200" />
+                </span>
+                <h1 className="text-2xl font-semibold text-white sm:text-3xl">{t('speak.voiceTutor')}</h1>
               </div>
               <p className="text-sm text-gray-400 text-center mt-1">{t('speak.chooseLang')}</p>
             </div>
           </div>
         </div>
 
-        <div className="flex-1 flex items-start justify-center px-6 pt-6">
-          <div className="w-full max-w-2xl">
-            <div className="flex gap-2 mb-6 justify-center">
+        <div className="flex-1 flex items-start justify-center px-0 pt-6">
+          <div className="w-full max-w-5xl">
+            <div className="mx-auto mb-8 grid w-full max-w-md grid-cols-2 gap-1 rounded-full border border-white/10 bg-slate-950/55 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
               <button
                 onClick={() => setSpeakMode('freeform')}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70 ${
                   speakMode === 'freeform'
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/60'
+                    ? 'bg-white/[0.12] text-white shadow-[0_10px_25px_rgba(79,70,229,0.22),inset_0_1px_0_rgba(255,255,255,0.22)]'
+                    : 'text-slate-400 hover:bg-white/[0.06] hover:text-white'
                 }`}
               >
                 {t('speak.freeformTab')}
               </button>
               <button
                 onClick={() => setSpeakMode('roleplay')}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70 ${
                   speakMode === 'roleplay'
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-gray-800/60 text-gray-300 hover:bg-gray-700/60'
+                    ? 'bg-white/[0.12] text-white shadow-[0_10px_25px_rgba(79,70,229,0.22),inset_0_1px_0_rgba(255,255,255,0.22)]'
+                    : 'text-slate-400 hover:bg-white/[0.06] hover:text-white'
                 }`}
               >
-                🎭 {t('speak.roleplayTab')}
+                {t('speak.roleplayTab')}
               </button>
             </div>
 
             {!tutor.isSupported && (
-              <div className="mb-6 px-4 py-3 rounded-lg bg-yellow-900/30 border border-yellow-700/40 text-yellow-300 text-sm">
+              <div className="mb-6 rounded-2xl border border-amber-300/20 bg-amber-950/25 px-4 py-3 text-sm text-amber-200 backdrop-blur-xl">
                 {t('speak.browserWarning')}
               </div>
             )}
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {LANGUAGES.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => tutor.selectLanguage(lang.code)}
                   disabled={tutor.status === 'processing'}
-                  className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="speak-glass-card group flex min-h-[128px] flex-col items-center justify-center gap-3 px-4 py-5 text-center transition-all hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <FlagIcon code={lang.code} className="w-10 h-auto" />
-                  <span className="text-sm font-medium text-gray-200 text-center leading-tight">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] transition-transform group-hover:scale-[1.03]">
+                    <FlagIcon code={lang.code} className="w-10 h-auto" />
+                  </span>
+                  <span className="text-sm font-semibold text-slate-100 text-center leading-tight">
                     {lang.nativeName}
                   </span>
                 </button>
@@ -363,20 +393,20 @@ export default function Speak() {
             </div>
 
             {tutor.status === 'processing' && (
-              <div className="flex items-center justify-center gap-2 mt-8 text-gray-400 text-sm">
+              <div className="flex items-center justify-center gap-2 mt-8 text-slate-400 text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 {t('speak.startingConversation')}
               </div>
             )}
 
             {tutor.status === 'error' && tutor.error && (
-              <div className="mt-6 px-4 py-3 rounded-lg bg-red-900/30 border border-red-700/40 text-red-300 text-sm">
+              <div className="mt-6 rounded-2xl border border-red-400/20 bg-red-950/25 px-4 py-3 text-sm text-red-200 backdrop-blur-xl">
                 {tutor.error}
               </div>
             )}
           </div>
         </div>
-      </div>
+      </SpeakSelectionShell>
     )
   }
 
@@ -532,14 +562,15 @@ export default function Speak() {
         ? isStarting
         : ((!!tutor.conversationId && !tutor.isChangingVoice) || isBusy)
     const showProviderToggle = activeProvider === 'grok' || activeProvider === 'voxtral' || isGeminiVoiceStage
+    const pickerShellMaxWidth = activeProvider === 'grok' ? 'max-w-6xl' : 'max-w-5xl'
 
     return (
-      <div className="flex flex-col min-h-full pb-20">
-        <div className="sticky top-0 z-40 bg-gray-950 pt-4 pb-3 border-b border-white/5">
-          <div className="max-w-2xl mx-auto w-full px-4 flex items-center gap-3">
+      <SpeakSelectionShell maxWidth={pickerShellMaxWidth} className="pb-20">
+        <div className="mb-6 flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/45 px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
+          <div className="flex w-full items-center gap-3">
             <button
               onClick={goBack}
-              className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="rounded-xl p-2 text-slate-400 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70"
               title="Back"
             >
               <ArrowLeft className="h-5 w-5" />
@@ -549,29 +580,29 @@ export default function Speak() {
           </div>
         </div>
 
-        <div className="flex-1 flex items-start justify-center px-6 pt-6">
-          <div className="w-full max-w-2xl">
+        <div className="flex-1 flex items-start justify-center">
+          <div className="w-full">
             {isStarting && (
-              <div className="flex items-center gap-2 mb-4 text-gray-400 text-sm">
+              <div className="flex items-center gap-2 mb-4 text-slate-400 text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 {t('speak.startingConversation')}
               </div>
             )}
 
             {activeProvider === 'grok' && grok.error && (
-              <div className="mb-4 px-4 py-3 rounded-lg bg-red-900/30 border border-red-700/40 text-red-300 text-sm">
+              <div className="mb-4 rounded-2xl border border-red-400/20 bg-red-950/25 px-4 py-3 text-sm text-red-200 backdrop-blur-xl">
                 {grok.error}
               </div>
             )}
 
             {activeProvider !== 'grok' && tutor.status === 'error' && tutor.error && (
-              <div className="mb-4 px-4 py-3 rounded-lg bg-red-900/30 border border-red-700/40 text-red-300 text-sm">
+              <div className="mb-4 rounded-2xl border border-red-400/20 bg-red-950/25 px-4 py-3 text-sm text-red-200 backdrop-blur-xl">
                 {tutor.error}
               </div>
             )}
 
             {showProviderToggle && (
-              <div className="mb-4">
+              <div className="mb-6">
                 <ProviderToggle
                   value={activeProvider}
                   onChange={handleProviderChange}
@@ -645,18 +676,18 @@ export default function Speak() {
             )}
           </div>
         </div>
-      </div>
+      </SpeakSelectionShell>
     )
   }
 
   if (activeProvider !== 'grok' && (!tutor.level || tutor.showLevelPicker)) {
     return (
-      <div className="flex flex-col min-h-full pb-20">
-        <div className="sticky top-0 z-40 bg-gray-950 pt-4 pb-3 border-b border-white/5">
-          <div className="max-w-2xl mx-auto w-full px-4 flex items-center gap-3">
+      <SpeakSelectionShell maxWidth="max-w-xl" className="pb-20">
+        <div className="mb-6 flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/45 px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
+          <div className="flex w-full items-center gap-3">
             <button
               onClick={tutor.cancelLevelChange}
-              className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="rounded-xl p-2 text-slate-400 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70"
               title="Back to voice selection"
             >
               <ArrowLeft className="h-5 w-5" />
@@ -666,8 +697,8 @@ export default function Speak() {
           </div>
         </div>
 
-        <div className="flex-1 flex items-start justify-center px-6 pt-6">
-          <div className="w-full max-w-sm">
+        <div className="flex-1 flex items-start justify-center">
+          <div className="w-full">
             <h2 className="text-xl font-semibold text-white mb-2">
               {t('speak.howMuch', { language: selectedLang?.nativeName ?? '' })}
             </h2>
@@ -680,7 +711,7 @@ export default function Speak() {
                   onClick={() => {
                     void tutor.selectLevel(opt.level)
                   }}
-                  className="flex items-center gap-4 px-5 py-4 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left"
+                  className="speak-glass-card flex items-center gap-4 px-5 py-4 text-left transition-all hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65"
                 >
                   <span className="text-2xl">{opt.emoji}</span>
                   <div>
@@ -697,8 +728,8 @@ export default function Speak() {
                   onClick={() => tutor.toggleStudyMode(studyWords.studyWords)}
                   className={`px-4 py-2 rounded-full text-sm border transition-colors ${
                     tutor.studyMode
-                      ? 'bg-cyan-900/40 border-cyan-500/50 text-cyan-200'
-                      : 'bg-gray-800/50 border-white/10 text-gray-300 hover:bg-gray-700/60'
+                      ? 'border-cyan-300/40 bg-cyan-950/35 text-cyan-100'
+                      : 'border-white/10 bg-slate-900/55 text-slate-300 hover:bg-slate-800/65'
                   }`}
                 >
                   {tutor.studyMode ? '📖 Study Mode ON' : 'Study my words'}
@@ -707,7 +738,7 @@ export default function Speak() {
             )}
           </div>
         </div>
-      </div>
+      </SpeakSelectionShell>
     )
   }
 

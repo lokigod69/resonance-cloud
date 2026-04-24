@@ -566,6 +566,91 @@ input[type="range"].volume-slider::-moz-range-track {
 /* ── Anti-banding noise overlay (global, both skins) ── */
 /* position:fixed + z-index:9999 floats above all content including Glassy
    skin's opaque wrapper. pointer-events:none ensures zero interaction blocking. */
+/* Speak selection surfaces */
+.speak-page-shell {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(79, 70, 229, 0.18), transparent 30%),
+    radial-gradient(circle at 86% 18%, rgba(14, 165, 233, 0.13), transparent 28%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.22), rgba(2, 6, 23, 0.04));
+  color: white;
+}
+
+.skin-glassy .speak-page-shell {
+  background:
+    radial-gradient(circle at 16% 12%, rgba(99, 102, 241, 0.1), transparent 32%),
+    radial-gradient(circle at 86% 18%, rgba(14, 165, 233, 0.07), transparent 30%),
+    linear-gradient(180deg, rgba(10, 10, 12, 0.16), rgba(10, 10, 12, 0));
+}
+
+.speak-page-aura {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(148, 163, 184, 0.1), transparent 48%),
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.025), transparent);
+  opacity: 0.9;
+}
+
+.skin-glassy .speak-page-aura {
+  opacity: 0.55;
+}
+
+.speak-ripple-field {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -120px;
+  height: 320px;
+  pointer-events: none;
+  opacity: 0.5;
+  background:
+    radial-gradient(ellipse at center, rgba(139, 92, 246, 0.2) 0%, transparent 62%),
+    repeating-radial-gradient(ellipse at center, rgba(165, 180, 252, 0.18) 0 1px, transparent 1px 34px);
+  mask-image: linear-gradient(to top, black, transparent 78%);
+  -webkit-mask-image: linear-gradient(to top, black, transparent 78%);
+  animation: speakRippleDrift 18s ease-in-out infinite alternate;
+}
+
+.skin-glassy .speak-ripple-field {
+  opacity: 0.32;
+}
+
+.speak-glass-card {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.55);
+  box-shadow:
+    0 18px 45px rgba(2, 6, 23, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.skin-glassy .speak-glass-card {
+  background: rgba(15, 23, 42, 0.44);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+.speak-start-button {
+  box-shadow:
+    0 22px 55px rgba(79, 70, 229, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+}
+
+@keyframes speakRippleDrift {
+  0% { transform: translate3d(-1%, 0, 0) scale(1); }
+  100% { transform: translate3d(1%, -6px, 0) scale(1.02); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speak-ripple-field {
+    animation: none;
+  }
+}
+
 body::before {
   content: '';
   position: fixed;

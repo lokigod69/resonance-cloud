@@ -73,17 +73,17 @@ export function GeminiModeVoicePicker({
     return (
       <div>
         <p className={`${SECTION_LABEL_CLASS} mb-3`}>VOICE STYLES</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {GEMINI_VOICES.map((voice) => {
             const selected = selectedVoiceName === voice.name
             return (
               <div
                 key={voice.name}
-                className={`relative rounded-2xl border transition-colors ${
-                  selected
-                    ? 'bg-cyan-900/30 border-cyan-500/40'
-                    : 'bg-gray-800/50 border-white/5 hover:bg-gray-700/60 hover:border-white/10'
-                }`}
+                  className={`speak-glass-card relative transition-all ${
+                    selected
+                      ? 'border-indigo-200/55 bg-indigo-950/35 shadow-[0_0_0_1px_rgba(165,180,252,0.25),0_18px_45px_rgba(79,70,229,0.22)]'
+                      : 'hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65'
+                  }`}
               >
                 <button
                   type="button"
@@ -92,7 +92,7 @@ export function GeminiModeVoicePicker({
                     onStageChange('mode')
                   }}
                   disabled={disabled}
-                  className="w-full flex flex-col items-start gap-1 px-3 py-3 pr-10 rounded-2xl text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex min-h-[104px] flex-col items-start justify-center gap-1 px-4 py-4 pr-12 rounded-2xl text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="text-sm font-medium text-white truncate max-w-full">{voice.name}</span>
                   <span className="text-xs text-gray-400 truncate max-w-full">{voice.tone}</span>
@@ -118,7 +118,7 @@ export function GeminiModeVoicePicker({
     return (
       <div>
         <p className={`${SECTION_LABEL_CLASS} mb-3`}>CHOOSE A VIBE</p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {GEMINI_CHARACTER_MODES.map((mode) => {
             const selected = selectedModeId === mode.id
             return (
@@ -130,10 +130,10 @@ export function GeminiModeVoicePicker({
                   onStageChange('accent')
                 }}
                 disabled={disabled}
-                className={`flex flex-col items-start gap-1 px-3 py-4 rounded-2xl border text-left transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+                className={`speak-glass-card flex min-h-[132px] flex-col items-start gap-2 px-4 py-4 text-left transition-all disabled:cursor-not-allowed disabled:opacity-50 ${
                   selected
-                    ? 'bg-cyan-900/30 border-cyan-500/40'
-                    : 'bg-gray-800/50 border-white/5 hover:bg-gray-700/60 hover:border-white/10'
+                    ? 'border-indigo-200/55 bg-indigo-950/35 shadow-[0_0_0_1px_rgba(165,180,252,0.25),0_18px_45px_rgba(79,70,229,0.22)]'
+                    : 'hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65'
                 }`}
               >
                 <span className="text-sm font-medium text-white">{mode.displayName}</span>
@@ -170,7 +170,7 @@ export function GeminiModeVoicePicker({
             <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
               {GROUP_LABELS[group]}
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {accentGroups[group].map((accent) => {
                 const selected = accent.id === accentId
                 return (
@@ -179,10 +179,10 @@ export function GeminiModeVoicePicker({
                     type="button"
                     onClick={() => onAccentChange(accent.id)}
                     disabled={disabled}
-                    className={`flex items-center justify-between gap-2 px-3 py-2.5 rounded-xl border text-left transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+                    className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2.5 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
                       selected
-                        ? 'bg-cyan-900/30 border-cyan-500/40 text-white'
-                        : 'bg-gray-800/50 border-white/5 text-gray-200 hover:bg-gray-700/60'
+                        ? 'border-indigo-200/45 bg-indigo-950/35 text-white'
+                        : 'border-white/10 bg-slate-900/55 text-slate-200 hover:bg-slate-800/65'
                     }`}
                   >
                     <span className="text-xs font-medium truncate">{accent.name}</span>
@@ -196,7 +196,7 @@ export function GeminiModeVoicePicker({
       </div>
 
       <div
-        className="sticky bottom-0 pt-4 bg-gradient-to-t from-gray-950 via-gray-950/95 to-transparent"
+        className="sticky bottom-0 pt-4 bg-gradient-to-t from-slate-950 via-slate-950/95 to-transparent"
         style={FOOTER_SAFE_AREA_STYLE}
       >
         <p className="text-xs text-gray-400 mb-2 truncate" title={summary}>
@@ -213,7 +213,7 @@ export function GeminiModeVoicePicker({
             })
           }}
           disabled={!selectedMode || !selectedVoiceName || disabled}
-          className="w-full px-4 py-3 rounded-xl bg-cyan-600 text-white text-sm font-semibold hover:bg-cyan-500 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          className="speak-start-button w-full rounded-full bg-indigo-500 px-4 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-indigo-400 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 disabled:shadow-none"
         >
           {confirmLabel}
         </button>

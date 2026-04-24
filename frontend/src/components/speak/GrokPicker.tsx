@@ -1,3 +1,19 @@
+import {
+  ArrowRight,
+  Brain,
+  BriefcaseBusiness,
+  Check,
+  Heart,
+  Home,
+  Loader2,
+  MapPin,
+  MessageCircle,
+  Newspaper,
+  Palette,
+  Sparkles,
+  Utensils,
+  type LucideIcon,
+} from 'lucide-react'
 import { GROK_CATEGORIES, type GrokCategory } from '@/data/grokCategories'
 import { GROK_VOICES, type GrokVoice } from '@/data/grokVoices'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -19,7 +35,7 @@ interface GrokPickerProps {
   isStarting: boolean
 }
 
-const SECTION_LABEL_CLASS = 'text-xs font-semibold text-gray-400 uppercase tracking-wider'
+const SECTION_LABEL_CLASS = 'text-xs font-semibold text-slate-400 uppercase tracking-[0.22em]'
 const LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
 
 const CATEGORY_LABELS: Record<GrokCategory, string> = {
@@ -31,6 +47,232 @@ const CATEGORY_LABELS: Record<GrokCategory, string> = {
   food: 'Food',
   arts: 'Arts',
   news: 'News',
+}
+
+const CATEGORY_VISUALS: Record<GrokCategory, { Icon: LucideIcon; accent: string; description: string }> = {
+  travel: {
+    Icon: MapPin,
+    accent: 'from-sky-300/25 to-indigo-400/10',
+    description: 'Airports, hotels, directions, and travel surprises.',
+  },
+  business: {
+    Icon: BriefcaseBusiness,
+    accent: 'from-cyan-300/20 to-blue-400/10',
+    description: 'Meetings, deals, pitches, and professional practice.',
+  },
+  romance: {
+    Icon: Heart,
+    accent: 'from-rose-300/25 to-fuchsia-400/10',
+    description: 'Dates, feelings, and natural social nuance.',
+  },
+  philosophy: {
+    Icon: Brain,
+    accent: 'from-violet-300/25 to-indigo-400/10',
+    description: 'Ideas, debate, meaning, and abstract conversation.',
+  },
+  daily_life: {
+    Icon: Home,
+    accent: 'from-emerald-300/20 to-cyan-400/10',
+    description: 'Errands, schedules, home, and everyday fluency.',
+  },
+  food: {
+    Icon: Utensils,
+    accent: 'from-amber-300/20 to-orange-400/10',
+    description: 'Restaurants, ordering, preferences, and taste.',
+  },
+  arts: {
+    Icon: Palette,
+    accent: 'from-fuchsia-300/20 to-violet-400/10',
+    description: 'Culture, film, music, exhibitions, and style.',
+  },
+  news: {
+    Icon: Newspaper,
+    accent: 'from-slate-200/20 to-blue-400/10',
+    description: 'Current events, opinions, and world context.',
+  },
+}
+
+const VOICE_ACCENTS: Record<GrokVoice, string> = {
+  eve: 'from-indigo-200/90 to-cyan-200/70',
+  ara: 'from-rose-200/90 to-indigo-200/70',
+  rex: 'from-cyan-200/90 to-blue-300/70',
+  sal: 'from-violet-200/90 to-slate-200/70',
+  leo: 'from-amber-200/90 to-indigo-200/70',
+}
+
+const LEVEL_VISUALS: Record<GrokLevel, { badge: string; accent: string }> = {
+  zero: { badge: 'L0', accent: 'from-emerald-300/25 to-cyan-400/10' },
+  beginner: { badge: 'L1', accent: 'from-sky-300/25 to-indigo-400/10' },
+  intermediate: { badge: 'L2', accent: 'from-violet-300/25 to-indigo-400/10' },
+  advanced: { badge: 'L3', accent: 'from-amber-300/25 to-indigo-400/10' },
+}
+
+const cardBase =
+  'speak-glass-card relative overflow-hidden transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70 disabled:cursor-not-allowed disabled:opacity-50'
+const cardIdle = 'hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65'
+const cardSelected =
+  'border-indigo-200/55 bg-indigo-950/35 shadow-[0_0_0_1px_rgba(165,180,252,0.25),0_18px_45px_rgba(79,70,229,0.22)]'
+
+function VoiceWaveIcon({ voice, selected }: { voice: GrokVoice; selected: boolean }) {
+  const heights = voice === 'eve'
+    ? ['h-3', 'h-6', 'h-4', 'h-7', 'h-5']
+    : voice === 'ara'
+      ? ['h-4', 'h-5', 'h-7', 'h-5', 'h-3']
+      : voice === 'rex'
+        ? ['h-6', 'h-4', 'h-7', 'h-4', 'h-6']
+        : voice === 'sal'
+          ? ['h-3', 'h-5', 'h-6', 'h-5', 'h-4']
+          : ['h-7', 'h-5', 'h-4', 'h-6', 'h-3']
+
+  return (
+    <span className={`relative flex h-14 w-14 shrink-0 items-center justify-center rounded-full border ${selected ? 'border-indigo-100/45 bg-indigo-200/15' : 'border-white/10 bg-white/[0.06]'}`}>
+      <span className={`absolute inset-1 rounded-full bg-gradient-to-br ${VOICE_ACCENTS[voice]} opacity-10`} />
+      <span className="relative flex items-center gap-1">
+        {heights.map((height, index) => (
+          <span
+            key={`${voice}-${index}`}
+            className={`${height} w-1 rounded-full bg-gradient-to-t ${VOICE_ACCENTS[voice]} shadow-[0_0_14px_rgba(165,180,252,0.24)]`}
+          />
+        ))}
+      </span>
+    </span>
+  )
+}
+
+function VoiceCard({
+  voice,
+  selected,
+  disabled,
+  onSelect,
+}: {
+  voice: (typeof GROK_VOICES)[number]
+  selected: boolean
+  disabled: boolean
+  onSelect: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      disabled={disabled}
+      aria-pressed={selected}
+      className={`${cardBase} ${selected ? cardSelected : cardIdle} flex min-h-[190px] flex-col items-start gap-4 p-4 text-left`}
+    >
+      <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+      <div className="flex w-full items-start justify-between gap-3">
+        <VoiceWaveIcon voice={voice.id} selected={selected} />
+        {selected && (
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-200/15 text-indigo-100">
+            <Check className="h-4 w-4" />
+          </span>
+        )}
+      </div>
+      <div>
+        <p className="text-base font-semibold text-white">{voice.displayName}</p>
+        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-100/75">{voice.tone}</p>
+      </div>
+      <p className="text-sm leading-relaxed text-slate-400">{voice.description}</p>
+    </button>
+  )
+}
+
+function ModeVisual({
+  Icon,
+  accent,
+  selected,
+  large = false,
+}: {
+  Icon: LucideIcon
+  accent: string
+  selected: boolean
+  large?: boolean
+}) {
+  return (
+    <span className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-2xl border ${large ? 'h-16 w-16' : 'h-12 w-12'} ${selected ? 'border-indigo-100/45 bg-indigo-200/15' : 'border-white/10 bg-white/[0.06]'}`}>
+      <span className={`absolute inset-0 bg-gradient-to-br ${accent}`} />
+      <Icon className={`${large ? 'h-7 w-7' : 'h-5 w-5'} relative text-white/90`} />
+    </span>
+  )
+}
+
+function ModeCard({
+  category,
+  selected,
+  disabled,
+  onSelect,
+}: {
+  category: (typeof GROK_CATEGORIES)[number]
+  selected: boolean
+  disabled: boolean
+  onSelect: () => void
+}) {
+  const { t } = useTranslation()
+  const translated = t(category.displayKey)
+  const label = translated === category.displayKey ? CATEGORY_LABELS[category.id] : translated
+  const visual = CATEGORY_VISUALS[category.id]
+
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      disabled={disabled}
+      aria-pressed={selected}
+      className={`${cardBase} ${selected ? cardSelected : cardIdle} flex min-h-[150px] flex-col items-start gap-3 p-4 text-left`}
+    >
+      <div className="flex w-full items-start justify-between gap-3">
+        <ModeVisual Icon={visual.Icon} accent={visual.accent} selected={selected} />
+        {selected && <Check className="h-4 w-4 text-indigo-100" />}
+      </div>
+      <div>
+        <p className="text-sm font-semibold text-white">{label}</p>
+        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-400">{visual.description}</p>
+      </div>
+    </button>
+  )
+}
+
+function LevelBadge({ level, selected }: { level: GrokLevel; selected: boolean }) {
+  const visual = LEVEL_VISUALS[level]
+
+  return (
+    <span className={`relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border ${selected ? 'border-indigo-100/45 bg-indigo-200/15' : 'border-white/10 bg-white/[0.06]'}`}>
+      <span className={`absolute inset-0 bg-gradient-to-br ${visual.accent}`} />
+      <span className="relative text-xs font-black tracking-[0.18em] text-white/90">{visual.badge}</span>
+    </span>
+  )
+}
+
+function StartConversationButton({
+  disabled,
+  isStarting,
+  onStart,
+}: {
+  disabled: boolean
+  isStarting: boolean
+  onStart: () => void
+}) {
+  return (
+    <div className="flex justify-center pt-2">
+      <button
+        type="button"
+        onClick={onStart}
+        disabled={disabled}
+        className="speak-start-button inline-flex min-h-14 w-full max-w-sm items-center justify-center gap-2 rounded-full bg-indigo-500 px-6 py-4 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-indigo-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200/80 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 disabled:shadow-none"
+      >
+        {isStarting ? (
+          <>
+            <Loader2 className="h-4 w-4 animate-spin" />
+            Starting...
+          </>
+        ) : (
+          <>
+            Start conversation
+            <ArrowRight className="h-4 w-4" />
+          </>
+        )}
+      </button>
+    </div>
+  )
 }
 
 export function GrokPicker({
@@ -48,10 +290,10 @@ export function GrokPicker({
 }: GrokPickerProps) {
   const { t } = useTranslation()
   void language
+  const freeChatSelected = selectedCategory === 'free_chat'
 
   const levelOptions = LEVEL_VALUES.map((level) => ({
     level,
-    emoji: level === 'zero' ? '🌱' : level === 'beginner' ? '📗' : level === 'intermediate' ? '📘' : '📕',
     title: level === 'zero'
       ? t('speak.levelZero')
       : level === 'beginner'
@@ -70,91 +312,78 @@ export function GrokPicker({
 
   if (step === 'voice') {
     return (
-      <div>
-        <p className={`${SECTION_LABEL_CLASS} mb-3`}>Voice</p>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-          {GROK_VOICES.map((voice) => {
-            const selected = selectedVoice === voice.id
-            return (
-              <button
-                key={voice.id}
-                type="button"
-                onClick={() => onSelectVoice(voice.id)}
-                disabled={isStarting}
-                className={`flex flex-col items-start gap-1 px-3 py-4 rounded-2xl border text-left transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
-                  selected
-                    ? 'bg-violet-900/30 border-violet-500/40 shadow-lg shadow-violet-950/30'
-                    : 'bg-gray-800/50 border-white/5 hover:bg-gray-700/60 hover:border-white/10'
-                }`}
-              >
-                <span className="text-sm font-medium text-white">{voice.displayName}</span>
-                <span className="text-xs text-violet-200/80">{voice.tone}</span>
-                <span className="text-xs text-gray-400 leading-snug">{voice.description}</span>
-              </button>
-            )
-          })}
+      <section className="relative isolate space-y-8 overflow-hidden rounded-[32px]">
+        <div className="mb-3 flex items-end justify-between gap-3">
+          <div>
+            <p className={SECTION_LABEL_CLASS}>Voice</p>
+            <p className="mt-1 text-sm text-slate-400">Choose the voice that will carry the conversation.</p>
+          </div>
         </div>
-      </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {GROK_VOICES.map((voice) => (
+            <VoiceCard
+              key={voice.id}
+              voice={voice}
+              selected={selectedVoice === voice.id}
+              disabled={isStarting}
+              onSelect={() => onSelectVoice(voice.id)}
+            />
+          ))}
+        </div>
+      </section>
     )
   }
 
   if (step === 'mode') {
     return (
-      <div>
-        <p className={`${SECTION_LABEL_CLASS} mb-3`}>Mode</p>
-        <div className="space-y-3">
+      <section className="relative isolate space-y-8 overflow-hidden rounded-[32px]">
+        <div>
+          <p className={`${SECTION_LABEL_CLASS} mb-3`}>Mode</p>
           <button
             type="button"
             onClick={() => onSelectCategory('free_chat')}
             disabled={isStarting}
-            className={`w-full flex items-center justify-between gap-3 px-4 py-4 rounded-2xl border text-left transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
-              selectedCategory === 'free_chat'
-                ? 'bg-violet-900/30 border-violet-500/40 shadow-lg shadow-violet-950/30'
-                : 'bg-gray-800/50 border-white/5 hover:bg-gray-700/60 hover:border-white/10'
-            }`}
+            aria-pressed={freeChatSelected}
+            className={`${cardBase} ${freeChatSelected ? cardSelected : cardIdle} mb-3 flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6`}
           >
-            <div>
-              <p className="text-sm font-medium text-white">Free Chat</p>
-              <p className="text-xs text-gray-400">Open conversation with no fixed scenario.</p>
+            <div className="flex min-w-0 items-center gap-4">
+              <ModeVisual Icon={MessageCircle} accent="from-indigo-300/25 to-cyan-400/10" selected={freeChatSelected} large />
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <p className="text-lg font-semibold text-white">Free Chat</p>
+                  <Sparkles className="h-4 w-4 text-indigo-200/80" />
+                </div>
+                <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                  Open conversation with no fixed scenario.
+                </p>
+              </div>
             </div>
-            <span className="text-xl">💬</span>
+            {freeChatSelected && <Check className="hidden h-5 w-5 shrink-0 text-indigo-100 sm:block" />}
           </button>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {GROK_CATEGORIES.map((category) => {
-              const selected = selectedCategory === category.id
-              const translated = t(category.displayKey)
-              const label = translated === category.displayKey ? CATEGORY_LABELS[category.id] : translated
-              return (
-                <button
-                  key={category.id}
-                  type="button"
-                  onClick={() => onSelectCategory(category.id)}
-                  disabled={isStarting}
-                  className={`flex flex-col items-center gap-2 px-3 py-4 rounded-2xl border text-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
-                    selected
-                      ? 'bg-violet-900/30 border-violet-500/40 shadow-lg shadow-violet-950/30'
-                      : 'bg-gray-800/50 border-white/5 hover:bg-gray-700/60 hover:border-white/10'
-                  }`}
-                >
-                  <span className="text-2xl">{category.emoji}</span>
-                  <span className="text-sm font-medium text-white leading-tight">{label}</span>
-                </button>
-              )
-            })}
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {GROK_CATEGORIES.map((category) => (
+              <ModeCard
+                key={category.id}
+                category={category}
+                selected={selectedCategory === category.id}
+                disabled={isStarting}
+                onSelect={() => onSelectCategory(category.id)}
+              />
+            ))}
           </div>
         </div>
-      </div>
+      </section>
     )
   }
 
   return (
-    <div className="w-full max-w-sm mx-auto space-y-6">
+    <section className="relative isolate mx-auto w-full max-w-sm space-y-6 overflow-hidden rounded-[32px]">
       <div>
         <h2 className="text-xl font-semibold text-white mb-2">
           {t('speak.howMuch', { language: languageName })}
         </h2>
-        <p className="text-sm text-gray-400">{t('speak.levelHint')}</p>
+        <p className="text-sm text-slate-400">{t('speak.levelHint')}</p>
       </div>
 
       <div className="grid grid-cols-1 gap-3">
@@ -166,30 +395,24 @@ export function GrokPicker({
               type="button"
               onClick={() => onSelectLevel(opt.level)}
               disabled={isStarting}
-              className={`flex items-center gap-4 px-5 py-4 rounded-xl border text-left transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
-                selected
-                  ? 'bg-violet-900/30 border-violet-500/40 shadow-lg shadow-violet-950/30'
-                  : 'bg-gray-800/50 border-white/5 hover:bg-gray-700/60 hover:border-white/10'
-              }`}
+              aria-pressed={selected}
+              className={`${cardBase} ${selected ? cardSelected : cardIdle} flex items-center gap-4 p-4 text-left`}
             >
-              <span className="text-2xl">{opt.emoji}</span>
+              <LevelBadge level={opt.level} selected={selected} />
               <div>
                 <p className="text-sm font-medium text-white">{opt.title}</p>
-                <p className="text-xs text-gray-400">{opt.desc}</p>
+                <p className="text-xs text-slate-400">{opt.desc}</p>
               </div>
             </button>
           )
         })}
       </div>
 
-      <button
-        type="button"
-        onClick={onStart}
+      <StartConversationButton
         disabled={!selectedVoice || !selectedCategory || !selectedLevel || isStarting}
-        className="w-full px-4 py-3 rounded-xl bg-violet-600 text-white text-sm font-semibold hover:bg-violet-500 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-      >
-        {isStarting ? 'Starting…' : 'Start conversation'}
-      </button>
-    </div>
+        isStarting={isStarting}
+        onStart={onStart}
+      />
+    </section>
   )
 }

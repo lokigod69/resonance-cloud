@@ -36,13 +36,13 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
       {/* Style Tutors */}
       <div>
         <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">STYLE TUTORS</h3>
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {styleTutors.map((char) => (
             <button
               key={char.id}
               onClick={() => onSelect(char)}
               disabled={disabled}
-              className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="speak-glass-card flex min-h-[144px] flex-col items-center justify-center gap-2 px-3 py-4 transition-all hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <CharacterAvatar name={char.name} gender={char.gender} avatarUrl={char.avatarUrl} />
               <span className="text-xs font-medium text-white truncate w-full text-center">{char.name}</span>
@@ -57,13 +57,13 @@ export function CharacterGrid({ onSelect, disabled }: CharacterGridProps) {
       {/* Persona + Public Characters */}
       <div>
         <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">CHARACTERS</h3>
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {personaCharacters.map((char) => (
             <button
               key={char.id}
               onClick={() => onSelect(char)}
               disabled={disabled}
-              className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="speak-glass-card flex min-h-[144px] flex-col items-center justify-center gap-2 px-3 py-4 transition-all hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <CharacterAvatar name={char.name} gender={char.gender} avatarUrl={char.avatarUrl} />
               <span className="text-xs font-medium text-white truncate w-full text-center">{char.name}</span>
