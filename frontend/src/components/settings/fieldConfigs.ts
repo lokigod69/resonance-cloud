@@ -112,7 +112,7 @@ export const IMAGE_FIELDS: FieldDef[] = [
     lego_voxel: 'Lego / Voxel',
   } },
   { key: 'word_in_image', label: 'Word in Image', type: 'toggle', default: true },
-  { key: 'image_model', label: 'Image Model', type: 'dropdown', options: ['flux_pro', 'zturbo', 'wan_fallback'], default: 'flux_pro', optionLabels: { flux_pro: 'Flux 2 Pro', zturbo: 'Z-Image Turbo', wan_fallback: 'Wan 2.7 (fallback)' } },
+  { key: 'image_model', label: 'Image Model', type: 'dropdown', options: ['flux_pro', 'zturbo', 'wan_fast', 'wan_pro'], default: 'flux_pro', optionLabels: { flux_pro: 'Flux 2 Pro', zturbo: 'Z-Image Turbo', wan_fast: 'Wan 2.7', wan_pro: 'Wan 2.7 Pro' } },
   { key: 'llm_model', label: 'LLM Model', type: 'dropdown', options: ['deepseek/deepseek-v3.2', 'deepseek/deepseek-v3.2-speciale', 'google/gemini-3.1-flash-lite-preview', 'x-ai/grok-4.1-fast', 'qwen/qwen3.6-plus-preview:free', 'openai/gpt-4o-mini', 'openai/gpt-5.4-mini', 'qwen/qwen3.5-9b'], default: 'x-ai/grok-4.1-fast', optionLabels: { 'deepseek/deepseek-v3.2': 'DeepSeek V3.2', 'deepseek/deepseek-v3.2-speciale': 'DeepSeek V3.2 Speciale', 'google/gemini-3.1-flash-lite-preview': 'Gemini 3.1 Flash Lite', 'x-ai/grok-4.1-fast': 'Grok 4.1 Fast', 'qwen/qwen3.6-plus-preview:free': 'Qwen 3.6 Plus (free)', 'openai/gpt-4o-mini': 'GPT-4o Mini ($0.15/$0.60)', 'openai/gpt-5.4-mini': 'GPT-5.4 Mini ($0.75/$4.50)', 'qwen/qwen3.5-9b': 'Qwen 3.5-9B ($0.10/$0.15)' }, advanced: true },
 ]
 

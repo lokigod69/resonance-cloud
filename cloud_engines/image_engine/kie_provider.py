@@ -24,7 +24,6 @@ from typing import Optional
 
 from PIL import Image as PILImage
 
-from .prompt_compiler import compile_scene_to_text
 from .kie_common import (
     _submit_task,
     _poll_task,
@@ -62,7 +61,7 @@ def render_scene_kie_flux(
         chain_instruction: Optional continuity instruction injected into the prompt.
         input_urls: For i2i — public HTTPS URLs of reference images (already uploaded
             by the caller via kie_common._upload_for_chaining).
-        use_color_palette: Forwarded to compile_scene_to_text.
+        use_color_palette: Ignored for Flux; kept for signature symmetry.
 
     Returns:
         dict with the standard 9-key provider shape (success, file_path,
@@ -79,12 +78,9 @@ def render_scene_kie_flux(
             model_id=model_id,
         )
 
-    # Compile the text prompt (same compiler Wan uses)
-    prompt_text = compile_scene_to_text(
-        image_prompt,
-        chain_instruction=chain_instruction,
-        use_color_palette=use_color_palette,
-    )
+    prompt_text = json.dumps(image_prompt, ensure_ascii=False)
+    if chain_instruction:
+        prompt_text = f"{chain_instruction}\n\n{prompt_text}"
     logger.info("Flux prompt (%d chars): %.120s...", len(prompt_text), prompt_text)
 
     # Build payload per §1/§2
@@ -161,32 +157,48 @@ def render_scene_kie_flux(
         }
 
     # --- Post-process: resize-to-cover + center-crop to exactly 1920x1080 ---
+    processed = None
     try:
-        img = PILImage.open(output_path)
-        src_w, src_h = img.size
-        if (src_w, src_h) != (TARGET_WIDTH, TARGET_HEIGHT):
-            src_ratio = src_w / src_h
-            target_ratio = TARGET_WIDTH / TARGET_HEIGHT
-            if src_ratio > target_ratio:
-                new_h = TARGET_HEIGHT
-                new_w = int(round(src_w * (TARGET_HEIGHT / src_h)))
-            else:
-                new_w = TARGET_WIDTH
-                new_h = int(round(src_h * (TARGET_WIDTH / src_w)))
-            img = img.resize((new_w, new_h), PILImage.LANCZOS)
-            left = (new_w - TARGET_WIDTH) // 2
-            top = (new_h - TARGET_HEIGHT) // 2
-            img = img.crop((left, top, left + TARGET_WIDTH, top + TARGET_HEIGHT))
-            if img.mode != "RGB":
-                img = img.convert("RGB")
-            img.save(str(output_path), format="PNG")
+        with PILImage.open(output_path) as src_img:
+            src_w, src_h = src_img.size
+            if (src_w, src_h) != (TARGET_WIDTH, TARGET_HEIGHT):
+                src_ratio = src_w / src_h
+                target_ratio = TARGET_WIDTH / TARGET_HEIGHT
+                if src_ratio > target_ratio:
+                    new_h = TARGET_HEIGHT
+                    new_w = int(round(src_w * (TARGET_HEIGHT / src_h)))
+                else:
+                    new_w = TARGET_WIDTH
+                    new_h = int(round(src_h * (TARGET_WIDTH / src_w)))
+                resized = src_img.resize((new_w, new_h), PILImage.LANCZOS)
+                try:
+                    left = (new_w - TARGET_WIDTH) // 2
+                    top = (new_h - TARGET_HEIGHT) // 2
+                    processed = resized.crop((left, top, left + TARGET_WIDTH, top + TARGET_HEIGHT))
+                finally:
+                    resized.close()
+                if processed.mode != "RGB":
+                    rgb = processed.convert("RGB")
+                    processed.close()
+                    processed = rgb
+        if processed is not None:
+            processed.save(str(output_path), format="PNG")
             logger.info(
                 "Flux image resized %dx%d -> %dx%d (LANCZOS + center-crop)",
                 src_w, src_h, TARGET_WIDTH, TARGET_HEIGHT,
             )
     except Exception as e:
-        # Don't fail the render — keep the raw save and log a warning.
-        logger.warning("Flux post-resize failed (keeping raw save): %s", e)
+        return _err(
+            f"flux post-process failed: {e}",
+            prompt_text,
+            provider_name="kie_flux",
+            cost_estimate_usd=KIE_FLUX_PRO_COST_PER_IMAGE,
+            model_id=model_id,
+            request_id=task_id,
+        )
+    finally:
+        if processed is not None:
+            processed.close()
 
     return {
         "success": True,

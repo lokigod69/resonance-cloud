@@ -10,8 +10,8 @@ Always pass image_size={width:1920, height:1080} explicitly — never rely
 on "auto" or named presets (§2 quirk 2).
 
 The renderer calls us synchronously (see INVESTIGATION_RENDERER_CONTRACT.md
-§Appendix A), so both an async primary (`render_scene_fal_zturbo`) and a
-thin sync wrapper (`render_scene_fal_zturbo_sync`) are exposed.
+§Appendix A), so both an async primary (`render_scene_fal_zturbo_async`) and a
+thin sync wrapper (`render_scene_fal_zturbo`) are exposed.
 """
 
 from __future__ import annotations
@@ -27,7 +27,6 @@ import fal_client
 import httpx
 from PIL import Image as PILImage
 
-from .prompt_compiler import compile_scene_to_text
 from src.cost_logger import FAL_ZTURBO_COST_PER_IMAGE
 
 logger = logging.getLogger(__name__)
@@ -38,6 +37,53 @@ ZTURBO_I2I_MODEL = "fal-ai/z-image/turbo/image-to-image"
 FAL_HTTP_TIMEOUT = 60.0
 TARGET_WIDTH = 1920
 TARGET_HEIGHT = 1080
+
+
+def _compile_zturbo_prompt(image_prompt: dict) -> str:
+    parts = []
+    te = image_prompt.get("text_element")
+    if te:
+        parts.append(
+            f'The text "{te.get("text","")}" is written as '
+            f'{te.get("rendering","")}, '
+            f'{te.get("placement","")}.'
+        )
+    subject = image_prompt.get("subject", "")
+    scene = image_prompt.get("scene", "")
+    if subject and scene:
+        parts.append(f"A {subject} in {scene}.")
+    elif subject:
+        parts.append(f"A {subject}.")
+    composition = image_prompt.get("composition", "")
+    if composition:
+        parts.append(f"Composition: {composition}.")
+    lighting = image_prompt.get("lighting", "")
+    if lighting:
+        parts.append(f"Lighting: {lighting}.")
+    style = image_prompt.get("style", "")
+    mood = image_prompt.get("mood", "")
+    if style and mood:
+        parts.append(f"Style: {style}. Mood: {mood}.")
+    elif style:
+        parts.append(f"Style: {style}.")
+    elif mood:
+        parts.append(f"Mood: {mood}.")
+    colors = image_prompt.get("colors", [])
+    if colors:
+        parts.append(
+            f'Color palette: {", ".join(str(c) for c in colors)}.'
+        )
+    details = image_prompt.get("details", "")
+    if details:
+        parts.append(f"Details: {details}.")
+    result = " ".join(parts)
+    if len(result) > 950:
+        snippet = result[:950]
+        if "." in snippet:
+            result = snippet.rsplit(".", 1)[0] + "."
+        else:
+            result = snippet
+    return result
 
 
 def _err_fal(
@@ -60,7 +106,7 @@ def _err_fal(
     }
 
 
-async def render_scene_fal_zturbo(
+async def render_scene_fal_zturbo_async(
     image_prompt: dict,
     model_id: str,
     output_path: Path,
@@ -73,11 +119,9 @@ async def render_scene_fal_zturbo(
 
     Uses fal_client.subscribe_async (queue-backed, auto-retries on 429).
     """
-    prompt_text = compile_scene_to_text(
-        image_prompt,
-        chain_instruction=chain_instruction,
-        use_color_palette=use_color_palette,
-    )
+    prompt_text = _compile_zturbo_prompt(image_prompt)
+    if chain_instruction:
+        prompt_text = f"{chain_instruction}\n\n{prompt_text}"
     logger.info("Z-Turbo prompt (%d chars): %.120s...", len(prompt_text), prompt_text)
 
     # Per §1/§2 — always pass explicit 1920x1080 image_size.
@@ -111,13 +155,20 @@ async def render_scene_fal_zturbo(
     try:
         result = await fal_client.subscribe_async(model_id, arguments=arguments)
     except httpx.HTTPStatusError as e:
-        # Per §0.8 — branch on status_code rather than custom exception classes.
         status = e.response.status_code
-        return _err_fal(
-            f"Fal HTTP {status}: {e}",
-            prompt_text,
-            model_id=model_id,
-        )
+        if status == 401:
+            msg = "Fal auth failed (401) — check FAL_KEY"
+        elif status == 403:
+            msg = "Fal billing / credits exhausted (403)"
+        elif status == 422:
+            msg = f"Fal validation error (422): {e.response.text[:200]}"
+        elif status == 429:
+            msg = "Fal rate limited (429) — queue mode should have retried"
+        elif 500 <= status < 600:
+            msg = f"Fal upstream error ({status})"
+        else:
+            msg = f"Fal HTTP {status}: {e.response.text[:200]}"
+        return _err_fal(msg, prompt_text, model_id=model_id)
     except httpx.TimeoutException as e:
         return _err_fal(
             f"Fal timed out: {e}",
@@ -196,7 +247,7 @@ async def render_scene_fal_zturbo(
     }
 
 
-def render_scene_fal_zturbo_sync(
+def render_scene_fal_zturbo(
     image_prompt: dict,
     model_id: str,
     output_path: Path,
@@ -206,7 +257,7 @@ def render_scene_fal_zturbo_sync(
     use_color_palette: bool = False,
 ) -> dict:
     """Sync wrapper for use from the synchronous render_scene() dispatch."""
-    return asyncio.run(render_scene_fal_zturbo(
+    return asyncio.run(render_scene_fal_zturbo_async(
         image_prompt=image_prompt,
         model_id=model_id,
         output_path=output_path,

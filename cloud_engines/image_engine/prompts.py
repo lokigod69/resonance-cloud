@@ -169,13 +169,83 @@ def _role_block(word: str, translation: str, language: str) -> str:
 
 
 def _image_model_block(image_model: str) -> Optional[str]:
-    """Placeholder for future per-image-model prompt variants.
+    """Per-target-image-model guidance for the storyboard LLM.
 
-    Returns None today; content ships in a later PR once prompting
-    research returns. The `"\\n\\n".join(p for p in parts if p)`
-    assembly in build_system_prompt filters out falsy values, so
-    appending this helper's result is safe even while it's a no-op.
+    Emitted in the system prompt so the LLM shapes each scene's
+    image_prompt fields to match the downstream model's parser
+    preferences. wan_fast and wan_pro use the base storyboard
+    shape (compile_scene_to_text flattens identically for both).
     """
+    if image_model == "flux_pro":
+        return (
+            "TARGET IMAGE MODEL: Flux 2 Pro.\n"
+            "Downstream is Flux 2 Pro — a flow-matching model "
+            "whose internal text encoder natively parses "
+            "structured JSON and hex color codes. Shape each "
+            "scene's image_prompt fields accordingly:\n"
+            "- Keep total content dense but focused across all "
+            "8 fields (aim roughly 100–250 words combined).\n"
+            "- colors[]: emit hex codes like '#c9a66b'. Flux "
+            "parses hex into exact RGB — use them.\n"
+            "- style: reference specific artists, films, or "
+            "cinematographers when fitting (e.g. 'Gerhard "
+            "Richter photorealistic', 'Deakins-style warm key "
+            "light'). Be granular: 'impasto oil with "
+            "palette-knife texture in umber and ochre' not "
+            "'oil painting'.\n"
+            "- lighting and composition: use photographic and "
+            "cinematographic terminology (e.g. '85mm lens, "
+            "shallow DOF', 'rim lighting', 'chiaroscuro', "
+            "'dutch angle', 'volumetric light beams').\n"
+            "- text_element: use explicit quote syntax. "
+            "Example rendering field: \"The text 'abgrund' "
+            "appears as small hand-inked lettering\".\n"
+            "- details: never use negations ('no blur', "
+            "'avoid extra fingers'). Translate to positive "
+            "presence ('razor-sharp focus on facial features', "
+            "'anatomically correct hands with five distinct "
+            "fingers')."
+        )
+    if image_model == "zturbo":
+        return (
+            "TARGET IMAGE MODEL: Z-Image-Turbo.\n"
+            "Downstream is Z-Image-Turbo (Tongyi-MAI), a "
+            "distilled S3-DiT running at CFG=0 with a Qwen3-4B "
+            "text encoder. It architecturally IGNORES negation "
+            "tokens (CFG=0 means there is no mechanism to "
+            "steer away from negatives) and has an attention "
+            "drop-off near 512 tokens. Strict rules:\n"
+            "- NEVER emit negative phrasing in any field. "
+            "Words like 'no', 'without', 'avoid', 'except', "
+            "'not' cause Z-Turbo to render the forbidden "
+            "element. Always translate to positive presence: "
+            "'crisp focus' not 'no blur'; 'plain seamless "
+            "backdrop' not 'no watermark'; 'fully clothed "
+            "modest attire' not 'no nudity'.\n"
+            "- colors[]: emit NAMED colors only (e.g. 'warm "
+            "amber', 'deep slate', 'bone white'), NEVER hex "
+            "codes. Z-Turbo maps hex approximately and "
+            "produces off-brand results.\n"
+            "- text_element.text: keep to 1–3 short words. "
+            "Longer strings corrupt in Z-Turbo's glyph "
+            "rendering.\n"
+            "- style: reference realistic photographic "
+            "terminology ('amateur photography', 'handheld "
+            "iPhone snapshot', 'disposable camera aesthetic', "
+            "'shot on Leica M6 with Kodak Portra 400 grain'). "
+            "Z-Turbo defaults to a plastic overly-polished "
+            "aesthetic — gritty phrasing grounds it.\n"
+            "- lighting: directional and specific ('warm "
+            "street-lamp glow', 'dappled sunlight through "
+            "leaves', 'harsh on-board flash falloff').\n"
+            "- composition: standard framing terms "
+            "('medium-shot portrait', 'ultra-wide landscape', "
+            "'eye-level shot').\n"
+            "- Keep each field concise. The final compiled "
+            "prompt is truncated at ~950 chars downstream."
+        )
+    if image_model in ("wan_fast", "wan_pro"):
+        return None
     return None
 
 

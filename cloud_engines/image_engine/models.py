@@ -70,7 +70,7 @@ def resolve_frame_narrative(frame_narrative: str) -> str:
     """Resolve legacy mode names to new names. Pass-through for new names and 'auto'."""
     return MODE_ALIASES.get(frame_narrative, frame_narrative)
 CLIP_DURATIONS = (5, 10, 15, 20, 30)
-IMAGE_MODELS = ("flux_pro", "zturbo", "wan_fallback")
+IMAGE_MODELS = ("flux_pro", "zturbo", "wan_fast", "wan_pro")
 ASPECT_RATIOS = ("16:9", "1:1", "9:16")
 VISUAL_REFERENCES = ("auto", "etymology", "mnemonic", "none")
 

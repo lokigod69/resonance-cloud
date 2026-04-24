@@ -32,6 +32,7 @@ from src.cost_logger import (
     estimate_gemini_image_cost,
     log_cost,
     KIE_WAN_COST_PER_IMAGE,
+    KIE_WAN_PRO_COST_PER_IMAGE,
     KIE_FLUX_PRO_COST_PER_IMAGE,
     FAL_ZTURBO_COST_PER_IMAGE,
 )
@@ -82,7 +83,7 @@ def resolve_model_id(image_model: str) -> str:
     """Resolve image_model setting value to an actual provider model ID.
 
     Args:
-        image_model: 'flux_pro', 'zturbo', or 'wan_fallback'.
+        image_model: 'flux_pro', 'zturbo', 'wan_fast', or 'wan_pro'.
 
     Returns:
         Concrete provider model ID string. i2i variants are selected
@@ -98,8 +99,10 @@ def resolve_model_id(image_model: str) -> str:
         return "flux-2/pro-text-to-image"
     if image_model == "zturbo":
         return "fal-ai/z-image/turbo"
-    if image_model == "wan_fallback":
+    if image_model == "wan_fast":
         return "wan/2-7-image"
+    if image_model == "wan_pro":
+        return "wan/2-7-image-pro"
     raise ValueError(f"unknown image_model: {image_model}")
 
 
@@ -621,7 +624,7 @@ def render_scene(
 
     # --- Fal Z-Image-Turbo route ---
     if model_id.startswith("fal-ai/"):
-        from .fal_provider import render_scene_fal_zturbo_sync
+        from .fal_provider import render_scene_fal_zturbo
 
         if reference_image_path and reference_image_path.exists() and chain_instruction:
             model_id = "fal-ai/z-image/turbo/image-to-image"
@@ -660,7 +663,7 @@ def render_scene(
                     "output_path": output_path.name,
                 },
             ) as ev:
-                fal_result = render_scene_fal_zturbo_sync(
+                fal_result = render_scene_fal_zturbo(
                     image_prompt=prompt_payload,
                     model_id=model_id,
                     output_path=output_path,
@@ -791,6 +794,32 @@ def render_scene(
                 cost_estimate_usd=wan_result.get("cost_estimate_usd"),
                 response_body=wan_result.get("response_body"),
             )
+        if model_id == "wan/2-7-image-pro":
+            logger.warning(
+                "Scene %d: wan_pro failed, retrying on wan/2-7-image standard",
+                scene_number,
+            )
+            wan_result = render_scene_wan(
+                image_prompt=prompt_payload,
+                model_id="wan/2-7-image",
+                output_path=output_path,
+                aspect_ratio=aspect_ratio,
+                chain_instruction=chain_instruction,
+                input_urls=wan_input_urls,
+                use_color_palette=use_color_palette,
+            )
+            if wan_result["success"]:
+                return RenderResult(
+                    success=True,
+                    scene_number=scene_number,
+                    file_path=output_path.name,
+                    prompt_json=wan_result.get("prompt_text", ""),
+                    provider_name=wan_result.get("provider_name"),
+                    model_name=wan_result.get("model_name"),
+                    request_id=wan_result.get("request_id"),
+                    cost_estimate_usd=wan_result.get("cost_estimate_usd"),
+                    response_body=wan_result.get("response_body"),
+                )
         # Wan failed — typographic fallback (terminal; no cascade to Gemini).
         logger.warning(
             "Scene %d: Wan render failed (%s), using typographic fallback",
@@ -949,7 +978,7 @@ def render_all_scenes(
 
     Args:
         storyboard: The complete storyboard with scenes.
-        image_model: 'fast' or 'quality'.
+        image_model: flux_pro, zturbo, wan_fast, or wan_pro.
         output_dir: Directory to write PNG files.
 
     Returns:
@@ -1026,7 +1055,10 @@ def render_all_scenes(
         per_scene_seconds.append(round(scene_elapsed, 2))
 
         # ── Cost tracking ────────────────────────────────────────
-        if model_id.startswith("wan/"):
+        if model_id == "wan/2-7-image-pro":
+            provider_label = "kie_ai"
+            cost_usd = KIE_WAN_PRO_COST_PER_IMAGE
+        elif model_id.startswith("wan/"):
             provider_label = "kie_ai"
             cost_usd = KIE_WAN_COST_PER_IMAGE
         elif model_id.startswith("flux-2/"):
