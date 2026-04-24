@@ -39,6 +39,76 @@ const PCM_FLUSH_SAMPLES = 2400
 const USER_TRANSCRIPT_DRAIN_TIMEOUT_MS = 2000
 const PERSISTENCE_DRAIN_TIMEOUT_MS = 3000
 
+function readGrokAudioDebugFlag(): boolean {
+  try {
+    return typeof window !== 'undefined' &&
+      window.localStorage.getItem('grokAudioDebug') === '1'
+  } catch {
+    return false
+  }
+}
+
+const GROK_AUDIO_DEBUG = readGrokAudioDebugFlag()
+
+const grokAudioDebug = (...args: unknown[]) => {
+  if (GROK_AUDIO_DEBUG) {
+    console.info('[grok-audio-debug]', ...args)
+  }
+}
+
+function getAudioContextSnapshot(ctx: AudioContext | null) {
+  if (!ctx) return { exists: false }
+  const latencyCtx = ctx as AudioContext & { outputLatency?: number }
+  return {
+    exists: true,
+    state: ctx.state,
+    sampleRate: ctx.sampleRate,
+    baseLatency: ctx.baseLatency,
+    outputLatency: latencyCtx.outputLatency,
+  }
+}
+
+function getPrimerSnapshot(primer: HTMLAudioElement | null) {
+  if (!primer) return { exists: false }
+  return {
+    exists: true,
+    paused: primer.paused,
+    readyState: primer.readyState,
+    currentTime: primer.currentTime,
+    muted: primer.muted,
+    volume: primer.volume,
+  }
+}
+
+function getTrackSnapshot(track: MediaStreamTrack) {
+  return {
+    readyState: track.readyState,
+    muted: track.muted,
+    enabled: track.enabled,
+  }
+}
+
+function getTrackSettingsSnapshot(track: MediaStreamTrack) {
+  const settings = track.getSettings()
+  return {
+    sampleRate: settings.sampleRate,
+    channelCount: settings.channelCount,
+    echoCancellation: settings.echoCancellation,
+    autoGainControl: settings.autoGainControl,
+    noiseSuppression: settings.noiseSuppression,
+  }
+}
+
+function getResponseId(payload: Record<string, unknown>): string | null {
+  if (typeof payload.response_id === 'string') return payload.response_id
+  const response = payload.response
+  if (response && typeof response === 'object' && 'id' in response) {
+    const id = (response as { id?: unknown }).id
+    if (typeof id === 'string') return id
+  }
+  return null
+}
+
 function sleepWithCancel(ms: number): { promise: Promise<void>; cancel: () => void } {
   let timer: ReturnType<typeof window.setTimeout> | null = null
   const promise = new Promise<void>((resolve) => {
@@ -72,6 +142,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const sessionParamsRef = useRef<StartGrokSessionParams | null>(null)
   const currentAssistantIndexRef = useRef<number | null>(null)
   const pendingAssistantContentRef = useRef<string>('')
+  const assistantResponseSeqRef = useRef(0)
+  const audioChunkSeqRef = useRef(0)
+  const micCycleSeqRef = useRef(0)
+  const currentAudioResponseKeyRef = useRef<string | null>(null)
+  const currentResponseAudioChunksRef = useRef(0)
+  const currentResponseTextDeltaSeenRef = useRef(false)
+  const lastTrackStopAtRef = useRef<number | null>(null)
   const workletModuleLoadedRef = useRef(false)
   const pendingPcmChunksRef = useRef<Int16Array[]>([])
   const pendingPcmSampleCountRef = useRef(0)
@@ -89,11 +166,24 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const statusRef = useRef<GrokStatus>('idle')
 
   const primeAudioForIOS = useCallback(() => {
+    if (GROK_AUDIO_DEBUG) {
+      grokAudioDebug('primeAudioForIOS:entry', {
+        context: getAudioContextSnapshot(audioContextRef.current),
+        primer: getPrimerSnapshot(silentPrimerRef.current),
+      })
+    }
     try {
+      const createdContext = GROK_AUDIO_DEBUG ? !audioContextRef.current : false
       if (!audioContextRef.current) {
         audioContextRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
       }
       const ctx = audioContextRef.current
+      if (GROK_AUDIO_DEBUG) {
+        grokAudioDebug('primeAudioForIOS:context-ready', {
+          createdContext,
+          context: getAudioContextSnapshot(ctx),
+        })
+      }
       // iOS adds 'interrupted' (ring switch, Control Center, phone call) —
       // not in the standard AudioContextState union but we still need to resume.
       if (ctx.state !== 'running' && ctx.state !== 'closed') {
@@ -104,11 +194,20 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       source.buffer = buffer
       source.connect(ctx.destination)
       source.start(ctx.currentTime)
+      if (GROK_AUDIO_DEBUG) {
+        grokAudioDebug('primeAudioForIOS:silent-buffer-started', {
+          created: true,
+          connected: true,
+          started: true,
+          context: getAudioContextSnapshot(ctx),
+        })
+      }
     } catch (err) {
       console.warn('[useVoiceTutor] iOS audio prime failed:', err)
     }
 
     try {
+      const createdPrimer = GROK_AUDIO_DEBUG ? !silentPrimerRef.current : false
       if (!silentPrimerRef.current) {
         const el = new Audio(SILENT_MP3_URL)
         el.loop = true
@@ -122,6 +221,12 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         silentPrimerRef.current = el
       }
       const primer = silentPrimerRef.current
+      if (GROK_AUDIO_DEBUG) {
+        grokAudioDebug('primeAudioForIOS:primer-ready', {
+          createdPrimer,
+          primer: getPrimerSnapshot(primer),
+        })
+      }
       if (primer.paused) {
         // Must start inside the user gesture. Log the outcome so we can tell
         // via remote Safari Web Inspector whether the primer ever commits
@@ -129,8 +234,22 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         const p = primer.play()
         if (p) {
           p.then(
-            () => { console.log('[useVoiceTutor] silent primer: play() resolved') },
-            (err) => { console.log('[useVoiceTutor] silent primer: play() rejected:', err?.name, err?.message) },
+            () => {
+              if (GROK_AUDIO_DEBUG) {
+                grokAudioDebug('primeAudioForIOS:primer-play-resolved', {
+                  primer: getPrimerSnapshot(primer),
+                })
+              }
+            },
+            (err) => {
+              if (GROK_AUDIO_DEBUG) {
+                grokAudioDebug('primeAudioForIOS:primer-play-rejected', {
+                  name: err?.name,
+                  message: err?.message,
+                  primer: getPrimerSnapshot(primer),
+                })
+              }
+            },
           )
         }
       }
@@ -140,13 +259,24 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   }, [])
 
   const ensureAudioContext = useCallback(async () => {
+    let createdContext = false
     if (!audioContextRef.current || audioContextRef.current.state === 'closed') {
       audioContextRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
       workletModuleLoadedRef.current = false
+      createdContext = true
     }
     const ctx = audioContextRef.current
+    const stateBeforeResume = GROK_AUDIO_DEBUG ? ctx.state : null
     if (ctx.state !== 'running' && ctx.state !== 'closed') {
       await ctx.resume().catch(() => {})
+    }
+    if (GROK_AUDIO_DEBUG) {
+      grokAudioDebug('ensureAudioContext', {
+        createdContext,
+        stateBeforeResume,
+        stateAfterResume: ctx.state,
+        context: getAudioContextSnapshot(ctx),
+      })
     }
     return ctx
   }, [])
@@ -186,6 +316,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const queueAudioBuffer = useCallback(async (pcm: Int16Array) => {
     if (pcm.length === 0) return
     const ctx = await ensureAudioContext()
+    let responseSeq = 0
+    let chunkSeq = 0
+    if (GROK_AUDIO_DEBUG) {
+      responseSeq = assistantResponseSeqRef.current
+      chunkSeq = audioChunkSeqRef.current + 1
+      audioChunkSeqRef.current = chunkSeq
+    }
     const audioBuffer = ctx.createBuffer(1, pcm.length, PCM_SAMPLE_RATE)
     const channel = audioBuffer.getChannelData(0)
     for (let i = 0; i < pcm.length; i++) {
@@ -196,13 +333,51 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     source.buffer = audioBuffer
     source.connect(ctx.destination)
 
+    const queueLengthBefore = GROK_AUDIO_DEBUG ? audioQueueRef.current.length : 0
+    const playheadBefore = GROK_AUDIO_DEBUG ? playheadRef.current : 0
     const startAt = Math.max(ctx.currentTime, playheadRef.current)
     playheadRef.current = startAt + audioBuffer.duration
     audioQueueRef.current.push(source)
 
+    if (GROK_AUDIO_DEBUG) {
+      const queueLengthAfter = audioQueueRef.current.length
+      let peak = 0
+      let sumSquares = 0
+      for (let i = 0; i < pcm.length; i++) {
+        const sample = pcm[i] / 0x8000
+        const absValue = Math.abs(sample)
+        if (absValue > peak) peak = absValue
+        sumSquares += sample * sample
+      }
+      const rms = Math.sqrt(sumSquares / pcm.length)
+      grokAudioDebug('queueAudioBuffer:scheduled', {
+        assistantResponseSeq: responseSeq,
+        audioChunkSeq: chunkSeq,
+        sampleCount: pcm.length,
+        peak,
+        rms,
+        playbackSeconds: pcm.length / PCM_SAMPLE_RATE,
+        contextState: ctx.state,
+        contextCurrentTime: ctx.currentTime,
+        playheadBefore,
+        startAt,
+        queueLengthBefore,
+        queueLengthAfter,
+      })
+    }
+
     source.onended = () => {
       try { source.disconnect() } catch { /* ignore */ }
       audioQueueRef.current = audioQueueRef.current.filter((node) => node !== source)
+      if (GROK_AUDIO_DEBUG) {
+        grokAudioDebug('queueAudioBuffer:ended', {
+          assistantResponseSeq: responseSeq,
+          audioChunkSeq: chunkSeq,
+          eventTime: ctx.currentTime,
+          queueLengthAtEnd: audioQueueRef.current.length,
+          playheadAtEnd: playheadRef.current,
+        })
+      }
       if (audioQueueRef.current.length === 0) {
         playheadRef.current = 0
         if (mountedRef.current) {
@@ -364,6 +539,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     const type = typeof payload.type === 'string' ? payload.type : ''
     switch (type) {
       case 'response.text.delta': {
+        if (GROK_AUDIO_DEBUG) currentResponseTextDeltaSeenRef.current = true
         appendAssistantDelta(typeof payload.delta === 'string' ? payload.delta : '')
         break
       }
@@ -389,6 +565,21 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       case 'response.output_audio.delta': {
         const delta = typeof payload.delta === 'string' ? payload.delta : ''
         if (!delta) break
+        if (GROK_AUDIO_DEBUG) {
+          const responseId = getResponseId(payload)
+          const responseKey = responseId ?? '__current_response__'
+          if (currentAudioResponseKeyRef.current !== responseKey) {
+            currentAudioResponseKeyRef.current = responseKey
+            currentResponseAudioChunksRef.current = 0
+            assistantResponseSeqRef.current += 1
+            grokAudioDebug('response.audio:first-delta', {
+              responseSequence: assistantResponseSeqRef.current,
+              responseId,
+              audioChunkSeqAtStart: audioChunkSeqRef.current,
+            })
+          }
+          currentResponseAudioChunksRef.current += 1
+        }
         const bytes = decodeBase64ToBytes(delta)
         const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength)
         const pcm = new Int16Array(bytes.byteLength / 2)
@@ -405,6 +596,17 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       case 'response.done': {
         await flushPendingAudio()
         const finalAssistantText = pendingAssistantContentRef.current
+        if (GROK_AUDIO_DEBUG) {
+          grokAudioDebug('response.done', {
+            responseSequence: assistantResponseSeqRef.current,
+            audioChunksReceived: currentResponseAudioChunksRef.current,
+            assistantTranscriptLength: finalAssistantText.length,
+            textDeltaEventsArrived: currentResponseTextDeltaSeenRef.current,
+          })
+          currentAudioResponseKeyRef.current = null
+          currentResponseAudioChunksRef.current = 0
+          currentResponseTextDeltaSeenRef.current = false
+        }
         pendingAssistantContentRef.current = ''
         currentAssistantIndexRef.current = null
         if (finalAssistantText) {
@@ -502,17 +704,41 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   }, [])
 
   const pauseListeningCapture = useCallback(() => {
+    if (GROK_AUDIO_DEBUG) {
+      const tracks = streamRef.current?.getAudioTracks() ?? []
+      grokAudioDebug('pauseListeningCapture:entry', {
+        micCycleId: micCycleSeqRef.current,
+        context: getAudioContextSnapshot(audioContextRef.current),
+        tracksBeforeStop: tracks.map(getTrackSnapshot),
+      })
+    }
     if (micSourceRef.current) {
       try { micSourceRef.current.disconnect() } catch { /* ignore */ }
       micSourceRef.current = null
     }
     if (streamRef.current) {
+      const stoppedAt = GROK_AUDIO_DEBUG ? performance.now() : null
+      if (GROK_AUDIO_DEBUG) lastTrackStopAtRef.current = stoppedAt
       streamRef.current.getTracks().forEach((track) => track.stop())
+      if (GROK_AUDIO_DEBUG) {
+        grokAudioDebug('pauseListeningCapture:tracks-stopped', {
+          micCycleId: micCycleSeqRef.current,
+          stoppedAt,
+          finalTracks: streamRef.current.getAudioTracks().map(getTrackSnapshot),
+        })
+      }
       streamRef.current = null
     }
   }, [])
 
   const stopListening = useCallback(() => {
+    if (GROK_AUDIO_DEBUG) {
+      grokAudioDebug('stopListening:entry', {
+        micCycleId: micCycleSeqRef.current,
+        contextBeforeStop: getAudioContextSnapshot(audioContextRef.current),
+        lastTrackStopAt: lastTrackStopAtRef.current,
+      })
+    }
     pendingInputFlushResolveRef.current?.()
     pendingInputFlushResolveRef.current = null
     if (workletRef.current) {
@@ -522,6 +748,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       workletRef.current = null
     }
     pauseListeningCapture()
+    if (GROK_AUDIO_DEBUG) {
+      grokAudioDebug('stopListening:complete', {
+        micCycleId: micCycleSeqRef.current,
+        contextAfterStop: getAudioContextSnapshot(audioContextRef.current),
+        lastTrackStopAt: lastTrackStopAtRef.current,
+      })
+    }
     if (mountedRef.current) {
       setIsListening(false)
       if (statusRef.current === 'recording') setStatus('idle')
@@ -614,6 +847,11 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
         workletModuleLoadedRef.current = false
         currentAssistantIndexRef.current = null
+        if (GROK_AUDIO_DEBUG) {
+          currentAudioResponseKeyRef.current = null
+          currentResponseAudioChunksRef.current = 0
+          currentResponseTextDeltaSeenRef.current = false
+        }
         pendingConversationInsertRef.current = null
         pendingPersistencePromisesRef.current.clear()
         pendingUserTranscriptResolveRef.current = null
@@ -707,11 +945,33 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     if (isListening) return
 
     try {
+      let micCycleId = 0
+      if (GROK_AUDIO_DEBUG) {
+        micCycleId = micCycleSeqRef.current + 1
+        micCycleSeqRef.current = micCycleId
+      }
       setError(null)
       primeAudioForIOS()
       const ctx = await ensureAudioContext()
+      if (GROK_AUDIO_DEBUG) {
+        grokAudioDebug('startListening:before-getUserMedia', {
+          micCycleId,
+          context: getAudioContextSnapshot(ctx),
+        })
+      }
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       streamRef.current = stream
+      if (GROK_AUDIO_DEBUG) {
+        const audioTracks = stream.getAudioTracks()
+        grokAudioDebug('startListening:after-getUserMedia', {
+          micCycleId,
+          context: getAudioContextSnapshot(ctx),
+          tracks: audioTracks.map((track) => ({
+            ...getTrackSnapshot(track),
+            settings: getTrackSettingsSnapshot(track),
+          })),
+        })
+      }
 
       if (!workletModuleLoadedRef.current) {
         await ctx.audioWorklet.addModule('/audioWorklets/grokPcmDownsampler.js')
@@ -760,12 +1020,34 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }
 
     try {
+      if (GROK_AUDIO_DEBUG) {
+        grokAudioDebug('sendTurn:entry', {
+          micCycleId: micCycleSeqRef.current,
+          contextBeforeCommit: getAudioContextSnapshot(audioContextRef.current),
+          lastTrackStopAt: lastTrackStopAtRef.current,
+        })
+      }
       pauseListeningCapture()
       await flushPendingInputAudio()
       stopListening()
       if (endingSessionRef.current || wsRef.current !== ws || ws.readyState !== WebSocket.OPEN) return
+      if (GROK_AUDIO_DEBUG) {
+        const commitAt = performance.now()
+        grokAudioDebug('sendTurn:before-commit', {
+          micCycleId: micCycleSeqRef.current,
+          commitAt,
+          msSinceTrackStop: lastTrackStopAtRef.current === null ? null : commitAt - lastTrackStopAtRef.current,
+          contextBeforeCommit: getAudioContextSnapshot(audioContextRef.current),
+        })
+      }
       ws.send(JSON.stringify({ type: 'input_audio_buffer.commit' }))
       ws.send(JSON.stringify({ type: 'response.create' }))
+      if (GROK_AUDIO_DEBUG) {
+        grokAudioDebug('sendTurn:after-commit', {
+          micCycleId: micCycleSeqRef.current,
+          contextAfterCommit: getAudioContextSnapshot(audioContextRef.current),
+        })
+      }
       inputAudioAppendedRef.current = false
       setError(null)
       setStatus('thinking')
@@ -797,6 +1079,15 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     endedConversationIdsRef.current.delete(conversationIdRef.current)
     currentAssistantIndexRef.current = null
     pendingAssistantContentRef.current = ''
+    if (GROK_AUDIO_DEBUG) {
+      assistantResponseSeqRef.current = 0
+      audioChunkSeqRef.current = 0
+      micCycleSeqRef.current = 0
+      currentAudioResponseKeyRef.current = null
+      currentResponseAudioChunksRef.current = 0
+      currentResponseTextDeltaSeenRef.current = false
+      lastTrackStopAtRef.current = null
+    }
     pendingPcmChunksRef.current = []
     pendingPcmSampleCountRef.current = 0
     playheadRef.current = 0
