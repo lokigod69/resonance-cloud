@@ -36,6 +36,21 @@ export interface UseGrokRealtimeReturn {
 const SILENT_MP3_URL = '/silent.mp3'
 const PCM_SAMPLE_RATE = 24000
 const PCM_FLUSH_SAMPLES = 2400
+const USER_TRANSCRIPT_DRAIN_TIMEOUT_MS = 2000
+const PERSISTENCE_DRAIN_TIMEOUT_MS = 3000
+
+function sleepWithCancel(ms: number): { promise: Promise<void>; cancel: () => void } {
+  let timer: ReturnType<typeof window.setTimeout> | null = null
+  const promise = new Promise<void>((resolve) => {
+    timer = window.setTimeout(resolve, ms)
+  })
+  return {
+    promise,
+    cancel: () => {
+      if (timer !== null) window.clearTimeout(timer)
+    },
+  }
+}
 
 export function useGrokRealtime(): UseGrokRealtimeReturn {
   const [status, setStatus] = useState<GrokStatus>('idle')
@@ -61,6 +76,11 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const pendingPcmChunksRef = useRef<Int16Array[]>([])
   const pendingPcmSampleCountRef = useRef(0)
   const conversationInsertedRef = useRef(false)
+  const pendingConversationInsertRef = useRef<Promise<void> | null>(null)
+  const pendingPersistencePromisesRef = useRef<Set<Promise<unknown>>>(new Set())
+  const pendingUserTranscriptResolveRef = useRef<(() => void) | null>(null)
+  const inputAudioAppendedRef = useRef(false)
+  const teardownPromiseRef = useRef<Promise<void> | null>(null)
   const endedConversationIdsRef = useRef<Set<string>>(new Set())
   const currentUserIdRef = useRef<string | null>(null)
   const endingSessionRef = useRef(false)
@@ -146,9 +166,10 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     if (!conversationId || endedConversationIdsRef.current.has(conversationId)) return
     endedConversationIdsRef.current.add(conversationId)
     try {
-      await supabase.from('speak_conversations')
+      const { error } = await supabase.from('speak_conversations')
         .update({ ended_at: new Date().toISOString() })
         .eq('id', conversationId)
+      if (error) throw error
     } catch (err) {
       endedConversationIdsRef.current.delete(conversationId)
       console.warn('[grok-realtime] Failed to end conversation:', err)
@@ -209,53 +230,90 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     await queueAudioBuffer(combined)
   }, [queueAudioBuffer])
 
+  const trackPersistencePromise = useCallback(<T,>(promise: Promise<T>) => {
+    const tracked = promise as Promise<unknown>
+    pendingPersistencePromisesRef.current.add(tracked)
+    void tracked.finally(() => {
+      pendingPersistencePromisesRef.current.delete(tracked)
+    })
+    return promise
+  }, [])
+
   const persistConversationStart = useCallback(async () => {
     if (conversationInsertedRef.current) return
+    if (pendingConversationInsertRef.current) {
+      await pendingConversationInsertRef.current
+      return
+    }
+
     const params = sessionParamsRef.current
     const conversationId = conversationIdRef.current
     const userId = currentUserIdRef.current
     if (!params || !conversationId || !userId) return
+    const capturedConversationId = conversationId
 
-    conversationInsertedRef.current = true
-    try {
-      await supabase.from('speak_conversations').insert({
-        id: conversationId,
-        user_id: userId,
-        language: params.language,
-        voice_name: params.voice,
-        character_id: null,
-        level: params.level,
-        message_count: 0,
-        title: null,
-        started_at: new Date().toISOString(),
-        provider: 'grok',
-        gemini_character_mode_id: null,
-        gemini_voice_name: null,
-        gemini_accent_id: null,
-        mode: 'freeform',
-        grok_voice: params.voice,
-        grok_category: params.category,
-      })
-    } catch (err) {
-      conversationInsertedRef.current = false
-      console.warn('[grok-realtime] Failed to create conversation:', err)
-    }
+    const insertPromise = (async () => {
+      try {
+        const { error } = await supabase.from('speak_conversations').insert({
+          id: capturedConversationId,
+          user_id: userId,
+          language: params.language,
+          voice_name: params.voice,
+          character_id: null,
+          level: params.level,
+          message_count: 0,
+          title: null,
+          started_at: new Date().toISOString(),
+          provider: 'grok',
+          gemini_character_mode_id: null,
+          gemini_voice_name: null,
+          gemini_accent_id: null,
+          mode: 'freeform',
+          grok_voice: params.voice,
+          grok_category: params.category,
+        })
+        if (error) throw error
+        if (conversationIdRef.current !== capturedConversationId) {
+          console.warn('[grok-realtime] Stale conversation insert completed for dead session:', capturedConversationId)
+          return
+        }
+        conversationInsertedRef.current = true
+      } catch (err) {
+        if (conversationIdRef.current !== capturedConversationId) {
+          console.warn('[grok-realtime] Stale conversation insert failed for dead session:', capturedConversationId, err)
+          return
+        }
+        conversationInsertedRef.current = false
+        console.warn('[grok-realtime] Failed to create conversation:', err)
+      } finally {
+        if (conversationIdRef.current === capturedConversationId) {
+          pendingConversationInsertRef.current = null
+        }
+      }
+    })()
+
+    pendingConversationInsertRef.current = insertPromise
+    await insertPromise
   }, [])
 
   const persistSpeakMessage = useCallback(async (role: 'user' | 'assistant', content: string) => {
     const conversationId = conversationIdRef.current
     if (!conversationId || !content) return
     await persistConversationStart()
+    if (!conversationInsertedRef.current) return
     try {
-      await supabase.from('speak_messages').insert({
+      const { error: insertError } = await supabase.from('speak_messages').insert({
         conversation_id: conversationId,
         role,
         content,
       })
-      await supabase.rpc('increment_speak_message_count', {
+      if (insertError) throw insertError
+
+      const { error: rpcError } = await supabase.rpc('increment_speak_message_count', {
         conv_id: conversationId,
         inc: 1,
       })
+      if (rpcError) throw rpcError
     } catch (err) {
       console.warn('[grok-realtime] Failed to persist message:', err)
     }
@@ -264,7 +322,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const appendAssistantDelta = useCallback((delta: string) => {
     if (!delta) return
     if (!conversationInsertedRef.current) {
-      void persistConversationStart()
+      void trackPersistencePromise(persistConversationStart())
     }
 
     pendingAssistantContentRef.current += delta
@@ -283,7 +341,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           : message
       ))
     })
-  }, [persistConversationStart])
+  }, [persistConversationStart, trackPersistencePromise])
 
   const appendUserTranscript = useCallback((transcript: string) => {
     if (!transcript) return
@@ -309,6 +367,25 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         appendAssistantDelta(typeof payload.delta === 'string' ? payload.delta : '')
         break
       }
+      case 'response.output_audio_transcript.delta': {
+        appendAssistantDelta(typeof payload.delta === 'string' ? payload.delta : '')
+        break
+      }
+      case 'response.output_audio_transcript.done': {
+        const transcript = typeof payload.transcript === 'string'
+          ? payload.transcript
+          : typeof payload.text === 'string'
+            ? payload.text
+            : ''
+        const accumulated = pendingAssistantContentRef.current
+        if (transcript && transcript !== accumulated) {
+          console.warn('[grok-realtime] Assistant transcript mismatch:', {
+            accumulatedLength: accumulated.length,
+            transcriptLength: transcript.length,
+          })
+        }
+        break
+      }
       case 'response.output_audio.delta': {
         const delta = typeof payload.delta === 'string' ? payload.delta : ''
         if (!delta) break
@@ -331,7 +408,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         pendingAssistantContentRef.current = ''
         currentAssistantIndexRef.current = null
         if (finalAssistantText) {
-          void persistSpeakMessage('assistant', finalAssistantText)
+          void trackPersistencePromise(persistSpeakMessage('assistant', finalAssistantText))
         }
         if (mountedRef.current && audioQueueRef.current.length === 0) {
           setStatus('idle')
@@ -341,7 +418,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       case 'conversation.item.input_audio_transcription.completed': {
         const transcript = typeof payload.transcript === 'string' ? payload.transcript : ''
         appendUserTranscript(transcript)
-        void persistSpeakMessage('user', transcript)
+        void trackPersistencePromise(persistSpeakMessage('user', transcript))
+        pendingUserTranscriptResolveRef.current?.()
+        pendingUserTranscriptResolveRef.current = null
         break
       }
       case 'input_audio_buffer.speech_started': {
@@ -365,7 +444,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       default:
         break
     }
-  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, resetAudioQueue])
+  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, resetAudioQueue, trackPersistencePromise])
 
   const fetchEphemeralToken = useCallback(async (): Promise<string> => {
     const { data, error: sessionError } = await supabase.auth.getSession()
@@ -449,43 +528,111 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }
   }, [pauseListeningCapture])
 
-  const teardownSession = useCallback(async () => {
-    endingSessionRef.current = true
-    const closingConversationId = conversationIdRef.current
-    stopListening()
-    resetAudioQueue()
-
-    const ws = wsRef.current
-    wsRef.current = null
-    if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) {
-      try { ws.close(1000, 'session ended') } catch { /* ignore */ }
+  const flushFinalUserTurnBeforeClose = useCallback(async (ws: WebSocket | null) => {
+    if (!inputAudioAppendedRef.current || !ws || ws.readyState !== WebSocket.OPEN) {
+      stopListening()
+      return
     }
 
-    if (silentPrimerRef.current) {
+    try {
+      pauseListeningCapture()
+      await flushPendingInputAudio()
+      stopListening()
+      if (ws.readyState !== WebSocket.OPEN) return
+
+      const transcriptCompleted = new Promise<void>((resolve) => {
+        pendingUserTranscriptResolveRef.current = resolve
+      })
+      ws.send(JSON.stringify({ type: 'input_audio_buffer.commit' }))
+      ws.send(JSON.stringify({ type: 'response.create' }))
+      inputAudioAppendedRef.current = false
+
+      const timeout = sleepWithCancel(USER_TRANSCRIPT_DRAIN_TIMEOUT_MS)
       try {
-        silentPrimerRef.current.pause()
-        silentPrimerRef.current.currentTime = 0
-        silentPrimerRef.current.removeAttribute('src')
-        silentPrimerRef.current.load()
-      } catch { /* ignore */ }
-      silentPrimerRef.current = null
+        await Promise.race([
+          transcriptCompleted,
+          timeout.promise,
+        ])
+      } finally {
+        timeout.cancel()
+      }
+    } catch (err) {
+      console.warn('[grok-realtime] Failed to flush final user turn before close:', err)
+      stopListening()
+    } finally {
+      pendingUserTranscriptResolveRef.current = null
     }
+  }, [flushPendingInputAudio, pauseListeningCapture, stopListening])
 
-    if (audioContextRef.current) {
-      try { await audioContextRef.current.close() } catch { /* ignore */ }
-      audioContextRef.current = null
-    }
+  const drainPendingPersistence = useCallback(async () => {
+    const pending = Array.from(pendingPersistencePromisesRef.current)
+    if (pending.length === 0) return
 
-    workletModuleLoadedRef.current = false
-    currentAssistantIndexRef.current = null
-    if (mountedRef.current) {
-      setIsConnected(false)
-      setIsListening(false)
-      setStatus('idle')
+    const timeout = sleepWithCancel(PERSISTENCE_DRAIN_TIMEOUT_MS)
+    try {
+      await Promise.race([
+        Promise.allSettled(pending),
+        timeout.promise,
+      ])
+    } finally {
+      timeout.cancel()
     }
-    await updateEndedAt(closingConversationId)
-    endingSessionRef.current = false
-  }, [resetAudioQueue, stopListening, updateEndedAt])
+  }, [])
+
+  const teardownSession = useCallback(async () => {
+    if (teardownPromiseRef.current) return teardownPromiseRef.current
+
+    const teardownPromise = (async () => {
+      endingSessionRef.current = true
+      const closingConversationId = conversationIdRef.current
+      const ws = wsRef.current
+
+      try {
+        await flushFinalUserTurnBeforeClose(ws)
+        await drainPendingPersistence()
+        resetAudioQueue()
+
+        wsRef.current = null
+        if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) {
+          try { ws.close(1000, 'session ended') } catch { /* ignore */ }
+        }
+
+        if (silentPrimerRef.current) {
+          try {
+            silentPrimerRef.current.pause()
+            silentPrimerRef.current.currentTime = 0
+            silentPrimerRef.current.removeAttribute('src')
+            silentPrimerRef.current.load()
+          } catch { /* ignore */ }
+          silentPrimerRef.current = null
+        }
+
+        if (audioContextRef.current) {
+          try { await audioContextRef.current.close() } catch { /* ignore */ }
+          audioContextRef.current = null
+        }
+
+        workletModuleLoadedRef.current = false
+        currentAssistantIndexRef.current = null
+        pendingConversationInsertRef.current = null
+        pendingPersistencePromisesRef.current.clear()
+        pendingUserTranscriptResolveRef.current = null
+        inputAudioAppendedRef.current = false
+        if (mountedRef.current) {
+          setIsConnected(false)
+          setIsListening(false)
+          setStatus('idle')
+        }
+        await updateEndedAt(closingConversationId)
+      } finally {
+        endingSessionRef.current = false
+        teardownPromiseRef.current = null
+      }
+    })()
+
+    teardownPromiseRef.current = teardownPromise
+    return teardownPromise
+  }, [drainPendingPersistence, flushFinalUserTurnBeforeClose, resetAudioQueue, updateEndedAt])
 
   const teardownSessionRef = useRef(teardownSession)
   useEffect(() => { teardownSessionRef.current = teardownSession }, [teardownSession])
@@ -587,6 +734,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           type: 'input_audio_buffer.append',
           audio: btoa(event.data.data),
         }))
+        inputAudioAppendedRef.current = true
       }
 
       micSourceRef.current = source
@@ -618,6 +766,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       if (endingSessionRef.current || wsRef.current !== ws || ws.readyState !== WebSocket.OPEN) return
       ws.send(JSON.stringify({ type: 'input_audio_buffer.commit' }))
       ws.send(JSON.stringify({ type: 'response.create' }))
+      inputAudioAppendedRef.current = false
       setError(null)
       setStatus('thinking')
     } catch (err) {
@@ -640,6 +789,11 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     conversationIdRef.current = crypto.randomUUID()
     sessionParamsRef.current = params
     conversationInsertedRef.current = false
+    pendingConversationInsertRef.current = null
+    pendingPersistencePromisesRef.current.clear()
+    pendingUserTranscriptResolveRef.current = null
+    inputAudioAppendedRef.current = false
+    teardownPromiseRef.current = null
     endedConversationIdsRef.current.delete(conversationIdRef.current)
     currentAssistantIndexRef.current = null
     pendingAssistantContentRef.current = ''
