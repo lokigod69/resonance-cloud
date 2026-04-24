@@ -472,7 +472,7 @@ export default function DeckViewPG() {
       {/* Header */}
       <div className="flex items-start gap-4 mb-8">
         <button
-          onClick={() => navigate('/dashboard')}
+          onClick={() => navigate('/decks')}
           className="mt-1 p-2 rounded-lg hover:bg-white/5 transition-colors text-[var(--pg-text-dim)] hover:text-white"
         >
           <ArrowLeft className="h-5 w-5" />

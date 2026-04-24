@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { X, Play } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { getDisplayArticle } from './articleDisplay'
 
 export type LibraryWord = {
   id: string
@@ -15,6 +16,7 @@ export type LibraryWord = {
   thumbnail_url: string | null
   metadata: Record<string, unknown> | null
   deck_id: string
+  target_language: string | null
   created_at: string
 }
 
@@ -96,7 +98,8 @@ function WordDetailBody({ word, onWatchVideo, deckName }: { word: LibraryWord; o
   const synonyms = metaArray(word.metadata, 'synonyms')
   const tags = metaArray(word.metadata, 'tags')
 
-  const displayWord = (word.article && word.article !== 'null') ? `${word.article} ${word.word}` : word.word
+  const displayArticle = getDisplayArticle(word)
+  const displayWord = displayArticle ? `${displayArticle} ${word.word}` : word.word
 
   return (
     <div className="p-5 pt-12 sm:p-7 sm:pt-10 pb-[env(safe-area-inset-bottom,1rem)] space-y-4 text-foreground">

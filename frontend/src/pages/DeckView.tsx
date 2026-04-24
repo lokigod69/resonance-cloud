@@ -298,7 +298,7 @@ export default function DeckView() {
       <div className="text-center">
         <div className="flex items-center gap-2 mb-4">
           <Button asChild variant="ghost" size="icon">
-            <Link to="/dashboard">
+            <Link to="/decks">
               <ArrowLeft className="h-5 w-5" />
             </Link>
           </Button>

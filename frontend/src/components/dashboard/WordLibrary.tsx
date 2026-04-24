@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import type { LibraryWord } from './WordDetailModal'
+import { getDisplayArticle } from './articleDisplay'
 import { useTranslation } from '@/hooks/useTranslation'
 
 type SortMode = 'recent' | 'az' | 'za'
@@ -42,13 +43,13 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
   return (
     <div className="space-y-3">
       {/* Controls */}
-      <div className="flex flex-wrap gap-2 items-center justify-between">
-        <div className="flex gap-1 flex-wrap">
+      <div className="flex items-center justify-between gap-2 min-w-0">
+        <div className="flex gap-1 overflow-x-auto scrollbar-none min-w-0">
           {([['all', t('wordLibrary.all')], ['words', t('wordLibrary.words')], ['phrases', t('wordLibrary.phrases')]] as const).map(([f, label]) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-3 py-2 min-h-[36px] text-xs rounded-full border transition-colors ${
+              className={`px-3 py-2 min-h-[36px] shrink-0 text-xs rounded-full border transition-colors ${
                 filter === f
                   ? 'bg-foreground/15 border-foreground/30 text-foreground'
                   : 'border-foreground/10 text-foreground/55 hover:text-foreground/80 hover:border-foreground/20'
@@ -58,7 +59,7 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
             </button>
           ))}
         </div>
-        <div className="flex gap-1 flex-wrap">
+        <div className="flex gap-1 overflow-x-auto scrollbar-none min-w-0 justify-end">
           {([
             ['recent', t('wordLibrary.recent')],
             ['az', t('wordLibrary.az')],
@@ -67,7 +68,7 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
             <button
               key={value}
               onClick={() => setSort(value)}
-              className={`px-3 py-2 min-h-[36px] text-xs rounded-full border transition-colors ${
+              className={`px-3 py-2 min-h-[36px] shrink-0 text-xs rounded-full border transition-colors ${
                 sort === value
                   ? 'bg-foreground/15 border-foreground/30 text-foreground'
                   : 'border-foreground/10 text-foreground/55 hover:text-foreground/80 hover:border-foreground/20'
@@ -86,33 +87,36 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {visible.map((word) => (
-            <button
-              key={word.id}
-              onClick={() => onWordClick(word)}
-              className="min-h-[64px] rounded-xl border border-border/50 bg-card hover:bg-accent/40 px-4 py-3 flex items-center gap-3 transition-colors cursor-pointer text-left"
-            >
-              {word.thumbnail_url ? (
-                <img
-                  src={word.thumbnail_url}
-                  alt=""
-                  className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
-                  loading="lazy"
-                />
-              ) : (
-                <div className="w-10 h-10 rounded-lg bg-muted/30 flex-shrink-0" />
-              )}
-              <span className="font-semibold text-base flex-1 min-w-0 break-words">
-                {(word.article && word.article !== 'null') ? `${word.article} ` : ''}
-                {word.word}
-              </span>
-              {word.translation && (
-                <span className="text-sm text-muted-foreground flex-shrink-0 max-w-[45%] text-right break-words">
-                  {word.translation}
+          {visible.map((word) => {
+            const displayArticle = getDisplayArticle(word)
+            return (
+              <button
+                key={word.id}
+                onClick={() => onWordClick(word)}
+                className="min-h-[64px] rounded-xl border border-border/50 bg-card hover:bg-accent/40 px-4 py-3 flex items-center gap-3 transition-colors cursor-pointer text-left"
+              >
+                {word.thumbnail_url ? (
+                  <img
+                    src={word.thumbnail_url}
+                    alt=""
+                    className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-10 h-10 rounded-lg bg-muted/30 flex-shrink-0" />
+                )}
+                <span className="font-semibold text-base flex-1 min-w-0 break-words">
+                  {displayArticle ? `${displayArticle} ` : ''}
+                  {word.word}
                 </span>
-              )}
-            </button>
-          ))}
+                {word.translation && (
+                  <span className="text-sm text-muted-foreground flex-shrink-0 max-w-[45%] text-right break-words">
+                    {word.translation}
+                  </span>
+                )}
+              </button>
+            )
+          })}
         </div>
       )}
     </div>

@@ -101,10 +101,11 @@ export default function Dashboard() {
       try {
         const { data: deckRows } = await supabase
           .from('decks')
-          .select('id')
+          .select('id, target_language')
           .eq('user_id', user.id)
           .eq('target_language', activeLanguage)
         const deckIds = (deckRows ?? []).map((d) => d.id)
+        const deckLanguageById = new Map((deckRows ?? []).map((d) => [d.id, d.target_language]))
         if (deckIds.length === 0) {
           if (!cancelled) setLibraryWords([])
           return
@@ -117,7 +118,12 @@ export default function Dashboard() {
           .eq('status', 'complete')
           .in('deck_id', deckIds)
           .order('created_at', { ascending: false })
-        if (!cancelled) setLibraryWords((wordRows ?? []) as LibraryWord[])
+        if (!cancelled) {
+          setLibraryWords((wordRows ?? []).map((word) => ({
+            ...word,
+            target_language: deckLanguageById.get(word.deck_id) ?? activeLanguage,
+          })) as LibraryWord[])
+        }
       } finally {
         if (!cancelled) setLibraryLoading(false)
       }

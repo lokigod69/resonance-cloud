@@ -6,7 +6,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -27,6 +26,7 @@ export function RedeemCodeDialog({
   const [redeeming, setRedeeming] = useState(false)
   const [redeemError, setRedeemError] = useState<string | null>(null)
   const [redeemSuccess, setRedeemSuccess] = useState<{ credits: number } | null>(null)
+  const creditCount = typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0
 
   async function handleRedeem() {
     if (!inviteCode.trim() || !user) return
@@ -122,25 +122,16 @@ export function RedeemCodeDialog({
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="flex items-center justify-center gap-2">
-            <Coins className="h-5 w-5 text-primary" />
+          <DialogTitle className="flex items-center justify-center gap-2 text-2xl sm:text-3xl">
+            <Coins className="h-6 w-6 text-primary" />
             {t('credits.heading')}
           </DialogTitle>
-          <DialogDescription className="text-center sm:text-center">
-            {t('credits.description')}
-          </DialogDescription>
         </DialogHeader>
 
-        {/* Balance —
-            Root-cause note: DialogContent's inner wrapper is `display: grid` (dialog.tsx:78).
-            The previous outer `flex justify-center` wrapper made its child shrink-wrap to the
-            width of the longest line ("credits available"), so `text-center` on that narrow
-            inner box had no visible effect on the short number above. Making the block itself
-            span the full grid-item width lets `text-center` center the number within the
-            dialog's full horizontal axis. */}
         <div className="text-center py-4">
-          <div className="text-4xl font-bold">{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</div>
-          <div className="text-sm text-muted-foreground mt-1">{t('credits.available')}</div>
+          <div className="text-xl font-semibold text-foreground">
+            {creditCount} {t('credits.available')}
+          </div>
         </div>
 
         {/* Redeem section */}

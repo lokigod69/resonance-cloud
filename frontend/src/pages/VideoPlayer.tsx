@@ -11,8 +11,6 @@ import {
   X,
 } from 'lucide-react'
 import WordInfoPanel from '@/components/WordInfoPanel'
-import VersionBadge from '@/components/VersionBadge'
-import { useVideoVersion } from '@/hooks/useVideoVersion'
 
 type Word = {
   id: string
@@ -61,7 +59,8 @@ export default function VideoPlayer() {
   const current = currentIndex >= 0 ? words[currentIndex] : null
   const prev = currentIndex > 0 ? words[currentIndex - 1] : null
   const next = currentIndex < words.length - 1 ? words[currentIndex + 1] : null
-  const { activeVideoUrl, version, toggleVersion, hasAltVersion } = useVideoVersion(current ?? { id: '', video_url: null, thumbnail_url: null })
+  // Dashboard quick preview uses the primary A video; A/B switching stays in Decks.
+  const activeVideoUrl = current?.video_url ?? null
 
   async function handleRate(wordId: string, rating: number) {
     await supabase
@@ -147,7 +146,7 @@ export default function VideoPlayer() {
           <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl">
             {activeVideoUrl ? (
               <video
-                key={`${videoKey}-${version}`}
+                key={videoKey}
                 src={`${activeVideoUrl}?t=${videoKey}`}
                 controls
                 autoPlay
@@ -159,12 +158,6 @@ export default function VideoPlayer() {
                 <p className="text-muted-foreground">No video available</p>
               </div>
             )}
-            <VersionBadge
-              version={version}
-              hasAlt={hasAltVersion}
-              onToggle={() => { toggleVersion(); setVideoKey(k => k + 1) }}
-              className="absolute top-4 right-4"
-            />
           </div>
 
           {/* Word info */}
