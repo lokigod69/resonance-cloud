@@ -232,7 +232,6 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Music ──
     'music.yourMusic': 'Your Music',
-    'music.songCount': '{current} of {total} songs',
     'music.allSongs': 'All Songs',
     'music.loadingSongs': 'Loading songs',
     'music.noSongs': 'No words generated yet.',
@@ -592,7 +591,6 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Music ──
     'music.yourMusic': 'Deine Musik',
-    'music.songCount': '{current} von {total} Liedern',
     'music.allSongs': 'Alle Lieder',
     'music.loadingSongs': 'Lieder werden geladen',
     'music.noSongs': 'Noch keine Wörter erstellt.',
@@ -980,7 +978,6 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Music ──
     'music.yourMusic': 'Ta musique',
-    'music.songCount': '{current} sur {total} titres',
     'music.allSongs': 'Tous les titres',
     'music.loadingSongs': 'Chargement des titres',
     'music.noSongs': 'Aucun mot créé pour le moment.',

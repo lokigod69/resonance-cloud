@@ -14,7 +14,7 @@ export interface MusicTrack {
   error: boolean
 }
 
-export type RepeatMode = 'off' | 'all' | 'one'
+export type RepeatMode = 'off' | 'one'
 
 function buildShuffleOrder(length: number): number[] {
   const arr = Array.from({ length }, (_, i) => i)
@@ -90,8 +90,6 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
       return
     }
 
-    // Compute next index outside the updater so we can call setIsPlaying
-    // as a separate side-effect (state updaters must be pure — no side effects)
     const prev = currentQueueIdx
     let nextIdx: number
     if (prev === null) {
@@ -103,14 +101,7 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
       nextIdx = prev + 1
     }
 
-    if (nextIdx >= queue.length) {
-      if (repeatMode === 'all') {
-        setCurrentQueueIdx(0)
-      } else {
-        setIsPlaying(false) // called outside updater ✓
-      }
-      return
-    }
+    if (nextIdx >= queue.length) nextIdx = 0
     setCurrentQueueIdx(nextIdx)
   }, [queue.length, repeatMode, shuffle, shuffleOrder, currentQueueIdx])
 
@@ -190,7 +181,7 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
   }, [])
 
   const cycleRepeat = useCallback(() => {
-    setRepeatMode((r) => (r === 'off' ? 'all' : r === 'all' ? 'one' : 'off'))
+    setRepeatMode((r) => (r === 'off' ? 'one' : 'off'))
   }, [])
 
   const markError = useCallback(

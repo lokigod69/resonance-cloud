@@ -125,6 +125,21 @@ export function PlayerBar({
           />
         </div>
 
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.001"
+          value={progress}
+          disabled={!currentTrack || duration <= 0}
+          onChange={(e) => onSeek(Number(e.currentTarget.value))}
+          className="volume-slider sm:hidden flex-1 min-w-12 disabled:opacity-40"
+          aria-label="Seek"
+          style={{
+            background: `linear-gradient(to right, var(--accent,#06b6d4) 0%, var(--accent,#06b6d4) ${progress * 100}%, rgba(255,255,255,0.2) ${progress * 100}%, rgba(255,255,255,0.2) 100%)`,
+          }}
+        />
+
         <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 w-10">
           {formatTime(duration)}
         </span>
@@ -151,7 +166,7 @@ export function PlayerBar({
               : 'text-muted-foreground hover:text-foreground hover:bg-white/10'
           }`}
           aria-label={`Repeat: ${repeatMode}`}
-          title={repeatMode === 'off' ? 'Repeat off' : repeatMode === 'all' ? 'Repeat all' : 'Repeat one'}
+          title={repeatMode === 'off' ? 'Repeat' : 'Repeat one'}
         >
           <RepeatIcon size={14} />
         </button>

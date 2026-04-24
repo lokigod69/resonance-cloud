@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
+import { useTranslation } from '@/hooks/useTranslation'
 
 type DeckOption = { id: string; name: string }
 
@@ -48,6 +49,7 @@ function formatTime(s: number): string {
 }
 
 export default function MusicPG() {
+  const { t } = useTranslation()
   const { user } = useAuth()
   const [allTracks, setAllTracks] = useState<MusicTrack[]>([])
   const [errorTrackIds, setErrorTrackIds] = useState<Set<string>>(new Set())
@@ -175,56 +177,48 @@ export default function MusicPG() {
     [player],
   )
 
-  const songsWithAudio = filteredTracks.filter((t) => (t.suno_storage_url ?? t.suno_audio_url) && !t.error).length
-  const totalSongs = filteredTracks.length
-
   return (
     <div className="flex flex-col min-h-full pb-4">
       {/* Header */}
       <div className="sticky top-0 z-40 bg-gray-950 pt-6 pb-2 px-6 flex justify-center">
-      <div className="flex items-center gap-3 flex-wrap w-full max-w-2xl">
-        <MusicIcon className="h-5 w-5 text-[#5e6ad2] shrink-0" />
-        <h1 className="text-lg font-semibold text-white">Your Music</h1>
-        {!loading && (
-          <span className="text-sm text-gray-500">
-            {songsWithAudio} of {totalSongs} songs
-          </span>
-        )}
-        {decks.length > 1 && (
-          <Select value={deckFilter} onValueChange={setDeckFilter}>
-            <SelectTrigger
-              size="sm"
-              className="w-[160px] bg-white/5 border-white/10 text-gray-200 hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
-            >
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="bg-gray-900 border-white/10 text-gray-200">
-              <SelectItem value="all" className="focus:bg-white/10 focus:text-white">
-                All Songs
-              </SelectItem>
-              {decks.map((d) => (
-                <SelectItem
-                  key={d.id}
-                  value={d.id}
-                  className="focus:bg-white/10 focus:text-white"
-                >
-                  {d.name}
+        <div className="flex items-center gap-3 flex-wrap w-full max-w-2xl">
+          <MusicIcon className="h-5 w-5 text-[#5e6ad2] shrink-0" />
+          <h1 className="text-lg font-semibold text-white">{t('music.yourMusic')}</h1>
+          {decks.length > 1 && (
+            <Select value={deckFilter} onValueChange={setDeckFilter}>
+              <SelectTrigger
+                size="sm"
+                className="w-[160px] bg-white/5 border-white/10 text-gray-200 hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="bg-gray-900 border-white/10 text-gray-200">
+                <SelectItem value="all" className="focus:bg-white/10 focus:text-white">
+                  {t('music.allSongs')}
                 </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        )}
-      </div>
+                {decks.map((d) => (
+                  <SelectItem
+                    key={d.id}
+                    value={d.id}
+                    className="focus:bg-white/10 focus:text-white"
+                  >
+                    {d.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        </div>
       </div>
 
       {/* Central area */}
       <div className="flex-1 flex flex-col items-center justify-center gap-4 min-h-0 py-4 px-6">
         {loading ? (
-          <LoadingIndicator text="Loading songs" />
+          <LoadingIndicator text={t('music.loadingSongs')} />
         ) : filteredTracks.length === 0 ? (
           <div className="flex flex-col items-center gap-3">
             <MusicIcon className="h-10 w-10 text-gray-700" />
-            <p className="text-gray-500 text-sm">No words generated yet.</p>
+            <p className="text-gray-500 text-sm">{t('music.noSongs')}</p>
           </div>
         ) : (
           <>
@@ -303,7 +297,7 @@ export default function MusicPG() {
                     : 'text-gray-600 hover:text-white hover:bg-white/10'
                 }`}
                 aria-label={`Repeat: ${repeatMode}`}
-                title={repeatMode === 'off' ? 'Repeat off' : repeatMode === 'all' ? 'Repeat all' : 'Repeat one'}
+                title={repeatMode === 'off' ? 'Repeat' : 'Repeat one'}
               >
                 <RepeatIcon size={15} />
               </button>
@@ -350,6 +344,7 @@ export default function MusicPG() {
                 onToggleMute={player.toggleMute}
                 buttonClassName="w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:text-white hover:bg-white/10 transition-colors"
                 iconSize={15}
+                popDirection="up"
               />
             </div>
           </>

@@ -50,7 +50,7 @@ export function OrbThumbnailRow({ tracks, currentTrackId, onTrackSelect }: OrbTh
       `}</style>
 
       <div className="w-full overflow-x-auto [&::-webkit-scrollbar]:hidden" style={{ scrollbarWidth: 'none' }}>
-        <div className="flex gap-3 px-6 py-4 justify-center flex-wrap">
+        <div className="flex gap-3 px-6 pt-10 pb-5 justify-center flex-wrap">
           {tracks.map((track) => {
             const hasAudio = !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
             const isCurrent = track.id === currentTrackId

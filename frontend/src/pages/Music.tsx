@@ -259,48 +259,38 @@ export default function Music() {
     return () => window.removeEventListener('keydown', handler)
   }, [player])
 
-  const songsWithAudio = filteredTracks.filter((t) => (t.suno_storage_url ?? t.suno_audio_url)).length
-  const totalSongs = filteredTracks.length
-
   return (
     <div className="flex flex-col min-h-full pb-20">
       {/* Page header */}
-      <div className="sticky top-0 z-40 bg-secondary pt-6 pb-4">
-        <div className="max-w-5xl mx-auto w-full px-6">
-        <div className="flex items-center gap-3 mb-4">
+      <div className="max-w-5xl mx-auto w-full px-6 pt-6 pb-4">
+        <div className="flex items-center gap-3 flex-wrap">
           <MusicIcon className="h-6 w-6 text-[var(--accent,#06b6d4)]" />
           <h1 className="text-xl font-semibold text-secondary-foreground">{t('music.yourMusic')}</h1>
-          {!loading && (
-            <span className="text-sm text-gray-500">
-              {t('music.songCount', { current: songsWithAudio, total: totalSongs })}
-            </span>
-          )}
-        </div>
 
-        {/* Deck filter */}
-        {decks.length > 1 && (
-          <Select value={deckFilter} onValueChange={setDeckFilter}>
-            <SelectTrigger
-              size="sm"
-              className="w-[180px]"
-            >
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">
-                {t('music.allSongs')}
-              </SelectItem>
-              {decks.map((d) => (
-                <SelectItem
-                  key={d.id}
-                  value={d.id}
-                >
-                  {d.name}
+          {/* Deck filter */}
+          {decks.length > 1 && (
+            <Select value={deckFilter} onValueChange={setDeckFilter}>
+              <SelectTrigger
+                size="sm"
+                className="w-[180px]"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">
+                  {t('music.allSongs')}
                 </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        )}
+                {decks.map((d) => (
+                  <SelectItem
+                    key={d.id}
+                    value={d.id}
+                  >
+                    {d.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
         </div>
       </div>
 
