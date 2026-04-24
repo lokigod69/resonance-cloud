@@ -16,6 +16,9 @@ import {
   Layers,
   Grid3X3,
   Circle,
+  Waves,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 
@@ -34,7 +37,7 @@ type WordStatus = {
   status: string
 }
 
-type ViewMode = 'stack' | 'grid' | 'orbs'
+type ViewMode = 'stack' | 'grid' | 'orbs' | 'water'
 
 export default function DecksPG() {
   const { user, authError } = useAuth()
@@ -221,6 +224,7 @@ export default function DecksPG() {
               { mode: 'stack' as ViewMode, icon: Layers, label: t('dashboard.viewStack') },
               { mode: 'grid' as ViewMode, icon: Grid3X3, label: t('dashboard.viewGrid') },
               { mode: 'orbs' as ViewMode, icon: Circle, label: t('dashboard.viewOrbs') },
+              { mode: 'water' as ViewMode, icon: Waves, label: 'Water view' },
             ]).map(({ mode, icon: Icon, label }) => (
               <button
                 key={mode}
@@ -270,6 +274,16 @@ export default function DecksPG() {
         {viewMode === 'orbs' && (
           <motion.div key="orbs" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <OrbsView
+              decks={decks}
+              wordCounts={wordCounts}
+              thumbnails={deckThumbnails}
+              onSelect={(id) => navigate(`/deck/${id}`)}
+            />
+          </motion.div>
+        )}
+        {viewMode === 'water' && (
+          <motion.div key="water" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <WaterDecksView
               decks={decks}
               wordCounts={wordCounts}
               thumbnails={deckThumbnails}
@@ -502,6 +516,205 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
       })}
     </div>
   )
+}
+
+/* --- Water View --------------------------------------------------------- */
+
+function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+
+  useEffect(() => {
+    setActiveIndex((index) => Math.min(index, Math.max(decks.length - 1, 0)))
+  }, [decks.length])
+
+  const goToIndex = useCallback((index: number) => {
+    setActiveIndex(Math.max(0, Math.min(index, decks.length - 1)))
+  }, [decks.length])
+
+  const goPrevious = useCallback(() => {
+    goToIndex(activeIndex - 1)
+  }, [activeIndex, goToIndex])
+
+  const goNext = useCallback(() => {
+    goToIndex(activeIndex + 1)
+  }, [activeIndex, goToIndex])
+
+  const handleDragEnd = (_event: unknown, info: PanInfo) => {
+    setTimeout(() => setIsDragging(false), 50)
+    if (info.offset.x < -70 || info.velocity.x < -450) {
+      goNext()
+    } else if (info.offset.x > 70 || info.velocity.x > 450) {
+      goPrevious()
+    }
+  }
+
+  const visibleDecks = decks
+    .map((deck, index) => ({ deck, index, offset: index - activeIndex }))
+    .filter(({ offset }) => Math.abs(offset) <= 2)
+
+  const dotIndexes = getWaterDotIndexes(decks.length, activeIndex)
+
+  return (
+    <div className="water-decks-stage">
+      <div className="water-decks-haze" aria-hidden="true" />
+      <div className="water-decks-floor" aria-hidden="true" />
+
+      <button
+        type="button"
+        className="water-decks-arrow water-decks-arrow-left"
+        onClick={goPrevious}
+        disabled={activeIndex === 0}
+        aria-label="Previous deck"
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+
+      <motion.div
+        className="water-decks-rail"
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.12}
+        onDragStart={() => setIsDragging(true)}
+        onDragEnd={handleDragEnd}
+        style={{ touchAction: 'pan-y' }}
+      >
+        <AnimatePresence initial={false}>
+          {visibleDecks.map(({ deck, index, offset }) => (
+            <WaterDeckCard
+              key={deck.id}
+              deck={deck}
+              offset={offset}
+              isActive={offset === 0}
+              wordCounts={wordCounts}
+              thumbnails={thumbnails}
+              onClick={() => {
+                if (isDragging) return
+                if (offset === 0) {
+                  onSelect(deck.id)
+                } else {
+                  goToIndex(index)
+                }
+              }}
+            />
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      <button
+        type="button"
+        className="water-decks-arrow water-decks-arrow-right"
+        onClick={goNext}
+        disabled={activeIndex === decks.length - 1}
+        aria-label="Next deck"
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
+
+      <div className="water-decks-dots" aria-label="Deck carousel position">
+        {dotIndexes.map((dot, i) => (
+          dot === 'gap' ? (
+            <span key={`gap-${i}`} className="water-decks-dot-gap" aria-hidden="true" />
+          ) : (
+            <button
+              key={dot}
+              type="button"
+              className={`water-decks-dot ${dot === activeIndex ? 'water-decks-dot-active' : ''}`}
+              onClick={() => goToIndex(dot)}
+              aria-label={`Go to deck ${dot + 1}`}
+              aria-current={dot === activeIndex ? 'true' : undefined}
+            />
+          )
+        ))}
+      </div>
+    </div>
+  )
+}
+
+interface WaterDeckCardProps {
+  deck: Deck
+  offset: number
+  isActive: boolean
+  wordCounts: ViewProps['wordCounts']
+  thumbnails: ViewProps['thumbnails']
+  onClick: () => void
+}
+
+function WaterDeckCard({ deck, offset, isActive, wordCounts, thumbnails, onClick }: WaterDeckCardProps) {
+  const { tp, locale } = useTranslation()
+  const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
+  const thumb = thumbnails[deck.id]
+  const distance = Math.abs(offset)
+
+  return (
+    <motion.button
+      type="button"
+      className={`water-deck-card ${isActive ? 'water-deck-card-active' : ''} ${distance === 2 ? 'water-deck-card-far' : ''}`}
+      onClick={onClick}
+      initial={{ opacity: 0, scale: 0.84, y: 28 }}
+      animate={{
+        opacity: isActive ? 1 : distance === 1 ? 0.74 : 0.38,
+        x: offset * 230,
+        y: distance * 18,
+        scale: isActive ? 1 : distance === 1 ? 0.82 : 0.68,
+        rotateY: offset * -19,
+        rotateZ: offset * -2.5,
+        zIndex: 20 - distance,
+      }}
+      exit={{ opacity: 0, scale: 0.76, y: 34 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+      aria-label={isActive ? `Open ${displayName}` : `Focus ${displayName}`}
+    >
+      <div className="water-deck-card-shell">
+        <div className="water-deck-image">
+          {thumb ? (
+            <img src={thumb} alt="" />
+          ) : (
+            <div className="water-deck-placeholder">
+              <Sparkles className="h-10 w-10" />
+            </div>
+          )}
+          <div className="water-deck-image-shade" />
+        </div>
+
+        <div className="water-deck-copy">
+          <p className="water-deck-language">
+            <FlagIcon code={deck.target_language} className="w-4 h-auto" />
+            <span>{deck.target_language}</span>
+          </p>
+          <h2>{displayName}</h2>
+          <p className="water-deck-count">{tp('dashboard.wordCount', counts.total)}</p>
+        </div>
+      </div>
+
+      <div className="water-deck-reflection" aria-hidden="true">
+        {thumb ? (
+          <img src={thumb} alt="" />
+        ) : (
+          <div className="water-deck-reflection-fallback" />
+        )}
+      </div>
+    </motion.button>
+  )
+}
+
+function getWaterDotIndexes(total: number, activeIndex: number): Array<number | 'gap'> {
+  if (total <= 9) {
+    return Array.from({ length: total }, (_value, index) => index)
+  }
+
+  const indexes = new Set<number>([0, total - 1])
+  for (let index = activeIndex - 2; index <= activeIndex + 2; index++) {
+    if (index >= 0 && index < total) indexes.add(index)
+  }
+
+  const sorted = Array.from(indexes).sort((a, b) => a - b)
+  const result: Array<number | 'gap'> = []
+  sorted.forEach((index, i) => {
+    if (i > 0 && index - sorted[i - 1] > 1) result.push('gap')
+    result.push(index)
+  })
+  return result
 }
 
 /* ─── Orbs View ──────────────────────────────────── */

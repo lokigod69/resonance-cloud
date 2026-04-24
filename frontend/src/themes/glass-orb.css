@@ -384,3 +384,390 @@
     font-size: 0.9rem;
   }
 }
+
+/* Watery Decks prototype */
+.skin-glassy .water-decks-stage {
+  position: relative;
+  min-height: 640px;
+  margin: -4px -24px 0;
+  overflow: hidden;
+  border-radius: 8px;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at center 63%, rgba(23, 134, 176, 0.18) 0%, rgba(7, 30, 42, 0.12) 34%, transparent 66%),
+    radial-gradient(ellipse at center 4%, rgba(66, 153, 205, 0.16) 0%, transparent 44%),
+    linear-gradient(180deg, rgba(4, 14, 23, 0.72) 0%, rgba(3, 9, 13, 0.96) 65%, rgba(2, 6, 9, 1) 100%);
+}
+
+.skin-glassy .water-decks-haze {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.5), transparent 24%, transparent 76%, rgba(0, 0, 0, 0.5)),
+    radial-gradient(ellipse at center 46%, transparent 0%, rgba(0, 0, 0, 0.58) 74%);
+}
+
+.skin-glassy .water-decks-floor {
+  position: absolute;
+  left: 50%;
+  bottom: 90px;
+  z-index: 1;
+  width: min(920px, 118vw);
+  height: 260px;
+  translate: -50% 0;
+  pointer-events: none;
+  opacity: 0.72;
+  background:
+    repeating-linear-gradient(102deg, rgba(116, 214, 255, 0.12) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(78deg, rgba(45, 130, 176, 0.1) 0 1px, transparent 1px 30px),
+    radial-gradient(ellipse at center, rgba(30, 183, 235, 0.22) 0%, rgba(10, 58, 79, 0.16) 35%, transparent 70%);
+  filter: blur(0.4px);
+  mask-image: radial-gradient(ellipse at center, black 0%, rgba(0, 0, 0, 0.8) 42%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, rgba(0, 0, 0, 0.8) 42%, transparent 78%);
+  transform: perspective(740px) rotateX(64deg);
+  transform-origin: center bottom;
+  animation: waterFloorDrift 9s ease-in-out infinite alternate;
+}
+
+.skin-glassy .water-decks-rail {
+  position: relative;
+  z-index: 3;
+  height: 540px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 26px;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+  cursor: grab;
+}
+
+.skin-glassy .water-decks-rail:active {
+  cursor: grabbing;
+}
+
+.skin-glassy .water-deck-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: clamp(264px, 31vw, 338px);
+  translate: -50% 0;
+  border: 0;
+  padding: 0;
+  color: white;
+  background: transparent;
+  text-align: left;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.skin-glassy .water-deck-card-far {
+  pointer-events: none;
+}
+
+.skin-glassy .water-deck-card-shell {
+  position: relative;
+  height: 430px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(11, 16, 24, 0.86), rgba(6, 8, 13, 0.96));
+  border: 1px solid rgba(167, 216, 235, 0.16);
+  box-shadow:
+    0 24px 58px rgba(0, 0, 0, 0.56),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.skin-glassy .water-deck-card-active .water-deck-card-shell {
+  border-color: rgba(125, 220, 255, 0.52);
+  box-shadow:
+    0 26px 64px rgba(0, 0, 0, 0.62),
+    0 0 28px rgba(25, 184, 230, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.skin-glassy .water-deck-card-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    linear-gradient(110deg, rgba(255, 255, 255, 0.18), transparent 18%, transparent 78%, rgba(131, 220, 255, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 28%);
+  opacity: 0.54;
+}
+
+.skin-glassy .water-deck-image {
+  position: relative;
+  height: 58%;
+  overflow: hidden;
+  background: rgba(5, 10, 16, 0.94);
+}
+
+.skin-glassy .water-deck-image img,
+.skin-glassy .water-deck-reflection img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skin-glassy .water-deck-image img {
+  opacity: 0.9;
+  transition: opacity 260ms ease, scale 520ms ease;
+}
+
+.skin-glassy .water-deck-card-active .water-deck-image img {
+  opacity: 1;
+  scale: 1.025;
+}
+
+.skin-glassy .water-deck-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(133, 230, 255, 0.3);
+  background:
+    radial-gradient(circle at 50% 35%, rgba(37, 185, 221, 0.18), transparent 42%),
+    linear-gradient(135deg, rgba(15, 50, 67, 0.8), rgba(7, 10, 16, 1));
+}
+
+.skin-glassy .water-deck-image-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(2, 6, 10, 0.04), transparent 38%, rgba(8, 10, 16, 0.94) 100%),
+    radial-gradient(ellipse at center, transparent 18%, rgba(0, 0, 0, 0.38) 100%);
+}
+
+.skin-glassy .water-deck-copy {
+  position: relative;
+  z-index: 5;
+  min-height: 42%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px 24px 24px;
+}
+
+.skin-glassy .water-deck-language {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+  color: rgba(78, 230, 218, 0.94);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.skin-glassy .water-deck-copy h2 {
+  margin: 0;
+  max-height: 4.8rem;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.96);
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.34rem, 2vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.12;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.72);
+}
+
+.skin-glassy .water-deck-count {
+  margin: 22px 0 0;
+  color: rgba(213, 228, 236, 0.68);
+  font-size: 0.86rem;
+}
+
+.skin-glassy .water-deck-reflection {
+  position: relative;
+  width: 92%;
+  height: 120px;
+  margin: 8px auto 0;
+  overflow: hidden;
+  border-radius: 0 0 28px 28px;
+  opacity: 0.32;
+  filter: blur(2px) saturate(0.82);
+  transform: scaleY(-1);
+  transform-origin: center top;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.2) 52%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.2) 52%, transparent 100%);
+}
+
+.skin-glassy .water-deck-card-active .water-deck-reflection {
+  opacity: 0.38;
+}
+
+.skin-glassy .water-deck-card:not(.water-deck-card-active) .water-deck-reflection {
+  opacity: 0.18;
+}
+
+.skin-glassy .water-deck-reflection::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(92deg, rgba(125, 218, 255, 0.18) 0 1px, transparent 1px 16px),
+    linear-gradient(180deg, rgba(4, 22, 31, 0.28), rgba(3, 9, 13, 0.96));
+  mix-blend-mode: screen;
+}
+
+.skin-glassy .water-deck-reflection-fallback {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(47, 184, 218, 0.32), rgba(5, 18, 26, 0.86) 70%);
+}
+
+.skin-glassy .water-decks-arrow {
+  position: absolute;
+  top: 238px;
+  z-index: 8;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(165, 219, 239, 0.2);
+  background: rgba(7, 20, 30, 0.58);
+  color: rgba(226, 242, 248, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease, opacity 180ms ease;
+}
+
+.skin-glassy .water-decks-arrow:hover:not(:disabled) {
+  border-color: rgba(116, 220, 255, 0.48);
+  background: rgba(15, 42, 58, 0.68);
+  color: white;
+}
+
+.skin-glassy .water-decks-arrow:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.skin-glassy .water-decks-arrow-left {
+  left: max(18px, calc(50% - 500px));
+}
+
+.skin-glassy .water-decks-arrow-right {
+  right: max(18px, calc(50% - 500px));
+}
+
+.skin-glassy .water-decks-dots {
+  position: relative;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: -24px;
+}
+
+.skin-glassy .water-decks-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(208, 232, 239, 0.24);
+  transition: width 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.skin-glassy .water-decks-dot-active {
+  width: 28px;
+  background: rgba(94, 226, 246, 0.9);
+  box-shadow: 0 0 16px rgba(42, 199, 230, 0.34);
+}
+
+.skin-glassy .water-decks-dot-gap {
+  width: 10px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(208, 232, 239, 0.18);
+}
+
+@keyframes waterFloorDrift {
+  from { background-position: 0 0, 0 0, center; opacity: 0.58; }
+  to { background-position: 42px 12px, -34px 18px, center; opacity: 0.76; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skin-glassy .water-decks-floor {
+    animation: none;
+  }
+
+  .skin-glassy .water-deck-image img,
+  .skin-glassy .water-deck-card-shell,
+  .skin-glassy .water-decks-dot,
+  .skin-glassy .water-decks-arrow {
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .skin-glassy .water-decks-stage {
+    min-height: 560px;
+    margin: -8px -24px 0;
+    border-radius: 0;
+  }
+
+  .skin-glassy .water-decks-rail {
+    height: 474px;
+    padding-top: 18px;
+  }
+
+  .skin-glassy .water-deck-card {
+    width: min(252px, 74vw);
+  }
+
+  .skin-glassy .water-deck-card-shell {
+    height: 364px;
+    border-radius: 16px;
+  }
+
+  .skin-glassy .water-deck-card-far {
+    display: none;
+  }
+
+  .skin-glassy .water-deck-copy {
+    padding: 18px 18px 20px;
+  }
+
+  .skin-glassy .water-deck-copy h2 {
+    max-height: 4.15rem;
+    font-size: 1.28rem;
+  }
+
+  .skin-glassy .water-deck-count {
+    margin-top: 16px;
+  }
+
+  .skin-glassy .water-deck-reflection {
+    height: 78px;
+    filter: blur(1.4px) saturate(0.78);
+  }
+
+  .skin-glassy .water-decks-floor {
+    bottom: 96px;
+    height: 190px;
+    opacity: 0.48;
+  }
+
+  .skin-glassy .water-decks-arrow {
+    display: none;
+  }
+
+  .skin-glassy .water-decks-dots {
+    gap: 7px;
+    margin-top: -16px;
+  }
+}
