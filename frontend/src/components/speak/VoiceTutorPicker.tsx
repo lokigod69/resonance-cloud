@@ -1,10 +1,11 @@
 import { CharacterGrid } from './CharacterGrid'
 import { GeminiModeVoicePicker, type GeminiSelection } from './GeminiModeVoicePicker'
-import { GrokPicker } from './GrokPicker'
+import { GrokPicker, type GrokPickerStep } from './GrokPicker'
 import type { TutorCharacter } from '@/characterRegistry'
 import type { GrokCategory } from '@/data/grokCategories'
 import type { GrokVoice } from '@/data/grokVoices'
 import type { GeminiPickerStage } from '@/hooks/useVoiceTutor'
+import type { GrokLevel } from '@/lib/grokPedagogy'
 
 export type SpeakProvider = 'voxtral' | 'gemini' | 'grok'
 
@@ -23,10 +24,14 @@ interface VoiceTutorPickerProps {
   onGeminiAccentChange: (accentId: string) => void
   onGeminiStageChange: (stage: GeminiPickerStage) => void
   confirmLabel?: string
+  grokStep?: GrokPickerStep
+  grokLanguageName?: string
   grokSelectedVoice?: GrokVoice | null
   grokSelectedCategory?: GrokCategory | 'free_chat' | null
+  grokSelectedLevel?: GrokLevel | null
   onGrokVoiceSelect?: (voice: GrokVoice) => void
   onGrokCategorySelect?: (category: GrokCategory | 'free_chat') => void
+  onGrokLevelSelect?: (level: GrokLevel) => void
   onGrokStart?: () => void
 }
 
@@ -45,10 +50,14 @@ export function VoiceTutorPicker({
   onGeminiAccentChange,
   onGeminiStageChange,
   confirmLabel,
+  grokStep,
+  grokLanguageName,
   grokSelectedVoice,
   grokSelectedCategory,
+  grokSelectedLevel,
   onGrokVoiceSelect,
   onGrokCategorySelect,
+  onGrokLevelSelect,
   onGrokStart,
 }: VoiceTutorPickerProps) {
   if (provider === 'gemini') {
@@ -72,10 +81,14 @@ export function VoiceTutorPicker({
     return (
       <GrokPicker
         language={language}
+        languageName={grokLanguageName ?? ''}
+        step={grokStep ?? 'voice'}
         selectedVoice={grokSelectedVoice ?? null}
         selectedCategory={grokSelectedCategory ?? null}
+        selectedLevel={grokSelectedLevel ?? null}
         onSelectVoice={(voice) => onGrokVoiceSelect?.(voice)}
         onSelectCategory={(category) => onGrokCategorySelect?.(category)}
+        onSelectLevel={(level) => onGrokLevelSelect?.(level)}
         onStart={() => onGrokStart?.()}
         isStarting={!!disabled}
       />

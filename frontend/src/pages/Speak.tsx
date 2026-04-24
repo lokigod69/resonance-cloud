@@ -6,6 +6,7 @@ import { useStudyWords } from '@/hooks/useStudyWords'
 import { SpeakHistoryPanel } from '@/components/speak/SpeakHistoryPanel'
 import { VoiceTutorPicker, type SpeakProvider } from '@/components/speak/VoiceTutorPicker'
 import { ProviderToggle } from '@/components/speak/ProviderToggle'
+import { GrokPicker, type GrokPickerStep } from '@/components/speak/GrokPicker'
 import type { GrokCategory } from '@/data/grokCategories'
 import type { GrokVoice } from '@/data/grokVoices'
 import type { GrokLevel } from '@/lib/grokPedagogy'
@@ -103,7 +104,7 @@ export default function Speak() {
   const [selectedGrokVoice, setSelectedGrokVoice] = useState<GrokVoice | null>(null)
   const [selectedGrokCategory, setSelectedGrokCategory] = useState<GrokCategory | 'free_chat' | null>(null)
   const [grokLevel, setGrokLevel] = useState<GrokLevel | null>(null)
-  const [showGrokLevelPicker, setShowGrokLevelPicker] = useState(false)
+  const [grokPickerStep, setGrokPickerStep] = useState<GrokPickerStep>('voice')
   const [grokSessionActive, setGrokSessionActive] = useState(false)
   const [grokShowTranscript, setGrokShowTranscript] = useState(false)
 
@@ -147,7 +148,7 @@ export default function Speak() {
   const clearGrokUiState = () => {
     setSelectedGrokVoice(null)
     setSelectedGrokCategory(null)
-    setShowGrokLevelPicker(false)
+    setGrokPickerStep('voice')
     setGrokSessionActive(false)
     setGrokShowTranscript(false)
   }
@@ -202,24 +203,33 @@ export default function Speak() {
   }
 
   const handleGrokStart = async () => {
-    if (!selectedGrokVoice || !selectedGrokCategory) return
-    if (!grokLevel || !tutor.language) {
-      setShowGrokLevelPicker(true)
+    if (!selectedGrokVoice) {
+      setGrokPickerStep('voice')
       return
     }
+    if (!selectedGrokCategory) {
+      setGrokPickerStep('mode')
+      return
+    }
+    if (!grokLevel || !tutor.language) {
+      setGrokPickerStep('level')
+      return
+    }
+    localStorage.setItem(`voice-tutor-level-${tutor.language}`, grokLevel)
     await startGrokConversationWithLevel(grokLevel)
   }
 
-  const handleGrokLevelSelect = async (level: GrokLevel) => {
+  const handleGrokLevelSelect = (level: GrokLevel) => {
     if (!tutor.language) return
     localStorage.setItem(`voice-tutor-level-${tutor.language}`, level)
     setGrokLevel(level)
-    setShowGrokLevelPicker(false)
-    await startGrokConversationWithLevel(level)
   }
 
   const handleProviderChange = (provider: SpeakProvider) => {
     setActiveProvider(provider)
+    if (provider === 'grok') {
+      setGrokPickerStep('voice')
+    }
     if (provider !== 'grok') {
       tutor.setProvider(provider)
     }
@@ -243,6 +253,7 @@ export default function Speak() {
     setGrokShowTranscript(false)
     setGrokSessionActive(false)
     setCorrections(null)
+    setGrokPickerStep('voice')
   }
 
   useEffect(() => {
@@ -489,11 +500,19 @@ export default function Speak() {
     )
   }
 
-  if ((activeProvider === 'grok' && !grokSessionActive && !showGrokLevelPicker && !grokShowTranscript) || (activeProvider !== 'grok' && !tutor.voice)) {
+  if ((activeProvider === 'grok' && !grokSessionActive && !grokShowTranscript) || (activeProvider !== 'grok' && !tutor.voice)) {
     const isStarting = activeProvider === 'grok' ? grok.status === 'connecting' : tutor.status === 'processing'
     const isGeminiVoiceStage = activeProvider !== 'grok' && tutor.provider === 'gemini' && tutor.geminiPickerStage === 'voice'
     const goBack = () => {
       if (activeProvider === 'grok') {
+        if (grokPickerStep === 'level') {
+          setGrokPickerStep('mode')
+          return
+        }
+        if (grokPickerStep === 'mode') {
+          setGrokPickerStep('voice')
+          return
+        }
         clearGrokUiState()
         tutor.resetConversation()
         setActiveProvider(defaultProviderFor(tutor.language))
@@ -567,59 +586,76 @@ export default function Speak() {
               </div>
             )}
 
-            <VoiceTutorPicker
-              provider={activeProvider}
-              language={tutor.language!}
-              disabled={isStarting}
-              onVoxtralSelect={(char) => {
-                if (tutor.isChangingVoice) {
-                  tutor.applyVoxtralCharacterChange(char)
-                } else {
-                  tutor.startConversationWithCharacter(char)
-                }
-              }}
-              onGeminiStart={({ mode, voiceName, accentId }) => {
-                const params = {
-                  characterModeId: mode.id,
-                  characterModeName: mode.displayName,
-                  voiceName,
-                  version: mode.version,
-                  accentId,
-                }
-                if (tutor.isChangingVoice) {
-                  tutor.applyGeminiVoiceChange(params)
-                } else {
-                  tutor.startConversationWithGemini(params)
-                }
-              }}
-              geminiStage={tutor.geminiPickerStage}
-              geminiModeId={tutor.geminiModeId}
-              geminiVoiceName={tutor.geminiVoiceName}
-              geminiAccentId={tutor.geminiAccentId}
-              onGeminiModeChange={(modeId) => tutor.setGeminiModeId(modeId)}
-              onGeminiVoiceChange={(voiceName) => tutor.setGeminiVoiceName(voiceName)}
-              onGeminiAccentChange={(accentId) => tutor.setGeminiAccentId(accentId)}
-              onGeminiStageChange={(stage) => tutor.setGeminiPickerStage(stage)}
-              confirmLabel={tutor.isChangingVoice ? 'Use this voice' : 'Start conversation'}
-              grokSelectedVoice={selectedGrokVoice}
-              grokSelectedCategory={selectedGrokCategory}
-              onGrokVoiceSelect={setSelectedGrokVoice}
-              onGrokCategorySelect={setSelectedGrokCategory}
-              onGrokStart={() => { void handleGrokStart() }}
-            />
+            {activeProvider === 'grok' ? (
+              <GrokPicker
+                language={tutor.language!}
+                languageName={selectedLang?.nativeName ?? ''}
+                step={grokPickerStep}
+                selectedVoice={selectedGrokVoice}
+                selectedCategory={selectedGrokCategory}
+                selectedLevel={grokLevel}
+                onSelectVoice={(voice) => {
+                  setSelectedGrokVoice(voice)
+                  setGrokPickerStep('mode')
+                }}
+                onSelectCategory={(category) => {
+                  setSelectedGrokCategory(category)
+                  setGrokPickerStep('level')
+                }}
+                onSelectLevel={handleGrokLevelSelect}
+                onStart={() => { void handleGrokStart() }}
+                isStarting={isStarting}
+              />
+            ) : (
+              <VoiceTutorPicker
+                provider={activeProvider}
+                language={tutor.language!}
+                disabled={isStarting}
+                onVoxtralSelect={(char) => {
+                  if (tutor.isChangingVoice) {
+                    tutor.applyVoxtralCharacterChange(char)
+                  } else {
+                    tutor.startConversationWithCharacter(char)
+                  }
+                }}
+                onGeminiStart={({ mode, voiceName, accentId }) => {
+                  const params = {
+                    characterModeId: mode.id,
+                    characterModeName: mode.displayName,
+                    voiceName,
+                    version: mode.version,
+                    accentId,
+                  }
+                  if (tutor.isChangingVoice) {
+                    tutor.applyGeminiVoiceChange(params)
+                  } else {
+                    tutor.startConversationWithGemini(params)
+                  }
+                }}
+                geminiStage={tutor.geminiPickerStage}
+                geminiModeId={tutor.geminiModeId}
+                geminiVoiceName={tutor.geminiVoiceName}
+                geminiAccentId={tutor.geminiAccentId}
+                onGeminiModeChange={(modeId) => tutor.setGeminiModeId(modeId)}
+                onGeminiVoiceChange={(voiceName) => tutor.setGeminiVoiceName(voiceName)}
+                onGeminiAccentChange={(accentId) => tutor.setGeminiAccentId(accentId)}
+                onGeminiStageChange={(stage) => tutor.setGeminiPickerStage(stage)}
+                confirmLabel={tutor.isChangingVoice ? 'Use this voice' : 'Start conversation'}
+              />
+            )}
           </div>
         </div>
       </div>
     )
   }
 
-  if ((activeProvider === 'grok' && showGrokLevelPicker) || (activeProvider !== 'grok' && (!tutor.level || tutor.showLevelPicker))) {
+  if (activeProvider !== 'grok' && (!tutor.level || tutor.showLevelPicker)) {
     return (
       <div className="flex flex-col min-h-full pb-20">
         <div className="sticky top-0 z-40 bg-gray-950 pt-4 pb-3 border-b border-white/5">
           <div className="max-w-2xl mx-auto w-full px-4 flex items-center gap-3">
             <button
-              onClick={activeProvider === 'grok' ? () => setShowGrokLevelPicker(false) : tutor.cancelLevelChange}
+              onClick={tutor.cancelLevelChange}
               className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
               title="Back to voice selection"
             >
@@ -642,11 +678,7 @@ export default function Speak() {
                 <button
                   key={opt.level}
                   onClick={() => {
-                    if (activeProvider === 'grok') {
-                      void handleGrokLevelSelect(opt.level)
-                    } else {
-                      void tutor.selectLevel(opt.level)
-                    }
+                    void tutor.selectLevel(opt.level)
                   }}
                   className="flex items-center gap-4 px-5 py-4 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left"
                 >
@@ -659,7 +691,7 @@ export default function Speak() {
               ))}
             </div>
 
-            {activeProvider !== 'grok' && studyWords.hasWords && (
+            {studyWords.hasWords && (
               <div className="mt-6 flex justify-center">
                 <button
                   onClick={() => tutor.toggleStudyMode(studyWords.studyWords)}
