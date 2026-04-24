@@ -504,6 +504,7 @@ async def bootstrap_job(
     # word in `cancelling` is left alone. Skip bootstrap for non-pending words
     # (retry-flag contamination, concurrent admin edits, etc.).
     eligible_words: list[dict[str, Any]] = []
+    enrichment_word_ids: list[str] = []
     for w in words:
         ok = await state.transition_stage(
             sb, w["id"],
@@ -513,6 +514,7 @@ async def bootstrap_job(
         )
         if ok:
             eligible_words.append(w)
+            enrichment_word_ids.append(w["id"])
         else:
             log.info(
                 "bootstrap: skipping word=%s — not in pending (was %s)",
@@ -543,9 +545,32 @@ async def bootstrap_job(
 
     # Enrichment (single LLM call)
     llm_model = merged.get("concept", {}).get("llm_model", "deepseek/deepseek-v3.2")
-    enrichment_results = await run_enrichment(
-        words, target_language, base_language, llm_model,
-    )
+    try:
+        enrichment_results = await run_enrichment(
+            words, target_language, base_language, llm_model,
+        )
+    except Exception:
+        rolled_back = 0
+        for word_id in enrichment_word_ids:
+            try:
+                ok = await state.transition_stage(
+                    sb, word_id,
+                    new_stage="pending",
+                    allowed_prior=["enrichment"],
+                    increment_attempts=False,
+                )
+                if ok:
+                    rolled_back += 1
+            except Exception as rollback_err:
+                log.warning(
+                    "feeder/source1: enrichment rollback failed for word=%s job=%s: %s",
+                    word_id, job_id, rollback_err,
+                )
+        log.info(
+            "feeder/source1: rolled back %d words from enrichment to pending for job=%s",
+            rolled_back, job_id,
+        )
+        raise
     enrichment_map: dict[str, dict[str, Any]] = {}
     for e in enrichment_results or []:
         enrichment_map[(e.get("input_word") or "").lower()] = e

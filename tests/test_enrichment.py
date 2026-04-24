@@ -329,3 +329,39 @@ class TestRunEnrichmentIntegration:
         assert sterben["translation"] == "die alone"
         # word_target is a verb, not capitalized.
         assert sterben["word_target"] == "sterben"
+
+    def test_logs_openrouter_status_error_body(self, monkeypatch, caplog):
+        request = enrichment_mod.httpx.Request(
+            "POST", "https://openrouter.ai/api/v1/chat/completions",
+        )
+        response = enrichment_mod.httpx.Response(
+            404, request=request, text='{"error":"unknown model"}',
+        )
+
+        http_response = MagicMock()
+        http_response.status_code = 404
+        http_response.text = '{"error":"unknown model"}'
+        http_response.raise_for_status = MagicMock(side_effect=enrichment_mod.httpx.HTTPStatusError(
+            "not found", request=request, response=response,
+        ))
+        http_response.json = MagicMock()
+
+        fake_client = MagicMock()
+        fake_client.post = AsyncMock(return_value=http_response)
+        fake_client.__aenter__ = AsyncMock(return_value=fake_client)
+        fake_client.__aexit__ = AsyncMock(return_value=None)
+
+        monkeypatch.setattr(enrichment_mod, "OPENROUTER_API_KEY", "test_key")
+        caplog.set_level("ERROR")
+
+        with patch.object(enrichment_mod.httpx, "AsyncClient", return_value=fake_client):
+            with pytest.raises(enrichment_mod.httpx.HTTPStatusError):
+                _run(run_enrichment(
+                    [{"word": "agua"}],
+                    target_language="Spanish",
+                    base_language="English",
+                ))
+
+        assert "OpenRouter enrichment request failed: status=404" in caplog.text
+        assert '{"error":"unknown model"}' in caplog.text
+        http_response.json.assert_not_called()

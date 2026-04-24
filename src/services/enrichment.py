@@ -204,7 +204,15 @@ async def run_enrichment(
                 ],
             },
         )
-        resp.raise_for_status()
+        try:
+            resp.raise_for_status()
+        except httpx.HTTPStatusError:
+            log.error(
+                "OpenRouter enrichment request failed: status=%s body=%s",
+                resp.status_code,
+                resp.text,
+            )
+            raise
         data = resp.json()
 
     _elapsed_ms = int((time.monotonic() - _call_start) * 1000)

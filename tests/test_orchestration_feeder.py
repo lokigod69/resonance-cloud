@@ -426,6 +426,81 @@ def test_bootstrap_writes_manifest_before_exposing_pending(monkeypatch, tmp_path
     assert upstream_queue.qsize() == 1
 
 
+def test_bootstrap_rolls_back_words_when_enrichment_fails(monkeypatch, tmp_path):
+    job = {
+        "id": "job-1",
+        "user_id": "u-1",
+        "deck_id": "d-1",
+        "target_language": "Spanish",
+        "settings_override": {},
+        "art_style": None,
+        "movie_override": None,
+    }
+
+    sb = FakeSupabase()
+    sb.add_word(id="w-1", deck_id="d-1", word="hola", status="pending", current_stage="pending")
+    sb.add_word(id="w-2", deck_id="d-1", word="agua", status="pending", current_stage="pending")
+    sb._tables["profiles"].append({"id": "u-1", "base_language": "English"})
+
+    _install_module(
+        monkeypatch,
+        "src.settings",
+        save_defaults=lambda *_a, **_kw: None,
+        DEFAULT_SETTINGS={},
+    )
+    _install_module(
+        monkeypatch,
+        "src.storage",
+        create_job_workspace=lambda user_id, deck_id: tmp_path,
+    )
+
+    async def _run_enrichment(*_a, **_kw):
+        raise RuntimeError("openrouter 404")
+
+    _install_module(
+        monkeypatch,
+        "src.services.enrichment",
+        run_enrichment=_run_enrichment,
+    )
+    _install_module(
+        monkeypatch,
+        "src.workspace",
+        create_word_folder=lambda workspace_path, word_slug: tmp_path / word_slug,
+    )
+    _install_module(
+        monkeypatch,
+        "src.slugify",
+        slugify=lambda text: text,
+        language_to_code=lambda language: "es",
+    )
+    _install_module(
+        monkeypatch,
+        "src.manifest",
+        create_manifest=lambda *_a, **_kw: None,
+    )
+
+    _install_job_runner_import_stubs(monkeypatch, sb)
+    import job_runner
+    importlib.reload(job_runner)
+
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+    info_logs: list[str] = []
+    monkeypatch.setattr(
+        feeder.log,
+        "info",
+        lambda msg, *args, **_kw: info_logs.append(msg % args if args else msg),
+    )
+
+    upstream_queue = asyncio.Queue(maxsize=2)
+    with pytest.raises(RuntimeError, match="openrouter 404"):
+        _run(feeder.bootstrap_job(sb, job, upstream_queue=upstream_queue))
+
+    assert [row["current_stage"] for row in sb._tables["words"]] == ["pending", "pending"]
+    assert [row["status"] for row in sb._tables["words"]] == ["pending", "pending"]
+    assert upstream_queue.qsize() == 0
+    assert "feeder/source1: rolled back 2 words from enrichment to pending for job=job-1" in info_logs
+
+
 def test_bootstrap_crash_after_manifest_write_recovers_and_reruns(monkeypatch, tmp_path):
     from src.orchestration import recovery
 
