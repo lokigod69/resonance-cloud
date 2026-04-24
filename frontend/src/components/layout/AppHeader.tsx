@@ -25,7 +25,6 @@ import {
   FileText,
   BarChart3,
   Mic,
-  DollarSign,
 } from 'lucide-react'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import ProfileModal from '@/components/ProfileModal'
@@ -39,7 +38,6 @@ const adminNav = [
   { to: '/admin/voices', label: 'Voices', icon: Mic },
   { to: '/admin/metrics', label: 'Metrics', icon: BarChart3 },
   { to: '/admin/observability/aggregate', label: 'Observability', icon: BarChart3 },
-  { to: '/admin/costs', label: 'Costs', icon: DollarSign },
 ]
 
 export function AppHeader() {

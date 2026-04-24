@@ -1,21 +1,66 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
-import { Card } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Lock } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 
 export default function AdminRoute() {
-  const { profile, loading: authLoading, profileLoading } = useAuth()
-  const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem('admin_unlocked') === 'true')
-  const [pin, setPin] = useState('')
-  const [error, setError] = useState<string | null>(null)
-  const [checking, setChecking] = useState(false)
+  const { session, loading: authLoading } = useAuth()
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [checkingAdmin, setCheckingAdmin] = useState(true)
 
-  if (authLoading || profileLoading) {
+  useEffect(() => {
+    let active = true
+
+    if (authLoading) {
+      return () => {
+        active = false
+      }
+    }
+
+    if (!session) {
+      setIsAdmin(false)
+      setCheckingAdmin(false)
+      return () => {
+        active = false
+      }
+    }
+
+    setCheckingAdmin(true)
+
+    const checkAdmin = async () => {
+      try {
+        const { data, error } = await supabase.rpc('is_admin')
+
+        if (!active) return
+
+        if (error) {
+          console.error('Admin check failed:', error)
+          setIsAdmin(false)
+          return
+        }
+
+        setIsAdmin(data === true)
+      } catch (error) {
+        if (active) {
+          console.error('Admin check failed:', error)
+          setIsAdmin(false)
+        }
+      } finally {
+        if (active) {
+          setCheckingAdmin(false)
+        }
+      }
+    }
+
+    void checkAdmin()
+
+    return () => {
+      active = false
+    }
+  }, [authLoading, session])
+
+  if (authLoading || checkingAdmin) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <ParticleSpinner preset="rose" size={120} />
@@ -23,69 +68,9 @@ export default function AdminRoute() {
     )
   }
 
-  if (!profile || profile.role !== 'admin') {
+  if (!isAdmin) {
     return <Navigate to="/dashboard" replace />
   }
 
-  if (unlocked) {
-    return <Outlet />
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setChecking(true)
-    setError(null)
-
-    const { data, error: fetchError } = await supabase
-      .from('system_settings')
-      .select('admin_pin')
-      .eq('id', 1)
-      .single()
-
-    if (fetchError || !data) {
-      setError('Could not verify PIN')
-      setChecking(false)
-      return
-    }
-
-    if (pin === data.admin_pin) {
-      sessionStorage.setItem('admin_unlocked', 'true')
-      setUnlocked(true)
-    } else {
-      setError('Incorrect PIN')
-      setPin('')
-    }
-    setChecking(false)
-  }
-
-  return (
-    <div className="flex items-center justify-center min-h-[60vh]">
-      <Card className="w-full max-w-sm p-6 space-y-4">
-        <div className="flex flex-col items-center gap-2 text-center">
-          <Lock className="h-8 w-8 text-muted-foreground" />
-          <h2 className="text-lg font-semibold">Admin Access</h2>
-          <p className="text-sm text-muted-foreground">Enter admin PIN to continue</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-3">
-          <Input
-            type="password"
-            inputMode="numeric"
-            maxLength={8}
-            placeholder="PIN"
-            value={pin}
-            onChange={e => setPin(e.target.value)}
-            className="text-center text-lg tracking-widest"
-            autoFocus
-          />
-          {error && (
-            <p className="text-sm text-red-400 text-center">{error}</p>
-          )}
-          <Button type="submit" className="w-full" disabled={!pin || checking}>
-            {checking ? 'Verifying...' : 'Unlock'}
-          </Button>
-        </form>
-      </Card>
-    </div>
-  )
+  return <Outlet />
 }
