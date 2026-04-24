@@ -139,7 +139,6 @@ async def _resolve_creative_direction(manifest_data: Any, settings: dict) -> tup
                 },
                 json={
                     "model": model,
-                    "max_tokens": 200,
                     "messages": [
                         {"role": "system", "content": _PICKER_SYSTEM_PROMPT},
                         {"role": "user", "content": user_prompt},
@@ -148,7 +147,13 @@ async def _resolve_creative_direction(manifest_data: Any, settings: dict) -> tup
             )
             resp.raise_for_status()
 
-        content = resp.json()["choices"][0]["message"]["content"]
+        data = resp.json()
+        usage = data.get("usage", {})
+        content = data["choices"][0]["message"]["content"]
+        logger.info(
+            "Creative direction picker LLM call completed (model=%s, tokens=%s)",
+            model, usage,
+        )
         parsed = json.loads(content)
         direction = parsed["direction"]
         rationale = parsed.get("rationale", "")

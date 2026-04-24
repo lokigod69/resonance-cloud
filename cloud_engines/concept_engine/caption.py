@@ -63,6 +63,8 @@ def generate_caption(
             tokens_out=result.tokens_out,
             cost_usd=result.cost_usd,
             request_id=result.request_id,
+            completion_tokens=result.tokens_out,
+            reasoning_tokens=result.reasoning_tokens,
         )
     return _parse_caption_response(result.content, language, settings)
 
@@ -116,7 +118,6 @@ def generate_caption_with_article(
         result = llm_client.generate(
             prompt=prompt,
             model=settings.llm_model,
-            max_tokens=256,
         )
         ev.record_response(
             response_body=result.content,
@@ -124,6 +125,8 @@ def generate_caption_with_article(
             tokens_out=result.tokens_out,
             cost_usd=result.cost_usd,
             request_id=result.request_id,
+            completion_tokens=result.tokens_out,
+            reasoning_tokens=result.reasoning_tokens,
         )
     return _parse_reliable_response(result.content, language, settings, language_code)
 

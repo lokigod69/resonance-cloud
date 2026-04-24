@@ -223,7 +223,6 @@ def _generate_llm_path(
         result = llm_client.generate(
             prompt=prompt,
             model=settings.llm_model,
-            max_tokens=1024,
         )
         ev.record_response(
             response_body=result.content,
@@ -231,6 +230,8 @@ def _generate_llm_path(
             tokens_out=result.tokens_out,
             cost_usd=result.cost_usd,
             request_id=result.request_id,
+            completion_tokens=result.tokens_out,
+            reasoning_tokens=result.reasoning_tokens,
         )
 
     if external_music_caption:

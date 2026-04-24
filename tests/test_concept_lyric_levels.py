@@ -56,6 +56,12 @@ class FakeLLMResponse:
         self.tokens_out = 20
         self.cost_usd = 0.0
         self.request_id = "fake-req"
+        self.reasoning_tokens = 0
+        self.usage = {
+            "prompt_tokens": self.tokens_in,
+            "completion_tokens": self.tokens_out,
+            "reasoning_tokens": self.reasoning_tokens,
+        }
 
 
 class FakeLLMClient:
@@ -67,7 +73,7 @@ class FakeLLMClient:
         self._response_text = response
         self._response_mode = response_mode
 
-    def generate(self, prompt: str, model: str, max_tokens: int):
+    def generate(self, prompt: str, model: str, max_tokens: int | None = None):
         self.last_prompt = prompt
         self.call_count += 1
         # If caller pre-set a response, return it verbatim. Otherwise build a
@@ -511,11 +517,10 @@ def test_level_1_regression_vs_main(tmp_path):
 # max_tokens sanity check
 # ---------------------------------------------------------------------------
 
-def test_max_tokens_is_1024():
-    """Parse lyrics.py source and confirm the LLM call uses max_tokens=1024."""
+def test_lyrics_llm_call_has_no_max_tokens_cap():
+    """Parse lyrics.py source and confirm the LLM call no longer caps max_tokens."""
     src = (Path(__file__).resolve().parents[1] / "cloud_engines" / "concept_engine" / "lyrics.py").read_text(encoding="utf-8")
-    assert "max_tokens=1024" in src
-    assert "max_tokens=512" not in src
+    assert "max_tokens=" not in src
 
 
 # ---------------------------------------------------------------------------

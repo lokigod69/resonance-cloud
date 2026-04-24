@@ -10,6 +10,7 @@ import logging
 import os
 import time
 from dataclasses import dataclass
+from typing import Any
 
 import httpx
 
@@ -36,6 +37,8 @@ class LLMCallResult:
     cost_usd: float | None
     latency_ms: int
     request_id: str | None
+    reasoning_tokens: int | None
+    usage: dict[str, Any]
 
 
 class OpenRouterClient:
@@ -58,14 +61,15 @@ class OpenRouterClient:
         self,
         prompt: str,
         model: str = "deepseek/deepseek-v3.2",
-        max_tokens: int = 256,
+        max_tokens: int | None = None,
     ) -> LLMCallResult:
         """Send a chat completion request and return content + usage.
 
         Args:
             prompt: The user message to send.
             model: OpenRouter model ID.
-            max_tokens: Maximum tokens in the response.
+            max_tokens: Optional maximum tokens in the response. Leave unset
+                for provider/model defaults, especially reasoning-capable models.
 
         Returns:
             LLMCallResult with content and per-call usage/cost accounting.
@@ -77,8 +81,9 @@ class OpenRouterClient:
         payload = {
             "model": model,
             "messages": [{"role": "user", "content": prompt}],
-            "max_tokens": max_tokens,
         }
+        if max_tokens is not None:
+            payload["max_tokens"] = max_tokens
 
         _call_start = time.monotonic()
         try:
@@ -128,6 +133,7 @@ class OpenRouterClient:
             raise RuntimeError("OpenRouter returned empty content")
 
         usage = data.get("usage", {})
+        reasoning_tokens = _extract_reasoning_tokens(usage)
         _elapsed_ms = int((time.monotonic() - _call_start) * 1000)
         estimated_cost = estimate_openrouter_cost(model, usage)
         log_cost(
@@ -138,13 +144,14 @@ class OpenRouterClient:
             usage_metrics={
                 "prompt_tokens": usage.get("prompt_tokens"),
                 "completion_tokens": usage.get("completion_tokens"),
+                "reasoning_tokens": reasoning_tokens,
                 "total_tokens": usage.get("total_tokens"),
             },
             estimated_cost_usd=estimated_cost,
             duration_ms=_elapsed_ms,
         )
 
-        logger.info("LLM call completed (model=%s, tokens=%s)", model, usage)
+        logger.info("Concept LLM call completed (model=%s, tokens=%s)", model, usage)
         return LLMCallResult(
             content=content.strip(),
             tokens_in=usage.get("prompt_tokens"),
@@ -152,4 +159,17 @@ class OpenRouterClient:
             cost_usd=estimated_cost,
             latency_ms=_elapsed_ms,
             request_id=data.get("id"),
+            reasoning_tokens=reasoning_tokens,
+            usage=usage,
         )
+
+
+def _extract_reasoning_tokens(usage: dict[str, Any]) -> int | None:
+    """Return reasoning token count across OpenRouter usage shapes."""
+    direct = usage.get("reasoning_tokens")
+    if direct is not None:
+        return direct
+    details = usage.get("completion_tokens_details")
+    if isinstance(details, dict):
+        return details.get("reasoning_tokens")
+    return None
