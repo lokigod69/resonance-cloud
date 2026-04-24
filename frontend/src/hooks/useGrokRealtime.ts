@@ -50,10 +50,26 @@ function readGrokAudioDebugFlag(): boolean {
 
 const GROK_AUDIO_DEBUG = readGrokAudioDebugFlag()
 
+function readGrokVerifyL0Flag(): boolean {
+  try {
+    return typeof window !== 'undefined' &&
+      window.localStorage.getItem('grokVerifyL0') === '1'
+  } catch {
+    return false
+  }
+}
+
+const GROK_VERIFY_L0 = readGrokVerifyL0Flag()
+
 const grokAudioDebug = (...args: unknown[]) => {
   if (GROK_AUDIO_DEBUG) {
     console.info('[grok-audio-debug]', ...args)
   }
+}
+
+function grokVerifyDebug(...args: unknown[]): void {
+  if (!GROK_VERIFY_L0) return
+  console.log('[grok-verify-l0]', ...args)
 }
 
 function getAudioContextSnapshot(ctx: AudioContext | null) {
@@ -149,6 +165,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const currentResponseAudioChunksRef = useRef(0)
   const currentResponseTextDeltaSeenRef = useRef(false)
   const lastTrackStopAtRef = useRef<number | null>(null)
+  const grokVerifyResponseSequenceRef = useRef(0)
+  const grokVerifyTextDeltaAccumRef = useRef('')
+  const grokVerifyAudioTranscriptAccumRef = useRef('')
   const workletModuleLoadedRef = useRef(false)
   const pendingPcmChunksRef = useRef<Int16Array[]>([])
   const pendingPcmSampleCountRef = useRef(0)
@@ -539,12 +558,16 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     const type = typeof payload.type === 'string' ? payload.type : ''
     switch (type) {
       case 'response.text.delta': {
+        const delta = typeof payload.delta === 'string' ? payload.delta : ''
         if (GROK_AUDIO_DEBUG) currentResponseTextDeltaSeenRef.current = true
-        appendAssistantDelta(typeof payload.delta === 'string' ? payload.delta : '')
+        if (GROK_VERIFY_L0) grokVerifyTextDeltaAccumRef.current += delta
+        appendAssistantDelta(delta)
         break
       }
       case 'response.output_audio_transcript.delta': {
-        appendAssistantDelta(typeof payload.delta === 'string' ? payload.delta : '')
+        const delta = typeof payload.delta === 'string' ? payload.delta : ''
+        if (GROK_VERIFY_L0) grokVerifyAudioTranscriptAccumRef.current += delta
+        appendAssistantDelta(delta)
         break
       }
       case 'response.output_audio_transcript.done': {
@@ -606,6 +629,18 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           currentAudioResponseKeyRef.current = null
           currentResponseAudioChunksRef.current = 0
           currentResponseTextDeltaSeenRef.current = false
+        }
+        if (GROK_VERIFY_L0) {
+          const responseSequence = grokVerifyResponseSequenceRef.current + 1
+          grokVerifyResponseSequenceRef.current = responseSequence
+          grokVerifyDebug({
+            responseSequence,
+            textDeltaAccum: grokVerifyTextDeltaAccumRef.current || null,
+            audioTranscriptAccum: grokVerifyAudioTranscriptAccumRef.current || null,
+            finalMerged: finalAssistantText,
+          })
+          grokVerifyTextDeltaAccumRef.current = ''
+          grokVerifyAudioTranscriptAccumRef.current = ''
         }
         pendingAssistantContentRef.current = ''
         currentAssistantIndexRef.current = null
@@ -852,6 +887,10 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           currentResponseAudioChunksRef.current = 0
           currentResponseTextDeltaSeenRef.current = false
         }
+        if (GROK_VERIFY_L0) {
+          grokVerifyTextDeltaAccumRef.current = ''
+          grokVerifyAudioTranscriptAccumRef.current = ''
+        }
         pendingConversationInsertRef.current = null
         pendingPersistencePromisesRef.current.clear()
         pendingUserTranscriptResolveRef.current = null
@@ -1087,6 +1126,11 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       currentResponseAudioChunksRef.current = 0
       currentResponseTextDeltaSeenRef.current = false
       lastTrackStopAtRef.current = null
+    }
+    if (GROK_VERIFY_L0) {
+      grokVerifyResponseSequenceRef.current = 0
+      grokVerifyTextDeltaAccumRef.current = ''
+      grokVerifyAudioTranscriptAccumRef.current = ''
     }
     pendingPcmChunksRef.current = []
     pendingPcmSampleCountRef.current = 0

@@ -31,8 +31,12 @@ export function buildGrokSessionConfig(p: BuildGrokSessionParams): GrokSessionCo
   const categoryPrompt = p.category
     ? GROK_CATEGORIES.find(c => c.id === p.category)!.systemPrompt
     : GROK_FREE_CHAT_PROMPT
+  const useLevelMixGreeting = p.level === 'zero' && p.languageDisplay !== p.nativeLanguageDisplay
+  const greetingInstruction = useLevelMixGreeting
+    ? `Start by greeting the user naturally according to the level's language mix and entering the situation immediately. `
+    : `Start by greeting the user naturally in ${p.languageDisplay} and entering the situation immediately. `
   const tail =
-    `Start by greeting the user naturally in ${p.languageDisplay} and entering the situation immediately. ` +
+    greetingInstruction +
     `Do not announce what scenario you have chosen. ` +
     `Keep responses conversational and short — typically 1 to 3 sentences per turn.`
 
