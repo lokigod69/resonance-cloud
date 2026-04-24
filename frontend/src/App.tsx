@@ -6,6 +6,7 @@ import { LanguageProvider } from '@/contexts/LanguageContext'
 import { ToastProvider } from '@/components/Toast'
 import { AppLayout } from '@/components/layout/AppLayout'
 import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
+import FerrariAdminLayout from '@/layouts/FerrariAdminLayout'
 import LandingPage from '@/pages/LandingPage'
 import Login from '@/pages/Login'
 import Onboarding from '@/pages/Onboarding'
@@ -31,6 +32,8 @@ import Costs from '@/pages/admin/Costs'
 import Queue from '@/pages/admin/Queue'
 import Profiles from '@/pages/admin/Profiles'
 import Voices from '@/pages/admin/Voices'
+import ObservabilityAggregate from '@/pages/admin/ObservabilityAggregate'
+import ObservabilityWordDetail from '@/pages/admin/ObservabilityWordDetail'
 import Music from '@/pages/Music'
 import MusicPG from '@/pages/MusicPG'
 import Speak from '@/pages/Speak'
@@ -164,6 +167,13 @@ function AppRoutes() {
             <Route path="/admin/metrics" element={<Metrics />} />
             <Route path="/admin/costs" element={<Costs />} />
             <Route path="/admin/voices" element={<Voices />} />
+          </Route>
+        </Route>
+
+        <Route element={<AdminRoute />}>
+          <Route element={<FerrariAdminLayout />}>
+            <Route path="/admin/observability/aggregate" element={<ObservabilityAggregate />} />
+            <Route path="/admin/observability/word/:wordId" element={<ObservabilityWordDetail />} />
           </Route>
         </Route>
       </Route>

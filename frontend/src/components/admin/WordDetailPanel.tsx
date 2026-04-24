@@ -6,6 +6,7 @@ import {
 } from '@/components/ui/dialog'
 import { Video, ChevronDown, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import StarRating from '@/components/ui/StarRating'
 
 type WordRecord = {
@@ -221,6 +222,13 @@ export default function WordDetailPanel({
             </div>
           )}
         </div>
+
+        <Link
+          to={`/admin/observability/word/${word.id}`}
+          className="inline-flex text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          View observability
+        </Link>
       </DialogContent>
     </Dialog>
   )
