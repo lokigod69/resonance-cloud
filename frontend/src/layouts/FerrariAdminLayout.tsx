@@ -8,8 +8,11 @@ export default function FerrariAdminLayout() {
   return (
     <div data-theme="ferrari-obs" className={styles.shell}>
       <header className={styles.header}>
-        <h1>{title}</h1>
-        <Link to="/admin/queue">Back to Admin</Link>
+        <div className={styles.wordmark}>OBSERVATORY</div>
+        <h1 className={styles.title}>{title}</h1>
+        <div className={styles.actions}>
+          <Link to="/admin/queue" className={styles.backLink}>BACK TO ADMIN</Link>
+        </div>
       </header>
       <main className={styles.main}>
         <Outlet context={{ setTitle }} />

@@ -1,0 +1,522 @@
+.bodyLabel {
+  font-family: var(--f-font-body);
+  font-size: var(--f-type-label-size);
+  font-weight: var(--f-type-label-weight);
+  line-height: var(--f-type-label-line);
+  letter-spacing: var(--f-type-label-spacing);
+  text-transform: uppercase;
+}
+
+.layoutStrip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--f-color-black);
+  border-bottom: 1px solid var(--f-color-ui-90);
+}
+
+.layoutButton {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--f-color-ui-0);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--f-color-ui-0);
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.layoutButtonActive {
+  background: var(--f-color-ui-0);
+  color: var(--f-color-black);
+}
+
+.failureNotice {
+  margin: 0;
+  padding: 16px 20px;
+  border-left: 4px solid var(--f-color-accent-100);
+  background: var(--f-color-near-black);
+  color: var(--f-color-ui-0);
+}
+
+.failureNoticeTitle {
+  margin: 0 0 10px;
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.failureList {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--f-font-mono);
+  font-size: 12px;
+  color: var(--f-color-ui-20);
+}
+
+.snapshot {
+  border-top: 1px solid var(--f-color-ui-90);
+  border-bottom: 1px solid var(--f-color-ui-90);
+  background: var(--f-color-black);
+  color: var(--f-color-ui-0);
+}
+
+.snapshotSummary {
+  cursor: pointer;
+  padding: 16px 20px;
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--f-color-ui-0);
+}
+
+.snapshotPre {
+  margin: 0;
+  padding: 16px 20px 20px;
+  overflow: auto;
+  background: var(--f-color-near-black);
+  color: var(--f-color-ui-20);
+  font-family: var(--f-font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.tracks {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  background: var(--f-color-black);
+  border-bottom: 1px solid var(--f-color-ui-90);
+}
+
+.track {
+  display: grid;
+  gap: 8px;
+  color: var(--f-color-ui-0);
+}
+
+.trackPlayer {
+  --accent: var(--f-color-ui-0);
+  --bg-hover: var(--f-color-ui-90);
+  --text-secondary: var(--f-color-ui-20);
+  --text-primary: var(--f-color-ui-0);
+  --text-muted: var(--f-color-black-50);
+  --border: var(--f-color-ui-90);
+}
+
+.eventRow {
+  display: grid;
+  grid-template-columns: 86px minmax(180px, 1fr) auto minmax(160px, 220px) minmax(130px, 180px) 20px;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--f-color-ui-90);
+  background: transparent;
+  color: var(--f-color-ui-0);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.eventRow:hover {
+  background: var(--f-color-near-black);
+}
+
+.eventRowLight {
+  color: var(--f-color-near-black);
+  border-bottom-color: var(--f-color-ui-20);
+}
+
+.eventRowLight:hover {
+  background: var(--f-color-ui-20);
+}
+
+.timestamp {
+  font-family: var(--f-font-body);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--f-color-black-50);
+}
+
+.subStep {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--f-font-ferrari);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 68px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 1px;
+  font-family: var(--f-font-body);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.pillSuccess {
+  border: 1px solid var(--f-color-accessible-success);
+  color: var(--f-color-accessible-success);
+}
+
+.pillFailed {
+  border: 1px solid var(--f-color-accent-100);
+  background: var(--f-color-accent-100);
+  color: var(--f-color-ui-0);
+}
+
+.pillSkipped {
+  border: 1px solid var(--f-color-black-50);
+  color: var(--f-color-black-50);
+}
+
+.provider,
+.metrics {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--f-font-ferrari);
+  font-size: 13px;
+  color: var(--f-color-black-50);
+}
+
+.metrics {
+  text-align: right;
+}
+
+.detail {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  background: var(--f-color-near-black);
+  color: var(--f-color-ui-0);
+}
+
+.detailLight {
+  background: var(--f-color-ui-20);
+  color: var(--f-color-near-black);
+}
+
+.promptPanel {
+  border: 1px solid var(--f-color-ui-90);
+  background: var(--f-color-black);
+}
+
+.promptPanelLight {
+  border-color: var(--f-color-border);
+  background: var(--f-color-ui-0);
+}
+
+.promptHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--f-color-ui-90);
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.promptPanelLight .promptHeader {
+  border-bottom-color: var(--f-color-border);
+}
+
+.copyButton,
+.ghostLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 8px 10px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  background: transparent;
+  color: inherit;
+  font-family: var(--f-font-body);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 120ms ease, color 120ms ease, opacity 120ms ease;
+}
+
+.copyButton:hover,
+.copyButton:focus-visible,
+.ghostLink:hover,
+.ghostLink:focus-visible {
+  background: var(--f-color-button-hover);
+  color: var(--f-color-ui-0);
+  opacity: 0.9;
+  outline: none;
+}
+
+.promptPre {
+  margin: 0;
+  padding: 12px;
+  max-height: 440px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--f-font-mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--f-color-ui-20);
+}
+
+.promptPanelLight .promptPre {
+  color: var(--f-color-near-black);
+}
+
+.offloaded {
+  margin: 0;
+  padding: 12px;
+  font-family: var(--f-font-mono);
+  font-size: 12px;
+  color: var(--f-color-black-50);
+}
+
+.eventError {
+  border-left: 4px solid var(--f-color-accent-100);
+  padding: 12px;
+  background: var(--f-color-black);
+  font-family: var(--f-font-mono);
+  font-size: 12px;
+  color: var(--f-color-ui-20);
+}
+
+.eventErrorLight {
+  background: var(--f-color-ui-0);
+  color: var(--f-color-near-black);
+}
+
+.loading,
+.error {
+  padding: 40px 24px;
+  background: var(--f-color-black);
+  color: var(--f-color-ui-0);
+  font-family: var(--f-font-ferrari);
+  font-size: 16px;
+}
+
+.aggregatePage {
+  min-height: calc(100vh - 64px);
+  background: var(--f-color-black);
+  color: var(--f-color-ui-0);
+}
+
+.heroBand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-height: 120px;
+  padding: 24px 40px;
+  background: var(--f-color-black);
+  border-bottom: 1px solid var(--f-color-ui-90);
+}
+
+.heroText {
+  margin: 0;
+  font-family: var(--f-font-ferrari);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--f-color-ui-0);
+}
+
+.heroRed {
+  color: var(--f-color-accent-100);
+}
+
+.heroCaption {
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--f-color-black-50);
+}
+
+.chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 16px 40px;
+  background: var(--f-color-black);
+  border-bottom: 1px solid var(--f-color-ui-90);
+}
+
+.chip {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--f-color-ui-0);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--f-color-ui-0);
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.chipActive {
+  background: var(--f-color-ui-0);
+  color: var(--f-color-black);
+}
+
+.feed {
+  display: grid;
+  gap: 1px;
+  padding: 24px 40px 40px;
+  background: var(--f-color-black);
+}
+
+.failureRow {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--f-color-ui-90);
+  background: var(--f-color-near-black);
+  color: var(--f-color-ui-0);
+  text-align: left;
+}
+
+.failureButton {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr) 170px;
+  gap: 20px;
+  width: 100%;
+  padding: 16px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.failureTime,
+.failureSide,
+.orphanTag {
+  font-family: var(--f-font-ferrari);
+  font-size: 13px;
+  color: var(--f-color-black-50);
+}
+
+.failureMain {
+  min-width: 0;
+}
+
+.failureTitle {
+  margin: 0 0 6px;
+  font-family: var(--f-font-ferrari);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--f-color-ui-0);
+}
+
+.failureType {
+  margin: 0 0 6px;
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--f-color-accent-100);
+}
+
+.failureMessage {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: var(--f-color-ui-20);
+  font-family: var(--f-font-ferrari);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.failureMessageOpen {
+  display: block;
+  overflow: visible;
+}
+
+.failureSide {
+  display: grid;
+  align-content: start;
+  justify-items: end;
+  gap: 8px;
+  text-align: right;
+}
+
+.orphanTag {
+  font-family: var(--f-font-body);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.emptyFeed {
+  padding: 24px 16px;
+  background: var(--f-color-near-black);
+  color: var(--f-color-black-50);
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .eventRow {
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  .timestamp,
+  .provider,
+  .metrics {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .heroBand,
+  .chips,
+  .feed {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .failureButton {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .failureSide {
+    justify-items: start;
+    text-align: left;
+  }
+}

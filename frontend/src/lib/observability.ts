@@ -56,6 +56,11 @@ export interface FailureCount {
   count: number
 }
 
+export interface SunoUrls {
+  trackA?: string
+  trackB?: string
+}
+
 const EVENT_COLUMNS = `
   id,
   created_at,
@@ -85,6 +90,7 @@ const EVENT_COLUMNS = `
 `
 
 let aggregateReadCapWarned = false
+let failedEventsCapWarned = false
 
 function asNumber(value: unknown): number | null {
   if (typeof value === 'number') return value
@@ -251,4 +257,44 @@ export async function fetchRecentEvents(limit: number): Promise<PipelineEvent[]>
 
   if (error) throw error
   return ((data ?? []) as Record<string, unknown>[]).map(normalizeEvent)
+}
+
+export async function fetchFailedEvents(): Promise<PipelineEvent[]> {
+  const maxRows = 5000
+  const { data, error } = await supabase
+    .from('pipeline_events')
+    .select(EVENT_COLUMNS)
+    .eq('status', 'failed')
+    .order('created_at', { ascending: false })
+    .range(0, maxRows)
+
+  if (error) throw error
+
+  const rows = ((data ?? []) as Record<string, unknown>[]).map(normalizeEvent)
+  if (rows.length > maxRows) {
+    if (!failedEventsCapWarned) {
+      failedEventsCapWarned = true
+      console.warn(`pipeline_events failed-event reads capped at ${maxRows} rows`)
+    }
+    return rows.slice(0, maxRows)
+  }
+
+  return rows
+}
+
+export async function fetchWordSunoUrls(wordId: string): Promise<SunoUrls> {
+  const { data, error } = await supabase
+    .from('words')
+    .select('suno_storage_url, suno_storage_url_b, suno_audio_url, suno_audio_url_b')
+    .eq('id', wordId)
+    .maybeSingle()
+
+  if (error) throw error
+  if (!data) return {}
+
+  const row = data as Record<string, string | null>
+  return {
+    trackA: row.suno_storage_url ?? row.suno_audio_url ?? undefined,
+    trackB: row.suno_storage_url_b ?? row.suno_audio_url_b ?? undefined,
+  }
 }

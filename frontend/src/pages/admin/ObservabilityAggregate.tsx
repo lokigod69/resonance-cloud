@@ -1,27 +1,35 @@
 import { useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import styles from '@/components/admin/observability/observability.module.css'
 import {
-  fetchCostByProvider,
+  fetchFailedEvents,
   fetchFailureCountsByStage,
-  fetchRecentEvents,
-  fetchStageSubStepStatusCounts,
-  type AggregateCount,
   type FailureCount,
   type PipelineEvent,
-  type ProviderCost,
 } from '@/lib/observability'
 import { useFerrariTitle } from '@/layouts/FerrariAdminLayout'
 
 type AggregateData = {
-  counts: AggregateCount[]
-  costs: ProviderCost[]
   failures: FailureCount[]
-  recent: PipelineEvent[]
+  failedEvents: PipelineEvent[]
+}
+
+function formatTimestamp(iso: string) {
+  const date = new Date(iso)
+  const yyyy = date.getFullYear()
+  const mm = String(date.getMonth() + 1).padStart(2, '0')
+  const dd = String(date.getDate()).padStart(2, '0')
+  const hh = String(date.getHours()).padStart(2, '0')
+  const min = String(date.getMinutes()).padStart(2, '0')
+  return `${yyyy}-${mm}-${dd} ${hh}:${min}`
 }
 
 export default function ObservabilityAggregate() {
-  useFerrariTitle('Aggregate observability')
+  useFerrariTitle('Failure triage')
 
   const [data, setData] = useState<AggregateData | null>(null)
+  const [stageFilter, setStageFilter] = useState('ALL')
+  const [expanded, setExpanded] = useState<Set<string>>(new Set())
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -29,14 +37,12 @@ export default function ObservabilityAggregate() {
     let cancelled = false
 
     Promise.all([
-      fetchStageSubStepStatusCounts(),
-      fetchCostByProvider(),
       fetchFailureCountsByStage(),
-      fetchRecentEvents(10),
+      fetchFailedEvents(),
     ])
-      .then(([counts, costs, failures, recent]) => {
+      .then(([failures, failedEvents]) => {
         if (cancelled) return
-        setData({ counts, costs, failures, recent })
+        setData({ failures, failedEvents })
       })
       .catch((err) => {
         if (cancelled) return
@@ -51,37 +57,110 @@ export default function ObservabilityAggregate() {
     }
   }, [])
 
-  const stageCoverage = useMemo(() => {
+  const stagesWithFailures = useMemo(() => {
     if (!data) return []
-    const counts = new Map<string, number>()
-    for (const item of data.counts) {
-      counts.set(item.stage, (counts.get(item.stage) ?? 0) + item.count)
-    }
-    return Array.from(counts.entries()).map(([stage, count]) => ({ stage, count }))
+    return data.failures.filter((item) => item.count > 0).map((item) => item.stage)
   }, [data])
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error: {error}</p>
-  if (!data) return <p>No data loaded</p>
+  const filteredEvents = useMemo(() => {
+    if (!data) return []
+    if (stageFilter === 'ALL') return data.failedEvents
+    return data.failedEvents.filter((event) => event.stage === stageFilter)
+  }, [data, stageFilter])
+
+  const toggleExpanded = (eventId: string) => {
+    setExpanded((prev) => {
+      const next = new Set(prev)
+      if (next.has(eventId)) next.delete(eventId)
+      else next.add(eventId)
+      return next
+    })
+  }
+
+  if (loading) return <p className={styles.loading}>Loading...</p>
+  if (error) return <p className={styles.error}>Error: {error}</p>
+  if (!data) return <p className={styles.error}>No data loaded</p>
+
+  const failedCount = data.failedEvents.length
+  const failedStageCount = new Set(data.failedEvents.map((event) => event.stage)).size
 
   return (
-    <div>
-      <h2>Aggregate observability</h2>
+    <div className={styles.aggregatePage}>
+      <section className={styles.heroBand}>
+        {failedCount === 0 ? (
+          <p className={styles.heroText}>
+            NOTHING HAS FAILED. <span className={styles.heroRed}>ALL CLEAR.</span>
+          </p>
+        ) : (
+          <p className={styles.heroText}>
+            <span className={styles.heroRed}>{failedCount}</span> FAILED EVENTS ACROSS {failedStageCount} STAGES
+          </p>
+        )}
+        <div className={styles.heroCaption}>Lifetime</div>
+      </section>
 
-      <h3>Counts by stage, sub_step, status</h3>
-      <pre>{JSON.stringify(data.counts, null, 2)}</pre>
+      <div className={styles.chips} aria-label="Failure stage filter">
+        {['ALL', ...stagesWithFailures].map((stage) => (
+          <button
+            key={stage}
+            type="button"
+            className={`${styles.chip} ${stageFilter === stage ? styles.chipActive : ''}`}
+            onClick={() => setStageFilter(stage)}
+          >
+            {stage}
+          </button>
+        ))}
+      </div>
 
-      <h3>Cost by model_provider</h3>
-      <pre>{JSON.stringify(data.costs, null, 2)}</pre>
-
-      <h3>Failure counts by stage</h3>
-      <pre>{JSON.stringify(data.failures, null, 2)}</pre>
-
-      <h3>Recent events</h3>
-      <pre>{JSON.stringify(data.recent, null, 2)}</pre>
-
-      <h3>Stage coverage</h3>
-      <pre>{JSON.stringify(stageCoverage, null, 2)}</pre>
+      <section className={styles.feed}>
+        {filteredEvents.length === 0 ? (
+          <div className={styles.emptyFeed}>No failed events in this filter</div>
+        ) : (
+          filteredEvents.map((event) => {
+            const isExpanded = expanded.has(event.id)
+            return (
+              <article key={event.id} className={styles.failureRow}>
+                <div
+                  className={styles.failureButton}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => toggleExpanded(event.id)}
+                  onKeyDown={(keyEvent) => {
+                    if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
+                      keyEvent.preventDefault()
+                      toggleExpanded(event.id)
+                    }
+                  }}
+                >
+                  <div className={styles.failureTime}>{formatTimestamp(event.created_at)}</div>
+                  <div className={styles.failureMain}>
+                    <p className={styles.failureTitle}>{event.stage} · {event.sub_step ?? 'unknown'}</p>
+                    <p className={styles.failureType}>{event.error_type ?? 'Unknown error'}</p>
+                    <p className={`${styles.failureMessage} ${isExpanded ? styles.failureMessageOpen : ''}`}>
+                      {event.error_message ?? 'No error message recorded'}
+                    </p>
+                  </div>
+                  <div className={styles.failureSide}>
+                    <span>{event.model_name ?? 'unknown model'}</span>
+                    <span>{event.model_provider ?? 'unknown provider'}</span>
+                    {event.word_id ? (
+                      <Link
+                        to={`/admin/observability/word/${event.word_id}`}
+                        className={styles.ghostLink}
+                        onClick={(clickEvent) => clickEvent.stopPropagation()}
+                      >
+                        OPEN WORD
+                      </Link>
+                    ) : (
+                      <span className={styles.orphanTag}>Orphan event</span>
+                    )}
+                  </div>
+                </div>
+              </article>
+            )
+          })
+        )}
+      </section>
     </div>
   )
 }

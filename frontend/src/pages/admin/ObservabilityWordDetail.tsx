@@ -1,5 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import AggregatorSnapshot from '@/components/admin/observability/AggregatorSnapshot'
+import FailureNotice from '@/components/admin/observability/FailureNotice'
+import LayoutSelector, { type WordLayoutMode } from '@/components/admin/observability/LayoutSelector'
+import SunoTracks from '@/components/admin/observability/SunoTracks'
+import WordPanelsLayout from '@/components/admin/observability/variants/WordPanelsLayout'
+import WordScrollLayout, { type StageEvents } from '@/components/admin/observability/variants/WordScrollLayout'
+import WordTabsLayout from '@/components/admin/observability/variants/WordTabsLayout'
+import styles from '@/components/admin/observability/observability.module.css'
 import {
   fetchPipelineEventsForWord,
   fetchWordWithMetadata,
@@ -9,6 +17,13 @@ import {
 import { useFerrariTitle } from '@/layouts/FerrariAdminLayout'
 
 const CANONICAL_STAGES = ['concept', 'images', 'video', 'assembly', 'bookend', 'suno_bakein']
+const LAYOUT_STORAGE_KEY = 'ferrari-obs:word-layout'
+
+function getStoredLayout(): WordLayoutMode {
+  if (typeof window === 'undefined') return 'A'
+  const stored = window.localStorage.getItem(LAYOUT_STORAGE_KEY)
+  return stored === 'A' || stored === 'B' || stored === 'C' ? stored : 'A'
+}
 
 export default function ObservabilityWordDetail() {
   useFerrariTitle('Word detail')
@@ -16,9 +31,14 @@ export default function ObservabilityWordDetail() {
   const { wordId } = useParams()
   const [word, setWord] = useState<WordRow | null>(null)
   const [events, setEvents] = useState<PipelineEvent[]>([])
-  const [openStages, setOpenStages] = useState<Set<string>>(new Set())
+  const [layout, setLayout] = useState<WordLayoutMode>(getStoredLayout)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  const handleLayoutChange = (nextLayout: WordLayoutMode) => {
+    setLayout(nextLayout)
+    window.localStorage.setItem(LAYOUT_STORAGE_KEY, nextLayout)
+  }
 
   useEffect(() => {
     if (!wordId) return
@@ -48,12 +68,12 @@ export default function ObservabilityWordDetail() {
   }, [wordId])
 
   const eventsByStage = useMemo(() => {
-    const grouped = new Map<string, PipelineEvent[]>()
-    for (const stage of CANONICAL_STAGES) grouped.set(stage, [])
+    const grouped: StageEvents = Object.fromEntries(
+      CANONICAL_STAGES.map((stage) => [stage, [] as PipelineEvent[]]),
+    )
     for (const event of events) {
-      const stageEvents = grouped.get(event.stage) ?? []
-      stageEvents.push(event)
-      grouped.set(event.stage, stageEvents)
+      grouped[event.stage] = grouped[event.stage] ?? []
+      grouped[event.stage].push(event)
     }
     return grouped
   }, [events])
@@ -63,59 +83,21 @@ export default function ObservabilityWordDetail() {
     [events],
   )
 
-  const toggleStage = (stage: string) => {
-    setOpenStages((prev) => {
-      const next = new Set(prev)
-      if (next.has(stage)) next.delete(stage)
-      else next.add(stage)
-      return next
-    })
-  }
+  if (!wordId) return <p className={styles.error}>Error: Missing word id</p>
+  if (loading) return <p className={styles.loading}>Loading...</p>
+  if (error) return <p className={styles.error}>Error: {error}</p>
 
-  if (!wordId) return <p>Error: Missing word id</p>
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error: {error}</p>
+  const layoutProps = { stages: CANONICAL_STAGES, eventsByStage }
 
   return (
-    <div>
-      {failedEvents.length > 0 && (
-        <div style={{ border: '1px solid red', padding: '1rem', margin: '1rem 0' }}>
-          <strong>Failed events</strong>
-          <ul>
-            {failedEvents.map((event) => (
-              <li key={event.id}>
-                {event.id} - {event.sub_step ?? 'unknown'} - {event.error_message ?? event.error_type ?? 'Unknown error'}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      <h2>Word observability</h2>
-      <pre>{JSON.stringify(word, null, 2)}</pre>
-
-      <h3>Aggregator snapshot</h3>
-      <pre>{JSON.stringify(word?.metadata ?? null, null, 2)}</pre>
-
-      {CANONICAL_STAGES.map((stage) => {
-        const stageEvents = eventsByStage.get(stage) ?? []
-        const isOpen = openStages.has(stage)
-
-        return (
-          <section key={stage}>
-            <button type="button" onClick={() => toggleStage(stage)}>
-              {isOpen ? 'Hide' : 'Show'} {stage} ({stageEvents.length})
-            </button>
-            {stageEvents.length === 0 ? (
-              <p>No events recorded</p>
-            ) : isOpen ? (
-              stageEvents.map((event) => (
-                <pre key={event.id}>{JSON.stringify(event, null, 2)}</pre>
-              ))
-            ) : null}
-          </section>
-        )
-      })}
-    </div>
+    <>
+      <LayoutSelector value={layout} onChange={handleLayoutChange} />
+      <FailureNotice events={failedEvents} />
+      <SunoTracks wordId={wordId} />
+      <AggregatorSnapshot metadata={word?.metadata ?? null} />
+      {layout === 'A' && <WordScrollLayout {...layoutProps} />}
+      {layout === 'B' && <WordTabsLayout {...layoutProps} />}
+      {layout === 'C' && <WordPanelsLayout {...layoutProps} />}
+    </>
   )
 }

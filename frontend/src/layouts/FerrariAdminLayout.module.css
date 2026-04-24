@@ -1,18 +1,106 @@
+@import './ferrari-tokens.css';
+
 .shell {
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--f-color-black);
+  color: var(--f-color-ui-0);
+  font-family: var(--f-font-ferrari);
 }
 
 .header {
+  height: 64px;
+  flex: 0 0 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
+  gap: 24px;
+  padding: 0 25px;
+  background: var(--f-color-black);
+  border-bottom: 1px solid var(--f-color-ui-90);
+}
+
+.wordmark {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--f-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--f-color-ui-0);
+}
+
+.title {
+  flex: 2;
+  margin: 0;
+  text-align: center;
+  font-family: var(--f-font-ferrari);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--f-color-ui-0);
+}
+
+.actions {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 12px 10px;
+  border: 1px solid var(--f-color-ui-0);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--f-color-ui-0);
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 120ms ease, color 120ms ease, opacity 120ms ease;
+}
+
+.backLink:hover,
+.backLink:focus-visible {
+  background: var(--f-color-button-hover);
+  color: var(--f-color-ui-0);
+  opacity: 0.9;
+  outline: none;
 }
 
 .main {
   flex: 1;
-  padding: 1.5rem;
+  min-height: 0;
+}
+
+@media (max-width: 600px) {
+  .header {
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  .wordmark {
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .backLink {
+    min-height: 36px;
+    padding: 10px 8px;
+    font-size: 11px;
+  }
 }
