@@ -6,13 +6,11 @@ import {
   Heart,
   Home,
   Loader2,
-  MapPin,
   MessageCircle,
   Newspaper,
   Palette,
   Sparkles,
   Utensils,
-  type LucideIcon,
 } from 'lucide-react'
 import { GROK_CATEGORIES, type GrokCategory } from '@/data/grokCategories'
 import { GROK_VOICES, type GrokVoice } from '@/data/grokVoices'
@@ -49,45 +47,29 @@ const CATEGORY_LABELS: Record<GrokCategory, string> = {
   news: 'News',
 }
 
-const CATEGORY_VISUALS: Record<GrokCategory, { Icon: LucideIcon; accent: string; description: string }> = {
+const CATEGORY_VISUALS: Record<GrokCategory, { description: string }> = {
   travel: {
-    Icon: MapPin,
-    accent: 'from-sky-300/25 to-indigo-400/10',
     description: 'Airports, hotels, directions, and travel surprises.',
   },
   business: {
-    Icon: BriefcaseBusiness,
-    accent: 'from-cyan-300/20 to-blue-400/10',
     description: 'Meetings, deals, pitches, and professional practice.',
   },
   romance: {
-    Icon: Heart,
-    accent: 'from-rose-300/25 to-fuchsia-400/10',
     description: 'Dates, feelings, and natural social nuance.',
   },
   philosophy: {
-    Icon: Brain,
-    accent: 'from-violet-300/25 to-indigo-400/10',
     description: 'Ideas, debate, meaning, and abstract conversation.',
   },
   daily_life: {
-    Icon: Home,
-    accent: 'from-emerald-300/20 to-cyan-400/10',
     description: 'Errands, schedules, home, and everyday fluency.',
   },
   food: {
-    Icon: Utensils,
-    accent: 'from-amber-300/20 to-orange-400/10',
     description: 'Restaurants, ordering, preferences, and taste.',
   },
   arts: {
-    Icon: Palette,
-    accent: 'from-fuchsia-300/20 to-violet-400/10',
     description: 'Culture, film, music, exhibitions, and style.',
   },
   news: {
-    Icon: Newspaper,
-    accent: 'from-slate-200/20 to-blue-400/10',
     description: 'Current events, opinions, and world context.',
   },
 }
@@ -112,6 +94,8 @@ const cardBase =
 const cardIdle = 'hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65'
 const cardSelected =
   'border-indigo-200/55 bg-indigo-950/35 shadow-[0_0_0_1px_rgba(165,180,252,0.25),0_18px_45px_rgba(79,70,229,0.22)]'
+const levelCardSelected =
+  'border-cyan-200/65 bg-cyan-400/[0.10] shadow-[0_0_0_1px_rgba(125,211,252,0.28),0_18px_45px_rgba(14,165,233,0.22)]'
 
 function VoiceWaveIcon({ voice, selected }: { voice: GrokVoice; selected: boolean }) {
   const heights = voice === 'eve'
@@ -131,7 +115,7 @@ function VoiceWaveIcon({ voice, selected }: { voice: GrokVoice; selected: boolea
         {heights.map((height, index) => (
           <span
             key={`${voice}-${index}`}
-            className={`${height} w-1 rounded-full bg-gradient-to-t ${VOICE_ACCENTS[voice]} shadow-[0_0_14px_rgba(165,180,252,0.24)]`}
+            className={`speak-wave-bar ${height} w-1 rounded-full bg-gradient-to-t ${VOICE_ACCENTS[voice]} shadow-[0_0_14px_rgba(165,180,252,0.24)]`}
           />
         ))}
       </span>
@@ -176,21 +160,55 @@ function VoiceCard({
   )
 }
 
+function TravelGlyph({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 17.5c4.5 2.6 9.7 2 13.4-1.6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeDasharray="1.5 3" />
+      <path d="M7 10.6 19.4 5.8c.8-.3 1.5.5 1.1 1.2l-2.1 3.9 2.2 3.8c.4.7-.3 1.5-1.1 1.2L7 11.4c-.4-.1-.4-.7 0-.8Z" fill="currentColor" opacity="0.92" />
+      <path d="m9 11 3.5 3.2M9 10.9l3.3-3.3" stroke="rgba(15,23,42,0.58)" strokeWidth="1.2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function ModeGlyph({ kind, large = false }: { kind: GrokCategory | 'free_chat'; large?: boolean }) {
+  const className = large ? 'h-8 w-8' : 'h-6 w-6'
+
+  switch (kind) {
+    case 'free_chat':
+      return <MessageCircle className={className} />
+    case 'travel':
+      return <TravelGlyph className={className} />
+    case 'business':
+      return <BriefcaseBusiness className={className} />
+    case 'romance':
+      return <Heart className={className} />
+    case 'philosophy':
+      return <Brain className={className} />
+    case 'daily_life':
+      return <Home className={className} />
+    case 'food':
+      return <Utensils className={className} />
+    case 'arts':
+      return <Palette className={className} />
+    case 'news':
+      return <Newspaper className={className} />
+  }
+}
+
 function ModeVisual({
-  Icon,
-  accent,
+  kind,
   selected,
   large = false,
 }: {
-  Icon: LucideIcon
-  accent: string
+  kind: GrokCategory | 'free_chat'
   selected: boolean
   large?: boolean
 }) {
   return (
-    <span className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-2xl border ${large ? 'h-16 w-16' : 'h-12 w-12'} ${selected ? 'border-indigo-100/45 bg-indigo-200/15' : 'border-white/10 bg-white/[0.06]'}`}>
-      <span className={`absolute inset-0 bg-gradient-to-br ${accent}`} />
-      <Icon className={`${large ? 'h-7 w-7' : 'h-5 w-5'} relative text-white/90`} />
+    <span className={`speak-mode-emblem ${large ? 'speak-mode-emblem-lg' : ''} ${selected ? 'is-selected' : ''}`} data-kind={kind}>
+      <span className="speak-mode-emblem-glow" />
+      <span className="speak-mode-emblem-orbit" />
+      <ModeGlyph kind={kind} large={large} />
     </span>
   )
 }
@@ -220,7 +238,7 @@ function ModeCard({
       className={`${cardBase} ${selected ? cardSelected : cardIdle} flex min-h-[150px] flex-col items-start gap-3 p-4 text-left`}
     >
       <div className="flex w-full items-start justify-between gap-3">
-        <ModeVisual Icon={visual.Icon} accent={visual.accent} selected={selected} />
+        <ModeVisual kind={category.id} selected={selected} />
         {selected && <Check className="h-4 w-4 text-indigo-100" />}
       </div>
       <div>
@@ -312,10 +330,10 @@ export function GrokPicker({
 
   if (step === 'voice') {
     return (
-      <section className="relative isolate space-y-8 overflow-hidden rounded-[32px]">
+      <section className="relative isolate mx-auto w-full max-w-5xl space-y-6 px-1">
         <div className="mb-3 flex items-end justify-between gap-3">
           <div>
-            <p className={SECTION_LABEL_CLASS}>Voice</p>
+            <p className={`${SECTION_LABEL_CLASS} pl-1`}>Voice</p>
             <p className="mt-1 text-sm text-slate-400">Choose the voice that will carry the conversation.</p>
           </div>
         </div>
@@ -336,9 +354,9 @@ export function GrokPicker({
 
   if (step === 'mode') {
     return (
-      <section className="relative isolate space-y-8 overflow-hidden rounded-[32px]">
+      <section className="relative isolate mx-auto w-full max-w-6xl space-y-6 px-1">
         <div>
-          <p className={`${SECTION_LABEL_CLASS} mb-3`}>Mode</p>
+          <p className={`${SECTION_LABEL_CLASS} mb-3 pl-1`}>Mode</p>
           <button
             type="button"
             onClick={() => onSelectCategory('free_chat')}
@@ -347,7 +365,7 @@ export function GrokPicker({
             className={`${cardBase} ${freeChatSelected ? cardSelected : cardIdle} mb-3 flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6`}
           >
             <div className="flex min-w-0 items-center gap-4">
-              <ModeVisual Icon={MessageCircle} accent="from-indigo-300/25 to-cyan-400/10" selected={freeChatSelected} large />
+              <ModeVisual kind="free_chat" selected={freeChatSelected} large />
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <p className="text-lg font-semibold text-white">Free Chat</p>
@@ -378,8 +396,8 @@ export function GrokPicker({
   }
 
   return (
-    <section className="relative isolate mx-auto w-full max-w-sm space-y-6 overflow-hidden rounded-[32px]">
-      <div>
+    <section className="relative isolate mx-auto w-full max-w-md space-y-6 px-1">
+      <div className="px-1">
         <h2 className="text-xl font-semibold text-white mb-2">
           {t('speak.howMuch', { language: languageName })}
         </h2>
@@ -396,13 +414,19 @@ export function GrokPicker({
               onClick={() => onSelectLevel(opt.level)}
               disabled={isStarting}
               aria-pressed={selected}
-              className={`${cardBase} ${selected ? cardSelected : cardIdle} flex items-center gap-4 p-4 text-left`}
+              className={`${cardBase} ${selected ? levelCardSelected : cardIdle} flex items-center gap-4 p-4 text-left`}
             >
+              {selected && <span className="pointer-events-none absolute inset-y-4 left-0 w-1 rounded-r-full bg-cyan-200/70 shadow-[0_0_16px_rgba(125,211,252,0.55)]" />}
               <LevelBadge level={opt.level} selected={selected} />
-              <div>
+              <div className="min-w-0 flex-1">
                 <p className="text-sm font-medium text-white">{opt.title}</p>
                 <p className="text-xs text-slate-400">{opt.desc}</p>
               </div>
+              {selected && (
+                <span className="ml-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cyan-200/15 text-cyan-100">
+                  <Check className="h-4 w-4" />
+                </span>
+              )}
             </button>
           )
         })}

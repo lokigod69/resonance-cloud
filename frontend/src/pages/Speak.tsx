@@ -85,7 +85,7 @@ function SpeakSelectionShell({
   className?: string
 }) {
   return (
-    <div className={`speak-page-shell relative isolate min-h-full overflow-hidden ${className}`}>
+    <div className={`speak-page-shell relative isolate ${className}`}>
       <div className="speak-page-aura" aria-hidden="true" />
       <SpeakRippleField />
       <div className={`relative z-10 mx-auto w-full ${maxWidth} px-4 py-6 sm:px-6 sm:py-8 lg:px-8`}>
