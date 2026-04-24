@@ -1216,3 +1216,277 @@
     padding: 7px 10px;
   }
 }
+
+/* Watery Decks Phase 3 deboxed page integration */
+.skin-glassy .water-decks-page {
+  position: relative;
+  min-height: calc(100dvh - 5rem);
+  overflow: hidden;
+  isolation: isolate;
+  padding-bottom: 28px;
+}
+
+.skin-glassy .water-decks-page::before,
+.skin-glassy .water-decks-page::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -112px;
+  bottom: -96px;
+  width: 100vw;
+  translate: -50% 0;
+  pointer-events: none;
+}
+
+.skin-glassy .water-decks-page::before {
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 8%, rgba(122, 210, 255, 0.16) 0%, transparent 38%),
+    radial-gradient(ellipse at 22% 58%, rgba(24, 188, 200, 0.16) 0%, transparent 34%),
+    radial-gradient(ellipse at 78% 62%, rgba(54, 139, 216, 0.14) 0%, transparent 36%),
+    radial-gradient(ellipse at 50% 78%, rgba(9, 76, 105, 0.32) 0%, rgba(5, 28, 45, 0.18) 46%, transparent 76%),
+    linear-gradient(180deg, rgba(3, 13, 25, 0.14) 0%, rgba(3, 23, 39, 0.38) 58%, rgba(2, 13, 22, 0.3) 100%);
+}
+
+.skin-glassy .water-decks-page::after {
+  z-index: 1;
+  opacity: 0.54;
+  background:
+    radial-gradient(ellipse at 36% 44%, rgba(162, 244, 255, 0.14) 0%, transparent 18%),
+    radial-gradient(ellipse at 62% 54%, rgba(72, 222, 236, 0.12) 0%, transparent 20%),
+    radial-gradient(ellipse at 44% 74%, rgba(126, 212, 255, 0.1) 0%, transparent 22%),
+    radial-gradient(ellipse at 70% 82%, rgba(38, 174, 211, 0.12) 0%, transparent 24%);
+  filter: blur(18px);
+  mix-blend-mode: screen;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 24%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 24%, black 88%, transparent 100%);
+  animation: waterAtmosphereDrift 24s ease-in-out infinite alternate;
+}
+
+.skin-glassy .water-decks-header,
+.skin-glassy .water-decks-fullbleed {
+  position: relative;
+  z-index: 2;
+}
+
+.skin-glassy .water-decks-fullbleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.skin-glassy .water-decks-stage {
+  min-height: min(720px, calc(100dvh - 148px));
+  margin: -8px 0 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.skin-glassy .water-decks-stage::before {
+  display: none;
+}
+
+.skin-glassy .water-decks-haze {
+  background:
+    radial-gradient(ellipse at 50% 56%, rgba(67, 193, 225, 0.11) 0%, transparent 46%),
+    linear-gradient(90deg, rgba(1, 9, 17, 0.18), transparent 19%, transparent 81%, rgba(1, 9, 17, 0.18));
+}
+
+.skin-glassy .water-decks-horizon {
+  top: 318px;
+  width: min(960px, 86vw);
+  background: linear-gradient(90deg, transparent, rgba(151, 235, 255, 0.22), transparent);
+  box-shadow: 0 0 46px rgba(45, 187, 229, 0.18);
+  opacity: 0.52;
+}
+
+.skin-glassy .water-decks-caustics {
+  bottom: 62px;
+  width: min(1060px, 118vw);
+  height: 360px;
+  opacity: 0.4;
+  background:
+    radial-gradient(ellipse at 28% 48%, rgba(125, 231, 255, 0.18) 0%, transparent 20%),
+    radial-gradient(ellipse at 58% 44%, rgba(190, 255, 255, 0.16) 0%, transparent 18%),
+    radial-gradient(ellipse at 72% 62%, rgba(69, 214, 236, 0.13) 0%, transparent 23%),
+    radial-gradient(ellipse at 42% 72%, rgba(35, 159, 209, 0.15) 0%, transparent 25%);
+  filter: blur(7px);
+  transform: perspective(820px) rotateX(66deg);
+  animation: waterCausticsDrift 18s ease-in-out infinite alternate;
+}
+
+.skin-glassy .water-decks-active-glow {
+  bottom: 158px;
+  width: min(420px, 74vw);
+  height: 132px;
+  background:
+    radial-gradient(ellipse at center, rgba(106, 240, 255, 0.34) 0%, rgba(24, 166, 209, 0.16) 42%, transparent 74%),
+    radial-gradient(ellipse at center, rgba(229, 255, 255, 0.2) 0%, transparent 38%);
+  filter: blur(10px);
+  opacity: 0.72;
+}
+
+.skin-glassy .water-decks-floor {
+  bottom: 52px;
+  width: min(1120px, 126vw);
+  height: 370px;
+  opacity: 0.54;
+  background:
+    radial-gradient(ellipse at 50% 46%, rgba(65, 190, 226, 0.2) 0%, rgba(8, 68, 96, 0.18) 36%, transparent 72%),
+    radial-gradient(ellipse at 30% 62%, rgba(172, 248, 255, 0.12) 0%, transparent 26%),
+    radial-gradient(ellipse at 68% 66%, rgba(75, 215, 236, 0.12) 0%, transparent 28%),
+    linear-gradient(180deg, transparent 0%, rgba(3, 28, 45, 0.28) 46%, rgba(2, 13, 22, 0.34) 100%);
+  filter: blur(1.5px);
+}
+
+.skin-glassy .water-decks-rail {
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.skin-glassy .water-decks-rail.is-dragging {
+  cursor: grabbing;
+}
+
+.skin-glassy .water-deck-card {
+  cursor: inherit;
+}
+
+.skin-glassy .water-deck-card-active .water-deck-card-shell {
+  box-shadow:
+    0 34px 88px rgba(0, 0, 0, 0.58),
+    0 20px 64px rgba(44, 211, 239, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 0 42px rgba(63, 209, 244, 0.06);
+}
+
+.skin-glassy .water-deck-reflection {
+  opacity: 0.27;
+  filter: blur(2.2px) saturate(0.78) brightness(0.68);
+}
+
+.skin-glassy .water-deck-card-active .water-deck-reflection {
+  opacity: 0.36;
+}
+
+.skin-glassy .water-deck-reflection::after {
+  background:
+    radial-gradient(ellipse at 44% 18%, rgba(151, 238, 255, 0.2), transparent 36%),
+    linear-gradient(180deg, rgba(7, 34, 47, 0.08), rgba(2, 11, 18, 0.94));
+}
+
+.skin-glassy .water-decks-progress {
+  position: relative;
+  z-index: 7;
+  display: grid;
+  grid-template-columns: auto minmax(120px, 220px) auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  margin: -40px auto 0;
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: rgba(224, 241, 247, 0.72);
+  font-size: 0.74rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  background: rgba(4, 22, 32, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.skin-glassy .water-decks-progress-track {
+  position: relative;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(206, 237, 246, 0.16);
+}
+
+.skin-glassy .water-decks-progress-track > div {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(83, 224, 233, 0.72), rgba(192, 252, 255, 0.92));
+  box-shadow: 0 0 16px rgba(61, 214, 236, 0.38);
+  transition: width 240ms ease;
+}
+
+@keyframes waterAtmosphereDrift {
+  from { transform: translate3d(-18px, 0, 0) scale(1); opacity: 0.42; }
+  to { transform: translate3d(18px, 14px, 0) scale(1.04); opacity: 0.62; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skin-glassy .water-decks-page::after,
+  .skin-glassy .water-decks-progress-track > div {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .skin-glassy .water-decks-page {
+    min-height: calc(100dvh - 4rem);
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 18px;
+  }
+
+  .skin-glassy .water-decks-page::before,
+  .skin-glassy .water-decks-page::after {
+    top: -84px;
+    bottom: -72px;
+  }
+
+  .skin-glassy .water-decks-page::after {
+    opacity: 0.34;
+    filter: blur(22px);
+  }
+
+  .skin-glassy .water-decks-fullbleed {
+    overflow-x: hidden;
+  }
+
+  .skin-glassy .water-decks-stage {
+    min-height: min(620px, calc(100dvh - 118px));
+    margin-top: -12px;
+    overflow: visible;
+  }
+
+  .skin-glassy .water-decks-rail {
+    height: 512px;
+    padding-top: 18px;
+  }
+
+  .skin-glassy .water-decks-horizon {
+    top: 278px;
+    width: 78vw;
+    opacity: 0.38;
+  }
+
+  .skin-glassy .water-decks-caustics {
+    height: 210px;
+    opacity: 0.24;
+    filter: blur(10px);
+  }
+
+  .skin-glassy .water-decks-floor {
+    height: 220px;
+    opacity: 0.34;
+  }
+
+  .skin-glassy .water-decks-progress {
+    grid-template-columns: auto minmax(86px, 148px) auto;
+    margin-top: -38px;
+    padding: 6px 9px;
+    font-size: 0.7rem;
+  }
+}

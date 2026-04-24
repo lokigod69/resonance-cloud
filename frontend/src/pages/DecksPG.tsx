@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import type { PointerEvent } from 'react'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
@@ -209,8 +210,9 @@ export default function DecksPG() {
   }
 
   return (
-    <div className="px-6 max-w-6xl mx-auto">
-      <div className="flex items-center justify-between mb-8">
+    <div className={viewMode === 'water' ? 'water-decks-page px-6' : 'px-6 max-w-6xl mx-auto'}>
+      <div className={viewMode === 'water' ? 'water-decks-header max-w-6xl mx-auto' : ''}>
+        <div className="flex items-center justify-between mb-8">
         <div className="min-w-0">
           <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate">
             {t('decks.title')}
@@ -249,6 +251,7 @@ export default function DecksPG() {
             <Plus className="h-5 w-5" />
           </button>
         </div>
+        </div>
       </div>
 
       <AnimatePresence mode="wait">
@@ -283,7 +286,13 @@ export default function DecksPG() {
           </motion.div>
         )}
         {viewMode === 'water' && (
-          <motion.div key="water" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div
+            key="water"
+            className="water-decks-fullbleed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <WaterDecksView
               decks={decks}
               wordCounts={wordCounts}
@@ -524,6 +533,8 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
 function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
+  const suppressClickRef = useRef(false)
+  const dragStartRef = useRef<{ x: number; y: number; time: number; pointerId: number } | null>(null)
 
   useEffect(() => {
     setActiveIndex((index) => Math.min(index, Math.max(decks.length - 1, 0)))
@@ -541,20 +552,83 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
     goToIndex(activeIndex + 1)
   }, [activeIndex, goToIndex])
 
-  const handleDragEnd = (_event: unknown, info: PanInfo) => {
-    setTimeout(() => setIsDragging(false), 50)
-    if (info.offset.x < -70 || info.velocity.x < -450) {
+  const resetDragState = useCallback((delay = 0) => {
+    window.setTimeout(() => {
+      setIsDragging(false)
+      suppressClickRef.current = false
+    }, delay)
+  }, [])
+
+  const handleRailPointerDown = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    if (event.button !== 0) return
+    dragStartRef.current = {
+      x: event.clientX,
+      y: event.clientY,
+      time: performance.now(),
+      pointerId: event.pointerId,
+    }
+    suppressClickRef.current = false
+  }, [])
+
+  const handleRailPointerMove = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    const start = dragStartRef.current
+    if (!start) return
+
+    const offsetX = event.clientX - start.x
+    const offsetY = event.clientY - start.y
+    const isHorizontalDrag = Math.abs(offsetX) > 12 && Math.abs(offsetX) > Math.abs(offsetY) * 0.65
+
+    if (isHorizontalDrag) {
+      suppressClickRef.current = true
+      setIsDragging(true)
+      if (!event.currentTarget.hasPointerCapture(start.pointerId)) {
+        event.currentTarget.setPointerCapture(start.pointerId)
+      }
+    }
+  }, [])
+
+  const handleRailPointerUp = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    const start = dragStartRef.current
+    if (!start) return
+
+    const offsetX = event.clientX - start.x
+    const elapsed = Math.max(performance.now() - start.time, 1)
+    const velocityX = (offsetX / elapsed) * 1000
+    const didDrag = suppressClickRef.current || Math.abs(offsetX) > 12
+
+    dragStartRef.current = null
+    if (event.currentTarget.hasPointerCapture(start.pointerId)) {
+      event.currentTarget.releasePointerCapture(start.pointerId)
+    }
+
+    if (!didDrag) {
+      resetDragState()
+      return
+    }
+
+    suppressClickRef.current = true
+    if (offsetX < -70 || velocityX < -450) {
       goNext()
-    } else if (info.offset.x > 70 || info.velocity.x > 450) {
+    } else if (offsetX > 70 || velocityX > 450) {
       goPrevious()
     }
-  }
+    resetDragState(160)
+  }, [goNext, goPrevious, resetDragState])
+
+  const handleRailPointerCancel = useCallback((event: PointerEvent<HTMLDivElement>) => {
+    const start = dragStartRef.current
+    dragStartRef.current = null
+    if (start && event.currentTarget.hasPointerCapture(start.pointerId)) {
+      event.currentTarget.releasePointerCapture(start.pointerId)
+    }
+    resetDragState(80)
+  }, [resetDragState])
 
   const visibleDecks = decks
     .map((deck, index) => ({ deck, index, offset: index - activeIndex }))
     .filter(({ offset }) => Math.abs(offset) <= 2)
 
-  const dotIndexes = getWaterDotIndexes(decks.length, activeIndex)
+  const progress = decks.length > 0 ? ((activeIndex + 1) / decks.length) * 100 : 0
 
   return (
     <div className="water-decks-stage">
@@ -575,12 +649,11 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
       </button>
 
       <motion.div
-        className="water-decks-rail"
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.12}
-        onDragStart={() => setIsDragging(true)}
-        onDragEnd={handleDragEnd}
+        className={`water-decks-rail ${isDragging ? 'is-dragging' : ''}`}
+        onPointerDown={handleRailPointerDown}
+        onPointerMove={handleRailPointerMove}
+        onPointerUp={handleRailPointerUp}
+        onPointerCancel={handleRailPointerCancel}
         style={{ touchAction: 'pan-y' }}
       >
         <AnimatePresence initial={false}>
@@ -593,7 +666,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
               wordCounts={wordCounts}
               thumbnails={thumbnails}
               onClick={() => {
-                if (isDragging) return
+                if (isDragging || suppressClickRef.current) return
                 if (offset === 0) {
                   onSelect(deck.id)
                 } else {
@@ -615,21 +688,12 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
         <ChevronRight className="h-5 w-5" />
       </button>
 
-      <div className="water-decks-dots" aria-label="Deck carousel position">
-        {dotIndexes.map((dot, i) => (
-          dot === 'gap' ? (
-            <span key={`gap-${i}`} className="water-decks-dot-gap" aria-hidden="true" />
-          ) : (
-            <button
-              key={dot}
-              type="button"
-              className={`water-decks-dot ${dot === activeIndex ? 'water-decks-dot-active' : ''}`}
-              onClick={() => goToIndex(dot)}
-              aria-label={`Go to deck ${dot + 1}`}
-              aria-current={dot === activeIndex ? 'true' : undefined}
-            />
-          )
-        ))}
+      <div className="water-decks-progress" aria-label={`Deck ${activeIndex + 1} of ${decks.length}`}>
+        <span>{activeIndex + 1}</span>
+        <div className="water-decks-progress-track" aria-hidden="true">
+          <div style={{ width: `${progress}%` }} />
+        </div>
+        <span>{decks.length}</span>
       </div>
     </div>
   )
@@ -735,25 +799,6 @@ function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, reflecti
       </div>
     </div>
   )
-}
-
-function getWaterDotIndexes(total: number, activeIndex: number): Array<number | 'gap'> {
-  if (total <= 9) {
-    return Array.from({ length: total }, (_value, index) => index)
-  }
-
-  const indexes = new Set<number>([0, total - 1])
-  for (let index = activeIndex - 2; index <= activeIndex + 2; index++) {
-    if (index >= 0 && index < total) indexes.add(index)
-  }
-
-  const sorted = Array.from(indexes).sort((a, b) => a - b)
-  const result: Array<number | 'gap'> = []
-  sorted.forEach((index, i) => {
-    if (i > 0 && index - sorted[i - 1] > 1) result.push('gap')
-    result.push(index)
-  })
-  return result
 }
 
 /* ─── Orbs View ──────────────────────────────────── */
