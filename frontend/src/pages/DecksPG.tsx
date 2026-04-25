@@ -61,13 +61,13 @@ function getInitialViewMode(): ViewMode {
   return 'water'
 }
 
-const WATER_DESKTOP_DECK_SPACING = 286
-const WATER_MOBILE_DECK_SPACING = 168
-const WATER_DESKTOP_RENDER_BUFFER = 8
+const WATER_DESKTOP_DECK_SPACING = 258
+const WATER_MOBILE_DECK_SPACING = 164
+const WATER_DESKTOP_RENDER_BUFFER = 3
 const WATER_MOBILE_RENDER_BUFFER = 2
-const WATER_DESKTOP_VISUAL_RANGE = 4
+const WATER_DESKTOP_VISUAL_RANGE = 3
 const WATER_MOBILE_VISUAL_RANGE = 2
-const WATER_DESKTOP_PRELOAD_RANGE = 8
+const WATER_DESKTOP_PRELOAD_RANGE = 5
 const WATER_MOBILE_PRELOAD_RANGE = 3
 const WATER_MAX_DRAG_JUMP = 2
 const WATER_DRAG_SPRING = { type: 'spring' as const, stiffness: 360, damping: 34 }
@@ -983,22 +983,37 @@ function WaterDeckCard({
   const cardX = useTransform(virtualOffset, (value) => value * deckSpacing)
   const cardY = useTransform(virtualDistance, (value) => {
     const distance = Math.min(Math.max(value, 0), visualRange)
-    return isMobile ? distance * 14 : distance * 18
+    if (isMobile) {
+      return distance <= 1 ? distance * 10 : 10 + (distance - 1) * 8
+    }
+    if (distance <= 1) return distance * 18
+    if (distance <= 2) return 18 + (distance - 1) * 16
+    return 34 + (distance - 2) * 14
   })
   const cardScale = useTransform(virtualDistance, (value) => {
     const distance = Math.min(Math.max(value, 0), visualRange)
-    if (isMobile) return Math.max(0.52, 1 - distance * 0.24)
-    return Math.max(0.36, 1 - distance * 0.19)
+    if (isMobile) {
+      if (distance <= 1) return 1 - distance * 0.22
+      return Math.max(0.58, 0.78 - (distance - 1) * 0.2)
+    }
+    if (distance <= 1) return 1 - distance * 0.18
+    if (distance <= 2) return 0.82 - (distance - 1) * 0.13
+    return Math.max(0.56, 0.69 - (distance - 2) * 0.13)
   })
   const cardOpacity = useTransform(virtualDistance, (value) => {
     const distance = Math.min(Math.max(value, 0), visualRange)
-    if (isMobile) return Math.max(0, 1 - distance * 0.46)
-    return Math.max(0, 1 - distance * 0.26)
+    if (isMobile) {
+      if (distance <= 1) return 1 - distance * 0.3
+      return Math.max(0.18, 0.7 - (distance - 1) * 0.52)
+    }
+    if (distance <= 1) return 1 - distance * 0.22
+    if (distance <= 2) return 0.78 - (distance - 1) * 0.3
+    return Math.max(0.14, 0.48 - (distance - 2) * 0.34)
   })
-  const rotateY = useTransform(virtualOffset, (value) => value * (isMobile ? 10 : 18))
-  const rotateZ = useTransform(virtualOffset, (value) => value * (isMobile ? 0.4 : 1.1))
-  const cardZ = useTransform(virtualDistance, (value) => -Math.min(value, visualRange) * (isMobile ? 42 : 88))
-  const zIndex = useTransform(virtualDistance, (value) => Math.round(80 - value * 10))
+  const rotateY = useTransform(virtualOffset, (value) => value * (isMobile ? -8 : -16))
+  const rotateZ = useTransform(virtualOffset, (value) => value * (isMobile ? -0.25 : -0.75))
+  const cardZ = useTransform(virtualDistance, (value) => -Math.min(value, visualRange) * (isMobile ? 14 : 28))
+  const zIndex = useTransform(virtualDistance, (value) => Math.round(100 - value * 16))
 
   return (
     <motion.button
@@ -1106,8 +1121,10 @@ function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, isPriori
           className={imageLoaded ? 'is-loaded' : 'is-loading'}
           src={thumbnail}
           alt={reflection ? '' : displayName}
+          draggable={false}
           loading={isPriority ? 'eager' : 'lazy'}
           decoding="async"
+          onDragStart={(event) => event.preventDefault()}
           onLoad={() => setLoadedThumbnail(thumbnail)}
           onError={() => setLoadedThumbnail(null)}
         />
