@@ -1826,13 +1826,13 @@
 }
 
 .skin-glassy .water-decks-stage {
-  min-height: min(740px, calc(100dvh - 126px));
+  min-height: min(760px, calc(100dvh - 118px));
   margin-top: 8px;
 }
 
 .skin-glassy .water-decks-rail {
-  height: 600px;
-  padding-top: 54px;
+  height: 610px;
+  padding-top: clamp(44px, 7vh, 78px);
 }
 
 .skin-glassy .water-decks-horizon {
@@ -1855,7 +1855,7 @@
   margin: -46px auto 0;
 }
 
-.skin-glassy .water-decks-controls .water-decks-arrow {
+.skin-glassy .water-decks-controls .water-decks-arrow-inline {
   position: relative;
   inset: auto;
   flex: 0 0 auto;
@@ -1879,13 +1879,13 @@
   }
 
   .skin-glassy .water-decks-stage {
-    min-height: min(600px, calc(100dvh - 132px));
+    min-height: min(600px, calc(100dvh - 130px));
     margin-top: 4px;
   }
 
   .skin-glassy .water-decks-rail {
     height: 500px;
-    padding-top: 42px;
+    padding-top: clamp(34px, 6vh, 48px);
   }
 
   .skin-glassy .water-decks-horizon {

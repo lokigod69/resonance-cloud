@@ -42,10 +42,11 @@ type WordStatus = {
 type ViewMode = 'stack' | 'grid' | 'orbs' | 'water'
 
 const WATER_DECK_SPACING = 256
-const WATER_RENDER_BUFFER = 8
-const WATER_VISIBLE_DISTANCE = 3
-const WATER_MAX_ANIMATED_JUMP = WATER_RENDER_BUFFER - WATER_VISIBLE_DISTANCE
-const WATER_MAX_DRAG_CARDS = 4.25
+const WATER_RENDER_BUFFER = 6
+const WATER_VISUAL_RANGE = 3
+const WATER_PRELOAD_RANGE = 8
+const WATER_MAX_LIVE_DRAG = WATER_DECK_SPACING * 1.15
+const WATER_MAX_DRAG_JUMP = 2
 const WATER_DRAG_SPRING = { type: 'spring' as const, stiffness: 360, damping: 34 }
 
 export default function DecksPG() {
@@ -574,6 +575,21 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
     setActiveIndex((index) => clampIndex(index))
   }, [clampIndex])
 
+  useEffect(() => {
+    const start = Math.max(0, activeIndex - WATER_PRELOAD_RANGE)
+    const end = Math.min(maxIndex, activeIndex + WATER_PRELOAD_RANGE)
+
+    for (let i = start; i <= end; i++) {
+      const deck = decks[i]
+      const thumb = deck ? thumbnails[deck.id] : undefined
+
+      if (thumb) {
+        const img = new Image()
+        img.src = thumb
+      }
+    }
+  }, [activeIndex, decks, maxIndex, thumbnails])
+
   const resetDragState = useCallback((delay = 0) => {
     window.setTimeout(() => {
       setIsDragging(false)
@@ -595,7 +611,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
       return
     }
 
-    if (Math.abs(delta) > WATER_MAX_ANIMATED_JUMP) {
+    if (Math.abs(delta) > WATER_MAX_DRAG_JUMP) {
       setActiveIndex(targetIndex)
       dragX.set(0)
       resetDragState(60)
@@ -629,15 +645,12 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
   }, [activeIndex, animateToIndex])
 
   const getBoundedDragOffset = useCallback((offsetX: number) => {
-    const maxForwardDrag = Math.min(maxIndex - activeIndex, WATER_MAX_DRAG_CARDS) * WATER_DECK_SPACING
-    const maxBackwardDrag = Math.min(activeIndex, WATER_MAX_DRAG_CARDS) * WATER_DECK_SPACING
-
-    if (offsetX < -maxForwardDrag) {
-      return -maxForwardDrag + (offsetX + maxForwardDrag) * 0.18
+    if (activeIndex === 0 && offsetX > 0) {
+      return offsetX * 0.35
     }
 
-    if (offsetX > maxBackwardDrag) {
-      return maxBackwardDrag + (offsetX - maxBackwardDrag) * 0.18
+    if (activeIndex === maxIndex && offsetX < 0) {
+      return offsetX * 0.35
     }
 
     return offsetX
@@ -653,7 +666,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
       const velocityJump = speed > 900 ? Math.floor(speed / 900) : 1
       const distanceJump = Math.max(1, Math.round(distance / WATER_DECK_SPACING))
       const availableJump = direction === 1 ? maxIndex - activeIndex : activeIndex
-      const jump = Math.min(WATER_MAX_ANIMATED_JUMP, availableJump, Math.max(velocityJump, distanceJump))
+      const jump = Math.min(WATER_MAX_DRAG_JUMP, availableJump, Math.max(velocityJump, distanceJump))
       targetIndex = activeIndex + direction * jump
     }
 
@@ -692,7 +705,8 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
       start.lastTime = now
       setIsDragging(true)
       suppressClickRef.current = true
-      dragX.set(getBoundedDragOffset(rawOffsetX))
+      const liveOffset = Math.max(-WATER_MAX_LIVE_DRAG, Math.min(WATER_MAX_LIVE_DRAG, rawOffsetX))
+      dragX.set(getBoundedDragOffset(liveOffset))
     }
   }, [dragX, getBoundedDragOffset])
 
@@ -777,7 +791,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
       <div className="water-decks-controls">
         <button
           type="button"
-          className="water-decks-arrow water-decks-arrow-left"
+          className="water-decks-arrow water-decks-arrow-inline water-decks-arrow-left"
           onClick={goPrevious}
           disabled={activeIndex === 0}
           aria-label="Previous deck"
@@ -805,7 +819,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
 
         <button
           type="button"
-          className="water-decks-arrow water-decks-arrow-right"
+          className="water-decks-arrow water-decks-arrow-inline water-decks-arrow-right"
           onClick={goNext}
           disabled={activeIndex === decks.length - 1}
           aria-label="Next deck"
@@ -834,7 +848,7 @@ function WaterDeckCard({ deck, offset, isActive, wordCounts, thumbnails, dragX, 
   const distance = Math.abs(offset)
   const isGenerating = deck.status === 'generating'
   const virtualOffset = useTransform(dragX, (xValue) => offset + xValue / WATER_DECK_SPACING)
-  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISIBLE_DISTANCE + 1))
+  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISUAL_RANGE + 1))
   const cardX = useTransform(virtualOffset, (value) => value * WATER_DECK_SPACING)
   const cardY = useTransform(virtualDistance, [0, 1, 2, 3, 4], [0, 24, 48, 68, 78])
   const cardScale = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.78, 0.62, 0.48, 0.42])
@@ -908,7 +922,7 @@ interface WaterDeckHaloProps {
 function WaterDeckHalo({ offset, dragX }: WaterDeckHaloProps) {
   const distance = Math.min(Math.abs(offset), 2)
   const virtualOffset = useTransform(dragX, (xValue) => offset + xValue / WATER_DECK_SPACING)
-  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISIBLE_DISTANCE + 1))
+  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISUAL_RANGE + 1))
   const x = useTransform(virtualOffset, (value) => value * WATER_DECK_SPACING)
   const opacity = useTransform(virtualDistance, [0, 1, 2, 3, 4], [0.82, 0.38, 0.16, 0, 0])
   const scale = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.72, 0.5, 0.36, 0.3])
