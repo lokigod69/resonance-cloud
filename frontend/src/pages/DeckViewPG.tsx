@@ -706,7 +706,7 @@ export default function DeckViewPG() {
                     transition={dragOffset !== 0 ? { type: 'tween', duration: 0 } : { type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div
-                      className={`w-full bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative flex flex-col ${
+                      className={`w-full max-h-[calc(100dvh-14rem)] bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative flex flex-col sm:max-h-[calc(100dvh-16rem)] ${
                         !isComplete ? 'opacity-50' : ''
                       }`}
                       style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
@@ -997,20 +997,20 @@ export default function DeckViewPG() {
           editMode=false → 3 buttons (Study/Add/Edit|Delete) → 3-col grid */}
       <div className={editMode
         ? 'flex justify-center pt-8'
-        : 'grid grid-cols-1 sm:grid-cols-3 gap-3 pt-8 max-w-xl mx-auto'
+        : 'fixed inset-x-6 bottom-[env(safe-area-inset-bottom,0px)] z-30 grid max-w-xl grid-cols-3 gap-2 mx-auto sm:gap-3'
       }>
         {!editMode && (
           <>
             <button
               onClick={() => navigate(`/study?deck=${deck.id}`)}
-              className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
+              className="rounded-xl border border-[var(--pg-accent-teal)]/30 bg-black/35 px-2 py-2.5 text-xs font-display font-medium text-[var(--pg-accent-teal)] backdrop-blur-md transition-all hover:bg-[var(--pg-accent-teal)]/10 sm:px-5 sm:text-sm"
             >
               <BookOpen className="h-4 w-4 inline mr-1.5" />
               {t('deckview.study')}
             </button>
             <button
               onClick={() => navigate(`/generate?deckId=${deck.id}`)}
-              className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
+              className="rounded-xl border border-[var(--pg-accent-teal)]/30 bg-black/35 px-2 py-2.5 text-xs font-display font-medium text-[var(--pg-accent-teal)] backdrop-blur-md transition-all hover:bg-[var(--pg-accent-teal)]/10 sm:px-5 sm:text-sm"
             >
               <Plus className="h-4 w-4 inline mr-1.5" />
               {t('deckview.addCards')}
@@ -1021,7 +1021,7 @@ export default function DeckViewPG() {
           <button
             onClick={handleDeleteDeck}
             disabled={deletingDeck}
-            className="px-5 py-2.5 rounded-xl border border-red-500/40 text-red-400 text-sm font-display font-medium hover:bg-red-500/10 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+            className="rounded-xl border border-red-500/40 bg-black/35 px-2 py-2.5 text-xs font-display font-medium text-red-400 backdrop-blur-md transition-all hover:bg-red-500/10 disabled:cursor-not-allowed disabled:opacity-40 sm:px-5 sm:text-sm"
           >
             {deletingDeck ? (
               <Loader2 className="h-4 w-4 inline mr-1.5 animate-spin" />
@@ -1041,7 +1041,7 @@ export default function DeckViewPG() {
                 setSelectedWords(new Set())
               }
             }}
-            className="px-5 py-2.5 rounded-xl border border-[var(--pg-accent-teal)]/30 text-[var(--pg-accent-teal)] text-sm font-display font-medium hover:bg-[var(--pg-accent-teal)]/10 transition-all"
+            className="rounded-xl border border-[var(--pg-accent-teal)]/30 bg-black/35 px-2 py-2.5 text-xs font-display font-medium text-[var(--pg-accent-teal)] backdrop-blur-md transition-all hover:bg-[var(--pg-accent-teal)]/10 sm:px-5 sm:text-sm"
           >
             {editMode ? (
               <><X className="h-4 w-4 inline mr-1.5" />{t('deckview.done')}</>
