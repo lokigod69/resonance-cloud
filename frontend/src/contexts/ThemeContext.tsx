@@ -12,7 +12,7 @@ const MIGRATION_MAP: Record<string, Theme> = {
   standard: 'midnight',
   retro: 'midnight',
   soft: 'midnight',
-  'deep-blue': 'rainy-day',
+  'deep-blue': 'midnight',
 }
 
 interface ThemeContextType {

@@ -101,9 +101,7 @@ body {
 
 .skin-glassy {
   --shell-bg:
-    radial-gradient(circle at 50% 8%, var(--accent-glow), transparent 34%),
-    radial-gradient(circle at 12% 78%, var(--accent-2-soft), transparent 30%),
-    linear-gradient(180deg, var(--app-bg), color-mix(in srgb, var(--app-bg) 88%, #06070b 12%));
+    linear-gradient(180deg, var(--app-bg) 0%, color-mix(in srgb, var(--app-bg) 88%, var(--surface-0) 12%) 100%);
   --surface-glass: color-mix(in srgb, var(--surface-1) 58%, transparent);
   --surface-glass-strong: color-mix(in srgb, var(--surface-1) 72%, transparent);
   --nav-bg: color-mix(in srgb, var(--app-bg) 90%, transparent);
@@ -135,8 +133,6 @@ body {
 
 .theme-warm-linen.skin-glassy {
   --shell-bg:
-    radial-gradient(circle at 50% 8%, rgba(139, 114, 86, 0.14), transparent 34%),
-    radial-gradient(circle at 14% 82%, rgba(63, 115, 117, 0.1), transparent 30%),
     linear-gradient(180deg, #f6f0e7, #efe6d8);
   --surface-glass: rgba(255, 248, 239, 0.66);
   --surface-glass-strong: rgba(255, 248, 239, 0.86);
@@ -148,6 +144,65 @@ body {
   color: var(--text-primary);
   background: var(--shell-bg);
   background-attachment: fixed;
+}
+
+.skin-glassy .app-shell {
+  position: relative;
+  isolation: isolate;
+  background: var(--shell-bg);
+}
+
+.skin-glassy .app-shell::before,
+.skin-glassy .app-shell::after {
+  content: '';
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.skin-glassy .app-shell::before {
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 18% 18%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 34%),
+    radial-gradient(ellipse at 84% 24%, color-mix(in srgb, var(--accent-2) 8%, transparent), transparent 32%),
+    radial-gradient(ellipse at 54% 82%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 44%),
+    linear-gradient(90deg, color-mix(in srgb, #000 44%, transparent), transparent 24%, transparent 76%, color-mix(in srgb, #000 44%, transparent)),
+    radial-gradient(ellipse at center, transparent 0%, transparent 56%, color-mix(in srgb, #000 34%, transparent) 100%);
+  opacity: 0.9;
+}
+
+.skin-glassy .app-shell::after {
+  left: 50%;
+  bottom: -9rem;
+  width: min(1120px, 124vw);
+  height: 24rem;
+  translate: -50% 0;
+  opacity: 0.2;
+  background:
+    repeating-linear-gradient(102deg, color-mix(in srgb, var(--accent-2) 16%, transparent) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(78deg, color-mix(in srgb, var(--accent) 9%, transparent) 0 1px, transparent 1px 42px),
+    radial-gradient(ellipse at center, color-mix(in srgb, var(--accent-2) 14%, transparent) 0%, transparent 68%);
+  transform: perspective(780px) rotateX(64deg);
+  transform-origin: center bottom;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.86) 0%, rgba(0, 0, 0, 0.68) 36%, transparent 82%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.86) 0%, rgba(0, 0, 0, 0.68) 36%, transparent 82%);
+}
+
+.theme-warm-linen.skin-glassy .app-shell::before {
+  background:
+    radial-gradient(ellipse at 18% 16%, rgba(139, 114, 86, 0.08), transparent 34%),
+    radial-gradient(ellipse at 84% 28%, rgba(63, 115, 117, 0.06), transparent 32%),
+    linear-gradient(90deg, rgba(94, 74, 56, 0.1), transparent 24%, transparent 76%, rgba(94, 74, 56, 0.08)),
+    radial-gradient(ellipse at center, transparent 0%, transparent 62%, rgba(94, 74, 56, 0.12) 100%);
+  opacity: 0.72;
+}
+
+.theme-warm-linen.skin-glassy .app-shell::after {
+  opacity: 0.11;
+  background:
+    repeating-linear-gradient(102deg, rgba(63, 115, 117, 0.16) 0 1px, transparent 1px 38px),
+    repeating-linear-gradient(78deg, rgba(139, 114, 86, 0.12) 0 1px, transparent 1px 46px),
+    radial-gradient(ellipse at center, rgba(139, 114, 86, 0.12) 0%, transparent 68%);
 }
 
 .app-shell ::selection,
@@ -296,7 +351,95 @@ body {
 }
 
 .pg-dot-grid {
-  background-image: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent) 1px, transparent 1px);
+  background:
+    linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent-2) 8%, transparent), transparent),
+    radial-gradient(ellipse at 50% 78%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 62%);
+  opacity: 0.28;
+}
+
+.skin-glassy .pg-dot-grid {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 0;
+  height: 44vh;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--accent-2) 6%, transparent) 58%, transparent 100%),
+    repeating-linear-gradient(90deg, color-mix(in srgb, var(--text-primary) 5%, transparent) 0 1px, transparent 1px 72px);
+  opacity: 0.12;
+  transform: none;
+  transform-origin: center bottom;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent 76%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.72), transparent 76%);
+}
+
+.theme-warm-linen.skin-glassy .pg-dot-grid {
+  opacity: 0.08;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(63, 115, 117, 0.08) 58%, transparent 100%),
+    repeating-linear-gradient(90deg, rgba(82, 68, 55, 0.06) 0 1px, transparent 1px 76px);
+}
+
+.theme-warm-linen.skin-glassy .gen-container {
+  color: var(--text-primary);
+}
+
+.theme-warm-linen.skin-glassy .gen-container h2,
+.theme-warm-linen.skin-glassy .gen-container h3,
+.theme-warm-linen.skin-glassy .gen-container [class*="font-semibold"][class*="text-white"] {
+  color: var(--text-primary);
+}
+
+.theme-warm-linen.skin-glassy .gen-container [class*="text-white"] {
+  color: var(--text-secondary);
+}
+
+.theme-warm-linen.skin-glassy .gen-container input,
+.theme-warm-linen.skin-glassy .gen-container textarea,
+.theme-warm-linen.skin-glassy .gen-container [class*="text-white/90"] {
+  color: var(--text-primary);
+}
+
+.theme-warm-linen.skin-glassy .gen-container h2[class*="text-white"],
+.theme-warm-linen.skin-glassy .gen-container h3[class*="text-white"],
+.theme-warm-linen.skin-glassy .gen-container [class*="text-2xl"][class*="text-white"],
+.theme-warm-linen.skin-glassy .gen-container [class*="tracking-tight"][class*="text-white"] {
+  color: var(--text-primary);
+}
+
+.theme-warm-linen.skin-glassy .gen-container input::placeholder,
+.theme-warm-linen.skin-glassy .gen-container textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.theme-warm-linen.skin-glassy .gen-container [class*="bg-white"] {
+  background-color: color-mix(in srgb, var(--surface-2) 64%, transparent);
+}
+
+.theme-warm-linen.skin-glassy .gen-container [class*="border-white"] {
+  border-color: var(--border-subtle);
+}
+
+.theme-warm-linen.skin-glassy .gen-orb {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--surface-2) 72%, transparent), color-mix(in srgb, var(--surface-1) 46%, transparent));
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
+  box-shadow:
+    0 12px 32px rgba(92, 68, 43, 0.1),
+    inset 0 1px 0 rgba(255, 248, 239, 0.72);
+}
+
+.theme-warm-linen.skin-glassy .gen-orb.selected,
+.theme-warm-linen.skin-glassy .gen-orb.forge-btn {
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--border-subtle));
+  color: var(--text-primary);
+  box-shadow: 0 12px 32px rgba(92, 68, 43, 0.14), 0 0 24px var(--accent-glow);
+}
+
+.theme-warm-linen.skin-glassy .forge-orb {
+  color: var(--on-accent);
+  box-shadow: 0 18px 44px rgba(92, 68, 43, 0.18), 0 0 34px var(--accent-glow);
 }
 
 .speak-page-shell {

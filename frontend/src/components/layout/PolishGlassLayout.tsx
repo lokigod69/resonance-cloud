@@ -36,8 +36,6 @@ export default function PolishGlassLayout() {
 
   return (
     <div className="app-shell w-screen min-h-screen relative overflow-x-hidden overflow-y-auto font-sans pg-scrollbar-hide">
-      {/* Cinematic ambient glow */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full blur-[120px] pointer-events-none z-0 bg-[var(--accent-glow)]" />
       {/* Perspective dot grid */}
       <div className="pg-dot-grid" aria-hidden="true" />
 
