@@ -3,7 +3,13 @@ import { VolumeControl } from '@/components/VolumeControl'
 import { SimulatedWaveform } from './SimulatedWaveform'
 import type { MusicTrack, RepeatMode } from '@/hooks/useMusicPlayer'
 import type { MouseEvent, PointerEvent, RefObject, TouchEvent } from 'react'
-import { PLAYER_ACTIVE_TOGGLE_CLASS, PLAYER_BAR_CLASS, PLAYER_INACTIVE_TOGGLE_CLASS } from '@/lib/playerStyles'
+import {
+  PLAYER_ACTIVE_TOGGLE_CLASS,
+  PLAYER_BAR_CLASS,
+  PLAYER_FOCUS_RING_CLASS,
+  PLAYER_INACTIVE_TOGGLE_CLASS,
+  PLAYER_SOFT_ICON_BUTTON_CLASS,
+} from '@/lib/playerStyles'
 
 function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return '0:00'
@@ -164,7 +170,7 @@ export function PlayerBar({
         <button
           onClick={onPrev}
           disabled={!currentTrack}
-          className="w-8 h-8 flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className={`w-8 h-8 ${PLAYER_SOFT_ICON_BUTTON_CLASS}`}
           aria-label="Previous"
         >
           <SkipBack size={16} />
@@ -173,7 +179,7 @@ export function PlayerBar({
         <button
           onClick={onTogglePlay}
           disabled={!currentTrack}
-          className="w-9 h-9 flex items-center justify-center rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className={`w-9 h-9 flex items-center justify-center rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed ${PLAYER_FOCUS_RING_CLASS}`}
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >
           {isPlaying ? <Pause size={16} /> : <Play size={16} className="ml-0.5" />}
@@ -182,7 +188,7 @@ export function PlayerBar({
         <button
           onClick={onNext}
           disabled={!currentTrack}
-          className="w-8 h-8 flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className={`w-8 h-8 ${PLAYER_SOFT_ICON_BUTTON_CLASS}`}
           aria-label="Next"
         >
           <SkipForward size={16} />
@@ -242,7 +248,7 @@ export function PlayerBar({
       <div className="order-2 sm:order-3 ml-auto sm:ml-0 flex items-center gap-1 shrink-0">
         <button
           onClick={onToggleShuffle}
-          className={`w-8 h-8 flex items-center justify-center rounded-md transition-colors ${
+          className={`w-8 h-8 ${PLAYER_SOFT_ICON_BUTTON_CLASS} ${
             shuffle ? PLAYER_ACTIVE_TOGGLE_CLASS : PLAYER_INACTIVE_TOGGLE_CLASS
           }`}
           aria-label="Shuffle"
@@ -253,7 +259,7 @@ export function PlayerBar({
 
         <button
           onClick={onCycleRepeat}
-          className={`w-8 h-8 flex items-center justify-center rounded-md transition-colors ${
+          className={`w-8 h-8 ${PLAYER_SOFT_ICON_BUTTON_CLASS} ${
             repeatMode !== 'off'
               ? PLAYER_ACTIVE_TOGGLE_CLASS
               : PLAYER_INACTIVE_TOGGLE_CLASS
@@ -269,9 +275,10 @@ export function PlayerBar({
           isMuted={isMuted}
           onVolumeChange={onSetVolume}
           onToggleMute={onToggleMute}
-          buttonClassName="w-8 h-8 flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-white/10 transition-colors"
+          buttonClassName={`w-8 h-8 ${PLAYER_SOFT_ICON_BUTTON_CLASS}`}
           iconSize={14}
           popDirection="up"
+          sliderAlign="end"
         />
       </div>
     </div>

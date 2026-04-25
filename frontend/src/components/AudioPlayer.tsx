@@ -1,5 +1,13 @@
 import { useRef, useState, useCallback, useEffect } from 'react'
-import { Play, Pause, Volume2, VolumeX } from 'lucide-react'
+import { Play, Pause } from 'lucide-react'
+import { VolumeControl } from '@/components/VolumeControl'
+import {
+  PLAYER_AUDIO_ROW_CLASS,
+  PLAYER_FOCUS_RING_CLASS,
+  PLAYER_PROGRESS_FILL_CLASS,
+  PLAYER_PROGRESS_TRACK_CLASS,
+  PLAYER_SOFT_ICON_BUTTON_CLASS,
+} from '@/lib/playerStyles'
 
 interface AudioPlayerProps {
   src: string
@@ -18,6 +26,7 @@ export function AudioPlayer({ src, className }: AudioPlayerProps) {
   const [playing, setPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [volume, setVolume] = useState(1)
   const [muted, setMuted] = useState(false)
 
   const toggle = useCallback(() => {
@@ -60,17 +69,26 @@ export function AudioPlayer({ src, className }: AudioPlayerProps) {
     return () => { window.removeEventListener('pointermove', onMove); window.removeEventListener('pointerup', onUp) }
   }, [dragging, seekTo])
 
-  const toggleMute = useCallback(() => {
+  useEffect(() => {
     const el = audioRef.current
     if (!el) return
-    el.muted = !muted
-    setMuted(!muted)
-  }, [muted])
+    el.volume = volume
+    el.muted = muted || volume === 0
+  }, [volume, muted])
+
+  const handleVolumeChange = useCallback((nextVolume: number) => {
+    setVolume(nextVolume)
+    if (nextVolume > 0) setMuted(false)
+  }, [])
+
+  const toggleMute = useCallback(() => {
+    setMuted(prev => !prev)
+  }, [])
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0
 
   return (
-    <div className={`flex items-center gap-2 ${className ?? ''}`}>
+    <div className={`${PLAYER_AUDIO_ROW_CLASS} ${className ?? ''}`}>
       <audio
         ref={audioRef}
         src={src}
@@ -83,9 +101,10 @@ export function AudioPlayer({ src, className }: AudioPlayerProps) {
       {/* Play/Pause */}
       <button
         onClick={toggle}
-        className={`w-7 h-7 flex items-center justify-center rounded-md flex-shrink-0 transition-colors ${
+        className={`w-7 h-7 ${PLAYER_SOFT_ICON_BUTTON_CLASS} ${
           playing ? 'bg-[var(--accent)] text-white' : 'bg-[var(--bg-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
         }`}
+        aria-label={playing ? 'Pause' : 'Play'}
       >
         {playing ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
       </button>
@@ -93,12 +112,12 @@ export function AudioPlayer({ src, className }: AudioPlayerProps) {
       {/* Progress bar */}
       <div
         ref={barRef}
-        className="flex-1 h-4 flex items-center cursor-pointer group touch-none"
+        className={`flex-1 h-4 flex items-center cursor-pointer group touch-none ${PLAYER_FOCUS_RING_CLASS}`}
         onPointerDown={onPointerDown}
       >
-        <div className="w-full h-1 bg-[var(--border)] rounded-full relative">
+        <div className={`${PLAYER_PROGRESS_TRACK_CLASS} h-1 relative`}>
           <div
-            className={`h-full bg-[var(--accent)] rounded-full ${dragging ? '' : 'transition-[width] duration-100'}`}
+            className={`${PLAYER_PROGRESS_FILL_CLASS} ${dragging ? '' : 'transition-[width] duration-100'}`}
             style={{ width: `${progress}%` }}
           />
           <div
@@ -113,13 +132,15 @@ export function AudioPlayer({ src, className }: AudioPlayerProps) {
         {formatTime(currentTime)} / {formatTime(duration)}
       </span>
 
-      {/* Mute */}
-      <button
-        onClick={toggleMute}
-        className="text-[var(--text-muted)] hover:text-[var(--text-secondary)] flex-shrink-0 transition-colors"
-      >
-        {muted ? <VolumeX size={12} /> : <Volume2 size={12} />}
-      </button>
+      <VolumeControl
+        volume={volume}
+        isMuted={muted}
+        onVolumeChange={handleVolumeChange}
+        onToggleMute={toggleMute}
+        buttonClassName={`w-7 h-7 ${PLAYER_SOFT_ICON_BUTTON_CLASS}`}
+        iconSize={12}
+        popDirection="left"
+      />
     </div>
   )
 }

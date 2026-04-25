@@ -4,7 +4,6 @@ import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
 import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play, Share2, PencilLine } from 'lucide-react'
 import { useMoveWords } from '@/hooks/useMoveWords'
 import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
@@ -433,7 +432,6 @@ export default function DeckView() {
         {words.map((word) => {
           const isComplete = word.status === 'complete'
           const isFailed = word.status === 'failed'
-          const isPending = word.status === 'pending' || word.status === 'processing'
 
           const isSelectable = word.status !== 'pending' && word.status !== 'processing'
           const isSelected = selectedWords.has(word.id)
@@ -570,15 +568,15 @@ export default function DeckView() {
               ) : (
                 /* Pending / Processing */
                 <div className="glass rounded-xl overflow-hidden">
-                  <div className="aspect-video flex items-center justify-center">
-                    <div className="space-y-2 flex flex-col items-center px-3 text-center">
-                      <Skeleton className="h-3 w-16 bg-white/10" />
-                    </div>
+                  <div className="aspect-video flex items-center justify-center bg-white/5 px-3 text-center">
+                    <span className="text-xs font-medium text-muted-foreground">
+                      {word.status === 'pending' ? t('deckview.queued') : t('deckview.processing')}
+                    </span>
                   </div>
                   <div className="p-3 space-y-0.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
                     <p className="text-xs text-muted-foreground">
-                      {isPending ? t('deckview.queued') : t('deckview.processing')}
+                      {word.status === 'pending' ? t('deckview.queued') : t('deckview.processing')}
                     </p>
                   </div>
                 </div>

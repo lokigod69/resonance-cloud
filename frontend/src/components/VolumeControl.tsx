@@ -1,5 +1,6 @@
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect, type CSSProperties } from 'react'
 import { Volume2, Volume1, VolumeX } from 'lucide-react'
+import { PLAYER_SLIDER_CLASS } from '@/lib/playerStyles'
 
 interface VolumeControlProps {
   volume: number
@@ -10,6 +11,7 @@ interface VolumeControlProps {
   buttonClassName?: string
   iconSize?: number
   popDirection?: 'left' | 'up' | 'right'
+  sliderAlign?: 'start' | 'center' | 'end'
 }
 
 const isTouchDevice = () =>
@@ -24,6 +26,7 @@ export function VolumeControl({
   buttonClassName = 'p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors',
   iconSize = 16,
   popDirection = 'left',
+  sliderAlign = 'center',
 }: VolumeControlProps) {
   const [showSlider, setShowSlider] = useState(false)
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -49,6 +52,17 @@ export function VolumeControl({
   }, [clearHideTimer])
 
   const handleMouseLeave = useCallback(() => {
+    if (isTouchDevice()) return
+    startHideTimer()
+  }, [startHideTimer])
+
+  const handleFocusCapture = useCallback(() => {
+    clearHideTimer()
+    setShowSlider(true)
+  }, [clearHideTimer])
+
+  const handleBlurCapture = useCallback((e: React.FocusEvent<HTMLDivElement>) => {
+    if (e.relatedTarget instanceof Node && e.currentTarget.contains(e.relatedTarget)) return
     if (isTouchDevice()) return
     startHideTimer()
   }, [startHideTimer])
@@ -85,6 +99,34 @@ export function VolumeControl({
 
   const displayVolume = isMuted ? 0 : volume
   const VolumeIcon = displayVolume === 0 ? VolumeX : displayVolume <= 0.5 ? Volume1 : Volume2
+  const sliderHorizontalStyle = (() => {
+    if (popDirection !== 'up') return {}
+    if (sliderAlign === 'start') return { left: 0, transform: undefined }
+    if (sliderAlign === 'end') return { right: 0, transform: undefined }
+    return { left: '50%', transform: 'translateX(-50%)' }
+  })()
+
+  const sliderStyle: CSSProperties = popDirection === 'up' ? {
+    width: showSlider ? 80 : 0,
+    opacity: showSlider ? 1 : 0,
+    bottom: 'calc(100% + 6px)',
+    pointerEvents: showSlider ? 'auto' : 'none',
+    ...sliderHorizontalStyle,
+  } : popDirection === 'right' ? {
+    width: showSlider ? 80 : 0,
+    opacity: showSlider ? 1 : 0,
+    left: 'calc(100% + 0.5rem)',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    pointerEvents: showSlider ? 'auto' : 'none',
+  } : {
+    width: showSlider ? 80 : 0,
+    opacity: showSlider ? 1 : 0,
+    right: 'calc(100% + 0.5rem)',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    pointerEvents: showSlider ? 'auto' : 'none',
+  }
 
   return (
     <div
@@ -92,32 +134,23 @@ export function VolumeControl({
       className={`relative flex items-center gap-1 ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onFocusCapture={handleFocusCapture}
+      onBlurCapture={handleBlurCapture}
     >
+      <button
+        onClick={handleMuteClick}
+        className={buttonClassName}
+        title={isMuted ? 'Unmute' : 'Mute'}
+        aria-label={isMuted ? 'Unmute' : 'Mute'}
+        aria-expanded={showSlider}
+      >
+        <VolumeIcon style={{ width: iconSize, height: iconSize }} />
+      </button>
+
       {/* Slider: absolutely positioned out of flex flow */}
       <div
         className="absolute overflow-hidden transition-all duration-200"
-        style={popDirection === 'up' ? {
-          width: showSlider ? 80 : 0,
-          opacity: showSlider ? 1 : 0,
-          bottom: 'calc(100% + 6px)',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          pointerEvents: showSlider ? 'auto' : 'none',
-        } : popDirection === 'right' ? {
-          width: showSlider ? 80 : 0,
-          opacity: showSlider ? 1 : 0,
-          left: 'calc(100% + 0.5rem)',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          pointerEvents: showSlider ? 'auto' : 'none',
-        } : {
-          width: showSlider ? 80 : 0,
-          opacity: showSlider ? 1 : 0,
-          right: 'calc(100% + 0.5rem)',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          pointerEvents: showSlider ? 'auto' : 'none',
-        }}
+        style={sliderStyle}
         onClick={e => e.stopPropagation()}
         onPointerDown={e => e.stopPropagation()}
         onTouchStart={e => e.stopPropagation()}
@@ -129,18 +162,13 @@ export function VolumeControl({
           step="0.01"
           value={displayVolume}
           onChange={handleSliderChange}
-          className="volume-slider w-full cursor-pointer"
+          className={PLAYER_SLIDER_CLASS}
           style={{ touchAction: 'pan-x' }}
+          tabIndex={showSlider ? 0 : -1}
+          aria-hidden={!showSlider}
+          aria-label="Volume"
         />
       </div>
-
-      <button
-        onClick={handleMuteClick}
-        className={buttonClassName}
-        title={isMuted ? 'Unmute' : 'Mute'}
-      >
-        <VolumeIcon style={{ width: iconSize, height: iconSize }} />
-      </button>
     </div>
   )
 }

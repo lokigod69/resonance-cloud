@@ -106,7 +106,7 @@ export default function StudyPG() {
   }
 
   return (
-    <div className="px-0 sm:px-4 md:px-6 max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-96px)]">
+    <div className="px-0 sm:px-4 md:px-6 max-w-5xl mx-auto flex min-h-[calc(100dvh-5rem)] flex-col items-center justify-start pt-4 pb-10 sm:pt-6">
       {/* Card + content */}
       <div className="w-full max-w-4xl">
         {/* Deck filter */}

@@ -18,6 +18,8 @@ frontend/.env.local
 
 # IDE / Agent
 .claude/
+review-artifacts/
+frontend/review-artifacts/
 
 # Auto-generated
 recent-workspaces.json

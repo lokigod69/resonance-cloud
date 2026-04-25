@@ -22,7 +22,15 @@ export default function OrbDock({ words, currentIndex, onSelect }: OrbDockProps)
   const activeRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    activeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    const active = activeRef.current
+    const container = active?.closest<HTMLElement>('.orb-dock-container')
+    if (!active || !container) return
+
+    const nextTop = active.offsetTop - (container.clientHeight - active.clientHeight) / 2
+    container.scrollTo({
+      top: Math.max(0, nextTop),
+      behavior: 'smooth',
+    })
   }, [currentIndex])
 
   return (

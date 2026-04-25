@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Play, Loader, SlidersHorizontal } from 'lucide-react'
+import { Play, SlidersHorizontal } from 'lucide-react'
 import type { WordDetail } from '../api'
 import { runStage, selectVersion } from '../api'
 import { StageSettings } from './settings/StageSettings'
@@ -134,7 +134,7 @@ export function StagePanel({ slug, stage, detail, onRefresh, setRunningStage, pi
             `}
             title={pipelineRunning ? 'Pipeline is running' : undefined}
           >
-            {running ? <Loader size={12} className="animate-spin" /> : <Play size={12} />}
+            {!running && <Play size={12} />}
             {running ? 'Running...' : 'Generate'}
           </button>
         </div>
