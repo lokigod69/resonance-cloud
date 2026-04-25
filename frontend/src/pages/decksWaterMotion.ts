@@ -2,14 +2,48 @@ function normalizeDistance(distance: number) {
   return Number.isFinite(distance) ? Math.max(0, Math.abs(distance)) : 0
 }
 
-export function getWaterCardX(offset: number, deckSpacing: number, isMobile = false) {
-  const safeOffset = Number.isFinite(offset) ? offset : 0
-  const safeSpacing = Number.isFinite(deckSpacing) ? deckSpacing : 0
-  const distance = Math.min(Math.abs(safeOffset), 1)
-  const direction = safeOffset === 0 ? 0 : Math.sign(safeOffset)
-  const crossoverBoost = Math.sin(distance * Math.PI) * (isMobile ? 14 : 24)
+const WATER_DESKTOP_CARD_WIDTH = 360
+const WATER_MOBILE_CARD_WIDTH = 310
+const WATER_DESKTOP_CARD_GAP = 18
+const WATER_MOBILE_CARD_GAP = 12
 
-  return safeOffset * safeSpacing + direction * crossoverBoost
+export function getWaterCardScale(distance: number, isMobile = false) {
+  const safeDistance = normalizeDistance(distance)
+
+  if (isMobile) {
+    if (safeDistance <= 1) return 1 - safeDistance * 0.22
+    return Math.max(0.58, 0.78 - (safeDistance - 1) * 0.2)
+  }
+
+  if (safeDistance <= 1) return 1 - safeDistance * 0.18
+  if (safeDistance <= 2) return 0.82 - (safeDistance - 1) * 0.13
+  return Math.max(0.56, 0.69 - (safeDistance - 2) * 0.13)
+}
+
+export function getWaterCardX(
+  offset: number,
+  deckSpacing: number,
+  isMobile = false,
+  cardWidth = isMobile ? WATER_MOBILE_CARD_WIDTH : WATER_DESKTOP_CARD_WIDTH,
+) {
+  const safeOffset = Number.isFinite(offset) ? offset : 0
+  const distance = Math.abs(safeOffset)
+  const direction = safeOffset === 0 ? 0 : Math.sign(safeOffset)
+  if (direction === 0) return 0
+
+  const safeSpacing = Number.isFinite(deckSpacing) ? Math.max(0, deckSpacing) : 0
+  const safeCardWidth = Number.isFinite(cardWidth) ? Math.max(0, cardWidth) : 0
+  const gap = isMobile ? WATER_MOBILE_CARD_GAP : WATER_DESKTOP_CARD_GAP
+  const scale = getWaterCardScale(distance, isMobile)
+  const baseX = distance * safeSpacing
+  const crossoverBoost = Math.sin(Math.min(distance, 1) * Math.PI) * (isMobile ? 14 : 24)
+  const minAdjacentDistance = safeCardWidth / 2 + (safeCardWidth * scale) / 2 + gap
+  const minDistance =
+    distance <= 1
+      ? minAdjacentDistance * distance
+      : minAdjacentDistance + (distance - 1) * safeSpacing * 0.82
+
+  return direction * Math.max(baseX + crossoverBoost, minDistance)
 }
 
 export function getWaterCardRootOpacity(distance: number) {

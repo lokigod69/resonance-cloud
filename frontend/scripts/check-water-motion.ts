@@ -3,6 +3,7 @@ import { strict as assert } from 'node:assert'
 import {
   getWaterCardDim,
   getWaterCardRootOpacity,
+  getWaterCardScale,
   getWaterCardX,
   getWaterRailClickTargetIndex,
   getWaterCardZIndex,
@@ -35,11 +36,45 @@ assert.equal(getWaterRailClickTargetIndex(0, 20, 0, 390, 172, 4), null, 'rail cl
 assert.equal(getWaterRailClickTargetIndex(4, 370, 0, 390, 172, 4), null, 'rail click fallback does not wrap after last deck')
 
 assert.equal(getWaterCardX(0, 258, false), 0, 'center X slot is unchanged')
-assertClose(getWaterCardX(1, 258, false), 258, 'right settled X slot is unchanged')
-assertClose(getWaterCardX(-1, 258, false), -258, 'left settled X slot is unchanged')
+assert.ok(getWaterCardX(1, 258, false) > 258, 'right settled X slot expands enough for full-width cards')
+assert.ok(getWaterCardX(-1, 258, false) < -258, 'left settled X slot expands enough for full-width cards')
 assert.ok(getWaterCardX(0.5, 258, false) > 129, 'desktop crossover spreads right card outward')
 assert.ok(getWaterCardX(-0.5, 258, false) < -129, 'desktop crossover spreads left card outward')
 assert.ok(
-  getWaterCardX(0.5, 258, false) - 129 > getWaterCardX(0.5, 172, true) - 86,
-  'mobile crossover boost is smaller than desktop boost',
+  Math.abs(getWaterCardX(0.5, 172, true)) < Math.abs(getWaterCardX(0.5, 258, false)),
+  'mobile crossover spacing remains smaller than desktop crossover spacing',
+)
+
+assert.equal(getWaterCardScale(0, false), 1, 'desktop center scale is unchanged')
+assertClose(getWaterCardScale(1, false), 0.82, 'desktop side scale is unchanged')
+assert.equal(getWaterCardScale(0, true), 1, 'mobile center scale is unchanged')
+assertClose(getWaterCardScale(1, true), 0.78, 'mobile side scale is unchanged')
+
+const desktopWidth = 360
+const mobileWidth = 310
+const desktopMinGap = 18
+const mobileMinGap = 12
+
+const desktopGapAtOne =
+  getWaterCardX(1, 258, false, desktopWidth) -
+  ((desktopWidth * getWaterCardScale(1, false)) / 2 + desktopWidth / 2)
+assert.ok(desktopGapAtOne >= desktopMinGap, 'desktop side slot keeps visible gap')
+
+const desktopMidX = getWaterCardX(0.5, 258, false, desktopWidth)
+const desktopMidScale = getWaterCardScale(0.5, false)
+assert.ok(
+  desktopMidX * 2 >= desktopWidth * desktopMidScale + desktopMinGap,
+  'desktop half-crossover keeps cards separated',
+)
+
+const mobileGapAtOne =
+  getWaterCardX(1, 172, true, mobileWidth) -
+  ((mobileWidth * getWaterCardScale(1, true)) / 2 + mobileWidth / 2)
+assert.ok(mobileGapAtOne >= mobileMinGap, 'mobile side slot keeps visible gap')
+
+const mobileMidX = getWaterCardX(0.5, 172, true, mobileWidth)
+const mobileMidScale = getWaterCardScale(0.5, true)
+assert.ok(
+  mobileMidX * 2 >= mobileWidth * mobileMidScale + mobileMinGap,
+  'mobile half-crossover keeps cards separated',
 )

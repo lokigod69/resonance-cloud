@@ -8,7 +8,14 @@ import type { MotionStyle, MotionValue, PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { FlagIcon } from '@/components/ui/FlagIcon'
-import { getWaterCardDim, getWaterCardRootOpacity, getWaterCardX, getWaterCardZIndex, getWaterRailClickTargetIndex } from './decksWaterMotion'
+import {
+  getWaterCardDim,
+  getWaterCardRootOpacity,
+  getWaterCardScale,
+  getWaterCardX,
+  getWaterCardZIndex,
+  getWaterRailClickTargetIndex,
+} from './decksWaterMotion'
 import {
   Sparkles,
   Plus,
@@ -1007,16 +1014,7 @@ function WaterDeckCard({
     if (distance <= 2) return 18 + (distance - 1) * 16
     return 34 + (distance - 2) * 14
   })
-  const cardScale = useTransform(virtualDistance, (value) => {
-    const distance = Math.min(Math.max(value, 0), visualRange)
-    if (isMobile) {
-      if (distance <= 1) return 1 - distance * 0.22
-      return Math.max(0.58, 0.78 - (distance - 1) * 0.2)
-    }
-    if (distance <= 1) return 1 - distance * 0.18
-    if (distance <= 2) return 0.82 - (distance - 1) * 0.13
-    return Math.max(0.56, 0.69 - (distance - 2) * 0.13)
-  })
+  const cardScale = useTransform(virtualDistance, (value) => getWaterCardScale(value, isMobile))
   const cardRootOpacity = useTransform(rawVirtualDistance, getWaterCardRootOpacity)
   const cardDim = useTransform(rawVirtualDistance, getWaterCardDim)
   const rotateY = useTransform(virtualOffset, (value) => value * (isMobile ? -8 : -16))
