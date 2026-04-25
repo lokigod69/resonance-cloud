@@ -4,12 +4,30 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 from pathlib import Path
 from typing import Any
 
 from src.manifest import read_manifest
 
 log = logging.getLogger(__name__)
+
+
+# Strip BPM/tempo phrases from served music_caption so already-stored artifacts
+# don't surface "at 120 BPM" on the WordCard. Mirrors the Suno-bound strip in
+# src/suno.py:build_suno_payload — keep both in sync if either is updated.
+_BPM_AT_RE = re.compile(r"\s*\bat\s+\d{1,3}(?:\s*-\s*\d{1,3})?\s*BPM\b", re.IGNORECASE)
+_BPM_BARE_RE = re.compile(r"\s*\b\d{1,3}(?:\s*-\s*\d{1,3})?\s*BPM\b", re.IGNORECASE)
+_DOUBLED_COMMA_RE = re.compile(r",\s*,")
+
+
+def _strip_bpm(caption: str | None) -> str | None:
+    if not caption:
+        return caption
+    out = _BPM_AT_RE.sub("", caption)
+    out = _BPM_BARE_RE.sub("", out)
+    out = _DOUBLED_COMMA_RE.sub(",", out)
+    return out.strip(" ,") or None
 
 # Maps stage names to their filesystem directory names
 # NOTE: This mapping is duplicated in services/stage_helpers.py.
@@ -143,7 +161,7 @@ def collect_word_metadata(
         ),
         "art_style": sb.get("art_style") or img.get("settings", {}).get("art_style"),
         "movie_reference": sb.get("movie"),
-        "music_caption": concept_music_caption or sb.get("music_caption"),
+        "music_caption": _strip_bpm(concept_music_caption or sb.get("music_caption")),
 
         # Images
         "images": {

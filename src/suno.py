@@ -137,6 +137,13 @@ def build_suno_payload(concept_data: dict) -> dict:
     style = concept_data["music_caption"] or "Pop"
     # Strip "clear diction" — helpful for ACE-Step but may trigger kie.ai copyright filter
     style = style.replace(", clear diction", "").replace("clear diction, ", "").replace("clear diction", "")
+    # Strip BPM/tempo phrases — keep caption free of numeric tempo (Suno picks its own).
+    # Handles "at 120 BPM", "120 BPM", "120-130 BPM" ranges, "120bpm" no-space, any case.
+    style = re.sub(r"\s*\bat\s+\d{1,3}(?:\s*-\s*\d{1,3})?\s*BPM\b", "", style, flags=re.IGNORECASE)
+    style = re.sub(r"\s*\b\d{1,3}(?:\s*-\s*\d{1,3})?\s*BPM\b", "", style, flags=re.IGNORECASE)
+    # Clean up doubled / leading / trailing commas left by stripping
+    style = re.sub(r",\s*,", ",", style)
+    style = style.strip(" ,")
     # Remap language names Suno may not recognize
     style = re.sub(r"(?i)\b(bisaya|cebuano)\b", "Filipino", style)
     title = concept_data["word"]

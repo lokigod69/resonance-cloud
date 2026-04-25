@@ -1285,10 +1285,11 @@ def _music_caption_block(settings: ImageSettings, language: str) -> str:
         "- End with \"clear diction\" for vocal clarity\n"
         "- Match the emotional tone and atmosphere of the scenes you designed\n"
         "- Be 15-30 words, single line, no line breaks\n"
+        "- Do NOT include BPM, tempo, or numeric values — describe energy through mood words instead\n"
         f"{art_hint}\n\n"
         "Examples of good captions:\n"
-        f'- "melancholic melodic techno, {vocal} vocal singing in {language}, warm analog pad, 85 BPM, clear diction"\n'
-        f'- "playful acoustic pop, {vocal} vocal singing in {language}, gentle fingerpicked guitar, 95 BPM, clear diction"'
+        f'- "melancholic melodic techno, {vocal} vocal singing in {language}, warm analog pad, clear diction"\n'
+        f'- "playful acoustic pop, {vocal} vocal singing in {language}, gentle fingerpicked guitar, clear diction"'
     )
 
 
