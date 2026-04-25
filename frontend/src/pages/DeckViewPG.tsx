@@ -706,7 +706,7 @@ export default function DeckViewPG() {
                     transition={dragOffset !== 0 ? { type: 'tween', duration: 0 } : { type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div
-                      className={`w-full max-h-[calc(100dvh-14rem)] bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative flex flex-col sm:max-h-[calc(100dvh-16rem)] ${
+                      className={`w-full max-h-[calc(100dvh-15rem)] bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative flex flex-col sm:max-h-[calc(100dvh-18rem)] ${
                         !isComplete ? 'opacity-50' : ''
                       }`}
                       style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
@@ -997,7 +997,7 @@ export default function DeckViewPG() {
           editMode=false → 3 buttons (Study/Add/Edit|Delete) → 3-col grid */}
       <div className={editMode
         ? 'flex justify-center pt-8'
-        : 'fixed inset-x-6 bottom-[env(safe-area-inset-bottom,0px)] z-30 grid max-w-xl grid-cols-3 gap-2 mx-auto sm:gap-3'
+        : 'fixed inset-x-6 bottom-[calc(env(safe-area-inset-bottom,0px)+1rem)] z-30 grid max-w-xl grid-cols-3 gap-2 mx-auto sm:bottom-[calc(env(safe-area-inset-bottom,0px)+2rem)] sm:gap-3'
       }>
         {!editMode && (
           <>
