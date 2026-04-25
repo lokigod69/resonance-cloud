@@ -141,12 +141,11 @@ export default function Settings() {
         </div>
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
           {([
-            { id: 'midnight' as Theme, label: 'Midnight', desc: 'Dark & minimal', colors: ['oklch(0.13 0.008 280)', 'oklch(0.7 0.15 280)', 'oklch(0.22 0.015 280)'] },
-            { id: 'rainy-day' as Theme, label: 'Tokyo Night', desc: 'Dark navy & blue', colors: ['#1a1b2e', '#7aa2f7', '#24283b'] },
-            { id: 'deep-blue' as Theme, label: 'Deep Blue', desc: 'Soft navy', colors: ['#111D3A', '#4DA3F7', '#1A3568'] },
-            { id: 'red-wine' as Theme, label: 'Red Wine', desc: 'Burgundy & pink', colors: ['#220C15', '#C62F6C', '#4E122A'] },
+            { id: 'midnight' as Theme, label: 'Midnight', desc: 'Graphite & aqua', colors: ['#07090A', '#55DCC8', '#101519'] },
+            { id: 'rainy-day' as Theme, label: 'Rainy Day', desc: 'Soft navy & mist', colors: ['#0F1720', '#8AB8E8', '#182432'] },
+            { id: 'red-wine' as Theme, label: 'Red Wine', desc: 'Burgundy & rose', colors: ['#16080F', '#C65A80', '#251019'] },
             { id: 'slate' as Theme, label: 'Slate', desc: 'Muted gray', colors: ['#1E2227', '#9A9894', '#334155'] },
-            { id: 'warm-linen' as Theme, label: 'Warm Linen', desc: 'Light & warm', colors: ['#F3EFEB', '#8B7355', '#EBE6E0'] },
+            { id: 'warm-linen' as Theme, label: 'Warm Linen', desc: 'Light & warm', colors: ['#EFE6D8', '#8B7256', '#F8F1E8'] },
           ]).map((t) => (
             <button
               key={t.id}

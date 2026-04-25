@@ -27,13 +27,12 @@ const SKINS: { id: SkinId; label: string }[] = [
   { id: 'glassy', label: 'Glassy' },
 ]
 
-const THEMES: { id: Theme; label: string; palette: [string, string, string, string] }[] = [
-  { id: 'midnight', label: 'Midnight', palette: ['#0c0b12', '#171626', '#9b8cff', '#49d6c8'] },
-  { id: 'rainy-day', label: 'Rainy Day', palette: ['#101724', '#182337', '#7fb5ff', '#9cc7d9'] },
-  { id: 'deep-blue', label: 'Deep Blue', palette: ['#081426', '#102342', '#5aa9ff', '#e2bb72'] },
-  { id: 'red-wine', label: 'Red Wine', palette: ['#170911', '#25111c', '#d35b8b', '#e0b48a'] },
-  { id: 'slate', label: 'Slate', palette: ['#121519', '#1d2228', '#b5aa9a', '#7da9b8'] },
-  { id: 'warm-linen', label: 'Warm Linen', palette: ['#f4efe8', '#fffaf4', '#8d7357', '#3e6f78'] },
+const THEMES: { id: Theme; label: string; palette: [string, string, string] }[] = [
+  { id: 'midnight', label: 'Midnight', palette: ['#07090A', '#101519', '#55DCC8'] },
+  { id: 'rainy-day', label: 'Rainy Day', palette: ['#0F1720', '#182432', '#8AB8E8'] },
+  { id: 'red-wine', label: 'Red Wine', palette: ['#16080F', '#251019', '#C65A80'] },
+  { id: 'slate', label: 'Slate', palette: ['#121519', '#1d2228', '#b5aa9a'] },
+  { id: 'warm-linen', label: 'Warm Linen', palette: ['#EFE6D8', '#F8F1E8', '#8B7256'] },
 ]
 
 interface ProfileModalProps {
@@ -150,19 +149,13 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                 >
                   <span
                     className="absolute inset-0"
-                    style={{ background: themeOption.palette[0] }}
+                    style={{
+                      background: `linear-gradient(135deg, ${themeOption.palette[0]}, ${themeOption.palette[1]})`,
+                    }}
                   />
                   <span
-                    className="absolute bottom-0 left-0 h-1/2 w-full"
-                    style={{ background: themeOption.palette[1] }}
-                  />
-                  <span
-                    className="absolute right-1 top-1 h-8 w-1.5 rounded-full"
-                    style={{ background: themeOption.palette[2] }}
-                  />
-                  <span
-                    className="absolute bottom-1 left-1 h-1.5 w-6 rounded-full"
-                    style={{ background: themeOption.palette[3] }}
+                    className="absolute bottom-1.5 right-1.5 h-3 w-3 rounded-full shadow-[0_0_14px_currentColor]"
+                    style={{ background: themeOption.palette[2], color: themeOption.palette[2] }}
                   />
                 </button>
               ))}

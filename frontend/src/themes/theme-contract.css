@@ -2,40 +2,40 @@
    Theme files set mood values; skin classes decide how those values render. */
 
 :root {
-  --app-bg: #0c0b12;
-  --app-bg-soft: #151222;
-  --app-bg-elevated: #1b1728;
+  --app-bg: #07090a;
+  --app-bg-soft: #0d1113;
+  --app-bg-elevated: #12181b;
 
-  --surface-0: #10111a;
-  --surface-1: #171824;
-  --surface-2: #222434;
-  --surface-glass: rgba(23, 24, 36, 0.58);
-  --surface-glass-strong: rgba(23, 24, 36, 0.76);
+  --surface-0: #0a0d0f;
+  --surface-1: #101519;
+  --surface-2: #171d22;
+  --surface-glass: rgba(16, 21, 25, 0.58);
+  --surface-glass-strong: rgba(16, 21, 25, 0.78);
 
-  --text-primary: #f2f4f8;
-  --text-secondary: #b8beca;
-  --text-muted: #7e8795;
+  --text-primary: #eaf2f2;
+  --text-secondary: #aab8b8;
+  --text-muted: #6e7e80;
 
-  --accent: #9b8cff;
-  --accent-2: #49d6c8;
-  --accent-warm: #e0b66d;
-  --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
-  --accent-glow: color-mix(in srgb, var(--accent) 28%, transparent);
-  --accent-2-soft: color-mix(in srgb, var(--accent-2) 14%, transparent);
-  --on-accent: #11121a;
+  --accent: #55dcc8;
+  --accent-2: #78a7b8;
+  --accent-warm: #d0b077;
+  --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent) 18%, transparent);
+  --accent-2-soft: color-mix(in srgb, var(--accent-2) 9%, transparent);
+  --on-accent: #07100f;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-subtle: rgba(190, 226, 224, 0.08);
+  --border-strong: rgba(190, 226, 224, 0.16);
 
-  --field-bg: rgba(255, 255, 255, 0.045);
-  --field-border: rgba(255, 255, 255, 0.12);
+  --field-bg: rgba(190, 226, 224, 0.045);
+  --field-border: rgba(190, 226, 224, 0.12);
 
-  --nav-bg: rgba(10, 11, 16, 0.72);
+  --nav-bg: rgba(8, 11, 12, 0.9);
   --nav-active-bg: var(--accent-soft);
   --nav-active-text: var(--text-primary);
 
-  --shadow-soft: 0 16px 50px rgba(0, 0, 0, 0.28);
-  --shadow-elevated: 0 24px 80px rgba(0, 0, 0, 0.42);
+  --shadow-soft: 0 16px 50px rgba(0, 0, 0, 0.32);
+  --shadow-elevated: 0 24px 80px rgba(0, 0, 0, 0.48);
 
   --shell-bg:
     radial-gradient(circle at 18% 12%, var(--accent-glow), transparent 34%),
@@ -106,7 +106,7 @@ body {
     linear-gradient(180deg, var(--app-bg), color-mix(in srgb, var(--app-bg) 88%, #06070b 12%));
   --surface-glass: color-mix(in srgb, var(--surface-1) 58%, transparent);
   --surface-glass-strong: color-mix(in srgb, var(--surface-1) 72%, transparent);
-  --nav-bg: color-mix(in srgb, var(--app-bg) 76%, transparent);
+  --nav-bg: color-mix(in srgb, var(--app-bg) 90%, transparent);
 }
 
 .skin-classic,
@@ -135,12 +135,12 @@ body {
 
 .theme-warm-linen.skin-glassy {
   --shell-bg:
-    radial-gradient(circle at 50% 8%, rgba(141, 115, 87, 0.16), transparent 34%),
-    radial-gradient(circle at 14% 82%, rgba(62, 111, 120, 0.12), transparent 30%),
-    linear-gradient(180deg, #f8f4ed, #eee5d8);
-  --surface-glass: rgba(255, 252, 246, 0.62);
-  --surface-glass-strong: rgba(255, 252, 246, 0.82);
-  --nav-bg: rgba(246, 239, 232, 0.78);
+    radial-gradient(circle at 50% 8%, rgba(139, 114, 86, 0.14), transparent 34%),
+    radial-gradient(circle at 14% 82%, rgba(63, 115, 117, 0.1), transparent 30%),
+    linear-gradient(180deg, #f6f0e7, #efe6d8);
+  --surface-glass: rgba(255, 248, 239, 0.66);
+  --surface-glass-strong: rgba(255, 248, 239, 0.86);
+  --nav-bg: rgba(246, 240, 231, 0.92);
 }
 
 .app-shell {
@@ -159,6 +159,7 @@ body {
   background: var(--nav-bg);
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-secondary);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--app-bg) 34%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
@@ -468,7 +469,17 @@ body {
 }
 
 .skin-glassy .water-deck-image-shade {
-  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--surface-0) 88%, transparent) 100%);
+  background: linear-gradient(180deg, transparent 0%, transparent 38%, color-mix(in srgb, var(--surface-0) 76%, transparent) 100%);
+}
+
+.theme-warm-linen .water-deck-image > img.is-loaded,
+.theme-warm-linen .water-deck-card-active .water-deck-image > img.is-loaded {
+  opacity: 1;
+  filter: saturate(1.02) contrast(1.04);
+}
+
+.theme-warm-linen .water-deck-image-shade {
+  background: linear-gradient(180deg, transparent 0%, transparent 45%, rgba(70, 55, 42, 0.2) 70%, rgba(48, 38, 30, 0.72) 100%);
 }
 
 .skin-glassy .water-deck-language {

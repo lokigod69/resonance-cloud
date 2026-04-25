@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import { supabase } from '../lib/supabase'
 
-export type Theme = 'midnight' | 'rainy-day' | 'deep-blue' | 'red-wine' | 'slate' | 'warm-linen'
+export type Theme = 'midnight' | 'rainy-day' | 'red-wine' | 'slate' | 'warm-linen'
 
-const VALID_THEMES: Theme[] = ['midnight', 'rainy-day', 'deep-blue', 'red-wine', 'slate', 'warm-linen']
+const VALID_THEMES: Theme[] = ['midnight', 'rainy-day', 'red-wine', 'slate', 'warm-linen']
+const LEGACY_THEME_CLASSES = ['theme-deep-blue']
 const STORAGE_KEY = 'resonance-theme'
 
 // Migrate old theme names to new ones
@@ -11,6 +12,7 @@ const MIGRATION_MAP: Record<string, Theme> = {
   standard: 'midnight',
   retro: 'midnight',
   soft: 'midnight',
+  'deep-blue': 'rainy-day',
 }
 
 interface ThemeContextType {
@@ -29,6 +31,7 @@ function applyThemeClass(theme: Theme) {
   const html = document.documentElement
   // Remove all theme classes
   VALID_THEMES.forEach((t) => html.classList.remove(`theme-${t}`))
+  LEGACY_THEME_CLASSES.forEach((t) => html.classList.remove(t))
   // Add current theme class
   html.classList.add(`theme-${theme}`)
   // Light themes should NOT get dark class
