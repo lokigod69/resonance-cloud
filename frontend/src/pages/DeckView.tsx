@@ -20,6 +20,7 @@ import { useToast } from '@/components/Toast'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
 
@@ -359,7 +360,10 @@ export default function DeckView() {
             </div>
           )}
           {isGenerating && (
-            <Progress value={progress} className="h-2 max-w-md mx-auto" />
+            <div className="mt-6 flex flex-col items-center gap-5">
+              <GenerationWheelLoader size={112} className="gap-0" />
+              <Progress value={progress} className="h-2 w-full max-w-md mx-auto" />
+            </div>
           )}
           {isGenerating && hasChecked && !shouldShowQueue && (
             <VerbCycler className="mt-1" />
@@ -547,8 +551,7 @@ export default function DeckView() {
                 /* Pending / Processing */
                 <div className="glass rounded-xl overflow-hidden">
                   <div className="aspect-video flex items-center justify-center">
-                    <div className="space-y-2 flex flex-col items-center">
-                      <div className="h-8 w-8 rounded-full bg-primary/20 animate-pulse" />
+                    <div className="space-y-2 flex flex-col items-center px-3 text-center">
                       <Skeleton className="h-3 w-16 bg-white/10" />
                     </div>
                   </div>

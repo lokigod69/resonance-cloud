@@ -260,7 +260,7 @@ export default function Music() {
   }, [player])
 
   return (
-    <div className="flex flex-col min-h-full pb-20">
+    <div className="flex flex-col min-h-full pb-[calc(6rem+env(safe-area-inset-bottom,0px))] sm:pb-20">
       {/* Page header */}
       <div className="max-w-5xl mx-auto w-full px-6 pt-6 pb-4">
         <div className="flex items-center gap-3 flex-wrap">

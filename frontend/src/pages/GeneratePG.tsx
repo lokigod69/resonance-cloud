@@ -19,6 +19,7 @@ import {
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
+import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 
 /* ─── Constants ─────────────────────────────────── */
 
@@ -159,48 +160,22 @@ export default function GeneratePG() {
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
           className="flex w-full max-w-xl flex-col items-center text-center gap-8"
         >
-          <div className="relative">
-            <motion.div
-              className="w-24 h-24 rounded-full"
-              style={{
-                background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
-              }}
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 3, ease: 'linear' }}
-            />
-            <div
-              className="absolute inset-0 rounded-full blur-xl"
-              style={{
-                background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
-                opacity: 0.4,
-              }}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <motion.h2
-              className="text-3xl font-bold font-display"
-              animate={{ opacity: [0.7, 1, 0.7] }}
-              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-            >
-              {t('generate.forgingMemories')}
-            </motion.h2>
-            <p className="text-sm text-[var(--pg-text-dim)] max-w-sm">
-              {existingDeck
-                ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
-                : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
+          <GenerationWheelLoader
+            label={t('generate.forgingMemories')}
+            sublabel={existingDeck
+              ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
+              : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
+          />
+          {hasChecked && queuePaused && (
+            <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
+              {t('queue.paused')}
             </p>
-            {hasChecked && queuePaused && (
-              <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
-                {t('queue.paused')}
-              </p>
-            )}
-            {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
-              <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
-                {jobsAhead} {t('queue.jobsAhead')}
-              </p>
-            )}
-          </div>
+          )}
+          {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
+            <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
+              {jobsAhead} {t('queue.jobsAhead')}
+            </p>
+          )}
 
           <Link
             to={existingDeck ? `/deck/${existingDeck.id}` : '/dashboard'}
@@ -833,10 +808,7 @@ function StepReview({
           className="px-10 py-4 rounded-full bg-white text-black font-display font-medium text-lg hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           {submitting ? (
-            <span className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded-full border-2 border-black/30 border-t-black animate-spin" />
-              {t('generate.initializing')}
-            </span>
+            t('generate.initializing')
           ) : (
             t('generate.initializeSynthesis')
           )}

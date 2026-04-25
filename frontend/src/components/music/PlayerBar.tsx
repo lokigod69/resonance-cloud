@@ -3,6 +3,7 @@ import { VolumeControl } from '@/components/VolumeControl'
 import { SimulatedWaveform } from './SimulatedWaveform'
 import type { MusicTrack, RepeatMode } from '@/hooks/useMusicPlayer'
 import type { MouseEvent, PointerEvent, RefObject, TouchEvent } from 'react'
+import { PLAYER_ACTIVE_TOGGLE_CLASS, PLAYER_BAR_CLASS, PLAYER_INACTIVE_TOGGLE_CLASS } from '@/lib/playerStyles'
 
 function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return '0:00'
@@ -108,7 +109,7 @@ export function PlayerBar({
   }
 
   return (
-    <div className="fixed bottom-0 inset-x-0 h-20 sm:h-16 bg-secondary backdrop-blur-sm border-t border-border z-50 flex flex-wrap sm:flex-nowrap items-center px-4 gap-x-4 gap-y-0 sm:gap-4">
+    <div className={PLAYER_BAR_CLASS}>
       {/* Hidden audio element — owned by useMusicPlayer */}
       <audio
         ref={audioRef}
@@ -242,7 +243,7 @@ export function PlayerBar({
         <button
           onClick={onToggleShuffle}
           className={`w-8 h-8 flex items-center justify-center rounded-md transition-colors ${
-            shuffle ? 'text-[var(--accent,#06b6d4)]' : 'text-muted-foreground hover:text-foreground hover:bg-white/10'
+            shuffle ? PLAYER_ACTIVE_TOGGLE_CLASS : PLAYER_INACTIVE_TOGGLE_CLASS
           }`}
           aria-label="Shuffle"
           title="Shuffle"
@@ -254,8 +255,8 @@ export function PlayerBar({
           onClick={onCycleRepeat}
           className={`w-8 h-8 flex items-center justify-center rounded-md transition-colors ${
             repeatMode !== 'off'
-              ? 'text-[var(--accent,#06b6d4)]'
-              : 'text-muted-foreground hover:text-foreground hover:bg-white/10'
+              ? PLAYER_ACTIVE_TOGGLE_CLASS
+              : PLAYER_INACTIVE_TOGGLE_CLASS
           }`}
           aria-label={`Repeat: ${repeatMode}`}
           title={repeatMode === 'off' ? 'Repeat' : 'Repeat one'}
