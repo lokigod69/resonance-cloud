@@ -61,16 +61,45 @@ function getInitialViewMode(): ViewMode {
   return 'water'
 }
 
-const WATER_DECK_SPACING = 256
-const WATER_RENDER_BUFFER = 8
-const WATER_VISUAL_RANGE = 4
-const WATER_PRELOAD_RANGE = 8
+const WATER_DESKTOP_DECK_SPACING = 286
+const WATER_MOBILE_DECK_SPACING = 168
+const WATER_DESKTOP_RENDER_BUFFER = 8
+const WATER_MOBILE_RENDER_BUFFER = 2
+const WATER_DESKTOP_VISUAL_RANGE = 4
+const WATER_MOBILE_VISUAL_RANGE = 2
+const WATER_DESKTOP_PRELOAD_RANGE = 8
+const WATER_MOBILE_PRELOAD_RANGE = 3
 const WATER_MAX_DRAG_JUMP = 2
 const WATER_DRAG_SPRING = { type: 'spring' as const, stiffness: 360, damping: 34 }
 
 function clampWaterPosition(position: number, maxIndex: number, fallback = 0) {
   const safePosition = Number.isFinite(position) ? position : fallback
   return Math.max(0, Math.min(safePosition, maxIndex))
+}
+
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return window.matchMedia(query).matches
+  })
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const media = window.matchMedia(query)
+    const handleChange = () => setMatches(media.matches)
+    handleChange()
+
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', handleChange)
+      return () => media.removeEventListener('change', handleChange)
+    }
+
+    media.addListener(handleChange)
+    return () => media.removeListener(handleChange)
+  }, [query])
+
+  return matches
 }
 
 export default function DecksPG() {
@@ -602,6 +631,7 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
 /* --- Water View --------------------------------------------------------- */
 
 function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
+  const isMobile = useMediaQuery('(max-width: 768px)')
   const [activeIndex, setActiveIndex] = useState(0)
   const carouselPosition = useMotionValue(activeIndex)
   const [displayPosition, setDisplayPosition] = useState(activeIndex)
@@ -621,6 +651,10 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
   } | null>(null)
 
   const maxIndex = Math.max(decks.length - 1, 0)
+  const deckSpacing = isMobile ? WATER_MOBILE_DECK_SPACING : WATER_DESKTOP_DECK_SPACING
+  const renderBuffer = isMobile ? WATER_MOBILE_RENDER_BUFFER : WATER_DESKTOP_RENDER_BUFFER
+  const visualRange = isMobile ? WATER_MOBILE_VISUAL_RANGE : WATER_DESKTOP_VISUAL_RANGE
+  const preloadRange = isMobile ? WATER_MOBILE_PRELOAD_RANGE : WATER_DESKTOP_PRELOAD_RANGE
 
   const clampIndex = useCallback((index: number) => {
     return Math.round(clampWaterPosition(index, maxIndex))
@@ -652,8 +686,8 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
   const centerForBuffer = clampIndex(Math.round(displayPosition))
 
   useEffect(() => {
-    const start = Math.max(0, centerForBuffer - WATER_PRELOAD_RANGE)
-    const end = Math.min(maxIndex, centerForBuffer + WATER_PRELOAD_RANGE)
+    const start = Math.max(0, centerForBuffer - preloadRange)
+    const end = Math.min(maxIndex, centerForBuffer + preloadRange)
 
     for (let i = start; i <= end; i++) {
       const deck = decks[i]
@@ -664,7 +698,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
         img.src = thumb
       }
     }
-  }, [centerForBuffer, decks, maxIndex, thumbnails])
+  }, [centerForBuffer, decks, maxIndex, preloadRange, thumbnails])
 
   const resetDragState = useCallback((delay = 0) => {
     window.setTimeout(() => {
@@ -774,11 +808,11 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
         event.currentTarget.setPointerCapture(start.pointerId)
       }
 
-      const nextPosition = clampPosition(start.position - rawOffsetX / WATER_DECK_SPACING, start.position)
+      const nextPosition = clampPosition(start.position - rawOffsetX / deckSpacing, start.position)
       carouselPosition.set(nextPosition)
       setDisplayPosition(nextPosition)
     }
-  }, [carouselPosition, clampPosition])
+  }, [carouselPosition, clampPosition, deckSpacing])
 
   const handleRailPointerUp = useCallback((event: PointerEvent<HTMLDivElement>) => {
     const start = dragStartRef.current
@@ -811,7 +845,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
 
   const visibleDecks = decks
     .map((deck, index) => ({ deck, index, offset: index - centerForBuffer }))
-    .filter(({ offset }) => Math.abs(offset) <= WATER_RENDER_BUFFER)
+    .filter(({ offset }) => Math.abs(offset) <= renderBuffer)
 
   const roundedDisplayIndex = clampIndex(Math.round(displayPosition))
   const scrubberProgress = maxIndex > 0 ? (displayPosition / maxIndex) * 100 : 0
@@ -831,18 +865,22 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
         onPointerCancel={handleRailPointerCancel}
         style={{ touchAction: 'pan-y' }}
       >
-        <div className="water-decks-halo-layer" aria-hidden="true">
-          {visibleDecks.map(({ index }) => (
-            <WaterDeckHalo key={`halo-${index}`} index={index} carouselPosition={carouselPosition} />
-          ))}
-        </div>
+        {!isMobile ? (
+          <div className="water-decks-halo-layer" aria-hidden="true">
+            <div className="water-deck-halo" />
+          </div>
+        ) : null}
         {visibleDecks.map(({ deck, index, offset }) => (
           <WaterDeckCard
             key={deck.id}
             deck={deck}
             index={index}
             isActive={roundedDisplayIndex === index}
-            isFar={Math.abs(offset) > WATER_VISUAL_RANGE}
+            isFar={Math.abs(offset) > visualRange}
+            isMobile={isMobile}
+            isPriority={Math.abs(index - roundedDisplayIndex) <= (isMobile ? 1 : 2)}
+            deckSpacing={deckSpacing}
+            visualRange={visualRange}
             wordCounts={wordCounts}
             thumbnails={thumbnails}
             carouselPosition={carouselPosition}
@@ -912,25 +950,54 @@ interface WaterDeckCardProps {
   index: number
   isActive: boolean
   isFar: boolean
+  isMobile: boolean
+  isPriority: boolean
+  deckSpacing: number
+  visualRange: number
   wordCounts: ViewProps['wordCounts']
   thumbnails: ViewProps['thumbnails']
   carouselPosition: MotionValue<number>
   onClick: () => void
 }
 
-function WaterDeckCard({ deck, index, isActive, isFar, wordCounts, thumbnails, carouselPosition, onClick }: WaterDeckCardProps) {
+function WaterDeckCard({
+  deck,
+  index,
+  isActive,
+  isFar,
+  isMobile,
+  isPriority,
+  deckSpacing,
+  visualRange,
+  wordCounts,
+  thumbnails,
+  carouselPosition,
+  onClick,
+}: WaterDeckCardProps) {
   const { tp, locale } = useTranslation()
   const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
   const thumb = thumbnails[deck.id]
   const isGenerating = deck.status === 'generating'
   const virtualOffset = useTransform(carouselPosition, (position) => index - (Number.isFinite(position) ? position : 0))
-  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISUAL_RANGE))
-  const cardX = useTransform(virtualOffset, (value) => value * WATER_DECK_SPACING)
-  const cardY = useTransform(virtualDistance, [0, 1, 2, 3, 4], [0, 22, 42, 58, 68])
-  const cardScale = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.78, 0.62, 0.45, 0.35])
-  const cardOpacity = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.78, 0.34, 0.08, 0])
-  const rotateY = useTransform(virtualOffset, (value) => value * -24)
-  const rotateZ = useTransform(virtualOffset, (value) => value * -1.8)
+  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), visualRange))
+  const cardX = useTransform(virtualOffset, (value) => value * deckSpacing)
+  const cardY = useTransform(virtualDistance, (value) => {
+    const distance = Math.min(Math.max(value, 0), visualRange)
+    return isMobile ? distance * 14 : distance * 18
+  })
+  const cardScale = useTransform(virtualDistance, (value) => {
+    const distance = Math.min(Math.max(value, 0), visualRange)
+    if (isMobile) return Math.max(0.52, 1 - distance * 0.24)
+    return Math.max(0.36, 1 - distance * 0.19)
+  })
+  const cardOpacity = useTransform(virtualDistance, (value) => {
+    const distance = Math.min(Math.max(value, 0), visualRange)
+    if (isMobile) return Math.max(0, 1 - distance * 0.46)
+    return Math.max(0, 1 - distance * 0.26)
+  })
+  const rotateY = useTransform(virtualOffset, (value) => value * (isMobile ? 10 : 18))
+  const rotateZ = useTransform(virtualOffset, (value) => value * (isMobile ? 0.4 : 1.1))
+  const cardZ = useTransform(virtualDistance, (value) => -Math.min(value, visualRange) * (isMobile ? 42 : 88))
   const zIndex = useTransform(virtualDistance, (value) => Math.round(80 - value * 10))
 
   return (
@@ -945,6 +1012,7 @@ function WaterDeckCard({ deck, index, isActive, isFar, wordCounts, thumbnails, c
         opacity: cardOpacity,
         rotateY,
         rotateZ,
+        z: cardZ,
         zIndex,
       }}
       aria-label={isActive ? `Open ${displayName}` : `Focus ${displayName}`}
@@ -957,6 +1025,7 @@ function WaterDeckCard({ deck, index, isActive, isFar, wordCounts, thumbnails, c
             displayName={displayName}
             isGenerating={isGenerating}
             thumbnail={thumb}
+            isPriority={isPriority}
           />
           <div className="water-deck-image-shade" />
         </div>
@@ -977,43 +1046,47 @@ function WaterDeckCard({ deck, index, isActive, isFar, wordCounts, thumbnails, c
   )
 }
 
-interface WaterDeckHaloProps {
-  index: number
-  carouselPosition: MotionValue<number>
-}
-
-function WaterDeckHalo({ index, carouselPosition }: WaterDeckHaloProps) {
-  const virtualOffset = useTransform(carouselPosition, (position) => index - (Number.isFinite(position) ? position : 0))
-  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISUAL_RANGE))
-  const x = useTransform(virtualOffset, (value) => value * WATER_DECK_SPACING)
-  const opacity = useTransform(virtualDistance, [0, 1, 2, 3, 4], [0.52, 0.26, 0.1, 0.02, 0])
-  const scale = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.72, 0.48, 0.24, 0.18])
-
-  return (
-    <motion.div
-      className="water-deck-halo"
-      style={{ x, opacity, scale }}
-    />
-  )
-}
-
 interface WaterDeckArtworkProps {
   deck: Deck
   displayName: string
   isGenerating: boolean
   thumbnail?: string
+  isPriority?: boolean
   reflection?: boolean
 }
 
-function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, reflection = false }: WaterDeckArtworkProps) {
+function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, isPriority = false, reflection = false }: WaterDeckArtworkProps) {
   const Icon = isGenerating ? Sparkles : Music
+  const [loadedThumbnail, setLoadedThumbnail] = useState<string | null>(null)
+  const imageLoaded = Boolean(thumbnail && loadedThumbnail === thumbnail)
 
-  if (thumbnail) {
-    return <img src={thumbnail} alt={reflection ? '' : displayName} />
-  }
+  useEffect(() => {
+    if (!thumbnail) {
+      setLoadedThumbnail(null)
+      return
+    }
 
-  return (
-    <div className="water-deck-fallback">
+    let isMounted = true
+    const image = new Image()
+    image.onload = () => {
+      if (isMounted) setLoadedThumbnail(thumbnail)
+    }
+    image.onerror = () => {
+      if (isMounted) setLoadedThumbnail(null)
+    }
+    image.src = thumbnail
+
+    if (image.complete) {
+      setLoadedThumbnail(thumbnail)
+    }
+
+    return () => {
+      isMounted = false
+    }
+  }, [thumbnail])
+
+  const fallback = (
+    <div className={`water-deck-fallback ${thumbnail ? 'water-deck-fallback-underlay' : ''} ${imageLoaded ? 'is-loaded' : ''}`}>
       <div className="water-deck-fallback-caustics" aria-hidden="true" />
       <div className="water-deck-fallback-icon">
         <Icon className="h-9 w-9" />
@@ -1024,6 +1097,25 @@ function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, reflecti
       </div>
     </div>
   )
+
+  if (thumbnail) {
+    return (
+      <>
+        {fallback}
+        <img
+          className={imageLoaded ? 'is-loaded' : 'is-loading'}
+          src={thumbnail}
+          alt={reflection ? '' : displayName}
+          loading={isPriority ? 'eager' : 'lazy'}
+          decoding="async"
+          onLoad={() => setLoadedThumbnail(thumbnail)}
+          onError={() => setLoadedThumbnail(null)}
+        />
+      </>
+    )
+  }
+
+  return fallback
 }
 
 /* ─── Orbs View ──────────────────────────────────── */
