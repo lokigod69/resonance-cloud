@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
@@ -10,6 +9,7 @@ import { FlagIcon } from '@/components/ui/FlagIcon'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
+import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import type { GeneratePayload, ExistingDeck, WizardState, WizardAction } from '@/components/generate/useWizardState'
 import WordsStep from '@/components/generate/steps/WordsStep'
 
@@ -335,48 +335,23 @@ export default function GenerateGO() {
        <div className="gen-container">
          <div className="gen-section" style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-              <div className="relative">
-                <motion.div
-                  className="w-24 h-24 rounded-full"
-                  style={{
-                    background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
-                  }}
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 3, ease: 'linear' }}
-                />
-                <div
-                  className="absolute inset-0 rounded-full blur-xl"
-                  style={{
-                    background: 'conic-gradient(from 0deg, var(--pg-accent-teal), var(--pg-accent-violet), var(--pg-accent-rose), var(--pg-accent-teal))',
-                    opacity: 0.4,
-                  }}
-                />
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
-                <motion.h2
-                  style={{ margin: 0, color: 'var(--go-text-primary)', fontSize: '1.875rem', fontWeight: 700 }}
-                  animate={{ opacity: [0.7, 1, 0.7] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-                >
-                  {t('generate.forgingMemories')}
-                </motion.h2>
-                <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.95rem', margin: 0, maxWidth: 360 }}>
-                  {existingDeck
-                    ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
-                    : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
+              <GenerationWheelLoader
+                label={t('generate.forgingMemories')}
+                labelClassName="text-[var(--go-text-primary)]"
+                sublabel={existingDeck
+                  ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
+                  : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
+              />
+              {hasChecked && queuePaused && (
+                <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
+                  {t('queue.paused')}
                 </p>
-                {hasChecked && queuePaused && (
-                  <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
-                    {t('queue.paused')}
-                  </p>
-                )}
-                {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
-                  <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
-                    {jobsAhead} {t('queue.jobsAhead')}
-                  </p>
-                )}
-              </div>
+              )}
+              {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
+                <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
+                  {jobsAhead} {t('queue.jobsAhead')}
+                </p>
+              )}
 
               <button
                 type="button"

@@ -6,6 +6,7 @@ import { useDrag } from '@use-gesture/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import {
   ArrowLeft,
   Play,
@@ -468,7 +469,7 @@ export default function DeckViewPG() {
   }
 
   return (
-    <div className="px-6 max-w-5xl mx-auto">
+    <div className="px-6 pt-2 pb-12 sm:pt-4 max-w-5xl mx-auto">
       {/* Header */}
       <div className="flex items-start gap-4 mb-8">
         <button
@@ -536,7 +537,7 @@ export default function DeckViewPG() {
     {/* Generation progress showcase */}
     {isGenerating && (
       <div className="flex flex-col items-center gap-6 mb-8">
-        <ParticleSpinner preset="starburst" size={200} />
+        <GenerationWheelLoader size={120} className="gap-0" />
         {hasChecked && !shouldShowQueue && <VerbCycler intervalMs={5000} />}
         <div className="w-full max-w-md h-1 bg-white/10 rounded-full overflow-hidden">
           <div
@@ -648,14 +649,14 @@ export default function DeckViewPG() {
           <div className="group/carousel relative w-full max-w-4xl">
           <div
             {...bind()}
-            className="relative w-full h-[80vh] max-h-[770px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+            className="relative w-full min-h-[min(720px,calc(100dvh-16rem))] flex items-start justify-center pt-4 sm:pt-6 cursor-grab active:cursor-grabbing"
             style={{ perspective: '1200px', touchAction: 'pan-y' }}
           >
             {/* Prev button */}
             {activeIndex > 0 && (
               <button
                 onClick={() => setActiveIndex((i) => i - 1)}
-                className="hidden md:flex absolute left-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-0 group-hover/carousel:opacity-100"
+                className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-0 group-hover/carousel:opacity-100"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -672,7 +673,7 @@ export default function DeckViewPG() {
                   <motion.div
                     key={word.id}
                     // w-[calc(100vw-32px)] = 16px margin each side; carousel is full-bleed via -mx-6 wrapper above
-                    className="absolute w-[calc(100vw-32px)] max-w-[800px] h-[80vh] max-h-[750px] flex items-center justify-center"
+                    className="absolute top-4 sm:top-6 w-[calc(100vw-32px)] max-w-[800px] flex items-start justify-center"
                     style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
                     initial={false}
                     animate={{
@@ -725,7 +726,9 @@ export default function DeckViewPG() {
                         {/* Placeholder for incomplete words */}
                         {!isComplete && (
                           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
-                            <div className="h-8 w-8 rounded-full bg-white/10 animate-pulse" />
+                            <span className="text-xs text-white/35">
+                              {word.status === 'failed' ? t('deckview.failed') : isPending ? t('deckview.queued') : t('deckview.processing')}
+                            </span>
                           </div>
                         )}
 
@@ -934,7 +937,7 @@ export default function DeckViewPG() {
             {activeIndex < words.length - 1 && (
               <button
                 onClick={() => setActiveIndex((i) => i + 1)}
-                className="hidden md:flex absolute right-0 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-0 group-hover/carousel:opacity-100"
+                className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-0 group-hover/carousel:opacity-100"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>

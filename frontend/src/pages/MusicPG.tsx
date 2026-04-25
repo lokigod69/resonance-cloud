@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/select'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useTranslation } from '@/hooks/useTranslation'
+import { PLAYER_ACTIVE_TOGGLE_CLASS } from '@/lib/playerStyles'
 
 type DeckOption = { id: string; name: string }
 
@@ -178,7 +179,7 @@ export default function MusicPG() {
   )
 
   return (
-    <div className="flex flex-col min-h-full pb-4">
+    <div className="flex flex-col min-h-full pb-[calc(5rem+env(safe-area-inset-bottom,0px))]">
       {/* Header */}
       <div className="sticky top-0 z-40 bg-gray-950 pt-6 pb-2 px-6 flex justify-center">
         <div className="flex items-center gap-3 flex-wrap w-full max-w-2xl">
@@ -293,7 +294,7 @@ export default function MusicPG() {
                 onClick={player.cycleRepeat}
                 className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${
                   repeatMode !== 'off'
-                    ? 'text-[#5e6ad2]'
+                    ? PLAYER_ACTIVE_TOGGLE_CLASS
                     : 'text-gray-600 hover:text-white hover:bg-white/10'
                 }`}
                 aria-label={`Repeat: ${repeatMode}`}
@@ -306,7 +307,7 @@ export default function MusicPG() {
                 onClick={player.toggleShuffle}
                 className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${
                   shuffle
-                    ? 'text-[#5e6ad2]'
+                    ? PLAYER_ACTIVE_TOGGLE_CLASS
                     : 'text-gray-600 hover:text-white hover:bg-white/10'
                 }`}
                 aria-label="Shuffle"

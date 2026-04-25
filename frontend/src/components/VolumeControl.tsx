@@ -106,14 +106,14 @@ export function VolumeControl({
         } : popDirection === 'right' ? {
           width: showSlider ? 80 : 0,
           opacity: showSlider ? 1 : 0,
-          left: '2rem',
+          left: 'calc(100% + 0.5rem)',
           top: '50%',
           transform: 'translateY(-50%)',
           pointerEvents: showSlider ? 'auto' : 'none',
         } : {
           width: showSlider ? 80 : 0,
           opacity: showSlider ? 1 : 0,
-          right: '2rem',
+          right: 'calc(100% + 0.5rem)',
           top: '50%',
           transform: 'translateY(-50%)',
           pointerEvents: showSlider ? 'auto' : 'none',
