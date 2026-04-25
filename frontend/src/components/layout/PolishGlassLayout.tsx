@@ -40,8 +40,12 @@ export default function PolishGlassLayout() {
     <div className={`app-shell w-full min-h-screen relative font-sans pg-scrollbar-hide ${
       isSpeakRoute ? 'overflow-visible' : 'overflow-x-hidden overflow-y-auto'
     }`}>
-      {/* Perspective dot grid */}
-      <div className="pg-dot-grid" aria-hidden="true" />
+      <div className="glassy-atmosphere" aria-hidden="true">
+        <div className="glassy-atmosphere-haze" />
+        <div className="glassy-atmosphere-horizon" />
+        <div className="glassy-atmosphere-floor" />
+        <div className="glassy-atmosphere-vignette" />
+      </div>
 
       {/* Top Navigation */}
       <nav className="app-topnav fixed top-0 left-0 w-full px-4 sm:px-6 py-2 flex items-center z-50 pointer-events-auto">
