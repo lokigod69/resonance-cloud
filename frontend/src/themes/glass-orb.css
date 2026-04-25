@@ -6,17 +6,17 @@
 
 /* ── Variables (used by generate orbs + orb dock) ── */
 .skin-glassy {
-  --go-bg-color: #0d0f14;
-  --go-glass-bg: rgba(20, 24, 34, 0.45);
-  --go-glass-border: rgba(255, 255, 255, 0.15);
-  --go-glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-  --go-accent: #5e6ad2;
-  --go-text-primary: #ffffff;
-  --go-text-secondary: rgba(255, 255, 255, 0.7);
+  --go-bg-color: var(--app-bg);
+  --go-glass-bg: var(--surface-glass);
+  --go-glass-border: var(--border-subtle);
+  --go-glass-shadow: var(--shadow-elevated);
+  --go-accent: var(--accent);
+  --go-text-primary: var(--text-primary);
+  --go-text-secondary: var(--text-secondary);
 }
 
 .skin-glassy [data-slot="dialog-overlay"] {
-  background: rgba(2, 2, 5, 0.86);
+  background: color-mix(in srgb, var(--app-bg) 78%, transparent);
   backdrop-filter: blur(28px) saturate(0.7);
   -webkit-backdrop-filter: blur(28px) saturate(0.7);
 }
@@ -86,7 +86,7 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  color: white;
+  color: var(--go-text-primary);
   user-select: none;
   text-align: center;
   padding: 8px;
@@ -96,17 +96,17 @@
 
 .skin-glassy .gen-orb:hover {
   transform: scale(1.1);
-  box-shadow: 0 10px 25px rgba(94, 106, 210, 0.4);
+  box-shadow: 0 10px 25px var(--accent-glow);
 }
 
 .skin-glassy .gen-orb.selected {
   transform: scale(1.2);
-  background: rgba(94, 106, 210, 0.25);
-  border-color: rgba(94, 106, 210, 0.8);
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 72%, transparent);
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-    inset 2px 2px 10px rgba(255, 255, 255, 0.4),
-    0 0 40px rgba(94, 106, 210, 0.6);
+    inset 0 0 0 1px color-mix(in srgb, var(--text-primary) 18%, transparent),
+    inset 2px 2px 10px color-mix(in srgb, var(--text-primary) 20%, transparent),
+    0 0 40px var(--accent-glow);
 }
 
 .skin-glassy .gen-orb.selected.breadcrumb {
@@ -158,7 +158,7 @@
   width: 80%;
   background: transparent;
   border: none;
-  color: white;
+  color: var(--go-text-primary);
   text-align: center;
   font-size: 0.85rem;
   font-weight: 600;
@@ -167,28 +167,28 @@
 }
 
 .skin-glassy .gen-orb.input-orb input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
 }
 
 /* Forge / advance button */
 .skin-glassy .gen-orb.forge-btn {
-  background: rgba(94, 106, 210, 0.15);
-  border-color: rgba(94, 106, 210, 0.5);
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
 }
 
 .skin-glassy .gen-orb.forge-btn:hover {
-  background: rgba(94, 106, 210, 0.3);
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
   transform: scale(1.15);
 }
 
 .skin-glassy .gen-orb.check-btn {
-  background: rgba(34, 197, 94, 0.2);
-  border-color: rgba(34, 197, 94, 0.6);
+  background: var(--accent-2-soft);
+  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
   font-size: 1.4rem;
 }
 
 .skin-glassy .gen-orb.check-btn:hover {
-  background: rgba(34, 197, 94, 0.35);
+  background: color-mix(in srgb, var(--accent-2) 24%, transparent);
 }
 
 /* Art style collapsible categories */
@@ -221,14 +221,14 @@
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #5e6ad2, #9a66d8);
-  box-shadow: 0 0 80px rgba(94, 106, 210, 0.6);
+  background: radial-gradient(circle at 30% 30%, var(--accent), color-mix(in srgb, var(--accent) 58%, var(--accent-2)));
+  box-shadow: 0 0 80px var(--accent-glow);
   animation: pulseForge 3s infinite ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: white;
+  color: var(--on-accent);
   font-size: 1.2rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -342,9 +342,9 @@
 }
 
 @keyframes pulseForge {
-  0% { transform: scale(0.95); box-shadow: 0 0 40px rgba(94, 106, 210, 0.4); }
-  50% { transform: scale(1.05); box-shadow: 0 0 100px rgba(94, 106, 210, 0.9); }
-  100% { transform: scale(0.95); box-shadow: 0 0 40px rgba(94, 106, 210, 0.4); }
+  0% { transform: scale(0.95); box-shadow: 0 0 40px var(--accent-glow); }
+  50% { transform: scale(1.05); box-shadow: 0 0 100px color-mix(in srgb, var(--accent) 58%, transparent); }
+  100% { transform: scale(0.95); box-shadow: 0 0 40px var(--accent-glow); }
 }
 
 /* ── Mobile Responsive ────────────────────────────── */

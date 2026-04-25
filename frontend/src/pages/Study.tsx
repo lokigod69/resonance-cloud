@@ -105,7 +105,7 @@ export default function Study() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-0 sm:px-4">
+    <div className="flex min-h-[calc(100dvh-5rem)] flex-col items-center justify-start px-0 pt-4 pb-10 sm:px-4 sm:pt-6">
       {/* Card + content */}
       <div className="w-full max-w-4xl">
         {/* Deck filter */}

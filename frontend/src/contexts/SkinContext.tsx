@@ -41,11 +41,12 @@ export function SkinProvider({ children }: { children: ReactNode }) {
     return resolved
   })
 
-  // Apply/remove skin class on <html>
+  // Apply skin attributes/classes on <html>
   useEffect(() => {
     const html = document.documentElement
-    html.classList.remove('skin-glassy')
-    if (skin === 'glassy') html.classList.add('skin-glassy')
+    html.dataset.skin = skin
+    html.classList.remove('skin-classic', 'skin-glassy')
+    html.classList.add(`skin-${skin}`)
   }, [skin])
 
   const setSkin = (newSkin: SkinId) => {

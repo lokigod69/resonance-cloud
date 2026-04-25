@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Play, Loader, SlidersHorizontal } from 'lucide-react'
+import { Play, SlidersHorizontal } from 'lucide-react'
 import type { WordDetail } from '../api'
 import { runStage, selectVersion } from '../api'
 import { StageSettings } from './settings/StageSettings'
@@ -9,6 +9,8 @@ import { ImagePanel } from './stages/ImagePanel'
 import { VideoPanel } from './stages/VideoPanel'
 import { AssemblyPanel } from './stages/AssemblyPanel'
 import { BookendPanel } from './stages/BookendPanel'
+import { GenerationWheelLoader } from './ui/GenerationWheelLoader'
+import { VerbCycler } from './ui/VerbCycler'
 
 interface StagePanelProps {
   slug: string
@@ -61,6 +63,40 @@ export function StagePanel({ slug, stage, detail, onRefresh, setRunningStage, pi
     }
   }
 
+  const renderStageContent = () => {
+    if (running) {
+      return (
+        <div className="flex min-h-[360px] flex-col items-center justify-center gap-5">
+          <GenerationWheelLoader size={120} className="gap-0" />
+          <VerbCycler intervalMs={5000} />
+        </div>
+      )
+    }
+
+    return (
+      <>
+        {stage === 'concept' && (
+          <ConceptPanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
+        )}
+        {stage === 'song' && (
+          <SongPanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
+        )}
+        {stage === 'images' && (
+          <ImagePanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
+        )}
+        {stage === 'video' && (
+          <VideoPanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
+        )}
+        {stage === 'assembly' && (
+          <AssemblyPanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
+        )}
+        {stage === 'bookend' && (
+          <BookendPanel slug={slug} detail={detail} onRefresh={onRefresh} />
+        )}
+      </>
+    )
+  }
+
   return (
     <div className="flex flex-col h-full">
       {/* Stage header */}
@@ -98,7 +134,7 @@ export function StagePanel({ slug, stage, detail, onRefresh, setRunningStage, pi
             `}
             title={pipelineRunning ? 'Pipeline is running' : undefined}
           >
-            {running ? <Loader size={12} className="animate-spin" /> : <Play size={12} />}
+            {!running && <Play size={12} />}
             {running ? 'Running...' : 'Generate'}
           </button>
         </div>
@@ -115,24 +151,7 @@ export function StagePanel({ slug, stage, detail, onRefresh, setRunningStage, pi
             />
           </div>
         )}
-        {stage === 'concept' && (
-          <ConceptPanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
-        )}
-        {stage === 'song' && (
-          <SongPanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
-        )}
-        {stage === 'images' && (
-          <ImagePanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
-        )}
-        {stage === 'video' && (
-          <VideoPanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
-        )}
-        {stage === 'assembly' && (
-          <AssemblyPanel slug={slug} detail={detail} onSelect={handleSelect} onRefresh={onRefresh} />
-        )}
-        {stage === 'bookend' && (
-          <BookendPanel slug={slug} detail={detail} onRefresh={onRefresh} />
-        )}
+        {renderStageContent()}
       </div>
     </div>
   )

@@ -18,13 +18,13 @@ import {
   Pause,
   Eye,
   EyeOff,
-  Volume2,
-  VolumeX,
 } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
 import { SimulatedWaveform } from '@/components/music/SimulatedWaveform'
+import { VolumeControl } from '@/components/VolumeControl'
+import { PLAYER_SOFT_ICON_BUTTON_CLASS } from '@/lib/playerStyles'
 
 const STORAGE_KEY = 'resonance-study-mode'
 const THUMB_KEY = 'resonance-audio-thumbnail'
@@ -60,6 +60,7 @@ export default function StudyAudio() {
   // but keyboard shortcut P checks vid.paused directly, so no divergence risk.
   const [isPlaying, setIsPlaying] = useState(false)
   const [audioError, setAudioError] = useState(false)
+  const [volume, setVolume] = useState(1)
 
   // Resolve audio URL: permanent storage first, CDN fallback
   const audioUrl = current?.suno_storage_url ?? current?.suno_audio_url ?? null
@@ -72,6 +73,13 @@ export default function StudyAudio() {
     setIsPlaying(false)
     setAudioError(false)
   }, [current?.id])
+
+  useEffect(() => {
+    const el = audioRef.current
+    if (!el) return
+    el.volume = volume
+    el.muted = isMuted || volume === 0
+  }, [volume, isMuted, audioUrl])
 
   // Persist last-used mode
   useEffect(() => {
@@ -104,6 +112,11 @@ export default function StudyAudio() {
     if (!el || !isFinite(el.duration) || el.duration === 0) return
     el.currentTime = ratio * el.duration
   }, [])
+
+  const handleVolumeChange = useCallback((nextVolume: number) => {
+    setVolume(nextVolume)
+    if (nextVolume > 0 && isMuted) toggleMute()
+  }, [isMuted, toggleMute])
 
   // Audio-specific keyboard shortcuts (1/2 for review/remember)
   useEffect(() => {
@@ -182,7 +195,7 @@ export default function StudyAudio() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4">
+    <div className="flex min-h-[calc(100dvh-5rem)] flex-col items-center justify-start px-4 pt-4 pb-10 sm:pt-6">
       <div className="w-full max-w-xl">
         {/* Deck filter */}
         {decks.length > 1 && (
@@ -306,13 +319,15 @@ export default function StudyAudio() {
                             {formatTime(audioProgress * audioDuration)} / {formatTime(audioDuration)}
                           </span>
 
-                          <button
-                            onClick={toggleMute}
-                            className="flex-shrink-0 text-gray-400 hover:text-gray-200 transition-colors"
-                            aria-label={isMuted ? 'Unmute' : 'Mute'}
-                          >
-                            {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-                          </button>
+                          <VolumeControl
+                            volume={volume}
+                            isMuted={isMuted}
+                            onVolumeChange={handleVolumeChange}
+                            onToggleMute={toggleMute}
+                            buttonClassName={`w-8 h-8 ${PLAYER_SOFT_ICON_BUTTON_CLASS}`}
+                            iconSize={16}
+                            popDirection="left"
+                          />
                         </div>
                       )}
                     </>

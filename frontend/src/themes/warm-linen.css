@@ -1,170 +1,39 @@
-/* Warm Linen theme — soft cream & warm stone, lightest mode */
+/* Warm Linen: warm paper, dark espresso text, taupe and teal accents */
 .theme-warm-linen {
-  --background: #F3EFEB;
-  --foreground: #2C2825;
-  --card: #FDFBF8;
-  --card-foreground: #2C2825;
-  --popover: #FDFBF8;
-  --popover-foreground: #2C2825;
-  --primary: #8B7355;
-  --primary-foreground: #FDFBF8;
-  --secondary: #EBE6E0;
-  --secondary-foreground: #2C2825;
-  --muted: #EBE6E0;
-  --muted-foreground: #8B8580;
-  --accent: rgba(139, 115, 85, 0.12);
-  --accent-foreground: #2C2825;
-  --destructive: #C0392B;
-  --destructive-foreground: #FDFBF8;
-  --border: rgba(183, 177, 169, 0.4);
-  --input: #F8F6F2;
-  --ring: #8B7355;
-  --radius: 0.625rem;
-  --sidebar: #F8F6F2;
-  --sidebar-foreground: #2C2825;
-  --sidebar-primary: #8B7355;
-  --sidebar-primary-foreground: #FDFBF8;
-  --sidebar-accent: rgba(139, 115, 85, 0.1);
-  --sidebar-accent-foreground: #2C2825;
-  --sidebar-border: rgba(183, 177, 169, 0.3);
-  --sidebar-ring: #8B7355;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  --app-bg: #f4efe8;
+  --app-bg-soft: #ede4d8;
+  --app-bg-elevated: #f8f1e8;
+  --surface-0: #f8f1e8;
+  --surface-1: #fffaf4;
+  --surface-2: #eadfce;
+  --surface-glass: rgba(255, 252, 246, 0.66);
+  --surface-glass-strong: rgba(255, 252, 246, 0.84);
+  --text-primary: #28231f;
+  --text-secondary: #625a52;
+  --text-muted: #8a8076;
+  --accent: #8d7357;
+  --accent-2: #3e6f78;
+  --accent-warm: #b88952;
+  --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent) 18%, transparent);
+  --accent-2-soft: color-mix(in srgb, var(--accent-2) 11%, transparent);
+  --on-accent: #fffaf4;
+  --border-subtle: rgba(85, 70, 54, 0.16);
+  --border-strong: rgba(85, 70, 54, 0.28);
+  --field-bg: rgba(255, 252, 246, 0.72);
+  --field-border: rgba(85, 70, 54, 0.22);
+  --nav-bg: rgba(246, 239, 232, 0.82);
+  --shadow-soft: 0 16px 42px rgba(92, 68, 43, 0.12);
+  --shadow-elevated: 0 24px 70px rgba(92, 68, 43, 0.18);
   color-scheme: light;
 }
 
-/* Soft gradient background */
-.theme-warm-linen body {
-  background: linear-gradient(135deg, #F8F6F2, #F3EFEB, #EBE6E0);
-  background-attachment: fixed;
-}
-
-/* Glass overrides — warm frosted glass */
-.theme-warm-linen .glass {
-  background: rgba(253, 251, 248, 0.65);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(183, 177, 169, 0.3);
-}
-
-.theme-warm-linen .glass-strong {
-  background: rgba(253, 251, 248, 0.8);
-  backdrop-filter: blur(32px);
-  border: 1px solid rgba(183, 177, 169, 0.4);
-}
-
-.theme-warm-linen .glass-hover:hover {
-  background: rgba(253, 251, 248, 0.8);
-  border-color: rgba(139, 115, 85, 0.3);
-}
-
-.theme-warm-linen .glass-selected {
-  background: rgba(139, 115, 85, 0.1);
-  border-color: rgba(139, 115, 85, 0.4);
-}
-
-/* Gradient background utility */
-.theme-warm-linen .gradient-bg {
-  background: linear-gradient(135deg, #F8F6F2 0%, #EBE6E0 100%);
-}
-
-/* Glow overrides — subtle warm glow */
-.theme-warm-linen .glow-purple {
-  box-shadow: 0 0 20px rgba(139, 115, 85, 0.1);
-}
-
-.theme-warm-linen .glow-green {
-  box-shadow: 0 0 20px rgba(139, 115, 85, 0.15);
-}
-
-/* Video overlay */
-.theme-warm-linen .video-overlay {
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(243, 239, 235, 0.6) 100%);
-}
-
-/* Override dark-mode assumptions for light theme */
-.theme-warm-linen .text-white {
-  color: #2C2825;
-}
-
-/* Nav bar always has a dark background — keep active item white */
-.theme-warm-linen nav .text-white {
-  color: white;
-}
-
-/* Glassy skin keeps its intentionally-dark backgrounds even under Warm Linen.
-   Carve out utility colors inside .skin-glassy so hamburger/menu/sheet items
-   (which are not <nav>) read as white instead of the global dark-brown override. */
-.theme-warm-linen .skin-glassy .text-white,
-.theme-warm-linen.skin-glassy .text-white {
-  color: white;
-}
-.theme-warm-linen .skin-glassy .text-gray-400,
-.theme-warm-linen.skin-glassy .text-gray-400 {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* Hardcoded bg-gray-950 dark containers — Speak page (chat shell, sticky headers, composer), SpeakHistoryPanel, MusicPG header, SharePage, landing VoiceTutorSection — restore white text */
-.theme-warm-linen .bg-gray-950 .text-white {
-  color: white;
-}
-
-/* Classic dashboard overrides for light mode */
-.theme-warm-linen .classic-dashboard-wrapper {
-  color: #2C2825;
-}
-
-.theme-warm-linen .classic-aurora {
-  opacity: 0.3;
-}
-
-.theme-warm-linen .classic-deck-card {
-  background: rgba(253, 251, 248, 0.7);
-  border-color: rgba(183, 177, 169, 0.3);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.theme-warm-linen .classic-deck-card:hover {
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  border-color: rgba(139, 115, 85, 0.4);
-}
-
-.theme-warm-linen .classic-deck-card p {
-  color: #8B8580;
+.theme-warm-linen body,
+.theme-warm-linen #root {
+  background: var(--shell-bg);
+  color: var(--text-primary);
 }
 
 .theme-warm-linen .classic-deck-gradient {
-  background: linear-gradient(to top, rgba(253, 251, 248, 0.9) 0%, transparent 100%);
-}
-
-.theme-warm-linen .classic-deck-card h3 {
-  text-shadow: none;
-  color: #2C2825;
-}
-
-/* PG glass override for light mode */
-.theme-warm-linen .pg-glass {
-  background: linear-gradient(135deg, rgba(253, 251, 248, 0.7) 0%, rgba(235, 230, 224, 0.8) 100%);
-  border: 1px solid rgba(183, 177, 169, 0.3);
-  border-top: 1px solid rgba(183, 177, 169, 0.5);
-  border-left: 1px solid rgba(183, 177, 169, 0.4);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-/* Ambient subtle shimmer — on ::before to avoid breaking position:fixed on iOS Safari */
-.theme-warm-linen body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  animation: wl-shift 30s ease-in-out infinite alternate;
-}
-
-@keyframes wl-shift {
-  0%   { backdrop-filter: brightness(1); }
-  100% { backdrop-filter: brightness(1.02); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .theme-warm-linen body::before { animation: none; }
+  background: linear-gradient(to top, rgba(255, 250, 244, 0.9) 0%, transparent 100%);
 }

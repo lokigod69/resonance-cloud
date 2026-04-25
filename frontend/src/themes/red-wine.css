@@ -1,111 +1,29 @@
-/* Red Wine theme — burgundy gradient, warm pink accent */
+/* Red Wine: burgundy luxury with rose and champagne */
 .theme-red-wine {
-  --background: #220C15;
-  --foreground: #DCEAEC;
-  --card: #4E122A;
-  --card-foreground: #DCEAEC;
-  --popover: #220C15;
-  --popover-foreground: #DCEAEC;
-  --primary: #B8346A;
-  --primary-foreground: #DCEAEC;
-  --secondary: #3A0E20;
-  --secondary-foreground: #DCEAEC;
-  --muted: #3A0E20;
-  --muted-foreground: #95B2B8;
-  --accent: rgba(184, 52, 106, 0.15);
-  --accent-foreground: #DCEAEC;
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: rgba(149, 178, 184, 0.12);
-  --input: #4E122A;
-  --ring: #B8346A;
-  --radius: 0.625rem;
-  --sidebar: #1a0810;
-  --sidebar-foreground: #DCEAEC;
-  --sidebar-primary: #B8346A;
-  --sidebar-primary-foreground: #DCEAEC;
-  --sidebar-accent: rgba(184, 52, 106, 0.12);
-  --sidebar-accent-foreground: #DCEAEC;
-  --sidebar-border: rgba(149, 178, 184, 0.1);
-  --sidebar-ring: #B8346A;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  --app-bg: #170911;
+  --app-bg-soft: #24101a;
+  --app-bg-elevated: #321625;
+  --surface-0: #1b0c14;
+  --surface-1: #25111c;
+  --surface-2: #351928;
+  --surface-glass: rgba(37, 17, 28, 0.58);
+  --surface-glass-strong: rgba(37, 17, 28, 0.76);
+  --text-primary: #fbf1f5;
+  --text-secondary: #d4b8c4;
+  --text-muted: #9d7586;
+  --accent: #d35b8b;
+  --accent-2: #e0b48a;
+  --accent-warm: #e0b48a;
+  --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent) 24%, transparent);
+  --accent-2-soft: color-mix(in srgb, var(--accent-2) 14%, transparent);
+  --on-accent: #1b0b13;
+  --border-subtle: rgba(226, 180, 202, 0.11);
+  --border-strong: rgba(226, 180, 202, 0.21);
+  --field-bg: rgba(226, 180, 202, 0.055);
+  --field-border: rgba(226, 180, 202, 0.14);
+  --nav-bg: rgba(19, 7, 14, 0.74);
+  --shadow-soft: 0 16px 50px rgba(10, 1, 6, 0.32);
+  --shadow-elevated: 0 24px 80px rgba(10, 1, 6, 0.48);
   color-scheme: dark;
-}
-
-/* Subtle gradient background — fixed so it doesn't scroll */
-.theme-red-wine body {
-  background: linear-gradient(145deg, #220C15 0%, #2D1520 50%, #1A0A12 100%);
-  background-attachment: fixed;
-}
-
-/* Edge vignette — darkens page edges for depth */
-.theme-red-wine body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(ellipse at center, transparent 50%, rgba(34, 12, 21, 0.4) 100%);
-}
-
-/* Glass overrides */
-.theme-red-wine .glass {
-  background: rgba(78, 18, 42, 0.25);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(149, 178, 184, 0.12);
-}
-
-.theme-red-wine .glass-strong {
-  background: rgba(78, 18, 42, 0.4);
-  backdrop-filter: blur(32px);
-  border: 1px solid rgba(149, 178, 184, 0.15);
-}
-
-.theme-red-wine .glass-hover:hover {
-  background: rgba(78, 18, 42, 0.35);
-  border-color: rgba(184, 52, 106, 0.2);
-}
-
-.theme-red-wine .glass-selected {
-  background: rgba(184, 52, 106, 0.12);
-  border-color: rgba(184, 52, 106, 0.4);
-}
-
-/* Gradient background utility */
-.theme-red-wine .gradient-bg {
-  background: linear-gradient(145deg, #220C15 0%, #2D1520 50%, #1A0A12 100%);
-}
-
-/* Glow overrides */
-.theme-red-wine .glow-purple {
-  box-shadow: 0 0 20px rgba(184, 52, 106, 0.15);
-}
-
-.theme-red-wine .glow-green {
-  box-shadow: 0 0 20px rgba(184, 52, 106, 0.25);
-}
-
-/* Video overlay */
-.theme-red-wine .video-overlay {
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(34, 12, 21, 0.8) 100%);
-}
-
-/* Ambient gradient shift — on ::before to avoid breaking position:fixed on iOS Safari */
-.theme-red-wine body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  animation: rw-shift 30s ease-in-out infinite alternate;
-}
-
-@keyframes rw-shift {
-  0%   { backdrop-filter: hue-rotate(0deg) brightness(1); }
-  100% { backdrop-filter: hue-rotate(5deg) brightness(1.02); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .theme-red-wine body::before { animation: none; }
 }

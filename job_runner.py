@@ -14,6 +14,7 @@ import logging
 import os
 import signal
 import sys
+from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
@@ -48,6 +49,63 @@ logging.basicConfig(
 )
 install_correlation_filter()
 log = logging.getLogger("job_runner")
+
+
+def log_workspace_diagnostics() -> None:
+    """Log cloud workspace durability diagnostics at startup."""
+    try:
+        from src.storage import STORAGE_MODE, get_workspace_root
+
+        root = get_workspace_root()
+        root_posix = root.as_posix()
+        cloud_workspace_root = os.getenv("CLOUD_WORKSPACE_ROOT")
+        railway_mount = os.getenv("RAILWAY_VOLUME_MOUNT_PATH")
+        is_tmp = root_posix == "/tmp" or root_posix.startswith("/tmp/")
+
+        writable = False
+        probe = root / ".workspace_write_probe"
+        try:
+            probe.write_text("ok", encoding="utf-8")
+            probe.unlink(missing_ok=True)
+            writable = True
+        except Exception as e:
+            log.warning(
+                "workspace diagnostics: root is not writable path=%s error=%s",
+                root, e,
+            )
+
+        log.info(
+            "workspace diagnostics: storage_mode=%s root=%s exists=%s writable=%s "
+            "CLOUD_WORKSPACE_ROOT=%s RAILWAY_VOLUME_MOUNT_PATH=%s",
+            STORAGE_MODE,
+            root,
+            root.exists(),
+            writable,
+            cloud_workspace_root,
+            railway_mount,
+        )
+
+        if STORAGE_MODE == "cloud" and is_tmp:
+            log.warning(
+                "workspace diagnostics: CLOUD WORKSPACE IS UNDER /tmp (%s). "
+                "This is ephemeral on Railway; smart retry artifacts and "
+                "manifest.json will not survive container restarts. Mount a "
+                "Railway volume and set CLOUD_WORKSPACE_ROOT to that mounted path.",
+                root,
+            )
+
+        if STORAGE_MODE == "cloud" and railway_mount:
+            mount = Path(railway_mount)
+            try:
+                root.relative_to(mount)
+            except ValueError:
+                log.warning(
+                    "workspace diagnostics: root=%s is not under "
+                    "RAILWAY_VOLUME_MOUNT_PATH=%s; workspaces may not be durable",
+                    root, mount,
+                )
+    except Exception as e:
+        log.warning("workspace diagnostics failed: %s", e, exc_info=True)
 
 
 # ─── Supabase Client ──────────────────────────────────────────────────────────
@@ -170,6 +228,7 @@ async def main() -> None:
         "Queues: upstream=%d video=%d post_video=%d",
         UPSTREAM_QUEUE_DEPTH, VIDEO_QUEUE_DEPTH, POST_VIDEO_QUEUE_DEPTH,
     )
+    log_workspace_diagnostics()
 
     assert_pod_credentials()
 

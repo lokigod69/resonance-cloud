@@ -17,7 +17,6 @@ export default function PolishGlassLayout() {
 
   // Close mobile menu on route change
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- route changes should synchronously close the existing mobile menu state
     setMobileOpen(false)
   }, [location.pathname])
 
@@ -34,23 +33,20 @@ export default function PolishGlassLayout() {
 
   const isActive = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + '/')
-  const isSpeakRoute = location.pathname.startsWith('/speak')
 
   return (
-    <div className={`w-screen min-h-screen relative bg-[var(--pg-base-dark,#0a0a0c)] text-white overflow-x-hidden selection:bg-teal-500/30 font-sans pg-scrollbar-hide ${
-      isSpeakRoute ? 'overflow-y-visible' : 'overflow-y-auto'
-    }`}>
+    <div className="app-shell w-screen min-h-screen relative overflow-x-hidden overflow-y-auto font-sans pg-scrollbar-hide">
       {/* Cinematic ambient glow */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-teal-900/10 rounded-full blur-[120px] pointer-events-none z-0" />
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full blur-[120px] pointer-events-none z-0 bg-[var(--accent-glow)]" />
       {/* Perspective dot grid */}
       <div className="pg-dot-grid" aria-hidden="true" />
 
       {/* Top Navigation */}
-      <nav className="fixed top-0 left-0 w-full px-4 sm:px-6 py-2 flex items-center z-50 pointer-events-auto bg-[#0a0a0c]/80 backdrop-blur-md">
+      <nav className="app-topnav fixed top-0 left-0 w-full px-4 sm:px-6 py-2 flex items-center z-50 pointer-events-auto">
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen((o) => !o)}
-          className="sm:hidden p-2 rounded-lg hover:bg-white/5 transition-colors text-gray-300"
+          className="sm:hidden p-2 rounded-lg hover:bg-[var(--accent-soft)] transition-colors text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -58,7 +54,7 @@ export default function PolishGlassLayout() {
         {/* Mobile credits — visible only on mobile */}
         <button
           onClick={() => setRedeemOpen(true)}
-          className="flex sm:hidden items-center gap-1 text-xs text-gray-400 ml-auto mr-2 hover:text-[var(--pg-accent-teal)] transition-colors"
+          className="flex sm:hidden items-center gap-1 text-xs text-[var(--text-muted)] ml-auto mr-2 hover:text-[var(--accent)] transition-colors"
         >
           <Coins className="w-3.5 h-3.5" />
           <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
@@ -67,10 +63,10 @@ export default function PolishGlassLayout() {
         {/* Mobile profile button — visible only on mobile */}
         <button
           onClick={() => setProfileOpen(true)}
-          className="flex sm:hidden items-center justify-center p-1.5 rounded-full hover:bg-white/10 transition-colors ml-1"
+          className="flex sm:hidden items-center justify-center p-1.5 rounded-full hover:bg-[var(--accent-soft)] transition-colors ml-1"
           aria-label="Settings"
         >
-          <User className="h-4 w-4 text-gray-300" />
+          <User className="h-4 w-4 text-[var(--text-secondary)]" />
         </button>
 
         {/* Desktop centered nav with icons */}
@@ -81,8 +77,8 @@ export default function PolishGlassLayout() {
               to={item.path}
               className={`flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer ${
                 isActive(item.path)
-                  ? 'bg-white/10 text-white'
-                  : 'text-gray-400 hover:text-[var(--pg-accent-teal)] hover:bg-white/5'
+                  ? 'theme-chip-active'
+                  : 'text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)]'
               }`}
             >
               <item.icon className="h-5 w-5" />
@@ -94,8 +90,8 @@ export default function PolishGlassLayout() {
               to="/admin/queue"
               className={`flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer ${
                 isActive('/admin')
-                  ? 'bg-white/10 text-white'
-                  : 'text-gray-400 hover:text-[var(--pg-accent-teal)] hover:bg-white/5'
+                  ? 'theme-chip-active'
+                  : 'text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)]'
               }`}
             >
               <Shield className="h-5 w-5" />
@@ -108,14 +104,14 @@ export default function PolishGlassLayout() {
         <div className="hidden sm:flex items-center gap-2 shrink-0">
           <button
             onClick={() => setRedeemOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm font-medium text-gray-300 hover:text-[var(--pg-accent-teal)] hover:bg-white/10 transition-colors"
+            className="theme-chip flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
           >
             <Coins className="h-3.5 w-3.5" />
             <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
           </button>
           <button
             onClick={() => setProfileOpen(true)}
-            className="p-1.5 rounded-full hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
+            className="p-1.5 rounded-full hover:bg-[var(--accent-soft)] transition-colors text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             title="Profile"
           >
             <User className="h-4 w-4" />
@@ -131,7 +127,7 @@ export default function PolishGlassLayout() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[60px] left-0 w-full z-40 sm:hidden bg-[#0a0a0c]/95 backdrop-blur-lg border-b border-white/5"
+            className="app-topnav fixed top-[60px] left-0 w-full z-40 sm:hidden"
           >
             <div className="flex flex-col p-4 gap-1">
               {navItems.map((item) => (
@@ -140,8 +136,8 @@ export default function PolishGlassLayout() {
                   to={item.path}
                   className={`w-full text-left px-4 py-3 rounded-xl font-display font-medium transition-all flex items-center gap-2 ${
                     isActive(item.path)
-                      ? 'text-white bg-white/5'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      ? 'theme-chip-active'
+                      : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)]'
                   }`}
                 >
                   <item.icon className="h-4 w-4" />
@@ -153,8 +149,8 @@ export default function PolishGlassLayout() {
                   to="/admin/queue"
                   className={`w-full text-left px-4 py-3 rounded-xl font-display font-medium transition-all flex items-center gap-2 ${
                     isActive('/admin')
-                      ? 'text-white bg-white/5'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      ? 'theme-chip-active'
+                      : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)]'
                   }`}
                 >
                   <Shield className="h-4 w-4" />
@@ -167,9 +163,7 @@ export default function PolishGlassLayout() {
       </AnimatePresence>
 
       {/* Page content */}
-      <main className={`w-full pt-16 sm:pt-20 pb-20 relative z-10 ${
-        isSpeakRoute ? 'min-h-0' : 'min-h-screen'
-      }`}>
+      <main className="w-full min-h-screen pt-16 sm:pt-20 pb-20 relative z-10">
         <Outlet />
       </main>
 

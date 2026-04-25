@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
+import { GenerationWheelLoader } from './GenerationWheelLoader'
 
 export function LoadingIndicator({
   text = 'Loading',
@@ -17,15 +18,7 @@ export function LoadingIndicator({
 
   return (
     <div className={cn('flex flex-col items-center justify-center gap-3', className)}>
-      <div
-        className="animate-spin rounded-full opacity-60"
-        style={{
-          width: 28,
-          height: 28,
-          border: '2.5px solid currentColor',
-          borderTopColor: 'transparent',
-        }}
-      />
+      <GenerationWheelLoader size={72} className="gap-0" />
       <span className="text-sm text-muted-foreground">
         {text}
         {'.'.repeat(dotCount)}

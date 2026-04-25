@@ -4,7 +4,6 @@ import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
 import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play, Share2, PencilLine } from 'lucide-react'
 import { useMoveWords } from '@/hooks/useMoveWords'
 import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
@@ -20,6 +19,7 @@ import { useToast } from '@/components/Toast'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
 
@@ -101,34 +101,54 @@ export default function DeckView() {
         return
       }
 
-      await supabase.from('words').update({
-        status: 'pending',
-        error_message: null,
-      }).eq('id', word.id)
-
-      await supabase.from('generation_jobs').insert({
-        user_id: user.id,
-        deck_id: id,
-        status: 'approved',
-        priority: 0,
-        target_language: deck?.target_language || 'Unknown',
-        art_style: deck?.art_style || null,
-        words_total: 1,
-        words_completed: 0,
-        words_failed: 0,
-      })
-
-      await supabase.from('profiles')
+      const { data: creditRows, error: creditError } = await supabase.from('profiles')
         .update({ credits: freshCredits - 1 })
         .eq('id', user.id)
+        .eq('credits', freshCredits)
+        .select('id')
+      if (creditError) throw creditError
+      if (!creditRows?.length) throw new Error('Unable to reserve retry credit')
 
-      await supabase.from('decks')
+      const { error: deckError } = await supabase.from('decks')
         .update({ status: 'generating' })
         .eq('id', id)
+      if (deckError) {
+        const { error: rollbackError } = await supabase.from('profiles')
+          .update({ credits: freshCredits })
+          .eq('id', user.id)
+          .eq('credits', freshCredits - 1)
+        if (rollbackError) throw rollbackError
+        throw deckError
+      }
+
+      const { data: retryRows, error: retryError } = await supabase.from('words')
+        .update({
+          retry_requested: true,
+          retry_requested_at: new Date().toISOString(),
+          error_message: null,
+        })
+        .eq('id', word.id)
+        .eq('user_id', user.id)
+        .eq('current_stage', 'failed')
+        .select('id')
+      if (retryError || !retryRows?.length) {
+        const { error: rollbackError } = await supabase.from('profiles')
+          .update({ credits: freshCredits })
+          .eq('id', user.id)
+          .eq('credits', freshCredits - 1)
+        if (rollbackError) throw rollbackError
+        if (retryError) throw retryError
+        throw new Error('Word is not in a retryable failed state')
+      }
 
       await refreshProfile()
-      const { data } = await supabase.from('words').select('*').eq('deck_id', id).order('created_at')
-      if (data) setWords(data)
+      const { data: refreshedWords, error: refreshError } = await supabase
+        .from('words')
+        .select('*')
+        .eq('deck_id', id)
+        .order('created_at')
+      if (refreshError) throw refreshError
+      if (refreshedWords) setWords(refreshedWords)
       toast(t('deckview.retryingGeneration'), 'success')
     } catch {
       toast(t('deckview.retryFailed'), 'error')
@@ -359,7 +379,10 @@ export default function DeckView() {
             </div>
           )}
           {isGenerating && (
-            <Progress value={progress} className="h-2 max-w-md mx-auto" />
+            <div className="mt-6 flex flex-col items-center gap-5">
+              <GenerationWheelLoader size={112} className="gap-0" />
+              <Progress value={progress} className="h-2 w-full max-w-md mx-auto" />
+            </div>
           )}
           {isGenerating && hasChecked && !shouldShowQueue && (
             <VerbCycler className="mt-1" />
@@ -409,7 +432,6 @@ export default function DeckView() {
         {words.map((word) => {
           const isComplete = word.status === 'complete'
           const isFailed = word.status === 'failed'
-          const isPending = word.status === 'pending' || word.status === 'processing'
 
           const isSelectable = word.status !== 'pending' && word.status !== 'processing'
           const isSelected = selectedWords.has(word.id)
@@ -546,16 +568,15 @@ export default function DeckView() {
               ) : (
                 /* Pending / Processing */
                 <div className="glass rounded-xl overflow-hidden">
-                  <div className="aspect-video flex items-center justify-center">
-                    <div className="space-y-2 flex flex-col items-center">
-                      <div className="h-8 w-8 rounded-full bg-primary/20 animate-pulse" />
-                      <Skeleton className="h-3 w-16 bg-white/10" />
-                    </div>
+                  <div className="aspect-video flex items-center justify-center bg-white/5 px-3 text-center">
+                    <span className="text-xs font-medium text-muted-foreground">
+                      {word.status === 'pending' ? t('deckview.queued') : t('deckview.processing')}
+                    </span>
                   </div>
                   <div className="p-3 space-y-0.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
                     <p className="text-xs text-muted-foreground">
-                      {isPending ? t('deckview.queued') : t('deckview.processing')}
+                      {word.status === 'pending' ? t('deckview.queued') : t('deckview.processing')}
                     </p>
                   </div>
                 </div>

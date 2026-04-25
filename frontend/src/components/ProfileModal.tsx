@@ -27,13 +27,13 @@ const SKINS: { id: SkinId; label: string }[] = [
   { id: 'glassy', label: 'Glassy' },
 ]
 
-const THEMES: { id: Theme; label: string; bg: string }[] = [
-  { id: 'midnight', label: 'Midnight', bg: 'oklch(0.13 0.008 280)' },
-  { id: 'rainy-day', label: 'Rainy Day', bg: 'linear-gradient(to top left, #263141, #3D4B5F)' },
-  { id: 'deep-blue', label: 'Deep Blue', bg: 'linear-gradient(to top left, #111D3A, #1A3568)' },
-  { id: 'red-wine', label: 'Red Wine', bg: 'linear-gradient(145deg, #220C15, #2D1520, #1A0A12)' },
-  { id: 'slate', label: 'Slate', bg: '#1E2227' },
-  { id: 'warm-linen', label: 'Warm Linen', bg: 'linear-gradient(135deg, #F8F6F2, #EBE6E0)' },
+const THEMES: { id: Theme; label: string; palette: [string, string, string, string] }[] = [
+  { id: 'midnight', label: 'Midnight', palette: ['#0c0b12', '#171626', '#9b8cff', '#49d6c8'] },
+  { id: 'rainy-day', label: 'Rainy Day', palette: ['#101724', '#182337', '#7fb5ff', '#9cc7d9'] },
+  { id: 'deep-blue', label: 'Deep Blue', palette: ['#081426', '#102342', '#5aa9ff', '#e2bb72'] },
+  { id: 'red-wine', label: 'Red Wine', palette: ['#170911', '#25111c', '#d35b8b', '#e0b48a'] },
+  { id: 'slate', label: 'Slate', palette: ['#121519', '#1d2228', '#b5aa9a', '#7da9b8'] },
+  { id: 'warm-linen', label: 'Warm Linen', palette: ['#f4efe8', '#fffaf4', '#8d7357', '#3e6f78'] },
 ]
 
 interface ProfileModalProps {
@@ -106,7 +106,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="theme-dialog sm:max-w-md">
         <DialogHeader>
           <DialogTitle>{t('profile.heading')}</DialogTitle>
         </DialogHeader>
@@ -122,8 +122,8 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   onClick={() => handleSkinChange(s.id)}
                   className={`px-4 py-3 rounded-lg border-2 text-sm font-medium transition-all ${
                     skin === s.id
-                      ? 'border-primary bg-primary/10 text-foreground'
-                      : 'border-border bg-background hover:bg-accent text-muted-foreground hover:text-foreground'
+                      ? 'theme-chip-active'
+                      : 'theme-chip'
                   }`}
                 >
                   {s.label}
@@ -142,13 +142,29 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   onClick={() => setTheme(themeOption.id)}
                   aria-label={themeOption.label}
                   title={themeOption.label}
-                  className={`w-[46px] h-[44px] rounded-md border-2 transition-all ${
+                  className={`relative h-[44px] w-[50px] overflow-hidden rounded-md border-2 transition-all ${
                     theme === themeOption.id
                       ? 'border-primary ring-2 ring-primary/30'
                       : 'border-border hover:border-muted-foreground'
                   }`}
-                  style={{ background: themeOption.bg }}
-                />
+                >
+                  <span
+                    className="absolute inset-0"
+                    style={{ background: themeOption.palette[0] }}
+                  />
+                  <span
+                    className="absolute bottom-0 left-0 h-1/2 w-full"
+                    style={{ background: themeOption.palette[1] }}
+                  />
+                  <span
+                    className="absolute right-1 top-1 h-8 w-1.5 rounded-full"
+                    style={{ background: themeOption.palette[2] }}
+                  />
+                  <span
+                    className="absolute bottom-1 left-1 h-1.5 w-6 rounded-full"
+                    style={{ background: themeOption.palette[3] }}
+                  />
+                </button>
               ))}
             </div>
           </div>
@@ -163,11 +179,11 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                 onKeyDown={(e) => e.key === 'Enter' && handleSaveDisplayName()}
                 onBlur={() => { if (open) handleSaveDisplayName() }}
                 placeholder={t('profile.displayNamePlaceholder')}
-                className="bg-white/5 border-border"
+                className="theme-input"
               />
               {nameSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
               {nameSaved && (
-                <span className="text-xs text-green-400 flex items-center gap-1 shrink-0">
+                <span className="text-xs text-[var(--accent-2)] flex items-center gap-1 shrink-0">
                   <Check className="h-3 w-3" /> {t('profile.saved')}
                 </span>
               )}
@@ -179,7 +195,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
             <label className="text-sm font-medium">{t('profile.baseLanguage')}</label>
             <div className="flex items-center gap-2">
               <Select value={baseLanguage} onValueChange={handleSaveLanguage}>
-                <SelectTrigger className="bg-white/5 border-border">
+                <SelectTrigger className="theme-input">
                   <SelectValue placeholder={t('profile.selectLanguage')} />
                 </SelectTrigger>
                 <SelectContent>
@@ -192,7 +208,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
               </Select>
               {langSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
               {langSaved && (
-                <span className="text-xs text-green-400 flex items-center gap-1 shrink-0">
+                <span className="text-xs text-[var(--accent-2)] flex items-center gap-1 shrink-0">
                   <Check className="h-3 w-3" /> {t('profile.saved')}
                 </span>
               )}

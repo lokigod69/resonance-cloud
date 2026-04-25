@@ -1,107 +1,29 @@
-/* Tokyo Night theme — dark navy with vibrant blue accents */
+/* Rainy Day: soft wet glass, calm blue-gray */
 .theme-rainy-day {
-  --background: #1a1b2e;
-  --foreground: #c0caf5;
-  --card: #24283b;
-  --card-foreground: #c0caf5;
-  --popover: #1a1b2e;
-  --popover-foreground: #c0caf5;
-  --primary: #7aa2f7;
-  --primary-foreground: #1a1b2e;
-  --secondary: #292e42;
-  --secondary-foreground: #c0caf5;
-  --muted: #292e42;
-  --muted-foreground: #565f89;
-  --accent: rgba(122, 162, 247, 0.15);
-  --accent-foreground: #c0caf5;
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: #f7768e;
-  --border: rgba(86, 95, 137, 0.25);
-  --input: #24283b;
-  --ring: #7aa2f7;
-  --radius: 0.625rem;
-  --sidebar: #16161e;
-  --sidebar-foreground: #c0caf5;
-  --sidebar-primary: #7aa2f7;
-  --sidebar-primary-foreground: #1a1b2e;
-  --sidebar-accent: rgba(122, 162, 247, 0.12);
-  --sidebar-accent-foreground: #c0caf5;
-  --sidebar-border: rgba(86, 95, 137, 0.2);
-  --sidebar-ring: #7aa2f7;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  --app-bg: #101724;
+  --app-bg-soft: #172335;
+  --app-bg-elevated: #1d2b40;
+  --surface-0: #121b2a;
+  --surface-1: #182337;
+  --surface-2: #223149;
+  --surface-glass: rgba(24, 35, 55, 0.58);
+  --surface-glass-strong: rgba(24, 35, 55, 0.76);
+  --text-primary: #eef5fb;
+  --text-secondary: #b7c9d8;
+  --text-muted: #7f94a7;
+  --accent: #7fb5ff;
+  --accent-2: #9cc7d9;
+  --accent-warm: #d3b77b;
+  --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent) 24%, transparent);
+  --accent-2-soft: color-mix(in srgb, var(--accent-2) 14%, transparent);
+  --on-accent: #0d1725;
+  --border-subtle: rgba(188, 213, 230, 0.11);
+  --border-strong: rgba(188, 213, 230, 0.2);
+  --field-bg: rgba(188, 213, 230, 0.055);
+  --field-border: rgba(188, 213, 230, 0.14);
+  --nav-bg: rgba(13, 20, 31, 0.72);
+  --shadow-soft: 0 16px 50px rgba(1, 8, 18, 0.3);
+  --shadow-elevated: 0 24px 80px rgba(1, 8, 18, 0.46);
   color-scheme: dark;
-}
-
-/* Gradient page background — fixed so it doesn't scroll */
-.theme-rainy-day body {
-  background: linear-gradient(to top left, #1a1b2e, #1f2335, #24283b);
-  background-attachment: fixed;
-}
-
-/* Glass overrides */
-.theme-rainy-day .glass {
-  background: rgba(36, 40, 59, 0.4);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(86, 95, 137, 0.25);
-}
-
-.theme-rainy-day .glass-strong {
-  background: rgba(36, 40, 59, 0.6);
-  backdrop-filter: blur(32px);
-  border: 1px solid rgba(86, 95, 137, 0.3);
-}
-
-.theme-rainy-day .glass-hover:hover {
-  background: rgba(36, 40, 59, 0.55);
-  border-color: rgba(122, 162, 247, 0.2);
-}
-
-.theme-rainy-day .glass-selected {
-  background: rgba(122, 162, 247, 0.12);
-  border-color: rgba(122, 162, 247, 0.4);
-}
-
-/* Gradient background utility */
-.theme-rainy-day .gradient-bg {
-  background: linear-gradient(135deg, #1a1b2e 0%, #24283b 100%);
-}
-
-/* Glow overrides */
-.theme-rainy-day .glow-purple {
-  box-shadow: 0 0 20px rgba(122, 162, 247, 0.15);
-}
-
-.theme-rainy-day .glow-green {
-  box-shadow: 0 0 20px rgba(122, 162, 247, 0.25);
-}
-
-/* Video overlay */
-.theme-rainy-day .video-overlay {
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(26, 27, 46, 0.8) 100%);
-}
-
-/* Ambient gradient shift — on ::before to avoid breaking position:fixed on iOS Safari */
-.theme-rainy-day body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  animation: rd-shift 30s ease-in-out infinite alternate;
-}
-
-@keyframes rd-shift {
-  0%   { backdrop-filter: hue-rotate(0deg) brightness(1); }
-  100% { backdrop-filter: hue-rotate(6deg) brightness(1.02); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .theme-rainy-day body::before { animation: none; }
-}
-
-/* Improve card/glass edge visibility against same-hue background */
-.theme-rainy-day .glass,
-.theme-rainy-day .glass-strong {
-  border-color: rgba(255, 255, 255, 0.08);
 }
