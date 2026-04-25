@@ -2,6 +2,16 @@ function normalizeDistance(distance: number) {
   return Number.isFinite(distance) ? Math.max(0, Math.abs(distance)) : 0
 }
 
+export function getWaterCardX(offset: number, deckSpacing: number, isMobile = false) {
+  const safeOffset = Number.isFinite(offset) ? offset : 0
+  const safeSpacing = Number.isFinite(deckSpacing) ? deckSpacing : 0
+  const distance = Math.min(Math.abs(safeOffset), 1)
+  const direction = safeOffset === 0 ? 0 : Math.sign(safeOffset)
+  const crossoverBoost = Math.sin(distance * Math.PI) * (isMobile ? 14 : 24)
+
+  return safeOffset * safeSpacing + direction * crossoverBoost
+}
+
 export function getWaterCardRootOpacity(distance: number) {
   const safeDistance = normalizeDistance(distance)
 

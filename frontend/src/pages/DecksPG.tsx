@@ -8,7 +8,7 @@ import type { MotionStyle, MotionValue, PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { FlagIcon } from '@/components/ui/FlagIcon'
-import { getWaterCardDim, getWaterCardRootOpacity, getWaterCardZIndex, getWaterRailClickTargetIndex } from './decksWaterMotion'
+import { getWaterCardDim, getWaterCardRootOpacity, getWaterCardX, getWaterCardZIndex, getWaterRailClickTargetIndex } from './decksWaterMotion'
 import {
   Sparkles,
   Plus,
@@ -997,7 +997,7 @@ function WaterDeckCard({
   const virtualOffset = useTransform(carouselPosition, (position) => index - (Number.isFinite(position) ? position : 0))
   const rawVirtualDistance = useTransform(virtualOffset, (value) => Math.abs(value))
   const virtualDistance = useTransform(rawVirtualDistance, (value) => Math.min(value, visualRange))
-  const cardX = useTransform(virtualOffset, (value) => value * deckSpacing)
+  const cardX = useTransform(virtualOffset, (value) => getWaterCardX(value, deckSpacing, isMobile))
   const cardY = useTransform(virtualDistance, (value) => {
     const distance = Math.min(Math.max(value, 0), visualRange)
     if (isMobile) {

@@ -3,6 +3,7 @@ import { strict as assert } from 'node:assert'
 import {
   getWaterCardDim,
   getWaterCardRootOpacity,
+  getWaterCardX,
   getWaterRailClickTargetIndex,
   getWaterCardZIndex,
 } from '../src/pages/decksWaterMotion.ts'
@@ -32,3 +33,13 @@ assert.equal(getWaterRailClickTargetIndex(2, 370, 0, 390, 172, 4), 3, 'right-sid
 assert.equal(getWaterRailClickTargetIndex(2, 20, 0, 390, 172, 4), 1, 'left-side rail clicks focus the left side card')
 assert.equal(getWaterRailClickTargetIndex(0, 20, 0, 390, 172, 4), null, 'rail click fallback does not wrap before first deck')
 assert.equal(getWaterRailClickTargetIndex(4, 370, 0, 390, 172, 4), null, 'rail click fallback does not wrap after last deck')
+
+assert.equal(getWaterCardX(0, 258, false), 0, 'center X slot is unchanged')
+assertClose(getWaterCardX(1, 258, false), 258, 'right settled X slot is unchanged')
+assertClose(getWaterCardX(-1, 258, false), -258, 'left settled X slot is unchanged')
+assert.ok(getWaterCardX(0.5, 258, false) > 129, 'desktop crossover spreads right card outward')
+assert.ok(getWaterCardX(-0.5, 258, false) < -129, 'desktop crossover spreads left card outward')
+assert.ok(
+  getWaterCardX(0.5, 258, false) - 129 > getWaterCardX(0.5, 172, true) - 86,
+  'mobile crossover boost is smaller than desktop boost',
+)
