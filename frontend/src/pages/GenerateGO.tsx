@@ -457,7 +457,7 @@ export default function GenerateGO() {
                 <div
                   className="gen-orb"
                   onClick={() => handleArtStyleSelect(null)}
-                  style={{ background: 'rgba(94, 106, 210, 0.15)', borderColor: 'rgba(94, 106, 210, 0.4)' }}
+                  style={{ background: 'var(--accent-soft)', borderColor: 'color-mix(in srgb, var(--accent) 40%, transparent)' }}
                 >
                   Auto
                 </div>
@@ -581,11 +581,11 @@ export default function GenerateGO() {
       {/* ── Step 7: Initialize ── */}
       {step >= 7 && (
         <div ref={el => { sectionRefs.current[6] = el }} className="gen-section" style={{ textAlign: 'center' }}>
-          <h3 style={{ fontSize: '2.2rem', color: 'white', fontWeight: 300, marginBottom: 8 }}>
+          <h3 style={{ fontSize: '2.2rem', color: 'var(--text-primary)', fontWeight: 300, marginBottom: 8 }}>
             {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
           </h3>
           {existingDeck && (
-            <p style={{ color: 'var(--go-accent, #8b5cf6)', marginBottom: 8, fontSize: '0.85rem' }}>
+            <p style={{ color: 'var(--go-accent)', marginBottom: 8, fontSize: '0.85rem' }}>
               Adding to: {existingDeck.name || `${existingDeck.target_language} Deck`}
             </p>
           )}
@@ -596,22 +596,22 @@ export default function GenerateGO() {
           {/* Selection summary tags */}
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginBottom: 24 }}>
             {language && (
-              <span className="gen-summary-tag" style={{ borderColor: 'rgba(94, 106, 210, 0.4)', color: '#7c85e0' }}>
+              <span className="gen-summary-tag" style={{ borderColor: 'color-mix(in srgb, var(--accent) 42%, transparent)', color: 'var(--accent)' }}>
                 🌐 {language}
               </span>
             )}
             {vibe && vibe !== 'auto' && (
-              <span className="gen-summary-tag" style={{ borderColor: 'rgba(210, 94, 160, 0.4)', color: '#d25ea0' }}>
+              <span className="gen-summary-tag" style={{ borderColor: 'color-mix(in srgb, var(--accent-2) 42%, transparent)', color: 'var(--accent-2)' }}>
                 🎭 {vibe === 'specific_movie' ? `Movie${movieTitle ? `: ${movieTitle}` : ''}` : vibe}
               </span>
             )}
             {artStyle && (
-              <span className="gen-summary-tag" style={{ borderColor: 'rgba(139, 92, 246, 0.4)', color: '#8b5cf6' }}>
+              <span className="gen-summary-tag" style={{ borderColor: 'color-mix(in srgb, var(--accent) 42%, transparent)', color: 'var(--accent)' }}>
                 🎨 {artStyle}
               </span>
             )}
             {genre && genre !== 'auto' && (
-              <span className="gen-summary-tag" style={{ borderColor: 'rgba(251, 191, 36, 0.4)', color: '#fbbf24' }}>
+              <span className="gen-summary-tag" style={{ borderColor: 'color-mix(in srgb, var(--accent-warm) 45%, transparent)', color: 'var(--accent-warm)' }}>
                 🎵 {genre}
               </span>
             )}
@@ -626,14 +626,14 @@ export default function GenerateGO() {
                 onChange={(e) => setDeckName(e.target.value)}
                 placeholder="Name your deck..."
                 maxLength={50}
-                className="w-full max-w-sm mx-auto block p-3 rounded-lg bg-transparent border border-white/15 outline-none focus:border-[var(--go-accent,#8b5cf6)]/50 transition-colors text-center font-semibold text-white placeholder:text-gray-500"
+                className="theme-input w-full max-w-sm mx-auto block p-3 rounded-lg outline-none focus:border-[var(--go-accent)] transition-colors text-center font-semibold placeholder:text-[var(--text-muted)]"
                 style={{ fontFamily: "'Nunito', sans-serif" }}
               />
             </div>
           )}
 
           {typeof credits === 'number' && credits < words.length && (
-            <p style={{ color: '#f87171', marginBottom: 16, fontSize: '0.85rem' }}>
+            <p style={{ color: 'var(--destructive)', marginBottom: 16, fontSize: '0.85rem' }}>
               Not enough credits — you need {words.length} but have {credits}. Redeem an invite code to get more.
             </p>
           )}
@@ -645,7 +645,7 @@ export default function GenerateGO() {
             {submitting ? 'Synthesizing...' : 'Initialize'}
           </div>
           {error && (
-            <p style={{ color: '#ef4444', marginTop: 16, fontSize: '0.9rem' }}>{error}</p>
+            <p style={{ color: 'var(--destructive)', marginTop: 16, fontSize: '0.9rem' }}>{error}</p>
           )}
         </div>
       )}

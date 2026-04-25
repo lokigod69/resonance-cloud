@@ -59,11 +59,11 @@ const GROK_CATEGORY_LABELS: Record<GrokCategory | 'free_chat', string> = {
 
 function TypingIndicator() {
   return (
-    <div className="flex items-center gap-1 px-4 py-3 rounded-2xl bg-gray-800/60 w-fit">
+    <div className="speak-typing flex items-center gap-1 px-4 py-3 rounded-2xl w-fit">
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+          className="w-2 h-2 bg-[var(--text-muted)] rounded-full animate-bounce"
           style={{ animationDelay: `${i * 0.15}s` }}
         />
       ))}
@@ -333,34 +333,35 @@ export default function Speak() {
           <div className="max-w-3xl mx-auto w-full px-2">
             <div className="flex flex-col items-center">
               <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] shadow-[0_18px_50px_rgba(15,23,42,0.45)] backdrop-blur-xl">
-                  <Mic className="h-5 w-5 text-indigo-200" />
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-glass)] shadow-[var(--shadow-soft)] backdrop-blur-xl">
+                  <Mic className="h-5 w-5 text-[var(--accent)]" />
                 </span>
-                <h1 className="text-2xl font-semibold text-white sm:text-3xl">{t('speak.voiceTutor')}</h1>
+                <h1 className="text-2xl font-semibold text-[var(--text-primary)] sm:text-3xl">{t('speak.voiceTutor')}</h1>
               </div>
-              <p className="text-sm text-gray-400 text-center mt-1">{t('speak.chooseLang')}</p>
+              <p className="text-sm theme-muted-text text-center mt-1">{t('speak.chooseLang')}</p>
             </div>
           </div>
         </div>
 
-        <div className="w-full max-w-5xl mx-auto px-0 pt-6">
-            <div className="mx-auto mb-8 grid w-full max-w-md grid-cols-2 gap-1 rounded-full border border-white/10 bg-slate-950/55 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
+        <div className="flex-1 flex items-start justify-center px-0 pt-6">
+          <div className="w-full max-w-5xl">
+            <div className="theme-panel mx-auto mb-8 grid w-full max-w-md grid-cols-2 gap-1 rounded-full p-1">
               <button
                 onClick={() => setSpeakMode('freeform')}
-                className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70 ${
+                className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/70 ${
                   speakMode === 'freeform'
-                    ? 'bg-white/[0.12] text-white shadow-[0_10px_25px_rgba(79,70,229,0.22),inset_0_1px_0_rgba(255,255,255,0.22)]'
-                    : 'text-slate-400 hover:bg-white/[0.06] hover:text-white'
+                    ? 'theme-chip-active'
+                    : 'text-[var(--text-muted)] hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {t('speak.freeformTab')}
               </button>
               <button
                 onClick={() => setSpeakMode('roleplay')}
-                className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70 ${
+                className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/70 ${
                   speakMode === 'roleplay'
-                    ? 'bg-white/[0.12] text-white shadow-[0_10px_25px_rgba(79,70,229,0.22),inset_0_1px_0_rgba(255,255,255,0.22)]'
-                    : 'text-slate-400 hover:bg-white/[0.06] hover:text-white'
+                    ? 'theme-chip-active'
+                    : 'text-[var(--text-muted)] hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {t('speak.roleplayTab')}
@@ -379,12 +380,12 @@ export default function Speak() {
                   key={lang.code}
                   onClick={() => tutor.selectLanguage(lang.code)}
                   disabled={tutor.status === 'processing'}
-                  className="speak-glass-card group flex min-h-[128px] flex-col items-center justify-center gap-3 px-4 py-5 text-center transition-all hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="speak-glass-card group flex min-h-[128px] flex-col items-center justify-center gap-3 px-4 py-5 text-center transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] shadow-[inset_0_1px_0_rgba(255,255,255,0.14)] transition-transform group-hover:scale-[1.03]">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--border-subtle)] bg-[var(--field-bg)] shadow-sm transition-transform group-hover:scale-[1.03]">
                     <FlagIcon code={lang.code} className="w-10 h-auto" />
                   </span>
-                  <span className="text-sm font-semibold text-slate-100 text-center leading-tight">
+                  <span className="text-sm font-semibold text-[var(--text-primary)] text-center leading-tight">
                     {lang.nativeName}
                   </span>
                 </button>
@@ -392,7 +393,7 @@ export default function Speak() {
             </div>
 
             {tutor.status === 'processing' && (
-              <div className="flex items-center justify-center gap-2 mt-8 text-slate-400 text-sm">
+              <div className="flex items-center justify-center gap-2 mt-8 theme-muted-text text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 {t('speak.startingConversation')}
               </div>
@@ -403,6 +404,7 @@ export default function Speak() {
                 {tutor.error}
               </div>
             )}
+          </div>
         </div>
       </SpeakSelectionShell>
     )
@@ -418,22 +420,23 @@ export default function Speak() {
 
     return (
       <div className="flex flex-col min-h-full pb-20">
-        <div className="sticky top-0 z-40 bg-gray-950 pt-4 pb-3 border-b border-white/5">
+        <div className="speak-chatbar sticky top-0 z-40 pt-4 pb-3 border-b">
           <div className="max-w-2xl mx-auto w-full px-4 flex items-center gap-3">
             <button
               onClick={goBack}
-              className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors"
               title="Back"
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
             <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
-            <span className="text-sm font-medium text-white">{selectedLang?.nativeName}</span>
-            <span className="text-xs text-gray-500 ml-2">🎭 {t('speak.roleplayTab')}</span>
+            <span className="text-sm font-medium text-[var(--text-primary)]">{selectedLang?.nativeName}</span>
+            <span className="text-xs text-[var(--text-muted)] ml-2">🎭 {t('speak.roleplayTab')}</span>
           </div>
         </div>
 
-        <div className="w-full max-w-2xl mx-auto px-6 pt-6">
+        <div className="flex-1 flex items-start justify-center px-6 pt-6">
+          <div className="w-full max-w-2xl">
             {tutor.status === 'error' && tutor.error && (
               <div className="mb-4 px-4 py-3 rounded-lg bg-red-900/30 border border-red-700/40 text-red-300 text-sm">
                 {tutor.error}
@@ -442,8 +445,8 @@ export default function Speak() {
 
             {!selectedCategory && (
               <>
-                <h2 className="text-base font-semibold text-white mb-1">{t('speak.chooseCategory')}</h2>
-                <p className="text-sm text-gray-400 mb-5">Pick a scenario type</p>
+                <h2 className="text-base font-semibold text-[var(--text-primary)] mb-1">{t('speak.chooseCategory')}</h2>
+                <p className="text-sm text-[var(--text-secondary)] mb-5">Pick a scenario type</p>
                 <div className="grid grid-cols-2 gap-3">
                   {SCENARIO_CATEGORIES.map((cat) => (
                     <button
@@ -452,10 +455,10 @@ export default function Speak() {
                         setSelectedCategory(cat.id)
                         setDrawnScenes(drawScenes(cat.id, 3))
                       }}
-                      className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all"
+                      className="theme-card flex flex-col items-center gap-2 px-4 py-5 rounded-xl hover:bg-[var(--surface-glass-strong)] transition-all"
                     >
                       <span className="text-3xl">{cat.emoji}</span>
-                      <span className="text-sm font-medium text-gray-200 text-center leading-tight">
+                      <span className="text-sm font-medium text-[var(--text-primary)] text-center leading-tight">
                         {cat.label}
                       </span>
                     </button>
@@ -466,17 +469,17 @@ export default function Speak() {
 
             {selectedCategory && !pickedScene && (
               <>
-                <h2 className="text-base font-semibold text-white mb-1">{SCENARIO_CATEGORIES.find(c => c.id === selectedCategory)?.label}</h2>
-                <p className="text-sm text-gray-400 mb-5">Pick a scene</p>
+                <h2 className="text-base font-semibold text-[var(--text-primary)] mb-1">{SCENARIO_CATEGORIES.find(c => c.id === selectedCategory)?.label}</h2>
+                <p className="text-sm text-[var(--text-secondary)] mb-5">Pick a scene</p>
                 <div className="space-y-3 mb-4">
                   {drawnScenes.map((scene) => (
                     <button
                       key={scene.id}
                       onClick={() => setPickedScene(scene)}
-                      className="w-full flex flex-col items-start gap-1 px-5 py-4 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left"
+                      className="theme-card w-full flex flex-col items-start gap-1 px-5 py-4 rounded-xl hover:bg-[var(--surface-glass-strong)] transition-all text-left"
                     >
-                      <span className="text-sm font-medium text-white">{scene.title}</span>
-                      <span className="text-xs text-gray-400">{scene.description}</span>
+                      <span className="text-sm font-medium text-[var(--text-primary)]">{scene.title}</span>
+                      <span className="text-xs text-[var(--text-secondary)]">{scene.description}</span>
                     </button>
                   ))}
                 </div>
@@ -486,7 +489,7 @@ export default function Speak() {
                     const surprise = pool[Math.floor(Math.random() * pool.length)]
                     setPickedScene(surprise)
                   }}
-                  className="w-full px-4 py-3 rounded-xl text-sm text-purple-300 border border-purple-700/40 hover:bg-purple-900/20 transition-colors"
+                  className="w-full px-4 py-3 rounded-xl text-sm text-[var(--accent)] border border-[var(--border-subtle)] hover:bg-[var(--accent-soft)] transition-colors"
                 >
                   🎲 {t('speak.surpriseMe')}
                 </button>
@@ -495,10 +498,10 @@ export default function Speak() {
 
             {pickedScene && (
               <>
-                <h2 className="text-xl font-semibold text-white mb-2">{pickedScene.title}</h2>
-                <p className="text-sm text-gray-400 mb-6">{pickedScene.description}</p>
+                <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-2">{pickedScene.title}</h2>
+                <p className="text-sm text-[var(--text-secondary)] mb-6">{pickedScene.description}</p>
                 {isStarting && (
-                  <div className="flex items-center gap-2 mb-4 text-gray-400 text-sm">
+                  <div className="flex items-center gap-2 mb-4 theme-muted-text text-sm">
                     <Loader2 className="h-4 w-4 animate-spin" />
                     {t('speak.startingConversation')}
                   </div>
@@ -509,18 +512,19 @@ export default function Speak() {
                       key={opt.level}
                       onClick={() => tutor.startRoleplay(pickedScene, tutor.language!, opt.level)}
                       disabled={isStarting}
-                      className="flex items-center gap-4 px-5 py-4 rounded-xl bg-gray-800/50 border border-white/5 hover:bg-gray-700/60 hover:border-white/10 transition-all text-left disabled:opacity-50"
+                      className="theme-card flex items-center gap-4 px-5 py-4 rounded-xl hover:bg-[var(--surface-glass-strong)] transition-all text-left disabled:opacity-50"
                     >
                       <span className="text-2xl">{opt.emoji}</span>
                       <div>
-                        <p className="text-sm font-medium text-white">{opt.title}</p>
-                        <p className="text-xs text-gray-400">{opt.desc}</p>
+                        <p className="text-sm font-medium text-[var(--text-primary)]">{opt.title}</p>
+                        <p className="text-xs text-[var(--text-secondary)]">{opt.desc}</p>
                       </div>
                     </button>
                   ))}
                 </div>
               </>
             )}
+          </div>
         </div>
       </div>
     )
@@ -562,23 +566,24 @@ export default function Speak() {
 
     return (
       <SpeakSelectionShell maxWidth={pickerShellMaxWidth} className="pb-20">
-        <div className="mb-6 flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/45 px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
+        <div className="theme-panel mb-6 flex items-center gap-3 rounded-2xl px-3 py-3">
           <div className="flex w-full items-center gap-3">
             <button
               onClick={goBack}
-              className="rounded-xl p-2 text-slate-400 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70"
+              className="rounded-xl p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/70"
               title="Back"
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
             <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
-            <span className="text-sm font-medium text-white">{selectedLang?.nativeName}</span>
+            <span className="text-sm font-medium text-[var(--text-primary)]">{selectedLang?.nativeName}</span>
           </div>
         </div>
 
-        <div className="w-full">
+        <div className="flex-1 flex items-start justify-center">
+          <div className="w-full">
             {isStarting && (
-              <div className="flex items-center gap-2 mb-4 text-slate-400 text-sm">
+              <div className="flex items-center gap-2 mb-4 theme-muted-text text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 {t('speak.startingConversation')}
               </div>
@@ -669,6 +674,7 @@ export default function Speak() {
                 confirmLabel={tutor.isChangingVoice ? 'Use this voice' : 'Start conversation'}
               />
             )}
+          </div>
         </div>
       </SpeakSelectionShell>
     )
@@ -677,25 +683,26 @@ export default function Speak() {
   if (activeProvider !== 'grok' && (!tutor.level || tutor.showLevelPicker)) {
     return (
       <SpeakSelectionShell maxWidth="max-w-xl" className="pb-20">
-        <div className="mb-6 flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/45 px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
+        <div className="theme-panel mb-6 flex items-center gap-3 rounded-2xl px-3 py-3">
           <div className="flex w-full items-center gap-3">
             <button
               onClick={tutor.cancelLevelChange}
-              className="rounded-xl p-2 text-slate-400 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70"
+              className="rounded-xl p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/70"
               title="Back to voice selection"
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
             <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
-            <span className="text-sm font-medium text-white">{selectedLang?.nativeName}</span>
+            <span className="text-sm font-medium text-[var(--text-primary)]">{selectedLang?.nativeName}</span>
           </div>
         </div>
 
-        <div className="w-full">
-            <h2 className="text-xl font-semibold text-white mb-2">
+        <div className="flex-1 flex items-start justify-center">
+          <div className="w-full">
+            <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-2">
               {t('speak.howMuch', { language: selectedLang?.nativeName ?? '' })}
             </h2>
-            <p className="text-sm text-gray-400 mb-8">{t('speak.levelHint')}</p>
+            <p className="text-sm text-[var(--text-secondary)] mb-8">{t('speak.levelHint')}</p>
 
             <div className="grid grid-cols-1 gap-3">
               {levelOptions.map((opt) => (
@@ -704,12 +711,12 @@ export default function Speak() {
                   onClick={() => {
                     void tutor.selectLevel(opt.level)
                   }}
-                  className="speak-glass-card flex items-center gap-4 px-5 py-4 text-left transition-all hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65"
+                  className="speak-glass-card flex items-center gap-4 px-5 py-4 text-left transition-all hover:-translate-y-0.5"
                 >
                   <span className="text-2xl">{opt.emoji}</span>
                   <div>
-                    <p className="text-sm font-medium text-white">{opt.title}</p>
-                    <p className="text-xs text-gray-400">{opt.desc}</p>
+                    <p className="text-sm font-medium text-[var(--text-primary)]">{opt.title}</p>
+                    <p className="text-xs text-[var(--text-secondary)]">{opt.desc}</p>
                   </div>
                 </button>
               ))}
@@ -721,14 +728,15 @@ export default function Speak() {
                   onClick={() => tutor.toggleStudyMode(studyWords.studyWords)}
                   className={`px-4 py-2 rounded-full text-sm border transition-colors ${
                     tutor.studyMode
-                      ? 'border-cyan-300/40 bg-cyan-950/35 text-cyan-100'
-                      : 'border-white/10 bg-slate-900/55 text-slate-300 hover:bg-slate-800/65'
+                      ? 'border-[var(--accent-2)]/40 bg-[var(--accent-2-soft)] text-[var(--accent-2)]'
+                      : 'border-[var(--border-subtle)] bg-[var(--surface-glass)] text-[var(--text-secondary)] hover:bg-[var(--surface-glass-strong)]'
                   }`}
                 >
                   {tutor.studyMode ? '📖 Study Mode ON' : 'Study my words'}
                 </button>
               </div>
             )}
+          </div>
         </div>
       </SpeakSelectionShell>
     )
@@ -736,20 +744,20 @@ export default function Speak() {
 
   if (grokShowTranscript && grok.messages.length > 0) {
     return (
-      <div className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col bg-gray-950">
-        <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
+      <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col">
+        <div className="speak-chatbar shrink-0 border-b">
           <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
             <div className="flex items-center gap-2 flex-1 min-w-0">
               <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
               <div className="min-w-0">
-                <p className="text-sm font-medium text-white truncate">{grokHeaderName}</p>
-                <p className="text-xs text-gray-500 truncate">{t('speak.conversationEnded')}</p>
+                <p className="text-sm font-medium text-[var(--text-primary)] truncate">{grokHeaderName}</p>
+                <p className="text-xs text-[var(--text-muted)] truncate">{t('speak.conversationEnded')}</p>
               </div>
             </div>
 
             <button
               onClick={() => setHistoryOpen(true)}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors shrink-0"
               title={t('speak.historyTooltip')}
             >
               <History className="h-3.5 w-3.5" />
@@ -771,8 +779,8 @@ export default function Speak() {
               <div
                 className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-violet-900/50 text-white rounded-br-sm'
-                    : 'bg-gray-800/60 text-gray-100 rounded-bl-sm'
+                    ? 'speak-message-user rounded-br-sm'
+                    : 'speak-message-assistant rounded-bl-sm'
                 }`}
               >
                 <p>{msg.content}</p>
@@ -789,12 +797,12 @@ export default function Speak() {
           baseLangCode={baseLangCode}
         />
 
-        <div className="shrink-0 border-t border-white/5 bg-gray-950/80 backdrop-blur-md">
+        <div className="speak-chatbar shrink-0 border-t">
           <div className="px-4 py-5 max-w-5xl mx-auto w-full">
             <div className="flex justify-center">
               <button
                 onClick={startNewGrokConversation}
-                className="px-5 py-3 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-500 transition-colors"
+                className="speak-accent-action px-5 py-3 rounded-full text-sm font-medium transition-colors"
               >
                 {t('speak.startNewConversation')}
               </button>
@@ -826,44 +834,44 @@ export default function Speak() {
       grok.status === 'recording'
         ? 'text-red-300'
         : grok.status === 'thinking'
-          ? 'text-slate-300'
+          ? 'text-[var(--text-secondary)]'
           : grok.status === 'speaking'
-            ? 'text-violet-300'
+            ? 'text-[var(--accent)]'
             : grok.status === 'connecting'
-              ? 'text-gray-400'
+              ? 'text-[var(--text-muted)]'
               : grok.status === 'error'
                 ? 'text-red-300'
-                : 'text-blue-200'
+                : 'text-[var(--accent-2)]'
     const grokButtonOuterClass =
       grok.status === 'idle'
-        ? 'border-blue-400/30 bg-blue-500/10 shadow-[0_0_46px_rgba(37,99,235,0.35)]'
+        ? 'border-[var(--accent-2)]/30 bg-[var(--accent-2-soft)] shadow-[0_0_46px_var(--accent-glow)]'
         : grok.status === 'recording'
           ? 'border-red-400/60 bg-gradient-to-br from-fuchsia-500/20 via-red-500/10 to-blue-500/10 shadow-[0_0_52px_rgba(239,68,68,0.35)] animate-pulse'
           : grok.status === 'thinking'
-            ? 'border-slate-400/20 bg-slate-500/10 shadow-[0_0_32px_rgba(148,163,184,0.2)] animate-pulse'
+            ? 'border-[var(--border-strong)] bg-[var(--field-bg)] shadow-[0_0_32px_var(--accent-glow)] animate-pulse'
             : grok.status === 'speaking'
-              ? 'border-violet-400/35 bg-violet-500/10 shadow-[0_0_44px_rgba(139,92,246,0.28)]'
+              ? 'border-[var(--accent)]/35 bg-[var(--accent-soft)] shadow-[0_0_44px_var(--accent-glow)]'
               : grok.status === 'connecting'
-                ? 'border-gray-500/30 bg-gray-500/10 shadow-[0_0_24px_rgba(148,163,184,0.16)]'
+                ? 'border-[var(--border-strong)] bg-[var(--field-bg)] shadow-[0_0_24px_var(--accent-glow)]'
                 : 'border-red-400/30 bg-red-500/5 shadow-[0_0_28px_rgba(239,68,68,0.18)]'
     const grokButtonInnerClass =
       grok.status === 'idle' || grok.status === 'recording'
-        ? 'bg-blue-600 text-white'
+        ? 'bg-[var(--accent)] text-[var(--on-accent)]'
         : grok.status === 'thinking'
-          ? 'bg-slate-700 text-slate-100'
-          : grok.status === 'speaking'
-            ? 'bg-violet-700 text-violet-100'
+          ? 'bg-[var(--surface-2)] text-[var(--text-primary)]'
+        : grok.status === 'speaking'
+            ? 'bg-[var(--accent)] text-[var(--on-accent)]'
             : grok.status === 'connecting'
-              ? 'bg-gray-700 text-gray-200'
-              : 'bg-gray-800 text-red-100'
+              ? 'bg-[var(--surface-2)] text-[var(--text-secondary)]'
+              : 'bg-[var(--surface-2)] text-red-100'
 
     return (
-      <div className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col bg-gray-950">
-        <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
+      <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col">
+        <div className="speak-chatbar shrink-0 border-b">
           <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
             <button
               onClick={() => { void resetGrokConversation() }}
-              className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors"
               title={t('speak.backTooltip')}
             >
               <ArrowLeft className="h-5 w-5" />
@@ -872,14 +880,14 @@ export default function Speak() {
             <div className="flex items-center gap-2 flex-1 min-w-0">
               <FlagIcon code={tutor.language!} className="w-6 h-auto shrink-0" />
               <div className="min-w-0">
-                <p className="text-sm font-medium text-white truncate">{grokHeaderName}</p>
-                <p className="text-xs text-gray-500 truncate">{selectedLang?.nativeName}</p>
+                <p className="text-sm font-medium text-[var(--text-primary)] truncate">{grokHeaderName}</p>
+                <p className="text-xs text-[var(--text-muted)] truncate">{selectedLang?.nativeName}</p>
               </div>
             </div>
 
             <button
               onClick={() => setHistoryOpen(true)}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors shrink-0"
               title={t('speak.historyTooltip')}
             >
               <History className="h-3.5 w-3.5" />
@@ -907,7 +915,7 @@ export default function Speak() {
                 {grokStatusLabel}
               </p>
               {grok.status === 'error' && grok.error && (
-                <p className="text-xs text-gray-500">{t('speak.tapRetry')}</p>
+                <p className="text-xs text-[var(--text-muted)]">{t('speak.tapRetry')}</p>
               )}
             </div>
 
@@ -951,7 +959,7 @@ export default function Speak() {
 
             <button
               onClick={() => { void handleEndGrokConversation() }}
-              className="text-sm text-gray-400 hover:text-white transition-colors sm:hidden"
+              className="text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors sm:hidden"
             >
               {t('speak.endConversation')}
             </button>
@@ -970,12 +978,12 @@ export default function Speak() {
   if (!tutor.voice) return null
 
   return (
-    <div className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col bg-gray-950">
-      <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
+    <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col">
+      <div className="speak-chatbar shrink-0 border-b">
         <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
           <button
             onClick={tutor.resetConversation}
-            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+            className="p-2 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors"
             title={t('speak.backTooltip')}
           >
             <ArrowLeft className="h-5 w-5" />
@@ -986,15 +994,15 @@ export default function Speak() {
             <div className="min-w-0">
               {tutor.isRoleplayMode ? (
                 <>
-                  <p className="text-sm font-medium text-white truncate">🎭 {tutor.activeScenario?.title}</p>
-                  <p className="text-xs text-gray-500 truncate">
+                  <p className="text-sm font-medium text-[var(--text-primary)] truncate">🎭 {tutor.activeScenario?.title}</p>
+                  <p className="text-xs text-[var(--text-muted)] truncate">
                     {tutor.activeNpcName} · {selectedLang?.nativeName}
                   </p>
                 </>
               ) : (
                 <>
-                  <p className="text-sm font-medium text-white truncate">{tutor.character?.name ?? tutor.voice.name}</p>
-                  <p className="text-xs text-gray-500 truncate">
+                  <p className="text-sm font-medium text-[var(--text-primary)] truncate">{tutor.character?.name ?? tutor.voice.name}</p>
+                  <p className="text-xs text-[var(--text-muted)] truncate">
                     {tutor.geminiModeName
                       ? `${tutor.geminiModeName}${selectedLang?.nativeName ? ` · ${selectedLang.nativeName}` : ''}`
                       : selectedLang?.nativeName}
@@ -1007,7 +1015,7 @@ export default function Speak() {
           {!tutor.isRoleplayMode && (
             <button
               onClick={tutor.changeLevel}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors shrink-0"
               title={t('speak.levelTooltip')}
             >
               <span className="text-sm">
@@ -1026,8 +1034,8 @@ export default function Speak() {
               }}
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs transition-colors shrink-0 ${
                 tutor.studyMode
-                  ? 'bg-cyan-900/40 text-cyan-200 hover:bg-cyan-900/60'
-                  : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10'
+                  ? 'bg-[var(--accent-2-soft)] text-[var(--accent-2)] hover:bg-[var(--accent-soft)]'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--field-bg)] hover:bg-[var(--accent-soft)]'
               }`}
               title={tutor.studyMode ? t('speak.studyOnTooltip') : t('speak.studyTooltip')}
             >
@@ -1041,8 +1049,8 @@ export default function Speak() {
               onClick={tutor.toggleListenMode}
               className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs transition-colors shrink-0 ${
                 tutor.listenMode
-                  ? 'bg-purple-900/40 text-purple-200 hover:bg-purple-900/60'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  ? 'bg-[var(--accent-soft)] text-[var(--accent)] hover:brightness-110'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)]'
               }`}
               title={tutor.listenMode ? t('speak.listenOnTooltip') : t('speak.listenTooltip')}
             >
@@ -1055,7 +1063,7 @@ export default function Speak() {
             <button
               onClick={tutor.changeVoice}
               disabled={tutor.status === 'recording' || tutor.status === 'processing'}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
               title={t('speak.tutorTooltip')}
             >
               <UserRoundCog className="h-3.5 w-3.5" />
@@ -1065,7 +1073,7 @@ export default function Speak() {
 
           <button
             onClick={() => setHistoryOpen(true)}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors shrink-0"
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors shrink-0"
             title={t('speak.historyTooltip')}
           >
             <History className="h-3.5 w-3.5" />
@@ -1075,7 +1083,7 @@ export default function Speak() {
           <button
             onClick={() => setNewChatConfirmOpen(true)}
             disabled={isBusy}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors disabled:opacity-40 shrink-0"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors disabled:opacity-40 shrink-0"
             title={t('speak.newChatTooltip')}
           >
             <MessageSquarePlus className="h-3.5 w-3.5" />
@@ -1104,12 +1112,12 @@ export default function Speak() {
               } : undefined}
               className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed transition-opacity duration-500 ${
                 msg.role === 'user'
-                  ? 'bg-cyan-900/50 text-white rounded-br-sm opacity-100'
-                  : `bg-gray-800/60 text-gray-100 rounded-bl-sm ${!tutor.listenMode || msg.revealed ? 'opacity-100' : 'opacity-0'}${msg.audioBase64 || (tutor.listenMode && !msg.revealed) ? ' cursor-pointer active:bg-gray-700/60 transition-colors' : ''}`
+                  ? 'speak-message-user rounded-br-sm opacity-100'
+                  : `speak-message-assistant rounded-bl-sm ${!tutor.listenMode || msg.revealed ? 'opacity-100' : 'opacity-0'}${msg.audioBase64 || (tutor.listenMode && !msg.revealed) ? ' cursor-pointer active:bg-[var(--accent-soft)] transition-colors' : ''}`
               }`}
             >
               {msg.role === 'assistant' && !msg.revealed ? (
-                <span className="flex items-center gap-1.5 text-gray-400 text-sm italic">
+                <span className="flex items-center gap-1.5 text-[var(--text-muted)] text-sm italic">
                   <span>🔊</span> {tutor.listenMode ? t('speak.tapToReveal') : t('speak.listening')}
                 </span>
               ) : (
@@ -1122,7 +1130,7 @@ export default function Speak() {
                         tutor.playPendingAudio()
                       }}
                       disabled={tutor.status === 'playing'}
-                      className="mt-2 flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="mt-2 flex items-center gap-1.5 text-xs text-[var(--accent-2)] hover:text-[var(--accent)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Play className="h-3.5 w-3.5 fill-current" />
                       <span>{t('speak.tapToHear')}</span>
@@ -1140,7 +1148,7 @@ export default function Speak() {
               <button
                 onClick={fetchCorrections}
                 disabled={correctionsLoading}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5 transition-colors border border-white/10 disabled:opacity-50"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] transition-colors border border-[var(--border-subtle)] disabled:opacity-50"
               >
                 {correctionsLoading ? (
                   <>
@@ -1160,12 +1168,12 @@ export default function Speak() {
               </div>
             ) : (
               <div className="w-full max-w-lg space-y-3">
-                <p className="text-xs text-gray-500 text-center mb-2">{t('speak.reviewTitle')}</p>
+                <p className="text-xs text-[var(--text-muted)] text-center mb-2">{t('speak.reviewTitle')}</p>
                 {corrections.map((c, i) => (
-                  <div key={i} className="bg-white/5 rounded-lg p-3 space-y-1">
+                  <div key={i} className="theme-panel rounded-lg p-3 space-y-1">
                     <p className="text-sm text-red-400/80 line-through">{c.original}</p>
                     <p className="text-sm text-green-400/80">{c.corrected}</p>
-                    <p className="text-xs text-gray-500">{c.explanation}</p>
+                    <p className="text-xs text-[var(--text-muted)]">{c.explanation}</p>
                   </div>
                 ))}
               </div>
@@ -1180,7 +1188,7 @@ export default function Speak() {
         )}
 
         {tutor.messages.length === 0 && tutor.status !== 'processing' && (
-          <div className="flex items-center justify-center h-full text-gray-600 text-sm">
+          <div className="flex items-center justify-center h-full text-[var(--text-muted)] text-sm">
             {t('speak.waitingGreeting')}
           </div>
         )}
@@ -1203,7 +1211,7 @@ export default function Speak() {
           <DialogFooter>
             <button
               onClick={() => setNewChatConfirmOpen(false)}
-              className="px-4 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5"
+              className="px-4 py-2 rounded-lg text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)]"
             >
               {t('common.cancel')}
             </button>
@@ -1212,7 +1220,7 @@ export default function Speak() {
                 setNewChatConfirmOpen(false)
                 void tutor.newChat()
               }}
-              className="px-4 py-2 rounded-lg text-sm bg-blue-600 text-white hover:bg-blue-500"
+              className="speak-accent-action px-4 py-2 rounded-lg text-sm"
             >
               {t('speak.newChatConfirmAction')}
             </button>
@@ -1221,7 +1229,7 @@ export default function Speak() {
       </Dialog>
 
       <div
-        className="shrink-0 border-t border-white/5 bg-gray-950/80 backdrop-blur-md select-none"
+        className="speak-chatbar shrink-0 border-t select-none"
         style={{ WebkitTouchCallout: 'none' }}
         onContextMenu={(e) => e.preventDefault()}
       >
@@ -1230,14 +1238,14 @@ export default function Speak() {
             <p className="text-red-400 text-xs text-center mb-3">{tutor.error}</p>
           )}
 
-          <p className="text-xs text-gray-500 text-center mb-3 h-4">
+          <p className="text-xs text-[var(--text-muted)] text-center mb-3 h-4">
             {tutor.status === 'idle' && t('speak.tapToSpeak')}
             {tutor.status === 'recording' && (
               <span className="text-red-400">{t('speak.recording')}</span>
             )}
             {tutor.status === 'processing' && t('speak.thinking')}
             {tutor.status === 'playing' && (
-              <span className="text-cyan-400">{t('speak.speaking')}</span>
+              <span className="text-[var(--accent-2)]">{t('speak.speaking')}</span>
             )}
             {tutor.status === 'error' && t('speak.tapRetry')}
           </p>
@@ -1258,23 +1266,23 @@ export default function Speak() {
                 tutor.status === 'recording'
                   ? 'bg-red-600 animate-pulse scale-110'
                   : tutor.status === 'processing'
-                    ? 'bg-gray-700 cursor-not-allowed'
+                    ? 'bg-[var(--surface-2)] cursor-not-allowed'
                     : tutor.status === 'playing'
-                      ? 'bg-cyan-700'
+                      ? 'bg-[var(--accent-2)]'
                       : tutor.status === 'error'
-                        ? 'bg-gray-800 hover:bg-gray-700'
-                        : 'bg-gray-800 hover:bg-gray-700 active:scale-95'
+                        ? 'bg-[var(--surface-2)] hover:bg-[var(--accent-soft)]'
+                        : 'bg-[var(--surface-2)] hover:bg-[var(--accent-soft)] active:scale-95'
               }`}
               aria-label={tutor.status === 'recording' ? 'Tap to send' : 'Tap to speak'}
             >
               {tutor.status === 'processing' ? (
-                <Loader2 className="h-7 w-7 text-gray-400 animate-spin" />
+                <Loader2 className="h-7 w-7 text-[var(--text-muted)] animate-spin" />
               ) : tutor.status === 'playing' ? (
-                <Volume2 className="h-7 w-7 text-cyan-300" />
+                <Volume2 className="h-7 w-7 text-[var(--on-accent)]" />
               ) : tutor.status === 'recording' ? (
-                <Square className="h-6 w-6 text-white fill-white" />
+                <Square className="h-6 w-6 text-[var(--on-accent)] fill-current" />
               ) : (
-                <Mic className="h-7 w-7 text-gray-300" />
+                <Mic className="h-7 w-7 text-[var(--text-secondary)]" />
               )}
             </button>
           </div>

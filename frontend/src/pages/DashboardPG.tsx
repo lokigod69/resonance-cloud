@@ -232,8 +232,8 @@ export default function DashboardPG() {
                         onClick={() => setActiveLanguage(lang)}
                         className={`min-h-[44px] px-3 py-2 rounded-full text-sm border transition-all ${
                           isActive
-                            ? 'bg-foreground/15 border-foreground/25 text-foreground shadow-sm'
-                            : 'border-foreground/10 text-foreground/50 hover:text-foreground/80 hover:border-foreground/20'
+                            ? 'theme-chip-active shadow-sm'
+                            : 'theme-chip'
                         }`}
                       >
                         {t(`langName.${lang}`)}
@@ -273,7 +273,7 @@ export default function DashboardPG() {
             {/* Generate button */}
             <button
               onClick={() => navigate('/generate')}
-              className="mt-6 w-full rounded-2xl bg-foreground/10 border border-foreground/20 text-foreground py-4 font-semibold hover:bg-foreground/20 transition-colors"
+              className="mt-6 w-full rounded-2xl bg-[var(--accent-soft)] border border-[var(--border-subtle)] text-[var(--text-primary)] py-4 font-semibold hover:border-[var(--accent)] transition-colors"
             >
               ✦ {t('dashboard.generate')}
             </button>
@@ -298,7 +298,7 @@ export default function DashboardPG() {
             <p className="text-foreground/30 text-sm mb-6">{t('dashboard.generateFirstHint')}</p>
             <button
               onClick={() => navigate('/generate')}
-              className="rounded-xl bg-foreground/10 border border-foreground/20 text-foreground px-6 py-3 hover:bg-foreground/20 transition-colors"
+              className="rounded-xl bg-[var(--accent-soft)] border border-[var(--border-subtle)] text-[var(--text-primary)] px-6 py-3 hover:border-[var(--accent)] transition-colors"
             >
               {t('dashboard.generateFirstWords')}
             </button>
@@ -307,8 +307,8 @@ export default function DashboardPG() {
 
         {/* Quote */}
         <div className="mt-auto pt-12 pb-8 text-center max-w-2xl mx-auto px-4">
-          <div className="bg-foreground/5 border border-foreground/10 rounded-xl p-6">
-            <p className="text-foreground/50 text-base italic leading-relaxed">"{quote}"</p>
+          <div className="theme-panel rounded-xl p-6">
+            <p className="text-[var(--text-secondary)] text-base italic leading-relaxed">"{quote}"</p>
           </div>
         </div>
       </div>

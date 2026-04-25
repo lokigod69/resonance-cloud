@@ -16,7 +16,12 @@ import {
 } from '@/components/ui/select'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useTranslation } from '@/hooks/useTranslation'
-import { PLAYER_ACTIVE_TOGGLE_CLASS } from '@/lib/playerStyles'
+import {
+  PLAYER_ACTIVE_TOGGLE_CLASS,
+  PLAYER_FOCUS_RING_CLASS,
+  PLAYER_INACTIVE_TOGGLE_CLASS,
+  PLAYER_ROUNDED_ICON_BUTTON_CLASS,
+} from '@/lib/playerStyles'
 
 type DeckOption = { id: string; name: string }
 
@@ -181,27 +186,27 @@ export default function MusicPG() {
   return (
     <div className="flex flex-col min-h-full pb-[calc(5rem+env(safe-area-inset-bottom,0px))]">
       {/* Header */}
-      <div className="sticky top-0 z-40 bg-gray-950 pt-6 pb-2 px-6 flex justify-center">
+      <div className="sticky top-0 z-40 bg-[var(--nav-bg)] pt-6 pb-2 px-6 flex justify-center backdrop-blur-md border-b border-[var(--border-subtle)]">
         <div className="flex items-center gap-3 flex-wrap w-full max-w-2xl">
-          <MusicIcon className="h-5 w-5 text-[#5e6ad2] shrink-0" />
-          <h1 className="text-lg font-semibold text-white">{t('music.yourMusic')}</h1>
+          <MusicIcon className="theme-icon-accent h-5 w-5 shrink-0" />
+          <h1 className="text-lg font-semibold text-[var(--text-primary)]">{t('music.yourMusic')}</h1>
           {decks.length > 1 && (
             <Select value={deckFilter} onValueChange={setDeckFilter}>
               <SelectTrigger
                 size="sm"
-                className="w-[160px] bg-white/5 border-white/10 text-gray-200 hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+                className="theme-input w-[160px] hover:bg-[var(--accent-soft)] focus-visible:ring-0 focus-visible:border-[var(--accent)]"
               >
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-gray-900 border-white/10 text-gray-200">
-                <SelectItem value="all" className="focus:bg-white/10 focus:text-white">
+              <SelectContent className="theme-popover">
+                <SelectItem value="all" className="focus:bg-[var(--accent-soft)] focus:text-[var(--text-primary)]">
                   {t('music.allSongs')}
                 </SelectItem>
                 {decks.map((d) => (
                   <SelectItem
                     key={d.id}
                     value={d.id}
-                    className="focus:bg-white/10 focus:text-white"
+                    className="focus:bg-[var(--accent-soft)] focus:text-[var(--text-primary)]"
                   >
                     {d.name}
                   </SelectItem>
@@ -218,8 +223,8 @@ export default function MusicPG() {
           <LoadingIndicator text={t('music.loadingSongs')} />
         ) : filteredTracks.length === 0 ? (
           <div className="flex flex-col items-center gap-3">
-            <MusicIcon className="h-10 w-10 text-gray-700" />
-            <p className="text-gray-500 text-sm">{t('music.noSongs')}</p>
+            <MusicIcon className="h-10 w-10 text-[var(--text-muted)] opacity-70" />
+            <p className="theme-muted-text text-sm">{t('music.noSongs')}</p>
           </div>
         ) : (
           <>
@@ -245,18 +250,18 @@ export default function MusicPG() {
               >
                 {currentTrack ? (
                   <>
-                    <h2 className="text-2xl font-semibold text-white leading-tight">
+                    <h2 className="text-2xl font-semibold text-[var(--text-primary)] leading-tight">
                       {currentTrack.word}
                     </h2>
                     {currentTrack.translation && (
-                      <p className="text-gray-400 mt-1">{currentTrack.translation}</p>
+                      <p className="text-[var(--text-secondary)] mt-1">{currentTrack.translation}</p>
                     )}
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-[var(--text-muted)] mt-1">
                       {[currentTrack.genre, formatTime(duration)].filter(Boolean).join(' · ')}
                     </p>
                   </>
                 ) : (
-                  <p className="text-gray-600 text-sm">Select a song to play</p>
+                  <p className="theme-muted-text text-sm">Select a song to play</p>
                 )}
               </motion.div>
             </AnimatePresence>
@@ -266,7 +271,7 @@ export default function MusicPG() {
               <button
                 onClick={player.prev}
                 disabled={!currentTrack}
-                className="w-10 h-10 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                className={`w-10 h-10 text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] ${PLAYER_ROUNDED_ICON_BUTTON_CLASS}`}
                 aria-label="Previous"
               >
                 <SkipBack size={18} />
@@ -275,7 +280,7 @@ export default function MusicPG() {
               <button
                 onClick={player.togglePlay}
                 disabled={!currentTrack}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-gray-900 hover:bg-white/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed shadow-lg"
+                className={`w-12 h-12 flex items-center justify-center rounded-full bg-[var(--accent)] text-[var(--on-accent)] hover:brightness-110 transition-colors disabled:opacity-30 disabled:cursor-not-allowed shadow-lg shadow-[var(--accent-glow)] ${PLAYER_FOCUS_RING_CLASS}`}
                 aria-label={isPlaying ? 'Pause' : 'Play'}
               >
                 {isPlaying ? <Pause size={20} /> : <Play size={20} className="ml-0.5" />}
@@ -284,7 +289,7 @@ export default function MusicPG() {
               <button
                 onClick={player.next}
                 disabled={!currentTrack}
-                className="w-10 h-10 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                className={`w-10 h-10 text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] ${PLAYER_ROUNDED_ICON_BUTTON_CLASS}`}
                 aria-label="Next"
               >
                 <SkipForward size={18} />
@@ -292,10 +297,10 @@ export default function MusicPG() {
 
               <button
                 onClick={player.cycleRepeat}
-                className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${
+                className={`w-9 h-9 ${PLAYER_ROUNDED_ICON_BUTTON_CLASS} ${
                   repeatMode !== 'off'
                     ? PLAYER_ACTIVE_TOGGLE_CLASS
-                    : 'text-gray-600 hover:text-white hover:bg-white/10'
+                    : PLAYER_INACTIVE_TOGGLE_CLASS
                 }`}
                 aria-label={`Repeat: ${repeatMode}`}
                 title={repeatMode === 'off' ? 'Repeat' : 'Repeat one'}
@@ -305,10 +310,10 @@ export default function MusicPG() {
 
               <button
                 onClick={player.toggleShuffle}
-                className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${
+                className={`w-9 h-9 ${PLAYER_ROUNDED_ICON_BUTTON_CLASS} ${
                   shuffle
                     ? PLAYER_ACTIVE_TOGGLE_CLASS
-                    : 'text-gray-600 hover:text-white hover:bg-white/10'
+                    : PLAYER_INACTIVE_TOGGLE_CLASS
                 }`}
                 aria-label="Shuffle"
                 title="Shuffle"
@@ -319,22 +324,22 @@ export default function MusicPG() {
 
             {/* Progress / seek bar + volume — prominent, below controls */}
             <div className="w-full max-w-md flex items-center gap-3">
-              <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-9 text-right">
+              <span className="text-[11px] font-mono text-[var(--text-muted)] tabular-nums shrink-0 w-9 text-right">
                 {formatTime(currentTime)}
               </span>
 
               <div
                 ref={progressBarRef}
-                className="flex-1 h-1.5 bg-white/10 rounded-full cursor-pointer group"
+                className="flex-1 h-1.5 bg-[var(--field-bg)] rounded-full cursor-pointer group"
                 onClick={handleSeekClick}
               >
                 <div
-                  className="h-full bg-[#5e6ad2] rounded-full transition-none group-hover:bg-[#7b87e8]"
+                  className="h-full bg-[var(--accent)] rounded-full transition-none group-hover:brightness-110"
                   style={{ width: `${progress * 100}%` }}
                 />
               </div>
 
-              <span className="text-[11px] font-mono text-gray-500 tabular-nums shrink-0 w-9">
+              <span className="text-[11px] font-mono text-[var(--text-muted)] tabular-nums shrink-0 w-9">
                 {formatTime(duration)}
               </span>
 
@@ -343,7 +348,7 @@ export default function MusicPG() {
                 isMuted={isMuted}
                 onVolumeChange={player.setVolume}
                 onToggleMute={player.toggleMute}
-                buttonClassName="w-8 h-8 flex items-center justify-center rounded-full text-gray-500 hover:text-white hover:bg-white/10 transition-colors"
+                buttonClassName={`w-8 h-8 text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)] ${PLAYER_ROUNDED_ICON_BUTTON_CLASS}`}
                 iconSize={15}
                 popDirection="up"
               />

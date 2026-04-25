@@ -67,7 +67,7 @@ export function AppHeader() {
     .slice(0, 2)
 
   return (
-    <header className="flex items-center border-b border-border px-4 md:px-6 py-2 bg-background gap-2 sticky top-0 z-40">
+    <header className="app-topnav flex items-center px-4 md:px-6 py-2 gap-2 sticky top-0 z-40">
       {/* Mobile hamburger */}
       <div className="md:hidden">
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -91,7 +91,7 @@ export function AppHeader() {
                   className={cn(
                     'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
                     location.pathname === to || location.pathname.startsWith(to + '/')
-                      ? 'bg-accent text-accent-foreground'
+                      ? 'theme-chip-active'
                       : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                   )}
                 >
@@ -113,7 +113,7 @@ export function AppHeader() {
                       className={cn(
                         'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
                         location.pathname === to || location.pathname.startsWith(to + '/')
-                          ? 'bg-accent text-accent-foreground'
+                          ? 'theme-chip-active'
                           : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                       )}
                     >
@@ -143,7 +143,7 @@ export function AppHeader() {
             className={cn(
               'flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-medium transition-colors',
               location.pathname === to || location.pathname.startsWith(to + '/')
-                ? 'bg-accent text-accent-foreground'
+                ? 'theme-chip-active'
                 : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'
             )}
           >
@@ -160,7 +160,7 @@ export function AppHeader() {
                 className={cn(
                   'flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-medium transition-colors',
                   location.pathname.startsWith('/admin')
-                    ? 'bg-accent text-accent-foreground'
+                    ? 'theme-chip-active'
                     : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'
                 )}
               >

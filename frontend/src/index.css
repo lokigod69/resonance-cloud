@@ -17,7 +17,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
+  --color-accent: var(--accent-soft);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
@@ -464,18 +464,18 @@ input[type="range"].volume-slider::-moz-range-track {
    ============================================ */
 
 :root {
-  --pg-base-dark: #0a0a0c;
-  --pg-glass-panel-bg: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(20,20,30,0.8) 100%);
-  --pg-glass-border: rgba(255, 255, 255, 0.08);
-  --pg-glass-border-top: rgba(255, 255, 255, 0.25);
-  --pg-glass-border-left: rgba(255, 255, 255, 0.15);
-  --pg-glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.2);
-  --pg-accent-teal: #0de2c3;
-  --pg-accent-green: #34d399;
-  --pg-accent-rose: #f43f5e;
-  --pg-accent-gold: #fbbf24;
-  --pg-accent-violet: #8b5cf6;
-  --pg-text-dim: #9ca3af;
+  --pg-base-dark: var(--app-bg);
+  --pg-glass-panel-bg: linear-gradient(135deg, var(--surface-glass-strong) 0%, var(--surface-glass) 100%);
+  --pg-glass-border: var(--border-subtle);
+  --pg-glass-border-top: var(--border-strong);
+  --pg-glass-border-left: var(--border-subtle);
+  --pg-glass-shadow: var(--shadow-elevated), inset 0 1px 1px color-mix(in srgb, var(--text-primary) 12%, transparent);
+  --pg-accent-teal: var(--accent);
+  --pg-accent-green: var(--accent-2);
+  --pg-accent-rose: var(--accent);
+  --pg-accent-gold: var(--accent-warm);
+  --pg-accent-violet: var(--accent);
+  --pg-text-dim: var(--text-muted);
 }
 
 /* Glassy utility class */
@@ -500,43 +500,43 @@ input[type="range"].volume-slider::-moz-range-track {
 
 /* Skin-aware glass overrides — remap existing utility classes when PG skin is active */
 .skin-glassy .glass {
-  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(20,20,30,0.7) 100%);
+  background: var(--surface-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top-color: rgba(255, 255, 255, 0.2);
-  border-left-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.15);
+  border: 1px solid var(--border-subtle);
+  border-top-color: var(--border-strong);
+  border-left-color: var(--border-subtle);
+  box-shadow: var(--shadow-soft), inset 0 1px 1px color-mix(in srgb, var(--text-primary) 10%, transparent);
 }
 
 .skin-glassy .glass-strong {
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(20,20,30,0.85) 100%);
+  background: var(--surface-glass-strong);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-color: rgba(255, 255, 255, 0.3);
-  border-left-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.2);
+  border: 1px solid var(--border-subtle);
+  border-top-color: var(--border-strong);
+  border-left-color: var(--border-subtle);
+  box-shadow: var(--shadow-elevated), inset 0 1px 1px color-mix(in srgb, var(--text-primary) 12%, transparent);
 }
 
 .skin-glassy .glass-hover:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(20,20,30,0.75) 100%);
-  border-color: rgba(13, 226, 195, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(13, 226, 195, 0.1);
+  background: var(--surface-glass-strong);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border-subtle));
+  box-shadow: var(--shadow-soft), 0 0 15px var(--accent-glow);
 }
 
 .skin-glassy .glass-selected {
-  background: rgba(13, 226, 195, 0.08);
-  border-color: rgba(13, 226, 195, 0.4);
-  box-shadow: 0 0 20px rgba(13, 226, 195, 0.2);
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 42%, transparent);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .skin-glassy .glow-purple {
-  box-shadow: 0 0 20px rgba(13, 226, 195, 0.2);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .skin-glassy .gradient-bg {
-  background: linear-gradient(135deg, #0a0a0c 0%, #0d1117 50%, #0a0a0c 100%);
+  background: var(--shell-bg);
 }
 
 @keyframes pg-float {

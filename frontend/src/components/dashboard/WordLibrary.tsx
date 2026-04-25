@@ -51,8 +51,8 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
               onClick={() => setFilter(f)}
               className={`px-3 py-2 min-h-[36px] shrink-0 text-xs rounded-full border transition-colors ${
                 filter === f
-                  ? 'bg-foreground/15 border-foreground/30 text-foreground'
-                  : 'border-foreground/10 text-foreground/55 hover:text-foreground/80 hover:border-foreground/20'
+                  ? 'theme-chip-active'
+                  : 'theme-chip'
               }`}
             >
               {label}
@@ -70,8 +70,8 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
               onClick={() => setSort(value)}
               className={`px-3 py-2 min-h-[36px] shrink-0 text-xs rounded-full border transition-colors ${
                 sort === value
-                  ? 'bg-foreground/15 border-foreground/30 text-foreground'
-                  : 'border-foreground/10 text-foreground/55 hover:text-foreground/80 hover:border-foreground/20'
+                  ? 'theme-chip-active'
+                  : 'theme-chip'
               }`}
             >
               {label}
@@ -93,7 +93,7 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
               <button
                 key={word.id}
                 onClick={() => onWordClick(word)}
-                className="min-h-[64px] rounded-xl border border-border/50 bg-card hover:bg-accent/40 px-4 py-3 flex items-center gap-3 transition-colors cursor-pointer text-left"
+                className="theme-card min-h-[64px] rounded-xl hover:bg-[var(--surface-glass-strong)] px-4 py-3 flex items-center gap-3 transition-colors cursor-pointer text-left"
               >
                 {word.thumbnail_url ? (
                   <img

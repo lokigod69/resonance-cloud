@@ -120,7 +120,7 @@ export function RedeemCodeDialog({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="theme-dialog sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-center gap-2 text-2xl sm:text-3xl">
             <Coins className="h-6 w-6 text-primary" />
@@ -148,7 +148,7 @@ export function RedeemCodeDialog({
                 value={inviteCode}
                 onChange={(e) => setInviteCode(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleRedeem()}
-                className="text-center tracking-wider uppercase"
+                className="theme-input text-center tracking-wider uppercase"
               />
               {redeemError && (
                 <p className="text-sm text-destructive text-center">{redeemError}</p>
@@ -163,8 +163,8 @@ export function RedeemCodeDialog({
             </div>
           ) : (
             <div className="text-center space-y-2 py-2">
-              <div className="h-10 w-10 rounded-full bg-green-500/20 flex items-center justify-center mx-auto">
-                <Check className="h-5 w-5 text-green-400" />
+              <div className="h-10 w-10 rounded-full bg-[var(--accent-soft)] flex items-center justify-center mx-auto">
+                <Check className="h-5 w-5 text-[var(--accent-2)]" />
               </div>
               <p className="text-sm font-medium">
                 {t('credits.added', { count: redeemSuccess.credits })}

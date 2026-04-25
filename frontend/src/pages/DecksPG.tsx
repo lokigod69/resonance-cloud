@@ -258,8 +258,8 @@ export default function DecksPG() {
   if (decks.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6">
-        <div className="w-20 h-20 rounded-full bg-[var(--pg-accent-teal)]/10 flex items-center justify-center border border-[var(--pg-accent-teal)]/30">
-          <Sparkles className="h-10 w-10 text-[var(--pg-accent-teal)]" />
+        <div className="w-20 h-20 rounded-full bg-[var(--accent-soft)] flex items-center justify-center border border-[color-mix(in_srgb,var(--accent)_34%,transparent)]">
+          <Sparkles className="h-10 w-10 text-[var(--accent)]" />
         </div>
         <div className="text-center">
           <h2 className="text-2xl font-bold font-display mb-2">{t('dashboard.createFirst')}</h2>
@@ -269,7 +269,7 @@ export default function DecksPG() {
         </div>
         <button
           onClick={() => navigate('/generate')}
-          className="px-6 py-3 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/50 text-[var(--pg-accent-teal)] font-display font-semibold hover:bg-[var(--pg-accent-teal)]/30 transition-all shadow-[0_0_20px_rgba(13,226,195,0.2)]"
+          className="px-6 py-3 rounded-xl bg-[var(--accent-soft)] border border-[color-mix(in_srgb,var(--accent)_48%,transparent)] text-[var(--accent)] font-display font-semibold hover:brightness-110 transition-all shadow-[0_0_20px_var(--accent-glow)]"
         >
           <Sparkles className="h-4 w-4 inline mr-2" />
           {t('dashboard.generate')}
@@ -317,8 +317,8 @@ export default function DecksPG() {
                   onClick={() => setViewMode(mode)}
                   className={`p-2 rounded-md transition-all ${
                     viewMode === mode
-                      ? 'bg-white/10 text-white'
-                      : 'text-[var(--pg-text-dim)] hover:text-white'
+                      ? 'theme-chip-active'
+                      : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-soft)]'
                   }`}
                   title={label}
                 >
@@ -328,7 +328,7 @@ export default function DecksPG() {
             </div>
             <button
               onClick={() => navigate('/generate')}
-              className="decks-glass-add p-2.5 rounded-xl bg-[var(--pg-accent-teal)]/20 border border-[var(--pg-accent-teal)]/40 text-[var(--pg-accent-teal)] hover:bg-[var(--pg-accent-teal)]/30 transition-all"
+              className="decks-glass-add p-2.5 rounded-xl bg-[var(--accent-soft)] border border-[color-mix(in_srgb,var(--accent)_40%,transparent)] text-[var(--accent)] hover:brightness-110 transition-all"
               title={t('dashboard.newDeck')}
             >
               <Plus className="h-5 w-5" />
@@ -549,13 +549,13 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
       }}
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      className={`absolute inset-0 bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden cursor-pointer active:cursor-grabbing flex flex-col group shadow-[0_30px_60px_rgba(0,0,0,0.6)] ${!isTop ? 'pointer-events-none' : ''}`}
+      className={`theme-card absolute inset-0 rounded-2xl overflow-hidden cursor-pointer active:cursor-grabbing flex flex-col group shadow-[var(--shadow-elevated)] ${!isTop ? 'pointer-events-none' : ''}`}
       style={{ x: isTop ? x : stackX, y: stackY, scale: stackScale, rotate, touchAction: 'none', transformOrigin: 'bottom center' }}
       onClick={() => {
         if (isTop && !isDragging) onClick()
       }}
     >
-      <div className="h-[55%] w-full relative overflow-hidden bg-black/80">
+      <div className="h-[55%] w-full relative overflow-hidden bg-[var(--surface-0)]">
         {thumb ? (
           <motion.img
             src={thumb}
@@ -563,20 +563,20 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(13,226,195,0.1) 0%, #0d0d12 100%)' }}>
-            <Sparkles className="h-10 w-10 text-white/10" />
+          <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--accent-soft) 0%, var(--surface-1) 100%)' }}>
+            <Sparkles className="h-10 w-10 text-[var(--text-muted)] opacity-30" />
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0d0d12]" />
-        {!isTop && <div className="absolute inset-0 bg-black/60 z-50 transition-all duration-300 pointer-events-none" />}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[var(--surface-1)]" />
+        {!isTop && <div className="absolute inset-0 bg-[var(--app-bg)]/60 z-50 transition-all duration-300 pointer-events-none" />}
       </div>
 
       <div className="flex-1 p-6 flex flex-col justify-between">
         <div>
-          <p className="text-[var(--pg-accent-teal)] text-xs font-medium tracking-wide uppercase mb-2 font-display">
+          <p className="text-[var(--accent)] text-xs font-medium tracking-wide uppercase mb-2 font-display">
             <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {deck.target_language}
           </p>
-          <h2 className="text-2xl font-light text-white font-display">{displayName}</h2>
+          <h2 className="text-2xl font-light text-[var(--text-primary)] font-display">{displayName}</h2>
         </div>
         <p className="text-[var(--pg-text-dim)] text-sm">{tp('dashboard.wordCount', counts.total)}</p>
       </div>
@@ -601,20 +601,20 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
             onClick={() => onSelect(deck.id)}
-            className="text-left pg-glass rounded-2xl overflow-hidden hover:shadow-[0_0_25px_rgba(13,226,195,0.15)] hover:border-[var(--pg-accent-teal)]/30 transition-all group"
+            className="text-left pg-glass rounded-2xl overflow-hidden hover:shadow-[0_0_25px_var(--accent-glow)] hover:border-[color-mix(in_srgb,var(--accent)_34%,transparent)] transition-all group"
           >
-            <div className="aspect-[16/9] relative bg-white/5 overflow-hidden">
+            <div className="aspect-[16/9] relative bg-[var(--field-bg)] overflow-hidden">
               {thumb ? (
                 <img src={thumb} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-[var(--pg-accent-teal)]/5 to-transparent flex items-center justify-center">
-                  <Sparkles className="h-8 w-8 text-white/10" />
+                <div className="w-full h-full bg-gradient-to-br from-[var(--accent-soft)] to-transparent flex items-center justify-center">
+                  <Sparkles className="h-8 w-8 text-[var(--text-muted)] opacity-30" />
                 </div>
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
             <div className="p-4">
-              <h3 className="font-semibold font-display text-sm mb-1 group-hover:text-[var(--pg-accent-teal)] transition-colors">
+              <h3 className="font-semibold font-display text-sm mb-1 group-hover:text-[var(--accent)] transition-colors">
                 {displayName}
               </h3>
               <p className="text-xs text-[var(--pg-text-dim)]">
@@ -1189,7 +1189,7 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
           <motion.div
             key={orb.deck.id}
             onClick={() => onSelect(orb.deck.id)}
-            className="orbs-deck-orb absolute rounded-full overflow-hidden border border-white/10 cursor-pointer shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(13,226,195,0.4)] hover:border-[var(--pg-accent-teal)]/50 z-10 transition-colors"
+            className="orbs-deck-orb absolute rounded-full overflow-hidden border border-[var(--border-subtle)] cursor-pointer shadow-[0_0_20px_var(--accent-glow)] hover:shadow-[0_0_30px_var(--accent-glow)] hover:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] z-10 transition-colors"
             style={{ width: orb.size, height: orb.size }}
             initial={{ x: 0, y: 0, opacity: 0 }}
             animate={{
@@ -1207,7 +1207,7 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
             {thumb ? (
               <img src={thumb} alt={displayName} className="w-full h-full object-cover" style={{ mixBlendMode: 'screen', opacity: 0.8 }} />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-[var(--pg-accent-teal)]/15 to-[var(--pg-accent-rose)]/10 flex items-center justify-center">
+              <div className="w-full h-full bg-gradient-to-br from-[var(--accent-soft)] to-[var(--accent-2-soft)] flex items-center justify-center">
                 <FlagIcon code={orb.deck.target_language} className="w-8 h-auto" />
               </div>
             )}
