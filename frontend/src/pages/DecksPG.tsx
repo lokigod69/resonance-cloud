@@ -42,12 +42,16 @@ type WordStatus = {
 type ViewMode = 'stack' | 'grid' | 'orbs' | 'water'
 
 const WATER_DECK_SPACING = 256
-const WATER_RENDER_BUFFER = 6
-const WATER_VISUAL_RANGE = 3
+const WATER_RENDER_BUFFER = 8
+const WATER_VISUAL_RANGE = 4
 const WATER_PRELOAD_RANGE = 8
-const WATER_MAX_LIVE_DRAG = WATER_DECK_SPACING * 1.15
 const WATER_MAX_DRAG_JUMP = 2
 const WATER_DRAG_SPRING = { type: 'spring' as const, stiffness: 360, damping: 34 }
+
+function clampWaterPosition(position: number, maxIndex: number, fallback = 0) {
+  const safePosition = Number.isFinite(position) ? position : fallback
+  return Math.max(0, Math.min(safePosition, maxIndex))
+}
 
 export default function DecksPG() {
   const { user, authError } = useAuth()
@@ -551,10 +555,11 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
 
 function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const carouselPosition = useMotionValue(activeIndex)
+  const [displayPosition, setDisplayPosition] = useState(activeIndex)
   const [isDragging, setIsDragging] = useState(false)
   const suppressClickRef = useRef(false)
-  const dragX = useMotionValue(0)
-  const dragAnimationRef = useRef<{ stop: () => void } | null>(null)
+  const positionAnimationRef = useRef<{ stop: () => void } | null>(null)
   const dragStartRef = useRef<{
     x: number
     y: number
@@ -563,21 +568,44 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
     lastTime: number
     pointerId: number
     didDrag: boolean
+    position: number
+    velocityX: number
   } | null>(null)
 
   const maxIndex = Math.max(decks.length - 1, 0)
 
   const clampIndex = useCallback((index: number) => {
-    return Math.max(0, Math.min(index, maxIndex))
+    return Math.round(clampWaterPosition(index, maxIndex))
   }, [maxIndex])
 
-  useEffect(() => {
-    setActiveIndex((index) => clampIndex(index))
-  }, [clampIndex])
+  const clampPosition = useCallback((position: number, fallback = activeIndex) => {
+    return clampWaterPosition(position, maxIndex, fallback)
+  }, [activeIndex, maxIndex])
 
   useEffect(() => {
-    const start = Math.max(0, activeIndex - WATER_PRELOAD_RANGE)
-    const end = Math.min(maxIndex, activeIndex + WATER_PRELOAD_RANGE)
+    const clampedPosition = clampWaterPosition(carouselPosition.get(), maxIndex, activeIndex)
+    carouselPosition.set(clampedPosition)
+    setDisplayPosition(clampedPosition)
+    setActiveIndex((index) => clampIndex(index))
+  }, [activeIndex, carouselPosition, clampIndex, maxIndex])
+
+  useEffect(() => {
+    const unsubscribe = carouselPosition.on('change', (position) => {
+      setDisplayPosition(clampPosition(position))
+    })
+
+    return unsubscribe
+  }, [carouselPosition, clampPosition])
+
+  useEffect(() => {
+    return () => positionAnimationRef.current?.stop()
+  }, [])
+
+  const centerForBuffer = clampIndex(Math.round(displayPosition))
+
+  useEffect(() => {
+    const start = Math.max(0, centerForBuffer - WATER_PRELOAD_RANGE)
+    const end = Math.min(maxIndex, centerForBuffer + WATER_PRELOAD_RANGE)
 
     for (let i = start; i <= end; i++) {
       const deck = decks[i]
@@ -588,7 +616,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
         img.src = thumb
       }
     }
-  }, [activeIndex, decks, maxIndex, thumbnails])
+  }, [centerForBuffer, decks, maxIndex, thumbnails])
 
   const resetDragState = useCallback((delay = 0) => {
     window.setTimeout(() => {
@@ -599,96 +627,82 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
 
   const animateToIndex = useCallback((index: number) => {
     const targetIndex = clampIndex(index)
-    const delta = targetIndex - activeIndex
+    const currentPosition = clampPosition(carouselPosition.get(), activeIndex)
 
-    dragAnimationRef.current?.stop()
+    positionAnimationRef.current?.stop()
+    suppressClickRef.current = Math.abs(targetIndex - currentPosition) > 0.01
 
-    if (delta === 0) {
-      dragAnimationRef.current = animate(dragX, 0, {
-        ...WATER_DRAG_SPRING,
-        onComplete: () => resetDragState(40),
-      })
-      return
-    }
-
-    if (Math.abs(delta) > WATER_MAX_DRAG_JUMP) {
+    if (Math.abs(targetIndex - currentPosition) <= 0.001) {
+      carouselPosition.set(targetIndex)
       setActiveIndex(targetIndex)
-      dragX.set(0)
-      resetDragState(60)
+      setDisplayPosition(targetIndex)
+      resetDragState(40)
       return
     }
 
-    suppressClickRef.current = true
-    dragAnimationRef.current = animate(dragX, -delta * WATER_DECK_SPACING, {
+    positionAnimationRef.current = animate(carouselPosition, targetIndex, {
       ...WATER_DRAG_SPRING,
       onComplete: () => {
+        carouselPosition.set(targetIndex)
         setActiveIndex(targetIndex)
-        dragX.set(0)
+        setDisplayPosition(targetIndex)
         resetDragState(90)
       },
     })
-  }, [activeIndex, clampIndex, dragX, resetDragState])
+  }, [activeIndex, carouselPosition, clampIndex, clampPosition, resetDragState])
 
-  const jumpToIndex = useCallback((index: number) => {
-    dragAnimationRef.current?.stop()
-    setActiveIndex(clampIndex(index))
-    dragX.set(0)
-    resetDragState(40)
-  }, [clampIndex, dragX, resetDragState])
-
-  const goPrevious = useCallback(() => {
-    animateToIndex(activeIndex - 1)
-  }, [activeIndex, animateToIndex])
-
-  const goNext = useCallback(() => {
-    animateToIndex(activeIndex + 1)
-  }, [activeIndex, animateToIndex])
-
-  const getBoundedDragOffset = useCallback((offsetX: number) => {
-    if (activeIndex === 0 && offsetX > 0) {
-      return offsetX * 0.35
-    }
-
-    if (activeIndex === maxIndex && offsetX < 0) {
-      return offsetX * 0.35
-    }
-
-    return offsetX
-  }, [activeIndex, maxIndex])
-
-  const finishDrag = useCallback((offsetX: number, velocityX: number) => {
-    const distance = Math.abs(offsetX)
+  const snapToNearest = useCallback((velocityX = 0) => {
+    const currentPosition = clampPosition(carouselPosition.get(), activeIndex)
     const speed = Math.abs(velocityX)
+    const direction = velocityX < 0 ? 1 : velocityX > 0 ? -1 : 0
+    let targetIndex = Math.round(currentPosition)
 
-    let targetIndex = activeIndex
-    if (distance > 70 || speed > 450) {
-      const direction = offsetX < 0 || velocityX < -450 ? 1 : -1
-      const velocityJump = speed > 900 ? Math.floor(speed / 900) : 1
-      const distanceJump = Math.max(1, Math.round(distance / WATER_DECK_SPACING))
-      const availableJump = direction === 1 ? maxIndex - activeIndex : activeIndex
-      const jump = Math.min(WATER_MAX_DRAG_JUMP, availableJump, Math.max(velocityJump, distanceJump))
-      targetIndex = activeIndex + direction * jump
+    if (direction !== 0 && speed > 620) {
+      const velocityJump = Math.min(WATER_MAX_DRAG_JUMP, speed > 1500 ? 2 : 1)
+      const velocityTarget = Math.round(currentPosition + direction * velocityJump)
+      targetIndex = direction > 0
+        ? Math.max(targetIndex, velocityTarget)
+        : Math.min(targetIndex, velocityTarget)
     }
 
     animateToIndex(targetIndex)
-  }, [activeIndex, animateToIndex, maxIndex])
+  }, [activeIndex, animateToIndex, carouselPosition, clampPosition])
+
+  const goPrevious = useCallback(() => {
+    animateToIndex(Math.round(clampPosition(carouselPosition.get(), activeIndex)) - 1)
+  }, [activeIndex, animateToIndex, carouselPosition, clampPosition])
+
+  const goNext = useCallback(() => {
+    animateToIndex(Math.round(clampPosition(carouselPosition.get(), activeIndex)) + 1)
+  }, [activeIndex, animateToIndex, carouselPosition, clampPosition])
+
+  const handleScrubPosition = useCallback((position: number) => {
+    const nextPosition = clampPosition(position, activeIndex)
+    positionAnimationRef.current?.stop()
+    suppressClickRef.current = true
+    carouselPosition.set(nextPosition)
+    setDisplayPosition(nextPosition)
+  }, [activeIndex, carouselPosition, clampPosition])
 
   const handleRailPointerDown = useCallback((event: PointerEvent<HTMLDivElement>) => {
     if (event.button !== 0) return
 
-    dragAnimationRef.current?.stop()
+    positionAnimationRef.current?.stop()
+    const now = performance.now()
+    const startPosition = clampPosition(carouselPosition.get(), activeIndex)
     dragStartRef.current = {
       x: event.clientX,
       y: event.clientY,
-      time: performance.now(),
+      time: now,
       lastX: event.clientX,
-      lastTime: performance.now(),
+      lastTime: now,
       pointerId: event.pointerId,
       didDrag: false,
+      position: startPosition,
+      velocityX: 0,
     }
     suppressClickRef.current = false
-    event.currentTarget.setPointerCapture(event.pointerId)
-  }, [])
+  }, [activeIndex, carouselPosition, clampPosition])
 
   const handleRailPointerMove = useCallback((event: PointerEvent<HTMLDivElement>) => {
     const start = dragStartRef.current
@@ -700,15 +714,23 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
 
     if (isHorizontalDrag || start.didDrag) {
       const now = performance.now()
+      const elapsed = Math.max(now - start.lastTime, 1)
       start.didDrag = true
+      start.velocityX = ((event.clientX - start.lastX) / elapsed) * 1000
       start.lastX = event.clientX
       start.lastTime = now
       setIsDragging(true)
       suppressClickRef.current = true
-      const liveOffset = Math.max(-WATER_MAX_LIVE_DRAG, Math.min(WATER_MAX_LIVE_DRAG, rawOffsetX))
-      dragX.set(getBoundedDragOffset(liveOffset))
+      event.preventDefault()
+      if (!event.currentTarget.hasPointerCapture(start.pointerId)) {
+        event.currentTarget.setPointerCapture(start.pointerId)
+      }
+
+      const nextPosition = clampPosition(start.position - rawOffsetX / WATER_DECK_SPACING, start.position)
+      carouselPosition.set(nextPosition)
+      setDisplayPosition(nextPosition)
     }
-  }, [dragX, getBoundedDragOffset])
+  }, [carouselPosition, clampPosition])
 
   const handleRailPointerUp = useCallback((event: PointerEvent<HTMLDivElement>) => {
     const start = dragStartRef.current
@@ -724,11 +746,11 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
       return
     }
 
-    const offsetX = dragX.get()
     const elapsed = Math.max(performance.now() - start.time, 1)
-    const velocityX = ((event.clientX - start.x) / elapsed) * 1000
-    finishDrag(offsetX, velocityX)
-  }, [dragX, finishDrag, resetDragState])
+    const averageVelocityX = ((event.clientX - start.x) / elapsed) * 1000
+    const velocityX = Math.abs(start.velocityX) > 1 ? start.velocityX : averageVelocityX
+    snapToNearest(velocityX)
+  }, [resetDragState, snapToNearest])
 
   const handleRailPointerCancel = useCallback((event: PointerEvent<HTMLDivElement>) => {
     const start = dragStartRef.current
@@ -736,14 +758,15 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
     if (start && event.currentTarget.hasPointerCapture(start.pointerId)) {
       event.currentTarget.releasePointerCapture(start.pointerId)
     }
-    animateToIndex(activeIndex)
-  }, [activeIndex, animateToIndex])
+    snapToNearest()
+  }, [snapToNearest])
 
   const visibleDecks = decks
-    .map((deck, index) => ({ deck, index, offset: index - activeIndex }))
+    .map((deck, index) => ({ deck, index, offset: index - centerForBuffer }))
     .filter(({ offset }) => Math.abs(offset) <= WATER_RENDER_BUFFER)
 
-  const scrubberProgress = decks.length > 1 ? (activeIndex / (decks.length - 1)) * 100 : 0
+  const roundedDisplayIndex = clampIndex(Math.round(displayPosition))
+  const scrubberProgress = maxIndex > 0 ? (displayPosition / maxIndex) * 100 : 0
 
   return (
     <div className="water-decks-stage">
@@ -761,31 +784,31 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
         style={{ touchAction: 'pan-y' }}
       >
         <div className="water-decks-halo-layer" aria-hidden="true">
-          {visibleDecks.map(({ index, offset }) => (
-            <WaterDeckHalo key={`halo-${index}`} offset={offset} dragX={dragX} />
+          {visibleDecks.map(({ index }) => (
+            <WaterDeckHalo key={`halo-${index}`} index={index} carouselPosition={carouselPosition} />
           ))}
         </div>
-        <AnimatePresence initial={false}>
-          {visibleDecks.map(({ deck, index, offset }) => (
-            <WaterDeckCard
-              key={deck.id}
-              deck={deck}
-              offset={offset}
-              isActive={offset === 0}
-              wordCounts={wordCounts}
-              thumbnails={thumbnails}
-              dragX={dragX}
-              onClick={() => {
-                if (isDragging || suppressClickRef.current) return
-                if (offset === 0) {
-                  onSelect(deck.id)
-                } else {
-                  animateToIndex(index)
-                }
-              }}
-            />
-          ))}
-        </AnimatePresence>
+        {visibleDecks.map(({ deck, index, offset }) => (
+          <WaterDeckCard
+            key={deck.id}
+            deck={deck}
+            index={index}
+            isActive={roundedDisplayIndex === index}
+            isFar={Math.abs(offset) > WATER_VISUAL_RANGE}
+            wordCounts={wordCounts}
+            thumbnails={thumbnails}
+            carouselPosition={carouselPosition}
+            onClick={() => {
+              if (isDragging || suppressClickRef.current) return
+              const centeredIndex = clampIndex(Math.round(carouselPosition.get()))
+              if (centeredIndex === index) {
+                onSelect(deck.id)
+              } else {
+                animateToIndex(index)
+              }
+            }}
+          />
+        ))}
       </motion.div>
 
       <div className="water-decks-controls">
@@ -793,7 +816,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
           type="button"
           className="water-decks-arrow water-decks-arrow-inline water-decks-arrow-left"
           onClick={goPrevious}
-          disabled={activeIndex === 0}
+          disabled={displayPosition <= 0.001}
           aria-label="Previous deck"
         >
           <ChevronLeft className="h-5 w-5" />
@@ -801,17 +824,22 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
 
         <div
           className="water-decks-scrubber-wrap"
-          aria-label={`Deck ${activeIndex + 1} of ${decks.length}`}
+          aria-label={`Deck ${roundedDisplayIndex + 1} of ${decks.length}`}
           style={{ '--water-scrubber-progress': `${scrubberProgress}%` } as CSSProperties}
         >
-          <span>{activeIndex + 1}</span>
+          <span>{roundedDisplayIndex + 1}</span>
           <input
             className="water-decks-scrubber"
             type="range"
             min={0}
             max={maxIndex}
-            value={activeIndex}
-            onChange={(event) => jumpToIndex(Number(event.currentTarget.value))}
+            step={0.01}
+            value={displayPosition}
+            onInput={(event) => handleScrubPosition(Number(event.currentTarget.value))}
+            onChange={(event) => handleScrubPosition(Number(event.currentTarget.value))}
+            onPointerUp={() => snapToNearest()}
+            onPointerCancel={() => snapToNearest()}
+            onBlur={() => snapToNearest()}
             aria-label="Browse decks"
           />
           <span>{decks.length}</span>
@@ -821,7 +849,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
           type="button"
           className="water-decks-arrow water-decks-arrow-inline water-decks-arrow-right"
           onClick={goNext}
-          disabled={activeIndex === decks.length - 1}
+          disabled={displayPosition >= maxIndex - 0.001}
           aria-label="Next deck"
         >
           <ChevronRight className="h-5 w-5" />
@@ -833,38 +861,35 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
 
 interface WaterDeckCardProps {
   deck: Deck
-  offset: number
+  index: number
   isActive: boolean
+  isFar: boolean
   wordCounts: ViewProps['wordCounts']
   thumbnails: ViewProps['thumbnails']
-  dragX: MotionValue<number>
+  carouselPosition: MotionValue<number>
   onClick: () => void
 }
 
-function WaterDeckCard({ deck, offset, isActive, wordCounts, thumbnails, dragX, onClick }: WaterDeckCardProps) {
+function WaterDeckCard({ deck, index, isActive, isFar, wordCounts, thumbnails, carouselPosition, onClick }: WaterDeckCardProps) {
   const { tp, locale } = useTranslation()
   const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
   const thumb = thumbnails[deck.id]
-  const distance = Math.abs(offset)
   const isGenerating = deck.status === 'generating'
-  const virtualOffset = useTransform(dragX, (xValue) => offset + xValue / WATER_DECK_SPACING)
-  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISUAL_RANGE + 1))
+  const virtualOffset = useTransform(carouselPosition, (position) => index - (Number.isFinite(position) ? position : 0))
+  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISUAL_RANGE))
   const cardX = useTransform(virtualOffset, (value) => value * WATER_DECK_SPACING)
-  const cardY = useTransform(virtualDistance, [0, 1, 2, 3, 4], [0, 24, 48, 68, 78])
-  const cardScale = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.78, 0.62, 0.48, 0.42])
-  const cardOpacity = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.78, 0.34, 0, 0])
+  const cardY = useTransform(virtualDistance, [0, 1, 2, 3, 4], [0, 22, 42, 58, 68])
+  const cardScale = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.78, 0.62, 0.45, 0.35])
+  const cardOpacity = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.78, 0.34, 0.08, 0])
   const rotateY = useTransform(virtualOffset, (value) => value * -24)
   const rotateZ = useTransform(virtualOffset, (value) => value * -1.8)
-  const zIndex = useTransform(virtualDistance, (value) => Math.round(40 - value * 5))
+  const zIndex = useTransform(virtualDistance, (value) => Math.round(80 - value * 10))
 
   return (
     <motion.button
       type="button"
-      className={`water-deck-card ${isActive ? 'water-deck-card-active' : ''} ${distance >= 2 ? 'water-deck-card-far' : ''}`}
+      className={`water-deck-card ${isActive ? 'water-deck-card-active' : ''} ${isFar ? 'water-deck-card-far' : ''}`}
       onClick={onClick}
-      initial={{ opacity: 0, scale: 0.84, y: 28 }}
-      exit={{ opacity: 0, scale: 0.76, y: 34 }}
-      transition={{ type: 'spring', stiffness: 260, damping: 30 }}
       style={{
         x: cardX,
         y: cardY,
@@ -900,36 +925,25 @@ function WaterDeckCard({ deck, offset, isActive, wordCounts, thumbnails, dragX, 
           </p>
         </div>
       </div>
-
-      <div className="water-deck-reflection" aria-hidden="true">
-        <WaterDeckArtwork
-          deck={deck}
-          displayName={displayName}
-          isGenerating={isGenerating}
-          thumbnail={thumb}
-          reflection
-        />
-      </div>
     </motion.button>
   )
 }
 
 interface WaterDeckHaloProps {
-  offset: number
-  dragX: MotionValue<number>
+  index: number
+  carouselPosition: MotionValue<number>
 }
 
-function WaterDeckHalo({ offset, dragX }: WaterDeckHaloProps) {
-  const distance = Math.min(Math.abs(offset), 2)
-  const virtualOffset = useTransform(dragX, (xValue) => offset + xValue / WATER_DECK_SPACING)
-  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISUAL_RANGE + 1))
+function WaterDeckHalo({ index, carouselPosition }: WaterDeckHaloProps) {
+  const virtualOffset = useTransform(carouselPosition, (position) => index - (Number.isFinite(position) ? position : 0))
+  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), WATER_VISUAL_RANGE))
   const x = useTransform(virtualOffset, (value) => value * WATER_DECK_SPACING)
-  const opacity = useTransform(virtualDistance, [0, 1, 2, 3, 4], [0.82, 0.38, 0.16, 0, 0])
-  const scale = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.72, 0.5, 0.36, 0.3])
+  const opacity = useTransform(virtualDistance, [0, 1, 2, 3, 4], [0.52, 0.26, 0.1, 0.02, 0])
+  const scale = useTransform(virtualDistance, [0, 1, 2, 3, 4], [1, 0.72, 0.48, 0.24, 0.18])
 
   return (
     <motion.div
-      className={`water-deck-halo water-deck-halo-${distance}`}
+      className="water-deck-halo"
       style={{ x, opacity, scale }}
     />
   )
