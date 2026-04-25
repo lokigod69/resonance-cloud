@@ -581,8 +581,11 @@
   position: relative;
   height: clamp(372px, 51dvh, 472px);
   overflow: hidden;
+  isolation: isolate;
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(13, 18, 27, 0.78), rgba(5, 8, 13, 0.98));
+  background:
+    linear-gradient(180deg, rgba(13, 18, 27, 0.78), rgba(5, 8, 13, 0.98)),
+    #03080c;
   border: 1px solid rgba(165, 224, 245, 0.18);
   box-shadow:
     0 34px 82px rgba(0, 0, 0, 0.62),
@@ -676,11 +679,13 @@
   inset: 0;
   z-index: 0;
   opacity: 1;
-  transition: opacity 180ms ease;
+  visibility: visible;
+  transition: opacity 180ms ease, visibility 0s linear 180ms;
 }
 
 .skin-glassy .water-deck-fallback-underlay.is-loaded {
   opacity: 0;
+  visibility: hidden;
 }
 
 .skin-glassy .water-deck-fallback-caustics {
@@ -739,6 +744,16 @@
   background:
     linear-gradient(180deg, rgba(2, 6, 10, 0.02) 0%, transparent 38%, rgba(5, 7, 12, 0.6) 64%, rgba(5, 7, 12, 0.98) 100%),
     radial-gradient(ellipse at center, transparent 24%, rgba(0, 0, 0, 0.28) 100%);
+}
+
+.skin-glassy .water-deck-card-dim {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(2, 8, 12, 0.08), rgba(2, 8, 12, 0.56));
+  opacity: var(--water-card-dim, 0);
 }
 
 .skin-glassy .water-deck-copy {

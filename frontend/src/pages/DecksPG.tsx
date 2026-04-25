@@ -4,10 +4,11 @@ import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { motion, AnimatePresence, animate, useMotionValue, useTransform } from 'framer-motion'
-import type { MotionValue, PanInfo } from 'framer-motion'
+import type { MotionStyle, MotionValue, PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { FlagIcon } from '@/components/ui/FlagIcon'
+import { getWaterCardDim, getWaterCardRootOpacity, getWaterCardZIndex, getWaterRailClickTargetIndex } from './decksWaterMotion'
 import {
   Sparkles,
   Plus,
@@ -62,7 +63,7 @@ function getInitialViewMode(): ViewMode {
 }
 
 const WATER_DESKTOP_DECK_SPACING = 258
-const WATER_MOBILE_DECK_SPACING = 164
+const WATER_MOBILE_DECK_SPACING = 172
 const WATER_DESKTOP_RENDER_BUFFER = 3
 const WATER_MOBILE_RENDER_BUFFER = 2
 const WATER_DESKTOP_VISUAL_RANGE = 3
@@ -824,6 +825,21 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
     }
 
     if (!start.didDrag) {
+      if (event.target === event.currentTarget) {
+        const railRect = event.currentTarget.getBoundingClientRect()
+        const targetIndex = getWaterRailClickTargetIndex(
+          start.position,
+          event.clientX,
+          railRect.left,
+          railRect.width,
+          deckSpacing,
+          maxIndex,
+        )
+
+        if (targetIndex !== null) {
+          animateToIndex(targetIndex)
+        }
+      }
       resetDragState()
       return
     }
@@ -832,7 +848,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
     const averageVelocityX = ((event.clientX - start.x) / elapsed) * 1000
     const velocityX = Math.abs(start.velocityX) > 1 ? start.velocityX : averageVelocityX
     snapToNearest(velocityX)
-  }, [resetDragState, snapToNearest])
+  }, [animateToIndex, deckSpacing, maxIndex, resetDragState, snapToNearest])
 
   const handleRailPointerCancel = useCallback((event: PointerEvent<HTMLDivElement>) => {
     const start = dragStartRef.current
@@ -979,7 +995,8 @@ function WaterDeckCard({
   const thumb = thumbnails[deck.id]
   const isGenerating = deck.status === 'generating'
   const virtualOffset = useTransform(carouselPosition, (position) => index - (Number.isFinite(position) ? position : 0))
-  const virtualDistance = useTransform(virtualOffset, (value) => Math.min(Math.abs(value), visualRange))
+  const rawVirtualDistance = useTransform(virtualOffset, (value) => Math.abs(value))
+  const virtualDistance = useTransform(rawVirtualDistance, (value) => Math.min(value, visualRange))
   const cardX = useTransform(virtualOffset, (value) => value * deckSpacing)
   const cardY = useTransform(virtualDistance, (value) => {
     const distance = Math.min(Math.max(value, 0), visualRange)
@@ -1000,20 +1017,12 @@ function WaterDeckCard({
     if (distance <= 2) return 0.82 - (distance - 1) * 0.13
     return Math.max(0.56, 0.69 - (distance - 2) * 0.13)
   })
-  const cardOpacity = useTransform(virtualDistance, (value) => {
-    const distance = Math.min(Math.max(value, 0), visualRange)
-    if (isMobile) {
-      if (distance <= 1) return 1 - distance * 0.3
-      return Math.max(0.18, 0.7 - (distance - 1) * 0.52)
-    }
-    if (distance <= 1) return 1 - distance * 0.22
-    if (distance <= 2) return 0.78 - (distance - 1) * 0.3
-    return Math.max(0.14, 0.48 - (distance - 2) * 0.34)
-  })
+  const cardRootOpacity = useTransform(rawVirtualDistance, getWaterCardRootOpacity)
+  const cardDim = useTransform(rawVirtualDistance, getWaterCardDim)
   const rotateY = useTransform(virtualOffset, (value) => value * (isMobile ? -8 : -16))
   const rotateZ = useTransform(virtualOffset, (value) => value * (isMobile ? -0.25 : -0.75))
   const cardZ = useTransform(virtualDistance, (value) => -Math.min(value, visualRange) * (isMobile ? 14 : 28))
-  const zIndex = useTransform(virtualDistance, (value) => Math.round(100 - value * 16))
+  const zIndex = useTransform(virtualOffset, getWaterCardZIndex)
 
   return (
     <motion.button
@@ -1024,12 +1033,13 @@ function WaterDeckCard({
         x: cardX,
         y: cardY,
         scale: cardScale,
-        opacity: cardOpacity,
+        opacity: cardRootOpacity,
         rotateY,
         rotateZ,
         z: cardZ,
         zIndex,
-      }}
+        '--water-card-dim': cardDim,
+      } as MotionStyle & { '--water-card-dim': MotionValue<number> }}
       aria-label={isActive ? `Open ${displayName}` : `Focus ${displayName}`}
     >
       <div className="water-deck-card-shell">
@@ -1044,6 +1054,7 @@ function WaterDeckCard({
           />
           <div className="water-deck-image-shade" />
         </div>
+        <div className="water-deck-card-dim" aria-hidden="true" />
 
         <div className="water-deck-copy">
           <p className="water-deck-language">
