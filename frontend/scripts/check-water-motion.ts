@@ -52,8 +52,38 @@ assertClose(getWaterCardScale(1, true), 0.78, 'mobile side scale is unchanged')
 
 const desktopWidth = 360
 const mobileWidth = 310
-const desktopMinGap = 18
-const mobileMinGap = 12
+const desktopMinGap = 6
+const mobileMinGap = 4
+
+function assertAdjacentGap(slotA: number, slotB: number, isMobile: boolean, width: number, minGap: number) {
+  const spacing = isMobile ? 172 : 258
+  const xA = Math.abs(getWaterCardX(slotA, spacing, isMobile, width))
+  const xB = Math.abs(getWaterCardX(slotB, spacing, isMobile, width))
+  const scaleA = getWaterCardScale(slotA, isMobile)
+  const scaleB = getWaterCardScale(slotB, isMobile)
+  const gap = Math.abs(xB - xA) - ((width * scaleA) / 2 + (width * scaleB) / 2)
+
+  assert.ok(gap >= minGap, `slot ${slotA}-${slotB} gap should be >= ${minGap}, got ${gap}`)
+}
+
+function assertRotatedLaneGap(
+  slotA: number,
+  slotB: number,
+  isMobile: boolean,
+  width: number,
+  minGap: number,
+  minScaleA: number,
+  minScaleB: number,
+) {
+  const spacing = isMobile ? 172 : 258
+  const xA = Math.abs(getWaterCardX(slotA, spacing, isMobile, width))
+  const xB = Math.abs(getWaterCardX(slotB, spacing, isMobile, width))
+  const minWidthA = width * Math.max(getWaterCardScale(slotA, isMobile), minScaleA)
+  const minWidthB = width * Math.max(getWaterCardScale(slotB, isMobile), minScaleB)
+  const gap = Math.abs(xB - xA) - (minWidthA / 2 + minWidthB / 2)
+
+  assert.ok(gap >= minGap, `rotated slot ${slotA}-${slotB} gap should be >= ${minGap}, got ${gap}`)
+}
 
 const desktopGapAtOne =
   getWaterCardX(1, 258, false, desktopWidth) -
@@ -78,3 +108,12 @@ assert.ok(
   mobileMidX * 2 >= mobileWidth * mobileMidScale + mobileMinGap,
   'mobile half-crossover keeps cards separated',
 )
+
+assertAdjacentGap(0, 1, false, desktopWidth, desktopMinGap)
+assertAdjacentGap(1, 2, false, desktopWidth, desktopMinGap)
+assertAdjacentGap(2, 3, false, desktopWidth, desktopMinGap)
+assertAdjacentGap(0, 1, true, mobileWidth, mobileMinGap)
+assertAdjacentGap(1, 2, true, mobileWidth, mobileMinGap)
+assertRotatedLaneGap(1, 2, false, desktopWidth, desktopMinGap, 0.96, 0.96)
+assertRotatedLaneGap(0, 1, true, mobileWidth, mobileMinGap, 1, 0.84)
+assertRotatedLaneGap(1, 2, true, mobileWidth, mobileMinGap, 0.84, 0.84)

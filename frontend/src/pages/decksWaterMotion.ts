@@ -4,8 +4,8 @@ function normalizeDistance(distance: number) {
 
 const WATER_DESKTOP_CARD_WIDTH = 360
 const WATER_MOBILE_CARD_WIDTH = 310
-const WATER_DESKTOP_CARD_GAP = 18
-const WATER_MOBILE_CARD_GAP = 12
+const WATER_DESKTOP_CARD_GAP = 8
+const WATER_MOBILE_CARD_GAP = 5
 
 export function getWaterCardScale(distance: number, isMobile = false) {
   const safeDistance = normalizeDistance(distance)
@@ -20,9 +20,45 @@ export function getWaterCardScale(distance: number, isMobile = false) {
   return Math.max(0.56, 0.69 - (safeDistance - 2) * 0.13)
 }
 
+function getWaterCardSpacingScale(distance: number, isMobile = false) {
+  const scale = getWaterCardScale(distance, isMobile)
+  if (distance <= 0) return scale
+
+  return Math.max(scale, isMobile ? 0.84 : 0.96)
+}
+
+function getWaterSlotX(
+  distance: number,
+  isMobile = false,
+  cardWidth = isMobile ? WATER_MOBILE_CARD_WIDTH : WATER_DESKTOP_CARD_WIDTH,
+) {
+  const safeDistance = Number.isFinite(distance) ? Math.max(0, distance) : 0
+  const safeCardWidth = Number.isFinite(cardWidth) ? Math.max(0, cardWidth) : 0
+  const whole = Math.floor(safeDistance)
+  const fraction = safeDistance - whole
+  const gap = isMobile ? WATER_MOBILE_CARD_GAP : WATER_DESKTOP_CARD_GAP
+
+  const getSlotX = (slot: number) => {
+    if (slot <= 0) return 0
+
+    let x = 0
+    for (let i = 0; i < slot; i += 1) {
+      const leftScale = getWaterCardSpacingScale(i, isMobile)
+      const rightScale = getWaterCardSpacingScale(i + 1, isMobile)
+      x += (safeCardWidth * leftScale) / 2 + (safeCardWidth * rightScale) / 2 + gap
+    }
+    return x
+  }
+
+  const from = getSlotX(whole)
+  const to = getSlotX(whole + 1)
+
+  return from + (to - from) * fraction
+}
+
 export function getWaterCardX(
   offset: number,
-  deckSpacing: number,
+  _deckSpacing: number,
   isMobile = false,
   cardWidth = isMobile ? WATER_MOBILE_CARD_WIDTH : WATER_DESKTOP_CARD_WIDTH,
 ) {
@@ -31,19 +67,7 @@ export function getWaterCardX(
   const direction = safeOffset === 0 ? 0 : Math.sign(safeOffset)
   if (direction === 0) return 0
 
-  const safeSpacing = Number.isFinite(deckSpacing) ? Math.max(0, deckSpacing) : 0
-  const safeCardWidth = Number.isFinite(cardWidth) ? Math.max(0, cardWidth) : 0
-  const gap = isMobile ? WATER_MOBILE_CARD_GAP : WATER_DESKTOP_CARD_GAP
-  const scale = getWaterCardScale(distance, isMobile)
-  const baseX = distance * safeSpacing
-  const crossoverBoost = Math.sin(Math.min(distance, 1) * Math.PI) * (isMobile ? 14 : 24)
-  const minAdjacentDistance = safeCardWidth / 2 + (safeCardWidth * scale) / 2 + gap
-  const minDistance =
-    distance <= 1
-      ? minAdjacentDistance * distance
-      : minAdjacentDistance + (distance - 1) * safeSpacing * 0.82
-
-  return direction * Math.max(baseX + crossoverBoost, minDistance)
+  return direction * getWaterSlotX(distance, isMobile, cardWidth)
 }
 
 export function getWaterCardRootOpacity(distance: number) {
