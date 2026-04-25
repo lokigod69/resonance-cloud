@@ -1815,6 +1815,100 @@
   }
 }
 
+/* Watery Decks Phase 5 polish */
+.skin-glassy .water-decks-page::after,
+.skin-glassy .water-decks-active-glow {
+  display: none;
+}
+
+.skin-glassy .water-decks-header .decks-glass-header {
+  margin-bottom: 30px;
+}
+
+.skin-glassy .water-decks-stage {
+  min-height: min(740px, calc(100dvh - 126px));
+  margin-top: 8px;
+}
+
+.skin-glassy .water-decks-rail {
+  height: 600px;
+  padding-top: 54px;
+}
+
+.skin-glassy .water-decks-horizon {
+  top: 352px;
+}
+
+.skin-glassy .water-decks-halo-layer {
+  top: 454px;
+}
+
+.skin-glassy .water-decks-controls {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  margin: -46px auto 0;
+}
+
+.skin-glassy .water-decks-controls .water-decks-arrow {
+  position: relative;
+  inset: auto;
+  flex: 0 0 auto;
+}
+
+.skin-glassy .water-decks-controls .water-decks-arrow-left,
+.skin-glassy .water-decks-controls .water-decks-arrow-right {
+  left: auto;
+  right: auto;
+}
+
+.skin-glassy .water-decks-controls .water-decks-scrubber-wrap {
+  width: min(52vw, 360px);
+  max-width: min(52vw, 360px);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .skin-glassy .water-decks-header .decks-glass-header {
+    margin-bottom: 22px;
+  }
+
+  .skin-glassy .water-decks-stage {
+    min-height: min(600px, calc(100dvh - 132px));
+    margin-top: 4px;
+  }
+
+  .skin-glassy .water-decks-rail {
+    height: 500px;
+    padding-top: 42px;
+  }
+
+  .skin-glassy .water-decks-horizon {
+    top: 304px;
+  }
+
+  .skin-glassy .water-decks-halo-layer {
+    top: 402px;
+  }
+
+  .skin-glassy .water-decks-controls {
+    width: 100%;
+    margin-top: -36px;
+    gap: 0;
+  }
+
+  .skin-glassy .water-decks-controls .water-decks-scrubber-wrap {
+    width: min(100% - 28px, 342px);
+    max-width: min(100% - 28px, 342px);
+    margin: 0;
+  }
+}
+
 /* Glassy Deck Orbs deboxed page stage */
 .skin-glassy .orbs-decks-stage {
   position: relative;
