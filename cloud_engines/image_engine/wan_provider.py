@@ -84,6 +84,7 @@ def render_scene_wan(
         image_prompt,
         chain_instruction=chain_instruction,
         use_color_palette=use_color_palette,
+        has_reference_image=bool(input_urls),
     )
     logger.info("Wan prompt (%d chars): %.120s...", len(prompt_text), prompt_text)
 

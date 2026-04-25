@@ -8,16 +8,6 @@ from __future__ import annotations
 
 from typing import Optional
 
-DEFAULT_NEGATIVE = [
-    "low quality",
-    "blurry eyes",
-    "bad hands",
-    "extra fingers",
-    "deformed anatomy",
-    "duplicate subject",
-    "cluttered frame",
-]
-
 MAX_PROMPT_CHARS = 1200  # Wan handles longer prompts than SD-based models
 
 
@@ -25,6 +15,8 @@ def compile_scene_to_text(
     scene: dict,
     chain_instruction: Optional[str] = None,
     use_color_palette: bool = False,
+    *,
+    has_reference_image: bool = False,
 ) -> str:
     """Convert an ImagePromptData dict into a fluent natural language prompt.
 
@@ -39,36 +31,28 @@ def compile_scene_to_text(
             composition/lighting/mood get recency weight in cross-attention.
         use_color_palette: When True, include the "Color palette: ..." section
             built from scene["colors"]. When False (default), omit it entirely.
+        has_reference_image: When True, include chain_instruction as reference
+            context. When False, omit it even if chain_instruction is set.
 
     Returns:
         Prompt string suitable for Wan 2.7 or similar text-prompt models.
     """
     parts: list[str] = []
 
-    # Primary sentence: subject + scene
-    # Fold art style into subject so it anchors to the highest-attention slot
-    # in Wan's text encoder. The Style: line at position 2 below still repeats
-    # it for reinforcement. Style source is the LLM-expanded phrase from the
-    # storyboard (scene.image_prompt.style), not the raw settings token.
+    # Primary sentence: subject + scene. Style stays in the labeled section
+    # below, sourced from scene.image_prompt.style as expanded by the storyboard
+    # LLM, not the raw settings token.
     subject = _clean(scene.get("subject", ""))
     scene_desc = _clean(scene.get("scene", ""))
-    style_desc = _clean(scene.get("style", ""))
-    if style_desc.lower() in ("n/a", "none", "null", "auto"):
-        style_desc = ""
 
     if subject:
-        opening = f"Create a high-quality image of {subject}"
+        opening = f"{subject}"
         if scene_desc:
             opening += f" in {scene_desc}"
         opening += "."
-        if style_desc:
-            opening = f"In the style of {style_desc}: {opening}"
         parts.append(opening)
     elif scene_desc:
-        opening = f"Create a high-quality image of {scene_desc}."
-        if style_desc:
-            opening = f"In the style of {style_desc}: {opening}"
-        parts.append(opening)
+        parts.append(f"{scene_desc}.")
 
     # Chain instruction for visual continuity — injected EARLY so scene-specific
     # composition, lighting, mood, and details arrive AFTER and get recency bias
@@ -80,7 +64,7 @@ def compile_scene_to_text(
     # Source is scene.image_prompt.style, already expanded by the storyboard LLM.
     _add_section(parts, "Style", scene.get("style"))
 
-    if chain_instruction:
+    if chain_instruction and has_reference_image:
         parts.append(f"Reference context: {chain_instruction}")
 
     # Labeled sections (scene-specific details come LAST for recency weight)
@@ -115,9 +99,6 @@ def compile_scene_to_text(
             if placement:
                 text_desc += f", {placement}"
             _add_section(parts, "Text visible in scene", text_desc)
-
-    # Negative guidance
-    parts.append(f"Avoid: {', '.join(DEFAULT_NEGATIVE)}.")
 
     prompt = " ".join(parts)
 
