@@ -39,7 +39,27 @@ type WordStatus = {
   status: string
 }
 
-type ViewMode = 'stack' | 'grid' | 'orbs' | 'water'
+const VIEW_MODES = ['stack', 'water', 'grid', 'orbs'] as const
+type ViewMode = (typeof VIEW_MODES)[number]
+
+const GLASSY_DECKS_VIEW_STORAGE_KEY = 'resonance_glassy_decks_view'
+
+function isViewMode(value: string | null): value is ViewMode {
+  return VIEW_MODES.includes(value as ViewMode)
+}
+
+function getInitialViewMode(): ViewMode {
+  if (typeof window === 'undefined') return 'water'
+
+  try {
+    const stored = window.localStorage.getItem(GLASSY_DECKS_VIEW_STORAGE_KEY)
+    if (isViewMode(stored)) return stored
+  } catch {
+    // Ignore storage failures and use the product default.
+  }
+
+  return 'water'
+}
 
 const WATER_DECK_SPACING = 256
 const WATER_RENDER_BUFFER = 8
@@ -59,13 +79,21 @@ export default function DecksPG() {
   const location = useLocation()
 
   const [decks, setDecks] = useState<Deck[]>([])
-  const { t, tp } = useTranslation()
+  const { t, tp, locale } = useTranslation()
 
   const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
   const [deckThumbnails, setDeckThumbnails] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(true)
   const [dashboardError, setDashboardError] = useState<string | null>(null)
-  const [viewMode, setViewMode] = useState<ViewMode>('stack')
+  const [viewMode, setViewMode] = useState<ViewMode>(getInitialViewMode)
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(GLASSY_DECKS_VIEW_STORAGE_KEY, viewMode)
+    } catch {
+      // View persistence should never block the Decks page.
+    }
+  }, [viewMode])
 
   const loadDecks = useCallback(async (userId: string) => {
     try {
@@ -221,9 +249,23 @@ export default function DecksPG() {
     )
   }
 
+  const waterLabel = locale === 'de' ? 'Wasser' : locale === 'fr' ? 'Eau' : 'Water'
+  const pageClassName =
+    viewMode === 'water'
+      ? 'water-decks-page px-6'
+      : viewMode === 'orbs'
+        ? 'orbs-decks-page px-6'
+        : 'px-6 max-w-6xl mx-auto'
+  const headerClassName =
+    viewMode === 'water'
+      ? 'water-decks-header max-w-6xl mx-auto'
+      : viewMode === 'orbs'
+        ? 'orbs-decks-header max-w-6xl mx-auto'
+        : ''
+
   return (
-    <div className={viewMode === 'water' ? 'water-decks-page px-6' : 'px-6 max-w-6xl mx-auto'}>
-      <div className={viewMode === 'water' ? 'water-decks-header max-w-6xl mx-auto' : ''}>
+    <div className={pageClassName}>
+      <div className={headerClassName}>
         <div className="decks-glass-header">
           <div className="decks-glass-title min-w-0">
             <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight truncate">
@@ -237,7 +279,7 @@ export default function DecksPG() {
             <div className="decks-view-toggle flex gap-1 pg-glass rounded-lg p-1">
               {([
                 { mode: 'stack' as ViewMode, icon: Layers, label: t('dashboard.viewStack') },
-                { mode: 'water' as ViewMode, icon: Waves, label: 'Water view' },
+                { mode: 'water' as ViewMode, icon: Waves, label: waterLabel },
                 { mode: 'grid' as ViewMode, icon: Grid3X3, label: t('dashboard.viewGrid') },
                 { mode: 'orbs' as ViewMode, icon: Circle, label: t('dashboard.viewOrbs') },
               ]).map(({ mode, icon: Icon, label }) => (
@@ -288,7 +330,13 @@ export default function DecksPG() {
           </motion.div>
         )}
         {viewMode === 'orbs' && (
-          <motion.div key="orbs" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div
+            key="orbs"
+            className="orbs-decks-fullbleed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <OrbsView
               decks={decks}
               wordCounts={wordCounts}
@@ -980,46 +1028,69 @@ function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, reflecti
 
 /* ─── Orbs View ──────────────────────────────────── */
 
+function seededOrbNoise(index: number, salt: number) {
+  const value = Math.sin((index + 1) * 121.7 + salt * 17.3) * 10000
+  return value - Math.floor(value)
+}
+
+function getOrbViewport() {
+  if (typeof window === 'undefined') return { width: 1200, height: 800 }
+  return { width: window.innerWidth, height: window.innerHeight }
+}
+
 function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
+  const { locale } = useTranslation()
+  const [viewport, setViewport] = useState(getOrbViewport)
+
+  useEffect(() => {
+    const handleResize = () => setViewport(getOrbViewport())
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const orbs = useMemo(() => {
-    const placed: { x: number; y: number; r: number }[] = []
+    const deckCount = Math.max(decks.length, 1)
+    const dense = deckCount > 24
+    const baseSize = dense ? 56 : deckCount > 14 ? 62 : 72
+    const sizeRange = dense ? 26 : deckCount > 14 ? 34 : 44
+    const usableWidth = Math.max(320, viewport.width - 96)
+    const usableHeight = Math.max(360, viewport.height - 190)
+    const spreadX = Math.min(Math.max(usableWidth * 0.39, 220), 620)
+    const spreadY = Math.min(Math.max(usableHeight * 0.35, 170), 390)
+    const densityScale = dense ? 0.86 : 1
+
     return decks.map((deck, i) => {
-      let x = 0, y = 0, size = 0, isValid = false
-      let attempts = 0
-      while (!isValid && attempts < 150) {
-        const maxRadius = typeof window !== 'undefined' ? Math.min(280, (window.innerWidth - 80) / 2) : 280
-        const radius = 60 + Math.random() * (maxRadius - 60)
-        const angle = (i / decks.length) * Math.PI * 2 + Math.random() * 0.8
-        x = Math.cos(angle) * radius
-        y = Math.sin(angle) * radius
-        size = 60 + Math.random() * 40
-        const r = size / 2
-        isValid = true
-        for (const p of placed) {
-          const dist = Math.sqrt(Math.pow(p.x - x, 2) + Math.pow(p.y - y, 2))
-          if (dist < p.r + r + 15) {
-            isValid = false
-            break
-          }
-        }
-        attempts++
+      const angle = i * 2.399963229728653 + (deckCount % 7) * 0.11
+      const radial = 0.48 + seededOrbNoise(i, 3) * 0.5
+      const yShape = 0.74 + seededOrbNoise(i, 5) * 0.26
+      const drift = 7 + seededOrbNoise(i, 11) * 8
+      const size = Math.round(baseSize + seededOrbNoise(i, 17) * sizeRange)
+
+      return {
+        deck,
+        x: Math.cos(angle) * spreadX * radial * densityScale,
+        y: Math.sin(angle) * spreadY * radial * yShape * densityScale,
+        size,
+        drift,
+        durationX: 5 + seededOrbNoise(i, 23) * 3,
+        durationY: 6 + seededOrbNoise(i, 29) * 3,
+        index: i,
       }
-      placed.push({ x, y, r: size / 2 })
-      return { deck, x, y, size, index: i }
     })
-  }, [decks])
+  }, [decks, viewport.height, viewport.width])
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="orbs-decks-stage"
     >
       <div className="orbs-decks-atmosphere" aria-hidden="true" />
       {orbs.map((orb) => {
-        const { displayName } = getDeckMeta(orb.deck, wordCounts)
+        const { displayName } = getDeckMeta(orb.deck, wordCounts, locale)
         const thumb = thumbnails[orb.deck.id]
 
         return (
@@ -1030,13 +1101,13 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
             style={{ width: orb.size, height: orb.size }}
             initial={{ x: 0, y: 0, opacity: 0 }}
             animate={{
-              x: [orb.x - 10, orb.x + 10, orb.x - 10],
-              y: [orb.y - 10, orb.y + 10, orb.y - 10],
+              x: [orb.x - orb.drift, orb.x + orb.drift, orb.x - orb.drift],
+              y: [orb.y - orb.drift, orb.y + orb.drift, orb.y - orb.drift],
               opacity: 1,
             }}
             transition={{
-              x: { repeat: Infinity, duration: 4 + Math.random() * 4, ease: 'easeInOut' },
-              y: { repeat: Infinity, duration: 5 + Math.random() * 4, ease: 'easeInOut' },
+              x: { repeat: Infinity, duration: orb.durationX, ease: 'easeInOut' },
+              y: { repeat: Infinity, duration: orb.durationY, ease: 'easeInOut' },
               opacity: { duration: 0.8, delay: orb.index * 0.05 },
             }}
             whileHover={{ scale: 1.1, zIndex: 50 }}
