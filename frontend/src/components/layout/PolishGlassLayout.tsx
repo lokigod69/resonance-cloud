@@ -17,6 +17,7 @@ export default function PolishGlassLayout() {
 
   // Close mobile menu on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- route changes should synchronously close the existing mobile menu state
     setMobileOpen(false)
   }, [location.pathname])
 
@@ -33,9 +34,12 @@ export default function PolishGlassLayout() {
 
   const isActive = (path: string) =>
     location.pathname === path || location.pathname.startsWith(path + '/')
+  const isSpeakRoute = location.pathname.startsWith('/speak')
 
   return (
-    <div className="w-screen min-h-screen relative bg-[var(--pg-base-dark,#0a0a0c)] text-white overflow-x-hidden overflow-y-auto selection:bg-teal-500/30 font-sans pg-scrollbar-hide">
+    <div className={`w-screen min-h-screen relative bg-[var(--pg-base-dark,#0a0a0c)] text-white overflow-x-hidden selection:bg-teal-500/30 font-sans pg-scrollbar-hide ${
+      isSpeakRoute ? 'overflow-y-visible' : 'overflow-y-auto'
+    }`}>
       {/* Cinematic ambient glow */}
       <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-teal-900/10 rounded-full blur-[120px] pointer-events-none z-0" />
       {/* Perspective dot grid */}
@@ -163,7 +167,9 @@ export default function PolishGlassLayout() {
       </AnimatePresence>
 
       {/* Page content */}
-      <main className="w-full min-h-screen pt-16 sm:pt-20 pb-20 relative z-10">
+      <main className={`w-full pt-16 sm:pt-20 pb-20 relative z-10 ${
+        isSpeakRoute ? 'min-h-0' : 'min-h-screen'
+      }`}>
         <Outlet />
       </main>
 

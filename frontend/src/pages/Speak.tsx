@@ -343,8 +343,7 @@ export default function Speak() {
           </div>
         </div>
 
-        <div className="flex-1 flex items-start justify-center px-0 pt-6">
-          <div className="w-full max-w-5xl">
+        <div className="w-full max-w-5xl mx-auto px-0 pt-6">
             <div className="mx-auto mb-8 grid w-full max-w-md grid-cols-2 gap-1 rounded-full border border-white/10 bg-slate-950/55 p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
               <button
                 onClick={() => setSpeakMode('freeform')}
@@ -404,7 +403,6 @@ export default function Speak() {
                 {tutor.error}
               </div>
             )}
-          </div>
         </div>
       </SpeakSelectionShell>
     )
@@ -435,8 +433,7 @@ export default function Speak() {
           </div>
         </div>
 
-        <div className="flex-1 flex items-start justify-center px-6 pt-6">
-          <div className="w-full max-w-2xl">
+        <div className="w-full max-w-2xl mx-auto px-6 pt-6">
             {tutor.status === 'error' && tutor.error && (
               <div className="mb-4 px-4 py-3 rounded-lg bg-red-900/30 border border-red-700/40 text-red-300 text-sm">
                 {tutor.error}
@@ -524,7 +521,6 @@ export default function Speak() {
                 </div>
               </>
             )}
-          </div>
         </div>
       </div>
     )
@@ -580,8 +576,7 @@ export default function Speak() {
           </div>
         </div>
 
-        <div className="flex-1 flex items-start justify-center">
-          <div className="w-full">
+        <div className="w-full">
             {isStarting && (
               <div className="flex items-center gap-2 mb-4 text-slate-400 text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -674,7 +669,6 @@ export default function Speak() {
                 confirmLabel={tutor.isChangingVoice ? 'Use this voice' : 'Start conversation'}
               />
             )}
-          </div>
         </div>
       </SpeakSelectionShell>
     )
@@ -697,8 +691,7 @@ export default function Speak() {
           </div>
         </div>
 
-        <div className="flex-1 flex items-start justify-center">
-          <div className="w-full">
+        <div className="w-full">
             <h2 className="text-xl font-semibold text-white mb-2">
               {t('speak.howMuch', { language: selectedLang?.nativeName ?? '' })}
             </h2>
@@ -736,7 +729,6 @@ export default function Speak() {
                 </button>
               </div>
             )}
-          </div>
         </div>
       </SpeakSelectionShell>
     )

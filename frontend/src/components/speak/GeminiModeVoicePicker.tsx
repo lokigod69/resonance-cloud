@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
-import { Check } from 'lucide-react'
+import { Check, ChevronDown } from 'lucide-react'
 import { GEMINI_CHARACTER_MODES, type GeminiCharacterMode } from '@/data/geminiCharacterModes'
 import { GEMINI_VOICES } from '@/data/geminiVoices'
 import { GEMINI_ACCENTS, DEFAULT_GEMINI_ACCENT_ID, type GeminiAccent } from '@/data/geminiAccents'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { VoiceSampleButton } from './VoiceSampleButton'
 import type { GeminiPickerStage } from '@/hooks/useVoiceTutor'
 
@@ -34,9 +35,6 @@ const GROUP_LABELS: Record<GeminiAccent['group'], string> = {
 }
 
 const SECTION_LABEL_CLASS = 'text-xs font-semibold text-gray-400 uppercase tracking-wider'
-const FOOTER_SAFE_AREA_STYLE = {
-  paddingBottom: 'max(0.25rem, env(safe-area-inset-bottom))',
-}
 
 export function GeminiModeVoicePicker({
   language,
@@ -53,6 +51,7 @@ export function GeminiModeVoicePicker({
   confirmLabel = 'Start conversation',
 }: GeminiModeVoicePickerProps) {
   const [nowPlaying, setNowPlaying] = useState<string | null>(null)
+  const [accentOpen, setAccentOpen] = useState(false)
 
   const selectedMode = selectedModeId
     ? GEMINI_CHARACTER_MODES.find((mode) => mode.id === selectedModeId) ?? null
@@ -69,6 +68,15 @@ export function GeminiModeVoicePicker({
     [],
   )
 
+  const startGemini = () => {
+    if (!selectedMode || !selectedVoiceName) return
+    onStart({
+      mode: selectedMode,
+      voiceName: selectedVoiceName,
+      accentId,
+    })
+  }
+
   if (stage === 'voice') {
     return (
       <div>
@@ -79,11 +87,11 @@ export function GeminiModeVoicePicker({
             return (
               <div
                 key={voice.name}
-                  className={`speak-glass-card relative transition-all ${
-                    selected
-                      ? 'border-indigo-200/55 bg-indigo-950/35 shadow-[0_0_0_1px_rgba(165,180,252,0.25),0_18px_45px_rgba(79,70,229,0.22)]'
-                      : 'hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65'
-                  }`}
+                className={`speak-glass-card relative transition-all ${
+                  selected
+                    ? 'border-indigo-200/55 bg-indigo-950/35 shadow-[0_0_0_1px_rgba(165,180,252,0.25),0_18px_45px_rgba(79,70,229,0.22)]'
+                    : 'hover:-translate-y-0.5 hover:border-indigo-200/30 hover:bg-slate-800/65'
+                }`}
               >
                 <button
                   type="button"
@@ -146,78 +154,90 @@ export function GeminiModeVoicePicker({
     )
   }
 
-  // stage === 'accent'
-  const summary = [
+  const readySummary = [
     selectedVoiceName,
-    selectedMode?.name ?? null,
-    selectedAccent.id === 'none' ? 'No accent' : selectedAccent.name,
+    selectedMode?.displayName ?? null,
   ]
     .filter(Boolean)
     .join(' / ')
+  const accentSummary = selectedAccent.id === 'none' ? 'No accent selected' : selectedAccent.name
 
   return (
-    <div className="flex flex-col min-h-[70vh]">
-      <div className="mb-3">
-        <p className={SECTION_LABEL_CLASS}>Accent (optional)</p>
-        <p className="text-xs text-amber-200/90 mt-1">
-          Experimental — accents can override the voice&apos;s natural gender or tone.
+    <section className="mx-auto w-full max-w-3xl space-y-4 px-1">
+      <div>
+        <p className={SECTION_LABEL_CLASS}>Ready</p>
+        <p className="mt-1 truncate text-sm text-gray-300" title={readySummary}>
+          {readySummary}
         </p>
       </div>
 
-      <div className="flex-1 space-y-4 pr-1">
-        {(['none', 'regional', 'theatrical'] as const).map((group) => (
-          <div key={group}>
-            <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
-              {GROUP_LABELS[group]}
-            </p>
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-              {accentGroups[group].map((accent) => {
-                const selected = accent.id === accentId
-                return (
-                  <button
-                    key={accent.id}
-                    type="button"
-                    onClick={() => onAccentChange(accent.id)}
-                    disabled={disabled}
-                    className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2.5 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
-                      selected
-                        ? 'border-indigo-200/45 bg-indigo-950/35 text-white'
-                        : 'border-white/10 bg-slate-900/55 text-slate-200 hover:bg-slate-800/65'
-                    }`}
-                  >
-                    <span className="text-xs font-medium truncate">{accent.name}</span>
-                    {selected && <Check className="h-3.5 w-3.5 text-cyan-300 shrink-0" />}
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div
-        className="sticky bottom-0 pt-4 bg-gradient-to-t from-slate-950 via-slate-950/95 to-transparent"
-        style={FOOTER_SAFE_AREA_STYLE}
+      <button
+        type="button"
+        onClick={startGemini}
+        disabled={!selectedMode || !selectedVoiceName || disabled}
+        className="speak-start-button w-full rounded-full bg-indigo-500 px-4 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-indigo-400 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 disabled:shadow-none"
       >
-        <p className="text-xs text-gray-400 mb-2 truncate" title={summary}>
-          {summary}
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            if (!selectedMode || !selectedVoiceName) return
-            onStart({
-              mode: selectedMode,
-              voiceName: selectedVoiceName,
-              accentId,
-            })
-          }}
-          disabled={!selectedMode || !selectedVoiceName || disabled}
-          className="speak-start-button w-full rounded-full bg-indigo-500 px-4 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-indigo-400 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 disabled:shadow-none"
-        >
-          {confirmLabel}
-        </button>
-      </div>
-    </div>
+        {confirmLabel}
+      </button>
+
+      <Collapsible open={accentOpen} onOpenChange={setAccentOpen}>
+        <CollapsibleTrigger asChild>
+          <button
+            type="button"
+            aria-expanded={accentOpen}
+            disabled={disabled}
+            className="flex w-full items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/45 px-4 py-3 text-left transition-colors hover:bg-slate-900/65 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <ChevronDown className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${accentOpen ? 'rotate-180' : ''}`} />
+            <span className="min-w-0 flex-1">
+              <span className="block text-xs font-semibold uppercase tracking-wider text-gray-400">
+                Accent (optional)
+              </span>
+              <span className="mt-1 block truncate text-sm text-white">
+                {accentSummary}
+              </span>
+            </span>
+          </button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <div className="space-y-4 overscroll-contain pt-4 pr-1">
+            <p className="text-xs text-amber-200/90">
+              Experimental - accents can override the voice&apos;s natural gender or tone.
+            </p>
+            {(['none', 'regional', 'theatrical'] as const).map((group) => (
+              <div key={group}>
+                <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                  {GROUP_LABELS[group]}
+                </p>
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                  {accentGroups[group].map((accent) => {
+                    const selected = accent.id === accentId
+                    return (
+                      <button
+                        key={accent.id}
+                        type="button"
+                        onClick={() => {
+                          onAccentChange(accent.id)
+                          setAccentOpen(false)
+                        }}
+                        disabled={disabled}
+                        className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2.5 text-left transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
+                          selected
+                            ? 'border-indigo-200/45 bg-indigo-950/35 text-white'
+                            : 'border-white/10 bg-slate-900/55 text-slate-200 hover:bg-slate-800/65'
+                        }`}
+                      >
+                        <span className="text-xs font-medium truncate">{accent.name}</span>
+                        {selected && <Check className="h-3.5 w-3.5 text-cyan-300 shrink-0" />}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+    </section>
   )
 }
