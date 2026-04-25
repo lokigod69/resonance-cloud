@@ -121,34 +121,54 @@ export default function DeckViewPG() {
         return
       }
 
-      await supabase.from('words').update({
-        status: 'pending',
-        error_message: null,
-      }).eq('id', word.id)
-
-      await supabase.from('generation_jobs').insert({
-        user_id: user.id,
-        deck_id: id,
-        status: 'approved',
-        priority: 0,
-        target_language: deck?.target_language || 'Unknown',
-        art_style: deck?.art_style || null,
-        words_total: 1,
-        words_completed: 0,
-        words_failed: 0,
-      })
-
-      await supabase.from('profiles')
+      const { data: creditRows, error: creditError } = await supabase.from('profiles')
         .update({ credits: freshCredits - 1 })
         .eq('id', user.id)
+        .eq('credits', freshCredits)
+        .select('id')
+      if (creditError) throw creditError
+      if (!creditRows?.length) throw new Error('Unable to reserve retry credit')
 
-      await supabase.from('decks')
+      const { error: deckError } = await supabase.from('decks')
         .update({ status: 'generating' })
         .eq('id', id)
+      if (deckError) {
+        const { error: rollbackError } = await supabase.from('profiles')
+          .update({ credits: freshCredits })
+          .eq('id', user.id)
+          .eq('credits', freshCredits - 1)
+        if (rollbackError) throw rollbackError
+        throw deckError
+      }
+
+      const { data: retryRows, error: retryError } = await supabase.from('words')
+        .update({
+          retry_requested: true,
+          retry_requested_at: new Date().toISOString(),
+          error_message: null,
+        })
+        .eq('id', word.id)
+        .eq('user_id', user.id)
+        .eq('current_stage', 'failed')
+        .select('id')
+      if (retryError || !retryRows?.length) {
+        const { error: rollbackError } = await supabase.from('profiles')
+          .update({ credits: freshCredits })
+          .eq('id', user.id)
+          .eq('credits', freshCredits - 1)
+        if (rollbackError) throw rollbackError
+        if (retryError) throw retryError
+        throw new Error('Word is not in a retryable failed state')
+      }
 
       await refreshProfile()
-      const { data } = await supabase.from('words').select('*').eq('deck_id', id).order('created_at')
-      if (data) setWords(data)
+      const { data: refreshedWords, error: refreshError } = await supabase
+        .from('words')
+        .select('*')
+        .eq('deck_id', id)
+        .order('created_at')
+      if (refreshError) throw refreshError
+      if (refreshedWords) setWords(refreshedWords)
       toast(t('deckview.retryingGeneration'), 'success')
     } catch {
       toast(t('deckview.retryFailed'), 'error')

@@ -15,9 +15,8 @@ import {
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useTranslation } from '@/hooks/useTranslation'
 
-// Active retry job statuses (a job in these states has not yet completed)
-const ACTIVE_STATUSES = ['pending', 'approved', 'processing'] as const
-type RetryStatus = (typeof ACTIVE_STATUSES)[number]
+const ACTIVE_RETRY_STAGES = ['post_video_queued', 'assembly', 'bookend', 'suno_bake', 'uploading'] as const
+type RetryStatus = 'pending' | 'processing'
 
 type DeckOption = { id: string; name: string }
 
@@ -120,72 +119,88 @@ export default function Music() {
 
   // ── Suno retry ──────────────────────────────────────────────────────────────
 
-  // On mount: load any already-active retry jobs so the UI shows "Queued" state
+  const fetchActiveSunoRetries = useCallback(async () => {
+    if (!user) return new Map<string, RetryStatus>()
+    const activeStageFilter = `current_stage.in.(${ACTIVE_RETRY_STAGES.join(',')})`
+    const { data, error } = await supabase
+      .from('words')
+      .select('id, current_stage, retry_requested')
+      .eq('user_id', user.id)
+      .or(`retry_requested.eq.true,${activeStageFilter}`)
+    if (error) throw error
+
+    const map = new Map<string, RetryStatus>()
+    for (const row of data ?? []) {
+      map.set(row.id, row.retry_requested ? 'pending' : 'processing')
+    }
+    return map
+  }, [user])
+
+  // On mount: load active retry flags/stages so the UI shows queued state
   // if the user navigated away and came back while a retry was in progress.
   useEffect(() => {
     if (!user) return
-    supabase
-      .from('generation_jobs')
-      .select('target_word_id, status')
-      .eq('user_id', user.id)
-      .eq('job_type', 'suno_retry')
-      .in('status', [...ACTIVE_STATUSES])
-      .then(({ data }) => {
-        if (!data || data.length === 0) return
-        const map = new Map<string, RetryStatus>()
-        for (const j of data) {
-          if (j.target_word_id) map.set(j.target_word_id, j.status as RetryStatus)
-        }
-        setRetryStatusMap(map)
-      })
-  }, [user])
+    fetchActiveSunoRetries()
+      .then(setRetryStatusMap)
+      .catch(() => {})
+  }, [user, fetchActiveSunoRetries])
 
-  // Insert a retry job for one track; double-click safe
+  // Flag one track for the orchestrator Source 2 retry path; double-click safe.
   const handleSunoRetry = useCallback(async (wordId: string, deckId: string) => {
     if (!user) return
 
     // Optimistically mark as pending so the button becomes a spinner immediately
     setRetryStatusMap((prev) => new Map(prev).set(wordId, 'pending'))
 
-    // Check for an already-active job (race guard)
-    const { data: existing } = await supabase
-      .from('generation_jobs')
-      .select('id')
-      .eq('target_word_id', wordId)
-      .eq('job_type', 'suno_retry')
-      .in('status', [...ACTIVE_STATUSES])
-      .limit(1)
-
-    if (existing && existing.length > 0) return // already queued
-
-    const { error } = await supabase.from('generation_jobs').insert({
-      user_id: user.id,
-      deck_id: deckId,
-      status: 'approved',
-      priority: -1,
-      job_type: 'suno_retry',
-      target_word_id: wordId,
-      target_language: 'retry',
-      words_total: 1,
-      words_completed: 0,
-      words_failed: 0,
-    })
-
-    if (error) {
-      // Roll back optimistic update
+    const rollbackOptimistic = () => {
       setRetryStatusMap((prev) => {
         const next = new Map(prev)
         next.delete(wordId)
         return next
       })
     }
+
+    try {
+      const activeStageFilter = `current_stage.in.(${ACTIVE_RETRY_STAGES.join(',')})`
+      const { data: existing, error: existingError } = await supabase
+        .from('words')
+        .select('id')
+        .eq('id', wordId)
+        .eq('user_id', user.id)
+        .or(`retry_requested.eq.true,${activeStageFilter}`)
+        .limit(1)
+      if (existingError) throw existingError
+      if (existing && existing.length > 0) return // already queued
+
+      const { data: updated, error } = await supabase
+        .from('words')
+        .update({
+          music_state: 'pending',
+          suno_task_id: null,
+          suno_audio_url: null,
+          suno_audio_url_b: null,
+          suno_storage_url: null,
+          suno_storage_url_b: null,
+          failed_stage: null,
+          retry_requested: true,
+          retry_requested_at: new Date().toISOString(),
+        })
+        .eq('id', wordId)
+        .eq('user_id', user.id)
+        .eq('deck_id', deckId)
+        .eq('current_stage', 'complete')
+        .select('id')
+      if (error) throw error
+      if (!updated?.length) throw new Error('Word is not in a retryable music state')
+    } catch (error) {
+      rollbackOptimistic()
+      console.warn('[music] Suno retry failed', error)
+    }
   }, [user])
 
-  // Poll active retry jobs every 15s; refetch tracks when one completes
+  // Poll active retry rows every 15s; refetch tracks when one completes.
   useEffect(() => {
-    const hasActive = [...retryStatusMap.values()].some((s) =>
-      (ACTIVE_STATUSES as readonly string[]).includes(s),
-    )
+    const hasActive = retryStatusMap.size > 0
     if (!hasActive) {
       if (retryPollRef.current) {
         clearInterval(retryPollRef.current)
@@ -198,16 +213,11 @@ export default function Music() {
 
     retryPollRef.current = setInterval(async () => {
       if (!user) return
-      const { data } = await supabase
-        .from('generation_jobs')
-        .select('target_word_id, status')
-        .eq('user_id', user.id)
-        .eq('job_type', 'suno_retry')
-        .in('status', [...ACTIVE_STATUSES])
-
-      const newMap = new Map<string, RetryStatus>()
-      for (const j of (data ?? [])) {
-        if (j.target_word_id) newMap.set(j.target_word_id, j.status as RetryStatus)
+      let newMap: Map<string, RetryStatus>
+      try {
+        newMap = await fetchActiveSunoRetries()
+      } catch {
+        return
       }
 
       // Detect completions: ids that were active before but are no longer active
@@ -225,7 +235,7 @@ export default function Music() {
         retryPollRef.current = null
       }
     }
-  }, [retryStatusMap, user, fetchTracks])
+  }, [retryStatusMap, user, fetchTracks, fetchActiveSunoRetries])
 
   // Reset player when filter changes (queue recomputes inside hook, but reset current idx)
   useEffect(() => {
