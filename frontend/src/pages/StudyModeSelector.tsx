@@ -133,6 +133,7 @@ export default function StudyModeSelector() {
                 onClick={() => selectMode(mode)}
                 disabled={!mode.enabled}
                 className={`
+                  study-mode-card
                   relative flex flex-col items-center gap-3 p-6 rounded-2xl border text-center
                   transition-all duration-200 focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:outline-none
                   ${mode.enabled

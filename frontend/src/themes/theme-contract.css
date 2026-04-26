@@ -483,6 +483,48 @@ body {
   box-shadow: 0 18px 44px rgba(92, 68, 43, 0.18), 0 0 34px var(--accent-glow);
 }
 
+.theme-warm-linen [data-variant="outline"],
+.theme-warm-linen button[data-variant="outline"] {
+  border-color: var(--border-strong);
+  background: color-mix(in srgb, var(--surface-2) 70%, transparent);
+}
+
+.theme-warm-linen .study-mode-card,
+.theme-warm-linen .speak-glass-card {
+  background: color-mix(in srgb, var(--surface-2) 82%, transparent);
+  border-color: var(--border-subtle);
+  box-shadow: 0 12px 34px rgba(82, 68, 55, 0.08);
+}
+
+.theme-warm-linen .study-mode-card h3,
+.theme-warm-linen .study-mode-card svg,
+.theme-warm-linen .speak-glass-card .font-semibold,
+.theme-warm-linen .speak-glass-card .font-medium,
+.theme-warm-linen .speak-glass-card .font-black {
+  color: var(--text-primary);
+}
+
+.theme-warm-linen .study-mode-card p,
+.theme-warm-linen .study-mode-card span,
+.theme-warm-linen .speak-glass-card p,
+.theme-warm-linen .speak-glass-card span {
+  color: var(--text-secondary);
+}
+
+.theme-warm-linen .study-mode-card [class*="bg-white/"],
+.theme-warm-linen .speak-glass-card [class*="bg-white/"] {
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.theme-warm-linen .music-orb-thumb,
+.theme-warm-linen .music-orb-thumb img {
+  filter: saturate(1.04) contrast(1.04);
+}
+
+.theme-warm-linen .music-orb-thumb {
+  border-color: var(--border-strong);
+}
+
 .speak-page-shell {
   background:
     radial-gradient(circle at 14% 12%, var(--accent-glow), transparent 30%),
