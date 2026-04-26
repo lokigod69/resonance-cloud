@@ -42,7 +42,6 @@ export default function PolishGlassLayout() {
     }`}>
       <div className="glassy-atmosphere" aria-hidden="true">
         <div className="glassy-atmosphere-haze" />
-        <div className="glassy-atmosphere-horizon" />
         <div className="glassy-atmosphere-floor" />
         <div className="glassy-atmosphere-vignette" />
       </div>

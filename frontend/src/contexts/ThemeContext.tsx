@@ -3,15 +3,17 @@ import { supabase } from '../lib/supabase'
 
 export type Theme = 'midnight' | 'rainy-day' | 'red-wine' | 'slate' | 'warm-linen'
 
-const VALID_THEMES: Theme[] = ['midnight', 'rainy-day', 'red-wine', 'slate', 'warm-linen']
+export const DEFAULT_THEME: Theme = 'rainy-day'
+
+const VALID_THEMES: Theme[] = ['rainy-day', 'midnight', 'red-wine', 'slate', 'warm-linen']
 const LEGACY_THEME_CLASSES = ['theme-deep-blue']
 const STORAGE_KEY = 'resonance-theme'
 
 // Migrate old theme names to new ones
 const MIGRATION_MAP: Record<string, Theme> = {
-  standard: 'midnight',
-  retro: 'midnight',
-  soft: 'midnight',
+  standard: DEFAULT_THEME,
+  retro: DEFAULT_THEME,
+  soft: DEFAULT_THEME,
   'deep-blue': 'midnight',
 }
 
@@ -21,7 +23,7 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: 'midnight',
+  theme: DEFAULT_THEME,
   setTheme: () => {},
 })
 
@@ -52,7 +54,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       if (migrated !== saved) localStorage.setItem(STORAGE_KEY, migrated)
       return migrated as Theme
     }
-    return 'midnight'
+    return DEFAULT_THEME
   })
 
   // Apply theme class on mount and whenever theme changes
