@@ -1405,7 +1405,7 @@ def _transition_prompt_block() -> str:
         "   Write as a self-contained motion description. The scene should feel complete\n"
         "   within its duration. Describe:\n"
         "   - What the subject DOES (specific, constrained actions)\n"
-        "   - What environmental elements move (wind, steam, light flicker)\n"
+        "   - One ambient quality that fills the scene — pick ONE: wind animating everything uniformly, OR rain texturing the frame, OR shifting light. Do not enumerate multiple environmental elements.\n"
         "   - Camera movement if specified in camera_motion\n"
         "   - The scene should LOOP well — end state similar to start state\n"
         "   DO NOT describe transitions to other scenes.\n"
@@ -1429,8 +1429,8 @@ def _transition_prompt_block() -> str:
         "     - CONTEXT: describe the scene dissolving or transforming between completely different settings\n"
         '   - Write in present tense, cinematically: "The camera orbits..." not "The camera will orbit..."\n\n'
         "CRITICAL DIFFERENCE:\n"
-        '- video_prompt: "Marmot sleeps peacefully, chest rising and falling gently,\n'
-        "  aurora shimmers overhead. The marmot remains curled in the nest throughout the shot.\"\n"
+        '- video_prompt: "Marmot sleeps curled in the nest, chest rising and falling gently.\n'
+        "  Soft snow drifts across the cliff face. The marmot remains curled in the nest throughout the shot.\"\n"
         '- transition_prompt: "The nest dissolves into swirling snow, the sleeping\n'
         "  marmot uncurls and rises, the cliffside transforms into a woodland clearing\n"
         '  as warm lantern light replaces cold moonlight."\n\n'
@@ -1442,7 +1442,8 @@ def _transition_prompt_block() -> str:
         '  Example: "The brown marmot with red scarf remains sleeping in the nest throughout the shot."\n'
         "- Never mention elements from OTHER scenes in a video_prompt\n"
         "- Describe only motion that could realistically occur within a single static shot\n"
-        "- Prefer environmental motion (wind, light, particles) over subject transformation\n"
+        "- Prefer ambient environmental motion over subject transformation\n"
+        "- MOTION BUDGET: Maximum two motion events per video_prompt — one primary subject motion plus one ambient field. Camera movement is separate and does not count. If you find yourself listing more than two competing motions, choose the strongest one and drop the others.\n"
         '- If camera_motion is "static", emphasize subtle environmental animation only'
     )
 
