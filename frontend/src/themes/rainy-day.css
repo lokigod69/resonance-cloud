@@ -11,12 +11,12 @@
   --text-primary: #edf5f8;
   --text-secondary: #b8c8d0;
   --text-muted: #7f929c;
-  --accent: #8ab8e8;
-  --accent-2: #9fc4cc;
+  --accent: #7faad4;
+  --accent-2: #91adb8;
   --accent-warm: #d3b77b;
-  --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
-  --accent-glow: color-mix(in srgb, var(--accent) 20%, transparent);
-  --accent-2-soft: color-mix(in srgb, var(--accent-2) 11%, transparent);
+  --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent) 12%, transparent);
+  --accent-2-soft: color-mix(in srgb, var(--accent-2) 7%, transparent);
   --on-accent: #0d1725;
   --border-subtle: rgba(188, 213, 223, 0.1);
   --border-strong: rgba(188, 213, 223, 0.19);

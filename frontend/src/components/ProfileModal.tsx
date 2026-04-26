@@ -28,8 +28,8 @@ const SKINS: { id: SkinId; label: string }[] = [
 ]
 
 const THEMES: { id: Theme; label: string; palette: [string, string, string] }[] = [
-  { id: 'midnight', label: 'Midnight', palette: ['#07090A', '#101519', '#55DCC8'] },
-  { id: 'rainy-day', label: 'Rainy Day', palette: ['#0F1720', '#182432', '#8AB8E8'] },
+  { id: 'rainy-day', label: 'Rainy Day', palette: ['#0F1720', '#182432', '#7FAAD4'] },
+  { id: 'midnight', label: 'Midnight', palette: ['#07090A', '#101519', '#6FB8AD'] },
   { id: 'red-wine', label: 'Red Wine', palette: ['#16080F', '#251019', '#C65A80'] },
   { id: 'slate', label: 'Slate', palette: ['#121519', '#1d2228', '#b5aa9a'] },
   { id: 'warm-linen', label: 'Warm Linen', palette: ['#EFE6D8', '#F8F1E8', '#8B7256'] },

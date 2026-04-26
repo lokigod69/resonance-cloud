@@ -2,44 +2,44 @@
    Theme files set mood values; skin classes decide how those values render. */
 
 :root {
-  --app-bg: #07090a;
-  --app-bg-soft: #0d1113;
-  --app-bg-elevated: #12181b;
+  --app-bg: #0f1720;
+  --app-bg-soft: #152231;
+  --app-bg-elevated: #1c2b3a;
 
-  --surface-0: #0a0d0f;
-  --surface-1: #101519;
-  --surface-2: #171d22;
-  --surface-glass: rgba(16, 21, 25, 0.58);
-  --surface-glass-strong: rgba(16, 21, 25, 0.78);
+  --surface-0: #121b25;
+  --surface-1: #182432;
+  --surface-2: #223142;
+  --surface-glass: rgba(24, 36, 50, 0.58);
+  --surface-glass-strong: rgba(24, 36, 50, 0.78);
 
-  --text-primary: #eaf2f2;
-  --text-secondary: #aab8b8;
-  --text-muted: #6e7e80;
+  --text-primary: #edf5f8;
+  --text-secondary: #b8c8d0;
+  --text-muted: #7f929c;
 
-  --accent: #55dcc8;
-  --accent-2: #78a7b8;
-  --accent-warm: #d0b077;
-  --accent-soft: color-mix(in srgb, var(--accent) 13%, transparent);
-  --accent-glow: color-mix(in srgb, var(--accent) 18%, transparent);
-  --accent-2-soft: color-mix(in srgb, var(--accent-2) 9%, transparent);
-  --on-accent: #07100f;
+  --accent: #7faad4;
+  --accent-2: #91adb8;
+  --accent-warm: #d3b77b;
+  --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent) 12%, transparent);
+  --accent-2-soft: color-mix(in srgb, var(--accent-2) 7%, transparent);
+  --on-accent: #0d1725;
 
-  --border-subtle: rgba(190, 226, 224, 0.08);
-  --border-strong: rgba(190, 226, 224, 0.16);
+  --border-subtle: rgba(188, 213, 223, 0.1);
+  --border-strong: rgba(188, 213, 223, 0.19);
 
-  --field-bg: rgba(190, 226, 224, 0.045);
-  --field-border: rgba(190, 226, 224, 0.12);
+  --field-bg: rgba(188, 213, 223, 0.052);
+  --field-border: rgba(188, 213, 223, 0.13);
 
-  --nav-bg: rgba(8, 11, 12, 0.9);
+  --nav-bg: rgba(12, 19, 27, 0.9);
   --nav-active-bg: var(--accent-soft);
   --nav-active-text: var(--text-primary);
 
-  --shadow-soft: 0 16px 50px rgba(0, 0, 0, 0.32);
-  --shadow-elevated: 0 24px 80px rgba(0, 0, 0, 0.48);
+  --shadow-soft: 0 16px 50px rgba(1, 8, 18, 0.3);
+  --shadow-elevated: 0 24px 80px rgba(1, 8, 18, 0.46);
 
   --shell-bg:
-    radial-gradient(circle at 18% 12%, var(--accent-glow), transparent 34%),
-    radial-gradient(circle at 82% 20%, var(--accent-2-soft), transparent 32%),
+    radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 38%),
+    radial-gradient(circle at 82% 20%, color-mix(in srgb, var(--accent-2) 6%, transparent), transparent 36%),
     linear-gradient(135deg, var(--app-bg), var(--app-bg-soft) 52%, var(--app-bg));
 
   /* shadcn/Tailwind bridge */
@@ -92,8 +92,8 @@ body {
 
 .skin-classic {
   --shell-bg:
-    radial-gradient(circle at 18% 12%, var(--accent-glow), transparent 34%),
-    radial-gradient(circle at 82% 20%, var(--accent-2-soft), transparent 32%),
+    radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 38%),
+    radial-gradient(circle at 82% 20%, color-mix(in srgb, var(--accent-2) 6%, transparent), transparent 36%),
     linear-gradient(135deg, var(--app-bg), var(--app-bg-soft) 52%, var(--app-bg));
   --surface-glass: color-mix(in srgb, var(--surface-1) 88%, transparent);
   --surface-glass-strong: color-mix(in srgb, var(--surface-1) 94%, transparent);
@@ -156,6 +156,11 @@ body {
   display: none;
 }
 
+.skin-classic .classic-aurora::before,
+.skin-classic .classic-aurora::after {
+  opacity: 0.07;
+}
+
 .skin-glassy .glassy-atmosphere {
   display: block;
   position: fixed;
@@ -172,7 +177,6 @@ body {
 }
 
 .skin-glassy .glassy-atmosphere-haze,
-.skin-glassy .glassy-atmosphere-horizon,
 .skin-glassy .glassy-atmosphere-floor,
 .skin-glassy .glassy-atmosphere-vignette {
   position: absolute;
@@ -182,27 +186,10 @@ body {
 .skin-glassy .glassy-atmosphere-haze {
   inset: 0;
   background:
-    radial-gradient(ellipse at 18% 18%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34%),
-    radial-gradient(ellipse at 82% 22%, color-mix(in srgb, var(--accent-2) 9%, transparent), transparent 34%),
-    radial-gradient(ellipse at 50% 78%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 48%);
-  opacity: 0.78;
-}
-
-.skin-glassy .glassy-atmosphere-horizon {
-  left: 50%;
-  bottom: 28%;
-  width: min(980px, 92vw);
-  height: 1px;
-  translate: -50% 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    color-mix(in srgb, var(--accent-2) 22%, transparent),
-    color-mix(in srgb, var(--accent) 16%, transparent),
-    transparent
-  );
-  box-shadow: 0 0 44px color-mix(in srgb, var(--accent) 12%, transparent);
-  opacity: 0.5;
+    radial-gradient(ellipse at 18% 18%, color-mix(in srgb, var(--accent) 8%, transparent), transparent 34%),
+    radial-gradient(ellipse at 82% 22%, color-mix(in srgb, var(--accent-2) 7%, transparent), transparent 34%),
+    radial-gradient(ellipse at 50% 78%, color-mix(in srgb, var(--accent) 4%, transparent), transparent 48%);
+  opacity: 0.68;
 }
 
 .skin-glassy .glassy-atmosphere-floor {
@@ -211,7 +198,7 @@ body {
   width: min(1200px, 125vw);
   height: 28rem;
   translate: -50% 0;
-  opacity: 0.3;
+  opacity: 0.22;
   background:
     repeating-linear-gradient(102deg, color-mix(in srgb, var(--accent-2) 17%, transparent) 0 1px, transparent 1px 30px),
     repeating-linear-gradient(78deg, color-mix(in srgb, var(--accent) 10%, transparent) 0 1px, transparent 1px 38px),
@@ -241,14 +228,8 @@ body {
   opacity: 0.58;
 }
 
-.theme-warm-linen.skin-glassy .glassy-atmosphere-horizon {
-  background: linear-gradient(90deg, transparent, rgba(63, 115, 117, 0.14), rgba(139, 114, 86, 0.12), transparent);
-  box-shadow: 0 0 32px rgba(139, 114, 86, 0.1);
-  opacity: 0.32;
-}
-
 .theme-warm-linen.skin-glassy .glassy-atmosphere-floor {
-  opacity: 0.12;
+  opacity: 0.08;
   background:
     repeating-linear-gradient(102deg, rgba(63, 115, 117, 0.16) 0 1px, transparent 1px 38px),
     repeating-linear-gradient(78deg, rgba(139, 114, 86, 0.12) 0 1px, transparent 1px 46px),
