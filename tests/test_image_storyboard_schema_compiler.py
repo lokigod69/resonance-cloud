@@ -1,0 +1,192 @@
+"""Regression tests for Wan storyboard schema and prompt compilation."""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import pytest
+from pydantic import ValidationError
+
+_ORCH_ROOT = Path(__file__).resolve().parents[1]
+if str(_ORCH_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ORCH_ROOT))
+
+from cloud_engines.image_engine.models import (  # noqa: E402
+    CameraMotion,
+    ImagePromptData,
+    Scene,
+    WordRender,
+)
+from cloud_engines.image_engine.prompt_compiler import compile_scene_to_text  # noqa: E402
+from cloud_engines.image_engine.prompts import build_system_prompt  # noqa: E402
+from cloud_engines.image_engine.models import ImageSettings  # noqa: E402
+
+
+def _image_prompt(**overrides: object) -> ImagePromptData:
+    data = {
+        "subject_identity": "young woman with fair skin, blue eyes, dark wavy hair, gentle smile",
+        "action_state": "gently smiles",
+        "environment": "expansive green meadow with distant hills under clear sky",
+        "composition": "wide-angle panoramic framing, full body small in frame, eye-level perspective",
+        "lighting": "golden hour sunlight from the side, warm and even, soft shadow falloff",
+        "material_detail": (
+            "natural skin texture even at distance, fine hair detail, soft cotton sweater fabric, "
+            "dewy grass blades, distant atmospheric haze"
+        ),
+        "mood_palette": "peaceful and expansive, emerald green and sky blue with warm golden cast",
+        "style_medium_override": None,
+        "continuity_anchor": None,
+        "change_request": None,
+        "aspect_ratio": "16:9",
+        "text_element": None,
+    }
+    data.update(overrides)
+    return ImagePromptData(**data)
+
+
+def _scene(scene_number: int, image_prompt: ImagePromptData) -> Scene:
+    return Scene(
+        scene_number=scene_number,
+        description="test scene",
+        image_prompt=image_prompt,
+        word_render=WordRender(enabled=False),
+        camera_motion=CameraMotion(
+            type="static",
+            direction="locked off",
+            speed="slow",
+            description="static camera",
+        ),
+        video_prompt="Subject remains visually consistent throughout the shot.",
+        transition_prompt=None,
+        suggested_duration=8,
+        duration_rationale="standard scene pacing",
+    )
+
+
+def test_image_prompt_accepts_new_shape_and_ignores_legacy_extra_fields():
+    prompt = ImagePromptData(
+        subject_identity="same person",
+        action_state="stands still",
+        environment="plain studio",
+        composition="medium shot, eye-level, standard lens, centered",
+        lighting="soft window light, neutral, low contrast",
+        material_detail="natural skin texture, cotton shirt, matte painted wall",
+        mood_palette="calm, neutral gray and pale blue",
+        style_medium_override=None,
+        subject="legacy field should be ignored",
+        scene="legacy field should be ignored",
+        colors=["legacy"],
+    )
+
+    dumped = prompt.model_dump()
+    assert "subject" not in dumped
+    assert "scene" not in dumped
+    assert "colors" not in dumped
+    assert prompt.style_medium_override is None
+
+
+def test_scene_one_requires_null_continuity_and_change_fields():
+    with pytest.raises(ValidationError):
+        _scene(
+            1,
+            _image_prompt(
+                continuity_anchor="same person",
+                change_request="different action",
+            ),
+        )
+
+
+def test_scene_two_requires_continuity_and_change_fields():
+    with pytest.raises(ValidationError):
+        _scene(2, _image_prompt())
+
+    scene = _scene(
+        2,
+        _image_prompt(
+            continuity_anchor="same young woman in the same meadow setting",
+            change_request="she is now seated examining a wildflower",
+        ),
+    )
+    assert scene.image_prompt.continuity_anchor
+    assert scene.image_prompt.change_request
+
+
+def test_compile_t2i_uses_new_fields_and_style_lookup():
+    scene = {
+        "art_style": "photorealistic",
+        "image_prompt": _image_prompt().model_dump(),
+    }
+
+    text = compile_scene_to_text(
+        scene,
+        has_reference_image=False,
+        use_color_palette=True,
+    )
+
+    assert text.startswith(
+        "young woman with fair skin, blue eyes, dark wavy hair, gentle smile gently smiles"
+    )
+    assert "Materials: natural skin texture even at distance" in text
+    assert "documentary photography, available light" in text
+    assert "Create a high-quality image of" not in text
+    assert "In the style of" not in text
+    assert "Style:" not in text
+    assert "Avoid:" not in text
+    assert "Reference context:" not in text
+    assert "DO NOT" not in text
+
+
+def test_compile_i2i_leads_with_affirmative_preserve_change_semantics():
+    scene = {
+        "art_style": "photorealistic",
+        "image_prompt": _image_prompt(
+            action_state="examines a wildflower",
+            environment="softly blurred meadow background",
+            continuity_anchor="same young woman in the same meadow setting wearing the same cream sweater",
+            change_request="she is now seated examining a wildflower, framed in medium close-up instead of wide shot",
+        ).model_dump(),
+    }
+
+    text = compile_scene_to_text(
+        scene,
+        has_reference_image=True,
+        use_color_palette=False,
+    )
+
+    assert text.startswith(
+        "Use image 1 as the identity anchor for young woman with fair skin, blue eyes, dark wavy hair, gentle smile."
+    )
+    assert "Keep the same same young woman in the same meadow setting" in text
+    assert "Change: she is now seated examining a wildflower" in text
+    assert text.count("young woman with fair skin, blue eyes, dark wavy hair, gentle smile") == 2
+    assert "Mood: peaceful and expansive." in text
+    assert "Reference context:" not in text
+    assert "DO NOT" not in text
+
+
+def test_system_prompt_uses_new_image_prompt_guidance_and_schema():
+    prompt = build_system_prompt(
+        word="Gesicht",
+        translation="face",
+        language="German",
+        settings=ImageSettings(
+            creative_direction="literal",
+            frame_narrative="auto",
+            image_count="auto",
+            art_style="auto",
+            word_in_image=False,
+            image_model="wan_fast",
+        ),
+        context=None,
+        scene_count=3,
+        aspect_ratio="16:9",
+        image_count_raw="auto",
+    )
+
+    assert "=== IMAGE PROMPT CONSTRUCTION GUIDANCE ===" in prompt
+    assert '"subject_identity"' in prompt
+    assert '"style_medium_override": null' in prompt
+    assert '"style_medium"' not in prompt
+    assert '"subject": "<primary subject/focal point>"' not in prompt
+    assert "photorealistic ->" not in prompt

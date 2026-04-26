@@ -207,14 +207,13 @@ def test_render_scene_logs_wan_provider_metadata(monkeypatch, tmp_path):
 
     result = renderer.render_scene(
         image_prompt=ImagePromptData(
-            subject="cat",
-            scene="on a wall",
-            style="photorealistic",
+            subject_identity="small orange tabby cat",
+            action_state="sits alert",
+            environment="on a sunlit garden wall",
             lighting="daylight",
-            composition="close-up",
-            mood="calm",
-            colors=["#ffffff", "#000000"],
-            details="high detail",
+            composition="close-up, eye-level, standard lens, centered",
+            material_detail="orange fur texture, rough stone wall, soft whiskers",
+            mood_palette="calm, warm orange and pale stone gray",
         ),
         model_id="wan/2-7-image",
         output_path=tmp_path / "001.png",

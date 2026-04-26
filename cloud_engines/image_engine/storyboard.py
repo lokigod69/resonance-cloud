@@ -31,7 +31,7 @@ from .models import (
     resolve_frame_narrative,
     resolve_image_count,
 )
-from .prompts import ART_STYLE_DESCRIPTIONS, build_system_prompt, build_user_prompt
+from .prompts import build_system_prompt, build_user_prompt
 
 logger = logging.getLogger(__name__)
 
@@ -141,7 +141,7 @@ def generate_storyboard(
             request_id=request_id,
         )
 
-    # Parse JSON response (pass art_style for post-process style overwrite)
+    # Parse JSON response
     storyboard = _parse_storyboard_json(
         raw_response, text_to_video=text_to_video, art_style=settings.art_style,
     )
@@ -300,10 +300,8 @@ def _sanitize_storyboard(
     Args:
         data: Raw parsed JSON dict from the LLM.
         text_to_video: Whether this is a text-to-video storyboard.
-        art_style: The user-selected art style token (e.g. 'gerhard_richter').
-            When provided and found in ART_STYLE_DESCRIPTIONS, every scene's
-            image_prompt.style is overwritten with the authoritative description
-            to prevent hallucinated style strings from reaching the renderer.
+        art_style: Retained for call-site compatibility. Style expansion now
+            happens in prompt_compiler.py from the top-level art_style token.
     """
     # Sanitize frame_narrative
     if "frame_narrative" in data:
@@ -364,19 +362,6 @@ def _sanitize_storyboard(
 
         ip = scene.get("image_prompt", {})
         if ip:
-            colors = ip.get("colors", [])
-            ip["colors"] = [c for c in colors if c and c != "N/A"] or ["neutral"]
-
-            # ── Post-process art style overwrite (Option C) ──────────
-            # Replace LLM-hallucinated style with authoritative description.
-            # This is the safety net: even if the LLM paraphrased or
-            # hallucinated the style (e.g. "photorealistic" for Richter),
-            # the renderer will receive the controlled, accurate string.
-            if art_style:
-                authoritative = ART_STYLE_DESCRIPTIONS.get(art_style.lower())
-                if authoritative:
-                    ip["style"] = authoritative
-
             te = ip.get("text_element")
             if te and isinstance(te, dict):
                 for key in ("text", "rendering", "placement"):
@@ -431,8 +416,7 @@ def _parse_storyboard_json(
     Args:
         raw: Raw LLM response string.
         text_to_video: If True, use StoryboardTextToVideo (relaxed scene schema).
-        art_style: User-selected art style token, forwarded to _sanitize_storyboard
-            for post-process style overwrite.
+        art_style: User-selected art style token, forwarded for compatibility.
 
     Returns:
         Parsed Storyboard model (or StoryboardTextToVideo, which shares the interface).

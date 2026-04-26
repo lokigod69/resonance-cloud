@@ -1,132 +1,271 @@
-"""Convert storyboard scene JSON (ImagePromptData) into natural language prompts.
-
-Used by non-Gemini image providers (e.g. Wan 2.7) that expect text prompts rather
-than structured JSON. The Gemini path continues to use json.dumps() of the raw dict.
-"""
+"""Compile storyboard image prompts into Wan-friendly natural language."""
 
 from __future__ import annotations
 
 from typing import Optional
 
-MAX_PROMPT_CHARS = 1200  # Wan handles longer prompts than SD-based models
+
+STYLE_VOCABULARY: dict[str, str] = {
+    "photorealistic": (
+        "documentary photography, available light, natural skin texture, subtle pores, "
+        "unretouched candid quality, fine grain"
+    ),
+    "cinematic": (
+        "cinematic film still, anamorphic lens, naturalistic color grading, practical "
+        "lighting sources, fine grain, 35mm film aesthetic"
+    ),
+    "oil_painting": (
+        "oil on canvas, visible brushwork, impasto highlights, layered glazes, "
+        "palette knife texture"
+    ),
+    "watercolor": (
+        "watercolor on textured paper, restrained pigment bloom, soft edges, paper grain "
+        "visible, light pencil under-drawing"
+    ),
+    "surrealism": (
+        "surrealist composition, deadpan absurd juxtaposition, dream-logic spatial "
+        "relationships, painterly precision, naturalistic rendering of impossible subjects"
+    ),
+    "pop_art": (
+        "pop art aesthetic, bold flat color blocks, halftone dot patterns, high contrast "
+        "comic-book inking, saturated primaries"
+    ),
+    "chiaroscuro": (
+        "high-contrast chiaroscuro lighting, deep shadow with selective illumination, "
+        "baroque painting tradition, dramatic single light source"
+    ),
+    "art_nouveau": (
+        "art nouveau illustration, flowing organic linework, decorative botanical motifs, "
+        "muted jewel-tone palette, flat planar color"
+    ),
+    "ukiyo_e": (
+        "Japanese ukiyo-e woodblock print, flat planar color, bold black outlines, "
+        "traditional pigment palette, decorative pattern fields"
+    ),
+    "van_gogh": (
+        "post-impressionist oil painting, bold visible brushstrokes, swirling impasto, "
+        "vivid saturated colors, expressive distortion, hand-painted texture"
+    ),
+    "studio_ghibli": (
+        "hand-painted Japanese animation aesthetic, soft watercolor backgrounds, warm "
+        "naturalistic palette, gentle character design, painterly brushwork"
+    ),
+    "anime": (
+        "hand-drawn 2D anime, soft cel-shading, expressive line quality, "
+        "animation-cel rendering, warm pastel palette"
+    ),
+    "comic_book": (
+        "comic book illustration, bold ink outlines, halftone shading, dynamic panel "
+        "composition, saturated flat color fills"
+    ),
+    "disney_animation": (
+        "polished 3D animation, expressive character animation, cinematic lighting, "
+        "family-friendly aesthetic, soft material rendering"
+    ),
+    "one_piece_style": (
+        "vibrant 2D anime, bold ink outlines, dynamic exaggerated proportions, saturated "
+        "color blocks, action-manga energy"
+    ),
+    "rick_and_morty_style": (
+        "loose hand-drawn 2D animation, simplified character shapes, flat color fills, "
+        "irreverent visual humor"
+    ),
+    "pixel_art": (
+        "pixel art rendering, limited palette, dithered shading, sprite-based composition, "
+        "retro game aesthetic"
+    ),
+    "synthwave": (
+        "synthwave aesthetic, neon magenta and cyan palette, sunset gradient sky, "
+        "geometric grid horizon, 1980s digital nostalgia"
+    ),
+    "cyberpunk": (
+        "cyberpunk cinematography, neon-drenched urban environments, holographic signage, "
+        "rain-slick reflective surfaces, high-contrast color grading"
+    ),
+    "vaporwave": (
+        "vaporwave aesthetic, pastel pink and teal palette, classical sculpture motifs, "
+        "glitchy 1990s digital artifacts, dreamlike commercial imagery"
+    ),
+    "glitch_art": (
+        "glitch art rendering, datamoshing artifacts, RGB channel separation, scan-line "
+        "distortion, digital corruption aesthetic"
+    ),
+    "knitted": (
+        "knitted textile rendering, visible yarn fiber and stitch structure, soft "
+        "handcrafted texture, warm wool tones"
+    ),
+    "claymation": (
+        "stop-motion clay animation, visible fingerprint texture on surfaces, slightly "
+        "imperfect handcrafted forms, soft studio lighting, frame-captured quality"
+    ),
+    "origami": (
+        "origami paper craft, crisp folded paper geometry, visible paper grain and creases, "
+        "soft natural lighting, minimal background"
+    ),
+    "stained_glass": (
+        "stained glass window, leaded panel divisions, jewel-tone translucent color, "
+        "light shining through colored glass, medieval ecclesiastical aesthetic"
+    ),
+    "noir": (
+        "black and white film noir cinematography, hard shadow contrast, venetian blind "
+        "shadow patterns, smoke-filled atmosphere, 1940s film stock"
+    ),
+    "vintage_film": (
+        "vintage film photography, faded color saturation, slight grain, "
+        "period-appropriate clothing and setting, soft optical character"
+    ),
+    "double_exposure": (
+        "double exposure photography, two superimposed images blending, silhouette filled "
+        "with secondary scene, dreamlike layered composition"
+    ),
+    "pen_and_ink": (
+        "pen and ink illustration, fine cross-hatched shading, bold linework, monochrome "
+        "composition, traditional drawing aesthetic"
+    ),
+    "charcoal_sketch": (
+        "charcoal sketch on textured paper, soft tonal gradients, smudged shading, "
+        "expressive gestural marks, monochrome"
+    ),
+    "steampunk": (
+        "steampunk aesthetic, brass gears and copper piping, Victorian fashion, leather "
+        "and polished wood, anachronistic mechanical detail"
+    ),
+    "polaroid": (
+        "Polaroid instant photography, thick white border, washed color, soft flash falloff, "
+        "casual snapshot intimacy"
+    ),
+    "impressionism": (
+        "impressionist painting, loose visible brushstrokes, broken color, natural outdoor "
+        "light, atmospheric softness"
+    ),
+    "expressionism": (
+        "expressionist painting, distorted forms, intense non-natural color, agitated "
+        "brushwork, psychological intensity"
+    ),
+    "cubism": (
+        "cubist composition, fragmented geometric planes, multiple perspectives, muted "
+        "earth tones, flattened picture space"
+    ),
+    "renaissance": (
+        "renaissance painting, balanced classical composition, sfumato shading, naturalistic "
+        "anatomy, rich drapery detail"
+    ),
+    "art_deco": (
+        "art deco design, geometric symmetry, metallic accents, stepped forms, luxurious "
+        "streamlined surfaces"
+    ),
+    "chinese_ink_wash": (
+        "Chinese ink wash painting, expressive monochrome brushwork, rice paper texture, "
+        "misty atmospheric space, restrained composition"
+    ),
+    "pixar_3d": (
+        "stylized 3D animation, appealing character design, cinematic lighting, rich "
+        "materials, polished family-film rendering"
+    ),
+    "dragon_ball_style": (
+        "high-energy 2D anime, muscular proportions, spiky silhouettes, bold outlines, "
+        "dynamic martial arts composition"
+    ),
+    "south_park_style": (
+        "construction-paper cutout animation, simple geometric characters, flat bold "
+        "colors, intentionally crude handmade shapes"
+    ),
+    "blue_eyed_samurai": (
+        "cinematic painterly animation, Edo-era detail, dramatic widescreen composition, "
+        "muted earth palette with selective accents"
+    ),
+    "invincible": (
+        "Western superhero animation, clean bold outlines, flat cel-shaded color, dramatic "
+        "perspective, graphic-novel energy"
+    ),
+    "retro_90s": (
+        "1990s graphic design aesthetic, neon color accents, Memphis patterns, bold "
+        "typography, energetic commercial styling"
+    ),
+    "botanical_illustration": (
+        "botanical illustration, scientifically precise plant detail, fine linework, "
+        "delicate watercolor washes, neutral background"
+    ),
+    "storybook": (
+        "storybook illustration, warm hand-painted quality, soft edges, gentle lighting, "
+        "charming narrative composition"
+    ),
+    "banksy": (
+        "stencil street art, sharp spray-painted silhouettes, rough urban wall texture, "
+        "satirical graphic contrast"
+    ),
+    "escher": (
+        "mathematical engraving aesthetic, impossible geometry, tessellated forms, precise "
+        "black-and-white linework"
+    ),
+    "klimt": (
+        "Vienna Secession decorative painting, gold ornamental pattern fields, mosaic-like "
+        "surfaces, elegant figure rendering"
+    ),
+    "gerhard_richter": (
+        "squeegee-dragged abstract painting, smeared layered color fields, scraped paint "
+        "texture, luminous physical pigment"
+    ),
+    "fantasy_art": (
+        "epic fantasy illustration, dramatic magical lighting, ornate costumes, heroic "
+        "scale, richly detailed environment"
+    ),
+    "collage": (
+        "mixed-media collage, torn paper edges, layered photographs and textures, visible "
+        "overlap, handmade assemblage quality"
+    ),
+    "lego_voxel": (
+        "building-brick voxel rendering, blocky stepped surfaces, visible studs, miniature "
+        "constructive scale, primary-color accents"
+    ),
+}
+
+
+def _resolve_style_vocabulary(art_style: str, override: Optional[str]) -> str:
+    """Return expanded style vocabulary for compilation."""
+    if override:
+        return override
+    return STYLE_VOCABULARY.get(art_style, art_style)
 
 
 def compile_scene_to_text(
     scene: dict,
-    chain_instruction: Optional[str] = None,
-    use_color_palette: bool = False,
     *,
-    has_reference_image: bool = False,
+    has_reference_image: bool,
+    use_color_palette: bool = True,
 ) -> str:
-    """Convert an ImagePromptData dict into a fluent natural language prompt.
+    """Compile a storyboard scene into the Wan 2.7 API prompt string."""
+    ip = scene["image_prompt"]
+    art_style = scene.get("art_style") or "photorealistic"
+    style_vocab = _resolve_style_vocabulary(
+        art_style,
+        ip.get("style_medium_override"),
+    )
 
-    Expected scene keys (all optional except subject):
-        subject, scene, style, lighting, composition, mood, colors,
-        details, aspect_ratio, text_element
-
-    Args:
-        scene: ImagePromptData dict (from model_dump()).
-        chain_instruction: Optional continuity text injected early in the prompt
-            (after opening sentence, before scene-specific sections) so that
-            composition/lighting/mood get recency weight in cross-attention.
-        use_color_palette: When True, include the "Color palette: ..." section
-            built from scene["colors"]. When False (default), omit it entirely.
-        has_reference_image: When True, include chain_instruction as reference
-            context. When False, omit it even if chain_instruction is set.
-
-    Returns:
-        Prompt string suitable for Wan 2.7 or similar text-prompt models.
-    """
     parts: list[str] = []
 
-    # Primary sentence: subject + scene. Style stays in the labeled section
-    # below, sourced from scene.image_prompt.style as expanded by the storyboard
-    # LLM, not the raw settings token.
-    subject = _clean(scene.get("subject", ""))
-    scene_desc = _clean(scene.get("scene", ""))
+    if has_reference_image:
+        parts.append(
+            f"Use image 1 as the identity anchor for {ip['subject_identity']}."
+        )
+        if ip.get("continuity_anchor"):
+            parts.append(f"Keep the same {ip['continuity_anchor']}.")
+        if ip.get("change_request"):
+            parts.append(f"Change: {ip['change_request']}.")
 
-    if subject:
-        opening = f"{subject}"
-        if scene_desc:
-            opening += f" in {scene_desc}"
-        opening += "."
-        parts.append(opening)
-    elif scene_desc:
-        parts.append(f"{scene_desc}.")
+    parts.append(
+        f"{ip['subject_identity']} {ip['action_state']} in {ip['environment']}."
+    )
+    parts.append(f"Composition: {ip['composition']}.")
+    parts.append(f"Lighting: {ip['lighting']}.")
+    parts.append(f"Materials: {ip['material_detail']}.")
 
-    # Chain instruction for visual continuity — injected EARLY so scene-specific
-    # composition, lighting, mood, and details arrive AFTER and get recency bias
-    # in Wan's cross-attention.  Label is "Reference context:" (not "Continuity:")
-    # because "Continuity" semantically reinforces keeping the reference unchanged.
-    # Style goes immediately after the opening subject/scene line so the
-    # LLM-expanded art-style phrase (e.g. "Gerhard Richter photorealistic
-    # painting, soft focus blur...") lands in a high-attention slot for Wan.
-    # Source is scene.image_prompt.style, already expanded by the storyboard LLM.
-    _add_section(parts, "Style", scene.get("style"))
-
-    if chain_instruction and has_reference_image:
-        parts.append(f"Reference context: {chain_instruction}")
-
-    # Labeled sections (scene-specific details come LAST for recency weight)
-    _add_section(parts, "Composition", scene.get("composition"))
-    _add_section(parts, "Lighting", scene.get("lighting"))
-    _add_section(parts, "Mood", scene.get("mood"))
-
-    # Colors as descriptive text (gated by use_color_palette setting)
     if use_color_palette:
-        colors = scene.get("colors")
-        if colors:
-            if isinstance(colors, list):
-                color_text = ", ".join(c for c in colors if c and c.lower() not in ("n/a", "none"))
-            else:
-                color_text = str(colors)
-            if color_text:
-                _add_section(parts, "Color palette", color_text)
+        parts.append(f"Mood: {ip['mood_palette']}.")
+    else:
+        mood_only = ip["mood_palette"].split(",")[0].strip()
+        parts.append(f"Mood: {mood_only}.")
 
-    # Catch-all details field
-    _add_section(parts, "Details", scene.get("details"))
+    parts.append(f"{style_vocab}.")
 
-    # Text element (word rendered in the image)
-    text_el = scene.get("text_element")
-    if text_el and isinstance(text_el, dict):
-        text_val = text_el.get("text", "")
-        if text_val:
-            rendering = text_el.get("rendering", "")
-            placement = text_el.get("placement", "")
-            text_desc = f'the text "{text_val}"'
-            if rendering:
-                text_desc += f" rendered as {rendering}"
-            if placement:
-                text_desc += f", {placement}"
-            _add_section(parts, "Text visible in scene", text_desc)
-
-    prompt = " ".join(parts)
-
-    if len(prompt) > MAX_PROMPT_CHARS:
-        prompt = _trim_prompt(prompt, MAX_PROMPT_CHARS)
-
-    return prompt
-
-
-def _clean(value: object) -> str:
-    """Normalize a value to a stripped string, removing trailing punctuation."""
-    if not value:
-        return ""
-    s = " ".join(str(value).split())
-    return s.rstrip(".;,")
-
-
-def _add_section(parts: list[str], label: str, value: object) -> None:
-    """Append a labeled section if the value is non-empty and meaningful."""
-    cleaned = _clean(value)
-    if cleaned and cleaned.lower() not in ("n/a", "none", "null", "auto"):
-        parts.append(f"{label}: {cleaned}.")
-
-
-def _trim_prompt(prompt: str, max_chars: int) -> str:
-    """Hard-trim the prompt to max_chars, ending on a word boundary."""
-    trimmed = prompt[:max_chars - 1].strip()
-    last_space = trimmed.rfind(" ")
-    if last_space > max_chars * 0.8:
-        trimmed = trimmed[:last_space]
-    return trimmed.rstrip(".;, ") + "."
+    return " ".join(parts)

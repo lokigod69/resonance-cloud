@@ -143,56 +143,6 @@ _FALLBACK_CHAIN_INSTRUCTION = (
 )
 
 # ---------------------------------------------------------------------------
-# Wan-specific chain instructions
-# ---------------------------------------------------------------------------
-# Wan's input_urls parameter is img2img conditioning at full strength — no API
-# knob to reduce it.  The Gemini instructions above say "SAME subject" and
-# "stays consistent", which reinforces img2img dominance and causes Wan to
-# reproduce the previous scene with only color shifts.  These Wan-specific
-# instructions explicitly deprioritize the reference image and assert that
-# the new composition described in the prompt must take precedence.
-
-CHAIN_INSTRUCTIONS_WAN: dict[str, Optional[str]] = {
-    "scale": (
-        "The reference image shows the general subject and style. "
-        "Use it ONLY for subject identity — generate a fresh composition at a "
-        "completely different scale of observation. DO NOT reproduce the reference "
-        "layout, framing, or camera distance. New framing, new context."
-    ),
-    "action": (
-        "The reference image shows the general subject and style. "
-        "Use it ONLY for subject identity — generate a fresh composition showing "
-        "the subject in a different action and pose as described below. "
-        "DO NOT reproduce the reference layout, framing, or body position."
-    ),
-    "environment": (
-        "The reference image shows the general subject and style. "
-        "Use it ONLY for subject identity — generate a fresh scene with "
-        "dramatically different surroundings as described below. "
-        "DO NOT reproduce the reference background, setting, or composition."
-    ),
-    "narrative": (
-        "The reference image shows the previous moment in this story. "
-        "Use it ONLY for subject identity — generate a fresh composition showing "
-        "what happens NEXT as described below. DO NOT reproduce the reference "
-        "layout, framing, or pose. Both subject and setting must evolve."
-    ),
-    "context": (
-        "The reference image shows the general subject. "
-        "Use it ONLY for subject identity — generate a completely different scene "
-        "and context as described below. DO NOT reproduce any element of the "
-        "reference except the subject's core recognizable identity."
-    ),
-    "collection": None,  # No chaining — each scene rendered independently
-}
-
-_FALLBACK_CHAIN_INSTRUCTION_WAN = (
-    "The reference image shows the general subject and style. "
-    "Use it ONLY for subject identity — generate a fresh composition as described "
-    "in the prompt below. DO NOT reproduce the reference layout or framing."
-)
-
-# ---------------------------------------------------------------------------
 # Flux 2 Pro / Z-Image-Turbo chain-instruction scaffolds (v1 = clones of
 # the Gemini-flavoured table). Tuning is post-ship empirical work — see
 # FU1 in docs/superpowers/plans/... for the follow-up.
@@ -493,6 +443,7 @@ def render_scene(
     word: str = "",
     palette: Optional[list[str]] = None,
     use_color_palette: bool = False,
+    art_style: str = "photorealistic",
     *,
     word_id: str | None = None,
     deck_id: str | None = None,
@@ -714,7 +665,7 @@ def render_scene(
         from .wan_provider import render_scene_wan, _upload_for_chaining
 
         wan_input_urls = None
-        if reference_image_path and reference_image_path.exists() and chain_instruction:
+        if reference_image_path and reference_image_path.exists():
             api_key = os.environ.get("KIE_API_KEY", "")
             if api_key:
                 ref_url = _upload_for_chaining(reference_image_path, api_key)
@@ -728,9 +679,10 @@ def render_scene(
         request_payload = {
             "model": model_id,
             "aspect_ratio": aspect_ratio,
-            "chain_instruction": chain_instruction,
+            "chain_instruction": None,
             "input_urls": wan_input_urls,
             "use_color_palette": use_color_palette,
+            "art_style": art_style,
             "image_prompt": prompt_payload,
         }
         try:
@@ -760,9 +712,9 @@ def render_scene(
                     model_id=model_id,
                     output_path=output_path,
                     aspect_ratio=aspect_ratio,
-                    chain_instruction=chain_instruction,
                     input_urls=wan_input_urls,
                     use_color_palette=use_color_palette,
+                    art_style=art_style,
                 )
                 ev._model_provider = wan_result.get("provider_name")
                 ev._model_name = wan_result.get("model_name")
@@ -804,9 +756,9 @@ def render_scene(
                 model_id="wan/2-7-image",
                 output_path=output_path,
                 aspect_ratio=aspect_ratio,
-                chain_instruction=chain_instruction,
                 input_urls=wan_input_urls,
                 use_color_palette=use_color_palette,
+                art_style=art_style,
             )
             if wan_result["success"]:
                 return RenderResult(
@@ -990,25 +942,28 @@ def render_all_scenes(
     per_scene_seconds: list[float] = []
     previous_image_path: Optional[Path] = None
 
-    # Resolve mode-specific chain instruction by provider family
+    # Resolve mode-specific chain instruction by provider family.
+    # Wan keeps the reference hand-off, but its preserve/change instruction is
+    # compiled from image_prompt continuity_anchor/change_request.
     resolved_mode = resolve_frame_narrative(storyboard.frame_narrative)
     if model_id.startswith("wan/"):
-        chain_instruction = CHAIN_INSTRUCTIONS_WAN.get(
-            resolved_mode, _FALLBACK_CHAIN_INSTRUCTION_WAN
-        )
+        chain_instruction = None
+        use_chaining = resolved_mode != "collection"
     elif model_id.startswith("flux-2/"):
         chain_instruction = CHAIN_INSTRUCTIONS_FLUX.get(
             resolved_mode, _FALLBACK_CHAIN_INSTRUCTION_FLUX
         )
+        use_chaining = chain_instruction is not None
     elif model_id.startswith("fal-ai/"):
         chain_instruction = CHAIN_INSTRUCTIONS_ZTURBO.get(
             resolved_mode, _FALLBACK_CHAIN_INSTRUCTION_ZTURBO
         )
+        use_chaining = chain_instruction is not None
     else:
         chain_instruction = CHAIN_INSTRUCTIONS.get(
             resolved_mode, _FALLBACK_CHAIN_INSTRUCTION
         )
-    use_chaining = chain_instruction is not None  # collection mode skips chaining
+        use_chaining = chain_instruction is not None  # collection mode skips chaining
 
     for scene in storyboard.scenes:
         scene_start = time.monotonic()
@@ -1033,6 +988,7 @@ def render_all_scenes(
             word=storyboard.word,
             palette=storyboard.shared_palette,
             use_color_palette=use_color_palette,
+            art_style=storyboard.art_style,
             word_id=word_id,
             deck_id=deck_id,
             user_id=user_id,

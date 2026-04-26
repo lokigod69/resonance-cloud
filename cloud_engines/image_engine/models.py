@@ -12,7 +12,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any, Literal, Optional, Union
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 # --- Engine Input Models (Section 2.1) ---
@@ -253,14 +253,16 @@ class TextElement(BaseModel):
 class ImagePromptData(BaseModel):
     """Structured JSON sent verbatim to the image model (Section 4.3)."""
 
-    subject: str
-    scene: str
-    style: str
-    lighting: str
+    subject_identity: str
+    action_state: str
+    environment: str
     composition: str
-    mood: str
-    colors: list[str]
-    details: str
+    lighting: str
+    material_detail: str
+    mood_palette: str
+    style_medium_override: Optional[str] = None
+    continuity_anchor: Optional[str] = None
+    change_request: Optional[str] = None
     aspect_ratio: str = "16:9"
     text_element: Optional[TextElement] = None
 
@@ -361,6 +363,25 @@ class Scene(BaseModel):
     duration_rationale: Optional[str] = None
     movie_reference: Optional[MovieReference] = None
     remix_element: Optional[RemixElement] = None
+
+    @model_validator(mode="after")
+    def validate_image_prompt_continuity(self) -> "Scene":
+        if self.scene_number == 1:
+            if (
+                self.image_prompt.continuity_anchor is not None
+                or self.image_prompt.change_request is not None
+            ):
+                raise ValueError(
+                    "scene 1 image_prompt continuity_anchor and change_request must be null"
+                )
+        elif (
+            not self.image_prompt.continuity_anchor
+            or not self.image_prompt.change_request
+        ):
+            raise ValueError(
+                "scene 2+ image_prompt requires continuity_anchor and change_request"
+            )
+        return self
 
 
 class Storyboard(BaseModel):

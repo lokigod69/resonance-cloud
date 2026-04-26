@@ -79,6 +79,7 @@ def build_system_prompt(
     parts.extend([
         _art_style_block(settings.art_style),
         _style_consistency_block(scene_count),
+        _image_prompt_guidance_block(),
     ])
 
     # Word-in-image block — skip for text-to-video (no image rendering)
@@ -1179,7 +1180,7 @@ def _art_style_block(style: str) -> str:
             f"do not deviate or reinterpret it. Every compositional choice — lighting, "
             f"color, texture, detail level — must be consistent with the description "
             f"above across all scenes.\n"
-            f"The style field in image_prompt MUST be exactly: \"{desc}\""
+            f'The top-level art_style field MUST be exactly: "{style_lower}"'
         )
     return (
         f"ART STYLE: {style.upper()}\n"
@@ -1198,8 +1199,50 @@ def _style_consistency_block(scene_count: int) -> str:
         "STYLE CONSISTENCY (REQUIRED):\n"
         "All scenes in this generation MUST use the same visual style / rendering "
         "approach. Do not mix illustration with photography or switch art styles "
-        "between scenes. The style field in image_prompt must be identical or "
-        "near-identical across all scenes."
+        "between scenes. Keep the top-level art_style identical across all scenes; "
+        "only use style_medium_override for a rare, specific creative variant."
+    )
+
+
+def _image_prompt_guidance_block() -> str:
+    """Direct field guidance for the storyboard image_prompt object."""
+    return (
+        "=== IMAGE PROMPT CONSTRUCTION GUIDANCE ===\n\n"
+        "Fill image_prompt fields as follows:\n\n"
+        "subject_identity — Stable description of the subject. Age range, build, hair, "
+        "eyes, skin tone, distinctive features, persistent clothing. Identical across "
+        "all scenes within a generation. Copy verbatim, do not paraphrase.\n\n"
+        "action_state — Active verb construction. What the subject does in this scene. "
+        "Brief. Different per scene.\n\n"
+        "environment — Location, weather, time of day, surrounding objects, atmospheric "
+        "conditions. One sentence.\n\n"
+        "composition — Shot size (close-up, medium, wide, extreme wide), camera angle "
+        "(eye-level, low, high, overhead), lens character (wide, standard, telephoto, "
+        "macro), subject placement (centered, rule of thirds, off-center), depth of "
+        "field. Concrete cinematography vocabulary.\n\n"
+        "lighting — Source, direction, softness, color temperature, contrast. Concrete "
+        "photographic vocabulary.\n\n"
+        "material_detail — Required every scene regardless of framing distance. Surfaces, "
+        "textures, materials visible in the frame. For people: skin treatment, hair "
+        "detail, fabric. For environments: ground texture, vegetation, atmospheric "
+        "particles. For objects: material grain, weathering, sheen.\n\n"
+        'mood_palette — Format: "[mood word], [palette description with named colors '
+        'and temperature]". Example: "quiet alert, muted earth tones with warm browns '
+        'and pale blues."\n\n'
+        "continuity_anchor — Scenes 2+ only, null on scene 1. What stays identical "
+        "from scene 1. Always include subject_identity. Add persistent clothing, time "
+        "of day, location anchor.\n\n"
+        "change_request — Scenes 2+ only, null on scene 1. What is different from "
+        "scene 1. Action, environment shift, composition change, mood shift.\n\n"
+        "style_medium_override — Rare, optional, default null. Only fill if you want "
+        "to override the default style vocabulary with a specific creative variant; "
+        "otherwise leave null.\n\n"
+        'Do not use anti-artifact phrasing ("no plastic skin", "avoid blur"). Convert '
+        'to positive target ("natural skin texture, available light", "sharp focus on '
+        'subject"). The model reads negation as positive activation.\n\n'
+        "For provocative direction: encode contradictions concretely (a cow in a "
+        "business suit at a boardroom table). Do not use artist names (\"like "
+        "Magritte\"). Describe the impossible thing."
     )
 
 
@@ -1679,20 +1722,18 @@ def _output_schema_block(aspect_ratio: str = "16:9", creative_direction: str = "
         '      "scene_number": 1,\n'
         '      "description": "<human-readable scene description>",\n'
         '      "image_prompt": {\n'
-        '        "subject": "<primary subject/focal point>",\n'
-        '        "scene": "<environment, setting, background>",\n'
-        '        "style": "<visual/photographic style>",\n'
-        '        "lighting": "<lighting conditions, direction, quality>",\n'
-        '        "composition": "<camera angle, framing, spatial arrangement>",\n'
-        '        "mood": "<emotional tone>",\n'
-        '        "colors": ["<color1>", "<color2>"],\n'
-        '        "details": "<environmental details, textures>",\n'
+        '        "subject_identity": "<stable cross-scene description — copied verbatim across all scenes>",\n'
+        '        "action_state": "<what the subject is doing in THIS scene>",\n'
+        '        "environment": "<location, weather, time, surroundings>",\n'
+        '        "composition": "<shot size, angle, lens, subject placement>",\n'
+        '        "lighting": "<source, direction, softness, color temperature, contrast>",\n'
+        '        "material_detail": "<surfaces, textures, materials — required every scene every framing>",\n'
+        '        "mood_palette": "<mood word, named colors with temperature>",\n'
+        '        "style_medium_override": null,\n'
+        '        "continuity_anchor": "<scenes 2+ only: what stays identical from scene 1; null for scene 1>",\n'
+        '        "change_request": "<scenes 2+ only: what changes from scene 1; null for scene 1>",\n'
         f'        "aspect_ratio": "{aspect_ratio}",\n'
-        '        "text_element": {\n'
-        '          "text": "<THE WORD IN TARGET LANGUAGE, UPPERCASE>",\n'
-        '          "rendering": "<how the text is physically rendered>",\n'
-        '          "placement": "<where in the scene the text appears>"\n'
-        "        }\n"
+        '        "text_element": null\n'
         "      },\n"
         '      "word_render": {\n'
         '        "enabled": true,\n'
@@ -1716,8 +1757,12 @@ def _output_schema_block(aspect_ratio: str = "16:9", creative_direction: str = "
         "  ]\n"
         "}\n\n"
         "IMPORTANT:\n"
-        "- text_element should be null and word_render.enabled should be false "
-        "if word-in-image is disabled\n"
+        "- For scene 1: continuity_anchor and change_request must be null\n"
+        "- For scene 2+: both continuity_anchor and change_request are required strings, never null\n"
+        "- text_element is null when WORD IN COMPOSITION is DISABLED; when ENABLED, use this structure: "
+        '{"text": "<THE WORD IN TARGET LANGUAGE, UPPERCASE>", "rendering": "<how the text is physically rendered>", "placement": "<where in the scene the text appears>"}\n'
+        "- word_render.enabled is false when WORD IN COMPOSITION is DISABLED; when ENABLED, follow the word_render structure above\n"
+        "- subject_identity must be byte-for-byte IDENTICAL across all scenes within a generation\n"
         f'- aspect_ratio must always be "{aspect_ratio}"\n'
         "- Return ONLY the JSON object, nothing else\n\n"
         "CAMERA MOTION (choose the motion that best serves the scene's emotion and energy):\n"
@@ -1744,6 +1789,6 @@ def _output_schema_block(aspect_ratio: str = "16:9", creative_direction: str = "
         '- Emotional close-up building tension: type: "push_in", speed: "medium"\n'
         '- Chaotic kitchen disaster unfolding: type: "handheld", speed: "medium"\n\n'
         "CRITICAL: Every field in your JSON output must have a real value. "
-        'Never use "N/A", "none", "null", or empty strings for any field. '
-        "If a field doesn't apply, use the most sensible default from the allowed options."
+        'Never use "N/A", "none", or empty strings for any field. '
+        "Use JSON null only where this schema explicitly requires null."
     )

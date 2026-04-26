@@ -42,9 +42,9 @@ def render_scene_wan(
     model_id: str,
     output_path: Path,
     aspect_ratio: str = "16:9",
-    chain_instruction: Optional[str] = None,
     input_urls: Optional[list[str]] = None,
     use_color_palette: bool = False,
+    art_style: str = "photorealistic",
 ) -> dict:
     """Render a single scene using Wan 2.7 via kie.ai (synchronous).
 
@@ -53,7 +53,6 @@ def render_scene_wan(
         model_id: "wan/2-7-image" or "wan/2-7-image-pro".
         output_path: Where to save the output PNG.
         aspect_ratio: "16:9", "9:16", or "1:1".
-        chain_instruction: Optional continuity instruction injected into the prompt.
         use_color_palette: When True, include the storyboard's "Color palette:"
             section in the compiled text prompt.
 
@@ -81,8 +80,10 @@ def render_scene_wan(
 
     # Compile natural language prompt from the scene dict
     prompt_text = compile_scene_to_text(
-        image_prompt,
-        chain_instruction=chain_instruction,
+        {
+            "art_style": art_style,
+            "image_prompt": image_prompt,
+        },
         use_color_palette=use_color_palette,
         has_reference_image=bool(input_urls),
     )
