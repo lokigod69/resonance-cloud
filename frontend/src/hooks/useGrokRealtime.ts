@@ -36,6 +36,7 @@ export interface UseGrokRealtimeReturn {
 const SILENT_MP3_URL = '/silent.mp3'
 const PCM_SAMPLE_RATE = 24000
 const PCM_FLUSH_SAMPLES = 2400
+const SILENT_FIRST_CHUNK_PEAK_THRESHOLD = 0.01
 const USER_TRANSCRIPT_DRAIN_TIMEOUT_MS = 2000
 const PERSISTENCE_DRAIN_TIMEOUT_MS = 3000
 
@@ -160,6 +161,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const pendingAssistantContentRef = useRef<string>('')
   const assistantResponseSeqRef = useRef(0)
   const audioChunkSeqRef = useRef(0)
+  const firstChunkSeenForResponseRef = useRef<Set<number>>(new Set())
   const micCycleSeqRef = useRef(0)
   const currentAudioResponseKeyRef = useRef<string | null>(null)
   const currentResponseAudioChunksRef = useRef(0)
@@ -334,14 +336,29 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
   const queueAudioBuffer = useCallback(async (pcm: Int16Array) => {
     if (pcm.length === 0) return
-    const ctx = await ensureAudioContext()
-    let responseSeq = 0
-    let chunkSeq = 0
-    if (GROK_AUDIO_DEBUG) {
-      responseSeq = assistantResponseSeqRef.current
-      chunkSeq = audioChunkSeqRef.current + 1
-      audioChunkSeqRef.current = chunkSeq
+    const responseSeq = assistantResponseSeqRef.current
+    const chunkSeq = audioChunkSeqRef.current + 1
+    audioChunkSeqRef.current = chunkSeq
+
+    if (responseSeq > 0 && !firstChunkSeenForResponseRef.current.has(responseSeq)) {
+      firstChunkSeenForResponseRef.current.add(responseSeq)
+      let peak = 0
+      for (let i = 0; i < pcm.length; i++) {
+        const absValue = Math.abs(pcm[i] / 0x8000)
+        if (absValue > peak) peak = absValue
+      }
+      if (peak < SILENT_FIRST_CHUNK_PEAK_THRESHOLD) {
+        grokAudioDebug('queueAudioBuffer:skipped-silent-first-chunk', {
+          assistantResponseSeq: responseSeq,
+          audioChunkSeq: chunkSeq,
+          peak,
+          sampleCount: pcm.length,
+        })
+        return
+      }
     }
+
+    const ctx = await ensureAudioContext()
     const audioBuffer = ctx.createBuffer(1, pcm.length, PCM_SAMPLE_RATE)
     const channel = audioBuffer.getChannelData(0)
     for (let i = 0; i < pcm.length; i++) {
@@ -588,21 +605,21 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       case 'response.output_audio.delta': {
         const delta = typeof payload.delta === 'string' ? payload.delta : ''
         if (!delta) break
-        if (GROK_AUDIO_DEBUG) {
-          const responseId = getResponseId(payload)
-          const responseKey = responseId ?? '__current_response__'
-          if (currentAudioResponseKeyRef.current !== responseKey) {
-            currentAudioResponseKeyRef.current = responseKey
-            currentResponseAudioChunksRef.current = 0
-            assistantResponseSeqRef.current += 1
+        const responseId = getResponseId(payload)
+        const responseKey = responseId ?? '__current_response__'
+        if (currentAudioResponseKeyRef.current !== responseKey) {
+          currentAudioResponseKeyRef.current = responseKey
+          currentResponseAudioChunksRef.current = 0
+          assistantResponseSeqRef.current += 1
+          if (GROK_AUDIO_DEBUG) {
             grokAudioDebug('response.audio:first-delta', {
               responseSequence: assistantResponseSeqRef.current,
               responseId,
               audioChunkSeqAtStart: audioChunkSeqRef.current,
             })
           }
-          currentResponseAudioChunksRef.current += 1
         }
+        currentResponseAudioChunksRef.current += 1
         const bytes = decodeBase64ToBytes(delta)
         const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength)
         const pcm = new Int16Array(bytes.byteLength / 2)
@@ -626,10 +643,10 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
             assistantTranscriptLength: finalAssistantText.length,
             textDeltaEventsArrived: currentResponseTextDeltaSeenRef.current,
           })
-          currentAudioResponseKeyRef.current = null
-          currentResponseAudioChunksRef.current = 0
-          currentResponseTextDeltaSeenRef.current = false
         }
+        currentAudioResponseKeyRef.current = null
+        currentResponseAudioChunksRef.current = 0
+        currentResponseTextDeltaSeenRef.current = false
         if (GROK_VERIFY_L0) {
           const responseSequence = grokVerifyResponseSequenceRef.current + 1
           grokVerifyResponseSequenceRef.current = responseSequence
@@ -882,11 +899,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
         workletModuleLoadedRef.current = false
         currentAssistantIndexRef.current = null
-        if (GROK_AUDIO_DEBUG) {
-          currentAudioResponseKeyRef.current = null
-          currentResponseAudioChunksRef.current = 0
-          currentResponseTextDeltaSeenRef.current = false
-        }
+        currentAudioResponseKeyRef.current = null
+        currentResponseAudioChunksRef.current = 0
+        currentResponseTextDeltaSeenRef.current = false
         if (GROK_VERIFY_L0) {
           grokVerifyTextDeltaAccumRef.current = ''
           grokVerifyAudioTranscriptAccumRef.current = ''
@@ -1121,6 +1136,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     if (GROK_AUDIO_DEBUG) {
       assistantResponseSeqRef.current = 0
       audioChunkSeqRef.current = 0
+      firstChunkSeenForResponseRef.current.clear()
       micCycleSeqRef.current = 0
       currentAudioResponseKeyRef.current = null
       currentResponseAudioChunksRef.current = 0
