@@ -43,6 +43,65 @@ logger = logging.getLogger(__name__)
 class _ProviderRenderError(RuntimeError):
     """Internal sentinel so provider failures log a failed event before fallback."""
 
+
+SCENE_STILL_BUCKET = "videos"
+
+
+def _word_slug_from_output_path(output_path: Path) -> str | None:
+    """Infer word slug from <word_slug>/images/<version>/<scene>.png."""
+    try:
+        if output_path.parent.parent.name == "images":
+            return output_path.parent.parent.parent.name
+    except IndexError:
+        return None
+    return None
+
+
+def _upload_scene_still_for_admin(
+    output_path: Path,
+    *,
+    scene_number: int,
+    user_id: str | None,
+    deck_id: str | None,
+    job_id: str | None,
+) -> dict[str, str]:
+    """Upload a rendered scene PNG beside the final video storage prefix."""
+    if not output_path.exists() or not user_id or not deck_id:
+        return {}
+
+    word_slug = _word_slug_from_output_path(output_path)
+    if not word_slug:
+        return {}
+
+    supabase_url = os.getenv("SUPABASE_URL", "")
+    supabase_key = os.getenv("SUPABASE_SERVICE_KEY", "") or os.getenv("SUPABASE_KEY", "")
+    if not supabase_url or not supabase_key:
+        logger.warning("Supabase credentials missing; skipping scene still upload")
+        return {}
+
+    storage_key = f"{user_id}/{deck_id}/{word_slug}/scene_{scene_number:03d}.png"
+    try:
+        from supabase import create_client as _create_supabase_client
+
+        sb_client = _create_supabase_client(supabase_url, supabase_key)
+        with open(output_path, "rb") as f:
+            sb_client.storage.from_(SCENE_STILL_BUCKET).upload(
+                storage_key,
+                f.read(),
+                file_options={"content-type": "image/png", "upsert": "true"},
+            )
+        public_url = sb_client.storage.from_(SCENE_STILL_BUCKET).get_public_url(storage_key)
+    except Exception as e:
+        logger.warning("Scene still upload failed for %s: %s", storage_key, e)
+        return {"scene_still_upload_error": str(e)}
+
+    return {
+        "scene_still_bucket": SCENE_STILL_BUCKET,
+        "scene_still_storage_key": storage_key,
+        "scene_still_url": public_url,
+        "scene_still_job_id": job_id or "",
+    }
+
 # Retry constants
 TIMEOUT_RETRY_DELAY = 5.0
 RATE_LIMIT_MAX_RETRIES = 3
@@ -716,6 +775,17 @@ def render_scene(
                     use_color_palette=use_color_palette,
                     art_style=art_style,
                 )
+                scene_still_metadata = (
+                    _upload_scene_still_for_admin(
+                        output_path,
+                        scene_number=scene_number,
+                        user_id=user_id,
+                        deck_id=deck_id,
+                        job_id=job_id,
+                    )
+                    if wan_result.get("success")
+                    else {}
+                )
                 ev._model_provider = wan_result.get("provider_name")
                 ev._model_name = wan_result.get("model_name")
                 ev.record_response(
@@ -727,6 +797,7 @@ def render_scene(
                     provider=wan_result.get("provider_name"),
                     output_file=wan_result.get("file_path"),
                     safety_blocked=False,
+                    **scene_still_metadata,
                 )
                 if not wan_result["success"]:
                     raise _ProviderRenderError(
@@ -761,6 +832,13 @@ def render_scene(
                 art_style=art_style,
             )
             if wan_result["success"]:
+                _upload_scene_still_for_admin(
+                    output_path,
+                    scene_number=scene_number,
+                    user_id=user_id,
+                    deck_id=deck_id,
+                    job_id=job_id,
+                )
                 return RenderResult(
                     success=True,
                     scene_number=scene_number,

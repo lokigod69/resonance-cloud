@@ -192,6 +192,30 @@ def test_system_prompt_uses_new_image_prompt_guidance_and_schema():
     assert "photorealistic ->" not in prompt
 
 
+def test_auto_art_style_defaults_to_photorealistic():
+    prompt = build_system_prompt(
+        word="Gesicht",
+        translation="face",
+        language="German",
+        settings=ImageSettings(
+            creative_direction="literal",
+            frame_narrative="auto",
+            image_count="auto",
+            art_style="auto",
+            word_in_image=False,
+            image_model="wan_fast",
+        ),
+        context=None,
+        scene_count=3,
+        aspect_ratio="16:9",
+        image_count_raw="auto",
+    )
+
+    assert 'Default to "photorealistic"' in prompt
+    assert "Choose ONE art style from this list" not in prompt
+    assert "photorealistic, oil_painting, watercolor" not in prompt
+
+
 def test_provocative_system_prompt_does_not_seed_artist_names():
     prompt = build_system_prompt(
         word="Kuh",
@@ -214,3 +238,9 @@ def test_provocative_system_prompt_does_not_seed_artist_names():
 
     assert "magritte" not in prompt_lower
     assert "dali" not in prompt_lower
+    assert "dalí" not in prompt_lower
+    assert "ernst" not in prompt_lower
+    assert "think:" not in prompt_lower
+    assert "examples of good visually arresting vocabulary scenes" not in prompt_lower
+    assert '"cow" ->' not in prompt_lower
+    assert "=== provocative ===" in prompt_lower
