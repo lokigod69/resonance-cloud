@@ -45,7 +45,7 @@ export function ProviderToggle({ value, onChange, disabled, disabledReason, lang
               aria-label={opt.full}
               className={`group flex min-h-12 items-center justify-center gap-2 rounded-full px-2 text-sm font-bold tracking-[0.18em] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300/70 disabled:cursor-not-allowed disabled:opacity-45 sm:px-4 ${
                 selected
-                  ? 'bg-indigo-300/15 text-white shadow-[0_12px_30px_rgba(79,70,229,0.22),inset_0_1px_0_rgba(255,255,255,0.24)]'
+                  ? 'bg-indigo-300/15 text-white'
                   : 'text-slate-400 hover:bg-white/[0.06] hover:text-slate-100'
               }`}
             >
