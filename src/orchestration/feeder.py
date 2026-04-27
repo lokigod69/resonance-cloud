@@ -217,6 +217,14 @@ class Feeder:
 
         jobs = list(getattr(resp, "data", None) or [])
         for job in jobs:
+            job_id = job["id"]
+            deck_id = job.get("deck_id")
+            if await self._deck_has_other_processing(deck_id, job_id):
+                log.debug(
+                    "feeder/source1: deck=%s already processing -- skipping job=%s (queued)",
+                    deck_id, job_id,
+                )
+                continue
             await self._try_start_job(job)
 
     async def _try_start_job(self, job: dict[str, Any]) -> None:
@@ -245,7 +253,7 @@ class Feeder:
 
         # Same-deck lock (§6.1, Source 1 only).
         if await self._deck_has_other_processing(deck_id, job_id):
-            log.info(
+            log.warning(
                 "feeder/source1: deck=%s has another processing job — reverting job=%s",
                 deck_id, job_id,
             )
