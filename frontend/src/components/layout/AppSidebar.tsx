@@ -27,10 +27,10 @@ const mainNav = [
 ]
 
 const adminNav = [
+  { to: '/admin/content', label: 'Content', icon: FileText },
   { to: '/admin/queue', label: 'Job Queue', icon: ListOrdered },
   { to: '/admin/profiles', label: 'Profiles', icon: Languages },
   { to: '/admin/users', label: 'Users', icon: Users },
-  { to: '/admin/content', label: 'Content', icon: FileText },
   { to: '/admin/voices', label: 'Voices', icon: Mic },
   { to: '/admin/metrics', label: 'Metrics', icon: BarChart3 },
   { to: '/admin/costs', label: 'Costs', icon: DollarSign },

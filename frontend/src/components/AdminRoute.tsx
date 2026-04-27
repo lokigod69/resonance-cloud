@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
@@ -8,6 +8,8 @@ export default function AdminRoute() {
   const { session, loading: authLoading } = useAuth()
   const [isAdmin, setIsAdmin] = useState(false)
   const [checkingAdmin, setCheckingAdmin] = useState(true)
+  const checkedUserIdRef = useRef<string | null>(null)
+  const sessionUserId = session?.user.id ?? null
 
   useEffect(() => {
     let active = true
@@ -18,8 +20,16 @@ export default function AdminRoute() {
       }
     }
 
-    if (!session) {
+    if (!sessionUserId) {
+      checkedUserIdRef.current = null
       setIsAdmin(false)
+      setCheckingAdmin(false)
+      return () => {
+        active = false
+      }
+    }
+
+    if (checkedUserIdRef.current === sessionUserId) {
       setCheckingAdmin(false)
       return () => {
         active = false
@@ -40,10 +50,12 @@ export default function AdminRoute() {
           return
         }
 
+        checkedUserIdRef.current = sessionUserId
         setIsAdmin(data === true)
       } catch (error) {
         if (active) {
           console.error('Admin check failed:', error)
+          checkedUserIdRef.current = null
           setIsAdmin(false)
         }
       } finally {
@@ -58,7 +70,7 @@ export default function AdminRoute() {
     return () => {
       active = false
     }
-  }, [authLoading, session])
+  }, [authLoading, sessionUserId])
 
   if (authLoading || checkingAdmin) {
     return (
