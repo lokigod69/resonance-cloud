@@ -76,7 +76,7 @@ export default function QueuePositionDisplay({
             )}
           </div>
           <h2 className={cn('text-2xl font-semibold', isGlassy ? 'font-display text-white' : 'text-foreground')}>
-            {isChecking ? t('queue.checking') : isGenerating ? t('queue.generating') : `${jobsAhead} ${t('queue.jobsAhead')}`}
+            {isChecking ? t('queue.checking') : isGenerating ? t('queue.generating') : t('deckview.queued')}
           </h2>
         </div>
 
@@ -97,9 +97,6 @@ export default function QueuePositionDisplay({
               <div className={cn('mt-2 text-3xl font-semibold', isGlassy ? 'text-white' : 'text-foreground')}>
                 {jobsAhead}
               </div>
-              <p className={cn('mt-1 text-sm', isGlassy ? 'text-white/60' : 'text-muted-foreground')}>
-                {t('queue.jobsAhead')}
-              </p>
             </div>
 
             <div
@@ -111,7 +108,7 @@ export default function QueuePositionDisplay({
               <div className="flex items-center justify-center gap-2 sm:justify-start">
                 <Clock3 className={cn('h-4 w-4', isGlassy ? 'text-[var(--pg-accent-violet)]' : 'text-primary')} />
                 <span className={cn('text-xs uppercase tracking-[0.24em]', isGlassy ? 'text-white/45' : 'text-muted-foreground')}>
-                  {t('queue.estimated', { duration: etaDuration })}
+                  {t('queue.estimated')}
                 </span>
               </div>
               <div className={cn('mt-2 text-3xl font-semibold', isGlassy ? 'text-white' : 'text-foreground')}>

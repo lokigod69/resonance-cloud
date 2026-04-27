@@ -166,7 +166,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'queue.generating': 'Generating…',
     'queue.paused': 'Queue paused — your job is saved and will start when it resumes.',
     'queue.jobsAhead': 'jobs ahead',
-    'queue.estimated': 'Estimated wait: ~{duration}',
+    'queue.estimated': 'Estimated wait',
 
     // ── DeckView ──
     'deckview.loadingDeck': 'Loading deck...',
@@ -499,7 +499,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'queue.generating': 'Wird generiert…',
     'queue.paused': 'Warteschlange pausiert — dein Auftrag ist gespeichert und startet, sobald sie fortgesetzt wird.',
     'queue.jobsAhead': 'Aufträge vor dir',
-    'queue.estimated': 'Geschätzte Wartezeit: ~{duration}',
+    'queue.estimated': 'Geschätzte Wartezeit',
 
     // ── DeckView ──
     'deckview.loadingDeck': 'Deck wird geladen...',
@@ -840,7 +840,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'queue.generating': 'Génération en cours…',
     'queue.paused': 'File en pause — votre tâche est enregistrée et démarrera à la reprise.',
     'queue.jobsAhead': 'travaux en attente',
-    'queue.estimated': 'Attente estimée : ~{duration}',
+    'queue.estimated': 'Attente estimée',
     'generate.stepLanguage': 'Langue',
     'generate.stepWords': 'Mots',
     'generate.stepVibe': 'Ambiance',
