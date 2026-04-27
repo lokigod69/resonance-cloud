@@ -190,3 +190,27 @@ def test_system_prompt_uses_new_image_prompt_guidance_and_schema():
     assert '"style_medium"' not in prompt
     assert '"subject": "<primary subject/focal point>"' not in prompt
     assert "photorealistic ->" not in prompt
+
+
+def test_provocative_system_prompt_does_not_seed_artist_names():
+    prompt = build_system_prompt(
+        word="Kuh",
+        translation="cow",
+        language="German",
+        settings=ImageSettings(
+            creative_direction="provocative",
+            frame_narrative="auto",
+            image_count="auto",
+            art_style="auto",
+            word_in_image=False,
+            image_model="wan_fast",
+        ),
+        context=None,
+        scene_count=3,
+        aspect_ratio="16:9",
+        image_count_raw="auto",
+    )
+    prompt_lower = prompt.lower()
+
+    assert "magritte" not in prompt_lower
+    assert "dali" not in prompt_lower

@@ -552,10 +552,11 @@ def _creative_direction_block(mode: str, blacklist: list[str] | None = None) -> 
             "The surreal or fantastical element should reinforce, playfully comment on, "
             "or create a memorable association with the vocabulary concept. The viewer "
             "should connect the surprising visual to the word.\n\n"
-            "Think: Magritte, not Dali. Purposeful strangeness, not random weirdness.\n"
-            "Think: a cow in a business suit at a boardroom table, not a cow melting "
-            "into a clock. The first is funny AND communicates something about the cow. "
-            "The second is just weird.\n\n"
+            "Purposeful strangeness, not random weirdness. The unexpected element must "
+            "reinforce the word's meaning, not just be unusual for its own sake.\n\n"
+            "A cow in a business suit at a boardroom table is good — the absurdity "
+            "comments on the cow and on corporate life. A cow melting into a clock "
+            "is just weird — there is no connection to anything meaningful about the cow.\n\n"
             "EXAMPLES of good visually arresting vocabulary scenes:\n"
             "- \"Cow\" -> A cow in a tailored suit sitting at a corporate boardroom table, "
             "hooves on a laptop, other executives don't notice anything unusual\n"
@@ -890,7 +891,7 @@ ART_STYLE_DESCRIPTIONS: dict[str, str] = {
     "impressionism": (
         "French Impressionism — loose, visible brushstrokes capturing light and "
         "atmosphere over detail. Vibrant broken color, en plein air natural lighting, "
-        "soft edges, and the fleeting quality of a moment. Inspired by Monet, Renoir, Degas."
+        "soft edges, broken color, and the fleeting quality of a moment."
     ),
     "expressionism": (
         "Expressionism — bold distortion of form and color to convey raw emotion. "
@@ -898,35 +899,35 @@ ART_STYLE_DESCRIPTIONS: dict[str, str] = {
         "agitated brushwork, and psychological intensity over realistic representation."
     ),
     "surrealism": (
-        "Surrealism — dreamlike imagery with impossible juxtapositions rendered in "
-        "hyper-precise detail. Melting forms, impossible architecture, symbolic objects "
-        "in unexpected contexts, and uncanny atmospheres. Inspired by Dalí, Magritte, Ernst."
+        "Surrealist composition — dreamlike imagery with impossible juxtapositions, "
+        "deadpan absurd spatial relationships, painterly precision, and naturalistic "
+        "rendering of impossible subjects."
     ),
     "cubism": (
         "Cubism — fragmented geometric forms showing multiple perspectives simultaneously. "
         "Flattened picture plane, angular facets, muted earth tones with occasional bold "
-        "accents, and the deconstruction of objects into abstract planes. Inspired by Picasso, Braque."
+        "accents, and the deconstruction of objects into abstract planes."
     ),
     "renaissance": (
         "Renaissance painting — balanced classical composition with mathematical perspective, "
         "sfumato shading, rich but naturalistic colors, idealized human forms, and "
-        "meticulous attention to anatomy and drapery. Inspired by Leonardo, Raphael, Botticelli."
+        "meticulous attention to anatomy and drapery."
     ),
     "pop_art": (
         "Pop Art — bold primary colors, heavy black outlines, Ben-Day dot patterns, "
         "flat graphic shapes, and commercial/comic-book aesthetics. High contrast, "
-        "repetition, and mass-media visual language. Inspired by Warhol, Lichtenstein."
+        "repetition, and mass-media visual language."
     ),
     "chiaroscuro": (
         "Chiaroscuro — extreme contrast between light and dark. A single dramatic light "
         "source sculpts forms out of deep shadow. Rich, warm skin tones against near-black "
-        "backgrounds. Inspired by Caravaggio, Rembrandt, Georges de La Tour."
+        "backgrounds, with selective illumination and theatrical shadow depth."
     ),
     # ── Decorative & Regional ────────────────────────────────────────────
     "art_nouveau": (
         "Art Nouveau — flowing organic curves, whiplash lines, botanical motifs, "
         "ornamental borders, and elegant decorative patterns. Jewel-toned colors, "
-        "sinuous female figures, and the integration of art with design. Inspired by Mucha, Klimt."
+        "sinuous figures, and the integration of art with design."
     ),
     "art_deco": (
         "Art Deco — bold geometric shapes, symmetrical patterns, metallic gold and "
@@ -936,8 +937,7 @@ ART_STYLE_DESCRIPTIONS: dict[str, str] = {
     "ukiyo_e": (
         "Ukiyo-e Japanese woodblock print — flat areas of color with precise black "
         "outlines, asymmetric composition, nature motifs (waves, mountains, cherry "
-        "blossoms), subtle color gradations, and elegant calligraphic line quality. "
-        "Inspired by Hokusai, Hiroshige, Utamaro."
+        "blossoms), subtle color gradations, and elegant calligraphic line quality."
     ),
     "chinese_ink_wash": (
         "Chinese ink wash painting (shuǐ-mò) — monochrome or limited-palette ink on "
@@ -949,8 +949,7 @@ ART_STYLE_DESCRIPTIONS: dict[str, str] = {
     "studio_ghibli": (
         "Studio Ghibli animation — lush hand-painted watercolor backgrounds, warm "
         "natural lighting, soft pastel palette, detailed environmental storytelling, "
-        "expressive character animation, and a sense of wonder and nostalgia. "
-        "Inspired by Hayao Miyazaki's films."
+        "expressive character animation, and a sense of wonder and nostalgia."
     ),
     "disney_animation": (
         "Classic Disney animation — clean rounded character designs, vibrant saturated "
@@ -975,12 +974,12 @@ ART_STYLE_DESCRIPTIONS: dict[str, str] = {
     "one_piece_style": (
         "One Piece anime/manga style — exaggerated proportions, wild dynamic poses, "
         "bold outlines, vibrant saturated colors, dramatic action effects (speed lines, "
-        "impact bursts), expressive faces, and Eiichiro Oda's distinctive character design."
+        "impact bursts), expressive faces, and distinctive adventure-comedy character design."
     ),
     "dragon_ball_style": (
         "Dragon Ball anime style — muscular character proportions, spiky hair, intense "
         "energy auras, power-up glow effects, dynamic martial arts poses, bold outlines, "
-        "and Akira Toriyama's distinctive clean character design."
+        "and clean high-energy character design."
     ),
     "south_park_style": (
         "South Park animation — simple geometric cutout-style characters with minimal "
@@ -1085,31 +1084,31 @@ ART_STYLE_DESCRIPTIONS: dict[str, str] = {
     ),
     # ── Artist-Inspired ──────────────────────────────────────────────────
     "van_gogh": (
-        "Vincent van Gogh post-impressionist painting — thick impasto brushstrokes "
+        "Post-impressionist painting — thick impasto brushstrokes "
         "with visible paint texture, energetic swirling movement, vivid complementary "
         "colors (cobalt blue against chrome yellow), expressive night skies, and the "
         "emotional intensity of paint applied with passionate urgency."
     ),
     "banksy": (
-        "Banksy street art — stencil-sprayed monochrome figures on urban walls, "
+        "Stencil street art — spray-painted monochrome figures on urban walls, "
         "satirical or political imagery, the contrast of precise stencil edges "
         "against rough concrete/brick textures, occasional selective color accents, "
         "and guerrilla art aesthetics."
     ),
     "escher": (
-        "M.C. Escher impossible geometry — tessellations, recursive structures, "
+        "Impossible geometry — tessellations, recursive structures, "
         "impossible staircases, metamorphosis sequences, mathematical precision, "
         "high-contrast lithographic line work, and mind-bending spatial paradoxes "
         "rendered with meticulous technical draftsmanship."
     ),
     "klimt": (
-        "Gustav Klimt decorative painting — ornamental gold leaf patterns, intricate "
+        "Decorative Vienna Secession painting — ornamental gold leaf patterns, intricate "
         "mosaic-like backgrounds, sensual figure rendering, Byzantine-inspired "
         "flat decorative surfaces contrasting with realistic faces and hands, "
         "and the opulent richness of the Vienna Secession movement."
     ),
     "gerhard_richter": (
-        "Gerhard Richter abstract painting — squeegee-dragged paint layers creating "
+        "Squeegee-dragged abstract painting — scraped paint layers creating "
         "vibrant smeared color fields, gestural abstraction with visible horizontal "
         "drag marks, thick impasto paint built up and scraped back, luminous layered "
         "color emerging through translucent veils of pigment. NOT photorealistic — "
@@ -1241,8 +1240,9 @@ def _image_prompt_guidance_block() -> str:
         'to positive target ("natural skin texture, available light", "sharp focus on '
         'subject"). The model reads negation as positive activation.\n\n'
         "For provocative direction: encode contradictions concretely (a cow in a "
-        "business suit at a boardroom table). Do not use artist names (\"like "
-        "Magritte\"). Describe the impossible thing."
+        "business suit at a boardroom table). Do not use any artist, director, or "
+        "photographer name as a stylistic anchor. Describe the technique, medium, "
+        "or visual relationship instead."
     )
 
 
