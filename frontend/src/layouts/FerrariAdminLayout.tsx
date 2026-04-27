@@ -11,7 +11,7 @@ export default function FerrariAdminLayout() {
         <div className={styles.wordmark}>OBSERVATORY</div>
         <h1 className={styles.title}>{title}</h1>
         <div className={styles.actions}>
-          <Link to="/admin/queue" className={styles.backLink}>BACK TO ADMIN</Link>
+          <Link to="/admin/content" className={styles.backLink}>BACK TO ADMIN</Link>
         </div>
       </header>
       <main className={styles.main}>

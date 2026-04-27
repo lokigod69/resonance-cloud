@@ -159,6 +159,7 @@ function AppRoutes() {
         {/* Admin routes always use AppLayout regardless of skin */}
         <Route element={<AppLayout />}>
           <Route element={<AdminRoute />}>
+            <Route path="/admin" element={<Navigate to="/admin/content" replace />} />
             <Route path="/admin/queue" element={<Queue />} />
             <Route path="/admin/profiles" element={<Profiles />} />
             <Route path="/admin/users" element={<Users />} />

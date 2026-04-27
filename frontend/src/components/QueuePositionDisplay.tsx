@@ -1,5 +1,5 @@
 // Renders learner-facing queue position and ETA status for a generation job.
-import { AlertCircle, Clock3, Loader2, Rows3, Sparkles } from 'lucide-react'
+import { AlertCircle, Clock3, Rows3 } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { cn } from '@/lib/utils'
 
@@ -68,13 +68,6 @@ export default function QueuePositionDisplay({
         )}
 
         <div className="flex flex-col gap-2 text-center sm:text-left">
-          <div className="flex items-center justify-center gap-2 sm:justify-start">
-            {isChecking ? (
-              <Loader2 className={cn('h-4 w-4 animate-spin', isGlassy ? 'text-[var(--pg-accent-gold)]' : 'text-primary')} />
-            ) : (
-              <Sparkles className={cn('h-4 w-4', isGlassy ? 'text-[var(--pg-accent-gold)]' : 'text-primary')} />
-            )}
-          </div>
           <h2 className={cn('text-2xl font-semibold', isGlassy ? 'font-display text-white' : 'text-foreground')}>
             {isChecking ? t('queue.checking') : isGenerating ? t('queue.generating') : t('deckview.queued')}
           </h2>

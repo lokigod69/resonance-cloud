@@ -4,7 +4,7 @@ import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play, Share2, PencilLine } from 'lucide-react'
+import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play, Share2, PencilLine, Sparkles } from 'lucide-react'
 import { useMoveWords } from '@/hooks/useMoveWords'
 import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
 import WordInfoPanel from '@/components/WordInfoPanel'
@@ -371,7 +371,7 @@ export default function DeckView() {
             <span className="text-sm text-muted-foreground">{deck.target_language}</span>
             {isGenerating ? (
               <span title={t('deckview.statusGenerating', { completed: completedCount, total: totalCount })}>
-                <Loader2 className="h-4 w-4 text-primary animate-spin" />
+                <Sparkles className="h-4 w-4 text-[var(--pg-accent-teal,var(--primary))]" />
               </span>
             ) : deck.status === 'complete' ? (
               <span title={t('deckview.statusReady')}>

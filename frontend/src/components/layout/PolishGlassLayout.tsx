@@ -92,7 +92,7 @@ export default function PolishGlassLayout() {
           ))}
           {isAdmin && (
             <Link
-              to="/admin/queue"
+              to="/admin/content"
               className={`flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer ${
                 isActive('/admin')
                   ? 'theme-chip-active'
@@ -151,7 +151,7 @@ export default function PolishGlassLayout() {
               ))}
               {isAdmin && (
                 <Link
-                  to="/admin/queue"
+                  to="/admin/content"
                   className={`w-full text-left px-4 py-3 rounded-xl font-display font-medium transition-all flex items-center gap-2 ${
                     isActive('/admin')
                       ? 'theme-chip-active'

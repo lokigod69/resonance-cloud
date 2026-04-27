@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "test:regressions": "node scripts/verify-admin-deck-regressions.mjs",
     "pregen:samples": "tsx scripts/pregenerate-voice-samples.ts"
   },
   "dependencies": {
