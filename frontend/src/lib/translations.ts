@@ -236,6 +236,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'music.loadingSongs': 'Loading songs',
     'music.noSongs': 'No words generated yet.',
     'music.retry': 'Retry',
+    'music.retryFailed': 'Retry failed',
 
     // ── Speak ──
     'speak.voiceTutor': 'Voice Tutor',
@@ -306,6 +307,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.noCredits': 'No credits remaining',
     'deckview.retryingGeneration': 'Retrying generation...',
     'deckview.retryFailed': 'Retry failed',
+    'deckview.retryAlreadyRequested': 'Retry already requested',
     'deckview.wordRemoved': 'Word removed',
     'deckview.removeFailed': 'Failed to remove word',
     'deckview.failedToLoad': 'Failed to load your decks. Please try again.',
@@ -522,6 +524,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.music': 'Musik',
     'deckview.retryingGeneration': 'Erstellung wird wiederholt...',
     'deckview.retryFailed': 'Wiederholung fehlgeschlagen',
+    'deckview.retryAlreadyRequested': 'Wiederholung bereits angefordert',
     'deckview.wordRemoved': 'Wort entfernt',
     'deckview.removeFailed': 'Wort konnte nicht entfernt werden',
     'deckview.failedToLoad': 'Decks konnten nicht geladen werden. Bitte erneut versuchen.',
@@ -595,6 +598,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'music.loadingSongs': 'Lieder werden geladen',
     'music.noSongs': 'Noch keine Wörter erstellt.',
     'music.retry': 'Wiederholen',
+    'music.retryFailed': 'Wiederholung fehlgeschlagen',
 
     // ── Speak ──
     'speak.voiceTutor': 'Sprachtutor',
@@ -909,6 +913,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'deckview.music': 'Musique',
     'deckview.retryingGeneration': 'Nouvelle tentative de création...',
     'deckview.retryFailed': 'Échec de la tentative',
+    'deckview.retryAlreadyRequested': 'Nouvelle tentative déjà demandée',
     'deckview.wordRemoved': 'Mot supprimé',
     'deckview.removeFailed': 'Impossible de supprimer le mot',
     'deckview.failedToLoad': 'Impossible de charger tes decks. Réessaie.',
@@ -982,6 +987,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'music.loadingSongs': 'Chargement des titres',
     'music.noSongs': 'Aucun mot créé pour le moment.',
     'music.retry': 'Réessayer',
+    'music.retryFailed': 'Échec de la tentative',
 
     // ── Speak ──
     'speak.voiceTutor': 'Tuteur vocal',

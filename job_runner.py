@@ -66,13 +66,20 @@ def log_workspace_diagnostics() -> None:
         probe = root / ".workspace_write_probe"
         try:
             probe.write_text("ok", encoding="utf-8")
-            probe.unlink(missing_ok=True)
             writable = True
         except Exception as e:
             log.warning(
                 "workspace diagnostics: root is not writable path=%s error=%s",
                 root, e,
             )
+        finally:
+            try:
+                probe.unlink(missing_ok=True)
+            except Exception as e:
+                log.warning(
+                    "workspace diagnostics: probe cleanup failed path=%s error=%s",
+                    probe, e,
+                )
 
         log.info(
             "workspace diagnostics: storage_mode=%s root=%s exists=%s writable=%s "

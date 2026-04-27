@@ -101,26 +101,6 @@ export default function DeckView() {
         return
       }
 
-      const { data: creditRows, error: creditError } = await supabase.from('profiles')
-        .update({ credits: freshCredits - 1 })
-        .eq('id', user.id)
-        .eq('credits', freshCredits)
-        .select('id')
-      if (creditError) throw creditError
-      if (!creditRows?.length) throw new Error('Unable to reserve retry credit')
-
-      const { error: deckError } = await supabase.from('decks')
-        .update({ status: 'generating' })
-        .eq('id', id)
-      if (deckError) {
-        const { error: rollbackError } = await supabase.from('profiles')
-          .update({ credits: freshCredits })
-          .eq('id', user.id)
-          .eq('credits', freshCredits - 1)
-        if (rollbackError) throw rollbackError
-        throw deckError
-      }
-
       const { data: retryRows, error: retryError } = await supabase.from('words')
         .update({
           retry_requested: true,
@@ -130,15 +110,45 @@ export default function DeckView() {
         .eq('id', word.id)
         .eq('user_id', user.id)
         .eq('current_stage', 'failed')
+        .not('retry_requested', 'is', true)
         .select('id')
-      if (retryError || !retryRows?.length) {
+      if (retryError) throw retryError
+      if (!retryRows?.length) {
+        toast(t('deckview.retryAlreadyRequested'), 'info')
+        return
+      }
+
+      const rollbackRetryFlag = async () => {
+        const { error: rollbackError } = await supabase.from('words')
+          .update({ retry_requested: false, retry_requested_at: null })
+          .eq('id', word.id)
+          .eq('user_id', user.id)
+          .eq('retry_requested', true)
+        if (rollbackError) console.warn('[deck] retry flag rollback failed', rollbackError)
+      }
+
+      const { data: creditRows, error: creditError } = await supabase.from('profiles')
+        .update({ credits: freshCredits - 1 })
+        .eq('id', user.id)
+        .eq('credits', freshCredits)
+        .select('id')
+      if (creditError || !creditRows?.length) {
+        await rollbackRetryFlag()
+        if (creditError) throw creditError
+        throw new Error('Unable to reserve retry credit')
+      }
+
+      const { error: deckError } = await supabase.from('decks')
+        .update({ status: 'generating' })
+        .eq('id', id)
+      if (deckError) {
         const { error: rollbackError } = await supabase.from('profiles')
           .update({ credits: freshCredits })
           .eq('id', user.id)
           .eq('credits', freshCredits - 1)
-        if (rollbackError) throw rollbackError
-        if (retryError) throw retryError
-        throw new Error('Word is not in a retryable failed state')
+        if (rollbackError) console.warn('[deck] retry credit rollback failed', rollbackError)
+        await rollbackRetryFlag()
+        throw deckError
       }
 
       await refreshProfile()

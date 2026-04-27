@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/select'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useToast } from '@/components/Toast'
 
 const ACTIVE_RETRY_STAGES = ['post_video_queued', 'assembly', 'bookend', 'suno_bake', 'uploading'] as const
 type RetryStatus = 'pending' | 'processing'
@@ -45,6 +46,7 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
 
 export default function Music() {
   const { t } = useTranslation()
+  const { toast } = useToast()
   const { user } = useAuth()
   const [allTracks, setAllTracks] = useState<MusicTrack[]>([])
   const [errorTrackIds, setErrorTrackIds] = useState<Set<string>>(new Set())
@@ -54,6 +56,7 @@ export default function Music() {
 
   // Retry state: wordId → current job status
   const [retryStatusMap, setRetryStatusMap] = useState<Map<string, RetryStatus>>(new Map())
+  const retryStatusMapRef = useRef(retryStatusMap)
   const retryPollRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // Merge error state into tracks
@@ -65,6 +68,10 @@ export default function Music() {
     deckFilter === 'all' ? tracks : tracks.filter((track) => track.deck_id === deckFilter)
 
   const player = useMusicPlayer(filteredTracks)
+
+  useEffect(() => {
+    retryStatusMapRef.current = retryStatusMap
+  }, [retryStatusMap])
 
   const handleMarkError = useCallback((trackId: string) => {
     setErrorTrackIds((prev) => new Set(prev).add(trackId))
@@ -121,11 +128,18 @@ export default function Music() {
 
   const fetchActiveSunoRetries = useCallback(async () => {
     if (!user) return new Map<string, RetryStatus>()
+    const trackedWordIds = Array.from(new Set([
+      ...allTracks.map((track) => track.id),
+      ...retryStatusMapRef.current.keys(),
+    ]))
+    if (trackedWordIds.length === 0) return new Map<string, RetryStatus>()
+
     const activeStageFilter = `current_stage.in.(${ACTIVE_RETRY_STAGES.join(',')})`
     const { data, error } = await supabase
       .from('words')
       .select('id, current_stage, retry_requested')
       .eq('user_id', user.id)
+      .in('id', trackedWordIds)
       .or(`retry_requested.eq.true,${activeStageFilter}`)
     if (error) throw error
 
@@ -134,7 +148,7 @@ export default function Music() {
       map.set(row.id, row.retry_requested ? 'pending' : 'processing')
     }
     return map
-  }, [user])
+  }, [user, allTracks])
 
   // On mount: load active retry flags/stages so the UI shows queued state
   // if the user navigated away and came back while a retry was in progress.
@@ -195,8 +209,9 @@ export default function Music() {
     } catch (error) {
       rollbackOptimistic()
       console.warn('[music] Suno retry failed', error)
+      toast(t('music.retryFailed'), 'error')
     }
-  }, [user])
+  }, [user, t, toast])
 
   // Poll active retry rows every 15s; refetch tracks when one completes.
   useEffect(() => {
