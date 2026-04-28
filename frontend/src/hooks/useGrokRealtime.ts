@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { GrokCategory } from '@/data/grokCategories'
 import type { GrokVoice } from '@/data/grokVoices'
-import { buildGrokSessionConfig } from '@/lib/grokSessionConfig'
+import { buildGrokSessionConfig, getGrokTurnProtocol } from '@/lib/grokSessionConfig'
 import { supabase } from '@/lib/supabase'
 import type { GrokLevel } from '@/lib/grokPedagogy'
 
@@ -37,8 +37,19 @@ const SILENT_MP3_URL = '/silent.mp3'
 const PCM_SAMPLE_RATE = 24000
 const PCM_FLUSH_SAMPLES = 2400
 const SILENT_FIRST_CHUNK_PEAK_THRESHOLD = 0.01
+const GROK_REALTIME_MODEL = 'grok-voice-think-fast-1.0'
+const GROK_REALTIME_URL = `wss://api.x.ai/v1/realtime?model=${encodeURIComponent(GROK_REALTIME_MODEL)}`
+const INPUT_COMMIT_ACK_TIMEOUT_MS = 3000
+const SERVER_VAD_SILENCE_MS = 500
 const USER_TRANSCRIPT_DRAIN_TIMEOUT_MS = 2000
 const PERSISTENCE_DRAIN_TIMEOUT_MS = 3000
+
+type PendingInputCommit = {
+  resolve: () => void
+  reject: (error: Error) => void
+  startedAt: number
+  timeoutId: ReturnType<typeof window.setTimeout>
+}
 
 function readGrokAudioDebugFlag(): boolean {
   try {
@@ -126,6 +137,56 @@ function getResponseId(payload: Record<string, unknown>): string | null {
   return null
 }
 
+function getEventId(payload: Record<string, unknown>): string | null {
+  return typeof payload.event_id === 'string'
+    ? payload.event_id
+    : typeof payload.id === 'string'
+      ? payload.id
+      : null
+}
+
+function getItemId(payload: Record<string, unknown>): string | null {
+  if (typeof payload.item_id === 'string') return payload.item_id
+  const item = payload.item
+  if (item && typeof item === 'object' && 'id' in item) {
+    const id = (item as { id?: unknown }).id
+    if (typeof id === 'string') return id
+  }
+  return null
+}
+
+function getPcmStats(pcm: Int16Array) {
+  let peak = 0
+  let sumSquares = 0
+  for (let i = 0; i < pcm.length; i++) {
+    const sample = pcm[i] / 0x8000
+    const absValue = Math.abs(sample)
+    if (absValue > peak) peak = absValue
+    sumSquares += sample * sample
+  }
+  return {
+    peak,
+    rms: pcm.length === 0 ? 0 : Math.sqrt(sumSquares / pcm.length),
+  }
+}
+
+function getAverage(values: number[]): number | null {
+  if (values.length === 0) return null
+  return values.reduce((sum, value) => sum + value, 0) / values.length
+}
+
+function getMin(values: number[]): number | null {
+  return values.length === 0 ? null : Math.min(...values)
+}
+
+function getMax(values: number[]): number | null {
+  return values.length === 0 ? null : Math.max(...values)
+}
+
+function encodeZeroPcmBase64(sampleCount: number): string {
+  return btoa('\0'.repeat(sampleCount * 2))
+}
+
 function sleepWithCancel(ms: number): { promise: Promise<void>; cancel: () => void } {
   let timer: ReturnType<typeof window.setTimeout> | null = null
   const promise = new Promise<void>((resolve) => {
@@ -155,6 +216,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const audioQueueRef = useRef<AudioBufferSourceNode[]>([])
   const playheadRef = useRef(0)
   const pendingInputFlushResolveRef = useRef<(() => void) | null>(null)
+  const pendingInputCommitRef = useRef<PendingInputCommit | null>(null)
+  const commitAckRecoveryPendingClearRef = useRef(false)
   const conversationIdRef = useRef<string | null>(null)
   const sessionParamsRef = useRef<StartGrokSessionParams | null>(null)
   const currentAssistantIndexRef = useRef<number | null>(null)
@@ -165,6 +228,10 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const micCycleSeqRef = useRef(0)
   const currentAudioResponseKeyRef = useRef<string | null>(null)
   const currentResponseAudioChunksRef = useRef(0)
+  const currentResponseFirstFivePeaksRef = useRef<number[]>([])
+  const currentResponseFirstFiveRmsRef = useRef<number[]>([])
+  const currentResponsePeaksRef = useRef<number[]>([])
+  const currentResponseRmsRef = useRef<number[]>([])
   const currentResponseTextDeltaSeenRef = useRef(false)
   const lastTrackStopAtRef = useRef<number | null>(null)
   const grokVerifyResponseSequenceRef = useRef(0)
@@ -182,6 +249,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const endedConversationIdsRef = useRef<Set<string>>(new Set())
   const currentUserIdRef = useRef<string | null>(null)
   const endingSessionRef = useRef(false)
+  const responseInProgressRef = useRef(false)
   const mountedRef = useRef(true)
   const isConnectedRef = useRef(false)
   const statusRef = useRef<GrokStatus>('idle')
@@ -342,16 +410,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
     if (responseSeq > 0 && !firstChunkSeenForResponseRef.current.has(responseSeq)) {
       firstChunkSeenForResponseRef.current.add(responseSeq)
-      let peak = 0
-      for (let i = 0; i < pcm.length; i++) {
-        const absValue = Math.abs(pcm[i] / 0x8000)
-        if (absValue > peak) peak = absValue
-      }
+      const { peak, rms } = getPcmStats(pcm)
       if (peak < SILENT_FIRST_CHUNK_PEAK_THRESHOLD) {
         grokAudioDebug('queueAudioBuffer:skipped-silent-first-chunk', {
           assistantResponseSeq: responseSeq,
           audioChunkSeq: chunkSeq,
           peak,
+          rms,
           sampleCount: pcm.length,
         })
         return
@@ -377,15 +442,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
     if (GROK_AUDIO_DEBUG) {
       const queueLengthAfter = audioQueueRef.current.length
-      let peak = 0
-      let sumSquares = 0
-      for (let i = 0; i < pcm.length; i++) {
-        const sample = pcm[i] / 0x8000
-        const absValue = Math.abs(sample)
-        if (absValue > peak) peak = absValue
-        sumSquares += sample * sample
-      }
-      const rms = Math.sqrt(sumSquares / pcm.length)
+      const { peak, rms } = getPcmStats(pcm)
       grokAudioDebug('queueAudioBuffer:scheduled', {
         assistantResponseSeq: responseSeq,
         audioChunkSeq: chunkSeq,
@@ -563,6 +620,40 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }])
   }, [])
 
+  const rejectPendingInputCommit = useCallback((message: string) => {
+    const pending = pendingInputCommitRef.current
+    if (!pending) return
+    window.clearTimeout(pending.timeoutId)
+    pendingInputCommitRef.current = null
+    pending.reject(new Error(message))
+  }, [])
+
+  const waitForInputCommitAck = useCallback(() => {
+    if (pendingInputCommitRef.current) {
+      rejectPendingInputCommit('Previous audio turn did not commit. Please try again.')
+    }
+
+    return new Promise<void>((resolve, reject) => {
+      const startedAt = performance.now()
+      const timeoutId = window.setTimeout(() => {
+        const pending = pendingInputCommitRef.current
+        if (!pending || pending.startedAt !== startedAt) return
+        pendingInputCommitRef.current = null
+        grokAudioDebug('sendTurn:commit-ack-timeout', {
+          msSinceCommitSent: performance.now() - startedAt,
+        })
+        reject(new Error('Audio turn did not commit. Please try again.'))
+      }, INPUT_COMMIT_ACK_TIMEOUT_MS)
+
+      pendingInputCommitRef.current = {
+        resolve,
+        reject,
+        startedAt,
+        timeoutId,
+      }
+    })
+  }, [rejectPendingInputCommit])
+
   const handleSocketMessage = useCallback(async (event: MessageEvent<string>) => {
     let payload: Record<string, unknown>
     try {
@@ -574,6 +665,15 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
     const type = typeof payload.type === 'string' ? payload.type : ''
     switch (type) {
+      case 'response.created': {
+        responseInProgressRef.current = true
+        if (GROK_AUDIO_DEBUG) {
+          grokAudioDebug('response.created', {
+            responseId: getResponseId(payload),
+          })
+        }
+        break
+      }
       case 'response.text.delta': {
         const delta = typeof payload.delta === 'string' ? payload.delta : ''
         if (GROK_AUDIO_DEBUG) currentResponseTextDeltaSeenRef.current = true
@@ -610,6 +710,10 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         if (currentAudioResponseKeyRef.current !== responseKey) {
           currentAudioResponseKeyRef.current = responseKey
           currentResponseAudioChunksRef.current = 0
+          currentResponseFirstFivePeaksRef.current = []
+          currentResponseFirstFiveRmsRef.current = []
+          currentResponsePeaksRef.current = []
+          currentResponseRmsRef.current = []
           assistantResponseSeqRef.current += 1
           if (GROK_AUDIO_DEBUG) {
             grokAudioDebug('response.audio:first-delta', {
@@ -626,6 +730,15 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         for (let i = 0; i < pcm.length; i++) {
           pcm[i] = view.getInt16(i * 2, true)
         }
+        if (GROK_AUDIO_DEBUG) {
+          const stats = getPcmStats(pcm)
+          if (currentResponseFirstFivePeaksRef.current.length < 5) {
+            currentResponseFirstFivePeaksRef.current.push(stats.peak)
+            currentResponseFirstFiveRmsRef.current.push(stats.rms)
+          }
+          currentResponsePeaksRef.current.push(stats.peak)
+          currentResponseRmsRef.current.push(stats.rms)
+        }
         pendingPcmChunksRef.current.push(pcm)
         pendingPcmSampleCountRef.current += pcm.length
         if (pendingPcmSampleCountRef.current >= PCM_FLUSH_SAMPLES) {
@@ -635,6 +748,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       }
       case 'response.done': {
         await flushPendingAudio()
+        responseInProgressRef.current = false
         const finalAssistantText = pendingAssistantContentRef.current
         if (GROK_AUDIO_DEBUG) {
           grokAudioDebug('response.done', {
@@ -642,10 +756,19 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
             audioChunksReceived: currentResponseAudioChunksRef.current,
             assistantTranscriptLength: finalAssistantText.length,
             textDeltaEventsArrived: currentResponseTextDeltaSeenRef.current,
+            firstFivePeaks: currentResponseFirstFivePeaksRef.current,
+            firstFiveRms: currentResponseFirstFiveRmsRef.current,
+            minPeak: getMin(currentResponsePeaksRef.current),
+            maxPeak: getMax(currentResponsePeaksRef.current),
+            averageRms: getAverage(currentResponseRmsRef.current),
           })
         }
         currentAudioResponseKeyRef.current = null
         currentResponseAudioChunksRef.current = 0
+        currentResponseFirstFivePeaksRef.current = []
+        currentResponseFirstFiveRmsRef.current = []
+        currentResponsePeaksRef.current = []
+        currentResponseRmsRef.current = []
         currentResponseTextDeltaSeenRef.current = false
         if (GROK_VERIFY_L0) {
           const responseSequence = grokVerifyResponseSequenceRef.current + 1
@@ -669,6 +792,48 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         }
         break
       }
+      case 'input_audio_buffer.committed': {
+        const pending = pendingInputCommitRef.current
+        if (commitAckRecoveryPendingClearRef.current) {
+          if (pending) {
+            rejectPendingInputCommit('Audio turn did not commit. Please try again.')
+          }
+          if (GROK_AUDIO_DEBUG) {
+            grokAudioDebug('input_audio_buffer:committed-stale-after-timeout', {
+              eventId: getEventId(payload),
+              itemId: getItemId(payload),
+            })
+          }
+          break
+        }
+        if (pending) {
+          const msSinceCommitSent = performance.now() - pending.startedAt
+          window.clearTimeout(pending.timeoutId)
+          pendingInputCommitRef.current = null
+          grokAudioDebug('input_audio_buffer:committed', {
+            eventId: getEventId(payload),
+            itemId: getItemId(payload),
+            msSinceCommitSent,
+          })
+          pending.resolve()
+        } else if (GROK_AUDIO_DEBUG) {
+          grokAudioDebug('input_audio_buffer:committed', {
+            eventId: getEventId(payload),
+            itemId: getItemId(payload),
+            msSinceCommitSent: null,
+          })
+        }
+        break
+      }
+      case 'input_audio_buffer.cleared': {
+        commitAckRecoveryPendingClearRef.current = false
+        if (GROK_AUDIO_DEBUG) {
+          grokAudioDebug('input_audio_buffer:cleared', {
+            eventId: getEventId(payload),
+          })
+        }
+        break
+      }
       case 'conversation.item.input_audio_transcription.completed': {
         const transcript = typeof payload.transcript === 'string' ? payload.transcript : ''
         appendUserTranscript(transcript)
@@ -682,8 +847,42 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         if (mountedRef.current) setStatus('recording')
         break
       }
+      case 'input_audio_buffer.speech_stopped': {
+        if (GROK_AUDIO_DEBUG) {
+          grokAudioDebug('input_audio_buffer:speech_stopped', {
+            eventId: getEventId(payload),
+            itemId: getItemId(payload),
+          })
+        }
+        break
+      }
+      case 'response.cancelled':
+      case 'response.canceled': {
+        responseInProgressRef.current = false
+        rejectPendingInputCommit('Realtime response was cancelled')
+        break
+      }
+      case 'response.error':
+      case 'response.failed': {
+        responseInProgressRef.current = false
+        rejectPendingInputCommit('Grok response failed')
+        const responseError = payload.error
+        const message = typeof payload.message === 'string'
+          ? payload.message
+          : responseError && typeof responseError === 'object' && 'message' in responseError
+            ? String((responseError as { message?: unknown }).message)
+            : 'Grok response failed'
+        console.error('[grok-realtime] Realtime response error:', payload)
+        if (mountedRef.current) {
+          setError(message)
+          setStatus('error')
+        }
+        break
+      }
       case 'error': {
         console.error('[grok-realtime] Realtime error:', payload)
+        responseInProgressRef.current = false
+        rejectPendingInputCommit('Grok realtime error')
         const message = typeof payload.message === 'string'
           ? payload.message
           : typeof payload.error === 'string'
@@ -698,7 +897,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       default:
         break
     }
-  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, resetAudioQueue, trackPersistencePromise])
+  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, rejectPendingInputCommit, resetAudioQueue, trackPersistencePromise])
 
   const fetchEphemeralToken = useCallback(async (): Promise<string> => {
     const { data, error: sessionError } = await supabase.auth.getSession()
@@ -753,6 +952,20 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         complete(true)
       }
     })
+  }, [])
+
+  const appendServerVadSilence = useCallback((ws: WebSocket) => {
+    const silenceSamples = Math.round((PCM_SAMPLE_RATE * SERVER_VAD_SILENCE_MS) / 1000)
+    ws.send(JSON.stringify({
+      type: 'input_audio_buffer.append',
+      audio: encodeZeroPcmBase64(silenceSamples),
+    }))
+    if (GROK_AUDIO_DEBUG) {
+      grokAudioDebug('sendTurn:server-vad-silence-appended', {
+        silenceMs: SERVER_VAD_SILENCE_MS,
+        sampleCount: silenceSamples,
+      })
+    }
   }, [])
 
   const pauseListeningCapture = useCallback(() => {
@@ -825,11 +1038,26 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       stopListening()
       if (ws.readyState !== WebSocket.OPEN) return
 
+      const turnProtocol = getGrokTurnProtocol()
+      if (turnProtocol === 'server_vad') {
+        appendServerVadSilence(ws)
+        inputAudioAppendedRef.current = false
+        return
+      }
+
       const transcriptCompleted = new Promise<void>((resolve) => {
         pendingUserTranscriptResolveRef.current = resolve
       })
+      const commitAck = waitForInputCommitAck()
       ws.send(JSON.stringify({ type: 'input_audio_buffer.commit' }))
+      await commitAck
+      if (ws.readyState !== WebSocket.OPEN) return
+      if (responseInProgressRef.current) {
+        inputAudioAppendedRef.current = false
+        return
+      }
       ws.send(JSON.stringify({ type: 'response.create' }))
+      responseInProgressRef.current = true
       inputAudioAppendedRef.current = false
 
       const timeout = sleepWithCancel(USER_TRANSCRIPT_DRAIN_TIMEOUT_MS)
@@ -847,7 +1075,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     } finally {
       pendingUserTranscriptResolveRef.current = null
     }
-  }, [flushPendingInputAudio, pauseListeningCapture, stopListening])
+  }, [appendServerVadSilence, flushPendingInputAudio, pauseListeningCapture, stopListening, waitForInputCommitAck])
 
   const drainPendingPersistence = useCallback(async () => {
     const pending = Array.from(pendingPersistencePromisesRef.current)
@@ -901,7 +1129,13 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         currentAssistantIndexRef.current = null
         currentAudioResponseKeyRef.current = null
         currentResponseAudioChunksRef.current = 0
+        currentResponseFirstFivePeaksRef.current = []
+        currentResponseFirstFiveRmsRef.current = []
+        currentResponsePeaksRef.current = []
+        currentResponseRmsRef.current = []
         currentResponseTextDeltaSeenRef.current = false
+        responseInProgressRef.current = false
+        rejectPendingInputCommit('Grok realtime session ended')
         if (GROK_VERIFY_L0) {
           grokVerifyTextDeltaAccumRef.current = ''
           grokVerifyAudioTranscriptAccumRef.current = ''
@@ -909,6 +1143,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         pendingConversationInsertRef.current = null
         pendingPersistencePromisesRef.current.clear()
         pendingUserTranscriptResolveRef.current = null
+        commitAckRecoveryPendingClearRef.current = false
         inputAudioAppendedRef.current = false
         if (mountedRef.current) {
           setIsConnected(false)
@@ -924,7 +1159,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
     teardownPromiseRef.current = teardownPromise
     return teardownPromise
-  }, [drainPendingPersistence, flushFinalUserTurnBeforeClose, resetAudioQueue, updateEndedAt])
+  }, [drainPendingPersistence, flushFinalUserTurnBeforeClose, rejectPendingInputCommit, resetAudioQueue, updateEndedAt])
 
   const teardownSessionRef = useRef(teardownSession)
   useEffect(() => { teardownSessionRef.current = teardownSession }, [teardownSession])
@@ -935,7 +1170,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     setError(null)
 
     const token = await fetchEphemeralToken()
-    const ws = new WebSocket('wss://api.x.ai/v1/realtime', [`xai-client-secret.${token}`])
+    const ws = new WebSocket(GROK_REALTIME_URL, [`xai-client-secret.${token}`])
     const sessionConversationId = conversationIdRef.current
     wsRef.current = ws
 
@@ -944,8 +1179,21 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
       ws.onopen = () => {
         try {
-          ws.send(JSON.stringify(buildGrokSessionConfig(params)))
+          const sessionConfig = buildGrokSessionConfig(params)
+          if (GROK_AUDIO_DEBUG) {
+            grokAudioDebug('grokSessionConfig:sent', {
+              model: GROK_REALTIME_MODEL,
+              websocketUrl: GROK_REALTIME_URL,
+              voice: sessionConfig.session.voice,
+              turn_detection: sessionConfig.session.turn_detection,
+              inputRate: sessionConfig.session.audio.input.format.rate,
+              outputRate: sessionConfig.session.audio.output.format.rate,
+              sessionKeys: Object.keys(sessionConfig.session),
+            })
+          }
+          ws.send(JSON.stringify(sessionConfig))
           ws.send(JSON.stringify({ type: 'response.create' }))
+          responseInProgressRef.current = true
           setIsConnected(true)
           setStatus('idle')
           settled = true
@@ -962,6 +1210,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
       ws.onerror = () => {
         console.error('[grok-realtime] WebSocket error')
+        responseInProgressRef.current = false
+        rejectPendingInputCommit('Realtime connection failed')
         if (!settled) {
           settled = true
           reject(new Error('Realtime connection failed'))
@@ -975,6 +1225,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       ws.onclose = (event) => {
         console.log('[grok-realtime] WebSocket closed:', event.code, event.reason)
         wsRef.current = null
+        responseInProgressRef.current = false
+        commitAckRecoveryPendingClearRef.current = false
+        rejectPendingInputCommit('Realtime connection closed')
         if (mountedRef.current) {
           setIsConnected(false)
           setIsListening(false)
@@ -988,12 +1241,17 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         void updateEndedAt(sessionConversationId)
       }
     })
-  }, [fetchEphemeralToken, handleSocketMessage, primeAudioForIOS, updateEndedAt])
+  }, [fetchEphemeralToken, handleSocketMessage, primeAudioForIOS, rejectPendingInputCommit, updateEndedAt])
 
   const startListening = useCallback(async () => {
     if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
       setError('Grok session is not connected')
       setStatus('error')
+      return
+    }
+    if (commitAckRecoveryPendingClearRef.current) {
+      setError('Audio turn did not commit. Please try again.')
+      setStatus('idle')
       return
     }
     if (isListening) return
@@ -1072,11 +1330,30 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       setStatus('error')
       return
     }
+    if (commitAckRecoveryPendingClearRef.current) {
+      stopListening()
+      setError('Audio turn did not commit. Please try again.')
+      setStatus('idle')
+      return
+    }
+    if (responseInProgressRef.current) {
+      if (GROK_AUDIO_DEBUG) {
+        grokAudioDebug('sendTurn:response-in-progress-skip', {
+          micCycleId: micCycleSeqRef.current,
+        })
+      }
+      stopListening()
+      setError('Grok is still responding. Please try again.')
+      setStatus('idle')
+      return
+    }
 
     try {
+      const turnProtocol = getGrokTurnProtocol()
       if (GROK_AUDIO_DEBUG) {
         grokAudioDebug('sendTurn:entry', {
           micCycleId: micCycleSeqRef.current,
+          turnProtocol,
           contextBeforeCommit: getAudioContextSnapshot(audioContextRef.current),
           lastTrackStopAt: lastTrackStopAtRef.current,
         })
@@ -1085,6 +1362,20 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       await flushPendingInputAudio()
       stopListening()
       if (endingSessionRef.current || wsRef.current !== ws || ws.readyState !== WebSocket.OPEN) return
+
+      if (turnProtocol === 'server_vad') {
+        appendServerVadSilence(ws)
+        inputAudioAppendedRef.current = false
+        setError(null)
+        setStatus('thinking')
+        if (GROK_AUDIO_DEBUG) {
+          grokAudioDebug('sendTurn:server-vad-awaiting-response', {
+            micCycleId: micCycleSeqRef.current,
+          })
+        }
+        return
+      }
+
       if (GROK_AUDIO_DEBUG) {
         const commitAt = performance.now()
         grokAudioDebug('sendTurn:before-commit', {
@@ -1094,8 +1385,29 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           contextBeforeCommit: getAudioContextSnapshot(audioContextRef.current),
         })
       }
+      const commitAck = waitForInputCommitAck()
       ws.send(JSON.stringify({ type: 'input_audio_buffer.commit' }))
+      grokAudioDebug('sendTurn:commit-sent', {
+        micCycleId: micCycleSeqRef.current,
+      })
+      try {
+        await commitAck
+      } catch (err) {
+        if (ws.readyState === WebSocket.OPEN) {
+          commitAckRecoveryPendingClearRef.current = true
+          ws.send(JSON.stringify({ type: 'input_audio_buffer.clear' }))
+        }
+        inputAudioAppendedRef.current = false
+        setError(err instanceof Error ? err.message : 'Audio turn did not commit. Please try again.')
+        setStatus('idle')
+        return
+      }
+      if (endingSessionRef.current || wsRef.current !== ws || ws.readyState !== WebSocket.OPEN) return
       ws.send(JSON.stringify({ type: 'response.create' }))
+      responseInProgressRef.current = true
+      grokAudioDebug('sendTurn:response-create-after-commit', {
+        micCycleId: micCycleSeqRef.current,
+      })
       if (GROK_AUDIO_DEBUG) {
         grokAudioDebug('sendTurn:after-commit', {
           micCycleId: micCycleSeqRef.current,
@@ -1111,7 +1423,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       setError(err instanceof Error ? err.message : 'Failed to send audio turn')
       setStatus('error')
     }
-  }, [flushPendingInputAudio, pauseListeningCapture, stopListening])
+  }, [appendServerVadSilence, flushPendingInputAudio, pauseListeningCapture, stopListening, waitForInputCommitAck])
 
   const endSession = useCallback(async () => {
     await teardownSession()

@@ -12,13 +12,36 @@ export interface BuildGrokSessionParams {
   category: GrokCategory | null
 }
 
+export const GROK_TURN_PROTOCOL = 'manual_commit_ack' as const
+export type GrokTurnProtocol = typeof GROK_TURN_PROTOCOL | 'server_vad'
+
+export function getGrokTurnProtocol(): GrokTurnProtocol {
+  try {
+    if (
+      typeof window !== 'undefined' &&
+      window.localStorage.getItem('grokTurnProtocol') === 'server_vad'
+    ) {
+      return 'server_vad'
+    }
+  } catch {
+    // localStorage can be unavailable in private browsing or server contexts.
+  }
+  return GROK_TURN_PROTOCOL
+}
+
+type GrokTurnDetectionConfig = null | {
+  type: 'server_vad'
+  threshold: 0.85
+  silence_duration_ms: 500
+  prefix_padding_ms: 333
+}
+
 export interface GrokSessionConfig {
   type: 'session.update'
   session: {
     voice: GrokVoice
     instructions: string
-    turn_detection: null
-    tools: Array<{ type: 'web_search' }>
+    turn_detection: GrokTurnDetectionConfig
     audio: {
       input: { format: { type: 'audio/pcm'; rate: 24000 } }
       output: { format: { type: 'audio/pcm'; rate: 24000 } }
@@ -41,14 +64,21 @@ export function buildGrokSessionConfig(p: BuildGrokSessionParams): GrokSessionCo
     `Keep responses conversational and short — typically 1 to 3 sentences per turn.`
 
   const instructions = `${levelText}\n\n${categoryPrompt}\n\n${tail}`
+  const turnProtocol = getGrokTurnProtocol()
 
   return {
     type: 'session.update',
     session: {
-      voice: p.voice,
+      voice: p.voice.toLowerCase() as GrokVoice,
       instructions,
-      turn_detection: null,
-      tools: [{ type: 'web_search' }],
+      turn_detection: turnProtocol === 'server_vad'
+        ? {
+            type: 'server_vad',
+            threshold: 0.85,
+            silence_duration_ms: 500,
+            prefix_padding_ms: 333,
+          }
+        : null,
       audio: {
         input: { format: { type: 'audio/pcm', rate: 24000 } },
         output: { format: { type: 'audio/pcm', rate: 24000 } },
