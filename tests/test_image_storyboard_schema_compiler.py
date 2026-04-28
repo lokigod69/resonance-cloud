@@ -244,3 +244,28 @@ def test_provocative_system_prompt_does_not_seed_artist_names():
     assert "examples of good visually arresting vocabulary scenes" not in prompt_lower
     assert '"cow" ->' not in prompt_lower
     assert "=== provocative ===" in prompt_lower
+
+
+def test_disabled_word_in_composition_does_not_request_word_integration():
+    prompt = build_system_prompt(
+        word="Gesicht",
+        translation="face",
+        language="German",
+        settings=ImageSettings(
+            creative_direction="movie",
+            frame_narrative="auto",
+            image_count="auto",
+            art_style="auto",
+            word_in_image=False,
+            image_model="wan_fast",
+        ),
+        context=None,
+        scene_count=3,
+        aspect_ratio="16:9",
+        image_count_raw="auto",
+    )
+
+    prompt_lower = prompt.lower()
+    assert "integrate the word" not in prompt_lower
+    assert "word integration" not in prompt_lower
+    assert "word integrated into the scene" not in prompt_lower
