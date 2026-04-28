@@ -57,8 +57,19 @@ assert(hookSource.includes('sendTurn:ios-playback-route-prepared'), 'sendTurn mu
 assert(hookSource.includes('serverVad:ios-playback-route-prepared'), 'server_vad must prepare playback route on server events')
 assert(hookSource.includes('grokIOSRecreateAudioContextAfterMic'), 'iOS AudioContext recreation flag must exist')
 assert(allSource.includes('htmlBufferedPlayback:play'), 'HTML buffered playback debug mode must exist')
-assert(allSource.includes('__grokRunIOSAudioRouteProbe'), 'debug iOS route probe must be exposed under debug')
 assert(hookSource.includes('grokIOSMicProcessing'), 'iOS mic processing debug flag must exist')
+assert(!allSource.includes('__grokRunIOSAudio' + 'RouteProbe'), 'debug iOS route probe global must not be exposed')
+for (const removedRouteProbeLog of [
+  'iosRouteProbe' + ':start',
+  'iosRouteProbe' + ':first-reference-played',
+  'iosRouteProbe' + ':mic-opened',
+  'iosRouteProbe' + ':mic-released',
+  'iosRouteProbe' + ':playback-restored',
+  'iosRouteProbe' + ':second-reference-played',
+  'iosRouteProbe' + ':done',
+]) {
+  assert(!allSource.includes(removedRouteProbeLog), `route probe log must be removed: ${removedRouteProbeLog}`)
+}
 assert(!hookSource.includes('createGain('), 'must not add GainNode normalization')
 assert(!hookSource.includes('DynamicsCompressor'), 'must not add compressor workaround')
 

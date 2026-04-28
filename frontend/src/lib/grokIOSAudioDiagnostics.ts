@@ -10,20 +10,6 @@ export type GrokIOSAudioDiagnosticsOptions = {
   log?: (...args: unknown[]) => void
 }
 
-type GrokIOSAudioDiagnosticsGlobal = Window & {
-  __grokRunIOSAudioRouteProbe?: () => Promise<void>
-  __grokIOSAudioDiagnostics?: {
-    runRouteProbe: () => Promise<void>
-    setPlayback: () => boolean
-    setPlayAndRecord: () => boolean
-    getAudioSessionSnapshot: () => {
-      supported: boolean
-      type: string | null
-      state: string | null
-    }
-  }
-}
-
 let unsupportedLogged = false
 let stateChangeAttached = false
 let installed = false
@@ -112,109 +98,15 @@ export function setIOSAudioSessionType(type: 'playback' | 'play-and-record', rea
   return afterType === type
 }
 
-async function getProbeAudioContext(options: GrokIOSAudioDiagnosticsOptions | undefined) {
-  const existing = options?.getAudioContext?.()
-  if (existing && existing.state !== 'closed') {
-    if (existing.state !== 'running') {
-      await existing.resume().catch(() => {})
-    }
-    return { ctx: existing, owned: false }
-  }
-  const Ctor = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext
-  if (!Ctor) throw new Error('AudioContext is not available')
-  const ctx = new Ctor()
-  if (ctx.state !== 'running') {
-    await ctx.resume().catch(() => {})
-  }
-  return { ctx, owned: true }
-}
-
-async function playReferenceTone(options: GrokIOSAudioDiagnosticsOptions | undefined) {
-  const { ctx, owned } = await getProbeAudioContext(options)
-  try {
-    const durationSeconds = 0.35
-    const frequency = 880
-    const frameCount = Math.floor(ctx.sampleRate * durationSeconds)
-    const buffer = ctx.createBuffer(1, frameCount, ctx.sampleRate)
-    const channel = buffer.getChannelData(0)
-    for (let i = 0; i < frameCount; i++) {
-      const envelope = Math.max(0, Math.min(1, i / 240, (frameCount - i) / 240))
-      channel[i] = Math.sin((2 * Math.PI * frequency * i) / ctx.sampleRate) * 0.2 * envelope
-    }
-
-    await new Promise<void>((resolve) => {
-      const source = ctx.createBufferSource()
-      source.buffer = buffer
-      source.connect(ctx.destination)
-      source.onended = () => {
-        try { source.disconnect() } catch { /* ignore */ }
-        resolve()
-      }
-      source.start(ctx.currentTime)
-    })
-  } finally {
-    if (owned) {
-      await ctx.close().catch(() => {})
-    }
-  }
-}
-
-export async function runGrokIOSAudioRouteProbe(options?: GrokIOSAudioDiagnosticsOptions): Promise<void> {
-  const activeOptions = options ?? installedOptions
-  logWithOptions(activeOptions, 'iosRouteProbe:start', {
-    audioSession: getGrokIOSAudioSessionSnapshot(),
-    primerExists: activeOptions.getPrimer?.() ? true : null,
-  })
-
-  setIOSAudioSessionType('playback', 'route-probe-first-reference')
-  await playReferenceTone(activeOptions)
-  logWithOptions(activeOptions, 'iosRouteProbe:first-reference-played', {
-    audioSession: getGrokIOSAudioSessionSnapshot(),
-  })
-
-  setIOSAudioSessionType('play-and-record', 'route-probe-before-getUserMedia')
-  let stream: MediaStream | null = await navigator.mediaDevices.getUserMedia({ audio: true })
-  logWithOptions(activeOptions, 'iosRouteProbe:mic-opened', {
-    audioSession: getGrokIOSAudioSessionSnapshot(),
-    trackCount: stream.getAudioTracks().length,
-  })
-
-  stream.getTracks().forEach((track) => track.stop())
-  stream = null
-  logWithOptions(activeOptions, 'iosRouteProbe:mic-released', {
-    audioSession: getGrokIOSAudioSessionSnapshot(),
-  })
-
-  setIOSAudioSessionType('playback', 'route-probe-after-mic-release')
-  await new Promise<void>((resolve) => window.setTimeout(resolve, 0))
-  logWithOptions(activeOptions, 'iosRouteProbe:playback-restored', {
-    audioSession: getGrokIOSAudioSessionSnapshot(),
-  })
-
-  await playReferenceTone(activeOptions)
-  logWithOptions(activeOptions, 'iosRouteProbe:second-reference-played', {
-    audioSession: getGrokIOSAudioSessionSnapshot(),
-  })
-  logWithOptions(activeOptions, 'iosRouteProbe:done', {
-    audioSession: getGrokIOSAudioSessionSnapshot(),
-  })
-}
-
 export function installGrokIOSAudioDiagnostics(options?: GrokIOSAudioDiagnosticsOptions): void {
   if (typeof window === 'undefined') return
   installedOptions = {
     ...installedOptions,
     ...options,
   }
-
-  const debugWindow = window as GrokIOSAudioDiagnosticsGlobal
-  debugWindow.__grokRunIOSAudioRouteProbe = () => runGrokIOSAudioRouteProbe(installedOptions)
-  debugWindow.__grokIOSAudioDiagnostics = {
-    runRouteProbe: () => runGrokIOSAudioRouteProbe(installedOptions),
-    setPlayback: () => setIOSAudioSessionType('playback', 'diagnostics-set-playback'),
-    setPlayAndRecord: () => setIOSAudioSessionType('play-and-record', 'diagnostics-set-play-and-record'),
-    getAudioSessionSnapshot: getGrokIOSAudioSessionSnapshot,
-  }
+  logWithOptions(installedOptions, 'grokIOSAudioDiagnostics:installed', {
+    exports: ['setIOSAudioSessionType', 'installGrokIOSAudioDiagnostics'],
+  })
 
   const audioSession = getNavigatorAudioSession()
   if (audioSession) {
