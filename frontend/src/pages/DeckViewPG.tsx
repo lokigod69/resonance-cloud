@@ -109,66 +109,23 @@ export default function DeckViewPG() {
     if (!user) return
     setRetrying(word.id)
     try {
-      const { data: freshProfile, error: profileError } = await supabase
-        .from('profiles')
-        .select('credits')
-        .eq('id', user.id)
-        .single()
+      const { data, error } = await supabase.rpc('request_word_retry', {
+        p_word_id: word.id,
+        p_retry_scope: 'word',
+      })
+      if (error) throw error
 
-      const freshCredits = freshProfile?.credits ?? 0
-      if (profileError || freshCredits < 1) {
-        toast(t('deckview.noCredits'), 'error')
-        return
+      const result = data as { success?: boolean; already_requested?: boolean; error?: string } | null
+      if (!result?.success) {
+        if (result?.error?.toLowerCase().includes('credit')) {
+          toast(t('deckview.noCredits'), 'error')
+          return
+        }
+        throw new Error(result?.error || 'Retry request failed')
       }
-
-      const { data: retryRows, error: retryError } = await supabase.from('words')
-        .update({
-          retry_requested: true,
-          retry_requested_at: new Date().toISOString(),
-          error_message: null,
-        })
-        .eq('id', word.id)
-        .eq('user_id', user.id)
-        .eq('current_stage', 'failed')
-        .not('retry_requested', 'is', true)
-        .select('id')
-      if (retryError) throw retryError
-      if (!retryRows?.length) {
+      if (result.already_requested) {
         toast(t('deckview.retryAlreadyRequested'), 'info')
         return
-      }
-
-      const rollbackRetryFlag = async () => {
-        const { error: rollbackError } = await supabase.from('words')
-          .update({ retry_requested: false, retry_requested_at: null })
-          .eq('id', word.id)
-          .eq('user_id', user.id)
-          .eq('retry_requested', true)
-        if (rollbackError) console.warn('[deck] retry flag rollback failed', rollbackError)
-      }
-
-      const { data: creditRows, error: creditError } = await supabase.from('profiles')
-        .update({ credits: freshCredits - 1 })
-        .eq('id', user.id)
-        .eq('credits', freshCredits)
-        .select('id')
-      if (creditError || !creditRows?.length) {
-        await rollbackRetryFlag()
-        if (creditError) throw creditError
-        throw new Error('Unable to reserve retry credit')
-      }
-
-      const { error: deckError } = await supabase.from('decks')
-        .update({ status: 'generating' })
-        .eq('id', id)
-      if (deckError) {
-        const { error: rollbackError } = await supabase.from('profiles')
-          .update({ credits: freshCredits })
-          .eq('id', user.id)
-          .eq('credits', freshCredits - 1)
-        if (rollbackError) console.warn('[deck] retry credit rollback failed', rollbackError)
-        await rollbackRetryFlag()
-        throw deckError
       }
 
       await refreshProfile()
@@ -180,7 +137,11 @@ export default function DeckViewPG() {
       if (refreshError) throw refreshError
       if (refreshedWords) setWords(refreshedWords)
       toast(t('deckview.retryingGeneration'), 'success')
-    } catch {
+    } catch (error) {
+      if (error instanceof Error && error.message.toLowerCase().includes('credit')) {
+        toast(t('deckview.noCredits'), 'error')
+        return
+      }
       toast(t('deckview.retryFailed'), 'error')
     } finally {
       setRetrying(null)

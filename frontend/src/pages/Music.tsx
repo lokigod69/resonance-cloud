@@ -47,7 +47,7 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
 export default function Music() {
   const { t } = useTranslation()
   const { toast } = useToast()
-  const { user } = useAuth()
+  const { user, refreshProfile } = useAuth()
   const [allTracks, setAllTracks] = useState<MusicTrack[]>([])
   const [errorTrackIds, setErrorTrackIds] = useState<Set<string>>(new Set())
   const [loading, setLoading] = useState(true)
@@ -160,7 +160,7 @@ export default function Music() {
   }, [user, fetchActiveSunoRetries])
 
   // Flag one track for the orchestrator Source 2 retry path; double-click safe.
-  const handleSunoRetry = useCallback(async (wordId: string, deckId: string) => {
+  const handleSunoRetry = useCallback(async (wordId: string) => {
     if (!user) return
 
     // Optimistically mark as pending so the button becomes a spinner immediately
@@ -175,43 +175,25 @@ export default function Music() {
     }
 
     try {
-      const activeStageFilter = `current_stage.in.(${ACTIVE_RETRY_STAGES.join(',')})`
-      const { data: existing, error: existingError } = await supabase
-        .from('words')
-        .select('id')
-        .eq('id', wordId)
-        .eq('user_id', user.id)
-        .or(`retry_requested.eq.true,${activeStageFilter}`)
-        .limit(1)
-      if (existingError) throw existingError
-      if (existing && existing.length > 0) return // already queued
-
-      const { data: updated, error } = await supabase
-        .from('words')
-        .update({
-          music_state: 'pending',
-          suno_task_id: null,
-          suno_audio_url: null,
-          suno_audio_url_b: null,
-          suno_storage_url: null,
-          suno_storage_url_b: null,
-          failed_stage: null,
-          retry_requested: true,
-          retry_requested_at: new Date().toISOString(),
-        })
-        .eq('id', wordId)
-        .eq('user_id', user.id)
-        .eq('deck_id', deckId)
-        .eq('current_stage', 'complete')
-        .select('id')
+      const { data, error } = await supabase.rpc('request_word_retry', {
+        p_word_id: wordId,
+        p_retry_scope: 'music',
+      })
       if (error) throw error
-      if (!updated?.length) throw new Error('Word is not in a retryable music state')
+
+      const result = data as { success?: boolean; already_requested?: boolean; error?: string } | null
+      if (!result?.success) {
+        throw new Error(result?.error || 'Word is not in a retryable music state')
+      }
+      if (!result.already_requested) {
+        await refreshProfile()
+      }
     } catch (error) {
       rollbackOptimistic()
       console.warn('[music] Suno retry failed', error)
       toast(t('music.retryFailed'), 'error')
     }
-  }, [user, t, toast])
+  }, [user, refreshProfile, t, toast])
 
   // Poll active retry rows every 15s; refetch tracks when one completes.
   useEffect(() => {
@@ -340,7 +322,7 @@ export default function Music() {
                 isActive={player.currentTrack?.id === track.id}
                 isPlaying={player.isPlaying && player.currentTrack?.id === track.id}
                 onClick={() => player.play(track.id)}
-                onRetry={() => handleSunoRetry(track.id, track.deck_id)}
+                onRetry={() => handleSunoRetry(track.id)}
                 isRetrying={retryStatusMap.has(track.id)}
                 retryStatus={retryStatusMap.get(track.id)}
               />

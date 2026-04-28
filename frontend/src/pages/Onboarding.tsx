@@ -50,76 +50,27 @@ export default function Onboarding() {
     const code = inviteCode.trim().toUpperCase()
 
     try {
-      // Try the atomic RPC function first (available after migration)
       const { data, error: rpcError } = await supabase.rpc('redeem_invite_code', { code_text: code })
-      if (!rpcError && data) {
-        const result = data as { success: boolean; credits_awarded?: number; error?: string }
-        if (!result.success) {
-          setRedeemError(result.error || 'Failed to redeem code.')
-        } else {
-          setRedeemSuccess({ credits: result.credits_awarded || 0 })
-          setInviteCode('')
-          await refreshProfile()
-        }
-        setRedeeming(false)
+      if (rpcError || !data) {
+        console.error('Invite code redemption failed:', rpcError)
+        setRedeemError('Failed to redeem code. Please try again.')
         return
       }
-    } catch {
-      // RPC not available — fall through to legacy flow
-    }
 
-    // Legacy fallback (pre-migration: old invite_codes schema with redeemed_by)
-    const { data: invite, error: lookupError } = await supabase
-      .from('invite_codes')
-      .select('id, code, credits, redeemed_by')
-      .eq('code', code)
-      .maybeSingle()
-
-    if (lookupError) {
-      setRedeemError('Error looking up code. Please try again.')
-      setRedeeming(false)
-      return
-    }
-
-    if (!invite) {
-      setRedeemError('Invalid invite code.')
-      setRedeeming(false)
-      return
-    }
-
-    if (invite.redeemed_by) {
-      setRedeemError('This code has already been redeemed.')
-      setRedeeming(false)
-      return
-    }
-
-    const { error: updateError } = await supabase
-      .from('invite_codes')
-      .update({ redeemed_by: user.id, redeemed_at: new Date().toISOString() })
-      .eq('id', invite.id)
-      .is('redeemed_by', null)
-
-    if (updateError) {
+      const result = data as { success: boolean; credits_awarded?: number; error?: string }
+      if (!result.success) {
+        setRedeemError(result.error || 'Failed to redeem code.')
+      } else {
+        setRedeemSuccess({ credits: result.credits_awarded || 0 })
+        setInviteCode('')
+        await refreshProfile()
+      }
+    } catch (error) {
+      console.error('Invite code redemption failed:', error)
       setRedeemError('Failed to redeem code. Please try again.')
+    } finally {
       setRedeeming(false)
-      return
     }
-
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('credits')
-      .eq('id', user.id)
-      .single()
-
-    await supabase
-      .from('profiles')
-      .update({ credits: (profile?.credits || 0) + invite.credits })
-      .eq('id', user.id)
-
-    setRedeemSuccess({ credits: invite.credits })
-    setInviteCode('')
-    await refreshProfile()
-    setRedeeming(false)
   }
 
   function handleFinish() {
