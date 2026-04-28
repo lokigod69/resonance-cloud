@@ -4,6 +4,7 @@ import AggregatorSnapshot from '@/components/admin/observability/AggregatorSnaps
 import FinalVideo from '@/components/admin/observability/FinalVideo'
 import FailureNotice from '@/components/admin/observability/FailureNotice'
 import LayoutSelector, { type WordLayoutMode } from '@/components/admin/observability/LayoutSelector'
+import SceneStills from '@/components/admin/observability/SceneStills'
 import SunoTracks from '@/components/admin/observability/SunoTracks'
 import WordPanelsLayout from '@/components/admin/observability/variants/WordPanelsLayout'
 import WordScrollLayout, { type StageEvents } from '@/components/admin/observability/variants/WordScrollLayout'
@@ -111,6 +112,7 @@ export default function ObservabilityWordDetail() {
     <>
       <FailureNotice events={failedEvents} />
       <FinalVideo src={finalVideoUrl} />
+      <SceneStills events={events} />
       <SunoTracks wordId={wordId} />
       <AggregatorSnapshot metadata={word?.metadata ?? null} />
       <LayoutSelector value={layout} onChange={handleLayoutChange} />

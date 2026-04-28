@@ -129,6 +129,91 @@
   background: var(--f-color-black);
 }
 
+.sceneStills {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  background: var(--f-color-black);
+  border-bottom: 1px solid var(--f-color-ui-90);
+  color: var(--f-color-ui-0);
+}
+
+.sceneStillsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sceneStillsCount {
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--f-color-black-50);
+}
+
+.sceneStillGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
+  gap: 12px;
+}
+
+.sceneStillCard {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  min-height: 190px;
+  border: 1px solid var(--f-color-ui-90);
+  background: var(--f-color-near-black);
+}
+
+.sceneStillMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 34px;
+  padding: 0 10px;
+  font-family: var(--f-font-body);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--f-color-ui-20);
+}
+
+.sceneStillLink {
+  display: block;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.sceneStillImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--f-color-black);
+}
+
+.sceneStillMissing {
+  display: grid;
+  place-items: center;
+  min-height: 150px;
+  margin: 0 10px 10px;
+  border: 1px dashed var(--f-color-ui-90);
+  color: var(--f-color-black-50);
+  font-family: var(--f-font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sceneStillMissing[hidden] {
+  display: none;
+}
+
 .eventRow {
   display: grid;
   grid-template-columns: 86px minmax(180px, 1fr) auto minmax(160px, 220px) minmax(130px, 180px) 20px;
@@ -528,6 +613,15 @@
   .failureButton {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .sceneStillsHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sceneStillGrid {
+    grid-template-columns: 1fr;
   }
 
   .failureSide {
