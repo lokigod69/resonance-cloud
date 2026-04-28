@@ -32,6 +32,9 @@ assert(config.session.audio.output.format.type === 'audio/pcm', 'output audio ty
 assert(config.session.audio.output.format.rate === 24000, 'output audio rate must be 24000')
 
 const hookSource = readFileSync(resolve('src/hooks/useGrokRealtime.ts'), 'utf8')
+const diagnosticsSource = readFileSync(resolve('src/lib/grokIOSAudioDiagnostics.ts'), 'utf8')
+const speakSource = readFileSync(resolve('src/pages/Speak.tsx'), 'utf8')
+const allSource = `${hookSource}\n${diagnosticsSource}\n${speakSource}`
 assert(
   hookSource.includes('grok-voice-think-fast-1.0'),
   'websocket model must be grok-voice-think-fast-1.0',
@@ -48,13 +51,13 @@ assert(
   hookSource.includes('queueAudioBuffer:skipped-silent-first-chunk'),
   'silent first chunk skip instrumentation must remain present',
 )
-assert(hookSource.includes('type IOSAudioSessionType'), 'iOS AudioSession type helper must exist')
-assert(hookSource.includes('iosAudioSession:set'), 'iOS AudioSession set log must exist')
+assert(diagnosticsSource.includes('navigator.audioSession'), 'iOS AudioSession helper must feature-detect navigator.audioSession')
+assert(allSource.includes('iosAudioSession:set'), 'iOS AudioSession set log must exist')
 assert(hookSource.includes('sendTurn:ios-playback-route-prepared'), 'sendTurn must prepare iOS playback route before response.create')
 assert(hookSource.includes('serverVad:ios-playback-route-prepared'), 'server_vad must prepare playback route on server events')
 assert(hookSource.includes('grokIOSRecreateAudioContextAfterMic'), 'iOS AudioContext recreation flag must exist')
-assert(hookSource.includes('htmlBufferedPlayback:play'), 'HTML buffered playback debug mode must exist')
-assert(hookSource.includes('__grokRunIOSAudioRouteProbe'), 'debug iOS route probe must be exposed under debug')
+assert(allSource.includes('htmlBufferedPlayback:play'), 'HTML buffered playback debug mode must exist')
+assert(allSource.includes('__grokRunIOSAudioRouteProbe'), 'debug iOS route probe must be exposed under debug')
 assert(hookSource.includes('grokIOSMicProcessing'), 'iOS mic processing debug flag must exist')
 assert(!hookSource.includes('createGain('), 'must not add GainNode normalization')
 assert(!hookSource.includes('DynamicsCompressor'), 'must not add compressor workaround')

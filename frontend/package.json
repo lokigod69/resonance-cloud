@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "verify:grok-ios-audio": "tsx scripts/verify-grok-ios-audio.ts",
+    "verify:grok-ios-audio:dist": "tsx scripts/verify-built-grok-ios-audio.ts",
     "test:regressions": "node scripts/verify-admin-deck-regressions.mjs",
     "pregen:samples": "tsx scripts/pregenerate-voice-samples.ts"
   },
