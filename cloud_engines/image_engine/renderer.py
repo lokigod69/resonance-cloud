@@ -34,6 +34,7 @@ from src.cost_logger import (
     KIE_WAN_COST_PER_IMAGE,
     KIE_WAN_PRO_COST_PER_IMAGE,
     KIE_FLUX_PRO_COST_PER_IMAGE,
+    KIE_SEEDREAM_LITE_COST_PER_IMAGE,
     FAL_ZTURBO_COST_PER_IMAGE,
 )
 
@@ -64,6 +65,7 @@ def _upload_scene_still_for_admin(
     user_id: str | None,
     deck_id: str | None,
     job_id: str | None,
+    provider_name: str | None = None,
 ) -> dict[str, str]:
     """Upload a rendered scene PNG beside the final video storage prefix."""
     if not output_path.exists() or not user_id or not deck_id:
@@ -79,7 +81,8 @@ def _upload_scene_still_for_admin(
         logger.warning("Supabase credentials missing; skipping scene still upload")
         return {}
 
-    storage_key = f"{user_id}/{deck_id}/{word_slug}/scene_{scene_number:03d}.png"
+    provider_prefix = f"{provider_name}/" if provider_name else ""
+    storage_key = f"{user_id}/{deck_id}/{word_slug}/{provider_prefix}scene_{scene_number:03d}.png"
     try:
         from supabase import create_client as _create_supabase_client
 
@@ -162,6 +165,8 @@ def resolve_model_id(image_model: str) -> str:
         return "wan/2-7-image"
     if image_model == "wan_pro":
         return "wan/2-7-image-pro"
+    if image_model == "seedream_lite":
+        return "seedream/5-lite-text-to-image"
     raise ValueError(f"unknown image_model: {image_model}")
 
 
@@ -719,6 +724,129 @@ def render_scene(
         )
         model_id = "wan/2-7-image"
 
+    # --- Seedream 5.0 Lite route ---
+    if model_id.startswith("seedream/"):
+        from .seedream_provider import (
+            SEEDREAM_I2I_MODEL,
+            render_scene_seedream,
+        )
+        from .wan_provider import _upload_for_chaining
+
+        seedream_input_urls = None
+        if reference_image_path and reference_image_path.exists():
+            api_key = os.environ.get("KIE_API_KEY", "")
+            if api_key:
+                ref_url = _upload_for_chaining(reference_image_path, api_key)
+                if ref_url:
+                    seedream_input_urls = [ref_url]
+                    logger.info("Scene %d: Seedream chaining via %s", scene_number, ref_url)
+                else:
+                    logger.warning(
+                        "Scene %d: Seedream upload failed, rendering without reference",
+                        scene_number,
+                    )
+
+        effective_model_id = SEEDREAM_I2I_MODEL if seedream_input_urls else model_id
+        prompt_payload = image_prompt.model_dump(exclude_none=True)
+        request_payload = {
+            "model": effective_model_id,
+            "aspect_ratio": aspect_ratio,
+            "chain_instruction": None,
+            "input_urls": seedream_input_urls,
+            "use_color_palette": use_color_palette,
+            "art_style": art_style,
+            "image_prompt": prompt_payload,
+        }
+        seedream_result: Optional[dict] = None
+        try:
+            with logged_api_call(
+                stage="images",
+                sub_step="render_scene",
+                event_source="engine",
+                word_id=word_id,
+                deck_id=deck_id,
+                user_id=user_id,
+                job_id=job_id,
+                attempt=attempt,
+                metadata={
+                    "scene_number": scene_number,
+                    "chained": reference_image_path is not None,
+                    "reference_image": (
+                        reference_image_path.name
+                        if reference_image_path is not None
+                        else None
+                    ),
+                    "output_path": output_path.name,
+                    "cost_estimation": "stub",
+                },
+            ) as ev:
+                seedream_result = render_scene_seedream(
+                    image_prompt=prompt_payload,
+                    model_id=model_id,
+                    output_path=output_path,
+                    aspect_ratio=aspect_ratio,
+                    input_urls=seedream_input_urls,
+                    use_color_palette=use_color_palette,
+                    art_style=art_style,
+                )
+                scene_still_metadata = (
+                    _upload_scene_still_for_admin(
+                        output_path,
+                        scene_number=scene_number,
+                        user_id=user_id,
+                        deck_id=deck_id,
+                        job_id=job_id,
+                        provider_name=seedream_result.get("provider_name"),
+                    )
+                    if seedream_result.get("success")
+                    else {}
+                )
+                ev._model_provider = seedream_result.get("provider_name")
+                ev._model_name = seedream_result.get("model_name")
+                ev.record_response(
+                    response_body=seedream_result.get("response_body"),
+                    request_body=json.dumps(request_payload, ensure_ascii=False),
+                    request_id=seedream_result.get("request_id"),
+                    cost_usd=seedream_result.get("cost_estimate_usd"),
+                    scene_number=scene_number,
+                    provider=seedream_result.get("provider_name"),
+                    output_file=seedream_result.get("file_path"),
+                    safety_blocked=False,
+                    **scene_still_metadata,
+                )
+                if not seedream_result["success"]:
+                    raise _ProviderRenderError(
+                        seedream_result.get("error_message") or "Provider render failed"
+                    )
+        except _ProviderRenderError:
+            pass
+        if seedream_result and seedream_result["success"]:
+            return RenderResult(
+                success=True,
+                scene_number=scene_number,
+                file_path=output_path.name,
+                prompt_json=seedream_result.get("prompt_text", ""),
+                provider_name=seedream_result.get("provider_name"),
+                model_name=seedream_result.get("model_name"),
+                request_id=seedream_result.get("request_id"),
+                cost_estimate_usd=seedream_result.get("cost_estimate_usd"),
+                response_body=seedream_result.get("response_body"),
+            )
+        logger.warning(
+            "Scene %d: Seedream render failed (%s)",
+            scene_number, (seedream_result or {}).get("error_message", "unknown"),
+        )
+        return RenderResult(
+            success=False,
+            scene_number=scene_number,
+            error_message=(
+                "Seedream render failed: "
+                f"{(seedream_result or {}).get('error_message', 'unknown')}"
+            ),
+            prompt_json=(seedream_result or {}).get("prompt_text", ""),
+            model_name=model_id,
+        )
+
     # --- Wan 2.7 route ---
     if model_id.startswith("wan/"):
         from .wan_provider import render_scene_wan, _upload_for_chaining
@@ -782,6 +910,7 @@ def render_scene(
                         user_id=user_id,
                         deck_id=deck_id,
                         job_id=job_id,
+                        provider_name=wan_result.get("provider_name"),
                     )
                     if wan_result.get("success")
                     else {}
@@ -838,6 +967,7 @@ def render_scene(
                     user_id=user_id,
                     deck_id=deck_id,
                     job_id=job_id,
+                    provider_name=wan_result.get("provider_name"),
                 )
                 return RenderResult(
                     success=True,
@@ -1024,7 +1154,7 @@ def render_all_scenes(
     # Wan keeps the reference hand-off, but its preserve/change instruction is
     # compiled from image_prompt continuity_anchor/change_request.
     resolved_mode = resolve_frame_narrative(storyboard.frame_narrative)
-    if model_id.startswith("wan/"):
+    if model_id.startswith(("wan/", "seedream/")):
         chain_instruction = None
         use_chaining = resolved_mode != "collection"
     elif model_id.startswith("flux-2/"):
@@ -1077,7 +1207,7 @@ def render_all_scenes(
 
         # Chain: for Wan, anchor all scenes to scene 1 (avoids compounding
         # img2img drift). For Gemini, chain sequentially.
-        if model_id.startswith("wan/"):
+        if model_id.startswith(("wan/", "seedream/")):
             if result.success and scene.scene_number == 1:
                 previous_image_path = output_path
             # scenes 2+: previous_image_path stays pinned to scene 1
@@ -1095,6 +1225,9 @@ def render_all_scenes(
         elif model_id.startswith("wan/"):
             provider_label = "kie_ai"
             cost_usd = KIE_WAN_COST_PER_IMAGE
+        elif model_id.startswith("seedream/"):
+            provider_label = "kie_ai"
+            cost_usd = KIE_SEEDREAM_LITE_COST_PER_IMAGE
         elif model_id.startswith("flux-2/"):
             provider_label = "kie_ai"
             cost_usd = KIE_FLUX_PRO_COST_PER_IMAGE

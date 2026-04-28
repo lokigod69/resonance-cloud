@@ -76,7 +76,7 @@ CANONICAL_MODES = (
 def resolve_frame_narrative(frame_narrative: str) -> str:
     """Resolve legacy mode names to new names. Pass-through for new names and 'auto'."""
     return MODE_ALIASES.get(frame_narrative, frame_narrative)
-IMAGE_MODELS = ("flux_pro", "zturbo", "wan_fast", "wan_pro")
+IMAGE_MODELS = ("flux_pro", "zturbo", "wan_fast", "wan_pro", "seedream_lite")
 ASPECT_RATIOS = ("16:9", "1:1", "9:16")
 VISUAL_REFERENCES = ("auto", "etymology", "mnemonic", "none")
 

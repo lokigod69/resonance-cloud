@@ -246,7 +246,8 @@ def _image_model_block(image_model: str) -> Optional[str]:
             "- Keep each field concise. The final compiled "
             "prompt is truncated at ~950 chars downstream."
         )
-    if image_model in ("wan_fast", "wan_pro"):
+    # Seedream intentionally shares the base/Wan storyboard shape.
+    if image_model in ("wan_fast", "wan_pro", "seedream_lite"):
         return None
     return None
 
