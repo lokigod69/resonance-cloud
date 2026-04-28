@@ -12,7 +12,7 @@ vercel inspect https://frontend-1psisrjbh-lokigod69s-projects.vercel.app
 vercel inspect https://frontend-1psisrjbh-lokigod69s-projects.vercel.app --logs
 ```
 
-Production deployment:
+Initial production deployment checked before the worker fix:
 
 - URL: `https://frontend-1psisrjbh-lokigod69s-projects.vercel.app`
 - Aliases:
@@ -28,6 +28,18 @@ Exact build-log line:
 
 ```text
 Cloning github.com/lokigod69/resonance-cloud (Branch: main, Commit: 5b18d11)
+```
+
+After the worker compatibility fix was committed and pushed, Vercel auto-deployed a newer production build:
+
+- URL: `https://frontend-mcg9a6b12-lokigod69s-projects.vercel.app`
+- Status: `Ready`
+- Build log commit: `256a17c`
+
+Exact build-log line:
+
+```text
+Cloning github.com/lokigod69/resonance-cloud (Branch: main, Commit: 256a17c)
 ```
 
 ## Frontend Source Verification
@@ -120,6 +132,6 @@ The repository contains Railway cloud-worker configuration:
 
 Conclusion:
 
-- Frontend production is deployed from `main` commit `5b18d11` and contains the Phase 1B RPC frontend code.
+- Frontend production is deployed from `main` commit `256a17c` and contains the Phase 1B RPC frontend code.
 - Worker source is now compatible after the narrow `pre_bootstrap` fix.
 - Production worker must be redeployed from the fixed main commit before generation smoke tests should be treated as valid.

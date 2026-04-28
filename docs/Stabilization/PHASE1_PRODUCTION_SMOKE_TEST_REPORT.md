@@ -10,7 +10,7 @@ Verified:
 
 - Production Supabase project link is correct.
 - Phase 1 migration history has been repaired.
-- Production Vercel frontend is deployed from `main` commit `5b18d11`.
+- Production Vercel frontend is deployed from `main` commit `256a17c`.
 - Production frontend bundle contains `submit_generation` and `request_word_retry`.
 - Frontend source no longer directly updates `profiles.credits` for generation or retry.
 - A concrete worker compatibility bug was found and fixed locally: `pre_bootstrap` was not accepted by bootstrap.
@@ -44,13 +44,13 @@ Not fully verified:
 ### Frontend production deployment
 
 ```powershell
-vercel inspect https://frontend-1psisrjbh-lokigod69s-projects.vercel.app --logs
+vercel inspect https://frontend-mcg9a6b12-lokigod69s-projects.vercel.app --logs
 ```
 
 Result:
 
 ```text
-Cloning github.com/lokigod69/resonance-cloud (Branch: main, Commit: 5b18d11)
+Cloning github.com/lokigod69/resonance-cloud (Branch: main, Commit: 256a17c)
 Deployment completed
 status Ready
 ```
@@ -131,4 +131,4 @@ After deploying the worker from the fixed main commit:
 
 ## Conclusion
 
-Phase 1 is not ready to move to the next stabilization phase until the worker fix is committed, pushed, deployed, and the authenticated generation/retry smoke tests pass.
+Phase 1 is not ready to move to the next stabilization phase until the worker is deployed from commit `256a17c` or later and the authenticated generation/retry smoke tests pass.
