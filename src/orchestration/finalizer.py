@@ -3,7 +3,8 @@
 Design ref: §6.5
 
 Polls every 30s. For each generation_job in processing, counts word states
-for its deck. If all words are terminal:
+for that job. Legacy NULL generation_job_id rows fall back to deck scope. If
+all job words are terminal:
   all complete -> job complete
   all failed/cancelled -> job failed
   mixed -> job partial
@@ -80,34 +81,36 @@ class Finalizer:
         if not deck_id:
             return
 
-        def _read_words():
+        def _read_owned_words():
+            return (
+                self.sb.table("words")
+                  .select("current_stage, status")
+                  .eq("generation_job_id", job_id)
+                  .execute()
+            )
+
+        def _read_legacy_words():
             return (
                 self.sb.table("words")
                   .select("current_stage, status")
                   .eq("deck_id", deck_id)
+                  .is_("generation_job_id", "null")
                   .execute()
             )
         try:
-            resp = await asyncio.to_thread(_read_words)
+            resp = await asyncio.to_thread(_read_owned_words)
+            words = list(getattr(resp, "data", None) or [])
+            if not words:
+                resp = await asyncio.to_thread(_read_legacy_words)
+                words = list(getattr(resp, "data", None) or [])
         except Exception as e:
             log.warning("finalizer: words read failed deck=%s: %s", deck_id, e)
             return
 
-        words = list(getattr(resp, "data", None) or [])
         if not words:
             return
 
-        stages = [w.get("current_stage") for w in words]
-        statuses = [w.get("status") for w in words]
-
-        # If some rows have NULL current_stage (legacy / not yet backfilled),
-        # fall back to status for those.
-        effective = []
-        for stage, status in zip(stages, statuses):
-            if stage is None:
-                effective.append(status or "pending")
-            else:
-                effective.append(stage)
+        effective = _effective_word_stages(words)
 
         if not all(s in _TERMINAL_WORD_STAGES for s in effective):
             return  # still work in flight
@@ -154,13 +157,9 @@ class Finalizer:
             job_id, deck_id, final_status, completed, failed_or_cancelled, total,
         )
 
-        # Update deck status based on ALL deck words
-        if all(s == "complete" for s in effective):
-            deck_status = "complete"
-        elif any(s == "complete" for s in effective):
-            deck_status = "partial"
-        else:
-            deck_status = "failed"
+        deck_status = await self._compute_deck_status(deck_id)
+        if deck_status is None:
+            return
 
         def _do_deck():
             return (
@@ -173,3 +172,40 @@ class Finalizer:
             await asyncio.to_thread(_do_deck)
         except Exception as e:
             log.warning("finalizer: deck update failed %s: %s", deck_id, e)
+
+    async def _compute_deck_status(self, deck_id: str) -> str | None:
+        def _read_deck_words():
+            return (
+                self.sb.table("words")
+                  .select("current_stage, status")
+                  .eq("deck_id", deck_id)
+                  .execute()
+            )
+        try:
+            resp = await asyncio.to_thread(_read_deck_words)
+        except Exception as e:
+            log.warning("finalizer: deck words read failed deck=%s: %s", deck_id, e)
+            return None
+
+        words = list(getattr(resp, "data", None) or [])
+        if not words:
+            return None
+
+        effective = _effective_word_stages(words)
+        if any(s not in _TERMINAL_WORD_STAGES for s in effective):
+            return "generating"
+        if all(s == "complete" for s in effective):
+            return "complete"
+        if any(s == "complete" for s in effective):
+            return "partial"
+        return "failed"
+
+
+def _effective_word_stages(words: list[dict[str, Any]]) -> list[str]:
+    """Use current_stage when present; legacy rows fall back to status."""
+    effective: list[str] = []
+    for word in words:
+        stage = word.get("current_stage")
+        status = word.get("status")
+        effective.append(stage if stage is not None else (status or "pending"))
+    return effective

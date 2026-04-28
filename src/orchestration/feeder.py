@@ -347,6 +347,14 @@ class Feeder:
     async def _handle_retry_word(self, word: dict[str, Any]) -> None:
         word_id = word["id"]
         target_stage, queue_kind = _route_retry(word)
+        parent_job_id = word.get("generation_job_id")
+
+        if await self._deck_has_other_processing(word.get("deck_id"), parent_job_id or ""):
+            log.debug(
+                "feeder/source2: deck=%s already processing -- skipping retry word=%s (queued)",
+                word.get("deck_id"), word_id,
+            )
+            return
 
         # CRIT-4 + HIGH-4: claim via RPC. Guards retry_requested=true AND
         # current_stage IN terminal states. Atomically resets stage_attempts,
@@ -361,7 +369,7 @@ class Feeder:
             )
             return
 
-        await self._maybe_flip_parent_job(word.get("deck_id"))
+        await self._maybe_flip_parent_job(word)
 
         queue = {
             "upstream": self.upstream_queue,
@@ -383,7 +391,27 @@ class Feeder:
             word.get("failed_stage"), queue_kind,
         )
 
-    async def _maybe_flip_parent_job(self, deck_id: Optional[str]) -> None:
+    async def _maybe_flip_parent_job(self, word: dict[str, Any]) -> None:
+        generation_job_id = word.get("generation_job_id")
+        if generation_job_id:
+            def _flip_owned():
+                return (
+                    self.sb.table("generation_jobs")
+                      .update({"status": "processing"})
+                      .eq("id", generation_job_id)
+                      .in_("status", ["complete", "failed", "partial"])
+                      .execute()
+                )
+            try:
+                await asyncio.to_thread(_flip_owned)
+            except Exception as e:
+                log.warning(
+                    "feeder/source2: parent-job flip failed %s: %s",
+                    generation_job_id, e,
+                )
+            return
+
+        deck_id = word.get("deck_id")
         if not deck_id:
             return
 
@@ -494,18 +522,34 @@ async def bootstrap_job(
         settings_override=settings_override,
     )
 
-    # Load pending words
-    def _read_words():
+    # Load words for this job. New rows have generation_job_id; legacy rows
+    # remain NULL and fall back to the original deck-wide lookup.
+    def _read_owned_words():
         return (
             sb.table("words")
               .select("*")
-              .eq("deck_id", deck_id)
+              .eq("generation_job_id", job_id)
               .eq("status", "pending")
               .order("created_at")
               .execute()
         )
-    words_resp = await asyncio.to_thread(_read_words)
+
+    def _read_legacy_words():
+        return (
+            sb.table("words")
+              .select("*")
+              .eq("deck_id", deck_id)
+              .is_("generation_job_id", "null")
+              .eq("status", "pending")
+              .order("created_at")
+              .execute()
+        )
+
+    words_resp = await asyncio.to_thread(_read_owned_words)
     words = list(getattr(words_resp, "data", None) or [])
+    if not words:
+        words_resp = await asyncio.to_thread(_read_legacy_words)
+        words = list(getattr(words_resp, "data", None) or [])
     if not words:
         raise RuntimeError("no pending words found for deck")
 

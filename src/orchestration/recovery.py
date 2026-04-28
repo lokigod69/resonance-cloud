@@ -45,8 +45,9 @@ _RECOVERY_ACTIONS: dict[str, tuple[Optional[str], bool, Optional[str]]] = {
 
 async def _revert_enrichment_jobs(sb) -> None:
     """For any generation_job in processing whose words are in enrichment,
-    revert the words to pending and flip the job back to approved. Feeder
-    Source 1 will re-run bootstrap.
+    revert that job's words to pending and flip the job back to approved.
+    Legacy NULL generation_job_id rows fall back to deck scope. Feeder Source
+    1 will re-run bootstrap.
     """
     def _read_jobs():
         return (
@@ -62,16 +63,30 @@ async def _revert_enrichment_jobs(sb) -> None:
         job_id = job["id"]
         deck_id = job.get("deck_id")
 
-        def _read_words():
+        def _read_owned_words():
+            return (
+                sb.table("words")
+                  .select("id, current_stage")
+                  .eq("generation_job_id", job_id)
+                  .eq("current_stage", "enrichment")
+                  .execute()
+            )
+
+        def _read_legacy_words():
             return (
                 sb.table("words")
                   .select("id, current_stage")
                   .eq("deck_id", deck_id)
+                  .is_("generation_job_id", "null")
                   .eq("current_stage", "enrichment")
                   .execute()
             )
-        wresp = await asyncio.to_thread(_read_words)
+        wresp = await asyncio.to_thread(_read_owned_words)
         stuck = list(getattr(wresp, "data", None) or [])
+        owned_path = bool(stuck)
+        if not stuck:
+            wresp = await asyncio.to_thread(_read_legacy_words)
+            stuck = list(getattr(wresp, "data", None) or [])
         if not stuck:
             continue
 
@@ -81,17 +96,20 @@ async def _revert_enrichment_jobs(sb) -> None:
         )
 
         def _revert_words():
-            return (
+            query = (
                 sb.table("words")
                   .update({
                       "current_stage": "pending",
                       "status": "pending",
                       "stage_attempts": 0,
                   })
-                  .eq("deck_id", deck_id)
                   .eq("current_stage", "enrichment")
-                  .execute()
             )
+            if owned_path:
+                query = query.eq("generation_job_id", job_id)
+            else:
+                query = query.eq("deck_id", deck_id).is_("generation_job_id", "null")
+            return query.execute()
         try:
             await asyncio.to_thread(_revert_words)
         except Exception as e:

@@ -707,7 +707,7 @@ class DownstreamWorker:
         try:
             timer = state.timer_for(word_id)
             pipeline_duration = sum(timer.durations_ms().values()) / 1000.0
-            profile_used = await self._read_profile_used(fresh.get("deck_id"))
+            profile_used = await self._read_profile_used(fresh)
             word_metadata = collect_word_metadata(
                 word_dir, profile_used, pipeline_duration,
             )
@@ -757,7 +757,7 @@ class DownstreamWorker:
             )
             return False
 
-        await self._bump_job_words_completed(fresh.get("deck_id"))
+        await self._bump_job_words_completed(fresh)
         return True
 
     # -------------------------------------------------------------------
@@ -776,7 +776,29 @@ class DownstreamWorker:
         )
         return takes if takes else [current_song]
 
-    async def _read_profile_used(self, deck_id: Optional[str]) -> Optional[str]:
+    async def _read_profile_used(self, word: Optional[dict[str, Any]]) -> Optional[str]:
+        if not word:
+            return None
+
+        generation_job_id = word.get("generation_job_id")
+        if generation_job_id:
+            def _read_owned():
+                return (
+                    self.sb.table("generation_jobs")
+                      .select("profile_used")
+                      .eq("id", generation_job_id)
+                      .execute()
+                )
+            try:
+                resp = await asyncio.to_thread(_read_owned)
+            except Exception:
+                return None
+            rows = list(getattr(resp, "data", None) or [])
+            if not rows:
+                return None
+            return rows[0].get("profile_used")
+
+        deck_id = word.get("deck_id")
         if not deck_id:
             return None
 
@@ -799,11 +821,22 @@ class DownstreamWorker:
             return None
         return rows[0].get("profile_used")
 
-    async def _bump_job_words_completed(self, deck_id: Optional[str]) -> None:
-        if not deck_id:
+    async def _bump_job_words_completed(self, word: Optional[dict[str, Any]]) -> None:
+        if not word:
             return
 
-        def _read():
+        generation_job_id = word.get("generation_job_id")
+        deck_id = word.get("deck_id")
+
+        def _read_owned():
+            return (
+                self.sb.table("generation_jobs")
+                  .select("id, words_completed")
+                  .eq("id", generation_job_id)
+                  .execute()
+            )
+
+        def _read_legacy():
             return (
                 self.sb.table("generation_jobs")
                   .select("id, words_completed")
@@ -814,7 +847,12 @@ class DownstreamWorker:
                   .execute()
             )
         try:
-            resp = await asyncio.to_thread(_read)
+            if generation_job_id:
+                resp = await asyncio.to_thread(_read_owned)
+            elif deck_id:
+                resp = await asyncio.to_thread(_read_legacy)
+            else:
+                return
         except Exception:
             return
         rows = list(getattr(resp, "data", None) or [])

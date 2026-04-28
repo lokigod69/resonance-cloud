@@ -67,6 +67,35 @@ def test_enrichment_recovery_reverts_words_and_job():
     assert up.qsize() == 0
 
 
+def test_enrichment_recovery_reverts_only_words_owned_by_processing_job():
+    sb = FakeSupabase()
+    job = sb.add_job(id="job-1", deck_id="deck-1", status="processing")
+    other = sb.add_job(id="job-2", deck_id="deck-1", status="approved")
+    owned = sb.add_word(
+        id="owned",
+        deck_id="deck-1",
+        generation_job_id=job["id"],
+        current_stage="enrichment",
+    )
+    queued_other = sb.add_word(
+        id="other",
+        deck_id="deck-1",
+        generation_job_id=other["id"],
+        current_stage="enrichment",
+    )
+
+    up, v, pv = _fresh_queues()
+    _run(recovery.run_recovery_pass(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+    ))
+
+    rows = {row["id"]: row for row in sb._tables["words"]}
+    assert rows[owned["id"]]["current_stage"] == "pending"
+    assert rows[queued_other["id"]]["current_stage"] == "enrichment"
+    assert sb._tables["generation_jobs"][0]["status"] == "approved"
+    assert sb._tables["generation_jobs"][1]["status"] == "approved"
+
+
 def test_upstream_stage_recovery_reverts_to_pending_and_pushes():
     sb = FakeSupabase()
     sb.add_job(status="processing")

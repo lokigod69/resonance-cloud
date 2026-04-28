@@ -343,6 +343,51 @@ def test_transition_packs_music_state_in_same_update():
 
 
 # ---------------------------------------------------------------------------
+# fetch_words_by_stage -- per-job ownership with legacy fallback
+# ---------------------------------------------------------------------------
+
+def test_fetch_words_by_stage_uses_processing_job_ids_with_legacy_fallback():
+    sb = FakeSupabase()
+    processing = sb.add_job(id="job-processing", deck_id="deck-1", status="processing")
+    approved = sb.add_job(id="job-approved", deck_id="deck-1", status="approved")
+    other_processing = sb.add_job(id="job-other", deck_id="deck-2", status="processing")
+
+    owned_live = sb.add_word(
+        id="owned-live",
+        deck_id=processing["deck_id"],
+        generation_job_id=processing["id"],
+        current_stage="pending",
+    )
+    sb.add_word(
+        id="owned-approved",
+        deck_id=approved["deck_id"],
+        generation_job_id=approved["id"],
+        current_stage="pending",
+    )
+    legacy_live = sb.add_word(
+        id="legacy-live",
+        deck_id=processing["deck_id"],
+        generation_job_id=None,
+        current_stage="pending",
+    )
+    pre_bootstrap = sb.add_word(
+        id="pre-bootstrap",
+        deck_id=other_processing["deck_id"],
+        generation_job_id=other_processing["id"],
+        current_stage="pre_bootstrap",
+    )
+
+    rows = _run(state.fetch_words_by_stage(
+        sb, ("pending", "video_queued", "post_video_queued"),
+        processing_jobs_only=True,
+    ))
+
+    row_ids = {row["id"] for row in rows}
+    assert row_ids == {owned_live["id"], legacy_live["id"]}
+    assert pre_bootstrap["id"] not in row_ids
+
+
+# ---------------------------------------------------------------------------
 # Status mapping (§17.1)
 # ---------------------------------------------------------------------------
 

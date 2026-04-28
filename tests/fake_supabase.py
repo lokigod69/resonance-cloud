@@ -1,8 +1,8 @@
 """In-memory fake of the minimal supabase-py surface used by the orchestrator.
 
 Supports:
-  table(name).select(*).eq|neq|in_|lt|gt|order|limit|maybe_single|single.execute()
-  table(name).update(dict).eq|neq|in_.execute()
+  table(name).select(*).eq|neq|in_|is_|lt|gt|order|limit|maybe_single|single.execute()
+  table(name).update(dict).eq|neq|in_|is_.execute()
   table(name).insert(dict or list[dict]).execute()
   rpc(name, params).execute()  — dispatches to _RPC_HANDLERS for known names
   storage.from_(...).upload(...).get_public_url(...)  — stubs
@@ -68,6 +68,9 @@ class _Query:
     def in_(self, col, vals):
         self.filters.append(("in", col, list(vals))); return self
 
+    def is_(self, col, val):
+        self.filters.append(("is", col, val)); return self
+
     def lt(self, col, val):
         self.filters.append(("lt", col, val)); return self
 
@@ -106,6 +109,10 @@ class _Query:
                 return False
             if kind == "in" and rv not in val:
                 return False
+            if kind == "is":
+                normalized = None if val in (None, "null") else val
+                if rv is not normalized:
+                    return False
             if kind == "lt" and (rv is None or not rv < val):
                 return False
             if kind == "gt" and (rv is None or not rv > val):
@@ -297,6 +304,7 @@ class FakeSupabase:
             "id": str(uuid.uuid4()),
             "user_id": "u-1",
             "deck_id": "d-1",
+            "generation_job_id": None,
             "word": "hello",
             "word_slug": "hello",
             "status": "pending",

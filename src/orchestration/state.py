@@ -335,39 +335,72 @@ async def fetch_words_by_stage(
 ) -> list[dict[str, Any]]:
     """Return words whose current_stage is in `stages`.
 
-    With processing_jobs_only=True (the §6.1 Source 3 contract), filter to
-    words whose parent deck has at least one generation_job with
-    status='processing'.
+    With processing_jobs_only=True (the §6.1 Source 3 contract), prefer the
+    per-job ownership path: words whose generation_job_id belongs to a
+    processing job. Legacy NULL generation_job_id rows fall back to the
+    original deck-wide check.
     """
     stage_list = list(stages)
 
     def _do_jobs():
         return (
             sb.table("generation_jobs")
-              .select("deck_id")
+              .select("id, deck_id")
               .eq("status", "processing")
               .execute()
         )
 
-    def _do_words(deck_ids: list[str]):
-        q = sb.table("words").select("*").in_("current_stage", stage_list)
-        if processing_jobs_only:
-            if not deck_ids:
-                return None
-            q = q.in_("deck_id", deck_ids)
-        return q.execute()
+    def _do_all_words():
+        return (
+            sb.table("words")
+              .select("*")
+              .in_("current_stage", stage_list)
+              .execute()
+        )
+
+    def _do_owned_words(job_ids: list[str]):
+        if not job_ids:
+            return None
+        return (
+            sb.table("words")
+              .select("*")
+              .in_("current_stage", stage_list)
+              .in_("generation_job_id", job_ids)
+              .execute()
+        )
+
+    def _do_legacy_words(deck_ids: list[str]):
+        if not deck_ids:
+            return None
+        return (
+            sb.table("words")
+              .select("*")
+              .in_("current_stage", stage_list)
+              .in_("deck_id", deck_ids)
+              .is_("generation_job_id", "null")
+              .execute()
+        )
 
     if processing_jobs_only:
         jobs_resp = await _execute(_do_jobs)
+        job_ids = sorted({
+            row["id"] for row in (getattr(jobs_resp, "data", None) or [])
+            if row.get("id")
+        })
         deck_ids = sorted({
             row["deck_id"] for row in (getattr(jobs_resp, "data", None) or [])
             if row.get("deck_id")
         })
-        if not deck_ids:
+        if not job_ids and not deck_ids:
             return []
-        words_resp = await _execute(lambda: _do_words(deck_ids))
+        owned_resp = await _execute(lambda: _do_owned_words(job_ids))
+        legacy_resp = await _execute(lambda: _do_legacy_words(deck_ids))
+        words: list[dict[str, Any]] = []
+        if owned_resp is not None:
+            words.extend(list(getattr(owned_resp, "data", None) or []))
+        if legacy_resp is not None:
+            words.extend(list(getattr(legacy_resp, "data", None) or []))
+        return words
     else:
-        words_resp = await _execute(lambda: _do_words([]))
-    if words_resp is None:
-        return []
-    return list(getattr(words_resp, "data", None) or [])
+        words_resp = await _execute(_do_all_words)
+        return list(getattr(words_resp, "data", None) or [])

@@ -344,7 +344,22 @@ def test_bootstrap_writes_manifest_before_exposing_pending(monkeypatch, tmp_path
     }
 
     sb = FakeSupabase()
-    sb.add_word(id="w-1", deck_id="d-1", word="hola", status="pending", current_stage="pre_bootstrap")
+    sb.add_word(
+        id="w-1",
+        deck_id="d-1",
+        generation_job_id="job-1",
+        word="hola",
+        status="pending",
+        current_stage="pre_bootstrap",
+    )
+    sb.add_word(
+        id="w-2",
+        deck_id="d-1",
+        generation_job_id="job-2",
+        word="adios",
+        status="pending",
+        current_stage="pre_bootstrap",
+    )
     sb._tables["profiles"].append({"id": "u-1", "base_language": "English"})
 
     _install_module(
@@ -415,20 +430,139 @@ def test_bootstrap_writes_manifest_before_exposing_pending(monkeypatch, tmp_path
 
     monkeypatch.setattr(feeder.state, "transition_stage", _transition)
 
-    upstream_queue = asyncio.Queue(maxsize=1)
+    upstream_queue = asyncio.Queue(maxsize=2)
     _run(feeder.bootstrap_job(sb, job, upstream_queue=upstream_queue))
 
     row = sb._tables["words"][0]
+    other = sb._tables["words"][1]
     assert created["paths"] == [tmp_path / "hola" / "manifest.json"]
     assert pending_checks == [tmp_path / "hola" / "manifest.json"]
     assert row["current_stage"] == "pending"
     assert row["word_slug"] == "hola"
+    assert other["current_stage"] == "pre_bootstrap"
+    assert other["word_slug"] == "hello"
     assert upstream_queue.qsize() == 1
     enrichment_calls = [
         params for name, params in sb.rpc_calls
         if name == "transition_word_stage" and params["p_new_stage"] == "enrichment"
     ]
     assert enrichment_calls[0]["p_allowed_prior_stages"] == ["pre_bootstrap", "pending"]
+
+
+def test_retry_flips_generation_job_id_parent_not_deck_latest():
+    sb = FakeSupabase()
+    parent = sb.add_job(
+        id="job-parent",
+        deck_id="d-1",
+        status="complete",
+        created_at="2026-04-18T00:00:00+00:00",
+    )
+    newer_same_deck = sb.add_job(
+        id="job-newer",
+        deck_id="d-1",
+        status="failed",
+        created_at="2026-04-19T00:00:00+00:00",
+    )
+    word = sb.add_word(
+        id="w-retry",
+        deck_id="d-1",
+        generation_job_id=parent["id"],
+        current_stage="failed",
+        failed_stage="images",
+        retry_requested=True,
+        retry_requested_at="2026-04-20T00:00:00+00:00",
+    )
+
+    up, v, pv = _fresh_queues()
+    f = feeder.Feeder(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        bootstrap=lambda _: asyncio.sleep(0),
+    )
+
+    _run(f._handle_retry_word(dict(word)))
+
+    jobs = {row["id"]: row for row in sb._tables["generation_jobs"]}
+    assert jobs[parent["id"]]["status"] == "processing"
+    assert jobs[newer_same_deck["id"]]["status"] == "failed"
+    assert up.qsize() == 1
+
+
+def test_retry_waits_when_another_same_deck_job_is_processing():
+    sb = FakeSupabase()
+    parent = sb.add_job(
+        id="job-parent",
+        deck_id="d-1",
+        status="complete",
+        created_at="2026-04-18T00:00:00+00:00",
+    )
+    sb.add_job(
+        id="job-active",
+        deck_id="d-1",
+        status="processing",
+        created_at="2026-04-19T00:00:00+00:00",
+    )
+    word = sb.add_word(
+        id="w-retry-blocked",
+        deck_id="d-1",
+        generation_job_id=parent["id"],
+        current_stage="failed",
+        failed_stage="images",
+        retry_requested=True,
+        retry_requested_at="2026-04-20T00:00:00+00:00",
+    )
+
+    up, v, pv = _fresh_queues()
+    f = feeder.Feeder(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        bootstrap=lambda _: asyncio.sleep(0),
+    )
+
+    _run(f._handle_retry_word(dict(word)))
+
+    jobs = {row["id"]: row for row in sb._tables["generation_jobs"]}
+    row = next(row for row in sb._tables["words"] if row["id"] == word["id"])
+    assert jobs[parent["id"]]["status"] == "complete"
+    assert row["current_stage"] == "failed"
+    assert row["retry_requested"] is True
+    assert up.qsize() == 0
+
+
+def test_retry_legacy_null_generation_job_id_flips_deck_latest_terminal_job():
+    sb = FakeSupabase()
+    older = sb.add_job(
+        id="job-older",
+        deck_id="d-1",
+        status="complete",
+        created_at="2026-04-18T00:00:00+00:00",
+    )
+    latest = sb.add_job(
+        id="job-latest",
+        deck_id="d-1",
+        status="partial",
+        created_at="2026-04-19T00:00:00+00:00",
+    )
+    word = sb.add_word(
+        id="w-legacy-retry",
+        deck_id="d-1",
+        generation_job_id=None,
+        current_stage="failed",
+        failed_stage="images",
+        retry_requested=True,
+        retry_requested_at="2026-04-20T00:00:00+00:00",
+    )
+
+    up, v, pv = _fresh_queues()
+    f = feeder.Feeder(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        bootstrap=lambda _: asyncio.sleep(0),
+    )
+
+    _run(f._handle_retry_word(dict(word)))
+
+    jobs = {row["id"]: row for row in sb._tables["generation_jobs"]}
+    assert jobs[older["id"]]["status"] == "complete"
+    assert jobs[latest["id"]]["status"] == "processing"
+    assert up.qsize() == 1
 
 
 def test_bootstrap_rolls_back_words_when_enrichment_fails(monkeypatch, tmp_path):
