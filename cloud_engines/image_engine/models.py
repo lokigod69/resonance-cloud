@@ -329,6 +329,7 @@ CAMERA_MOTION_EXTENDED = (
 
 CAMERA_MOTION_TYPES = CAMERA_MOTION_BASIC + CAMERA_MOTION_EXTENDED
 CAMERA_SPEEDS = ("very_slow", "slow", "medium", "fast")
+SCENE_TIERS = ("calm", "standard", "tense")
 
 
 class CameraMotion(BaseModel):
@@ -368,6 +369,7 @@ class Scene(BaseModel):
     camera_motion: CameraMotion
     video_prompt: str
     transition_prompt: Optional[str] = None
+    scene_tier: Literal["calm", "standard", "tense"] = "standard"
     suggested_duration: Optional[int] = Field(default=None, ge=3, le=10)
     duration_rationale: Optional[str] = None
     movie_reference: Optional[MovieReference] = None
@@ -428,6 +430,7 @@ class SceneTextToVideo(BaseModel):
     video_prompt: str
     text_to_video_prompt: Optional[str] = None
     transition_prompt: Optional[str] = None
+    scene_tier: Literal["calm", "standard", "tense"] = "standard"
     suggested_duration: Optional[int] = Field(default=None, ge=3, le=10)
     duration_rationale: Optional[str] = None
     movie_reference: Optional[MovieReference] = None
