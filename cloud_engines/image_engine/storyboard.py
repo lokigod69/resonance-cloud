@@ -346,6 +346,16 @@ def _sanitize_storyboard(
 
     scenes = data.get("scenes", [])
     for scene in scenes:
+        scene_tier = scene.get("scene_tier")
+        if not isinstance(scene_tier, str) or scene_tier.strip().lower() not in (
+            "calm",
+            "standard",
+            "tense",
+        ):
+            scene["scene_tier"] = "standard"
+        else:
+            scene["scene_tier"] = scene_tier.strip().lower()
+
         cm = scene.get("camera_motion", {})
         if cm:
             if cm.get("type") not in CAMERA_MOTION_TYPES:

@@ -1440,18 +1440,65 @@ def _transition_prompt_block() -> str:
     """Instruction block for video_prompt and transition_prompt per scene."""
     return (
         "=== VIDEO PROMPT WRITING — TWO MODES PER SCENE ===\n\n"
+        "For each scene, choose a `scene_tier` that sets motion intensity:\n"
+        "- calm — stillness IS the point: a sleeping figure, a single object on a desk, "
+        "sunlight on a wall, contemplative landscape, a steaming cup.\n"
+        "- standard — everyday scene with mild activity: a person walking, an object "
+        "being used, weather without drama.\n"
+        "- tense — storm, conflict, peril, action, dramatic shift, violence: a worker "
+        "bracing on a swaying bridge, a kitchen disaster, a chase, a sudden gust.\n\n"
+        "Pick `tense` when the scene depicts conflict, peril, dramatic weather, "
+        "action, or violence — when the scene is dynamic by nature. Pick `calm` "
+        "when stillness IS the point and the contemplation matters. Default to "
+        "`standard` otherwise. Frame_narrative ACTION and ENVIRONMENT modes with "
+        "dramatic content lean toward `tense`. Frame_narrative SCALE and CONTEXT "
+        "modes lean toward `calm` or `standard`.\n\n"
+        "TIER-CONDITIONAL MOTION BUDGET:\n"
+        "- calm: MOTION BUDGET: One subject motion plus one ambient field. Pick a "
+        "single ambient quality (wind OR rain OR shifting light) and do not "
+        "enumerate. Calm scenes may be loop-friendly — end state similar to start "
+        "state when that supports the scene.\n"
+        "- standard: MOTION BUDGET: One subject motion, one ambient field, and at "
+        "most one reactive secondary motion. Lead with one dominant ambient quality; "
+        "a supporting ambient is allowed if it serves the dominant one (e.g., rain "
+        "plus the puddles it lands in). Standard scenes do not need to loop and may "
+        "end on a directional motion beat.\n"
+        "- tense: MOTION BUDGET: Layered. Subject motion is reactive and may include "
+        "posture, expression, and bracing changes. Ambient is layered as a unified "
+        "atmospheric system, not as a list. A storm should feel like a storm — wind, "
+        "rain, and lightning together as one coherent field, described in a single "
+        "sentence rather than enumerated as four effects. Up to five total motion "
+        "events is appropriate when the scene supports them. Tense scenes do not "
+        "need to loop and may end on a directional motion beat.\n\n"
+        "MOTION VOCABULARY EXAMPLES (draw from these, not as a strict whitelist):\n"
+        "- calm tier verbs: drift, settle, shimmer, breathe, sway, ripple, whisper, "
+        "glow, fade, flicker, gather\n"
+        "- standard tier verbs: moves, turns, walks, leans, glances, gestures, pours, "
+        "flickers, drifts, billows, sways, ripples\n"
+        "- tense tier verbs: staggers, surges, whips, lurches, buckles, recoils, "
+        "braces against, buffeted by, slammed by, pivots, snaps, leans into, "
+        "charges, plunges, hurls, collapses, shudders\n"
+        "For non-`calm` tiers, avoid the words subtle, gentle, slight, imperceptible, "
+        "motionless — these tend to freeze the output.\n\n"
         "Each scene needs TWO distinct prompts for video animation:\n\n"
         '1. "video_prompt" — For STANDALONE animation (hard cut, no morphing).\n'
-        "   Write as a self-contained motion description. The scene should feel complete\n"
-        "   within its duration. Describe:\n"
-        "   - What the subject DOES (specific, constrained actions)\n"
-        "   - One ambient quality that fills the scene — pick ONE: wind animating everything uniformly, OR rain texturing the frame, OR shifting light. Do not enumerate multiple environmental elements.\n"
-        "   - Camera movement if specified in camera_motion\n"
-        "   - The scene should LOOP well — end state similar to start state\n"
+        "   Write as a self-contained, single flowing paragraph. The scene should feel complete\n"
+        "   within its duration. Prompt length targets: calm ~60-100 words, standard ~100-150 words,\n"
+        "   tense ~150-200 words. Do not treat these as hard counts; reject only clearly degenerate\n"
+        "   outputs under 20 words or over 400 words. Use the extra detail for concrete present-tense\n"
+        "   subject behavior, camera movement woven into prose, and atmospheric coherence as one unified field.\n"
+        "   Describe:\n"
+        "   - What the subject DOES using concrete motion verbs matched to scene_tier\n"
+        "   - The ambient field according to the tier-conditional motion budget\n"
+        "   - Camera movement if specified in camera_motion, woven naturally into prose\n"
         "   DO NOT describe transitions to other scenes.\n"
-        "   KEEP the subject anchored — it should not transform, change species,\n"
-        "   or dramatically change pose. Subtle, naturalistic motion.\n"
-        '   Include explicit constraints: "The [subject] remains [description] throughout."\n\n'
+        "   The subject must not transform or change species — they are the same person,\n"
+        "   animal, or object at the end of the shot as at the start. However, their pose,\n"
+        "   expression, and posture should respond naturally to the scene's action and ambience.\n"
+        "   A character in a storm should brace; a character at rest should breathe. Match motion\n"
+        "   intensity to the scene's `scene_tier`.\n"
+        "   End every video_prompt with an explicit appearance-anchor statement:\n"
+        "   \"[Subject's distinguishing visual features] remain consistent throughout the shot.\"\n\n"
         '2. "transition_prompt" — For MORPH animation (frame-to-frame to next scene).\n'
         "   Write as a cinematic transformation FROM this scene TO the next.\n"
         "   Describe the visual journey between the two images.\n"
@@ -1469,22 +1516,25 @@ def _transition_prompt_block() -> str:
         "     - CONTEXT: describe the scene dissolving or transforming between completely different settings\n"
         '   - Write in present tense, cinematically: "The camera orbits..." not "The camera will orbit..."\n\n'
         "CRITICAL DIFFERENCE:\n"
-        '- video_prompt: "Marmot sleeps curled in the nest, chest rising and falling gently.\n'
-        "  Soft snow drifts across the cliff face. The marmot remains curled in the nest throughout the shot.\"\n"
+        '- video_prompt (calm tier): "Marmot sleeps curled in the nest, chest rising and falling gently as soft snow drifts across the cliff face. The brown marmot with the red scarf remains consistent throughout the shot."\n'
+        '- video_prompt (tense tier): "The construction worker plants his feet wide on the rain-slick bridge deck, leaning hard against the wind as he hauls on the safety cable. Rain sheets across the steel and timber, wind whips his open jacket, and lightning strobes the storm clouds behind him as the camera pushes in slowly toward his strained expression. The man\'s yellow hard hat, gray beard, and high-vis vest remain consistent throughout the shot."\n'
         '- transition_prompt: "The nest dissolves into swirling snow, the sleeping\n'
         "  marmot uncurls and rises, the cliffside transforms into a woodland clearing\n"
         '  as warm lantern light replaces cold moonlight."\n\n'
         "The video_prompt must NEVER describe transition to the next scene.\n"
         "The transition_prompt must ALWAYS describe transformation to the next scene.\n\n"
         "ANTI-HALLUCINATION RULES FOR video_prompt:\n"
-        "- End every video_prompt with an explicit anchor statement:\n"
-        '  "The [subject] remains [key identifying features] throughout the shot."\n'
-        '  Example: "The brown marmot with red scarf remains sleeping in the nest throughout the shot."\n'
+        "- End every video_prompt with an explicit appearance-anchor statement:\n"
+        "  \"[Subject's distinguishing visual features] remain consistent throughout the shot.\"\n"
+        "- Identity locks appearance only — face, clothing, colors, distinctive features, species.\n"
+        "  Pose, expression, and posture should respond naturally to the scene's action and ambience.\n"
+        "  CORRECT: \"The man's yellow hard hat, gray beard, and high-vis vest remain consistent throughout the shot.\"\n"
+        "  WRONG: \"The man remains standing motionless on the bridge throughout the shot.\" (This locks pose, not identity.)\n"
+        "  WRONG: \"The marmot remains curled in the nest throughout the shot.\" (This locks behavior, not identity.)\n"
         "- Never mention elements from OTHER scenes in a video_prompt\n"
         "- Describe only motion that could realistically occur within a single static shot\n"
         "- Prefer ambient environmental motion over subject transformation\n"
-        "- MOTION BUDGET: Maximum two motion events per video_prompt — one primary subject motion plus one ambient field. Camera movement is separate and does not count. If you find yourself listing more than two competing motions, choose the strongest one and drop the others.\n"
-        '- If camera_motion is "static", emphasize subtle environmental animation only'
+        '- If camera_motion is "static", describe subject and environment motion matched to scene_tier without inventing camera movement'
     )
 
 
@@ -1593,6 +1643,7 @@ def _output_schema_text_to_video_block(aspect_ratio: str = "16:9", creative_dire
         '        "description": "deliberate push toward the character\'s face as emotion builds"\n'
         "      },\n"
         '      "transition_prompt": null,\n'
+        '      "scene_tier": "<calm | standard | tense>",\n'
         '      "suggested_duration": "<integer seconds 3-10>",\n'
         '      "duration_rationale": "<why this duration serves the scene>",\n'
         + movie_scene_fields +
@@ -1602,6 +1653,7 @@ def _output_schema_text_to_video_block(aspect_ratio: str = "16:9", creative_dire
         "IMPORTANT:\n"
         '- suggested_transition_mode MUST be "all_cut" for text-to-video\n'
         "- transition_prompt MUST be null for ALL scenes\n"
+        "- scene_tier must be one of calm, standard, tense using the same motion-intensity selection guidance as image-to-video\n"
         "- Do NOT include image_prompt or word_render fields\n"
         f'- All scenes target {aspect_ratio} aspect ratio\n'
         "- Return ONLY the JSON object, nothing else\n\n"
@@ -1657,6 +1709,11 @@ def _output_schema_block(aspect_ratio: str = "16:9", creative_direction: str = "
         movie_top_fields = (
             '  "movie_source_strategy": "<single_movie|multi_movie>",\n'
             '  "movies_referenced": ["<Movie Title 1>", "<Movie Title 2>"],\n'
+            '  "suggested_transition_mode": "<all_cut|morph_then_cut|cut_then_morph|all_morph>",\n'
+            '  "transition_rationale": "<why this transition approach serves these scenes>",\n'
+        )
+    else:
+        movie_top_fields = (
             '  "suggested_transition_mode": "<all_cut|morph_then_cut|cut_then_morph|all_morph>",\n'
             '  "transition_rationale": "<why this transition approach serves these scenes>",\n'
         )
@@ -1733,6 +1790,7 @@ def _output_schema_block(aspect_ratio: str = "16:9", creative_direction: str = "
         "      },\n"
         '      "video_prompt": "<natural language description of scene with motion for AI video generation>",\n'
         '      "transition_prompt": "<cinematic description of the visual transformation from this scene to the next scene, or null for the last scene and all collection mode scenes>",\n'
+        '      "scene_tier": "<calm | standard | tense>",\n'
         '      "suggested_duration": "<integer seconds 3-10, how long this scene should animate>",\n'
         '      "duration_rationale": "<why this duration serves the scene>",\n'
         + movie_scene_fields +
@@ -1746,6 +1804,8 @@ def _output_schema_block(aspect_ratio: str = "16:9", creative_direction: str = "
         '{"text": "<THE WORD IN TARGET LANGUAGE, UPPERCASE>", "rendering": "<how the text is physically rendered>", "placement": "<where in the scene the text appears>"}\n'
         "- word_render.enabled is false when WORD IN COMPOSITION is DISABLED; when ENABLED, follow the word_render structure above\n"
         "- subject_identity must be byte-for-byte IDENTICAL across all scenes within a generation\n"
+        "- scene_tier must be one of calm, standard, tense. Pick tense for conflict, peril, dramatic weather, action, or violence. Pick calm when stillness is the point. Default to standard otherwise.\n"
+        "- For non-movie storyboards, suggested_transition_mode should usually be all_cut. Use morph_then_cut only when frame_narrative is ACTION or NARRATIVE and the first boundary benefits from visual continuity. Use all_cut for COLLECTION, SCALE, CONTEXT, and most ENVIRONMENT scenes unless continuity is unusually strong.\n"
         f'- aspect_ratio must always be "{aspect_ratio}"\n'
         "- Return ONLY the JSON object, nothing else\n\n"
         "CAMERA MOTION (choose the motion that best serves the scene's emotion and energy):\n"

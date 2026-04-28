@@ -123,6 +123,7 @@ class LTXRunPodAdapter(VideoProviderAdapter):
                 "source_image_path": image_path,
                 "end_image_path": content.end_image_path,
                 "text_to_video": is_text_to_video,
+                "conditioning_strength": settings.conditioning_strength,
             },
         ) as ev:
             deadline = time.monotonic() + GPU_WORKER_TIMEOUT
@@ -160,6 +161,7 @@ class LTXRunPodAdapter(VideoProviderAdapter):
                     "seed": settings.seed,
                     "quality": self._quality,
                     "scene_number": content.scene_number,
+                    "conditioning_strength": settings.conditioning_strength,
                     "image_base64": image_base64,
                     "end_image_base64": end_image_base64,
                 }

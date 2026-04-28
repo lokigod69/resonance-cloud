@@ -16,7 +16,9 @@ from cloud_engines.video_engine.adapters import ltx as ltx_module  # noqa: E402
 from cloud_engines.video_engine.adapters.ltx_runpod import LTXRunPodAdapter  # noqa: E402
 from cloud_engines.video_engine.adapters.ltx_selfhosted import LTXSelfHostedAdapter  # noqa: E402
 from cloud_engines.video_engine.models import VideoSettings  # noqa: E402
+from types import SimpleNamespace
 from src.pipeline import _normalize_scene_durations  # noqa: E402
+from src.pipeline import build_video_payloads  # noqa: E402
 from src.settings import load_defaults, sanitize_duration_settings, save_defaults  # noqa: E402
 
 LEGACY_COMPACT_DURATION_KEY = "short" + "_mode"
@@ -102,6 +104,84 @@ def test_runpod_adapter_passes_duration_without_snapping(duration: int):
 def test_selfhosted_adapter_passes_duration_without_snapping(duration: int):
     settings = VideoSettings(duration=duration, resolution="1080p")
     assert LTXSelfHostedAdapter().validate_settings(settings).duration == duration
+
+
+def test_video_settings_accepts_conditioning_strength_backend_tunable():
+    settings = VideoSettings(conditioning_strength=0.85)
+    assert settings.conditioning_strength == 0.85
+
+
+@pytest.mark.parametrize("value", [0.49, 1.01])
+def test_video_settings_rejects_conditioning_strength_outside_worker_range(value: float):
+    with pytest.raises(ValueError):
+        VideoSettings(conditioning_strength=value)
+
+
+def test_video_payloads_preserve_conditioning_strength_gateway_field(tmp_path):
+    word_dir = tmp_path / "word"
+    images_dir = word_dir / "images" / "run-001"
+    output_dir = word_dir / "videos" / "run-001"
+    images_dir.mkdir(parents=True)
+    output_dir.mkdir(parents=True)
+    (images_dir / "001.png").write_bytes(b"png")
+    (images_dir / "002.png").write_bytes(b"png")
+    (images_dir / "storyboard.json").write_text(
+        """
+        {
+          "frame_narrative": "action",
+          "suggested_transition_mode": "morph_then_cut",
+          "scenes": [
+            {
+              "video_prompt": "standalone motion",
+              "transition_prompt": "morph to next",
+              "suggested_duration": 5,
+              "camera_motion": {"type": "push_in", "speed": "medium"}
+            },
+            {
+              "video_prompt": "second scene",
+              "transition_prompt": null,
+              "suggested_duration": 5,
+              "camera_motion": {"type": "static", "speed": "slow"}
+            }
+          ]
+        }
+        """,
+        encoding="utf-8",
+    )
+    manifest = SimpleNamespace(
+        word_original="Sturm",
+        translation="storm",
+        language="German",
+        language_code="de",
+        identity={},
+    )
+    settings = {
+        "video_mode": "ltx_fast",
+        "transition_mode": "auto",
+        "_target_duration": 10,
+        "conditioning_strength": 0.85,
+    }
+
+    payloads = build_video_payloads(
+        word_dir,
+        manifest,
+        settings,
+        output_dir,
+        "run-001",
+        creative_direction="cinematic",
+    )
+
+    assert payloads[0]["settings"]["conditioning_strength"] == 0.85
+    assert payloads[0]["content"]["end_image_path"].endswith("002.png")
+
+
+def test_ltx_adapters_send_conditioning_strength_to_worker_payloads():
+    adapters_dir = _ORCH_ROOT / "cloud_engines" / "video_engine" / "adapters"
+    selfhosted_source = (adapters_dir / "ltx_selfhosted.py").read_text(encoding="utf-8")
+    runpod_source = (adapters_dir / "ltx_runpod.py").read_text(encoding="utf-8")
+
+    assert '"conditioning_strength": str(settings.conditioning_strength)' in selfhosted_source
+    assert '"conditioning_strength": settings.conditioning_strength' in runpod_source
 
 
 def test_fal_adapter_keeps_private_snap_behavior():

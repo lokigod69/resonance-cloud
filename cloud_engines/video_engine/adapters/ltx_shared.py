@@ -11,9 +11,8 @@ from __future__ import annotations
 
 # Tier 1: Constraint prefix to prevent LTX hallucination / subject drift
 _CONSTRAINT_PREFIX = (
-    "Maintain the exact subject, species, and scene composition shown in the image "
+    "Maintain the exact subject, species, and clothing shown in the image "
     "throughout. Do not introduce new characters, objects, or transform the subject. "
-    "Subtle, naturalistic motion only. "
 )
 
 _TEXT_TO_VIDEO_PREFIX = (
