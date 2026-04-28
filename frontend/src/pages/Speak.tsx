@@ -10,11 +10,7 @@ import { GrokPicker, type GrokPickerStep } from '@/components/speak/GrokPicker'
 import type { GrokCategory } from '@/data/grokCategories'
 import type { GrokVoice } from '@/data/grokVoices'
 import type { GrokLevel } from '@/lib/grokPedagogy'
-import {
-  getGrokIOSAudioSessionSnapshot,
-  installGrokIOSAudioDiagnostics,
-  setIOSAudioSessionType,
-} from '@/lib/grokIOSAudioDiagnostics'
+import { installGrokIOSAudioDiagnostics } from '@/lib/grokIOSAudioDiagnostics'
 import {
   SCENARIO_CATEGORIES,
   drawScenes,
@@ -113,78 +109,6 @@ function readGrokAudioDebugFlag(): boolean {
   }
 }
 
-function readLocalStorageValue(key: string): string | null {
-  try {
-    return typeof window === 'undefined'
-      ? null
-      : window.localStorage.getItem(key)
-  } catch {
-    return null
-  }
-}
-
-function getGrokIOSRouteProbePanelSnapshot() {
-  return {
-    probeType: typeof window === 'undefined'
-      ? 'undefined'
-      : typeof (window as Window & { __grokRunIOSAudioRouteProbe?: unknown }).__grokRunIOSAudioRouteProbe,
-    audioSession: getGrokIOSAudioSessionSnapshot(),
-    playbackMode: readLocalStorageValue('grokPlaybackMode'),
-  }
-}
-
-function GrokIOSRouteProbePanel() {
-  const [visible] = useState(readGrokAudioDebugFlag)
-  const [snapshot, setSnapshot] = useState(getGrokIOSRouteProbePanelSnapshot)
-
-  useEffect(() => {
-    if (!visible) return
-    const refresh = () => {
-      setSnapshot(getGrokIOSRouteProbePanelSnapshot())
-    }
-    refresh()
-    const intervalId = window.setInterval(refresh, 1000)
-    return () => window.clearInterval(intervalId)
-  }, [visible])
-
-  if (!visible) return null
-
-  return (
-    <div className="grokIOSRouteProbePanel mb-4 rounded-xl border border-sky-400/30 bg-sky-950/30 px-4 py-3 text-xs text-sky-100">
-      <div className="mb-2 font-semibold">grokIOSRouteProbePanel</div>
-      <div className="mb-3 grid gap-1 text-sky-100/80">
-        <div>typeof window.__grokRunIOSAudioRouteProbe: {snapshot.probeType}</div>
-        <div>navigator.audioSession?.type: {snapshot.audioSession.type ?? 'null'}</div>
-        <div>navigator.audioSession?.state: {snapshot.audioSession.state ?? 'null'}</div>
-        <div>localStorage.grokPlaybackMode: {snapshot.playbackMode ?? 'null'}</div>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        <button
-          type="button"
-          onClick={() => { void (window as Window & { __grokRunIOSAudioRouteProbe?: () => Promise<void> }).__grokRunIOSAudioRouteProbe?.() }}
-          className="rounded-lg border border-sky-300/30 px-3 py-1 text-sky-50 hover:bg-sky-400/10"
-        >
-          Run iOS audio route probe
-        </button>
-        <button
-          type="button"
-          onClick={() => setIOSAudioSessionType('playback', 'grokIOSRouteProbePanel')}
-          className="rounded-lg border border-sky-300/30 px-3 py-1 text-sky-50 hover:bg-sky-400/10"
-        >
-          Set playback route
-        </button>
-        <button
-          type="button"
-          onClick={() => setIOSAudioSessionType('play-and-record', 'grokIOSRouteProbePanel')}
-          className="rounded-lg border border-sky-300/30 px-3 py-1 text-sky-50 hover:bg-sky-400/10"
-        >
-          Set play-and-record route
-        </button>
-      </div>
-    </div>
-  )
-}
-
 const defaultProviderFor = (lang: string | null | undefined): SpeakProvider => {
   return lang === 'fil' ? 'voxtral' : 'grok'
 }
@@ -203,9 +127,10 @@ export default function Speak() {
   useEffect(() => { endGrokSessionRef.current = endGrokSession }, [endGrokSession])
   useEffect(() => { stopAllAudioRef.current = stopAllAudio }, [stopAllAudio])
   useEffect(() => {
-    if (!readGrokAudioDebugFlag()) return
     installGrokIOSAudioDiagnostics({
-      log: (...args: unknown[]) => console.info('[grok-audio-debug]', ...args),
+      log: readGrokAudioDebugFlag()
+        ? (...args: unknown[]) => console.info('[grok-audio-debug]', ...args)
+        : undefined,
     })
   }, [])
   const studyWords = useStudyWords(tutor.language)
@@ -674,8 +599,6 @@ export default function Speak() {
 
         <div className="flex-1 flex items-start justify-center">
           <div className="w-full">
-            <GrokIOSRouteProbePanel />
-
             {isStarting && (
               <div className="flex items-center gap-2 mb-4 theme-muted-text text-sm">
                 <Loader2 className="h-4 w-4 animate-spin" />

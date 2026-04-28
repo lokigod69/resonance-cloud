@@ -9,13 +9,26 @@ const assetsDir = resolve('dist/assets')
 assert(existsSync(assetsDir), 'dist/assets does not exist. Run npm run build first.')
 
 const requiredStrings = [
-  '__grokRunIOSAudioRouteProbe',
+  'navigator.audioSession',
+  'setIOSAudioSessionType',
+  'installGrokIOSAudioDiagnostics',
   'grokPlaybackMode',
   'html-buffered',
   'htmlBufferedPlayback:play',
-  'iosRouteProbe:done',
-  'grokIOSRouteProbePanel',
-  'navigator.audioSession',
+  'sendTurn:ios-playback-route-prepared',
+]
+
+const removedProbeStrings = [
+  '__grokRunIOSAudio' + 'RouteProbe',
+  '__grokIOSAudio' + 'Diagnostics',
+  'iosRouteProbe' + ':start',
+  'iosRouteProbe' + ':first-reference-played',
+  'iosRouteProbe' + ':mic-opened',
+  'iosRouteProbe' + ':mic-released',
+  'iosRouteProbe' + ':playback-restored',
+  'iosRouteProbe' + ':second-reference-played',
+  'iosRouteProbe' + ':done',
+  'grokIOSRoute' + 'ProbePanel',
 ]
 
 const jsFiles = readdirSync(assetsDir).filter((name) => name.endsWith('.js'))
@@ -25,6 +38,9 @@ for (const filename of jsFiles) {
   const source = readFileSync(resolve(assetsDir, filename), 'utf8')
   const hasAllRequiredStrings = requiredStrings.every((value) => source.includes(value))
   if (hasAllRequiredStrings) {
+    for (const value of removedProbeStrings) {
+      assert(!source.includes(value), `Built bundle still contains removed Grok iOS probe string ${value}: ${filename}`)
+    }
     console.log(`Grok iOS audio dist verification passed: ${filename}`)
     process.exit(0)
   }

@@ -25,13 +25,10 @@ const requiredStrings = [
   'navigator.audioSession',
   'setIOSAudioSessionType',
   'installGrokIOSAudioDiagnostics',
-  '__grokRunIOSAudioRouteProbe',
   'grokPlaybackMode',
   'html-buffered',
   'htmlBufferedPlayback:play',
-  'iosRouteProbe:done',
   'sendTurn:ios-playback-route-prepared',
-  'grokIOSRouteProbePanel',
 ]
 
 for (const value of requiredStrings) {
@@ -39,7 +36,22 @@ for (const value of requiredStrings) {
 }
 
 assert(diagnosticsSource.includes('export function installGrokIOSAudioDiagnostics'), 'Diagnostics installer must be exported')
-assert(diagnosticsSource.includes('export async function runGrokIOSAudioRouteProbe'), 'Route probe must be exported')
+const removedProbeStrings = [
+  '__grokRunIOSAudio' + 'RouteProbe',
+  '__grokIOSAudio' + 'Diagnostics',
+  'iosRouteProbe' + ':start',
+  'iosRouteProbe' + ':first-reference-played',
+  'iosRouteProbe' + ':mic-opened',
+  'iosRouteProbe' + ':mic-released',
+  'iosRouteProbe' + ':playback-restored',
+  'iosRouteProbe' + ':second-reference-played',
+  'iosRouteProbe' + ':done',
+  'grokIOSRoute' + 'ProbePanel',
+  'Run iOS audio route probe',
+]
+for (const value of removedProbeStrings) {
+  assert(!allSource.includes(value), `Removed Grok iOS probe string should not exist: ${value}`)
+}
 assert(hookSource.includes("setIOSAudioSessionType('playback', 'prime-before-greeting')"), 'Session start must set playback route before greeting')
 assert(hookSource.includes("setIOSAudioSessionType('play-and-record', 'before-getUserMedia')"), 'startListening must set play-and-record before getUserMedia')
 assert(hookSource.includes("prepareIOSPlaybackRouteAfterMic('before-response-create')"), 'sendTurn must prepare playback route before response.create')
