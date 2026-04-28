@@ -106,6 +106,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                 "source_image_path": image_path,
                 "end_image_path": content.end_image_path,
                 "text_to_video": is_text_to_video,
+                "conditioning_strength": settings.conditioning_strength,
             },
         ) as ev:
             worker_url = GPU_WORKER_URL
@@ -136,6 +137,7 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
                 "seed": str(settings.seed),
                 "quality": self._quality,
                 "scene_number": str(content.scene_number),
+                "conditioning_strength": str(settings.conditioning_strength),
             }
 
             files_to_close: list = []

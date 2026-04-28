@@ -70,6 +70,13 @@ class VideoSettings(BaseModel):
     cfg_scale: float = Field(
         default=0.5, ge=0.0, le=1.0, description="Guidance scale (Kling modes only)"
     )
+    # TODO(adversarial-review): Gateway field for LTX worker conditioning_strength; verify it is not dropped before worker submit.
+    conditioning_strength: float = Field(
+        default=0.85,
+        ge=0.5,
+        le=1.0,
+        description="Backend-only LTX image conditioning strength; not user-facing.",
+    )
     generate_audio: bool = Field(
         default=False, description="Always false — audio comes from Song Engine"
     )
