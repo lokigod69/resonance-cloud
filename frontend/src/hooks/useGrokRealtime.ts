@@ -44,11 +44,107 @@ const SERVER_VAD_SILENCE_MS = 500
 const USER_TRANSCRIPT_DRAIN_TIMEOUT_MS = 2000
 const PERSISTENCE_DRAIN_TIMEOUT_MS = 3000
 
+type IOSAudioSessionType =
+  | 'auto'
+  | 'playback'
+  | 'play-and-record'
+  | 'ambient'
+  | 'transient'
+  | 'transient-solo'
+
 type PendingInputCommit = {
   resolve: () => void
   reject: (error: Error) => void
   startedAt: number
   timeoutId: ReturnType<typeof window.setTimeout>
+}
+
+let iosAudioSessionUnsupportedLoggedForSession = false
+let iosAudioSessionStateChangeAttached = false
+
+function getNavigatorAudioSession():
+  | { type?: IOSAudioSessionType; state?: string; onstatechange?: ((event: Event) => void) | null }
+  | null {
+  if (typeof navigator === 'undefined') return null
+  const nav = navigator as Navigator & {
+    audioSession?: {
+      type?: IOSAudioSessionType
+      state?: string
+      onstatechange?: ((event: Event) => void) | null
+    }
+  }
+  return nav.audioSession ?? null
+}
+
+function getIOSAudioSessionType(): IOSAudioSessionType | null {
+  return getNavigatorAudioSession()?.type ?? null
+}
+
+function isIOSLikeSafariRuntime(): boolean {
+  if (typeof navigator === 'undefined') return false
+  const ua = navigator.userAgent
+  const platform = navigator.platform
+  const maxTouchPoints = navigator.maxTouchPoints ?? 0
+  const isiOSDevice = /iPad|iPhone|iPod/.test(ua) ||
+    (platform === 'MacIntel' && maxTouchPoints > 1)
+  const isWebKitRuntime = /WebKit/i.test(ua)
+  return isiOSDevice && isWebKitRuntime
+}
+
+function resetIOSAudioSessionUnsupportedLogForSession(): void {
+  iosAudioSessionUnsupportedLoggedForSession = false
+}
+
+function maybeAttachIOSAudioSessionDebugHandler(
+  audioSession: { type?: IOSAudioSessionType; state?: string; onstatechange?: ((event: Event) => void) | null },
+): void {
+  if (!GROK_AUDIO_DEBUG || iosAudioSessionStateChangeAttached) return
+  try {
+    audioSession.onstatechange = () => {
+      grokAudioDebug('iosAudioSession:statechange', {
+        type: audioSession.type ?? null,
+        state: audioSession.state ?? null,
+      })
+    }
+    iosAudioSessionStateChangeAttached = true
+  } catch {
+    // Some WebKit builds expose a read-only event handler.
+  }
+}
+
+function setIOSAudioSessionType(type: 'playback' | 'play-and-record', reason: string): boolean {
+  if (!isIOSLikeSafariRuntime()) return false
+
+  const audioSession = getNavigatorAudioSession()
+  if (!audioSession) {
+    if (!iosAudioSessionUnsupportedLoggedForSession) {
+      iosAudioSessionUnsupportedLoggedForSession = true
+      grokAudioDebug('iosAudioSession:unsupported', {
+        reason,
+        requestedType: type,
+        supported: false,
+      })
+    }
+    return false
+  }
+
+  maybeAttachIOSAudioSessionDebugHandler(audioSession)
+  const beforeType = audioSession.type ?? null
+  try {
+    audioSession.type = type
+  } catch {
+    // Feature detection is not enough on all iOS versions; setting may throw.
+  }
+  const afterType = audioSession.type ?? null
+  grokAudioDebug('iosAudioSession:set', {
+    reason,
+    beforeType,
+    afterType,
+    requestedType: type,
+    state: audioSession.state ?? null,
+    supported: true,
+  })
+  return afterType === type
 }
 
 function readGrokAudioDebugFlag(): boolean {
@@ -61,6 +157,39 @@ function readGrokAudioDebugFlag(): boolean {
 }
 
 const GROK_AUDIO_DEBUG = readGrokAudioDebugFlag()
+
+function readLocalStorageFlag(key: string, expectedValue: string): boolean {
+  try {
+    return typeof window !== 'undefined' &&
+      window.localStorage.getItem(key) === expectedValue
+  } catch {
+    return false
+  }
+}
+
+function getGrokPlaybackMode(): 'webaudio-streaming' | 'html-buffered' {
+  return readLocalStorageFlag('grokPlaybackMode', 'html-buffered')
+    ? 'html-buffered'
+    : 'webaudio-streaming'
+}
+
+function shouldRecreateIOSAudioContextAfterMic(): boolean {
+  return readLocalStorageFlag('grokIOSRecreateAudioContextAfterMic', '1')
+}
+
+function shouldDisableIOSMicProcessing(): boolean {
+  return readLocalStorageFlag('grokIOSMicProcessing', 'off')
+}
+
+function getGrokMicAudioConstraints(): MediaStreamConstraints['audio'] {
+  return isIOSLikeSafariRuntime() && shouldDisableIOSMicProcessing()
+    ? {
+        echoCancellation: false,
+        noiseSuppression: false,
+        autoGainControl: false,
+      }
+    : true
+}
 
 function readGrokVerifyL0Flag(): boolean {
   try {
@@ -187,6 +316,46 @@ function encodeZeroPcmBase64(sampleCount: number): string {
   return btoa('\0'.repeat(sampleCount * 2))
 }
 
+function combinePcmChunks(chunks: Int16Array[], sampleCount: number): Int16Array {
+  const combined = new Int16Array(sampleCount)
+  let offset = 0
+  for (const chunk of chunks) {
+    combined.set(chunk, offset)
+    offset += chunk.length
+  }
+  return combined
+}
+
+function encodePcm16MonoWav(pcm: Int16Array, sampleRate: number): Blob {
+  const dataBytes = pcm.length * 2
+  const buffer = new ArrayBuffer(44 + dataBytes)
+  const view = new DataView(buffer)
+  const writeAscii = (offset: number, value: string) => {
+    for (let i = 0; i < value.length; i++) {
+      view.setUint8(offset + i, value.charCodeAt(i))
+    }
+  }
+
+  writeAscii(0, 'RIFF')
+  view.setUint32(4, 36 + dataBytes, true)
+  writeAscii(8, 'WAVE')
+  writeAscii(12, 'fmt ')
+  view.setUint32(16, 16, true)
+  view.setUint16(20, 1, true)
+  view.setUint16(22, 1, true)
+  view.setUint32(24, sampleRate, true)
+  view.setUint32(28, sampleRate * 2, true)
+  view.setUint16(32, 2, true)
+  view.setUint16(34, 16, true)
+  writeAscii(36, 'data')
+  view.setUint32(40, dataBytes, true)
+  for (let i = 0; i < pcm.length; i++) {
+    view.setInt16(44 + i * 2, pcm[i], true)
+  }
+
+  return new Blob([buffer], { type: 'audio/wav' })
+}
+
 function sleepWithCancel(ms: number): { promise: Promise<void>; cancel: () => void } {
   let timer: ReturnType<typeof window.setTimeout> | null = null
   const promise = new Promise<void>((resolve) => {
@@ -240,6 +409,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const workletModuleLoadedRef = useRef(false)
   const pendingPcmChunksRef = useRef<Int16Array[]>([])
   const pendingPcmSampleCountRef = useRef(0)
+  const htmlBufferedPcmChunksRef = useRef<Int16Array[]>([])
+  const htmlBufferedPcmSampleCountRef = useRef(0)
+  const htmlBufferedAudioRef = useRef<HTMLAudioElement | null>(null)
   const conversationInsertedRef = useRef(false)
   const pendingConversationInsertRef = useRef<Promise<void> | null>(null)
   const pendingPersistencePromisesRef = useRef<Set<Promise<unknown>>>(new Set())
@@ -250,11 +422,15 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const currentUserIdRef = useRef<string | null>(null)
   const endingSessionRef = useRef(false)
   const responseInProgressRef = useRef(false)
+  const audioSessionTypeAtResponseCreateRef = useRef<IOSAudioSessionType | null>(null)
+  const audioSessionTypeAtFirstAudioDeltaRef = useRef<IOSAudioSessionType | null>(null)
+  const outputContextRecreatedAfterMicRef = useRef(false)
   const mountedRef = useRef(true)
   const isConnectedRef = useRef(false)
   const statusRef = useRef<GrokStatus>('idle')
 
   const primeAudioForIOS = useCallback(() => {
+    setIOSAudioSessionType('playback', 'prime-before-greeting')
     if (GROK_AUDIO_DEBUG) {
       grokAudioDebug('primeAudioForIOS:entry', {
         context: getAudioContextSnapshot(audioContextRef.current),
@@ -375,10 +551,17 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       try { source.stop() } catch { /* ignore */ }
       try { source.disconnect() } catch { /* ignore */ }
     }
+    if (htmlBufferedAudioRef.current) {
+      try { htmlBufferedAudioRef.current.pause() } catch { /* ignore */ }
+      try { URL.revokeObjectURL(htmlBufferedAudioRef.current.src) } catch { /* ignore */ }
+      htmlBufferedAudioRef.current = null
+    }
     audioQueueRef.current = []
     playheadRef.current = 0
     pendingPcmChunksRef.current = []
     pendingPcmSampleCountRef.current = 0
+    htmlBufferedPcmChunksRef.current = []
+    htmlBufferedPcmSampleCountRef.current = 0
   }, [])
 
   const updateEndedAt = useCallback(async (conversationId?: string | null) => {
@@ -486,17 +669,75 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
   const flushPendingAudio = useCallback(async () => {
     if (pendingPcmSampleCountRef.current === 0) return
 
-    const combined = new Int16Array(pendingPcmSampleCountRef.current)
-    let offset = 0
-    for (const chunk of pendingPcmChunksRef.current) {
-      combined.set(chunk, offset)
-      offset += chunk.length
-    }
+    const combined = combinePcmChunks(pendingPcmChunksRef.current, pendingPcmSampleCountRef.current)
 
     pendingPcmChunksRef.current = []
     pendingPcmSampleCountRef.current = 0
     await queueAudioBuffer(combined)
   }, [queueAudioBuffer])
+
+  const playHtmlBufferedAudio = useCallback(async (responseSequence: number): Promise<boolean> => {
+    if (htmlBufferedPcmSampleCountRef.current === 0) return true
+
+    const combined = combinePcmChunks(htmlBufferedPcmChunksRef.current, htmlBufferedPcmSampleCountRef.current)
+    htmlBufferedPcmChunksRef.current = []
+    htmlBufferedPcmSampleCountRef.current = 0
+
+    setIOSAudioSessionType('playback', 'html-buffered-play')
+    const wavBlob = encodePcm16MonoWav(combined, PCM_SAMPLE_RATE)
+    const url = URL.createObjectURL(wavBlob)
+    if (htmlBufferedAudioRef.current) {
+      try { htmlBufferedAudioRef.current.pause() } catch { /* ignore */ }
+      try { URL.revokeObjectURL(htmlBufferedAudioRef.current.src) } catch { /* ignore */ }
+    }
+
+    const audio = new Audio(url)
+    audio.setAttribute('playsinline', 'true')
+    audio.setAttribute('webkit-playsinline', 'true')
+    audio.preload = 'auto'
+    audio.volume = 1
+    htmlBufferedAudioRef.current = audio
+    audio.onended = () => {
+      if (htmlBufferedAudioRef.current === audio) {
+        htmlBufferedAudioRef.current = null
+      }
+      URL.revokeObjectURL(url)
+      if (mountedRef.current) setStatus('idle')
+    }
+    audio.onerror = () => {
+      if (htmlBufferedAudioRef.current === audio) {
+        htmlBufferedAudioRef.current = null
+      }
+      URL.revokeObjectURL(url)
+      if (mountedRef.current) {
+        setError('Failed to play Grok audio')
+        setStatus('error')
+      }
+    }
+
+    grokAudioDebug('htmlBufferedPlayback:play', {
+      responseSequence,
+      sampleCount: combined.length,
+      durationSeconds: combined.length / PCM_SAMPLE_RATE,
+      blobBytes: wavBlob.size,
+    })
+    if (mountedRef.current) setStatus('speaking')
+    try {
+      await audio.play()
+      return true
+    } catch (err) {
+      console.warn('[grok-realtime] HTML buffered playback failed:', err)
+      if (htmlBufferedAudioRef.current === audio) {
+        htmlBufferedAudioRef.current = null
+      }
+      URL.revokeObjectURL(url)
+      if (mountedRef.current) {
+        setError(err instanceof Error ? err.message : 'Failed to play Grok audio')
+        setStatus('error')
+      }
+      return false
+    }
+  }, [])
 
   const trackPersistencePromise = useCallback(<T,>(promise: Promise<T>) => {
     const tracked = promise as Promise<unknown>
@@ -620,6 +861,48 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }])
   }, [])
 
+  const prepareIOSPlaybackRouteAfterMic = useCallback(async (reason: string) => {
+    const beforeType = getIOSAudioSessionType()
+    setIOSAudioSessionType('playback', reason)
+    let recreatedOutputContext = false
+
+    if (
+      isIOSLikeSafariRuntime() &&
+      shouldRecreateIOSAudioContextAfterMic() &&
+      audioQueueRef.current.length === 0 &&
+      pendingPcmSampleCountRef.current === 0
+    ) {
+      if (audioContextRef.current) {
+        try { await audioContextRef.current.close() } catch { /* ignore */ }
+        audioContextRef.current = null
+      }
+      workletModuleLoadedRef.current = false
+      primeAudioForIOS()
+      recreatedOutputContext = true
+      outputContextRecreatedAfterMicRef.current = true
+      grokAudioDebug('iosAudioSession:recreated-output-context-after-mic', {
+        reason,
+      })
+    }
+
+    const ctx = await ensureAudioContext()
+    await new Promise<void>((resolve) => window.setTimeout(resolve, 0))
+    const afterType = getIOSAudioSessionType()
+    grokAudioDebug('sendTurn:ios-playback-route-prepared', {
+      reason,
+      beforeType,
+      afterType,
+      contextState: ctx.state,
+      recreatedOutputContext,
+    })
+    return {
+      beforeType,
+      afterType,
+      contextState: ctx.state,
+      recreatedOutputContext,
+    }
+  }, [ensureAudioContext, primeAudioForIOS])
+
   const rejectPendingInputCommit = useCallback((message: string) => {
     const pending = pendingInputCommitRef.current
     if (!pending) return
@@ -667,6 +950,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     switch (type) {
       case 'response.created': {
         responseInProgressRef.current = true
+        if (audioSessionTypeAtResponseCreateRef.current === null) {
+          audioSessionTypeAtResponseCreateRef.current = getIOSAudioSessionType()
+        }
         if (GROK_AUDIO_DEBUG) {
           grokAudioDebug('response.created', {
             responseId: getResponseId(payload),
@@ -714,12 +1000,14 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           currentResponseFirstFiveRmsRef.current = []
           currentResponsePeaksRef.current = []
           currentResponseRmsRef.current = []
+          audioSessionTypeAtFirstAudioDeltaRef.current = getIOSAudioSessionType()
           assistantResponseSeqRef.current += 1
           if (GROK_AUDIO_DEBUG) {
             grokAudioDebug('response.audio:first-delta', {
               responseSequence: assistantResponseSeqRef.current,
               responseId,
               audioChunkSeqAtStart: audioChunkSeqRef.current,
+              audioSessionType: audioSessionTypeAtFirstAudioDeltaRef.current,
             })
           }
         }
@@ -739,17 +1027,29 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           currentResponsePeaksRef.current.push(stats.peak)
           currentResponseRmsRef.current.push(stats.rms)
         }
-        pendingPcmChunksRef.current.push(pcm)
-        pendingPcmSampleCountRef.current += pcm.length
-        if (pendingPcmSampleCountRef.current >= PCM_FLUSH_SAMPLES) {
-          await flushPendingAudio()
+        if (getGrokPlaybackMode() === 'html-buffered') {
+          htmlBufferedPcmChunksRef.current.push(pcm)
+          htmlBufferedPcmSampleCountRef.current += pcm.length
+        } else {
+          pendingPcmChunksRef.current.push(pcm)
+          pendingPcmSampleCountRef.current += pcm.length
+          if (pendingPcmSampleCountRef.current >= PCM_FLUSH_SAMPLES) {
+            await flushPendingAudio()
+          }
         }
         break
       }
       case 'response.done': {
-        await flushPendingAudio()
+        const playbackMode = getGrokPlaybackMode()
+        let playbackStarted = true
+        if (playbackMode === 'html-buffered') {
+          playbackStarted = await playHtmlBufferedAudio(assistantResponseSeqRef.current)
+        } else {
+          await flushPendingAudio()
+        }
         responseInProgressRef.current = false
         const finalAssistantText = pendingAssistantContentRef.current
+        const audioSessionTypeAtResponseDone = getIOSAudioSessionType()
         if (GROK_AUDIO_DEBUG) {
           grokAudioDebug('response.done', {
             responseSequence: assistantResponseSeqRef.current,
@@ -761,6 +1061,11 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
             minPeak: getMin(currentResponsePeaksRef.current),
             maxPeak: getMax(currentResponsePeaksRef.current),
             averageRms: getAverage(currentResponseRmsRef.current),
+            audioSessionTypeAtResponseCreate: audioSessionTypeAtResponseCreateRef.current,
+            audioSessionTypeAtFirstAudioDelta: audioSessionTypeAtFirstAudioDeltaRef.current,
+            audioSessionTypeAtResponseDone,
+            outputContextRecreatedAfterMic: outputContextRecreatedAfterMicRef.current,
+            playbackMode,
           })
         }
         currentAudioResponseKeyRef.current = null
@@ -770,6 +1075,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         currentResponsePeaksRef.current = []
         currentResponseRmsRef.current = []
         currentResponseTextDeltaSeenRef.current = false
+        audioSessionTypeAtResponseCreateRef.current = null
+        audioSessionTypeAtFirstAudioDeltaRef.current = null
+        outputContextRecreatedAfterMicRef.current = false
         if (GROK_VERIFY_L0) {
           const responseSequence = grokVerifyResponseSequenceRef.current + 1
           grokVerifyResponseSequenceRef.current = responseSequence
@@ -787,13 +1095,27 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         if (finalAssistantText) {
           void trackPersistencePromise(persistSpeakMessage('assistant', finalAssistantText))
         }
-        if (mountedRef.current && audioQueueRef.current.length === 0) {
+        if (
+          mountedRef.current &&
+          audioQueueRef.current.length === 0 &&
+          htmlBufferedAudioRef.current === null &&
+          playbackStarted
+        ) {
           setStatus('idle')
         }
         break
       }
       case 'input_audio_buffer.committed': {
         const pending = pendingInputCommitRef.current
+        if (getGrokTurnProtocol() === 'server_vad') {
+          const route = await prepareIOSPlaybackRouteAfterMic('server-vad-input-committed')
+          grokAudioDebug('serverVad:ios-playback-route-prepared', {
+            event: 'input_audio_buffer.committed',
+            eventId: getEventId(payload),
+            itemId: getItemId(payload),
+            ...route,
+          })
+        }
         if (commitAckRecoveryPendingClearRef.current) {
           if (pending) {
             rejectPendingInputCommit('Audio turn did not commit. Please try again.')
@@ -848,6 +1170,15 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         break
       }
       case 'input_audio_buffer.speech_stopped': {
+        if (getGrokTurnProtocol() === 'server_vad') {
+          const route = await prepareIOSPlaybackRouteAfterMic('server-vad-speech-stopped')
+          grokAudioDebug('serverVad:ios-playback-route-prepared', {
+            event: 'input_audio_buffer.speech_stopped',
+            eventId: getEventId(payload),
+            itemId: getItemId(payload),
+            ...route,
+          })
+        }
         if (GROK_AUDIO_DEBUG) {
           grokAudioDebug('input_audio_buffer:speech_stopped', {
             eventId: getEventId(payload),
@@ -897,7 +1228,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       default:
         break
     }
-  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, rejectPendingInputCommit, resetAudioQueue, trackPersistencePromise])
+  }, [appendAssistantDelta, appendUserTranscript, decodeBase64ToBytes, flushPendingAudio, persistSpeakMessage, playHtmlBufferedAudio, prepareIOSPlaybackRouteAfterMic, rejectPendingInputCommit, resetAudioQueue, trackPersistencePromise])
 
   const fetchEphemeralToken = useCallback(async (): Promise<string> => {
     const { data, error: sessionError } = await supabase.auth.getSession()
@@ -994,6 +1325,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       }
       streamRef.current = null
     }
+    setIOSAudioSessionType('playback', 'after-mic-release')
   }, [])
 
   const stopListening = useCallback(() => {
@@ -1013,6 +1345,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       workletRef.current = null
     }
     pauseListeningCapture()
+    setIOSAudioSessionType('playback', 'after-mic-release')
     if (GROK_AUDIO_DEBUG) {
       grokAudioDebug('stopListening:complete', {
         micCycleId: micCycleSeqRef.current,
@@ -1056,6 +1389,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         inputAudioAppendedRef.current = false
         return
       }
+      const preparedRoute = await prepareIOSPlaybackRouteAfterMic('before-response-create')
+      audioSessionTypeAtResponseCreateRef.current = preparedRoute.afterType
       ws.send(JSON.stringify({ type: 'response.create' }))
       responseInProgressRef.current = true
       inputAudioAppendedRef.current = false
@@ -1075,7 +1410,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     } finally {
       pendingUserTranscriptResolveRef.current = null
     }
-  }, [appendServerVadSilence, flushPendingInputAudio, pauseListeningCapture, stopListening, waitForInputCommitAck])
+  }, [appendServerVadSilence, flushPendingInputAudio, pauseListeningCapture, prepareIOSPlaybackRouteAfterMic, stopListening, waitForInputCommitAck])
 
   const drainPendingPersistence = useCallback(async () => {
     const pending = Array.from(pendingPersistencePromisesRef.current)
@@ -1134,6 +1469,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         currentResponsePeaksRef.current = []
         currentResponseRmsRef.current = []
         currentResponseTextDeltaSeenRef.current = false
+        audioSessionTypeAtResponseCreateRef.current = null
+        audioSessionTypeAtFirstAudioDeltaRef.current = null
+        outputContextRecreatedAfterMicRef.current = false
         responseInProgressRef.current = false
         rejectPendingInputCommit('Grok realtime session ended')
         if (GROK_VERIFY_L0) {
@@ -1145,6 +1483,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         pendingUserTranscriptResolveRef.current = null
         commitAckRecoveryPendingClearRef.current = false
         inputAudioAppendedRef.current = false
+        htmlBufferedPcmChunksRef.current = []
+        htmlBufferedPcmSampleCountRef.current = 0
         if (mountedRef.current) {
           setIsConnected(false)
           setIsListening(false)
@@ -1192,6 +1532,9 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
             })
           }
           ws.send(JSON.stringify(sessionConfig))
+          setIOSAudioSessionType('playback', 'prime-before-greeting')
+          audioSessionTypeAtResponseCreateRef.current = getIOSAudioSessionType()
+          outputContextRecreatedAfterMicRef.current = false
           ws.send(JSON.stringify({ type: 'response.create' }))
           responseInProgressRef.current = true
           setIsConnected(true)
@@ -1271,7 +1614,15 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
           context: getAudioContextSnapshot(ctx),
         })
       }
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      setIOSAudioSessionType('play-and-record', 'before-getUserMedia')
+      const useIOSMicProcessingOff = isIOSLikeSafariRuntime() && shouldDisableIOSMicProcessing()
+      const audioConstraints = getGrokMicAudioConstraints()
+      if (useIOSMicProcessingOff) {
+        grokAudioDebug('startListening:ios-mic-processing-off', {
+          micCycleId,
+        })
+      }
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: audioConstraints })
       streamRef.current = stream
       if (GROK_AUDIO_DEBUG) {
         const audioTracks = stream.getAudioTracks()
@@ -1315,6 +1666,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       setStatus('recording')
     } catch (err) {
       console.error('[grok-realtime] Failed to start listening:', err)
+      setIOSAudioSessionType('playback', 'after-mic-release')
       setError(err instanceof Error ? err.message : 'Failed to start microphone')
       setStatus('error')
     }
@@ -1403,6 +1755,8 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
         return
       }
       if (endingSessionRef.current || wsRef.current !== ws || ws.readyState !== WebSocket.OPEN) return
+      const preparedRoute = await prepareIOSPlaybackRouteAfterMic('before-response-create')
+      audioSessionTypeAtResponseCreateRef.current = preparedRoute.afterType
       ws.send(JSON.stringify({ type: 'response.create' }))
       responseInProgressRef.current = true
       grokAudioDebug('sendTurn:response-create-after-commit', {
@@ -1423,7 +1777,73 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
       setError(err instanceof Error ? err.message : 'Failed to send audio turn')
       setStatus('error')
     }
-  }, [appendServerVadSilence, flushPendingInputAudio, pauseListeningCapture, stopListening, waitForInputCommitAck])
+  }, [appendServerVadSilence, flushPendingInputAudio, pauseListeningCapture, prepareIOSPlaybackRouteAfterMic, stopListening, waitForInputCommitAck])
+
+  const playIOSRouteProbeReferenceTone = useCallback(async () => {
+    const ctx = await ensureAudioContext()
+    const durationSeconds = 0.35
+    const frequency = 880
+    const frameCount = Math.floor(ctx.sampleRate * durationSeconds)
+    const buffer = ctx.createBuffer(1, frameCount, ctx.sampleRate)
+    const channel = buffer.getChannelData(0)
+    for (let i = 0; i < frameCount; i++) {
+      const envelope = Math.min(1, i / 240, (frameCount - i) / 240)
+      channel[i] = Math.sin((2 * Math.PI * frequency * i) / ctx.sampleRate) * 0.2 * envelope
+    }
+
+    await new Promise<void>((resolve) => {
+      const source = ctx.createBufferSource()
+      source.buffer = buffer
+      source.connect(ctx.destination)
+      source.onended = () => {
+        try { source.disconnect() } catch { /* ignore */ }
+        resolve()
+      }
+      source.start(ctx.currentTime)
+    })
+  }, [ensureAudioContext])
+
+  const runIOSAudioRouteProbe = useCallback(async () => {
+    grokAudioDebug('iosRouteProbe:start', {
+      initialAudioSessionType: getIOSAudioSessionType(),
+    })
+    setIOSAudioSessionType('playback', 'route-probe-first-reference')
+    await playIOSRouteProbeReferenceTone()
+    grokAudioDebug('iosRouteProbe:first-reference-played', {
+      audioSessionType: getIOSAudioSessionType(),
+    })
+
+    setIOSAudioSessionType('play-and-record', 'route-probe-before-getUserMedia')
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: getGrokMicAudioConstraints() })
+    grokAudioDebug('iosRouteProbe:mic-opened', {
+      tracks: stream.getAudioTracks().map((track) => ({
+        ...getTrackSnapshot(track),
+        settings: getTrackSettingsSnapshot(track),
+      })),
+      audioSessionType: getIOSAudioSessionType(),
+    })
+
+    stream.getTracks().forEach((track) => track.stop())
+    grokAudioDebug('iosRouteProbe:mic-released', {
+      audioSessionType: getIOSAudioSessionType(),
+    })
+
+    setIOSAudioSessionType('playback', 'route-probe-after-mic-release')
+    await ensureAudioContext()
+    await new Promise<void>((resolve) => window.setTimeout(resolve, 0))
+    grokAudioDebug('iosRouteProbe:playback-restored', {
+      audioSessionType: getIOSAudioSessionType(),
+      context: getAudioContextSnapshot(audioContextRef.current),
+    })
+
+    await playIOSRouteProbeReferenceTone()
+    grokAudioDebug('iosRouteProbe:second-reference-played', {
+      audioSessionType: getIOSAudioSessionType(),
+    })
+    grokAudioDebug('iosRouteProbe:done', {
+      finalAudioSessionType: getIOSAudioSessionType(),
+    })
+  }, [ensureAudioContext, playIOSRouteProbeReferenceTone])
 
   const endSession = useCallback(async () => {
     await teardownSession()
@@ -1431,6 +1851,7 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
   const startSession = useCallback(async (params: StartGrokSessionParams) => {
     // iOS audio unlock must run inside the user gesture before any await.
+    resetIOSAudioSessionUnsupportedLogForSession()
     primeAudioForIOS()
     await teardownSession()
 
@@ -1462,6 +1883,11 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
     }
     pendingPcmChunksRef.current = []
     pendingPcmSampleCountRef.current = 0
+    htmlBufferedPcmChunksRef.current = []
+    htmlBufferedPcmSampleCountRef.current = 0
+    audioSessionTypeAtResponseCreateRef.current = null
+    audioSessionTypeAtFirstAudioDeltaRef.current = null
+    outputContextRecreatedAfterMicRef.current = false
     playheadRef.current = 0
     setMessages([])
     setError(null)
@@ -1471,6 +1897,19 @@ export function useGrokRealtime(): UseGrokRealtimeReturn {
 
   useEffect(() => { isConnectedRef.current = isConnected }, [isConnected])
   useEffect(() => { statusRef.current = status }, [status])
+
+  useEffect(() => {
+    if (!GROK_AUDIO_DEBUG || typeof window === 'undefined') return
+    const debugWindow = window as Window & {
+      __grokRunIOSAudioRouteProbe?: () => Promise<void>
+    }
+    debugWindow.__grokRunIOSAudioRouteProbe = runIOSAudioRouteProbe
+    return () => {
+      if (debugWindow.__grokRunIOSAudioRouteProbe === runIOSAudioRouteProbe) {
+        delete debugWindow.__grokRunIOSAudioRouteProbe
+      }
+    }
+  }, [runIOSAudioRouteProbe])
 
   useEffect(() => {
     mountedRef.current = true
