@@ -1,0 +1,118 @@
+# SESSION HANDOFF 2026-04-24 — Frontend Cosmetics + Translation Integrity Sprint
+
+## Shipped
+
+### Commit `1ef1007` — Landing page hero redesign + EN/DE/FR copy fixes
+**Files:** `frontend/src/components/landing/HeroSection.tsx`, `frontend/src/lib/translations.ts`
+
+- Hero headline: only first word "Memories" capitalized; `by`, `melody`, `and`, `motion` stay lowercase via Tailwind `lowercase` class on the three large-word spans
+- Removed `lowercase` class from `headlineWord` span specifically
+- EN headline string changed `'memories'` → `'Memories'`; DE and FR equivalents confirmed correctly capitalized
+- Subheadline split into two sentences with punctuation across all three languages: main line ends with period, accent line starts with capital
+- Replaced single "Start Learning" CTA + secondary "Already have an account? Sign In" line with dual equal-weight buttons
+  - Left button: **Sign In** → `/login`
+  - Right button: **Sign Up** → `/login?mode=signup`
+- Added new translation key `landing.signUp` in EN/DE/FR
+- Removed now-obsolete `landing.signInPrompt` key; `landing.cta` retained because `CtaFooterSection.tsx` still uses it
+- Footer `CtaFooterSection.tsx` deliberately left untouched this pass
+
+**Verification:** `npm run build` passed; desktop preview screenshots taken for EN/DE/FR; visual render confirmed.
+
+### Commit `3c08882` — Deck view text overlap fix
+**Files:** `frontend/src/pages/DeckViewPG.tsx`, `frontend/src/pages/DeckView.tsx` (two-line change total)
+
+Root cause: `QueuePositionDisplay` and `VerbCycler` were both gated on `isGenerating` alone, so both rendered simultaneously during the queue-wait state — producing the jumbled text overlap observed on both skins (more severe on Glassy due to `space-y-2` tight spacing).
+
+Fix: made them mutually exclusive by tightening the `VerbCycler` render condition.
+
+```diff
+- <VerbCycler intervalMs={5000} />
++ {hasChecked && !shouldShowQueue && <VerbCycler intervalMs={5000} />}
+```
+
+State matrix verified:
+- Queue wait (pending/approved): QPD visible, VerbCycler hidden
+- Active processing: QPD hidden, VerbCycler + ParticleSpinner + progress bar visible
+- Not generating: neither visible
+- Before first poll (`!hasChecked`): QPD visible ("Checking…"), VerbCycler hidden
+
+Not touched: `QueuePositionDisplay.tsx`, `VerbCycler.tsx`, `spinnerVerbs.ts`, `useQueuePosition.ts`, `GeneratePG.tsx`, `GenerateGO.tsx`, translations. Post-submit "Forging Memories" orb on Generate pages confirmed unaffected.
+
+### Commit `eefa26e` — Enrichment article-strip + German noun capitalization
+**Files:** `orchestrator/src/services/enrichment.py`, `orchestrator/tests/test_enrichment.py` (+481 / −2)
+
+Two-layer fix for the `"der parrot"` translation corruption bug:
+
+**Layer A — prompt tightening:**
+- `translation` bullet now reads: `"the bare translated word or phrase in {base_language} only, with no leading articles, no part-of-speech markers, and no quotation marks"`
+- `word_target` bullet now pins target-language orthography: German nouns capitalized, Romance-language nouns lowercase unless proper nouns
+- Word `determiners` deliberately dropped after pass-1 review flagged it as over-broad (would cause LLM to strip meaningful demonstratives like `this`/`that`)
+
+**Layer B — post-processing helpers with base-language collision guard:**
+
+- `_TARGET_LANGUAGE_ARTICLES` constant covering `de/fr/it/es/pt/nl/en` — definite + indefinite + Romance contractions (`l'`, `un'`, `d'`)
+- `_BASE_LANGUAGE_PROTECTED_TOKENS` constant covering same set of ISO codes — protects base-language articles, pronouns, and common function words from being accidentally stripped when they collide with a target-language article
+- `_strip_target_article(translation, target_lang_code, base_lang_code)` — only strips when head token is in target article set AND NOT in base protected set
+- `_capitalize_german_noun(word_target, target_lang_code, pos)` — fires only when target is `de` and pos is `noun`
+- Both helpers wired into `run_enrichment` after JSON parse, before return
+- Defensive: None, non-string, empty, whitespace-only, apostrophe-contracted edge cases all guarded; never returns empty string for non-empty input
+
+**Critical homograph collisions that the base-protection set fixes** (each would have permanently corrupted translations in Supabase if shipped without the guard):
+- Target=it, base=en: `"I go"` stayed `"I go"` (Italian `i` article would have stripped English pronoun `I`)
+- Target=de, base=en: `"die alone"` stayed `"die alone"` (German `die` article would have stripped English verb `die`)
+- Target=pt, base=en: `"a house"` stayed `"a house"` (Portuguese `a` article would have stripped English `a`)
+- Target=pt, base=en: `"as if"` stayed `"as if"` (Portuguese `as` would have stripped English conjunction)
+
+**Testing:**
+- 64 unit + integration tests in `test_enrichment.py`: happy-path strips, homograph protection (11 BLOCK cases), base-language preservation, defensive edges, German noun capitalization, apostrophe non-empty invariant (parametrized over 12 tuples)
+- One end-to-end integration test stubs `httpx.AsyncClient`, calls `run_enrichment` with `German`/`English`, asserts both strip and capitalization apply, plus confirms `die alone` homograph survives the full pipeline
+- Adjacent suites `test_orchestration_feeder.py` (21) and `test_concept_lyric_levels.py` (33) — no regressions
+- Total: 118 passed in 0.95s
+
+**Review history:**
+- Pass-1 adversarial review flagged 4 BLOCK-severity homograph bugs plus test coverage gaps
+- Pass-2 narrow verification confirmed all BLOCK items closed in code (not just claimed)
+- Approved, committed, pushed
+
+**Scope discipline held throughout:** `src/services/events.py` and `tests/test_events_helper.py` remained unstaged and untouched across all three review rounds — unrelated in-flight telemetry work deliberately left out of this commit.
+
+---
+
+## Workflow notes from this session
+
+Three-agent pipeline (implementer → adversarial reviewer → narrow pass-2 verifier) worked exactly as intended on the enrichment fix. Pass-1 caught real production-corrupting bugs that the implementing agent's own 30-test suite didn't cover. Pass-2 was cheap — checklist scan against the spec, not a fresh review — and confirmed the fixes landed correctly in code.
+
+Two small implementation details worth remembering:
+- Adversarial reviewer caught one test that was vacuously green (`test_preserves_base_language_articles_english_base` used `target="es"` where `a` isn't in the Spanish article set, so the test passed for the wrong reason). Fixed to use `target="pt"` where the collision actually exists.
+- The implementer initially left the apostrophe branch's non-empty guard missing while the space branch had it — asymmetry would have allowed `"l' "` → `""`. Caught in pass-1, fixed in pass-2.
+
+---
+
+## On the horizon
+
+- **LLM pipeline audit** — investigation prompt drafted; to be dispatched separately. Goal: map every LLM call across orchestrator + engines, identify DEAD / STORED-ONLY / PARTIAL / LIVE output fields, flag dead-weight cost. Deliverable includes a visual infographic of the full pipeline with consumption status color-coded. Read-only investigation, no code changes.
+- Complete FP8 LTX-2.3 smoke test — still unblocked from prior sessions
+- Evaluate collapsing to single-stage 8-step inference without Stage 2 refinement pass
+- iOS app via Capacitor wrapper
+- Stripe payment integration (security review with Ethan planned before opening payments)
+- Footer `CtaFooterSection.tsx` — deliberately left untouched this pass; revisit if dual-button pattern should propagate there too
+- Geolocation-based landing copy (out of scope for this pass, noted as a later fix)
+
+---
+
+## Files changed this session
+
+| Commit | Files | Summary |
+|---|---|---|
+| `1ef1007` | `HeroSection.tsx`, `translations.ts` | Landing hero dual-button + EN/DE/FR copy |
+| `3c08882` | `DeckViewPG.tsx`, `DeckView.tsx` | Queue/spinner mutual exclusion |
+| `eefa26e` | `enrichment.py`, `test_enrichment.py` | Article-strip + German noun caps, +481/−2 |
+
+All on `main`, pushed to `lokigod69/resonance-cloud`.
+
+## Files deliberately untouched
+
+- `orchestrator/src/services/events.py` — in-flight telemetry work, unstaged
+- `orchestrator/tests/test_events_helper.py` — in-flight telemetry work, unstaged
+- `frontend/src/components/landing/CtaFooterSection.tsx` — deferred
+- `frontend/src/pages/Login.tsx` — auth-card internal toggle stays as-is
