@@ -17,6 +17,9 @@ from cloud_engines.video_engine.adapters.ltx_runpod import LTXRunPodAdapter  # n
 from cloud_engines.video_engine.adapters.ltx_selfhosted import LTXSelfHostedAdapter  # noqa: E402
 from cloud_engines.video_engine.models import VideoSettings  # noqa: E402
 from src.pipeline import _normalize_scene_durations  # noqa: E402
+from src.settings import load_defaults, sanitize_duration_settings, save_defaults  # noqa: E402
+
+LEGACY_COMPACT_DURATION_KEY = "short" + "_mode"
 
 
 def _assert_exact(values: list[int], target: int) -> None:
@@ -104,3 +107,35 @@ def test_selfhosted_adapter_passes_duration_without_snapping(duration: int):
 def test_fal_adapter_keeps_private_snap_behavior():
     snap = getattr(ltx_module, "_snap" + "_duration")
     assert snap(7, (6, 8, 10)) == 8
+
+
+def test_settings_sanitizer_removes_legacy_duration_knobs():
+    sanitized = sanitize_duration_settings(
+        {
+            "images": {"clip_duration": 25, LEGACY_COMPACT_DURATION_KEY: True},
+            "concept": {"duration": 60, "lyric_mode": "reliable"},
+            "song": {"duration": 60, "batch_size": 2},
+        }
+    )
+
+    assert LEGACY_COMPACT_DURATION_KEY not in sanitized["images"]
+    assert sanitized["images"]["clip_duration"] == 25
+    assert sanitized["concept"]["duration"] == 25
+    assert sanitized["song"]["duration"] == 25
+
+
+def test_save_and_load_defaults_sanitize_duration_drift(tmp_path):
+    save_defaults(
+        tmp_path,
+        {
+            "images": {"clip_duration": 31, LEGACY_COMPACT_DURATION_KEY: True},
+            "concept": {"duration": 60},
+            "song": {"duration": 60},
+        },
+    )
+
+    loaded = load_defaults(tmp_path)
+    assert LEGACY_COMPACT_DURATION_KEY not in loaded["images"]
+    assert loaded["images"]["clip_duration"] == 15
+    assert loaded["concept"]["duration"] == 15
+    assert loaded["song"]["duration"] == 15

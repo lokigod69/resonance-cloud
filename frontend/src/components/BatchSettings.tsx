@@ -4,6 +4,7 @@ import { getDefaults, updateDefaults, listPresets, loadPreset, savePreset, delet
 import type { PresetSummary } from '../api'
 import { STAGE_LABELS } from './settings/fieldConfigs'
 import { StageSettingsPanel } from './settings/SettingsControls'
+import { sanitizeDurationSettings } from './settings/durationSettings'
 import { useToast } from './Toast'
 
 const LS_LOCKED_KEY = 'batchSettingsLocked'
@@ -57,7 +58,7 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
       localStorage.removeItem(LS_LOCKED_KEY)
       localStorage.removeItem(LS_DATA_KEY)
       setLocked(false)
-      setSettings(preset.settings)
+      setSettings(sanitizeDurationSettings(preset.settings))
       setSelectedPresetSlug(slug)
       setSaved(false)
       toast(`Loaded preset "${preset.name}"`, 'success')
@@ -70,7 +71,8 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
     const name = presetNameInput.trim()
     if (!name) return
     try {
-      const result = await savePreset(name, settings)
+      const cleanSettings = sanitizeDurationSettings(settings)
+      const result = await savePreset(name, cleanSettings)
       setSelectedPresetSlug(result.slug)
       setShowSaveAsInput(false)
       setPresetNameInput('')
@@ -98,14 +100,14 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
       try {
         const stored = localStorage.getItem(LS_DATA_KEY)
         if (stored) {
-          setSettings(JSON.parse(stored))
+          setSettings(sanitizeDurationSettings(JSON.parse(stored)))
           setLoading(false)
           return
         }
       } catch {}
     }
     getDefaults().then(d => {
-      setSettings(d)
+      setSettings(sanitizeDurationSettings(d))
       setLoading(false)
     }).catch(err => {
       console.error('Failed to load batch settings:', err)
@@ -126,10 +128,12 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
     setSaving(true)
     setError(null)
     try {
-      await updateDefaults(settings)
+      const cleanSettings = sanitizeDurationSettings(settings)
+      await updateDefaults(cleanSettings)
       if (locked) {
-        localStorage.setItem(LS_DATA_KEY, JSON.stringify(settings))
+        localStorage.setItem(LS_DATA_KEY, JSON.stringify(cleanSettings))
       }
+      setSettings(cleanSettings)
       setSaved(true)
     } catch (err) {
       console.error('Failed to save batch settings:', err)
@@ -147,7 +151,7 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
       setLoading(true)
       setError(null)
       getDefaults().then(d => {
-        setSettings(d)
+        setSettings(sanitizeDurationSettings(d))
         setLoading(false)
       }).catch(err => {
         console.error('Failed to reload batch settings:', err)
@@ -157,7 +161,7 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
     } else {
       // Locking: persist current settings to localStorage
       localStorage.setItem(LS_LOCKED_KEY, 'true')
-      localStorage.setItem(LS_DATA_KEY, JSON.stringify(settings))
+      localStorage.setItem(LS_DATA_KEY, JSON.stringify(sanitizeDurationSettings(settings)))
       setLocked(true)
     }
   }

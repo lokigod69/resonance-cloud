@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import { StageSettingsPanel } from '@/components/settings/SettingsControls'
 import { STAGE_LABELS, STAGE_FIELDS } from '@/components/settings/fieldConfigs'
+import { sanitizeDurationSettings } from '@/components/settings/durationSettings'
 import { useToast } from '@/components/Toast'
 
 type LanguageProfile = {
@@ -65,7 +66,7 @@ export default function Profiles() {
 
   const selectProfile = (p: LanguageProfile) => {
     setSelected(p)
-    setEditSettings(structuredClone(p.settings))
+    setEditSettings(sanitizeDurationSettings(structuredClone(p.settings)))
     setEditName(p.name)
     setEditNotes(p.notes || '')
   }
@@ -73,15 +74,16 @@ export default function Profiles() {
   const saveProfile = async () => {
     if (!selected) return
     setSaving(true)
+    const cleanSettings = sanitizeDurationSettings(editSettings)
     await supabase.from('language_profiles').update({
       name: editName,
       notes: editNotes || null,
-      settings: editSettings,
+      settings: cleanSettings,
     }).eq('id', selected.id)
     await fetchProfiles()
     // Re-select to refresh
     const updated = profiles.find(p => p.id === selected.id)
-    if (updated) selectProfile({ ...updated, name: editName, notes: editNotes, settings: editSettings })
+    if (updated) selectProfile({ ...updated, name: editName, notes: editNotes, settings: cleanSettings })
     setSaving(false)
     toast('Profile saved', 'success')
   }
@@ -110,7 +112,7 @@ export default function Profiles() {
       language: profile.language,
       name: `${profile.name} (copy)`,
       is_active: false,
-      settings: profile.settings,
+      settings: sanitizeDurationSettings(profile.settings),
       notes: profile.notes,
     })
     await fetchProfiles()

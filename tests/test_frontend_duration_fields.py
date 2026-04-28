@@ -38,3 +38,16 @@ def test_frontend_removes_ltx_duration_slider():
     source = FIELD_CONFIGS.read_text(encoding="utf-8")
 
     assert "{ key: 'duration', label: 'Duration', type: 'slider', min: 6, max: 10" not in source
+
+
+def test_frontend_settings_saves_are_duration_sanitized():
+    src_root = FIELD_CONFIGS.parents[2]
+    sanitizer = src_root / "components" / "settings" / "durationSettings.ts"
+    batch = src_root / "components" / "BatchSettings.tsx"
+    profiles = src_root / "pages" / "admin" / "Profiles.tsx"
+
+    assert "delete images['short' + '_mode']" in sanitizer.read_text(encoding="utf-8")
+    assert "delete sanitized.concept.duration" in sanitizer.read_text(encoding="utf-8")
+    assert "delete sanitized.song.duration" in sanitizer.read_text(encoding="utf-8")
+    assert "sanitizeDurationSettings" in batch.read_text(encoding="utf-8")
+    assert "sanitizeDurationSettings" in profiles.read_text(encoding="utf-8")

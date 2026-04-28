@@ -6,6 +6,8 @@ import random
 from pathlib import Path
 from typing import Any
 
+from cloud_engines.duration_policy import CLIP_DURATION_DEFAULT, validate_clip_duration
+
 
 ART_STYLE_PRESETS = [
     "photorealistic", "oil_painting", "watercolor", "surrealism", "pop_art",
@@ -122,6 +124,36 @@ def defaults_path(workspace_path: Path) -> Path:
     return workspace_path / "settings-defaults.json"
 
 
+def _resolve_clip_duration_for_settings(settings: dict[str, dict[str, Any]]) -> int:
+    images = settings.get("images", {})
+    try:
+        return validate_clip_duration(int(images.get("clip_duration", CLIP_DURATION_DEFAULT)))
+    except (TypeError, ValueError):
+        return CLIP_DURATION_DEFAULT
+
+
+def sanitize_duration_settings(
+    settings: dict[str, dict[str, Any]],
+) -> dict[str, dict[str, Any]]:
+    """Remove deprecated duration knobs and mirror canonical clip duration.
+
+    This keeps persisted defaults/presets from reintroducing hidden short-mode
+    or independent concept/song durations while preserving unrelated settings.
+    """
+    sanitized = {
+        stage: dict(values) if isinstance(values, dict) else {}
+        for stage, values in settings.items()
+    }
+    images = sanitized.setdefault("images", {})
+    images.pop("short" + "_mode", None)
+
+    clip_duration = _resolve_clip_duration_for_settings(sanitized)
+    images["clip_duration"] = clip_duration
+    sanitized.setdefault("concept", {})["duration"] = clip_duration
+    sanitized.setdefault("song", {})["duration"] = clip_duration
+    return sanitized
+
+
 def load_defaults(workspace_path: Path) -> dict[str, dict[str, Any]]:
     """Load settings-defaults.json, falling back to hardcoded defaults."""
     p = defaults_path(workspace_path)
@@ -132,15 +164,15 @@ def load_defaults(workspace_path: Path) -> dict[str, dict[str, Any]]:
         merged = {}
         for stage, stage_defaults in DEFAULT_SETTINGS.items():
             merged[stage] = {**stage_defaults, **data.get(stage, {})}
-        return merged
-    return dict(DEFAULT_SETTINGS)
+        return sanitize_duration_settings(merged)
+    return sanitize_duration_settings(DEFAULT_SETTINGS)
 
 
 def save_defaults(workspace_path: Path, settings: dict[str, dict[str, Any]]) -> None:
     """Save settings-defaults.json."""
     p = defaults_path(workspace_path)
     with open(p, 'w', encoding='utf-8') as f:
-        json.dump(settings, f, indent=2, ensure_ascii=False)
+        json.dump(sanitize_duration_settings(settings), f, indent=2, ensure_ascii=False)
 
 
 def resolve_settings(

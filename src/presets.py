@@ -9,7 +9,7 @@ from typing import Any
 
 import re
 
-from .settings import DEFAULT_SETTINGS
+from .settings import DEFAULT_SETTINGS, sanitize_duration_settings
 from .slugify import slugify
 
 _SAFE_SLUG = re.compile(r'^[a-z0-9][a-z0-9_]*$')
@@ -62,6 +62,7 @@ def load_preset(workspace_root: Path, slug: str) -> dict[str, Any]:
     merged: dict[str, dict[str, Any]] = {}
     for stage, stage_defaults in DEFAULT_SETTINGS.items():
         merged[stage] = {**stage_defaults, **raw_settings.get(stage, {})}
+    merged = sanitize_duration_settings(merged)
     return {
         "slug": slug,
         "name": data.get("name", slug),
@@ -81,7 +82,7 @@ def save_preset(
     payload = {
         "name": name.strip(),
         "created_at": datetime.now(timezone.utc).isoformat(),
-        "settings": settings,
+        "settings": sanitize_duration_settings(settings),
     }
     with open(d / f"{slug}.json", "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
