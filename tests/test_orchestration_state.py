@@ -347,6 +347,7 @@ def test_transition_packs_music_state_in_same_update():
 # ---------------------------------------------------------------------------
 
 def test_status_mapping():
+    assert state.map_stage_to_status("pre_bootstrap") == "pending"
     assert state.map_stage_to_status("pending") == "pending"
     assert state.map_stage_to_status("enrichment") == "pending"
     assert state.map_stage_to_status("images") == "processing"

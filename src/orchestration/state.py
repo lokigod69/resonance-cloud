@@ -82,7 +82,7 @@ _PROCESSING_STAGES = {
     "cancelling",
 }
 
-_PENDING_STAGES = {"pending", "enrichment"}
+_PENDING_STAGES = {"pre_bootstrap", "pending", "enrichment"}
 
 
 def map_stage_to_status(stage: str) -> str:

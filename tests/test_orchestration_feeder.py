@@ -344,7 +344,7 @@ def test_bootstrap_writes_manifest_before_exposing_pending(monkeypatch, tmp_path
     }
 
     sb = FakeSupabase()
-    sb.add_word(id="w-1", deck_id="d-1", word="hola", status="pending", current_stage="pending")
+    sb.add_word(id="w-1", deck_id="d-1", word="hola", status="pending", current_stage="pre_bootstrap")
     sb._tables["profiles"].append({"id": "u-1", "base_language": "English"})
 
     _install_module(
@@ -424,6 +424,11 @@ def test_bootstrap_writes_manifest_before_exposing_pending(monkeypatch, tmp_path
     assert row["current_stage"] == "pending"
     assert row["word_slug"] == "hola"
     assert upstream_queue.qsize() == 1
+    enrichment_calls = [
+        params for name, params in sb.rpc_calls
+        if name == "transition_word_stage" and params["p_new_stage"] == "enrichment"
+    ]
+    assert enrichment_calls[0]["p_allowed_prior_stages"] == ["pre_bootstrap", "pending"]
 
 
 def test_bootstrap_rolls_back_words_when_enrichment_fails(monkeypatch, tmp_path):

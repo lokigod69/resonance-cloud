@@ -446,8 +446,9 @@ async def bootstrap_job(
     previous bootstrap attempt that failed before pushing), it is removed
     first so the fresh enrichment data lands on disk.
 
-    Enrichment transition (HIGH-3): the pending -> enrichment transition goes
-    through transition_stage, so a word in `cancelling` is left alone.
+    Enrichment transition (HIGH-3): the pre_bootstrap/pending -> enrichment
+    transition goes through transition_stage, so a word in `cancelling` is
+    left alone.
     """
     from src.settings import save_defaults
     from src.storage import create_job_workspace
@@ -508,16 +509,17 @@ async def bootstrap_job(
     if not words:
         raise RuntimeError("no pending words found for deck")
 
-    # HIGH-3: transition pending -> enrichment via transition_stage so a
-    # word in `cancelling` is left alone. Skip bootstrap for non-pending words
-    # (retry-flag contamination, concurrent admin edits, etc.).
+    # HIGH-3: transition pre_bootstrap/pending -> enrichment via
+    # transition_stage so a word in `cancelling` is left alone. Phase 1B's
+    # submit_generation RPC creates words in pre_bootstrap to keep Source 3
+    # from observing them before bootstrap prepares disk state.
     eligible_words: list[dict[str, Any]] = []
     enrichment_word_ids: list[str] = []
     for w in words:
         ok = await state.transition_stage(
             sb, w["id"],
             new_stage="enrichment",
-            allowed_prior=["pending"],
+            allowed_prior=["pre_bootstrap", "pending"],
             increment_attempts=False,
         )
         if ok:
