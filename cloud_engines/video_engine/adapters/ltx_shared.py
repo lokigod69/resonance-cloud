@@ -59,22 +59,6 @@ _SPEED_LANGUAGE: dict[str, str] = {
 
 # ─── Duration Constants (moved from ltx.py) ──────────────────────────
 
-# Valid duration enums accepted by fal.ai LTX 2.3 endpoints.
-# Pro text-to-video only supports up to 10s; all others support up to 20s.
-_I2V_DURATIONS = (6, 8, 10, 12, 14, 16, 18, 20)
-_T2V_PRO_DURATIONS = (6, 8, 10)
-_T2V_FAST_DURATIONS = (6, 8, 10, 12, 14, 16, 18, 20)
-
-
-def _snap_duration(requested: int, valid: tuple[int, ...]) -> int:
-    """Round a requested duration to the nearest valid fal.ai enum value.
-
-    On ties (equidistant from two values), rounds UP so users get at least
-    as much duration as they asked for.
-    """
-    return min(valid, key=lambda v: (abs(v - requested), -v))
-
-
 # ─── Prompt Helper Functions ─────────────────────────────────────────
 
 

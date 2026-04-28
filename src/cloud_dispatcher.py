@@ -124,7 +124,7 @@ def _create_song_placeholder(payload: dict) -> dict:
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    duration = payload.get("settings", {}).get("duration", 30)
+    duration = payload.get("settings", {}).get("duration", 15)
     placeholder_path = output_dir / "take_001.flac"
 
     try:

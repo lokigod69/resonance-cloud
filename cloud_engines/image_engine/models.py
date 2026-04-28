@@ -14,6 +14,13 @@ from typing import Any, Literal, Optional, Union
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+from cloud_engines.duration_policy import (
+    CLIP_DURATION_DEFAULT,
+    auto_scene_count,
+    is_scene_count_feasible,
+    validate_clip_duration,
+)
+
 
 # --- Engine Input Models (Section 2.1) ---
 
@@ -69,7 +76,6 @@ CANONICAL_MODES = (
 def resolve_frame_narrative(frame_narrative: str) -> str:
     """Resolve legacy mode names to new names. Pass-through for new names and 'auto'."""
     return MODE_ALIASES.get(frame_narrative, frame_narrative)
-CLIP_DURATIONS = (5, 10, 15, 20, 30)
 IMAGE_MODELS = ("flux_pro", "zturbo", "wan_fast", "wan_pro")
 ASPECT_RATIOS = ("16:9", "1:1", "9:16")
 VISUAL_REFERENCES = ("auto", "etymology", "mnemonic", "none")
@@ -105,15 +111,15 @@ class ImageSettings(BaseModel):
     """User-configurable settings per ENGINE_IMAGE.md Section 8.
 
     All fields have defaults. An empty settings object produces:
-    editorial direction, auto narrative (LLM picks), auto image count from 30s clip,
+    editorial direction, auto narrative (LLM picks), auto image count from clip duration,
     no art style constraint (LLM decides freely), word in image enabled,
     DeepSeek V3 LLM, fast image model.
     """
 
     creative_direction: str = Field(default="editorial")
     frame_narrative: str = Field(default="auto")
-    image_count: Union[str, int] = Field(default=1)
-    clip_duration: int = Field(default=30)
+    image_count: Union[str, int] = Field(default="auto")
+    clip_duration: int = Field(default=CLIP_DURATION_DEFAULT)
     aspect_ratio: str = Field(default="16:9")
     art_style: Optional[str] = Field(default="")
     word_in_image: bool = Field(default=True)
@@ -128,11 +134,6 @@ class ImageSettings(BaseModel):
         default=False,
         description="Skip image rendering (storyboard-only mode for text-to-video)",
     )
-    short_mode: bool = Field(
-        default=False,
-        description="Short mode: force 15s total across 2-3 scenes with per-scene durations in [3, 10]",
-    )
-
     @field_validator("creative_direction")
     @classmethod
     def validate_creative_direction(cls, v: str) -> str:
@@ -160,16 +161,24 @@ class ImageSettings(BaseModel):
             if v != "auto":
                 raise ValueError(f"image_count string must be 'auto', got '{v}'")
         elif isinstance(v, int):
-            if not (1 <= v <= 8):
-                raise ValueError(f"image_count must be 1-8, got {v}")
+            if not (1 <= v <= 3):
+                raise ValueError(f"image_count must be 1-3, got {v}")
         return v
-
     @field_validator("clip_duration")
     @classmethod
     def validate_clip_duration(cls, v: int) -> int:
-        if v not in CLIP_DURATIONS:
-            raise ValueError(f"clip_duration must be one of {CLIP_DURATIONS}, got {v}")
-        return v
+        return validate_clip_duration(v)
+
+    @model_validator(mode="after")
+    def validate_manual_image_count_feasible(self) -> "ImageSettings":
+        if isinstance(self.image_count, int) and not is_scene_count_feasible(
+            self.image_count, self.clip_duration
+        ):
+            raise ValueError(
+                f"image_count {self.image_count} is not feasible for "
+                f"clip_duration {self.clip_duration}"
+            )
+        return self
 
     @field_validator("image_model")
     @classmethod
@@ -393,7 +402,7 @@ class Storyboard(BaseModel):
     creative_direction: str
     frame_narrative: str
     art_style: str
-    scene_count: int = Field(ge=1, le=8)
+    scene_count: int = Field(ge=1, le=3)
     visual_concept: str
     shared_palette: list[str]
     shared_motif: str
@@ -440,7 +449,7 @@ class StoryboardTextToVideo(BaseModel):
     creative_direction: str
     frame_narrative: str
     art_style: str
-    scene_count: int = Field(ge=1, le=8)
+    scene_count: int = Field(ge=1, le=3)
     visual_concept: str
     shared_palette: list[str]
     shared_motif: str
@@ -578,15 +587,6 @@ class GenerationMeta(BaseModel):
 
 # --- Helper: Auto image count resolution (Section 7.1) ---
 
-AUTO_IMAGE_COUNT_MAP: dict[int, int] = {
-    5: 1,
-    10: 2,
-    15: 2,
-    20: 3,
-    30: 3,
-}
-
-
 def resolve_image_count(settings: ImageSettings) -> tuple[int, str]:
     """Resolve image_count from settings.
 
@@ -597,5 +597,6 @@ def resolve_image_count(settings: ImageSettings) -> tuple[int, str]:
         return settings.image_count, "manual_override"
 
     # "auto" — calculate from clip_duration
-    count = AUTO_IMAGE_COUNT_MAP.get(settings.clip_duration, 1)
+    policy_count = auto_scene_count(settings.clip_duration)
+    count = 3 if policy_count == "auto" else int(policy_count)
     return count, f"auto_from_clip_duration_{settings.clip_duration}"

@@ -47,15 +47,15 @@ class VideoSettings(BaseModel):
     """User-configurable settings for video generation.
 
     All fields have defaults per ENGINE_VIDEO_v1_1.md Section 8.
-    An empty settings object uses LTX mode at 5s, 720p.
+    An empty settings object uses LTX mode at 6s, 1080p.
     """
 
     video_mode: Literal["ken_burns", "ltx_fast", "ltx_pro", "ltx", "kling_standard", "kling_pro"] = Field(
         default="ltx_fast", description="Which generation backend to use"
     )
     duration: int = Field(
-        default=6, ge=3, le=20,
-        description="Target clip duration in seconds (adapter snaps to provider's valid enum)",
+        default=6, ge=3, le=10,
+        description="Per-scene clip duration in seconds",
     )
     resolution: Literal["1080p", "1440p", "2160p"] = Field(
         default="1080p", description="Output resolution (LTX mode only; Kling determines its own)"
@@ -75,10 +75,6 @@ class VideoSettings(BaseModel):
     )
     text_to_video: bool = Field(
         default=False, description="Use text-to-video endpoint (no source image needed)"
-    )
-    short_mode: bool = Field(
-        default=False,
-        description="Short-mode bypass: skip the legacy enum-snap in LTX adapters so arbitrary per-scene durations reach the worker",
     )
     seed: int = Field(
         default=-1, description="Generation seed: -1 for random, any positive int for reproducibility"

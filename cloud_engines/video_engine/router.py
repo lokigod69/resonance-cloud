@@ -29,17 +29,21 @@ def get_adapter(video_mode: str) -> VideoProviderAdapter:
         from .adapters.ken_burns import KenBurnsAdapter
         return KenBurnsAdapter()
 
-    elif VIDEO_BACKEND == "runpod" and video_mode in ("ltx_fast", "ltx_pro", "ltx"):
-        from .adapters.ltx_runpod import LTXRunPodAdapter
-        return LTXRunPodAdapter(tier=video_mode)
-
-    elif VIDEO_BACKEND == "self_hosted" and video_mode in ("ltx_fast", "ltx_pro", "ltx"):
-        from .adapters.ltx_selfhosted import LTXSelfHostedAdapter
-        return LTXSelfHostedAdapter(tier=video_mode)
-
     elif video_mode in ("ltx_fast", "ltx_pro", "ltx"):
-        from .adapters.ltx import LTXAdapter
-        return LTXAdapter(tier=video_mode)
+        if VIDEO_BACKEND == "runpod":
+            from .adapters.ltx_runpod import LTXRunPodAdapter
+            return LTXRunPodAdapter(tier=video_mode)
+        if VIDEO_BACKEND == "self_hosted":
+            from .adapters.ltx_selfhosted import LTXSelfHostedAdapter
+            return LTXSelfHostedAdapter(tier=video_mode)
+        if VIDEO_BACKEND == "fal":
+            from .adapters.ltx import LTXAdapter
+            return LTXAdapter(tier=video_mode)
+
+        raise ValueError(
+            f"Unsupported VIDEO_BACKEND={VIDEO_BACKEND!r} for LTX mode. "
+            "Expected 'self_hosted', 'runpod', or explicit legacy 'fal'."
+        )
 
     elif video_mode in ("kling_standard", "kling_pro"):
         from .adapters.kling import KlingAdapter

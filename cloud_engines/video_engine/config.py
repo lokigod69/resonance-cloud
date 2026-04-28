@@ -22,7 +22,7 @@ FAL_KEY: str = os.environ.get("FAL_KEY", "")
 
 # --- GPU Worker (self-hosted LTX backend) ---
 
-VIDEO_BACKEND: str = os.getenv("VIDEO_BACKEND", "fal")
+VIDEO_BACKEND: str = os.getenv("VIDEO_BACKEND", "self_hosted")
 GPU_WORKER_URL: str = os.getenv("GPU_WORKER_URL", "")
 GPU_WORKER_TOKEN: str = os.getenv("GPU_WORKER_TOKEN", "")
 GPU_WORKER_TIMEOUT: int = int(os.getenv("GPU_WORKER_TIMEOUT", "600"))

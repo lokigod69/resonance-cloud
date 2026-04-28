@@ -14,6 +14,8 @@ from __future__ import annotations
 
 import random
 
+from cloud_engines.duration_policy import CLIP_DURATION_DEFAULT, duration_band
+
 from .models import SyllableInfo
 
 
@@ -133,17 +135,18 @@ def _filler_prefix(pool: list[str], probability: float = 0.35) -> str:
 # Public API
 # ---------------------------------------------------------------------------
 
-def generate_minimal(word: str, syllable_info: SyllableInfo, duration: int = 30, article: str = "", caption_style: str = "vocal_forward") -> str:
+def generate_minimal(word: str, syllable_info: SyllableInfo, duration: int = CLIP_DURATION_DEFAULT, article: str = "", caption_style: str = "vocal_forward") -> str:
     """Generate minimal mode lyrics. Maximum phonological clarity, zero distractions.
 
-    Repetitions: 3-4 times for 30s, 2-3 for 15s.
+    Repetitions scale with the unified clip-duration band.
     """
     ap = f"{article} " if article else ""
     wlc = syllable_info.word_length_class
     production = caption_style == "production"
+    compact = duration_band(duration) in ("very_sparse", "sparse")
 
     if wlc == "short":
-        if duration == 15:
+        if compact:
             return (
                 f"[Verse]\n"
                 f"{ap}{word}...\n"
@@ -162,7 +165,7 @@ def generate_minimal(word: str, syllable_info: SyllableInfo, duration: int = 30,
         )
 
     elif wlc == "medium":
-        if duration == 15:
+        if compact:
             return (
                 f"[Verse]\n"
                 f"{ap}{word}...\n"
@@ -181,7 +184,7 @@ def generate_minimal(word: str, syllable_info: SyllableInfo, duration: int = 30,
 
     else:  # long
         if production:
-            if duration == 15:
+            if compact:
                 return (
                     f"[Verse]\n"
                     f"{ap}{word}...\n"
@@ -200,7 +203,7 @@ def generate_minimal(word: str, syllable_info: SyllableInfo, duration: int = 30,
                 f"{word}!"
             )
         # vocal_forward
-        if duration == 15:
+        if compact:
             return (
                 f"[Spoken Word]\n"
                 f"{ap}{word}...\n"
@@ -220,17 +223,18 @@ def generate_minimal(word: str, syllable_info: SyllableInfo, duration: int = 30,
         )
 
 
-def generate_standard(word: str, syllable_info: SyllableInfo, duration: int = 30, article: str = "", caption_style: str = "vocal_forward") -> str:
-    """Generate standard mode lyrics. Default 30-second format with delivery variation.
+def generate_standard(word: str, syllable_info: SyllableInfo, duration: int = CLIP_DURATION_DEFAULT, article: str = "", caption_style: str = "vocal_forward") -> str:
+    """Generate standard mode lyrics with delivery variation.
 
-    Repetitions: 4-6 for 30s, 3-4 for 15s.
+    Repetitions scale with the unified clip-duration band.
     """
     ap = f"{article} " if article else ""
     wlc = syllable_info.word_length_class
     production = caption_style == "production"
+    compact = duration_band(duration) in ("very_sparse", "sparse")
 
     if wlc == "short":
-        if duration == 15:
+        if compact:
             return (
                 f"[Verse - Steady]\n"
                 f"{ap}{word}...\n"
@@ -270,7 +274,7 @@ def generate_standard(word: str, syllable_info: SyllableInfo, duration: int = 30
         )
 
     elif wlc == "medium":
-        if duration == 15:
+        if compact:
             return (
                 f"[Verse - Steady]\n"
                 f"{ap}{word}...\n"
@@ -309,7 +313,7 @@ def generate_standard(word: str, syllable_info: SyllableInfo, duration: int = 30
         )
 
     else:  # long
-        if duration == 15:
+        if compact:
             if production:
                 return (
                     f"[Chorus - Building]\n"
@@ -352,7 +356,7 @@ def generate_standard(word: str, syllable_info: SyllableInfo, duration: int = 30
         )
 
 
-def generate_reliable(word: str, article: str, duration: int = 30,
+def generate_reliable(word: str, article: str, duration: int = CLIP_DURATION_DEFAULT,
                       caption_style: str = "vocal_forward",
                       is_phrase: bool = False,
                       language_code: str = "en") -> str:
@@ -363,6 +367,9 @@ def generate_reliable(word: str, article: str, duration: int = 30,
     """
     article_prefix = f"{article} " if article else ""
     production = caption_style == "production"
+    band = duration_band(duration)
+    compact = band in ("very_sparse", "sparse")
+    dense = band == "dense"
 
     # --- Phrase branch: fragment-based template for ACE-Step ---
     if is_phrase:
@@ -391,8 +398,8 @@ def generate_reliable(word: str, article: str, duration: int = 30,
             f"{word}..."
         )
 
-    # --- Existing word logic (unchanged) ---
-    if duration <= 15:
+    # --- Existing word logic ---
+    if compact:
         if production:
             return (
                 f"[Chorus - Building]\n"
@@ -411,7 +418,7 @@ def generate_reliable(word: str, article: str, duration: int = 30,
             f"{article_prefix}{word}..."
         )
 
-    if duration >= 60:
+    if dense:
         if production:
             return (
                 f"[Verse - Steady]\n"
@@ -444,7 +451,7 @@ def generate_reliable(word: str, article: str, duration: int = 30,
             f"{article_prefix}{word}..."
         )
 
-    # 30 seconds (default)
+    # Middle-density duration band.
     if production:
         return (
             f"[Verse - Steady]\n"

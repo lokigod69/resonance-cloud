@@ -73,7 +73,6 @@ def generate_storyboard(
 
     # Build prompts
     text_to_video = settings.skip_rendering
-    short_mode = settings.short_mode
     system_prompt = build_system_prompt(
         word=content.word,
         translation=content.translation,
@@ -84,7 +83,6 @@ def generate_storyboard(
         aspect_ratio=settings.aspect_ratio,
         image_count_raw=settings.image_count,
         text_to_video=text_to_video,
-        short_mode=short_mode,
         image_model=settings.image_model,
     )
     is_auto_count = settings.image_count == "auto"
@@ -123,7 +121,6 @@ def generate_storyboard(
             "frame_narrative": settings.frame_narrative,
             "art_style": settings.art_style,
             "skip_rendering": settings.skip_rendering,
-            "short_mode": settings.short_mode,
         },
     ) as ev:
         raw_response, usage, request_id = _call_openrouter(

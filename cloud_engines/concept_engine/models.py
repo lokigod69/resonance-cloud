@@ -10,6 +10,8 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
+from cloud_engines.duration_policy import CLIP_DURATION_DEFAULT, validate_clip_duration
+
 
 # ---------------------------------------------------------------------------
 # Input models
@@ -54,7 +56,7 @@ class ConceptSettings(BaseModel):
     use_art_style: bool = Field(default=False, description="Include art style in caption prompt for genre matching")
     art_style_hint: str = Field(default="", description="Art style value from orchestrator, used when use_art_style is True")
     syllable_chop: bool = Field(default=False, description="Experimental syllable chopping (dramatic mode only)")
-    duration: int = Field(default=30, description="Song duration in seconds")
+    duration: int = Field(default=CLIP_DURATION_DEFAULT, description="Song duration in seconds")
     visual_hint: bool = Field(default=False, description="Whether to generate a visual mood tag")
     llm_model: str = Field(default="deepseek/deepseek-v4-flash", description="OpenRouter model ID")
 
@@ -91,9 +93,7 @@ class ConceptSettings(BaseModel):
     @field_validator("duration")
     @classmethod
     def validate_duration(cls, v: int) -> int:
-        if v not in (15, 20, 30, 60):
-            raise ValueError(f"duration must be 15, 20, 30, or 60, got {v}")
-        return v
+        return validate_clip_duration(v)
 
 
 

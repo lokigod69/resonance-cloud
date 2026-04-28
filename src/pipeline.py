@@ -22,12 +22,20 @@ from .workspace import (
     get_word_dir, create_version_dir, make_version_label
 )
 from .dispatcher import call_engine, EngineUnreachableError, PayloadError
+from cloud_engines.duration_policy import (
+    CLIP_DURATION_DEFAULT,
+    SCENE_DURATION_MAX,
+    SCENE_DURATION_MIN,
+    validate_clip_duration,
+)
 
 
-def _short_mode_from_images(manifest_data: Any, defaults: dict) -> bool:
-    """Resolve images.short_mode from defaults + per-word overrides."""
+def _canonical_clip_duration(manifest_data: Any, defaults: dict) -> int:
+    """Resolve the single canonical clip duration from image settings."""
     images_settings = resolve_settings("images", manifest_data.settings, defaults)
-    return bool(images_settings.get("short_mode", False))
+    return validate_clip_duration(
+        int(images_settings.get("clip_duration", CLIP_DURATION_DEFAULT))
+    )
 
 
 STAGE_ORDER = ['images', 'concept', 'song', 'video', 'assembly', 'bookend']
@@ -510,23 +518,12 @@ def _resolve_scene_durations(
     num_images: int,
     settings: dict,
 ) -> list[int | None]:
-    """Extract per-scene durations from storyboard and snap to valid fal.ai enum values.
+    """Extract and normalize per-scene storyboard durations to the clip target."""
+    target = settings.get("_target_duration")
+    if target is None:
+        raise PipelineError("_target_duration is required for scene duration normalization")
+    target = validate_clip_duration(int(target))
 
-    For LTX modes, durations are snapped to valid enum values (6, 8, 10 for Pro;
-    6, 8, 10, 12, 14, 16, 18, 20 for Fast). Total never exceeds target duration.
-    For Ken Burns and Kling modes, arbitrary integer durations are kept as before.
-
-    Returns a list of durations (one per image). If the storyboard doesn't
-    include suggested_duration, returns [None, ...] and the global setting
-    is used.
-    """
-    video_mode = settings.get("video_mode", "ltx_fast")
-    target = settings.get("_target_duration", None)
-
-    # Determine valid duration enum set based on video mode
-    valid_durations = _get_valid_durations(video_mode)
-
-    # Extract raw durations from storyboard
     raw_durations: list[int | None] = []
     for i in range(num_images):
         scene = scenes[i] if i < len(scenes) else {}
@@ -539,147 +536,54 @@ def _resolve_scene_durations(
         else:
             raw_durations.append(None)
 
-    # Short-mode: normalize to exactly target seconds across 2+ scenes.
-    # Return before the legacy enum/clamp paths; the adapter bypass will
-    # accept arbitrary per-scene durations downstream.
-    if settings.get("short_mode", False) and num_images >= 2:
-        normalized = _normalize_short_mode_durations(
-            raw_durations,
-            target=(target or 15),
-        )
-        logger.info(
-            "Short-mode scene durations normalized to %s (sum=%ds)",
-            normalized,
-            sum(normalized),
-        )
-        return normalized
-
-    # If no valid duration set (ken_burns, kling, etc.), use legacy clamping
-    if valid_durations is None:
-        durations = [max(3, min(10, d)) if d is not None else None for d in raw_durations]
-        if all(d is not None for d in durations) and len(durations) > 1 and target:
-            if abs(sum(durations) - target) > 2:
-                scale = target / sum(durations)
-                durations = [max(3, min(10, round(d * scale))) for d in durations]
-                drift = sum(durations) - target
-                if drift != 0:
-                    if drift > 0:
-                        idx = max(range(len(durations)), key=lambda j: durations[j])
-                        durations[idx] = max(3, durations[idx] - drift)
-                    else:
-                        idx = min(range(len(durations)), key=lambda j: durations[j])
-                        durations[idx] = min(10, durations[idx] - drift)
-                logger.info("Rebalanced scene durations to %s (target=%ds)", durations, target)
-        return durations
-
-    # LTX modes: snap to valid enum values using greedy fill algorithm
-    min_dur = min(valid_durations)
-    max_dur = max(valid_durations)
-
-    # Start every scene at minimum valid duration
-    durations = [min_dur] * num_images
-
-    if target and target > 0:
-        # Build a priority list: scenes with higher storyboard-suggested durations
-        # get upgraded first. Scenes without suggestions get lowest priority.
-        scene_priorities = []
-        for i in range(num_images):
-            suggested = raw_durations[i] if raw_durations[i] is not None else 0
-            scene_priorities.append((suggested, i))
-        scene_priorities.sort(reverse=True)
-
-        # Greedy fill: upgrade scenes to next valid duration step without exceeding target
-        changed = True
-        while changed:
-            changed = False
-            for _, i in scene_priorities:
-                current = durations[i]
-                # Find next valid step up
-                next_up = None
-                for v in sorted(valid_durations):
-                    if v > current:
-                        next_up = v
-                        break
-                if next_up is None:
-                    continue
-                new_total = sum(durations) - current + next_up
-                if new_total <= target:
-                    durations[i] = next_up
-                    changed = True
-
-        logger.info(
-            "Resolved scene durations to %s (total=%ds, target=%ds, mode=%s)",
-            durations, sum(durations), target, video_mode,
-        )
-    else:
-        # No target — snap each storyboard suggestion down to nearest valid value
-        for i in range(num_images):
-            if raw_durations[i] is not None:
-                durations[i] = _snap_down(raw_durations[i], valid_durations)
-
+    durations = _normalize_scene_durations(raw_durations, target=target)
+    logger.info("Scene durations normalized to %s (sum=%ds)", durations, sum(durations))
     return durations
 
 
-# --- Valid fal.ai duration enums per video mode ---
-
-_LTX_PRO_DURATIONS = sorted([6, 8, 10])
-_LTX_FAST_DURATIONS = sorted([6, 8, 10, 12, 14, 16, 18, 20])
-
-
-def _get_valid_durations(video_mode: str) -> list[int] | None:
-    """Return sorted list of valid durations for the video mode, or None for unconstrained modes."""
-    if video_mode in ("ltx_pro",):
-        return _LTX_PRO_DURATIONS
-    if video_mode in ("ltx_fast", "ltx"):
-        return _LTX_FAST_DURATIONS
-    # Ken Burns, Kling, and other modes: no enum constraint
-    return None
-
-
-def _snap_down(value: int, valid: list[int]) -> int:
-    """Snap a value down to the nearest valid duration. Minimum is valid[0]."""
-    result = valid[0]
-    for v in valid:
-        if v <= value:
-            result = v
-        else:
-            break
-    return result
-
-
-def _normalize_short_mode_durations(
+def _normalize_scene_durations(
     raw_durations: list[int | None],
-    target: int = 15,
-    min_dur: int = 3,
-    max_dur: int = 10,
+    *,
+    target: int,
+    min_duration: int = SCENE_DURATION_MIN,
+    max_duration: int = SCENE_DURATION_MAX,
 ) -> list[int]:
-    """Normalize storyboard durations so they sum to exactly `target`.
+    """Normalize bounded integer scene durations so their sum equals target."""
+    count = len(raw_durations)
 
-    Clamps each value to [min_dur, max_dur] (None -> midpoint), then nudges
-    the smallest/largest in-bounds scene by 1s until the sum equals target.
-    """
-    midpoint = (min_dur + max_dur) // 2  # 6
-    durations = [
-        max(min_dur, min(max_dur, int(d) if d is not None else midpoint))
-        for d in raw_durations
-    ]
+    if count == 0:
+        raise ValueError("cannot normalize zero scene durations")
 
-    while sum(durations) != target:
-        delta = target - sum(durations)
-        step = 1 if delta > 0 else -1
-        if step > 0:
-            candidates = [i for i, v in enumerate(durations) if v < max_dur]
-            if not candidates:
-                break
-            idx = min(candidates, key=lambda i: durations[i])
-        else:
-            candidates = [i for i, v in enumerate(durations) if v > min_dur]
-            if not candidates:
-                break
-            idx = max(candidates, key=lambda i: durations[i])
-        durations[idx] += step
+    if not count * min_duration <= target <= count * max_duration:
+        raise ValueError(
+            f"Cannot allocate target={target}s across {count} scenes "
+            f"with bounds {min_duration}-{max_duration}s"
+        )
 
-    return durations
+    values = []
+    fallback = round(target / count)
+    fallback = max(min_duration, min(max_duration, fallback))
+
+    for raw in raw_durations:
+        try:
+            value = int(raw)
+        except Exception:
+            value = fallback
+        values.append(max(min_duration, min(max_duration, value)))
+
+    while sum(values) < target:
+        idx = max(range(count), key=lambda i: max_duration - values[i])
+        if values[idx] >= max_duration:
+            raise ValueError("normalization got stuck while increasing durations")
+        values[idx] += 1
+
+    while sum(values) > target:
+        idx = max(range(count), key=lambda i: values[i] - min_duration)
+        if values[idx] <= min_duration:
+            raise ValueError("normalization got stuck while decreasing durations")
+        values[idx] -= 1
+
+    return values
 
 
 # --- Tier 7: Auto-picker mapping from frame_narrative → transition_mode ---
@@ -887,9 +791,8 @@ async def run_stage(
                 image_settings, _ = resolve_random_art_style(image_settings)
                 settings["art_style_hint"] = image_settings.get("art_style", "")
 
-            # Short-mode: force concept duration to 15s
-            if _short_mode_from_images(manifest_data, defaults):
-                settings["duration"] = 15
+            clip_duration = _canonical_clip_duration(manifest_data, defaults)
+            settings["duration"] = clip_duration
 
             payload = build_concept_payload(word_dir, manifest_data, settings, output_dir, images_version)
             result = await call_engine('concept', payload)
@@ -912,9 +815,8 @@ async def run_stage(
 
         if stage == 'song':
             settings = resolve_lora_path(settings)
-            # Short-mode: force song duration to 15s
-            if _short_mode_from_images(manifest_data, defaults):
-                settings["duration"] = 15
+            clip_duration = _canonical_clip_duration(manifest_data, defaults)
+            settings["duration"] = clip_duration
             concept_version = manifest_data.selected.concept
             if not concept_version:
                 raise PipelineError("No concept selected. Run concept stage first.")
@@ -942,18 +844,11 @@ async def run_stage(
                 settings['skip_rendering'] = True
                 logger.info("text_to_video=True in video settings — injecting skip_rendering=True into image settings")
 
-            # Inject vocal_gender and clip_duration from concept settings
+            # Inject vocal_gender and canonical clip_duration
             concept_settings = resolve_settings('concept', manifest_data.settings, defaults)
             settings['vocal_gender'] = concept_settings.get('vocal_gender', 'female')
-            # Sync clip_duration with actual song duration so image count auto-calculation
-            # and LLM duration prompts match the real song length
-            settings['clip_duration'] = concept_settings.get('duration', 20)
-
-            # Short-mode coercion: force 15s and image_count to auto unless already 2 or 3
-            if settings.get("short_mode", False):
-                settings["clip_duration"] = 15
-                if settings.get("image_count") not in ("auto", 2, 3):
-                    settings["image_count"] = "auto"
+            clip_duration = _canonical_clip_duration(manifest_data, defaults)
+            settings['clip_duration'] = clip_duration
 
             # Resolve "random" art_style → concrete preset before dispatch
             art_style_original = settings.get("art_style")
@@ -990,12 +885,8 @@ async def run_stage(
             images_version = manifest_data.selected.images
             if not images_version:
                 raise PipelineError("No images selected. Run image stage first.")
-            # Inject target duration from concept settings for scene duration rebalancing.
-            # Short-mode forces target to 15s and threads the flag through to the adapter.
-            concept_settings = resolve_settings('concept', manifest_data.settings, defaults)
-            _short = _short_mode_from_images(manifest_data, defaults)
-            _target = 15 if _short else concept_settings.get("duration", 20)
-            settings = {**settings, "_target_duration": _target, "short_mode": _short}
+            clip_duration = _canonical_clip_duration(manifest_data, defaults)
+            settings = {**settings, "_target_duration": clip_duration}
             # Resolve creative_direction from images settings for transition mode override
             images_settings = resolve_settings('images', manifest_data.settings, defaults)
             creative_direction = images_settings.get('creative_direction', 'literal')

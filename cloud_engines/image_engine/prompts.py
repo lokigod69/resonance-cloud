@@ -9,6 +9,8 @@ from __future__ import annotations
 import logging
 from typing import Optional, Union
 
+from cloud_engines.duration_policy import auto_scene_count
+
 from .models import ImageContext, ImageSettings, resolve_frame_narrative
 
 logger = logging.getLogger(__name__)
@@ -24,7 +26,6 @@ def build_system_prompt(
     aspect_ratio: str = "16:9",
     image_count_raw: Union[str, int] = 1,
     text_to_video: bool = False,
-    short_mode: bool = False,
     image_model: str = "",
 ) -> str:
     """Assemble the complete system prompt from settings.
@@ -62,7 +63,7 @@ def build_system_prompt(
     # Frame narrative: auto-picker preamble OR specific mode block
     if is_auto_mode:
         image_count_instruction = _image_count_instruction(
-            image_count_raw, settings.clip_duration, short_mode=short_mode
+            image_count_raw, settings.clip_duration
         )
         parts.append(_auto_picker_block(image_count_instruction))
     elif scene_count > 1:
@@ -73,7 +74,7 @@ def build_system_prompt(
     # Image count instruction (when NOT auto-picking — auto-picker embeds its own)
     if not is_auto_mode:
         parts.append(_image_count_instruction(
-            image_count_raw, settings.clip_duration, short_mode=short_mode
+            image_count_raw, settings.clip_duration
         ))
 
     parts.extend([
@@ -107,7 +108,7 @@ def build_system_prompt(
         parts.append(_transition_prompt_block())
 
     parts.extend([
-        _duration_allocation_block(settings.clip_duration, scene_count, short_mode=short_mode),
+        _duration_allocation_block(settings.clip_duration, scene_count),
     ])
 
     # Output schema — swap for text-to-video
@@ -763,27 +764,23 @@ def _auto_picker_block(image_count_instruction: str) -> str:
     return _AUTO_PICKER_PREAMBLE.format(image_count_instruction=image_count_instruction)
 
 
-_RECOMMENDED_RANGE: dict[int, str] = {
-    5: "1",
-    10: "1-2",
-    15: "2-3",
-    20: "2-3",
-    30: "2-3",
-}
-
-
 def _image_count_instruction(
     image_count: Union[str, int],
     clip_duration: int,
-    short_mode: bool = False,
 ) -> str:
     """Return image count instruction — auto (LLM picks) or fixed."""
     if image_count == "auto":
-        recommended = "2-3" if short_mode else _RECOMMENDED_RANGE.get(clip_duration, "2-3")
+        policy_count = auto_scene_count(clip_duration)
+        if policy_count == "auto":
+            recommended = "2 or 3 scenes"
+        else:
+            recommended = f"exactly {policy_count} scene" + ("" if policy_count == 1 else "s")
         body = (
             'Also choose the image count (the "scene_count" field). Consider:\n'
             f"- The clip duration is {clip_duration} seconds.\n"
-            f"- For a {clip_duration}s clip, {recommended} images is the sweet spot.\n"
+            f"- For a {clip_duration}s clip, use {recommended}.\n"
+            "- Scene-count policy: 6s = 1 scene; 7-9s = exactly 2 scenes;\n"
+            "  10-18s = choose 2 or 3 scenes; 19-30s = exactly 3 scenes.\n"
             "- Choose the MINIMUM count needed to communicate the word effectively in your\n"
             "  chosen mode. More frames is not better — each frame must earn its place.\n"
             "- 2 scenes work well for words with strong motion or clear before/after contrast\n"
@@ -792,8 +789,6 @@ def _image_count_instruction(
             "  narrative arcs. NARRATIVE benefits from 3 for setup + action + result.\n"
             "  COLLECTION can use 2-3 depending on how many distinct meanings the word has."
         )
-        if short_mode:
-            body += "\n- Short mode: the card is exactly 15 seconds total across 2 or 3 scenes."
         return body
     return (
         f"You must design exactly {image_count} scene(s). Do not suggest a different count.\n"
@@ -1631,35 +1626,21 @@ def _output_schema_text_to_video_block(aspect_ratio: str = "16:9", creative_dire
 def _duration_allocation_block(
     total_duration: int,
     scene_count: int,
-    short_mode: bool = False,
 ) -> str:
     """Instruct the LLM to allocate per-scene durations for video animation."""
-    if scene_count <= 1:
-        return ""
-    if short_mode:
-        return (
-            "=== SCENE DURATION ALLOCATION ===\n\n"
-            "For short mode, choose 2 or 3 scenes and assign each scene a "
-            '"suggested_duration" between 3 and 10 seconds so the total is exactly '
-            "15 seconds, giving less time to quick beats and more time to shots "
-            "that need to breathe."
-        )
     return (
         "=== SCENE DURATION ALLOCATION ===\n\n"
-        f"Your scenes will be animated as video clips to accompany a {total_duration}-second song.\n"
-        "Allocate clip durations across your scenes that serve the emotional arc:\n"
-        f"- Total of all suggested_duration values should be close to {total_duration} seconds "
-        f"(within ±2s is fine)\n"
-        "- Valid per-scene durations: 6, 8, or 10 seconds ONLY (video model constraint)\n"
-        "- Consider pacing: quick establishing shots (6s), lingering atmospheric moments (10s),\n"
-        "  standard scenes (8s)\n"
-        "- The duration should match what's happening: static/contemplative scenes can be longer,\n"
-        "  dynamic/busy scenes can be shorter\n\n"
-        "Duration examples:\n"
-        f"- 2 scenes at {total_duration}s: 10+10={min(20, total_duration)}s works well\n"
-        f"- 3 scenes at {total_duration}s: 6+6+8=20s or 6+8+8=22s\n\n"
+        f"Your scenes will be animated as video clips totaling exactly {total_duration} seconds.\n\n"
+        'For each scene, choose a "suggested_duration" as an integer between 3 and 10 seconds.\n'
+        f"The sum of all suggested_duration values must equal {total_duration} seconds exactly.\n\n"
+        "Allocate durations to serve the emotional arc:\n"
+        "- Quick beats (3-5s) carry establishing shots, reactions, transitions\n"
+        "- Standard beats (6-7s) carry primary action or development\n"
+        "- Long beats (8-10s) carry emotional anchors, contemplative shots, or release moments\n\n"
+        "Equal allocations are allowed when they serve the word, but asymmetric rhythms\n"
+        "often feel more cinematic. Pick the rhythm that best serves the meaning.\n\n"
         "For each scene, include:\n"
-        '  "suggested_duration": <integer seconds — must be 6, 8, or 10>,\n'
+        '  "suggested_duration": <integer 3-10>,\n'
         '  "duration_rationale": "<why this duration serves the scene>"'
     )
 

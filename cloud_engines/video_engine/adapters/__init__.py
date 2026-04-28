@@ -3,13 +3,13 @@
 from .base import VideoProviderAdapter
 from .ken_burns import KenBurnsAdapter
 from .kling import KlingAdapter
-from .ltx import LTXAdapter
+from .ltx_runpod import LTXRunPodAdapter
 from .ltx_selfhosted import LTXSelfHostedAdapter
 
 __all__ = [
     "VideoProviderAdapter",
     "KenBurnsAdapter",
-    "LTXAdapter",
+    "LTXRunPodAdapter",
     "LTXSelfHostedAdapter",
     "KlingAdapter",
 ]

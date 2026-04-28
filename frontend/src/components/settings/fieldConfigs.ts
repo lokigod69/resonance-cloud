@@ -41,14 +41,12 @@ export const CONCEPT_FIELDS: FieldDef[] = [
   { key: 'genre', label: 'Genre', type: 'combo', options: ['auto'], default: 'auto' },
   { key: 'caption_style', label: 'Caption Style', type: 'dropdown', options: ['vocal_forward', 'production'], optionLabels: { 'vocal_forward': 'Vocal Forward (pronunciation focus)', 'production': 'Production (full arrangement)' }, default: 'production' },
   { key: 'syllable_chop', label: 'Syllable Chop', type: 'toggle', default: false },
-  { key: 'duration', label: 'Duration', type: 'dropdown', options: [15, 20, 30, 60], default: 20 },
   { key: 'visual_hint', label: 'Visual Hint', type: 'toggle', default: false },
   { key: 'use_art_style', label: 'Use Art Style for Music', type: 'toggle', default: false },
   { key: 'llm_model', label: 'LLM Model', type: 'dropdown', options: ['deepseek/deepseek-v4-flash', 'deepseek/deepseek-v3.2', 'deepseek/deepseek-v3.2-speciale', 'deepseek/deepseek-chat-v3-0324', 'moonshotai/kimi-k2.5', 'google/gemini-2.5-flash', 'anthropic/claude-3.5-haiku', 'mistralai/mistral-small', 'qwen/qwen3.6-plus-preview:free', 'openai/gpt-4o-mini', 'openai/gpt-5.4-mini', 'qwen/qwen3.5-9b', 'x-ai/grok-4.1-fast'], default: 'deepseek/deepseek-v4-flash', optionLabels: { 'deepseek/deepseek-v4-flash': 'DeepSeek V4 Flash', 'deepseek/deepseek-v3.2': 'DeepSeek V3.2', 'deepseek/deepseek-v3.2-speciale': 'DeepSeek V3.2 Speciale', 'deepseek/deepseek-chat-v3-0324': 'DeepSeek V3 (legacy)', 'moonshotai/kimi-k2.5': 'Kimi K2.5', 'google/gemini-2.5-flash': 'Gemini 2.5 Flash', 'anthropic/claude-3.5-haiku': 'Claude 3.5 Haiku', 'mistralai/mistral-small': 'Mistral Small (legacy)', 'qwen/qwen3.6-plus-preview:free': 'Qwen 3.6 Plus (free)', 'openai/gpt-4o-mini': 'GPT-4o Mini ($0.15/$0.60)', 'openai/gpt-5.4-mini': 'GPT-5.4 Mini ($0.75/$4.50)', 'qwen/qwen3.5-9b': 'Qwen 3.5-9B ($0.10/$0.15)', 'x-ai/grok-4.1-fast': 'Grok 4.1 Fast' }, advanced: true },
 ]
 
 export const SONG_FIELDS: FieldDef[] = [
-  { key: 'duration', label: 'Duration', type: 'dropdown', options: [15, 20, 30, 60], default: 20 },
   { key: 'batch_size', label: 'Batch Size', type: 'slider', min: 1, max: 8, step: 1, default: 2 },
   { key: 'inference_steps', label: 'Inference Steps', type: 'slider', min: 32, max: 100, step: 1, default: 50 },
   { key: 'guidance_scale', label: 'Guidance Scale', type: 'slider', min: 5, max: 10, step: 0.1, default: 8.0 },
@@ -66,8 +64,8 @@ export const IMAGE_FIELDS: FieldDef[] = [
   { key: 'movie_override', label: 'Movie', type: 'text', placeholder: 'Auto-pick (leave empty)', helper: 'Constrain all scenes to this movie', condition: s => s.creative_direction === 'movie' || s.creative_direction === 'movie_remix' },
   { key: 'visual_reference', label: 'Visual Reference', type: 'dropdown', options: ['auto', 'etymology', 'mnemonic', 'none'], default: 'none' },
   { key: 'frame_narrative', label: 'Frame Narrative', type: 'dropdown', options: ['auto', 'scale', 'action', 'environment', 'narrative', 'context', 'collection'], default: 'auto' },
-  { key: 'image_count', label: 'Image Count', type: 'dropdown', options: ['auto', 1, 2, 3, 4, 5, 6, 7, 8], default: 'auto' },
-  { key: 'short_mode', label: 'Short Mode', type: 'toggle', default: false, helper: '15-second cards with 2–3 scenes instead of 20 seconds' },
+  { key: 'clip_duration', label: 'Clip Duration', type: 'slider', min: 6, max: 30, step: 1, default: 15, helper: 'Total generated clip length. Concept, song, storyboard, and video timing derive from this.' },
+  { key: 'image_count', label: 'Image Count', type: 'dropdown', options: ['auto', 1, 2, 3], default: 'auto' },
   { key: 'art_style', label: 'Art Style', type: 'combo', options: ['none', 'auto', 'random'], comboPresetGroups: [
     { label: 'Photographic', items: ['photorealistic', 'noir', 'vintage_film', 'double_exposure', 'polaroid'] },
     { label: 'Classic Fine Art', items: [
@@ -128,7 +126,6 @@ export const VIDEO_FIELDS: FieldDef[] = [
   { key: 'duration', label: 'Duration', type: 'slider', min: 3, max: 30, step: 1, default: 5, condition: s => s.video_mode === 'ken_burns' },
   { key: 'fps', label: 'FPS', type: 'readonly', readonlyText: '25 fps (fixed)', condition: s => s.video_mode === 'ken_burns' },
   // ltx
-  { key: 'duration', label: 'Duration', type: 'slider', min: 6, max: 10, step: 1, default: 6, condition: isLtx },
   { key: 'resolution', label: 'Resolution', type: 'dropdown', options: ['1080p', '1440p', '2160p'], default: '1080p', condition: isLtx },
   { key: 'fps', label: 'FPS', type: 'readonly', readonlyText: '25 fps', condition: isLtx },
   { key: 'text_to_video', label: 'Text-to-Video', type: 'toggle', default: false, helper: 'Generate video from text prompts only — no images. The storyboard LLM creates scene descriptions optimized for AI video generation.', condition: isLtx },

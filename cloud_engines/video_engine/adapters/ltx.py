@@ -25,13 +25,9 @@ from .base import VideoProviderAdapter
 from .ltx_shared import (
     _CAMERA_LANGUAGE,
     _CONSTRAINT_PREFIX,
-    _I2V_DURATIONS,
     _NEGATIVE_SUFFIX,
     _SPEED_LANGUAGE,
-    _T2V_FAST_DURATIONS,
-    _T2V_PRO_DURATIONS,
     _TEXT_TO_VIDEO_PREFIX,
-    _snap_duration,
     build_ltx_negative,
     build_ltx_prompt,
 )
@@ -49,6 +45,16 @@ TEXT_TO_VIDEO_ENDPOINTS: dict[str, str] = {
     "ltx_pro": "fal-ai/ltx-2.3/text-to-video",
     "ltx": "fal-ai/ltx-2.3/text-to-video/fast",  # backward compat → fast
 }
+
+# Explicit legacy fal compatibility only. fal.ai LTX still uses duration enums,
+# so this adapter may snap requested durations.
+_I2V_DURATIONS = (6, 8, 10, 12, 14, 16, 18, 20)
+_T2V_PRO_DURATIONS = (6, 8, 10)
+_T2V_FAST_DURATIONS = (6, 8, 10, 12, 14, 16, 18, 20)
+
+
+def _snap_duration(requested: int, valid: tuple[int, ...]) -> int:
+    return min(valid, key=lambda v: (abs(v - requested), -v))
 
 
 class LTXAdapter(VideoProviderAdapter):

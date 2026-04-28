@@ -15,6 +15,8 @@ from typing import Any, Literal, Optional, Union
 
 from pydantic import BaseModel, Field, field_validator
 
+from cloud_engines.duration_policy import CLIP_DURATION_DEFAULT, validate_clip_duration
+
 
 # --- Engine Input Models ---
 
@@ -39,7 +41,7 @@ class SongSettings(BaseModel):
     guidance 7.5, thinking enabled, random seeds, FLAC output.
     """
 
-    duration: int = Field(default=30, description="Song length in seconds")
+    duration: int = Field(default=CLIP_DURATION_DEFAULT, description="Song length in seconds")
     batch_size: int = Field(default=4, ge=1, le=8, description="Number of takes per call")
     inference_steps: int = Field(default=50, ge=32, le=100, description="DiT denoising steps")
     guidance_scale: float = Field(default=7.5, ge=5.0, le=10.0, description="Prompt adherence strength")
@@ -56,9 +58,7 @@ class SongSettings(BaseModel):
     @field_validator("duration")
     @classmethod
     def validate_duration(cls, v: int) -> int:
-        if v not in (15, 20, 30):
-            raise ValueError(f"Duration must be 15, 20, or 30, got {v}")
-        return v
+        return validate_clip_duration(v)
 
     @field_validator("audio_format")
     @classmethod
@@ -179,7 +179,7 @@ class GenerationMetaOutputs(BaseModel):
     takes: list[TakeInfo] = Field(default_factory=list)
     format: str = "flac"
     sample_rate: int = 48000
-    requested_duration: int = 30
+    requested_duration: int = CLIP_DURATION_DEFAULT
 
 
 class GenerationMetaLoraConstraints(BaseModel):

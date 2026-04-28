@@ -331,22 +331,12 @@ class DownstreamWorker:
         # Run the bake. The budget is handled here (suno_bake RPC is not
         # retried by the pipeline layer; it's a multi-call helper).
         from src.services.suno_bakein import bake_suno_into_word
-        from src.settings import load_defaults, resolve_settings
-        from src.manifest import read_manifest
+        from src.settings import load_defaults
 
         defaults = load_defaults(workspace_path)
         suno_settings = defaults.get("suno", {})
         bookend_defaults = defaults.get("bookend", {})
         word_dir = workspace_path / word_slug
-
-        try:
-            manifest_snap = read_manifest(word_dir)
-            images_settings = resolve_settings(
-                "images", manifest_snap.settings, defaults,
-            )
-            short_mode = bool(images_settings.get("short_mode", False))
-        except Exception:
-            short_mode = False
 
         bake_result: dict[str, Any] = {}
         bake_ok = False
@@ -369,7 +359,6 @@ class DownstreamWorker:
                     suno_settings=suno_settings,
                     bookend_defaults=bookend_defaults,
                     skip_suno_guard=True,
-                    short_mode=short_mode,
                     max_retries=0,
                 )
                 if bake_result.get("success"):

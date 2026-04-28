@@ -42,7 +42,14 @@ def estimate_cost(video_mode: str, duration: int) -> float:
             estimated_gpu_seconds = (duration / 6.0) * 90
         return round(estimated_gpu_seconds * rate_per_second, 4)
 
-    r = RATES.get(video_mode, RATES["ltx"])
+    if video_mode in ("ltx_fast", "ltx_pro", "ltx") and VIDEO_BACKEND != "fal":
+        raise ValueError(
+            f"Unsupported VIDEO_BACKEND={VIDEO_BACKEND!r} for LTX cost estimation"
+        )
+
+    r = RATES.get(video_mode)
+    if r is None:
+        raise ValueError(f"Unknown video_mode for cost estimation: {video_mode!r}")
 
     if r["type"] == "free":
         return 0.0

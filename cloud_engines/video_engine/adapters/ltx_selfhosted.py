@@ -22,10 +22,6 @@ from ..download import extract_thumbnail
 from ..models import VideoContent, VideoSettings
 from .base import VideoProviderAdapter
 from .ltx_shared import (
-    _I2V_DURATIONS,
-    _T2V_FAST_DURATIONS,
-    _T2V_PRO_DURATIONS,
-    _snap_duration,
     build_ltx_negative,
     build_ltx_prompt,
 )
@@ -55,22 +51,10 @@ class LTXSelfHostedAdapter(VideoProviderAdapter):
         return f"ltx-2.3-{'pro' if self._quality == 'pro' else 'fast'}"
 
     def validate_settings(self, settings: VideoSettings) -> VideoSettings:
-        """Clamp settings to the same constraints as LTXAdapter."""
+        """Validate self-hosted LTX settings without duration snapping."""
         adjusted = settings.model_copy()
         if adjusted.resolution not in ("1080p", "1440p", "2160p"):
             adjusted.resolution = "1080p"
-
-        if getattr(adjusted, "short_mode", False):
-            return adjusted
-
-        if adjusted.text_to_video and self.tier == "ltx_pro":
-            valid = _T2V_PRO_DURATIONS
-        elif adjusted.text_to_video:
-            valid = _T2V_FAST_DURATIONS
-        else:
-            valid = _I2V_DURATIONS
-
-        adjusted.duration = _snap_duration(adjusted.duration, valid)
         return adjusted
 
     def estimate_cost(self, settings: VideoSettings) -> float:

@@ -23,6 +23,8 @@ import re
 
 from src.services.events import logged_llm_call
 
+from cloud_engines.duration_policy import CLIP_DURATION_DEFAULT, duration_band
+
 from .caption import (
     build_caption_prompt_for_combined,
     generate_caption,
@@ -338,16 +340,22 @@ def _build_lyrics_prompt(
     if settings.lyric_mode == "contextual":
         return _contextual_lyrics_prompt(word, translation, language, syllable_info, settings.duration, article)
     if settings.lyric_mode == "dramatic":
-        return _dramatic_lyrics_prompt(word, translation, language, article, music_caption)
+        return _dramatic_lyrics_prompt(word, translation, language, article, music_caption, settings.duration)
     return _creative_lyrics_prompt(word, translation, language, syllable_info, settings.duration, article)
 
 
 def _contextual_lyrics_prompt(
     word: str, translation: str, language: str, syllable_info: SyllableInfo,
-    duration: int = 30, article: str = "",
+    duration: int = CLIP_DURATION_DEFAULT, article: str = "",
 ) -> str:
     """Contextual mode lyrics prompt (Phrase / Level 2)."""
-    reps = "2-3" if duration == 15 else "3-5"
+    reps_by_band = {
+        "very_sparse": "1-2",
+        "sparse": "2-3",
+        "standard": "3-4",
+        "dense": "3-5",
+    }
+    reps = reps_by_band[duration_band(duration)]
     word_info = f'TARGET WORD: {word} ({translation})' if translation else f'TARGET WORD: {word}'
     article_line = ""
     if article:
@@ -380,10 +388,16 @@ def _contextual_lyrics_prompt(
 
 def _creative_lyrics_prompt(
     word: str, translation: str, language: str, syllable_info: SyllableInfo,
-    duration: int = 30, article: str = "",
+    duration: int = CLIP_DURATION_DEFAULT, article: str = "",
 ) -> str:
     """Creative mode lyrics prompt (Story / Level 3)."""
-    reps = "5-6" if duration == 15 else "6-8"
+    reps_by_band = {
+        "very_sparse": "3-4",
+        "sparse": "5-6",
+        "standard": "6-7",
+        "dense": "6-8",
+    }
+    reps = reps_by_band[duration_band(duration)]
     word_info = f'TARGET WORD: {word} ({translation})' if translation else f'TARGET WORD: {word}'
     article_line = ""
     if article:
@@ -420,6 +434,7 @@ def _creative_lyrics_prompt(
 def _dramatic_lyrics_prompt(
     word: str, translation: str, language: str,
     article: str = "", music_caption: str | None = None,
+    duration: int = CLIP_DURATION_DEFAULT,
 ) -> str:
     """Dramatic mode lyrics prompt (Song / Level 4).
 
@@ -441,8 +456,15 @@ def _dramatic_lyrics_prompt(
     else:
         music_style_line = 'MUSIC STYLE: (see [SECTION 1: MUSIC CAPTION] above — match this lyrics structure to the caption you are generating there)\n'
         style_match_intro = 'Match the song\'s structure to the music caption you are generating in SECTION 1:\n'
+    density_guidance = {
+        "very_sparse": "one compact dramatic hook, no bridge",
+        "sparse": "short verse + hook",
+        "standard": "verse + chorus, restrained bridge optional",
+        "dense": "verse + chorus + brief bridge/outro allowed",
+    }[duration_band(duration)]
     return (
         f'You are writing full song lyrics for a vocabulary learning music video.\n'
+        f'This is a {duration}-second vocabulary song.\n'
         f'\n'
         f'{word_info}\n'
         f'LANGUAGE: {language}\n'
@@ -464,14 +486,16 @@ def _dramatic_lyrics_prompt(
         f'3. Use Ace-Step section tags appropriate to the structure: [Verse], [Chorus],\n'
         f'   [Bridge], [Pre-Chorus], [Outro], etc.\n'
         f'\n'
-        f'4. The target word must appear at least 8 times across the full lyrics.\n'
+        f'4. Duration density: {density_guidance}.\n'
         f'\n'
-        f'5. Use natural, song-like {language} lyrics.\n'
+        f'5. The target word must recur naturally across the full lyrics.\n'
         f'\n'
-        f'6. NEVER include translation, English words (unless target language is English),\n'
+        f'6. Use natural, song-like {language} lyrics.\n'
+        f'\n'
+        f'7. NEVER include translation, English words (unless target language is English),\n'
         f'   or words from any other language.\n'
         f'\n'
-        f'7. Output ONLY the lyrics, no commentary.'
+        f'8. Output ONLY the lyrics, no commentary.'
     )
 
 
