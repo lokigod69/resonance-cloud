@@ -35,7 +35,9 @@ from src.cost_logger import (
     KIE_WAN_PRO_COST_PER_IMAGE,
     KIE_FLUX_PRO_COST_PER_IMAGE,
     KIE_SEEDREAM_LITE_COST_PER_IMAGE,
+    KIE_Z_IMAGE_COST_PER_IMAGE,
     FAL_ZTURBO_COST_PER_IMAGE,
+    FAL_Z_IMAGE_TURBO_COST_PER_IMAGE_LANDSCAPE_16_9,
 )
 
 logger = logging.getLogger(__name__)
@@ -160,7 +162,7 @@ def resolve_model_id(image_model: str) -> str:
     if image_model == "flux_pro":
         return "flux-2/pro-text-to-image"
     if image_model == "zturbo":
-        return "fal-ai/z-image/turbo"
+        return "z-image-turbo"
     if image_model == "wan_fast":
         return "wan/2-7-image"
     if image_model == "wan_pro":
@@ -539,6 +541,133 @@ def render_scene(
         RenderResult indicating success or failure.
     """
     scene_number = int(output_path.stem)
+
+    # --- Z-Image Turbo hybrid route: Kie T2I, fal I2I ---
+    if model_id == "z-image-turbo":
+        from .z_image_turbo_provider import render_scene_z_image_turbo
+        from .wan_provider import _upload_for_chaining
+
+        zturbo_input_urls = None
+        if reference_image_path and reference_image_path.exists():
+            api_key = os.environ.get("KIE_API_KEY", "")
+            if api_key:
+                ref_url = _upload_for_chaining(reference_image_path, api_key)
+                if ref_url:
+                    zturbo_input_urls = [ref_url]
+                    logger.info(
+                        "Scene %d: Z-Image Turbo fal i2i reference via %s",
+                        scene_number,
+                        ref_url,
+                    )
+                else:
+                    logger.warning(
+                        "Scene %d: Z-Image Turbo reference upload failed, routing to Kie T2I",
+                        scene_number,
+                    )
+
+        prompt_payload = image_prompt.model_dump(exclude_none=True)
+        planned_transport = "fal_i2i" if zturbo_input_urls else "kie_t2i"
+        request_payload = {
+            "model": model_id,
+            "transport": planned_transport,
+            "aspect_ratio": aspect_ratio,
+            "chain_instruction": chain_instruction,
+            "input_urls": zturbo_input_urls,
+            "use_color_palette": use_color_palette,
+            "art_style": art_style,
+            "image_prompt": prompt_payload,
+        }
+        zturbo_result: Optional[dict] = None
+        try:
+            with logged_api_call(
+                stage="images",
+                sub_step="render_scene",
+                event_source="engine",
+                word_id=word_id,
+                deck_id=deck_id,
+                user_id=user_id,
+                job_id=job_id,
+                attempt=attempt,
+                metadata={
+                    "scene_number": scene_number,
+                    "chained": zturbo_input_urls is not None,
+                    "reference_image": (
+                        reference_image_path.name
+                        if reference_image_path is not None
+                        else None
+                    ),
+                    "output_path": output_path.name,
+                    "transport": planned_transport,
+                },
+            ) as ev:
+                zturbo_result = render_scene_z_image_turbo(
+                    image_prompt=prompt_payload,
+                    model_id=model_id,
+                    output_path=output_path,
+                    aspect_ratio=aspect_ratio,
+                    input_urls=zturbo_input_urls,
+                    use_color_palette=use_color_palette,
+                    art_style=art_style,
+                )
+                scene_still_metadata = (
+                    _upload_scene_still_for_admin(
+                        output_path,
+                        scene_number=scene_number,
+                        user_id=user_id,
+                        deck_id=deck_id,
+                        job_id=job_id,
+                        provider_name=zturbo_result.get("provider_name"),
+                    )
+                    if zturbo_result.get("success")
+                    else {}
+                )
+                ev._model_provider = zturbo_result.get("provider_name")
+                ev._model_name = zturbo_result.get("model_name")
+                ev.record_response(
+                    response_body=zturbo_result.get("response_body"),
+                    request_body=json.dumps(request_payload, ensure_ascii=False),
+                    request_id=zturbo_result.get("request_id"),
+                    cost_usd=zturbo_result.get("cost_estimate_usd"),
+                    scene_number=scene_number,
+                    provider=zturbo_result.get("provider_name"),
+                    output_file=zturbo_result.get("file_path"),
+                    safety_blocked=False,
+                    transport=planned_transport,
+                    **scene_still_metadata,
+                )
+                if not zturbo_result["success"]:
+                    raise _ProviderRenderError(
+                        zturbo_result.get("error_message") or "Provider render failed"
+                    )
+        except _ProviderRenderError:
+            pass
+        if zturbo_result and zturbo_result["success"]:
+            return RenderResult(
+                success=True,
+                scene_number=scene_number,
+                file_path=output_path.name,
+                prompt_json=zturbo_result.get("prompt_text", ""),
+                provider_name=zturbo_result.get("provider_name"),
+                model_name=zturbo_result.get("model_name"),
+                request_id=zturbo_result.get("request_id"),
+                cost_estimate_usd=zturbo_result.get("cost_estimate_usd"),
+                response_body=zturbo_result.get("response_body"),
+            )
+        logger.warning(
+            "Scene %d: Z-Image Turbo render failed (%s)",
+            scene_number,
+            (zturbo_result or {}).get("error_message", "unknown"),
+        )
+        return RenderResult(
+            success=False,
+            scene_number=scene_number,
+            error_message=(
+                "Z-Image Turbo render failed: "
+                f"{(zturbo_result or {}).get('error_message', 'unknown')}"
+            ),
+            prompt_json=(zturbo_result or {}).get("prompt_text", ""),
+            model_name=model_id,
+        )
 
     # --- Kie Flux 2 Pro route ---
     if model_id.startswith("flux-2/"):
@@ -1154,7 +1283,7 @@ def render_all_scenes(
     # Wan keeps the reference hand-off, but its preserve/change instruction is
     # compiled from image_prompt continuity_anchor/change_request.
     resolved_mode = resolve_frame_narrative(storyboard.frame_narrative)
-    if model_id.startswith(("wan/", "seedream/")):
+    if model_id.startswith(("wan/", "seedream/")) or model_id == "z-image-turbo":
         chain_instruction = None
         use_chaining = resolved_mode != "collection"
     elif model_id.startswith("flux-2/"):
@@ -1207,7 +1336,7 @@ def render_all_scenes(
 
         # Chain: for Wan, anchor all scenes to scene 1 (avoids compounding
         # img2img drift). For Gemini, chain sequentially.
-        if model_id.startswith(("wan/", "seedream/")):
+        if model_id.startswith(("wan/", "seedream/")) or model_id == "z-image-turbo":
             if result.success and scene.scene_number == 1:
                 previous_image_path = output_path
             # scenes 2+: previous_image_path stays pinned to scene 1
@@ -1228,6 +1357,13 @@ def render_all_scenes(
         elif model_id.startswith("seedream/"):
             provider_label = "kie_ai"
             cost_usd = KIE_SEEDREAM_LITE_COST_PER_IMAGE
+        elif model_id == "z-image-turbo":
+            if result.provider_name == "z_image_turbo_fal":
+                provider_label = "fal_ai"
+                cost_usd = FAL_Z_IMAGE_TURBO_COST_PER_IMAGE_LANDSCAPE_16_9
+            else:
+                provider_label = "kie_ai"
+                cost_usd = KIE_Z_IMAGE_COST_PER_IMAGE
         elif model_id.startswith("flux-2/"):
             provider_label = "kie_ai"
             cost_usd = KIE_FLUX_PRO_COST_PER_IMAGE
@@ -1248,6 +1384,8 @@ def render_all_scenes(
                 "aspect_ratio": aspect_ratio,
                 "safety_blocked": result.safety_blocked,
                 "chained": effective_reference is not None,
+                "provider_name": result.provider_name,
+                "model_name": result.model_name,
             },
             estimated_cost_usd=cost_usd,
             duration_ms=int(scene_elapsed * 1000),

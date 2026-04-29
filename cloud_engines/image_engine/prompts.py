@@ -208,44 +208,9 @@ def _image_model_block(image_model: str) -> Optional[str]:
             "'anatomically correct hands with five distinct "
             "fingers')."
         )
+    # Z-Image Turbo hybrid shares the base/Wan storyboard shape.
     if image_model == "zturbo":
-        return (
-            "TARGET IMAGE MODEL: Z-Image-Turbo.\n"
-            "Downstream is Z-Image-Turbo (Tongyi-MAI), a "
-            "distilled S3-DiT running at CFG=0 with a Qwen3-4B "
-            "text encoder. It architecturally IGNORES negation "
-            "tokens (CFG=0 means there is no mechanism to "
-            "steer away from negatives) and has an attention "
-            "drop-off near 512 tokens. Strict rules:\n"
-            "- NEVER emit negative phrasing in any field. "
-            "Words like 'no', 'without', 'avoid', 'except', "
-            "'not' cause Z-Turbo to render the forbidden "
-            "element. Always translate to positive presence: "
-            "'crisp focus' not 'no blur'; 'plain seamless "
-            "backdrop' not 'no watermark'; 'fully clothed "
-            "modest attire' not 'no nudity'.\n"
-            "- colors[]: emit NAMED colors only (e.g. 'warm "
-            "amber', 'deep slate', 'bone white'), NEVER hex "
-            "codes. Z-Turbo maps hex approximately and "
-            "produces off-brand results.\n"
-            "- text_element.text: keep to 1–3 short words. "
-            "Longer strings corrupt in Z-Turbo's glyph "
-            "rendering.\n"
-            "- style: reference realistic photographic "
-            "terminology ('amateur photography', 'handheld "
-            "iPhone snapshot', 'disposable camera aesthetic', "
-            "'shot on Leica M6 with Kodak Portra 400 grain'). "
-            "Z-Turbo defaults to a plastic overly-polished "
-            "aesthetic — gritty phrasing grounds it.\n"
-            "- lighting: directional and specific ('warm "
-            "street-lamp glow', 'dappled sunlight through "
-            "leaves', 'harsh on-board flash falloff').\n"
-            "- composition: standard framing terms "
-            "('medium-shot portrait', 'ultra-wide landscape', "
-            "'eye-level shot').\n"
-            "- Keep each field concise. The final compiled "
-            "prompt is truncated at ~950 chars downstream."
-        )
+        return None
     # Seedream intentionally shares the base/Wan storyboard shape.
     if image_model in ("wan_fast", "wan_pro", "seedream_lite"):
         return None
