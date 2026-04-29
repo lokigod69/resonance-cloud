@@ -143,6 +143,36 @@ def _is_likely_refusal(image_data: bytes, aspect_ratio: str = "16:9") -> bool:
 RATE_LIMIT_BASE_DELAY = 2.0
 
 
+def _change_request_is_large_delta(change_request: str | None) -> bool:
+    """Detect change_request entries that are too large for I2I to handle well.
+
+    Returns True if the change_request describes a major composition swap rather
+    than a local edit. Such scenes route to T2I instead of I2I to avoid the
+    model fighting the reference image (broken hands / lost facial detail when
+    asked to dissolve the anchor scene into a fundamentally different one).
+    """
+    if not change_request:
+        return False
+
+    text = change_request.lower()
+
+    if len(change_request.split()) > 12:
+        return True
+
+    LARGE_DELTA_KEYWORDS = (
+        "transforms", "becomes", "morphs", "dissolves",
+        "now in", "entirely different", "space", "nebula",
+        "dimension", "another world", "different planet",
+    )
+    if any(kw in text for kw in LARGE_DELTA_KEYWORDS):
+        return True
+
+    if text.count(";") >= 2 or text.count(",") >= 3:
+        return True
+
+    return False
+
+
 def resolve_model_id(image_model: str) -> str:
     """Resolve image_model setting value to an actual provider model ID.
 
@@ -1312,6 +1342,29 @@ def render_all_scenes(
             image_prompt = image_prompt.model_copy(update={"text_element": None})
 
         effective_reference = previous_image_path if use_chaining else None
+
+        change_request_text = image_prompt.change_request
+        is_large_delta = _change_request_is_large_delta(change_request_text)
+        if effective_reference is not None and is_large_delta:
+            preview = (change_request_text or "")[:80]
+            logger.info(
+                "Scene %d routed to T2I due to large change_request: %s%s",
+                scene.scene_number,
+                preview,
+                "..." if change_request_text and len(change_request_text) > 80 else "",
+            )
+            effective_reference = None
+
+        if scene.scene_number == 1:
+            routing_decision = "t2i"
+        elif effective_reference is not None:
+            routing_decision = "i2i"
+        elif use_chaining:
+            routing_decision = "t2i_forced"
+        else:
+            routing_decision = "t2i"
+        change_request_size_class = "large" if is_large_delta else "small"
+
         if use_chaining and effective_reference is not None:
             logger.info(
                 "Scene %d referencing: %s",
@@ -1386,6 +1439,8 @@ def render_all_scenes(
                 "chained": effective_reference is not None,
                 "provider_name": result.provider_name,
                 "model_name": result.model_name,
+                "routing_decision": routing_decision,
+                "change_request_size_class": change_request_size_class,
             },
             estimated_cost_usd=cost_usd,
             duration_ms=int(scene_elapsed * 1000),
