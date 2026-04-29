@@ -28,6 +28,9 @@ from cloud_engines.duration_policy import (
     SCENE_DURATION_MIN,
     validate_clip_duration,
 )
+from cloud_engines.video_engine.tier_mapping import (
+    conditioning_strength_for_tier,
+)
 
 
 def _canonical_clip_duration(manifest_data: Any, defaults: dict) -> int:
@@ -365,6 +368,13 @@ def build_video_payloads(
             # Force all_cut — no morph transitions without images
             scene_settings["transition_mode"] = "all_cut"
 
+            scene_tier = scene.get("scene_tier")
+            scene_settings["conditioning_strength"] = conditioning_strength_for_tier(scene_tier)
+            logger.info(
+                "Scene %d: tier=%s -> conditioning_strength=%.2f",
+                i + 1, scene_tier or "missing", scene_settings["conditioning_strength"],
+            )
+
             # Resolve per-scene camera motion from storyboard
             if scene_settings.get("motion_type") == "auto":
                 scene_camera = scene.get("camera_motion", {}) or {}
@@ -456,6 +466,13 @@ def build_video_payloads(
         # Override duration with per-scene allocation if available
         if scene_durations[i] is not None:
             scene_settings["duration"] = scene_durations[i]
+
+        scene_tier = scene.get("scene_tier")
+        scene_settings["conditioning_strength"] = conditioning_strength_for_tier(scene_tier)
+        logger.info(
+            "Scene %d: tier=%s -> conditioning_strength=%.2f",
+            i + 1, scene_tier or "missing", scene_settings["conditioning_strength"],
+        )
 
         # Resolve per-scene camera motion from storyboard when motion_type is "auto"
         if scene_settings.get("motion_type") == "auto":
