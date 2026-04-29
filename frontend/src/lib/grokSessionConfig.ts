@@ -52,9 +52,9 @@ export interface GrokSessionConfig {
 export function buildGrokSessionConfig(p: BuildGrokSessionParams): GrokSessionConfig {
   const levelText = getGrokLevelInstructions(p.languageDisplay, p.nativeLanguageDisplay, p.level)
   const categoryPrompt = p.category
-    ? GROK_CATEGORIES.find(c => c.id === p.category)!.systemPrompt
-    : GROK_FREE_CHAT_PROMPT
-  const useLevelMixGreeting = (p.level === 'zero' || p.level === 'beginner') &&
+    ? GROK_CATEGORIES.find(c => c.id === p.category)!.systemPrompt(p.languageDisplay)
+    : GROK_FREE_CHAT_PROMPT(p.languageDisplay)
+  const useLevelMixGreeting = (p.level === 'zero' || p.level === 'beginner' || p.level === 'intermediate') &&
     p.languageDisplay !== p.nativeLanguageDisplay
   const greetingInstruction = useLevelMixGreeting
     ? `Start by greeting the user naturally according to the level's language mix and entering the situation immediately. `
