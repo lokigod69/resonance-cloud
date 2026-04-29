@@ -589,7 +589,7 @@ export default function DeckViewPG() {
                     })
                   }}
                   className={`relative rounded-xl overflow-hidden cursor-pointer border transition-all
-                    bg-[#0d0d12] ${
+                    bg-[#0d0d12]/70 ${
                     isSelected
                       ? 'ring-2 ring-[var(--pg-accent-teal)] border-[var(--pg-accent-teal)]/30'
                       : 'border-white/5 hover:border-white/10'
@@ -677,13 +677,13 @@ export default function DeckViewPG() {
                     transition={dragOffset !== 0 ? { type: 'tween', duration: 0 } : { type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <div
-                      className={`w-full max-h-[calc(100dvh-15rem)] bg-[#0d0d12] border border-white/5 rounded-2xl overflow-hidden relative flex flex-col sm:max-h-[calc(100dvh-18rem)] ${
+                      className={`w-full max-h-[calc(100dvh-15rem)] bg-[#0d0d12]/70 border border-white/5 rounded-2xl overflow-hidden relative flex flex-col sm:max-h-[calc(100dvh-18rem)] ${
                         !isComplete ? 'opacity-50' : ''
                       }`}
                       style={{ pointerEvents: offset === 0 ? 'auto' : 'none' }}
                     >
                       {/* Media area — 16:9 aspect ratio */}
-                      <div className="w-full relative bg-black overflow-hidden group/video" style={{ aspectRatio: '16/9' }}>
+                      <div className="w-full relative bg-black/50 overflow-hidden group/video" style={{ aspectRatio: '16/9' }}>
                         {/* Video element — stays mounted once activated to preserve frame on pause */}
                         {isComplete && videoActiveIndex === i && (offset === 0 ? activeVideoUrl : word.video_url) && (
                           <video
@@ -787,7 +787,7 @@ export default function DeckViewPG() {
                       </div>
 
                       {/* Word info — always visible */}
-                      <div className="px-6 pt-4 pb-2 flex flex-col items-center text-center bg-[#0d0d12]">
+                      <div className="px-6 pt-4 pb-2 flex flex-col items-center text-center bg-[#0d0d12]/70">
                         {isComplete ? (
                           <>
                             <h2 className="text-2xl font-bold text-white">{word.word}</h2>
@@ -847,7 +847,7 @@ export default function DeckViewPG() {
                         return (
                           <>
                             <div
-                              className="flex justify-center py-1.5 bg-[#0d0d12] cursor-pointer hover:bg-white/5 transition-colors"
+                              className="flex justify-center py-1.5 bg-[#0d0d12]/70 cursor-pointer hover:bg-white/5 transition-colors"
                               onClick={(e) => {
                                 e.stopPropagation()
                                 setInfoCollapsed(!infoCollapsed)
@@ -869,7 +869,7 @@ export default function DeckViewPG() {
                                   animate={{ height: 'auto', opacity: 1 }}
                                   exit={{ height: 0, opacity: 0 }}
                                   transition={{ duration: 0.25, ease: 'easeInOut' }}
-                                  className="overflow-hidden bg-[#0d0d12]"
+                                  className="overflow-hidden bg-[#0d0d12]/70"
                                 >
                                   <div className="px-6 pb-4 pt-2 space-y-2.5 text-sm max-w-2xl mx-auto">
                                     {word.etymology && (
