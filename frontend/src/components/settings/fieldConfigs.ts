@@ -37,7 +37,7 @@ export const STAGE_LABELS: Record<string, string> = {
 
 export const CONCEPT_FIELDS: FieldDef[] = [
   { key: 'vocal_gender', label: 'Vocal Gender', type: 'dropdown', options: ['male', 'female', 'any'], default: 'female' },
-  { key: 'lyric_mode', label: 'Lyric Mode', type: 'dropdown', options: ['reliable', 'minimal', 'standard', 'dramatic', 'contextual', 'creative'], default: 'reliable' },
+  { key: 'lyric_mode', label: 'Lyric Mode', type: 'dropdown', options: ['reliable', 'minimal', 'standard', 'dramatic', 'contextual', 'creative'], optionLabels: { creative: 'creative — "Story" ⭐ default', dramatic: 'dramatic — "Long"', contextual: 'contextual — "Phrase"', reliable: 'reliable — "Short"', minimal: 'minimal — admin only', standard: 'standard — admin only' }, default: 'creative' },
   { key: 'genre', label: 'Genre', type: 'combo', options: ['auto'], default: 'auto' },
   { key: 'caption_style', label: 'Caption Style', type: 'dropdown', options: ['vocal_forward', 'production'], optionLabels: { 'vocal_forward': 'Vocal Forward (pronunciation focus)', 'production': 'Production (full arrangement)' }, default: 'production' },
   { key: 'syllable_chop', label: 'Syllable Chop', type: 'toggle', default: false },

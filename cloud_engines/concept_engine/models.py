@@ -50,7 +50,7 @@ class ConceptSettings(BaseModel):
     """User-configurable settings. Missing fields default per ENGINE_CONCEPT.md Section 7."""
 
     vocal_gender: str = Field(default="female", description="Vocal type for music caption")
-    lyric_mode: str = Field(default="standard", description="Lyric generation strategy")
+    lyric_mode: str = Field(default="creative", description="Lyric generation strategy")
     genre: str | None = Field(default="auto", description="'auto' = LLM picks genre, or any genre string")
     caption_style: str = Field(default="production", description="Caption prompt style: 'vocal_forward' (voice-first) or 'production' (music-first)")
     use_art_style: bool = Field(default=False, description="Include art style in caption prompt for genre matching")

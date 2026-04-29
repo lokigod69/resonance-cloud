@@ -23,7 +23,7 @@ ART_STYLE_PRESETS = [
 DEFAULT_SETTINGS = {
     "concept": {
         "vocal_gender": "female",
-        "lyric_mode": "reliable",
+        "lyric_mode": "creative",
         "genre": "auto",
         "caption_style": "production",
         "syllable_chop": False,

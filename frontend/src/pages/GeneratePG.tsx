@@ -521,12 +521,12 @@ function StepArtStyle({
 
 /* ─── Step 4: Niveau ────────────────────────────── */
 
-const NIVEAU_OPTIONS: ReadonlyArray<{ key: 'auto' | 'standard' | 'phrase' | 'story' | 'song'; value: string | null }> = [
-  { key: 'auto',     value: null },
-  { key: 'standard', value: 'reliable' },
-  { key: 'phrase',   value: 'contextual' },
-  { key: 'story',    value: 'creative' },
-  { key: 'song',     value: 'dramatic' },
+const NIVEAU_OPTIONS: ReadonlyArray<{ key: 'auto' | 'short' | 'phrase' | 'story' | 'long'; value: string | null }> = [
+  { key: 'auto',   value: null },
+  { key: 'short',  value: 'reliable' },
+  { key: 'phrase', value: 'contextual' },
+  { key: 'story',  value: 'creative' },
+  { key: 'long',   value: 'dramatic' },
 ]
 
 function StepNiveau({

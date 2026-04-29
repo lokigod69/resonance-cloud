@@ -77,7 +77,7 @@ def get_next_run_number(stage_dir: Path, prefix: str) -> int:
 def make_version_label(stage: str, settings: dict, stage_dir: Path) -> str:
     """Generate a human-readable version label for a stage run."""
     if stage == 'concept':
-        mode = settings.get('lyric_mode', 'standard')
+        mode = settings.get('lyric_mode', 'creative')
         return mode
     elif stage == 'song':
         n = get_next_run_number(stage_dir, 'run-')
