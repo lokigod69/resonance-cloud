@@ -145,6 +145,17 @@ export const GENRES = [
   { value: 'custom', label: 'Custom' },
 ] as const
 
+// Niveau (lyric mode) tile config — shared between the classic (GeneratePG)
+// and glassy (GenerateGO) wizards so labels stay in sync. Translation lookup
+// uses `generate.niveau.${key}` and `generate.niveau.${key}Desc`.
+export const NIVEAU_OPTIONS: ReadonlyArray<{ key: 'auto' | 'short' | 'phrase' | 'story' | 'long'; value: string | null }> = [
+  { key: 'auto',   value: null },
+  { key: 'short',  value: 'reliable' },
+  { key: 'phrase', value: 'contextual' },
+  { key: 'story',  value: 'creative' },
+  { key: 'long',   value: 'dramatic' },
+]
+
 export const MAX_WORDS = 10
 
 export const STEP_LABELS: Record<number, string> = {

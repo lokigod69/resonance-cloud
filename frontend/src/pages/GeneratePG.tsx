@@ -15,6 +15,7 @@ import {
   VIBES,
   ART_STYLE_GROUPS,
   GENRES,
+  NIVEAU_OPTIONS,
 } from '@/components/generate/wizardData'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
@@ -520,14 +521,6 @@ function StepArtStyle({
 }
 
 /* ─── Step 4: Niveau ────────────────────────────── */
-
-const NIVEAU_OPTIONS: ReadonlyArray<{ key: 'auto' | 'short' | 'phrase' | 'story' | 'long'; value: string | null }> = [
-  { key: 'auto',   value: null },
-  { key: 'short',  value: 'reliable' },
-  { key: 'phrase', value: 'contextual' },
-  { key: 'story',  value: 'creative' },
-  { key: 'long',   value: 'dramatic' },
-]
 
 function StepNiveau({
   selected,

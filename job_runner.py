@@ -157,9 +157,11 @@ def assert_pod_credentials() -> None:
 
 SETTINGS_OVERRIDE_MAP: dict[str, tuple[str, str]] = {
     "genre": ("concept", "genre"),
-    # Niveau wizard: per-generation lyric mode (Standard / Phrase / Story / Song
-    # → reliable / contextual / creative / dramatic). Required so the wizard's
-    # settings_override actually reaches the concept engine.
+    # Niveau wizard: per-generation lyric mode. Wizard tiles map to backend
+    # modes: Short → reliable, Phrase → contextual, Story → creative,
+    # Long → dramatic. Auto omits the field, falling through to profile /
+    # default. Required so the wizard's settings_override actually reaches
+    # the concept engine.
     "lyric_mode": ("concept", "lyric_mode"),
     "creative_direction": ("images", "creative_direction"),
     "art_style": ("images", "art_style"),

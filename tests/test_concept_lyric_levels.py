@@ -528,9 +528,9 @@ def test_lyrics_llm_call_has_no_max_tokens_cap():
 # ---------------------------------------------------------------------------
 
 def test_override_flow_lyric_mode_reaches_concept_engine():
-    """When DEFAULT_SETTINGS["concept"]["lyric_mode"] = "reliable" AND a job
+    """When DEFAULT_SETTINGS["concept"]["lyric_mode"] = "creative" AND a job
     arrives with settings_override["lyric_mode"] = "dramatic", the value
-    reaching the concept engine must be "dramatic", not "reliable".
+    reaching the concept engine must be "dramatic", not "creative".
 
     This exercises orchestrator/job_runner.py::merge_settings and the
     SETTINGS_OVERRIDE_MAP it consults.
@@ -538,8 +538,8 @@ def test_override_flow_lyric_mode_reaches_concept_engine():
     from job_runner import merge_settings
     from src.settings import DEFAULT_SETTINGS
 
-    # Precondition: default is "reliable" (Level 1).
-    assert DEFAULT_SETTINGS["concept"]["lyric_mode"] == "reliable"
+    # Precondition: default is "creative".
+    assert DEFAULT_SETTINGS["concept"]["lyric_mode"] == "creative"
 
     merged = merge_settings(
         profile_settings={},
@@ -574,8 +574,8 @@ def test_override_flow_empty_or_none_lyric_mode_does_not_override():
             profile_settings={}, art_style=None, movie_override=None,
             settings_override={"lyric_mode": empty_value},
         )
-        # Should fall back to DEFAULT_SETTINGS["concept"]["lyric_mode"] = "reliable"
-        assert merged["concept"]["lyric_mode"] == "reliable"
+        # Should fall back to DEFAULT_SETTINGS["concept"]["lyric_mode"] = "creative"
+        assert merged["concept"]["lyric_mode"] == "creative"
 
 
 def test_dramatic_override_triggers_llm_path_end_to_end(tmp_path):

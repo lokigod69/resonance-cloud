@@ -4,7 +4,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
-import { LANGUAGES, VIBES, ART_STYLE_GROUPS, MAX_WORDS } from '@/components/generate/wizardData'
+import { LANGUAGES, VIBES, ART_STYLE_GROUPS, MAX_WORDS, NIVEAU_OPTIONS } from '@/components/generate/wizardData'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
@@ -512,20 +512,14 @@ export default function GenerateGO() {
                 How should the lyrics treat the word?
               </p>
               <div className="gen-orb-row">
-                {([
-                  { key: 'auto',     label: 'Auto',     desc: 'Smart pick',        value: null as string | null },
-                  { key: 'standard', label: 'Standard', desc: 'Word-focused',      value: 'reliable' as string | null },
-                  { key: 'phrase',   label: 'Phrase',   desc: 'Short expressions', value: 'contextual' as string | null },
-                  { key: 'story',    label: 'Story',    desc: 'Narrative',         value: 'creative' as string | null },
-                  { key: 'song',     label: 'Song',     desc: 'Full song',         value: 'dramatic' as string | null },
-                ] as const).map(opt => (
+                {NIVEAU_OPTIONS.map(opt => (
                   <div
                     key={opt.key}
                     className={lyricMode === opt.value ? 'gen-orb selected' : 'gen-orb'}
                     onClick={() => handleLyricModeSelect(opt.value)}
                   >
-                    <span className="gen-orb-label">{opt.label}</span>
-                    <span style={{ display: 'block', fontSize: '0.7rem', opacity: 0.6, marginTop: 2 }}>{opt.desc}</span>
+                    <span className="gen-orb-label">{t(`generate.niveau.${opt.key}`)}</span>
+                    <span style={{ display: 'block', fontSize: '0.7rem', opacity: 0.6, marginTop: 2 }}>{t(`generate.niveau.${opt.key}Desc`)}</span>
                   </div>
                 ))}
               </div>
@@ -533,11 +527,7 @@ export default function GenerateGO() {
           ) : (
             <div className="gen-orb-row">
               <div className="gen-orb selected breadcrumb" onClick={() => setStep(5)}>
-                {lyricMode === 'reliable' ? 'Standard'
-                  : lyricMode === 'contextual' ? 'Phrase'
-                  : lyricMode === 'creative' ? 'Story'
-                  : lyricMode === 'dramatic' ? 'Song'
-                  : 'Auto'}
+                {t(`generate.niveau.${(NIVEAU_OPTIONS.find(o => o.value === lyricMode) ?? NIVEAU_OPTIONS[0]).key}`)}
               </div>
             </div>
           )}
