@@ -253,9 +253,14 @@ def compile_scene_to_text(
         if ip.get("change_request"):
             parts.append(f"Change: {ip['change_request']}.")
 
-    parts.append(
-        f"{ip['subject_identity']} {ip['action_state']} in {ip['environment']}."
-    )
+    if has_reference_image:
+        action_state = ip["action_state"]
+        sentence_action = action_state[:1].upper() + action_state[1:]
+        parts.append(f"{sentence_action} in {ip['environment']}.")
+    else:
+        parts.append(
+            f"{ip['subject_identity']} {ip['action_state']} in {ip['environment']}."
+        )
     parts.append(f"Composition: {ip['composition']}.")
     parts.append(f"Lighting: {ip['lighting']}.")
     parts.append(f"Materials: {ip['material_detail']}.")

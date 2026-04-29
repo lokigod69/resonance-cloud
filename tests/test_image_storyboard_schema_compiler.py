@@ -160,10 +160,69 @@ def test_compile_i2i_leads_with_affirmative_preserve_change_semantics():
     )
     assert "Keep the same same young woman in the same meadow setting" in text
     assert "Change: she is now seated examining a wildflower" in text
-    assert text.count("young woman with fair skin, blue eyes, dark wavy hair, gentle smile") == 2
+    assert text.count("young woman with fair skin, blue eyes, dark wavy hair, gentle smile") == 1
+    assert "Examines a wildflower in softly blurred meadow background." in text
     assert "Mood: peaceful and expansive." in text
     assert "Reference context:" not in text
     assert "DO NOT" not in text
+
+
+def test_compile_i2i_deduplicates_subject_identity_from_scene_opener():
+    subject_identity = "middle-aged man with receding brown hair, stubbled chin, wearing rumpled gray suit"
+    scene = {
+        "art_style": "photorealistic",
+        "image_prompt": _image_prompt(
+            subject_identity=subject_identity,
+            action_state="standing arms outstretched balancing dynamically on soaring paper plane",
+            environment="infinite space with swirling nebulae",
+            continuity_anchor=f"{subject_identity} on paper vehicle",
+            change_request="clouds fully part to space vista, desk transforms to paper airplane",
+        ).model_dump(),
+    }
+
+    text = compile_scene_to_text(
+        scene,
+        has_reference_image=True,
+        use_color_palette=True,
+    )
+
+    assert text.count(subject_identity) == 2
+    assert "Change: clouds fully part to space vista" in text
+    assert (
+        "Standing arms outstretched balancing dynamically on soaring paper plane "
+        "in infinite space with swirling nebulae."
+    ) in text
+    assert (
+        f"{subject_identity} standing arms outstretched balancing dynamically"
+        not in text
+    )
+
+
+def test_compile_t2i_keeps_subject_identity_in_scene_opener():
+    subject_identity = "middle-aged man with receding brown hair, stubbled chin, wearing rumpled gray suit"
+    scene = {
+        "art_style": "photorealistic",
+        "image_prompt": _image_prompt(
+            subject_identity=subject_identity,
+            action_state="standing arms outstretched balancing dynamically on soaring paper plane",
+            environment="infinite space with swirling nebulae",
+        ).model_dump(),
+    }
+
+    text = compile_scene_to_text(
+        scene,
+        has_reference_image=False,
+        use_color_palette=True,
+    )
+
+    assert text.count(subject_identity) == 1
+    assert text.startswith(
+        f"{subject_identity} standing arms outstretched balancing dynamically "
+        "on soaring paper plane in infinite space with swirling nebulae."
+    )
+    assert "Use image 1 as the identity anchor" not in text
+    assert "Keep the same" not in text
+    assert "Change:" not in text
 
 
 def test_system_prompt_uses_new_image_prompt_guidance_and_schema():
