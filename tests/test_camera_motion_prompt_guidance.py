@@ -1,7 +1,10 @@
-"""Regression tests for tier-aware camera_motion guidance.
+"""Regression tests for tier-aware camera_motion guidance and tense-vocabulary grounding.
 
 Phase A — camera motion refinements: restrict static, tier-conditional camera
 guidance, expanded examples, motion-from-one-source rule.
+
+Phase B — tense vocabulary grounding: keep grounded dynamic verbs, drop
+ballistic verbs, add explicit avoid-ballistic guidance.
 
 Tests assert presence/absence in the assembled system prompt for both I2V and
 T2V code paths. They are substring assertions on the final prompt text — the
@@ -160,6 +163,84 @@ def test_i2v_and_t2v_schema_blocks_both_carry_camera_changes() -> None:
         assert (
             "Vehicle driving past a locked composition (justified static)"
             in block
+        )
+
+
+# ─── Phase B1: tense-tier grounded verbs ──────────────────────────────────
+
+
+def test_tense_tier_verbs_are_grounded() -> None:
+    block = _transition_prompt_block()
+
+    # Find the tense-tier verb line by its label
+    assert "tense tier verbs:" in block
+    # Locate the tense-tier list — it ends at the next bullet/paragraph
+    tense_idx = block.find("tense tier verbs:")
+    next_break = block.find(
+        "For tense scenes, avoid ballistic", tense_idx
+    )
+    assert next_break > tense_idx, "could not locate tense verb list bounds"
+    tense_section = block[tense_idx:next_break]
+
+    # New grounded verbs present
+    for verb in ("drives hard", "plants feet", "leans hard into", "surges forward"):
+        assert verb in tense_section, (
+            f"expected grounded verb {verb!r} in tense list, got: {tense_section!r}"
+        )
+
+
+# ─── Phase B2: ballistic verbs absent from tense-tier list ────────────────
+
+
+def test_ballistic_verbs_absent_from_tense_tier_list() -> None:
+    block = _transition_prompt_block()
+
+    tense_idx = block.find("tense tier verbs:")
+    next_break = block.find("For tense scenes, avoid ballistic", tense_idx)
+    tense_section = block[tense_idx:next_break]
+
+    # Banned verbs that previously encouraged unphysical motion. Note: the
+    # generic "whips" is no longer in the tense list (replaced by "whips
+    # around"); we check for the bare verb-as-token forms that used to appear.
+    for verb in ("catapults", "lurches", "hurls", "plunges", "collapses", "shudders"):
+        assert verb not in tense_section, (
+            f"banned verb {verb!r} must not appear in tense-tier list: {tense_section!r}"
+        )
+
+
+# ─── Phase B2: explicit avoid-ballistic guidance present ──────────────────
+
+
+def test_avoid_ballistic_guidance_present() -> None:
+    block = _transition_prompt_block()
+
+    assert "ballistic and unmoored language" in block
+    # Sample of banned verbs explicitly enumerated in the avoid list
+    for verb in ("catapults", "launches", "hurls", "lurches"):
+        assert verb in block, (
+            f"avoid-ballistic guidance should enumerate {verb!r}"
+        )
+    # Framing line
+    assert "intense, not impossible" in block
+
+
+# ─── Phase B3: tense worked example uses grounded verbs only ──────────────
+
+
+def test_tense_worked_example_does_not_use_banned_verbs() -> None:
+    block = _transition_prompt_block()
+
+    # Locate the tense-tier video_prompt example
+    start = block.find('- video_prompt (tense tier):')
+    assert start >= 0, "tense-tier worked example missing"
+    end = block.find('\n', start + 200)
+    example = block[start:end]
+
+    # Ensure the worked example does not itself contain banned ballistic verbs
+    # (would teach exactly the failure we're trying to remove).
+    for verb in ("catapults", "lurches", "hurls", "plunges", "collapses", "shudders"):
+        assert verb not in example, (
+            f"banned verb {verb!r} present in tense worked example: {example!r}"
         )
 
 
