@@ -99,6 +99,17 @@ body {
   --surface-glass-strong: color-mix(in srgb, var(--surface-1) 94%, transparent);
 }
 
+/* CLASSIC: neutralize chromatic flood for high-saturation themes.
+   Replace the tinted dark linear gradient with a near-neutral dark
+   so the page reads as black-with-a-hint. Halos cut roughly in half. */
+.skin-classic.theme-red-wine,
+.skin-classic.theme-rainy-day {
+  --shell-bg:
+    radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--accent) 1.5%, transparent), transparent 38%),
+    radial-gradient(circle at 82% 20%, color-mix(in srgb, var(--accent-2) 1%, transparent), transparent 36%),
+    linear-gradient(135deg, #0a0a0c, #0d0d0f 52%, #0a0a0c);
+}
+
 .skin-glassy {
   --shell-bg:
     linear-gradient(180deg, var(--app-bg) 0%, color-mix(in srgb, var(--app-bg) 88%, var(--surface-0) 12%) 100%);
@@ -164,6 +175,17 @@ body {
 .skin-classic .classic-aurora::before,
 .skin-classic .classic-aurora::after {
   opacity: 0.03;
+}
+
+.skin-classic.theme-red-wine .classic-aurora::before,
+.skin-classic.theme-red-wine .classic-aurora::after,
+.skin-classic.theme-rainy-day .classic-aurora::before,
+.skin-classic.theme-rainy-day .classic-aurora::after {
+  opacity: 0.012;
+}
+
+.skin-classic .glass {
+  background: var(--surface-glass-strong);
 }
 
 .skin-glassy .glassy-atmosphere {
@@ -533,6 +555,14 @@ body {
   color: var(--text-primary);
 }
 
+.skin-classic.theme-red-wine .speak-page-shell,
+.skin-classic.theme-rainy-day .speak-page-shell {
+  background:
+    radial-gradient(circle at 14% 12%, color-mix(in srgb, var(--accent) 4%, transparent), transparent 30%),
+    radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--accent-2) 3%, transparent), transparent 28%),
+    linear-gradient(180deg, color-mix(in srgb, var(--app-bg) 24%, transparent), transparent);
+}
+
 .speak-page-aura {
   background:
     radial-gradient(ellipse at 50% 0%, var(--accent-glow), transparent 48%),
@@ -582,6 +612,11 @@ body {
 
 .skin-glassy .speak-chat-shell {
   background: transparent;
+}
+
+.skin-classic.theme-red-wine .speak-chat-shell,
+.skin-classic.theme-rainy-day .speak-chat-shell {
+  background: linear-gradient(135deg, #08080a, #0b0b0d 52%, #08080a);
 }
 
 .speak-chatbar {
