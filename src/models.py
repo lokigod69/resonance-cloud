@@ -8,15 +8,18 @@ from pydantic import BaseModel, Field
 # --- Manifest models ---------------------------------------------------
 
 class Enrichment(BaseModel):
-    pos: Optional[str] = None
-    ipa: Optional[str] = None
-    article: Optional[str] = None
-    example: Optional[str] = None
-    example_gloss: Optional[str] = None
-    synonyms: Optional[str] = None
-    etymology: Optional[str] = None
-    mnemonic: Optional[str] = None
-    tags: list[str] = []
+    word_target: Optional[str] = ""
+    translation: Optional[str] = ""
+    bridge_mnemonic: Optional[str] = ""
+    etymology: Optional[str] = ""
+    pos: Optional[str] = ""
+    article: Optional[str] = ""
+    ipa: Optional[str] = ""
+    example: Optional[str] = ""
+    example_gloss: Optional[str] = ""
+    synonyms: Optional[str] = ""
+    tags: Optional[str | list[str]] = ""
+    mnemonic: Optional[str] = ""
     extra: dict[str, Any] = {}
 
 

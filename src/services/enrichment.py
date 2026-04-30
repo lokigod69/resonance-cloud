@@ -20,14 +20,6 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 ENRICHMENT_SYSTEM_PROMPT = """You are a language learning assistant. Given a list of vocabulary words,
 produce enrichment data for each word. The user is learning {target_language} and speaks {base_language}.
 
-For each word, provide:
-- word_target: the word in {target_language} (correct it if the user typed it in {base_language}; preserve target-language orthography — e.g., capitalize German nouns, keep Romance-language nouns lowercase unless they are proper nouns)
-- translation: translation into {base_language} — the bare translated word or phrase only, with no leading articles, no part-of-speech markers, and no quotation marks
-- mnemonic: a memorable connection between the word and its meaning (1–2 sentences), written in {base_language}
-- etymology: word origin and root connections (1 sentence), written in {base_language}
-- pos: part of speech (noun, verb, adjective, adverb, etc.)
-- article: grammatical article if applicable (e.g., "der", "die", "das" for German; "le", "la" for French). null if the language has no articles or it doesn't apply.
-
 Handle both directions: if the user typed a {base_language} word, figure out the {target_language} equivalent.
 
 If the input contains multiple words forming a phrase or sentence (e.g., "I love hot dogs",
@@ -35,10 +27,36 @@ If the input contains multiple words forming a phrase or sentence (e.g., "I love
 individual words from it. Set word_target to the full phrase translated into {target_language}.
 Translate the complete phrase, not individual words.
 
-Respond with a JSON array. Each element must have exactly these keys:
-{{"input_word": "...", "word_target": "...", "translation": "...", "mnemonic": "...", "etymology": "...", "pos": "...", "article": "..."}}
+Use real language people actually use. Avoid textbook or sterile examples. Prefer culturally authentic
+phrases native speakers would say over literal translations. For slang or informal words, include a
+brief usage warning in etymology or bridge_mnemonic where appropriate. For untranslatable concepts,
+explain the useful nuance in bridge_mnemonic. Be honest: do not invent etymologies, cultural claims,
+or false sound-alikes.
 
-No extra commentary — only the JSON array."""
+For each word, provide these 11 target fields:
+- word_target: the word in {target_language} (correct it if the user typed it in {base_language}; preserve target-language orthography - e.g., capitalize German nouns, keep Romance-language nouns lowercase unless they are proper nouns).
+- translation: concise translation into {base_language}; ideally 1-3 words. Return the bare translated word or phrase only, with no leading articles, no part-of-speech markers, no quotation marks, and no full sentence unless the input itself is a sentence.
+- bridge_mnemonic: a phonetic or associative retrieval hook in {base_language}. Find a sound or pattern in the target word that hooks to a familiar word or image in {base_language}, then build a vivid one-sentence association from that hook. Keep to one sentence. Avoid restating the definition. This is a retrieval hook, not a definition restatement and not a description of an image.
+- etymology: word origin only, one sentence maximum, written in {base_language}. Do not ramble about cultural background, usage history, or related words. If the etymology is unknown or unhelpful, return an empty string.
+- pos: part of speech as a single word, such as noun, verb, adjective, adverb, phrase, or interjection.
+- article: definite article in {target_language} where applicable (e.g., "der", "die", "das" for German; "il", "la" for Italian; "le", "la" for French). Return an empty string if not applicable.
+- ipa: pronunciation guide in {target_language}. Produce IPA notation when practical, especially for most European languages, and wrap IPA in slashes such as "/su.lub.on/". Fall back to romanization with no slashes for CJK languages and other scripts where IPA is impractical, including Korean, Mandarin, Japanese, Cebuano when already romanized, and Tagalog. If neither is practical, return an empty string.
+- example: one natural, conversational example sentence in {target_language}. Use the headword naturally in context. Do not write textbook-style examples such as "The apple is red" or "I go to the store."
+- example_gloss: faithful translation of example into {base_language}, with the same length and tone as the original.
+- synonyms: 2-4 related words in {target_language}, comma-separated. Synonyms must be in the target language, not {base_language}; for example, for Korean "멋지다", return "굉장하다, 최고, 짱", not English synonyms. If fewer than 2 relevant synonyms exist, return what is available; do not pad. If none exist, return an empty string.
+- tags: 2-4 short lowercase categorization tags useful for filtering and grouping, comma-separated, such as "casual, slang, food". No emoji. If unclear, return "general" or an empty string.
+
+Bridge mnemonic examples:
+- For "sulub-on" (Cebuano, "frustrated"): "Sulub-on contains 'subo' - like you're 'so blue' with frustration."
+- For "enigmatically" (English, advanced): "Enigmatically - think of the Mona Lisa's enigmatic smile, mysterious and unreadable."
+- For "Schadenfreude" (German, "joy at another's misfortune"): "Schaden + Freude = damage + joy - picture joy casting a shadow on someone else's pain."
+
+Do not produce the legacy mnemonic field. New generations use bridge_mnemonic; legacy mnemonic is kept only for backward compatibility elsewhere.
+
+Respond with a JSON object containing one key, "items". "items" must be an array. Each array element must have exactly these keys:
+{{"input_word": "...", "word_target": "...", "translation": "...", "bridge_mnemonic": "...", "etymology": "...", "pos": "...", "article": "...", "ipa": "...", "example": "...", "example_gloss": "...", "synonyms": "...", "tags": "..."}}
+
+No extra commentary - only the JSON object."""
 
 
 # Target-language articles used to strip accidental article leakage from the
@@ -179,8 +197,9 @@ async def run_enrichment(
     if not OPENROUTER_API_KEY:
         log.warning("OPENROUTER_API_KEY not set — skipping enrichment")
         return [{"input_word": w["word"], "word_target": w["word"],
-                 "translation": "", "mnemonic": "", "etymology": "",
-                 "pos": "", "article": None} for w in words]
+                 "translation": "", "bridge_mnemonic": "", "etymology": "",
+                 "pos": "", "article": "", "ipa": "", "example": "",
+                 "example_gloss": "", "synonyms": "", "tags": ""} for w in words]
 
     word_list = ", ".join(w["word"] for w in words)
     system_prompt = ENRICHMENT_SYSTEM_PROMPT.format(
@@ -202,6 +221,7 @@ async def run_enrichment(
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
                 ],
+                "response_format": {"type": "json_object"},
             },
         )
         try:
@@ -248,8 +268,18 @@ async def run_enrichment(
     except json.JSONDecodeError:
         log.error("Failed to parse enrichment LLM response: %s", content[:500])
         return [{"input_word": w["word"], "word_target": w["word"],
-                 "translation": "", "mnemonic": "", "etymology": "",
-                 "pos": "", "article": None} for w in words]
+                 "translation": "", "bridge_mnemonic": "", "etymology": "",
+                 "pos": "", "article": "", "ipa": "", "example": "",
+                 "example_gloss": "", "synonyms": "", "tags": ""} for w in words]
+
+    if isinstance(enriched, dict) and isinstance(enriched.get("items"), list):
+        enriched = enriched["items"]
+    elif not isinstance(enriched, list):
+        log.error("Unexpected enrichment LLM response shape: %s", type(enriched).__name__)
+        return [{"input_word": w["word"], "word_target": w["word"],
+                 "translation": "", "bridge_mnemonic": "", "etymology": "",
+                 "pos": "", "article": "", "ipa": "", "example": "",
+                 "example_gloss": "", "synonyms": "", "tags": ""} for w in words]
 
     # Defensive clean-up: the prompt already instructs the model to emit bare
     # translations and correct orthography, but models occasionally leak the
