@@ -1499,7 +1499,12 @@ def _transition_prompt_block() -> str:
         "- Never mention elements from OTHER scenes in a video_prompt\n"
         "- Describe only motion that could realistically occur within a single static shot\n"
         "- Prefer ambient environmental motion over subject transformation\n"
-        '- If camera_motion is "static", describe subject and environment motion matched to scene_tier without inventing camera movement'
+        '- If camera_motion is "static", describe subject and environment motion matched to scene_tier without inventing camera movement\n'
+        "- A scene MUST have motion from at least one source: either substantive "
+        "subject motion in the video_prompt, or non-static camera_motion. A scene "
+        "with neither is a still photograph and fails the purpose of video. If "
+        "the subject is necessarily still (sleeping figure, single object, "
+        "contemplative landscape), the camera must move."
     )
 
 
@@ -1630,10 +1635,46 @@ def _output_schema_text_to_video_block(aspect_ratio: str = "16:9", creative_dire
         "  \n"
         "  Choose motion types based on the scene's composition, emotion, and the frame_narrative mode.\n"
         "  CINEMATIC motions create depth and immersion — prefer them over basic zoom/pan.\n"
-        '  Only use "static" when absolute stillness serves the story.\n'
+        '  USE "static" ONLY when the subject provides strong, sustained motion '
+        "that the camera should observe rather than chase — e.g., a vehicle "
+        "driving past, a runner crossing the frame, a hammer-blow loop, an "
+        "animal galloping through. The subject must do the work of carrying the "
+        'shot. NEVER use "static" with `scene_tier: "calm"` — calm scenes '
+        "already have minimal subject motion, so a locked camera reduces the "
+        'video to a still photograph. NEVER use "static" for portraits, '
+        "contemplative landscapes, sleeping figures, single-object compositions, "
+        "or any scene where neither the subject nor the camera carries strong "
+        "motion. When in doubt, choose a slow CINEMATIC type (dolly_in, orbit, "
+        "push_in) — the camera doing the breathing is always preferable to a "
+        "frozen frame.\n"
         '  Do NOT invent new values. Do NOT use "N/A".\n\n'
         '- camera_motion.speed: "very_slow", "slow", "medium", "fast"\n'
         '  Match speed to scene energy.\n\n'
+        "- Match camera energy to `scene_tier`:\n"
+        "  - calm: ALWAYS specify a non-static camera at very_slow or slow speed "
+        "(slow dolly_in, slow orbit_left/right, slow crane_up, slow push_in). "
+        "Calm scenes need the camera to do the breathing the subject is not "
+        "doing. Slow orbit and very-slow dolly are loop-friendly and pair well "
+        'with the calm-tier "may be loop-friendly" budget. A locked-off camera '
+        "on a calm subject yields a still photograph.\n"
+        "  - standard: prefer mid-energy CINEMATIC motion at slow or medium "
+        "speed (dolly_in, push_in, tracking_left/right, orbit). Camera supports "
+        "the subject's mild activity without dominating it.\n"
+        "  - tense: prefer dynamic motion at medium speed (handheld at medium — "
+        "NEVER fast — push_in medium, tracking medium). The camera matches the "
+        "subject's energy and amplifies the dramatic beat. Avoid overstating "
+        "camera speed — fast camera motion combined with explosive subject "
+        "language can produce unphysical results.\n\n"
+        "CAMERA MOTION EXAMPLES (showing variety — do not copy these rigidly):\n"
+        '- Wide establishing shot of a cityscape (calm tier): type: "crane_up", speed: "very_slow"\n'
+        '- Sleeping marmot in a nest, snow drifting (calm tier): type: "dolly_in", speed: "very_slow"\n'
+        '- Single object on a desk catching afternoon light (calm tier): type: "orbit_right", speed: "very_slow"\n'
+        '- Character walking through a corridor (standard tier): type: "tracking_right", speed: "slow"\n'
+        '- Emotional close-up building tension (standard tier): type: "push_in", speed: "medium"\n'
+        '- Character running through a corridor (tense tier): type: "tracking_right", speed: "medium"\n'
+        '- Chaotic kitchen disaster unfolding (tense tier): type: "handheld", speed: "medium"\n'
+        '- Worker bracing against a storm wind (tense tier): type: "push_in", speed: "medium"\n'
+        '- Vehicle driving past a locked composition (justified static): type: "static", speed: "very_slow"\n\n'
         "- camera_motion.direction and camera_motion.description: write brief natural language.\n\n"
         "VARY YOUR CHOICES. Do NOT use the same camera motion type for all scenes.\n\n"
         "CRITICAL: Every field in your JSON output must have a real value. "
@@ -1781,21 +1822,52 @@ def _output_schema_block(aspect_ratio: str = "16:9", creative_direction: str = "
         "  \n"
         "  Choose motion types based on the scene's composition, emotion, and the frame_narrative mode.\n"
         "  CINEMATIC motions create depth and immersion — prefer them over basic zoom/pan.\n"
-        '  Only use "static" when absolute stillness serves the story (e.g., a frozen moment of shock).\n'
+        '  USE "static" ONLY when the subject provides strong, sustained motion '
+        "that the camera should observe rather than chase — e.g., a vehicle "
+        "driving past, a runner crossing the frame, a hammer-blow loop, an "
+        "animal galloping through. The subject must do the work of carrying the "
+        'shot. NEVER use "static" with `scene_tier: "calm"` — calm scenes '
+        "already have minimal subject motion, so a locked camera reduces the "
+        'video to a still photograph. NEVER use "static" for portraits, '
+        "contemplative landscapes, sleeping figures, single-object compositions, "
+        "or any scene where neither the subject nor the camera carries strong "
+        "motion. When in doubt, choose a slow CINEMATIC type (dolly_in, orbit, "
+        "push_in) — the camera doing the breathing is always preferable to a "
+        "frozen frame.\n"
         '  Do NOT invent new values. Do NOT use "N/A".\n\n'
         '- camera_motion.speed: "very_slow", "slow", "medium", "fast"\n'
         '  Match speed to scene energy. Action = "medium" or "fast". Drama = "slow". '
         'Contemplation = "very_slow".\n'
         '  Do NOT use "N/A", "gentle", or any other value.\n\n'
+        "- Match camera energy to `scene_tier`:\n"
+        "  - calm: ALWAYS specify a non-static camera at very_slow or slow speed "
+        "(slow dolly_in, slow orbit_left/right, slow crane_up, slow push_in). "
+        "Calm scenes need the camera to do the breathing the subject is not "
+        "doing. Slow orbit and very-slow dolly are loop-friendly and pair well "
+        'with the calm-tier "may be loop-friendly" budget. A locked-off camera '
+        "on a calm subject yields a still photograph.\n"
+        "  - standard: prefer mid-energy CINEMATIC motion at slow or medium "
+        "speed (dolly_in, push_in, tracking_left/right, orbit). Camera supports "
+        "the subject's mild activity without dominating it.\n"
+        "  - tense: prefer dynamic motion at medium speed (handheld at medium — "
+        "NEVER fast — push_in medium, tracking medium). The camera matches the "
+        "subject's energy and amplifies the dramatic beat. Avoid overstating "
+        "camera speed — fast camera motion combined with explosive subject "
+        "language can produce unphysical results.\n\n"
         "- camera_motion.direction and camera_motion.description: write brief natural "
         'language. Never use "N/A".\n\n'
         "VARY YOUR CHOICES. Do NOT use the same camera motion type for all scenes. Each scene should "
         "have a DIFFERENT motion type that serves its specific composition and emotion.\n\n"
         "CAMERA MOTION EXAMPLES (showing variety — do not copy these rigidly):\n"
-        '- Wide establishing shot of a cityscape: type: "crane_up", speed: "very_slow"\n'
-        '- Character running through a corridor: type: "tracking_right", speed: "fast"\n'
-        '- Emotional close-up building tension: type: "push_in", speed: "medium"\n'
-        '- Chaotic kitchen disaster unfolding: type: "handheld", speed: "medium"\n\n'
+        '- Wide establishing shot of a cityscape (calm tier): type: "crane_up", speed: "very_slow"\n'
+        '- Sleeping marmot in a nest, snow drifting (calm tier): type: "dolly_in", speed: "very_slow"\n'
+        '- Single object on a desk catching afternoon light (calm tier): type: "orbit_right", speed: "very_slow"\n'
+        '- Character walking through a corridor (standard tier): type: "tracking_right", speed: "slow"\n'
+        '- Emotional close-up building tension (standard tier): type: "push_in", speed: "medium"\n'
+        '- Character running through a corridor (tense tier): type: "tracking_right", speed: "medium"\n'
+        '- Chaotic kitchen disaster unfolding (tense tier): type: "handheld", speed: "medium"\n'
+        '- Worker bracing against a storm wind (tense tier): type: "push_in", speed: "medium"\n'
+        '- Vehicle driving past a locked composition (justified static): type: "static", speed: "very_slow"\n\n'
         "CRITICAL: Every field in your JSON output must have a real value. "
         'Never use "N/A", "none", or empty strings for any field. '
         "Use JSON null only where this schema explicitly requires null."
