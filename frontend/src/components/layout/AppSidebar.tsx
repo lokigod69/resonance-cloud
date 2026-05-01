@@ -13,6 +13,7 @@ import {
   Languages,
   Mic,
   DollarSign,
+  ShieldCheck,
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
@@ -33,6 +34,7 @@ const adminNav = [
   { to: '/admin/users', label: 'Users', icon: Users },
   { to: '/admin/voices', label: 'Voices', icon: Mic },
   { to: '/admin/metrics', label: 'Metrics', icon: BarChart3 },
+  { to: '/admin/quotas', label: 'Quotas', icon: ShieldCheck },
   { to: '/admin/costs', label: 'Costs', icon: DollarSign },
 ]
 

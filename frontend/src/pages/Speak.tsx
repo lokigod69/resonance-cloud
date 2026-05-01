@@ -22,6 +22,7 @@ import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useAuth } from '@/hooks/useAuth'
 import { useToast } from '@/components/Toast'
+import { supabase } from '@/lib/supabase'
 import {
   Dialog,
   DialogContent,
@@ -200,9 +201,17 @@ export default function Speak() {
     if (correctionsLoading || activeMessages.length < 4 || !tutor.language) return
     setCorrectionsLoading(true)
     try {
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
+      if (sessionError || !sessionData.session?.access_token) {
+        throw new Error('Your session expired. Please sign in again.')
+      }
+
       const res = await fetch('/api/voice-chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${sessionData.session.access_token}`,
+        },
         body: JSON.stringify({
           mode: 'corrections',
           transcript: activeMessages.map((m) => ({ role: m.role, content: m.content })),

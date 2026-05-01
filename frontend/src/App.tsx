@@ -31,6 +31,7 @@ import Metrics from '@/pages/admin/Metrics'
 import Queue from '@/pages/admin/Queue'
 import Profiles from '@/pages/admin/Profiles'
 import Voices from '@/pages/admin/Voices'
+import Quotas from '@/pages/admin/Quotas'
 import ObservabilityAggregate from '@/pages/admin/ObservabilityAggregate'
 import ObservabilityWordDetail from '@/pages/admin/ObservabilityWordDetail'
 import Music from '@/pages/Music'
@@ -166,6 +167,7 @@ function AppRoutes() {
             <Route path="/admin/content" element={<Content />} />
             <Route path="/admin/metrics" element={<Metrics />} />
             <Route path="/admin/voices" element={<Voices />} />
+            <Route path="/admin/quotas" element={<Quotas />} />
           </Route>
         </Route>
 
