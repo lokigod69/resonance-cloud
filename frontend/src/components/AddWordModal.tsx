@@ -165,7 +165,7 @@ export function AddWordModal({ onClose, onAdded }: AddWordModalProps) {
             <button
               type="submit"
               disabled={saving || !word.trim() || !translation.trim()}
-              className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium bg-[var(--accent)] text-white rounded hover:bg-[var(--accent)]/80 disabled:opacity-50 transition-colors"
+              className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium bg-[var(--accent)] text-[var(--on-accent)] rounded hover:bg-[var(--accent)]/80 disabled:opacity-50 transition-colors"
             >
               {saving ? <Loader size={12} className="animate-spin" /> : <Plus size={12} />}
               Add Word
@@ -226,7 +226,7 @@ export function LanguagePickerModal({ onSelect, onClose }: LanguagePickerModalPr
             <button
               onClick={() => selected && onSelect(selected)}
               disabled={!selected}
-              className="px-4 py-2 text-xs font-medium bg-[var(--accent)] text-white rounded hover:bg-[var(--accent)]/80 disabled:opacity-50 transition-colors"
+              className="px-4 py-2 text-xs font-medium bg-[var(--accent)] text-[var(--on-accent)] rounded hover:bg-[var(--accent)]/80 disabled:opacity-50 transition-colors"
             >
               Import with this language
             </button>

@@ -298,7 +298,7 @@ export default function StudyAudio() {
                             onClick={togglePlay}
                             className={`w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full transition-colors ${
                               isPlaying
-                                ? 'bg-[var(--accent,#06b6d4)] text-white'
+                                ? 'bg-[var(--accent,#06b6d4)] text-[var(--on-accent)]'
                                 : 'bg-foreground/10 text-foreground/80 hover:bg-foreground/20'
                             }`}
                             aria-label={isPlaying ? 'Pause' : 'Play'}
