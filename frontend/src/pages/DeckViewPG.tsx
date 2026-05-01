@@ -820,7 +820,7 @@ export default function DeckViewPG() {
                                 <button
                                   onClick={() => handleRetry(word)}
                                   disabled={retrying === word.id}
-                                  className="px-3 py-1.5 text-xs font-medium bg-white/10 hover:bg-white/20 rounded-lg transition-colors disabled:opacity-50"
+                                  className="px-3 py-1.5 text-xs font-medium bg-white/10 border border-white/25 text-white hover:bg-white/20 rounded-lg transition-colors disabled:opacity-50"
                                 >
                                   <RotateCcw className="h-3 w-3 inline mr-1" />
                                   {retrying === word.id ? t('deckview.retrying') : t('common.retry')}

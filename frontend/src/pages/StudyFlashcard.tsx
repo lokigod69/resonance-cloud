@@ -170,7 +170,7 @@ export default function StudyFlashcard() {
                       <p className="text-xl text-muted-foreground">{current.translation}</p>
                     )}
                     {current.mnemonic && (
-                      <p className="text-sm italic text-muted-foreground/70 mt-3 max-w-lg mx-auto leading-relaxed">
+                      <p className="text-sm italic text-foreground/80 mt-3 max-w-lg mx-auto leading-relaxed">
                         {current.mnemonic}
                       </p>
                     )}
