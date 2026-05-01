@@ -123,6 +123,7 @@ class ImageSettings(BaseModel):
     aspect_ratio: str = Field(default="16:9")
     art_style: Optional[str] = Field(default="")
     card_image_style: Optional[str] = None
+    card_image_model: Optional[str] = None
     word_in_image: bool = Field(default=True)
     use_color_palette: bool = Field(default=False)
     llm_model: str = Field(default="deepseek/deepseek-v3.2")

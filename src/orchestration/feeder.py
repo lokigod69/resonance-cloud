@@ -47,6 +47,8 @@ def _is_music_page_retry(word: dict[str, Any]) -> bool:
 
 def _route_for_failed_stage(failed_stage: Optional[str]) -> tuple[str, str]:
     """Dashboard-retry routing (§4.6). Returns (target_current_stage, queue_kind)."""
+    if failed_stage == "pending_image":
+        return "pending_image", "card"
     if failed_stage in ("images", "concept", "song", "unknown", None):
         return "pending", "upstream"
     if failed_stage == "video":
@@ -379,6 +381,7 @@ class Feeder:
             "upstream": self.upstream_queue,
             "video": self.video_queue,
             "post_video": self.post_video_queue,
+            "card": self.card_queue,
         }.get(queue_kind)
         if queue is None:
             log.error("feeder/source2: no queue for kind=%s", queue_kind)

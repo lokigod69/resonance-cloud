@@ -330,14 +330,13 @@ class CardWorker:
             for word in words
         ]
 
-        if any(stage not in {"complete", "failed", "cancelled", "pending_image"} for stage in stages):
+        terminal_stages = {"complete", "failed", "cancelled"}
+        if any(stage not in terminal_stages for stage in stages):
             deck_status = "generating"
         elif all(stage == "complete" for stage in stages):
             deck_status = "complete"
         elif any(stage == "complete" for stage in stages):
             deck_status = "partial"
-        elif all(stage == "pending_image" for stage in stages):
-            deck_status = "generating"
         else:
             deck_status = "failed"
 

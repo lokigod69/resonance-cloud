@@ -20,6 +20,7 @@ log = logging.getLogger(__name__)
 
 STAGE_BUDGETS: dict[str, int] = {
     "images": 3,
+    "pending_image": 3,
     "concept": 3,
     "song": 3,
     "video": 2,

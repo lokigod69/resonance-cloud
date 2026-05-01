@@ -168,6 +168,7 @@ SETTINGS_OVERRIDE_MAP: dict[str, tuple[str, str]] = {
     "creative_direction": ("images", "creative_direction"),
     "art_style": ("images", "art_style"),
     "card_image_style": ("images", "card_image_style"),
+    "card_image_model": ("images", "card_image_model"),
     "visual_reference": ("images", "visual_reference"),
     "frame_narrative": ("images", "frame_narrative"),
 }
