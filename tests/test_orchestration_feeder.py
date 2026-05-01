@@ -79,6 +79,10 @@ def test_routing_post_video_stages():
         assert feeder._route_for_failed_stage(s) == ("post_video_queued", "post_video")
 
 
+def test_route_for_failed_stage_pending_image_returns_card_queue():
+    assert feeder._route_for_failed_stage("pending_image") == ("pending_image", "card")
+
+
 def test_routing_unknown_backfill():
     assert feeder._route_for_failed_stage("unknown") == ("pending", "upstream")
 
@@ -228,6 +232,34 @@ def test_retry_claim_failed_word_routes_per_section_4_6():
     assert row["current_stage"] == "video_queued"
     assert row["retry_requested"] is False
     assert row["total_stage_attempts"] == 4   # HIGH-4
+
+
+def test_source2_retry_failed_card_lands_in_card_queue():
+    sb = FakeSupabase()
+    word = sb.add_word(
+        current_stage="failed",
+        failed_stage="pending_image",
+        retry_requested=True,
+        retry_requested_at="2026-05-02T00:00:00+00:00",
+        total_stage_attempts=2,
+    )
+
+    up, v, pv, c = _fresh_queues()
+    f = feeder.Feeder(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
+        bootstrap=lambda _: asyncio.sleep(0),
+    )
+    _run(f._source2_retries())
+
+    assert c.qsize() == 1
+    assert up.qsize() == v.qsize() == pv.qsize() == 0
+    queued = c.get_nowait()
+    assert queued["id"] == word["id"]
+    assert queued["current_stage"] == "pending_image"
+    row = sb._tables["words"][0]
+    assert row["current_stage"] == "pending_image"
+    assert row["retry_requested"] is False
+    assert row["total_stage_attempts"] == 3
 
 
 def test_music_page_retry_complete_word_routes_to_post_video():

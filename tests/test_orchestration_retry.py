@@ -33,6 +33,10 @@ def test_budgets_match_design():
     assert retry.total_budget("uploading") == 3
 
 
+def test_pending_image_budget_is_three():
+    assert retry.total_budget("pending_image") == 3
+
+
 # --------------------------------------------------------------------------
 # run_stage_with_budget
 # --------------------------------------------------------------------------
