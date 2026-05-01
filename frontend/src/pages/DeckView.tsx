@@ -367,7 +367,7 @@ export default function DeckView() {
           <Button
             variant="outline"
             size="sm"
-            className="h-8 text-xs border-white/10"
+            className="h-8 text-xs border-border"
             onClick={() => {
               const selectable = words.filter(w => w.status !== 'pending' && w.status !== 'processing')
               setSelectedWords(new Set(selectable.map(w => w.id)))
@@ -378,7 +378,7 @@ export default function DeckView() {
           <Button
             variant="outline"
             size="sm"
-            className="h-8 text-xs border-white/10"
+            className="h-8 text-xs border-border"
             onClick={() => {
               const failed = words.filter(w => w.status === 'failed')
               setSelectedWords(new Set(failed.map(w => w.id)))
@@ -389,7 +389,7 @@ export default function DeckView() {
           <Button
             variant="outline"
             size="sm"
-            className="h-8 text-xs border-white/10"
+            className="h-8 text-xs border-border"
             onClick={() => setSelectedWords(new Set())}
           >
             {t('deckview.clearSelection')}
@@ -445,7 +445,7 @@ export default function DeckView() {
                     </div>
                   )}
                   {/* Thumbnail */}
-                  <div className="aspect-video relative bg-white/5">
+                  <div className="aspect-video relative bg-card">
                     {word.thumbnail_url ? (
                       <img
                         src={word.thumbnail_url}
@@ -539,7 +539,7 @@ export default function DeckView() {
               ) : (
                 /* Pending / Processing */
                 <div className="glass rounded-xl overflow-hidden">
-                  <div className="aspect-video flex items-center justify-center bg-white/5 px-3 text-center">
+                  <div className="aspect-video flex items-center justify-center bg-card px-3 text-center">
                     <span className="text-xs font-medium text-muted-foreground">
                       {word.status === 'pending' ? t('deckview.queued') : t('deckview.processing')}
                     </span>

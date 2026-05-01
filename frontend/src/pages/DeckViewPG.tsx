@@ -369,7 +369,7 @@ export default function DeckViewPG() {
   if (!deck) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-6">
-        <AlertCircle className="h-12 w-12 text-white/20 mb-4" />
+        <AlertCircle className="h-12 w-12 text-muted-foreground mb-4" />
         <h2 className="text-xl font-semibold font-display">{t('deckview.notFound')}</h2>
         <Button asChild variant="ghost" className="mt-4">
           <Link to="/dashboard">{t('common.backToDecks')}</Link>
@@ -465,7 +465,7 @@ export default function DeckViewPG() {
       <div className="flex items-start gap-4 mb-8">
         <button
           onClick={() => navigate('/decks')}
-          className="mt-1 p-2 rounded-lg hover:bg-white/5 transition-colors text-[var(--pg-text-dim)] hover:text-white"
+          className="mt-1 p-2 rounded-lg hover:bg-accent transition-colors text-[var(--pg-text-dim)] hover:text-foreground"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
@@ -482,12 +482,12 @@ export default function DeckViewPG() {
                 }}
                 autoFocus
                 maxLength={100}
-                className="text-2xl font-bold font-display tracking-tight bg-transparent border-b-2 border-[var(--pg-accent-teal)] outline-none text-white w-full"
+                className="text-2xl font-bold font-display tracking-tight bg-transparent border-b-2 border-[var(--pg-accent-teal)] outline-none text-foreground w-full"
               />
               <button onClick={handleRename} className="p-1 text-[var(--pg-accent-green)] hover:opacity-80">
                 <Check className="h-5 w-5" />
               </button>
-              <button onClick={cancelRenaming} className="p-1 text-[var(--pg-text-dim)] hover:text-white">
+              <button onClick={cancelRenaming} className="p-1 text-[var(--pg-text-dim)] hover:text-foreground">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -496,7 +496,7 @@ export default function DeckViewPG() {
               <h1 className="text-2xl font-bold font-display tracking-tight">{displayName}</h1>
               <button
                 onClick={startRenaming}
-                className="opacity-0 group-hover/name:opacity-100 transition-opacity text-[var(--pg-text-dim)] hover:text-white"
+                className="opacity-0 group-hover/name:opacity-100 transition-opacity text-[var(--pg-text-dim)] hover:text-foreground"
               >
                 <Pencil className="h-4 w-4" />
               </button>
@@ -530,7 +530,7 @@ export default function DeckViewPG() {
       <div className="flex flex-col items-center gap-6 mb-8">
         <GenerationWheelLoader size={120} className="gap-0" />
         {hasChecked && !shouldShowQueue && <VerbCycler intervalMs={5000} />}
-        <div className="w-full max-w-md h-1 bg-white/10 rounded-full overflow-hidden">
+        <div className="w-full max-w-md h-1 bg-card/60 rounded-full overflow-hidden">
           <div
             className="h-full rounded-full bg-[var(--pg-accent-teal)] transition-all"
             style={{ width: `${progress}%` }}
@@ -547,7 +547,7 @@ export default function DeckViewPG() {
           {/* Quick-select bar */}
           <div className="flex flex-wrap gap-2 justify-center mb-4">
             <button
-              className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-white/60 hover:text-white hover:bg-white/5 transition-colors"
+              className="px-3 py-1.5 rounded-lg border border-border text-xs text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               onClick={() => {
                 const selectable = words.filter(w => w.status !== 'pending' && w.status !== 'processing')
                 setSelectedWords(new Set(selectable.map(w => w.id)))
@@ -556,7 +556,7 @@ export default function DeckViewPG() {
               {t('deckview.selectAll')}
             </button>
             <button
-              className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-white/60 hover:text-white hover:bg-white/5 transition-colors"
+              className="px-3 py-1.5 rounded-lg border border-border text-xs text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               onClick={() => {
                 const failed = words.filter(w => w.status === 'failed')
                 setSelectedWords(new Set(failed.map(w => w.id)))
@@ -565,7 +565,7 @@ export default function DeckViewPG() {
               {t('deckview.selectFailed')}
             </button>
             <button
-              className="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-white/60 hover:text-white hover:bg-white/5 transition-colors"
+              className="px-3 py-1.5 rounded-lg border border-border text-xs text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
               onClick={() => setSelectedWords(new Set())}
             >
               {t('deckview.clearSelection')}
@@ -592,7 +592,7 @@ export default function DeckViewPG() {
                     bg-[#0d0d12]/70 ${
                     isSelected
                       ? 'ring-2 ring-[var(--pg-accent-teal)] border-[var(--pg-accent-teal)]/30'
-                      : 'border-white/5 hover:border-white/10'
+                      : 'border-border hover:border-accent'
                   }`}
                 >
                   {/* Checkbox */}
@@ -647,7 +647,7 @@ export default function DeckViewPG() {
             {activeIndex > 0 && (
               <button
                 onClick={() => setActiveIndex((i) => i - 1)}
-                className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-0 group-hover/carousel:opacity-100"
+                className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full pg-glass hover:bg-accent transition-all opacity-0 group-hover/carousel:opacity-100"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -928,7 +928,7 @@ export default function DeckViewPG() {
             {activeIndex < words.length - 1 && (
               <button
                 onClick={() => setActiveIndex((i) => i + 1)}
-                className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full pg-glass hover:bg-white/10 transition-all opacity-0 group-hover/carousel:opacity-100"
+                className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full pg-glass hover:bg-accent transition-all opacity-0 group-hover/carousel:opacity-100"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
@@ -946,8 +946,8 @@ export default function DeckViewPG() {
                   i === activeIndex
                     ? 'w-6 bg-[var(--pg-accent-teal)]'
                     : word.status === 'complete'
-                    ? 'w-1.5 bg-white/30'
-                    : 'w-1.5 bg-white/10'
+                    ? 'w-1.5 bg-foreground/30'
+                    : 'w-1.5 bg-foreground/10'
                 }`}
               />
             ))}
@@ -955,7 +955,7 @@ export default function DeckViewPG() {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <Sparkles className="h-10 w-10 text-white/10 mb-4" />
+          <Sparkles className="h-10 w-10 text-muted-foreground/40 mb-4" />
           <p className="text-[var(--pg-text-dim)]">{t('deckview.noWords')}</p>
         </div>
       )}
