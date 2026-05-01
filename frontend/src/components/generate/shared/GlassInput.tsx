@@ -73,7 +73,7 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
         className={cn(
           'flex items-center justify-center w-10 h-10 rounded-full',
           'glass border border-border text-muted-foreground',
-          'hover:text-foreground hover:border-accent/40 transition-colors',
+          'hover:text-foreground hover:border-accent transition-colors',
           'disabled:opacity-30 disabled:pointer-events-none'
         )}
       >

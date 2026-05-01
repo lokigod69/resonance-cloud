@@ -33,12 +33,12 @@ export default function PillButton({
         variant === 'primary' && [
           'glass-strong text-foreground',
           'border border-border',
-          'hover:bg-accent/10',
+          'hover:bg-accent',
         ],
         variant === 'secondary' && [
           'glass text-foreground/70',
           'border border-border',
-          'hover:text-foreground hover:bg-accent/10',
+          'hover:text-foreground hover:bg-accent',
         ],
         glow && 'glow-green border-[#4ade80]/30',
         className

@@ -180,7 +180,7 @@ export default function GeneratePG() {
 
           <Link
             to={existingDeck ? `/deck/${existingDeck.id}` : '/dashboard'}
-            className="px-6 py-3 rounded-full pg-glass text-sm font-display font-medium text-[var(--pg-accent-teal)] hover:bg-accent/10 transition-all"
+            className="px-6 py-3 rounded-full pg-glass text-sm font-display font-medium text-[var(--pg-accent-teal)] hover:bg-accent transition-all"
           >
             <ArrowLeft className="h-4 w-4 inline mr-2" />
             {existingDeck ? t('generate.backToDeck') : t('common.backToDecks')}
@@ -306,7 +306,7 @@ function BreadcrumbPills({
             className={`
               px-3 py-1.5 rounded-full text-xs font-display font-medium transition-all
               ${completed
-                ? 'pg-glass border-[var(--pg-accent-teal)] text-[var(--pg-accent-teal)] cursor-pointer hover:bg-accent/10'
+                ? 'pg-glass border-[var(--pg-accent-teal)] text-[var(--pg-accent-teal)] cursor-pointer hover:bg-accent'
                 : current
                   ? 'pg-glass text-foreground border-border'
                   : 'text-muted-foreground border border-border/40 cursor-default'
@@ -798,7 +798,7 @@ function StepReview({
         <button
           onClick={onSubmit}
           disabled={submitting || (typeof credits === 'number' && credits < state.words.length)}
-          className="px-10 py-4 rounded-full bg-foreground text-background font-display font-medium text-lg hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="px-10 py-4 rounded-full bg-foreground text-background font-display font-medium text-lg hover:scale-105 transition-transform shadow-[0_0_40px_var(--accent-glow)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           {submitting ? (
             t('generate.initializing')

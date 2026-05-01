@@ -148,7 +148,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
                     key={cat.name}
                     type="button"
                     onClick={() => fetchSuggestions(cat.name)}
-                    className="inline-flex items-center gap-1 rounded-full px-4 py-2 min-h-[44px] text-sm text-foreground/80 bg-card border border-border hover:bg-accent/10 hover:border-accent/30 transition"
+                    className="inline-flex items-center gap-1 rounded-full px-4 py-2 min-h-[44px] text-sm text-foreground/80 bg-card border border-border hover:bg-accent hover:border-accent transition"
                   >
                     <span aria-hidden="true">{cat.emoji}</span> {cat.name}
                   </button>
