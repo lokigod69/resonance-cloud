@@ -267,8 +267,8 @@ def generate_card_image(payload: CardImagePayload) -> CardImageResult:
             status="failed",
             error=ImageError(
                 message=(
-                    "OpenRouter API key is required. Set OPENROUTER_API_KEY "
-                    "environment variable."
+                    "Card image generation failed: NoApiKey: "
+                    "OPENROUTER_API_KEY missing from environment."
                 ),
                 retryable=True,
             ),
@@ -311,7 +311,10 @@ def generate_card_image(payload: CardImagePayload) -> CardImageResult:
         logger.error("Card image prompt generation failed: %s", e, exc_info=True)
         return CardImageResult(
             status="failed",
-            error=ImageError(message=f"Card image LLM failed: {e}", retryable=True),
+            error=ImageError(
+                message=f"Card image LLM failed: {type(e).__name__}: {e}",
+                retryable=True,
+            ),
         )
 
     output_dir = Path(payload.output_dir)
@@ -325,7 +328,10 @@ def generate_card_image(payload: CardImagePayload) -> CardImageResult:
         return CardImageResult(
             status="failed",
             image_prompt=card_prompt_data,
-            error=ImageError(message=f"Card image provider failed: {e}", retryable=True),
+            error=ImageError(
+                message=f"Card image provider failed: {type(e).__name__}: {e}",
+                retryable=True,
+            ),
         )
 
     if not render_result.get("success") or not output_path.exists():
