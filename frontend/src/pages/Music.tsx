@@ -314,7 +314,7 @@ export default function Music() {
             <p className="text-gray-500 text-sm">{t('music.noSongs')}</p>
           </div>
         ) : (
-          <div className="border-t border-white/5">
+          <div className="border-t border-border">
             {filteredTracks.map((track) => (
               <PlaylistRow
                 key={track.id}

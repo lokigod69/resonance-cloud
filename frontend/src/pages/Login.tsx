@@ -77,7 +77,7 @@ export default function Login() {
         <span className="font-bold text-2xl text-foreground">Resonance</span>
       </Link>
 
-      <Card className="w-full max-w-md glass border-white/10">
+      <Card className="w-full max-w-md glass border-border">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
             {isSignUp ? 'Create your account' : 'Welcome back'}

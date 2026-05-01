@@ -80,7 +80,7 @@ export default function Settings() {
         </div>
         <div className="flex items-center gap-3">
           <Select value={baseLanguage} onValueChange={handleSaveLanguage}>
-            <SelectTrigger className="bg-white/5 border-white/10 max-w-xs">
+            <SelectTrigger className="bg-card border-border max-w-xs">
               <SelectValue placeholder="Select language" />
             </SelectTrigger>
             <SelectContent>
@@ -114,7 +114,7 @@ export default function Settings() {
             onChange={(e) => setDisplayName(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSaveDisplayName()}
             placeholder="Enter your name"
-            className="bg-white/5 border-white/10 max-w-xs"
+            className="bg-card border-border max-w-xs"
           />
           <Button
             size="sm"
@@ -158,7 +158,7 @@ export default function Settings() {
             >
               <div className="flex gap-1.5 mb-3">
                 {t.colors.map((c, i) => (
-                  <div key={i} className="w-6 h-6 rounded-sm border border-white/10" style={{ background: c }} />
+                  <div key={i} className="w-6 h-6 rounded-sm border border-border" style={{ background: c }} />
                 ))}
               </div>
               <div className="font-medium text-sm">{t.label}</div>
@@ -217,7 +217,7 @@ export default function Settings() {
                 {s.colors.map((c, i) => (
                   <div
                     key={i}
-                    className="w-6 h-6 rounded-full border border-white/10"
+                    className="w-6 h-6 rounded-full border border-border"
                     style={{ background: c }}
                   />
                 ))}
@@ -259,7 +259,7 @@ export default function Settings() {
       </div>
 
       {/* Sign Out */}
-      <Button variant="outline" onClick={signOut} className="w-full border-white/10">
+      <Button variant="outline" onClick={signOut} className="w-full border-border">
         <LogOut className="h-4 w-4 mr-2" />
         Sign Out
       </Button>

@@ -206,8 +206,8 @@ export default function Decks() {
                 onClick={() => setActiveLanguage(lang)}
                 className={`flex-shrink-0 min-h-[44px] px-4 py-2 rounded-full text-sm border transition-all ${
                   isActive
-                    ? 'bg-white/15 border-white/40 text-white shadow-[0_0_20px_rgba(255,255,255,0.1)]'
-                    : 'border-white/10 text-white/60 hover:text-white/90 hover:border-white/25'
+                    ? 'bg-card border-border text-foreground shadow-[0_0_20px_var(--accent-glow)]'
+                    : 'border-border text-muted-foreground hover:text-foreground/90 hover:border-accent'
                 }`}
               >
                 {lang}
@@ -220,7 +220,7 @@ export default function Decks() {
       <div className="flex justify-center mb-8 px-4">
         <button
           onClick={() => navigate('/generate')}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/20 hover:border-white/35 text-sm font-medium text-white transition-colors"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-full bg-card hover:bg-accent border border-border hover:border-accent text-sm font-medium text-foreground transition-colors"
         >
           <Sparkles size={14} />
           {t('dashboard.generate')}

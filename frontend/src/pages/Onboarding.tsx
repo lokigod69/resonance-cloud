@@ -105,7 +105,7 @@ export default function Onboarding() {
             </div>
 
             <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-              <SelectTrigger className="h-12 bg-white/5 border-white/10">
+              <SelectTrigger className="h-12 bg-card border-border">
                 <SelectValue placeholder="Select your language" />
               </SelectTrigger>
               <SelectContent>
@@ -146,7 +146,7 @@ export default function Onboarding() {
                   value={inviteCode}
                   onChange={(e) => setInviteCode(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleRedeemCode()}
-                  className="h-12 bg-white/5 border-white/10 text-center text-lg tracking-wider uppercase"
+                  className="h-12 bg-card border-border text-center text-lg tracking-wider uppercase"
                 />
                 {redeemError && (
                   <p className="text-sm text-destructive-foreground text-center">{redeemError}</p>
