@@ -18,10 +18,12 @@ log = logging.getLogger(__name__)
 
 
 # (revert_to_stage, reset_attempts, queue_kind)
-# queue_kind ∈ {"upstream", "video", "post_video", None}.
+# queue_kind ∈ {"upstream", "video", "post_video", "card", None}.
 _RECOVERY_ACTIONS: dict[str, tuple[Optional[str], bool, Optional[str]]] = {
     # pending at crash: no action. Feeder Source 3 picks it up.
     "pending":           (None,                True,  None),
+    # pending_image at crash: no revert needed. Re-push to card queue.
+    "pending_image":     (None,                False, "card"),
     "enrichment":        ("pending",           True,  None),      # job revert below
     "images":            ("pending",           True,  "upstream"),
     "concept":           ("pending",           True,  "upstream"),
@@ -136,7 +138,7 @@ async def _revert_enrichment_jobs(sb) -> None:
 async def _revert_active_words(sb) -> dict[str, list[dict[str, Any]]]:
     """Revert active-stage words and return reverted rows grouped by queue kind.
 
-    Returns dict {"upstream": [...], "video": [...], "post_video": [...]}.
+    Returns dict {"upstream": [...], "video": [...], "post_video": [...], "card": [...]}.
     """
     active_stages = [s for s in _RECOVERY_ACTIONS.keys()
                      if s not in ("complete", "failed", "cancelled")]
@@ -156,6 +158,7 @@ async def _revert_active_words(sb) -> dict[str, list[dict[str, Any]]]:
         "upstream": [],
         "video": [],
         "post_video": [],
+        "card": [],
     }
 
     for word in words:
@@ -230,6 +233,7 @@ async def run_recovery_pass(
     upstream_queue: asyncio.Queue,
     video_queue: asyncio.Queue,
     post_video_queue: asyncio.Queue,
+    card_queue: asyncio.Queue,
 ) -> None:
     """Run the §8.3 startup recovery pass synchronously."""
     log.info("recovery: starting pass")
@@ -243,10 +247,11 @@ async def run_recovery_pass(
         grouped = await _revert_active_words(sb)
     except Exception as e:
         log.error("recovery: active-word revert failed: %s", e, exc_info=True)
-        grouped = {"upstream": [], "video": [], "post_video": []}
+        grouped = {"upstream": [], "video": [], "post_video": [], "card": []}
 
     await _push_up_to_capacity(upstream_queue, grouped["upstream"], kind="upstream")
     await _push_up_to_capacity(video_queue, grouped["video"], kind="video")
     await _push_up_to_capacity(post_video_queue, grouped["post_video"], kind="post_video")
+    await _push_up_to_capacity(card_queue, grouped["card"], kind="card")
 
     log.info("recovery: pass complete")

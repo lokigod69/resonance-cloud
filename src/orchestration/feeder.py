@@ -79,6 +79,7 @@ class Feeder:
         upstream_queue: asyncio.Queue,
         video_queue: asyncio.Queue,
         post_video_queue: asyncio.Queue,
+        card_queue: asyncio.Queue,
         bootstrap,
         poll_interval: float = POLL_INTERVAL,
     ):
@@ -86,6 +87,7 @@ class Feeder:
         self.upstream_queue = upstream_queue
         self.video_queue = video_queue
         self.post_video_queue = post_video_queue
+        self.card_queue = card_queue
         self.bootstrap = bootstrap
         self.poll_interval = poll_interval
         self._stopped = asyncio.Event()
@@ -159,7 +161,7 @@ class Feeder:
     # SOURCE 3 — orphan recovery (highest priority)
     # -------------------------------------------------------------------
     async def _source3_orphans(self) -> None:
-        orphan_stages = ("pending", "video_queued", "post_video_queued")
+        orphan_stages = ("pending", "video_queued", "post_video_queued", "pending_image")
         # MED-6: explicit keyword so a future default change can't silently
         # break Source 3 semantics (§6.1).
         words = await state.fetch_words_by_stage(
@@ -194,6 +196,8 @@ class Feeder:
             return self.video_queue, "video"
         if stage == "post_video_queued":
             return self.post_video_queue, "post_video"
+        if stage == "pending_image":
+            return self.card_queue, "card"
         return None, None
 
     # -------------------------------------------------------------------

@@ -283,6 +283,7 @@ async def main() -> None:
         upstream_queue=upstream_queue,
         video_queue=video_queue,
         post_video_queue=post_video_queue,
+        card_queue=card_queue,
     )
 
     from src.orchestration.feeder import Feeder, make_bootstrap_callable
@@ -298,6 +299,7 @@ async def main() -> None:
         upstream_queue=upstream_queue,
         video_queue=video_queue,
         post_video_queue=post_video_queue,
+        card_queue=card_queue,
         bootstrap=make_bootstrap_callable(
             sb,
             upstream_queue=upstream_queue,
