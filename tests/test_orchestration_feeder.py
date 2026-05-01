@@ -57,6 +57,7 @@ def _fresh_queues():
         asyncio.Queue(maxsize=8),
         asyncio.Queue(maxsize=8),
         asyncio.Queue(maxsize=8),
+        asyncio.Queue(maxsize=8),
     )
 
 
@@ -182,7 +183,7 @@ def test_retry_claim_refuses_live_word():
         retry_requested_at="2026-04-18T00:00:00+00:00",
     )
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
 
     async def _bootstrap(_): pass
 
@@ -191,6 +192,7 @@ def test_retry_claim_refuses_live_word():
         upstream_queue=up,
         video_queue=v,
         post_video_queue=pv,
+        card_queue=c,
         bootstrap=_bootstrap,
     )
     _run(f._source2_retries())
@@ -213,9 +215,9 @@ def test_retry_claim_failed_word_routes_per_section_4_6():
         total_stage_attempts=3,
     )
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     f = feeder.Feeder(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
         bootstrap=lambda _: asyncio.sleep(0),
     )
     _run(f._source2_retries())
@@ -244,9 +246,9 @@ def test_music_page_retry_complete_word_routes_to_post_video():
         total_stage_attempts=7,
     )
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     f = feeder.Feeder(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
         bootstrap=lambda _: asyncio.sleep(0),
     )
     _run(f._source2_retries())
@@ -274,12 +276,14 @@ def test_source3_orphan_push_up_to_capacity():
     upstream_q = asyncio.Queue(maxsize=3)
     video_q = asyncio.Queue(maxsize=2)
     post_video_q = asyncio.Queue(maxsize=8)
+    card_q = asyncio.Queue(maxsize=8)
 
     f = feeder.Feeder(
         sb,
         upstream_queue=upstream_q,
         video_queue=video_q,
         post_video_queue=post_video_q,
+        card_queue=card_q,
         bootstrap=lambda _: asyncio.sleep(0),
     )
     _run(f._source3_orphans())
@@ -297,14 +301,14 @@ def test_deck_lock_blocks_second_job_same_deck():
     sb.add_job(status="processing", deck_id="d-1")
     j2 = sb.add_job(status="approved", deck_id="d-1")
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
 
     bootstrap_calls = {"n": 0}
     async def _bootstrap(job):
         bootstrap_calls["n"] += 1
 
     f = feeder.Feeder(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
         bootstrap=_bootstrap,
     )
     _run(f._try_start_job(dict(j2)))
@@ -326,6 +330,7 @@ def test_job_claim_failure_on_already_processing():
         upstream_queue=asyncio.Queue(maxsize=8),
         video_queue=asyncio.Queue(maxsize=8),
         post_video_queue=asyncio.Queue(maxsize=8),
+        card_queue=asyncio.Queue(maxsize=8),
         bootstrap=_b,
     )
     _run(f._try_start_job(dict(job)))
@@ -473,9 +478,9 @@ def test_retry_flips_generation_job_id_parent_not_deck_latest():
         retry_requested_at="2026-04-20T00:00:00+00:00",
     )
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     f = feeder.Feeder(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
         bootstrap=lambda _: asyncio.sleep(0),
     )
 
@@ -511,9 +516,9 @@ def test_retry_waits_when_another_same_deck_job_is_processing():
         retry_requested_at="2026-04-20T00:00:00+00:00",
     )
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     f = feeder.Feeder(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
         bootstrap=lambda _: asyncio.sleep(0),
     )
 
@@ -551,9 +556,9 @@ def test_retry_legacy_null_generation_job_id_flips_deck_latest_terminal_job():
         retry_requested_at="2026-04-20T00:00:00+00:00",
     )
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     f = feeder.Feeder(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
         bootstrap=lambda _: asyncio.sleep(0),
     )
 
@@ -738,8 +743,9 @@ def test_bootstrap_crash_after_manifest_write_recovers_and_reruns(monkeypatch, t
     up = asyncio.Queue(maxsize=2)
     v = asyncio.Queue(maxsize=2)
     pv = asyncio.Queue(maxsize=2)
+    c = asyncio.Queue(maxsize=2)
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
 
     job_row = sb._tables["generation_jobs"][0]

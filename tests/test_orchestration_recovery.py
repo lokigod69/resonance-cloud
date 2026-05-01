@@ -30,6 +30,7 @@ def _fresh_queues():
         asyncio.Queue(maxsize=3),
         asyncio.Queue(maxsize=2),
         asyncio.Queue(maxsize=8),
+        asyncio.Queue(maxsize=8),
     )
 
 
@@ -38,10 +39,10 @@ def test_pending_words_not_pushed_by_recovery():
     sb = FakeSupabase()
     sb.add_job(status="processing")
     sb.add_word(current_stage="pending")
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
 
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
     assert up.qsize() == 0
     assert sb._tables["words"][0]["current_stage"] == "pending"
@@ -52,9 +53,9 @@ def test_enrichment_recovery_reverts_words_and_job():
     job = sb.add_job(status="processing")
     sb.add_word(deck_id=job["deck_id"], current_stage="enrichment")
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
 
     w = sb._tables["words"][0]
@@ -84,9 +85,9 @@ def test_enrichment_recovery_reverts_only_words_owned_by_processing_job():
         current_stage="enrichment",
     )
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
 
     rows = {row["id"]: row for row in sb._tables["words"]}
@@ -102,9 +103,9 @@ def test_upstream_stage_recovery_reverts_to_pending_and_pushes():
     for stage in ("images", "concept", "song"):
         sb.add_word(current_stage=stage, stage_attempts=2)
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
 
     for row in sb._tables["words"]:
@@ -117,9 +118,9 @@ def test_video_recovery_reverts_to_video_queued_and_pushes():
     sb = FakeSupabase()
     sb.add_job(status="processing")
     sb.add_word(current_stage="video", stage_attempts=1)
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
     assert sb._tables["words"][0]["current_stage"] == "video_queued"
     assert v.qsize() == 1
@@ -130,9 +131,9 @@ def test_post_video_recovery_reverts_and_pushes():
     sb.add_job(status="processing")
     for stage in ("assembly", "bookend", "suno_bake", "uploading"):
         sb.add_word(current_stage=stage, stage_attempts=2)
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
     for row in sb._tables["words"]:
         assert row["current_stage"] == "post_video_queued"
@@ -148,9 +149,9 @@ def test_queued_states_not_reverted_only_pushed():
     w1 = sb.add_word(current_stage="video_queued")
     w2 = sb.add_word(current_stage="post_video_queued")
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
     rows = {r["id"]: r for r in sb._tables["words"]}
     assert rows[w1["id"]]["current_stage"] == "video_queued"
@@ -169,9 +170,9 @@ def test_overflow_stays_in_supabase_when_queue_full():
     sb.add_job(status="processing")
     for _ in range(10):
         sb.add_word(current_stage="images")
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
     assert up.qsize() == 3  # capacity of upstream queue
     # All ten words reverted to pending — overflow awaits Source 3
@@ -185,9 +186,9 @@ def test_cancelling_recovers_to_cancelled():
     sb.add_job(status="processing")
     word = sb.add_word(current_stage="cancelling", stage_attempts=1)
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
     assert sb._tables["words"][0]["current_stage"] == "cancelled"
     assert up.qsize() == v.qsize() == pv.qsize() == 0
@@ -200,9 +201,9 @@ def test_terminal_states_untouched():
     failed = sb.add_word(current_stage="failed", failed_stage="images")
     cancelled = sb.add_word(current_stage="cancelled")
 
-    up, v, pv = _fresh_queues()
+    up, v, pv, c = _fresh_queues()
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
     rows = {r["id"]: r for r in sb._tables["words"]}
     assert rows[complete["id"]]["current_stage"] == "complete"

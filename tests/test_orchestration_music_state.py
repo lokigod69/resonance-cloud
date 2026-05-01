@@ -500,8 +500,9 @@ def test_high6_crash_after_upload_keeps_status_processing_until_complete(
     up = asyncio.Queue(maxsize=1)
     v = asyncio.Queue(maxsize=1)
     pv = asyncio.Queue(maxsize=1)
+    c = asyncio.Queue(maxsize=1)
     _run(recovery.run_recovery_pass(
-        sb, upstream_queue=up, video_queue=v, post_video_queue=pv,
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
     ))
 
     row = sb._tables["words"][0]
