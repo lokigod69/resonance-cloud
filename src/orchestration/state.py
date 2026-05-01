@@ -77,6 +77,7 @@ def install_correlation_filter(logger: Optional[logging.Logger] = None) -> None:
 
 _PROCESSING_STAGES = {
     "images", "concept", "song",
+    "pending_image",
     "video_queued", "video",
     "post_video_queued", "assembly", "bookend", "suno_bake", "uploading",
     "cancelling",
