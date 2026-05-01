@@ -299,7 +299,6 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── DeckView (missed strings) ──
     'deckview.noVideo': 'No video available',
-    'deckview.replay': 'Replay',
     'deckview.statusGenerating': 'Generating {completed} of {total}',
     'deckview.statusReady': 'Ready',
     'deckview.statusPartial': 'Partial ({completed}/{total})',
@@ -674,7 +673,6 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── DeckView (missed strings) ──
     'deckview.noVideo': 'Kein Video verfügbar',
-    'deckview.replay': 'Nochmal abspielen',
     'deckview.statusGenerating': '{completed} von {total} wird erstellt',
     'deckview.statusReady': 'Fertig',
     'deckview.statusPartial': 'Teilweise ({completed}/{total})',
@@ -1050,7 +1048,6 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── DeckView (additional) ──
     'deckview.noVideo': 'Aucune vidéo disponible',
-    'deckview.replay': 'Rejouer',
     'deckview.statusGenerating': 'Création {completed} sur {total}',
     'deckview.statusReady': 'Prêt',
     'deckview.statusPartial': 'Partiel ({completed}/{total})',

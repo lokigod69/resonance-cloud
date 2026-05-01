@@ -897,17 +897,8 @@ function VideoViewerModal({
             onRate={onRate}
           />
 
-          {/* Replay + Share */}
+          {/* Share */}
           <div className="flex items-center justify-center gap-3">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={onReplay}
-              className="border-white/10"
-            >
-              <RotateCcw className="h-4 w-4 mr-2" />
-              {t('deckview.replay')}
-            </Button>
             <Button
               variant="outline"
               size="sm"
