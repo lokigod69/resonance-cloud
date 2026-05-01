@@ -36,7 +36,7 @@ or false sound-alikes.
 For each word, provide these 11 target fields:
 - word_target: the word in {target_language} (correct it if the user typed it in {base_language}; preserve target-language orthography - e.g., capitalize German nouns, keep Romance-language nouns lowercase unless they are proper nouns).
 - translation: concise translation into {base_language}; ideally 1-3 words. Return the bare translated word or phrase only, with no leading articles, no part-of-speech markers, no quotation marks, and no full sentence unless the input itself is a sentence.
-- bridge_mnemonic: a phonetic or associative retrieval hook in {base_language}. Find a sound or pattern in the target word that hooks to a familiar word or image in {base_language}, then build a vivid one-sentence association from that hook. Keep to one sentence. Avoid restating the definition. This is a retrieval hook, not a definition restatement and not a description of an image.
+- bridge_mnemonic: a one-sentence retrieval hook in {base_language}. For single words, build the hook on phonetics or sound-pattern association — find a sound or pattern in the target word that hooks to a familiar word or image in {base_language}, then build a vivid one-sentence association from that hook. For multi-word phrases, build the hook on meaning, usage context, or the underlying metaphor — phrases are too long for sound-pattern matching, so phonetic bridges produce awkward results. Avoid restating the definition. This is a retrieval hook, not a definition restatement and not a description of an image.
 - etymology: word origin only, one sentence maximum, written in {base_language}. Do not ramble about cultural background, usage history, or related words. If the etymology is unknown or unhelpful, return an empty string.
 - pos: part of speech as a single word, such as noun, verb, adjective, adverb, phrase, or interjection.
 - article: definite article in {target_language} where applicable (e.g., "der", "die", "das" for German; "il", "la" for Italian; "le", "la" for French). Return an empty string if not applicable.
@@ -50,6 +50,7 @@ Bridge mnemonic examples:
 - For "sulub-on" (Cebuano, "frustrated"): "Sulub-on contains 'subo' - like you're 'so blue' with frustration."
 - For "enigmatically" (English, advanced): "Enigmatically - think of the Mona Lisa's enigmatic smile, mysterious and unreadable."
 - For "Schadenfreude" (German, "joy at another's misfortune"): "Schaden + Freude = damage + joy - picture joy casting a shadow on someone else's pain."
+- For phrase "let that sink in" (English): "Picture slowly lowering a heavy stone into water - it takes time to reach the bottom; the phrase asks the listener to take time to fully absorb the idea."
 
 Do not produce the legacy mnemonic field. New generations use bridge_mnemonic; legacy mnemonic is kept only for backward compatibility elsewhere.
 

@@ -69,20 +69,24 @@ def create_manifest(
     enrichment = Enrichment()
     if enrichment_data:
         tags_raw = enrichment_data.pop('tags', '')
-        if isinstance(tags_raw, str):
-            tags = [t.strip() for t in tags_raw.split(',') if t.strip()]
-        elif isinstance(tags_raw, list):
-            tags = tags_raw
+        if isinstance(tags_raw, list):
+            tags_str = ", ".join(str(t).strip() for t in tags_raw if str(t).strip())
+        elif isinstance(tags_raw, str):
+            tags_str = tags_raw
         else:
-            tags = []
+            tags_str = ""
         extra = {}
-        known_fields = {'pos', 'ipa', 'article', 'example', 'example_gloss', 'synonyms', 'etymology', 'mnemonic'}
+        known_fields = {
+            'word_target', 'translation', 'bridge_mnemonic',
+            'etymology', 'pos', 'article', 'ipa',
+            'example', 'example_gloss', 'synonyms', 'mnemonic',
+        }
         for k, v in enrichment_data.items():
             if k in known_fields:
                 setattr(enrichment, k, str(v) if v is not None else None)
             else:
                 extra[k] = v
-        enrichment.tags = tags
+        enrichment.tags = tags_str
         enrichment.extra = extra
 
     manifest = Manifest(

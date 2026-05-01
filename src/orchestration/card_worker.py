@@ -1,7 +1,8 @@
 """Card worker: card-deck handoff point for single-image generation.
 
-P3 only claims card words into the existing ``images`` stage. P4 wires the
-Image Engine single-image call and completion.
+P3.5 parks card words at the ``pending_image`` stage, distinct from the
+video pipeline's ``images`` stage which means active multi-scene Image
+Engine work. P4 wires the single-image generation and completion.
 """
 
 from __future__ import annotations
@@ -79,7 +80,7 @@ class CardWorker:
                 self.sb,
                 word_id=word_id,
                 user_id=fresh["user_id"],
-                failed_stage="images",
+                failed_stage="pending_image",
             )
             await self._refresh_deck_status(fresh.get("deck_id"))
             state.clear_log_context()
@@ -87,40 +88,40 @@ class CardWorker:
 
         ok = await state.transition_stage(
             self.sb, word_id,
-            new_stage="images",
+            new_stage="pending_image",
             allowed_prior=["pending"],
             increment_attempts=True,
         )
         if not ok:
             log.warning(
-                "card_worker: word=%s could not enter images (cancelled or raced)",
+                "card_worker: word=%s could not enter pending_image (cancelled or raced)",
                 word_id,
             )
             state.clear_log_context()
             return
 
-        state.set_log_context(stage="images")
-        state.timer_for(word_id).enter("images")
+        state.set_log_context(stage="pending_image")
+        state.timer_for(word_id).enter("pending_image")
 
         try:
             await retry.run_stage_with_budget(
-                stage="images",
+                stage="pending_image",
                 run_once=self._park_for_p4,
             )
         except retry.BudgetExhausted as e:
-            log.error("card_worker: budget exhausted word=%s stage=images: %s", word_id, e)
+            log.error("card_worker: budget exhausted word=%s stage=pending_image: %s", word_id, e)
             await retry.finalize_failure(
                 self.sb,
                 word_id=word_id,
                 user_id=fresh["user_id"],
-                failed_stage="images",
+                failed_stage="pending_image",
             )
             await self._refresh_deck_status(fresh.get("deck_id"))
             state.clear_log_context()
             return
 
         await self._refresh_deck_status(fresh.get("deck_id"))
-        log.info("card_worker: word=%s parked at images for P4", word_id)
+        log.info("card_worker: word=%s parked at pending_image for P4", word_id)
         state.clear_log_context()
 
     async def _park_for_p4(self) -> None:
@@ -154,13 +155,13 @@ class CardWorker:
             for word in words
         ]
 
-        if any(stage not in {"complete", "failed", "cancelled", "images"} for stage in stages):
+        if any(stage not in {"complete", "failed", "cancelled", "pending_image"} for stage in stages):
             deck_status = "generating"
         elif all(stage == "complete" for stage in stages):
             deck_status = "complete"
         elif any(stage == "complete" for stage in stages):
             deck_status = "partial"
-        elif all(stage == "images" for stage in stages):
+        elif all(stage == "pending_image" for stage in stages):
             deck_status = "generating"
         else:
             deck_status = "failed"
