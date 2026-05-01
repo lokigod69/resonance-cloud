@@ -4,14 +4,16 @@
 // Local dev: Vite proxy forwards /api/* to localhost:8090 (FastAPI orchestrator).
 // Production: this serverless function handles the request directly.
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-}
+import { optionsResponse } from './_shared/cors'
+import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit } from './_shared/http'
+import { requireSupabaseUser } from './_shared/auth'
+import { consumeApiQuota } from './_shared/quota'
 
 const SUGGEST_MODEL = 'deepseek/deepseek-v3.2'
 const MAX_TOKENS = 500
+const SUGGEST_WORDS_BODY_MAX_BYTES = 16 * 1024
+const MAX_CATEGORY_LENGTH = 100
+const MAX_LANGUAGE_LENGTH = 50
 
 function buildSystemPrompt(count: number, baseLang: string): string {
   return (
@@ -54,50 +56,73 @@ function stripCodeFences(s: string): string {
   return stripped
 }
 
-function jsonResponse(body: unknown, status: number): Response {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
-  })
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
-export async function OPTIONS(): Promise<Response> {
-  return new Response(null, { status: 204, headers: CORS_HEADERS })
+function readTrimmedString(value: unknown, field: string, maxLength: number, required: boolean): string | undefined {
+  if (value === undefined || value === null) {
+    if (required) throw new ApiError(400, `Invalid or missing ${field}`)
+    return undefined
+  }
+  if (typeof value !== 'string') throw new ApiError(400, `Invalid ${field}`)
+  const trimmed = value.trim()
+  if (required && !trimmed) throw new ApiError(400, `Invalid or missing ${field}`)
+  if (trimmed.length > maxLength) throw new ApiError(400, `${field} is too long`)
+  return trimmed
+}
+
+interface SuggestWordsBody {
+  category: string
+  target_language: string
+  base_language: string
+  count: number
+}
+
+function validateBody(raw: unknown): SuggestWordsBody {
+  if (!isObject(raw)) throw new ApiError(400, 'Request body must be an object')
+  const allowedKeys = new Set(['category', 'target_language', 'base_language', 'count'])
+  for (const key of Object.keys(raw)) {
+    if (!allowedKeys.has(key)) throw new ApiError(400, `Unexpected field: ${key}`)
+  }
+
+  const count = raw.count ?? 5
+  if (!Number.isInteger(count) || (count as number) < 1 || (count as number) > 10) {
+    throw new ApiError(400, 'count must be between 1 and 10')
+  }
+
+  return {
+    category: readTrimmedString(raw.category, 'category', MAX_CATEGORY_LENGTH, true)!,
+    target_language: readTrimmedString(raw.target_language, 'target_language', MAX_LANGUAGE_LENGTH, true)!,
+    base_language: readTrimmedString(raw.base_language, 'base_language', MAX_LANGUAGE_LENGTH, false) || 'English',
+    count: count as number,
+  }
+}
+
+export async function OPTIONS(req?: Request): Promise<Response> {
+  return optionsResponse(req)
 }
 
 export async function POST(req: Request): Promise<Response> {
-  let body: { category?: string; target_language?: string; base_language?: string; count?: number }
+  let body: SuggestWordsBody
   try {
-    body = await req.json()
-  } catch {
-    return jsonResponse({ detail: 'Invalid JSON body' }, 400)
-  }
-
-  const category = body.category
-  const targetLanguage = body.target_language
-  const baseLang = body.base_language || 'English'
-  const count = body.count ?? 5
-
-  if (!category || typeof category !== 'string' || category.length > 100) {
-    return jsonResponse({ detail: 'Invalid or missing category' }, 400)
-  }
-  if (!targetLanguage || typeof targetLanguage !== 'string' || targetLanguage.length > 50) {
-    return jsonResponse({ detail: 'Invalid or missing target_language' }, 400)
-  }
-  if (typeof baseLang !== 'string' || baseLang.length > 50) {
-    return jsonResponse({ detail: 'Invalid base_language' }, 400)
-  }
-  if (typeof count !== 'number' || count < 1 || count > 10) {
-    return jsonResponse({ detail: 'count must be between 1 and 10' }, 400)
+    const user = await requireSupabaseUser(req)
+    const rawBody = await readJsonWithLimit<unknown>(req, SUGGEST_WORDS_BODY_MAX_BYTES)
+    body = validateBody(rawBody)
+    await consumeApiQuota(user.id, 'suggest_words')
+  } catch (err) {
+    if (err instanceof ApiError) return apiErrorResponse(req, err)
+    console.error('suggest-words gate error:', err instanceof Error ? err.message : err)
+    return errorResponse(req, 400, 'Invalid request')
   }
 
   const apiKey = process.env.OPENROUTER_API_KEY
   if (!apiKey) {
-    return jsonResponse({ detail: 'OPENROUTER_API_KEY not set' }, 500)
+    return errorResponse(req, 500, 'Word suggestion service is not configured')
   }
 
-  const systemPrompt = buildSystemPrompt(count, baseLang)
-  const userPrompt = buildUserPrompt(count, category, targetLanguage)
+  const systemPrompt = buildSystemPrompt(body.count, body.base_language)
+  const userPrompt = buildUserPrompt(body.count, body.category, body.target_language)
 
   try {
     const llmRes = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -121,13 +146,13 @@ export async function POST(req: Request): Promise<Response> {
       const detail = status === 429
         ? 'Too many requests. Please wait a moment.'
         : 'Word suggestion service unavailable'
-      return jsonResponse({ detail }, status)
+      return jsonResponse(req, { detail }, status)
     }
 
     const llmData = await llmRes.json()
     const content = llmData?.choices?.[0]?.message?.content
     if (!content) {
-      return jsonResponse({ detail: 'Invalid response from word suggestion service' }, 502)
+      return jsonResponse(req, { detail: 'Invalid response from word suggestion service' }, 502)
     }
 
     const stripped = stripCodeFences(content)
@@ -136,13 +161,13 @@ export async function POST(req: Request): Promise<Response> {
     try {
       parsed = JSON.parse(stripped)
     } catch {
-      console.error('suggest-words: failed to parse LLM JSON:', stripped)
-      return jsonResponse({ detail: 'Invalid response from word suggestion service' }, 502)
+      console.error('suggest-words: failed to parse LLM JSON')
+      return jsonResponse(req, { detail: 'Invalid response from word suggestion service' }, 502)
     }
 
     const rawWords = parsed.words
     if (!Array.isArray(rawWords) || rawWords.length === 0) {
-      return jsonResponse({ detail: 'Invalid response from word suggestion service' }, 502)
+      return jsonResponse(req, { detail: 'Invalid response from word suggestion service' }, 502)
     }
 
     const cleaned = rawWords
@@ -156,16 +181,16 @@ export async function POST(req: Request): Promise<Response> {
       .filter(w => w.word.length > 0)
 
     if (cleaned.length === 0) {
-      return jsonResponse({ detail: 'No valid word entries in LLM response' }, 502)
+      return jsonResponse(req, { detail: 'No valid word entries in LLM response' }, 502)
     }
 
-    return jsonResponse({ words: cleaned }, 200)
+    return jsonResponse(req, { words: cleaned }, 200)
 
   } catch (err) {
-    console.error('suggest-words error:', err)
+    console.error('suggest-words error:', err instanceof Error ? err.message : err)
     if (err instanceof TypeError && err.message.includes('fetch')) {
-      return jsonResponse({ detail: 'Word suggestion service unreachable' }, 502)
+      return jsonResponse(req, { detail: 'Word suggestion service unreachable' }, 502)
     }
-    return jsonResponse({ detail: 'Word suggestion service unavailable' }, 502)
+    return jsonResponse(req, { detail: 'Word suggestion service unavailable' }, 502)
   }
 }

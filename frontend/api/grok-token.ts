@@ -1,14 +1,9 @@
-import { createClient } from '@supabase/supabase-js'
+import { corsHeaders, optionsResponse } from './_shared/cors'
+import { ApiError, apiErrorResponse, errorResponse, rejectBodyOverLimit, sanitizedProviderError } from './_shared/http'
+import { requireSupabaseUser } from './_shared/auth'
+import { consumeApiQuota } from './_shared/quota'
 
-const supabaseUrl = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ''
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || ''
-const xaiApiKey = process.env.XAI_API_KEY || ''
-
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Authorization, Content-Type',
-}
+const GROK_TOKEN_BODY_MAX_BYTES = 1024
 
 function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, label: string): Promise<Response> {
   const controller = new AbortController()
@@ -31,40 +26,24 @@ function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number, 
     })
 }
 
-function json(body: unknown, status: number): Response {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
-  })
-}
-
-export async function OPTIONS(): Promise<Response> {
-  return new Response(null, { status: 204, headers: CORS_HEADERS })
+export async function OPTIONS(req?: Request): Promise<Response> {
+  return optionsResponse(req)
 }
 
 export async function POST(req: Request): Promise<Response> {
-  const authHeader = req.headers.get('Authorization')
-  const jwt = authHeader?.startsWith('Bearer ') ? authHeader.slice(7).trim() : ''
-
-  if (!jwt) {
-    return json({ error: 'Missing authentication' }, 401)
+  try {
+    const user = await requireSupabaseUser(req)
+    await rejectBodyOverLimit(req, GROK_TOKEN_BODY_MAX_BYTES)
+    await consumeApiQuota(user.id, 'grok_token')
+  } catch (err) {
+    if (err instanceof ApiError) return apiErrorResponse(req, err)
+    console.error('[grok-token] Request gate failed:', err instanceof Error ? err.message : err)
+    return errorResponse(req, 400, 'Invalid request')
   }
 
-  if (!supabaseUrl || !supabaseAnonKey) {
-    return json({ error: 'Supabase auth client not configured' }, 500)
-  }
-
-  const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
-  console.log('[grok-token] Supabase auth.getUser — starting')
-  const { data, error } = await supabase.auth.getUser(jwt)
-  console.log(`[grok-token] Supabase auth.getUser — completed (${error ? 'error' : data.user ? 'ok' : 'no-user'})`)
-  if (error || !data.user) {
-    return json({ error: 'Invalid session' }, 401)
-  }
-
+  const xaiApiKey = process.env.XAI_API_KEY || ''
   if (!xaiApiKey) {
-    return json({ error: 'XAI_API_KEY not configured' }, 500)
+    return errorResponse(req, 500, 'Token service is not configured')
   }
 
   let response: Response
@@ -80,17 +59,18 @@ export async function POST(req: Request): Promise<Response> {
       }),
     }, 10000, 'xAI realtime client secret')
   } catch (err) {
-    return json({ error: err instanceof Error ? err.message : 'Token exchange failed' }, 502)
+    console.error('[grok-token] Token exchange failed:', err instanceof Error ? err.message : err)
+    return sanitizedProviderError(req, 'Token exchange failed')
   }
 
   const text = await response.text()
   if (!response.ok) {
-    console.error('[grok-token] xAI realtime client secret failed:', response.status, text)
-    return json({ error: 'Token exchange failed' }, 502)
+    console.error('[grok-token] xAI realtime client secret failed:', response.status)
+    return sanitizedProviderError(req, 'Token exchange failed')
   }
 
   return new Response(text, {
     status: 200,
-    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+    headers: { ...corsHeaders(req), 'Content-Type': 'application/json' },
   })
 }

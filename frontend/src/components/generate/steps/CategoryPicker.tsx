@@ -5,6 +5,7 @@ import PillButton from '../shared/PillButton'
 import { CATEGORY_GROUPS } from '@/data/categories'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { supabase } from '@/lib/supabase'
 import type { WizardState, WizardAction } from '../useWizardState'
 
 // NOTE: suggest-words endpoint requires the local orchestrator (port 8090).
@@ -55,9 +56,17 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
     setActiveCategory(category)
     setMode('loading')
     try {
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
+      if (sessionError || !sessionData.session?.access_token) {
+        throw new Error('Your session expired. Please sign in again.')
+      }
+
       const res = await fetch('/api/suggest-words', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${sessionData.session.access_token}`,
+        },
         body: JSON.stringify({
           category,
           target_language: targetLanguage,
@@ -66,11 +75,11 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
         }),
       })
       if (!res.ok) {
-        const detail = await res.text()
-        throw new Error(detail || `HTTP ${res.status}`)
+        const errorBody = await res.json().catch(() => null) as { detail?: string; error?: string } | null
+        throw new Error(errorBody?.detail || errorBody?.error || `HTTP ${res.status}`)
       }
-      const data = (await res.json()) as { words: Array<{ word: string; translation: string }> }
-      const next: Slot[] = (data.words || []).slice(0, SUGGEST_COUNT).map((w) => ({
+      const suggestionData = (await res.json()) as { words: Array<{ word: string; translation: string }> }
+      const next: Slot[] = (suggestionData.words || []).slice(0, SUGGEST_COUNT).map((w) => ({
         kind: 'filled',
         word: w.word,
         translation: w.translation,

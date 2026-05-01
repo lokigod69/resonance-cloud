@@ -477,9 +477,17 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
 
       let res: Response
       try {
+        const { data, error: sessionError } = await supabase.auth.getSession()
+        if (sessionError || !data.session?.access_token) {
+          throw new Error('Your session expired. Please sign in again.')
+        }
+
         res = await fetch('/api/voice-chat', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${data.session.access_token}`,
+          },
           body: JSON.stringify(body),
           signal: controller.signal,
         })
