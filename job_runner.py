@@ -30,12 +30,14 @@ from src.orchestration.state import install_correlation_filter
 SUPABASE_URL = os.getenv("SUPABASE_URL", "")
 SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY", "") or os.getenv("SUPABASE_KEY", "")
 UPSTREAM_QUEUE_DEPTH = int(os.getenv("UPSTREAM_QUEUE_DEPTH", "3"))   # §5.1
+CARD_QUEUE_DEPTH = int(os.getenv("CARD_QUEUE_DEPTH", "5"))
 VIDEO_QUEUE_DEPTH = int(os.getenv("VIDEO_QUEUE_DEPTH", "2"))         # §5.2
 POST_VIDEO_QUEUE_DEPTH = int(os.getenv("POST_VIDEO_QUEUE_DEPTH", "8"))
 FEEDER_POLL_INTERVAL = float(os.getenv("FEEDER_POLL_INTERVAL", "5"))
 FINALIZER_POLL_INTERVAL = float(os.getenv("FINALIZER_POLL_INTERVAL", "30"))
 METRICS_INTERVAL = float(os.getenv("METRICS_INTERVAL", "60"))
 VIDEO_CONCURRENCY = int(os.getenv("VIDEO_CONCURRENCY", "1"))
+CARD_CONCURRENCY = int(os.getenv("CARD_CONCURRENCY", "2"))
 
 # HIGH-5: job_runner.py owns the logging format; start_cloud.py must NOT
 # call basicConfig before job_runner imports. `force=True` makes this the
@@ -269,6 +271,7 @@ async def main() -> None:
         await asyncio.to_thread(_insert)
 
     upstream_queue = asyncio.Queue(maxsize=UPSTREAM_QUEUE_DEPTH)
+    card_queue = asyncio.Queue(maxsize=CARD_QUEUE_DEPTH)
     video_queue = asyncio.Queue(maxsize=VIDEO_QUEUE_DEPTH)
     post_video_queue = asyncio.Queue(maxsize=POST_VIDEO_QUEUE_DEPTH)
 
@@ -283,6 +286,7 @@ async def main() -> None:
 
     from src.orchestration.feeder import Feeder, make_bootstrap_callable
     from src.orchestration.upstream_worker import UpstreamWorker
+    from src.orchestration.card_worker import CardWorker
     from src.orchestration.video_dispatcher import VideoDispatcher
     from src.orchestration.downstream_worker import make_downstream_workers
     from src.orchestration.finalizer import Finalizer
@@ -293,7 +297,11 @@ async def main() -> None:
         upstream_queue=upstream_queue,
         video_queue=video_queue,
         post_video_queue=post_video_queue,
-        bootstrap=make_bootstrap_callable(sb, upstream_queue=upstream_queue),
+        bootstrap=make_bootstrap_callable(
+            sb,
+            upstream_queue=upstream_queue,
+            card_queue=card_queue,
+        ),
         poll_interval=FEEDER_POLL_INTERVAL,
     )
     upstream = UpstreamWorker(
@@ -301,6 +309,10 @@ async def main() -> None:
         upstream_queue=upstream_queue,
         video_queue=video_queue,
     )
+    card_workers = [
+        CardWorker(sb, card_queue=card_queue)
+        for _ in range(CARD_CONCURRENCY)
+    ]
     dispatcher = VideoDispatcher(
         sb,
         video_queue=video_queue,
@@ -328,6 +340,10 @@ async def main() -> None:
         asyncio.create_task(metrics.run(), name="metrics"),
     ]
     tasks.extend(
+        asyncio.create_task(w.run(), name=f"card_worker-{i}")
+        for i, w in enumerate(card_workers)
+    )
+    tasks.extend(
         asyncio.create_task(w.run(), name=f"downstream-{i}")
         for i, w in enumerate(downstream)
     )
@@ -347,6 +363,8 @@ async def main() -> None:
         feeder.stop()
         # Upstream/downstream finish current stage and exit.
         upstream.stop()
+        for w in card_workers:
+            w.stop()
         for w in downstream:
             w.stop()
         # Video dispatcher does NOT wait for in-flight renders (§6.7). Cancel.

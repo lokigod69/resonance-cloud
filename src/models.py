@@ -18,7 +18,7 @@ class Enrichment(BaseModel):
     example: Optional[str] = ""
     example_gloss: Optional[str] = ""
     synonyms: Optional[str] = ""
-    tags: Optional[str | list[str]] = ""
+    tags: Optional[str] = ""
     mnemonic: Optional[str] = ""
     extra: dict[str, Any] = {}
 

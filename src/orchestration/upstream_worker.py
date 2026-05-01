@@ -249,7 +249,7 @@ class UpstreamWorker:
         workspace_path: Path,
         word_slug: str,
     ) -> None:
-        """Overwrite words.mnemonic with the storyboard's `mnemonic_text`.
+        """Write the storyboard's `mnemonic_text` to words.visual_mnemonic.
 
         The storyboard writes mnemonic_text in base_language (matches
         `translation`); enrichment's mnemonic has no language anchor.
@@ -286,7 +286,7 @@ class UpstreamWorker:
             def _write(wid=word["id"], mn=storyboard_mnemonic):
                 return (
                     self.sb.table("words")
-                      .update({"mnemonic": mn})
+                      .update({"visual_mnemonic": mn})
                       .eq("id", wid)
                       .execute()
                 )

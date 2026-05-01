@@ -462,8 +462,9 @@ async def bootstrap_job(
     job: dict[str, Any],
     *,
     upstream_queue: asyncio.Queue,
+    card_queue: asyncio.Queue | None = None,
 ) -> None:
-    """Prepare a job's words and push them onto the upstream queue.
+    """Prepare a job's words and push them onto the deck-type queue.
 
     Ordering invariant (HIGH-2): Supabase word rows are NOT set to
     current_stage='pending' until AFTER the workspace/manifest have been
@@ -494,6 +495,22 @@ async def bootstrap_job(
         "bootstrap: job=%s user=%s deck=%s lang=%s",
         job_id, user_id, deck_id, target_language,
     )
+
+    def _read_deck():
+        return (
+            sb.table("decks")
+              .select("deck_type")
+              .eq("id", deck_id)
+              .maybe_single()
+              .execute()
+        )
+    try:
+        deck_resp = await asyncio.to_thread(_read_deck)
+        deck = getattr(deck_resp, "data", None) or {}
+    except Exception as e:
+        log.warning("bootstrap: deck_type read failed deck=%s: %s", deck_id, e)
+        deck = {}
+    deck_type = str(deck.get("deck_type") or "video").lower()
 
     # Profile + settings merge
     def _read_profile():
@@ -640,7 +657,7 @@ async def bootstrap_job(
 
         update_data: dict[str, Any] = {
             "translation": e.get("translation", ""),
-            "mnemonic": e.get("mnemonic", ""),
+            "bridge_mnemonic": e.get("bridge_mnemonic", "") or "",
             "etymology": e.get("etymology", ""),
             "pos": e.get("pos", ""),
             "article": e.get("article"),
@@ -703,6 +720,8 @@ async def bootstrap_job(
         input_type = "phrase" if " " in word_text else "word"
         word_slug = slugify(word_text)
         translation = e.get("translation", "")
+        raw_tags = e.get("tags", "")
+        tags_str = ", ".join(str(t) for t in raw_tags) if isinstance(raw_tags, list) else (raw_tags or "")
 
         # Step 2: slug + music_state to Supabase (NOT current_stage)
         def _save_slug(
@@ -739,7 +758,12 @@ async def bootstrap_job(
             "pos": e.get("pos"),
             "article": e.get("article"),
             "etymology": e.get("etymology"),
-            "mnemonic": e.get("mnemonic"),
+            "bridge_mnemonic": e.get("bridge_mnemonic", "") or "",
+            "ipa": e.get("ipa", "") or "",
+            "example": e.get("example", "") or "",
+            "example_gloss": e.get("example_gloss", "") or "",
+            "synonyms": e.get("synonyms", "") or "",
+            "tags": tags_str,
         }
         identity = {
             "word_id": word_rec.get("id"),
@@ -784,17 +808,41 @@ async def bootstrap_job(
     if not exposed:
         raise RuntimeError("no words landed in pending after bootstrap")
 
+    if deck_type == "card":
+        if card_queue is None:
+            raise RuntimeError("card deck requires card_queue")
+        target_queue = card_queue
+        queue_name = "card"
+    else:
+        if deck_type != "video":
+            log.info(
+                "bootstrap: deck=%s has deck_type=%r; falling back to video queue",
+                deck_id, deck_type,
+            )
+        target_queue = upstream_queue
+        queue_name = "upstream"
+
     # Push words in deck order. `put()` blocks on capacity.
     for word_rec in exposed:
-        await upstream_queue.put(word_rec)
+        await target_queue.put(word_rec)
 
     log.info(
-        "bootstrap: pushed %d words to upstream queue (deck=%s)",
-        len(exposed), deck_id,
+        "bootstrap: pushed %d words to %s queue (deck=%s type=%s)",
+        len(exposed), queue_name, deck_id, deck_type,
     )
 
 
-def make_bootstrap_callable(sb, *, upstream_queue: asyncio.Queue):
+def make_bootstrap_callable(
+    sb,
+    *,
+    upstream_queue: asyncio.Queue,
+    card_queue: asyncio.Queue,
+):
     async def _bootstrap(job: dict[str, Any]) -> None:
-        await bootstrap_job(sb, job, upstream_queue=upstream_queue)
+        await bootstrap_job(
+            sb,
+            job,
+            upstream_queue=upstream_queue,
+            card_queue=card_queue,
+        )
     return _bootstrap
