@@ -165,6 +165,12 @@ def test_crit2_placeholder_branch_claim_exclusive():
 def test_crit2_downstream_worker_process_word_claims_exclusively(monkeypatch, tmp_path):
     from src.orchestration.downstream_worker import DownstreamWorker
 
+    _install_module(
+        monkeypatch,
+        "src.storage",
+        get_job_workspace_path=lambda user_id, deck_id: tmp_path,
+    )
+
     sb = FakeSupabase()
     word = sb.add_word(
         current_stage="post_video_queued",
@@ -188,8 +194,8 @@ def test_crit2_downstream_worker_process_word_claims_exclusively(monkeypatch, tm
 
     async def _main():
         await asyncio.gather(
-            w1._process_word({**word, "_workspace_path": str(tmp_path)}),
-            w2._process_word({**word, "_workspace_path": str(tmp_path)}),
+            w1._process_word({**word}),
+            w2._process_word({**word}),
         )
 
     _run(_main())
@@ -229,6 +235,12 @@ def test_crit5_inline_submit_failure_routes_through_placeholder_worker_path(
     monkeypatch, tmp_path,
 ):
     from src.orchestration.downstream_worker import DownstreamWorker
+
+    _install_module(
+        monkeypatch,
+        "src.storage",
+        get_job_workspace_path=lambda user_id, deck_id: tmp_path,
+    )
 
     sb = FakeSupabase()
     word = sb.add_word(
@@ -280,7 +292,7 @@ def test_crit5_inline_submit_failure_routes_through_placeholder_worker_path(
     monkeypatch.setattr(DownstreamWorker, "_run_ab_pipeline", _placeholder)
 
     worker = DownstreamWorker(sb, post_video_queue=asyncio.Queue(maxsize=1))
-    _run(worker._process_word({**word, "_workspace_path": str(tmp_path)}))
+    _run(worker._process_word({**word}))
 
     row = sb._tables["words"][0]
     assert placeholder_calls["n"] == 1
