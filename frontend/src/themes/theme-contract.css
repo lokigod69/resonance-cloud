@@ -105,8 +105,8 @@ body {
 .skin-classic.theme-red-wine,
 .skin-classic.theme-rainy-day {
   --shell-bg:
-    radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--accent) 1.5%, transparent), transparent 38%),
-    radial-gradient(circle at 82% 20%, color-mix(in srgb, var(--accent-2) 1%, transparent), transparent 36%),
+    radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--accent) 3%, transparent), transparent 38%),
+    radial-gradient(circle at 82% 20%, color-mix(in srgb, var(--accent-2) 2%, transparent), transparent 36%),
     linear-gradient(135deg, #0a0a0c, #0d0d0f 52%, #0a0a0c);
 }
 
