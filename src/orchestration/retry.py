@@ -47,12 +47,18 @@ async def finalize_failure(
     word_id: str,
     user_id: str,
     failed_stage: str,
+    error_message: Optional[str] = None,
 ) -> bool:
     """Terminal failure via `mark_word_failed` RPC + refund on rowcount=1.
 
     Returns True iff this replica owned the failure (and refunded).
     """
-    owned = await state.mark_failed(sb, word_id, failed_stage=failed_stage)
+    owned = await state.mark_failed(
+        sb,
+        word_id,
+        failed_stage=failed_stage,
+        error_message=error_message,
+    )
     if not owned:
         log.info(
             "finalize_failure: %s already marked failed by another replica",

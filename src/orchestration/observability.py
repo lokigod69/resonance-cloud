@@ -15,7 +15,10 @@ from . import state
 log = logging.getLogger(__name__)
 
 REPORT_INTERVAL = 60.0
-SLOW_STAGE_ALERT_SECONDS = 5 * 60
+SLOW_STAGE_THRESHOLDS_SECONDS = {
+    "suno_bake": 300.0,
+    "pending_image": 180.0,
+}
 RETRY_WAIT_ALERT_SECONDS = 30 * 60
 
 
@@ -27,8 +30,10 @@ class MetricsReporter:
         upstream_queue: asyncio.Queue,
         video_queue: asyncio.Queue,
         post_video_queue: asyncio.Queue,
+        card_queue: asyncio.Queue,
         upstream_worker=None,            # UpstreamWorker instance or None
         video_dispatcher=None,           # VideoDispatcher instance or None
+        card_workers: Sequence = (),
         downstream_workers: Sequence = (),
         interval: float = REPORT_INTERVAL,
     ):
@@ -36,8 +41,10 @@ class MetricsReporter:
         self.upstream_queue = upstream_queue
         self.video_queue = video_queue
         self.post_video_queue = post_video_queue
+        self.card_queue = card_queue
         self.upstream_worker = upstream_worker
         self.video_dispatcher = video_dispatcher
+        self.card_workers = card_workers
         self.downstream_workers = downstream_workers
         self.interval = interval
         self._stopped = asyncio.Event()
@@ -66,22 +73,28 @@ class MetricsReporter:
         downstream_busy = sum(
             1 for w in self.downstream_workers if bool(getattr(w, "busy", False))
         )
+        card_busy = sum(
+            1 for w in self.card_workers if bool(getattr(w, "busy", False))
+        )
 
         log.info(
-            "metrics: queues up=%d video=%d post_video=%d | "
-            "active upstream=%d video=%d downstream=%d/%d | "
+            "metrics: queues up=%d video=%d post_video=%d card=%d | "
+            "active upstream=%d video=%d card=%d/%d downstream=%d/%d | "
             "stage_timers=%d",
             self.upstream_queue.qsize(),
             self.video_queue.qsize(),
             self.post_video_queue.qsize(),
+            self.card_queue.qsize(),
             1 if upstream_busy else 0,
             video_active,
+            card_busy,
+            len(self.card_workers),
             downstream_busy,
             len(self.downstream_workers),
             state.active_timer_count(),
         )
         await self._report_retry_wait()
-        await self._report_slow_suno_bake()
+        await self._report_slow_stages(SLOW_STAGE_THRESHOLDS_SECONDS)
 
     async def _report_retry_wait(self) -> None:
         def _do():
@@ -114,30 +127,32 @@ class MetricsReporter:
         else:
             log.info("metrics: oldest retry age=%.0fs", age)
 
-    async def _report_slow_suno_bake(self) -> None:
-        def _do():
-            return (
-                self.sb.table("words")
-                  .select("id, stage_started_at")
-                  .eq("current_stage", "suno_bake")
-                  .execute()
-            )
-        try:
-            resp = await asyncio.to_thread(_do)
-        except Exception:
-            return
-        rows = list(getattr(resp, "data", None) or [])
-        for row in rows:
-            ts = row.get("stage_started_at")
-            if not ts:
-                continue
-            try:
-                dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
-            except ValueError:
-                continue
-            age = (datetime.now(timezone.utc) - dt).total_seconds()
-            if age >= SLOW_STAGE_ALERT_SECONDS:
-                log.warning(
-                    "metrics: word=%s stuck in suno_bake %.0fs (>= %ds)",
-                    row.get("id"), age, SLOW_STAGE_ALERT_SECONDS,
+    async def _report_slow_stages(self, thresholds: dict[str, float]) -> None:
+        now = datetime.now(timezone.utc)
+        for stage, threshold in thresholds.items():
+            def _do():
+                return (
+                    self.sb.table("words")
+                      .select("id, stage_started_at")
+                      .eq("current_stage", stage)
+                      .execute()
                 )
+            try:
+                resp = await asyncio.to_thread(_do)
+            except Exception:
+                continue
+            rows = list(getattr(resp, "data", None) or [])
+            for row in rows:
+                ts = row.get("stage_started_at")
+                if not ts:
+                    continue
+                try:
+                    dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+                except ValueError:
+                    continue
+                age = (now - dt).total_seconds()
+                if age >= threshold:
+                    log.warning(
+                        "metrics: word=%s stuck in %s %.0fs (>= %ds)",
+                        row.get("id"), stage, age, threshold,
+                    )

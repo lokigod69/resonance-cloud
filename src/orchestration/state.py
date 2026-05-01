@@ -235,16 +235,20 @@ async def mark_failed(
     word_id: str,
     *,
     failed_stage: str,
+    error_message: Optional[str] = None,
 ) -> bool:
     """Atomic terminal failure (§7.5) via `mark_word_failed` RPC.
 
     Returns True iff this replica owns the failure (safe to refund_credit).
     """
     def _do():
-        return sb.rpc("mark_word_failed", {
+        params = {
             "p_word_id": word_id,
             "p_failed_stage": failed_stage,
-        }).execute()
+        }
+        if error_message is not None:
+            params["p_error_message"] = error_message
+        return sb.rpc("mark_word_failed", params).execute()
 
     try:
         resp = await _execute(_do)

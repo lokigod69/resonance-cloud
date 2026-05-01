@@ -330,8 +330,10 @@ async def main() -> None:
         upstream_queue=upstream_queue,
         video_queue=video_queue,
         post_video_queue=post_video_queue,
+        card_queue=card_queue,
         upstream_worker=upstream,
         video_dispatcher=dispatcher,
+        card_workers=card_workers,
         downstream_workers=downstream,
         interval=METRICS_INTERVAL,
     )

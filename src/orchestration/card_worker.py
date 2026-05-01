@@ -11,11 +11,34 @@ import asyncio
 from datetime import datetime, timezone
 import logging
 from pathlib import Path
+import time
 from typing import Any
+
+from src.services.events import write_event_row
 
 from . import retry, state
 
 log = logging.getLogger(__name__)
+MAX_ERROR_MESSAGE_CHARS = 500
+
+
+def _bounded_error_message(step: str, error: BaseException | str) -> str:
+    if isinstance(error, BaseException):
+        message = f"{step}: {type(error).__name__}: {error}"
+    else:
+        message = f"{step}: {error}"
+    return message[:MAX_ERROR_MESSAGE_CHARS]
+
+
+def _card_generation_error_message(message: str) -> str:
+    lowered = message.lower()
+    if "llm" in lowered:
+        step = "LLM"
+    elif "provider" in lowered or "render" in lowered:
+        step = "provider"
+    else:
+        step = "card image generation"
+    return _bounded_error_message(step, message)
 
 
 class CardWorker:
@@ -77,12 +100,14 @@ class CardWorker:
 
         word_slug = fresh.get("word_slug")
         if not word_slug:
+            error_message = _bounded_error_message("bootstrap", "missing word_slug")
             log.error("card_worker: word=%s has no word_slug", word_id)
             await retry.finalize_failure(
                 self.sb,
                 word_id=word_id,
                 user_id=fresh["user_id"],
                 failed_stage="pending_image",
+                error_message=error_message,
             )
             await self._refresh_deck_status(fresh.get("deck_id"))
             state.clear_log_context()
@@ -117,6 +142,7 @@ class CardWorker:
         try:
             manifest = read_manifest(word_dir)
         except Exception as e:
+            error_message = _bounded_error_message("manifest", e)
             log.error(
                 "card_worker: manifest unreadable word=%s dir=%s: %s",
                 word_id, word_dir, e,
@@ -126,6 +152,7 @@ class CardWorker:
                 word_id=word_id,
                 user_id=fresh["user_id"],
                 failed_stage="pending_image",
+                error_message=error_message,
             )
             await self._refresh_deck_status(fresh.get("deck_id"))
             state.clear_log_context()
@@ -139,14 +166,25 @@ class CardWorker:
             "manifest": manifest,
             "settings": settings,
         }
+        last_error_message: str | None = None
 
         async def _once() -> None:
+            nonlocal last_error_message
             latest = await state.fetch_word(self.sb, word_id)
             if latest is None:
-                raise RuntimeError(f"word {word_id} vanished")
-            ok = await self._generate_card_image(latest, deck_context)
+                last_error_message = _bounded_error_message(
+                    "DB readback", f"word {word_id} vanished"
+                )
+                raise RuntimeError(last_error_message)
+            ok, error_message = await self._generate_card_image(latest, deck_context)
             if not ok:
-                raise RuntimeError("card image generation flow returned false")
+                last_error_message = (
+                    error_message
+                    or _bounded_error_message(
+                        "card image generation", "flow returned false"
+                    )
+                )
+                raise RuntimeError(last_error_message)
 
         async def _bump() -> bool:
             return await retry.bump_same_stage_or_release(
@@ -163,12 +201,17 @@ class CardWorker:
             state.clear_log_context()
             return
         except retry.BudgetExhausted as e:
+            error_message = (
+                last_error_message
+                or _bounded_error_message("pending_image", e)
+            )
             log.error("card_worker: budget exhausted word=%s stage=pending_image: %s", word_id, e)
             await retry.finalize_failure(
                 self.sb,
                 word_id=word_id,
                 user_id=fresh["user_id"],
                 failed_stage="pending_image",
+                error_message=error_message,
             )
             await self._refresh_deck_status(fresh.get("deck_id"))
             state.clear_log_context()
@@ -178,8 +221,12 @@ class CardWorker:
         log.info("card_worker: word=%s completed card image generation", word_id)
         state.clear_log_context()
 
-    async def _generate_card_image(self, word: dict[str, Any], deck_context: dict[str, Any]) -> bool:
-        """Generate, upload, and persist one card image. Return True on success."""
+    async def _generate_card_image(
+        self,
+        word: dict[str, Any],
+        deck_context: dict[str, Any],
+    ) -> tuple[bool, str | None]:
+        """Generate, upload, and persist one card image."""
         from cloud_engines.image_engine.card_engine import generate_card_image
         from cloud_engines.image_engine.card_models import (
             CardImageContent,
@@ -231,16 +278,17 @@ class CardWorker:
         if result.status != "success" or not result.image_path:
             message = result.error.message if result.error else "unknown card image error"
             log.warning("card_worker: card image generation failed word=%s: %s", word.get("id"), message)
-            return False
+            return False, _card_generation_error_message(message)
 
-        public_url = await self._upload_card_image(
+        public_url, upload_error = await self._upload_card_image(
             image_path=Path(result.image_path),
+            word=word,
             user_id=str(word["user_id"]),
             deck_id=str(word["deck_id"]),
             word_slug=word_slug,
         )
         if not public_url:
-            return False
+            return False, upload_error
 
         def _write_thumbnail():
             return (
@@ -250,11 +298,41 @@ class CardWorker:
                   .execute()
             )
 
+        db_started = time.monotonic()
         try:
             await asyncio.to_thread(_write_thumbnail)
         except Exception as e:
+            error_message = _bounded_error_message("DB writeback", e)
+            write_event_row(
+                stage="pending_image",
+                sub_step="thumbnail_db_write",
+                status="failed",
+                event_source="orchestrator",
+                word_id=word.get("id"),
+                deck_id=word.get("deck_id"),
+                user_id=word.get("user_id"),
+                job_id=word.get("generation_job_id"),
+                attempt=word.get("stage_attempts"),
+                error_message=error_message,
+                error_type=type(e).__name__,
+                latency_ms=int((time.monotonic() - db_started) * 1000),
+                metadata={"thumbnail_url": public_url},
+            )
             log.error("card_worker: thumbnail_url write failed word=%s: %s", word.get("id"), e)
-            return False
+            return False, error_message
+        write_event_row(
+            stage="pending_image",
+            sub_step="thumbnail_db_write",
+            status="success",
+            event_source="orchestrator",
+            word_id=word.get("id"),
+            deck_id=word.get("deck_id"),
+            user_id=word.get("user_id"),
+            job_id=word.get("generation_job_id"),
+            attempt=word.get("stage_attempts"),
+            latency_ms=int((time.monotonic() - db_started) * 1000),
+            metadata={"thumbnail_url": public_url},
+        )
 
         transitioned = await state.transition_stage(
             self.sb, word["id"],
@@ -267,23 +345,46 @@ class CardWorker:
                 "card_worker: word=%s could not transition pending_image -> complete",
                 word.get("id"),
             )
-            return False
+            return (
+                False,
+                _bounded_error_message(
+                    "stage transition", "pending_image -> complete rejected"
+                ),
+            )
 
         log.info("card_worker: thumbnail_url populated word=%s url=%s", word.get("id"), public_url)
-        return True
+        return True, None
 
     async def _upload_card_image(
         self,
         *,
         image_path: Path,
+        word: dict[str, Any],
         user_id: str,
         deck_id: str,
         word_slug: str,
-    ) -> str | None:
+    ) -> tuple[str | None, str | None]:
         """Upload a card PNG to the existing videos bucket and return its public URL."""
         if not image_path.exists():
+            error_message = _bounded_error_message(
+                "upload", f"card image missing: {image_path}"
+            )
+            write_event_row(
+                stage="pending_image",
+                sub_step="card_image_upload",
+                status="failed",
+                event_source="orchestrator",
+                word_id=word.get("id"),
+                deck_id=word.get("deck_id"),
+                user_id=word.get("user_id"),
+                job_id=word.get("generation_job_id"),
+                attempt=word.get("stage_attempts"),
+                error_message=error_message,
+                error_type="FileNotFoundError",
+                metadata={"image_path": str(image_path)},
+            )
             log.error("card_worker: card image missing: %s", image_path)
-            return None
+            return None, error_message
 
         storage_key = f"{user_id}/{deck_id}/cards/{word_slug}.png"
 
@@ -296,11 +397,47 @@ class CardWorker:
                 )
             return self.sb.storage.from_("videos").get_public_url(storage_key)
 
+        upload_started = time.monotonic()
         try:
-            return await asyncio.to_thread(_upload)
+            public_url = await asyncio.to_thread(_upload)
         except Exception as e:
+            error_message = _bounded_error_message("upload", e)
+            write_event_row(
+                stage="pending_image",
+                sub_step="card_image_upload",
+                status="failed",
+                event_source="orchestrator",
+                word_id=word.get("id"),
+                deck_id=word.get("deck_id"),
+                user_id=word.get("user_id"),
+                job_id=word.get("generation_job_id"),
+                attempt=word.get("stage_attempts"),
+                error_message=error_message,
+                error_type=type(e).__name__,
+                latency_ms=int((time.monotonic() - upload_started) * 1000),
+                metadata={"storage_key": storage_key, "bucket": "videos"},
+            )
             log.error("card_worker: card image upload failed key=%s: %s", storage_key, e)
-            return None
+            return None, error_message
+        write_event_row(
+            stage="pending_image",
+            sub_step="card_image_upload",
+            status="success",
+            event_source="orchestrator",
+            word_id=word.get("id"),
+            deck_id=word.get("deck_id"),
+            user_id=word.get("user_id"),
+            job_id=word.get("generation_job_id"),
+            attempt=word.get("stage_attempts"),
+            latency_ms=int((time.monotonic() - upload_started) * 1000),
+            metadata={
+                "storage_key": storage_key,
+                "bucket": "videos",
+                "public_url": public_url,
+                "image_size_bytes": image_path.stat().st_size,
+            },
+        )
+        return public_url, None
 
     async def _refresh_deck_status(self, deck_id: str | None) -> None:
         if not deck_id:

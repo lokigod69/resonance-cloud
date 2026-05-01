@@ -21,7 +21,7 @@ import httpx
 from pydantic import ValidationError
 
 from src.cost_logger import estimate_openrouter_cost, log_cost
-from src.services.events import logged_llm_call
+from src.services.events import logged_api_call, logged_llm_call
 
 from . import config
 from .card_models import CardImagePayload, CardImagePromptData, CardImageResult
@@ -146,54 +146,106 @@ def _render_card_image(
     if model_id == "z-image-turbo":
         from .z_image_turbo_provider import render_scene_z_image_turbo
 
-        return render_scene_z_image_turbo(
-            image_prompt=prompt_payload,
-            model_id=model_id,
-            output_path=output_path,
-            aspect_ratio=image_prompt.aspect_ratio,
-            input_urls=None,
-            use_color_palette=False,
-            art_style=art_style,
-        )
+        with logged_api_call(
+            stage="pending_image",
+            sub_step="render_card_image",
+            event_source="engine",
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
+            model_provider="z_image_turbo",
+            model_name=model_id,
+            metadata={"card_image_style": payload.card_image_style},
+        ):
+            return render_scene_z_image_turbo(
+                image_prompt=prompt_payload,
+                model_id=model_id,
+                output_path=output_path,
+                aspect_ratio=image_prompt.aspect_ratio,
+                input_urls=None,
+                use_color_palette=False,
+                art_style=art_style,
+            )
 
     if model_id.startswith("flux-2/"):
         from .kie_provider import render_scene_kie_flux
 
-        return render_scene_kie_flux(
-            image_prompt=prompt_payload,
-            model_id=model_id,
-            output_path=output_path,
-            aspect_ratio=image_prompt.aspect_ratio,
-            chain_instruction=None,
-            input_urls=None,
-            use_color_palette=False,
-        )
+        with logged_api_call(
+            stage="pending_image",
+            sub_step="render_card_image",
+            event_source="engine",
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
+            model_provider="kie_ai",
+            model_name=model_id,
+            metadata={"card_image_style": payload.card_image_style},
+        ):
+            return render_scene_kie_flux(
+                image_prompt=prompt_payload,
+                model_id=model_id,
+                output_path=output_path,
+                aspect_ratio=image_prompt.aspect_ratio,
+                chain_instruction=None,
+                input_urls=None,
+                use_color_palette=False,
+            )
 
     if model_id.startswith("wan/"):
         from .wan_provider import render_scene_wan
 
-        return render_scene_wan(
-            image_prompt=prompt_payload,
-            model_id=model_id,
-            output_path=output_path,
-            aspect_ratio=image_prompt.aspect_ratio,
-            input_urls=None,
-            use_color_palette=False,
-            art_style=art_style,
-        )
+        with logged_api_call(
+            stage="pending_image",
+            sub_step="render_card_image",
+            event_source="engine",
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
+            model_provider="wan",
+            model_name=model_id,
+            metadata={"card_image_style": payload.card_image_style},
+        ):
+            return render_scene_wan(
+                image_prompt=prompt_payload,
+                model_id=model_id,
+                output_path=output_path,
+                aspect_ratio=image_prompt.aspect_ratio,
+                input_urls=None,
+                use_color_palette=False,
+                art_style=art_style,
+            )
 
     if model_id.startswith("seedream/"):
         from .seedream_provider import render_scene_seedream
 
-        return render_scene_seedream(
-            image_prompt=prompt_payload,
-            model_id=model_id,
-            output_path=output_path,
-            aspect_ratio=image_prompt.aspect_ratio,
-            input_urls=None,
-            use_color_palette=False,
-            art_style=art_style,
-        )
+        with logged_api_call(
+            stage="pending_image",
+            sub_step="render_card_image",
+            event_source="engine",
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
+            model_provider="seedream",
+            model_name=model_id,
+            metadata={"card_image_style": payload.card_image_style},
+        ):
+            return render_scene_seedream(
+                image_prompt=prompt_payload,
+                model_id=model_id,
+                output_path=output_path,
+                aspect_ratio=image_prompt.aspect_ratio,
+                input_urls=None,
+                use_color_palette=False,
+                art_style=art_style,
+            )
 
     raise RuntimeError(f"Unsupported card image model_id: {model_id}")
 
@@ -224,7 +276,7 @@ def generate_card_image(payload: CardImagePayload) -> CardImageResult:
 
     try:
         with logged_llm_call(
-            stage="images",
+            stage="pending_image",
             sub_step="card_image_prompt_llm",
             event_source="engine",
             word_id=payload.metadata.word_id,
