@@ -39,7 +39,7 @@ export default function StudyPG() {
     const isFiltered = deckFilter !== 'all'
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 px-6 text-center">
-        <BookOpen className="h-12 w-12 text-white/15" />
+        <BookOpen className="h-12 w-12 text-muted-foreground" />
         <div>
           <h2 className="text-xl font-bold font-display mb-2">
             {isFiltered ? t('study.noCardsReady') : t('study.noWordsReady')}
@@ -96,7 +96,7 @@ export default function StudyPG() {
           </button>
           <button
             onClick={() => navigate('/dashboard')}
-            className="px-6 py-3 rounded-xl border border-white/10 text-[var(--pg-text-dim)] font-display font-medium hover:bg-white/5 transition-all"
+            className="px-6 py-3 rounded-xl border border-border text-[var(--pg-text-dim)] font-display font-medium hover:bg-accent transition-all"
           >
             {t('nav.decks')}
           </button>
@@ -115,7 +115,7 @@ export default function StudyPG() {
             <Select value={deckFilter} onValueChange={setDeckFilter}>
               <SelectTrigger
                 size="sm"
-                className="w-[200px] bg-white/5 dark:bg-white/5 border-white/10 dark:border-white/10 text-gray-200 hover:bg-white/10 dark:hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+                className="w-[200px] bg-card border-border text-foreground hover:bg-accent focus-visible:ring-0 focus-visible:border-accent"
               >
                 <SelectValue />
               </SelectTrigger>
@@ -183,8 +183,8 @@ export default function StudyPG() {
                   className="w-full aspect-video object-cover"
                 />
               ) : (
-                <div className="w-full aspect-video bg-gradient-to-br from-white/5 to-transparent flex items-center justify-center">
-                  <BookOpen className="h-10 w-10 text-white/10" />
+                <div className="w-full aspect-video bg-gradient-to-br from-card to-transparent flex items-center justify-center">
+                  <BookOpen className="h-10 w-10 text-muted-foreground/40" />
                 </div>
               )}
             </div>
@@ -217,7 +217,7 @@ export default function StudyPG() {
               ) : (
                 <button
                   onClick={() => setRevealed(true)}
-                  className="px-8 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur text-white tracking-widest uppercase text-sm font-display hover:bg-white/10 transition-all"
+                  className="px-8 py-3 rounded-full border border-border bg-card backdrop-blur text-foreground tracking-widest uppercase text-sm font-display hover:bg-accent transition-all"
                 >
                   {t('study.revealAnswer')}
                 </button>

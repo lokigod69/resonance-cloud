@@ -114,7 +114,7 @@ export default function Study() {
             <Select value={deckFilter} onValueChange={setDeckFilter}>
               <SelectTrigger
                 size="sm"
-                className="w-[200px] bg-white/5 dark:bg-white/5 border-white/10 dark:border-white/10 text-gray-200 hover:bg-white/10 dark:hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+                className="w-[200px] bg-card border-border text-foreground hover:bg-accent focus-visible:ring-0 focus-visible:border-accent"
               >
                 <SelectValue />
               </SelectTrigger>

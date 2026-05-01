@@ -96,7 +96,7 @@ export default function StudyModeSelector() {
             <Select value={activeLanguage ?? ''} onValueChange={setActiveLanguage}>
               <SelectTrigger
                 size="sm"
-                className="w-[200px] bg-white/5 dark:bg-white/5 border-white/10 dark:border-white/10 text-gray-200 hover:bg-white/10 dark:hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+                className="w-[200px] bg-card border-border text-foreground hover:bg-accent focus-visible:ring-0 focus-visible:border-accent"
               >
                 <SelectValue placeholder={t('study.language')} />
               </SelectTrigger>
@@ -135,16 +135,16 @@ export default function StudyModeSelector() {
                 className={`
                   study-mode-card
                   relative flex flex-col items-center gap-3 p-6 rounded-2xl border text-center
-                  transition-all duration-200 focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:outline-none
+                  transition-all duration-200 focus-visible:ring-2 focus-visible:ring-foreground/30 focus-visible:outline-none
                   ${mode.enabled
-                    ? 'border-white/10 bg-white/5 backdrop-blur hover:bg-white/10 hover:border-white/20 hover:scale-[1.03] cursor-pointer active:scale-[0.98]'
-                    : 'border-white/5 bg-white/[0.02] opacity-40 cursor-not-allowed'
+                    ? 'border-border bg-card backdrop-blur hover:bg-accent hover:border-accent hover:scale-[1.03] cursor-pointer active:scale-[0.98]'
+                    : 'border-border/40 bg-card/40 opacity-40 cursor-not-allowed'
                   }
                 `}
               >
                 {/* Coming soon badge */}
                 {!mode.enabled && (
-                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-medium text-gray-400 uppercase tracking-wider">
+                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-foreground/10 text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
                     {t('study.comingSoon')}
                   </span>
                 )}
@@ -152,9 +152,9 @@ export default function StudyModeSelector() {
                 {/* Icon */}
                 <div className={`
                   w-14 h-14 rounded-xl flex items-center justify-center
-                  ${mode.enabled ? 'bg-white/10' : 'bg-white/5'}
+                  ${mode.enabled ? 'bg-foreground/10' : 'bg-foreground/5'}
                 `}>
-                  <Icon className={`h-7 w-7 ${mode.enabled ? 'text-white' : 'text-gray-500'}`} />
+                  <Icon className={`h-7 w-7 ${mode.enabled ? 'text-foreground' : 'text-muted-foreground'}`} />
                 </div>
 
                 {/* Title + description */}

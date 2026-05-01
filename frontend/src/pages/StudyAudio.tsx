@@ -203,7 +203,7 @@ export default function StudyAudio() {
             <Select value={deckFilter} onValueChange={setDeckFilter}>
               <SelectTrigger
                 size="sm"
-                className="w-[200px] bg-white/5 dark:bg-white/5 border-white/10 dark:border-white/10 text-gray-200 hover:bg-white/10 dark:hover:bg-white/10 focus-visible:ring-0 focus-visible:border-white/30"
+                className="w-[200px] bg-card border-border text-foreground hover:bg-accent focus-visible:ring-0 focus-visible:border-accent"
               >
                 <SelectValue />
               </SelectTrigger>
@@ -241,7 +241,7 @@ export default function StudyAudio() {
                 {/* Thumbnail toggle */}
                 <button
                   onClick={toggleThumbnail}
-                  className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-gray-200 transition-colors"
+                  className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-foreground/5 hover:bg-foreground/10 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
                   aria-label={showThumbnail ? t('study.hideThumbnail') : t('study.showThumbnail')}
                 >
                   {showThumbnail ? <EyeOff size={14} /> : <Eye size={14} />}
@@ -257,7 +257,7 @@ export default function StudyAudio() {
                     animate={{ opacity: 1, scale: 1 }}
                     src={current.thumbnail_url}
                     alt=""
-                    className="w-24 h-24 rounded-xl object-cover mb-6 border border-white/10"
+                    className="w-24 h-24 rounded-xl object-cover mb-6 border border-border"
                   />
                 )}
 
@@ -299,7 +299,7 @@ export default function StudyAudio() {
                             className={`w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full transition-colors ${
                               isPlaying
                                 ? 'bg-[var(--accent,#06b6d4)] text-white'
-                                : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                                : 'bg-foreground/10 text-foreground/80 hover:bg-foreground/20'
                             }`}
                             aria-label={isPlaying ? 'Pause' : 'Play'}
                           >
