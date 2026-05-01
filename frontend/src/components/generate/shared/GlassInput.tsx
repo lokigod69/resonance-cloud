@@ -57,10 +57,10 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
         placeholder={placeholder ?? 'Type a word and press Enter'}
         disabled={disabled}
         className={cn(
-          'flex-1 rounded-xl px-4 py-3 text-sm text-white/90 placeholder:text-white/30',
-          'bg-white/[0.04] backdrop-blur-md border border-white/[0.06]',
+          'flex-1 rounded-xl px-4 py-3 text-sm text-foreground/90 placeholder:text-muted-foreground',
+          'bg-card backdrop-blur-md border border-border',
           'outline-none transition-all duration-200',
-          'focus:border-white/20 focus:bg-white/[0.06]',
+          'focus:border-accent focus:bg-card',
           disabled && 'opacity-40 pointer-events-none'
         )}
       />
@@ -72,8 +72,8 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
         disabled={!value.trim() || disabled}
         className={cn(
           'flex items-center justify-center w-10 h-10 rounded-full',
-          'glass border border-white/10 text-white/50',
-          'hover:text-white/80 hover:border-white/20 transition-colors',
+          'glass border border-border text-muted-foreground',
+          'hover:text-foreground hover:border-accent/40 transition-colors',
           'disabled:opacity-30 disabled:pointer-events-none'
         )}
       >
@@ -98,17 +98,17 @@ export function LockedWord({ word, onRemove }: LockedWordProps) {
       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
       className={cn(
         'inline-flex items-center gap-2 rounded-full px-4 py-2',
-        'bg-white/[0.08] backdrop-blur-md',
+        'bg-[#4ade80]/10 backdrop-blur-md',
         'border border-[#4ade80]/30',
         'shadow-[0_0_12px_oklch(0.7_0.18_145_/_0.1)]'
       )}
     >
       <Check className="h-3.5 w-3.5 text-[#4ade80]" />
-      <span className="text-sm text-white/90">{word}</span>
+      <span className="text-sm text-foreground/90">{word}</span>
       <button
         type="button"
         onClick={onRemove}
-        className="ml-0.5 text-white/30 hover:text-red-400 transition-colors"
+        className="ml-0.5 text-muted-foreground hover:text-destructive transition-colors"
       >
         <X className="h-3 w-3" />
       </button>

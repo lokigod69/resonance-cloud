@@ -180,7 +180,7 @@ export default function GeneratePG() {
 
           <Link
             to={existingDeck ? `/deck/${existingDeck.id}` : '/dashboard'}
-            className="px-6 py-3 rounded-full pg-glass text-sm font-display font-medium text-[var(--pg-accent-teal)] hover:bg-white/5 transition-all"
+            className="px-6 py-3 rounded-full pg-glass text-sm font-display font-medium text-[var(--pg-accent-teal)] hover:bg-accent/10 transition-all"
           >
             <ArrowLeft className="h-4 w-4 inline mr-2" />
             {existingDeck ? t('generate.backToDeck') : t('common.backToDecks')}
@@ -306,10 +306,10 @@ function BreadcrumbPills({
             className={`
               px-3 py-1.5 rounded-full text-xs font-display font-medium transition-all
               ${completed
-                ? 'pg-glass border-[var(--pg-accent-teal)] text-[var(--pg-accent-teal)] cursor-pointer hover:bg-white/5'
+                ? 'pg-glass border-[var(--pg-accent-teal)] text-[var(--pg-accent-teal)] cursor-pointer hover:bg-accent/10'
                 : current
-                  ? 'pg-glass text-white border-white/20'
-                  : 'text-white/20 border border-white/5 cursor-default'
+                  ? 'pg-glass text-foreground border-border'
+                  : 'text-muted-foreground border border-border/40 cursor-default'
               }
             `}
             style={completed ? { borderColor: 'var(--pg-accent-teal)' } : undefined}
@@ -344,7 +344,7 @@ function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
             className="pg-glass rounded-2xl p-6 text-left transition-all"
           >
             <FlagIcon code={lang.code} className="w-12 h-auto block mb-3" />
-            <p className="font-display font-semibold text-white transition-colors">
+            <p className="font-display font-semibold text-foreground transition-colors">
               {lang.label}
             </p>
           </motion.button>
@@ -397,7 +397,7 @@ function StepVibe({
                 borderColor: isSelected ? 'var(--pg-accent-violet)' : undefined,
               }}
             >
-              <p className={`font-display font-semibold mb-1 ${isSelected ? 'text-[var(--pg-accent-violet)]' : 'text-white'}`}>
+              <p className={`font-display font-semibold mb-1 ${isSelected ? 'text-[var(--pg-accent-violet)]' : 'text-foreground'}`}>
                 {vibe.label}
               </p>
               <p className="text-xs text-[var(--pg-text-dim)]">{vibe.description}</p>
@@ -426,7 +426,7 @@ function StepVibe({
               value={movieTitle || ''}
               onChange={(e) => dispatch({ type: 'SET_MOVIE_TITLE', title: e.target.value })}
               placeholder={t('generate.filmExample')}
-              className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 font-display text-base outline-none focus:border-[var(--pg-accent-violet)]/50 transition-colors"
+              className="w-full px-4 py-3 rounded-xl bg-card border border-border text-foreground placeholder-muted-foreground font-display text-base outline-none focus:border-[var(--pg-accent-violet)]/50 transition-colors"
             />
           </motion.div>
         )}
@@ -470,7 +470,7 @@ function StepArtStyle({
           }`}
           style={{ borderColor: selected === null ? 'var(--pg-accent-rose)' : undefined }}
         >
-          <p className={`font-display font-semibold ${selected === null ? 'text-[var(--pg-accent-rose)]' : 'text-white'}`}>
+          <p className={`font-display font-semibold ${selected === null ? 'text-[var(--pg-accent-rose)]' : 'text-foreground'}`}>
             {t('generate.normalStyle')}
           </p>
           <p className="text-xs text-[var(--pg-text-dim)]">{t('generate.normalStyleDesc')}</p>
@@ -492,11 +492,11 @@ function StepArtStyle({
                     className={`rounded-xl px-3 py-2.5 text-sm font-display text-left transition-all border ${
                       isSelected
                         ? 'text-[var(--pg-accent-rose)] shadow-[0_0_15px_rgba(244,63,94,0.15)]'
-                        : 'text-white/80 hover:text-white hover:border-[var(--pg-accent-rose)]/30'
+                        : 'text-foreground/80 hover:text-foreground hover:border-[var(--pg-accent-rose)]/30'
                     }`}
                     style={{
-                      backgroundColor: isSelected ? 'rgba(244, 63, 94, 0.1)' : 'rgba(255,255,255,0.03)',
-                      borderColor: isSelected ? 'var(--pg-accent-rose)' : 'rgba(255,255,255,0.08)',
+                      backgroundColor: isSelected ? 'rgba(244, 63, 94, 0.1)' : 'color-mix(in srgb, var(--surface-2) 64%, transparent)',
+                      borderColor: isSelected ? 'var(--pg-accent-rose)' : 'var(--border-subtle)',
                     }}
                   >
                     {style.label}
@@ -552,7 +552,7 @@ function StepNiveau({
               }`}
               style={{ borderColor: isSelected ? 'var(--pg-accent-teal)' : undefined, minWidth: 160 }}
             >
-              <p className={`font-display font-semibold ${isSelected ? 'text-[var(--pg-accent-teal)]' : 'text-white'}`}>
+              <p className={`font-display font-semibold ${isSelected ? 'text-[var(--pg-accent-teal)]' : 'text-foreground'}`}>
                 {t(`generate.niveau.${opt.key}`)}
               </p>
               <p className="text-xs text-[var(--pg-text-dim)]">{t(`generate.niveau.${opt.key}Desc`)}</p>
@@ -629,11 +629,11 @@ function StepMusic({
               className={`px-5 py-2.5 rounded-full text-sm font-display font-medium transition-all border ${
                 isSelected
                   ? 'text-[var(--pg-accent-green)] shadow-[0_0_15px_rgba(52,211,153,0.2)]'
-                  : 'text-white/70 hover:text-white hover:border-[var(--pg-accent-green)]/30'
+                  : 'text-foreground/70 hover:text-foreground hover:border-[var(--pg-accent-green)]/30'
               }`}
               style={{
-                backgroundColor: isSelected ? 'rgba(52, 211, 153, 0.12)' : 'rgba(255,255,255,0.03)',
-                borderColor: isSelected ? 'var(--pg-accent-green)' : 'rgba(255,255,255,0.08)',
+                backgroundColor: isSelected ? 'rgba(52, 211, 153, 0.12)' : 'color-mix(in srgb, var(--surface-2) 64%, transparent)',
+                borderColor: isSelected ? 'var(--pg-accent-green)' : 'var(--border-subtle)',
               }}
             >
               {genre.label}
@@ -665,10 +665,10 @@ function StepMusic({
               maxLength={40}
               aria-label="Custom genre"
               autoFocus
-              className="w-full rounded-xl px-4 py-3 text-sm text-white/90 placeholder:text-white/30
-                bg-white/[0.04] backdrop-blur-md border border-white/[0.08]
+              className="w-full rounded-xl px-4 py-3 text-sm text-foreground/90 placeholder:text-muted-foreground
+                bg-card backdrop-blur-md border border-border
                 outline-none transition-all duration-200
-                focus:border-[var(--pg-accent-green)]/60 focus:bg-white/[0.06]"
+                focus:border-[var(--pg-accent-green)]/60 focus:bg-card"
             />
             {isCustomGenre(selected) && selected !== customText.trim().toLowerCase() && (
               <div className="text-xs text-[var(--pg-accent-green)]/80 text-center">Current: {selected}</div>
@@ -729,7 +729,7 @@ function StepReview({
   const { t, tp } = useTranslation()
   return (
     <div className="w-full max-w-lg mx-auto mt-8">
-      <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight mb-10 text-center text-white drop-shadow-md italic">
+      <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight mb-10 text-center text-foreground drop-shadow-md italic">
         {t('generate.synthesisReady')}
       </h2>
 
@@ -742,7 +742,7 @@ function StepReview({
           </span>
         )}
         <span className="px-4 py-2 rounded-full text-sm font-medium"
-          style={{ background: 'rgba(255, 255, 255, 0.06)', border: '1px solid rgba(255, 255, 255, 0.15)', color: 'rgba(255,255,255,0.8)' }}>
+          style={{ background: 'color-mix(in srgb, var(--surface-2) 64%, transparent)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>
           📝 {tp('dashboard.wordCount', state.words.length)}
         </span>
         {state.vibe && state.vibe !== 'auto' && (
@@ -774,7 +774,7 @@ function StepReview({
             onChange={(e) => dispatch({ type: 'SET_DECK_NAME', name: e.target.value })}
             placeholder={t('generate.deckNamePlaceholder')}
             maxLength={50}
-            className="w-full max-w-md mx-auto block p-4 rounded-xl bg-transparent border border-white/10 outline-none focus:border-teal-500/50 transition-colors text-center text-lg font-light text-white placeholder:text-gray-600"
+            className="w-full max-w-md mx-auto block p-4 rounded-xl bg-transparent border border-border outline-none focus:border-teal-500/50 transition-colors text-center text-lg font-light text-foreground placeholder:text-muted-foreground"
             style={{ fontFamily: 'var(--font-display, inherit)' }}
           />
         </div>
@@ -798,7 +798,7 @@ function StepReview({
         <button
           onClick={onSubmit}
           disabled={submitting || (typeof credits === 'number' && credits < state.words.length)}
-          className="px-10 py-4 rounded-full bg-white text-black font-display font-medium text-lg hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="px-10 py-4 rounded-full bg-foreground text-background font-display font-medium text-lg hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           {submitting ? (
             t('generate.initializing')

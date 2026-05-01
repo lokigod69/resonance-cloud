@@ -28,17 +28,17 @@ export default function PillButton({
       className={cn(
         'inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5',
         'text-sm font-medium transition-all duration-200',
-        'outline-none focus-visible:ring-2 focus-visible:ring-white/20',
+        'outline-none focus-visible:ring-2 focus-visible:ring-foreground/20',
         'disabled:opacity-40 disabled:pointer-events-none',
         variant === 'primary' && [
-          'glass-strong text-white',
-          'border border-white/15',
-          'hover:bg-white/[0.12]',
+          'glass-strong text-foreground',
+          'border border-border',
+          'hover:bg-accent/10',
         ],
         variant === 'secondary' && [
-          'glass text-white/70',
-          'border border-white/10',
-          'hover:text-white/90 hover:bg-white/[0.08]',
+          'glass text-foreground/70',
+          'border border-border',
+          'hover:text-foreground hover:bg-accent/10',
         ],
         glow && 'glow-green border-[#4ade80]/30',
         className

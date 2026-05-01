@@ -55,7 +55,7 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
       <motion.h2
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-2xl font-semibold tracking-tight text-white/90 mb-2"
+        className="text-2xl font-semibold tracking-tight text-foreground mb-2"
       >
         Add your words
       </motion.h2>
@@ -64,7 +64,7 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="text-sm text-white/40 mb-8"
+        className="text-sm text-muted-foreground mb-8"
       >
         {wordCount} of {MAX_WORDS}
       </motion.p>
@@ -91,7 +91,7 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
           <button
             type="button"
             onClick={() => setInputMode('picker')}
-            className="text-xs text-white/40 hover:text-white/70 transition"
+            className="text-xs text-muted-foreground hover:text-foreground/70 transition"
           >
             ← Back to Categories
           </button>
