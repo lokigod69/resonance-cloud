@@ -156,7 +156,7 @@ export const NIVEAU_OPTIONS: ReadonlyArray<{ key: 'auto' | 'short' | 'phrase' | 
   { key: 'long',   value: 'dramatic' },
 ]
 
-export const MAX_WORDS = 10
+export const MAX_WORDS = 20
 
 export const STEP_LABELS: Record<number, string> = {
   1: 'Language',

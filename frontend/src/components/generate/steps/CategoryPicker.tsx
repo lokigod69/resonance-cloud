@@ -6,6 +6,7 @@ import { CATEGORY_GROUPS } from '@/data/categories'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
+import { useTranslation } from '@/hooks/useTranslation'
 import type { WizardState, WizardAction } from '../useWizardState'
 
 // NOTE: suggest-words endpoint requires the local orchestrator (port 8090).
@@ -34,20 +35,30 @@ interface CategoryPickerProps {
   onQuickGenerate?: (words: string[]) => void
 }
 
-const SUGGEST_COUNT = 5
-
 export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToManual, onQuickGenerate }: CategoryPickerProps) {
   const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
+  const { tp } = useTranslation()
   const [mode, setMode] = useState<Mode>('idle')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const [suggestCount, setSuggestCount] = useState<number>(10)
   const [slots, setSlots] = useState<Slot[]>([])
   const [error, setError] = useState<string | null>(null)
 
   const targetLanguage = state.language || activeLanguage
   const baseLanguage = profile?.base_language || 'English'
+  const visibleSlots = slots.slice(0, suggestCount)
+  const displaySlots = [
+    ...visibleSlots,
+    ...Array.from({ length: Math.max(0, suggestCount - visibleSlots.length) }, (): Slot => ({
+      kind: 'empty',
+      word: '',
+      translation: '',
+    })),
+  ]
 
   async function fetchSuggestions(category: string) {
+    const requestedCount = suggestCount
     if (!targetLanguage) {
       setError('Pick a target language first')
       return
@@ -71,7 +82,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
           category,
           target_language: targetLanguage,
           base_language: baseLanguage,
-          count: SUGGEST_COUNT,
+          count: requestedCount,
         }),
       })
       if (!res.ok) {
@@ -79,7 +90,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
         throw new Error(errorBody?.detail || errorBody?.error || `HTTP ${res.status}`)
       }
       const suggestionData = (await res.json()) as { words: Array<{ word: string; translation: string }> }
-      const next: Slot[] = (suggestionData.words || []).slice(0, SUGGEST_COUNT).map((w) => ({
+      const next: Slot[] = (suggestionData.words || []).slice(0, requestedCount).map((w) => ({
         kind: 'filled',
         word: w.word,
         translation: w.translation,
@@ -94,18 +105,15 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
   }
 
   function removeSlot(index: number) {
-    const next = slots.map((s, i): Slot =>
-      i === index ? { kind: 'empty', word: '', translation: '' } : s
-    )
-    setSlots(next)
-    if (next.every((s) => s.kind === 'empty' && !s.word.trim())) {
-      onSwitchToManual()
-    }
+    setSlots(prev => prev.filter((_, i) => i !== index))
   }
 
   function updateEmptySlot(index: number, field: 'word' | 'translation', value: string) {
     setSlots((prev) => {
       const next = [...prev]
+      while (next.length <= index) {
+        next.push({ kind: 'empty', word: '', translation: '' })
+      }
       const current = next[index]
       if (current.kind === 'empty') {
         next[index] = { ...current, [field]: value }
@@ -115,7 +123,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
   }
 
   function handleGenerateDeck() {
-    const words = slots
+    const words = displaySlots
       .map((s) => s.word.trim())
       .filter((w) => w.length > 0)
     if (words.length === 0) {
@@ -124,6 +132,32 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
     }
     dispatch({ type: 'SET_WORDS', words })
     onConfirm()
+  }
+
+  function renderCountSlider(disabled = false) {
+    return (
+      <div className="flex flex-col items-center gap-2 mb-6">
+        <label htmlFor="suggest-count-slider" className="text-sm text-foreground/70">
+          {tp('generate.wordCountSlider', suggestCount)}
+        </label>
+        <input
+          id="suggest-count-slider"
+          type="range"
+          min={1}
+          max={20}
+          step={1}
+          value={suggestCount}
+          disabled={disabled}
+          onChange={(e) => {
+            const nextCount = Number(e.target.value)
+            setSuggestCount(nextCount)
+            setSlots(prev => prev.slice(0, nextCount))
+          }}
+          className="h-11 w-full max-w-xs accent-foreground disabled:opacity-50"
+          style={{ minHeight: 44, width: '100%', maxWidth: 320 }}
+        />
+      </div>
+    )
   }
 
   if (mode === 'idle') {
@@ -147,6 +181,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
         animate={{ opacity: 1, y: 0 }}
         className="w-full space-y-5"
       >
+        {renderCountSlider()}
         <div className="w-full space-y-5 rounded-xl border border-border bg-card/40 p-4">
           {CATEGORY_GROUPS.map((group) => (
             <div key={group.label}>
@@ -181,6 +216,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
   if (mode === 'loading') {
     return (
       <div className="flex flex-col items-center gap-3 py-10 text-muted-foreground">
+        {renderCountSlider(true)}
         <Loader2 className="h-6 w-6 animate-spin" />
         <p className="text-sm">Finding words…</p>
       </div>
@@ -205,9 +241,11 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
         </button>
       </div>
 
+      {renderCountSlider()}
+
       <ul className="space-y-2">
         <AnimatePresence initial={false}>
-          {slots.map((slot, i) => (
+          {displaySlots.map((slot, i) => (
             <motion.li
               key={i}
               layout
@@ -259,7 +297,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
           <PillButton
             glow
             onClick={() => {
-              const words = slots.map((s) => s.word.trim()).filter((w) => w.length > 0)
+              const words = displaySlots.map((s) => s.word.trim()).filter((w) => w.length > 0)
               if (words.length === 0) { setError('Add at least one word'); return }
               dispatch({ type: 'SET_WORDS', words })
               dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
