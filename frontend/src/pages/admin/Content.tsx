@@ -107,14 +107,6 @@ const STATUS_COLORS: Record<string, string> = {
 // Helpers
 // ---------------------------------------------------------------------------
 
-function extractStoragePath(url: string | null): string | null {
-  if (!url) return null
-  const marker = '/storage/v1/object/public/videos/'
-  const idx = url.indexOf(marker)
-  if (idx === -1) return null
-  return url.substring(idx + marker.length)
-}
-
 function formatTime(iso: string | null) {
   if (!iso) return '—'
   return new Date(iso).toLocaleString()
@@ -291,51 +283,17 @@ export default function Content() {
     if (!word) return
     setActionLoading(true)
     try {
-      // 1. Delete storage files
-      const paths = [
-        extractStoragePath(word.video_url),
-        extractStoragePath(word.thumbnail_url),
-      ].filter(Boolean) as string[]
-      if (paths.length > 0) {
-        await supabase.storage.from('videos').remove(paths)
-      }
+      const { error } = await supabase.rpc('admin_archive_content', {
+        p_kind: 'word',
+        p_id: word.id,
+        p_reason: 'Deleted word from admin content page',
+      })
+      if (error) throw error
 
-      // 2. Delete word row
-      await supabase.from('words').delete().eq('id', word.id)
-
-      // 3. Find the parent deck
-      const deck = decks.find(d => d.id === word.deck_id)
-
-      // 4. Decrement word_count and re-evaluate status
-      const { data: remainingWords } = await supabase
-        .from('words')
-        .select('status')
-        .eq('deck_id', word.deck_id)
-
-      let newStatus = 'complete'
-      if (remainingWords && remainingWords.length > 0) {
-        if (remainingWords.every(w => w.status === 'complete')) {
-          newStatus = 'complete'
-        } else if (remainingWords.some(w => w.status === 'complete')) {
-          newStatus = 'partial'
-        } else {
-          newStatus = 'partial'
-        }
-      }
-
-      await supabase
-        .from('decks')
-        .update({
-          word_count: Math.max(0, (deck?.word_count ?? 1) - 1),
-          status: newStatus,
-        })
-        .eq('id', word.deck_id)
-
-      // 5. Refresh
       await fetchDecks()
       await fetchWords(word.deck_id)
       toast('Word deleted', 'success')
-    } catch (err) {
+    } catch {
       toast('Failed to delete word', 'error')
     } finally {
       setActionLoading(false)
@@ -348,35 +306,13 @@ export default function Content() {
     if (!deck) return
     setActionLoading(true)
     try {
-      // 1. Get all words for storage cleanup
-      const { data: words } = await supabase
-        .from('words')
-        .select('id, video_url, thumbnail_url')
-        .eq('deck_id', deck.id)
+      const { error } = await supabase.rpc('admin_archive_content', {
+        p_kind: 'deck',
+        p_id: deck.id,
+        p_reason: 'Deleted deck from admin content page',
+      })
+      if (error) throw error
 
-      // 2. Delete storage files
-      if (words && words.length > 0) {
-        const filesToDelete = words
-          .flatMap(w => [
-            extractStoragePath(w.video_url),
-            extractStoragePath(w.thumbnail_url),
-          ])
-          .filter(Boolean) as string[]
-        if (filesToDelete.length > 0) {
-          await supabase.storage.from('videos').remove(filesToDelete)
-        }
-      }
-
-      // 3. Delete words explicitly
-      await supabase.from('words').delete().eq('deck_id', deck.id)
-
-      // 4. Delete generation jobs
-      await supabase.from('generation_jobs').delete().eq('deck_id', deck.id)
-
-      // 5. Delete deck
-      await supabase.from('decks').delete().eq('id', deck.id)
-
-      // 6. Refresh
       setExpandedDeckId(null)
       setDeckWords(prev => {
         const next = { ...prev }
@@ -385,7 +321,7 @@ export default function Content() {
       })
       await fetchDecks()
       toast('Deck deleted', 'success')
-    } catch (err) {
+    } catch {
       toast('Failed to delete deck', 'error')
     } finally {
       setActionLoading(false)

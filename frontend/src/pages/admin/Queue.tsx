@@ -25,6 +25,10 @@ type Job = {
   words_total: number
   words_completed: number
   words_failed: number
+  deck_type: 'video' | 'card' | null
+  credits_charged: number
+  credit_cost_per_word: number
+  admin_refund_amount: number
   profile_used: string | null
   settings_override: Record<string, string> | null
   started_at: string | null
@@ -89,7 +93,7 @@ export default function Queue() {
   }, [fetchJobs, fetchSettings])
 
   useEffect(() => {
-    load()
+    void Promise.resolve().then(load)
     const interval = setInterval(() => {
       fetchJobs()
       fetchSettings()
@@ -99,37 +103,42 @@ export default function Queue() {
 
   const toggleAutoApprove = async () => {
     const next = !settings.auto_approve
-    await supabase.from('system_settings').update({ auto_approve: next }).eq('id', 1)
-    setSettings(s => ({ ...s, auto_approve: next }))
+    const { error } = await supabase.rpc('admin_update_system_setting', {
+      p_key: 'auto_approve',
+      p_value: next,
+      p_reason: next ? 'Enabled auto-approve from admin queue' : 'Disabled auto-approve from admin queue',
+    })
+    if (!error) {
+      setSettings(s => ({ ...s, auto_approve: next }))
+    }
   }
 
   const toggleQueuePaused = async () => {
     const next = !settings.queue_paused
-    await supabase.from('system_settings').update({ queue_paused: next }).eq('id', 1)
-    setSettings(s => ({ ...s, queue_paused: next }))
+    const { error } = await supabase.rpc('admin_update_system_setting', {
+      p_key: 'queue_paused',
+      p_value: next,
+      p_reason: next ? 'Paused queue from admin queue' : 'Resumed queue from admin queue',
+    })
+    if (!error) {
+      setSettings(s => ({ ...s, queue_paused: next }))
+    }
   }
 
   const approveJob = async (jobId: string) => {
-    await supabase.from('generation_jobs').update({ status: 'approved' }).eq('id', jobId)
+    await supabase.rpc('admin_approve_generation_job', {
+      p_job_id: jobId,
+      p_reason: 'Approved from admin queue',
+    })
     await fetchJobs()
   }
 
   const rejectJob = async (jobId: string) => {
-    // Refund credits: get job, then refund words_total credits
-    const job = jobs.find(j => j.id === jobId)
-    if (job) {
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('credits')
-        .eq('id', job.user_id)
-        .single()
-      if (profile) {
-        await supabase.from('profiles').update({
-          credits: profile.credits + job.words_total,
-        }).eq('id', job.user_id)
-      }
-    }
-    await supabase.from('generation_jobs').update({ status: 'rejected' }).eq('id', jobId)
+    await supabase.rpc('admin_reject_generation_job', {
+      p_job_id: jobId,
+      p_refund: true,
+      p_reason: 'Rejected with refund from admin queue',
+    })
     await fetchJobs()
   }
 
@@ -250,6 +259,11 @@ export default function Queue() {
                   {job.target_language}
                 </span>
 
+                {/* Deck type and credits */}
+                <span className="text-xs text-muted-foreground min-w-[110px] capitalize">
+                  {job.deck_type || 'video'} / {job.credits_charged} credits
+                </span>
+
                 {/* Progress */}
                 <div className="flex-1 flex items-center gap-2">
                   <div className="flex-1 h-2 bg-zinc-800 rounded-full overflow-hidden max-w-[200px]">
@@ -324,6 +338,22 @@ export default function Queue() {
                     <div>
                       <span className="text-muted-foreground">Priority: </span>
                       <span>{job.priority}</span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Deck type: </span>
+                      <span className="capitalize">{job.deck_type || 'video'}</span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Credits charged: </span>
+                      <span>{job.credits_charged}</span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Cost per word: </span>
+                      <span>{job.credit_cost_per_word}</span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground">Refunded: </span>
+                      <span>{job.admin_refund_amount}</span>
                     </div>
                     {job.settings_override?.creative_direction && (
                       <div>

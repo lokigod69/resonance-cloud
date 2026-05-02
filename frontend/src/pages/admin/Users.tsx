@@ -264,13 +264,18 @@ export default function Users() {
     }
     setActionLoading(true)
     try {
-      await supabase
-        .from('profiles')
-        .update({ credits: user.credits + amount })
-        .eq('id', user.id)
-      toast(`Added ${amount} credits to ${displayName(user)}`, 'success')
-      setAddCreditAmounts(prev => ({ ...prev, [user.id]: '' }))
-      await load()
+      const { error } = await supabase.rpc('admin_adjust_user_credits', {
+        p_user_id: user.id,
+        p_delta: amount,
+        p_reason: `Added credits from admin users page`,
+      })
+      if (error) {
+        toast(error.message, 'error')
+      } else {
+        toast(`Added ${amount} credits to ${displayName(user)}`, 'success')
+        setAddCreditAmounts(prev => ({ ...prev, [user.id]: '' }))
+        await load()
+      }
     } catch {
       toast('Failed to add credits', 'error')
     } finally {
@@ -287,13 +292,24 @@ export default function Users() {
     }
     setActionLoading(true)
     try {
-      await supabase
-        .from('profiles')
-        .update({ credits: amount })
-        .eq('id', user.id)
-      toast(`Set ${displayName(user)}'s credits to ${amount}`, 'success')
-      setSetCreditAmounts(prev => ({ ...prev, [user.id]: '' }))
-      await load()
+      const delta = amount - user.credits
+      if (delta === 0) {
+        toast(`Credits already set to ${amount}`, 'success')
+        setSetCreditAmounts(prev => ({ ...prev, [user.id]: '' }))
+      } else {
+        const { error } = await supabase.rpc('admin_adjust_user_credits', {
+          p_user_id: user.id,
+          p_delta: delta,
+          p_reason: `Set credits from admin users page`,
+        })
+        if (error) {
+          toast(error.message, 'error')
+        } else {
+          toast(`Set ${displayName(user)}'s credits to ${amount}`, 'success')
+          setSetCreditAmounts(prev => ({ ...prev, [user.id]: '' }))
+          await load()
+        }
+      }
     } catch {
       toast('Failed to set credits', 'error')
     } finally {
@@ -305,15 +321,20 @@ export default function Users() {
     if (!roleChangeTarget) return
     setActionLoading(true)
     try {
-      await supabase
-        .from('profiles')
-        .update({ role: roleChangeTarget.newRole })
-        .eq('id', roleChangeTarget.user.id)
-      toast(
-        `Changed ${displayName(roleChangeTarget.user)}'s role to ${roleChangeTarget.newRole}`,
-        'success',
-      )
-      await load()
+      const { error } = await supabase.rpc('admin_set_user_role', {
+        p_user_id: roleChangeTarget.user.id,
+        p_role: roleChangeTarget.newRole,
+        p_reason: `Changed role from admin users page`,
+      })
+      if (error) {
+        toast(error.message, 'error')
+      } else {
+        toast(
+          `Changed ${displayName(roleChangeTarget.user)}'s role to ${roleChangeTarget.newRole}`,
+          'success',
+        )
+        await load()
+      }
     } catch {
       toast('Failed to change role', 'error')
     } finally {
@@ -334,10 +355,11 @@ export default function Users() {
     if (!credits || credits < 1) { toast('Credits must be at least 1', 'error'); return }
     setCreatingCode(true)
     try {
-      const { error } = await supabase.from('invite_codes').insert({
-        code,
-        credits,
-        max_uses: maxUses,
+      const { error } = await supabase.rpc('admin_create_invite_code', {
+        p_code: code,
+        p_credits: credits,
+        p_max_uses: maxUses,
+        p_reason: 'Created invite code from admin users page',
       })
       if (error) {
         toast(error.message, 'error')
@@ -356,10 +378,13 @@ export default function Users() {
   }
 
   const handleToggleCode = async (codeId: string, currentlyActive: boolean) => {
-    const { error } = await supabase
-      .from('invite_codes')
-      .update({ is_active: !currentlyActive })
-      .eq('id', codeId)
+    const { error } = await supabase.rpc('admin_toggle_invite_code', {
+      p_code_id: codeId,
+      p_active: !currentlyActive,
+      p_reason: currentlyActive
+        ? 'Deactivated invite code from admin users page'
+        : 'Activated invite code from admin users page',
+    })
     if (error) {
       toast('Failed to update code', 'error')
     } else {

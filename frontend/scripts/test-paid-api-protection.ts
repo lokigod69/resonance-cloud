@@ -104,10 +104,15 @@ globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise
     return json(quotaResult)
   }
 
+  if (url === 'https://supabase.test/rest/v1/rpc/get_user_words_for_language') {
+    callSequence.push('avoid-list')
+    return json([])
+  }
+
   if (url === 'https://openrouter.ai/api/v1/chat/completions') {
     callSequence.push('provider:openrouter')
     return json({
-      choices: [{ message: { content: '{"words":[{"word":"hola","translation":"hello"}]}' } }],
+      choices: [{ message: { content: '{"words":[{"word":"hola","translation":"hello"},{"word":"pan","translation":"bread"},{"word":"agua","translation":"water"},{"word":"queso","translation":"cheese"},{"word":"mesa","translation":"table"}]}' } }],
     })
   }
 
@@ -329,7 +334,7 @@ await (async function successfulRequestCallsProviderAfterGates() {
   )
   assert.deepEqual(
     callSequence,
-    ['auth', 'quota', 'provider:openrouter'],
+    ['auth', 'quota', 'avoid-list', 'provider:openrouter'],
     'suggest-words provider call must happen after auth and quota',
   )
 })()

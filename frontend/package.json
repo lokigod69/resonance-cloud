@@ -12,6 +12,7 @@
     "test:api:paid": "tsx scripts/test-paid-api-protection.ts",
     "test:phase1e:rls": "tsx scripts/test-phase1e-rpc-rls.ts",
     "test:phase1f0:credits": "tsx scripts/test-phase1f0-credit-pricing.ts",
+    "test:phase1f:admin": "tsx scripts/test-phase1f-admin-rpcs.ts",
     "verify:grok-ios-audio": "tsx scripts/verify-grok-ios-audio.ts",
     "verify:grok-ios-audio:dist": "tsx scripts/verify-built-grok-ios-audio.ts",
     "test:regressions": "node scripts/verify-admin-deck-regressions.mjs",
