@@ -27,8 +27,12 @@ export default function Settings() {
   const [nameSaved, setNameSaved] = useState(false)
 
   useEffect(() => {
-    setBaseLanguage(profile?.base_language || '')
-    setDisplayName(profile?.display_name || '')
+    const timeoutId = window.setTimeout(() => {
+      setBaseLanguage(profile?.base_language || '')
+      setDisplayName(profile?.display_name || '')
+    }, 0)
+
+    return () => window.clearTimeout(timeoutId)
   }, [profile?.base_language, profile?.display_name])
 
   async function handleSaveDisplayName() {
@@ -197,10 +201,11 @@ export default function Settings() {
                 setSkin(s.id)
                 // Best-effort Supabase persistence
                 if (user?.id) {
+                  const updatePayload: { skin: SkinId } = { skin: s.id }
                   Promise.resolve(
                     supabase
                       .from('profiles')
-                      .update({ skin: s.id } as any)
+                      .update(updatePayload)
                       .eq('id', user.id)
                   ).catch(() => {})
                 }
@@ -251,7 +256,7 @@ export default function Settings() {
             <Coins className="h-5 w-5 text-primary" />
             <div>
               <h2 className="text-lg font-semibold">Credit Balance</h2>
-              <p className="text-sm text-muted-foreground">Each word generation costs 1 credit</p>
+              <p className="text-sm text-muted-foreground">Video decks cost 10 credits per word. Image decks cost 1 credit per word.</p>
             </div>
           </div>
           <span className="text-3xl font-bold">{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>

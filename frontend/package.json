@@ -11,6 +11,7 @@
     "typecheck:api": "tsc -p tsconfig.api.json --noEmit",
     "test:api:paid": "tsx scripts/test-paid-api-protection.ts",
     "test:phase1e:rls": "tsx scripts/test-phase1e-rpc-rls.ts",
+    "test:phase1f0:credits": "tsx scripts/test-phase1f0-credit-pricing.ts",
     "verify:grok-ios-audio": "tsx scripts/verify-grok-ios-audio.ts",
     "verify:grok-ios-audio:dist": "tsx scripts/verify-built-grok-ios-audio.ts",
     "test:regressions": "node scripts/verify-admin-deck-regressions.mjs",

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Sparkles, Loader2 } from 'lucide-react'
 import PillButton from '../shared/PillButton'
-import type { WizardState, WizardAction } from '../useWizardState'
+import { computeCreditCost, type WizardState, type WizardAction } from '../useWizardState'
 
 interface ConfirmStepProps {
   state: WizardState
@@ -13,6 +13,9 @@ interface ConfirmStepProps {
 }
 
 export default function ConfirmStep({ state, dispatch, onGenerate, submitting, error, existingDeck }: ConfirmStepProps) {
+  const creditCost = computeCreditCost(state.deckType, state.words.length)
+  const deckTypeLabel = state.deckType === 'card' ? 'Card' : 'Video'
+
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
       <motion.h2
@@ -43,7 +46,7 @@ export default function ConfirmStep({ state, dispatch, onGenerate, submitting, e
 
       {/* Credits */}
       <p className="text-sm text-white/50 mb-4">
-        {state.words.length} credit{state.words.length !== 1 ? 's' : ''} will be used
+        {creditCost} credit{creditCost !== 1 ? 's' : ''} will be used
       </p>
 
       {/* Error */}
@@ -73,7 +76,7 @@ export default function ConfirmStep({ state, dispatch, onGenerate, submitting, e
           ) : (
             <>
               <Sparkles className="h-4 w-4" />
-              Generate {state.words.length} Video{state.words.length !== 1 ? 's' : ''}
+              Generate {state.words.length} {deckTypeLabel}{state.words.length !== 1 ? 's' : ''}
             </>
           )}
         </PillButton>

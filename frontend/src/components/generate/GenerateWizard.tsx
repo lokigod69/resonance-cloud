@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { CheckCircle, ArrowLeft } from 'lucide-react'
@@ -27,7 +27,6 @@ export default function GenerateWizard() {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [generated, setGenerated] = useState(false)
-  const prevStep = useRef(state.step)
 
   // "Add Cards" mode: existing deck passed via ?deckId=xxx
   const [searchParams] = useSearchParams()
@@ -38,7 +37,7 @@ export default function GenerateWizard() {
     if (!deckIdParam) return
     supabase
       .from('decks')
-      .select('id, name, target_language, art_style, movie_override, word_count')
+      .select('id, name, target_language, art_style, movie_override, word_count, deck_type')
       .eq('id', deckIdParam)
       .single()
       .then(({ data }) => {
@@ -46,6 +45,7 @@ export default function GenerateWizard() {
           setExistingDeck(data)
           // Pre-select language and skip to words step
           dispatch({ type: 'SET_LANGUAGE', language: data.target_language })
+          dispatch({ type: 'SET_DECK_TYPE', deckType: data.deck_type ?? 'video' })
         }
       })
   }, [deckIdParam, dispatch])
@@ -60,9 +60,7 @@ export default function GenerateWizard() {
     }
   }, [deckIdParam, state.language, activeLanguage, dispatch])
 
-  // Track direction for slide animation
-  const direction: 1 | -1 = state.step >= prevStep.current ? 1 : -1
-  prevStep.current = state.step
+  const direction: 1 | -1 = 1
 
   async function handleGenerate(wordsOverride?: string[]) {
     if (!user) return
