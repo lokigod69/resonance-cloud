@@ -365,10 +365,15 @@ try {
     extraHeaders: { Prefer: 'return=representation' },
     body: { view_count: 123 },
   })
-  assert.ok(
-    denied(res.status) || ok(res.status),
-    `public direct shared_words update returned unexpected status ${res.status}: ${JSON.stringify(res.data)}`,
-  )
+  assert.ok(denied(res.status), `public direct shared_words update must be denied, got ${res.status}: ${JSON.stringify(res.data)}`)
+
+  res = await request(`/rest/v1/shared_words?id=eq.${shareId}&select=view_count`, {
+    key: serviceKey,
+    bearer: serviceKey,
+  })
+  assert.ok(ok(res.status), `service read shared_words failed ${res.status}: ${JSON.stringify(res.data)}`)
+  const shareRows = res.data as Array<{ view_count?: number }>
+  assert.equal(shareRows[0]?.view_count, 0, 'public direct shared_words update must not set/reset view_count')
 
   res = await request('/rest/v1/rpc/increment_shared_word_view', {
     method: 'POST',
