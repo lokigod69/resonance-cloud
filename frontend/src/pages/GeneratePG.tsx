@@ -7,8 +7,9 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
 import { submitGeneration } from '@/components/generate/submitGeneration'
-import { useWizardState } from '@/components/generate/useWizardState'
+import { computeCreditCost, useWizardState } from '@/components/generate/useWizardState'
 import type { ExistingDeck } from '@/components/generate/useWizardState'
+import DeckTypeStep from '@/components/generate/steps/DeckTypeStep'
 import WordsStep from '@/components/generate/steps/WordsStep'
 import {
   LANGUAGES,
@@ -34,6 +35,8 @@ export default function GeneratePG() {
   const { toast } = useToast()
   const { state, dispatch, buildPayload } = useWizardState()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const deckIdParam = searchParams.get('deckId')
 
   const [pgStep, setPgStep] = useState(0)
   const [submitting, setSubmitting] = useState(false)
@@ -45,22 +48,21 @@ export default function GeneratePG() {
   // "Add Cards" mode: existing deck via ?deckId=xxx
   const { t } = useTranslation()
 
-  const [searchParams] = useSearchParams()
-  const deckIdParam = searchParams.get('deckId')
   const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
 
   useEffect(() => {
     if (!deckIdParam) return
     supabase
       .from('decks')
-      .select('id, name, target_language, art_style, movie_override, word_count')
+      .select('id, name, target_language, art_style, movie_override, word_count, deck_type')
       .eq('id', deckIdParam)
       .single()
       .then(({ data }) => {
         if (data) {
           setExistingDeck(data)
           dispatch({ type: 'SET_LANGUAGE', language: data.target_language })
-          setPgStep(1)
+          dispatch({ type: 'SET_DECK_TYPE', deckType: data.deck_type ?? 'video' })
+          setPgStep(2)
         }
       })
   }, [deckIdParam, dispatch])
@@ -152,6 +154,14 @@ export default function GeneratePG() {
 
   /* ─── Generated state ─── */
 
+  if (deckIdParam && !existingDeck) {
+    return (
+      <div className="max-w-4xl mx-auto px-4 flex min-h-[60vh] items-center justify-center">
+        <p className="text-sm text-[var(--pg-text-dim)]">{t('common.loading')}</p>
+      </div>
+    )
+  }
+
   if (generated) {
     return (
       <div className="max-w-4xl mx-auto px-4 flex flex-col items-center justify-center min-h-[60vh]">
@@ -219,43 +229,53 @@ export default function GeneratePG() {
             />
           )}
           {pgStep === 1 && (
+            <DeckTypeStep
+              skin="classic"
+              value={state.deckType}
+              onChange={(value) => {
+                dispatch({ type: 'SET_DECK_TYPE', deckType: value })
+                setPgStep(2)
+              }}
+            />
+          )}
+          {pgStep === 2 && (
             <WordsStep
               state={state}
               dispatch={dispatch}
               onQuickGenerate={(words) => handleQuickGenerate(words)}
-              onCustomize={() => setPgStep(2)}
-            />
-          )}
-          {pgStep === 2 && (
-            <StepVibe
-              selected={state.vibe}
-              movieTitle={state.movieTitle}
-              dispatch={dispatch}
-              onContinue={() => setPgStep(3)}
+              onCustomize={() => setPgStep(3)}
             />
           )}
           {pgStep === 3 && (
-            <StepArtStyle
-              selected={state.artStyle}
+            <StepVibe
+              selected={state.vibe}
+              movieTitle={state.movieTitle}
               dispatch={dispatch}
               onContinue={() => setPgStep(4)}
             />
           )}
           {pgStep === 4 && (
-            <StepNiveau
-              selected={state.lyricMode}
+            <StepArtStyle
+              selected={state.artStyle}
               dispatch={dispatch}
               onContinue={() => setPgStep(5)}
             />
           )}
           {pgStep === 5 && (
-            <StepMusic
-              selected={state.genre}
+            <StepNiveau
+              selected={state.lyricMode}
               dispatch={dispatch}
               onContinue={() => setPgStep(6)}
             />
           )}
           {pgStep === 6 && (
+            <StepMusic
+              selected={state.genre}
+              dispatch={dispatch}
+              onContinue={() => setPgStep(7)}
+            />
+          )}
+          {pgStep === 7 && (
             <StepReview
               state={state}
               dispatch={dispatch}
@@ -285,11 +305,11 @@ function BreadcrumbPills({
 }) {
   const { t } = useTranslation()
   const STEP_LABELS = [
-    t('generate.stepLanguage'), t('generate.stepWords'), t('generate.stepVibe'),
+    t('generate.stepLanguage'), t('generate.deckType.breadcrumb'), t('generate.stepWords'), t('generate.stepVibe'),
     t('generate.stepArtStyle'), t('generate.stepNiveau'),
     t('generate.stepMusic'), t('generate.stepReview'),
   ]
-  const startIndex = existingDeck ? 1 : 0
+  const startIndex = existingDeck ? 2 : 0
 
   return (
     <div className="flex flex-wrap gap-2 mb-8 justify-center">
@@ -727,6 +747,7 @@ function StepReview({
   existingDeck: ExistingDeck | null
 }) {
   const { t, tp } = useTranslation()
+  const creditCost = computeCreditCost(state.deckType ?? existingDeck?.deck_type ?? null, state.words.length)
   return (
     <div className="w-full max-w-lg mx-auto mt-8">
       <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight mb-10 text-center text-foreground drop-shadow-md italic">
@@ -782,9 +803,9 @@ function StepReview({
 
       {/* Credits */}
       <p className="text-center text-gray-500 text-sm mt-6">
-        {tp('generate.creditsUsed', state.words.length)}
+        {tp('generate.creditsUsed', creditCost)}
       </p>
-      {typeof credits === 'number' && credits < state.words.length && (
+      {typeof credits === 'number' && credits < creditCost && (
         <p className="text-center text-xs text-rose-400 mt-1">{t('generate.notEnoughCredits')}</p>
       )}
 
@@ -797,7 +818,7 @@ function StepReview({
       <div className="mt-8 text-center pb-20">
         <button
           onClick={onSubmit}
-          disabled={submitting || (typeof credits === 'number' && credits < state.words.length)}
+          disabled={submitting || (typeof credits === 'number' && credits < creditCost)}
           className="px-10 py-4 rounded-full bg-foreground text-background font-display font-medium text-lg hover:scale-105 transition-transform shadow-[0_0_40px_var(--accent-glow)] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           {submitting ? (

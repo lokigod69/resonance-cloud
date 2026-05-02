@@ -156,6 +156,16 @@ export interface ExistingDeck {
   art_style: string | null
   movie_override: string | null
   word_count: number
+  deck_type?: 'video' | 'card'
+}
+
+export const CREDIT_COST_PER_WORD = { video: 10, card: 1 } as const
+
+export function computeCreditCost(
+  deckType: 'video' | 'card' | null,
+  wordCount: number
+): number {
+  return wordCount * CREDIT_COST_PER_WORD[deckType ?? 'video']
 }
 
 export function useWizardState() {

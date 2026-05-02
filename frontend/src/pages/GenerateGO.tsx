@@ -10,7 +10,9 @@ import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
+import { computeCreditCost } from '@/components/generate/useWizardState'
 import type { GeneratePayload, ExistingDeck, WizardState, WizardAction } from '@/components/generate/useWizardState'
+import DeckTypeStep from '@/components/generate/steps/DeckTypeStep'
 import WordsStep from '@/components/generate/steps/WordsStep'
 
 const GO_GENRES = [
@@ -43,8 +45,8 @@ export default function GenerateGO() {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   const [genre, setGenre] = useState<string | null>(null)
   const [lyricMode, setLyricMode] = useState<string | null>(null)
-  const [deckType, _setDeckType] = useState<'video' | 'card' | null>(null)
-  const [cardImageStyle, _setCardImageStyle] = useState<
+  const [deckType, setDeckType] = useState<'video' | 'card' | null>(null)
+  const [cardImageStyle, setCardImageStyle] = useState<
     'Photorealistic' | 'Editorial' | 'Random' | null
   >(null)
   const [customGenre, setCustomGenre] = useState('')
@@ -67,14 +69,15 @@ export default function GenerateGO() {
     if (!deckIdParam) return
     supabase
       .from('decks')
-      .select('id, name, target_language, art_style, movie_override, word_count')
+      .select('id, name, target_language, art_style, movie_override, word_count, deck_type')
       .eq('id', deckIdParam)
       .single()
       .then(({ data }) => {
         if (data) {
           setExistingDeck(data)
           setLanguage(data.target_language)
-          setStep(2) // skip language selection
+          setDeckType(data.deck_type ?? 'video')
+          setStep(3) // skip language and deck-type selection
         }
       })
   }, [deckIdParam])
@@ -170,7 +173,7 @@ export default function GenerateGO() {
         setWords(action.words.slice(0, MAX_WORDS))
         break
       case 'CHOOSE_PATH':
-        if (action.path === 'custom') setStep(3)
+        if (action.path === 'custom') setStep(4)
         // 'quick' is handled via onQuickGenerate prop below
         break
       default:
@@ -181,11 +184,11 @@ export default function GenerateGO() {
   // ── Step 3: Vibe ──────────────────────────────────
 
   function handleVibeSelect(value: string) {
-    if (step > 3 && vibe === value) {
+    if (step > 4 && vibe === value) {
       setVibe(null)
       setMovieTitle('')
       setShowMovieInput(false)
-      setStep(3)
+      setStep(4)
       return
     }
     setVibe(value)
@@ -194,14 +197,14 @@ export default function GenerateGO() {
     } else {
       setShowMovieInput(false)
       setMovieTitle('')
-      setStep(4)
+      setStep(5)
     }
   }
 
   function handleMovieConfirm() {
     if (movieTitle.trim()) {
       setShowMovieInput(false)
-      setStep(4)
+      setStep(5)
     }
   }
 
@@ -214,24 +217,24 @@ export default function GenerateGO() {
   function handleArtStyleSelect(value: string | null) {
     setArtStyle(value)
     setExpandedCategory(null)
-    setStep(5)
+    setStep(6)
   }
 
   // ── Step 5: Niveau ────────────────────────────────
 
   function handleLyricModeSelect(value: string | null) {
     setLyricMode(value)
-    setStep(6)
+    setStep(7)
   }
 
   // ── Step 6: Genre ─────────────────────────────────
 
   function handleGenreSelect(value: string) {
-    if (step > 6 && genre === value) {
+    if (step > 7 && genre === value) {
       setGenre(null)
       setCustomGenre('')
       setShowCustomInput(false)
-      setStep(6)
+      setStep(7)
       return
     }
     setGenre(value)
@@ -239,7 +242,7 @@ export default function GenerateGO() {
       setShowCustomInput(true)
     } else {
       setShowCustomInput(false)
-      setStep(7)
+      setStep(8)
     }
   }
 
@@ -247,7 +250,7 @@ export default function GenerateGO() {
     if (customGenre.trim()) {
       setGenre(customGenre.trim())
       setShowCustomInput(false)
-      setStep(7)
+      setStep(8)
     }
   }
 
@@ -329,6 +332,7 @@ export default function GenerateGO() {
   // ── Render helpers ────────────────────────────────
 
   const credits = profile?.credits
+  const creditCost = computeCreditCost(deckType ?? existingDeck?.deck_type ?? null, words.length)
 
   function findStyleLabel(value: string): string {
     for (const g of ART_STYLE_GROUPS) {
@@ -337,6 +341,18 @@ export default function GenerateGO() {
     }
     return value
   }
+
+   if (deckIdParam && !existingDeck) {
+     return (
+       <div className="gen-container">
+         <div className="gen-section" style={{ textAlign: 'center' }}>
+           <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.9rem', margin: 0 }}>
+             {t('common.loading')}
+           </p>
+         </div>
+       </div>
+     )
+   }
 
    if (generated) {
      return (
@@ -380,26 +396,51 @@ export default function GenerateGO() {
   return (
     <div className="gen-container">
       {/* ── Step 1: Language ── */}
-      <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
-        {step === 1 && <h3>Choose Language Orbit</h3>}
-        <div className="gen-orb-row">
-          {LANGUAGES.map(lang => (
-            <div
-              key={lang.value}
-              className={orbClass(1, lang.value, language)}
-              onClick={() => handleLanguageSelect(lang.value)}
-            >
-              <FlagIcon code={lang.code} className="w-10 h-auto" />
-              <span className="gen-orb-label">{lang.label}</span>
-            </div>
-          ))}
+      {!existingDeck && (
+        <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
+          {step === 1 && <h3>Choose Language Orbit</h3>}
+          <div className="gen-orb-row">
+            {LANGUAGES.map(lang => (
+              <div
+                key={lang.value}
+                className={orbClass(1, lang.value, language)}
+                onClick={() => handleLanguageSelect(lang.value)}
+              >
+                <FlagIcon code={lang.code} className="w-10 h-auto" />
+                <span className="gen-orb-label">{lang.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* ── Step 2: Words ── */}
-      {step >= 2 && (
+      {/* ── Step 2: Deck Type ── */}
+      {!existingDeck && step >= 2 && (
         <div ref={el => { sectionRefs.current[1] = el }} className="gen-section">
           {step === 2 ? (
+            <DeckTypeStep
+              skin="glassy"
+              value={deckType}
+              onChange={(value) => {
+                setDeckType(value)
+                if (value === 'video') setCardImageStyle(null)
+                setStep(3)
+              }}
+            />
+          ) : (
+            <div className="gen-orb-row">
+              <div className="gen-orb selected breadcrumb" onClick={() => setStep(2)}>
+                {deckType === 'card' ? 'Image' : 'Video and Music'}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ── Step 3: Words ── */}
+      {step >= 3 && (
+        <div ref={el => { sectionRefs.current[2] = el }} className="gen-section">
+          {step === 3 ? (
             <div className="glass-card">
               <WordsStep
                 state={wordsStepState}
@@ -412,7 +453,7 @@ export default function GenerateGO() {
             </div>
           ) : (
             <div className="gen-orb-row">
-              <div className="gen-orb selected breadcrumb" onClick={() => setStep(2)}>
+              <div className="gen-orb selected breadcrumb" onClick={() => setStep(3)}>
                 {words.length} word{words.length !== 1 ? 's' : ''}
               </div>
             </div>
@@ -420,22 +461,22 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 3: Vibe ── */}
-      {step >= 3 && (
-        <div ref={el => { sectionRefs.current[2] = el }} className="gen-section">
-          {step === 3 && <h3>Select Visual Context</h3>}
+      {/* ── Step 4: Vibe ── */}
+      {step >= 4 && (
+        <div ref={el => { sectionRefs.current[3] = el }} className="gen-section">
+          {step === 4 && <h3>Select Visual Context</h3>}
           <div className="gen-orb-row">
             {VIBES.map(v => (
               <div
                 key={v.value}
-                className={orbClass(3, v.value, vibe)}
+                className={orbClass(4, v.value, vibe)}
                 onClick={() => handleVibeSelect(v.value)}
               >
                 {v.label}
               </div>
             ))}
           </div>
-          {showMovieInput && step === 3 && (
+          {showMovieInput && step === 4 && (
             <div className="gen-orb-row" style={{ marginTop: 16 }}>
               <div className="gen-orb input-orb">
                 <input
@@ -454,10 +495,10 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 4: Art Style ── */}
-      {step >= 4 && (
-        <div ref={el => { sectionRefs.current[3] = el }} className="gen-section">
-          {step === 4 ? (
+      {/* ── Step 5: Art Style ── */}
+      {step >= 5 && (
+        <div ref={el => { sectionRefs.current[4] = el }} className="gen-section">
+          {step === 5 ? (
             <>
               <h3>Art Style</h3>
               {/* Auto + Category orbs */}
@@ -502,7 +543,7 @@ export default function GenerateGO() {
             </>
           ) : (
             <div className="gen-orb-row">
-              <div className="gen-orb selected breadcrumb" onClick={() => { setStep(4); setExpandedCategory(null) }}>
+              <div className="gen-orb selected breadcrumb" onClick={() => { setStep(5); setExpandedCategory(null) }}>
                 {artStyle ? findStyleLabel(artStyle) : 'Auto'}
               </div>
             </div>
@@ -510,10 +551,10 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 5: Niveau ── */}
-      {step >= 5 && (
-        <div ref={el => { sectionRefs.current[4] = el }} className="gen-section">
-          {step === 5 ? (
+      {/* ── Step 6: Niveau ── */}
+      {step >= 6 && (
+        <div ref={el => { sectionRefs.current[5] = el }} className="gen-section">
+          {step === 6 ? (
             <>
               <h3>Niveau</h3>
               <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.9rem', marginBottom: 16, textAlign: 'center' }}>
@@ -534,7 +575,7 @@ export default function GenerateGO() {
             </>
           ) : (
             <div className="gen-orb-row">
-              <div className="gen-orb selected breadcrumb" onClick={() => setStep(5)}>
+              <div className="gen-orb selected breadcrumb" onClick={() => setStep(6)}>
                 {t(`generate.niveau.${(NIVEAU_OPTIONS.find(o => o.value === lyricMode) ?? NIVEAU_OPTIONS[0]).key}`)}
               </div>
             </div>
@@ -542,22 +583,22 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 6: Genre ── */}
-      {step >= 6 && (
-        <div ref={el => { sectionRefs.current[5] = el }} className="gen-section">
-          {step === 6 && <h3>Aural Atmosphere</h3>}
+      {/* ── Step 7: Genre ── */}
+      {step >= 7 && (
+        <div ref={el => { sectionRefs.current[6] = el }} className="gen-section">
+          {step === 7 && <h3>Aural Atmosphere</h3>}
           <div className="gen-orb-row">
             {GO_GENRES.map(g => (
               <div
                 key={g.value}
-                className={orbClass(6, g.value, genre)}
+                className={orbClass(7, g.value, genre)}
                 onClick={() => handleGenreSelect(g.value)}
               >
                 {g.label}
               </div>
             ))}
           </div>
-          {showCustomInput && step === 6 && (
+          {showCustomInput && step === 7 && (
             <div className="gen-orb-row" style={{ marginTop: 16 }}>
               <div className="gen-orb input-orb">
                 <input
@@ -576,9 +617,9 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 7: Initialize ── */}
-      {step >= 7 && (
-        <div ref={el => { sectionRefs.current[6] = el }} className="gen-section" style={{ textAlign: 'center' }}>
+      {/* ── Step 8: Initialize ── */}
+      {step >= 8 && (
+        <div ref={el => { sectionRefs.current[7] = el }} className="gen-section" style={{ textAlign: 'center' }}>
           <h3 style={{ fontSize: '2.2rem', color: 'var(--text-primary)', fontWeight: 300, marginBottom: 8 }}>
             {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
           </h3>
@@ -588,7 +629,7 @@ export default function GenerateGO() {
             </p>
           )}
           <p style={{ color: 'var(--go-text-secondary)', marginBottom: 16, fontSize: '0.9rem' }}>
-            {words.length} word{words.length !== 1 ? 's' : ''} · {words.length} credit{words.length !== 1 ? 's' : ''}
+            {words.length} word{words.length !== 1 ? 's' : ''} · {creditCost} credit{creditCost !== 1 ? 's' : ''}
           </p>
 
           {/* Selection summary tags */}
@@ -630,15 +671,15 @@ export default function GenerateGO() {
             </div>
           )}
 
-          {typeof credits === 'number' && credits < words.length && (
+          {typeof credits === 'number' && credits < creditCost && (
             <p style={{ color: 'var(--destructive)', marginBottom: 16, fontSize: '0.85rem' }}>
-              Not enough credits — you need {words.length} but have {credits}. Redeem an invite code to get more.
+              Not enough credits — you need {creditCost} but have {credits}. Redeem an invite code to get more.
             </p>
           )}
           <div
-            className={`forge-orb${submitting ? ' synthesizing' : ''}${typeof credits === 'number' && credits < words.length ? ' disabled' : ''}`}
-            onClick={!submitting && (typeof credits !== 'number' || credits >= words.length) ? () => handleInitialize() : undefined}
-            style={typeof credits === 'number' && credits < words.length ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
+            className={`forge-orb${submitting ? ' synthesizing' : ''}${typeof credits === 'number' && credits < creditCost ? ' disabled' : ''}`}
+            onClick={!submitting && (typeof credits !== 'number' || credits >= creditCost) ? () => handleInitialize() : undefined}
+            style={typeof credits === 'number' && credits < creditCost ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
           >
             {submitting ? 'Synthesizing...' : 'Initialize'}
           </div>
