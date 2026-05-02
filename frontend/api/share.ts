@@ -51,11 +51,9 @@ export async function GET(req: Request): Promise<Response> {
     const pageUrl = `${url.origin}/v/${shareId}`
     const spaUrl = `${url.origin}/share/${shareId}`
 
-    // Increment view count — fire-and-forget
+    // Increment view count atomically. Fire-and-forget so crawlers still get OG tags.
     supabase
-      .from('shared_words')
-      .update({ view_count: (word.view_count || 0) + 1 })
-      .eq('id', shareId)
+      .rpc('increment_shared_word_view', { p_share_id: shareId })
       .then(() => {})
 
     const html = `<!DOCTYPE html>

@@ -142,6 +142,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
   const [messagesLoading, setMessagesLoading] = useState(false)
   const [corrections, setCorrections] = useState<Correction[] | null>(null)
   const [correctionsLoading, setCorrectionsLoading] = useState(false)
+  const [correctionsError, setCorrectionsError] = useState<string | null>(null)
 
   // Load conversations when panel opens
   useEffect(() => {
@@ -184,6 +185,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
     // Hydrate cached corrections if present
     const conv = conversations.find((c) => c.id === selectedId)
     setCorrections(conv?.corrections ?? null)
+    setCorrectionsError(null)
   }, [selectedId, conversations])
 
   const selectedConversation = conversations.find((c) => c.id === selectedId)
@@ -191,10 +193,21 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
   const fetchHistoryCorrections = async () => {
     if (!selectedConversation || correctionsLoading || messages.length < 4) return
     setCorrectionsLoading(true)
+    setCorrectionsError(null)
     try {
+      const { data: sessionData } = await supabase.auth.getSession()
+      const token = sessionData.session?.access_token
+      if (!token) {
+        setCorrectionsError('Your session expired. Sign in again to review corrections.')
+        return
+      }
+
       const res = await fetch('/api/voice-chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({
           mode: 'corrections',
           transcript: messages.map((m) => ({ role: m.role, content: m.content })),
@@ -202,6 +215,12 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
           native_language: baseLangCode || 'en',
         }),
       })
+      if (!res.ok) {
+        setCorrectionsError(res.status === 401
+          ? 'Your session expired. Sign in again to review corrections.'
+          : 'Unable to review corrections right now.')
+        return
+      }
       const data = await res.json()
       const list: Correction[] = Array.isArray(data.corrections) ? data.corrections : []
       setCorrections(list)
@@ -211,6 +230,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
       setConversations((prev) => prev.map((c) => c.id === selectedConversation.id ? { ...c, corrections: list } : c))
     } catch (err) {
       console.error('Corrections fetch failed:', err)
+      setCorrectionsError('Unable to review corrections right now.')
       setCorrections([])
     } finally {
       setCorrectionsLoading(false)
@@ -448,6 +468,11 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
 
                   {messages.length >= 4 && (
                     <div className="mt-6 flex flex-col items-center gap-4">
+                      {correctionsError && (
+                        <div className="text-center text-sm text-red-300 px-4 py-3 bg-red-950/40 border border-red-500/20 rounded-lg">
+                          {correctionsError}
+                        </div>
+                      )}
                       {corrections === null ? (
                         <button
                           onClick={fetchHistoryCorrections}

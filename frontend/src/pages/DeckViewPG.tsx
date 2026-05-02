@@ -152,22 +152,17 @@ export default function DeckViewPG() {
     if (!confirm(t('deckview.confirmRemove', { word: word.word }))) return
     setDeleting(word.id)
     try {
-      // Clean up storage files if they exist
-      if (user && (word.video_url || word.thumbnail_url)) {
-        const prefix = `${user.id}/${id}/${word.word}`
-        await supabase.storage.from('videos').remove([
-          `${prefix}/video.mp4`, `${prefix}/thumb.jpg`,
-          `${prefix}/video_b.mp4`, `${prefix}/thumb_b.jpg`,
-        ]).catch(() => {})
-      }
-      await supabase.from('words').delete().eq('id', word.id)
+      const { data, error } = await supabase.rpc('archive_word', {
+        p_word_id: word.id,
+      })
+      if (error) throw error
+
+      const result = data as { deck?: Pick<Deck, 'word_count' | 'status'> } | null
       const remaining = words.filter(w => w.id !== word.id)
       setWords(remaining)
-      // Update deck word count and status
-      const allComplete = remaining.length > 0 && remaining.every(w => w.status === 'complete')
-      const someComplete = remaining.some(w => w.status === 'complete')
-      const newStatus = allComplete ? 'complete' : someComplete ? 'partial' : 'draft'
-      await supabase.from('decks').update({ word_count: remaining.length, status: newStatus }).eq('id', id)
+      if (result?.deck) {
+        setDeck((prev) => prev ? { ...prev, ...result.deck } : prev)
+      }
       toast(t('deckview.wordRemoved'), 'success')
     } catch {
       toast(t('deckview.removeFailed'), 'error')
@@ -193,7 +188,9 @@ export default function DeckViewPG() {
         toast(t('deckview.deckNotEmpty'), 'error')
         return
       }
-      const { error } = await supabase.from('decks').delete().eq('id', deck.id)
+      const { error } = await supabase.rpc('archive_deck', {
+        p_deck_id: deck.id,
+      })
       if (error) {
         toast(t('deckview.deleteError'), 'error')
         return
@@ -392,22 +389,25 @@ export default function DeckViewPG() {
       setIsRenaming(false)
       return
     }
-    const { error } = await supabase
-      .from('decks')
-      .update({ name: trimmed })
-      .eq('id', deck.id)
+    const { data, error } = await supabase.rpc('update_deck_metadata', {
+      p_deck_id: deck.id,
+      p_name: trimmed,
+    })
     if (!error) {
-      setDeck((prev) => (prev ? { ...prev, name: trimmed } : prev))
+      const result = data as Partial<Deck> | null
+      setDeck((prev) => (prev ? { ...prev, name: result?.name ?? trimmed } : prev))
       setIsRenaming(false)
     }
   }
 
   async function handleRate(wordId: string, rating: number) {
-    await supabase
-      .from('words')
-      .update({ rating, rated_at: new Date().toISOString() })
-      .eq('id', wordId)
-    setWords((prev) => prev.map((w) => (w.id === wordId ? { ...w, rating } : w)))
+    const { error } = await supabase.rpc('rate_word', {
+      p_word_id: wordId,
+      p_rating: rating,
+    })
+    if (!error) {
+      setWords((prev) => prev.map((w) => (w.id === wordId ? { ...w, rating } : w)))
+    }
   }
 
   async function handleShare(word: Word) {

@@ -63,11 +63,13 @@ export default function VideoPlayer() {
   const activeVideoUrl = current?.video_url ?? null
 
   async function handleRate(wordId: string, rating: number) {
-    await supabase
-      .from('words')
-      .update({ rating, rated_at: new Date().toISOString() })
-      .eq('id', wordId)
-    setWords((prev) => prev.map((w) => (w.id === wordId ? { ...w, rating } : w)))
+    const { error } = await supabase.rpc('rate_word', {
+      p_word_id: wordId,
+      p_rating: rating,
+    })
+    if (!error) {
+      setWords((prev) => prev.map((w) => (w.id === wordId ? { ...w, rating } : w)))
+    }
   }
 
   const goTo = useCallback(
