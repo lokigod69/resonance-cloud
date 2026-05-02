@@ -43,6 +43,10 @@ export default function GenerateGO() {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   const [genre, setGenre] = useState<string | null>(null)
   const [lyricMode, setLyricMode] = useState<string | null>(null)
+  const [deckType, _setDeckType] = useState<'video' | 'card' | null>(null)
+  const [cardImageStyle, _setCardImageStyle] = useState<
+    'Photorealistic' | 'Editorial' | 'Random' | null
+  >(null)
   const [customGenre, setCustomGenre] = useState('')
   const [showCustomInput, setShowCustomInput] = useState(false)
   const [deckName, setDeckName] = useState('')
@@ -283,6 +287,7 @@ export default function GenerateGO() {
           movie_override: movieOverride,
           word_count: effectiveWords.length,
           status: 'generating',
+          deck_type: deckType ?? 'video',
         },
         wordList: effectiveWords,
         jobPayload: {
@@ -297,6 +302,9 @@ export default function GenerateGO() {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
             ...(genreValue ? { genre: genreValue } : {}),
             ...(!isQuickGenerate && lyricMode ? { lyric_mode: lyricMode } : {}),
+            ...(deckType === 'card' && cardImageStyle
+              ? { card_image_style: cardImageStyle }
+              : {}),
           },
         },
       }

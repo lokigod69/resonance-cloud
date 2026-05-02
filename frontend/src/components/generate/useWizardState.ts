@@ -12,6 +12,8 @@ export interface WizardState {
   genre: string | null
   lyricMode: string | null
   deckName: string
+  deckType: 'video' | 'card' | null
+  cardImageStyle: 'Photorealistic' | 'Editorial' | 'Random' | null
 }
 
 export type WizardAction =
@@ -26,6 +28,8 @@ export type WizardAction =
   | { type: 'SET_GENRE'; genre: string | null }
   | { type: 'SET_LYRIC_MODE'; mode: string | null }
   | { type: 'SET_DECK_NAME'; name: string }
+  | { type: 'SET_DECK_TYPE'; deckType: 'video' | 'card' | null }
+  | { type: 'SET_CARD_IMAGE_STYLE'; style: 'Photorealistic' | 'Editorial' | 'Random' | null }
   | { type: 'GO_TO_STEP'; step: 1 | 2 | 3 | 4 | 5 | 6 }
   | { type: 'CHOOSE_PATH'; path: 'quick' | 'custom' }
   | { type: 'NEXT_STEP' }
@@ -42,6 +46,8 @@ const initialState: WizardState = {
   genre: null,
   lyricMode: null,
   deckName: '',
+  deckType: null,
+  cardImageStyle: null,
 }
 
 function wizardReducer(state: WizardState, action: WizardAction): WizardState {
@@ -89,6 +95,12 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
     case 'SET_DECK_NAME':
       return { ...state, deckName: action.name }
 
+    case 'SET_DECK_TYPE':
+      return { ...state, deckType: action.deckType }
+
+    case 'SET_CARD_IMAGE_STYLE':
+      return { ...state, cardImageStyle: action.style }
+
     case 'GO_TO_STEP':
       return { ...state, step: action.step }
 
@@ -122,6 +134,7 @@ export interface GeneratePayload {
     movie_override: string | null
     word_count: number
     status: 'generating'
+    deck_type: 'video' | 'card'
   } | null
   wordList: string[]
   jobPayload: {
@@ -170,6 +183,7 @@ export function useWizardState() {
           movie_override: movieOverride,
           word_count: state.words.length,
           status: 'generating',
+          deck_type: state.deckType ?? 'video',
         },
         wordList: state.words,
         jobPayload: {
@@ -184,6 +198,9 @@ export function useWizardState() {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
             ...(genre ? { genre } : {}),
             ...(lyricMode ? { lyric_mode: lyricMode } : {}),
+            ...(state.deckType === 'card' && state.cardImageStyle
+              ? { card_image_style: state.cardImageStyle }
+              : {}),
           },
         },
       }
