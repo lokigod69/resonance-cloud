@@ -287,23 +287,25 @@ export async function POST(req: Request): Promise<Response> {
         buildSystemPrompt(retryCount, body.base_language, avoidList) +
         `\n\nIMPORTANT: ${retryReminder}`
       const retryUserPrompt = buildUserPrompt(retryCount, body.category, body.target_language)
-      const retryRes = await callOpenRouter(apiKey, retrySystemPrompt, retryUserPrompt)
 
-      if (retryRes.ok) {
-        const retryData = await retryRes.json()
-        const retryContent = retryData?.choices?.[0]?.message?.content
-        if (retryContent) {
-          const retryWords = parseAndCleanWords(retryContent)
-          if (retryWords) {
-            const retryFiltered = filterAgainstAvoid(retryWords, avoidList)
-            const merged = mergeUniqueWords(filtered, retryFiltered)
-            if (merged.length > filtered.length) {
-              filtered = merged
+      try {
+        const retryRes = await callOpenRouter(apiKey, retrySystemPrompt, retryUserPrompt)
+
+        if (retryRes.ok) {
+          const retryData = await retryRes.json()
+          const retryContent = retryData?.choices?.[0]?.message?.content
+          if (retryContent) {
+            const retryWords = parseAndCleanWords(retryContent)
+            if (retryWords) {
+              const retryFiltered = filterAgainstAvoid(retryWords, avoidList)
+              filtered = mergeUniqueWords(filtered, retryFiltered)
             }
           }
+        } else {
+          console.error('[suggest-words] retry OpenRouter error:', retryRes.status)
         }
-      } else {
-        console.error('[suggest-words] retry OpenRouter error:', retryRes.status)
+      } catch (error) {
+        console.warn('[suggest-words] retry failed, preserving first-pass results:', error)
       }
     }
 

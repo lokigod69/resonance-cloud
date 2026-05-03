@@ -6,6 +6,7 @@ import PillButton from '../shared/PillButton'
 import { MAX_WORDS } from '../wizardData'
 import type { WizardState, WizardAction } from '../useWizardState'
 import CategoryPicker from './CategoryPicker'
+import { useTranslation } from '@/hooks/useTranslation'
 
 interface WordsStepProps {
   state: WizardState
@@ -15,6 +16,7 @@ interface WordsStepProps {
 }
 
 export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomize }: WordsStepProps) {
+  const { tp } = useTranslation()
   const [error, setError] = useState<string | null>(null)
   const glassInputRef = useRef<GlassInputHandle>(null)
   const wordCount = state.words.length
@@ -66,7 +68,7 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
         transition={{ delay: 0.1 }}
         className="text-sm text-muted-foreground mb-8"
       >
-        {wordCount} of {MAX_WORDS}
+        {tp('generate.wordCountSlider', wordCount)}
       </motion.p>
 
       <div className="w-full max-w-md space-y-5">
