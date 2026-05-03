@@ -111,6 +111,7 @@ export const IMAGE_FIELDS: FieldDef[] = [
   } },
   { key: 'word_in_image', label: 'Word in Image', type: 'toggle', default: true },
   { key: 'image_model', label: 'Image Model', type: 'dropdown', options: ['flux_pro', 'zturbo', 'wan_fast', 'wan_pro', 'seedream_lite'], default: 'flux_pro', optionLabels: { flux_pro: 'Flux 2 Pro', zturbo: 'Z-Image Turbo', wan_fast: 'Wan 2.7', wan_pro: 'Wan 2.7 Pro', seedream_lite: 'Seedream 5.0 Lite' } },
+  { key: 'card_image_model', label: 'Card Image Model', type: 'dropdown', options: ['zturbo', 'flux_pro', 'wan_fast', 'wan_pro', 'seedream_lite', 'gpt_image_2'], default: 'zturbo', optionLabels: { zturbo: 'Z-Image Turbo', flux_pro: 'Flux 2 Pro', wan_fast: 'Wan 2.7', wan_pro: 'Wan 2.7 Pro', seedream_lite: 'Seedream 5.0 Lite', gpt_image_2: 'GPT Image 2 (Premium)' } },
   { key: 'llm_model', label: 'LLM Model', type: 'dropdown', options: ['deepseek/deepseek-v4-flash', 'deepseek/deepseek-v3.2', 'deepseek/deepseek-v3.2-speciale', 'google/gemini-3.1-flash-lite-preview', 'x-ai/grok-4.1-fast', 'qwen/qwen3.6-plus-preview:free', 'openai/gpt-4o-mini', 'openai/gpt-5.4-mini', 'qwen/qwen3.5-9b'], default: 'x-ai/grok-4.1-fast', optionLabels: { 'deepseek/deepseek-v4-flash': 'DeepSeek V4 Flash', 'deepseek/deepseek-v3.2': 'DeepSeek V3.2', 'deepseek/deepseek-v3.2-speciale': 'DeepSeek V3.2 Speciale', 'google/gemini-3.1-flash-lite-preview': 'Gemini 3.1 Flash Lite', 'x-ai/grok-4.1-fast': 'Grok 4.1 Fast', 'qwen/qwen3.6-plus-preview:free': 'Qwen 3.6 Plus (free)', 'openai/gpt-4o-mini': 'GPT-4o Mini ($0.15/$0.60)', 'openai/gpt-5.4-mini': 'GPT-5.4 Mini ($0.75/$4.50)', 'qwen/qwen3.5-9b': 'Qwen 3.5-9B ($0.10/$0.15)' }, advanced: true },
 ]
 
@@ -201,7 +202,7 @@ export const SUNO_FIELDS: FieldDef[] = [
     optionLabels: { fade_out: 'Fade Out', clean_cut: 'Clean Cut' },
     default: 'fade_out',
     helper: 'Fade Out: Suno fades over black. Clean Cut: Suno hard-cuts, silent word card shown.',
-    condition: (s: any) => s.enabled !== false,
+    condition: (s: Record<string, unknown>) => s.enabled !== false,
   },
   {
     key: 'fade_tail_duration',
@@ -212,7 +213,7 @@ export const SUNO_FIELDS: FieldDef[] = [
     step: 0.5,
     default: 2.5,
     helper: 'Seconds of Suno fade-out after video ends (Fade Out mode only)',
-    condition: (s: any) => s.enabled !== false && s.outro_mode === 'fade_out',
+    condition: (s: Record<string, unknown>) => s.enabled !== false && s.outro_mode === 'fade_out',
   },
 ]
 

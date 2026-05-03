@@ -17,9 +17,13 @@ type WordRecord = {
   word_slug: string | null
   translation: string | null
   mnemonic: string | null
+  dominant_emotional_reading?: string | null
+  composition_hint?: string | null
+  treatment_hint?: string | null
   etymology: string | null
   pos: string | null
   article: string | null
+  card_image_model?: string | null
   status: string
   video_url: string | null
   thumbnail_url: string | null
@@ -32,6 +36,15 @@ type WordRecord = {
   rated_at: string | null
   needs_review: boolean
   created_at: string
+}
+
+const COST_PER_CARD: Record<string, number> = {
+  zturbo: 0.004,
+  flux_pro: 0.025,
+  wan_fast: 0.024,
+  wan_pro: 0.060,
+  seedream_lite: 0.0275,
+  gpt_image_2: 0.050,
 }
 
 export default function WordDetailPanel({
@@ -48,6 +61,14 @@ export default function WordDetailPanel({
   if (!word) return null
 
   const meta = word.metadata
+  const cardImageModel = normalizeCardImageModel(word.card_image_model) ?? getMetadataCardImageModel(meta)
+  const cardCost = cardImageModel ? formatCardCost(cardImageModel) : null
+  const gptEnrichmentRows = [
+    { label: 'Mnemonic (visual scene)', value: cleanText(word.mnemonic) },
+    { label: 'Emotional reading', value: cleanText(word.dominant_emotional_reading) },
+    { label: 'Composition', value: cleanText(word.composition_hint) },
+    { label: 'Treatment', value: cleanText(word.treatment_hint) },
+  ].filter((row): row is { label: string; value: string } => row.value !== null)
 
   return (
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
@@ -135,6 +156,17 @@ export default function WordDetailPanel({
           )}
         </div>
 
+        {gptEnrichmentRows.length > 0 && (
+          <div className="space-y-3">
+            <h3 className="text-sm font-medium">GPT Enrichment</h3>
+            <MetaSection title="Production Brief Fields">
+              {gptEnrichmentRows.map(row => (
+                <MetaRow key={row.label} label={row.label} value={row.value} />
+              ))}
+            </MetaSection>
+          </div>
+        )}
+
         {/* Metadata */}
         <div className="space-y-3">
           <h3 className="text-sm font-medium">Generation Metadata</h3>
@@ -163,6 +195,7 @@ export default function WordDetailPanel({
                 <MetaRow label="Refusals" value={(meta.images as Record<string, unknown>)?.refusals as number | undefined} />
                 <MetaRow label="Duration" value={formatDuration((meta.images as Record<string, unknown>)?.duration_seconds as number | undefined)} />
                 <MetaRow label="Model" value={(meta.images as Record<string, unknown>)?.model as string | undefined} />
+                <MetaRow label="Cost" value={cardCost} />
               </MetaSection>
 
               <MetaSection title="Concept">
@@ -232,6 +265,63 @@ export default function WordDetailPanel({
       </DialogContent>
     </Dialog>
   )
+}
+
+function cleanText(value: string | null | undefined): string | null {
+  const text = value?.trim()
+  return text ? text : null
+}
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  if (value && typeof value === 'object' && !Array.isArray(value)) {
+    return value as Record<string, unknown>
+  }
+  return null
+}
+
+function normalizeCardImageModel(value: unknown): string | null {
+  if (typeof value !== 'string') return null
+  const model = value.trim()
+  if (!model) return null
+  if (model in COST_PER_CARD) return model
+
+  const aliases: Record<string, string> = {
+    'gpt-image-2': 'gpt_image_2',
+    'gpt-image-2-text-to-image': 'gpt_image_2',
+    'gpt-image-2-image-to-image': 'gpt_image_2',
+    'z-image-turbo': 'zturbo',
+    'zturbo': 'zturbo',
+  }
+  return aliases[model] ?? null
+}
+
+function getMetadataCardImageModel(meta: Record<string, unknown> | null): string | null {
+  if (!meta) return null
+
+  const images = asRecord(meta.images)
+  const card = asRecord(meta.card)
+  const settings = asRecord(meta.settings)
+  const settingsImages = asRecord(settings?.images)
+  const settingsOverride = asRecord(meta.settings_override)
+  const settingsOverrideImages = asRecord(settingsOverride?.images)
+
+  return (
+    normalizeCardImageModel(meta.card_image_model) ??
+    normalizeCardImageModel(images?.card_image_model) ??
+    normalizeCardImageModel(images?.model) ??
+    normalizeCardImageModel(card?.card_image_model) ??
+    normalizeCardImageModel(card?.model) ??
+    normalizeCardImageModel(settingsImages?.card_image_model) ??
+    normalizeCardImageModel(settingsOverride?.card_image_model) ??
+    normalizeCardImageModel(settingsOverrideImages?.card_image_model)
+  )
+}
+
+function formatCardCost(model: string): string | null {
+  const cost = COST_PER_CARD[model]
+  if (cost === undefined) return null
+  const precision = Number.isInteger(cost * 1000) ? 3 : 4
+  return `$${cost.toFixed(precision)} (${model})`
 }
 
 function InfoRow({ label, value }: { label: string; value: string | null | undefined }) {

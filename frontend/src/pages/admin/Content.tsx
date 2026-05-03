@@ -63,9 +63,14 @@ type WordRecord = {
   word_slug: string | null
   translation: string | null
   mnemonic: string | null
+  dominant_emotional_reading?: string | null
+  composition_hint?: string | null
+  treatment_hint?: string | null
   etymology: string | null
   pos: string | null
   article: string | null
+  card_image_model?: string | null
+  generation_job_id?: string | null
   status: string
   video_url: string | null
   thumbnail_url: string | null
@@ -86,6 +91,19 @@ type WordRecord = {
 type ProfileOption = {
   id: string
   display_name: string | null
+}
+
+type GenerationJobSettings = {
+  id: string
+  target_language: string | null
+  profile_used: string | null
+  settings_override: Record<string, unknown> | null
+}
+
+type LanguageProfileSettings = {
+  language: string
+  name: string
+  settings: Record<string, unknown> | null
 }
 
 // ---------------------------------------------------------------------------
@@ -110,6 +128,24 @@ const STATUS_COLORS: Record<string, string> = {
 function formatTime(iso: string | null) {
   if (!iso) return '—'
   return new Date(iso).toLocaleString()
+}
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  if (value && typeof value === 'object' && !Array.isArray(value)) {
+    return value as Record<string, unknown>
+  }
+  return null
+}
+
+function extractCardImageModel(settings: Record<string, unknown> | null): string | null {
+  const direct = settings?.card_image_model
+  if (typeof direct === 'string' && direct.trim()) return direct.trim()
+
+  const images = asRecord(settings?.images)
+  const nested = images?.card_image_model
+  if (typeof nested === 'string' && nested.trim()) return nested.trim()
+
+  return null
 }
 
 // ---------------------------------------------------------------------------
@@ -183,7 +219,61 @@ export default function Content() {
       .select('*')
       .eq('deck_id', deckId)
       .order('created_at')
-    if (data) setDeckWords(prev => ({ ...prev, [deckId]: data }))
+    if (!data) return
+
+    const words = data as WordRecord[]
+    const jobIds = Array.from(new Set(
+      words
+        .map(word => word.generation_job_id)
+        .filter((id): id is string => typeof id === 'string' && id.length > 0)
+    ))
+
+    if (jobIds.length === 0) {
+      setDeckWords(prev => ({ ...prev, [deckId]: words }))
+      return
+    }
+
+    const { data: jobs } = await supabase
+      .from('generation_jobs')
+      .select('id, target_language, profile_used, settings_override')
+      .in('id', jobIds)
+
+    const jobRows = (jobs || []) as GenerationJobSettings[]
+    const profileNames = Array.from(new Set(
+      jobRows
+        .filter(job => !extractCardImageModel(job.settings_override))
+        .map(job => job.profile_used)
+        .filter((name): name is string => typeof name === 'string' && name.length > 0)
+    ))
+    let profilesByKey = new Map<string, LanguageProfileSettings>()
+    if (profileNames.length > 0) {
+      const { data: languageProfiles } = await supabase
+        .from('language_profiles')
+        .select('language, name, settings')
+        .in('name', profileNames)
+      profilesByKey = new Map(
+        ((languageProfiles || []) as LanguageProfileSettings[])
+          .map(profile => [`${profile.language}::${profile.name}`, profile])
+      )
+    }
+
+    const jobsById = new Map(
+      jobRows.map(job => [job.id, job])
+    )
+    const enrichedWords = words.map(word => {
+      if (word.card_image_model) return word
+      const job = word.generation_job_id ? jobsById.get(word.generation_job_id) : null
+      const profile = job?.target_language && job.profile_used
+        ? profilesByKey.get(`${job.target_language}::${job.profile_used}`)
+        : null
+      const cardImageModel = (
+        extractCardImageModel(job?.settings_override ?? null) ??
+        extractCardImageModel(profile?.settings ?? null)
+      )
+      return cardImageModel ? { ...word, card_image_model: cardImageModel } : word
+    })
+
+    setDeckWords(prev => ({ ...prev, [deckId]: enrichedWords }))
   }, [])
 
   const load = useCallback(async () => {
