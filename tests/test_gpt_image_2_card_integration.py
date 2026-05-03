@@ -74,12 +74,12 @@ def test_gpt_card_prompt_handles_full_and_sparse_enrichment():
         card_image_style="Editorial",
     )
 
-    assert full_prompt.startswith("Create an educational language-learning card illustration.")
-    assert 'Goal: Teach the learner the German word "links abbiegen"' in full_prompt
-    assert "3 panels arranged left-to-right" in full_prompt
-    assert "unexpected, memorable visual element" in full_prompt
-    assert 'Render the word "links abbiegen" exactly once' in full_prompt
-    assert "No extra text beyond the single word" in full_prompt
+    assert full_prompt.startswith("Editorial 16:9 image.")
+    assert 'German phrase "links abbiegen" = "turn left"' in full_prompt
+    assert "left-to-right sequence" in full_prompt
+    assert "unexpected visual motif" in full_prompt
+    assert "No visible text, letters, captions" in full_prompt
+    assert 'Render the word "links abbiegen"' not in full_prompt
 
     sparse_prompt = build_gpt_image_2_prompt(
         word="agua",
@@ -96,7 +96,8 @@ def test_gpt_card_prompt_handles_full_and_sparse_enrichment():
     assert "None" not in sparse_prompt
     assert "Scene:" not in sparse_prompt
     assert "Composition:" not in sparse_prompt
-    assert 'Teach the learner the Spanish word "agua"' in sparse_prompt
+    assert 'Spanish word "agua" = "water"' in sparse_prompt
+    assert "No visible text" in sparse_prompt
 
 
 def test_gpt_image_2_provider_sends_t2i_and_i2i_payloads(monkeypatch, tmp_path):

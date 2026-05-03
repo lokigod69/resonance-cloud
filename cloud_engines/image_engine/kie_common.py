@@ -131,17 +131,27 @@ def _poll_task(task_id: str, headers: dict) -> dict:
                     return result
 
                 if state == "fail":
+                    fail_code = data.get("failCode") or data.get("errorCode")
                     fail_msg = (
                         data.get("failMsg")
                         or data.get("errorMessage")
                         or "unknown error"
                     )
-                    return _err(
-                        f"generation failed: {fail_msg}",
+                    err = _err(
+                        (
+                            f"generation failed: failCode={fail_code or 'unknown'} "
+                            f"failMsg={fail_msg}"
+                        ),
                         "",
                         provider_name="",
                         cost_estimate_usd=0.0,
+                        request_id=task_id,
                     )
+                    err["response_body"] = json.dumps(result, ensure_ascii=False)
+                    err["task_id"] = task_id
+                    if fail_code is not None:
+                        err["fail_code"] = fail_code
+                    return err
 
                 # waiting / queuing / generating — keep polling
                 time.sleep(KIE_POLL_INTERVAL)
