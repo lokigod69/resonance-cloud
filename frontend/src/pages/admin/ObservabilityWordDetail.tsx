@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import AggregatorSnapshot from '@/components/admin/observability/AggregatorSnapshot'
+import CardImage from '@/components/admin/observability/CardImage'
 import FinalVideo from '@/components/admin/observability/FinalVideo'
 import FailureNotice from '@/components/admin/observability/FailureNotice'
 import LayoutSelector, { type WordLayoutMode } from '@/components/admin/observability/LayoutSelector'
@@ -129,6 +130,7 @@ export default function ObservabilityWordDetail() {
     <>
       <FailureNotice events={failedEvents} />
       <FinalVideo src={finalVideoUrl} />
+      <CardImage src={word?.deck_type === 'card' ? word?.thumbnail_url ?? null : null} />
       <SceneStills events={events} />
       <SunoTracks wordId={wordId} />
       <AggregatorSnapshot metadata={word?.metadata ?? null} />

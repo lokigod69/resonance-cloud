@@ -38,6 +38,7 @@ export interface WordRow {
   user_id: string | null
   created_at: string
   metadata: JsonObject | null
+  thumbnail_url: string | null
 }
 
 export interface AggregateCount {
@@ -175,7 +176,7 @@ export async function fetchPipelineEventsForWord(wordId: string): Promise<Pipeli
 export async function fetchWordWithMetadata(wordId: string): Promise<WordRow | null> {
   const { data, error } = await supabase
     .from('words')
-    .select('id, deck_id, user_id, created_at, metadata, decks(target_language, deck_type)')
+    .select('id, deck_id, user_id, created_at, metadata, thumbnail_url, decks(target_language, deck_type)')
     .eq('id', wordId)
     .maybeSingle()
 
@@ -192,6 +193,7 @@ export async function fetchWordWithMetadata(wordId: string): Promise<WordRow | n
     user_id: data.user_id ?? null,
     created_at: data.created_at,
     metadata: data.metadata ?? null,
+    thumbnail_url: (data as { thumbnail_url?: string | null }).thumbnail_url ?? null,
   }
 }
 
