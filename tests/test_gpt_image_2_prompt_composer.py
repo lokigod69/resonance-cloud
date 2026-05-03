@@ -7,7 +7,11 @@ ORCH_ROOT = Path(__file__).resolve().parents[1]
 if str(ORCH_ROOT) not in sys.path:
     sys.path.insert(0, str(ORCH_ROOT))
 
-from cloud_engines.image_engine.gpt_card_prompts import build_gpt_image_2_prompt  # noqa: E402
+from cloud_engines.image_engine.gpt_card_prompts import (  # noqa: E402
+    NO_TEXT_RULE,
+    PROMPT_HARD_CAP,
+    build_gpt_image_2_prompt,
+)
 
 
 def _prompt(**overrides: object) -> str:
@@ -74,6 +78,65 @@ def test_gpt_composer_strips_visible_message_text_from_dms_prompt():
     assert "non-readable phone interface" in lowered
 
 
+def test_gpt_composer_sanitizes_readable_sign_and_screen_text_requests():
+    prompt = _prompt(
+        mnemonic=(
+            "A driver approaches a readable street sign that says LEFT TURN, "
+            "with visible words on a poster and UI text on a phone screen."
+        ),
+    )
+    lowered = prompt.lower()
+
+    assert "left turn" not in lowered
+    assert "readable street sign" not in lowered
+    assert "sign that says" not in lowered
+    assert "visible words" not in lowered
+    assert "ui text" not in lowered
+    assert "phone screen" not in lowered
+    assert "blank street sign shape" in lowered or "unlabeled sign shape" in lowered
+    assert "non-readable phone interface" in lowered
+    assert NO_TEXT_RULE in prompt
+
+
+def test_gpt_composer_sanitizes_german_visible_text_requests():
+    prompt = _prompt(
+        word="Worte der Bestätigung",
+        translation="words of affirmation",
+        mnemonic=(
+            "Ein lesbares Schild mit 'Worte der Bestätigung' steht neben "
+            "einer Sprechblase und Text auf dem Bildschirm."
+        ),
+        dominant_emotional_reading="warm reassurance",
+    )
+    lowered = prompt.lower()
+
+    assert "schild mit" not in lowered
+    assert "worte der bestätigung' steht" not in lowered
+    assert "sprechblase" not in lowered
+    assert "text auf dem bildschirm" not in lowered
+    assert "ein unbeschriftetes schild" in lowered
+    assert "eine nicht lesbare smartphone-oberfläche" in lowered
+    assert NO_TEXT_RULE in prompt
+
+
+def test_gpt_composer_sanitizes_labeled_mailbox_dms():
+    prompt = _prompt(
+        word="to slide into someone's D.M.s",
+        translation="jemandem privat schreiben, um zu flirten",
+        mnemonic='A mailbox labeled "DMs" opens beside a chat message that says hello.',
+        dominant_emotional_reading="flirtatious hesitation",
+    )
+    lowered = prompt.lower()
+
+    assert "mailbox labeled" not in lowered
+    assert "dms" not in lowered
+    assert "chat message that says" not in lowered
+    assert "hello" not in lowered
+    assert "unlabeled mailbox shape" in lowered
+    assert "two adults" in lowered
+    assert NO_TEXT_RULE in prompt
+
+
 def test_gpt_composer_forces_adult_safe_slow_burn_scene():
     prompt = _prompt(
         word="slow burn",
@@ -109,8 +172,34 @@ def test_gpt_composer_enforces_prompt_length_cap():
         card_image_style="Photorealistic",
     )
 
-    assert len(prompt) <= 1000
+    assert len(prompt) <= PROMPT_HARD_CAP
     assert "ausweichen" in prompt
     assert "to dodge" in prompt
     assert "alert avoidance" in prompt
+    assert NO_TEXT_RULE in prompt
+
+
+def test_gpt_composer_preserves_no_text_rule_for_pathological_fixed_fields():
+    prompt = _prompt(
+        word="x" * 260,
+        translation="y" * 260,
+        mnemonic=" ".join("scene detail" for _ in range(200)),
+        dominant_emotional_reading=" ".join("emotiondetail" for _ in range(120)),
+        composition_hint="split",
+        treatment_hint="contrast",
+    )
+
+    assert NO_TEXT_RULE in prompt
     assert "No visible text" in prompt
+
+
+def test_gpt_composer_does_not_romance_coerce_unrelated_date_or_dm_substrings():
+    for word in ["update", "candidate", "medium", "admin"]:
+        prompt = _prompt(
+            word=word,
+            translation="ordinary meaning",
+            mnemonic="A neutral workspace scene showing the concept plainly.",
+            dominant_emotional_reading="focused clarity",
+        )
+
+        assert "two adults" not in prompt.lower()

@@ -28,24 +28,21 @@ NO_TEXT_RULE = (
 )
 PROMPT_HARD_CAP = 1000
 
-_ROMANCE_TERMS = (
-    "romance",
-    "romantic",
-    "dating",
-    "date",
-    "flirt",
-    "flirting",
-    "dm",
-    "d.m.",
-    "direct message",
-    "slow burn",
-    "slide into",
-    "crush",
-    "relationship",
-    "pickup",
-    "pick-up",
-    "tinder",
-    "profile",
+_ROMANCE_PATTERNS = (
+    r"\bromance\b",
+    r"\bromantic\b",
+    r"\bdating\b",
+    r"\bdate\b",
+    r"\bflirt(?:ing|atious)?\b",
+    r"\bd\.?\s?m\.?s?\b",
+    r"\bdirect message\b",
+    r"\bslow burn\b",
+    r"\bslide into\b",
+    r"\bcrush(?:es)?\b",
+    r"\brelationship\b",
+    r"\bpick-?up\b",
+    r"\btinder\b",
+    r"\bprofile\b",
 )
 
 _MINOR_OR_SCHOOL_PATTERNS = (
@@ -81,7 +78,7 @@ def _clean(value: Optional[str]) -> str:
 
 def _is_romance_or_dating(*values: Optional[str]) -> bool:
     text = " ".join(_clean(value).lower() for value in values)
-    return any(term in text for term in _ROMANCE_TERMS)
+    return any(re.search(pattern, text, flags=re.IGNORECASE) for pattern in _ROMANCE_PATTERNS)
 
 
 def _sentence_trim(text: str, max_chars: int) -> str:
@@ -98,17 +95,84 @@ def _sentence_trim(text: str, max_chars: int) -> str:
     return clipped.rstrip(" ,;:.") + "."
 
 
+def _compact_field(text: str, max_chars: int) -> str:
+    text = _clean(text)
+    if len(text) <= max_chars:
+        return text
+    return text[: max(1, max_chars - 3)].rstrip(" ,;:.") + "..."
+
+
+def _remove_visible_text_requests(scene: str) -> str:
+    replacements = [
+        (r"\bmailbox\s+labeled\s+(?:['\"][^'\"]{1,120}['\"]|[A-Za-z0-9_.-]+)", "an unlabeled mailbox shape"),
+        (r"\bbox\s+labeled\s+(?:['\"][^'\"]{1,120}['\"]|[A-Za-z0-9_.-]+)", "an unlabeled box shape"),
+        (r"\blabeled\s+(?:['\"][^'\"]{1,120}['\"]|[A-Za-z0-9_.-]+)", "unlabeled"),
+        (r"\blabel\s+reading\s+[^.,;]*", "an unlabeled sign shape"),
+        (r"\bsign\s+reading\s+[^.,;]*", "an unlabeled sign shape"),
+        (r"\bposter\s+reading\s+[^.,;]*", "an unlabeled poster shape"),
+        (
+            r"\breadable\s+(?:street\s+|road\s+)?sign(?:\s+(?:that\s+)?says|\s+reading|\s+with)?\s*[^.,;]*",
+            "a blank street sign shape",
+        ),
+        (r"\b(?:street\s+|road\s+)?sign\s+(?:that\s+)?says\s+[^.,;]*", "a blank street sign shape"),
+        (r"\blabel\s+(?:that\s+)?says\s+[^.,;]*", "an unlabeled sign shape"),
+        (r"\bcard\s+(?:that\s+)?says\s+[^.,;]*", "a blank card shape"),
+        (r"\bbillboard\s+(?:that\s+)?says\s+[^.,;]*", "an unlabeled sign shape"),
+        (r"\bposter\s+(?:that\s+)?says\s+[^.,;]*", "an unlabeled poster shape"),
+        (r"\bhandwritten\s+note\s+(?:that\s+)?says\s+[^.,;]*", "a blank note shape"),
+        (r"\bnote\s+(?:that\s+)?says\s+[^.,;]*", "a blank note shape"),
+        (r"\bchat\s+message\s+(?:that\s+)?says\s+[^.,;]*", "a quiet notification without readable words"),
+        (r"\bmessage\s+(?:that\s+)?says\s+[^.,;]*", "a quiet notification without readable words"),
+        (r"\bUI\s+text\s+on\s+a\s+phone\s+screen\b", "a non-readable phone interface"),
+        (r"\bUI\s+text\b", "a non-readable phone interface"),
+        (r"\bphone\s+screen\s+showing\s+readable\s+text\b", "a non-readable phone interface"),
+        (r"\btext\s+on\s+(?:the\s+)?screen\b", "a non-readable phone interface"),
+        (r"\bvisible\s+words\s+on\s+[^.,;]*?(?=\s+and\b|[.,;]|$)", "abstract markings without letters"),
+        (r"\breadable\s+words\s+on\s+[^.,;]*?(?=\s+and\b|[.,;]|$)", "abstract markings without letters"),
+        (r"\breadable\s+lettering\b", "abstract markings without letters"),
+        (r"\blegible\s+writing\b", "abstract markings without letters"),
+        (r"\blegible\s+text\b", "abstract markings without letters"),
+        (r"\bchat\s+bubbles?\s+with\s+text\b", "quiet notifications without readable words"),
+        (r"\brender\s+text\b", "show abstract markings without letters"),
+        (r"\bdisplay\s+text\b", "show abstract markings without letters"),
+        (r"\binclude\s+text\b", "show abstract markings without letters"),
+        (r"\bwrite\s+the\s+word\b", "symbolize the concept without letters"),
+        (r"\bwritten\s+words\b", "abstract markings without letters"),
+        (r"\breadable\s+words\b", "abstract markings without letters"),
+        (r"\bcaption\b", "silent visual cue"),
+        (r"\bsign\s+text\b", "unlabeled sign shape"),
+        (r"\blabel\s+text\b", "unlabeled sign shape"),
+        (r"\bphone\s+screen\b", "non-readable phone interface"),
+        (r"\bSchild\s+mit\s+[^.,;]*?(?=\s+und\b|[.,;]|$)", "ein unbeschriftetes Schild"),
+        (r"\bSchild\s+auf\s+dem\s+[^.,;]*?(?=\s+und\b|[.,;]|$)", "ein unbeschriftetes Schild"),
+        (r"\blesbares\s+Schild\b", "ein unbeschriftetes Schild"),
+        (r"\bAufschrift\b", "abstrakte Markierungen ohne Buchstaben"),
+        (r"\bBeschriftung\b", "abstrakte Markierungen ohne Buchstaben"),
+        (r"\bNachricht:\s*[^.,;]*", "eine nicht lesbare Nachricht"),
+        (r"\bNachricht\s+mit\s+[^.,;]*", "eine nicht lesbare Nachricht"),
+        (r"\bText\s+auf\s+dem\s+Bildschirm\b", "eine nicht lesbare Smartphone-Oberfläche"),
+        (r"\blesbarer\s+Text\b", "abstrakte Markierungen ohne Buchstaben"),
+        (r"\bSprechblase\b", "eine nicht lesbare Nachricht"),
+    ]
+    for pattern, replacement in replacements:
+        scene = re.sub(pattern, replacement, scene, flags=re.IGNORECASE)
+    scene = re.sub(r"\ba\s+a\s+", "a ", scene, flags=re.IGNORECASE)
+    return scene
+
+
 def _sanitize_mnemonic_scene(mnemonic: Optional[str], *, romance_or_dating: bool) -> str:
     scene = _clean(mnemonic)
     if not scene:
         return ""
 
+    scene = _remove_visible_text_requests(scene)
     scene = re.sub(r"“[^”]{1,180}”|‘[^’]{1,180}’", "a private message without readable words", scene)
     scene = re.sub(
         r"(['\"“”‘’])(?:\\.|(?!\1).){1,180}\1",
         "a private message without readable words",
         scene,
     )
+    scene = _remove_visible_text_requests(scene)
     replacements = [
         (r"\bDMs?\s+label\b", "private message area"),
         (r"\bD\.M\.s?\s+label\b", "private message area"),
@@ -174,29 +238,113 @@ def _style_prefix(card_image_style: str) -> str:
     return "Photorealistic 16:9 image."
 
 
-def _within_budget(parts: list[str]) -> str:
-    prompt = " ".join(part for part in parts if part)
-    if len(prompt) <= PROMPT_HARD_CAP:
-        return prompt
+def _build_meaning(
+    *,
+    language_text: str,
+    word_kind: str,
+    word_text: str,
+    translation_text: str,
+    field_limit: int,
+) -> str:
+    word_display = _compact_field(word_text, field_limit)
+    translation_display = _compact_field(translation_text, field_limit)
+    if translation_display:
+        return (
+            f'visualizing the meaning of the {language_text} {word_kind} '
+            f'"{word_display}" = "{translation_display}"'
+        )
+    return f'visualizing the meaning of the {language_text} {word_kind} "{word_display}"'
 
-    fixed_len = len(" ".join(part for index, part in enumerate(parts) if index != 1 and part))
-    scene_budget = max(120, PROMPT_HARD_CAP - fixed_len - 8)
-    parts[1] = _sentence_trim(parts[1], scene_budget)
-    prompt = " ".join(part for part in parts if part)
-    if len(prompt) <= PROMPT_HARD_CAP:
-        return prompt
 
-    parts[3] = ""
-    fixed_len = len(" ".join(part for index, part in enumerate(parts) if index != 1 and part))
-    scene_budget = max(80, PROMPT_HARD_CAP - fixed_len - 8)
-    parts[1] = _sentence_trim(parts[1], scene_budget)
+def _assemble_prompt(
+    *,
+    style_part: str,
+    meaning: str,
+    scene: str,
+    emotion_part: str,
+    directive_part: str,
+) -> str:
+    scene_part = (
+        f"A single self-contained scene {meaning}: {scene}."
+        if scene
+        else f"A single self-contained scene {meaning}."
+    )
+    parts = [
+        style_part,
+        scene_part,
+        emotion_part,
+        directive_part,
+        "Keep the background simple and uncluttered.",
+        NO_TEXT_RULE,
+    ]
     prompt = " ".join(part for part in parts if part)
-    if len(prompt) <= PROMPT_HARD_CAP:
-        return prompt
+    if NO_TEXT_RULE not in prompt:
+        raise AssertionError("GPT Image-2 no-text invariant missing from prompt")
+    return prompt
 
-    overage = len(prompt) - PROMPT_HARD_CAP
-    parts[1] = _sentence_trim(parts[1], max(60, len(parts[1]) - overage - 4))
-    return " ".join(part for part in parts if part)[:PROMPT_HARD_CAP].rstrip()
+
+def _within_budget(
+    *,
+    style_part: str,
+    language_text: str,
+    word_kind: str,
+    word_text: str,
+    translation_text: str,
+    scene: str,
+    emotion_part: str,
+    directive_part: str,
+) -> str:
+    for field_limit in (180, 120, 80, 48, 24):
+        meaning = _build_meaning(
+            language_text=language_text,
+            word_kind=word_kind,
+            word_text=word_text,
+            translation_text=translation_text,
+            field_limit=field_limit,
+        )
+        scene_candidate = scene
+        emotion_candidate = emotion_part
+        directive_candidate = directive_part
+        for scene_limit in (len(scene_candidate), 360, 220, 140, 80, 40, 0):
+            trimmed_scene = _sentence_trim(scene_candidate, scene_limit) if scene_limit else ""
+            prompt = _assemble_prompt(
+                style_part=style_part,
+                meaning=meaning,
+                scene=trimmed_scene,
+                emotion_part=emotion_candidate,
+                directive_part=directive_candidate,
+            )
+            if len(prompt) <= PROMPT_HARD_CAP:
+                return prompt
+
+        directive_candidate = ""
+        for emotion_limit in (180, 120, 80, 40, 0):
+            trimmed_emotion = (
+                _sentence_trim(emotion_candidate, emotion_limit) if emotion_limit else ""
+            )
+            prompt = _assemble_prompt(
+                style_part=style_part,
+                meaning=meaning,
+                scene="",
+                emotion_part=trimmed_emotion,
+                directive_part=directive_candidate,
+            )
+            if len(prompt) <= PROMPT_HARD_CAP:
+                return prompt
+
+    return _assemble_prompt(
+        style_part=style_part,
+        meaning=_build_meaning(
+            language_text=language_text,
+            word_kind=word_kind,
+            word_text=word_text,
+            translation_text=translation_text,
+            field_limit=24,
+        ),
+        scene="",
+        emotion_part="",
+        directive_part="",
+    )
 
 
 def build_gpt_image_2_prompt(
@@ -238,15 +386,6 @@ def build_gpt_image_2_prompt(
     if pos_text:
         word_kind = pos_text
 
-    if translation_text:
-        meaning = (
-            f'visualizing the meaning of the {language_text} {word_kind} '
-            f'"{word_text}" = "{translation_text}"'
-        )
-    else:
-        meaning = f'visualizing the meaning of the {language_text} {word_kind} "{word_text}"'
-
-    scene_part = f"A single self-contained scene {meaning}: {scene}."
     emotion_part = ""
     if emotional_text:
         emotion_part = (
@@ -260,11 +399,13 @@ def build_gpt_image_2_prompt(
         directive for directive in (composition_directive, treatment_directive) if directive
     )
 
-    return _within_budget([
-        _style_prefix(card_image_style),
-        scene_part,
-        emotion_part,
-        directive_part,
-        "Keep the background simple and uncluttered.",
-        NO_TEXT_RULE,
-    ])
+    return _within_budget(
+        style_part=_style_prefix(card_image_style),
+        language_text=language_text,
+        word_kind=word_kind,
+        word_text=word_text,
+        translation_text=translation_text,
+        scene=scene,
+        emotion_part=emotion_part,
+        directive_part=directive_part,
+    )
