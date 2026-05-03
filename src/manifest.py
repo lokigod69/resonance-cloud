@@ -80,6 +80,7 @@ def create_manifest(
             'word_target', 'translation', 'bridge_mnemonic',
             'etymology', 'pos', 'article', 'ipa',
             'example', 'example_gloss', 'synonyms', 'mnemonic',
+            'dominant_emotional_reading', 'composition_hint', 'treatment_hint',
         }
         for k, v in enrichment_data.items():
             if k in known_fields:

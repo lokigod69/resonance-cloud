@@ -77,6 +77,9 @@ def resolve_frame_narrative(frame_narrative: str) -> str:
     """Resolve legacy mode names to new names. Pass-through for new names and 'auto'."""
     return MODE_ALIASES.get(frame_narrative, frame_narrative)
 IMAGE_MODELS = ("flux_pro", "zturbo", "wan_fast", "wan_pro", "seedream_lite")
+CARD_IMAGE_MODELS = (
+    "zturbo", "flux_pro", "wan_fast", "wan_pro", "seedream_lite", "gpt_image_2",
+)
 ASPECT_RATIOS = ("16:9", "1:1", "9:16")
 VISUAL_REFERENCES = ("auto", "etymology", "mnemonic", "none")
 
@@ -188,6 +191,18 @@ class ImageSettings(BaseModel):
         v = v.lower()
         if v not in IMAGE_MODELS:
             raise ValueError(f"image_model must be one of {IMAGE_MODELS}, got '{v}'")
+        return v
+
+    @field_validator("card_image_model")
+    @classmethod
+    def validate_card_image_model(cls, v: Optional[str]) -> Optional[str]:
+        if v is None:
+            return v
+        v = v.lower()
+        if v not in CARD_IMAGE_MODELS:
+            raise ValueError(
+                f"card_image_model must be one of {CARD_IMAGE_MODELS}, got '{v}'"
+            )
         return v
 
     @field_validator("aspect_ratio")

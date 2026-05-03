@@ -108,6 +108,8 @@ def _parse_card_prompt(raw_response: str) -> CardImagePromptData:
 
 
 def _resolve_card_model_id(image_model: str) -> str:
+    if image_model == "gpt_image_2":
+        return "gpt-image-2"
     if image_model == "flux_pro":
         return "flux-2/pro-text-to-image"
     if image_model in {"zturbo", "z-image-turbo"}:
@@ -118,8 +120,60 @@ def _resolve_card_model_id(image_model: str) -> str:
         return "wan/2-7-image-pro"
     if image_model == "seedream_lite":
         return "seedream/5-lite-text-to-image"
-    logger.warning("Unknown card image_model=%r; defaulting to zturbo", image_model)
-    return "z-image-turbo"
+    raise ValueError(f"unknown card image_model: {image_model}")
+
+
+def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict:
+    from .gpt_card_prompts import build_gpt_image_2_prompt
+    from .gpt_image_2_provider import render_scene_gpt_image_2
+
+    prompt_text = build_gpt_image_2_prompt(
+        word=payload.content.word,
+        translation=payload.content.translation,
+        language=payload.content.language,
+        pos=payload.content.pos,
+        mnemonic=payload.content.mnemonic,
+        dominant_emotional_reading=payload.content.dominant_emotional_reading,
+        composition_hint=payload.content.composition_hint,
+        treatment_hint=payload.content.treatment_hint,
+        card_image_style=payload.card_image_style,
+    )
+    request_payload = {
+        "model": "gpt-image-2-text-to-image",
+        "input": {
+            "prompt": prompt_text,
+            "aspect_ratio": "16:9",
+            "resolution": "2K",
+        },
+    }
+    with logged_api_call(
+        stage="pending_image",
+        sub_step="render_card_image",
+        event_source="engine",
+        word_id=payload.metadata.word_id,
+        deck_id=payload.metadata.deck_id,
+        user_id=payload.metadata.user_id,
+        job_id=payload.metadata.job_id,
+        attempt=payload.metadata.attempt,
+        model_provider="gpt_image_2",
+        model_name="gpt-image-2",
+        metadata={"card_image_style": payload.card_image_style},
+    ) as ev:
+        result = render_scene_gpt_image_2(
+            prompt_text=prompt_text,
+            output_path=output_path,
+            aspect_ratio="16:9",
+            resolution="2K",
+        )
+        ev._model_provider = result.get("provider_name") or "gpt_image_2"
+        ev._model_name = result.get("model_name") or "gpt-image-2"
+        ev.record_response(
+            response_body=result.get("response_body"),
+            request_body=json.dumps(request_payload, ensure_ascii=False),
+            request_id=result.get("request_id"),
+            cost_usd=result.get("cost_estimate_usd"),
+        )
+        return result
 
 
 def _provider_art_style(card_image_style: str, image_prompt: CardImagePromptData) -> str:
@@ -327,6 +381,33 @@ def generate_card_image(payload: CardImagePayload) -> CardImageResult:
 
     Returns CardImageResult with status, image_path, image_prompt for logging.
     """
+    output_dir = Path(payload.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "card.png"
+
+    if _resolve_card_model_id(payload.image_model) == "gpt-image-2":
+        try:
+            render_result = _render_gpt_card_image(payload, output_path)
+        except Exception as e:
+            logger.error("GPT Image-2 card provider call failed: %s", e, exc_info=True)
+            return CardImageResult(
+                status="failed",
+                error=ImageError(
+                    message=f"Card image provider failed: {type(e).__name__}: {e}",
+                    retryable=True,
+                ),
+            )
+        if not render_result.get("success") or not output_path.exists():
+            message = render_result.get("error_message") or "provider did not produce card.png"
+            return CardImageResult(
+                status="failed",
+                error=ImageError(message=f"Card image render failed: {message}", retryable=True),
+            )
+        return CardImageResult(
+            status="success",
+            image_path=str(output_path.resolve()),
+        )
+
     system_prompt = SYSTEM_PROMPT
     user_prompt = build_user_prompt(payload.content, payload.card_image_style)
     api_key = config.OPENROUTER_API_KEY
@@ -384,10 +465,6 @@ def generate_card_image(payload: CardImagePayload) -> CardImageResult:
                 retryable=True,
             ),
         )
-
-    output_dir = Path(payload.output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    output_path = output_dir / "card.png"
 
     try:
         render_result = _render_card_image(payload, card_prompt_data, output_path)

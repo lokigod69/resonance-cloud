@@ -256,7 +256,7 @@ class UpstreamWorker:
         Restores pre-refactor behavior from 08e9726^:job_runner.py:326-347.
         """
         import json as _json
-        from src.manifest import read_manifest, write_manifest
+        from src.manifest import read_manifest
 
         word_dir = workspace_path / word_slug
         try:
@@ -280,9 +280,6 @@ class UpstreamWorker:
                 "upstream_worker: storyboard mnemonic word=%s: %s",
                 word["id"], storyboard_mnemonic[:80],
             )
-            images_manifest.enrichment.mnemonic = storyboard_mnemonic
-            write_manifest(word_dir, images_manifest)
-
             def _write(wid=word["id"], mn=storyboard_mnemonic):
                 return (
                     self.sb.table("words")

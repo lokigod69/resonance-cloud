@@ -257,6 +257,22 @@ class CardWorker:
                     word.get("bridge_mnemonic")
                     or getattr(manifest.enrichment, "bridge_mnemonic", None)
                 ),
+                mnemonic=(
+                    word.get("mnemonic")
+                    or getattr(manifest.enrichment, "mnemonic", None)
+                ),
+                dominant_emotional_reading=(
+                    word.get("dominant_emotional_reading")
+                    or getattr(manifest.enrichment, "dominant_emotional_reading", None)
+                ),
+                composition_hint=(
+                    word.get("composition_hint")
+                    or getattr(manifest.enrichment, "composition_hint", None)
+                ),
+                treatment_hint=(
+                    word.get("treatment_hint")
+                    or getattr(manifest.enrichment, "treatment_hint", None)
+                ),
             ),
             card_image_style=card_image_style,
             image_model=image_model,

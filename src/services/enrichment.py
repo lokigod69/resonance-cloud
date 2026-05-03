@@ -33,11 +33,15 @@ brief usage warning in etymology or bridge_mnemonic where appropriate. For untra
 explain the useful nuance in bridge_mnemonic. Be honest: do not invent etymologies, cultural claims,
 or false sound-alikes.
 
-For each word, provide these 11 target fields:
+For each word, provide these 15 target fields:
 - word_target: the word in {target_language} (correct it if the user typed it in {base_language}; preserve target-language orthography - e.g., capitalize German nouns, keep Romance-language nouns lowercase unless they are proper nouns).
 - translation: concise translation into {base_language}; ideally 1-3 words. Return the bare translated word or phrase only, with no leading articles, no part-of-speech markers, no quotation marks, and no full sentence unless the input itself is a sentence.
 - bridge_mnemonic: a one-sentence retrieval hook in {base_language}. For single words, build the hook on phonetics or sound-pattern association — find a sound or pattern in the target word that hooks to a familiar word or image in {base_language}, then build a vivid one-sentence association from that hook. For multi-word phrases, build the hook on meaning, usage context, or the underlying metaphor — phrases are too long for sound-pattern matching, so phonetic bridges produce awkward results. Avoid restating the definition. This is a retrieval hook, not a definition restatement and not a description of an image.
+- mnemonic: a vivid 2-4 sentence visual scene description in {base_language}. It must name a specific scene, named actors, named objects, and a named moment that image generation can render as a single educational card image or a clear multi-panel sequence. Use concrete visual language, not generic phrases like "a person feeling X". Return an empty string if the word genuinely has no visual depiction.
 - etymology: word origin only, one sentence maximum, written in {base_language}. Do not ramble about cultural background, usage history, or related words. If the etymology is unknown or unhelpful, return an empty string.
+- dominant_emotional_reading: one short phrase in {base_language} capturing what the image must read as at first glance. Be precise about what the word ISN'T when there is a risk of confusion, such as "loneliness, NOT contemplation".
+- composition_hint: one of "single", "multi_panel", "split", or "embodied". Use "single" for concrete nouns and simple verbs, "multi_panel" for temporal abstracts, "split" for false friends or contrasts, and "embodied" for first-person body or sensorimotor concepts.
+- treatment_hint: one of "literal", "absurd", "mnemonic", "etymological", "contrast", or "embodied". Choose the dominant visual treatment: direct depiction, memorable absurdity, memory-bridge scene, roots/word-parts, side-by-side contrast, or first-person physical experience.
 - pos: part of speech as a single word, such as noun, verb, adjective, adverb, phrase, or interjection.
 - article: definite article in {target_language} where applicable (e.g., "der", "die", "das" for German; "il", "la" for Italian; "le", "la" for French). Return an empty string if not applicable.
 - ipa: pronunciation guide in {target_language}. Produce IPA notation when practical, especially for most European languages, and wrap IPA in slashes such as "/su.lub.on/". Fall back to romanization with no slashes for CJK languages and other scripts where IPA is impractical, including Korean, Mandarin, Japanese, Cebuano when already romanized, and Tagalog. If neither is practical, return an empty string.
@@ -52,10 +56,10 @@ Bridge mnemonic examples:
 - For "Schadenfreude" (German, "joy at another's misfortune"): "Schaden + Freude = damage + joy - picture joy casting a shadow on someone else's pain."
 - For phrase "let that sink in" (English): "Picture slowly lowering a heavy stone into water - it takes time to reach the bottom; the phrase asks the listener to take time to fully absorb the idea."
 
-Do not produce the legacy mnemonic field. New generations use bridge_mnemonic; legacy mnemonic is kept only for backward compatibility elsewhere.
+The mnemonic field is no longer suppressed. Populate it with the visual scene description. Keep bridge_mnemonic as the separate phonetic or meaning retrieval hook.
 
 Respond with a JSON object containing one key, "items". "items" must be an array. Each array element must have exactly these keys:
-{{"input_word": "...", "word_target": "...", "translation": "...", "bridge_mnemonic": "...", "etymology": "...", "pos": "...", "article": "...", "ipa": "...", "example": "...", "example_gloss": "...", "synonyms": "...", "tags": "..."}}
+{{"input_word": "...", "word_target": "...", "translation": "...", "bridge_mnemonic": "...", "mnemonic": "...", "etymology": "...", "dominant_emotional_reading": "...", "composition_hint": "single", "treatment_hint": "literal", "pos": "...", "article": "...", "ipa": "...", "example": "...", "example_gloss": "...", "synonyms": "...", "tags": "..."}}
 
 No extra commentary - only the JSON object."""
 
@@ -188,6 +192,27 @@ def _capitalize_german_noun(word_target: Any, target_lang_code: str, pos: Any) -
     return word_target[0].upper() + word_target[1:]
 
 
+def _empty_enrichment(word: str) -> dict[str, Any]:
+    return {
+        "input_word": word,
+        "word_target": word,
+        "translation": "",
+        "bridge_mnemonic": "",
+        "mnemonic": "",
+        "etymology": "",
+        "dominant_emotional_reading": "",
+        "composition_hint": None,
+        "treatment_hint": None,
+        "pos": "",
+        "article": "",
+        "ipa": "",
+        "example": "",
+        "example_gloss": "",
+        "synonyms": "",
+        "tags": "",
+    }
+
+
 async def run_enrichment(
     words: list[dict[str, Any]],
     target_language: str,
@@ -197,10 +222,7 @@ async def run_enrichment(
     """Batch-enrich all words in a deck via OpenRouter LLM call."""
     if not OPENROUTER_API_KEY:
         log.warning("OPENROUTER_API_KEY not set — skipping enrichment")
-        return [{"input_word": w["word"], "word_target": w["word"],
-                 "translation": "", "bridge_mnemonic": "", "etymology": "",
-                 "pos": "", "article": "", "ipa": "", "example": "",
-                 "example_gloss": "", "synonyms": "", "tags": ""} for w in words]
+        return [_empty_enrichment(w["word"]) for w in words]
 
     word_list = ", ".join(w["word"] for w in words)
     system_prompt = ENRICHMENT_SYSTEM_PROMPT.format(
@@ -268,19 +290,13 @@ async def run_enrichment(
         enriched = json.loads(content)
     except json.JSONDecodeError:
         log.error("Failed to parse enrichment LLM response: %s", content[:500])
-        return [{"input_word": w["word"], "word_target": w["word"],
-                 "translation": "", "bridge_mnemonic": "", "etymology": "",
-                 "pos": "", "article": "", "ipa": "", "example": "",
-                 "example_gloss": "", "synonyms": "", "tags": ""} for w in words]
+        return [_empty_enrichment(w["word"]) for w in words]
 
     if isinstance(enriched, dict) and isinstance(enriched.get("items"), list):
         enriched = enriched["items"]
     elif not isinstance(enriched, list):
         log.error("Unexpected enrichment LLM response shape: %s", type(enriched).__name__)
-        return [{"input_word": w["word"], "word_target": w["word"],
-                 "translation": "", "bridge_mnemonic": "", "etymology": "",
-                 "pos": "", "article": "", "ipa": "", "example": "",
-                 "example_gloss": "", "synonyms": "", "tags": ""} for w in words]
+        return [_empty_enrichment(w["word"]) for w in words]
 
     # Defensive clean-up: the prompt already instructs the model to emit bare
     # translations and correct orthography, but models occasionally leak the

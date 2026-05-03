@@ -34,6 +34,22 @@ def _run(coro):
     return asyncio.new_event_loop().run_until_complete(coro)
 
 
+def test_missing_openrouter_key_fallback_includes_gpt_image_2_fields(monkeypatch):
+    monkeypatch.setattr(enrichment_mod, "OPENROUTER_API_KEY", "")
+
+    result = _run(run_enrichment(
+        [{"word": "agua"}],
+        target_language="Spanish",
+        base_language="English",
+    ))
+
+    item = result[0]
+    assert item["mnemonic"] == ""
+    assert item["dominant_emotional_reading"] == ""
+    assert item["composition_hint"] is None
+    assert item["treatment_hint"] is None
+
+
 # --- _strip_target_article: legitimate stripping ----------------------------
 
 class TestStripTargetArticleHappyPath:

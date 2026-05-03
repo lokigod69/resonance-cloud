@@ -8,9 +8,9 @@ existing per-provider renderers.
 
 from typing import Literal, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
-from .models import ImageError, ImageMetadata
+from .models import CARD_IMAGE_MODELS, ImageError, ImageMetadata
 
 
 class CardImagePromptData(BaseModel):
@@ -48,6 +48,10 @@ class CardImageContent(BaseModel):
     language_code: str
     pos: Optional[str] = None
     bridge_mnemonic: Optional[str] = None
+    mnemonic: Optional[str] = None
+    dominant_emotional_reading: Optional[str] = None
+    composition_hint: Optional[str] = None
+    treatment_hint: Optional[str] = None
 
 
 class CardImagePayload(BaseModel):
@@ -58,6 +62,14 @@ class CardImagePayload(BaseModel):
     image_model: str = "zturbo"  # provider; configurable later via admin dashboard
     output_dir: str
     metadata: ImageMetadata
+
+    @field_validator("image_model")
+    @classmethod
+    def validate_image_model(cls, v: str) -> str:
+        v = v.lower()
+        if v not in CARD_IMAGE_MODELS:
+            raise ValueError(f"image_model must be one of {CARD_IMAGE_MODELS}, got '{v}'")
+        return v
 
 
 class CardImageResult(BaseModel):

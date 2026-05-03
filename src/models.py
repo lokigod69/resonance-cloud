@@ -20,6 +20,9 @@ class Enrichment(BaseModel):
     synonyms: Optional[str] = ""
     tags: Optional[str] = ""
     mnemonic: Optional[str] = ""
+    dominant_emotional_reading: Optional[str] = None
+    composition_hint: Optional[str] = None
+    treatment_hint: Optional[str] = None
     extra: dict[str, Any] = {}
 
 

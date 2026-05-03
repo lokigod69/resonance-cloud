@@ -417,6 +417,10 @@ def test_bootstrap_writes_manifest_before_exposing_pending(monkeypatch, tmp_path
                 "input_word": words[0]["word"],
                 "translation": "hello",
                 "word_target": "hola",
+                "mnemonic": "A neighbor waves hello from a sunlit doorway.",
+                "dominant_emotional_reading": "friendly recognition",
+                "composition_hint": "single",
+                "treatment_hint": "literal",
             }
         ]
 
@@ -437,10 +441,11 @@ def test_bootstrap_writes_manifest_before_exposing_pending(monkeypatch, tmp_path
         language_to_code=lambda language: "es",
     )
 
-    created = {"paths": []}
+    created = {"paths": [], "enrichment_data": []}
 
     def _create_manifest(*, word_dir, **_kw):
         created["paths"].append(word_dir / "manifest.json")
+        created["enrichment_data"].append(_kw["enrichment_data"])
         (word_dir / "manifest.json").write_text("{}", encoding="utf-8")
 
     _install_module(
@@ -476,6 +481,14 @@ def test_bootstrap_writes_manifest_before_exposing_pending(monkeypatch, tmp_path
     assert pending_checks == [tmp_path / "hola" / "manifest.json"]
     assert row["current_stage"] == "pending"
     assert row["word_slug"] == "hola"
+    assert row["mnemonic"] == "A neighbor waves hello from a sunlit doorway."
+    assert row["dominant_emotional_reading"] == "friendly recognition"
+    assert row["composition_hint"] == "single"
+    assert row["treatment_hint"] == "literal"
+    assert created["enrichment_data"][0]["mnemonic"] == "A neighbor waves hello from a sunlit doorway."
+    assert created["enrichment_data"][0]["dominant_emotional_reading"] == "friendly recognition"
+    assert created["enrichment_data"][0]["composition_hint"] == "single"
+    assert created["enrichment_data"][0]["treatment_hint"] == "literal"
     assert other["current_stage"] == "pre_bootstrap"
     assert other["word_slug"] == "hello"
     assert upstream_queue.qsize() == 1
