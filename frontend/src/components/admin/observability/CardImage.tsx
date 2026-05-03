@@ -6,7 +6,19 @@ export default function CardImage({ src }: { src: string | null }) {
   return (
     <div className={styles.finalVideo}>
       <span className={styles.bodyLabel}>GENERATED CARD IMAGE</span>
-      <img className={styles.finalVideoPlayer} src={src} alt="Generated card image" />
+      <img
+        src={src}
+        alt="Generated card image"
+        style={{
+          display: 'block',
+          width: 'auto',
+          height: 'auto',
+          maxWidth: '100%',
+          maxHeight: '68vh',
+          margin: '0 auto',
+          background: 'var(--f-color-black)',
+        }}
+      />
     </div>
   )
 }
