@@ -113,16 +113,42 @@ class CardWorker:
             state.clear_log_context()
             return
 
-        ok = await state.transition_stage(
-            self.sb, word_id,
-            new_stage="pending_image",
-            allowed_prior=["pending"],
-            increment_attempts=True,
-        )
-        if not ok:
+        current_stage = fresh.get("current_stage")
+        stage_attempts = int(fresh.get("stage_attempts") or 0)
+        if current_stage == "pending":
+            ok = await state.transition_stage(
+                self.sb, word_id,
+                new_stage="pending_image",
+                allowed_prior=["pending"],
+                increment_attempts=True,
+            )
+            if not ok:
+                log.warning(
+                    "card_worker: word=%s could not enter pending_image (cancelled or raced)",
+                    word_id,
+                )
+                state.clear_log_context()
+                return
+        elif current_stage == "pending_image" and stage_attempts == 0:
+            ok = await state.claim_pending_image_retry_entry(self.sb, word_id)
+            if not ok:
+                log.info(
+                    "card_worker: word=%s pending_image retry entry already claimed or ineligible",
+                    word_id,
+                )
+                state.clear_log_context()
+                return
+        elif current_stage == "pending_image":
+            log.info(
+                "card_worker: word=%s already active at pending_image (stage_attempts=%s); releasing duplicate",
+                word_id, stage_attempts,
+            )
+            state.clear_log_context()
+            return
+        else:
             log.warning(
-                "card_worker: word=%s could not enter pending_image (cancelled or raced)",
-                word_id,
+                "card_worker: word=%s unexpected card stage=%s; releasing",
+                word_id, current_stage,
             )
             state.clear_log_context()
             return

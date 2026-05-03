@@ -26,6 +26,7 @@ import json
 import logging
 import time
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from typing import Any, Iterable, Optional
 
 log = logging.getLogger(__name__)
@@ -289,6 +290,48 @@ async def claim_retry(
         log.error("claim_retry RPC failed (word=%s): %s", word_id, e)
         return False
     return bool(getattr(resp, "data", None))
+
+
+async def claim_pending_image_retry_entry(sb, word_id: str) -> bool:
+    """Claim a retry-reentered card image word already parked at pending_image.
+
+    Source 2 retry claims move failed card-image rows directly to
+    ``current_stage='pending_image'`` with ``stage_attempts=0``. CardWorker must
+    convert exactly that parked row into an active attempt without incrementing
+    ``total_stage_attempts`` again. Rows with ``stage_attempts > 0`` are already
+    active or duplicate queue entries and must not be rendered twice.
+    """
+    def _do():
+        return (
+            sb.table("words")
+              .update({
+                  "stage_attempts": 1,
+                  "stage_started_at": datetime.now(timezone.utc).isoformat(),
+                  "status": "processing",
+              })
+              .eq("id", word_id)
+              .eq("current_stage", "pending_image")
+              .eq("status", "processing")
+              .eq("stage_attempts", 0)
+              .eq("retry_requested", False)
+              .is_("thumbnail_url", "null")
+              .execute()
+        )
+
+    try:
+        resp = await _execute(_do)
+    except Exception as e:
+        log.error("claim_pending_image_retry_entry failed (word=%s): %s", word_id, e)
+        return False
+
+    ok = _rowcount(resp) == 1
+    if not ok:
+        log.info(
+            "claim_pending_image_retry_entry rejected word=%s "
+            "(not parked retry entry or already active)",
+            word_id,
+        )
+    return ok
 
 
 async def mark_music_state(
