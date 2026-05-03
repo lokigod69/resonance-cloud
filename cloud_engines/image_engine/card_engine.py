@@ -146,6 +146,14 @@ def _render_card_image(
     if model_id == "z-image-turbo":
         from .z_image_turbo_provider import render_scene_z_image_turbo
 
+        request_payload = {
+            "model": model_id,
+            "aspect_ratio": image_prompt.aspect_ratio,
+            "input_urls": None,
+            "use_color_palette": False,
+            "art_style": art_style,
+            "image_prompt": prompt_payload,
+        }
         with logged_api_call(
             stage="pending_image",
             sub_step="render_card_image",
@@ -158,8 +166,8 @@ def _render_card_image(
             model_provider="z_image_turbo",
             model_name=model_id,
             metadata={"card_image_style": payload.card_image_style},
-        ):
-            return render_scene_z_image_turbo(
+        ) as ev:
+            result = render_scene_z_image_turbo(
                 image_prompt=prompt_payload,
                 model_id=model_id,
                 output_path=output_path,
@@ -168,10 +176,27 @@ def _render_card_image(
                 use_color_palette=False,
                 art_style=art_style,
             )
+            ev._model_provider = result.get("provider_name") or "z_image_turbo"
+            ev._model_name = result.get("model_name") or model_id
+            ev.record_response(
+                response_body=result.get("response_body"),
+                request_body=json.dumps(request_payload, ensure_ascii=False),
+                request_id=result.get("request_id"),
+                cost_usd=result.get("cost_estimate_usd"),
+            )
+            return result
 
     if model_id.startswith("flux-2/"):
         from .kie_provider import render_scene_kie_flux
 
+        request_payload = {
+            "model": model_id,
+            "aspect_ratio": image_prompt.aspect_ratio,
+            "chain_instruction": None,
+            "input_urls": None,
+            "use_color_palette": False,
+            "image_prompt": prompt_payload,
+        }
         with logged_api_call(
             stage="pending_image",
             sub_step="render_card_image",
@@ -184,8 +209,8 @@ def _render_card_image(
             model_provider="kie_ai",
             model_name=model_id,
             metadata={"card_image_style": payload.card_image_style},
-        ):
-            return render_scene_kie_flux(
+        ) as ev:
+            result = render_scene_kie_flux(
                 image_prompt=prompt_payload,
                 model_id=model_id,
                 output_path=output_path,
@@ -194,10 +219,27 @@ def _render_card_image(
                 input_urls=None,
                 use_color_palette=False,
             )
+            ev._model_provider = result.get("provider_name") or "kie_ai"
+            ev._model_name = result.get("model_name") or model_id
+            ev.record_response(
+                response_body=result.get("response_body"),
+                request_body=json.dumps(request_payload, ensure_ascii=False),
+                request_id=result.get("request_id"),
+                cost_usd=result.get("cost_estimate_usd"),
+            )
+            return result
 
     if model_id.startswith("wan/"):
         from .wan_provider import render_scene_wan
 
+        request_payload = {
+            "model": model_id,
+            "aspect_ratio": image_prompt.aspect_ratio,
+            "input_urls": None,
+            "use_color_palette": False,
+            "art_style": art_style,
+            "image_prompt": prompt_payload,
+        }
         with logged_api_call(
             stage="pending_image",
             sub_step="render_card_image",
@@ -210,8 +252,8 @@ def _render_card_image(
             model_provider="wan",
             model_name=model_id,
             metadata={"card_image_style": payload.card_image_style},
-        ):
-            return render_scene_wan(
+        ) as ev:
+            result = render_scene_wan(
                 image_prompt=prompt_payload,
                 model_id=model_id,
                 output_path=output_path,
@@ -220,10 +262,27 @@ def _render_card_image(
                 use_color_palette=False,
                 art_style=art_style,
             )
+            ev._model_provider = result.get("provider_name") or "wan"
+            ev._model_name = result.get("model_name") or model_id
+            ev.record_response(
+                response_body=result.get("response_body"),
+                request_body=json.dumps(request_payload, ensure_ascii=False),
+                request_id=result.get("request_id"),
+                cost_usd=result.get("cost_estimate_usd"),
+            )
+            return result
 
     if model_id.startswith("seedream/"):
         from .seedream_provider import render_scene_seedream
 
+        request_payload = {
+            "model": model_id,
+            "aspect_ratio": image_prompt.aspect_ratio,
+            "input_urls": None,
+            "use_color_palette": False,
+            "art_style": art_style,
+            "image_prompt": prompt_payload,
+        }
         with logged_api_call(
             stage="pending_image",
             sub_step="render_card_image",
@@ -236,8 +295,8 @@ def _render_card_image(
             model_provider="seedream",
             model_name=model_id,
             metadata={"card_image_style": payload.card_image_style},
-        ):
-            return render_scene_seedream(
+        ) as ev:
+            result = render_scene_seedream(
                 image_prompt=prompt_payload,
                 model_id=model_id,
                 output_path=output_path,
@@ -246,6 +305,15 @@ def _render_card_image(
                 use_color_palette=False,
                 art_style=art_style,
             )
+            ev._model_provider = result.get("provider_name") or "seedream"
+            ev._model_name = result.get("model_name") or model_id
+            ev.record_response(
+                response_body=result.get("response_body"),
+                request_body=json.dumps(request_payload, ensure_ascii=False),
+                request_id=result.get("request_id"),
+                cost_usd=result.get("cost_estimate_usd"),
+            )
+            return result
 
     raise RuntimeError(f"Unsupported card image model_id: {model_id}")
 
