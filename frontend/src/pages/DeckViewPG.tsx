@@ -533,7 +533,7 @@ export default function DeckViewPG() {
         <GenerationWheelLoader size={120} className="gap-0" />
         {hasChecked && !shouldShowQueue && (
           isCardDeck ? (
-            <p className="text-sm text-[var(--pg-text-dim)]">Bilder werden erstellt...</p>
+            <p className="text-sm text-[var(--pg-text-dim)]">{t('deckview.cardCreation')}</p>
           ) : (
             <VerbCycler intervalMs={5000} />
           )
@@ -718,7 +718,8 @@ export default function DeckViewPG() {
                           <img
                             src={(offset === 0 ? activeThumbnailUrl : word.thumbnail_url)!}
                             alt={word.word}
-                            className="absolute inset-0 w-full h-full object-cover"
+                            draggable={false}
+                            className={`absolute inset-0 w-full h-full object-cover ${isCardDeck ? 'pointer-events-none select-none' : ''}`}
                           />
                         )}
 
@@ -727,10 +728,10 @@ export default function DeckViewPG() {
                           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
                             <span className="text-xs text-white/35">
                               {word.status === 'failed'
-                                ? isCardDeck ? 'Bild konnte nicht erstellt werden' : t('deckview.failed')
+                                ? isCardDeck ? t('deckview.cardFailure') : t('deckview.failed')
                                 : isPending
-                                  ? isCardDeck ? 'In Warteschlange...' : t('deckview.queued')
-                                  : isCardDeck ? 'Bild wird erstellt...' : t('deckview.processing')}
+                                  ? t('deckview.queued')
+                                  : isCardDeck ? t('deckview.cardCreation') : t('deckview.processing')}
                             </span>
                           </div>
                         )}
@@ -826,10 +827,10 @@ export default function DeckViewPG() {
                             <p className="text-lg font-bold text-white">{word.word}</p>
                             <p className="text-xs text-gray-500 mt-1">
                               {word.status === 'failed'
-                                ? isCardDeck ? 'Bild konnte nicht erstellt werden' : t('deckview.failed')
+                                ? isCardDeck ? t('deckview.cardFailure') : t('deckview.failed')
                                 : isPending
-                                  ? isCardDeck ? 'In Warteschlange...' : t('deckview.queued')
-                                  : isCardDeck ? 'Bild wird erstellt...' : t('deckview.processing')}
+                                  ? t('deckview.queued')
+                                  : isCardDeck ? t('deckview.cardCreation') : t('deckview.processing')}
                             </p>
                             {word.status === 'failed' && (
                               <div className="flex gap-2 mt-3">

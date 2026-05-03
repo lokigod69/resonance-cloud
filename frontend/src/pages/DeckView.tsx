@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowLeft, AlertCircle, Pencil, Plus, BookOpen, Check, X, ChevronLeft, ChevronRight, RotateCcw, Trash2, CheckCircle2, Loader2, AlertTriangle, Play, Share2, PencilLine, Sparkles } from 'lucide-react'
 import { useMoveWords } from '@/hooks/useMoveWords'
 import DeckPickerSheet from '@/components/deck/DeckPickerSheet'
+import CardWordViewerModal from '@/components/deck/CardWordViewerModal'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import VersionBadge from '@/components/VersionBadge'
 import { useAuth } from '@/hooks/useAuth'
@@ -359,7 +360,7 @@ export default function DeckView() {
           )}
           {isGenerating && hasChecked && !shouldShowQueue && (
             isCardDeck ? (
-              <p className="mt-1 text-sm text-muted-foreground">Bilder werden erstellt...</p>
+              <p className="mt-1 text-sm text-muted-foreground">{t('deckview.cardCreation')}</p>
             ) : (
               <VerbCycler className="mt-1" />
             )
@@ -428,13 +429,9 @@ export default function DeckView() {
                       return
                     }
                     const idx = completeWords.findIndex(w => w.id === word.id)
-                    if (isCardDeck) {
-                      navigate(`/study/flashcard?deck=${deck.id}`)
-                      return
-                    }
                     if (idx >= 0) {
                       setViewerIndex(idx)
-                      setVideoKey(k => k + 1)
+                      if (!isCardDeck) setVideoKey(k => k + 1)
                       setViewerOpen(true)
                     }
                   }}
@@ -523,7 +520,7 @@ export default function DeckView() {
                   <div className="p-3 space-y-1.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
                     <p className="text-xs text-destructive-foreground">
-                      {isCardDeck ? 'Bild konnte nicht erstellt werden' : t('deckview.couldNotGenerate')}
+                      {isCardDeck ? t('deckview.cardFailure') : t('deckview.couldNotGenerate')}
                     </p>
                     {!editMode && (
                       <div className="flex gap-1.5 pt-1">
@@ -556,16 +553,16 @@ export default function DeckView() {
                   <div className="aspect-video flex items-center justify-center bg-card px-3 text-center">
                     <span className="text-xs font-medium text-muted-foreground">
                       {word.status === 'pending'
-                        ? isCardDeck ? 'In Warteschlange...' : t('deckview.queued')
-                        : isCardDeck ? 'Bild wird erstellt...' : t('deckview.processing')}
+                        ? t('deckview.queued')
+                        : isCardDeck ? t('deckview.cardCreation') : t('deckview.processing')}
                     </span>
                   </div>
                   <div className="p-3 space-y-0.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
                     <p className="text-xs text-muted-foreground">
                       {word.status === 'pending'
-                        ? isCardDeck ? 'In Warteschlange...' : t('deckview.queued')
-                        : isCardDeck ? 'Bild wird erstellt...' : t('deckview.processing')}
+                        ? t('deckview.queued')
+                        : isCardDeck ? t('deckview.cardCreation') : t('deckview.processing')}
                     </p>
                   </div>
                 </div>
@@ -660,6 +657,17 @@ export default function DeckView() {
             </Button>
           </div>
         </div>
+      )}
+
+      {/* Card Viewer Modal */}
+      {viewerOpen && viewerWord && isCardDeck && (
+        <CardWordViewerModal
+          words={completeWords}
+          currentIndex={viewerIndex}
+          onClose={() => setViewerOpen(false)}
+          onNavigate={setViewerIndex}
+          onRate={handleRate}
+        />
       )}
 
       {/* Video Viewer Modal */}
