@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabase'
 import { Loader, Music, Sparkles } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useTranslation } from '@/hooks/useTranslation'
+import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 
 type Deck = {
   id: string
@@ -14,6 +15,7 @@ type Deck = {
   word_count: number
   status: string
   created_at: string
+  deck_type?: 'video' | 'card'
 }
 
 type WordStatus = {
@@ -240,26 +242,25 @@ export default function Decks() {
                 className="classic-deck-card"
                 onClick={() => navigate(`/deck/${deck.id}`)}
               >
-                <div
-                  className="classic-deck-bg-layer"
-                  style={{
-                    backgroundImage: thumb ? `url(${thumb})` : 'none',
-                  }}
-                />
-                {!thumb && (
-                  <div className="classic-deck-placeholder">
-                    {deck.status === 'generating' ? (
-                      <Loader className="w-8 h-8 text-gray-600 animate-spin" />
-                    ) : (
-                      <Music className="w-8 h-8 text-gray-600/30" />
-                    )}
-                  </div>
-                )}
-                <div className="classic-deck-gradient" />
-                <div style={{ flex: 1, position: 'relative', zIndex: 2 }} />
-                <div style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
-                  <h3 style={{ textShadow: '0 2px 8px rgba(0,0,0,0.6)' }}>{displayName}</h3>
-                  <p style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{deck.target_language} &bull; {tp('dashboard.wordCount', counts.total)}</p>
+                <div className="classic-deck-media">
+                  <GeneratedMediaFrame
+                    src={thumb}
+                    alt={displayName}
+                    variant={deck.deck_type === 'card' ? 'deckPreview' : 'decorative'}
+                    className="classic-deck-media-frame"
+                  >
+                    <div className="classic-deck-placeholder">
+                      {deck.status === 'generating' ? (
+                        <Loader className="w-8 h-8 text-gray-600 animate-spin" />
+                      ) : (
+                        <Music className="w-8 h-8 text-gray-600/30" />
+                      )}
+                    </div>
+                  </GeneratedMediaFrame>
+                </div>
+                <div className="classic-deck-body">
+                  <h3>{displayName}</h3>
+                  <p>{deck.target_language} &bull; {tp('dashboard.wordCount', counts.total)}</p>
                   {deck.status !== 'complete' && (
                     <p className="classic-deck-status">
                       {deck.status === 'generating' ? t('dashboard.generating', { completed: counts.completed, total: counts.total }) : deck.status}

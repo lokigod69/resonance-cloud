@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Share2, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import { getOrCreateShareLink } from '@/lib/shareWord'
+import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 
 type CardViewerWord = {
   id: string
@@ -107,8 +108,8 @@ export default function CardWordViewerModal({
         <div className="w-10" />
       </div>
 
-      <div className="flex-1 flex items-center justify-center px-4 pb-4 overflow-y-auto h-0">
-        <div className="w-full max-w-4xl space-y-6">
+      <div className="flex-1 flex items-start justify-center px-4 pb-[calc(env(safe-area-inset-bottom,0px)+1rem)] overflow-y-auto h-0">
+        <div className="w-full max-w-5xl space-y-6 pt-2 sm:pt-4">
           <div className="relative">
             <div className="relative overflow-hidden rounded-xl bg-black/50 shadow-2xl">
               {hasPrev && (
@@ -131,18 +132,16 @@ export default function CardWordViewerModal({
                 </button>
               )}
 
-              {word.thumbnail_url ? (
-                <img
-                  src={word.thumbnail_url}
-                  alt={word.word}
-                  draggable={false}
-                  className="mx-auto max-h-[58vh] w-full object-contain select-none"
-                />
-              ) : (
-                <div className="flex aspect-video w-full items-center justify-center bg-white/5">
+              <GeneratedMediaFrame
+                src={word.thumbnail_url}
+                alt={word.word}
+                variant="modal"
+                className="max-h-[min(62vh,44rem)]"
+              >
+                <div className="flex h-full w-full items-center justify-center bg-white/5">
                   <p className="text-muted-foreground">No image available</p>
                 </div>
-              )}
+              </GeneratedMediaFrame>
             </div>
           </div>
 

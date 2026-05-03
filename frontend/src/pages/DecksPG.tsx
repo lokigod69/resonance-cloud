@@ -31,6 +31,7 @@ import {
   Music,
 } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
+import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 
 type Deck = {
   id: string
@@ -39,6 +40,7 @@ type Deck = {
   word_count: number
   status: string
   created_at: string
+  deck_type?: 'video' | 'card'
   _key?: string
 }
 
@@ -613,7 +615,13 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
           >
             <div className="aspect-[16/9] relative bg-[var(--field-bg)] overflow-hidden">
               {thumb ? (
-                <img src={thumb} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <GeneratedMediaFrame
+                  src={thumb}
+                  alt={displayName}
+                  variant={deck.deck_type === 'card' ? 'deckPreview' : 'decorative'}
+                  className="rounded-none"
+                  imageClassName="group-hover:scale-105 transition-transform duration-500"
+                />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-[var(--accent-soft)] to-transparent flex items-center justify-center">
                   <Sparkles className="h-8 w-8 text-[var(--text-muted)] opacity-30" />
@@ -675,8 +683,11 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
   useEffect(() => {
     const clampedPosition = clampWaterPosition(carouselPosition.get(), maxIndex, activeIndex)
     carouselPosition.set(clampedPosition)
-    setDisplayPosition(clampedPosition)
-    setActiveIndex((index) => clampIndex(index))
+    const frame = window.requestAnimationFrame(() => {
+      setDisplayPosition(clampedPosition)
+      setActiveIndex((index) => clampIndex(index))
+    })
+    return () => window.cancelAnimationFrame(frame)
   }, [activeIndex, carouselPosition, clampIndex, maxIndex])
 
   useEffect(() => {
@@ -1086,11 +1097,11 @@ function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, isPriori
 
   useEffect(() => {
     if (!thumbnail) {
-      setLoadedThumbnail(null)
       return
     }
 
     let isMounted = true
+    let completeFrame: number | null = null
     const image = new Image()
     image.onload = () => {
       if (isMounted) setLoadedThumbnail(thumbnail)
@@ -1101,11 +1112,14 @@ function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, isPriori
     image.src = thumbnail
 
     if (image.complete) {
-      setLoadedThumbnail(thumbnail)
+      completeFrame = window.requestAnimationFrame(() => {
+        if (isMounted) setLoadedThumbnail(thumbnail)
+      })
     }
 
     return () => {
       isMounted = false
+      if (completeFrame !== null) window.cancelAnimationFrame(completeFrame)
     }
   }, [thumbnail])
 

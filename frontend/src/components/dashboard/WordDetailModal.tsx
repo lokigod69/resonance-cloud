@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { X, Play } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getDisplayArticle } from './articleDisplay'
+import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 
 export type LibraryWord = {
   id: string
@@ -68,7 +69,7 @@ export default function WordDetailModal({ word, onClose, onWatchVideo, deckName 
           onClick={onClose}
         >
           <motion.div
-            className="pg-glass rounded-t-2xl sm:rounded-2xl w-full max-w-lg max-h-[92vh] sm:max-h-[85vh] overflow-y-auto relative"
+            className="pg-glass rounded-t-2xl sm:rounded-2xl w-full max-w-4xl max-h-[92vh] sm:max-h-[88vh] overflow-y-auto relative"
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.92 }}
@@ -77,7 +78,7 @@ export default function WordDetailModal({ word, onClose, onWatchVideo, deckName 
           >
             <button
               onClick={onClose}
-              className="absolute top-3 right-3 w-11 h-11 flex items-center justify-center rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/10 transition-colors z-10"
+              className="sticky top-3 ml-auto mr-3 mt-3 w-11 h-11 flex items-center justify-center rounded-full bg-black/45 border border-white/10 text-foreground/80 hover:text-foreground hover:bg-black/60 transition-colors z-20"
               aria-label="Close"
             >
               <X size={20} />
@@ -102,11 +103,14 @@ function WordDetailBody({ word, onWatchVideo, deckName }: { word: LibraryWord; o
   const displayWord = displayArticle ? `${displayArticle} ${word.word}` : word.word
 
   return (
-    <div className="p-5 pt-12 sm:p-7 sm:pt-10 pb-[env(safe-area-inset-bottom,1rem)] space-y-4 text-foreground">
+    <div className="p-5 pt-1 sm:p-7 sm:pt-2 pb-[calc(env(safe-area-inset-bottom,0px)+1rem)] space-y-4 text-foreground">
       {word.thumbnail_url && (
-        <div className="w-full h-48 rounded-xl overflow-hidden mb-4 -mt-2">
-          <img src={word.thumbnail_url} alt={word.word} className="w-full h-full object-cover" />
-        </div>
+        <GeneratedMediaFrame
+          src={word.thumbnail_url}
+          alt={word.word}
+          variant="detail"
+          className="mb-4 max-h-[min(58vh,34rem)]"
+        />
       )}
       {/* Headline */}
       <div className="space-y-1">
