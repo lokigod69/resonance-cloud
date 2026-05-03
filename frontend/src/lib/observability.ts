@@ -34,6 +34,7 @@ export interface WordRow {
   id: string
   language: string | null
   deck_id: string | null
+  deck_type: string | null
   user_id: string | null
   created_at: string
   metadata: JsonObject | null
@@ -174,19 +175,20 @@ export async function fetchPipelineEventsForWord(wordId: string): Promise<Pipeli
 export async function fetchWordWithMetadata(wordId: string): Promise<WordRow | null> {
   const { data, error } = await supabase
     .from('words')
-    .select('id, deck_id, user_id, created_at, metadata, decks(target_language)')
+    .select('id, deck_id, user_id, created_at, metadata, decks(target_language, deck_type)')
     .eq('id', wordId)
     .maybeSingle()
 
   if (error) throw error
   if (!data) return null
 
-  const deck = data.decks as { target_language?: string | null } | null
+  const deck = data.decks as { target_language?: string | null; deck_type?: string | null } | null
 
   return {
     id: data.id,
     language: deck?.target_language ?? null,
     deck_id: data.deck_id ?? null,
+    deck_type: deck?.deck_type ?? null,
     user_id: data.user_id ?? null,
     created_at: data.created_at,
     metadata: data.metadata ?? null,

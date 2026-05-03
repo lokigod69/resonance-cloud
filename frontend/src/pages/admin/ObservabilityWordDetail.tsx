@@ -19,7 +19,8 @@ import {
 import { supabase } from '@/lib/supabase'
 import { useFerrariTitle } from '@/layouts/FerrariAdminLayout'
 
-const CANONICAL_STAGES = ['concept', 'images', 'video', 'assembly', 'bookend', 'suno_bakein']
+const VIDEO_DECK_STAGES = ['concept', 'images', 'video', 'assembly', 'bookend', 'suno_bakein']
+const CARD_DECK_STAGES = ['concept', 'pending_image']
 const LAYOUT_STORAGE_KEY = 'ferrari-obs:word-layout'
 
 function getStoredLayout(): WordLayoutMode {
@@ -86,16 +87,32 @@ export default function ObservabilityWordDetail() {
     }
   }, [wordId])
 
+  const baseStages = useMemo<string[]>(() => {
+    if (word?.deck_type === 'card') return CARD_DECK_STAGES
+    return VIDEO_DECK_STAGES
+  }, [word?.deck_type])
+
+  const stages = useMemo<string[]>(() => {
+    const known = new Set(baseStages)
+    const extras: string[] = []
+    for (const event of events) {
+      if (event.stage && !known.has(event.stage) && !extras.includes(event.stage)) {
+        extras.push(event.stage)
+      }
+    }
+    return [...baseStages, ...extras]
+  }, [baseStages, events])
+
   const eventsByStage = useMemo(() => {
     const grouped: StageEvents = Object.fromEntries(
-      CANONICAL_STAGES.map((stage) => [stage, [] as PipelineEvent[]]),
+      stages.map((stage) => [stage, [] as PipelineEvent[]]),
     )
     for (const event of events) {
       grouped[event.stage] = grouped[event.stage] ?? []
       grouped[event.stage].push(event)
     }
     return grouped
-  }, [events])
+  }, [events, stages])
 
   const failedEvents = useMemo(
     () => events.filter((event) => event.status === 'failed'),
@@ -106,7 +123,7 @@ export default function ObservabilityWordDetail() {
   if (loading) return <p className={styles.loading}>Loading...</p>
   if (error) return <p className={styles.error}>Error: {error}</p>
 
-  const layoutProps = { stages: CANONICAL_STAGES, eventsByStage }
+  const layoutProps = { stages, eventsByStage }
 
   return (
     <>
