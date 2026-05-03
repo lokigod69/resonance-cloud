@@ -36,6 +36,8 @@ export default function VideoPlayer() {
   const [searchParams] = useSearchParams()
   const rawReturnTo = searchParams.get('returnTo')
   const returnTo = rawReturnTo?.startsWith('/') ? rawReturnTo : null
+  const returnMode = searchParams.get('returnMode')
+  const returnLang = searchParams.get('returnLang')
   const [words, setWords] = useState<Word[]>([])
   const [loading, setLoading] = useState(true)
   const [videoKey, setVideoKey] = useState(0)
@@ -61,6 +63,7 @@ export default function VideoPlayer() {
   const next = currentIndex < words.length - 1 ? words[currentIndex + 1] : null
   // Dashboard quick preview uses the primary A video; A/B switching stays in Decks.
   const activeVideoUrl = current?.video_url ?? null
+  const isDashboardWordModalReturn = returnMode === 'wordModal' && returnTo === '/dashboard'
 
   async function handleRate(wordId: string, rating: number) {
     const { error } = await supabase.rpc('rate_word', {
@@ -72,13 +75,41 @@ export default function VideoPlayer() {
     }
   }
 
+  const buildWordVideoPath = useCallback(
+    (wId: string) => {
+      const params = new URLSearchParams()
+      if (returnTo) params.set('returnTo', returnTo)
+      if (returnMode) params.set('returnMode', returnMode)
+      if (returnLang) params.set('returnLang', returnLang)
+      const query = params.toString()
+      return `/deck/${deckId}/word/${wId}${query ? `?${query}` : ''}`
+    },
+    [deckId, returnLang, returnMode, returnTo]
+  )
+
+  const getCloseTarget = useCallback(
+    (currentWordId?: string | null) => {
+      if (isDashboardWordModalReturn && currentWordId) {
+        const params = new URLSearchParams()
+        params.set('word', currentWordId)
+        if (returnLang) params.set('lang', returnLang)
+        return `/dashboard?${params.toString()}`
+      }
+      return returnTo || `/deck/${deckId}`
+    },
+    [deckId, isDashboardWordModalReturn, returnLang, returnTo]
+  )
+
+  const closeVideo = useCallback(() => {
+    navigate(getCloseTarget(current?.id ?? wordId), { replace: true })
+  }, [current?.id, getCloseTarget, navigate, wordId])
+
   const goTo = useCallback(
     (wId: string) => {
-      const params = returnTo ? `?returnTo=${encodeURIComponent(returnTo)}` : ''
-      navigate(`/deck/${deckId}/word/${wId}${params}`, { replace: true })
+      navigate(buildWordVideoPath(wId), { replace: true })
       setVideoKey((k) => k + 1)
     },
-    [deckId, navigate, returnTo]
+    [buildWordVideoPath, navigate]
   )
 
   // Keyboard navigation
@@ -86,11 +117,11 @@ export default function VideoPlayer() {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'ArrowLeft' && prev) goTo(prev.id)
       if (e.key === 'ArrowRight' && next) goTo(next.id)
-      if (e.key === 'Escape') navigate(returnTo || `/deck/${deckId}`)
+      if (e.key === 'Escape') closeVideo()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [prev, next, goTo, navigate, deckId, returnTo])
+  }, [prev, next, goTo, closeVideo])
 
   if (loading) {
     return (
@@ -105,7 +136,7 @@ export default function VideoPlayer() {
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
         <p className="text-muted-foreground mb-4">Video not found</p>
         <Button asChild variant="ghost">
-          <Link to={returnTo || `/deck/${deckId}`}>Back</Link>
+          <Link to={getCloseTarget(wordId)} replace>Back</Link>
         </Button>
       </div>
     )
@@ -118,7 +149,7 @@ export default function VideoPlayer() {
         <Button
           variant="ghost"
           size="icon"
-          onClick={() => navigate(returnTo || `/deck/${deckId}`)}
+          onClick={closeVideo}
           className="text-muted-foreground hover:text-foreground"
         >
           <X className="h-5 w-5" />
@@ -182,7 +213,7 @@ export default function VideoPlayer() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => navigate(returnTo || `/deck/${deckId}`)}
+              onClick={closeVideo}
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               {returnTo ? 'Back' : 'Back to Deck'}

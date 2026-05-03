@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
-import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { useNavigate, useLocation, Link, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
@@ -27,6 +27,9 @@ export default function DashboardPG() {
   const { activeLanguage, setActiveLanguage } = useLanguage()
   const navigate = useNavigate()
   const location = useLocation()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const queryWordId = searchParams.get('word')
+  const queryLang = searchParams.get('lang')
 
   const [decks, setDecks] = useState<Deck[]>([])
   const { t, locale } = useTranslation()
@@ -37,6 +40,7 @@ export default function DashboardPG() {
   const [libraryWords, setLibraryWords] = useState<LibraryWord[]>([])
   const [libraryLoading, setLibraryLoading] = useState(false)
   const [selectedWord, setSelectedWord] = useState<LibraryWord | null>(null)
+  const [queryOpenedWordId, setQueryOpenedWordId] = useState<string | null>(null)
 
   const loadDecks = useCallback(async (userId: string) => {
     try {
@@ -80,10 +84,14 @@ export default function DashboardPG() {
       if (activeLanguage) setActiveLanguage(null)
       return
     }
+    if (queryLang && availableLanguages.includes(queryLang)) {
+      if (activeLanguage !== queryLang) setActiveLanguage(queryLang)
+      return
+    }
     if (!activeLanguage || !availableLanguages.includes(activeLanguage)) {
       setActiveLanguage(availableLanguages[0])
     }
-  }, [availableLanguages, activeLanguage, setActiveLanguage])
+  }, [availableLanguages, activeLanguage, queryLang, setActiveLanguage])
 
   useEffect(() => {
     if (!user || !activeLanguage) {
@@ -129,6 +137,27 @@ export default function DashboardPG() {
     }
   }, [user?.id, activeLanguage, location.key])
 
+  useEffect(() => {
+    if (!queryWordId) {
+      if (queryOpenedWordId) {
+        setSelectedWord(null)
+        setQueryOpenedWordId(null)
+      }
+      return
+    }
+    if (queryLang && availableLanguages.includes(queryLang) && activeLanguage !== queryLang) return
+    if (libraryLoading) return
+
+    const foundWord = libraryWords.find((word) => word.id === queryWordId)
+    if (foundWord) {
+      setSelectedWord(foundWord)
+      setQueryOpenedWordId(foundWord.id)
+    } else if (queryOpenedWordId) {
+      setSelectedWord(null)
+      setQueryOpenedWordId(null)
+    }
+  }, [activeLanguage, availableLanguages, libraryLoading, libraryWords, queryLang, queryOpenedWordId, queryWordId])
+
   const globalWordCount = useMemo(
     () => decks.reduce((sum, d) => sum + (d.word_count ?? 0), 0),
     [decks]
@@ -139,7 +168,21 @@ export default function DashboardPG() {
   const deckNameMap = useMemo(() => new Map(decks.map(d => [d.id, d.name ?? t('study.untitled')])), [decks, t])
 
   const handleWatchVideo = (word: LibraryWord) => {
-    navigate(`/deck/${word.deck_id}/word/${word.id}?returnTo=/dashboard`)
+    const params = new URLSearchParams()
+    params.set('returnTo', '/dashboard')
+    params.set('returnMode', 'wordModal')
+    const returnLang = word.target_language ?? activeLanguage
+    if (returnLang) params.set('returnLang', returnLang)
+    navigate(`/deck/${word.deck_id}/word/${word.id}?${params.toString()}`)
+  }
+
+  const handleWordModalClose = () => {
+    setSelectedWord(null)
+    setQueryOpenedWordId(null)
+    const nextParams = new URLSearchParams(searchParams)
+    nextParams.delete('word')
+    nextParams.delete('lang')
+    setSearchParams(nextParams, { replace: true })
   }
 
   if (authError && !user) {
@@ -260,7 +303,10 @@ export default function DashboardPG() {
               ) : (
                 <WordLibrary
                   words={libraryWords}
-                  onWordClick={(w) => setSelectedWord(w)}
+                  onWordClick={(w) => {
+                    setQueryOpenedWordId(null)
+                    setSelectedWord(w)
+                  }}
                   emptyMessage={
                     activeLanguage
                       ? t('dashboard.noWordsInLanguage', { language: t(`langName.${activeLanguage}`) })
@@ -315,7 +361,7 @@ export default function DashboardPG() {
 
       <WordDetailModal
         word={selectedWord}
-        onClose={() => setSelectedWord(null)}
+        onClose={handleWordModalClose}
         onWatchVideo={handleWatchVideo}
         deckName={selectedWord ? deckNameMap.get(selectedWord.deck_id) : undefined}
       />

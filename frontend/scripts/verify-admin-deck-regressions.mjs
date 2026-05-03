@@ -88,6 +88,30 @@ assert(decksPg.includes("variant={deck.deck_type === 'card' ? 'deckPreview' : 'd
 const wordLibrary = read('src/components/dashboard/WordLibrary.tsx')
 assert(wordLibrary.includes('object-cover'), 'WordLibrary tiny avatar thumbnails may remain cropped')
 
+const dashboard = read('src/pages/Dashboard.tsx')
+const dashboardPg = read('src/pages/DashboardPG.tsx')
+for (const [name, source] of [['Dashboard', dashboard], ['DashboardPG', dashboardPg]]) {
+  assert(source.includes('useSearchParams'), `${name} must read dashboard word/lang query params`)
+  assert(source.includes("params.set('returnTo', '/dashboard')"), `${name} Watch Video must return to dashboard`)
+  assert(source.includes("params.set('returnMode', 'wordModal')"), `${name} Watch Video must request word modal return mode`)
+  assert(source.includes("params.set('returnLang', returnLang)"), `${name} Watch Video must include return language when available`)
+  assert(source.includes("const queryWordId = searchParams.get('word')"), `${name} must read word query param`)
+  assert(source.includes("const queryLang = searchParams.get('lang')"), `${name} must read lang query param`)
+  assert(source.includes('setSelectedWord(foundWord)'), `${name} must reopen WordDetailModal from query word`)
+  assert(source.includes("nextParams.delete('word')"), `${name} modal close must clear word query param`)
+  assert(source.includes("nextParams.delete('lang')"), `${name} modal close must clear lang query param`)
+}
+
+const videoPlayer = read('src/pages/VideoPlayer.tsx')
+assert(videoPlayer.includes("const returnMode = searchParams.get('returnMode')"), 'VideoPlayer must read returnMode')
+assert(videoPlayer.includes("const returnLang = searchParams.get('returnLang')"), 'VideoPlayer must read returnLang')
+assert(videoPlayer.includes("params.set('returnMode', returnMode)"), 'VideoPlayer previous/next navigation must preserve returnMode')
+assert(videoPlayer.includes("params.set('returnLang', returnLang)"), 'VideoPlayer previous/next navigation must preserve returnLang')
+assert(videoPlayer.includes("params.set('word', currentWordId)"), 'VideoPlayer dashboard close target must use the current word id')
+assert(videoPlayer.includes("params.set('lang', returnLang)"), 'VideoPlayer dashboard close target must include return language')
+assert(videoPlayer.includes('navigate(getCloseTarget(current?.id ?? wordId), { replace: true })'), 'VideoPlayer close must replace history with the current-word return target')
+assert(videoPlayer.includes('return returnTo || `/deck/${deckId}`'), 'VideoPlayer must keep existing close fallback behavior')
+
 const queuePosition = read('src/components/QueuePositionDisplay.tsx')
 assert(!queuePosition.includes('Loader2'), 'QueuePositionDisplay must not render a spinner')
 assert(!queuePosition.includes('animate-spin'), 'QueuePositionDisplay must keep queue status labels text/static')
