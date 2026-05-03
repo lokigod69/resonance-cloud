@@ -125,9 +125,10 @@ export default function GeneratePG() {
         }
         jobPayload.art_style = null
         jobPayload.movie_override = null
-        jobPayload.settings_override = state.cardImageStyle
-          ? { card_image_style: state.cardImageStyle }
-          : {}
+        jobPayload.settings_override = {
+          card_image_model: state.cardImageModel,
+          ...(state.cardImageStyle ? { card_image_style: state.cardImageStyle } : {}),
+        }
       }
       if (isQuickGenerate && effectiveDeckType !== 'card') {
         if (deckPayload) {
@@ -270,6 +271,8 @@ export default function GeneratePG() {
             <CardImageStyleStep
               skin="classic"
               value={state.cardImageStyle}
+              modelValue={state.cardImageModel}
+              onModelChange={(value) => dispatch({ type: 'SET_CARD_IMAGE_MODEL', model: value })}
               onChange={(value) => {
                 dispatch({ type: 'SET_CARD_IMAGE_STYLE', style: value })
                 setPgStep(4)
@@ -798,7 +801,12 @@ function StepReview({
   existingDeck: ExistingDeck | null
 }) {
   const { t, tp } = useTranslation()
-  const creditCost = computeCreditCost(state.deckType ?? existingDeck?.deck_type ?? null, state.words.length)
+  const creditCost = computeCreditCost(
+    state.deckType ?? existingDeck?.deck_type ?? null,
+    state.words.length,
+    state.cardImageModel,
+  )
+  const cardTierLabel = state.cardImageModel === 'gpt_image_2' ? 'GPT Image-2 Card' : 'Standard Card'
   return (
     <div className="w-full max-w-lg mx-auto mt-8">
       <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight mb-10 text-center text-foreground drop-shadow-md italic">
@@ -825,6 +833,10 @@ function StepReview({
                 Style: {state.cardImageStyle === 'Photorealistic' ? 'Realistic' : state.cardImageStyle}
               </span>
             )}
+            <span className="px-4 py-2 rounded-full text-sm font-medium"
+              style={{ background: 'rgba(13, 226, 195, 0.12)', border: '1px solid rgba(13, 226, 195, 0.3)', color: '#0de2c3' }}>
+              {cardTierLabel}
+            </span>
           </>
         ) : (
           <>

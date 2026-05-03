@@ -228,3 +228,36 @@ def test_upstream_worker_refuses_card_deck_words(monkeypatch, tmp_path):
     ]
     assert "images" not in transition_targets
     state.drop_timer(word["id"])
+
+
+def test_retry_failed_gpt_card_word_returns_to_card_queue():
+    sb = FakeSupabase()
+    _add_deck(sb, deck_id="deck-card", deck_type="card")
+    sb.add_job(
+        id="job-card",
+        deck_id="deck-card",
+        status="complete",
+        settings_override={"card_image_model": "gpt_image_2"},
+    )
+    word = sb.add_word(
+        id="word-gpt-retry",
+        deck_id="deck-card",
+        generation_job_id="job-card",
+        current_stage="failed",
+        failed_stage="pending_image",
+        retry_requested=True,
+        retry_requested_at="2026-05-03T09:00:00+00:00",
+        total_stage_attempts=3,
+    )
+
+    f = _make_feeder(sb)
+    _run(f._source2_retries())
+
+    assert f.card_queue.qsize() == 1
+    assert f.upstream_queue.qsize() == 0
+    queued = f.card_queue.get_nowait()
+    assert queued["id"] == word["id"]
+    assert queued["current_stage"] == "pending_image"
+    row = sb._tables["words"][0]
+    assert row["current_stage"] == "pending_image"
+    assert row["retry_requested"] is False

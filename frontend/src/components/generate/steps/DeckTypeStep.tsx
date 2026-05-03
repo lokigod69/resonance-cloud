@@ -31,8 +31,8 @@ export default function DeckTypeStep({ value, onChange, skin = 'classic' }: Deck
     },
     {
       value: 'card' as const,
-      label: skin === 'classic' ? t('generate.deckType.card.label') : 'Image',
-      cost: skin === 'classic' ? t('generate.deckType.card.cost') : '1 credit per word',
+      label: skin === 'classic' ? t('generate.deckType.card.label') : 'Card Deck',
+      cost: skin === 'classic' ? t('generate.deckType.card.cost') : 'Standard starts at 1 credit',
     },
   ]
 

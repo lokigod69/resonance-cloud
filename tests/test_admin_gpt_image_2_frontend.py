@@ -82,11 +82,15 @@ def test_admin_content_keeps_star_select_and_can_enrich_cost_from_jobs():
     assert "card_image_model" in source
 
 
-def test_user_facing_wizard_is_not_exposed_to_gpt_image_2():
+def test_user_facing_wizard_exposes_gpt_image_2_only_as_controlled_card_tier():
     wizard_sources = "\n".join(
         path.read_text(encoding="utf-8")
         for path in WIZARD_ROOT.rglob("*")
         if path.suffix in {".ts", ".tsx"}
     )
 
-    assert "gpt_image_2" not in wizard_sources
+    assert "gpt_image_2" in wizard_sources
+    assert "GPT Image-2 Card" in wizard_sources
+    assert "Premium GPT image card" in wizard_sources
+    assert "card_image_model" in wizard_sources
+    assert "cardImageModel" in wizard_sources

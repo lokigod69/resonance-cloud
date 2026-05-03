@@ -31,6 +31,7 @@ type Deck = {
   status: string
   art_style: string | null
   created_at: string
+  deck_type?: 'video' | 'card'
 }
 
 type Word = {
@@ -237,6 +238,7 @@ export default function DeckView() {
   const totalCount = words.length
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
+  const isCardDeck = deck.deck_type === 'card'
   const completeWords = words.filter((w) => w.status === 'complete')
   const cardMaxWidth = completeWords.length === 1 ? 'max-w-[480px]' : 'max-w-[280px]'
   const viewerWord = completeWords[viewerIndex]
@@ -356,7 +358,11 @@ export default function DeckView() {
             </div>
           )}
           {isGenerating && hasChecked && !shouldShowQueue && (
-            <VerbCycler className="mt-1" />
+            isCardDeck ? (
+              <p className="mt-1 text-sm text-muted-foreground">Bilder werden erstellt...</p>
+            ) : (
+              <VerbCycler className="mt-1" />
+            )
           )}
         </div>
       </div>
@@ -422,6 +428,10 @@ export default function DeckView() {
                       return
                     }
                     const idx = completeWords.findIndex(w => w.id === word.id)
+                    if (isCardDeck) {
+                      navigate(`/study/flashcard?deck=${deck.id}`)
+                      return
+                    }
                     if (idx >= 0) {
                       setViewerIndex(idx)
                       setVideoKey(k => k + 1)
@@ -455,15 +465,17 @@ export default function DeckView() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">
-                        <Play className="h-8 w-8 text-primary/50" />
+                        {!isCardDeck && <Play className="h-8 w-8 text-primary/50" />}
                       </div>
                     )}
                     {/* Play overlay */}
+                    {!isCardDeck && (
                     <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <div className="h-12 w-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                         <Play className="h-6 w-6 text-white fill-white" />
                       </div>
                     </div>
+                    )}
                     {/* Version indicator on card */}
                     {word.video_url_b && (
                       <span className="absolute top-2 right-2 px-1.5 py-0.5 rounded-full bg-black/60 border border-white/20 text-white text-[10px] font-medium backdrop-blur-sm z-10">
@@ -510,7 +522,9 @@ export default function DeckView() {
                   </div>
                   <div className="p-3 space-y-1.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
-                    <p className="text-xs text-destructive-foreground">{t('deckview.couldNotGenerate')}</p>
+                    <p className="text-xs text-destructive-foreground">
+                      {isCardDeck ? 'Bild konnte nicht erstellt werden' : t('deckview.couldNotGenerate')}
+                    </p>
                     {!editMode && (
                       <div className="flex gap-1.5 pt-1">
                         <Button
@@ -521,7 +535,7 @@ export default function DeckView() {
                           disabled={retrying === word.id}
                         >
                           <RotateCcw className="h-3 w-3" />
-                          {retrying === word.id ? t('deckview.retrying') : t('common.retry')}
+                          {retrying === word.id ? t('deckview.retrying') : isCardDeck ? 'Bild erneut erstellen' : t('common.retry')}
                         </Button>
                         <Button
                           size="sm"
@@ -541,13 +555,17 @@ export default function DeckView() {
                 <div className="glass rounded-xl overflow-hidden">
                   <div className="aspect-video flex items-center justify-center bg-card px-3 text-center">
                     <span className="text-xs font-medium text-muted-foreground">
-                      {word.status === 'pending' ? t('deckview.queued') : t('deckview.processing')}
+                      {word.status === 'pending'
+                        ? isCardDeck ? 'In Warteschlange...' : t('deckview.queued')
+                        : isCardDeck ? 'Bild wird erstellt...' : t('deckview.processing')}
                     </span>
                   </div>
                   <div className="p-3 space-y-0.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
                     <p className="text-xs text-muted-foreground">
-                      {word.status === 'pending' ? t('deckview.queued') : t('deckview.processing')}
+                      {word.status === 'pending'
+                        ? isCardDeck ? 'In Warteschlange...' : t('deckview.queued')
+                        : isCardDeck ? 'Bild wird erstellt...' : t('deckview.processing')}
                     </p>
                   </div>
                 </div>
@@ -645,7 +663,7 @@ export default function DeckView() {
       )}
 
       {/* Video Viewer Modal */}
-      {viewerOpen && viewerWord && (
+      {viewerOpen && viewerWord && !isCardDeck && (
         <VideoViewerModal
           words={completeWords}
           currentIndex={viewerIndex}

@@ -83,7 +83,13 @@ export default function GenerateWizard() {
         }
         payload.jobPayload.art_style = existingDeck?.art_style ?? null
         payload.jobPayload.movie_override = existingDeck?.movie_override ?? null
-        payload.jobPayload.settings_override = {}
+        payload.jobPayload.settings_override =
+          state.deckType === 'card'
+            ? {
+                card_image_model: state.cardImageModel,
+                ...(state.cardImageStyle ? { card_image_style: state.cardImageStyle } : {}),
+              }
+            : {}
       }
       await submitGeneration(
         user.id,

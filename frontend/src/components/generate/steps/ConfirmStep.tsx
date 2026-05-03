@@ -13,8 +13,11 @@ interface ConfirmStepProps {
 }
 
 export default function ConfirmStep({ state, dispatch, onGenerate, submitting, error, existingDeck }: ConfirmStepProps) {
-  const creditCost = computeCreditCost(state.deckType, state.words.length)
-  const deckTypeLabel = state.deckType === 'card' ? 'Card' : 'Video'
+  const creditCost = computeCreditCost(state.deckType, state.words.length, state.cardImageModel)
+  const deckTypeLabel =
+    state.deckType === 'card'
+      ? state.cardImageModel === 'gpt_image_2' ? 'GPT Image-2 Card' : 'Standard Card'
+      : 'Video'
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">

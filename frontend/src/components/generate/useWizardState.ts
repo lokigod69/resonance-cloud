@@ -13,6 +13,7 @@ export interface WizardState {
   lyricMode: string | null
   deckName: string
   deckType: 'video' | 'card' | null
+  cardImageModel: 'zturbo' | 'gpt_image_2'
   cardImageStyle: 'Photorealistic' | 'Editorial' | 'Random' | null
 }
 
@@ -29,6 +30,7 @@ export type WizardAction =
   | { type: 'SET_LYRIC_MODE'; mode: string | null }
   | { type: 'SET_DECK_NAME'; name: string }
   | { type: 'SET_DECK_TYPE'; deckType: 'video' | 'card' | null }
+  | { type: 'SET_CARD_IMAGE_MODEL'; model: 'zturbo' | 'gpt_image_2' }
   | { type: 'SET_CARD_IMAGE_STYLE'; style: 'Photorealistic' | 'Editorial' | 'Random' | null }
   | { type: 'GO_TO_STEP'; step: 1 | 2 | 3 | 4 | 5 | 6 }
   | { type: 'CHOOSE_PATH'; path: 'quick' | 'custom' }
@@ -47,6 +49,7 @@ const initialState: WizardState = {
   lyricMode: null,
   deckName: '',
   deckType: null,
+  cardImageModel: 'zturbo',
   cardImageStyle: null,
 }
 
@@ -96,7 +99,15 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
       return { ...state, deckName: action.name }
 
     case 'SET_DECK_TYPE':
-      return { ...state, deckType: action.deckType }
+      return {
+        ...state,
+        deckType: action.deckType,
+        cardImageModel: action.deckType === 'card' ? state.cardImageModel : 'zturbo',
+        cardImageStyle: action.deckType === 'card' ? (state.cardImageStyle ?? 'Photorealistic') : null,
+      }
+
+    case 'SET_CARD_IMAGE_MODEL':
+      return { ...state, cardImageModel: action.model }
 
     case 'SET_CARD_IMAGE_STYLE':
       return { ...state, cardImageStyle: action.style }
@@ -159,13 +170,22 @@ export interface ExistingDeck {
   deck_type?: 'video' | 'card'
 }
 
-export const CREDIT_COST_PER_WORD = { video: 10, card: 1 } as const
+export const VIDEO_CREDIT_COST_PER_WORD = 10
+export const CARD_CREDIT_COST_PER_WORD = {
+  zturbo: 1,
+  gpt_image_2: 5,
+} as const
 
 export function computeCreditCost(
   deckType: 'video' | 'card' | null,
-  wordCount: number
+  wordCount: number,
+  cardImageModel: 'zturbo' | 'gpt_image_2' = 'zturbo'
 ): number {
-  return wordCount * CREDIT_COST_PER_WORD[deckType ?? 'video']
+  const costPerWord =
+    deckType === 'card'
+      ? CARD_CREDIT_COST_PER_WORD[cardImageModel]
+      : VIDEO_CREDIT_COST_PER_WORD
+  return wordCount * costPerWord
 }
 
 export function useWizardState() {
@@ -208,8 +228,11 @@ export function useWizardState() {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
             ...(genre ? { genre } : {}),
             ...(lyricMode ? { lyric_mode: lyricMode } : {}),
-            ...(state.deckType === 'card' && state.cardImageStyle
-              ? { card_image_style: state.cardImageStyle }
+            ...(state.deckType === 'card'
+              ? {
+                  card_image_model: state.cardImageModel,
+                  ...(state.cardImageStyle ? { card_image_style: state.cardImageStyle } : {}),
+                }
               : {}),
           },
         },

@@ -47,9 +47,10 @@ export default function GenerateGO() {
   const [genre, setGenre] = useState<string | null>(null)
   const [lyricMode, setLyricMode] = useState<string | null>(null)
   const [deckType, setDeckType] = useState<'video' | 'card' | null>(null)
+  const [cardImageModel, setCardImageModel] = useState<'zturbo' | 'gpt_image_2'>('zturbo')
   const [cardImageStyle, setCardImageStyle] = useState<
     'Photorealistic' | 'Editorial' | 'Random' | null
-  >(null)
+  >('Photorealistic')
   const [customGenre, setCustomGenre] = useState('')
   const [showCustomInput, setShowCustomInput] = useState(false)
   const [deckName, setDeckName] = useState('')
@@ -157,6 +158,7 @@ export default function GenerateGO() {
     deckName: '',
     path: 'undecided',
     deckType,
+    cardImageModel,
     cardImageStyle,
   } as unknown as WizardState
 
@@ -325,8 +327,11 @@ export default function GenerateGO() {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
             ...(genreValue ? { genre: genreValue } : {}),
             ...(!isCardDeck && !isQuickGenerate && lyricMode ? { lyric_mode: lyricMode } : {}),
-            ...(isCardDeck && cardImageStyle
-              ? { card_image_style: cardImageStyle }
+            ...(isCardDeck
+              ? {
+                  card_image_model: cardImageModel,
+                  ...(cardImageStyle ? { card_image_style: cardImageStyle } : {}),
+                }
               : {}),
           },
         },
@@ -352,7 +357,7 @@ export default function GenerateGO() {
   // ── Render helpers ────────────────────────────────
 
   const credits = profile?.credits
-  const creditCost = computeCreditCost(deckType ?? existingDeck?.deck_type ?? null, words.length)
+  const creditCost = computeCreditCost(deckType ?? existingDeck?.deck_type ?? null, words.length, cardImageModel)
 
   function findStyleLabel(value: string): string {
     for (const g of ART_STYLE_GROUPS) {
@@ -449,6 +454,7 @@ export default function GenerateGO() {
               onChange={(value) => {
                 setDeckType(value)
                 if (value === 'video') setCardImageStyle(null)
+                if (value === 'card' && !cardImageStyle) setCardImageStyle('Photorealistic')
                 setStep(3)
               }}
             />
@@ -649,6 +655,8 @@ export default function GenerateGO() {
             <CardImageStyleStep
               skin="glassy"
               value={cardImageStyle}
+              modelValue={cardImageModel}
+              onModelChange={setCardImageModel}
               onChange={(value) => {
                 setCardImageStyle(value)
                 setStep(5)
@@ -682,6 +690,9 @@ export default function GenerateGO() {
               Style: {findCardImageStyleLabel(cardImageStyle)}
             </p>
           )}
+          <p className="text-sm text-go-text-secondary">
+            {cardImageModel === 'gpt_image_2' ? 'GPT Image-2 Card' : 'Standard Card'}
+          </p>
 
           {!existingDeck && (
             <div style={{ marginBottom: 24, marginTop: 24 }}>

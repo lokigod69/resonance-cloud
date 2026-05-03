@@ -51,6 +51,7 @@ type Deck = {
   status: string
   art_style: string | null
   created_at: string
+  deck_type?: 'video' | 'card'
 }
 
 type Word = {
@@ -379,6 +380,7 @@ export default function DeckViewPG() {
   const totalCount = words.length
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
+  const isCardDeck = deck.deck_type === 'card'
   const displayName =
     deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US')}`
 
@@ -529,7 +531,13 @@ export default function DeckViewPG() {
     {isGenerating && (
       <div className="flex flex-col items-center gap-6 mb-8">
         <GenerationWheelLoader size={120} className="gap-0" />
-        {hasChecked && !shouldShowQueue && <VerbCycler intervalMs={5000} />}
+        {hasChecked && !shouldShowQueue && (
+          isCardDeck ? (
+            <p className="text-sm text-[var(--pg-text-dim)]">Bilder werden erstellt...</p>
+          ) : (
+            <VerbCycler intervalMs={5000} />
+          )
+        )}
         <div className="w-full max-w-md h-1 bg-card/60 rounded-full overflow-hidden">
           <div
             className="h-full rounded-full bg-[var(--pg-accent-teal)] transition-all"
@@ -614,7 +622,7 @@ export default function DeckViewPG() {
                       </div>
                     ) : (
                       <div className="w-full h-full bg-white/5 flex items-center justify-center">
-                        <Play className="h-6 w-6 text-white/20" />
+                        {!isCardDeck && <Play className="h-6 w-6 text-white/20" />}
                       </div>
                     )}
                   </div>
@@ -685,7 +693,7 @@ export default function DeckViewPG() {
                       {/* Media area — 16:9 aspect ratio */}
                       <div className="w-full relative bg-black/50 overflow-hidden group/video" style={{ aspectRatio: '16/9' }}>
                         {/* Video element — stays mounted once activated to preserve frame on pause */}
-                        {isComplete && videoActiveIndex === i && (offset === 0 ? activeVideoUrl : word.video_url) && (
+                        {isComplete && !isCardDeck && videoActiveIndex === i && (offset === 0 ? activeVideoUrl : word.video_url) && (
                           <video
                             ref={videoRef}
                             key={`${word.id}-${version}`}
@@ -718,13 +726,17 @@ export default function DeckViewPG() {
                         {!isComplete && (
                           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
                             <span className="text-xs text-white/35">
-                              {word.status === 'failed' ? t('deckview.failed') : isPending ? t('deckview.queued') : t('deckview.processing')}
+                              {word.status === 'failed'
+                                ? isCardDeck ? 'Bild konnte nicht erstellt werden' : t('deckview.failed')
+                                : isPending
+                                  ? isCardDeck ? 'In Warteschlange...' : t('deckview.queued')
+                                  : isCardDeck ? 'Bild wird erstellt...' : t('deckview.processing')}
                             </span>
                           </div>
                         )}
 
                         {/* Play overlay on thumbnail — click/tap to start video */}
-                        {isComplete && offset === 0 && videoActiveIndex !== i && word.video_url && (
+                        {isComplete && !isCardDeck && offset === 0 && videoActiveIndex !== i && word.video_url && (
                           <div
                             className="absolute inset-0 z-[2] bg-black/30 opacity-100 md:opacity-0 md:hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer"
                             onClick={(e) => {
@@ -740,7 +752,7 @@ export default function DeckViewPG() {
                         )}
 
                         {/* Version badge */}
-                        {isComplete && offset === 0 && (
+                        {isComplete && !isCardDeck && offset === 0 && (
                           <VersionBadge
                             version={version}
                             hasAlt={hasAltVersion}
@@ -755,7 +767,7 @@ export default function DeckViewPG() {
                         )}
 
                         {/* VolumeControl — moves with the card */}
-                        {offset === 0 && (
+                        {!isCardDeck && offset === 0 && (
                           <div className="absolute top-3 left-3 z-10 opacity-100 md:opacity-0 md:group-hover/video:opacity-100 transition-opacity">
                             <VolumeControl
                               volume={volume}
@@ -770,7 +782,7 @@ export default function DeckViewPG() {
                         )}
 
                         {/* Video controls — play/pause + volume + fullscreen */}
-                        {isComplete && videoActiveIndex === i && offset === 0 && (
+                        {isComplete && !isCardDeck && videoActiveIndex === i && offset === 0 && (
                           <VideoControls
                             isPlaying={isPlaying}
                             onTogglePlay={() => setIsPlaying(!isPlaying)}
@@ -813,7 +825,11 @@ export default function DeckViewPG() {
                           <>
                             <p className="text-lg font-bold text-white">{word.word}</p>
                             <p className="text-xs text-gray-500 mt-1">
-                              {word.status === 'failed' ? t('deckview.failed') : isPending ? t('deckview.queued') : t('deckview.processing')}
+                              {word.status === 'failed'
+                                ? isCardDeck ? 'Bild konnte nicht erstellt werden' : t('deckview.failed')
+                                : isPending
+                                  ? isCardDeck ? 'In Warteschlange...' : t('deckview.queued')
+                                  : isCardDeck ? 'Bild wird erstellt...' : t('deckview.processing')}
                             </p>
                             {word.status === 'failed' && (
                               <div className="flex gap-2 mt-3">
@@ -823,7 +839,7 @@ export default function DeckViewPG() {
                                   className="px-3 py-1.5 text-xs font-medium bg-white/10 border border-white/25 text-white hover:bg-white/20 rounded-lg transition-colors disabled:opacity-50"
                                 >
                                   <RotateCcw className="h-3 w-3 inline mr-1" />
-                                  {retrying === word.id ? t('deckview.retrying') : t('common.retry')}
+                                  {retrying === word.id ? t('deckview.retrying') : isCardDeck ? 'Bild erneut erstellen' : t('common.retry')}
                                 </button>
                                 <button
                                   onClick={() => handleDeleteWord(word)}
@@ -973,7 +989,7 @@ export default function DeckViewPG() {
         {!editMode && (
           <>
             <button
-              onClick={() => navigate(`/study?deck=${deck.id}`)}
+              onClick={() => navigate(isCardDeck ? `/study/flashcard?deck=${deck.id}` : `/study?deck=${deck.id}`)}
               className="rounded-xl border border-[var(--pg-accent-teal)]/30 bg-black/35 px-2 py-2.5 text-xs font-display font-medium text-[var(--pg-accent-teal)] backdrop-blur-md transition-all hover:bg-[var(--pg-accent-teal)]/10 sm:px-5 sm:text-sm"
             >
               <BookOpen className="h-4 w-4 inline mr-1.5" />
