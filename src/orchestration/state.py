@@ -332,6 +332,40 @@ async def fetch_word(sb, word_id: str) -> Optional[dict[str, Any]]:
     return getattr(r, "data", None)
 
 
+async def fetch_deck_types(
+    sb,
+    deck_ids: Iterable[Optional[str]],
+) -> dict[str, Optional[str]]:
+    ids = sorted({deck_id for deck_id in deck_ids if deck_id})
+    if not ids:
+        return {}
+
+    def _do():
+        return (
+            sb.table("decks")
+              .select("id, deck_type")
+              .in_("id", ids)
+              .execute()
+        )
+
+    try:
+        r = await _execute(_do)
+    except Exception as e:
+        log.warning("fetch_deck_types(%s) failed: %s", ids, e)
+        return {}
+    return {
+        row["id"]: row.get("deck_type")
+        for row in (getattr(r, "data", None) or [])
+        if row.get("id")
+    }
+
+
+async def fetch_deck_type(sb, deck_id: Optional[str]) -> Optional[str]:
+    if not deck_id:
+        return None
+    return (await fetch_deck_types(sb, [deck_id])).get(deck_id)
+
+
 async def fetch_words_by_stage(
     sb,
     stages: Iterable[str],

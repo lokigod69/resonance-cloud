@@ -173,9 +173,14 @@ class Feeder:
             return
 
         log.debug("feeder/source3: %d orphan words found", len(words))
+        deck_types = await state.fetch_deck_types(
+            self.sb,
+            [word.get("deck_id") for word in words],
+        )
         for word in words:
             stage = word.get("current_stage")
-            queue, kind = self._queue_for_stage(stage)
+            deck_type = deck_types.get(word.get("deck_id"))
+            queue, kind = self._queue_for_stage(stage, deck_type=deck_type)
             if queue is None:
                 continue
             if queue.full():
@@ -190,9 +195,11 @@ class Feeder:
             )
 
     def _queue_for_stage(
-        self, stage: Optional[str],
+        self, stage: Optional[str], *, deck_type: Optional[str] = None,
     ) -> tuple[Optional[asyncio.Queue], Optional[str]]:
         if stage == "pending":
+            if deck_type == "card":
+                return self.card_queue, "card"
             return self.upstream_queue, "upstream"
         if stage == "video_queued":
             return self.video_queue, "video"

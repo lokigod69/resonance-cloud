@@ -81,6 +81,16 @@ class UpstreamWorker:
             log.warning("upstream_worker: word=%s vanished", word_id)
             return
 
+        deck_type = await state.fetch_deck_type(self.sb, fresh.get("deck_id"))
+        if deck_type == "card":
+            log.warning(
+                "upstream_worker: refusing card deck word=%s deck=%s in upstream queue",
+                word_id,
+                fresh.get("deck_id"),
+            )
+            state.clear_log_context()
+            return
+
         from src.storage import get_job_workspace_path
         workspace_path = get_job_workspace_path(
             user_id=fresh["user_id"], deck_id=fresh["deck_id"],
