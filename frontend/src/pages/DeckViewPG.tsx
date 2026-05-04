@@ -462,7 +462,7 @@ export default function DeckViewPG() {
   }
 
   return (
-    <div className="px-6 pt-2 pb-12 sm:pt-4 max-w-5xl mx-auto">
+    <div className="px-6 pt-2 pb-[calc(var(--deck-footer-space)+1rem)] sm:pt-4 max-w-5xl mx-auto">
       {/* Header */}
       <div className="flex items-start gap-4 mb-8">
         <button
@@ -615,7 +615,11 @@ export default function DeckViewPG() {
                   {/* Thumbnail */}
                   <div className="aspect-[4/3] relative">
                     {word.thumbnail_url ? (
-                      <img src={word.thumbnail_url} alt={word.word} className="w-full h-full object-cover" />
+                      <img
+                        src={word.thumbnail_url}
+                        alt={word.word}
+                        className={`w-full h-full ${isCardDeck ? 'object-contain bg-black/40' : 'object-cover'}`}
+                      />
                     ) : isFailed ? (
                       <div className="w-full h-full flex items-center justify-center bg-red-950/20">
                         <AlertTriangle className="h-6 w-6 text-red-400" />
@@ -719,7 +723,7 @@ export default function DeckViewPG() {
                             src={(offset === 0 ? activeThumbnailUrl : word.thumbnail_url)!}
                             alt={word.word}
                             draggable={false}
-                            className={`absolute inset-0 w-full h-full object-cover ${isCardDeck ? 'pointer-events-none select-none' : ''}`}
+                            className={`absolute inset-0 w-full h-full ${isCardDeck ? 'object-contain bg-black/40 pointer-events-none select-none' : 'object-cover'}`}
                           />
                         )}
 
@@ -803,12 +807,12 @@ export default function DeckViewPG() {
                       <div className="px-6 pt-4 pb-2 flex flex-col items-center text-center bg-[#0d0d12]/70">
                         {isComplete ? (
                           <>
-                            <h2 className="text-2xl font-bold text-white">{word.word}</h2>
+                            <h2 className="text-2xl font-bold text-white long-copy">{word.word}</h2>
                             {word.translation && (
-                              <p className="text-base text-gray-400 mt-1">{word.translation}</p>
+                              <p className="text-base text-gray-400 mt-1 long-copy">{word.translation}</p>
                             )}
                             {word.mnemonic && (
-                              <p className="text-sm text-gray-500/70 italic mt-1 max-w-2xl">{word.mnemonic}</p>
+                              <p className="text-sm text-gray-500/70 italic mt-1 max-w-2xl long-copy">{word.mnemonic}</p>
                             )}
                             <div className="flex justify-center mt-2">
                               <StarRating rating={word.rating ?? null} onChange={(r) => handleRate(word.id, r)} />
@@ -824,7 +828,7 @@ export default function DeckViewPG() {
                           </>
                         ) : (
                           <>
-                            <p className="text-lg font-bold text-white">{word.word}</p>
+                            <p className="text-lg font-bold text-white long-copy">{word.word}</p>
                             <p className="text-xs text-gray-500 mt-1">
                               {word.status === 'failed'
                                 ? isCardDeck ? t('deckview.cardFailure') : t('deckview.failed')
@@ -892,7 +896,7 @@ export default function DeckViewPG() {
                                     {word.etymology && (
                                       <div className="flex justify-between gap-4">
                                         <span className="text-gray-500 shrink-0">{t('deckview.etymology')}</span>
-                                        <span className="text-gray-300 text-right">{word.etymology}</span>
+                                        <span className="text-gray-300 text-right long-copy">{word.etymology}</span>
                                       </div>
                                     )}
                                     {word.pos && (
@@ -920,7 +924,7 @@ export default function DeckViewPG() {
                                     {meta?.music_caption && (
                                       <div className="flex justify-between gap-4">
                                         <span className="text-gray-500 shrink-0">{t('deckview.music')}</span>
-                                        <span className="text-gray-300 text-right">{meta.music_caption.split(',')[0]}</span>
+                                        <span className="text-gray-300 text-right long-copy">{meta.music_caption.split(',')[0]}</span>
                                       </div>
                                     )}
                                   </div>
@@ -954,7 +958,7 @@ export default function DeckViewPG() {
           </div>
 
           {/* Dots */}
-          <div className="flex gap-1.5 mt-6 flex-wrap justify-center max-w-md">
+          <div className="flex gap-1.5 mt-6 flex-wrap justify-center max-w-md pb-2">
             {words.map((word, i) => (
               <button
                 key={word.id}
@@ -985,7 +989,7 @@ export default function DeckViewPG() {
           editMode=false → 3 buttons (Study/Add/Edit|Delete) → 3-col grid */}
       <div className={editMode
         ? 'flex justify-center pt-8'
-        : 'fixed inset-x-6 bottom-[calc(env(safe-area-inset-bottom,0px)+1rem)] z-30 grid max-w-xl grid-cols-3 gap-2 mx-auto sm:bottom-[calc(env(safe-area-inset-bottom,0px)+2rem)] sm:gap-3'
+        : 'fixed inset-x-6 bottom-[calc(var(--app-safe-bottom)+1rem)] z-30 grid max-w-xl grid-cols-3 gap-2 mx-auto sm:bottom-[calc(var(--app-safe-bottom)+2rem)] sm:gap-3'
       }>
         {!editMode && (
           <>

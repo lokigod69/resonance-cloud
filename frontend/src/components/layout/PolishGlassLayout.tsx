@@ -40,7 +40,7 @@ export default function PolishGlassLayout() {
   const isSpeakRoute = location.pathname.startsWith('/speak')
 
   return (
-    <div className={`app-shell w-full min-h-screen relative font-sans pg-scrollbar-hide ${
+    <div className={`app-shell w-full min-h-dvh relative font-sans pg-scrollbar-hide ${
       isSpeakRoute ? 'overflow-visible' : 'overflow-x-hidden overflow-y-auto'
     }`}>
       <div className="glassy-atmosphere" aria-hidden="true">
@@ -50,11 +50,11 @@ export default function PolishGlassLayout() {
       </div>
 
       {/* Top Navigation */}
-      <nav className="app-topnav fixed top-0 left-0 w-full px-4 sm:px-6 py-2 flex items-center z-50 pointer-events-auto">
+      <nav className="app-topnav fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 flex items-center z-50 pointer-events-auto">
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen((o) => !o)}
-          className="sm:hidden p-2 rounded-lg hover:bg-[var(--accent-soft)] transition-colors text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+          className="sm:hidden h-11 w-11 flex items-center justify-center rounded-lg hover:bg-[var(--accent-soft)] transition-colors text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -62,7 +62,7 @@ export default function PolishGlassLayout() {
         {/* Mobile credits — visible only on mobile */}
         <button
           onClick={() => setRedeemOpen(true)}
-          className="flex sm:hidden items-center gap-1 text-xs text-[var(--text-muted)] ml-auto mr-2 hover:text-[var(--accent)] transition-colors"
+          className="flex sm:hidden min-h-11 items-center gap-1 text-xs text-[var(--text-muted)] ml-auto mr-2 px-2 hover:text-[var(--accent)] transition-colors"
         >
           <Coins className="w-3.5 h-3.5" />
           <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
@@ -71,7 +71,7 @@ export default function PolishGlassLayout() {
         {/* Mobile profile button — visible only on mobile */}
         <button
           onClick={() => setProfileOpen(true)}
-          className="flex sm:hidden items-center justify-center p-1.5 rounded-full hover:bg-[var(--accent-soft)] transition-colors ml-1"
+          className="flex sm:hidden h-11 w-11 items-center justify-center rounded-full hover:bg-[var(--accent-soft)] transition-colors ml-1"
           aria-label="Settings"
         >
           {avatarUrl ? (
@@ -165,7 +165,7 @@ export default function PolishGlassLayout() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="app-topnav fixed top-[60px] left-0 w-full z-40 sm:hidden"
+            className="app-topnav fixed top-[var(--glassy-header-offset)] left-0 w-full z-40 sm:hidden"
           >
             <div className="flex flex-col p-4 gap-1">
               {navItems.map((item) => (
@@ -201,8 +201,8 @@ export default function PolishGlassLayout() {
       </AnimatePresence>
 
       {/* Page content */}
-      <main className={`w-full pt-16 sm:pt-20 pb-20 relative z-10 ${
-        isSpeakRoute ? 'min-h-0' : 'min-h-screen'
+      <main className={`w-full pt-[var(--glassy-header-offset)] pb-20 relative z-10 ${
+        isSpeakRoute ? 'min-h-0' : 'min-h-dvh'
       }`}>
         <Outlet />
       </main>

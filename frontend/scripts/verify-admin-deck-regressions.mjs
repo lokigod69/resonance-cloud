@@ -42,7 +42,7 @@ assert(!cardWordViewer.includes('VolumeControl'), 'CardWordViewerModal must not 
 assert(!cardWordViewer.includes('VersionBadge'), 'CardWordViewerModal must not render version toggles')
 
 assert(deckViewPg.includes('draggable={false}'), 'DeckViewPG card thumbnails must disable native image dragging')
-assert(deckViewPg.includes("isCardDeck ? 'pointer-events-none select-none' : ''"), 'DeckViewPG card thumbnails must not block carousel gestures')
+assert(deckViewPg.includes('pointer-events-none select-none'), 'DeckViewPG card thumbnails must not block carousel gestures')
 
 const translations = read('src/lib/translations.ts')
 assert(translations.includes("'deckview.cardFailure'"), 'translations must include image/card failure copy')
@@ -79,11 +79,18 @@ const indexCss = read('src/index.css')
 assert(!indexCss.includes('.classic-deck-bg-layer'), 'Classic deck CSS must not keep the cover background thumbnail layer')
 assert(indexCss.includes('.classic-deck-media'), 'Classic deck CSS must define a visible media preview area')
 assert(indexCss.includes('.classic-deck-body'), 'Classic deck CSS must keep title and metadata below the media preview')
+assert(indexCss.includes('--app-safe-top'), 'Global CSS must define a reusable mobile safe-area top token')
+assert(indexCss.includes('--glassy-header-offset'), 'Global CSS must define a Glassy header offset that includes safe-area top')
+assert(indexCss.includes('--app-safe-bottom'), 'Global CSS must define a reusable mobile safe-area bottom token')
+assert(indexCss.includes('.long-copy'), 'Global CSS must expose a reusable long-copy wrapping utility')
+assert(indexCss.includes('overflow-wrap: anywhere'), 'long-copy utility must force no-space mobile wrapping')
 
 const decksPg = read('src/pages/DecksPG.tsx')
 assert(decksPg.includes("import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'"), 'Glassy Decks must use GeneratedMediaFrame where card previews need full image display')
 assert(decksPg.includes("deck_type?: 'video' | 'card'"), 'Glassy Decks must type deck_type')
 assert(decksPg.includes("variant={deck.deck_type === 'card' ? 'deckPreview' : 'decorative'}"), 'Glassy Decks grid must preserve card deck previews without breaking video previews')
+assert(decksPg.includes("touchAction: 'pan-y'"), 'Glassy Stack Decks must preserve vertical page panning while dragging cards')
+assert(!decksPg.includes("touchAction: 'none'"), 'Glassy Stack Decks must not trap vertical scroll with touchAction none')
 
 const wordLibrary = read('src/components/dashboard/WordLibrary.tsx')
 assert(wordLibrary.includes('object-cover'), 'WordLibrary tiny avatar thumbnails may remain cropped')
@@ -103,6 +110,9 @@ for (const [name, source] of [['Dashboard', dashboard], ['DashboardPG', dashboar
 }
 
 const videoPlayer = read('src/pages/VideoPlayer.tsx')
+assert(videoPlayer.includes('pt-[var(--app-safe-top)]'), 'VideoPlayer full-screen shell must reserve safe-area top')
+assert(videoPlayer.includes('pb-[var(--app-safe-bottom)]'), 'VideoPlayer full-screen shell must reserve safe-area bottom')
+assert(videoPlayer.includes('min-h-0 overflow-y-auto'), 'VideoPlayer content must scroll in short landscape viewports')
 assert(videoPlayer.includes("const returnMode = searchParams.get('returnMode')"), 'VideoPlayer must read returnMode')
 assert(videoPlayer.includes("const returnLang = searchParams.get('returnLang')"), 'VideoPlayer must read returnLang')
 assert(videoPlayer.includes("params.set('returnMode', returnMode)"), 'VideoPlayer previous/next navigation must preserve returnMode')
@@ -129,6 +139,9 @@ for (const path of ['src/components/layout/AppHeader.tsx', 'src/components/layou
 }
 
 const glassLayout = read('src/components/layout/PolishGlassLayout.tsx')
+assert(glassLayout.includes('pt-[calc(var(--app-safe-top)+0.5rem)]'), 'Glassy top navigation must include safe-area top padding')
+assert(glassLayout.includes('pt-[var(--glassy-header-offset)]'), 'Glassy main content must offset below the safe-area-aware header')
+assert(glassLayout.includes('top-[var(--glassy-header-offset)]'), 'Glassy mobile menu must open below the safe-area-aware header')
 assert(!glassLayout.includes('to="/admin/queue"'), 'Glassy admin entry must not default to Job Queue')
 assert(glassLayout.includes('to="/admin/content"'), 'Glassy admin entry must default to Content')
 
@@ -194,5 +207,37 @@ assert(avatarMigration.includes("'avatar_updated_at'"), 'Migration must extend t
 assert(!/v_safe_update_columns text\[\][^;]*'role'/s.test(avatarMigration), 'Migration must not expose role to the safe-update list')
 assert(!/v_safe_update_columns text\[\][^;]*'credits'/s.test(avatarMigration), 'Migration must not expose credits to the safe-update list')
 assert(avatarMigration.includes("coalesce(new.role, 'learner') <> 'learner'"), 'Migration must keep the Phase 1A insert-time role/credits check')
+
+const deckViewPgSafeArea = read('src/pages/DeckViewPG.tsx')
+assert(deckViewPgSafeArea.includes('pb-[calc(var(--deck-footer-space)+1rem)]'), 'DeckViewPG must reserve bottom room for the fixed footer and safe area')
+assert(deckViewPgSafeArea.includes('bottom-[calc(var(--app-safe-bottom)+1rem)]'), 'DeckViewPG fixed footer must use the shared bottom safe-area token')
+assert(deckViewPgSafeArea.includes("isCardDeck ? 'object-contain bg-black/40' : 'object-cover'"), 'DeckViewPG card art must use object-contain while video thumbnails can remain cover')
+assert(deckViewPgSafeArea.includes('className="flex gap-1.5 mt-6 flex-wrap justify-center max-w-md pb-2"'), 'DeckViewPG carousel dots must stay above the fixed footer')
+
+const deckViewClassicSafeArt = read('src/pages/DeckView.tsx')
+assert(deckViewClassicSafeArt.includes("isCardDeck ? 'object-contain bg-card' : 'object-cover'"), 'Classic DeckView card art must use object-contain while video thumbnails can remain cover')
+
+const wordInfoPanel = read('src/components/WordInfoPanel.tsx')
+assert(wordInfoPanel.includes('long-copy'), 'WordInfoPanel must wrap long words/translations/metadata')
+
+const wordDetailModalMobile = read('src/components/dashboard/WordDetailModal.tsx')
+assert(wordDetailModalMobile.includes('long-copy'), 'WordDetailModal must apply long-copy wrapping to long vocabulary text')
+
+const studyClassic = read('src/pages/Study.tsx')
+const studyPg = read('src/pages/StudyPG.tsx')
+const studyFlashcard = read('src/pages/StudyFlashcard.tsx')
+for (const [name, source] of [['Study', studyClassic], ['StudyPG', studyPg], ['StudyFlashcard', studyFlashcard]]) {
+  assert(source.includes('long-copy'), `${name} must apply long-copy wrapping to study vocabulary text`)
+}
+
+const speak = read('src/pages/Speak.tsx')
+assert(speak.includes('top-[var(--glassy-header-offset)]'), 'Speak fixed chat shells must use the safe-area-aware Glassy header offset')
+assert(speak.includes('pb-[calc(var(--app-safe-bottom)+1.25rem)]'), 'Speak bottom recording bars must reserve bottom safe area')
+assert(speak.includes('long-copy'), 'Speak message bubbles and corrections must wrap long no-space copy')
+
+const sharePage = read('src/pages/SharePage.tsx')
+assert(sharePage.includes('min-h-dvh'), 'SharePage must use a dynamic viewport min-height utility')
+assert(sharePage.includes('object-contain'), 'SharePage image-only shares must avoid cropping card thumbnails')
+assert(sharePage.includes('long-copy'), 'SharePage word/translation/mnemonic text must wrap long no-space copy')
 
 console.log('admin/deck regression checks passed')

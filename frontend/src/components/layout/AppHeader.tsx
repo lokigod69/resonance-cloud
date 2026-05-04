@@ -74,7 +74,7 @@ export function AppHeader() {
       <div className="md:hidden">
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="shrink-0">
+            <Button variant="ghost" size="icon" className="h-11 w-11 shrink-0">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
@@ -91,7 +91,7 @@ export function AppHeader() {
                   to={to}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                    'flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
                     location.pathname === to || location.pathname.startsWith(to + '/')
                       ? 'theme-chip-active'
                       : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
@@ -113,7 +113,7 @@ export function AppHeader() {
                       to={to}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                        'flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
                         location.pathname === to || location.pathname.startsWith(to + '/')
                           ? 'theme-chip-active'
                           : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
@@ -189,14 +189,14 @@ export function AppHeader() {
         {/* Credits */}
         <button
           onClick={() => setRedeemOpen(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg glass glass-hover text-sm font-medium transition-colors"
+          className="flex min-h-11 items-center gap-1.5 px-3 py-1.5 rounded-lg glass glass-hover text-sm font-medium transition-colors"
         >
           <Coins className="h-4 w-4 text-primary" />
           <span>{typeof profile?.credits === 'number' ? profile.credits : profileLoading ? '...' : 0}</span>
         </button>
 
         {/* Profile button → opens modal */}
-        <Button variant="ghost" className="flex items-center gap-2 px-2" onClick={() => setProfileOpen(true)}>
+        <Button variant="ghost" className="flex min-h-11 items-center gap-2 px-2" onClick={() => setProfileOpen(true)}>
           <Avatar className="h-7 w-7">
             {avatarUrl && (
               <AvatarImage

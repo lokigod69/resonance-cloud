@@ -114,9 +114,9 @@ function WordDetailBody({ word, onWatchVideo, deckName }: { word: LibraryWord; o
       )}
       {/* Headline */}
       <div className="space-y-1">
-        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight break-words">{displayWord}</h2>
-        {ipa && <p className="text-sm text-foreground/45 font-mono">/{ipa.replace(/^\/|\/$/g, '')}/</p>}
-        {word.translation && <p className="text-lg text-foreground/75">{word.translation}</p>}
+        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight long-copy">{displayWord}</h2>
+        {ipa && <p className="text-sm text-foreground/45 font-mono long-copy">/{ipa.replace(/^\/|\/$/g, '')}/</p>}
+        {word.translation && <p className="text-lg text-foreground/75 long-copy">{word.translation}</p>}
         {word.pos && (
           <span className="inline-block mt-1 px-2 py-0.5 text-[10px] uppercase tracking-wider rounded-full bg-foreground/10 text-foreground/70 border border-foreground/15">
             {word.pos}
@@ -124,7 +124,7 @@ function WordDetailBody({ word, onWatchVideo, deckName }: { word: LibraryWord; o
         )}
         {deckName && (
           <p className="text-xs text-foreground/40 mt-1">
-            From: <span className="font-medium text-foreground/60">{deckName}</span>
+            From: <span className="font-medium text-foreground/60 long-copy">{deckName}</span>
           </p>
         )}
       </div>
@@ -136,29 +136,29 @@ function WordDetailBody({ word, onWatchVideo, deckName }: { word: LibraryWord; o
       {word.mnemonic && (
         <section>
           <h3 className="text-[11px] uppercase tracking-wider text-foreground/40 mb-1">Mnemonic</h3>
-          <p className="text-sm text-foreground/85 leading-relaxed">{word.mnemonic}</p>
+          <p className="text-sm text-foreground/85 leading-relaxed long-copy">{word.mnemonic}</p>
         </section>
       )}
 
       {word.etymology && (
         <section>
           <h3 className="text-[11px] uppercase tracking-wider text-foreground/40 mb-1">Etymology</h3>
-          <p className="text-sm text-foreground/85 leading-relaxed">{word.etymology}</p>
+          <p className="text-sm text-foreground/85 leading-relaxed long-copy">{word.etymology}</p>
         </section>
       )}
 
       {example && (
         <section>
           <h3 className="text-[11px] uppercase tracking-wider text-foreground/40 mb-1">Example</h3>
-          <p className="text-sm text-foreground/85 leading-relaxed italic">"{example}"</p>
-          {exampleGloss && <p className="text-xs text-foreground/50 mt-1">{exampleGloss}</p>}
+          <p className="text-sm text-foreground/85 leading-relaxed italic long-copy">"{example}"</p>
+          {exampleGloss && <p className="text-xs text-foreground/50 mt-1 long-copy">{exampleGloss}</p>}
         </section>
       )}
 
       {synonyms && synonyms.length > 0 && (
         <section>
           <h3 className="text-[11px] uppercase tracking-wider text-foreground/40 mb-1">Synonyms</h3>
-          <p className="text-sm text-foreground/75">{synonyms.join(', ')}</p>
+          <p className="text-sm text-foreground/75 long-copy">{synonyms.join(', ')}</p>
         </section>
       )}
 
@@ -169,7 +169,7 @@ function WordDetailBody({ word, onWatchVideo, deckName }: { word: LibraryWord; o
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-0.5 text-[11px] rounded-full bg-foreground/8 text-foreground/70 border border-foreground/10"
+                className="px-2 py-0.5 text-[11px] rounded-full bg-foreground/8 text-foreground/70 border border-foreground/10 long-copy"
               >
                 {tag}
               </span>

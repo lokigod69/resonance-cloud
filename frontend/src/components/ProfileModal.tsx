@@ -112,6 +112,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   // Sync state when modal opens or profile data changes
   useEffect(() => {
     if (open) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- opening the modal should hydrate editable fields from the current profile snapshot
       setDisplayName(profile?.display_name || '')
       setBaseLanguage(profile?.base_language || '')
     }
@@ -259,7 +260,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
       Promise.resolve(
         supabase
           .from('profiles')
-          .update({ skin: id } as any)
+          .update({ skin: id } as { skin: SkinId })
           .eq('id', user.id)
       ).catch(() => {})
     }
@@ -274,7 +275,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
 
         <div className="space-y-6 py-2">
           {/* Avatar */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <Avatar size="lg" className="size-20">
               {avatarUrl && (
                 <AvatarImage
@@ -293,7 +294,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="border-border"
+                  className="min-h-11 border-border"
                   disabled={avatarStatus === 'working'}
                   onClick={() => fileInputRef.current?.click()}
                 >
@@ -305,7 +306,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                     type="button"
                     variant="outline"
                     size="sm"
-                    className="border-border"
+                    className="min-h-11 border-border"
                     disabled={avatarStatus === 'working'}
                     onClick={() => void handleAvatarRemove()}
                   >
@@ -396,7 +397,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
           {/* Display Name */}
           <div className="space-y-2">
             <label className="text-sm font-medium">{t('profile.displayName')}</label>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
               <Input
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
@@ -417,7 +418,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
           {/* Base Language */}
           <div className="space-y-2">
             <label className="text-sm font-medium">{t('profile.baseLanguage')}</label>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
               <Select value={baseLanguage} onValueChange={handleSaveLanguage}>
                 <SelectTrigger className="theme-input">
                   <SelectValue placeholder={t('profile.selectLanguage')} />

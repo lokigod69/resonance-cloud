@@ -560,7 +560,7 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
       exit={{ opacity: 0, scale: 0.8 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
       className={`theme-card absolute inset-0 rounded-2xl overflow-hidden cursor-pointer active:cursor-grabbing flex flex-col group shadow-[var(--shadow-elevated)] ${!isTop ? 'pointer-events-none' : ''}`}
-      style={{ x: isTop ? x : stackX, y: stackY, scale: stackScale, rotate, touchAction: 'none', transformOrigin: 'bottom center' }}
+      style={{ x: isTop ? x : stackX, y: stackY, scale: stackScale, rotate, touchAction: 'pan-y', transformOrigin: 'bottom center' }}
       onClick={() => {
         if (isTop && !isDragging) onClick()
       }}
@@ -570,7 +570,9 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
           <motion.img
             src={thumb}
             alt={displayName}
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-all duration-700"
+            className={`w-full h-full opacity-80 group-hover:opacity-100 transition-all duration-700 ${
+              deck.deck_type === 'card' ? 'object-contain bg-black/30' : 'object-cover'
+            }`}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--accent-soft) 0%, var(--surface-1) 100%)' }}>

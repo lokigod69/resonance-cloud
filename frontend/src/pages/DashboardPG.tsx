@@ -265,7 +265,7 @@ export default function DashboardPG() {
 
             {/* Sticky language tabs */}
             {availableLanguages.length > 1 && (
-              <div className="sticky top-16 z-10 mb-3 flex justify-center px-1 py-2">
+              <div className="sticky top-[var(--glassy-header-offset)] z-10 mb-3 flex justify-center px-1 py-2">
                 <div className="inline-flex w-fit max-w-full flex-wrap justify-center gap-2 px-1 py-1">
                   {availableLanguages.map((lang) => {
                     const isActive = lang === activeLanguage

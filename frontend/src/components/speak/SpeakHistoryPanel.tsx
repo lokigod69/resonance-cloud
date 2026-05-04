@@ -256,7 +256,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
 
   return (
     <div
-      className="fixed inset-x-0 bottom-0 top-16 sm:top-20 z-40 flex flex-col bg-gray-950/95 backdrop-blur-xl transition-transform duration-300"
+      className="fixed inset-x-0 bottom-0 top-[var(--glassy-header-offset)] z-40 flex flex-col bg-gray-950/95 backdrop-blur-xl transition-transform duration-300"
       style={{ transform: open ? 'translateX(0)' : 'translateX(100%)' }}
     >
       {/* ── Header ── */}
@@ -329,7 +329,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
 
       {/* ── Content ── */}
       <div className="flex-1 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
-        <div className="max-w-5xl mx-auto w-full px-4 py-4">
+        <div className="max-w-5xl mx-auto w-full px-4 pt-4 pb-[calc(var(--app-safe-bottom)+1rem)]">
 
           {/* ── Conversation List ── */}
           {!selectedId && (
@@ -455,13 +455,13 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                       className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div
-                        className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                        className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed long-copy ${
                           msg.role === 'user'
                             ? 'bg-cyan-900/50 text-white rounded-br-sm'
                             : 'bg-gray-800/60 text-gray-100 rounded-bl-sm'
                         }`}
                       >
-                        {msg.content}
+                        <p className="long-copy">{msg.content}</p>
                       </div>
                     </div>
                   ))}
@@ -490,10 +490,10 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                         <div className="w-full max-w-lg space-y-3">
                           <p className="text-xs text-gray-500 text-center mb-2">{t('speak.reviewTitle')}</p>
                           {corrections.map((c, i) => (
-                            <div key={i} className="bg-white/5 rounded-lg p-3 space-y-1">
-                              <p className="text-sm text-red-400/80 line-through">{c.original}</p>
-                              <p className="text-sm text-green-400/80">{c.corrected}</p>
-                              <p className="text-xs text-gray-500">{c.explanation}</p>
+                            <div key={i} className="bg-white/5 rounded-lg p-3 space-y-1 long-copy">
+                              <p className="text-sm text-red-400/80 line-through long-copy">{c.original}</p>
+                              <p className="text-sm text-green-400/80 long-copy">{c.corrected}</p>
+                              <p className="text-xs text-gray-500 long-copy">{c.explanation}</p>
                             </div>
                           ))}
                         </div>

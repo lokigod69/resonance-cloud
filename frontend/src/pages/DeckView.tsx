@@ -458,7 +458,7 @@ export default function DeckView() {
                         src={word.thumbnail_url}
                         alt={word.word}
                         loading="lazy"
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full ${isCardDeck ? 'object-contain bg-card' : 'object-cover'}`}
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/5">

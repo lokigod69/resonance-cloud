@@ -143,7 +143,7 @@ export default function VideoPlayer() {
   }
 
   return (
-    <div className="fixed inset-0 z-50 gradient-bg flex flex-col">
+    <div className="fixed inset-0 z-50 gradient-bg flex flex-col pt-[var(--app-safe-top)] pb-[var(--app-safe-bottom)]">
       {/* Top bar */}
       <div className="flex items-center justify-between px-4 py-3">
         <Button
@@ -161,7 +161,7 @@ export default function VideoPlayer() {
       </div>
 
       {/* Video area */}
-      <div className="flex-1 flex items-center justify-center px-4 pb-4 relative">
+      <div className="flex-1 min-h-0 overflow-y-auto flex items-center justify-start px-4 pb-[calc(var(--app-safe-bottom)+1rem)] relative">
         {/* Prev button */}
         {prev && (
           <button
@@ -174,7 +174,7 @@ export default function VideoPlayer() {
         )}
 
         {/* Main content */}
-        <div className="w-full max-w-3xl space-y-6">
+        <div className="w-full max-w-3xl space-y-6 py-4">
           {/* Video */}
           <div className="relative rounded-xl overflow-hidden bg-black/50 shadow-2xl">
             {activeVideoUrl ? (

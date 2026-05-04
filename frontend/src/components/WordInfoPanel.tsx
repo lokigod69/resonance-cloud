@@ -54,12 +54,12 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
       )}
 
       {/* Always visible */}
-      <h1 className="text-4xl font-bold">{word.word}</h1>
+      <h1 className="text-4xl font-bold long-copy">{word.word}</h1>
       {word.translation && (
-        <p className="text-xl text-muted-foreground">{word.translation}</p>
+        <p className="text-xl text-muted-foreground long-copy">{word.translation}</p>
       )}
       {word.mnemonic && (
-        <p className="text-sm text-muted-foreground/70 max-w-2xl mx-auto italic">
+        <p className="text-sm text-muted-foreground/70 max-w-2xl mx-auto italic long-copy">
           {word.mnemonic}
         </p>
       )}
@@ -75,7 +75,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
           {word.etymology && (
             <div className="flex justify-between gap-4">
               <span className="text-gray-500 shrink-0">Etymology</span>
-              <span className="text-gray-300 text-right">{word.etymology}</span>
+              <span className="text-gray-300 text-right long-copy">{word.etymology}</span>
             </div>
           )}
           {word.pos && (
@@ -90,7 +90,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
           {word.metadata?.creative_direction && (
             <div className="flex justify-between">
               <span className="text-gray-500">Creative Direction</span>
-              <span className="text-teal-400 capitalize">
+              <span className="text-teal-400 capitalize long-copy">
                 {word.metadata.creative_direction}
               </span>
             </div>
@@ -98,7 +98,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
           {word.metadata?.art_style && (
             <div className="flex justify-between gap-4">
               <span className="text-gray-500 shrink-0">Art Style</span>
-              <span className="text-gray-300 text-right truncate max-w-[280px]" title={word.metadata.art_style}>
+              <span className="text-gray-300 text-right max-w-[280px] long-copy" title={word.metadata.art_style}>
                 {formatArtStyle(word.metadata.art_style)}
               </span>
             </div>
@@ -106,7 +106,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
           {word.metadata?.music_caption && (
             <div className="flex justify-between gap-4">
               <span className="text-gray-500 shrink-0">Music</span>
-              <span className="text-gray-300 text-right">
+              <span className="text-gray-300 text-right long-copy">
                 {word.metadata.music_caption.split(',')[0]}
               </span>
             </div>

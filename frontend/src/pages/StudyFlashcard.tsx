@@ -155,7 +155,7 @@ export default function StudyFlashcard() {
             >
               {/* Flashcard */}
               <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 backdrop-blur-sm min-h-[280px] sm:min-h-[340px] flex flex-col items-center justify-center px-6 py-10 mb-6">
-                <h2 className="text-3xl sm:text-4xl font-bold text-center">{current.word}</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold text-center long-copy">{current.word}</h2>
               </div>
 
               {/* Reveal area */}
@@ -167,10 +167,10 @@ export default function StudyFlashcard() {
                     className="space-y-2"
                   >
                     {current.translation && (
-                      <p className="text-xl text-muted-foreground">{current.translation}</p>
+                      <p className="text-xl text-muted-foreground long-copy">{current.translation}</p>
                     )}
                     {current.mnemonic && (
-                      <p className="text-sm italic text-foreground/80 mt-3 max-w-lg mx-auto leading-relaxed">
+                      <p className="text-sm italic text-foreground/80 mt-3 max-w-lg mx-auto leading-relaxed long-copy">
                         {current.mnemonic}
                       </p>
                     )}

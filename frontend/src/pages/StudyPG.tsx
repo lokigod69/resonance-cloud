@@ -191,7 +191,7 @@ export default function StudyPG() {
 
             {/* Word */}
             <div className="text-center mb-6 px-4">
-              <h2 className="text-3xl font-bold font-display mb-3">{current.word}</h2>
+              <h2 className="text-3xl font-bold font-display mb-3 long-copy">{current.word}</h2>
 
               {/* Reveal area */}
               {revealed ? (
@@ -201,15 +201,15 @@ export default function StudyPG() {
                   className="space-y-2"
                 >
                   {current.translation && (
-                    <p className="text-xl text-gray-300 mt-1">{current.translation}</p>
+                    <p className="text-xl text-gray-300 mt-1 long-copy">{current.translation}</p>
                   )}
                   {current.mnemonic && (
-                    <p className="text-sm italic text-gray-500 mt-3 max-w-lg mx-auto leading-relaxed">
+                    <p className="text-sm italic text-gray-500 mt-3 max-w-lg mx-auto leading-relaxed long-copy">
                       {current.mnemonic}
                     </p>
                   )}
                   {current.etymology && (
-                    <p className="text-xs text-gray-600 mt-2 max-w-lg mx-auto leading-relaxed">
+                    <p className="text-xs text-gray-600 mt-2 max-w-lg mx-auto leading-relaxed long-copy">
                       {current.etymology}
                     </p>
                   )}

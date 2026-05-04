@@ -770,7 +770,7 @@ export default function Speak() {
 
   if (grokShowTranscript && grok.messages.length > 0) {
     return (
-      <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col">
+      <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-[var(--glassy-header-offset)] z-30 flex flex-col">
         <div className="speak-chatbar shrink-0 border-b">
           <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
             <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -803,13 +803,13 @@ export default function Speak() {
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed long-copy ${
                   msg.role === 'user'
                     ? 'speak-message-user rounded-br-sm'
                     : 'speak-message-assistant rounded-bl-sm'
                 }`}
               >
-                <p>{msg.content}</p>
+                <p className="long-copy">{msg.content}</p>
               </div>
             </div>
           ))}
@@ -824,7 +824,7 @@ export default function Speak() {
         />
 
         <div className="speak-chatbar shrink-0 border-t">
-          <div className="px-4 py-5 max-w-5xl mx-auto w-full">
+          <div className="px-4 pt-5 pb-[calc(var(--app-safe-bottom)+1.25rem)] max-w-5xl mx-auto w-full">
             <div className="flex justify-center">
               <button
                 onClick={startNewGrokConversation}
@@ -892,7 +892,7 @@ export default function Speak() {
               : 'bg-[var(--surface-2)] text-red-100'
 
     return (
-      <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col">
+      <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-[var(--glassy-header-offset)] z-30 flex flex-col">
         <div className="speak-chatbar shrink-0 border-b">
           <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
             <button
@@ -932,7 +932,7 @@ export default function Speak() {
 
         <div
           ref={chatRef}
-          className="flex-1 overflow-y-auto px-6 py-8 max-w-5xl mx-auto w-full"
+          className="flex-1 overflow-y-auto px-6 pt-8 pb-[calc(var(--app-safe-bottom)+2rem)] max-w-5xl mx-auto w-full"
           style={{ scrollbarWidth: 'thin' }}
         >
           <div className="mx-auto flex min-h-full max-w-xl flex-col items-center justify-center gap-8 text-center">
@@ -1004,7 +1004,7 @@ export default function Speak() {
   if (!tutor.voice) return null
 
   return (
-    <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-16 sm:top-20 z-30 flex flex-col">
+    <div className="speak-chat-shell fixed inset-x-0 bottom-0 top-[var(--glassy-header-offset)] z-30 flex flex-col">
       <div className="speak-chatbar shrink-0 border-b">
         <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
           <button
@@ -1136,7 +1136,7 @@ export default function Speak() {
                   tutor.replayMessageAudio(msg)
                 }
               } : undefined}
-              className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed transition-opacity duration-500 ${
+              className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed transition-opacity duration-500 long-copy ${
                 msg.role === 'user'
                   ? 'speak-message-user rounded-br-sm opacity-100'
                   : `speak-message-assistant rounded-bl-sm ${!tutor.listenMode || msg.revealed ? 'opacity-100' : 'opacity-0'}${msg.audioBase64 || (tutor.listenMode && !msg.revealed) ? ' cursor-pointer active:bg-[var(--accent-soft)] transition-colors' : ''}`
@@ -1148,7 +1148,7 @@ export default function Speak() {
                 </span>
               ) : (
                 <>
-                  <p>{msg.content}</p>
+                  <p className="long-copy">{msg.content}</p>
                   {tutor.pendingAudio && msg.role === 'assistant' && i === tutor.messages.length - 1 && (
                     <button
                       onClick={(e) => {
@@ -1196,10 +1196,10 @@ export default function Speak() {
               <div className="w-full max-w-lg space-y-3">
                 <p className="text-xs text-[var(--text-muted)] text-center mb-2">{t('speak.reviewTitle')}</p>
                 {corrections.map((c, i) => (
-                  <div key={i} className="theme-panel rounded-lg p-3 space-y-1">
-                    <p className="text-sm text-red-400/80 line-through">{c.original}</p>
-                    <p className="text-sm text-green-400/80">{c.corrected}</p>
-                    <p className="text-xs text-[var(--text-muted)]">{c.explanation}</p>
+                  <div key={i} className="theme-panel rounded-lg p-3 space-y-1 long-copy">
+                    <p className="text-sm text-red-400/80 line-through long-copy">{c.original}</p>
+                    <p className="text-sm text-green-400/80 long-copy">{c.corrected}</p>
+                    <p className="text-xs text-[var(--text-muted)] long-copy">{c.explanation}</p>
                   </div>
                 ))}
               </div>
@@ -1259,7 +1259,7 @@ export default function Speak() {
         style={{ WebkitTouchCallout: 'none' }}
         onContextMenu={(e) => e.preventDefault()}
       >
-        <div className="px-4 py-5 max-w-5xl mx-auto w-full">
+        <div className="px-4 pt-5 pb-[calc(var(--app-safe-bottom)+1.25rem)] max-w-5xl mx-auto w-full">
           {tutor.status === 'error' && tutor.error && (
             <p className="text-red-400 text-xs text-center mb-3">{tutor.error}</p>
           )}
