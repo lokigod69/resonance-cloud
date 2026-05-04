@@ -28,9 +28,10 @@ comment on column public.profiles.avatar_updated_at is
 
 -- ---------------------------------------------------------------------------
 -- 2. Phase 1A protection trigger — extend safe-update list with avatar fields
---    Body is byte-identical to Phase 1A
---    (20260428120000_phase1a_db_rls_auth_hardening.sql) apart from the
---    v_safe_update_columns array.
+--    Body preserves the latest Phase 1F hardening
+--    (20260503020000_phase1f_admin_command_rpcs.sql) apart from the
+--    v_safe_update_columns array. Admin profile privilege changes must still
+--    go through audited SECURITY DEFINER RPCs that set the trusted flag.
 -- ---------------------------------------------------------------------------
 
 create or replace function public.protect_profile_privileged_fields()
@@ -57,8 +58,7 @@ declare
 begin
   v_is_trusted :=
     coalesce(auth.role(), '') = 'service_role'
-    or coalesce(current_setting('app.allow_profile_privileged_update', true), '') = 'on'
-    or public.is_admin();
+    or coalesce(current_setting('app.allow_profile_privileged_update', true), '') = 'on';
 
   if tg_op = 'INSERT' then
     if not v_is_trusted then
