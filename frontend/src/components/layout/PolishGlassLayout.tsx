@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
+import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Coins, User, Shield, LayoutDashboard, Library, Sparkles, BookOpen, Music, Mic } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import ProfileModal from '@/components/ProfileModal'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -10,6 +12,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 export default function PolishGlassLayout() {
   const location = useLocation()
   const { profile, profileLoading } = useAuth()
+  const avatarUrl = useProfileAvatarUrl(profile?.avatar_path, profile?.avatar_updated_at)
   const { t } = useTranslation()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [redeemOpen, setRedeemOpen] = useState(false)
@@ -71,7 +74,22 @@ export default function PolishGlassLayout() {
           className="flex sm:hidden items-center justify-center p-1.5 rounded-full hover:bg-[var(--accent-soft)] transition-colors ml-1"
           aria-label="Settings"
         >
-          <User className="h-4 w-4 text-[var(--text-secondary)]" />
+          {avatarUrl ? (
+            <Avatar className="h-6 w-6">
+              <AvatarImage
+                src={avatarUrl}
+                alt=""
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
+                className="object-cover"
+              />
+              <AvatarFallback className="text-[10px]">
+                <User className="h-3 w-3 text-[var(--text-secondary)]" />
+              </AvatarFallback>
+            </Avatar>
+          ) : (
+            <User className="h-4 w-4 text-[var(--text-secondary)]" />
+          )}
         </button>
 
         {/* Desktop centered nav with icons */}
@@ -119,7 +137,22 @@ export default function PolishGlassLayout() {
             className="p-1.5 rounded-full hover:bg-[var(--accent-soft)] transition-colors text-[var(--text-muted)] hover:text-[var(--text-primary)]"
             title="Profile"
           >
-            <User className="h-4 w-4" />
+            {avatarUrl ? (
+              <Avatar className="h-6 w-6">
+                <AvatarImage
+                  src={avatarUrl}
+                  alt=""
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                  className="object-cover"
+                />
+                <AvatarFallback className="text-[10px]">
+                  <User className="h-3 w-3" />
+                </AvatarFallback>
+              </Avatar>
+            ) : (
+              <User className="h-4 w-4" />
+            )}
           </button>
         </div>
       </nav>

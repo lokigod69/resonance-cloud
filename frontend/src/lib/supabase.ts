@@ -17,7 +17,12 @@ export type Profile = {
   role: 'learner' | 'admin'
   credits: number
   theme?: string
+  avatar_path?: string | null
+  avatar_updated_at?: string | null
   created_at: string
 }
 
-export type AuthProfile = Pick<Profile, 'display_name' | 'base_language' | 'role' | 'credits'>
+export type AuthProfile = Pick<
+  Profile,
+  'display_name' | 'base_language' | 'role' | 'credits' | 'avatar_path' | 'avatar_updated_at'
+>

@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
+import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -42,6 +43,7 @@ const adminNav = [
 
 export function AppHeader() {
   const { profile, user, profileLoading } = useAuth()
+  const avatarUrl = useProfileAvatarUrl(profile?.avatar_path, profile?.avatar_updated_at)
   const { t } = useTranslation()
   const location = useLocation()
   const isAdmin = profile?.role === 'admin'
@@ -196,6 +198,15 @@ export function AppHeader() {
         {/* Profile button → opens modal */}
         <Button variant="ghost" className="flex items-center gap-2 px-2" onClick={() => setProfileOpen(true)}>
           <Avatar className="h-7 w-7">
+            {avatarUrl && (
+              <AvatarImage
+                src={avatarUrl}
+                alt=""
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
+                className="object-cover"
+              />
+            )}
             <AvatarFallback className="text-xs">{initials}</AvatarFallback>
           </Avatar>
           <span className="hidden sm:inline text-sm">{displayName}</span>

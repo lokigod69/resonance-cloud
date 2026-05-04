@@ -60,6 +60,13 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.signOut': 'Sign Out',
     'profile.saving': 'Saving...',
     'profile.saved': 'Saved',
+    'profile.avatar.upload': 'Upload Avatar',
+    'profile.avatar.replace': 'Replace',
+    'profile.avatar.remove': 'Remove',
+    'profile.avatar.saved': 'Avatar saved',
+    'profile.avatar.uploadFailed': 'Avatar upload failed',
+    'profile.avatar.invalid': 'Invalid image',
+    'profile.avatar.tooLarge': 'Image too large (max 5 MB)',
 
     // ── Credits ──
     'credits.heading': 'Credits',
@@ -458,6 +465,13 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.signOut': 'Abmelden',
     'profile.saving': 'Speichern...',
     'profile.saved': 'Gespeichert',
+    'profile.avatar.upload': 'Avatar hochladen',
+    'profile.avatar.replace': 'Ersetzen',
+    'profile.avatar.remove': 'Entfernen',
+    'profile.avatar.saved': 'Avatar gespeichert',
+    'profile.avatar.uploadFailed': 'Hochladen fehlgeschlagen',
+    'profile.avatar.invalid': 'Ungültiges Bild',
+    'profile.avatar.tooLarge': 'Bild zu groß (max. 5 MB)',
 
     // ── Credits ──
     'credits.heading': 'Credits',
@@ -815,6 +829,13 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.signOut': 'Déconnexion',
     'profile.saving': 'Enregistrement...',
     'profile.saved': 'Enregistré',
+    'profile.avatar.upload': 'Téléverser un avatar',
+    'profile.avatar.replace': 'Remplacer',
+    'profile.avatar.remove': 'Supprimer',
+    'profile.avatar.saved': 'Avatar enregistré',
+    'profile.avatar.uploadFailed': 'Échec du téléversement',
+    'profile.avatar.invalid': 'Image invalide',
+    'profile.avatar.tooLarge': 'Image trop grande (max. 5 Mo)',
 
     // ── Credits ──
     'credits.heading': 'Crédits',

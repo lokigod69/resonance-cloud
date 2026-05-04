@@ -132,7 +132,7 @@ export function useAuthState(): AuthState {
       console.log('[useAuth] fetchProfile called for:', userId)
       const { data, error, status, statusText } = await supabase
         .from('profiles')
-        .select('display_name, credits, base_language, role')
+        .select('display_name, credits, base_language, role, avatar_path, avatar_updated_at')
         .eq('id', userId)
         .abortSignal(controller.signal)
         .single()
