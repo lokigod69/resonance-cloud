@@ -13,6 +13,7 @@ import {
   estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
   isLayer2LabAppendDeck,
+  layer2VariantSlugForRow,
   normalizeLayer2LabWords,
   validateLayer2LabSubmit,
   type Layer2LabRun,
@@ -156,6 +157,61 @@ console.log('\n[premium lab payload]')
   assert('first row records one-based script index',
     p.jobPayload.settings_override.layer2_eval?.script_index === 1,
     p.jobPayload.settings_override,
+  )
+  assert('layer2_eval preserves original visible word',
+    p.jobPayload.settings_override.layer2_eval?.original_word === 'viral',
+    p.jobPayload.settings_override,
+  )
+  assert('layer2_eval includes planned variant slug',
+    p.jobPayload.settings_override.layer2_eval?.variant_slug === 'viral-l2-001',
+    p.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[repeated-word variants]')
+{
+  const firstRow: Layer2LabRun = {
+    id: 'row-1',
+    word: 'freedom',
+    meaning_strategy: 'clear_meaning',
+    presentation_form: 'single_scene',
+    art_style: 'realistic',
+    label: 'realistic scene',
+  }
+  const secondRow: Layer2LabRun = {
+    ...firstRow,
+    id: 'row-2',
+    meaning_strategy: 'absurd_hook',
+    presentation_form: 'mini_story',
+    art_style: 'anime',
+    label: 'anime story',
+  }
+  assert('same visible word gets unique planned variant slugs',
+    layer2VariantSlugForRow(firstRow, 1) === 'freedom-l2-001'
+      && layer2VariantSlugForRow(secondRow, 2) === 'freedom-l2-002',
+  )
+  const first = buildLayer2LabPayload({
+    row: firstRow,
+    scriptIndex: 1,
+    userId: USER,
+    targetLanguage: 'English',
+    deckName: 'Layer2 Lab',
+  })
+  const second = buildLayer2LabPayload({
+    row: secondRow,
+    scriptIndex: 2,
+    userId: USER,
+    targetLanguage: 'English',
+    deckName: 'Layer2 Lab',
+  })
+  assert('payload keeps learner-facing word unchanged for repeated variants',
+    first.wordList[0] === 'freedom' && second.wordList[0] === 'freedom',
+    [first.wordList, second.wordList],
+  )
+  assert('repeated variants carry unique metadata slugs',
+    first.jobPayload.settings_override.layer2_eval?.variant_slug === 'freedom-l2-001'
+      && second.jobPayload.settings_override.layer2_eval?.variant_slug === 'freedom-l2-002',
+    [first.jobPayload.settings_override, second.jobPayload.settings_override],
   )
 }
 

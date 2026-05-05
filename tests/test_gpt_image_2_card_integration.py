@@ -669,3 +669,22 @@ def test_card_worker_passes_layer2_settings_and_persists_layer2_metadata(monkeyp
     assert metadata["layer2_user_choices"] == layer2
     assert metadata["layer2_resolved"]["renderer_profile"] == "cinematic_memory"
     assert metadata["image_bridge"].startswith("Memory logic:")
+
+
+def test_card_storage_key_uses_unique_lab_variant_slug():
+    from src.orchestration.card_worker import _card_image_storage_key
+
+    first = _card_image_storage_key(
+        user_id="user-1",
+        deck_id="deck-1",
+        word_slug="freedom-l2-001",
+    )
+    second = _card_image_storage_key(
+        user_id="user-1",
+        deck_id="deck-1",
+        word_slug="freedom-l2-002",
+    )
+
+    assert first == "user-1/deck-1/cards/freedom-l2-001.png"
+    assert second == "user-1/deck-1/cards/freedom-l2-002.png"
+    assert first != second

@@ -22,6 +22,10 @@ log = logging.getLogger(__name__)
 MAX_ERROR_MESSAGE_CHARS = 500
 
 
+def _card_image_storage_key(*, user_id: str, deck_id: str, word_slug: str) -> str:
+    return f"{user_id}/{deck_id}/cards/{word_slug}.png"
+
+
 def _bounded_error_message(step: str, error: BaseException | str) -> str:
     if isinstance(error, BaseException):
         message = f"{step}: {type(error).__name__}: {error}"
@@ -519,7 +523,11 @@ class CardWorker:
             log.error("card_worker: card image missing: %s", image_path)
             return None, error_message
 
-        storage_key = f"{user_id}/{deck_id}/cards/{word_slug}.png"
+        storage_key = _card_image_storage_key(
+            user_id=user_id,
+            deck_id=deck_id,
+            word_slug=word_slug,
+        )
 
         def _upload() -> str:
             with open(image_path, "rb") as f:

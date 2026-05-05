@@ -139,6 +139,23 @@ function stableId(...parts: string[]): string {
     .replace(/^-+|-+$/g, '')
 }
 
+function slugifyVariantPart(value: string, maxLength = 50): string {
+  const slug = clean(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+  return (slug || 'word').slice(0, maxLength).replace(/-+$/g, '') || 'word'
+}
+
+export function layer2VariantSlugForRow(rowItem: Layer2LabRun, scriptIndex = 1): string {
+  const index = Math.max(1, Math.trunc(Number(scriptIndex) || 1))
+  const suffix = `-l2-${String(index).padStart(3, '0')}`
+  const base = slugifyVariantPart(rowItem.word, 50 - suffix.length)
+  return `${base}${suffix}`
+}
+
 export function normalizeLayer2LabWords(input: string): string[] {
   const seen = new Set<string>()
   const words: string[] = []
@@ -230,6 +247,8 @@ export function layer2EvalForRow(rowItem: Layer2LabRun, scriptIndex = 1): Layer2
   return {
     label: rowItem.label,
     script_index: scriptIndex,
+    original_word: rowItem.word,
+    variant_slug: layer2VariantSlugForRow(rowItem, scriptIndex),
     meaning_strategy: rowItem.meaning_strategy,
     presentation_form: rowItem.presentation_form,
     art_style: rowItem.art_style,

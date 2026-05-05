@@ -53,6 +53,8 @@ export interface CardLayer2Payload extends CardLayer2Customization {
 export interface Layer2EvalPayload {
   label: string | null
   script_index: number
+  original_word: string
+  variant_slug: string
   meaning_strategy: CardLayer2MeaningStrategy
   presentation_form: CardLayer2PresentationForm
   art_style: CardLayer2ArtStyle

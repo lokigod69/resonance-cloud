@@ -116,6 +116,8 @@ Each lab job sends:
     "layer2_eval": {
       "source": "admin_layer2_lab_v1",
       "script_index": 1,
+      "original_word": "<visible learner word>",
+      "variant_slug": "<storage-safe lab variant slug>",
       "label": "<optional row label>",
       "meaning_strategy": "<row meaning strategy>",
       "presentation_form": "<row presentation form>",
@@ -126,6 +128,19 @@ Each lab job sends:
 ```
 
 The feeder copies `settings_override.layer2_eval` into `words.metadata.layer2_eval` when enrichment writes word metadata. Admin word detail now surfaces Layer 2 evaluation info plus friendly rows for `layer2_user_choices`, `layer2_resolved`, `layer2_snap_notes`, `image_bridge`, and `card_image_style`.
+
+## Repeated-Word Variants
+
+Manual smoke found that three Layer 2 Lab rows for the same visible word, such as `freedom`, could display the same image in the deck grid even though observability showed different prompts. The root cause was storage-key collision: card uploads use `user/deck/cards/{word_slug}.png`, and repeated lab rows previously shared the same `word_slug`.
+
+Layer 2 Lab now preserves the learner-facing word while adding lab-only variant identity:
+
+- `word.word` remains the entered word, for example `freedom`.
+- `metadata.layer2_eval.original_word` stores the visible word.
+- `metadata.layer2_eval.variant_slug` stores the planned variant slug.
+- Feeder writes lab word slugs as `<base>-l2-<script_index>`, for example `freedom-l2-001`, `freedom-l2-002`, and `freedom-l2-003`.
+
+This keeps normal generation slug behavior unchanged while giving repeated lab variants distinct workspace folders and card image storage keys.
 
 ## Compiler Cleanup
 
@@ -147,7 +162,9 @@ Passed:
 
 - `npm run build`
 - `npm run test:admin-layer2-lab`
+- `npm run test:lane-payload`
 - targeted ESLint for the new admin lab files and touched frontend files
+- relevant backend pytest for feeder/card upload slug behavior
 - `git diff --check`
 
 ## Remaining Limitations

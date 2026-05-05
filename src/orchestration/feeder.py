@@ -69,6 +69,41 @@ def _route_retry(word: dict[str, Any]) -> tuple[str, str]:
     return _route_for_failed_stage(word.get("failed_stage"))
 
 
+def _coerce_layer2_script_index(value: Any) -> int:
+    try:
+        index = int(value)
+    except (TypeError, ValueError):
+        return 1
+    return max(1, index)
+
+
+def _layer2_lab_variant_slug(base_slug: str, script_index: Any) -> str:
+    index = _coerce_layer2_script_index(script_index)
+    suffix = f"-l2-{index:03d}"
+    base = (base_slug or "word")[: max(1, 50 - len(suffix))].rstrip("-") or "word"
+    return f"{base}{suffix}"
+
+
+def _normalized_layer2_lab_eval(
+    settings_override: dict[str, Any],
+    *,
+    original_word: str,
+    base_slug: str,
+) -> dict[str, Any] | None:
+    raw = settings_override.get("layer2_eval")
+    if not isinstance(raw, dict) or raw.get("source") != "admin_layer2_lab_v1":
+        return None
+    script_index = _coerce_layer2_script_index(raw.get("script_index"))
+    variant_slug = _layer2_lab_variant_slug(base_slug, script_index)
+    return {
+        **raw,
+        "source": "admin_layer2_lab_v1",
+        "script_index": script_index,
+        "original_word": str(raw.get("original_word") or original_word or ""),
+        "variant_slug": variant_slug,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Feeder
 # ---------------------------------------------------------------------------
@@ -688,10 +723,20 @@ async def bootstrap_job(
             "answer_visibility": "hidden",
         }
         current_metadata = word_rec.get("metadata") if isinstance(word_rec.get("metadata"), dict) else {}
-        layer2_eval = (
-            settings_override.get("layer2_eval")
-            if isinstance(settings_override.get("layer2_eval"), dict)
-            else None
+        if is_phrase:
+            raw_word_text = original_word
+        else:
+            raw_word_text = e.get("word_target", original_word)
+        word_text_for_slug = (
+            re.sub(r"\s+", " ", raw_word_text.strip())
+            if isinstance(raw_word_text, str)
+            else raw_word_text
+        )
+        base_word_slug = slugify(word_text_for_slug)
+        layer2_eval = _normalized_layer2_lab_eval(
+            settings_override,
+            original_word=original_word,
+            base_slug=base_word_slug,
         )
         next_metadata = {**current_metadata, "visual_card_plan": visual_card_plan}
         if layer2_eval:
@@ -765,7 +810,13 @@ async def bootstrap_job(
             raw_word_text = e.get("word_target", original_word)
         word_text = re.sub(r"\s+", " ", raw_word_text.strip()) if isinstance(raw_word_text, str) else raw_word_text
         input_type = "phrase" if " " in word_text else "word"
-        word_slug = slugify(word_text)
+        base_word_slug = slugify(word_text)
+        layer2_eval = _normalized_layer2_lab_eval(
+            settings_override,
+            original_word=original_word,
+            base_slug=base_word_slug,
+        )
+        word_slug = layer2_eval["variant_slug"] if layer2_eval else base_word_slug
         translation = e.get("translation", "")
         raw_tags = e.get("tags", "")
         tags_str = ", ".join(str(t) for t in raw_tags) if isinstance(raw_tags, list) else (raw_tags or "")
