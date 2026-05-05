@@ -24,6 +24,11 @@ function formatTimestamp(iso: string) {
   return `${yyyy}-${mm}-${dd} ${hh}:${min}`
 }
 
+function backendTemplate(event: PipelineEvent): string | null {
+  const value = event.metadata?.backend_template
+  return typeof value === 'string' && value.trim() ? value : null
+}
+
 export default function ObservabilityAggregate() {
   useFerrariTitle('Failure triage')
 
@@ -141,6 +146,7 @@ export default function ObservabilityAggregate() {
                     </p>
                   </div>
                   <div className={styles.failureSide}>
+                    {backendTemplate(event) ? <span>{backendTemplate(event)}</span> : null}
                     <span>{event.model_name ?? 'unknown model'}</span>
                     <span>{event.model_provider ?? 'unknown provider'}</span>
                     {event.word_id ? (

@@ -288,6 +288,7 @@ class CardWorker:
                 translation=str(word.get("translation") or manifest.translation or ""),
                 language=str(getattr(manifest, "language", "") or "Unknown"),
                 language_code=str(getattr(manifest, "language_code", "") or "und"),
+                base_language=visual_card_plan.get("base_language"),
                 pos=word.get("pos") or getattr(manifest.enrichment, "pos", None),
                 bridge_mnemonic=(
                     word.get("bridge_mnemonic")

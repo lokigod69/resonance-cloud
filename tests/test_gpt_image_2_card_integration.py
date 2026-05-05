@@ -282,6 +282,223 @@ def test_generate_card_image_gpt_failure_does_not_fallback_to_zturbo(monkeypatch
     assert calls == ["gpt_image_2"]
 
 
+def test_direct_prompt_template_calls_writer_and_sends_returned_prompt(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult
+
+    calls: dict[str, object] = {}
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **kwargs):
+            calls["record_response"] = kwargs
+
+    def fake_write_layer2_direct_prompt(**kwargs):
+        calls["writer_kwargs"] = kwargs
+        return DirectPromptResult(
+            prompt=(
+                "Surreal 16:9 image with three visible beats: first a phone post sprouts legs, "
+                "second it races through a crowd, third everyone reacts in a wave. "
+                "Do not write the target word or direct answer/translation inside the image."
+            ),
+            model="test-writer-model",
+            raw_prompt="raw writer output",
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls["provider_kwargs"] = kwargs
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-direct-1",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_layer2_direct_prompt", fake_write_layer2_direct_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.word = "viral"
+    payload.content.translation = "viral"
+    payload.card_image_style = "surrealism"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "absurd_hook",
+        "presentation_form": "mini_story",
+        "visual_intensity": "balanced",
+        "backend_template": "direct_prompt_v1",
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "success"
+    assert calls["writer_kwargs"]["content"].word == "viral"
+    assert calls["writer_kwargs"]["layer2"]["presentation_form"] == "mini_story"
+    assert "three visible beats" in calls["provider_kwargs"]["prompt_text"]
+    assert calls["provider_kwargs"]["prompt_text"] == (
+        "Surreal 16:9 image with three visible beats: first a phone post sprouts legs, "
+        "second it races through a crowd, third everyone reacts in a wave. "
+        "Do not write the target word or direct answer/translation inside the image."
+    )
+    metadata = result.gpt_image_2_card_metadata
+    assert metadata is not None
+    assert metadata["backend_template"] == "direct_prompt_v1"
+    assert metadata["direct_prompt_writer_model"] == "test-writer-model"
+    assert metadata["direct_prompt_chars"] == len(calls["provider_kwargs"]["prompt_text"])
+    assert metadata["answer_visibility"] == "hidden"
+
+
+def test_direct_prompt_word_object_allows_target_word_and_bans_translation(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult
+
+    calls: dict[str, object] = {}
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **_kwargs):
+            return None
+
+    def fake_write_layer2_direct_prompt(**_kwargs):
+        return DirectPromptResult(
+            prompt=(
+                "Pixar-like 16:9 image: make the word FLOWERS visibly readable as a huge central "
+                "typographic object built from petals and stems. Never write the direct answer/translation."
+            ),
+            model="test-writer-model",
+            raw_prompt="raw writer output",
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls["prompt"] = kwargs["prompt_text"]
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-direct-2",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_layer2_direct_prompt", fake_write_layer2_direct_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.word = "flowers"
+    payload.content.translation = "flowers"
+    payload.card_image_style = "pixar_3d"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "clear_meaning",
+        "presentation_form": "word_object_design",
+        "visual_intensity": "balanced",
+        "backend_template": "direct_prompt_v1",
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "success"
+    assert "FLOWERS" in calls["prompt"]
+    assert "direct answer/translation" in calls["prompt"]
+    assert result.gpt_image_2_card_metadata["answer_visibility"] == "target_word_embedded"
+
+
+def test_direct_prompt_non_word_object_safety_removes_target_word(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult
+
+    calls: dict[str, object] = {}
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **_kwargs):
+            return None
+
+    def fake_write_layer2_direct_prompt(**_kwargs):
+        return DirectPromptResult(
+            prompt="Photorealistic anime 16:9 scene about viral spreading rapidly through phones.",
+            model="test-writer-model",
+            raw_prompt="Photorealistic anime 16:9 scene about viral spreading rapidly through phones.",
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls["prompt"] = kwargs["prompt_text"]
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-direct-3",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_layer2_direct_prompt", fake_write_layer2_direct_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.word = "viral"
+    payload.content.translation = "viral"
+    payload.card_image_style = "anime"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "clear_meaning",
+        "presentation_form": "single_scene",
+        "visual_intensity": "balanced",
+        "backend_template": "direct_prompt_v1",
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "success"
+    assert "viral" not in calls["prompt"].lower()
+    assert "photorealistic" not in calls["prompt"].lower()
+    assert "Do not write the target word or direct answer/translation" in calls["prompt"]
+
+
 def test_card_image_model_validator_accepts_known_values_and_rejects_typos():
     assert ImageSettings(card_image_model=None).card_image_model is None
     assert ImageSettings().card_image_model is None

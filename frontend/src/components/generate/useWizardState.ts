@@ -16,6 +16,10 @@ export type CardLayer2PresentationForm =
   | 'split_panel'
   | 'word_object_design'
 
+export type CardLayer2BackendTemplate =
+  | 'structured_plan_v1'
+  | 'direct_prompt_v1'
+
 export type CardLayer2ArtStyle =
   | 'realistic'
   | 'cinematic'
@@ -48,6 +52,7 @@ export interface CardLayer2Customization {
 
 export interface CardLayer2Payload extends CardLayer2Customization {
   visual_intensity: 'balanced'
+  backend_template?: CardLayer2BackendTemplate
 }
 
 export interface Layer2EvalPayload {
@@ -58,6 +63,7 @@ export interface Layer2EvalPayload {
   meaning_strategy: CardLayer2MeaningStrategy
   presentation_form: CardLayer2PresentationForm
   art_style: CardLayer2ArtStyle
+  backend_template?: CardLayer2BackendTemplate
   source: 'admin_layer2_lab_v1'
 }
 

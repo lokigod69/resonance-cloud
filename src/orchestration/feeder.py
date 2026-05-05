@@ -659,8 +659,9 @@ async def bootstrap_job(
         )
     try:
         base_resp = await asyncio.to_thread(_read_base_lang)
-        base_language = (getattr(base_resp, "data", None) or {}).get(
-            "base_language", "English",
+        base_language = (
+            settings_override.get("base_language")
+            or (getattr(base_resp, "data", None) or {}).get("base_language", "English")
         )
     except Exception:
         base_language = "English"
@@ -739,6 +740,8 @@ async def bootstrap_job(
             etymology=e.get("etymology", "") or "",
             pos=e.get("pos", "") or "",
         )
+        if card_layer2:
+            visual_card_plan["base_language"] = base_language
         current_metadata = word_rec.get("metadata") if isinstance(word_rec.get("metadata"), dict) else {}
         if is_phrase:
             raw_word_text = original_word

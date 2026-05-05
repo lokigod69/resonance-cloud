@@ -243,9 +243,14 @@ export default function WordDetailPanel({
                 <MetaRow label="Layer 2 Candidate (text mode)" value={debug.fields.layer2CandidateTextMode === null ? null : String(debug.fields.layer2CandidateTextMode)} />
                 <MetaRow label="Card Image Model" value={debug.fields.cardImageModel} />
                 <MetaRow label="Card Image Style" value={cardImageStyle} />
+                <MetaRow label="Backend Template" value={cleanText(gptImage2Card?.backend_template as string | null | undefined)} />
                 <MetaRow label="Layer 2 User Choices" value={formatJsonValue(layer2UserChoices)} />
                 <MetaRow label="Layer 2 Resolved" value={formatJsonValue(layer2Resolved)} />
                 <MetaRow label="Layer 2 Snap Notes" value={layer2SnapNotes} />
+                <MetaRow label="Direct Prompt Writer Model" value={cleanText(gptImage2Card?.direct_prompt_writer_model as string | null | undefined)} />
+                <MetaRow label="Direct Prompt Chars" value={gptImage2Card?.direct_prompt_chars as number | null | undefined} />
+                <MetaRow label="Direct Prompt SHA-256" value={cleanText(gptImage2Card?.direct_prompt_prompt_sha256 as string | null | undefined)} />
+                <MetaRow label="Direct Prompt Preview" value={cleanText(gptImage2Card?.direct_prompt_preview as string | null | undefined)} />
                 <MetaRow label="Layer 2 Planning Version" value={cleanText(gptImage2Card?.layer2_planning_version as string | null | undefined)} />
                 <MetaRow label="Mini Story Beats" value={formatUnknownJsonValue(gptImage2Card?.mini_story_beats)} />
                 <MetaRow label="Split Panel Brief" value={formatUnknownJsonValue(gptImage2Card?.split_panel_brief)} />
@@ -266,6 +271,7 @@ export default function WordDetailPanel({
             <MetaRow label="Meaning Strategy" value={cleanText(layer2Eval.meaning_strategy as string | null | undefined)} />
             <MetaRow label="Presentation Form" value={cleanText(layer2Eval.presentation_form as string | null | undefined)} />
             <MetaRow label="Art Style" value={cleanText(layer2Eval.art_style as string | null | undefined)} />
+            <MetaRow label="Backend Template" value={cleanText(layer2Eval.backend_template as string | null | undefined)} />
             <MetaRow label="Source" value={cleanText(layer2Eval.source as string | null | undefined)} />
           </MetaSection>
         )}

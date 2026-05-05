@@ -46,6 +46,7 @@ class CardImageContent(BaseModel):
     translation: str
     language: str
     language_code: str
+    base_language: Optional[str] = None
     pos: Optional[str] = None
     bridge_mnemonic: Optional[str] = None
     mnemonic: Optional[str] = None

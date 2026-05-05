@@ -1,5 +1,6 @@
 import type {
   CardLayer2ArtStyle,
+  CardLayer2BackendTemplate,
   CardLayer2MeaningStrategy,
   CardLayer2PresentationForm,
   ExistingDeck,
@@ -16,6 +17,7 @@ export interface Layer2LabRun {
   meaning_strategy: CardLayer2MeaningStrategy
   presentation_form: CardLayer2PresentationForm
   art_style: CardLayer2ArtStyle
+  backend_template: CardLayer2BackendTemplate
   label: string | null
 }
 
@@ -32,6 +34,7 @@ export interface BuildLayer2LabRowsInput {
   meaning_strategy: CardLayer2MeaningStrategy
   presentation_form: CardLayer2PresentationForm
   art_style: CardLayer2ArtStyle
+  backend_template: CardLayer2BackendTemplate
   label: string
 }
 
@@ -40,6 +43,7 @@ export interface BuildLayer2LabPayloadInput {
   scriptIndex?: number
   userId: string
   targetLanguage: string
+  baseLanguage?: string
   deckName: string
   existingDeck?: ExistingDeck
 }
@@ -60,6 +64,14 @@ export interface Layer2LabResultSummary {
 }
 
 const SOURCE: Layer2EvalPayload['source'] = 'admin_layer2_lab_v1'
+export const DEFAULT_LAYER2_BACKEND_TEMPLATE: CardLayer2BackendTemplate = 'structured_plan_v1'
+export const LAYER2_BACKEND_TEMPLATE_OPTIONS: Array<{
+  value: CardLayer2BackendTemplate
+  label: string
+}> = [
+  { value: 'structured_plan_v1', label: 'Structured Plan' },
+  { value: 'direct_prompt_v1', label: 'Direct Prompt' },
+]
 export const LAYER2_LAB_CREDITS_PER_ROW = 5
 const WORD_DESIGN_STYLES: CardLayer2ArtStyle[] = ['realistic', 'pixar_3d', 'rick_and_morty_style', 'pen_and_ink']
 const STYLE_OBEDIENCE_STYLES: CardLayer2ArtStyle[] = [
@@ -123,6 +135,7 @@ function row(
     meaning_strategy: meaning,
     presentation_form: presentation,
     art_style: style,
+    backend_template: DEFAULT_LAYER2_BACKEND_TEMPLATE,
     label: labelText,
   }
 }
@@ -182,6 +195,7 @@ export function buildLayer2LabRows(input: BuildLayer2LabRowsInput): Layer2LabRun
         input.meaning_strategy,
         input.presentation_form,
         input.art_style,
+        input.backend_template,
         label ?? 'unlabeled',
         String(index),
       ),
@@ -189,6 +203,7 @@ export function buildLayer2LabRows(input: BuildLayer2LabRowsInput): Layer2LabRun
       meaning_strategy: input.meaning_strategy,
       presentation_form: input.presentation_form,
       art_style: input.art_style,
+      backend_template: input.backend_template,
       label,
     }))
 }
@@ -252,6 +267,7 @@ export function layer2EvalForRow(rowItem: Layer2LabRun, scriptIndex = 1): Layer2
     meaning_strategy: rowItem.meaning_strategy,
     presentation_form: rowItem.presentation_form,
     art_style: rowItem.art_style,
+    backend_template: rowItem.backend_template ?? DEFAULT_LAYER2_BACKEND_TEMPLATE,
     source: SOURCE,
   }
 }
@@ -290,6 +306,7 @@ export function buildLayer2LabPayload({
   scriptIndex = 1,
   userId,
   targetLanguage,
+  baseLanguage,
   deckName,
   existingDeck,
 }: BuildLayer2LabPayloadInput): GeneratePayload {
@@ -297,6 +314,7 @@ export function buildLayer2LabPayload({
     meaning_strategy: rowItem.meaning_strategy,
     presentation_form: rowItem.presentation_form,
     visual_intensity: 'balanced' as const,
+    backend_template: rowItem.backend_template ?? DEFAULT_LAYER2_BACKEND_TEMPLATE,
   }
 
   return {
@@ -326,6 +344,7 @@ export function buildLayer2LabPayload({
         card_image_style: rowItem.art_style,
         card_layer2: layer2,
         layer2_eval: layer2EvalForRow(rowItem, scriptIndex),
+        ...(baseLanguage ? { base_language: baseLanguage } : {}),
       },
     },
   }

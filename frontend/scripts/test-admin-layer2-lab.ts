@@ -50,6 +50,7 @@ console.log('\n[script row builder]')
     meaning_strategy: 'absurd_hook',
     presentation_form: 'mini_story',
     art_style: 'surrealism',
+    backend_template: 'direct_prompt_v1',
     label: 'small story',
   })
   assert('selected scope creates one row', rows.length === 1, rows)
@@ -57,6 +58,7 @@ console.log('\n[script row builder]')
   assert('meaning strategy carried through', rows[0]?.meaning_strategy === 'absurd_hook', rows)
   assert('presentation form carried through', rows[0]?.presentation_form === 'mini_story', rows)
   assert('art style carried through', rows[0]?.art_style === 'surrealism', rows)
+  assert('backend template carried through', rows[0]?.backend_template === 'direct_prompt_v1', rows)
   assert('label carried through', rows[0]?.label === 'small story', rows)
 }
 
@@ -69,6 +71,7 @@ console.log('\n[all-word script rows]')
     meaning_strategy: 'clear_meaning',
     presentation_form: 'single_scene',
     art_style: 'realistic',
+    backend_template: 'structured_plan_v1',
     label: '',
   })
   assert('all scope creates one row per word', rows.length === 2, rows)
@@ -132,6 +135,7 @@ console.log('\n[premium lab payload]')
     meaning_strategy: 'absurd_hook',
     presentation_form: 'mini_story',
     art_style: 'surrealism',
+    backend_template: 'direct_prompt_v1',
     label: 'viral story',
   }
   const p = buildLayer2LabPayload({
@@ -147,6 +151,14 @@ console.log('\n[premium lab payload]')
   assert('sends layer2 meaning strategy', p.jobPayload.settings_override.card_layer2?.meaning_strategy === 'absurd_hook', p.jobPayload.settings_override)
   assert('sends layer2 presentation form', p.jobPayload.settings_override.card_layer2?.presentation_form === 'mini_story', p.jobPayload.settings_override)
   assert('visual_intensity is always balanced', p.jobPayload.settings_override.card_layer2?.visual_intensity === 'balanced', p.jobPayload.settings_override)
+  assert('backend_template is included in card_layer2',
+    p.jobPayload.settings_override.card_layer2?.backend_template === 'direct_prompt_v1',
+    p.jobPayload.settings_override,
+  )
+  assert('layer2_eval records backend_template',
+    p.jobPayload.settings_override.layer2_eval?.backend_template === 'direct_prompt_v1',
+    p.jobPayload.settings_override,
+  )
   assert('no Standard Card model used', p.jobPayload.settings_override.card_image_model !== 'zturbo', p.jobPayload.settings_override)
   assert('no video settings used', !('creative_direction' in p.jobPayload.settings_override) && !('genre' in p.jobPayload.settings_override), p.jobPayload.settings_override)
   assert('layer2_eval metadata is attached to settings_override',
@@ -176,6 +188,7 @@ console.log('\n[repeated-word variants]')
     meaning_strategy: 'clear_meaning',
     presentation_form: 'single_scene',
     art_style: 'realistic',
+    backend_template: 'structured_plan_v1',
     label: 'realistic scene',
   }
   const secondRow: Layer2LabRun = {
@@ -213,6 +226,10 @@ console.log('\n[repeated-word variants]')
       && second.jobPayload.settings_override.layer2_eval?.variant_slug === 'freedom-l2-002',
     [first.jobPayload.settings_override, second.jobPayload.settings_override],
   )
+  assert('structured plan is the default backend template for rows',
+    first.jobPayload.settings_override.card_layer2?.backend_template === 'structured_plan_v1',
+    first.jobPayload.settings_override,
+  )
 }
 
 console.log('\n[one-deck append plan]')
@@ -224,6 +241,7 @@ console.log('\n[one-deck append plan]')
     meaning_strategy: 'clear_meaning',
     presentation_form: 'single_scene',
     art_style: 'rick_and_morty_style',
+    backend_template: 'structured_plan_v1',
     label: 'style row',
   }
   const secondRow: Layer2LabRun = {
@@ -232,6 +250,7 @@ console.log('\n[one-deck append plan]')
     meaning_strategy: 'exaggerated_meaning',
     presentation_form: 'word_object_design',
     art_style: 'pixar_3d',
+    backend_template: 'direct_prompt_v1',
     label: 'word design row',
   }
   const first = buildLayer2LabPayload({
@@ -272,6 +291,11 @@ console.log('\n[one-deck append plan]')
     first.jobPayload.settings_override.card_layer2?.presentation_form === 'single_scene'
       && second.jobPayload.settings_override.card_layer2?.presentation_form === 'word_object_design'
       && second.jobPayload.settings_override.card_layer2?.meaning_strategy === 'exaggerated_meaning',
+    [first.jobPayload.settings_override, second.jobPayload.settings_override],
+  )
+  assert('different rows can use different backend templates',
+    first.jobPayload.settings_override.card_layer2?.backend_template === 'structured_plan_v1'
+      && second.jobPayload.settings_override.card_layer2?.backend_template === 'direct_prompt_v1',
     [first.jobPayload.settings_override, second.jobPayload.settings_override],
   )
   assert('later row records its script index',

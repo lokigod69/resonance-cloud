@@ -26,6 +26,14 @@ from src.services.events import logged_api_call, logged_llm_call
 from . import config
 from .card_models import CardImagePayload, CardImagePromptData, CardImageResult
 from .card_prompts import SYSTEM_PROMPT, build_user_prompt
+from .layer2_direct_prompt import (
+    DIRECT_PROMPT_WRITER_MODEL,
+    backend_template,
+    direct_prompt_metadata,
+    is_direct_prompt_template,
+    sanitize_direct_prompt,
+    write_layer2_direct_prompt,
+)
 from .models import ImageError
 from .storyboard import _repair_json
 
@@ -167,37 +175,82 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
     text_embedding_mode = (
         layer2.resolved["text_embedding_mode"] if layer2 else payload.content.text_embedding_mode
     )
-    prompt_text = build_gpt_image_2_prompt(
-        word=payload.content.word,
-        translation=payload.content.translation,
-        language=payload.content.language,
-        pos=payload.content.pos,
-        image_scene=image_scene,
-        mnemonic=payload.content.mnemonic,
-        mnemonic_confidence=payload.content.mnemonic_confidence,
-        dominant_emotional_reading=payload.content.dominant_emotional_reading,
-        composition_hint=composition,
-        treatment_hint=treatment,
-        card_image_style=payload.card_image_style,
-        renderer_profile=renderer_profile,
-        renderer_profile_source=renderer_profile_source,
-        creative_mode=creative_mode,
-        text_embedding_mode=text_embedding_mode,
-        register_note=payload.content.register_note,
-        image_bridge=layer2.image_bridge if layer2 else None,
-        style_directive=layer2.style_directive if layer2 else None,
-        text_directive=layer2.text_directive if layer2 else None,
-        allow_target_word_in_prompt=layer2.allow_target_word_in_prompt if layer2 else False,
-        layer2_planning_version=payload.content.layer2_planning_version,
-        mini_story_beats=payload.content.mini_story_beats,
-        split_panel_brief=payload.content.split_panel_brief,
-        word_design_brief=payload.content.word_design_brief,
-        word_design_mode=payload.content.word_design_mode,
-        mnemonic_hook=payload.content.mnemonic_hook,
-        hook_type=payload.content.hook_type,
-        hook_quality=payload.content.hook_quality,
-        fallback_reason=payload.content.fallback_reason,
-    )
+    selected_backend_template = backend_template(payload.content.layer2_customization)
+    direct_prompt_meta: dict | None = None
+    if layer2 and is_direct_prompt_template(payload.content.layer2_customization):
+        with logged_llm_call(
+            stage="pending_image",
+            sub_step="layer2_direct_prompt_writer",
+            event_source="engine",
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
+            model_provider="openrouter",
+            model_name=DIRECT_PROMPT_WRITER_MODEL,
+            metadata={
+                "backend_template": selected_backend_template,
+                "card_image_style": payload.card_image_style,
+            },
+        ) as ev:
+            direct_result = write_layer2_direct_prompt(
+                content=payload.content,
+                layer2=payload.content.layer2_customization or {},
+                art_style=payload.card_image_style,
+                allow_target_word=layer2.allow_target_word_in_prompt,
+            )
+            prompt_text = sanitize_direct_prompt(
+                direct_result.prompt,
+                word=payload.content.word,
+                translation=payload.content.translation,
+                art_style=payload.card_image_style,
+                allow_target_word=layer2.allow_target_word_in_prompt,
+            )
+            ev.record_response(
+                response_body=direct_result.raw_prompt,
+                tokens_in=(direct_result.usage or {}).get("prompt_tokens"),
+                tokens_out=(direct_result.usage or {}).get("completion_tokens"),
+                request_id=direct_result.request_id,
+                prompt_chars=len(prompt_text),
+            )
+            direct_prompt_meta = direct_prompt_metadata(
+                result=direct_result,
+                prompt=prompt_text,
+                allow_target_word=layer2.allow_target_word_in_prompt,
+            )
+    else:
+        prompt_text = build_gpt_image_2_prompt(
+            word=payload.content.word,
+            translation=payload.content.translation,
+            language=payload.content.language,
+            pos=payload.content.pos,
+            image_scene=image_scene,
+            mnemonic=payload.content.mnemonic,
+            mnemonic_confidence=payload.content.mnemonic_confidence,
+            dominant_emotional_reading=payload.content.dominant_emotional_reading,
+            composition_hint=composition,
+            treatment_hint=treatment,
+            card_image_style=payload.card_image_style,
+            renderer_profile=renderer_profile,
+            renderer_profile_source=renderer_profile_source,
+            creative_mode=creative_mode,
+            text_embedding_mode=text_embedding_mode,
+            register_note=payload.content.register_note,
+            image_bridge=layer2.image_bridge if layer2 else None,
+            style_directive=layer2.style_directive if layer2 else None,
+            text_directive=layer2.text_directive if layer2 else None,
+            allow_target_word_in_prompt=layer2.allow_target_word_in_prompt if layer2 else False,
+            layer2_planning_version=payload.content.layer2_planning_version,
+            mini_story_beats=payload.content.mini_story_beats,
+            split_panel_brief=payload.content.split_panel_brief,
+            word_design_brief=payload.content.word_design_brief,
+            word_design_mode=payload.content.word_design_mode,
+            mnemonic_hook=payload.content.mnemonic_hook,
+            hook_type=payload.content.hook_type,
+            hook_quality=payload.content.hook_quality,
+            fallback_reason=payload.content.fallback_reason,
+        )
     card_metadata = build_gpt_image_2_card_metadata(
         final_provider_prompt=prompt_text,
         renderer_profile=renderer_profile,
@@ -229,6 +282,10 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         hook_quality=payload.content.hook_quality,
         fallback_reason=payload.content.fallback_reason,
     )
+    if layer2:
+        card_metadata["backend_template"] = selected_backend_template
+    if direct_prompt_meta:
+        card_metadata.update(direct_prompt_meta)
     request_payload = {
         "model": "gpt-image-2-text-to-image",
         "input": {
@@ -248,7 +305,10 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         attempt=payload.metadata.attempt,
         model_provider="gpt_image_2",
         model_name="gpt-image-2",
-        metadata={"card_image_style": payload.card_image_style},
+        metadata={
+            "card_image_style": payload.card_image_style,
+            "backend_template": selected_backend_template if layer2 else None,
+        },
     ) as ev:
         result = render_scene_gpt_image_2(
             prompt_text=prompt_text,

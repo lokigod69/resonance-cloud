@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FIELD_CONFIGS = ROOT / "frontend" / "src" / "components" / "settings" / "fieldConfigs.ts"
 WORD_DETAIL = ROOT / "frontend" / "src" / "components" / "admin" / "WordDetailPanel.tsx"
 CONTENT = ROOT / "frontend" / "src" / "pages" / "admin" / "Content.tsx"
+OBSERVABILITY_AGGREGATE = ROOT / "frontend" / "src" / "pages" / "admin" / "ObservabilityAggregate.tsx"
 WIZARD_ROOT = ROOT / "frontend" / "src" / "components" / "generate"
 
 
@@ -64,6 +65,9 @@ def test_admin_word_detail_surfaces_gpt_enrichment_and_cost():
     assert "Split Panel Brief" in source
     assert "Word Design Brief" in source
     assert "Mnemonic Hook" in source
+    assert "Backend Template" in source
+    assert "Direct Prompt Writer Model" in source
+    assert "Direct Prompt Preview" in source
     assert "gptEnrichmentRows.length > 0" in source
 
     assert "COST_PER_CARD: Record<string, number>" in source
@@ -85,6 +89,13 @@ def test_admin_content_keeps_star_select_and_can_enrich_cost_from_jobs():
     assert "generation_jobs" in source
     assert "settings_override" in source
     assert "card_image_model" in source
+
+
+def test_observability_aggregate_surfaces_layer2_backend_template():
+    source = OBSERVABILITY_AGGREGATE.read_text(encoding="utf-8")
+
+    assert "backend_template" in source
+    assert "backendTemplate(event)" in source
 
 
 def test_user_facing_wizard_exposes_gpt_image_2_only_as_controlled_card_tier():

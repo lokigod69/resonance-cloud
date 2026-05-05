@@ -23,6 +23,7 @@ import {
   cardLayer2MeaningLabel,
   cardLayer2PresentationLabel,
   type CardLayer2ArtStyle,
+  type CardLayer2BackendTemplate,
   type CardLayer2MeaningStrategy,
   type CardLayer2PresentationForm,
   type ExistingDeck,
@@ -33,9 +34,11 @@ import {
   createLayer2LabResultSummary,
   buildLayer2LabRows,
   createLayer2LabDeckName,
+  DEFAULT_LAYER2_BACKEND_TEMPLATE,
   estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
   isLayer2LabAppendDeck,
+  LAYER2_BACKEND_TEMPLATE_OPTIONS,
   normalizeLayer2LabWords,
   validateLayer2LabSubmit,
   type Layer2LabDeckMode,
@@ -73,6 +76,7 @@ export default function Layer2Lab() {
   const [meaningStrategy, setMeaningStrategy] = useState<CardLayer2MeaningStrategy>('clear_meaning')
   const [presentationForm, setPresentationForm] = useState<CardLayer2PresentationForm>('single_scene')
   const [artStyle, setArtStyle] = useState<CardLayer2ArtStyle>('realistic')
+  const [backendTemplate, setBackendTemplate] = useState<CardLayer2BackendTemplate>(DEFAULT_LAYER2_BACKEND_TEMPLATE)
   const [runLabel, setRunLabel] = useState('')
   const [scriptRows, setScriptRows] = useState<Layer2LabRun[]>([])
   const [submitting, setSubmitting] = useState(false)
@@ -173,6 +177,7 @@ export default function Layer2Lab() {
       meaning_strategy: meaningStrategy,
       presentation_form: presentationForm,
       art_style: artStyle,
+      backend_template: backendTemplate,
       label: runLabel,
     }).map((row) => ({ ...row, id: crypto.randomUUID() }))
     setScriptRows((prev) => [...prev, ...rows])
@@ -225,6 +230,7 @@ export default function Layer2Lab() {
           scriptIndex: index + 1,
           userId: user.id,
           targetLanguage,
+          baseLanguage,
           deckName,
           existingDeck: deck,
         })
@@ -481,6 +487,17 @@ export default function Layer2Lab() {
                   </SelectContent>
                 </Select>
               </label>
+              <label className="space-y-1 text-sm">
+                <span className="text-muted-foreground">Backend Template</span>
+                <Select value={backendTemplate} onValueChange={(value) => setBackendTemplate(value as CardLayer2BackendTemplate)}>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
+                    {LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
               <label className="space-y-1 text-sm md:col-span-2">
                 <span className="text-muted-foreground">Run label</span>
                 <Input value={runLabel} onChange={(event) => setRunLabel(event.target.value)} placeholder="optional" />
@@ -516,6 +533,7 @@ export default function Layer2Lab() {
                     <th className="py-2 pr-3 font-medium">Meaning Strategy</th>
                     <th className="py-2 pr-3 font-medium">Presentation Form</th>
                     <th className="py-2 pr-3 font-medium">Art Style</th>
+                    <th className="py-2 pr-3 font-medium">Backend Template</th>
                     <th className="py-2 pr-3 font-medium">Label</th>
                     <th className="py-2 pr-3 font-medium">Remove</th>
                   </tr>
@@ -527,6 +545,9 @@ export default function Layer2Lab() {
                       <td className="py-2 pr-3">{cardLayer2MeaningLabel(row.meaning_strategy)}</td>
                       <td className="py-2 pr-3">{cardLayer2PresentationLabel(row.presentation_form)}</td>
                       <td className="py-2 pr-3">{cardLayer2ArtStyleLabel(row.art_style)}</td>
+                      <td className="py-2 pr-3">
+                        {LAYER2_BACKEND_TEMPLATE_OPTIONS.find((option) => option.value === row.backend_template)?.label ?? row.backend_template}
+                      </td>
                       <td className="py-2 pr-3">{row.label || '—'}</td>
                       <td className="py-2 pr-3">
                         <Button
@@ -542,7 +563,7 @@ export default function Layer2Lab() {
                   ))}
                   {scriptRows.length === 0 && (
                     <tr>
-                      <td className="py-6 text-center text-muted-foreground" colSpan={6}>
+                      <td className="py-6 text-center text-muted-foreground" colSpan={7}>
                         No planned runs yet.
                       </td>
                     </tr>
