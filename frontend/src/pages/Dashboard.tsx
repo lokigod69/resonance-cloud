@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
-import { useNavigate, useLocation, Link, useSearchParams } from 'react-router-dom'
+import { useNavigate, Link, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
@@ -25,7 +25,6 @@ export default function Dashboard() {
   const { profile, user, authError } = useAuth()
   const { activeLanguage, setActiveLanguage } = useLanguage()
   const navigate = useNavigate()
-  const location = useLocation()
   const [searchParams, setSearchParams] = useSearchParams()
   const queryWordId = searchParams.get('word')
   const queryLang = searchParams.get('lang')
@@ -73,7 +72,7 @@ export default function Dashboard() {
       return
     }
     loadDecks(user.id)
-  }, [user?.id, location.key, loadDecks])
+  }, [user?.id, loadDecks])
 
   // Derive the list of languages the user has decks in
   const availableLanguages = useMemo(() => {
@@ -140,7 +139,7 @@ export default function Dashboard() {
     return () => {
       cancelled = true
     }
-  }, [user?.id, activeLanguage, location.key])
+  }, [user?.id, activeLanguage])
 
   useEffect(() => {
     if (!queryWordId) {
@@ -182,10 +181,18 @@ export default function Dashboard() {
   const handleWordModalClose = () => {
     setSelectedWord(null)
     setQueryOpenedWordId(null)
+
+    if (!searchParams.has('word') && !searchParams.has('lang')) {
+      return
+    }
+
     const nextParams = new URLSearchParams(searchParams)
     nextParams.delete('word')
     nextParams.delete('lang')
-    setSearchParams(nextParams, { replace: true })
+    setSearchParams(nextParams, {
+      replace: true,
+      preventScrollReset: true,
+    })
   }
 
   const quoteList = QUOTES[locale as Locale] ?? QUOTES.en
