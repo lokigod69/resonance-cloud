@@ -14,6 +14,13 @@ type CardViewerWord = {
   etymology: string | null
   pos: string | null
   article: string | null
+  example?: string | null
+  example_gloss?: string | null
+  bridge_mnemonic?: string | null
+  dominant_emotional_reading?: string | null
+  composition_hint?: string | null
+  treatment_hint?: string | null
+  card_image_model?: string | null
   rating: number | null
   thumbnail_url: string | null
   metadata: Record<string, unknown> | null

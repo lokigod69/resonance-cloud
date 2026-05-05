@@ -42,6 +42,7 @@ import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
+import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
 
 type Deck = {
   id: string
@@ -63,6 +64,13 @@ type Word = {
   etymology: string | null
   pos: string | null
   article: string | null
+  example?: string | null
+  example_gloss?: string | null
+  bridge_mnemonic?: string | null
+  dominant_emotional_reading?: string | null
+  composition_hint?: string | null
+  treatment_hint?: string | null
+  card_image_model?: string | null
   rating: number | null
   status: string
   video_url: string | null
@@ -811,9 +819,12 @@ export default function DeckViewPG() {
                             {word.translation && (
                               <p className="text-base text-gray-400 mt-1 long-copy">{word.translation}</p>
                             )}
-                            {word.mnemonic && (
-                              <p className="text-sm text-gray-500/70 italic mt-1 max-w-2xl long-copy">{word.mnemonic}</p>
-                            )}
+                            {(() => {
+                              const learning = resolveCardLearningMetadata(word)
+                              return learning.mnemonic ? (
+                                <p className="text-sm text-gray-500/70 italic mt-1 max-w-2xl long-copy">{learning.mnemonic}</p>
+                              ) : null
+                            })()}
                             <div className="flex justify-center mt-2">
                               <StarRating rating={word.rating ?? null} onChange={(r) => handleRate(word.id, r)} />
                             </div>
@@ -862,8 +873,16 @@ export default function DeckViewPG() {
 
                       {/* Expandable metadata */}
                       {(() => {
-                        const meta = word.metadata as { creative_direction?: string; art_style?: string; music_caption?: string } | null
-                        const hasExpandable = isComplete && (word.etymology || word.pos || meta?.creative_direction || meta?.art_style || meta?.music_caption)
+                        const learning = resolveCardLearningMetadata(word)
+                        const videoMeta = word.metadata as { creative_direction?: string; art_style?: string; music_caption?: string } | null
+                        const hasExpandable = isComplete && (
+                          learning.etymology
+                          || learning.partOfSpeech
+                          || learning.usageExample
+                          || videoMeta?.creative_direction
+                          || videoMeta?.art_style
+                          || videoMeta?.music_caption
+                        )
                         if (!hasExpandable) return null
                         return (
                           <>
@@ -893,38 +912,49 @@ export default function DeckViewPG() {
                                   className="overflow-hidden bg-[#0d0d12]/70"
                                 >
                                   <div className="px-6 pb-4 pt-2 space-y-2.5 text-sm max-w-2xl mx-auto">
-                                    {word.etymology && (
-                                      <div className="flex justify-between gap-4">
-                                        <span className="text-gray-500 shrink-0">{t('deckview.etymology')}</span>
-                                        <span className="text-gray-300 text-right long-copy">{word.etymology}</span>
+                                    {learning.usageExample && (
+                                      <div className="space-y-1 text-left">
+                                        <p className="text-xs uppercase tracking-wide text-gray-500">{t('deckview.usageExample')}</p>
+                                        {learning.usageExample.target && (
+                                          <p className="text-gray-200 long-copy">{learning.usageExample.target}</p>
+                                        )}
+                                        {learning.usageExample.base && (
+                                          <p className="text-gray-400 italic long-copy">{learning.usageExample.base}</p>
+                                        )}
                                       </div>
                                     )}
-                                    {word.pos && (
+                                    {learning.etymology && (
+                                      <div className="flex justify-between gap-4">
+                                        <span className="text-gray-500 shrink-0">{t('deckview.etymology')}</span>
+                                        <span className="text-gray-300 text-right long-copy">{learning.etymology}</span>
+                                      </div>
+                                    )}
+                                    {learning.partOfSpeech && (
                                       <div className="flex justify-between">
                                         <span className="text-gray-500">{t('deckview.partOfSpeech')}</span>
                                         <span className="text-gray-300">
-                                          {word.pos}{word.article ? ` \u00b7 ${word.article}` : ''}
+                                          {learning.partOfSpeech}{learning.article ? ` \u00b7 ${learning.article}` : ''}
                                         </span>
                                       </div>
                                     )}
-                                    {meta?.creative_direction && (
+                                    {videoMeta?.creative_direction && (
                                       <div className="flex justify-between">
                                         <span className="text-gray-500">{t('deckview.creativeDirection')}</span>
-                                        <span className="text-teal-400 capitalize">{meta.creative_direction}</span>
+                                        <span className="text-teal-400 capitalize">{videoMeta.creative_direction}</span>
                                       </div>
                                     )}
-                                    {meta?.art_style && (
+                                    {videoMeta?.art_style && (
                                       <div className="flex justify-between gap-4">
                                         <span className="text-gray-500 shrink-0">{t('deckview.artStyle')}</span>
-                                        <span className="text-gray-300 text-right truncate max-w-[280px]" title={meta.art_style}>
-                                          {meta.art_style}
+                                        <span className="text-gray-300 text-right truncate max-w-[280px]" title={videoMeta.art_style}>
+                                          {videoMeta.art_style}
                                         </span>
                                       </div>
                                     )}
-                                    {meta?.music_caption && (
+                                    {videoMeta?.music_caption && (
                                       <div className="flex justify-between gap-4">
                                         <span className="text-gray-500 shrink-0">{t('deckview.music')}</span>
-                                        <span className="text-gray-300 text-right long-copy">{meta.music_caption.split(',')[0]}</span>
+                                        <span className="text-gray-300 text-right long-copy">{videoMeta.music_caption.split(',')[0]}</span>
                                       </div>
                                     )}
                                   </div>

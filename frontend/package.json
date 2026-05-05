@@ -14,6 +14,7 @@
     "test:phase1e:rls": "tsx scripts/test-phase1e-rpc-rls.ts",
     "test:phase1f0:credits": "tsx scripts/test-phase1f0-credit-pricing.ts",
     "test:lane-payload": "tsx scripts/test-product-lane-payload.ts",
+    "test:word-metadata": "tsx scripts/test-word-display-metadata.ts",
     "test:phase1f:admin": "tsx scripts/test-phase1f-admin-rpcs.ts",
     "test:phase1g:storage-cleanup": "tsx scripts/test-storage-cleanup.ts",
     "verify:grok-ios-audio": "tsx scripts/verify-grok-ios-audio.ts",

@@ -63,12 +63,15 @@ type WordRecord = {
   word_slug: string | null
   translation: string | null
   mnemonic: string | null
+  bridge_mnemonic?: string | null
   dominant_emotional_reading?: string | null
   composition_hint?: string | null
   treatment_hint?: string | null
   etymology: string | null
   pos: string | null
   article: string | null
+  example?: string | null
+  example_gloss?: string | null
   card_image_model?: string | null
   generation_job_id?: string | null
   status: string

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Info } from 'lucide-react'
 import StarRating from '@/components/ui/StarRating'
+import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
+import { useTranslation } from '@/hooks/useTranslation'
 
 /** Truncate art style at first ' — ' or ',' for clean row display */
 function formatArtStyle(value: string): string {
@@ -12,102 +14,109 @@ function formatArtStyle(value: string): string {
 }
 
 interface WordInfoPanelProps {
-  word: {
+  word: WordLike & {
     id: string
     word: string
     translation: string | null
-    mnemonic?: string | null
-    etymology?: string | null
-    pos?: string | null
-    article?: string | null
     rating?: number | null
     word_slug?: string | null
-    metadata?: {
-      creative_direction?: string
-      art_style?: string
-      music_caption?: string
-    } | null
   }
   onRate: (wordId: string, rating: number) => void
 }
 
-const hasMetadata = (word: WordInfoPanelProps['word']) =>
-  word.etymology ||
-  word.pos ||
-  word.metadata?.creative_direction ||
-  word.metadata?.art_style ||
-  word.metadata?.music_caption
-
 export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
+  const { t } = useTranslation()
   const [showMetadata, setShowMetadata] = useState(false)
+  const learning = resolveCardLearningMetadata(word)
+  const videoMeta = (word.metadata && typeof word.metadata === 'object' && !Array.isArray(word.metadata))
+    ? (word.metadata as { creative_direction?: string; art_style?: string; music_caption?: string })
+    : null
+
+  const hasExpandable =
+    !!learning.etymology
+    || !!learning.partOfSpeech
+    || !!learning.usageExample
+    || !!videoMeta?.creative_direction
+    || !!videoMeta?.art_style
+    || !!videoMeta?.music_caption
 
   return (
     <div className="text-center space-y-3 relative">
-      {/* Info toggle */}
-      {hasMetadata(word) && (
+      {hasExpandable && (
         <button
           onClick={() => setShowMetadata(!showMetadata)}
           className="absolute top-0 right-0 w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+          aria-label="Toggle word details"
         >
           <Info size={14} />
         </button>
       )}
 
-      {/* Always visible */}
       <h1 className="text-4xl font-bold long-copy">{word.word}</h1>
       {word.translation && (
         <p className="text-xl text-muted-foreground long-copy">{word.translation}</p>
       )}
-      {word.mnemonic && (
+      {learning.mnemonic && (
         <p className="text-sm text-muted-foreground/70 max-w-2xl mx-auto italic long-copy">
-          {word.mnemonic}
+          {learning.mnemonic}
         </p>
       )}
 
-      {/* Star rating */}
       <div className="flex justify-center">
         <StarRating rating={word.rating ?? null} onChange={(r) => onRate(word.id, r)} />
       </div>
 
-      {/* Expandable metadata */}
       {showMetadata && (
         <div className="mt-4 pt-4 border-t border-white/10 space-y-3 text-sm max-w-2xl mx-auto">
-          {word.etymology && (
-            <div className="flex justify-between gap-4">
-              <span className="text-gray-500 shrink-0">Etymology</span>
-              <span className="text-gray-300 text-right long-copy">{word.etymology}</span>
+          {learning.usageExample && (
+            <div className="space-y-1 text-left">
+              <p className="text-xs uppercase tracking-wide text-gray-500">
+                {t('deckview.usageExample')}
+              </p>
+              {learning.usageExample.target && (
+                <p className="text-gray-200 long-copy">{learning.usageExample.target}</p>
+              )}
+              {learning.usageExample.base && (
+                <p className="text-gray-400 italic long-copy">{learning.usageExample.base}</p>
+              )}
             </div>
           )}
-          {word.pos && (
+          {learning.etymology && (
+            <div className="flex justify-between gap-4">
+              <span className="text-gray-500 shrink-0">{t('deckview.etymology')}</span>
+              <span className="text-gray-300 text-right long-copy">{learning.etymology}</span>
+            </div>
+          )}
+          {learning.partOfSpeech && (
             <div className="flex justify-between">
-              <span className="text-gray-500">Part of Speech</span>
+              <span className="text-gray-500">{t('deckview.partOfSpeech')}</span>
               <span className="text-gray-300">
-                {word.pos}
-                {word.article ? ` \u00b7 ${word.article}` : ''}
+                {learning.partOfSpeech}
+                {learning.article ? ` · ${learning.article}` : ''}
               </span>
             </div>
           )}
-          {word.metadata?.creative_direction && (
+          {videoMeta?.creative_direction && (
             <div className="flex justify-between">
               <span className="text-gray-500">Creative Direction</span>
               <span className="text-teal-400 capitalize long-copy">
-                {word.metadata.creative_direction}
+                {videoMeta.creative_direction}
               </span>
             </div>
           )}
-          {word.metadata?.art_style && (
+          {videoMeta?.art_style && (
             <div className="flex justify-between gap-4">
               <span className="text-gray-500 shrink-0">Art Style</span>
-              <span className="text-gray-300 text-right max-w-[280px] long-copy" title={word.metadata.art_style}>
-                {formatArtStyle(word.metadata.art_style)}
+              <span className="text-gray-300 text-right max-w-[280px] long-copy" title={videoMeta.art_style}>
+                {formatArtStyle(videoMeta.art_style)}
               </span>
             </div>
           )}
-          {word.metadata?.music_caption && (
+          {videoMeta?.music_caption && (
             <div className="flex justify-between gap-4">
               <span className="text-gray-500 shrink-0">Music</span>
               <span className="text-gray-300 text-right long-copy">
-                {word.metadata.music_caption.split(',')[0]}
+                {videoMeta.music_caption.split(',')[0]}
               </span>
             </div>
           )}

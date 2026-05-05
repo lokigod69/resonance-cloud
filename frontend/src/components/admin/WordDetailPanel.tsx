@@ -8,6 +8,7 @@ import { Video, ChevronDown, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import StarRating from '@/components/ui/StarRating'
+import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
 
 type WordRecord = {
   id: string
@@ -17,12 +18,15 @@ type WordRecord = {
   word_slug: string | null
   translation: string | null
   mnemonic: string | null
+  bridge_mnemonic?: string | null
   dominant_emotional_reading?: string | null
   composition_hint?: string | null
   treatment_hint?: string | null
   etymology: string | null
   pos: string | null
   article: string | null
+  example?: string | null
+  example_gloss?: string | null
   card_image_model?: string | null
   status: string
   video_url: string | null
@@ -57,17 +61,24 @@ export default function WordDetailPanel({
   onClose: () => void
 }) {
   const [rawJsonOpen, setRawJsonOpen] = useState(false)
+  const [cardPlanOpen, setCardPlanOpen] = useState(true)
+  const [gptCardOpen, setGptCardOpen] = useState(true)
 
   if (!word) return null
 
   const meta = word.metadata
   const cardImageModel = normalizeCardImageModel(word.card_image_model) ?? getMetadataCardImageModel(meta)
   const cardCost = cardImageModel ? formatCardCost(cardImageModel) : null
+  const learning = resolveCardLearningMetadata(word)
+  const debug = learning.adminDebug
   const gptEnrichmentRows = [
     { label: 'Mnemonic (visual scene)', value: cleanText(word.mnemonic) },
+    { label: 'Bridge mnemonic', value: cleanText(word.bridge_mnemonic) },
     { label: 'Emotional reading', value: cleanText(word.dominant_emotional_reading) },
-    { label: 'Composition', value: cleanText(word.composition_hint) },
-    { label: 'Treatment', value: cleanText(word.treatment_hint) },
+    { label: 'Composition (hint)', value: cleanText(word.composition_hint) },
+    { label: 'Treatment (hint)', value: cleanText(word.treatment_hint) },
+    { label: 'Example (target)', value: cleanText(word.example) },
+    { label: 'Example (gloss)', value: cleanText(word.example_gloss) },
   ].filter((row): row is { label: string; value: string } => row.value !== null)
 
   return (
@@ -165,6 +176,65 @@ export default function WordDetailPanel({
               ))}
             </MetaSection>
           </div>
+        )}
+
+        {/* Visual Card Plan (enrichment-time, written for every card) */}
+        {debug.visualCardPlan && (
+          <div className="space-y-3">
+            <button
+              onClick={() => setCardPlanOpen(!cardPlanOpen)}
+              className="flex items-center gap-1 text-sm font-medium hover:text-foreground transition-colors"
+            >
+              {cardPlanOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+              Visual Card Plan
+            </button>
+            {cardPlanOpen && (
+              <MetaSection title="metadata.visual_card_plan">
+                <MetaRow label="Image Scene" value={debug.fields.imageScene} />
+                <MetaRow label="Card Scene Displayed" value={debug.fields.cardSceneDisplayed} />
+                <MetaRow label="Composition" value={debug.fields.composition} />
+                <MetaRow label="Treatment" value={debug.fields.treatment} />
+                <MetaRow label="Creative Mode" value={debug.fields.creativeMode} />
+                <MetaRow label="Text Embedding Mode" value={debug.fields.textEmbeddingMode} />
+                <MetaRow label="Renderer Profile" value={debug.fields.rendererProfile} />
+                <MetaRow label="Renderer Profile Source" value={debug.fields.rendererProfileSource} />
+                <MetaRow label="Answer Visibility" value={debug.fields.answerVisibility} />
+                <MetaRow label="Dominant Emotional Reading" value={debug.fields.dominantEmotionalReading} />
+                <MetaRow label="Single Image Teachable" value={debug.fields.singleImageTeachable === null ? null : String(debug.fields.singleImageTeachable)} />
+                <MetaRow label="Register Note" value={debug.fields.registerNote} />
+                <MetaRow label="Rationale Summary" value={debug.fields.rationaleSummary} />
+              </MetaSection>
+            )}
+          </div>
+        )}
+
+        {/* GPT Image-2 Card metadata (Premium-card only, written post-render) */}
+        {debug.gptImage2Card && (
+          <div className="space-y-3">
+            <button
+              onClick={() => setGptCardOpen(!gptCardOpen)}
+              className="flex items-center gap-1 text-sm font-medium hover:text-foreground transition-colors"
+            >
+              {gptCardOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+              GPT Image-2 Card
+            </button>
+            {gptCardOpen && (
+              <MetaSection title="metadata.gpt_image_2_card">
+                <MetaRow label="Prompt Version" value={debug.fields.promptVersion} />
+                <MetaRow label="Final Provider Prompt SHA-256" value={debug.fields.finalProviderPromptSha256} />
+                <MetaRow label="Layer 2 Candidate (text mode)" value={debug.fields.layer2CandidateTextMode === null ? null : String(debug.fields.layer2CandidateTextMode)} />
+                <MetaRow label="Card Image Model" value={debug.fields.cardImageModel} />
+              </MetaSection>
+            )}
+          </div>
+        )}
+
+        {/* Resolved usage example (the same source the user-facing card uses) */}
+        {learning.usageExample && (
+          <MetaSection title="Resolved usage example (user-facing source of truth)">
+            <MetaRow label="Target" value={learning.usageExample.target ?? null} />
+            <MetaRow label="Base" value={learning.usageExample.base ?? null} />
+          </MetaSection>
         )}
 
         {/* Metadata */}
