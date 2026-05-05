@@ -256,11 +256,11 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
 
   return (
     <div
-      className="fixed inset-x-0 bottom-0 top-[var(--glassy-header-offset)] z-40 flex flex-col bg-gray-950/95 backdrop-blur-xl transition-transform duration-300"
+      className="fixed inset-x-0 bottom-0 top-[var(--glassy-header-offset)] z-40 flex flex-col bg-gray-950/55 backdrop-blur-2xl saturate-[1.35] transition-transform duration-300"
       style={{ transform: open ? 'translateX(0)' : 'translateX(100%)' }}
     >
       {/* ── Header ── */}
-      <div className="shrink-0 border-b border-white/5 bg-gray-950/80 backdrop-blur-md">
+      <div className="shrink-0 border-b border-white/5 bg-gray-950/60 backdrop-blur-xl saturate-[1.35]">
         <div className="flex items-center gap-2 px-4 py-3 max-w-5xl mx-auto w-full">
           {selectedId ? (
             <button

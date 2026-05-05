@@ -333,9 +333,9 @@ input[type="range"].volume-slider::-moz-range-track {
   width: 320px;
   min-height: 360px;
   z-index: 1;
-  background: rgba(20, 24, 34, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(20, 24, 34, 0.42);
+  backdrop-filter: blur(20px) saturate(1.35);
+  -webkit-backdrop-filter: blur(20px) saturate(1.35);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   padding: 18px;
@@ -425,7 +425,8 @@ input[type="range"].volume-slider::-moz-range-track {
 .glass {
   background: rgba(255, 255, 255, 0.05);
   background: oklch(1 0 0 / 0.05);
-  backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px) saturate(1.35);
+  -webkit-backdrop-filter: blur(24px) saturate(1.35);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border: 1px solid oklch(1 0 0 / 0.1);
 }
@@ -433,9 +434,25 @@ input[type="range"].volume-slider::-moz-range-track {
 .glass-strong {
   background: rgba(255, 255, 255, 0.1);
   background: oklch(1 0 0 / 0.1);
-  backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px) saturate(1.4);
+  -webkit-backdrop-filter: blur(32px) saturate(1.4);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border: 1px solid oklch(1 0 0 / 0.15);
+}
+
+/* Shared full-screen glass overlay utilities for modals/sheets.
+   The two-layer pattern: this is the BACKDROP that sits over the page;
+   the modal panel (.glass-modal-panel or .pg-glass) layers on top. */
+.glass-modal-backdrop {
+  background: rgba(2, 6, 23, 0.55);
+  backdrop-filter: blur(28px) saturate(1.35);
+  -webkit-backdrop-filter: blur(28px) saturate(1.35);
+}
+
+.glass-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(20px) saturate(1.35);
+  -webkit-backdrop-filter: blur(20px) saturate(1.35);
 }
 
 .glass-hover:hover {
@@ -499,8 +516,8 @@ input[type="range"].volume-slider::-moz-range-track {
 /* Glassy utility class */
 .pg-glass {
   background: var(--pg-glass-panel-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px) saturate(1.35);
+  -webkit-backdrop-filter: blur(24px) saturate(1.35);
   border: 1px solid var(--pg-glass-border);
   border-top: 1px solid var(--pg-glass-border-top);
   border-left: 1px solid var(--pg-glass-border-left);
@@ -519,8 +536,8 @@ input[type="range"].volume-slider::-moz-range-track {
 /* Skin-aware glass overrides — remap existing utility classes when PG skin is active */
 .skin-glassy .glass {
   background: var(--surface-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px) saturate(1.35);
+  -webkit-backdrop-filter: blur(24px) saturate(1.35);
   border: 1px solid var(--border-subtle);
   border-top-color: var(--border-strong);
   border-left-color: var(--border-subtle);
@@ -529,8 +546,8 @@ input[type="range"].volume-slider::-moz-range-track {
 
 .skin-glassy .glass-strong {
   background: var(--surface-glass-strong);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
   border: 1px solid var(--border-subtle);
   border-top-color: var(--border-strong);
   border-left-color: var(--border-subtle);
@@ -646,16 +663,16 @@ input[type="range"].volume-slider::-moz-range-track {
 .speak-glass-card {
   border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(15, 23, 42, 0.55);
+  background: rgba(15, 23, 42, 0.45);
   box-shadow:
     0 18px 45px rgba(2, 6, 23, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(24px) saturate(1.35);
+  -webkit-backdrop-filter: blur(24px) saturate(1.35);
 }
 
 .skin-glassy .speak-glass-card {
-  background: rgba(15, 23, 42, 0.44);
+  background: rgba(15, 23, 42, 0.42);
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.36),
     inset 0 1px 0 rgba(255, 255, 255, 0.09);

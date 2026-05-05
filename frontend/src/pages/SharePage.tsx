@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
+import { OrbSpinner } from '@/components/ui/OrbSpinner'
 
 interface SharedWordData {
   share_id: string
@@ -43,7 +44,7 @@ export default function SharePage() {
   if (loading) {
     return (
       <div className="min-h-dvh bg-gray-950 flex items-center justify-center">
-        <div className="h-8 w-8 rounded-full border-2 border-teal-400 border-t-transparent animate-spin" />
+        <OrbSpinner size={96} ariaLabel="Loading shared video" />
       </div>
     )
   }

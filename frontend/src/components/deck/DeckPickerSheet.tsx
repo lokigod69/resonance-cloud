@@ -107,7 +107,7 @@ export default function DeckPickerSheet({
         <div className="max-h-[50vh] overflow-y-auto -mx-1 px-1">
           {loading ? (
             <div className="flex justify-center py-8">
-              <Loader2 className="h-5 w-5 animate-spin text-white/40" />
+              <Loader2 className="h-5 w-5 animate-spin text-white/80" />
             </div>
           ) : decks.length === 0 && !showCreateInput ? (
             <p className="text-center py-6 text-white/40 text-sm">

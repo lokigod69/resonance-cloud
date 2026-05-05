@@ -120,7 +120,7 @@ body {
 /* Glassy nav: more glass-like (lower alpha) but compensated by heavier blur in .skin-glassy .app-topnav.
    Selector specificity (0,2,0) wins against per-theme overrides regardless of import order. */
 .skin-glassy[class*="theme-"] {
-  --nav-bg: color-mix(in srgb, var(--app-bg) 85%, transparent);
+  --nav-bg: color-mix(in srgb, var(--app-bg) 62%, transparent);
 }
 
 .skin-classic,

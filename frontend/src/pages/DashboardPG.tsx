@@ -4,7 +4,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
-import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
+import { OrbSpinner } from '@/components/ui/OrbSpinner'
 import { AlertCircle, RefreshCw, LogIn } from 'lucide-react'
 import LevelBadge from '@/components/dashboard/LevelBadge'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -235,7 +235,7 @@ export default function DashboardPG() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <ParticleSpinner preset="rose" size={140} />
+        <OrbSpinner size={140} ariaLabel={t('dashboard.loadingDecks')} />
         <p className="text-sm text-muted-foreground opacity-60">{t('dashboard.loadingDecks')}</p>
       </div>
     )
@@ -298,7 +298,7 @@ export default function DashboardPG() {
             <div className="mb-4">
               {libraryLoading ? (
                 <div className="flex justify-center py-8">
-                  <ParticleSpinner preset="rose" size={80} />
+                  <OrbSpinner size={80} ariaLabel="Loading word library" />
                 </div>
               ) : (
                 <WordLibrary
