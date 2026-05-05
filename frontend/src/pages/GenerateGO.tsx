@@ -11,20 +11,31 @@ import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import {
+  DEFAULT_CARD_LAYER2,
+  DEFAULT_CARD_LAYER2_ART_STYLE,
+  cardLayer2ArtStyleLabel,
+  cardLayer2MeaningLabel,
+  cardLayer2PresentationLabel,
   computeCreditCost,
   isCardLane,
+  isCardLayer2ArtStyle,
+  isStandardCardImageStyle,
   laneToCardImageModel,
   laneToDeckType,
 } from '@/components/generate/useWizardState'
 import type {
+  CardLayer2ArtStyle,
+  CardLayer2Customization,
   ExistingDeck,
   GeneratePayload,
   ProductLane,
+  StandardCardImageStyle,
   WizardState,
   WizardAction,
 } from '@/components/generate/useWizardState'
 import ProductLaneStep from '@/components/generate/steps/ProductLaneStep'
 import CardImageStyleStep from '@/components/generate/steps/CardImageStyleStep'
+import PremiumCardCustomizationStep from '@/components/generate/steps/PremiumCardCustomizationStep'
 import WordsStep from '@/components/generate/steps/WordsStep'
 
 const GO_GENRES = [
@@ -65,9 +76,8 @@ export default function GenerateGO() {
   const [genre, setGenre] = useState<string | null>(null)
   const [lyricMode, setLyricMode] = useState<string | null>(null)
   const [productLane, setProductLane] = useState<ProductLane | null>(null)
-  const [cardImageStyle, setCardImageStyle] = useState<
-    'Photorealistic' | 'Editorial' | 'Random' | null
-  >(null)
+  const [cardImageStyle, setCardImageStyle] = useState<StandardCardImageStyle | CardLayer2ArtStyle | null>(null)
+  const [cardLayer2, setCardLayer2] = useState<CardLayer2Customization | null>(null)
   const [customGenre, setCustomGenre] = useState('')
   const [showCustomInput, setShowCustomInput] = useState(false)
   const [deckName, setDeckName] = useState('')
@@ -118,6 +128,13 @@ export default function GenerateGO() {
             ? 'card_premium'
             : 'card_standard'
       setProductLane(lane)
+      if (lane === 'card_premium') {
+        setCardImageStyle(DEFAULT_CARD_LAYER2_ART_STYLE)
+        setCardLayer2(DEFAULT_CARD_LAYER2)
+      } else {
+        setCardImageStyle(null)
+        setCardLayer2(null)
+      }
       // Existing video deck: skip language and lane (both locked) → words.
       // Existing card deck: skip language, show lane (preselected, mutable).
       setStep(deck.deck_type === 'video' ? 3 : 2)
@@ -190,7 +207,16 @@ export default function GenerateGO() {
 
   function handleLaneSelect(lane: ProductLane) {
     setProductLane(lane)
-    if (!isCardLane(lane)) setCardImageStyle(null)
+    if (lane === 'card_premium') {
+      setCardImageStyle(prev => isCardLayer2ArtStyle(prev) ? prev : DEFAULT_CARD_LAYER2_ART_STYLE)
+      setCardLayer2(prev => prev ?? DEFAULT_CARD_LAYER2)
+    } else if (lane === 'card_standard') {
+      setCardImageStyle(prev => isStandardCardImageStyle(prev) ? prev : null)
+      setCardLayer2(null)
+    } else {
+      setCardImageStyle(null)
+      setCardLayer2(null)
+    }
     setStep(3)
   }
 
@@ -209,6 +235,7 @@ export default function GenerateGO() {
     path: 'undecided',
     productLane,
     cardImageStyle,
+    cardLayer2,
   } as unknown as WizardState
 
   const wordsStepDispatch: React.Dispatch<WizardAction> = (action) => {
@@ -357,6 +384,13 @@ export default function GenerateGO() {
               ? customGenre.trim() || undefined
               : genre || undefined
       const artStyleValue = isCard || isQuickGenerate ? null : artStyle
+      const layer2Payload =
+        productLane === 'card_premium' && !isQuickGenerate && cardImageStyle
+          ? {
+              ...(cardLayer2 ?? DEFAULT_CARD_LAYER2),
+              visual_intensity: 'balanced' as const,
+            }
+          : undefined
 
       const payload: GeneratePayload = {
         deckPayload: existingDeck
@@ -385,7 +419,8 @@ export default function GenerateGO() {
             ...(genreValue ? { genre: genreValue } : {}),
             ...(!isCard && !isQuickGenerate && lyricMode ? { lyric_mode: lyricMode } : {}),
             ...(cardImageModel ? { card_image_model: cardImageModel } : {}),
-            ...(isCard && cardImageStyle ? { card_image_style: cardImageStyle } : {}),
+            ...(isCard && !isQuickGenerate && cardImageStyle ? { card_image_style: cardImageStyle } : {}),
+            ...(layer2Payload ? { card_layer2: layer2Payload } : {}),
           },
         },
       }
@@ -421,8 +456,7 @@ export default function GenerateGO() {
   }
 
   function findCardImageStyleLabel(value: typeof cardImageStyle): string {
-    if (value === 'Photorealistic') return 'Realistic'
-    return value ?? ''
+    return cardLayer2ArtStyleLabel(value)
   }
 
   if (deckIdParam && !existingDeck) {
@@ -702,14 +736,25 @@ export default function GenerateGO() {
       {step >= 4 && cardLane && (
         <div ref={el => { sectionRefs.current[3] = el }} className="gen-section">
           {step === 4 ? (
-            <CardImageStyleStep
-              skin="glassy"
-              value={cardImageStyle}
-              onChange={(value) => {
-                setCardImageStyle(value)
-                setStep(5)
-              }}
-            />
+            productLane === 'card_premium' ? (
+              <PremiumCardCustomizationStep
+                skin="glassy"
+                layer2Value={cardLayer2}
+                artStyleValue={isCardLayer2ArtStyle(cardImageStyle) ? cardImageStyle : null}
+                onLayer2Change={(value) => setCardLayer2(prev => ({ ...(prev ?? DEFAULT_CARD_LAYER2), ...value }))}
+                onArtStyleChange={(value) => setCardImageStyle(value)}
+                onContinue={() => setStep(5)}
+              />
+            ) : (
+              <CardImageStyleStep
+                skin="glassy"
+                value={isStandardCardImageStyle(cardImageStyle) ? cardImageStyle : null}
+                onChange={(value) => {
+                  setCardImageStyle(value)
+                  setStep(5)
+                }}
+              />
+            )
           ) : (
             <div className="gen-orb-row">
               <div className="gen-orb selected breadcrumb" onClick={() => setStep(4)}>
@@ -738,6 +783,16 @@ export default function GenerateGO() {
             <p className="text-sm text-go-text-secondary">
               Style: {findCardImageStyleLabel(cardImageStyle)}
             </p>
+          )}
+          {productLane === 'card_premium' && cardLayer2 && (
+            <>
+              <p className="text-sm text-go-text-secondary">
+                Meaning: {cardLayer2MeaningLabel(cardLayer2.meaning_strategy)}
+              </p>
+              <p className="text-sm text-go-text-secondary">
+                Form: {cardLayer2PresentationLabel(cardLayer2.presentation_form)}
+              </p>
+            </>
           )}
           <p className="text-sm text-go-text-secondary">{laneLabel(productLane)}</p>
 

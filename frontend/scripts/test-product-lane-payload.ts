@@ -10,6 +10,9 @@
  */
 
 import {
+  CARD_LAYER2_ART_STYLE_OPTIONS,
+  CARD_LAYER2_MEANING_OPTIONS,
+  CARD_LAYER2_PRESENTATION_OPTIONS,
   buildGeneratePayload,
   computeCreditCost,
   deckRowToProductLane,
@@ -156,14 +159,98 @@ console.log('\n[premium card payload]')
     p.jobPayload.settings_override.card_image_model === 'gpt_image_2',
     p.jobPayload.settings_override,
   )
+  assert(
+    'premium quick/default omits card_layer2',
+    !('card_layer2' in p.jobPayload.settings_override),
+    p.jobPayload.settings_override,
+  )
 }
 
-console.log('\n[card lane keeps card_image_style if set]')
+console.log('\n[premium customize layer2 payload]')
 {
-  const p = settingsOf('card_premium', { cardImageStyle: 'Editorial' })
+  const p = buildGeneratePayload({
+    state: makeState({
+      productLane: 'card_premium',
+      path: 'custom',
+      cardImageStyle: 'surrealism',
+      cardLayer2: {
+        meaning_strategy: 'absurd_hook',
+        presentation_form: 'mini_story',
+      },
+    }),
+    userId: USER,
+  })
   assert(
-    'card_image_style passes through',
+    'card_image_style sends selected layer2 art style',
+    p.jobPayload.settings_override.card_image_style === 'surrealism',
+    p.jobPayload.settings_override,
+  )
+  assert(
+    'card_layer2 meaning_strategy included',
+    p.jobPayload.settings_override.card_layer2?.meaning_strategy === 'absurd_hook',
+    p.jobPayload.settings_override,
+  )
+  assert(
+    'card_layer2 presentation_form included',
+    p.jobPayload.settings_override.card_layer2?.presentation_form === 'mini_story',
+    p.jobPayload.settings_override,
+  )
+  assert(
+    'visual_intensity defaults to balanced',
+    p.jobPayload.settings_override.card_layer2?.visual_intensity === 'balanced',
+    p.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[standard card payload does not use layer2]')
+{
+  const p = settingsOf('card_standard', {
+    cardImageStyle: 'Editorial',
+    cardLayer2: {
+      meaning_strategy: 'absurd_hook',
+      presentation_form: 'mini_story',
+    },
+  })
+  assert(
+    'standard card keeps current card_image_style path',
     p.jobPayload.settings_override.card_image_style === 'Editorial',
+    p.jobPayload.settings_override,
+  )
+  assert(
+    'standard card omits card_layer2',
+    !('card_layer2' in p.jobPayload.settings_override),
+    p.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[premium quick generate omits layer2 customizations]')
+{
+  const p = buildGeneratePayload({
+    state: makeState({
+      productLane: 'card_premium',
+      path: 'custom',
+      cardImageStyle: 'surrealism',
+      cardLayer2: {
+        meaning_strategy: 'sound_mnemonic',
+        presentation_form: 'split_panel',
+      },
+    }),
+    userId: USER,
+    isQuickGenerate: true,
+  })
+  assert(
+    'premium quick still sends GPT model',
+    p.jobPayload.settings_override.card_image_model === 'gpt_image_2',
+    p.jobPayload.settings_override,
+  )
+  assert(
+    'premium quick omits card_layer2',
+    !('card_layer2' in p.jobPayload.settings_override),
+    p.jobPayload.settings_override,
+  )
+  assert(
+    'premium quick omits card_image_style',
+    !('card_image_style' in p.jobPayload.settings_override),
     p.jobPayload.settings_override,
   )
 }
@@ -175,6 +262,44 @@ console.log('\n[card lane omits card_image_style when null]')
     'no card_image_style key',
     !('card_image_style' in p.jobPayload.settings_override),
     p.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[layer2 exposed options]')
+{
+  const meanings = CARD_LAYER2_MEANING_OPTIONS.map((option) => option.value)
+  const presentations = CARD_LAYER2_PRESENTATION_OPTIONS.map((option) => option.value)
+  const styles = CARD_LAYER2_ART_STYLE_OPTIONS.map((option) => option.value)
+  assert(
+    'all exposed meaning strategies are valid',
+    ['clear_meaning', 'exaggerated_meaning', 'absurd_hook', 'sound_mnemonic']
+      .every((value) => meanings.includes(value as typeof meanings[number])),
+    meanings,
+  )
+  assert(
+    'all exposed presentation forms are valid',
+    ['single_scene', 'mini_story', 'split_panel', 'word_object_design']
+      .every((value) => presentations.includes(value as typeof presentations[number])),
+    presentations,
+  )
+  assert('20 art styles exposed', styles.length === 20, styles)
+  assert(
+    'requested animation styles are exposed',
+    ['south_park_style', 'rick_and_morty_style', 'pixar_3d']
+      .every((value) => styles.includes(value as typeof styles[number])),
+    styles,
+  )
+  assert(
+    'removed ornamental styles are not exposed',
+    !['art_deco', 'art_nouveau', 'chinese_ink_wash']
+      .some((value) => styles.includes(value as typeof styles[number])),
+    styles,
+  )
+  assert(
+    'friendly labels are not raw enum values',
+    CARD_LAYER2_MEANING_OPTIONS.every((option) => !option.label.includes('_'))
+      && CARD_LAYER2_PRESENTATION_OPTIONS.every((option) => !option.label.includes('_'))
+      && CARD_LAYER2_ART_STYLE_OPTIONS.every((option) => !option.label.includes('_')),
   )
 }
 

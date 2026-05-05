@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'
 import GlassCard from '../shared/GlassCard'
 import { useTranslation } from '@/hooks/useTranslation'
-
-type CardImageStyle = 'Photorealistic' | 'Editorial' | 'Random'
+import type { StandardCardImageStyle } from '../useWizardState'
 
 interface CardImageStyleStepProps {
-  value: CardImageStyle | null
-  onChange: (value: CardImageStyle) => void
+  value: StandardCardImageStyle | null
+  onChange: (value: StandardCardImageStyle) => void
   skin?: 'classic' | 'glassy'
 }
 

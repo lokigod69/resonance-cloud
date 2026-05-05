@@ -9,14 +9,20 @@ import { supabase } from '@/lib/supabase'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import {
   buildGeneratePayload,
+  cardLayer2ArtStyleLabel,
+  cardLayer2MeaningLabel,
+  cardLayer2PresentationLabel,
   computeCreditCost,
   isCardLane,
+  isCardLayer2ArtStyle,
+  isStandardCardImageStyle,
   laneToCardImageModel,
   useWizardState,
 } from '@/components/generate/useWizardState'
 import type { ExistingDeck, ProductLane } from '@/components/generate/useWizardState'
 import ProductLaneStep from '@/components/generate/steps/ProductLaneStep'
 import CardImageStyleStep from '@/components/generate/steps/CardImageStyleStep'
+import PremiumCardCustomizationStep from '@/components/generate/steps/PremiumCardCustomizationStep'
 import WordsStep from '@/components/generate/steps/WordsStep'
 import {
   LANGUAGES,
@@ -229,6 +235,7 @@ export default function GeneratePG() {
 
   const lane = state.productLane
   const cardLane = isCardLane(lane)
+  const premiumCardLane = lane === 'card_premium'
 
   return (
     <div className="max-w-4xl mx-auto px-4">
@@ -238,6 +245,7 @@ export default function GeneratePG() {
         existingDeck={!!existingDeck}
         existingDeckLockedToVideo={existingDeck?.deck_type === 'video'}
         cardLane={cardLane}
+        premiumCardLane={premiumCardLane}
       />
 
       <AnimatePresence mode="wait">
@@ -276,14 +284,25 @@ export default function GeneratePG() {
             />
           )}
           {pgStep === 3 && cardLane && (
-            <CardImageStyleStep
-              skin="classic"
-              value={state.cardImageStyle}
-              onChange={(value) => {
-                dispatch({ type: 'SET_CARD_IMAGE_STYLE', style: value })
-                setPgStep(4)
-              }}
-            />
+            premiumCardLane ? (
+              <PremiumCardCustomizationStep
+                skin="classic"
+                layer2Value={state.cardLayer2}
+                artStyleValue={isCardLayer2ArtStyle(state.cardImageStyle) ? state.cardImageStyle : null}
+                onLayer2Change={(value) => dispatch({ type: 'SET_CARD_LAYER2', value })}
+                onArtStyleChange={(value) => dispatch({ type: 'SET_CARD_IMAGE_STYLE', style: value })}
+                onContinue={() => setPgStep(4)}
+              />
+            ) : (
+              <CardImageStyleStep
+                skin="classic"
+                value={isStandardCardImageStyle(state.cardImageStyle) ? state.cardImageStyle : null}
+                onChange={(value) => {
+                  dispatch({ type: 'SET_CARD_IMAGE_STYLE', style: value })
+                  setPgStep(4)
+                }}
+              />
+            )
           )}
           {pgStep === 3 && !cardLane && (
             <StepVibe
@@ -350,12 +369,14 @@ function BreadcrumbPills({
   existingDeck,
   existingDeckLockedToVideo,
   cardLane,
+  premiumCardLane,
 }: {
   pgStep: number
   setPgStep: (s: number) => void
   existingDeck: boolean
   existingDeckLockedToVideo: boolean
   cardLane: boolean
+  premiumCardLane: boolean
 }) {
   const { t } = useTranslation()
   const STEP_LABELS = cardLane
@@ -363,7 +384,7 @@ function BreadcrumbPills({
         t('generate.stepLanguage'),
         t('generate.productLane.breadcrumb'),
         t('generate.stepWords'),
-        t('generate.cardImageStyle.styleBreadcrumb'),
+        premiumCardLane ? t('generate.customize') : t('generate.stepArtStyle'),
         t('generate.stepReview'),
       ]
     : [
@@ -846,8 +867,20 @@ function StepReview({
             {state.cardImageStyle && (
               <span className="px-4 py-2 rounded-full text-sm font-medium"
                 style={{ background: 'rgba(139, 92, 246, 0.12)', border: '1px solid rgba(139, 92, 246, 0.3)', color: '#8b5cf6' }}>
-                Style: {state.cardImageStyle === 'Photorealistic' ? 'Realistic' : state.cardImageStyle}
+                Style: {cardLayer2ArtStyleLabel(state.cardImageStyle)}
               </span>
+            )}
+            {state.productLane === 'card_premium' && state.cardLayer2 && (
+              <>
+                <span className="px-4 py-2 rounded-full text-sm font-medium"
+                  style={{ background: 'rgba(244, 63, 94, 0.12)', border: '1px solid rgba(244, 63, 94, 0.3)', color: '#f43f5e' }}>
+                  Meaning: {cardLayer2MeaningLabel(state.cardLayer2.meaning_strategy)}
+                </span>
+                <span className="px-4 py-2 rounded-full text-sm font-medium"
+                  style={{ background: 'rgba(251, 191, 36, 0.12)', border: '1px solid rgba(251, 191, 36, 0.3)', color: '#fbbf24' }}>
+                  Form: {cardLayer2PresentationLabel(state.cardLayer2.presentation_form)}
+                </span>
+              </>
             )}
             <span className="px-4 py-2 rounded-full text-sm font-medium"
               style={{ background: 'rgba(13, 226, 195, 0.12)', border: '1px solid rgba(13, 226, 195, 0.3)', color: '#0de2c3' }}>

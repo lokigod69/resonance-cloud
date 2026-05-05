@@ -4,6 +4,159 @@ import { MAX_WORDS } from './wizardData'
 export type ProductLane = 'video' | 'card_standard' | 'card_premium'
 
 export type CardImageModel = 'zturbo' | 'gpt_image_2'
+export type CardLayer2MeaningStrategy =
+  | 'clear_meaning'
+  | 'exaggerated_meaning'
+  | 'absurd_hook'
+  | 'sound_mnemonic'
+
+export type CardLayer2PresentationForm =
+  | 'single_scene'
+  | 'mini_story'
+  | 'split_panel'
+  | 'word_object_design'
+
+export type CardLayer2ArtStyle =
+  | 'realistic'
+  | 'cinematic'
+  | 'editorial'
+  | 'illustration'
+  | 'anime'
+  | 'studio_ghibli_inspired'
+  | 'disney_animation_inspired'
+  | 'comic_book'
+  | 'pixel_art'
+  | 'vintage_film'
+  | 'oil_painting'
+  | 'surrealism'
+  | 'fantasy_art'
+  | 'pen_and_ink'
+  | 'charcoal_sketch'
+  | 'claymation'
+  | 'ukiyo_e'
+  | 'south_park_style'
+  | 'rick_and_morty_style'
+  | 'pixar_3d'
+
+export type StandardCardImageStyle = 'Photorealistic' | 'Editorial' | 'Random'
+export type CardImageStyle = StandardCardImageStyle | CardLayer2ArtStyle
+
+export interface CardLayer2Customization {
+  meaning_strategy: CardLayer2MeaningStrategy
+  presentation_form: CardLayer2PresentationForm
+}
+
+export interface CardLayer2Payload extends CardLayer2Customization {
+  visual_intensity: 'balanced'
+}
+
+export const DEFAULT_CARD_LAYER2: CardLayer2Customization = {
+  meaning_strategy: 'clear_meaning',
+  presentation_form: 'single_scene',
+}
+
+export const DEFAULT_CARD_LAYER2_ART_STYLE: CardLayer2ArtStyle = 'realistic'
+
+export const CARD_LAYER2_MEANING_OPTIONS: Array<{
+  value: CardLayer2MeaningStrategy
+  label: string
+  helper: string
+}> = [
+  {
+    value: 'clear_meaning',
+    label: 'Clear Meaning',
+    helper: 'Closest to Quick Generate: clean, obvious, meaning-first.',
+  },
+  {
+    value: 'exaggerated_meaning',
+    label: 'Exaggerated Meaning',
+    helper: 'Pushes the same meaning through stronger action or emotion.',
+  },
+  {
+    value: 'absurd_hook',
+    label: 'Absurd Hook',
+    helper: 'Adds an elegant strange memory hook while keeping the meaning readable.',
+  },
+  {
+    value: 'sound_mnemonic',
+    label: 'Sound Mnemonic',
+    helper: 'Uses sound, wordplay, or a phonetic bridge when available.',
+  },
+]
+
+export const CARD_LAYER2_PRESENTATION_OPTIONS: Array<{
+  value: CardLayer2PresentationForm
+  label: string
+  helper: string
+}> = [
+  {
+    value: 'single_scene',
+    label: 'Single Scene',
+    helper: 'One focused visual moment.',
+  },
+  {
+    value: 'mini_story',
+    label: 'Mini Story',
+    helper: 'A compact two- or three-beat sequence in one image.',
+  },
+  {
+    value: 'split_panel',
+    label: 'Split Panel',
+    helper: 'Two-part contrast, such as before/after or sound vs. meaning.',
+  },
+  {
+    value: 'word_object_design',
+    label: 'Word as Design',
+    helper: 'Makes the word itself part of the image as material, form, or lettering.',
+  },
+]
+
+export const CARD_LAYER2_ART_STYLE_OPTIONS: Array<{
+  value: CardLayer2ArtStyle
+  label: string
+}> = [
+  { value: 'realistic', label: 'Realistic' },
+  { value: 'cinematic', label: 'Cinematic' },
+  { value: 'editorial', label: 'Editorial' },
+  { value: 'illustration', label: 'Illustration' },
+  { value: 'anime', label: 'Anime' },
+  { value: 'studio_ghibli_inspired', label: 'Studio Ghibli-inspired' },
+  { value: 'disney_animation_inspired', label: 'Disney Animation-inspired' },
+  { value: 'comic_book', label: 'Comic Book' },
+  { value: 'pixel_art', label: 'Pixel Art' },
+  { value: 'vintage_film', label: 'Vintage Film' },
+  { value: 'oil_painting', label: 'Oil Painting' },
+  { value: 'surrealism', label: 'Surrealism' },
+  { value: 'fantasy_art', label: 'Fantasy Art' },
+  { value: 'pen_and_ink', label: 'Pen and Ink' },
+  { value: 'charcoal_sketch', label: 'Charcoal Sketch' },
+  { value: 'claymation', label: 'Claymation' },
+  { value: 'ukiyo_e', label: 'Ukiyo-e' },
+  { value: 'south_park_style', label: 'South Park' },
+  { value: 'rick_and_morty_style', label: 'Rick and Morty' },
+  { value: 'pixar_3d', label: 'Pixar 3D' },
+]
+
+export function cardLayer2MeaningLabel(value: CardLayer2MeaningStrategy): string {
+  return CARD_LAYER2_MEANING_OPTIONS.find((option) => option.value === value)?.label ?? value
+}
+
+export function cardLayer2PresentationLabel(value: CardLayer2PresentationForm): string {
+  return CARD_LAYER2_PRESENTATION_OPTIONS.find((option) => option.value === value)?.label ?? value
+}
+
+export function cardLayer2ArtStyleLabel(value: CardImageStyle | null): string {
+  if (value === 'Photorealistic') return 'Realistic'
+  return CARD_LAYER2_ART_STYLE_OPTIONS.find((option) => option.value === value)?.label ?? value ?? ''
+}
+
+export function isCardLayer2ArtStyle(value: CardImageStyle | null): value is CardLayer2ArtStyle {
+  return CARD_LAYER2_ART_STYLE_OPTIONS.some((option) => option.value === value)
+}
+
+export function isStandardCardImageStyle(value: CardImageStyle | null): value is StandardCardImageStyle {
+  return value === 'Photorealistic' || value === 'Editorial' || value === 'Random'
+}
 
 export interface WizardState {
   step: 1 | 2 | 3 | 4 | 5 | 6
@@ -17,7 +170,8 @@ export interface WizardState {
   lyricMode: string | null
   deckName: string
   productLane: ProductLane | null
-  cardImageStyle: 'Photorealistic' | 'Editorial' | 'Random' | null
+  cardImageStyle: CardImageStyle | null
+  cardLayer2: CardLayer2Customization | null
 }
 
 export type WizardAction =
@@ -33,7 +187,8 @@ export type WizardAction =
   | { type: 'SET_LYRIC_MODE'; mode: string | null }
   | { type: 'SET_DECK_NAME'; name: string }
   | { type: 'SET_PRODUCT_LANE'; lane: ProductLane | null }
-  | { type: 'SET_CARD_IMAGE_STYLE'; style: 'Photorealistic' | 'Editorial' | 'Random' | null }
+  | { type: 'SET_CARD_IMAGE_STYLE'; style: CardImageStyle | null }
+  | { type: 'SET_CARD_LAYER2'; value: Partial<CardLayer2Customization> | null }
   | { type: 'GO_TO_STEP'; step: 1 | 2 | 3 | 4 | 5 | 6 }
   | { type: 'CHOOSE_PATH'; path: 'quick' | 'custom' }
   | { type: 'NEXT_STEP' }
@@ -52,6 +207,7 @@ const initialState: WizardState = {
   deckName: '',
   productLane: null,
   cardImageStyle: null,
+  cardLayer2: null,
 }
 
 // ── Lane helpers (pure, exported for tests and callers) ─────────────────────
@@ -158,11 +314,29 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
       return {
         ...state,
         productLane: action.lane,
-        cardImageStyle: isCardLane(action.lane) ? state.cardImageStyle : null,
+        cardImageStyle:
+          action.lane === 'card_premium'
+            ? (isCardLayer2ArtStyle(state.cardImageStyle)
+                ? state.cardImageStyle
+                : DEFAULT_CARD_LAYER2_ART_STYLE)
+            : action.lane === 'card_standard'
+              ? (isStandardCardImageStyle(state.cardImageStyle) ? state.cardImageStyle : null)
+              : null,
+        cardLayer2: action.lane === 'card_premium'
+          ? (state.cardLayer2 ?? DEFAULT_CARD_LAYER2)
+          : null,
       }
 
     case 'SET_CARD_IMAGE_STYLE':
       return { ...state, cardImageStyle: action.style }
+
+    case 'SET_CARD_LAYER2':
+      return {
+        ...state,
+        cardLayer2: action.value
+          ? { ...(state.cardLayer2 ?? DEFAULT_CARD_LAYER2), ...action.value }
+          : null,
+      }
 
     case 'GO_TO_STEP':
       return { ...state, step: action.step }
@@ -210,7 +384,7 @@ export interface GeneratePayload {
     art_style: string | null
     movie_override: string | null
     words_total: number
-    settings_override: Record<string, string | undefined>
+    settings_override: Record<string, string | CardLayer2Payload | undefined>
   }
 }
 
@@ -286,6 +460,17 @@ export function buildGeneratePayload({
   const lyricMode = isCard || isQuickGenerate ? undefined : state.lyricMode || undefined
 
   const cardImageModel = laneToCardImageModel(lane)
+  const cardLayer2 = (
+    lane === 'card_premium'
+    && state.path === 'custom'
+    && !isQuickGenerate
+    && state.cardImageStyle
+  )
+    ? {
+        ...(state.cardLayer2 ?? DEFAULT_CARD_LAYER2),
+        visual_intensity: 'balanced' as const,
+      }
+    : undefined
 
   return {
     deckPayload: existingDeck
@@ -316,9 +501,10 @@ export function buildGeneratePayload({
         ...(genre ? { genre } : {}),
         ...(lyricMode ? { lyric_mode: lyricMode } : {}),
         ...(cardImageModel ? { card_image_model: cardImageModel } : {}),
-        ...(isCard && state.cardImageStyle
+        ...(isCard && !isQuickGenerate && state.cardImageStyle
           ? { card_image_style: state.cardImageStyle }
           : {}),
+        ...(cardLayer2 ? { card_layer2: cardLayer2 } : {}),
       },
     },
   }
