@@ -18,7 +18,7 @@ export type StudyWord = {
   deck_id: string
 }
 
-export type StudyMode = 'video' | 'audio' | 'flashcard'
+export type StudyMode = 'video' | 'audio' | 'flashcard' | 'canvas'
 
 type RetryItem = { wordId: string; cardsSeen: number }
 
