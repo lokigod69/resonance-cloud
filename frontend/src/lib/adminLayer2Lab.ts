@@ -8,6 +8,7 @@ import type {
 } from '@/components/generate/useWizardState'
 
 export type Layer2LabWordScope = 'selected' | 'all'
+export type Layer2LabDeckMode = 'create' | 'append'
 
 export interface Layer2LabRun {
   id: string
@@ -60,6 +61,23 @@ export interface Layer2LabResultSummary {
 
 const SOURCE: Layer2EvalPayload['source'] = 'admin_layer2_lab_v1'
 export const LAYER2_LAB_CREDITS_PER_ROW = 5
+const WORD_DESIGN_STYLES: CardLayer2ArtStyle[] = ['realistic', 'pixar_3d', 'rick_and_morty_style', 'pen_and_ink']
+const STYLE_OBEDIENCE_STYLES: CardLayer2ArtStyle[] = [
+  'rick_and_morty_style',
+  'south_park_style',
+  'pixar_3d',
+  'pen_and_ink',
+  'surrealism',
+]
+const STORY_FORM_TRIPLES: Array<{
+  meaning_strategy: CardLayer2MeaningStrategy
+  presentation_form: CardLayer2PresentationForm
+  art_style: CardLayer2ArtStyle
+}> = [
+  { meaning_strategy: 'absurd_hook', presentation_form: 'mini_story', art_style: 'surrealism' },
+  { meaning_strategy: 'sound_mnemonic', presentation_form: 'split_panel', art_style: 'illustration' },
+  { meaning_strategy: 'exaggerated_meaning', presentation_form: 'single_scene', art_style: 'cinematic' },
+]
 
 export const ADMIN_LAYER2_LAB_PRESETS: Layer2LabPreset[] = [
   {
@@ -158,13 +176,45 @@ export function buildLayer2LabRows(input: BuildLayer2LabRowsInput): Layer2LabRun
     }))
 }
 
-export function getLayer2LabPresetRows(id: Layer2LabPreset['id']): Layer2LabRun[] {
+export function getLayer2LabPresetRows(id: Layer2LabPreset['id'], currentWords: string[] = []): Layer2LabRun[] {
   const preset = ADMIN_LAYER2_LAB_PRESETS.find((item) => item.id === id)
   if (!preset) return []
-  return preset.rows.map((item, index) => ({
+  const normalizedWords = normalizeLayer2LabWords(currentWords.join('\n'))
+  const rows = normalizedWords.length > 0
+    ? buildPresetRowsFromWords(id, normalizedWords)
+    : preset.rows
+  return rows.map((item, index) => ({
     id: stableId(preset.id, item.word, item.meaning_strategy, item.presentation_form, item.art_style, String(index)),
     ...item,
   }))
+}
+
+function buildPresetRowsFromWords(
+  id: Layer2LabPreset['id'],
+  currentWords: string[],
+): Array<Omit<Layer2LabRun, 'id'>> {
+  return currentWords.map((wordText, index) => {
+    if (id === 'word_design_smoke') {
+      return row(
+        wordText,
+        'clear_meaning',
+        'word_object_design',
+        WORD_DESIGN_STYLES[index % WORD_DESIGN_STYLES.length],
+        'word design smoke',
+      )
+    }
+    if (id === 'style_obedience_smoke') {
+      return row(
+        wordText,
+        'clear_meaning',
+        'single_scene',
+        STYLE_OBEDIENCE_STYLES[index % STYLE_OBEDIENCE_STYLES.length],
+        'style obedience smoke',
+      )
+    }
+    const triple = STORY_FORM_TRIPLES[index % STORY_FORM_TRIPLES.length]
+    return row(wordText, triple.meaning_strategy, triple.presentation_form, triple.art_style, 'story form smoke')
+  })
 }
 
 export function createLayer2LabDeckName(prefix: string, isoDate = new Date().toISOString()): string {
@@ -195,6 +245,25 @@ export function createLayer2LabResultSummary(summary: Layer2LabResultSummary): L
       reason: clean(failure.reason) || 'Unknown error',
     })),
   }
+}
+
+export function isLayer2LabAppendDeck(deck: ExistingDeck | null | undefined): deck is ExistingDeck {
+  return Boolean(deck && deck.deck_type === 'card')
+}
+
+export function validateLayer2LabSubmit({
+  mode,
+  rowCount,
+  existingDeck,
+}: {
+  mode: Layer2LabDeckMode
+  rowCount: number
+  existingDeck: ExistingDeck | null | undefined
+}): string | null {
+  if (rowCount <= 0) return 'Add at least one script row before creating an evaluation deck.'
+  if (mode === 'append' && !existingDeck) return 'Select a card deck before appending lab rows.'
+  if (mode === 'append' && !isLayer2LabAppendDeck(existingDeck)) return 'Layer 2 Lab can only append to card decks.'
+  return null
 }
 
 export function buildLayer2LabPayload({

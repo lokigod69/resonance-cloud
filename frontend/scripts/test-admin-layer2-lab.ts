@@ -12,7 +12,9 @@ import {
   createLayer2LabResultSummary,
   estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
+  isLayer2LabAppendDeck,
   normalizeLayer2LabWords,
+  validateLayer2LabSubmit,
   type Layer2LabRun,
 } from '../src/lib/adminLayer2Lab.ts'
 
@@ -78,7 +80,7 @@ console.log('\n[presets]')
   const style = getLayer2LabPresetRows('style_obedience_smoke')
   const story = getLayer2LabPresetRows('story_form_smoke')
   assert('three presets are registered', ADMIN_LAYER2_LAB_PRESETS.length === 3)
-  assert('word design preset has four rows', wordDesign.length === 4, wordDesign)
+  assert('word design preset falls back to four sample rows', wordDesign.length === 4, wordDesign)
   assert('word design includes prejudice Rick/Morty row',
     wordDesign.some((row) =>
       row.word === 'prejudice'
@@ -98,6 +100,26 @@ console.log('\n[presets]')
       && row.presentation_form === 'split_panel'
     ),
     story,
+  )
+  const customWordDesign = getLayer2LabPresetRows('word_design_smoke', ['alpha', 'beta', 'gamma', 'delta', 'epsilon'])
+  assert('word design preset uses current word chips when provided',
+    customWordDesign.map((row) => row.word).join('|') === 'alpha|beta|gamma|delta|epsilon',
+    customWordDesign,
+  )
+  assert('word design style rotation is deterministic',
+    customWordDesign.map((row) => row.art_style).join('|') === 'realistic|pixar_3d|rick_and_morty_style|pen_and_ink|realistic',
+    customWordDesign,
+  )
+  const customStyle = getLayer2LabPresetRows('style_obedience_smoke', ['alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta'])
+  assert('style obedience preset rotates styles over current words',
+    customStyle.map((row) => row.art_style).join('|') === 'rick_and_morty_style|south_park_style|pixar_3d|pen_and_ink|surrealism|rick_and_morty_style',
+    customStyle,
+  )
+  const customStory = getLayer2LabPresetRows('story_form_smoke', ['alpha', 'beta', 'gamma', 'delta'])
+  assert('story preset rotates meaning/presentation/style triples over current words',
+    customStory.map((row) => `${row.meaning_strategy}/${row.presentation_form}/${row.art_style}`).join('|')
+      === 'absurd_hook/mini_story/surrealism|sound_mnemonic/split_panel/illustration|exaggerated_meaning/single_scene/cinematic|absurd_hook/mini_story/surrealism',
+    customStory,
   )
 }
 
@@ -200,6 +222,29 @@ console.log('\n[one-deck append plan]')
     second.jobPayload.settings_override.layer2_eval?.script_index === 2,
     second.jobPayload.settings_override,
   )
+  const third = buildLayer2LabPayload({
+    row: firstRow,
+    scriptIndex: 3,
+    userId: USER,
+    targetLanguage: 'English',
+    deckName,
+    existingDeck: {
+      id: 'deck-123',
+      name: deckName,
+      target_language: 'Spanish',
+      art_style: null,
+      movie_override: null,
+      word_count: 9,
+      deck_type: 'card',
+      last_card_image_model: 'gpt_image_2',
+    },
+  })
+  assert('append mode uses existing deck language and deck id for every row',
+    third.deckPayload === null
+      && third.jobPayload.deck_id === 'deck-123'
+      && third.jobPayload.target_language === 'Spanish',
+    third,
+  )
 }
 
 console.log('\n[cost and failure summary]')
@@ -221,6 +266,36 @@ console.log('\n[cost and failure summary]')
   assert('partial failure summary exposes failed row reason',
     summary.failedRows[0]?.label === 'story row' && summary.failedRows[0]?.reason === 'network timeout',
     summary,
+  )
+}
+
+console.log('\n[append validation]')
+{
+  const cardDeck = {
+    id: 'deck-card',
+    name: 'Card Deck',
+    target_language: 'English',
+    art_style: null,
+    movie_override: null,
+    word_count: 3,
+    deck_type: 'card' as const,
+    last_card_image_model: 'gpt_image_2' as const,
+  }
+  const videoDeck = {
+    ...cardDeck,
+    id: 'deck-video',
+    deck_type: 'video' as const,
+  }
+  assert('card decks are accepted for append', isLayer2LabAppendDeck(cardDeck), cardDeck)
+  assert('video decks are rejected for append', !isLayer2LabAppendDeck(videoDeck), videoDeck)
+  assert('append mode requires selected deck',
+    validateLayer2LabSubmit({ mode: 'append', rowCount: 1, existingDeck: null }) === 'Select a card deck before appending lab rows.',
+  )
+  assert('append mode accepts selected card deck',
+    validateLayer2LabSubmit({ mode: 'append', rowCount: 1, existingDeck: cardDeck }) === null,
+  )
+  assert('create-new mode does not require selected deck',
+    validateLayer2LabSubmit({ mode: 'create', rowCount: 1, existingDeck: null }) === null,
   )
 }
 

@@ -1,11 +1,12 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Beaker, Plus, RefreshCw, Trash2 } from 'lucide-react'
+import { Beaker, Loader2, Plus, RefreshCw, Trash2 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useToast } from '@/components/Toast'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { supabase } from '@/lib/supabase'
 import {
   Select,
   SelectContent,
@@ -34,7 +35,10 @@ import {
   createLayer2LabDeckName,
   estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
+  isLayer2LabAppendDeck,
   normalizeLayer2LabWords,
+  validateLayer2LabSubmit,
+  type Layer2LabDeckMode,
   type Layer2LabRun,
   type Layer2LabResultSummary,
   type Layer2LabWordScope,
@@ -42,9 +46,14 @@ import {
 import { BASE_LANGUAGES, WIZARD_LANGUAGES } from '@/lib/languages'
 
 const TARGET_LANGUAGES = WIZARD_LANGUAGES
+const LAB_SELECT_CONTENT_CLASS = 'z-[90] max-h-72 border-white/15 bg-[#0b0b10] text-white shadow-2xl'
 
 function languageLabel(lang: { value: string; nativeName: string }) {
   return lang.nativeName === lang.value ? lang.value : `${lang.nativeName} (${lang.value})`
+}
+
+function deckLabel(deck: ExistingDeck): string {
+  return deck.name || `${deck.target_language} Card Deck`
 }
 
 export default function Layer2Lab() {
@@ -52,7 +61,11 @@ export default function Layer2Lab() {
   const { toast } = useToast()
   const [targetLanguage, setTargetLanguage] = useState('English')
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || 'English')
+  const [deckMode, setDeckMode] = useState<Layer2LabDeckMode>('create')
   const [deckNamePrefix, setDeckNamePrefix] = useState('Layer2 Lab')
+  const [existingDecks, setExistingDecks] = useState<ExistingDeck[]>([])
+  const [selectedExistingDeckId, setSelectedExistingDeckId] = useState<string | null>(null)
+  const [loadingDecks, setLoadingDecks] = useState(false)
   const [wordDraft, setWordDraft] = useState('')
   const [words, setWords] = useState<string[]>([])
   const [selectedWord, setSelectedWord] = useState<string | null>(null)
@@ -73,7 +86,58 @@ export default function Layer2Lab() {
     () => createLayer2LabDeckName(deckNamePrefix),
     [deckNamePrefix],
   )
+  const selectedExistingDeck = useMemo(
+    () => existingDecks.find((deck) => deck.id === selectedExistingDeckId) ?? null,
+    [existingDecks, selectedExistingDeckId],
+  )
   const estimatedCredits = estimateLayer2LabCreditCost(scriptRows.length)
+
+  useEffect(() => {
+    if (!user || deckMode !== 'append') return
+    const userId = user.id
+    let cancelled = false
+    setLoadingDecks(true)
+    async function loadAppendDecks() {
+      try {
+        const { data, error } = await supabase
+          .from('decks')
+          .select('id, name, target_language, art_style, movie_override, word_count, deck_type')
+          .eq('user_id', userId)
+          .eq('deck_type', 'card')
+          .order('updated_at', { ascending: false })
+          .limit(50)
+        if (cancelled) return
+        if (error) {
+          console.error('Failed to load Layer 2 Lab append decks:', error)
+          setExistingDecks([])
+          setSelectedExistingDeckId(null)
+          return
+        }
+        const decks: ExistingDeck[] = (data ?? [])
+          .filter((deck) => deck.deck_type === 'card')
+          .map((deck) => ({
+            id: deck.id,
+            name: deck.name ?? null,
+            target_language: deck.target_language,
+            art_style: deck.art_style ?? null,
+            movie_override: deck.movie_override ?? null,
+            word_count: deck.word_count ?? 0,
+            deck_type: 'card',
+            last_card_image_model: 'gpt_image_2',
+          }))
+        setExistingDecks(decks)
+        setSelectedExistingDeckId((current) =>
+          current && decks.some((deck) => deck.id === current) ? current : null,
+        )
+      } finally {
+        if (!cancelled) setLoadingDecks(false)
+      }
+    }
+    void loadAppendDecks()
+    return () => {
+      cancelled = true
+    }
+  }, [deckMode, user])
 
   function addWordsFromDraft() {
     const nextWords = normalizeLayer2LabWords(wordDraft)
@@ -115,7 +179,7 @@ export default function Layer2Lab() {
   }
 
   function addPreset(id: (typeof ADMIN_LAYER2_LAB_PRESETS)[number]['id']) {
-    const rows = getLayer2LabPresetRows(id).map((row) => ({ ...row, id: crypto.randomUUID() }))
+    const rows = getLayer2LabPresetRows(id, words).map((row) => ({ ...row, id: crypto.randomUUID() }))
     setScriptRows((prev) => [...prev, ...rows])
     setWords((prev) => {
       const seen = new Set(prev.map((word) => word.toLowerCase()))
@@ -132,13 +196,25 @@ export default function Layer2Lab() {
 
   async function createEvaluationDeck() {
     if (!user || scriptRows.length === 0) return
+    const validation = validateLayer2LabSubmit({
+      mode: deckMode,
+      rowCount: scriptRows.length,
+      existingDeck: selectedExistingDeck,
+    })
+    if (validation) {
+      toast(validation, 'error')
+      return
+    }
     setSubmitting(true)
     setCreatedDeckId(null)
     setCreatedDeckName(null)
     setResultSummary(null)
-    const deckName = createLayer2LabDeckName(deckNamePrefix)
-    let deck: ExistingDeck | undefined
-    let deckId: string | null = null
+    const startingDeck = deckMode === 'append' && isLayer2LabAppendDeck(selectedExistingDeck)
+      ? selectedExistingDeck
+      : undefined
+    const deckName = startingDeck ? deckLabel(startingDeck) : createLayer2LabDeckName(deckNamePrefix)
+    let deck: ExistingDeck | undefined = startingDeck
+    let deckId: string | null = startingDeck?.id ?? null
     let submittedRows = 0
     const failedRows: Layer2LabResultSummary['failedRows'] = []
 
@@ -172,7 +248,7 @@ export default function Layer2Lab() {
             label: row.label,
             reason: err instanceof Error ? err.message : 'Failed to submit row',
           })
-          if (!deckId) break
+          if (deckMode === 'create' && !deckId) break
         }
       }
       setCreatedDeckId(deckId)
@@ -227,8 +303,8 @@ export default function Layer2Lab() {
               <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Target language</span>
                 <Select value={targetLanguage} onValueChange={setTargetLanguage}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
                     {TARGET_LANGUAGES.map((lang) => (
                       <SelectItem key={lang.value} value={lang.value}>{languageLabel(lang)}</SelectItem>
                     ))}
@@ -238,8 +314,8 @@ export default function Layer2Lab() {
               <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Base language</span>
                 <Select value={baseLanguage} onValueChange={setBaseLanguage}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
                     {BASE_LANGUAGES.map((lang) => (
                       <SelectItem key={lang.value} value={lang.value}>{languageLabel(lang)}</SelectItem>
                     ))}
@@ -250,10 +326,48 @@ export default function Layer2Lab() {
                 </span>
               </label>
               <label className="space-y-1 text-sm">
-                <span className="text-muted-foreground">Deck name prefix</span>
-                <Input value={deckNamePrefix} onChange={(event) => setDeckNamePrefix(event.target.value)} />
+                <span className="text-muted-foreground">Mode</span>
+                <Select value={deckMode} onValueChange={(value) => setDeckMode(value as Layer2LabDeckMode)}>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
+                    <SelectItem value="create">Create new evaluation deck</SelectItem>
+                    <SelectItem value="append">Append to existing deck</SelectItem>
+                  </SelectContent>
+                </Select>
               </label>
-              <p className="text-xs text-muted-foreground">Preview: {deckNamePreview}</p>
+              {deckMode === 'append' ? (
+                <label className="space-y-1 text-sm">
+                  <span className="text-muted-foreground">Existing card deck</span>
+                  <Select
+                    value={selectedExistingDeckId ?? undefined}
+                    onValueChange={setSelectedExistingDeckId}
+                    disabled={loadingDecks || existingDecks.length === 0}
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder={loadingDecks ? 'Loading card decks...' : 'Select a card deck'} />
+                    </SelectTrigger>
+                    <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
+                      {existingDecks.map((deck) => (
+                        <SelectItem key={deck.id} value={deck.id}>
+                          {deckLabel(deck)} - {deck.target_language} - {deck.word_count} cards
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                    {loadingDecks ? <Loader2 className="h-3 w-3 animate-spin" /> : null}
+                    Only card decks are available for Layer 2 Lab appends.
+                  </span>
+                </label>
+              ) : (
+                <>
+                  <label className="space-y-1 text-sm">
+                    <span className="text-muted-foreground">Deck name prefix</span>
+                    <Input value={deckNamePrefix} onChange={(event) => setDeckNamePrefix(event.target.value)} />
+                  </label>
+                  <p className="text-xs text-muted-foreground">Preview: {deckNamePreview}</p>
+                </>
+              )}
             </div>
           </Card>
 
@@ -327,8 +441,8 @@ export default function Layer2Lab() {
               <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Word scope</span>
                 <Select value={wordScope} onValueChange={(value) => setWordScope(value as Layer2LabWordScope)}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
                     <SelectItem value="selected">One selected word</SelectItem>
                     <SelectItem value="all">All words</SelectItem>
                   </SelectContent>
@@ -337,8 +451,8 @@ export default function Layer2Lab() {
               <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Meaning strategy</span>
                 <Select value={meaningStrategy} onValueChange={(value) => setMeaningStrategy(value as CardLayer2MeaningStrategy)}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
                     {CARD_LAYER2_MEANING_OPTIONS.map((option) => (
                       <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
                     ))}
@@ -348,8 +462,8 @@ export default function Layer2Lab() {
               <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Presentation form</span>
                 <Select value={presentationForm} onValueChange={(value) => setPresentationForm(value as CardLayer2PresentationForm)}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
                     {CARD_LAYER2_PRESENTATION_OPTIONS.map((option) => (
                       <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
                     ))}
@@ -359,8 +473,8 @@ export default function Layer2Lab() {
               <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Art style</span>
                 <Select value={artStyle} onValueChange={(value) => setArtStyle(value as CardLayer2ArtStyle)}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
                     {CARD_LAYER2_ART_STYLE_OPTIONS.map((option) => (
                       <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
                     ))}
@@ -391,7 +505,7 @@ export default function Layer2Lab() {
                 disabled={scriptRows.length === 0 || submitting}
               >
                 {submitting ? <RefreshCw className="h-4 w-4 animate-spin" /> : null}
-                Create Evaluation Deck
+                {deckMode === 'append' ? 'Append To Evaluation Deck' : 'Create Evaluation Deck'}
               </Button>
             </div>
             <div className="overflow-x-auto">
