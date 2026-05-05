@@ -362,6 +362,11 @@ class CardWorker:
                     or getattr(manifest.enrichment, "renderer_profile_source", None)
                     or "auto"
                 ),
+                layer2_customization=(
+                    images_settings.get("card_layer2")
+                    if isinstance(images_settings.get("card_layer2"), dict)
+                    else None
+                ),
                 single_image_teachable=(
                     visual_card_plan.get("single_image_teachable")
                     if visual_card_plan.get("single_image_teachable") is not None

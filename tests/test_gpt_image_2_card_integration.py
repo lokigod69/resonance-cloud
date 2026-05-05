@@ -295,6 +295,31 @@ def test_card_image_model_validator_accepts_known_values_and_rejects_typos():
         _card_payload(tmp_path=Path("."), image_model="typo_value")
 
 
+def test_structured_card_layer2_settings_route_to_images_settings():
+    from job_runner import merge_settings
+
+    layer2 = {
+        "meaning_strategy": "absurd_hook",
+        "presentation_form": "mini_story",
+        "visual_intensity": "cinematic",
+    }
+
+    merged = merge_settings(
+        profile_settings={},
+        art_style=None,
+        movie_override=None,
+        settings_override={
+            "card_image_model": "gpt_image_2",
+            "card_layer2": layer2,
+            "card_image_style": "surrealism",
+        },
+    )
+
+    assert merged["images"]["card_image_model"] == "gpt_image_2"
+    assert merged["images"]["card_layer2"] == layer2
+    assert ImageSettings(card_layer2=layer2).card_layer2 == layer2
+
+
 def test_resolve_card_model_id_rejects_unknown_values():
     from cloud_engines.image_engine.card_engine import _resolve_card_model_id
 
@@ -516,3 +541,131 @@ def test_card_worker_persists_gpt_scene_metadata_separately(monkeypatch, tmp_pat
     assert metadata["image_scene"] == metadata["card_scene_displayed"]
     assert metadata["mnemonic"] == "Home pulls at you from far away."
     assert updates[-1]["mnemonic"] == "Home pulls at you from far away."
+
+
+def test_card_worker_passes_layer2_settings_and_persists_layer2_metadata(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.card_models import CardImageResult
+    from src.orchestration import card_worker as card_worker_mod
+    from src.orchestration.card_worker import CardWorker
+    from src.orchestration import state
+
+    updates: list[dict[str, object]] = []
+    layer2 = {
+        "meaning_strategy": "absurd_hook",
+        "presentation_form": "mini_story",
+        "visual_intensity": "cinematic",
+    }
+
+    class _Table:
+        def update(self, data):
+            updates.append(data)
+            return self
+
+        def eq(self, *_args):
+            return self
+
+        def execute(self):
+            return type("Resp", (), {"data": updates[-1:]})()
+
+    class _Supabase:
+        def table(self, name):
+            assert name == "words"
+            return _Table()
+
+    def fake_generate_card_image(payload):
+        assert payload.content.layer2_customization == layer2
+        assert payload.card_image_style == "surrealism"
+        return CardImageResult(
+            status="success",
+            image_path=str(tmp_path / "card.png"),
+            displayed_mnemonic="Home pulls at you from far away.",
+            gpt_image_2_card_metadata={
+                "prompt_version": "quick_generate_v1",
+                "renderer_profile": "cinematic_memory",
+                "renderer_profile_source": "user_override",
+                "image_scene": "A raincoat hangs by a door under cool morning light.",
+                "card_scene_displayed": "A raincoat hangs by a door under cool morning light.",
+                "mnemonic": "Home pulls at you from far away.",
+                "displayed_mnemonic": "Home pulls at you from far away.",
+                "mnemonic_confidence": "helpful",
+                "layer2_user_choices": layer2,
+                "layer2_resolved": {
+                    "meaning_strategy": "absurd_hook",
+                    "presentation_form": "mini_story",
+                    "renderer_profile": "cinematic_memory",
+                },
+                "layer2_snap_notes": [],
+                "image_bridge": "Memory logic: three compact beats make homesickness memorable.",
+                "text_embedding_mode": "none",
+                "layer2_candidate_text_mode": False,
+                "final_provider_prompt_sha256": "abc123",
+                "answer_visibility": "hidden",
+            },
+        )
+
+    monkeypatch.setattr(card_engine, "generate_card_image", fake_generate_card_image)
+
+    async def fake_upload(self, **_kwargs):
+        return "https://cdn/card.png", None
+
+    monkeypatch.setattr(CardWorker, "_upload_card_image", fake_upload)
+
+    async def _transition(*_args, **_kwargs):
+        return True
+
+    monkeypatch.setattr(state, "transition_stage", _transition)
+    monkeypatch.setattr(card_worker_mod, "write_event_row", lambda **_kwargs: None)
+    (tmp_path / "card.png").write_bytes(b"png")
+
+    worker = CardWorker(_Supabase(), card_queue=asyncio.Queue())
+    ok, error = _run(
+        worker._generate_card_image(
+            {
+                "id": "word-1",
+                "word": "Heimweh",
+                "translation": "homesickness",
+                "user_id": "user-1",
+                "deck_id": "deck-1",
+                "generation_job_id": "job-1",
+                "stage_attempts": 1,
+                "metadata": {
+                    "visual_card_plan": {
+                        "image_scene": "A raincoat hangs by a door under cool morning light.",
+                        "mnemonic": "Home pulls at you from far away.",
+                        "mnemonic_confidence": "helpful",
+                        "text_embedding_mode": "none",
+                        "renderer_profile": "balanced_teaching",
+                        "renderer_profile_source": "auto",
+                    }
+                },
+            },
+            {
+                "manifest": Manifest(
+                    word_original="Heimweh",
+                    word_slug="heimweh",
+                    translation="homesickness",
+                    language="German",
+                    language_code="de",
+                    created_at="2026-05-04T00:00:00Z",
+                    updated_at="2026-05-04T00:00:00Z",
+                ),
+                "settings": {
+                    "images": {
+                        "card_image_model": "gpt_image_2",
+                        "card_image_style": "surrealism",
+                        "card_layer2": layer2,
+                    }
+                },
+                "word_slug": "heimweh",
+                "word_dir": tmp_path,
+            },
+        )
+    )
+
+    assert ok is True
+    assert error is None
+    metadata = updates[-1]["metadata"]["gpt_image_2_card"]
+    assert metadata["layer2_user_choices"] == layer2
+    assert metadata["layer2_resolved"]["renderer_profile"] == "cinematic_memory"
+    assert metadata["image_bridge"].startswith("Memory logic:")

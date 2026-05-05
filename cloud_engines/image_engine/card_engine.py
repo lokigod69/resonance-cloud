@@ -124,6 +124,7 @@ def _resolve_card_model_id(image_model: str) -> str:
 
 
 def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict:
+    from .card_layer2 import resolve_layer2
     from .gpt_card_prompts import (
         build_gpt_image_2_card_metadata,
         build_gpt_image_2_prompt,
@@ -131,6 +132,41 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
     from .gpt_image_2_provider import render_scene_gpt_image_2
 
     image_scene = payload.content.image_scene or payload.content.mnemonic
+    layer2 = resolve_layer2(
+        payload.content.layer2_customization,
+        word_facts={
+            "word": payload.content.word,
+            "translation": payload.content.translation,
+            "image_scene": image_scene,
+            "mnemonic": payload.content.mnemonic,
+            "bridge_mnemonic": payload.content.bridge_mnemonic,
+            "etymology": payload.content.etymology,
+            "dominant_emotional_reading": payload.content.dominant_emotional_reading,
+        },
+        art_style=payload.card_image_style,
+    )
+    renderer_profile = (
+        layer2.resolved["renderer_profile"] if layer2 else payload.content.renderer_profile
+    )
+    renderer_profile_source = (
+        layer2.resolved["renderer_profile_source"]
+        if layer2
+        else payload.content.renderer_profile_source
+    )
+    composition = (
+        layer2.resolved["composition"]
+        if layer2
+        else payload.content.composition or payload.content.composition_hint
+    )
+    treatment = (
+        layer2.resolved["treatment"]
+        if layer2
+        else payload.content.treatment or payload.content.treatment_hint
+    )
+    creative_mode = layer2.resolved["creative_mode"] if layer2 else payload.content.creative_mode
+    text_embedding_mode = (
+        layer2.resolved["text_embedding_mode"] if layer2 else payload.content.text_embedding_mode
+    )
     prompt_text = build_gpt_image_2_prompt(
         word=payload.content.word,
         translation=payload.content.translation,
@@ -140,32 +176,40 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         mnemonic=payload.content.mnemonic,
         mnemonic_confidence=payload.content.mnemonic_confidence,
         dominant_emotional_reading=payload.content.dominant_emotional_reading,
-        composition_hint=payload.content.composition or payload.content.composition_hint,
-        treatment_hint=payload.content.treatment or payload.content.treatment_hint,
+        composition_hint=composition,
+        treatment_hint=treatment,
         card_image_style=payload.card_image_style,
-        renderer_profile=payload.content.renderer_profile,
-        renderer_profile_source=payload.content.renderer_profile_source,
-        creative_mode=payload.content.creative_mode,
-        text_embedding_mode=payload.content.text_embedding_mode,
+        renderer_profile=renderer_profile,
+        renderer_profile_source=renderer_profile_source,
+        creative_mode=creative_mode,
+        text_embedding_mode=text_embedding_mode,
         register_note=payload.content.register_note,
+        image_bridge=layer2.image_bridge if layer2 else None,
+        style_directive=layer2.style_directive if layer2 else None,
+        text_directive=layer2.text_directive if layer2 else None,
+        allow_target_word_in_prompt=layer2.allow_target_word_in_prompt if layer2 else False,
     )
     card_metadata = build_gpt_image_2_card_metadata(
         final_provider_prompt=prompt_text,
-        renderer_profile=payload.content.renderer_profile,
-        renderer_profile_source=payload.content.renderer_profile_source,
+        renderer_profile=renderer_profile,
+        renderer_profile_source=renderer_profile_source,
         image_scene=image_scene,
         mnemonic=payload.content.mnemonic,
         mnemonic_confidence=payload.content.mnemonic_confidence,
         etymology=payload.content.etymology,
         usage_example=payload.content.usage_example,
-        composition=payload.content.composition or payload.content.composition_hint,
-        treatment=payload.content.treatment or payload.content.treatment_hint,
-        creative_mode=payload.content.creative_mode,
-        text_embedding_mode=payload.content.text_embedding_mode,
+        composition=composition,
+        treatment=treatment,
+        creative_mode=creative_mode,
+        text_embedding_mode=text_embedding_mode,
         single_image_teachable=payload.content.single_image_teachable,
         dominant_emotional_reading=payload.content.dominant_emotional_reading,
         register_note=payload.content.register_note,
         rationale_summary=payload.content.rationale_summary,
+        layer2_user_choices=layer2.user_choices if layer2 else None,
+        layer2_resolved=layer2.resolved if layer2 else None,
+        layer2_snap_notes=layer2.snap_notes if layer2 else None,
+        image_bridge=layer2.image_bridge if layer2 else None,
     )
     request_payload = {
         "model": "gpt-image-2-text-to-image",

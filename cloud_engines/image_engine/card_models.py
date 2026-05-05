@@ -62,6 +62,7 @@ class CardImageContent(BaseModel):
     text_embedding_mode: Optional[str] = None
     renderer_profile: Optional[str] = None
     renderer_profile_source: Optional[str] = None
+    layer2_customization: Optional[dict[str, Any]] = None
     single_image_teachable: Optional[bool] = None
     register_note: Optional[str] = None
     rationale_summary: Optional[str] = None

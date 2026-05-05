@@ -207,3 +207,131 @@ def test_null_mnemonic_confidence_suppresses_displayed_mnemonic():
 
     assert metadata["mnemonic"] is None
     assert metadata["displayed_mnemonic"] is None
+
+
+def test_layer2_image_bridge_appears_between_scene_and_answer_hidden_sentence():
+    image_bridge = "Memory logic: one absurd scene makes the meaning stick."
+    prompt = _prompt(image_bridge=image_bridge)
+
+    scene_index = prompt.index("Scene:")
+    bridge_index = prompt.index(image_bridge)
+    answer_index = prompt.index("Do not write the target word")
+    assert scene_index < bridge_index < answer_index
+
+
+def test_layer2_text_directive_follows_image_bridge_for_word_object_design():
+    image_bridge = 'Memory logic: render "Heimweh" as a sculptural object.'
+    text_directive = "Render the target word as physical material; never write the translation."
+    prompt = _prompt(
+        word="Heimweh",
+        translation="homesickness",
+        image_bridge=image_bridge,
+        text_directive=text_directive,
+        allow_target_word_in_prompt=True,
+    )
+
+    assert prompt.index(image_bridge) < prompt.index(text_directive)
+    assert "Heimweh" in prompt
+    assert "You may render the target word as instructed" in prompt
+    assert "Do not write the target word" not in prompt
+    assert "direct answer/translation" in prompt
+
+
+def test_layer2_prompt_still_bans_target_word_except_word_object_design():
+    prompt = _prompt(
+        word="Heimweh",
+        translation="homesickness",
+        image_scene="A suitcase with Heimweh written on it waits by the door.",
+        image_bridge="Memory logic: Heimweh should feel like longing for home.",
+        allow_target_word_in_prompt=False,
+    )
+    embedded_prompt = _prompt(
+        word="Heimweh",
+        translation="homesickness",
+        image_scene="A suitcase waits by the door.",
+        image_bridge='Memory logic: render "Heimweh" as a sculptural object.',
+        allow_target_word_in_prompt=True,
+    )
+
+    assert "Heimweh" not in prompt
+    assert "Heimweh" in embedded_prompt
+    assert "direct answer/translation" in embedded_prompt
+
+
+def test_layer2_prompt_with_bridge_style_and_long_scene_stays_under_cap():
+    long_scene = " ".join(
+        f"detail{i} with elaborate visual texture and background action"
+        for i in range(120)
+    )
+    prompt = _prompt(
+        word="ausweichen",
+        translation="to dodge",
+        image_scene=long_scene,
+        image_bridge="Memory logic: a split-panel contrast makes the dodge readable.",
+        style_directive="Style: dreamlike surreal composition but still readable.",
+    )
+
+    assert len(prompt) <= PROMPT_HARD_CAP
+    assert "Memory logic:" in prompt
+    assert "Style:" in prompt
+    assert "direct answer/translation" in prompt
+
+
+def test_layer2_metadata_records_user_choices_resolution_notes_and_bridge():
+    prompt = _prompt(image_bridge="Memory logic: a compact bridge.")
+    metadata = build_gpt_image_2_card_metadata(
+        final_provider_prompt=prompt,
+        renderer_profile="balanced_teaching",
+        renderer_profile_source="user_override",
+        image_scene="A clean scene.",
+        mnemonic="A mnemonic.",
+        mnemonic_confidence="helpful",
+        composition="multi_panel",
+        treatment="absurd",
+        creative_mode="multi_panel_sequence",
+        text_embedding_mode="none",
+        layer2_user_choices={
+            "meaning_strategy": "absurd_hook",
+            "presentation_form": "mini_story",
+            "visual_intensity": "balanced",
+        },
+        layer2_resolved={
+            "meaning_strategy": "absurd_hook",
+            "presentation_form": "mini_story",
+            "renderer_profile": "balanced_teaching",
+        },
+        layer2_snap_notes=["example note"],
+        image_bridge="Memory logic: a compact bridge.",
+    )
+
+    assert metadata["layer2_user_choices"]["meaning_strategy"] == "absurd_hook"
+    assert metadata["layer2_resolved"]["presentation_form"] == "mini_story"
+    assert metadata["layer2_snap_notes"] == ["example note"]
+    assert metadata["image_bridge"] == "Memory logic: a compact bridge."
+
+
+def test_quick_generate_default_prompt_unchanged_when_card_layer2_absent():
+    base = _prompt(card_image_style="Photorealistic")
+    absent_layer2 = _prompt(
+        card_image_style="surrealism",
+        card_layer2=None,
+        image_bridge=None,
+        style_directive=None,
+        text_directive=None,
+    )
+
+    assert absent_layer2 == base
+    metadata = build_gpt_image_2_card_metadata(
+        final_provider_prompt=absent_layer2,
+        renderer_profile="balanced_teaching",
+        renderer_profile_source="auto",
+        image_scene="A clean scene.",
+        mnemonic=None,
+        mnemonic_confidence=None,
+        composition="single",
+        treatment="literal",
+        creative_mode="clean_iconic",
+        text_embedding_mode="none",
+    )
+    assert metadata["renderer_profile"] == "balanced_teaching"
+    assert "layer2_user_choices" not in metadata
