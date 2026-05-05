@@ -64,7 +64,7 @@ export const IMAGE_FIELDS: FieldDef[] = [
   { key: 'movie_override', label: 'Movie', type: 'text', placeholder: 'Auto-pick (leave empty)', helper: 'Constrain all scenes to this movie', condition: s => s.creative_direction === 'movie' || s.creative_direction === 'movie_remix' },
   { key: 'visual_reference', label: 'Visual Reference', type: 'dropdown', options: ['auto', 'etymology', 'mnemonic', 'none'], default: 'none' },
   { key: 'frame_narrative', label: 'Frame Narrative', type: 'dropdown', options: ['auto', 'scale', 'action', 'environment', 'narrative', 'context', 'collection'], default: 'auto' },
-  { key: 'clip_duration', label: 'Clip Duration', type: 'slider', min: 6, max: 30, step: 1, default: 15, helper: 'Total generated clip length. Concept, song, storyboard, and video timing derive from this.' },
+  { key: 'clip_duration', label: 'Clip Duration', type: 'slider', min: 6, max: 30, step: 1, default: 15, helper: 'Generated animated scene/video duration. Final uploaded video may be longer because Suno fade/card tail and bookend/pronunciation can add time.' },
   { key: 'image_count', label: 'Image Count', type: 'dropdown', options: ['auto', 1, 2, 3], default: 'auto' },
   { key: 'art_style', label: 'Art Style', type: 'combo', options: ['none', 'auto', 'random'], comboPresetGroups: [
     { label: 'Photographic', items: ['photorealistic', 'noir', 'vintage_film', 'double_exposure', 'polaroid'] },
