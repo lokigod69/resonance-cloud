@@ -69,8 +69,8 @@ export const LAYER2_BACKEND_TEMPLATE_OPTIONS: Array<{
   value: CardLayer2BackendTemplate
   label: string
 }> = [
-  { value: 'structured_plan_v1', label: 'Structured Plan' },
-  { value: 'direct_prompt_v1', label: 'Direct Prompt' },
+  { value: 'structured_plan_v1', label: 'Compiler V1' },
+  { value: 'direct_prompt_v1', label: 'LLM V1' },
 ]
 export const LAYER2_LAB_CREDITS_PER_ROW = 5
 const WORD_DESIGN_STYLES: CardLayer2ArtStyle[] = ['realistic', 'pixar_3d', 'rick_and_morty_style', 'pen_and_ink']
@@ -90,6 +90,10 @@ const STORY_FORM_TRIPLES: Array<{
   { meaning_strategy: 'sound_mnemonic', presentation_form: 'split_panel', art_style: 'illustration' },
   { meaning_strategy: 'exaggerated_meaning', presentation_form: 'single_scene', art_style: 'cinematic' },
 ]
+
+export function layer2BackendTemplateLabel(value: CardLayer2BackendTemplate | string | null | undefined): string {
+  return LAYER2_BACKEND_TEMPLATE_OPTIONS.find((option) => option.value === value)?.label ?? value ?? ''
+}
 
 export const ADMIN_LAYER2_LAB_PRESETS: Layer2LabPreset[] = [
   {

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from '@/components/admin/observability/observability.module.css'
+import { layer2BackendTemplateLabel } from '@/lib/adminLayer2Lab'
 import {
   fetchFailedEvents,
   fetchFailureCountsByStage,
@@ -26,7 +27,7 @@ function formatTimestamp(iso: string) {
 
 function backendTemplate(event: PipelineEvent): string | null {
   const value = event.metadata?.backend_template
-  return typeof value === 'string' && value.trim() ? value : null
+  return typeof value === 'string' && value.trim() ? layer2BackendTemplateLabel(value) : null
 }
 
 export default function ObservabilityAggregate() {

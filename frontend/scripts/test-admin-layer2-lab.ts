@@ -5,6 +5,9 @@
  */
 
 import {
+  cardLayer2MeaningLabel,
+} from '../src/components/generate/useWizardState.ts'
+import {
   ADMIN_LAYER2_LAB_PRESETS,
   buildLayer2LabPayload,
   buildLayer2LabRows,
@@ -13,6 +16,8 @@ import {
   estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
   isLayer2LabAppendDeck,
+  layer2BackendTemplateLabel,
+  LAYER2_BACKEND_TEMPLATE_OPTIONS,
   layer2VariantSlugForRow,
   normalizeLayer2LabWords,
   validateLayer2LabSubmit,
@@ -34,6 +39,17 @@ function assert(name: string, cond: boolean, detail?: unknown) {
 }
 
 const USER = '00000000-0000-0000-0000-000000000001'
+
+console.log('\n[friendly labels]')
+{
+  assert('direct_prompt_v1 renders as LLM V1', layer2BackendTemplateLabel('direct_prompt_v1') === 'LLM V1')
+  assert('structured_plan_v1 renders as Compiler V1', layer2BackendTemplateLabel('structured_plan_v1') === 'Compiler V1')
+  assert('backend template options use friendly labels',
+    LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => option.label).join('|') === 'Compiler V1|LLM V1',
+    LAYER2_BACKEND_TEMPLATE_OPTIONS,
+  )
+  assert('sound_mnemonic renders as Mnemonic Hook', cardLayer2MeaningLabel('sound_mnemonic') === 'Mnemonic Hook')
+}
 
 console.log('\n[word normalization]')
 {

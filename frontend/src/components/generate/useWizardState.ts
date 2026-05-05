@@ -96,8 +96,8 @@ export const CARD_LAYER2_MEANING_OPTIONS: Array<{
   },
   {
     value: 'sound_mnemonic',
-    label: 'Sound Mnemonic',
-    helper: 'Uses sound, wordplay, or a phonetic bridge when available.',
+    label: 'Mnemonic Hook',
+    helper: 'Uses the best available memory bridge: sound, wordplay, roots, etymology, metaphor, or clear meaning.',
   },
 ]
 

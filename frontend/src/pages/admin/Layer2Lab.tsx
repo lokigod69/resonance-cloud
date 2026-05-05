@@ -38,6 +38,7 @@ import {
   estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
   isLayer2LabAppendDeck,
+  layer2BackendTemplateLabel,
   LAYER2_BACKEND_TEMPLATE_OPTIONS,
   normalizeLayer2LabWords,
   validateLayer2LabSubmit,
@@ -49,7 +50,7 @@ import {
 import { BASE_LANGUAGES, WIZARD_LANGUAGES } from '@/lib/languages'
 
 const TARGET_LANGUAGES = WIZARD_LANGUAGES
-const LAB_SELECT_CONTENT_CLASS = 'z-[90] max-h-72 border-white/15 bg-[#0b0b10] text-white shadow-2xl'
+const LAB_SELECT_CONTENT_CLASS = 'z-[999] max-h-72 overflow-y-auto border border-white/20 !bg-[#05050a] !text-white shadow-[0_24px_80px_rgba(0,0,0,0.85)] backdrop-blur-none'
 
 function languageLabel(lang: { value: string; nativeName: string }) {
   return lang.nativeName === lang.value ? lang.value : `${lang.nativeName} (${lang.value})`
@@ -546,7 +547,7 @@ export default function Layer2Lab() {
                       <td className="py-2 pr-3">{cardLayer2PresentationLabel(row.presentation_form)}</td>
                       <td className="py-2 pr-3">{cardLayer2ArtStyleLabel(row.art_style)}</td>
                       <td className="py-2 pr-3">
-                        {LAYER2_BACKEND_TEMPLATE_OPTIONS.find((option) => option.value === row.backend_template)?.label ?? row.backend_template}
+                        {layer2BackendTemplateLabel(row.backend_template)}
                       </td>
                       <td className="py-2 pr-3">{row.label || '—'}</td>
                       <td className="py-2 pr-3">

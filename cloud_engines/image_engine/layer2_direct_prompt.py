@@ -103,15 +103,15 @@ def build_direct_prompt_system_prompt() -> str:
         "The image must make the word memorable through the selected strategy and presentation form. "
         "Write the final prompt only. No JSON. No analysis. No labels.\n\n"
         "Meaning Strategy definitions:\n"
-        "- clear_meaning: depict the meaning clearly and directly.\n"
-        "- exaggerated_meaning: intensify the emotion, physical action, scale, or consequence while keeping the meaning obvious.\n"
-        "- absurd_hook: create an elegant strange memory hook; surprising and memorable, but still understandable.\n"
-        "- sound_mnemonic: treat this as Mnemonic Hook. Use the best available bridge: phonetic bridge, wordplay bridge, morpheme bridge, semantic mnemonic, etymology bridge, or fallback to clear meaning if no good hook exists. Do not invent a fake sound bridge.\n\n"
+        "- Clear Meaning: direct meaning.\n"
+        "- Exaggerated Meaning: intensified but still clear.\n"
+        "- Absurd Hook: strange, memorable, understandable.\n"
+        "- Mnemonic Hook: best available memory bridge; phonetic, wordplay, morpheme, etymology, semantic, or fallback. Do not invent fake sound logic.\n\n"
         "Presentation Form definitions:\n"
-        "- single_scene: one coherent visual moment.\n"
-        "- mini_story: one image containing 2-3 visible story beats; the beats should be readable in the composition.\n"
-        "- split_panel: two contrasting states or ideas in one image; prefer a tasteful visual transition, not an ugly hard divider.\n"
-        "- word_object_design: the target word itself is the central visible design object. It may be built from matter, shaped as a form, or embedded through environmental typography.\n\n"
+        "- Single Scene: one visual moment.\n"
+        "- Mini Story: 2-3 visible beats.\n"
+        "- Split Panel: two contrasted states.\n"
+        "- Word as Design: target word is the main visual object.\n\n"
         "Art Style: Use the selected style strongly and early. Do not contradict it. If the style is anime, do not write photorealistic. If the style is Rick and Morty, South Park, Pixar, pixel art, or pen-and-ink, make the entire prompt match that style.\n\n"
         "Answer policy: If presentation_form=word_object_design, the target word may be visible and central. Otherwise, do not render the target word as readable text. Never render the direct translation/answer unless explicitly allowed. Avoid labels, captions, flashcard text, or explanatory text unless the chosen form requires visible text."
     )
@@ -130,6 +130,11 @@ def build_direct_prompt_user_prompt(
         if allow_target_word
         else "Target word must not appear as readable text."
     )
+    spelling_rule = (
+        f"\nSpelling rule: If the target word appears, spell it exactly: {_clean(content.word).upper()}."
+        if presentation_form == "word_object_design"
+        else ""
+    )
     return (
         f"Target word: {content.word}\n"
         f"Meaning / direct translation: {content.translation}\n"
@@ -144,6 +149,7 @@ def build_direct_prompt_user_prompt(
         f"Presentation form: {presentation_form}\n"
         f"Art style: {art_style}\n"
         f"Answer policy: {answer_policy} Never render the direct translation/answer.\n"
+        f"{spelling_rule}\n"
         f"Preferred prompt length: {DIRECT_PROMPT_PREFERRED_RANGE}. Hard maximum: {DIRECT_PROMPT_HARD_CAP} characters.\n"
         "Write one final provider prompt string only."
     )

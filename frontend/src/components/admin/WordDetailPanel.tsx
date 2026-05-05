@@ -8,6 +8,15 @@ import { Video, ChevronDown, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import StarRating from '@/components/ui/StarRating'
+import {
+  cardLayer2ArtStyleLabel,
+  cardLayer2MeaningLabel,
+  cardLayer2PresentationLabel,
+  type CardLayer2ArtStyle,
+  type CardLayer2MeaningStrategy,
+  type CardLayer2PresentationForm,
+} from '@/components/generate/useWizardState'
+import { layer2BackendTemplateLabel } from '@/lib/adminLayer2Lab'
 import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
 
 type WordRecord = {
@@ -81,6 +90,7 @@ export default function WordDetailPanel({
     : null
   const imageBridge = cleanText(gptImage2Card?.image_bridge as string | null | undefined)
   const cardImageStyle = cleanText(layer2Eval?.art_style as string | null | undefined)
+  const layer2Summary = formatLayer2EvalSummary(layer2Eval)
   const gptEnrichmentRows = [
     { label: 'Mnemonic (visual scene)', value: cleanText(word.mnemonic) },
     { label: 'Bridge mnemonic', value: cleanText(word.bridge_mnemonic) },
@@ -243,7 +253,7 @@ export default function WordDetailPanel({
                 <MetaRow label="Layer 2 Candidate (text mode)" value={debug.fields.layer2CandidateTextMode === null ? null : String(debug.fields.layer2CandidateTextMode)} />
                 <MetaRow label="Card Image Model" value={debug.fields.cardImageModel} />
                 <MetaRow label="Card Image Style" value={cardImageStyle} />
-                <MetaRow label="Backend Template" value={cleanText(gptImage2Card?.backend_template as string | null | undefined)} />
+                <MetaRow label="Backend Template" value={formatBackendTemplate(gptImage2Card?.backend_template)} />
                 <MetaRow label="Layer 2 User Choices" value={formatJsonValue(layer2UserChoices)} />
                 <MetaRow label="Layer 2 Resolved" value={formatJsonValue(layer2Resolved)} />
                 <MetaRow label="Layer 2 Snap Notes" value={layer2SnapNotes} />
@@ -267,11 +277,12 @@ export default function WordDetailPanel({
 
         {layer2Eval && (
           <MetaSection title="Layer 2 Evaluation">
+            <MetaRow label="Summary" value={layer2Summary} />
             <MetaRow label="Label" value={cleanText(layer2Eval.label as string | null | undefined)} />
-            <MetaRow label="Meaning Strategy" value={cleanText(layer2Eval.meaning_strategy as string | null | undefined)} />
-            <MetaRow label="Presentation Form" value={cleanText(layer2Eval.presentation_form as string | null | undefined)} />
-            <MetaRow label="Art Style" value={cleanText(layer2Eval.art_style as string | null | undefined)} />
-            <MetaRow label="Backend Template" value={cleanText(layer2Eval.backend_template as string | null | undefined)} />
+            <MetaRow label="Meaning Strategy" value={formatMeaningStrategy(layer2Eval.meaning_strategy)} />
+            <MetaRow label="Presentation Form" value={formatPresentationForm(layer2Eval.presentation_form)} />
+            <MetaRow label="Art Style" value={formatArtStyle(layer2Eval.art_style)} />
+            <MetaRow label="Backend Template" value={formatBackendTemplate(layer2Eval.backend_template)} />
             <MetaRow label="Source" value={cleanText(layer2Eval.source as string | null | undefined)} />
           </MetaSection>
         )}
@@ -478,6 +489,50 @@ function formatUnknownJsonValue(value: unknown): string | null {
   if (value === null || value === undefined) return null
   if (typeof value === 'string') return cleanText(value)
   return JSON.stringify(value)
+}
+
+function formatLayer2EvalSummary(layer2Eval: Record<string, unknown> | null): string | null {
+  if (!layer2Eval) return null
+  const parts = [
+    formatBackendTemplate(layer2Eval.backend_template),
+    formatMeaningStrategy(layer2Eval.meaning_strategy),
+    formatPresentationForm(layer2Eval.presentation_form),
+    formatArtStyle(layer2Eval.art_style),
+  ].filter(Boolean)
+  return parts.length > 0 ? parts.join(' · ') : null
+}
+
+function formatBackendTemplate(value: unknown): string | null {
+  const text = cleanText(value as string | null | undefined)
+  if (!text) return null
+  if (text === 'structured_plan_v1' || text === 'direct_prompt_v1') {
+    return layer2BackendTemplateLabel(text)
+  }
+  return text
+}
+
+function formatMeaningStrategy(value: unknown): string | null {
+  const text = cleanText(value as string | null | undefined)
+  if (!text) return null
+  if (['clear_meaning', 'exaggerated_meaning', 'absurd_hook', 'sound_mnemonic'].includes(text)) {
+    return cardLayer2MeaningLabel(text as CardLayer2MeaningStrategy)
+  }
+  return text
+}
+
+function formatPresentationForm(value: unknown): string | null {
+  const text = cleanText(value as string | null | undefined)
+  if (!text) return null
+  if (['single_scene', 'mini_story', 'split_panel', 'word_object_design'].includes(text)) {
+    return cardLayer2PresentationLabel(text as CardLayer2PresentationForm)
+  }
+  return text
+}
+
+function formatArtStyle(value: unknown): string | null {
+  const text = cleanText(value as string | null | undefined)
+  if (!text) return null
+  return cardLayer2ArtStyleLabel(text as CardLayer2ArtStyle)
 }
 
 function formatDuration(seconds: number | null | undefined): string | null {

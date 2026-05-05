@@ -68,6 +68,8 @@ def test_admin_word_detail_surfaces_gpt_enrichment_and_cost():
     assert "Backend Template" in source
     assert "Direct Prompt Writer Model" in source
     assert "Direct Prompt Preview" in source
+    assert "Summary" in source
+    assert "formatLayer2EvalSummary" in source
     assert "gptEnrichmentRows.length > 0" in source
 
     assert "COST_PER_CARD: Record<string, number>" in source
@@ -96,6 +98,7 @@ def test_observability_aggregate_surfaces_layer2_backend_template():
 
     assert "backend_template" in source
     assert "backendTemplate(event)" in source
+    assert "layer2BackendTemplateLabel" in source
 
 
 def test_user_facing_wizard_exposes_gpt_image_2_only_as_controlled_card_tier():
