@@ -10,9 +10,20 @@ import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
-import { computeCreditCost } from '@/components/generate/useWizardState'
-import type { GeneratePayload, ExistingDeck, WizardState, WizardAction } from '@/components/generate/useWizardState'
-import DeckTypeStep from '@/components/generate/steps/DeckTypeStep'
+import {
+  computeCreditCost,
+  isCardLane,
+  laneToCardImageModel,
+  laneToDeckType,
+} from '@/components/generate/useWizardState'
+import type {
+  ExistingDeck,
+  GeneratePayload,
+  ProductLane,
+  WizardState,
+  WizardAction,
+} from '@/components/generate/useWizardState'
+import ProductLaneStep from '@/components/generate/steps/ProductLaneStep'
 import CardImageStyleStep from '@/components/generate/steps/CardImageStyleStep'
 import WordsStep from '@/components/generate/steps/WordsStep'
 
@@ -26,6 +37,13 @@ const GO_GENRES = [
   { value: 'ambient', label: 'Ambient' },
   { value: 'custom', label: 'Custom' },
 ]
+
+function laneLabel(lane: ProductLane | null): string {
+  if (lane === 'video') return 'Video & Music'
+  if (lane === 'card_standard') return 'Standard Card'
+  if (lane === 'card_premium') return 'Premium Card'
+  return ''
+}
 
 export default function GenerateGO() {
   const { user, profile, refreshProfile } = useAuth()
@@ -46,11 +64,10 @@ export default function GenerateGO() {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   const [genre, setGenre] = useState<string | null>(null)
   const [lyricMode, setLyricMode] = useState<string | null>(null)
-  const [deckType, setDeckType] = useState<'video' | 'card' | null>(null)
-  const [cardImageModel, setCardImageModel] = useState<'zturbo' | 'gpt_image_2'>('zturbo')
+  const [productLane, setProductLane] = useState<ProductLane | null>(null)
   const [cardImageStyle, setCardImageStyle] = useState<
     'Photorealistic' | 'Editorial' | 'Random' | null
-  >('Photorealistic')
+  >(null)
   const [customGenre, setCustomGenre] = useState('')
   const [showCustomInput, setShowCustomInput] = useState(false)
   const [deckName, setDeckName] = useState('')
@@ -69,23 +86,46 @@ export default function GenerateGO() {
 
   useEffect(() => {
     if (!deckIdParam) return
-    supabase
-      .from('decks')
-      .select('id, name, target_language, art_style, movie_override, word_count, deck_type')
-      .eq('id', deckIdParam)
-      .single()
-      .then(({ data }) => {
-        if (data) {
-          setExistingDeck(data)
-          setLanguage(data.target_language)
-          setDeckType(data.deck_type ?? 'video')
-          setStep(3) // skip language and deck-type selection
-        }
-      })
+    let cancelled = false
+    void (async () => {
+      const { data: deck } = await supabase
+        .from('decks')
+        .select('id, name, target_language, art_style, movie_override, word_count, deck_type')
+        .eq('id', deckIdParam)
+        .single()
+      if (!deck || cancelled) return
+
+      let lastCardImageModel: 'zturbo' | 'gpt_image_2' | null = null
+      if (deck.deck_type === 'card') {
+        const { data: lastJob } = await supabase
+          .from('generation_jobs')
+          .select('settings_override')
+          .eq('deck_id', deck.id)
+          .order('created_at', { ascending: false })
+          .limit(1)
+          .maybeSingle()
+        const m = lastJob?.settings_override?.card_image_model
+        if (m === 'gpt_image_2' || m === 'zturbo') lastCardImageModel = m
+      }
+      if (cancelled) return
+
+      setExistingDeck({ ...deck, last_card_image_model: lastCardImageModel })
+      setLanguage(deck.target_language)
+      const lane: ProductLane =
+        deck.deck_type === 'video'
+          ? 'video'
+          : lastCardImageModel === 'gpt_image_2'
+            ? 'card_premium'
+            : 'card_standard'
+      setProductLane(lane)
+      // Existing video deck: skip language and lane (both locked) → words.
+      // Existing card deck: skip language, show lane (preselected, mutable).
+      setStep(deck.deck_type === 'video' ? 3 : 2)
+    })()
+    return () => { cancelled = true }
   }, [deckIdParam])
 
-  // Pre-seed from LanguageContext (fires when context resolves async). Only seeds if
-  // the local language state is still empty — never overwrites a manual choice.
+  // Pre-seed from LanguageContext.
   useEffect(() => {
     if (deckIdParam) return
     if (language) return
@@ -99,18 +139,18 @@ export default function GenerateGO() {
     return () => window.clearTimeout(timeoutId)
   }, [deckIdParam, language, activeLanguage])
 
-   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
-   const { jobStatus, jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(queueDeckId ?? undefined, {
-     enabled: generated && !!queueDeckId,
-   })
+  const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
+  const { jobStatus, jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(queueDeckId ?? undefined, {
+    enabled: generated && !!queueDeckId,
+  })
 
-   useEffect(() => {
-     if (!generated || !queueDeckId || hasNavigatedToDeckRef.current) return
-     if (jobStatus === 'processing' || (hasChecked && !jobStatus && !shouldShowQueue)) {
-       hasNavigatedToDeckRef.current = true
-       navigate(`/deck/${queueDeckId}`)
-     }
-   }, [generated, hasChecked, jobStatus, navigate, queueDeckId, shouldShowQueue])
+  useEffect(() => {
+    if (!generated || !queueDeckId || hasNavigatedToDeckRef.current) return
+    if (jobStatus === 'processing' || (hasChecked && !jobStatus && !shouldShowQueue)) {
+      hasNavigatedToDeckRef.current = true
+      navigate(`/deck/${queueDeckId}`)
+    }
+  }, [generated, hasChecked, jobStatus, navigate, queueDeckId, shouldShowQueue])
 
   // Scroll refs
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -121,6 +161,8 @@ export default function GenerateGO() {
       setTimeout(() => ref.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150)
     }
   }, [step])
+
+  const cardLane = isCardLane(productLane)
 
   // ── Orb class helper ──────────────────────────────
 
@@ -144,7 +186,15 @@ export default function GenerateGO() {
     setStep(2)
   }
 
-  // ── Step 2: Words ─────────────────────────────────
+  // ── Step 2: Product Lane ──────────────────────────
+
+  function handleLaneSelect(lane: ProductLane) {
+    setProductLane(lane)
+    if (!isCardLane(lane)) setCardImageStyle(null)
+    setStep(3)
+  }
+
+  // ── Step 3: Words ─────────────────────────────────
 
   // Adapter so the shared WordsStep (which expects WizardState/WizardAction)
   // can drive GenerateGO's local useState-based flow.
@@ -157,8 +207,7 @@ export default function GenerateGO() {
     movieTitle: '',
     deckName: '',
     path: 'undecided',
-    deckType,
-    cardImageModel,
+    productLane,
     cardImageStyle,
   } as unknown as WizardState
 
@@ -186,21 +235,16 @@ export default function GenerateGO() {
     }
   }
 
-  // ── Step 3: Vibe ──────────────────────────────────
+  // ── Quick Generate ──────────────────────────────
 
-  function handleQuickGenerate(words: string[]) {
-    if (deckType === 'card') {
-      setWords(words.slice(0, MAX_WORDS))
-      setVibe(null)
-      setMovieTitle('')
-      setShowMovieInput(false)
-      setArtStyle(null)
-      setGenre(null)
-      setLyricMode(null)
-      setStep(4)
+  function handleQuickGenerate(quickWords: string[]) {
+    // Card lanes submit straight from words — no tier or style detour.
+    if (cardLane) {
+      handleInitialize(quickWords)
       return
     }
-    handleInitialize(words)
+    // Video lane: submit straight from words too (skip vibe/art/niveau/genre).
+    handleInitialize(quickWords)
   }
 
   function handleVibeSelect(value: string) {
@@ -228,7 +272,7 @@ export default function GenerateGO() {
     }
   }
 
-  // ── Step 4: Art Style ─────────────────────────────
+  // ── Art Style ─────────────────────────────────
 
   function handleCategoryClick(groupName: string) {
     setExpandedCategory(prev => prev === groupName ? null : groupName)
@@ -240,14 +284,14 @@ export default function GenerateGO() {
     setStep(6)
   }
 
-  // ── Step 5: Niveau ────────────────────────────────
+  // ── Niveau ────────────────────────────────
 
   function handleLyricModeSelect(value: string | null) {
     setLyricMode(value)
     setStep(7)
   }
 
-  // ── Step 6: Genre ─────────────────────────────────
+  // ── Genre ─────────────────────────────────
 
   function handleGenreSelect(value: string) {
     if (step > 7 && genre === value) {
@@ -274,65 +318,74 @@ export default function GenerateGO() {
     }
   }
 
-  // ── Step 7: Submit ────────────────────────────────
+  // ── Submit ────────────────────────────────
 
   async function handleInitialize(wordsOverride?: string[]) {
     const isQuickGenerate = wordsOverride !== undefined
-    const isCardDeck = deckType === 'card'
     const effectiveWords = wordsOverride ?? words
-    if (!user || !language || effectiveWords.length === 0) return
-    if (isCardDeck && !cardImageStyle) return
+    if (!user) return
+    if (!productLane) return
+    if (!language) return
+    if (effectiveWords.length === 0) return
 
     setSubmitting(true)
     setError(null)
 
     try {
+      const isCard = isCardLane(productLane)
+      const cardImageModel = laneToCardImageModel(productLane)
+      const deckType = laneToDeckType(productLane) ?? 'video'
+
       const movieOverride =
-        !isCardDeck && !isQuickGenerate && (vibe === 'movie' || vibe === 'specific_movie')
+        !isCard && !isQuickGenerate && (vibe === 'movie' || vibe === 'specific_movie')
           ? movieTitle.trim() || null
           : null
       const creativeDirection =
-        isCardDeck || isQuickGenerate ? undefined
-          : vibe === 'specific_movie' ? 'movie'
-          : vibe === 'auto' ? undefined
-          : vibe || undefined
+        isCard || isQuickGenerate
+          ? undefined
+          : vibe === 'specific_movie'
+            ? 'movie'
+            : vibe === 'auto'
+              ? undefined
+              : vibe || undefined
       const genreValue =
-        isCardDeck || isQuickGenerate ? undefined
-          : genre === 'auto' ? undefined
-          : genre === 'custom' ? customGenre.trim() || undefined
-          : genre || undefined
-      const artStyleValue = isCardDeck || isQuickGenerate ? null : artStyle
+        isCard || isQuickGenerate
+          ? undefined
+          : genre === 'auto'
+            ? undefined
+            : genre === 'custom'
+              ? customGenre.trim() || undefined
+              : genre || undefined
+      const artStyleValue = isCard || isQuickGenerate ? null : artStyle
 
       const payload: GeneratePayload = {
-        deckPayload: existingDeck ? null : {
-          user_id: user.id,
-          name: deckName.trim() || `${language} Deck — ${new Date().toLocaleDateString()}`,
-          target_language: language,
-          art_style: artStyleValue,
-          movie_override: movieOverride,
-          word_count: effectiveWords.length,
-          status: 'generating',
-          deck_type: deckType ?? 'video',
-        },
+        deckPayload: existingDeck
+          ? null
+          : {
+              user_id: user.id,
+              name: deckName.trim() || `${language} Deck — ${new Date().toLocaleDateString()}`,
+              target_language: language,
+              art_style: artStyleValue,
+              movie_override: movieOverride,
+              word_count: effectiveWords.length,
+              status: 'generating',
+              deck_type: deckType,
+            },
         wordList: effectiveWords,
         jobPayload: {
           user_id: user.id,
           ...(existingDeck ? { deck_id: existingDeck.id } : {}),
           status: 'pending',
           target_language: language,
-          art_style: isCardDeck ? null : artStyleValue ?? existingDeck?.art_style ?? null,
-          movie_override: isCardDeck ? null : movieOverride ?? existingDeck?.movie_override ?? null,
+          art_style: isCard ? null : artStyleValue ?? existingDeck?.art_style ?? null,
+          movie_override: isCard ? null : movieOverride ?? existingDeck?.movie_override ?? null,
           words_total: effectiveWords.length,
           settings_override: {
             ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
             ...(genreValue ? { genre: genreValue } : {}),
-            ...(!isCardDeck && !isQuickGenerate && lyricMode ? { lyric_mode: lyricMode } : {}),
-            ...(isCardDeck
-              ? {
-                  card_image_model: cardImageModel,
-                  ...(cardImageStyle ? { card_image_style: cardImageStyle } : {}),
-                }
-              : {}),
+            ...(!isCard && !isQuickGenerate && lyricMode ? { lyric_mode: lyricMode } : {}),
+            ...(cardImageModel ? { card_image_model: cardImageModel } : {}),
+            ...(isCard && cardImageStyle ? { card_image_style: cardImageStyle } : {}),
           },
         },
       }
@@ -341,7 +394,7 @@ export default function GenerateGO() {
         user.id,
         payload,
         existingDeck ?? undefined,
-        { cachedCredits: profile?.credits }
+        { cachedCredits: profile?.credits },
       )
       await refreshProfile()
       setGeneratedDeckId(targetDeckId)
@@ -357,7 +410,7 @@ export default function GenerateGO() {
   // ── Render helpers ────────────────────────────────
 
   const credits = profile?.credits
-  const creditCost = computeCreditCost(deckType ?? existingDeck?.deck_type ?? null, words.length, cardImageModel)
+  const creditCost = computeCreditCost(productLane, words.length)
 
   function findStyleLabel(value: string): string {
     for (const g of ART_STYLE_GROUPS) {
@@ -372,56 +425,59 @@ export default function GenerateGO() {
     return value ?? ''
   }
 
-   if (deckIdParam && !existingDeck) {
-     return (
-       <div className="gen-container">
-         <div className="gen-section" style={{ textAlign: 'center' }}>
-           <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.9rem', margin: 0 }}>
-             {t('common.loading')}
-           </p>
-         </div>
-       </div>
-     )
-   }
+  if (deckIdParam && !existingDeck) {
+    return (
+      <div className="gen-container">
+        <div className="gen-section" style={{ textAlign: 'center' }}>
+          <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.9rem', margin: 0 }}>
+            {t('common.loading')}
+          </p>
+        </div>
+      </div>
+    )
+  }
 
-   if (generated) {
-     return (
-       <div className="gen-container">
-         <div className="gen-section" style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-              <GenerationWheelLoader
-                label={t('generate.forgingMemories')}
-                labelClassName="text-[var(--go-text-primary)]"
-                sublabel={existingDeck
-                  ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
-                  : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
-              />
-              {hasChecked && queuePaused && (
-                <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
-                  {t('queue.paused')}
-                </p>
-              )}
-              {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
-                <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
-                  {jobsAhead} {t('queue.jobsAhead')}
-                </p>
-              )}
+  if (generated) {
+    return (
+      <div className="gen-container">
+        <div className="gen-section" style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
+            <GenerationWheelLoader
+              label={t('generate.forgingMemories')}
+              labelClassName="text-[var(--go-text-primary)]"
+              sublabel={existingDeck
+                ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
+                : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
+            />
+            {hasChecked && queuePaused && (
+              <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
+                {t('queue.paused')}
+              </p>
+            )}
+            {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
+              <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
+                {jobsAhead} {t('queue.jobsAhead')}
+              </p>
+            )}
 
-              <button
-                type="button"
-                className="gen-orb selected breadcrumb"
-                style={{ marginTop: 20 }}
-                onClick={() => navigate(queueDeckId ? `/deck/${queueDeckId}` : existingDeck ? `/deck/${existingDeck.id}` : '/dashboard')}
-              >
-                {queueDeckId ? t('generate.backToDeck') : t('common.backToDecks')}
-              </button>
-            </div>
+            <button
+              type="button"
+              className="gen-orb selected breadcrumb"
+              style={{ marginTop: 20 }}
+              onClick={() => navigate(queueDeckId ? `/deck/${queueDeckId}` : existingDeck ? `/deck/${existingDeck.id}` : '/dashboard')}
+            >
+              {queueDeckId ? t('generate.backToDeck') : t('common.backToDecks')}
+            </button>
           </div>
         </div>
-      )
-    }
+      </div>
+    )
+  }
 
   // ── Render ────────────────────────────────────────
+
+  const showLaneStep = !existingDeck || existingDeck.deck_type === 'card'
+  const laneVariant: 'all' | 'card-only' = existingDeck?.deck_type === 'card' ? 'card-only' : 'all'
 
   return (
     <div className="gen-container">
@@ -444,24 +500,20 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 2: Deck Type ── */}
-      {!existingDeck && step >= 2 && (
+      {/* ── Step 2: Product Lane ── */}
+      {showLaneStep && step >= 2 && (
         <div ref={el => { sectionRefs.current[1] = el }} className="gen-section">
           {step === 2 ? (
-            <DeckTypeStep
+            <ProductLaneStep
               skin="glassy"
-              value={deckType}
-              onChange={(value) => {
-                setDeckType(value)
-                if (value === 'video') setCardImageStyle(null)
-                if (value === 'card' && !cardImageStyle) setCardImageStyle('Photorealistic')
-                setStep(3)
-              }}
+              variant={laneVariant}
+              value={productLane}
+              onChange={handleLaneSelect}
             />
           ) : (
             <div className="gen-orb-row">
               <div className="gen-orb selected breadcrumb" onClick={() => setStep(2)}>
-                {deckType === 'card' ? 'Image' : 'Video and Music'}
+                {laneLabel(productLane)}
               </div>
             </div>
           )}
@@ -476,7 +528,7 @@ export default function GenerateGO() {
               <WordsStep
                 state={wordsStepState}
                 dispatch={wordsStepDispatch}
-                onQuickGenerate={(words) => handleQuickGenerate(words)}
+                onQuickGenerate={(qw) => handleQuickGenerate(qw)}
               />
               <p style={{ textAlign: 'center', color: 'var(--go-text-secondary)', fontSize: '0.8rem', marginTop: 12 }}>
                 {words.length}/{MAX_WORDS} words · {typeof credits === 'number' ? `${credits} credits available` : 'Credits check on generate'}
@@ -492,8 +544,8 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 4: Vibe ── */}
-      {step >= 4 && deckType !== 'card' && (
+      {/* ── Step 4: Vibe (video lane only) ── */}
+      {step >= 4 && !cardLane && (
         <div ref={el => { sectionRefs.current[3] = el }} className="gen-section">
           {step === 4 && <h3>Select Visual Context</h3>}
           <div className="gen-orb-row">
@@ -526,13 +578,12 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 5: Art Style ── */}
-      {step >= 5 && deckType !== 'card' && (
+      {/* ── Step 5: Art Style (video lane only) ── */}
+      {step >= 5 && !cardLane && (
         <div ref={el => { sectionRefs.current[4] = el }} className="gen-section">
           {step === 5 ? (
             <>
               <h3>Art Style</h3>
-              {/* Auto + Category orbs */}
               <div className="gen-orb-row" style={{ marginBottom: 24 }}>
                 <div
                   className="gen-orb"
@@ -551,7 +602,6 @@ export default function GenerateGO() {
                   </div>
                 ))}
               </div>
-              {/* Expanded category styles */}
               {ART_STYLE_GROUPS.map(group => (
                 <div
                   key={group.group}
@@ -582,8 +632,8 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 6: Niveau ── */}
-      {step >= 6 && deckType !== 'card' && (
+      {/* ── Step 6: Niveau (video lane only) ── */}
+      {step >= 6 && !cardLane && (
         <div ref={el => { sectionRefs.current[5] = el }} className="gen-section">
           {step === 6 ? (
             <>
@@ -614,8 +664,8 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* ── Step 7: Genre ── */}
-      {step >= 7 && deckType !== 'card' && (
+      {/* ── Step 7: Genre (video lane only) ── */}
+      {step >= 7 && !cardLane && (
         <div ref={el => { sectionRefs.current[6] = el }} className="gen-section">
           {step === 7 && <h3>Aural Atmosphere</h3>}
           <div className="gen-orb-row">
@@ -648,15 +698,13 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {/* Card image style */}
-      {step >= 4 && deckType === 'card' && (
+      {/* ── Card visual style (card lane, optional, between Words and Synthesis) ── */}
+      {step >= 4 && cardLane && (
         <div ref={el => { sectionRefs.current[3] = el }} className="gen-section">
           {step === 4 ? (
             <CardImageStyleStep
               skin="glassy"
               value={cardImageStyle}
-              modelValue={cardImageModel}
-              onModelChange={setCardImageModel}
               onChange={(value) => {
                 setCardImageStyle(value)
                 setStep(5)
@@ -672,7 +720,8 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {step >= 5 && deckType === 'card' && (
+      {/* ── Synthesis Ready (card lane) ── */}
+      {step >= 5 && cardLane && (
         <div ref={el => { sectionRefs.current[4] = el }} className="gen-section" style={{ textAlign: 'center' }}>
           <h3 style={{ fontSize: '2.2rem', color: 'var(--text-primary)', fontWeight: 300, marginBottom: 8 }}>
             {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
@@ -690,9 +739,7 @@ export default function GenerateGO() {
               Style: {findCardImageStyleLabel(cardImageStyle)}
             </p>
           )}
-          <p className="text-sm text-go-text-secondary">
-            {cardImageModel === 'gpt_image_2' ? 'GPT Image-2 Card' : 'Standard Card'}
-          </p>
+          <p className="text-sm text-go-text-secondary">{laneLabel(productLane)}</p>
 
           {!existingDeck && (
             <div style={{ marginBottom: 24, marginTop: 24 }}>
@@ -726,7 +773,8 @@ export default function GenerateGO() {
         </div>
       )}
 
-      {step >= 8 && deckType !== 'card' && (
+      {/* ── Synthesis Ready (video lane) ── */}
+      {step >= 8 && !cardLane && (
         <div ref={el => { sectionRefs.current[7] = el }} className="gen-section" style={{ textAlign: 'center' }}>
           <h3 style={{ fontSize: '2.2rem', color: 'var(--text-primary)', fontWeight: 300, marginBottom: 8 }}>
             {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
@@ -740,7 +788,6 @@ export default function GenerateGO() {
             {words.length} word{words.length !== 1 ? 's' : ''} · {creditCost} credit{creditCost !== 1 ? 's' : ''}
           </p>
 
-          {/* Selection summary tags */}
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginBottom: 24 }}>
             {language && (
               <span className="gen-summary-tag" style={{ borderColor: 'color-mix(in srgb, var(--accent) 42%, transparent)', color: 'var(--accent)' }}>
@@ -764,7 +811,6 @@ export default function GenerateGO() {
             )}
           </div>
 
-          {/* Deck name input */}
           {!existingDeck && (
             <div style={{ marginBottom: 24 }}>
               <input

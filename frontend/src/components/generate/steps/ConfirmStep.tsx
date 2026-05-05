@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion'
 import { Sparkles, Loader2 } from 'lucide-react'
 import PillButton from '../shared/PillButton'
-import { computeCreditCost, type WizardState, type WizardAction } from '../useWizardState'
+import {
+  computeCreditCost,
+  type ProductLane,
+  type WizardState,
+  type WizardAction,
+} from '../useWizardState'
 
 interface ConfirmStepProps {
   state: WizardState
@@ -12,12 +17,24 @@ interface ConfirmStepProps {
   existingDeck?: boolean
 }
 
-export default function ConfirmStep({ state, dispatch, onGenerate, submitting, error, existingDeck }: ConfirmStepProps) {
-  const creditCost = computeCreditCost(state.deckType, state.words.length, state.cardImageModel)
-  const deckTypeLabel =
-    state.deckType === 'card'
-      ? state.cardImageModel === 'gpt_image_2' ? 'GPT Image-2 Card' : 'Standard Card'
-      : 'Video'
+function laneLabel(lane: ProductLane | null): string {
+  if (lane === 'video') return 'Video & Music'
+  if (lane === 'card_standard') return 'Standard Card'
+  if (lane === 'card_premium') return 'Premium Card'
+  return 'Generation'
+}
+
+export default function ConfirmStep({
+  state,
+  dispatch,
+  onGenerate,
+  submitting,
+  error,
+  existingDeck,
+}: ConfirmStepProps) {
+  const lane = state.productLane
+  const creditCost = computeCreditCost(lane, state.words.length)
+  const productLabel = laneLabel(lane)
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
@@ -29,7 +46,6 @@ export default function ConfirmStep({ state, dispatch, onGenerate, submitting, e
         Ready to create
       </motion.h2>
 
-      {/* Deck name input */}
       {!existingDeck && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -47,12 +63,10 @@ export default function ConfirmStep({ state, dispatch, onGenerate, submitting, e
         </motion.div>
       )}
 
-      {/* Credits */}
       <p className="text-sm text-white/50 mb-4">
         {creditCost} credit{creditCost !== 1 ? 's' : ''} will be used
       </p>
 
-      {/* Error */}
       {error && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -63,7 +77,6 @@ export default function ConfirmStep({ state, dispatch, onGenerate, submitting, e
         </motion.div>
       )}
 
-      {/* Generate button */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -79,7 +92,7 @@ export default function ConfirmStep({ state, dispatch, onGenerate, submitting, e
           ) : (
             <>
               <Sparkles className="h-4 w-4" />
-              Generate {state.words.length} {deckTypeLabel}{state.words.length !== 1 ? 's' : ''}
+              Generate {state.words.length} {productLabel}{state.words.length !== 1 ? 's' : ''}
             </>
           )}
         </PillButton>

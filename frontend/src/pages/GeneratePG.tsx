@@ -7,9 +7,15 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { useToast } from '@/components/Toast'
 import { supabase } from '@/lib/supabase'
 import { submitGeneration } from '@/components/generate/submitGeneration'
-import { computeCreditCost, useWizardState } from '@/components/generate/useWizardState'
-import type { ExistingDeck } from '@/components/generate/useWizardState'
-import DeckTypeStep from '@/components/generate/steps/DeckTypeStep'
+import {
+  buildGeneratePayload,
+  computeCreditCost,
+  isCardLane,
+  laneToCardImageModel,
+  useWizardState,
+} from '@/components/generate/useWizardState'
+import type { ExistingDeck, ProductLane } from '@/components/generate/useWizardState'
+import ProductLaneStep from '@/components/generate/steps/ProductLaneStep'
 import CardImageStyleStep from '@/components/generate/steps/CardImageStyleStep'
 import WordsStep from '@/components/generate/steps/WordsStep'
 import {
@@ -34,7 +40,7 @@ const PG_TRANSITION = { duration: 0.5, ease: PG_EASE }
 export default function GeneratePG() {
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
-  const { state, dispatch, buildPayload } = useWizardState()
+  const { state, dispatch } = useWizardState()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const deckIdParam = searchParams.get('deckId')
@@ -46,26 +52,50 @@ export default function GeneratePG() {
   const [generatedDeckId, setGeneratedDeckId] = useState<string | null>(null)
   const hasNavigatedToDeckRef = useRef(false)
 
-  // "Add Cards" mode: existing deck via ?deckId=xxx
   const { t } = useTranslation()
 
   const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
 
   useEffect(() => {
     if (!deckIdParam) return
-    supabase
-      .from('decks')
-      .select('id, name, target_language, art_style, movie_override, word_count, deck_type')
-      .eq('id', deckIdParam)
-      .single()
-      .then(({ data }) => {
-        if (data) {
-          setExistingDeck(data)
-          dispatch({ type: 'SET_LANGUAGE', language: data.target_language })
-          dispatch({ type: 'SET_DECK_TYPE', deckType: data.deck_type ?? 'video' })
-          setPgStep(2)
-        }
-      })
+    let cancelled = false
+    void (async () => {
+      const { data: deck } = await supabase
+        .from('decks')
+        .select('id, name, target_language, art_style, movie_override, word_count, deck_type')
+        .eq('id', deckIdParam)
+        .single()
+      if (!deck || cancelled) return
+
+      let lastCardImageModel: 'zturbo' | 'gpt_image_2' | null = null
+      if (deck.deck_type === 'card') {
+        const { data: lastJob } = await supabase
+          .from('generation_jobs')
+          .select('settings_override')
+          .eq('deck_id', deck.id)
+          .order('created_at', { ascending: false })
+          .limit(1)
+          .maybeSingle()
+        const m = lastJob?.settings_override?.card_image_model
+        if (m === 'gpt_image_2' || m === 'zturbo') lastCardImageModel = m
+      }
+      if (cancelled) return
+
+      const enrichedDeck: ExistingDeck = { ...deck, last_card_image_model: lastCardImageModel }
+      setExistingDeck(enrichedDeck)
+      dispatch({ type: 'SET_LANGUAGE', language: deck.target_language })
+      const lane: ProductLane =
+        deck.deck_type === 'video'
+          ? 'video'
+          : lastCardImageModel === 'gpt_image_2'
+            ? 'card_premium'
+            : 'card_standard'
+      dispatch({ type: 'SET_PRODUCT_LANE', lane })
+      // Skip Language and Lane (existing deck locks both for video; for card,
+      // lane is preselected but the user can revisit step 1 to change it).
+      setPgStep(deck.deck_type === 'video' ? 2 : 1)
+    })()
+    return () => { cancelled = true }
   }, [deckIdParam, dispatch])
 
   // Pre-seed from LanguageContext (dashboard language tab). Only seeds if
@@ -97,54 +127,33 @@ export default function GeneratePG() {
     }
   }, [generated, hasChecked, jobStatus, navigate, queueDeckId, shouldShowQueue])
 
-  /* ─── Submit (mirrors GenerateWizard.handleGenerate) ─── */
+  /* ─── Submit ───────────────────────────────────── */
 
   async function handleGenerate(wordsOverride?: string[]) {
     if (!user) return
     const isQuickGenerate = wordsOverride !== undefined
     const effectiveWords = wordsOverride ?? state.words
-    const effectiveDeckType = state.deckType ?? existingDeck?.deck_type ?? null
     if (effectiveWords.length === 0) return
     if (!existingDeck && !state.language) return
-    if (effectiveDeckType === 'card' && !state.cardImageStyle) return
+    if (!state.productLane) return
 
     setSubmitting(true)
     setError(null)
 
     try {
-      const { deckPayload, jobPayload } = buildPayload(user.id, existingDeck ?? undefined)
-      // Use explicit word list instead of buildPayload's closure-captured state.words.
-      // Also patch word counts that buildPayload derived from the (possibly stale) state.
-      const wordList = effectiveWords
-      if (deckPayload) deckPayload.word_count = wordList.length
-      jobPayload.words_total = wordList.length
-      if (effectiveDeckType === 'card') {
-        if (deckPayload) {
-          deckPayload.art_style = null
-          deckPayload.movie_override = null
-        }
-        jobPayload.art_style = null
-        jobPayload.movie_override = null
-        jobPayload.settings_override = {
-          card_image_model: state.cardImageModel,
-          ...(state.cardImageStyle ? { card_image_style: state.cardImageStyle } : {}),
-        }
-      }
-      if (isQuickGenerate && effectiveDeckType !== 'card') {
-        if (deckPayload) {
-          deckPayload.art_style = null
-          deckPayload.movie_override = null
-        }
-        jobPayload.art_style = existingDeck?.art_style ?? null
-        jobPayload.movie_override = existingDeck?.movie_override ?? null
-        jobPayload.settings_override = {}
-      }
+      const payload = buildGeneratePayload({
+        state,
+        userId: user.id,
+        existingDeck: existingDeck ?? undefined,
+        isQuickGenerate,
+        wordsOverride: effectiveWords,
+      })
 
       const targetDeckId = await submitGeneration(
         user.id,
-        { deckPayload, wordList, jobPayload },
+        payload,
         existingDeck ?? undefined,
-        { cachedCredits: profile?.credits }
+        { cachedCredits: profile?.credits },
       )
 
       await refreshProfile()
@@ -161,14 +170,10 @@ export default function GeneratePG() {
   /* ─── Quick Generate path ─── */
 
   function handleQuickGenerate(words: string[]) {
-    // Clear custom selections (vibe/art/genre → null) then submit with the
-    // explicit word list provided by WordsStep (avoids stale-closure race).
+    // Quick Generate: drop video-only customisations and submit immediately.
+    // Card lanes submit straight to the backend — we no longer detour through
+    // the visual-style step. The lane (Standard / Premium) was locked at step 1.
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
-    if (state.deckType === 'card') {
-      dispatch({ type: 'SET_WORDS', words })
-      setPgStep(3)
-      return
-    }
     handleGenerate(words)
   }
 
@@ -222,17 +227,19 @@ export default function GeneratePG() {
 
   /* ─── Main render ─── */
 
+  const lane = state.productLane
+  const cardLane = isCardLane(lane)
+
   return (
     <div className="max-w-4xl mx-auto px-4">
-      {/* Breadcrumb pills */}
       <BreadcrumbPills
         pgStep={pgStep}
         setPgStep={setPgStep}
         existingDeck={!!existingDeck}
-        deckType={state.deckType}
+        existingDeckLockedToVideo={existingDeck?.deck_type === 'video'}
+        cardLane={cardLane}
       />
 
-      {/* Step content */}
       <AnimatePresence mode="wait">
         <motion.div
           key={pgStep}
@@ -243,18 +250,19 @@ export default function GeneratePG() {
         >
           {pgStep === 0 && (
             <StepLanguage
-              onSelect={(lang) => {
-                dispatch({ type: 'SET_LANGUAGE', language: lang })
+              onSelect={(langValue) => {
+                dispatch({ type: 'SET_LANGUAGE', language: langValue })
                 setPgStep(1)
               }}
             />
           )}
           {pgStep === 1 && (
-            <DeckTypeStep
+            <ProductLaneStep
               skin="classic"
-              value={state.deckType}
+              variant={existingDeck?.deck_type === 'card' ? 'card-only' : 'all'}
+              value={state.productLane}
               onChange={(value) => {
-                dispatch({ type: 'SET_DECK_TYPE', deckType: value })
+                dispatch({ type: 'SET_PRODUCT_LANE', lane: value })
                 setPgStep(2)
               }}
             />
@@ -267,19 +275,17 @@ export default function GeneratePG() {
               onCustomize={() => setPgStep(3)}
             />
           )}
-          {pgStep === 3 && state.deckType === 'card' && (
+          {pgStep === 3 && cardLane && (
             <CardImageStyleStep
               skin="classic"
               value={state.cardImageStyle}
-              modelValue={state.cardImageModel}
-              onModelChange={(value) => dispatch({ type: 'SET_CARD_IMAGE_MODEL', model: value })}
               onChange={(value) => {
                 dispatch({ type: 'SET_CARD_IMAGE_STYLE', style: value })
                 setPgStep(4)
               }}
             />
           )}
-          {pgStep === 3 && state.deckType !== 'card' && (
+          {pgStep === 3 && !cardLane && (
             <StepVibe
               selected={state.vibe}
               movieTitle={state.movieTitle}
@@ -287,7 +293,7 @@ export default function GeneratePG() {
               onContinue={() => setPgStep(4)}
             />
           )}
-          {pgStep === 4 && state.deckType === 'card' && (
+          {pgStep === 4 && cardLane && (
             <StepReview
               state={state}
               dispatch={dispatch}
@@ -298,28 +304,28 @@ export default function GeneratePG() {
               existingDeck={existingDeck}
             />
           )}
-          {pgStep === 4 && state.deckType !== 'card' && (
+          {pgStep === 4 && !cardLane && (
             <StepArtStyle
               selected={state.artStyle}
               dispatch={dispatch}
               onContinue={() => setPgStep(5)}
             />
           )}
-          {pgStep === 5 && state.deckType !== 'card' && (
+          {pgStep === 5 && !cardLane && (
             <StepNiveau
               selected={state.lyricMode}
               dispatch={dispatch}
               onContinue={() => setPgStep(6)}
             />
           )}
-          {pgStep === 6 && state.deckType !== 'card' && (
+          {pgStep === 6 && !cardLane && (
             <StepMusic
               selected={state.genre}
               dispatch={dispatch}
               onContinue={() => setPgStep(7)}
             />
           )}
-          {pgStep === 7 && state.deckType !== 'card' && (
+          {pgStep === 7 && !cardLane && (
             <StepReview
               state={state}
               dispatch={dispatch}
@@ -342,28 +348,35 @@ function BreadcrumbPills({
   pgStep,
   setPgStep,
   existingDeck,
-  deckType,
+  existingDeckLockedToVideo,
+  cardLane,
 }: {
   pgStep: number
   setPgStep: (s: number) => void
   existingDeck: boolean
-  deckType: 'video' | 'card' | null
+  existingDeckLockedToVideo: boolean
+  cardLane: boolean
 }) {
   const { t } = useTranslation()
-  const STEP_LABELS = deckType === 'card'
+  const STEP_LABELS = cardLane
     ? [
         t('generate.stepLanguage'),
-        t('generate.deckType.breadcrumb'),
+        t('generate.productLane.breadcrumb'),
         t('generate.stepWords'),
-        t('generate.cardImageStyle.breadcrumb'),
+        t('generate.cardImageStyle.styleBreadcrumb'),
         t('generate.stepReview'),
       ]
     : [
-        t('generate.stepLanguage'), t('generate.deckType.breadcrumb'), t('generate.stepWords'), t('generate.stepVibe'),
-        t('generate.stepArtStyle'), t('generate.stepNiveau'),
-        t('generate.stepMusic'), t('generate.stepReview'),
+        t('generate.stepLanguage'),
+        t('generate.productLane.breadcrumb'),
+        t('generate.stepWords'),
+        t('generate.stepVibe'),
+        t('generate.stepArtStyle'),
+        t('generate.stepNiveau'),
+        t('generate.stepMusic'),
+        t('generate.stepReview'),
       ]
-  const startIndex = existingDeck ? 2 : 0
+  const startIndex = existingDeck ? (existingDeckLockedToVideo ? 2 : 1) : 0
 
   return (
     <div className="flex flex-wrap gap-2 mb-8 justify-center">
@@ -480,7 +493,6 @@ function StepVibe({
         })}
       </div>
 
-      {/* Movie title input */}
       <AnimatePresence>
         {needsMovie && (
           <motion.div
@@ -534,7 +546,6 @@ function StepArtStyle({
       <p className="text-[var(--pg-text-dim)] text-sm mb-8">{t('generate.chooseArtStyleSub')}</p>
 
       <div className="max-w-3xl mx-auto max-h-[55vh] overflow-y-auto px-4" style={{ scrollbarWidth: 'none' }}>
-        {/* Normal / AI decides */}
         <button
           onClick={() => dispatch({ type: 'SET_ART_STYLE', style: null })}
           className={`w-full pg-glass rounded-2xl p-4 mb-6 text-left transition-all ${
@@ -550,7 +561,6 @@ function StepArtStyle({
           <p className="text-xs text-[var(--pg-text-dim)]">{t('generate.normalStyleDesc')}</p>
         </button>
 
-        {/* Grouped styles */}
         {ART_STYLE_GROUPS.map((group) => (
           <div key={group.group} className="mb-6 text-left">
             <p className="text-xs font-display text-[var(--pg-text-dim)] uppercase tracking-widest mb-3">
@@ -764,7 +774,6 @@ function StepMusic({
 
       <button
         onClick={() => {
-          // Auto-commit pending custom genre text if user skipped the green button
           if (showCustomInput || selected === 'custom') {
             const trimmed = customText.trim().toLowerCase()
             if (!trimmed || trimmed === 'auto' || trimmed === 'custom') return
@@ -782,6 +791,13 @@ function StepMusic({
 }
 
 /* ─── Step 5: Review ────────────────────────────── */
+
+function laneLabel(lane: ProductLane | null): string {
+  if (lane === 'video') return 'Video & Music'
+  if (lane === 'card_standard') return 'Standard Card'
+  if (lane === 'card_premium') return 'Premium Card'
+  return ''
+}
 
 function StepReview({
   state,
@@ -801,21 +817,21 @@ function StepReview({
   existingDeck: ExistingDeck | null
 }) {
   const { t, tp } = useTranslation()
-  const creditCost = computeCreditCost(
-    state.deckType ?? existingDeck?.deck_type ?? null,
-    state.words.length,
-    state.cardImageModel,
-  )
-  const cardTierLabel = state.cardImageModel === 'gpt_image_2' ? 'GPT Image-2 Card' : 'Standard Card'
+  const lane = state.productLane
+  const cardLane = isCardLane(lane)
+  const creditCost = computeCreditCost(lane, state.words.length)
+  const productLabel = laneLabel(lane)
+  // Surface card_image_model in admin-only debug copy if needed.
+  void laneToCardImageModel(lane)
+
   return (
     <div className="w-full max-w-lg mx-auto mt-8">
       <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight mb-10 text-center text-foreground drop-shadow-md italic">
         {t('generate.synthesisReady')}
       </h2>
 
-      {/* Selection summary */}
       <div className="flex flex-wrap justify-center gap-3 mb-10">
-        {state.deckType === 'card' ? (
+        {cardLane ? (
           <>
             {state.language && (
               <span className="px-4 py-2 rounded-full text-sm font-medium"
@@ -835,44 +851,43 @@ function StepReview({
             )}
             <span className="px-4 py-2 rounded-full text-sm font-medium"
               style={{ background: 'rgba(13, 226, 195, 0.12)', border: '1px solid rgba(13, 226, 195, 0.3)', color: '#0de2c3' }}>
-              {cardTierLabel}
+              {productLabel}
             </span>
           </>
         ) : (
           <>
-        {state.language && (
-          <span className="px-4 py-2 rounded-full text-sm font-medium"
-            style={{ background: 'rgba(13, 226, 195, 0.12)', border: '1px solid rgba(13, 226, 195, 0.3)', color: '#0de2c3' }}>
-            🌐 {state.language}
-          </span>
-        )}
-        <span className="px-4 py-2 rounded-full text-sm font-medium"
-          style={{ background: 'color-mix(in srgb, var(--surface-2) 64%, transparent)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>
-          📝 {tp('dashboard.wordCount', state.words.length)}
-        </span>
-        {state.vibe && state.vibe !== 'auto' && (
-          <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
-            style={{ background: 'rgba(244, 63, 94, 0.12)', border: '1px solid rgba(244, 63, 94, 0.3)', color: '#f43f5e' }}>
-            🎭 {state.vibe === 'specific_movie' ? 'Movie' : state.vibe}{state.movieTitle ? `: ${state.movieTitle}` : ''}
-          </span>
-        )}
-        {state.artStyle && (
-          <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
-            style={{ background: 'rgba(139, 92, 246, 0.12)', border: '1px solid rgba(139, 92, 246, 0.3)', color: '#8b5cf6' }}>
-            🎨 {state.artStyle}
-          </span>
-        )}
-        {state.genre && state.genre !== 'auto' && (
-          <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
-            style={{ background: 'rgba(251, 191, 36, 0.12)', border: '1px solid rgba(251, 191, 36, 0.3)', color: '#fbbf24' }}>
-            🎵 {state.genre}
-          </span>
-        )}
+            {state.language && (
+              <span className="px-4 py-2 rounded-full text-sm font-medium"
+                style={{ background: 'rgba(13, 226, 195, 0.12)', border: '1px solid rgba(13, 226, 195, 0.3)', color: '#0de2c3' }}>
+                🌐 {state.language}
+              </span>
+            )}
+            <span className="px-4 py-2 rounded-full text-sm font-medium"
+              style={{ background: 'color-mix(in srgb, var(--surface-2) 64%, transparent)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}>
+              📝 {tp('dashboard.wordCount', state.words.length)}
+            </span>
+            {state.vibe && state.vibe !== 'auto' && (
+              <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
+                style={{ background: 'rgba(244, 63, 94, 0.12)', border: '1px solid rgba(244, 63, 94, 0.3)', color: '#f43f5e' }}>
+                🎭 {state.vibe === 'specific_movie' ? 'Movie' : state.vibe}{state.movieTitle ? `: ${state.movieTitle}` : ''}
+              </span>
+            )}
+            {state.artStyle && (
+              <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
+                style={{ background: 'rgba(139, 92, 246, 0.12)', border: '1px solid rgba(139, 92, 246, 0.3)', color: '#8b5cf6' }}>
+                🎨 {state.artStyle}
+              </span>
+            )}
+            {state.genre && state.genre !== 'auto' && (
+              <span className="px-4 py-2 rounded-full text-sm font-medium capitalize"
+                style={{ background: 'rgba(251, 191, 36, 0.12)', border: '1px solid rgba(251, 191, 36, 0.3)', color: '#fbbf24' }}>
+                🎵 {state.genre}
+              </span>
+            )}
           </>
         )}
       </div>
 
-      {/* Deck name input */}
       {!existingDeck && (
         <div className="mb-8">
           <input
@@ -887,7 +902,6 @@ function StepReview({
         </div>
       )}
 
-      {/* Credits */}
       <p className="text-center text-gray-500 text-sm mt-6">
         {tp('generate.creditsUsed', creditCost)}
       </p>
@@ -895,12 +909,10 @@ function StepReview({
         <p className="text-center text-xs text-rose-400 mt-1">{t('generate.notEnoughCredits')}</p>
       )}
 
-      {/* Error */}
       {error && (
         <p className="text-center text-sm text-rose-400 mt-4">{error}</p>
       )}
 
-      {/* Submit */}
       <div className="mt-8 text-center pb-20">
         <button
           onClick={onSubmit}

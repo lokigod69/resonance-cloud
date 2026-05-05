@@ -1,6 +1,10 @@
 import { useReducer, useCallback } from 'react'
 import { MAX_WORDS } from './wizardData'
 
+export type ProductLane = 'video' | 'card_standard' | 'card_premium'
+
+export type CardImageModel = 'zturbo' | 'gpt_image_2'
+
 export interface WizardState {
   step: 1 | 2 | 3 | 4 | 5 | 6
   path: 'undecided' | 'quick' | 'custom'
@@ -12,8 +16,7 @@ export interface WizardState {
   genre: string | null
   lyricMode: string | null
   deckName: string
-  deckType: 'video' | 'card' | null
-  cardImageModel: 'zturbo' | 'gpt_image_2'
+  productLane: ProductLane | null
   cardImageStyle: 'Photorealistic' | 'Editorial' | 'Random' | null
 }
 
@@ -29,8 +32,7 @@ export type WizardAction =
   | { type: 'SET_GENRE'; genre: string | null }
   | { type: 'SET_LYRIC_MODE'; mode: string | null }
   | { type: 'SET_DECK_NAME'; name: string }
-  | { type: 'SET_DECK_TYPE'; deckType: 'video' | 'card' | null }
-  | { type: 'SET_CARD_IMAGE_MODEL'; model: 'zturbo' | 'gpt_image_2' }
+  | { type: 'SET_PRODUCT_LANE'; lane: ProductLane | null }
   | { type: 'SET_CARD_IMAGE_STYLE'; style: 'Photorealistic' | 'Editorial' | 'Random' | null }
   | { type: 'GO_TO_STEP'; step: 1 | 2 | 3 | 4 | 5 | 6 }
   | { type: 'CHOOSE_PATH'; path: 'quick' | 'custom' }
@@ -48,10 +50,65 @@ const initialState: WizardState = {
   genre: null,
   lyricMode: null,
   deckName: '',
-  deckType: null,
-  cardImageModel: 'zturbo',
+  productLane: null,
   cardImageStyle: null,
 }
+
+// ── Lane helpers (pure, exported for tests and callers) ─────────────────────
+
+export function isCardLane(
+  lane: ProductLane | null | undefined,
+): lane is 'card_standard' | 'card_premium' {
+  return lane === 'card_standard' || lane === 'card_premium'
+}
+
+export function laneToDeckType(lane: ProductLane | null | undefined): 'video' | 'card' | null {
+  if (lane === 'video') return 'video'
+  if (isCardLane(lane)) return 'card'
+  return null
+}
+
+export function laneToCardImageModel(
+  lane: ProductLane | null | undefined,
+): CardImageModel | null {
+  if (lane === 'card_standard') return 'zturbo'
+  if (lane === 'card_premium') return 'gpt_image_2'
+  return null
+}
+
+// Translate a deck row (and optional last-used card_image_model) into a lane.
+// Used when entering "Add Cards" mode to preselect the right lane.
+export function deckRowToProductLane(
+  deckType: 'video' | 'card' | null | undefined,
+  lastCardImageModel?: string | null,
+): ProductLane | null {
+  if (deckType === 'video') return 'video'
+  if (deckType === 'card') {
+    return lastCardImageModel === 'gpt_image_2' ? 'card_premium' : 'card_standard'
+  }
+  return null
+}
+
+const CREDIT_COST_PER_LANE: Record<ProductLane, number> = {
+  video: 10,
+  card_standard: 1,
+  card_premium: 5,
+}
+
+export const VIDEO_CREDIT_COST_PER_WORD = CREDIT_COST_PER_LANE.video
+export const CARD_STANDARD_CREDIT_COST_PER_WORD = CREDIT_COST_PER_LANE.card_standard
+export const CARD_PREMIUM_CREDIT_COST_PER_WORD = CREDIT_COST_PER_LANE.card_premium
+
+export function laneCreditCostPerUnit(lane: ProductLane): number {
+  return CREDIT_COST_PER_LANE[lane]
+}
+
+export function computeCreditCost(lane: ProductLane | null, wordCount: number): number {
+  if (!lane) return 0
+  return wordCount * CREDIT_COST_PER_LANE[lane]
+}
+
+// ── Reducer ─────────────────────────────────────────────────────────────────
 
 function wizardReducer(state: WizardState, action: WizardAction): WizardState {
   switch (action.type) {
@@ -59,7 +116,6 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
       return { ...state, language: action.language, step: 2 }
 
     case 'PRESELECT_LANGUAGE':
-      // Set language without advancing step — for context-seeded pre-fill
       return { ...state, language: action.language }
 
     case 'ADD_WORD': {
@@ -98,16 +154,12 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
     case 'SET_DECK_NAME':
       return { ...state, deckName: action.name }
 
-    case 'SET_DECK_TYPE':
+    case 'SET_PRODUCT_LANE':
       return {
         ...state,
-        deckType: action.deckType,
-        cardImageModel: action.deckType === 'card' ? state.cardImageModel : 'zturbo',
-        cardImageStyle: action.deckType === 'card' ? (state.cardImageStyle ?? 'Photorealistic') : null,
+        productLane: action.lane,
+        cardImageStyle: isCardLane(action.lane) ? state.cardImageStyle : null,
       }
-
-    case 'SET_CARD_IMAGE_MODEL':
-      return { ...state, cardImageModel: action.model }
 
     case 'SET_CARD_IMAGE_STYLE':
       return { ...state, cardImageStyle: action.style }
@@ -135,6 +187,8 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
       return state
   }
 }
+
+// ── Payload types and pure builder ──────────────────────────────────────────
 
 export interface GeneratePayload {
   deckPayload: {
@@ -168,77 +222,115 @@ export interface ExistingDeck {
   movie_override: string | null
   word_count: number
   deck_type?: 'video' | 'card'
+  /** Last-used `card_image_model` for this deck, derived from the most recent
+   *  generation_jobs.settings_override. Optional — used to preselect the lane
+   *  when appending to an existing card deck. */
+  last_card_image_model?: 'zturbo' | 'gpt_image_2' | null
 }
 
-export const VIDEO_CREDIT_COST_PER_WORD = 10
-export const CARD_CREDIT_COST_PER_WORD = {
-  zturbo: 1,
-  gpt_image_2: 5,
-} as const
+interface BuildPayloadOpts {
+  state: WizardState
+  userId: string
+  existingDeck?: ExistingDeck
+  /** When true, drop video-only customisations (vibe / art / niveau / genre)
+   *  so a Quick-Generate submit doesn't carry stale picks the user skipped. */
+  isQuickGenerate?: boolean
+  /** Override the word list used for `wordList` and `*_total`. Useful when
+   *  the caller has a synchronously-flushed list that hasn't yet landed in
+   *  state.words. */
+  wordsOverride?: string[]
+}
 
-export function computeCreditCost(
-  deckType: 'video' | 'card' | null,
-  wordCount: number,
-  cardImageModel: 'zturbo' | 'gpt_image_2' = 'zturbo'
-): number {
-  const costPerWord =
-    deckType === 'card'
-      ? CARD_CREDIT_COST_PER_WORD[cardImageModel]
-      : VIDEO_CREDIT_COST_PER_WORD
-  return wordCount * costPerWord
+export function buildGeneratePayload({
+  state,
+  userId,
+  existingDeck,
+  isQuickGenerate = false,
+  wordsOverride,
+}: BuildPayloadOpts): GeneratePayload {
+  const lane: ProductLane =
+    state.productLane
+    ?? deckRowToProductLane(existingDeck?.deck_type, existingDeck?.last_card_image_model)
+    ?? 'video'
+
+  const isCard = isCardLane(lane)
+  const deckType = laneToDeckType(lane) ?? 'video'
+  const language = existingDeck?.target_language ?? state.language ?? ''
+  const words = wordsOverride ?? state.words
+
+  // For card lanes, video-only fields are always null. For video lanes, only
+  // include them when the user actually customised (i.e. not Quick Generate).
+  const movieOverride =
+    !isCard && !isQuickGenerate && (state.vibe === 'movie' || state.vibe === 'specific_movie')
+      ? state.movieTitle?.trim() || null
+      : null
+
+  const artStyleValue = isCard || isQuickGenerate ? null : state.artStyle || null
+
+  const creativeDirection =
+    isCard || isQuickGenerate
+      ? undefined
+      : state.vibe === 'specific_movie'
+        ? 'movie'
+        : state.vibe === 'auto'
+          ? undefined
+          : state.vibe || undefined
+
+  const genre =
+    isCard || isQuickGenerate
+      ? undefined
+      : state.genre === 'auto'
+        ? undefined
+        : state.genre || undefined
+
+  const lyricMode = isCard || isQuickGenerate ? undefined : state.lyricMode || undefined
+
+  const cardImageModel = laneToCardImageModel(lane)
+
+  return {
+    deckPayload: existingDeck
+      ? null
+      : {
+          user_id: userId,
+          name:
+            state.deckName.trim()
+            || `${language} Deck — ${new Date().toLocaleDateString()}`,
+          target_language: language,
+          art_style: artStyleValue,
+          movie_override: movieOverride,
+          word_count: words.length,
+          status: 'generating',
+          deck_type: deckType,
+        },
+    wordList: words,
+    jobPayload: {
+      user_id: userId,
+      ...(existingDeck ? { deck_id: existingDeck.id } : {}),
+      status: 'pending',
+      target_language: language,
+      art_style: artStyleValue ?? existingDeck?.art_style ?? null,
+      movie_override: movieOverride ?? existingDeck?.movie_override ?? null,
+      words_total: words.length,
+      settings_override: {
+        ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
+        ...(genre ? { genre } : {}),
+        ...(lyricMode ? { lyric_mode: lyricMode } : {}),
+        ...(cardImageModel ? { card_image_model: cardImageModel } : {}),
+        ...(isCard && state.cardImageStyle
+          ? { card_image_style: state.cardImageStyle }
+          : {}),
+      },
+    },
+  }
 }
 
 export function useWizardState() {
   const [state, dispatch] = useReducer(wizardReducer, initialState)
 
   const buildPayload = useCallback(
-    (userId: string, existingDeck?: ExistingDeck): GeneratePayload => {
-      const language = existingDeck?.target_language ?? state.language!
-      const movieOverride =
-        state.vibe === 'movie' || state.vibe === 'specific_movie'
-          ? state.movieTitle?.trim() || null
-          : null
-      const artStyle = state.artStyle || null
-      const creativeDirection =
-        state.vibe === 'specific_movie' ? 'movie' : state.vibe === 'auto' ? undefined : state.vibe || undefined
-      const genre = state.genre === 'auto' ? undefined : state.genre || undefined
-      const lyricMode = state.lyricMode || undefined
-
-      return {
-        deckPayload: existingDeck ? null : {
-          user_id: userId,
-          name: state.deckName.trim() || `${language} Deck \u2014 ${new Date().toLocaleDateString()}`,
-          target_language: language,
-          art_style: artStyle,
-          movie_override: movieOverride,
-          word_count: state.words.length,
-          status: 'generating',
-          deck_type: state.deckType ?? 'video',
-        },
-        wordList: state.words,
-        jobPayload: {
-          user_id: userId,
-          ...(existingDeck ? { deck_id: existingDeck.id } : {}),
-          status: 'pending',
-          target_language: language,
-          art_style: artStyle ?? existingDeck?.art_style ?? null,
-          movie_override: movieOverride ?? existingDeck?.movie_override ?? null,
-          words_total: state.words.length,
-          settings_override: {
-            ...(creativeDirection ? { creative_direction: creativeDirection } : {}),
-            ...(genre ? { genre } : {}),
-            ...(lyricMode ? { lyric_mode: lyricMode } : {}),
-            ...(state.deckType === 'card'
-              ? {
-                  card_image_model: state.cardImageModel,
-                  ...(state.cardImageStyle ? { card_image_style: state.cardImageStyle } : {}),
-                }
-              : {}),
-          },
-        },
-      }
-    },
-    [state]
+    (userId: string, existingDeck?: ExistingDeck): GeneratePayload =>
+      buildGeneratePayload({ state, userId, existingDeck }),
+    [state],
   )
 
   return { state, dispatch, buildPayload }
