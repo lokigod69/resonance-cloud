@@ -120,7 +120,7 @@ body {
 /* Glassy nav: more glass-like (lower alpha) but compensated by heavier blur in .skin-glassy .app-topnav.
    Selector specificity (0,2,0) wins against per-theme overrides regardless of import order. */
 .skin-glassy[class*="theme-"] {
-  --nav-bg: color-mix(in srgb, var(--app-bg) 85%, transparent);
+  --nav-bg: color-mix(in srgb, var(--app-bg) 72%, transparent);
 }
 
 .skin-classic,
@@ -204,6 +204,7 @@ body {
 }
 
 .skin-glassy .glassy-atmosphere-haze,
+.skin-glassy .glassy-atmosphere-header-detail,
 .skin-glassy .glassy-atmosphere-floor,
 .skin-glassy .glassy-atmosphere-vignette {
   position: absolute;
@@ -217,6 +218,22 @@ body {
     radial-gradient(ellipse at 82% 22%, color-mix(in srgb, var(--accent-2) 7%, transparent), transparent 34%),
     radial-gradient(ellipse at 50% 78%, color-mix(in srgb, var(--accent) 4%, transparent), transparent 48%);
   opacity: 0.68;
+}
+
+.skin-glassy .glassy-atmosphere-header-detail {
+  top: 0;
+  left: 50%;
+  width: min(1100px, 130vw);
+  height: calc(var(--glassy-header-offset) + 4.5rem);
+  translate: -50% 0;
+  opacity: 0.68;
+  background:
+    radial-gradient(ellipse at 18% 18%, color-mix(in srgb, var(--accent) 32%, transparent), transparent 34%),
+    radial-gradient(ellipse at 78% 22%, color-mix(in srgb, var(--accent-2) 28%, transparent), transparent 32%),
+    repeating-linear-gradient(96deg, color-mix(in srgb, var(--text-primary) 14%, transparent) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(6deg, color-mix(in srgb, var(--accent) 18%, transparent) 0 1px, transparent 1px 58px);
+  mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.72) 52%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.72) 52%, transparent 100%);
 }
 
 .skin-glassy .glassy-atmosphere-floor {
@@ -253,6 +270,15 @@ body {
     radial-gradient(ellipse at 84% 28%, rgba(63, 115, 117, 0.06), transparent 32%),
     radial-gradient(ellipse at 50% 82%, rgba(139, 114, 86, 0.06), transparent 48%);
   opacity: 0.58;
+}
+
+.theme-warm-linen.skin-glassy .glassy-atmosphere-header-detail {
+  opacity: 0.24;
+  background:
+    radial-gradient(ellipse at 18% 18%, rgba(139, 114, 86, 0.18), transparent 34%),
+    radial-gradient(ellipse at 78% 22%, rgba(63, 115, 117, 0.14), transparent 32%),
+    repeating-linear-gradient(96deg, rgba(82, 68, 55, 0.1) 0 1px, transparent 1px 42px),
+    repeating-linear-gradient(6deg, rgba(63, 115, 117, 0.1) 0 1px, transparent 1px 64px);
 }
 
 .theme-warm-linen.skin-glassy .glassy-atmosphere-floor {
