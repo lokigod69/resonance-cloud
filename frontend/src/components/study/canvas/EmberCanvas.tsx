@@ -388,14 +388,15 @@ export default function EmberCanvas({
     setParticles([...next])
   }, [])
 
-  const addParticles = useCallback((count: number, options: { x?: number; y?: number; golden?: boolean; burst?: boolean } = {}) => {
+  const addParticles = useCallback((count: number, options: { x?: number; y?: number; golden?: boolean; goldenRatio?: number; burst?: boolean } = {}) => {
     const next = [...particlesRef.current]
     for (let i = 0; i < count; i++) {
       if (options.burst && options.x !== undefined && options.y !== undefined) {
         const angle = Math.random() * Math.PI * 2
         const spread = 2 + Math.random() * 8
+        const golden = options.goldenRatio !== undefined ? Math.random() < options.goldenRatio : !!options.golden
         next.push(createParticle(
-          !!options.golden,
+          golden,
           options.x + Math.cos(angle) * spread,
           options.y + Math.sin(angle) * spread,
           Math.random() < 0.4,
@@ -522,7 +523,7 @@ export default function EmberCanvas({
   }, [])
 
   const handleBackgroundClick = (event: ReactMouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || event.target !== event.currentTarget) return
+    if (!containerRef.current || (event.target as HTMLElement).closest('button, [data-toolbar], .ember-word-inner')) return
     const rect = containerRef.current.getBoundingClientRect()
     const x = ((event.clientX - rect.left) / rect.width) * 100
     const y = ((event.clientY - rect.top + containerRef.current.scrollTop) / containerRef.current.scrollHeight) * 100
@@ -545,7 +546,7 @@ export default function EmberCanvas({
 
     playSound('pass')
     target.mastered = true
-    addParticles(15, { x: target.x, y: target.y, golden: true })
+    addParticles(15, { x: target.x, y: target.y, burst: true, goldenRatio: 0.5 })
     onPass(target.id)
     setRevealedId(null)
     setRenderWords([...wordStatesRef.current])
@@ -736,7 +737,7 @@ function Toolbar({
   onExit,
 }: ToolbarProps) {
   return (
-    <div className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/40 border-b border-orange-900/30">
+    <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/40 border-b border-orange-900/30">
       <button
         onClick={(event) => {
           event.stopPropagation()
