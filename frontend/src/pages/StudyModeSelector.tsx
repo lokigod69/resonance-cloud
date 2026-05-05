@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { Play, Layers, Headphones } from 'lucide-react'
+import { Play, Layers, Headphones, Sparkles } from 'lucide-react'
 import {
   Select,
   SelectContent,
@@ -28,6 +28,7 @@ const MODES: ModeConfig[] = [
   { key: 'video', icon: Play, titleKey: 'study.mode.video', descKey: 'study.mode.video.desc', route: '/study/video', enabled: true },
   { key: 'flashcard', icon: Layers, titleKey: 'study.mode.flashcard', descKey: 'study.mode.flashcard.desc', route: '/study/flashcard', enabled: true },
   { key: 'audio', icon: Headphones, titleKey: 'study.mode.audio', descKey: 'study.mode.audio.desc', route: '/study/audio', enabled: true },
+  { key: 'canvas', icon: Sparkles, titleKey: 'study.mode.canvas', descKey: 'study.mode.canvas.desc', route: '/study/canvas', enabled: true },
 ]
 
 export default function StudyModeSelector() {

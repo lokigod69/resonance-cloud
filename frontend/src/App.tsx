@@ -24,6 +24,7 @@ import StudyPG from '@/pages/StudyPG'
 import StudyModeSelector from '@/pages/StudyModeSelector'
 import StudyFlashcard from '@/pages/StudyFlashcard'
 import StudyAudio from '@/pages/StudyAudio'
+import StudyCanvas from '@/pages/StudyCanvas'
 import GenerateGO from '@/pages/GenerateGO'
 import Users from '@/pages/admin/Users'
 import Content from '@/pages/admin/Content'
@@ -139,6 +140,7 @@ function AppRoutes() {
             <Route path="/study/video" element={<StudyPG />} />
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
             <Route path="/study/audio" element={<StudyAudio />} />
+            <Route path="/study/canvas" element={<StudyCanvas />} />
             <Route path="/music" element={<MusicPG />} />
             <Route path="/speak" element={<Speak />} />
           </Route>
@@ -152,6 +154,7 @@ function AppRoutes() {
             <Route path="/study/video" element={<Study />} />
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
             <Route path="/study/audio" element={<StudyAudio />} />
+            <Route path="/study/canvas" element={<StudyCanvas />} />
             <Route path="/music" element={<Music />} />
             <Route path="/speak" element={<Speak />} />
           </Route>
