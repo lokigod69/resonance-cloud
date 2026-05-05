@@ -30,7 +30,7 @@
   --field-bg: rgba(188, 213, 223, 0.052);
   --field-border: rgba(188, 213, 223, 0.13);
 
-  --nav-bg: rgba(12, 19, 27, 0.9);
+  --nav-bg: rgba(12, 19, 27, 0.55);
   --nav-active-bg: var(--accent-soft);
   --nav-active-text: var(--text-primary);
 
