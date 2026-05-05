@@ -688,6 +688,14 @@ async def bootstrap_job(
             "answer_visibility": "hidden",
         }
         current_metadata = word_rec.get("metadata") if isinstance(word_rec.get("metadata"), dict) else {}
+        layer2_eval = (
+            settings_override.get("layer2_eval")
+            if isinstance(settings_override.get("layer2_eval"), dict)
+            else None
+        )
+        next_metadata = {**current_metadata, "visual_card_plan": visual_card_plan}
+        if layer2_eval:
+            next_metadata["layer2_eval"] = layer2_eval
 
         update_data: dict[str, Any] = {
             "translation": e.get("translation", ""),
@@ -704,7 +712,7 @@ async def bootstrap_job(
             "example": e.get("example", "") or "",
             "example_gloss": e.get("example_gloss", "") or "",
             "tags": tags_str,
-            "metadata": {**current_metadata, "visual_card_plan": visual_card_plan},
+            "metadata": next_metadata,
         }
         if not is_phrase:
             update_data["word"] = e.get("word_target", original_word)

@@ -258,6 +258,20 @@ def test_layer2_prompt_still_bans_target_word_except_word_object_design():
     assert "direct answer/translation" in embedded_prompt
 
 
+def test_layer2_bridge_target_word_removal_falls_back_to_meaning():
+    prompt = _prompt(
+        word="viral",
+        translation="viral",
+        image_scene="A glowing post spreads rapidly through a crowd of phones.",
+        image_bridge="Memory logic: keep one direct visual moment focused on viral.",
+        allow_target_word_in_prompt=False,
+    )
+
+    assert "focused on ." not in prompt
+    assert "focused on the meaning" in prompt
+    assert "viral." not in prompt.lower().split("memory logic:", 1)[1]
+
+
 def test_layer2_prompt_with_bridge_style_and_long_scene_stays_under_cap():
     long_scene = " ".join(
         f"detail{i} with elaborate visual texture and background action"

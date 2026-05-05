@@ -1,0 +1,404 @@
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Beaker, Plus, RefreshCw, Trash2 } from 'lucide-react'
+import { useAuth } from '@/hooks/useAuth'
+import { useToast } from '@/components/Toast'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { submitGeneration } from '@/components/generate/submitGeneration'
+import {
+  CARD_LAYER2_ART_STYLE_OPTIONS,
+  CARD_LAYER2_MEANING_OPTIONS,
+  CARD_LAYER2_PRESENTATION_OPTIONS,
+  cardLayer2ArtStyleLabel,
+  cardLayer2MeaningLabel,
+  cardLayer2PresentationLabel,
+  type CardLayer2ArtStyle,
+  type CardLayer2MeaningStrategy,
+  type CardLayer2PresentationForm,
+  type ExistingDeck,
+} from '@/components/generate/useWizardState'
+import {
+  ADMIN_LAYER2_LAB_PRESETS,
+  buildLayer2LabPayload,
+  buildLayer2LabRows,
+  createLayer2LabDeckName,
+  getLayer2LabPresetRows,
+  normalizeLayer2LabWords,
+  type Layer2LabRun,
+  type Layer2LabWordScope,
+} from '@/lib/adminLayer2Lab'
+import { BASE_LANGUAGES, WIZARD_LANGUAGES } from '@/lib/languages'
+
+const TARGET_LANGUAGES = WIZARD_LANGUAGES
+
+function languageLabel(lang: { value: string; nativeName: string }) {
+  return lang.nativeName === lang.value ? lang.value : `${lang.nativeName} (${lang.value})`
+}
+
+export default function Layer2Lab() {
+  const { user, profile } = useAuth()
+  const { toast } = useToast()
+  const [targetLanguage, setTargetLanguage] = useState('English')
+  const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || 'English')
+  const [deckNamePrefix, setDeckNamePrefix] = useState('Layer2 Lab')
+  const [wordDraft, setWordDraft] = useState('')
+  const [words, setWords] = useState<string[]>([])
+  const [selectedWord, setSelectedWord] = useState<string | null>(null)
+  const [wordScope, setWordScope] = useState<Layer2LabWordScope>('selected')
+  const [meaningStrategy, setMeaningStrategy] = useState<CardLayer2MeaningStrategy>('clear_meaning')
+  const [presentationForm, setPresentationForm] = useState<CardLayer2PresentationForm>('single_scene')
+  const [artStyle, setArtStyle] = useState<CardLayer2ArtStyle>('realistic')
+  const [runLabel, setRunLabel] = useState('')
+  const [scriptRows, setScriptRows] = useState<Layer2LabRun[]>([])
+  const [submitting, setSubmitting] = useState(false)
+  const [createdDeckId, setCreatedDeckId] = useState<string | null>(null)
+  const [createdDeckName, setCreatedDeckName] = useState<string | null>(null)
+
+  const selectedWordValue = selectedWord ?? words[0] ?? null
+  const canAddRun = words.length > 0 && (wordScope === 'all' || Boolean(selectedWordValue))
+  const deckNamePreview = useMemo(
+    () => createLayer2LabDeckName(deckNamePrefix),
+    [deckNamePrefix],
+  )
+
+  function addWordsFromDraft() {
+    const nextWords = normalizeLayer2LabWords(wordDraft)
+    if (nextWords.length === 0) return
+    setWords((prev) => {
+      const seen = new Set(prev.map((word) => word.toLowerCase()))
+      const merged = [...prev]
+      for (const word of nextWords) {
+        if (seen.has(word.toLowerCase())) continue
+        seen.add(word.toLowerCase())
+        merged.push(word)
+      }
+      if (!selectedWord && merged.length > 0) setSelectedWord(merged[0])
+      return merged
+    })
+    setWordDraft('')
+  }
+
+  function removeWord(word: string) {
+    setWords((prev) => prev.filter((item) => item !== word))
+    if (selectedWord === word) {
+      const next = words.find((item) => item !== word) ?? null
+      setSelectedWord(next)
+    }
+  }
+
+  function addCurrentRun() {
+    if (!canAddRun) return
+    const rows = buildLayer2LabRows({
+      words,
+      selectedWord: selectedWordValue,
+      wordScope,
+      meaning_strategy: meaningStrategy,
+      presentation_form: presentationForm,
+      art_style: artStyle,
+      label: runLabel,
+    }).map((row) => ({ ...row, id: crypto.randomUUID() }))
+    setScriptRows((prev) => [...prev, ...rows])
+  }
+
+  function addPreset(id: (typeof ADMIN_LAYER2_LAB_PRESETS)[number]['id']) {
+    const rows = getLayer2LabPresetRows(id).map((row) => ({ ...row, id: crypto.randomUUID() }))
+    setScriptRows((prev) => [...prev, ...rows])
+    setWords((prev) => {
+      const seen = new Set(prev.map((word) => word.toLowerCase()))
+      const merged = [...prev]
+      for (const row of rows) {
+        if (seen.has(row.word.toLowerCase())) continue
+        seen.add(row.word.toLowerCase())
+        merged.push(row.word)
+      }
+      if (!selectedWord && merged.length > 0) setSelectedWord(merged[0])
+      return merged
+    })
+  }
+
+  async function createEvaluationDeck() {
+    if (!user || scriptRows.length === 0) return
+    setSubmitting(true)
+    setCreatedDeckId(null)
+    setCreatedDeckName(null)
+    const deckName = createLayer2LabDeckName(deckNamePrefix)
+    try {
+      let deck: ExistingDeck | undefined
+      let deckId: string | null = null
+      for (const row of scriptRows) {
+        const payload = buildLayer2LabPayload({
+          row,
+          userId: user.id,
+          targetLanguage,
+          deckName,
+          existingDeck: deck,
+        })
+        deckId = await submitGeneration(user.id, payload, deck)
+        deck = {
+          id: deckId,
+          name: deckName,
+          target_language: targetLanguage,
+          art_style: null,
+          movie_override: null,
+          word_count: 0,
+          deck_type: 'card',
+          last_card_image_model: 'gpt_image_2',
+        }
+      }
+      setCreatedDeckId(deckId)
+      setCreatedDeckName(deckName)
+      toast('Layer 2 evaluation deck created', 'success')
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to create evaluation deck'
+      toast(message, 'error')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <div className="max-w-7xl mx-auto space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <Beaker className="h-6 w-6" />
+          <div>
+            <h1 className="text-2xl font-bold">Layer 2 Lab</h1>
+            <p className="text-sm text-muted-foreground">
+              Admin-only controlled Premium Card evaluation batches.
+            </p>
+          </div>
+        </div>
+        {createdDeckId && (
+          <Button asChild>
+            <Link to={`/deck/${createdDeckId}`}>Open {createdDeckName || 'deck'}</Link>
+          </Button>
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-[380px_1fr] gap-6">
+        <div className="space-y-4">
+          <Card className="p-4 space-y-4">
+            <h2 className="font-semibold">Language</h2>
+            <div className="grid grid-cols-1 gap-3">
+              <label className="space-y-1 text-sm">
+                <span className="text-muted-foreground">Target language</span>
+                <Select value={targetLanguage} onValueChange={setTargetLanguage}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    {TARGET_LANGUAGES.map((lang) => (
+                      <SelectItem key={lang.value} value={lang.value}>{languageLabel(lang)}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
+              <label className="space-y-1 text-sm">
+                <span className="text-muted-foreground">Base language</span>
+                <Select value={baseLanguage} onValueChange={setBaseLanguage}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    {BASE_LANGUAGES.map((lang) => (
+                      <SelectItem key={lang.value} value={lang.value}>{languageLabel(lang)}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <span className="text-xs text-muted-foreground">
+                  Enrichment currently uses the admin profile base language; this value is recorded for lab intent only.
+                </span>
+              </label>
+              <label className="space-y-1 text-sm">
+                <span className="text-muted-foreground">Deck name prefix</span>
+                <Input value={deckNamePrefix} onChange={(event) => setDeckNamePrefix(event.target.value)} />
+              </label>
+              <p className="text-xs text-muted-foreground">Preview: {deckNamePreview}</p>
+            </div>
+          </Card>
+
+          <Card className="p-4 space-y-4">
+            <h2 className="font-semibold">Words</h2>
+            <div className="flex gap-2">
+              <Input
+                value={wordDraft}
+                onChange={(event) => setWordDraft(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    event.preventDefault()
+                    addWordsFromDraft()
+                  }
+                }}
+                placeholder="pride, remorse, flowers"
+              />
+              <Button type="button" onClick={addWordsFromDraft}>
+                <Plus className="h-4 w-4" />
+              </Button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {words.map((word) => (
+                <span
+                  key={word}
+                  className={`inline-flex items-center rounded-full border text-sm transition-colors ${
+                    selectedWordValue === word
+                      ? 'border-primary bg-primary/15 text-primary'
+                      : 'border-border text-muted-foreground'
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setSelectedWord(word)}
+                    className="px-3 py-1 hover:text-foreground"
+                  >
+                    {word}
+                  </button>
+                  <button
+                    type="button"
+                    className="px-2 py-1 text-xs opacity-70 hover:opacity-100"
+                    onClick={() => removeWord(word)}
+                    aria-label={`Remove ${word}`}
+                  >
+                    x
+                  </button>
+                </span>
+              ))}
+              {words.length === 0 && (
+                <p className="text-sm text-muted-foreground">Add one or more words to build a run.</p>
+              )}
+            </div>
+          </Card>
+
+          <Card className="p-4 space-y-4">
+            <h2 className="font-semibold">Presets</h2>
+            <div className="grid grid-cols-1 gap-2">
+              {ADMIN_LAYER2_LAB_PRESETS.map((preset) => (
+                <Button key={preset.id} type="button" variant="outline" onClick={() => addPreset(preset.id)}>
+                  {preset.label}
+                </Button>
+              ))}
+            </div>
+          </Card>
+        </div>
+
+        <div className="space-y-4">
+          <Card className="p-4 space-y-4">
+            <h2 className="font-semibold">Run Builder</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+              <label className="space-y-1 text-sm">
+                <span className="text-muted-foreground">Word scope</span>
+                <Select value={wordScope} onValueChange={(value) => setWordScope(value as Layer2LabWordScope)}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="selected">One selected word</SelectItem>
+                    <SelectItem value="all">All words</SelectItem>
+                  </SelectContent>
+                </Select>
+              </label>
+              <label className="space-y-1 text-sm">
+                <span className="text-muted-foreground">Meaning strategy</span>
+                <Select value={meaningStrategy} onValueChange={(value) => setMeaningStrategy(value as CardLayer2MeaningStrategy)}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    {CARD_LAYER2_MEANING_OPTIONS.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
+              <label className="space-y-1 text-sm">
+                <span className="text-muted-foreground">Presentation form</span>
+                <Select value={presentationForm} onValueChange={(value) => setPresentationForm(value as CardLayer2PresentationForm)}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    {CARD_LAYER2_PRESENTATION_OPTIONS.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
+              <label className="space-y-1 text-sm">
+                <span className="text-muted-foreground">Art style</span>
+                <Select value={artStyle} onValueChange={(value) => setArtStyle(value as CardLayer2ArtStyle)}>
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    {CARD_LAYER2_ART_STYLE_OPTIONS.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
+              <label className="space-y-1 text-sm md:col-span-2">
+                <span className="text-muted-foreground">Run label</span>
+                <Input value={runLabel} onChange={(event) => setRunLabel(event.target.value)} placeholder="optional" />
+              </label>
+            </div>
+            <Button type="button" onClick={addCurrentRun} disabled={!canAddRun}>
+              Add to script
+            </Button>
+          </Card>
+
+          <Card className="p-4 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h2 className="font-semibold">Script</h2>
+              <Button
+                type="button"
+                onClick={createEvaluationDeck}
+                disabled={scriptRows.length === 0 || submitting}
+              >
+                {submitting ? <RefreshCw className="h-4 w-4 animate-spin" /> : null}
+                Create Evaluation Deck
+              </Button>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left text-muted-foreground">
+                    <th className="py-2 pr-3 font-medium">Word</th>
+                    <th className="py-2 pr-3 font-medium">Meaning Strategy</th>
+                    <th className="py-2 pr-3 font-medium">Presentation Form</th>
+                    <th className="py-2 pr-3 font-medium">Art Style</th>
+                    <th className="py-2 pr-3 font-medium">Label</th>
+                    <th className="py-2 pr-3 font-medium">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {scriptRows.map((row) => (
+                    <tr key={row.id} className="border-b border-border/60">
+                      <td className="py-2 pr-3">{row.word}</td>
+                      <td className="py-2 pr-3">{cardLayer2MeaningLabel(row.meaning_strategy)}</td>
+                      <td className="py-2 pr-3">{cardLayer2PresentationLabel(row.presentation_form)}</td>
+                      <td className="py-2 pr-3">{cardLayer2ArtStyleLabel(row.art_style)}</td>
+                      <td className="py-2 pr-3">{row.label || '—'}</td>
+                      <td className="py-2 pr-3">
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => setScriptRows((prev) => prev.filter((item) => item.id !== row.id))}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                  {scriptRows.length === 0 && (
+                    <tr>
+                      <td className="py-6 text-center text-muted-foreground" colSpan={6}>
+                        No planned runs yet.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  )
+}

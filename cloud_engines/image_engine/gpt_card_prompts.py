@@ -141,6 +141,26 @@ def _remove_target_word(text: str, word: str, *, strip_terminal_punctuation: boo
     return cleaned
 
 
+def _repair_bridge_after_target_removal(text: str) -> str:
+    text = _clean(text)
+    if not text:
+        return text
+    text = re.sub(
+        r"\bfocused on\s*([.;,]|$)",
+        "focused on the meaning.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\btied to\s*([.;,]|$)",
+        "tied to the meaning.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(r"\s+([.;,])", r"\1", text)
+    return _clean(text)
+
+
 def _fallback_scene(translation: str) -> str:
     meaning = _clean(translation) or "the meaning"
     return f"a specific, concrete scene that makes {meaning} visually clear"
@@ -447,6 +467,7 @@ def build_gpt_image_2_prompt(
             word,
             strip_terminal_punctuation=False,
         )
+        bridge_text = _repair_bridge_after_target_removal(bridge_text)
     if not scene_text:
         scene_text = _fallback_scene(translation_text)
 

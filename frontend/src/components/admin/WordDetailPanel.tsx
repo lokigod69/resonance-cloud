@@ -71,6 +71,14 @@ export default function WordDetailPanel({
   const cardCost = cardImageModel ? formatCardCost(cardImageModel) : null
   const learning = resolveCardLearningMetadata(word)
   const debug = learning.adminDebug
+  const layer2Eval = asRecord(meta?.layer2_eval)
+  const layer2UserChoices = asRecord(debug.gptImage2Card?.layer2_user_choices)
+  const layer2Resolved = asRecord(debug.gptImage2Card?.layer2_resolved)
+  const layer2SnapNotes = Array.isArray(debug.gptImage2Card?.layer2_snap_notes)
+    ? (debug.gptImage2Card.layer2_snap_notes as unknown[]).map(String).join(', ')
+    : null
+  const imageBridge = cleanText(debug.gptImage2Card?.image_bridge as string | null | undefined)
+  const cardImageStyle = cleanText(layer2Eval?.art_style as string | null | undefined)
   const gptEnrichmentRows = [
     { label: 'Mnemonic (visual scene)', value: cleanText(word.mnemonic) },
     { label: 'Bridge mnemonic', value: cleanText(word.bridge_mnemonic) },
@@ -224,9 +232,24 @@ export default function WordDetailPanel({
                 <MetaRow label="Final Provider Prompt SHA-256" value={debug.fields.finalProviderPromptSha256} />
                 <MetaRow label="Layer 2 Candidate (text mode)" value={debug.fields.layer2CandidateTextMode === null ? null : String(debug.fields.layer2CandidateTextMode)} />
                 <MetaRow label="Card Image Model" value={debug.fields.cardImageModel} />
+                <MetaRow label="Card Image Style" value={cardImageStyle} />
+                <MetaRow label="Layer 2 User Choices" value={formatJsonValue(layer2UserChoices)} />
+                <MetaRow label="Layer 2 Resolved" value={formatJsonValue(layer2Resolved)} />
+                <MetaRow label="Layer 2 Snap Notes" value={layer2SnapNotes} />
+                <MetaRow label="Image Bridge" value={imageBridge} />
               </MetaSection>
             )}
           </div>
+        )}
+
+        {layer2Eval && (
+          <MetaSection title="Layer 2 Evaluation">
+            <MetaRow label="Label" value={cleanText(layer2Eval.label as string | null | undefined)} />
+            <MetaRow label="Meaning Strategy" value={cleanText(layer2Eval.meaning_strategy as string | null | undefined)} />
+            <MetaRow label="Presentation Form" value={cleanText(layer2Eval.presentation_form as string | null | undefined)} />
+            <MetaRow label="Art Style" value={cleanText(layer2Eval.art_style as string | null | undefined)} />
+            <MetaRow label="Source" value={cleanText(layer2Eval.source as string | null | undefined)} />
+          </MetaSection>
         )}
 
         {/* Resolved usage example (the same source the user-facing card uses) */}
@@ -420,6 +443,11 @@ function MetaRow({ label, value }: { label: string; value: string | number | nul
       <span>{value}</span>
     </div>
   )
+}
+
+function formatJsonValue(value: Record<string, unknown> | null): string | null {
+  if (!value) return null
+  return JSON.stringify(value)
 }
 
 function formatDuration(seconds: number | null | undefined): string | null {

@@ -50,6 +50,14 @@ export interface CardLayer2Payload extends CardLayer2Customization {
   visual_intensity: 'balanced'
 }
 
+export interface Layer2EvalPayload {
+  label: string | null
+  meaning_strategy: CardLayer2MeaningStrategy
+  presentation_form: CardLayer2PresentationForm
+  art_style: CardLayer2ArtStyle
+  source: 'admin_layer2_lab_v1'
+}
+
 export const DEFAULT_CARD_LAYER2: CardLayer2Customization = {
   meaning_strategy: 'clear_meaning',
   presentation_form: 'single_scene',
@@ -384,7 +392,7 @@ export interface GeneratePayload {
     art_style: string | null
     movie_override: string | null
     words_total: number
-    settings_override: Record<string, string | CardLayer2Payload | undefined>
+    settings_override: Record<string, string | CardLayer2Payload | Layer2EvalPayload | undefined>
   }
 }
 

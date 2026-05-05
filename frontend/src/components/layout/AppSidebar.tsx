@@ -14,6 +14,7 @@ import {
   Mic,
   DollarSign,
   ShieldCheck,
+  Beaker,
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
@@ -36,6 +37,7 @@ const adminNav = [
   { to: '/admin/metrics', label: 'Metrics', icon: BarChart3 },
   { to: '/admin/quotas', label: 'Quotas', icon: ShieldCheck },
   { to: '/admin/costs', label: 'Costs', icon: DollarSign },
+  { to: '/admin/layer2-lab', label: 'Layer 2 Lab', icon: Beaker },
 ]
 
 function NavContent({ onNavigate }: { onNavigate?: () => void }) {
