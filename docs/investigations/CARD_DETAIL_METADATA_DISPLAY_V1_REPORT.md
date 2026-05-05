@@ -221,6 +221,16 @@ These are short browser checks Sir Robert can run after pulling. Server-side smo
 ## 10. Risks remaining
 
 1. **No live row sampling.** The resolver's behaviour is verified against synthetic rows derived from the write-path source code. If the LLM has produced a shape we did not anticipate, it will either fall through to a later candidate or be ignored — never crash. A follow-up quick browser pass on a real Premium card deck should confirm.
-2. **i18n for the new key (`deckview.usageExample`)** uses literal phrasing in en/de/fr; consider a copy review if the product surface is shown in those locales.
+2. **i18n for the new key (`deckview.example`)** uses literal phrasing in en/de/fr; consider a copy review if the product surface is shown in those locales.
 3. **Older rows without `visual_card_plan`** still rely on the legacy `example`/`example_gloss` columns. The resolver covers them, but if those columns were ever wiped on legacy rows, the example will simply be hidden — graceful degradation.
 4. **Admin WordRecord type drift.** I widened the type in two locations (`WordDetailPanel.tsx` and `admin/Content.tsx`). If any other admin surface declares its own narrower `WordRecord`, it will continue to compile but may not light up the new fields — follow-up pass to grep `WordRecord` across admin if Sir Robert sees gaps.
+
+---
+
+## 11. Post-smoke polish (2026-05-05)
+
+Browser smoke after the V1 commit confirmed usage examples now appear, but flagged three layout issues. Patched in a follow-up commit:
+
+- **"IN A SENTENCE" → "Example".** The all-caps section heading felt too loud next to the subtle Etymology / Part of Speech labels. Renamed the i18n key from `deckview.usageExample` to `deckview.example` (en: "Example", de: "Beispiel", fr: "Exemple"). Removed the `uppercase tracking-wide` styling so the new label matches the other metadata labels exactly.
+- **Vertical metadata stack.** The Example block was a left-aligned multi-line group while Etymology and Part of Speech were left/right two-column rows. The mixed layout looked broken. Etymology and Part of Speech now use the same vertical stack pattern (label on top, value below), so the three card-learning fields read as one consistent stack: **Example → Etymology → Part of Speech**. Video-only fields (Creative Direction, Art Style, Music) keep the existing left/right rendering — out of scope here.
+- **Wrong-language usage translation observed once.** A single Premium card produced an English sentence in the `target` slot while the deck's target language was English (the `l1`/base slot incorrectly contained Spanish). This is a backend/enrichment prompt quality issue, not a UI bug — the resolver correctly surfaces whatever the LLM wrote. **Follow-up belongs to enrichment prompt tightening at [src/services/enrichment.py](../../src/services/enrichment.py)**: add a prompt instruction that `usage_example.target` must be in the deck's `target_language` and `usage_example.l1` must be in the user's `base_language`, and consider a server-side language-ID validator that re-prompts on mismatch. Out of scope for this UI patch.

@@ -911,12 +911,12 @@ export default function DeckViewPG() {
                                   transition={{ duration: 0.25, ease: 'easeInOut' }}
                                   className="overflow-hidden bg-[#0d0d12]/70"
                                 >
-                                  <div className="px-6 pb-4 pt-2 space-y-2.5 text-sm max-w-2xl mx-auto">
+                                  <div className="px-6 pb-4 pt-2 space-y-4 text-sm max-w-2xl mx-auto text-left">
                                     {learning.usageExample && (
-                                      <div className="space-y-1 text-left">
-                                        <p className="text-xs uppercase tracking-wide text-gray-500">{t('deckview.usageExample')}</p>
+                                      <div className="space-y-1">
+                                        <p className="text-gray-500">{t('deckview.example')}</p>
                                         {learning.usageExample.target && (
-                                          <p className="text-gray-200 long-copy">{learning.usageExample.target}</p>
+                                          <p className="text-gray-300 long-copy">{learning.usageExample.target}</p>
                                         )}
                                         {learning.usageExample.base && (
                                           <p className="text-gray-400 italic long-copy">{learning.usageExample.base}</p>
@@ -924,17 +924,17 @@ export default function DeckViewPG() {
                                       </div>
                                     )}
                                     {learning.etymology && (
-                                      <div className="flex justify-between gap-4">
-                                        <span className="text-gray-500 shrink-0">{t('deckview.etymology')}</span>
-                                        <span className="text-gray-300 text-right long-copy">{learning.etymology}</span>
+                                      <div className="space-y-1">
+                                        <p className="text-gray-500">{t('deckview.etymology')}</p>
+                                        <p className="text-gray-300 long-copy">{learning.etymology}</p>
                                       </div>
                                     )}
                                     {learning.partOfSpeech && (
-                                      <div className="flex justify-between">
-                                        <span className="text-gray-500">{t('deckview.partOfSpeech')}</span>
-                                        <span className="text-gray-300">
+                                      <div className="space-y-1">
+                                        <p className="text-gray-500">{t('deckview.partOfSpeech')}</p>
+                                        <p className="text-gray-300">
                                           {learning.partOfSpeech}{learning.article ? ` \u00b7 ${learning.article}` : ''}
-                                        </span>
+                                        </p>
                                       </div>
                                     )}
                                     {videoMeta?.creative_direction && (
