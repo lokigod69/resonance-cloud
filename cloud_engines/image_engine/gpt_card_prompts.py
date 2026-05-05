@@ -25,6 +25,37 @@ LAYER2_TEXT_MODES = {
     "speech_bubble",
     "thought_bubble",
 }
+STYLE_OPENINGS = {
+    "realistic": "Photorealistic 16:9 vocabulary memory image.",
+    "photorealistic": "Photorealistic 16:9 vocabulary memory image.",
+    "cinematic": "Cinematic film-still 16:9 vocabulary memory image.",
+    "editorial": "Editorial magazine-style 16:9 vocabulary memory image.",
+    "illustration": "High-end illustration 16:9 vocabulary memory image.",
+    "anime": "Polished anime-style 16:9 vocabulary memory image.",
+    "studio_ghibli_inspired": "Warm hand-painted fantasy-animation 16:9 vocabulary memory image.",
+    "studio_ghibli": "Warm hand-painted fantasy-animation 16:9 vocabulary memory image.",
+    "disney_animation_inspired": "Expressive family-animation 16:9 vocabulary memory image.",
+    "disney_animation": "Expressive family-animation 16:9 vocabulary memory image.",
+    "comic_book": "Dynamic comic-book 16:9 vocabulary memory illustration.",
+    "pixel_art": "Retro pixel-art 16:9 vocabulary memory image.",
+    "vintage_film": "Vintage analog-film 16:9 vocabulary memory image.",
+    "oil_painting": "Oil painting 16:9 vocabulary memory image.",
+    "surrealism": "Surrealist dreamlike 16:9 vocabulary memory image.",
+    "surreal_dreamlike": "Surrealist dreamlike 16:9 vocabulary memory image.",
+    "fantasy_art": "Mythic fantasy-art 16:9 vocabulary memory image.",
+    "pen_and_ink": "Pen-and-ink 16:9 vocabulary memory illustration.",
+    "sketch_monochrome": "Pen-and-ink 16:9 vocabulary memory illustration.",
+    "charcoal_sketch": "Charcoal sketch 16:9 vocabulary memory image.",
+    "claymation": "Claymation-style 16:9 vocabulary memory image.",
+    "ukiyo_e": "Ukiyo-e-inspired 16:9 vocabulary memory image.",
+    "chinese_ink_wash": "Chinese ink-wash 16:9 vocabulary memory image.",
+    "art_deco": "Art Deco 16:9 vocabulary memory image.",
+    "art_nouveau": "Art Nouveau 16:9 vocabulary memory image.",
+    "rick_and_morty_style": "Rick-and-Morty-inspired animated 16:9 vocabulary memory image.",
+    "south_park_style": "South-Park-inspired cutout-animation 16:9 vocabulary memory image.",
+    "pixar_3d": "Pixar-like polished 3D animated 16:9 vocabulary memory image.",
+    "random": "Photorealistic 16:9 vocabulary memory image.",
+}
 
 
 class RendererProfile(StrEnum):
@@ -115,6 +146,10 @@ def _fallback_scene(translation: str) -> str:
     return f"a specific, concrete scene that makes {meaning} visually clear"
 
 
+def _sentence_value(text: str) -> str:
+    return _clean(text).rstrip(" .")
+
+
 def _extra_lines(
     *,
     image_bridge: Optional[str] = None,
@@ -125,6 +160,16 @@ def _extra_lines(
     return (" ".join(lines) + " ") if lines else ""
 
 
+def _layer2_opening(card_image_style: str, enabled: bool) -> str | None:
+    if not enabled:
+        return None
+    normalized = _clean(card_image_style).lower()
+    return STYLE_OPENINGS.get(
+        normalized,
+        f"{_clean(card_image_style) or 'Visual'} 16:9 vocabulary memory image.",
+    )
+
+
 def _assemble_balanced_prompt(
     translation: str,
     scene: str,
@@ -133,9 +178,26 @@ def _assemble_balanced_prompt(
     style_directive: Optional[str] = None,
     text_directive: Optional[str] = None,
     answer_sentence: str = ANSWER_HIDDEN_SENTENCE,
+    opening_sentence: Optional[str] = None,
 ) -> str:
     meaning = _clean(translation) or "the meaning"
     scene = _clean(scene) or _fallback_scene(meaning)
+    opening = _clean(opening_sentence)
+    if opening:
+        style_line = (_clean(style_directive) + " ") if _clean(style_directive) else ""
+        extras = _extra_lines(
+            image_bridge=image_bridge,
+            text_directive=text_directive,
+        )
+        return (
+            f"{opening} "
+            f"{style_line}"
+            f"Visual meaning: {meaning}. "
+            f"Scene: {_sentence_value(scene)}. "
+            f"{extras}"
+            "Clear, memorable, specific, teachable; not poster, infographic, or stock-photo cliche. "
+            f"{answer_sentence}"
+        )
     extras = _extra_lines(
         image_bridge=image_bridge,
         style_directive=style_directive,
@@ -170,8 +232,24 @@ def _assemble_simple_prompt(
     answer_sentence: str = (
         "Do not write the target word or the direct answer/translation inside the image."
     ),
+    opening_sentence: Optional[str] = None,
 ) -> str:
     meaning = _clean(translation) or "the meaning"
+    opening = _clean(opening_sentence)
+    if opening:
+        style_line = (_clean(style_directive) + " ") if _clean(style_directive) else ""
+        extras = _extra_lines(
+            image_bridge=image_bridge,
+            text_directive=text_directive,
+        )
+        return (
+            f"{opening} "
+            f"{style_line}"
+            f"Meaning: {meaning}. "
+            f"{extras}"
+            "One focused, memorable moment with concrete action, emotion, contrast, or a subtle hook. "
+            f"{answer_sentence}"
+        )
     extras = _extra_lines(
         image_bridge=image_bridge,
         style_directive=style_directive,
@@ -205,9 +283,26 @@ def _assemble_cinematic_prompt(
     style_directive: Optional[str] = None,
     text_directive: Optional[str] = None,
     answer_sentence: str = ANSWER_HIDDEN_SENTENCE,
+    opening_sentence: Optional[str] = None,
 ) -> str:
     meaning = _clean(translation) or "the meaning"
     scene = _clean(scene) or _fallback_scene(meaning)
+    opening = _clean(opening_sentence)
+    if opening:
+        style_line = (_clean(style_directive) + " ") if _clean(style_directive) else ""
+        extras = _extra_lines(
+            image_bridge=image_bridge,
+            text_directive=text_directive,
+        )
+        return (
+            f"{opening} "
+            f"{style_line}"
+            f"Visual meaning: {meaning}. "
+            f"Scene: {_sentence_value(scene)}. "
+            f"{extras}"
+            "One clear film-still moment with light, depth, composition, and a strong visual hook; no poster or infographic look. "
+            f"{answer_sentence}"
+        )
     extras = _extra_lines(
         image_bridge=image_bridge,
         style_directive=style_directive,
@@ -243,6 +338,7 @@ def _assemble_prompt(
     style_directive: Optional[str] = None,
     text_directive: Optional[str] = None,
     answer_sentence: str = ANSWER_HIDDEN_SENTENCE,
+    opening_sentence: Optional[str] = None,
 ) -> str:
     if profile == RendererProfile.SIMPLE_VISUAL:
         return _assemble_simple_prompt(
@@ -251,6 +347,7 @@ def _assemble_prompt(
             style_directive=style_directive,
             text_directive=text_directive,
             answer_sentence=answer_sentence,
+            opening_sentence=opening_sentence,
         )
     if profile == RendererProfile.CINEMATIC_MEMORY:
         return _assemble_cinematic_prompt(
@@ -260,6 +357,7 @@ def _assemble_prompt(
             style_directive=style_directive,
             text_directive=text_directive,
             answer_sentence=answer_sentence,
+            opening_sentence=opening_sentence,
         )
     return _assemble_balanced_prompt(
         translation,
@@ -268,6 +366,43 @@ def _assemble_prompt(
         style_directive=style_directive,
         text_directive=text_directive,
         answer_sentence=answer_sentence,
+        opening_sentence=opening_sentence,
+    )
+
+
+def _assemble_layer2_compact_prompt(
+    profile: RendererProfile,
+    translation: str,
+    scene: str,
+    *,
+    image_bridge: Optional[str],
+    style_directive: Optional[str],
+    text_directive: Optional[str],
+    answer_sentence: str,
+    opening_sentence: str,
+) -> str:
+    meaning = _clean(translation) or "the meaning"
+    opening = _clean(opening_sentence)
+    style_line = (_clean(style_directive) + " ") if _clean(style_directive) else ""
+    extras = _extra_lines(
+        image_bridge=image_bridge,
+        text_directive=text_directive,
+    )
+    if profile == RendererProfile.SIMPLE_VISUAL:
+        return (
+            f"{opening} "
+            f"{style_line}"
+            f"Meaning: {meaning}. "
+            f"{extras}"
+            f"{answer_sentence}"
+        )
+    return (
+        f"{opening} "
+        f"{style_line}"
+        f"Meaning: {meaning}. "
+        f"Scene: {_sentence_value(_clean(scene) or _fallback_scene(meaning))}. "
+        f"{extras}"
+        f"{answer_sentence}"
     )
 
 
@@ -297,10 +432,14 @@ def build_gpt_image_2_prompt(
     render scene, removes accidental target-word leakage, trims, and formats.
     """
     del language, pos, mnemonic, mnemonic_confidence, dominant_emotional_reading
-    del composition_hint, treatment_hint, card_image_style
+    del composition_hint, treatment_hint
 
     translation_text = _clean(translation)
-    scene_text = _remove_target_word(_clean(image_scene), word)
+    scene_text = (
+        _clean(image_scene)
+        if allow_target_word_in_prompt
+        else _remove_target_word(_clean(image_scene), word)
+    )
     bridge_text = _clean(image_bridge)
     if bridge_text and not allow_target_word_in_prompt:
         bridge_text = _remove_target_word(
@@ -319,6 +458,10 @@ def build_gpt_image_2_prompt(
     )
     if profile == RendererProfile.SIMPLE_VISUAL and not allow_target_word_in_prompt:
         answer_sentence = "Do not write the target word or the direct answer/translation inside the image."
+    opening_sentence = _layer2_opening(
+        card_image_style,
+        bool(_clean(image_bridge) or _clean(style_directive) or _clean(text_directive)),
+    )
     prompt = _assemble_prompt(
         profile,
         translation_text,
@@ -327,9 +470,24 @@ def build_gpt_image_2_prompt(
         style_directive=style_directive,
         text_directive=text_directive,
         answer_sentence=answer_sentence,
+        opening_sentence=opening_sentence,
     )
     if len(prompt) <= PROMPT_HARD_CAP:
         return prompt
+
+    if opening_sentence:
+        compact_prompt = _assemble_layer2_compact_prompt(
+            profile,
+            translation_text,
+            scene_text,
+            image_bridge=bridge_text,
+            style_directive=style_directive,
+            text_directive=text_directive,
+            answer_sentence=answer_sentence,
+            opening_sentence=opening_sentence,
+        )
+        if len(compact_prompt) <= PROMPT_HARD_CAP:
+            return compact_prompt
 
     if profile == RendererProfile.SIMPLE_VISUAL:
         return prompt[:PROMPT_HARD_CAP].rsplit(" ", 1)[0].rstrip(" ,;:.") + "."
@@ -343,10 +501,11 @@ def build_gpt_image_2_prompt(
             style_directive=style_directive,
             text_directive=text_directive,
             answer_sentence=answer_sentence,
+            opening_sentence=opening_sentence,
         )
     ) - 1
     scene_budget = max(20, PROMPT_HARD_CAP - fixed_overhead)
-    return _assemble_prompt(
+    trimmed_prompt = _assemble_prompt(
         profile,
         translation_text,
         _sentence_trim(scene_text, scene_budget),
@@ -354,7 +513,24 @@ def build_gpt_image_2_prompt(
         style_directive=style_directive,
         text_directive=text_directive,
         answer_sentence=answer_sentence,
+        opening_sentence=opening_sentence,
     )
+    if len(trimmed_prompt) <= PROMPT_HARD_CAP:
+        return trimmed_prompt
+    if opening_sentence:
+        compact_prompt = _assemble_layer2_compact_prompt(
+            profile,
+            translation_text,
+            _sentence_trim(scene_text, scene_budget),
+            image_bridge=bridge_text,
+            style_directive=style_directive,
+            text_directive=text_directive,
+            answer_sentence=answer_sentence,
+            opening_sentence=opening_sentence,
+        )
+        if len(compact_prompt) <= PROMPT_HARD_CAP:
+            return compact_prompt
+    return trimmed_prompt[:PROMPT_HARD_CAP].rsplit(" ", 1)[0].rstrip(" ,;:.") + "."
 
 
 def build_gpt_image_2_card_metadata(

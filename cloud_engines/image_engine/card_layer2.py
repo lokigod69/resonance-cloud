@@ -76,6 +76,9 @@ ART_STYLE_DIRECTIVES: dict[str, str] = {
     "chinese_ink_wash": "Style: ink-wash painting, restrained brushwork.",
     "art_deco": "Style: geometric luxury design, elegant symmetry.",
     "art_nouveau": "Style: flowing ornamental lines, organic forms.",
+    "south_park_style": "Style: South-Park-inspired cutout-animation look.",
+    "rick_and_morty_style": "Style: Rick-and-Morty-inspired animated sci-fi comedy look.",
+    "pixar_3d": "Style: Pixar-like polished 3D animated look.",
 }
 ART_STYLE_ALIASES = {
     "photorealistic": "realistic",
@@ -183,11 +186,20 @@ def _resolve_creative_mode(meaning: MeaningStrategy, form: PresentationForm) -> 
     }[meaning]
 
 
-def _text_directive(text_mode: str) -> str | None:
+def _text_directive(text_mode: str, word: str) -> str | None:
+    word_text = _clean(word) or "the target word"
     if text_mode == "word_as_matter":
-        return "Render the target word as physical material; never write the translation."
+        return (
+            f'Make the target word "{word_text}" visibly readable as a large physical '
+            "typographic object in the scene, constructed from material tied to the meaning. "
+            "The word must be central to the composition, not a small label."
+        )
     if text_mode == "word_as_form":
-        return "Let the target word shape the object or scene; never write the translation."
+        return (
+            f'Make the target word "{word_text}" visibly readable as a large constructed '
+            "form shaping the scene or main object. The word must be central to the "
+            "composition, not a small label."
+        )
     return None
 
 
@@ -344,5 +356,5 @@ def resolve_layer2(
         snap_notes=snap_notes,
         image_bridge=_bridge(meaning, form, word_facts, snap_notes),
         style_directive=resolve_style_directive(art_style),
-        text_directive=_text_directive(text_mode),
+        text_directive=_text_directive(text_mode, _fact(word_facts, "word")),
     )

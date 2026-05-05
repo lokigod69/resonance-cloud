@@ -88,6 +88,10 @@ def test_word_object_design_forces_embedded_word_and_stores_text_embedding_mode(
     assert result.resolved["effective_text_embedding_mode"] == "word_as_matter"
     assert "word_object_design forced meaning_strategy to embedded_word" in result.snap_notes
     assert "Heimweh" in result.image_bridge
+    assert result.text_directive is not None
+    assert '"Heimweh" visibly readable' in result.text_directive
+    assert "central to the composition" in result.text_directive
+    assert "not a small label" in result.text_directive
 
 
 def test_clear_meaning_word_object_design_snaps_unless_user_selected_word_object_design():
@@ -185,6 +189,14 @@ def test_at_least_twelve_art_styles_compile_to_short_directives():
         assert directive
         assert len(directive) <= 100
         assert style not in directive
+
+
+def test_animation_art_styles_from_premium_ui_compile_to_directives():
+    for style in ["rick_and_morty_style", "south_park_style", "pixar_3d"]:
+        directive = resolve_style_directive(style)
+        assert directive
+        assert len(directive) <= 100
+        assert "Style:" in directive
 
 
 def test_legacy_and_random_art_style_aliases_resolve():

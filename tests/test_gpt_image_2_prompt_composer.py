@@ -277,6 +277,82 @@ def test_layer2_prompt_with_bridge_style_and_long_scene_stays_under_cap():
     assert "direct answer/translation" in prompt
 
 
+def test_layer2_non_realistic_style_prompt_does_not_start_with_photorealistic():
+    prompt = _prompt(
+        card_image_style="rick_and_morty_style",
+        image_bridge="Memory logic: absurd animated contrast makes the meaning memorable.",
+        style_directive="Style: sharp animated sci-fi comedy look.",
+    )
+
+    first_sentence = prompt.split(". ", 1)[0]
+    assert not first_sentence.startswith("Photorealistic")
+    assert "Rick-and-Morty-inspired" in first_sentence
+    assert "language-learning image" not in first_sentence
+
+
+def test_layer2_style_opening_tracks_selected_art_style():
+    cases = [
+        ("pixar_3d", "Pixar-like polished 3D animated"),
+        ("pen_and_ink", "Pen-and-ink"),
+        ("realistic", "Photorealistic"),
+    ]
+    for art_style, expected_opening in cases:
+        prompt = _prompt(
+            card_image_style=art_style,
+            image_bridge="Memory logic: one direct visual moment teaches the meaning.",
+            style_directive=f"Style: {expected_opening} look.",
+        )
+
+        first_sentence = prompt.split(". ", 1)[0]
+        assert first_sentence.startswith(expected_opening)
+        assert "vocabulary memory" in first_sentence
+
+
+def test_word_object_design_prompt_requires_visible_central_target_word():
+    prompt = _prompt(
+        word="prejudice",
+        translation="preconceived bias",
+        card_image_style="pixar_3d",
+        image_bridge='Memory logic: make "prejudice" the visual subject, formed from biased shapes.',
+        style_directive="Style: polished 3D animated look.",
+        text_directive=(
+            'Make the target word "prejudice" visibly readable as a large physical '
+            "typographic object in the scene, constructed from material or shape tied "
+            "to the meaning. The word must be central to the composition, not a small label."
+        ),
+        allow_target_word_in_prompt=True,
+    )
+
+    assert "prejudice" in prompt
+    assert "visibly readable" in prompt
+    assert "central to the composition" in prompt
+    assert "not a small label" in prompt
+    assert "never write the direct answer/translation" in prompt
+    assert "Do not write the target word" not in prompt
+
+
+def test_word_object_design_prompt_stays_under_hard_cap_with_strong_directive():
+    prompt = _prompt(
+        word="prejudice",
+        translation="preconceived bias",
+        card_image_style="rick_and_morty_style",
+        image_scene="A courtroom-like room where one side of a scale is loaded before anyone speaks.",
+        image_bridge='Memory logic: make "prejudice" the visual subject, formed from material or shapes tied to preconceived bias.',
+        style_directive="Style: Rick-and-Morty-inspired animated sci-fi comedy look.",
+        text_directive=(
+            'Make the target word "prejudice" visibly readable as a large physical '
+            "typographic object in the scene, constructed from material tied to the "
+            "meaning. The word must be central to the composition, not a small label."
+        ),
+        allow_target_word_in_prompt=True,
+    )
+
+    assert len(prompt) <= PROMPT_HARD_CAP
+    assert "prejudice" in prompt
+    assert "visibly readable" in prompt
+    assert "never write the direct answer/translation" in prompt
+
+
 def test_layer2_metadata_records_user_choices_resolution_notes_and_bridge():
     prompt = _prompt(image_bridge="Memory logic: a compact bridge.")
     metadata = build_gpt_image_2_card_metadata(
