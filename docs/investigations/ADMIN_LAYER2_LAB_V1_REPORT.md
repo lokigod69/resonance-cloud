@@ -19,9 +19,10 @@ The route is protected by the existing `AdminRoute` wrapper and is available fro
    - Style Obedience Smoke
    - Story Form Smoke
 6. Review the visible script table.
-7. Click `Create Evaluation Deck`.
+7. Review the estimated credit cost: `script row count x 5` Premium GPT Image-2 credits.
+8. Click `Create Evaluation Deck`.
 
-The page then shows a link to the created deck.
+The page then shows a result summary with the created deck link, submitted row count, failed row count, and any failed row labels/reasons.
 
 ## Job/Deck Strategy
 
@@ -32,6 +33,10 @@ The current `submit_generation` RPC accepts one `settings_override` per generati
 - one word per job
 
 This preserves correct per-card settings without changing the RPC or adding migrations.
+
+The first row is submitted without an existing deck id, so it creates the evaluation deck. Every later row is submitted through the same `submitGeneration` path with the captured deck id as the existing deck, equivalent to repeatedly using Add Cards into one Premium Card deck.
+
+If the first row fails, no deck exists and the lab stops. If a later row fails, the lab keeps the created deck link, records the failed row in the visible summary, and continues attempting later rows.
 
 ## RPC Constraints Found
 
@@ -82,11 +87,12 @@ Each lab job sends:
       "visual_intensity": "balanced"
     },
     "layer2_eval": {
+      "source": "admin_layer2_lab_v1",
+      "script_index": 1,
       "label": "<optional row label>",
       "meaning_strategy": "<row meaning strategy>",
       "presentation_form": "<row presentation form>",
-      "art_style": "<row art style>",
-      "source": "admin_layer2_lab_v1"
+      "art_style": "<row art style>"
     }
   }
 }
@@ -112,13 +118,12 @@ Memory logic: keep one direct visual moment focused on the meaning.
 
 Passed:
 
+- `npm run build`
 - `npm run test:admin-layer2-lab`
+- `npm run test:lane-payload`
 - targeted ESLint for the new admin lab files and touched frontend files
 - `python -m pytest tests/test_gpt_image_2_prompt_composer.py -q`
-
-Known check blocker:
-
-- `npm run build` is currently blocked by an unrelated existing TypeScript error in `frontend/src/components/study/canvas/EmberCanvas.tsx`: `setWordVersion` is undefined.
+- `git diff --check`
 
 ## Remaining Limitations
 

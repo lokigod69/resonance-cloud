@@ -36,13 +36,30 @@ export interface BuildLayer2LabRowsInput {
 
 export interface BuildLayer2LabPayloadInput {
   row: Layer2LabRun
+  scriptIndex?: number
   userId: string
   targetLanguage: string
   deckName: string
   existingDeck?: ExistingDeck
 }
 
+export interface Layer2LabFailedRow {
+  scriptIndex: number
+  word: string
+  label: string | null
+  reason: string
+}
+
+export interface Layer2LabResultSummary {
+  deckId: string | null
+  deckName: string
+  totalRows: number
+  submittedRows: number
+  failedRows: Layer2LabFailedRow[]
+}
+
 const SOURCE: Layer2EvalPayload['source'] = 'admin_layer2_lab_v1'
+export const LAYER2_LAB_CREDITS_PER_ROW = 5
 
 export const ADMIN_LAYER2_LAB_PRESETS: Layer2LabPreset[] = [
   {
@@ -155,9 +172,14 @@ export function createLayer2LabDeckName(prefix: string, isoDate = new Date().toI
   return `${cleanPrefix} - ${isoDate.slice(0, 10)} ${isoDate.slice(11, 16)}`
 }
 
-export function layer2EvalForRow(rowItem: Layer2LabRun): Layer2EvalPayload {
+export function estimateLayer2LabCreditCost(rowCount: number): number {
+  return Math.max(0, rowCount) * LAYER2_LAB_CREDITS_PER_ROW
+}
+
+export function layer2EvalForRow(rowItem: Layer2LabRun, scriptIndex = 1): Layer2EvalPayload {
   return {
     label: rowItem.label,
+    script_index: scriptIndex,
     meaning_strategy: rowItem.meaning_strategy,
     presentation_form: rowItem.presentation_form,
     art_style: rowItem.art_style,
@@ -165,8 +187,19 @@ export function layer2EvalForRow(rowItem: Layer2LabRun): Layer2EvalPayload {
   }
 }
 
+export function createLayer2LabResultSummary(summary: Layer2LabResultSummary): Layer2LabResultSummary {
+  return {
+    ...summary,
+    failedRows: summary.failedRows.map((failure) => ({
+      ...failure,
+      reason: clean(failure.reason) || 'Unknown error',
+    })),
+  }
+}
+
 export function buildLayer2LabPayload({
   row: rowItem,
+  scriptIndex = 1,
   userId,
   targetLanguage,
   deckName,
@@ -204,7 +237,7 @@ export function buildLayer2LabPayload({
         card_image_model: 'gpt_image_2',
         card_image_style: rowItem.art_style,
         card_layer2: layer2,
-        layer2_eval: layer2EvalForRow(rowItem),
+        layer2_eval: layer2EvalForRow(rowItem, scriptIndex),
       },
     },
   }

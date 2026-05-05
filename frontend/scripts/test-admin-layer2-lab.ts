@@ -9,6 +9,8 @@ import {
   buildLayer2LabPayload,
   buildLayer2LabRows,
   createLayer2LabDeckName,
+  createLayer2LabResultSummary,
+  estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
   normalizeLayer2LabWords,
   type Layer2LabRun,
@@ -128,6 +130,97 @@ console.log('\n[premium lab payload]')
     p.jobPayload.settings_override.layer2_eval?.source === 'admin_layer2_lab_v1'
       && p.jobPayload.settings_override.layer2_eval?.label === 'viral story',
     p.jobPayload.settings_override,
+  )
+  assert('first row records one-based script index',
+    p.jobPayload.settings_override.layer2_eval?.script_index === 1,
+    p.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[one-deck append plan]')
+{
+  const deckName = createLayer2LabDeckName('Layer2 Lab', '2026-05-05T10:00:00.000Z')
+  const firstRow: Layer2LabRun = {
+    id: 'row-1',
+    word: 'prejudice',
+    meaning_strategy: 'clear_meaning',
+    presentation_form: 'single_scene',
+    art_style: 'rick_and_morty_style',
+    label: 'style row',
+  }
+  const secondRow: Layer2LabRun = {
+    id: 'row-2',
+    word: 'remorse',
+    meaning_strategy: 'exaggerated_meaning',
+    presentation_form: 'word_object_design',
+    art_style: 'pixar_3d',
+    label: 'word design row',
+  }
+  const first = buildLayer2LabPayload({
+    row: firstRow,
+    scriptIndex: 1,
+    userId: USER,
+    targetLanguage: 'English',
+    deckName,
+  })
+  const second = buildLayer2LabPayload({
+    row: secondRow,
+    scriptIndex: 2,
+    userId: USER,
+    targetLanguage: 'English',
+    deckName,
+    existingDeck: {
+      id: 'deck-123',
+      name: deckName,
+      target_language: 'English',
+      art_style: null,
+      movie_override: null,
+      word_count: 0,
+      deck_type: 'card',
+      last_card_image_model: 'gpt_image_2',
+    },
+  })
+  assert('first submit creates the deck', first.deckPayload?.name === deckName && !first.jobPayload.deck_id, first)
+  assert('later submit appends to the same deck id',
+    second.deckPayload === null && second.jobPayload.deck_id === 'deck-123',
+    second,
+  )
+  assert('each row has its own art style',
+    first.jobPayload.settings_override.card_image_style === 'rick_and_morty_style'
+      && second.jobPayload.settings_override.card_image_style === 'pixar_3d',
+    [first.jobPayload.settings_override, second.jobPayload.settings_override],
+  )
+  assert('each row has its own layer2 settings',
+    first.jobPayload.settings_override.card_layer2?.presentation_form === 'single_scene'
+      && second.jobPayload.settings_override.card_layer2?.presentation_form === 'word_object_design'
+      && second.jobPayload.settings_override.card_layer2?.meaning_strategy === 'exaggerated_meaning',
+    [first.jobPayload.settings_override, second.jobPayload.settings_override],
+  )
+  assert('later row records its script index',
+    second.jobPayload.settings_override.layer2_eval?.script_index === 2,
+    second.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[cost and failure summary]')
+{
+  assert('estimated cost is five credits per script row', estimateLayer2LabCreditCost(3) === 15)
+  const summary = createLayer2LabResultSummary({
+    deckId: 'deck-123',
+    deckName: 'Layer2 Lab',
+    totalRows: 3,
+    submittedRows: 2,
+    failedRows: [
+      { scriptIndex: 3, word: 'viral', label: 'story row', reason: 'network timeout' },
+    ],
+  })
+  assert('partial failure summary keeps created deck link',
+    summary.deckId === 'deck-123' && summary.submittedRows === 2 && summary.failedRows.length === 1,
+    summary,
+  )
+  assert('partial failure summary exposes failed row reason',
+    summary.failedRows[0]?.label === 'story row' && summary.failedRows[0]?.reason === 'network timeout',
+    summary,
   )
 }
 

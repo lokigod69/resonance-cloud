@@ -29,11 +29,14 @@ import {
 import {
   ADMIN_LAYER2_LAB_PRESETS,
   buildLayer2LabPayload,
+  createLayer2LabResultSummary,
   buildLayer2LabRows,
   createLayer2LabDeckName,
+  estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
   normalizeLayer2LabWords,
   type Layer2LabRun,
+  type Layer2LabResultSummary,
   type Layer2LabWordScope,
 } from '@/lib/adminLayer2Lab'
 import { BASE_LANGUAGES, WIZARD_LANGUAGES } from '@/lib/languages'
@@ -62,6 +65,7 @@ export default function Layer2Lab() {
   const [submitting, setSubmitting] = useState(false)
   const [createdDeckId, setCreatedDeckId] = useState<string | null>(null)
   const [createdDeckName, setCreatedDeckName] = useState<string | null>(null)
+  const [resultSummary, setResultSummary] = useState<Layer2LabResultSummary | null>(null)
 
   const selectedWordValue = selectedWord ?? words[0] ?? null
   const canAddRun = words.length > 0 && (wordScope === 'all' || Boolean(selectedWordValue))
@@ -69,6 +73,7 @@ export default function Layer2Lab() {
     () => createLayer2LabDeckName(deckNamePrefix),
     [deckNamePrefix],
   )
+  const estimatedCredits = estimateLayer2LabCreditCost(scriptRows.length)
 
   function addWordsFromDraft() {
     const nextWords = normalizeLayer2LabWords(wordDraft)
@@ -130,33 +135,63 @@ export default function Layer2Lab() {
     setSubmitting(true)
     setCreatedDeckId(null)
     setCreatedDeckName(null)
+    setResultSummary(null)
     const deckName = createLayer2LabDeckName(deckNamePrefix)
+    let deck: ExistingDeck | undefined
+    let deckId: string | null = null
+    let submittedRows = 0
+    const failedRows: Layer2LabResultSummary['failedRows'] = []
+
     try {
-      let deck: ExistingDeck | undefined
-      let deckId: string | null = null
-      for (const row of scriptRows) {
+      for (const [index, row] of scriptRows.entries()) {
         const payload = buildLayer2LabPayload({
           row,
+          scriptIndex: index + 1,
           userId: user.id,
           targetLanguage,
           deckName,
           existingDeck: deck,
         })
-        deckId = await submitGeneration(user.id, payload, deck)
-        deck = {
-          id: deckId,
-          name: deckName,
-          target_language: targetLanguage,
-          art_style: null,
-          movie_override: null,
-          word_count: 0,
-          deck_type: 'card',
-          last_card_image_model: 'gpt_image_2',
+        try {
+          deckId = await submitGeneration(user.id, payload, deck)
+          submittedRows += 1
+          deck = {
+            id: deckId,
+            name: deckName,
+            target_language: targetLanguage,
+            art_style: null,
+            movie_override: null,
+            word_count: 0,
+            deck_type: 'card',
+            last_card_image_model: 'gpt_image_2',
+          }
+        } catch (err) {
+          failedRows.push({
+            scriptIndex: index + 1,
+            word: row.word,
+            label: row.label,
+            reason: err instanceof Error ? err.message : 'Failed to submit row',
+          })
+          if (!deckId) break
         }
       }
       setCreatedDeckId(deckId)
       setCreatedDeckName(deckName)
-      toast('Layer 2 evaluation deck created', 'success')
+      const summary = createLayer2LabResultSummary({
+        deckId,
+        deckName,
+        totalRows: scriptRows.length,
+        submittedRows,
+        failedRows,
+      })
+      setResultSummary(summary)
+      if (!deckId) {
+        toast('Layer 2 evaluation deck was not created', 'error')
+      } else if (failedRows.length > 0) {
+        toast('Layer 2 evaluation deck partially created', 'error')
+      } else {
+        toast('Layer 2 evaluation deck created', 'success')
+      }
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to create evaluation deck'
       toast(message, 'error')
@@ -173,7 +208,7 @@ export default function Layer2Lab() {
           <div>
             <h1 className="text-2xl font-bold">Layer 2 Lab</h1>
             <p className="text-sm text-muted-foreground">
-              Admin-only controlled Premium Card evaluation batches.
+              Create one evaluation deck with one generated card per script row.
             </p>
           </div>
         </div>
@@ -344,7 +379,12 @@ export default function Layer2Lab() {
 
           <Card className="p-4 space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="font-semibold">Script</h2>
+              <div>
+                <h2 className="font-semibold">Script</h2>
+                <p className="text-xs text-muted-foreground">
+                  Estimated cost: {estimatedCredits} credits ({scriptRows.length} x 5 Premium GPT Image-2 credits).
+                </p>
+              </div>
               <Button
                 type="button"
                 onClick={createEvaluationDeck}
@@ -396,6 +436,30 @@ export default function Layer2Lab() {
                 </tbody>
               </table>
             </div>
+            {resultSummary && (
+              <div className="rounded-md border border-border bg-muted/30 p-3 text-sm">
+                <div className="font-medium">
+                  {resultSummary.deckId ? 'Evaluation deck result' : 'Evaluation deck failed'}
+                </div>
+                <div className="mt-1 text-muted-foreground">
+                  Rows submitted: {resultSummary.submittedRows} / {resultSummary.totalRows}. Rows failed: {resultSummary.failedRows.length}.
+                </div>
+                {resultSummary.deckId && (
+                  <Button asChild variant="link" className="h-auto px-0 py-1">
+                    <Link to={`/deck/${resultSummary.deckId}`}>Open {resultSummary.deckName}</Link>
+                  </Button>
+                )}
+                {resultSummary.failedRows.length > 0 && (
+                  <ul className="mt-2 space-y-1 text-muted-foreground">
+                    {resultSummary.failedRows.map((failure) => (
+                      <li key={`${failure.scriptIndex}-${failure.word}`}>
+                        Row {failure.scriptIndex}: {failure.label || failure.word} - {failure.reason}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
           </Card>
         </div>
       </div>
