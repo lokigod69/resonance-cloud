@@ -371,6 +371,31 @@ class CardWorker:
                     if isinstance(images_settings.get("card_layer2"), dict)
                     else None
                 ),
+                layer2_planning_version=visual_card_plan.get("layer2_planning_version"),
+                mini_story_beats=(
+                    visual_card_plan.get("mini_story_beats")
+                    if isinstance(visual_card_plan.get("mini_story_beats"), list)
+                    else None
+                ),
+                split_panel_brief=(
+                    visual_card_plan.get("split_panel_brief")
+                    if isinstance(visual_card_plan.get("split_panel_brief"), dict)
+                    else None
+                ),
+                word_design_brief=(
+                    visual_card_plan.get("word_design_brief")
+                    if isinstance(visual_card_plan.get("word_design_brief"), dict)
+                    else None
+                ),
+                word_design_mode=visual_card_plan.get("word_design_mode"),
+                mnemonic_hook=(
+                    visual_card_plan.get("mnemonic_hook")
+                    if isinstance(visual_card_plan.get("mnemonic_hook"), dict)
+                    else None
+                ),
+                hook_type=visual_card_plan.get("hook_type"),
+                hook_quality=visual_card_plan.get("hook_quality"),
+                fallback_reason=visual_card_plan.get("fallback_reason"),
                 single_image_teachable=(
                     visual_card_plan.get("single_image_teachable")
                     if visual_card_plan.get("single_image_teachable") is not None

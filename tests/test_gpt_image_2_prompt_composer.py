@@ -367,6 +367,114 @@ def test_word_object_design_prompt_stays_under_hard_cap_with_strong_directive():
     assert "never write the direct answer/translation" in prompt
 
 
+def test_layer2_mini_story_beats_become_primary_scene_source():
+    prompt = _prompt(
+        word="freedom",
+        translation="freedom",
+        card_image_style="surrealism",
+        image_scene="A generic person stands on a cliff.",
+        image_bridge="Memory logic: three compact beats make the meaning memorable.",
+        mini_story_beats=[
+            "a person trapped behind bars",
+            "the door opening",
+            "the person stepping into a wide open landscape",
+        ],
+        layer2_planning_version="layer2_planning_v1",
+    )
+
+    assert "Mini story: three visible beats" in prompt
+    assert "first, a person trapped behind bars" in prompt
+    assert "second, the door opening" in prompt
+    assert "third, the person stepping into a wide open landscape" in prompt
+    assert "generic person stands on a cliff" not in prompt
+
+
+def test_layer2_split_panel_brief_becomes_primary_scene_source():
+    prompt = _prompt(
+        word="freedom",
+        translation="freedom",
+        card_image_style="illustration",
+        image_bridge="Memory logic: split-panel contrast makes the meaning readable.",
+        split_panel_brief={
+            "left": "a locked cage and visible constraint",
+            "right": "open landscape and free movement",
+            "divider": "soft visual transition",
+        },
+        layer2_planning_version="layer2_planning_v1",
+    )
+
+    assert "Split-panel contrast:" in prompt
+    assert "left side shows a locked cage" in prompt
+    assert "right side shows open landscape" in prompt
+    assert "soft visual transition" in prompt
+
+
+def test_layer2_word_design_brief_prioritizes_word_subject():
+    prompt = _prompt(
+        word="flowers",
+        translation="flowers",
+        card_image_style="realistic",
+        image_bridge='Memory logic: make "flowers" the visual subject.',
+        word_design_brief={
+            "word_design_mode": "word_as_matter",
+            "primary_subject": "The word FLOWERS is visibly readable as a large physical typographic object.",
+            "material_logic": "Build the letters from actual flowers and stems.",
+            "background_context": "a simple garden table",
+        },
+        allow_target_word_in_prompt=True,
+        layer2_planning_version="layer2_planning_v1",
+    )
+
+    assert "Word as design:" in prompt
+    assert "FLOWERS" in prompt
+    assert "large physical typographic object" in prompt
+    assert "central to the composition" in prompt
+    assert "simple garden table" in prompt
+    assert "never write the direct answer/translation" in prompt
+
+
+def test_layer2_prompt_cleanup_repairs_broken_target_stripping_fragments():
+    prompt = _prompt(
+        word="viral",
+        translation="viral",
+        image_scene="A visible hook should lead into a clear scene of viral.",
+        image_bridge="Memory logic: () teaching viral.",
+        allow_target_word_in_prompt=False,
+    )
+
+    assert "lead into a clear scene of." not in prompt
+    assert "teaching ." not in prompt
+    assert "()" not in prompt
+    assert "lead into a clear scene of the meaning" in prompt
+    assert "teaching the meaning" in prompt
+
+
+def test_layer2_hard_cap_preserves_structured_mini_story():
+    long_scene = " ".join(
+        f"background detail {i} with extra descriptive clutter"
+        for i in range(120)
+    )
+    prompt = _prompt(
+        word="freedom",
+        translation="freedom",
+        card_image_style="cinematic",
+        image_scene=long_scene,
+        image_bridge="Memory logic: three compact beats make the meaning memorable.",
+        mini_story_beats=[
+            "a locked cage",
+            "a door opening",
+            "a figure entering a wide open landscape",
+        ],
+        layer2_planning_version="layer2_planning_v1",
+    )
+
+    assert len(prompt) <= PROMPT_HARD_CAP
+    assert "Mini story: three visible beats" in prompt
+    assert "a locked cage" in prompt
+    assert "a door opening" in prompt
+    assert "wide open landscape" in prompt
+
+
 def test_layer2_metadata_records_user_choices_resolution_notes_and_bridge():
     prompt = _prompt(image_bridge="Memory logic: a compact bridge.")
     metadata = build_gpt_image_2_card_metadata(

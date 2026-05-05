@@ -188,6 +188,15 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         style_directive=layer2.style_directive if layer2 else None,
         text_directive=layer2.text_directive if layer2 else None,
         allow_target_word_in_prompt=layer2.allow_target_word_in_prompt if layer2 else False,
+        layer2_planning_version=payload.content.layer2_planning_version,
+        mini_story_beats=payload.content.mini_story_beats,
+        split_panel_brief=payload.content.split_panel_brief,
+        word_design_brief=payload.content.word_design_brief,
+        word_design_mode=payload.content.word_design_mode,
+        mnemonic_hook=payload.content.mnemonic_hook,
+        hook_type=payload.content.hook_type,
+        hook_quality=payload.content.hook_quality,
+        fallback_reason=payload.content.fallback_reason,
     )
     card_metadata = build_gpt_image_2_card_metadata(
         final_provider_prompt=prompt_text,
@@ -210,6 +219,15 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         layer2_resolved=layer2.resolved if layer2 else None,
         layer2_snap_notes=layer2.snap_notes if layer2 else None,
         image_bridge=layer2.image_bridge if layer2 else None,
+        layer2_planning_version=payload.content.layer2_planning_version,
+        mini_story_beats=payload.content.mini_story_beats,
+        split_panel_brief=payload.content.split_panel_brief,
+        word_design_brief=payload.content.word_design_brief,
+        word_design_mode=payload.content.word_design_mode,
+        mnemonic_hook=payload.content.mnemonic_hook,
+        hook_type=payload.content.hook_type,
+        hook_quality=payload.content.hook_quality,
+        fallback_reason=payload.content.fallback_reason,
     )
     request_payload = {
         "model": "gpt-image-2-text-to-image",

@@ -63,6 +63,15 @@ class CardImageContent(BaseModel):
     renderer_profile: Optional[str] = None
     renderer_profile_source: Optional[str] = None
     layer2_customization: Optional[dict[str, Any]] = None
+    layer2_planning_version: Optional[str] = None
+    mini_story_beats: Optional[list[str]] = None
+    split_panel_brief: Optional[dict[str, Any]] = None
+    word_design_brief: Optional[dict[str, Any]] = None
+    word_design_mode: Optional[str] = None
+    mnemonic_hook: Optional[dict[str, Any]] = None
+    hook_type: Optional[str] = None
+    hook_quality: Optional[str] = None
+    fallback_reason: Optional[str] = None
     single_image_teachable: Optional[bool] = None
     register_note: Optional[str] = None
     rationale_summary: Optional[str] = None

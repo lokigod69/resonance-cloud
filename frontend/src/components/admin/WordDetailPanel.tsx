@@ -71,13 +71,15 @@ export default function WordDetailPanel({
   const cardCost = cardImageModel ? formatCardCost(cardImageModel) : null
   const learning = resolveCardLearningMetadata(word)
   const debug = learning.adminDebug
+  const visualPlan = asRecord(debug.visualCardPlan)
+  const gptImage2Card = asRecord(debug.gptImage2Card)
   const layer2Eval = asRecord(meta?.layer2_eval)
-  const layer2UserChoices = asRecord(debug.gptImage2Card?.layer2_user_choices)
-  const layer2Resolved = asRecord(debug.gptImage2Card?.layer2_resolved)
-  const layer2SnapNotes = Array.isArray(debug.gptImage2Card?.layer2_snap_notes)
-    ? (debug.gptImage2Card.layer2_snap_notes as unknown[]).map(String).join(', ')
+  const layer2UserChoices = asRecord(gptImage2Card?.layer2_user_choices)
+  const layer2Resolved = asRecord(gptImage2Card?.layer2_resolved)
+  const layer2SnapNotes = Array.isArray(gptImage2Card?.layer2_snap_notes)
+    ? (gptImage2Card.layer2_snap_notes as unknown[]).map(String).join(', ')
     : null
-  const imageBridge = cleanText(debug.gptImage2Card?.image_bridge as string | null | undefined)
+  const imageBridge = cleanText(gptImage2Card?.image_bridge as string | null | undefined)
   const cardImageStyle = cleanText(layer2Eval?.art_style as string | null | undefined)
   const gptEnrichmentRows = [
     { label: 'Mnemonic (visual scene)', value: cleanText(word.mnemonic) },
@@ -207,6 +209,14 @@ export default function WordDetailPanel({
                 <MetaRow label="Renderer Profile" value={debug.fields.rendererProfile} />
                 <MetaRow label="Renderer Profile Source" value={debug.fields.rendererProfileSource} />
                 <MetaRow label="Answer Visibility" value={debug.fields.answerVisibility} />
+                <MetaRow label="Layer 2 Planning Version" value={cleanText(visualPlan?.layer2_planning_version as string | null | undefined)} />
+                <MetaRow label="Mini Story Beats" value={formatUnknownJsonValue(visualPlan?.mini_story_beats)} />
+                <MetaRow label="Split Panel Brief" value={formatUnknownJsonValue(visualPlan?.split_panel_brief)} />
+                <MetaRow label="Word Design Brief" value={formatUnknownJsonValue(visualPlan?.word_design_brief)} />
+                <MetaRow label="Word Design Mode" value={cleanText(visualPlan?.word_design_mode as string | null | undefined)} />
+                <MetaRow label="Mnemonic Hook" value={formatUnknownJsonValue(visualPlan?.mnemonic_hook)} />
+                <MetaRow label="Hook Type" value={cleanText(visualPlan?.hook_type as string | null | undefined)} />
+                <MetaRow label="Hook Quality" value={cleanText(visualPlan?.hook_quality as string | null | undefined)} />
                 <MetaRow label="Dominant Emotional Reading" value={debug.fields.dominantEmotionalReading} />
                 <MetaRow label="Single Image Teachable" value={debug.fields.singleImageTeachable === null ? null : String(debug.fields.singleImageTeachable)} />
                 <MetaRow label="Register Note" value={debug.fields.registerNote} />
@@ -236,6 +246,14 @@ export default function WordDetailPanel({
                 <MetaRow label="Layer 2 User Choices" value={formatJsonValue(layer2UserChoices)} />
                 <MetaRow label="Layer 2 Resolved" value={formatJsonValue(layer2Resolved)} />
                 <MetaRow label="Layer 2 Snap Notes" value={layer2SnapNotes} />
+                <MetaRow label="Layer 2 Planning Version" value={cleanText(gptImage2Card?.layer2_planning_version as string | null | undefined)} />
+                <MetaRow label="Mini Story Beats" value={formatUnknownJsonValue(gptImage2Card?.mini_story_beats)} />
+                <MetaRow label="Split Panel Brief" value={formatUnknownJsonValue(gptImage2Card?.split_panel_brief)} />
+                <MetaRow label="Word Design Brief" value={formatUnknownJsonValue(gptImage2Card?.word_design_brief)} />
+                <MetaRow label="Word Design Mode" value={cleanText(gptImage2Card?.word_design_mode as string | null | undefined)} />
+                <MetaRow label="Mnemonic Hook" value={formatUnknownJsonValue(gptImage2Card?.mnemonic_hook)} />
+                <MetaRow label="Hook Type" value={cleanText(gptImage2Card?.hook_type as string | null | undefined)} />
+                <MetaRow label="Hook Quality" value={cleanText(gptImage2Card?.hook_quality as string | null | undefined)} />
                 <MetaRow label="Image Bridge" value={imageBridge} />
               </MetaSection>
             )}
@@ -447,6 +465,12 @@ function MetaRow({ label, value }: { label: string; value: string | number | nul
 
 function formatJsonValue(value: Record<string, unknown> | null): string | null {
   if (!value) return null
+  return JSON.stringify(value)
+}
+
+function formatUnknownJsonValue(value: unknown): string | null {
+  if (value === null || value === undefined) return null
+  if (typeof value === 'string') return cleanText(value)
   return JSON.stringify(value)
 }
 

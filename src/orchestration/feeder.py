@@ -18,6 +18,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
+from cloud_engines.image_engine.layer2_visual_planning import build_layer2_visual_plan
+
 from . import state
 
 log = logging.getLogger(__name__)
@@ -722,6 +724,21 @@ async def bootstrap_job(
             "rationale_summary": e.get("rationale_summary"),
             "answer_visibility": "hidden",
         }
+        card_layer2 = (
+            settings_override.get("card_layer2")
+            if isinstance(settings_override.get("card_layer2"), dict)
+            else None
+        )
+        visual_card_plan = build_layer2_visual_plan(
+            visual_card_plan,
+            card_layer2=card_layer2,
+            word=original_word,
+            translation=e.get("translation", "") or "",
+            bridge_mnemonic=e.get("bridge_mnemonic", "") or "",
+            mnemonic=e.get("mnemonic", "") or "",
+            etymology=e.get("etymology", "") or "",
+            pos=e.get("pos", "") or "",
+        )
         current_metadata = word_rec.get("metadata") if isinstance(word_rec.get("metadata"), dict) else {}
         if is_phrase:
             raw_word_text = original_word

@@ -59,6 +59,11 @@ def test_admin_word_detail_surfaces_gpt_enrichment_and_cost():
     assert "Emotional reading" in source
     assert "Composition" in source
     assert "Treatment" in source
+    assert "Layer 2 Planning Version" in source
+    assert "Mini Story Beats" in source
+    assert "Split Panel Brief" in source
+    assert "Word Design Brief" in source
+    assert "Mnemonic Hook" in source
     assert "gptEnrichmentRows.length > 0" in source
 
     assert "COST_PER_CARD: Record<string, number>" in source
@@ -90,7 +95,7 @@ def test_user_facing_wizard_exposes_gpt_image_2_only_as_controlled_card_tier():
     )
 
     assert "gpt_image_2" in wizard_sources
-    assert "GPT Image-2 Card" in wizard_sources
-    assert "Premium GPT image card" in wizard_sources
+    assert "Premium Card Customize" in wizard_sources
+    assert "card_premium" in wizard_sources
     assert "card_image_model" in wizard_sources
     assert "cardImageModel" in wizard_sources

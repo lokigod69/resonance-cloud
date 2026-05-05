@@ -576,6 +576,13 @@ def test_card_worker_passes_layer2_settings_and_persists_layer2_metadata(monkeyp
     def fake_generate_card_image(payload):
         assert payload.content.layer2_customization == layer2
         assert payload.card_image_style == "surrealism"
+        assert payload.content.layer2_planning_version == "layer2_planning_v1"
+        assert payload.content.mini_story_beats == [
+            "a traveler far from home",
+            "a doorway glowing with memory",
+            "the ache of homesickness becomes clear",
+        ]
+        assert payload.content.mnemonic_hook["hook_type"] == "semantic_mnemonic"
         return CardImageResult(
             status="success",
             image_path=str(tmp_path / "card.png"),
@@ -597,6 +604,20 @@ def test_card_worker_passes_layer2_settings_and_persists_layer2_metadata(monkeyp
                 },
                 "layer2_snap_notes": [],
                 "image_bridge": "Memory logic: three compact beats make homesickness memorable.",
+                "layer2_planning_version": "layer2_planning_v1",
+                "mini_story_beats": [
+                    "a traveler far from home",
+                    "a doorway glowing with memory",
+                    "the ache of homesickness becomes clear",
+                ],
+                "mnemonic_hook": {
+                    "hook_type": "semantic_mnemonic",
+                    "hook_text": "home pulls",
+                    "visual_translation": "A doorway glows with memory.",
+                    "quality": "usable",
+                },
+                "hook_type": "semantic_mnemonic",
+                "hook_quality": "usable",
                 "text_embedding_mode": "none",
                 "layer2_candidate_text_mode": False,
                 "final_provider_prompt_sha256": "abc123",
@@ -637,6 +658,18 @@ def test_card_worker_passes_layer2_settings_and_persists_layer2_metadata(monkeyp
                         "text_embedding_mode": "none",
                         "renderer_profile": "balanced_teaching",
                         "renderer_profile_source": "auto",
+                        "layer2_planning_version": "layer2_planning_v1",
+                        "mini_story_beats": [
+                            "a traveler far from home",
+                            "a doorway glowing with memory",
+                            "the ache of homesickness becomes clear",
+                        ],
+                        "mnemonic_hook": {
+                            "hook_type": "semantic_mnemonic",
+                            "hook_text": "home pulls",
+                            "visual_translation": "A doorway glows with memory.",
+                            "quality": "usable",
+                        },
                     }
                 },
             },
@@ -669,6 +702,9 @@ def test_card_worker_passes_layer2_settings_and_persists_layer2_metadata(monkeyp
     assert metadata["layer2_user_choices"] == layer2
     assert metadata["layer2_resolved"]["renderer_profile"] == "cinematic_memory"
     assert metadata["image_bridge"].startswith("Memory logic:")
+    assert metadata["layer2_planning_version"] == "layer2_planning_v1"
+    assert metadata["mini_story_beats"][0] == "a traveler far from home"
+    assert metadata["mnemonic_hook"]["hook_type"] == "semantic_mnemonic"
 
 
 def test_card_storage_key_uses_unique_lab_variant_slug():

@@ -20,6 +20,7 @@ TARGET_WORD_EMBEDDED_SENTENCE = (
 LAYER2_TEXT_MODES = {
     "word_as_matter",
     "word_as_form",
+    "environmental_typography",
     "chat_ui",
     "social_overlay",
     "speech_bubble",
@@ -145,6 +146,13 @@ def _repair_bridge_after_target_removal(text: str) -> str:
     text = _clean(text)
     if not text:
         return text
+    text = re.sub(r"\(\s*\)", "", text)
+    text = re.sub(
+        r"\blead into a clear scene of\s*([.;,]|$)",
+        "lead into a clear scene of the meaning.",
+        text,
+        flags=re.IGNORECASE,
+    )
     text = re.sub(
         r"\bfocused on\s*([.;,]|$)",
         "focused on the meaning.",
@@ -154,6 +162,18 @@ def _repair_bridge_after_target_removal(text: str) -> str:
     text = re.sub(
         r"\btied to\s*([.;,]|$)",
         "tied to the meaning.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\bteaching\s*([.;,]|$)",
+        "teaching the meaning.",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\bof\s*([.;,]|$)",
+        "of the meaning.",
         text,
         flags=re.IGNORECASE,
     )
@@ -178,6 +198,54 @@ def _extra_lines(
 ) -> str:
     lines = [_clean(line) for line in (image_bridge, style_directive, text_directive) if _clean(line)]
     return (" ".join(lines) + " ") if lines else ""
+
+
+def _structured_layer2_scene(
+    *,
+    image_scene: Optional[str],
+    mini_story_beats: Optional[list[Any]],
+    split_panel_brief: Optional[dict[str, Any]],
+    word_design_brief: Optional[dict[str, Any]],
+    mnemonic_hook: Optional[dict[str, Any]],
+) -> str:
+    if isinstance(word_design_brief, dict) and word_design_brief:
+        primary = _clean(word_design_brief.get("primary_subject"))
+        material = _clean(word_design_brief.get("material_logic"))
+        context = _clean(word_design_brief.get("background_context"))
+        pieces = [
+            "Word as design:",
+            primary,
+            material,
+            "The target word must be central to the composition, not a small label.",
+        ]
+        if context:
+            pieces.append(f"Use {context} only as background context.")
+        return _clean(" ".join(piece for piece in pieces if piece))
+
+    if isinstance(mini_story_beats, list) and mini_story_beats:
+        beats = [_clean(beat) for beat in mini_story_beats if _clean(beat)]
+        while len(beats) < 3:
+            beats.append("the meaning becomes visually clear")
+        return _clean(
+            "Mini story: three visible beats - "
+            f"first, {beats[0]}; second, {beats[1]}; third, {beats[2]}."
+        )
+
+    if isinstance(split_panel_brief, dict) and split_panel_brief:
+        left = _clean(split_panel_brief.get("left")) or "the hook or first state"
+        right = _clean(split_panel_brief.get("right")) or "the meaning or second state"
+        divider = _clean(split_panel_brief.get("divider")) or "soft visual transition"
+        return (
+            "Split-panel contrast: "
+            f"left side shows {left}; right side shows {right}; use a {divider}."
+        )
+
+    if isinstance(mnemonic_hook, dict) and mnemonic_hook:
+        visual = _clean(mnemonic_hook.get("visual_translation"))
+        if visual:
+            return f"One scene combines the mnemonic hook and meaning: {visual}"
+
+    return _clean(image_scene)
 
 
 def _layer2_opening(card_image_style: str, enabled: bool) -> str | None:
@@ -444,6 +512,15 @@ def build_gpt_image_2_prompt(
     style_directive: Optional[str] = None,
     text_directive: Optional[str] = None,
     allow_target_word_in_prompt: bool = False,
+    layer2_planning_version: Optional[str] = None,
+    mini_story_beats: Optional[list[Any]] = None,
+    split_panel_brief: Optional[dict[str, Any]] = None,
+    word_design_brief: Optional[dict[str, Any]] = None,
+    word_design_mode: Optional[str] = None,
+    mnemonic_hook: Optional[dict[str, Any]] = None,
+    hook_type: Optional[str] = None,
+    hook_quality: Optional[str] = None,
+    fallback_reason: Optional[str] = None,
     **_metadata: Any,
 ) -> str:
     """Compile the unified visual plan to a short GPT Image-2 provider prompt.
@@ -451,15 +528,32 @@ def build_gpt_image_2_prompt(
     The compiler is intentionally not the art director. It only chooses the
     render scene, removes accidental target-word leakage, trims, and formats.
     """
+    has_structured_layer2 = bool(
+        layer2_planning_version
+        or mini_story_beats
+        or split_panel_brief
+        or word_design_brief
+        or mnemonic_hook
+    )
     del language, pos, mnemonic, mnemonic_confidence, dominant_emotional_reading
     del composition_hint, treatment_hint
+    del layer2_planning_version, word_design_mode, hook_type, hook_quality, fallback_reason
 
     translation_text = _clean(translation)
-    scene_text = (
-        _clean(image_scene)
-        if allow_target_word_in_prompt
-        else _remove_target_word(_clean(image_scene), word)
+    structured_scene = _structured_layer2_scene(
+        image_scene=image_scene,
+        mini_story_beats=mini_story_beats,
+        split_panel_brief=split_panel_brief,
+        word_design_brief=word_design_brief,
+        mnemonic_hook=mnemonic_hook,
     )
+    scene_text = (
+        _clean(structured_scene)
+        if allow_target_word_in_prompt
+        else _remove_target_word(_clean(structured_scene), word)
+    )
+    if not allow_target_word_in_prompt:
+        scene_text = _repair_bridge_after_target_removal(scene_text)
     bridge_text = _clean(image_bridge)
     if bridge_text and not allow_target_word_in_prompt:
         bridge_text = _remove_target_word(
@@ -481,7 +575,12 @@ def build_gpt_image_2_prompt(
         answer_sentence = "Do not write the target word or the direct answer/translation inside the image."
     opening_sentence = _layer2_opening(
         card_image_style,
-        bool(_clean(image_bridge) or _clean(style_directive) or _clean(text_directive)),
+        bool(
+            _clean(image_bridge)
+            or _clean(style_directive)
+            or _clean(text_directive)
+            or has_structured_layer2
+        ),
     )
     prompt = _assemble_prompt(
         profile,
@@ -576,6 +675,15 @@ def build_gpt_image_2_card_metadata(
     layer2_resolved: Optional[dict[str, Any]] = None,
     layer2_snap_notes: Optional[list[str]] = None,
     image_bridge: Optional[str] = None,
+    layer2_planning_version: Optional[str] = None,
+    mini_story_beats: Optional[list[str]] = None,
+    split_panel_brief: Optional[dict[str, Any]] = None,
+    word_design_brief: Optional[dict[str, Any]] = None,
+    word_design_mode: Optional[str] = None,
+    mnemonic_hook: Optional[dict[str, Any]] = None,
+    hook_type: Optional[str] = None,
+    hook_quality: Optional[str] = None,
+    fallback_reason: Optional[str] = None,
 ) -> dict[str, Any]:
     """Metadata persisted for GPT Image-2 card display alignment."""
     scene = _clean(image_scene)
@@ -623,4 +731,22 @@ def build_gpt_image_2_card_metadata(
         metadata["layer2_snap_notes"] = layer2_snap_notes
     if image_bridge:
         metadata["image_bridge"] = _clean(image_bridge)
+    if layer2_planning_version:
+        metadata["layer2_planning_version"] = _clean(layer2_planning_version)
+    if mini_story_beats:
+        metadata["mini_story_beats"] = mini_story_beats
+    if split_panel_brief:
+        metadata["split_panel_brief"] = split_panel_brief
+    if word_design_brief:
+        metadata["word_design_brief"] = word_design_brief
+    if word_design_mode:
+        metadata["word_design_mode"] = _clean(word_design_mode)
+    if mnemonic_hook:
+        metadata["mnemonic_hook"] = mnemonic_hook
+    if hook_type:
+        metadata["hook_type"] = _clean(hook_type)
+    if hook_quality:
+        metadata["hook_quality"] = _clean(hook_quality)
+    if fallback_reason:
+        metadata["fallback_reason"] = _clean(fallback_reason)
     return metadata
