@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabase'
 import { useDrag } from '@use-gesture/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { OrbSpinner } from '@/components/ui/OrbSpinner'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import {
   ArrowLeft,
@@ -366,7 +366,7 @@ export default function DeckViewPG() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <OrbSpinner size={140} ariaLabel={t('deckview.loadingDeck')} />
+        <ParticleSpinner preset="spiral" size={140} />
         <p className="text-sm text-muted-foreground opacity-60">{t('deckview.loadingDeck')}</p>
       </div>
     )
@@ -737,11 +737,8 @@ export default function DeckViewPG() {
 
                         {/* Placeholder for incomplete words */}
                         {!isComplete && (
-                          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-white/5 to-transparent">
-                            {word.status !== 'failed' && (
-                              <OrbSpinner size={28} ariaLabel="Processing" />
-                            )}
-                            <span className="text-xs text-white/55">
+                          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent">
+                            <span className="text-xs text-white/35">
                               {word.status === 'failed'
                                 ? isCardDeck ? t('deckview.cardFailure') : t('deckview.failed')
                                 : isPending

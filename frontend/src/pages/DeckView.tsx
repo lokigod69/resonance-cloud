@@ -639,7 +639,7 @@ export default function DeckView() {
 
       {/* Edit mode action bar */}
       {editMode && selectedWords.size > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/55 backdrop-blur-2xl saturate-[1.35] border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
           <div className="flex items-center justify-between px-6 py-3 max-w-5xl mx-auto">
             <span className="text-sm text-white/70">
               {t('deckview.nSelected', { count: selectedWords.size })}

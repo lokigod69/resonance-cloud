@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, X, RotateCcw, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react'
-import { OrbSpinner } from '@/components/ui/OrbSpinner'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import OrbDock from '@/components/OrbDock'
 import {
   Select,
@@ -29,7 +29,7 @@ export default function StudyPG() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <OrbSpinner size={140} ariaLabel={t('study.loadingCards')} />
+        <ParticleSpinner preset="heart" size={140} />
         <p className="text-sm text-muted-foreground opacity-60">{t('study.loadingCards')}</p>
       </div>
     )

@@ -100,7 +100,7 @@ export default function CardWordViewerModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 glass-modal-backdrop flex flex-col">
+    <div className="fixed inset-0 z-50 gradient-bg flex flex-col">
       <div className="flex items-center justify-between px-4 py-3">
         <button
           onClick={onClose}
@@ -122,7 +122,7 @@ export default function CardWordViewerModal({
               {hasPrev && (
                 <button
                   onClick={() => onNavigate(currentIndex - 1)}
-                  className="absolute left-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur-md saturate-[1.35] transition-colors hover:bg-white/15"
+                  className="absolute left-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-white/10"
                   aria-label="Previous card"
                 >
                   <ChevronLeft className="h-6 w-6" />
@@ -132,7 +132,7 @@ export default function CardWordViewerModal({
               {hasNext && (
                 <button
                   onClick={() => onNavigate(currentIndex + 1)}
-                  className="absolute right-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur-md saturate-[1.35] transition-colors hover:bg-white/15"
+                  className="absolute right-3 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-white/10"
                   aria-label="Next card"
                 >
                   <ChevronRight className="h-6 w-6" />

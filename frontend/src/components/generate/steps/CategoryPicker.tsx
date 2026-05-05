@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { RefreshCw, Sparkles, Wand2, X, Zap } from 'lucide-react'
-import { OrbSpinner } from '@/components/ui/OrbSpinner'
+import { Loader2, RefreshCw, Sparkles, Wand2, X, Zap } from 'lucide-react'
 import PillButton from '../shared/PillButton'
 import { CATEGORY_GROUPS } from '@/data/categories'
 import { useAuth } from '@/hooks/useAuth'
@@ -218,7 +217,7 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
     return (
       <div className="flex flex-col items-center gap-3 py-10 text-muted-foreground">
         {renderCountSlider(true)}
-        <OrbSpinner size={32} ariaLabel="Finding words" />
+        <Loader2 className="h-6 w-6 animate-spin" />
         <p className="text-sm">Finding words…</p>
       </div>
     )

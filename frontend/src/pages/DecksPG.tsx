@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabase'
 import { motion, AnimatePresence, animate, useMotionValue, useTransform } from 'framer-motion'
 import type { MotionStyle, MotionValue, PanInfo } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { OrbSpinner } from '@/components/ui/OrbSpinner'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import {
   getWaterCardDim,
@@ -259,7 +259,7 @@ export default function DecksPG() {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <OrbSpinner size={140} ariaLabel="Loading decks" />
+        <ParticleSpinner preset="rose" size={140} />
         <p className="text-sm text-muted-foreground opacity-60">{t('dashboard.loadingDecks')}</p>
       </div>
     )

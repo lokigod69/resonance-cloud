@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { OrbSpinner } from './OrbSpinner'
 
 interface GenerationWheelLoaderProps {
   label?: string
@@ -19,7 +18,27 @@ export function GenerationWheelLoader({
 }: GenerationWheelLoaderProps) {
   return (
     <div className={cn('flex flex-col items-center justify-center gap-6 text-center', className)}>
-      <OrbSpinner size={size} ariaLabel={label || 'Generating'} />
+      <div className="relative" style={{ width: size, height: size }}>
+        <motion.div
+          className="rounded-full"
+          style={{
+            width: size,
+            height: size,
+            background:
+              'conic-gradient(from 0deg, var(--pg-accent-teal, #0de2c3), var(--pg-accent-violet, #8b5cf6), var(--pg-accent-rose, #f43f5e), var(--pg-accent-teal, #0de2c3))',
+          }}
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 3, ease: 'linear' }}
+        />
+        <div
+          className="absolute inset-0 rounded-full blur-xl"
+          style={{
+            background:
+              'conic-gradient(from 0deg, var(--pg-accent-teal, #0de2c3), var(--pg-accent-violet, #8b5cf6), var(--pg-accent-rose, #f43f5e), var(--pg-accent-teal, #0de2c3))',
+            opacity: 0.4,
+          }}
+        />
+      </div>
       {(label || sublabel) && (
         <div className="space-y-2">
           {label && (

@@ -39,7 +39,7 @@ import Music from '@/pages/Music'
 import MusicPG from '@/pages/MusicPG'
 import Speak from '@/pages/Speak'
 import AdminRoute from '@/components/AdminRoute'
-import { OrbSpinner } from '@/components/ui/OrbSpinner'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import SharePage from '@/pages/SharePage'
 
 function ProtectedRoute() {
@@ -48,7 +48,7 @@ function ProtectedRoute() {
   if (authLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <OrbSpinner size={140} ariaLabel="Loading" />
+        <ParticleSpinner preset="spirograph" size={160} />
         <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
       </div>
     )
@@ -67,7 +67,7 @@ function OnboardingRoute() {
   if (authLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <OrbSpinner size={140} ariaLabel="Loading" />
+        <ParticleSpinner preset="spirograph" size={160} />
         <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
       </div>
     )
@@ -86,7 +86,7 @@ function PublicRoute() {
   if (authLoading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen gap-4">
-        <OrbSpinner size={140} ariaLabel="Loading" />
+        <ParticleSpinner preset="spirograph" size={160} />
         <p className="text-sm text-muted-foreground opacity-60">Loading...</p>
       </div>
     )

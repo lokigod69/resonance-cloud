@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
-import { OrbSpinner } from '@/components/ui/OrbSpinner'
+import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 
 export default function AdminRoute() {
   const { session, loading: authLoading } = useAuth()
@@ -75,7 +75,7 @@ export default function AdminRoute() {
   if (authLoading || checkingAdmin) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <OrbSpinner size={120} ariaLabel="Loading admin" />
+        <ParticleSpinner preset="rose" size={120} />
       </div>
     )
   }

@@ -1302,7 +1302,7 @@ export default function Speak() {
               aria-label={tutor.status === 'recording' ? 'Tap to send' : 'Tap to speak'}
             >
               {tutor.status === 'processing' ? (
-                <Loader2 className="h-7 w-7 text-[var(--text-secondary)] animate-spin" />
+                <Loader2 className="h-7 w-7 text-[var(--text-muted)] animate-spin" />
               ) : tutor.status === 'playing' ? (
                 <Volume2 className="h-7 w-7 text-[var(--on-accent)]" />
               ) : tutor.status === 'recording' ? (
