@@ -6,7 +6,7 @@ ImagePromptData-compatible structure that drops directly into the
 existing per-provider renderers.
 """
 
-from typing import Literal, Optional
+from typing import Any, Literal, Optional
 
 from pydantic import BaseModel, field_validator
 
@@ -49,9 +49,22 @@ class CardImageContent(BaseModel):
     pos: Optional[str] = None
     bridge_mnemonic: Optional[str] = None
     mnemonic: Optional[str] = None
+    image_scene: Optional[str] = None
+    mnemonic_confidence: Optional[str] = None
+    etymology: Optional[str] = None
+    usage_example: Optional[dict[str, Any]] = None
     dominant_emotional_reading: Optional[str] = None
     composition_hint: Optional[str] = None
     treatment_hint: Optional[str] = None
+    composition: Optional[str] = None
+    treatment: Optional[str] = None
+    creative_mode: Optional[str] = None
+    text_embedding_mode: Optional[str] = None
+    renderer_profile: Optional[str] = None
+    renderer_profile_source: Optional[str] = None
+    single_image_teachable: Optional[bool] = None
+    register_note: Optional[str] = None
+    rationale_summary: Optional[str] = None
 
 
 class CardImagePayload(BaseModel):
@@ -79,4 +92,6 @@ class CardImageResult(BaseModel):
     image_path: Optional[str] = None  # absolute filesystem path on disk
     public_url: Optional[str] = None  # Supabase Storage public URL after upload
     image_prompt: Optional[CardImagePromptData] = None  # for debugging/logging
+    gpt_image_2_card_metadata: Optional[dict[str, Any]] = None
+    displayed_mnemonic: Optional[str] = None
     error: Optional[ImageError] = None

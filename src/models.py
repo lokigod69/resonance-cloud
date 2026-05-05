@@ -19,10 +19,21 @@ class Enrichment(BaseModel):
     example_gloss: Optional[str] = ""
     synonyms: Optional[str] = ""
     tags: Optional[str] = ""
+    image_scene: Optional[str] = None
     mnemonic: Optional[str] = ""
+    mnemonic_confidence: Optional[str] = None
     dominant_emotional_reading: Optional[str] = None
     composition_hint: Optional[str] = None
     treatment_hint: Optional[str] = None
+    composition: Optional[str] = None
+    treatment: Optional[str] = None
+    creative_mode: Optional[str] = None
+    text_embedding_mode: Optional[str] = None
+    renderer_profile: Optional[str] = None
+    renderer_profile_source: Optional[str] = None
+    single_image_teachable: Optional[bool] = None
+    register_note: Optional[str] = None
+    rationale_summary: Optional[str] = None
     extra: dict[str, Any] = {}
 
 

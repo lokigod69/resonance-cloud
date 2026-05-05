@@ -79,12 +79,19 @@ def create_manifest(
         known_fields = {
             'word_target', 'translation', 'bridge_mnemonic',
             'etymology', 'pos', 'article', 'ipa',
-            'example', 'example_gloss', 'synonyms', 'mnemonic',
-            'dominant_emotional_reading', 'composition_hint', 'treatment_hint',
+            'example', 'example_gloss', 'synonyms', 'image_scene', 'mnemonic',
+            'mnemonic_confidence', 'dominant_emotional_reading',
+            'composition_hint', 'treatment_hint', 'composition', 'treatment',
+            'creative_mode', 'text_embedding_mode', 'renderer_profile',
+            'renderer_profile_source', 'single_image_teachable', 'register_note',
+            'rationale_summary',
         }
         for k, v in enrichment_data.items():
             if k in known_fields:
-                setattr(enrichment, k, str(v) if v is not None else None)
+                if k == "single_image_teachable":
+                    setattr(enrichment, k, bool(v) if v is not None else None)
+                else:
+                    setattr(enrichment, k, str(v) if v is not None else None)
             else:
                 extra[k] = v
         enrichment.tags = tags_str

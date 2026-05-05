@@ -668,6 +668,26 @@ async def bootstrap_job(
 
         raw_tags = e.get("tags", "")
         tags_str = ", ".join(str(t) for t in raw_tags) if isinstance(raw_tags, list) else (raw_tags or "")
+        visual_card_plan = {
+            "prompt_version": "quick_generate_v1",
+            "image_scene": e.get("image_scene") or e.get("mnemonic") or "",
+            "mnemonic": e.get("mnemonic"),
+            "mnemonic_confidence": e.get("mnemonic_confidence"),
+            "etymology": e.get("etymology"),
+            "usage_example": e.get("usage_example"),
+            "composition": e.get("composition") or e.get("composition_hint"),
+            "treatment": e.get("treatment") or e.get("treatment_hint"),
+            "creative_mode": e.get("creative_mode"),
+            "text_embedding_mode": e.get("text_embedding_mode") or "none",
+            "renderer_profile": e.get("renderer_profile") or "balanced_teaching",
+            "renderer_profile_source": e.get("renderer_profile_source") or "auto",
+            "single_image_teachable": e.get("single_image_teachable"),
+            "dominant_emotional_reading": e.get("dominant_emotional_reading"),
+            "register_note": e.get("register_note"),
+            "rationale_summary": e.get("rationale_summary"),
+            "answer_visibility": "hidden",
+        }
+        current_metadata = word_rec.get("metadata") if isinstance(word_rec.get("metadata"), dict) else {}
 
         update_data: dict[str, Any] = {
             "translation": e.get("translation", ""),
@@ -684,6 +704,7 @@ async def bootstrap_job(
             "example": e.get("example", "") or "",
             "example_gloss": e.get("example_gloss", "") or "",
             "tags": tags_str,
+            "metadata": {**current_metadata, "visual_card_plan": visual_card_plan},
         }
         if not is_phrase:
             update_data["word"] = e.get("word_target", original_word)
@@ -777,10 +798,20 @@ async def bootstrap_job(
             "article": e.get("article"),
             "etymology": e.get("etymology"),
             "bridge_mnemonic": e.get("bridge_mnemonic", "") or "",
+            "image_scene": e.get("image_scene") or e.get("mnemonic") or "",
             "mnemonic": e.get("mnemonic", "") or "",
+            "mnemonic_confidence": e.get("mnemonic_confidence"),
+            "usage_example": e.get("usage_example"),
             "dominant_emotional_reading": e.get("dominant_emotional_reading", "") or "",
             "composition_hint": e.get("composition_hint") or None,
             "treatment_hint": e.get("treatment_hint") or None,
+            "composition": e.get("composition") or e.get("composition_hint") or None,
+            "treatment": e.get("treatment") or e.get("treatment_hint") or None,
+            "creative_mode": e.get("creative_mode") or None,
+            "text_embedding_mode": e.get("text_embedding_mode") or "none",
+            "single_image_teachable": e.get("single_image_teachable"),
+            "register_note": e.get("register_note"),
+            "rationale_summary": e.get("rationale_summary"),
             "ipa": e.get("ipa", "") or "",
             "example": e.get("example", "") or "",
             "example_gloss": e.get("example_gloss", "") or "",

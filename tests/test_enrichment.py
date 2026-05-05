@@ -44,10 +44,16 @@ def test_missing_openrouter_key_fallback_includes_gpt_image_2_fields(monkeypatch
     ))
 
     item = result[0]
-    assert item["mnemonic"] == ""
+    assert item["image_scene"] == ""
+    assert item["mnemonic"] is None
+    assert item["mnemonic_confidence"] is None
     assert item["dominant_emotional_reading"] == ""
     assert item["composition_hint"] is None
     assert item["treatment_hint"] is None
+    assert item["composition"] == "defer"
+    assert item["treatment"] == "defer"
+    assert item["creative_mode"] == "clean_iconic"
+    assert item["text_embedding_mode"] == "none"
 
 
 # --- _strip_target_article: legitimate stripping ----------------------------

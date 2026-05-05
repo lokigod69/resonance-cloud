@@ -124,26 +124,55 @@ def _resolve_card_model_id(image_model: str) -> str:
 
 
 def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict:
-    from .gpt_card_prompts import build_gpt_image_2_prompt
+    from .gpt_card_prompts import (
+        build_gpt_image_2_card_metadata,
+        build_gpt_image_2_prompt,
+    )
     from .gpt_image_2_provider import render_scene_gpt_image_2
 
+    image_scene = payload.content.image_scene or payload.content.mnemonic
     prompt_text = build_gpt_image_2_prompt(
         word=payload.content.word,
         translation=payload.content.translation,
         language=payload.content.language,
         pos=payload.content.pos,
+        image_scene=image_scene,
         mnemonic=payload.content.mnemonic,
+        mnemonic_confidence=payload.content.mnemonic_confidence,
         dominant_emotional_reading=payload.content.dominant_emotional_reading,
-        composition_hint=payload.content.composition_hint,
-        treatment_hint=payload.content.treatment_hint,
+        composition_hint=payload.content.composition or payload.content.composition_hint,
+        treatment_hint=payload.content.treatment or payload.content.treatment_hint,
         card_image_style=payload.card_image_style,
+        renderer_profile=payload.content.renderer_profile,
+        renderer_profile_source=payload.content.renderer_profile_source,
+        creative_mode=payload.content.creative_mode,
+        text_embedding_mode=payload.content.text_embedding_mode,
+        register_note=payload.content.register_note,
+    )
+    card_metadata = build_gpt_image_2_card_metadata(
+        final_provider_prompt=prompt_text,
+        renderer_profile=payload.content.renderer_profile,
+        renderer_profile_source=payload.content.renderer_profile_source,
+        image_scene=image_scene,
+        mnemonic=payload.content.mnemonic,
+        mnemonic_confidence=payload.content.mnemonic_confidence,
+        etymology=payload.content.etymology,
+        usage_example=payload.content.usage_example,
+        composition=payload.content.composition or payload.content.composition_hint,
+        treatment=payload.content.treatment or payload.content.treatment_hint,
+        creative_mode=payload.content.creative_mode,
+        text_embedding_mode=payload.content.text_embedding_mode,
+        single_image_teachable=payload.content.single_image_teachable,
+        dominant_emotional_reading=payload.content.dominant_emotional_reading,
+        register_note=payload.content.register_note,
+        rationale_summary=payload.content.rationale_summary,
     )
     request_payload = {
         "model": "gpt-image-2-text-to-image",
         "input": {
             "prompt": prompt_text,
             "aspect_ratio": "16:9",
-            "resolution": "2K",
+            "resolution": "1K",
         },
     }
     with logged_api_call(
@@ -163,7 +192,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             prompt_text=prompt_text,
             output_path=output_path,
             aspect_ratio="16:9",
-            resolution="2K",
+            resolution="1K",
         )
         ev._model_provider = result.get("provider_name") or "gpt_image_2"
         ev._model_name = result.get("model_name") or "gpt-image-2"
@@ -173,6 +202,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             request_id=result.get("request_id"),
             cost_usd=result.get("cost_estimate_usd"),
         )
+        result["gpt_image_2_card_metadata"] = card_metadata
         return result
 
 
@@ -406,6 +436,10 @@ def generate_card_image(payload: CardImagePayload) -> CardImageResult:
         return CardImageResult(
             status="success",
             image_path=str(output_path.resolve()),
+            gpt_image_2_card_metadata=render_result.get("gpt_image_2_card_metadata"),
+            displayed_mnemonic=(
+                (render_result.get("gpt_image_2_card_metadata") or {}).get("displayed_mnemonic")
+            ),
         )
 
     system_prompt = SYSTEM_PROMPT

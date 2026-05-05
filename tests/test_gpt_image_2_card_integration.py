@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import asyncio
 import sys
 from pathlib import Path
 
@@ -34,13 +35,21 @@ def _card_payload(tmp_path: Path, image_model: str = "gpt_image_2") -> CardImage
             language_code="de",
             pos="phrase",
             mnemonic=(
+                "Link a road turn to the left."
+            ),
+            image_scene=(
                 "A driver grips the wheel at a city intersection while a bright "
                 "green arrow bends left. The car noses into the left lane as the "
                 "street sign points the same way."
             ),
+            mnemonic_confidence="helpful",
             dominant_emotional_reading="decisive movement, NOT confusion",
             composition_hint="embodied",
             treatment_hint="literal",
+            creative_mode="embodied",
+            text_embedding_mode="none",
+            renderer_profile="balanced_teaching",
+            renderer_profile_source="auto",
         ),
         card_image_style="Photorealistic",
         image_model=image_model,
@@ -67,26 +76,31 @@ def test_gpt_card_prompt_handles_full_and_sparse_enrichment():
         translation="turn left",
         language="German",
         pos="phrase",
-        mnemonic="A driver turns left at an intersection marked by a green arrow.",
+        image_scene="A driver turns left at an intersection marked by a green arrow.",
+        mnemonic="Link the turn to the left.",
+        mnemonic_confidence="helpful",
         dominant_emotional_reading="decisive movement, NOT hesitation",
         composition_hint="multi_panel",
         treatment_hint="absurd",
         card_image_style="Editorial",
     )
 
-    assert full_prompt.startswith("Editorial 16:9 image.")
-    assert 'German phrase "links abbiegen" = "turn left"' in full_prompt
-    assert "left-to-right sequence" in full_prompt
-    assert "unexpected visual motif" in full_prompt
-    assert "No visible text, letters, captions" in full_prompt
-    assert 'Render the word "links abbiegen"' not in full_prompt
+    assert full_prompt.startswith("Photorealistic 16:9 image for a language-learning memory card.")
+    assert "Visual meaning to depict: turn left." in full_prompt
+    assert "Scene: A driver turns left" in full_prompt
+    assert "links abbiegen" not in full_prompt
+    assert "Composition:" not in full_prompt
+    assert "Treatment:" not in full_prompt
+    assert "No visible text, letters, captions" not in full_prompt
 
     sparse_prompt = build_gpt_image_2_prompt(
         word="agua",
         translation="water",
         language="Spanish",
         pos=None,
+        image_scene=None,
         mnemonic=None,
+        mnemonic_confidence=None,
         dominant_emotional_reading=None,
         composition_hint=None,
         treatment_hint=None,
@@ -94,10 +108,11 @@ def test_gpt_card_prompt_handles_full_and_sparse_enrichment():
     )
 
     assert "None" not in sparse_prompt
-    assert "Scene:" not in sparse_prompt
+    assert "Scene:" in sparse_prompt
     assert "Composition:" not in sparse_prompt
-    assert 'Spanish word "agua" = "water"' in sparse_prompt
-    assert "No visible text" in sparse_prompt
+    assert "Visual meaning to depict: water." in sparse_prompt
+    assert "agua" not in sparse_prompt
+    assert "No visible text" not in sparse_prompt
 
 
 def test_gpt_image_2_provider_sends_t2i_and_i2i_payloads(monkeypatch, tmp_path):
@@ -128,7 +143,6 @@ def test_gpt_image_2_provider_sends_t2i_and_i2i_payloads(monkeypatch, tmp_path):
         prompt_text="Create a card.",
         output_path=tmp_path / "card.png",
         aspect_ratio="16:9",
-        resolution="2K",
     )
 
     assert captured[0]["payload"] == {
@@ -136,7 +150,7 @@ def test_gpt_image_2_provider_sends_t2i_and_i2i_payloads(monkeypatch, tmp_path):
         "input": {
             "prompt": "Create a card.",
             "aspect_ratio": "16:9",
-            "resolution": "2K",
+            "resolution": "1K",
         },
     }
     assert result["success"] is True
@@ -199,17 +213,73 @@ def test_generate_card_image_gpt_path_skips_card_llm(monkeypatch, tmp_path):
     assert result.status == "success"
     assert Path(result.image_path).exists()
     assert calls["provider_kwargs"]["aspect_ratio"] == "16:9"
-    assert calls["provider_kwargs"]["resolution"] == "2K"
-    assert "links abbiegen" in calls["provider_kwargs"]["prompt_text"]
+    assert calls["provider_kwargs"]["resolution"] == "1K"
+    assert "links abbiegen" not in calls["provider_kwargs"]["prompt_text"]
+    assert "Visual meaning to depict: turn left." in calls["provider_kwargs"]["prompt_text"]
+    assert "Scene:" in calls["provider_kwargs"]["prompt_text"]
+    assert result.gpt_image_2_card_metadata is not None
+    assert result.gpt_image_2_card_metadata["renderer_profile"] == "balanced_teaching"
+    assert result.gpt_image_2_card_metadata["renderer_profile_source"] == "auto"
+    assert result.gpt_image_2_card_metadata["image_scene"] == result.gpt_image_2_card_metadata["card_scene_displayed"]
+    assert result.gpt_image_2_card_metadata["mnemonic"] == "Link a road turn to the left."
     request_body = json.loads(calls["record_response"]["request_body"])
     assert request_body == {
         "model": "gpt-image-2-text-to-image",
         "input": {
             "prompt": calls["provider_kwargs"]["prompt_text"],
             "aspect_ratio": "16:9",
-            "resolution": "2K",
+            "resolution": "1K",
         },
     }
+
+
+def test_generate_card_image_gpt_failure_does_not_fallback_to_zturbo(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+
+    calls: list[str] = []
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **_kwargs):
+            return None
+
+    def fake_render_scene_gpt_image_2(**_kwargs):
+        calls.append("gpt_image_2")
+        return {
+            "success": False,
+            "file_path": None,
+            "error_message": "generation failed: bad prompt",
+            "prompt_text": _kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-gpt-failed",
+            "cost_estimate_usd": 0.05,
+        }
+
+    def fail_fallback_provider(**_kwargs):
+        raise AssertionError("GPT Image-2 failure must not fallback to Z-Turbo or any non-GPT provider")
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "_render_card_image", fail_fallback_provider)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    result = card_engine.generate_card_image(_card_payload(tmp_path))
+
+    assert result.status == "failed"
+    assert result.error is not None
+    assert "bad prompt" in result.error.message
+    assert calls == ["gpt_image_2"]
 
 
 def test_card_image_model_validator_accepts_known_values_and_rejects_typos():
@@ -312,16 +382,137 @@ def test_create_manifest_persists_gpt_enrichment_fields(tmp_path):
         language="Spanish",
         language_code="es",
         enrichment_data={
-            "mnemonic": "A clear glass of water catches sunlight on a kitchen table.",
+            "image_scene": "A clear glass of water catches sunlight on a kitchen table.",
+            "mnemonic": "Water is the clear refreshment you reach for.",
+            "mnemonic_confidence": "helpful",
             "dominant_emotional_reading": "refreshment",
-            "composition_hint": "single",
-            "treatment_hint": "literal",
+            "composition": "single",
+            "treatment": "literal",
+            "creative_mode": "clean_iconic",
+            "text_embedding_mode": "none",
+            "single_image_teachable": True,
+            "register_note": None,
+            "rationale_summary": "A direct glass of water is immediately teachable.",
         },
     )
 
     manifest = read_manifest(word_dir)
-    assert manifest.enrichment.mnemonic == "A clear glass of water catches sunlight on a kitchen table."
+    assert manifest.enrichment.image_scene == "A clear glass of water catches sunlight on a kitchen table."
+    assert manifest.enrichment.mnemonic == "Water is the clear refreshment you reach for."
+    assert manifest.enrichment.mnemonic_confidence == "helpful"
     assert manifest.enrichment.dominant_emotional_reading == "refreshment"
-    assert manifest.enrichment.composition_hint == "single"
-    assert manifest.enrichment.treatment_hint == "literal"
+    assert manifest.enrichment.composition == "single"
+    assert manifest.enrichment.treatment == "literal"
+    assert manifest.enrichment.creative_mode == "clean_iconic"
+    assert manifest.enrichment.text_embedding_mode == "none"
+    assert manifest.enrichment.single_image_teachable is True
     assert "dominant_emotional_reading" not in manifest.enrichment.extra
+
+
+def test_card_worker_persists_gpt_scene_metadata_separately(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.card_models import CardImageResult
+    from src.orchestration import card_worker as card_worker_mod
+    from src.orchestration.card_worker import CardWorker
+    from src.orchestration import state
+
+    updates: list[dict[str, object]] = []
+
+    class _Table:
+        def update(self, data):
+            updates.append(data)
+            return self
+
+        def eq(self, *_args):
+            return self
+
+        def execute(self):
+            return type("Resp", (), {"data": updates[-1:]})()
+
+    class _Supabase:
+        def table(self, name):
+            assert name == "words"
+            return _Table()
+
+    def fake_generate_card_image(payload):
+        assert payload.content.image_scene == "A raincoat hangs by a door under cool morning light."
+        assert payload.content.mnemonic == "Home pulls at you from far away."
+        return CardImageResult(
+            status="success",
+            image_path=str(tmp_path / "card.png"),
+            displayed_mnemonic="Home pulls at you from far away.",
+            gpt_image_2_card_metadata={
+                "prompt_version": "quick_generate_v1",
+                "image_scene": "A raincoat hangs by a door under cool morning light.",
+                "card_scene_displayed": "A raincoat hangs by a door under cool morning light.",
+                "mnemonic": "Home pulls at you from far away.",
+                "displayed_mnemonic": "Home pulls at you from far away.",
+                "mnemonic_confidence": "helpful",
+                "text_embedding_mode": "none",
+                "layer2_candidate_text_mode": False,
+                "final_provider_prompt_sha256": "abc123",
+                "answer_visibility": "hidden",
+                "renderer_profile": "balanced_teaching",
+                "renderer_profile_source": "auto",
+            },
+        )
+
+    monkeypatch.setattr(card_engine, "generate_card_image", fake_generate_card_image)
+    async def fake_upload(self, **_kwargs):
+        return "https://cdn/card.png", None
+
+    monkeypatch.setattr(CardWorker, "_upload_card_image", fake_upload)
+
+    async def _transition(*_args, **_kwargs):
+        return True
+
+    monkeypatch.setattr(state, "transition_stage", _transition)
+    monkeypatch.setattr(card_worker_mod, "write_event_row", lambda **_kwargs: None)
+    (tmp_path / "card.png").write_bytes(b"png")
+
+    worker = CardWorker(_Supabase(), card_queue=asyncio.Queue())
+    ok, error = _run(
+        worker._generate_card_image(
+            {
+                "id": "word-1",
+                "word": "Heimweh",
+                "translation": "homesickness",
+                "user_id": "user-1",
+                "deck_id": "deck-1",
+                "generation_job_id": "job-1",
+                "stage_attempts": 1,
+                "metadata": {
+                    "visual_card_plan": {
+                        "image_scene": "A raincoat hangs by a door under cool morning light.",
+                        "mnemonic": "Home pulls at you from far away.",
+                        "mnemonic_confidence": "helpful",
+                        "text_embedding_mode": "none",
+                        "renderer_profile": "balanced_teaching",
+                        "renderer_profile_source": "auto",
+                    }
+                },
+            },
+            {
+                "manifest": Manifest(
+                    word_original="Heimweh",
+                    word_slug="heimweh",
+                    translation="homesickness",
+                    language="German",
+                    language_code="de",
+                    created_at="2026-05-04T00:00:00Z",
+                    updated_at="2026-05-04T00:00:00Z",
+                ),
+                "settings": {"images": {"card_image_model": "gpt_image_2"}},
+                "word_slug": "heimweh",
+                "word_dir": tmp_path,
+            },
+        )
+    )
+
+    assert ok is True
+    assert error is None
+    assert updates[-1]["thumbnail_url"] == "https://cdn/card.png"
+    metadata = updates[-1]["metadata"]["gpt_image_2_card"]
+    assert metadata["image_scene"] == metadata["card_scene_displayed"]
+    assert metadata["mnemonic"] == "Home pulls at you from far away."
+    assert updates[-1]["mnemonic"] == "Home pulls at you from far away."

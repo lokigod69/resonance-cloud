@@ -63,6 +63,92 @@ Respond with a JSON object containing one key, "items". "items" must be an array
 
 No extra commentary - only the JSON object."""
 
+ENRICHMENT_SYSTEM_PROMPT = """You are Resonance's Quick Generate card enrichment director.
+
+Return only valid JSON.
+
+You create structured content for one vocabulary card. Given a list of vocabulary words,
+produce enrichment data for each word. The user is learning {target_language} and speaks {base_language}.
+
+Handle both directions: if the user typed a {base_language} word, figure out the {target_language} equivalent.
+
+If the input contains multiple words forming a phrase or sentence, treat the ENTIRE input as the learning target. Do NOT extract individual words from it. Set word_target to the full phrase translated into {target_language}. Translate the complete phrase, not individual words.
+
+Use real language people actually use. Avoid textbook or sterile examples. Prefer culturally authentic phrases native speakers would say over literal translations. Be honest: do not invent etymologies, cultural claims, or false sound-alikes.
+
+The image and mnemonic are separate learning tools:
+- image_scene describes what the image should render.
+- mnemonic is a short learner-facing memory hook.
+- mnemonic is not a description of the image.
+- mnemonic may be null.
+- image and mnemonic support the same meaning, but they do not need to mirror each other.
+- mnemonic must not contradict the image.
+
+Default policy:
+Be answer-hidden and text-neutral.
+
+The app displays the target word and translation outside the image.
+Do not design an image that relies on writing the target word or direct translation inside the image.
+This is not a global no-text ban.
+Incidental text, signs, numbers, UI, menus, notes, labels, or chat-like elements may appear only when they help the scene, but they must not reveal the target word or direct answer/translation.
+
+Aesthetic policy:
+Avoid bland stock-photo defaults.
+Prefer a specific setting, concrete prop, distinctive light, unusual but clear camera angle, physical action, emotional gesture, spatial metaphor, or memorable visual hook.
+Do not overcomplicate simple concrete nouns.
+
+For concrete nouns, use one clean direct scene unless an absurd or cinematic hook clearly improves recall.
+For physical actions, make movement visible through posture, body position, or close embodied framing.
+For abstract emotions, physicalize the feeling through posture, light, body tension, space, distance, social situation, enclosure, threshold, warmth, pressure, or object symbolism.
+For idioms, make the figurative meaning memorable. Literal absurdity is allowed only when it helps remember the figurative meaning.
+For cultural concepts, use a specific lived situation, not a dictionary poster or generic symbolic image.
+For non-Roman scripts, do not force visible script by default. If word_as_form or word_as_matter is genuinely useful, store it as text_embedding_mode metadata, but do not activate it in Layer 1 unless explicitly enabled later.
+For romance/dating/cultural emotions, use adults only when people appear. Keep it respectful and non-explicit. Make the concept visually distinct instead of using generic warm cafe scenes.
+For discourse markers/function words/abstract degree words, do not invent fake mnemonics. Use a clean visual relation, contrast, near-miss, or sequence only if useful. Set mnemonic=null and mnemonic_confidence=null when the learner-facing hook would be filler.
+
+Composition discipline:
+Use single composition unless another composition is clearly better.
+Use split only for contrast, false friends, before/after, or two-state meanings.
+Use multi_panel only for sequence, process, delay, development, or a concept that cannot be understood in one moment.
+Do not use split or multi_panel just because it seems visually clever.
+
+Aesthetic booster:
+The image_scene may feel like a carefully composed film still or editorial photograph when that improves recall.
+Prefer natural light, meaningful depth, environmental storytelling, and one clear visual hook.
+Avoid generic people pointing/laughing/thinking and exaggerated AI facial acting.
+
+For each word, provide these target fields:
+- word_target: the word in {target_language}.
+- translation: concise translation into {base_language}; ideally 1-3 words.
+- bridge_mnemonic: a one-sentence retrieval hook in {base_language}; this is not an image description.
+- image_scene: what GPT Image-2 should render, in {base_language}.
+- mnemonic: a short learner-facing memory hook in {base_language}, or null.
+- mnemonic_confidence: one of "essential", "helpful", "decorative", or null.
+- etymology: word origin only, one sentence maximum, written in {base_language}; empty string if unknown or unhelpful.
+- usage_example: object with keys target and l1.
+- dominant_emotional_reading: one short phrase in {base_language} capturing what the image must read as at first glance.
+- composition_hint: one of "single", "multi_panel", "split", or "embodied".
+- treatment_hint: one of "literal", "absurd", "mnemonic", "etymological", "contrast", or "embodied".
+- composition: one of "single", "multi_panel", "split", "embodied", or "defer".
+- treatment: one of "literal", "absurd", "mnemonic", "etymological", "contrast", "embodied", or "defer".
+- creative_mode: one of "clean_iconic", "embodied", "absurd_surreal", "cinematic_microstory", "split_contrast", "multi_panel_sequence", "etymological", "mnemonic_bridge", "social_livestream", "chat_interface", "typographic_material", "morphological_form".
+- text_embedding_mode: one of "none", "incidental", "in_scene", "chat_ui", "social_overlay", "speech_bubble", "thought_bubble", "word_as_matter", "word_as_form", "mixed".
+- single_image_teachable: true or false.
+- register_note: short usage/register note, or null.
+- rationale_summary: one short sentence explaining why the image_scene teaches the meaning.
+- pos: part of speech as a single word.
+- article: definite article in {target_language} where applicable.
+- ipa: pronunciation guide in {target_language}.
+- example: one natural, conversational example sentence in {target_language}.
+- example_gloss: faithful translation of example into {base_language}.
+- synonyms: 2-4 related words in {target_language}, comma-separated.
+- tags: 2-4 short lowercase categorization tags useful for filtering and grouping.
+
+Respond with a JSON object containing one key, "items". "items" must be an array. Each array element must have exactly these keys:
+{{"input_word": "...", "word_target": "...", "translation": "...", "bridge_mnemonic": "...", "image_scene": "...", "mnemonic": "...", "mnemonic_confidence": "helpful", "etymology": "...", "usage_example": {{"target": "...", "l1": "..."}}, "dominant_emotional_reading": "...", "composition_hint": "single", "treatment_hint": "literal", "composition": "single", "treatment": "literal", "creative_mode": "clean_iconic", "text_embedding_mode": "none", "single_image_teachable": true, "register_note": null, "rationale_summary": "...", "pos": "...", "article": "...", "ipa": "...", "example": "...", "example_gloss": "...", "synonyms": "...", "tags": "..."}}
+
+No extra commentary - only the JSON object."""
+
 
 # Target-language articles used to strip accidental article leakage from the
 # translation field. Extends concept_engine.article.KNOWN_ARTICLES with
@@ -198,11 +284,21 @@ def _empty_enrichment(word: str) -> dict[str, Any]:
         "word_target": word,
         "translation": "",
         "bridge_mnemonic": "",
-        "mnemonic": "",
+        "image_scene": "",
+        "mnemonic": None,
+        "mnemonic_confidence": None,
         "etymology": "",
+        "usage_example": {"target": "", "l1": ""},
         "dominant_emotional_reading": "",
         "composition_hint": None,
         "treatment_hint": None,
+        "composition": "defer",
+        "treatment": "defer",
+        "creative_mode": "clean_iconic",
+        "text_embedding_mode": "none",
+        "single_image_teachable": False,
+        "register_note": None,
+        "rationale_summary": "",
         "pos": "",
         "article": "",
         "ipa": "",

@@ -271,6 +271,12 @@ class CardWorker:
             or "Photorealistic"
         )
         image_model = str(images_settings.get("card_image_model") or "zturbo")
+        word_metadata = word.get("metadata") if isinstance(word.get("metadata"), dict) else {}
+        visual_card_plan = (
+            word_metadata.get("visual_card_plan")
+            if isinstance(word_metadata.get("visual_card_plan"), dict)
+            else {}
+        )
 
         payload = CardImagePayload(
             content=CardImageContent(
@@ -284,10 +290,35 @@ class CardWorker:
                     or getattr(manifest.enrichment, "bridge_mnemonic", None)
                 ),
                 mnemonic=(
-                    word.get("mnemonic")
+                    visual_card_plan.get("mnemonic")
+                    or word.get("mnemonic")
                     or getattr(manifest.enrichment, "mnemonic", None)
                 ),
+                image_scene=(
+                    visual_card_plan.get("image_scene")
+                    or word.get("image_scene")
+                    or getattr(manifest.enrichment, "image_scene", None)
+                    or word.get("mnemonic")
+                    or getattr(manifest.enrichment, "mnemonic", None)
+                ),
+                mnemonic_confidence=(
+                    visual_card_plan.get("mnemonic_confidence")
+                    or word.get("mnemonic_confidence")
+                    or getattr(manifest.enrichment, "mnemonic_confidence", None)
+                ),
+                etymology=(
+                    visual_card_plan.get("etymology")
+                    or word.get("etymology")
+                    or getattr(manifest.enrichment, "etymology", None)
+                ),
+                usage_example=(
+                    visual_card_plan.get("usage_example")
+                    if isinstance(visual_card_plan.get("usage_example"), dict)
+                    else None
+                ),
                 dominant_emotional_reading=(
+                    visual_card_plan.get("dominant_emotional_reading")
+                    or
                     word.get("dominant_emotional_reading")
                     or getattr(manifest.enrichment, "dominant_emotional_reading", None)
                 ),
@@ -298,6 +329,53 @@ class CardWorker:
                 treatment_hint=(
                     word.get("treatment_hint")
                     or getattr(manifest.enrichment, "treatment_hint", None)
+                ),
+                composition=(
+                    visual_card_plan.get("composition")
+                    or word.get("composition")
+                    or getattr(manifest.enrichment, "composition", None)
+                ),
+                treatment=(
+                    visual_card_plan.get("treatment")
+                    or word.get("treatment")
+                    or getattr(manifest.enrichment, "treatment", None)
+                ),
+                creative_mode=(
+                    visual_card_plan.get("creative_mode")
+                    or word.get("creative_mode")
+                    or getattr(manifest.enrichment, "creative_mode", None)
+                ),
+                text_embedding_mode=(
+                    visual_card_plan.get("text_embedding_mode")
+                    or word.get("text_embedding_mode")
+                    or getattr(manifest.enrichment, "text_embedding_mode", None)
+                ),
+                renderer_profile=(
+                    visual_card_plan.get("renderer_profile")
+                    or word.get("renderer_profile")
+                    or getattr(manifest.enrichment, "renderer_profile", None)
+                    or "balanced_teaching"
+                ),
+                renderer_profile_source=(
+                    visual_card_plan.get("renderer_profile_source")
+                    or word.get("renderer_profile_source")
+                    or getattr(manifest.enrichment, "renderer_profile_source", None)
+                    or "auto"
+                ),
+                single_image_teachable=(
+                    visual_card_plan.get("single_image_teachable")
+                    if visual_card_plan.get("single_image_teachable") is not None
+                    else getattr(manifest.enrichment, "single_image_teachable", None)
+                ),
+                register_note=(
+                    visual_card_plan.get("register_note")
+                    or word.get("register_note")
+                    or getattr(manifest.enrichment, "register_note", None)
+                ),
+                rationale_summary=(
+                    visual_card_plan.get("rationale_summary")
+                    or word.get("rationale_summary")
+                    or getattr(manifest.enrichment, "rationale_summary", None)
                 ),
             ),
             card_image_style=card_image_style,
@@ -332,10 +410,18 @@ class CardWorker:
         if not public_url:
             return False, upload_error
 
+        update_data: dict[str, Any] = {"thumbnail_url": public_url}
+        if image_model == "gpt_image_2" and result.gpt_image_2_card_metadata:
+            update_data["metadata"] = {
+                **word_metadata,
+                "gpt_image_2_card": result.gpt_image_2_card_metadata,
+            }
+            update_data["mnemonic"] = result.displayed_mnemonic
+
         def _write_thumbnail():
             return (
                 self.sb.table("words")
-                  .update({"thumbnail_url": public_url})
+                  .update(update_data)
                   .eq("id", word["id"])
                   .execute()
             )

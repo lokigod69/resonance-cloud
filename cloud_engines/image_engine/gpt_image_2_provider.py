@@ -34,7 +34,7 @@ def render_scene_gpt_image_2(
     prompt_text: str,
     output_path: Path,
     aspect_ratio: str = "16:9",
-    resolution: str = "2K",
+    resolution: str = "1K",
     input_urls: Optional[list[str]] = None,
 ) -> dict:
     """Render via kie.ai gpt-image-2 endpoints."""
