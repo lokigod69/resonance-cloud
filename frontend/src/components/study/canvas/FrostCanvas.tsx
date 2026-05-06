@@ -228,31 +228,6 @@ function getStringField(word: CanvasModeProps['words'][number], keys: string[]) 
   return null
 }
 
-function getMetadataRecord(word: CanvasModeProps['words'][number]) {
-  const metadata = (word as Record<string, unknown>).metadata
-  return metadata && typeof metadata === 'object' && !Array.isArray(metadata)
-    ? metadata as Record<string, unknown>
-    : null
-}
-
-function getDefinition(word: CanvasModeProps['words'][number]) {
-  const metadata = getMetadataRecord(word)
-  const visualCardPlan = metadata?.visual_card_plan
-  const gptImage2Card = metadata?.gpt_image_2_card
-  const candidates = [
-    (word as Record<string, unknown>).definition,
-    visualCardPlan && typeof visualCardPlan === 'object' ? (visualCardPlan as Record<string, unknown>).definition : null,
-    gptImage2Card && typeof gptImage2Card === 'object' ? (gptImage2Card as Record<string, unknown>).definition : null,
-    word.translation,
-  ]
-
-  for (const candidate of candidates) {
-    if (typeof candidate === 'string' && candidate.trim().length > 0) return candidate.trim()
-  }
-
-  return null
-}
-
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
 }
@@ -955,7 +930,6 @@ function RevealModal({
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
   const phonetic = getStringField(word, ['phonetic', 'ipa'])
-  const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
   const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
@@ -993,35 +967,27 @@ function RevealModal({
 
         <div className="overflow-y-auto overscroll-contain rounded-lg" style={{ WebkitOverflowScrolling: 'touch' }}>
           <div className="bg-slate-800/95 border border-[#a8d8ea]/30 p-6 md:p-8 pt-12 rounded-lg shadow-2xl backdrop-blur-md text-center">
-            <div className="text-[#a8d8ea] text-lg font-hand mb-2 text-center">
+            <button
+              type="button"
+              onClick={onSpeak}
+              className="text-4xl md:text-5xl text-[#a8d8ea] font-finger font-bold tracking-wider cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
+            >
               {promptFace}
-            </div>
+            </button>
+
+            {phonetic && (
+              <p className="text-[#a8d8ea]/50 text-sm mb-3 font-sans tracking-widest text-center">
+                {phonetic}
+              </p>
+            )}
 
             <div
-              className={!canGrade ? 'frost-answer-guard frost-answer-blurred' : 'frost-answer-guard'}
+              className={!canGrade ? 'frost-answer-guard frost-answer-blurred mb-6' : 'frost-answer-guard mb-6'}
               onClick={revealAnswer}
             >
-              <div className="frost-answer-content">
-                <button
-                  type="button"
-                  onClick={canGrade ? onSpeak : revealAnswer}
-                  className="text-4xl md:text-5xl text-[#a8d8ea] font-finger font-bold tracking-wider cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
-                >
-                  {answerFace}
-                </button>
-
-                {phonetic && (
-                  <p className="text-[#a8d8ea]/50 text-sm mb-6 font-sans tracking-widest text-center">
-                    {phonetic}
-                  </p>
-                )}
-
-                {definition && (
-                  <p className="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed font-light font-hand">
-                    {definition}
-                  </p>
-                )}
-              </div>
+              <p className="frost-answer-content text-lg md:text-xl text-gray-300 leading-relaxed font-light font-hand">
+                {answerFace}
+              </p>
             </div>
 
             {imageUrl && (
@@ -1213,9 +1179,11 @@ function FrostStyle() {
           cursor: pointer;
         }
 
-        .frost-answer-blurred:hover {
-          transform: scale(1.02);
-          box-shadow: 0 0 22px rgba(168, 216, 234, 0.26);
+        @media (hover: hover) {
+          .frost-answer-blurred:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 22px rgba(168, 216, 234, 0.26);
+          }
         }
 
         .frost-answer-blurred .frost-answer-content {

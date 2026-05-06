@@ -274,31 +274,6 @@ function getStringField(word: CanvasModeProps['words'][number], keys: string[]) 
   return null
 }
 
-function getMetadataRecord(word: CanvasModeProps['words'][number]) {
-  const metadata = (word as Record<string, unknown>).metadata
-  return metadata && typeof metadata === 'object' && !Array.isArray(metadata)
-    ? metadata as Record<string, unknown>
-    : null
-}
-
-function getDefinition(word: CanvasModeProps['words'][number]) {
-  const metadata = getMetadataRecord(word)
-  const visualCardPlan = metadata?.visual_card_plan
-  const gptImage2Card = metadata?.gpt_image_2_card
-  const candidates = [
-    (word as Record<string, unknown>).definition,
-    visualCardPlan && typeof visualCardPlan === 'object' ? (visualCardPlan as Record<string, unknown>).definition : null,
-    gptImage2Card && typeof gptImage2Card === 'object' ? (gptImage2Card as Record<string, unknown>).definition : null,
-    word.translation,
-  ]
-
-  for (const candidate of candidates) {
-    if (typeof candidate === 'string' && candidate.trim().length > 0) return candidate.trim()
-  }
-
-  return null
-}
-
 // Phrase rule: single short headwords stay tight and nowrap; multi-word
 // phrases or long tokens wrap in a wider barely-there card for readability.
 function phraseClassName(text: string) {
@@ -1073,7 +1048,6 @@ function RevealModal({
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
   const phonetic = getStringField(word, ['phonetic', 'ipa'])
-  const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
   const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
@@ -1110,35 +1084,27 @@ function RevealModal({
         </button>
 
         <div className="flex-1 overflow-y-auto overscroll-contain p-6 md:p-10 pt-12 text-center" style={{ WebkitOverflowScrolling: 'touch' }}>
-          <div className="text-[#666] text-base tracking-wide mb-2">
+          <button
+            type="button"
+            onClick={onSpeak}
+            className="text-3xl md:text-4xl lg:text-5xl zen-living-gradient tracking-wider font-light bg-transparent border-none mb-3"
+          >
             {promptFace}
-          </div>
+          </button>
+
+          {phonetic && (
+            <p className="text-[#555] text-sm tracking-widest font-sans mb-3">
+              {phonetic}
+            </p>
+          )}
 
           <div
-            className={!canGrade ? 'zen-answer-guard zen-answer-blurred' : 'zen-answer-guard'}
+            className={!canGrade ? 'zen-answer-guard zen-answer-blurred mb-6' : 'zen-answer-guard mb-6'}
             onClick={revealAnswer}
           >
-            <div className="zen-answer-content">
-              <button
-                type="button"
-                onClick={canGrade ? onSpeak : revealAnswer}
-                className="text-3xl md:text-4xl lg:text-5xl zen-living-gradient tracking-wider font-light bg-transparent border-none mb-3"
-              >
-                {answerFace}
-              </button>
-
-              {phonetic && (
-                <p className="text-[#555] text-sm tracking-widest font-sans mb-6">
-                  {phonetic}
-                </p>
-              )}
-
-              {definition && (
-                <p className="text-lg md:text-xl lg:text-2xl text-[#777] mb-6 leading-relaxed font-light">
-                  {definition}
-                </p>
-              )}
-            </div>
+            <p className="zen-answer-content text-lg md:text-xl lg:text-2xl text-[#777] leading-relaxed font-light">
+              {answerFace}
+            </p>
           </div>
 
           {imageUrl && (
@@ -1317,9 +1283,11 @@ function ZenStyle() {
           cursor: pointer;
         }
 
-        .zen-answer-blurred:hover {
-          transform: scale(1.02);
-          box-shadow: 0 0 18px rgba(160, 160, 160, 0.14);
+        @media (hover: hover) {
+          .zen-answer-blurred:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 18px rgba(160, 160, 160, 0.14);
+          }
         }
 
         .zen-answer-blurred .zen-answer-content {

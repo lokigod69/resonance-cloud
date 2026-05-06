@@ -253,31 +253,6 @@ function getStringField(word: CanvasModeProps['words'][number], keys: string[]) 
   return null
 }
 
-function getMetadataRecord(word: CanvasModeProps['words'][number]) {
-  const metadata = (word as Record<string, unknown>).metadata
-  return metadata && typeof metadata === 'object' && !Array.isArray(metadata)
-    ? metadata as Record<string, unknown>
-    : null
-}
-
-function getDefinition(word: CanvasModeProps['words'][number]) {
-  const metadata = getMetadataRecord(word)
-  const visualCardPlan = metadata?.visual_card_plan
-  const gptImage2Card = metadata?.gpt_image_2_card
-  const candidates = [
-    (word as Record<string, unknown>).definition,
-    visualCardPlan && typeof visualCardPlan === 'object' ? (visualCardPlan as Record<string, unknown>).definition : null,
-    gptImage2Card && typeof gptImage2Card === 'object' ? (gptImage2Card as Record<string, unknown>).definition : null,
-    word.translation,
-  ]
-
-  for (const candidate of candidates) {
-    if (typeof candidate === 'string' && candidate.trim().length > 0) return candidate.trim()
-  }
-
-  return null
-}
-
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
 }
@@ -950,7 +925,6 @@ function RevealModal({
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
   const phonetic = getStringField(word, ['phonetic', 'ipa'])
-  const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
   const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
@@ -988,35 +962,27 @@ function RevealModal({
 
         <div className="overflow-y-auto overscroll-contain rounded-xl" style={{ WebkitOverflowScrolling: 'touch' }}>
           <div className="bg-gradient-to-b from-[#121212] to-black border border-orange-900/40 p-6 md:p-10 pt-12 rounded-xl text-center shadow-[0_0_100px_rgba(255,69,0,0.15)]">
-            <div className="text-orange-500 text-lg font-serif mb-2 text-center">
+            <button
+              type="button"
+              onClick={onSpeak}
+              className="text-4xl md:text-5xl lg:text-6xl text-orange-100 font-ember tracking-wider drop-shadow-[0_0_15px_rgba(255,100,0,0.4)] cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
+            >
               {promptFace}
-            </div>
+            </button>
+
+            {phonetic && (
+              <p className="text-orange-500/50 text-sm mb-3 font-sans tracking-widest text-center">
+                {phonetic}
+              </p>
+            )}
 
             <div
-              className={!canGrade ? 'ember-answer-guard ember-answer-blurred' : 'ember-answer-guard'}
+              className={!canGrade ? 'ember-answer-guard ember-answer-blurred mb-6' : 'ember-answer-guard mb-6'}
               onClick={revealAnswer}
             >
-              <div className="ember-answer-content">
-                <button
-                  type="button"
-                  onClick={canGrade ? onSpeak : revealAnswer}
-                  className="text-4xl md:text-5xl lg:text-6xl text-orange-100 font-ember tracking-wider drop-shadow-[0_0_15px_rgba(255,100,0,0.4)] cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
-                >
-                  {answerFace}
-                </button>
-
-                {phonetic && (
-                  <p className="text-orange-500/50 text-sm mb-6 font-sans tracking-widest text-center">
-                    {phonetic}
-                  </p>
-                )}
-
-                {definition && (
-                  <p className="text-xl md:text-2xl text-gray-200 mb-6 leading-relaxed font-light font-ember">
-                    {definition}
-                  </p>
-                )}
-              </div>
+              <p className="ember-answer-content text-xl md:text-2xl text-gray-200 leading-relaxed font-light font-ember">
+                {answerFace}
+              </p>
             </div>
 
             {imageUrl && (
@@ -1188,9 +1154,11 @@ function EmberStyle() {
           cursor: pointer;
         }
 
-        .ember-answer-blurred:hover {
-          transform: scale(1.02);
-          box-shadow: 0 0 18px rgba(255, 107, 53, 0.28);
+        @media (hover: hover) {
+          .ember-answer-blurred:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 18px rgba(255, 107, 53, 0.28);
+          }
         }
 
         .ember-answer-blurred .ember-answer-content {

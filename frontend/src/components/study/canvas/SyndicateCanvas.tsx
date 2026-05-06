@@ -328,31 +328,6 @@ function getStringField(word: CanvasModeProps['words'][number], keys: string[]) 
   return null
 }
 
-function getMetadataRecord(word: CanvasModeProps['words'][number]) {
-  const metadata = (word as Record<string, unknown>).metadata
-  return metadata && typeof metadata === 'object' && !Array.isArray(metadata)
-    ? metadata as Record<string, unknown>
-    : null
-}
-
-function getDefinition(word: CanvasModeProps['words'][number]) {
-  const metadata = getMetadataRecord(word)
-  const visualCardPlan = metadata?.visual_card_plan
-  const gptImage2Card = metadata?.gpt_image_2_card
-  const candidates = [
-    (word as Record<string, unknown>).definition,
-    visualCardPlan && typeof visualCardPlan === 'object' ? (visualCardPlan as Record<string, unknown>).definition : null,
-    gptImage2Card && typeof gptImage2Card === 'object' ? (gptImage2Card as Record<string, unknown>).definition : null,
-    word.translation,
-  ]
-
-  for (const candidate of candidates) {
-    if (typeof candidate === 'string' && candidate.trim().length > 0) return candidate.trim()
-  }
-
-  return null
-}
-
 // Phrase rule: short headwords stay tight and nowrap; multi-word phrases or
 // long tokens wrap without adding a card box, preserving the terminal bracket grammar.
 function phraseClassName(text: string) {
@@ -1159,7 +1134,6 @@ function RevealModal({
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
   const phonetic = getStringField(word, ['phonetic', 'ipa'])
-  const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
   const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
@@ -1196,35 +1170,27 @@ function RevealModal({
         </button>
 
         <div className="overflow-y-auto overscroll-contain text-center" style={{ WebkitOverflowScrolling: 'touch' }}>
-          <p className="text-sm font-mono text-[#ff0040]/70 mb-2">
-            # {promptFace}
-          </p>
+          <button
+            type="button"
+            onClick={onSpeak}
+            className="text-3xl md:text-4xl lg:text-5xl tracking-wider font-mono text-[#00fff2] bg-transparent border-none mb-3 syndicate-headword"
+          >
+            [{promptFace}]
+          </button>
+
+          {phonetic && (
+            <p className="text-sm tracking-widest font-mono text-[#39ff14]/50 mb-3">
+              {phonetic}
+            </p>
+          )}
 
           <div
-            className={!canGrade ? 'syndicate-answer-guard syndicate-answer-blurred' : 'syndicate-answer-guard'}
+            className={!canGrade ? 'syndicate-answer-guard syndicate-answer-blurred mb-6' : 'syndicate-answer-guard mb-6'}
             onClick={revealAnswer}
           >
-            <div className="syndicate-answer-content">
-              <button
-                type="button"
-                onClick={canGrade ? onSpeak : revealAnswer}
-                className="text-3xl md:text-4xl lg:text-5xl tracking-wider font-mono text-[#00fff2] bg-transparent border-none mb-3 syndicate-headword"
-              >
-                [{answerFace}]
-              </button>
-
-              {phonetic && (
-                <p className="text-sm tracking-widest font-mono text-[#39ff14]/50 mb-6">
-                  {phonetic}
-                </p>
-              )}
-
-              {definition && (
-                <p className="text-lg md:text-xl font-mono text-gray-300 mb-6 leading-relaxed">
-                  {definition}
-                </p>
-              )}
-            </div>
+            <p className="syndicate-answer-content text-lg md:text-xl font-mono text-gray-300 leading-relaxed">
+              {answerFace}
+            </p>
           </div>
 
           {imageUrl && (
@@ -1404,9 +1370,11 @@ function SyndicateStyle() {
           cursor: pointer;
         }
 
-        .syndicate-answer-blurred:hover {
-          transform: scale(1.02);
-          box-shadow: 0 0 20px rgba(0, 255, 242, 0.28);
+        @media (hover: hover) {
+          .syndicate-answer-blurred:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 255, 242, 0.28);
+          }
         }
 
         .syndicate-answer-blurred .syndicate-answer-content {
