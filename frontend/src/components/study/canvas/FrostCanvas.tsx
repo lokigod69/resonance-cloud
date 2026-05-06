@@ -39,6 +39,7 @@ type AudioKind = 'hover' | 'reveal' | 'pass' | 'fail' | 'snowfall'
 
 const PHYSICS_FRAMES = 300
 const TOOLBAR_CARD_CLEARANCE_PX = 64
+const FROST_LANE_Y_SPACING_PERCENT = 14
 const SNOWFLAKE_CHARS = ['❄', '❅', '❆', '✻', '✼']
 
 function getBounds() {
@@ -68,11 +69,11 @@ function generateLanePositions(count: number): CanvasPosition[] {
     const laneIndex = Math.floor(index / 2)
     const laneCount = laneColumn === 'left' ? leftCount : rightCount
     const centerX = laneColumn === 'left' ? 25 : 75
-    const baseY = laneCount <= 1 ? 50 : 10 + (laneIndex / (laneCount - 1)) * 80
+    const baseY = laneCount <= 1 ? 50 : 10 + laneIndex * FROST_LANE_Y_SPACING_PERCENT
 
     return {
       x: centerX + deterministicOffset(index, 1, 10),
-      y: clamp(baseY + deterministicOffset(index, 2, 2), 10, 90),
+      y: clamp(baseY + deterministicOffset(index, 2, 2), 10, 140),
       laneColumn,
     }
   })
@@ -85,7 +86,7 @@ function getDriftBounds(layout: CanvasViewport, laneColumn: LaneColumn | null, x
       minX: column === 'left' ? 15 : 65,
       maxX: column === 'left' ? 35 : 85,
       minY: 4,
-      maxY: 92,
+      maxY: 140,
     }
   }
 

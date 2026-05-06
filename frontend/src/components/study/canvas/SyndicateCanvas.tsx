@@ -374,9 +374,9 @@ function isLongPhrase(text: string) {
 }
 
 function phraseClassName(text: string) {
-  return isLongPhrase(text)
-    ? 'syndicate-card-phrase text-[clamp(0.78rem,3vw,1.05rem)]'
-    : 'syndicate-card-token'
+  if (/\s/.test(text)) return 'syndicate-card-phrase text-[clamp(0.78rem,3vw,1.05rem)]'
+  if (text.length > 18) return 'syndicate-card-long-token text-[clamp(0.78rem,3vw,1.05rem)]'
+  return 'syndicate-card-token'
 }
 
 function speakHeadword(word: CanvasModeProps['words'][number]) {
@@ -1410,8 +1410,13 @@ function SyndicateStyle() {
         }
 
         .syndicate-card-phrase .syndicate-card-body {
+          overflow-wrap: normal;
+          word-break: normal;
+        }
+
+        .syndicate-card-long-token .syndicate-card-body {
           overflow-wrap: anywhere;
-          word-break: break-word;
+          word-break: normal;
         }
 
         .grid-glitch-burst {

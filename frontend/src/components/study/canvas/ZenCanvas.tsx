@@ -58,6 +58,7 @@ const WAVE_DURATION_MS = 2000
 const WAVE_SPEED_PX_PER_SECOND = 400
 const WAVE_MAX_OFFSET = 18
 const WAVE_THICKNESS_PERCENT = 5
+const ZEN_LANE_CARD_EDGE_CLAMP_PX = 90
 const HUES = [
   'rgba(200, 200, 210, 0.08)',
   'rgba(210, 205, 195, 0.08)',
@@ -117,6 +118,12 @@ function useToolbarClearancePx(toolbarRef: RefObject<HTMLDivElement | null>) {
 
 function getToolbarAwareTop(y: number, toolbarClearancePx: number) {
   return toolbarClearancePx > 0 ? `max(${y}%, ${toolbarClearancePx}px)` : `${y}%`
+}
+
+function getCardAwareLeft(x: number, layout: CanvasViewport) {
+  return layout === 'lane'
+    ? `clamp(${ZEN_LANE_CARD_EDGE_CLAMP_PX}px, ${x}%, calc(100% - ${ZEN_LANE_CARD_EDGE_CLAMP_PX}px))`
+    : `${x}%`
 }
 
 function deterministicOffset(index: number, salt: number, range: number) {
@@ -588,7 +595,7 @@ export default function ZenCanvas({
 
         const el = wordElementsRef.current.get(word.id)
         if (el) {
-          el.style.left = `${word.x}%`
+          el.style.left = getCardAwareLeft(word.x, word.layout)
           el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx)
           el.style.transform = `translate(-50%, -50%) translateY(${Math.sin(word.drift) * 8 - word.waveOffset}px)`
         }
@@ -848,7 +855,7 @@ export default function ZenCanvas({
                 ref={(node) => setWordElement(state.id, node)}
                 className="absolute"
                 style={{
-                  left: `${state.x}%`,
+                  left: getCardAwareLeft(state.x, state.layout),
                   top: getToolbarAwareTop(state.y, toolbarClearancePx),
                   transform: `translate(-50%, -50%) translateY(${Math.sin(state.drift) * 8 - state.waveOffset}px)`,
                 }}
