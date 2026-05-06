@@ -18,6 +18,10 @@ export interface MusicTrack {
 
 export type RepeatMode = 'off' | 'one'
 
+export function trackHasAudio(track: Pick<MusicTrack, 'suno_storage_url' | 'suno_audio_url' | 'error'>): boolean {
+  return !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
+}
+
 function buildShuffleOrder(length: number): number[] {
   const arr = Array.from({ length }, (_, i) => i)
   for (let i = arr.length - 1; i > 0; i--) {
@@ -32,7 +36,7 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
 
   // Stable reference — only recomputed when tracks identity changes
   const queue = useMemo(
-    () => tracks.filter((t) => !!(t.suno_storage_url ?? t.suno_audio_url) && !t.error),
+    () => tracks.filter(trackHasAudio),
     [tracks],
   )
 

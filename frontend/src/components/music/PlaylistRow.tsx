@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { Music } from 'lucide-react'
-import type { MusicTrack } from '@/hooks/useMusicPlayer'
+import { trackHasAudio, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { useTranslation } from '@/hooks/useTranslation'
 
 // Duration cache: persists across component remounts within the same browser session
@@ -84,7 +84,7 @@ export function PlaylistRow({
     }
   }, [track.suno_storage_url, track.suno_audio_url, duration])
 
-  const hasAudio = !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
+  const hasAudio = trackHasAudio(track)
   const isDisabled = !hasAudio
 
   return (

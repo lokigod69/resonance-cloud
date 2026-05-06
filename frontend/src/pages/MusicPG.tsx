@@ -3,7 +3,7 @@ import { Music as MusicIcon, SkipBack, SkipForward, Play, Pause, Repeat, Repeat1
 import { AnimatePresence, motion } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
-import { useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
+import { trackHasAudio, useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { OrbVisualizer } from '@/components/music/OrbVisualizer'
 import { OrbThumbnailRow } from '@/components/music/OrbThumbnailRow'
 import { GenerateSongModal } from '@/components/song-generation/GenerateSongModal'
@@ -84,7 +84,7 @@ export default function MusicPG() {
 
   const filteredTracks = tracks.filter((track) => {
     const inDeck = deckFilter === 'all' || track.deck_id === deckFilter
-    const hasAudio = !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
+    const hasAudio = trackHasAudio(track)
     const inAudioFilter =
       audioFilter === 'all' ||
       (audioFilter === 'with' && hasAudio) ||
@@ -172,7 +172,7 @@ export default function MusicPG() {
 
   // Fetch data
   useEffect(() => {
-    fetchTracks()
+    fetchTracks(true)
   }, [fetchTracks])
 
   const fetchActiveSongJobs = useCallback(async () => {

@@ -649,7 +649,8 @@ async def fetch_existing_task(
                 )
                 resp.raise_for_status()
                 response_json = resp.json()
-                data = response_json.get("data", {})
+                raw_data = response_json.get("data")
+                data = raw_data if isinstance(raw_data, dict) else {}
             ev.record_response(
                 response_body=json.dumps(response_json),
                 request_body=json.dumps({"taskId": task_id}),
@@ -661,7 +662,14 @@ async def fetch_existing_task(
         return {"status": "error", "task_id": task_id,
                 "audio_url": None, "audio_url_b": None, "error": str(e)}
 
-    task_status = data.get("status", "")
+    task_status_raw = data.get("status", "")
+    task_status = str(task_status_raw or "").upper()
+
+    if not data or not task_status:
+        logger.info("fetch_existing_task: task %s record not ready: %s", task_id, json.dumps(response_json)[:500])
+        return {"status": "pending", "task_id": task_id,
+                "audio_url": None, "audio_url_b": None,
+                "error": "Task record not ready"}
 
     if task_status == "SUCCESS":
         suno_data = data.get("response", {}).get("sunoData", [])
@@ -676,17 +684,40 @@ async def fetch_existing_task(
                 "audio_url": None, "audio_url_b": None,
                 "error": "Task SUCCESS but no audioUrl in response"}
 
-    if task_status in ("waiting", "queuing", "generating"):
+    in_progress_statuses = {
+        "PENDING",
+        "TEXT_SUCCESS",
+        "FIRST_SUCCESS",
+        "WAITING",
+        "QUEUING",
+        "GENERATING",
+    }
+    if task_status in in_progress_statuses:
         logger.info("fetch_existing_task: task %s still in progress (%s)", task_id, task_status)
         return {"status": "pending", "task_id": task_id,
-                "audio_url": None, "audio_url_b": None, "error": "Task still in progress"}
+                "audio_url": None, "audio_url_b": None,
+                "error": f"Task still in progress: {task_status}"}
 
-    # "fail" or empty/unknown status
+    failure_statuses = {
+        "FAIL",
+        "FAILED",
+        "ERROR",
+        "CREATE_TASK_FAILED",
+        "GENERATE_AUDIO_FAILED",
+        "CALLBACK_EXCEPTION",
+        "SENSITIVE_WORD_ERROR",
+    }
     error_msg = (
         data.get("errorMessage")
         or (data.get("response", {}).get("sunoData") or [{}])[0].get("errorMessage")
         or f"Task status: {task_status or 'unknown'}"
     )
+    if task_status not in failure_statuses:
+        logger.info("fetch_existing_task: task %s has unrecognized nonterminal status: %s", task_id, task_status)
+        return {"status": "pending", "task_id": task_id,
+                "audio_url": None, "audio_url_b": None,
+                "error": f"Task status: {task_status}"}
+
     logger.info("fetch_existing_task: task %s failed/expired: %s", task_id, error_msg)
     return {"status": "error", "task_id": task_id,
             "audio_url": None, "audio_url_b": None,

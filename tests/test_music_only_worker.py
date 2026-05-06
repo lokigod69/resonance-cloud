@@ -3,9 +3,258 @@ from __future__ import annotations
 from pathlib import Path
 from types import SimpleNamespace
 import asyncio
+from contextlib import contextmanager
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_fetch_existing_task_treats_empty_kie_data_as_pending(monkeypatch):
+    from src import suno
+
+    class FakeEvent:
+        def record_response(self, **_kwargs):
+            pass
+
+    @contextmanager
+    def fake_logged_api_call(**_kwargs):
+        yield FakeEvent()
+
+    class FakeResponse:
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return {"code": 200, "msg": "success", "data": None}
+
+    class FakeAsyncClient:
+        def __init__(self, *_args, **_kwargs):
+            pass
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def get(self, *_args, **_kwargs):
+            return FakeResponse()
+
+    monkeypatch.setattr(suno, "get_api_key", lambda: "key")
+    monkeypatch.setattr(suno, "logged_api_call", fake_logged_api_call)
+    monkeypatch.setattr(suno.httpx, "AsyncClient", FakeAsyncClient)
+
+    result = asyncio.run(suno.fetch_existing_task("task-1"))
+
+    assert result["status"] == "pending"
+    assert result["task_id"] == "task-1"
+    assert result["audio_url"] is None
+
+
+def test_fetch_existing_task_treats_kie_intermediate_statuses_as_pending(monkeypatch):
+    from src import suno
+
+    class FakeEvent:
+        def record_response(self, **_kwargs):
+            pass
+
+    @contextmanager
+    def fake_logged_api_call(**_kwargs):
+        yield FakeEvent()
+
+    class FakeResponse:
+        def __init__(self, status):
+            self.status = status
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return {"code": 200, "msg": "success", "data": {"status": self.status}}
+
+    statuses = iter(["PENDING", "TEXT_SUCCESS", "FIRST_SUCCESS"])
+
+    class FakeAsyncClient:
+        def __init__(self, *_args, **_kwargs):
+            pass
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *_args):
+            return None
+
+        async def get(self, *_args, **_kwargs):
+            return FakeResponse(next(statuses))
+
+    monkeypatch.setattr(suno, "get_api_key", lambda: "key")
+    monkeypatch.setattr(suno, "logged_api_call", fake_logged_api_call)
+    monkeypatch.setattr(suno.httpx, "AsyncClient", FakeAsyncClient)
+
+    for expected_status in ["PENDING", "TEXT_SUCCESS", "FIRST_SUCCESS"]:
+        result = asyncio.run(suno.fetch_existing_task("task-1"))
+        assert result["status"] == "pending"
+        assert expected_status in result["error"]
+
+
+def test_music_only_worker_records_post_submit_exception_as_poll_failure(monkeypatch, tmp_path):
+    from src.orchestration.music_only_worker import MusicOnlyWorker
+
+    class Response:
+        def __init__(self, data):
+            self.data = data
+
+    class Query:
+        def __init__(self, sb, table, op, payload=None):
+            self.sb = sb
+            self.table = table
+            self.op = op
+            self.payload = payload
+            self.filters = []
+            self.limit_n = None
+
+        def select(self, *_cols):
+            return self
+
+        def update(self, payload):
+            self.op = "update"
+            self.payload = payload
+            return self
+
+        def eq(self, key, value):
+            self.filters.append(("eq", key, value))
+            return self
+
+        def in_(self, key, values):
+            self.filters.append(("in", key, values))
+            return self
+
+        def order(self, *_args, **_kwargs):
+            return self
+
+        def limit(self, value):
+            self.limit_n = value
+            return self
+
+        def single(self):
+            return self
+
+        def maybe_single(self):
+            return self
+
+        def execute(self):
+            rows = self.sb.tables[self.table]
+            if self.op == "select":
+                matched = [dict(row) for row in rows if self._matches(row)]
+                if self.limit_n is not None:
+                    matched = matched[: self.limit_n]
+                return Response(matched[0] if len(matched) == 1 else matched)
+            if self.op == "update":
+                updated = []
+                for row in rows:
+                    if self._matches(row):
+                        row.update(self.payload)
+                        updated.append(dict(row))
+                return Response(updated)
+            raise AssertionError(self.op)
+
+        def _matches(self, row):
+            for kind, key, value in self.filters:
+                if kind == "eq" and row.get(key) != value:
+                    return False
+                if kind == "in" and row.get(key) not in value:
+                    return False
+            return True
+
+    class Table:
+        def __init__(self, sb, name):
+            self.sb = sb
+            self.name = name
+
+        def select(self, *_cols):
+            return Query(self.sb, self.name, "select")
+
+        def update(self, payload):
+            return Query(self.sb, self.name, "update", payload)
+
+    class Rpc:
+        def __init__(self, sb, name, params):
+            self.sb = sb
+            self.name = name
+            self.params = params
+
+        def execute(self):
+            self.sb.rpc_calls.append((self.name, dict(self.params)))
+            job = self.sb.tables["music_generation_jobs"][0]
+            if self.name == "claim_music_only_job":
+                job.update({"status": "processing", "attempts": job["attempts"] + 1})
+                return Response({"success": True, "job": dict(job)})
+            if self.name == "mark_music_only_submitted":
+                job.update({"status": "submitted", "suno_task_id": self.params["p_suno_task_id"]})
+                return Response({"success": True})
+            if self.name == "fail_music_only_job":
+                job.update({"status": "failed", "failed_step": self.params["p_failed_step"]})
+                return Response({"success": True})
+            raise AssertionError(self.name)
+
+    class FakeSupabase:
+        def __init__(self):
+            self.tables = {
+                "music_generation_jobs": [{
+                    "id": "job-1",
+                    "user_id": "user-1",
+                    "word_id": "word-1",
+                    "deck_id": "deck-1",
+                    "status": "pending",
+                    "suno_task_id": None,
+                    "concept_artifact": None,
+                    "attempts": 0,
+                }],
+                "words": [{
+                    "id": "word-1",
+                    "word": "flowers",
+                    "translation": "flowers",
+                    "status": "complete",
+                    "current_stage": "complete",
+                    "metadata": {},
+                }],
+                "decks": [{"id": "deck-1", "target_language": "English"}],
+            }
+            self.rpc_calls = []
+
+        def table(self, name):
+            return Table(self, name)
+
+        def rpc(self, name, params):
+            return Rpc(self, name, params)
+
+    async def fake_submit(*_args, **_kwargs):
+        return "task-1"
+
+    async def fake_poll(*_args, **_kwargs):
+        raise RuntimeError("record-info returned empty data")
+
+    monkeypatch.setattr(
+        "src.orchestration.music_only_worker.build_song_only_concept",
+        lambda **_kwargs: {
+            "concept_artifact": {"music_caption": "electronic"},
+            "concept_data": {
+                "lyrics": "flowers",
+                "music_caption": "electronic",
+                "word": "flowers",
+                "vocal_gender": "female",
+            },
+        },
+    )
+    monkeypatch.setattr("src.orchestration.music_only_worker.submit_song_only_task", fake_submit)
+    monkeypatch.setattr("src.orchestration.music_only_worker.fetch_existing_task", fake_poll)
+
+    sb = FakeSupabase()
+    worker = MusicOnlyWorker(sb, poll_interval=0.01, concurrency=1, workspace_root=tmp_path)
+    asyncio.run(worker.process_once())
+
+    fail_calls = [params for name, params in sb.rpc_calls if name == "fail_music_only_job"]
+    assert fail_calls[-1]["p_failed_step"] == "poll"
 
 
 def test_song_only_concept_builds_payload_and_prefers_suno_lyrics(tmp_path, monkeypatch):
@@ -393,3 +642,71 @@ def test_frontend_song_submit_is_single_flight_and_idempotency_key_tracks_settin
 
     assert "if (!track || submitting || insufficientCredits) return" in modal
     assert "disabled={!track || insufficientCredits || submitting}" in modal
+
+
+def test_frontend_music_track_has_audio_helper_accepts_storage_or_provider_url():
+    player_hook = (REPO_ROOT / "frontend" / "src" / "hooks" / "useMusicPlayer.ts").read_text(encoding="utf-8")
+    music_page = (REPO_ROOT / "frontend" / "src" / "pages" / "Music.tsx").read_text(encoding="utf-8")
+    music_pg_page = (REPO_ROOT / "frontend" / "src" / "pages" / "MusicPG.tsx").read_text(encoding="utf-8")
+    playlist_row = (
+        REPO_ROOT
+        / "frontend"
+        / "src"
+        / "components"
+        / "music"
+        / "PlaylistRow.tsx"
+    ).read_text(encoding="utf-8")
+    orb_row = (
+        REPO_ROOT
+        / "frontend"
+        / "src"
+        / "components"
+        / "music"
+        / "OrbThumbnailRow.tsx"
+    ).read_text(encoding="utf-8")
+
+    assert "export function trackHasAudio" in player_hook
+    assert "track.suno_storage_url ?? track.suno_audio_url" in player_hook
+    assert "&& !track.error" in player_hook
+    assert "tracks.filter(trackHasAudio)" in player_hook
+    assert "trackHasAudio(track)" in music_page
+    assert "trackHasAudio(track)" in music_pg_page
+    assert "trackHasAudio(track)" in playlist_row
+    assert "trackHasAudio(track)" in orb_row
+
+
+def test_frontend_music_pages_refetch_on_mount_and_bust_cache_on_completion():
+    music_page = (REPO_ROOT / "frontend" / "src" / "pages" / "Music.tsx").read_text(encoding="utf-8")
+    music_pg_page = (REPO_ROOT / "frontend" / "src" / "pages" / "MusicPG.tsx").read_text(encoding="utf-8")
+
+    assert "fetchTracks(true)" in music_page
+    assert "fetchTracks(true)" in music_pg_page
+    assert "const justCompleted = [...songStatusMap.keys()].filter((id) => !newMap.has(id))" in music_page
+    assert "const justCompleted = [...songStatusMap.keys()].filter((id) => !newMap.has(id))" in music_pg_page
+
+
+def test_music_pg_orb_no_audio_generation_action_is_icon_only():
+    orb_row = (
+        REPO_ROOT
+        / "frontend"
+        / "src"
+        / "components"
+        / "music"
+        / "OrbThumbnailRow.tsx"
+    ).read_text(encoding="utf-8")
+
+    assert "aria-label={isGenerating ? t('music.generatingSong') : t('music.generateSong')}" in orb_row
+    assert "title={isGenerating ? t('music.generatingSong') : t('music.generateSong')}" in orb_row
+    assert "sr-only" in orb_row
+    assert "inline h-3 w-3 mr-1" not in orb_row
+    assert "h-6 rounded-md px-2 text-[10px]" not in orb_row
+
+
+def test_music_lyrics_read_path_prefers_job_suno_lyrics_then_word_metadata_fallback():
+    helper = (REPO_ROOT / "frontend" / "src" / "lib" / "musicLyrics.ts").read_text(encoding="utf-8")
+
+    assert "extractMusicLyrics" in helper
+    assert "conceptArtifact?.suno_lyrics" in helper
+    assert "conceptArtifact?.lyrics" in helper
+    assert "songGeneration?.suno_lyrics" in helper
+    assert "songGeneration?.lyrics" in helper

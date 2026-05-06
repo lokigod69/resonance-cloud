@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { Music as MusicIcon } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
-import { useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
+import { trackHasAudio, useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { PlaylistRow } from '@/components/music/PlaylistRow'
 import { PlayerBar } from '@/components/music/PlayerBar'
 import { GenerateSongModal } from '@/components/song-generation/GenerateSongModal'
@@ -70,7 +70,7 @@ export default function Music() {
 
   const filteredTracks = tracks.filter((track) => {
     const inDeck = deckFilter === 'all' || track.deck_id === deckFilter
-    const hasAudio = !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
+    const hasAudio = trackHasAudio(track)
     const inAudioFilter =
       audioFilter === 'all' ||
       (audioFilter === 'with' && hasAudio) ||
@@ -132,7 +132,7 @@ export default function Music() {
   }, [user])
 
   useEffect(() => {
-    fetchTracks()
+    fetchTracks(true)
   }, [fetchTracks])
 
   // ── Suno retry ──────────────────────────────────────────────────────────────

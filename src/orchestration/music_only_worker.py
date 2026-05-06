@@ -179,7 +179,12 @@ class MusicOnlyWorker:
                 )
                 await self._mark_submitted(job_id, task_id)
                 log.info("music_only: submitted task job=%s task=%s", job_id, task_id)
-                job = {**job, "suno_task_id": task_id, "concept_artifact": concept["concept_artifact"]}
+                job = {
+                    **job,
+                    "status": "submitted",
+                    "suno_task_id": task_id,
+                    "concept_artifact": concept["concept_artifact"],
+                }
 
             task_id = job.get("suno_task_id")
             if not task_id:
@@ -195,6 +200,7 @@ class MusicOnlyWorker:
             log.info("music_only: poll job=%s task=%s status=%s", job_id, task_id, poll.get("status"))
 
             if poll.get("status") == "pending":
+                job = {**job, "status": "polling"}
                 await self._set_status(job_id, "polling")
                 return
 
@@ -215,6 +221,12 @@ class MusicOnlyWorker:
                     "suno_audio_url_b": poll.get("audio_url_b"),
                 },
             )
+            job = {
+                **job,
+                "status": "uploading",
+                "suno_audio_url": audio_url,
+                "suno_audio_url_b": poll.get("audio_url_b"),
+            }
 
             storage_urls = await download_and_upload_song_audio(
                 self.sb,
@@ -243,7 +255,7 @@ class MusicOnlyWorker:
             )
             log.info("music_only: completed job=%s", job_id)
         except Exception as exc:
-            failed_step = self._infer_failed_step(candidate)
+            failed_step = self._infer_failed_step(locals().get("job", candidate))
             log.error("music_only: failed job=%s step=%s: %s", job_id, failed_step, exc, exc_info=True)
             try:
                 await self._fail(job_id, failed_step, _bounded_error(failed_step, exc))
@@ -275,7 +287,7 @@ class MusicOnlyWorker:
             ).execute()
 
         data = _response_data(await asyncio.to_thread(_call)) or {}
-        if data.get("success") is False:
+        if not isinstance(data, dict) or data.get("success") is not True:
             raise RuntimeError(data.get("error") or "mark_music_only_submitted failed")
 
     async def _complete(self, job_id: str, **params: Any) -> None:
@@ -294,7 +306,7 @@ class MusicOnlyWorker:
             ).execute()
 
         data = _response_data(await asyncio.to_thread(_call)) or {}
-        if data.get("success") is False:
+        if not isinstance(data, dict) or data.get("success") is not True:
             raise RuntimeError(data.get("error") or "complete_music_only_job failed")
 
     async def _fail(self, job_id: str, failed_step: str, error_message: str) -> None:
@@ -308,7 +320,9 @@ class MusicOnlyWorker:
                 },
             ).execute()
 
-        await asyncio.to_thread(_call)
+        data = _response_data(await asyncio.to_thread(_call)) or {}
+        if not isinstance(data, dict) or data.get("success") is not True:
+            raise RuntimeError(data.get("error") or "fail_music_only_job failed")
 
     async def _set_status(
         self,
@@ -393,4 +407,3 @@ class MusicOnlyWorker:
             "word": dict(word),
             "deck": dict(deck) if isinstance(deck, dict) else None,
         }
-
