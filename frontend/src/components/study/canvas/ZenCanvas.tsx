@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
+import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
 
@@ -446,6 +447,7 @@ export default function ZenCanvas({
   const selectedImage = selectedState && !selectedState.imageFailed ? getImageUrl(selectedState.word) : null
   const toolbarClearancePx = useToolbarClearancePx(toolbarRef)
   const laneTopOffsetPx = useLaneTopOffsetPx(worldRef, renderWords, viewport, toolbarClearancePx)
+  useCanvasSafeAreaCacheReset()
   const masteredCount = renderWords.filter((word) => word.mastered).length
   const breathScale = 1 + Math.sin(breathPhase * 0.0628) * 0.08
   const progressOpacity = 0.3 + ((Math.sin(breathPhase * 0.0628) + 1) / 2) * 0.3
@@ -652,8 +654,8 @@ export default function ZenCanvas({
         const el = wordElementsRef.current.get(word.id)
         if (el) {
           el.style.left = getCardAwareLeft(word.x, word.layout)
-          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout)
           el.style.transform = `translate(-50%, -50%) translateY(${Math.sin(word.drift) * 8 - word.waveOffset}px)`
+          syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
         }
       }
 
@@ -908,7 +910,10 @@ export default function ZenCanvas({
             return (
               <div
                 key={state.id}
-                ref={(node) => setWordElement(state.id, node)}
+                ref={(node) => {
+                  setWordElement(state.id, node)
+                  if (node) syncCanvasCardTop(node, getToolbarAwareTop(state.y, toolbarClearancePx, laneTopOffsetPx, state.layout))
+                }}
                 className="absolute"
                 style={{
                   left: getCardAwareLeft(state.x, state.layout),

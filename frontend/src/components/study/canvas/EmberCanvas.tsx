@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
+import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
 
@@ -418,6 +419,7 @@ export default function EmberCanvas({
   const selectedImage = selectedState && !selectedState.imageFailed ? getImageUrl(selectedState.word) : null
   const toolbarClearancePx = useToolbarClearancePx(toolbarRef)
   const laneTopOffsetPx = useLaneTopOffsetPx(worldRef, renderWords, viewport, toolbarClearancePx)
+  useCanvasSafeAreaCacheReset()
   const passedOnPage = renderWords.filter((w) => w.mastered).length
   const progress = words.length > 0 ? passedOnPage / words.length : 0
   const warmthRoot = Math.sqrt(progress)
@@ -573,7 +575,7 @@ export default function EmberCanvas({
           const el = wordElementsRef.current.get(word.id)
           if (el) {
             el.style.left = `${word.x}%`
-            el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout)
+            syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
           }
           continue
         }
@@ -612,7 +614,7 @@ export default function EmberCanvas({
         const el = wordElementsRef.current.get(word.id)
         if (el) {
           el.style.left = `${word.x}%`
-          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout)
+          syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
         }
       }
 
@@ -802,7 +804,10 @@ export default function EmberCanvas({
             return (
               <div
                 key={state.id}
-                ref={(node) => setWordElement(state.id, node)}
+                ref={(node) => {
+                  setWordElement(state.id, node)
+                  if (node) syncCanvasCardTop(node, getToolbarAwareTop(state.y, toolbarClearancePx, laneTopOffsetPx, state.layout))
+                }}
                 className="absolute"
                 style={{
                   left: `${state.x}%`,

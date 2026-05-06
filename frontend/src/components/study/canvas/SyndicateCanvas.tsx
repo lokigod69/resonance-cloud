@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
+import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
 
@@ -518,6 +519,7 @@ export default function SyndicateCanvas({
   const selectedImage = selectedState && !selectedState.imageFailed ? getImageUrl(selectedState.word) : null
   const toolbarClearancePx = useToolbarClearancePx(toolbarRef)
   const laneTopOffsetPx = useLaneTopOffsetPx(worldRef, renderWords, viewport, toolbarClearancePx)
+  useCanvasSafeAreaCacheReset()
 
   const gridStyle = useMemo<CSSProperties>(() => ({
     backgroundImage: [
@@ -710,7 +712,7 @@ export default function SyndicateCanvas({
 
         if (el) {
           el.style.left = getSyndicateCardAwareLeft(word, showImages)
-          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout)
+          syncCanvasCardTop(el, getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout))
         }
       }
 
@@ -1021,7 +1023,10 @@ export default function SyndicateCanvas({
             return (
               <div
                 key={state.id}
-                ref={(node) => setWordElement(state.id, node)}
+                ref={(node) => {
+                  setWordElement(state.id, node)
+                  if (node) syncCanvasCardTop(node, getToolbarAwareTop(state.y, toolbarClearancePx, laneTopOffsetPx, state.layout))
+                }}
                 className="absolute"
                 style={{
                   left: getSyndicateCardAwareLeft(state, showImages),
