@@ -1,34 +1,29 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { Play, Layers, Headphones, Sparkles } from 'lucide-react'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
+import videoIcon from '@/assets/study-mode-icons/video.webp'
+import cardsIcon from '@/assets/study-mode-icons/cards.webp'
+import audioIcon from '@/assets/study-mode-icons/audio.webp'
+import canvasIcon from '@/assets/study-mode-icons/canvas.webp'
 
 const STORAGE_KEY = 'resonance-study-mode'
 
 type ModeConfig = {
   key: string
-  icon: typeof Play
+  iconSrc: string
   titleKey: string
-  descKey: string
   route: string
   enabled: boolean
 }
 
 const MODES: ModeConfig[] = [
-  { key: 'video', icon: Play, titleKey: 'study.mode.video', descKey: 'study.mode.video.desc', route: '/study/video', enabled: true },
-  { key: 'flashcard', icon: Layers, titleKey: 'study.mode.flashcard', descKey: 'study.mode.flashcard.desc', route: '/study/flashcard', enabled: true },
-  { key: 'audio', icon: Headphones, titleKey: 'study.mode.audio', descKey: 'study.mode.audio.desc', route: '/study/audio', enabled: true },
-  { key: 'canvas', icon: Sparkles, titleKey: 'study.mode.canvas', descKey: 'study.mode.canvas.desc', route: '/study/canvas', enabled: true },
+  { key: 'video', iconSrc: videoIcon, titleKey: 'study.mode.video', route: '/study/video', enabled: true },
+  { key: 'flashcard', iconSrc: cardsIcon, titleKey: 'study.mode.flashcard', route: '/study/flashcard', enabled: true },
+  { key: 'audio', iconSrc: audioIcon, titleKey: 'study.mode.audio', route: '/study/audio', enabled: true },
+  { key: 'canvas', iconSrc: canvasIcon, titleKey: 'study.mode.canvas', route: '/study/canvas', enabled: true },
 ]
 
 export default function StudyModeSelector() {
@@ -41,38 +36,33 @@ export default function StudyModeSelector() {
 
   const [deckName, setDeckName] = useState<string | null>(null)
   const [allDecks, setAllDecks] = useState<{ id: string; name: string | null; target_language: string }[]>([])
-  const [decksLoaded, setDecksLoaded] = useState(false)
   const [lastUsed, setLastUsed] = useState<string | null>(() => {
     try { return localStorage.getItem(STORAGE_KEY) } catch { return null }
   })
 
-  // Fetch all user decks for language derivation
   useEffect(() => {
     if (!user) return
     supabase
       .from('decks')
       .select('id, name, target_language')
       .eq('user_id', user.id)
-      .then(({ data }) => { if (data) setAllDecks(data); setDecksLoaded(true) })
+      .then(({ data }) => { if (data) setAllDecks(data) })
   }, [user])
 
-  // Derive available languages
   const availableLanguages = useMemo(() =>
-    Array.from(new Set(allDecks.map(d => d.target_language))).filter(Boolean),
+    Array.from(new Set(allDecks.map((deck) => deck.target_language))).filter(Boolean),
     [allDecks],
   )
 
-  // Auto-detect language from ?deck= param
   useEffect(() => {
     if (!deckParam || allDecks.length === 0) return
-    const deck = allDecks.find(d => d.id === deckParam)
+    const deck = allDecks.find((item) => item.id === deckParam)
     if (deck) {
       setDeckName(deck.name)
       if (deck.target_language) setActiveLanguage(deck.target_language)
     }
   }, [deckParam, allDecks, setActiveLanguage])
 
-  // Guard: if activeLanguage has no decks, auto-correct
   useEffect(() => {
     if (availableLanguages.length === 0) return
     if (!activeLanguage || !availableLanguages.includes(activeLanguage)) {
@@ -89,44 +79,24 @@ export default function StudyModeSelector() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] px-6">
+    <div className="flex min-h-[60vh] flex-col items-center justify-center px-6">
       <div className="w-full max-w-2xl">
-        {/* Language selector — only render once loaded and multi-language */}
-        {!deckParam && decksLoaded && availableLanguages.length > 1 && (
-          <div className="flex justify-center mb-4">
-            <Select value={activeLanguage ?? ''} onValueChange={setActiveLanguage}>
-              <SelectTrigger
-                size="sm"
-                className="w-[200px] bg-card border-border text-foreground hover:bg-accent focus-visible:ring-0 focus-visible:border-accent"
-              >
-                <SelectValue placeholder={t('study.language')} />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-900 border-white/10 text-gray-200">
-                {availableLanguages.map((lang) => (
-                  <SelectItem key={lang} value={lang} className="focus:bg-white/10 focus:text-white">
-                    {lang}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        )}
+        <div className="mb-8 text-center">
+          <h1 className="text-2xl font-bold">{t('study.chooseMode')}</h1>
+          {activeLanguage && (
+            <p className="mt-2 text-sm font-medium text-muted-foreground">{activeLanguage}</p>
+          )}
+          {deckParam && deckName && (
+            <p className="mt-1 text-xs text-muted-foreground/80">
+              {t('study.studyingDeck', { name: deckName })}
+            </p>
+          )}
+        </div>
 
-        {/* Deck context — only show when studying a specific deck (language is already in dropdown) */}
-        {deckParam && deckName && (
-          <p className="text-center text-sm text-gray-400 mb-2">
-            {t('study.studyingDeck', { name: deckName })}
-          </p>
-        )}
-
-        {/* Title */}
-        <h1 className="text-2xl font-bold text-center mb-8">{t('study.chooseMode')}</h1>
-
-        {/* Mode cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {MODES.map((mode) => {
-            const Icon = mode.icon
             const isLastUsed = lastUsed === mode.key
+            const title = t(mode.titleKey)
 
             return (
               <button
@@ -135,38 +105,34 @@ export default function StudyModeSelector() {
                 disabled={!mode.enabled}
                 className={`
                   study-mode-card
-                  relative flex flex-col items-center gap-3 p-6 rounded-2xl border text-center
-                  transition-all duration-200 focus-visible:ring-2 focus-visible:ring-foreground/30 focus-visible:outline-none
+                  relative flex min-h-[180px] flex-col items-center justify-center gap-4 rounded-2xl border p-6 text-center
+                  transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30
                   ${mode.enabled
-                    ? 'border-border bg-card backdrop-blur hover:bg-accent hover:border-accent hover:scale-[1.03] cursor-pointer active:scale-[0.98]'
-                    : 'border-border/40 bg-card/40 opacity-40 cursor-not-allowed'
+                    ? 'cursor-pointer border-border bg-card backdrop-blur hover:scale-[1.03] hover:border-accent hover:bg-accent active:scale-[0.98]'
+                    : 'cursor-not-allowed border-border/40 bg-card/40 opacity-40'
                   }
                 `}
               >
-                {/* Coming soon badge */}
                 {!mode.enabled && (
-                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-foreground/10 text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
+                  <span className="absolute right-3 top-3 rounded-full bg-foreground/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
                     {t('study.comingSoon')}
                   </span>
                 )}
 
-                {/* Icon */}
-                <div className={`
-                  w-14 h-14 rounded-xl flex items-center justify-center
-                  ${mode.enabled ? 'bg-foreground/10' : 'bg-foreground/5'}
-                `}>
-                  <Icon className={`h-7 w-7 ${mode.enabled ? 'text-foreground' : 'text-muted-foreground'}`} />
-                </div>
+                <img
+                  src={mode.iconSrc}
+                  alt={title}
+                  width={88}
+                  height={88}
+                  loading="eager"
+                  decoding="sync"
+                  className="h-[88px] w-[88px] rounded-2xl object-contain shadow-[0_0_24px_rgba(59,130,246,0.18)]"
+                />
 
-                {/* Title + description */}
-                <div>
-                  <h3 className="text-lg font-semibold mb-1">{t(mode.titleKey)}</h3>
-                  <p className="text-sm text-gray-400 leading-snug">{t(mode.descKey)}</p>
-                </div>
+                <h3 className="text-lg font-semibold">{title}</h3>
 
-                {/* Last used indicator */}
                 {isLastUsed && mode.enabled && (
-                  <span className="text-[11px] text-gray-500 mt-1">
+                  <span className="text-[11px] text-gray-500">
                     {t('study.lastUsed')}
                   </span>
                 )}
