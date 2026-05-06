@@ -105,7 +105,8 @@ def test_lyrics_sheet_displays_translation_columns_on_desktop_and_toggle_on_mobi
     sheet = read_frontend("components/music/LyricsSheet.tsx")
 
     assert "const hasTranslation = Boolean(displayTranslation)" in sheet
-    assert "grid-cols-1 gap-4 lg:grid-cols-2" in sheet
+    assert "data-lyrics-desktop-columns" in sheet
+    assert "lg:grid-cols-2" in sheet
     assert "lg:hidden" in sheet
     assert "translationView === 'original'" in sheet
     assert "translationView === 'translation'" in sheet
@@ -164,18 +165,57 @@ def test_glassy_lyrics_uses_embedded_reading_layer_not_dialog_drawer():
     assert "pointer-events-none" in sheet
     assert "pointer-events-auto" in sheet
     assert "fixed inset-x-3 bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))]" in sheet
-    assert "DialogContent className={contentClassName}" in sheet
+    assert "data-classic-lyrics-layer" in sheet
 
 
-def test_lyrics_sheet_uses_centered_reading_overlay_with_internal_scroll():
+def test_classic_translated_lyrics_use_player_compatible_embedded_overlay():
     sheet = read_frontend("components/music/LyricsSheet.tsx")
 
-    assert "DialogContent" in sheet
-    assert "max-w-[min(1040px,calc(100vw-2rem))]" in sheet
-    assert "max-h-[82dvh]" in sheet
+    assert "data-classic-lyrics-layer" in sheet
+    assert "z-40" in sheet
+    assert "pointer-events-none fixed inset-0" in sheet
+    assert "pb-[calc(6rem+env(safe-area-inset-bottom,0px))]" in sheet
+    assert "DialogContent className={contentClassName}" not in sheet
+
+
+def test_classic_translated_lyrics_produce_two_column_desktop_path():
+    sheet = read_frontend("components/music/LyricsSheet.tsx")
+
+    assert "hasTranslation ? (" in sheet
+    assert "data-lyrics-desktop-columns" in sheet
+    assert "lg:grid lg:grid-cols-2" in sheet
+    assert "renderClassicLyricsPanel(t('music.lyrics.translation'), displayTranslation" in sheet
+    assert "renderClassicLyricsPanel(t('music.lyrics.original'), displayOriginal" in sheet
+
+
+def test_classic_without_translation_uses_one_centered_original_column():
+    sheet = read_frontend("components/music/LyricsSheet.tsx")
+
+    assert "data-lyrics-single-column" in sheet
+    assert "max-w-3xl" in sheet
+    assert "hasTranslation ? (" in sheet
+    assert "displayOriginal" in sheet
+    assert "displayTranslation" in sheet
+
+
+def test_section_tags_are_cleaned_from_original_and_translation_display():
+    sheet = read_frontend("components/music/LyricsSheet.tsx")
+    helper = read_frontend("lib/musicLyrics.ts")
+
+    assert "SECTION_TAG_PATTERN.test(line)" in helper
+    assert "cleanDisplayLyrics(state.lyrics.original)" in sheet
+    assert "cleanDisplayLyrics(state.lyrics.translation)" in sheet
+
+
+def test_lyrics_sheet_uses_embedded_internal_scroll_with_fades():
+    sheet = read_frontend("components/music/LyricsSheet.tsx")
+
+    assert "data-lyrics-scroll-shell" in sheet
+    assert "data-lyrics-scroll-body" in sheet
     assert "overflow-y-auto" in sheet
     assert "before:absolute before:inset-x-0 before:top-0" in sheet
     assert "after:absolute after:inset-x-0 after:bottom-0" in sheet
+    assert "[&::-webkit-scrollbar]:hidden" in sheet
 
 
 def test_music_lyrics_labels_are_translated_for_en_de_fr():
