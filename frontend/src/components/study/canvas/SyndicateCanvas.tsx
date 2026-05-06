@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
@@ -1191,6 +1192,7 @@ function RevealModal({
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
   const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
   const canGrade = autoReveal === 'on' || answerRevealed
+  useBodyScrollLock(true)
 
   useEffect(() => {
     setAnswerRevealed(autoReveal === 'on')
@@ -1211,7 +1213,9 @@ function RevealModal({
     >
       <div className="absolute inset-0 bg-black/95" />
       <div
-        className="relative flex flex-col max-w-lg w-full mx-auto max-h-[85vh] font-mono bg-[#0a0a0a] border border-[#00fff2]/50 p-6 md:p-10 pt-12 syndicate-modal-enter"
+        data-phase-g-modal
+        className="relative flex flex-col w-full mx-auto max-h-[85vh] overflow-hidden font-mono bg-[#0a0a0a] border border-[#00fff2]/50 syndicate-modal-enter"
+        style={{ maxWidth: 'min(calc(100vw - 32px), 600px)', overflowWrap: 'anywhere', wordBreak: 'normal' }}
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -1222,7 +1226,10 @@ function RevealModal({
           [X]
         </button>
 
-        <div className="overflow-y-auto overscroll-contain text-center" style={{ WebkitOverflowScrolling: 'touch' }}>
+        <div
+          data-phase-g-modal-header
+          className="sticky top-0 z-10 flex-shrink-0 bg-[#0a0a0a] px-6 pb-3 pt-12 text-center md:px-10"
+        >
           <button
             type="button"
             onClick={onSpeak}
@@ -1236,7 +1243,14 @@ function RevealModal({
               {phonetic}
             </p>
           )}
+        </div>
 
+        <div
+          data-phase-g-modal-main
+          data-body-scroll-lock-scrollable="true"
+          className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden overscroll-contain px-6 py-3 text-center md:px-10"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
           <div
             className={!canGrade ? 'syndicate-answer-guard syndicate-answer-blurred mb-6' : 'syndicate-answer-guard mb-6'}
             onClick={revealAnswer}
@@ -1305,7 +1319,14 @@ function RevealModal({
             </div>
           )}
 
-          <div className="mt-6 pt-5 border-t border-[#00fff2]/20 grid grid-cols-2 gap-3">
+        </div>
+
+        <div
+          data-phase-g-modal-footer
+          className="sticky bottom-0 z-10 flex-shrink-0 border-t border-[#00fff2]/20 bg-[#0a0a0a] px-6 pb-4 pt-5 md:px-10"
+          style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+        >
+          <div className="grid grid-cols-2 gap-3">
             <button
               onClick={onFail}
               disabled={!canGrade}
