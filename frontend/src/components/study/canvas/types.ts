@@ -21,6 +21,7 @@ export interface CanvasModeProps {
   direction: CanvasDirection
   autoReveal: CanvasAutoReveal
   languagePair: CanvasLanguagePair
+  canToggleDirection: boolean
 
   // Pagination state
   currentPage: number

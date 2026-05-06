@@ -325,6 +325,7 @@ export default function ZenCanvas({
   direction,
   autoReveal,
   languagePair,
+  canToggleDirection,
   currentPage,
   totalPages,
   activeMode,
@@ -797,6 +798,7 @@ export default function ZenCanvas({
           direction={direction}
           autoReveal={autoReveal}
           languagePair={languagePair}
+          canToggleDirection={canToggleDirection}
           currentPage={currentPage}
           totalPages={totalPages}
           masteredCount={masteredCount}
@@ -893,6 +895,7 @@ interface ToolbarProps {
   direction: CanvasModeProps['direction']
   autoReveal: CanvasModeProps['autoReveal']
   languagePair: CanvasModeProps['languagePair']
+  canToggleDirection: boolean
   currentPage: number
   totalPages: number
   masteredCount: number
@@ -913,6 +916,7 @@ function Toolbar({
   direction,
   autoReveal,
   languagePair,
+  canToggleDirection,
   currentPage,
   totalPages,
   masteredCount,
@@ -928,7 +932,6 @@ function Toolbar({
 }: ToolbarProps) {
   const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
-  const canToggleDirection = !!languagePair.target && !!languagePair.base && !languagePair.isSameLanguage
 
   return (
     <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-[#0a0a0a]/40">

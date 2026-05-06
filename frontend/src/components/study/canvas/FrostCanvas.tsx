@@ -283,6 +283,7 @@ export default function FrostCanvas({
   direction,
   autoReveal,
   languagePair,
+  canToggleDirection,
   currentPage,
   totalPages,
   activeMode,
@@ -682,6 +683,7 @@ export default function FrostCanvas({
           direction={direction}
           autoReveal={autoReveal}
           languagePair={languagePair}
+          canToggleDirection={canToggleDirection}
           currentPage={currentPage}
           totalPages={totalPages}
           onSwitchMode={onSwitchMode}
@@ -788,6 +790,7 @@ interface ToolbarProps {
   direction: CanvasModeProps['direction']
   autoReveal: CanvasModeProps['autoReveal']
   languagePair: CanvasModeProps['languagePair']
+  canToggleDirection: boolean
   currentPage: number
   totalPages: number
   onSwitchMode: (mode: CanvasMode) => void
@@ -805,6 +808,7 @@ function Toolbar({
   direction,
   autoReveal,
   languagePair,
+  canToggleDirection,
   currentPage,
   totalPages,
   onSwitchMode,
@@ -817,7 +821,6 @@ function Toolbar({
 }: ToolbarProps) {
   const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
-  const canToggleDirection = !!languagePair.target && !!languagePair.base && !languagePair.isSameLanguage
 
   return (
     <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/50 border-b border-white/10">

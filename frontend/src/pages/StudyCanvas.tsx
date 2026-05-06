@@ -256,8 +256,10 @@ export default function StudyCanvas() {
 
   const languagePair = useMemo<CanvasLanguagePair>(() => {
     const languageWord = words.find((word) => word.target_language || word.base_language)
-    const target = languageWord?.target_language ?? activeLanguage ?? null
-    const base = languageWord?.base_language ?? null
+    const deckTarget = languageWord?.target_language ?? null
+    const deckBase = languageWord?.base_language ?? null
+    const target = deckTarget ?? activeLanguage ?? null
+    const base = deckBase
 
     return {
       target,
@@ -267,6 +269,14 @@ export default function StudyCanvas() {
       isSameLanguage: !!target && !!base && normalizeLanguage(target) === normalizeLanguage(base),
     }
   }, [activeLanguage, words])
+
+  const hasCompleteDeckLanguagePair = useMemo(() => {
+    const languageWord = words.find((word) => word.target_language || word.base_language)
+    const deckTarget = languageWord?.target_language ?? null
+    const deckBase = languageWord?.base_language ?? null
+
+    return !!deckTarget && !!deckBase && normalizeLanguage(deckTarget) !== normalizeLanguage(deckBase)
+  }, [words])
 
   // Empty pool → instant completion. Only flips to true; explicit handlers reset to false.
   useEffect(() => {
@@ -390,6 +400,7 @@ export default function StudyCanvas() {
       direction={direction}
       autoReveal={autoReveal}
       languagePair={languagePair}
+      canToggleDirection={hasCompleteDeckLanguagePair}
       currentPage={currentPage}
       totalPages={totalPages}
       activeMode={activeMode}
