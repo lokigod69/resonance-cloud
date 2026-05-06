@@ -10,6 +10,7 @@ import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
+import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 import {
   DEFAULT_CARD_LAYER2,
   DEFAULT_CARD_LAYER2_ART_STYLE,
@@ -157,17 +158,25 @@ export default function GenerateGO() {
   }, [deckIdParam, language, activeLanguage])
 
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
+  const generatedQueueIsCard = existingDeck?.deck_type === 'card' || isCardLane(productLane)
   const { jobStatus, jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(queueDeckId ?? undefined, {
-    enabled: generated && !!queueDeckId,
+    enabled: generated && !!queueDeckId && !generatedQueueIsCard,
   })
 
   useEffect(() => {
     if (!generated || !queueDeckId || hasNavigatedToDeckRef.current) return
-    if (jobStatus === 'processing' || (hasChecked && !jobStatus && !shouldShowQueue)) {
+    if (shouldNavigateGeneratedDeck({
+      generated,
+      queueDeckId,
+      isCardSubmission: generatedQueueIsCard,
+      jobStatus,
+      hasChecked,
+      shouldShowQueue,
+    })) {
       hasNavigatedToDeckRef.current = true
-      navigate(`/deck/${queueDeckId}`)
+      navigate(getGeneratedDeckHref(queueDeckId))
     }
-  }, [generated, hasChecked, jobStatus, navigate, queueDeckId, shouldShowQueue])
+  }, [generated, generatedQueueIsCard, hasChecked, jobStatus, navigate, queueDeckId, shouldShowQueue])
 
   // Scroll refs
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
@@ -483,12 +492,17 @@ export default function GenerateGO() {
                 ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
                 : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
             />
-            {hasChecked && queuePaused && (
+            {generatedQueueIsCard && (
+              <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
+                Generating cards...
+              </p>
+            )}
+            {!generatedQueueIsCard && hasChecked && queuePaused && (
               <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
                 {t('queue.paused')}
               </p>
             )}
-            {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
+            {!generatedQueueIsCard && hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
               <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
                 {jobsAhead} {t('queue.jobsAhead')}
               </p>
@@ -498,7 +512,7 @@ export default function GenerateGO() {
               type="button"
               className="gen-orb selected breadcrumb"
               style={{ marginTop: 20 }}
-              onClick={() => navigate(queueDeckId ? `/deck/${queueDeckId}` : existingDeck ? `/deck/${existingDeck.id}` : '/dashboard')}
+              onClick={() => navigate(getGeneratedDeckHref(queueDeckId))}
             >
               {queueDeckId ? t('generate.backToDeck') : t('common.backToDecks')}
             </button>

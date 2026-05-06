@@ -36,6 +36,7 @@ import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
+import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 
 /* ─── Constants ─────────────────────────────────── */
 
@@ -122,17 +123,25 @@ export default function GeneratePG() {
   }, [deckIdParam, state.language, activeLanguage, dispatch])
 
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
+  const generatedQueueIsCard = existingDeck?.deck_type === 'card' || isCardLane(state.productLane)
   const { jobStatus, jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(queueDeckId ?? undefined, {
-    enabled: generated && !!queueDeckId,
+    enabled: generated && !!queueDeckId && !generatedQueueIsCard,
   })
 
   useEffect(() => {
     if (!generated || !queueDeckId || hasNavigatedToDeckRef.current) return
-    if (jobStatus === 'processing' || (hasChecked && !jobStatus && !shouldShowQueue)) {
+    if (shouldNavigateGeneratedDeck({
+      generated,
+      queueDeckId,
+      isCardSubmission: generatedQueueIsCard,
+      jobStatus,
+      hasChecked,
+      shouldShowQueue,
+    })) {
       hasNavigatedToDeckRef.current = true
-      navigate(`/deck/${queueDeckId}`)
+      navigate(getGeneratedDeckHref(queueDeckId))
     }
-  }, [generated, hasChecked, jobStatus, navigate, queueDeckId, shouldShowQueue])
+  }, [generated, generatedQueueIsCard, hasChecked, jobStatus, navigate, queueDeckId, shouldShowQueue])
 
   /* ─── Submit ───────────────────────────────────── */
 
@@ -219,23 +228,28 @@ export default function GeneratePG() {
               ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
               : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
           />
-          {hasChecked && queuePaused && (
+          {generatedQueueIsCard && (
+            <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
+              Generating cards...
+            </p>
+          )}
+          {!generatedQueueIsCard && hasChecked && queuePaused && (
             <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
               {t('queue.paused')}
             </p>
           )}
-          {hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
+          {!generatedQueueIsCard && hasChecked && !queuePaused && typeof jobsAhead === 'number' && jobsAhead > 0 && (
             <p className="text-xs text-[var(--pg-text-dim)] opacity-80">
               {jobsAhead} {t('queue.jobsAhead')}
             </p>
           )}
 
           <Link
-            to={existingDeck ? `/deck/${existingDeck.id}` : '/dashboard'}
+            to={getGeneratedDeckHref(queueDeckId)}
             className="px-6 py-3 rounded-full pg-glass text-sm font-display font-medium text-[var(--pg-accent-teal)] hover:bg-accent transition-all"
           >
             <ArrowLeft className="h-4 w-4 inline mr-2" />
-            {existingDeck ? t('generate.backToDeck') : t('common.backToDecks')}
+            {queueDeckId ? t('generate.backToDeck') : t('common.backToDecks')}
           </Link>
         </motion.div>
       </div>

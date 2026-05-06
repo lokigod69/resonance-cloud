@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import CardGenerationProgress from '@/components/CardGenerationProgress'
 import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { supabase } from '@/lib/supabase'
 import { Progress } from '@/components/ui/progress'
@@ -23,6 +24,7 @@ import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
+import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
 
 type Deck = {
   id: string
@@ -57,6 +59,7 @@ type Word = {
   suno_audio_url_b: string | null
   suno_task_id: string | null
   metadata: Record<string, unknown> | null
+  current_stage?: string | null
   created_at: string
 }
 
@@ -75,8 +78,9 @@ export default function DeckView() {
   const { user, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { t, locale } = useTranslation()
+  const globalQueueEnabled = shouldUseGlobalQueuePosition(deck)
   const { jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(id, {
-    enabled: !!id && deck?.status === 'generating',
+    enabled: !!id && globalQueueEnabled,
   })
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
@@ -241,6 +245,7 @@ export default function DeckView() {
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
   const isCardDeck = deck.deck_type === 'card'
+  const cardGenerationProgress = summarizeCardGenerationProgress(words)
   const completeWords = words.filter((w) => w.status === 'complete')
   const cardMaxWidth = completeWords.length === 1 ? 'max-w-[480px]' : 'max-w-[280px]'
   const viewerWord = completeWords[viewerIndex]
@@ -348,9 +353,14 @@ export default function DeckView() {
               </span>
             )}
           </div>
-          {deck?.status === 'generating' && (!hasChecked || shouldShowQueue) && (
+          {globalQueueEnabled && (!hasChecked || shouldShowQueue) && (
             <div className="mx-auto mt-4 w-full max-w-3xl px-4">
               <QueuePositionDisplay jobsAhead={jobsAhead} queuePaused={queuePaused} hasChecked={hasChecked} />
+            </div>
+          )}
+          {isGenerating && isCardDeck && (
+            <div className="mx-auto mt-4 w-full max-w-3xl px-4">
+              <CardGenerationProgress summary={cardGenerationProgress} />
             </div>
           )}
           {isGenerating && (
@@ -359,12 +369,8 @@ export default function DeckView() {
               <Progress value={progress} className="h-2 w-full max-w-md mx-auto" />
             </div>
           )}
-          {isGenerating && hasChecked && !shouldShowQueue && (
-            isCardDeck ? (
-              <p className="mt-1 text-sm text-muted-foreground">{t('deckview.cardCreation')}</p>
-            ) : (
-              <VerbCycler className="mt-1" />
-            )
+          {isGenerating && !isCardDeck && hasChecked && !shouldShowQueue && (
+            <VerbCycler className="mt-1" />
           )}
         </div>
       </div>

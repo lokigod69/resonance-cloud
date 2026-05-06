@@ -1,5 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import CardGenerationProgress from '@/components/CardGenerationProgress'
 import QueuePositionDisplay from '@/components/QueuePositionDisplay'
 import { supabase } from '@/lib/supabase'
 import { useDrag } from '@use-gesture/react'
@@ -42,6 +43,7 @@ import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
+import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
 import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
 
 type Deck = {
@@ -83,6 +85,7 @@ type Word = {
   suno_audio_url_b: string | null
   suno_task_id: string | null
   metadata: Record<string, unknown> | null
+  current_stage?: string | null
   created_at: string
 }
 
@@ -99,8 +102,9 @@ export default function DeckViewPG() {
   const { user, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { t, locale } = useTranslation()
+  const globalQueueEnabled = shouldUseGlobalQueuePosition(deck)
   const { jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(id, {
-    enabled: !!id && deck?.status === 'generating',
+    enabled: !!id && globalQueueEnabled,
   })
   const [retrying, setRetrying] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
@@ -389,6 +393,7 @@ export default function DeckViewPG() {
   const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0
   const isGenerating = deck.status === 'generating'
   const isCardDeck = deck.deck_type === 'card'
+  const cardGenerationProgress = summarizeCardGenerationProgress(words)
   const displayName =
     deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US')}`
 
@@ -524,7 +529,7 @@ export default function DeckViewPG() {
         </div>
       </div>
 
-    {deck?.status === 'generating' && (!hasChecked || shouldShowQueue) && (
+    {globalQueueEnabled && (!hasChecked || shouldShowQueue) && (
       <div className="mb-8">
         <QueuePositionDisplay
           jobsAhead={jobsAhead}
@@ -534,17 +539,18 @@ export default function DeckViewPG() {
         />
       </div>
     )}
+    {isGenerating && isCardDeck && (
+      <div className="mb-8">
+        <CardGenerationProgress summary={cardGenerationProgress} variant="glassy" />
+      </div>
+    )}
 
     {/* Generation progress showcase */}
     {isGenerating && (
       <div className="flex flex-col items-center gap-6 mb-8">
         <GenerationWheelLoader size={120} className="gap-0" />
-        {hasChecked && !shouldShowQueue && (
-          isCardDeck ? (
-            <p className="text-sm text-[var(--pg-text-dim)]">{t('deckview.cardCreation')}</p>
-          ) : (
-            <VerbCycler intervalMs={5000} />
-          )
+        {!isCardDeck && hasChecked && !shouldShowQueue && (
+          <VerbCycler intervalMs={5000} />
         )}
         <div className="w-full max-w-md h-1 bg-card/60 rounded-full overflow-hidden">
           <div
