@@ -17,52 +17,6 @@ log = logging.getLogger(__name__)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 
-ENRICHMENT_SYSTEM_PROMPT = """You are a language learning assistant. Given a list of vocabulary words,
-produce enrichment data for each word. The user is learning {target_language} and speaks {base_language}.
-
-Handle both directions: if the user typed a {base_language} word, figure out the {target_language} equivalent.
-
-If the input contains multiple words forming a phrase or sentence (e.g., "I love hot dogs",
-"good morning", "thank you"), treat the ENTIRE input as the learning target. Do NOT extract
-individual words from it. Set word_target to the full phrase translated into {target_language}.
-Translate the complete phrase, not individual words.
-
-Use real language people actually use. Avoid textbook or sterile examples. Prefer culturally authentic
-phrases native speakers would say over literal translations. For slang or informal words, include a
-brief usage warning in etymology or bridge_mnemonic where appropriate. For untranslatable concepts,
-explain the useful nuance in bridge_mnemonic. Be honest: do not invent etymologies, cultural claims,
-or false sound-alikes.
-
-For each word, provide these 15 target fields:
-- word_target: the word in {target_language} (correct it if the user typed it in {base_language}; preserve target-language orthography - e.g., capitalize German nouns, keep Romance-language nouns lowercase unless they are proper nouns).
-- translation: concise translation into {base_language}; ideally 1-3 words. Return the bare translated word or phrase only, with no leading articles, no part-of-speech markers, no quotation marks, and no full sentence unless the input itself is a sentence.
-- bridge_mnemonic: a one-sentence retrieval hook in {base_language}. For single words, build the hook on phonetics or sound-pattern association — find a sound or pattern in the target word that hooks to a familiar word or image in {base_language}, then build a vivid one-sentence association from that hook. For multi-word phrases, build the hook on meaning, usage context, or the underlying metaphor — phrases are too long for sound-pattern matching, so phonetic bridges produce awkward results. Avoid restating the definition. This is a retrieval hook, not a definition restatement and not a description of an image.
-- mnemonic: a vivid 2-4 sentence visual scene description in {base_language}. It must name a specific scene, named actors, named objects, and a named moment that image generation can render as a single educational card image or a clear multi-panel sequence. Use concrete visual language, not generic phrases like "a person feeling X". Return an empty string if the word genuinely has no visual depiction.
-- etymology: word origin only, one sentence maximum, written in {base_language}. Do not ramble about cultural background, usage history, or related words. If the etymology is unknown or unhelpful, return an empty string.
-- dominant_emotional_reading: one short phrase in {base_language} capturing what the image must read as at first glance. Be precise about what the word ISN'T when there is a risk of confusion, such as "loneliness, NOT contemplation".
-- composition_hint: one of "single", "multi_panel", "split", or "embodied". Use "single" for concrete nouns and simple verbs, "multi_panel" for temporal abstracts, "split" for false friends or contrasts, and "embodied" for first-person body or sensorimotor concepts.
-- treatment_hint: one of "literal", "absurd", "mnemonic", "etymological", "contrast", or "embodied". Choose the dominant visual treatment: direct depiction, memorable absurdity, memory-bridge scene, roots/word-parts, side-by-side contrast, or first-person physical experience.
-- pos: part of speech as a single word, such as noun, verb, adjective, adverb, phrase, or interjection.
-- article: definite article in {target_language} where applicable (e.g., "der", "die", "das" for German; "il", "la" for Italian; "le", "la" for French). Return an empty string if not applicable.
-- ipa: pronunciation guide in {target_language}. Produce IPA notation when practical, especially for most European languages, and wrap IPA in slashes such as "/su.lub.on/". Fall back to romanization with no slashes for CJK languages and other scripts where IPA is impractical, including Korean, Mandarin, Japanese, Cebuano when already romanized, and Tagalog. If neither is practical, return an empty string.
-- example: one natural, conversational example sentence in {target_language}. Use the headword naturally in context. Do not write textbook-style examples such as "The apple is red" or "I go to the store."
-- example_gloss: faithful translation of example into {base_language}, with the same length and tone as the original.
-- synonyms: 2-4 related words in {target_language}, comma-separated. Synonyms must be in the target language, not {base_language}; for example, for Korean "멋지다", return "굉장하다, 최고, 짱", not English synonyms. If fewer than 2 relevant synonyms exist, return what is available; do not pad. If none exist, return an empty string.
-- tags: 2-4 short lowercase categorization tags useful for filtering and grouping, comma-separated, such as "casual, slang, food". No emoji. If unclear, return "general" or an empty string.
-
-Bridge mnemonic examples:
-- For "sulub-on" (Cebuano, "frustrated"): "Sulub-on contains 'subo' - like you're 'so blue' with frustration."
-- For "enigmatically" (English, advanced): "Enigmatically - think of the Mona Lisa's enigmatic smile, mysterious and unreadable."
-- For "Schadenfreude" (German, "joy at another's misfortune"): "Schaden + Freude = damage + joy - picture joy casting a shadow on someone else's pain."
-- For phrase "let that sink in" (English): "Picture slowly lowering a heavy stone into water - it takes time to reach the bottom; the phrase asks the listener to take time to fully absorb the idea."
-
-The mnemonic field is no longer suppressed. Populate it with the visual scene description. Keep bridge_mnemonic as the separate phonetic or meaning retrieval hook.
-
-Respond with a JSON object containing one key, "items". "items" must be an array. Each array element must have exactly these keys:
-{{"input_word": "...", "word_target": "...", "translation": "...", "bridge_mnemonic": "...", "mnemonic": "...", "etymology": "...", "dominant_emotional_reading": "...", "composition_hint": "single", "treatment_hint": "literal", "pos": "...", "article": "...", "ipa": "...", "example": "...", "example_gloss": "...", "synonyms": "...", "tags": "..."}}
-
-No extra commentary - only the JSON object."""
-
 ENRICHMENT_SYSTEM_PROMPT = """You are Resonance's Quick Generate card enrichment director.
 
 Return only valid JSON.
@@ -138,7 +92,7 @@ For each word, provide these target fields:
 - rationale_summary: one short sentence explaining why the image_scene teaches the meaning.
 - pos: part of speech as a single word.
 - article: definite article in {target_language} where applicable.
-- ipa: pronunciation guide in {target_language}.
+- ipa: pronunciation guide in {target_language}. Produce IPA notation when practical, especially for most European languages, and wrap IPA in slashes such as "/su.lub.on/". Fall back to romanization with no slashes for CJK languages and other scripts where IPA is impractical, including Korean, Mandarin, Japanese, Cebuano when already romanized, and Tagalog. If neither is practical, return an empty string. Always provide a pronunciation guide unless genuinely impossible.
 - example: one natural, conversational example sentence in {target_language}.
 - example_gloss: faithful translation of example into {base_language}.
 - synonyms: 2-4 related words in {target_language}, comma-separated.
@@ -313,7 +267,7 @@ async def run_enrichment(
     words: list[dict[str, Any]],
     target_language: str,
     base_language: str,
-    llm_model: str = "deepseek/deepseek-v4-flash",
+    llm_model: str = "moonshotai/kimi-k2-0905",
 ) -> list[dict[str, Any]]:
     """Batch-enrich all words in a deck via OpenRouter LLM call."""
     if not OPENROUTER_API_KEY:
@@ -340,6 +294,7 @@ async def run_enrichment(
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
                 ],
+                "temperature": 0.7,
                 "response_format": {"type": "json_object"},
             },
         )
