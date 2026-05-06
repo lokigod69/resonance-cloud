@@ -42,6 +42,7 @@ type Word = {
   translation: string | null
   mnemonic: string | null
   etymology: string | null
+  ipa: string | null
   pos: string | null
   article: string | null
   rating: number | null

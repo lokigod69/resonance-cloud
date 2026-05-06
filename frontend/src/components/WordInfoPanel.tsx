@@ -18,6 +18,7 @@ interface WordInfoPanelProps {
     id: string
     word: string
     translation: string | null
+    ipa?: string | null
     rating?: number | null
     word_slug?: string | null
   }
@@ -28,6 +29,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
   const { t } = useTranslation()
   const [showMetadata, setShowMetadata] = useState(false)
   const learning = resolveCardLearningMetadata(word)
+  const ipa = typeof word.ipa === 'string' ? word.ipa.trim() : ''
   const videoMeta = (word.metadata && typeof word.metadata === 'object' && !Array.isArray(word.metadata))
     ? (word.metadata as { creative_direction?: string; art_style?: string; music_caption?: string })
     : null
@@ -53,6 +55,11 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
       )}
 
       <h1 className="text-4xl font-bold long-copy">{word.word}</h1>
+      {ipa && (
+        <p className="text-sm text-muted-foreground/60 font-mono long-copy">
+          /{ipa.replace(/^\/|\/$/g, '')}/
+        </p>
+      )}
       {word.translation && (
         <p className="text-xl text-muted-foreground long-copy">{word.translation}</p>
       )}
