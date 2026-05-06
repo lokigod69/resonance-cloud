@@ -72,7 +72,10 @@ def test_translate_song_lyrics_skips_target_equals_base(monkeypatch):
         translation="hello",
     )
 
-    assert result == {"status": "skipped", "reason": "target_equals_base"}
+    assert result["status"] == "skipped"
+    assert result["reason"] == "target_equals_base"
+    assert result["language"] == "english"
+    assert result["model"] == "anthropic/claude-haiku-4.5"
 
 
 def test_translate_song_lyrics_skips_empty_lyrics(monkeypatch):
@@ -87,7 +90,9 @@ def test_translate_song_lyrics_skips_empty_lyrics(monkeypatch):
         translation="hello",
     )
 
-    assert result == {"status": "skipped", "reason": "empty_source"}
+    assert result["status"] == "skipped"
+    assert result["reason"] == "empty_source"
+    assert result["language"] == "English"
 
 
 def test_translate_song_lyrics_skips_missing_api_key(monkeypatch):
@@ -102,7 +107,9 @@ def test_translate_song_lyrics_skips_missing_api_key(monkeypatch):
         translation="hello",
     )
 
-    assert result == {"status": "skipped", "reason": "no_api_key"}
+    assert result["status"] == "skipped"
+    assert result["reason"] == "no_api_key"
+    assert result["language"] == "English"
 
 
 def test_translate_song_lyrics_handles_http_error_as_failed(monkeypatch):
@@ -193,6 +200,62 @@ def test_translate_song_lyrics_provider_400_returns_safe_diagnostic(monkeypatch,
     assert "Provider rejected response_format" in caplog.text
     assert full_lyrics not in caplog.text
     assert captured["body"]["model"] == "deepseek/deepseek-v4-flash"
+
+
+def test_translate_song_lyrics_retries_without_response_format_on_provider_400(monkeypatch, caplog):
+    calls: list[dict] = []
+
+    class ErrorResponse:
+        status_code = 400
+        text = '{"error":{"message":"response_format json_object is not supported by this provider"}}'
+
+        def raise_for_status(self):
+            request = httpx.Request("POST", lyrics_translation.OPENROUTER_URL)
+            response = httpx.Response(400, request=request, text=self.text)
+            raise httpx.HTTPStatusError("400 Bad Request", request=request, response=response)
+
+    class SuccessResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"choices": [{"message": {"content": json.dumps({"translation": "Bonjour"})}}]}
+
+    class FakeClient:
+        def __init__(self, **_kwargs):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def post(self, _url, *, headers, json):
+            calls.append(json)
+            return ErrorResponse() if len(calls) == 1 else SuccessResponse()
+
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setenv("OPENROUTER_LYRICS_TRANSLATION_MODEL", "deepseek/deepseek-v4-flash")
+    monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
+    caplog.set_level(logging.WARNING, logger="src.services.lyrics_translation")
+
+    result = lyrics_translation.translate_song_lyrics(
+        "Hello",
+        source_language="English",
+        target_language="French",
+        word="hello",
+        translation="bonjour",
+    )
+
+    assert result["status"] == "ok"
+    assert result["lyrics"] == "Bonjour"
+    assert result["model"] == "deepseek/deepseek-v4-flash"
+    assert calls[0]["response_format"] == {"type": "json_object"}
+    assert "response_format" not in calls[1]
+    assert result["warnings"] == ["retried_without_response_format"]
+    assert "retrying without response_format" in caplog.text
 
 
 def test_translate_song_lyrics_strips_markdown_fences(monkeypatch):
@@ -307,7 +370,8 @@ def test_translate_song_lyrics_disabled_by_default_skips_openrouter(monkeypatch)
         translation="bonjour",
     )
 
-    assert result == {"status": "skipped", "reason": "translation_disabled"}
+    assert result["status"] == "skipped"
+    assert result["reason"] == "translation_disabled"
     assert called["post"] is False
 
 

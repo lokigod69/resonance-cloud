@@ -16,6 +16,7 @@ OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_MODEL = "anthropic/claude-haiku-4.5"
 DEFAULT_TIMEOUT_SECONDS = 12.0
 ERROR_SNIPPET_LIMIT = 500
+RESPONSE_FORMAT_ENV = "LYRICS_TRANSLATION_RESPONSE_FORMAT"
 
 log = logging.getLogger(__name__)
 
@@ -40,6 +41,11 @@ def _timeout_seconds() -> float:
 
 def _model_name(model: str | None) -> str:
     return os.getenv("OPENROUTER_LYRICS_TRANSLATION_MODEL", "").strip() or model or DEFAULT_MODEL
+
+
+def _use_response_format() -> bool:
+    raw = os.getenv(RESPONSE_FORMAT_ENV, "json_object").strip().casefold()
+    return raw not in {"", "none", "false", "off", "0"}
 
 
 def _now_iso() -> str:
@@ -110,6 +116,14 @@ def _safe_failure_result(
     }
 
 
+def _response_format_rejected(exc: httpx.HTTPStatusError) -> bool:
+    response = exc.response
+    if getattr(response, "status_code", None) != 400:
+        return False
+    text = str(getattr(response, "text", "") or "").casefold()
+    return "response_format" in text or "json_object" in text or "structured" in text
+
+
 def _section_tags(text: str) -> list[str]:
     return re.findall(r"^\s*(\[[^\]\n]+\])\s*$", text, flags=re.MULTILINE)
 
@@ -155,24 +169,23 @@ def translate_song_lyrics(
     skip status instead of raising for expected external/API failures.
     """
     source = lyrics or ""
+    effective_model = _model_name(model)
     if not source.strip():
-        return {"status": "skipped", "reason": "empty_source"}
+        return {"status": "skipped", "reason": "empty_source", "language": target_language, "model": effective_model}
     if not _env_flag("ENABLE_LYRICS_TRANSLATION", default=False):
-        return {"status": "skipped", "reason": "translation_disabled"}
+        return {"status": "skipped", "reason": "translation_disabled", "language": target_language, "model": effective_model}
     if _same_language(source_language or "", target_language or ""):
-        return {"status": "skipped", "reason": "target_equals_base"}
+        return {"status": "skipped", "reason": "target_equals_base", "language": target_language, "model": effective_model}
 
     api_key = os.getenv("OPENROUTER_API_KEY", "")
     if not api_key:
-        return {"status": "skipped", "reason": "no_api_key"}
+        return {"status": "skipped", "reason": "no_api_key", "language": target_language, "model": effective_model}
 
-    effective_model = _model_name(model)
     attempted_at = _now_iso()
     try:
         body = {
             "model": effective_model,
             "temperature": 0.3,
-            "response_format": {"type": "json_object"},
             "max_tokens": 2000,
             "messages": _messages(
                 lyrics=source,
@@ -182,16 +195,36 @@ def translate_song_lyrics(
                 translation=translation,
             ),
         }
+        if _use_response_format():
+            body["response_format"] = {"type": "json_object"}
+
+        retried_without_response_format = False
         with httpx.Client(timeout=_timeout_seconds()) as client:
-            response = client.post(
-                OPENROUTER_URL,
-                headers={
-                    "Authorization": f"Bearer {api_key}",
-                    "Content-Type": "application/json",
-                },
-                json=body,
-            )
-            response.raise_for_status()
+            headers = {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            }
+            try:
+                response = client.post(OPENROUTER_URL, headers=headers, json=body)
+                response.raise_for_status()
+            except httpx.HTTPStatusError as exc:
+                if "response_format" not in body or not _response_format_rejected(exc):
+                    raise
+                snippet = _safe_error_snippet(
+                    getattr(exc.response, "text", None),
+                    lyrics=source,
+                )
+                log.warning(
+                    "lyrics_translation: OpenRouter model=%s status=%s rejected response_format body=%s; retrying without response_format",
+                    effective_model,
+                    getattr(exc.response, "status_code", None),
+                    snippet,
+                )
+                fallback_body = dict(body)
+                fallback_body.pop("response_format", None)
+                retried_without_response_format = True
+                response = client.post(OPENROUTER_URL, headers=headers, json=fallback_body)
+                response.raise_for_status()
             payload = response.json()
 
         content = ((payload.get("choices") or [{}])[0].get("message") or {}).get("content")
@@ -218,6 +251,8 @@ def translate_song_lyrics(
         }
         if warnings:
             result["warnings"] = warnings
+        if retried_without_response_format:
+            result.setdefault("warnings", []).append("retried_without_response_format")
         return result
     except httpx.HTTPStatusError as exc:
         response = exc.response

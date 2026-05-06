@@ -284,4 +284,5 @@ def test_song_only_worker_fetches_profile_base_language_as_translation_target(mo
 
     assert captured["source_language"] == "English"
     assert captured["target_language"] == "French"
+    assert sb._tables["music_lyrics"][0]["translation_language"] == "French"
     assert sb._tables["music_lyrics"][0]["translation_language_code"] == "fr"

@@ -257,7 +257,7 @@ def translation_result_to_columns(
     if status == "skipped":
         return {
             "translation_status": "skipped",
-            "translation_language": None,
+            "translation_language": result.get("language"),
             "translation_language_code": target_language_code,
             "translated_lyrics": None,
             "translation_model": result.get("model"),
@@ -319,27 +319,43 @@ async def persist_video_pipeline_lyrics_best_effort(
             _metadata(word).get("language_code"),
         ) or language_to_code(language)
         settings_override = _settings_override(generation_job)
+        profile_base_language = (profile or {}).get("base_language")
+        settings_base_language = settings_override.get("base_language")
         base_language = _first_text(
-            settings_override.get("base_language"),
-            (profile or {}).get("base_language"),
+            settings_base_language,
+            profile_base_language,
         ) or "English"
         base_language_code = language_to_code(base_language)
 
         try:
+            log.info(
+                "music_lyrics: video translation context word=%s user=%s job=%s source_language=%s base_language=%s profile_base_language=%s settings_base_language=%s",
+                word.get("id"),
+                word.get("user_id"),
+                word.get("generation_job_id"),
+                language,
+                base_language,
+                profile_base_language,
+                settings_base_language,
+            )
             translation_result = await asyncio.to_thread(
                 translate_song_lyrics,
                 lyrics=lyrics,
                 source_language=language,
                 target_language=base_language,
                 word=_first_text(concept_data.get("word"), word.get("word")) or "",
-                    translation=_first_text(concept_data.get("translation"), word.get("translation")) or "",
+                translation=_first_text(concept_data.get("translation"), word.get("translation")) or "",
             )
+            if not translation_result.get("language"):
+                translation_result = {**translation_result, "language": base_language}
             log.info(
-                "music_lyrics: video translation result word=%s job=%s source_language=%s base_language=%s status=%s reason=%s",
+                "music_lyrics: video translation result word=%s user=%s job=%s source_language=%s base_language=%s profile_base_language=%s status=%s reason=%s",
                 word.get("id"),
+                word.get("user_id"),
                 word.get("generation_job_id"),
                 language,
                 base_language,
+                profile_base_language,
                 translation_result.get("status"),
                 translation_result.get("reason") or translation_result.get("error"),
             )

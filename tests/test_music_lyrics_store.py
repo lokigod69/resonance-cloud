@@ -2,7 +2,11 @@ from __future__ import annotations
 
 from tests.fake_supabase import FakeSupabase
 
-from src.services.music_lyrics_store import latest_music_lyrics_for_word, upsert_music_lyrics_row
+from src.services.music_lyrics_store import (
+    latest_music_lyrics_for_word,
+    translation_result_to_columns,
+    upsert_music_lyrics_row,
+)
 
 
 def test_upsert_music_lyrics_row_writes_expected_shape():
@@ -86,8 +90,6 @@ def test_latest_music_lyrics_for_word_uses_created_at_descending():
 
 
 def test_translation_disabled_result_maps_to_skipped_error():
-    from src.services.music_lyrics_store import translation_result_to_columns
-
     columns = translation_result_to_columns(
         {"status": "skipped", "reason": "translation_disabled"},
         target_language_code="de",
@@ -96,3 +98,21 @@ def test_translation_disabled_result_maps_to_skipped_error():
     assert columns["translation_status"] == "skipped"
     assert columns["translation_error"] == "translation_disabled"
     assert columns["translation_language_code"] == "de"
+
+
+def test_target_equals_base_skipped_result_stores_translation_language_and_code():
+    columns = translation_result_to_columns(
+        {
+            "status": "skipped",
+            "reason": "target_equals_base",
+            "language": "English",
+            "model": "deepseek/deepseek-v4-flash",
+        },
+        target_language_code="en",
+    )
+
+    assert columns["translation_status"] == "skipped"
+    assert columns["translation_language"] == "English"
+    assert columns["translation_language_code"] == "en"
+    assert columns["translation_model"] == "deepseek/deepseek-v4-flash"
+    assert columns["translation_error"] == "target_equals_base"
