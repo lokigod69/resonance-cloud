@@ -23,6 +23,7 @@ export default function Settings() {
   const [displayName, setDisplayName] = useState(profile?.display_name || '')
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [nameSaving, setNameSaving] = useState(false)
   const [nameSaved, setNameSaved] = useState(false)
 
@@ -52,19 +53,50 @@ export default function Settings() {
   }
 
   async function handleSaveLanguage(value: string) {
+    if (!user) return
+    const previousBaseLanguage = profile?.base_language || ''
     setBaseLanguage(value)
     setSaving(true)
     setSaved(false)
+    setError(null)
 
-    await supabase
-      .from('profiles')
-      .update({ base_language: value })
-      .eq('id', user!.id)
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .update({ base_language: value })
+        .eq('id', user.id)
+        .select('base_language')
+        .single()
 
-    await refreshProfile()
-    setSaving(false)
-    setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
+      if (error || data?.base_language !== value) {
+        console.error('[Settings] base_language update failed', {
+          userId: user.id,
+          requestedBaseLanguage: value,
+          returnedBaseLanguage: data?.base_language,
+          error,
+        })
+        setBaseLanguage(previousBaseLanguage)
+        setSaved(false)
+        setError('Could not save. Check your session and try again.')
+        return
+      }
+
+      await refreshProfile()
+      setBaseLanguage(data.base_language || value)
+      setSaved(true)
+      setTimeout(() => setSaved(false), 2000)
+    } catch (error) {
+      console.error('[Settings] base_language update exception', {
+        userId: user.id,
+        requestedBaseLanguage: value,
+        error,
+      })
+      setBaseLanguage(previousBaseLanguage)
+      setSaved(false)
+      setError('Could not save. Check your session and try again.')
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -101,6 +133,7 @@ export default function Settings() {
               <Check className="h-3 w-3" /> Saved
             </span>
           )}
+          {error && <span className="text-sm text-destructive">{error}</span>}
         </div>
       </div>
 

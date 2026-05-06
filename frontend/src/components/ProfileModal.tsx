@@ -122,6 +122,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   const [nameSaved, setNameSaved] = useState(false)
   const [langSaving, setLangSaving] = useState(false)
   const [langSaved, setLangSaved] = useState(false)
+  const [langError, setLangError] = useState<string | null>(null)
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
   const [avatarStatus, setAvatarStatus] = useState<AvatarStatus>('idle')
@@ -241,17 +242,50 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   }
 
   async function handleSaveLanguage(value: string) {
+    if (!user) return
+    const previousBaseLanguage = profile?.base_language || ''
     setBaseLanguage(value)
     setLangSaving(true)
     setLangSaved(false)
-    await supabase
-      .from('profiles')
-      .update({ base_language: value })
-      .eq('id', user!.id)
-    await refreshProfile()
-    setLangSaving(false)
-    setLangSaved(true)
-    setTimeout(() => setLangSaved(false), 2000)
+    setLangError(null)
+
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .update({ base_language: value })
+        .eq('id', user.id)
+        .select('base_language')
+        .single()
+
+      if (error || data?.base_language !== value) {
+        console.error('[ProfileModal] base_language update failed', {
+          userId: user.id,
+          requestedBaseLanguage: value,
+          returnedBaseLanguage: data?.base_language,
+          error,
+        })
+        setBaseLanguage(previousBaseLanguage)
+        setLangSaved(false)
+        setLangError(t('profile.saveFailed'))
+        return
+      }
+
+      await refreshProfile()
+      setBaseLanguage(data.base_language || value)
+      setLangSaved(true)
+      setTimeout(() => setLangSaved(false), 2000)
+    } catch (error) {
+      console.error('[ProfileModal] base_language update exception', {
+        userId: user.id,
+        requestedBaseLanguage: value,
+        error,
+      })
+      setBaseLanguage(previousBaseLanguage)
+      setLangSaved(false)
+      setLangError(t('profile.saveFailed'))
+    } finally {
+      setLangSaving(false)
+    }
   }
 
   function handleSkinChange(id: SkinId) {
@@ -437,6 +471,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   <Check className="h-3 w-3" /> {t('profile.saved')}
                 </span>
               )}
+              {langError && <span className="text-xs text-destructive shrink-0">{langError}</span>}
             </div>
           </div>
 
