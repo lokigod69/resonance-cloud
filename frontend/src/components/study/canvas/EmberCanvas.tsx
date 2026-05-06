@@ -781,6 +781,7 @@ export default function EmberCanvas({
             state={selectedState}
             learning={selectedLearning}
             imageUrl={selectedImage}
+            direction={direction}
             onClose={() => setRevealedId(null)}
             onImageError={() => handleImageError(selectedState.id)}
             onSpeak={() => speakHeadword(selectedState.word)}
@@ -944,6 +945,7 @@ interface RevealModalProps {
   state: EmberWordState
   learning: ReturnType<typeof resolveCardLearningMetadata> | null
   imageUrl: string | null
+  direction: CanvasModeProps['direction']
   onClose: () => void
   onImageError: () => void
   onSpeak: () => void
@@ -956,6 +958,7 @@ function RevealModal({
   state,
   learning,
   imageUrl,
+  direction,
   onClose,
   onImageError,
   onSpeak,
@@ -1012,7 +1015,7 @@ function RevealModal({
               {promptFace}
             </button>
 
-            {phonetic && (
+            {direction === 'target-visible' && phonetic && (
               <p className="text-orange-500/50 text-sm mb-3 font-sans tracking-widest text-center">
                 {phonetic}
               </p>
@@ -1022,6 +1025,11 @@ function RevealModal({
               className={!canGrade ? 'ember-answer-guard ember-answer-blurred mb-6' : 'ember-answer-guard mb-6'}
               onClick={revealAnswer}
             >
+              {direction === 'base-visible' && phonetic && (
+                <p className="ember-answer-content text-orange-500/50 text-sm mb-3 font-sans tracking-widest text-center">
+                  {phonetic}
+                </p>
+              )}
               <p className="ember-answer-content text-xl md:text-2xl text-gray-200 leading-relaxed font-light font-ember">
                 {answerFace}
               </p>

@@ -762,6 +762,7 @@ export default function FrostCanvas({
             state={selectedState}
             learning={selectedLearning}
             imageUrl={selectedImage}
+            direction={direction}
             onClose={() => setRevealedId(null)}
             onImageError={() => handleImageError(selectedState.id)}
             onSpeak={() => speakHeadword(selectedState.word)}
@@ -949,6 +950,7 @@ interface RevealModalProps {
   state: FrostWordState
   learning: ReturnType<typeof resolveCardLearningMetadata> | null
   imageUrl: string | null
+  direction: CanvasModeProps['direction']
   onClose: () => void
   onImageError: () => void
   onSpeak: () => void
@@ -961,6 +963,7 @@ function RevealModal({
   state,
   learning,
   imageUrl,
+  direction,
   onClose,
   onImageError,
   onSpeak,
@@ -1017,7 +1020,7 @@ function RevealModal({
               {promptFace}
             </button>
 
-            {phonetic && (
+            {direction === 'target-visible' && phonetic && (
               <p className="text-[#a8d8ea]/50 text-sm mb-3 font-sans tracking-widest text-center">
                 {phonetic}
               </p>
@@ -1027,6 +1030,11 @@ function RevealModal({
               className={!canGrade ? 'frost-answer-guard frost-answer-blurred mb-6' : 'frost-answer-guard mb-6'}
               onClick={revealAnswer}
             >
+              {direction === 'base-visible' && phonetic && (
+                <p className="frost-answer-content text-[#a8d8ea]/50 text-sm mb-3 font-sans tracking-widest text-center">
+                  {phonetic}
+                </p>
+              )}
               <p className="frost-answer-content text-lg md:text-xl text-gray-300 leading-relaxed font-light font-hand">
                 {answerFace}
               </p>

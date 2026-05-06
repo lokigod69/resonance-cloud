@@ -891,6 +891,7 @@ export default function ZenCanvas({
             state={selectedState}
             learning={selectedLearning}
             imageUrl={selectedImage}
+            direction={direction}
             onClose={() => setRevealedId(null)}
             onImageError={() => handleImageError(selectedState.id)}
             onSpeak={() => speakHeadword(selectedState.word)}
@@ -1067,6 +1068,7 @@ interface RevealModalProps {
   state: ZenWordState
   learning: ReturnType<typeof resolveCardLearningMetadata> | null
   imageUrl: string | null
+  direction: CanvasModeProps['direction']
   onClose: () => void
   onImageError: () => void
   onSpeak: () => void
@@ -1079,6 +1081,7 @@ function RevealModal({
   state,
   learning,
   imageUrl,
+  direction,
   onClose,
   onImageError,
   onSpeak,
@@ -1134,7 +1137,7 @@ function RevealModal({
             {promptFace}
           </button>
 
-          {phonetic && (
+          {direction === 'target-visible' && phonetic && (
             <p className="text-[#555] text-sm tracking-widest font-sans mb-3">
               {phonetic}
             </p>
@@ -1144,6 +1147,11 @@ function RevealModal({
             className={!canGrade ? 'zen-answer-guard zen-answer-blurred mb-6' : 'zen-answer-guard mb-6'}
             onClick={revealAnswer}
           >
+            {direction === 'base-visible' && phonetic && (
+              <p className="zen-answer-content text-[#555] text-sm tracking-widest font-sans mb-3">
+                {phonetic}
+              </p>
+            )}
             <p className="zen-answer-content text-lg md:text-xl lg:text-2xl text-[#777] leading-relaxed font-light">
               {answerFace}
             </p>

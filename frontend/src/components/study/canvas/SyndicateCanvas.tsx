@@ -998,6 +998,7 @@ export default function SyndicateCanvas({
             state={selectedState}
             learning={selectedLearning}
             imageUrl={selectedImage}
+            direction={direction}
             onClose={() => setRevealedId(null)}
             onImageError={() => handleImageError(selectedState.id)}
             onSpeak={() => speakHeadword(selectedState.word)}
@@ -1161,6 +1162,7 @@ interface RevealModalProps {
   state: SyndicateWordState
   learning: ReturnType<typeof resolveCardLearningMetadata> | null
   imageUrl: string | null
+  direction: CanvasModeProps['direction']
   onClose: () => void
   onImageError: () => void
   onSpeak: () => void
@@ -1173,6 +1175,7 @@ function RevealModal({
   state,
   learning,
   imageUrl,
+  direction,
   onClose,
   onImageError,
   onSpeak,
@@ -1228,7 +1231,7 @@ function RevealModal({
             [{promptFace}]
           </button>
 
-          {phonetic && (
+          {direction === 'target-visible' && phonetic && (
             <p className="text-sm tracking-widest font-mono text-[#39ff14]/50 mb-3">
               {phonetic}
             </p>
@@ -1238,6 +1241,11 @@ function RevealModal({
             className={!canGrade ? 'syndicate-answer-guard syndicate-answer-blurred mb-6' : 'syndicate-answer-guard mb-6'}
             onClick={revealAnswer}
           >
+            {direction === 'base-visible' && phonetic && (
+              <p className="syndicate-answer-content text-sm tracking-widest font-mono text-[#39ff14]/50 mb-3">
+                {phonetic}
+              </p>
+            )}
             <p className="syndicate-answer-content text-lg md:text-xl font-mono text-gray-300 leading-relaxed">
               {answerFace}
             </p>
