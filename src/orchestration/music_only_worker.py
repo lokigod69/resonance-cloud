@@ -195,7 +195,16 @@ class MusicOnlyWorker:
                 )
                 await self._persist_concept(job_id, concept)
                 log.info("music_only: concept generated job=%s", job_id)
-                await self._persist_generated_lyrics(job, context, concept)
+                try:
+                    await self._persist_generated_lyrics(job, context, concept)
+                except Exception as lyrics_exc:
+                    log.warning(
+                        "music_only: lyrics persist skipped job=%s word=%s: %s",
+                        job_id,
+                        job.get("word_id"),
+                        lyrics_exc,
+                        exc_info=True,
+                    )
 
                 task_id = await submit_song_only_task(
                     concept["concept_data"],
@@ -511,6 +520,15 @@ class MusicOnlyWorker:
                     concept_data.get("translation"),
                     word.get("translation"),
                 ) or "",
+            )
+            log.info(
+                "music_only: lyrics translation result job=%s word=%s source_language=%s base_language=%s status=%s reason=%s",
+                job.get("id"),
+                job.get("word_id"),
+                language,
+                base_language,
+                translation_result.get("status"),
+                translation_result.get("reason") or translation_result.get("error"),
             )
             translation_columns = translation_result_to_columns(
                 translation_result,

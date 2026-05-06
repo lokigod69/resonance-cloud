@@ -12,7 +12,30 @@ import httpx
 
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_MODEL = "anthropic/claude-haiku-4-5-20251001"
+DEFAULT_MODEL = "anthropic/claude-haiku-4.5"
+DEFAULT_TIMEOUT_SECONDS = 12.0
+
+
+def _env_flag(name: str, *, default: bool = False) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().casefold() in {"1", "true", "yes", "on"}
+
+
+def _timeout_seconds() -> float:
+    raw = os.getenv("LYRICS_TRANSLATION_TIMEOUT_SECONDS", "")
+    if not raw.strip():
+        return DEFAULT_TIMEOUT_SECONDS
+    try:
+        value = float(raw)
+    except ValueError:
+        return DEFAULT_TIMEOUT_SECONDS
+    return max(1.0, value)
+
+
+def _model_name(model: str | None) -> str:
+    return os.getenv("OPENROUTER_LYRICS_TRANSLATION_MODEL", "").strip() or model or DEFAULT_MODEL
 
 
 def _now_iso() -> str:
@@ -76,6 +99,8 @@ def translate_song_lyrics(
     source = lyrics or ""
     if not source.strip():
         return {"status": "skipped", "reason": "empty_source"}
+    if not _env_flag("ENABLE_LYRICS_TRANSLATION", default=False):
+        return {"status": "skipped", "reason": "translation_disabled"}
     if _same_language(source_language or "", target_language or ""):
         return {"status": "skipped", "reason": "target_equals_base"}
 
@@ -83,10 +108,11 @@ def translate_song_lyrics(
     if not api_key:
         return {"status": "skipped", "reason": "no_api_key"}
 
+    effective_model = _model_name(model)
     attempted_at = _now_iso()
     try:
         body = {
-            "model": model,
+            "model": effective_model,
             "temperature": 0.3,
             "response_format": {"type": "json_object"},
             "max_tokens": 2000,
@@ -98,7 +124,7 @@ def translate_song_lyrics(
                 translation=translation,
             ),
         }
-        with httpx.Client(timeout=60.0) as client:
+        with httpx.Client(timeout=_timeout_seconds()) as client:
             response = client.post(
                 OPENROUTER_URL,
                 headers={
@@ -129,7 +155,7 @@ def translate_song_lyrics(
             "status": "ok",
             "language": target_language,
             "lyrics": translated,
-            "model": model,
+            "model": effective_model,
             "translated_at": _now_iso(),
         }
         if warnings:

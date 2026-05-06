@@ -37,6 +37,7 @@ def test_translate_song_lyrics_returns_ok_from_valid_json(monkeypatch):
             captured["body"] = json
             return FakeResponse()
 
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
     monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
     monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
 
@@ -51,14 +52,15 @@ def test_translate_song_lyrics_returns_ok_from_valid_json(monkeypatch):
     assert result["status"] == "ok"
     assert result["lyrics"] == "[Verse]\nHola mundo"
     assert result["language"] == "Spanish"
-    assert result["model"] == "anthropic/claude-haiku-4-5-20251001"
-    assert captured["client_kwargs"]["timeout"] == 60.0
+    assert result["model"] == "anthropic/claude-haiku-4.5"
+    assert captured["client_kwargs"]["timeout"] == 12.0
     assert captured["body"]["temperature"] == 0.3
     assert captured["body"]["response_format"] == {"type": "json_object"}
     assert "display/read-along only" in captured["body"]["messages"][0]["content"]
 
 
 def test_translate_song_lyrics_skips_target_equals_base(monkeypatch):
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
     monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
 
     result = lyrics_translation.translate_song_lyrics(
@@ -73,6 +75,7 @@ def test_translate_song_lyrics_skips_target_equals_base(monkeypatch):
 
 
 def test_translate_song_lyrics_skips_empty_lyrics(monkeypatch):
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
     monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
 
     result = lyrics_translation.translate_song_lyrics(
@@ -87,6 +90,7 @@ def test_translate_song_lyrics_skips_empty_lyrics(monkeypatch):
 
 
 def test_translate_song_lyrics_skips_missing_api_key(monkeypatch):
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
     monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
 
     result = lyrics_translation.translate_song_lyrics(
@@ -114,6 +118,7 @@ def test_translate_song_lyrics_handles_http_error_as_failed(monkeypatch):
         def post(self, *_args, **_kwargs):
             raise httpx.HTTPStatusError("500", request=None, response=None)
 
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
     monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
     monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
 
@@ -156,6 +161,7 @@ def test_translate_song_lyrics_strips_markdown_fences(monkeypatch):
         def post(self, *_args, **_kwargs):
             return FakeResponse()
 
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
     monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
     monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
 
@@ -196,6 +202,7 @@ def test_translate_song_lyrics_accepts_section_tags(monkeypatch):
         def post(self, *_args, **_kwargs):
             return FakeResponse()
 
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
     monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
     monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
 
@@ -210,3 +217,157 @@ def test_translate_song_lyrics_accepts_section_tags(monkeypatch):
     assert result["status"] == "ok"
     assert "[Verse]" in result["lyrics"]
     assert "[Chorus]" in result["lyrics"]
+
+
+def test_translate_song_lyrics_disabled_by_default_skips_openrouter(monkeypatch):
+    called = {"post": False}
+
+    class FakeClient:
+        def __init__(self, **_kwargs):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def post(self, *_args, **_kwargs):
+            called["post"] = True
+            raise AssertionError("OpenRouter should not be called when disabled")
+
+    monkeypatch.delenv("ENABLE_LYRICS_TRANSLATION", raising=False)
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
+
+    result = lyrics_translation.translate_song_lyrics(
+        "lyrics",
+        source_language="English",
+        target_language="French",
+        word="hello",
+        translation="bonjour",
+    )
+
+    assert result == {"status": "skipped", "reason": "translation_disabled"}
+    assert called["post"] is False
+
+
+def test_translate_song_lyrics_uses_env_model_override(monkeypatch):
+    captured: dict = {}
+
+    class FakeResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"choices": [{"message": {"content": json.dumps({"translation": "Bonjour"})}}]}
+
+    class FakeClient:
+        def __init__(self, **_kwargs):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def post(self, _url, *, headers, json):
+            captured["body"] = json
+            return FakeResponse()
+
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setenv("OPENROUTER_LYRICS_TRANSLATION_MODEL", "provider/model")
+    monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
+
+    result = lyrics_translation.translate_song_lyrics(
+        "Hello",
+        source_language="English",
+        target_language="French",
+        word="hello",
+        translation="bonjour",
+    )
+
+    assert result["status"] == "ok"
+    assert result["model"] == "provider/model"
+    assert captured["body"]["model"] == "provider/model"
+
+
+def test_lyrics_translation_timeout_default_is_at_most_15_seconds(monkeypatch):
+    captured: dict = {}
+
+    class FakeResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"choices": [{"message": {"content": json.dumps({"translation": "Bonjour"})}}]}
+
+    class FakeClient:
+        def __init__(self, **kwargs):
+            captured["timeout"] = kwargs["timeout"]
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def post(self, *_args, **_kwargs):
+            return FakeResponse()
+
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
+    monkeypatch.delenv("LYRICS_TRANSLATION_TIMEOUT_SECONDS", raising=False)
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
+
+    lyrics_translation.translate_song_lyrics(
+        "Hello",
+        source_language="English",
+        target_language="French",
+        word="hello",
+        translation="bonjour",
+    )
+
+    assert captured["timeout"] <= 15.0
+
+
+def test_translate_song_lyrics_french_target_does_not_skip_target_equals_base(monkeypatch):
+    captured = {"called": False}
+
+    class FakeResponse:
+        def raise_for_status(self):
+            return None
+
+        def json(self):
+            return {"choices": [{"message": {"content": json.dumps({"translation": "Bonjour"})}}]}
+
+    class FakeClient:
+        def __init__(self, **_kwargs):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def post(self, *_args, **_kwargs):
+            captured["called"] = True
+            return FakeResponse()
+
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
+
+    result = lyrics_translation.translate_song_lyrics(
+        "Hello",
+        source_language="English",
+        target_language="French",
+        word="hello",
+        translation="bonjour",
+    )
+
+    assert result["status"] == "ok"
+    assert captured["called"] is True

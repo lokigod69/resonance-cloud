@@ -83,3 +83,16 @@ def test_latest_music_lyrics_for_word_uses_created_at_descending():
     row = latest_music_lyrics_for_word(sb, "word-1")
 
     assert row["id"] == "new"
+
+
+def test_translation_disabled_result_maps_to_skipped_error():
+    from src.services.music_lyrics_store import translation_result_to_columns
+
+    columns = translation_result_to_columns(
+        {"status": "skipped", "reason": "translation_disabled"},
+        target_language_code="de",
+    )
+
+    assert columns["translation_status"] == "skipped"
+    assert columns["translation_error"] == "translation_disabled"
+    assert columns["translation_language_code"] == "de"

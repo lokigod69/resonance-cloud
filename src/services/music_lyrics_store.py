@@ -332,7 +332,16 @@ async def persist_video_pipeline_lyrics_best_effort(
                 source_language=language,
                 target_language=base_language,
                 word=_first_text(concept_data.get("word"), word.get("word")) or "",
-                translation=_first_text(concept_data.get("translation"), word.get("translation")) or "",
+                    translation=_first_text(concept_data.get("translation"), word.get("translation")) or "",
+            )
+            log.info(
+                "music_lyrics: video translation result word=%s job=%s source_language=%s base_language=%s status=%s reason=%s",
+                word.get("id"),
+                word.get("generation_job_id"),
+                language,
+                base_language,
+                translation_result.get("status"),
+                translation_result.get("reason") or translation_result.get("error"),
             )
             translation_columns = translation_result_to_columns(
                 translation_result,
