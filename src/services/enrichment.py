@@ -294,7 +294,6 @@ async def run_enrichment(
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
                 ],
-                "temperature": 0.7,
                 "response_format": {"type": "json_object"},
             },
         )
