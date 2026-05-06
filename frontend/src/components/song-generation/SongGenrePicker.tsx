@@ -54,7 +54,7 @@ export function SongGenrePicker({
             }
           }}
           maxLength={40}
-          placeholder="melodic techno, bossa nova..."
+          placeholder={t('modal.generateSong.customGenrePlaceholder')}
         />
         <button
           type="button"
@@ -78,4 +78,3 @@ export function SongGenrePicker({
     </div>
   )
 }
-

@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Loader2, Music } from 'lucide-react'
+import { Loader2, Music, X } from 'lucide-react'
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -95,18 +96,34 @@ export function GenerateSongModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Music className="h-5 w-5 text-primary" />
-            {t('modal.generateSong.title')}
-          </DialogTitle>
-          <DialogDescription>
-            {t('modal.generateSong.body')}
-          </DialogDescription>
+      <DialogContent
+        showCloseButton={false}
+        className="sm:max-w-md"
+      >
+        <DialogHeader className="text-left">
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0 space-y-1">
+              <DialogTitle className="flex items-center gap-2 text-base sm:text-lg">
+                <Music className="h-5 w-5 shrink-0 text-primary" />
+                {t('modal.generateSong.title')}
+              </DialogTitle>
+              <DialogDescription>
+                {t('modal.generateSong.body')}
+              </DialogDescription>
+            </div>
+            <DialogClose asChild>
+              <button
+                type="button"
+                className="h-8 w-8 shrink-0 rounded-md inline-flex items-center justify-center text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                aria-label={t('modal.generateSong.close')}
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </DialogClose>
+          </div>
         </DialogHeader>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
           <div>
             <p className="text-sm font-medium text-foreground">{selectedWord}</p>
             <p className="text-xs text-muted-foreground mt-1">{t('modal.generateSong.costLine')}</p>
@@ -123,15 +140,15 @@ export function GenerateSongModal({
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-foreground">Vocal</label>
+            <label className="text-sm font-medium text-foreground">{t('modal.generateSong.vocalLabel')}</label>
             <Select value={vocalGender} onValueChange={(value) => setVocalGender(value as SongVocalGender)}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="female">Female</SelectItem>
-                <SelectItem value="male">Male</SelectItem>
-                <SelectItem value="any">Any</SelectItem>
+                <SelectItem value="female">{t('modal.generateSong.vocal.female')}</SelectItem>
+                <SelectItem value="male">{t('modal.generateSong.vocal.male')}</SelectItem>
+                <SelectItem value="any">{t('modal.generateSong.vocal.any')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -163,4 +180,3 @@ export function GenerateSongModal({
     </Dialog>
   )
 }
-

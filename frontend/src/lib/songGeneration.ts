@@ -1,6 +1,6 @@
 import { supabase } from '@/lib/supabase'
 
-export type SongLyricMode = 'reliable' | 'contextual' | 'dramatic'
+export type SongLyricMode = 'reliable' | 'contextual' | 'creative' | 'dramatic'
 export type SongVocalGender = 'female' | 'male' | 'any'
 
 export type SubmitMusicOnlyJobInput = {
@@ -65,4 +65,3 @@ export function getSongJobIdempotencyKey({
   sessionStorage.setItem(storageKey, generated)
   return generated
 }
-

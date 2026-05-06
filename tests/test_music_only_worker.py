@@ -5,6 +5,9 @@ from types import SimpleNamespace
 import asyncio
 
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
 def test_song_only_concept_builds_payload_and_prefers_suno_lyrics(tmp_path, monkeypatch):
     from cloud_engines.concept_engine.models import ConceptResult
     from src.services import song_only_concept
@@ -332,3 +335,61 @@ def test_music_only_worker_happy_path_keeps_full_pipeline_state_untouched(monkey
     assert word["suno_storage_url"] == "https://audio.example/a.mp3"
     assert job["status"] == "complete"
     assert sb.tables["generation_jobs"] == []
+
+
+def test_music_only_submit_rpc_idempotency_and_active_word_guards_precede_credit_debit():
+    sql = (
+        REPO_ROOT
+        / "frontend"
+        / "supabase"
+        / "migrations"
+        / "20260506091000_music_generation_jobs.sql"
+    ).read_text(encoding="utf-8")
+
+    same_key_check = sql.index("where user_id = v_user_id")
+    same_key_return = sql.index("'idempotent', true")
+    active_word_check = sql.index("where word_id = v_word.id")
+    credit_debit = sql.index("set credits = credits - v_cost")
+
+    assert same_key_check < same_key_return < credit_debit
+    assert active_word_check < credit_debit
+    assert "idx_music_generation_jobs_submit_idempotency" in sql
+    assert "idx_music_generation_jobs_active_word" in sql
+
+
+def test_music_only_creative_mode_is_allowed_by_addendum_migration():
+    sql = (
+        REPO_ROOT
+        / "frontend"
+        / "supabase"
+        / "migrations"
+        / "20260506100000_music_generation_jobs_allow_creative.sql"
+    ).read_text(encoding="utf-8")
+
+    assert "check (lyric_mode in ('reliable', 'contextual', 'creative', 'dramatic'))" in sql
+    assert "v_lyric_mode not in ('reliable', 'contextual', 'creative', 'dramatic')" in sql
+    assert "claim_music_only_job" not in sql
+    assert "complete_music_only_job" not in sql
+    assert "fail_music_only_job" not in sql
+
+
+def test_frontend_song_submit_is_single_flight_and_idempotency_key_tracks_settings():
+    helper = (REPO_ROOT / "frontend" / "src" / "lib" / "songGeneration.ts").read_text(encoding="utf-8")
+    modal = (
+        REPO_ROOT
+        / "frontend"
+        / "src"
+        / "components"
+        / "song-generation"
+        / "GenerateSongModal.tsx"
+    ).read_text(encoding="utf-8")
+
+    assert "wordId," in helper
+    assert "lyricMode," in helper
+    assert "(genre?.trim() || 'auto').toLowerCase()," in helper
+    assert "vocalGender," in helper
+    assert "sessionStorage.getItem(storageKey)" in helper
+    assert "sessionStorage.setItem(storageKey, generated)" in helper
+
+    assert "if (!track || submitting || insufficientCredits) return" in modal
+    assert "disabled={!track || insufficientCredits || submitting}" in modal

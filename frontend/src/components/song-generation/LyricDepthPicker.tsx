@@ -3,9 +3,10 @@ import { useTranslation } from '@/hooks/useTranslation'
 import type { SongLyricMode } from '@/lib/songGeneration'
 
 const DEPTHS: Array<{ mode: SongLyricMode; labelKey: string }> = [
-  { mode: 'reliable', labelKey: 'modal.generateSong.depth.reliable' },
+  { mode: 'reliable', labelKey: 'modal.generateSong.depth.short' },
   { mode: 'contextual', labelKey: 'modal.generateSong.depth.phrase' },
-  { mode: 'dramatic', labelKey: 'modal.generateSong.depth.fullSong' },
+  { mode: 'creative', labelKey: 'modal.generateSong.depth.story' },
+  { mode: 'dramatic', labelKey: 'modal.generateSong.depth.long' },
 ]
 
 export function LyricDepthPicker({
@@ -18,7 +19,7 @@ export function LyricDepthPicker({
   const { t } = useTranslation()
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
       {DEPTHS.map((depth) => {
         const selected = value === depth.mode
         return (
@@ -41,4 +42,3 @@ export function LyricDepthPicker({
     </div>
   )
 }
-
