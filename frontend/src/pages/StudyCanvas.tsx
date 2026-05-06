@@ -10,28 +10,76 @@ import ZenCanvas from '@/components/study/canvas/ZenCanvas'
 import type { CanvasMode } from '@/components/study/canvas/types'
 
 const PAGE_SIZE = 20
-const MODE_STORAGE_KEY = 'resonance-canvas-mode'
-const IMAGES_STORAGE_KEY = 'resonance-canvas-show-images'
+const SESSION_STORAGE_PREFIX = 'resonance-canvas-session'
 const DEFAULT_MODE: CanvasMode = 'ember'
+
+type CanvasSessionSnapshot = {
+  activeMode: CanvasMode
+  showImages: boolean
+  currentPage: number
+  shuffleNonce: number
+  passedWordIds: string[]
+  sessionComplete: boolean
+}
 
 function isCanvasMode(value: string | null): value is CanvasMode {
   return value === 'ember' || value === 'frost' || value === 'syndicate' || value === 'zen'
 }
 
-function loadStoredMode(): CanvasMode {
+function createShuffleNonce() {
+  return Date.now()
+}
+
+function getCanvasSessionStorageKey(deckId: string | null, language: string | null | undefined) {
+  return `${SESSION_STORAGE_PREFIX}:${deckId ?? 'all'}:${language ?? 'all'}`
+}
+
+function loadStoredSession(key: string): CanvasSessionSnapshot | null {
   try {
-    const stored = localStorage.getItem(MODE_STORAGE_KEY)
-    return isCanvasMode(stored) ? stored : DEFAULT_MODE
+    const parsed = JSON.parse(sessionStorage.getItem(key) ?? 'null') as Partial<CanvasSessionSnapshot> | null
+    const activeMode = typeof parsed?.activeMode === 'string' ? parsed.activeMode : null
+    if (!parsed || !isCanvasMode(activeMode)) return null
+
+    return {
+      activeMode,
+      showImages: parsed.showImages === true,
+      currentPage: typeof parsed.currentPage === 'number' && parsed.currentPage >= 0 ? parsed.currentPage : 0,
+      shuffleNonce: typeof parsed.shuffleNonce === 'number' ? parsed.shuffleNonce : createShuffleNonce(),
+      passedWordIds: Array.isArray(parsed.passedWordIds)
+        ? parsed.passedWordIds.filter((id): id is string => typeof id === 'string')
+        : [],
+      sessionComplete: parsed.sessionComplete === true,
+    }
   } catch {
-    return DEFAULT_MODE
+    return null
   }
 }
 
-function loadStoredShowImages(): boolean {
+function saveStoredSession(key: string, snapshot: CanvasSessionSnapshot) {
   try {
-    return localStorage.getItem(IMAGES_STORAGE_KEY) === 'true'
+    sessionStorage.setItem(key, JSON.stringify(snapshot))
   } catch {
-    return false
+    // sessionStorage unavailable; non-fatal
+  }
+}
+
+function hashString(input: string) {
+  let hash = 2166136261
+  for (let i = 0; i < input.length; i++) {
+    hash ^= input.charCodeAt(i)
+    hash = Math.imul(hash, 16777619)
+  }
+  return hash >>> 0
+}
+
+function createSeededRandom(seed: number) {
+  let state = seed || 1
+  return () => {
+    state |= 0
+    state = (state + 0x6d2b79f5) | 0
+    let value = Math.imul(state ^ (state >>> 15), 1 | state)
+    value ^= value + Math.imul(value ^ (value >>> 7), 61 | value)
+    return ((value ^ (value >>> 14)) >>> 0) / 4294967296
   }
 }
 
@@ -43,29 +91,81 @@ export default function StudyCanvas() {
   const deckId = searchParams.get('deck')
   const rawReturnTo = searchParams.get('returnTo')
   const returnTo = rawReturnTo?.startsWith('/') ? rawReturnTo : null
+  const sessionStorageKey = useMemo(
+    () => getCanvasSessionStorageKey(deckId, activeLanguage),
+    [activeLanguage, deckId],
+  )
+  const initialSession = useMemo(() => loadStoredSession(sessionStorageKey), [sessionStorageKey])
 
-  // Persistent UI state
-  const [activeMode, setActiveMode] = useState<CanvasMode>(loadStoredMode)
-  const [showImages, setShowImages] = useState<boolean>(loadStoredShowImages)
+  // Per-tab UI/session state. This is intentionally sessionStorage-backed,
+  // because canvas progress is a study session snapshot, not a user preference.
+  const [hydratedSessionKey, setHydratedSessionKey] = useState(sessionStorageKey)
+  const [activeMode, setActiveMode] = useState<CanvasMode>(() => initialSession?.activeMode ?? DEFAULT_MODE)
+  const [showImages, setShowImages] = useState<boolean>(() => initialSession?.showImages ?? false)
 
   // Session state
-  const [currentPage, setCurrentPage] = useState(0)
-  const [shuffleNonce, setShuffleNonce] = useState(0)
-  const [passedWords, setPassedWords] = useState<Set<string>>(new Set())
-  const [sessionComplete, setSessionComplete] = useState(false)
+  const [currentPage, setCurrentPage] = useState(() => initialSession?.currentPage ?? 0)
+  const [shuffleNonce, setShuffleNonce] = useState(() => initialSession?.shuffleNonce ?? createShuffleNonce())
+  const [passedWords, setPassedWords] = useState<Set<string>>(
+    () => new Set(initialSession?.passedWordIds ?? []),
+  )
+  const [sessionComplete, setSessionComplete] = useState(() => initialSession?.sessionComplete ?? false)
 
   // Data
   const { words, loading, recordAttempt } = useStudySession(deckId, 'canvas', activeLanguage)
 
-  // One Fisher-Yates shuffle per (words, shuffleNonce). Pure of currentPage.
+  useEffect(() => {
+    if (hydratedSessionKey === sessionStorageKey) return
+
+    const stored = loadStoredSession(sessionStorageKey)
+    let cancelled = false
+    queueMicrotask(() => {
+      if (cancelled) return
+      setActiveMode(stored?.activeMode ?? DEFAULT_MODE)
+      setShowImages(stored?.showImages ?? false)
+      setCurrentPage(stored?.currentPage ?? 0)
+      setShuffleNonce(stored?.shuffleNonce ?? createShuffleNonce())
+      setPassedWords(new Set(stored?.passedWordIds ?? []))
+      setSessionComplete(stored?.sessionComplete ?? false)
+      setHydratedSessionKey(sessionStorageKey)
+    })
+
+    return () => {
+      cancelled = true
+    }
+  }, [hydratedSessionKey, sessionStorageKey])
+
+  useEffect(() => {
+    if (hydratedSessionKey !== sessionStorageKey) return
+
+    saveStoredSession(sessionStorageKey, {
+      activeMode,
+      showImages,
+      currentPage,
+      shuffleNonce,
+      passedWordIds: Array.from(passedWords),
+      sessionComplete,
+    })
+  }, [
+    activeMode,
+    currentPage,
+    hydratedSessionKey,
+    passedWords,
+    sessionComplete,
+    sessionStorageKey,
+    showImages,
+    shuffleNonce,
+  ])
+
+  // One deterministic Fisher-Yates shuffle per (words, shuffleNonce). Pure of currentPage.
   const shuffled = useMemo(() => {
     const arr = [...words]
+    const random = createSeededRandom(hashString(`${shuffleNonce}:${arr.map((word) => word.id).join('|')}`))
     for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
+      const j = Math.floor(random() * (i + 1))
       ;[arr[i], arr[j]] = [arr[j], arr[i]]
     }
     return arr
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- shuffleNonce is the explicit re-shuffle trigger
   }, [words, shuffleNonce])
 
   const totalPages = Math.max(0, Math.ceil(shuffled.length / PAGE_SIZE))
@@ -77,7 +177,7 @@ export default function StudyCanvas() {
   // Empty pool → instant completion. Only flips to true; explicit handlers reset to false.
   useEffect(() => {
     if (!loading && shuffled.length === 0) {
-      setSessionComplete(true)
+      queueMicrotask(() => setSessionComplete(true))
     }
   }, [loading, shuffled.length])
 
@@ -99,11 +199,6 @@ export default function StudyCanvas() {
 
   const handleSwitchMode = useCallback((mode: CanvasMode) => {
     setActiveMode(mode)
-    try {
-      localStorage.setItem(MODE_STORAGE_KEY, mode)
-    } catch {
-      // localStorage unavailable; non-fatal
-    }
     setCurrentPage(0)
     setShuffleNonce((n) => n + 1)
     setPassedWords(new Set())
@@ -112,15 +207,7 @@ export default function StudyCanvas() {
   }, [])
 
   const handleToggleImages = useCallback(() => {
-    setShowImages((prev) => {
-      const next = !prev
-      try {
-        localStorage.setItem(IMAGES_STORAGE_KEY, next ? 'true' : 'false')
-      } catch {
-        // non-fatal
-      }
-      return next
-    })
+    setShowImages((prev) => !prev)
   }, [])
 
   const handlePass = useCallback(
@@ -192,6 +279,7 @@ export default function StudyCanvas() {
     <ActiveModeComponent
       key={`${activeMode}-${shuffleNonce}-${currentPage}`}
       words={currentPageWords}
+      masteredWordIds={passedWords}
       showImages={showImages}
       sessionComplete={sessionComplete}
       currentPage={currentPage}

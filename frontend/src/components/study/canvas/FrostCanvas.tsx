@@ -177,6 +177,7 @@ function createWordStates(
   words: CanvasModeProps['words'],
   imageFailures: Set<string>,
   layout: CanvasViewport,
+  masteredWordIds: ReadonlySet<string>,
   existingStates: FrostWordState[] = [],
 ) {
   const existingById = new Map(existingStates.map((state) => [state.id, state]))
@@ -194,7 +195,7 @@ function createWordStates(
       layout,
       laneColumn: layout === 'lane' ? positions[index]?.laneColumn ?? null : null,
       drift: existing?.drift ?? Math.random() * Math.PI * 2,
-      mastered: existing?.mastered ?? false,
+      mastered: existing?.mastered || masteredWordIds.has(word.id),
       crystallizing: false,
       imageFailed: imageFailures.has(word.id),
       word,
@@ -276,6 +277,7 @@ function speakHeadword(word: CanvasModeProps['words'][number]) {
 
 export default function FrostCanvas({
   words,
+  masteredWordIds,
   showImages,
   sessionComplete,
   currentPage,
@@ -291,7 +293,7 @@ export default function FrostCanvas({
   onContinue,
 }: CanvasModeProps) {
   const viewport = useViewport()
-  const [renderWords, setRenderWords] = useState<FrostWordState[]>(() => createWordStates(words, new Set(), viewport))
+  const [renderWords, setRenderWords] = useState<FrostWordState[]>(() => createWordStates(words, new Set(), viewport, masteredWordIds))
   const [revealedId, setRevealedId] = useState<string | null>(null)
   const [snowflakes, setSnowflakes] = useState<Snowflake[]>([])
   const [breathSpots, setBreathSpots] = useState<BreathSpot[]>([])
@@ -411,7 +413,7 @@ export default function FrostCanvas({
   }, [])
 
   useEffect(() => {
-    wordStatesRef.current = createWordStates(words, imageFailures, viewport, wordStatesRef.current)
+    wordStatesRef.current = createWordStates(words, imageFailures, viewport, masteredWordIds, wordStatesRef.current)
     physicsFrameRef.current = 0
 
     const timer = window.setTimeout(() => {
@@ -420,7 +422,7 @@ export default function FrostCanvas({
     }, 0)
 
     return () => window.clearTimeout(timer)
-  }, [imageFailures, viewport, words])
+  }, [imageFailures, masteredWordIds, viewport, words])
 
   useEffect(() => {
     reducedMotionRef.current = typeof window !== 'undefined'
@@ -630,7 +632,7 @@ export default function FrostCanvas({
       className="fixed inset-0 z-40 bg-gradient-to-b from-[#0f1a28] via-[#152535] to-[#0a1520] overflow-y-auto md:overflow-hidden font-hand text-[#a8d8f0] cursor-default select-none"
     >
       <FrostStyle />
-      <div className="relative min-h-[150vh] md:h-full overflow-hidden">
+      <div className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-0" style={paneStyle} />
         <div className="pointer-events-none absolute right-[18%] top-[18%] z-0 h-2 w-2 rounded-full bg-yellow-200/30 blur-sm" />
         <div className="pointer-events-none absolute right-[12%] top-[28%] z-0 h-1 w-1 rounded-full bg-yellow-100/20 blur-sm" />
@@ -892,7 +894,7 @@ function RevealModal({
   onFail,
 }: RevealModalProps) {
   const word = state.word
-  const ipa = getStringField(word, ['ipa', 'phonetic', 'pronunciation'])
+  const phonetic = getStringField(word, ['phonetic'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
@@ -935,9 +937,9 @@ function RevealModal({
               {word.word}
             </button>
 
-            {ipa && (
+            {phonetic && (
               <p className="text-[#a8d8ea]/50 text-sm mb-6 font-sans tracking-widest text-center">
-                /{ipa}/
+                {phonetic}
               </p>
             )}
 

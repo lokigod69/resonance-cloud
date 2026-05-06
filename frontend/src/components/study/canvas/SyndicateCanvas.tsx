@@ -271,6 +271,7 @@ function createWordStates(
   words: CanvasModeProps['words'],
   imageFailures: Set<string>,
   layout: CanvasViewport,
+  masteredWordIds: ReadonlySet<string>,
   existingStates: SyndicateWordState[] = [],
 ) {
   const existingById = new Map(existingStates.map((state) => [state.id, state]))
@@ -294,7 +295,7 @@ function createWordStates(
       glitchX: existing?.glitchX ?? (Math.random() < 0.5 ? -1 : 1) * (5 + Math.random() * 5),
       glitchY: existing?.glitchY ?? (Math.random() < 0.5 ? -1 : 1) * (5 + Math.random() * 5),
       glitchDelay: existing?.glitchDelay ?? index * 0.7 + Math.random() * 2,
-      mastered: existing?.mastered ?? false,
+      mastered: existing?.mastered || masteredWordIds.has(word.id),
       decrypting: false,
       imageFailed: imageFailures.has(word.id),
       word,
@@ -372,6 +373,7 @@ function speakHeadword(word: CanvasModeProps['words'][number]) {
 
 export default function SyndicateCanvas({
   words,
+  masteredWordIds,
   showImages,
   sessionComplete,
   currentPage,
@@ -387,7 +389,7 @@ export default function SyndicateCanvas({
   onContinue,
 }: CanvasModeProps) {
   const viewport = useViewport()
-  const [renderWords, setRenderWords] = useState<SyndicateWordState[]>(() => createWordStates(words, new Set(), viewport))
+  const [renderWords, setRenderWords] = useState<SyndicateWordState[]>(() => createWordStates(words, new Set(), viewport, masteredWordIds))
   const [revealedId, setRevealedId] = useState<string | null>(null)
   const [imageFailures, setImageFailures] = useState<Set<string>>(new Set())
   const [drops, setDrops] = useState<DataDrop[]>(
@@ -531,7 +533,7 @@ export default function SyndicateCanvas({
   }, [])
 
   useEffect(() => {
-    wordStatesRef.current = createWordStates(words, imageFailures, viewport, wordStatesRef.current)
+    wordStatesRef.current = createWordStates(words, imageFailures, viewport, masteredWordIds, wordStatesRef.current)
     physicsFrameRef.current = 0
 
     const timer = window.setTimeout(() => {
@@ -540,7 +542,7 @@ export default function SyndicateCanvas({
     }, 0)
 
     return () => window.clearTimeout(timer)
-  }, [imageFailures, viewport, words])
+  }, [imageFailures, masteredWordIds, viewport, words])
 
   useEffect(() => {
     reducedMotionRef.current = typeof window !== 'undefined'
@@ -814,7 +816,7 @@ export default function SyndicateCanvas({
       <SyndicateStyle />
       <div className="syndicate-scanlines pointer-events-none absolute inset-0 z-30" />
 
-      <div className="relative min-h-[150vh] md:h-full overflow-hidden">
+      <div className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-0">
           {drops.map((drop) => (
             <div
@@ -1096,7 +1098,7 @@ function RevealModal({
   onFail,
 }: RevealModalProps) {
   const word = state.word
-  const ipa = getStringField(word, ['ipa', 'phonetic', 'pronunciation'])
+  const phonetic = getStringField(word, ['phonetic'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
@@ -1138,9 +1140,9 @@ function RevealModal({
             [{word.word}]
           </button>
 
-          {ipa && (
+          {phonetic && (
             <p className="text-sm tracking-widest font-mono text-[#39ff14]/50 mb-6">
-              {ipa}
+              {phonetic}
             </p>
           )}
 

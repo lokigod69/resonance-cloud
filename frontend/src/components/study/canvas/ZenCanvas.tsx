@@ -205,6 +205,7 @@ function createWordStates(
   words: CanvasModeProps['words'],
   imageFailures: Set<string>,
   layout: CanvasViewport,
+  masteredWordIds: ReadonlySet<string>,
   existingStates: ZenWordState[] = [],
 ) {
   const existingById = new Map(existingStates.map((state) => [state.id, state]))
@@ -224,7 +225,7 @@ function createWordStates(
       drift: existing?.drift ?? Math.random() * Math.PI * 2,
       hue: existing?.hue ?? index % HUES.length,
       waveOffset: existing?.waveOffset ?? 0,
-      mastered: existing?.mastered ?? false,
+      mastered: existing?.mastered || masteredWordIds.has(word.id),
       dissolving: false,
       imageFailed: imageFailures.has(word.id),
       word,
@@ -318,6 +319,7 @@ function speakHeadword(word: CanvasModeProps['words'][number]) {
 
 export default function ZenCanvas({
   words,
+  masteredWordIds,
   showImages,
   sessionComplete,
   currentPage,
@@ -333,7 +335,7 @@ export default function ZenCanvas({
   onContinue,
 }: CanvasModeProps) {
   const viewport = useViewport()
-  const [renderWords, setRenderWords] = useState<ZenWordState[]>(() => createWordStates(words, new Set(), viewport))
+  const [renderWords, setRenderWords] = useState<ZenWordState[]>(() => createWordStates(words, new Set(), viewport, masteredWordIds))
   const [particles, setParticles] = useState<ZenParticle[]>(
     () => Array.from({ length: AMBIENT_PARTICLE_COUNT }, () => createParticle({ permanent: true })),
   )
@@ -461,7 +463,7 @@ export default function ZenCanvas({
   }, [syncParticles])
 
   useEffect(() => {
-    wordStatesRef.current = createWordStates(words, imageFailures, viewport, wordStatesRef.current)
+    wordStatesRef.current = createWordStates(words, imageFailures, viewport, masteredWordIds, wordStatesRef.current)
     physicsFrameRef.current = 0
 
     const timer = window.setTimeout(() => {
@@ -470,7 +472,7 @@ export default function ZenCanvas({
     }, 0)
 
     return () => window.clearTimeout(timer)
-  }, [imageFailures, viewport, words])
+  }, [imageFailures, masteredWordIds, viewport, words])
 
   useEffect(() => {
     reducedMotionRef.current = typeof window !== 'undefined'
@@ -721,7 +723,7 @@ export default function ZenCanvas({
 
   if (sessionComplete) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0a0a]">
         <ZenStyle />
         <div className="text-center">
           <h1 className="text-5xl md:text-6xl zen-living-gradient font-light tracking-widest mb-4 animate-pulse">
@@ -742,10 +744,10 @@ export default function ZenCanvas({
     <div
       ref={containerRef}
       onClick={handleBackgroundClick}
-      className="zen-void-container fixed inset-0 z-40 bg-black overflow-y-auto md:overflow-hidden font-void text-gray-400 select-none cursor-pointer"
+      className="zen-void-container fixed inset-0 z-40 bg-[#0a0a0a] overflow-y-auto md:overflow-hidden font-void text-gray-400 select-none cursor-pointer"
     >
       <ZenStyle />
-      <div ref={worldRef} className="relative min-h-[150vh] md:h-full overflow-hidden">
+      <div ref={worldRef} className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={noiseStyle} />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full border border-[#222]/50 pointer-events-none animate-void-breathe"
@@ -837,7 +839,7 @@ export default function ZenCanvas({
                       onError={() => handleImageError(state.id)}
                       className="w-20 h-20 md:w-24 md:h-24 rounded-lg object-cover opacity-80 hover:opacity-100 transition-opacity"
                       style={{
-                        boxShadow: '0 2px 12px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.04)',
+                        boxShadow: '0 2px 12px rgba(10, 10, 10, 0.4), 0 0 20px rgba(255, 255, 255, 0.04)',
                       }}
                     />
                   ) : (
@@ -904,13 +906,13 @@ function Toolbar({
   onExit,
 }: ToolbarProps) {
   return (
-    <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/40">
+    <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-[#0a0a0a]/40">
       <button
         onClick={(event) => {
           event.stopPropagation()
           onExit()
         }}
-        className="h-9 px-3 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-black/60 rounded"
+        className="h-9 px-3 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded"
       >
         Exit
       </button>
@@ -924,7 +926,7 @@ function Toolbar({
               onSwitchMode(mode)
             }}
             disabled={mode === activeMode}
-            className={`h-9 px-3 text-xs uppercase tracking-widest border bg-black/60 rounded transition-colors ${
+            className={`h-9 px-3 text-xs uppercase tracking-widest border bg-[#0a0a0a]/60 rounded transition-colors ${
               mode === activeMode
                 ? 'text-white/80 border-white/40 cursor-default'
                 : 'text-white/30 border-white/10 hover:text-white/80 hover:border-white/40'
@@ -941,7 +943,7 @@ function Toolbar({
             event.stopPropagation()
             onToggleImages()
           }}
-          className="h-9 px-3 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-black/60 rounded"
+          className="h-9 px-3 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded"
           title={showImages ? 'Show text' : 'Show images'}
         >
           {showImages ? 'Aa' : 'Img'}
@@ -965,7 +967,7 @@ function Toolbar({
                 onPrevPage()
               }}
               disabled={currentPage === 0}
-              className="w-9 h-9 text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-black/60 rounded disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-9 h-9 text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded disabled:opacity-30 disabled:cursor-not-allowed"
               aria-label="Previous page"
             >
               ‹
@@ -976,7 +978,7 @@ function Toolbar({
                 onNextPage()
               }}
               disabled={currentPage >= totalPages - 1}
-              className="w-9 h-9 text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-black/60 rounded disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-9 h-9 text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded disabled:opacity-30 disabled:cursor-not-allowed"
               aria-label="Next page"
             >
               ›
@@ -1010,7 +1012,7 @@ function RevealModal({
   onFail,
 }: RevealModalProps) {
   const word = state.word
-  const ipa = getStringField(word, ['ipa', 'phonetic', 'pronunciation'])
+  const phonetic = getStringField(word, ['phonetic'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
@@ -1024,7 +1026,7 @@ function RevealModal({
       }}
       onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/95" />
+      <div className="absolute inset-0 bg-[#0a0a0a]/95" />
       <div
         className="relative flex flex-col max-w-lg w-full mx-auto max-h-[85vh] bg-[#080808] border border-[#222] rounded-lg overflow-hidden zen-modal-enter"
         onClick={(event) => event.stopPropagation()}
@@ -1052,9 +1054,9 @@ function RevealModal({
             {word.word}
           </button>
 
-          {ipa && (
+          {phonetic && (
             <p className="text-[#555] text-sm tracking-widest font-sans mb-6">
-              /{ipa}/
+              {phonetic}
             </p>
           )}
 
@@ -1072,7 +1074,7 @@ function RevealModal({
                 onError={onImageError}
                 className="max-w-[140px] max-h-[140px] md:max-w-[160px] md:max-h-[160px] rounded-lg object-cover opacity-80 hover:opacity-100 transition-opacity"
                 style={{
-                  boxShadow: '0 2px 12px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.04)',
+                  boxShadow: '0 2px 12px rgba(10, 10, 10, 0.4), 0 0 20px rgba(255, 255, 255, 0.04)',
                 }}
               />
             </div>
@@ -1125,7 +1127,7 @@ function RevealModal({
           )}
         </div>
 
-        <div className="bg-gradient-to-t from-black via-black/95 to-transparent p-4 grid grid-cols-2 gap-3">
+        <div className="bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/95 to-transparent p-4 grid grid-cols-2 gap-3">
           <button
             onClick={onFail}
             className="group h-12 rounded bg-[#111] border border-[#222] text-[#444] hover:text-[#666] hover:border-[#333] transition-colors"
@@ -1178,7 +1180,7 @@ function ZenStyle() {
           padding: 0.5rem 0.75rem;
           background: rgba(255, 255, 255, 0.03);
           border-radius: 8px;
-          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 12px rgba(10, 10, 10, 0.15);
           font-size: clamp(0.85rem, 3.5vw, 1.3rem);
           line-height: 1.3;
           min-height: 44px;
@@ -1191,7 +1193,7 @@ function ZenStyle() {
 
         .zen-card-unmastered .zen-card-text {
           box-shadow:
-            0 2px 12px rgba(0, 0, 0, 0.15),
+            0 2px 12px rgba(10, 10, 10, 0.15),
             inset 0 0 24px var(--zen-hue);
         }
 
@@ -1255,7 +1257,7 @@ function ZenStyle() {
         @keyframes zen-gradient-shift {
           0%, 100% {
             filter: brightness(1);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 12px rgba(10, 10, 10, 0.15);
           }
           50% {
             filter: brightness(1.15);

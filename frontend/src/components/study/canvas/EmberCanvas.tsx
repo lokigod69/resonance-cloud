@@ -201,6 +201,7 @@ function createWordStates(
   words: CanvasModeProps['words'],
   imageFailures: Set<string>,
   layout: CanvasViewport,
+  masteredWordIds: ReadonlySet<string>,
   existingStates: EmberWordState[] = [],
 ) {
   const existingById = new Map(existingStates.map((state) => [state.id, state]))
@@ -219,7 +220,7 @@ function createWordStates(
       laneColumn: layout === 'lane' ? positions[index]?.laneColumn ?? null : null,
       drift: existing?.drift ?? Math.random() * Math.PI * 2,
       hue: existing?.hue ?? index % HUE_COLORS.length,
-      mastered: existing?.mastered ?? false,
+      mastered: existing?.mastered || masteredWordIds.has(word.id),
       burning: false,
       imageFailed: imageFailures.has(word.id),
       word,
@@ -301,6 +302,7 @@ function speakHeadword(word: CanvasModeProps['words'][number]) {
 
 export default function EmberCanvas({
   words,
+  masteredWordIds,
   showImages,
   sessionComplete,
   currentPage,
@@ -316,7 +318,7 @@ export default function EmberCanvas({
   onContinue,
 }: CanvasModeProps) {
   const viewport = useViewport()
-  const [renderWords, setRenderWords] = useState<EmberWordState[]>(() => createWordStates(words, new Set(), viewport))
+  const [renderWords, setRenderWords] = useState<EmberWordState[]>(() => createWordStates(words, new Set(), viewport, masteredWordIds))
   const [particles, setParticles] = useState<EmberParticle[]>(
     () => Array.from({ length: INITIAL_EMBER_COUNT }, () => createParticle()),
   )
@@ -455,7 +457,7 @@ export default function EmberCanvas({
   }, [syncParticles])
 
   useEffect(() => {
-    wordStatesRef.current = createWordStates(words, imageFailures, viewport, wordStatesRef.current)
+    wordStatesRef.current = createWordStates(words, imageFailures, viewport, masteredWordIds, wordStatesRef.current)
     physicsFrameRef.current = 0
 
     const timer = window.setTimeout(() => {
@@ -464,7 +466,7 @@ export default function EmberCanvas({
     }, 0)
 
     return () => window.clearTimeout(timer)
-  }, [imageFailures, viewport, words])
+  }, [imageFailures, masteredWordIds, viewport, words])
 
   useEffect(() => {
     reducedMotionRef.current = typeof window !== 'undefined'
@@ -663,7 +665,7 @@ export default function EmberCanvas({
       className="fixed inset-0 z-40 bg-[#050505] overflow-y-auto md:overflow-hidden font-ember text-gray-300 cursor-crosshair select-none"
     >
       <EmberStyle />
-      <div className="relative min-h-[150vh] md:h-full overflow-hidden">
+      <div className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0" style={warmthStyle} />
 
         <div className="pointer-events-none absolute inset-0 z-0">
@@ -887,7 +889,7 @@ function RevealModal({
   onFail,
 }: RevealModalProps) {
   const word = state.word
-  const ipa = getStringField(word, ['ipa', 'phonetic', 'pronunciation'])
+  const phonetic = getStringField(word, ['phonetic'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
@@ -930,9 +932,9 @@ function RevealModal({
               {word.word}
             </button>
 
-            {ipa && (
+            {phonetic && (
               <p className="text-orange-500/50 text-sm mb-6 font-sans tracking-widest text-center">
-                /{ipa}/
+                {phonetic}
               </p>
             )}
 

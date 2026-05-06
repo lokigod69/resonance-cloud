@@ -5,6 +5,7 @@ export type CanvasMode = 'ember' | 'frost' | 'syndicate' | 'zen'
 export interface CanvasModeProps {
   // Data
   words: StudyWord[]
+  masteredWordIds: ReadonlySet<string>
   showImages: boolean
   sessionComplete: boolean
 
