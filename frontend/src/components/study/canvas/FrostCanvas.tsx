@@ -708,10 +708,10 @@ export default function FrostCanvas({
     <div
       ref={containerRef}
       onClick={handleBackgroundClick}
-      className="fixed inset-0 z-40 bg-gradient-to-b from-[#0f1a28] via-[#152535] to-[#0a1520] overflow-y-auto md:overflow-hidden font-hand text-[#a8d8f0] cursor-default select-none"
+      className="fixed inset-0 z-40 h-[100dvh] max-h-[100dvh] bg-gradient-to-b from-[#0f1a28] via-[#152535] to-[#0a1520] overflow-y-auto md:overflow-hidden font-hand text-[#a8d8f0] cursor-default select-none"
     >
       <FrostStyle />
-      <div ref={worldRef} className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
+      <div ref={worldRef} className="relative min-h-[150dvh] md:min-h-full md:h-full overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-0" style={paneStyle} />
         <div className="pointer-events-none absolute right-[18%] top-[18%] z-0 h-2 w-2 rounded-full bg-yellow-200/30 blur-sm" />
         <div className="pointer-events-none absolute right-[12%] top-[28%] z-0 h-1 w-1 rounded-full bg-yellow-100/20 blur-sm" />

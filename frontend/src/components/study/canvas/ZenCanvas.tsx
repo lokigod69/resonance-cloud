@@ -828,10 +828,10 @@ export default function ZenCanvas({
     <div
       ref={containerRef}
       onClick={handleBackgroundClick}
-      className="zen-void-container fixed inset-0 z-40 bg-[#0a0a0a] overflow-y-auto md:overflow-hidden font-void text-gray-400 select-none cursor-pointer"
+      className="zen-void-container fixed inset-0 z-40 h-[100dvh] max-h-[100dvh] bg-[#0a0a0a] overflow-y-auto md:overflow-hidden font-void text-gray-400 select-none cursor-pointer"
     >
       <ZenStyle />
-      <div ref={worldRef} className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
+      <div ref={worldRef} className="relative min-h-[150dvh] md:min-h-full md:h-full overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={noiseStyle} />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-96 md:h-96 rounded-full border border-[#222]/50 pointer-events-none animate-void-breathe"

@@ -65,6 +65,8 @@ const SETTLED_FRAMES = 20
 const MAX_PHYSICS_FRAMES = 300
 const TOOLBAR_CARD_CLEARANCE_PX = 64
 const LONG_PHRASE_X_CLAMP_PX = 230
+const LANE_TEXT_X_CLAMP_PX = 90
+const LANE_IMAGE_X_CLAMP_PX = 112
 const PASS_PARTICLE_COLORS = ['#00fff2', '#39ff14', '#ff0040']
 const HUES = [
   'rgba(0, 255, 242, 0.9)',
@@ -180,6 +182,25 @@ function getToolbarAwareTop(
   }
 
   return toolbarClearancePx > 0 ? `max(${y}%, ${toolbarClearancePx}px)` : `${y}%`
+}
+
+function getSafeClampLength(px: number) {
+  return `min(${px}px, calc(50vw - 16px))`
+}
+
+function getSyndicateCardAwareLeft(word: SyndicateWordState, showImages: boolean) {
+  if (word.layout !== 'lane') return `${word.x}%`
+
+  const text = word.word.text ?? word.word.word
+  const imageUrl = !word.imageFailed ? getImageUrl(word.word) : null
+  const showImageCard = showImages && !!imageUrl
+  const edgeClampPx = showImageCard
+    ? LANE_IMAGE_X_CLAMP_PX
+    : isLongPhrase(text)
+      ? LONG_PHRASE_X_CLAMP_PX
+      : LANE_TEXT_X_CLAMP_PX
+  const edgeClamp = getSafeClampLength(edgeClampPx)
+  return `clamp(${edgeClamp}, ${word.x}%, calc(100% - ${edgeClamp}))`
 }
 
 function deterministicOffset(index: number, salt: number, range: number) {
@@ -686,7 +707,7 @@ export default function SyndicateCanvas({
         }
 
         if (el) {
-          el.style.left = `${word.x}%`
+          el.style.left = getSyndicateCardAwareLeft(word, showImages)
           el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout)
         }
       }
@@ -746,7 +767,7 @@ export default function SyndicateCanvas({
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current)
       frameRef.current = null
     }
-  }, [laneTopOffsetPx, sessionComplete, toolbarClearancePx])
+  }, [laneTopOffsetPx, sessionComplete, showImages, toolbarClearancePx])
 
   useEffect(() => () => {
     for (const timer of timersRef.current) window.clearTimeout(timer)
@@ -892,13 +913,13 @@ export default function SyndicateCanvas({
     <div
       ref={containerRef}
       onClick={handleBackgroundClick}
-      className="syndicate-grid-container fixed inset-0 z-40 bg-[#050505] overflow-y-auto md:overflow-hidden font-mono text-gray-400 select-none"
+      className="syndicate-grid-container fixed inset-0 z-40 h-[100dvh] max-h-[100dvh] bg-[#050505] overflow-y-auto md:overflow-hidden font-mono text-gray-400 select-none"
       style={gridStyle}
     >
       <SyndicateStyle />
       <div className="syndicate-scanlines pointer-events-none absolute inset-0 z-30" />
 
-      <div ref={worldRef} className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
+      <div ref={worldRef} className="relative min-h-[150dvh] md:min-h-full md:h-full overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-0">
           {drops.map((drop) => (
             <div
@@ -980,7 +1001,6 @@ export default function SyndicateCanvas({
             const imageUrl = !state.imageFailed ? getImageUrl(state.word) : null
             const showImageCard = showImages && !!imageUrl
             const text = state.word.text ?? state.word.word
-            const phrase = isLongPhrase(text)
             const hueColor = HUES[state.hue] ?? HUES[0]
             const cssVars = {
               '--syn-glow': hueColor,
@@ -996,15 +1016,13 @@ export default function SyndicateCanvas({
               state.decrypting ? 'syndicate-fail-glitch' : 'opacity-100',
               state.mastered ? 'opacity-0 pointer-events-none' : '',
             ].join(' ')
-            const horizontalClampPx = phrase && !showImageCard ? LONG_PHRASE_X_CLAMP_PX : 64
-
             return (
               <div
                 key={state.id}
                 ref={(node) => setWordElement(state.id, node)}
                 className="absolute"
                 style={{
-                  left: `clamp(${horizontalClampPx}px, ${state.x}%, calc(100% - ${horizontalClampPx}px))`,
+                  left: getSyndicateCardAwareLeft(state, showImages),
                   top: getToolbarAwareTop(state.y, toolbarClearancePx, laneTopOffsetPx, state.layout),
                   transform: 'translate(-50%, -50%)',
                 }}

@@ -740,10 +740,10 @@ export default function EmberCanvas({
     <div
       ref={containerRef}
       onClick={handleBackgroundClick}
-      className="fixed inset-0 z-40 bg-[#050505] overflow-y-auto md:overflow-hidden font-ember text-gray-300 cursor-crosshair select-none"
+      className="fixed inset-0 z-40 h-[100dvh] max-h-[100dvh] bg-[#050505] overflow-y-auto md:overflow-hidden font-ember text-gray-300 cursor-crosshair select-none"
     >
       <EmberStyle />
-      <div ref={worldRef} className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
+      <div ref={worldRef} className="relative min-h-[150dvh] md:min-h-full md:h-full overflow-hidden">
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0" style={warmthStyle} />
 
         <div className="pointer-events-none absolute inset-0 z-0">
