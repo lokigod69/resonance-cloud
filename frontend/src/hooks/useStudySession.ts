@@ -33,7 +33,7 @@ type RetryItem = { wordId: string; cardsSeen: number }
 type SessionStats = { remembered: number; reviewLater: number }
 
 type StudyWordRow = Omit<StudyWord, 'target_language' | 'base_language'> & {
-  decks?: { target_language?: string | null; base_language?: string | null } | null
+  decks?: { target_language?: string | null } | null
 }
 
 // Fisher-Yates shuffle
@@ -81,7 +81,7 @@ function sortByHeat(
 }
 
 export function useStudySession(deckId?: string | null, studyMode: StudyMode = 'video', language?: string | null) {
-  const { user } = useAuth()
+  const { user, profile } = useAuth()
   const [words, setWords] = useState<StudyWord[]>([])
   const [loading, setLoading] = useState(true)
   const [sessionStats, setSessionStats] = useState<SessionStats>({ remembered: 0, reviewLater: 0 })
@@ -112,7 +112,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
 
     let wordsQuery = supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language, base_language)')
+      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language)')
       .eq('user_id', user.id)
       .eq('status', 'complete')
     if (deckId) {
@@ -138,7 +138,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
       return {
         ...word,
         target_language: decks?.target_language ?? null,
-        base_language: decks?.base_language ?? null,
+        base_language: profile?.base_language ?? null,
       }
     })
     // Audio mode: only include words that have a Suno audio URL
@@ -157,7 +157,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
 
     setWords(sortByHeat(rawWords, latestAttempt))
     setLoading(false)
-  }, [user, deckId, studyMode, language])
+  }, [user, profile?.base_language, deckId, studyMode, language])
 
   useEffect(() => {
     let stale = false
