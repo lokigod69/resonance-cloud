@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { FileText, Music } from 'lucide-react'
 import { trackHasAudio, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { useTranslation } from '@/hooks/useTranslation'
+import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
 
 // Duration cache: persists across component remounts within the same browser session
 const durationCache = new Map<string, number>()
@@ -88,6 +89,7 @@ export function PlaylistRow({
 
   const hasAudio = trackHasAudio(track)
   const isDisabled = !hasAudio
+  const displayGenre = compactMusicCaptionSegment(resolveTrackMusicCaption(track))
 
   return (
     <div
@@ -134,9 +136,9 @@ export function PlaylistRow({
       </p>
 
       {/* Genre badge */}
-      {track.genre && (
+      {displayGenre && (
         <span className="hidden md:inline-flex text-[10px] px-2 py-0.5 rounded-full bg-card/50 text-muted-foreground shrink-0 truncate max-w-[100px]">
-          {track.genre}
+          {displayGenre}
         </span>
       )}
 

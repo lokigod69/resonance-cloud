@@ -9,6 +9,7 @@ import { OrbThumbnailRow } from '@/components/music/OrbThumbnailRow'
 import { LyricsSheet } from '@/components/music/LyricsSheet'
 import { GenerateSongModal } from '@/components/song-generation/GenerateSongModal'
 import { VolumeControl } from '@/components/VolumeControl'
+import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
 import {
   Select,
   SelectContent,
@@ -30,6 +31,14 @@ type SongGenerationStatus = typeof ACTIVE_MUSIC_JOB_STATUSES[number]
 type AudioFilter = 'all' | 'with' | 'without'
 
 type DeckOption = { id: string; name: string }
+type LatestMusicJobRow = {
+  word_id: string
+  status: string | null
+  music_caption: string | null
+  concept_artifact: Record<string, unknown> | null
+  completed_at: string | null
+  created_at: string | null
+}
 
 type MusicCache = { tracks: MusicTrack[]; decks: DeckOption[]; userId: string }
 let _pgMusicCache: MusicCache | null = null
@@ -41,9 +50,8 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
       ? meta.song_generation as Record<string, unknown>
       : null
   const deckRow = row.decks as { id: string; name: string } | null
-  const rawCaption = meta?.music_caption as string | undefined
   const songGenre = songGeneration?.genre as string | undefined
-  return {
+  const track = {
     id: row.id as string,
     deck_id: row.deck_id as string,
     deckName: deckRow?.name ?? 'Unknown deck',
@@ -54,11 +62,46 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
     suno_audio_url: (row.suno_audio_url as string | null) ?? null,
     music_state: (row.music_state as string | null) ?? null,
     retry_requested: Boolean(row.retry_requested),
+    metadata: meta,
     song_generation: songGeneration,
-    genre: rawCaption ? rawCaption.split(',')[0].trim() : songGenre ?? null,
+    latest_music_job: null,
+    genre: songGenre ?? null,
     duration: null,
     error: false,
   }
+  return {
+    ...track,
+    genre: compactMusicCaptionSegment(resolveTrackMusicCaption(track)),
+  }
+}
+
+async function fetchLatestCompleteMusicJobs(wordIds: string[]): Promise<Map<string, LatestMusicJobRow>> {
+  if (wordIds.length === 0) return new Map()
+
+  const { data } = await supabase
+    .from('music_generation_jobs')
+    .select('word_id, status, music_caption, concept_artifact, completed_at, created_at')
+    .in('word_id', wordIds)
+    .eq('status', 'complete')
+    .order('completed_at', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false })
+
+  const latest = new Map<string, LatestMusicJobRow>()
+  for (const row of (data ?? []) as LatestMusicJobRow[]) {
+    if (!latest.has(row.word_id)) latest.set(row.word_id, row)
+  }
+  return latest
+}
+
+function applyLatestMusicJobs(tracks: MusicTrack[], jobs: Map<string, LatestMusicJobRow>): MusicTrack[] {
+  return tracks.map((track) => {
+    const latest_music_job = jobs.get(track.id) ?? null
+    return {
+      ...track,
+      latest_music_job,
+      genre: compactMusicCaptionSegment(resolveTrackMusicCaption(track, latest_music_job)),
+    }
+  })
 }
 
 function formatTime(s: number): string {
@@ -115,6 +158,7 @@ export default function MusicPG() {
 
   const progress = duration > 0 ? currentTime / duration : 0
   const RepeatIcon = repeatMode === 'one' ? Repeat1 : Repeat
+  const displayCaptionSegment = compactMusicCaptionSegment(resolveTrackMusicCaption(currentTrack))
 
   useEffect(() => {
     songStatusMapRef.current = songStatusMap
@@ -138,7 +182,7 @@ export default function MusicPG() {
     return () => window.removeEventListener('resize', update)
   }, [])
 
-  const fetchTracks = useCallback((bustCache = false) => {
+  const fetchTracks = useCallback(async (bustCache = false) => {
     if (!user) return
 
     if (!bustCache && _pgMusicCache && _pgMusicCache.userId === user.id) {
@@ -151,7 +195,7 @@ export default function MusicPG() {
     if (bustCache) _pgMusicCache = null
     setLoading(true)
 
-    supabase
+    const { data } = await supabase
       .from('words')
       .select(`
         id, deck_id, word, translation,
@@ -161,26 +205,26 @@ export default function MusicPG() {
       .eq('user_id', user.id)
       .eq('status', 'complete')
       .order('created_at', { ascending: false })
-      .then(({ data }) => {
-        if (!data) return
-        const mapped = (data as Record<string, unknown>[]).map(mapToTrack)
+    if (!data) return
+    const mapped = (data as Record<string, unknown>[]).map(mapToTrack)
+    const latestJobs = await fetchLatestCompleteMusicJobs(mapped.map((track) => track.id))
+    const tracksWithJobs = applyLatestMusicJobs(mapped, latestJobs)
 
-        const seen = new Map<string, string>()
-        for (const t of mapped) {
-          if (!seen.has(t.deck_id)) seen.set(t.deck_id, t.deckName)
-        }
-        const deckList = Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
+    const seen = new Map<string, string>()
+    for (const t of tracksWithJobs) {
+      if (!seen.has(t.deck_id)) seen.set(t.deck_id, t.deckName)
+    }
+    const deckList = Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
 
-        _pgMusicCache = { tracks: mapped, decks: deckList, userId: user.id }
-        setAllTracks(mapped)
-        setDecks(deckList)
-        setLoading(false)
-      })
+    _pgMusicCache = { tracks: tracksWithJobs, decks: deckList, userId: user.id }
+    setAllTracks(tracksWithJobs)
+    setDecks(deckList)
+    setLoading(false)
   }, [user])
 
   // Fetch data
   useEffect(() => {
-    fetchTracks(true)
+    void fetchTracks(true)
   }, [fetchTracks])
 
   const fetchActiveSongJobs = useCallback(async () => {
@@ -241,7 +285,7 @@ export default function MusicPG() {
 
       const justCompleted = [...songStatusMap.keys()].filter((id) => !newMap.has(id))
       if (justCompleted.length > 0) {
-        fetchTracks(true)
+        void fetchTracks(true)
         void refreshProfile()
       }
 
@@ -385,7 +429,7 @@ export default function MusicPG() {
                       <p className="text-[var(--text-secondary)] mt-1">{currentTrack.translation}</p>
                     )}
                     <p className="text-sm text-[var(--text-muted)] mt-1">
-                      {[currentTrack.genre, formatTime(duration)].filter(Boolean).join(' · ')}
+                      {[displayCaptionSegment, formatTime(duration)].filter(Boolean).join(' · ')}
                     </p>
                   </>
                 ) : (

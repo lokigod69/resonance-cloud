@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react'
 import { AlertCircle, FileText, Loader2 } from 'lucide-react'
 import type { MusicTrack } from '@/hooks/useMusicPlayer'
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from '@/components/ui/sheet'
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 import { supabase } from '@/lib/supabase'
 import { extractMusicLyrics } from '@/lib/musicLyrics'
+import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
 import { useTranslation } from '@/hooks/useTranslation'
 
 type LyricsJobRow = {
   concept_artifact: Record<string, unknown> | null
+  music_caption: string | null
   genre: string | null
   lyric_mode: string | null
   vocal_gender: string | null
@@ -73,7 +75,7 @@ export function LyricsSheet({
 
       const { data, error } = await supabase
         .from('music_generation_jobs')
-        .select('concept_artifact, genre, lyric_mode, vocal_gender, completed_at, created_at')
+        .select('concept_artifact, music_caption, genre, lyric_mode, vocal_gender, completed_at, created_at')
         .eq('word_id', track.id)
         .eq('status', 'complete')
         .order('completed_at', { ascending: false, nullsFirst: false })
@@ -114,40 +116,43 @@ export function LyricsSheet({
   }, [open, track, t])
 
   const row = state.row
-  const genre =
-    textValue(row?.genre) ||
-    textValue(track?.genre) ||
-    textValue(track?.song_generation?.genre) ||
-    t('music.lyrics.unknown')
+  const genre = compactMusicCaptionSegment(
+    resolveTrackMusicCaption(track, {
+      status: 'complete',
+      music_caption: row?.music_caption ?? null,
+      concept_artifact: row?.concept_artifact ?? null,
+    }),
+  ) || t('music.lyrics.unknown')
   const lyricMode =
     textValue(row?.lyric_mode) ||
     textValue(track?.song_generation?.lyric_mode) ||
     null
 
-  const side = variant === 'glassy' ? 'bottom' : 'right'
+  const contentClassName = [
+    'top-auto bottom-0 left-0 translate-x-0 translate-y-0 max-w-none rounded-b-none rounded-t-2xl',
+    'max-h-[calc(100dvh-1rem)] border-border/70 p-0',
+    'sm:top-[50%] sm:left-[50%] sm:bottom-auto sm:translate-x-[-50%] sm:translate-y-[-50%]',
+    'sm:max-w-[min(900px,calc(100vw-2rem))] sm:max-h-[70dvh] sm:rounded-lg',
+    variant === 'glassy'
+      ? 'border-[var(--border-subtle)] bg-[var(--glass-bg,rgba(10,10,14,0.82))] text-[var(--text-primary)] shadow-2xl backdrop-blur-2xl'
+      : 'bg-background text-foreground',
+  ].join(' ')
 
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent
-        side={side}
-        className={
-          variant === 'glassy'
-            ? 'max-h-[48dvh] rounded-t-2xl border-[var(--border-subtle)] bg-[var(--glass-bg,rgba(10,10,14,0.92))] text-[var(--text-primary)] backdrop-blur-xl'
-            : 'sm:max-w-md'
-        }
-      >
-        <SheetHeader className="pr-14">
-          <SheetTitle className="flex items-center gap-2">
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className={contentClassName}>
+        <DialogHeader className="pr-14">
+          <DialogTitle className="flex items-center gap-2">
             <FileText className="h-4 w-4" aria-hidden />
             {t('music.lyrics')}
-          </SheetTitle>
-          <SheetDescription>
+          </DialogTitle>
+          <DialogDescription>
             {track ? track.word : t('music.lyrics.noTrack')}
             {track?.translation ? ` - ${track.translation}` : ''}
-          </SheetDescription>
-        </SheetHeader>
+          </DialogDescription>
+        </DialogHeader>
 
-        <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5">
+        <div className="min-h-0 flex-1 px-6 pb-6">
           {state.status === 'loading' ? (
             <div className="flex items-center gap-2 py-8 text-sm text-muted-foreground">
               <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
@@ -159,8 +164,16 @@ export function LyricsSheet({
               <span>{state.error || t('music.lyrics.error')}</span>
             </div>
           ) : state.status === 'ready' && state.lyrics ? (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-2 text-xs">
+            <div className="flex min-h-0 flex-col gap-4">
+              <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
+                <div className="rounded-md bg-muted/40 px-3 py-2">
+                  <p className="text-muted-foreground">Word</p>
+                  <p className="mt-1 truncate font-medium text-foreground">{track?.word ?? t('music.lyrics.unknown')}</p>
+                </div>
+                <div className="rounded-md bg-muted/40 px-3 py-2">
+                  <p className="text-muted-foreground">Translation</p>
+                  <p className="mt-1 truncate font-medium text-foreground">{track?.translation || t('music.lyrics.unknown')}</p>
+                </div>
                 <div className="rounded-md bg-muted/40 px-3 py-2">
                   <p className="text-muted-foreground">{t('music.lyrics.genre')}</p>
                   <p className="mt-1 font-medium text-foreground">{genre}</p>
@@ -171,15 +184,17 @@ export function LyricsSheet({
                 </div>
               </div>
 
-              <pre className="whitespace-pre-wrap rounded-md bg-muted/30 p-4 text-sm leading-6 text-foreground font-sans">
-                {state.lyrics}
-              </pre>
+              <div className="grid grid-cols-1">
+                <pre className="max-h-[calc(70dvh-12rem)] overflow-y-auto whitespace-pre-wrap rounded-md bg-muted/30 p-5 text-sm leading-6 text-foreground font-sans">
+                  {state.lyrics}
+                </pre>
+              </div>
             </div>
           ) : (
             <p className="py-8 text-sm text-muted-foreground">{t('music.lyrics.empty')}</p>
           )}
         </div>
-      </SheetContent>
-    </Sheet>
+      </DialogContent>
+    </Dialog>
   )
 }

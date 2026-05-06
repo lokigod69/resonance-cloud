@@ -10,11 +10,32 @@ def read_frontend(path: str) -> str:
     return (REPO_ROOT / "frontend" / "src" / path).read_text(encoding="utf-8")
 
 
+def test_music_display_metadata_prefers_latest_complete_caption_over_auto_genre():
+    helper = read_frontend("lib/musicDisplayMetadata.ts")
+
+    assert "resolveTrackMusicCaption" in helper
+    assert "latestMusicJob?.status === 'complete'" in helper
+    assert "latestMusicJob?.music_caption" in helper
+    assert "latestMusicJob?.concept_artifact?.music_caption" in helper
+    assert "track.song_generation?.music_caption" in helper
+    assert "track.metadata?.music_caption" in helper
+    assert "track.genre?.toLowerCase() !== 'auto'" in helper
+
+
+def test_compact_music_caption_segment_excludes_auto():
+    helper = read_frontend("lib/musicDisplayMetadata.ts")
+
+    assert "compactMusicCaptionSegment" in helper
+    assert ".split(',')[0].trim()" in helper
+    assert "normalized.toLowerCase() === 'auto'" in helper
+    assert "return null" in helper
+
+
 def test_lyrics_sheet_lazy_loads_latest_complete_music_job_with_metadata_fallback():
     sheet = read_frontend("components/music/LyricsSheet.tsx")
 
     assert ".from('music_generation_jobs')" in sheet
-    assert ".select('concept_artifact, genre, lyric_mode, vocal_gender, completed_at, created_at')" in sheet
+    assert ".select('concept_artifact, music_caption, genre, lyric_mode, vocal_gender, completed_at, created_at')" in sheet
     assert ".eq('word_id', track.id)" in sheet
     assert ".eq('status', 'complete')" in sheet
     assert ".order('completed_at', { ascending: false, nullsFirst: false })" in sheet
@@ -22,6 +43,15 @@ def test_lyrics_sheet_lazy_loads_latest_complete_music_job_with_metadata_fallbac
     assert ".limit(1)" in sheet
     assert "extractMusicLyrics" in sheet
     assert "songGeneration: track.song_generation" in sheet
+
+
+def test_lyrics_extractor_prefers_concept_artifact_suno_lyrics():
+    helper = read_frontend("lib/musicLyrics.ts")
+
+    suno_idx = helper.index("const sunoLyrics = cleanText(conceptArtifact?.suno_lyrics)")
+    concept_idx = helper.index("const conceptLyrics = cleanText(conceptArtifact?.lyrics)")
+    metadata_suno_idx = helper.index("const metadataSunoLyrics = cleanText(songGeneration?.suno_lyrics)")
+    assert suno_idx < concept_idx < metadata_suno_idx
 
 
 def test_classic_music_has_row_level_lyrics_button_only_for_audio_tracks():
@@ -36,6 +66,7 @@ def test_classic_music_has_row_level_lyrics_button_only_for_audio_tracks():
     assert "onShowLyrics={() => setLyricsTrack(track)}" in music
     assert "<LyricsSheet" in music
     assert "variant=\"classic\"" in music
+    assert "compactMusicCaptionSegment(resolveTrackMusicCaption(track))" in row
 
 
 def test_glassy_music_has_single_current_track_lyrics_button_not_orb_labels():
@@ -45,7 +76,20 @@ def test_glassy_music_has_single_current_track_lyrics_button_not_orb_labels():
     assert "setLyricsTrack(currentTrack)" in music_pg
     assert "disabled={!currentTrack || !trackHasAudio(currentTrack)}" in music_pg
     assert "variant=\"glassy\"" in music_pg
+    assert "compactMusicCaptionSegment(resolveTrackMusicCaption(currentTrack))" in music_pg
     assert "music.lyrics" not in orb_row
+    assert "<span className=\"sr-only\">" in orb_row
+    assert "<span className=\"sr-only\">\n                      {isGenerating ? t('music.generatingSong') : t('music.generateSong')}\n                    </span>" in orb_row
+
+
+def test_lyrics_sheet_uses_centered_reading_overlay_with_internal_scroll():
+    sheet = read_frontend("components/music/LyricsSheet.tsx")
+
+    assert "DialogContent" in sheet
+    assert "max-w-[min(900px,calc(100vw-2rem))]" in sheet
+    assert "max-h-[70dvh]" in sheet
+    assert "overflow-y-auto" in sheet
+    assert "grid-cols-1" in sheet
 
 
 def test_music_lyrics_labels_are_translated_for_en_de_fr():
