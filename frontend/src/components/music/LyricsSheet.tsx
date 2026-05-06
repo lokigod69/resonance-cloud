@@ -19,13 +19,21 @@ import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musi
 import { useTranslation } from '@/hooks/useTranslation'
 
 type MusicLyricsRow = {
+  id: string | null
+  language: string | null
+  language_code: string | null
+  lyric_mode: string | null
+  genre: string | null
+  music_caption: string | null
   lyrics: string | null
   suno_lyrics: string | null
+  display_lyrics: string | null
+  translation_language: string | null
+  translation_language_code: string | null
   translated_lyrics: string | null
   translation_status: string | null
-  music_caption: string | null
-  genre: string | null
-  lyric_mode: string | null
+  translation_model: string | null
+  synced_lyrics: unknown
   created_at: string | null
 }
 
@@ -101,7 +109,24 @@ export function LyricsSheet({
 
       const { data: lyricsData, error: lyricsError } = await supabase
         .from('music_lyrics')
-        .select('lyrics, suno_lyrics, translated_lyrics, translation_status, music_caption, genre, lyric_mode, created_at')
+        .select(`
+          id,
+          language,
+          language_code,
+          lyric_mode,
+          genre,
+          music_caption,
+          lyrics,
+          suno_lyrics,
+          display_lyrics,
+          translation_language,
+          translation_language_code,
+          translated_lyrics,
+          translation_status,
+          translation_model,
+          synced_lyrics,
+          created_at
+        `)
         .eq('word_id', track.id)
         .order('created_at', { ascending: false })
         .limit(1)
@@ -221,14 +246,17 @@ export function LyricsSheet({
   function renderLyricsPanel(label: string, lyrics: string | null) {
     if (!lyrics) return null
     return (
-      <section className="min-w-0">
+      <section className="flex min-h-0 min-w-0 flex-col">
         {hasTranslation ? (
           <h3 className="mb-2 text-xs font-medium uppercase tracking-normal text-muted-foreground">
             {label}
           </h3>
         ) : null}
-        <div className="relative overflow-hidden rounded-md before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-6 before:bg-gradient-to-b before:from-background/80 before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-6 after:bg-gradient-to-t after:from-background/80 after:to-transparent before:pointer-events-none after:pointer-events-none">
-          <pre className="max-h-[min(54dvh,34rem)] overflow-y-auto whitespace-pre-wrap bg-muted/30 px-5 py-6 text-[15px] leading-7 text-foreground font-sans sm:max-h-[calc(76dvh-14rem)]">
+        <div className="relative min-h-0 flex-1 overflow-hidden rounded-md before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-6 before:bg-gradient-to-b before:from-background/80 before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-6 after:bg-gradient-to-t after:from-background/80 after:to-transparent before:pointer-events-none after:pointer-events-none">
+          <pre
+            className="h-full max-h-[min(54dvh,34rem)] overflow-y-auto whitespace-pre-wrap bg-muted/30 px-5 py-6 text-[15px] leading-7 text-foreground font-sans sm:max-h-[calc(76dvh-14rem)] [&::-webkit-scrollbar]:hidden"
+            style={{ scrollbarWidth: 'none' }}
+          >
             {lyrics}
           </pre>
         </div>

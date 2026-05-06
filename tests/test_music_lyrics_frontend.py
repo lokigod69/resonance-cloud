@@ -35,7 +35,25 @@ def test_lyrics_sheet_reads_latest_music_lyrics_before_music_job_fallback():
     sheet = read_frontend("components/music/LyricsSheet.tsx")
 
     assert ".from('music_lyrics')" in sheet
-    assert ".select('lyrics, suno_lyrics, translated_lyrics, translation_status, music_caption, genre, lyric_mode, created_at')" in sheet
+    for column in [
+        "id",
+        "language",
+        "language_code",
+        "lyric_mode",
+        "genre",
+        "music_caption",
+        "lyrics",
+        "suno_lyrics",
+        "display_lyrics",
+        "translation_language",
+        "translation_language_code",
+        "translated_lyrics",
+        "translation_status",
+        "translation_model",
+        "synced_lyrics",
+        "created_at",
+    ]:
+        assert column in sheet
     assert ".eq('word_id', track.id)" in sheet
     assert ".order('created_at', { ascending: false })" in sheet
     assert ".limit(1)" in sheet
@@ -49,15 +67,26 @@ def test_lyrics_sheet_reads_latest_music_lyrics_before_music_job_fallback():
     assert "songGeneration: track.song_generation" in sheet
 
 
-def test_lyrics_extractor_prefers_concept_artifact_suno_lyrics():
+def test_lyrics_extractor_prefers_canonical_display_then_suno_then_raw_lyrics():
     helper = read_frontend("lib/musicLyrics.ts")
 
-    music_lyrics_idx = helper.index("const musicLyrics = cleanText(musicLyricsRow?.lyrics)")
+    display_idx = helper.index("const musicDisplayLyrics = cleanText(musicLyricsRow?.display_lyrics)")
     music_suno_idx = helper.index("const musicSunoLyrics = cleanText(musicLyricsRow?.suno_lyrics)")
+    music_lyrics_idx = helper.index("const musicLyrics = cleanText(musicLyricsRow?.lyrics)")
     suno_idx = helper.index("const sunoLyrics = cleanText(conceptArtifact?.suno_lyrics)")
     concept_idx = helper.index("const conceptLyrics = cleanText(conceptArtifact?.lyrics)")
     metadata_suno_idx = helper.index("const metadataSunoLyrics = cleanText(songGeneration?.suno_lyrics)")
-    assert music_lyrics_idx < music_suno_idx < suno_idx < concept_idx < metadata_suno_idx
+    assert display_idx < music_suno_idx < music_lyrics_idx < suno_idx < concept_idx < metadata_suno_idx
+
+
+def test_translated_lyrics_display_only_when_translation_status_ok():
+    helper = read_frontend("lib/musicLyrics.ts")
+    sheet = read_frontend("components/music/LyricsSheet.tsx")
+
+    assert "musicLyricsRow?.translation_status !== 'ok'" in helper
+    assert "return cleanText(musicLyricsRow.translated_lyrics)" in helper
+    assert "translation: extractMusicLyricsTranslation(lyricsRow)" in sheet
+    assert "const hasTranslation = Boolean(displayTranslation)" in sheet
 
 
 def test_clean_display_lyrics_hides_raw_section_tags_without_mutating_extraction():
