@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 import json
+import logging
 import os
 import re
 from typing import Any
@@ -14,6 +15,9 @@ import httpx
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_MODEL = "anthropic/claude-haiku-4.5"
 DEFAULT_TIMEOUT_SECONDS = 12.0
+ERROR_SNIPPET_LIMIT = 500
+
+log = logging.getLogger(__name__)
 
 
 def _env_flag(name: str, *, default: bool = False) -> bool:
@@ -50,6 +54,60 @@ def _strip_markdown_fence(text: str) -> str:
     value = text.strip()
     match = re.fullmatch(r"```(?:json)?\s*(.*?)\s*```", value, flags=re.DOTALL | re.IGNORECASE)
     return match.group(1).strip() if match else value
+
+
+def _safe_error_snippet(text: str | None, *, lyrics: str, limit: int = ERROR_SNIPPET_LIMIT) -> str:
+    value = str(text or "")
+    if lyrics:
+        redactions = {
+            lyrics,
+            lyrics.replace("\r\n", "\n"),
+            lyrics.replace("\n", "\\n"),
+            lyrics.replace("\r\n", "\\n"),
+            json.dumps(lyrics)[1:-1],
+        }
+        for token in sorted((item for item in redactions if item), key=len, reverse=True):
+            value = value.replace(token, "[lyrics_redacted]")
+    value = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]+", " ", value)
+    value = re.sub(r"\s+", " ", value).strip()
+    if len(value) > limit:
+        return value[:limit].rstrip() + "..."
+    return value
+
+
+def _safe_failure_result(
+    *,
+    language: str,
+    model: str,
+    attempted_at: str,
+    error: str,
+    lyrics: str,
+    status_code: int | None = None,
+    response_text: str | None = None,
+) -> dict[str, Any]:
+    snippet = _safe_error_snippet(response_text or error, lyrics=lyrics)
+    if status_code is not None:
+        safe_error = f"OpenRouter HTTP {status_code} model={model} body={snippet}"
+        log.warning(
+            "lyrics_translation: OpenRouter request failed model=%s status=%s body=%s",
+            model,
+            status_code,
+            snippet,
+        )
+    else:
+        safe_error = f"OpenRouter error model={model}: {snippet}"
+        log.warning(
+            "lyrics_translation: OpenRouter request failed model=%s error=%s",
+            model,
+            snippet,
+        )
+    return {
+        "status": "failed",
+        "language": language,
+        "error": safe_error,
+        "model": model,
+        "attempted_at": attempted_at,
+    }
 
 
 def _section_tags(text: str) -> list[str]:
@@ -161,10 +219,22 @@ def translate_song_lyrics(
         if warnings:
             result["warnings"] = warnings
         return result
+    except httpx.HTTPStatusError as exc:
+        response = exc.response
+        return _safe_failure_result(
+            language=target_language,
+            model=effective_model,
+            attempted_at=attempted_at,
+            error=str(exc),
+            lyrics=source,
+            status_code=getattr(response, "status_code", None),
+            response_text=getattr(response, "text", None),
+        )
     except Exception as exc:
-        return {
-            "status": "failed",
-            "language": target_language,
-            "error": str(exc),
-            "attempted_at": attempted_at,
-        }
+        return _safe_failure_result(
+            language=target_language,
+            model=effective_model,
+            attempted_at=attempted_at,
+            error=str(exc),
+            lyrics=source,
+        )

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import logging
 
 import httpx
 
@@ -134,6 +135,64 @@ def test_translate_song_lyrics_handles_http_error_as_failed(monkeypatch):
     assert result["language"] == "English"
     assert "500" in result["error"]
     assert result["attempted_at"]
+
+
+def test_translate_song_lyrics_provider_400_returns_safe_diagnostic(monkeypatch, caplog):
+    full_lyrics = "SECRET FIRST LINE\nSECRET SECOND LINE"
+    captured: dict = {}
+
+    class FakeResponse:
+        status_code = 400
+        text = (
+            '{"error":{"message":"Provider rejected response_format for model. '
+            'Echoed lyrics: SECRET FIRST LINE\\nSECRET SECOND LINE"}}'
+        )
+
+        def raise_for_status(self):
+            request = httpx.Request("POST", lyrics_translation.OPENROUTER_URL)
+            response = httpx.Response(400, request=request, text=self.text)
+            raise httpx.HTTPStatusError("400 Bad Request", request=request, response=response)
+
+    class FakeClient:
+        def __init__(self, **_kwargs):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def post(self, _url, *, headers, json):
+            captured["body"] = json
+            return FakeResponse()
+
+    monkeypatch.setenv("ENABLE_LYRICS_TRANSLATION", "true")
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setenv("OPENROUTER_LYRICS_TRANSLATION_MODEL", "deepseek/deepseek-v4-flash")
+    monkeypatch.setattr(lyrics_translation.httpx, "Client", FakeClient)
+    caplog.set_level(logging.WARNING, logger="src.services.lyrics_translation")
+
+    result = lyrics_translation.translate_song_lyrics(
+        full_lyrics,
+        source_language="English",
+        target_language="German",
+        word="labyrinth",
+        translation="Labyrinth",
+    )
+
+    assert result["status"] == "failed"
+    assert result["model"] == "deepseek/deepseek-v4-flash"
+    assert "OpenRouter HTTP 400" in result["error"]
+    assert "deepseek/deepseek-v4-flash" in result["error"]
+    assert "Provider rejected response_format" in result["error"]
+    assert "[lyrics_redacted]" in result["error"]
+    assert full_lyrics not in result["error"]
+    assert "model=deepseek/deepseek-v4-flash" in caplog.text
+    assert "status=400" in caplog.text
+    assert "Provider rejected response_format" in caplog.text
+    assert full_lyrics not in caplog.text
+    assert captured["body"]["model"] == "deepseek/deepseek-v4-flash"
 
 
 def test_translate_song_lyrics_strips_markdown_fences(monkeypatch):
