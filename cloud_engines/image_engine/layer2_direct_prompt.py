@@ -170,7 +170,8 @@ def build_direct_prompt_v3_system_prompt() -> str:
         + "\n\n"
         "LLM V3 · Visual Craft layer: keep all LLM V2 learning-mode behavior, then add a visual-director layer. "
         "The final provider prompt should choose 2-4 visual craft decisions that fit the specific word, strategy, "
-        "presentation form, and art style. Do not dump the whole checklist into the final image prompt.\n\n"
+        "presentation form, and art style. Write a concise final prompt. Do not dump the whole checklist into the final image prompt. "
+        "Do not add photography jargon unless it creates a more intentional, less generic image.\n\n"
         "Visual craft decision space:\n"
         "- Camera distance: macro, close-up, medium shot, wide shot.\n"
         "- Lens and depth: shallow depth of field, telephoto compression, wide-angle scale, natural perspective.\n"
@@ -239,6 +240,13 @@ def build_direct_prompt_user_prompt(
         if selected_template in {DIRECT_PROMPT_V2_TEMPLATE, DIRECT_PROMPT_V3_TEMPLATE}
         else ""
     )
+    prompt_length_line = (
+        "Concise V3 prompt target: 700-1100 characters. "
+        "Do not add visual craft jargon unless it improves the image.\n"
+        if selected_template == DIRECT_PROMPT_V3_TEMPLATE
+        else f"Preferred prompt length: {DIRECT_PROMPT_PREFERRED_RANGE}. "
+        f"Hard maximum: {DIRECT_PROMPT_HARD_CAP} characters.\n"
+    )
     return (
         f"Target word: {content.word}\n"
         f"Meaning / direct translation: {content.translation}\n"
@@ -256,7 +264,7 @@ def build_direct_prompt_user_prompt(
         f"Answer policy: {answer_policy}"
         f"{'' if allow_translation else ' Never render the direct translation/answer.'}\n"
         f"{spelling_rule}\n"
-        f"Preferred prompt length: {DIRECT_PROMPT_PREFERRED_RANGE}. Hard maximum: {DIRECT_PROMPT_HARD_CAP} characters.\n"
+        f"{prompt_length_line}"
         "Write one final provider prompt string only."
     )
 

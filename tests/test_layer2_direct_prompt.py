@@ -100,6 +100,8 @@ def test_direct_prompt_v3_system_prompt_adds_visual_craft_guidance_without_dumpi
     assert "visual-director layer" in prompt
     assert "choose 2-4 visual craft decisions" in prompt
     assert "Do not dump the whole checklist" in prompt
+    assert "concise final prompt" in prompt
+    assert "Do not add photography jargon" in prompt
     assert "orange sunset" in prompt
     assert "generic cinematic haze" in prompt
     assert "Realistic should feel like a plausible photograph" in prompt
@@ -138,6 +140,8 @@ def test_direct_prompt_v3_user_prompt_marks_visual_craft_backend():
     )
 
     assert "Backend template: direct_prompt_v3" in prompt
+    assert "Concise V3 prompt target: 700-1100 characters" in prompt
+    assert "Do not add visual craft jargon unless it improves the image" in prompt
     assert "Meaning strategy: absurd_hook" in prompt
     assert "Presentation form: single_scene" in prompt
     assert "Never render the direct translation/answer" in prompt
