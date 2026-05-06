@@ -6,6 +6,7 @@
 
 import {
   cardLayer2MeaningLabel,
+  cardLayer2PresentationLabel,
 } from '../src/components/generate/useWizardState.ts'
 import {
   ADMIN_LAYER2_LAB_PRESETS,
@@ -50,6 +51,7 @@ console.log('\n[friendly labels]')
     LAYER2_BACKEND_TEMPLATE_OPTIONS,
   )
   assert('sound_mnemonic renders as Mnemonic Hook', cardLayer2MeaningLabel('sound_mnemonic') === 'Mnemonic Hook')
+  assert('infographic_card renders as Infographic', cardLayer2PresentationLabel('infographic_card') === 'Infographic')
 }
 
 console.log('\n[word normalization]')
@@ -92,6 +94,21 @@ console.log('\n[script row builder v2 backend]')
     label: 'llm v2 smoke',
   })
   assert('direct_prompt_v2 row is accepted', rows[0]?.backend_template === 'direct_prompt_v2', rows)
+}
+
+console.log('\n[script row builder infographic form]')
+{
+  const rows = buildLayer2LabRows({
+    words: ['ephemeral'],
+    selectedWord: 'ephemeral',
+    wordScope: 'selected',
+    meaning_strategy: 'absurd_hook',
+    presentation_form: 'infographic_card',
+    art_style: 'editorial',
+    backend_template: 'direct_prompt_v2',
+    label: 'infographic smoke',
+  })
+  assert('infographic_card row is accepted', rows[0]?.presentation_form === 'infographic_card', rows)
 }
 
 console.log('\n[all-word script rows]')
@@ -235,6 +252,33 @@ console.log('\n[premium lab v2 payload]')
   )
   assert('records direct_prompt_v2 in layer2_eval',
     p.jobPayload.settings_override.layer2_eval?.backend_template === 'direct_prompt_v2',
+    p.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[premium lab infographic payload]')
+{
+  const row: Layer2LabRun = {
+    id: 'row-infographic',
+    word: 'ephemeral',
+    meaning_strategy: 'absurd_hook',
+    presentation_form: 'infographic_card',
+    art_style: 'editorial',
+    backend_template: 'direct_prompt_v2',
+    label: 'infographic smoke',
+  }
+  const p = buildLayer2LabPayload({
+    row,
+    userId: USER,
+    targetLanguage: 'English',
+    deckName: 'Layer2 Lab',
+  })
+  assert('sends infographic_card in card_layer2',
+    p.jobPayload.settings_override.card_layer2?.presentation_form === 'infographic_card',
+    p.jobPayload.settings_override,
+  )
+  assert('records infographic_card in layer2_eval',
+    p.jobPayload.settings_override.layer2_eval?.presentation_form === 'infographic_card',
     p.jobPayload.settings_override,
   )
 }

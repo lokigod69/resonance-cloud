@@ -139,6 +139,18 @@ def build_layer2_visual_plan(
         )
         return plan
 
+    if presentation_form == "infographic_card":
+        plan["text_embedding_mode"] = "infographic_text"
+        plan["image_scene"] = _infographic_scene(
+            word=word,
+            meaning=meaning,
+            scene=scene,
+            pos=pos,
+            etymology=etymology or plan.get("etymology"),
+            mnemonic_hook=hook,
+        )
+        return plan
+
     plan["image_scene"] = _single_scene(scene, meaning, meaning_strategy, hook)
     return plan
 
@@ -339,6 +351,28 @@ def _word_design_mode(*, word: str, translation: str, pos: str | None) -> str:
     if _clean(pos).lower() in {"noun", "proper noun"} and tokens:
         return "word_as_matter"
     return "environmental_typography"
+
+
+def _infographic_scene(
+    *,
+    word: str,
+    meaning: str,
+    scene: str,
+    pos: str | None,
+    etymology: str | None,
+    mnemonic_hook: Mapping[str, str],
+) -> str:
+    facts = [
+        f"meaning: {meaning}",
+        f"grammar: {_clean(pos)}" if _clean(pos) else "",
+        f"origin: {_clean(etymology)}" if _clean(etymology) else "",
+        f"memory cue: {mnemonic_hook.get('visual_translation')}" if mnemonic_hook.get("visual_translation") else "",
+    ]
+    compact_facts = "; ".join(item for item in facts if item)
+    return (
+        f"Educational infographic card for {_clean(word) or 'the target word'}: "
+        f"central visual anchor from {scene}; compact callouts for {compact_facts}."
+    )
 
 
 def _single_scene(

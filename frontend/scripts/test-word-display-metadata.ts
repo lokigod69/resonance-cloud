@@ -87,6 +87,8 @@ console.log('\n[visual_card_plan with usage_example object]')
         renderer_profile: 'balanced_teaching',
         renderer_profile_source: 'auto',
         answer_visibility: 'hidden',
+        premium_quick_mode: 'memorable',
+        backend_template: 'direct_prompt_v2',
       },
     },
   }
@@ -158,6 +160,8 @@ console.log('\n[gpt_image_2_card with usage_example object — Premium card]')
         rationale_summary: 'A child looks out at distant land they once called home.',
         final_provider_prompt_sha256: 'deadbeef0000',
         answer_visibility: 'hidden',
+        premium_quick_mode: 'memorable',
+        backend_template: 'direct_prompt_v2',
       },
     },
   }
@@ -206,6 +210,11 @@ console.log('\n[gpt_image_2_card with usage_example object — Premium card]')
   assert(
     'adminDebug.fields.cardImageModel = gpt_image_2',
     r.adminDebug.fields.cardImageModel === 'gpt_image_2',
+  )
+  assert(
+    'adminDebug.fields.generationMode = Memorable · LLM V2',
+    r.adminDebug.fields.generationMode === 'Memorable · LLM V2',
+    r.adminDebug.fields,
   )
   assert(
     'adminDebug.gptImage2Card blob preserved',

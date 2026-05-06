@@ -25,6 +25,7 @@ LAYER2_TEXT_MODES = {
     "social_overlay",
     "speech_bubble",
     "thought_bubble",
+    "infographic_text",
 }
 STYLE_OPENINGS = {
     "realistic": "Photorealistic 16:9 vocabulary memory image.",

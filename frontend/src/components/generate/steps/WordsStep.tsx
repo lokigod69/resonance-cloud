@@ -4,7 +4,12 @@ import { Sparkles, Wand2 } from 'lucide-react'
 import { GlassInput, WordChips, type GlassInputHandle } from '../shared/GlassInput'
 import PillButton from '../shared/PillButton'
 import { MAX_WORDS } from '../wizardData'
-import type { WizardState, WizardAction } from '../useWizardState'
+import {
+  PREMIUM_QUICK_MODE_OPTIONS,
+  type PremiumQuickMode,
+  type WizardState,
+  type WizardAction,
+} from '../useWizardState'
 import CategoryPicker from './CategoryPicker'
 import { useTranslation } from '@/hooks/useTranslation'
 
@@ -122,6 +127,34 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
         </AnimatePresence>
 
         {/* Action buttons — appear after first word */}
+        {state.productLane === 'card_premium' && (
+          <section className="pt-2">
+            <p className="mb-3 text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              Premium Mode
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {PREMIUM_QUICK_MODE_OPTIONS.map((option) => {
+                const selected = state.premiumQuickMode === option.value
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => dispatch({ type: 'SET_PREMIUM_QUICK_MODE', mode: option.value as PremiumQuickMode })}
+                    className={`rounded-xl border px-3 py-2.5 text-left text-sm transition-all ${
+                      selected
+                        ? 'border-[var(--pg-accent-teal)] bg-[rgba(13,226,195,0.12)] text-[var(--pg-accent-teal)]'
+                        : 'border-border/60 bg-card/50 text-foreground/80 hover:border-[var(--pg-accent-teal)]/40'
+                    }`}
+                  >
+                    <span className="block font-medium">{option.label}</span>
+                    <span className="mt-0.5 block text-xs text-muted-foreground">{option.helper}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </section>
+        )}
+
         <AnimatePresence>
           {wordCount > 0 && (
             <motion.div

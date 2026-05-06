@@ -111,6 +111,27 @@ def test_direct_prompt_v2_user_prompt_keeps_incidental_text_allowed_but_translat
     assert "Target word must not appear as readable text." not in prompt
 
 
+def test_direct_prompt_v2_infographic_allows_target_word_and_translation_with_guidance():
+    prompt = build_direct_prompt_user_prompt(
+        content=_content(word="ephemeral", translation="short-lived"),
+        layer2={
+            "meaning_strategy": "absurd_hook",
+            "presentation_form": "infographic_card",
+            "backend_template": "direct_prompt_v2",
+        },
+        art_style="editorial",
+        allow_target_word=True,
+        allow_translation=True,
+    )
+
+    assert "Presentation form: infographic_card" in prompt
+    assert "Design a premium educational infographic card" in prompt
+    assert "target word and translation may appear as text" in prompt
+    assert "Spell visible target word exactly: ephemeral." in prompt
+    assert "Spell visible translation exactly: short-lived." in prompt
+    assert "Never render the direct translation/answer" not in prompt
+
+
 def test_direct_prompt_v2_metadata_stores_v2_template_value():
     result = DirectPromptResult(
         prompt="Cinematic scene.",
@@ -126,3 +147,23 @@ def test_direct_prompt_v2_metadata_stores_v2_template_value():
     )
 
     assert metadata["backend_template"] == "direct_prompt_v2"
+
+
+def test_direct_prompt_metadata_marks_infographic_answer_visibility():
+    result = DirectPromptResult(
+        prompt="Editorial infographic.",
+        model="test-model",
+        raw_prompt="raw",
+    )
+
+    metadata = direct_prompt_metadata(
+        result=result,
+        prompt="Editorial infographic.",
+        allow_target_word=True,
+        allow_translation=True,
+        template="direct_prompt_v2",
+    )
+
+    assert metadata["target_word_allowed"] is True
+    assert metadata["translation_allowed"] is True
+    assert metadata["answer_visibility"] == "teaching_text_allowed"

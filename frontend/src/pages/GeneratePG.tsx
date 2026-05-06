@@ -17,6 +17,7 @@ import {
   isCardLayer2ArtStyle,
   isStandardCardImageStyle,
   laneToCardImageModel,
+  premiumQuickModeLabel,
   useWizardState,
 } from '@/components/generate/useWizardState'
 import type { ExistingDeck, ProductLane } from '@/components/generate/useWizardState'
@@ -868,6 +869,12 @@ function StepReview({
               <span className="px-4 py-2 rounded-full text-sm font-medium"
                 style={{ background: 'rgba(139, 92, 246, 0.12)', border: '1px solid rgba(139, 92, 246, 0.3)', color: '#8b5cf6' }}>
                 Style: {cardLayer2ArtStyleLabel(state.cardImageStyle)}
+              </span>
+            )}
+            {state.productLane === 'card_premium' && state.path !== 'custom' && (
+              <span className="px-4 py-2 rounded-full text-sm font-medium"
+                style={{ background: 'rgba(13, 226, 195, 0.12)', border: '1px solid rgba(13, 226, 195, 0.3)', color: '#0de2c3' }}>
+                Mode: {premiumQuickModeLabel(state.premiumQuickMode)}
               </span>
             )}
             {state.productLane === 'card_premium' && state.cardLayer2 && (

@@ -94,6 +94,27 @@ def test_word_object_design_forces_embedded_word_and_stores_text_embedding_mode(
     assert "not a small label" in result.text_directive
 
 
+def test_infographic_card_resolves_to_teaching_text_mode_and_allows_answer_text():
+    result = _resolve(
+        meaning_strategy="absurd_hook",
+        presentation_form="infographic_card",
+        visual_intensity="balanced",
+    )
+
+    assert result.resolved["meaning_strategy"] == "absurd_hook"
+    assert result.resolved["presentation_form"] == "infographic_card"
+    assert result.resolved["composition"] == "infographic"
+    assert result.resolved["creative_mode"] == "educational_infographic"
+    assert result.resolved["text_embedding_mode"] == "infographic_text"
+    assert result.resolved["answer_visibility"] == "teaching_text_allowed"
+    assert result.allow_target_word_in_prompt is True
+    assert result.allow_translation_in_prompt is True
+    assert "educational infographic" in result.image_bridge
+    assert result.text_directive is not None
+    assert "target word" in result.text_directive
+    assert "translation" in result.text_directive
+
+
 def test_clear_meaning_word_object_design_snaps_unless_user_selected_word_object_design():
     auto_result = resolve_layer2(
         {

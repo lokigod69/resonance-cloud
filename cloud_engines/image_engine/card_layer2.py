@@ -25,6 +25,7 @@ class PresentationForm(StrEnum):
     MINI_STORY = "mini_story"
     SPLIT_PANEL = "split_panel"
     WORD_OBJECT_DESIGN = "word_object_design"
+    INFOGRAPHIC_CARD = "infographic_card"
     TEACHING_CARD = "teaching_card"
     SOCIAL_STREAM_SCENE = "social_stream_scene"
     DIALOGUE_BUBBLE_SCENE = "dialogue_bubble_scene"
@@ -47,6 +48,7 @@ EXPOSED_V1_PRESENTATION_FORMS = (
     PresentationForm.MINI_STORY.value,
     PresentationForm.SPLIT_PANEL.value,
     PresentationForm.WORD_OBJECT_DESIGN.value,
+    PresentationForm.INFOGRAPHIC_CARD.value,
 )
 
 VISUAL_INTENSITY_RENDERER_PROFILE = {
@@ -101,7 +103,14 @@ class Layer2Resolution:
 
     @property
     def allow_target_word_in_prompt(self) -> bool:
-        return self.resolved["meaning_strategy"] == MeaningStrategy.EMBEDDED_WORD.value
+        return (
+            self.resolved["meaning_strategy"] == MeaningStrategy.EMBEDDED_WORD.value
+            or self.resolved["presentation_form"] == PresentationForm.INFOGRAPHIC_CARD.value
+        )
+
+    @property
+    def allow_translation_in_prompt(self) -> bool:
+        return self.resolved["presentation_form"] == PresentationForm.INFOGRAPHIC_CARD.value
 
 
 def _clean(value: Any) -> str:
@@ -135,6 +144,8 @@ def _sentence_trim(text: str, max_chars: int) -> str:
 def _text_embedding_mode(form: PresentationForm) -> str:
     if form == PresentationForm.WORD_OBJECT_DESIGN:
         return "word_as_matter"
+    if form == PresentationForm.INFOGRAPHIC_CARD:
+        return "infographic_text"
     if form == PresentationForm.SOCIAL_STREAM_SCENE:
         return "social_overlay"
     if form == PresentationForm.DIALOGUE_BUBBLE_SCENE:
@@ -149,6 +160,8 @@ def _resolve_composition(form: PresentationForm) -> str:
         return "split"
     if form == PresentationForm.WORD_OBJECT_DESIGN:
         return "embodied"
+    if form == PresentationForm.INFOGRAPHIC_CARD:
+        return "infographic"
     return "single"
 
 
@@ -170,6 +183,8 @@ def _resolve_creative_mode(meaning: MeaningStrategy, form: PresentationForm) -> 
         return "split_contrast"
     if form == PresentationForm.WORD_OBJECT_DESIGN:
         return "typographic_material"
+    if form == PresentationForm.INFOGRAPHIC_CARD:
+        return "educational_infographic"
     if form == PresentationForm.TEACHING_CARD:
         return "clean_iconic"
     if form == PresentationForm.SOCIAL_STREAM_SCENE:
@@ -199,6 +214,12 @@ def _text_directive(text_mode: str, word: str) -> str | None:
             f'Make the target word "{word_text}" visibly readable as a large constructed '
             "form shaping the scene or main object. The word must be central to the "
             "composition, not a small label."
+        )
+    if text_mode == "infographic_text":
+        return (
+            f'Design as an image-first educational infographic. The target word "{word_text}" '
+            "and its translation may appear as short readable text. Use only compact labels "
+            "or callouts; spell the target word and translation exactly."
         )
     return None
 
@@ -230,6 +251,11 @@ def _bridge(
     if form == PresentationForm.WORD_OBJECT_DESIGN:
         return _sentence_trim(
             f'Memory logic: make "{word}" the visual subject, formed from material or shapes tied to {translation}.',
+            IMAGE_BRIDGE_MAX_CHARS,
+        )
+    if form == PresentationForm.INFOGRAPHIC_CARD:
+        return _sentence_trim(
+            f"Memory logic: create an educational infographic about {word}, anchored by a central visual metaphor and short callouts that teach {translation}.",
             IMAGE_BRIDGE_MAX_CHARS,
         )
     if meaning == MeaningStrategy.SOUND_MNEMONIC and form == PresentationForm.SPLIT_PANEL:
@@ -336,7 +362,9 @@ def resolve_layer2(
         "creative_mode": _resolve_creative_mode(meaning, form),
         "text_embedding_mode": text_mode,
         "effective_text_embedding_mode": text_mode,
-        "answer_visibility": "target_word_embedded"
+        "answer_visibility": "teaching_text_allowed"
+        if form == PresentationForm.INFOGRAPHIC_CARD
+        else "target_word_embedded"
         if meaning == MeaningStrategy.EMBEDDED_WORD
         else "hidden",
     }

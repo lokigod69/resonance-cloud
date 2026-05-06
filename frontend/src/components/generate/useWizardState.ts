@@ -15,6 +15,7 @@ export type CardLayer2PresentationForm =
   | 'mini_story'
   | 'split_panel'
   | 'word_object_design'
+  | 'infographic_card'
 
 export type CardLayer2BackendTemplate =
   | 'structured_plan_v1'
@@ -54,6 +55,19 @@ export interface CardLayer2Customization {
 export interface CardLayer2Payload extends CardLayer2Customization {
   visual_intensity: 'balanced'
   backend_template?: CardLayer2BackendTemplate
+  premium_quick_mode?: PremiumQuickMode | 'custom'
+  premium_generation_mode?: PremiumGenerationModeMetadata
+}
+
+export type PremiumQuickMode = 'clear' | 'memorable' | 'weird' | 'word_design'
+
+export interface PremiumGenerationModeMetadata {
+  premium_quick_mode: PremiumQuickMode | 'custom'
+  backend_template: CardLayer2BackendTemplate
+  meaning_strategy: CardLayer2MeaningStrategy
+  presentation_form: CardLayer2PresentationForm
+  art_style: CardLayer2ArtStyle
+  prompt_version: 'premium_quick_modes_v1'
 }
 
 export interface Layer2EvalPayload {
@@ -75,6 +89,7 @@ export const DEFAULT_CARD_LAYER2: CardLayer2Customization = {
 }
 
 export const DEFAULT_CARD_LAYER2_ART_STYLE: CardLayer2ArtStyle = 'realistic'
+export const DEFAULT_PREMIUM_QUICK_MODE: PremiumQuickMode = 'clear'
 
 export const CARD_LAYER2_MEANING_OPTIONS: Array<{
   value: CardLayer2MeaningStrategy
@@ -128,6 +143,38 @@ export const CARD_LAYER2_PRESENTATION_OPTIONS: Array<{
     label: 'Word as Design',
     helper: 'Makes the word itself part of the image as material, form, or lettering.',
   },
+  {
+    value: 'infographic_card',
+    label: 'Infographic',
+    helper: 'A compact educational poster with a central visual anchor and short study callouts.',
+  },
+]
+
+export const PREMIUM_QUICK_MODE_OPTIONS: Array<{
+  value: PremiumQuickMode
+  label: string
+  helper: string
+}> = [
+  {
+    value: 'clear',
+    label: 'Clear',
+    helper: 'Clean meaning-first scene.',
+  },
+  {
+    value: 'memorable',
+    label: 'Memorable',
+    helper: 'Mnemonic-driven scene.',
+  },
+  {
+    value: 'weird',
+    label: 'Weird',
+    helper: 'A strange but readable memory hook.',
+  },
+  {
+    value: 'word_design',
+    label: 'Word Design',
+    helper: 'Turns the word into the visual object.',
+  },
 ]
 
 export const CARD_LAYER2_ART_STYLE_OPTIONS: Array<{
@@ -164,6 +211,11 @@ export function cardLayer2PresentationLabel(value: CardLayer2PresentationForm): 
   return CARD_LAYER2_PRESENTATION_OPTIONS.find((option) => option.value === value)?.label ?? value
 }
 
+export function premiumQuickModeLabel(value: PremiumQuickMode | 'custom' | string | null | undefined): string {
+  if (value === 'custom') return 'Custom'
+  return PREMIUM_QUICK_MODE_OPTIONS.find((option) => option.value === value)?.label ?? value ?? ''
+}
+
 export function cardLayer2ArtStyleLabel(value: CardImageStyle | null): string {
   if (value === 'Photorealistic') return 'Realistic'
   return CARD_LAYER2_ART_STYLE_OPTIONS.find((option) => option.value === value)?.label ?? value ?? ''
@@ -175,6 +227,64 @@ export function isCardLayer2ArtStyle(value: CardImageStyle | null): value is Car
 
 export function isStandardCardImageStyle(value: CardImageStyle | null): value is StandardCardImageStyle {
   return value === 'Photorealistic' || value === 'Editorial' || value === 'Random'
+}
+
+export function resolvePremiumQuickMode(
+  mode: PremiumQuickMode,
+  artStyle: CardLayer2ArtStyle | null | undefined,
+): {
+  backend_template: CardLayer2BackendTemplate
+  card_layer2: CardLayer2Payload
+  metadata: PremiumGenerationModeMetadata
+} {
+  const selectedStyle = artStyle ?? DEFAULT_CARD_LAYER2_ART_STYLE
+  const preset: Record<PremiumQuickMode, {
+    backend_template: CardLayer2BackendTemplate
+    meaning_strategy: CardLayer2MeaningStrategy
+    presentation_form: CardLayer2PresentationForm
+  }> = {
+    clear: {
+      backend_template: 'structured_plan_v1',
+      meaning_strategy: 'clear_meaning',
+      presentation_form: 'single_scene',
+    },
+    memorable: {
+      backend_template: 'direct_prompt_v2',
+      meaning_strategy: 'sound_mnemonic',
+      presentation_form: 'single_scene',
+    },
+    weird: {
+      backend_template: 'direct_prompt_v2',
+      meaning_strategy: 'absurd_hook',
+      presentation_form: 'single_scene',
+    },
+    word_design: {
+      backend_template: 'direct_prompt_v2',
+      meaning_strategy: 'absurd_hook',
+      presentation_form: 'word_object_design',
+    },
+  }
+  const resolved = preset[mode]
+  const metadata: PremiumGenerationModeMetadata = {
+    premium_quick_mode: mode,
+    backend_template: resolved.backend_template,
+    meaning_strategy: resolved.meaning_strategy,
+    presentation_form: resolved.presentation_form,
+    art_style: selectedStyle,
+    prompt_version: 'premium_quick_modes_v1',
+  }
+  return {
+    backend_template: resolved.backend_template,
+    card_layer2: {
+      meaning_strategy: resolved.meaning_strategy,
+      presentation_form: resolved.presentation_form,
+      visual_intensity: 'balanced',
+      backend_template: resolved.backend_template,
+      premium_quick_mode: mode,
+      premium_generation_mode: metadata,
+    },
+    metadata,
+  }
 }
 
 export interface WizardState {
@@ -191,6 +301,7 @@ export interface WizardState {
   productLane: ProductLane | null
   cardImageStyle: CardImageStyle | null
   cardLayer2: CardLayer2Customization | null
+  premiumQuickMode: PremiumQuickMode
 }
 
 export type WizardAction =
@@ -208,6 +319,7 @@ export type WizardAction =
   | { type: 'SET_PRODUCT_LANE'; lane: ProductLane | null }
   | { type: 'SET_CARD_IMAGE_STYLE'; style: CardImageStyle | null }
   | { type: 'SET_CARD_LAYER2'; value: Partial<CardLayer2Customization> | null }
+  | { type: 'SET_PREMIUM_QUICK_MODE'; mode: PremiumQuickMode }
   | { type: 'GO_TO_STEP'; step: 1 | 2 | 3 | 4 | 5 | 6 }
   | { type: 'CHOOSE_PATH'; path: 'quick' | 'custom' }
   | { type: 'NEXT_STEP' }
@@ -227,6 +339,7 @@ const initialState: WizardState = {
   productLane: null,
   cardImageStyle: null,
   cardLayer2: null,
+  premiumQuickMode: DEFAULT_PREMIUM_QUICK_MODE,
 }
 
 // ── Lane helpers (pure, exported for tests and callers) ─────────────────────
@@ -344,6 +457,9 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
         cardLayer2: action.lane === 'card_premium'
           ? (state.cardLayer2 ?? DEFAULT_CARD_LAYER2)
           : null,
+        premiumQuickMode: action.lane === 'card_premium'
+          ? state.premiumQuickMode
+          : DEFAULT_PREMIUM_QUICK_MODE,
       }
 
     case 'SET_CARD_IMAGE_STYLE':
@@ -356,6 +472,9 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
           ? { ...(state.cardLayer2 ?? DEFAULT_CARD_LAYER2), ...action.value }
           : null,
       }
+
+    case 'SET_PREMIUM_QUICK_MODE':
+      return { ...state, premiumQuickMode: action.mode }
 
     case 'GO_TO_STEP':
       return { ...state, step: action.step }
@@ -403,7 +522,10 @@ export interface GeneratePayload {
     art_style: string | null
     movie_override: string | null
     words_total: number
-    settings_override: Record<string, string | CardLayer2Payload | Layer2EvalPayload | undefined>
+    settings_override: Record<
+      string,
+      string | CardLayer2Payload | Layer2EvalPayload | PremiumGenerationModeMetadata | undefined
+    >
   }
 }
 
@@ -479,17 +601,43 @@ export function buildGeneratePayload({
   const lyricMode = isCard || isQuickGenerate ? undefined : state.lyricMode || undefined
 
   const cardImageModel = laneToCardImageModel(lane)
-  const cardLayer2 = (
+  const premiumArtStyle = isCardLayer2ArtStyle(state.cardImageStyle)
+    ? state.cardImageStyle
+    : DEFAULT_CARD_LAYER2_ART_STYLE
+  const premiumQuick = lane === 'card_premium'
+    ? resolvePremiumQuickMode(state.premiumQuickMode ?? DEFAULT_PREMIUM_QUICK_MODE, premiumArtStyle)
+    : null
+  const isPremiumCustomize = (
     lane === 'card_premium'
     && state.path === 'custom'
     && !isQuickGenerate
     && state.cardImageStyle
   )
+  const customPremiumMetadata: PremiumGenerationModeMetadata | null = isPremiumCustomize
+    ? {
+        premium_quick_mode: 'custom',
+        backend_template: 'structured_plan_v1',
+        meaning_strategy: (state.cardLayer2 ?? DEFAULT_CARD_LAYER2).meaning_strategy,
+        presentation_form: (state.cardLayer2 ?? DEFAULT_CARD_LAYER2).presentation_form,
+        art_style: premiumArtStyle,
+        prompt_version: 'premium_quick_modes_v1',
+      }
+    : null
+  const cardLayer2 = isPremiumCustomize
     ? {
         ...(state.cardLayer2 ?? DEFAULT_CARD_LAYER2),
         visual_intensity: 'balanced' as const,
+        premium_quick_mode: 'custom' as const,
+        premium_generation_mode: customPremiumMetadata ?? undefined,
       }
-    : undefined
+    : premiumQuick?.card_layer2
+  const cardImageStyleForSettings =
+    lane === 'card_premium'
+      ? premiumArtStyle
+      : isCard && !isQuickGenerate && state.cardImageStyle
+        ? state.cardImageStyle
+        : undefined
+  const premiumGenerationMode = customPremiumMetadata ?? premiumQuick?.metadata
 
   return {
     deckPayload: existingDeck
@@ -520,10 +668,16 @@ export function buildGeneratePayload({
         ...(genre ? { genre } : {}),
         ...(lyricMode ? { lyric_mode: lyricMode } : {}),
         ...(cardImageModel ? { card_image_model: cardImageModel } : {}),
-        ...(isCard && !isQuickGenerate && state.cardImageStyle
-          ? { card_image_style: state.cardImageStyle }
+        ...(cardImageStyleForSettings
+          ? { card_image_style: cardImageStyleForSettings }
           : {}),
         ...(cardLayer2 ? { card_layer2: cardLayer2 } : {}),
+        ...(lane === 'card_premium' && premiumGenerationMode
+          ? {
+              premium_quick_mode: premiumGenerationMode.premium_quick_mode,
+              premium_generation_mode: premiumGenerationMode,
+            }
+          : {}),
       },
     },
   }

@@ -253,6 +253,7 @@ export default function WordDetailPanel({
                 <MetaRow label="Layer 2 Candidate (text mode)" value={debug.fields.layer2CandidateTextMode === null ? null : String(debug.fields.layer2CandidateTextMode)} />
                 <MetaRow label="Card Image Model" value={debug.fields.cardImageModel} />
                 <MetaRow label="Card Image Style" value={cardImageStyle} />
+                <MetaRow label="Generation Mode" value={debug.fields.generationMode} />
                 <MetaRow label="Backend Template" value={formatBackendTemplate(gptImage2Card?.backend_template)} />
                 <MetaRow label="Layer 2 User Choices" value={formatJsonValue(layer2UserChoices)} />
                 <MetaRow label="Layer 2 Resolved" value={formatJsonValue(layer2Resolved)} />
@@ -523,7 +524,7 @@ function formatMeaningStrategy(value: unknown): string | null {
 function formatPresentationForm(value: unknown): string | null {
   const text = cleanText(value as string | null | undefined)
   if (!text) return null
-  if (['single_scene', 'mini_story', 'split_panel', 'word_object_design'].includes(text)) {
+  if (['single_scene', 'mini_story', 'split_panel', 'word_object_design', 'infographic_card'].includes(text)) {
     return cardLayer2PresentationLabel(text as CardLayer2PresentationForm)
   }
   return text

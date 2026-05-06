@@ -761,6 +761,12 @@ async def bootstrap_job(
         )
         if card_layer2:
             visual_card_plan["base_language"] = base_language
+        premium_quick_mode = settings_override.get("premium_quick_mode")
+        if premium_quick_mode:
+            visual_card_plan["premium_quick_mode"] = str(premium_quick_mode)
+        premium_generation_mode = settings_override.get("premium_generation_mode")
+        if isinstance(premium_generation_mode, dict):
+            visual_card_plan["premium_generation_mode"] = premium_generation_mode
         current_metadata = word_rec.get("metadata") if isinstance(word_rec.get("metadata"), dict) else {}
         if is_phrase:
             raw_word_text = original_word

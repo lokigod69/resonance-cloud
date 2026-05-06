@@ -28,9 +28,10 @@ from .card_models import CardImagePayload, CardImagePromptData, CardImageResult
 from .card_prompts import SYSTEM_PROMPT, build_user_prompt
 from .layer2_direct_prompt import (
     DIRECT_PROMPT_WRITER_MODEL,
+    DIRECT_PROMPT_TEMPLATES,
+    DIRECT_PROMPT_V2_TEMPLATE,
     backend_template,
     direct_prompt_metadata,
-    is_direct_prompt_template,
     sanitize_direct_prompt,
     write_layer2_direct_prompt,
 )
@@ -175,9 +176,17 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
     text_embedding_mode = (
         layer2.resolved["text_embedding_mode"] if layer2 else payload.content.text_embedding_mode
     )
-    selected_backend_template = backend_template(payload.content.layer2_customization)
+    requested_backend_template = backend_template(payload.content.layer2_customization)
+    selected_backend_template = requested_backend_template
+    if layer2 and layer2.resolved.get("presentation_form") == "infographic_card":
+        if selected_backend_template != DIRECT_PROMPT_V2_TEMPLATE:
+            layer2.snap_notes.append(
+                "infographic_card uses direct_prompt_v2 instead of structured_plan_v1"
+            )
+        selected_backend_template = DIRECT_PROMPT_V2_TEMPLATE
     direct_prompt_meta: dict | None = None
-    if layer2 and is_direct_prompt_template(payload.content.layer2_customization):
+    allow_translation = layer2.allow_translation_in_prompt if layer2 else False
+    if layer2 and selected_backend_template in DIRECT_PROMPT_TEMPLATES:
         with logged_llm_call(
             stage="pending_image",
             sub_step="layer2_direct_prompt_writer",
@@ -199,6 +208,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 layer2=payload.content.layer2_customization or {},
                 art_style=payload.card_image_style,
                 allow_target_word=layer2.allow_target_word_in_prompt,
+                allow_translation=allow_translation,
                 template=selected_backend_template,
             )
             prompt_text = sanitize_direct_prompt(
@@ -207,6 +217,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 translation=payload.content.translation,
                 art_style=payload.card_image_style,
                 allow_target_word=layer2.allow_target_word_in_prompt,
+                allow_translation=allow_translation,
             )
             ev.record_response(
                 response_body=direct_result.raw_prompt,
@@ -219,6 +230,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 result=direct_result,
                 prompt=prompt_text,
                 allow_target_word=layer2.allow_target_word_in_prompt,
+                allow_translation=allow_translation,
                 template=selected_backend_template,
             )
     else:
@@ -286,6 +298,19 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
     )
     if layer2:
         card_metadata["backend_template"] = selected_backend_template
+        if requested_backend_template != selected_backend_template:
+            card_metadata["requested_backend_template"] = requested_backend_template
+        layer2_customization = (
+            payload.content.layer2_customization
+            if isinstance(payload.content.layer2_customization, dict)
+            else {}
+        )
+        premium_quick_mode = layer2_customization.get("premium_quick_mode")
+        if premium_quick_mode:
+            card_metadata["premium_quick_mode"] = str(premium_quick_mode)
+        premium_generation_mode = layer2_customization.get("premium_generation_mode")
+        if isinstance(premium_generation_mode, dict):
+            card_metadata["premium_generation_mode"] = premium_generation_mode
     if direct_prompt_meta:
         card_metadata.update(direct_prompt_meta)
     request_payload = {

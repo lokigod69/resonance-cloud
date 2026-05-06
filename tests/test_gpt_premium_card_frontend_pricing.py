@@ -22,49 +22,50 @@ def _source(path: Path) -> str:
 def test_wizard_state_tracks_card_image_model_and_model_aware_pricing():
     source = _source(USE_WIZARD_STATE)
 
-    assert "cardImageModel: 'zturbo' | 'gpt_image_2'" in source
-    assert "SET_CARD_IMAGE_MODEL" in source
-    assert "CARD_CREDIT_COST_PER_WORD" in source
-    assert "gpt_image_2: 5" in source
-    assert "zturbo: 1" in source
+    assert "export type CardImageModel = 'zturbo' | 'gpt_image_2'" in source
+    assert "laneToCardImageModel(" in source
+    assert "CARD_PREMIUM_CREDIT_COST_PER_WORD" in source
+    assert "card_premium: 5" in source
+    assert "card_standard: 1" in source
     assert "computeCreditCost(" in source
-    assert "cardImageModel" in source
+    assert "productLane" in source
 
 
 def test_card_payload_always_sends_explicit_card_image_model():
     source = _source(USE_WIZARD_STATE)
 
-    assert "card_image_model: state.cardImageModel" in source
-    assert "card_image_style: state.cardImageStyle" in source
+    assert "const cardImageModel = laneToCardImageModel(lane)" in source
+    assert "card_image_model: cardImageModel" in source
+    assert "card_image_style: cardImageStyleForSettings" in source
+    assert "premium_quick_mode: premiumGenerationMode.premium_quick_mode" in source
 
 
 def test_generate_pages_preserve_card_model_in_standard_and_quick_payloads():
     combined = "\n".join(_source(path) for path in [GENERATE_PG, GENERATE_GO])
 
     assert "card_image_model" in combined
-    assert "cardImageModel" in combined
-    assert "settings_override = {" in combined
-    assert "card_image_model: state.cardImageModel" in combined or "card_image_model: cardImageModel" in combined
+    assert "laneToCardImageModel" in combined
+    assert "card_image_model: cardImageModel" in combined
 
 
 def test_wizard_copy_exposes_distinct_standard_and_gpt_card_tiers():
-    source = _source(CARD_STYLE_STEP)
+    source = _source(ROOT / "frontend" / "src" / "components" / "generate" / "steps" / "ProductLaneStep.tsx")
+    translations = _source(ROOT / "frontend" / "src" / "lib" / "translations.ts")
 
-    assert "Standard Card" in source
-    assert "Z-Image Turbo" in source
-    assert "1 credit" in source
-    assert "GPT Image-2 Card" in source
-    assert "Premium GPT image card" in source
-    assert "5 credits" in source
-    assert "Visual style" in source
+    assert "generate.productLane.standard.label" in source
+    assert "generate.productLane.premium.label" in source
+    assert "Standard Card" in translations
+    assert "1 credit / card" in translations
+    assert "Premium Card" in translations
+    assert "5 credits / card" in translations
     assert "image model" not in source.lower()
 
 
 def test_confirm_step_uses_model_aware_credit_cost():
     source = _source(CONFIRM_STEP)
 
-    assert "computeCreditCost(state.deckType, state.words.length, state.cardImageModel)" in source
-    assert "GPT Image-2 Card" in source
+    assert "computeCreditCost(lane, state.words.length)" in source
+    assert "Premium Card" in source
     assert "Standard Card" in source
 
 
@@ -73,9 +74,9 @@ def test_card_deck_views_suppress_video_affordances_for_card_decks():
 
     assert "deck_type" in combined
     assert "isCardDeck" in combined
-    assert "Bild wird erstellt" in combined
-    assert "In Warteschlange" in combined
-    assert "Bild konnte nicht erstellt werden" in combined
+    assert "deckview.cardCreation" in combined
+    assert "deckview.queued" in combined
+    assert "deckview.cardFailure" in combined
     assert "Bild erneut erstellen" in combined
     assert "!isCardDeck" in combined
-    assert "navigate(`/study/flashcard?deck=${deck.id}`)" in combined
+    assert "`/study/flashcard?deck=${deck.id}`" in combined

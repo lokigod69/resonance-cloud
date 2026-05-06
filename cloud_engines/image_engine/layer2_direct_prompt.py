@@ -63,6 +63,7 @@ def write_layer2_direct_prompt(
     layer2: Mapping[str, Any],
     art_style: str,
     allow_target_word: bool,
+    allow_translation: bool = False,
     template: str | None = None,
 ) -> DirectPromptResult:
     """Call OpenRouter to write a final GPT Image-2 provider prompt."""
@@ -78,6 +79,7 @@ def write_layer2_direct_prompt(
         layer2=layer2,
         art_style=art_style,
         allow_target_word=allow_target_word,
+        allow_translation=allow_translation,
     )
     raw_prompt, usage, request_id = _call_openrouter_direct_prompt(
         system_prompt=system_prompt,
@@ -91,6 +93,7 @@ def write_layer2_direct_prompt(
         translation=content.translation,
         art_style=art_style,
         allow_target_word=allow_target_word,
+        allow_translation=allow_translation,
     )
     return DirectPromptResult(
         prompt=prompt,
@@ -145,7 +148,9 @@ def build_direct_prompt_v2_system_prompt() -> str:
         "- Mini Story: one image containing 2-3 readable beats, such as cause/effect, before/during/after, attempt/result, or transformation. Avoid chaotic comic strips unless the style supports it.\n"
         "- Split Panel: use only when contrast helps the word, with tasteful separation for before/after, despite/result, less/more, obstacle/continuation, or cause/effect.\n"
         "- Word as Design: target word may appear visibly and should be the main visual object. Choose naturally among word_as_matter, word_as_form, environmental_typography, or symbolic_letter_scene; do not always use the same approach.\n\n"
+        "- Infographic: design a premium educational infographic card with a central visual anchor and a few compact callouts. Choose useful word-specific angles such as meaning, translation, grammar, usage, origin, cultural nuance, memory cue, example phrase, or surprising fact. Use short readable labels, not paragraphs; keep it elegant, spacious, image-first, and memorable.\n\n"
         "Text policy: Visible target word is allowed and expected in Word as Design. "
+        "In Infographic, the target word and translation may appear as visible study-card text, along with short explanatory labels. "
         "In other forms, do not casually place the target word as a label unless it clearly helps the scene. "
         "Incidental environmental text is allowed when natural, such as signs, calendar, phone screen, book title, interface, warning label. "
         "If any readable target word appears, spell it exactly. Never render the direct translation/answer unless a future explicit teaching/infographic mode asks for it."
@@ -158,10 +163,16 @@ def build_direct_prompt_user_prompt(
     layer2: Mapping[str, Any],
     art_style: str,
     allow_target_word: bool,
+    allow_translation: bool = False,
 ) -> str:
     presentation_form = _clean(layer2.get("presentation_form")) or "single_scene"
     selected_template = backend_template(layer2)
-    if selected_template == DIRECT_PROMPT_V2_TEMPLATE and not allow_target_word:
+    if presentation_form == "infographic_card":
+        answer_policy = (
+            "the target word and translation may appear as text. "
+            "Use short readable labels and compact callouts, not paragraphs."
+        )
+    elif selected_template == DIRECT_PROMPT_V2_TEMPLATE and not allow_target_word:
         answer_policy = (
             "Do not casually place the target word as a label unless it clearly helps the scene. "
             "Incidental environmental text is allowed when natural."
@@ -172,11 +183,23 @@ def build_direct_prompt_user_prompt(
             if allow_target_word
             else "Target word must not appear as readable text."
         )
-    spelling_rule = (
-        f"\nSpelling rule: If the target word appears, spell it exactly: {_clean(content.word).upper()}."
-        if presentation_form == "word_object_design"
-        else ""
-    )
+    if presentation_form == "infographic_card":
+        spelling_rule = (
+            f"\nInfographic guidance: Design a premium educational infographic card for the target word. "
+            "Use a central visual anchor and a few compact callouts. Choose the most useful and interesting "
+            "information for this specific word: meaning, translation, grammar, usage, word origin, cultural "
+            "nuance, memory cue, example phrase, or surprising fact. Use short readable labels, not paragraphs. "
+            "Make it elegant, spacious, and memorable. The target word and translation may appear as text. "
+            "Spell all visible text carefully."
+            f"\nSpelling rule: Spell visible target word exactly: {_clean(content.word)}. "
+            f"Spell visible translation exactly: {_clean(content.translation)}."
+        )
+    elif presentation_form == "word_object_design":
+        spelling_rule = (
+            f"\nSpelling rule: If the target word appears, spell it exactly: {_clean(content.word).upper()}."
+        )
+    else:
+        spelling_rule = ""
     backend_line = (
         f"Backend template: {selected_template}\n"
         if selected_template == DIRECT_PROMPT_V2_TEMPLATE
@@ -196,7 +219,8 @@ def build_direct_prompt_user_prompt(
         f"Presentation form: {presentation_form}\n"
         f"{backend_line}"
         f"Art style: {art_style}\n"
-        f"Answer policy: {answer_policy} Never render the direct translation/answer.\n"
+        f"Answer policy: {answer_policy}"
+        f"{'' if allow_translation else ' Never render the direct translation/answer.'}\n"
         f"{spelling_rule}\n"
         f"Preferred prompt length: {DIRECT_PROMPT_PREFERRED_RANGE}. Hard maximum: {DIRECT_PROMPT_HARD_CAP} characters.\n"
         "Write one final provider prompt string only."
@@ -210,19 +234,21 @@ def sanitize_direct_prompt(
     translation: str,
     art_style: str,
     allow_target_word: bool,
+    allow_translation: bool = False,
 ) -> str:
     text = _strip_wrapping(_clean(prompt))
     if not allow_target_word:
         text = _remove_term(text, word)
-    if _clean(translation).lower() != _clean(word).lower():
+    if not allow_translation and _clean(translation).lower() != _clean(word).lower():
         text = _remove_term(text, translation)
     text = _remove_photorealistic_contradiction(text, art_style)
     text = _repair_spacing(text)
-    policy = (
-        "Never write the direct answer/translation inside the image."
-        if allow_target_word
-        else "Do not write the target word or direct answer/translation inside the image."
-    )
+    if allow_translation:
+        policy = "Use only short, carefully spelled visible study-card text."
+    elif allow_target_word:
+        policy = "Never write the direct answer/translation inside the image."
+    else:
+        policy = "Do not write the target word or direct answer/translation inside the image."
     if "direct answer/translation" not in text.lower():
         text = f"{text.rstrip(' .')}. {policy}"
     if len(text) > DIRECT_PROMPT_HARD_CAP:
@@ -235,6 +261,7 @@ def direct_prompt_metadata(
     result: DirectPromptResult,
     prompt: str,
     allow_target_word: bool,
+    allow_translation: bool = False,
     template: str = DIRECT_PROMPT_TEMPLATE,
 ) -> dict[str, Any]:
     return {
@@ -244,7 +271,12 @@ def direct_prompt_metadata(
         "direct_prompt_prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
         "direct_prompt_preview": prompt[:500],
         "target_word_allowed": allow_target_word,
-        "answer_visibility": "target_word_embedded" if allow_target_word else "hidden",
+        "translation_allowed": allow_translation,
+        "answer_visibility": "teaching_text_allowed"
+        if allow_translation
+        else "target_word_embedded"
+        if allow_target_word
+        else "hidden",
     }
 
 

@@ -64,6 +64,7 @@ export interface AdminDebugMetadata {
     registerNote: string | null
     rationaleSummary: string | null
     cardImageModel: string | null
+    generationMode: string | null
   }
 }
 
@@ -125,6 +126,29 @@ function pickString(...candidates: unknown[]): string | undefined {
     if (v) return v
   }
   return undefined
+}
+
+function generationModeLabel(gptImage2Card: Record<string, unknown> | null): string | null {
+  if (!gptImage2Card) return null
+  const mode = pickString(gptImage2Card.premium_quick_mode)
+    ?? pickString(asRecord(gptImage2Card.premium_generation_mode)?.premium_quick_mode)
+  const backend = pickString(gptImage2Card.backend_template)
+    ?? pickString(asRecord(gptImage2Card.premium_generation_mode)?.backend_template)
+  const modeLabel: Record<string, string> = {
+    clear: 'Clear',
+    memorable: 'Memorable',
+    weird: 'Weird',
+    word_design: 'Word Design',
+    custom: 'Custom',
+  }
+  const backendLabel: Record<string, string> = {
+    structured_plan_v1: 'Compiler V1',
+    direct_prompt_v1: 'LLM V1',
+    direct_prompt_v2: 'LLM V2',
+  }
+  const left = mode ? (modeLabel[mode] ?? mode) : null
+  const right = backend ? (backendLabel[backend] ?? backend) : null
+  return [left, right].filter(Boolean).join(' · ') || null
 }
 
 /**
@@ -240,6 +264,7 @@ export function resolveCardLearningMetadata(word: WordLike | null | undefined): 
       registerNote: pickString(gptImage2Card?.register_note, visualCardPlan?.register_note) ?? null,
       rationaleSummary: pickString(gptImage2Card?.rationale_summary, visualCardPlan?.rationale_summary) ?? null,
       cardImageModel: pickString(word?.card_image_model) ?? null,
+      generationMode: generationModeLabel(gptImage2Card),
     },
   }
 

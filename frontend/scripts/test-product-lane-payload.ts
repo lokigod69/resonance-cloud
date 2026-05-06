@@ -13,12 +13,15 @@ import {
   CARD_LAYER2_ART_STYLE_OPTIONS,
   CARD_LAYER2_MEANING_OPTIONS,
   CARD_LAYER2_PRESENTATION_OPTIONS,
+  PREMIUM_QUICK_MODE_OPTIONS,
   buildGeneratePayload,
   computeCreditCost,
   deckRowToProductLane,
   isCardLane,
   laneToCardImageModel,
   laneToDeckType,
+  premiumQuickModeLabel,
+  resolvePremiumQuickMode,
   type ExistingDeck,
   type ProductLane,
   type WizardState,
@@ -52,6 +55,8 @@ function makeState(partial: Partial<WizardState>): WizardState {
     deckName: '',
     productLane: null,
     cardImageStyle: null,
+    cardLayer2: null,
+    premiumQuickMode: 'clear',
     ...partial,
   }
 }
@@ -152,7 +157,7 @@ console.log('\n[standard card payload]')
 
 console.log('\n[premium card payload]')
 {
-  const p = settingsOf('card_premium')
+  const p = settingsOf('card_premium', { cardImageStyle: 'realistic', premiumQuickMode: 'clear' })
   assert('deck_type=card', p.deckPayload?.deck_type === 'card', p.deckPayload)
   assert(
     'card_image_model=gpt_image_2',
@@ -160,10 +165,42 @@ console.log('\n[premium card payload]')
     p.jobPayload.settings_override,
   )
   assert(
-    'premium quick/default omits card_layer2',
-    !('card_layer2' in p.jobPayload.settings_override),
+    'premium default quick mode sends Compiler V1 layer2',
+    p.jobPayload.settings_override.card_layer2?.backend_template === 'structured_plan_v1'
+      && p.jobPayload.settings_override.card_layer2?.meaning_strategy === 'clear_meaning'
+      && p.jobPayload.settings_override.card_layer2?.presentation_form === 'single_scene',
     p.jobPayload.settings_override,
   )
+  assert(
+    'premium quick mode metadata is included',
+    p.jobPayload.settings_override.premium_quick_mode === 'clear'
+      && p.jobPayload.settings_override.premium_generation_mode?.premium_quick_mode === 'clear',
+    p.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[premium quick mode resolver]')
+{
+  const expected = {
+    clear: ['structured_plan_v1', 'clear_meaning', 'single_scene'],
+    memorable: ['direct_prompt_v2', 'sound_mnemonic', 'single_scene'],
+    weird: ['direct_prompt_v2', 'absurd_hook', 'single_scene'],
+    word_design: ['direct_prompt_v2', 'absurd_hook', 'word_object_design'],
+  } as const
+  for (const [mode, [backend, meaning, presentation]] of Object.entries(expected)) {
+    const resolved = resolvePremiumQuickMode(mode as keyof typeof expected, 'surrealism')
+    assert(`${mode} backend`, resolved.backend_template === backend, resolved)
+    assert(`${mode} meaning`, resolved.card_layer2.meaning_strategy === meaning, resolved)
+    assert(`${mode} presentation`, resolved.card_layer2.presentation_form === presentation, resolved)
+    assert(`${mode} style`, resolved.metadata.art_style === 'surrealism', resolved)
+    assert(`${mode} metadata`, resolved.metadata.premium_quick_mode === mode, resolved)
+  }
+  assert(
+    'quick mode options expose friendly labels only',
+    PREMIUM_QUICK_MODE_OPTIONS.map((option) => option.label).join('|') === 'Clear|Memorable|Weird|Word Design',
+    PREMIUM_QUICK_MODE_OPTIONS,
+  )
+  assert('word_design label is friendly', premiumQuickModeLabel('word_design') === 'Word Design')
 }
 
 console.log('\n[premium customize layer2 payload]')
@@ -230,6 +267,7 @@ console.log('\n[premium quick generate omits layer2 customizations]')
       productLane: 'card_premium',
       path: 'custom',
       cardImageStyle: 'surrealism',
+      premiumQuickMode: 'weird',
       cardLayer2: {
         meaning_strategy: 'sound_mnemonic',
         presentation_form: 'split_panel',
@@ -244,15 +282,18 @@ console.log('\n[premium quick generate omits layer2 customizations]')
     p.jobPayload.settings_override,
   )
   assert(
-    'premium quick omits card_layer2',
-    !('card_layer2' in p.jobPayload.settings_override),
+    'premium quick uses selected quick mode, not customize layer2',
+    p.jobPayload.settings_override.card_layer2?.meaning_strategy === 'absurd_hook'
+      && p.jobPayload.settings_override.card_layer2?.presentation_form === 'single_scene'
+      && p.jobPayload.settings_override.card_layer2?.backend_template === 'direct_prompt_v2',
     p.jobPayload.settings_override,
   )
   assert(
-    'premium quick omits card_image_style',
-    !('card_image_style' in p.jobPayload.settings_override),
+    'premium quick includes selected/default art style',
+    p.jobPayload.settings_override.card_image_style === 'surrealism',
     p.jobPayload.settings_override,
   )
+  assert('premium quick records selected mode', p.jobPayload.settings_override.premium_quick_mode === 'weird')
 }
 
 console.log('\n[card lane omits card_image_style when null]')
@@ -278,7 +319,7 @@ console.log('\n[layer2 exposed options]')
   )
   assert(
     'all exposed presentation forms are valid',
-    ['single_scene', 'mini_story', 'split_panel', 'word_object_design']
+    ['single_scene', 'mini_story', 'split_panel', 'word_object_design', 'infographic_card']
       .every((value) => presentations.includes(value as typeof presentations[number])),
     presentations,
   )
