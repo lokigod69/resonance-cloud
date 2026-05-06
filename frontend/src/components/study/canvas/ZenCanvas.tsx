@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { CSSProperties, MouseEvent as ReactMouseEvent } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
@@ -52,6 +52,7 @@ type AudioKind = 'hover' | 'reveal' | 'pass' | 'fail' | 'ripple'
 const AMBIENT_PARTICLE_COUNT = 30
 const DISSOLVE_PARTICLE_COUNT = 80
 const PHYSICS_FRAMES = 300
+const TOOLBAR_CARD_CLEARANCE_PX = 64
 const WAVE_DURATION_MS = 2000
 const WAVE_SPEED_PX_PER_SECOND = 400
 const WAVE_MAX_OFFSET = 18
@@ -79,6 +80,42 @@ function getBounds() {
 
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
+}
+
+function useToolbarClearancePx(toolbarRef: RefObject<HTMLDivElement | null>) {
+  const [toolbarClearancePx, setToolbarClearancePx] = useState(0)
+
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined') return undefined
+
+    const updateToolbarClearance = () => {
+      const toolbarBottom = toolbarRef.current?.getBoundingClientRect().bottom ?? 0
+      setToolbarClearancePx(Math.ceil(toolbarBottom + TOOLBAR_CARD_CLEARANCE_PX))
+    }
+
+    updateToolbarClearance()
+
+    const toolbar = toolbarRef.current
+    const resizeObserver = toolbar && 'ResizeObserver' in window
+      ? new ResizeObserver(updateToolbarClearance)
+      : null
+    if (toolbar) resizeObserver?.observe(toolbar)
+
+    window.addEventListener('resize', updateToolbarClearance)
+    window.addEventListener('orientationchange', updateToolbarClearance)
+
+    return () => {
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', updateToolbarClearance)
+      window.removeEventListener('orientationchange', updateToolbarClearance)
+    }
+  }, [toolbarRef])
+
+  return toolbarClearancePx
+}
+
+function getToolbarAwareTop(y: number, toolbarClearancePx: number) {
+  return toolbarClearancePx > 0 ? `max(${y}%, ${toolbarClearancePx}px)` : `${y}%`
 }
 
 function deterministicOffset(index: number, salt: number, range: number) {
@@ -326,6 +363,7 @@ export default function ZenCanvas({
   const [breathPhase, setBreathPhase] = useState(0)
   const containerRef = useRef<HTMLDivElement | null>(null)
   const worldRef = useRef<HTMLDivElement | null>(null)
+  const toolbarRef = useRef<HTMLDivElement | null>(null)
   const wordStatesRef = useRef<ZenWordState[]>(renderWords)
   const wordElementsRef = useRef(new Map<string, HTMLDivElement>())
   const particlesRef = useRef<ZenParticle[]>(particles)
@@ -343,6 +381,7 @@ export default function ZenCanvas({
     ? resolveCardLearningMetadata(selectedState.word as WordLike)
     : null
   const selectedImage = selectedState && !selectedState.imageFailed ? getImageUrl(selectedState.word) : null
+  const toolbarClearancePx = useToolbarClearancePx(toolbarRef)
   const masteredCount = renderWords.filter((word) => word.mastered).length
   const breathScale = 1 + Math.sin(breathPhase * 0.0628) * 0.08
   const progressOpacity = 0.3 + ((Math.sin(breathPhase * 0.0628) + 1) / 2) * 0.3
@@ -549,7 +588,7 @@ export default function ZenCanvas({
         const el = wordElementsRef.current.get(word.id)
         if (el) {
           el.style.left = `${word.x}%`
-          el.style.top = `${word.y}%`
+          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx)
           el.style.transform = `translate(-50%, -50%) translateY(${Math.sin(word.drift) * 8 - word.waveOffset}px)`
         }
       }
@@ -603,7 +642,7 @@ export default function ZenCanvas({
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current)
       frameRef.current = null
     }
-  }, [sessionComplete, syncParticles])
+  }, [sessionComplete, syncParticles, toolbarClearancePx])
 
   useEffect(() => () => {
     for (const timer of timersRef.current) window.clearTimeout(timer)
@@ -768,6 +807,7 @@ export default function ZenCanvas({
         </div>
 
         <Toolbar
+          toolbarRef={toolbarRef}
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
@@ -808,7 +848,7 @@ export default function ZenCanvas({
                 className="absolute"
                 style={{
                   left: `${state.x}%`,
-                  top: `${state.y}%`,
+                  top: getToolbarAwareTop(state.y, toolbarClearancePx),
                   transform: `translate(-50%, -50%) translateY(${Math.sin(state.drift) * 8 - state.waveOffset}px)`,
                 }}
               >
@@ -865,6 +905,7 @@ export default function ZenCanvas({
 }
 
 interface ToolbarProps {
+  toolbarRef: RefObject<HTMLDivElement | null>
   activeMode: CanvasMode
   showImages: boolean
   direction: CanvasModeProps['direction']
@@ -886,6 +927,7 @@ interface ToolbarProps {
 }
 
 function Toolbar({
+  toolbarRef,
   activeMode,
   showImages,
   direction,
@@ -909,7 +951,7 @@ function Toolbar({
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
   return (
-    <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-[#0a0a0a]/40">
+    <div ref={toolbarRef} data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-[#0a0a0a]/40">
       <button
         onClick={(event) => {
           event.stopPropagation()

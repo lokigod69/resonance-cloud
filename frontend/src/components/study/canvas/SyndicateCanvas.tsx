@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { CSSProperties, MouseEvent as ReactMouseEvent } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
@@ -62,6 +62,8 @@ const PHYSICS_FORCE = 0.04
 const SETTLED_THRESHOLD = 0.12
 const SETTLED_FRAMES = 20
 const MAX_PHYSICS_FRAMES = 300
+const TOOLBAR_CARD_CLEARANCE_PX = 64
+const LONG_PHRASE_X_CLAMP_PX = 230
 const PASS_PARTICLE_COLORS = ['#00fff2', '#39ff14', '#ff0040']
 const HUES = [
   'rgba(0, 255, 242, 0.9)',
@@ -86,6 +88,42 @@ function getBounds() {
 
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
+}
+
+function useToolbarClearancePx(toolbarRef: RefObject<HTMLDivElement | null>) {
+  const [toolbarClearancePx, setToolbarClearancePx] = useState(0)
+
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined') return undefined
+
+    const updateToolbarClearance = () => {
+      const toolbarBottom = toolbarRef.current?.getBoundingClientRect().bottom ?? 0
+      setToolbarClearancePx(Math.ceil(toolbarBottom + TOOLBAR_CARD_CLEARANCE_PX))
+    }
+
+    updateToolbarClearance()
+
+    const toolbar = toolbarRef.current
+    const resizeObserver = toolbar && 'ResizeObserver' in window
+      ? new ResizeObserver(updateToolbarClearance)
+      : null
+    if (toolbar) resizeObserver?.observe(toolbar)
+
+    window.addEventListener('resize', updateToolbarClearance)
+    window.addEventListener('orientationchange', updateToolbarClearance)
+
+    return () => {
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', updateToolbarClearance)
+      window.removeEventListener('orientationchange', updateToolbarClearance)
+    }
+  }, [toolbarRef])
+
+  return toolbarClearancePx
+}
+
+function getToolbarAwareTop(y: number, toolbarClearancePx: number) {
+  return toolbarClearancePx > 0 ? `max(${y}%, ${toolbarClearancePx}px)` : `${y}%`
 }
 
 function deterministicOffset(index: number, salt: number, range: number) {
@@ -330,11 +368,14 @@ function getStringField(word: CanvasModeProps['words'][number], keys: string[]) 
 
 // Phrase rule: short headwords stay tight and nowrap; multi-word phrases or
 // long tokens wrap without adding a card box, preserving the terminal bracket grammar.
+function isLongPhrase(text: string) {
+  return /\s/.test(text) || text.length > 18
+}
+
 function phraseClassName(text: string) {
-  const isPhrase = /\s/.test(text) || text.length > 18
-  return isPhrase
-    ? 'whitespace-normal text-[clamp(0.78rem,3vw,1.05rem)] break-words'
-    : 'whitespace-nowrap'
+  return isLongPhrase(text)
+    ? 'syndicate-card-phrase text-[clamp(0.78rem,3vw,1.05rem)]'
+    : 'syndicate-card-token'
 }
 
 function speakHeadword(word: CanvasModeProps['words'][number]) {
@@ -379,6 +420,7 @@ export default function SyndicateCanvas({
   const [bursts, setBursts] = useState<GridBurst[]>([])
   const [particles, setParticles] = useState<PixelParticle[]>([])
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const toolbarRef = useRef<HTMLDivElement | null>(null)
   const wordStatesRef = useRef<SyndicateWordState[]>(renderWords)
   const wordElementsRef = useRef(new Map<string, HTMLDivElement>())
   const dropElementsRef = useRef(new Map<number, HTMLDivElement>())
@@ -396,6 +438,7 @@ export default function SyndicateCanvas({
     ? resolveCardLearningMetadata(selectedState.word as WordLike)
     : null
   const selectedImage = selectedState && !selectedState.imageFailed ? getImageUrl(selectedState.word) : null
+  const toolbarClearancePx = useToolbarClearancePx(toolbarRef)
 
   const gridStyle = useMemo<CSSProperties>(() => ({
     backgroundImage: [
@@ -586,7 +629,7 @@ export default function SyndicateCanvas({
 
         if (el) {
           el.style.left = `${word.x}%`
-          el.style.top = `${word.y}%`
+          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx)
         }
       }
 
@@ -645,7 +688,7 @@ export default function SyndicateCanvas({
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current)
       frameRef.current = null
     }
-  }, [sessionComplete])
+  }, [sessionComplete, toolbarClearancePx])
 
   useEffect(() => () => {
     for (const timer of timersRef.current) window.clearTimeout(timer)
@@ -856,6 +899,7 @@ export default function SyndicateCanvas({
         </div>
 
         <Toolbar
+          toolbarRef={toolbarRef}
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
@@ -878,6 +922,7 @@ export default function SyndicateCanvas({
             const imageUrl = !state.imageFailed ? getImageUrl(state.word) : null
             const showImageCard = showImages && !!imageUrl
             const text = state.word.text ?? state.word.word
+            const phrase = isLongPhrase(text)
             const hueColor = HUES[state.hue] ?? HUES[0]
             const cssVars = {
               '--syn-glow': hueColor,
@@ -893,6 +938,7 @@ export default function SyndicateCanvas({
               state.decrypting ? 'syndicate-fail-glitch' : 'opacity-100',
               state.mastered ? 'opacity-0 pointer-events-none' : '',
             ].join(' ')
+            const horizontalClampPx = phrase && !showImageCard ? LONG_PHRASE_X_CLAMP_PX : 64
 
             return (
               <div
@@ -900,8 +946,8 @@ export default function SyndicateCanvas({
                 ref={(node) => setWordElement(state.id, node)}
                 className="absolute"
                 style={{
-                  left: `${state.x}%`,
-                  top: `${state.y}%`,
+                  left: `clamp(${horizontalClampPx}px, ${state.x}%, calc(100% - ${horizontalClampPx}px))`,
+                  top: getToolbarAwareTop(state.y, toolbarClearancePx),
                   transform: 'translate(-50%, -50%)',
                 }}
               >
@@ -930,7 +976,9 @@ export default function SyndicateCanvas({
                     </span>
                   ) : (
                     <span className={`syndicate-card-text ${phraseClassName(text)}`} style={{ color: hueColor }}>
-                      <span className="opacity-60">[</span>{text}<span className="opacity-60">]</span>
+                      <span className="syndicate-card-bracket opacity-60">[</span>
+                      <span className="syndicate-card-body">{text}</span>
+                      <span className="syndicate-card-bracket opacity-60">]</span>
                     </span>
                   )}
                 </button>
@@ -964,6 +1012,7 @@ export default function SyndicateCanvas({
 }
 
 interface ToolbarProps {
+  toolbarRef: RefObject<HTMLDivElement | null>
   activeMode: CanvasMode
   showImages: boolean
   direction: CanvasModeProps['direction']
@@ -982,6 +1031,7 @@ interface ToolbarProps {
 }
 
 function Toolbar({
+  toolbarRef,
   activeMode,
   showImages,
   direction,
@@ -1002,7 +1052,7 @@ function Toolbar({
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
   return (
-    <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/50 border-b border-[#00fff2]/20 font-mono">
+    <div ref={toolbarRef} data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/50 border-b border-[#00fff2]/20 font-mono">
       <button
         onClick={(event) => {
           event.stopPropagation()
@@ -1303,18 +1353,36 @@ function SyndicateStyle() {
         }
 
         .syndicate-card-text {
-          display: inline-block;
-          white-space: nowrap;
+          display: inline-flex;
+          align-items: center;
           line-height: 1.3;
           font-size: clamp(0.9rem, 4vw, 1.3rem);
           padding: 0.3rem 0.4rem;
           min-height: 40px;
           min-width: 50px;
+          max-width: min(420px, calc(100vw - 48px));
           letter-spacing: 0.025em;
         }
 
-        .syndicate-card-text.whitespace-normal {
+        .syndicate-card-body {
+          min-width: 0;
+        }
+
+        .syndicate-card-bracket {
+          flex: 0 0 auto;
+        }
+
+        .syndicate-card-token .syndicate-card-body {
+          white-space: nowrap;
+        }
+
+        .syndicate-card-phrase {
           white-space: normal;
+        }
+
+        .syndicate-card-phrase .syndicate-card-body {
+          overflow-wrap: anywhere;
+          word-break: break-word;
         }
 
         .grid-glitch-burst {

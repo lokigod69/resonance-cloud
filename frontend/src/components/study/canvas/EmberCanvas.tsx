@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { CSSProperties, MouseEvent as ReactMouseEvent } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
@@ -37,6 +37,7 @@ type AudioKind = 'hover' | 'reveal' | 'pass' | 'fail'
 
 const INITIAL_EMBER_COUNT = 150
 const PHYSICS_FRAMES = 300
+const TOOLBAR_CARD_CLEARANCE_PX = 64
 const HUE_COLORS = [
   'rgba(255, 160, 100, 0.85)',
   'rgba(255, 190, 120, 0.85)',
@@ -257,6 +258,42 @@ function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
 }
 
+function useToolbarClearancePx(toolbarRef: RefObject<HTMLDivElement | null>) {
+  const [toolbarClearancePx, setToolbarClearancePx] = useState(0)
+
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined') return undefined
+
+    const updateToolbarClearance = () => {
+      const toolbarBottom = toolbarRef.current?.getBoundingClientRect().bottom ?? 0
+      setToolbarClearancePx(Math.ceil(toolbarBottom + TOOLBAR_CARD_CLEARANCE_PX))
+    }
+
+    updateToolbarClearance()
+
+    const toolbar = toolbarRef.current
+    const resizeObserver = toolbar && 'ResizeObserver' in window
+      ? new ResizeObserver(updateToolbarClearance)
+      : null
+    if (toolbar) resizeObserver?.observe(toolbar)
+
+    window.addEventListener('resize', updateToolbarClearance)
+    window.addEventListener('orientationchange', updateToolbarClearance)
+
+    return () => {
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', updateToolbarClearance)
+      window.removeEventListener('orientationchange', updateToolbarClearance)
+    }
+  }, [toolbarRef])
+
+  return toolbarClearancePx
+}
+
+function getToolbarAwareTop(y: number, toolbarClearancePx: number) {
+  return toolbarClearancePx > 0 ? `max(${y}%, ${toolbarClearancePx}px)` : `${y}%`
+}
+
 // Phrase rule: single short headwords stay tight and nowrap; phrases or long tokens
 // wrap on word boundaries in a wider warm card so compound vocabulary stays readable.
 function phraseClassName(text: string) {
@@ -306,6 +343,7 @@ export default function EmberCanvas({
   const [revealedId, setRevealedId] = useState<string | null>(null)
   const [imageFailures, setImageFailures] = useState<Set<string>>(new Set())
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const toolbarRef = useRef<HTMLDivElement | null>(null)
   const wordStatesRef = useRef<EmberWordState[]>(renderWords)
   const wordElementsRef = useRef(new Map<string, HTMLDivElement>())
   const particlesRef = useRef<EmberParticle[]>(particles)
@@ -321,6 +359,7 @@ export default function EmberCanvas({
     ? resolveCardLearningMetadata(selectedState.word as WordLike)
     : null
   const selectedImage = selectedState && !selectedState.imageFailed ? getImageUrl(selectedState.word) : null
+  const toolbarClearancePx = useToolbarClearancePx(toolbarRef)
   const passedOnPage = renderWords.filter((w) => w.mastered).length
   const progress = words.length > 0 ? passedOnPage / words.length : 0
   const warmthRoot = Math.sqrt(progress)
@@ -475,7 +514,7 @@ export default function EmberCanvas({
           const el = wordElementsRef.current.get(word.id)
           if (el) {
             el.style.left = `${word.x}%`
-            el.style.top = `${word.y}%`
+            el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx)
           }
           continue
         }
@@ -514,7 +553,7 @@ export default function EmberCanvas({
         const el = wordElementsRef.current.get(word.id)
         if (el) {
           el.style.left = `${word.x}%`
-          el.style.top = `${word.y}%`
+          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx)
         }
       }
 
@@ -542,7 +581,7 @@ export default function EmberCanvas({
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current)
       frameRef.current = null
     }
-  }, [sessionComplete])
+  }, [sessionComplete, toolbarClearancePx])
 
   useEffect(() => () => {
     for (const timer of timersRef.current) window.clearTimeout(timer)
@@ -672,6 +711,7 @@ export default function EmberCanvas({
         </div>
 
         <Toolbar
+          toolbarRef={toolbarRef}
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
@@ -707,7 +747,7 @@ export default function EmberCanvas({
                 className="absolute"
                 style={{
                   left: `${state.x}%`,
-                  top: `${state.y}%`,
+                  top: getToolbarAwareTop(state.y, toolbarClearancePx),
                   transform: 'translate(-50%, -50%)',
                 }}
               >
@@ -755,6 +795,7 @@ export default function EmberCanvas({
 }
 
 interface ToolbarProps {
+  toolbarRef: RefObject<HTMLDivElement | null>
   activeMode: CanvasMode
   showImages: boolean
   direction: CanvasModeProps['direction']
@@ -773,6 +814,7 @@ interface ToolbarProps {
 }
 
 function Toolbar({
+  toolbarRef,
   activeMode,
   showImages,
   direction,
@@ -793,7 +835,7 @@ function Toolbar({
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
   return (
-    <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/40 border-b border-orange-900/30">
+    <div ref={toolbarRef} data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/40 border-b border-orange-900/30">
       <button
         onClick={(event) => {
           event.stopPropagation()
