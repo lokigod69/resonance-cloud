@@ -21,6 +21,7 @@ import {
   LAYER2_BACKEND_TEMPLATE_OPTIONS,
   layer2VariantSlugForRow,
   normalizeLayer2LabWords,
+  resolveLayer2LabQuickModePreset,
   validateLayer2LabSubmit,
   type Layer2LabRun,
 } from '../src/lib/adminLayer2Lab.ts'
@@ -112,6 +113,23 @@ console.log('\n[script row builder v3 backend]')
   assert('direct_prompt_v3 row is accepted', rows[0]?.backend_template === 'direct_prompt_v3', rows)
 }
 
+console.log('\n[quick mode preset resolver]')
+{
+  const expected = {
+    clear: ['clear_meaning', 'single_scene'],
+    memorable: ['sound_mnemonic', 'single_scene'],
+    weird: ['absurd_hook', 'single_scene'],
+    word_design: ['clear_meaning', 'word_object_design'],
+    infographic: ['clear_meaning', 'infographic_card'],
+  } as const
+  for (const [preset, [meaning, presentation]] of Object.entries(expected)) {
+    const resolved = resolveLayer2LabQuickModePreset(preset as keyof typeof expected)
+    assert(`${preset} preset meaning`, resolved?.meaning_strategy === meaning, resolved)
+    assert(`${preset} preset presentation`, resolved?.presentation_form === presentation, resolved)
+  }
+  assert('custom preset does not override raw controls', resolveLayer2LabQuickModePreset('custom') === null)
+}
+
 console.log('\n[script row builder infographic form]')
 {
   const rows = buildLayer2LabRows({
@@ -122,9 +140,11 @@ console.log('\n[script row builder infographic form]')
     presentation_form: 'infographic_card',
     art_style: 'editorial',
     backend_template: 'direct_prompt_v2',
+    quick_mode_preset: 'infographic',
     label: 'infographic smoke',
   })
   assert('infographic_card row is accepted', rows[0]?.presentation_form === 'infographic_card', rows)
+  assert('quick mode preset carried through', rows[0]?.quick_mode_preset === 'infographic', rows)
 }
 
 console.log('\n[all-word script rows]')
@@ -281,6 +301,7 @@ console.log('\n[premium lab v3 payload]')
     presentation_form: 'single_scene',
     art_style: 'realistic',
     backend_template: 'direct_prompt_v3',
+    quick_mode_preset: 'memorable',
     label: 'llm v3 visual craft smoke',
   }
   const p = buildLayer2LabPayload({
@@ -295,6 +316,10 @@ console.log('\n[premium lab v3 payload]')
   )
   assert('records direct_prompt_v3 in layer2_eval',
     p.jobPayload.settings_override.layer2_eval?.backend_template === 'direct_prompt_v3',
+    p.jobPayload.settings_override,
+  )
+  assert('records quick mode preset in layer2_eval',
+    p.jobPayload.settings_override.layer2_eval?.quick_mode_preset === 'memorable',
     p.jobPayload.settings_override,
   )
 }

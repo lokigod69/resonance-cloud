@@ -40,10 +40,14 @@ import {
   getLayer2LabPresetRows,
   isLayer2LabAppendDeck,
   layer2BackendTemplateLabel,
+  layer2QuickModePresetLabel,
   LAYER2_BACKEND_TEMPLATE_OPTIONS,
+  LAYER2_QUICK_MODE_PRESET_OPTIONS,
   normalizeLayer2LabWords,
+  resolveLayer2LabQuickModePreset,
   validateLayer2LabSubmit,
   type Layer2LabDeckMode,
+  type Layer2LabQuickModePreset,
   type Layer2LabRun,
   type Layer2LabResultSummary,
   type Layer2LabWordScope,
@@ -75,6 +79,7 @@ export default function Layer2Lab() {
   const [words, setWords] = useState<string[]>([])
   const [selectedWord, setSelectedWord] = useState<string | null>(null)
   const [wordScope, setWordScope] = useState<Layer2LabWordScope>('selected')
+  const [quickModePreset, setQuickModePreset] = useState<Layer2LabQuickModePreset>('custom')
   const [meaningStrategy, setMeaningStrategy] = useState<CardLayer2MeaningStrategy>('clear_meaning')
   const [presentationForm, setPresentationForm] = useState<CardLayer2PresentationForm>('single_scene')
   const [artStyle, setArtStyle] = useState<CardLayer2ArtStyle>('realistic')
@@ -170,12 +175,21 @@ export default function Layer2Lab() {
     }
   }
 
+  function applyQuickModePreset(value: Layer2LabQuickModePreset) {
+    setQuickModePreset(value)
+    const resolved = resolveLayer2LabQuickModePreset(value)
+    if (!resolved) return
+    setMeaningStrategy(resolved.meaning_strategy)
+    setPresentationForm(resolved.presentation_form)
+  }
+
   function addCurrentRun() {
     if (!canAddRun) return
     const rows = buildLayer2LabRows({
       words,
       selectedWord: selectedWordValue,
       wordScope,
+      quick_mode_preset: quickModePreset,
       meaning_strategy: meaningStrategy,
       presentation_form: presentationForm,
       art_style: artStyle,
@@ -459,8 +473,25 @@ export default function Layer2Lab() {
                 </Select>
               </label>
               <label className="space-y-1 text-sm">
+                <span className="text-muted-foreground">Quick Mode Preset</span>
+                <Select value={quickModePreset} onValueChange={(value) => applyQuickModePreset(value as Layer2LabQuickModePreset)}>
+                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
+                    {LAYER2_QUICK_MODE_PRESET_OPTIONS.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
+              <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Meaning strategy</span>
-                <Select value={meaningStrategy} onValueChange={(value) => setMeaningStrategy(value as CardLayer2MeaningStrategy)}>
+                <Select
+                  value={meaningStrategy}
+                  onValueChange={(value) => {
+                    setMeaningStrategy(value as CardLayer2MeaningStrategy)
+                    setQuickModePreset('custom')
+                  }}
+                >
                   <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
                   <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
                     {CARD_LAYER2_MEANING_OPTIONS.map((option) => (
@@ -471,7 +502,13 @@ export default function Layer2Lab() {
               </label>
               <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Presentation form</span>
-                <Select value={presentationForm} onValueChange={(value) => setPresentationForm(value as CardLayer2PresentationForm)}>
+                <Select
+                  value={presentationForm}
+                  onValueChange={(value) => {
+                    setPresentationForm(value as CardLayer2PresentationForm)
+                    setQuickModePreset('custom')
+                  }}
+                >
                   <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
                   <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
                     {CARD_LAYER2_PRESENTATION_OPTIONS.map((option) => (
@@ -534,6 +571,7 @@ export default function Layer2Lab() {
                 <thead>
                   <tr className="border-b text-left text-muted-foreground">
                     <th className="py-2 pr-3 font-medium">Word</th>
+                    <th className="py-2 pr-3 font-medium">Quick Mode</th>
                     <th className="py-2 pr-3 font-medium">Meaning Strategy</th>
                     <th className="py-2 pr-3 font-medium">Presentation Form</th>
                     <th className="py-2 pr-3 font-medium">Art Style</th>
@@ -546,6 +584,7 @@ export default function Layer2Lab() {
                   {scriptRows.map((row) => (
                     <tr key={row.id} className="border-b border-border/60">
                       <td className="py-2 pr-3">{row.word}</td>
+                      <td className="py-2 pr-3">{layer2QuickModePresetLabel(row.quick_mode_preset ?? 'custom')}</td>
                       <td className="py-2 pr-3">{cardLayer2MeaningLabel(row.meaning_strategy)}</td>
                       <td className="py-2 pr-3">{cardLayer2PresentationLabel(row.presentation_form)}</td>
                       <td className="py-2 pr-3">{cardLayer2ArtStyleLabel(row.art_style)}</td>
@@ -567,7 +606,7 @@ export default function Layer2Lab() {
                   ))}
                   {scriptRows.length === 0 && (
                     <tr>
-                      <td className="py-6 text-center text-muted-foreground" colSpan={7}>
+                      <td className="py-6 text-center text-muted-foreground" colSpan={8}>
                         No planned runs yet.
                       </td>
                     </tr>

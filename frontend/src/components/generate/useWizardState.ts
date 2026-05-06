@@ -78,6 +78,7 @@ export interface Layer2EvalPayload {
   lab_run_id?: string
   original_word: string
   variant_slug: string
+  quick_mode_preset?: PremiumQuickMode | 'custom'
   meaning_strategy: CardLayer2MeaningStrategy
   presentation_form: CardLayer2PresentationForm
   art_style: CardLayer2ArtStyle

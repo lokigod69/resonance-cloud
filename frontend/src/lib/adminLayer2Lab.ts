@@ -6,14 +6,22 @@ import type {
   ExistingDeck,
   GeneratePayload,
   Layer2EvalPayload,
+  PremiumQuickMode,
+} from '@/components/generate/useWizardState'
+import {
+  PREMIUM_QUICK_MODE_OPTIONS,
+  premiumQuickModeLabel,
+  resolvePremiumQuickMode,
 } from '@/components/generate/useWizardState'
 
 export type Layer2LabWordScope = 'selected' | 'all'
 export type Layer2LabDeckMode = 'create' | 'append'
+export type Layer2LabQuickModePreset = PremiumQuickMode | 'custom'
 
 export interface Layer2LabRun {
   id: string
   word: string
+  quick_mode_preset?: Layer2LabQuickModePreset
   meaning_strategy: CardLayer2MeaningStrategy
   presentation_form: CardLayer2PresentationForm
   art_style: CardLayer2ArtStyle
@@ -35,6 +43,7 @@ export interface BuildLayer2LabRowsInput {
   presentation_form: CardLayer2PresentationForm
   art_style: CardLayer2ArtStyle
   backend_template: CardLayer2BackendTemplate
+  quick_mode_preset?: Layer2LabQuickModePreset
   label: string
 }
 
@@ -75,6 +84,16 @@ export const LAYER2_BACKEND_TEMPLATE_OPTIONS: Array<{
   { value: 'direct_prompt_v2', label: 'LLM V2' },
   { value: 'direct_prompt_v3', label: 'LLM V3 · Visual Craft' },
 ]
+export const LAYER2_QUICK_MODE_PRESET_OPTIONS: Array<{
+  value: Layer2LabQuickModePreset
+  label: string
+}> = [
+  { value: 'custom', label: 'Custom / Raw controls' },
+  ...PREMIUM_QUICK_MODE_OPTIONS.map((option) => ({
+    value: option.value,
+    label: option.label,
+  })),
+]
 export const LAYER2_LAB_CREDITS_PER_ROW = 5
 const WORD_DESIGN_STYLES: CardLayer2ArtStyle[] = ['realistic', 'pixar_3d', 'rick_and_morty_style', 'pen_and_ink']
 const STYLE_OBEDIENCE_STYLES: CardLayer2ArtStyle[] = [
@@ -96,6 +115,21 @@ const STORY_FORM_TRIPLES: Array<{
 
 export function layer2BackendTemplateLabel(value: CardLayer2BackendTemplate | string | null | undefined): string {
   return LAYER2_BACKEND_TEMPLATE_OPTIONS.find((option) => option.value === value)?.label ?? value ?? ''
+}
+
+export function layer2QuickModePresetLabel(value: Layer2LabQuickModePreset | string | null | undefined): string {
+  return value === 'custom' ? 'Custom' : premiumQuickModeLabel(value)
+}
+
+export function resolveLayer2LabQuickModePreset(
+  value: Layer2LabQuickModePreset,
+): Pick<Layer2LabRun, 'meaning_strategy' | 'presentation_form'> | null {
+  if (value === 'custom') return null
+  const resolved = resolvePremiumQuickMode(value, null)
+  return {
+    meaning_strategy: resolved.card_layer2.meaning_strategy,
+    presentation_form: resolved.card_layer2.presentation_form,
+  }
 }
 
 export const ADMIN_LAYER2_LAB_PRESETS: Layer2LabPreset[] = [
@@ -139,6 +173,7 @@ function row(
 ): Omit<Layer2LabRun, 'id'> {
   return {
     word: wordText,
+    quick_mode_preset: 'custom',
     meaning_strategy: meaning,
     presentation_form: presentation,
     art_style: style,
@@ -225,6 +260,7 @@ export function buildLayer2LabRows(input: BuildLayer2LabRowsInput): Layer2LabRun
         String(index),
       ),
       word: wordText,
+      quick_mode_preset: input.quick_mode_preset ?? 'custom',
       meaning_strategy: input.meaning_strategy,
       presentation_form: input.presentation_form,
       art_style: input.art_style,
@@ -295,6 +331,7 @@ export function layer2EvalForRow(
     ...(runId ? { lab_run_id: runId } : {}),
     original_word: rowItem.word,
     variant_slug: layer2VariantSlugForRow(rowItem, scriptIndex, runId),
+    quick_mode_preset: rowItem.quick_mode_preset ?? 'custom',
     meaning_strategy: rowItem.meaning_strategy,
     presentation_form: rowItem.presentation_form,
     art_style: rowItem.art_style,
