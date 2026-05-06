@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AlertCircle, FileText, Loader2 } from 'lucide-react'
+import { AlertCircle, FileText, Loader2, X } from 'lucide-react'
 import type { MusicTrack } from '@/hooks/useMusicPlayer'
 import { Button } from '@/components/ui/button'
 import {
@@ -208,6 +208,15 @@ export function LyricsSheet({
     }
   }, [open, track, t])
 
+  useEffect(() => {
+    if (variant !== 'glassy' || !open) return
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onOpenChange(false)
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [onOpenChange, open, variant])
+
   const row = state.row
   const lyricsRow = state.lyricsRow
   const genre = compactMusicCaptionSegment(
@@ -261,6 +270,137 @@ export function LyricsSheet({
           </pre>
         </div>
       </section>
+    )
+  }
+
+  function renderGlassyLyricsPanel(
+    label: string,
+    lyrics: string | null,
+    className: string,
+  ) {
+    if (!lyrics) return null
+    return (
+      <section
+        className={[
+          'pointer-events-auto flex min-h-0 min-w-0 flex-col rounded-lg border border-[var(--border-subtle)] bg-[var(--glass-bg,rgba(12,12,18,0.58))] p-4 text-[var(--text-primary)] shadow-2xl shadow-black/25 backdrop-blur-2xl',
+          className,
+        ].join(' ')}
+      >
+        {hasTranslation ? (
+          <h3 className="mb-2 text-xs font-medium uppercase tracking-normal text-[var(--text-muted)]">
+            {label}
+          </h3>
+        ) : null}
+        <div className="relative min-h-0 flex-1 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-8 before:bg-gradient-to-b before:from-[var(--glass-bg,rgba(12,12,18,0.92))] before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-8 after:bg-gradient-to-t after:from-[var(--glass-bg,rgba(12,12,18,0.92))] after:to-transparent before:pointer-events-none after:pointer-events-none">
+          <pre
+            className="h-full max-h-[min(56dvh,36rem)] overflow-y-auto whitespace-pre-wrap px-1 py-5 font-sans text-[15px] leading-7 text-[var(--text-primary)] sm:max-h-[min(58dvh,38rem)] [&::-webkit-scrollbar]:hidden"
+            style={{ scrollbarWidth: 'none' }}
+          >
+            {lyrics}
+          </pre>
+        </div>
+      </section>
+    )
+  }
+
+  function renderStatusBody() {
+    if (state.status === 'loading') {
+      return (
+        <div className="flex items-center gap-2 py-8 text-sm text-muted-foreground">
+          <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+          {t('music.lyrics.loading')}
+        </div>
+      )
+    }
+    if (state.status === 'error') {
+      return (
+        <div className="flex items-start gap-2 rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+          <span>{state.error || t('music.lyrics.error')}</span>
+        </div>
+      )
+    }
+    return <p className="py-8 text-sm text-muted-foreground">{t('music.lyrics.empty')}</p>
+  }
+
+  if (variant === 'glassy') {
+    if (!open) return null
+
+    const renderGlassyCloseButton = (className = '') => (
+      <button
+        type="button"
+        onClick={() => onOpenChange(false)}
+        className={[
+          'pointer-events-auto absolute z-20 flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--glass-bg,rgba(12,12,18,0.72))] text-[var(--text-muted)] backdrop-blur-xl transition hover:text-[var(--text-primary)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+          className,
+        ].join(' ')}
+        aria-label="Close"
+      >
+        <X className="h-4 w-4" aria-hidden />
+      </button>
+    )
+
+    return (
+      <div data-glassy-lyrics-layer className="pointer-events-none fixed inset-0 z-30">
+        <div className="hidden h-full items-center gap-6 px-6 pb-[calc(8rem+env(safe-area-inset-bottom,0px))] pt-24 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,28rem)_minmax(0,1fr)]">
+          {hasTranslation
+            ? renderGlassyLyricsPanel(t('music.lyrics.translation'), displayTranslation, 'lg:col-start-1')
+            : null}
+          <div className="lg:col-start-2" aria-hidden />
+          {displayOriginal
+            ? renderGlassyLyricsPanel(t('music.lyrics.original'), displayOriginal, 'lg:col-start-3')
+            : (
+              <div className="pointer-events-auto lg:col-start-3">
+                {renderStatusBody()}
+              </div>
+            )}
+          {renderGlassyCloseButton('right-6 top-20')}
+        </div>
+
+        <div className="pointer-events-auto fixed inset-x-3 bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))] z-40 max-h-[72dvh] rounded-t-2xl border border-[var(--border-subtle)] bg-[var(--glass-bg,rgba(12,12,18,0.84))] p-4 text-[var(--text-primary)] shadow-2xl shadow-black/30 backdrop-blur-2xl lg:hidden">
+          <div className="mb-3 flex items-center justify-between gap-3 pr-10">
+            <div className="min-w-0">
+              <p className="truncate text-sm font-medium">{track?.word ?? t('music.lyrics')}</p>
+              {track?.translation ? (
+                <p className="truncate text-xs text-[var(--text-muted)]">{track.translation}</p>
+              ) : null}
+            </div>
+          </div>
+          {hasTranslation ? (
+            <div className="mb-3 grid grid-cols-2 rounded-full bg-[var(--field-bg)] p-1">
+              <Button
+                type="button"
+                variant={translationView === 'original' ? 'secondary' : 'ghost'}
+                size="sm"
+                aria-pressed={translationView === 'original'}
+                onClick={() => setTranslationView('original')}
+              >
+                {t('music.lyrics.original')}
+              </Button>
+              <Button
+                type="button"
+                variant={translationView === 'translation' ? 'secondary' : 'ghost'}
+                size="sm"
+                aria-pressed={translationView === 'translation'}
+                onClick={() => setTranslationView('translation')}
+              >
+                {t('music.lyrics.translation')}
+              </Button>
+            </div>
+          ) : null}
+          {mobileLyrics ? (
+            <div className="relative max-h-[52dvh] overflow-hidden before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-7 before:bg-gradient-to-b before:from-[var(--glass-bg,rgba(12,12,18,0.94))] before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-7 after:bg-gradient-to-t after:from-[var(--glass-bg,rgba(12,12,18,0.94))] after:to-transparent before:pointer-events-none after:pointer-events-none">
+              <pre
+                className="max-h-[52dvh] overflow-y-auto whitespace-pre-wrap py-5 font-sans text-[15px] leading-7 text-[var(--text-primary)] [&::-webkit-scrollbar]:hidden"
+                style={{ scrollbarWidth: 'none' }}
+              >
+                {mobileLyrics}
+              </pre>
+            </div>
+          ) : renderStatusBody()}
+          {renderGlassyCloseButton('right-3 top-3')}
+        </div>
+      </div>
     )
   }
 

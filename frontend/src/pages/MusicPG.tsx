@@ -494,9 +494,15 @@ export default function MusicPG() {
               </button>
 
               <button
-                onClick={() => currentTrack && setLyricsTrack(currentTrack)}
+                onClick={() =>
+                  currentTrack &&
+                  setLyricsTrack((openTrack) =>
+                    openTrack?.id === currentTrack.id ? null : currentTrack,
+                  )
+                }
                 disabled={!currentTrack || !trackHasAudio(currentTrack)}
                 className={`w-9 h-9 ${PLAYER_ROUNDED_ICON_BUTTON_CLASS} ${PLAYER_INACTIVE_TOGGLE_CLASS}`}
+                aria-pressed={lyricsTrack?.id === currentTrack?.id}
                 aria-label={t('music.lyrics')}
                 title={t('music.lyrics')}
               >

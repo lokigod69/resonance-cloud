@@ -142,13 +142,29 @@ def test_glassy_music_has_single_current_track_lyrics_button_not_orb_labels():
     music_pg = read_frontend("pages/MusicPG.tsx")
     orb_row = read_frontend("components/music/OrbThumbnailRow.tsx")
 
-    assert "setLyricsTrack(currentTrack)" in music_pg
+    assert "setLyricsTrack((openTrack) =>" in music_pg
+    assert "openTrack?.id === currentTrack.id ? null : currentTrack" in music_pg
+    assert "aria-pressed={lyricsTrack?.id === currentTrack?.id}" in music_pg
     assert "disabled={!currentTrack || !trackHasAudio(currentTrack)}" in music_pg
     assert "variant=\"glassy\"" in music_pg
     assert "compactMusicCaptionSegment(resolveTrackMusicCaption(currentTrack))" in music_pg
     assert "music.lyrics" not in orb_row
     assert "<span className=\"sr-only\">" in orb_row
     assert "<span className=\"sr-only\">\n                      {isGenerating ? t('music.generatingSong') : t('music.generateSong')}\n                    </span>" in orb_row
+
+
+def test_glassy_lyrics_uses_embedded_reading_layer_not_dialog_drawer():
+    sheet = read_frontend("components/music/LyricsSheet.tsx")
+
+    assert "if (variant === 'glassy')" in sheet
+    assert "data-glassy-lyrics-layer" in sheet
+    assert "lg:grid-cols-[minmax(0,1fr)_minmax(18rem,28rem)_minmax(0,1fr)]" in sheet
+    assert "lg:col-start-1" in sheet
+    assert "lg:col-start-3" in sheet
+    assert "pointer-events-none" in sheet
+    assert "pointer-events-auto" in sheet
+    assert "fixed inset-x-3 bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))]" in sheet
+    assert "DialogContent className={contentClassName}" in sheet
 
 
 def test_lyrics_sheet_uses_centered_reading_overlay_with_internal_scroll():
