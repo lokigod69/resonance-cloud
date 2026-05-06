@@ -93,6 +93,9 @@ def test_direct_prompt_v2_system_prompt_adds_controlled_creative_guidance():
     assert "If the word is abstract" in prompt
     assert "Mini Story: one image containing 2-3 readable beats" in prompt
     assert "Word as Design: target word may appear visibly" in prompt
+    assert "educational study poster" in prompt
+    assert "not a normal image with labels" in prompt
+    assert "Do not include internal metadata" in prompt
     assert "Incidental environmental text is allowed" in prompt
     assert "Never render the direct translation/answer" in prompt
     assert "no text ever" not in prompt.lower()
@@ -167,8 +170,16 @@ def test_direct_prompt_v2_infographic_allows_target_word_and_translation_with_gu
         allow_translation=True,
     )
 
-    assert "Presentation form: infographic_card" in prompt
-    assert "Design a premium educational infographic card" in prompt
+    assert "Presentation form: designed educational study poster" in prompt
+    assert "Design a premium educational study poster" in prompt
+    assert "not a normal image with labels" in prompt
+    assert "Choose only the best 3-5 compact learning elements" in prompt
+    assert "Do not force mnemonics" in prompt
+    assert "Do not mention \"origin unknown\"" in prompt
+    assert "Do not include internal metadata" in prompt
+    assert "infographic card" not in prompt.lower()
+    assert "clear_meaning" not in prompt
+    assert "Backend template:" not in prompt
     assert "target word and translation may appear as text" in prompt
     assert "Spell visible target word exactly: ephemeral." in prompt
     assert "Spell visible translation exactly: short-lived." in prompt

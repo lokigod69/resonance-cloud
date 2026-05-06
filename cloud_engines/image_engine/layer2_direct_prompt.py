@@ -155,7 +155,7 @@ def build_direct_prompt_v2_system_prompt() -> str:
         "- Mini Story: one image containing 2-3 readable beats, such as cause/effect, before/during/after, attempt/result, or transformation. Avoid chaotic comic strips unless the style supports it.\n"
         "- Split Panel: use only when contrast helps the word, with tasteful separation for before/after, despite/result, less/more, obstacle/continuation, or cause/effect.\n"
         "- Word as Design: target word may appear visibly and should be the main visual object. Choose naturally among meaningful material lettering, letters becoming an object, place, architecture, or symbol, natural in-world text, symbolic letter fragments, or language/script-aware form; do not always use the same approach.\n\n"
-        "- Infographic: design a premium educational infographic card with a central visual anchor and a few compact callouts. Choose useful word-specific angles such as meaning, translation, grammar, usage, origin, cultural nuance, memory cue, example phrase, or surprising fact. Use short readable labels, not paragraphs; keep it elegant, spacious, image-first, and memorable.\n\n"
+        "- Infographic: design a premium educational study poster, not a normal image with labels. Use a clear visual hierarchy, a central visual anchor, spacious readable layout, and compact callouts. Choose only the best 3-5 word-specific learning elements from meaning, translation, usage, useful grammar or word form, example phrase, collocation, interesting origin, cultural nuance, synonym/contrast, world knowledge, or a genuinely useful memory cue. Skip weak fields. Do not force mnemonics or fake phonetic bridges. Do not mention origin unknown unless that fact itself is useful. Do not repeat the same information in multiple boxes. Do not include internal metadata, mode names, prompt labels, backend labels, or implementation terms as visible text.\n\n"
         "Text policy: Visible target word is allowed and expected in Word as Design. "
         "In Infographic, the target word and translation may appear as visible study-card text, along with short explanatory labels. "
         "In other forms, do not casually place the target word as a label unless it clearly helps the scene. "
@@ -202,10 +202,12 @@ def build_direct_prompt_user_prompt(
 ) -> str:
     presentation_form = _clean(layer2.get("presentation_form")) or "single_scene"
     selected_template = backend_template(layer2)
-    if presentation_form == "infographic_card":
+    is_infographic = presentation_form == "infographic_card"
+    if is_infographic:
         answer_policy = (
             "the target word and translation may appear as text. "
-            "Use short readable labels and compact callouts, not paragraphs."
+            "Use short readable labels and compact callouts, not paragraphs. "
+            "Never render internal metadata, mode names, prompt labels, backend labels, or implementation terms."
         )
     elif selected_template in {DIRECT_PROMPT_V2_TEMPLATE, DIRECT_PROMPT_V3_TEMPLATE} and not allow_target_word:
         answer_policy = (
@@ -218,13 +220,19 @@ def build_direct_prompt_user_prompt(
             if allow_target_word
             else "Target word must not appear as readable text."
         )
-    if presentation_form == "infographic_card":
+    if is_infographic:
         spelling_rule = (
-            f"\nInfographic guidance: Design a premium educational infographic card for the target word. "
-            "Use a central visual anchor and a few compact callouts. Choose the most useful and interesting "
-            "information for this specific word: meaning, translation, grammar, usage, word origin, cultural "
-            "nuance, memory cue, example phrase, or surprising fact. Use short readable labels, not paragraphs. "
-            "Make it elegant, spacious, and memorable. The target word and translation may appear as text. "
+            f"\nStudy-poster guidance: Design a premium educational study poster for the target word, "
+            "not a normal image with labels. Use clear visual hierarchy, a central visual anchor, compact "
+            "callouts, and spacious readable layout. Choose only the best 3-5 compact learning elements for "
+            "this specific word: concise meaning, translation, useful grammar or word form, natural example "
+            "phrase, common collocation, interesting origin, cultural nuance, synonym/contrast, relevant world "
+            "knowledge, visual/base-language bridge, or a genuinely useful memory cue. If a field is weak, skip it; "
+            "do not fill every slot just to fill space. Do not force mnemonics. Avoid fake phonetic bridges. "
+            "Do not mention \"origin unknown\" unless that fact itself is useful or interesting. Avoid repeating "
+            "the same information in multiple boxes. Prefer word-specific insight over generic dictionary fields. "
+            "Do not include internal metadata, mode names, prompt labels, backend labels, or implementation terms "
+            "as visible text. The target word and translation may appear as text. "
             "Spell all visible text carefully."
             f"\nSpelling rule: Spell visible target word exactly: {_clean(content.word)}. "
             f"Spell visible translation exactly: {_clean(content.translation)}."
@@ -237,8 +245,18 @@ def build_direct_prompt_user_prompt(
         spelling_rule = ""
     backend_line = (
         f"Backend template: {selected_template}\n"
-        if selected_template in {DIRECT_PROMPT_V2_TEMPLATE, DIRECT_PROMPT_V3_TEMPLATE}
+        if selected_template in {DIRECT_PROMPT_V2_TEMPLATE, DIRECT_PROMPT_V3_TEMPLATE} and not is_infographic
         else ""
+    )
+    strategy_line = (
+        f"Learning approach: {_infographic_strategy_label(_clean(layer2.get('meaning_strategy')))}\n"
+        if is_infographic
+        else f"Meaning strategy: {_clean(layer2.get('meaning_strategy')) or 'clear_meaning'}\n"
+    )
+    presentation_line = (
+        "Presentation form: designed educational study poster\n"
+        if is_infographic
+        else f"Presentation form: {presentation_form}\n"
     )
     prompt_length_line = (
         "Concise V3 prompt target: 700-1100 characters. "
@@ -257,8 +275,8 @@ def build_direct_prompt_user_prompt(
         f"Existing mnemonic: {content.mnemonic or 'none'}\n"
         f"Bridge mnemonic: {content.bridge_mnemonic or 'none'}\n"
         f"Existing image scene: {content.image_scene or 'none'}\n"
-        f"Meaning strategy: {_clean(layer2.get('meaning_strategy')) or 'clear_meaning'}\n"
-        f"Presentation form: {presentation_form}\n"
+        f"{strategy_line}"
+        f"{presentation_line}"
         f"{backend_line}"
         f"Art style: {art_style}\n"
         f"Answer policy: {answer_policy}"
@@ -383,6 +401,16 @@ def _call_openrouter_direct_prompt(
 
 def _clean(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "").strip())
+
+
+def _infographic_strategy_label(value: str) -> str:
+    labels = {
+        "clear_meaning": "clear, meaning-first study explanation",
+        "exaggerated_meaning": "exaggerated but readable study explanation",
+        "absurd_hook": "strange but meaning-first memory support",
+        "sound_mnemonic": "mnemonic only if genuinely useful; otherwise use word-specific insight",
+    }
+    return labels.get(value, "clear, meaning-first study explanation")
 
 
 def _strip_wrapping(text: str) -> str:

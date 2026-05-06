@@ -620,6 +620,88 @@ def test_infographic_structured_template_falls_back_to_direct_prompt_v2(monkeypa
     assert any("infographic_card uses direct_prompt_v2" in note for note in metadata["layer2_snap_notes"])
 
 
+def test_infographic_direct_prompt_v3_stays_on_v3(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult
+
+    calls: dict[str, object] = {}
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **_kwargs):
+            return None
+
+    def fake_write_layer2_direct_prompt(**kwargs):
+        calls["writer_kwargs"] = kwargs
+        return DirectPromptResult(
+            prompt="Designed study poster for EPHEMERAL with a fading bubble, short-lived translation, and three readable callouts.",
+            model="test-writer-model",
+            raw_prompt="raw writer output",
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls["provider_kwargs"] = kwargs
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-infographic-v3",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_layer2_direct_prompt", fake_write_layer2_direct_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.word = "ephemeral"
+    payload.content.translation = "short-lived"
+    payload.card_image_style = "editorial"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "clear_meaning",
+        "presentation_form": "infographic_card",
+        "visual_intensity": "balanced",
+        "backend_template": "direct_prompt_v3",
+        "premium_quick_mode": "infographic",
+        "premium_generation_mode": {
+            "premium_quick_mode": "infographic",
+            "backend_template": "direct_prompt_v3",
+            "meaning_strategy": "clear_meaning",
+            "presentation_form": "infographic_card",
+            "art_style": "editorial",
+            "prompt_version": "premium_quick_modes_v1",
+        },
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "success"
+    assert calls["writer_kwargs"]["template"] == "direct_prompt_v3"
+    assert calls["writer_kwargs"]["allow_target_word"] is True
+    assert calls["writer_kwargs"]["allow_translation"] is True
+    metadata = result.gpt_image_2_card_metadata
+    assert metadata is not None
+    assert metadata["backend_template"] == "direct_prompt_v3"
+    assert metadata["premium_quick_mode"] == "infographic"
+    assert "requested_backend_template" not in metadata
+
+
 def test_direct_prompt_word_object_allows_target_word_and_bans_translation(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
     from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult

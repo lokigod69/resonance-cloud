@@ -190,7 +190,7 @@ console.log('\n[premium quick mode resolver]')
     memorable: ['direct_prompt_v2', 'sound_mnemonic', 'single_scene'],
     weird: ['direct_prompt_v2', 'absurd_hook', 'single_scene'],
     word_design: ['direct_prompt_v2', 'clear_meaning', 'word_object_design'],
-    infographic: ['direct_prompt_v2', 'clear_meaning', 'infographic_card'],
+    infographic: ['direct_prompt_v3', 'clear_meaning', 'infographic_card'],
   } as const
   for (const [mode, [backend, meaning, presentation]] of Object.entries(expected)) {
     const resolved = resolvePremiumQuickMode(mode as keyof typeof expected, 'surrealism')
@@ -201,10 +201,15 @@ console.log('\n[premium quick mode resolver]')
     assert(`${mode} metadata`, resolved.metadata.premium_quick_mode === mode, resolved)
   }
   assert(
-    'normal premium quick modes do not route to LLM V3 by default',
+    'non-infographic premium quick modes do not route to LLM V3 by default',
     Object.keys(expected).every((mode) =>
-      resolvePremiumQuickMode(mode as keyof typeof expected, 'surrealism').backend_template !== 'direct_prompt_v3'
+      mode === 'infographic'
+      || resolvePremiumQuickMode(mode as keyof typeof expected, 'surrealism').backend_template !== 'direct_prompt_v3'
     ),
+  )
+  assert(
+    'infographic premium quick mode routes to LLM V3',
+    resolvePremiumQuickMode('infographic', 'surrealism').backend_template === 'direct_prompt_v3',
   )
   assert(
     'quick mode options expose friendly labels only',

@@ -30,6 +30,7 @@ from .layer2_direct_prompt import (
     DIRECT_PROMPT_WRITER_MODEL,
     DIRECT_PROMPT_TEMPLATES,
     DIRECT_PROMPT_V2_TEMPLATE,
+    DIRECT_PROMPT_V3_TEMPLATE,
     backend_template,
     direct_prompt_metadata,
     sanitize_direct_prompt,
@@ -179,11 +180,11 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
     requested_backend_template = backend_template(payload.content.layer2_customization)
     selected_backend_template = requested_backend_template
     if layer2 and layer2.resolved.get("presentation_form") == "infographic_card":
-        if selected_backend_template != DIRECT_PROMPT_V2_TEMPLATE:
+        if selected_backend_template not in {DIRECT_PROMPT_V2_TEMPLATE, DIRECT_PROMPT_V3_TEMPLATE}:
             layer2.snap_notes.append(
                 "infographic_card uses direct_prompt_v2 instead of structured_plan_v1"
             )
-        selected_backend_template = DIRECT_PROMPT_V2_TEMPLATE
+            selected_backend_template = DIRECT_PROMPT_V2_TEMPLATE
     direct_prompt_meta: dict | None = None
     allow_translation = layer2.allow_translation_in_prompt if layer2 else False
     if layer2 and selected_backend_template in DIRECT_PROMPT_TEMPLATES:

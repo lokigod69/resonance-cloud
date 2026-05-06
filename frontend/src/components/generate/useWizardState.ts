@@ -273,7 +273,7 @@ export function resolvePremiumQuickMode(
       presentation_form: 'word_object_design',
     },
     infographic: {
-      backend_template: 'direct_prompt_v2',
+      backend_template: 'direct_prompt_v3',
       meaning_strategy: 'clear_meaning',
       presentation_form: 'infographic_card',
     },
