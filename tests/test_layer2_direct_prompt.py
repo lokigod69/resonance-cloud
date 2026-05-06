@@ -9,8 +9,11 @@ if str(ORCH_ROOT) not in sys.path:
 
 from cloud_engines.image_engine.card_models import CardImageContent  # noqa: E402
 from cloud_engines.image_engine.layer2_direct_prompt import (  # noqa: E402
+    backend_template,
     build_direct_prompt_system_prompt,
     build_direct_prompt_user_prompt,
+    direct_prompt_metadata,
+    DirectPromptResult,
 )
 
 
@@ -68,3 +71,58 @@ def test_direct_prompt_system_prompt_uses_compact_mode_definitions():
     assert "Mini Story: 2-3 visible beats." in prompt
     assert "Word as Design: target word is the main visual object." in prompt
     assert "fake sound" in prompt
+
+
+def test_backend_template_accepts_direct_prompt_v2_without_changing_existing_values():
+    assert backend_template({"backend_template": "structured_plan_v1"}) == "structured_plan_v1"
+    assert backend_template({"backend_template": "direct_prompt_v1"}) == "direct_prompt_v1"
+    assert backend_template({"backend_template": "direct_prompt_v2"}) == "direct_prompt_v2"
+    assert backend_template({"backend_template": "typo"}) == "structured_plan_v1"
+
+
+def test_direct_prompt_v2_system_prompt_adds_controlled_creative_guidance():
+    prompt = build_direct_prompt_system_prompt("direct_prompt_v2")
+
+    assert "Reduce repetitive golden-hour" in prompt
+    assert "make the selected meaning strategy visibly distinct" in prompt
+    assert "Mini Story: one image containing 2-3 readable beats" in prompt
+    assert "Word as Design: target word may appear visibly" in prompt
+    assert "Incidental environmental text is allowed" in prompt
+    assert "Never render the direct translation/answer" in prompt
+    assert "no text ever" not in prompt.lower()
+
+
+def test_direct_prompt_v2_user_prompt_keeps_incidental_text_allowed_but_translation_forbidden():
+    prompt = build_direct_prompt_user_prompt(
+        content=_content(word="fragrance", translation="scent"),
+        layer2={
+            "meaning_strategy": "clear_meaning",
+            "presentation_form": "single_scene",
+            "backend_template": "direct_prompt_v2",
+        },
+        art_style="cinematic",
+        allow_target_word=False,
+    )
+
+    assert "Backend template: direct_prompt_v2" in prompt
+    assert "Do not casually place the target word as a label" in prompt
+    assert "Incidental environmental text is allowed when natural" in prompt
+    assert "Never render the direct translation/answer" in prompt
+    assert "Target word must not appear as readable text." not in prompt
+
+
+def test_direct_prompt_v2_metadata_stores_v2_template_value():
+    result = DirectPromptResult(
+        prompt="Cinematic scene.",
+        model="test-model",
+        raw_prompt="raw",
+    )
+
+    metadata = direct_prompt_metadata(
+        result=result,
+        prompt="Cinematic scene.",
+        allow_target_word=False,
+        template="direct_prompt_v2",
+    )
+
+    assert metadata["backend_template"] == "direct_prompt_v2"

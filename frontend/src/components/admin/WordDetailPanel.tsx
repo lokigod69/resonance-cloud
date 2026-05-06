@@ -505,7 +505,7 @@ function formatLayer2EvalSummary(layer2Eval: Record<string, unknown> | null): st
 function formatBackendTemplate(value: unknown): string | null {
   const text = cleanText(value as string | null | undefined)
   if (!text) return null
-  if (text === 'structured_plan_v1' || text === 'direct_prompt_v1') {
+  if (text === 'structured_plan_v1' || text === 'direct_prompt_v1' || text === 'direct_prompt_v2') {
     return layer2BackendTemplateLabel(text)
   }
   return text

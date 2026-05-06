@@ -19,6 +19,7 @@ export type CardLayer2PresentationForm =
 export type CardLayer2BackendTemplate =
   | 'structured_plan_v1'
   | 'direct_prompt_v1'
+  | 'direct_prompt_v2'
 
 export type CardLayer2ArtStyle =
   | 'realistic'

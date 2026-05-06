@@ -71,6 +71,7 @@ export const LAYER2_BACKEND_TEMPLATE_OPTIONS: Array<{
 }> = [
   { value: 'structured_plan_v1', label: 'Compiler V1' },
   { value: 'direct_prompt_v1', label: 'LLM V1' },
+  { value: 'direct_prompt_v2', label: 'LLM V2' },
 ]
 export const LAYER2_LAB_CREDITS_PER_ROW = 5
 const WORD_DESIGN_STYLES: CardLayer2ArtStyle[] = ['realistic', 'pixar_3d', 'rick_and_morty_style', 'pen_and_ink']

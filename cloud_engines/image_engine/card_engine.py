@@ -199,6 +199,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 layer2=payload.content.layer2_customization or {},
                 art_style=payload.card_image_style,
                 allow_target_word=layer2.allow_target_word_in_prompt,
+                template=selected_backend_template,
             )
             prompt_text = sanitize_direct_prompt(
                 direct_result.prompt,
@@ -218,6 +219,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 result=direct_result,
                 prompt=prompt_text,
                 allow_target_word=layer2.allow_target_word_in_prompt,
+                template=selected_backend_template,
             )
     else:
         prompt_text = build_gpt_image_2_prompt(

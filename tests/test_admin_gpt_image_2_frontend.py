@@ -70,6 +70,7 @@ def test_admin_word_detail_surfaces_gpt_enrichment_and_cost():
     assert "Direct Prompt Preview" in source
     assert "Summary" in source
     assert "formatLayer2EvalSummary" in source
+    assert "direct_prompt_v2" in source
     assert "gptEnrichmentRows.length > 0" in source
 
     assert "COST_PER_CARD: Record<string, number>" in source

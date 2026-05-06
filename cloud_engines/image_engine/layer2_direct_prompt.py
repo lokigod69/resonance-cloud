@@ -20,7 +20,10 @@ from .card_models import CardImageContent
 logger = logging.getLogger(__name__)
 
 DIRECT_PROMPT_TEMPLATE = "direct_prompt_v1"
+DIRECT_PROMPT_V2_TEMPLATE = "direct_prompt_v2"
 STRUCTURED_PLAN_TEMPLATE = "structured_plan_v1"
+DIRECT_PROMPT_TEMPLATES = frozenset({DIRECT_PROMPT_TEMPLATE, DIRECT_PROMPT_V2_TEMPLATE})
+BACKEND_TEMPLATES = frozenset({STRUCTURED_PLAN_TEMPLATE, *DIRECT_PROMPT_TEMPLATES})
 DIRECT_PROMPT_WRITER_MODEL = os.environ.get(
     "LAYER2_DIRECT_PROMPT_MODEL",
     "deepseek/deepseek-v4-flash",
@@ -42,15 +45,15 @@ class DirectPromptResult:
 def is_direct_prompt_template(card_layer2: Mapping[str, Any] | None) -> bool:
     if not isinstance(card_layer2, Mapping):
         return False
-    return _clean(card_layer2.get("backend_template")) == DIRECT_PROMPT_TEMPLATE
+    return _clean(card_layer2.get("backend_template")) in DIRECT_PROMPT_TEMPLATES
 
 
 def backend_template(card_layer2: Mapping[str, Any] | None) -> str:
     if not isinstance(card_layer2, Mapping):
         return STRUCTURED_PLAN_TEMPLATE
     value = _clean(card_layer2.get("backend_template"))
-    if value == DIRECT_PROMPT_TEMPLATE:
-        return DIRECT_PROMPT_TEMPLATE
+    if value in BACKEND_TEMPLATES:
+        return value
     return STRUCTURED_PLAN_TEMPLATE
 
 
@@ -60,6 +63,7 @@ def write_layer2_direct_prompt(
     layer2: Mapping[str, Any],
     art_style: str,
     allow_target_word: bool,
+    template: str | None = None,
 ) -> DirectPromptResult:
     """Call OpenRouter to write a final GPT Image-2 provider prompt."""
 
@@ -67,7 +71,8 @@ def write_layer2_direct_prompt(
     if not api_key:
         raise RuntimeError("OPENROUTER_API_KEY missing for Layer 2 direct prompt writer")
 
-    system_prompt = build_direct_prompt_system_prompt()
+    selected_template = template if template in DIRECT_PROMPT_TEMPLATES else backend_template(layer2)
+    system_prompt = build_direct_prompt_system_prompt(selected_template)
     user_prompt = build_direct_prompt_user_prompt(
         content=content,
         layer2=layer2,
@@ -96,7 +101,9 @@ def write_layer2_direct_prompt(
     )
 
 
-def build_direct_prompt_system_prompt() -> str:
+def build_direct_prompt_system_prompt(template: str = DIRECT_PROMPT_TEMPLATE) -> str:
+    if template == DIRECT_PROMPT_V2_TEMPLATE:
+        return build_direct_prompt_v2_system_prompt()
     return (
         "You are writing the final image prompt for GPT Image-2. "
         "Create one visually precise prompt for a language-learning memory card. "
@@ -117,6 +124,34 @@ def build_direct_prompt_system_prompt() -> str:
     )
 
 
+def build_direct_prompt_v2_system_prompt() -> str:
+    return (
+        "You are writing the final image prompt for GPT Image-2. "
+        "Create one compact, provider-friendly prompt for a Premium language-learning memory card. "
+        "Preserve a strong visual concept, but keep the composition readable: one dominant memory idea, "
+        "clean focal hierarchy, no overloaded piles of symbols. Write the final prompt only. No JSON. No analysis.\n\n"
+        "Global creative guidance:\n"
+        "- Reduce repetitive golden-hour / orange sunset defaults; choose lighting that fits the word and selected style.\n"
+        "- Respect the selected art style strongly and early. If realistic, avoid unwanted illustration/cartoon language.\n"
+        "- make the selected meaning strategy visibly distinct and make the selected presentation form visibly distinct.\n"
+        "- For violent or taboo words, use symbolic-safe visual metaphors such as aftermath, shadow, broken objects, extinguished light, or a toppled chess king.\n\n"
+        "Meaning Strategy guidance:\n"
+        "- Clear Meaning: immediately recognizable core meaning, minimal surrealism, strong clean scene.\n"
+        "- Exaggerated Meaning: intensify scale, emotion, action, consequence, or contrast while keeping the meaning obvious.\n"
+        "- Absurd Hook: strange, memorable, elegant, and understandable; absurdity serves memory, never randomness.\n"
+        "- Mnemonic Hook: use the best available memory bridge: phonetic, wordplay, morpheme, etymology, semantic metaphor, or clear visual association. Never force fake wordplay; fall back to a strong metaphor or clear scene.\n\n"
+        "Presentation Form guidance:\n"
+        "- Single Scene: one coherent visual moment with one dominant memory idea.\n"
+        "- Mini Story: one image containing 2-3 readable beats, such as cause/effect, before/during/after, attempt/result, or transformation. Avoid chaotic comic strips unless the style supports it.\n"
+        "- Split Panel: use only when contrast helps the word, with tasteful separation for before/after, despite/result, less/more, obstacle/continuation, or cause/effect.\n"
+        "- Word as Design: target word may appear visibly and should be the main visual object. Choose naturally among word_as_matter, word_as_form, environmental_typography, or symbolic_letter_scene; do not always use the same approach.\n\n"
+        "Text policy: Visible target word is allowed and expected in Word as Design. "
+        "In other forms, do not casually place the target word as a label unless it clearly helps the scene. "
+        "Incidental environmental text is allowed when natural, such as signs, calendar, phone screen, book title, interface, warning label. "
+        "If any readable target word appears, spell it exactly. Never render the direct translation/answer unless a future explicit teaching/infographic mode asks for it."
+    )
+
+
 def build_direct_prompt_user_prompt(
     *,
     content: CardImageContent,
@@ -125,14 +160,26 @@ def build_direct_prompt_user_prompt(
     allow_target_word: bool,
 ) -> str:
     presentation_form = _clean(layer2.get("presentation_form")) or "single_scene"
-    answer_policy = (
-        "Target word may appear visibly because this is word_object_design."
-        if allow_target_word
-        else "Target word must not appear as readable text."
-    )
+    selected_template = backend_template(layer2)
+    if selected_template == DIRECT_PROMPT_V2_TEMPLATE and not allow_target_word:
+        answer_policy = (
+            "Do not casually place the target word as a label unless it clearly helps the scene. "
+            "Incidental environmental text is allowed when natural."
+        )
+    else:
+        answer_policy = (
+            "Target word may appear visibly because this is word_object_design."
+            if allow_target_word
+            else "Target word must not appear as readable text."
+        )
     spelling_rule = (
         f"\nSpelling rule: If the target word appears, spell it exactly: {_clean(content.word).upper()}."
         if presentation_form == "word_object_design"
+        else ""
+    )
+    backend_line = (
+        f"Backend template: {selected_template}\n"
+        if selected_template == DIRECT_PROMPT_V2_TEMPLATE
         else ""
     )
     return (
@@ -147,6 +194,7 @@ def build_direct_prompt_user_prompt(
         f"Existing image scene: {content.image_scene or 'none'}\n"
         f"Meaning strategy: {_clean(layer2.get('meaning_strategy')) or 'clear_meaning'}\n"
         f"Presentation form: {presentation_form}\n"
+        f"{backend_line}"
         f"Art style: {art_style}\n"
         f"Answer policy: {answer_policy} Never render the direct translation/answer.\n"
         f"{spelling_rule}\n"
@@ -187,9 +235,10 @@ def direct_prompt_metadata(
     result: DirectPromptResult,
     prompt: str,
     allow_target_word: bool,
+    template: str = DIRECT_PROMPT_TEMPLATE,
 ) -> dict[str, Any]:
     return {
-        "backend_template": DIRECT_PROMPT_TEMPLATE,
+        "backend_template": template if template in DIRECT_PROMPT_TEMPLATES else DIRECT_PROMPT_TEMPLATE,
         "direct_prompt_writer_model": result.model,
         "direct_prompt_chars": len(prompt),
         "direct_prompt_prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),

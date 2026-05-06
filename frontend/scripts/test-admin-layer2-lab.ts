@@ -43,9 +43,10 @@ const USER = '00000000-0000-0000-0000-000000000001'
 console.log('\n[friendly labels]')
 {
   assert('direct_prompt_v1 renders as LLM V1', layer2BackendTemplateLabel('direct_prompt_v1') === 'LLM V1')
+  assert('direct_prompt_v2 renders as LLM V2', layer2BackendTemplateLabel('direct_prompt_v2') === 'LLM V2')
   assert('structured_plan_v1 renders as Compiler V1', layer2BackendTemplateLabel('structured_plan_v1') === 'Compiler V1')
   assert('backend template options use friendly labels',
-    LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => option.label).join('|') === 'Compiler V1|LLM V1',
+    LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => option.label).join('|') === 'Compiler V1|LLM V1|LLM V2',
     LAYER2_BACKEND_TEMPLATE_OPTIONS,
   )
   assert('sound_mnemonic renders as Mnemonic Hook', cardLayer2MeaningLabel('sound_mnemonic') === 'Mnemonic Hook')
@@ -76,6 +77,21 @@ console.log('\n[script row builder]')
   assert('art style carried through', rows[0]?.art_style === 'surrealism', rows)
   assert('backend template carried through', rows[0]?.backend_template === 'direct_prompt_v1', rows)
   assert('label carried through', rows[0]?.label === 'small story', rows)
+}
+
+console.log('\n[script row builder v2 backend]')
+{
+  const rows = buildLayer2LabRows({
+    words: ['fragrance'],
+    selectedWord: 'fragrance',
+    wordScope: 'selected',
+    meaning_strategy: 'clear_meaning',
+    presentation_form: 'single_scene',
+    art_style: 'cinematic',
+    backend_template: 'direct_prompt_v2',
+    label: 'llm v2 smoke',
+  })
+  assert('direct_prompt_v2 row is accepted', rows[0]?.backend_template === 'direct_prompt_v2', rows)
 }
 
 console.log('\n[all-word script rows]')
@@ -192,6 +208,33 @@ console.log('\n[premium lab payload]')
   )
   assert('layer2_eval includes planned variant slug',
     p.jobPayload.settings_override.layer2_eval?.variant_slug === 'viral-l2-001',
+    p.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[premium lab v2 payload]')
+{
+  const row: Layer2LabRun = {
+    id: 'row-v2',
+    word: 'fragrance',
+    meaning_strategy: 'clear_meaning',
+    presentation_form: 'single_scene',
+    art_style: 'cinematic',
+    backend_template: 'direct_prompt_v2',
+    label: 'llm v2 smoke',
+  }
+  const p = buildLayer2LabPayload({
+    row,
+    userId: USER,
+    targetLanguage: 'English',
+    deckName: 'Layer2 Lab',
+  })
+  assert('sends direct_prompt_v2 in card_layer2',
+    p.jobPayload.settings_override.card_layer2?.backend_template === 'direct_prompt_v2',
+    p.jobPayload.settings_override,
+  )
+  assert('records direct_prompt_v2 in layer2_eval',
+    p.jobPayload.settings_override.layer2_eval?.backend_template === 'direct_prompt_v2',
     p.jobPayload.settings_override,
   )
 }
