@@ -1129,7 +1129,7 @@ function Toolbar({
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
   return (
-    <div ref={toolbarRef} data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/50 border-b border-[#00fff2]/20 font-mono">
+    <div ref={toolbarRef} data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-start gap-2 px-3 py-2 sm:gap-3 sm:px-4 sm:py-3 bg-black/50 border-b border-[#00fff2]/20 font-mono">
       <button
         onClick={(event) => {
           event.stopPropagation()
@@ -1160,7 +1160,7 @@ function Toolbar({
         ))}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex min-w-0 flex-wrap items-center justify-start gap-2">
         {canToggleDirection && (
           <button
             onClick={(event) => {
@@ -1294,7 +1294,7 @@ function RevealModal({
         onClick={(event) => event.stopPropagation()}
       >
         <button
-          className="absolute top-4 right-4 text-[#00fff2]/50 hover:text-[#00fff2] bg-[#0a0a0a] border border-[#00fff2]/30 rounded-full w-10 h-10 text-sm flex items-center justify-center"
+          className="absolute right-2 top-2 z-30 flex h-11 min-h-11 w-11 min-w-11 items-center justify-center rounded-full border border-[#00fff2]/30 bg-[#0a0a0a] text-sm text-[#00fff2]/60 hover:text-[#00fff2]"
           onClick={onClose}
           aria-label="Close"
         >

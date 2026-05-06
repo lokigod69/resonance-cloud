@@ -900,7 +900,7 @@ function Toolbar({
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
   return (
-    <div ref={toolbarRef} data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/50 border-b border-white/10">
+    <div ref={toolbarRef} data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-start gap-2 px-3 py-2 sm:gap-3 sm:px-4 sm:py-3 bg-black/50 border-b border-white/10">
       <button
         onClick={(event) => {
           event.stopPropagation()
@@ -931,7 +931,7 @@ function Toolbar({
         ))}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex min-w-0 flex-wrap items-center justify-start gap-2">
         {canToggleDirection && (
           <button
             onClick={(event) => {
