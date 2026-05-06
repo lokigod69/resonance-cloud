@@ -157,7 +157,11 @@ console.log('\n[standard card payload]')
 
 console.log('\n[premium card payload]')
 {
-  const p = settingsOf('card_premium', { cardImageStyle: 'realistic', premiumQuickMode: 'clear' })
+  const p = buildGeneratePayload({
+    state: makeState({ productLane: 'card_premium', cardImageStyle: 'realistic' }),
+    userId: USER,
+    premiumQuickModeOverride: 'clear',
+  })
   assert('deck_type=card', p.deckPayload?.deck_type === 'card', p.deckPayload)
   assert(
     'card_image_model=gpt_image_2',
@@ -185,7 +189,8 @@ console.log('\n[premium quick mode resolver]')
     clear: ['structured_plan_v1', 'clear_meaning', 'single_scene'],
     memorable: ['direct_prompt_v2', 'sound_mnemonic', 'single_scene'],
     weird: ['direct_prompt_v2', 'absurd_hook', 'single_scene'],
-    word_design: ['direct_prompt_v2', 'absurd_hook', 'word_object_design'],
+    word_design: ['direct_prompt_v2', 'clear_meaning', 'word_object_design'],
+    infographic: ['direct_prompt_v2', 'clear_meaning', 'infographic_card'],
   } as const
   for (const [mode, [backend, meaning, presentation]] of Object.entries(expected)) {
     const resolved = resolvePremiumQuickMode(mode as keyof typeof expected, 'surrealism')
@@ -197,10 +202,11 @@ console.log('\n[premium quick mode resolver]')
   }
   assert(
     'quick mode options expose friendly labels only',
-    PREMIUM_QUICK_MODE_OPTIONS.map((option) => option.label).join('|') === 'Clear|Memorable|Weird|Word Design',
+    PREMIUM_QUICK_MODE_OPTIONS.map((option) => option.label).join('|') === 'Clear|Memorable|Weird|Word Design|Infographic',
     PREMIUM_QUICK_MODE_OPTIONS,
   )
   assert('word_design label is friendly', premiumQuickModeLabel('word_design') === 'Word Design')
+  assert('quick_generate label is friendly', premiumQuickModeLabel('quick_generate') === 'Quick Generate')
 }
 
 console.log('\n[premium customize layer2 payload]')
@@ -282,18 +288,16 @@ console.log('\n[premium quick generate omits layer2 customizations]')
     p.jobPayload.settings_override,
   )
   assert(
-    'premium quick uses selected quick mode, not customize layer2',
-    p.jobPayload.settings_override.card_layer2?.meaning_strategy === 'absurd_hook'
-      && p.jobPayload.settings_override.card_layer2?.presentation_form === 'single_scene'
-      && p.jobPayload.settings_override.card_layer2?.backend_template === 'direct_prompt_v2',
+    'premium quick keeps existing no-layer2 behavior',
+    !('card_layer2' in p.jobPayload.settings_override),
     p.jobPayload.settings_override,
   )
   assert(
-    'premium quick includes selected/default art style',
-    p.jobPayload.settings_override.card_image_style === 'surrealism',
+    'premium quick keeps existing no-art-style behavior',
+    !('card_image_style' in p.jobPayload.settings_override),
     p.jobPayload.settings_override,
   )
-  assert('premium quick records selected mode', p.jobPayload.settings_override.premium_quick_mode === 'weird')
+  assert('premium quick records quick_generate mode', p.jobPayload.settings_override.premium_quick_mode === 'quick_generate')
 }
 
 console.log('\n[card lane omits card_image_style when null]')

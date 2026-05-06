@@ -205,9 +205,10 @@ def _text_directive(text_mode: str, word: str) -> str | None:
     word_text = _clean(word) or "the target word"
     if text_mode == "word_as_matter":
         return (
-            f'Make the target word "{word_text}" visibly readable as a large physical '
-            "typographic object in the scene, constructed from material tied to the meaning. "
-            "The word must be central to the composition, not a small label."
+            f'Make the target word "{word_text}" visibly readable and central to the composition. '
+            "Let the prompt choose a natural word-design treatment: meaningful material lettering, "
+            "letters becoming an object or place, in-world typography, symbolic letter fragments, "
+            "or language/script-aware form. Do not add the translation as visible text."
         )
     if text_mode == "word_as_form":
         return (

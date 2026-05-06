@@ -20,7 +20,7 @@ import {
   premiumQuickModeLabel,
   useWizardState,
 } from '@/components/generate/useWizardState'
-import type { ExistingDeck, ProductLane } from '@/components/generate/useWizardState'
+import type { ExistingDeck, PremiumQuickMode, ProductLane } from '@/components/generate/useWizardState'
 import ProductLaneStep from '@/components/generate/steps/ProductLaneStep'
 import CardImageStyleStep from '@/components/generate/steps/CardImageStyleStep'
 import PremiumCardCustomizationStep from '@/components/generate/steps/PremiumCardCustomizationStep'
@@ -136,9 +136,12 @@ export default function GeneratePG() {
 
   /* ─── Submit ───────────────────────────────────── */
 
-  async function handleGenerate(wordsOverride?: string[]) {
+  async function handleGenerate(
+    wordsOverride?: string[],
+    options?: { isQuickGenerate?: boolean; premiumQuickMode?: PremiumQuickMode },
+  ) {
     if (!user) return
-    const isQuickGenerate = wordsOverride !== undefined
+    const isQuickGenerate = options?.isQuickGenerate ?? false
     const effectiveWords = wordsOverride ?? state.words
     if (effectiveWords.length === 0) return
     if (!existingDeck && !state.language) return
@@ -153,6 +156,7 @@ export default function GeneratePG() {
         userId: user.id,
         existingDeck: existingDeck ?? undefined,
         isQuickGenerate,
+        premiumQuickModeOverride: options?.premiumQuickMode,
         wordsOverride: effectiveWords,
       })
 
@@ -181,7 +185,13 @@ export default function GeneratePG() {
     // Card lanes submit straight to the backend — we no longer detour through
     // the visual-style step. The lane (Standard / Premium) was locked at step 1.
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
-    handleGenerate(words)
+    handleGenerate(words, { isQuickGenerate: true })
+  }
+
+  function handlePremiumQuickModeGenerate(words: string[], mode: PremiumQuickMode) {
+    dispatch({ type: 'SET_PREMIUM_QUICK_MODE', mode })
+    dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
+    handleGenerate(words, { premiumQuickMode: mode })
   }
 
   /* ─── Generated state ─── */
@@ -281,6 +291,7 @@ export default function GeneratePG() {
               state={state}
               dispatch={dispatch}
               onQuickGenerate={(words) => handleQuickGenerate(words)}
+              onPremiumQuickModeGenerate={(words, mode) => handlePremiumQuickModeGenerate(words, mode)}
               onCustomize={() => setPgStep(3)}
             />
           )}

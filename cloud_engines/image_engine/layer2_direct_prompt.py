@@ -147,7 +147,7 @@ def build_direct_prompt_v2_system_prompt() -> str:
         "- Single Scene: one coherent visual moment with one dominant memory idea.\n"
         "- Mini Story: one image containing 2-3 readable beats, such as cause/effect, before/during/after, attempt/result, or transformation. Avoid chaotic comic strips unless the style supports it.\n"
         "- Split Panel: use only when contrast helps the word, with tasteful separation for before/after, despite/result, less/more, obstacle/continuation, or cause/effect.\n"
-        "- Word as Design: target word may appear visibly and should be the main visual object. Choose naturally among word_as_matter, word_as_form, environmental_typography, or symbolic_letter_scene; do not always use the same approach.\n\n"
+        "- Word as Design: target word may appear visibly and should be the main visual object. Choose naturally among meaningful material lettering, letters becoming an object, place, architecture, or symbol, natural in-world text, symbolic letter fragments, or language/script-aware form; do not always use the same approach.\n\n"
         "- Infographic: design a premium educational infographic card with a central visual anchor and a few compact callouts. Choose useful word-specific angles such as meaning, translation, grammar, usage, origin, cultural nuance, memory cue, example phrase, or surprising fact. Use short readable labels, not paragraphs; keep it elegant, spacious, image-first, and memorable.\n\n"
         "Text policy: Visible target word is allowed and expected in Word as Design. "
         "In Infographic, the target word and translation may appear as visible study-card text, along with short explanatory labels. "

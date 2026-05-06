@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, Wand2 } from 'lucide-react'
+import { Sparkles, Wand2, Zap } from 'lucide-react'
 import { GlassInput, WordChips, type GlassInputHandle } from '../shared/GlassInput'
 import PillButton from '../shared/PillButton'
 import { MAX_WORDS } from '../wizardData'
@@ -17,10 +17,17 @@ interface WordsStepProps {
   state: WizardState
   dispatch: React.Dispatch<WizardAction>
   onQuickGenerate: (words: string[]) => void
+  onPremiumQuickModeGenerate?: (words: string[], mode: PremiumQuickMode) => void
   onCustomize?: () => void
 }
 
-export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomize }: WordsStepProps) {
+export default function WordsStep({
+  state,
+  dispatch,
+  onQuickGenerate,
+  onPremiumQuickModeGenerate,
+  onCustomize,
+}: WordsStepProps) {
   const { tp } = useTranslation()
   const [error, setError] = useState<string | null>(null)
   const glassInputRef = useRef<GlassInputHandle>(null)
@@ -46,15 +53,25 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
     dispatch({ type: 'ADD_WORD', word })
   }
 
-  function handleQuickGenerate() {
+  function collectWords(): string[] {
     const flushed = glassInputRef.current?.flush() ?? null
     // Collect the definitive word list synchronously — state.words may not
     // yet include the flushed word because dispatch(ADD_WORD) is async.
-    const allWords = flushed
+    return flushed
       ? [...state.words.filter(w => w.toLowerCase() !== flushed.toLowerCase()), flushed]
       : [...state.words]
+  }
+
+  function handleQuickGenerate() {
+    const allWords = collectWords()
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
     onQuickGenerate(allWords)
+  }
+
+  function handleModeGenerate(mode: PremiumQuickMode) {
+    const allWords = collectWords()
+    dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
+    onPremiumQuickModeGenerate?.(allWords, mode)
   }
 
   return (
@@ -87,6 +104,7 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
             }}
             onSwitchToManual={() => setInputMode('manual')}
             onQuickGenerate={onQuickGenerate}
+            onPremiumQuickModeGenerate={onPremiumQuickModeGenerate}
           />
         )}
 
@@ -127,34 +145,6 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
         </AnimatePresence>
 
         {/* Action buttons — appear after first word */}
-        {state.productLane === 'card_premium' && (
-          <section className="pt-2">
-            <p className="mb-3 text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Premium Mode
-            </p>
-            <div className="grid grid-cols-2 gap-2">
-              {PREMIUM_QUICK_MODE_OPTIONS.map((option) => {
-                const selected = state.premiumQuickMode === option.value
-                return (
-                  <button
-                    key={option.value}
-                    type="button"
-                    onClick={() => dispatch({ type: 'SET_PREMIUM_QUICK_MODE', mode: option.value as PremiumQuickMode })}
-                    className={`rounded-xl border px-3 py-2.5 text-left text-sm transition-all ${
-                      selected
-                        ? 'border-[var(--pg-accent-teal)] bg-[rgba(13,226,195,0.12)] text-[var(--pg-accent-teal)]'
-                        : 'border-border/60 bg-card/50 text-foreground/80 hover:border-[var(--pg-accent-teal)]/40'
-                    }`}
-                  >
-                    <span className="block font-medium">{option.label}</span>
-                    <span className="mt-0.5 block text-xs text-muted-foreground">{option.helper}</span>
-                  </button>
-                )
-              })}
-            </div>
-          </section>
-        )}
-
         <AnimatePresence>
           {wordCount > 0 && (
             <motion.div
@@ -164,25 +154,73 @@ export default function WordsStep({ state, dispatch, onQuickGenerate, onCustomiz
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               className="flex flex-col items-center gap-3 pt-6"
             >
-              <PillButton glow onClick={handleQuickGenerate}>
-                <Sparkles className="h-4 w-4" />
-                Quick Generate
-              </PillButton>
-              <PillButton
-                variant="secondary"
-                onClick={() => {
-                  glassInputRef.current?.flush()
-                  dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
-                  onCustomize?.()
-                }}
-              >
-                <Wand2 className="h-4 w-4" />
-                Customize
-              </PillButton>
+              {state.productLane === 'card_premium' ? (
+                <div className="grid w-full grid-cols-2 gap-2">
+                  <QuickActionButton label="Quick Generate" onClick={handleQuickGenerate} primary />
+                  {PREMIUM_QUICK_MODE_OPTIONS.map((option) => (
+                    <QuickActionButton
+                      key={option.value}
+                      label={option.label}
+                      onClick={() => handleModeGenerate(option.value)}
+                    />
+                  ))}
+                  <QuickActionButton
+                    label="Customize"
+                    onClick={() => {
+                      glassInputRef.current?.flush()
+                      dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
+                      onCustomize?.()
+                    }}
+                  />
+                </div>
+              ) : (
+                <>
+                  <PillButton glow onClick={handleQuickGenerate}>
+                    <Sparkles className="h-4 w-4" />
+                    Quick Generate
+                  </PillButton>
+                  <PillButton
+                    variant="secondary"
+                    onClick={() => {
+                      glassInputRef.current?.flush()
+                      dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
+                      onCustomize?.()
+                    }}
+                  >
+                    <Wand2 className="h-4 w-4" />
+                    Customize
+                  </PillButton>
+                </>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
     </div>
+  )
+}
+
+function QuickActionButton({
+  label,
+  onClick,
+  primary = false,
+}: {
+  label: string
+  onClick: () => void
+  primary?: boolean
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`min-h-[46px] rounded-xl border px-3 py-2 text-sm font-medium transition-all ${
+        primary
+          ? 'border-[var(--pg-accent-teal)] bg-[rgba(13,226,195,0.12)] text-[var(--pg-accent-teal)]'
+          : 'border-border/60 bg-card/50 text-foreground/85 hover:border-[var(--pg-accent-teal)]/40 hover:text-foreground'
+      }`}
+    >
+      {primary ? <Zap className="mr-1.5 inline h-4 w-4" /> : null}
+      {label}
+    </button>
   )
 }

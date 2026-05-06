@@ -7,7 +7,12 @@ import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { useTranslation } from '@/hooks/useTranslation'
-import type { WizardState, WizardAction } from '../useWizardState'
+import {
+  PREMIUM_QUICK_MODE_OPTIONS,
+  type PremiumQuickMode,
+  type WizardState,
+  type WizardAction,
+} from '../useWizardState'
 
 // NOTE: suggest-words endpoint requires the local orchestrator (port 8090).
 // In production (Vercel), this feature is non-functional until the endpoint
@@ -33,9 +38,17 @@ interface CategoryPickerProps {
   onConfirm: () => void
   onSwitchToManual: () => void
   onQuickGenerate?: (words: string[]) => void
+  onPremiumQuickModeGenerate?: (words: string[], mode: PremiumQuickMode) => void
 }
 
-export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToManual, onQuickGenerate }: CategoryPickerProps) {
+export default function CategoryPicker({
+  state,
+  dispatch,
+  onConfirm,
+  onSwitchToManual,
+  onQuickGenerate,
+  onPremiumQuickModeGenerate,
+}: CategoryPickerProps) {
   const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
   const { tp } = useTranslation()
@@ -293,25 +306,39 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
       {error && <p className="text-xs text-red-400">{error}</p>}
 
       <div className="flex flex-col items-center gap-3 pt-2">
-        {onQuickGenerate && (
-          <PillButton
-            glow
-            onClick={() => {
-              const words = displaySlots.map((s) => s.word.trim()).filter((w) => w.length > 0)
-              if (words.length === 0) { setError('Add at least one word'); return }
-              dispatch({ type: 'SET_WORDS', words })
-              dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
-              onQuickGenerate(words)
-            }}
-          >
-            <Zap className="h-4 w-4" />
-            Quick Generate
-          </PillButton>
+        {onQuickGenerate && state.productLane === 'card_premium' ? (
+          <div className="grid w-full grid-cols-2 gap-2">
+            <CategoryQuickButton
+              label="Quick Generate"
+              primary
+              onClick={() => submitQuickChoice()}
+            />
+            {PREMIUM_QUICK_MODE_OPTIONS.map((option) => (
+              <CategoryQuickButton
+                key={option.value}
+                label={option.label}
+                onClick={() => submitQuickChoice(option.value)}
+              />
+            ))}
+            <CategoryQuickButton label="Customize" onClick={handleGenerateDeck} />
+          </div>
+        ) : (
+          <>
+            {onQuickGenerate && (
+              <PillButton
+                glow
+                onClick={() => submitQuickChoice()}
+              >
+                <Zap className="h-4 w-4" />
+                Quick Generate
+              </PillButton>
+            )}
+            <PillButton variant={onQuickGenerate ? 'secondary' : undefined} glow={!onQuickGenerate} onClick={handleGenerateDeck}>
+              <Wand2 className="h-4 w-4" />
+              Customize
+            </PillButton>
+          </>
         )}
-        <PillButton variant={onQuickGenerate ? 'secondary' : undefined} glow={!onQuickGenerate} onClick={handleGenerateDeck}>
-          <Wand2 className="h-4 w-4" />
-          Customize
-        </PillButton>
         <PillButton
           variant="secondary"
           onClick={() => activeCategory && fetchSuggestions(activeCategory)}
@@ -321,5 +348,45 @@ export default function CategoryPicker({ state, dispatch, onConfirm, onSwitchToM
         </PillButton>
       </div>
     </motion.div>
+  )
+
+  function submitQuickChoice(mode?: PremiumQuickMode) {
+    const words = displaySlots.map((s) => s.word.trim()).filter((w) => w.length > 0)
+    if (words.length === 0) {
+      setError('Add at least one word')
+      return
+    }
+    dispatch({ type: 'SET_WORDS', words })
+    dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
+    if (mode) {
+      onPremiumQuickModeGenerate?.(words, mode)
+    } else {
+      onQuickGenerate?.(words)
+    }
+  }
+}
+
+function CategoryQuickButton({
+  label,
+  onClick,
+  primary = false,
+}: {
+  label: string
+  onClick: () => void
+  primary?: boolean
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`min-h-[46px] rounded-xl border px-3 py-2 text-sm font-medium transition-all ${
+        primary
+          ? 'border-[var(--pg-accent-teal)] bg-[rgba(13,226,195,0.12)] text-[var(--pg-accent-teal)]'
+          : 'border-border/60 bg-card/50 text-foreground/85 hover:border-[var(--pg-accent-teal)]/40 hover:text-foreground'
+      }`}
+    >
+      {primary ? <Zap className="mr-1.5 inline h-4 w-4" /> : null}
+      {label}
+    </button>
   )
 }

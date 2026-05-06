@@ -127,6 +127,29 @@ console.log('\n[visual_card_plan with usage_example object]')
   )
 }
 
+console.log('\n[premium quick generate mode from visual_card_plan]')
+{
+  const word: WordLike = {
+    card_image_model: 'gpt_image_2',
+    metadata: {
+      visual_card_plan: {
+        prompt_version: 'quick_generate_v1',
+        premium_quick_mode: 'quick_generate',
+        premium_generation_mode: {
+          premium_quick_mode: 'quick_generate',
+          prompt_version: 'premium_quick_modes_v1',
+        },
+      },
+    },
+  }
+  const r = resolveCardLearningMetadata(word)
+  assert(
+    'adminDebug.fields.generationMode = Quick Generate',
+    r.adminDebug.fields.generationMode === 'Quick Generate',
+    r.adminDebug.fields,
+  )
+}
+
 console.log('\n[gpt_image_2_card with usage_example object — Premium card]')
 {
   const word: WordLike = {

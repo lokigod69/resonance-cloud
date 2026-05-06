@@ -91,7 +91,7 @@ def test_word_object_design_forces_embedded_word_and_stores_text_embedding_mode(
     assert result.text_directive is not None
     assert '"Heimweh" visibly readable' in result.text_directive
     assert "central to the composition" in result.text_directive
-    assert "not a small label" in result.text_directive
+    assert "language/script-aware form" in result.text_directive
 
 
 def test_infographic_card_resolves_to_teaching_text_mode_and_allows_answer_text():

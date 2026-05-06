@@ -135,10 +135,12 @@ function generationModeLabel(gptImage2Card: Record<string, unknown> | null): str
   const backend = pickString(gptImage2Card.backend_template)
     ?? pickString(asRecord(gptImage2Card.premium_generation_mode)?.backend_template)
   const modeLabel: Record<string, string> = {
+    quick_generate: 'Quick Generate',
     clear: 'Clear',
     memorable: 'Memorable',
     weird: 'Weird',
     word_design: 'Word Design',
+    infographic: 'Infographic',
     custom: 'Custom',
   }
   const backendLabel: Record<string, string> = {
@@ -148,6 +150,7 @@ function generationModeLabel(gptImage2Card: Record<string, unknown> | null): str
   }
   const left = mode ? (modeLabel[mode] ?? mode) : null
   const right = backend ? (backendLabel[backend] ?? backend) : null
+  if (mode === 'quick_generate') return left
   return [left, right].filter(Boolean).join(' · ') || null
 }
 
@@ -264,7 +267,7 @@ export function resolveCardLearningMetadata(word: WordLike | null | undefined): 
       registerNote: pickString(gptImage2Card?.register_note, visualCardPlan?.register_note) ?? null,
       rationaleSummary: pickString(gptImage2Card?.rationale_summary, visualCardPlan?.rationale_summary) ?? null,
       cardImageModel: pickString(word?.card_image_model) ?? null,
-      generationMode: generationModeLabel(gptImage2Card),
+      generationMode: generationModeLabel(gptImage2Card) ?? generationModeLabel(visualCardPlan),
     },
   }
 

@@ -55,18 +55,19 @@ export interface CardLayer2Customization {
 export interface CardLayer2Payload extends CardLayer2Customization {
   visual_intensity: 'balanced'
   backend_template?: CardLayer2BackendTemplate
-  premium_quick_mode?: PremiumQuickMode | 'custom'
+  premium_quick_mode?: PremiumGenerationModeName
   premium_generation_mode?: PremiumGenerationModeMetadata
 }
 
-export type PremiumQuickMode = 'clear' | 'memorable' | 'weird' | 'word_design'
+export type PremiumQuickMode = 'clear' | 'memorable' | 'weird' | 'word_design' | 'infographic'
+export type PremiumGenerationModeName = PremiumQuickMode | 'quick_generate' | 'custom'
 
 export interface PremiumGenerationModeMetadata {
-  premium_quick_mode: PremiumQuickMode | 'custom'
-  backend_template: CardLayer2BackendTemplate
-  meaning_strategy: CardLayer2MeaningStrategy
-  presentation_form: CardLayer2PresentationForm
-  art_style: CardLayer2ArtStyle
+  premium_quick_mode: PremiumGenerationModeName
+  backend_template?: CardLayer2BackendTemplate
+  meaning_strategy?: CardLayer2MeaningStrategy
+  presentation_form?: CardLayer2PresentationForm
+  art_style?: CardLayer2ArtStyle
   prompt_version: 'premium_quick_modes_v1'
 }
 
@@ -175,6 +176,11 @@ export const PREMIUM_QUICK_MODE_OPTIONS: Array<{
     label: 'Word Design',
     helper: 'Turns the word into the visual object.',
   },
+  {
+    value: 'infographic',
+    label: 'Infographic',
+    helper: 'A beautiful study poster with compact word facts.',
+  },
 ]
 
 export const CARD_LAYER2_ART_STYLE_OPTIONS: Array<{
@@ -211,7 +217,8 @@ export function cardLayer2PresentationLabel(value: CardLayer2PresentationForm): 
   return CARD_LAYER2_PRESENTATION_OPTIONS.find((option) => option.value === value)?.label ?? value
 }
 
-export function premiumQuickModeLabel(value: PremiumQuickMode | 'custom' | string | null | undefined): string {
+export function premiumQuickModeLabel(value: PremiumGenerationModeName | string | null | undefined): string {
+  if (value === 'quick_generate') return 'Quick Generate'
   if (value === 'custom') return 'Custom'
   return PREMIUM_QUICK_MODE_OPTIONS.find((option) => option.value === value)?.label ?? value ?? ''
 }
@@ -260,8 +267,13 @@ export function resolvePremiumQuickMode(
     },
     word_design: {
       backend_template: 'direct_prompt_v2',
-      meaning_strategy: 'absurd_hook',
+      meaning_strategy: 'clear_meaning',
       presentation_form: 'word_object_design',
+    },
+    infographic: {
+      backend_template: 'direct_prompt_v2',
+      meaning_strategy: 'clear_meaning',
+      presentation_form: 'infographic_card',
     },
   }
   const resolved = preset[mode]
@@ -550,6 +562,7 @@ interface BuildPayloadOpts {
   /** When true, drop video-only customisations (vibe / art / niveau / genre)
    *  so a Quick-Generate submit doesn't carry stale picks the user skipped. */
   isQuickGenerate?: boolean
+  premiumQuickModeOverride?: PremiumQuickMode
   /** Override the word list used for `wordList` and `*_total`. Useful when
    *  the caller has a synchronously-flushed list that hasn't yet landed in
    *  state.words. */
@@ -561,6 +574,7 @@ export function buildGeneratePayload({
   userId,
   existingDeck,
   isQuickGenerate = false,
+  premiumQuickModeOverride,
   wordsOverride,
 }: BuildPayloadOpts): GeneratePayload {
   const lane: ProductLane =
@@ -604,8 +618,9 @@ export function buildGeneratePayload({
   const premiumArtStyle = isCardLayer2ArtStyle(state.cardImageStyle)
     ? state.cardImageStyle
     : DEFAULT_CARD_LAYER2_ART_STYLE
-  const premiumQuick = lane === 'card_premium'
-    ? resolvePremiumQuickMode(state.premiumQuickMode ?? DEFAULT_PREMIUM_QUICK_MODE, premiumArtStyle)
+  const selectedPremiumQuickMode = premiumQuickModeOverride ?? state.premiumQuickMode ?? DEFAULT_PREMIUM_QUICK_MODE
+  const premiumQuick = lane === 'card_premium' && !isQuickGenerate
+    ? resolvePremiumQuickMode(selectedPremiumQuickMode, premiumArtStyle)
     : null
   const isPremiumCustomize = (
     lane === 'card_premium'
@@ -623,6 +638,13 @@ export function buildGeneratePayload({
         prompt_version: 'premium_quick_modes_v1',
       }
     : null
+  const quickGeneratePremiumMetadata: PremiumGenerationModeMetadata | null =
+    lane === 'card_premium' && isQuickGenerate
+      ? {
+          premium_quick_mode: 'quick_generate',
+          prompt_version: 'premium_quick_modes_v1',
+        }
+      : null
   const cardLayer2 = isPremiumCustomize
     ? {
         ...(state.cardLayer2 ?? DEFAULT_CARD_LAYER2),
@@ -632,12 +654,12 @@ export function buildGeneratePayload({
       }
     : premiumQuick?.card_layer2
   const cardImageStyleForSettings =
-    lane === 'card_premium'
+    lane === 'card_premium' && !isQuickGenerate
       ? premiumArtStyle
       : isCard && !isQuickGenerate && state.cardImageStyle
         ? state.cardImageStyle
         : undefined
-  const premiumGenerationMode = customPremiumMetadata ?? premiumQuick?.metadata
+  const premiumGenerationMode = quickGeneratePremiumMetadata ?? customPremiumMetadata ?? premiumQuick?.metadata
 
   return {
     deckPayload: existingDeck
