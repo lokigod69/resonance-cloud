@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { supabase } from '@/lib/supabase'
-import { extractMusicLyrics } from '@/lib/musicLyrics'
+import { cleanDisplayLyrics, extractMusicLyrics } from '@/lib/musicLyrics'
 import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
 import { useTranslation } from '@/hooks/useTranslation'
 
@@ -137,6 +137,10 @@ export function LyricsSheet({
       ? 'border-[var(--border-subtle)] bg-[var(--glass-bg,rgba(10,10,14,0.82))] text-[var(--text-primary)] shadow-2xl backdrop-blur-2xl'
       : 'bg-background text-foreground',
   ].join(' ')
+  const displayLyrics =
+    state.status === 'ready' && state.lyrics
+      ? cleanDisplayLyrics(state.lyrics)
+      : null
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -163,7 +167,7 @@ export function LyricsSheet({
               <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
               <span>{state.error || t('music.lyrics.error')}</span>
             </div>
-          ) : state.status === 'ready' && state.lyrics ? (
+          ) : state.status === 'ready' && displayLyrics ? (
             <div className="flex min-h-0 flex-col gap-4">
               <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
                 <div className="rounded-md bg-muted/40 px-3 py-2">
@@ -185,9 +189,11 @@ export function LyricsSheet({
               </div>
 
               <div className="grid grid-cols-1">
-                <pre className="max-h-[calc(70dvh-12rem)] overflow-y-auto whitespace-pre-wrap rounded-md bg-muted/30 p-5 text-sm leading-6 text-foreground font-sans">
-                  {state.lyrics}
-                </pre>
+                <div className="relative overflow-hidden rounded-md before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-6 before:bg-gradient-to-b before:from-background/80 before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-6 after:bg-gradient-to-t after:from-background/80 after:to-transparent before:pointer-events-none after:pointer-events-none">
+                  <pre className="max-h-[min(52dvh,32rem)] overflow-y-auto whitespace-pre-wrap bg-muted/30 px-5 py-6 text-[15px] leading-7 text-foreground font-sans sm:max-h-[calc(70dvh-12rem)]">
+                    {displayLyrics}
+                  </pre>
+                </div>
               </div>
             </div>
           ) : (

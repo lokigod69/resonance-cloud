@@ -12,6 +12,36 @@ function cleanText(value: unknown): string | null {
   return typeof value === 'string' && value.trim() ? value.trim() : null
 }
 
+const SECTION_TAG_PATTERN =
+  /^\s*\[(?:Intro|Verse(?:\s+\d+)?|Chorus|Bridge|Outro|Hook|Pre-Chorus)\]\s*$/i
+
+export function cleanDisplayLyrics(rawLyrics: string): string {
+  const rawLines = rawLyrics.replace(/\r\n?/g, '\n').split('\n')
+  const lines: string[] = []
+
+  for (const rawLine of rawLines) {
+    const line = rawLine.trimEnd()
+
+    if (SECTION_TAG_PATTERN.test(line)) {
+      if (lines.length > 0 && lines[lines.length - 1] !== '') {
+        lines.push('')
+      }
+      continue
+    }
+
+    if (!line.trim()) {
+      if (lines.length > 0 && lines[lines.length - 1] !== '') {
+        lines.push('')
+      }
+      continue
+    }
+
+    lines.push(line)
+  }
+
+  return lines.join('\n').replace(/\n{3,}/g, '\n\n').trim()
+}
+
 export function extractMusicLyrics({
   conceptArtifact,
   songGeneration,

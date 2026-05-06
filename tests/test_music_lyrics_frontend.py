@@ -54,6 +54,25 @@ def test_lyrics_extractor_prefers_concept_artifact_suno_lyrics():
     assert suno_idx < concept_idx < metadata_suno_idx
 
 
+def test_clean_display_lyrics_hides_raw_section_tags_without_mutating_extraction():
+    helper = read_frontend("lib/musicLyrics.ts")
+    sheet = read_frontend("components/music/LyricsSheet.tsx")
+
+    assert "cleanDisplayLyrics" in helper
+    for tag in ["Intro", "Verse", "Chorus", "Bridge", "Outro", "Hook", "Pre-Chorus"]:
+        assert tag in helper
+    assert "lyrics: sunoLyrics" in helper
+    assert "cleanDisplayLyrics(state.lyrics)" in sheet
+
+
+def test_clean_display_lyrics_preserves_stanzas_and_limits_excess_blank_lines():
+    helper = read_frontend("lib/musicLyrics.ts")
+
+    assert "lines.push('')" in helper
+    assert ".replace(/\\n{3,}/g, '\\n\\n')" in helper
+    assert ".trim()" in helper
+
+
 def test_classic_music_has_row_level_lyrics_button_only_for_audio_tracks():
     row = read_frontend("components/music/PlaylistRow.tsx")
     music = read_frontend("pages/Music.tsx")
@@ -89,6 +108,8 @@ def test_lyrics_sheet_uses_centered_reading_overlay_with_internal_scroll():
     assert "max-w-[min(900px,calc(100vw-2rem))]" in sheet
     assert "max-h-[70dvh]" in sheet
     assert "overflow-y-auto" in sheet
+    assert "before:absolute before:inset-x-0 before:top-0" in sheet
+    assert "after:absolute after:inset-x-0 after:bottom-0" in sheet
     assert "grid-cols-1" in sheet
 
 
