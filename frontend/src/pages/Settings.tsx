@@ -14,8 +14,10 @@ import {
 import { Coins, LogOut, Check } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function Settings() {
+  const { t } = useTranslation()
   const { profile, profileLoading, user, signOut, refreshProfile } = useAuth()
   const { theme, setTheme } = useTheme()
   const { skin, setSkin } = useSkin()
@@ -77,7 +79,7 @@ export default function Settings() {
         })
         setBaseLanguage(previousBaseLanguage)
         setSaved(false)
-        setError('Could not save. Check your session and try again.')
+        setError(t('profile.saveFailed'))
         return
       }
 
@@ -93,7 +95,7 @@ export default function Settings() {
       })
       setBaseLanguage(previousBaseLanguage)
       setSaved(false)
-      setError('Could not save. Check your session and try again.')
+      setError(t('profile.saveFailed'))
     } finally {
       setSaving(false)
     }

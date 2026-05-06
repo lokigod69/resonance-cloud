@@ -32,6 +32,41 @@ def test_settings_verifies_base_language_update_before_saved_state():
     assert "const previousBaseLanguage = profile?.base_language || ''" in source
     assert "setBaseLanguage(previousBaseLanguage)" in source
     assert "setError(" in source
+    assert "const { t } = useTranslation()" in source
+    assert "setError(t('profile.saveFailed'))" in source
+    assert "Could not save. Check your session and try again." not in source
+
+
+def test_onboarding_verifies_base_language_update_before_advancing():
+    source = (ROOT / "frontend/src/pages/Onboarding.tsx").read_text(encoding="utf-8")
+    handler_start = source.index("async function handleLanguageContinue()")
+    handler_end = source.index("async function handleRedeemCode()", handler_start)
+    handler = source[handler_start:handler_end]
+
+    update_idx = handler.index(".update({ base_language: selectedLanguage })")
+    select_idx = handler.index(".select('base_language')", update_idx)
+    single_idx = handler.index(".single()", update_idx)
+    error_idx = handler.index("if (error || data?.base_language !== selectedLanguage)", update_idx)
+    refresh_idx = handler.index("await refreshProfile()", update_idx)
+    step_idx = handler.index("setStep(2)", update_idx)
+
+    assert update_idx < select_idx < single_idx < error_idx < refresh_idx < step_idx
+    assert "setLanguageError(t('profile.saveFailed'))" in handler
+    assert "return" in handler[error_idx:refresh_idx]
+    assert "catch (error)" in handler
+    assert "finally" in handler
+    assert "setSaving(false)" in handler
+
+
+def test_onboarding_does_not_mark_done_during_base_language_save():
+    source = (ROOT / "frontend/src/pages/Onboarding.tsx").read_text(encoding="utf-8")
+
+    language_continue_start = source.index("async function handleLanguageContinue()")
+    language_continue_end = source.index("async function handleRedeemCode()", language_continue_start)
+    language_continue = source[language_continue_start:language_continue_end]
+
+    assert "localStorage.setItem('resonance_onboarding_done'" not in language_continue
+    assert "setStep(2)" in language_continue
 
 
 def test_profile_hardening_trigger_allows_base_language_but_not_privileged_fields():

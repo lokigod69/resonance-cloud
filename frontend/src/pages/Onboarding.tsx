@@ -13,14 +13,17 @@ import {
 } from '@/components/ui/select'
 import { Music, ChevronRight, Gift, Check } from 'lucide-react'
 import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function Onboarding() {
+  const { t } = useTranslation()
   const { user, refreshProfile } = useAuth()
   const navigate = useNavigate()
 
   const [step, setStep] = useState<1 | 2>(1)
   const [selectedLanguage, setSelectedLanguage] = useState('')
   const [saving, setSaving] = useState(false)
+  const [languageError, setLanguageError] = useState<string | null>(null)
 
   const [inviteCode, setInviteCode] = useState('')
   const [redeemError, setRedeemError] = useState<string | null>(null)
@@ -30,16 +33,39 @@ export default function Onboarding() {
   async function handleLanguageContinue() {
     if (!selectedLanguage || !user) return
     setSaving(true)
-    const { error } = await supabase
-      .from('profiles')
-      .update({ base_language: selectedLanguage })
-      .eq('id', user.id)
-    if (error) {
-      console.error('Failed to set base language:', error)
+    setLanguageError(null)
+
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .update({ base_language: selectedLanguage })
+        .eq('id', user.id)
+        .select('base_language')
+        .single()
+
+      if (error || data?.base_language !== selectedLanguage) {
+        console.error('[Onboarding] base_language update failed', {
+          userId: user.id,
+          requestedBaseLanguage: selectedLanguage,
+          returnedBaseLanguage: data?.base_language,
+          error,
+        })
+        setLanguageError(t('profile.saveFailed'))
+        return
+      }
+
+      await refreshProfile()
+      setStep(2)
+    } catch (error) {
+      console.error('[Onboarding] base_language update exception', {
+        userId: user.id,
+        requestedBaseLanguage: selectedLanguage,
+        error,
+      })
+      setLanguageError(t('profile.saveFailed'))
+    } finally {
+      setSaving(false)
     }
-    await refreshProfile()
-    setSaving(false)
-    setStep(2)
   }
 
   async function handleRedeemCode() {
@@ -116,6 +142,10 @@ export default function Onboarding() {
                 ))}
               </SelectContent>
             </Select>
+
+            {languageError && (
+              <p className="text-center text-sm text-destructive">{languageError}</p>
+            )}
 
             <Button
               className="w-full h-12"
