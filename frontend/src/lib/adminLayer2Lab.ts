@@ -41,6 +41,7 @@ export interface BuildLayer2LabRowsInput {
 export interface BuildLayer2LabPayloadInput {
   row: Layer2LabRun
   scriptIndex?: number
+  labRunId?: string
   userId: string
   targetLanguage: string
   baseLanguage?: string
@@ -167,9 +168,27 @@ function slugifyVariantPart(value: string, maxLength = 50): string {
   return (slug || 'word').slice(0, maxLength).replace(/-+$/g, '') || 'word'
 }
 
-export function layer2VariantSlugForRow(rowItem: Layer2LabRun, scriptIndex = 1): string {
+function normalizeLabRunId(value: string | null | undefined): string | null {
+  const slug = slugifyVariantPart(value ?? '', 12)
+  return slug === 'word' ? null : slug
+}
+
+export function createLayer2LabRunId(seed?: string): string {
+  const randomValue = globalThis.crypto?.randomUUID?.() ?? `${Date.now().toString(36)}-${Math.random().toString(36)}`
+  const raw = seed ?? randomValue.replace(/-/g, '')
+  return normalizeLabRunId(raw) ?? 'run'
+}
+
+export function layer2VariantSlugForRow(
+  rowItem: Layer2LabRun,
+  scriptIndex = 1,
+  labRunId?: string | null,
+): string {
   const index = Math.max(1, Math.trunc(Number(scriptIndex) || 1))
-  const suffix = `-l2-${String(index).padStart(3, '0')}`
+  const runId = normalizeLabRunId(labRunId)
+  const suffix = runId
+    ? `-l2-${runId}-${String(index).padStart(3, '0')}`
+    : `-l2-${String(index).padStart(3, '0')}`
   const base = slugifyVariantPart(rowItem.word, 50 - suffix.length)
   return `${base}${suffix}`
 }
@@ -263,12 +282,18 @@ export function estimateLayer2LabCreditCost(rowCount: number): number {
   return Math.max(0, rowCount) * LAYER2_LAB_CREDITS_PER_ROW
 }
 
-export function layer2EvalForRow(rowItem: Layer2LabRun, scriptIndex = 1): Layer2EvalPayload {
+export function layer2EvalForRow(
+  rowItem: Layer2LabRun,
+  scriptIndex = 1,
+  labRunId?: string | null,
+): Layer2EvalPayload {
+  const runId = normalizeLabRunId(labRunId)
   return {
     label: rowItem.label,
     script_index: scriptIndex,
+    ...(runId ? { lab_run_id: runId } : {}),
     original_word: rowItem.word,
-    variant_slug: layer2VariantSlugForRow(rowItem, scriptIndex),
+    variant_slug: layer2VariantSlugForRow(rowItem, scriptIndex, runId),
     meaning_strategy: rowItem.meaning_strategy,
     presentation_form: rowItem.presentation_form,
     art_style: rowItem.art_style,
@@ -309,6 +334,7 @@ export function validateLayer2LabSubmit({
 export function buildLayer2LabPayload({
   row: rowItem,
   scriptIndex = 1,
+  labRunId,
   userId,
   targetLanguage,
   baseLanguage,
@@ -348,7 +374,7 @@ export function buildLayer2LabPayload({
         card_image_model: 'gpt_image_2',
         card_image_style: rowItem.art_style,
         card_layer2: layer2,
-        layer2_eval: layer2EvalForRow(rowItem, scriptIndex),
+        layer2_eval: layer2EvalForRow(rowItem, scriptIndex, labRunId),
         ...(baseLanguage ? { base_language: baseLanguage } : {}),
       },
     },

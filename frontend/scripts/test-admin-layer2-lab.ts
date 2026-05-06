@@ -291,6 +291,85 @@ console.log('\n[repeated-word variants]')
   )
 }
 
+console.log('\n[repeated-word append run tokens]')
+{
+  const existingDeck = {
+    id: 'deck-garage',
+    name: 'Layer2 Lab Garage',
+    target_language: 'English',
+    art_style: null,
+    movie_override: null,
+    word_count: 2,
+    deck_type: 'card' as const,
+    last_card_image_model: 'gpt_image_2' as const,
+  }
+  const garageRows: Layer2LabRun[] = [
+    {
+      id: 'garage-1',
+      word: 'garage',
+      meaning_strategy: 'clear_meaning',
+      presentation_form: 'single_scene',
+      art_style: 'realistic',
+      backend_template: 'structured_plan_v1',
+      label: 'first garage',
+    },
+    {
+      id: 'garage-2',
+      word: 'garage',
+      meaning_strategy: 'absurd_hook',
+      presentation_form: 'mini_story',
+      art_style: 'cinematic',
+      backend_template: 'direct_prompt_v2',
+      label: 'second garage',
+    },
+  ]
+  const firstRun = garageRows.map((row, index) => buildLayer2LabPayload({
+    row,
+    scriptIndex: index + 1,
+    labRunId: 'r7k3',
+    userId: USER,
+    targetLanguage: 'English',
+    deckName: 'Layer2 Lab Garage',
+    existingDeck,
+  }))
+  const appendRun = garageRows.map((row, index) => buildLayer2LabPayload({
+    row,
+    scriptIndex: index + 1,
+    labRunId: 'z9q2',
+    userId: USER,
+    targetLanguage: 'English',
+    deckName: 'Layer2 Lab Garage',
+    existingDeck,
+  }))
+  const slugs = [...firstRun, ...appendRun]
+    .map((payload) => payload.jobPayload.settings_override.layer2_eval?.variant_slug)
+  assert('first lab run with garage rows produces unique tokenized slugs',
+    firstRun[0]?.jobPayload.settings_override.layer2_eval?.variant_slug === 'garage-l2-r7k3-001'
+      && firstRun[1]?.jobPayload.settings_override.layer2_eval?.variant_slug === 'garage-l2-r7k3-002',
+    slugs,
+  )
+  assert('append lab run with reset script indexes does not collide',
+    appendRun[0]?.jobPayload.settings_override.layer2_eval?.variant_slug === 'garage-l2-z9q2-001'
+      && appendRun[1]?.jobPayload.settings_override.layer2_eval?.variant_slug === 'garage-l2-z9q2-002'
+      && new Set(slugs).size === slugs.length,
+    slugs,
+  )
+  assert('layer2_eval records the lab run id for appended rows',
+    appendRun.every((payload) => payload.jobPayload.settings_override.layer2_eval?.lab_run_id === 'z9q2'),
+    appendRun.map((payload) => payload.jobPayload.settings_override.layer2_eval),
+  )
+  assert('payload preserves original learner-facing garage word',
+    [...firstRun, ...appendRun].every((payload) =>
+      payload.wordList[0] === 'garage'
+      && payload.jobPayload.settings_override.layer2_eval?.original_word === 'garage'
+    ),
+    [...firstRun, ...appendRun].map((payload) => ({
+      wordList: payload.wordList,
+      layer2_eval: payload.jobPayload.settings_override.layer2_eval,
+    })),
+  )
+}
+
 console.log('\n[one-deck append plan]')
 {
   const deckName = createLayer2LabDeckName('Layer2 Lab', '2026-05-05T10:00:00.000Z')

@@ -638,6 +638,154 @@ def test_layer2_lab_repeated_words_get_unique_variant_slugs(monkeypatch, tmp_pat
     assert [m["word_slug"] for m in manifests] == ["freedom-l2-001", "freedom-l2-002"]
 
 
+def test_layer2_lab_append_runs_with_reset_indexes_do_not_collide(monkeypatch, tmp_path):
+    jobs = [
+        {
+            "id": "job-1",
+            "user_id": "u-1",
+            "deck_id": "d-1",
+            "target_language": "English",
+            "art_style": None,
+            "movie_override": None,
+            "settings_override": {
+                "layer2_eval": {
+                    "source": "admin_layer2_lab_v1",
+                    "script_index": 1,
+                    "lab_run_id": "r7k3",
+                    "variant_slug": "garage-l2-r7k3-001",
+                    "original_word": "garage",
+                    "label": "first append run",
+                    "meaning_strategy": "clear_meaning",
+                    "presentation_form": "single_scene",
+                    "art_style": "realistic",
+                }
+            },
+        },
+        {
+            "id": "job-2",
+            "user_id": "u-1",
+            "deck_id": "d-1",
+            "target_language": "English",
+            "art_style": None,
+            "movie_override": None,
+            "settings_override": {
+                "layer2_eval": {
+                    "source": "admin_layer2_lab_v1",
+                    "script_index": 1,
+                    "lab_run_id": "z9q2",
+                    "variant_slug": "garage-l2-z9q2-001",
+                    "original_word": "garage",
+                    "label": "second append run",
+                    "meaning_strategy": "absurd_hook",
+                    "presentation_form": "mini_story",
+                    "art_style": "cinematic",
+                }
+            },
+        },
+    ]
+
+    sb = FakeSupabase()
+    sb._tables["decks"].append({"id": "d-1", "deck_type": "card"})
+    sb._tables["profiles"].append({"id": "u-1", "base_language": "English"})
+    sb.add_word(
+        id="w-1",
+        deck_id="d-1",
+        generation_job_id="job-1",
+        word="garage",
+        status="pending",
+        current_stage="pre_bootstrap",
+    )
+    sb.add_word(
+        id="w-2",
+        deck_id="d-1",
+        generation_job_id="job-2",
+        word="garage",
+        status="pending",
+        current_stage="pre_bootstrap",
+    )
+
+    _install_module(
+        monkeypatch,
+        "src.settings",
+        save_defaults=lambda *_a, **_kw: None,
+        DEFAULT_SETTINGS={},
+    )
+    _install_module(
+        monkeypatch,
+        "src.storage",
+        create_job_workspace=lambda user_id, deck_id: tmp_path,
+    )
+
+    async def _run_enrichment(words, *_a, **_kw):
+        return [
+            {
+                "input_word": words[0]["word"],
+                "translation": "garage",
+                "word_target": "garage",
+                "mnemonic": "A garage door opens.",
+            }
+        ]
+
+    _install_module(
+        monkeypatch,
+        "src.services.enrichment",
+        run_enrichment=_run_enrichment,
+    )
+    _install_module(
+        monkeypatch,
+        "src.workspace",
+        create_word_folder=lambda workspace_path, word_slug: (tmp_path / word_slug).mkdir(parents=True, exist_ok=True) or (tmp_path / word_slug),
+    )
+    _install_module(
+        monkeypatch,
+        "src.slugify",
+        slugify=lambda text, max_length=50: str(text).lower().replace(" ", "-")[:max_length],
+        language_to_code=lambda language: "en",
+    )
+
+    manifests: list[dict[str, object]] = []
+
+    def _create_manifest(**kwargs):
+        manifests.append(kwargs)
+        manifest_file = kwargs["word_dir"] / "manifest.json"
+        manifest_file.write_text("{}", encoding="utf-8")
+
+    _install_module(
+        monkeypatch,
+        "src.manifest",
+        create_manifest=_create_manifest,
+    )
+
+    _install_job_runner_import_stubs(monkeypatch, sb)
+    import job_runner
+    importlib.reload(job_runner)
+
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+
+    for current_job in jobs:
+        _run(feeder.bootstrap_job(
+            sb,
+            current_job,
+            upstream_queue=asyncio.Queue(maxsize=2),
+            card_queue=asyncio.Queue(maxsize=2),
+        ))
+
+    first, second = sb._tables["words"]
+    assert first["word"] == "garage"
+    assert second["word"] == "garage"
+    assert first["word_slug"] == "garage-l2-r7k3-001"
+    assert second["word_slug"] == "garage-l2-z9q2-001"
+    assert first["word_slug"] != second["word_slug"]
+    assert first["metadata"]["layer2_eval"]["lab_run_id"] == "r7k3"
+    assert second["metadata"]["layer2_eval"]["lab_run_id"] == "z9q2"
+    assert first["metadata"]["layer2_eval"]["original_word"] == "garage"
+    assert second["metadata"]["layer2_eval"]["original_word"] == "garage"
+    assert [m["word_slug"] for m in manifests] == [
+        "garage-l2-r7k3-001",
+        "garage-l2-z9q2-001",
+    ]
+
+
 def test_retry_flips_generation_job_id_parent_not_deck_latest():
     sb = FakeSupabase()
     parent = sb.add_job(

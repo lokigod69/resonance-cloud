@@ -34,6 +34,7 @@ import {
   createLayer2LabResultSummary,
   buildLayer2LabRows,
   createLayer2LabDeckName,
+  createLayer2LabRunId,
   DEFAULT_LAYER2_BACKEND_TEMPLATE,
   estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
@@ -222,6 +223,7 @@ export default function Layer2Lab() {
     let deck: ExistingDeck | undefined = startingDeck
     let deckId: string | null = startingDeck?.id ?? null
     let submittedRows = 0
+    const labRunId = createLayer2LabRunId()
     const failedRows: Layer2LabResultSummary['failedRows'] = []
 
     try {
@@ -229,6 +231,7 @@ export default function Layer2Lab() {
         const payload = buildLayer2LabPayload({
           row,
           scriptIndex: index + 1,
+          labRunId,
           userId: user.id,
           targetLanguage,
           baseLanguage,

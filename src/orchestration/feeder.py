@@ -79,9 +79,22 @@ def _coerce_layer2_script_index(value: Any) -> int:
     return max(1, index)
 
 
-def _layer2_lab_variant_slug(base_slug: str, script_index: Any) -> str:
+def _normalized_layer2_lab_run_id(value: Any) -> str | None:
+    if value is None:
+        return None
+    token = re.sub(r"[^a-z0-9]+", "-", str(value).strip().lower()).strip("-")
+    token = token[:12].rstrip("-")
+    return token or None
+
+
+def _layer2_lab_variant_slug(
+    base_slug: str,
+    script_index: Any,
+    lab_run_id: Any = None,
+) -> str:
     index = _coerce_layer2_script_index(script_index)
-    suffix = f"-l2-{index:03d}"
+    run_id = _normalized_layer2_lab_run_id(lab_run_id)
+    suffix = f"-l2-{run_id}-{index:03d}" if run_id else f"-l2-{index:03d}"
     base = (base_slug or "word")[: max(1, 50 - len(suffix))].rstrip("-") or "word"
     return f"{base}{suffix}"
 
@@ -96,14 +109,20 @@ def _normalized_layer2_lab_eval(
     if not isinstance(raw, dict) or raw.get("source") != "admin_layer2_lab_v1":
         return None
     script_index = _coerce_layer2_script_index(raw.get("script_index"))
-    variant_slug = _layer2_lab_variant_slug(base_slug, script_index)
-    return {
+    lab_run_id = _normalized_layer2_lab_run_id(
+        raw.get("lab_run_id") or raw.get("run_token")
+    )
+    variant_slug = _layer2_lab_variant_slug(base_slug, script_index, lab_run_id)
+    normalized = {
         **raw,
         "source": "admin_layer2_lab_v1",
         "script_index": script_index,
         "original_word": str(raw.get("original_word") or original_word or ""),
         "variant_slug": variant_slug,
     }
+    if lab_run_id:
+        normalized["lab_run_id"] = lab_run_id
+    return normalized
 
 
 # ---------------------------------------------------------------------------
