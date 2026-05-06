@@ -1,4 +1,4 @@
-import { SkipBack, SkipForward, Play, Pause, Repeat, Repeat1, Shuffle } from 'lucide-react'
+import { Music, SkipBack, SkipForward, Play, Pause, Repeat, Repeat1, Shuffle } from 'lucide-react'
 import { VolumeControl } from '@/components/VolumeControl'
 import { SimulatedWaveform } from './SimulatedWaveform'
 import type { MusicTrack, RepeatMode } from '@/hooks/useMusicPlayer'
@@ -167,6 +167,21 @@ export function PlayerBar({
 
       {/* Left: transport controls */}
       <div className="order-1 flex items-center gap-2 shrink-0">
+        {currentTrack && (
+          <div className="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-card/50 border border-border">
+            {currentTrack?.thumbnail_url ? (
+              <img
+                src={currentTrack.thumbnail_url}
+                alt={currentTrack.word}
+                className="h-full w-full object-cover"
+                draggable={false}
+              />
+            ) : (
+              <Music size={16} className="text-muted-foreground" aria-hidden />
+            )}
+          </div>
+        )}
+
         <button
           onClick={onPrev}
           disabled={!currentTrack}

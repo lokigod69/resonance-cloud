@@ -60,3 +60,13 @@ def test_music_lyrics_labels_are_translated_for_en_de_fr():
         "music.lyrics.lyricMode",
     ]:
         assert translations.count(f"'{key}'") == 3
+
+
+def test_classic_player_bar_shows_current_track_thumbnail_without_playback_changes():
+    player_bar = read_frontend("components/music/PlayerBar.tsx")
+
+    assert "currentTrack?.thumbnail_url" in player_bar
+    assert "alt={currentTrack.word}" in player_bar
+    assert "hidden sm:flex h-10 w-10" in player_bar
+    assert "<Music size={16}" in player_bar
+    assert "audio.src" not in player_bar
