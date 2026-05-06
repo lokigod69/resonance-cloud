@@ -377,6 +377,7 @@ export default function SyndicateCanvas({
   showImages,
   sessionComplete,
   direction,
+  autoReveal,
   languagePair,
   currentPage,
   totalPages,
@@ -388,6 +389,7 @@ export default function SyndicateCanvas({
   onSwitchMode,
   onToggleImages,
   onToggleDirection,
+  onToggleAutoReveal,
   onExit,
   onContinue,
 }: CanvasModeProps) {
@@ -881,12 +883,14 @@ export default function SyndicateCanvas({
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
+          autoReveal={autoReveal}
           languagePair={languagePair}
           currentPage={currentPage}
           totalPages={totalPages}
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
           onToggleDirection={onToggleDirection}
+          onToggleAutoReveal={onToggleAutoReveal}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
           onExit={onExit}
@@ -972,6 +976,7 @@ export default function SyndicateCanvas({
             onClose={() => setRevealedId(null)}
             onImageError={() => handleImageError(selectedState.id)}
             onSpeak={() => speakHeadword(selectedState.word)}
+            autoReveal={autoReveal}
             onPass={handlePass}
             onFail={handleFail}
           />
@@ -985,12 +990,14 @@ interface ToolbarProps {
   activeMode: CanvasMode
   showImages: boolean
   direction: CanvasModeProps['direction']
+  autoReveal: CanvasModeProps['autoReveal']
   languagePair: CanvasModeProps['languagePair']
   currentPage: number
   totalPages: number
   onSwitchMode: (mode: CanvasMode) => void
   onToggleImages: () => void
   onToggleDirection: () => void
+  onToggleAutoReveal: () => void
   onPrevPage: () => void
   onNextPage: () => void
   onExit: () => void
@@ -1000,12 +1007,14 @@ function Toolbar({
   activeMode,
   showImages,
   direction,
+  autoReveal,
   languagePair,
   currentPage,
   totalPages,
   onSwitchMode,
   onToggleImages,
   onToggleDirection,
+  onToggleAutoReveal,
   onPrevPage,
   onNextPage,
   onExit,
@@ -1062,6 +1071,19 @@ function Toolbar({
           </button>
         )}
 
+        <label
+          className="h-9 px-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50 cursor-pointer"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <input
+            type="checkbox"
+            checked={autoReveal === 'off'}
+            onChange={onToggleAutoReveal}
+            className="accent-[#00fff2]"
+          />
+          Hide answer
+        </label>
+
         <button
           onClick={(event) => {
             event.stopPropagation()
@@ -1114,6 +1136,7 @@ interface RevealModalProps {
   onClose: () => void
   onImageError: () => void
   onSpeak: () => void
+  autoReveal: CanvasModeProps['autoReveal']
   onPass: () => void
   onFail: () => void
 }
@@ -1125,16 +1148,27 @@ function RevealModal({
   onClose,
   onImageError,
   onSpeak,
+  autoReveal,
   onPass,
   onFail,
 }: RevealModalProps) {
   const word = state.word
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
-  const phonetic = getStringField(word, ['phonetic'])
+  const phonetic = getStringField(word, ['phonetic', 'ipa'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
+  const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
+  const canGrade = autoReveal === 'on' || answerRevealed
+
+  useEffect(() => {
+    setAnswerRevealed(autoReveal === 'on')
+  }, [autoReveal, word.id])
+
+  const revealAnswer = () => {
+    if (!canGrade) setAnswerRevealed(true)
+  }
 
   return (
     <div
@@ -1163,25 +1197,32 @@ function RevealModal({
             # {promptFace}
           </p>
 
-          <button
-            type="button"
-            onClick={onSpeak}
-            className="text-3xl md:text-4xl lg:text-5xl tracking-wider font-mono text-[#00fff2] bg-transparent border-none mb-3 syndicate-headword"
+          <div
+            className={!canGrade ? 'syndicate-answer-guard syndicate-answer-blurred' : 'syndicate-answer-guard'}
+            onClick={revealAnswer}
           >
-            [{answerFace}]
-          </button>
+            <div className="syndicate-answer-content">
+              <button
+                type="button"
+                onClick={canGrade ? onSpeak : revealAnswer}
+                className="text-3xl md:text-4xl lg:text-5xl tracking-wider font-mono text-[#00fff2] bg-transparent border-none mb-3 syndicate-headword"
+              >
+                [{answerFace}]
+              </button>
 
-          {phonetic && (
-            <p className="text-sm tracking-widest font-mono text-[#39ff14]/50 mb-6">
-              {phonetic}
-            </p>
-          )}
+              {phonetic && (
+                <p className="text-sm tracking-widest font-mono text-[#39ff14]/50 mb-6">
+                  {phonetic}
+                </p>
+              )}
 
-          {definition && (
-            <p className="text-lg md:text-xl font-mono text-gray-300 mb-6 leading-relaxed">
-              {definition}
-            </p>
-          )}
+              {definition && (
+                <p className="text-lg md:text-xl font-mono text-gray-300 mb-6 leading-relaxed">
+                  {definition}
+                </p>
+              )}
+            </div>
+          </div>
 
           {imageUrl && (
             <div className="mb-6 flex justify-center">
@@ -1195,7 +1236,11 @@ function RevealModal({
           )}
 
           {hasRichData && (
-            <div className="mt-6 text-left space-y-4">
+            <div
+              className={!canGrade ? 'syndicate-answer-guard syndicate-answer-blurred mt-6 text-left space-y-4' : 'syndicate-answer-guard mt-6 text-left space-y-4'}
+              onClick={revealAnswer}
+            >
+              <div className="syndicate-answer-content">
               {learning?.mnemonic && (
                 <div className="bg-[#0f0f0f] border border-[#ff0040]/30 p-4">
                   <p className="text-[10px] tracking-widest text-[#ff0040]/70 mb-2">// MEMORY_HOOK</p>
@@ -1229,19 +1274,22 @@ function RevealModal({
                   )}
                 </div>
               )}
+              </div>
             </div>
           )}
 
           <div className="mt-6 pt-5 border-t border-[#00fff2]/20 grid grid-cols-2 gap-3">
             <button
               onClick={onFail}
-              className="h-12 bg-[#ff0040]/10 border border-[#ff0040]/50 text-[#ff0040] hover:bg-[#ff0040]/20 font-mono tracking-widest"
+              disabled={!canGrade}
+              className={`h-12 bg-[#ff0040]/10 border border-[#ff0040]/50 text-[#ff0040] hover:bg-[#ff0040]/20 font-mono tracking-widest ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
             >
               ✗ FAIL
             </button>
             <button
               onClick={onPass}
-              className="h-12 bg-[#39ff14]/10 border border-[#39ff14]/50 text-[#39ff14] hover:bg-[#39ff14]/20 font-mono tracking-widest"
+              disabled={!canGrade}
+              className={`h-12 bg-[#39ff14]/10 border border-[#39ff14]/50 text-[#39ff14] hover:bg-[#39ff14]/20 font-mono tracking-widest ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
             >
               ✓ PASS
             </button>
@@ -1342,6 +1390,43 @@ function SyndicateStyle() {
 
         .syndicate-headword {
           text-shadow: 0 0 20px currentColor;
+        }
+
+        .syndicate-answer-guard {
+          position: relative;
+          transition: transform 200ms steps(2), box-shadow 200ms steps(2);
+        }
+
+        .syndicate-answer-blurred {
+          cursor: pointer;
+        }
+
+        .syndicate-answer-blurred:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 20px rgba(0, 255, 242, 0.28);
+        }
+
+        .syndicate-answer-blurred .syndicate-answer-content {
+          filter: blur(8px);
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .syndicate-answer-blurred::after {
+          content: "";
+          position: absolute;
+          inset: -0.35rem;
+          border: 1px solid rgba(0, 255, 242, 0.28);
+          background:
+            repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 2px,
+              rgba(0, 0, 0, 0.28) 2px,
+              rgba(0, 0, 0, 0.28) 4px
+            ),
+            rgba(0, 255, 242, 0.14);
+          pointer-events: none;
         }
 
         .syndicate-pulse {

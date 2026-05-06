@@ -281,6 +281,7 @@ export default function FrostCanvas({
   showImages,
   sessionComplete,
   direction,
+  autoReveal,
   languagePair,
   currentPage,
   totalPages,
@@ -292,6 +293,7 @@ export default function FrostCanvas({
   onSwitchMode,
   onToggleImages,
   onToggleDirection,
+  onToggleAutoReveal,
   onExit,
   onContinue,
 }: CanvasModeProps) {
@@ -678,12 +680,14 @@ export default function FrostCanvas({
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
+          autoReveal={autoReveal}
           languagePair={languagePair}
           currentPage={currentPage}
           totalPages={totalPages}
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
           onToggleDirection={onToggleDirection}
+          onToggleAutoReveal={onToggleAutoReveal}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
           onExit={onExit}
@@ -744,6 +748,7 @@ export default function FrostCanvas({
             onClose={() => setRevealedId(null)}
             onImageError={() => handleImageError(selectedState.id)}
             onSpeak={() => speakHeadword(selectedState.word)}
+            autoReveal={autoReveal}
             onPass={handlePass}
             onFail={handleFail}
           />
@@ -781,12 +786,14 @@ interface ToolbarProps {
   activeMode: CanvasMode
   showImages: boolean
   direction: CanvasModeProps['direction']
+  autoReveal: CanvasModeProps['autoReveal']
   languagePair: CanvasModeProps['languagePair']
   currentPage: number
   totalPages: number
   onSwitchMode: (mode: CanvasMode) => void
   onToggleImages: () => void
   onToggleDirection: () => void
+  onToggleAutoReveal: () => void
   onPrevPage: () => void
   onNextPage: () => void
   onExit: () => void
@@ -796,12 +803,14 @@ function Toolbar({
   activeMode,
   showImages,
   direction,
+  autoReveal,
   languagePair,
   currentPage,
   totalPages,
   onSwitchMode,
   onToggleImages,
   onToggleDirection,
+  onToggleAutoReveal,
   onPrevPage,
   onNextPage,
   onExit,
@@ -858,6 +867,19 @@ function Toolbar({
           </button>
         )}
 
+        <label
+          className="h-9 px-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg cursor-pointer"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <input
+            type="checkbox"
+            checked={autoReveal === 'off'}
+            onChange={onToggleAutoReveal}
+            className="accent-[#a8d8ea]"
+          />
+          Hide answer
+        </label>
+
         <button
           onClick={(event) => {
             event.stopPropagation()
@@ -910,6 +932,7 @@ interface RevealModalProps {
   onClose: () => void
   onImageError: () => void
   onSpeak: () => void
+  autoReveal: CanvasModeProps['autoReveal']
   onPass: () => void
   onFail: () => void
 }
@@ -921,16 +944,27 @@ function RevealModal({
   onClose,
   onImageError,
   onSpeak,
+  autoReveal,
   onPass,
   onFail,
 }: RevealModalProps) {
   const word = state.word
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
-  const phonetic = getStringField(word, ['phonetic'])
+  const phonetic = getStringField(word, ['phonetic', 'ipa'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
+  const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
+  const canGrade = autoReveal === 'on' || answerRevealed
+
+  useEffect(() => {
+    setAnswerRevealed(autoReveal === 'on')
+  }, [autoReveal, word.id])
+
+  const revealAnswer = () => {
+    if (!canGrade) setAnswerRevealed(true)
+  }
 
   return (
     <div
@@ -960,25 +994,32 @@ function RevealModal({
               {promptFace}
             </div>
 
-            <button
-              type="button"
-              onClick={onSpeak}
-              className="text-4xl md:text-5xl text-[#a8d8ea] font-finger font-bold tracking-wider cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
+            <div
+              className={!canGrade ? 'frost-answer-guard frost-answer-blurred' : 'frost-answer-guard'}
+              onClick={revealAnswer}
             >
-              {answerFace}
-            </button>
+              <div className="frost-answer-content">
+                <button
+                  type="button"
+                  onClick={canGrade ? onSpeak : revealAnswer}
+                  className="text-4xl md:text-5xl text-[#a8d8ea] font-finger font-bold tracking-wider cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
+                >
+                  {answerFace}
+                </button>
 
-            {phonetic && (
-              <p className="text-[#a8d8ea]/50 text-sm mb-6 font-sans tracking-widest text-center">
-                {phonetic}
-              </p>
-            )}
+                {phonetic && (
+                  <p className="text-[#a8d8ea]/50 text-sm mb-6 font-sans tracking-widest text-center">
+                    {phonetic}
+                  </p>
+                )}
 
-            {definition && (
-              <p className="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed font-light font-hand">
-                {definition}
-              </p>
-            )}
+                {definition && (
+                  <p className="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed font-light font-hand">
+                    {definition}
+                  </p>
+                )}
+              </div>
+            </div>
 
             {imageUrl && (
               <div className="mb-6 flex justify-center">
@@ -992,7 +1033,11 @@ function RevealModal({
             )}
 
             {hasRichData && (
-              <div className="mt-6 text-left">
+              <div
+                className={!canGrade ? 'frost-answer-guard frost-answer-blurred mt-6 text-left' : 'frost-answer-guard mt-6 text-left'}
+                onClick={revealAnswer}
+              >
+                <div className="frost-answer-content">
                 {learning?.mnemonic && (
                   <div className="border-t border-[#a8d8ea]/20 pt-4">
                     <div className="bg-[#a8d8ea]/5 border border-[#a8d8ea]/10 rounded-lg p-3">
@@ -1034,20 +1079,23 @@ function RevealModal({
                     )}
                   </div>
                 )}
+                </div>
               </div>
             )}
 
             <div className="mt-6 pt-5 border-t border-[#a8d8ea]/20 grid grid-cols-2 gap-3">
               <button
                 onClick={onFail}
-                className="h-12 rounded-lg bg-[#a8d8ea]/20 hover:bg-[#a8d8ea]/30 text-[#a8d8ea] text-2xl"
+                disabled={!canGrade}
+                className={`h-12 rounded-lg bg-[#a8d8ea]/20 hover:bg-[#a8d8ea]/30 text-[#a8d8ea] text-2xl ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
                 aria-label="Review later"
               >
                 ✕
               </button>
               <button
                 onClick={onPass}
-                className="h-12 rounded-lg bg-[#2a4a6a]/80 hover:bg-[#2a4a6a] text-white text-2xl"
+                disabled={!canGrade}
+                className={`h-12 rounded-lg bg-[#2a4a6a]/80 hover:bg-[#2a4a6a] text-white text-2xl ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
                 aria-label="Remembered"
               >
                 ✓
@@ -1151,6 +1199,36 @@ function FrostStyle() {
 
         .frost-modal-enter {
           animation: frost-appear 0.5s ease-out forwards;
+        }
+
+        .frost-answer-guard {
+          position: relative;
+          transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+
+        .frost-answer-blurred {
+          cursor: pointer;
+        }
+
+        .frost-answer-blurred:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 22px rgba(168, 216, 234, 0.26);
+        }
+
+        .frost-answer-blurred .frost-answer-content {
+          filter: blur(8px);
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .frost-answer-blurred::after {
+          content: "";
+          position: absolute;
+          inset: -0.35rem;
+          border-radius: 10px;
+          border: 1px solid rgba(168, 216, 234, 0.22);
+          background: rgba(79, 195, 247, 0.15);
+          pointer-events: none;
         }
 
         @keyframes frost-breath {

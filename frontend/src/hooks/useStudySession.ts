@@ -9,7 +9,7 @@ export type StudyWord = {
   translation: string | null
   mnemonic: string | null
   etymology: string | null
-  phonetic?: string | null
+  ipa?: string | null
   video_url: string | null
   thumbnail_url: string | null
   video_url_b: string | null
@@ -112,7 +112,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
 
     let wordsQuery = supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, phonetic, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language, base_language)')
+      .select('id, word, translation, mnemonic, etymology, ipa, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language, base_language)')
       .eq('user_id', user.id)
       .eq('status', 'complete')
     if (deckId) {

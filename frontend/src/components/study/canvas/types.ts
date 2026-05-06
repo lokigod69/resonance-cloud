@@ -2,6 +2,7 @@ import type { StudyWord } from '@/hooks/useStudySession'
 
 export type CanvasMode = 'ember' | 'frost' | 'syndicate' | 'zen'
 export type CanvasDirection = 'target-visible' | 'base-visible'
+export type CanvasAutoReveal = 'on' | 'off'
 
 export interface CanvasLanguagePair {
   target: string | null
@@ -18,6 +19,7 @@ export interface CanvasModeProps {
   showImages: boolean
   sessionComplete: boolean
   direction: CanvasDirection
+  autoReveal: CanvasAutoReveal
   languagePair: CanvasLanguagePair
 
   // Pagination state
@@ -35,6 +37,7 @@ export interface CanvasModeProps {
   onSwitchMode: (mode: CanvasMode) => void
   onToggleImages: () => void
   onToggleDirection: () => void
+  onToggleAutoReveal: () => void
   onExit: () => void
   onContinue: () => void
 }

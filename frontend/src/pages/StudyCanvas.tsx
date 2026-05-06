@@ -7,15 +7,17 @@ import EmberCanvas from '@/components/study/canvas/EmberCanvas'
 import FrostCanvas from '@/components/study/canvas/FrostCanvas'
 import SyndicateCanvas from '@/components/study/canvas/SyndicateCanvas'
 import ZenCanvas from '@/components/study/canvas/ZenCanvas'
-import type { CanvasDirection, CanvasLanguagePair, CanvasMode } from '@/components/study/canvas/types'
+import type { CanvasAutoReveal, CanvasDirection, CanvasLanguagePair, CanvasMode } from '@/components/study/canvas/types'
 import { getCardFaces } from '@/lib/cardFaces'
 import { LANGUAGES } from '@/lib/languages'
 
 const PAGE_SIZE = 20
 const SESSION_STORAGE_PREFIX = 'resonance-canvas-session'
 const DIRECTION_STORAGE_KEY = 'resonance-canvas-direction'
+const AUTO_REVEAL_STORAGE_KEY = 'resonance-canvas-auto-reveal'
 const DEFAULT_MODE: CanvasMode = 'ember'
 const DEFAULT_DIRECTION: CanvasDirection = 'target-visible'
+const DEFAULT_AUTO_REVEAL: CanvasAutoReveal = 'off'
 
 type CanvasSessionSnapshot = {
   activeMode: CanvasMode
@@ -32,6 +34,10 @@ function isCanvasMode(value: string | null): value is CanvasMode {
 
 function isCanvasDirection(value: string | null): value is CanvasDirection {
   return value === 'target-visible' || value === 'base-visible'
+}
+
+function isCanvasAutoReveal(value: string | null): value is CanvasAutoReveal {
+  return value === 'on' || value === 'off'
 }
 
 function createShuffleNonce() {
@@ -77,6 +83,15 @@ function loadStoredDirection(): CanvasDirection {
     return isCanvasDirection(value) ? value : DEFAULT_DIRECTION
   } catch {
     return DEFAULT_DIRECTION
+  }
+}
+
+function loadStoredAutoReveal(): CanvasAutoReveal {
+  try {
+    const value = localStorage.getItem(AUTO_REVEAL_STORAGE_KEY)
+    return isCanvasAutoReveal(value) ? value : DEFAULT_AUTO_REVEAL
+  } catch {
+    return DEFAULT_AUTO_REVEAL
   }
 }
 
@@ -144,6 +159,7 @@ export default function StudyCanvas() {
   const [activeMode, setActiveMode] = useState<CanvasMode>(() => initialSession?.activeMode ?? DEFAULT_MODE)
   const [showImages, setShowImages] = useState<boolean>(() => initialSession?.showImages ?? false)
   const [direction, setDirection] = useState<CanvasDirection>(loadStoredDirection)
+  const [autoReveal, setAutoReveal] = useState<CanvasAutoReveal>(loadStoredAutoReveal)
 
   // Session state
   const [currentPage, setCurrentPage] = useState(() => initialSession?.currentPage ?? 0)
@@ -159,6 +175,10 @@ export default function StudyCanvas() {
   useEffect(() => {
     saveLocalPreference(DIRECTION_STORAGE_KEY, direction)
   }, [direction])
+
+  useEffect(() => {
+    saveLocalPreference(AUTO_REVEAL_STORAGE_KEY, autoReveal)
+  }, [autoReveal])
 
   useEffect(() => {
     if (hydratedSessionKey === sessionStorageKey) return
@@ -291,6 +311,10 @@ export default function StudyCanvas() {
     setSessionComplete(false)
   }, [])
 
+  const handleToggleAutoReveal = useCallback(() => {
+    setAutoReveal((prev) => prev === 'on' ? 'off' : 'on')
+  }, [])
+
   const handlePass = useCallback(
     (wordId: string) => {
       recordAttempt(wordId, true)
@@ -364,6 +388,7 @@ export default function StudyCanvas() {
       showImages={showImages}
       sessionComplete={sessionComplete}
       direction={direction}
+      autoReveal={autoReveal}
       languagePair={languagePair}
       currentPage={currentPage}
       totalPages={totalPages}
@@ -375,6 +400,7 @@ export default function StudyCanvas() {
       onSwitchMode={handleSwitchMode}
       onToggleImages={handleToggleImages}
       onToggleDirection={handleToggleDirection}
+      onToggleAutoReveal={handleToggleAutoReveal}
       onExit={goToReturnOrStudy}
       onContinue={goToReturnOrStudy}
     />

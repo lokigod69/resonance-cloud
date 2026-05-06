@@ -306,6 +306,7 @@ export default function EmberCanvas({
   showImages,
   sessionComplete,
   direction,
+  autoReveal,
   languagePair,
   currentPage,
   totalPages,
@@ -317,6 +318,7 @@ export default function EmberCanvas({
   onSwitchMode,
   onToggleImages,
   onToggleDirection,
+  onToggleAutoReveal,
   onExit,
   onContinue,
 }: CanvasModeProps) {
@@ -697,12 +699,14 @@ export default function EmberCanvas({
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
+          autoReveal={autoReveal}
           languagePair={languagePair}
           currentPage={currentPage}
           totalPages={totalPages}
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
           onToggleDirection={onToggleDirection}
+          onToggleAutoReveal={onToggleAutoReveal}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
           onExit={onExit}
@@ -763,6 +767,7 @@ export default function EmberCanvas({
             onClose={() => setRevealedId(null)}
             onImageError={() => handleImageError(selectedState.id)}
             onSpeak={() => speakHeadword(selectedState.word)}
+            autoReveal={autoReveal}
             onPass={handlePass}
             onFail={handleFail}
           />
@@ -776,12 +781,14 @@ interface ToolbarProps {
   activeMode: CanvasMode
   showImages: boolean
   direction: CanvasModeProps['direction']
+  autoReveal: CanvasModeProps['autoReveal']
   languagePair: CanvasModeProps['languagePair']
   currentPage: number
   totalPages: number
   onSwitchMode: (mode: CanvasMode) => void
   onToggleImages: () => void
   onToggleDirection: () => void
+  onToggleAutoReveal: () => void
   onPrevPage: () => void
   onNextPage: () => void
   onExit: () => void
@@ -791,12 +798,14 @@ function Toolbar({
   activeMode,
   showImages,
   direction,
+  autoReveal,
   languagePair,
   currentPage,
   totalPages,
   onSwitchMode,
   onToggleImages,
   onToggleDirection,
+  onToggleAutoReveal,
   onPrevPage,
   onNextPage,
   onExit,
@@ -853,6 +862,19 @@ function Toolbar({
           </button>
         )}
 
+        <label
+          className="h-9 px-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded cursor-pointer"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <input
+            type="checkbox"
+            checked={autoReveal === 'off'}
+            onChange={onToggleAutoReveal}
+            className="accent-orange-500"
+          />
+          Hide answer
+        </label>
+
         <button
           onClick={(event) => {
             event.stopPropagation()
@@ -905,6 +927,7 @@ interface RevealModalProps {
   onClose: () => void
   onImageError: () => void
   onSpeak: () => void
+  autoReveal: CanvasModeProps['autoReveal']
   onPass: () => void
   onFail: () => void
 }
@@ -916,16 +939,27 @@ function RevealModal({
   onClose,
   onImageError,
   onSpeak,
+  autoReveal,
   onPass,
   onFail,
 }: RevealModalProps) {
   const word = state.word
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
-  const phonetic = getStringField(word, ['phonetic'])
+  const phonetic = getStringField(word, ['phonetic', 'ipa'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
+  const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
+  const canGrade = autoReveal === 'on' || answerRevealed
+
+  useEffect(() => {
+    setAnswerRevealed(autoReveal === 'on')
+  }, [autoReveal, word.id])
+
+  const revealAnswer = () => {
+    if (!canGrade) setAnswerRevealed(true)
+  }
 
   return (
     <div
@@ -955,25 +989,32 @@ function RevealModal({
               {promptFace}
             </div>
 
-            <button
-              type="button"
-              onClick={onSpeak}
-              className="text-4xl md:text-5xl lg:text-6xl text-orange-100 font-ember tracking-wider drop-shadow-[0_0_15px_rgba(255,100,0,0.4)] cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
+            <div
+              className={!canGrade ? 'ember-answer-guard ember-answer-blurred' : 'ember-answer-guard'}
+              onClick={revealAnswer}
             >
-              {answerFace}
-            </button>
+              <div className="ember-answer-content">
+                <button
+                  type="button"
+                  onClick={canGrade ? onSpeak : revealAnswer}
+                  className="text-4xl md:text-5xl lg:text-6xl text-orange-100 font-ember tracking-wider drop-shadow-[0_0_15px_rgba(255,100,0,0.4)] cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
+                >
+                  {answerFace}
+                </button>
 
-            {phonetic && (
-              <p className="text-orange-500/50 text-sm mb-6 font-sans tracking-widest text-center">
-                {phonetic}
-              </p>
-            )}
+                {phonetic && (
+                  <p className="text-orange-500/50 text-sm mb-6 font-sans tracking-widest text-center">
+                    {phonetic}
+                  </p>
+                )}
 
-            {definition && (
-              <p className="text-xl md:text-2xl text-gray-200 mb-6 leading-relaxed font-light font-ember">
-                {definition}
-              </p>
-            )}
+                {definition && (
+                  <p className="text-xl md:text-2xl text-gray-200 mb-6 leading-relaxed font-light font-ember">
+                    {definition}
+                  </p>
+                )}
+              </div>
+            </div>
 
             {imageUrl && (
               <div className="mb-6 flex justify-center">
@@ -987,7 +1028,11 @@ function RevealModal({
             )}
 
             {hasRichData && (
-              <div className="mt-6 text-left">
+              <div
+                className={!canGrade ? 'ember-answer-guard ember-answer-blurred mt-6 text-left' : 'ember-answer-guard mt-6 text-left'}
+                onClick={revealAnswer}
+              >
+                <div className="ember-answer-content">
                 {learning?.mnemonic && (
                   <div className="border-t border-orange-900/30 pt-4">
                     <p className="text-[10px] tracking-widest text-orange-500 uppercase mb-2">
@@ -1027,20 +1072,23 @@ function RevealModal({
                     )}
                   </div>
                 )}
+                </div>
               </div>
             )}
 
             <div className="mt-6 pt-5 border-t border-orange-900/30 grid grid-cols-2 gap-3">
               <button
                 onClick={onFail}
-                className="h-12 rounded border bg-orange-900/10 border-orange-600/30 hover:bg-orange-500/20 hover:border-orange-500 text-orange-500 text-2xl drop-shadow-[0_0_8px_rgba(255,69,0,0.6)] hover:drop-shadow-[0_0_12px_rgba(255,69,0,0.8)]"
+                disabled={!canGrade}
+                className={`h-12 rounded border bg-orange-900/10 border-orange-600/30 hover:bg-orange-500/20 hover:border-orange-500 text-orange-500 text-2xl drop-shadow-[0_0_8px_rgba(255,69,0,0.6)] hover:drop-shadow-[0_0_12px_rgba(255,69,0,0.8)] ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
                 aria-label="Review later"
               >
                 ✕
               </button>
               <button
                 onClick={onPass}
-                className="h-12 rounded border bg-yellow-900/10 border-yellow-600/30 hover:bg-yellow-500/20 hover:border-yellow-500 text-yellow-500 text-2xl drop-shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:drop-shadow-[0_0_12px_rgba(255,215,0,0.8)]"
+                disabled={!canGrade}
+                className={`h-12 rounded border bg-yellow-900/10 border-yellow-600/30 hover:bg-yellow-500/20 hover:border-yellow-500 text-yellow-500 text-2xl drop-shadow-[0_0_8px_rgba(255,215,0,0.6)] hover:drop-shadow-[0_0_12px_rgba(255,215,0,0.8)] ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
                 aria-label="Remembered"
               >
                 ✓
@@ -1126,6 +1174,36 @@ function EmberStyle() {
 
         .ember-modal-enter {
           animation: ember-modal-scale 160ms ease-out;
+        }
+
+        .ember-answer-guard {
+          position: relative;
+          transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+
+        .ember-answer-blurred {
+          cursor: pointer;
+        }
+
+        .ember-answer-blurred:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 18px rgba(255, 107, 53, 0.28);
+        }
+
+        .ember-answer-blurred .ember-answer-content {
+          filter: blur(8px);
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .ember-answer-blurred::after {
+          content: "";
+          position: absolute;
+          inset: -0.35rem;
+          border-radius: 10px;
+          border: 1px solid rgba(255, 107, 53, 0.22);
+          background: rgba(255, 92, 24, 0.15);
+          pointer-events: none;
         }
 
         @keyframes ember-modal-scale {

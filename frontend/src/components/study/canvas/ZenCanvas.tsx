@@ -323,6 +323,7 @@ export default function ZenCanvas({
   showImages,
   sessionComplete,
   direction,
+  autoReveal,
   languagePair,
   currentPage,
   totalPages,
@@ -334,6 +335,7 @@ export default function ZenCanvas({
   onSwitchMode,
   onToggleImages,
   onToggleDirection,
+  onToggleAutoReveal,
   onExit,
   onContinue,
 }: CanvasModeProps) {
@@ -793,6 +795,7 @@ export default function ZenCanvas({
           activeMode={activeMode}
           showImages={showImages}
           direction={direction}
+          autoReveal={autoReveal}
           languagePair={languagePair}
           currentPage={currentPage}
           totalPages={totalPages}
@@ -802,6 +805,7 @@ export default function ZenCanvas({
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
           onToggleDirection={onToggleDirection}
+          onToggleAutoReveal={onToggleAutoReveal}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
           onExit={onExit}
@@ -873,6 +877,7 @@ export default function ZenCanvas({
             onClose={() => setRevealedId(null)}
             onImageError={() => handleImageError(selectedState.id)}
             onSpeak={() => speakHeadword(selectedState.word)}
+            autoReveal={autoReveal}
             onPass={handlePass}
             onFail={handleFail}
           />
@@ -886,6 +891,7 @@ interface ToolbarProps {
   activeMode: CanvasMode
   showImages: boolean
   direction: CanvasModeProps['direction']
+  autoReveal: CanvasModeProps['autoReveal']
   languagePair: CanvasModeProps['languagePair']
   currentPage: number
   totalPages: number
@@ -895,6 +901,7 @@ interface ToolbarProps {
   onSwitchMode: (mode: CanvasMode) => void
   onToggleImages: () => void
   onToggleDirection: () => void
+  onToggleAutoReveal: () => void
   onPrevPage: () => void
   onNextPage: () => void
   onExit: () => void
@@ -904,6 +911,7 @@ function Toolbar({
   activeMode,
   showImages,
   direction,
+  autoReveal,
   languagePair,
   currentPage,
   totalPages,
@@ -913,6 +921,7 @@ function Toolbar({
   onSwitchMode,
   onToggleImages,
   onToggleDirection,
+  onToggleAutoReveal,
   onPrevPage,
   onNextPage,
   onExit,
@@ -968,6 +977,19 @@ function Toolbar({
             <span>{hiddenCode}</span>
           </button>
         )}
+
+        <label
+          className="h-9 px-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded cursor-pointer"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <input
+            type="checkbox"
+            checked={autoReveal === 'off'}
+            onChange={onToggleAutoReveal}
+            className="accent-[#777]"
+          />
+          Hide answer
+        </label>
 
         <button
           onClick={(event) => {
@@ -1028,6 +1050,7 @@ interface RevealModalProps {
   onClose: () => void
   onImageError: () => void
   onSpeak: () => void
+  autoReveal: CanvasModeProps['autoReveal']
   onPass: () => void
   onFail: () => void
 }
@@ -1039,16 +1062,27 @@ function RevealModal({
   onClose,
   onImageError,
   onSpeak,
+  autoReveal,
   onPass,
   onFail,
 }: RevealModalProps) {
   const word = state.word
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
-  const phonetic = getStringField(word, ['phonetic'])
+  const phonetic = getStringField(word, ['phonetic', 'ipa'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
+  const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
+  const canGrade = autoReveal === 'on' || answerRevealed
+
+  useEffect(() => {
+    setAnswerRevealed(autoReveal === 'on')
+  }, [autoReveal, word.id])
+
+  const revealAnswer = () => {
+    if (!canGrade) setAnswerRevealed(true)
+  }
 
   return (
     <div
@@ -1077,25 +1111,32 @@ function RevealModal({
             {promptFace}
           </div>
 
-          <button
-            type="button"
-            onClick={onSpeak}
-            className="text-3xl md:text-4xl lg:text-5xl zen-living-gradient tracking-wider font-light bg-transparent border-none mb-3"
+          <div
+            className={!canGrade ? 'zen-answer-guard zen-answer-blurred' : 'zen-answer-guard'}
+            onClick={revealAnswer}
           >
-            {answerFace}
-          </button>
+            <div className="zen-answer-content">
+              <button
+                type="button"
+                onClick={canGrade ? onSpeak : revealAnswer}
+                className="text-3xl md:text-4xl lg:text-5xl zen-living-gradient tracking-wider font-light bg-transparent border-none mb-3"
+              >
+                {answerFace}
+              </button>
 
-          {phonetic && (
-            <p className="text-[#555] text-sm tracking-widest font-sans mb-6">
-              {phonetic}
-            </p>
-          )}
+              {phonetic && (
+                <p className="text-[#555] text-sm tracking-widest font-sans mb-6">
+                  {phonetic}
+                </p>
+              )}
 
-          {definition && (
-            <p className="text-lg md:text-xl lg:text-2xl text-[#777] mb-6 leading-relaxed font-light">
-              {definition}
-            </p>
-          )}
+              {definition && (
+                <p className="text-lg md:text-xl lg:text-2xl text-[#777] mb-6 leading-relaxed font-light">
+                  {definition}
+                </p>
+              )}
+            </div>
+          </div>
 
           {imageUrl && (
             <div className="mb-6 flex justify-center">
@@ -1112,7 +1153,11 @@ function RevealModal({
           )}
 
           {hasRichData && (
-            <div className="mt-6 text-left">
+            <div
+              className={!canGrade ? 'zen-answer-guard zen-answer-blurred mt-6 text-left' : 'zen-answer-guard mt-6 text-left'}
+              onClick={revealAnswer}
+            >
+              <div className="zen-answer-content">
               {learning?.mnemonic && (
                 <div className="border-t border-[#222] pt-4">
                   <div className="bg-[#111] border border-[#222] rounded-lg p-4">
@@ -1154,6 +1199,7 @@ function RevealModal({
                   )}
                 </div>
               )}
+              </div>
             </div>
           )}
         </div>
@@ -1161,14 +1207,16 @@ function RevealModal({
         <div className="bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/95 to-transparent p-4 grid grid-cols-2 gap-3">
           <button
             onClick={onFail}
-            className="group h-12 rounded bg-[#111] border border-[#222] text-[#444] hover:text-[#666] hover:border-[#333] transition-colors"
+            disabled={!canGrade}
+            className={`group h-12 rounded bg-[#111] border border-[#222] text-[#444] hover:text-[#666] hover:border-[#333] transition-colors ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
             aria-label="Review later"
           >
             <span className="text-2xl opacity-60 group-hover:opacity-90">✗</span>
           </button>
           <button
             onClick={onPass}
-            className="group h-12 rounded bg-[#111] border border-[#333] text-[#666] hover:text-[#999] hover:border-[#444] transition-colors"
+            disabled={!canGrade}
+            className={`group h-12 rounded bg-[#111] border border-[#333] text-[#666] hover:text-[#999] hover:border-[#444] transition-colors ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
             aria-label="Remembered"
           >
             <span className="text-2xl opacity-70 group-hover:opacity-100">✓</span>
@@ -1255,6 +1303,36 @@ function ZenStyle() {
 
         .zen-modal-enter {
           animation: zen-modal-scale 160ms ease-out;
+        }
+
+        .zen-answer-guard {
+          position: relative;
+          transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+
+        .zen-answer-blurred {
+          cursor: pointer;
+        }
+
+        .zen-answer-blurred:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 18px rgba(160, 160, 160, 0.14);
+        }
+
+        .zen-answer-blurred .zen-answer-content {
+          filter: blur(8px);
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .zen-answer-blurred::after {
+          content: "";
+          position: absolute;
+          inset: -0.35rem;
+          border-radius: 8px;
+          border: 1px solid rgba(120, 120, 120, 0.18);
+          background: rgba(0, 0, 0, 0.15);
+          pointer-events: none;
         }
 
         @keyframes void-breathe {

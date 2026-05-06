@@ -34,5 +34,3 @@ assert.deepEqual(getCardFaces(card({ word: 'assiduously', translation: 'diligent
   target: 'assiduously',
   base: 'diligently',
 })
-
-console.log('cardFaces tests passed')
