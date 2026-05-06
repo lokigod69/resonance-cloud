@@ -45,9 +45,10 @@ console.log('\n[friendly labels]')
 {
   assert('direct_prompt_v1 renders as LLM V1', layer2BackendTemplateLabel('direct_prompt_v1') === 'LLM V1')
   assert('direct_prompt_v2 renders as LLM V2', layer2BackendTemplateLabel('direct_prompt_v2') === 'LLM V2')
+  assert('direct_prompt_v3 renders as LLM V3 · Visual Craft', layer2BackendTemplateLabel('direct_prompt_v3') === 'LLM V3 · Visual Craft')
   assert('structured_plan_v1 renders as Compiler V1', layer2BackendTemplateLabel('structured_plan_v1') === 'Compiler V1')
   assert('backend template options use friendly labels',
-    LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => option.label).join('|') === 'Compiler V1|LLM V1|LLM V2',
+    LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => option.label).join('|') === 'Compiler V1|LLM V1|LLM V2|LLM V3 · Visual Craft',
     LAYER2_BACKEND_TEMPLATE_OPTIONS,
   )
   assert('sound_mnemonic renders as Mnemonic Hook', cardLayer2MeaningLabel('sound_mnemonic') === 'Mnemonic Hook')
@@ -94,6 +95,21 @@ console.log('\n[script row builder v2 backend]')
     label: 'llm v2 smoke',
   })
   assert('direct_prompt_v2 row is accepted', rows[0]?.backend_template === 'direct_prompt_v2', rows)
+}
+
+console.log('\n[script row builder v3 backend]')
+{
+  const rows = buildLayer2LabRows({
+    words: ['obfuscate'],
+    selectedWord: 'obfuscate',
+    wordScope: 'selected',
+    meaning_strategy: 'absurd_hook',
+    presentation_form: 'single_scene',
+    art_style: 'realistic',
+    backend_template: 'direct_prompt_v3',
+    label: 'llm v3 visual craft smoke',
+  })
+  assert('direct_prompt_v3 row is accepted', rows[0]?.backend_template === 'direct_prompt_v3', rows)
 }
 
 console.log('\n[script row builder infographic form]')
@@ -252,6 +268,33 @@ console.log('\n[premium lab v2 payload]')
   )
   assert('records direct_prompt_v2 in layer2_eval',
     p.jobPayload.settings_override.layer2_eval?.backend_template === 'direct_prompt_v2',
+    p.jobPayload.settings_override,
+  )
+}
+
+console.log('\n[premium lab v3 payload]')
+{
+  const row: Layer2LabRun = {
+    id: 'row-v3',
+    word: 'obfuscate',
+    meaning_strategy: 'absurd_hook',
+    presentation_form: 'single_scene',
+    art_style: 'realistic',
+    backend_template: 'direct_prompt_v3',
+    label: 'llm v3 visual craft smoke',
+  }
+  const p = buildLayer2LabPayload({
+    row,
+    userId: USER,
+    targetLanguage: 'English',
+    deckName: 'Layer2 Lab',
+  })
+  assert('sends direct_prompt_v3 in card_layer2',
+    p.jobPayload.settings_override.card_layer2?.backend_template === 'direct_prompt_v3',
+    p.jobPayload.settings_override,
+  )
+  assert('records direct_prompt_v3 in layer2_eval',
+    p.jobPayload.settings_override.layer2_eval?.backend_template === 'direct_prompt_v3',
     p.jobPayload.settings_override,
   )
 }

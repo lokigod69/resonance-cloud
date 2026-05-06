@@ -21,8 +21,13 @@ logger = logging.getLogger(__name__)
 
 DIRECT_PROMPT_TEMPLATE = "direct_prompt_v1"
 DIRECT_PROMPT_V2_TEMPLATE = "direct_prompt_v2"
+DIRECT_PROMPT_V3_TEMPLATE = "direct_prompt_v3"
 STRUCTURED_PLAN_TEMPLATE = "structured_plan_v1"
-DIRECT_PROMPT_TEMPLATES = frozenset({DIRECT_PROMPT_TEMPLATE, DIRECT_PROMPT_V2_TEMPLATE})
+DIRECT_PROMPT_TEMPLATES = frozenset({
+    DIRECT_PROMPT_TEMPLATE,
+    DIRECT_PROMPT_V2_TEMPLATE,
+    DIRECT_PROMPT_V3_TEMPLATE,
+})
 BACKEND_TEMPLATES = frozenset({STRUCTURED_PLAN_TEMPLATE, *DIRECT_PROMPT_TEMPLATES})
 DIRECT_PROMPT_WRITER_MODEL = os.environ.get(
     "LAYER2_DIRECT_PROMPT_MODEL",
@@ -107,6 +112,8 @@ def write_layer2_direct_prompt(
 def build_direct_prompt_system_prompt(template: str = DIRECT_PROMPT_TEMPLATE) -> str:
     if template == DIRECT_PROMPT_V2_TEMPLATE:
         return build_direct_prompt_v2_system_prompt()
+    if template == DIRECT_PROMPT_V3_TEMPLATE:
+        return build_direct_prompt_v3_system_prompt()
     return (
         "You are writing the final image prompt for GPT Image-2. "
         "Create one visually precise prompt for a language-learning memory card. "
@@ -157,6 +164,33 @@ def build_direct_prompt_v2_system_prompt() -> str:
     )
 
 
+def build_direct_prompt_v3_system_prompt() -> str:
+    return (
+        build_direct_prompt_v2_system_prompt()
+        + "\n\n"
+        "LLM V3 · Visual Craft layer: keep all LLM V2 learning-mode behavior, then add a visual-director layer. "
+        "The final provider prompt should choose 2-4 visual craft decisions that fit the specific word, strategy, "
+        "presentation form, and art style. Do not dump the whole checklist into the final image prompt.\n\n"
+        "Visual craft decision space:\n"
+        "- Camera distance: macro, close-up, medium shot, wide shot.\n"
+        "- Lens and depth: shallow depth of field, telephoto compression, wide-angle scale, natural perspective.\n"
+        "- Focus design: what is sharp, what is blurred, what is hidden, cropped, or partially obscured.\n"
+        "- Composition: negative space, leading lines, symmetry/asymmetry, foreground/background layers, rule of thirds, central iconic framing.\n"
+        "- Lighting: soft window light, overcast daylight, practical indoor light, low-key or high-key lighting, harsh flash, moonlight, clinical light, natural documentary light.\n"
+        "- Motion and texture: stillness, motion blur, drifting smoke, falling particles, speed streaks, dust, paper, skin, metal, glass, fabric, stone, water, grain.\n"
+        "- Mood: quiet, clinical, playful, ominous, reverent, absurd, intimate, documentary.\n\n"
+        "Visual craft constraints:\n"
+        "- Avoid defaulting to orange sunset, golden-hour glow, generic cinematic haze, or stock-photo polish unless it truly fits.\n"
+        "- Cinematic means intentional composition and visual storytelling, not merely warm light.\n"
+        "- Realistic should feel like a plausible photograph, not a glossy AI advertisement.\n"
+        "- Clear: clean, legible, direct, visually intentional, often realistic or documentary; avoid unnecessary metaphor.\n"
+        "- Memorable: support the memory hook through composition, focus, and visual hierarchy; do not force fake wordplay.\n"
+        "- Weird: surreal or absurd but readable; use composition and atmosphere instead of random clutter.\n"
+        "- Word as Design: spell visible target word exactly; choose material, form, environmental typography, symbolic letter scene, or script-aware design as appropriate.\n"
+        "- Infographic: visual craft means layout design, hierarchy, spacing, icons, central anchor, readable labels, and uncluttered information design."
+    )
+
+
 def build_direct_prompt_user_prompt(
     *,
     content: CardImageContent,
@@ -172,7 +206,7 @@ def build_direct_prompt_user_prompt(
             "the target word and translation may appear as text. "
             "Use short readable labels and compact callouts, not paragraphs."
         )
-    elif selected_template == DIRECT_PROMPT_V2_TEMPLATE and not allow_target_word:
+    elif selected_template in {DIRECT_PROMPT_V2_TEMPLATE, DIRECT_PROMPT_V3_TEMPLATE} and not allow_target_word:
         answer_policy = (
             "Do not casually place the target word as a label unless it clearly helps the scene. "
             "Incidental environmental text is allowed when natural."
@@ -202,7 +236,7 @@ def build_direct_prompt_user_prompt(
         spelling_rule = ""
     backend_line = (
         f"Backend template: {selected_template}\n"
-        if selected_template == DIRECT_PROMPT_V2_TEMPLATE
+        if selected_template in {DIRECT_PROMPT_V2_TEMPLATE, DIRECT_PROMPT_V3_TEMPLATE}
         else ""
     )
     return (

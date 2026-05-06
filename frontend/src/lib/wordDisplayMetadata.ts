@@ -147,6 +147,7 @@ function generationModeLabel(gptImage2Card: Record<string, unknown> | null): str
     structured_plan_v1: 'Compiler V1',
     direct_prompt_v1: 'LLM V1',
     direct_prompt_v2: 'LLM V2',
+    direct_prompt_v3: 'LLM V3 · Visual Craft',
   }
   const left = mode ? (modeLabel[mode] ?? mode) : null
   const right = backend ? (backendLabel[backend] ?? backend) : null

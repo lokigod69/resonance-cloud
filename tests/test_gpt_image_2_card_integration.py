@@ -452,6 +452,95 @@ def test_direct_prompt_v2_template_calls_writer_and_stores_v2_metadata(monkeypat
     )
 
 
+def test_direct_prompt_v3_template_calls_writer_and_stores_visual_craft_metadata(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult
+
+    calls: dict[str, object] = {}
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **kwargs):
+            calls.setdefault("record_responses", []).append(kwargs)
+
+    def fake_write_layer2_direct_prompt(**kwargs):
+        calls["writer_kwargs"] = kwargs
+        return DirectPromptResult(
+            prompt=(
+                "Realistic 16:9 documentary close-up of fogged glass and a half-hidden note, "
+                "low-key practical light, shallow depth of field, paper fibers sharp at the focal edge. "
+                "Do not write the target word or direct answer/translation inside the image."
+            ),
+            model="test-writer-model",
+            raw_prompt="raw writer output",
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls["provider_kwargs"] = kwargs
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-direct-v3",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_layer2_direct_prompt", fake_write_layer2_direct_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.word = "obfuscate"
+    payload.content.translation = "make unclear"
+    payload.card_image_style = "realistic"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "absurd_hook",
+        "presentation_form": "single_scene",
+        "visual_intensity": "balanced",
+        "backend_template": "direct_prompt_v3",
+        "premium_quick_mode": "weird",
+        "premium_generation_mode": {
+            "premium_quick_mode": "weird",
+            "backend_template": "direct_prompt_v3",
+            "meaning_strategy": "absurd_hook",
+            "presentation_form": "single_scene",
+            "art_style": "realistic",
+            "prompt_version": "premium_quick_modes_v1",
+        },
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "success"
+    assert calls["writer_kwargs"]["template"] == "direct_prompt_v3"
+    metadata = result.gpt_image_2_card_metadata
+    assert metadata is not None
+    assert metadata["backend_template"] == "direct_prompt_v3"
+    assert metadata["premium_quick_mode"] == "weird"
+    assert metadata["premium_generation_mode"]["backend_template"] == "direct_prompt_v3"
+    assert metadata["direct_prompt_writer_model"] == "test-writer-model"
+    assert any(
+        response.get("prompt_chars") == len(calls["provider_kwargs"]["prompt_text"])
+        for response in calls["record_responses"]
+    )
+
+
 def test_infographic_structured_template_falls_back_to_direct_prompt_v2(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
     from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult

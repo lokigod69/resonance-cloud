@@ -77,6 +77,7 @@ def test_backend_template_accepts_direct_prompt_v2_without_changing_existing_val
     assert backend_template({"backend_template": "structured_plan_v1"}) == "structured_plan_v1"
     assert backend_template({"backend_template": "direct_prompt_v1"}) == "direct_prompt_v1"
     assert backend_template({"backend_template": "direct_prompt_v2"}) == "direct_prompt_v2"
+    assert backend_template({"backend_template": "direct_prompt_v3"}) == "direct_prompt_v3"
     assert backend_template({"backend_template": "typo"}) == "structured_plan_v1"
 
 
@@ -90,6 +91,19 @@ def test_direct_prompt_v2_system_prompt_adds_controlled_creative_guidance():
     assert "Incidental environmental text is allowed" in prompt
     assert "Never render the direct translation/answer" in prompt
     assert "no text ever" not in prompt.lower()
+
+
+def test_direct_prompt_v3_system_prompt_adds_visual_craft_guidance_without_dumping_checklist():
+    prompt = build_direct_prompt_system_prompt("direct_prompt_v3")
+
+    assert "LLM V3" in prompt
+    assert "visual-director layer" in prompt
+    assert "choose 2-4 visual craft decisions" in prompt
+    assert "Do not dump the whole checklist" in prompt
+    assert "orange sunset" in prompt
+    assert "generic cinematic haze" in prompt
+    assert "Realistic should feel like a plausible photograph" in prompt
+    assert "Infographic: visual craft means layout design" in prompt
 
 
 def test_direct_prompt_v2_user_prompt_keeps_incidental_text_allowed_but_translation_forbidden():
@@ -109,6 +123,24 @@ def test_direct_prompt_v2_user_prompt_keeps_incidental_text_allowed_but_translat
     assert "Incidental environmental text is allowed when natural" in prompt
     assert "Never render the direct translation/answer" in prompt
     assert "Target word must not appear as readable text." not in prompt
+
+
+def test_direct_prompt_v3_user_prompt_marks_visual_craft_backend():
+    prompt = build_direct_prompt_user_prompt(
+        content=_content(word="obfuscate", translation="make unclear"),
+        layer2={
+            "meaning_strategy": "absurd_hook",
+            "presentation_form": "single_scene",
+            "backend_template": "direct_prompt_v3",
+        },
+        art_style="realistic",
+        allow_target_word=False,
+    )
+
+    assert "Backend template: direct_prompt_v3" in prompt
+    assert "Meaning strategy: absurd_hook" in prompt
+    assert "Presentation form: single_scene" in prompt
+    assert "Never render the direct translation/answer" in prompt
 
 
 def test_direct_prompt_v2_infographic_allows_target_word_and_translation_with_guidance():
@@ -147,6 +179,23 @@ def test_direct_prompt_v2_metadata_stores_v2_template_value():
     )
 
     assert metadata["backend_template"] == "direct_prompt_v2"
+
+
+def test_direct_prompt_metadata_stores_v3_template_value():
+    result = DirectPromptResult(
+        prompt="Documentary close-up with intentional focus.",
+        model="test-model",
+        raw_prompt="raw",
+    )
+
+    metadata = direct_prompt_metadata(
+        result=result,
+        prompt="Documentary close-up with intentional focus.",
+        allow_target_word=False,
+        template="direct_prompt_v3",
+    )
+
+    assert metadata["backend_template"] == "direct_prompt_v3"
 
 
 def test_direct_prompt_metadata_marks_infographic_answer_visibility():

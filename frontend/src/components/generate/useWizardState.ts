@@ -21,6 +21,7 @@ export type CardLayer2BackendTemplate =
   | 'structured_plan_v1'
   | 'direct_prompt_v1'
   | 'direct_prompt_v2'
+  | 'direct_prompt_v3'
 
 export type CardLayer2ArtStyle =
   | 'realistic'

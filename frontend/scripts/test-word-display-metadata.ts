@@ -245,6 +245,25 @@ console.log('\n[gpt_image_2_card with usage_example object — Premium card]')
   )
 }
 
+console.log('\n[gpt_image_2_card with LLM V3 visual craft backend]')
+{
+  const word: WordLike = {
+    card_image_model: 'gpt_image_2',
+    metadata: {
+      gpt_image_2_card: {
+        premium_quick_mode: 'weird',
+        backend_template: 'direct_prompt_v3',
+      },
+    },
+  }
+  const r = resolveCardLearningMetadata(word)
+  assert(
+    'adminDebug.fields.generationMode = Weird · LLM V3 · Visual Craft',
+    r.adminDebug.fields.generationMode === 'Weird · LLM V3 · Visual Craft',
+    r.adminDebug.fields,
+  )
+}
+
 console.log('\n[missing usage example — empty {target:"", l1:""} should NOT surface]')
 {
   const word: WordLike = {
