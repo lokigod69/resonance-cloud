@@ -112,7 +112,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
 
     let wordsQuery = supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language)')
+      .select('id, word, translation, mnemonic, etymology, ipa, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language)')
       .eq('user_id', user.id)
       .eq('status', 'complete')
     if (deckId) {
