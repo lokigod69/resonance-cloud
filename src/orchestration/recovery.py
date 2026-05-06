@@ -17,13 +17,27 @@ from . import state
 log = logging.getLogger(__name__)
 
 
+_CARD_OUTPUT_FIELDS = (
+    "thumbnail_url",
+    "image_url",
+    "card_image_url",
+)
+
+
+def _has_card_output(word: dict[str, Any]) -> bool:
+    return any(bool(word.get(field)) for field in _CARD_OUTPUT_FIELDS)
+
+
 # (revert_to_stage, reset_attempts, queue_kind)
 # queue_kind ∈ {"upstream", "video", "post_video", "card", None}.
 _RECOVERY_ACTIONS: dict[str, tuple[Optional[str], bool, Optional[str]]] = {
     # pending at crash: no action. Feeder Source 3 picks it up.
     "pending":           (None,                True,  None),
-    # pending_image at crash: no revert needed. Re-push to card queue.
-    "pending_image":     (None,                False, "card"),
+    # pending_image at crash: revert to pending and reset attempts. CardWorker's
+    # branch 3 ("releasing duplicate" when stage_attempts>0) would otherwise
+    # release a re-pushed wedged row indefinitely. Manifest on disk from the
+    # prior bootstrap is reused on the next pickup.
+    "pending_image":     ("pending",           True,  "card"),
     "enrichment":        ("pending",           True,  None),      # job revert below
     "images":            ("pending",           True,  "upstream"),
     "concept":           ("pending",           True,  "upstream"),
@@ -169,6 +183,17 @@ async def _revert_active_words(sb) -> dict[str, list[dict[str, Any]]]:
         revert_to, reset_attempts, queue_kind = action
         if stage == "enrichment":
             continue  # Handled in _revert_enrichment_jobs
+        if stage == "pending_image" and _has_card_output(word):
+            # If output was already persisted but the worker crashed before
+            # pending_image -> complete, do not regenerate and overwrite it.
+            # A later, explicit output-finalization recovery should complete
+            # this row from the existing artifact instead.
+            log.info(
+                "recovery: pending_image word=%s already has card output; "
+                "leaving active for non-regenerating recovery",
+                word.get("id"),
+            )
+            continue
 
         if revert_to is not None and revert_to != stage:
             update = {
@@ -177,6 +202,8 @@ async def _revert_active_words(sb) -> dict[str, list[dict[str, Any]]]:
             }
             if reset_attempts:
                 update["stage_attempts"] = 0
+            if stage == "pending_image" and revert_to == "pending":
+                update["stage_started_at"] = None
             word_id = word["id"]
 
             def _do(u=update, wid=word_id, s=stage):
@@ -189,7 +216,7 @@ async def _revert_active_words(sb) -> dict[str, list[dict[str, Any]]]:
                 )
             try:
                 await asyncio.to_thread(_do)
-                word["current_stage"] = revert_to
+                word.update(update)
             except Exception as e:
                 log.warning(
                     "recovery: revert %s -> %s failed for %s: %s",

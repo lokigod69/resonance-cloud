@@ -19,6 +19,7 @@ if str(ORCH_ROOT) not in sys.path:
 
 from tests.fake_supabase import FakeSupabase  # noqa: E402
 from src.orchestration import recovery  # noqa: E402
+from src.orchestration import feeder  # noqa: E402
 
 
 def _run(coro):
@@ -32,6 +33,14 @@ def _fresh_queues():
         asyncio.Queue(maxsize=8),
         asyncio.Queue(maxsize=8),
     )
+
+
+def _add_deck(sb: FakeSupabase, *, deck_id: str, deck_type: str = "card") -> None:
+    sb.table("decks").insert({
+        "id": deck_id,
+        "deck_type": deck_type,
+        "status": "generating",
+    }).execute()
 
 
 def test_pending_words_not_pushed_by_recovery():
@@ -112,6 +121,159 @@ def test_upstream_stage_recovery_reverts_to_pending_and_pushes():
         assert row["current_stage"] == "pending"
         assert row["stage_attempts"] == 0
     assert up.qsize() == 3  # exactly the capacity
+
+
+def test_pending_image_recovery_reverts_to_pending_and_pushes_to_card_queue():
+    """A worker killed mid-card-render leaves a wedge row at pending_image with
+    stage_attempts>0. Recovery must revert it to pending with stage_attempts=0
+    and push to the card queue, otherwise CardWorker's "releasing duplicate"
+    branch will refuse the row indefinitely (Layer 2 Lab stuck-deck regression).
+    """
+    sb = FakeSupabase()
+    sb.add_job(deck_id="deck-card", status="processing")
+    sb.add_word(
+        deck_id="deck-card",
+        current_stage="pending_image",
+        status="processing",
+        stage_started_at="2026-05-06T11:32:10+00:00",
+        stage_attempts=1,
+        total_stage_attempts=1,
+        thumbnail_url=None,
+        retry_requested=False,
+    )
+    up, v, pv, c = _fresh_queues()
+    _run(recovery.run_recovery_pass(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
+    ))
+
+    row = sb._tables["words"][0]
+    assert row["current_stage"] == "pending"
+    assert row["status"] == "pending"
+    assert row["stage_attempts"] == 0
+    assert row["stage_started_at"] is None
+    assert c.qsize() == 1
+    assert up.qsize() == v.qsize() == pv.qsize() == 0
+
+
+def test_recovered_pending_image_overflow_is_queueable_by_feeder_source3():
+    sb = FakeSupabase()
+    _add_deck(sb, deck_id="deck-card", deck_type="card")
+    job = sb.add_job(id="job-card", deck_id="deck-card", status="processing")
+    first = sb.add_word(
+        id="word-first",
+        deck_id="deck-card",
+        generation_job_id=job["id"],
+        current_stage="pending_image",
+        status="processing",
+        stage_attempts=1,
+        thumbnail_url=None,
+    )
+    second = sb.add_word(
+        id="word-second",
+        deck_id="deck-card",
+        generation_job_id=job["id"],
+        current_stage="pending_image",
+        status="processing",
+        stage_attempts=1,
+        thumbnail_url=None,
+    )
+    up = asyncio.Queue(maxsize=3)
+    v = asyncio.Queue(maxsize=2)
+    pv = asyncio.Queue(maxsize=8)
+    c = asyncio.Queue(maxsize=1)
+
+    _run(recovery.run_recovery_pass(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
+    ))
+
+    assert c.qsize() == 1
+    rows = {row["id"]: row for row in sb._tables["words"]}
+    assert rows[first["id"]]["current_stage"] == "pending"
+    assert rows[second["id"]]["current_stage"] == "pending"
+
+    source3_card_queue = asyncio.Queue(maxsize=8)
+    f = feeder.Feeder(
+        sb,
+        upstream_queue=asyncio.Queue(maxsize=3),
+        video_queue=asyncio.Queue(maxsize=2),
+        post_video_queue=asyncio.Queue(maxsize=8),
+        card_queue=source3_card_queue,
+        bootstrap=lambda _: asyncio.sleep(0),
+    )
+    _run(f._source3_orphans())
+
+    queued_ids = {source3_card_queue.get_nowait()["id"] for _ in range(source3_card_queue.qsize())}
+    assert queued_ids == {first["id"], second["id"]}
+
+
+def test_pending_image_with_existing_thumbnail_is_not_reset_or_queued():
+    sb = FakeSupabase()
+    sb.add_job(deck_id="deck-card", status="processing")
+    sb.add_word(
+        id="word-has-thumbnail",
+        deck_id="deck-card",
+        current_stage="pending_image",
+        status="processing",
+        stage_started_at="2026-05-06T11:32:10+00:00",
+        stage_attempts=1,
+        total_stage_attempts=1,
+        thumbnail_url="https://example.invalid/card.png",
+    )
+
+    up, v, pv, c = _fresh_queues()
+    _run(recovery.run_recovery_pass(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
+    ))
+
+    row = sb._tables["words"][0]
+    assert row["current_stage"] == "pending_image"
+    assert row["status"] == "processing"
+    assert row["stage_attempts"] == 1
+    assert row["stage_started_at"] == "2026-05-06T11:32:10+00:00"
+    assert row["thumbnail_url"] == "https://example.invalid/card.png"
+    assert c.qsize() == 0
+    assert up.qsize() == v.qsize() == pv.qsize() == 0
+
+
+def test_completed_failed_and_cancelled_card_words_with_thumbnails_are_not_reset():
+    sb = FakeSupabase()
+    sb.add_job(status="processing")
+    complete = sb.add_word(
+        id="word-complete-card",
+        current_stage="complete",
+        status="complete",
+        stage_attempts=0,
+        thumbnail_url="https://example.invalid/card.png",
+    )
+    failed = sb.add_word(
+        id="word-failed-card",
+        current_stage="failed",
+        status="failed",
+        failed_stage="pending_image",
+        stage_attempts=3,
+        thumbnail_url="https://example.invalid/failed-card.png",
+    )
+    cancelled = sb.add_word(
+        id="word-cancelled-card",
+        current_stage="cancelled",
+        status="failed",
+        stage_attempts=1,
+        thumbnail_url="https://example.invalid/cancelled-card.png",
+    )
+
+    up, v, pv, c = _fresh_queues()
+    _run(recovery.run_recovery_pass(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
+    ))
+
+    rows = {row["id"]: row for row in sb._tables["words"]}
+    assert rows[complete["id"]]["current_stage"] == "complete"
+    assert rows[complete["id"]]["thumbnail_url"] == "https://example.invalid/card.png"
+    assert rows[failed["id"]]["current_stage"] == "failed"
+    assert rows[failed["id"]]["thumbnail_url"] == "https://example.invalid/failed-card.png"
+    assert rows[cancelled["id"]]["current_stage"] == "cancelled"
+    assert rows[cancelled["id"]]["thumbnail_url"] == "https://example.invalid/cancelled-card.png"
+    assert up.qsize() == v.qsize() == pv.qsize() == c.qsize() == 0
 
 
 def test_video_recovery_reverts_to_video_queued_and_pushes():
