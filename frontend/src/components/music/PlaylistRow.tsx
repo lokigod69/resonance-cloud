@@ -11,9 +11,9 @@ interface PlaylistRowProps {
   isActive: boolean
   isPlaying: boolean
   onClick: () => void
-  onRetry?: () => void
-  isRetrying?: boolean
-  retryStatus?: string
+  onGenerateSong?: () => void
+  isGeneratingSong?: boolean
+  generationStatus?: string
 }
 
 function formatDuration(s: number): string {
@@ -47,7 +47,15 @@ function Equalizer() {
   )
 }
 
-export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRetrying, retryStatus }: PlaylistRowProps) {
+export function PlaylistRow({
+  track,
+  isActive,
+  isPlaying,
+  onClick,
+  onGenerateSong,
+  isGeneratingSong,
+  generationStatus,
+}: PlaylistRowProps) {
   const { t } = useTranslation()
   const [duration, setDuration] = useState<number | null>(() => {
     if (track.duration !== null) return track.duration
@@ -130,7 +138,7 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRe
         </span>
       )}
 
-      {/* Duration / retry status.
+      {/* Duration / generation status.
           NOTE: The `text-red-500/70` below is an intentional token-system exception.
           Destructive/error icons are semantically theme-independent — a delete/error
           indicator should read as "danger red" in every theme, not flavored to the
@@ -145,21 +153,24 @@ export function PlaylistRow({ track, isActive, isPlaying, onClick, onRetry, isRe
           <span className="w-10 inline-block">
             {duration !== null ? formatDuration(duration) : '…'}
           </span>
-        ) : isRetrying ? (
+        ) : isGeneratingSong ? (
           <span className="text-muted-foreground font-sans text-[10px] flex items-center gap-1">
             <svg className="animate-spin h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden>
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
             </svg>
-            {retryStatus === 'processing' ? t('deckview.generating') : t('deckview.queued')}
+            {generationStatus === 'processing' || generationStatus === 'polling' || generationStatus === 'uploading'
+              ? t('music.generatingSong')
+              : t('deckview.queued')}
           </span>
         ) : (
           <button
-            onClick={(e) => { e.stopPropagation(); onRetry?.() }}
+            onClick={(e) => { e.stopPropagation(); onGenerateSong?.() }}
             className="text-[10px] text-muted-foreground hover:text-[var(--accent,#06b6d4)] transition-colors font-sans px-1 py-0.5 rounded hover:bg-accent/10"
-            title="Retry Suno generation"
+            title={t('music.generateSong')}
           >
-            ↻ {t('music.retry')}
+            <Music className="inline h-3 w-3 mr-1" />
+            {t('music.generateSong')}
           </button>
         )}
       </span>

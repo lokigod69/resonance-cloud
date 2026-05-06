@@ -9,6 +9,8 @@ export interface MusicTrack {
   thumbnail_url: string | null
   suno_storage_url: string | null
   suno_audio_url: string | null
+  music_state: string | null
+  retry_requested: boolean
   genre: string | null
   duration: number | null
   error: boolean

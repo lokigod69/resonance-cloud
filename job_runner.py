@@ -38,6 +38,9 @@ FINALIZER_POLL_INTERVAL = float(os.getenv("FINALIZER_POLL_INTERVAL", "30"))
 METRICS_INTERVAL = float(os.getenv("METRICS_INTERVAL", "60"))
 VIDEO_CONCURRENCY = int(os.getenv("VIDEO_CONCURRENCY", "1"))
 CARD_CONCURRENCY = int(os.getenv("CARD_CONCURRENCY", "2"))
+MUSIC_ONLY_ENABLED = os.getenv("MUSIC_ONLY_ENABLED", "false").lower() in {"1", "true", "yes", "on"}
+MUSIC_ONLY_POLL_INTERVAL = float(os.getenv("MUSIC_ONLY_POLL_INTERVAL", "5"))
+MUSIC_ONLY_CONCURRENCY = int(os.getenv("MUSIC_ONLY_CONCURRENCY", "1"))
 
 # HIGH-5: job_runner.py owns the logging format; start_cloud.py must NOT
 # call basicConfig before job_runner imports. `force=True` makes this the
@@ -294,6 +297,7 @@ async def main() -> None:
     from src.orchestration.video_dispatcher import VideoDispatcher
     from src.orchestration.downstream_worker import make_downstream_workers
     from src.orchestration.finalizer import Finalizer
+    from src.orchestration.music_only_worker import MusicOnlyWorker
     from src.orchestration.observability import MetricsReporter
 
     feeder = Feeder(
@@ -326,6 +330,15 @@ async def main() -> None:
     )
     downstream = make_downstream_workers(sb, post_video_queue=post_video_queue)
     finalizer = Finalizer(sb, poll_interval=FINALIZER_POLL_INTERVAL)
+    music_only = (
+        MusicOnlyWorker(
+            sb,
+            poll_interval=MUSIC_ONLY_POLL_INTERVAL,
+            concurrency=MUSIC_ONLY_CONCURRENCY,
+        )
+        if MUSIC_ONLY_ENABLED
+        else None
+    )
     metrics = MetricsReporter(
         sb,
         upstream_queue=upstream_queue,
@@ -346,6 +359,8 @@ async def main() -> None:
         asyncio.create_task(finalizer.run(), name="finalizer"),
         asyncio.create_task(metrics.run(), name="metrics"),
     ]
+    if music_only is not None:
+        tasks.append(asyncio.create_task(music_only.run(), name="music_only_worker"))
     tasks.extend(
         asyncio.create_task(w.run(), name=f"card_worker-{i}")
         for i, w in enumerate(card_workers)
@@ -378,6 +393,8 @@ async def main() -> None:
         dispatcher.stop()
         # Finalizer and metrics exit on next iteration.
         finalizer.stop()
+        if music_only is not None:
+            music_only.stop()
         metrics.stop()
         # Give workers up to 30s to drain their current stage; then cancel.
         try:

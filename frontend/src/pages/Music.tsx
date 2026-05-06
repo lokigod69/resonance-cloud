@@ -5,6 +5,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { PlaylistRow } from '@/components/music/PlaylistRow'
 import { PlayerBar } from '@/components/music/PlayerBar'
+import { GenerateSongModal } from '@/components/song-generation/GenerateSongModal'
 import {
   Select,
   SelectContent,
@@ -14,10 +15,10 @@ import {
 } from '@/components/ui/select'
 import { LoadingIndicator } from '@/components/ui/LoadingIndicator'
 import { useTranslation } from '@/hooks/useTranslation'
-import { useToast } from '@/components/Toast'
 
-const ACTIVE_RETRY_STAGES = ['post_video_queued', 'assembly', 'bookend', 'suno_bake', 'uploading'] as const
-type RetryStatus = 'pending' | 'processing'
+const ACTIVE_MUSIC_JOB_STATUSES = ['pending', 'processing', 'submitted', 'polling', 'uploading'] as const
+type SongGenerationStatus = typeof ACTIVE_MUSIC_JOB_STATUSES[number]
+type AudioFilter = 'all' | 'with' | 'without'
 
 type DeckOption = { id: string; name: string }
 
@@ -38,6 +39,8 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
     thumbnail_url: (row.thumbnail_url as string | null) ?? null,
     suno_storage_url: (row.suno_storage_url as string | null) ?? null,
     suno_audio_url: (row.suno_audio_url as string | null) ?? null,
+    music_state: (row.music_state as string | null) ?? null,
+    retry_requested: Boolean(row.retry_requested),
     genre: rawCaption ? rawCaption.split(',')[0].trim() : null,
     duration: null,
     error: false,
@@ -46,32 +49,40 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
 
 export default function Music() {
   const { t } = useTranslation()
-  const { toast } = useToast()
-  const { user, refreshProfile } = useAuth()
+  const { user, profile, refreshProfile } = useAuth()
   const [allTracks, setAllTracks] = useState<MusicTrack[]>([])
   const [errorTrackIds, setErrorTrackIds] = useState<Set<string>>(new Set())
   const [loading, setLoading] = useState(true)
   const [deckFilter, setDeckFilter] = useState<string>('all')
+  const [audioFilter, setAudioFilter] = useState<AudioFilter>('all')
   const [decks, setDecks] = useState<DeckOption[]>([])
+  const [songModalTrack, setSongModalTrack] = useState<MusicTrack | null>(null)
 
-  // Retry state: wordId → current job status
-  const [retryStatusMap, setRetryStatusMap] = useState<Map<string, RetryStatus>>(new Map())
-  const retryStatusMapRef = useRef(retryStatusMap)
-  const retryPollRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  // Song-only state: wordId -> current music_generation_jobs status
+  const [songStatusMap, setSongStatusMap] = useState<Map<string, SongGenerationStatus>>(new Map())
+  const songStatusMapRef = useRef(songStatusMap)
+  const songPollRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // Merge error state into tracks
   const tracks: MusicTrack[] = allTracks.map((track) =>
     errorTrackIds.has(track.id) ? { ...track, error: true } : track,
   )
 
-  const filteredTracks =
-    deckFilter === 'all' ? tracks : tracks.filter((track) => track.deck_id === deckFilter)
+  const filteredTracks = tracks.filter((track) => {
+    const inDeck = deckFilter === 'all' || track.deck_id === deckFilter
+    const hasAudio = !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
+    const inAudioFilter =
+      audioFilter === 'all' ||
+      (audioFilter === 'with' && hasAudio) ||
+      (audioFilter === 'without' && !hasAudio)
+    return inDeck && inAudioFilter
+  })
 
   const player = useMusicPlayer(filteredTracks)
 
   useEffect(() => {
-    retryStatusMapRef.current = retryStatusMap
-  }, [retryStatusMap])
+    songStatusMapRef.current = songStatusMap
+  }, [songStatusMap])
 
   const handleMarkError = useCallback((trackId: string) => {
     setErrorTrackIds((prev) => new Set(prev).add(trackId))
@@ -96,7 +107,7 @@ export default function Music() {
       .from('words')
       .select(`
         id, deck_id, word, translation,
-        thumbnail_url, suno_storage_url, suno_audio_url, metadata, created_at,
+        thumbnail_url, suno_storage_url, suno_audio_url, music_state, retry_requested, metadata, created_at,
         decks(id, name)
       `)
       .eq('user_id', user.id)
@@ -126,26 +137,25 @@ export default function Music() {
 
   // ── Suno retry ──────────────────────────────────────────────────────────────
 
-  const fetchActiveSunoRetries = useCallback(async () => {
-    if (!user) return new Map<string, RetryStatus>()
+  const fetchActiveSongJobs = useCallback(async () => {
+    if (!user) return new Map<string, SongGenerationStatus>()
     const trackedWordIds = Array.from(new Set([
       ...allTracks.map((track) => track.id),
-      ...retryStatusMapRef.current.keys(),
+      ...songStatusMapRef.current.keys(),
     ]))
-    if (trackedWordIds.length === 0) return new Map<string, RetryStatus>()
+    if (trackedWordIds.length === 0) return new Map<string, SongGenerationStatus>()
 
-    const activeStageFilter = `current_stage.in.(${ACTIVE_RETRY_STAGES.join(',')})`
     const { data, error } = await supabase
-      .from('words')
-      .select('id, current_stage, retry_requested')
+      .from('music_generation_jobs')
+      .select('word_id, status')
       .eq('user_id', user.id)
-      .in('id', trackedWordIds)
-      .or(`retry_requested.eq.true,${activeStageFilter}`)
+      .in('word_id', trackedWordIds)
+      .in('status', [...ACTIVE_MUSIC_JOB_STATUSES])
     if (error) throw error
 
-    const map = new Map<string, RetryStatus>()
+    const map = new Map<string, SongGenerationStatus>()
     for (const row of data ?? []) {
-      map.set(row.id, row.retry_requested ? 'pending' : 'processing')
+      map.set(row.word_id, row.status as SongGenerationStatus)
     }
     return map
   }, [user, allTracks])
@@ -154,85 +164,55 @@ export default function Music() {
   // if the user navigated away and came back while a retry was in progress.
   useEffect(() => {
     if (!user) return
-    fetchActiveSunoRetries()
-      .then(setRetryStatusMap)
+    fetchActiveSongJobs()
+      .then(setSongStatusMap)
       .catch(() => {})
-  }, [user, fetchActiveSunoRetries])
+  }, [user, fetchActiveSongJobs])
 
-  // Flag one track for the orchestrator Source 2 retry path; double-click safe.
-  const handleSunoRetry = useCallback(async (wordId: string) => {
-    if (!user) return
-
-    // Optimistically mark as pending so the button becomes a spinner immediately
-    setRetryStatusMap((prev) => new Map(prev).set(wordId, 'pending'))
-
-    const rollbackOptimistic = () => {
-      setRetryStatusMap((prev) => {
-        const next = new Map(prev)
-        next.delete(wordId)
-        return next
-      })
-    }
-
-    try {
-      const { data, error } = await supabase.rpc('request_word_retry', {
-        p_word_id: wordId,
-        p_retry_scope: 'music',
-      })
-      if (error) throw error
-
-      const result = data as { success?: boolean; already_requested?: boolean; error?: string } | null
-      if (!result?.success) {
-        throw new Error(result?.error || 'Word is not in a retryable music state')
-      }
-      if (!result.already_requested) {
-        await refreshProfile()
-      }
-    } catch (error) {
-      rollbackOptimistic()
-      console.warn('[music] Suno retry failed', error)
-      toast(t('music.retryFailed'), 'error')
-    }
-  }, [user, refreshProfile, t, toast])
+  const handleSongSubmitted = useCallback(async (wordId: string, status: SongGenerationStatus) => {
+    setSongStatusMap((prev) => new Map(prev).set(wordId, status))
+    await refreshProfile()
+  }, [refreshProfile])
 
   // Poll active retry rows every 15s; refetch tracks when one completes.
   useEffect(() => {
-    const hasActive = retryStatusMap.size > 0
+    const hasActive = songStatusMap.size > 0
     if (!hasActive) {
-      if (retryPollRef.current) {
-        clearInterval(retryPollRef.current)
-        retryPollRef.current = null
+      if (songPollRef.current) {
+        clearInterval(songPollRef.current)
+        songPollRef.current = null
       }
       return
     }
 
-    if (retryPollRef.current) return // already polling
+    if (songPollRef.current) return // already polling
 
-    retryPollRef.current = setInterval(async () => {
+    songPollRef.current = setInterval(async () => {
       if (!user) return
-      let newMap: Map<string, RetryStatus>
+      let newMap: Map<string, SongGenerationStatus>
       try {
-        newMap = await fetchActiveSunoRetries()
+        newMap = await fetchActiveSongJobs()
       } catch {
         return
       }
 
       // Detect completions: ids that were active before but are no longer active
-      const justCompleted = [...retryStatusMap.keys()].filter((id) => !newMap.has(id))
+      const justCompleted = [...songStatusMap.keys()].filter((id) => !newMap.has(id))
       if (justCompleted.length > 0) {
         fetchTracks(true) // bust cache and refetch
+        void refreshProfile()
       }
 
-      setRetryStatusMap(newMap)
-    }, 15_000)
+      setSongStatusMap(newMap)
+    }, 10_000)
 
     return () => {
-      if (retryPollRef.current) {
-        clearInterval(retryPollRef.current)
-        retryPollRef.current = null
+      if (songPollRef.current) {
+        clearInterval(songPollRef.current)
+        songPollRef.current = null
       }
     }
-  }, [retryStatusMap, user, fetchTracks, fetchActiveSunoRetries])
+  }, [songStatusMap, user, fetchTracks, fetchActiveSongJobs, refreshProfile])
 
   // Reset player when filter changes (queue recomputes inside hook, but reset current idx)
   useEffect(() => {
@@ -298,6 +278,20 @@ export default function Music() {
               </SelectContent>
             </Select>
           )}
+
+          <Select value={audioFilter} onValueChange={(value) => setAudioFilter(value as AudioFilter)}>
+            <SelectTrigger
+              size="sm"
+              className="w-[160px]"
+            >
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">{t('music.filter.all')}</SelectItem>
+              <SelectItem value="with">{t('music.filter.withMusic')}</SelectItem>
+              <SelectItem value="without">{t('music.filter.withoutMusic')}</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
@@ -322,9 +316,9 @@ export default function Music() {
                 isActive={player.currentTrack?.id === track.id}
                 isPlaying={player.isPlaying && player.currentTrack?.id === track.id}
                 onClick={() => player.play(track.id)}
-                onRetry={() => handleSunoRetry(track.id)}
-                isRetrying={retryStatusMap.has(track.id)}
-                retryStatus={retryStatusMap.get(track.id)}
+                onGenerateSong={() => setSongModalTrack(track)}
+                isGeneratingSong={songStatusMap.has(track.id)}
+                generationStatus={songStatusMap.get(track.id)}
               />
             ))}
           </div>
@@ -357,6 +351,13 @@ export default function Music() {
         onError={() => player.currentTrack && handleMarkError(player.currentTrack.id)}
         onPlay={player.handlePlay}
         onPause={player.handlePause}
+      />
+      <GenerateSongModal
+        open={songModalTrack !== null}
+        onOpenChange={(open) => !open && setSongModalTrack(null)}
+        track={songModalTrack}
+        credits={profile?.credits ?? 0}
+        onSubmitted={handleSongSubmitted}
       />
     </div>
   )

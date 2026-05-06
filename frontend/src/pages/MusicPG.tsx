@@ -6,6 +6,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { OrbVisualizer } from '@/components/music/OrbVisualizer'
 import { OrbThumbnailRow } from '@/components/music/OrbThumbnailRow'
+import { GenerateSongModal } from '@/components/song-generation/GenerateSongModal'
 import { VolumeControl } from '@/components/VolumeControl'
 import {
   Select,
@@ -22,6 +23,10 @@ import {
   PLAYER_INACTIVE_TOGGLE_CLASS,
   PLAYER_ROUNDED_ICON_BUTTON_CLASS,
 } from '@/lib/playerStyles'
+
+const ACTIVE_MUSIC_JOB_STATUSES = ['pending', 'processing', 'submitted', 'polling', 'uploading'] as const
+type SongGenerationStatus = typeof ACTIVE_MUSIC_JOB_STATUSES[number]
+type AudioFilter = 'all' | 'with' | 'without'
 
 type DeckOption = { id: string; name: string }
 
@@ -41,6 +46,8 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
     thumbnail_url: (row.thumbnail_url as string | null) ?? null,
     suno_storage_url: (row.suno_storage_url as string | null) ?? null,
     suno_audio_url: (row.suno_audio_url as string | null) ?? null,
+    music_state: (row.music_state as string | null) ?? null,
+    retry_requested: Boolean(row.retry_requested),
     genre: rawCaption ? rawCaption.split(',')[0].trim() : null,
     duration: null,
     error: false,
@@ -56,13 +63,18 @@ function formatTime(s: number): string {
 
 export default function MusicPG() {
   const { t } = useTranslation()
-  const { user } = useAuth()
+  const { user, profile, refreshProfile } = useAuth()
   const [allTracks, setAllTracks] = useState<MusicTrack[]>([])
   const [errorTrackIds, setErrorTrackIds] = useState<Set<string>>(new Set())
   const [loading, setLoading] = useState(true)
   const [deckFilter, setDeckFilter] = useState<string>('all')
+  const [audioFilter, setAudioFilter] = useState<AudioFilter>('all')
   const [decks, setDecks] = useState<DeckOption[]>([])
   const [orbSize, setOrbSize] = useState(300)
+  const [songModalTrack, setSongModalTrack] = useState<MusicTrack | null>(null)
+  const [songStatusMap, setSongStatusMap] = useState<Map<string, SongGenerationStatus>>(new Map())
+  const songStatusMapRef = useRef(songStatusMap)
+  const songPollRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const progressBarRef = useRef<HTMLDivElement>(null)
 
   // Merge error state into tracks
@@ -70,8 +82,15 @@ export default function MusicPG() {
     errorTrackIds.has(t.id) ? { ...t, error: true } : t,
   )
 
-  const filteredTracks =
-    deckFilter === 'all' ? tracks : tracks.filter((t) => t.deck_id === deckFilter)
+  const filteredTracks = tracks.filter((track) => {
+    const inDeck = deckFilter === 'all' || track.deck_id === deckFilter
+    const hasAudio = !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
+    const inAudioFilter =
+      audioFilter === 'all' ||
+      (audioFilter === 'with' && hasAudio) ||
+      (audioFilter === 'without' && !hasAudio)
+    return inDeck && inAudioFilter
+  })
 
   const player = useMusicPlayer(filteredTracks)
 
@@ -88,6 +107,10 @@ export default function MusicPG() {
 
   const progress = duration > 0 ? currentTime / duration : 0
   const RepeatIcon = repeatMode === 'one' ? Repeat1 : Repeat
+
+  useEffect(() => {
+    songStatusMapRef.current = songStatusMap
+  }, [songStatusMap])
 
   const handleMarkError = useCallback(
     (trackId: string) => {
@@ -107,24 +130,24 @@ export default function MusicPG() {
     return () => window.removeEventListener('resize', update)
   }, [])
 
-  // Fetch data
-  useEffect(() => {
+  const fetchTracks = useCallback((bustCache = false) => {
     if (!user) return
 
-    if (_pgMusicCache && _pgMusicCache.userId === user.id) {
+    if (!bustCache && _pgMusicCache && _pgMusicCache.userId === user.id) {
       setAllTracks(_pgMusicCache.tracks)
       setDecks(_pgMusicCache.decks)
       setLoading(false)
       return
     }
 
+    if (bustCache) _pgMusicCache = null
     setLoading(true)
 
     supabase
       .from('words')
       .select(`
         id, deck_id, word, translation,
-        thumbnail_url, suno_storage_url, suno_audio_url, metadata, created_at,
+        thumbnail_url, suno_storage_url, suno_audio_url, music_state, retry_requested, metadata, created_at,
         decks(id, name)
       `)
       .eq('user_id', user.id)
@@ -146,6 +169,84 @@ export default function MusicPG() {
         setLoading(false)
       })
   }, [user])
+
+  // Fetch data
+  useEffect(() => {
+    fetchTracks()
+  }, [fetchTracks])
+
+  const fetchActiveSongJobs = useCallback(async () => {
+    if (!user) return new Map<string, SongGenerationStatus>()
+    const trackedWordIds = Array.from(new Set([
+      ...allTracks.map((track) => track.id),
+      ...songStatusMapRef.current.keys(),
+    ]))
+    if (trackedWordIds.length === 0) return new Map<string, SongGenerationStatus>()
+
+    const { data, error } = await supabase
+      .from('music_generation_jobs')
+      .select('word_id, status')
+      .eq('user_id', user.id)
+      .in('word_id', trackedWordIds)
+      .in('status', [...ACTIVE_MUSIC_JOB_STATUSES])
+    if (error) throw error
+
+    const map = new Map<string, SongGenerationStatus>()
+    for (const row of data ?? []) {
+      map.set(row.word_id, row.status as SongGenerationStatus)
+    }
+    return map
+  }, [user, allTracks])
+
+  useEffect(() => {
+    if (!user) return
+    fetchActiveSongJobs()
+      .then(setSongStatusMap)
+      .catch(() => {})
+  }, [user, fetchActiveSongJobs])
+
+  const handleSongSubmitted = useCallback(async (wordId: string, status: SongGenerationStatus) => {
+    setSongStatusMap((prev) => new Map(prev).set(wordId, status))
+    await refreshProfile()
+  }, [refreshProfile])
+
+  useEffect(() => {
+    const hasActive = songStatusMap.size > 0
+    if (!hasActive) {
+      if (songPollRef.current) {
+        clearInterval(songPollRef.current)
+        songPollRef.current = null
+      }
+      return
+    }
+
+    if (songPollRef.current) return
+
+    songPollRef.current = setInterval(async () => {
+      if (!user) return
+      let newMap: Map<string, SongGenerationStatus>
+      try {
+        newMap = await fetchActiveSongJobs()
+      } catch {
+        return
+      }
+
+      const justCompleted = [...songStatusMap.keys()].filter((id) => !newMap.has(id))
+      if (justCompleted.length > 0) {
+        fetchTracks(true)
+        void refreshProfile()
+      }
+
+      setSongStatusMap(newMap)
+    }, 10_000)
+
+    return () => {
+      if (songPollRef.current) {
+        clearInterval(songPollRef.current)
+        songPollRef.current = null
+      }
+    }
+  }, [songStatusMap, user, fetchTracks, fetchActiveSongJobs, refreshProfile])
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -214,6 +315,25 @@ export default function MusicPG() {
               </SelectContent>
             </Select>
           )}
+          <Select value={audioFilter} onValueChange={(value) => setAudioFilter(value as AudioFilter)}>
+            <SelectTrigger
+              size="sm"
+              className="theme-input w-[150px] hover:bg-[var(--accent-soft)] focus-visible:ring-0 focus-visible:border-[var(--accent)]"
+            >
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="theme-popover">
+              <SelectItem value="all" className="focus:bg-[var(--accent-soft)] focus:text-[var(--text-primary)]">
+                {t('music.filter.all')}
+              </SelectItem>
+              <SelectItem value="with" className="focus:bg-[var(--accent-soft)] focus:text-[var(--text-primary)]">
+                {t('music.filter.withMusic')}
+              </SelectItem>
+              <SelectItem value="without" className="focus:bg-[var(--accent-soft)] focus:text-[var(--text-primary)]">
+                {t('music.filter.withoutMusic')}
+              </SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
@@ -363,6 +483,8 @@ export default function MusicPG() {
           tracks={filteredTracks}
           currentTrackId={currentTrack?.id ?? null}
           onTrackSelect={player.play}
+          onGenerateSong={setSongModalTrack}
+          generationStatusMap={songStatusMap}
         />
       )}
 
@@ -375,6 +497,13 @@ export default function MusicPG() {
         onError={() => currentTrack && handleMarkError(currentTrack.id)}
         onPlay={player.handlePlay}
         onPause={player.handlePause}
+      />
+      <GenerateSongModal
+        open={songModalTrack !== null}
+        onOpenChange={(open) => !open && setSongModalTrack(null)}
+        track={songModalTrack}
+        credits={profile?.credits ?? 0}
+        onSubmitted={handleSongSubmitted}
       />
     </div>
   )

@@ -1,12 +1,23 @@
 import type { MusicTrack } from '@/hooks/useMusicPlayer'
+import { Music } from 'lucide-react'
+import { useTranslation } from '@/hooks/useTranslation'
 
 interface OrbThumbnailRowProps {
   tracks: MusicTrack[]
   currentTrackId: string | null
   onTrackSelect: (trackId: string) => void
+  onGenerateSong?: (track: MusicTrack) => void
+  generationStatusMap?: Map<string, string>
 }
 
-export function OrbThumbnailRow({ tracks, currentTrackId, onTrackSelect }: OrbThumbnailRowProps) {
+export function OrbThumbnailRow({
+  tracks,
+  currentTrackId,
+  onTrackSelect,
+  onGenerateSong,
+  generationStatusMap = new Map(),
+}: OrbThumbnailRowProps) {
+  const { t } = useTranslation()
   if (tracks.length === 0) return null
 
   return (
@@ -54,36 +65,50 @@ export function OrbThumbnailRow({ tracks, currentTrackId, onTrackSelect }: OrbTh
           {tracks.map((track) => {
             const hasAudio = !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
             const isCurrent = track.id === currentTrackId
+            const isGenerating = generationStatusMap.has(track.id)
 
             return (
-              <button
-                key={track.id}
-                onClick={() => hasAudio && onTrackSelect(track.id)}
-                disabled={!hasAudio}
-                title={track.word}
-                className={`music-orb-thumb flex-shrink-0 focus:outline-none${isCurrent ? ' is-current' : ''}`}
-                style={{
-                  width: 44,
-                  height: 44,
-                  opacity: !hasAudio ? 0.25 : isCurrent ? 1 : 0.6,
-                  cursor: hasAudio ? 'pointer' : 'not-allowed',
-                }}
-              >
-                {track.thumbnail_url ? (
-                  <img
-                    src={track.thumbnail_url}
-                    alt={track.word}
-                    draggable={false}
-                  />
-                ) : (
-                  <div
-                    className="w-full h-full flex items-center justify-center text-xs font-semibold text-white/70"
-                    style={{ background: 'rgba(94,106,210,0.3)' }}
+              <div key={track.id} className="flex flex-col items-center gap-1">
+                <button
+                  onClick={() => hasAudio && onTrackSelect(track.id)}
+                  disabled={!hasAudio}
+                  title={track.word}
+                  className={`music-orb-thumb flex-shrink-0 focus:outline-none${isCurrent ? ' is-current' : ''}`}
+                  style={{
+                    width: 44,
+                    height: 44,
+                    opacity: !hasAudio ? 0.25 : isCurrent ? 1 : 0.6,
+                    cursor: hasAudio ? 'pointer' : 'default',
+                  }}
+                >
+                  {track.thumbnail_url ? (
+                    <img
+                      src={track.thumbnail_url}
+                      alt={track.word}
+                      draggable={false}
+                    />
+                  ) : (
+                    <div
+                      className="w-full h-full flex items-center justify-center text-xs font-semibold text-white/70"
+                      style={{ background: 'rgba(94,106,210,0.3)' }}
+                    >
+                      {track.word.charAt(0).toUpperCase()}
+                    </div>
+                  )}
+                </button>
+                {!hasAudio && (
+                  <button
+                    type="button"
+                    disabled={isGenerating}
+                    onClick={() => onGenerateSong?.(track)}
+                    className="h-6 rounded-md px-2 text-[10px] text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)] disabled:opacity-50"
+                    title={t('music.generateSong')}
                   >
-                    {track.word.charAt(0).toUpperCase()}
-                  </div>
+                    <Music className="inline h-3 w-3 mr-1" />
+                    {isGenerating ? t('music.generatingSong') : t('music.generateSong')}
+                  </button>
                 )}
-              </button>
+              </div>
             )
           })}
         </div>
