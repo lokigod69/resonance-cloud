@@ -123,7 +123,62 @@ function useToolbarClearancePx(toolbarRef: RefObject<HTMLDivElement | null>) {
   return toolbarClearancePx
 }
 
-function getToolbarAwareTop(y: number, toolbarClearancePx: number) {
+function useLaneTopOffsetPx(
+  worldRef: RefObject<HTMLDivElement | null>,
+  words: SyndicateWordState[],
+  layout: CanvasViewport,
+  toolbarClearancePx: number,
+) {
+  const [laneTopOffsetPx, setLaneTopOffsetPx] = useState(0)
+
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined' || layout !== 'lane') {
+      setLaneTopOffsetPx(0)
+      return undefined
+    }
+
+    const updateLaneTopOffset = () => {
+      const worldHeight = worldRef.current?.getBoundingClientRect().height ?? window.innerHeight
+      const firstLaneY = Math.min(...words.filter((word) => word.layout === 'lane').map((word) => word.y))
+      if (!Number.isFinite(firstLaneY) || worldHeight <= 0) {
+        setLaneTopOffsetPx(0)
+        return
+      }
+
+      setLaneTopOffsetPx(Math.max(0, Math.ceil(toolbarClearancePx - (firstLaneY / 100) * worldHeight)))
+    }
+
+    updateLaneTopOffset()
+
+    const world = worldRef.current
+    const resizeObserver = world && 'ResizeObserver' in window
+      ? new ResizeObserver(updateLaneTopOffset)
+      : null
+    if (world) resizeObserver?.observe(world)
+
+    window.addEventListener('resize', updateLaneTopOffset)
+    window.addEventListener('orientationchange', updateLaneTopOffset)
+
+    return () => {
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', updateLaneTopOffset)
+      window.removeEventListener('orientationchange', updateLaneTopOffset)
+    }
+  }, [layout, toolbarClearancePx, words, worldRef])
+
+  return laneTopOffsetPx
+}
+
+function getToolbarAwareTop(
+  y: number,
+  toolbarClearancePx: number,
+  laneTopOffsetPx: number,
+  layout: CanvasViewport,
+) {
+  if (layout === 'lane') {
+    return laneTopOffsetPx > 0 ? `calc(${y}% + ${laneTopOffsetPx}px)` : `${y}%`
+  }
+
   return toolbarClearancePx > 0 ? `max(${y}%, ${toolbarClearancePx}px)` : `${y}%`
 }
 
@@ -421,6 +476,7 @@ export default function SyndicateCanvas({
   const [bursts, setBursts] = useState<GridBurst[]>([])
   const [particles, setParticles] = useState<PixelParticle[]>([])
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const worldRef = useRef<HTMLDivElement | null>(null)
   const toolbarRef = useRef<HTMLDivElement | null>(null)
   const wordStatesRef = useRef<SyndicateWordState[]>(renderWords)
   const wordElementsRef = useRef(new Map<string, HTMLDivElement>())
@@ -440,6 +496,7 @@ export default function SyndicateCanvas({
     : null
   const selectedImage = selectedState && !selectedState.imageFailed ? getImageUrl(selectedState.word) : null
   const toolbarClearancePx = useToolbarClearancePx(toolbarRef)
+  const laneTopOffsetPx = useLaneTopOffsetPx(worldRef, renderWords, viewport, toolbarClearancePx)
 
   const gridStyle = useMemo<CSSProperties>(() => ({
     backgroundImage: [
@@ -630,7 +687,7 @@ export default function SyndicateCanvas({
 
         if (el) {
           el.style.left = `${word.x}%`
-          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx)
+          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout)
         }
       }
 
@@ -689,7 +746,7 @@ export default function SyndicateCanvas({
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current)
       frameRef.current = null
     }
-  }, [sessionComplete, toolbarClearancePx])
+  }, [laneTopOffsetPx, sessionComplete, toolbarClearancePx])
 
   useEffect(() => () => {
     for (const timer of timersRef.current) window.clearTimeout(timer)
@@ -841,7 +898,7 @@ export default function SyndicateCanvas({
       <SyndicateStyle />
       <div className="syndicate-scanlines pointer-events-none absolute inset-0 z-30" />
 
-      <div className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
+      <div ref={worldRef} className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-0">
           {drops.map((drop) => (
             <div
@@ -948,7 +1005,7 @@ export default function SyndicateCanvas({
                 className="absolute"
                 style={{
                   left: `clamp(${horizontalClampPx}px, ${state.x}%, calc(100% - ${horizontalClampPx}px))`,
-                  top: getToolbarAwareTop(state.y, toolbarClearancePx),
+                  top: getToolbarAwareTop(state.y, toolbarClearancePx, laneTopOffsetPx, state.layout),
                   transform: 'translate(-50%, -50%)',
                 }}
               >

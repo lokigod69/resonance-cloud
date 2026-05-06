@@ -267,7 +267,62 @@ function useToolbarClearancePx(toolbarRef: RefObject<HTMLDivElement | null>) {
   return toolbarClearancePx
 }
 
-function getToolbarAwareTop(y: number, toolbarClearancePx: number) {
+function useLaneTopOffsetPx(
+  worldRef: RefObject<HTMLDivElement | null>,
+  words: FrostWordState[],
+  layout: CanvasViewport,
+  toolbarClearancePx: number,
+) {
+  const [laneTopOffsetPx, setLaneTopOffsetPx] = useState(0)
+
+  useLayoutEffect(() => {
+    if (typeof window === 'undefined' || layout !== 'lane') {
+      setLaneTopOffsetPx(0)
+      return undefined
+    }
+
+    const updateLaneTopOffset = () => {
+      const worldHeight = worldRef.current?.getBoundingClientRect().height ?? window.innerHeight
+      const firstLaneY = Math.min(...words.filter((word) => word.layout === 'lane').map((word) => word.y))
+      if (!Number.isFinite(firstLaneY) || worldHeight <= 0) {
+        setLaneTopOffsetPx(0)
+        return
+      }
+
+      setLaneTopOffsetPx(Math.max(0, Math.ceil(toolbarClearancePx - (firstLaneY / 100) * worldHeight)))
+    }
+
+    updateLaneTopOffset()
+
+    const world = worldRef.current
+    const resizeObserver = world && 'ResizeObserver' in window
+      ? new ResizeObserver(updateLaneTopOffset)
+      : null
+    if (world) resizeObserver?.observe(world)
+
+    window.addEventListener('resize', updateLaneTopOffset)
+    window.addEventListener('orientationchange', updateLaneTopOffset)
+
+    return () => {
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', updateLaneTopOffset)
+      window.removeEventListener('orientationchange', updateLaneTopOffset)
+    }
+  }, [layout, toolbarClearancePx, words, worldRef])
+
+  return laneTopOffsetPx
+}
+
+function getToolbarAwareTop(
+  y: number,
+  toolbarClearancePx: number,
+  laneTopOffsetPx: number,
+  layout: CanvasViewport,
+) {
+  if (layout === 'lane') {
+    return laneTopOffsetPx > 0 ? `calc(${y}% + ${laneTopOffsetPx}px)` : `${y}%`
+  }
+
   return toolbarClearancePx > 0 ? `max(${y}%, ${toolbarClearancePx}px)` : `${y}%`
 }
 
@@ -319,6 +374,7 @@ export default function FrostCanvas({
   const [breathSpots, setBreathSpots] = useState<BreathSpot[]>([])
   const [imageFailures, setImageFailures] = useState<Set<string>>(new Set())
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const worldRef = useRef<HTMLDivElement | null>(null)
   const toolbarRef = useRef<HTMLDivElement | null>(null)
   const wordStatesRef = useRef<FrostWordState[]>(renderWords)
   const wordElementsRef = useRef(new Map<string, HTMLDivElement>())
@@ -334,6 +390,7 @@ export default function FrostCanvas({
     : null
   const selectedImage = selectedState && !selectedState.imageFailed ? getImageUrl(selectedState.word) : null
   const toolbarClearancePx = useToolbarClearancePx(toolbarRef)
+  const laneTopOffsetPx = useLaneTopOffsetPx(worldRef, renderWords, viewport, toolbarClearancePx)
 
   const paneStyle = useMemo<CSSProperties>(() => ({
     background: [
@@ -472,7 +529,7 @@ export default function FrostCanvas({
           const el = wordElementsRef.current.get(word.id)
           if (el) {
             el.style.left = `${word.x}%`
-            el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx)
+            el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout)
           }
           continue
         }
@@ -511,7 +568,7 @@ export default function FrostCanvas({
         const el = wordElementsRef.current.get(word.id)
         if (el) {
           el.style.left = `${word.x}%`
-          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx)
+          el.style.top = getToolbarAwareTop(word.y, toolbarClearancePx, laneTopOffsetPx, word.layout)
         }
       }
 
@@ -523,7 +580,7 @@ export default function FrostCanvas({
       if (frameRef.current !== null) cancelAnimationFrame(frameRef.current)
       frameRef.current = null
     }
-  }, [sessionComplete, toolbarClearancePx])
+  }, [laneTopOffsetPx, sessionComplete, toolbarClearancePx])
 
   useEffect(() => () => {
     for (const timer of timersRef.current) window.clearTimeout(timer)
@@ -654,7 +711,7 @@ export default function FrostCanvas({
       className="fixed inset-0 z-40 bg-gradient-to-b from-[#0f1a28] via-[#152535] to-[#0a1520] overflow-y-auto md:overflow-hidden font-hand text-[#a8d8f0] cursor-default select-none"
     >
       <FrostStyle />
-      <div className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
+      <div ref={worldRef} className="relative min-h-[150vh] md:min-h-full md:h-full overflow-hidden">
         <div className="pointer-events-none absolute inset-0 z-0" style={paneStyle} />
         <div className="pointer-events-none absolute right-[18%] top-[18%] z-0 h-2 w-2 rounded-full bg-yellow-200/30 blur-sm" />
         <div className="pointer-events-none absolute right-[12%] top-[28%] z-0 h-1 w-1 rounded-full bg-yellow-100/20 blur-sm" />
@@ -730,7 +787,7 @@ export default function FrostCanvas({
                 className="absolute"
                 style={{
                   left: `${state.x}%`,
-                  top: getToolbarAwareTop(state.y, toolbarClearancePx),
+                  top: getToolbarAwareTop(state.y, toolbarClearancePx, laneTopOffsetPx, state.layout),
                   transform: 'translate(-50%, -50%)',
                 }}
               >
