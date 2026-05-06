@@ -1,12 +1,18 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, MouseEvent as ReactMouseEvent } from 'react'
+import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
+
+type LaneColumn = 'left' | 'right'
+type CanvasPosition = { x: number; y: number; laneColumn?: LaneColumn }
 
 type FrostWordState = {
   id: string
   x: number
   y: number
+  layout: CanvasViewport
+  laneColumn: LaneColumn | null
   drift: number
   mastered: boolean
   crystallizing: boolean
@@ -33,29 +39,62 @@ type AudioKind = 'hover' | 'reveal' | 'pass' | 'fail' | 'snowfall'
 const PHYSICS_FRAMES = 300
 const SNOWFLAKE_CHARS = ['❄', '❅', '❆', '✻', '✼']
 
-function isMobileViewport() {
-  return typeof window !== 'undefined' && window.innerWidth < 768
+function getBounds() {
+  return {
+    minX: 12,
+    maxX: 88,
+    minY: 10,
+    maxY: 85,
+    spacingX: 18,
+    spacingY: 12,
+    minDistX: 16,
+    minDistY: 10,
+  }
 }
 
-function getBounds() {
-  const isMobile = isMobileViewport()
-  return {
-    minX: isMobile ? 18 : 12,
-    maxX: isMobile ? 82 : 88,
-    minY: isMobile ? 12 : 10,
-    maxY: isMobile ? 82 : 85,
-    spacingX: isMobile ? 22 : 18,
-    spacingY: isMobile ? 14 : 12,
-    minDistX: isMobile ? 20 : 16,
-    minDistY: isMobile ? 12 : 10,
+function deterministicOffset(index: number, salt: number, range: number) {
+  const value = Math.sin((index + 1) * 12.9898 + salt * 78.233) * 43758.5453
+  return (value - Math.floor(value) - 0.5) * 2 * range
+}
+
+function generateLanePositions(count: number): CanvasPosition[] {
+  const leftCount = Math.ceil(count / 2)
+  const rightCount = Math.floor(count / 2)
+
+  return Array.from({ length: count }, (_, index) => {
+    const laneColumn: LaneColumn = index % 2 === 0 ? 'left' : 'right'
+    const laneIndex = Math.floor(index / 2)
+    const laneCount = laneColumn === 'left' ? leftCount : rightCount
+    const centerX = laneColumn === 'left' ? 25 : 75
+    const baseY = laneCount <= 1 ? 50 : 10 + (laneIndex / (laneCount - 1)) * 80
+
+    return {
+      x: centerX + deterministicOffset(index, 1, 10),
+      y: clamp(baseY + deterministicOffset(index, 2, 2), 10, 90),
+      laneColumn,
+    }
+  })
+}
+
+function getDriftBounds(layout: CanvasViewport, laneColumn: LaneColumn | null, x: number) {
+  if (layout === 'lane') {
+    const column = laneColumn ?? (x < 50 ? 'left' : 'right')
+    return {
+      minX: column === 'left' ? 15 : 65,
+      maxX: column === 'left' ? 35 : 85,
+      minY: 4,
+      maxY: 92,
+    }
   }
+
+  return { minX: 3, maxX: 97, minY: 4, maxY: 92 }
 }
 
 function generateNonOverlappingPositions(
   count: number,
   existingPositions: Array<{ x: number; y: number }> = [],
-) {
-  const positions: Array<{ x: number; y: number }> = []
+): CanvasPosition[] {
+  const positions: CanvasPosition[] = []
   const { minX, maxX, minY, maxY, spacingX, spacingY } = getBounds()
   const centerX = (minX + maxX) / 2
   const centerY = (minY + maxY) / 2
@@ -137,17 +176,23 @@ function generateNonOverlappingPositions(
 function createWordStates(
   words: CanvasModeProps['words'],
   imageFailures: Set<string>,
+  layout: CanvasViewport,
   existingStates: FrostWordState[] = [],
 ) {
   const existingById = new Map(existingStates.map((state) => [state.id, state]))
-  const positions = generateNonOverlappingPositions(words.length)
+  const positions = layout === 'lane'
+    ? generateLanePositions(words.length)
+    : generateNonOverlappingPositions(words.length)
 
   return words.map((word, index) => {
     const existing = existingById.get(word.id)
+    const preservePosition = existing?.layout === layout
     return {
       id: word.id,
-      x: existing?.x ?? positions[index]?.x ?? 50,
-      y: existing?.y ?? positions[index]?.y ?? 50,
+      x: preservePosition ? existing.x : positions[index]?.x ?? 50,
+      y: preservePosition ? existing.y : positions[index]?.y ?? 50,
+      layout,
+      laneColumn: layout === 'lane' ? positions[index]?.laneColumn ?? null : null,
       drift: existing?.drift ?? Math.random() * Math.PI * 2,
       mastered: existing?.mastered ?? false,
       crystallizing: false,
@@ -245,7 +290,8 @@ export default function FrostCanvas({
   onExit,
   onContinue,
 }: CanvasModeProps) {
-  const [renderWords, setRenderWords] = useState<FrostWordState[]>(() => createWordStates(words, new Set()))
+  const viewport = useViewport()
+  const [renderWords, setRenderWords] = useState<FrostWordState[]>(() => createWordStates(words, new Set(), viewport))
   const [revealedId, setRevealedId] = useState<string | null>(null)
   const [snowflakes, setSnowflakes] = useState<Snowflake[]>([])
   const [breathSpots, setBreathSpots] = useState<BreathSpot[]>([])
@@ -365,7 +411,7 @@ export default function FrostCanvas({
   }, [])
 
   useEffect(() => {
-    wordStatesRef.current = createWordStates(words, imageFailures, wordStatesRef.current)
+    wordStatesRef.current = createWordStates(words, imageFailures, viewport, wordStatesRef.current)
     physicsFrameRef.current = 0
 
     const timer = window.setTimeout(() => {
@@ -374,7 +420,7 @@ export default function FrostCanvas({
     }, 0)
 
     return () => window.clearTimeout(timer)
-  }, [imageFailures, words])
+  }, [imageFailures, viewport, words])
 
   useEffect(() => {
     reducedMotionRef.current = typeof window !== 'undefined'
@@ -393,7 +439,7 @@ export default function FrostCanvas({
     if (sessionComplete) return undefined
 
     function loop() {
-      const { minX, maxX, minY, maxY, minDistX, minDistY } = getBounds()
+      const { minDistX, minDistY } = getBounds()
       physicsFrameRef.current += 1
       const physicsActive = physicsFrameRef.current <= PHYSICS_FRAMES
 
@@ -433,8 +479,9 @@ export default function FrostCanvas({
           newY += repelY
         }
 
-        word.x = clamp(newX, minX, maxX)
-        word.y = clamp(newY, minY, maxY)
+        const bounds = getDriftBounds(word.layout, word.laneColumn, word.x)
+        word.x = clamp(newX, bounds.minX, bounds.maxX)
+        word.y = clamp(newY, bounds.minY, bounds.maxY)
         word.drift += 0.005
 
         const el = wordElementsRef.current.get(word.id)
@@ -532,9 +579,13 @@ export default function FrostCanvas({
       const others = wordStatesRef.current
         .filter((word) => word.id !== target.id)
         .map((word) => ({ x: word.x, y: word.y }))
-      const [position] = generateNonOverlappingPositions(1, others)
+      const [position] = viewport === 'lane'
+        ? generateLanePositions(wordStatesRef.current.findIndex((word) => word.id === target.id) + 1).slice(-1)
+        : generateNonOverlappingPositions(1, others)
       target.x = position?.x ?? target.x
       target.y = position?.y ?? target.y
+      target.layout = viewport
+      target.laneColumn = viewport === 'lane' ? position?.laneColumn ?? target.laneColumn : null
       target.drift = Math.random() * Math.PI * 2
       target.crystallizing = false
       setRenderWords([...wordStatesRef.current])
