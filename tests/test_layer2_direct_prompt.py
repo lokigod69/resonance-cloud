@@ -86,6 +86,11 @@ def test_direct_prompt_v2_system_prompt_adds_controlled_creative_guidance():
 
     assert "Reduce repetitive golden-hour" in prompt
     assert "make the selected meaning strategy visibly distinct" in prompt
+    assert "Absurd Hook: create a meaning-first strange image" in prompt
+    assert "one strong absurd idea" in prompt
+    assert "Do not create random surreal clutter" in prompt
+    assert "obvious clichés" in prompt
+    assert "If the word is abstract" in prompt
     assert "Mini Story: one image containing 2-3 readable beats" in prompt
     assert "Word as Design: target word may appear visibly" in prompt
     assert "Incidental environmental text is allowed" in prompt
@@ -105,6 +110,8 @@ def test_direct_prompt_v3_system_prompt_adds_visual_craft_guidance_without_dumpi
     assert "orange sunset" in prompt
     assert "generic cinematic haze" in prompt
     assert "Realistic should feel like a plausible photograph" in prompt
+    assert "Absurd Hook: create a meaning-first strange image" in prompt
+    assert "one strong absurd idea" in prompt
     assert "Infographic: visual craft means layout design" in prompt
 
 

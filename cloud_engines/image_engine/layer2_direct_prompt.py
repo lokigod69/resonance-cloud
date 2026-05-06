@@ -148,7 +148,7 @@ def build_direct_prompt_v2_system_prompt() -> str:
         "Meaning Strategy guidance:\n"
         "- Clear Meaning: immediately recognizable core meaning, minimal surrealism, strong clean scene.\n"
         "- Exaggerated Meaning: intensify scale, emotion, action, consequence, or contrast while keeping the meaning obvious.\n"
-        "- Absurd Hook: strange, memorable, elegant, and understandable; absurdity serves memory, never randomness.\n"
+        "- Absurd Hook: create a meaning-first strange image. The scene should be surprising, funny, paradoxical, uncanny, or exaggerated, but the word's meaning must remain readable. Use one strong absurd idea that makes the concept easier to remember. Do not create random surreal clutter. Do not rely on generic darkness, orange cinematic lighting, or obvious clichés. If using wordplay, make sure it helps the meaning rather than replacing it. If the word is abstract, make the abstraction visible through an impossible but understandable scene. If the word is a verb, show the action in an exaggerated or absurd consequence. If the word is a noun, distort the object or world around it while keeping recognition.\n"
         "- Mnemonic Hook: use the best available memory bridge: phonetic, wordplay, morpheme, etymology, semantic metaphor, or clear visual association. Never force fake wordplay; fall back to a strong metaphor or clear scene.\n\n"
         "Presentation Form guidance:\n"
         "- Single Scene: one coherent visual moment with one dominant memory idea.\n"
