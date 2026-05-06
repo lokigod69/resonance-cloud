@@ -575,15 +575,17 @@ export default function SyndicateCanvas({
       gain.connect(ctx.destination)
 
       if (kind === 'reveal') {
-        const osc = ctx.createOscillator()
-        osc.type = 'sawtooth'
-        osc.frequency.setValueAtTime(400, ctx.currentTime)
-        osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.15)
-        gain.gain.setValueAtTime(0.06, ctx.currentTime)
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15)
-        osc.connect(gain)
-        osc.start()
-        osc.stop(ctx.currentTime + 0.15)
+        gain.gain.setValueAtTime(0.035, ctx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.09)
+        for (const [index, freq] of [880, 1320].entries()) {
+          const osc = ctx.createOscillator()
+          osc.type = 'square'
+          const startAt = ctx.currentTime + index * 0.035
+          osc.frequency.setValueAtTime(freq, startAt)
+          osc.connect(gain)
+          osc.start(startAt)
+          osc.stop(startAt + 0.045)
+        }
       } else if (kind === 'pass') {
         gain.gain.setValueAtTime(0.08, ctx.currentTime)
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2)

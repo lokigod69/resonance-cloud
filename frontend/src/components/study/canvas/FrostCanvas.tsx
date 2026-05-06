@@ -458,15 +458,16 @@ export default function FrostCanvas({
         osc.start()
         osc.stop(ctx.currentTime + 0.1)
       } else if (kind === 'pass') {
-        gain.gain.setValueAtTime(0.08, ctx.currentTime)
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15)
-        for (const freq of [2200, 2800]) {
+        gain.gain.setValueAtTime(0.055, ctx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12)
+        for (const [index, freq] of [2600, 3300, 4200].entries()) {
           const osc = ctx.createOscillator()
           osc.type = 'sine'
-          osc.frequency.setValueAtTime(freq, ctx.currentTime)
+          const startAt = ctx.currentTime + index * 0.018
+          osc.frequency.setValueAtTime(freq, startAt)
           osc.connect(gain)
-          osc.start()
-          osc.stop(ctx.currentTime + 0.15)
+          osc.start(startAt)
+          osc.stop(startAt + 0.09)
         }
       } else {
         const osc = ctx.createOscillator()

@@ -460,13 +460,14 @@ export default function EmberCanvas({
 
       if (kind === 'reveal') {
         const osc = ctx.createOscillator()
-        osc.type = 'sine'
-        osc.frequency.setValueAtTime(220, ctx.currentTime)
-        gain.gain.setValueAtTime(0.08, ctx.currentTime)
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1)
+        osc.type = 'triangle'
+        osc.frequency.setValueAtTime(196, ctx.currentTime)
+        osc.frequency.exponentialRampToValueAtTime(164, ctx.currentTime + 0.12)
+        gain.gain.setValueAtTime(0.035, ctx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12)
         osc.connect(gain)
         osc.start()
-        osc.stop(ctx.currentTime + 0.1)
+        osc.stop(ctx.currentTime + 0.12)
       } else if (kind === 'pass') {
         for (const freq of [440, 660]) {
           const osc = ctx.createOscillator()
