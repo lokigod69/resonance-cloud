@@ -12,6 +12,8 @@ import logging
 from pathlib import Path
 from typing import Any, Optional
 
+from src.services.music_lyrics_store import persist_video_pipeline_lyrics_best_effort
+
 from . import retry, state
 
 log = logging.getLogger(__name__)
@@ -341,6 +343,20 @@ class UpstreamWorker:
                 self.sb, fresh["id"], music_state="pending",
             )
             return
+
+        try:
+            await persist_video_pipeline_lyrics_best_effort(
+                self.sb,
+                word=fresh,
+                concept_data=concept_data,
+            )
+        except Exception as e:
+            log.warning(
+                "upstream_worker: music lyrics persist failed word=%s: %s",
+                fresh["id"],
+                e,
+                exc_info=True,
+            )
 
         async def _once():
             await submit_song(

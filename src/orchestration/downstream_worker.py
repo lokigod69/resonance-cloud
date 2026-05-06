@@ -34,6 +34,8 @@ import os
 from pathlib import Path
 from typing import Any, Optional
 
+from src.services.music_lyrics_store import persist_video_pipeline_lyrics_best_effort
+
 from . import retry, state
 
 log = logging.getLogger(__name__)
@@ -461,6 +463,20 @@ class DownstreamWorker:
             return
 
         try:
+            try:
+                await persist_video_pipeline_lyrics_best_effort(
+                    self.sb,
+                    word=word,
+                    concept_data=concept_data,
+                )
+            except Exception as lyrics_exc:
+                log.warning(
+                    "downstream_worker: music lyrics persist failed word=%s: %s",
+                    word["id"],
+                    lyrics_exc,
+                    exc_info=True,
+                )
+
             await submit_song(
                 word["deck_id"],
                 word_slug,

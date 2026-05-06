@@ -9,11 +9,17 @@ import os
 from pathlib import Path
 from typing import Any
 
+from src.services.lyrics_translation import translate_song_lyrics
+from src.services.music_lyrics_store import (
+    translation_result_to_columns,
+    upsert_music_lyrics_row,
+)
 from src.services.song_only_concept import build_song_only_concept
 from src.services.song_only_suno import (
     download_and_upload_song_audio,
     submit_song_only_task,
 )
+from src.slugify import language_to_code
 from src.storage import get_workspace_root
 from src.suno import fetch_existing_task
 
@@ -56,6 +62,26 @@ def _bounded_error(step: str, error: BaseException | str) -> str:
     else:
         message = f"{step}: {error}"
     return message[:MAX_ERROR_MESSAGE_CHARS]
+
+
+def _metadata(row: dict[str, Any] | None) -> dict[str, Any]:
+    value = (row or {}).get("metadata")
+    return value if isinstance(value, dict) else {}
+
+
+def _settings_override(row: dict[str, Any] | None) -> dict[str, Any]:
+    direct = (row or {}).get("settings_override")
+    if isinstance(direct, dict):
+        return direct
+    nested = _metadata(row).get("settings_override")
+    return nested if isinstance(nested, dict) else {}
+
+
+def _first_text(*values: Any) -> str | None:
+    for value in values:
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return None
 
 
 class MusicOnlyWorker:
@@ -169,6 +195,7 @@ class MusicOnlyWorker:
                 )
                 await self._persist_concept(job_id, concept)
                 log.info("music_only: concept generated job=%s", job_id)
+                await self._persist_generated_lyrics(job, context, concept)
 
                 task_id = await submit_song_only_task(
                     concept["concept_data"],
@@ -406,4 +433,121 @@ class MusicOnlyWorker:
         return {
             "word": dict(word),
             "deck": dict(deck) if isinstance(deck, dict) else None,
+            "profile": await self._fetch_profile(str(job.get("user_id"))) if job.get("user_id") else None,
         }
+
+    async def _fetch_profile(self, user_id: str) -> dict[str, Any] | None:
+        def _profile_query():
+            return (
+                self.sb.table("profiles")
+                .select("base_language")
+                .eq("id", user_id)
+                .maybe_single()
+                .execute()
+            )
+
+        try:
+            profile = _response_data(await asyncio.to_thread(_profile_query))
+            return dict(profile) if isinstance(profile, dict) else None
+        except Exception:
+            return None
+
+    async def _persist_generated_lyrics(
+        self,
+        job: dict[str, Any],
+        context: dict[str, Any],
+        concept: dict[str, Any],
+    ) -> None:
+        artifact = concept.get("concept_artifact") or {}
+        concept_data = concept.get("concept_data") or {}
+        if not isinstance(artifact, dict):
+            artifact = {}
+        if not isinstance(concept_data, dict):
+            concept_data = {}
+
+        lyrics = _first_text(
+            artifact.get("suno_lyrics"),
+            artifact.get("lyrics"),
+            concept_data.get("lyrics"),
+        )
+        if not lyrics:
+            return
+
+        word = context.get("word") or {}
+        deck = context.get("deck") or {}
+        profile = context.get("profile") or {}
+        language = _first_text(
+            artifact.get("language"),
+            concept_data.get("language"),
+            job.get("target_language"),
+            _metadata(job).get("target_language"),
+            word.get("language"),
+            _metadata(word).get("language"),
+            deck.get("target_language"),
+        ) or "English"
+        language_code = _first_text(
+            artifact.get("language_code"),
+            concept_data.get("language_code"),
+            word.get("language_code"),
+            _metadata(word).get("language_code"),
+        ) or language_to_code(language)
+        settings_override = _settings_override(job)
+        base_language = _first_text(
+            settings_override.get("base_language"),
+            profile.get("base_language"),
+        ) or "English"
+        base_language_code = language_to_code(base_language)
+
+        translation_columns: dict[str, Any] = {}
+        try:
+            translation_result = await asyncio.to_thread(
+                translate_song_lyrics,
+                lyrics=lyrics,
+                source_language=language,
+                target_language=base_language,
+                word=_first_text(artifact.get("word"), concept_data.get("word"), word.get("word")) or "",
+                translation=_first_text(
+                    artifact.get("translation"),
+                    concept_data.get("translation"),
+                    word.get("translation"),
+                ) or "",
+            )
+            translation_columns = translation_result_to_columns(
+                translation_result,
+                target_language_code=base_language_code,
+            )
+        except Exception as exc:
+            log.warning(
+                "music_only: lyrics translation failed job=%s: %s",
+                job.get("id"),
+                exc,
+                exc_info=True,
+            )
+            translation_columns = {
+                "translation_status": "failed",
+                "translation_language": base_language,
+                "translation_language_code": base_language_code,
+                "translation_error": str(exc),
+                "translation_attempted_at": _now_utc().isoformat(),
+            }
+
+        await asyncio.to_thread(
+            upsert_music_lyrics_row,
+            self.sb,
+            user_id=str(job.get("user_id")),
+            word_id=str(job.get("word_id")),
+            deck_id=str(job.get("deck_id")) if job.get("deck_id") else None,
+            source_type="song_only",
+            source_job_id=str(job.get("id")) if job.get("id") else None,
+            generation_job_id=None,
+            provider_task_id=str(job.get("suno_task_id")) if job.get("suno_task_id") else None,
+            attempt_number=int(job.get("attempts") or 1),
+            language=language,
+            language_code=language_code,
+            lyric_mode=_first_text(job.get("lyric_mode"), _metadata(job).get("lyric_mode")),
+            genre=_first_text(job.get("genre"), _metadata(job).get("genre")),
+            music_caption=_first_text(artifact.get("music_caption"), concept_data.get("music_caption")),
+            lyrics=lyrics,
+            suno_lyrics=_first_text(artifact.get("suno_lyrics"), concept_data.get("lyrics")),
+            **translation_columns,
+        )
