@@ -31,27 +31,33 @@ def test_compact_music_caption_segment_excludes_auto():
     assert "return null" in helper
 
 
-def test_lyrics_sheet_lazy_loads_latest_complete_music_job_with_metadata_fallback():
+def test_lyrics_sheet_reads_latest_music_lyrics_before_music_job_fallback():
     sheet = read_frontend("components/music/LyricsSheet.tsx")
 
-    assert ".from('music_generation_jobs')" in sheet
-    assert ".select('concept_artifact, music_caption, genre, lyric_mode, vocal_gender, completed_at, created_at')" in sheet
+    assert ".from('music_lyrics')" in sheet
+    assert ".select('lyrics, suno_lyrics, translated_lyrics, translation_status, music_caption, genre, lyric_mode, created_at')" in sheet
     assert ".eq('word_id', track.id)" in sheet
-    assert ".eq('status', 'complete')" in sheet
-    assert ".order('completed_at', { ascending: false, nullsFirst: false })" in sheet
     assert ".order('created_at', { ascending: false })" in sheet
     assert ".limit(1)" in sheet
+    assert ".maybeSingle()" in sheet
+    assert ".from('music_generation_jobs')" in sheet
+    assert ".select('concept_artifact, music_caption, genre, lyric_mode, vocal_gender, completed_at, created_at')" in sheet
+    assert ".eq('status', 'complete')" in sheet
+    assert ".order('completed_at', { ascending: false, nullsFirst: false })" in sheet
     assert "extractMusicLyrics" in sheet
+    assert "musicLyricsRow: lyricsRow" in sheet
     assert "songGeneration: track.song_generation" in sheet
 
 
 def test_lyrics_extractor_prefers_concept_artifact_suno_lyrics():
     helper = read_frontend("lib/musicLyrics.ts")
 
+    music_lyrics_idx = helper.index("const musicLyrics = cleanText(musicLyricsRow?.lyrics)")
+    music_suno_idx = helper.index("const musicSunoLyrics = cleanText(musicLyricsRow?.suno_lyrics)")
     suno_idx = helper.index("const sunoLyrics = cleanText(conceptArtifact?.suno_lyrics)")
     concept_idx = helper.index("const conceptLyrics = cleanText(conceptArtifact?.lyrics)")
     metadata_suno_idx = helper.index("const metadataSunoLyrics = cleanText(songGeneration?.suno_lyrics)")
-    assert suno_idx < concept_idx < metadata_suno_idx
+    assert music_lyrics_idx < music_suno_idx < suno_idx < concept_idx < metadata_suno_idx
 
 
 def test_clean_display_lyrics_hides_raw_section_tags_without_mutating_extraction():
@@ -62,7 +68,22 @@ def test_clean_display_lyrics_hides_raw_section_tags_without_mutating_extraction
     for tag in ["Intro", "Verse", "Chorus", "Bridge", "Outro", "Hook", "Pre-Chorus"]:
         assert tag in helper
     assert "lyrics: sunoLyrics" in helper
-    assert "cleanDisplayLyrics(state.lyrics)" in sheet
+    assert "cleanDisplayLyrics(state.lyrics.original)" in sheet
+    assert "cleanDisplayLyrics(state.lyrics.translation)" in sheet
+
+
+def test_lyrics_sheet_displays_translation_columns_on_desktop_and_toggle_on_mobile():
+    sheet = read_frontend("components/music/LyricsSheet.tsx")
+
+    assert "const hasTranslation = Boolean(displayTranslation)" in sheet
+    assert "grid-cols-1 gap-4 lg:grid-cols-2" in sheet
+    assert "lg:hidden" in sheet
+    assert "translationView === 'original'" in sheet
+    assert "translationView === 'translation'" in sheet
+    assert "music.lyrics.original" in sheet
+    assert "music.lyrics.translation" in sheet
+    assert "aria-pressed={translationView === 'original'}" in sheet
+    assert "aria-pressed={translationView === 'translation'}" in sheet
 
 
 def test_clean_display_lyrics_preserves_stanzas_and_limits_excess_blank_lines():
@@ -105,12 +126,11 @@ def test_lyrics_sheet_uses_centered_reading_overlay_with_internal_scroll():
     sheet = read_frontend("components/music/LyricsSheet.tsx")
 
     assert "DialogContent" in sheet
-    assert "max-w-[min(900px,calc(100vw-2rem))]" in sheet
-    assert "max-h-[70dvh]" in sheet
+    assert "max-w-[min(1040px,calc(100vw-2rem))]" in sheet
+    assert "max-h-[82dvh]" in sheet
     assert "overflow-y-auto" in sheet
     assert "before:absolute before:inset-x-0 before:top-0" in sheet
     assert "after:absolute after:inset-x-0 after:bottom-0" in sheet
-    assert "grid-cols-1" in sheet
 
 
 def test_music_lyrics_labels_are_translated_for_en_de_fr():
@@ -118,6 +138,8 @@ def test_music_lyrics_labels_are_translated_for_en_de_fr():
 
     for key in [
         "music.lyrics",
+        "music.lyrics.original",
+        "music.lyrics.translation",
         "music.lyrics.loading",
         "music.lyrics.empty",
         "music.lyrics.error",

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AlertCircle, FileText, Loader2 } from 'lucide-react'
 import type { MusicTrack } from '@/hooks/useMusicPlayer'
+import { Button } from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -9,9 +10,24 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { supabase } from '@/lib/supabase'
-import { cleanDisplayLyrics, extractMusicLyrics } from '@/lib/musicLyrics'
+import {
+  cleanDisplayLyrics,
+  extractMusicLyrics,
+  extractMusicLyricsTranslation,
+} from '@/lib/musicLyrics'
 import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
 import { useTranslation } from '@/hooks/useTranslation'
+
+type MusicLyricsRow = {
+  lyrics: string | null
+  suno_lyrics: string | null
+  translated_lyrics: string | null
+  translation_status: string | null
+  music_caption: string | null
+  genre: string | null
+  lyric_mode: string | null
+  created_at: string | null
+}
 
 type LyricsJobRow = {
   concept_artifact: Record<string, unknown> | null
@@ -24,10 +40,16 @@ type LyricsJobRow = {
 }
 
 type LyricsState =
-  | { status: 'idle'; lyrics: null; row: null; error: null }
-  | { status: 'loading'; lyrics: null; row: null; error: null }
-  | { status: 'ready'; lyrics: string | null; row: LyricsJobRow | null; error: null }
-  | { status: 'error'; lyrics: null; row: null; error: string }
+  | { status: 'idle'; lyrics: null; row: null; lyricsRow: null; error: null }
+  | { status: 'loading'; lyrics: null; row: null; lyricsRow: null; error: null }
+  | {
+      status: 'ready'
+      lyrics: { original: string | null; translation: string | null }
+      row: LyricsJobRow | null
+      lyricsRow: MusicLyricsRow | null
+      error: null
+    }
+  | { status: 'error'; lyrics: null; row: null; lyricsRow: null; error: string }
 
 type LyricsSheetProps = {
   open: boolean
@@ -58,12 +80,15 @@ export function LyricsSheet({
     status: 'idle',
     lyrics: null,
     row: null,
+    lyricsRow: null,
     error: null,
   })
+  const [translationView, setTranslationView] = useState<'original' | 'translation'>('original')
 
   useEffect(() => {
     if (!open || !track) {
-      setState({ status: 'idle', lyrics: null, row: null, error: null })
+      setState({ status: 'idle', lyrics: null, row: null, lyricsRow: null, error: null })
+      setTranslationView('original')
       return
     }
 
@@ -71,7 +96,48 @@ export function LyricsSheet({
 
     async function loadLyrics() {
       if (!track) return
-      setState({ status: 'loading', lyrics: null, row: null, error: null })
+      setState({ status: 'loading', lyrics: null, row: null, lyricsRow: null, error: null })
+      setTranslationView('original')
+
+      const { data: lyricsData, error: lyricsError } = await supabase
+        .from('music_lyrics')
+        .select('lyrics, suno_lyrics, translated_lyrics, translation_status, music_caption, genre, lyric_mode, created_at')
+        .eq('word_id', track.id)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle()
+
+      if (cancelled) return
+
+      if (lyricsError) {
+        setState({
+          status: 'error',
+          lyrics: null,
+          row: null,
+          lyricsRow: null,
+          error: lyricsError.message || t('music.lyrics.error'),
+        })
+        return
+      }
+
+      const lyricsRow = (lyricsData ?? null) as MusicLyricsRow | null
+      if (lyricsRow) {
+        const result = extractMusicLyrics({
+          musicLyricsRow: lyricsRow,
+          songGeneration: track.song_generation,
+        })
+        setState({
+          status: 'ready',
+          lyrics: {
+            original: result?.lyrics ?? null,
+            translation: extractMusicLyricsTranslation(lyricsRow),
+          },
+          row: null,
+          lyricsRow,
+          error: null,
+        })
+        return
+      }
 
       const { data, error } = await supabase
         .from('music_generation_jobs')
@@ -90,6 +156,7 @@ export function LyricsSheet({
           status: 'error',
           lyrics: null,
           row: null,
+          lyricsRow: null,
           error: error.message || t('music.lyrics.error'),
         })
         return
@@ -102,8 +169,9 @@ export function LyricsSheet({
       })
       setState({
         status: 'ready',
-        lyrics: result?.lyrics ?? null,
+        lyrics: { original: result?.lyrics ?? null, translation: null },
         row,
+        lyricsRow: null,
         error: null,
       })
     }
@@ -116,31 +184,57 @@ export function LyricsSheet({
   }, [open, track, t])
 
   const row = state.row
+  const lyricsRow = state.lyricsRow
   const genre = compactMusicCaptionSegment(
-    resolveTrackMusicCaption(track, {
-      status: 'complete',
-      music_caption: row?.music_caption ?? null,
-      concept_artifact: row?.concept_artifact ?? null,
-    }),
+    lyricsRow?.music_caption ||
+      lyricsRow?.genre ||
+      resolveTrackMusicCaption(track, {
+        status: 'complete',
+        music_caption: row?.music_caption ?? null,
+        concept_artifact: row?.concept_artifact ?? null,
+      }),
   ) || t('music.lyrics.unknown')
   const lyricMode =
+    textValue(lyricsRow?.lyric_mode) ||
     textValue(row?.lyric_mode) ||
     textValue(track?.song_generation?.lyric_mode) ||
     null
 
   const contentClassName = [
-    'top-auto bottom-0 left-0 translate-x-0 translate-y-0 max-w-none rounded-b-none rounded-t-2xl',
-    'max-h-[calc(100dvh-1rem)] border-border/70 p-0',
-    'sm:top-[50%] sm:left-[50%] sm:bottom-auto sm:translate-x-[-50%] sm:translate-y-[-50%]',
-    'sm:max-w-[min(900px,calc(100vw-2rem))] sm:max-h-[70dvh] sm:rounded-lg',
+    'max-w-[min(1040px,calc(100vw-2rem))] max-h-[82dvh] border-border/70 p-0 sm:max-h-[76dvh]',
     variant === 'glassy'
       ? 'border-[var(--border-subtle)] bg-[var(--glass-bg,rgba(10,10,14,0.82))] text-[var(--text-primary)] shadow-2xl backdrop-blur-2xl'
       : 'bg-background text-foreground',
   ].join(' ')
-  const displayLyrics =
-    state.status === 'ready' && state.lyrics
-      ? cleanDisplayLyrics(state.lyrics)
+  const displayOriginal =
+    state.status === 'ready' && state.lyrics.original
+      ? cleanDisplayLyrics(state.lyrics.original)
       : null
+  const displayTranslation =
+    state.status === 'ready' && state.lyrics.translation
+      ? cleanDisplayLyrics(state.lyrics.translation)
+      : null
+  const hasTranslation = Boolean(displayTranslation)
+  const mobileLyrics =
+    translationView === 'translation' && displayTranslation ? displayTranslation : displayOriginal
+
+  function renderLyricsPanel(label: string, lyrics: string | null) {
+    if (!lyrics) return null
+    return (
+      <section className="min-w-0">
+        {hasTranslation ? (
+          <h3 className="mb-2 text-xs font-medium uppercase tracking-normal text-muted-foreground">
+            {label}
+          </h3>
+        ) : null}
+        <div className="relative overflow-hidden rounded-md before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-6 before:bg-gradient-to-b before:from-background/80 before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-6 after:bg-gradient-to-t after:from-background/80 after:to-transparent before:pointer-events-none after:pointer-events-none">
+          <pre className="max-h-[min(54dvh,34rem)] overflow-y-auto whitespace-pre-wrap bg-muted/30 px-5 py-6 text-[15px] leading-7 text-foreground font-sans sm:max-h-[calc(76dvh-14rem)]">
+            {lyrics}
+          </pre>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -167,7 +261,7 @@ export function LyricsSheet({
               <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
               <span>{state.error || t('music.lyrics.error')}</span>
             </div>
-          ) : state.status === 'ready' && displayLyrics ? (
+          ) : state.status === 'ready' && displayOriginal ? (
             <div className="flex min-h-0 flex-col gap-4">
               <div className="grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
                 <div className="rounded-md bg-muted/40 px-3 py-2">
@@ -188,13 +282,42 @@ export function LyricsSheet({
                 </div>
               </div>
 
-              <div className="grid grid-cols-1">
-                <div className="relative overflow-hidden rounded-md before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-6 before:bg-gradient-to-b before:from-background/80 before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-6 after:bg-gradient-to-t after:from-background/80 after:to-transparent before:pointer-events-none after:pointer-events-none">
-                  <pre className="max-h-[min(52dvh,32rem)] overflow-y-auto whitespace-pre-wrap bg-muted/30 px-5 py-6 text-[15px] leading-7 text-foreground font-sans sm:max-h-[calc(70dvh-12rem)]">
-                    {displayLyrics}
-                  </pre>
+              {hasTranslation ? (
+                <div className="grid grid-cols-2 rounded-md bg-muted/30 p-1 lg:hidden">
+                  <Button
+                    type="button"
+                    variant={translationView === 'original' ? 'secondary' : 'ghost'}
+                    size="sm"
+                    aria-pressed={translationView === 'original'}
+                    onClick={() => setTranslationView('original')}
+                  >
+                    {t('music.lyrics.original')}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant={translationView === 'translation' ? 'secondary' : 'ghost'}
+                    size="sm"
+                    aria-pressed={translationView === 'translation'}
+                    onClick={() => setTranslationView('translation')}
+                  >
+                    {t('music.lyrics.translation')}
+                  </Button>
                 </div>
+              ) : null}
+
+              <div className={hasTranslation ? 'grid-cols-1 gap-4 lg:grid-cols-2 hidden lg:grid' : 'mx-auto grid w-full max-w-3xl grid-cols-1 gap-4'}>
+                {renderLyricsPanel(t('music.lyrics.original'), displayOriginal)}
+                {hasTranslation ? renderLyricsPanel(t('music.lyrics.translation'), displayTranslation) : null}
               </div>
+
+              {hasTranslation ? (
+                <div className="lg:hidden">
+                  {renderLyricsPanel(
+                    translationView === 'translation' ? t('music.lyrics.translation') : t('music.lyrics.original'),
+                    mobileLyrics,
+                  )}
+                </div>
+              ) : null}
             </div>
           ) : (
             <p className="py-8 text-sm text-muted-foreground">{t('music.lyrics.empty')}</p>
