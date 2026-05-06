@@ -11,6 +11,7 @@ export interface MusicTrack {
   suno_audio_url: string | null
   music_state: string | null
   retry_requested: boolean
+  song_generation: Record<string, unknown> | null
   genre: string | null
   duration: number | null
   error: boolean

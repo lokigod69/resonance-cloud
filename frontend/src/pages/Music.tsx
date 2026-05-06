@@ -5,6 +5,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { trackHasAudio, useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { PlaylistRow } from '@/components/music/PlaylistRow'
 import { PlayerBar } from '@/components/music/PlayerBar'
+import { LyricsSheet } from '@/components/music/LyricsSheet'
 import { GenerateSongModal } from '@/components/song-generation/GenerateSongModal'
 import {
   Select,
@@ -28,8 +29,13 @@ let _musicCache: MusicCache | null = null
 
 function mapToTrack(row: Record<string, unknown>): MusicTrack {
   const meta = row.metadata as Record<string, unknown> | null
+  const songGeneration =
+    meta?.song_generation && typeof meta.song_generation === 'object'
+      ? meta.song_generation as Record<string, unknown>
+      : null
   const deckRow = row.decks as { id: string; name: string } | null
   const rawCaption = meta?.music_caption as string | undefined
+  const songGenre = songGeneration?.genre as string | undefined
   return {
     id: row.id as string,
     deck_id: row.deck_id as string,
@@ -41,7 +47,8 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
     suno_audio_url: (row.suno_audio_url as string | null) ?? null,
     music_state: (row.music_state as string | null) ?? null,
     retry_requested: Boolean(row.retry_requested),
-    genre: rawCaption ? rawCaption.split(',')[0].trim() : null,
+    song_generation: songGeneration,
+    genre: rawCaption ? rawCaption.split(',')[0].trim() : songGenre ?? null,
     duration: null,
     error: false,
   }
@@ -57,6 +64,7 @@ export default function Music() {
   const [audioFilter, setAudioFilter] = useState<AudioFilter>('all')
   const [decks, setDecks] = useState<DeckOption[]>([])
   const [songModalTrack, setSongModalTrack] = useState<MusicTrack | null>(null)
+  const [lyricsTrack, setLyricsTrack] = useState<MusicTrack | null>(null)
 
   // Song-only state: wordId -> current music_generation_jobs status
   const [songStatusMap, setSongStatusMap] = useState<Map<string, SongGenerationStatus>>(new Map())
@@ -317,6 +325,7 @@ export default function Music() {
                 isPlaying={player.isPlaying && player.currentTrack?.id === track.id}
                 onClick={() => player.play(track.id)}
                 onGenerateSong={() => setSongModalTrack(track)}
+                onShowLyrics={() => setLyricsTrack(track)}
                 isGeneratingSong={songStatusMap.has(track.id)}
                 generationStatus={songStatusMap.get(track.id)}
               />
@@ -358,6 +367,12 @@ export default function Music() {
         track={songModalTrack}
         credits={profile?.credits ?? 0}
         onSubmitted={handleSongSubmitted}
+      />
+      <LyricsSheet
+        open={lyricsTrack !== null}
+        onOpenChange={(open) => !open && setLyricsTrack(null)}
+        track={lyricsTrack}
+        variant="classic"
       />
     </div>
   )

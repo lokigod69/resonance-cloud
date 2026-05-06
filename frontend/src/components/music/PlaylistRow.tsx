@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { Music } from 'lucide-react'
+import { FileText, Music } from 'lucide-react'
 import { trackHasAudio, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { useTranslation } from '@/hooks/useTranslation'
 
@@ -12,6 +12,7 @@ interface PlaylistRowProps {
   isPlaying: boolean
   onClick: () => void
   onGenerateSong?: () => void
+  onShowLyrics?: () => void
   isGeneratingSong?: boolean
   generationStatus?: string
 }
@@ -53,6 +54,7 @@ export function PlaylistRow({
   isPlaying,
   onClick,
   onGenerateSong,
+  onShowLyrics,
   isGeneratingSong,
   generationStatus,
 }: PlaylistRowProps) {
@@ -150,8 +152,19 @@ export function PlaylistRow({
         {track.error ? (
           <span className="text-red-500/70 font-sans text-[10px]">—</span>
         ) : hasAudio ? (
-          <span className="w-10 inline-block">
-            {duration !== null ? formatDuration(duration) : '…'}
+          <span className="inline-flex items-center justify-end gap-2">
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); onShowLyrics?.() }}
+              className="inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:bg-accent/10 hover:text-[var(--accent,#06b6d4)] transition-colors"
+              title={t('music.lyrics')}
+              aria-label={t('music.lyrics')}
+            >
+              <FileText className="h-3.5 w-3.5" aria-hidden />
+            </button>
+            <span className="w-10 inline-block">
+              {duration !== null ? formatDuration(duration) : '…'}
+            </span>
           </span>
         ) : isGeneratingSong ? (
           <span className="text-muted-foreground font-sans text-[10px] flex items-center gap-1">

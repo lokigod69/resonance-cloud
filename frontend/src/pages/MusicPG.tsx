@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { Music as MusicIcon, SkipBack, SkipForward, Play, Pause, Repeat, Repeat1, Shuffle } from 'lucide-react'
+import { FileText, Music as MusicIcon, SkipBack, SkipForward, Play, Pause, Repeat, Repeat1, Shuffle } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
 import { trackHasAudio, useMusicPlayer, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { OrbVisualizer } from '@/components/music/OrbVisualizer'
 import { OrbThumbnailRow } from '@/components/music/OrbThumbnailRow'
+import { LyricsSheet } from '@/components/music/LyricsSheet'
 import { GenerateSongModal } from '@/components/song-generation/GenerateSongModal'
 import { VolumeControl } from '@/components/VolumeControl'
 import {
@@ -35,8 +36,13 @@ let _pgMusicCache: MusicCache | null = null
 
 function mapToTrack(row: Record<string, unknown>): MusicTrack {
   const meta = row.metadata as Record<string, unknown> | null
+  const songGeneration =
+    meta?.song_generation && typeof meta.song_generation === 'object'
+      ? meta.song_generation as Record<string, unknown>
+      : null
   const deckRow = row.decks as { id: string; name: string } | null
   const rawCaption = meta?.music_caption as string | undefined
+  const songGenre = songGeneration?.genre as string | undefined
   return {
     id: row.id as string,
     deck_id: row.deck_id as string,
@@ -48,7 +54,8 @@ function mapToTrack(row: Record<string, unknown>): MusicTrack {
     suno_audio_url: (row.suno_audio_url as string | null) ?? null,
     music_state: (row.music_state as string | null) ?? null,
     retry_requested: Boolean(row.retry_requested),
-    genre: rawCaption ? rawCaption.split(',')[0].trim() : null,
+    song_generation: songGeneration,
+    genre: rawCaption ? rawCaption.split(',')[0].trim() : songGenre ?? null,
     duration: null,
     error: false,
   }
@@ -72,6 +79,7 @@ export default function MusicPG() {
   const [decks, setDecks] = useState<DeckOption[]>([])
   const [orbSize, setOrbSize] = useState(300)
   const [songModalTrack, setSongModalTrack] = useState<MusicTrack | null>(null)
+  const [lyricsTrack, setLyricsTrack] = useState<MusicTrack | null>(null)
   const [songStatusMap, setSongStatusMap] = useState<Map<string, SongGenerationStatus>>(new Map())
   const songStatusMapRef = useRef(songStatusMap)
   const songPollRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -440,6 +448,16 @@ export default function MusicPG() {
               >
                 <Shuffle size={15} />
               </button>
+
+              <button
+                onClick={() => currentTrack && setLyricsTrack(currentTrack)}
+                disabled={!currentTrack || !trackHasAudio(currentTrack)}
+                className={`w-9 h-9 ${PLAYER_ROUNDED_ICON_BUTTON_CLASS} ${PLAYER_INACTIVE_TOGGLE_CLASS}`}
+                aria-label={t('music.lyrics')}
+                title={t('music.lyrics')}
+              >
+                <FileText size={15} />
+              </button>
             </div>
 
             {/* Progress / seek bar + volume — prominent, below controls */}
@@ -504,6 +522,12 @@ export default function MusicPG() {
         track={songModalTrack}
         credits={profile?.credits ?? 0}
         onSubmitted={handleSongSubmitted}
+      />
+      <LyricsSheet
+        open={lyricsTrack !== null}
+        onOpenChange={(open) => !open && setLyricsTrack(null)}
+        track={lyricsTrack}
+        variant="glassy"
       />
     </div>
   )
