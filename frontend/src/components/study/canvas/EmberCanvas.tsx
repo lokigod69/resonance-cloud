@@ -305,6 +305,8 @@ export default function EmberCanvas({
   masteredWordIds,
   showImages,
   sessionComplete,
+  direction,
+  languagePair,
   currentPage,
   totalPages,
   activeMode,
@@ -314,6 +316,7 @@ export default function EmberCanvas({
   onNextPage,
   onSwitchMode,
   onToggleImages,
+  onToggleDirection,
   onExit,
   onContinue,
 }: CanvasModeProps) {
@@ -693,10 +696,13 @@ export default function EmberCanvas({
         <Toolbar
           activeMode={activeMode}
           showImages={showImages}
+          direction={direction}
+          languagePair={languagePair}
           currentPage={currentPage}
           totalPages={totalPages}
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
+          onToggleDirection={onToggleDirection}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
           onExit={onExit}
@@ -706,7 +712,7 @@ export default function EmberCanvas({
           {renderWords.map((state) => {
             const imageUrl = !state.imageFailed ? getImageUrl(state.word) : null
             const showImageCard = showImages && !!imageUrl
-            const text = state.word.word
+            const text = state.word.text ?? state.word.word
             const innerClassName = [
               'ember-word-inner transition-[opacity,transform,filter] duration-1000',
               state.burning ? 'opacity-0 scale-150 blur-md' : 'opacity-100 scale-100 blur-0',
@@ -769,10 +775,13 @@ export default function EmberCanvas({
 interface ToolbarProps {
   activeMode: CanvasMode
   showImages: boolean
+  direction: CanvasModeProps['direction']
+  languagePair: CanvasModeProps['languagePair']
   currentPage: number
   totalPages: number
   onSwitchMode: (mode: CanvasMode) => void
   onToggleImages: () => void
+  onToggleDirection: () => void
   onPrevPage: () => void
   onNextPage: () => void
   onExit: () => void
@@ -781,14 +790,21 @@ interface ToolbarProps {
 function Toolbar({
   activeMode,
   showImages,
+  direction,
+  languagePair,
   currentPage,
   totalPages,
   onSwitchMode,
   onToggleImages,
+  onToggleDirection,
   onPrevPage,
   onNextPage,
   onExit,
 }: ToolbarProps) {
+  const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
+  const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
+  const canToggleDirection = !!languagePair.target && !!languagePair.base && !languagePair.isSameLanguage
+
   return (
     <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/40 border-b border-orange-900/30">
       <button
@@ -822,6 +838,21 @@ function Toolbar({
       </div>
 
       <div className="flex items-center gap-2">
+        {canToggleDirection && (
+          <button
+            onClick={(event) => {
+              event.stopPropagation()
+              onToggleDirection()
+            }}
+            className="h-9 px-3 text-xs uppercase tracking-widest text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded"
+            title="Swap prompt and answer"
+          >
+            <span className="text-orange-500">{visibleCode}</span>
+            <span className="mx-1 text-orange-900">→</span>
+            <span>{hiddenCode}</span>
+          </button>
+        )}
+
         <button
           onClick={(event) => {
             event.stopPropagation()
@@ -889,6 +920,8 @@ function RevealModal({
   onFail,
 }: RevealModalProps) {
   const word = state.word
+  const promptFace = word.promptFace ?? word.word
+  const answerFace = word.answerFace ?? word.translation ?? word.word
   const phonetic = getStringField(word, ['phonetic'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
@@ -918,18 +951,16 @@ function RevealModal({
 
         <div className="overflow-y-auto overscroll-contain rounded-xl" style={{ WebkitOverflowScrolling: 'touch' }}>
           <div className="bg-gradient-to-b from-[#121212] to-black border border-orange-900/40 p-6 md:p-10 pt-12 rounded-xl text-center shadow-[0_0_100px_rgba(255,69,0,0.15)]">
-            {word.translation && (
-              <div className="text-orange-500 text-lg font-serif mb-2 text-center">
-                {word.translation}
-              </div>
-            )}
+            <div className="text-orange-500 text-lg font-serif mb-2 text-center">
+              {promptFace}
+            </div>
 
             <button
               type="button"
               onClick={onSpeak}
               className="text-4xl md:text-5xl lg:text-6xl text-orange-100 font-ember tracking-wider drop-shadow-[0_0_15px_rgba(255,100,0,0.4)] cursor-pointer hover:scale-105 transition-transform bg-transparent border-none mb-3"
             >
-              {word.word}
+              {answerFace}
             </button>
 
             {phonetic && (

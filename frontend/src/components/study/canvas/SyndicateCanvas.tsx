@@ -376,6 +376,8 @@ export default function SyndicateCanvas({
   masteredWordIds,
   showImages,
   sessionComplete,
+  direction,
+  languagePair,
   currentPage,
   totalPages,
   activeMode,
@@ -385,6 +387,7 @@ export default function SyndicateCanvas({
   onNextPage,
   onSwitchMode,
   onToggleImages,
+  onToggleDirection,
   onExit,
   onContinue,
 }: CanvasModeProps) {
@@ -877,10 +880,13 @@ export default function SyndicateCanvas({
         <Toolbar
           activeMode={activeMode}
           showImages={showImages}
+          direction={direction}
+          languagePair={languagePair}
           currentPage={currentPage}
           totalPages={totalPages}
           onSwitchMode={onSwitchMode}
           onToggleImages={onToggleImages}
+          onToggleDirection={onToggleDirection}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
           onExit={onExit}
@@ -890,7 +896,7 @@ export default function SyndicateCanvas({
           {renderWords.map((state) => {
             const imageUrl = !state.imageFailed ? getImageUrl(state.word) : null
             const showImageCard = showImages && !!imageUrl
-            const text = state.word.word
+            const text = state.word.text ?? state.word.word
             const hueColor = HUES[state.hue] ?? HUES[0]
             const cssVars = {
               '--syn-glow': hueColor,
@@ -978,10 +984,13 @@ export default function SyndicateCanvas({
 interface ToolbarProps {
   activeMode: CanvasMode
   showImages: boolean
+  direction: CanvasModeProps['direction']
+  languagePair: CanvasModeProps['languagePair']
   currentPage: number
   totalPages: number
   onSwitchMode: (mode: CanvasMode) => void
   onToggleImages: () => void
+  onToggleDirection: () => void
   onPrevPage: () => void
   onNextPage: () => void
   onExit: () => void
@@ -990,14 +999,21 @@ interface ToolbarProps {
 function Toolbar({
   activeMode,
   showImages,
+  direction,
+  languagePair,
   currentPage,
   totalPages,
   onSwitchMode,
   onToggleImages,
+  onToggleDirection,
   onPrevPage,
   onNextPage,
   onExit,
 }: ToolbarProps) {
+  const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
+  const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
+  const canToggleDirection = !!languagePair.target && !!languagePair.base && !languagePair.isSameLanguage
+
   return (
     <div data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-black/50 border-b border-[#00fff2]/20 font-mono">
       <button
@@ -1031,6 +1047,21 @@ function Toolbar({
       </div>
 
       <div className="flex items-center gap-2">
+        {canToggleDirection && (
+          <button
+            onClick={(event) => {
+              event.stopPropagation()
+              onToggleDirection()
+            }}
+            className="h-9 px-3 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50"
+            title="Swap prompt and answer"
+          >
+            <span className="text-[#00fff2]">{visibleCode}</span>
+            <span className="mx-1 text-[#00fff2]/50">→</span>
+            <span>{hiddenCode}</span>
+          </button>
+        )}
+
         <button
           onClick={(event) => {
             event.stopPropagation()
@@ -1098,6 +1129,8 @@ function RevealModal({
   onFail,
 }: RevealModalProps) {
   const word = state.word
+  const promptFace = word.promptFace ?? word.word
+  const answerFace = word.answerFace ?? word.translation ?? word.word
   const phonetic = getStringField(word, ['phonetic'])
   const definition = getDefinition(word)
   const usage = learning?.usageExample
@@ -1126,18 +1159,16 @@ function RevealModal({
         </button>
 
         <div className="overflow-y-auto overscroll-contain text-center" style={{ WebkitOverflowScrolling: 'touch' }}>
-          {word.translation && (
-            <p className="text-sm font-mono text-[#ff0040]/70 mb-2">
-              # {word.translation}
-            </p>
-          )}
+          <p className="text-sm font-mono text-[#ff0040]/70 mb-2">
+            # {promptFace}
+          </p>
 
           <button
             type="button"
             onClick={onSpeak}
             className="text-3xl md:text-4xl lg:text-5xl tracking-wider font-mono text-[#00fff2] bg-transparent border-none mb-3 syndicate-headword"
           >
-            [{word.word}]
+            [{answerFace}]
           </button>
 
           {phonetic && (

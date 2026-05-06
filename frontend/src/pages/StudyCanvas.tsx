@@ -7,11 +7,15 @@ import EmberCanvas from '@/components/study/canvas/EmberCanvas'
 import FrostCanvas from '@/components/study/canvas/FrostCanvas'
 import SyndicateCanvas from '@/components/study/canvas/SyndicateCanvas'
 import ZenCanvas from '@/components/study/canvas/ZenCanvas'
-import type { CanvasMode } from '@/components/study/canvas/types'
+import type { CanvasDirection, CanvasLanguagePair, CanvasMode } from '@/components/study/canvas/types'
+import { getCardFaces } from '@/lib/cardFaces'
+import { LANGUAGES } from '@/lib/languages'
 
 const PAGE_SIZE = 20
 const SESSION_STORAGE_PREFIX = 'resonance-canvas-session'
+const DIRECTION_STORAGE_KEY = 'resonance-canvas-direction'
 const DEFAULT_MODE: CanvasMode = 'ember'
+const DEFAULT_DIRECTION: CanvasDirection = 'target-visible'
 
 type CanvasSessionSnapshot = {
   activeMode: CanvasMode
@@ -24,6 +28,10 @@ type CanvasSessionSnapshot = {
 
 function isCanvasMode(value: string | null): value is CanvasMode {
   return value === 'ember' || value === 'frost' || value === 'syndicate' || value === 'zen'
+}
+
+function isCanvasDirection(value: string | null): value is CanvasDirection {
+  return value === 'target-visible' || value === 'base-visible'
 }
 
 function createShuffleNonce() {
@@ -63,6 +71,23 @@ function saveStoredSession(key: string, snapshot: CanvasSessionSnapshot) {
   }
 }
 
+function loadStoredDirection(): CanvasDirection {
+  try {
+    const value = localStorage.getItem(DIRECTION_STORAGE_KEY)
+    return isCanvasDirection(value) ? value : DEFAULT_DIRECTION
+  } catch {
+    return DEFAULT_DIRECTION
+  }
+}
+
+function saveLocalPreference(key: string, value: string) {
+  try {
+    localStorage.setItem(key, value)
+  } catch {
+    // localStorage unavailable; non-fatal
+  }
+}
+
 function hashString(input: string) {
   let hash = 2166136261
   for (let i = 0; i < input.length; i++) {
@@ -81,6 +106,22 @@ function createSeededRandom(seed: number) {
     value ^= value + Math.imul(value ^ (value >>> 7), 61 | value)
     return ((value ^ (value >>> 14)) >>> 0) / 4294967296
   }
+}
+
+function normalizeLanguage(value: string | null | undefined) {
+  return value?.trim().toLowerCase() ?? ''
+}
+
+function getLanguageCode(language: string | null | undefined) {
+  const normalized = normalizeLanguage(language)
+  const match = LANGUAGES.find((item) => (
+    item.value.toLowerCase() === normalized
+    || item.nativeName.toLowerCase() === normalized
+    || item.code.toLowerCase() === normalized
+  ))
+  if (match) return match.code.toUpperCase()
+  const fallback = language?.trim()
+  return fallback ? fallback.slice(0, 3).toUpperCase() : '--'
 }
 
 export default function StudyCanvas() {
@@ -102,6 +143,7 @@ export default function StudyCanvas() {
   const [hydratedSessionKey, setHydratedSessionKey] = useState(sessionStorageKey)
   const [activeMode, setActiveMode] = useState<CanvasMode>(() => initialSession?.activeMode ?? DEFAULT_MODE)
   const [showImages, setShowImages] = useState<boolean>(() => initialSession?.showImages ?? false)
+  const [direction, setDirection] = useState<CanvasDirection>(loadStoredDirection)
 
   // Session state
   const [currentPage, setCurrentPage] = useState(() => initialSession?.currentPage ?? 0)
@@ -113,6 +155,10 @@ export default function StudyCanvas() {
 
   // Data
   const { words, loading, recordAttempt } = useStudySession(deckId, 'canvas', activeLanguage)
+
+  useEffect(() => {
+    saveLocalPreference(DIRECTION_STORAGE_KEY, direction)
+  }, [direction])
 
   useEffect(() => {
     if (hydratedSessionKey === sessionStorageKey) return
@@ -170,9 +216,37 @@ export default function StudyCanvas() {
 
   const totalPages = Math.max(0, Math.ceil(shuffled.length / PAGE_SIZE))
   const currentPageWords = useMemo(
-    () => shuffled.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE),
-    [shuffled, currentPage],
+    () => shuffled
+      .slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE)
+      .map((word) => {
+        const faces = getCardFaces(word, word)
+        const promptFace = direction === 'target-visible' ? faces.target : faces.base
+        const answerFace = direction === 'target-visible' ? faces.base : faces.target
+
+        return {
+          ...word,
+          faces,
+          text: promptFace,
+          promptFace,
+          answerFace,
+        }
+      }),
+    [shuffled, currentPage, direction],
   )
+
+  const languagePair = useMemo<CanvasLanguagePair>(() => {
+    const languageWord = words.find((word) => word.target_language || word.base_language)
+    const target = languageWord?.target_language ?? activeLanguage ?? null
+    const base = languageWord?.base_language ?? null
+
+    return {
+      target,
+      base,
+      targetCode: getLanguageCode(target),
+      baseCode: getLanguageCode(base),
+      isSameLanguage: !!target && !!base && normalizeLanguage(target) === normalizeLanguage(base),
+    }
+  }, [activeLanguage, words])
 
   // Empty pool → instant completion. Only flips to true; explicit handlers reset to false.
   useEffect(() => {
@@ -208,6 +282,13 @@ export default function StudyCanvas() {
 
   const handleToggleImages = useCallback(() => {
     setShowImages((prev) => !prev)
+  }, [])
+
+  const handleToggleDirection = useCallback(() => {
+    setDirection((prev) => prev === 'target-visible' ? 'base-visible' : 'target-visible')
+    setShuffleNonce((n) => n + 1)
+    setPassedWords(new Set())
+    setSessionComplete(false)
   }, [])
 
   const handlePass = useCallback(
@@ -277,11 +358,13 @@ export default function StudyCanvas() {
 
   return (
     <ActiveModeComponent
-      key={`${activeMode}-${shuffleNonce}-${currentPage}`}
+      key={`${activeMode}-${shuffleNonce}-${currentPage}-${direction}`}
       words={currentPageWords}
       masteredWordIds={passedWords}
       showImages={showImages}
       sessionComplete={sessionComplete}
+      direction={direction}
+      languagePair={languagePair}
       currentPage={currentPage}
       totalPages={totalPages}
       activeMode={activeMode}
@@ -291,6 +374,7 @@ export default function StudyCanvas() {
       onNextPage={handleNextPage}
       onSwitchMode={handleSwitchMode}
       onToggleImages={handleToggleImages}
+      onToggleDirection={handleToggleDirection}
       onExit={goToReturnOrStudy}
       onContinue={goToReturnOrStudy}
     />

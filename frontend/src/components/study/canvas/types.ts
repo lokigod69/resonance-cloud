@@ -1,6 +1,15 @@
 import type { StudyWord } from '@/hooks/useStudySession'
 
 export type CanvasMode = 'ember' | 'frost' | 'syndicate' | 'zen'
+export type CanvasDirection = 'target-visible' | 'base-visible'
+
+export interface CanvasLanguagePair {
+  target: string | null
+  base: string | null
+  targetCode: string
+  baseCode: string
+  isSameLanguage: boolean
+}
 
 export interface CanvasModeProps {
   // Data
@@ -8,6 +17,8 @@ export interface CanvasModeProps {
   masteredWordIds: ReadonlySet<string>
   showImages: boolean
   sessionComplete: boolean
+  direction: CanvasDirection
+  languagePair: CanvasLanguagePair
 
   // Pagination state
   currentPage: number
@@ -23,6 +34,7 @@ export interface CanvasModeProps {
   onNextPage: () => void
   onSwitchMode: (mode: CanvasMode) => void
   onToggleImages: () => void
+  onToggleDirection: () => void
   onExit: () => void
   onContinue: () => void
 }

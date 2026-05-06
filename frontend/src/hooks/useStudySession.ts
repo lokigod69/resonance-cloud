@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
+import type { CardFaces } from '@/lib/cardFaces'
 
 export type StudyWord = {
   id: string
@@ -8,6 +9,7 @@ export type StudyWord = {
   translation: string | null
   mnemonic: string | null
   etymology: string | null
+  phonetic?: string | null
   video_url: string | null
   thumbnail_url: string | null
   video_url_b: string | null
@@ -16,6 +18,12 @@ export type StudyWord = {
   suno_storage_url_b: string | null
   suno_audio_url: string | null
   deck_id: string
+  target_language: string | null
+  base_language: string | null
+  faces?: CardFaces
+  text?: string
+  promptFace?: string
+  answerFace?: string
 }
 
 export type StudyMode = 'video' | 'audio' | 'flashcard' | 'canvas'
@@ -23,6 +31,10 @@ export type StudyMode = 'video' | 'audio' | 'flashcard' | 'canvas'
 type RetryItem = { wordId: string; cardsSeen: number }
 
 type SessionStats = { remembered: number; reviewLater: number }
+
+type StudyWordRow = Omit<StudyWord, 'target_language' | 'base_language'> & {
+  decks?: { target_language?: string | null; base_language?: string | null } | null
+}
 
 // Fisher-Yates shuffle
 function shuffle<T>(arr: T[]): T[] {
@@ -100,7 +112,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
 
     let wordsQuery = supabase
       .from('words')
-      .select('id, word, translation, mnemonic, etymology, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id')
+      .select('id, word, translation, mnemonic, etymology, phonetic, video_url, thumbnail_url, video_url_b, thumbnail_url_b, suno_storage_url, suno_storage_url_b, suno_audio_url, deck_id, decks(target_language, base_language)')
       .eq('user_id', user.id)
       .eq('status', 'complete')
     if (deckId) {
@@ -121,7 +133,14 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
 
     if (isStale?.()) return
 
-    let rawWords: StudyWord[] = wordsRes.data ?? []
+    let rawWords: StudyWord[] = ((wordsRes.data ?? []) as StudyWordRow[]).map((row) => {
+      const { decks, ...word } = row
+      return {
+        ...word,
+        target_language: decks?.target_language ?? null,
+        base_language: decks?.base_language ?? null,
+      }
+    })
     // Audio mode: only include words that have a Suno audio URL
     if (studyMode === 'audio') {
       rawWords = rawWords.filter(w => w.suno_storage_url || w.suno_audio_url)
