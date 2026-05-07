@@ -27,6 +27,7 @@ import {
   type CardLayer2MeaningStrategy,
   type CardLayer2PresentationForm,
   type ExistingDeck,
+  type InfographicTemplate,
 } from '@/components/generate/useWizardState'
 import {
   ADMIN_LAYER2_LAB_PRESETS,
@@ -36,8 +37,11 @@ import {
   createLayer2LabDeckName,
   createLayer2LabRunId,
   DEFAULT_LAYER2_BACKEND_TEMPLATE,
+  DEFAULT_INFOGRAPHIC_TEMPLATE,
   estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
+  infographicTemplateLabel,
+  INFOGRAPHIC_TEMPLATE_OPTIONS,
   isLayer2LabAppendDeck,
   layer2BackendTemplateLabel,
   layer2QuickModePresetLabel,
@@ -84,6 +88,7 @@ export default function Layer2Lab() {
   const [presentationForm, setPresentationForm] = useState<CardLayer2PresentationForm>('single_scene')
   const [artStyle, setArtStyle] = useState<CardLayer2ArtStyle>('realistic')
   const [backendTemplate, setBackendTemplate] = useState<CardLayer2BackendTemplate>(DEFAULT_LAYER2_BACKEND_TEMPLATE)
+  const [infographicTemplate, setInfographicTemplate] = useState<InfographicTemplate>(DEFAULT_INFOGRAPHIC_TEMPLATE)
   const [runLabel, setRunLabel] = useState('')
   const [scriptRows, setScriptRows] = useState<Layer2LabRun[]>([])
   const [submitting, setSubmitting] = useState(false)
@@ -102,6 +107,7 @@ export default function Layer2Lab() {
     [existingDecks, selectedExistingDeckId],
   )
   const estimatedCredits = estimateLayer2LabCreditCost(scriptRows.length)
+  const isInfographicPreset = quickModePreset === 'infographic'
 
   useEffect(() => {
     if (!user || deckMode !== 'append') return
@@ -181,6 +187,12 @@ export default function Layer2Lab() {
     if (!resolved) return
     setMeaningStrategy(resolved.meaning_strategy)
     setPresentationForm(resolved.presentation_form)
+    if (value === 'infographic') {
+      setBackendTemplate('infographic_prompt_v1')
+      setArtStyle('editorial')
+    } else {
+      setBackendTemplate((current) => current === 'infographic_prompt_v1' ? DEFAULT_LAYER2_BACKEND_TEMPLATE : current)
+    }
   }
 
   function addCurrentRun() {
@@ -194,6 +206,7 @@ export default function Layer2Lab() {
       presentation_form: presentationForm,
       art_style: artStyle,
       backend_template: backendTemplate,
+      infographic_template: infographicTemplate,
       label: runLabel,
     }).map((row) => ({ ...row, id: crypto.randomUUID() }))
     setScriptRows((prev) => [...prev, ...rows])
@@ -487,6 +500,7 @@ export default function Layer2Lab() {
                 <span className="text-muted-foreground">Meaning strategy</span>
                 <Select
                   value={meaningStrategy}
+                  disabled={isInfographicPreset}
                   onValueChange={(value) => {
                     setMeaningStrategy(value as CardLayer2MeaningStrategy)
                     setQuickModePreset('custom')
@@ -499,11 +513,15 @@ export default function Layer2Lab() {
                     ))}
                   </SelectContent>
                 </Select>
+                {isInfographicPreset && (
+                  <span className="text-xs text-muted-foreground">Infographic V1 owns meaning planning.</span>
+                )}
               </label>
               <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Presentation form</span>
                 <Select
                   value={presentationForm}
+                  disabled={isInfographicPreset}
                   onValueChange={(value) => {
                     setPresentationForm(value as CardLayer2PresentationForm)
                     setQuickModePreset('custom')
@@ -516,10 +534,13 @@ export default function Layer2Lab() {
                     ))}
                   </SelectContent>
                 </Select>
+                {isInfographicPreset && (
+                  <span className="text-xs text-muted-foreground">Locked to Infographic.</span>
+                )}
               </label>
               <label className="space-y-1 text-sm">
                 <span className="text-muted-foreground">Art style</span>
-                <Select value={artStyle} onValueChange={(value) => setArtStyle(value as CardLayer2ArtStyle)}>
+                <Select value={artStyle} disabled={isInfographicPreset} onValueChange={(value) => setArtStyle(value as CardLayer2ArtStyle)}>
                   <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
                   <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
                     {CARD_LAYER2_ART_STYLE_OPTIONS.map((option) => (
@@ -527,18 +548,35 @@ export default function Layer2Lab() {
                     ))}
                   </SelectContent>
                 </Select>
+                {isInfographicPreset && (
+                  <span className="text-xs text-muted-foreground">Not used by Infographic V1; backend uses its template direction.</span>
+                )}
               </label>
-              <label className="space-y-1 text-sm">
-                <span className="text-muted-foreground">Backend Template</span>
-                <Select value={backendTemplate} onValueChange={(value) => setBackendTemplate(value as CardLayer2BackendTemplate)}>
-                  <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
-                  <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
-                    {LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </label>
+              {isInfographicPreset ? (
+                <label className="space-y-1 text-sm">
+                  <span className="text-muted-foreground">Infographic Template</span>
+                  <Select value={infographicTemplate} onValueChange={(value) => setInfographicTemplate(value as InfographicTemplate)}>
+                    <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                    <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
+                      {INFOGRAPHIC_TEMPLATE_OPTIONS.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </label>
+              ) : (
+                <label className="space-y-1 text-sm">
+                  <span className="text-muted-foreground">Backend Template</span>
+                  <Select value={backendTemplate} onValueChange={(value) => setBackendTemplate(value as CardLayer2BackendTemplate)}>
+                    <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                    <SelectContent className={LAB_SELECT_CONTENT_CLASS}>
+                      {LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </label>
+              )}
               <label className="space-y-1 text-sm md:col-span-2">
                 <span className="text-muted-foreground">Run label</span>
                 <Input value={runLabel} onChange={(event) => setRunLabel(event.target.value)} placeholder="optional" />
@@ -576,6 +614,7 @@ export default function Layer2Lab() {
                     <th className="py-2 pr-3 font-medium">Presentation Form</th>
                     <th className="py-2 pr-3 font-medium">Art Style</th>
                     <th className="py-2 pr-3 font-medium">Backend Template</th>
+                    <th className="py-2 pr-3 font-medium">Infographic Template</th>
                     <th className="py-2 pr-3 font-medium">Label</th>
                     <th className="py-2 pr-3 font-medium">Remove</th>
                   </tr>
@@ -585,11 +624,16 @@ export default function Layer2Lab() {
                     <tr key={row.id} className="border-b border-border/60">
                       <td className="py-2 pr-3">{row.word}</td>
                       <td className="py-2 pr-3">{layer2QuickModePresetLabel(row.quick_mode_preset ?? 'custom')}</td>
-                      <td className="py-2 pr-3">{cardLayer2MeaningLabel(row.meaning_strategy)}</td>
-                      <td className="py-2 pr-3">{cardLayer2PresentationLabel(row.presentation_form)}</td>
-                      <td className="py-2 pr-3">{cardLayer2ArtStyleLabel(row.art_style)}</td>
+                      <td className="py-2 pr-3">{row.backend_template === 'infographic_prompt_v1' ? 'Infographic-owned' : cardLayer2MeaningLabel(row.meaning_strategy)}</td>
+                      <td className="py-2 pr-3">{row.backend_template === 'infographic_prompt_v1' ? 'Infographic' : cardLayer2PresentationLabel(row.presentation_form)}</td>
+                      <td className="py-2 pr-3">{row.backend_template === 'infographic_prompt_v1' ? '—' : cardLayer2ArtStyleLabel(row.art_style)}</td>
                       <td className="py-2 pr-3">
                         {layer2BackendTemplateLabel(row.backend_template)}
+                      </td>
+                      <td className="py-2 pr-3">
+                        {row.backend_template === 'infographic_prompt_v1'
+                          ? infographicTemplateLabel(row.infographic_template ?? DEFAULT_INFOGRAPHIC_TEMPLATE)
+                          : '—'}
                       </td>
                       <td className="py-2 pr-3">{row.label || '—'}</td>
                       <td className="py-2 pr-3">
@@ -606,7 +650,7 @@ export default function Layer2Lab() {
                   ))}
                   {scriptRows.length === 0 && (
                     <tr>
-                      <td className="py-6 text-center text-muted-foreground" colSpan={8}>
+                      <td className="py-6 text-center text-muted-foreground" colSpan={9}>
                         No planned runs yet.
                       </td>
                     </tr>

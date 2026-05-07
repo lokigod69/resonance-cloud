@@ -5,6 +5,7 @@ import type {
   CardLayer2PresentationForm,
   ExistingDeck,
   GeneratePayload,
+  InfographicTemplate,
   Layer2EvalPayload,
   PremiumQuickMode,
 } from '@/components/generate/useWizardState'
@@ -26,6 +27,7 @@ export interface Layer2LabRun {
   presentation_form: CardLayer2PresentationForm
   art_style: CardLayer2ArtStyle
   backend_template: CardLayer2BackendTemplate
+  infographic_template?: InfographicTemplate
   label: string | null
 }
 
@@ -43,6 +45,7 @@ export interface BuildLayer2LabRowsInput {
   presentation_form: CardLayer2PresentationForm
   art_style: CardLayer2ArtStyle
   backend_template: CardLayer2BackendTemplate
+  infographic_template?: InfographicTemplate
   quick_mode_preset?: Layer2LabQuickModePreset
   label: string
 }
@@ -75,6 +78,8 @@ export interface Layer2LabResultSummary {
 
 const SOURCE: Layer2EvalPayload['source'] = 'admin_layer2_lab_v1'
 export const DEFAULT_LAYER2_BACKEND_TEMPLATE: CardLayer2BackendTemplate = 'structured_plan_v1'
+export const INFOGRAPHIC_BACKEND_TEMPLATE: CardLayer2BackendTemplate = 'infographic_prompt_v1'
+export const DEFAULT_INFOGRAPHIC_TEMPLATE: InfographicTemplate = 'infographic_knowledge_guide_v1'
 export const LAYER2_BACKEND_TEMPLATE_OPTIONS: Array<{
   value: CardLayer2BackendTemplate
   label: string
@@ -84,6 +89,23 @@ export const LAYER2_BACKEND_TEMPLATE_OPTIONS: Array<{
   { value: 'direct_prompt_v2', label: 'LLM V2' },
   { value: 'direct_prompt_v3', label: 'LLM V3 · Visual Craft' },
 ]
+export const INFOGRAPHIC_TEMPLATE_OPTIONS: Array<{
+  value: InfographicTemplate
+  label: string
+  version: 'V1' | 'V2'
+}> = [
+  { value: 'infographic_knowledge_guide_v1', label: 'V1 · Knowledge Guide', version: 'V1' },
+  { value: 'infographic_language_atlas_v1', label: 'V1 · Language Atlas', version: 'V1' },
+  { value: 'infographic_study_poster_v1', label: 'V1 · Study Poster', version: 'V1' },
+  { value: 'infographic_visual_dictionary_v1', label: 'V1 · Visual Dictionary', version: 'V1' },
+  { value: 'infographic_museum_exhibit_v1', label: 'V1 · Museum Exhibit', version: 'V1' },
+  { value: 'infographic_knowledge_guide_v2', label: 'V2 · Knowledge Guide', version: 'V2' },
+  { value: 'infographic_language_atlas_v2', label: 'V2 · Language Atlas', version: 'V2' },
+  { value: 'infographic_study_poster_v2', label: 'V2 · Study Poster', version: 'V2' },
+  { value: 'infographic_visual_dictionary_v2', label: 'V2 · Visual Dictionary', version: 'V2' },
+  { value: 'infographic_museum_exhibit_v2', label: 'V2 · Museum Exhibit', version: 'V2' },
+]
+
 export const LAYER2_QUICK_MODE_PRESET_OPTIONS: Array<{
   value: Layer2LabQuickModePreset
   label: string
@@ -114,7 +136,12 @@ const STORY_FORM_TRIPLES: Array<{
 ]
 
 export function layer2BackendTemplateLabel(value: CardLayer2BackendTemplate | string | null | undefined): string {
+  if (value === INFOGRAPHIC_BACKEND_TEMPLATE) return 'Infographic Prompt V1'
   return LAYER2_BACKEND_TEMPLATE_OPTIONS.find((option) => option.value === value)?.label ?? value ?? ''
+}
+
+export function infographicTemplateLabel(value: InfographicTemplate | string | null | undefined): string {
+  return INFOGRAPHIC_TEMPLATE_OPTIONS.find((option) => option.value === value)?.label ?? value ?? ''
 }
 
 export function layer2QuickModePresetLabel(value: Layer2LabQuickModePreset | string | null | undefined): string {
@@ -178,8 +205,13 @@ function row(
     presentation_form: presentation,
     art_style: style,
     backend_template: DEFAULT_LAYER2_BACKEND_TEMPLATE,
+    infographic_template: DEFAULT_INFOGRAPHIC_TEMPLATE,
     label: labelText,
   }
+}
+
+function isInfographicRow(rowItem: Pick<Layer2LabRun, 'quick_mode_preset' | 'presentation_form' | 'backend_template'>): boolean {
+  return rowItem.quick_mode_preset === 'infographic' || rowItem.backend_template === INFOGRAPHIC_BACKEND_TEMPLATE
 }
 
 function clean(value: string | null | undefined): string {
@@ -247,24 +279,30 @@ export function buildLayer2LabRows(input: BuildLayer2LabRowsInput): Layer2LabRun
     ? [clean(input.selectedWord)]
     : input.words.map(clean)
   const label = clean(input.label) || null
+  const isInfographic = input.quick_mode_preset === 'infographic'
+  const presentationForm = isInfographic ? 'infographic_card' : input.presentation_form
+  const backendTemplate = isInfographic ? INFOGRAPHIC_BACKEND_TEMPLATE : input.backend_template
+  const infographicTemplate = input.infographic_template ?? DEFAULT_INFOGRAPHIC_TEMPLATE
   return candidates
     .filter(Boolean)
     .map((wordText, index) => ({
       id: stableId(
         wordText,
         input.meaning_strategy,
-        input.presentation_form,
+        presentationForm,
         input.art_style,
-        input.backend_template,
+        backendTemplate,
+        isInfographic ? infographicTemplate : '',
         label ?? 'unlabeled',
         String(index),
       ),
       word: wordText,
       quick_mode_preset: input.quick_mode_preset ?? 'custom',
       meaning_strategy: input.meaning_strategy,
-      presentation_form: input.presentation_form,
+      presentation_form: presentationForm,
       art_style: input.art_style,
-      backend_template: input.backend_template,
+      backend_template: backendTemplate,
+      infographic_template: isInfographic ? infographicTemplate : input.infographic_template,
       label,
     }))
 }
@@ -325,6 +363,7 @@ export function layer2EvalForRow(
   labRunId?: string | null,
 ): Layer2EvalPayload {
   const runId = normalizeLabRunId(labRunId)
+  const isInfographic = isInfographicRow(rowItem)
   return {
     label: rowItem.label,
     script_index: scriptIndex,
@@ -332,10 +371,16 @@ export function layer2EvalForRow(
     original_word: rowItem.word,
     variant_slug: layer2VariantSlugForRow(rowItem, scriptIndex, runId),
     quick_mode_preset: rowItem.quick_mode_preset ?? 'custom',
-    meaning_strategy: rowItem.meaning_strategy,
+    ...(isInfographic ? {} : { meaning_strategy: rowItem.meaning_strategy }),
     presentation_form: rowItem.presentation_form,
-    art_style: rowItem.art_style,
-    backend_template: rowItem.backend_template ?? DEFAULT_LAYER2_BACKEND_TEMPLATE,
+    ...(isInfographic ? {} : { art_style: rowItem.art_style }),
+    backend_template: isInfographic ? INFOGRAPHIC_BACKEND_TEMPLATE : rowItem.backend_template ?? DEFAULT_LAYER2_BACKEND_TEMPLATE,
+    ...(isInfographic
+      ? {
+          infographic_template: rowItem.infographic_template ?? DEFAULT_INFOGRAPHIC_TEMPLATE,
+          infographic_template_label: infographicTemplateLabel(rowItem.infographic_template ?? DEFAULT_INFOGRAPHIC_TEMPLATE),
+        }
+      : {}),
     source: SOURCE,
   }
 }
@@ -379,11 +424,17 @@ export function buildLayer2LabPayload({
   deckName,
   existingDeck,
 }: BuildLayer2LabPayloadInput): GeneratePayload {
+  const isInfographic = isInfographicRow(rowItem)
+  const backendTemplate = isInfographic ? INFOGRAPHIC_BACKEND_TEMPLATE : rowItem.backend_template ?? DEFAULT_LAYER2_BACKEND_TEMPLATE
   const layer2 = {
     meaning_strategy: rowItem.meaning_strategy,
-    presentation_form: rowItem.presentation_form,
+    presentation_form: isInfographic ? 'infographic_card' as const : rowItem.presentation_form,
     visual_intensity: 'balanced' as const,
-    backend_template: rowItem.backend_template ?? DEFAULT_LAYER2_BACKEND_TEMPLATE,
+    backend_template: backendTemplate,
+    ...(isInfographic ? { infographic_template: rowItem.infographic_template ?? DEFAULT_INFOGRAPHIC_TEMPLATE } : {}),
+    ...(rowItem.quick_mode_preset && rowItem.quick_mode_preset !== 'custom'
+      ? { premium_quick_mode: rowItem.quick_mode_preset }
+      : {}),
   }
 
   return {
@@ -410,9 +461,12 @@ export function buildLayer2LabPayload({
       words_total: 1,
       settings_override: {
         card_image_model: 'gpt_image_2',
-        card_image_style: rowItem.art_style,
+        card_image_style: isInfographic ? 'editorial' : rowItem.art_style,
         card_layer2: layer2,
         layer2_eval: layer2EvalForRow(rowItem, scriptIndex, labRunId),
+        ...(rowItem.quick_mode_preset && rowItem.quick_mode_preset !== 'custom'
+          ? { premium_quick_mode: rowItem.quick_mode_preset }
+          : {}),
         ...(baseLanguage ? { base_language: baseLanguage } : {}),
       },
     },

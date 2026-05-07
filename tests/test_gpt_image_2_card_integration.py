@@ -702,6 +702,119 @@ def test_infographic_direct_prompt_v3_stays_on_v3(monkeypatch, tmp_path):
     assert "requested_backend_template" not in metadata
 
 
+def test_infographic_prompt_template_routes_through_dedicated_planner_and_stores_metadata(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.infographic_prompt import InfographicPromptResult
+
+    calls: dict[str, object] = {}
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **kwargs):
+            calls.setdefault("record_responses", []).append(kwargs)
+
+    def fail_direct_prompt(**_kwargs):
+        raise AssertionError("infographic_prompt_v1 must not use direct_prompt_v1/v2/v3")
+
+    def fake_write_infographic_prompt(**kwargs):
+        calls["infographic_kwargs"] = kwargs
+        return InfographicPromptResult(
+            prompt=(
+                "Create a horizontal 16:9 educational infographic poster for ephemeral. "
+                "Use German explanatory text and only English for the target word/examples. "
+                "Never invent mnemonics, quotes, etymologies, or fake facts."
+            ),
+            model="test-planner-model",
+            raw_plan='{"panels":[]}',
+            planner_plan={
+                "title": "ephemeral",
+                "translation": "kurzlebig",
+                "base_language": "German",
+                "target_language": "English",
+                "infographic_template": "infographic_language_atlas_v2",
+                "visual_anchor": "Eine verblassende Linie.",
+                "hero_treatment": "network_node",
+                "panels": [
+                    {"header": "Kern", "type": "meaning", "text": ["Kurzlebig."], "visual_note": "Sanduhr."},
+                ],
+                "footer_line": "Schnell vorbei.",
+                "avoid": [],
+            },
+            infographic_template="infographic_language_atlas_v2",
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls["provider_kwargs"] = kwargs
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-infographic-v1",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_layer2_direct_prompt", fail_direct_prompt)
+    monkeypatch.setattr(card_engine, "write_infographic_prompt", fake_write_infographic_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.word = "ephemeral"
+    payload.content.translation = "kurzlebig"
+    payload.content.base_language = "German"
+    payload.content.language = "English"
+    payload.card_image_style = "editorial"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "clear_meaning",
+        "presentation_form": "infographic_card",
+        "visual_intensity": "balanced",
+        "backend_template": "infographic_prompt_v1",
+        "infographic_template": "infographic_language_atlas_v2",
+        "premium_quick_mode": "infographic",
+        "premium_generation_mode": {
+            "premium_quick_mode": "infographic",
+            "backend_template": "infographic_prompt_v1",
+            "meaning_strategy": "clear_meaning",
+            "presentation_form": "infographic_card",
+            "art_style": "editorial",
+            "prompt_version": "premium_quick_modes_v1",
+        },
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "success"
+    assert calls["infographic_kwargs"]["infographic_template"] == "infographic_language_atlas_v2"
+    assert calls["infographic_kwargs"]["content"].base_language == "German"
+    assert "horizontal 16:9 educational infographic poster" in calls["provider_kwargs"]["prompt_text"]
+    metadata = result.gpt_image_2_card_metadata
+    assert metadata is not None
+    assert metadata["backend_template"] == "infographic_prompt_v1"
+    assert metadata["premium_quick_mode"] == "infographic"
+    assert metadata["infographic_template"] == "infographic_language_atlas_v2"
+    assert metadata["infographic_template_label"] == "V2 · Language Atlas"
+    assert metadata["planner_model"] == "test-planner-model"
+    assert metadata["planner_pass_count"] == 2
+    assert metadata["planner_hero_treatment"] == "network_node"
+    assert metadata["planner_panel_count"] == 1
+
+
 def test_direct_prompt_word_object_allows_target_word_and_bans_translation(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
     from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult

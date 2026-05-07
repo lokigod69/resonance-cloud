@@ -36,6 +36,12 @@ from .layer2_direct_prompt import (
     sanitize_direct_prompt,
     write_layer2_direct_prompt,
 )
+from .infographic_prompt import (
+    INFOGRAPHIC_BACKEND_TEMPLATE,
+    INFOGRAPHIC_PLANNER_MODEL,
+    infographic_prompt_metadata,
+    write_infographic_prompt,
+)
 from .models import ImageError
 from .storyboard import _repair_json
 
@@ -179,15 +185,64 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
     )
     requested_backend_template = backend_template(payload.content.layer2_customization)
     selected_backend_template = requested_backend_template
-    if layer2 and layer2.resolved.get("presentation_form") == "infographic_card":
+    if (
+        layer2
+        and layer2.resolved.get("presentation_form") == "infographic_card"
+        and selected_backend_template != INFOGRAPHIC_BACKEND_TEMPLATE
+    ):
         if selected_backend_template not in {DIRECT_PROMPT_V2_TEMPLATE, DIRECT_PROMPT_V3_TEMPLATE}:
             layer2.snap_notes.append(
                 "infographic_card uses direct_prompt_v2 instead of structured_plan_v1"
             )
             selected_backend_template = DIRECT_PROMPT_V2_TEMPLATE
     direct_prompt_meta: dict | None = None
+    infographic_prompt_meta: dict | None = None
     allow_translation = layer2.allow_translation_in_prompt if layer2 else False
-    if layer2 and selected_backend_template in DIRECT_PROMPT_TEMPLATES:
+    if layer2 and selected_backend_template == INFOGRAPHIC_BACKEND_TEMPLATE:
+        layer2_customization = (
+            payload.content.layer2_customization
+            if isinstance(payload.content.layer2_customization, dict)
+            else {}
+        )
+        selected_infographic_template = layer2_customization.get("infographic_template")
+        with logged_llm_call(
+            stage="pending_image",
+            sub_step="infographic_prompt_planner",
+            event_source="engine",
+            word_id=payload.metadata.word_id,
+            deck_id=payload.metadata.deck_id,
+            user_id=payload.metadata.user_id,
+            job_id=payload.metadata.job_id,
+            attempt=payload.metadata.attempt,
+            model_provider="openrouter",
+            model_name=INFOGRAPHIC_PLANNER_MODEL,
+            metadata={
+                "backend_template": selected_backend_template,
+                "infographic_template": selected_infographic_template,
+            },
+        ) as ev:
+            infographic_result = write_infographic_prompt(
+                content=payload.content,
+                layer2=layer2_customization,
+                infographic_template=selected_infographic_template,
+            )
+            prompt_text = infographic_result.prompt
+            ev.record_response(
+                response_body=infographic_result.raw_plan,
+                tokens_in=(infographic_result.usage or {}).get("prompt_tokens"),
+                tokens_out=(infographic_result.usage or {}).get("completion_tokens"),
+                request_id=infographic_result.request_id,
+                prompt_chars=len(prompt_text),
+            )
+            infographic_prompt_meta = infographic_prompt_metadata(
+                final_prompt=prompt_text,
+                planner_model=infographic_result.model,
+                planner_plan=infographic_result.planner_plan,
+                infographic_template=infographic_result.infographic_template,
+                base_language_intended=payload.content.base_language,
+                target_language=payload.content.language,
+            )
+    elif layer2 and selected_backend_template in DIRECT_PROMPT_TEMPLATES:
         with logged_llm_call(
             stage="pending_image",
             sub_step="layer2_direct_prompt_writer",
@@ -314,6 +369,8 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             card_metadata["premium_generation_mode"] = premium_generation_mode
     if direct_prompt_meta:
         card_metadata.update(direct_prompt_meta)
+    if infographic_prompt_meta:
+        card_metadata.update(infographic_prompt_meta)
     request_payload = {
         "model": "gpt-image-2-text-to-image",
         "input": {

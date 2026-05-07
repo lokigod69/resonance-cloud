@@ -78,6 +78,7 @@ def test_backend_template_accepts_direct_prompt_v2_without_changing_existing_val
     assert backend_template({"backend_template": "direct_prompt_v1"}) == "direct_prompt_v1"
     assert backend_template({"backend_template": "direct_prompt_v2"}) == "direct_prompt_v2"
     assert backend_template({"backend_template": "direct_prompt_v3"}) == "direct_prompt_v3"
+    assert backend_template({"backend_template": "infographic_prompt_v1"}) == "infographic_prompt_v1"
     assert backend_template({"backend_template": "typo"}) == "structured_plan_v1"
 
 

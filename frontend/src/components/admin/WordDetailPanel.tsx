@@ -16,7 +16,7 @@ import {
   type CardLayer2MeaningStrategy,
   type CardLayer2PresentationForm,
 } from '@/components/generate/useWizardState'
-import { layer2BackendTemplateLabel } from '@/lib/adminLayer2Lab'
+import { infographicTemplateLabel, layer2BackendTemplateLabel } from '@/lib/adminLayer2Lab'
 import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
 
 type WordRecord = {
@@ -284,6 +284,7 @@ export default function WordDetailPanel({
             <MetaRow label="Presentation Form" value={formatPresentationForm(layer2Eval.presentation_form)} />
             <MetaRow label="Art Style" value={formatArtStyle(layer2Eval.art_style)} />
             <MetaRow label="Backend Template" value={formatBackendTemplate(layer2Eval.backend_template)} />
+            <MetaRow label="Infographic Template" value={formatInfographicTemplate(layer2Eval.infographic_template)} />
             <MetaRow label="Source" value={cleanText(layer2Eval.source as string | null | undefined)} />
           </MetaSection>
         )}
@@ -499,6 +500,7 @@ function formatLayer2EvalSummary(layer2Eval: Record<string, unknown> | null): st
     formatMeaningStrategy(layer2Eval.meaning_strategy),
     formatPresentationForm(layer2Eval.presentation_form),
     formatArtStyle(layer2Eval.art_style),
+    formatInfographicTemplate(layer2Eval.infographic_template),
   ].filter(Boolean)
   return parts.length > 0 ? parts.join(' · ') : null
 }
@@ -506,10 +508,17 @@ function formatLayer2EvalSummary(layer2Eval: Record<string, unknown> | null): st
 function formatBackendTemplate(value: unknown): string | null {
   const text = cleanText(value as string | null | undefined)
   if (!text) return null
-  if (text === 'structured_plan_v1' || text === 'direct_prompt_v1' || text === 'direct_prompt_v2' || text === 'direct_prompt_v3') {
+  if (text === 'structured_plan_v1' || text === 'direct_prompt_v1' || text === 'direct_prompt_v2' || text === 'direct_prompt_v3' || text === 'infographic_prompt_v1') {
     return layer2BackendTemplateLabel(text)
   }
   return text
+}
+
+function formatInfographicTemplate(value: unknown): string | null {
+  const text = cleanText(value as string | null | undefined)
+  if (!text) return null
+  const label = infographicTemplateLabel(text)
+  return label || text
 }
 
 function formatMeaningStrategy(value: unknown): string | null {

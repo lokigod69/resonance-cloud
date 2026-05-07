@@ -16,6 +16,8 @@ import {
   createLayer2LabResultSummary,
   estimateLayer2LabCreditCost,
   getLayer2LabPresetRows,
+  infographicTemplateLabel,
+  INFOGRAPHIC_TEMPLATE_OPTIONS,
   isLayer2LabAppendDeck,
   layer2BackendTemplateLabel,
   LAYER2_BACKEND_TEMPLATE_OPTIONS,
@@ -47,10 +49,29 @@ console.log('\n[friendly labels]')
   assert('direct_prompt_v1 renders as LLM V1', layer2BackendTemplateLabel('direct_prompt_v1') === 'LLM V1')
   assert('direct_prompt_v2 renders as LLM V2', layer2BackendTemplateLabel('direct_prompt_v2') === 'LLM V2')
   assert('direct_prompt_v3 renders as LLM V3 · Visual Craft', layer2BackendTemplateLabel('direct_prompt_v3') === 'LLM V3 · Visual Craft')
+  assert('infographic_prompt_v1 renders as Infographic Prompt V1', layer2BackendTemplateLabel('infographic_prompt_v1') === 'Infographic Prompt V1')
   assert('structured_plan_v1 renders as Compiler V1', layer2BackendTemplateLabel('structured_plan_v1') === 'Compiler V1')
   assert('backend template options use friendly labels',
     LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => option.label).join('|') === 'Compiler V1|LLM V1|LLM V2|LLM V3 · Visual Craft',
     LAYER2_BACKEND_TEMPLATE_OPTIONS,
+  )
+  assert('infographic template dropdown has ten ordered variants',
+    INFOGRAPHIC_TEMPLATE_OPTIONS.map((option) => option.value).join('|') === [
+      'infographic_knowledge_guide_v1',
+      'infographic_language_atlas_v1',
+      'infographic_study_poster_v1',
+      'infographic_visual_dictionary_v1',
+      'infographic_museum_exhibit_v1',
+      'infographic_knowledge_guide_v2',
+      'infographic_language_atlas_v2',
+      'infographic_study_poster_v2',
+      'infographic_visual_dictionary_v2',
+      'infographic_museum_exhibit_v2',
+    ].join('|'),
+    INFOGRAPHIC_TEMPLATE_OPTIONS,
+  )
+  assert('infographic V2 label is friendly',
+    infographicTemplateLabel('infographic_museum_exhibit_v2') === 'V2 · Museum Exhibit',
   )
   assert('sound_mnemonic renders as Mnemonic Hook', cardLayer2MeaningLabel('sound_mnemonic') === 'Mnemonic Hook')
   assert('infographic_card renders as Infographic', cardLayer2PresentationLabel('infographic_card') === 'Infographic')
@@ -139,12 +160,14 @@ console.log('\n[script row builder infographic form]')
     meaning_strategy: 'absurd_hook',
     presentation_form: 'infographic_card',
     art_style: 'editorial',
-    backend_template: 'direct_prompt_v2',
+    backend_template: 'infographic_prompt_v1',
+    infographic_template: 'infographic_visual_dictionary_v1',
     quick_mode_preset: 'infographic',
     label: 'infographic smoke',
   })
   assert('infographic_card row is accepted', rows[0]?.presentation_form === 'infographic_card', rows)
   assert('quick mode preset carried through', rows[0]?.quick_mode_preset === 'infographic', rows)
+  assert('infographic template carried through', rows[0]?.infographic_template === 'infographic_visual_dictionary_v1', rows)
 }
 
 console.log('\n[all-word script rows]')
@@ -332,7 +355,8 @@ console.log('\n[premium lab infographic payload]')
     meaning_strategy: 'absurd_hook',
     presentation_form: 'infographic_card',
     art_style: 'editorial',
-    backend_template: 'direct_prompt_v2',
+    backend_template: 'infographic_prompt_v1',
+    infographic_template: 'infographic_language_atlas_v2',
     label: 'infographic smoke',
   }
   const p = buildLayer2LabPayload({
@@ -345,8 +369,26 @@ console.log('\n[premium lab infographic payload]')
     p.jobPayload.settings_override.card_layer2?.presentation_form === 'infographic_card',
     p.jobPayload.settings_override,
   )
+  assert('infographic payload routes to dedicated backend template',
+    p.jobPayload.settings_override.card_layer2?.backend_template === 'infographic_prompt_v1',
+    p.jobPayload.settings_override,
+  )
+  assert('infographic payload includes selected template enum',
+    p.jobPayload.settings_override.card_layer2?.infographic_template === 'infographic_language_atlas_v2',
+    p.jobPayload.settings_override,
+  )
   assert('records infographic_card in layer2_eval',
     p.jobPayload.settings_override.layer2_eval?.presentation_form === 'infographic_card',
+    p.jobPayload.settings_override,
+  )
+  assert('records infographic template in layer2_eval',
+    p.jobPayload.settings_override.layer2_eval?.infographic_template === 'infographic_language_atlas_v2',
+    p.jobPayload.settings_override,
+  )
+  assert('infographic payload does not require raw controls',
+    p.jobPayload.settings_override.layer2_eval?.meaning_strategy === undefined
+      && p.jobPayload.settings_override.layer2_eval?.art_style === undefined
+      && p.jobPayload.settings_override.layer2_eval?.backend_template === 'infographic_prompt_v1',
     p.jobPayload.settings_override,
   )
 }

@@ -22,6 +22,19 @@ export type CardLayer2BackendTemplate =
   | 'direct_prompt_v1'
   | 'direct_prompt_v2'
   | 'direct_prompt_v3'
+  | 'infographic_prompt_v1'
+
+export type InfographicTemplate =
+  | 'infographic_knowledge_guide_v1'
+  | 'infographic_language_atlas_v1'
+  | 'infographic_study_poster_v1'
+  | 'infographic_visual_dictionary_v1'
+  | 'infographic_museum_exhibit_v1'
+  | 'infographic_knowledge_guide_v2'
+  | 'infographic_language_atlas_v2'
+  | 'infographic_study_poster_v2'
+  | 'infographic_visual_dictionary_v2'
+  | 'infographic_museum_exhibit_v2'
 
 export type CardLayer2ArtStyle =
   | 'realistic'
@@ -56,6 +69,7 @@ export interface CardLayer2Customization {
 export interface CardLayer2Payload extends CardLayer2Customization {
   visual_intensity: 'balanced'
   backend_template?: CardLayer2BackendTemplate
+  infographic_template?: InfographicTemplate
   premium_quick_mode?: PremiumGenerationModeName
   premium_generation_mode?: PremiumGenerationModeMetadata
 }
@@ -69,6 +83,7 @@ export interface PremiumGenerationModeMetadata {
   meaning_strategy?: CardLayer2MeaningStrategy
   presentation_form?: CardLayer2PresentationForm
   art_style?: CardLayer2ArtStyle
+  infographic_template?: InfographicTemplate
   prompt_version: 'premium_quick_modes_v1'
 }
 
@@ -79,10 +94,12 @@ export interface Layer2EvalPayload {
   original_word: string
   variant_slug: string
   quick_mode_preset?: PremiumQuickMode | 'custom'
-  meaning_strategy: CardLayer2MeaningStrategy
-  presentation_form: CardLayer2PresentationForm
-  art_style: CardLayer2ArtStyle
+  meaning_strategy?: CardLayer2MeaningStrategy
+  presentation_form?: CardLayer2PresentationForm
+  art_style?: CardLayer2ArtStyle
   backend_template?: CardLayer2BackendTemplate
+  infographic_template?: InfographicTemplate
+  infographic_template_label?: string
   source: 'admin_layer2_lab_v1'
 }
 
