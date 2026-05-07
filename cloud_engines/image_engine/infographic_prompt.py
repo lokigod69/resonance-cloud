@@ -7,6 +7,7 @@ import json
 import os
 import re
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any, Mapping
 
 import httpx
@@ -24,6 +25,8 @@ INFOGRAPHIC_PLANNER_MODEL = os.environ.get(
     "deepseek/deepseek-v4-flash",
 )
 INFOGRAPHIC_PLANNER_MAX_TOKENS = 1500
+ORCH_ROOT = Path(__file__).resolve().parents[2]
+INFOGRAPHIC_REFERENCE_ASSET_DIR = "cloud_engines/image_engine/assets/infographic_references"
 
 BANNED_VISIBLE_TERMS = (
     "infographic_card",
@@ -80,6 +83,12 @@ class InfographicTemplate:
     visual_frame: str | None = None
     extra_compiler_instruction: str | None = None
     categories_are_guidance_only: bool = False
+    template_reference_id: str | None = None
+    reference_asset_path: str | None = None
+    reference_url: str | None = None
+    reference_mode: str | None = None
+    fallback_style_description: str | None = None
+    compatible_planner_template: str | None = None
 
 
 @dataclass(frozen=True)
@@ -153,6 +162,64 @@ def _v2(
         visual_frame=visual_frame,
         categories_are_guidance_only=True,
     )
+
+
+def _v3_reference(
+    value: str,
+    label: str,
+    role: str,
+    two_pass: str,
+    hero_options: tuple[str, ...],
+    panels: str,
+    text_budget: tuple[str, ...],
+    visual_frame: str,
+    anti_pattern: str,
+    footer_requirement: str,
+    compiler: str,
+    *,
+    template_reference_id: str,
+    reference_filename: str,
+    fallback_style_description: str,
+) -> InfographicTemplate:
+    return InfographicTemplate(
+        value=value,
+        label=label,
+        version="v3",
+        planner_identity=label,
+        goal="Use two-pass planning, then compile the result into the selected skeleton reference layout.",
+        panel_guidance=panels,
+        visual_direction=visual_frame,
+        compiler_instruction=compiler,
+        pass_count=2,
+        role=role,
+        two_pass_planning=two_pass,
+        hero_options=hero_options,
+        text_budget=text_budget,
+        anti_pattern=anti_pattern,
+        footer_requirement=footer_requirement,
+        visual_frame=visual_frame,
+        extra_compiler_instruction=REFERENCE_GUIDED_COMPILER_RULES,
+        categories_are_guidance_only=True,
+        template_reference_id=template_reference_id,
+        reference_asset_path=f"{INFOGRAPHIC_REFERENCE_ASSET_DIR}/{reference_filename}",
+        reference_mode="skeleton",
+        fallback_style_description=fallback_style_description,
+        compatible_planner_template=INFOGRAPHIC_BACKEND_TEMPLATE,
+    )
+
+
+REFERENCE_GUIDED_COMPILER_RULES = "\n".join(
+    [
+        "Use the attached reference image only as visual scaffolding.",
+        "Preserve from the reference: overall composition, panel rhythm, palette, border style, typography mood, icon style, density level, and premium encyclopedia / handbook feel.",
+        "Do not preserve from the reference: old word, old translation, old labels, old footer, old examples, old etymology, old mnemonic, or any readable reference text.",
+        "If the reference contains any readable text, treat it as placeholder only and ignore it.",
+        "All visible text must come from the planner content.",
+        "Do not copy text from the reference image.",
+        "Panel flexibility: preserve the reference style and rhythm, but panel sizes may expand or shrink to fit the planner content.",
+        "If fewer panels are needed, use breathing room or enlarge the central visual area. Do not invent filler panels just to match the reference.",
+    ]
+)
 
 
 INFOGRAPHIC_TEMPLATES: dict[str, InfographicTemplate] = {
@@ -266,6 +333,54 @@ INFOGRAPHIC_TEMPLATES: dict[str, InfographicTemplate] = {
         "Footer requirement: a curator's signature insight in the base language, 15 words or fewer.",
         "The final image is a museum placard about a word's life. Honour the planner's hero treatment, section names, section content, curator's note, and footer as written.",
     ),
+    "infographic_language_atlas_v3_reference": _v3_reference(
+        "infographic_language_atlas_v3_reference",
+        "V3 · Language Atlas Reference",
+        "You are a cartographer of meaning adapting a clean semantic-atlas skeleton.",
+        "Pass 1 - Sketch the semantic terrain and choose the cartographic metaphor. Pass 2 - Select 5 to 7 features and write labels and micro-captions in the base language.",
+        ("territorial_name", "celestial_naming", "network_node"),
+        "Guidance categories: Sense regions, Border zones, Trade routes, Climate bands, Origin route, Modern habitat, Travel advisory, Memory landmark.",
+        ("Feature label: 3 words maximum", "Feature caption: 15 words maximum", "Legend entry: 8 words maximum", "Footer line: 12 words maximum"),
+        "Reference-guided atlas page. Preserve title cartouche, central semantic map area, side panels, compass/legend style, parchment palette, and fine cartographic rhythm.",
+        "Avoid placing the word on a literal Earth map. Regenerate the semantic territory for the new word; map regions may change shape and count.",
+        "Footer requirement: a compass-rose or legend line in the base language summarising the territory.",
+        "The final image is a semantic atlas using the skeleton as structure only. Regenerate the central semantic territory and all labels for the new word.",
+        template_reference_id="language_atlas_reference_v3a",
+        reference_filename="language_atlas_reference_v3a.png",
+        fallback_style_description="Clean 16:9 language-atlas skeleton with a parchment background, large title cartouche, central semantic map territory, surrounding modular panels, compass rose, legend/footer band, route lines, and muted sepia/navy/sage/ochre ink accents.",
+    ),
+    "infographic_study_knowledge_v3_reference": _v3_reference(
+        "infographic_study_knowledge_v3_reference",
+        "V3 · Study / Knowledge Reference",
+        "You are a master language teacher adapting a clean premium study-poster skeleton.",
+        "Pass 1 - Identify the specific learning challenges this word poses for the learner pair. Pass 2 - Build the poster around resolving those challenges with 4 to 6 practical sections.",
+        ("top_banner", "centered_word"),
+        "Guidance categories: Meaning, Pronunciation, Forms, Example sentences, Collocations, Use it / avoid it, Common mistake, Mini contrast, Review.",
+        ("Section header: 5 words maximum", "Body line: one or two short sentences, max 30 words total", "Example sentence: one per slot, plus its short gloss", "Footer line: 12 words maximum"),
+        "Reference-guided premium study poster. Preserve clean title/subtitle area, central visual anchor, left/right learning panels, rounded cards, strong color bands, and footer review strip.",
+        'Avoid the "vocabulary list" feel. Regenerate the central visual anchor for the new word and use practical learner sections from the planner.',
+        "Footer requirement: a single base-language review line, 12 words or fewer.",
+        "The final image is a premium study / knowledge poster using the skeleton as structure only. Regenerate the central visual anchor and all learning content for the new word.",
+        template_reference_id="study_knowledge_reference_v3a",
+        reference_filename="study_knowledge_reference_v3a.png",
+        fallback_style_description="Clean 16:9 study / knowledge poster skeleton with off-white background, large hero word area, subtitle band, central visual anchor frame, left and right rounded learning panels, practical learner sections, strong muted color bands, soft shadows, refined icons, and footer review strip.",
+    ),
+    "infographic_museum_exhibit_v3_reference": _v3_reference(
+        "infographic_museum_exhibit_v3_reference",
+        "V3 · Museum Exhibit Reference",
+        "You are a museum curator adapting a clean modern exhibit-placard skeleton.",
+        "Pass 1 - Justify why the word merits exhibit treatment. Pass 2 - Design 4 to 6 placard sections; the curator's note is mandatory and written last.",
+        ("engraved_name", "artifact_label"),
+        "Guidance categories: Origin story, Cultural context, Modern habitat, Curator's note, Related artifacts, Usage plaque, Warning note.",
+        ("Section header: 4 words maximum", "Section body: 2 to 3 short sentences, max 35 words", "Curator's note: 25 words maximum", "Footer line: 15 words maximum"),
+        "Reference-guided museum placard. Preserve dark warm placard atmosphere, gold trim, central artifact frame, refined serif title zone, curated panels, and calm premium hierarchy.",
+        'Avoid generic "old-looking" filters: sepia scrolls, gothic letters, antique-shop styling. Regenerate the central artifact for the new word.',
+        "Footer requirement: a curator's signature insight in the base language, 15 words or fewer.",
+        "The final image is a modern museum exhibit placard using the skeleton as structure only. Regenerate the artifact and all placard text for the new word.",
+        template_reference_id="museum_exhibit_reference_v3a",
+        reference_filename="museum_exhibit_reference_v3a.png",
+        fallback_style_description="Clean 16:9 modern museum exhibit placard skeleton with dark warm matte background, refined serif title area, subtitle zone, central artifact frame, surrounding museum-label panels, gold/warm ink borders, icon medallions, subtle texture, and footer band.",
+    ),
 }
 
 INFOGRAPHIC_TEMPLATE_OPTIONS = tuple(
@@ -280,6 +395,30 @@ def infographic_template(value: str | None) -> InfographicTemplate:
 
 def infographic_template_label(value: str | None) -> str:
     return infographic_template(value).label
+
+
+def infographic_template_reference(value: str | None) -> dict[str, Any] | None:
+    template = infographic_template(value)
+    if not template.template_reference_id or not template.reference_asset_path:
+        return None
+    reference_url = _template_reference_url(template)
+    return {
+        "template_reference_id": template.template_reference_id,
+        "reference_asset_path": template.reference_asset_path,
+        "reference_url": reference_url,
+        "reference_mode": template.reference_mode,
+        "fallback_style_description": template.fallback_style_description,
+        "compatible_planner_template": template.compatible_planner_template,
+    }
+
+
+def infographic_template_reference_for_render(value: str | None) -> dict[str, Any] | None:
+    reference = infographic_template_reference(value)
+    if not reference:
+        return None
+    asset_path = _clean(reference.get("reference_asset_path"))
+    reference["asset_exists"] = bool(asset_path and (ORCH_ROOT / asset_path).exists())
+    return reference
 
 
 def build_infographic_planner_system_prompt(infographic_template: str) -> str:
@@ -387,6 +526,8 @@ def compile_infographic_prompt(
         f"All explanatory text, panel headers, captions, labels, and descriptions must be in {base_language}.",
         f"Only the target word, target-language forms, and target-language example sentences may appear in {target_language}.",
         "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics. If a mnemonic is weak, omit it.",
+        f"All explanations, panel headers, captions, warnings, glosses, and footer text must be in {base_language}.",
+        f"The target word, target-language forms, target-language example sentences, and collocations may remain in {target_language}.",
         "Internal safety rules are instructions only and must not be rendered as card text.",
         "Do not render internal engineering labels, model names, backend names, enum values, prompt labels, version labels, or implementation terms in the visible image.",
         f"Visual anchor: {_clean(plan.get('visual_anchor')) or 'a central word-specific visual anchor'}.",
@@ -416,6 +557,13 @@ def compile_infographic_prompt(
         lines.append(f"Specific anti-pattern to avoid: {template.anti_pattern}")
     if template.footer_requirement:
         lines.append(template.footer_requirement)
+    if template.extra_compiler_instruction:
+        lines.append(template.extra_compiler_instruction)
+    if template.fallback_style_description:
+        lines.append(
+            "Blueprint fallback if no reference image is attached: "
+            f"{template.fallback_style_description}"
+        )
     return _remove_internal_terms("\n".join(lines))
 
 
@@ -427,6 +575,10 @@ def infographic_prompt_metadata(
     infographic_template: str,
     base_language_intended: str | None,
     target_language: str | None,
+    reference_attached: bool | None = None,
+    reference_fallback_used: bool | None = None,
+    reference_asset_exists: bool | None = None,
+    reference_fallback_reason: str | None = None,
 ) -> dict[str, Any]:
     template = globals()["infographic_template"](infographic_template)
     panels = planner_plan.get("panels") if isinstance(planner_plan, Mapping) else None
@@ -445,8 +597,35 @@ def infographic_prompt_metadata(
         "target_language": _clean(target_language) or None,
         "planner_json_preview": _compact_json_preview(planner_plan),
     }
+    metadata["final_prompt_hash"] = metadata["final_prompt_sha256"]
     if template.pass_count > 1:
         metadata["planner_pass_count"] = template.pass_count
+    reference = infographic_template_reference(template.value)
+    if reference:
+        asset_exists = reference_asset_exists
+        if asset_exists is None:
+            asset_exists = bool((ORCH_ROOT / reference["reference_asset_path"]).exists())
+        attached = bool(reference_attached)
+        fallback = (not attached) if reference_fallback_used is None else bool(reference_fallback_used)
+        if not asset_exists:
+            fallback_reason = "reference_asset_missing"
+        elif not reference.get("reference_url") and not attached:
+            fallback_reason = "reference_url_unavailable"
+        else:
+            fallback_reason = reference_fallback_reason
+        metadata.update(
+            {
+                "reference_mode": reference["reference_mode"],
+                "template_reference_id": reference["template_reference_id"],
+                "template_reference_asset_path": reference["reference_asset_path"],
+                "template_reference_url": reference.get("reference_url"),
+                "reference_attached": attached,
+                "reference_fallback_used": fallback,
+                "reference_fallback_reason": fallback_reason if fallback else None,
+                "reference_asset_exists": bool(asset_exists),
+                "fallback_style_description": reference.get("fallback_style_description"),
+            }
+        )
     hero = _clean(planner_plan.get("hero_treatment") if isinstance(planner_plan, Mapping) else None)
     if hero:
         metadata["planner_hero_treatment"] = hero
@@ -614,6 +793,15 @@ def _compact_json_preview(value: Mapping[str, Any]) -> str:
 
 def _clean(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "").strip())
+
+
+def _template_reference_url(template: InfographicTemplate) -> str | None:
+    if template.reference_url:
+        return template.reference_url
+    base_url = _clean(os.environ.get("INFOGRAPHIC_REFERENCE_BASE_URL"))
+    if not base_url or not template.reference_asset_path:
+        return None
+    return f"{base_url.rstrip('/')}/{Path(template.reference_asset_path).name}"
 
 
 def _remove_internal_terms(prompt: str) -> str:

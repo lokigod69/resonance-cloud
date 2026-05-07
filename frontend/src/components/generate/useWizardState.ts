@@ -35,6 +35,9 @@ export type InfographicTemplate =
   | 'infographic_study_poster_v2'
   | 'infographic_visual_dictionary_v2'
   | 'infographic_museum_exhibit_v2'
+  | 'infographic_language_atlas_v3_reference'
+  | 'infographic_study_knowledge_v3_reference'
+  | 'infographic_museum_exhibit_v3_reference'
 
 export type CardLayer2ArtStyle =
   | 'realistic'

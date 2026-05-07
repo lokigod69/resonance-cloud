@@ -815,6 +815,192 @@ def test_infographic_prompt_template_routes_through_dedicated_planner_and_stores
     assert metadata["planner_panel_count"] == 1
 
 
+def test_v3_infographic_reference_metadata_and_blueprint_fallback(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.infographic_prompt import InfographicPromptResult
+
+    calls: dict[str, object] = {}
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **kwargs):
+            calls.setdefault("record_responses", []).append(kwargs)
+
+    def fake_write_infographic_prompt(**kwargs):
+        calls["infographic_kwargs"] = kwargs
+        return InfographicPromptResult(
+            prompt=(
+                "Create a horizontal 16:9 educational infographic poster for threshold. "
+                "Use the attached reference image only as visual scaffolding. "
+                "If the reference contains any readable text, treat it as placeholder only and ignore it. "
+                "All explanations, panel headers, captions, warnings, glosses, and footer text must be in German. "
+                "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics."
+            ),
+            model="test-planner-model",
+            raw_plan='{"panels":[]}',
+            planner_plan={
+                "title": "threshold",
+                "translation": "Schwelle",
+                "base_language": "German",
+                "target_language": "English",
+                "infographic_template": "infographic_language_atlas_v3_reference",
+                "visual_anchor": "semantic map",
+                "hero_treatment": "network_node",
+                "panels": [],
+                "footer_line": "Schnell vorbei.",
+                "avoid": [],
+            },
+            infographic_template="infographic_language_atlas_v3_reference",
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls["provider_kwargs"] = kwargs
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-infographic-v3-reference",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_infographic_prompt", fake_write_infographic_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.word = "threshold"
+    payload.content.translation = "Schwelle"
+    payload.content.base_language = "German"
+    payload.content.language = "English"
+    payload.card_image_style = "editorial"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "clear_meaning",
+        "presentation_form": "infographic_card",
+        "visual_intensity": "balanced",
+        "backend_template": "infographic_prompt_v1",
+        "infographic_template": "infographic_language_atlas_v3_reference",
+        "premium_quick_mode": "infographic",
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "success"
+    assert calls["provider_kwargs"]["input_urls"] is None
+    request_body = json.loads(calls["record_responses"][-1]["request_body"])
+    assert request_body["model"] == "gpt-image-2-text-to-image"
+    assert "input_urls" not in request_body["input"]
+    metadata = result.gpt_image_2_card_metadata
+    assert metadata is not None
+    assert metadata["infographic_template"] == "infographic_language_atlas_v3_reference"
+    assert metadata["reference_mode"] == "skeleton"
+    assert metadata["template_reference_id"] == "language_atlas_reference_v3a"
+    assert metadata["template_reference_asset_path"].endswith("language_atlas_reference_v3a.png")
+    assert metadata["reference_attached"] is False
+    assert metadata["reference_fallback_used"] is True
+    assert metadata["reference_fallback_reason"] == "reference_url_unavailable"
+
+
+def test_v3_infographic_can_attach_reference_url_when_registry_provides_one(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.infographic_prompt import InfographicPromptResult
+
+    calls: dict[str, object] = {}
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **kwargs):
+            calls.setdefault("record_responses", []).append(kwargs)
+
+    def fake_write_infographic_prompt(**_kwargs):
+        return InfographicPromptResult(
+            prompt="Use the attached reference image only as visual scaffolding.",
+            model="test-planner-model",
+            raw_plan='{"panels":[]}',
+            planner_plan={"panels": [], "base_language": "German", "target_language": "English"},
+            infographic_template="infographic_study_knowledge_v3_reference",
+        )
+
+    def fake_reference_for_render(_value):
+        return {
+            "template_reference_id": "study_knowledge_reference_v3a",
+            "reference_mode": "skeleton",
+            "reference_asset_path": "cloud_engines/image_engine/assets/infographic_references/study_knowledge_reference_v3a.png",
+            "reference_url": "https://example.invalid/study_knowledge_reference_v3a.png",
+            "fallback_style_description": "study poster skeleton",
+            "asset_exists": True,
+        }
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls["provider_kwargs"] = kwargs
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-image-to-image",
+            "request_id": "task-infographic-v3-i2i",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_infographic_prompt", fake_write_infographic_prompt)
+    monkeypatch.setattr(card_engine, "infographic_template_reference_for_render", fake_reference_for_render)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.base_language = "German"
+    payload.content.language = "English"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "clear_meaning",
+        "presentation_form": "infographic_card",
+        "visual_intensity": "balanced",
+        "backend_template": "infographic_prompt_v1",
+        "infographic_template": "infographic_study_knowledge_v3_reference",
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "success"
+    assert calls["provider_kwargs"]["input_urls"] == ["https://example.invalid/study_knowledge_reference_v3a.png"]
+    request_body = json.loads(calls["record_responses"][-1]["request_body"])
+    assert request_body["model"] == "gpt-image-2-image-to-image"
+    assert request_body["input"]["input_urls"] == ["https://example.invalid/study_knowledge_reference_v3a.png"]
+    metadata = result.gpt_image_2_card_metadata
+    assert metadata is not None
+    assert metadata["reference_attached"] is True
+    assert metadata["reference_fallback_used"] is False
+
+
 def test_direct_prompt_word_object_allows_target_word_and_bans_translation(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
     from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult
@@ -1394,10 +1580,10 @@ def test_card_storage_key_uses_unique_lab_variant_slug():
     assert first != second
 
 
-def test_card_storage_key_is_unique_for_ten_same_word_infographic_variants():
+def test_card_storage_key_is_unique_for_thirteen_same_word_infographic_variants():
     from src.orchestration.card_worker import _card_image_storage_key
 
-    slugs = [f"threshold-l2-safe1-{index:03d}" for index in range(1, 11)]
+    slugs = [f"threshold-l2-safe1-{index:03d}" for index in range(1, 14)]
     keys = [
         _card_image_storage_key(
             user_id="user-1",
@@ -1407,8 +1593,8 @@ def test_card_storage_key_is_unique_for_ten_same_word_infographic_variants():
         for slug in slugs
     ]
 
-    assert len(keys) == 10
-    assert len(set(keys)) == 10
+    assert len(keys) == 13
+    assert len(set(keys)) == 13
     assert keys[0] == "user-1/deck-1/cards/threshold-l2-safe1-001.png"
-    assert keys[-1] == "user-1/deck-1/cards/threshold-l2-safe1-010.png"
+    assert keys[-1] == "user-1/deck-1/cards/threshold-l2-safe1-013.png"
     assert "user-1/deck-1/cards/threshold.png" not in keys

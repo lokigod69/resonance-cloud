@@ -11,11 +11,13 @@ from cloud_engines.image_engine.card_models import CardImageContent  # noqa: E40
 from cloud_engines.image_engine.infographic_prompt import (  # noqa: E402
     BANNED_VISIBLE_TERMS,
     INFOGRAPHIC_BACKEND_TEMPLATE,
+    INFOGRAPHIC_TEMPLATES,
     INFOGRAPHIC_TEMPLATE_OPTIONS,
     build_infographic_compiler_prompt,
     build_infographic_planner_system_prompt,
     compile_infographic_prompt,
     infographic_prompt_metadata,
+    infographic_template_reference,
     infographic_template_label,
 )
 
@@ -75,8 +77,33 @@ def test_infographic_template_registry_contains_v1_and_v2_variants_in_order():
         "infographic_study_poster_v2",
         "infographic_visual_dictionary_v2",
         "infographic_museum_exhibit_v2",
+        "infographic_language_atlas_v3_reference",
+        "infographic_study_knowledge_v3_reference",
+        "infographic_museum_exhibit_v3_reference",
     ]
     assert infographic_template_label("infographic_museum_exhibit_v2") == "V2 · Museum Exhibit"
+    assert infographic_template_label("infographic_language_atlas_v3_reference") == "V3 · Language Atlas Reference"
+
+
+def test_v3_template_registry_has_skeleton_references_and_assets_exist():
+    expected = {
+        "infographic_language_atlas_v3_reference": "language_atlas_reference_v3a.png",
+        "infographic_study_knowledge_v3_reference": "study_knowledge_reference_v3a.png",
+        "infographic_museum_exhibit_v3_reference": "museum_exhibit_reference_v3a.png",
+    }
+
+    for template_value, filename in expected.items():
+        template = INFOGRAPHIC_TEMPLATES[template_value]
+        reference = infographic_template_reference(template_value)
+
+        assert template.version == "v3"
+        assert template.reference_mode == "skeleton"
+        assert template.compatible_planner_template == "infographic_prompt_v1"
+        assert reference is not None
+        assert reference["reference_asset_path"].endswith(filename)
+        assert reference["reference_mode"] == "skeleton"
+        assert reference["fallback_style_description"]
+        assert (ORCH_ROOT / reference["reference_asset_path"]).exists()
 
 
 def test_v2_planner_prompt_uses_two_pass_analysis_and_text_budgets():
@@ -185,6 +212,22 @@ def test_v2_compiler_includes_hero_treatment_anti_pattern_and_footer_requirement
     assert INFOGRAPHIC_BACKEND_TEMPLATE == "infographic_prompt_v1"
 
 
+def test_v3_compiler_includes_reference_text_and_content_safety_rules():
+    prompt = compile_infographic_prompt(
+        content=_content(),
+        plan={**_plan(), "infographic_template": "infographic_language_atlas_v3_reference"},
+        infographic_template="infographic_language_atlas_v3_reference",
+    )
+
+    assert "Use the attached reference image only as visual scaffolding." in prompt
+    assert "If the reference contains any readable text, treat it as placeholder only and ignore it." in prompt
+    assert "All visible text must come from the planner content." in prompt
+    assert "All explanations, panel headers, captions, warnings, glosses, and footer text must be in German." in prompt
+    assert "target word, target-language forms, target-language example sentences, and collocations may remain in English" in prompt
+    assert "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics." in prompt
+    assert "Do not copy text from the reference image." in prompt
+
+
 def test_infographic_metadata_records_template_and_v2_pass_count():
     prompt = build_infographic_compiler_prompt(
         content=_content(),
@@ -212,3 +255,41 @@ def test_infographic_metadata_records_template_and_v2_pass_count():
     assert metadata["target_language"] == "English"
     assert metadata["final_prompt_chars"] == len(prompt)
     assert metadata["final_prompt_preview"] == prompt[:500]
+
+
+def test_v3_metadata_records_reference_fields_and_missing_asset_fallback():
+    prompt = build_infographic_compiler_prompt(
+        content=_content(),
+        plan=_plan(),
+        infographic_template="infographic_museum_exhibit_v3_reference",
+    )
+    metadata = infographic_prompt_metadata(
+        final_prompt=prompt,
+        planner_model="test-planner",
+        planner_plan=_plan(),
+        infographic_template="infographic_museum_exhibit_v3_reference",
+        base_language_intended="German",
+        target_language="English",
+    )
+
+    assert metadata["infographic_template"] == "infographic_museum_exhibit_v3_reference"
+    assert metadata["reference_mode"] == "skeleton"
+    assert metadata["template_reference_id"] == "museum_exhibit_reference_v3a"
+    assert metadata["template_reference_asset_path"].endswith("museum_exhibit_reference_v3a.png")
+    assert metadata["reference_attached"] is False
+    assert metadata["reference_fallback_used"] is True
+    assert metadata["reference_fallback_reason"] == "reference_url_unavailable"
+    assert metadata["final_prompt_hash"] == metadata["final_prompt_sha256"]
+
+    missing = infographic_prompt_metadata(
+        final_prompt=prompt,
+        planner_model="test-planner",
+        planner_plan=_plan(),
+        infographic_template="infographic_museum_exhibit_v3_reference",
+        base_language_intended="German",
+        target_language="English",
+        reference_asset_exists=False,
+    )
+    assert missing["reference_attached"] is False
+    assert missing["reference_fallback_used"] is True
+    assert missing["reference_fallback_reason"] == "reference_asset_missing"

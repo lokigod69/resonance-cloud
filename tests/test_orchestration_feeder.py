@@ -650,6 +650,9 @@ def test_layer2_lab_same_word_infographic_variants_get_unique_slugs_and_metadata
         "infographic_study_poster_v2",
         "infographic_visual_dictionary_v2",
         "infographic_museum_exhibit_v2",
+        "infographic_language_atlas_v3_reference",
+        "infographic_study_knowledge_v3_reference",
+        "infographic_museum_exhibit_v3_reference",
     ]
     jobs = [
         {
@@ -755,24 +758,24 @@ def test_layer2_lab_same_word_infographic_variants_get_unique_slugs_and_metadata
         ))
 
     slugs = [row["word_slug"] for row in sb._tables["words"]]
-    expected_slugs = [f"threshold-l2-safe1-{index:03d}" for index in range(1, 11)]
+    expected_slugs = [f"threshold-l2-safe1-{index:03d}" for index in range(1, 14)]
     assert slugs == expected_slugs
-    assert len(set(slugs)) == 10
+    assert len(set(slugs)) == 13
     assert all(row["word"] == "threshold" for row in sb._tables["words"])
     assert [
         row["metadata"]["layer2_eval"]["original_word"]
         for row in sb._tables["words"]
-    ] == ["threshold"] * 10
+    ] == ["threshold"] * 13
     assert [
         row["metadata"]["layer2_eval"]["backend_template"]
         for row in sb._tables["words"]
-    ] == ["infographic_prompt_v1"] * 10
+    ] == ["infographic_prompt_v1"] * 13
     assert [
         row["metadata"]["layer2_eval"]["infographic_template"]
         for row in sb._tables["words"]
     ] == templates
     assert [m["word_slug"] for m in manifests] == expected_slugs
-    assert card_queue.qsize() == 10
+    assert card_queue.qsize() == 13
 
 
 def test_layer2_lab_append_runs_with_reset_indexes_do_not_collide(monkeypatch, tmp_path):

@@ -40,6 +40,7 @@ from .infographic_prompt import (
     INFOGRAPHIC_BACKEND_TEMPLATE,
     INFOGRAPHIC_PLANNER_MODEL,
     infographic_prompt_metadata,
+    infographic_template_reference_for_render,
     write_infographic_prompt,
 )
 from .models import ImageError
@@ -197,6 +198,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             selected_backend_template = DIRECT_PROMPT_V2_TEMPLATE
     direct_prompt_meta: dict | None = None
     infographic_prompt_meta: dict | None = None
+    infographic_reference_input_urls: list[str] | None = None
     allow_translation = layer2.allow_translation_in_prompt if layer2 else False
     if layer2 and selected_backend_template == INFOGRAPHIC_BACKEND_TEMPLATE:
         layer2_customization = (
@@ -227,6 +229,21 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 infographic_template=selected_infographic_template,
             )
             prompt_text = infographic_result.prompt
+            reference_for_render = infographic_template_reference_for_render(
+                infographic_result.infographic_template
+            )
+            reference_asset_exists = (
+                bool(reference_for_render.get("asset_exists"))
+                if reference_for_render
+                else None
+            )
+            reference_url = (
+                str(reference_for_render.get("reference_url"))
+                if reference_for_render and reference_for_render.get("reference_url")
+                else None
+            )
+            if reference_for_render and reference_asset_exists and reference_url:
+                infographic_reference_input_urls = [reference_url]
             ev.record_response(
                 response_body=infographic_result.raw_plan,
                 tokens_in=(infographic_result.usage or {}).get("prompt_tokens"),
@@ -241,6 +258,11 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 infographic_template=infographic_result.infographic_template,
                 base_language_intended=payload.content.base_language,
                 target_language=payload.content.language,
+                reference_attached=bool(infographic_reference_input_urls),
+                reference_fallback_used=(
+                    reference_for_render is not None and not infographic_reference_input_urls
+                ),
+                reference_asset_exists=reference_asset_exists,
             )
     elif layer2 and selected_backend_template in DIRECT_PROMPT_TEMPLATES:
         with logged_llm_call(
@@ -371,13 +393,20 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         card_metadata.update(direct_prompt_meta)
     if infographic_prompt_meta:
         card_metadata.update(infographic_prompt_meta)
+    request_input: dict[str, object] = {
+        "prompt": prompt_text,
+        "aspect_ratio": "16:9",
+        "resolution": "1K",
+    }
+    if infographic_reference_input_urls:
+        request_input["input_urls"] = infographic_reference_input_urls
     request_payload = {
-        "model": "gpt-image-2-text-to-image",
-        "input": {
-            "prompt": prompt_text,
-            "aspect_ratio": "16:9",
-            "resolution": "1K",
-        },
+        "model": (
+            "gpt-image-2-image-to-image"
+            if infographic_reference_input_urls
+            else "gpt-image-2-text-to-image"
+        ),
+        "input": request_input,
     }
     with logged_api_call(
         stage="pending_image",
@@ -393,6 +422,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         metadata={
             "card_image_style": payload.card_image_style,
             "backend_template": selected_backend_template if layer2 else None,
+            "reference_attached": bool(infographic_reference_input_urls),
         },
     ) as ev:
         result = render_scene_gpt_image_2(
@@ -400,6 +430,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             output_path=output_path,
             aspect_ratio="16:9",
             resolution="1K",
+            input_urls=infographic_reference_input_urls,
         )
         ev._model_provider = result.get("provider_name") or "gpt_image_2"
         ev._model_name = result.get("model_name") or "gpt-image-2"
