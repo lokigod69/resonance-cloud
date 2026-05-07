@@ -122,7 +122,7 @@ export default function MusicPG() {
   const [decks, setDecks] = useState<DeckOption[]>([])
   const [orbSize, setOrbSize] = useState(300)
   const [songModalTrack, setSongModalTrack] = useState<MusicTrack | null>(null)
-  const [lyricsTrack, setLyricsTrack] = useState<MusicTrack | null>(null)
+  const [lyricsOpen, setLyricsOpen] = useState(false)
   const [songStatusMap, setSongStatusMap] = useState<Map<string, SongGenerationStatus>>(new Map())
   const songStatusMapRef = useRef(songStatusMap)
   const songPollRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -494,15 +494,10 @@ export default function MusicPG() {
               </button>
 
               <button
-                onClick={() =>
-                  currentTrack &&
-                  setLyricsTrack((openTrack) =>
-                    openTrack?.id === currentTrack.id ? null : currentTrack,
-                  )
-                }
+                onClick={() => setLyricsOpen((o) => !o)}
                 disabled={!currentTrack || !trackHasAudio(currentTrack)}
                 className={`w-9 h-9 ${PLAYER_ROUNDED_ICON_BUTTON_CLASS} ${PLAYER_INACTIVE_TOGGLE_CLASS}`}
-                aria-pressed={lyricsTrack?.id === currentTrack?.id}
+                aria-pressed={lyricsOpen}
                 aria-label={t('music.lyrics')}
                 title={t('music.lyrics')}
               >
@@ -574,9 +569,9 @@ export default function MusicPG() {
         onSubmitted={handleSongSubmitted}
       />
       <LyricsSheet
-        open={lyricsTrack !== null}
-        onOpenChange={(open) => !open && setLyricsTrack(null)}
-        track={lyricsTrack}
+        open={lyricsOpen && currentTrack !== null}
+        onOpenChange={(open) => !open && setLyricsOpen(false)}
+        track={lyricsOpen ? currentTrack : null}
         variant="glassy"
       />
     </div>

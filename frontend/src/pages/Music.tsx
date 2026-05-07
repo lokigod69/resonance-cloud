@@ -107,7 +107,7 @@ export default function Music() {
   const [audioFilter, setAudioFilter] = useState<AudioFilter>('all')
   const [decks, setDecks] = useState<DeckOption[]>([])
   const [songModalTrack, setSongModalTrack] = useState<MusicTrack | null>(null)
-  const [lyricsTrack, setLyricsTrack] = useState<MusicTrack | null>(null)
+  const [lyricsOpen, setLyricsOpen] = useState(false)
 
   // Song-only state: wordId -> current music_generation_jobs status
   const [songStatusMap, setSongStatusMap] = useState<Map<string, SongGenerationStatus>>(new Map())
@@ -368,7 +368,7 @@ export default function Music() {
                 isPlaying={player.isPlaying && player.currentTrack?.id === track.id}
                 onClick={() => player.play(track.id)}
                 onGenerateSong={() => setSongModalTrack(track)}
-                onShowLyrics={() => setLyricsTrack(track)}
+                onShowLyrics={() => { player.play(track.id); setLyricsOpen(true) }}
                 isGeneratingSong={songStatusMap.has(track.id)}
                 generationStatus={songStatusMap.get(track.id)}
               />
@@ -412,9 +412,9 @@ export default function Music() {
         onSubmitted={handleSongSubmitted}
       />
       <LyricsSheet
-        open={lyricsTrack !== null}
-        onOpenChange={(open) => !open && setLyricsTrack(null)}
-        track={lyricsTrack}
+        open={lyricsOpen && player.currentTrack !== null}
+        onOpenChange={(open) => !open && setLyricsOpen(false)}
+        track={lyricsOpen ? player.currentTrack : null}
         variant="classic"
       />
     </div>
