@@ -10,8 +10,8 @@ export default function VoiceTutorSection() {
   return (
     <section className="relative overflow-hidden bg-[var(--app-bg)] py-24 px-6">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-[0.85]"
-        style={{ backgroundImage: "url('/brand/cosmos/cosmos-tutor.webp')" }}
+        className="cosmos-bg-mask-both absolute inset-0 bg-cover bg-center opacity-50"
+        style={{ backgroundImage: "url('/brand/cosmos/cosmos-calm.webp')" }}
         aria-hidden="true"
       />
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">

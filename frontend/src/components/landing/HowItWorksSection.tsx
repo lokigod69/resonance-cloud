@@ -32,7 +32,7 @@ export default function HowItWorksSection() {
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-[var(--app-bg)] py-32 px-6">
       <motion.div
-        className="absolute -inset-y-8 inset-x-0 transform-gpu bg-cover bg-center opacity-50 will-change-transform"
+        className="cosmos-bg-mask-both absolute -inset-y-8 inset-x-0 transform-gpu bg-cover bg-center opacity-50 will-change-transform"
         style={{ backgroundImage: "url('/brand/cosmos/cosmos-calm.webp')", y: backgroundY }}
         aria-hidden="true"
       />
@@ -44,7 +44,7 @@ export default function HowItWorksSection() {
         </ScrollReveal>
 
         {/* Steps with connector arrows */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-6 md:gap-0">
+        <div className="flex flex-col md:flex-row md:items-stretch md:justify-center gap-6 md:gap-0">
           {steps.map((step, i) => {
             const Icon = ICONS[i]
             const dir = directions[i]
@@ -67,7 +67,7 @@ export default function HowItWorksSection() {
                   whileInView={reducedMotion ? {} : { opacity: 1, x: 0, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, delay: i * 0.15, ease: 'easeOut' as const }}
-                  className="glass rounded-2xl p-8 text-center md:w-72 shrink-0 hover:-translate-y-2 transition-transform duration-300"
+                  className="glass flex flex-col rounded-2xl p-8 text-center md:w-72 md:min-h-[296px] shrink-0 hover:-translate-y-2 transition-transform duration-300"
                 >
                   {/* Step number */}
                   <motion.span

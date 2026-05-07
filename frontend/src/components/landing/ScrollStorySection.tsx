@@ -123,7 +123,7 @@ export default function ScrollStorySection() {
   return (
     <section
       ref={containerRef}
-      style={{ height: '550vh', background: 'var(--app-bg)' }}
+      style={{ position: 'relative', height: '550vh', background: 'var(--app-bg)' }}
     >
       {/* Sticky viewport — stays pinned while container scrolls past */}
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
@@ -186,6 +186,7 @@ export default function ScrollStorySection() {
         <div style={{ position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none' }}>
           <motion.div
             aria-hidden="true"
+            className="cosmos-bg-mask-both"
             style={{
               position: 'absolute',
               inset: '-6%',
@@ -236,7 +237,7 @@ export default function ScrollStorySection() {
                   pointerEvents: 'auto',
                   ...anim,
                 }}
-                className="glass rounded-2xl p-8 text-center w-72"
+                className="glass flex h-[296px] w-72 flex-col rounded-2xl p-8 text-center"
               >
                 <span className="inline-block text-xs font-semibold bg-primary/20 text-primary rounded-full px-3 py-1 mb-4">
                   {t('landing.step', { n: i + 1 })}
@@ -267,6 +268,10 @@ export default function ScrollStorySection() {
         </div>
 
       </div>
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-[45vh] bg-gradient-to-b from-transparent via-[var(--app-bg)]/90 to-[var(--app-bg)]"
+        aria-hidden="true"
+      />
     </section>
   )
 }

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
 
@@ -11,13 +10,6 @@ export default function HeroSection() {
   const headlineWord = t('landing.headlineWord')
   const headlineMelody = t('landing.headlineMelody')
   const headlineMotion = t('landing.headlineMotion')
-
-  const renderAccentInitial = (value: string, colorVar: string) => (
-    <>
-      <span style={{ color: colorVar }}>{value.slice(0, 1)}</span>
-      {value.slice(1)}
-    </>
-  )
 
   // Scroll-driven parallax: text floats up and fades
   const textY = useTransform(scrollY, [0, 500], [0, -200])
@@ -73,19 +65,19 @@ export default function HeroSection() {
             {/* Headline — stacked typography */}
             <motion.h1 {...fadeUp(0)} className="flex flex-col items-center text-center gap-0">
               <span className="font-display text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]">
-                {renderAccentInitial(headlineWord, 'var(--m-warm)')}
+                <span className="hero-word-warm">{headlineWord}</span>
               </span>
               <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
                 {t('landing.headlineBy')}
               </span>
               <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]">
-                {renderAccentInitial(headlineMelody, 'var(--m-mid)')}
+                <span className="hero-word-mid">{headlineMelody}</span>
               </span>
               <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
                 {t('landing.headlineAnd')}
               </span>
               <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]">
-                {renderAccentInitial(headlineMotion, 'var(--m-cool)')}
+                <span className="hero-word-cool">{headlineMotion}</span>
               </span>
             </motion.h1>
 
@@ -128,17 +120,12 @@ export default function HeroSection() {
                 </motion.div>
               </div>
             </motion.div>
+
+            <div className="flex justify-center pt-2" aria-hidden="true">
+              <span className="cosmos-scroll-line block h-10 w-px bg-white/40" />
+            </div>
           </div>
         </div>
-
-        {/* Scroll indicator — outside the backdrop */}
-        <motion.div
-          animate={reducedMotion ? {} : { y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' as const }}
-          className="absolute bottom-8 text-white/30"
-        >
-          <ChevronDown className="h-6 w-6" />
-        </motion.div>
       </motion.div>
     </section>
   )

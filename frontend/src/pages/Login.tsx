@@ -74,7 +74,6 @@ export default function Login() {
       className="theme-cosmos min-h-screen flex flex-col items-center justify-center bg-[var(--app-bg)] p-4"
       style={{
         backgroundImage: "url('/brand/cosmos/cosmos-auth.webp')",
-        backgroundAttachment: 'fixed',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
       }}

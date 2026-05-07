@@ -21,8 +21,8 @@
   --accent-2-soft: rgba(247, 200, 67, 0.16);
   --on-accent: #ffffff;
   --m-warm: #f24f13;
-  --m-mid: #d946ef;
-  --m-cool: #22d3ee;
+  --m-mid: #b8447a;
+  --m-cool: #6b4e8c;
 
   --border-subtle: rgba(255, 222, 214, 0.12);
   --border-strong: rgba(242, 79, 19, 0.32);
@@ -104,6 +104,114 @@
   color: var(--text-primary);
   backdrop-filter: blur(24px) saturate(1.12);
   -webkit-backdrop-filter: blur(24px) saturate(1.12);
+}
+
+body:has(.theme-cosmos) {
+  background-attachment: scroll;
+}
+
+.theme-cosmos .cosmos-bg-mask-both {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+.theme-cosmos .cosmos-bg-mask-bottom {
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+.theme-cosmos .cosmos-bg-mask-top {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 100%
+  );
+}
+
+.theme-cosmos .hero-word-warm,
+.theme-cosmos .hero-word-mid,
+.theme-cosmos .hero-word-cool {
+  display: inline-block;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.theme-cosmos .hero-word-warm {
+  background-image: linear-gradient(to right, var(--m-warm) 0%, #ffffff 70%);
+}
+
+.theme-cosmos .hero-word-mid {
+  background-image: linear-gradient(to right, var(--m-mid) 0%, #ffffff 70%);
+}
+
+.theme-cosmos .hero-word-cool {
+  background-image: linear-gradient(to right, var(--m-cool) 0%, #ffffff 70%);
+}
+
+.theme-cosmos .cosmos-scroll-line {
+  animation: cosmos-scroll-line 2s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes cosmos-scroll-line {
+  0% {
+    opacity: 1;
+    transform: scaleY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  75% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-cosmos .cosmos-scroll-line {
+    animation: none;
+    opacity: 0.6;
+    transform: scaleY(1);
+  }
 }
 
 .theme-cosmos ::selection {

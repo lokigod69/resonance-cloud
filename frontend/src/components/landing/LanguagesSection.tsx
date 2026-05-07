@@ -32,7 +32,7 @@ export default function LanguagesSection() {
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-[var(--app-bg)] py-24 px-6 text-center">
       <motion.div
-        className="absolute -inset-y-8 inset-x-0 transform-gpu bg-cover bg-center opacity-50 will-change-transform"
+        className="cosmos-bg-mask-both absolute -inset-y-8 inset-x-0 transform-gpu bg-cover bg-center opacity-50 will-change-transform"
         style={{ backgroundImage: "url('/brand/cosmos/cosmos-calm.webp')", y: backgroundY }}
         aria-hidden="true"
       />

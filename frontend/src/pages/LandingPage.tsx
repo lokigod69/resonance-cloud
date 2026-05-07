@@ -7,10 +7,10 @@ import CtaFooterSection from '@/components/landing/CtaFooterSection'
 export default function LandingPage() {
   return (
     <div className="theme-cosmos min-h-screen overflow-x-clip bg-[var(--app-bg)] text-foreground">
-      {/* Layer 1: Fixed image background */}
-      <div className="fixed inset-0 z-0 bg-[var(--app-bg)]">
+      {/* Layer 1: Hero image only, fading down into page black */}
+      <div className="absolute inset-x-0 top-0 z-0 h-screen bg-[var(--app-bg)]">
         <div
-          className="h-full w-full bg-cover bg-center opacity-[0.85]"
+          className="cosmos-bg-mask-bottom h-full w-full bg-cover bg-center opacity-[0.85]"
           style={{ backgroundImage: "url('/brand/cosmos/cosmos-hero.webp')" }}
         />
       </div>
@@ -31,8 +31,11 @@ export default function LandingPage() {
           style={{ background: 'linear-gradient(to bottom, transparent, var(--app-bg))' }}
         />
         <ScrollStorySection />
+        <div className="h-24 bg-[var(--app-bg)] md:h-32" aria-hidden="true" />
         <VoiceTutorSection />
+        <div className="h-24 bg-[var(--app-bg)] md:h-32" aria-hidden="true" />
         <LanguagesSection />
+        <div className="h-20 bg-[var(--app-bg)] md:h-28" aria-hidden="true" />
         <CtaFooterSection />
       </div>
     </div>
