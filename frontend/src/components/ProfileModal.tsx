@@ -457,7 +457,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                 <SelectTrigger className="theme-input">
                   <SelectValue placeholder={t('profile.selectLanguage')} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="theme-popover">
                   {BASE_LANGUAGES.map((lang) => (
                     <SelectItem key={lang.value} value={lang.value}>
                       {getDisplayLabel(lang)}
