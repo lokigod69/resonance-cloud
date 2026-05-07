@@ -23,6 +23,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { LogOut, Check, Upload, Trash2 } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
+import { useToast } from '@/components/Toast'
 
 const SKINS: { id: SkinId; label: string }[] = [
   { id: 'classic', label: 'Classic' },
@@ -98,13 +99,12 @@ interface ProfileModalProps {
   onOpenChange: (open: boolean) => void
 }
 
-type AvatarStatus = 'idle' | 'working' | 'success' | 'error'
-
 export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) {
   const { profile, user, signOut, refreshProfile } = useAuth()
   const { t } = useTranslation()
   const { skin, setSkin } = useSkin()
   const { theme, setTheme } = useTheme()
+  const { toast } = useToast()
 
   const [displayName, setDisplayName] = useState(profile?.display_name || '')
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
@@ -121,12 +121,9 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   const [nameSaving, setNameSaving] = useState(false)
   const [nameSaved, setNameSaved] = useState(false)
   const [langSaving, setLangSaving] = useState(false)
-  const [langSaved, setLangSaved] = useState(false)
-  const [langError, setLangError] = useState<string | null>(null)
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
-  const [avatarStatus, setAvatarStatus] = useState<AvatarStatus>('idle')
-  const [avatarMessage, setAvatarMessage] = useState<string | null>(null)
+  const [avatarUploading, setAvatarUploading] = useState(false)
   const avatarUrl = useProfileAvatarUrl(profile?.avatar_path, profile?.avatar_updated_at)
   const hasAvatar = Boolean(profile?.avatar_path)
 
@@ -138,92 +135,85 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
     .toUpperCase()
     .slice(0, 2)
 
-  function flashAvatarStatus(status: AvatarStatus, messageKey: string | null) {
-    setAvatarStatus(status)
-    setAvatarMessage(messageKey)
-    if (status === 'success') {
-      window.setTimeout(() => {
-        setAvatarStatus('idle')
-        setAvatarMessage(null)
-      }, 2000)
-    }
-  }
-
   async function handleAvatarFile(file: File) {
     if (!user) return
 
     if (!ACCEPTED_INPUT_TYPES.includes(file.type)) {
-      flashAvatarStatus('error', t('profile.avatar.invalid'))
+      toast(t('profile.avatar.invalid'), 'error')
       return
     }
     if (file.size > MAX_INPUT_BYTES) {
-      flashAvatarStatus('error', t('profile.avatar.tooLarge'))
+      toast(t('profile.avatar.tooLarge'), 'error')
       return
     }
 
-    setAvatarStatus('working')
-    setAvatarMessage(null)
-
-    let resized: Blob
+    setAvatarUploading(true)
     try {
-      resized = await squareCropResizeToJpeg(file)
-    } catch {
-      flashAvatarStatus('error', t('profile.avatar.invalid'))
-      return
+      let resized: Blob
+      try {
+        resized = await squareCropResizeToJpeg(file)
+      } catch {
+        toast(t('profile.avatar.invalid'), 'error')
+        return
+      }
+
+      const path = avatarObjectPath(user.id)
+      const uploadResult = await supabase.storage
+        .from(AVATAR_BUCKET)
+        .upload(path, resized, {
+          upsert: true,
+          contentType: 'image/jpeg',
+          cacheControl: '3600',
+        })
+
+      if (uploadResult.error) {
+        toast(t('profile.avatar.uploadFailed'), 'error')
+        return
+      }
+
+      const updatedAt = new Date().toISOString()
+      const profileUpdate = await supabase
+        .from('profiles')
+        .update({ avatar_path: path, avatar_updated_at: updatedAt })
+        .eq('id', user.id)
+
+      if (profileUpdate.error) {
+        // Best-effort cleanup so the row and the bucket stay in sync.
+        await supabase.storage.from(AVATAR_BUCKET).remove([path]).catch(() => {})
+        toast(t('profile.avatar.uploadFailed'), 'error')
+        return
+      }
+
+      await refreshProfile()
+      toast(t('profile.avatar.saved'), 'success')
+    } finally {
+      setAvatarUploading(false)
     }
-
-    const path = avatarObjectPath(user.id)
-    const uploadResult = await supabase.storage
-      .from(AVATAR_BUCKET)
-      .upload(path, resized, {
-        upsert: true,
-        contentType: 'image/jpeg',
-        cacheControl: '3600',
-      })
-
-    if (uploadResult.error) {
-      flashAvatarStatus('error', t('profile.avatar.uploadFailed'))
-      return
-    }
-
-    const updatedAt = new Date().toISOString()
-    const profileUpdate = await supabase
-      .from('profiles')
-      .update({ avatar_path: path, avatar_updated_at: updatedAt })
-      .eq('id', user.id)
-
-    if (profileUpdate.error) {
-      // Best-effort cleanup so the row and the bucket stay in sync.
-      await supabase.storage.from(AVATAR_BUCKET).remove([path]).catch(() => {})
-      flashAvatarStatus('error', t('profile.avatar.uploadFailed'))
-      return
-    }
-
-    await refreshProfile()
-    flashAvatarStatus('success', t('profile.avatar.saved'))
   }
 
   async function handleAvatarRemove() {
     if (!user) return
-    setAvatarStatus('working')
-    setAvatarMessage(null)
+    setAvatarUploading(true)
+    try {
+      const path = avatarObjectPath(user.id)
+      await supabase.storage.from(AVATAR_BUCKET).remove([path]).catch(() => {})
 
-    const path = avatarObjectPath(user.id)
-    await supabase.storage.from(AVATAR_BUCKET).remove([path]).catch(() => {})
+      const updatedAt = new Date().toISOString()
+      const profileUpdate = await supabase
+        .from('profiles')
+        .update({ avatar_path: null, avatar_updated_at: updatedAt })
+        .eq('id', user.id)
 
-    const updatedAt = new Date().toISOString()
-    const profileUpdate = await supabase
-      .from('profiles')
-      .update({ avatar_path: null, avatar_updated_at: updatedAt })
-      .eq('id', user.id)
+      if (profileUpdate.error) {
+        toast(t('profile.avatar.uploadFailed'), 'error')
+        return
+      }
 
-    if (profileUpdate.error) {
-      flashAvatarStatus('error', t('profile.avatar.uploadFailed'))
-      return
+      await refreshProfile()
+      toast(t('profile.avatar.saved'), 'success')
+    } finally {
+      setAvatarUploading(false)
     }
-
-    await refreshProfile()
-    flashAvatarStatus('success', t('profile.avatar.saved'))
   }
 
   async function handleSaveDisplayName() {
@@ -246,8 +236,6 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
     const previousBaseLanguage = profile?.base_language || ''
     setBaseLanguage(value)
     setLangSaving(true)
-    setLangSaved(false)
-    setLangError(null)
 
     try {
       const { data, error } = await supabase
@@ -265,15 +253,13 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
           error,
         })
         setBaseLanguage(previousBaseLanguage)
-        setLangSaved(false)
-        setLangError(t('profile.saveFailed'))
+        toast(t('profile.saveFailed'), 'error')
         return
       }
 
       await refreshProfile()
       setBaseLanguage(data.base_language || value)
-      setLangSaved(true)
-      setTimeout(() => setLangSaved(false), 2000)
+      toast(t('profile.saved'), 'success')
     } catch (error) {
       console.error('[ProfileModal] base_language update exception', {
         userId: user.id,
@@ -281,8 +267,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
         error,
       })
       setBaseLanguage(previousBaseLanguage)
-      setLangSaved(false)
-      setLangError(t('profile.saveFailed'))
+      toast(t('profile.saveFailed'), 'error')
     } finally {
       setLangSaving(false)
     }
@@ -309,8 +294,8 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
 
         <div className="space-y-6 py-2">
           {/* Avatar */}
-          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-            <Avatar size="lg" className="size-20">
+          <div className="flex flex-col items-center gap-3">
+            <Avatar size="lg" className="size-28">
               {avatarUrl && (
                 <AvatarImage
                   src={avatarUrl}
@@ -320,61 +305,48 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                   className="object-cover"
                 />
               )}
-              <AvatarFallback className="text-base">{initials}</AvatarFallback>
+              <AvatarFallback className="text-2xl">{initials}</AvatarFallback>
             </Avatar>
-            <div className="flex flex-col gap-2 min-w-0 flex-1">
-              <div className="flex flex-wrap gap-2">
+            <div className="flex items-center gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                size="icon"
+                aria-label={hasAvatar ? t('profile.avatar.replace') : t('profile.avatar.upload')}
+                title={hasAvatar ? t('profile.avatar.replace') : t('profile.avatar.upload')}
+                className="min-h-11 min-w-11 border-border"
+                disabled={avatarUploading}
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <Upload className="h-4 w-4" />
+              </Button>
+              {hasAvatar && (
                 <Button
                   type="button"
                   variant="outline"
-                  size="sm"
-                  className="min-h-11 border-border"
-                  disabled={avatarStatus === 'working'}
-                  onClick={() => fileInputRef.current?.click()}
+                  size="icon"
+                  aria-label={t('profile.avatar.remove')}
+                  title={t('profile.avatar.remove')}
+                  className="min-h-11 min-w-11 border-border"
+                  disabled={avatarUploading}
+                  onClick={() => void handleAvatarRemove()}
                 >
-                  <Upload className="h-4 w-4 mr-2" />
-                  {hasAvatar ? t('profile.avatar.replace') : t('profile.avatar.upload')}
+                  <Trash2 className="h-4 w-4" />
                 </Button>
-                {hasAvatar && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    className="min-h-11 border-border"
-                    disabled={avatarStatus === 'working'}
-                    onClick={() => void handleAvatarRemove()}
-                  >
-                    <Trash2 className="h-4 w-4 mr-2" />
-                    {t('profile.avatar.remove')}
-                  </Button>
-                )}
-              </div>
-              <div className="min-h-4 text-xs">
-                {avatarStatus === 'working' && (
-                  <span className="text-muted-foreground">{t('profile.saving')}</span>
-                )}
-                {avatarStatus === 'success' && avatarMessage && (
-                  <span className="text-[var(--accent-2)] flex items-center gap-1">
-                    <Check className="h-3 w-3" /> {avatarMessage}
-                  </span>
-                )}
-                {avatarStatus === 'error' && avatarMessage && (
-                  <span className="text-destructive">{avatarMessage}</span>
-                )}
-              </div>
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/jpeg,image/png,image/webp"
-                className="hidden"
-                onChange={(e) => {
-                  const file = e.target.files?.[0]
-                  // Reset so re-selecting the same file still triggers onChange.
-                  e.target.value = ''
-                  if (file) void handleAvatarFile(file)
-                }}
-              />
+              )}
             </div>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0]
+                // Reset so re-selecting the same file still triggers onChange.
+                e.target.value = ''
+                if (file) void handleAvatarFile(file)
+              }}
+            />
           </div>
 
           {/* Skin Selector */}
@@ -466,12 +438,6 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
                 </SelectContent>
               </Select>
               {langSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
-              {langSaved && (
-                <span className="text-xs text-[var(--accent-2)] flex items-center gap-1 shrink-0">
-                  <Check className="h-3 w-3" /> {t('profile.saved')}
-                </span>
-              )}
-              {langError && <span className="text-xs text-destructive shrink-0">{langError}</span>}
             </div>
           </div>
 
