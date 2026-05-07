@@ -346,7 +346,13 @@ export function LyricsSheet({
           {renderGlassyCloseButton('right-6 top-20')}
         </div>
 
-        <div className="lyrics-shell lyrics-shell--glassy pointer-events-auto fixed inset-x-3 bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))] z-40 max-h-[72dvh] flex flex-col lg:hidden">
+        <div
+          className="lyrics-shell lyrics-shell--glassy pointer-events-auto fixed inset-x-3 z-40 flex flex-col lg:hidden"
+          style={{
+            top: 'var(--glassy-lyrics-mobile-top)',
+            bottom: 'calc(5.75rem + env(safe-area-inset-bottom, 0px))',
+          }}
+        >
           <div className="mb-3 flex items-center justify-between gap-3 pr-10">
             <div className="min-w-0">
               <p className="truncate text-sm font-medium">{track?.word ?? t('music.lyrics')}</p>
@@ -384,7 +390,7 @@ export function LyricsSheet({
             >
               <div
                 data-lyrics-scroll-body
-                className="h-full max-h-[52dvh] overflow-y-auto overscroll-contain flex justify-center py-5 [&::-webkit-scrollbar]:hidden"
+                className="h-full overflow-y-auto overscroll-contain flex justify-center py-5 [&::-webkit-scrollbar]:hidden"
                 style={{ scrollbarWidth: 'none' }}
               >
                 <pre
