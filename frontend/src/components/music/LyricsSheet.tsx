@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { AlertCircle, Loader2, X } from 'lucide-react'
 import type { MusicTrack } from '@/hooks/useMusicPlayer'
 import { Button } from '@/components/ui/button'
@@ -328,8 +329,12 @@ export function LyricsSheet({
     )
   }
 
+  if (!open) return null
+
+  const portalTarget = typeof document === 'undefined' ? null : document.body
+  if (!portalTarget) return null
+
   if (variant === 'glassy') {
-    if (!open) return null
 
     const renderGlassyCloseButton = (className = '') => (
       <button
@@ -345,8 +350,8 @@ export function LyricsSheet({
       </button>
     )
 
-    return (
-      <div data-glassy-lyrics-layer className="pointer-events-none fixed inset-0 z-30">
+    return createPortal(
+      <div data-glassy-lyrics-layer className="pointer-events-none fixed inset-0 z-[60]">
         <div className="hidden h-full items-center gap-6 px-6 pb-[calc(8rem+env(safe-area-inset-bottom,0px))] pt-24 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,28rem)_minmax(0,1fr)]">
           {hasTranslation
             ? renderLyricsPanel(t('music.lyrics.translation'), displayTranslation, 'lg:col-start-1')
@@ -361,7 +366,7 @@ export function LyricsSheet({
         <button
           type="button"
           onClick={() => onOpenChange(false)}
-          className="pointer-events-auto absolute left-0 right-0 z-30 bg-black/60 backdrop-blur-sm lg:hidden"
+          className="pointer-events-auto absolute left-0 right-0 z-0 bg-black/60 backdrop-blur-sm lg:hidden"
           style={{
             top: 'var(--glassy-header-offset)',
             bottom: 'calc(5.75rem + env(safe-area-inset-bottom, 0px))',
@@ -370,7 +375,7 @@ export function LyricsSheet({
         />
 
         <div
-          className="lyrics-shell lyrics-shell--glassy pointer-events-auto absolute inset-x-3 z-40 flex flex-col lg:hidden"
+          className="lyrics-shell lyrics-shell--glassy pointer-events-auto absolute inset-x-3 z-10 flex flex-col lg:hidden"
           style={{
             position: 'absolute',
             top: 'calc(var(--glassy-header-offset) + 1rem)',
@@ -438,16 +443,15 @@ export function LyricsSheet({
           )}
           {renderGlassyCloseButton('right-3 top-3')}
         </div>
-      </div>
+      </div>,
+      portalTarget,
     )
   }
 
-  if (!open) return null
-
-  return (
+  return createPortal(
     <div
       data-classic-lyrics-layer
-      className="pointer-events-none fixed inset-0 z-40 flex items-center justify-center px-4 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] pt-[calc(var(--app-safe-top)+4.5rem)]"
+      className="pointer-events-none fixed inset-0 z-[60] flex items-center justify-center px-4 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] pt-[calc(var(--app-safe-top)+4.5rem)]"
     >
       <section className="pointer-events-auto relative flex min-h-0 w-full max-w-[min(1180px,calc(100vw-2rem))] max-h-[calc(100dvh-9.5rem)] flex-col overflow-hidden rounded-xl border border-border/45 bg-gradient-to-br from-background/88 via-background/76 to-muted/58 p-4 text-foreground shadow-[0_28px_90px_rgba(0,0,0,0.32),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-2xl supports-[backdrop-filter]:bg-background/72 sm:p-5">
         {renderClassicCloseButton('right-3 top-3')}
@@ -538,6 +542,7 @@ export function LyricsSheet({
           )}
         </div>
       </section>
-    </div>
+    </div>,
+    portalTarget,
   )
 }
