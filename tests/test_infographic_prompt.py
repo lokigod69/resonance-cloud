@@ -16,6 +16,7 @@ from cloud_engines.image_engine.infographic_prompt import (  # noqa: E402
     INFOGRAPHIC_TEMPLATE_OPTIONS,
     build_infographic_compiler_prompt,
     build_infographic_planner_system_prompt,
+    build_infographic_planner_user_prompt,
     compile_infographic_prompt,
     infographic_prompt_metadata,
     infographic_template_reference,
@@ -136,6 +137,187 @@ def test_compiler_output_has_infographic_requirements_without_internal_labels():
     assert "threshold" in prompt
     for term in BANNED_VISIBLE_TERMS:
         assert term.lower() not in lower
+
+
+def test_compiler_forces_target_word_headword_and_base_translation_subtitle_orientation():
+    examples = [
+        ("chess", "Schach"),
+        ("failure", "Scheitern"),
+        ("winner", "Gewinner"),
+    ]
+
+    for word, translation in examples:
+        content = CardImageContent(
+            word=word,
+            translation=translation,
+            language="English",
+            language_code="en",
+            base_language="German",
+            pos="noun",
+        )
+        reversed_plan = {
+            **_plan(),
+            "title": translation,
+            "translation": word,
+            "base_language": "German",
+            "target_language": "English",
+            "panels": [
+                {
+                    "header": "Bedeutung",
+                    "type": "meaning",
+                    "text": [f"Deutsche Erklaerung fuer {word}."],
+                    "visual_note": "Lernsymbol.",
+                }
+            ],
+        }
+
+        prompt = compile_infographic_prompt(
+            content=content,
+            plan=reversed_plan,
+            infographic_template="infographic_knowledge_guide_v1",
+        )
+
+        assert f"Large title/headword, spelled exactly: {word}." in prompt
+        assert f"Translation/subtitle, spelled exactly: {translation}." in prompt
+        assert f"Large title/headword, spelled exactly: {translation}." not in prompt
+        assert f"Translation/subtitle, spelled exactly: {word}." not in prompt
+        assert "All explanatory text, panel headers, captions, labels, and descriptions must be in German" in prompt
+        assert "Only the target word, target-language forms, and target-language example sentences may appear in English" in prompt
+
+        v3_prompt = compile_infographic_prompt(
+            content=content,
+            plan={**reversed_plan, "infographic_template": "infographic_language_atlas_v3_reference"},
+            infographic_template="infographic_language_atlas_v3_reference",
+        )
+
+        assert f"TARGET WORD: {word}" in v3_prompt
+        assert f"TRANSLATION: {translation}" in v3_prompt
+        assert f"TARGET WORD: {translation}" not in v3_prompt
+        assert f"TRANSLATION: {word}" not in v3_prompt
+
+
+def test_planner_prompts_state_target_word_translation_orientation():
+    system_prompt = build_infographic_planner_system_prompt("infographic_language_atlas_v3_reference")
+    user_prompt = build_infographic_planner_user_prompt(
+        content=CardImageContent(
+            word="chess",
+            translation="Schach",
+            language="English",
+            language_code="en",
+            base_language="German",
+            pos="noun",
+        ),
+        infographic_template="infographic_language_atlas_v3_reference",
+    )
+
+    assert "title/headword must exactly equal the target word from the user prompt" in system_prompt
+    assert "translation/subtitle must exactly equal the base-language gloss" in system_prompt
+    assert "Target word/headword (English): chess" in user_prompt
+    assert "Translation/subtitle (German): Schach" in user_prompt
+
+
+def test_infographic_prompts_include_vocabulary_first_rule_and_template_lexical_requirements():
+    planner_prompt = build_infographic_planner_system_prompt("infographic_language_atlas_v3_reference")
+    compiler_prompt = compile_infographic_prompt(
+        content=CardImageContent(
+            word="chess",
+            translation="Schach",
+            language="English",
+            language_code="en",
+            base_language="German",
+            pos="noun",
+        ),
+        plan={
+            **_plan(),
+            "title": "chess",
+            "translation": "Schach",
+            "base_language": "German",
+            "target_language": "English",
+            "infographic_template": "infographic_language_atlas_v3_reference",
+        },
+        infographic_template="infographic_language_atlas_v3_reference",
+    )
+
+    for prompt in (planner_prompt, compiler_prompt):
+        assert "language-learning infographic about the target word, not a general encyclopedia article about the topic" in prompt
+        assert "At least 70% of the card content must teach the word as language" in prompt
+        assert "At most 30% may be world/topic knowledge" in prompt
+    assert "Language Atlas must include at least 4 lexical-learning sections" in planner_prompt
+    assert "meaning region / core sense" in planner_prompt
+    assert "Do not turn the card into a subject encyclopedia" in planner_prompt
+
+
+def test_template_specific_planner_rules_cover_study_museum_and_visual_dictionary():
+    study = build_infographic_planner_system_prompt("infographic_study_knowledge_v3_reference")
+    museum = build_infographic_planner_system_prompt("infographic_museum_exhibit_v3_reference")
+    visual_dictionary = build_infographic_planner_system_prompt("infographic_visual_dictionary_v2")
+
+    assert "Study / Knowledge Poster must include meaning, pronunciation if available" in study
+    assert "target-language examples with base-language glosses" in study
+    assert "Museum Exhibit must still teach the word as language" in museum
+    assert "Do not turn plain words into over-poetic fake museum exhibits" in museum
+    assert "Visual Dictionary must distinguish senses, synonyms/near-misses, grammar/usage, examples, and word family" in visual_dictionary
+    assert "Dictionary Header" not in visual_dictionary
+    assert "Visual Sense Callouts" not in visual_dictionary
+
+
+def test_compiler_keeps_examples_from_planner_and_adds_natural_example_guard_without_inventing():
+    prompt = compile_infographic_prompt(
+        content=CardImageContent(
+            word="winner",
+            translation="Gewinner",
+            language="English",
+            language_code="en",
+            base_language="German",
+            pos="noun",
+        ),
+        plan={
+            **_plan(),
+            "title": "winner",
+            "translation": "Gewinner",
+            "base_language": "German",
+            "target_language": "English",
+            "panels": [
+                {
+                    "header": "Beispiel",
+                    "type": "example",
+                    "text": ["She was the clear winner of the race. = Sie war die klare Gewinnerin des Rennens."],
+                    "visual_note": "Ziellinie.",
+                }
+            ],
+        },
+        infographic_template="infographic_study_poster_v2",
+    )
+
+    assert "Examples must be idiomatic and common" in prompt
+    assert "She was the clear winner of the race" in prompt
+    assert "Hard work is often the winner in the end" not in prompt
+    assert "always with article" not in prompt.lower()
+    assert "Im Singular meist mit Artikel: a winner / the winner. Im Plural auch ohne Artikel: winners." in prompt
+
+
+def test_compiler_filters_internal_visual_dictionary_section_names_from_visible_headers():
+    prompt = compile_infographic_prompt(
+        content=_content(),
+        plan={
+            **_plan(),
+            "title": "threshold",
+            "translation": "Schwelle",
+            "panels": [
+                {
+                    "header": "Dictionary Header",
+                    "type": "meaning",
+                    "text": ["Der Punkt, an dem etwas beginnt."],
+                    "visual_note": "Visual Sense Callouts",
+                }
+            ],
+        },
+        infographic_template="infographic_visual_dictionary_v2",
+    )
+
+    assert "Dictionary Header" not in prompt
+    assert "Visual Sense Callouts" not in prompt
+    assert "Der Punkt, an dem etwas beginnt." in prompt
 
 
 def test_compiler_keeps_safety_rules_internal_and_out_of_visible_content():

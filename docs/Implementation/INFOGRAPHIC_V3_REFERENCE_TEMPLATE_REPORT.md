@@ -28,6 +28,30 @@ V1/V2 are fresh-design modes: the planner chooses a word-specific educational pl
 
 V3 is consistent-template mode: the planner still writes word-specific content, but the compiler adds compact reference rules and the provider attaches the selected skeleton. The reference is visual scaffolding only. The model is told to preserve layout rhythm, palette, borders, icon style, typography mood, density, and premium infographic feel while ignoring all reference text.
 
+## Word Orientation
+
+Backend content is the authority for word roles:
+
+- `content.word` is the target-language headword/title.
+- `content.translation` is the base-language gloss/subtitle.
+- `content.language` is the target language.
+- `content.base_language` is the explanation language.
+
+The compiler now ignores swapped planner `title` / `translation` values for the top-level headword and subtitle. For a German base-language learner studying English, `word = chess` and `translation = Schach` compiles as headword `chess` and subtitle `Schach`; it must not reverse them.
+
+If Admin Lab rows are manually entered with a base-language word while `target_language` is English, that row is semantically malformed. The backend will still treat the entered `word` as the English target word because it cannot infer the user's intent safely.
+
+## Vocabulary-First Addendum
+
+All infographic planner/compiler paths now include the rule that this is a language-learning infographic about the target word, not a general encyclopedia article about the topic.
+
+Required content balance:
+
+- At least 70% word-as-language: meaning, pronunciation, part of speech, forms/grammar, examples, collocations, register, word family, synonyms/contrasts, false friends, common mistakes, usage notes, and learner warnings.
+- At most 30% world/topic knowledge, only when it directly helps the learner understand or use the word.
+
+Template-specific planner rules were added for Language Atlas, Study / Knowledge Poster, Museum Exhibit, and Visual Dictionary so topic-like nouns such as `chess`, `apple`, or `table` stay vocabulary-first. Natural example guidance was also added: examples must be idiomatic and common, and the compiler must not invent example sentences beyond the planner content.
+
 ## KIE Payload
 
 V3 reference runs use the KIE create-task endpoint:
@@ -128,6 +152,14 @@ Tests added or updated prove:
 - Missing V3 reference URL fails before the provider and records fallback metadata.
 - The Supabase resolver can turn a local skeleton asset into an HTTPS URL.
 - The compact V3 compiler prompt includes the ignore-reference-text, base-language, and no-fake-facts rules and stays under 3500 characters in tests.
+- Orientation tests cover `chess/Schach`, `failure/Scheitern`, and `winner/Gewinner`.
+- Vocabulary-first tests cover the 70/30 rule, template lexical requirements, natural example guard, and internal section-name filtering.
+
+V3 routing proof is in mocked provider tests: when a reference URL is resolved, the captured request body uses `gpt-image-2-image-to-image` with `input.input_urls`; when no reference URL is available, the provider is not called.
+
+## Prompt Compacting
+
+The V3 compiler prompt was kept compact by removing the always-present fallback blueprint text and replacing repeated rule blocks with one short orientation block, one vocabulary-first block, one reference-use block, the compact planner JSON, language rules, panel flexibility, and hard bans. Tests guard against duplicate reference-rule blocks and keep the sample V3 prompt under roughly 3500 characters.
 
 Run for this change:
 
@@ -153,3 +185,5 @@ Run for this change:
 - KIE file size and image dimension constraints were not independently verified beyond using 16:9 PNG skeletons and documented payload fields.
 - Supabase public URL access depends on bucket policy; private buckets require a signed-URL extension before production use.
 - Reference-guided output quality still needs Admin Lab review before V3 is exposed to normal users.
+- Admin Lab cannot automatically detect user-entered word/translation role mistakes; it follows the explicit backend contract that `word` is target-language and `translation` is base-language.
+- Vocabulary-first prompting reduces topic drift but cannot fully guarantee model compliance without visual QA of generated outputs.

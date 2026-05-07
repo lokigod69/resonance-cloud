@@ -70,6 +70,20 @@ INTERNAL_SAFETY_VISIBLE_PHRASES = (
     "safety instruction",
 )
 
+INTERNAL_TEMPLATE_VISIBLE_PHRASES = (
+    "dictionary header",
+    "visual sense callouts",
+)
+
+VOCABULARY_FIRST_RULES = (
+    "This is a language-learning infographic about the target word, not a general encyclopedia article about the topic.",
+    "At least 70% of the card content must teach the word as language: meaning, pronunciation, part of speech, forms / grammar, example sentences, collocations, register, word family, synonyms / contrasts, false friends, common mistakes, usage notes, or learner warnings.",
+    "At most 30% may be world/topic knowledge, and only when it directly helps the learner understand or use the word.",
+    "Examples must be idiomatic and common. Avoid unnatural examples created only to fit the word.",
+    "Use planner-provided examples; the compiler must not invent new example sentences.",
+    "For singular countable nouns, avoid absolute article claims; use nuanced wording such as: Im Singular meist mit Artikel: a winner / the winner. Im Plural auch ohne Artikel: winners.",
+)
+
 
 @dataclass(frozen=True)
 class InfographicTemplate:
@@ -445,6 +459,29 @@ def infographic_template_reference_for_render(value: str | None) -> dict[str, An
     return reference
 
 
+def _template_lexical_requirements(template_value: str) -> tuple[str, ...]:
+    if "language_atlas" in template_value:
+        return (
+            "Language Atlas must include at least 4 lexical-learning sections from: meaning region / core sense, border zones / near-misses / false friends, trade routes / collocations, climate/register, modern habitat / where the word is used, origin route if reliable.",
+            "For topic-like nouns such as chess, apple, or table: Do not turn the card into a subject encyclopedia. Teach the word first, topic second.",
+        )
+    if "study_poster" in template_value or "study_knowledge" in template_value:
+        return (
+            "Study / Knowledge Poster must include meaning, pronunciation if available/reliable, grammar/forms, 1-2 target-language examples with base-language glosses, collocations, and a common mistake or usage warning.",
+        )
+    if "museum_exhibit" in template_value:
+        return (
+            "Museum Exhibit must still teach the word as language: current usage, related words or contrasts, one example or usage plaque, and a curator note about nuance.",
+            "Use origin or cultural notes only if reliable. Do not turn plain words into over-poetic fake museum exhibits.",
+        )
+    if "visual_dictionary" in template_value:
+        return (
+            "Visual Dictionary must distinguish senses, synonyms/near-misses, grammar/usage, examples, and word family.",
+            "Avoid rendering internal section names such as dictionary scaffolding or visual callout labels as visible headers.",
+        )
+    return ()
+
+
 def build_infographic_planner_system_prompt(infographic_template: str) -> str:
     template = globals()["infographic_template"](infographic_template)
     lines = [
@@ -456,8 +493,14 @@ def build_infographic_planner_system_prompt(infographic_template: str) -> str:
         "- The learner should inspect it for 30 seconds.",
         "- Explanatory text, headers, labels, captions, notes, and descriptions must be in the learner's base language.",
         "- Only the target word, target-language forms, and target-language example sentences may appear in the target language.",
+        "- The title/headword must exactly equal the target word from the user prompt. Do not swap it with the translation.",
+        "- The translation/subtitle must exactly equal the base-language gloss from the user prompt. Do not swap it with the target word.",
         "- Never invent facts, quotes, etymologies, or mnemonics. Omit weak mnemonics.",
         "- Prefer 6-8 compact panels unless the chosen template specifies fewer.",
+        "",
+        "Vocabulary-first rule:",
+        *VOCABULARY_FIRST_RULES,
+        *_template_lexical_requirements(template.value),
         "",
         f"Planner identity: {template.planner_identity}",
         f"Goal: {template.goal}",
@@ -498,11 +541,12 @@ def build_infographic_planner_user_prompt(
     infographic_template: str,
 ) -> str:
     template = globals()["infographic_template"](infographic_template)
+    base_language = content.base_language or "English"
     return "\n".join(
         [
-            f"Target word: {content.word}",
-            f"Translation: {content.translation}",
-            f"Base language: {content.base_language or 'English'}",
+            f"Target word/headword ({content.language}): {content.word}",
+            f"Translation/subtitle ({base_language}): {content.translation}",
+            f"Base language: {base_language}",
             f"Target language: {content.language}",
             f"Part of speech: {content.pos or 'unknown'}",
             f"Known image scene / visual clue: {content.image_scene or 'none'}",
@@ -534,10 +578,10 @@ def compile_infographic_prompt(
     infographic_template: str,
 ) -> str:
     template = globals()["infographic_template"](infographic_template)
-    base_language = _clean(plan.get("base_language")) or _clean(content.base_language) or "English"
-    target_language = _clean(plan.get("target_language")) or _clean(content.language) or "target language"
-    title = _clean(plan.get("title")) or _clean(content.word)
-    translation = _clean(plan.get("translation")) or _clean(content.translation)
+    base_language = _clean(content.base_language) or _clean(plan.get("base_language")) or "English"
+    target_language = _clean(content.language) or _clean(plan.get("target_language")) or "target language"
+    title = _clean(content.word) or _clean(plan.get("title"))
+    translation = _clean(content.translation) or _clean(plan.get("translation"))
     if infographic_template_requires_reference(template.value):
         return _compile_v3_reference_prompt(
             content=content,
@@ -557,8 +601,10 @@ def compile_infographic_prompt(
         "Use short readable text, not paragraphs. Keep hierarchy premium, editorial, and uncluttered.",
         f"Large title/headword, spelled exactly: {title}.",
         f"Translation/subtitle, spelled exactly: {translation}.",
+        "Orientation rule: the title/headword is the target-language word; the subtitle is the base-language gloss.",
         f"All explanatory text, panel headers, captions, labels, and descriptions must be in {base_language}.",
         f"Only the target word, target-language forms, and target-language example sentences may appear in {target_language}.",
+        *VOCABULARY_FIRST_RULES,
         "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics. If a mnemonic is weak, omit it.",
         f"All explanations, panel headers, captions, warnings, glosses, and footer text must be in {base_language}.",
         f"The target word, target-language forms, target-language example sentences, and collocations may remain in {target_language}.",
@@ -795,6 +841,12 @@ def _compile_v3_reference_prompt(
         f"TRANSLATION: {translation}",
         f"BASE LANGUAGE: {base_language}",
         f"TARGET LANGUAGE: {target_language}",
+        "Orientation: TARGET WORD is the target-language headword; TRANSLATION is the base-language gloss.",
+        "Vocabulary-first: " + VOCABULARY_FIRST_RULES[0],
+        VOCABULARY_FIRST_RULES[1],
+        VOCABULARY_FIRST_RULES[2],
+        VOCABULARY_FIRST_RULES[3],
+        VOCABULARY_FIRST_RULES[4],
         "",
         "Use the attached reference image only as visual scaffolding.",
         "Preserve layout, panel rhythm, palette, border style, icon style, typography mood, density, and premium infographic feel.",
@@ -803,7 +855,7 @@ def _compile_v3_reference_prompt(
         "",
         "All visible text must come from the planner content.",
         "All visible content must come from this planner content:",
-        _planner_content_compact(plan),
+        _planner_content_compact(plan, title=title, translation=translation),
         "",
         "Language rule:",
         f"All explanations, panel headers, captions, warnings, glosses, and footer text must be in {base_language}.",
@@ -823,16 +875,21 @@ def _compile_v3_reference_prompt(
         "",
         "The planner content is the source of truth.",
     ]
-    if template.fallback_style_description:
-        lines.extend(["", f"Reference blueprint fallback: {template.fallback_style_description}"])
     return _remove_internal_terms("\n".join(lines))
 
 
-def _planner_content_compact(plan: Mapping[str, Any]) -> str:
+def _planner_content_compact(
+    plan: Mapping[str, Any],
+    *,
+    title: str | None = None,
+    translation: str | None = None,
+) -> str:
     compact: dict[str, Any] = {}
+    if _clean(title):
+        compact["title"] = _clean(title)
+    if _clean(translation):
+        compact["translation"] = _clean(translation)
     for key in (
-        "title",
-        "translation",
         "visual_anchor",
         "hero_treatment",
         "analysis_summary",
@@ -914,7 +971,9 @@ def _iter_list_items(value: Any):
 
 def _is_internal_safety_text(value: Any) -> bool:
     text = _clean(value).lower()
-    return any(phrase in text for phrase in INTERNAL_SAFETY_VISIBLE_PHRASES)
+    return any(phrase in text for phrase in INTERNAL_SAFETY_VISIBLE_PHRASES) or any(
+        phrase in text for phrase in INTERNAL_TEMPLATE_VISIBLE_PHRASES
+    )
 
 
 def _compact_json_preview(value: Mapping[str, Any]) -> str:
