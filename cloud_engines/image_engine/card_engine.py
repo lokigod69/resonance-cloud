@@ -227,11 +227,32 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 "infographic_template": selected_infographic_template,
             },
         ) as ev:
-            infographic_result = write_infographic_prompt(
-                content=payload.content,
-                layer2=layer2_customization,
-                infographic_template=selected_infographic_template,
-            )
+            try:
+                infographic_result = write_infographic_prompt(
+                    content=payload.content,
+                    layer2=layer2_customization,
+                    infographic_template=selected_infographic_template,
+                )
+            except Exception as exc:
+                if selected_infographic_template == "infographic_dense_editorial_v4":
+                    message = f"Infographic V4 prompt writer failed: {type(exc).__name__}: {exc}"
+                    return {
+                        "success": False,
+                        "file_path": None,
+                        "error_message": message,
+                        "prompt_text": "",
+                        "provider_name": "gpt_image_2",
+                        "model_name": provider_model,
+                        "gpt_image_2_card_metadata": {
+                            "backend_template": selected_backend_template,
+                            "infographic_template": selected_infographic_template,
+                            "failure_origin": "prompt_writer",
+                            "provider_reached": False,
+                            "provider_model": provider_model,
+                            "error_message": message,
+                        },
+                    }
+                raise
             prompt_text = infographic_result.prompt
             reference_for_render = infographic_template_reference_for_render(
                 infographic_result.infographic_template
@@ -421,6 +442,8 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         card_metadata.get("infographic_template") == "infographic_dense_editorial_v4"
         and card_metadata.get("validator_passed") is False
     ):
+        card_metadata["provider_reached"] = False
+        card_metadata["failure_origin"] = "validator"
         validator_errors = card_metadata.get("validator_errors") or []
         error_message = "Infographic V4 validator failed: " + "; ".join(
             str(item) for item in validator_errors
@@ -435,6 +458,8 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             "gpt_image_2_card_metadata": card_metadata,
         }
     if infographic_reference_required and not infographic_reference_input_urls:
+        card_metadata["provider_reached"] = False
+        card_metadata["failure_origin"] = "reference_url"
         error_message = (
             "Infographic V3 reference URL unavailable; refusing to submit a "
             f"text-to-image fallback as reference-guided output: {infographic_reference_error}"
@@ -461,6 +486,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         "model": provider_model,
         "input": request_input,
     }
+    card_metadata["provider_reached"] = True
     with logged_api_call(
         stage="pending_image",
         sub_step="render_card_image",
@@ -478,13 +504,25 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             "reference_attached": bool(infographic_reference_input_urls),
         },
     ) as ev:
-        result = render_scene_gpt_image_2(
-            prompt_text=prompt_text,
-            output_path=output_path,
-            aspect_ratio=provider_aspect_ratio,
-            resolution="1K",
-            input_urls=infographic_reference_input_urls,
-        )
+        try:
+            result = render_scene_gpt_image_2(
+                prompt_text=prompt_text,
+                output_path=output_path,
+                aspect_ratio=provider_aspect_ratio,
+                resolution="1K",
+                input_urls=infographic_reference_input_urls,
+            )
+        except Exception as exc:
+            card_metadata["provider_error_summary"] = f"{type(exc).__name__}: {exc}"
+            return {
+                "success": False,
+                "file_path": None,
+                "error_message": f"Card image provider failed: {type(exc).__name__}: {exc}",
+                "prompt_text": prompt_text,
+                "provider_name": "gpt_image_2",
+                "model_name": provider_model,
+                "gpt_image_2_card_metadata": card_metadata,
+            }
         ev._model_provider = result.get("provider_name") or "gpt_image_2"
         ev._model_name = result.get("model_name") or "gpt-image-2"
         ev.record_response(
@@ -493,6 +531,11 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             request_id=result.get("request_id"),
             cost_usd=result.get("cost_estimate_usd"),
         )
+        if result.get("request_id"):
+            card_metadata["provider_task_id"] = result.get("request_id")
+            card_metadata["kie_task_id"] = result.get("request_id")
+        if not result.get("success"):
+            card_metadata["provider_error_summary"] = result.get("error_message") or "provider returned unsuccessful result"
         result["gpt_image_2_card_metadata"] = card_metadata
         return result
 

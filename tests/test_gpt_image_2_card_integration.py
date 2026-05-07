@@ -1159,6 +1159,8 @@ def test_v4_dense_editorial_infographic_uses_text_to_image_and_metadata(monkeypa
     assert metadata["validator_errors"] == []
     assert metadata["prompt_rule_ratio_estimate"] == 0.22
     assert metadata["dense_editorial_word_category"] == "concrete"
+    assert metadata["provider_reached"] is True
+    assert metadata["provider_task_id"] == "task-infographic-v4"
 
 
 def test_v4_dense_editorial_validator_failure_stops_before_provider(monkeypatch, tmp_path):
@@ -1225,6 +1227,57 @@ def test_v4_dense_editorial_validator_failure_stops_before_provider(monkeypatch,
     assert metadata["validator_passed"] is False
     assert metadata["validator_retry_count"] == 1
     assert metadata["validator_errors"] == ["banned visible metadata: Zielsprache", "required learning modules missing"]
+    assert metadata["provider_reached"] is False
+    assert metadata["failure_origin"] == "validator"
+
+
+def test_v4_dense_editorial_prompt_writer_failure_records_before_provider_metadata(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **_kwargs):
+            return None
+
+    def fake_write_infographic_prompt(**_kwargs):
+        raise RuntimeError("dense editorial prompt writer returned empty output")
+
+    def fake_render_scene_gpt_image_2(**_kwargs):
+        raise AssertionError("prompt writer failure must fail before provider call")
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_infographic_prompt", fake_write_infographic_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.layer2_customization = {
+        "meaning_strategy": "clear_meaning",
+        "presentation_form": "infographic_card",
+        "visual_intensity": "balanced",
+        "backend_template": "infographic_prompt_v1",
+        "infographic_template": "infographic_dense_editorial_v4",
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "failed"
+    assert result.error is not None
+    assert "prompt writer failed" in result.error.message
+    metadata = result.gpt_image_2_card_metadata
+    assert metadata is not None
+    assert metadata["failure_origin"] == "prompt_writer"
+    assert metadata["provider_reached"] is False
 
 
 def test_direct_prompt_word_object_allows_target_word_and_bans_translation(monkeypatch, tmp_path):

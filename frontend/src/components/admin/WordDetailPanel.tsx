@@ -18,6 +18,7 @@ import {
 } from '@/components/generate/useWizardState'
 import { infographicTemplateLabel, layer2BackendTemplateLabel } from '@/lib/adminLayer2Lab'
 import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
+import { classifyCardGenerationFailure } from '@/lib/cardFailureClassification'
 
 type WordRecord = {
   id: string
@@ -45,6 +46,10 @@ type WordRecord = {
   thumbnail_url: string | null
   image_url?: string | null
   card_image_url?: string | null
+  generation_job?: {
+    status?: string | null
+    error_message?: string | null
+  } | null
   video_url_b: string | null
   thumbnail_url_b: string | null
   error_message: string | null
@@ -99,7 +104,10 @@ export default function WordDetailPanel({
   const cardImageStyle = cleanText(layer2Eval?.art_style as string | null | undefined)
   const layer2Summary = formatLayer2EvalSummary(layer2Eval)
   const outputState = formatOutputPresence(word)
-  const queueState = formatAdminQueueState(word)
+  const failureClassification = classifyCardGenerationFailure(word)
+  const queueState = failureClassification.label
+  const providerIdentity = cleanText(gptImage2Card?.provider_task_id as string | null | undefined)
+    ?? cleanText(gptImage2Card?.kie_task_id as string | null | undefined)
   const gptEnrichmentRows = [
     { label: 'Mnemonic (visual scene)', value: cleanText(word.mnemonic) },
     { label: 'Bridge mnemonic', value: cleanText(word.bridge_mnemonic) },
@@ -179,7 +187,11 @@ export default function WordDetailPanel({
           <InfoRow label="Retry Requested" value={formatBoolean(word.retry_requested)} />
           <InfoRow label="Retry Requested At" value={word.retry_requested_at} />
           <InfoRow label="Queue / Worker State" value={queueState} />
+          <InfoRow label="Failure Classification" value={failureClassification.kind} />
+          <InfoRow label="Provider Reach" value={failureClassification.providerReached === false ? 'Provider was not reached' : failureClassification.providerReached === true ? 'Provider was reached' : 'Unknown'} />
           <InfoRow label="Image Output Presence" value={outputState} />
+          <InfoRow label="Generation Job Status" value={word.generation_job?.status} />
+          <InfoRow label="Generation Job Error" value={word.generation_job?.error_message} />
           <div>
             <span className="text-muted-foreground">Rating: </span>
             {word.rating ? (
@@ -273,6 +285,10 @@ export default function WordDetailPanel({
                 <MetaRow label="Backend Template" value={formatBackendTemplate(gptImage2Card?.backend_template)} />
                 <MetaRow label="Infographic Template" value={formatInfographicTemplate(gptImage2Card?.infographic_template)} />
                 <MetaRow label="Provider Model" value={cleanText(gptImage2Card?.provider_model as string | null | undefined)} />
+                <MetaRow label="Provider Reached" value={formatBoolean(gptImage2Card?.provider_reached)} />
+                <MetaRow label="Failure Origin" value={cleanText(gptImage2Card?.failure_origin as string | null | undefined)} />
+                <MetaRow label="Provider Task ID" value={providerIdentity ?? (failureClassification.providerReached === false ? 'Provider was not reached.' : null)} />
+                <MetaRow label="Provider Error Summary" value={cleanText(gptImage2Card?.provider_error_summary as string | null | undefined)} />
                 <MetaRow label="V4 Prompt Writer Model" value={cleanText(gptImage2Card?.prompt_writer_model as string | null | undefined)} />
                 <MetaRow label="Dense Editorial" value={formatBoolean(gptImage2Card?.dense_editorial)} />
                 <MetaRow label="Vocabulary First" value={formatBoolean(gptImage2Card?.vocabulary_first)} />
@@ -552,21 +568,6 @@ function formatOutputPresence(word: WordRecord): string {
     word.video_url ? 'video_url' : null,
   ].filter(Boolean)
   return present.length > 0 ? present.join(', ') : 'none'
-}
-
-function formatAdminQueueState(word: WordRecord): string {
-  if (word.retry_requested) return `retry requested${word.retry_requested_at ? ` at ${word.retry_requested_at}` : ''}`
-  if (word.failed_stage || word.status === 'failed') return `failed${word.failed_stage ? ` at ${word.failed_stage}` : ''}`
-  if (word.status === 'complete') {
-    return formatOutputPresence(word) === 'none' ? 'complete but no output URL present' : 'complete with output'
-  }
-  if (word.status === 'processing' || word.current_stage) {
-    return `provider or worker running${word.current_stage ? `: ${word.current_stage}` : ''}`
-  }
-  if (word.status === 'approved' || word.status === 'pending_image' || word.status === 'pending') {
-    return 'queued; may be waiting behind same-deck lock'
-  }
-  return word.status
 }
 
 function formatLayer2EvalSummary(layer2Eval: Record<string, unknown> | null): string | null {

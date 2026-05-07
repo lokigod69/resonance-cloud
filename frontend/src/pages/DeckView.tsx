@@ -25,6 +25,7 @@ import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
 import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
+import { classifyCardGenerationFailure, getCardRetryAction } from '@/lib/cardFailureClassification'
 
 type Deck = {
   id: string
@@ -69,34 +70,6 @@ type Word = {
   created_at: string
 }
 
-function hasRenderableOutput(word: Word): boolean {
-  return Boolean(word.video_url || word.thumbnail_url || word.image_url || word.card_image_url)
-}
-
-function describeWordRunState(word: Word): string {
-  const parts = [
-    `status: ${word.status}`,
-    word.current_stage ? `stage: ${word.current_stage}` : null,
-    word.failed_stage ? `failed: ${word.failed_stage}` : null,
-    word.retry_requested ? 'retry requested' : null,
-    hasRenderableOutput(word) ? 'output present' : null,
-  ].filter(Boolean)
-  return parts.join(' · ')
-}
-
-function getRetryFeedback(word: Word): { blocked: boolean; message: string } {
-  if (word.retry_requested) {
-    return { blocked: true, message: `Retry already queued/requested. ${describeWordRunState(word)}` }
-  }
-  if (word.status === 'processing' || word.current_stage === 'pending_image' || word.current_stage === 'image_generation') {
-    return { blocked: true, message: `Currently processing. ${describeWordRunState(word)}` }
-  }
-  if (word.status === 'complete' && !hasRenderableOutput(word)) {
-    return { blocked: false, message: `Complete but no visible output URL is present. ${describeWordRunState(word)}` }
-  }
-  return { blocked: false, message: describeWordRunState(word) }
-}
-
 export default function DeckView() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
@@ -128,9 +101,9 @@ export default function DeckView() {
 
   const handleRetry = async (word: Word) => {
     if (!user) return
-    const localRetryState = getRetryFeedback(word)
-    if (localRetryState.blocked) {
-      toast(localRetryState.message, 'info')
+    const retryAction = getCardRetryAction(word)
+    if (!retryAction.submitRetry) {
+      toast(retryAction.message, 'info')
       return
     }
     setRetrying(word.id)
@@ -150,7 +123,7 @@ export default function DeckView() {
         throw new Error(result?.error || 'Retry request failed')
       }
       if (result.already_requested) {
-        toast(`Retry already queued/requested. ${describeWordRunState(word)}`, 'info')
+        toast('Retry already requested / queued', 'info')
         const { data: refreshedWords } = await supabase
           .from('words')
           .select('*')
@@ -462,6 +435,7 @@ export default function DeckView() {
         {words.map((word) => {
           const isComplete = word.status === 'complete'
           const isFailed = word.status === 'failed'
+          const cardDiagnostic = isCardDeck ? classifyCardGenerationFailure(word) : null
 
           const isSelectable = word.status !== 'pending' && word.status !== 'processing'
           const isSelected = selectedWords.has(word.id)
@@ -574,6 +548,12 @@ export default function DeckView() {
                     <p className="text-xs text-destructive-foreground">
                       {isCardDeck ? t('deckview.cardFailure') : t('deckview.couldNotGenerate')}
                     </p>
+                    {cardDiagnostic && (
+                      <p className="text-[11px] text-destructive-foreground/70">
+                        {cardDiagnostic.label}
+                        {cardDiagnostic.providerReached === false ? ' · Provider was not reached' : ''}
+                      </p>
+                    )}
                     {!editMode && (
                       <div className="flex gap-1.5 pt-1">
                         <Button
@@ -616,6 +596,11 @@ export default function DeckView() {
                         ? t('deckview.queued')
                         : isCardDeck ? t('deckview.cardCreation') : t('deckview.processing')}
                     </p>
+                    {cardDiagnostic && (
+                      <p className="text-[11px] text-muted-foreground/70">
+                        {cardDiagnostic.label}
+                      </p>
+                    )}
                   </div>
                 </div>
               )}

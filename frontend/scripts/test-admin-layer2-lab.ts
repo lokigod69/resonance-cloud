@@ -27,6 +27,10 @@ import {
   validateLayer2LabSubmit,
   type Layer2LabRun,
 } from '../src/lib/adminLayer2Lab.ts'
+import {
+  classifyCardGenerationFailure,
+  getCardRetryAction,
+} from '../src/lib/cardFailureClassification.ts'
 
 let failures = 0
 let passes = 0
@@ -88,6 +92,40 @@ console.log('\n[word normalization]')
 {
   const words = normalizeLayer2LabWords(' pride, remorse\nflowers, pride ')
   assert('splits comma/newline input and dedupes', words.join('|') === 'pride|remorse|flowers', words)
+}
+
+console.log('\n[card failure classification]')
+{
+  assert('V4 validator error classifies before-provider failure',
+    classifyCardGenerationFailure({
+      status: 'failed',
+      error_message: 'Infographic V4 validator failed: banned visible metadata',
+      metadata: { gpt_image_2_card: { validator_passed: false, validator_errors: ['banned visible metadata'], provider_reached: false } },
+    }).kind === 'validator_failed')
+  assert('prompt writer error classifies before-provider failure',
+    classifyCardGenerationFailure({
+      status: 'failed',
+      error_message: 'dense editorial prompt writer returned empty output',
+      metadata: { gpt_image_2_card: { failure_origin: 'prompt_writer', provider_reached: false } },
+    }).kind === 'prompt_writer_failed')
+  assert('provider timeout is detected',
+    classifyCardGenerationFailure({ status: 'failed', error_message: 'KIE task timed out after polling' }).kind === 'provider_timeout')
+  assert('provider rejection is detected',
+    classifyCardGenerationFailure({ status: 'failed', error_message: 'provider rejected request: policy' }).kind === 'provider_rejected')
+  assert('retry requested takes precedence',
+    classifyCardGenerationFailure({ status: 'failed', retry_requested: true }).kind === 'retry_already_requested')
+  assert('same-deck lock wait is detected',
+    classifyCardGenerationFailure({ status: 'approved', current_stage: 'waiting_same_deck_lock' }).kind === 'waiting_same_deck_lock')
+  assert('queued row is detected',
+    classifyCardGenerationFailure({ status: 'approved' }).kind === 'queued')
+  assert('provider running row is detected',
+    classifyCardGenerationFailure({ status: 'processing', current_stage: 'pending_image' }).kind === 'provider_running')
+  assert('complete row with output is detected',
+    classifyCardGenerationFailure({ status: 'complete', thumbnail_url: 'https://example.test/card.png' }).kind === 'complete_with_output')
+  assert('complete row missing output is detected',
+    classifyCardGenerationFailure({ status: 'complete' }).kind === 'complete_missing_output')
+  assert('retry action blocks duplicate retry when already requested',
+    getCardRetryAction({ status: 'failed', retry_requested: true }).submitRetry === false)
 }
 
 console.log('\n[script row builder]')
