@@ -384,21 +384,28 @@ export function LyricsSheet({
             </div>
           ) : null}
           {mobileLyrics ? (
-            <div
-              data-lyrics-scroll-shell
-              className="lyrics-scroll-fade flex-1"
-            >
+            <div className="relative flex min-h-0 flex-1">
               <div
-                data-lyrics-scroll-body
-                className="h-full overflow-y-auto overscroll-contain flex justify-center py-5 [&::-webkit-scrollbar]:hidden"
-                style={{ scrollbarWidth: 'none' }}
+                data-lyrics-scroll-shell
+                className="min-h-0 flex-1 overflow-y-auto overscroll-contain [&::-webkit-scrollbar]:hidden"
+                style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
               >
-                <pre
-                  className="inline-block max-w-full whitespace-pre-wrap text-left font-sans text-[15px] leading-7 [text-shadow:_0_1px_1px_rgba(0,0,0,0.22)]"
+                <div
+                  data-lyrics-scroll-body
+                  className="min-h-full flex items-center justify-center px-2 py-5"
                 >
-                  {mobileLyrics}
-                </pre>
+                  <pre
+                    className="inline-block max-w-full whitespace-pre-wrap text-left font-sans text-[15px] leading-7 [text-shadow:_0_1px_1px_rgba(0,0,0,0.22)]"
+                  >
+                    {mobileLyrics}
+                  </pre>
+                </div>
               </div>
+              <div
+                className="lyrics-scroll-fade pointer-events-none inset-0"
+                style={{ position: 'absolute' }}
+                aria-hidden
+              />
             </div>
           ) : renderStatusBody()}
           {renderGlassyCloseButton('right-3 top-3')}
