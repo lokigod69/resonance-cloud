@@ -50,6 +50,7 @@ export function SkinProvider({ children }: { children: ReactNode }) {
   }, [skin])
 
   const setSkin = (newSkin: SkinId) => {
+    if (newSkin === skin) return
     setSkinState(newSkin)
     localStorage.setItem(STORAGE_KEY, newSkin)
   }
