@@ -297,6 +297,8 @@ export default function WordDetailPanel({
                 <MetaRow label="Validator Passed" value={formatBoolean(gptImage2Card?.validator_passed)} />
                 <MetaRow label="Validator Retry Count" value={gptImage2Card?.validator_retry_count as number | null | undefined} />
                 <MetaRow label="Validator Errors" value={formatUnknownJsonValue(gptImage2Card?.validator_errors)} />
+                <MetaRow label="Validator Hard Errors" value={formatUnknownJsonValue(gptImage2Card?.validator_hard_errors)} />
+                <MetaRow label="Validator Warnings" value={formatUnknownJsonValue(gptImage2Card?.validator_warnings)} />
                 <MetaRow label="Prompt Rule Ratio Estimate" value={formatNumber(gptImage2Card?.prompt_rule_ratio_estimate)} />
                 <MetaRow label="Prompt Length Warning" value={cleanText(gptImage2Card?.prompt_length_warning as string | null | undefined)} />
                 <MetaRow label="Reference Attached" value={formatBoolean(gptImage2Card?.reference_attached)} />

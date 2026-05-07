@@ -56,7 +56,7 @@ export function classifyCardGenerationFailure(row: CardFailureInput): CardFailur
       : result('complete_missing_output', providerReached, 'Complete but output missing', null)
   }
   if (String(cardMeta?.validator_passed) === 'false' || error.includes('validator failed')) {
-    return result('validator_failed', false, 'Validator failed before provider', formatList(cardMeta?.validator_errors) ?? row.error_message ?? null)
+    return result('validator_failed', false, 'Validator failed before provider', formatList(cardMeta?.validator_hard_errors) ?? formatList(cardMeta?.validator_errors) ?? row.error_message ?? null)
   }
   if (cardMeta?.failure_origin === 'prompt_writer' || error.includes('prompt writer')) {
     return result('prompt_writer_failed', false, 'Prompt writer failed before provider', row.error_message ?? null)

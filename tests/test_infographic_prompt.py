@@ -503,11 +503,49 @@ def test_v4_validator_catches_banned_labels_json_keys_and_reversed_orientation()
     )
 
     assert result["passed"] is False
-    errors = " ".join(result["errors"])
-    assert "banned visible metadata" in errors
-    assert "raw JSON key" in errors
-    assert "target/translation appear swapped" in errors
-    assert "required learning modules" in errors
+    hard_errors = " ".join(result["hard_errors"])
+    warnings = " ".join(result["warnings"])
+    assert "banned visible metadata" in hard_errors
+    assert "raw JSON key" in hard_errors
+    assert "target/translation appear swapped" in hard_errors
+    assert "required learning modules" in warnings
+
+
+def test_v4_validator_allows_safe_words_with_warnings_only():
+    examples = [
+        ("onomatopoeia", "Lautmalerei"),
+        ("flamboyant", "extravagant"),
+        ("punctuality", "Pünktlichkeit"),
+        ("authority", "Autorität"),
+        ("failure", "Scheitern"),
+    ]
+
+    for word, translation in examples:
+        content = CardImageContent(
+            word=word,
+            translation=translation,
+            language="English",
+            language_code="en",
+            base_language="German",
+            pos="noun",
+        )
+        prompt = (
+            f"Create a horizontal 16:9 premium vocabulary-learning infographic for the English word "
+            f"'{word}', glossed in German as '{translation}'. Use German explanations and English examples. "
+            "Teach the word as language first with meaning, pronunciation, grammar, examples, collocations, "
+            "register, usage notes, synonyms, contrasts, and common mistakes. Avoid invented facts, invented "
+            "quotes, unsupported etymologies, and forced memory tricks."
+        )
+
+        result = validate_dense_editorial_prompt(
+            prompt=prompt,
+            content=content,
+            base_language="German",
+            target_language="English",
+        )
+
+        assert result["passed"] is True, (word, result)
+        assert result["hard_errors"] == []
 
 
 def test_v4_validator_passes_compact_natural_language_prompt_for_practical_words():
@@ -539,6 +577,7 @@ def test_v4_validator_passes_compact_natural_language_prompt_for_practical_words
 
     assert result["passed"] is True
     assert result["errors"] == []
+    assert result["hard_errors"] == []
 
 
 def test_v4_metadata_records_dense_editorial_fields_and_prompt_length_warning():

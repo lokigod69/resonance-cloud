@@ -181,6 +181,8 @@ class InfographicPromptResult:
     request_id: str | None = None
     validator_passed: bool | None = None
     validator_errors: list[str] = field(default_factory=list)
+    validator_hard_errors: list[str] = field(default_factory=list)
+    validator_warnings: list[str] = field(default_factory=list)
     validator_retry_count: int = 0
     prompt_rule_ratio_estimate: float | None = None
     dense_editorial_word_category: str | None = None
@@ -794,6 +796,8 @@ def infographic_prompt_metadata(
     provider_model: str | None = None,
     validator_passed: bool | None = None,
     validator_errors: list[str] | None = None,
+    validator_hard_errors: list[str] | None = None,
+    validator_warnings: list[str] | None = None,
     validator_retry_count: int = 0,
     prompt_rule_ratio_estimate: float | None = None,
     dense_editorial_word_category: str | None = None,
@@ -826,6 +830,8 @@ def infographic_prompt_metadata(
                 "visible_module_count": _visible_module_count(planner_plan),
                 "validator_passed": validator_passed,
                 "validator_errors": validator_errors or [],
+                "validator_hard_errors": validator_hard_errors or [],
+                "validator_warnings": validator_warnings or [],
                 "validator_retry_count": validator_retry_count,
                 "prompt_rule_ratio_estimate": prompt_rule_ratio_estimate,
                 "dense_editorial_word_category": dense_editorial_word_category,
@@ -968,9 +974,11 @@ def _write_dense_editorial_prompt(
             base_language=_clean(content.base_language) or "English",
             target_language=_clean(content.language) or "target language",
         )
-        if last_validation.get("passed"):
+        if not last_validation.get("hard_errors"):
             break
     last_plan["validator_errors"] = last_validation.get("errors", [])
+    last_plan["validator_hard_errors"] = last_validation.get("hard_errors", [])
+    last_plan["validator_warnings"] = last_validation.get("warnings", [])
     return InfographicPromptResult(
         prompt=last_prompt,
         model=INFOGRAPHIC_PLANNER_MODEL,
@@ -979,8 +987,10 @@ def _write_dense_editorial_prompt(
         infographic_template=selected_template.value,
         usage=usage_total,
         request_id=last_request_id,
-        validator_passed=bool(last_validation.get("passed")),
+        validator_passed=not bool(last_validation.get("hard_errors")),
         validator_errors=[str(item) for item in last_validation.get("errors", [])],
+        validator_hard_errors=[str(item) for item in last_validation.get("hard_errors", [])],
+        validator_warnings=[str(item) for item in last_validation.get("warnings", [])],
         validator_retry_count=validator_retry_count,
         prompt_rule_ratio_estimate=last_validation.get("prompt_rule_ratio_estimate"),
         dense_editorial_word_category=_clean(last_plan.get("dense_editorial_word_category")) or None,
@@ -1236,41 +1246,54 @@ def validate_dense_editorial_prompt(
     base_language: str,
     target_language: str,
 ) -> dict[str, Any]:
-    errors: list[str] = []
+    hard_errors: list[str] = []
+    warnings: list[str] = []
     text = _clean(prompt)
     lowered = text.lower()
     word = _clean(content.word)
     translation = _clean(content.translation)
+    if not text:
+        hard_errors.append("empty final prompt")
     if word and word.lower() not in lowered:
-        errors.append(f"target word missing: {word}")
+        hard_errors.append(f"target word missing: {word}")
     if translation and translation.lower() not in lowered:
-        errors.append(f"translation/gloss missing: {translation}")
+        hard_errors.append(f"translation/gloss missing: {translation}")
     if word and translation and _looks_swapped(text, word, translation):
-        errors.append("target/translation appear swapped")
+        hard_errors.append("target/translation appear swapped")
     if "16:9" not in lowered or "horizontal" not in lowered:
-        errors.append("horizontal 16:9 missing")
+        warnings.append("horizontal 16:9 missing")
     for language in (base_language, target_language):
         if language and _clean(language).lower() not in lowered:
-            errors.append(f"concrete language name missing: {language}")
+            warnings.append(f"concrete language name missing: {language}")
     banned = [item for item in V4_BANNED_VISIBLE_STRINGS if _contains_banned_token(lowered, item)]
     if banned:
-        errors.append("banned visible metadata: " + ", ".join(banned))
+        hard_errors.append("banned visible metadata: " + ", ".join(banned))
     raw_keys = [item for item in V4_JSON_KEY_STRINGS if _contains_json_key(text, item)]
     if raw_keys:
-        errors.append("raw JSON key visible: " + ", ".join(raw_keys))
-    if "language-learning infographic" not in lowered or "teach the word" not in lowered:
-        errors.append("vocabulary-first instruction missing")
-    for phrase in ("no fake facts", "no fake quotes", "no fake etymologies", "no forced mnemonics"):
-        if phrase not in lowered:
-            errors.append(f"missing safety phrase: {phrase}")
+        hard_errors.append("raw JSON key visible: " + ", ".join(raw_keys))
+    if not _has_vocabulary_first_language(lowered):
+        warnings.append("vocabulary-first instruction missing")
+    safety_groups = (
+        ("facts", ("no fake facts", "avoid invented facts", "do not invent facts", "never invent facts")),
+        ("quotes", ("no fake quotes", "avoid invented quotes", "do not invent quotes", "never invent quotes")),
+        ("etymologies", ("no fake etymologies", "unsupported etymologies", "do not invent etymologies", "never invent etymologies")),
+        ("mnemonics", ("no forced mnemonics", "forced memory tricks", "do not force mnemonics", "never force mnemonics")),
+    )
+    for label, variants in safety_groups:
+        if not any(phrase in lowered for phrase in variants):
+            warnings.append(f"missing safety guidance: {label}")
     module_hits = sum(1 for term in V4_LEARNING_MODULE_TERMS if term in lowered)
     if module_hits < 5:
-        errors.append("required learning modules missing")
+        warnings.append("required learning modules missing")
     if len(text) > V4_PROMPT_HARD_FAIL_CHARS:
-        errors.append(f"prompt too long: {len(text)} chars")
+        hard_errors.append(f"prompt too long: {len(text)} chars")
+    if len(text) > V4_PROMPT_WARNING_CHARS and len(text) <= V4_PROMPT_HARD_FAIL_CHARS:
+        warnings.append(f"prompt over soft warning threshold: {len(text)} chars")
     return {
-        "passed": not errors,
-        "errors": errors,
+        "passed": not hard_errors,
+        "errors": hard_errors,
+        "hard_errors": hard_errors,
+        "warnings": warnings,
         "prompt_rule_ratio_estimate": _estimate_prompt_rule_ratio(text),
     }
 
@@ -1460,6 +1483,18 @@ def _contains_banned_token(lowered: str, token: str) -> bool:
 
 def _contains_json_key(text: str, key: str) -> bool:
     return re.search(rf'["\']{re.escape(key)}["\']\s*:', text, flags=re.IGNORECASE) is not None
+
+
+def _has_vocabulary_first_language(lowered: str) -> bool:
+    return (
+        ("language-learning infographic" in lowered or "vocabulary-learning infographic" in lowered)
+        and (
+            "teach the word" in lowered
+            or "teaches the word" in lowered
+            or "word as language" in lowered
+            or "word's usage" in lowered
+        )
+    )
 
 
 def _looks_swapped(text: str, word: str, translation: str) -> bool:

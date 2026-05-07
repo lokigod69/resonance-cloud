@@ -1092,6 +1092,8 @@ def test_v4_dense_editorial_infographic_uses_text_to_image_and_metadata(monkeypa
             infographic_template="infographic_dense_editorial_v4",
             validator_passed=True,
             validator_errors=[],
+            validator_hard_errors=[],
+            validator_warnings=["optional module count below ideal"],
             validator_retry_count=0,
             prompt_rule_ratio_estimate=0.22,
             dense_editorial_word_category="concrete",
@@ -1157,6 +1159,8 @@ def test_v4_dense_editorial_infographic_uses_text_to_image_and_metadata(monkeypa
     assert metadata["validator_passed"] is True
     assert metadata["validator_retry_count"] == 0
     assert metadata["validator_errors"] == []
+    assert metadata["validator_hard_errors"] == []
+    assert metadata["validator_warnings"] == ["optional module count below ideal"]
     assert metadata["prompt_rule_ratio_estimate"] == 0.22
     assert metadata["dense_editorial_word_category"] == "concrete"
     assert metadata["provider_reached"] is True
@@ -1186,6 +1190,8 @@ def test_v4_dense_editorial_validator_failure_stops_before_provider(monkeypatch,
             infographic_template="infographic_dense_editorial_v4",
             validator_passed=False,
             validator_errors=["banned visible metadata: Zielsprache", "required learning modules missing"],
+            validator_hard_errors=["banned visible metadata: Zielsprache"],
+            validator_warnings=["required learning modules missing"],
             validator_retry_count=1,
             prompt_rule_ratio_estimate=0.75,
             dense_editorial_word_category="practical",
@@ -1227,8 +1233,99 @@ def test_v4_dense_editorial_validator_failure_stops_before_provider(monkeypatch,
     assert metadata["validator_passed"] is False
     assert metadata["validator_retry_count"] == 1
     assert metadata["validator_errors"] == ["banned visible metadata: Zielsprache", "required learning modules missing"]
+    assert metadata["validator_hard_errors"] == ["banned visible metadata: Zielsprache"]
+    assert metadata["validator_warnings"] == ["required learning modules missing"]
     assert metadata["provider_reached"] is False
     assert metadata["failure_origin"] == "validator"
+
+
+def test_v4_dense_editorial_warning_only_safe_words_reach_gpt_image_2(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.infographic_prompt import InfographicPromptResult
+
+    calls: list[dict[str, object]] = []
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **_kwargs):
+            return None
+
+    def fake_write_infographic_prompt(**kwargs):
+        content = kwargs["content"]
+        return InfographicPromptResult(
+            prompt=(
+                f"Create a horizontal 16:9 vocabulary-learning infographic for the English word "
+                f"'{content.word}', glossed in German as '{content.translation}'. Teach the word as language first."
+            ),
+            model="test-dense-writer-model",
+            raw_plan="warning-only prompt",
+            planner_plan={"prompt": "warning-only prompt"},
+            infographic_template="infographic_dense_editorial_v4",
+            validator_passed=True,
+            validator_errors=[],
+            validator_hard_errors=[],
+            validator_warnings=["optional module count below ideal"],
+            validator_retry_count=1,
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls.append(kwargs)
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": f"task-{len(calls)}",
+            "cost_estimate_usd": 0.05,
+        }
+
+    def fail_z_image(**_kwargs):
+        raise AssertionError("V4 Dense Editorial must not route to z-image")
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_infographic_prompt", fake_write_infographic_prompt)
+    monkeypatch.setattr(card_engine, "_render_card_image", fail_z_image)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    for word, translation in [("onomatopoeia", "Lautmalerei"), ("authority", "Autorität"), ("failure", "Scheitern")]:
+        payload = _card_payload(tmp_path / word)
+        payload.content.word = word
+        payload.content.translation = translation
+        payload.content.base_language = "German"
+        payload.content.language = "English"
+        payload.content.layer2_customization = {
+            "meaning_strategy": "clear_meaning",
+            "presentation_form": "infographic_card",
+            "visual_intensity": "balanced",
+            "backend_template": "infographic_prompt_v1",
+            "infographic_template": "infographic_dense_editorial_v4",
+        }
+
+        result = card_engine.generate_card_image(payload)
+
+        assert result.status == "success"
+        assert result.gpt_image_2_card_metadata["provider_reached"] is True
+        assert result.gpt_image_2_card_metadata["provider_model"] == "gpt-image-2-text-to-image"
+
+    assert len(calls) == 3
+    assert all(call["aspect_ratio"] == "16:9" for call in calls)
+    assert all(call["resolution"] == "1K" for call in calls)
+    assert all(call["input_urls"] is None for call in calls)
 
 
 def test_v4_dense_editorial_prompt_writer_failure_records_before_provider_metadata(monkeypatch, tmp_path):

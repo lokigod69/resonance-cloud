@@ -304,6 +304,8 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 provider_model=provider_model,
                 validator_passed=infographic_result.validator_passed,
                 validator_errors=infographic_result.validator_errors,
+                validator_hard_errors=infographic_result.validator_hard_errors,
+                validator_warnings=infographic_result.validator_warnings,
                 validator_retry_count=infographic_result.validator_retry_count,
                 prompt_rule_ratio_estimate=infographic_result.prompt_rule_ratio_estimate,
                 dense_editorial_word_category=infographic_result.dense_editorial_word_category,
@@ -444,7 +446,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
     ):
         card_metadata["provider_reached"] = False
         card_metadata["failure_origin"] = "validator"
-        validator_errors = card_metadata.get("validator_errors") or []
+        validator_errors = card_metadata.get("validator_hard_errors") or card_metadata.get("validator_errors") or []
         error_message = "Infographic V4 validator failed: " + "; ".join(
             str(item) for item in validator_errors
         )
