@@ -41,6 +41,10 @@ import ProductLaneStep from '@/components/generate/steps/ProductLaneStep'
 import CardImageStyleStep from '@/components/generate/steps/CardImageStyleStep'
 import PremiumCardCustomizationStep from '@/components/generate/steps/PremiumCardCustomizationStep'
 import WordsStep from '@/components/generate/steps/WordsStep'
+import {
+  PremiumSummaryRow,
+  type PremiumSummaryItem,
+} from '@/components/generate/shared/PremiumVisualSelectors'
 
 const GO_GENRES = [
   { value: 'auto', label: 'Auto' },
@@ -190,7 +194,7 @@ export default function GenerateGO() {
   useEffect(() => {
     const ref = sectionRefs.current[step - 1]
     if (ref) {
-      setTimeout(() => ref.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150)
+      setTimeout(() => ref.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150)
     }
   }, [step])
 
@@ -500,6 +504,7 @@ export default function GenerateGO() {
 
   const credits = profile?.credits
   const creditCost = computeCreditCost(productLane, words.length)
+  const showLaneStep = !existingDeck || existingDeck.deck_type === 'card'
 
   function findStyleLabel(value: string): string {
     for (const g of ART_STYLE_GROUPS) {
@@ -512,6 +517,122 @@ export default function GenerateGO() {
   function findCardImageStyleLabel(value: typeof cardImageStyle): string {
     return cardLayer2ArtStyleLabel(value)
   }
+
+  function languageDisplayLabel(value: string): string {
+    return LANGUAGES.find((lang) => lang.value === value)?.label ?? value
+  }
+
+  function wordCountLabel(count: number): string {
+    return `${count} word${count === 1 ? '' : 's'}`
+  }
+
+  function niveauLabel(value: string | null): string {
+    const key = (NIVEAU_OPTIONS.find((option) => option.value === value) ?? NIVEAU_OPTIONS[0]).key
+    const labels: Record<typeof key, string> = {
+      auto: 'Auto',
+      short: 'Short',
+      phrase: 'Phrase',
+      story: 'Story',
+      long: 'Long',
+    }
+    return labels[key]
+  }
+
+  const summaryItems: PremiumSummaryItem[] = [
+    ...(!existingDeck && language && step > 1
+      ? [{
+          key: 'language',
+          label: languageDisplayLabel(language),
+          ariaLabel: 'Back to language step',
+          onClick: () => setStep(1),
+          tone: 'language',
+        }]
+      : []),
+    ...(productLane && showLaneStep && step > 2
+      ? [{
+          key: 'product',
+          label: laneLabel(productLane),
+          ariaLabel: 'Back to product step',
+          onClick: () => setStep(2),
+          tone: 'product',
+        }]
+      : []),
+    ...(words.length > 0 && step > 3
+      ? [{
+          key: 'words',
+          label: wordCountLabel(words.length),
+          ariaLabel: 'Back to words step',
+          onClick: () => setStep(3),
+          tone: 'words',
+        }]
+      : []),
+    ...(cardLane && cardImageStyle && step > 4
+      ? [{
+          key: 'style',
+          label: findCardImageStyleLabel(cardImageStyle),
+          ariaLabel: 'Back to visual style step',
+          onClick: () => setStep(4),
+          tone: 'style',
+        }]
+      : []),
+    ...(productLane === 'card_premium' && cardLayer2 && step > 4
+      ? [
+          {
+            key: 'meaning',
+            label: cardLayer2MeaningLabel(cardLayer2.meaning_strategy),
+            ariaLabel: 'Back to customize step',
+            onClick: () => setStep(4),
+            tone: 'meaning',
+          },
+          {
+            key: 'form',
+            label: cardLayer2PresentationLabel(cardLayer2.presentation_form),
+            ariaLabel: 'Back to customize step',
+            onClick: () => setStep(4),
+            tone: 'form',
+          },
+        ]
+      : []),
+    ...(!cardLane && vibe && step > 4
+      ? [{
+          key: 'vibe',
+          label: vibe === 'auto' ? 'Auto' : vibe,
+          ariaLabel: 'Back to visual context step',
+          onClick: () => setStep(4),
+          tone: 'vibe',
+        }]
+      : []),
+    ...(!cardLane && step > 5
+      ? [{
+          key: 'art',
+          label: artStyle ? findStyleLabel(artStyle) : 'Auto',
+          ariaLabel: 'Back to art style step',
+          onClick: () => {
+            setExpandedCategory(null)
+            setStep(5)
+          },
+          tone: 'style',
+        }]
+      : []),
+    ...(!cardLane && step > 6
+      ? [{
+          key: 'niveau',
+          label: niveauLabel(lyricMode),
+          ariaLabel: 'Back to niveau step',
+          onClick: () => setStep(6),
+          tone: 'niveau',
+        }]
+      : []),
+    ...(!cardLane && genre && genre !== 'auto' && step > 7
+      ? [{
+          key: 'music',
+          label: genre,
+          ariaLabel: 'Back to music step',
+          onClick: () => setStep(7),
+          tone: 'music',
+        }]
+      : []),
+  ]
 
   if (deckIdParam && !existingDeck) {
     return (
@@ -569,32 +690,34 @@ export default function GenerateGO() {
 
   // ── Render ────────────────────────────────────────
 
-  const showLaneStep = !existingDeck || existingDeck.deck_type === 'card'
   const laneVariant: 'all' | 'card-only' = existingDeck?.deck_type === 'card' ? 'card-only' : 'all'
 
   return (
     <div className="gen-container">
+      <PremiumSummaryRow items={summaryItems} />
       {/* ── Step 1: Language ── */}
-      {!existingDeck && (
+      {!existingDeck && step === 1 && (
         <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
           {step === 1 && <h3>Choose Language Orbit</h3>}
-          <div className="gen-orb-row">
+          <div className="gen-orb-row gen-language-grid">
             {LANGUAGES.map(lang => (
-              <div
+              <button
+                type="button"
                 key={lang.value}
                 className={orbClass(1, lang.value, language)}
                 onClick={() => handleLanguageSelect(lang.value)}
+                aria-pressed={language === lang.value}
               >
                 <FlagIcon code={lang.code} className="w-10 h-auto" />
                 <span className="gen-orb-label">{lang.label}</span>
-              </div>
+              </button>
             ))}
           </div>
         </div>
       )}
 
       {/* ── Step 2: Product Lane ── */}
-      {showLaneStep && step >= 2 && (
+      {showLaneStep && step === 2 && (
         <div ref={el => { sectionRefs.current[1] = el }} className="gen-section">
           {step === 2 ? (
             <ProductLaneStep
@@ -614,7 +737,7 @@ export default function GenerateGO() {
       )}
 
       {/* ── Step 3: Words ── */}
-      {step >= 3 && (
+      {step === 3 && (
         <div ref={el => { sectionRefs.current[2] = el }} className="gen-section">
           {step === 3 ? (
             <div className="glass-card">
@@ -640,7 +763,7 @@ export default function GenerateGO() {
       )}
 
       {/* ── Step 4: Vibe (video lane only) ── */}
-      {step >= 4 && !cardLane && (
+      {step === 4 && !cardLane && (
         <div ref={el => { sectionRefs.current[3] = el }} className="gen-section">
           {step === 4 && <h3>Select Visual Context</h3>}
           <div className="gen-orb-row">
@@ -674,7 +797,7 @@ export default function GenerateGO() {
       )}
 
       {/* ── Step 5: Art Style (video lane only) ── */}
-      {step >= 5 && !cardLane && (
+      {step === 5 && !cardLane && (
         <div ref={el => { sectionRefs.current[4] = el }} className="gen-section">
           {step === 5 ? (
             <>
@@ -728,7 +851,7 @@ export default function GenerateGO() {
       )}
 
       {/* ── Step 6: Niveau (video lane only) ── */}
-      {step >= 6 && !cardLane && (
+      {step === 6 && !cardLane && (
         <div ref={el => { sectionRefs.current[5] = el }} className="gen-section">
           {step === 6 ? (
             <>
@@ -759,7 +882,7 @@ export default function GenerateGO() {
       )}
 
       {/* ── Step 7: Genre (video lane only) ── */}
-      {step >= 7 && !cardLane && (
+      {step === 7 && !cardLane && (
         <div ref={el => { sectionRefs.current[6] = el }} className="gen-section">
           {step === 7 && <h3>Aural Atmosphere</h3>}
           <div className="gen-orb-row">
@@ -793,7 +916,7 @@ export default function GenerateGO() {
       )}
 
       {/* ── Card visual style (card lane, optional, between Words and Synthesis) ── */}
-      {step >= 4 && cardLane && (
+      {step === 4 && cardLane && (
         <div ref={el => { sectionRefs.current[3] = el }} className="gen-section">
           {step === 4 ? (
             productLane === 'card_premium' ? (
@@ -826,7 +949,7 @@ export default function GenerateGO() {
       )}
 
       {/* ── Synthesis Ready (card lane) ── */}
-      {step >= 5 && cardLane && (
+      {step === 5 && cardLane && (
         <div ref={el => { sectionRefs.current[4] = el }} className="gen-section" style={{ textAlign: 'center' }}>
           <h3 style={{ fontSize: '2.2rem', color: 'var(--text-primary)', fontWeight: 300, marginBottom: 8 }}>
             {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
@@ -889,7 +1012,7 @@ export default function GenerateGO() {
       )}
 
       {/* ── Synthesis Ready (video lane) ── */}
-      {step >= 8 && !cardLane && (
+      {step === 8 && !cardLane && (
         <div ref={el => { sectionRefs.current[7] = el }} className="gen-section" style={{ textAlign: 'center' }}>
           <h3 style={{ fontSize: '2.2rem', color: 'var(--text-primary)', fontWeight: 300, marginBottom: 8 }}>
             {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
@@ -903,7 +1026,7 @@ export default function GenerateGO() {
             {words.length} word{words.length !== 1 ? 's' : ''} · {creditCost} credit{creditCost !== 1 ? 's' : ''}
           </p>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginBottom: 24 }}>
+          <div style={{ display: 'none' }} aria-hidden="true">
             {language && (
               <span className="gen-summary-tag" style={{ borderColor: 'color-mix(in srgb, var(--accent) 42%, transparent)', color: 'var(--accent)' }}>
                 🌐 {language}

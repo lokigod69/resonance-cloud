@@ -75,7 +75,7 @@ export default function WordsStep({
   }
 
   return (
-    <div className="flex flex-col items-center min-h-[60vh] px-4 pt-8">
+    <div className="flex w-full min-w-0 flex-col items-center px-2 pt-6 sm:min-h-[60vh] sm:px-4 sm:pt-8">
       <motion.h2
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ export default function WordsStep({
         {tp('generate.wordCountSlider', wordCount)}
       </motion.p>
 
-      <div className={`w-full space-y-5 ${state.productLane === 'card_premium' ? 'max-w-xl' : 'max-w-md'}`}>
+      <div className={`w-full min-w-0 space-y-5 ${state.productLane === 'card_premium' ? 'max-w-xl' : 'max-w-md'}`}>
         {inputMode === 'picker' && (
           <CategoryPicker
             state={state}

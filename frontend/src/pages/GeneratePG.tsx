@@ -20,11 +20,15 @@ import {
   premiumQuickModeLabel,
   useWizardState,
 } from '@/components/generate/useWizardState'
-import type { ExistingDeck, PremiumQuickMode, ProductLane } from '@/components/generate/useWizardState'
+import type { ExistingDeck, PremiumQuickMode, ProductLane, WizardState } from '@/components/generate/useWizardState'
 import ProductLaneStep from '@/components/generate/steps/ProductLaneStep'
 import CardImageStyleStep from '@/components/generate/steps/CardImageStyleStep'
 import PremiumCardCustomizationStep from '@/components/generate/steps/PremiumCardCustomizationStep'
 import WordsStep from '@/components/generate/steps/WordsStep'
+import {
+  PremiumSummaryRow,
+  type PremiumSummaryItem,
+} from '@/components/generate/shared/PremiumVisualSelectors'
 import {
   LANGUAGES,
   VIBES,
@@ -63,6 +67,13 @@ export default function GeneratePG() {
   const { t } = useTranslation()
 
   const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [pgStep])
 
   useEffect(() => {
     if (!deckIdParam) return
@@ -207,7 +218,7 @@ export default function GeneratePG() {
 
   if (deckIdParam && !existingDeck) {
     return (
-      <div className="max-w-4xl mx-auto px-4 flex min-h-[60vh] items-center justify-center">
+      <div className="generate-flow-shell max-w-4xl mx-auto px-4 flex min-h-[60vh] items-center justify-center">
         <p className="text-sm text-[var(--pg-text-dim)]">{t('common.loading')}</p>
       </div>
     )
@@ -215,7 +226,7 @@ export default function GeneratePG() {
 
   if (generated) {
     return (
-      <div className="max-w-4xl mx-auto px-4 flex flex-col items-center justify-center min-h-[60vh]">
+      <div className="generate-flow-shell max-w-4xl mx-auto px-4 flex flex-col items-center justify-center min-h-[60vh]">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -261,9 +272,10 @@ export default function GeneratePG() {
   const lane = state.productLane
   const cardLane = isCardLane(lane)
   const premiumCardLane = lane === 'card_premium'
+  const reviewStep = cardLane ? 4 : 7
 
   return (
-    <div className="max-w-4xl mx-auto px-4">
+    <div className="generate-flow-shell max-w-4xl mx-auto px-4">
       <BreadcrumbPills
         pgStep={pgStep}
         setPgStep={setPgStep}
@@ -272,6 +284,15 @@ export default function GeneratePG() {
         cardLane={cardLane}
         premiumCardLane={premiumCardLane}
       />
+      {pgStep > 0 && pgStep < reviewStep && (
+        <GenerateSelectionSummary
+          state={state}
+          pgStep={pgStep}
+          setPgStep={setPgStep}
+          existingDeck={existingDeck}
+          cardLane={cardLane}
+        />
+      )}
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -347,6 +368,7 @@ export default function GeneratePG() {
               submitting={submitting}
               error={error}
               existingDeck={existingDeck}
+              onGoToStep={setPgStep}
             />
           )}
           {pgStep === 4 && !cardLane && (
@@ -379,6 +401,7 @@ export default function GeneratePG() {
               submitting={submitting}
               error={error}
               existingDeck={existingDeck}
+              onGoToStep={setPgStep}
             />
           )}
         </motion.div>
@@ -459,6 +482,105 @@ function BreadcrumbPills({
 
 /* ─── Step 0: Language ──────────────────────────── */
 
+function GenerateSelectionSummary({
+  state,
+  pgStep,
+  setPgStep,
+  existingDeck,
+  cardLane,
+}: {
+  state: WizardState
+  pgStep: number
+  setPgStep: (s: number) => void
+  existingDeck: ExistingDeck | null
+  cardLane: boolean
+}) {
+  const items: PremiumSummaryItem[] = []
+  const lane = state.productLane
+
+  if (state.language && pgStep > 0) {
+    items.push({
+      key: 'language',
+      label: languageDisplayLabel(state.language),
+      ariaLabel: 'Back to language step',
+      onClick: existingDeck ? undefined : () => setPgStep(0),
+      tone: 'language',
+    })
+  }
+
+  if (lane && pgStep > 1) {
+    items.push({
+      key: 'product',
+      label: laneLabel(lane),
+      ariaLabel: 'Back to product step',
+      onClick: existingDeck?.deck_type === 'video' ? undefined : () => setPgStep(1),
+      tone: 'product',
+    })
+  }
+
+  if (state.words.length > 0 && pgStep > 2) {
+    items.push({
+      key: 'words',
+      label: wordCountLabel(state.words.length),
+      ariaLabel: 'Back to words step',
+      onClick: () => setPgStep(2),
+      tone: 'words',
+    })
+  }
+
+  if (cardLane && state.cardImageStyle && pgStep > 3) {
+    items.push({
+      key: 'style',
+      label: cardLayer2ArtStyleLabel(state.cardImageStyle),
+      ariaLabel: 'Back to visual style step',
+      onClick: () => setPgStep(3),
+      tone: 'style',
+    })
+  }
+
+  if (!cardLane && pgStep > 3) {
+    items.push({
+      key: 'vibe',
+      label: state.vibe && state.vibe !== 'auto' ? state.vibe : 'Auto',
+      ariaLabel: 'Back to visual context step',
+      onClick: () => setPgStep(3),
+      tone: 'vibe',
+    })
+  }
+
+  if (!cardLane && pgStep > 4) {
+    items.push({
+      key: 'art',
+      label: state.artStyle ? videoStyleLabel(state.artStyle) : 'Auto',
+      ariaLabel: 'Back to art style step',
+      onClick: () => setPgStep(4),
+      tone: 'style',
+    })
+  }
+
+  if (!cardLane && pgStep > 5) {
+    items.push({
+      key: 'niveau',
+      label: niveauLabel(state.lyricMode),
+      ariaLabel: 'Back to niveau step',
+      onClick: () => setPgStep(5),
+      tone: 'niveau',
+    })
+  }
+
+  if (!cardLane && pgStep > 6 && state.genre && state.genre !== 'auto') {
+    items.push({
+      key: 'music',
+      label: state.genre,
+      ariaLabel: 'Back to music step',
+      onClick: () => setPgStep(6),
+      tone: 'music',
+    })
+  }
+
+  return <PremiumSummaryRow items={items} />
+}
+
 function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
   const { t } = useTranslation()
   return (
@@ -466,7 +588,7 @@ function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
       <h2 className="text-3xl font-bold font-display tracking-tight mb-2">{t('generate.chooseLanguage')}</h2>
       <p className="text-[var(--pg-text-dim)] text-sm mb-10">{t('generate.chooseLanguageSub')}</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto px-1">
         {LANGUAGES.map((lang, i) => (
           <motion.button
             key={lang.value}
@@ -475,10 +597,10 @@ function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
             whileHover={{ y: -4, borderColor: lang.color, boxShadow: `0 0 20px ${lang.color}20` }}
             transition={{ delay: i * 0.08, ...PG_TRANSITION }}
             onClick={() => onSelect(lang.value)}
-            className="pg-glass rounded-2xl p-6 text-left transition-all"
+            className="pg-glass min-w-0 rounded-xl p-3 text-center transition-all sm:rounded-2xl sm:p-6 sm:text-left"
           >
-            <FlagIcon code={lang.code} className="w-12 h-auto block mb-3" />
-            <p className="font-display font-semibold text-foreground transition-colors">
+            <FlagIcon code={lang.code} className="mx-auto mb-2 block w-8 h-auto sm:mx-0 sm:mb-3 sm:w-12" />
+            <p className="min-w-0 break-words font-display text-sm font-semibold text-foreground transition-colors sm:text-base">
               {lang.label}
             </p>
           </motion.button>
@@ -668,7 +790,7 @@ function StepNiveau({
       <h2 className="text-3xl font-bold font-display tracking-tight mb-2">{t('generate.chooseNiveau')}</h2>
       <p className="text-[var(--pg-text-dim)] text-sm mb-10">{t('generate.chooseNiveauSub')}</p>
 
-      <div className="flex flex-wrap gap-3 justify-center max-w-2xl mx-auto mb-10 px-4">
+      <div className="niveau-orb-grid">
         {NIVEAU_OPTIONS.map((opt, i) => {
           const isSelected = selected === opt.value
           return (
@@ -678,12 +800,10 @@ function StepNiveau({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.05, type: 'spring', stiffness: 300, damping: 25 }}
               onClick={() => dispatch({ type: 'SET_LYRIC_MODE', mode: opt.value })}
-              className={`pg-glass rounded-2xl px-5 py-3 text-left transition-all ${
-                isSelected ? 'shadow-[0_0_20px_var(--accent-glow)]' : 'hover:shadow-[0_0_15px_var(--accent-glow)]'
-              }`}
-              style={{ borderColor: isSelected ? 'var(--accent)' : undefined, minWidth: 112 }}
+              className={`niveau-orb-option${isSelected ? ' selected' : ''}`}
+              aria-pressed={isSelected}
             >
-              <p className={`text-center font-display font-semibold ${isSelected ? 'text-[var(--accent)]' : 'text-foreground'}`}>
+              <p>
                 {t(`generate.niveau.${opt.key}`)}
               </p>
             </motion.button>
@@ -845,6 +965,34 @@ function laneLabel(lane: ProductLane | null): string {
   return ''
 }
 
+function languageDisplayLabel(language: string): string {
+  return LANGUAGES.find((lang) => lang.value === language)?.label ?? language
+}
+
+function wordCountLabel(count: number): string {
+  return `${count} word${count === 1 ? '' : 's'}`
+}
+
+function videoStyleLabel(style: string): string {
+  for (const group of ART_STYLE_GROUPS) {
+    const match = group.styles.find((item) => item.value === style)
+    if (match) return match.label
+  }
+  return style
+}
+
+function niveauLabel(mode: string | null): string {
+  const key = (NIVEAU_OPTIONS.find((option) => option.value === mode) ?? NIVEAU_OPTIONS[0]).key
+  const labels: Record<typeof key, string> = {
+    auto: 'Auto',
+    short: 'Short',
+    phrase: 'Phrase',
+    story: 'Story',
+    long: 'Long',
+  }
+  return labels[key]
+}
+
 function StepReview({
   state,
   dispatch,
@@ -853,14 +1001,16 @@ function StepReview({
   submitting,
   error,
   existingDeck,
+  onGoToStep,
 }: {
-  state: import('@/components/generate/useWizardState').WizardState
+  state: WizardState
   dispatch: React.Dispatch<import('@/components/generate/useWizardState').WizardAction>
   credits: number | undefined
   onSubmit: () => void
   submitting: boolean
   error: string | null
   existingDeck: ExistingDeck | null
+  onGoToStep: (step: number) => void
 }) {
   const { t, tp } = useTranslation()
   const lane = state.productLane
@@ -869,6 +1019,103 @@ function StepReview({
   const productLabel = laneLabel(lane)
   // Surface card_image_model in admin-only debug copy if needed.
   void laneToCardImageModel(lane)
+  const summaryItems: PremiumSummaryItem[] = [
+    ...(state.language
+      ? [{
+          key: 'language',
+          label: languageDisplayLabel(state.language),
+          ariaLabel: 'Back to language step',
+          onClick: existingDeck ? undefined : () => onGoToStep(0),
+          tone: 'language',
+        }]
+      : []),
+    ...(lane
+      ? [{
+          key: 'product',
+          label: productLabel,
+          ariaLabel: 'Back to product step',
+          onClick: existingDeck?.deck_type === 'video' ? undefined : () => onGoToStep(1),
+          tone: 'product',
+        }]
+      : []),
+    {
+      key: 'words',
+      label: wordCountLabel(state.words.length),
+      ariaLabel: 'Back to words step',
+      onClick: () => onGoToStep(2),
+      tone: 'words',
+    },
+    ...(cardLane && state.cardImageStyle
+      ? [{
+          key: 'style',
+          label: cardLayer2ArtStyleLabel(state.cardImageStyle),
+          ariaLabel: 'Back to visual style step',
+          onClick: () => onGoToStep(3),
+          tone: 'style',
+        }]
+      : []),
+    ...(state.productLane === 'card_premium' && state.path !== 'custom'
+      ? [{
+          key: 'mode',
+          label: premiumQuickModeLabel(state.premiumQuickMode),
+          ariaLabel: 'Back to words step',
+          onClick: () => onGoToStep(2),
+          tone: 'mode',
+        }]
+      : []),
+    ...(state.productLane === 'card_premium' && state.cardLayer2
+      ? [
+          {
+            key: 'meaning',
+            label: cardLayer2MeaningLabel(state.cardLayer2.meaning_strategy),
+            ariaLabel: 'Back to customize step',
+            onClick: () => onGoToStep(3),
+            tone: 'meaning',
+          },
+          {
+            key: 'form',
+            label: cardLayer2PresentationLabel(state.cardLayer2.presentation_form),
+            ariaLabel: 'Back to customize step',
+            onClick: () => onGoToStep(3),
+            tone: 'form',
+          },
+        ]
+      : []),
+    ...(!cardLane
+      ? [
+          {
+            key: 'vibe',
+            label: state.vibe && state.vibe !== 'auto' ? state.vibe : 'Auto',
+            ariaLabel: 'Back to visual context step',
+            onClick: () => onGoToStep(3),
+            tone: 'vibe',
+          },
+          {
+            key: 'art',
+            label: state.artStyle ? videoStyleLabel(state.artStyle) : 'Auto',
+            ariaLabel: 'Back to art style step',
+            onClick: () => onGoToStep(4),
+            tone: 'style',
+          },
+          {
+            key: 'niveau',
+            label: niveauLabel(state.lyricMode),
+            ariaLabel: 'Back to niveau step',
+            onClick: () => onGoToStep(5),
+            tone: 'niveau',
+          },
+          ...(state.genre && state.genre !== 'auto'
+            ? [{
+                key: 'music',
+                label: state.genre,
+                ariaLabel: 'Back to music step',
+                onClick: () => onGoToStep(6),
+                tone: 'music',
+              }]
+            : []),
+        ]
+      : []),
+  ]
 
   return (
     <div className="w-full max-w-lg mx-auto mt-8">
@@ -876,7 +1123,8 @@ function StepReview({
         {t('generate.synthesisReady')}
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-3 mb-10">
+      <PremiumSummaryRow items={summaryItems} />
+      <div className="hidden" aria-hidden="true">
         {cardLane ? (
           <>
             {state.language && (

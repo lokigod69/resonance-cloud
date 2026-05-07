@@ -41,7 +41,7 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
       initial={{ opacity: 0, scale: 0.8, y: 10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-      className="flex items-center gap-2"
+      className="flex w-full min-w-0 items-center gap-2"
     >
       <input
         ref={inputRef}
@@ -58,6 +58,7 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
         disabled={disabled}
         className={cn(
           'flex-1 rounded-xl px-4 py-3 text-sm text-foreground/90 placeholder:text-muted-foreground',
+          'min-w-0',
           'bg-card backdrop-blur-md border border-border',
           'outline-none transition-all duration-200',
           'focus:border-accent focus:bg-card',
@@ -71,7 +72,7 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
         whileTap={{ scale: 0.9 }}
         disabled={!value.trim() || disabled}
         className={cn(
-          'flex items-center justify-center w-10 h-10 rounded-full',
+          'flex h-10 w-10 shrink-0 items-center justify-center rounded-full',
           'glass border border-border text-muted-foreground',
           'hover:text-foreground hover:border-accent transition-colors',
           'disabled:opacity-30 disabled:pointer-events-none'
@@ -98,13 +99,14 @@ export function LockedWord({ word, onRemove }: LockedWordProps) {
       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
       className={cn(
         'inline-flex items-center gap-2 rounded-full px-4 py-2',
+        'max-w-full min-w-0',
         'bg-[#4ade80]/10 backdrop-blur-md',
         'border border-[#4ade80]/30',
         'shadow-[0_0_12px_oklch(0.7_0.18_145_/_0.1)]'
       )}
     >
       <Check className="h-3.5 w-3.5 text-[#4ade80]" />
-      <span className="text-sm text-foreground/90">{word}</span>
+      <span className="min-w-0 break-all text-sm text-foreground/90">{word}</span>
       <button
         type="button"
         onClick={onRemove}
@@ -123,7 +125,7 @@ interface WordChipsProps {
 
 export function WordChips({ words, onRemove }: WordChipsProps) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex w-full min-w-0 flex-wrap justify-center gap-2">
       <AnimatePresence mode="popLayout">
         {words.map((word, i) => (
           <LockedWord key={word} word={word} onRemove={() => onRemove(i)} />

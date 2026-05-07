@@ -54,6 +54,7 @@ export function PremiumOptionTile<T extends string>({
       onClick={() => onSelect(value)}
       aria-pressed={selected}
       data-tone={tone}
+      data-option-value={value}
     >
       <span className="premium-option-orb" aria-hidden="true">
         {imageSrc ? (
@@ -73,6 +74,41 @@ export function PremiumOptionTile<T extends string>({
         {meta ? <span className="premium-option-meta">{meta}</span> : null}
       </span>
     </button>
+  )
+}
+
+export interface PremiumSummaryItem {
+  key: string
+  label: string
+  ariaLabel: string
+  onClick?: () => void
+  tone?: string
+}
+
+interface PremiumSummaryRowProps {
+  items: PremiumSummaryItem[]
+  className?: string
+}
+
+export function PremiumSummaryRow({ items, className }: PremiumSummaryRowProps) {
+  if (items.length === 0) return null
+
+  return (
+    <div className={cn('premium-summary-row', className)} aria-label="Selected generation options">
+      {items.map((item) => (
+        <button
+          key={item.key}
+          type="button"
+          className="premium-summary-orb"
+          onClick={item.onClick}
+          disabled={!item.onClick}
+          aria-label={item.ariaLabel}
+          data-tone={item.tone}
+        >
+          <span>{item.label}</span>
+        </button>
+      ))}
+    </div>
   )
 }
 

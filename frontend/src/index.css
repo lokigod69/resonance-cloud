@@ -157,6 +157,13 @@
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+  overflow-x: hidden;
+}
+
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
