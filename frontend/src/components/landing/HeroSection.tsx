@@ -12,9 +12,9 @@ export default function HeroSection() {
   const headlineMelody = t('landing.headlineMelody')
   const headlineMotion = t('landing.headlineMotion')
 
-  const renderAccentInitial = (value: string) => (
+  const renderAccentInitial = (value: string, colorVar: string) => (
     <>
-      <span className="text-[var(--accent)]">{value.slice(0, 1)}</span>
+      <span style={{ color: colorVar }}>{value.slice(0, 1)}</span>
       {value.slice(1)}
     </>
   )
@@ -60,12 +60,12 @@ export default function HeroSection() {
         className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center z-20"
       >
         <div className="relative">
-          {/* Transparent holder preserves the existing scroll fade timing */}
+          {/* Soft vignette preserves legibility without adding visible chrome */}
           <motion.div
-            className="absolute -inset-x-16 -inset-y-12 rounded-[3rem]"
+            className="absolute -inset-x-20 -inset-y-14"
             style={{
               opacity: reducedMotion ? 1 : backdropOpacity,
-              background: 'transparent',
+              background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 40%, transparent 75%)',
             }}
           />
 
@@ -73,19 +73,19 @@ export default function HeroSection() {
             {/* Headline — stacked typography */}
             <motion.h1 {...fadeUp(0)} className="flex flex-col items-center text-center gap-0">
               <span className="font-display text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]">
-                {renderAccentInitial(headlineWord)}
+                {renderAccentInitial(headlineWord, 'var(--m-warm)')}
               </span>
               <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
                 {t('landing.headlineBy')}
               </span>
               <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]">
-                {renderAccentInitial(headlineMelody)}
+                {renderAccentInitial(headlineMelody, 'var(--m-mid)')}
               </span>
               <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
                 {t('landing.headlineAnd')}
               </span>
               <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]">
-                {renderAccentInitial(headlineMotion)}
+                {renderAccentInitial(headlineMotion, 'var(--m-cool)')}
               </span>
             </motion.h1>
 

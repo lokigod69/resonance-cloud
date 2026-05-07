@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { Keyboard, Sparkles, Brain, ChevronRight } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 import { useLandingLocale } from '@/hooks/useLandingLocale'
@@ -15,6 +16,12 @@ const directions = [
 export default function HowItWorksSection() {
   const reducedMotion = useReducedMotion()
   const { t } = useLandingLocale()
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['-4%', '4%'])
 
   const steps = [
     { title: t('landing.step1Title'), description: t('landing.step1Desc') },
@@ -23,8 +30,14 @@ export default function HowItWorksSection() {
   ]
 
   return (
-    <section className="py-32 px-6 bg-[var(--app-bg)]">
-      <div className="max-w-5xl mx-auto">
+    <section ref={sectionRef} className="relative overflow-hidden bg-[var(--app-bg)] py-32 px-6">
+      <motion.div
+        className="absolute -inset-y-8 inset-x-0 transform-gpu bg-cover bg-center opacity-50 will-change-transform"
+        style={{ backgroundImage: "url('/brand/cosmos/cosmos-calm.webp')", y: backgroundY }}
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-black/30" aria-hidden="true" />
+      <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
         <ScrollReveal className="text-center mb-20">
           <h2 className="text-3xl md:text-5xl font-bold">{t('landing.howItWorks')}</h2>

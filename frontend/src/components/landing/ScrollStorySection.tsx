@@ -77,6 +77,9 @@ export default function ScrollStorySection() {
   // === PHASE C: How It Works + Waveform (0.45 → 0.90) ===
   // Waveform fades IN after cards are gone
   const waveformOpacity = useTransform(scrollYProgress, [0.50, 0.65], [0, 1])
+  const calmBackgroundOpacity = useTransform(scrollYProgress, [0.42, 0.56, 0.86, 0.94], [0, 0.5, 0.5, 0])
+  const calmOverlayOpacity = useTransform(scrollYProgress, [0.42, 0.56, 0.86, 0.94], [0, 0.35, 0.35, 0])
+  const calmBackgroundY = useTransform(scrollYProgress, [0.42, 0.94], ['-3%', '3%'])
 
   // "How it works" heading
   const howHeadingOpacity = useTransform(scrollYProgress, [0.45, 0.58], [0, 1])
@@ -181,10 +184,35 @@ export default function ScrollStorySection() {
 
         {/* Phase 2: How It Works layer */}
         <div style={{ position: 'absolute', inset: 0, zIndex: 2, pointerEvents: 'none' }}>
+          <motion.div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: '-6%',
+              zIndex: 0,
+              opacity: calmBackgroundOpacity,
+              y: calmBackgroundY,
+              backgroundImage: "url('/brand/cosmos/cosmos-calm.webp')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              willChange: 'opacity, transform',
+            }}
+          />
+          <motion.div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: 1,
+              opacity: calmOverlayOpacity,
+              background: '#000',
+              willChange: 'opacity',
+            }}
+          />
 
           {/* "How it works" heading — fades in after cards clear */}
           <motion.div
-            style={{ opacity: howHeadingOpacity }}
+            style={{ opacity: howHeadingOpacity, zIndex: 2 }}
             className="absolute top-16 inset-x-0 text-center"
           >
             <h2 className="text-3xl md:text-5xl font-bold">{t('landing.howItWorks')}</h2>
@@ -201,6 +229,7 @@ export default function ScrollStorySection() {
                   position: 'absolute',
                   left: '50%',
                   top: '50%',
+                  zIndex: 2,
                   // Center card via margin (not CSS transform — avoids framer-motion conflict)
                   marginLeft: '-144px',  // half of w-72 = 288px
                   marginTop: '-148px',   // ~half of card height (~296px)
@@ -228,6 +257,7 @@ export default function ScrollStorySection() {
               bottom: '8%',
               left: 0,
               right: 0,
+              zIndex: 2,
               opacity: waveformOpacity,
               pointerEvents: 'none',
             }}

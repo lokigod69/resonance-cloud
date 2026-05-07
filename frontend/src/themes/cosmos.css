@@ -20,6 +20,9 @@
   --accent-glow: rgba(242, 79, 19, 0.4);
   --accent-2-soft: rgba(247, 200, 67, 0.16);
   --on-accent: #ffffff;
+  --m-warm: #f24f13;
+  --m-mid: #d946ef;
+  --m-cool: #22d3ee;
 
   --border-subtle: rgba(255, 222, 214, 0.12);
   --border-strong: rgba(242, 79, 19, 0.32);
@@ -74,12 +77,12 @@
   --glass-vermillion-bg: rgba(255, 255, 255, 0.18);
   --glass-vermillion-border: rgba(242, 79, 19, 0.35);
   --glass-vermillion-border-hover: rgba(242, 79, 19, 0.85);
-  --glass-vermillion-glow: rgba(242, 79, 19, 0.4);
-  --glass-vermillion-glow-hover: rgba(242, 79, 19, 0.62);
+  --glass-vermillion-glow: rgba(242, 79, 19, 0.1);
+  --glass-vermillion-glow-hover: rgba(242, 79, 19, 0.24);
   --glass-vermillion-fg: #ffffff;
 
-  --cta-glow: rgba(242, 79, 19, 0.3);
-  --cta-glow-strong: rgba(242, 79, 19, 0.56);
+  --cta-glow: rgba(242, 79, 19, 0.08);
+  --cta-glow-strong: rgba(242, 79, 19, 0.18);
   --cosmos-language-chip: #46334f;
   --waveform-low: rgba(242, 79, 19, 0.78);
   --waveform-mid: #f24f13;
