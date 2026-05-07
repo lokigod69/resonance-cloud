@@ -14,6 +14,7 @@
     "test:phase1e:rls": "tsx scripts/test-phase1e-rpc-rls.ts",
     "test:phase1f0:credits": "tsx scripts/test-phase1f0-credit-pricing.ts",
     "test:lane-payload": "tsx scripts/test-product-lane-payload.ts",
+    "test:premium-style-assets": "tsx scripts/test-premium-style-assets.ts",
     "test:admin-layer2-lab": "tsx scripts/test-admin-layer2-lab.ts",
     "test:card-generation-progress": "tsx scripts/test-card-generation-progress.ts",
     "test:word-metadata": "tsx scripts/test-word-display-metadata.ts",

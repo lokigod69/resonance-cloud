@@ -14,6 +14,7 @@ import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGen
 import {
   DEFAULT_CARD_LAYER2,
   DEFAULT_CARD_LAYER2_ART_STYLE,
+  DEFAULT_PREMIUM_QUICK_MODE,
   cardLayer2ArtStyleLabel,
   cardLayer2MeaningLabel,
   cardLayer2PresentationLabel,
@@ -23,12 +24,14 @@ import {
   isStandardCardImageStyle,
   laneToCardImageModel,
   laneToDeckType,
+  resolvePremiumQuickMode,
 } from '@/components/generate/useWizardState'
 import type {
   CardLayer2ArtStyle,
   CardLayer2Customization,
   ExistingDeck,
   GeneratePayload,
+  PremiumQuickMode,
   ProductLane,
   StandardCardImageStyle,
   WizardState,
@@ -79,6 +82,7 @@ export default function GenerateGO() {
   const [productLane, setProductLane] = useState<ProductLane | null>(null)
   const [cardImageStyle, setCardImageStyle] = useState<StandardCardImageStyle | CardLayer2ArtStyle | null>(null)
   const [cardLayer2, setCardLayer2] = useState<CardLayer2Customization | null>(null)
+  const [premiumQuickMode, setPremiumQuickMode] = useState<PremiumQuickMode>(DEFAULT_PREMIUM_QUICK_MODE)
   const [customGenre, setCustomGenre] = useState('')
   const [showCustomInput, setShowCustomInput] = useState(false)
   const [deckName, setDeckName] = useState('')
@@ -132,9 +136,11 @@ export default function GenerateGO() {
       if (lane === 'card_premium') {
         setCardImageStyle(DEFAULT_CARD_LAYER2_ART_STYLE)
         setCardLayer2(DEFAULT_CARD_LAYER2)
+        setPremiumQuickMode(DEFAULT_PREMIUM_QUICK_MODE)
       } else {
         setCardImageStyle(null)
         setCardLayer2(null)
+        setPremiumQuickMode(DEFAULT_PREMIUM_QUICK_MODE)
       }
       // Existing video deck: skip language and lane (both locked) → words.
       // Existing card deck: skip language, show lane (preselected, mutable).
@@ -219,12 +225,15 @@ export default function GenerateGO() {
     if (lane === 'card_premium') {
       setCardImageStyle(prev => isCardLayer2ArtStyle(prev) ? prev : DEFAULT_CARD_LAYER2_ART_STYLE)
       setCardLayer2(prev => prev ?? DEFAULT_CARD_LAYER2)
+      setPremiumQuickMode(prev => prev ?? DEFAULT_PREMIUM_QUICK_MODE)
     } else if (lane === 'card_standard') {
       setCardImageStyle(prev => isStandardCardImageStyle(prev) ? prev : null)
       setCardLayer2(null)
+      setPremiumQuickMode(DEFAULT_PREMIUM_QUICK_MODE)
     } else {
       setCardImageStyle(null)
       setCardLayer2(null)
+      setPremiumQuickMode(DEFAULT_PREMIUM_QUICK_MODE)
     }
     setStep(3)
   }
@@ -245,6 +254,7 @@ export default function GenerateGO() {
     productLane,
     cardImageStyle,
     cardLayer2,
+    premiumQuickMode,
   } as unknown as WizardState
 
   const wordsStepDispatch: React.Dispatch<WizardAction> = (action) => {
@@ -281,6 +291,11 @@ export default function GenerateGO() {
     }
     // Video lane: submit straight from words too (skip vibe/art/niveau/genre).
     handleInitialize(quickWords)
+  }
+
+  function handlePremiumQuickModeGenerate(quickWords: string[], mode: PremiumQuickMode) {
+    setPremiumQuickMode(mode)
+    handleInitialize(quickWords, { premiumQuickMode: mode })
   }
 
   function handleVibeSelect(value: string) {
@@ -356,8 +371,11 @@ export default function GenerateGO() {
 
   // ── Submit ────────────────────────────────
 
-  async function handleInitialize(wordsOverride?: string[]) {
-    const isQuickGenerate = wordsOverride !== undefined
+  async function handleInitialize(
+    wordsOverride?: string[],
+    options?: { premiumQuickMode?: PremiumQuickMode },
+  ) {
+    const isQuickGenerate = wordsOverride !== undefined && !options?.premiumQuickMode
     const effectiveWords = wordsOverride ?? words
     if (!user) return
     if (!productLane) return
@@ -393,13 +411,34 @@ export default function GenerateGO() {
               ? customGenre.trim() || undefined
               : genre || undefined
       const artStyleValue = isCard || isQuickGenerate ? null : artStyle
-      const layer2Payload =
-        productLane === 'card_premium' && !isQuickGenerate && cardImageStyle
+      const premiumArtStyle = isCardLayer2ArtStyle(cardImageStyle)
+        ? cardImageStyle
+        : DEFAULT_CARD_LAYER2_ART_STYLE
+      const premiumQuick = productLane === 'card_premium' && options?.premiumQuickMode
+        ? resolvePremiumQuickMode(options.premiumQuickMode, premiumArtStyle)
+        : null
+      const customPremiumMetadata =
+        productLane === 'card_premium' && !isQuickGenerate && !premiumQuick && cardImageStyle
+          ? {
+              premium_quick_mode: 'custom' as const,
+              backend_template: 'structured_plan_v1' as const,
+              meaning_strategy: (cardLayer2 ?? DEFAULT_CARD_LAYER2).meaning_strategy,
+              presentation_form: (cardLayer2 ?? DEFAULT_CARD_LAYER2).presentation_form,
+              art_style: premiumArtStyle,
+              prompt_version: 'premium_quick_modes_v1' as const,
+            }
+          : null
+      const layer2Payload = premiumQuick?.card_layer2 ?? (
+        productLane === 'card_premium' && !isQuickGenerate && !premiumQuick && cardImageStyle
           ? {
               ...(cardLayer2 ?? DEFAULT_CARD_LAYER2),
               visual_intensity: 'balanced' as const,
+              premium_quick_mode: 'custom' as const,
+              premium_generation_mode: customPremiumMetadata ?? undefined,
             }
           : undefined
+      )
+      const premiumGenerationMode = premiumQuick?.metadata ?? customPremiumMetadata
 
       const payload: GeneratePayload = {
         deckPayload: existingDeck
@@ -430,6 +469,12 @@ export default function GenerateGO() {
             ...(cardImageModel ? { card_image_model: cardImageModel } : {}),
             ...(isCard && !isQuickGenerate && cardImageStyle ? { card_image_style: cardImageStyle } : {}),
             ...(layer2Payload ? { card_layer2: layer2Payload } : {}),
+            ...(productLane === 'card_premium' && premiumGenerationMode
+              ? {
+                  premium_quick_mode: premiumGenerationMode.premium_quick_mode,
+                  premium_generation_mode: premiumGenerationMode,
+                }
+              : {}),
           },
         },
       }
@@ -577,6 +622,8 @@ export default function GenerateGO() {
                 state={wordsStepState}
                 dispatch={wordsStepDispatch}
                 onQuickGenerate={(qw) => handleQuickGenerate(qw)}
+                onPremiumQuickModeGenerate={(qw, mode) => handlePremiumQuickModeGenerate(qw, mode)}
+                onCustomize={() => setStep(4)}
               />
               <p style={{ textAlign: 'center', color: 'var(--go-text-secondary)', fontSize: '0.8rem', marginTop: 12 }}>
                 {words.length}/{MAX_WORDS} words · {typeof credits === 'number' ? `${credits} credits available` : 'Credits check on generate'}

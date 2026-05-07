@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, Wand2, Zap } from 'lucide-react'
+import { Sparkles, Wand2 } from 'lucide-react'
 import { GlassInput, WordChips, type GlassInputHandle } from '../shared/GlassInput'
 import PillButton from '../shared/PillButton'
+import PremiumQuickModePanel from '../shared/PremiumQuickModePanel'
 import { MAX_WORDS } from '../wizardData'
 import {
-  PREMIUM_QUICK_MODE_OPTIONS,
   type PremiumQuickMode,
   type WizardState,
   type WizardAction,
@@ -93,7 +93,7 @@ export default function WordsStep({
         {tp('generate.wordCountSlider', wordCount)}
       </motion.p>
 
-      <div className="w-full max-w-md space-y-5">
+      <div className={`w-full space-y-5 ${state.productLane === 'card_premium' ? 'max-w-xl' : 'max-w-md'}`}>
         {inputMode === 'picker' && (
           <CategoryPicker
             state={state}
@@ -155,24 +155,15 @@ export default function WordsStep({
               className="flex flex-col items-center gap-3 pt-6"
             >
               {state.productLane === 'card_premium' ? (
-                <div className="grid w-full grid-cols-2 gap-2">
-                  <QuickActionButton label="Quick Generate" onClick={handleQuickGenerate} primary />
-                  {PREMIUM_QUICK_MODE_OPTIONS.map((option) => (
-                    <QuickActionButton
-                      key={option.value}
-                      label={option.label}
-                      onClick={() => handleModeGenerate(option.value)}
-                    />
-                  ))}
-                  <QuickActionButton
-                    label="Customize"
-                    onClick={() => {
-                      glassInputRef.current?.flush()
-                      dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
-                      onCustomize?.()
-                    }}
-                  />
-                </div>
+                <PremiumQuickModePanel
+                  onQuickGenerate={handleQuickGenerate}
+                  onModeGenerate={handleModeGenerate}
+                  onCustomize={() => {
+                    glassInputRef.current?.flush()
+                    dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
+                    onCustomize?.()
+                  }}
+                />
               ) : (
                 <>
                   <PillButton glow onClick={handleQuickGenerate}>
@@ -197,30 +188,5 @@ export default function WordsStep({
         </AnimatePresence>
       </div>
     </div>
-  )
-}
-
-function QuickActionButton({
-  label,
-  onClick,
-  primary = false,
-}: {
-  label: string
-  onClick: () => void
-  primary?: boolean
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`min-h-[46px] rounded-xl border px-3 py-2 text-sm font-medium transition-all ${
-        primary
-          ? 'border-[var(--pg-accent-teal)] bg-[rgba(13,226,195,0.12)] text-[var(--pg-accent-teal)]'
-          : 'border-border/60 bg-card/50 text-foreground/85 hover:border-[var(--pg-accent-teal)]/40 hover:text-foreground'
-      }`}
-    >
-      {primary ? <Zap className="mr-1.5 inline h-4 w-4" /> : null}
-      {label}
-    </button>
   )
 }
