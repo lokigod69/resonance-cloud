@@ -256,6 +256,11 @@ export default function WordDetailPanel({
                 <MetaRow label="Generation Mode" value={debug.fields.generationMode} />
                 <MetaRow label="Backend Template" value={formatBackendTemplate(gptImage2Card?.backend_template)} />
                 <MetaRow label="Infographic Template" value={formatInfographicTemplate(gptImage2Card?.infographic_template)} />
+                <MetaRow label="Provider Model" value={cleanText(gptImage2Card?.provider_model as string | null | undefined)} />
+                <MetaRow label="Reference Attached" value={formatBoolean(gptImage2Card?.reference_attached)} />
+                <MetaRow label="Reference Fallback Used" value={formatBoolean(gptImage2Card?.reference_fallback_used)} />
+                <MetaRow label="Template Reference URL" value={cleanText(gptImage2Card?.template_reference_url as string | null | undefined)} />
+                <MetaRow label="Template Reference Path" value={cleanText(gptImage2Card?.template_reference_asset_path as string | null | undefined)} />
                 <MetaRow label="Planner Model" value={cleanText(gptImage2Card?.planner_model as string | null | undefined)} />
                 <MetaRow label="Planner Panel Count" value={gptImage2Card?.planner_panel_count as number | null | undefined} />
                 <MetaRow label="Planner Pass Count" value={gptImage2Card?.planner_pass_count as number | null | undefined} />
@@ -502,6 +507,11 @@ function formatUnknownJsonValue(value: unknown): string | null {
   if (value === null || value === undefined) return null
   if (typeof value === 'string') return cleanText(value)
   return JSON.stringify(value)
+}
+
+function formatBoolean(value: unknown): string | null {
+  if (typeof value !== 'boolean') return null
+  return value ? 'true' : 'false'
 }
 
 function formatLayer2EvalSummary(layer2Eval: Record<string, unknown> | null): string | null {

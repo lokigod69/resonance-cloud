@@ -49,13 +49,18 @@ def render_scene_gpt_image_2(
             model_id=model_id,
         )
 
-    input_block: dict = {
-        "prompt": prompt_text,
-        "aspect_ratio": aspect_ratio,
-        "resolution": resolution,
-    }
     if input_urls:
-        input_block["input_urls"] = input_urls
+        input_block: dict = {
+            "prompt": prompt_text,
+            "input_urls": input_urls,
+            "aspect_ratio": aspect_ratio,
+        }
+    else:
+        input_block = {
+            "prompt": prompt_text,
+            "aspect_ratio": aspect_ratio,
+            "resolution": resolution,
+        }
 
     payload = {
         "model": model_id,

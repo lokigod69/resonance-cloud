@@ -40,6 +40,7 @@ from .infographic_prompt import (
     INFOGRAPHIC_BACKEND_TEMPLATE,
     INFOGRAPHIC_PLANNER_MODEL,
     infographic_prompt_metadata,
+    infographic_template_requires_reference,
     infographic_template_reference_for_render,
     write_infographic_prompt,
 )
@@ -199,6 +200,9 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
     direct_prompt_meta: dict | None = None
     infographic_prompt_meta: dict | None = None
     infographic_reference_input_urls: list[str] | None = None
+    infographic_reference_required = False
+    infographic_reference_error: str | None = None
+    provider_model = "gpt-image-2-text-to-image"
     allow_translation = layer2.allow_translation_in_prompt if layer2 else False
     if layer2 and selected_backend_template == INFOGRAPHIC_BACKEND_TEMPLATE:
         layer2_customization = (
@@ -232,6 +236,9 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             reference_for_render = infographic_template_reference_for_render(
                 infographic_result.infographic_template
             )
+            infographic_reference_required = infographic_template_requires_reference(
+                infographic_result.infographic_template
+            )
             reference_asset_exists = (
                 bool(reference_for_render.get("asset_exists"))
                 if reference_for_render
@@ -244,6 +251,14 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             )
             if reference_for_render and reference_asset_exists and reference_url:
                 infographic_reference_input_urls = [reference_url]
+            if infographic_reference_required:
+                provider_model = "gpt-image-2-image-to-image"
+                if not reference_url:
+                    infographic_reference_error = (
+                        str(reference_for_render.get("reference_url_error"))
+                        if reference_for_render and reference_for_render.get("reference_url_error")
+                        else "reference URL unavailable"
+                    )
             ev.record_response(
                 response_body=infographic_result.raw_plan,
                 tokens_in=(infographic_result.usage or {}).get("prompt_tokens"),
@@ -263,6 +278,9 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                     reference_for_render is not None and not infographic_reference_input_urls
                 ),
                 reference_asset_exists=reference_asset_exists,
+                template_reference_url=reference_url,
+                reference_url_error=infographic_reference_error,
+                provider_model=provider_model,
             )
     elif layer2 and selected_backend_template in DIRECT_PROMPT_TEMPLATES:
         with logged_llm_call(
@@ -393,19 +411,32 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         card_metadata.update(direct_prompt_meta)
     if infographic_prompt_meta:
         card_metadata.update(infographic_prompt_meta)
+    card_metadata["provider_model"] = provider_model
+    if infographic_reference_required and not infographic_reference_input_urls:
+        error_message = (
+            "Infographic V3 reference URL unavailable; refusing to submit a "
+            f"text-to-image fallback as reference-guided output: {infographic_reference_error}"
+        )
+        return {
+            "success": False,
+            "file_path": None,
+            "error_message": error_message,
+            "prompt_text": prompt_text,
+            "provider_name": "gpt_image_2",
+            "model_name": provider_model,
+            "gpt_image_2_card_metadata": card_metadata,
+        }
+    provider_aspect_ratio = "auto" if infographic_reference_input_urls else "16:9"
     request_input: dict[str, object] = {
         "prompt": prompt_text,
-        "aspect_ratio": "16:9",
-        "resolution": "1K",
+        "aspect_ratio": provider_aspect_ratio,
     }
     if infographic_reference_input_urls:
         request_input["input_urls"] = infographic_reference_input_urls
+    else:
+        request_input["resolution"] = "1K"
     request_payload = {
-        "model": (
-            "gpt-image-2-image-to-image"
-            if infographic_reference_input_urls
-            else "gpt-image-2-text-to-image"
-        ),
+        "model": provider_model,
         "input": request_input,
     }
     with logged_api_call(
@@ -428,7 +459,7 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
         result = render_scene_gpt_image_2(
             prompt_text=prompt_text,
             output_path=output_path,
-            aspect_ratio="16:9",
+            aspect_ratio=provider_aspect_ratio,
             resolution="1K",
             input_urls=infographic_reference_input_urls,
         )
@@ -670,6 +701,7 @@ def generate_card_image(payload: CardImagePayload) -> CardImageResult:
             return CardImageResult(
                 status="failed",
                 error=ImageError(message=f"Card image render failed: {message}", retryable=True),
+                gpt_image_2_card_metadata=render_result.get("gpt_image_2_card_metadata"),
             )
         return CardImageResult(
             status="success",

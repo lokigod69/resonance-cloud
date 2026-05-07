@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import os
 import re
 from dataclasses import dataclass, field
@@ -27,6 +28,13 @@ INFOGRAPHIC_PLANNER_MODEL = os.environ.get(
 INFOGRAPHIC_PLANNER_MAX_TOKENS = 1500
 ORCH_ROOT = Path(__file__).resolve().parents[2]
 INFOGRAPHIC_REFERENCE_ASSET_DIR = "cloud_engines/image_engine/assets/infographic_references"
+INFOGRAPHIC_REFERENCE_BUCKET = os.environ.get("INFOGRAPHIC_REFERENCE_BUCKET", "videos")
+INFOGRAPHIC_REFERENCE_STORAGE_PREFIX = os.environ.get(
+    "INFOGRAPHIC_REFERENCE_STORAGE_PREFIX",
+    "infographic-references",
+)
+
+logger = logging.getLogger(__name__)
 
 BANNED_VISIBLE_TERMS = (
     "infographic_card",
@@ -397,6 +405,11 @@ def infographic_template_label(value: str | None) -> str:
     return infographic_template(value).label
 
 
+def infographic_template_requires_reference(value: str | None) -> bool:
+    template = infographic_template(value)
+    return template.version == "v3" and template.reference_mode == "skeleton"
+
+
 def infographic_template_reference(value: str | None) -> dict[str, Any] | None:
     template = infographic_template(value)
     if not template.template_reference_id or not template.reference_asset_path:
@@ -417,7 +430,18 @@ def infographic_template_reference_for_render(value: str | None) -> dict[str, An
     if not reference:
         return None
     asset_path = _clean(reference.get("reference_asset_path"))
-    reference["asset_exists"] = bool(asset_path and (ORCH_ROOT / asset_path).exists())
+    asset_exists = bool(asset_path and (ORCH_ROOT / asset_path).exists())
+    reference["asset_exists"] = asset_exists
+    resolved_url = _clean(reference.get("reference_url"))
+    if resolved_url and not resolved_url.startswith("https://"):
+        reference["reference_url"] = None
+        reference["reference_url_error"] = f"reference URL is not HTTPS: {resolved_url}"
+    if asset_exists and not reference.get("reference_url"):
+        url, error, bucket, storage_key = _upload_reference_asset_to_storage(asset_path)
+        reference["reference_url"] = url
+        reference["reference_url_error"] = error
+        reference["reference_bucket"] = bucket
+        reference["reference_storage_key"] = storage_key
     return reference
 
 
@@ -514,6 +538,16 @@ def compile_infographic_prompt(
     target_language = _clean(plan.get("target_language")) or _clean(content.language) or "target language"
     title = _clean(plan.get("title")) or _clean(content.word)
     translation = _clean(plan.get("translation")) or _clean(content.translation)
+    if infographic_template_requires_reference(template.value):
+        return _compile_v3_reference_prompt(
+            content=content,
+            plan=plan,
+            template=template,
+            base_language=base_language,
+            target_language=target_language,
+            title=title,
+            translation=translation,
+        )
     panels = _panel_lines(plan.get("panels"))
     hero = _clean(plan.get("hero_treatment"))
     lines = [
@@ -579,6 +613,9 @@ def infographic_prompt_metadata(
     reference_fallback_used: bool | None = None,
     reference_asset_exists: bool | None = None,
     reference_fallback_reason: str | None = None,
+    template_reference_url: str | None = None,
+    reference_url_error: str | None = None,
+    provider_model: str | None = None,
 ) -> dict[str, Any]:
     template = globals()["infographic_template"](infographic_template)
     panels = planner_plan.get("panels") if isinstance(planner_plan, Mapping) else None
@@ -597,6 +634,8 @@ def infographic_prompt_metadata(
         "target_language": _clean(target_language) or None,
         "planner_json_preview": _compact_json_preview(planner_plan),
     }
+    if provider_model:
+        metadata["provider_model"] = provider_model
     metadata["final_prompt_hash"] = metadata["final_prompt_sha256"]
     if template.pass_count > 1:
         metadata["planner_pass_count"] = template.pass_count
@@ -607,9 +646,10 @@ def infographic_prompt_metadata(
             asset_exists = bool((ORCH_ROOT / reference["reference_asset_path"]).exists())
         attached = bool(reference_attached)
         fallback = (not attached) if reference_fallback_used is None else bool(reference_fallback_used)
+        resolved_reference_url = template_reference_url if template_reference_url is not None else reference.get("reference_url")
         if not asset_exists:
             fallback_reason = "reference_asset_missing"
-        elif not reference.get("reference_url") and not attached:
+        elif not resolved_reference_url and not attached:
             fallback_reason = "reference_url_unavailable"
         else:
             fallback_reason = reference_fallback_reason
@@ -618,7 +658,8 @@ def infographic_prompt_metadata(
                 "reference_mode": reference["reference_mode"],
                 "template_reference_id": reference["template_reference_id"],
                 "template_reference_asset_path": reference["reference_asset_path"],
-                "template_reference_url": reference.get("reference_url"),
+                "template_reference_url": resolved_reference_url,
+                "reference_url_error": reference_url_error,
                 "reference_attached": attached,
                 "reference_fallback_used": fallback,
                 "reference_fallback_reason": fallback_reason if fallback else None,
@@ -738,6 +779,95 @@ def _parse_planner_plan(raw_plan: str) -> dict[str, Any]:
     return data
 
 
+def _compile_v3_reference_prompt(
+    *,
+    content: CardImageContent,
+    plan: Mapping[str, Any],
+    template: InfographicTemplate,
+    base_language: str,
+    target_language: str,
+    title: str,
+    translation: str,
+) -> str:
+    lines = [
+        "Create a horizontal 16:9 vocabulary infographic for:",
+        f"TARGET WORD: {title}",
+        f"TRANSLATION: {translation}",
+        f"BASE LANGUAGE: {base_language}",
+        f"TARGET LANGUAGE: {target_language}",
+        "",
+        "Use the attached reference image only as visual scaffolding.",
+        "Preserve layout, panel rhythm, palette, border style, icon style, typography mood, density, and premium infographic feel.",
+        "Do not copy any text, labels, examples, footer, word, translation, etymology, mnemonic, or placeholder marks from the reference.",
+        "If the reference contains any readable text, treat it as placeholder only and ignore it.",
+        "",
+        "All visible text must come from the planner content.",
+        "All visible content must come from this planner content:",
+        _planner_content_compact(plan),
+        "",
+        "Language rule:",
+        f"All explanations, panel headers, captions, warnings, glosses, and footer text must be in {base_language}.",
+        f"The target word, target-language forms, target-language example sentences, and collocations may remain in {target_language}.",
+        "",
+        "Panel flexibility:",
+        "Preserve the reference style, but resize panels as needed.",
+        "Regenerate the central map/artifact/hero visual for the new word.",
+        "Do not invent filler panels.",
+        "",
+        "Bans:",
+        "No internal labels.",
+        "No backend/model/template names.",
+        "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics.",
+        "No forced mnemonics.",
+        "Do not copy text from the reference image.",
+        "",
+        "The planner content is the source of truth.",
+    ]
+    if template.fallback_style_description:
+        lines.extend(["", f"Reference blueprint fallback: {template.fallback_style_description}"])
+    return _remove_internal_terms("\n".join(lines))
+
+
+def _planner_content_compact(plan: Mapping[str, Any]) -> str:
+    compact: dict[str, Any] = {}
+    for key in (
+        "title",
+        "translation",
+        "visual_anchor",
+        "hero_treatment",
+        "analysis_summary",
+        "footer_line",
+    ):
+        value = _clean(plan.get(key))
+        if value and not _is_internal_safety_text(value):
+            compact[key] = value
+    panel_items: list[dict[str, Any]] = []
+    panels = plan.get("panels")
+    if isinstance(panels, list):
+        for raw in panels[:8]:
+            if not isinstance(raw, Mapping):
+                continue
+            panel: dict[str, Any] = {}
+            for key in ("header", "type", "text", "visual_note"):
+                value = raw.get(key)
+                if key == "text":
+                    cleaned = [
+                        _clean(item)
+                        for item in _iter_list_items(value)
+                        if _clean(item) and not _is_internal_safety_text(item)
+                    ]
+                    if cleaned:
+                        panel[key] = cleaned
+                    continue
+                cleaned_value = _clean(value)
+                if cleaned_value and not _is_internal_safety_text(cleaned_value):
+                    panel[key] = cleaned_value
+            if panel:
+                panel_items.append(panel)
+    compact["panels"] = panel_items
+    return json.dumps(compact, ensure_ascii=False, separators=(",", ":"))
+
+
 def _panel_lines(value: Any) -> str:
     if not isinstance(value, list) or not value:
         return "- Core panel: teach the word with short base-language text."
@@ -802,6 +932,38 @@ def _template_reference_url(template: InfographicTemplate) -> str | None:
     if not base_url or not template.reference_asset_path:
         return None
     return f"{base_url.rstrip('/')}/{Path(template.reference_asset_path).name}"
+
+
+def _upload_reference_asset_to_storage(
+    reference_asset_path: str,
+) -> tuple[str | None, str | None, str | None, str | None]:
+    asset_path = ORCH_ROOT / reference_asset_path
+    if not asset_path.exists():
+        return None, f"reference asset missing: {reference_asset_path}", None, None
+    supabase_url = os.environ.get("SUPABASE_URL", "")
+    supabase_key = os.environ.get("SUPABASE_SERVICE_KEY", "") or os.environ.get("SUPABASE_KEY", "")
+    if not supabase_url or not supabase_key:
+        return None, "supabase credentials missing", INFOGRAPHIC_REFERENCE_BUCKET, None
+    storage_key = f"{INFOGRAPHIC_REFERENCE_STORAGE_PREFIX}/{asset_path.name}"
+    try:
+        from supabase import create_client as _create_supabase_client
+
+        sb_client = _create_supabase_client(supabase_url, supabase_key)
+        with open(asset_path, "rb") as f:
+            sb_client.storage.from_(INFOGRAPHIC_REFERENCE_BUCKET).upload(
+                storage_key,
+                f.read(),
+                file_options={"content-type": "image/png", "upsert": "true"},
+            )
+        public_url = str(
+            sb_client.storage.from_(INFOGRAPHIC_REFERENCE_BUCKET).get_public_url(storage_key)
+        )
+    except Exception as exc:
+        logger.warning("Infographic reference upload failed for %s: %s", storage_key, exc)
+        return None, str(exc), INFOGRAPHIC_REFERENCE_BUCKET, storage_key
+    if not public_url.startswith("https://"):
+        return None, f"reference URL is not HTTPS: {public_url}", INFOGRAPHIC_REFERENCE_BUCKET, storage_key
+    return public_url, None, INFOGRAPHIC_REFERENCE_BUCKET, storage_key
 
 
 def _remove_internal_terms(prompt: str) -> str:

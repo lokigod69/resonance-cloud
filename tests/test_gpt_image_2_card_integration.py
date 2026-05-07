@@ -166,6 +166,48 @@ def test_gpt_image_2_provider_sends_t2i_and_i2i_payloads(monkeypatch, tmp_path):
     assert captured[1]["payload"]["input"]["input_urls"] == ["https://example.invalid/ref.png"]
 
 
+def test_gpt_image_2_provider_uses_i2i_payload_shape_without_resolution(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import gpt_image_2_provider
+
+    captured: list[dict[str, object]] = []
+
+    def fake_submit(payload: dict, headers: dict) -> str:
+        captured.append(payload)
+        return "task-gpt-i2i"
+
+    monkeypatch.setenv("KIE_API_KEY", "test-key")
+    monkeypatch.setattr(gpt_image_2_provider, "_submit_task", fake_submit)
+    monkeypatch.setattr(
+        gpt_image_2_provider,
+        "_poll_task",
+        lambda task_id, headers: {
+            "code": 200,
+            "data": {
+                "state": "success",
+                "resultJson": json.dumps({"resultUrls": ["https://example.invalid/gpt.png"]}),
+            },
+        },
+    )
+    monkeypatch.setattr(gpt_image_2_provider, "_download_and_save", lambda *_a, **_kw: None)
+
+    result = gpt_image_2_provider.render_scene_gpt_image_2(
+        prompt_text="Create a reference-guided card.",
+        output_path=tmp_path / "card-i2i.png",
+        aspect_ratio="auto",
+        input_urls=["https://example.invalid/reference.png"],
+    )
+
+    assert result["success"] is True
+    assert captured[0] == {
+        "model": "gpt-image-2-image-to-image",
+        "input": {
+            "prompt": "Create a reference-guided card.",
+            "input_urls": ["https://example.invalid/reference.png"],
+            "aspect_ratio": "auto",
+        },
+    }
+
+
 def test_generate_card_image_gpt_path_skips_card_llm(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
 
@@ -803,9 +845,17 @@ def test_infographic_prompt_template_routes_through_dedicated_planner_and_stores
     assert calls["infographic_kwargs"]["infographic_template"] == "infographic_language_atlas_v2"
     assert calls["infographic_kwargs"]["content"].base_language == "German"
     assert "horizontal 16:9 educational infographic poster" in calls["provider_kwargs"]["prompt_text"]
+    assert calls["provider_kwargs"]["aspect_ratio"] == "16:9"
+    assert calls["provider_kwargs"]["input_urls"] is None
+    request_body = json.loads(calls["record_responses"][-1]["request_body"])
+    assert request_body["model"] == "gpt-image-2-text-to-image"
+    assert request_body["input"]["aspect_ratio"] == "16:9"
+    assert request_body["input"]["resolution"] == "1K"
+    assert "input_urls" not in request_body["input"]
     metadata = result.gpt_image_2_card_metadata
     assert metadata is not None
     assert metadata["backend_template"] == "infographic_prompt_v1"
+    assert metadata["provider_model"] == "gpt-image-2-text-to-image"
     assert metadata["premium_quick_mode"] == "infographic"
     assert metadata["infographic_template"] == "infographic_language_atlas_v2"
     assert metadata["infographic_template_label"] == "V2 · Language Atlas"
@@ -815,7 +865,7 @@ def test_infographic_prompt_template_routes_through_dedicated_planner_and_stores
     assert metadata["planner_panel_count"] == 1
 
 
-def test_v3_infographic_reference_metadata_and_blueprint_fallback(monkeypatch, tmp_path):
+def test_v3_infographic_reference_uses_i2i_payload_with_resolved_reference_url(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
     from cloud_engines.image_engine.infographic_prompt import InfographicPromptResult
 
@@ -858,6 +908,16 @@ def test_v3_infographic_reference_metadata_and_blueprint_fallback(monkeypatch, t
             infographic_template="infographic_language_atlas_v3_reference",
         )
 
+    def fake_reference_for_render(_value):
+        return {
+            "template_reference_id": "language_atlas_reference_v3a",
+            "reference_mode": "skeleton",
+            "reference_asset_path": "cloud_engines/image_engine/assets/infographic_references/language_atlas_reference_v3a.png",
+            "reference_url": "https://example.invalid/language_atlas_reference_v3a.png",
+            "fallback_style_description": "language atlas skeleton",
+            "asset_exists": True,
+        }
+
     def fake_render_scene_gpt_image_2(**kwargs):
         calls["provider_kwargs"] = kwargs
         Path(kwargs["output_path"]).write_bytes(b"png")
@@ -868,7 +928,7 @@ def test_v3_infographic_reference_metadata_and_blueprint_fallback(monkeypatch, t
             "prompt_text": kwargs["prompt_text"],
             "response_body": "{}",
             "provider_name": "gpt_image_2",
-            "model_name": "gpt-image-2-text-to-image",
+            "model_name": "gpt-image-2-image-to-image",
             "request_id": "task-infographic-v3-reference",
             "cost_estimate_usd": 0.05,
         }
@@ -876,6 +936,7 @@ def test_v3_infographic_reference_metadata_and_blueprint_fallback(monkeypatch, t
     monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
     monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
     monkeypatch.setattr(card_engine, "write_infographic_prompt", fake_write_infographic_prompt)
+    monkeypatch.setattr(card_engine, "infographic_template_reference_for_render", fake_reference_for_render)
 
     import types
 
@@ -901,22 +962,27 @@ def test_v3_infographic_reference_metadata_and_blueprint_fallback(monkeypatch, t
     result = card_engine.generate_card_image(payload)
 
     assert result.status == "success"
-    assert calls["provider_kwargs"]["input_urls"] is None
+    assert calls["provider_kwargs"]["aspect_ratio"] == "auto"
+    assert calls["provider_kwargs"]["input_urls"] == ["https://example.invalid/language_atlas_reference_v3a.png"]
     request_body = json.loads(calls["record_responses"][-1]["request_body"])
-    assert request_body["model"] == "gpt-image-2-text-to-image"
-    assert "input_urls" not in request_body["input"]
+    assert request_body["model"] == "gpt-image-2-image-to-image"
+    assert request_body["input"] == {
+        "prompt": calls["provider_kwargs"]["prompt_text"],
+        "aspect_ratio": "auto",
+        "input_urls": ["https://example.invalid/language_atlas_reference_v3a.png"],
+    }
     metadata = result.gpt_image_2_card_metadata
     assert metadata is not None
+    assert metadata["provider_model"] == "gpt-image-2-image-to-image"
     assert metadata["infographic_template"] == "infographic_language_atlas_v3_reference"
     assert metadata["reference_mode"] == "skeleton"
     assert metadata["template_reference_id"] == "language_atlas_reference_v3a"
     assert metadata["template_reference_asset_path"].endswith("language_atlas_reference_v3a.png")
-    assert metadata["reference_attached"] is False
-    assert metadata["reference_fallback_used"] is True
-    assert metadata["reference_fallback_reason"] == "reference_url_unavailable"
+    assert metadata["reference_attached"] is True
+    assert metadata["reference_fallback_used"] is False
 
 
-def test_v3_infographic_can_attach_reference_url_when_registry_provides_one(monkeypatch, tmp_path):
+def test_v3_infographic_missing_reference_url_fails_before_provider(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
     from cloud_engines.image_engine.infographic_prompt import InfographicPromptResult
 
@@ -938,33 +1004,22 @@ def test_v3_infographic_can_attach_reference_url_when_registry_provides_one(monk
             model="test-planner-model",
             raw_plan='{"panels":[]}',
             planner_plan={"panels": [], "base_language": "German", "target_language": "English"},
-            infographic_template="infographic_study_knowledge_v3_reference",
+            infographic_template="infographic_museum_exhibit_v3_reference",
         )
 
     def fake_reference_for_render(_value):
         return {
-            "template_reference_id": "study_knowledge_reference_v3a",
+            "template_reference_id": "museum_exhibit_reference_v3a",
             "reference_mode": "skeleton",
-            "reference_asset_path": "cloud_engines/image_engine/assets/infographic_references/study_knowledge_reference_v3a.png",
-            "reference_url": "https://example.invalid/study_knowledge_reference_v3a.png",
-            "fallback_style_description": "study poster skeleton",
+            "reference_asset_path": "cloud_engines/image_engine/assets/infographic_references/museum_exhibit_reference_v3a.png",
+            "reference_url": None,
+            "reference_url_error": "supabase credentials missing",
+            "fallback_style_description": "museum skeleton",
             "asset_exists": True,
         }
 
     def fake_render_scene_gpt_image_2(**kwargs):
-        calls["provider_kwargs"] = kwargs
-        Path(kwargs["output_path"]).write_bytes(b"png")
-        return {
-            "success": True,
-            "file_path": Path(kwargs["output_path"]).name,
-            "error_message": None,
-            "prompt_text": kwargs["prompt_text"],
-            "response_body": "{}",
-            "provider_name": "gpt_image_2",
-            "model_name": "gpt-image-2-image-to-image",
-            "request_id": "task-infographic-v3-i2i",
-            "cost_estimate_usd": 0.05,
-        }
+        raise AssertionError("missing V3 reference URL must fail before provider call")
 
     monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
     monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
@@ -985,20 +1040,20 @@ def test_v3_infographic_can_attach_reference_url_when_registry_provides_one(monk
         "presentation_form": "infographic_card",
         "visual_intensity": "balanced",
         "backend_template": "infographic_prompt_v1",
-        "infographic_template": "infographic_study_knowledge_v3_reference",
+        "infographic_template": "infographic_museum_exhibit_v3_reference",
     }
 
     result = card_engine.generate_card_image(payload)
 
-    assert result.status == "success"
-    assert calls["provider_kwargs"]["input_urls"] == ["https://example.invalid/study_knowledge_reference_v3a.png"]
-    request_body = json.loads(calls["record_responses"][-1]["request_body"])
-    assert request_body["model"] == "gpt-image-2-image-to-image"
-    assert request_body["input"]["input_urls"] == ["https://example.invalid/study_knowledge_reference_v3a.png"]
+    assert result.status == "failed"
+    assert result.error is not None
+    assert "reference URL" in result.error.message
     metadata = result.gpt_image_2_card_metadata
     assert metadata is not None
-    assert metadata["reference_attached"] is True
-    assert metadata["reference_fallback_used"] is False
+    assert metadata["provider_model"] == "gpt-image-2-image-to-image"
+    assert metadata["reference_attached"] is False
+    assert metadata["reference_fallback_used"] is True
+    assert metadata["reference_fallback_reason"] == "reference_url_unavailable"
 
 
 def test_direct_prompt_word_object_allows_target_word_and_bans_translation(monkeypatch, tmp_path):

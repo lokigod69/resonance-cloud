@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import types
 from pathlib import Path
 
 ORCH_ROOT = Path(__file__).resolve().parents[1]
@@ -18,6 +19,7 @@ from cloud_engines.image_engine.infographic_prompt import (  # noqa: E402
     compile_infographic_prompt,
     infographic_prompt_metadata,
     infographic_template_reference,
+    infographic_template_reference_for_render,
     infographic_template_label,
 )
 
@@ -226,6 +228,9 @@ def test_v3_compiler_includes_reference_text_and_content_safety_rules():
     assert "target word, target-language forms, target-language example sentences, and collocations may remain in English" in prompt
     assert "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics." in prompt
     assert "Do not copy text from the reference image." in prompt
+    assert len(prompt) < 3500
+    assert prompt.count("Use the attached reference image only as visual scaffolding.") == 1
+    assert prompt.count("No fake facts") <= 1
 
 
 def test_infographic_metadata_records_template_and_v2_pass_count():
@@ -293,3 +298,48 @@ def test_v3_metadata_records_reference_fields_and_missing_asset_fallback():
     assert missing["reference_attached"] is False
     assert missing["reference_fallback_used"] is True
     assert missing["reference_fallback_reason"] == "reference_asset_missing"
+
+
+def test_v3_reference_for_render_uploads_local_asset_to_supabase_storage(monkeypatch):
+    uploads: list[dict[str, object]] = []
+
+    class FakeBucket:
+        def upload(self, storage_key, payload, file_options=None):
+            uploads.append(
+                {
+                    "storage_key": storage_key,
+                    "payload": payload,
+                    "file_options": file_options,
+                }
+            )
+
+        def get_public_url(self, storage_key):
+            return f"https://cdn.example.invalid/{storage_key}"
+
+    class FakeStorage:
+        def from_(self, bucket):
+            uploads.append({"bucket": bucket})
+            return FakeBucket()
+
+    class FakeClient:
+        storage = FakeStorage()
+
+    fake_supabase = types.SimpleNamespace(create_client=lambda *_args, **_kwargs: FakeClient())
+
+    monkeypatch.delenv("INFOGRAPHIC_REFERENCE_BASE_URL", raising=False)
+    monkeypatch.setenv("SUPABASE_URL", "https://project.example.invalid")
+    monkeypatch.setenv("SUPABASE_SERVICE_KEY", "service-key")
+    monkeypatch.setitem(sys.modules, "supabase", fake_supabase)
+
+    reference = infographic_template_reference_for_render("infographic_language_atlas_v3_reference")
+
+    assert reference is not None
+    assert reference["reference_url"] == "https://cdn.example.invalid/infographic-references/language_atlas_reference_v3a.png"
+    assert reference["reference_url_error"] is None
+    assert reference["reference_bucket"] == "videos"
+    assert reference["reference_storage_key"] == "infographic-references/language_atlas_reference_v3a.png"
+    assert reference["asset_exists"] is True
+    assert uploads[0] == {"bucket": "videos"}
+    assert uploads[1]["storage_key"] == "infographic-references/language_atlas_reference_v3a.png"
+    assert uploads[1]["file_options"] == {"content-type": "image/png", "upsert": "true"}
+    assert uploads[1]["payload"].startswith(b"\x89PNG")
