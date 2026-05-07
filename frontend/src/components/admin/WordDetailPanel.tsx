@@ -255,6 +255,17 @@ export default function WordDetailPanel({
                 <MetaRow label="Card Image Style" value={cardImageStyle} />
                 <MetaRow label="Generation Mode" value={debug.fields.generationMode} />
                 <MetaRow label="Backend Template" value={formatBackendTemplate(gptImage2Card?.backend_template)} />
+                <MetaRow label="Infographic Template" value={formatInfographicTemplate(gptImage2Card?.infographic_template)} />
+                <MetaRow label="Planner Model" value={cleanText(gptImage2Card?.planner_model as string | null | undefined)} />
+                <MetaRow label="Planner Panel Count" value={gptImage2Card?.planner_panel_count as number | null | undefined} />
+                <MetaRow label="Planner Pass Count" value={gptImage2Card?.planner_pass_count as number | null | undefined} />
+                <MetaRow label="Planner Hero Treatment" value={cleanText(gptImage2Card?.planner_hero_treatment as string | null | undefined)} />
+                <MetaRow label="Final Prompt Chars" value={gptImage2Card?.final_prompt_chars as number | null | undefined} />
+                <MetaRow label="Final Prompt SHA-256" value={cleanText(gptImage2Card?.final_prompt_sha256 as string | null | undefined)} />
+                <MetaRow label="Final Prompt Preview" value={cleanText(gptImage2Card?.final_prompt_preview as string | null | undefined)} />
+                <MetaRow label="Base Language Intended" value={cleanText(gptImage2Card?.base_language_intended as string | null | undefined)} />
+                <MetaRow label="Target Language" value={cleanText(gptImage2Card?.target_language as string | null | undefined)} />
+                <MetaRow label="Planner JSON Preview" value={cleanText(gptImage2Card?.planner_json_preview as string | null | undefined)} />
                 <MetaRow label="Layer 2 User Choices" value={formatJsonValue(layer2UserChoices)} />
                 <MetaRow label="Layer 2 Resolved" value={formatJsonValue(layer2Resolved)} />
                 <MetaRow label="Layer 2 Snap Notes" value={layer2SnapNotes} />

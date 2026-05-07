@@ -155,6 +155,50 @@ def test_pending_image_recovery_reverts_to_pending_and_pushes_to_card_queue():
     assert up.qsize() == v.qsize() == pv.qsize() == 0
 
 
+def test_infographic_pending_image_recovery_reverts_to_pending_and_pushes_updated_row():
+    sb = FakeSupabase()
+    sb.add_job(deck_id="deck-card", status="processing")
+    sb.add_word(
+        id="word-threshold-infographic",
+        deck_id="deck-card",
+        current_stage="pending_image",
+        status="processing",
+        stage_started_at="2026-05-06T11:32:10+00:00",
+        stage_attempts=2,
+        total_stage_attempts=2,
+        thumbnail_url=None,
+        image_url=None,
+        card_image_url=None,
+        metadata={
+            "layer2_eval": {
+                "source": "admin_layer2_lab_v1",
+                "original_word": "threshold",
+                "backend_template": "infographic_prompt_v1",
+                "infographic_template": "infographic_language_atlas_v2",
+            }
+        },
+    )
+    up, v, pv, c = _fresh_queues()
+    _run(recovery.run_recovery_pass(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
+    ))
+
+    row = sb._tables["words"][0]
+    assert row["current_stage"] == "pending"
+    assert row["status"] == "pending"
+    assert row["stage_attempts"] == 0
+    assert row["stage_started_at"] is None
+    assert c.qsize() == 1
+    queued = c.get_nowait()
+    assert queued["id"] == "word-threshold-infographic"
+    assert queued["current_stage"] == "pending"
+    assert queued["status"] == "pending"
+    assert queued["stage_attempts"] == 0
+    assert queued["stage_started_at"] is None
+    assert queued["metadata"]["layer2_eval"]["infographic_template"] == "infographic_language_atlas_v2"
+    assert up.qsize() == v.qsize() == pv.qsize() == 0
+
+
 def test_recovered_pending_image_overflow_is_queueable_by_feeder_source3():
     sb = FakeSupabase()
     _add_deck(sb, deck_id="deck-card", deck_type="card")
@@ -231,6 +275,46 @@ def test_pending_image_with_existing_thumbnail_is_not_reset_or_queued():
     assert row["stage_attempts"] == 1
     assert row["stage_started_at"] == "2026-05-06T11:32:10+00:00"
     assert row["thumbnail_url"] == "https://example.invalid/card.png"
+    assert c.qsize() == 0
+    assert up.qsize() == v.qsize() == pv.qsize() == 0
+
+
+def test_infographic_pending_image_with_existing_output_is_not_reset_or_queued():
+    sb = FakeSupabase()
+    sb.add_job(deck_id="deck-card", status="processing")
+    sb.add_word(
+        id="word-infographic-has-output",
+        deck_id="deck-card",
+        current_stage="pending_image",
+        status="processing",
+        stage_started_at="2026-05-06T11:32:10+00:00",
+        stage_attempts=1,
+        total_stage_attempts=1,
+        thumbnail_url=None,
+        image_url="https://example.invalid/infographic.png",
+        card_image_url=None,
+        metadata={
+            "layer2_eval": {
+                "source": "admin_layer2_lab_v1",
+                "original_word": "threshold",
+                "backend_template": "infographic_prompt_v1",
+                "infographic_template": "infographic_museum_exhibit_v2",
+            }
+        },
+    )
+
+    up, v, pv, c = _fresh_queues()
+    _run(recovery.run_recovery_pass(
+        sb, upstream_queue=up, video_queue=v, post_video_queue=pv, card_queue=c,
+    ))
+
+    row = sb._tables["words"][0]
+    assert row["current_stage"] == "pending_image"
+    assert row["status"] == "processing"
+    assert row["stage_attempts"] == 1
+    assert row["stage_started_at"] == "2026-05-06T11:32:10+00:00"
+    assert row["image_url"] == "https://example.invalid/infographic.png"
+    assert row["metadata"]["layer2_eval"]["infographic_template"] == "infographic_museum_exhibit_v2"
     assert c.qsize() == 0
     assert up.qsize() == v.qsize() == pv.qsize() == 0
 

@@ -1392,3 +1392,23 @@ def test_card_storage_key_uses_unique_lab_variant_slug():
     assert first == "user-1/deck-1/cards/freedom-l2-001.png"
     assert second == "user-1/deck-1/cards/freedom-l2-002.png"
     assert first != second
+
+
+def test_card_storage_key_is_unique_for_ten_same_word_infographic_variants():
+    from src.orchestration.card_worker import _card_image_storage_key
+
+    slugs = [f"threshold-l2-safe1-{index:03d}" for index in range(1, 11)]
+    keys = [
+        _card_image_storage_key(
+            user_id="user-1",
+            deck_id="deck-1",
+            word_slug=slug,
+        )
+        for slug in slugs
+    ]
+
+    assert len(keys) == 10
+    assert len(set(keys)) == 10
+    assert keys[0] == "user-1/deck-1/cards/threshold-l2-safe1-001.png"
+    assert keys[-1] == "user-1/deck-1/cards/threshold-l2-safe1-010.png"
+    assert "user-1/deck-1/cards/threshold.png" not in keys

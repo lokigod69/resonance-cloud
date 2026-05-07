@@ -393,6 +393,141 @@ console.log('\n[premium lab infographic payload]')
   )
 }
 
+console.log('\n[repeated-word infographic template matrix]')
+{
+  const rows: Layer2LabRun[] = INFOGRAPHIC_TEMPLATE_OPTIONS.map((option) => ({
+    id: `threshold-${option.value}`,
+    word: 'threshold',
+    quick_mode_preset: 'infographic',
+    meaning_strategy: 'absurd_hook',
+    presentation_form: 'infographic_card',
+    art_style: 'editorial',
+    backend_template: 'infographic_prompt_v1',
+    infographic_template: option.value,
+    label: option.label,
+  }))
+  const payloads = rows.map((row, index) => buildLayer2LabPayload({
+    row,
+    scriptIndex: index + 1,
+    labRunId: 'safe1',
+    userId: USER,
+    targetLanguage: 'English',
+    baseLanguage: 'German',
+    deckName: 'Layer2 Lab Threshold Infographics',
+  }))
+  const slugs = payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval?.variant_slug)
+  const templates = payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval?.infographic_template)
+
+  assert('all ten threshold infographic rows are represented',
+    payloads.length === 10 && payloads.length === INFOGRAPHIC_TEMPLATE_OPTIONS.length,
+    payloads,
+  )
+  assert('all ten threshold infographic rows preserve visible word',
+    payloads.every((payload) => payload.wordList[0] === 'threshold'),
+    payloads.map((payload) => payload.wordList),
+  )
+  assert('all ten threshold infographic rows preserve original_word metadata',
+    payloads.every((payload) => payload.jobPayload.settings_override.layer2_eval?.original_word === 'threshold'),
+    payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval),
+  )
+  assert('all ten threshold infographic rows route to infographic_prompt_v1',
+    payloads.every((payload) =>
+      payload.jobPayload.settings_override.card_layer2?.backend_template === 'infographic_prompt_v1'
+      && payload.jobPayload.settings_override.layer2_eval?.backend_template === 'infographic_prompt_v1'
+    ),
+    payloads.map((payload) => payload.jobPayload.settings_override),
+  )
+  assert('all ten threshold infographic rows preserve per-row template enums',
+    templates.join('|') === INFOGRAPHIC_TEMPLATE_OPTIONS.map((option) => option.value).join('|'),
+    templates,
+  )
+  assert('all ten threshold infographic rows preserve per-row template labels',
+    payloads.every((payload, index) =>
+      payload.jobPayload.settings_override.layer2_eval?.infographic_template_label === INFOGRAPHIC_TEMPLATE_OPTIONS[index]?.label
+    ),
+    payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval),
+  )
+  assert('all ten threshold infographic rows get unique tokenized slugs',
+    new Set(slugs).size === 10
+      && slugs[0] === 'threshold-l2-safe1-001'
+      && slugs[9] === 'threshold-l2-safe1-010',
+    slugs,
+  )
+  assert('infographic rows do not require raw meaning or art controls in layer2_eval',
+    payloads.every((payload) =>
+      payload.jobPayload.settings_override.layer2_eval?.meaning_strategy === undefined
+      && payload.jobPayload.settings_override.layer2_eval?.art_style === undefined
+      && payload.jobPayload.settings_override.layer2_eval?.presentation_form === 'infographic_card'
+    ),
+    payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval),
+  )
+  assert('infographic row cost estimate is ten rows times five credits',
+    estimateLayer2LabCreditCost(payloads.length) === 50,
+  )
+}
+
+console.log('\n[per-row infographic template isolation]')
+{
+  const knowledgeGuide: Layer2LabRun = {
+    id: 'threshold-v1-knowledge',
+    word: 'threshold',
+    quick_mode_preset: 'infographic',
+    meaning_strategy: 'clear_meaning',
+    presentation_form: 'infographic_card',
+    art_style: 'editorial',
+    backend_template: 'infographic_prompt_v1',
+    infographic_template: 'infographic_knowledge_guide_v1',
+    label: 'v1 knowledge',
+  }
+  const museumExhibit: Layer2LabRun = {
+    ...knowledgeGuide,
+    id: 'threshold-v2-museum',
+    infographic_template: 'infographic_museum_exhibit_v2',
+    label: 'v2 museum',
+  }
+  const first = buildLayer2LabPayload({
+    row: knowledgeGuide,
+    scriptIndex: 1,
+    labRunId: 'iso1',
+    userId: USER,
+    targetLanguage: 'English',
+    deckName: 'Layer2 Lab',
+  })
+  const second = buildLayer2LabPayload({
+    row: museumExhibit,
+    scriptIndex: 2,
+    labRunId: 'iso1',
+    userId: USER,
+    targetLanguage: 'English',
+    deckName: 'Layer2 Lab',
+    existingDeck: {
+      id: 'deck-iso',
+      name: 'Layer2 Lab',
+      target_language: 'English',
+      art_style: null,
+      movie_override: null,
+      word_count: 1,
+      deck_type: 'card',
+      last_card_image_model: 'gpt_image_2',
+    },
+  })
+  assert('row A keeps V1 Knowledge Guide template',
+    first.jobPayload.settings_override.card_layer2?.infographic_template === 'infographic_knowledge_guide_v1'
+      && first.jobPayload.settings_override.layer2_eval?.infographic_template === 'infographic_knowledge_guide_v1',
+    first.jobPayload.settings_override,
+  )
+  assert('row B keeps V2 Museum Exhibit template',
+    second.jobPayload.settings_override.card_layer2?.infographic_template === 'infographic_museum_exhibit_v2'
+      && second.jobPayload.settings_override.layer2_eval?.infographic_template === 'infographic_museum_exhibit_v2',
+    second.jobPayload.settings_override,
+  )
+  assert('per-row infographic slugs differ inside one deck',
+    first.jobPayload.settings_override.layer2_eval?.variant_slug === 'threshold-l2-iso1-001'
+      && second.jobPayload.settings_override.layer2_eval?.variant_slug === 'threshold-l2-iso1-002',
+    [first.jobPayload.settings_override.layer2_eval, second.jobPayload.settings_override.layer2_eval],
+  )
+}
+
 console.log('\n[repeated-word variants]')
 {
   const firstRow: Layer2LabRun = {

@@ -638,6 +638,143 @@ def test_layer2_lab_repeated_words_get_unique_variant_slugs(monkeypatch, tmp_pat
     assert [m["word_slug"] for m in manifests] == ["freedom-l2-001", "freedom-l2-002"]
 
 
+def test_layer2_lab_same_word_infographic_variants_get_unique_slugs_and_metadata(monkeypatch, tmp_path):
+    templates = [
+        "infographic_knowledge_guide_v1",
+        "infographic_language_atlas_v1",
+        "infographic_study_poster_v1",
+        "infographic_visual_dictionary_v1",
+        "infographic_museum_exhibit_v1",
+        "infographic_knowledge_guide_v2",
+        "infographic_language_atlas_v2",
+        "infographic_study_poster_v2",
+        "infographic_visual_dictionary_v2",
+        "infographic_museum_exhibit_v2",
+    ]
+    jobs = [
+        {
+            "id": f"job-{index}",
+            "user_id": "u-1",
+            "deck_id": "d-1",
+            "target_language": "English",
+            "art_style": None,
+            "movie_override": None,
+            "settings_override": {
+                "layer2_eval": {
+                    "source": "admin_layer2_lab_v1",
+                    "script_index": index,
+                    "lab_run_id": "safe1",
+                    "original_word": "threshold",
+                    "presentation_form": "infographic_card",
+                    "backend_template": "infographic_prompt_v1",
+                    "infographic_template": template,
+                }
+            },
+        }
+        for index, template in enumerate(templates, start=1)
+    ]
+
+    sb = FakeSupabase()
+    sb._tables["decks"].append({"id": "d-1", "deck_type": "card"})
+    sb._tables["profiles"].append({"id": "u-1", "base_language": "German"})
+    for index, job in enumerate(jobs, start=1):
+        sb.add_word(
+            id=f"w-{index}",
+            deck_id="d-1",
+            generation_job_id=job["id"],
+            word="threshold",
+            status="pending",
+            current_stage="pre_bootstrap",
+        )
+
+    _install_module(
+        monkeypatch,
+        "src.settings",
+        save_defaults=lambda *_a, **_kw: None,
+        DEFAULT_SETTINGS={},
+    )
+    _install_module(
+        monkeypatch,
+        "src.storage",
+        create_job_workspace=lambda user_id, deck_id: tmp_path,
+    )
+
+    async def _run_enrichment(words, *_a, **_kw):
+        return [
+            {
+                "input_word": words[0]["word"],
+                "translation": "Schwelle",
+                "word_target": "threshold",
+                "mnemonic": "",
+            }
+        ]
+
+    _install_module(
+        monkeypatch,
+        "src.services.enrichment",
+        run_enrichment=_run_enrichment,
+    )
+    _install_module(
+        monkeypatch,
+        "src.workspace",
+        create_word_folder=lambda workspace_path, word_slug: (tmp_path / word_slug).mkdir(parents=True, exist_ok=True) or (tmp_path / word_slug),
+    )
+    _install_module(
+        monkeypatch,
+        "src.slugify",
+        slugify=lambda text, max_length=50: str(text).lower().replace(" ", "-")[:max_length],
+        language_to_code=lambda language: "en",
+    )
+
+    manifests: list[dict[str, object]] = []
+
+    def _create_manifest(**kwargs):
+        manifests.append(kwargs)
+        manifest_file = kwargs["word_dir"] / "manifest.json"
+        manifest_file.write_text("{}", encoding="utf-8")
+
+    _install_module(
+        monkeypatch,
+        "src.manifest",
+        create_manifest=_create_manifest,
+    )
+
+    _install_job_runner_import_stubs(monkeypatch, sb)
+    import job_runner
+    importlib.reload(job_runner)
+
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+
+    card_queue = asyncio.Queue(maxsize=20)
+    for current_job in jobs:
+        _run(feeder.bootstrap_job(
+            sb,
+            current_job,
+            upstream_queue=asyncio.Queue(maxsize=2),
+            card_queue=card_queue,
+        ))
+
+    slugs = [row["word_slug"] for row in sb._tables["words"]]
+    expected_slugs = [f"threshold-l2-safe1-{index:03d}" for index in range(1, 11)]
+    assert slugs == expected_slugs
+    assert len(set(slugs)) == 10
+    assert all(row["word"] == "threshold" for row in sb._tables["words"])
+    assert [
+        row["metadata"]["layer2_eval"]["original_word"]
+        for row in sb._tables["words"]
+    ] == ["threshold"] * 10
+    assert [
+        row["metadata"]["layer2_eval"]["backend_template"]
+        for row in sb._tables["words"]
+    ] == ["infographic_prompt_v1"] * 10
+    assert [
+        row["metadata"]["layer2_eval"]["infographic_template"]
+        for row in sb._tables["words"]
+    ] == templates
+    assert [m["word_slug"] for m in manifests] == expected_slugs
+    assert card_queue.qsize() == 10
+
+
 def test_layer2_lab_append_runs_with_reset_indexes_do_not_collide(monkeypatch, tmp_path):
     jobs = [
         {
