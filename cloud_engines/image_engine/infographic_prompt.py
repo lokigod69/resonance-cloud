@@ -26,6 +26,7 @@ INFOGRAPHIC_PLANNER_MODEL = os.environ.get(
     "deepseek/deepseek-v4-flash",
 )
 INFOGRAPHIC_PLANNER_MAX_TOKENS = 1500
+INFOGRAPHIC_DENSE_PROMPT_WRITER_MAX_TOKENS = 3000
 ORCH_ROOT = Path(__file__).resolve().parents[2]
 INFOGRAPHIC_REFERENCE_ASSET_DIR = "cloud_engines/image_engine/assets/infographic_references"
 INFOGRAPHIC_REFERENCE_BUCKET = os.environ.get("INFOGRAPHIC_REFERENCE_BUCKET", "videos")
@@ -230,6 +231,25 @@ def _v3_reference(
     )
 
 
+def _v4_dense_editorial() -> InfographicTemplate:
+    return InfographicTemplate(
+        value="infographic_dense_editorial_v4",
+        label="V4 · Dense Editorial",
+        version="v4",
+        planner_identity="Dense Editorial V4",
+        goal="Write a rich provider-ready editorial prompt for a dense vocabulary encyclopedia infographic.",
+        panel_guidance="Use 8-12 visible modules when the word supports them; use fewer larger modules for simple words. Prioritize practical lexical learning.",
+        visual_direction="Horizontal 16:9 premium editorial encyclopedia infographic with high information density, central visual anchor, modular panels, icons, callouts, detail sections, and summary modules.",
+        compiler_instruction="The final prompt is a dense provider-ready image prompt. The compiler only enforces orientation, vocabulary-first constraints, hard bans, and metadata.",
+        pass_count=1,
+        role="You are a senior editorial infographic prompt writer for language-learning vocabulary posters.",
+        text_budget=(),
+        anti_pattern="Avoid sparse fixed skeletons, generic topic encyclopedia pages, visible metadata labels, copied JSON keys, and filler panels.",
+        footer_requirement="No generic AI-generated or educational-card footer.",
+        compatible_planner_template=INFOGRAPHIC_BACKEND_TEMPLATE,
+    )
+
+
 REFERENCE_GUIDED_COMPILER_RULES = "\n".join(
     [
         "Use the attached reference image only as visual scaffolding.",
@@ -403,6 +423,7 @@ INFOGRAPHIC_TEMPLATES: dict[str, InfographicTemplate] = {
         reference_filename="museum_exhibit_reference_v3a.png",
         fallback_style_description="Clean 16:9 modern museum exhibit placard skeleton with dark warm matte background, refined serif title area, subtitle zone, central artifact frame, surrounding museum-label panels, gold/warm ink borders, icon medallions, subtle texture, and footer band.",
     ),
+    "infographic_dense_editorial_v4": _v4_dense_editorial(),
 }
 
 INFOGRAPHIC_TEMPLATE_OPTIONS = tuple(
@@ -558,6 +579,47 @@ def build_infographic_planner_user_prompt(
     )
 
 
+def build_dense_editorial_prompt_writer_system_prompt() -> str:
+    return "\n".join(
+        [
+            "You are the final prompt writer for an experimental Dense Editorial V4 vocabulary infographic.",
+            "Return a compact JSON object only. No markdown.",
+            "Write a rich provider-ready image prompt as structured JSON. JSON keys are instructions only and must not be visible text in the generated image.",
+            "The image must be horizontal 16:9, modular, premium editorial, and high information density without clutter.",
+            "Use 8-12 visible modules if the word supports them; fewer larger modules for simple words.",
+            "This is a language-learning infographic about the target word, not a general topic encyclopedia.",
+            *VOCABULARY_FIRST_RULES,
+            "Include practical learner modules when useful: meaning, pronunciation, grammar/forms, examples with glosses, collocations, common mistake, false friends, synonyms/contrasts, word family, register/context, reliable origin, and topic/culture note only if useful.",
+            "Do not invent fake facts, fake etymologies, quotes, forced mnemonics, filler panels, or generic AI-generated footers.",
+            "Never include visible metadata labels such as Zielsprache, Basissprache, target language, base language, backend template, prompt template, model names, enum values, V1/V2/V3/V4, quick mode, or renderer profile.",
+            "Return keys similar to: type, title, style, composition, visual_elements, design_goals.",
+        ]
+    )
+
+
+def build_dense_editorial_prompt_writer_user_prompt(
+    *,
+    content: CardImageContent,
+    infographic_template: str,
+) -> str:
+    base_language = content.base_language or "English"
+    return "\n".join(
+        [
+            f"Target word/headword ({content.language}): {content.word}",
+            f"Translation/subtitle ({base_language}): {content.translation}",
+            f"Base language for explanations: {base_language}",
+            f"Target language: {content.language}",
+            f"Part of speech: {content.pos or 'unknown'}",
+            f"Known image scene / visual clue: {content.image_scene or 'none'}",
+            f"Known mnemonic: {content.mnemonic or 'none'}",
+            f"Known etymology: {content.etymology or 'none'}",
+            f"Template value for backend metadata only: {infographic_template}",
+            "The final visible title must be the target word, and the visible subtitle must be the translation/gloss.",
+            "For topic-like nouns, teach the word's usage first and include only small helpful topic context.",
+        ]
+    )
+
+
 def build_infographic_compiler_prompt(
     *,
     content: CardImageContent,
@@ -582,6 +644,15 @@ def compile_infographic_prompt(
     target_language = _clean(content.language) or _clean(plan.get("target_language")) or "target language"
     title = _clean(content.word) or _clean(plan.get("title"))
     translation = _clean(content.translation) or _clean(plan.get("translation"))
+    if template.version == "v4":
+        return _compile_v4_dense_editorial_prompt(
+            content=content,
+            plan=plan,
+            base_language=base_language,
+            target_language=target_language,
+            title=title,
+            translation=translation,
+        )
     if infographic_template_requires_reference(template.value):
         return _compile_v3_reference_prompt(
             content=content,
@@ -682,6 +753,17 @@ def infographic_prompt_metadata(
     }
     if provider_model:
         metadata["provider_model"] = provider_model
+    if template.version == "v4":
+        metadata.update(
+            {
+                "prompt_writer_model": planner_model,
+                "dense_editorial": True,
+                "vocabulary_first": True,
+                "visible_module_count": _visible_module_count(planner_plan),
+            }
+        )
+        if len(final_prompt) > 8500:
+            metadata["prompt_length_warning"] = "over_8500_chars"
     metadata["final_prompt_hash"] = metadata["final_prompt_sha256"]
     if template.pass_count > 1:
         metadata["planner_pass_count"] = template.pass_count
@@ -731,16 +813,26 @@ def write_infographic_prompt(
     api_key = config.OPENROUTER_API_KEY
     if not api_key:
         raise RuntimeError("OPENROUTER_API_KEY missing for infographic planner")
-    system_prompt = build_infographic_planner_system_prompt(selected_template.value)
-    user_prompt = build_infographic_planner_user_prompt(
-        content=content,
-        infographic_template=selected_template.value,
-    )
+    if selected_template.version == "v4":
+        system_prompt = build_dense_editorial_prompt_writer_system_prompt()
+        user_prompt = build_dense_editorial_prompt_writer_user_prompt(
+            content=content,
+            infographic_template=selected_template.value,
+        )
+        max_tokens = INFOGRAPHIC_DENSE_PROMPT_WRITER_MAX_TOKENS
+    else:
+        system_prompt = build_infographic_planner_system_prompt(selected_template.value)
+        user_prompt = build_infographic_planner_user_prompt(
+            content=content,
+            infographic_template=selected_template.value,
+        )
+        max_tokens = INFOGRAPHIC_PLANNER_MAX_TOKENS
     raw_plan, usage, request_id = _call_openrouter_infographic_planner(
         system_prompt=system_prompt,
         user_prompt=user_prompt,
         model=INFOGRAPHIC_PLANNER_MODEL,
         api_key=api_key,
+        max_tokens=max_tokens,
     )
     planner_plan = _parse_planner_plan(raw_plan)
     prompt = compile_infographic_prompt(
@@ -765,6 +857,7 @@ def _call_openrouter_infographic_planner(
     user_prompt: str,
     model: str,
     api_key: str,
+    max_tokens: int = INFOGRAPHIC_PLANNER_MAX_TOKENS,
 ) -> tuple[str, dict[str, Any], str | None]:
     payload = {
         "model": model,
@@ -772,7 +865,7 @@ def _call_openrouter_infographic_planner(
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ],
-        "max_tokens": INFOGRAPHIC_PLANNER_MAX_TOKENS,
+        "max_tokens": max_tokens,
         "temperature": 0.35,
         "response_format": {"type": "json_object"},
     }
@@ -823,6 +916,52 @@ def _parse_planner_plan(raw_plan: str) -> dict[str, Any]:
     if not isinstance(panels, list):
         data["panels"] = []
     return data
+
+
+def _compile_v4_dense_editorial_prompt(
+    *,
+    content: CardImageContent,
+    plan: Mapping[str, Any],
+    base_language: str,
+    target_language: str,
+    title: str,
+    translation: str,
+) -> str:
+    writer_payload = _compact_json_preview_full(plan)
+    lines = [
+        "Dense Editorial V4 provider-ready prompt.",
+        "Create a horizontal 16:9 encyclopedia-style vocabulary infographic with maximum editorial information density.",
+        f"TITLE / HEADWORD: {title}",
+        f"SUBTITLE / GLOSS: {translation}",
+        f"Explanation language for visible panel text: {base_language}",
+        f"Target-language examples, collocations, forms, and quoted word forms may remain in {target_language}.",
+        "",
+        "Editorial density:",
+        "Use a premium natural-history / modern editorial knowledge-card layout: central visual anchor, rounded editorial boxes, icons, callouts, zoom/detail sections, practical learner panels, and visual scoring or summary modules where useful.",
+        "Use 8-12 visible modules if the word supports them. For simple words, use fewer and larger modules. For rich words, use more modules. High information density is desired, but keep the hierarchy uncluttered.",
+        "",
+        "Vocabulary-first:",
+        VOCABULARY_FIRST_RULES[0],
+        VOCABULARY_FIRST_RULES[1],
+        VOCABULARY_FIRST_RULES[2],
+        VOCABULARY_FIRST_RULES[3],
+        VOCABULARY_FIRST_RULES[4],
+        "For topic-like nouns such as chess, teach the target-language word first: play chess, chess board, chess piece, chess match, chess vs chest, pronunciation, and uncountable/singular usage before adding small topic context.",
+        "",
+        "Recommended visible modules:",
+        "Meaning / Bedeutung; Quick Profile / Kurzprofil; Pronunciation / Aussprache; Grammar & Forms / Grammatik & Formen; Example Sentences / Beispielsätze; Collocations / Kollokationen; Common Mistake / Häufiger Fehler; False Friends / Falsche Freunde; Synonyms & Contrasts / Synonyme & Kontraste; Word Family / Wortfamilie; Origin / Herkunft only if reliable; Register & Context / Register & Kontext; Memory Cue / Merkhilfe only if genuinely strong; Topic/Culture Note only if useful.",
+        "",
+        "Hard bans:",
+        "Never invent fake facts. Never invent fake etymologies. Never invent quotes. Never force mnemonics.",
+        "Never render internal labels, backend/model/template names, enum values, V1/V2/V3/V4, quick mode, renderer profile, or internal system labels.",
+        "Never render visible labels named Zielsprache, Basissprache, target language, or base language.",
+        "Do not render JSON keys such as type, style, composition, info_panels, visual_elements, or design_goals as visible text.",
+        "No filler panels. No generic AI-generated infographic or educational card footer.",
+        "",
+        "Writer content to follow. JSON keys are structural instructions only, not visible text:",
+        writer_payload,
+    ]
+    return _remove_internal_terms("\n".join(lines))
 
 
 def _compile_v3_reference_prompt(
@@ -978,6 +1117,23 @@ def _is_internal_safety_text(value: Any) -> bool:
 
 def _compact_json_preview(value: Mapping[str, Any]) -> str:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":"))[:900]
+
+
+def _compact_json_preview_full(value: Mapping[str, Any]) -> str:
+    return json.dumps(value, ensure_ascii=False, separators=(",", ":"))
+
+
+def _visible_module_count(value: Mapping[str, Any]) -> int | None:
+    composition = value.get("composition") if isinstance(value, Mapping) else None
+    if not isinstance(composition, Mapping):
+        panels = value.get("panels") if isinstance(value, Mapping) else None
+        return len(panels) if isinstance(panels, list) else None
+    total = 0
+    for key in ("info_panels", "detail_sections", "summary_modules"):
+        item = composition.get(key)
+        if isinstance(item, list):
+            total += len(item)
+    return total
 
 
 def _clean(value: Any) -> str:

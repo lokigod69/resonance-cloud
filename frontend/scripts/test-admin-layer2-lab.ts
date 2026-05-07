@@ -55,7 +55,7 @@ console.log('\n[friendly labels]')
     LAYER2_BACKEND_TEMPLATE_OPTIONS.map((option) => option.label).join('|') === 'Compiler V1|LLM V1|LLM V2|LLM V3 · Visual Craft',
     LAYER2_BACKEND_TEMPLATE_OPTIONS,
   )
-  assert('infographic template dropdown has thirteen ordered variants',
+  assert('infographic template dropdown has fourteen ordered variants',
     INFOGRAPHIC_TEMPLATE_OPTIONS.map((option) => option.value).join('|') === [
       'infographic_knowledge_guide_v1',
       'infographic_language_atlas_v1',
@@ -70,6 +70,7 @@ console.log('\n[friendly labels]')
       'infographic_language_atlas_v3_reference',
       'infographic_study_knowledge_v3_reference',
       'infographic_museum_exhibit_v3_reference',
+      'infographic_dense_editorial_v4',
     ].join('|'),
     INFOGRAPHIC_TEMPLATE_OPTIONS,
   )
@@ -405,6 +406,7 @@ console.log('\n[premium lab V3 infographic payload]')
     'infographic_language_atlas_v3_reference',
     'infographic_study_knowledge_v3_reference',
     'infographic_museum_exhibit_v3_reference',
+    'infographic_dense_editorial_v4',
   ] as const) {
     const row: Layer2LabRun = {
       id: `row-${template}`,
@@ -424,15 +426,15 @@ console.log('\n[premium lab V3 infographic payload]')
       baseLanguage: 'German',
       deckName: 'Layer2 Lab V3 Reference',
     })
-    assert(`V3 ${template} routes through infographic backend`,
+    assert(`V3/V4 ${template} routes through infographic backend`,
       p.jobPayload.settings_override.card_layer2?.backend_template === 'infographic_prompt_v1',
       p.jobPayload.settings_override,
     )
-    assert(`V3 ${template} preserves card_layer2 template`,
+    assert(`V3/V4 ${template} preserves card_layer2 template`,
       p.jobPayload.settings_override.card_layer2?.infographic_template === template,
       p.jobPayload.settings_override,
     )
-    assert(`V3 ${template} records layer2_eval template`,
+    assert(`V3/V4 ${template} records layer2_eval template`,
       p.jobPayload.settings_override.layer2_eval?.infographic_template === template,
       p.jobPayload.settings_override,
     )
@@ -464,39 +466,39 @@ console.log('\n[repeated-word infographic template matrix]')
   const slugs = payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval?.variant_slug)
   const templates = payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval?.infographic_template)
 
-  assert('all thirteen threshold infographic rows are represented',
-    payloads.length === 13 && payloads.length === INFOGRAPHIC_TEMPLATE_OPTIONS.length,
+  assert('all fourteen threshold infographic rows are represented',
+    payloads.length === 14 && payloads.length === INFOGRAPHIC_TEMPLATE_OPTIONS.length,
     payloads,
   )
-  assert('all thirteen threshold infographic rows preserve visible word',
+  assert('all fourteen threshold infographic rows preserve visible word',
     payloads.every((payload) => payload.wordList[0] === 'threshold'),
     payloads.map((payload) => payload.wordList),
   )
-  assert('all thirteen threshold infographic rows preserve original_word metadata',
+  assert('all fourteen threshold infographic rows preserve original_word metadata',
     payloads.every((payload) => payload.jobPayload.settings_override.layer2_eval?.original_word === 'threshold'),
     payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval),
   )
-  assert('all thirteen threshold infographic rows route to infographic_prompt_v1',
+  assert('all fourteen threshold infographic rows route to infographic_prompt_v1',
     payloads.every((payload) =>
       payload.jobPayload.settings_override.card_layer2?.backend_template === 'infographic_prompt_v1'
       && payload.jobPayload.settings_override.layer2_eval?.backend_template === 'infographic_prompt_v1'
     ),
     payloads.map((payload) => payload.jobPayload.settings_override),
   )
-  assert('all thirteen threshold infographic rows preserve per-row template enums',
+  assert('all fourteen threshold infographic rows preserve per-row template enums',
     templates.join('|') === INFOGRAPHIC_TEMPLATE_OPTIONS.map((option) => option.value).join('|'),
     templates,
   )
-  assert('all thirteen threshold infographic rows preserve per-row template labels',
+  assert('all fourteen threshold infographic rows preserve per-row template labels',
     payloads.every((payload, index) =>
       payload.jobPayload.settings_override.layer2_eval?.infographic_template_label === INFOGRAPHIC_TEMPLATE_OPTIONS[index]?.label
     ),
     payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval),
   )
-  assert('all thirteen threshold infographic rows get unique tokenized slugs',
-    new Set(slugs).size === 13
+  assert('all fourteen threshold infographic rows get unique tokenized slugs',
+    new Set(slugs).size === 14
       && slugs[0] === 'threshold-l2-safe1-001'
-      && slugs[12] === 'threshold-l2-safe1-013',
+      && slugs[13] === 'threshold-l2-safe1-014',
     slugs,
   )
   assert('infographic rows do not require raw meaning or art controls in layer2_eval',
@@ -507,8 +509,8 @@ console.log('\n[repeated-word infographic template matrix]')
     ),
     payloads.map((payload) => payload.jobPayload.settings_override.layer2_eval),
   )
-  assert('infographic row cost estimate is thirteen rows times five credits',
-    estimateLayer2LabCreditCost(payloads.length) === 65,
+  assert('infographic row cost estimate is fourteen rows times five credits',
+    estimateLayer2LabCreditCost(payloads.length) === 70,
   )
 }
 

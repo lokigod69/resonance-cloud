@@ -38,6 +38,7 @@ export type InfographicTemplate =
   | 'infographic_language_atlas_v3_reference'
   | 'infographic_study_knowledge_v3_reference'
   | 'infographic_museum_exhibit_v3_reference'
+  | 'infographic_dense_editorial_v4'
 
 export type CardLayer2ArtStyle =
   | 'realistic'

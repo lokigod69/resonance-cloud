@@ -1056,6 +1056,101 @@ def test_v3_infographic_missing_reference_url_fails_before_provider(monkeypatch,
     assert metadata["reference_fallback_reason"] == "reference_url_unavailable"
 
 
+def test_v4_dense_editorial_infographic_uses_text_to_image_and_metadata(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.infographic_prompt import InfographicPromptResult
+
+    calls: dict[str, object] = {}
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **kwargs):
+            calls.setdefault("record_responses", []).append(kwargs)
+
+    def fake_write_infographic_prompt(**kwargs):
+        calls["infographic_kwargs"] = kwargs
+        return InfographicPromptResult(
+            prompt=(
+                "Dense Editorial V4 provider-ready prompt. TITLE / HEADWORD: chess. "
+                "SUBTITLE / GLOSS: Schach. Use maximum editorial information density. "
+                "At least 70% of the card content must teach the word as language."
+            ),
+            model="test-dense-writer-model",
+            raw_plan='{"composition":{"info_panels":[{},{}],"detail_sections":[{}]}}',
+            planner_plan={
+                "composition": {
+                    "info_panels": [{}, {}],
+                    "detail_sections": [{}],
+                    "summary_modules": [],
+                }
+            },
+            infographic_template="infographic_dense_editorial_v4",
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        calls["provider_kwargs"] = kwargs
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-infographic-v4",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_infographic_prompt", fake_write_infographic_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.word = "chess"
+    payload.content.translation = "Schach"
+    payload.content.base_language = "German"
+    payload.content.language = "English"
+    payload.card_image_style = "editorial"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "clear_meaning",
+        "presentation_form": "infographic_card",
+        "visual_intensity": "balanced",
+        "backend_template": "infographic_prompt_v1",
+        "infographic_template": "infographic_dense_editorial_v4",
+        "premium_quick_mode": "infographic",
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "success"
+    assert calls["infographic_kwargs"]["infographic_template"] == "infographic_dense_editorial_v4"
+    assert calls["provider_kwargs"]["aspect_ratio"] == "16:9"
+    assert calls["provider_kwargs"]["input_urls"] is None
+    request_body = json.loads(calls["record_responses"][-1]["request_body"])
+    assert request_body["model"] == "gpt-image-2-text-to-image"
+    assert "input_urls" not in request_body["input"]
+    metadata = result.gpt_image_2_card_metadata
+    assert metadata is not None
+    assert metadata["infographic_template"] == "infographic_dense_editorial_v4"
+    assert metadata["provider_model"] == "gpt-image-2-text-to-image"
+    assert metadata["prompt_writer_model"] == "test-dense-writer-model"
+    assert metadata["dense_editorial"] is True
+    assert metadata["vocabulary_first"] is True
+    assert metadata["visible_module_count"] == 3
+
+
 def test_direct_prompt_word_object_allows_target_word_and_bans_translation(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
     from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult

@@ -83,6 +83,7 @@ def test_infographic_template_registry_contains_v1_and_v2_variants_in_order():
         "infographic_language_atlas_v3_reference",
         "infographic_study_knowledge_v3_reference",
         "infographic_museum_exhibit_v3_reference",
+        "infographic_dense_editorial_v4",
     ]
     assert infographic_template_label("infographic_museum_exhibit_v2") == "V2 · Museum Exhibit"
     assert infographic_template_label("infographic_language_atlas_v3_reference") == "V3 · Language Atlas Reference"
@@ -107,6 +108,18 @@ def test_v3_template_registry_has_skeleton_references_and_assets_exist():
         assert reference["reference_mode"] == "skeleton"
         assert reference["fallback_style_description"]
         assert (ORCH_ROOT / reference["reference_asset_path"]).exists()
+
+
+def test_v4_dense_editorial_registry_is_not_reference_guided():
+    template = INFOGRAPHIC_TEMPLATES["infographic_dense_editorial_v4"]
+    reference = infographic_template_reference("infographic_dense_editorial_v4")
+
+    assert template.version == "v4"
+    assert "Dense Editorial" in template.label
+    assert template.reference_mode is None
+    assert reference is None
+    assert template.compatible_planner_template == "infographic_prompt_v1"
+    assert infographic_template_label("infographic_dense_editorial_v4").endswith("Dense Editorial")
 
 
 def test_v2_planner_prompt_uses_two_pass_analysis_and_text_budgets():
@@ -413,6 +426,108 @@ def test_v3_compiler_includes_reference_text_and_content_safety_rules():
     assert len(prompt) < 3500
     assert prompt.count("Use the attached reference image only as visual scaffolding.") == 1
     assert prompt.count("No fake facts") <= 1
+
+
+def test_v4_dense_editorial_prompt_is_high_density_vocabulary_first_and_oriented():
+    content = CardImageContent(
+        word="chess",
+        translation="Schach",
+        language="English",
+        language_code="en",
+        base_language="German",
+        pos="noun",
+    )
+    writer_plan = {
+        "type": "image_prompt",
+        "title": "Schach",
+        "subtitle": "chess",
+        "style": {
+            "overall": "premium modern encyclopedia vocabulary infographic",
+            "layout": "horizontal 16:9, modular, high information density but uncluttered",
+        },
+        "composition": {
+            "info_panels": [
+                {"title": "Bedeutung", "content": "Schach als englisches Wort fuer das Brettspiel."},
+                {"title": "Aussprache", "content": "chess"},
+                {"title": "Grammatik", "content": "meist unzaehlbar: play chess"},
+                {"title": "Kollokationen", "content": "play chess; chess board; chess piece; chess match"},
+                {"title": "Falscher Freund", "content": "chess vs chest"},
+                {"title": "Beispiele", "content": "I play chess. = Ich spiele Schach."},
+                {"title": "Register", "content": "neutral"},
+                {"title": "Wortfamilie", "content": "chessboard; chess player"},
+            ],
+        },
+        "design_goals": ["dense but readable", "rounded editorial boxes", "icons and callouts"],
+    }
+
+    prompt = compile_infographic_prompt(
+        content=content,
+        plan=writer_plan,
+        infographic_template="infographic_dense_editorial_v4",
+    )
+
+    assert "Dense Editorial V4 provider-ready prompt" in prompt
+    assert "TITLE / HEADWORD: chess" in prompt
+    assert "SUBTITLE / GLOSS: Schach" in prompt
+    assert "TITLE / HEADWORD: Schach" not in prompt
+    assert "SUBTITLE / GLOSS: chess" not in prompt
+    assert "maximum editorial information density" in prompt
+    assert "8-12 visible modules" in prompt
+    assert "At least 70% of the card content must teach the word as language" in prompt
+    assert "At most 30% may be world/topic knowledge" in prompt
+    assert "Bedeutung" in prompt
+    assert "Aussprache" in prompt
+    assert "Grammatik" in prompt
+    assert "Kollokationen" in prompt
+    assert "play chess; chess board; chess piece; chess match" in prompt
+    assert "chess vs chest" in prompt
+    assert "Examples must be idiomatic and common" in prompt
+    assert "Never render visible labels named Zielsprache, Basissprache, target language, or base language" in prompt
+    assert "Do not render JSON keys such as type, style, composition, info_panels, visual_elements, or design_goals" in prompt
+    assert prompt.count("At least 70% of the card content must teach the word as language") == 1
+    assert prompt.count("Never invent fake facts") == 1
+    assert 1000 < len(prompt) < 7500
+
+
+def test_v4_metadata_records_dense_editorial_fields_and_prompt_length_warning():
+    prompt = compile_infographic_prompt(
+        content=_content(),
+        plan={
+            "title": "threshold",
+            "translation": "Schwelle",
+            "composition": {
+                "info_panels": [
+                    {"title": "Bedeutung", "content": "Grenze."},
+                    {"title": "Beispiel", "content": "cross the threshold"},
+                ],
+                "detail_sections": [{"title": "Grammatik", "content": "noun"}],
+            },
+        },
+        infographic_template="infographic_dense_editorial_v4",
+    )
+    metadata = infographic_prompt_metadata(
+        final_prompt=prompt + ("x" * 9000),
+        planner_model="dense-writer-model",
+        planner_plan={
+            "composition": {
+                "info_panels": [{}, {}],
+                "detail_sections": [{}],
+                "summary_modules": [{}],
+            }
+        },
+        infographic_template="infographic_dense_editorial_v4",
+        base_language_intended="German",
+        target_language="English",
+        provider_model="gpt-image-2-text-to-image",
+    )
+
+    assert metadata["infographic_template"] == "infographic_dense_editorial_v4"
+    assert metadata["dense_editorial"] is True
+    assert metadata["vocabulary_first"] is True
+    assert metadata["prompt_writer_model"] == "dense-writer-model"
+    assert metadata["provider_model"] == "gpt-image-2-text-to-image"
+    assert metadata["visible_module_count"] == 4
+    assert metadata["prompt_length_warning"] == "over_8500_chars"
 
 
 def test_infographic_metadata_records_template_and_v2_pass_count():

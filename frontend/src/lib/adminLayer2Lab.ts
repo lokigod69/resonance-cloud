@@ -92,7 +92,7 @@ export const LAYER2_BACKEND_TEMPLATE_OPTIONS: Array<{
 export const INFOGRAPHIC_TEMPLATE_OPTIONS: Array<{
   value: InfographicTemplate
   label: string
-  version: 'V1' | 'V2' | 'V3'
+  version: 'V1' | 'V2' | 'V3' | 'V4'
 }> = [
   { value: 'infographic_knowledge_guide_v1', label: 'V1 · Knowledge Guide', version: 'V1' },
   { value: 'infographic_language_atlas_v1', label: 'V1 · Language Atlas', version: 'V1' },
@@ -107,6 +107,7 @@ export const INFOGRAPHIC_TEMPLATE_OPTIONS: Array<{
   { value: 'infographic_language_atlas_v3_reference', label: 'V3 · Language Atlas Reference', version: 'V3' },
   { value: 'infographic_study_knowledge_v3_reference', label: 'V3 · Study / Knowledge Reference', version: 'V3' },
   { value: 'infographic_museum_exhibit_v3_reference', label: 'V3 · Museum Exhibit Reference', version: 'V3' },
+  { value: 'infographic_dense_editorial_v4', label: 'V4 · Dense Editorial', version: 'V4' },
 ]
 
 export const LAYER2_QUICK_MODE_PRESET_OPTIONS: Array<{
