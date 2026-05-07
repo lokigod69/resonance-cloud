@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 
@@ -15,18 +15,19 @@ const LanguageContext = createContext<LanguageContextValue | null>(null)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth()
+  const userId = user?.id ?? null
   const [activeLanguage, setActiveLanguageState] = useState<string | null>(null)
 
   // When user id changes (login / switch user), load that user's scoped language
   useEffect(() => {
-    if (!user) {
+    if (!userId) {
       setActiveLanguageState(null)
       return
     }
     // One-time migration: clear the old unscoped key
     localStorage.removeItem(LEGACY_STORAGE_KEY)
 
-    const key = storageKeyFor(user.id)!
+    const key = storageKeyFor(userId)!
     const stored = localStorage.getItem(key)
     if (stored) {
       setActiveLanguageState(stored)
@@ -38,7 +39,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     supabase
       .from('decks')
       .select('target_language')
-      .eq('user_id', user.id)
+      .eq('user_id', userId)
       .order('created_at', { ascending: false })
       .limit(1)
       .then(({ data }) => {
@@ -52,21 +53,26 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     return () => {
       cancelled = true
     }
-  }, [user?.id])
+  }, [userId])
 
-  const setActiveLanguage = (lang: string | null) => {
+  const setActiveLanguage = useCallback((lang: string | null) => {
     setActiveLanguageState(lang)
-    const key = storageKeyFor(user?.id)
+    const key = storageKeyFor(userId)
     if (!key) return
     if (lang) {
       localStorage.setItem(key, lang)
     } else {
       localStorage.removeItem(key)
     }
-  }
+  }, [userId])
+
+  const value = useMemo(
+    () => ({ activeLanguage, setActiveLanguage }),
+    [activeLanguage, setActiveLanguage]
+  )
 
   return (
-    <LanguageContext.Provider value={{ activeLanguage, setActiveLanguage }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   )

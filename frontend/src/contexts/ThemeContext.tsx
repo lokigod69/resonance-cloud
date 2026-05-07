@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { supabase } from '../lib/supabase'
 
 export type Theme = 'midnight' | 'rainy-day' | 'red-wine' | 'slate' | 'warm-linen'
@@ -62,7 +62,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     applyThemeClass(theme)
   }, [theme])
 
-  const setTheme = async (newTheme: Theme) => {
+  const setTheme = useCallback(async (newTheme: Theme) => {
     if (!VALID_THEMES.includes(newTheme)) return
 
     setThemeState(newTheme)
@@ -81,10 +81,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     } catch {
       // Silently fail — localStorage is the primary store
     }
-  }
+  }, [])
+
+  const value = useMemo(
+    () => ({ theme, setTheme }),
+    [theme, setTheme]
+  )
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   )

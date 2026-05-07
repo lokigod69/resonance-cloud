@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 
 export type SkinId = 'classic' | 'glassy'
 
@@ -49,14 +49,19 @@ export function SkinProvider({ children }: { children: ReactNode }) {
     html.classList.add(`skin-${skin}`)
   }, [skin])
 
-  const setSkin = (newSkin: SkinId) => {
+  const setSkin = useCallback((newSkin: SkinId) => {
     if (newSkin === skin) return
     setSkinState(newSkin)
     localStorage.setItem(STORAGE_KEY, newSkin)
-  }
+  }, [skin])
+
+  const value = useMemo(
+    () => ({ skin, setSkin }),
+    [skin, setSkin]
+  )
 
   return (
-    <SkinContext.Provider value={{ skin, setSkin }}>
+    <SkinContext.Provider value={value}>
       {children}
     </SkinContext.Provider>
   )
