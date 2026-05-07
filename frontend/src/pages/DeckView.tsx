@@ -60,7 +60,41 @@ type Word = {
   suno_task_id: string | null
   metadata: Record<string, unknown> | null
   current_stage?: string | null
+  failed_stage?: string | null
+  retry_requested?: boolean | null
+  retry_requested_at?: string | null
+  error_message?: string | null
+  image_url?: string | null
+  card_image_url?: string | null
   created_at: string
+}
+
+function hasRenderableOutput(word: Word): boolean {
+  return Boolean(word.video_url || word.thumbnail_url || word.image_url || word.card_image_url)
+}
+
+function describeWordRunState(word: Word): string {
+  const parts = [
+    `status: ${word.status}`,
+    word.current_stage ? `stage: ${word.current_stage}` : null,
+    word.failed_stage ? `failed: ${word.failed_stage}` : null,
+    word.retry_requested ? 'retry requested' : null,
+    hasRenderableOutput(word) ? 'output present' : null,
+  ].filter(Boolean)
+  return parts.join(' · ')
+}
+
+function getRetryFeedback(word: Word): { blocked: boolean; message: string } {
+  if (word.retry_requested) {
+    return { blocked: true, message: `Retry already queued/requested. ${describeWordRunState(word)}` }
+  }
+  if (word.status === 'processing' || word.current_stage === 'pending_image' || word.current_stage === 'image_generation') {
+    return { blocked: true, message: `Currently processing. ${describeWordRunState(word)}` }
+  }
+  if (word.status === 'complete' && !hasRenderableOutput(word)) {
+    return { blocked: false, message: `Complete but no visible output URL is present. ${describeWordRunState(word)}` }
+  }
+  return { blocked: false, message: describeWordRunState(word) }
 }
 
 export default function DeckView() {
@@ -94,6 +128,11 @@ export default function DeckView() {
 
   const handleRetry = async (word: Word) => {
     if (!user) return
+    const localRetryState = getRetryFeedback(word)
+    if (localRetryState.blocked) {
+      toast(localRetryState.message, 'info')
+      return
+    }
     setRetrying(word.id)
     try {
       const { data, error } = await supabase.rpc('request_word_retry', {
@@ -111,7 +150,13 @@ export default function DeckView() {
         throw new Error(result?.error || 'Retry request failed')
       }
       if (result.already_requested) {
-        toast(t('deckview.retryAlreadyRequested'), 'info')
+        toast(`Retry already queued/requested. ${describeWordRunState(word)}`, 'info')
+        const { data: refreshedWords } = await supabase
+          .from('words')
+          .select('*')
+          .eq('deck_id', id)
+          .order('created_at')
+        if (refreshedWords) setWords(refreshedWords)
         return
       }
 

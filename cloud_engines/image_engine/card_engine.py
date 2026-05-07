@@ -281,6 +281,11 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
                 template_reference_url=reference_url,
                 reference_url_error=infographic_reference_error,
                 provider_model=provider_model,
+                validator_passed=infographic_result.validator_passed,
+                validator_errors=infographic_result.validator_errors,
+                validator_retry_count=infographic_result.validator_retry_count,
+                prompt_rule_ratio_estimate=infographic_result.prompt_rule_ratio_estimate,
+                dense_editorial_word_category=infographic_result.dense_editorial_word_category,
             )
     elif layer2 and selected_backend_template in DIRECT_PROMPT_TEMPLATES:
         with logged_llm_call(
@@ -412,6 +417,23 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
     if infographic_prompt_meta:
         card_metadata.update(infographic_prompt_meta)
     card_metadata["provider_model"] = provider_model
+    if (
+        card_metadata.get("infographic_template") == "infographic_dense_editorial_v4"
+        and card_metadata.get("validator_passed") is False
+    ):
+        validator_errors = card_metadata.get("validator_errors") or []
+        error_message = "Infographic V4 validator failed: " + "; ".join(
+            str(item) for item in validator_errors
+        )
+        return {
+            "success": False,
+            "file_path": None,
+            "error_message": error_message,
+            "prompt_text": prompt_text,
+            "provider_name": "gpt_image_2",
+            "model_name": provider_model,
+            "gpt_image_2_card_metadata": card_metadata,
+        }
     if infographic_reference_required and not infographic_reference_input_urls:
         error_message = (
             "Infographic V3 reference URL unavailable; refusing to submit a "

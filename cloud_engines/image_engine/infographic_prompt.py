@@ -34,6 +34,8 @@ INFOGRAPHIC_REFERENCE_STORAGE_PREFIX = os.environ.get(
     "INFOGRAPHIC_REFERENCE_STORAGE_PREFIX",
     "infographic-references",
 )
+V4_PROMPT_WARNING_CHARS = 6000
+V4_PROMPT_HARD_FAIL_CHARS = 8000
 
 logger = logging.getLogger(__name__)
 
@@ -85,6 +87,60 @@ VOCABULARY_FIRST_RULES = (
     "For singular countable nouns, avoid absolute article claims; use nuanced wording such as: Im Singular meist mit Artikel: a winner / the winner. Im Plural auch ohne Artikel: winners.",
 )
 
+V4_BANNED_VISIBLE_STRINGS = (
+    "Zielsprache",
+    "Basissprache",
+    "target language",
+    "base language",
+    "backend template",
+    "prompt template",
+    "model",
+    "enum",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "infographic_card",
+    "quick mode",
+    "renderer profile",
+)
+
+V4_JSON_KEY_STRINGS = (
+    "type",
+    "style",
+    "composition",
+    "info_panels",
+    "visual_elements",
+    "design_goals",
+)
+
+V4_LEARNING_MODULE_TERMS = (
+    "meaning",
+    "bedeutung",
+    "pronunciation",
+    "aussprache",
+    "grammar",
+    "grammatik",
+    "forms",
+    "formen",
+    "example",
+    "beispiel",
+    "collocation",
+    "kollokation",
+    "register",
+    "synonym",
+    "contrast",
+    "kontrast",
+    "word family",
+    "wortfamilie",
+    "false friend",
+    "falsche freunde",
+    "common mistake",
+    "fehler",
+    "usage",
+    "gebrauch",
+)
+
 
 @dataclass(frozen=True)
 class InfographicTemplate:
@@ -123,6 +179,11 @@ class InfographicPromptResult:
     infographic_template: str
     usage: dict[str, Any] | None = None
     request_id: str | None = None
+    validator_passed: bool | None = None
+    validator_errors: list[str] = field(default_factory=list)
+    validator_retry_count: int = 0
+    prompt_rule_ratio_estimate: float | None = None
+    dense_editorial_word_category: str | None = None
 
 
 @dataclass(frozen=True)
@@ -582,17 +643,14 @@ def build_infographic_planner_user_prompt(
 def build_dense_editorial_prompt_writer_system_prompt() -> str:
     return "\n".join(
         [
-            "You are the final prompt writer for an experimental Dense Editorial V4 vocabulary infographic.",
-            "Return a compact JSON object only. No markdown.",
-            "Write a rich provider-ready image prompt as structured JSON. JSON keys are instructions only and must not be visible text in the generated image.",
-            "The image must be horizontal 16:9, modular, premium editorial, and high information density without clutter.",
-            "Use 8-12 visible modules if the word supports them; fewer larger modules for simple words.",
-            "This is a language-learning infographic about the target word, not a general topic encyclopedia.",
-            *VOCABULARY_FIRST_RULES,
-            "Include practical learner modules when useful: meaning, pronunciation, grammar/forms, examples with glosses, collocations, common mistake, false friends, synonyms/contrasts, word family, register/context, reliable origin, and topic/culture note only if useful.",
-            "Do not invent fake facts, fake etymologies, quotes, forced mnemonics, filler panels, or generic AI-generated footers.",
-            "Never include visible metadata labels such as Zielsprache, Basissprache, target language, base language, backend template, prompt template, model names, enum values, V1/V2/V3/V4, quick mode, or renderer profile.",
-            "Return keys similar to: type, title, style, composition, visual_elements, design_goals.",
+            "You are an editorial art director for a premium vocabulary-learning encyclopedia.",
+            "Write one direct natural-language image prompt for a dense but readable 16:9 infographic.",
+            "Make it beautiful, modular, and information-rich. Teach the target word as language first.",
+            "Do not output JSON, markdown, code fences, or structural key names.",
+            "Keep the prompt compact, usually 2500-4500 characters.",
+            "Use only modules relevant to this word.",
+            "Include common, idiomatic examples and practical collocations when useful.",
+            "Avoid fake facts, fake quotes, fake etymologies, and forced mnemonics.",
         ]
     )
 
@@ -613,9 +671,10 @@ def build_dense_editorial_prompt_writer_user_prompt(
             f"Known image scene / visual clue: {content.image_scene or 'none'}",
             f"Known mnemonic: {content.mnemonic or 'none'}",
             f"Known etymology: {content.etymology or 'none'}",
-            f"Template value for backend metadata only: {infographic_template}",
+            f"Internal template id, do not mention visibly: {infographic_template}",
             "The final visible title must be the target word, and the visible subtitle must be the translation/gloss.",
             "For topic-like nouns, teach the word's usage first and include only small helpful topic context.",
+            "Mention that at least 70% is word-as-language learning and at most 30% is topic context.",
         ]
     )
 
@@ -733,6 +792,11 @@ def infographic_prompt_metadata(
     template_reference_url: str | None = None,
     reference_url_error: str | None = None,
     provider_model: str | None = None,
+    validator_passed: bool | None = None,
+    validator_errors: list[str] | None = None,
+    validator_retry_count: int = 0,
+    prompt_rule_ratio_estimate: float | None = None,
+    dense_editorial_word_category: str | None = None,
 ) -> dict[str, Any]:
     template = globals()["infographic_template"](infographic_template)
     panels = planner_plan.get("panels") if isinstance(planner_plan, Mapping) else None
@@ -760,10 +824,15 @@ def infographic_prompt_metadata(
                 "dense_editorial": True,
                 "vocabulary_first": True,
                 "visible_module_count": _visible_module_count(planner_plan),
+                "validator_passed": validator_passed,
+                "validator_errors": validator_errors or [],
+                "validator_retry_count": validator_retry_count,
+                "prompt_rule_ratio_estimate": prompt_rule_ratio_estimate,
+                "dense_editorial_word_category": dense_editorial_word_category,
             }
         )
-        if len(final_prompt) > 8500:
-            metadata["prompt_length_warning"] = "over_8500_chars"
+        if len(final_prompt) > V4_PROMPT_WARNING_CHARS:
+            metadata["prompt_length_warning"] = "over_6000_chars"
     metadata["final_prompt_hash"] = metadata["final_prompt_sha256"]
     if template.pass_count > 1:
         metadata["planner_pass_count"] = template.pass_count
@@ -814,25 +883,21 @@ def write_infographic_prompt(
     if not api_key:
         raise RuntimeError("OPENROUTER_API_KEY missing for infographic planner")
     if selected_template.version == "v4":
-        system_prompt = build_dense_editorial_prompt_writer_system_prompt()
-        user_prompt = build_dense_editorial_prompt_writer_user_prompt(
+        return _write_dense_editorial_prompt(
             content=content,
-            infographic_template=selected_template.value,
+            selected_template=selected_template,
+            api_key=api_key,
         )
-        max_tokens = INFOGRAPHIC_DENSE_PROMPT_WRITER_MAX_TOKENS
-    else:
-        system_prompt = build_infographic_planner_system_prompt(selected_template.value)
-        user_prompt = build_infographic_planner_user_prompt(
-            content=content,
-            infographic_template=selected_template.value,
-        )
-        max_tokens = INFOGRAPHIC_PLANNER_MAX_TOKENS
+    system_prompt = build_infographic_planner_system_prompt(selected_template.value)
+    user_prompt = build_infographic_planner_user_prompt(
+        content=content,
+        infographic_template=selected_template.value,
+    )
     raw_plan, usage, request_id = _call_openrouter_infographic_planner(
         system_prompt=system_prompt,
         user_prompt=user_prompt,
         model=INFOGRAPHIC_PLANNER_MODEL,
         api_key=api_key,
-        max_tokens=max_tokens,
     )
     planner_plan = _parse_planner_plan(raw_plan)
     prompt = compile_infographic_prompt(
@@ -851,6 +916,77 @@ def write_infographic_prompt(
     )
 
 
+def _write_dense_editorial_prompt(
+    *,
+    content: CardImageContent,
+    selected_template: InfographicTemplate,
+    api_key: str,
+) -> InfographicPromptResult:
+    system_prompt = build_dense_editorial_prompt_writer_system_prompt()
+    base_user_prompt = build_dense_editorial_prompt_writer_user_prompt(
+        content=content,
+        infographic_template=selected_template.value,
+    )
+    usage_total: dict[str, Any] = {}
+    last_request_id: str | None = None
+    last_raw = ""
+    last_plan: dict[str, Any] = {}
+    last_prompt = ""
+    last_validation: dict[str, Any] = {
+        "passed": False,
+        "errors": ["dense editorial writer did not run"],
+        "prompt_rule_ratio_estimate": None,
+    }
+    validator_retry_count = 0
+    for retry_count in range(2):
+        validator_retry_count = retry_count
+        feedback = ""
+        if retry_count:
+            feedback = "\n\nFix these validation errors and return a corrected natural-language image prompt only: " + "; ".join(
+                str(item) for item in last_validation.get("errors", [])
+            )
+        raw_plan, usage, request_id = _call_openrouter_infographic_planner(
+            system_prompt=system_prompt,
+            user_prompt=base_user_prompt + feedback,
+            model=INFOGRAPHIC_PLANNER_MODEL,
+            api_key=api_key,
+            max_tokens=INFOGRAPHIC_DENSE_PROMPT_WRITER_MAX_TOKENS,
+            response_format_json=False,
+        )
+        usage_total = _merge_usage(usage_total, usage)
+        last_request_id = request_id
+        last_raw = raw_plan
+        last_plan = _parse_v4_editorial_prompt(raw_plan)
+        last_prompt = compile_infographic_prompt(
+            content=content,
+            plan=last_plan,
+            infographic_template=selected_template.value,
+        )
+        last_validation = validate_dense_editorial_prompt(
+            prompt=last_prompt,
+            content=content,
+            base_language=_clean(content.base_language) or "English",
+            target_language=_clean(content.language) or "target language",
+        )
+        if last_validation.get("passed"):
+            break
+    last_plan["validator_errors"] = last_validation.get("errors", [])
+    return InfographicPromptResult(
+        prompt=last_prompt,
+        model=INFOGRAPHIC_PLANNER_MODEL,
+        raw_plan=last_raw,
+        planner_plan=last_plan,
+        infographic_template=selected_template.value,
+        usage=usage_total,
+        request_id=last_request_id,
+        validator_passed=bool(last_validation.get("passed")),
+        validator_errors=[str(item) for item in last_validation.get("errors", [])],
+        validator_retry_count=validator_retry_count,
+        prompt_rule_ratio_estimate=last_validation.get("prompt_rule_ratio_estimate"),
+        dense_editorial_word_category=_clean(last_plan.get("dense_editorial_word_category")) or None,
+    )
+
+
 def _call_openrouter_infographic_planner(
     *,
     system_prompt: str,
@@ -858,6 +994,7 @@ def _call_openrouter_infographic_planner(
     model: str,
     api_key: str,
     max_tokens: int = INFOGRAPHIC_PLANNER_MAX_TOKENS,
+    response_format_json: bool = True,
 ) -> tuple[str, dict[str, Any], str | None]:
     payload = {
         "model": model,
@@ -867,8 +1004,9 @@ def _call_openrouter_infographic_planner(
         ],
         "max_tokens": max_tokens,
         "temperature": 0.35,
-        "response_format": {"type": "json_object"},
     }
+    if response_format_json:
+        payload["response_format"] = {"type": "json_object"}
     try:
         with httpx.Client(timeout=config.LLM_TIMEOUT) as client:
             resp = client.post(
@@ -918,7 +1056,38 @@ def _parse_planner_plan(raw_plan: str) -> dict[str, Any]:
     return data
 
 
-def _compile_v4_dense_editorial_prompt(
+def _merge_usage(current: dict[str, Any], update: dict[str, Any] | None) -> dict[str, Any]:
+    merged = dict(current or {})
+    for key, value in (update or {}).items():
+        if isinstance(value, (int, float)) and isinstance(merged.get(key), (int, float)):
+            merged[key] = merged[key] + value
+        else:
+            merged[key] = value
+    return merged
+
+
+def _parse_v4_editorial_prompt(raw_prompt: str) -> dict[str, Any]:
+    text = raw_prompt.strip()
+    if not text:
+        raise ValueError("dense editorial prompt writer returned empty output")
+    try:
+        data = json.loads(_repair_json(text))
+    except Exception:
+        return {"prompt": text}
+    if not isinstance(data, dict):
+        return {"prompt": text}
+    prompt_text = (
+        _clean(data.get("prompt"))
+        or _clean(data.get("image_prompt"))
+        or _clean(data.get("final_prompt"))
+        or _clean(data.get("brief"))
+    )
+    if prompt_text:
+        data["prompt"] = prompt_text
+    return data
+
+
+def _compile_v4_dense_editorial_prompt_legacy_unused(
     *,
     content: CardImageContent,
     plan: Mapping[str, Any],
@@ -960,6 +1129,49 @@ def _compile_v4_dense_editorial_prompt(
         "",
         "Writer content to follow. JSON keys are structural instructions only, not visible text:",
         writer_payload,
+    ]
+    return _remove_internal_terms("\n".join(lines))
+
+
+def _compile_v4_dense_editorial_prompt(
+    *,
+    content: CardImageContent,
+    plan: Mapping[str, Any],
+    base_language: str,
+    target_language: str,
+    title: str,
+    translation: str,
+) -> str:
+    writer_prompt = _extract_v4_writer_prompt(plan)
+    module_list = _v4_module_list(plan)
+    content_lines: list[str] = []
+    if writer_prompt:
+        content_lines.append(_sanitize_v4_writer_prompt(writer_prompt))
+    topic_guard = _v4_topic_like_language_guard(title)
+    if topic_guard:
+        content_lines.append(topic_guard)
+    if module_list:
+        content_lines.append("Planned learning modules: " + "; ".join(module_list) + ".")
+    lines = [
+        "Create a horizontal 16:9 dense educational vocabulary infographic.",
+        "",
+        f"Target word/headword: {title}",
+        f"Translation/gloss: {translation}",
+        f"Explanation language: {base_language}",
+        f"Useful word forms, collocations, and examples may remain in {target_language}.",
+        "",
+        "This is a language-learning infographic, not a general topic article.",
+        "At least 70% of the card content must teach the word as language. At most 30% may be world/topic knowledge, and only when it helps the learner use or understand the word.",
+        "Teach the word first: meaning, pronunciation, grammar/forms, examples, collocations, register, word family, false friends, common mistakes, synonyms/contrasts, and usage notes.",
+        "Examples must be idiomatic and common.",
+        "",
+        "Design freely as a premium encyclopedia / natural-history / modern editorial knowledge card: central visual anchor, modular information panels, icons, callouts, detail boxes, summary modules, high information density, readable hierarchy, elegant palette.",
+        "",
+        "Use these planned content modules:",
+        *(content_lines or ["Build dense useful learning modules from the target word and gloss."]),
+        "",
+        f"Language rule: explanations, panel headers, notes, warnings, glosses, and footer in {base_language}. {target_language} word forms, collocations, and examples may remain in {target_language}.",
+        "Do not render internal technical labels, language-role metadata, or raw structural key names. Never invent fake facts, fake etymologies, fake quotes, or forced mnemonics. All visible text must be useful learning content.",
     ]
     return _remove_internal_terms("\n".join(lines))
 
@@ -1015,6 +1227,52 @@ def _compile_v3_reference_prompt(
         "The planner content is the source of truth.",
     ]
     return _remove_internal_terms("\n".join(lines))
+
+
+def validate_dense_editorial_prompt(
+    *,
+    prompt: str,
+    content: CardImageContent,
+    base_language: str,
+    target_language: str,
+) -> dict[str, Any]:
+    errors: list[str] = []
+    text = _clean(prompt)
+    lowered = text.lower()
+    word = _clean(content.word)
+    translation = _clean(content.translation)
+    if word and word.lower() not in lowered:
+        errors.append(f"target word missing: {word}")
+    if translation and translation.lower() not in lowered:
+        errors.append(f"translation/gloss missing: {translation}")
+    if word and translation and _looks_swapped(text, word, translation):
+        errors.append("target/translation appear swapped")
+    if "16:9" not in lowered or "horizontal" not in lowered:
+        errors.append("horizontal 16:9 missing")
+    for language in (base_language, target_language):
+        if language and _clean(language).lower() not in lowered:
+            errors.append(f"concrete language name missing: {language}")
+    banned = [item for item in V4_BANNED_VISIBLE_STRINGS if _contains_banned_token(lowered, item)]
+    if banned:
+        errors.append("banned visible metadata: " + ", ".join(banned))
+    raw_keys = [item for item in V4_JSON_KEY_STRINGS if _contains_json_key(text, item)]
+    if raw_keys:
+        errors.append("raw JSON key visible: " + ", ".join(raw_keys))
+    if "language-learning infographic" not in lowered or "teach the word" not in lowered:
+        errors.append("vocabulary-first instruction missing")
+    for phrase in ("no fake facts", "no fake quotes", "no fake etymologies", "no forced mnemonics"):
+        if phrase not in lowered:
+            errors.append(f"missing safety phrase: {phrase}")
+    module_hits = sum(1 for term in V4_LEARNING_MODULE_TERMS if term in lowered)
+    if module_hits < 5:
+        errors.append("required learning modules missing")
+    if len(text) > V4_PROMPT_HARD_FAIL_CHARS:
+        errors.append(f"prompt too long: {len(text)} chars")
+    return {
+        "passed": not errors,
+        "errors": errors,
+        "prompt_rule_ratio_estimate": _estimate_prompt_rule_ratio(text),
+    }
 
 
 def _planner_content_compact(
@@ -1100,6 +1358,65 @@ def _list_text(value: Any) -> str:
     return _clean(value)
 
 
+def _extract_v4_writer_prompt(plan: Mapping[str, Any]) -> str:
+    for key in ("prompt", "image_prompt", "final_prompt", "brief"):
+        value = _clean(plan.get(key))
+        if value:
+            return value
+    return ""
+
+
+def _sanitize_v4_writer_prompt(prompt: str) -> str:
+    cleaned = _clean(prompt)
+    for key in V4_JSON_KEY_STRINGS:
+        cleaned = re.sub(rf'"?{re.escape(key)}"?\s*:', "", cleaned, flags=re.IGNORECASE)
+    return cleaned
+
+
+def _v4_topic_like_language_guard(title: str) -> str:
+    if title.strip().lower() == "chess":
+        return (
+            "Required chess language content: play chess; chess board; chess piece; "
+            "chess match; chess vs chest. Keep game-topic context small."
+        )
+    return ""
+
+
+def _v4_module_list(plan: Mapping[str, Any]) -> list[str]:
+    modules: list[str] = []
+    composition = plan.get("composition")
+    if isinstance(composition, Mapping):
+        for key in ("info_panels", "detail_sections", "summary_modules"):
+            raw_items = composition.get(key)
+            if not isinstance(raw_items, list):
+                continue
+            for item in raw_items[:12]:
+                if not isinstance(item, Mapping):
+                    continue
+                title = _clean(item.get("title") or item.get("header") or item.get("name"))
+                content = _clean(item.get("content") or item.get("text") or item.get("body"))
+                if title and content:
+                    modules.append(f"{title}: {content}")
+                elif title:
+                    modules.append(title)
+                elif content:
+                    modules.append(content)
+    panels = plan.get("panels")
+    if not modules and isinstance(panels, list):
+        for item in panels[:12]:
+            if not isinstance(item, Mapping):
+                continue
+            title = _clean(item.get("header") or item.get("title"))
+            text = _list_text(item.get("text"))
+            if title and text:
+                modules.append(f"{title}: {text}")
+            elif title:
+                modules.append(title)
+            elif text:
+                modules.append(text)
+    return modules
+
+
 def _iter_list_items(value: Any):
     if isinstance(value, list):
         return value
@@ -1134,6 +1451,51 @@ def _visible_module_count(value: Mapping[str, Any]) -> int | None:
         if isinstance(item, list):
             total += len(item)
     return total
+
+
+def _contains_banned_token(lowered: str, token: str) -> bool:
+    pattern = rf"(?<![a-z0-9_]){re.escape(token.lower())}(?![a-z0-9_])"
+    return re.search(pattern, lowered) is not None
+
+
+def _contains_json_key(text: str, key: str) -> bool:
+    return re.search(rf'["\']{re.escape(key)}["\']\s*:', text, flags=re.IGNORECASE) is not None
+
+
+def _looks_swapped(text: str, word: str, translation: str) -> bool:
+    if not word or not translation:
+        return False
+    swapped_title = re.search(
+        rf"(title|headword|word|titled)\s*[:=]?\s*['\"]?{re.escape(translation)}['\"]?",
+        text,
+        flags=re.IGNORECASE,
+    )
+    swapped_gloss = re.search(
+        rf"(translation|gloss|subtitle|glossed as)\s*[:=]?\s*['\"]?{re.escape(word)}['\"]?",
+        text,
+        flags=re.IGNORECASE,
+    )
+    return bool(swapped_title or swapped_gloss)
+
+
+def _estimate_prompt_rule_ratio(text: str) -> float:
+    if not text:
+        return 0.0
+    rule_markers = (
+        "do not",
+        "never",
+        "must",
+        "no fake",
+        "at least",
+        "at most",
+        "rule",
+        "avoid",
+    )
+    sentences = [item.strip().lower() for item in re.split(r"[.!?\n]+", text) if item.strip()]
+    if not sentences:
+        return 0.0
+    rule_count = sum(1 for item in sentences if any(marker in item for marker in rule_markers))
+    return round(rule_count / len(sentences), 2)
 
 
 def _clean(value: Any) -> str:

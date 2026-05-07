@@ -37,12 +37,19 @@ type WordRecord = {
   example?: string | null
   example_gloss?: string | null
   card_image_model?: string | null
+  generation_job_id?: string | null
   status: string
+  current_stage?: string | null
+  failed_stage?: string | null
   video_url: string | null
   thumbnail_url: string | null
+  image_url?: string | null
+  card_image_url?: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
   error_message: string | null
+  retry_requested?: boolean | null
+  retry_requested_at?: string | null
   retry_count: number
   metadata: Record<string, unknown> | null
   rating: number | null
@@ -91,6 +98,8 @@ export default function WordDetailPanel({
   const imageBridge = cleanText(gptImage2Card?.image_bridge as string | null | undefined)
   const cardImageStyle = cleanText(layer2Eval?.art_style as string | null | undefined)
   const layer2Summary = formatLayer2EvalSummary(layer2Eval)
+  const outputState = formatOutputPresence(word)
+  const queueState = formatAdminQueueState(word)
   const gptEnrichmentRows = [
     { label: 'Mnemonic (visual scene)', value: cleanText(word.mnemonic) },
     { label: 'Bridge mnemonic', value: cleanText(word.bridge_mnemonic) },
@@ -164,6 +173,13 @@ export default function WordDetailPanel({
           </div>
           <InfoRow label="Status" value={word.status} />
           <InfoRow label="Retry Count" value={String(word.retry_count)} />
+          <InfoRow label="Generation Job ID" value={word.generation_job_id} />
+          <InfoRow label="Current Stage" value={word.current_stage} />
+          <InfoRow label="Failed Stage" value={word.failed_stage} />
+          <InfoRow label="Retry Requested" value={formatBoolean(word.retry_requested)} />
+          <InfoRow label="Retry Requested At" value={word.retry_requested_at} />
+          <InfoRow label="Queue / Worker State" value={queueState} />
+          <InfoRow label="Image Output Presence" value={outputState} />
           <div>
             <span className="text-muted-foreground">Rating: </span>
             {word.rating ? (
@@ -257,6 +273,16 @@ export default function WordDetailPanel({
                 <MetaRow label="Backend Template" value={formatBackendTemplate(gptImage2Card?.backend_template)} />
                 <MetaRow label="Infographic Template" value={formatInfographicTemplate(gptImage2Card?.infographic_template)} />
                 <MetaRow label="Provider Model" value={cleanText(gptImage2Card?.provider_model as string | null | undefined)} />
+                <MetaRow label="V4 Prompt Writer Model" value={cleanText(gptImage2Card?.prompt_writer_model as string | null | undefined)} />
+                <MetaRow label="Dense Editorial" value={formatBoolean(gptImage2Card?.dense_editorial)} />
+                <MetaRow label="Vocabulary First" value={formatBoolean(gptImage2Card?.vocabulary_first)} />
+                <MetaRow label="Visible Module Count" value={gptImage2Card?.visible_module_count as number | null | undefined} />
+                <MetaRow label="Dense Editorial Category" value={cleanText(gptImage2Card?.dense_editorial_word_category as string | null | undefined)} />
+                <MetaRow label="Validator Passed" value={formatBoolean(gptImage2Card?.validator_passed)} />
+                <MetaRow label="Validator Retry Count" value={gptImage2Card?.validator_retry_count as number | null | undefined} />
+                <MetaRow label="Validator Errors" value={formatUnknownJsonValue(gptImage2Card?.validator_errors)} />
+                <MetaRow label="Prompt Rule Ratio Estimate" value={formatNumber(gptImage2Card?.prompt_rule_ratio_estimate)} />
+                <MetaRow label="Prompt Length Warning" value={cleanText(gptImage2Card?.prompt_length_warning as string | null | undefined)} />
                 <MetaRow label="Reference Attached" value={formatBoolean(gptImage2Card?.reference_attached)} />
                 <MetaRow label="Reference Fallback Used" value={formatBoolean(gptImage2Card?.reference_fallback_used)} />
                 <MetaRow label="Template Reference URL" value={cleanText(gptImage2Card?.template_reference_url as string | null | undefined)} />
@@ -512,6 +538,35 @@ function formatUnknownJsonValue(value: unknown): string | null {
 function formatBoolean(value: unknown): string | null {
   if (typeof value !== 'boolean') return null
   return value ? 'true' : 'false'
+}
+
+function formatNumber(value: unknown): string | null {
+  return typeof value === 'number' && Number.isFinite(value) ? String(value) : null
+}
+
+function formatOutputPresence(word: WordRecord): string {
+  const present = [
+    word.thumbnail_url ? 'thumbnail_url' : null,
+    word.image_url ? 'image_url' : null,
+    word.card_image_url ? 'card_image_url' : null,
+    word.video_url ? 'video_url' : null,
+  ].filter(Boolean)
+  return present.length > 0 ? present.join(', ') : 'none'
+}
+
+function formatAdminQueueState(word: WordRecord): string {
+  if (word.retry_requested) return `retry requested${word.retry_requested_at ? ` at ${word.retry_requested_at}` : ''}`
+  if (word.failed_stage || word.status === 'failed') return `failed${word.failed_stage ? ` at ${word.failed_stage}` : ''}`
+  if (word.status === 'complete') {
+    return formatOutputPresence(word) === 'none' ? 'complete but no output URL present' : 'complete with output'
+  }
+  if (word.status === 'processing' || word.current_stage) {
+    return `provider or worker running${word.current_stage ? `: ${word.current_stage}` : ''}`
+  }
+  if (word.status === 'approved' || word.status === 'pending_image' || word.status === 'pending') {
+    return 'queued; may be waiting behind same-deck lock'
+  }
+  return word.status
 }
 
 function formatLayer2EvalSummary(layer2Eval: Record<string, unknown> | null): string | null {

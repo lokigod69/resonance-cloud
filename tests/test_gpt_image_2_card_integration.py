@@ -1090,6 +1090,11 @@ def test_v4_dense_editorial_infographic_uses_text_to_image_and_metadata(monkeypa
                 }
             },
             infographic_template="infographic_dense_editorial_v4",
+            validator_passed=True,
+            validator_errors=[],
+            validator_retry_count=0,
+            prompt_rule_ratio_estimate=0.22,
+            dense_editorial_word_category="concrete",
         )
 
     def fake_render_scene_gpt_image_2(**kwargs):
@@ -1149,6 +1154,77 @@ def test_v4_dense_editorial_infographic_uses_text_to_image_and_metadata(monkeypa
     assert metadata["dense_editorial"] is True
     assert metadata["vocabulary_first"] is True
     assert metadata["visible_module_count"] == 3
+    assert metadata["validator_passed"] is True
+    assert metadata["validator_retry_count"] == 0
+    assert metadata["validator_errors"] == []
+    assert metadata["prompt_rule_ratio_estimate"] == 0.22
+    assert metadata["dense_editorial_word_category"] == "concrete"
+
+
+def test_v4_dense_editorial_validator_failure_stops_before_provider(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.infographic_prompt import InfographicPromptResult
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **_kwargs):
+            return None
+
+    def fake_write_infographic_prompt(**_kwargs):
+        return InfographicPromptResult(
+            prompt="Create a horizontal 16:9 card. Zielsprache: Englisch. backend template. chess Schach.",
+            model="test-dense-writer-model",
+            raw_plan="bad writer prompt",
+            planner_plan={"prompt": "bad writer prompt"},
+            infographic_template="infographic_dense_editorial_v4",
+            validator_passed=False,
+            validator_errors=["banned visible metadata: Zielsprache", "required learning modules missing"],
+            validator_retry_count=1,
+            prompt_rule_ratio_estimate=0.75,
+            dense_editorial_word_category="practical",
+        )
+
+    def fake_render_scene_gpt_image_2(**_kwargs):
+        raise AssertionError("invalid V4 prompt must fail before provider call")
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_infographic_prompt", fake_write_infographic_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    payload = _card_payload(tmp_path)
+    payload.content.word = "chess"
+    payload.content.translation = "Schach"
+    payload.content.base_language = "German"
+    payload.content.language = "English"
+    payload.content.layer2_customization = {
+        "meaning_strategy": "clear_meaning",
+        "presentation_form": "infographic_card",
+        "visual_intensity": "balanced",
+        "backend_template": "infographic_prompt_v1",
+        "infographic_template": "infographic_dense_editorial_v4",
+    }
+
+    result = card_engine.generate_card_image(payload)
+
+    assert result.status == "failed"
+    assert result.error is not None
+    assert "V4 validator failed" in result.error.message
+    metadata = result.gpt_image_2_card_metadata
+    assert metadata is not None
+    assert metadata["validator_passed"] is False
+    assert metadata["validator_retry_count"] == 1
+    assert metadata["validator_errors"] == ["banned visible metadata: Zielsprache", "required learning modules missing"]
 
 
 def test_direct_prompt_word_object_allows_target_word_and_bans_translation(monkeypatch, tmp_path):

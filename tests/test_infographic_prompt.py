@@ -22,6 +22,7 @@ from cloud_engines.image_engine.infographic_prompt import (  # noqa: E402
     infographic_template_reference,
     infographic_template_reference_for_render,
     infographic_template_label,
+    validate_dense_editorial_prompt,
 )
 
 
@@ -438,26 +439,15 @@ def test_v4_dense_editorial_prompt_is_high_density_vocabulary_first_and_oriented
         pos="noun",
     )
     writer_plan = {
-        "type": "image_prompt",
-        "title": "Schach",
-        "subtitle": "chess",
-        "style": {
-            "overall": "premium modern encyclopedia vocabulary infographic",
-            "layout": "horizontal 16:9, modular, high information density but uncluttered",
-        },
-        "composition": {
-            "info_panels": [
-                {"title": "Bedeutung", "content": "Schach als englisches Wort fuer das Brettspiel."},
-                {"title": "Aussprache", "content": "chess"},
-                {"title": "Grammatik", "content": "meist unzaehlbar: play chess"},
-                {"title": "Kollokationen", "content": "play chess; chess board; chess piece; chess match"},
-                {"title": "Falscher Freund", "content": "chess vs chest"},
-                {"title": "Beispiele", "content": "I play chess. = Ich spiele Schach."},
-                {"title": "Register", "content": "neutral"},
-                {"title": "Wortfamilie", "content": "chessboard; chess player"},
-            ],
-        },
-        "design_goals": ["dense but readable", "rounded editorial boxes", "icons and callouts"],
+        "prompt": (
+            "Create a horizontal 16:9 premium encyclopedia-style vocabulary infographic for the "
+            "English word 'chess', glossed in German as 'Schach'. Use a large headword, "
+            "a central visual metaphor of a chessboard, and dense but readable German learning panels: "
+            "Bedeutung, Aussprache, Grammatik, Beispiele, Kollokationen, Falsche Freunde, Register, "
+            "and Wortfamilie. Teach play chess, chess board, chess piece, chess match, and chess vs chest. "
+            "Keep topic context small and make the card useful for learning the English word."
+        ),
+        "dense_editorial_word_category": "concrete",
     }
 
     prompt = compile_infographic_prompt(
@@ -466,13 +456,12 @@ def test_v4_dense_editorial_prompt_is_high_density_vocabulary_first_and_oriented
         infographic_template="infographic_dense_editorial_v4",
     )
 
-    assert "Dense Editorial V4 provider-ready prompt" in prompt
-    assert "TITLE / HEADWORD: chess" in prompt
-    assert "SUBTITLE / GLOSS: Schach" in prompt
-    assert "TITLE / HEADWORD: Schach" not in prompt
-    assert "SUBTITLE / GLOSS: chess" not in prompt
-    assert "maximum editorial information density" in prompt
-    assert "8-12 visible modules" in prompt
+    assert prompt.startswith("Create a horizontal 16:9 dense educational vocabulary infographic.")
+    assert "Target word/headword: chess" in prompt
+    assert "Translation/gloss: Schach" in prompt
+    assert "Target word/headword: Schach" not in prompt
+    assert "Translation/gloss: chess" not in prompt
+    assert "premium encyclopedia / natural-history / modern editorial knowledge card" in prompt
     assert "At least 70% of the card content must teach the word as language" in prompt
     assert "At most 30% may be world/topic knowledge" in prompt
     assert "Bedeutung" in prompt
@@ -482,11 +471,74 @@ def test_v4_dense_editorial_prompt_is_high_density_vocabulary_first_and_oriented
     assert "play chess; chess board; chess piece; chess match" in prompt
     assert "chess vs chest" in prompt
     assert "Examples must be idiomatic and common" in prompt
-    assert "Never render visible labels named Zielsprache, Basissprache, target language, or base language" in prompt
-    assert "Do not render JSON keys such as type, style, composition, info_panels, visual_elements, or design_goals" in prompt
+    for forbidden in ("Zielsprache", "Basissprache", "target language", "base language", "Dense Editorial V4", "\"type\"", "\"style\"", "\"composition\"", "info_panels", "visual_elements", "design_goals"):
+        assert forbidden not in prompt
     assert prompt.count("At least 70% of the card content must teach the word as language") == 1
     assert prompt.count("Never invent fake facts") == 1
-    assert 1000 < len(prompt) < 7500
+    assert 1800 <= len(prompt) <= 5000
+
+
+def test_v4_validator_catches_banned_labels_json_keys_and_reversed_orientation():
+    content = CardImageContent(
+        word="chess",
+        translation="Schach",
+        language="English",
+        language_code="en",
+        base_language="German",
+        pos="noun",
+    )
+    bad_prompt = (
+        '{"type":"image_prompt","style":"dense"} Create a horizontal 16:9 card titled Schach, '
+        'glossed as chess. Zielsprache: Englisch. backend template: infographic_prompt_v1. '
+        'This is a language-learning infographic about the target word. '
+        'No fake facts, no fake quotes, no fake etymologies, no forced mnemonics. '
+        'Include meaning and examples only.'
+    )
+
+    result = validate_dense_editorial_prompt(
+        prompt=bad_prompt,
+        content=content,
+        base_language="German",
+        target_language="English",
+    )
+
+    assert result["passed"] is False
+    errors = " ".join(result["errors"])
+    assert "banned visible metadata" in errors
+    assert "raw JSON key" in errors
+    assert "target/translation appear swapped" in errors
+    assert "required learning modules" in errors
+
+
+def test_v4_validator_passes_compact_natural_language_prompt_for_practical_words():
+    content = CardImageContent(
+        word="winner",
+        translation="Gewinner",
+        language="English",
+        language_code="en",
+        base_language="German",
+        pos="noun",
+    )
+    prompt = (
+        "Create a horizontal 16:9 dense educational vocabulary infographic for the English word "
+        "'winner', glossed in German as 'Gewinner'. This is a language-learning infographic about "
+        "the target word, not a general topic article. Use German explanations with English forms "
+        "and examples. Include meaning, pronunciation, grammar/forms, example sentences, collocations, "
+        "common mistake, register/use, synonyms/contrasts, and practical footer takeaway. "
+        "Examples must be idiomatic and common: She was the clear winner of the race. The winner receives a prize. "
+        "At least 70% of the card content must teach the word as language; at most 30% may be topic context. "
+        "No fake facts, no fake quotes, no fake etymologies, no forced mnemonics."
+    )
+
+    result = validate_dense_editorial_prompt(
+        prompt=prompt,
+        content=content,
+        base_language="German",
+        target_language="English",
+    )
+
+    assert result["passed"] is True
+    assert result["errors"] == []
 
 
 def test_v4_metadata_records_dense_editorial_fields_and_prompt_length_warning():
@@ -527,7 +579,9 @@ def test_v4_metadata_records_dense_editorial_fields_and_prompt_length_warning():
     assert metadata["prompt_writer_model"] == "dense-writer-model"
     assert metadata["provider_model"] == "gpt-image-2-text-to-image"
     assert metadata["visible_module_count"] == 4
-    assert metadata["prompt_length_warning"] == "over_8500_chars"
+    assert metadata["prompt_length_warning"] == "over_6000_chars"
+    assert metadata["validator_passed"] is None
+    assert metadata["validator_retry_count"] == 0
 
 
 def test_infographic_metadata_records_template_and_v2_pass_count():
