@@ -103,6 +103,7 @@ export default function Music() {
   const [allTracks, setAllTracks] = useState<MusicTrack[]>([])
   const [errorTrackIds, setErrorTrackIds] = useState<Set<string>>(new Set())
   const [loading, setLoading] = useState(true)
+  const [, setLoadError] = useState<string | null>(null)
   const [deckFilter, setDeckFilter] = useState<string>('all')
   const [audioFilter, setAudioFilter] = useState<AudioFilter>('all')
   const [decks, setDecks] = useState<DeckOption[]>([])
@@ -145,6 +146,7 @@ export default function Music() {
     if (!user) return
 
     if (!bustCache && _musicCache && _musicCache.userId === user.id) {
+      setLoadError(null)
       setAllTracks(_musicCache.tracks)
       setDecks(_musicCache.decks)
       setLoading(false)
@@ -153,33 +155,65 @@ export default function Music() {
 
     if (bustCache) _musicCache = null
     setLoading(true)
+    setLoadError(null)
 
-    const { data } = await supabase
-      .from('words')
-      .select(`
-        id, deck_id, word, translation,
-        thumbnail_url, suno_storage_url, suno_audio_url, music_state, retry_requested, metadata, created_at,
-        decks(id, name)
-      `)
-      .eq('user_id', user.id)
-      .eq('status', 'complete')
-      .order('created_at', { ascending: false })
-    if (!data) return
-    const mapped = (data as Record<string, unknown>[]).map(mapToTrack)
-    const latestJobs = await fetchLatestCompleteMusicJobs(mapped.map((track) => track.id))
-    const tracksWithJobs = applyLatestMusicJobs(mapped, latestJobs)
+    try {
+      const { data, error } = await supabase
+        .from('words')
+        .select(`
+          id, deck_id, word, translation,
+          thumbnail_url, suno_storage_url, suno_audio_url, music_state, retry_requested, metadata, created_at,
+          decks(id, name)
+        `)
+        .eq('user_id', user.id)
+        .eq('status', 'complete')
+        .order('created_at', { ascending: false })
+      if (error) {
+        console.error('[Music] failed to fetch music tracks', {
+          userId: user.id,
+          message: error.message,
+        })
+        setLoadError(error.message)
+        return
+      }
 
-    // Collect unique decks for filter
-    const seen = new Map<string, string>()
-    for (const t of tracksWithJobs) {
-      if (!seen.has(t.deck_id)) seen.set(t.deck_id, t.deckName)
+      const mapped = ((data ?? []) as Record<string, unknown>[]).map(mapToTrack)
+      if (import.meta.env.DEV) {
+        const playableCount = mapped.filter(trackHasAudio).length
+        const missingAudioCount = mapped.filter(
+          (track) => !(track.suno_storage_url ?? track.suno_audio_url),
+        ).length
+        console.warn('[Music] music queue diagnostics', {
+          userId: user.id,
+          mappedCount: mapped.length,
+          playableCount,
+          missingAudioCount,
+        })
+      }
+
+      const latestJobs = await fetchLatestCompleteMusicJobs(mapped.map((track) => track.id))
+      const tracksWithJobs = applyLatestMusicJobs(mapped, latestJobs)
+
+      // Collect unique decks for filter
+      const seen = new Map<string, string>()
+      for (const t of tracksWithJobs) {
+        if (!seen.has(t.deck_id)) seen.set(t.deck_id, t.deckName)
+      }
+      const deckList = Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
+
+      _musicCache = { tracks: tracksWithJobs, decks: deckList, userId: user.id }
+      setAllTracks(tracksWithJobs)
+      setDecks(deckList)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error)
+      console.error('[Music] music track fetch exception', {
+        userId: user.id,
+        message,
+      })
+      setLoadError(message)
+    } finally {
+      setLoading(false)
     }
-    const deckList = Array.from(seen.entries()).map(([id, name]) => ({ id, name }))
-
-    _musicCache = { tracks: tracksWithJobs, decks: deckList, userId: user.id }
-    setAllTracks(tracksWithJobs)
-    setDecks(deckList)
-    setLoading(false)
   }, [user])
 
   useEffect(() => {
