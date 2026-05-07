@@ -255,46 +255,15 @@ export function LyricsSheet({
     )
   }
 
-  function renderClassicLyricsPanel(label: string, lyrics: string | null, className = '') {
+  function renderLyricsPanel(label: string, lyrics: string | null, className = '') {
     if (!lyrics) return null
+    const shellModifier = variant === 'glassy' ? 'lyrics-shell--glassy' : 'lyrics-shell--classic'
     return (
       <section
         className={[
-          'flex min-h-0 min-w-0 flex-col',
-          className,
-        ].join(' ')}
-      >
-        {hasTranslation ? (
-          <h3 className="mb-3 text-xs font-medium uppercase tracking-normal text-muted-foreground">
-            {label}
-          </h3>
-        ) : null}
-        <div
-          data-lyrics-scroll-shell
-          className="relative min-h-0 flex-1 overflow-hidden rounded-lg bg-foreground/[0.025] shadow-[inset_0_1px_10px_rgba(0,0,0,0.12),inset_0_-1px_0_rgba(255,255,255,0.05)] before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-10 before:bg-gradient-to-b before:from-background/90 before:via-background/55 before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-10 after:bg-gradient-to-t after:from-background/90 after:via-background/55 after:to-transparent before:pointer-events-none after:pointer-events-none"
-        >
-          <pre
-            data-lyrics-scroll-body
-            className="h-full max-h-[min(55dvh,36rem)] overflow-y-auto overscroll-contain whitespace-pre-wrap px-5 py-7 font-sans text-[15px] leading-7 text-foreground/92 [text-shadow:_0_1px_1px_rgba(0,0,0,0.16)] sm:max-h-[calc(100dvh-19rem)] [&::-webkit-scrollbar]:hidden"
-            style={{ scrollbarWidth: 'none' }}
-          >
-            {lyrics}
-          </pre>
-        </div>
-      </section>
-    )
-  }
-
-  function renderGlassyLyricsPanel(
-    label: string,
-    lyrics: string | null,
-    className: string,
-  ) {
-    if (!lyrics) return null
-    return (
-      <section
-        className={[
-          'pointer-events-auto flex min-h-0 min-w-0 flex-col rounded-lg border border-[var(--border-subtle)] bg-[var(--glass-bg,rgba(12,12,18,0.58))] p-4 text-[var(--text-primary)] shadow-2xl shadow-black/25 backdrop-blur-2xl',
+          'lyrics-shell',
+          shellModifier,
+          'pointer-events-auto flex min-h-0 min-w-0 flex-col',
           className,
         ].join(' ')}
       >
@@ -305,15 +274,19 @@ export function LyricsSheet({
         ) : null}
         <div
           data-lyrics-scroll-shell
-          className="relative min-h-0 flex-1 overflow-hidden before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-8 before:bg-gradient-to-b before:from-[var(--glass-bg,rgba(12,12,18,0.92))] before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-8 after:bg-gradient-to-t after:from-[var(--glass-bg,rgba(12,12,18,0.92))] after:to-transparent before:pointer-events-none after:pointer-events-none"
+          className="lyrics-scroll-fade flex-1"
         >
-          <pre
+          <div
             data-lyrics-scroll-body
-            className="h-full max-h-[min(56dvh,36rem)] overflow-y-auto overscroll-contain whitespace-pre-wrap px-1 py-5 font-sans text-[15px] leading-7 text-[var(--text-primary)] [text-shadow:_0_1px_1px_rgba(0,0,0,0.22)] sm:max-h-[min(58dvh,38rem)] [&::-webkit-scrollbar]:hidden"
+            className="h-full max-h-[min(56dvh,36rem)] min-h-[min(38dvh,22rem)] overflow-y-auto overscroll-contain flex justify-center px-2 py-6 sm:max-h-[min(58dvh,38rem)] [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: 'none' }}
           >
-            {lyrics}
-          </pre>
+            <pre
+              className="inline-block max-w-full whitespace-pre-wrap text-left font-sans text-[15px] leading-7 [text-shadow:_0_1px_1px_rgba(0,0,0,0.22)]"
+            >
+              {lyrics}
+            </pre>
+          </div>
         </div>
       </section>
     )
@@ -360,11 +333,11 @@ export function LyricsSheet({
       <div data-glassy-lyrics-layer className="pointer-events-none fixed inset-0 z-30">
         <div className="hidden h-full items-center gap-6 px-6 pb-[calc(8rem+env(safe-area-inset-bottom,0px))] pt-24 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,28rem)_minmax(0,1fr)]">
           {hasTranslation
-            ? renderGlassyLyricsPanel(t('music.lyrics.translation'), displayTranslation, 'lg:col-start-1')
+            ? renderLyricsPanel(t('music.lyrics.translation'), displayTranslation, 'lg:col-start-1')
             : null}
           <div className="lg:col-start-2" aria-hidden />
           {displayOriginal
-            ? renderGlassyLyricsPanel(t('music.lyrics.original'), displayOriginal, 'lg:col-start-3')
+            ? renderLyricsPanel(t('music.lyrics.original'), displayOriginal, 'lg:col-start-3')
             : (
               <div className="pointer-events-auto lg:col-start-3">
                 {renderStatusBody()}
@@ -373,7 +346,7 @@ export function LyricsSheet({
           {renderGlassyCloseButton('right-6 top-20')}
         </div>
 
-        <div className="pointer-events-auto fixed inset-x-3 bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))] z-40 max-h-[72dvh] rounded-t-2xl border border-[var(--border-subtle)] bg-[var(--glass-bg,rgba(12,12,18,0.84))] p-4 text-[var(--text-primary)] shadow-2xl shadow-black/30 backdrop-blur-2xl lg:hidden">
+        <div className="lyrics-shell lyrics-shell--glassy pointer-events-auto fixed inset-x-3 bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))] z-40 max-h-[72dvh] flex flex-col lg:hidden">
           <div className="mb-3 flex items-center justify-between gap-3 pr-10">
             <div className="min-w-0">
               <p className="truncate text-sm font-medium">{track?.word ?? t('music.lyrics')}</p>
@@ -407,15 +380,19 @@ export function LyricsSheet({
           {mobileLyrics ? (
             <div
               data-lyrics-scroll-shell
-              className="relative max-h-[52dvh] overflow-hidden before:absolute before:inset-x-0 before:top-0 before:z-10 before:h-7 before:bg-gradient-to-b before:from-[var(--glass-bg,rgba(12,12,18,0.94))] before:to-transparent after:absolute after:inset-x-0 after:bottom-0 after:z-10 after:h-7 after:bg-gradient-to-t after:from-[var(--glass-bg,rgba(12,12,18,0.94))] after:to-transparent before:pointer-events-none after:pointer-events-none"
+              className="lyrics-scroll-fade flex-1"
             >
-              <pre
+              <div
                 data-lyrics-scroll-body
-                className="max-h-[52dvh] overflow-y-auto overscroll-contain whitespace-pre-wrap py-5 font-sans text-[15px] leading-7 text-[var(--text-primary)] [text-shadow:_0_1px_1px_rgba(0,0,0,0.22)] [&::-webkit-scrollbar]:hidden"
+                className="h-full max-h-[52dvh] overflow-y-auto overscroll-contain flex justify-center py-5 [&::-webkit-scrollbar]:hidden"
                 style={{ scrollbarWidth: 'none' }}
               >
-                {mobileLyrics}
-              </pre>
+                <pre
+                  className="inline-block max-w-full whitespace-pre-wrap text-left font-sans text-[15px] leading-7 [text-shadow:_0_1px_1px_rgba(0,0,0,0.22)]"
+                >
+                  {mobileLyrics}
+                </pre>
+              </div>
             </div>
           ) : renderStatusBody()}
           {renderGlassyCloseButton('right-3 top-3')}
@@ -492,21 +469,21 @@ export function LyricsSheet({
                   data-lyrics-desktop-columns
                   className="hidden min-h-0 grid-cols-1 gap-5 lg:grid lg:grid-cols-2"
                 >
-                  {renderClassicLyricsPanel(t('music.lyrics.translation'), displayTranslation)}
-                  {renderClassicLyricsPanel(t('music.lyrics.original'), displayOriginal)}
+                  {renderLyricsPanel(t('music.lyrics.translation'), displayTranslation)}
+                  {renderLyricsPanel(t('music.lyrics.original'), displayOriginal)}
                 </div>
               ) : (
                 <div
                   data-lyrics-single-column
                   className="mx-auto grid min-h-0 w-full max-w-3xl grid-cols-1 gap-4"
                 >
-                  {renderClassicLyricsPanel(t('music.lyrics.original'), displayOriginal)}
+                  {renderLyricsPanel(t('music.lyrics.original'), displayOriginal)}
                 </div>
               )}
 
               {hasTranslation ? (
                 <div className="lg:hidden">
-                  {renderClassicLyricsPanel(
+                  {renderLyricsPanel(
                     translationView === 'translation'
                       ? t('music.lyrics.translation')
                       : t('music.lyrics.original'),
