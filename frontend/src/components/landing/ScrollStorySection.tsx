@@ -48,55 +48,73 @@ export default function ScrollStorySection() {
 
   // All hooks declared unconditionally (Rules of Hooks)
   const containerRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  })
+  const { scrollY } = useScroll()
+  const [scrollMetrics, setScrollMetrics] = useState({ start: 0, travel: 1600 })
 
-  // === PHASE A: Cards scale in from small (0.00 → 0.20) ===
-  // Shared scale for all cards — grows from 30% to full size
-  const cardsScale = useTransform(scrollYProgress, [0.00, 0.20], [0.3, 1])
+  useEffect(() => {
+    const updateScrollMetrics = () => {
+      if (!containerRef.current) return
+      const rect = containerRef.current.getBoundingClientRect()
+      setScrollMetrics({
+        start: rect.top + window.scrollY,
+        travel: window.innerHeight * 1.8,
+      })
+    }
 
-  // Demo heading: fades in at start, fades out before Phase B
-  const demoHeadingOpacity = useTransform(scrollYProgress, [0.00, 0.10, 0.28], [0, 1, 0])
+    updateScrollMetrics()
+    window.addEventListener('resize', updateScrollMetrics)
+    return () => window.removeEventListener('resize', updateScrollMetrics)
+  }, [])
+
+  const scrollYProgress = useTransform(
+    scrollY,
+    [scrollMetrics.start, scrollMetrics.start + scrollMetrics.travel],
+    [0, 1]
+  )
+
+  // === PHASE A: Cards scale in while the sticky stage holds ===
+  const cardsScale = useTransform(scrollYProgress, [0.00, 0.12], [0.72, 1])
+
+  // Demo heading stays pinned until the cards start dispersing.
+  const demoHeadingOpacity = useTransform(scrollYProgress, [0.00, 0.18, 0.26], [1, 1, 0])
 
   // Combined opacity per row: fade IN during Phase A, hold, fade OUT during Phase B
   // Row 1 (leads)
-  const row1Opacity = useTransform(scrollYProgress, [0.00, 0.12, 0.22, 0.42], [0, 1, 1, 0])
+  const row1Opacity = useTransform(scrollYProgress, [0.00, 0.04, 0.18, 0.30], [0.45, 1, 1, 0])
   // Row 2 (slightly delayed stagger)
-  const row2Opacity = useTransform(scrollYProgress, [0.02, 0.14, 0.24, 0.44], [0, 1, 1, 0])
+  const row2Opacity = useTransform(scrollYProgress, [0.02, 0.06, 0.20, 0.32], [0.45, 1, 1, 0])
 
-  // === PHASE B: Cards disperse to sides (0.22 → 0.48) ===
+  // === PHASE B: Cards disperse to sides ===
   // Row 1 x-movement
-  const leftRow1X = useTransform(scrollYProgress, [0.22, 0.48], [0, -1200])
-  const rightRow1X = useTransform(scrollYProgress, [0.22, 0.48], [0, 1200])
+  const leftRow1X = useTransform(scrollYProgress, [0.12, 0.30], [0, -1200])
+  const rightRow1X = useTransform(scrollYProgress, [0.12, 0.30], [0, 1200])
   // Row 2 slightly delayed
-  const leftRow2X = useTransform(scrollYProgress, [0.24, 0.50], [0, -1200])
-  const rightRow2X = useTransform(scrollYProgress, [0.24, 0.50], [0, 1200])
+  const leftRow2X = useTransform(scrollYProgress, [0.14, 0.32], [0, -1200])
+  const rightRow2X = useTransform(scrollYProgress, [0.14, 0.32], [0, 1200])
 
-  // === PHASE C: How It Works + Waveform (0.45 → 0.90) ===
+  // === PHASE C: How It Works + Waveform ===
   // Waveform fades IN after cards are gone
-  const waveformOpacity = useTransform(scrollYProgress, [0.50, 0.65], [0, 1])
-  const calmBackgroundOpacity = useTransform(scrollYProgress, [0.42, 0.56, 0.86, 0.94], [0, 0.5, 0.5, 0])
-  const calmOverlayOpacity = useTransform(scrollYProgress, [0.42, 0.56, 0.86, 0.94], [0, 0.35, 0.35, 0])
-  const calmBackgroundY = useTransform(scrollYProgress, [0.42, 0.94], ['-3%', '3%'])
+  const waveformOpacity = useTransform(scrollYProgress, [0.60, 0.72], [0, 1])
+  const calmBackgroundOpacity = useTransform(scrollYProgress, [0.22, 0.32, 0.90, 1.00], [0, 0.5, 0.5, 0])
+  const calmOverlayOpacity = useTransform(scrollYProgress, [0.22, 0.32, 0.90, 1.00], [0, 0.56, 0.56, 0])
+  const calmBackgroundY = useTransform(scrollYProgress, [0.22, 1.00], ['-3%', '3%'])
 
   // "How it works" heading
-  const howHeadingOpacity = useTransform(scrollYProgress, [0.45, 0.58], [0, 1])
+  const howHeadingOpacity = useTransform(scrollYProgress, [0.24, 0.34], [0, 1])
 
   // Step 1: grows from center, fans left
-  const step1Scale = useTransform(scrollYProgress, [0.48, 0.60], [0.3, 1])
-  const step1Opacity = useTransform(scrollYProgress, [0.48, 0.60], [0, 1])
-  const step1X = useTransform(scrollYProgress, [0.48, 0.60], [0, -350])
+  const step1Scale = useTransform(scrollYProgress, [0.32, 0.44], [0.3, 1])
+  const step1Opacity = useTransform(scrollYProgress, [0.32, 0.44], [0, 1])
+  const step1X = useTransform(scrollYProgress, [0.32, 0.44], [0, -350])
 
   // Step 2: grows at center, stays centered
-  const step2Scale = useTransform(scrollYProgress, [0.58, 0.70], [0.3, 1])
-  const step2Opacity = useTransform(scrollYProgress, [0.58, 0.70], [0, 1])
+  const step2Scale = useTransform(scrollYProgress, [0.38, 0.50], [0.3, 1])
+  const step2Opacity = useTransform(scrollYProgress, [0.38, 0.50], [0, 1])
 
   // Step 3: grows from center, fans right
-  const step3Scale = useTransform(scrollYProgress, [0.63, 0.75], [0.3, 1])
-  const step3Opacity = useTransform(scrollYProgress, [0.63, 0.75], [0, 1])
-  const step3X = useTransform(scrollYProgress, [0.63, 0.75], [0, 350])
+  const step3Scale = useTransform(scrollYProgress, [0.44, 0.56], [0.3, 1])
+  const step3Opacity = useTransform(scrollYProgress, [0.44, 0.56], [0, 1])
+  const step3X = useTransform(scrollYProgress, [0.44, 0.56], [0, 350])
 
   // Fallback: mobile or reduced motion — render original sections unchanged
   if (!isDesktop || reducedMotion === true) {
@@ -123,7 +141,7 @@ export default function ScrollStorySection() {
   return (
     <section
       ref={containerRef}
-      style={{ position: 'relative', height: '550vh', background: 'var(--app-bg)' }}
+      style={{ position: 'relative', height: '280vh', background: 'var(--app-bg)' }}
     >
       {/* Sticky viewport — stays pinned while container scrolls past */}
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
@@ -269,7 +287,7 @@ export default function ScrollStorySection() {
 
       </div>
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-[45vh] bg-gradient-to-b from-transparent via-[var(--app-bg)]/90 to-[var(--app-bg)]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-[30vh] bg-gradient-to-b from-transparent via-[var(--app-bg)]/90 to-[var(--app-bg)]"
         aria-hidden="true"
       />
     </section>

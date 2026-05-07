@@ -110,6 +110,12 @@ body:has(.theme-cosmos) {
   background-attachment: scroll;
 }
 
+html:has(.theme-cosmos),
+body:has(.theme-cosmos),
+body:has(.theme-cosmos) #root {
+  overflow-x: clip;
+}
+
 .theme-cosmos .cosmos-bg-mask-both {
   mask-image: linear-gradient(
     to bottom,
