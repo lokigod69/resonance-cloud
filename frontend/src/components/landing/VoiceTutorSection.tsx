@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { Mic, Globe, Volume2, ChevronLeft, RotateCcw } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 import { TUTOR_MOCK_CONVERSATION, TUTOR_MOCK_LANGUAGE } from './landingData'
@@ -6,15 +8,29 @@ import { useLandingLocale } from '@/hooks/useLandingLocale'
 
 export default function VoiceTutorSection() {
   const { t } = useLandingLocale()
+  const reducedMotion = useReducedMotion()
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['-3%', '3%'])
+  const contentY = useTransform(scrollYProgress, [0, 0.35, 1], [24, 0, -10])
 
   return (
-    <section className="relative overflow-hidden bg-[var(--app-bg)] py-24 px-6">
-      <div
-        className="cosmos-bg-mask-both absolute inset-0 bg-cover bg-center opacity-50"
-        style={{ backgroundImage: "url('/brand/cosmos/cosmos-calm.webp')" }}
+    <section ref={sectionRef} className="relative overflow-hidden bg-[var(--app-bg)] py-24 px-6">
+      <motion.div
+        className="cosmos-bg-mask-both absolute -inset-y-8 inset-x-0 transform-gpu bg-cover bg-center opacity-50 will-change-transform"
+        style={{
+          backgroundImage: "url('/brand/cosmos/cosmos-calm.webp')",
+          y: reducedMotion ? 0 : backgroundY,
+        }}
         aria-hidden="true"
       />
-      <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+      <motion.div
+        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center will-change-transform"
+        style={reducedMotion ? {} : { y: contentY }}
+      >
 
         {/* Header text */}
         <ScrollReveal className="text-center mb-12">
@@ -99,7 +115,7 @@ export default function VoiceTutorSection() {
           </div>
         </ScrollReveal>
 
-      </div>
+      </motion.div>
     </section>
   )
 }

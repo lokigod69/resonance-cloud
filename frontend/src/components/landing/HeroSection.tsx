@@ -99,31 +99,16 @@ export default function HeroSection() {
 
             {/* CTA with glow pulse */}
             <motion.div {...fadeUp(0.3)} className="pt-4">
-              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-                <motion.div
-                  className="rounded-md"
-                  animate={ctaGlow}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
-                >
-                  <Button variant="glass-vermillion" size="lg" asChild className="w-full text-lg px-8 py-6 sm:w-[180px]">
-                    <Link to="/login">{t('landing.signIn')}</Link>
-                  </Button>
-                </motion.div>
-                <motion.div
-                  className="rounded-md"
-                  animate={ctaGlow}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
-                >
-                  <Button variant="glass-vermillion" size="lg" asChild className="w-full text-lg px-8 py-6 sm:w-[180px]">
-                    <Link to="/login?mode=signup">{t('landing.signUp')}</Link>
-                  </Button>
-                </motion.div>
-              </div>
+              <motion.div
+                className="mx-auto rounded-md sm:w-[220px]"
+                animate={ctaGlow}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
+              >
+                <Button variant="glass-vermillion" size="lg" asChild className="w-full text-lg px-8 py-6">
+                  <Link to="/login">{t('landing.heroCta')}</Link>
+                </Button>
+              </motion.div>
             </motion.div>
-
-            <div className="flex justify-center pt-2" aria-hidden="true">
-              <span className="cosmos-scroll-line block h-10 w-px bg-white/40" />
-            </div>
           </div>
         </div>
       </motion.div>

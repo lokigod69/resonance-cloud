@@ -114,15 +114,15 @@ body:has(.theme-cosmos) {
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 12%,
-    black 88%,
+    black 16%,
+    black 84%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 12%,
-    black 88%,
+    black 16%,
+    black 84%,
     transparent 100%
   );
 }
@@ -131,13 +131,13 @@ body:has(.theme-cosmos) {
   mask-image: linear-gradient(
     to bottom,
     black 0%,
-    black 88%,
+    black 84%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
     black 0%,
-    black 88%,
+    black 84%,
     transparent 100%
   );
 }
@@ -146,13 +146,13 @@ body:has(.theme-cosmos) {
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 12%,
+    black 16%,
     black 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 12%,
+    black 16%,
     black 100%
   );
 }
@@ -177,41 +177,6 @@ body:has(.theme-cosmos) {
 
 .theme-cosmos .hero-word-cool {
   background-image: linear-gradient(to right, var(--m-cool) 0%, #ffffff 70%);
-}
-
-.theme-cosmos .cosmos-scroll-line {
-  animation: cosmos-scroll-line 2s ease-in-out infinite;
-  transform-origin: top;
-}
-
-@keyframes cosmos-scroll-line {
-  0% {
-    opacity: 1;
-    transform: scaleY(0);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-
-  75% {
-    opacity: 0;
-    transform: scaleY(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: scaleY(1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .theme-cosmos .cosmos-scroll-line {
-    animation: none;
-    opacity: 0.6;
-    transform: scaleY(1);
-  }
 }
 
 .theme-cosmos ::selection {
