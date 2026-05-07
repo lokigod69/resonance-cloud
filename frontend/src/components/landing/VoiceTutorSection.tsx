@@ -8,8 +8,13 @@ export default function VoiceTutorSection() {
   const { t } = useLandingLocale()
 
   return (
-    <section className="bg-[#0c0d14] py-24 px-6">
-      <div className="max-w-4xl mx-auto flex flex-col items-center">
+    <section className="relative overflow-hidden bg-[var(--app-bg)] py-24 px-6">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-[0.85]"
+        style={{ backgroundImage: "url('/brand/cosmos/cosmos-tutor.webp')" }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
 
         {/* Header text */}
         <ScrollReveal className="text-center mb-12">
@@ -23,19 +28,19 @@ export default function VoiceTutorSection() {
 
         {/* Phone mockup */}
         <ScrollReveal delay={0.15} direction="blur" className="w-full">
-          <div className="max-w-sm mx-auto rounded-[2.5rem] border border-white/10 bg-[#0a0b12] p-2 shadow-2xl shadow-black/50">
-            <div className="rounded-[2rem] overflow-hidden bg-[#0c0d14] flex flex-col h-[560px] md:h-[600px]">
+          <div className="max-w-sm mx-auto rounded-[2.5rem] border border-[#F24F13]/25 bg-[#09060d] p-2 shadow-2xl shadow-black/60">
+            <div className="rounded-[2rem] overflow-hidden bg-[#0b0710] flex flex-col h-[560px] md:h-[600px]">
 
               {/* Mock header — matches Speak.tsx conversation header */}
-              <div className="flex items-center gap-3 px-4 py-3 border-b border-white/5 bg-gray-950 shrink-0">
-                <div className="p-2 rounded-lg text-gray-600">
+              <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-[#08060c] shrink-0">
+                <div className="p-2 rounded-lg text-white/45">
                   <ChevronLeft className="h-5 w-5" />
                 </div>
                 <div className="flex items-center gap-2 flex-1">
                   <FlagIcon code={TUTOR_MOCK_LANGUAGE.code} className="w-7 h-auto" />
                   <span className="text-sm font-medium text-white">{TUTOR_MOCK_LANGUAGE.label}</span>
                 </div>
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-gray-600">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-xs text-white/55">
                   <RotateCcw className="h-3.5 w-3.5" />
                   New Chat
                 </div>
@@ -51,8 +56,8 @@ export default function VoiceTutorSection() {
                     <div
                       className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                         msg.role === 'user'
-                          ? 'bg-cyan-900/50 text-white rounded-br-sm'
-                          : 'bg-gray-800/60 text-gray-100 rounded-bl-sm'
+                          ? 'bg-[#F24F13]/25 border border-[#F24F13]/35 text-white rounded-br-sm shadow-[0_0_18px_rgba(242,79,19,0.18)]'
+                          : 'bg-[#46334F]/45 border border-white/10 text-white/85 rounded-bl-sm'
                       }`}
                     >
                       {msg.text}
@@ -62,11 +67,11 @@ export default function VoiceTutorSection() {
               </div>
 
               {/* Mock footer — matches Speak.tsx idle mic state */}
-              <div className="shrink-0 border-t border-white/5 bg-gray-950 px-4 py-5">
-                <p className="text-xs text-gray-500 text-center mb-3">Tap and hold to speak</p>
+              <div className="shrink-0 border-t border-white/10 bg-[#08060c] px-4 py-5">
+                <p className="text-xs text-white/45 text-center mb-3">Tap and hold to speak</p>
                 <div className="flex justify-center">
-                  <div className="w-16 h-16 rounded-full bg-gray-800 flex items-center justify-center">
-                    <Mic className="h-7 w-7 text-gray-300" />
+                  <div className="w-16 h-16 rounded-full border border-[#F24F13]/50 bg-[#F24F13]/20 flex items-center justify-center shadow-[0_0_32px_rgba(242,79,19,0.48)]">
+                    <Mic className="h-7 w-7 text-white" />
                   </div>
                 </div>
               </div>
@@ -85,7 +90,7 @@ export default function VoiceTutorSection() {
             ].map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/50"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#46334F]/35 border border-[#F24F13]/20 text-xs text-white/65"
               >
                 <Icon className="h-3.5 w-3.5" />
                 {label}

@@ -70,7 +70,15 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-[#0a0a14]">
+    <div
+      className="theme-cosmos min-h-screen flex flex-col items-center justify-center bg-[var(--app-bg)] p-4"
+      style={{
+        backgroundImage: "url('/brand/cosmos/cosmos-auth.webp')",
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+      }}
+    >
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2 mb-8">
         <img src="/favicon.svg" alt="Resonance" className="h-8 w-8" />
@@ -80,7 +88,7 @@ export default function Login() {
       <Card className="w-full max-w-md glass border-border">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
-            {isSignUp ? 'Create your account' : 'Welcome back'}
+            {isSignUp ? 'Create your account' : <>Welcome <span className="text-[var(--accent)]">back</span></>}
           </CardTitle>
           <CardDescription>
             {isSignUp ? 'Start learning with AI music videos' : 'Sign in to your account'}
@@ -89,7 +97,7 @@ export default function Login() {
         <CardContent>
           {/* Google OAuth first — primary action */}
           <Button
-            variant="outline"
+            variant="glass-vermillion"
             className="w-full mb-4"
             onClick={handleGoogleLogin}
             disabled={loading}
@@ -112,7 +120,7 @@ export default function Login() {
                 fill="#EA4335"
               />
             </svg>
-            Continue with Google
+            <span>Continue with Google</span>
           </Button>
 
           <div className="relative my-6">
@@ -154,7 +162,7 @@ export default function Login() {
               <p className="text-sm text-muted-foreground">{message}</p>
             )}
 
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button type="submit" variant="glass-vermillion" className="w-full" disabled={loading}>
               {loading ? 'Please wait...' : isSignUp ? 'Create Account' : 'Sign In'}
             </Button>
           </form>

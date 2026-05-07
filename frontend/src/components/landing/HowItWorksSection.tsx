@@ -23,7 +23,7 @@ export default function HowItWorksSection() {
   ]
 
   return (
-    <section className="py-32 px-6 bg-[#0c0d14]">
+    <section className="py-32 px-6 bg-[var(--app-bg)]">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <ScrollReveal className="text-center mb-20">

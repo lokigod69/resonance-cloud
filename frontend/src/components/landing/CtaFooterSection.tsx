@@ -10,7 +10,7 @@ export default function CtaFooterSection() {
   const { t } = useLandingLocale()
 
   return (
-    <section className="py-16 md:py-32 px-6 text-center bg-[#0a0b12]">
+    <section className="py-16 md:py-32 px-6 text-center bg-[var(--app-bg)]">
       {/* CTA */}
       <ScrollReveal direction="blur" className="max-w-2xl mx-auto mb-24">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">
@@ -23,14 +23,14 @@ export default function CtaFooterSection() {
           className="inline-block rounded-md"
           animate={reducedMotion ? {} : {
             boxShadow: [
-              '0 0 20px oklch(0.5 0.15 280 / 0.2)',
-              '0 0 40px oklch(0.5 0.15 280 / 0.4)',
-              '0 0 20px oklch(0.5 0.15 280 / 0.2)',
+              '0 0 20px var(--cta-glow)',
+              '0 0 40px var(--cta-glow-strong)',
+              '0 0 20px var(--cta-glow)',
             ],
           }}
           transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
         >
-          <Button size="lg" asChild className="text-lg px-8 py-6">
+          <Button variant="glass-vermillion" size="lg" asChild className="text-lg px-8 py-6">
             <Link to="/login?mode=signup">
               <Sparkles className="h-5 w-5 mr-2" />
               {t('landing.cta')}

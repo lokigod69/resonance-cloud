@@ -21,9 +21,9 @@ export default function WaveformDivider() {
       >
         <defs>
           <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#a855f7" />
-            <stop offset="50%" stopColor="#ec4899" />
-            <stop offset="100%" stopColor="#3b82f6" />
+            <stop offset="0%" stopColor="var(--waveform-low, #a855f7)" />
+            <stop offset="50%" stopColor="var(--waveform-mid, #ec4899)" />
+            <stop offset="100%" stopColor="var(--waveform-low, #3b82f6)" />
           </linearGradient>
           <filter id="waveGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
@@ -47,6 +47,7 @@ export default function WaveformDivider() {
           {BAR_HEIGHTS.map((h, i) => {
             const halfH = h * MAX_HALF_HEIGHT
             const x = 7 + i * BAR_SPACING
+            const fill = h >= 0.95 ? 'var(--waveform-peak, #ec4899)' : 'url(#waveGradient)'
             return (
               <g
                 key={i}
@@ -64,7 +65,7 @@ export default function WaveformDivider() {
                   width={BAR_WIDTH}
                   height={halfH}
                   rx={BAR_WIDTH / 2}
-                  fill="url(#waveGradient)"
+                  fill={fill}
                 />
                 {/* Bar going down */}
                 <rect
@@ -73,7 +74,7 @@ export default function WaveformDivider() {
                   width={BAR_WIDTH}
                   height={halfH}
                   rx={BAR_WIDTH / 2}
-                  fill="url(#waveGradient)"
+                  fill={fill}
                 />
               </g>
             )

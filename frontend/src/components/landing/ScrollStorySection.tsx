@@ -120,7 +120,7 @@ export default function ScrollStorySection() {
   return (
     <section
       ref={containerRef}
-      style={{ height: '550vh', background: '#0c0d14' }}
+      style={{ height: '550vh', background: 'var(--app-bg)' }}
     >
       {/* Sticky viewport — stays pinned while container scrolls past */}
       <div style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>

@@ -80,7 +80,7 @@ export default function DemoReelSection() {
   }
 
   return (
-    <section className="py-24 px-6 bg-[#0d0e16]">
+    <section className="py-24 px-6 bg-[var(--app-bg)]">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <ScrollReveal className="text-center mb-14">

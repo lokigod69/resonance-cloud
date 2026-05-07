@@ -26,9 +26,6 @@ const D_DE3 = '3c060627-befa-4337-a51e-ceb127c9d284'  // U2 German: ferkelchen
 const D_EN2 = '5944c032-2c2d-4ed4-93ff-95db27a092a8'  // U1 English: garbage-truck
 const D_FR3 = '0437adf6-91ed-4d8f-9172-ae37e66c0a6a'  // U1 French: oublier
 
-// TODO: Consider a more abstract/atmospheric hero video without large in-video text
-export const HERO_VIDEO_URL = vid(U2, D_FR2, 'riviere')
-
 export const DEMO_WORDS: { word: string; translation: string; language: DemoLanguage; thumbnail: string; videoUrl: string }[] = [
   { word: 'ciel', translation: 'sky', language: 'French', thumbnail: thumb(U2, D_FR2, 'ciel'), videoUrl: vid(U2, D_FR2, 'ciel') },
   { word: 'Fuchs', translation: 'fox', language: 'German', thumbnail: thumb(U1, D_DE1, 'fuchs'), videoUrl: vid(U1, D_DE1, 'fuchs') },
@@ -63,6 +60,8 @@ const LANDING_ORDER = [
   'Korean',
 ]
 
+const COSMOS_LANGUAGE_COLOR = '#46334F'
+
 export const LANGUAGES: { label: string; code: string; color: string }[] =
   LANDING_ORDER
     .map((name) => LANDING_LANGUAGES.find((l) => l.value === name))
@@ -70,7 +69,7 @@ export const LANGUAGES: { label: string; code: string; color: string }[] =
     .map((l) => ({
       label: l.value,
       code: l.code,
-      color: l.landingColor ?? '#6b7280',
+      color: COSMOS_LANGUAGE_COLOR,
     }))
 
 export const TUTOR_MOCK_CONVERSATION = [

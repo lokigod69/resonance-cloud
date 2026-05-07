@@ -23,7 +23,7 @@ export default function LanguagesSection() {
   const { t } = useLandingLocale()
 
   return (
-    <section className="py-24 px-6 text-center bg-[#0d0e16]">
+    <section className="py-24 px-6 text-center bg-[var(--app-bg)]">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <ScrollReveal className="mb-12">
@@ -52,7 +52,7 @@ export default function LanguagesSection() {
               }}
             >
               <div className="mb-2"><FlagIcon code={lang.code} className="w-12 h-auto" /></div>
-              <p className="text-sm font-medium" style={{ color: lang.color }}>
+              <p className="text-sm font-medium text-white/75">
                 {t(`langName.${lang.label}`)}
               </p>
             </motion.div>

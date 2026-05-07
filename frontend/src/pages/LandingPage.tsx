@@ -3,37 +3,33 @@ import ScrollStorySection from '@/components/landing/ScrollStorySection'
 import VoiceTutorSection from '@/components/landing/VoiceTutorSection'
 import LanguagesSection from '@/components/landing/LanguagesSection'
 import CtaFooterSection from '@/components/landing/CtaFooterSection'
-import { HERO_VIDEO_URL } from '@/components/landing/landingData'
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen text-foreground overflow-x-clip">
-      {/* Layer 1: Fixed video background — stays behind everything */}
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-slate-900 via-slate-950 to-black">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          onLoadedMetadata={(e) => { (e.target as HTMLVideoElement).currentTime = 3 }}
-          className="w-full h-full object-cover opacity-60"
-        >
-          <source src={HERO_VIDEO_URL} type="video/mp4" />
-        </video>
+    <div className="theme-cosmos min-h-screen overflow-x-clip bg-[var(--app-bg)] text-foreground">
+      {/* Layer 1: Fixed image background */}
+      <div className="fixed inset-0 z-0 bg-[var(--app-bg)]">
+        <div
+          className="h-full w-full bg-cover bg-center opacity-[0.85]"
+          style={{ backgroundImage: "url('/brand/cosmos/cosmos-hero.webp')" }}
+        />
       </div>
 
-      {/* Layer 2: Hero — transparent, parallax text + vignette over video */}
+      {/* Layer 2: Hero - transparent, parallax text over image */}
       <div className="relative z-10">
         <HeroSection />
       </div>
 
-      {/* Spacer: video fully visible for a moment before sections cover it */}
+      {/* Spacer: image fully visible before sections cover it */}
       <div className="relative z-10 h-[25vh]" />
 
-      {/* Layer 3: Opaque sections scroll up over the fixed video */}
+      {/* Layer 3: Opaque sections scroll up over the fixed image */}
       <div className="relative z-20">
-        {/* Gradient fade from transparent → section bg for smooth transition */}
-        <div className="h-16 bg-gradient-to-b from-transparent to-[#0d0e16]" />
+        {/* Gradient fade from transparent to section bg for smooth transition */}
+        <div
+          className="h-16"
+          style={{ background: 'linear-gradient(to bottom, transparent, var(--app-bg))' }}
+        />
         <ScrollStorySection />
         <VoiceTutorSection />
         <LanguagesSection />

@@ -8,11 +8,21 @@ export default function HeroSection() {
   const reducedMotion = useReducedMotion()
   const { scrollY } = useScroll()
   const { t } = useLandingLocale()
+  const headlineWord = t('landing.headlineWord')
+  const headlineMelody = t('landing.headlineMelody')
+  const headlineMotion = t('landing.headlineMotion')
+
+  const renderAccentInitial = (value: string) => (
+    <>
+      <span className="text-[var(--accent)]">{value.slice(0, 1)}</span>
+      {value.slice(1)}
+    </>
+  )
 
   // Scroll-driven parallax: text floats up and fades
   const textY = useTransform(scrollY, [0, 500], [0, -200])
   const textOpacity = useTransform(scrollY, [0, 400], [1, 0])
-  // Backdrop fades faster — reveals video before text disappears
+  // Backdrop fades faster to leave the image unobstructed before text disappears
   const backdropOpacity = useTransform(scrollY, [0, 300], [1, 0])
 
   const fadeUp = (delay: number) =>
@@ -28,9 +38,9 @@ export default function HeroSection() {
     ? {}
     : {
         boxShadow: [
-          '0 0 20px oklch(0.5 0.15 280 / 0.2)',
-          '0 0 40px oklch(0.5 0.15 280 / 0.4)',
-          '0 0 20px oklch(0.5 0.15 280 / 0.2)',
+          '0 0 20px var(--cta-glow)',
+          '0 0 40px var(--cta-glow-strong)',
+          '0 0 20px var(--cta-glow)',
         ],
       }
 
@@ -50,34 +60,32 @@ export default function HeroSection() {
         className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center z-20"
       >
         <div className="relative">
-          {/* Frosted backdrop — fades independently from text, revealing video on scroll */}
+          {/* Transparent holder preserves the existing scroll fade timing */}
           <motion.div
             className="absolute -inset-x-16 -inset-y-12 rounded-[3rem]"
             style={{
               opacity: reducedMotion ? 1 : backdropOpacity,
-              background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.60) 40%, rgba(0,0,0,0.25) 70%, transparent 100%)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
+              background: 'transparent',
             }}
           />
 
           <div className="relative z-10 max-w-3xl space-y-8 px-4">
             {/* Headline — stacked typography */}
             <motion.h1 {...fadeUp(0)} className="flex flex-col items-center text-center gap-0">
-              <span className="font-display text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-purple-400 via-purple-300 to-purple-400">
-                {t('landing.headlineWord')}
+              <span className="font-display text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]">
+                {renderAccentInitial(headlineWord)}
               </span>
               <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
                 {t('landing.headlineBy')}
               </span>
-              <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-purple-300 via-blue-300 to-blue-400">
-                {t('landing.headlineMelody')}
+              <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]">
+                {renderAccentInitial(headlineMelody)}
               </span>
               <span className="text-xs sm:text-sm font-light text-white/40 -my-1 sm:-my-2">
                 {t('landing.headlineAnd')}
               </span>
-              <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-blue-400 via-blue-300 to-blue-400">
-                {t('landing.headlineMotion')}
+              <span className="font-display text-5xl sm:text-6xl md:text-7xl font-bold lowercase tracking-tight text-white drop-shadow-[0_3px_24px_rgba(0,0,0,0.45)]">
+                {renderAccentInitial(headlineMotion)}
               </span>
             </motion.h1>
 
@@ -105,7 +113,7 @@ export default function HeroSection() {
                   animate={ctaGlow}
                   transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
                 >
-                  <Button size="lg" asChild className="w-full text-lg px-8 py-6 sm:w-[180px]">
+                  <Button variant="glass-vermillion" size="lg" asChild className="w-full text-lg px-8 py-6 sm:w-[180px]">
                     <Link to="/login">{t('landing.signIn')}</Link>
                   </Button>
                 </motion.div>
@@ -114,7 +122,7 @@ export default function HeroSection() {
                   animate={ctaGlow}
                   transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' as const }}
                 >
-                  <Button size="lg" asChild className="w-full text-lg px-8 py-6 sm:w-[180px]">
+                  <Button variant="glass-vermillion" size="lg" asChild className="w-full text-lg px-8 py-6 sm:w-[180px]">
                     <Link to="/login?mode=signup">{t('landing.signUp')}</Link>
                   </Button>
                 </motion.div>
