@@ -1,4 +1,5 @@
 import { useRef, useState, useCallback, useEffect, useMemo } from 'react'
+import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
 
 export interface MusicTrack {
   id: string
@@ -28,6 +29,72 @@ export function trackHasAudio(track: Pick<MusicTrack, 'suno_storage_url' | 'suno
 function getTrackAudioUrl(track: Pick<MusicTrack, 'suno_storage_url' | 'suno_audio_url'>): string | null {
   return track.suno_storage_url ?? track.suno_audio_url
 }
+
+function getTrackMediaTitle(track: MusicTrack): string {
+  return track.word
+}
+
+function getTrackMediaArtist(track: MusicTrack): string {
+  return compactMusicCaptionSegment(resolveTrackMusicCaption(track))
+    ?? track.translation
+    ?? 'Resonance'
+}
+
+function getTrackMediaAlbum(track: MusicTrack): string {
+  return track.deckName || 'Resonance'
+}
+
+function getTrackMediaArtwork(track: MusicTrack): MediaImage[] {
+  if (!track.thumbnail_url) return []
+  return [{ src: track.thumbnail_url, type: 'image/jpeg' }]
+}
+
+function hasMediaSession(): boolean {
+  return typeof navigator !== 'undefined' && 'mediaSession' in navigator
+}
+
+function setMediaSessionPlaybackState(state: 'playing' | 'paused' | 'none') {
+  if (!hasMediaSession()) return
+  try {
+    navigator.mediaSession.playbackState = state
+  } catch {
+    // Some Safari builds expose partial MediaSession support.
+  }
+}
+
+function clearMediaSessionPosition() {
+  if (!hasMediaSession() || typeof navigator.mediaSession.setPositionState !== 'function') return
+  try {
+    navigator.mediaSession.setPositionState({})
+  } catch {
+    // Invalid or partial platform state should not affect playback.
+  }
+}
+
+function updateMediaSessionPositionForAudio(audio: HTMLAudioElement | null) {
+  if (!hasMediaSession() || typeof navigator.mediaSession.setPositionState !== 'function') return
+  if (!audio || !Number.isFinite(audio.duration) || audio.duration <= 0) return
+
+  const duration = audio.duration
+  const position = Math.max(0, Math.min(audio.currentTime, duration))
+  const playbackRate = audio.playbackRate || 1
+  try {
+    navigator.mediaSession.setPositionState({ duration, position, playbackRate })
+  } catch {
+    // Safari can throw if position state becomes invalid during load/seek races.
+  }
+}
+
+const MEDIA_SESSION_ACTIONS = [
+  'play',
+  'pause',
+  'stop',
+  'nexttrack',
+  'previoustrack',
+  'seekbackward',
+  'seekforward',
+  'seekto',
+] as const
 
 function getPlaybackFailureKind(error: unknown): string {
   const name = error instanceof Error ? error.name : 'UnknownError'
@@ -61,6 +128,7 @@ function buildShuffleOrder(length: number): number[] {
 export function useMusicPlayer(tracks: MusicTrack[]) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const gesturePlayedTrackIdRef = useRef<string | null>(null)
+  const lastPositionSyncRef = useRef(0)
 
   // Stable reference — only recomputed when tracks identity changes
   const queue = useMemo(
@@ -82,6 +150,10 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
   const currentTrackId = currentTrack?.id ?? null
   const currentTrackAudioUrl = currentTrack ? getTrackAudioUrl(currentTrack) : null
 
+  const updateMediaSessionPosition = useCallback((audio = audioRef.current) => {
+    updateMediaSessionPositionForAudio(audio)
+  }, [])
+
   // Rebuild shuffle order when queue or shuffle changes
   useEffect(() => {
     if (shuffle) {
@@ -96,6 +168,8 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
     if (!currentTrackId || !currentTrackAudioUrl) {
       audio.src = ''
       setIsPlaying(false)
+      setMediaSessionPlaybackState('none')
+      clearMediaSessionPosition()
       setCurrentTime(0)
       setDuration(0)
       return
@@ -108,12 +182,52 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
     audio.load()
     audio
       .play()
-      .then(() => setIsPlaying(true))
+      .then(() => {
+        setIsPlaying(true)
+        setMediaSessionPlaybackState('playing')
+        updateMediaSessionPosition(audio)
+      })
       .catch((error) => {
         warnPlaybackFailure(currentTrackId, error)
         setIsPlaying(false)
+        setMediaSessionPlaybackState('paused')
       })
-  }, [currentTrackId, currentTrackAudioUrl])
+  }, [currentTrackId, currentTrackAudioUrl, updateMediaSessionPosition])
+
+  useEffect(() => {
+    if (!hasMediaSession()) return
+
+    if (!currentTrack || !getTrackAudioUrl(currentTrack) || currentTrack.error) {
+      navigator.mediaSession.metadata = null
+      setMediaSessionPlaybackState('none')
+      clearMediaSessionPosition()
+      return
+    }
+
+    if (typeof MediaMetadata === 'undefined') return
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: getTrackMediaTitle(currentTrack),
+      artist: getTrackMediaArtist(currentTrack),
+      album: getTrackMediaAlbum(currentTrack),
+      artwork: getTrackMediaArtwork(currentTrack),
+    })
+    updateMediaSessionPosition()
+  }, [
+    currentTrack,
+    currentTrack?.id,
+    currentTrack?.word,
+    currentTrack?.translation,
+    currentTrack?.deckName,
+    currentTrack?.thumbnail_url,
+    currentTrack?.genre,
+    currentTrack?.metadata,
+    currentTrack?.song_generation,
+    currentTrack?.latest_music_job,
+    currentTrack?.error,
+    currentTrackAudioUrl,
+    updateMediaSessionPosition,
+  ])
 
   // Sync volume/mute to audio element
   useEffect(() => {
@@ -130,7 +244,16 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
       const audio = audioRef.current
       if (audio) {
         audio.currentTime = 0
-        audio.play().catch(() => {})
+        audio
+          .play()
+          .then(() => {
+            setMediaSessionPlaybackState('playing')
+            updateMediaSessionPosition(audio)
+          })
+          .catch((error) => {
+            if (currentTrackId) warnPlaybackFailure(currentTrackId, error)
+            setMediaSessionPlaybackState('paused')
+          })
       }
       return
     }
@@ -147,12 +270,13 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
       if (nextIdx >= queue.length) {
         audioRef.current?.pause()
         setIsPlaying(false)
+        setMediaSessionPlaybackState('paused')
         return
       }
     }
 
     setCurrentQueueIdx(nextIdx)
-  }, [queue.length, repeatMode, shuffle, shuffleOrder, currentQueueIdx])
+  }, [queue.length, repeatMode, shuffle, shuffleOrder, currentQueueIdx, currentTrackId, updateMediaSessionPosition])
 
   const play = useCallback(
     (trackId: string) => {
@@ -167,18 +291,23 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
         audio.load()
         audio
           .play()
-          .then(() => setIsPlaying(true))
+          .then(() => {
+            setIsPlaying(true)
+            setMediaSessionPlaybackState('playing')
+            updateMediaSessionPosition(audio)
+          })
           .catch((error) => {
             if (gesturePlayedTrackIdRef.current === track.id) {
               gesturePlayedTrackIdRef.current = null
             }
             warnPlaybackFailure(track.id, error)
             setIsPlaying(false)
+            setMediaSessionPlaybackState('paused')
           })
       }
       setCurrentQueueIdx(idx)
     },
-    [queue],
+    [queue, updateMediaSessionPosition],
   )
 
   const togglePlay = useCallback(() => {
@@ -187,15 +316,22 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
     if (isPlaying) {
       audio.pause()
       setIsPlaying(false)
+      setMediaSessionPlaybackState('paused')
     } else {
       audio
         .play()
-        .then(() => setIsPlaying(true))
+        .then(() => {
+          setIsPlaying(true)
+          setMediaSessionPlaybackState('playing')
+          updateMediaSessionPosition(audio)
+        })
         .catch((error) => {
           warnPlaybackFailure(currentTrack.id, error)
+          setIsPlaying(false)
+          setMediaSessionPlaybackState('paused')
         })
     }
-  }, [isPlaying, currentTrack])
+  }, [isPlaying, currentTrack, updateMediaSessionPosition])
 
   const next = useCallback(() => {
     if (queue.length === 0) return
@@ -217,6 +353,7 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
     // If more than 3s in, restart current track
     if (audio && audio.currentTime > 3) {
       audio.currentTime = 0
+      updateMediaSessionPosition(audio)
       return
     }
     if (queue.length === 0) return
@@ -231,13 +368,14 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
       }
       return prevIdx
     })
-  }, [queue.length, shuffle, shuffleOrder])
+  }, [queue.length, shuffle, shuffleOrder, updateMediaSessionPosition])
 
   const seekTo = useCallback((ratio: number) => {
     const audio = audioRef.current
     if (!audio || !isFinite(audio.duration) || audio.duration === 0) return
     audio.currentTime = ratio * audio.duration
-  }, [])
+    updateMediaSessionPosition(audio)
+  }, [updateMediaSessionPosition])
 
   const setVolume = useCallback((v: number) => {
     setVolumeState(v)
@@ -258,6 +396,7 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
 
   const markError = useCallback(
     (_trackId: string) => {
+      void _trackId
       // Caller (Music.tsx) handles updating the track list
       // Just advance to next
       advanceNext()
@@ -272,20 +411,165 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
 
   const handleTimeUpdate = useCallback(() => {
     const audio = audioRef.current
-    if (audio) setCurrentTime(audio.currentTime)
-  }, [])
+    if (audio) {
+      setCurrentTime(audio.currentTime)
+      const now = performance.now()
+      if (now - lastPositionSyncRef.current >= 1000) {
+        lastPositionSyncRef.current = now
+        updateMediaSessionPosition(audio)
+      }
+    }
+  }, [updateMediaSessionPosition])
 
   const handleLoadedMetadata = useCallback(() => {
     const audio = audioRef.current
-    if (audio) setDuration(audio.duration)
-  }, [])
+    if (audio) {
+      setDuration(audio.duration)
+      updateMediaSessionPosition(audio)
+    }
+  }, [updateMediaSessionPosition])
 
   const handleError = useCallback(() => {
     if (currentTrack) markError(currentTrack.id)
   }, [currentTrack, markError])
 
-  const handlePlay = useCallback(() => setIsPlaying(true), [])
-  const handlePause = useCallback(() => setIsPlaying(false), [])
+  const handlePlay = useCallback(() => {
+    setIsPlaying(true)
+    setMediaSessionPlaybackState('playing')
+    updateMediaSessionPosition()
+  }, [updateMediaSessionPosition])
+  const handlePause = useCallback(() => {
+    setIsPlaying(false)
+    setMediaSessionPlaybackState('paused')
+    updateMediaSessionPosition()
+  }, [updateMediaSessionPosition])
+
+  const mediaSessionHandlersRef = useRef({
+    play,
+    togglePlay,
+    next,
+    prev,
+    seekTo,
+    queue,
+    currentTrack,
+    isPlaying,
+  })
+
+  mediaSessionHandlersRef.current = {
+    play,
+    togglePlay,
+    next,
+    prev,
+    seekTo,
+    queue,
+    currentTrack,
+    isPlaying,
+  }
+
+  useEffect(() => {
+    if (!hasMediaSession()) return
+
+    const registerActionHandler = (
+      action: typeof MEDIA_SESSION_ACTIONS[number],
+      handler: MediaSessionActionHandler,
+    ) => {
+      try {
+        navigator.mediaSession.setActionHandler(action, handler)
+      } catch {
+        // Unsupported actions vary by platform and Safari version.
+      }
+    }
+
+    registerActionHandler('play', () => {
+      const { currentTrack, queue, play } = mediaSessionHandlersRef.current
+      const audio = audioRef.current
+      if (audio && currentTrack) {
+        audio
+          .play()
+          .then(() => {
+            setMediaSessionPlaybackState('playing')
+            updateMediaSessionPositionForAudio(audio)
+          })
+          .catch((error) => {
+            console.warn('[mediasession] play rejected', error)
+            setMediaSessionPlaybackState('paused')
+          })
+        return
+      }
+      const firstTrack = queue[0]
+      if (firstTrack) play(firstTrack.id)
+    })
+
+    registerActionHandler('pause', () => {
+      audioRef.current?.pause()
+      setMediaSessionPlaybackState('paused')
+    })
+
+    registerActionHandler('stop', () => {
+      const audio = audioRef.current
+      if (!audio) return
+      audio.pause()
+      audio.currentTime = 0
+      setCurrentTime(0)
+      updateMediaSessionPositionForAudio(audio)
+      setMediaSessionPlaybackState('paused')
+    })
+
+    registerActionHandler('nexttrack', () => {
+      mediaSessionHandlersRef.current.next()
+    })
+
+    registerActionHandler('previoustrack', () => {
+      mediaSessionHandlersRef.current.prev()
+    })
+
+    registerActionHandler('seekbackward', (details) => {
+      const audio = audioRef.current
+      if (!audio) return
+      audio.currentTime = Math.max(0, audio.currentTime - (details.seekOffset ?? 10))
+      setCurrentTime(audio.currentTime)
+      updateMediaSessionPositionForAudio(audio)
+    })
+
+    registerActionHandler('seekforward', (details) => {
+      const audio = audioRef.current
+      if (!audio) return
+      const nextTime = audio.currentTime + (details.seekOffset ?? 10)
+      audio.currentTime = Number.isFinite(audio.duration)
+        ? Math.min(nextTime, audio.duration)
+        : nextTime
+      setCurrentTime(audio.currentTime)
+      updateMediaSessionPositionForAudio(audio)
+    })
+
+    registerActionHandler('seekto', (details) => {
+      const audio = audioRef.current
+      if (!audio || details.seekTime == null) return
+      const seekTime = Number.isFinite(audio.duration)
+        ? Math.max(0, Math.min(details.seekTime, audio.duration))
+        : Math.max(0, details.seekTime)
+      if (details.fastSeek === true && typeof audio.fastSeek === 'function') {
+        audio.fastSeek(seekTime)
+      } else {
+        audio.currentTime = seekTime
+      }
+      setCurrentTime(seekTime)
+      updateMediaSessionPositionForAudio(audio)
+    })
+
+    return () => {
+      for (const action of MEDIA_SESSION_ACTIONS) {
+        try {
+          navigator.mediaSession.setActionHandler(action, null)
+        } catch {
+          // Ignore unsupported cleanup paths.
+        }
+      }
+      navigator.mediaSession.metadata = null
+      setMediaSessionPlaybackState('none')
+      clearMediaSessionPosition()
+    }
+  }, [])
 
   return {
     audioRef,
