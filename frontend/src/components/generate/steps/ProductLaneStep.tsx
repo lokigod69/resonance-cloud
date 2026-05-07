@@ -16,7 +16,6 @@ interface ProductLaneStepProps {
 interface TileDef {
   value: ProductLane
   label: string
-  helper: string
   cost: string
 }
 
@@ -32,19 +31,16 @@ export default function ProductLaneStep({
     {
       value: 'video',
       label: t('generate.productLane.video.label'),
-      helper: t('generate.productLane.video.helper'),
       cost: t('generate.productLane.video.cost'),
     },
     {
       value: 'card_standard',
       label: t('generate.productLane.standard.label'),
-      helper: t('generate.productLane.standard.helper'),
       cost: t('generate.productLane.standard.cost'),
     },
     {
       value: 'card_premium',
       label: t('generate.productLane.premium.label'),
-      helper: t('generate.productLane.premium.helper'),
       cost: t('generate.productLane.premium.cost'),
     },
   ]

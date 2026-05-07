@@ -135,9 +135,9 @@
 /* Premium visual selectors */
 .premium-product-step,
 .premium-customize-step {
-  --premium-select-accent: #d65a91;
-  --premium-select-accent-2: #9b6cff;
-  --premium-select-glow: rgba(214, 90, 145, 0.28);
+  --premium-select-accent: var(--go-accent, var(--accent, #c65a80));
+  --premium-select-accent-2: var(--accent-2, #9b6cff);
+  --premium-select-glow: var(--accent-glow, color-mix(in srgb, var(--premium-select-accent) 28%, transparent));
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
@@ -343,7 +343,7 @@
 .premium-option-tile[data-tone="video"] .premium-option-orb {
   background:
     radial-gradient(circle at 35% 24%, rgba(255, 255, 255, 0.54), transparent 18%),
-    radial-gradient(circle at 62% 68%, rgba(255, 111, 156, 0.28), transparent 34%),
+    radial-gradient(circle at 62% 68%, color-mix(in srgb, var(--premium-select-accent) 28%, transparent), transparent 34%),
     linear-gradient(145deg, rgba(13, 226, 195, 0.22), rgba(55, 94, 255, 0.1));
 }
 
@@ -360,7 +360,7 @@
   background:
     radial-gradient(circle at 35% 24%, rgba(255, 255, 255, 0.58), transparent 18%),
     radial-gradient(circle at 58% 62%, rgba(255, 207, 112, 0.24), transparent 36%),
-    linear-gradient(145deg, rgba(13, 226, 195, 0.18), rgba(255, 111, 156, 0.12));
+    linear-gradient(145deg, rgba(13, 226, 195, 0.18), color-mix(in srgb, var(--premium-select-accent) 12%, transparent));
 }
 
 .premium-option-tile[data-tone="exaggerated"] .premium-option-orb,
@@ -368,7 +368,7 @@
 .premium-option-tile[data-tone="split"] .premium-option-orb {
   background:
     radial-gradient(circle at 35% 24%, rgba(255, 255, 255, 0.52), transparent 18%),
-    radial-gradient(circle at 68% 64%, rgba(255, 111, 156, 0.24), transparent 35%),
+    radial-gradient(circle at 68% 64%, color-mix(in srgb, var(--premium-select-accent) 24%, transparent), transparent 35%),
     linear-gradient(145deg, rgba(116, 236, 246, 0.14), rgba(255, 197, 89, 0.1));
 }
 
@@ -409,8 +409,8 @@
 }
 
 .premium-quick-panel {
-  --premium-select-accent: #d65a91;
-  --premium-select-glow: rgba(214, 90, 145, 0.28);
+  --premium-select-accent: var(--go-accent, var(--accent, #c65a80));
+  --premium-select-glow: var(--accent-glow, color-mix(in srgb, var(--premium-select-accent) 28%, transparent));
   width: min(100%, 580px);
   display: flex;
   flex-direction: column;

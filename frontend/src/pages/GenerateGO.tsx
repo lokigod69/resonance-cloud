@@ -744,7 +744,6 @@ export default function GenerateGO() {
                     onClick={() => handleLyricModeSelect(opt.value)}
                   >
                     <span className="gen-orb-label">{t(`generate.niveau.${opt.key}`)}</span>
-                    <span style={{ display: 'block', fontSize: '0.7rem', opacity: 0.6, marginTop: 2 }}>{t(`generate.niveau.${opt.key}Desc`)}</span>
                   </div>
                 ))}
               </div>

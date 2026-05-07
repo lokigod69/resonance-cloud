@@ -679,14 +679,13 @@ function StepNiveau({
               transition={{ delay: i * 0.05, type: 'spring', stiffness: 300, damping: 25 }}
               onClick={() => dispatch({ type: 'SET_LYRIC_MODE', mode: opt.value })}
               className={`pg-glass rounded-2xl px-5 py-3 text-left transition-all ${
-                isSelected ? 'shadow-[0_0_20px_rgba(13,226,195,0.2)]' : 'hover:shadow-[0_0_15px_rgba(13,226,195,0.1)]'
+                isSelected ? 'shadow-[0_0_20px_var(--accent-glow)]' : 'hover:shadow-[0_0_15px_var(--accent-glow)]'
               }`}
-              style={{ borderColor: isSelected ? 'var(--pg-accent-teal)' : undefined, minWidth: 160 }}
+              style={{ borderColor: isSelected ? 'var(--accent)' : undefined, minWidth: 112 }}
             >
-              <p className={`font-display font-semibold ${isSelected ? 'text-[var(--pg-accent-teal)]' : 'text-foreground'}`}>
+              <p className={`text-center font-display font-semibold ${isSelected ? 'text-[var(--accent)]' : 'text-foreground'}`}>
                 {t(`generate.niveau.${opt.key}`)}
               </p>
-              <p className="text-xs text-[var(--pg-text-dim)]">{t(`generate.niveau.${opt.key}Desc`)}</p>
             </motion.button>
           )
         })}

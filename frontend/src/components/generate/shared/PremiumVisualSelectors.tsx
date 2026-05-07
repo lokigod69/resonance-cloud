@@ -1,5 +1,5 @@
-import type { LucideIcon } from 'lucide-react'
-import { BookOpen, Clapperboard, Columns2, FileText, KeyRound, Lightbulb, Music2, PanelsTopLeft, Sparkles, Type, WandSparkles, Zap } from 'lucide-react'
+import type { ComponentType } from 'react'
+import { BookOpen, Columns2, FileText, KeyRound, Lightbulb, Music2, PanelsTopLeft, Sparkles, Type, WandSparkles, Zap } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
   MEANING_STRATEGY_UI_LABELS,
@@ -16,6 +16,8 @@ import type {
   ProductLane,
 } from '../useWizardState'
 
+type PremiumVisualIcon = ComponentType<{ className?: string; strokeWidth?: number }>
+
 interface PremiumOptionTileProps<T extends string> {
   value: T
   label: string
@@ -23,7 +25,7 @@ interface PremiumOptionTileProps<T extends string> {
   meta?: string
   selected: boolean
   onSelect: (value: T) => void
-  icon?: LucideIcon
+  icon?: PremiumVisualIcon
   imageSrc?: string
   tone?: string
   variant?: 'standard' | 'product' | 'style'
@@ -75,15 +77,39 @@ export function PremiumOptionTile<T extends string>({
 }
 
 interface ProductLaneVisualSelectorProps {
-  options: Array<{ value: ProductLane; label: string; helper: string; cost: string }>
+  options: Array<{ value: ProductLane; label: string; cost: string }>
   selected: ProductLane | null
   onSelect: (value: ProductLane) => void
 }
 
-const PRODUCT_ICONS: Record<ProductLane, LucideIcon> = {
+function PremiumCardVisualIcon({ className, strokeWidth = 1.8 }: { className?: string; strokeWidth?: number }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 64 64"
+      fill="none"
+      aria-hidden="true"
+    >
+      <g
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={strokeWidth}
+      >
+        <rect x="17" y="19" width="31" height="20" rx="4" transform="rotate(-7 17 19)" />
+        <rect x="13" y="25" width="34" height="22" rx="4" />
+        <path d="M20 33h20" opacity="0.72" />
+        <path d="M20 40h12" opacity="0.52" />
+        <path d="M49 15l2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4z" />
+      </g>
+    </svg>
+  )
+}
+
+const PRODUCT_ICONS: Record<ProductLane, PremiumVisualIcon> = {
   video: Music2,
   card_standard: BookOpen,
-  card_premium: Clapperboard,
+  card_premium: PremiumCardVisualIcon,
 }
 
 export function ProductLaneVisualSelector({
@@ -98,7 +124,6 @@ export function ProductLaneVisualSelector({
           key={option.value}
           value={option.value}
           label={option.label}
-          helper={option.helper}
           meta={option.cost}
           selected={selected === option.value}
           onSelect={onSelect}
@@ -119,14 +144,14 @@ interface PremiumVisualSelectorProps<T extends CardLayer2MeaningStrategy | CardL
   kind: 'meaning' | 'presentation'
 }
 
-const MEANING_ICONS: Record<CardLayer2MeaningStrategy, LucideIcon> = {
+const MEANING_ICONS: Record<CardLayer2MeaningStrategy, PremiumVisualIcon> = {
   clear_meaning: Lightbulb,
   exaggerated_meaning: Zap,
   absurd_hook: WandSparkles,
   sound_mnemonic: KeyRound,
 }
 
-const PRESENTATION_ICONS: Record<CardLayer2PresentationForm, LucideIcon> = {
+const PRESENTATION_ICONS: Record<CardLayer2PresentationForm, PremiumVisualIcon> = {
   single_scene: PanelsTopLeft,
   mini_story: BookOpen,
   split_panel: Columns2,
