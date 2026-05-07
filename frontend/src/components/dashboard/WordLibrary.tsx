@@ -93,7 +93,7 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
               <button
                 key={word.id}
                 onClick={() => onWordClick(word)}
-                className="theme-card min-h-[64px] rounded-xl hover:bg-[var(--surface-glass-strong)] px-4 py-3 flex items-center gap-3 transition-colors cursor-pointer text-left"
+                className="theme-card min-h-[64px] rounded-xl hover:bg-[var(--surface-glass-strong)] px-4 py-3 flex items-center gap-x-4 transition-colors cursor-pointer text-left"
               >
                 {word.thumbnail_url ? (
                   <img
@@ -110,7 +110,7 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
                   {word.word}
                 </span>
                 {word.translation && (
-                  <span className="text-sm text-muted-foreground flex-shrink-0 max-w-[45%] text-right break-words">
+                  <span className="text-sm text-muted-foreground min-w-0 max-w-[45%] text-right break-words line-clamp-2">
                     {word.translation}
                   </span>
                 )}
