@@ -49,10 +49,6 @@
   --glassy-header-height: 4rem;
   --glassy-header-offset: calc(var(--app-safe-top) + var(--glassy-header-height));
   --deck-footer-space: calc(var(--app-safe-bottom) + 5.5rem);
-  /* Top edge of the mobile glassy lyrics slot. Sits below the orb
-     visualizer area so the lyrics panel never overlaps it; the bottom
-     edge is anchored above the player controls (see LyricsSheet.tsx). */
-  --glassy-lyrics-mobile-top: calc(var(--glassy-header-offset) + 17rem);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -96,7 +92,6 @@
   :root {
     --glassy-header-height: 5rem;
     --deck-footer-space: calc(var(--app-safe-bottom) + 6.5rem);
-    --glassy-lyrics-mobile-top: calc(var(--glassy-header-offset) + 19rem);
   }
 }
 
