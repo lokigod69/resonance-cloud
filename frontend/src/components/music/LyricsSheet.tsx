@@ -11,6 +11,7 @@ import {
 } from '@/lib/musicLyrics'
 import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 
 type MusicLyricsRow = {
   id: string | null
@@ -86,6 +87,8 @@ export function LyricsSheet({
     error: null,
   })
   const [translationView, setTranslationView] = useState<'original' | 'translation'>('original')
+
+  useBodyScrollLock(open)
 
   useEffect(() => {
     if (!open || !track) {
@@ -279,6 +282,7 @@ export function LyricsSheet({
         >
           <div
             data-lyrics-scroll-body
+            data-body-scroll-lock-scrollable="true"
             className="h-full max-h-[min(56dvh,36rem)] min-h-[min(38dvh,22rem)] overflow-y-auto overscroll-contain flex justify-center px-2 py-6 sm:max-h-[min(58dvh,38rem)] [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: 'none' }}
           >
@@ -416,6 +420,7 @@ export function LyricsSheet({
             <div className="relative flex min-h-0 flex-1">
               <div
                 data-lyrics-scroll-shell
+                data-body-scroll-lock-scrollable="true"
                 className="min-h-0 flex-1 overflow-y-auto overscroll-contain [&::-webkit-scrollbar]:hidden"
                 style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
               >
