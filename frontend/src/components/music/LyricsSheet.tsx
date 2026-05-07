@@ -312,6 +312,22 @@ export function LyricsSheet({
     return <p className="py-8 text-sm text-muted-foreground">{t('music.lyrics.empty')}</p>
   }
 
+  function renderStatusShell(extraClassName = '') {
+    const shellModifier = variant === 'glassy' ? 'lyrics-shell--glassy' : 'lyrics-shell--classic'
+    return (
+      <section
+        className={[
+          'lyrics-shell',
+          shellModifier,
+          'pointer-events-auto flex min-h-0 min-w-0 flex-col items-center justify-center',
+          extraClassName,
+        ].filter(Boolean).join(' ')}
+      >
+        {renderStatusBody()}
+      </section>
+    )
+  }
+
   if (variant === 'glassy') {
     if (!open) return null
 
@@ -335,22 +351,30 @@ export function LyricsSheet({
           {hasTranslation
             ? renderLyricsPanel(t('music.lyrics.translation'), displayTranslation, 'lg:col-start-1')
             : null}
-          <div className="lg:col-start-2" aria-hidden />
+          {hasTranslation || displayOriginal ? <div className="lg:col-start-2" aria-hidden /> : null}
           {displayOriginal
             ? renderLyricsPanel(t('music.lyrics.original'), displayOriginal, 'lg:col-start-3')
-            : (
-              <div className="pointer-events-auto lg:col-start-3">
-                {renderStatusBody()}
-              </div>
-            )}
+            : renderStatusShell('lg:col-start-2')}
           {renderGlassyCloseButton('right-6 top-20')}
         </div>
 
-        <div
-          className="lyrics-shell lyrics-shell--glassy pointer-events-auto fixed inset-x-3 z-40 flex flex-col lg:hidden"
+        <button
+          type="button"
+          onClick={() => onOpenChange(false)}
+          className="pointer-events-auto absolute left-0 right-0 z-30 bg-black/60 backdrop-blur-sm lg:hidden"
           style={{
-            top: 'var(--glassy-lyrics-mobile-top)',
+            top: 'var(--glassy-header-offset)',
             bottom: 'calc(5.75rem + env(safe-area-inset-bottom, 0px))',
+          }}
+          aria-label="Close"
+        />
+
+        <div
+          className="lyrics-shell lyrics-shell--glassy pointer-events-auto absolute inset-x-3 z-40 flex flex-col lg:hidden"
+          style={{
+            position: 'absolute',
+            top: 'calc(var(--glassy-header-offset) + 1rem)',
+            bottom: 'calc(5.75rem + env(safe-area-inset-bottom, 0px) + 1rem)',
           }}
         >
           <div className="mb-3 flex items-center justify-between gap-3 pr-10">
@@ -407,7 +431,11 @@ export function LyricsSheet({
                 aria-hidden
               />
             </div>
-          ) : renderStatusBody()}
+          ) : (
+            <div className="flex min-h-0 flex-1 items-center justify-center">
+              {renderStatusBody()}
+            </div>
+          )}
           {renderGlassyCloseButton('right-3 top-3')}
         </div>
       </div>
