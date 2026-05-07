@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import asyncio
 import sys
+import time
 import types
 from pathlib import Path
 
@@ -490,3 +491,80 @@ def test_failed_gpt_card_retry_reentry_uses_card_model_without_upstream(monkeypa
     assert f.upstream_queue.qsize() == 0
     assert f.video_queue.qsize() == 0
     state.drop_timer(word["id"])
+
+
+def test_card_worker_render_timeout_returns_failure_without_upload(monkeypatch, tmp_path):
+    from cloud_engines.image_engine.card_models import CardImageResult
+    from src.orchestration.card_worker import CardWorker
+
+    sb = FakeSupabase()
+    _add_deck(sb, deck_id="deck-card", deck_type="card")
+    word = sb.add_word(
+        id="word-timeout-card",
+        deck_id="deck-card",
+        generation_job_id="job-card",
+        current_stage="pending_image",
+        status="processing",
+        stage_attempts=1,
+        total_stage_attempts=1,
+        word_slug="hello",
+    )
+    _install_card_worker_stubs(
+        monkeypatch,
+        tmp_path,
+        settings={
+            "images": {
+                "card_image_model": "gpt_image_2",
+                "card_image_style": "Photorealistic",
+            },
+        },
+    )
+    monkeypatch.setenv("CARD_IMAGE_RENDER_TIMEOUT_SECONDS", "0.01")
+
+    image_path = tmp_path / "slow-card.png"
+
+    def _slow_generate_card_image(_payload):
+        time.sleep(0.05)
+        image_path.write_bytes(b"png")
+        return CardImageResult(status="success", image_path=str(image_path))
+
+    upload_calls: list[str] = []
+    import cloud_engines.image_engine.card_engine as card_engine
+    import src.orchestration.card_worker as card_worker
+
+    monkeypatch.setattr(card_engine, "generate_card_image", _slow_generate_card_image)
+    monkeypatch.setattr(card_worker, "write_event_row", lambda **_kw: None)
+
+    worker = CardWorker(sb, card_queue=asyncio.Queue(maxsize=1))
+
+    async def _upload(*_args, **_kwargs):
+        upload_calls.append("upload")
+        return "https://example.invalid/slow-card.png", None
+
+    monkeypatch.setattr(worker, "_upload_card_image", _upload)
+
+    ok, error = _run(worker._generate_card_image(
+        dict(word),
+        {
+            "word_slug": "hello",
+            "word_dir": tmp_path,
+            "manifest": types.SimpleNamespace(
+                word_original="hello",
+                translation="hola",
+                language="Spanish",
+                language_code="es",
+                enrichment=types.SimpleNamespace(),
+            ),
+            "settings": {
+                "images": {
+                    "card_image_model": "gpt_image_2",
+                    "card_image_style": "Photorealistic",
+                },
+            },
+        },
+    ))
+
+    assert ok is False
+    assert error is not None
+    assert "timed out" in error.lower()
+    assert upload_calls == []

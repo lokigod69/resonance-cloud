@@ -46,6 +46,19 @@ BANNED_VISIBLE_TERMS = (
     "Museum Exhibit V1",
 )
 
+INTERNAL_SAFETY_VISIBLE_PHRASES = (
+    "no invented facts",
+    "keine erfundenen fakten",
+    "no invented quotes",
+    "keine erfundenen zitate",
+    "no fake mnemonics",
+    "keine erfundenen mnemonics",
+    "keine erfundenen mnemonik",
+    "mnemonotechniken",
+    "internal rule",
+    "safety instruction",
+)
+
 
 @dataclass(frozen=True)
 class InfographicTemplate:
@@ -374,6 +387,7 @@ def compile_infographic_prompt(
         f"All explanatory text, panel headers, captions, labels, and descriptions must be in {base_language}.",
         f"Only the target word, target-language forms, and target-language example sentences may appear in {target_language}.",
         "Never invent fake facts. Never invent quotes. Never invent etymologies. Never invent mnemonics. If a mnemonic is weak, omit it.",
+        "Internal safety rules are instructions only and must not be rendered as card text.",
         "Do not render internal engineering labels, model names, backend names, enum values, prompt labels, version labels, or implementation terms in the visible image.",
         f"Visual anchor: {_clean(plan.get('visual_anchor')) or 'a central word-specific visual anchor'}.",
     ]
@@ -381,11 +395,15 @@ def compile_infographic_prompt(
         lines.append(f"Honour the planner-chosen hero treatment: {hero}.")
     lines.extend(["Planned panels:", panels])
     footer = _clean(plan.get("footer_line"))
-    if footer:
+    if footer and not _is_internal_safety_text(footer):
         lines.append(f"Footer line: {footer}")
-    avoid = _list_text(plan.get("avoid"))
+    avoid = _list_text(
+        item
+        for item in _iter_list_items(plan.get("avoid"))
+        if not _is_internal_safety_text(item)
+    )
     if avoid:
-        lines.append(f"Also avoid: {avoid}.")
+        lines.append(f"Internal negative constraints, not visible text: {avoid}.")
     lines.extend(
         [
             template.compiler_instruction,
@@ -549,8 +567,16 @@ def _panel_lines(value: Any) -> str:
         if not isinstance(raw, Mapping):
             continue
         header = _clean(raw.get("header")) or f"Panel {index}"
-        text = _list_text(raw.get("text"))
+        if _is_internal_safety_text(header):
+            header = f"Panel {index}"
+        text = _list_text(
+            item
+            for item in _iter_list_items(raw.get("text"))
+            if not _is_internal_safety_text(item)
+        )
         visual_note = _clean(raw.get("visual_note"))
+        if _is_internal_safety_text(visual_note):
+            visual_note = ""
         line = f"- {header}: {text or 'short base-language teaching text'}"
         if visual_note:
             line += f" Visual note: {visual_note}"
@@ -561,7 +587,25 @@ def _panel_lines(value: Any) -> str:
 def _list_text(value: Any) -> str:
     if isinstance(value, list):
         return "; ".join(_clean(item) for item in value if _clean(item))
+    if not isinstance(value, (str, bytes, Mapping)):
+        try:
+            return "; ".join(_clean(item) for item in value if _clean(item))
+        except TypeError:
+            pass
     return _clean(value)
+
+
+def _iter_list_items(value: Any):
+    if isinstance(value, list):
+        return value
+    if value is None:
+        return []
+    return [value]
+
+
+def _is_internal_safety_text(value: Any) -> bool:
+    text = _clean(value).lower()
+    return any(phrase in text for phrase in INTERNAL_SAFETY_VISIBLE_PHRASES)
 
 
 def _compact_json_preview(value: Mapping[str, Any]) -> str:

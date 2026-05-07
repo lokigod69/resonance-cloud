@@ -11,6 +11,7 @@ if str(ORCH_ROOT) not in sys.path:
     sys.path.insert(0, str(ORCH_ROOT))
 
 from tests.fake_supabase import FakeSupabase  # noqa: E402
+from src.orchestration import feeder  # noqa: E402
 from src.orchestration.finalizer import Finalizer  # noqa: E402
 
 
@@ -98,3 +99,68 @@ def test_finalizer_legacy_null_generation_job_id_falls_back_to_deck_scope():
     assert row["status"] == "complete"
     assert row["words_completed"] == 1
     assert sb._tables["decks"][0]["status"] == "complete"
+
+
+def test_finalizer_fails_one_word_job_when_status_failed_but_stage_stuck_active():
+    sb = FakeSupabase()
+    sb._tables["decks"].append({"id": "deck-1", "status": "generating"})
+    job = sb.add_job(id="job-stuck", deck_id="deck-1", status="processing")
+    sb.add_word(
+        id="word-stuck",
+        deck_id="deck-1",
+        generation_job_id=job["id"],
+        current_stage="pending_image",
+        status="failed",
+        failed_stage="pending_image",
+    )
+
+    _run(Finalizer(sb)._maybe_finalize_job(dict(job)))
+
+    row = sb._tables["generation_jobs"][0]
+    assert row["status"] == "failed"
+    assert row["words_completed"] == 0
+    assert row["words_failed"] == 1
+    assert sb._tables["decks"][0]["status"] == "failed"
+
+
+def test_same_deck_approved_job_can_start_after_prior_failed_card_job_finalizes():
+    sb = FakeSupabase()
+    sb._tables["decks"].append({"id": "deck-1", "deck_type": "card", "status": "generating"})
+    j1 = sb.add_job(id="job-1", deck_id="deck-1", status="processing")
+    j2 = sb.add_job(id="job-2", deck_id="deck-1", status="approved")
+    sb.add_word(
+        id="word-failed",
+        deck_id="deck-1",
+        generation_job_id=j1["id"],
+        current_stage="pending_image",
+        status="failed",
+        failed_stage="pending_image",
+    )
+    sb.add_word(
+        id="word-waiting",
+        deck_id="deck-1",
+        generation_job_id=j2["id"],
+        current_stage="pre_bootstrap",
+        status="pending",
+    )
+    bootstrap_calls: list[str] = []
+
+    async def _bootstrap(job):
+        bootstrap_calls.append(job["id"])
+
+    f = feeder.Feeder(
+        sb,
+        upstream_queue=asyncio.Queue(maxsize=8),
+        video_queue=asyncio.Queue(maxsize=8),
+        post_video_queue=asyncio.Queue(maxsize=8),
+        card_queue=asyncio.Queue(maxsize=8),
+        bootstrap=_bootstrap,
+    )
+
+    _run(Finalizer(sb)._maybe_finalize_job(dict(j1)))
+    _run(f._source1_new_jobs())
+
+    jobs = {row["id"]: row for row in sb._tables["generation_jobs"]}
+    assert jobs[j1["id"]]["status"] == "failed"
+    assert jobs[j2["id"]]["status"] == "processing"
+    assert bootstrap_calls == [j2["id"]]

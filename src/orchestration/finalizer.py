@@ -202,10 +202,23 @@ class Finalizer:
 
 
 def _effective_word_stages(words: list[dict[str, Any]]) -> list[str]:
-    """Use current_stage when present; legacy rows fall back to status."""
+    """Resolve word terminality from both stage and status.
+
+    Normal rows keep current_stage and status aligned. Live repair paths can
+    leave a terminal status behind an active current_stage; in that inconsistent
+    shape the terminal status must win so one stuck word cannot hold the
+    same-deck generation lock forever.
+    """
     effective: list[str] = []
     for word in words:
         stage = word.get("current_stage")
         status = word.get("status")
-        effective.append(stage if stage is not None else (status or "pending"))
+        if stage in _TERMINAL_WORD_STAGES:
+            effective.append(stage)
+        elif status == "complete":
+            effective.append("complete")
+        elif status == "failed":
+            effective.append("failed")
+        else:
+            effective.append(stage if stage is not None else (status or "pending"))
     return effective

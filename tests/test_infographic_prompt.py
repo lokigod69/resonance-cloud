@@ -109,6 +109,63 @@ def test_compiler_output_has_infographic_requirements_without_internal_labels():
         assert term.lower() not in lower
 
 
+def test_compiler_keeps_safety_rules_internal_and_out_of_visible_content():
+    prompt = compile_infographic_prompt(
+        content=_content(),
+        infographic_template="infographic_language_atlas_v2",
+        plan={
+            "title": "threshold",
+            "translation": "Schwelle",
+            "base_language": "German",
+            "target_language": "English",
+            "visual_anchor": "a semantic doorway map",
+            "panels": [
+                {
+                    "header": "Keine erfundenen Fakten",
+                    "text": [
+                        "Keine erfundenen Zitate, Etymologien oder Mnemonotechniken.",
+                        "Use this reliable visible explanation instead.",
+                    ],
+                    "visual_note": "No fake mnemonics panel",
+                },
+                {
+                    "header": "Grenze",
+                    "text": ["Der Punkt, an dem ein neuer Bereich beginnt."],
+                    "visual_note": "doorway line",
+                },
+            ],
+            "footer_line": "Keine erfundenen Fakten, Zitate, Etymologien oder Mnemonotechniken.",
+            "avoid": [
+                "No invented facts",
+                "Keine erfundenen Fakten",
+                "No invented quotes",
+                "Keine erfundenen Zitate",
+                "No fake mnemonics",
+                "internal rule",
+                "safety instruction",
+            ],
+        },
+    )
+
+    lowered = prompt.lower()
+    internal_instruction = (
+        "internal safety rules are instructions only and must not be rendered as card text"
+    )
+    assert internal_instruction in lowered
+    visible_prompt = lowered.replace(internal_instruction, "")
+    for forbidden in (
+        "No invented facts",
+        "Keine erfundenen Fakten",
+        "No invented quotes",
+        "Keine erfundenen Zitate",
+        "No fake mnemonics",
+        "internal rule",
+        "safety instruction",
+    ):
+        assert forbidden.lower() not in visible_prompt
+    assert "Der Punkt, an dem ein neuer Bereich beginnt." in prompt
+
+
 def test_v2_compiler_includes_hero_treatment_anti_pattern_and_footer_requirement():
     plan = {
         **_plan(),

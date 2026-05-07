@@ -250,7 +250,7 @@ def test_recovered_pending_image_overflow_is_queueable_by_feeder_source3():
     assert queued_ids == {first["id"], second["id"]}
 
 
-def test_pending_image_with_existing_thumbnail_is_not_reset_or_queued():
+def test_pending_image_with_existing_thumbnail_completes_without_regenerating():
     sb = FakeSupabase()
     sb.add_job(deck_id="deck-card", status="processing")
     sb.add_word(
@@ -270,16 +270,15 @@ def test_pending_image_with_existing_thumbnail_is_not_reset_or_queued():
     ))
 
     row = sb._tables["words"][0]
-    assert row["current_stage"] == "pending_image"
-    assert row["status"] == "processing"
-    assert row["stage_attempts"] == 1
-    assert row["stage_started_at"] == "2026-05-06T11:32:10+00:00"
+    assert row["current_stage"] == "complete"
+    assert row["status"] == "complete"
+    assert row["stage_attempts"] == 0
     assert row["thumbnail_url"] == "https://example.invalid/card.png"
     assert c.qsize() == 0
     assert up.qsize() == v.qsize() == pv.qsize() == 0
 
 
-def test_infographic_pending_image_with_existing_output_is_not_reset_or_queued():
+def test_infographic_pending_image_with_existing_output_completes_without_regenerating():
     sb = FakeSupabase()
     sb.add_job(deck_id="deck-card", status="processing")
     sb.add_word(
@@ -309,10 +308,9 @@ def test_infographic_pending_image_with_existing_output_is_not_reset_or_queued()
     ))
 
     row = sb._tables["words"][0]
-    assert row["current_stage"] == "pending_image"
-    assert row["status"] == "processing"
-    assert row["stage_attempts"] == 1
-    assert row["stage_started_at"] == "2026-05-06T11:32:10+00:00"
+    assert row["current_stage"] == "complete"
+    assert row["status"] == "complete"
+    assert row["stage_attempts"] == 0
     assert row["image_url"] == "https://example.invalid/infographic.png"
     assert row["metadata"]["layer2_eval"]["infographic_template"] == "infographic_museum_exhibit_v2"
     assert c.qsize() == 0

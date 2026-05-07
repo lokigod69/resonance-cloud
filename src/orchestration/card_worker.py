@@ -10,6 +10,7 @@ from __future__ import annotations
 import asyncio
 from datetime import datetime, timezone
 import logging
+import os
 from pathlib import Path
 import time
 from typing import Any
@@ -20,6 +21,7 @@ from . import retry, state
 
 log = logging.getLogger(__name__)
 MAX_ERROR_MESSAGE_CHARS = 500
+DEFAULT_CARD_IMAGE_RENDER_TIMEOUT_SECONDS = 360.0
 
 
 def _card_image_storage_key(*, user_id: str, deck_id: str, word_slug: str) -> str:
@@ -43,6 +45,15 @@ def _card_generation_error_message(message: str) -> str:
     else:
         step = "card image generation"
     return _bounded_error_message(step, message)
+
+
+def _card_image_render_timeout_seconds() -> float:
+    raw = os.getenv("CARD_IMAGE_RENDER_TIMEOUT_SECONDS", "")
+    try:
+        value = float(raw)
+    except (TypeError, ValueError):
+        return DEFAULT_CARD_IMAGE_RENDER_TIMEOUT_SECONDS
+    return value if value > 0 else DEFAULT_CARD_IMAGE_RENDER_TIMEOUT_SECONDS
 
 
 class CardWorker:
@@ -429,7 +440,36 @@ class CardWorker:
             ),
         )
 
-        result = await asyncio.to_thread(generate_card_image, payload)
+        timeout_seconds = _card_image_render_timeout_seconds()
+        loop = asyncio.get_running_loop()
+        render_future = loop.run_in_executor(None, generate_card_image, payload)
+        try:
+            result = await asyncio.wait_for(
+                render_future,
+                timeout=timeout_seconds,
+            )
+        except asyncio.TimeoutError:
+            render_future.cancel()
+            error_message = _bounded_error_message(
+                "card image generation",
+                f"timed out after {timeout_seconds:.1f}s",
+            )
+            write_event_row(
+                stage="pending_image",
+                sub_step="generate_card_image",
+                status="failed",
+                event_source="orchestrator",
+                word_id=word.get("id"),
+                deck_id=word.get("deck_id"),
+                user_id=word.get("user_id"),
+                job_id=word.get("generation_job_id"),
+                attempt=word.get("stage_attempts"),
+                error_message=error_message,
+                error_type="TimeoutError",
+                metadata={"timeout_seconds": timeout_seconds},
+            )
+            log.error("card_worker: card image generation timed out word=%s", word.get("id"))
+            return False, error_message
         if result.status != "success" or not result.image_path:
             message = result.error.message if result.error else "unknown card image error"
             log.warning("card_worker: card image generation failed word=%s: %s", word.get("id"), message)

@@ -185,12 +185,28 @@ async def _revert_active_words(sb) -> dict[str, list[dict[str, Any]]]:
             continue  # Handled in _revert_enrichment_jobs
         if stage == "pending_image" and _has_card_output(word):
             # If output was already persisted but the worker crashed before
-            # pending_image -> complete, do not regenerate and overwrite it.
-            # A later, explicit output-finalization recovery should complete
-            # this row from the existing artifact instead.
+            # pending_image -> complete, finish the row from the existing
+            # artifact. Do not requeue it, or the card worker may regenerate
+            # and overwrite a good paid image.
+            ok = await state.transition_stage(
+                sb,
+                word["id"],
+                new_stage="complete",
+                allowed_prior=["pending_image"],
+                increment_attempts=False,
+            )
+            if ok:
+                word["current_stage"] = "complete"
+                word["status"] = "complete"
+                word["stage_attempts"] = 0
+            else:
+                log.warning(
+                    "recovery: pending_image output finalization rejected for word=%s",
+                    word.get("id"),
+                )
             log.info(
                 "recovery: pending_image word=%s already has card output; "
-                "leaving active for non-regenerating recovery",
+                "completed without regeneration",
                 word.get("id"),
             )
             continue
