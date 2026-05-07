@@ -1118,7 +1118,7 @@ function StepReview({
   ]
 
   return (
-    <div className="w-full max-w-lg mx-auto mt-8">
+    <div className="w-full max-w-3xl mx-auto mt-8">
       <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight mb-10 text-center text-foreground drop-shadow-md italic">
         {t('generate.synthesisReady')}
       </h2>
