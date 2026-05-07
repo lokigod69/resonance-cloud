@@ -5,8 +5,7 @@ import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Coins, User, Shield, LayoutDashboard, Library, Sparkles, BookOpen, Music, Mic } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
-import ProfileModal from '@/components/ProfileModal'
+import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
 
 export default function PolishGlassLayout() {
@@ -14,9 +13,8 @@ export default function PolishGlassLayout() {
   const { profile, profileLoading } = useAuth()
   const avatarUrl = useProfileAvatarUrl(profile?.avatar_path, profile?.avatar_updated_at)
   const { t } = useTranslation()
+  const { setProfileOpen, setRedeemOpen } = useDialogs()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [redeemOpen, setRedeemOpen] = useState(false)
-  const [profileOpen, setProfileOpen] = useState(false)
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -207,8 +205,6 @@ export default function PolishGlassLayout() {
         <Outlet />
       </main>
 
-      <RedeemCodeDialog open={redeemOpen} onOpenChange={setRedeemOpen} />
-      <ProfileModal open={profileOpen} onOpenChange={setProfileOpen} />
     </div>
   )
 }

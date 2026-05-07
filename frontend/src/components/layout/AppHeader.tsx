@@ -28,8 +28,7 @@ import {
   Mic,
   Beaker,
 } from 'lucide-react'
-import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
-import ProfileModal from '@/components/ProfileModal'
+import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
 
 const adminNav = [
@@ -49,9 +48,8 @@ export function AppHeader() {
   const { t } = useTranslation()
   const location = useLocation()
   const isAdmin = profile?.role === 'admin'
+  const { setProfileOpen, setRedeemOpen } = useDialogs()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [redeemOpen, setRedeemOpen] = useState(false)
-  const [profileOpen, setProfileOpen] = useState(false)
 
   const mainNav = [
     { to: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
@@ -215,8 +213,6 @@ export function AppHeader() {
         </Button>
       </div>
 
-      <RedeemCodeDialog open={redeemOpen} onOpenChange={setRedeemOpen} />
-      <ProfileModal open={profileOpen} onOpenChange={setProfileOpen} />
     </header>
   )
 }

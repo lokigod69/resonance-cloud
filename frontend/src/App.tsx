@@ -3,10 +3,13 @@ import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { SkinProvider, useSkin } from '@/contexts/SkinContext'
 import { LanguageProvider } from '@/contexts/LanguageContext'
+import { DialogProvider, useDialogs } from '@/contexts/DialogContext'
 import { ToastProvider } from '@/components/Toast'
 import { AppLayout } from '@/components/layout/AppLayout'
 import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
 import FerrariAdminLayout from '@/layouts/FerrariAdminLayout'
+import ProfileModal from '@/components/ProfileModal'
+import { RedeemCodeDialog } from '@/components/RedeemCodeDialog'
 import LandingPage from '@/pages/LandingPage'
 import Login from '@/pages/Login'
 import Onboarding from '@/pages/Onboarding'
@@ -189,6 +192,16 @@ function AppRoutes() {
   )
 }
 
+function AppShellDialogs() {
+  const { profileOpen, setProfileOpen, redeemOpen, setRedeemOpen } = useDialogs()
+  return (
+    <>
+      <ProfileModal open={profileOpen} onOpenChange={setProfileOpen} />
+      <RedeemCodeDialog open={redeemOpen} onOpenChange={setRedeemOpen} />
+    </>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -197,7 +210,10 @@ export default function App() {
       <ToastProvider>
       <AuthProvider>
         <LanguageProvider>
-          <AppRoutes />
+          <DialogProvider>
+            <AppRoutes />
+            <AppShellDialogs />
+          </DialogProvider>
         </LanguageProvider>
       </AuthProvider>
       </ToastProvider>
