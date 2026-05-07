@@ -1,7 +1,7 @@
-import { Music, SkipBack, SkipForward, Play, Pause, Repeat, Repeat1, Shuffle } from 'lucide-react'
+import { FileText, Music, SkipBack, SkipForward, Play, Pause, Repeat, Repeat1, Shuffle } from 'lucide-react'
 import { VolumeControl } from '@/components/VolumeControl'
 import { SimulatedWaveform } from './SimulatedWaveform'
-import type { MusicTrack, RepeatMode } from '@/hooks/useMusicPlayer'
+import { trackHasAudio, type MusicTrack, type RepeatMode } from '@/hooks/useMusicPlayer'
 import type { MouseEvent, PointerEvent, RefObject, TouchEvent } from 'react'
 import {
   PLAYER_ACTIVE_TOGGLE_CLASS,
@@ -36,6 +36,8 @@ interface PlayerBarProps {
   onToggleMute: () => void
   onCycleRepeat: () => void
   onToggleShuffle: () => void
+  onToggleLyrics?: () => void
+  lyricsOpen?: boolean
   onEnded: () => void
   onTimeUpdate: () => void
   onLoadedMetadata: () => void
@@ -62,6 +64,8 @@ export function PlayerBar({
   onToggleMute,
   onCycleRepeat,
   onToggleShuffle,
+  onToggleLyrics,
+  lyricsOpen = false,
   onEnded,
   onTimeUpdate,
   onLoadedMetadata,
@@ -73,6 +77,8 @@ export function PlayerBar({
 
   const RepeatIcon = repeatMode === 'one' ? Repeat1 : Repeat
   const seekDisabled = !currentTrack || duration <= 0
+  const showLyricsButton = Boolean(onToggleLyrics)
+  const lyricsDisabled = !currentTrack || !trackHasAudio(currentTrack)
 
   const seekFromClientX = (clientX: number, target: HTMLDivElement) => {
     if (seekDisabled) return
@@ -284,6 +290,21 @@ export function PlayerBar({
         >
           <RepeatIcon size={14} />
         </button>
+
+        {showLyricsButton && (
+          <button
+            onClick={onToggleLyrics}
+            disabled={lyricsDisabled}
+            className={`w-8 h-8 ${PLAYER_SOFT_ICON_BUTTON_CLASS} ${
+              lyricsOpen ? PLAYER_ACTIVE_TOGGLE_CLASS : PLAYER_INACTIVE_TOGGLE_CLASS
+            }`}
+            aria-pressed={lyricsOpen}
+            aria-label="Lyrics"
+            title="Lyrics"
+          >
+            <FileText size={14} />
+          </button>
+        )}
 
         <VolumeControl
           volume={volume}

@@ -402,7 +402,6 @@ export default function Music() {
                 isPlaying={player.isPlaying && player.currentTrack?.id === track.id}
                 onClick={() => player.play(track.id)}
                 onGenerateSong={() => setSongModalTrack(track)}
-                onShowLyrics={() => { player.play(track.id); setLyricsOpen(true) }}
                 isGeneratingSong={songStatusMap.has(track.id)}
                 generationStatus={songStatusMap.get(track.id)}
               />
@@ -431,6 +430,8 @@ export default function Music() {
         onToggleMute={player.toggleMute}
         onCycleRepeat={player.cycleRepeat}
         onToggleShuffle={player.toggleShuffle}
+        onToggleLyrics={() => setLyricsOpen((open) => !open)}
+        lyricsOpen={lyricsOpen}
         onEnded={player.handleEnded}
         onTimeUpdate={player.handleTimeUpdate}
         onLoadedMetadata={player.handleLoadedMetadata}
