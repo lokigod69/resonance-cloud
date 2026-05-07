@@ -18,6 +18,8 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        "glass-vermillion":
+          "glass-vermillion relative isolate overflow-hidden border text-[var(--glass-vermillion-fg,#fff)] backdrop-blur-md hover:text-[var(--glass-vermillion-fg,#fff)]",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
