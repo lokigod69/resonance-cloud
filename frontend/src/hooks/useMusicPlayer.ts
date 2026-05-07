@@ -25,6 +25,30 @@ export function trackHasAudio(track: Pick<MusicTrack, 'suno_storage_url' | 'suno
   return !!(track.suno_storage_url ?? track.suno_audio_url) && !track.error
 }
 
+function getTrackAudioUrl(track: Pick<MusicTrack, 'suno_storage_url' | 'suno_audio_url'>): string | null {
+  return track.suno_storage_url ?? track.suno_audio_url
+}
+
+function getPlaybackFailureKind(error: unknown): string {
+  const name = error instanceof Error ? error.name : 'UnknownError'
+  if (name === 'NotAllowedError') return 'not-allowed'
+  if (name === 'NetworkError') return 'network'
+  if (name === 'NotSupportedError') return 'codec-or-source-unsupported'
+  if (name === 'AbortError') return 'aborted'
+  return 'playback-failed'
+}
+
+function warnPlaybackFailure(trackId: string, error: unknown) {
+  const name = error instanceof Error ? error.name : 'UnknownError'
+  const message = error instanceof Error ? error.message : String(error)
+  console.warn('[useMusicPlayer] audio playback failed', {
+    trackId,
+    kind: getPlaybackFailureKind(error),
+    name,
+    message,
+  })
+}
+
 function buildShuffleOrder(length: number): number[] {
   const arr = Array.from({ length }, (_, i) => i)
   for (let i = arr.length - 1; i > 0; i--) {
@@ -36,6 +60,7 @@ function buildShuffleOrder(length: number): number[] {
 
 export function useMusicPlayer(tracks: MusicTrack[]) {
   const audioRef = useRef<HTMLAudioElement>(null)
+  const gesturePlayedTrackIdRef = useRef<string | null>(null)
 
   // Stable reference — only recomputed when tracks identity changes
   const queue = useMemo(
@@ -54,6 +79,8 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
   const [duration, setDuration] = useState(0)
 
   const currentTrack = currentQueueIdx !== null ? queue[currentQueueIdx] ?? null : null
+  const currentTrackId = currentTrack?.id ?? null
+  const currentTrackAudioUrl = currentTrack ? getTrackAudioUrl(currentTrack) : null
 
   // Rebuild shuffle order when queue or shuffle changes
   useEffect(() => {
@@ -66,18 +93,27 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
-    const audioUrl = currentTrack?.suno_storage_url ?? currentTrack?.suno_audio_url
-    if (!audioUrl) {
+    if (!currentTrackId || !currentTrackAudioUrl) {
       audio.src = ''
       setIsPlaying(false)
       setCurrentTime(0)
       setDuration(0)
       return
     }
-    audio.src = audioUrl
+    if (gesturePlayedTrackIdRef.current === currentTrackId) {
+      gesturePlayedTrackIdRef.current = null
+      return
+    }
+    audio.src = currentTrackAudioUrl
     audio.load()
-    audio.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false))
-  }, [currentTrack?.id])
+    audio
+      .play()
+      .then(() => setIsPlaying(true))
+      .catch((error) => {
+        warnPlaybackFailure(currentTrackId, error)
+        setIsPlaying(false)
+      })
+  }, [currentTrackId, currentTrackAudioUrl])
 
   // Sync volume/mute to audio element
   useEffect(() => {
@@ -122,6 +158,24 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
     (trackId: string) => {
       const idx = queue.findIndex((t) => t.id === trackId)
       if (idx === -1) return
+      const track = queue[idx]
+      const audioUrl = getTrackAudioUrl(track)
+      const audio = audioRef.current
+      if (audioUrl && audio) {
+        gesturePlayedTrackIdRef.current = track.id
+        audio.src = audioUrl
+        audio.load()
+        audio
+          .play()
+          .then(() => setIsPlaying(true))
+          .catch((error) => {
+            if (gesturePlayedTrackIdRef.current === track.id) {
+              gesturePlayedTrackIdRef.current = null
+            }
+            warnPlaybackFailure(track.id, error)
+            setIsPlaying(false)
+          })
+      }
       setCurrentQueueIdx(idx)
     },
     [queue],
@@ -134,7 +188,12 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
       audio.pause()
       setIsPlaying(false)
     } else {
-      audio.play().then(() => setIsPlaying(true)).catch(() => {})
+      audio
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch((error) => {
+          warnPlaybackFailure(currentTrack.id, error)
+        })
     }
   }, [isPlaying, currentTrack])
 
