@@ -132,11 +132,7 @@ def build_layer2_visual_plan(
         plan["word_design_brief"] = brief
         plan["word_design_mode"] = brief["word_design_mode"]
         plan["text_embedding_mode"] = brief["word_design_mode"]
-        plan["image_scene"] = (
-            "Word as design: "
-            f"{brief['primary_subject']} {brief['material_logic']} "
-            f"Keep the word as the primary subject; use {brief['background_context']} only as background context."
-        )
+        plan["image_scene"] = _word_design_scene(brief)
         return plan
 
     if presentation_form == "infographic_card":
@@ -338,6 +334,20 @@ def _word_design_brief(
         "material_logic": material,
         "background_context": _clean(context) or "simple meaning context",
     }
+
+
+def _word_design_scene(brief: Mapping[str, str]) -> str:
+    lines = ["Word as design:"]
+    primary = _clean(brief.get("primary_subject"))
+    material = _clean(brief.get("material_logic"))
+    context = _clean(brief.get("background_context"))
+    if primary:
+        lines.append(f"Subject: {primary}")
+    if material:
+        lines.append(f"Material logic: {material}")
+    if context:
+        lines.append(f"Background context only: {context}")
+    return "\n".join(lines)
 
 
 def _word_design_mode(*, word: str, translation: str, pos: str | None) -> str:

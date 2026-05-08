@@ -215,13 +215,15 @@ def _structured_layer2_scene(
         context = _clean(word_design_brief.get("background_context"))
         pieces = [
             "Word as design:",
-            primary,
-            material,
-            "The target word must be central to the composition, not a small label.",
         ]
+        if primary:
+            pieces.append(f"Subject: {primary}")
+        if material:
+            pieces.append(f"Material logic: {material}")
+        pieces.append("The target word must be central to the composition, not a small label.")
         if context:
-            pieces.append(f"Use {context} only as background context.")
-        return _clean(" ".join(piece for piece in pieces if piece))
+            pieces.append(f"Background context only: {context}")
+        return " ".join(piece for piece in pieces if piece)
 
     if isinstance(mini_story_beats, list) and mini_story_beats:
         beats = [_clean(beat) for beat in mini_story_beats if _clean(beat)]

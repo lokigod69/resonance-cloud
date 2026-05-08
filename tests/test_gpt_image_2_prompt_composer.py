@@ -433,6 +433,33 @@ def test_layer2_word_design_brief_prioritizes_word_subject():
     assert "never write the direct answer/translation" in prompt
 
 
+def test_layer2_word_design_brief_sections_multisentence_context():
+    german_context = (
+        "Ein gemütlicher Innenhof eines Cafés, abends. "
+        "Warme Lichter hängen über den Tischen."
+    )
+    prompt = _prompt(
+        word="vibe",
+        translation="Stimmung / Atmosphäre",
+        card_image_style="realistic",
+        image_bridge='Memory logic: make "vibe" the visual subject.',
+        word_design_brief={
+            "word_design_mode": "word_as_matter",
+            "primary_subject": "The word VIBE is visibly readable as a large physical typographic object.",
+            "material_logic": "Build the letters from physical material tied to Stimmung / Atmosphäre.",
+            "background_context": german_context,
+        },
+        allow_target_word_in_prompt=True,
+        layer2_planning_version="layer2_planning_v1",
+    )
+
+    assert "Subject: The word VIBE is visibly readable" in prompt
+    assert "Material logic: Build the letters from physical material tied to Stimmung / Atmosphäre." in prompt
+    assert f"Background context only: {german_context}" in prompt
+    assert "Use Ein gemütlicher" not in prompt
+    assert "only as background context" not in prompt
+
+
 def test_layer2_prompt_cleanup_repairs_broken_target_stripping_fragments():
     prompt = _prompt(
         word="viral",

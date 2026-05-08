@@ -113,7 +113,64 @@ def test_word_object_design_prioritizes_typographic_brief_and_mode():
     assert result["word_design_mode"] in {"environmental_typography", "word_as_matter"}
     assert result["word_design_brief"]["primary_subject"].startswith("The word FREEDOM")
     assert result["image_scene"].startswith("Word as design:")
-    assert "primary subject" in result["image_scene"]
+    assert "Subject: The word FREEDOM" in result["image_scene"]
+    assert "Background context only:" in result["image_scene"]
+
+
+def test_word_object_design_scene_sections_multisentence_l1_context():
+    german_context = (
+        "Ein gemütlicher Innenhof eines Cafés, abends. "
+        "Warme Lichter hängen über den Tischen."
+    )
+    result = build_layer2_visual_plan(
+        {**BASE_PLAN, "image_scene": german_context},
+        card_layer2={
+            "meaning_strategy": "clear_meaning",
+            "presentation_form": "word_object_design",
+            "visual_intensity": "balanced",
+        },
+        word="vibe",
+        translation="Stimmung / Atmosphäre",
+        bridge_mnemonic="",
+        etymology="",
+        pos="noun",
+    )
+
+    assert result["word_design_brief"]["background_context"] == german_context
+    assert result["image_scene"].splitlines() == [
+        "Word as design:",
+        "Subject: The word VIBE is visibly readable as a large physical typographic object.",
+        "Material logic: Build the letters from physical material tied to Stimmung / Atmosphäre.",
+        f"Background context only: {german_context}",
+    ]
+    assert "use Ein gemütlicher" not in result["image_scene"]
+    assert "only as background context" not in result["image_scene"]
+
+
+def test_word_object_design_scene_sections_english_context():
+    english_context = "A quiet studio desk with paper scraps and warm lamplight."
+    result = build_layer2_visual_plan(
+        {**BASE_PLAN, "image_scene": english_context},
+        card_layer2={
+            "meaning_strategy": "clear_meaning",
+            "presentation_form": "word_object_design",
+            "visual_intensity": "balanced",
+        },
+        word="glow",
+        translation="a soft shine",
+        bridge_mnemonic="",
+        etymology="",
+        pos="verb",
+    )
+
+    assert result["image_scene"].splitlines() == [
+        "Word as design:",
+        "Subject: The word GLOW is visibly readable as a large physical typographic object.",
+        "Material logic: Form the letters from environmental elements such as light, shadows, paths, wind, or broken objects.",
+        f"Background context only: {english_context}",
+    ]
+    assert "use A quiet studio" not in result["image_scene"]
+    assert "only as background context" not in result["image_scene"]
 
 
 def test_mnemonic_hook_wordplay_bridge_for_disease():
