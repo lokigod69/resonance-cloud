@@ -13,14 +13,16 @@ import {
   cardLayer2MeaningLabel,
   cardLayer2PresentationLabel,
   computeCreditCost,
+  DEFAULT_PREMIUM_INFOGRAPHIC_STYLE,
   isCardLane,
   isCardLayer2ArtStyle,
   isStandardCardImageStyle,
   laneToCardImageModel,
+  premiumInfographicStyleLabel,
   premiumQuickModeLabel,
   useWizardState,
 } from '@/components/generate/useWizardState'
-import type { ExistingDeck, PremiumQuickMode, ProductLane, WizardState } from '@/components/generate/useWizardState'
+import type { ExistingDeck, PremiumInfographicStyle, PremiumQuickMode, ProductLane, WizardState } from '@/components/generate/useWizardState'
 import ProductLaneStep from '@/components/generate/steps/ProductLaneStep'
 import CardImageStyleStep from '@/components/generate/steps/CardImageStyleStep'
 import PremiumCardCustomizationStep from '@/components/generate/steps/PremiumCardCustomizationStep'
@@ -158,7 +160,11 @@ export default function GeneratePG() {
 
   async function handleGenerate(
     wordsOverride?: string[],
-    options?: { isQuickGenerate?: boolean; premiumQuickMode?: PremiumQuickMode },
+    options?: {
+      isQuickGenerate?: boolean
+      premiumQuickMode?: PremiumQuickMode
+      premiumInfographicStyle?: PremiumInfographicStyle
+    },
   ) {
     if (!user) return
     const isQuickGenerate = options?.isQuickGenerate ?? false
@@ -177,6 +183,7 @@ export default function GeneratePG() {
         existingDeck: existingDeck ?? undefined,
         isQuickGenerate,
         premiumQuickModeOverride: options?.premiumQuickMode,
+        premiumInfographicStyleOverride: options?.premiumInfographicStyle,
         wordsOverride: effectiveWords,
       })
 
@@ -210,8 +217,14 @@ export default function GeneratePG() {
 
   function handlePremiumQuickModeGenerate(words: string[], mode: PremiumQuickMode) {
     dispatch({ type: 'SET_PREMIUM_QUICK_MODE', mode })
+    if (mode === 'infographic') {
+      dispatch({ type: 'SET_PREMIUM_INFOGRAPHIC_STYLE', style: DEFAULT_PREMIUM_INFOGRAPHIC_STYLE })
+    }
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
-    handleGenerate(words, { premiumQuickMode: mode })
+    handleGenerate(words, {
+      premiumQuickMode: mode,
+      premiumInfographicStyle: mode === 'infographic' ? DEFAULT_PREMIUM_INFOGRAPHIC_STYLE : state.premiumInfographicStyle,
+    })
   }
 
   /* ─── Generated state ─── */
@@ -336,8 +349,10 @@ export default function GeneratePG() {
                 skin="classic"
                 layer2Value={state.cardLayer2}
                 artStyleValue={isCardLayer2ArtStyle(state.cardImageStyle) ? state.cardImageStyle : null}
+                infographicStyleValue={state.premiumInfographicStyle}
                 onLayer2Change={(value) => dispatch({ type: 'SET_CARD_LAYER2', value })}
                 onArtStyleChange={(value) => dispatch({ type: 'SET_CARD_IMAGE_STYLE', style: value })}
+                onInfographicStyleChange={(style) => dispatch({ type: 'SET_PREMIUM_INFOGRAPHIC_STYLE', style })}
                 onContinue={() => setPgStep(4)}
               />
             ) : (
@@ -497,6 +512,8 @@ function GenerateSelectionSummary({
 }) {
   const items: PremiumSummaryItem[] = []
   const lane = state.productLane
+  const premiumInfographic =
+    lane === 'card_premium' && state.cardLayer2?.presentation_form === 'infographic_card'
 
   if (state.language && pgStep > 0) {
     items.push({
@@ -528,7 +545,7 @@ function GenerateSelectionSummary({
     })
   }
 
-  if (cardLane && state.cardImageStyle && pgStep > 3) {
+  if (cardLane && state.cardImageStyle && pgStep > 3 && !premiumInfographic) {
     items.push({
       key: 'style',
       label: cardLayer2ArtStyleLabel(state.cardImageStyle),
@@ -578,7 +595,7 @@ function GenerateSelectionSummary({
     })
   }
 
-  return <PremiumSummaryRow items={items} />
+  return <PremiumSummaryRow items={items} className="generate-selection-summary" />
 }
 
 function StepLanguage({ onSelect }: { onSelect: (lang: string) => void }) {
@@ -1019,6 +1036,8 @@ function StepReview({
   const productLabel = laneLabel(lane)
   // Surface card_image_model in admin-only debug copy if needed.
   void laneToCardImageModel(lane)
+  const premiumInfographic =
+    state.productLane === 'card_premium' && state.cardLayer2?.presentation_form === 'infographic_card'
   const summaryItems: PremiumSummaryItem[] = [
     ...(state.language
       ? [{
@@ -1045,7 +1064,7 @@ function StepReview({
       onClick: () => onGoToStep(2),
       tone: 'words',
     },
-    ...(cardLane && state.cardImageStyle
+    ...(cardLane && state.cardImageStyle && !premiumInfographic
       ? [{
           key: 'style',
           label: cardLayer2ArtStyleLabel(state.cardImageStyle),
@@ -1064,22 +1083,39 @@ function StepReview({
         }]
       : []),
     ...(state.productLane === 'card_premium' && state.cardLayer2
-      ? [
-          {
-            key: 'meaning',
-            label: cardLayer2MeaningLabel(state.cardLayer2.meaning_strategy),
-            ariaLabel: 'Back to customize step',
-            onClick: () => onGoToStep(3),
-            tone: 'meaning',
-          },
-          {
-            key: 'form',
-            label: cardLayer2PresentationLabel(state.cardLayer2.presentation_form),
-            ariaLabel: 'Back to customize step',
-            onClick: () => onGoToStep(3),
-            tone: 'form',
-          },
-        ]
+      ? premiumInfographic
+        ? [
+            {
+              key: 'form',
+              label: 'Infographic',
+              ariaLabel: 'Back to customize step',
+              onClick: () => onGoToStep(3),
+              tone: 'form',
+            },
+            {
+              key: 'infographic-style',
+              label: premiumInfographicStyleLabel(state.premiumInfographicStyle),
+              ariaLabel: 'Back to customize step',
+              onClick: () => onGoToStep(3),
+              tone: 'infographic',
+            },
+          ]
+        : [
+            {
+              key: 'meaning',
+              label: cardLayer2MeaningLabel(state.cardLayer2.meaning_strategy),
+              ariaLabel: 'Back to customize step',
+              onClick: () => onGoToStep(3),
+              tone: 'meaning',
+            },
+            {
+              key: 'form',
+              label: cardLayer2PresentationLabel(state.cardLayer2.presentation_form),
+              ariaLabel: 'Back to customize step',
+              onClick: () => onGoToStep(3),
+              tone: 'form',
+            },
+          ]
       : []),
     ...(!cardLane
       ? [

@@ -24,6 +24,14 @@ export type CardLayer2BackendTemplate =
   | 'direct_prompt_v3'
   | 'infographic_prompt_v1'
 
+export type PremiumInfographicStyle =
+  | 'auto'
+  | 'study_poster'
+  | 'visual_dictionary'
+  | 'language_atlas'
+  | 'museum_exhibit'
+  | 'dense_encyclopedia'
+
 export type InfographicTemplate =
   | 'infographic_knowledge_guide_v1'
   | 'infographic_language_atlas_v1'
@@ -114,6 +122,53 @@ export const DEFAULT_CARD_LAYER2: CardLayer2Customization = {
 
 export const DEFAULT_CARD_LAYER2_ART_STYLE: CardLayer2ArtStyle = 'realistic'
 export const DEFAULT_PREMIUM_QUICK_MODE: PremiumQuickMode = 'clear'
+export const DEFAULT_PREMIUM_INFOGRAPHIC_STYLE: PremiumInfographicStyle = 'auto'
+
+export const PREMIUM_INFOGRAPHIC_STYLE_OPTIONS: Array<{
+  value: PremiumInfographicStyle
+  label: string
+  helper: string
+}> = [
+  {
+    value: 'auto',
+    label: 'Auto',
+    helper: 'Balanced practical infographic style.',
+  },
+  {
+    value: 'study_poster',
+    label: 'Study Poster',
+    helper: 'Examples, grammar, collocations, and common mistakes.',
+  },
+  {
+    value: 'visual_dictionary',
+    label: 'Visual Dictionary',
+    helper: 'Precise reference-style word guide.',
+  },
+  {
+    value: 'language_atlas',
+    label: 'Language Atlas',
+    helper: 'Maps meaning, usage, register, and related words.',
+  },
+  {
+    value: 'museum_exhibit',
+    label: 'Museum Exhibit',
+    helper: 'Cultural, literary, or philosophical word treatment.',
+  },
+  {
+    value: 'dense_encyclopedia',
+    label: 'Dense Encyclopedia',
+    helper: 'High-density experimental study card.',
+  },
+]
+
+export const USER_FACING_INFOGRAPHIC_TEMPLATE_MAP: Record<PremiumInfographicStyle, InfographicTemplate> = {
+  auto: 'infographic_study_poster_v2',
+  study_poster: 'infographic_study_poster_v2',
+  visual_dictionary: 'infographic_visual_dictionary_v2',
+  language_atlas: 'infographic_language_atlas_v2',
+  museum_exhibit: 'infographic_museum_exhibit_v2',
+  dense_encyclopedia: 'infographic_dense_editorial_v4',
+}
 
 export const CARD_LAYER2_MEANING_OPTIONS: Array<{
   value: CardLayer2MeaningStrategy
@@ -215,8 +270,8 @@ export const CARD_LAYER2_ART_STYLE_OPTIONS: Array<{
   { value: 'editorial', label: 'Editorial' },
   { value: 'illustration', label: 'Illustration' },
   { value: 'anime', label: 'Anime' },
-  { value: 'studio_ghibli_inspired', label: 'Studio Ghibli-inspired' },
-  { value: 'disney_animation_inspired', label: 'Disney Animation-inspired' },
+  { value: 'studio_ghibli_inspired', label: 'Studio Ghibli' },
+  { value: 'disney_animation_inspired', label: 'Disney' },
   { value: 'comic_book', label: 'Comic Book' },
   { value: 'pixel_art', label: 'Pixel Art' },
   { value: 'vintage_film', label: 'Vintage Film' },
@@ -224,7 +279,7 @@ export const CARD_LAYER2_ART_STYLE_OPTIONS: Array<{
   { value: 'surrealism', label: 'Surrealism' },
   { value: 'fantasy_art', label: 'Fantasy Art' },
   { value: 'pen_and_ink', label: 'Pen and Ink' },
-  { value: 'charcoal_sketch', label: 'Charcoal Sketch' },
+  { value: 'charcoal_sketch', label: 'Charcoal' },
   { value: 'claymation', label: 'Claymation' },
   { value: 'ukiyo_e', label: 'Ukiyo-e' },
   { value: 'south_park_style', label: 'South Park' },
@@ -238,6 +293,14 @@ export function cardLayer2MeaningLabel(value: CardLayer2MeaningStrategy): string
 
 export function cardLayer2PresentationLabel(value: CardLayer2PresentationForm): string {
   return CARD_LAYER2_PRESENTATION_OPTIONS.find((option) => option.value === value)?.label ?? value
+}
+
+export function premiumInfographicStyleLabel(value: PremiumInfographicStyle | string | null | undefined): string {
+  return PREMIUM_INFOGRAPHIC_STYLE_OPTIONS.find((option) => option.value === value)?.label ?? value ?? ''
+}
+
+export function resolvePremiumInfographicTemplate(style: PremiumInfographicStyle | null | undefined): InfographicTemplate {
+  return USER_FACING_INFOGRAPHIC_TEMPLATE_MAP[style ?? DEFAULT_PREMIUM_INFOGRAPHIC_STYLE]
 }
 
 export function premiumQuickModeLabel(value: PremiumGenerationModeName | string | null | undefined): string {
@@ -262,12 +325,14 @@ export function isStandardCardImageStyle(value: CardImageStyle | null): value is
 export function resolvePremiumQuickMode(
   mode: PremiumQuickMode,
   artStyle: CardLayer2ArtStyle | null | undefined,
+  infographicStyle: PremiumInfographicStyle | null | undefined = DEFAULT_PREMIUM_INFOGRAPHIC_STYLE,
 ): {
   backend_template: CardLayer2BackendTemplate
   card_layer2: CardLayer2Payload
   metadata: PremiumGenerationModeMetadata
 } {
   const selectedStyle = artStyle ?? DEFAULT_CARD_LAYER2_ART_STYLE
+  const infographicTemplate = resolvePremiumInfographicTemplate(infographicStyle)
   const preset: Record<PremiumQuickMode, {
     backend_template: CardLayer2BackendTemplate
     meaning_strategy: CardLayer2MeaningStrategy
@@ -294,12 +359,34 @@ export function resolvePremiumQuickMode(
       presentation_form: 'word_object_design',
     },
     infographic: {
-      backend_template: 'direct_prompt_v3',
+      backend_template: 'infographic_prompt_v1',
       meaning_strategy: 'clear_meaning',
       presentation_form: 'infographic_card',
     },
   }
   const resolved = preset[mode]
+  if (mode === 'infographic') {
+    const metadata: PremiumGenerationModeMetadata = {
+      premium_quick_mode: mode,
+      backend_template: resolved.backend_template,
+      presentation_form: resolved.presentation_form,
+      infographic_template: infographicTemplate,
+      prompt_version: 'premium_quick_modes_v1',
+    }
+    return {
+      backend_template: resolved.backend_template,
+      card_layer2: {
+        meaning_strategy: resolved.meaning_strategy,
+        presentation_form: resolved.presentation_form,
+        visual_intensity: 'balanced',
+        backend_template: resolved.backend_template,
+        infographic_template: infographicTemplate,
+        premium_quick_mode: mode,
+        premium_generation_mode: metadata,
+      },
+      metadata,
+    }
+  }
   const metadata: PremiumGenerationModeMetadata = {
     premium_quick_mode: mode,
     backend_template: resolved.backend_template,
@@ -337,6 +424,7 @@ export interface WizardState {
   cardImageStyle: CardImageStyle | null
   cardLayer2: CardLayer2Customization | null
   premiumQuickMode: PremiumQuickMode
+  premiumInfographicStyle: PremiumInfographicStyle
 }
 
 export type WizardAction =
@@ -355,6 +443,7 @@ export type WizardAction =
   | { type: 'SET_CARD_IMAGE_STYLE'; style: CardImageStyle | null }
   | { type: 'SET_CARD_LAYER2'; value: Partial<CardLayer2Customization> | null }
   | { type: 'SET_PREMIUM_QUICK_MODE'; mode: PremiumQuickMode }
+  | { type: 'SET_PREMIUM_INFOGRAPHIC_STYLE'; style: PremiumInfographicStyle }
   | { type: 'GO_TO_STEP'; step: 1 | 2 | 3 | 4 | 5 | 6 }
   | { type: 'CHOOSE_PATH'; path: 'quick' | 'custom' }
   | { type: 'NEXT_STEP' }
@@ -375,6 +464,7 @@ const initialState: WizardState = {
   cardImageStyle: null,
   cardLayer2: null,
   premiumQuickMode: DEFAULT_PREMIUM_QUICK_MODE,
+  premiumInfographicStyle: DEFAULT_PREMIUM_INFOGRAPHIC_STYLE,
 }
 
 // ── Lane helpers (pure, exported for tests and callers) ─────────────────────
@@ -511,6 +601,9 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
     case 'SET_PREMIUM_QUICK_MODE':
       return { ...state, premiumQuickMode: action.mode }
 
+    case 'SET_PREMIUM_INFOGRAPHIC_STYLE':
+      return { ...state, premiumInfographicStyle: action.style }
+
     case 'GO_TO_STEP':
       return { ...state, step: action.step }
 
@@ -586,6 +679,7 @@ interface BuildPayloadOpts {
    *  so a Quick-Generate submit doesn't carry stale picks the user skipped. */
   isQuickGenerate?: boolean
   premiumQuickModeOverride?: PremiumQuickMode
+  premiumInfographicStyleOverride?: PremiumInfographicStyle
   /** Override the word list used for `wordList` and `*_total`. Useful when
    *  the caller has a synchronously-flushed list that hasn't yet landed in
    *  state.words. */
@@ -598,6 +692,7 @@ export function buildGeneratePayload({
   existingDeck,
   isQuickGenerate = false,
   premiumQuickModeOverride,
+  premiumInfographicStyleOverride,
   wordsOverride,
 }: BuildPayloadOpts): GeneratePayload {
   const lane: ProductLane =
@@ -642,8 +737,10 @@ export function buildGeneratePayload({
     ? state.cardImageStyle
     : DEFAULT_CARD_LAYER2_ART_STYLE
   const selectedPremiumQuickMode = premiumQuickModeOverride ?? state.premiumQuickMode ?? DEFAULT_PREMIUM_QUICK_MODE
+  const selectedPremiumInfographicStyle =
+    premiumInfographicStyleOverride ?? state.premiumInfographicStyle ?? DEFAULT_PREMIUM_INFOGRAPHIC_STYLE
   const premiumQuick = lane === 'card_premium' && !isQuickGenerate
-    ? resolvePremiumQuickMode(selectedPremiumQuickMode, premiumArtStyle)
+    ? resolvePremiumQuickMode(selectedPremiumQuickMode, premiumArtStyle, selectedPremiumInfographicStyle)
     : null
   const isPremiumCustomize = (
     lane === 'card_premium'
@@ -651,15 +748,30 @@ export function buildGeneratePayload({
     && !isQuickGenerate
     && state.cardImageStyle
   )
+  const selectedLayer2 = state.cardLayer2 ?? DEFAULT_CARD_LAYER2
+  const isCustomInfographic =
+    isPremiumCustomize
+    && selectedLayer2.presentation_form === 'infographic_card'
+  const customInfographicTemplate = isCustomInfographic
+    ? resolvePremiumInfographicTemplate(selectedPremiumInfographicStyle)
+    : undefined
   const customPremiumMetadata: PremiumGenerationModeMetadata | null = isPremiumCustomize
-    ? {
-        premium_quick_mode: 'custom',
-        backend_template: 'structured_plan_v1',
-        meaning_strategy: (state.cardLayer2 ?? DEFAULT_CARD_LAYER2).meaning_strategy,
-        presentation_form: (state.cardLayer2 ?? DEFAULT_CARD_LAYER2).presentation_form,
-        art_style: premiumArtStyle,
-        prompt_version: 'premium_quick_modes_v1',
-      }
+    ? isCustomInfographic
+      ? {
+          premium_quick_mode: 'custom',
+          backend_template: 'infographic_prompt_v1',
+          presentation_form: 'infographic_card',
+          infographic_template: customInfographicTemplate,
+          prompt_version: 'premium_quick_modes_v1',
+        }
+      : {
+          premium_quick_mode: 'custom',
+          backend_template: 'structured_plan_v1',
+          meaning_strategy: selectedLayer2.meaning_strategy,
+          presentation_form: selectedLayer2.presentation_form,
+          art_style: premiumArtStyle,
+          prompt_version: 'premium_quick_modes_v1',
+        }
     : null
   const quickGeneratePremiumMetadata: PremiumGenerationModeMetadata | null =
     lane === 'card_premium' && isQuickGenerate
@@ -670,18 +782,21 @@ export function buildGeneratePayload({
       : null
   const cardLayer2 = isPremiumCustomize
     ? {
-        ...(state.cardLayer2 ?? DEFAULT_CARD_LAYER2),
+        ...selectedLayer2,
         visual_intensity: 'balanced' as const,
+        backend_template: (isCustomInfographic ? 'infographic_prompt_v1' : 'structured_plan_v1') as CardLayer2BackendTemplate,
+        ...(customInfographicTemplate ? { infographic_template: customInfographicTemplate } : {}),
         premium_quick_mode: 'custom' as const,
         premium_generation_mode: customPremiumMetadata ?? undefined,
       }
     : premiumQuick?.card_layer2
+  const isInfographicLayer2 = cardLayer2?.presentation_form === 'infographic_card'
   const cardImageStyleForSettings =
-    lane === 'card_premium' && !isQuickGenerate
-      ? premiumArtStyle
+    lane === 'card_premium'
+      ? (!isQuickGenerate && !isInfographicLayer2 ? premiumArtStyle : undefined)
       : isCard && !isQuickGenerate && state.cardImageStyle
-        ? state.cardImageStyle
-        : undefined
+          ? state.cardImageStyle
+          : undefined
   const premiumGenerationMode = quickGeneratePremiumMetadata ?? customPremiumMetadata ?? premiumQuick?.metadata
 
   return {

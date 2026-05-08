@@ -9,10 +9,17 @@
  * Or:   tsx frontend/scripts/test-product-lane-payload.ts
  */
 
+import { readFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import React from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
+
 import {
   CARD_LAYER2_ART_STYLE_OPTIONS,
   CARD_LAYER2_MEANING_OPTIONS,
   CARD_LAYER2_PRESENTATION_OPTIONS,
+  PREMIUM_INFOGRAPHIC_STYLE_OPTIONS,
   PREMIUM_QUICK_MODE_OPTIONS,
   buildGeneratePayload,
   computeCreditCost,
@@ -20,15 +27,30 @@ import {
   isCardLane,
   laneToCardImageModel,
   laneToDeckType,
+  premiumInfographicStyleLabel,
   premiumQuickModeLabel,
+  resolvePremiumInfographicTemplate,
   resolvePremiumQuickMode,
+  type CardLayer2PresentationForm,
   type ExistingDeck,
+  type PremiumInfographicStyle,
   type ProductLane,
   type WizardState,
 } from '../src/components/generate/useWizardState.ts'
 
+(globalThis as typeof globalThis & { React: typeof React }).React = React
+const { default: PremiumCardCustomizationStep } = await import(
+  '../src/components/generate/steps/PremiumCardCustomizationStep.tsx'
+)
+
 let failures = 0
 let passes = 0
+const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url))
+const FRONTEND_ROOT = resolve(SCRIPT_DIR, '..')
+
+function readSource(relativePath: string): string {
+  return readFileSync(resolve(FRONTEND_ROOT, relativePath), 'utf8')
+}
 
 function assert(name: string, cond: boolean, detail?: unknown) {
   if (cond) {
@@ -57,8 +79,30 @@ function makeState(partial: Partial<WizardState>): WizardState {
     cardImageStyle: null,
     cardLayer2: null,
     premiumQuickMode: 'clear',
+    premiumInfographicStyle: 'auto',
     ...partial,
   }
+}
+
+function renderPremiumCustomize(
+  presentation: CardLayer2PresentationForm,
+  infographicStyle: PremiumInfographicStyle = 'auto',
+): string {
+  return renderToStaticMarkup(
+    React.createElement(PremiumCardCustomizationStep, {
+      skin: 'classic',
+      layer2Value: {
+        meaning_strategy: 'clear_meaning',
+        presentation_form: presentation,
+      },
+      artStyleValue: 'realistic',
+      infographicStyleValue: infographicStyle,
+      onLayer2Change: () => undefined,
+      onArtStyleChange: () => undefined,
+      onInfographicStyleChange: () => undefined,
+      onContinue: () => undefined,
+    }),
+  )
 }
 
 const USER = '00000000-0000-0000-0000-000000000001'
@@ -190,14 +234,20 @@ console.log('\n[premium quick mode resolver]')
     memorable: ['direct_prompt_v2', 'sound_mnemonic', 'single_scene'],
     weird: ['direct_prompt_v2', 'absurd_hook', 'single_scene'],
     word_design: ['direct_prompt_v2', 'clear_meaning', 'word_object_design'],
-    infographic: ['direct_prompt_v3', 'clear_meaning', 'infographic_card'],
+    infographic: ['infographic_prompt_v1', 'clear_meaning', 'infographic_card'],
   } as const
   for (const [mode, [backend, meaning, presentation]] of Object.entries(expected)) {
     const resolved = resolvePremiumQuickMode(mode as keyof typeof expected, 'surrealism')
     assert(`${mode} backend`, resolved.backend_template === backend, resolved)
     assert(`${mode} meaning`, resolved.card_layer2.meaning_strategy === meaning, resolved)
     assert(`${mode} presentation`, resolved.card_layer2.presentation_form === presentation, resolved)
-    assert(`${mode} style`, resolved.metadata.art_style === 'surrealism', resolved)
+    if (mode === 'infographic') {
+      assert(`${mode} omits meaningful art style metadata`, resolved.metadata.art_style === undefined, resolved)
+      assert(`${mode} maps Auto to Study Poster`, resolved.metadata.infographic_template === 'infographic_study_poster_v2', resolved)
+      assert(`${mode} card_layer2 includes infographic_template`, resolved.card_layer2.infographic_template === 'infographic_study_poster_v2', resolved)
+    } else {
+      assert(`${mode} style`, resolved.metadata.art_style === 'surrealism', resolved)
+    }
     assert(`${mode} metadata`, resolved.metadata.premium_quick_mode === mode, resolved)
   }
   assert(
@@ -208,8 +258,8 @@ console.log('\n[premium quick mode resolver]')
     ),
   )
   assert(
-    'infographic premium quick mode routes to LLM V3',
-    resolvePremiumQuickMode('infographic', 'surrealism').backend_template === 'direct_prompt_v3',
+    'infographic premium quick mode routes to Infographic backend',
+    resolvePremiumQuickMode('infographic', 'surrealism').backend_template === 'infographic_prompt_v1',
   )
   assert(
     'quick mode options expose friendly labels only',
@@ -220,40 +270,121 @@ console.log('\n[premium quick mode resolver]')
   assert('quick_generate label is friendly', premiumQuickModeLabel('quick_generate') === 'Quick Generate')
 }
 
+console.log('\n[user-facing infographic styles]')
+{
+  const expectedStyles: Array<[PremiumInfographicStyle, string]> = [
+    ['auto', 'infographic_study_poster_v2'],
+    ['study_poster', 'infographic_study_poster_v2'],
+    ['visual_dictionary', 'infographic_visual_dictionary_v2'],
+    ['language_atlas', 'infographic_language_atlas_v2'],
+    ['museum_exhibit', 'infographic_museum_exhibit_v2'],
+    ['dense_encyclopedia', 'infographic_dense_editorial_v4'],
+  ]
+  assert(
+    'all user-facing infographic style options exist',
+    PREMIUM_INFOGRAPHIC_STYLE_OPTIONS.map((option) => option.value).join('|')
+      === expectedStyles.map(([style]) => style).join('|'),
+    PREMIUM_INFOGRAPHIC_STYLE_OPTIONS,
+  )
+  for (const [style, template] of expectedStyles) {
+    assert(`${style} maps to ${template}`, resolvePremiumInfographicTemplate(style) === template)
+  }
+  assert('Auto label is friendly', premiumInfographicStyleLabel('auto') === 'Auto')
+  assert('Dense label is friendly and experimental', premiumInfographicStyleLabel('dense_encyclopedia') === 'Dense Encyclopedia')
+  const userFacingText = PREMIUM_INFOGRAPHIC_STYLE_OPTIONS
+    .flatMap((option) => [option.label, option.helper])
+    .join(' | ')
+  assert(
+    'user-facing infographic labels do not expose template versions or enum values',
+    !/\bV[1-4]\b|_v[1-4]\b|infographic_|v3 reference|reference template/i.test(userFacingText),
+    userFacingText,
+  )
+}
+
 console.log('\n[premium customize layer2 payload]')
+{
+  for (const presentation of ['single_scene', 'mini_story', 'split_panel', 'word_object_design'] as const) {
+    const p = buildGeneratePayload({
+      state: makeState({
+        productLane: 'card_premium',
+        path: 'custom',
+        cardImageStyle: 'surrealism',
+        cardLayer2: {
+          meaning_strategy: 'absurd_hook',
+          presentation_form: presentation,
+        },
+      }),
+      userId: USER,
+    })
+    assert(
+      `${presentation} keeps selected art style active`,
+      p.jobPayload.settings_override.card_image_style === 'surrealism',
+      p.jobPayload.settings_override,
+    )
+    assert(
+      `${presentation} keeps meaning strategy active`,
+      p.jobPayload.settings_override.card_layer2?.meaning_strategy === 'absurd_hook'
+        && p.jobPayload.settings_override.premium_generation_mode?.meaning_strategy === 'absurd_hook',
+      p.jobPayload.settings_override,
+    )
+    assert(
+      `${presentation} presentation_form included`,
+      p.jobPayload.settings_override.card_layer2?.presentation_form === presentation,
+      p.jobPayload.settings_override,
+    )
+    assert(
+      `${presentation} visual_intensity defaults to balanced`,
+      p.jobPayload.settings_override.card_layer2?.visual_intensity === 'balanced',
+      p.jobPayload.settings_override,
+    )
+  }
+}
+
+console.log('\n[premium infographic quick payload]')
+{
+  const p = buildGeneratePayload({
+    state: makeState({
+      productLane: 'card_premium',
+      cardImageStyle: 'surrealism',
+      premiumQuickMode: 'infographic',
+    }),
+    userId: USER,
+    premiumQuickModeOverride: 'infographic',
+  })
+  const settings = p.jobPayload.settings_override
+  assert('quick infographic backend is infographic_prompt_v1', settings.card_layer2?.backend_template === 'infographic_prompt_v1', settings)
+  assert('quick infographic presentation is infographic_card', settings.card_layer2?.presentation_form === 'infographic_card', settings)
+  assert('quick infographic uses Auto Study Poster template', settings.card_layer2?.infographic_template === 'infographic_study_poster_v2', settings)
+  assert('quick infographic top-level quick mode is infographic', settings.premium_quick_mode === 'infographic', settings)
+  assert('quick infographic generation metadata includes template', settings.premium_generation_mode?.infographic_template === 'infographic_study_poster_v2', settings)
+  assert('quick infographic omits card_image_style', !('card_image_style' in settings), settings)
+  assert('quick infographic metadata omits meaningful art style', settings.premium_generation_mode?.art_style === undefined, settings)
+  assert('quick infographic metadata omits meaningful meaning strategy', settings.premium_generation_mode?.meaning_strategy === undefined, settings)
+}
+
+console.log('\n[premium customize infographic payload]')
 {
   const p = buildGeneratePayload({
     state: makeState({
       productLane: 'card_premium',
       path: 'custom',
       cardImageStyle: 'surrealism',
+      premiumInfographicStyle: 'dense_encyclopedia',
       cardLayer2: {
         meaning_strategy: 'absurd_hook',
-        presentation_form: 'mini_story',
+        presentation_form: 'infographic_card',
       },
     }),
     userId: USER,
   })
-  assert(
-    'card_image_style sends selected layer2 art style',
-    p.jobPayload.settings_override.card_image_style === 'surrealism',
-    p.jobPayload.settings_override,
-  )
-  assert(
-    'card_layer2 meaning_strategy included',
-    p.jobPayload.settings_override.card_layer2?.meaning_strategy === 'absurd_hook',
-    p.jobPayload.settings_override,
-  )
-  assert(
-    'card_layer2 presentation_form included',
-    p.jobPayload.settings_override.card_layer2?.presentation_form === 'mini_story',
-    p.jobPayload.settings_override,
-  )
-  assert(
-    'visual_intensity defaults to balanced',
-    p.jobPayload.settings_override.card_layer2?.visual_intensity === 'balanced',
-    p.jobPayload.settings_override,
-  )
+  const settings = p.jobPayload.settings_override
+  assert('custom infographic backend is infographic_prompt_v1', settings.card_layer2?.backend_template === 'infographic_prompt_v1', settings)
+  assert('custom infographic template follows selected style', settings.card_layer2?.infographic_template === 'infographic_dense_editorial_v4', settings)
+  assert('custom infographic premium mode is custom', settings.premium_generation_mode?.premium_quick_mode === 'custom', settings)
+  assert('custom infographic metadata includes selected template', settings.premium_generation_mode?.infographic_template === 'infographic_dense_editorial_v4', settings)
+  assert('custom infographic omits card_image_style', !('card_image_style' in settings), settings)
+  assert('custom infographic metadata omits art style', settings.premium_generation_mode?.art_style === undefined, settings)
+  assert('custom infographic metadata omits meaning strategy', settings.premium_generation_mode?.meaning_strategy === undefined, settings)
 }
 
 console.log('\n[standard card payload does not use layer2]')
@@ -356,6 +487,94 @@ console.log('\n[layer2 exposed options]')
     CARD_LAYER2_MEANING_OPTIONS.every((option) => !option.label.includes('_'))
       && CARD_LAYER2_PRESENTATION_OPTIONS.every((option) => !option.label.includes('_'))
       && CARD_LAYER2_ART_STYLE_OPTIONS.every((option) => !option.label.includes('_')),
+  )
+}
+
+console.log('\n[premium customize infographic UI wiring]')
+{
+  const customizationSource = readSource('src/components/generate/steps/PremiumCardCustomizationStep.tsx')
+  const classicSource = readSource('src/pages/GeneratePG.tsx')
+  const glassySource = readSource('src/pages/GenerateGO.tsx')
+  assert('customize step renders Infographic Style selector', customizationSource.includes('PremiumInfographicStyleSelector'))
+  assert('customize step disables controls only for infographic', customizationSource.includes("presentation_form === 'infographic_card'"))
+  assert('customize step explains inactive meaning/art controls', customizationSource.includes('Meaning Strategy and Art Style do not apply.'))
+  assert('classic skin wires infographic style selector', classicSource.includes('skin="classic"') && classicSource.includes('onInfographicStyleChange'))
+  assert('glassy skin wires infographic style selector', glassySource.includes('skin="glassy"') && glassySource.includes('onInfographicStyleChange'))
+  assert('classic payload path uses shared builder overrides', classicSource.includes('buildGeneratePayload') && classicSource.includes('premiumInfographicStyleOverride'))
+  assert(
+    'glassy local payload routes custom infographic to infographic_prompt_v1',
+    glassySource.includes("backend_template: 'infographic_prompt_v1' as const")
+      && glassySource.includes('customInfographicTemplate')
+      && glassySource.includes('!isInfographicLayer2'),
+  )
+  assert(
+    'glassy quick infographic keeps immediate default style override',
+    glassySource.includes('handlePremiumQuickModeGenerate')
+      && glassySource.includes("mode === 'infographic' ? DEFAULT_PREMIUM_INFOGRAPHIC_STYLE"),
+  )
+}
+
+console.log('\n[premium customize infographic rendered state]')
+{
+  const infographicHtml = renderPremiumCustomize('infographic_card', 'visual_dictionary')
+  const wordDesignHtml = renderPremiumCustomize('word_object_design')
+  const singleSceneHtml = renderPremiumCustomize('single_scene')
+  const optionLabels = ['Auto', 'Study Poster', 'Visual Dictionary', 'Language Atlas', 'Museum Exhibit', 'Dense Encyclopedia']
+
+  assert(
+    'infographic render reveals all user-facing style options',
+    optionLabels.every((label) => infographicHtml.includes(label)),
+  )
+  assert(
+    'infographic render keeps Presentation Form active',
+    infographicHtml.includes('data-option-value="infographic_card"')
+      && infographicHtml.includes('aria-pressed="true"'),
+  )
+  assert(
+    'infographic render compacts inactive Meaning Strategy options',
+    infographicHtml.includes('Meaning Strategy')
+      && !infographicHtml.includes('data-option-value="clear_meaning"')
+      && infographicHtml.includes('Not used for Infographic.'),
+  )
+  assert(
+    'infographic render compacts inactive Art Style options',
+    infographicHtml.includes('Art Style')
+      && !infographicHtml.includes('data-option-value="realistic"')
+      && infographicHtml.includes('Not used for Infographic.'),
+  )
+  assert(
+    'infographic render shows dedicated prompting helper',
+    infographicHtml.includes('Infographics use dedicated educational-poster prompting. Meaning Strategy and Art Style do not apply.'),
+  )
+  assert(
+    'switching away from Infographic hides Infographic Style',
+    !singleSceneHtml.includes('Infographic Style')
+      && !singleSceneHtml.includes('Visual Dictionary')
+      && singleSceneHtml.includes('data-option-value="clear_meaning"')
+      && singleSceneHtml.includes('data-option-value="realistic"'),
+  )
+  assert(
+    'Word Design keeps Meaning Strategy and Art Style active',
+    wordDesignHtml.includes('data-option-value="clear_meaning"')
+      && wordDesignHtml.includes('data-option-value="realistic"')
+      && !wordDesignHtml.includes('Not used for Infographic.'),
+  )
+  assert(
+    'Word Design does not render inconsistent extra description',
+    !wordDesignHtml.includes('Word as Design makes the word itself part of the image.'),
+  )
+  assert(
+    'polished art labels are user-facing only',
+    CARD_LAYER2_ART_STYLE_OPTIONS.some((option) => option.value === 'studio_ghibli_inspired' && option.label === 'Studio Ghibli')
+      && CARD_LAYER2_ART_STYLE_OPTIONS.some((option) => option.value === 'disney_animation_inspired' && option.label === 'Disney')
+      && CARD_LAYER2_ART_STYLE_OPTIONS.some((option) => option.value === 'charcoal_sketch' && option.label === 'Charcoal'),
+    CARD_LAYER2_ART_STYLE_OPTIONS,
+  )
+  assert(
+    'Rick and Morty uses the style-specific premium sample asset when available',
+    readSource('src/components/generate/premiumVisualAssets.ts').includes(
+      "rick_and_morty_style: `${PREMIUM_STYLE_SAMPLE_BASE_PATH}/rick_and_morty_style.webp`",
+    ),
   )
 }
 

@@ -2,6 +2,7 @@ import type {
   CardLayer2ArtStyle,
   CardLayer2MeaningStrategy,
   CardLayer2PresentationForm,
+  PremiumInfographicStyle,
   ProductLane,
 } from './useWizardState'
 
@@ -68,6 +69,15 @@ export const PRESENTATION_FORM_VISUAL_TONES: Record<CardLayer2PresentationForm, 
   split_panel: 'split',
   word_object_design: 'word',
   infographic_card: 'infographic',
+}
+
+export const INFOGRAPHIC_STYLE_VISUAL_TONES: Record<PremiumInfographicStyle, string> = {
+  auto: 'infographic',
+  study_poster: 'study',
+  visual_dictionary: 'dictionary',
+  language_atlas: 'atlas',
+  museum_exhibit: 'museum',
+  dense_encyclopedia: 'dense',
 }
 
 export const MEANING_STRATEGY_HELPERS: Record<CardLayer2MeaningStrategy, string> = {

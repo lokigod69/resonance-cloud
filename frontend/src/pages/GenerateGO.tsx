@@ -14,6 +14,7 @@ import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGen
 import {
   DEFAULT_CARD_LAYER2,
   DEFAULT_CARD_LAYER2_ART_STYLE,
+  DEFAULT_PREMIUM_INFOGRAPHIC_STYLE,
   DEFAULT_PREMIUM_QUICK_MODE,
   cardLayer2ArtStyleLabel,
   cardLayer2MeaningLabel,
@@ -24,13 +25,17 @@ import {
   isStandardCardImageStyle,
   laneToCardImageModel,
   laneToDeckType,
+  premiumInfographicStyleLabel,
+  resolvePremiumInfographicTemplate,
   resolvePremiumQuickMode,
 } from '@/components/generate/useWizardState'
 import type {
+  CardLayer2BackendTemplate,
   CardLayer2ArtStyle,
   CardLayer2Customization,
   ExistingDeck,
   GeneratePayload,
+  PremiumInfographicStyle,
   PremiumQuickMode,
   ProductLane,
   StandardCardImageStyle,
@@ -87,6 +92,8 @@ export default function GenerateGO() {
   const [cardImageStyle, setCardImageStyle] = useState<StandardCardImageStyle | CardLayer2ArtStyle | null>(null)
   const [cardLayer2, setCardLayer2] = useState<CardLayer2Customization | null>(null)
   const [premiumQuickMode, setPremiumQuickMode] = useState<PremiumQuickMode>(DEFAULT_PREMIUM_QUICK_MODE)
+  const [premiumInfographicStyle, setPremiumInfographicStyle] =
+    useState<PremiumInfographicStyle>(DEFAULT_PREMIUM_INFOGRAPHIC_STYLE)
   const [customGenre, setCustomGenre] = useState('')
   const [showCustomInput, setShowCustomInput] = useState(false)
   const [deckName, setDeckName] = useState('')
@@ -259,6 +266,7 @@ export default function GenerateGO() {
     cardImageStyle,
     cardLayer2,
     premiumQuickMode,
+    premiumInfographicStyle,
   } as unknown as WizardState
 
   const wordsStepDispatch: React.Dispatch<WizardAction> = (action) => {
@@ -299,7 +307,13 @@ export default function GenerateGO() {
 
   function handlePremiumQuickModeGenerate(quickWords: string[], mode: PremiumQuickMode) {
     setPremiumQuickMode(mode)
-    handleInitialize(quickWords, { premiumQuickMode: mode })
+    if (mode === 'infographic') {
+      setPremiumInfographicStyle(DEFAULT_PREMIUM_INFOGRAPHIC_STYLE)
+    }
+    handleInitialize(quickWords, {
+      premiumQuickMode: mode,
+      premiumInfographicStyle: mode === 'infographic' ? DEFAULT_PREMIUM_INFOGRAPHIC_STYLE : premiumInfographicStyle,
+    })
   }
 
   function handleVibeSelect(value: string) {
@@ -377,7 +391,7 @@ export default function GenerateGO() {
 
   async function handleInitialize(
     wordsOverride?: string[],
-    options?: { premiumQuickMode?: PremiumQuickMode },
+    options?: { premiumQuickMode?: PremiumQuickMode; premiumInfographicStyle?: PremiumInfographicStyle },
   ) {
     const isQuickGenerate = wordsOverride !== undefined && !options?.premiumQuickMode
     const effectiveWords = wordsOverride ?? words
@@ -418,31 +432,54 @@ export default function GenerateGO() {
       const premiumArtStyle = isCardLayer2ArtStyle(cardImageStyle)
         ? cardImageStyle
         : DEFAULT_CARD_LAYER2_ART_STYLE
+      const selectedPremiumInfographicStyle =
+        options?.premiumInfographicStyle ?? premiumInfographicStyle ?? DEFAULT_PREMIUM_INFOGRAPHIC_STYLE
       const premiumQuick = productLane === 'card_premium' && options?.premiumQuickMode
-        ? resolvePremiumQuickMode(options.premiumQuickMode, premiumArtStyle)
+        ? resolvePremiumQuickMode(options.premiumQuickMode, premiumArtStyle, selectedPremiumInfographicStyle)
         : null
+      const selectedLayer2 = cardLayer2 ?? DEFAULT_CARD_LAYER2
+      const isCustomInfographic =
+        productLane === 'card_premium'
+        && !isQuickGenerate
+        && !premiumQuick
+        && cardImageStyle
+        && selectedLayer2.presentation_form === 'infographic_card'
+      const customInfographicTemplate = isCustomInfographic
+        ? resolvePremiumInfographicTemplate(selectedPremiumInfographicStyle)
+        : undefined
       const customPremiumMetadata =
         productLane === 'card_premium' && !isQuickGenerate && !premiumQuick && cardImageStyle
-          ? {
-              premium_quick_mode: 'custom' as const,
-              backend_template: 'structured_plan_v1' as const,
-              meaning_strategy: (cardLayer2 ?? DEFAULT_CARD_LAYER2).meaning_strategy,
-              presentation_form: (cardLayer2 ?? DEFAULT_CARD_LAYER2).presentation_form,
-              art_style: premiumArtStyle,
-              prompt_version: 'premium_quick_modes_v1' as const,
-            }
+          ? isCustomInfographic
+            ? {
+                premium_quick_mode: 'custom' as const,
+                backend_template: 'infographic_prompt_v1' as const,
+                presentation_form: 'infographic_card' as const,
+                infographic_template: customInfographicTemplate,
+                prompt_version: 'premium_quick_modes_v1' as const,
+              }
+            : {
+                premium_quick_mode: 'custom' as const,
+                backend_template: 'structured_plan_v1' as const,
+                meaning_strategy: selectedLayer2.meaning_strategy,
+                presentation_form: selectedLayer2.presentation_form,
+                art_style: premiumArtStyle,
+                prompt_version: 'premium_quick_modes_v1' as const,
+              }
           : null
       const layer2Payload = premiumQuick?.card_layer2 ?? (
         productLane === 'card_premium' && !isQuickGenerate && !premiumQuick && cardImageStyle
           ? {
-              ...(cardLayer2 ?? DEFAULT_CARD_LAYER2),
+              ...selectedLayer2,
               visual_intensity: 'balanced' as const,
+              backend_template: (isCustomInfographic ? 'infographic_prompt_v1' : 'structured_plan_v1') as CardLayer2BackendTemplate,
+              ...(customInfographicTemplate ? { infographic_template: customInfographicTemplate } : {}),
               premium_quick_mode: 'custom' as const,
               premium_generation_mode: customPremiumMetadata ?? undefined,
             }
           : undefined
       )
       const premiumGenerationMode = premiumQuick?.metadata ?? customPremiumMetadata
+      const isInfographicLayer2 = layer2Payload?.presentation_form === 'infographic_card'
 
       const payload: GeneratePayload = {
         deckPayload: existingDeck
@@ -471,7 +508,7 @@ export default function GenerateGO() {
             ...(genreValue ? { genre: genreValue } : {}),
             ...(!isCard && !isQuickGenerate && lyricMode ? { lyric_mode: lyricMode } : {}),
             ...(cardImageModel ? { card_image_model: cardImageModel } : {}),
-            ...(isCard && !isQuickGenerate && cardImageStyle ? { card_image_style: cardImageStyle } : {}),
+            ...(isCard && !isQuickGenerate && cardImageStyle && !isInfographicLayer2 ? { card_image_style: cardImageStyle } : {}),
             ...(layer2Payload ? { card_layer2: layer2Payload } : {}),
             ...(productLane === 'card_premium' && premiumGenerationMode
               ? {
@@ -538,6 +575,8 @@ export default function GenerateGO() {
     return labels[key]
   }
 
+  const premiumInfographicSelected =
+    productLane === 'card_premium' && cardLayer2?.presentation_form === 'infographic_card'
   const summaryItems: PremiumSummaryItem[] = [
     ...(!existingDeck && language && step > 1
       ? [{
@@ -566,7 +605,7 @@ export default function GenerateGO() {
           tone: 'words',
         }]
       : []),
-    ...(cardLane && cardImageStyle && step > 4
+    ...(cardLane && cardImageStyle && step > 4 && !premiumInfographicSelected
       ? [{
           key: 'style',
           label: findCardImageStyleLabel(cardImageStyle),
@@ -576,22 +615,39 @@ export default function GenerateGO() {
         }]
       : []),
     ...(productLane === 'card_premium' && cardLayer2 && step > 4
-      ? [
-          {
-            key: 'meaning',
-            label: cardLayer2MeaningLabel(cardLayer2.meaning_strategy),
-            ariaLabel: 'Back to customize step',
-            onClick: () => setStep(4),
-            tone: 'meaning',
-          },
-          {
-            key: 'form',
-            label: cardLayer2PresentationLabel(cardLayer2.presentation_form),
-            ariaLabel: 'Back to customize step',
-            onClick: () => setStep(4),
-            tone: 'form',
-          },
-        ]
+      ? premiumInfographicSelected
+        ? [
+            {
+              key: 'form',
+              label: 'Infographic',
+              ariaLabel: 'Back to customize step',
+              onClick: () => setStep(4),
+              tone: 'form',
+            },
+            {
+              key: 'infographic-style',
+              label: premiumInfographicStyleLabel(premiumInfographicStyle),
+              ariaLabel: 'Back to customize step',
+              onClick: () => setStep(4),
+              tone: 'infographic',
+            },
+          ]
+        : [
+            {
+              key: 'meaning',
+              label: cardLayer2MeaningLabel(cardLayer2.meaning_strategy),
+              ariaLabel: 'Back to customize step',
+              onClick: () => setStep(4),
+              tone: 'meaning',
+            },
+            {
+              key: 'form',
+              label: cardLayer2PresentationLabel(cardLayer2.presentation_form),
+              ariaLabel: 'Back to customize step',
+              onClick: () => setStep(4),
+              tone: 'form',
+            },
+          ]
       : []),
     ...(!cardLane && vibe && step > 4
       ? [{
@@ -694,7 +750,7 @@ export default function GenerateGO() {
 
   return (
     <div className="gen-container">
-      <PremiumSummaryRow items={summaryItems} />
+      <PremiumSummaryRow items={summaryItems} className="generate-selection-summary" />
       {/* ── Step 1: Language ── */}
       {!existingDeck && step === 1 && (
         <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
@@ -924,8 +980,10 @@ export default function GenerateGO() {
                 skin="glassy"
                 layer2Value={cardLayer2}
                 artStyleValue={isCardLayer2ArtStyle(cardImageStyle) ? cardImageStyle : null}
+                infographicStyleValue={premiumInfographicStyle}
                 onLayer2Change={(value) => setCardLayer2(prev => ({ ...(prev ?? DEFAULT_CARD_LAYER2), ...value }))}
                 onArtStyleChange={(value) => setCardImageStyle(value)}
+                onInfographicStyleChange={setPremiumInfographicStyle}
                 onContinue={() => setStep(5)}
               />
             ) : (
@@ -968,14 +1026,20 @@ export default function GenerateGO() {
             </p>
           )}
           {productLane === 'card_premium' && cardLayer2 && (
-            <>
+            premiumInfographicSelected ? (
               <p className="text-sm text-go-text-secondary">
-                Meaning: {cardLayer2MeaningLabel(cardLayer2.meaning_strategy)}
+                Premium Card · Infographic · {premiumInfographicStyleLabel(premiumInfographicStyle)}
               </p>
-              <p className="text-sm text-go-text-secondary">
-                Form: {cardLayer2PresentationLabel(cardLayer2.presentation_form)}
-              </p>
-            </>
+            ) : (
+              <>
+                <p className="text-sm text-go-text-secondary">
+                  Meaning: {cardLayer2MeaningLabel(cardLayer2.meaning_strategy)}
+                </p>
+                <p className="text-sm text-go-text-secondary">
+                  Form: {cardLayer2PresentationLabel(cardLayer2.presentation_form)}
+                </p>
+              </>
+            )
           )}
           <p className="text-sm text-go-text-secondary">{laneLabel(productLane)}</p>
 

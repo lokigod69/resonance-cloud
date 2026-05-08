@@ -5,14 +5,17 @@ import {
   MEANING_STRATEGY_UI_LABELS,
   MEANING_STRATEGY_VISUAL_TONES,
   PREMIUM_STYLE_SAMPLE_PATHS,
+  INFOGRAPHIC_STYLE_VISUAL_TONES,
   PRESENTATION_FORM_UI_LABELS,
   PRESENTATION_FORM_VISUAL_TONES,
   PRODUCT_LANE_VISUAL_TONES,
 } from '../premiumVisualAssets'
+import { PREMIUM_INFOGRAPHIC_STYLE_OPTIONS } from '../useWizardState'
 import type {
   CardLayer2ArtStyle,
   CardLayer2MeaningStrategy,
   CardLayer2PresentationForm,
+  PremiumInfographicStyle,
   ProductLane,
 } from '../useWizardState'
 
@@ -29,6 +32,7 @@ interface PremiumOptionTileProps<T extends string> {
   imageSrc?: string
   tone?: string
   variant?: 'standard' | 'product' | 'style'
+  disabled?: boolean
 }
 
 export function PremiumOptionTile<T extends string>({
@@ -42,6 +46,7 @@ export function PremiumOptionTile<T extends string>({
   imageSrc,
   tone = 'default',
   variant = 'standard',
+  disabled = false,
 }: PremiumOptionTileProps<T>) {
   return (
     <button
@@ -50,9 +55,14 @@ export function PremiumOptionTile<T extends string>({
         'premium-option-tile',
         `premium-option-tile-${variant}`,
         selected && 'selected',
+        disabled && 'disabled',
       )}
-      onClick={() => onSelect(value)}
+      onClick={() => {
+        if (!disabled) onSelect(value)
+      }}
+      disabled={disabled}
       aria-pressed={selected}
+      aria-disabled={disabled}
       data-tone={tone}
       data-option-value={value}
     >
@@ -178,6 +188,8 @@ interface PremiumVisualSelectorProps<T extends CardLayer2MeaningStrategy | CardL
   selected: T
   onSelect: (value: T) => void
   kind: 'meaning' | 'presentation'
+  disabled?: boolean
+  disabledHelper?: string
 }
 
 const MEANING_ICONS: Record<CardLayer2MeaningStrategy, PremiumVisualIcon> = {
@@ -201,10 +213,15 @@ export function PremiumVisualSelector<T extends CardLayer2MeaningStrategy | Card
   selected,
   onSelect,
   kind,
+  disabled = false,
+  disabledHelper,
 }: PremiumVisualSelectorProps<T>) {
   return (
-    <section className="premium-selector-section">
+    <section className={cn('premium-selector-section', disabled && 'premium-selector-section-disabled')}>
       <h4 className="premium-selector-heading">{title}</h4>
+      {disabled && disabledHelper ? (
+        <p className="premium-selector-disabled-note">{disabledHelper}</p>
+      ) : null}
       <div className={cn('premium-selector-grid', kind === 'presentation' && 'premium-selector-grid-presentation')}>
         {options.map((option) => {
           const isMeaning = kind === 'meaning'
@@ -228,6 +245,7 @@ export function PremiumVisualSelector<T extends CardLayer2MeaningStrategy | Card
               onSelect={onSelect}
               icon={Icon}
               tone={tone}
+              disabled={disabled}
             />
           )
         })}
@@ -241,6 +259,8 @@ interface PremiumStyleSelectorProps {
   options: Array<{ value: CardLayer2ArtStyle; label: string }>
   selected: CardLayer2ArtStyle
   onSelect: (value: CardLayer2ArtStyle) => void
+  disabled?: boolean
+  disabledHelper?: string
 }
 
 export function PremiumStyleSelector({
@@ -248,10 +268,15 @@ export function PremiumStyleSelector({
   options,
   selected,
   onSelect,
+  disabled = false,
+  disabledHelper,
 }: PremiumStyleSelectorProps) {
   return (
-    <section className="premium-selector-section">
+    <section className={cn('premium-selector-section', disabled && 'premium-selector-section-disabled')}>
       <h4 className="premium-selector-heading">{title}</h4>
+      {disabled && disabledHelper ? (
+        <p className="premium-selector-disabled-note">{disabledHelper}</p>
+      ) : null}
       <div className="premium-style-grid">
         {options.map((option) => (
           <PremiumOptionTile
@@ -263,6 +288,53 @@ export function PremiumStyleSelector({
             imageSrc={PREMIUM_STYLE_SAMPLE_PATHS[option.value]}
             tone="style"
             variant="style"
+            disabled={disabled}
+          />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+const INFOGRAPHIC_ICONS: Record<PremiumInfographicStyle, PremiumVisualIcon> = {
+  auto: Sparkles,
+  study_poster: BookOpen,
+  visual_dictionary: FileText,
+  language_atlas: Columns2,
+  museum_exhibit: PanelsTopLeft,
+  dense_encyclopedia: BookOpen,
+}
+
+interface PremiumInfographicStyleSelectorProps {
+  title: string
+  helper?: string
+  selected: PremiumInfographicStyle
+  onSelect: (value: PremiumInfographicStyle) => void
+}
+
+export function PremiumInfographicStyleSelector({
+  title,
+  helper,
+  selected,
+  onSelect,
+}: PremiumInfographicStyleSelectorProps) {
+  return (
+    <section className="premium-selector-section premium-infographic-style-section">
+      <h4 className="premium-selector-heading">{title}</h4>
+      {helper ? (
+        <p className="premium-selector-disabled-note premium-infographic-mode-note">{helper}</p>
+      ) : null}
+      <div className="premium-selector-grid premium-infographic-style-grid">
+        {PREMIUM_INFOGRAPHIC_STYLE_OPTIONS.map((option) => (
+          <PremiumOptionTile
+            key={option.value}
+            value={option.value}
+            label={option.label}
+            helper={option.helper}
+            selected={selected === option.value}
+            onSelect={onSelect}
+            icon={INFOGRAPHIC_ICONS[option.value]}
+            tone={INFOGRAPHIC_STYLE_VISUAL_TONES[option.value]}
           />
         ))}
       </div>
