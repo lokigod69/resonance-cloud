@@ -124,6 +124,7 @@ async def run_stage_with_budget(
     on_retry: Optional[callable] = None,
     bump_attempt_counter: Optional[callable] = None,
     start_attempt: int = 1,
+    terminal_exceptions: tuple[type[BaseException], ...] = (),
 ) -> None:
     """Run `run_once` with constant backoff, bounded by the stage budget.
 
@@ -159,6 +160,8 @@ async def run_stage_with_budget(
         try:
             await run_once()
             return
+        except terminal_exceptions:
+            raise
         except Exception as e:
             last_exc = e
             log.warning(

@@ -8,6 +8,7 @@ Engine work. P4 wires the single-image generation and completion.
 from __future__ import annotations
 
 import asyncio
+import json
 from datetime import datetime, timezone
 import logging
 import os
@@ -47,6 +48,16 @@ def _card_generation_error_message(message: str) -> str:
     return _bounded_error_message(step, message)
 
 
+def _is_terminal_card_image_failure(message: str | None) -> bool:
+    lowered = (message or "").lower()
+    return (
+        "validator failed before provider" in lowered
+        or "infographic v4 validator failed" in lowered
+        or "prompt writer failed before provider" in lowered
+        or "infographic v4 prompt writer failed" in lowered
+    )
+
+
 def _card_image_render_timeout_seconds() -> float:
     raw = os.getenv("CARD_IMAGE_RENDER_TIMEOUT_SECONDS", "")
     try:
@@ -54,6 +65,10 @@ def _card_image_render_timeout_seconds() -> float:
     except (TypeError, ValueError):
         return DEFAULT_CARD_IMAGE_RENDER_TIMEOUT_SECONDS
     return value if value > 0 else DEFAULT_CARD_IMAGE_RENDER_TIMEOUT_SECONDS
+
+
+class TerminalCardImageFailure(Exception):
+    """Non-retryable card image failure that should terminalize the word now."""
 
 
 class CardWorker:
@@ -225,6 +240,8 @@ class CardWorker:
                         "card image generation", "flow returned false"
                     )
                 )
+                if _is_terminal_card_image_failure(last_error_message):
+                    raise TerminalCardImageFailure(last_error_message)
                 raise RuntimeError(last_error_message)
 
         async def _bump() -> bool:
@@ -237,8 +254,22 @@ class CardWorker:
                 stage="pending_image",
                 run_once=_once,
                 bump_attempt_counter=_bump,
+                terminal_exceptions=(TerminalCardImageFailure,),
             )
         except retry.RetryReleased:
+            state.clear_log_context()
+            return
+        except TerminalCardImageFailure as e:
+            error_message = str(e)
+            log.error("card_worker: terminal card image failure word=%s stage=pending_image: %s", word_id, e)
+            await retry.finalize_failure(
+                self.sb,
+                word_id=word_id,
+                user_id=fresh["user_id"],
+                failed_stage="pending_image",
+                error_message=error_message,
+            )
+            await self._refresh_deck_status(fresh.get("deck_id"))
             state.clear_log_context()
             return
         except retry.BudgetExhausted as e:
@@ -440,6 +471,33 @@ class CardWorker:
             ),
         )
 
+        async def _persist_gpt_card_metadata(metadata: dict[str, Any] | None) -> None:
+            if image_model != "gpt_image_2" or not metadata:
+                return
+            update_data = {
+                "metadata": {
+                    **word_metadata,
+                    "gpt_image_2_card": metadata,
+                }
+            }
+
+            def _write_metadata():
+                return (
+                    self.sb.table("words")
+                      .update(update_data)
+                      .eq("id", word["id"])
+                      .execute()
+                )
+
+            try:
+                await asyncio.to_thread(_write_metadata)
+            except Exception:
+                log.warning(
+                    "card_worker: failed to persist GPT card metadata word=%s",
+                    word.get("id"),
+                    exc_info=True,
+                )
+
         timeout_seconds = _card_image_render_timeout_seconds()
         loop = asyncio.get_running_loop()
         render_future = loop.run_in_executor(None, generate_card_image, payload)
@@ -468,11 +526,25 @@ class CardWorker:
                 error_type="TimeoutError",
                 metadata={"timeout_seconds": timeout_seconds},
             )
+            cache_path = output_dir / "gpt_image_2_v4_prompt_cache.json"
+            try:
+                cached_metadata = json.loads(cache_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                cached_metadata = None
+            if isinstance(cached_metadata, dict):
+                cached_metadata = {
+                    **cached_metadata,
+                    "failure_origin": "provider",
+                    "provider_reached": True,
+                    "provider_error_summary": error_message,
+                }
+                await _persist_gpt_card_metadata(cached_metadata)
             log.error("card_worker: card image generation timed out word=%s", word.get("id"))
             return False, error_message
         if result.status != "success" or not result.image_path:
             message = result.error.message if result.error else "unknown card image error"
             log.warning("card_worker: card image generation failed word=%s: %s", word.get("id"), message)
+            await _persist_gpt_card_metadata(result.gpt_image_2_card_metadata)
             return False, _card_generation_error_message(message)
 
         public_url, upload_error = await self._upload_card_image(

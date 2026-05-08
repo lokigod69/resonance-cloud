@@ -1236,6 +1236,7 @@ def test_v4_dense_editorial_validator_failure_stops_before_provider(monkeypatch,
     assert result.status == "failed"
     assert result.error is not None
     assert "V4 validator failed" in result.error.message
+    assert result.error.retryable is False
     metadata = result.gpt_image_2_card_metadata
     assert metadata is not None
     assert metadata["validator_passed"] is False
@@ -2081,6 +2082,155 @@ def test_card_worker_persists_v4_validator_failure_metadata(monkeypatch, tmp_pat
     assert gpt_metadata["provider_reached"] is False
     assert gpt_metadata["validator_hard_errors"] == ["target/translation appear swapped"]
     assert gpt_metadata["prompt_attempt_count"] == 2
+
+
+def test_user_dense_validator_failure_terminalizes_word_without_stage_retries(monkeypatch, tmp_path):
+    from src.manifest import Manifest
+    from src import manifest as manifest_mod
+    from src import settings as settings_mod
+    from src import storage as storage_mod
+    from src.orchestration import card_worker as card_worker_mod
+    from src.orchestration import retry
+    from src.orchestration.card_worker import CardWorker
+    from src.orchestration.finalizer import Finalizer
+    from tests.fake_supabase import FakeSupabase
+
+    sb = FakeSupabase()
+    sb._tables["decks"].append({"id": "deck-1", "deck_type": "card", "status": "generating"})
+    job = sb.add_job(id="job-1", deck_id="deck-1", status="processing")
+    word = sb.add_word(
+        id="word-v4",
+        user_id="user-1",
+        deck_id="deck-1",
+        generation_job_id=job["id"],
+        word="wishful thinking",
+        word_slug="wishful-thinking",
+        translation="wishful thinking",
+        current_stage="pending",
+        status="pending",
+        metadata={
+            "visual_card_plan": {"base_language": "English"},
+            "layer2_eval": {
+                "backend_template": "infographic_prompt_v1",
+                "infographic_template": "infographic_dense_editorial_v4",
+                "presentation_form": "infographic_card",
+            },
+        },
+    )
+    calls: list[str] = []
+    v4_metadata = {
+        "backend_template": "infographic_prompt_v1",
+        "infographic_template": "infographic_dense_editorial_v4",
+        "validator_passed": False,
+        "validator_errors": ["banned visible metadata: Zielsprache"],
+        "validator_hard_errors": ["banned visible metadata: Zielsprache"],
+        "validator_warnings": ["required learning modules missing"],
+        "validator_retry_count": 1,
+        "provider_reached": False,
+        "failure_origin": "validator",
+        "final_prompt_preview": "Title: wishful thinking. Subtitle: wishful thinking.",
+        "prompt_attempt_count": 2,
+    }
+
+    async def fake_generate(self, latest, _deck_context):
+        calls.append(latest["current_stage"])
+        sb.table("words").update(
+            {"metadata": {**(latest.get("metadata") or {}), "gpt_image_2_card": v4_metadata}}
+        ).eq("id", latest["id"]).execute()
+        return False, "card image generation: Infographic V4 validator failed: banned visible metadata: Zielsprache"
+
+    async def no_sleep():
+        return None
+
+    monkeypatch.setattr(CardWorker, "_generate_card_image", fake_generate)
+    monkeypatch.setattr(retry, "backoff", no_sleep)
+    monkeypatch.setattr(card_worker_mod, "write_event_row", lambda **_kwargs: None)
+    monkeypatch.setattr(storage_mod, "get_job_workspace_path", lambda **_kwargs: tmp_path)
+    monkeypatch.setattr(settings_mod, "load_defaults", lambda _workspace_path: {"images": {"card_image_model": "gpt_image_2"}})
+    monkeypatch.setattr(
+        manifest_mod,
+        "read_manifest",
+        lambda _word_dir: Manifest(
+            word_original="wishful thinking",
+            word_slug="wishful-thinking",
+            translation="wishful thinking",
+            language="English",
+            language_code="en",
+            created_at="2026-05-08T00:00:00Z",
+            updated_at="2026-05-08T00:00:00Z",
+        ),
+    )
+
+    worker = CardWorker(sb, card_queue=asyncio.Queue())
+    _run(worker._process_word(dict(word)))
+    _run(Finalizer(sb)._maybe_finalize_job(dict(job)))
+
+    row = sb._tables["words"][0]
+    jobs = {item["id"]: item for item in sb._tables["generation_jobs"]}
+    assert calls == ["pending_image"]
+    assert row["current_stage"] == "failed"
+    assert row["status"] == "failed"
+    assert row["failed_stage"] == "pending_image"
+    assert row["metadata"]["gpt_image_2_card"]["failure_origin"] == "validator"
+    assert row["metadata"]["gpt_image_2_card"]["provider_reached"] is False
+    assert row["metadata"]["gpt_image_2_card"]["validator_hard_errors"] == ["banned visible metadata: Zielsprache"]
+    assert jobs[job["id"]]["status"] == "failed"
+
+
+def test_same_deck_later_card_job_starts_after_user_dense_validator_failure(monkeypatch):
+    from src.orchestration import feeder
+    from src.orchestration.finalizer import Finalizer
+    from tests.fake_supabase import FakeSupabase
+
+    sb = FakeSupabase()
+    sb._tables["decks"].append({"id": "deck-1", "deck_type": "card", "status": "generating"})
+    failed_job = sb.add_job(id="job-failed", deck_id="deck-1", status="processing")
+    waiting_job = sb.add_job(id="job-waiting", deck_id="deck-1", status="approved")
+    sb.add_word(
+        id="word-failed",
+        deck_id="deck-1",
+        generation_job_id=failed_job["id"],
+        current_stage="failed",
+        status="failed",
+        failed_stage="pending_image",
+        metadata={
+            "gpt_image_2_card": {
+                "backend_template": "infographic_prompt_v1",
+                "infographic_template": "infographic_dense_editorial_v4",
+                "failure_origin": "validator",
+                "provider_reached": False,
+                "validator_hard_errors": ["banned visible metadata: Zielsprache"],
+            }
+        },
+    )
+    sb.add_word(
+        id="word-waiting",
+        deck_id="deck-1",
+        generation_job_id=waiting_job["id"],
+        current_stage="pre_bootstrap",
+        status="pending",
+    )
+    bootstrap_calls: list[str] = []
+
+    async def _bootstrap(job):
+        bootstrap_calls.append(job["id"])
+
+    f = feeder.Feeder(
+        sb,
+        upstream_queue=asyncio.Queue(maxsize=8),
+        video_queue=asyncio.Queue(maxsize=8),
+        post_video_queue=asyncio.Queue(maxsize=8),
+        card_queue=asyncio.Queue(maxsize=8),
+        bootstrap=_bootstrap,
+    )
+
+    _run(Finalizer(sb)._maybe_finalize_job(dict(failed_job)))
+    _run(f._source1_new_jobs())
+
+    jobs = {row["id"]: row for row in sb._tables["generation_jobs"]}
+    assert jobs[failed_job["id"]]["status"] == "failed"
+    assert jobs[waiting_job["id"]]["status"] == "processing"
+    assert bootstrap_calls == [waiting_job["id"]]
 
 
 def test_card_worker_passes_layer2_settings_and_persists_layer2_metadata(monkeypatch, tmp_path):

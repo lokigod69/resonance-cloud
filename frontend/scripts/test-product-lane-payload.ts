@@ -37,6 +37,7 @@ import {
   type ProductLane,
   type WizardState,
 } from '../src/components/generate/useWizardState.ts'
+import { buildLayer2LabPayload } from '../src/lib/adminLayer2Lab.ts'
 
 (globalThis as typeof globalThis & { React: typeof React }).React = React
 const { default: PremiumCardCustomizationStep } = await import(
@@ -387,6 +388,45 @@ console.log('\n[premium customize infographic payload]')
   assert('custom infographic metadata omits meaning strategy', settings.premium_generation_mode?.meaning_strategy === undefined, settings)
 }
 
+console.log('\n[user dense infographic route matches admin lab dense route]')
+{
+  const userPayload = buildGeneratePayload({
+    state: makeState({
+      productLane: 'card_premium',
+      path: 'custom',
+      cardImageStyle: 'surrealism',
+      premiumInfographicStyle: 'dense_encyclopedia',
+      cardLayer2: {
+        meaning_strategy: 'clear_meaning',
+        presentation_form: 'infographic_card',
+      },
+    }),
+    userId: USER,
+  })
+  const adminPayload = buildLayer2LabPayload({
+    row: {
+      word: 'wishful thinking',
+      meaning_strategy: 'clear_meaning',
+      presentation_form: 'infographic_card',
+      art_style: 'editorial',
+      backend_template: 'infographic_prompt_v1',
+      infographic_template: 'infographic_dense_editorial_v4',
+      quick_mode_preset: 'custom',
+      label: null,
+    },
+    scriptIndex: 1,
+    labRunId: 'lab-run-test',
+    userId: USER,
+    targetLanguage: 'English',
+    baseLanguage: 'English',
+    deckName: 'Dense route test',
+  })
+  const userLayer2 = userPayload.jobPayload.settings_override.card_layer2
+  const adminLayer2 = adminPayload.jobPayload.settings_override.card_layer2
+  assert('user dense backend matches admin dense backend', userLayer2?.backend_template === adminLayer2?.backend_template, { userLayer2, adminLayer2 })
+  assert('user dense template matches admin dense template', userLayer2?.infographic_template === adminLayer2?.infographic_template, { userLayer2, adminLayer2 })
+  assert('user dense presentation matches admin dense presentation', userLayer2?.presentation_form === adminLayer2?.presentation_form, { userLayer2, adminLayer2 })
+}
 console.log('\n[standard card payload does not use layer2]')
 {
   const p = settingsOf('card_standard', {

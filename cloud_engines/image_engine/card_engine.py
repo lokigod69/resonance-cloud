@@ -58,6 +58,16 @@ V4_DENSE_INFOGRAPHIC_TEMPLATE = "infographic_dense_editorial_v4"
 V4_PROMPT_CACHE_FILENAME = "gpt_image_2_v4_prompt_cache.json"
 
 
+def _is_terminal_before_provider_gpt_card_failure(metadata: dict | None) -> bool:
+    if not isinstance(metadata, dict):
+        return False
+    if metadata.get("failure_origin") in {"validator", "prompt_writer"} and metadata.get("provider_reached") is False:
+        return True
+    if metadata.get("validator_passed") is False:
+        return True
+    return False
+
+
 def _v4_prompt_cache_path(output_path: Path) -> Path:
     return output_path.parent / V4_PROMPT_CACHE_FILENAME
 
@@ -851,10 +861,14 @@ def generate_card_image(payload: CardImagePayload) -> CardImageResult:
             )
         if not render_result.get("success") or not output_path.exists():
             message = render_result.get("error_message") or "provider did not produce card.png"
+            metadata = render_result.get("gpt_image_2_card_metadata")
             return CardImageResult(
                 status="failed",
-                error=ImageError(message=f"Card image render failed: {message}", retryable=True),
-                gpt_image_2_card_metadata=render_result.get("gpt_image_2_card_metadata"),
+                error=ImageError(
+                    message=f"Card image render failed: {message}",
+                    retryable=not _is_terminal_before_provider_gpt_card_failure(metadata),
+                ),
+                gpt_image_2_card_metadata=metadata,
             )
         return CardImageResult(
             status="success",
