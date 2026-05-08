@@ -11,6 +11,10 @@ import {
   compileScenarioPrompt,
 } from '@/data/roleplayScenarios'
 import { getGeminiCharacterMode } from '@/data/geminiCharacterModes'
+import {
+  getNavigatorAudioSession,
+  setIOSAudioSessionType,
+} from '@/lib/grokIOSAudioDiagnostics'
 
 const IS_SAFARI = typeof navigator !== 'undefined' && (
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
@@ -662,6 +666,10 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
    * media category, matching the reliable voice-sample playback path.
    */
   const playAudio = useCallback(async (base64: string, format: string) => {
+    // Reset audio session to 'playback' so output routes to the speaker, not
+    // the earpiece. ensureStream may have flipped it to 'play-and-record' for
+    // mic acquisition; we only need that during recording.
+    setIOSAudioSessionType('playback', 'voice-tutor-before-playback')
     stopPlayback(false)
     const generation = ++playbackGenerationRef.current
     const isAborted = () => playbackGenerationRef.current !== generation
@@ -1263,6 +1271,11 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       // Stream died (e.g., user revoked permission in OS settings) — clean up
       streamRef.current = null
     }
+    // iOS Safari rejects getUserMedia with NotAllowedError (no popup) when the
+    // audio session category is 'playback'. The silent-MP3 primer in
+    // primeAudioForIOS and any prior Grok teardown both leave it there. Flip
+    // to 'play-and-record' before the request. No-op off iOS.
+    setIOSAudioSessionType('play-and-record', 'voice-tutor-before-getUserMedia')
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
     streamRef.current = stream
     return stream
@@ -1395,6 +1408,12 @@ export function useVoiceTutor(baseLang?: string): UseVoiceTutorReturn {
       setStatus('recording')
     } catch (err) {
       acquiringStreamRef.current = false
+      console.warn('[useVoiceTutor] Failed to start recording:', {
+        provider: providerRef.current,
+        errorName: err instanceof Error ? err.name : null,
+        errorMessage: err instanceof Error ? err.message : String(err),
+        audioSessionType: getNavigatorAudioSession()?.type ?? null,
+      })
       if (err instanceof DOMException && err.name === 'NotAllowedError') {
         setError('Microphone access denied. Please allow microphone access in your browser settings.')
       } else {
