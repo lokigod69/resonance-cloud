@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
+import { useTranslation } from '@/hooks/useTranslation'
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { SkinProvider, useSkin } from '@/contexts/SkinContext'
 import { LanguageProvider } from '@/contexts/LanguageContext'
@@ -192,6 +194,16 @@ function AppRoutes() {
   )
 }
 
+function DocumentLanguageSync() {
+  const { locale } = useTranslation()
+
+  useEffect(() => {
+    document.documentElement.lang = locale
+  }, [locale])
+
+  return null
+}
+
 function AppShellDialogs() {
   const { profileOpen, setProfileOpen, redeemOpen, setRedeemOpen } = useDialogs()
   return (
@@ -211,6 +223,7 @@ export default function App() {
       <AuthProvider>
         <LanguageProvider>
           <DialogProvider>
+            <DocumentLanguageSync />
             <AppRoutes />
             <AppShellDialogs />
           </DialogProvider>

@@ -24,10 +24,29 @@ export const LANGUAGE_TO_LOCALE: Record<string, Locale> = {
   Spanish: 'en',
 };
 
+const warnedFallbackKeys = new Set<string>();
+
+function warnMissingLocaleKey(locale: Locale, key: string) {
+  if (locale === 'en' || !import.meta.env?.DEV) return;
+
+  const warningKey = `${locale}:${key}`;
+  if (warnedFallbackKeys.has(warningKey)) return;
+
+  warnedFallbackKeys.add(warningKey);
+  console.warn('[i18n] Missing locale key; falling back to English', { locale, key });
+}
+
 // Shared translation function builder — used by useTranslation and useLandingLocale
 export function createT(locale: Locale) {
   return (key: string, vars?: Record<string, string | number>): string => {
-    let str = translations[locale]?.[key] ?? translations.en?.[key] ?? key;
+    const localeString = translations[locale]?.[key];
+    const englishString = translations.en?.[key];
+
+    if (localeString === undefined && englishString !== undefined) {
+      warnMissingLocaleKey(locale, key);
+    }
+
+    let str = localeString ?? englishString ?? key;
     if (vars) {
       for (const [varName, value] of Object.entries(vars)) {
         str = str.replace(new RegExp(`\\{${varName}\\}`, 'g'), String(value));
@@ -551,6 +570,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'common.loading': 'Laden...',
     'common.retry': 'Erneut versuchen',
     'common.refresh': 'Aktualisieren',
+    'common.cancel': 'Abbrechen',
 
     // ── Errors ──
     'error.sessionExpired': 'Sitzung abgelaufen',
@@ -652,7 +672,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'study.wordsReviewed.other': 'Du hast {count} Wörter wiederholt',
     'study.remembered': '{count} gemerkt',
     'study.needReview': '{count} zum Wiederholen',
-    'study.startAgain': 'Nochmal',
+    'study.startAgain': 'Neue Sitzung',
     'study.allDecks': 'Alle Decks',
     'study.revealAnswer': 'Antwort aufdecken',
     'study.reviewLater': 'Später wiederholen',
@@ -664,7 +684,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'study.mode.flashcard.desc': 'Schnelles Wortlernen, ohne Medien',
     'study.mode.audio': 'Audio',
     'study.mode.audio.desc': 'Höre den Song, erinnere das Wort',
-    'study.mode.canvas': 'Leinwand',
+    'study.mode.canvas': 'Canvas',
     'study.mode.canvas.desc': 'Wörter schweben in einer thematischen Welt. Klicken zum Aufdecken.',
     'study.comingSoon': 'Kommt bald',
     'study.lastUsed': 'Zuletzt verwendet',
@@ -788,6 +808,12 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.deckType.video.cost': '10 Credits pro Wort',
     'generate.deckType.card.label': 'Kartendeck',
     'generate.deckType.card.cost': 'Standard oder GPT Image-2 im nächsten Schritt',
+    'generate.stepLanguage': 'Sprache',
+    'generate.stepWords': 'Wörter',
+    'generate.stepVibe': 'Vibe',
+    'generate.stepArtStyle': 'Bildstil',
+    'generate.stepMusic': 'Musik',
+    'generate.stepReview': 'Prüfen',
     'generate.productLane.breadcrumb': 'Produkt',
     'generate.productLane.title': 'Welches Produkt?',
     'generate.productLane.titleCardOnly': 'Standard- oder Premium-Karte?',
@@ -807,8 +833,35 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.cardImageStyle.realistic.label': 'Realistisch',
     'generate.cardImageStyle.editorial.label': 'Editorial',
     'generate.cardImageStyle.random.label': 'Zufällig',
+    'generate.chooseLanguage': 'Wähle deine Sprache',
+    'generate.chooseLanguageSub': 'Wähle die Sprache, die du lernen möchtest',
+    'generate.typeWord': 'Wort oder Phrase eingeben...',
+    'generate.wordCount': '{count} von {max} Wörtern',
     'generate.wordCountSlider.one': '{count} Wort',
     'generate.wordCountSlider.other': '{count} Wörter',
+    'generate.maxWords': 'Maximal {max} Wörter',
+    'generate.wordExists': 'Wort bereits hinzugefügt',
+    'generate.setDirection': 'Kreative Richtung festlegen',
+    'generate.setDirectionSub': 'Wähle, wie die KI deine Wörter visuell interpretiert',
+    'generate.whichFilm': 'Welcher Film?',
+    'generate.filmPlaceholder': 'Filmname (optional)',
+    'generate.filmExample': 'z. B. Blade Runner, Amélie...',
+    'generate.chooseArtStyle': 'Bildstil wählen',
+    'generate.chooseArtStyleSub': 'Wähle die visuelle Behandlung deiner Karten',
+    'generate.normalStyle': 'Normal',
+    'generate.normalStyleDesc': 'Die KI wählt den passenden Bildstil pro Wort',
+    'generate.pickGenre': 'Genre wählen',
+    'generate.pickGenreSub': 'Wähle den Musikstil für deine Videos',
+    'generate.synthesisReady': 'Synthese bereit',
+    'generate.deckNamePlaceholder': 'Deck benennen...',
+    'generate.creditsUsed.one': '{count} Credit wird verwendet',
+    'generate.creditsUsed.other': '{count} Credits werden verwendet',
+    'generate.notEnoughCredits': 'Nicht genug Credits',
+    'generate.notEnoughCreditsDetail': 'Nicht genug Credits. Du hast {have}, brauchst aber {need}. Löse einen Einladungscode ein, um mehr zu erhalten.',
+    'generate.forgingMemories': 'Erinnerungen werden geformt',
+    'generate.initializing': 'Initialisierung...',
+    'generate.initializeSynthesis': 'Synthese starten',
+    'generate.backToDeck': 'Zurück zum Deck',
     'generate.addWords': 'Füge deine Wörter hinzu',
     'generate.quickGenerate': 'Schnell erstellen',
     'generate.customize': 'Anpassen',
@@ -877,6 +930,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'speak.historyTooltip': 'Gesprächsverlauf',
     'speak.newChatTooltip': 'Neues Gespräch',
     'speak.backTooltip': 'Zurück zur Sprachauswahl',
+    'speak.studyModeOnToast': 'Lernmodus an — deine Vokabeln fließen ins Gespräch ein',
+    'speak.studyModeOffToast': 'Lernmodus aus',
+    'speak.newChatConfirmTitle': 'Neues Gespräch starten?',
+    'speak.newChatConfirmDescription': 'Das aktuelle Gespräch wird beendet. Du kannst es später im Verlauf wieder ansehen.',
+    'speak.newChatConfirmAction': 'Neues Gespräch starten',
 
     // ── Common (missed) ──
     'common.somethingWentWrong': 'Etwas ist schiefgelaufen. Bitte erneut versuchen.',
