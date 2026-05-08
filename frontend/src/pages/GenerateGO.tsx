@@ -201,7 +201,13 @@ export default function GenerateGO() {
   useEffect(() => {
     const ref = sectionRefs.current[step - 1]
     if (ref) {
-      setTimeout(() => ref.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150)
+      setTimeout(() => {
+        const summaryTarget = document.querySelector<HTMLElement>('.generate-selection-summary')
+        const target = summaryTarget && summaryTarget.childElementCount > 0
+          ? summaryTarget
+          : ref
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 150)
     }
   }, [step])
 

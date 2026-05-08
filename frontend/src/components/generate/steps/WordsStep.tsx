@@ -111,14 +111,14 @@ export default function WordsStep({
         {/* Word input */}
         {inputMode === 'manual' && !isFull && <GlassInput ref={glassInputRef} onLock={handleLock} autoFocus placeholder="Type a word and press Enter" />}
 
-        {/* Back to categories — only available before any manual words are locked */}
+        {/* Back to choices: only available before any manual words are locked */}
         {inputMode === 'manual' && wordCount === 0 && (
           <button
             type="button"
             onClick={() => setInputMode('picker')}
             className="text-xs text-muted-foreground hover:text-foreground/70 transition"
           >
-            ← Back to Categories
+            Back
           </button>
         )}
 

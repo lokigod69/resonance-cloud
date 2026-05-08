@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Loader2, RefreshCw, Sparkles, Wand2, X, Zap } from 'lucide-react'
+import { Loader2, RefreshCw, Wand2, X, Zap } from 'lucide-react'
 import PillButton from '../shared/PillButton'
 import { CATEGORY_GROUPS } from '@/data/categories'
 import { useAuth } from '@/hooks/useAuth'
@@ -175,14 +175,21 @@ export default function CategoryPicker({
 
   if (mode === 'idle') {
     return (
-      <div className="flex flex-col items-center gap-3 pb-2">
-        <PillButton glow onClick={() => setMode('picking')}>
-          <Sparkles className="h-4 w-4" />
-          Choose a Category
-        </PillButton>
-        <PillButton variant="secondary" onClick={onSwitchToManual}>
+      <div className="flex w-full flex-col items-center gap-3 pb-2">
+        <button
+          type="button"
+          className="words-choice-button"
+          onClick={onSwitchToManual}
+        >
           Type Your Own
-        </PillButton>
+        </button>
+        <button
+          type="button"
+          className="words-choice-button"
+          onClick={() => setMode('picking')}
+        >
+          Pick a Category
+        </button>
       </div>
     )
   }

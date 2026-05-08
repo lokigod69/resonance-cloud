@@ -18,6 +18,8 @@ const premiumSelectors = read('src/components/generate/shared/PremiumVisualSelec
 const generatePg = read('src/pages/GeneratePG.tsx')
 const generateGo = read('src/pages/GenerateGO.tsx')
 const cardImageStyleStep = read('src/components/generate/steps/CardImageStyleStep.tsx')
+const categoryPicker = read('src/components/generate/steps/CategoryPicker.tsx')
+const wordsStep = read('src/components/generate/steps/WordsStep.tsx')
 
 assert(
   premiumSelectors.includes('data-option-value={value}'),
@@ -57,10 +59,45 @@ assert(
   'Standard Card visual style must use centered shared layout classes.',
 )
 
+const typeOwnIndex = categoryPicker.indexOf('Type Your Own')
+const pickCategoryIndex = categoryPicker.indexOf('Pick a Category')
+assert(
+  typeOwnIndex >= 0
+    && pickCategoryIndex > typeOwnIndex
+    && !categoryPicker.includes('Choose a Category'),
+  'Add Words first-choice buttons must be Type Your Own first, then Pick a Category.',
+)
+
+assert(
+  categoryPicker.includes('words-choice-button')
+    && !/glow\s+onClick=\{\(\)\s*=>\s*setMode\('picking'\)\}/.test(categoryPicker),
+  'Add Words first-choice buttons must use equal neutral choice styling without the old green glow.',
+)
+
+assert(
+  (wordsStep.includes('>Back</button>') || />\s*Back\s*<\/button>/.test(wordsStep))
+    && !wordsStep.includes('Back to Categories'),
+  'Manual word entry back button must use the shorter "Back" label.',
+)
+
+assert(
+  glassCss.includes('--premium-quick-main-width')
+    && /\.premium-quick-primary\s*\{[\s\S]*width:\s*min\(100%,\s*var\(--premium-quick-main-width\)\)/.test(glassCss)
+    && /\.premium-customize-button\s*\{[\s\S]*width:\s*min\(100%,\s*var\(--premium-quick-main-width\)\)/.test(glassCss),
+  'Premium Quick Generate and Customize must share a centered max-width token.',
+)
+
+assert(
+  /\.generate-selection-summary\s*\{[\s\S]*margin-top:\s*clamp\(22px,\s*3\.5vw,\s*36px\)/.test(glassCss)
+    && glassCss.includes('scroll-margin-top: calc(var(--glassy-header-offset, 0px) + 18px)'),
+  'Generate selection summary chips must keep consistent breathing room below the header.',
+)
+
 assert(
   generatePg.includes('window.scrollTo({ top: 0')
-    && generateGo.includes('scrollIntoView({ behavior: \'smooth\', block: \'start\' })'),
-  'Generate step navigation must reset to the top of the active step.',
+    && generateGo.includes('generate-selection-summary')
+    && generateGo.includes('summaryTarget && summaryTarget.childElementCount > 0'),
+  'Generate step navigation must keep the shared selection summary visible below the header.',
 )
 
 console.log('Generate responsive layout source checks passed.')

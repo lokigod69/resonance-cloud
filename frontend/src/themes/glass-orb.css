@@ -584,7 +584,8 @@
 }
 
 .generate-selection-summary {
-  margin-top: clamp(12px, 2vw, 22px);
+  margin-top: clamp(22px, 3.5vw, 36px);
+  scroll-margin-top: calc(var(--glassy-header-offset, 0px) + 18px);
 }
 
 .premium-summary-orb {
@@ -700,6 +701,7 @@
 .premium-quick-panel {
   --premium-select-accent: var(--go-accent, var(--accent, #c65a80));
   --premium-select-glow: var(--accent-glow, color-mix(in srgb, var(--premium-select-accent) 28%, transparent));
+  --premium-quick-main-width: 220px;
   width: min(100%, 580px);
   display: flex;
   flex-direction: column;
@@ -733,7 +735,7 @@
 }
 
 .premium-quick-primary {
-  width: min(100%, 360px);
+  width: min(100%, var(--premium-quick-main-width));
   background: color-mix(in srgb, var(--premium-select-accent) 16%, transparent);
   border-color: color-mix(in srgb, var(--premium-select-accent) 52%, transparent);
   box-shadow: 0 0 24px var(--premium-select-glow);
@@ -760,7 +762,7 @@
 }
 
 .premium-customize-button {
-  min-width: 170px;
+  width: min(100%, var(--premium-quick-main-width));
   padding: 0 18px;
   background: transparent;
   border-color: color-mix(in srgb, var(--go-text-secondary, var(--text-secondary)) 42%, transparent);
@@ -773,6 +775,35 @@
   transform: translateY(-1px);
   border-color: color-mix(in srgb, var(--premium-select-accent) 52%, transparent);
   background: color-mix(in srgb, var(--premium-select-accent) 13%, transparent);
+}
+
+.words-choice-button {
+  width: min(100%, 220px);
+  min-height: 46px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--go-text-secondary, var(--text-secondary)) 34%, transparent);
+  background: color-mix(in srgb, var(--go-glass-bg, var(--surface-glass)) 66%, transparent);
+  color: var(--go-text-primary, var(--text-primary));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  font-size: 0.9rem;
+  font-weight: 750;
+  line-height: 1.1;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.words-choice-button:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--go-accent, var(--accent)) 34%, transparent);
+  background: color-mix(in srgb, var(--go-glass-bg, var(--surface-glass)) 82%, transparent);
+}
+
+.words-choice-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--go-accent, var(--accent)) 68%, white);
+  outline-offset: 3px;
 }
 
 @media (max-width: 1024px) {
