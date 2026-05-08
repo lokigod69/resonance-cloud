@@ -87,10 +87,10 @@ function SpeakSelectionShell({
   className?: string
 }) {
   return (
-    <div className={`speak-page-shell relative isolate ${className}`}>
+    <div className={`speak-page-shell speak-setup-scroll relative isolate ${className}`}>
       <div className="speak-page-aura" aria-hidden="true" />
       <SpeakRippleField />
-      <div className={`relative z-10 mx-auto w-full ${maxWidth} px-4 py-6 sm:px-6 sm:py-8 lg:px-8`}>
+      <div className={`speak-setup-scroll-inner relative z-10 mx-auto w-full ${maxWidth} px-4 py-6 sm:px-6 sm:py-8 lg:px-8`}>
         {children}
       </div>
     </div>
@@ -794,7 +794,7 @@ export default function Speak() {
 
         <div
           ref={chatRef}
-          className="flex-1 overflow-y-auto px-4 py-4 space-y-3 max-w-5xl mx-auto w-full"
+          className="speak-scroll-region flex-1 overflow-y-auto px-4 py-4 space-y-3 max-w-5xl mx-auto w-full"
           style={{ scrollbarWidth: 'thin' }}
         >
           {grok.messages.map((msg, i) => (
@@ -932,7 +932,7 @@ export default function Speak() {
 
         <div
           ref={chatRef}
-          className="flex-1 overflow-y-auto px-6 pt-8 pb-[calc(var(--app-safe-bottom)+2rem)] max-w-5xl mx-auto w-full"
+          className="speak-scroll-region flex-1 overflow-y-auto px-6 pt-8 pb-[calc(var(--app-safe-bottom)+2rem)] max-w-5xl mx-auto w-full"
           style={{ scrollbarWidth: 'thin' }}
         >
           <div className="mx-auto flex min-h-full max-w-xl flex-col items-center justify-center gap-8 text-center">
@@ -1120,7 +1120,7 @@ export default function Speak() {
 
       <div
         ref={chatRef}
-        className="flex-1 overflow-y-auto px-4 py-4 space-y-3 max-w-5xl mx-auto w-full"
+        className="speak-scroll-region flex-1 overflow-y-auto px-4 py-4 space-y-3 max-w-5xl mx-auto w-full"
         style={{ scrollbarWidth: 'thin' }}
       >
         {tutor.messages.map((msg, i) => (

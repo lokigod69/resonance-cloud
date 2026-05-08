@@ -651,6 +651,7 @@ input[type="range"].volume-slider::-moz-range-track {
 .speak-page-shell {
   min-height: calc(100dvh - 5rem);
   overflow: visible;
+  touch-action: pan-y;
   background:
     radial-gradient(circle at 14% 12%, rgba(79, 70, 229, 0.18), transparent 30%),
     radial-gradient(circle at 86% 18%, rgba(14, 165, 233, 0.13), transparent 28%),
@@ -661,6 +662,39 @@ input[type="range"].volume-slider::-moz-range-track {
 @supports not (height: 100dvh) {
   .speak-page-shell {
     min-height: calc(100vh - 5rem);
+  }
+}
+
+.speak-scroll-region {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
+}
+
+.speak-setup-scroll button,
+.speak-setup-scroll [role="button"] {
+  touch-action: pan-y;
+}
+
+.speak-setup-scroll .speak-start-button {
+  touch-action: manipulation;
+}
+
+@media (max-width: 767px) {
+  .speak-setup-scroll {
+    position: fixed;
+    inset: var(--glassy-header-offset) 0 0;
+    z-index: 30;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+  }
+
+  .speak-setup-scroll-inner {
+    min-height: calc(100dvh - var(--glassy-header-offset));
   }
 }
 
