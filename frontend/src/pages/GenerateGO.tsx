@@ -16,6 +16,10 @@ import {
   DEFAULT_CARD_LAYER2_ART_STYLE,
   DEFAULT_PREMIUM_INFOGRAPHIC_STYLE,
   DEFAULT_PREMIUM_QUICK_MODE,
+  CARD_LAYER2_ART_STYLE_OPTIONS,
+  CARD_LAYER2_MEANING_OPTIONS,
+  CARD_LAYER2_PRESENTATION_OPTIONS,
+  PREMIUM_INFOGRAPHIC_STYLE_OPTIONS,
   cardLayer2ArtStyleLabel,
   cardLayer2MeaningLabel,
   cardLayer2PresentationLabel,
@@ -62,18 +66,29 @@ const GO_GENRES = [
   { value: 'custom', label: 'Custom' },
 ]
 
-function laneLabel(lane: ProductLane | null): string {
-  if (lane === 'video') return 'Video & Music'
-  if (lane === 'card_standard') return 'Standard Card'
-  if (lane === 'card_premium') return 'Premium Card'
-  return ''
+const PRODUCT_LANE_LABEL_KEYS: Record<ProductLane, string> = {
+  video: 'generate.productLane.video.label',
+  card_standard: 'generate.productLane.standard.label',
+  card_premium: 'generate.productLane.premium.label',
+}
+
+const ART_GROUP_LABEL_KEYS: Record<string, string> = {
+  Photographic: 'generateGo.artGroup.photographic',
+  'Classic Fine Art': 'generateGo.artGroup.classicFineArt',
+  'Decorative & Regional': 'generateGo.artGroup.decorativeRegional',
+  'Animation & Shows': 'generateGo.artGroup.animationShows',
+  'Digital & Retro': 'generateGo.artGroup.digitalRetro',
+  'Craft & Tactile': 'generateGo.artGroup.craftTactile',
+  'Illustration & Drawing': 'generateGo.artGroup.illustrationDrawing',
+  'Artist-Inspired': 'generateGo.artGroup.artistInspired',
+  'Genre & Fantasy': 'generateGo.artGroup.genreFantasy',
 }
 
 export default function GenerateGO() {
   const { user, profile, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { activeLanguage } = useLanguage()
-  const { t } = useTranslation()
+  const { t, tp } = useTranslation()
   const navigate = useNavigate()
 
   const [step, setStep] = useState(1)
@@ -549,16 +564,24 @@ export default function GenerateGO() {
   const creditCost = computeCreditCost(productLane, words.length)
   const showLaneStep = !existingDeck || existingDeck.deck_type === 'card'
 
+  function productLaneLabel(lane: ProductLane | null): string {
+    return lane ? t(PRODUCT_LANE_LABEL_KEYS[lane]) : ''
+  }
+
   function findStyleLabel(value: string): string {
     for (const g of ART_STYLE_GROUPS) {
       const found = g.styles.find(s => s.value === value)
-      if (found) return found.label
+      if (found) return t(`generateGo.artStyle.${found.value}`)
     }
     return value
   }
 
   function findCardImageStyleLabel(value: typeof cardImageStyle): string {
-    return cardLayer2ArtStyleLabel(value)
+    if (value === 'Photorealistic') return t('generate.cardImageStyle.realistic.label')
+    if (value === 'Editorial') return t('generate.cardImageStyle.editorial.label')
+    if (value === 'Random') return t('generate.cardImageStyle.random.label')
+    const option = CARD_LAYER2_ART_STYLE_OPTIONS.find((item) => item.value === value)
+    return option?.labelKey ? t(option.labelKey) : cardLayer2ArtStyleLabel(value)
   }
 
   function languageDisplayLabel(value: string): string {
@@ -566,19 +589,41 @@ export default function GenerateGO() {
   }
 
   function wordCountLabel(count: number): string {
-    return `${count} word${count === 1 ? '' : 's'}`
+    return tp('generateGo.wordCount', count)
   }
 
   function niveauLabel(value: string | null): string {
     const key = (NIVEAU_OPTIONS.find((option) => option.value === value) ?? NIVEAU_OPTIONS[0]).key
-    const labels: Record<typeof key, string> = {
-      auto: 'Auto',
-      short: 'Short',
-      phrase: 'Phrase',
-      story: 'Story',
-      long: 'Long',
-    }
-    return labels[key]
+    return t(`generate.niveau.${key}`)
+  }
+
+  function vibeLabel(value: string): string {
+    return t(`generateGo.vibe.${value}`)
+  }
+
+  function genreLabel(value: string): string {
+    if (value === 'custom') return t('generateGo.genre.custom')
+    return GO_GENRES.find((item) => item.value === value)?.label ?? value
+  }
+
+  function artGroupLabel(group: string): string {
+    const key = ART_GROUP_LABEL_KEYS[group]
+    return key ? t(key) : group
+  }
+
+  function cardLayer2MeaningDisplay(value: CardLayer2Customization['meaning_strategy']): string {
+    const option = CARD_LAYER2_MEANING_OPTIONS.find((item) => item.value === value)
+    return option?.labelKey ? t(option.labelKey) : cardLayer2MeaningLabel(value)
+  }
+
+  function cardLayer2PresentationDisplay(value: CardLayer2Customization['presentation_form']): string {
+    const option = CARD_LAYER2_PRESENTATION_OPTIONS.find((item) => item.value === value)
+    return option?.labelKey ? t(option.labelKey) : cardLayer2PresentationLabel(value)
+  }
+
+  function premiumInfographicStyleDisplay(value: PremiumInfographicStyle): string {
+    const option = PREMIUM_INFOGRAPHIC_STYLE_OPTIONS.find((item) => item.value === value)
+    return option?.labelKey ? t(option.labelKey) : premiumInfographicStyleLabel(value)
   }
 
   const premiumInfographicSelected =
@@ -588,7 +633,7 @@ export default function GenerateGO() {
       ? [{
           key: 'language',
           label: languageDisplayLabel(language),
-          ariaLabel: 'Back to language step',
+          ariaLabel: t('generateGo.backToLanguageStep'),
           onClick: () => setStep(1),
           tone: 'language',
         }]
@@ -596,8 +641,8 @@ export default function GenerateGO() {
     ...(productLane && showLaneStep && step > 2
       ? [{
           key: 'product',
-          label: laneLabel(productLane),
-          ariaLabel: 'Back to product step',
+          label: productLaneLabel(productLane),
+          ariaLabel: t('generateGo.backToProductStep'),
           onClick: () => setStep(2),
           tone: 'product',
         }]
@@ -606,7 +651,7 @@ export default function GenerateGO() {
       ? [{
           key: 'words',
           label: wordCountLabel(words.length),
-          ariaLabel: 'Back to words step',
+          ariaLabel: t('generateGo.backToWordsStep'),
           onClick: () => setStep(3),
           tone: 'words',
         }]
@@ -615,7 +660,7 @@ export default function GenerateGO() {
       ? [{
           key: 'style',
           label: findCardImageStyleLabel(cardImageStyle),
-          ariaLabel: 'Back to visual style step',
+          ariaLabel: t('generateGo.backToVisualStyleStep'),
           onClick: () => setStep(4),
           tone: 'style',
         }]
@@ -625,15 +670,15 @@ export default function GenerateGO() {
         ? [
             {
               key: 'form',
-              label: 'Infographic',
-              ariaLabel: 'Back to customize step',
+              label: t('premium.presentation.infographic_card.label'),
+              ariaLabel: t('generateGo.backToCustomizeStep'),
               onClick: () => setStep(4),
               tone: 'form',
             },
             {
               key: 'infographic-style',
-              label: premiumInfographicStyleLabel(premiumInfographicStyle),
-              ariaLabel: 'Back to customize step',
+              label: premiumInfographicStyleDisplay(premiumInfographicStyle),
+              ariaLabel: t('generateGo.backToCustomizeStep'),
               onClick: () => setStep(4),
               tone: 'infographic',
             },
@@ -641,15 +686,15 @@ export default function GenerateGO() {
         : [
             {
               key: 'meaning',
-              label: cardLayer2MeaningLabel(cardLayer2.meaning_strategy),
-              ariaLabel: 'Back to customize step',
+              label: cardLayer2MeaningDisplay(cardLayer2.meaning_strategy),
+              ariaLabel: t('generateGo.backToCustomizeStep'),
               onClick: () => setStep(4),
               tone: 'meaning',
             },
             {
               key: 'form',
-              label: cardLayer2PresentationLabel(cardLayer2.presentation_form),
-              ariaLabel: 'Back to customize step',
+              label: cardLayer2PresentationDisplay(cardLayer2.presentation_form),
+              ariaLabel: t('generateGo.backToCustomizeStep'),
               onClick: () => setStep(4),
               tone: 'form',
             },
@@ -658,8 +703,8 @@ export default function GenerateGO() {
     ...(!cardLane && vibe && step > 4
       ? [{
           key: 'vibe',
-          label: vibe === 'auto' ? 'Auto' : vibe,
-          ariaLabel: 'Back to visual context step',
+          label: vibeLabel(vibe),
+          ariaLabel: t('generateGo.backToVisualContextStep'),
           onClick: () => setStep(4),
           tone: 'vibe',
         }]
@@ -667,8 +712,8 @@ export default function GenerateGO() {
     ...(!cardLane && step > 5
       ? [{
           key: 'art',
-          label: artStyle ? findStyleLabel(artStyle) : 'Auto',
-          ariaLabel: 'Back to art style step',
+          label: artStyle ? findStyleLabel(artStyle) : t('generateGo.vibe.auto'),
+          ariaLabel: t('generateGo.backToArtStyleStep'),
           onClick: () => {
             setExpandedCategory(null)
             setStep(5)
@@ -680,7 +725,7 @@ export default function GenerateGO() {
       ? [{
           key: 'niveau',
           label: niveauLabel(lyricMode),
-          ariaLabel: 'Back to niveau step',
+          ariaLabel: t('generateGo.backToNiveauStep'),
           onClick: () => setStep(6),
           tone: 'niveau',
         }]
@@ -689,7 +734,7 @@ export default function GenerateGO() {
       ? [{
           key: 'music',
           label: genre,
-          ariaLabel: 'Back to music step',
+          ariaLabel: t('generateGo.backToMusicStep'),
           onClick: () => setStep(7),
           tone: 'music',
         }]
@@ -717,12 +762,14 @@ export default function GenerateGO() {
               label={t('generate.forgingMemories')}
               labelClassName="text-[var(--go-text-primary)]"
               sublabel={existingDeck
-                ? `New cards are being generated for "${existingDeck.name || existingDeck.target_language + ' Deck'}". Check back soon!`
+                ? t('generateGo.newCardsGeneratingForDeck', {
+                    name: existingDeck.name || t('generateGo.languageDeckName', { language: existingDeck.target_language }),
+                  })
                 : `${t('generate.deckBeingCreated')} ${t('generate.backgroundNotice')}`}
             />
             {generatedQueueIsCard && (
               <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.8rem', margin: 0, opacity: 0.8 }}>
-                Generating cards...
+                {t('generateGo.generatingCards')}
               </p>
             )}
             {!generatedQueueIsCard && hasChecked && queuePaused && (
@@ -760,7 +807,7 @@ export default function GenerateGO() {
       {/* ── Step 1: Language ── */}
       {!existingDeck && step === 1 && (
         <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
-          {step === 1 && <h3>Choose Language Orbit</h3>}
+          {step === 1 && <h3>{t('generateGo.chooseLanguageOrbit')}</h3>}
           <div className="gen-orb-row gen-language-grid">
             {LANGUAGES.map(lang => (
               <button
@@ -791,7 +838,7 @@ export default function GenerateGO() {
           ) : (
             <div className="gen-orb-row">
               <div className="gen-orb selected breadcrumb" onClick={() => setStep(2)}>
-                {laneLabel(productLane)}
+                {productLaneLabel(productLane)}
               </div>
             </div>
           )}
@@ -811,13 +858,13 @@ export default function GenerateGO() {
                 onCustomize={() => setStep(4)}
               />
               <p style={{ textAlign: 'center', color: 'var(--go-text-secondary)', fontSize: '0.8rem', marginTop: 12 }}>
-                {words.length}/{MAX_WORDS} words · {typeof credits === 'number' ? `${credits} credits available` : 'Credits check on generate'}
+                {t('generateGo.wordsOfMax', { count: words.length, max: MAX_WORDS })} · {typeof credits === 'number' ? `${credits} ${t('credits.available')}` : t('generateGo.creditsCheckOnGenerate')}
               </p>
             </div>
           ) : (
             <div className="gen-orb-row">
               <div className="gen-orb selected breadcrumb" onClick={() => setStep(3)}>
-                {words.length} word{words.length !== 1 ? 's' : ''}
+                {wordCountLabel(words.length)}
               </div>
             </div>
           )}
@@ -827,7 +874,7 @@ export default function GenerateGO() {
       {/* ── Step 4: Vibe (video lane only) ── */}
       {step === 4 && !cardLane && (
         <div ref={el => { sectionRefs.current[3] = el }} className="gen-section">
-          {step === 4 && <h3>Select Visual Context</h3>}
+          {step === 4 && <h3>{t('generateGo.selectVisualContext')}</h3>}
           <div className="gen-orb-row">
             {VIBES.map(v => (
               <div
@@ -835,7 +882,7 @@ export default function GenerateGO() {
                 className={orbClass(4, v.value, vibe)}
                 onClick={() => handleVibeSelect(v.value)}
               >
-                {v.label}
+                {vibeLabel(v.value)}
               </div>
             ))}
           </div>
@@ -846,7 +893,7 @@ export default function GenerateGO() {
                   value={movieTitle}
                   onChange={e => setMovieTitle(e.target.value)}
                   onKeyDown={e => e.key === 'Enter' && handleMovieConfirm()}
-                  placeholder="Movie name..."
+                  placeholder={t('generateGo.movieNamePlaceholder')}
                   autoFocus
                 />
               </div>
@@ -863,14 +910,14 @@ export default function GenerateGO() {
         <div ref={el => { sectionRefs.current[4] = el }} className="gen-section">
           {step === 5 ? (
             <>
-              <h3>Art Style</h3>
+              <h3>{t('premium.artStyle.title')}</h3>
               <div className="gen-orb-row" style={{ marginBottom: 24 }}>
                 <div
                   className="gen-orb"
                   onClick={() => handleArtStyleSelect(null)}
                   style={{ background: 'var(--accent-soft)', borderColor: 'color-mix(in srgb, var(--accent) 40%, transparent)' }}
                 >
-                  Auto
+                  {t('generateGo.vibe.auto')}
                 </div>
                 {ART_STYLE_GROUPS.map(group => (
                   <div
@@ -878,7 +925,7 @@ export default function GenerateGO() {
                     className={`gen-orb${expandedCategory === group.group ? ' selected' : ''}`}
                     onClick={() => handleCategoryClick(group.group)}
                   >
-                    {group.group.split('&')[0].trim()}
+                    {artGroupLabel(group.group)}
                   </div>
                 ))}
               </div>
@@ -887,7 +934,7 @@ export default function GenerateGO() {
                   key={group.group}
                   className={`gen-category-expand${expandedCategory === group.group ? ' open' : ''}`}
                 >
-                  <p className="art-group-heading">{group.group}</p>
+                  <p className="art-group-heading">{artGroupLabel(group.group)}</p>
                   <div className="gen-orb-row">
                     {group.styles.map(style => (
                       <div
@@ -895,7 +942,7 @@ export default function GenerateGO() {
                         className={artStyle === style.value ? 'gen-orb selected' : 'gen-orb'}
                         onClick={() => handleArtStyleSelect(style.value)}
                       >
-                        {style.label}
+                        {findStyleLabel(style.value)}
                       </div>
                     ))}
                   </div>
@@ -905,7 +952,7 @@ export default function GenerateGO() {
           ) : (
             <div className="gen-orb-row">
               <div className="gen-orb selected breadcrumb" onClick={() => { setStep(5); setExpandedCategory(null) }}>
-                {artStyle ? findStyleLabel(artStyle) : 'Auto'}
+                {artStyle ? findStyleLabel(artStyle) : t('generateGo.vibe.auto')}
               </div>
             </div>
           )}
@@ -919,7 +966,7 @@ export default function GenerateGO() {
             <>
               <h3>Niveau</h3>
               <p style={{ color: 'var(--go-text-secondary)', fontSize: '0.9rem', marginBottom: 16, textAlign: 'center' }}>
-                How should the lyrics treat the word?
+                {t('generate.chooseNiveauSub')}
               </p>
               <div className="gen-orb-row">
                 {NIVEAU_OPTIONS.map(opt => (
@@ -946,7 +993,7 @@ export default function GenerateGO() {
       {/* ── Step 7: Genre (video lane only) ── */}
       {step === 7 && !cardLane && (
         <div ref={el => { sectionRefs.current[6] = el }} className="gen-section">
-          {step === 7 && <h3>Aural Atmosphere</h3>}
+          {step === 7 && <h3>{t('generateGo.auralAtmosphere')}</h3>}
           <div className="gen-orb-row">
             {GO_GENRES.map(g => (
               <div
@@ -954,7 +1001,7 @@ export default function GenerateGO() {
                 className={orbClass(7, g.value, genre)}
                 onClick={() => handleGenreSelect(g.value)}
               >
-                {g.label}
+                {genreLabel(g.value)}
               </div>
             ))}
           </div>
@@ -965,7 +1012,7 @@ export default function GenerateGO() {
                   value={customGenre}
                   onChange={e => setCustomGenre(e.target.value)}
                   onKeyDown={e => e.key === 'Enter' && handleCustomGenreConfirm()}
-                  placeholder="Genre..."
+                  placeholder={t('generateGo.genrePlaceholder')}
                   autoFocus
                 />
               </div>
@@ -1016,38 +1063,44 @@ export default function GenerateGO() {
       {step === 5 && cardLane && (
         <div ref={el => { sectionRefs.current[4] = el }} className="gen-section" style={{ textAlign: 'center' }}>
           <h3 style={{ fontSize: '2.2rem', color: 'var(--text-primary)', fontWeight: 300, marginBottom: 8 }}>
-            {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
+            {existingDeck ? t('generateGo.addingCards') : t('generate.synthesisReady')}
           </h3>
           {existingDeck && (
             <p style={{ color: 'var(--go-accent)', marginBottom: 8, fontSize: '0.85rem' }}>
-              Adding to: {existingDeck.name || `${existingDeck.target_language} Deck`}
+              {t('generateGo.addingTo', {
+                name: existingDeck.name || t('generateGo.languageDeckName', { language: existingDeck.target_language }),
+              })}
             </p>
           )}
           <p style={{ color: 'var(--go-text-secondary)', marginBottom: 8, fontSize: '0.9rem' }}>
-            {words.length} word{words.length !== 1 ? 's' : ''} - {creditCost} credit{creditCost !== 1 ? 's' : ''}
+            {wordCountLabel(words.length)} · {tp('generateGo.creditCount', creditCost)}
           </p>
           {cardImageStyle && (
             <p className="text-sm text-go-text-secondary">
-              Style: {findCardImageStyleLabel(cardImageStyle)}
+              {t('generateGo.stylePrefix', { value: findCardImageStyleLabel(cardImageStyle) })}
             </p>
           )}
           {productLane === 'card_premium' && cardLayer2 && (
             premiumInfographicSelected ? (
               <p className="text-sm text-go-text-secondary">
-                Premium Card · Infographic · {premiumInfographicStyleLabel(premiumInfographicStyle)}
+                {t('generateGo.premiumInfographicSummary', {
+                  product: t('generate.productLane.premium.label'),
+                  presentation: t('premium.presentation.infographic_card.label'),
+                  style: premiumInfographicStyleDisplay(premiumInfographicStyle),
+                })}
               </p>
             ) : (
               <>
                 <p className="text-sm text-go-text-secondary">
-                  Meaning: {cardLayer2MeaningLabel(cardLayer2.meaning_strategy)}
+                  {t('generateGo.meaningPrefix', { value: cardLayer2MeaningDisplay(cardLayer2.meaning_strategy) })}
                 </p>
                 <p className="text-sm text-go-text-secondary">
-                  Form: {cardLayer2PresentationLabel(cardLayer2.presentation_form)}
+                  {t('generateGo.formPrefix', { value: cardLayer2PresentationDisplay(cardLayer2.presentation_form) })}
                 </p>
               </>
             )
           )}
-          <p className="text-sm text-go-text-secondary">{laneLabel(productLane)}</p>
+          <p className="text-sm text-go-text-secondary">{productLaneLabel(productLane)}</p>
 
           {!existingDeck && (
             <div style={{ marginBottom: 24, marginTop: 24 }}>
@@ -1055,7 +1108,7 @@ export default function GenerateGO() {
                 type="text"
                 value={deckName}
                 onChange={(e) => setDeckName(e.target.value)}
-                placeholder="Name your deck..."
+                placeholder={t('generate.deckNamePlaceholder')}
                 maxLength={50}
                 className="theme-input w-full max-w-sm mx-auto block p-3 rounded-lg outline-none focus:border-[var(--go-accent)] transition-colors text-center font-semibold placeholder:text-[var(--text-muted)]"
                 style={{ fontFamily: "'Nunito', sans-serif" }}
@@ -1065,7 +1118,7 @@ export default function GenerateGO() {
 
           {typeof credits === 'number' && credits < creditCost && (
             <p style={{ color: 'var(--destructive)', marginBottom: 16, fontSize: '0.85rem' }}>
-              Not enough credits - you need {creditCost} but have {credits}. Redeem an invite code to get more.
+              {t('generateGo.notEnoughCreditsDetail', { need: creditCost, have: credits })}
             </p>
           )}
           <div
@@ -1073,7 +1126,7 @@ export default function GenerateGO() {
             onClick={!submitting && (typeof credits !== 'number' || credits >= creditCost) ? () => handleInitialize() : undefined}
             style={typeof credits === 'number' && credits < creditCost ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
           >
-            {submitting ? 'Synthesizing...' : 'Initialize'}
+            {submitting ? t('generateGo.synthesizing') : t('generateGo.initialize')}
           </div>
           {error && (
             <p style={{ color: 'var(--destructive)', marginTop: 16, fontSize: '0.9rem' }}>{error}</p>
@@ -1085,15 +1138,17 @@ export default function GenerateGO() {
       {step === 8 && !cardLane && (
         <div ref={el => { sectionRefs.current[7] = el }} className="gen-section" style={{ textAlign: 'center' }}>
           <h3 style={{ fontSize: '2.2rem', color: 'var(--text-primary)', fontWeight: 300, marginBottom: 8 }}>
-            {existingDeck ? 'Adding Cards' : 'Synthesis Ready'}
+            {existingDeck ? t('generateGo.addingCards') : t('generate.synthesisReady')}
           </h3>
           {existingDeck && (
             <p style={{ color: 'var(--go-accent)', marginBottom: 8, fontSize: '0.85rem' }}>
-              Adding to: {existingDeck.name || `${existingDeck.target_language} Deck`}
+              {t('generateGo.addingTo', {
+                name: existingDeck.name || t('generateGo.languageDeckName', { language: existingDeck.target_language }),
+              })}
             </p>
           )}
           <p style={{ color: 'var(--go-text-secondary)', marginBottom: 16, fontSize: '0.9rem' }}>
-            {words.length} word{words.length !== 1 ? 's' : ''} · {creditCost} credit{creditCost !== 1 ? 's' : ''}
+            {wordCountLabel(words.length)} · {tp('generateGo.creditCount', creditCost)}
           </p>
 
           <div style={{ display: 'none' }} aria-hidden="true">
@@ -1125,7 +1180,7 @@ export default function GenerateGO() {
                 type="text"
                 value={deckName}
                 onChange={(e) => setDeckName(e.target.value)}
-                placeholder="Name your deck..."
+                placeholder={t('generate.deckNamePlaceholder')}
                 maxLength={50}
                 className="theme-input w-full max-w-sm mx-auto block p-3 rounded-lg outline-none focus:border-[var(--go-accent)] transition-colors text-center font-semibold placeholder:text-[var(--text-muted)]"
                 style={{ fontFamily: "'Nunito', sans-serif" }}
@@ -1135,7 +1190,7 @@ export default function GenerateGO() {
 
           {typeof credits === 'number' && credits < creditCost && (
             <p style={{ color: 'var(--destructive)', marginBottom: 16, fontSize: '0.85rem' }}>
-              Not enough credits — you need {creditCost} but have {credits}. Redeem an invite code to get more.
+              {t('generateGo.notEnoughCreditsDetail', { need: creditCost, have: credits })}
             </p>
           )}
           <div
@@ -1143,7 +1198,7 @@ export default function GenerateGO() {
             onClick={!submitting && (typeof credits !== 'number' || credits >= creditCost) ? () => handleInitialize() : undefined}
             style={typeof credits === 'number' && credits < creditCost ? { opacity: 0.4, cursor: 'not-allowed' } : undefined}
           >
-            {submitting ? 'Synthesizing...' : 'Initialize'}
+            {submitting ? t('generateGo.synthesizing') : t('generateGo.initialize')}
           </div>
           {error && (
             <p style={{ color: 'var(--destructive)', marginTop: 16, fontSize: '0.9rem' }}>{error}</p>

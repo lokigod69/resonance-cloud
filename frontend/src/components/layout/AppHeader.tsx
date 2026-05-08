@@ -91,7 +91,7 @@ export function AppHeader() {
                   to={to}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    'flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                    'flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors',
                     location.pathname === to || location.pathname.startsWith(to + '/')
                       ? 'theme-chip-active'
                       : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
@@ -113,7 +113,7 @@ export function AppHeader() {
                       to={to}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        'flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                        'flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors',
                         location.pathname === to || location.pathname.startsWith(to + '/')
                           ? 'theme-chip-active'
                           : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
@@ -143,7 +143,7 @@ export function AppHeader() {
             key={to}
             to={to}
             className={cn(
-              'flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-medium transition-colors',
+              'flex min-w-[68px] flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors',
               location.pathname === to || location.pathname.startsWith(to + '/')
                 ? 'theme-chip-active'
                 : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'
@@ -160,7 +160,7 @@ export function AppHeader() {
             <DropdownMenuTrigger asChild>
               <button
                 className={cn(
-                  'flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-medium transition-colors',
+                  'flex min-w-[68px] flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors',
                   location.pathname.startsWith('/admin')
                     ? 'theme-chip-active'
                     : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'

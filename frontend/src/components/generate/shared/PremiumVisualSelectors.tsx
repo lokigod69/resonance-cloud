@@ -1,12 +1,11 @@
 import type { ComponentType } from 'react'
 import { BookOpen, Columns2, FileText, KeyRound, Lightbulb, Music2, PanelsTopLeft, Sparkles, Type, WandSparkles, Zap } from 'lucide-react'
+import { useTranslation } from '@/hooks/useTranslation'
 import { cn } from '@/lib/utils'
 import {
-  MEANING_STRATEGY_UI_LABELS,
   MEANING_STRATEGY_VISUAL_TONES,
   PREMIUM_STYLE_SAMPLE_PATHS,
   INFOGRAPHIC_STYLE_VISUAL_TONES,
-  PRESENTATION_FORM_UI_LABELS,
   PRESENTATION_FORM_VISUAL_TONES,
   PRODUCT_LANE_VISUAL_TONES,
 } from '../premiumVisualAssets'
@@ -101,10 +100,12 @@ interface PremiumSummaryRowProps {
 }
 
 export function PremiumSummaryRow({ items, className }: PremiumSummaryRowProps) {
+  const { t } = useTranslation()
+
   if (items.length === 0) return null
 
   return (
-    <div className={cn('premium-summary-row', className)} aria-label="Selected generation options">
+    <div className={cn('premium-summary-row', className)} aria-label={t('premium.summary.ariaLabel')}>
       {items.map((item) => (
         <button
           key={item.key}
@@ -184,7 +185,7 @@ export function ProductLaneVisualSelector({
 
 interface PremiumVisualSelectorProps<T extends CardLayer2MeaningStrategy | CardLayer2PresentationForm> {
   title: string
-  options: Array<{ value: T; label: string }>
+  options: Array<{ value: T; label: string; helper?: string; labelKey?: string; helperKey?: string }>
   selected: T
   onSelect: (value: T) => void
   kind: 'meaning' | 'presentation'
@@ -216,6 +217,8 @@ export function PremiumVisualSelector<T extends CardLayer2MeaningStrategy | Card
   disabled = false,
   disabledHelper,
 }: PremiumVisualSelectorProps<T>) {
+  const { t } = useTranslation()
+
   return (
     <section className={cn('premium-selector-section', disabled && 'premium-selector-section-disabled')}>
       <h4 className="premium-selector-heading">{title}</h4>
@@ -226,9 +229,8 @@ export function PremiumVisualSelector<T extends CardLayer2MeaningStrategy | Card
         {options.map((option) => {
           const isMeaning = kind === 'meaning'
           const value = option.value
-          const label = isMeaning
-            ? MEANING_STRATEGY_UI_LABELS[value as CardLayer2MeaningStrategy]
-            : PRESENTATION_FORM_UI_LABELS[value as CardLayer2PresentationForm]
+          const label = option.labelKey ? t(option.labelKey) : option.label
+          const helper = option.helperKey ? t(option.helperKey) : option.helper
           const tone = isMeaning
             ? MEANING_STRATEGY_VISUAL_TONES[value as CardLayer2MeaningStrategy]
             : PRESENTATION_FORM_VISUAL_TONES[value as CardLayer2PresentationForm]
@@ -241,6 +243,7 @@ export function PremiumVisualSelector<T extends CardLayer2MeaningStrategy | Card
               key={value}
               value={value}
               label={label}
+              helper={helper}
               selected={selected === value}
               onSelect={onSelect}
               icon={Icon}
@@ -256,7 +259,7 @@ export function PremiumVisualSelector<T extends CardLayer2MeaningStrategy | Card
 
 interface PremiumStyleSelectorProps {
   title: string
-  options: Array<{ value: CardLayer2ArtStyle; label: string }>
+  options: Array<{ value: CardLayer2ArtStyle; label: string; labelKey?: string }>
   selected: CardLayer2ArtStyle
   onSelect: (value: CardLayer2ArtStyle) => void
   disabled?: boolean
@@ -271,6 +274,8 @@ export function PremiumStyleSelector({
   disabled = false,
   disabledHelper,
 }: PremiumStyleSelectorProps) {
+  const { t } = useTranslation()
+
   return (
     <section className={cn('premium-selector-section', disabled && 'premium-selector-section-disabled')}>
       <h4 className="premium-selector-heading">{title}</h4>
@@ -282,7 +287,7 @@ export function PremiumStyleSelector({
           <PremiumOptionTile
             key={option.value}
             value={option.value}
-            label={option.label}
+            label={option.labelKey ? t(option.labelKey) : option.label}
             selected={selected === option.value}
             onSelect={onSelect}
             imageSrc={PREMIUM_STYLE_SAMPLE_PATHS[option.value]}
@@ -318,6 +323,8 @@ export function PremiumInfographicStyleSelector({
   selected,
   onSelect,
 }: PremiumInfographicStyleSelectorProps) {
+  const { t } = useTranslation()
+
   return (
     <section className="premium-selector-section premium-infographic-style-section">
       <h4 className="premium-selector-heading">{title}</h4>
@@ -329,8 +336,8 @@ export function PremiumInfographicStyleSelector({
           <PremiumOptionTile
             key={option.value}
             value={option.value}
-            label={option.label}
-            helper={option.helper}
+            label={t(option.labelKey)}
+            helper={t(option.helperKey)}
             selected={selected === option.value}
             onSelect={onSelect}
             icon={INFOGRAPHIC_ICONS[option.value]}

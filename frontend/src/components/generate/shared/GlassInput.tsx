@@ -106,7 +106,7 @@ export function LockedWord({ word, onRemove }: LockedWordProps) {
       )}
     >
       <Check className="h-3.5 w-3.5 text-[#4ade80]" />
-      <span className="min-w-0 break-all text-sm text-foreground/90">{word}</span>
+      <span className="min-w-0 break-words [hyphens:auto] text-sm text-foreground/90">{word}</span>
       <button
         type="button"
         onClick={onRemove}

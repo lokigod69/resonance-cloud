@@ -128,36 +128,50 @@ export const PREMIUM_INFOGRAPHIC_STYLE_OPTIONS: Array<{
   value: PremiumInfographicStyle
   label: string
   helper: string
+  labelKey: string
+  helperKey: string
 }> = [
   {
     value: 'auto',
     label: 'Auto',
     helper: 'Balanced practical infographic style.',
+    labelKey: 'premium.infographicStyle.auto.label',
+    helperKey: 'premium.infographicStyle.auto.helper',
   },
   {
     value: 'study_poster',
     label: 'Study Poster',
     helper: 'Examples, grammar, collocations, and common mistakes.',
+    labelKey: 'premium.infographicStyle.study_poster.label',
+    helperKey: 'premium.infographicStyle.study_poster.helper',
   },
   {
     value: 'visual_dictionary',
     label: 'Visual Dictionary',
     helper: 'Precise reference-style word guide.',
+    labelKey: 'premium.infographicStyle.visual_dictionary.label',
+    helperKey: 'premium.infographicStyle.visual_dictionary.helper',
   },
   {
     value: 'language_atlas',
     label: 'Language Atlas',
     helper: 'Maps meaning, usage, register, and related words.',
+    labelKey: 'premium.infographicStyle.language_atlas.label',
+    helperKey: 'premium.infographicStyle.language_atlas.helper',
   },
   {
     value: 'museum_exhibit',
     label: 'Museum Exhibit',
     helper: 'Cultural, literary, or philosophical word treatment.',
+    labelKey: 'premium.infographicStyle.museum_exhibit.label',
+    helperKey: 'premium.infographicStyle.museum_exhibit.helper',
   },
   {
     value: 'dense_encyclopedia',
     label: 'Dense Encyclopedia',
     helper: 'High-density experimental study card.',
+    labelKey: 'premium.infographicStyle.dense_encyclopedia.label',
+    helperKey: 'premium.infographicStyle.dense_encyclopedia.helper',
   },
 ]
 
@@ -174,26 +188,36 @@ export const CARD_LAYER2_MEANING_OPTIONS: Array<{
   value: CardLayer2MeaningStrategy
   label: string
   helper: string
+  labelKey: string
+  helperKey: string
 }> = [
   {
     value: 'clear_meaning',
     label: 'Clear Meaning',
     helper: 'Closest to Quick Generate: clean, obvious, meaning-first.',
+    labelKey: 'premium.meaning.clear_meaning.label',
+    helperKey: 'premium.meaning.clear_meaning.helper',
   },
   {
     value: 'exaggerated_meaning',
     label: 'Exaggerated Meaning',
     helper: 'Pushes the same meaning through stronger action or emotion.',
+    labelKey: 'premium.meaning.exaggerated_meaning.label',
+    helperKey: 'premium.meaning.exaggerated_meaning.helper',
   },
   {
     value: 'absurd_hook',
     label: 'Absurd Hook',
     helper: 'Adds an elegant strange memory hook while keeping the meaning readable.',
+    labelKey: 'premium.meaning.absurd_hook.label',
+    helperKey: 'premium.meaning.absurd_hook.helper',
   },
   {
     value: 'sound_mnemonic',
     label: 'Mnemonic Hook',
     helper: 'Uses the best available memory bridge: sound, wordplay, roots, etymology, metaphor, or clear meaning.',
+    labelKey: 'premium.meaning.sound_mnemonic.label',
+    helperKey: 'premium.meaning.sound_mnemonic.helper',
   },
 ]
 
@@ -201,31 +225,43 @@ export const CARD_LAYER2_PRESENTATION_OPTIONS: Array<{
   value: CardLayer2PresentationForm
   label: string
   helper: string
+  labelKey: string
+  helperKey: string
 }> = [
   {
     value: 'single_scene',
     label: 'Single Scene',
     helper: 'One focused visual moment.',
+    labelKey: 'premium.presentation.single_scene.label',
+    helperKey: 'premium.presentation.single_scene.helper',
   },
   {
     value: 'mini_story',
     label: 'Mini Story',
     helper: 'A compact two- or three-beat sequence in one image.',
+    labelKey: 'premium.presentation.mini_story.label',
+    helperKey: 'premium.presentation.mini_story.helper',
   },
   {
     value: 'split_panel',
     label: 'Split Panel',
     helper: 'Two-part contrast, such as before/after or sound vs. meaning.',
+    labelKey: 'premium.presentation.split_panel.label',
+    helperKey: 'premium.presentation.split_panel.helper',
   },
   {
     value: 'word_object_design',
     label: 'Word as Design',
     helper: 'Makes the word itself part of the image as material, form, or lettering.',
+    labelKey: 'premium.presentation.word_object_design.label',
+    helperKey: 'premium.presentation.word_object_design.helper',
   },
   {
     value: 'infographic_card',
     label: 'Infographic',
     helper: 'A compact educational poster with a central visual anchor and short study callouts.',
+    labelKey: 'premium.presentation.infographic_card.label',
+    helperKey: 'premium.presentation.infographic_card.helper',
   },
 ]
 
@@ -233,58 +269,71 @@ export const PREMIUM_QUICK_MODE_OPTIONS: Array<{
   value: PremiumQuickMode
   label: string
   helper: string
+  labelKey: string
+  helperKey: string
 }> = [
   {
     value: 'clear',
     label: 'Clear',
     helper: 'Clean meaning-first scene.',
+    labelKey: 'premium.quickMode.clear.label',
+    helperKey: 'premium.quickMode.clear.helper',
   },
   {
     value: 'memorable',
     label: 'Memorable',
     helper: 'Mnemonic-driven scene.',
+    labelKey: 'premium.quickMode.memorable.label',
+    helperKey: 'premium.quickMode.memorable.helper',
   },
   {
     value: 'weird',
     label: 'Weird',
     helper: 'A strange but readable memory hook.',
+    labelKey: 'premium.quickMode.weird.label',
+    helperKey: 'premium.quickMode.weird.helper',
   },
   {
     value: 'word_design',
     label: 'Word Design',
     helper: 'Turns the word into the visual object.',
+    labelKey: 'premium.quickMode.word_design.label',
+    helperKey: 'premium.quickMode.word_design.helper',
   },
   {
     value: 'infographic',
     label: 'Infographic',
     helper: 'A beautiful study poster with compact word facts.',
+    labelKey: 'premium.quickMode.infographic.label',
+    helperKey: 'premium.quickMode.infographic.helper',
   },
 ]
 
 export const CARD_LAYER2_ART_STYLE_OPTIONS: Array<{
   value: CardLayer2ArtStyle
   label: string
+  labelKey: string
 }> = [
-  { value: 'realistic', label: 'Realistic' },
-  { value: 'cinematic', label: 'Cinematic' },
-  { value: 'editorial', label: 'Editorial' },
-  { value: 'illustration', label: 'Illustration' },
-  { value: 'anime', label: 'Anime' },
-  { value: 'studio_ghibli_inspired', label: 'Studio Ghibli' },
-  { value: 'disney_animation_inspired', label: 'Disney' },
-  { value: 'comic_book', label: 'Comic Book' },
-  { value: 'pixel_art', label: 'Pixel Art' },
-  { value: 'vintage_film', label: 'Vintage Film' },
-  { value: 'oil_painting', label: 'Oil Painting' },
-  { value: 'surrealism', label: 'Surrealism' },
-  { value: 'fantasy_art', label: 'Fantasy Art' },
-  { value: 'pen_and_ink', label: 'Pen and Ink' },
-  { value: 'charcoal_sketch', label: 'Charcoal' },
-  { value: 'claymation', label: 'Claymation' },
-  { value: 'ukiyo_e', label: 'Ukiyo-e' },
-  { value: 'south_park_style', label: 'South Park' },
-  { value: 'rick_and_morty_style', label: 'Rick and Morty' },
-  { value: 'pixar_3d', label: 'Pixar 3D' },
+  { value: 'realistic', label: 'Realistic', labelKey: 'premium.artStyle.realistic.label' },
+  { value: 'cinematic', label: 'Cinematic', labelKey: 'premium.artStyle.cinematic.label' },
+  { value: 'editorial', label: 'Editorial', labelKey: 'premium.artStyle.editorial.label' },
+  { value: 'illustration', label: 'Illustration', labelKey: 'premium.artStyle.illustration.label' },
+  { value: 'anime', label: 'Anime', labelKey: 'premium.artStyle.anime.label' },
+  { value: 'studio_ghibli_inspired', label: 'Studio Ghibli', labelKey: 'premium.artStyle.studio_ghibli_inspired.label' },
+  { value: 'disney_animation_inspired', label: 'Disney', labelKey: 'premium.artStyle.disney_animation_inspired.label' },
+  { value: 'comic_book', label: 'Comic Book', labelKey: 'premium.artStyle.comic_book.label' },
+  { value: 'pixel_art', label: 'Pixel Art', labelKey: 'premium.artStyle.pixel_art.label' },
+  { value: 'vintage_film', label: 'Vintage Film', labelKey: 'premium.artStyle.vintage_film.label' },
+  { value: 'oil_painting', label: 'Oil Painting', labelKey: 'premium.artStyle.oil_painting.label' },
+  { value: 'surrealism', label: 'Surrealism', labelKey: 'premium.artStyle.surrealism.label' },
+  { value: 'fantasy_art', label: 'Fantasy Art', labelKey: 'premium.artStyle.fantasy_art.label' },
+  { value: 'pen_and_ink', label: 'Pen and Ink', labelKey: 'premium.artStyle.pen_and_ink.label' },
+  { value: 'charcoal_sketch', label: 'Charcoal', labelKey: 'premium.artStyle.charcoal_sketch.label' },
+  { value: 'claymation', label: 'Claymation', labelKey: 'premium.artStyle.claymation.label' },
+  { value: 'ukiyo_e', label: 'Ukiyo-e', labelKey: 'premium.artStyle.ukiyo_e.label' },
+  { value: 'south_park_style', label: 'South Park', labelKey: 'premium.artStyle.south_park_style.label' },
+  { value: 'rick_and_morty_style', label: 'Rick and Morty', labelKey: 'premium.artStyle.rick_and_morty_style.label' },
+  { value: 'pixar_3d', label: 'Pixar 3D', labelKey: 'premium.artStyle.pixar_3d.label' },
 ]
 
 export function cardLayer2MeaningLabel(value: CardLayer2MeaningStrategy): string {

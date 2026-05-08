@@ -48,21 +48,6 @@ export const MEANING_STRATEGY_VISUAL_TONES: Record<CardLayer2MeaningStrategy, st
   sound_mnemonic: 'mnemonic',
 }
 
-export const MEANING_STRATEGY_UI_LABELS: Record<CardLayer2MeaningStrategy, string> = {
-  clear_meaning: 'Clear',
-  exaggerated_meaning: 'Exaggerated',
-  absurd_hook: 'Weird',
-  sound_mnemonic: 'Mnemonic',
-}
-
-export const PRESENTATION_FORM_UI_LABELS: Record<CardLayer2PresentationForm, string> = {
-  single_scene: 'Single Scene',
-  mini_story: 'Mini Story',
-  split_panel: 'Split Panel',
-  word_object_design: 'Word Design',
-  infographic_card: 'Infographic',
-}
-
 export const PRESENTATION_FORM_VISUAL_TONES: Record<CardLayer2PresentationForm, string> = {
   single_scene: 'scene',
   mini_story: 'story',
@@ -78,19 +63,4 @@ export const INFOGRAPHIC_STYLE_VISUAL_TONES: Record<PremiumInfographicStyle, str
   language_atlas: 'atlas',
   museum_exhibit: 'museum',
   dense_encyclopedia: 'dense',
-}
-
-export const MEANING_STRATEGY_HELPERS: Record<CardLayer2MeaningStrategy, string> = {
-  clear_meaning: 'Meaning-first',
-  exaggerated_meaning: 'Stronger emphasis',
-  absurd_hook: 'Strange hook',
-  sound_mnemonic: 'Memory bridge',
-}
-
-export const PRESENTATION_FORM_HELPERS: Record<CardLayer2PresentationForm, string> = {
-  single_scene: 'One moment',
-  mini_story: '2-3 beats',
-  split_panel: 'Contrast',
-  word_object_design: 'Word object',
-  infographic_card: 'Study poster',
 }

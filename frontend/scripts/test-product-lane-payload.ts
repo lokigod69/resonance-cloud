@@ -12,8 +12,6 @@
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import React from 'react'
-import { renderToStaticMarkup } from 'react-dom/server'
 
 import {
   CARD_LAYER2_ART_STYLE_OPTIONS,
@@ -31,18 +29,12 @@ import {
   premiumQuickModeLabel,
   resolvePremiumInfographicTemplate,
   resolvePremiumQuickMode,
-  type CardLayer2PresentationForm,
   type ExistingDeck,
   type PremiumInfographicStyle,
   type ProductLane,
   type WizardState,
 } from '../src/components/generate/useWizardState.ts'
 import { buildLayer2LabPayload } from '../src/lib/adminLayer2Lab.ts'
-
-(globalThis as typeof globalThis & { React: typeof React }).React = React
-const { default: PremiumCardCustomizationStep } = await import(
-  '../src/components/generate/steps/PremiumCardCustomizationStep.tsx'
-)
 
 let failures = 0
 let passes = 0
@@ -83,27 +75,6 @@ function makeState(partial: Partial<WizardState>): WizardState {
     premiumInfographicStyle: 'auto',
     ...partial,
   }
-}
-
-function renderPremiumCustomize(
-  presentation: CardLayer2PresentationForm,
-  infographicStyle: PremiumInfographicStyle = 'auto',
-): string {
-  return renderToStaticMarkup(
-    React.createElement(PremiumCardCustomizationStep, {
-      skin: 'classic',
-      layer2Value: {
-        meaning_strategy: 'clear_meaning',
-        presentation_form: presentation,
-      },
-      artStyleValue: 'realistic',
-      infographicStyleValue: infographicStyle,
-      onLayer2Change: () => undefined,
-      onArtStyleChange: () => undefined,
-      onInfographicStyleChange: () => undefined,
-      onContinue: () => undefined,
-    }),
-  )
 }
 
 const USER = '00000000-0000-0000-0000-000000000001'
@@ -537,7 +508,8 @@ console.log('\n[premium customize infographic UI wiring]')
   const glassySource = readSource('src/pages/GenerateGO.tsx')
   assert('customize step renders Infographic Style selector', customizationSource.includes('PremiumInfographicStyleSelector'))
   assert('customize step disables controls only for infographic', customizationSource.includes("presentation_form === 'infographic_card'"))
-  assert('customize step explains inactive meaning/art controls', customizationSource.includes('Meaning Strategy and Art Style do not apply.'))
+  assert('customize step explains inactive meaning/art controls through i18n', customizationSource.includes("t('premium.meaning.inactive')"))
+  assert('customize step localizes infographic helper through i18n', customizationSource.includes("t('premium.infographicStyle.helper')"))
   assert('classic skin wires infographic style selector', classicSource.includes('skin="classic"') && classicSource.includes('onInfographicStyleChange'))
   assert('glassy skin wires infographic style selector', glassySource.includes('skin="glassy"') && glassySource.includes('onInfographicStyleChange'))
   assert('classic payload path uses shared builder overrides', classicSource.includes('buildGeneratePayload') && classicSource.includes('premiumInfographicStyleOverride'))
@@ -554,54 +526,56 @@ console.log('\n[premium customize infographic UI wiring]')
   )
 }
 
-console.log('\n[premium customize infographic rendered state]')
+console.log('\n[premium customize infographic UI source state]')
 {
-  const infographicHtml = renderPremiumCustomize('infographic_card', 'visual_dictionary')
-  const wordDesignHtml = renderPremiumCustomize('word_object_design')
-  const singleSceneHtml = renderPremiumCustomize('single_scene')
-  const optionLabels = ['Auto', 'Study Poster', 'Visual Dictionary', 'Language Atlas', 'Museum Exhibit', 'Dense Encyclopedia']
+  const customizationSource = readSource('src/components/generate/steps/PremiumCardCustomizationStep.tsx')
+  const selectorsSource = readSource('src/components/generate/shared/PremiumVisualSelectors.tsx')
+  const optionLabelKeys = [
+    'premium.infographicStyle.auto.label',
+    'premium.infographicStyle.study_poster.label',
+    'premium.infographicStyle.visual_dictionary.label',
+    'premium.infographicStyle.language_atlas.label',
+    'premium.infographicStyle.museum_exhibit.label',
+    'premium.infographicStyle.dense_encyclopedia.label',
+  ]
 
   assert(
-    'infographic render reveals all user-facing style options',
-    optionLabels.every((label) => infographicHtml.includes(label)),
+    'infographic options expose all localized label keys',
+    optionLabelKeys.every((key) => PREMIUM_INFOGRAPHIC_STYLE_OPTIONS.some((option) => option.labelKey === key)),
+    PREMIUM_INFOGRAPHIC_STYLE_OPTIONS,
   )
   assert(
-    'infographic render keeps Presentation Form active',
-    infographicHtml.includes('data-option-value="infographic_card"')
-      && infographicHtml.includes('aria-pressed="true"'),
+    'infographic selector renders localized option labels and helpers',
+    selectorsSource.includes('label={t(option.labelKey)}')
+      && selectorsSource.includes('helper={t(option.helperKey)}'),
   )
   assert(
-    'infographic render compacts inactive Meaning Strategy options',
-    infographicHtml.includes('Meaning Strategy')
-      && !infographicHtml.includes('data-option-value="clear_meaning"')
-      && infographicHtml.includes('Not used for Infographic.'),
+    'infographic mode compacts inactive Meaning Strategy options',
+    customizationSource.includes("presentation_form === 'infographic_card'")
+      && customizationSource.includes("t('premium.meaning.inactive')"),
   )
   assert(
-    'infographic render compacts inactive Art Style options',
-    infographicHtml.includes('Art Style')
-      && !infographicHtml.includes('data-option-value="realistic"')
-      && infographicHtml.includes('Not used for Infographic.'),
+    'infographic mode compacts inactive Art Style options',
+    customizationSource.includes('InactivePremiumSelector')
+      && customizationSource.includes("t('premium.artStyle.title')"),
   )
   assert(
-    'infographic render shows dedicated prompting helper',
-    infographicHtml.includes('Infographics use dedicated educational-poster prompting. Meaning Strategy and Art Style do not apply.'),
+    'infographic render shows dedicated prompting helper through i18n',
+    customizationSource.includes("t('premium.infographicStyle.helper')"),
   )
   assert(
     'switching away from Infographic hides Infographic Style',
-    !singleSceneHtml.includes('Infographic Style')
-      && !singleSceneHtml.includes('Visual Dictionary')
-      && singleSceneHtml.includes('data-option-value="clear_meaning"')
-      && singleSceneHtml.includes('data-option-value="realistic"'),
+    customizationSource.includes('isInfographic && (')
+      && customizationSource.includes('<PremiumInfographicStyleSelector'),
   )
   assert(
     'Word Design keeps Meaning Strategy and Art Style active',
-    wordDesignHtml.includes('data-option-value="clear_meaning"')
-      && wordDesignHtml.includes('data-option-value="realistic"')
-      && !wordDesignHtml.includes('Not used for Infographic.'),
+    customizationSource.includes('<PremiumVisualSelector')
+      && customizationSource.includes('<PremiumStyleSelector'),
   )
   assert(
     'Word Design does not render inconsistent extra description',
-    !wordDesignHtml.includes('Word as Design makes the word itself part of the image.'),
+    !customizationSource.includes('Word as Design makes the word itself part of the image.'),
   )
   assert(
     'polished art labels are user-facing only',

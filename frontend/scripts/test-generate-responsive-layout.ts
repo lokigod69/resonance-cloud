@@ -21,6 +21,8 @@ const cardImageStyleStep = read('src/components/generate/steps/CardImageStyleSte
 const categoryPicker = read('src/components/generate/steps/CategoryPicker.tsx')
 const wordsStep = read('src/components/generate/steps/WordsStep.tsx')
 const premiumQuickModePanel = read('src/components/generate/shared/PremiumQuickModePanel.tsx')
+const premiumCustomizeStep = read('src/components/generate/steps/PremiumCardCustomizationStep.tsx')
+const glassInput = read('src/components/generate/shared/GlassInput.tsx')
 
 assert(
   premiumSelectors.includes('data-option-value={value}'),
@@ -89,7 +91,7 @@ assert(
 
 assert(
   !premiumQuickModePanel.includes('Sparkles')
-    && /className="premium-quick-button"[\s\S]*\{option\.label\}/.test(premiumQuickModePanel)
+    && /className="premium-quick-button"[\s\S]*\{t\(option\.labelKey\)\}/.test(premiumQuickModePanel)
     && !/className="premium-quick-button"[\s\S]*<[^>]*Icon|className="premium-quick-button"[\s\S]*<Sparkles/.test(premiumQuickModePanel),
   'Premium quick mode buttons must render label-only controls without sparkle or star icons.',
 )
@@ -116,6 +118,56 @@ assert(
     && /\.premium-quick-primary\s*\{[\s\S]*width:\s*min\(100%,\s*var\(--premium-quick-main-width\)\)/.test(glassCss)
     && /\.premium-customize-button\s*\{[\s\S]*width:\s*min\(100%,\s*var\(--premium-quick-main-width\)\)/.test(glassCss),
   'Premium Quick Generate and Customize must share a centered max-width token.',
+)
+
+assert(
+  /--premium-quick-main-width:\s*240px/.test(glassCss)
+    && /\.premium-quick-grid\s*\{[\s\S]*repeat\(auto-fit,\s*minmax\(120px,\s*1fr\)\)/.test(glassCss)
+    && /\.skin-glassy \.gen-orb\s*\{[\s\S]*width:\s*124px[\s\S]*height:\s*124px/.test(glassCss)
+    && /\.premium-summary-orb\s*\{[\s\S]*max-width:\s*180px/.test(glassCss)
+    && /\.premium-selector-grid\s*\{[\s\S]*minmax\(160px,\s*192px\)/.test(glassCss)
+    && /\.premium-option-helper\s*\{[\s\S]*-webkit-line-clamp:\s*2/.test(glassCss),
+  'German-safe Premium layout fixes must stay in place.',
+)
+
+assert(
+  glassInput.includes('break-words')
+    && glassInput.includes('[hyphens:auto]')
+    && !glassInput.includes('break-all'),
+  'GlassInput locked word chips must use German-safe word wrapping.',
+)
+
+assert(
+  generateGo.includes("t('generateGo.chooseLanguageOrbit')")
+    && generateGo.includes("t('generateGo.selectVisualContext')")
+    && generateGo.includes("t('generateGo.auralAtmosphere')")
+    && generateGo.includes('productLaneLabel(productLane)')
+    && !generateGo.includes('Choose Language Orbit')
+    && !generateGo.includes('Select Visual Context')
+    && !generateGo.includes('Aural Atmosphere'),
+  'GenerateGO scaffold must render translated user-visible labels.',
+)
+
+assert(
+  premiumQuickModePanel.includes('useTranslation')
+    && premiumQuickModePanel.includes("t('generate.quickGenerate')")
+    && premiumQuickModePanel.includes("t('generate.customize')")
+    && !premiumQuickModePanel.includes('>Quick Generate<')
+    && !premiumQuickModePanel.includes('>Customize<'),
+  'Premium quick mode panel must render translated controls.',
+)
+
+assert(
+  premiumCustomizeStep.includes('useTranslation')
+    && premiumCustomizeStep.includes("t('premium.customize.title')")
+    && premiumCustomizeStep.includes("t('premium.meaning.title')")
+    && premiumCustomizeStep.includes("t('premium.presentation.title')")
+    && premiumCustomizeStep.includes("t('premium.artStyle.title')")
+    && !premiumCustomizeStep.includes('Premium Card Customize')
+    && !premiumCustomizeStep.includes('Meaning Strategy')
+    && !premiumCustomizeStep.includes('Presentation Form')
+    && !premiumCustomizeStep.includes('Art Style'),
+  'Premium customize step must render translated headings.',
 )
 
 assert(

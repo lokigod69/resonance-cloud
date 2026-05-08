@@ -3,6 +3,7 @@ import {
   PremiumStyleSelector,
   PremiumVisualSelector,
 } from '../shared/PremiumVisualSelectors'
+import { useTranslation } from '@/hooks/useTranslation'
 import {
   CARD_LAYER2_ART_STYLE_OPTIONS,
   CARD_LAYER2_MEANING_OPTIONS,
@@ -54,6 +55,7 @@ export default function PremiumCardCustomizationStep({
   onContinue,
   skin = 'classic',
 }: PremiumCardCustomizationStepProps) {
+  const { t } = useTranslation()
   const selectedLayer2 = layer2Value ?? DEFAULT_CARD_LAYER2
   const selectedStyle = artStyleValue ?? DEFAULT_CARD_LAYER2_ART_STYLE
   const selectedInfographicStyle = infographicStyleValue ?? DEFAULT_PREMIUM_INFOGRAPHIC_STYLE
@@ -61,16 +63,16 @@ export default function PremiumCardCustomizationStep({
 
   return (
     <div className={`premium-customize-step premium-customize-step-${skin}`}>
-      {skin === 'glassy' ? <h3>Premium Card Customize</h3> : <h2>Premium Card Customize</h2>}
+      {skin === 'glassy' ? <h3>{t('premium.customize.title')}</h3> : <h2>{t('premium.customize.title')}</h2>}
       <div className="premium-customize-panel">
         {isInfographic ? (
           <InactivePremiumSelector
-            title="Meaning Strategy"
-            helper="Not used for Infographic."
+            title={t('premium.meaning.title')}
+            helper={t('premium.meaning.inactive')}
           />
         ) : (
           <PremiumVisualSelector
-            title="Meaning Strategy"
+            title={t('premium.meaning.title')}
             options={CARD_LAYER2_MEANING_OPTIONS}
             selected={selectedLayer2.meaning_strategy}
             onSelect={(value) => onLayer2Change({ meaning_strategy: value })}
@@ -78,7 +80,7 @@ export default function PremiumCardCustomizationStep({
           />
         )}
         <PremiumVisualSelector
-          title="Presentation Form"
+          title={t('premium.presentation.title')}
           options={CARD_LAYER2_PRESENTATION_OPTIONS}
           selected={selectedLayer2.presentation_form}
           onSelect={(value) => onLayer2Change({ presentation_form: value })}
@@ -86,20 +88,20 @@ export default function PremiumCardCustomizationStep({
         />
         {isInfographic && (
           <PremiumInfographicStyleSelector
-            title="Infographic Style"
-            helper="Infographics use dedicated educational-poster prompting. Meaning Strategy and Art Style do not apply."
+            title={t('premium.infographicStyle.title')}
+            helper={t('premium.infographicStyle.helper')}
             selected={selectedInfographicStyle}
             onSelect={onInfographicStyleChange}
           />
         )}
         {isInfographic ? (
           <InactivePremiumSelector
-            title="Art Style"
-            helper="Not used for Infographic."
+            title={t('premium.artStyle.title')}
+            helper={t('premium.meaning.inactive')}
           />
         ) : (
           <PremiumStyleSelector
-            title="Art Style"
+            title={t('premium.artStyle.title')}
             options={CARD_LAYER2_ART_STYLE_OPTIONS}
             selected={selectedStyle}
             onSelect={onArtStyleChange}
@@ -112,7 +114,7 @@ export default function PremiumCardCustomizationStep({
         onClick={onContinue}
         className="premium-continue-button"
       >
-        Continue
+        {t('generate.continue')}
       </button>
     </div>
   )

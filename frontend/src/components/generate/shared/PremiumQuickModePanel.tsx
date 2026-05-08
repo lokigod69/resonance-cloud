@@ -1,4 +1,5 @@
 import { Settings, Zap } from 'lucide-react'
+import { useTranslation } from '@/hooks/useTranslation'
 import {
   PREMIUM_QUICK_MODE_OPTIONS,
   type PremiumQuickMode,
@@ -15,6 +16,8 @@ export default function PremiumQuickModePanel({
   onModeGenerate,
   onCustomize,
 }: PremiumQuickModePanelProps) {
+  const { t } = useTranslation()
+
   return (
     <div className="premium-quick-panel">
       <button
@@ -23,7 +26,7 @@ export default function PremiumQuickModePanel({
         className="premium-quick-primary"
       >
         <Zap className="h-4 w-4" />
-        Quick Generate
+        <span>{t('generate.quickGenerate')}</span>
       </button>
 
       <div className="premium-quick-grid">
@@ -33,9 +36,9 @@ export default function PremiumQuickModePanel({
             type="button"
             onClick={() => onModeGenerate(option.value)}
             className="premium-quick-button"
-            title={option.helper}
+            title={t(option.helperKey)}
           >
-            {option.label}
+            {t(option.labelKey)}
           </button>
         ))}
       </div>
@@ -47,7 +50,7 @@ export default function PremiumQuickModePanel({
           className="premium-customize-button"
         >
           <Settings className="h-4 w-4" />
-          Customize
+          <span>{t('generate.customize')}</span>
         </button>
       </div>
     </div>
