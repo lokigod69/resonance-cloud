@@ -149,7 +149,7 @@ export default function CategoryPicker({
 
   function renderCountSlider(disabled = false) {
     return (
-      <div className="flex flex-col items-center gap-2 mb-6">
+      <div className="word-count-slider-wrap mb-6">
         <label htmlFor="suggest-count-slider" className="text-sm text-foreground/70">
           {tp('generate.wordCountSlider', suggestCount)}
         </label>
@@ -166,9 +166,12 @@ export default function CategoryPicker({
             setSuggestCount(nextCount)
             setSlots(prev => prev.slice(0, nextCount))
           }}
-          className="h-11 w-full max-w-xs accent-foreground disabled:opacity-50"
-          style={{ minHeight: 44, width: '100%', maxWidth: 320 }}
+          className="word-count-slider"
         />
+        <div className="word-count-slider-endpoints" aria-hidden="true">
+          <span>1</span>
+          <span>Max 20</span>
+        </div>
       </div>
     )
   }

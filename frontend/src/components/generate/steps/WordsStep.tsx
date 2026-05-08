@@ -116,7 +116,7 @@ export default function WordsStep({
           <button
             type="button"
             onClick={() => setInputMode('picker')}
-            className="text-xs text-muted-foreground hover:text-foreground/70 transition"
+            className="words-back-button"
           >
             Back
           </button>

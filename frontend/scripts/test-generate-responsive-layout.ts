@@ -20,6 +20,7 @@ const generateGo = read('src/pages/GenerateGO.tsx')
 const cardImageStyleStep = read('src/components/generate/steps/CardImageStyleStep.tsx')
 const categoryPicker = read('src/components/generate/steps/CategoryPicker.tsx')
 const wordsStep = read('src/components/generate/steps/WordsStep.tsx')
+const premiumQuickModePanel = read('src/components/generate/shared/PremiumQuickModePanel.tsx')
 
 assert(
   premiumSelectors.includes('data-option-value={value}'),
@@ -78,6 +79,36 @@ assert(
   (wordsStep.includes('>Back</button>') || />\s*Back\s*<\/button>/.test(wordsStep))
     && !wordsStep.includes('Back to Categories'),
   'Manual word entry back button must use the shorter "Back" label.',
+)
+
+assert(
+  wordsStep.includes('words-back-button')
+    && /\.words-back-button\s*\{[\s\S]*width:\s*fit-content[\s\S]*margin-inline:\s*auto/.test(glassCss),
+  'Manual word entry back control must use a visible centered neutral button style.',
+)
+
+assert(
+  !premiumQuickModePanel.includes('Sparkles')
+    && /className="premium-quick-button"[\s\S]*\{option\.label\}/.test(premiumQuickModePanel)
+    && !/className="premium-quick-button"[\s\S]*<[^>]*Icon|className="premium-quick-button"[\s\S]*<Sparkles/.test(premiumQuickModePanel),
+  'Premium quick mode buttons must render label-only controls without sparkle or star icons.',
+)
+
+assert(
+  categoryPicker.includes('className="word-count-slider"')
+    && categoryPicker.includes('word-count-slider-endpoints')
+    && categoryPicker.includes('<span>1</span>')
+    && categoryPicker.includes('<span>Max 20</span>')
+    && /min=\{1\}[\s\S]*max=\{20\}/.test(categoryPicker),
+  'Category picker slider must keep range 1-20 and display visible endpoint labels.',
+)
+
+assert(
+  glassCss.includes('.word-count-slider')
+    && glassCss.includes('.word-count-slider-endpoints')
+    && glassCss.includes('::-webkit-slider-thumb')
+    && glassCss.includes('::-moz-range-thumb'),
+  'Category picker slider must have prominent shared track and thumb styling.',
 )
 
 assert(

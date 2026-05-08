@@ -1,4 +1,4 @@
-import { Settings, Sparkles, Zap } from 'lucide-react'
+import { Settings, Zap } from 'lucide-react'
 import {
   PREMIUM_QUICK_MODE_OPTIONS,
   type PremiumQuickMode,
@@ -35,7 +35,6 @@ export default function PremiumQuickModePanel({
             className="premium-quick-button"
             title={option.helper}
           >
-            <Sparkles className="h-4 w-4" />
             {option.label}
           </button>
         ))}
