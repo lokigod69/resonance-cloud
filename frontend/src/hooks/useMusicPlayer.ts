@@ -544,7 +544,7 @@ export function useMusicPlayer(tracks: MusicTrack[]) {
 
     registerActionHandler('seekto', (details) => {
       const audio = audioRef.current
-      if (!audio || details.seekTime == null) return
+      if (!audio || typeof details.seekTime !== 'number' || !Number.isFinite(details.seekTime)) return
       const seekTime = Number.isFinite(audio.duration)
         ? Math.max(0, Math.min(details.seekTime, audio.duration))
         : Math.max(0, details.seekTime)
