@@ -6,6 +6,7 @@ import { GEMINI_ACCENTS, DEFAULT_GEMINI_ACCENT_ID, type GeminiAccent } from '@/d
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { VoiceSampleButton } from './VoiceSampleButton'
 import type { GeminiPickerStage } from '@/hooks/useVoiceTutor'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export interface GeminiSelection {
   mode: GeminiCharacterMode
@@ -28,10 +29,10 @@ interface GeminiModeVoicePickerProps {
   confirmLabel?: string
 }
 
-const GROUP_LABELS: Record<GeminiAccent['group'], string> = {
-  none: 'None',
-  regional: 'Regional',
-  theatrical: 'Theatrical',
+const GROUP_LABEL_KEYS: Record<GeminiAccent['group'], string> = {
+  none: 'speak.accent.group.none',
+  regional: 'speak.accent.group.regional',
+  theatrical: 'speak.accent.group.theatrical',
 }
 
 const SECTION_LABEL_CLASS = 'text-xs font-semibold text-gray-400 uppercase tracking-wider'
@@ -48,8 +49,9 @@ export function GeminiModeVoicePicker({
   onAccentChange,
   onStageChange,
   onStart,
-  confirmLabel = 'Start conversation',
+  confirmLabel,
 }: GeminiModeVoicePickerProps) {
+  const { t } = useTranslation()
   const [nowPlaying, setNowPlaying] = useState<string | null>(null)
   const [accentOpen, setAccentOpen] = useState(false)
 
@@ -80,7 +82,7 @@ export function GeminiModeVoicePicker({
   if (stage === 'voice') {
     return (
       <div>
-        <p className={`${SECTION_LABEL_CLASS} mb-3`}>VOICE STYLES</p>
+        <p className={`${SECTION_LABEL_CLASS} mb-3`}>{t('speak.accent.voiceStyles')}</p>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {GEMINI_VOICES.map((voice) => {
             const selected = selectedVoiceName === voice.name
@@ -125,7 +127,7 @@ export function GeminiModeVoicePicker({
   if (stage === 'mode') {
     return (
       <div>
-        <p className={`${SECTION_LABEL_CLASS} mb-3`}>CHOOSE A VIBE</p>
+        <p className={`${SECTION_LABEL_CLASS} mb-3`}>{t('speak.accent.chooseVibe')}</p>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {GEMINI_CHARACTER_MODES.map((mode) => {
             const selected = selectedModeId === mode.id
@@ -160,12 +162,12 @@ export function GeminiModeVoicePicker({
   ]
     .filter(Boolean)
     .join(' / ')
-  const accentSummary = selectedAccent.id === 'none' ? 'No accent selected' : selectedAccent.name
+  const accentSummary = selectedAccent.id === 'none' ? t('speak.accent.noneSelected') : selectedAccent.name
 
   return (
     <section className="mx-auto w-full max-w-3xl space-y-4 px-1">
       <div>
-        <p className={SECTION_LABEL_CLASS}>Ready</p>
+        <p className={SECTION_LABEL_CLASS}>{t('speak.accent.ready')}</p>
         <p className="mt-1 truncate text-sm text-gray-300" title={readySummary}>
           {readySummary}
         </p>
@@ -177,7 +179,7 @@ export function GeminiModeVoicePicker({
         disabled={!selectedMode || !selectedVoiceName || disabled}
         className="speak-start-button w-full rounded-full bg-indigo-500 px-4 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-indigo-400 disabled:translate-y-0 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 disabled:shadow-none"
       >
-        {confirmLabel}
+        {confirmLabel ?? t('speak.grok.startConversation')}
       </button>
 
       <Collapsible open={accentOpen} onOpenChange={setAccentOpen}>
@@ -191,7 +193,7 @@ export function GeminiModeVoicePicker({
             <ChevronDown className={`h-4 w-4 shrink-0 text-gray-400 transition-transform ${accentOpen ? 'rotate-180' : ''}`} />
             <span className="min-w-0 flex-1">
               <span className="block text-xs font-semibold uppercase tracking-wider text-gray-400">
-                Accent (optional)
+                {t('speak.accent')} ({t('speak.accentOptional')})
               </span>
               <span className="mt-1 block truncate text-sm text-white">
                 {accentSummary}
@@ -202,12 +204,12 @@ export function GeminiModeVoicePicker({
         <CollapsibleContent>
           <div className="space-y-4 overscroll-contain pt-4 pr-1">
             <p className="text-xs text-amber-200/90">
-              Experimental - accents can override the voice&apos;s natural gender or tone.
+              {t('speak.accent.experimental')}
             </p>
             {(['none', 'regional', 'theatrical'] as const).map((group) => (
               <div key={group}>
                 <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                  {GROUP_LABELS[group]}
+                  {t(GROUP_LABEL_KEYS[group])}
                 </p>
                 <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
                   {accentGroups[group].map((accent) => {

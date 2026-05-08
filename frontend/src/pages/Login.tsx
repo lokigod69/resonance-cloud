@@ -7,8 +7,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
+import { useLandingLocale } from '@/hooks/useLandingLocale'
 
 export default function Login() {
+  const { t } = useLandingLocale()
   const [searchParams] = useSearchParams()
   const [isSignUp, setIsSignUp] = useState(searchParams.get('mode') === 'signup')
   const [email, setEmail] = useState('')
@@ -37,7 +39,7 @@ export default function Login() {
           setError(error)
           return
         }
-        setMessage('Check your email to confirm your account, then sign in.')
+        setMessage(t('auth.confirmEmail'))
         setIsSignUp(false)
       } else {
         const { error } = await signInWithEmail(email, password)
@@ -87,10 +89,16 @@ export default function Login() {
       <Card className="w-full max-w-md glass border-border">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
-            {isSignUp ? 'Create your account' : <>Welcome <span className="text-[var(--accent)]">back</span></>}
+            {isSignUp ? (
+              t('auth.createAccountTitle')
+            ) : (
+              <>
+                {t('auth.welcomeBackLead')} <span className="text-[var(--accent)]">{t('auth.welcomeBackAccent')}</span>
+              </>
+            )}
           </CardTitle>
           <CardDescription>
-            {isSignUp ? 'Start learning with AI music videos' : 'Sign in to your account'}
+            {isSignUp ? t('auth.signupDescription') : t('auth.signinDescription')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -119,19 +127,19 @@ export default function Login() {
                 fill="#EA4335"
               />
             </svg>
-            <span>Continue with Google</span>
+            <span>{t('auth.continueWithGoogle')}</span>
           </Button>
 
           <div className="relative my-6">
             <Separator />
             <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-card px-3 text-xs text-muted-foreground">
-              or
+              {t('auth.or')}
             </span>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t('auth.email')}</Label>
               <Input
                 id="email"
                 type="email"
@@ -142,11 +150,11 @@ export default function Login() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">{t('auth.password')}</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="Your password"
+                placeholder={t('auth.passwordPlaceholder')}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -162,31 +170,31 @@ export default function Login() {
             )}
 
             <Button type="submit" variant="glass-vermillion" className="w-full" disabled={loading}>
-              {loading ? 'Please wait...' : isSignUp ? 'Create Account' : 'Sign In'}
+              {loading ? t('auth.pleaseWait') : isSignUp ? t('auth.createAccount') : t('auth.signIn')}
             </Button>
           </form>
 
           <div className="mt-4 text-center text-sm text-muted-foreground">
             {isSignUp ? (
               <>
-                Already have an account?{' '}
+                {t('auth.alreadyHaveAccount')}{' '}
                 <button
                   type="button"
                   onClick={() => { setIsSignUp(false); setError(null); setMessage(null) }}
                   className="text-foreground underline underline-offset-4 hover:text-primary"
                 >
-                  Sign In
+                  {t('auth.signIn')}
                 </button>
               </>
             ) : (
               <>
-                Don&apos;t have an account?{' '}
+                {t('auth.dontHaveAccount')}{' '}
                 <button
                   type="button"
                   onClick={() => { setIsSignUp(true); setError(null); setMessage(null) }}
                   className="text-foreground underline underline-offset-4 hover:text-primary"
                 >
-                  Sign Up
+                  {t('auth.signUp')}
                 </button>
               </>
             )}

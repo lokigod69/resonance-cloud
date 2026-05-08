@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { X, Loader, Plus } from 'lucide-react'
 import { addWord, getSupportedLanguages } from '../api'
+import { useTranslation } from '@/hooks/useTranslation'
 
 interface AddWordModalProps {
   onClose: () => void
@@ -8,6 +9,7 @@ interface AddWordModalProps {
 }
 
 export function AddWordModal({ onClose, onAdded }: AddWordModalProps) {
+  const { t } = useTranslation()
   const [languages, setLanguages] = useState<string[]>([])
   const [word, setWord] = useState('')
   const [translation, setTranslation] = useState('')
@@ -43,8 +45,8 @@ export function AddWordModal({ onClose, onAdded }: AddWordModalProps) {
       })
       onAdded()
       onClose()
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : String(err))
     }
     setSaving(false)
   }
@@ -56,7 +58,7 @@ export function AddWordModal({ onClose, onAdded }: AddWordModalProps) {
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--border)]">
-          <h2 className="text-sm font-semibold text-[var(--text-primary)]">Add Word</h2>
+          <h2 className="text-sm font-semibold text-[var(--text-primary)]">{t('addWord.title')}</h2>
           <button onClick={onClose} className="p-1.5 text-[var(--text-muted)] hover:text-[var(--text-secondary)]">
             <X size={16} />
           </button>
@@ -65,33 +67,33 @@ export function AddWordModal({ onClose, onAdded }: AddWordModalProps) {
         <form onSubmit={handleSubmit} className="p-5 space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-xs text-[var(--text-muted)] block mb-1">Word or phrase *</label>
+              <label className="text-xs text-[var(--text-muted)] block mb-1">{t('addWord.wordLabel')}</label>
               <input
                 type="text"
                 value={word}
                 onChange={e => setWord(e.target.value)}
                 className="w-full bg-[var(--bg-base)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)]"
-                placeholder="e.g. Schadenfreude, guten Morgen"
+                placeholder={t('addWord.wordPlaceholder')}
                 maxLength={50}
                 autoFocus
                 required
               />
             </div>
             <div>
-              <label className="text-xs text-[var(--text-muted)] block mb-1">Translation *</label>
+              <label className="text-xs text-[var(--text-muted)] block mb-1">{t('addWord.translationLabel')}</label>
               <input
                 type="text"
                 value={translation}
                 onChange={e => setTranslation(e.target.value)}
                 className="w-full bg-[var(--bg-base)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)]"
-                placeholder="e.g. pleasure from misfortune"
+                placeholder={t('addWord.translationPlaceholder')}
                 required
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs text-[var(--text-muted)] block mb-1">Language *</label>
+            <label className="text-xs text-[var(--text-muted)] block mb-1">{t('addWord.languageLabel')}</label>
             <select
               value={language}
               onChange={e => setLanguage(e.target.value)}
@@ -105,46 +107,46 @@ export function AddWordModal({ onClose, onAdded }: AddWordModalProps) {
           </div>
 
           <div>
-            <label className="text-xs text-[var(--text-muted)] block mb-1">Mnemonic</label>
+            <label className="text-xs text-[var(--text-muted)] block mb-1">{t('addWord.mnemonicLabel')}</label>
             <input
               type="text"
               value={mnemonic}
               onChange={e => setMnemonic(e.target.value)}
               className="w-full bg-[var(--bg-base)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)]"
-              placeholder="Memory aid..."
+              placeholder={t('addWord.mnemonicPlaceholder')}
             />
           </div>
 
           <div>
-            <label className="text-xs text-[var(--text-muted)] block mb-1">Etymology</label>
+            <label className="text-xs text-[var(--text-muted)] block mb-1">{t('addWord.etymologyLabel')}</label>
             <input
               type="text"
               value={etymology}
               onChange={e => setEtymology(e.target.value)}
               className="w-full bg-[var(--bg-base)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)]"
-              placeholder="Word origin..."
+              placeholder={t('addWord.etymologyPlaceholder')}
             />
           </div>
 
           <div>
-            <label className="text-xs text-[var(--text-muted)] block mb-1">Example</label>
+            <label className="text-xs text-[var(--text-muted)] block mb-1">{t('addWord.exampleLabel')}</label>
             <input
               type="text"
               value={example}
               onChange={e => setExample(e.target.value)}
               className="w-full bg-[var(--bg-base)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)]"
-              placeholder="Example sentence..."
+              placeholder={t('addWord.examplePlaceholder')}
             />
           </div>
 
           <div>
-            <label className="text-xs text-[var(--text-muted)] block mb-1">Tags (comma-separated)</label>
+            <label className="text-xs text-[var(--text-muted)] block mb-1">{t('addWord.tagsLabel')}</label>
             <input
               type="text"
               value={tags}
               onChange={e => setTags(e.target.value)}
               className="w-full bg-[var(--bg-base)] border border-[var(--border)] rounded px-3 py-2 text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent)]"
-              placeholder="humor, colloquial"
+              placeholder={t('addWord.tagsPlaceholder')}
             />
           </div>
 
@@ -160,7 +162,7 @@ export function AddWordModal({ onClose, onAdded }: AddWordModalProps) {
               onClick={onClose}
               className="px-4 py-2 text-xs text-[var(--text-secondary)] border border-[var(--border)] rounded hover:bg-[var(--bg-hover)]"
             >
-              Cancel
+              {t('common.cancel')}
             </button>
             <button
               type="submit"
@@ -168,7 +170,7 @@ export function AddWordModal({ onClose, onAdded }: AddWordModalProps) {
               className="flex items-center gap-1.5 px-4 py-2 text-xs font-medium bg-[var(--accent)] text-[var(--on-accent)] rounded hover:bg-[var(--accent)]/80 disabled:opacity-50 transition-colors"
             >
               {saving ? <Loader size={12} className="animate-spin" /> : <Plus size={12} />}
-              Add Word
+              {t('addWord.submit')}
             </button>
           </div>
         </form>
@@ -184,6 +186,7 @@ interface LanguagePickerModalProps {
 }
 
 export function LanguagePickerModal({ onSelect, onClose }: LanguagePickerModalProps) {
+  const { t } = useTranslation()
   const [languages, setLanguages] = useState<string[]>([])
   const [selected, setSelected] = useState('')
 
@@ -201,9 +204,9 @@ export function LanguagePickerModal({ onSelect, onClose }: LanguagePickerModalPr
         onClick={e => e.stopPropagation()}
       >
         <div className="px-5 py-4 border-b border-[var(--border)]">
-          <h2 className="text-sm font-semibold text-[var(--text-primary)]">Select Language</h2>
+          <h2 className="text-sm font-semibold text-[var(--text-primary)]">{t('addWord.selectLanguageTitle')}</h2>
           <p className="text-xs text-[var(--text-muted)] mt-1">
-            This CSV doesn't have a language column. What language are these words?
+            {t('addWord.selectLanguageDescription')}
           </p>
         </div>
         <div className="p-5 space-y-4">
@@ -221,14 +224,14 @@ export function LanguagePickerModal({ onSelect, onClose }: LanguagePickerModalPr
               onClick={onClose}
               className="px-4 py-2 text-xs text-[var(--text-secondary)] border border-[var(--border)] rounded hover:bg-[var(--bg-hover)]"
             >
-              Cancel
+              {t('common.cancel')}
             </button>
             <button
               onClick={() => selected && onSelect(selected)}
               disabled={!selected}
               className="px-4 py-2 text-xs font-medium bg-[var(--accent)] text-[var(--on-accent)] rounded hover:bg-[var(--accent)]/80 disabled:opacity-50 transition-colors"
             >
-              Import with this language
+              {t('addWord.importWithLanguage')}
             </button>
           </div>
         </div>

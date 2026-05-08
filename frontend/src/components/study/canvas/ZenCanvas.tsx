@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
+import { useTranslation } from '@/hooks/useTranslation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
@@ -127,6 +128,7 @@ function useLaneTopOffsetPx(
 
   useLayoutEffect(() => {
     if (typeof window === 'undefined' || layout !== 'lane') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve existing lane reset behavior.
       setLaneTopOffsetPx(0)
       return undefined
     }
@@ -416,6 +418,7 @@ export default function ZenCanvas({
   onExit,
   onContinue,
 }: CanvasModeProps) {
+  const { t } = useTranslation()
   const viewport = useViewport()
   const [renderWords, setRenderWords] = useState<ZenWordState[]>(() => createWordStates(words, new Set(), viewport, masteredWordIds))
   const [particles, setParticles] = useState<ZenParticle[]>(
@@ -951,7 +954,7 @@ export default function ZenCanvas({
 
         {words.length === 0 && (
           <p className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-[#444] font-light tracking-widest">
-            No words
+            {t('study.canvas.noWords')}
           </p>
         )}
 
@@ -1017,6 +1020,7 @@ function Toolbar({
   onNextPage,
   onExit,
 }: ToolbarProps) {
+  const { t } = useTranslation()
   const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
@@ -1029,7 +1033,7 @@ function Toolbar({
         }}
         className="h-9 px-3 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded"
       >
-        Exit
+        {t('study.canvas.exit')}
       </button>
 
       <div className="flex flex-wrap gap-1">
@@ -1060,7 +1064,7 @@ function Toolbar({
               onToggleDirection()
             }}
             className="h-9 px-3 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded"
-            title="Swap prompt and answer"
+            title={t('study.canvas.swapPromptAnswer')}
           >
             <span className="text-white/80">{visibleCode}</span>
             <span className="mx-1 text-white/30">→</span>
@@ -1078,7 +1082,7 @@ function Toolbar({
             onChange={onToggleAutoReveal}
             className="accent-[#777]"
           />
-          Hide answer
+          {t('study.canvas.hideAnswer')}
         </label>
 
         <button
@@ -1087,7 +1091,7 @@ function Toolbar({
             onToggleImages()
           }}
           className="h-9 px-3 text-xs uppercase tracking-widest text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded"
-          title={showImages ? 'Show text' : 'Show images'}
+          title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
         >
           {showImages ? 'Aa' : 'Img'}
         </button>
@@ -1102,7 +1106,7 @@ function Toolbar({
         {totalPages > 1 && (
           <>
             <span className="px-2 text-[#555] text-sm font-light tracking-wider whitespace-nowrap">
-              Page {currentPage + 1} of {totalPages}
+              {t('study.canvas.pageOf', { current: currentPage + 1, total: totalPages })}
             </span>
             <button
               onClick={(event) => {
@@ -1111,7 +1115,7 @@ function Toolbar({
               }}
               disabled={currentPage === 0}
               className="w-9 h-9 text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label="Previous page"
+              aria-label={t('study.canvas.previousPage')}
             >
               ‹
             </button>
@@ -1122,7 +1126,7 @@ function Toolbar({
               }}
               disabled={currentPage >= totalPages - 1}
               className="w-9 h-9 text-white/50 hover:text-white/80 border border-white/20 hover:border-white/40 bg-[#0a0a0a]/60 rounded disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label="Next page"
+              aria-label={t('study.canvas.nextPage')}
             >
               ›
             </button>
@@ -1158,6 +1162,7 @@ function RevealModal({
   onPass,
   onFail,
 }: RevealModalProps) {
+  const { t } = useTranslation()
   const word = state.word
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
@@ -1169,6 +1174,7 @@ function RevealModal({
   useBodyScrollLock(true)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve existing reveal reset behavior.
     setAnswerRevealed(autoReveal === 'on')
   }, [autoReveal, word.id])
 
@@ -1195,7 +1201,7 @@ function RevealModal({
         <button
           className="absolute top-4 right-4 z-20 text-[#333] hover:text-[#666] bg-[#111] border border-[#222] rounded-full w-10 h-10 flex items-center justify-center text-xl"
           onClick={onClose}
-          aria-label="Close"
+          aria-label={t('study.canvas.close')}
         >
           ×
         </button>
@@ -1263,7 +1269,7 @@ function RevealModal({
                 <div className="border-t border-[#222] pt-4">
                   <div className="bg-[#111] border border-[#222] rounded-lg p-4">
                     <p className="text-[10px] tracking-[0.2em] text-[#666] uppercase mb-2">
-                      Mnemonic
+                      {t('study.canvas.mnemonic')}
                     </p>
                     <p className="text-base text-[#888] leading-relaxed">
                       {learning.mnemonic}
@@ -1275,7 +1281,7 @@ function RevealModal({
               {learning?.etymology && (
                 <div className="border-t border-[#222] pt-4 mt-4">
                   <p className="text-[10px] tracking-[0.2em] text-[#555] uppercase mb-2">
-                    Etymology
+                    {t('study.canvas.etymology')}
                   </p>
                   <p className="text-base italic text-[#777] leading-relaxed">
                     {learning.etymology}
@@ -1286,7 +1292,7 @@ function RevealModal({
               {usage && (
                 <div className="border-t border-[#222] pt-4 mt-4">
                   <p className="text-[10px] tracking-[0.2em] text-[#555] uppercase mb-2">
-                    Usage
+                    {t('study.canvas.usage')}
                   </p>
                   {usage.target && (
                     <p className="text-lg italic text-[#888] leading-relaxed">
@@ -1315,7 +1321,7 @@ function RevealModal({
             onClick={onFail}
             disabled={!canGrade}
             className={`group h-12 rounded bg-[#111] border border-[#222] text-[#444] hover:text-[#666] hover:border-[#333] transition-colors ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
-            aria-label="Review later"
+            aria-label={t('study.reviewLater')}
           >
             <span className="text-2xl opacity-60 group-hover:opacity-90">✗</span>
           </button>
@@ -1323,7 +1329,7 @@ function RevealModal({
             onClick={onPass}
             disabled={!canGrade}
             className={`group h-12 rounded bg-[#111] border border-[#333] text-[#666] hover:text-[#999] hover:border-[#444] transition-colors ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
-            aria-label="Remembered"
+            aria-label={t('study.rememberedAction')}
           >
             <span className="text-2xl opacity-70 group-hover:opacity-100">✓</span>
           </button>

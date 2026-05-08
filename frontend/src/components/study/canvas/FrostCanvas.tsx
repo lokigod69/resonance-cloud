@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
+import { useTranslation } from '@/hooks/useTranslation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
@@ -278,6 +279,7 @@ function useLaneTopOffsetPx(
 
   useLayoutEffect(() => {
     if (typeof window === 'undefined' || layout !== 'lane') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve existing lane reset behavior.
       setLaneTopOffsetPx(0)
       return undefined
     }
@@ -902,6 +904,7 @@ function Toolbar({
   onNextPage,
   onExit,
 }: ToolbarProps) {
+  const { t } = useTranslation()
   const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
@@ -914,7 +917,7 @@ function Toolbar({
         }}
         className="h-9 px-3 text-xs uppercase tracking-widest text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg"
       >
-        Exit
+        {t('study.canvas.exit')}
       </button>
 
       <div className="flex flex-wrap gap-1">
@@ -945,7 +948,7 @@ function Toolbar({
               onToggleDirection()
             }}
             className="h-9 px-3 text-xs uppercase tracking-widest text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg"
-            title="Swap prompt and answer"
+            title={t('study.canvas.swapPromptAnswer')}
           >
             <span className="text-[#a8d8ea]">{visibleCode}</span>
             <span className="mx-1 text-white/30">→</span>
@@ -963,7 +966,7 @@ function Toolbar({
             onChange={onToggleAutoReveal}
             className="accent-[#a8d8ea]"
           />
-          Hide answer
+          {t('study.canvas.hideAnswer')}
         </label>
 
         <button
@@ -972,7 +975,7 @@ function Toolbar({
             onToggleImages()
           }}
           className="h-9 px-3 text-xs uppercase tracking-widest text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg"
-          title={showImages ? 'Show text' : 'Show images'}
+          title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
         >
           {showImages ? 'Aa' : 'Img'}
         </button>
@@ -980,7 +983,7 @@ function Toolbar({
         {totalPages > 1 && (
           <>
             <span className="px-2 text-xs text-[#a8d8ea]/70 tracking-widest whitespace-nowrap">
-              Page {currentPage + 1} of {totalPages}
+              {t('study.canvas.pageOf', { current: currentPage + 1, total: totalPages })}
             </span>
             <button
               onClick={(event) => {
@@ -989,7 +992,7 @@ function Toolbar({
               }}
               disabled={currentPage === 0}
               className="w-9 h-9 text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label="Previous page"
+              aria-label={t('study.canvas.previousPage')}
             >
               ‹
             </button>
@@ -1000,7 +1003,7 @@ function Toolbar({
               }}
               disabled={currentPage >= totalPages - 1}
               className="w-9 h-9 text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label="Next page"
+              aria-label={t('study.canvas.nextPage')}
             >
               ›
             </button>
@@ -1036,6 +1039,7 @@ function RevealModal({
   onPass,
   onFail,
 }: RevealModalProps) {
+  const { t } = useTranslation()
   const word = state.word
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
@@ -1047,6 +1051,7 @@ function RevealModal({
   useBodyScrollLock(true)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve existing reveal reset behavior.
     setAnswerRevealed(autoReveal === 'on')
   }, [autoReveal, word.id])
 
@@ -1073,7 +1078,7 @@ function RevealModal({
         <button
           className="absolute top-2 right-2 z-20 text-gray-600 cursor-pointer hover:text-white bg-slate-800/90 border border-[#a8d8ea]/30 rounded-full w-10 h-10 flex items-center justify-center text-xl"
           onClick={onClose}
-          aria-label="Close"
+          aria-label={t('study.canvas.close')}
         >
           ✕
         </button>
@@ -1142,7 +1147,7 @@ function RevealModal({
                   <div className="border-t border-[#a8d8ea]/20 pt-4">
                     <div className="bg-[#a8d8ea]/5 border border-[#a8d8ea]/10 rounded-lg p-3">
                       <p className="text-[10px] tracking-widest text-[#a8d8ea]/70 uppercase mb-2 font-hand">
-                        Mnemonic
+                        {t('study.canvas.mnemonic')}
                       </p>
                       <p className="text-base text-[#a8d8ea]/80 font-hand leading-relaxed">
                         {learning.mnemonic}
@@ -1154,7 +1159,7 @@ function RevealModal({
                 {learning?.etymology && (
                   <div className="border-t border-[#a8d8ea]/20 pt-4 mt-4">
                     <p className="text-[10px] tracking-widest text-[#a8d8ea]/70 uppercase mb-2 font-hand">
-                      Etymology
+                      {t('study.canvas.etymology')}
                     </p>
                     <p className="text-base italic text-[#a8d8ea]/80 leading-relaxed font-hand">
                       {learning.etymology}
@@ -1165,7 +1170,7 @@ function RevealModal({
                 {usage && (
                   <div className="border-t border-[#a8d8ea]/20 pt-4 mt-4">
                     <p className="text-[10px] tracking-widest text-[#a8d8ea]/70 uppercase mb-2 font-hand">
-                      Usage
+                      {t('study.canvas.usage')}
                     </p>
                     {usage.target && (
                       <p className="text-base italic text-[#a8d8ea]/80 leading-relaxed font-hand">
@@ -1195,7 +1200,7 @@ function RevealModal({
                 onClick={onFail}
                 disabled={!canGrade}
                 className={`h-12 rounded-lg bg-[#a8d8ea]/20 hover:bg-[#a8d8ea]/30 text-[#a8d8ea] text-2xl ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
-                aria-label="Review later"
+                aria-label={t('study.reviewLater')}
               >
                 ✕
               </button>
@@ -1203,7 +1208,7 @@ function RevealModal({
                 onClick={onPass}
                 disabled={!canGrade}
                 className={`h-12 rounded-lg bg-[#2a4a6a]/80 hover:bg-[#2a4a6a] text-white text-2xl ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
-                aria-label="Remembered"
+                aria-label={t('study.rememberedAction')}
               >
                 ✓
               </button>

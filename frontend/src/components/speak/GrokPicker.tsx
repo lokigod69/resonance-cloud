@@ -36,41 +36,30 @@ interface GrokPickerProps {
 const SECTION_LABEL_CLASS = 'text-xs font-semibold text-slate-400 uppercase tracking-[0.22em]'
 const LEVEL_VALUES: GrokLevel[] = ['zero', 'beginner', 'intermediate', 'advanced']
 
-const CATEGORY_LABELS: Record<GrokCategory, string> = {
-  travel: 'Travel',
-  business: 'Business',
-  romance: 'Romance',
-  philosophy: 'Philosophy',
-  daily_life: 'Daily Life',
-  food: 'Food',
-  arts: 'Arts',
-  news: 'News',
-}
-
 const CATEGORY_VISUALS: Record<GrokCategory, { description: string }> = {
   travel: {
-    description: 'Airports, hotels, directions, and travel surprises.',
+    description: 'speak.grok.category.travelDescription',
   },
   business: {
-    description: 'Meetings, deals, pitches, and professional practice.',
+    description: 'speak.grok.category.businessDescription',
   },
   romance: {
-    description: 'Dates, feelings, and natural social nuance.',
+    description: 'speak.grok.category.romanceDescription',
   },
   philosophy: {
-    description: 'Ideas, debate, meaning, and abstract conversation.',
+    description: 'speak.grok.category.philosophyDescription',
   },
   daily_life: {
-    description: 'Errands, schedules, home, and everyday fluency.',
+    description: 'speak.grok.category.daily_lifeDescription',
   },
   food: {
-    description: 'Restaurants, ordering, preferences, and taste.',
+    description: 'speak.grok.category.foodDescription',
   },
   arts: {
-    description: 'Culture, film, music, exhibitions, and style.',
+    description: 'speak.grok.category.artsDescription',
   },
   news: {
-    description: 'Current events, opinions, and world context.',
+    description: 'speak.grok.category.newsDescription',
   },
 }
 
@@ -225,8 +214,6 @@ function ModeCard({
   onSelect: () => void
 }) {
   const { t } = useTranslation()
-  const translated = t(category.displayKey)
-  const label = translated === category.displayKey ? CATEGORY_LABELS[category.id] : translated
   const visual = CATEGORY_VISUALS[category.id]
 
   return (
@@ -242,8 +229,8 @@ function ModeCard({
         {selected && <Check className="h-4 w-4 text-indigo-100" />}
       </div>
       <div>
-        <p className="text-sm font-semibold text-white">{label}</p>
-        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-400">{visual.description}</p>
+        <p className="text-sm font-semibold text-white">{t(category.displayKey)}</p>
+        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-400">{t(visual.description)}</p>
       </div>
     </button>
   )
@@ -269,6 +256,7 @@ function StartConversationButton({
   isStarting: boolean
   onStart: () => void
 }) {
+  const { t } = useTranslation()
   return (
     <div className="flex justify-center pt-2">
       <button
@@ -280,11 +268,11 @@ function StartConversationButton({
         {isStarting ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" />
-            Starting...
+            {t('speak.grok.starting')}
           </>
         ) : (
           <>
-            Start conversation
+            {t('speak.grok.startConversation')}
             <ArrowRight className="h-4 w-4" />
           </>
         )}
@@ -333,8 +321,8 @@ export function GrokPicker({
       <section className="relative isolate mx-auto w-full max-w-5xl space-y-6 px-1">
         <div className="mb-3 flex items-end justify-between gap-3">
           <div>
-            <p className={`${SECTION_LABEL_CLASS} pl-1`}>Voice</p>
-            <p className="mt-1 text-sm text-slate-400">Choose the voice that will carry the conversation.</p>
+            <p className={`${SECTION_LABEL_CLASS} pl-1`}>{t('speak.grok.voiceLabel')}</p>
+            <p className="mt-1 text-sm text-slate-400">{t('speak.grok.voiceHint')}</p>
           </div>
         </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -356,7 +344,7 @@ export function GrokPicker({
     return (
       <section className="relative isolate mx-auto w-full max-w-6xl space-y-6 px-1">
         <div>
-          <p className={`${SECTION_LABEL_CLASS} mb-3 pl-1`}>Mode</p>
+          <p className={`${SECTION_LABEL_CLASS} mb-3 pl-1`}>{t('speak.grok.modeLabel')}</p>
           <button
             type="button"
             onClick={() => onSelectCategory('free_chat')}
@@ -368,11 +356,11 @@ export function GrokPicker({
               <ModeVisual kind="free_chat" selected={freeChatSelected} large />
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="text-lg font-semibold text-white">Free Chat</p>
+                  <p className="text-lg font-semibold text-white">{t('speak.grok.freeChat')}</p>
                   <Sparkles className="h-4 w-4 text-indigo-200/80" />
                 </div>
                 <p className="mt-1 text-sm leading-relaxed text-slate-400">
-                  Open conversation with no fixed scenario.
+                  {t('speak.grok.freeChatDescription')}
                 </p>
               </div>
             </div>

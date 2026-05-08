@@ -47,16 +47,16 @@ const LANGUAGES = SPEAK_ORDER
     value: l.value,
   }))
 
-const GROK_CATEGORY_LABELS: Record<GrokCategory | 'free_chat', string> = {
-  free_chat: 'Free Chat',
-  travel: 'Travel',
-  business: 'Business',
-  romance: 'Romance',
-  philosophy: 'Philosophy',
-  daily_life: 'Daily Life',
-  food: 'Food',
-  arts: 'Arts',
-  news: 'News',
+const GROK_CATEGORY_LABEL_KEYS: Record<GrokCategory | 'free_chat', string> = {
+  free_chat: 'speak.grok.freeChat',
+  travel: 'speak.grok.category.travel',
+  business: 'speak.grok.category.business',
+  romance: 'speak.grok.category.romance',
+  philosophy: 'speak.grok.category.philosophy',
+  daily_life: 'speak.grok.category.daily_life',
+  food: 'speak.grok.category.food',
+  arts: 'speak.grok.category.arts',
+  news: 'speak.grok.category.news',
 }
 
 function TypingIndicator() {
@@ -182,8 +182,7 @@ export default function Speak() {
   }))
 
   const getGrokCategoryLabel = (category: GrokCategory | 'free_chat' | null) => {
-    if (!category) return GROK_CATEGORY_LABELS.free_chat
-    return GROK_CATEGORY_LABELS[category]
+    return t(GROK_CATEGORY_LABEL_KEYS[category ?? 'free_chat'])
   }
 
   const grokCategoryLabel = getGrokCategoryLabel(selectedGrokCategory)
@@ -697,7 +696,7 @@ export default function Speak() {
                 onGeminiVoiceChange={(voiceName) => tutor.setGeminiVoiceName(voiceName)}
                 onGeminiAccentChange={(accentId) => tutor.setGeminiAccentId(accentId)}
                 onGeminiStageChange={(stage) => tutor.setGeminiPickerStage(stage)}
-                confirmLabel={tutor.isChangingVoice ? 'Use this voice' : 'Start conversation'}
+                confirmLabel={tutor.isChangingVoice ? t('speak.accent.useThisVoice') : t('speak.grok.startConversation')}
               />
             )}
           </div>
@@ -714,7 +713,7 @@ export default function Speak() {
             <button
               onClick={tutor.cancelLevelChange}
               className="rounded-xl p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--accent-soft)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/70"
-              title="Back to voice selection"
+              title={t('speak.backTooltip')}
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
@@ -758,7 +757,7 @@ export default function Speak() {
                       : 'border-[var(--border-subtle)] bg-[var(--surface-glass)] text-[var(--text-secondary)] hover:bg-[var(--surface-glass-strong)]'
                   }`}
                 >
-                  {tutor.studyMode ? '📖 Study Mode ON' : 'Study my words'}
+                  {tutor.studyMode ? `📖 ${t('speak.studyOn')}` : t('speak.studyTooltip')}
                 </button>
               </div>
             )}
@@ -1299,7 +1298,7 @@ export default function Speak() {
                         ? 'bg-[var(--surface-2)] hover:bg-[var(--accent-soft)]'
                         : 'bg-[var(--surface-2)] hover:bg-[var(--accent-soft)] active:scale-95'
               }`}
-              aria-label={tutor.status === 'recording' ? 'Tap to send' : 'Tap to speak'}
+              aria-label={tutor.status === 'recording' ? t('speak.tapToSend') : t('speak.tapToSpeak')}
             >
               {tutor.status === 'processing' ? (
                 <Loader2 className="h-7 w-7 text-[var(--text-muted)] animate-spin" />

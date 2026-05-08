@@ -54,21 +54,20 @@ function buildGeminiDisplayName(conv: Conversation): string {
   return parts.join(' · ')
 }
 
-const GROK_CATEGORY_LABELS: Record<string, string> = {
-  travel: 'Travel',
-  business: 'Business',
-  romance: 'Romance',
-  philosophy: 'Philosophy',
-  daily_life: 'Daily Life',
-  food: 'Food',
-  arts: 'Arts',
-  news: 'News',
+const GROK_CATEGORY_LABEL_KEYS: Record<string, string> = {
+  travel: 'speak.grok.category.travel',
+  business: 'speak.grok.category.business',
+  romance: 'speak.grok.category.romance',
+  philosophy: 'speak.grok.category.philosophy',
+  daily_life: 'speak.grok.category.daily_life',
+  food: 'speak.grok.category.food',
+  arts: 'speak.grok.category.arts',
+  news: 'speak.grok.category.news',
 }
 
-function buildGrokDisplayName(conv: Conversation): string {
-  const categoryName = conv.grok_category
-    ? (GROK_CATEGORY_LABELS[conv.grok_category] ?? conv.grok_category)
-    : 'Free Chat'
+function buildGrokDisplayName(conv: Conversation, t: (key: string, vars?: Record<string, string | number>) => string): string {
+  const categoryKey = conv.grok_category ? GROK_CATEGORY_LABEL_KEYS[conv.grok_category] : null
+  const categoryName = categoryKey ? t(categoryKey) : (conv.grok_category ?? t('speak.grok.freeChat'))
   const voice = conv.grok_voice ?? conv.voice_name ?? ''
   return voice ? `${categoryName} · ${voice}` : categoryName
 }
@@ -115,7 +114,7 @@ const LEVEL_EMOJI: Record<string, string> = {
   advanced:     '📕',
 }
 
-function formatDate(iso: string): string {
+function formatDate(iso: string, t: (key: string, vars?: Record<string, string | number>) => string): string {
   const date = new Date(iso)
   const now = new Date()
   const diffMs = now.getTime() - date.getTime()
@@ -123,11 +122,11 @@ function formatDate(iso: string): string {
   const diffHours = Math.floor(diffMs / 3600000)
   const diffDays = Math.floor(diffMs / 86400000)
 
-  if (diffMins < 1) return 'Just now'
-  if (diffMins < 60) return `${diffMins}m ago`
-  if (diffHours < 24) return `${diffHours}h ago`
-  if (diffDays === 1) return 'Yesterday'
-  if (diffDays < 7) return `${diffDays} days ago`
+  if (diffMins < 1) return t('speak.history.justNow')
+  if (diffMins < 60) return t('speak.history.minutesAgo', { count: diffMins })
+  if (diffHours < 24) return t('speak.history.hoursAgo', { count: diffHours })
+  if (diffDays === 1) return t('speak.history.yesterday')
+  if (diffDays < 7) return t('speak.history.daysAgo', { count: diffDays })
 
   return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
 }
@@ -198,7 +197,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
       const { data: sessionData } = await supabase.auth.getSession()
       const token = sessionData.session?.access_token
       if (!token) {
-        setCorrectionsError('Your session expired. Sign in again to review corrections.')
+        setCorrectionsError(t('speak.history.sessionExpired'))
         return
       }
 
@@ -217,8 +216,8 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
       })
       if (!res.ok) {
         setCorrectionsError(res.status === 401
-          ? 'Your session expired. Sign in again to review corrections.'
-          : 'Unable to review corrections right now.')
+          ? t('speak.history.sessionExpired')
+          : t('speak.history.correctionsUnavailable'))
         return
       }
       const data = await res.json()
@@ -230,7 +229,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
       setConversations((prev) => prev.map((c) => c.id === selectedConversation.id ? { ...c, corrections: list } : c))
     } catch (err) {
       console.error('Corrections fetch failed:', err)
-      setCorrectionsError('Unable to review corrections right now.')
+      setCorrectionsError(t('speak.history.correctionsUnavailable'))
       setCorrections([])
     } finally {
       setCorrectionsLoading(false)
@@ -266,7 +265,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
             <button
               onClick={() => { setSelectedId(null); setMessages([]) }}
               className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
-              title="Back to history"
+              title={t('speak.history.back')}
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
@@ -286,7 +285,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
               const transcriptSub = isRoleplay
                 ? selectedConversation.npc_name
                 : isGrok
-                  ? buildGrokDisplayName(selectedConversation)
+                  ? buildGrokDisplayName(selectedConversation, t)
                   : isGemini
                   ? buildGeminiDisplayName(selectedConversation)
                   : (cName || selectedConversation.voice_name)
@@ -308,19 +307,19 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                         </span>
                       )}
                     </p>
-                    <p className="text-xs text-gray-500">{formatDate(selectedConversation.started_at)}</p>
+                    <p className="text-xs text-gray-500">{formatDate(selectedConversation.started_at, t)}</p>
                   </div>
                 </div>
               )
             })() : (
-              <p className="text-sm font-semibold text-white">Conversation History</p>
+              <p className="text-sm font-semibold text-white">{t('speak.history.title')}</p>
             )}
           </div>
 
           <button
             onClick={onClose}
             className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
-            title="Close history"
+            title={t('speak.history.close')}
           >
             <X className="h-5 w-5" />
           </button>
@@ -336,15 +335,15 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
             <>
               {loading && (
                 <div className="flex items-center justify-center py-16 text-gray-500 text-sm">
-                  Loading…
+                  {t('speak.history.loading')}
                 </div>
               )}
 
               {!loading && conversations.length === 0 && (
                 <div className="flex flex-col items-center justify-center py-20 gap-3 text-center">
                   <Mic className="h-10 w-10 text-gray-700" />
-                  <p className="text-gray-400 text-sm font-medium">No conversations yet</p>
-                  <p className="text-gray-600 text-xs max-w-xs">Start chatting to build your history!</p>
+                  <p className="text-gray-400 text-sm font-medium">{t('speak.history.emptyTitle')}</p>
+                  <p className="text-gray-600 text-xs max-w-xs">{t('speak.history.emptyDescription')}</p>
                 </div>
               )}
 
@@ -359,7 +358,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                     const displayName = isRoleplay
                       ? conv.npc_name
                       : isGrok
-                        ? buildGrokDisplayName(conv)
+                        ? buildGrokDisplayName(conv, t)
                         : isGemini
                         ? buildGeminiDisplayName(conv)
                         : (charName || conv.voice_name)
@@ -407,7 +406,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                         </div>
 
                         <div className="flex flex-col items-end gap-1 shrink-0">
-                          <span className="text-xs text-gray-500">{formatDate(conv.started_at)}</span>
+                          <span className="text-xs text-gray-500">{formatDate(conv.started_at, t)}</span>
                           {conv.message_count > 0 && (
                             <span className="text-xs bg-gray-700/60 text-gray-400 px-1.5 py-0.5 rounded-full">
                               {conv.message_count}
@@ -418,7 +417,7 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
                         <button
                           onClick={(e) => deleteConversation(conv.id, e)}
                           className="p-1 rounded text-gray-500 hover:text-red-400 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity shrink-0"
-                          title="Delete conversation"
+                          title={t('speak.history.delete')}
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -437,13 +436,13 @@ export function SpeakHistoryPanel({ open, onClose, baseLangCode }: SpeakHistoryP
             <>
               {messagesLoading && (
                 <div className="flex items-center justify-center py-16 text-gray-500 text-sm">
-                  Loading…
+                  {t('speak.history.loading')}
                 </div>
               )}
 
               {!messagesLoading && messages.length === 0 && (
                 <div className="flex items-center justify-center py-16 text-gray-600 text-sm">
-                  No messages in this conversation.
+                  {t('speak.history.emptyMessages')}
                 </div>
               )}
 

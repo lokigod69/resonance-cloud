@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChevronDown, ChevronRight, Check } from 'lucide-react'
 import { GEMINI_ACCENTS, type GeminiAccent } from '@/data/geminiAccents'
+import { useTranslation } from '@/hooks/useTranslation'
 
 interface GeminiAccentPickerProps {
   selectedAccentId: string
@@ -8,10 +9,10 @@ interface GeminiAccentPickerProps {
   disabled?: boolean
 }
 
-const GROUP_LABELS: Record<GeminiAccent['group'], string> = {
+const GROUP_LABEL_KEYS: Record<GeminiAccent['group'], string> = {
   none: '',
-  regional: 'Regional',
-  theatrical: 'Theatrical',
+  regional: 'speak.accent.group.regional',
+  theatrical: 'speak.accent.group.theatrical',
 }
 
 export function GeminiAccentPicker({
@@ -19,6 +20,7 @@ export function GeminiAccentPicker({
   onSelect,
   disabled,
 }: GeminiAccentPickerProps) {
+  const { t } = useTranslation()
   const [open, setOpen] = useState(false)
   const selected = GEMINI_ACCENTS.find((a) => a.id === selectedAccentId) ?? GEMINI_ACCENTS[0]
   const hasAccent = selectedAccentId !== 'none'
@@ -41,11 +43,11 @@ export function GeminiAccentPicker({
           <ChevronRight className="h-4 w-4 text-gray-400 shrink-0" />
         )}
         <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-          Accent
+          {t('speak.accent')}
         </span>
-        <span className="text-[11px] text-gray-500">(optional)</span>
+        <span className="text-[11px] text-gray-500">({t('speak.accentOptional')})</span>
         <span className="ml-auto text-xs text-white truncate">
-          {hasAccent ? selected.name : 'No accent'}
+          {hasAccent ? selected.name : t('speak.accent.none')}
         </span>
       </button>
 
@@ -59,7 +61,7 @@ export function GeminiAccentPicker({
           />
 
           <AccentGroup
-            label={GROUP_LABELS.regional}
+            label={t(GROUP_LABEL_KEYS.regional)}
             accents={regional}
             selectedAccentId={selectedAccentId}
             onSelect={onSelect}
@@ -67,7 +69,7 @@ export function GeminiAccentPicker({
           />
 
           <AccentGroup
-            label={GROUP_LABELS.theatrical}
+            label={t(GROUP_LABEL_KEYS.theatrical)}
             accents={theatrical}
             selectedAccentId={selectedAccentId}
             onSelect={onSelect}

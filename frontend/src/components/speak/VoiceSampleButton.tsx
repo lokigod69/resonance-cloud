@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Loader2, Play, Square } from 'lucide-react'
+import { useTranslation } from '@/hooks/useTranslation'
 
 interface VoiceSampleButtonProps {
   voiceName: string
@@ -25,6 +26,7 @@ export function VoiceSampleButton({
   onPlayStart,
   onPlayEnd,
 }: VoiceSampleButtonProps) {
+  const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const audioElRef = useRef<HTMLAudioElement | null>(null)
@@ -69,7 +71,7 @@ export function VoiceSampleButton({
       const audio = new Audio(url)
       audio.preload = 'auto'
       audio.onended = () => resolve()
-      audio.onerror = () => reject(new Error('Audio playback failed'))
+      audio.onerror = () => reject(new Error(t('speak.voiceSample.audioFailed')))
       audioElRef.current = audio
       if (abortedRef.current) {
         resolve()
@@ -77,7 +79,7 @@ export function VoiceSampleButton({
       }
       audio.play().catch(reject)
     })
-  }, [])
+  }, [t])
 
   const play = useCallback(async () => {
     if (isPlaying) {
@@ -104,16 +106,16 @@ export function VoiceSampleButton({
           }),
         })
         if (!res.ok) {
-          const errJson = await res.json().catch(() => ({ error: 'Request failed' }))
+          const errJson = await res.json().catch(() => ({ error: t('speak.voiceSample.requestFailed') }))
           throw new Error(errJson.error ?? `HTTP ${res.status}`)
         }
         const data = await res.json() as { url?: string }
-        if (!data.url) throw new Error('No sample URL returned')
+        if (!data.url) throw new Error(t('speak.voiceSample.noUrl'))
         url = data.url
         sampleUrlCache.set(key, url)
       } catch (err) {
         setLoading(false)
-        setError(err instanceof Error ? err.message : 'Sample failed')
+        setError(err instanceof Error ? err.message : t('speak.voiceSample.sampleFailed'))
         onPlayEnd()
         return
       }
@@ -128,20 +130,20 @@ export function VoiceSampleButton({
     try {
       await playFromUrl(url)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Playback failed')
+      setError(err instanceof Error ? err.message : t('speak.voiceSample.playbackFailed'))
     } finally {
       audioElRef.current = null
       if (!abortedRef.current) onPlayEnd()
     }
-  }, [isPlaying, language, onPlayEnd, onPlayStart, playFromUrl, stop, voiceName])
+  }, [isPlaying, language, onPlayEnd, onPlayStart, playFromUrl, stop, t, voiceName])
 
   const title = error
-    ? `Failed: ${error}`
+    ? t('speak.voiceSample.failedWithError', { error })
     : isPlaying
-    ? 'Stop sample'
+    ? t('speak.voiceSample.stop')
     : loading
-    ? 'Loading sample...'
-    : 'Play voice sample'
+    ? t('speak.voiceSample.loading')
+    : t('speak.voiceSample.play')
 
   return (
     <button

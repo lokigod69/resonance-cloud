@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
+import { useTranslation } from '@/hooks/useTranslation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
@@ -136,6 +137,7 @@ function useLaneTopOffsetPx(
 
   useLayoutEffect(() => {
     if (typeof window === 'undefined' || layout !== 'lane') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve existing lane reset behavior.
       setLaneTopOffsetPx(0)
       return undefined
     }
@@ -1132,6 +1134,7 @@ function Toolbar({
   onNextPage,
   onExit,
 }: ToolbarProps) {
+  const { t } = useTranslation()
   const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
@@ -1144,7 +1147,7 @@ function Toolbar({
         }}
         className="h-9 px-3 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50"
       >
-        [EXIT]
+        [{t('study.canvas.exit')}]
       </button>
 
       <div className="flex flex-wrap gap-1">
@@ -1175,7 +1178,7 @@ function Toolbar({
               onToggleDirection()
             }}
             className="h-9 px-3 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50"
-            title="Swap prompt and answer"
+            title={t('study.canvas.swapPromptAnswer')}
           >
             <span className="text-[#00fff2]">{visibleCode}</span>
             <span className="mx-1 text-[#00fff2]/50">→</span>
@@ -1193,7 +1196,7 @@ function Toolbar({
             onChange={onToggleAutoReveal}
             className="accent-[#00fff2]"
           />
-          Hide answer
+          {t('study.canvas.hideAnswer')}
         </label>
 
         <button
@@ -1202,7 +1205,7 @@ function Toolbar({
             onToggleImages()
           }}
           className="h-9 px-3 text-xs uppercase tracking-widest text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50"
-          title={showImages ? 'Show text' : 'Show images'}
+          title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
         >
           {showImages ? '[TXT]' : '[IMG]'}
         </button>
@@ -1219,7 +1222,7 @@ function Toolbar({
               }}
               disabled={currentPage === 0}
               className="w-9 h-9 text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50 disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label="Previous page"
+              aria-label={t('study.canvas.previousPage')}
             >
               [&lt;]
             </button>
@@ -1230,7 +1233,7 @@ function Toolbar({
               }}
               disabled={currentPage >= totalPages - 1}
               className="w-9 h-9 text-[#00fff2]/50 hover:text-[#00fff2] border border-[#00fff2]/30 hover:border-[#00fff2] bg-black/50 disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label="Next page"
+              aria-label={t('study.canvas.nextPage')}
             >
               [&gt;]
             </button>
@@ -1266,6 +1269,7 @@ function RevealModal({
   onPass,
   onFail,
 }: RevealModalProps) {
+  const { t } = useTranslation()
   const word = state.word
   const promptFace = word.promptFace ?? word.word
   const answerFace = word.answerFace ?? word.translation ?? word.word
@@ -1277,6 +1281,7 @@ function RevealModal({
   useBodyScrollLock(true)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve existing reveal reset behavior.
     setAnswerRevealed(autoReveal === 'on')
   }, [autoReveal, word.id])
 
@@ -1303,7 +1308,7 @@ function RevealModal({
         <button
           className="absolute right-2 top-2 z-30 flex h-11 min-h-11 w-11 min-w-11 items-center justify-center rounded-full border border-[#00fff2]/30 bg-[#0a0a0a] text-sm text-[#00fff2]/60 hover:text-[#00fff2]"
           onClick={onClose}
-          aria-label="Close"
+          aria-label={t('study.canvas.close')}
         >
           [X]
         </button>
@@ -1366,7 +1371,7 @@ function RevealModal({
               <div className="syndicate-answer-content">
               {learning?.mnemonic && (
                 <div className="bg-[#0f0f0f] border border-[#ff0040]/30 p-4">
-                  <p className="text-[10px] tracking-widest text-[#ff0040]/70 mb-2">// MEMORY_HOOK</p>
+                  <p className="text-[10px] tracking-widest text-[#ff0040]/70 mb-2">// {t('study.canvas.mnemonic')}</p>
                   <p className="text-base text-gray-400 leading-relaxed">
                     {learning.mnemonic}
                   </p>
@@ -1375,7 +1380,7 @@ function RevealModal({
 
               {learning?.etymology && (
                 <div className="bg-[#0f0f0f] border border-[#00fff2]/20 p-4">
-                  <p className="text-[10px] tracking-widest text-[#00fff2]/50 mb-2">// ORIGIN</p>
+                  <p className="text-[10px] tracking-widest text-[#00fff2]/50 mb-2">// {t('study.canvas.etymology')}</p>
                   <p className="text-base text-gray-400 leading-relaxed">
                     {learning.etymology}
                   </p>
@@ -1384,7 +1389,7 @@ function RevealModal({
 
               {usage && (
                 <div className="bg-[#0f0f0f] border border-[#39ff14]/20 p-4">
-                  <p className="text-[10px] tracking-widest text-[#39ff14]/50 mb-2">// USAGE</p>
+                  <p className="text-[10px] tracking-widest text-[#39ff14]/50 mb-2">// {t('study.canvas.usage')}</p>
                   {usage.target && (
                     <p className="text-lg text-[#39ff14]/70 leading-relaxed">
                       {usage.target}
@@ -1413,15 +1418,17 @@ function RevealModal({
               onClick={onFail}
               disabled={!canGrade}
               className={`h-12 bg-[#ff0040]/10 border border-[#ff0040]/50 text-[#ff0040] hover:bg-[#ff0040]/20 font-mono tracking-widest ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
+              aria-label={t('study.reviewLater')}
             >
-              ✗ FAIL
+              ✗ {t('study.reviewLater')}
             </button>
             <button
               onClick={onPass}
               disabled={!canGrade}
               className={`h-12 bg-[#39ff14]/10 border border-[#39ff14]/50 text-[#39ff14] hover:bg-[#39ff14]/20 font-mono tracking-widest ${!canGrade ? 'opacity-35 pointer-events-none' : ''}`}
+              aria-label={t('study.rememberedAction')}
             >
-              ✓ PASS
+              ✓ {t('study.rememberedAction')}
             </button>
           </div>
         </div>
