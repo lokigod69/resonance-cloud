@@ -94,6 +94,7 @@ export default function WordDetailPanel({
   const debug = learning.adminDebug
   const visualPlan = asRecord(debug.visualCardPlan)
   const gptImage2Card = asRecord(debug.gptImage2Card)
+  const infographicLearning = asRecord(debug.infographicLearning)
   const layer2Eval = asRecord(meta?.layer2_eval)
   const layer2UserChoices = asRecord(gptImage2Card?.layer2_user_choices)
   const layer2Resolved = asRecord(gptImage2Card?.layer2_resolved)
@@ -226,7 +227,27 @@ export default function WordDetailPanel({
           </div>
         )}
 
-        {/* Visual Card Plan (enrichment-time, written for every card) */}
+        {infographicLearning && (
+          <MetaSection title="Infographic Learning Metadata">
+            <MetaRow label="Template / Style" value={cleanText(infographicLearning.template_label as string | null | undefined)} />
+            <MetaRow label="Template" value={cleanText(infographicLearning.template as string | null | undefined)} />
+            <MetaRow label="Headword" value={cleanText(infographicLearning.headword as string | null | undefined)} />
+            <MetaRow label="Translation" value={cleanText(infographicLearning.translation as string | null | undefined)} />
+            <MetaRow label="Base Language" value={cleanText(infographicLearning.base_language as string | null | undefined)} />
+            <MetaRow label="Target Language" value={cleanText(infographicLearning.target_language as string | null | undefined)} />
+            <MetaRow label="Part of Speech" value={cleanText(infographicLearning.part_of_speech as string | null | undefined)} />
+            <MetaRow label="Pronunciation" value={cleanText(infographicLearning.pronunciation as string | null | undefined)} />
+            <MetaRow label="Example Sentences" value={formatUnknownJsonValue(infographicLearning.example_sentences)} />
+            <MetaRow label="Collocations" value={formatUnknownJsonValue(infographicLearning.collocations)} />
+            <MetaRow label="Etymology" value={cleanText(infographicLearning.etymology as string | null | undefined)} />
+            <MetaRow label="Usage Note" value={cleanText(infographicLearning.usage_note as string | null | undefined)} />
+            <MetaRow label="Common Mistake" value={cleanText(infographicLearning.common_mistake as string | null | undefined)} />
+            <MetaRow label="Memory Cue" value={cleanText(infographicLearning.memory_cue as string | null | undefined)} />
+            <MetaRow label="Footer Takeaway" value={cleanText(infographicLearning.footer_takeaway as string | null | undefined)} />
+          </MetaSection>
+        )}
+
+        {/* Legacy pre-image visual plan (enrichment-time, written before final infographic prompt/image) */}
         {debug.visualCardPlan && (
           <div className="space-y-3">
             <button
@@ -234,19 +255,19 @@ export default function WordDetailPanel({
               className="flex items-center gap-1 text-sm font-medium hover:text-foreground transition-colors"
             >
               {cardPlanOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-              Visual Card Plan
+              Legacy Pre-image Visual Plan
             </button>
             {cardPlanOpen && (
-              <MetaSection title="metadata.visual_card_plan">
-                <MetaRow label="Image Scene" value={debug.fields.imageScene} />
-                <MetaRow label="Card Scene Displayed" value={debug.fields.cardSceneDisplayed} />
-                <MetaRow label="Composition" value={debug.fields.composition} />
-                <MetaRow label="Treatment" value={debug.fields.treatment} />
-                <MetaRow label="Creative Mode" value={debug.fields.creativeMode} />
-                <MetaRow label="Text Embedding Mode" value={debug.fields.textEmbeddingMode} />
-                <MetaRow label="Renderer Profile" value={debug.fields.rendererProfile} />
-                <MetaRow label="Renderer Profile Source" value={debug.fields.rendererProfileSource} />
-                <MetaRow label="Answer Visibility" value={debug.fields.answerVisibility} />
+              <MetaSection title="metadata.visual_card_plan (legacy pre-image)">
+                <MetaRow label="Image Scene" value={cleanText(visualPlan?.image_scene as string | null | undefined)} />
+                <MetaRow label="Card Scene Displayed" value={cleanText(visualPlan?.card_scene_displayed as string | null | undefined)} />
+                <MetaRow label="Composition" value={cleanText(visualPlan?.composition as string | null | undefined)} />
+                <MetaRow label="Treatment" value={cleanText(visualPlan?.treatment as string | null | undefined)} />
+                <MetaRow label="Creative Mode" value={cleanText(visualPlan?.creative_mode as string | null | undefined)} />
+                <MetaRow label="Text Embedding Mode" value={cleanText(visualPlan?.text_embedding_mode as string | null | undefined)} />
+                <MetaRow label="Renderer Profile" value={cleanText(visualPlan?.renderer_profile as string | null | undefined)} />
+                <MetaRow label="Renderer Profile Source" value={cleanText(visualPlan?.renderer_profile_source as string | null | undefined)} />
+                <MetaRow label="Answer Visibility" value={cleanText(visualPlan?.answer_visibility as string | null | undefined)} />
                 <MetaRow label="Layer 2 Planning Version" value={cleanText(visualPlan?.layer2_planning_version as string | null | undefined)} />
                 <MetaRow label="Mini Story Beats" value={formatUnknownJsonValue(visualPlan?.mini_story_beats)} />
                 <MetaRow label="Split Panel Brief" value={formatUnknownJsonValue(visualPlan?.split_panel_brief)} />
@@ -255,10 +276,10 @@ export default function WordDetailPanel({
                 <MetaRow label="Mnemonic Hook" value={formatUnknownJsonValue(visualPlan?.mnemonic_hook)} />
                 <MetaRow label="Hook Type" value={cleanText(visualPlan?.hook_type as string | null | undefined)} />
                 <MetaRow label="Hook Quality" value={cleanText(visualPlan?.hook_quality as string | null | undefined)} />
-                <MetaRow label="Dominant Emotional Reading" value={debug.fields.dominantEmotionalReading} />
-                <MetaRow label="Single Image Teachable" value={debug.fields.singleImageTeachable === null ? null : String(debug.fields.singleImageTeachable)} />
-                <MetaRow label="Register Note" value={debug.fields.registerNote} />
-                <MetaRow label="Rationale Summary" value={debug.fields.rationaleSummary} />
+                <MetaRow label="Dominant Emotional Reading" value={cleanText(visualPlan?.dominant_emotional_reading as string | null | undefined)} />
+                <MetaRow label="Single Image Teachable" value={typeof visualPlan?.single_image_teachable === 'boolean' ? String(visualPlan.single_image_teachable) : null} />
+                <MetaRow label="Register Note" value={cleanText(visualPlan?.register_note as string | null | undefined)} />
+                <MetaRow label="Rationale Summary" value={cleanText(visualPlan?.rationale_summary as string | null | undefined)} />
               </MetaSection>
             )}
           </div>

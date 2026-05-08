@@ -14,6 +14,7 @@ Key decisions:
 from __future__ import annotations
 
 import json
+import hashlib
 import logging
 from pathlib import Path
 
@@ -53,6 +54,63 @@ logger = logging.getLogger(__name__)
 CARD_IMAGE_LLM_MODEL = "deepseek/deepseek-v4-flash"
 CARD_IMAGE_LLM_TEMPERATURE = 0.4
 CARD_IMAGE_LLM_MAX_TOKENS = 900
+V4_DENSE_INFOGRAPHIC_TEMPLATE = "infographic_dense_editorial_v4"
+V4_PROMPT_CACHE_FILENAME = "gpt_image_2_v4_prompt_cache.json"
+
+
+def _v4_prompt_cache_path(output_path: Path) -> Path:
+    return output_path.parent / V4_PROMPT_CACHE_FILENAME
+
+
+def _hash_prompt(prompt: str) -> str:
+    return hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+
+
+def _safe_int(value: object, default: int = 0) -> int:
+    try:
+        return int(value)  # type: ignore[arg-type]
+    except (TypeError, ValueError):
+        return default
+
+
+def _load_valid_v4_prompt_cache(output_path: Path, infographic_template: str | None) -> dict | None:
+    if infographic_template != V4_DENSE_INFOGRAPHIC_TEMPLATE:
+        return None
+    cache_path = _v4_prompt_cache_path(output_path)
+    try:
+        cached = json.loads(cache_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not isinstance(cached, dict):
+        return None
+    if cached.get("infographic_template") != V4_DENSE_INFOGRAPHIC_TEMPLATE:
+        return None
+    if cached.get("failure_origin") in {"validator", "prompt_writer"}:
+        return None
+    final_prompt = cached.get("final_prompt")
+    if not isinstance(final_prompt, str) or not final_prompt.strip():
+        return None
+    expected_hash = cached.get("final_prompt_hash") or cached.get("final_prompt_sha256")
+    if not isinstance(expected_hash, str) or expected_hash != _hash_prompt(final_prompt):
+        return None
+    return cached
+
+
+def _write_v4_prompt_cache(output_path: Path, metadata: dict) -> None:
+    if metadata.get("infographic_template") != V4_DENSE_INFOGRAPHIC_TEMPLATE:
+        return
+    final_prompt = metadata.get("final_prompt")
+    if not isinstance(final_prompt, str) or not final_prompt.strip():
+        return
+    cache_payload = dict(metadata)
+    cache_payload["final_prompt_hash"] = _hash_prompt(final_prompt)
+    cache_payload["final_prompt_sha256"] = cache_payload["final_prompt_hash"]
+    try:
+        cache_path = _v4_prompt_cache_path(output_path)
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps(cache_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    except OSError:
+        logger.warning("Failed to write V4 infographic prompt cache", exc_info=True)
 
 
 def _call_openrouter_card(
@@ -211,105 +269,118 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             else {}
         )
         selected_infographic_template = layer2_customization.get("infographic_template")
-        with logged_llm_call(
-            stage="pending_image",
-            sub_step="infographic_prompt_planner",
-            event_source="engine",
-            word_id=payload.metadata.word_id,
-            deck_id=payload.metadata.deck_id,
-            user_id=payload.metadata.user_id,
-            job_id=payload.metadata.job_id,
-            attempt=payload.metadata.attempt,
-            model_provider="openrouter",
-            model_name=INFOGRAPHIC_PLANNER_MODEL,
-            metadata={
-                "backend_template": selected_backend_template,
-                "infographic_template": selected_infographic_template,
-            },
-        ) as ev:
-            try:
-                infographic_result = write_infographic_prompt(
-                    content=payload.content,
-                    layer2=layer2_customization,
-                    infographic_template=selected_infographic_template,
-                )
-            except Exception as exc:
-                if selected_infographic_template == "infographic_dense_editorial_v4":
-                    message = f"Infographic V4 prompt writer failed: {type(exc).__name__}: {exc}"
-                    return {
-                        "success": False,
-                        "file_path": None,
-                        "error_message": message,
-                        "prompt_text": "",
-                        "provider_name": "gpt_image_2",
-                        "model_name": provider_model,
-                        "gpt_image_2_card_metadata": {
-                            "backend_template": selected_backend_template,
-                            "infographic_template": selected_infographic_template,
-                            "failure_origin": "prompt_writer",
-                            "provider_reached": False,
-                            "provider_model": provider_model,
-                            "error_message": message,
-                        },
-                    }
-                raise
-            prompt_text = infographic_result.prompt
-            reference_for_render = infographic_template_reference_for_render(
-                infographic_result.infographic_template
-            )
-            infographic_reference_required = infographic_template_requires_reference(
-                infographic_result.infographic_template
-            )
-            reference_asset_exists = (
-                bool(reference_for_render.get("asset_exists"))
-                if reference_for_render
-                else None
-            )
-            reference_url = (
-                str(reference_for_render.get("reference_url"))
-                if reference_for_render and reference_for_render.get("reference_url")
-                else None
-            )
-            if reference_for_render and reference_asset_exists and reference_url:
-                infographic_reference_input_urls = [reference_url]
-            if infographic_reference_required:
-                provider_model = "gpt-image-2-image-to-image"
-                if not reference_url:
-                    infographic_reference_error = (
-                        str(reference_for_render.get("reference_url_error"))
-                        if reference_for_render and reference_for_render.get("reference_url_error")
-                        else "reference URL unavailable"
+        cached_prompt_meta = _load_valid_v4_prompt_cache(output_path, selected_infographic_template)
+        if cached_prompt_meta:
+            prompt_text = str(cached_prompt_meta["final_prompt"])
+            provider_model = str(cached_prompt_meta.get("provider_model") or provider_model)
+            infographic_prompt_meta = dict(cached_prompt_meta)
+            infographic_prompt_meta["reused_cached_prompt"] = True
+        else:
+            with logged_llm_call(
+                stage="pending_image",
+                sub_step="infographic_prompt_planner",
+                event_source="engine",
+                word_id=payload.metadata.word_id,
+                deck_id=payload.metadata.deck_id,
+                user_id=payload.metadata.user_id,
+                job_id=payload.metadata.job_id,
+                attempt=payload.metadata.attempt,
+                model_provider="openrouter",
+                model_name=INFOGRAPHIC_PLANNER_MODEL,
+                metadata={
+                    "backend_template": selected_backend_template,
+                    "infographic_template": selected_infographic_template,
+                },
+            ) as ev:
+                try:
+                    infographic_result = write_infographic_prompt(
+                        content=payload.content,
+                        layer2=layer2_customization,
+                        infographic_template=selected_infographic_template,
                     )
-            ev.record_response(
-                response_body=infographic_result.raw_plan,
-                tokens_in=(infographic_result.usage or {}).get("prompt_tokens"),
-                tokens_out=(infographic_result.usage or {}).get("completion_tokens"),
-                request_id=infographic_result.request_id,
-                prompt_chars=len(prompt_text),
-            )
-            infographic_prompt_meta = infographic_prompt_metadata(
-                final_prompt=prompt_text,
-                planner_model=infographic_result.model,
-                planner_plan=infographic_result.planner_plan,
-                infographic_template=infographic_result.infographic_template,
-                base_language_intended=payload.content.base_language,
-                target_language=payload.content.language,
-                reference_attached=bool(infographic_reference_input_urls),
-                reference_fallback_used=(
-                    reference_for_render is not None and not infographic_reference_input_urls
-                ),
-                reference_asset_exists=reference_asset_exists,
-                template_reference_url=reference_url,
-                reference_url_error=infographic_reference_error,
-                provider_model=provider_model,
-                validator_passed=infographic_result.validator_passed,
-                validator_errors=infographic_result.validator_errors,
-                validator_hard_errors=infographic_result.validator_hard_errors,
-                validator_warnings=infographic_result.validator_warnings,
-                validator_retry_count=infographic_result.validator_retry_count,
-                prompt_rule_ratio_estimate=infographic_result.prompt_rule_ratio_estimate,
-                dense_editorial_word_category=infographic_result.dense_editorial_word_category,
-            )
+                except Exception as exc:
+                    if selected_infographic_template == V4_DENSE_INFOGRAPHIC_TEMPLATE:
+                        message = f"Infographic V4 prompt writer failed: {type(exc).__name__}: {exc}"
+                        return {
+                            "success": False,
+                            "file_path": None,
+                            "error_message": message,
+                            "prompt_text": "",
+                            "provider_name": "gpt_image_2",
+                            "model_name": provider_model,
+                            "gpt_image_2_card_metadata": {
+                                "backend_template": selected_backend_template,
+                                "infographic_template": selected_infographic_template,
+                                "failure_origin": "prompt_writer",
+                                "provider_reached": False,
+                                "provider_model": provider_model,
+                                "error_message": message,
+                                "prompt_attempt_count": 1,
+                                "reused_cached_prompt": False,
+                                "retry_used_cached_prompt": False,
+                            },
+                        }
+                    raise
+                prompt_text = infographic_result.prompt
+                reference_for_render = infographic_template_reference_for_render(
+                    infographic_result.infographic_template
+                )
+                infographic_reference_required = infographic_template_requires_reference(
+                    infographic_result.infographic_template
+                )
+                reference_asset_exists = (
+                    bool(reference_for_render.get("asset_exists"))
+                    if reference_for_render
+                    else None
+                )
+                reference_url = (
+                    str(reference_for_render.get("reference_url"))
+                    if reference_for_render and reference_for_render.get("reference_url")
+                    else None
+                )
+                if reference_for_render and reference_asset_exists and reference_url:
+                    infographic_reference_input_urls = [reference_url]
+                if infographic_reference_required:
+                    provider_model = "gpt-image-2-image-to-image"
+                    if not reference_url:
+                        infographic_reference_error = (
+                            str(reference_for_render.get("reference_url_error"))
+                            if reference_for_render and reference_for_render.get("reference_url_error")
+                            else "reference URL unavailable"
+                        )
+                ev.record_response(
+                    response_body=infographic_result.raw_plan,
+                    tokens_in=(infographic_result.usage or {}).get("prompt_tokens"),
+                    tokens_out=(infographic_result.usage or {}).get("completion_tokens"),
+                    request_id=infographic_result.request_id,
+                    prompt_chars=len(prompt_text),
+                )
+                infographic_prompt_meta = infographic_prompt_metadata(
+                    final_prompt=prompt_text,
+                    planner_model=infographic_result.model,
+                    planner_plan=infographic_result.planner_plan,
+                    infographic_template=infographic_result.infographic_template,
+                    base_language_intended=payload.content.base_language,
+                    target_language=payload.content.language,
+                    content=payload.content,
+                    reference_attached=bool(infographic_reference_input_urls),
+                    reference_fallback_used=(
+                        reference_for_render is not None and not infographic_reference_input_urls
+                    ),
+                    reference_asset_exists=reference_asset_exists,
+                    template_reference_url=reference_url,
+                    reference_url_error=infographic_reference_error,
+                    provider_model=provider_model,
+                    validator_passed=infographic_result.validator_passed,
+                    validator_errors=infographic_result.validator_errors,
+                    validator_hard_errors=infographic_result.validator_hard_errors,
+                    validator_warnings=infographic_result.validator_warnings,
+                    validator_retry_count=infographic_result.validator_retry_count,
+                    prompt_attempt_count=infographic_result.prompt_attempt_count,
+                    prompt_rule_ratio_estimate=infographic_result.prompt_rule_ratio_estimate,
+                    dense_editorial_word_category=infographic_result.dense_editorial_word_category,
+                )
+                infographic_prompt_meta["reused_cached_prompt"] = False
     elif layer2 and selected_backend_template in DIRECT_PROMPT_TEMPLATES:
         with logged_llm_call(
             stage="pending_image",
@@ -475,6 +546,14 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             "model_name": provider_model,
             "gpt_image_2_card_metadata": card_metadata,
         }
+    if card_metadata.get("infographic_template") == V4_DENSE_INFOGRAPHIC_TEMPLATE:
+        prior_provider_attempts = _safe_int(card_metadata.get("provider_attempt_count"), 0)
+        reused_cached_prompt = bool(card_metadata.get("reused_cached_prompt"))
+        card_metadata["prompt_attempt_count"] = max(1, _safe_int(card_metadata.get("prompt_attempt_count"), 1))
+        card_metadata["provider_attempt_count"] = prior_provider_attempts + 1
+        card_metadata["reused_cached_prompt"] = reused_cached_prompt
+        card_metadata["retry_used_cached_prompt"] = bool(reused_cached_prompt and prior_provider_attempts >= 1)
+        _write_v4_prompt_cache(output_path, card_metadata)
     provider_aspect_ratio = "auto" if infographic_reference_input_urls else "16:9"
     request_input: dict[str, object] = {
         "prompt": prompt_text,
@@ -516,6 +595,8 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             )
         except Exception as exc:
             card_metadata["provider_error_summary"] = f"{type(exc).__name__}: {exc}"
+            card_metadata["failure_origin"] = "provider"
+            _write_v4_prompt_cache(output_path, card_metadata)
             return {
                 "success": False,
                 "file_path": None,
@@ -538,6 +619,11 @@ def _render_gpt_card_image(payload: CardImagePayload, output_path: Path) -> dict
             card_metadata["kie_task_id"] = result.get("request_id")
         if not result.get("success"):
             card_metadata["provider_error_summary"] = result.get("error_message") or "provider returned unsuccessful result"
+            card_metadata["failure_origin"] = "provider"
+        else:
+            card_metadata.pop("failure_origin", None)
+            card_metadata.pop("provider_error_summary", None)
+        _write_v4_prompt_cache(output_path, card_metadata)
         result["gpt_image_2_card_metadata"] = card_metadata
         return result
 

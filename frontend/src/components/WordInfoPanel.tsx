@@ -30,6 +30,7 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
   const [showMetadata, setShowMetadata] = useState(false)
   const learning = resolveCardLearningMetadata(word)
   const ipa = typeof word.ipa === 'string' ? word.ipa.trim() : ''
+  const displayedTranslation = word.translation || learning.translation
   const videoMeta = (word.metadata && typeof word.metadata === 'object' && !Array.isArray(word.metadata))
     ? (word.metadata as { creative_direction?: string; art_style?: string; music_caption?: string })
     : null
@@ -37,7 +38,14 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
   const hasExpandable =
     !!learning.etymology
     || !!learning.partOfSpeech
+    || !!learning.pronunciation
     || !!learning.usageExample
+    || !!learning.collocations?.length
+    || !!learning.usageNote
+    || !!learning.commonMistake
+    || !!learning.memoryCue
+    || !!learning.footerTakeaway
+    || !!learning.templateLabel
     || !!videoMeta?.creative_direction
     || !!videoMeta?.art_style
     || !!videoMeta?.music_caption
@@ -60,10 +68,10 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
           /{ipa.replace(/^\/|\/$/g, '')}/
         </p>
       )}
-      {word.translation && (
-        <p className="text-xl text-muted-foreground long-copy">{word.translation}</p>
+      {displayedTranslation && (
+        <p className="text-xl text-muted-foreground long-copy">{displayedTranslation}</p>
       )}
-      {learning.mnemonic && (
+      {learning.mnemonic && !learning.isInfographic && (
         <p className="text-sm text-muted-foreground/70 max-w-2xl mx-auto italic long-copy">
           {learning.mnemonic}
         </p>
@@ -86,10 +94,40 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
               )}
             </div>
           )}
+          {learning.collocations?.length ? (
+            <div className="space-y-1">
+              <p className="text-gray-500">Collocations</p>
+              <p className="text-gray-300 long-copy">{learning.collocations.join(', ')}</p>
+            </div>
+          ) : null}
+          {learning.usageNote && (
+            <div className="space-y-1">
+              <p className="text-gray-500">Usage Note</p>
+              <p className="text-gray-300 long-copy">{learning.usageNote}</p>
+            </div>
+          )}
           {learning.etymology && (
             <div className="space-y-1">
               <p className="text-gray-500">{t('deckview.etymology')}</p>
               <p className="text-gray-300 long-copy">{learning.etymology}</p>
+            </div>
+          )}
+          {learning.commonMistake && (
+            <div className="space-y-1">
+              <p className="text-gray-500">Common Mistake</p>
+              <p className="text-gray-300 long-copy">{learning.commonMistake}</p>
+            </div>
+          )}
+          {learning.memoryCue && (
+            <div className="space-y-1">
+              <p className="text-gray-500">Memory Cue</p>
+              <p className="text-gray-300 long-copy">{learning.memoryCue}</p>
+            </div>
+          )}
+          {learning.footerTakeaway && (
+            <div className="space-y-1">
+              <p className="text-gray-500">Takeaway</p>
+              <p className="text-gray-300 long-copy">{learning.footerTakeaway}</p>
             </div>
           )}
           {learning.partOfSpeech && (
@@ -99,6 +137,18 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
                 {learning.partOfSpeech}
                 {learning.article ? ` · ${learning.article}` : ''}
               </p>
+            </div>
+          )}
+          {learning.pronunciation && (
+            <div className="space-y-1">
+              <p className="text-gray-500">Pronunciation</p>
+              <p className="text-gray-300 long-copy">{learning.pronunciation}</p>
+            </div>
+          )}
+          {learning.templateLabel && (
+            <div className="flex justify-between gap-4">
+              <span className="text-gray-500 shrink-0">Template / Style</span>
+              <span className="text-gray-300 text-right long-copy">{learning.templateLabel}</span>
             </div>
           )}
           {videoMeta?.creative_direction && (

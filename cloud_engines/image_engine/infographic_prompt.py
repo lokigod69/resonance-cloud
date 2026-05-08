@@ -61,6 +61,13 @@ BANNED_VISIBLE_TERMS = (
 )
 
 INTERNAL_SAFETY_VISIBLE_PHRASES = (
+    "no fake facts",
+    "no fake quotes",
+    "no fake etymologies",
+    "no forced mnemonics",
+    "info is verified",
+    "this info is verified",
+    "teaching real language",
     "no invented facts",
     "keine erfundenen fakten",
     "no invented quotes",
@@ -184,6 +191,7 @@ class InfographicPromptResult:
     validator_hard_errors: list[str] = field(default_factory=list)
     validator_warnings: list[str] = field(default_factory=list)
     validator_retry_count: int = 0
+    prompt_attempt_count: int = 1
     prompt_rule_ratio_estimate: float | None = None
     dense_editorial_word_category: str | None = None
 
@@ -503,6 +511,20 @@ def infographic_template_label(value: str | None) -> str:
     return infographic_template(value).label
 
 
+USER_FACING_INFOGRAPHIC_TEMPLATE_LABELS = {
+    "infographic_study_poster_v2": "Study Poster",
+    "infographic_visual_dictionary_v2": "Visual Dictionary",
+    "infographic_language_atlas_v2": "Language Atlas",
+    "infographic_museum_exhibit_v2": "Museum Exhibit",
+    "infographic_dense_editorial_v4": "Dense Encyclopedia",
+}
+
+
+def infographic_template_user_label(value: str | None) -> str:
+    template = infographic_template(value)
+    return USER_FACING_INFOGRAPHIC_TEMPLATE_LABELS.get(template.value, template.label)
+
+
 def infographic_template_requires_reference(value: str | None) -> bool:
     template = infographic_template(value)
     return template.version == "v3" and template.reference_mode == "skeleton"
@@ -541,6 +563,190 @@ def infographic_template_reference_for_render(value: str | None) -> dict[str, An
         reference["reference_bucket"] = bucket
         reference["reference_storage_key"] = storage_key
     return reference
+
+
+def _learning_value(value: Any) -> str | None:
+    text = _clean(value)
+    if not text or _is_internal_safety_text(text):
+        return None
+    return text
+
+
+def _learning_first(*values: Any) -> str | None:
+    for value in values:
+        text = _learning_value(value)
+        if text:
+            return text
+    return None
+
+
+def _split_learning_items(value: Any) -> list[str]:
+    items: list[str] = []
+    for raw in _iter_list_items(value):
+        text = _learning_value(raw)
+        if not text:
+            continue
+        parts = [part.strip() for part in re.split(r";|\n", text) if part.strip()]
+        items.extend(part for part in parts if not _is_internal_safety_text(part))
+    return items
+
+
+def _dedupe_strings(values: list[str], limit: int = 8) -> list[str]:
+    result: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        text = _learning_value(value)
+        if not text:
+            continue
+        key = text.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        result.append(text)
+        if len(result) >= limit:
+            break
+    return result
+
+
+def _strip_example_prefix(text: str) -> str:
+    return re.sub(
+        r"^\s*(?:english\s+example|example|beispiel|satz)\s*:\s*",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    ).strip()
+
+
+def _example_from_text(text: str) -> dict[str, str] | None:
+    cleaned = _strip_example_prefix(text)
+    if not cleaned:
+        return None
+    for separator in (" = ", " - "):
+        if separator in cleaned:
+            left, right = cleaned.split(separator, 1)
+            target = _learning_value(left)
+            gloss = _learning_value(right)
+            if target or gloss:
+                example: dict[str, str] = {}
+                if target:
+                    example["target"] = target
+                if gloss:
+                    example["gloss"] = gloss
+                return example
+    target = _learning_value(cleaned)
+    return {"target": target} if target else None
+
+
+def _planner_learning_entries(plan: Mapping[str, Any]) -> list[tuple[str, str]]:
+    entries: list[tuple[str, str]] = []
+    panels = plan.get("panels")
+    if isinstance(panels, list):
+        for raw in panels[:12]:
+            if not isinstance(raw, Mapping):
+                continue
+            label = " ".join(
+                value
+                for value in (
+                    _learning_value(raw.get("header") or raw.get("title")),
+                    _learning_value(raw.get("type")),
+                )
+                if value
+            )
+            for text in _split_learning_items(raw.get("text")):
+                entries.append((label, text))
+    composition = plan.get("composition")
+    if isinstance(composition, Mapping):
+        for key in ("info_panels", "detail_sections", "summary_modules"):
+            raw_items = composition.get(key)
+            if not isinstance(raw_items, list):
+                continue
+            for raw in raw_items[:12]:
+                if not isinstance(raw, Mapping):
+                    continue
+                label = _learning_first(raw.get("title"), raw.get("header"), raw.get("name")) or key
+                for text in _split_learning_items(raw.get("content") or raw.get("text") or raw.get("body")):
+                    entries.append((label, text))
+    return entries
+
+
+def _first_entry_text(entries: list[tuple[str, str]], *terms: str) -> str | None:
+    lowered_terms = tuple(term.casefold() for term in terms)
+    for label, text in entries:
+        lowered_label = label.casefold()
+        if any(term in lowered_label for term in lowered_terms):
+            return text
+    return None
+
+
+def _examples_from_entries(entries: list[tuple[str, str]]) -> list[dict[str, str]]:
+    examples: list[dict[str, str]] = []
+    for label, text in entries:
+        if "example" not in label.casefold() and "beispiel" not in label.casefold():
+            continue
+        example = _example_from_text(text)
+        if example:
+            examples.append(example)
+    return examples[:4]
+
+
+def _collocations_from_entries(entries: list[tuple[str, str]]) -> list[str]:
+    values: list[str] = []
+    for label, text in entries:
+        label_lower = label.casefold()
+        if "collocation" not in label_lower and "kollokation" not in label_lower:
+            continue
+        values.extend(_split_learning_items(text))
+    return _dedupe_strings(values)
+
+
+def build_infographic_learning_metadata(
+    *,
+    content: CardImageContent | None,
+    planner_plan: Mapping[str, Any],
+    infographic_template: str,
+    base_language_intended: str | None,
+    target_language: str | None,
+) -> dict[str, Any]:
+    template = globals()["infographic_template"](infographic_template)
+    entries = _planner_learning_entries(planner_plan)
+    summary: dict[str, Any] = {
+        "template": template.value,
+        "template_label": infographic_template_user_label(template.value),
+    }
+    headword = _learning_first(planner_plan.get("title"), getattr(content, "word", None))
+    translation = _learning_first(planner_plan.get("translation"), getattr(content, "translation", None))
+    base_language = _learning_first(
+        planner_plan.get("base_language"),
+        base_language_intended,
+        getattr(content, "base_language", None),
+    )
+    target = _learning_first(planner_plan.get("target_language"), target_language, getattr(content, "language", None))
+    fields = (
+        ("headword", headword),
+        ("translation", translation),
+        ("base_language", base_language),
+        ("target_language", target),
+        ("part_of_speech", _learning_first(planner_plan.get("part_of_speech"), getattr(content, "pos", None))),
+        ("pronunciation", _learning_first(planner_plan.get("pronunciation"), planner_plan.get("ipa"))),
+        ("etymology", _learning_first(planner_plan.get("etymology"), getattr(content, "etymology", None))),
+        ("usage_note", _first_entry_text(entries, "usage", "register", "context", "note")),
+        ("common_mistake", _first_entry_text(entries, "common mistake", "mistake", "fehler", "false friend", "trap")),
+        ("memory_cue", _first_entry_text(entries, "memory", "mnemonic", "merk")),
+        (
+            "footer_takeaway",
+            _learning_first(planner_plan.get("footer_line"), _first_entry_text(entries, "takeaway", "summary", "footer")),
+        ),
+    )
+    for key, value in fields:
+        if value:
+            summary[key] = value
+    examples = _examples_from_entries(entries)
+    if examples:
+        summary["example_sentences"] = examples
+    collocations = _collocations_from_entries(entries)
+    if collocations:
+        summary["collocations"] = collocations
+    return summary
 
 
 def _template_lexical_requirements(template_value: str) -> tuple[str, ...]:
@@ -787,6 +993,7 @@ def infographic_prompt_metadata(
     infographic_template: str,
     base_language_intended: str | None,
     target_language: str | None,
+    content: CardImageContent | None = None,
     reference_attached: bool | None = None,
     reference_fallback_used: bool | None = None,
     reference_asset_exists: bool | None = None,
@@ -799,6 +1006,7 @@ def infographic_prompt_metadata(
     validator_hard_errors: list[str] | None = None,
     validator_warnings: list[str] | None = None,
     validator_retry_count: int = 0,
+    prompt_attempt_count: int = 1,
     prompt_rule_ratio_estimate: float | None = None,
     dense_editorial_word_category: str | None = None,
 ) -> dict[str, Any]:
@@ -819,6 +1027,14 @@ def infographic_prompt_metadata(
         "target_language": _clean(target_language) or None,
         "planner_json_preview": _compact_json_preview(planner_plan),
     }
+    if content is not None:
+        metadata["infographic_learning"] = build_infographic_learning_metadata(
+            content=content,
+            planner_plan=planner_plan,
+            infographic_template=template.value,
+            base_language_intended=base_language_intended,
+            target_language=target_language,
+        )
     if provider_model:
         metadata["provider_model"] = provider_model
     if template.version == "v4":
@@ -833,6 +1049,8 @@ def infographic_prompt_metadata(
                 "validator_hard_errors": validator_hard_errors or [],
                 "validator_warnings": validator_warnings or [],
                 "validator_retry_count": validator_retry_count,
+                "prompt_attempt_count": max(1, int(prompt_attempt_count or 1)),
+                "final_prompt": final_prompt,
                 "prompt_rule_ratio_estimate": prompt_rule_ratio_estimate,
                 "dense_editorial_word_category": dense_editorial_word_category,
             }
@@ -992,6 +1210,7 @@ def _write_dense_editorial_prompt(
         validator_hard_errors=[str(item) for item in last_validation.get("hard_errors", [])],
         validator_warnings=[str(item) for item in last_validation.get("warnings", [])],
         validator_retry_count=validator_retry_count,
+        prompt_attempt_count=validator_retry_count + 1,
         prompt_rule_ratio_estimate=last_validation.get("prompt_rule_ratio_estimate"),
         dense_editorial_word_category=_clean(last_plan.get("dense_editorial_word_category")) or None,
     )
@@ -1181,7 +1400,7 @@ def _compile_v4_dense_editorial_prompt(
         *(content_lines or ["Build dense useful learning modules from the target word and gloss."]),
         "",
         f"Language rule: explanations, panel headers, notes, warnings, glosses, and footer in {base_language}. {target_language} word forms, collocations, and examples may remain in {target_language}.",
-        "Do not render internal technical labels, language-role metadata, or raw structural key names. Never invent fake facts, fake etymologies, fake quotes, or forced mnemonics. All visible text must be useful learning content.",
+        "Do not render internal technical labels, language-role metadata, raw structural key names, badges, watermarks, or verification notes. Omit unsupported claims, unsourced quotations, unsupported etymology, and weak memory tricks. All visible text must be useful learning content.",
     ]
     return _remove_internal_terms("\n".join(lines))
 
@@ -1271,6 +1490,10 @@ def validate_dense_editorial_prompt(
     raw_keys = [item for item in V4_JSON_KEY_STRINGS if _contains_json_key(text, item)]
     if raw_keys:
         hard_errors.append("raw JSON key visible: " + ", ".join(raw_keys))
+    if _asks_for_visible_safety_text(lowered):
+        hard_errors.append("visible safety text requested")
+    if _asks_for_visible_ratio_guidance(lowered):
+        hard_errors.append("visible ratio guidance requested")
     if not _has_vocabulary_first_language(lowered):
         warnings.append("vocabulary-first instruction missing")
     safety_groups = (
@@ -1393,7 +1616,10 @@ def _sanitize_v4_writer_prompt(prompt: str) -> str:
     cleaned = _clean(prompt)
     for key in V4_JSON_KEY_STRINGS:
         cleaned = re.sub(rf'"?{re.escape(key)}"?\s*:', "", cleaned, flags=re.IGNORECASE)
-    return cleaned
+    sentences = [item.strip() for item in re.split(r"(?<=[.!?])\s+", cleaned) if item.strip()]
+    if not sentences:
+        return cleaned
+    return " ".join(item for item in sentences if not _is_internal_safety_text(item))
 
 
 def _v4_topic_like_language_guard(title: str) -> str:
@@ -1455,6 +1681,64 @@ def _is_internal_safety_text(value: Any) -> bool:
     )
 
 
+def _asks_for_visible_safety_text(text: str) -> bool:
+    if not any(phrase in text for phrase in INTERNAL_SAFETY_VISIBLE_PHRASES):
+        return False
+    visible_context_terms = (
+        "footer",
+        "watermark",
+        "badge",
+        "shield",
+        "note",
+        "label",
+        "panel",
+        "plaque",
+        "stamp",
+        "visible",
+        "visibly",
+        "render",
+        "display",
+        "says",
+        "reads",
+        "text",
+    )
+    return any(term in text for term in visible_context_terms)
+
+
+def _asks_for_visible_ratio_guidance(text: str) -> bool:
+    ratio_terms = (
+        "70% language learning",
+        "70 percent language learning",
+        "70% language",
+        "70 percent language",
+        "30% topic context",
+        "30 percent topic context",
+        "30% topic",
+        "30 percent topic",
+    )
+    if not any(term in text for term in ratio_terms):
+        return False
+    visible_context_terms = (
+        "footer",
+        "watermark",
+        "badge",
+        "shield",
+        "note",
+        "label",
+        "panel",
+        "plaque",
+        "stamp",
+        "visible",
+        "visibly",
+        "render",
+        "display",
+        "says",
+        "reads",
+        "text",
+    )
+    return any(term in text for term in visible_context_terms)
+
+
 def _compact_json_preview(value: Mapping[str, Any]) -> str:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":"))[:900]
 
@@ -1499,6 +1783,8 @@ def _has_vocabulary_first_language(lowered: str) -> bool:
 
 def _looks_swapped(text: str, word: str, translation: str) -> bool:
     if not word or not translation:
+        return False
+    if _clean(word).casefold() == _clean(translation).casefold():
         return False
     swapped_title = re.search(
         rf"(title|headword|word|titled)\s*[:=]?\s*['\"]?{re.escape(translation)}['\"]?",

@@ -11,6 +11,9 @@
  *      blueprint including final_provider_prompt_sha256, renderer_profile,
  *      composition, treatment, creative_mode, text_embedding_mode, and the
  *      same usage_example.
+ *   4. `words.metadata.gpt_image_2_card.infographic_learning` (object).
+ *      Infographic-card only, written from the final infographic planner/writer
+ *      content. This is the user-facing source of truth when present.
  *
  * Older rows generated before the GPT-2 pipeline shipped only have shape 1.
  * Some legacy rows may even be missing visual_card_plan; the resolver must
@@ -23,11 +26,20 @@ export interface UsageExample {
 }
 
 export interface CardLearningMetadata {
+  isInfographic?: boolean
+  translation?: string
   mnemonic?: string
   etymology?: string
   partOfSpeech?: string
+  pronunciation?: string
   article?: string
   usageExample?: UsageExample
+  collocations?: string[]
+  usageNote?: string
+  commonMistake?: string
+  memoryCue?: string
+  footerTakeaway?: string
+  templateLabel?: string
   imageScene?: string
   cardSceneDisplayed?: string
   /** Admin-only blob — never render to the end user. */
@@ -37,6 +49,7 @@ export interface CardLearningMetadata {
 export interface AdminDebugMetadata {
   visualCardPlan: Record<string, unknown> | null
   gptImage2Card: Record<string, unknown> | null
+  infographicLearning: Record<string, unknown> | null
   fields: {
     mnemonic: string | null
     bridgeMnemonic: string | null
@@ -109,7 +122,7 @@ function pickUsageExample(...candidates: unknown[]): UsageExample | undefined {
     const target = clean(obj.target)
     // Backend writes the base-language side as `l1`; we surface it as `base`
     // for clarity. If neither side has any text, skip the candidate.
-    const base = clean(obj.l1) ?? clean((obj as Record<string, unknown>).base)
+    const base = clean(obj.l1) ?? clean((obj as Record<string, unknown>).base) ?? clean(obj.gloss)
     if (target || base) {
       const result: UsageExample = {}
       if (target) result.target = target
@@ -118,6 +131,30 @@ function pickUsageExample(...candidates: unknown[]): UsageExample | undefined {
     }
   }
   return undefined
+}
+
+function firstExampleSentence(value: unknown): Record<string, unknown> | null {
+  if (!Array.isArray(value)) return null
+  for (const item of value) {
+    const obj = asRecord(item)
+    if (obj) return obj
+  }
+  return null
+}
+
+function pickStringArray(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) return undefined
+  const result: string[] = []
+  const seen = new Set<string>()
+  for (const item of value) {
+    const text = clean(item)
+    if (!text) continue
+    const key = text.toLocaleLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    result.push(text)
+  }
+  return result.length > 0 ? result : undefined
 }
 
 function pickString(...candidates: unknown[]): string | undefined {
@@ -155,6 +192,32 @@ function generationModeLabel(gptImage2Card: Record<string, unknown> | null): str
   return [left, right].filter(Boolean).join(' · ') || null
 }
 
+function isInfographicCard(
+  meta: Record<string, unknown> | null,
+  gptImage2Card: Record<string, unknown> | null,
+  infographicLearning: Record<string, unknown> | null,
+): boolean {
+  if (infographicLearning) return true
+  const values = [
+    gptImage2Card?.backend_template,
+    gptImage2Card?.presentation_form,
+    gptImage2Card?.premium_quick_mode,
+    gptImage2Card?.infographic_template,
+    asRecord(gptImage2Card?.premium_generation_mode)?.premium_quick_mode,
+    asRecord(gptImage2Card?.layer2_resolved)?.presentation_form,
+    asRecord(gptImage2Card?.layer2_resolved)?.infographic_template,
+    asRecord(meta?.layer2_eval)?.presentation_form,
+    asRecord(meta?.layer2_eval)?.infographic_template,
+  ]
+  return values.some((value) => {
+    const text = clean(value)
+    return text === 'infographic_prompt_v1'
+      || text === 'infographic_card'
+      || text === 'infographic'
+      || Boolean(text?.startsWith('infographic_'))
+  })
+}
+
 /**
  * Pure resolver. Supports old and new metadata shapes. Never throws on
  * malformed input — unknown / partial / mistyped fields are dropped silently.
@@ -167,29 +230,37 @@ export function resolveCardLearningMetadata(word: WordLike | null | undefined): 
   const meta = asRecord(word?.metadata)
   const visualCardPlan = asRecord(meta?.visual_card_plan)
   const gptImage2Card = asRecord(meta?.gpt_image_2_card)
+  const infographicLearning = asRecord(gptImage2Card?.infographic_learning)
+  const isInfographic = isInfographicCard(meta, gptImage2Card, infographicLearning)
+  const infographicExample = firstExampleSentence(infographicLearning?.example_sentences)
+  const infographicMemoryCue = pickString(infographicLearning?.memory_cue)
 
-  // Mnemonic priority: top-level (post-render rewrite for Premium) > GPT card
-  // displayed_mnemonic > visual_card_plan.mnemonic > visual_card_plan.bridge.
-  const mnemonic = pickString(
-    word?.mnemonic,
-    gptImage2Card?.displayed_mnemonic,
-    gptImage2Card?.mnemonic,
-    visualCardPlan?.mnemonic,
-    word?.bridge_mnemonic,
-  )
+  const mnemonic = infographicLearning
+    ? infographicMemoryCue
+    : pickString(
+        word?.mnemonic,
+        gptImage2Card?.displayed_mnemonic,
+        gptImage2Card?.mnemonic,
+        visualCardPlan?.mnemonic,
+        word?.bridge_mnemonic,
+      )
 
-  const etymology = pickString(
-    word?.etymology,
-    gptImage2Card?.etymology,
-    visualCardPlan?.etymology,
-  )
+  const etymology = infographicLearning
+    ? pickString(infographicLearning.etymology, word?.etymology, gptImage2Card?.etymology)
+    : pickString(word?.etymology, gptImage2Card?.etymology, visualCardPlan?.etymology)
 
-  const partOfSpeech = pickString(word?.pos)
+  const partOfSpeech = pickString(infographicLearning?.part_of_speech, word?.pos)
   const article = pickString(word?.article)
+  const translation = pickString(infographicLearning?.translation, word?.translation)
+  const collocations = pickStringArray(infographicLearning?.collocations)
+  const usageNote = pickString(infographicLearning?.usage_note)
+  const commonMistake = pickString(infographicLearning?.common_mistake)
+  const footerTakeaway = pickString(infographicLearning?.footer_takeaway)
+  const templateLabel = pickString(infographicLearning?.template_label)
 
-  // Usage example priority: GPT card > visual_card_plan > legacy top-level
-  // strings (example + example_gloss). The legacy strings are a single-line
-  // pair that predates the {target,l1} object shape.
+  // Infographic cards with normalized learning metadata skip visual_card_plan:
+  // that object is generated before image rendering and may describe a scene
+  // that never appeared in the final infographic.
   const legacyExamplePair: UsageExample | undefined = (() => {
     const target = clean(word?.example)
     const base = clean(word?.example_gloss)
@@ -200,25 +271,22 @@ export function resolveCardLearningMetadata(word: WordLike | null | undefined): 
     return result
   })()
 
-  const usageExample = pickUsageExample(
-    gptImage2Card?.usage_example,
-    visualCardPlan?.usage_example,
-    legacyExamplePair,
-  )
+  const usageExample = infographicLearning
+    ? pickUsageExample(infographicExample, gptImage2Card?.usage_example, legacyExamplePair)
+    : pickUsageExample(gptImage2Card?.usage_example, visualCardPlan?.usage_example, legacyExamplePair)
 
-  const imageScene = pickString(
-    gptImage2Card?.image_scene,
-    visualCardPlan?.image_scene,
-  )
+  const imageScene = infographicLearning
+    ? undefined
+    : pickString(gptImage2Card?.image_scene, visualCardPlan?.image_scene)
 
-  const cardSceneDisplayed = pickString(
-    gptImage2Card?.card_scene_displayed,
-    visualCardPlan?.image_scene,
-  )
+  const cardSceneDisplayed = infographicLearning
+    ? undefined
+    : pickString(gptImage2Card?.card_scene_displayed, visualCardPlan?.image_scene)
 
   const adminDebug: AdminDebugMetadata = {
     visualCardPlan: visualCardPlan,
     gptImage2Card: gptImage2Card,
+    infographicLearning: infographicLearning,
     fields: {
       mnemonic: pickString(word?.mnemonic, gptImage2Card?.mnemonic, visualCardPlan?.mnemonic) ?? null,
       bridgeMnemonic: pickString(word?.bridge_mnemonic) ?? null,
@@ -273,11 +341,21 @@ export function resolveCardLearningMetadata(word: WordLike | null | undefined): 
   }
 
   const result: CardLearningMetadata = { adminDebug }
+  if (isInfographic) result.isInfographic = true
+  if (translation) result.translation = translation
   if (mnemonic) result.mnemonic = mnemonic
   if (etymology) result.etymology = etymology
   if (partOfSpeech) result.partOfSpeech = partOfSpeech
+  const pronunciation = pickString(infographicLearning?.pronunciation)
+  if (pronunciation) result.pronunciation = pronunciation
   if (article) result.article = article
   if (usageExample) result.usageExample = usageExample
+  if (collocations) result.collocations = collocations
+  if (usageNote) result.usageNote = usageNote
+  if (commonMistake) result.commonMistake = commonMistake
+  if (infographicMemoryCue) result.memoryCue = infographicMemoryCue
+  if (footerTakeaway) result.footerTakeaway = footerTakeaway
+  if (templateLabel) result.templateLabel = templateLabel
   if (imageScene) result.imageScene = imageScene
   if (cardSceneDisplayed) result.cardSceneDisplayed = cardSceneDisplayed
   return result

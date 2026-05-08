@@ -863,6 +863,14 @@ def test_infographic_prompt_template_routes_through_dedicated_planner_and_stores
     assert metadata["planner_pass_count"] == 2
     assert metadata["planner_hero_treatment"] == "network_node"
     assert metadata["planner_panel_count"] == 1
+    learning = metadata["infographic_learning"]
+    assert learning["template"] == "infographic_language_atlas_v2"
+    assert learning["template_label"] == "Language Atlas"
+    assert learning["headword"] == "ephemeral"
+    assert learning["translation"] == "kurzlebig"
+    assert learning["base_language"] == "German"
+    assert learning["target_language"] == "English"
+    assert learning["footer_takeaway"] == "Schnell vorbei."
 
 
 def test_v3_infographic_reference_uses_i2i_payload_with_resolved_reference_url(monkeypatch, tmp_path):
@@ -1328,6 +1336,126 @@ def test_v4_dense_editorial_warning_only_safe_words_reach_gpt_image_2(monkeypatc
     assert all(call["input_urls"] is None for call in calls)
 
 
+def test_v4_provider_retry_reuses_cached_final_prompt_without_writer_call(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.infographic_prompt import InfographicPromptResult
+
+    writer_calls = 0
+    provider_prompts: list[str] = []
+
+    class FakeEvent:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, exc_type, exc, tb):
+            return False
+
+        def record_response(self, **_kwargs):
+            return None
+
+    def fake_write_infographic_prompt(**_kwargs):
+        nonlocal writer_calls
+        writer_calls += 1
+        return InfographicPromptResult(
+            prompt=(
+                "Create a horizontal 16:9 dense educational vocabulary infographic for the English word "
+                "'winner', glossed in German as 'Gewinner'. Use German explanations with English examples. "
+                "Teach the word as language first with meaning, pronunciation, grammar/forms, example sentences, "
+                "collocations, common mistakes, register, synonyms, word family, and practical usage notes. "
+                "Keep all safety guidance internal and render only useful learning content."
+            ),
+            model="test-dense-writer-model",
+            raw_plan="cached prompt",
+            planner_plan={
+                "prompt": "cached prompt",
+                "composition": {
+                    "info_panels": [{}, {}, {}],
+                    "detail_sections": [{}],
+                    "summary_modules": [{}],
+                },
+            },
+            infographic_template="infographic_dense_editorial_v4",
+            validator_passed=True,
+            validator_errors=[],
+            validator_hard_errors=[],
+            validator_warnings=[],
+            validator_retry_count=0,
+            prompt_rule_ratio_estimate=0.12,
+            dense_editorial_word_category="practical",
+        )
+
+    def fake_render_scene_gpt_image_2(**kwargs):
+        provider_prompts.append(kwargs["prompt_text"])
+        if len(provider_prompts) == 1:
+            return {
+                "success": False,
+                "file_path": None,
+                "error_message": "provider timeout",
+                "prompt_text": kwargs["prompt_text"],
+                "response_body": "{}",
+                "provider_name": "gpt_image_2",
+                "model_name": "gpt-image-2-text-to-image",
+                "request_id": "task-provider-failed",
+                "cost_estimate_usd": 0.05,
+            }
+        Path(kwargs["output_path"]).write_bytes(b"png")
+        return {
+            "success": True,
+            "file_path": Path(kwargs["output_path"]).name,
+            "error_message": None,
+            "prompt_text": kwargs["prompt_text"],
+            "response_body": "{}",
+            "provider_name": "gpt_image_2",
+            "model_name": "gpt-image-2-text-to-image",
+            "request_id": "task-provider-retry",
+            "cost_estimate_usd": 0.05,
+        }
+
+    monkeypatch.setattr(card_engine, "logged_api_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "logged_llm_call", lambda **_kwargs: FakeEvent())
+    monkeypatch.setattr(card_engine, "write_infographic_prompt", fake_write_infographic_prompt)
+
+    import types
+
+    provider_module = types.ModuleType("cloud_engines.image_engine.gpt_image_2_provider")
+    provider_module.render_scene_gpt_image_2 = fake_render_scene_gpt_image_2
+    monkeypatch.setitem(sys.modules, "cloud_engines.image_engine.gpt_image_2_provider", provider_module)
+
+    def dense_payload(attempt: int) -> CardImagePayload:
+        payload = _card_payload(tmp_path)
+        payload.content.word = "winner"
+        payload.content.translation = "Gewinner"
+        payload.content.base_language = "German"
+        payload.content.language = "English"
+        payload.metadata.attempt = attempt
+        payload.content.layer2_customization = {
+            "meaning_strategy": "clear_meaning",
+            "presentation_form": "infographic_card",
+            "visual_intensity": "balanced",
+            "backend_template": "infographic_prompt_v1",
+            "infographic_template": "infographic_dense_editorial_v4",
+        }
+        return payload
+
+    first = card_engine.generate_card_image(dense_payload(1))
+    second = card_engine.generate_card_image(dense_payload(2))
+
+    assert first.status == "failed"
+    assert second.status == "success"
+    assert writer_calls == 1
+    assert provider_prompts[0] == provider_prompts[1]
+    assert first.gpt_image_2_card_metadata["prompt_attempt_count"] == 1
+    assert first.gpt_image_2_card_metadata["provider_attempt_count"] == 1
+    assert first.gpt_image_2_card_metadata["reused_cached_prompt"] is False
+    assert first.gpt_image_2_card_metadata["retry_used_cached_prompt"] is False
+    assert second.gpt_image_2_card_metadata["prompt_attempt_count"] == 1
+    assert second.gpt_image_2_card_metadata["provider_attempt_count"] == 2
+    assert second.gpt_image_2_card_metadata["reused_cached_prompt"] is True
+    assert second.gpt_image_2_card_metadata["retry_used_cached_prompt"] is True
+    assert second.gpt_image_2_card_metadata["final_prompt"] == provider_prompts[1]
+    assert second.gpt_image_2_card_metadata["final_prompt_hash"] == first.gpt_image_2_card_metadata["final_prompt_hash"]
+
+
 def test_v4_dense_editorial_prompt_writer_failure_records_before_provider_metadata(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
 
@@ -1771,6 +1899,188 @@ def test_card_worker_persists_gpt_scene_metadata_separately(monkeypatch, tmp_pat
     assert metadata["image_scene"] == metadata["card_scene_displayed"]
     assert metadata["mnemonic"] == "Home pulls at you from far away."
     assert updates[-1]["mnemonic"] == "Home pulls at you from far away."
+
+
+def test_card_worker_persists_gpt_failure_metadata_for_retry(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.card_models import CardImageResult
+    from cloud_engines.image_engine.models import ImageError
+    from src.orchestration import card_worker as card_worker_mod
+    from src.orchestration.card_worker import CardWorker
+
+    updates: list[dict[str, object]] = []
+    uploads: list[str] = []
+
+    class _Table:
+        def update(self, data):
+            updates.append(data)
+            return self
+
+        def eq(self, *_args):
+            return self
+
+        def execute(self):
+            return type("Resp", (), {"data": updates[-1:]})()
+
+    class _Supabase:
+        def table(self, name):
+            assert name == "words"
+            return _Table()
+
+    def fake_generate_card_image(_payload):
+        return CardImageResult(
+            status="failed",
+            error=ImageError(message="provider timeout", retryable=True),
+            gpt_image_2_card_metadata={
+                "infographic_template": "infographic_dense_editorial_v4",
+                "final_prompt": "cached final prompt",
+                "final_prompt_hash": "hash-1",
+                "prompt_attempt_count": 1,
+                "provider_attempt_count": 1,
+                "failure_origin": "provider",
+                "provider_reached": True,
+            },
+        )
+
+    async def fake_upload(self, **_kwargs):
+        uploads.append("upload")
+        return "https://cdn/card.png", None
+
+    monkeypatch.setattr(card_engine, "generate_card_image", fake_generate_card_image)
+    monkeypatch.setattr(CardWorker, "_upload_card_image", fake_upload)
+    monkeypatch.setattr(card_worker_mod, "write_event_row", lambda **_kwargs: None)
+
+    worker = CardWorker(_Supabase(), card_queue=asyncio.Queue())
+    ok, error = _run(
+        worker._generate_card_image(
+            {
+                "id": "word-1",
+                "word": "winner",
+                "translation": "Gewinner",
+                "user_id": "user-1",
+                "deck_id": "deck-1",
+                "generation_job_id": "job-1",
+                "stage_attempts": 1,
+                "metadata": {"visual_card_plan": {"base_language": "German"}},
+            },
+            {
+                "manifest": Manifest(
+                    word_original="winner",
+                    word_slug="winner",
+                    translation="Gewinner",
+                    language="English",
+                    language_code="en",
+                    created_at="2026-05-04T00:00:00Z",
+                    updated_at="2026-05-04T00:00:00Z",
+                ),
+                "settings": {"images": {"card_image_model": "gpt_image_2"}},
+                "word_slug": "winner",
+                "word_dir": tmp_path,
+            },
+        )
+    )
+
+    assert ok is False
+    assert "provider timeout" in (error or "")
+    assert uploads == []
+    metadata = updates[-1]["metadata"]["gpt_image_2_card"]
+    assert metadata["failure_origin"] == "provider"
+    assert metadata["prompt_attempt_count"] == 1
+    assert metadata["provider_attempt_count"] == 1
+
+
+def test_card_worker_persists_v4_validator_failure_metadata(monkeypatch, tmp_path):
+    from cloud_engines.image_engine import card_engine
+    from cloud_engines.image_engine.card_models import CardImageResult
+    from cloud_engines.image_engine.models import ImageError
+    from src.orchestration import card_worker as card_worker_mod
+    from src.orchestration.card_worker import CardWorker
+
+    updates: list[dict[str, object]] = []
+
+    class _Table:
+        def update(self, data):
+            updates.append(data)
+            return self
+
+        def eq(self, *_args):
+            return self
+
+        def execute(self):
+            return type("Resp", (), {"data": updates[-1:]})()
+
+    class _Supabase:
+        def table(self, name):
+            assert name == "words"
+            return _Table()
+
+    def fake_generate_card_image(_payload):
+        return CardImageResult(
+            status="failed",
+            error=ImageError(message="Infographic V4 validator failed: target/translation appear swapped", retryable=False),
+            gpt_image_2_card_metadata={
+                "backend_template": "infographic_prompt_v1",
+                "infographic_template": "infographic_dense_editorial_v4",
+                "validator_passed": False,
+                "validator_errors": ["target/translation appear swapped"],
+                "validator_hard_errors": ["target/translation appear swapped"],
+                "validator_warnings": [],
+                "validator_retry_count": 1,
+                "provider_reached": False,
+                "failure_origin": "validator",
+                "final_prompt_chars": 3500,
+                "final_prompt_preview": "Title: wishful thinking. Subtitle: wishful thinking.",
+                "final_prompt_hash": "hash-validator-failed",
+                "prompt_attempt_count": 2,
+                "reused_cached_prompt": False,
+                "retry_used_cached_prompt": False,
+            },
+        )
+
+    monkeypatch.setattr(card_engine, "generate_card_image", fake_generate_card_image)
+    monkeypatch.setattr(card_worker_mod, "write_event_row", lambda **_kwargs: None)
+
+    worker = CardWorker(_Supabase(), card_queue=asyncio.Queue())
+    ok, error = _run(
+        worker._generate_card_image(
+            {
+                "id": "word-1",
+                "word": "wishful thinking",
+                "translation": "wishful thinking",
+                "user_id": "user-1",
+                "deck_id": "deck-1",
+                "generation_job_id": "job-1",
+                "stage_attempts": 3,
+                "metadata": {"visual_card_plan": {"base_language": "English"}},
+            },
+            {
+                "manifest": Manifest(
+                    word_original="wishful thinking",
+                    word_slug="wishful-thinking",
+                    translation="wishful thinking",
+                    language="English",
+                    language_code="en",
+                    created_at="2026-05-04T00:00:00Z",
+                    updated_at="2026-05-04T00:00:00Z",
+                ),
+                "settings": {"images": {"card_image_model": "gpt_image_2"}},
+                "word_slug": "wishful-thinking",
+                "word_dir": tmp_path,
+            },
+        )
+    )
+
+    assert ok is False
+    assert "target/translation appear swapped" in (error or "")
+    metadata = updates[-1]["metadata"]
+    assert metadata["visual_card_plan"] == {"base_language": "English"}
+    gpt_metadata = metadata["gpt_image_2_card"]
+    assert gpt_metadata["backend_template"] == "infographic_prompt_v1"
+    assert gpt_metadata["infographic_template"] == "infographic_dense_editorial_v4"
+    assert gpt_metadata["failure_origin"] == "validator"
+    assert gpt_metadata["provider_reached"] is False
+    assert gpt_metadata["validator_hard_errors"] == ["target/translation appear swapped"]
+    assert gpt_metadata["prompt_attempt_count"] == 2
 
 
 def test_card_worker_passes_layer2_settings_and_persists_layer2_metadata(monkeypatch, tmp_path):

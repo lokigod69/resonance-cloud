@@ -474,8 +474,55 @@ def test_v4_dense_editorial_prompt_is_high_density_vocabulary_first_and_oriented
     for forbidden in ("Zielsprache", "Basissprache", "target language", "base language", "Dense Editorial V4", "\"type\"", "\"style\"", "\"composition\"", "info_panels", "visual_elements", "design_goals"):
         assert forbidden not in prompt
     assert prompt.count("At least 70% of the card content must teach the word as language") == 1
-    assert prompt.count("Never invent fake facts") == 1
+    for forbidden in (
+        "No fake facts",
+        "No fake quotes",
+        "No fake etymologies",
+        "No forced mnemonics",
+        "Never invent fake facts",
+        "fake quotes",
+        "forced mnemonics",
+        "Info is verified",
+        "This info is verified",
+        "Teaching real language",
+    ):
+        assert forbidden not in prompt
     assert 1800 <= len(prompt) <= 5000
+
+
+def test_v4_compiler_scrubs_visible_safety_phrases_from_writer_prompt():
+    prompt = compile_infographic_prompt(
+        content=CardImageContent(
+            word="authority",
+            translation="Autorität",
+            language="English",
+            language_code="en",
+            base_language="German",
+            pos="noun",
+        ),
+        plan={
+            "prompt": (
+                "Create a sober authority vocabulary card with meaning, pronunciation, grammar, "
+                "examples, collocations, register, synonyms, contrasts, word family, and common mistakes. "
+                "No fake facts, no fake quotes, no fake etymologies, no forced mnemonics. "
+                "Teaching real language. Info is verified."
+            )
+        },
+        infographic_template="infographic_dense_editorial_v4",
+    )
+
+    for forbidden in (
+        "No fake facts",
+        "No fake quotes",
+        "No fake etymologies",
+        "No forced mnemonics",
+        "Teaching real language",
+        "Info is verified",
+    ):
+        assert forbidden not in prompt
+    assert "authority" in prompt
+    assert "Autorität" in prompt
+    assert "meaning, pronunciation, grammar" in prompt
 
 
 def test_v4_validator_catches_banned_labels_json_keys_and_reversed_orientation():
@@ -511,8 +558,66 @@ def test_v4_validator_catches_banned_labels_json_keys_and_reversed_orientation()
     assert "required learning modules" in warnings
 
 
+def test_v4_validator_blocks_visible_safety_footer_or_watermark_text():
+    content = CardImageContent(
+        word="winner",
+        translation="Gewinner",
+        language="English",
+        language_code="en",
+        base_language="German",
+        pos="noun",
+    )
+    bad_prompt = (
+        "Create a horizontal 16:9 dense educational vocabulary infographic for the English word "
+        "'winner', glossed in German as 'Gewinner'. This is a language-learning infographic about "
+        "the target word. Use German panels for meaning, pronunciation, grammar/forms, examples, "
+        "collocations, common mistakes, register, synonyms, word family, and practical usage notes. "
+        "Add a bottom-right shield watermark that visibly says: No fake facts, no fake quotes, "
+        "no fake etymologies, no forced mnemonics. Info is verified. Teaching real language."
+    )
+
+    result = validate_dense_editorial_prompt(
+        prompt=bad_prompt,
+        content=content,
+        base_language="German",
+        target_language="English",
+    )
+
+    assert result["passed"] is False
+    assert any("visible safety text" in item for item in result["hard_errors"])
+
+
+def test_v4_validator_blocks_visible_ratio_guidance_footer_text():
+    content = CardImageContent(
+        word="authority",
+        translation="Autorität",
+        language="English",
+        language_code="en",
+        base_language="German",
+        pos="noun",
+    )
+    bad_prompt = (
+        "Create a horizontal 16:9 dense educational vocabulary infographic for the English word "
+        "'authority', glossed in German as 'Autorität'. This is a language-learning infographic about "
+        "the target word. Use German panels for meaning, pronunciation, grammar/forms, examples, "
+        "collocations, common mistakes, register, synonyms, word family, and practical usage notes. "
+        "Add a visible footer that reads: 70% language learning, 30% topic context."
+    )
+
+    result = validate_dense_editorial_prompt(
+        prompt=bad_prompt,
+        content=content,
+        base_language="German",
+        target_language="English",
+    )
+
+    assert result["passed"] is False
+    assert any("visible ratio guidance" in item for item in result["hard_errors"])
+
+
 def test_v4_validator_allows_safe_words_with_warnings_only():
     examples = [
+        ("wishful thinking", "wishful thinking"),
         ("onomatopoeia", "Lautmalerei"),
         ("flamboyant", "extravagant"),
         ("punctuality", "Pünktlichkeit"),
@@ -548,6 +653,92 @@ def test_v4_validator_allows_safe_words_with_warnings_only():
         assert result["hard_errors"] == []
 
 
+def test_v4_prompt_writer_repairs_once_then_accepts_warning_only_prompt(monkeypatch):
+    from cloud_engines.image_engine import infographic_prompt as module
+
+    calls: list[str] = []
+
+    def fake_call_openrouter_infographic_planner(**kwargs):
+        calls.append(kwargs["user_prompt"])
+        if len(calls) == 1:
+            return (
+                "Create a horizontal 16:9 card. Zielsprache: Englisch. "
+                "Title: authority. Gloss: Autorität. Meaning and examples.",
+                {"prompt_tokens": 10, "completion_tokens": 20, "total_tokens": 30},
+                "bad-v4",
+            )
+        return (
+            "Create a horizontal 16:9 dense educational vocabulary infographic for the English word "
+            "'authority', glossed in German as 'Autorität'. This is a language-learning infographic "
+            "about the word as language. Use German explanations with English examples. Include meaning, "
+            "pronunciation, grammar/forms, example sentences, collocations, common mistakes, register, "
+            "synonyms/contrasts, word family, and practical usage notes. Avoid invented facts, invented "
+            "quotes, unsupported etymologies, and forced memory tricks.",
+            {"prompt_tokens": 11, "completion_tokens": 21, "total_tokens": 32},
+            "repaired-v4",
+        )
+
+    monkeypatch.setattr(module.config, "OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(module, "_call_openrouter_infographic_planner", fake_call_openrouter_infographic_planner)
+
+    result = module.write_infographic_prompt(
+        content=CardImageContent(
+            word="authority",
+            translation="Autorität",
+            language="English",
+            language_code="en",
+            base_language="German",
+            pos="noun",
+        ),
+        layer2={"infographic_template": "infographic_dense_editorial_v4"},
+    )
+
+    assert len(calls) == 2
+    assert "Fix these validation errors" in calls[1]
+    assert result.prompt_attempt_count == 2
+    assert result.validator_retry_count == 1
+    assert result.validator_passed is True
+    assert result.validator_hard_errors == []
+    assert result.request_id == "repaired-v4"
+    assert result.usage == {"prompt_tokens": 21, "completion_tokens": 41, "total_tokens": 62}
+
+
+def test_v4_prompt_writer_stops_after_one_failed_repair(monkeypatch):
+    from cloud_engines.image_engine import infographic_prompt as module
+
+    calls: list[str] = []
+
+    def fake_call_openrouter_infographic_planner(**kwargs):
+        calls.append(kwargs["user_prompt"])
+        return (
+            "Create a horizontal 16:9 card. Zielsprache: Englisch. "
+            "Title: failure. Gloss: Scheitern. backend template. Meaning only.",
+            {"prompt_tokens": 10, "completion_tokens": 20, "total_tokens": 30},
+            f"bad-v4-{len(calls)}",
+        )
+
+    monkeypatch.setattr(module.config, "OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setattr(module, "_call_openrouter_infographic_planner", fake_call_openrouter_infographic_planner)
+
+    result = module.write_infographic_prompt(
+        content=CardImageContent(
+            word="failure",
+            translation="Scheitern",
+            language="English",
+            language_code="en",
+            base_language="German",
+            pos="noun",
+        ),
+        layer2={"infographic_template": "infographic_dense_editorial_v4"},
+    )
+
+    assert len(calls) == 2
+    assert result.prompt_attempt_count == 2
+    assert result.validator_retry_count == 1
+    assert result.validator_passed is False
+    assert any("banned visible metadata" in item for item in result.validator_hard_errors)
+
+
 def test_v4_validator_passes_compact_natural_language_prompt_for_practical_words():
     content = CardImageContent(
         word="winner",
@@ -565,7 +756,7 @@ def test_v4_validator_passes_compact_natural_language_prompt_for_practical_words
         "common mistake, register/use, synonyms/contrasts, and practical footer takeaway. "
         "Examples must be idiomatic and common: She was the clear winner of the race. The winner receives a prize. "
         "At least 70% of the card content must teach the word as language; at most 30% may be topic context. "
-        "No fake facts, no fake quotes, no fake etymologies, no forced mnemonics."
+        "Avoid invented facts, invented quotes, unsupported etymologies, and forced memory tricks."
     )
 
     result = validate_dense_editorial_prompt(
@@ -650,6 +841,134 @@ def test_infographic_metadata_records_template_and_v2_pass_count():
     assert metadata["target_language"] == "English"
     assert metadata["final_prompt_chars"] == len(prompt)
     assert metadata["final_prompt_preview"] == prompt[:500]
+
+
+def test_v2_study_poster_metadata_writes_infographic_learning_summary():
+    plan = {
+        **_plan(),
+        "infographic_template": "infographic_study_poster_v2",
+        "panels": [
+            {
+                "header": "Beispiel",
+                "type": "example",
+                "text": ["Cross the threshold. = Ueberschreite die Schwelle."],
+            },
+            {
+                "header": "Kollokationen",
+                "type": "collocation",
+                "text": ["cross the threshold", "low threshold"],
+            },
+            {
+                "header": "Merksatz",
+                "type": "memory",
+                "text": ["A threshold is the line you cross when entering."],
+            },
+        ],
+        "footer_line": "Ein Wort fuer den Moment davor.",
+    }
+    metadata = infographic_prompt_metadata(
+        final_prompt="Create a Study Poster for threshold.",
+        planner_model="test-planner",
+        planner_plan=plan,
+        infographic_template="infographic_study_poster_v2",
+        base_language_intended="German",
+        target_language="English",
+        content=_content(),
+    )
+
+    summary = metadata["infographic_learning"]
+    assert summary["template"] == "infographic_study_poster_v2"
+    assert summary["template_label"] == "Study Poster"
+    assert summary["headword"] == "threshold"
+    assert summary["translation"] == "Schwelle"
+    assert summary["base_language"] == "German"
+    assert summary["target_language"] == "English"
+    assert summary["part_of_speech"] == "noun"
+    assert summary["example_sentences"] == [
+        {"target": "Cross the threshold.", "gloss": "Ueberschreite die Schwelle."}
+    ]
+    assert summary["collocations"] == ["cross the threshold", "low threshold"]
+    assert summary["memory_cue"] == "A threshold is the line you cross when entering."
+    assert summary["footer_takeaway"] == "Ein Wort fuer den Moment davor."
+
+
+def test_v2_visual_dictionary_metadata_writes_available_fields_without_optional_crash():
+    metadata = infographic_prompt_metadata(
+        final_prompt="Create a Visual Dictionary for threshold.",
+        planner_model="test-planner",
+        planner_plan={
+            "title": "threshold",
+            "translation": "Schwelle",
+            "base_language": "German",
+            "target_language": "English",
+            "panels": [
+                {
+                    "header": "Usage Note",
+                    "type": "usage",
+                    "text": ["Use for a boundary, doorway, or starting point."],
+                },
+                {
+                    "header": "Common Mistake",
+                    "type": "common_mistake",
+                    "text": ["Do not confuse threshold with doorstep in abstract uses."],
+                },
+            ],
+        },
+        infographic_template="infographic_visual_dictionary_v2",
+        base_language_intended="German",
+        target_language="English",
+        content=_content(),
+    )
+
+    summary = metadata["infographic_learning"]
+    assert summary["template_label"] == "Visual Dictionary"
+    assert summary["headword"] == "threshold"
+    assert summary["translation"] == "Schwelle"
+    assert summary["usage_note"] == "Use for a boundary, doorway, or starting point."
+    assert summary["common_mistake"] == "Do not confuse threshold with doorstep in abstract uses."
+    assert "example_sentences" not in summary
+    assert "collocations" not in summary
+
+
+def test_v4_dense_editorial_metadata_writes_minimal_infographic_learning_summary():
+    metadata = infographic_prompt_metadata(
+        final_prompt="Create a dense editorial vocabulary infographic for failure.",
+        planner_model="dense-writer-model",
+        planner_plan={
+            "prompt": "Create a dense editorial vocabulary infographic for failure.",
+            "composition": {
+                "info_panels": [
+                    {"title": "Example", "content": "Failure is part of learning. = Scheitern gehoert zum Lernen."},
+                    {"title": "Collocations", "content": "failure rate; system failure"},
+                ],
+                "summary_modules": [{"title": "Takeaway", "content": "Failure names an unsuccessful result."}],
+            },
+        },
+        infographic_template="infographic_dense_editorial_v4",
+        base_language_intended="German",
+        target_language="English",
+        content=CardImageContent(
+            word="failure",
+            translation="Scheitern",
+            language="English",
+            language_code="en",
+            base_language="German",
+            pos="noun",
+        ),
+    )
+
+    summary = metadata["infographic_learning"]
+    assert summary["template"] == "infographic_dense_editorial_v4"
+    assert summary["template_label"] == "Dense Encyclopedia"
+    assert summary["headword"] == "failure"
+    assert summary["translation"] == "Scheitern"
+    assert summary["base_language"] == "German"
+    assert summary["target_language"] == "English"
+    assert summary["example_sentences"] == [
+        {"target": "Failure is part of learning.", "gloss": "Scheitern gehoert zum Lernen."}
+    ]
+    assert summary["collocations"] == ["failure rate", "system failure"]
+    assert summary["footer_takeaway"] == "Failure names an unsuccessful result."
 
 
 def test_v3_metadata_records_reference_fields_and_missing_asset_fallback():

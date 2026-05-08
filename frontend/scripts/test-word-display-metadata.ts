@@ -9,6 +9,7 @@
  */
 
 import { resolveCardLearningMetadata, type WordLike } from '../src/lib/wordDisplayMetadata.ts'
+import { readFileSync } from 'node:fs'
 
 let failures = 0
 let passes = 0
@@ -264,6 +265,111 @@ console.log('\n[gpt_image_2_card with LLM V3 visual craft backend]')
   )
 }
 
+console.log('\n[infographic_learning takes priority over conflicting visual_card_plan]')
+{
+  const word: WordLike = {
+    word: 'failure',
+    translation: 'Scheitern',
+    mnemonic: 'Failure means a tower of blocks tumbling down.',
+    pos: 'noun',
+    card_image_model: 'gpt_image_2',
+    metadata: {
+      visual_card_plan: {
+        image_scene: 'tower of blocks tumbling down',
+        mnemonic: 'Failure: when things fall apart.',
+        rationale_summary: 'A tower collapsing shows failure.',
+        usage_example: { target: 'old target', l1: 'old gloss' },
+      },
+      gpt_image_2_card: {
+        backend_template: 'infographic_prompt_v1',
+        infographic_template: 'infographic_dense_editorial_v4',
+        infographic_learning: {
+          template: 'infographic_dense_editorial_v4',
+          template_label: 'Dense Encyclopedia',
+          headword: 'failure',
+          translation: 'Scheitern',
+          base_language: 'German',
+          target_language: 'English',
+          part_of_speech: 'noun',
+          example_sentences: [
+            { target: 'Failure is part of learning.', gloss: 'Scheitern gehoert zum Lernen.' },
+          ],
+          collocations: ['system failure', 'failure rate'],
+          usage_note: 'Use for an unsuccessful result.',
+          memory_cue: 'A failed attempt still teaches the next attempt.',
+          footer_takeaway: 'Failure names the result, not the person.',
+        },
+      },
+    },
+  }
+  const r = resolveCardLearningMetadata(word)
+  assert('infographic flag set', r.isInfographic === true)
+  assert('translation from infographic_learning', r.translation === 'Scheitern')
+  assert('template label from infographic_learning', r.templateLabel === 'Dense Encyclopedia')
+  assert('memory cue from infographic_learning only', r.mnemonic === 'A failed attempt still teaches the next attempt.')
+  assert('usageExample from infographic_learning', r.usageExample?.target === 'Failure is part of learning.')
+  assert('usageExample gloss from infographic_learning', r.usageExample?.base === 'Scheitern gehoert zum Lernen.')
+  assert('collocations from infographic_learning', r.collocations?.join('|') === 'system failure|failure rate')
+  assert('usage note from infographic_learning', r.usageNote === 'Use for an unsuccessful result.')
+  assert('footer takeaway from infographic_learning', r.footerTakeaway === 'Failure names the result, not the person.')
+  assert('visual_card_plan image scene is hidden for infographic user detail', r.imageScene === undefined)
+  assert('visual_card_plan card scene is hidden for infographic user detail', r.cardSceneDisplayed === undefined)
+  assert('debug still preserves visual_card_plan', r.adminDebug.visualCardPlan?.image_scene === 'tower of blocks tumbling down')
+  assert('debug exposes infographic_learning', r.adminDebug.infographicLearning?.template_label === 'Dense Encyclopedia')
+}
+
+console.log('\n[quick infographic translation fallback is not blank]')
+{
+  const word: WordLike = {
+    word: 'vaccinations',
+    translation: 'Impfungen',
+    card_image_model: 'gpt_image_2',
+    metadata: {
+      gpt_image_2_card: {
+        backend_template: 'infographic_prompt_v1',
+        premium_quick_mode: 'infographic',
+        infographic_template: 'infographic_study_poster_v2',
+        infographic_learning: {
+          template: 'infographic_study_poster_v2',
+          template_label: 'Study Poster',
+          headword: 'vaccinations',
+          translation: 'Impfungen',
+          base_language: 'German',
+          target_language: 'English',
+        },
+      },
+    },
+  }
+  const r = resolveCardLearningMetadata(word)
+  assert('vaccinations translation resolved', r.translation === 'Impfungen')
+  assert('quick infographic detected', r.isInfographic === true)
+}
+
+console.log('\n[same-word infographic translation remains coherent]')
+{
+  const word: WordLike = {
+    word: 'wishful thinking',
+    translation: 'wishful thinking',
+    metadata: {
+      gpt_image_2_card: {
+        backend_template: 'infographic_prompt_v1',
+        infographic_template: 'infographic_dense_editorial_v4',
+        infographic_learning: {
+          template: 'infographic_dense_editorial_v4',
+          template_label: 'Dense Encyclopedia',
+          headword: 'wishful thinking',
+          translation: 'wishful thinking',
+          base_language: 'English',
+          target_language: 'English',
+        },
+      },
+    },
+  }
+  const r = resolveCardLearningMetadata(word)
+  assert('same-word translation does not disappear from resolver', r.translation === 'wishful thinking')
+  assert('same-word infographic detected', r.isInfographic === true)
+}
+
 console.log('\n[missing usage example — empty {target:"", l1:""} should NOT surface]')
 {
   const word: WordLike = {
@@ -359,6 +465,14 @@ console.log('\n[only target side present]')
   const r = resolveCardLearningMetadata(word)
   assert('usageExample.target alone', r.usageExample?.target === 'Sentence only.')
   assert('usageExample.target alone has no base', r.usageExample?.base === undefined)
+}
+
+console.log('\n[admin word detail source labels]')
+{
+  const source = readFileSync(new URL('../src/components/admin/WordDetailPanel.tsx', import.meta.url), 'utf8')
+  assert('Admin shows Infographic Learning Metadata section', source.includes('Infographic Learning Metadata'))
+  assert('Admin labels visual_card_plan as legacy pre-image', source.includes('Legacy Pre-image Visual Plan'))
+  assert('Admin metadata title marks visual_card_plan legacy pre-image', source.includes('metadata.visual_card_plan (legacy pre-image)'))
 }
 
 console.log(`\n${passes} passed, ${failures} failed`)
