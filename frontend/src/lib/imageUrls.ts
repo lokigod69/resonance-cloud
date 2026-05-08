@@ -9,7 +9,7 @@ export interface ThumbOptions {
   size: ThumbSize | { width: number; height: number }
   resize?: 'cover' | 'contain' | 'fill'
   quality?: number
-  format?: 'origin' | 'webp'
+  format?: 'webp'
 }
 
 export function getThumbnailUrl(
@@ -30,7 +30,7 @@ export function getThumbnailUrl(
   if (opts.quality !== undefined) {
     url.searchParams.set('quality', String(opts.quality))
   }
-  if (opts.format && opts.format !== 'origin') {
+  if (opts.format) {
     url.searchParams.set('format', opts.format)
   }
 
