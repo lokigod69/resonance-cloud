@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { getThumbnailUrl } from '@/lib/imageUrls'
 
 interface OrbVisualizerProps {
   thumbnailUrl: string | null
@@ -204,7 +205,7 @@ export function OrbVisualizer({
           {thumbnailUrl ? (
             <motion.img
               key={thumbnailUrl}
-              src={thumbnailUrl}
+              src={getThumbnailUrl(thumbnailUrl, { size: 768, format: 'webp' }) ?? undefined}
               alt={word}
               className="absolute inset-0 w-full h-full object-cover"
               draggable={false}

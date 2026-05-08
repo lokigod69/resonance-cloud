@@ -12,6 +12,7 @@ import {
 import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
 import { useTranslation } from '@/hooks/useTranslation'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
+import { getThumbnailUrl } from '@/lib/imageUrls'
 
 type MusicLyricsRow = {
   id: string | null
@@ -464,7 +465,7 @@ export function LyricsSheet({
         <header className="flex min-w-0 items-start gap-3 pr-10">
           {track?.thumbnail_url ? (
             <img
-              src={track.thumbnail_url}
+              src={getThumbnailUrl(track.thumbnail_url, { size: 128, format: 'webp' }) ?? undefined}
               alt={track.word}
               className="h-12 w-12 shrink-0 rounded-md border border-border/50 object-cover shadow-md"
               draggable={false}

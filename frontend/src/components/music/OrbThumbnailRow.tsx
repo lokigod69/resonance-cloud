@@ -1,6 +1,7 @@
 import { trackHasAudio, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { Loader2, Music } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
+import { getThumbnailUrl } from '@/lib/imageUrls'
 
 interface OrbThumbnailRowProps {
   tracks: MusicTrack[]
@@ -44,7 +45,7 @@ export function OrbThumbnailRow({
               >
                 {track.thumbnail_url ? (
                   <img
-                    src={track.thumbnail_url}
+                    src={getThumbnailUrl(track.thumbnail_url, { size: 192, format: 'webp' }) ?? undefined}
                     alt={track.word}
                     draggable={false}
                   />

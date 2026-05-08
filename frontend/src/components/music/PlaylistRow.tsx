@@ -3,6 +3,7 @@ import { Music } from 'lucide-react'
 import { trackHasAudio, type MusicTrack } from '@/hooks/useMusicPlayer'
 import { useTranslation } from '@/hooks/useTranslation'
 import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
+import { getThumbnailUrl } from '@/lib/imageUrls'
 
 // Duration cache: persists across component remounts within the same browser session
 const durationCache = new Map<string, number>()
@@ -109,7 +110,7 @@ export function PlaylistRow({
           <Equalizer />
         ) : track.thumbnail_url ? (
           <img
-            src={track.thumbnail_url}
+            src={getThumbnailUrl(track.thumbnail_url, { size: 128, format: 'webp' }) ?? undefined}
             alt={track.word}
             className="w-full h-full object-cover"
           />

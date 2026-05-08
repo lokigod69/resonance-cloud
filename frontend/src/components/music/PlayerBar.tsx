@@ -10,6 +10,7 @@ import {
   PLAYER_INACTIVE_TOGGLE_CLASS,
   PLAYER_SOFT_ICON_BUTTON_CLASS,
 } from '@/lib/playerStyles'
+import { getThumbnailUrl } from '@/lib/imageUrls'
 
 function formatTime(s: number): string {
   if (!isFinite(s) || s < 0) return '0:00'
@@ -177,7 +178,7 @@ export function PlayerBar({
           <div className="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md bg-card/50 border border-border">
             {currentTrack?.thumbnail_url ? (
               <img
-                src={currentTrack.thumbnail_url}
+                src={getThumbnailUrl(currentTrack.thumbnail_url, { size: 128, format: 'webp' }) ?? undefined}
                 alt={currentTrack.word}
                 className="h-full w-full object-cover"
                 draggable={false}

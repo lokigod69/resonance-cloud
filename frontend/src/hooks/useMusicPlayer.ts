@@ -1,5 +1,6 @@
 import { useRef, useState, useCallback, useEffect, useMemo } from 'react'
 import { compactMusicCaptionSegment, resolveTrackMusicCaption } from '@/lib/musicDisplayMetadata'
+import { getThumbnailUrl } from '@/lib/imageUrls'
 
 export interface MusicTrack {
   id: string
@@ -45,8 +46,9 @@ function getTrackMediaAlbum(track: MusicTrack): string {
 }
 
 function getTrackMediaArtwork(track: MusicTrack): MediaImage[] {
-  if (!track.thumbnail_url) return []
-  return [{ src: track.thumbnail_url, type: 'image/jpeg' }]
+  const src = getThumbnailUrl(track.thumbnail_url, { size: 512, format: 'webp' })
+  if (!src) return []
+  return [{ src, sizes: '512x512', type: 'image/webp' }]
 }
 
 function hasMediaSession(): boolean {
