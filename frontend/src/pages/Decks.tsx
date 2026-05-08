@@ -7,6 +7,7 @@ import { Loader, Music, Sparkles } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
+import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
 
 type Deck = {
   id: string
@@ -30,6 +31,7 @@ export default function Decks() {
   const location = useLocation()
 
   const { t, tp } = useTranslation()
+  const userId = user?.id
 
   const [decks, setDecks] = useState<Deck[]>([])
   const [wordCounts, setWordCounts] = useState<Record<string, { completed: number; total: number }>>({})
@@ -99,12 +101,12 @@ export default function Decks() {
   }, [t])
 
   useEffect(() => {
-    if (!user) {
+    if (!userId) {
       setLoading(false)
       return
     }
-    loadDecks(user.id)
-  }, [user?.id, location.key, loadDecks])
+    loadDecks(userId)
+  }, [userId, location.key, loadDecks])
 
   const availableLanguages = useMemo(() => {
     return Array.from(new Set(decks.map((d) => d.target_language))).filter(Boolean)
@@ -212,7 +214,7 @@ export default function Decks() {
                     : 'border-border text-muted-foreground hover:text-foreground/90 hover:border-accent'
                 }`}
               >
-                {lang}
+                {getDeckLanguageLabel(lang, t)}
               </button>
             )
           })}
@@ -234,7 +236,8 @@ export default function Decks() {
           {filteredDecks.map((deck) => {
             const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
             const thumb = deckThumbnails[deck.id]
-            const displayName = deck.name || `${deck.target_language} Deck`
+            const deckLanguageLabel = getDeckLanguageLabel(deck.target_language, t)
+            const displayName = deck.name || t('generateGo.languageDeckName', { language: deckLanguageLabel })
 
             return (
               <div
@@ -260,10 +263,12 @@ export default function Decks() {
                 </div>
                 <div className="classic-deck-body">
                   <h3>{displayName}</h3>
-                  <p>{deck.target_language} &bull; {tp('dashboard.wordCount', counts.total)}</p>
+                  <p>{deckLanguageLabel} &bull; {tp('dashboard.wordCount', counts.total)}</p>
                   {deck.status !== 'complete' && (
                     <p className="classic-deck-status">
-                      {deck.status === 'generating' ? t('dashboard.generating', { completed: counts.completed, total: counts.total }) : deck.status}
+                      {deck.status === 'generating'
+                        ? t('dashboard.generating', { completed: counts.completed, total: counts.total })
+                        : getDeckStatusLabel(deck.status, t)}
                     </p>
                   )}
                 </div>

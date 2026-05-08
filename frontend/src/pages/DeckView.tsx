@@ -26,6 +26,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
 import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
 import { classifyCardGenerationFailure, getCardRetryAction } from '@/lib/cardFailureClassification'
+import { getDeckLanguageLabel } from '@/lib/i18nDisplay'
 
 type Deck = {
   id: string
@@ -268,9 +269,10 @@ export default function DeckView() {
   const cardMaxWidth = completeWords.length === 1 ? 'max-w-[480px]' : 'max-w-[280px]'
   const viewerWord = completeWords[viewerIndex]
 
+  const deckLanguageLabel = getDeckLanguageLabel(deck.target_language, t)
   const displayName =
     deck.name ||
-    `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US')}`
+    `${t('generateGo.languageDeckName', { language: deckLanguageLabel })} — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US')}`
 
   async function handleRate(wordId: string, rating: number) {
     const { error } = await supabase.rpc('rate_word', {
@@ -356,7 +358,7 @@ export default function DeckView() {
             </div>
           )}
           <div className="flex items-center justify-center gap-2">
-            <span className="text-sm text-muted-foreground">{deck.target_language}</span>
+            <span className="text-sm text-muted-foreground">{deckLanguageLabel}</span>
             {isGenerating ? (
               <span title={t('deckview.statusGenerating', { completed: completedCount, total: totalCount })}>
                 <Sparkles className="h-4 w-4 text-[var(--pg-accent-teal,var(--primary))]" />

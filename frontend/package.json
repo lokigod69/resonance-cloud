@@ -17,6 +17,7 @@
     "test:lane-payload": "tsx scripts/test-product-lane-payload.ts",
     "test:premium-style-assets": "tsx scripts/test-premium-style-assets.ts",
     "test:generate-responsive-layout": "tsx scripts/test-generate-responsive-layout.ts",
+    "test:i18n-display-labels": "tsx scripts/test-i18n-display-labels.ts",
     "test:admin-layer2-lab": "tsx scripts/test-admin-layer2-lab.ts",
     "test:card-generation-progress": "tsx scripts/test-card-generation-progress.ts",
     "test:word-metadata": "tsx scripts/test-word-display-metadata.ts",

@@ -28,7 +28,7 @@ export default function WordsStep({
   onPremiumQuickModeGenerate,
   onCustomize,
 }: WordsStepProps) {
-  const { tp } = useTranslation()
+  const { t, tp } = useTranslation()
   const [error, setError] = useState<string | null>(null)
   const glassInputRef = useRef<GlassInputHandle>(null)
   const wordCount = state.words.length
@@ -81,7 +81,7 @@ export default function WordsStep({
         animate={{ opacity: 1, y: 0 }}
         className="text-2xl font-semibold tracking-tight text-foreground mb-2"
       >
-        Add your words
+        {t('generate.words.addTitle')}
       </motion.h2>
 
       <motion.p

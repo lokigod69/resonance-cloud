@@ -184,14 +184,14 @@ export default function CategoryPicker({
           className="words-choice-button"
           onClick={onSwitchToManual}
         >
-          Type Your Own
+          {t('generate.words.typeOwn')}
         </button>
         <button
           type="button"
           className="words-choice-button"
           onClick={() => setMode('picking')}
         >
-          Pick a Category
+          {t('generate.words.pickCategory')}
         </button>
       </div>
     )

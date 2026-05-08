@@ -68,13 +68,15 @@ assert(
   'Standard Card visual style must use centered shared layout classes.',
 )
 
-const typeOwnIndex = categoryPicker.indexOf('Type Your Own')
-const pickCategoryIndex = categoryPicker.indexOf('Pick a Category')
+const typeOwnIndex = categoryPicker.indexOf("t('generate.words.typeOwn')")
+const pickCategoryIndex = categoryPicker.indexOf("t('generate.words.pickCategory')")
 assert(
   typeOwnIndex >= 0
     && pickCategoryIndex > typeOwnIndex
+    && !categoryPicker.includes('Type Your Own')
+    && !categoryPicker.includes('Pick a Category')
     && !categoryPicker.includes('Choose a Category'),
-  'Add Words first-choice buttons must be Type Your Own first, then Pick a Category.',
+  'Add Words first-choice buttons must use translated Type Your Own / Pick a Category keys in order.',
 )
 
 assert(

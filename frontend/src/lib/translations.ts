@@ -252,6 +252,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.wordCount': '{count} of {max} words',
     'generate.wordCountSlider.one': '{count} word',
     'generate.wordCountSlider.other': '{count} words',
+    'generate.words.addTitle': 'Add your words',
+    'generate.words.typeOwn': 'Type Your Own',
+    'generate.words.pickCategory': 'Pick a Category',
     'generate.maxWords': 'Maximum {max} words',
     'generate.wordExists': 'Word already added',
     'generate.setDirection': 'Set the creative direction',
@@ -746,6 +749,13 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Decks ──
     'decks.title': 'Your Decks',
+    'deck.status.draft': 'Draft',
+    'deck.status.generating': 'Generating',
+    'deck.status.pending': 'Queued',
+    'deck.status.complete': 'Complete',
+    'deck.status.partial': 'Partially complete',
+    'deck.status.failed': 'Failed',
+    'deck.status.cancelled': 'Cancelled',
 
     // ── Study (missed strings) ──
     'study.untitled': 'Untitled',
@@ -1278,6 +1288,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.wordCount': '{count} von {max} Wörtern',
     'generate.wordCountSlider.one': '{count} Wort',
     'generate.wordCountSlider.other': '{count} Wörter',
+    'generate.words.addTitle': 'Wörter hinzufügen',
+    'generate.words.typeOwn': 'Selbst eingeben',
+    'generate.words.pickCategory': 'Kategorie wählen',
     'generate.maxWords': 'Maximal {max} Wörter',
     'generate.wordExists': 'Wort bereits hinzugefügt',
     'generate.setDirection': 'Kreative Richtung festlegen',
@@ -1512,6 +1525,13 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Decks ──
     'decks.title': 'Deine Decks',
+    'deck.status.draft': 'Entwurf',
+    'deck.status.generating': 'Wird erstellt',
+    'deck.status.pending': 'Wartet',
+    'deck.status.complete': 'Fertig',
+    'deck.status.partial': 'Teilweise fertig',
+    'deck.status.failed': 'Fehler',
+    'deck.status.cancelled': 'Abgebrochen',
 
     // ── Study (missed strings) ──
     'study.untitled': 'Unbenannt',
@@ -1791,6 +1811,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'generate.wordCount': '{count} sur {max} mots',
     'generate.wordCountSlider.one': '{count} mot',
     'generate.wordCountSlider.other': '{count} mots',
+    'generate.words.addTitle': 'Ajouter tes mots',
+    'generate.words.typeOwn': 'Saisir soi-même',
+    'generate.words.pickCategory': 'Choisir une catégorie',
     'generate.maxWords': 'Maximum {max} mots',
     'generate.wordExists': 'Mot déjà ajouté',
     'generate.setDirection': 'Choisis la direction créative',
@@ -2278,6 +2301,13 @@ export const translations: Record<Locale, Record<string, string>> = {
 
     // ── Decks ──
     'decks.title': 'Vos Decks',
+    'deck.status.draft': 'Brouillon',
+    'deck.status.generating': 'Création',
+    'deck.status.pending': 'En attente',
+    'deck.status.complete': 'Terminé',
+    'deck.status.partial': 'Partiellement terminé',
+    'deck.status.failed': 'Échec',
+    'deck.status.cancelled': 'Annulé',
 
     // ── Study (additional) ──
     'study.untitled': 'Sans titre',

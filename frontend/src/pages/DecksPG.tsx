@@ -32,6 +32,7 @@ import {
 } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
+import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
 
 type Deck = {
   id: string
@@ -125,6 +126,7 @@ export default function DecksPG() {
   const [loading, setLoading] = useState(true)
   const [dashboardError, setDashboardError] = useState<string | null>(null)
   const [viewMode, setViewMode] = useState<ViewMode>(getInitialViewMode)
+  const userId = user?.id
 
   useEffect(() => {
     try {
@@ -199,15 +201,15 @@ export default function DecksPG() {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [t])
 
   useEffect(() => {
-    if (!user) {
+    if (!userId) {
       setLoading(false)
       return
     }
-    loadDecks(user.id)
-  }, [user?.id, location.key, loadDecks])
+    loadDecks(userId)
+  }, [userId, location.key, loadDecks])
 
   if (authError && !user) {
     return (
@@ -414,13 +416,19 @@ interface ViewProps {
   onSelect: (id: string) => void
 }
 
-function getDeckMeta(deck: Deck, wordCounts: ViewProps['wordCounts'], locale?: string) {
+function getDeckMeta(
+  deck: Deck,
+  wordCounts: ViewProps['wordCounts'],
+  locale: string | undefined,
+  t: (key: string, vars?: Record<string, string | number>) => string,
+) {
   const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
   const progress = counts.total > 0 ? Math.round((counts.completed / counts.total) * 100) : 0
   const dateLocale = locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US'
+  const languageLabel = getDeckLanguageLabel(deck.target_language, t)
   const displayName =
-    deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(dateLocale)}`
-  return { counts, progress, displayName }
+    deck.name || `${t('generateGo.languageDeckName', { language: languageLabel })} — ${new Date(deck.created_at).toLocaleDateString(dateLocale)}`
+  return { counts, progress, displayName, languageLabel }
 }
 
 /* ─── Stack View ─────────────────────────────────── */
@@ -491,8 +499,8 @@ interface StackCardProps {
 
 function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts, thumbnails }: StackCardProps) {
   const x = useMotionValue(0)
-  const { tp, locale } = useTranslation()
-  const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
+  const { t, tp, locale } = useTranslation()
+  const { counts, displayName, languageLabel } = getDeckMeta(deck, wordCounts, locale, t)
   const thumb = thumbnails[deck.id]
 
   useEffect(() => {
@@ -586,7 +594,7 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
       <div className="flex-1 p-6 flex flex-col justify-between">
         <div>
           <p className="text-[var(--accent)] text-xs font-medium tracking-wide uppercase mb-2 font-display">
-            <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {deck.target_language}
+            <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {languageLabel}
           </p>
           <h2 className="text-2xl font-light text-[var(--text-primary)] font-display">{displayName}</h2>
         </div>
@@ -599,11 +607,11 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
 /* ─── Grid View ──────────────────────────────────── */
 
 function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
-  const { tp, locale } = useTranslation()
+  const { t, tp, locale } = useTranslation()
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {decks.map((deck, i) => {
-        const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
+        const { counts, displayName, languageLabel } = getDeckMeta(deck, wordCounts, locale, t)
         const thumb = thumbnails[deck.id]
 
         return (
@@ -636,7 +644,7 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
                 {displayName}
               </h3>
               <p className="text-xs text-[var(--pg-text-dim)]">
-                <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {deck.target_language} &middot; {tp('dashboard.wordCount', counts.total)}
+                <FlagIcon code={deck.target_language} className="w-4 h-auto" /> {languageLabel} &middot; {tp('dashboard.wordCount', counts.total)}
               </p>
             </div>
           </motion.button>
@@ -1010,8 +1018,8 @@ function WaterDeckCard({
   carouselPosition,
   onClick,
 }: WaterDeckCardProps) {
-  const { tp, locale } = useTranslation()
-  const { counts, displayName } = getDeckMeta(deck, wordCounts, locale)
+  const { t, tp, locale } = useTranslation()
+  const { counts, displayName, languageLabel } = getDeckMeta(deck, wordCounts, locale, t)
   const thumb = thumbnails[deck.id]
   const isGenerating = deck.status === 'generating'
   const virtualOffset = useTransform(carouselPosition, (position) => index - (Number.isFinite(position) ? position : 0))
@@ -1070,12 +1078,12 @@ function WaterDeckCard({
         <div className="water-deck-copy">
           <p className="water-deck-language">
             <FlagIcon code={deck.target_language} className="w-4 h-auto" />
-            <span>{deck.target_language}</span>
+            <span>{languageLabel}</span>
           </p>
           <h2>{displayName}</h2>
           <p className="water-deck-count">
             {tp('dashboard.wordCount', counts.total)}
-            {deck.status !== 'complete' ? <span>{deck.status}</span> : null}
+            {deck.status !== 'complete' ? <span>{getDeckStatusLabel(deck.status, t)}</span> : null}
           </p>
         </div>
       </div>
@@ -1093,6 +1101,8 @@ interface WaterDeckArtworkProps {
 }
 
 function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, isPriority = false, reflection = false }: WaterDeckArtworkProps) {
+  const { t } = useTranslation()
+  const languageLabel = getDeckLanguageLabel(deck.target_language, t)
   const Icon = isGenerating ? Sparkles : Music
   const [loadedThumbnail, setLoadedThumbnail] = useState<string | null>(null)
   const imageLoaded = Boolean(thumbnail && loadedThumbnail === thumbnail)
@@ -1133,7 +1143,7 @@ function WaterDeckArtwork({ deck, displayName, isGenerating, thumbnail, isPriori
       </div>
       <div className="water-deck-fallback-meta">
         <FlagIcon code={deck.target_language} className="w-6 h-auto" />
-        <span>{deck.target_language}</span>
+        <span>{languageLabel}</span>
       </div>
     </div>
   )
@@ -1173,7 +1183,7 @@ function getOrbViewport() {
 }
 
 function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
-  const { locale } = useTranslation()
+  const { t, locale } = useTranslation()
   const [viewport, setViewport] = useState(getOrbViewport)
 
   useEffect(() => {
@@ -1224,7 +1234,7 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
     >
       <div className="orbs-decks-atmosphere" aria-hidden="true" />
       {orbs.map((orb) => {
-        const { displayName } = getDeckMeta(orb.deck, wordCounts, locale)
+        const { displayName } = getDeckMeta(orb.deck, wordCounts, locale, t)
         const thumb = thumbnails[orb.deck.id]
 
         return (

@@ -45,6 +45,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
 import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
 import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
+import { getDeckLanguageLabel } from '@/lib/i18nDisplay'
 
 type Deck = {
   id: string
@@ -394,8 +395,9 @@ export default function DeckViewPG() {
   const isGenerating = deck.status === 'generating'
   const isCardDeck = deck.deck_type === 'card'
   const cardGenerationProgress = summarizeCardGenerationProgress(words)
+  const deckLanguageLabel = getDeckLanguageLabel(deck.target_language, t)
   const displayName =
-    deck.name || `${deck.target_language} Deck — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US')}`
+    deck.name || `${t('generateGo.languageDeckName', { language: deckLanguageLabel })} — ${new Date(deck.created_at).toLocaleDateString(locale === 'de' ? 'de-DE' : locale === 'fr' ? 'fr-FR' : 'en-US')}`
 
   async function handleRename() {
     if (!deck) return
@@ -518,7 +520,7 @@ export default function DeckViewPG() {
             </div>
           )}
           <div className="flex items-center gap-3 mt-1 text-sm">
-            <span className="text-[var(--pg-text-dim)]">{deck.target_language}</span>
+            <span className="text-[var(--pg-text-dim)]">{deckLanguageLabel}</span>
             {isGenerating && (
               <span className="text-[var(--pg-accent-gold)] flex items-center gap-1 text-xs">
                 <Sparkles className="h-3 w-3 animate-pulse" />
