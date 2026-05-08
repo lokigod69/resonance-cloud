@@ -13,6 +13,12 @@ function assert(condition: boolean, message: string): void {
   }
 }
 
+function containsCall(source: string, callee: string, argument: string): boolean {
+  const escapedCallee = callee.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const escapedArgument = argument.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return new RegExp(`${escapedCallee}\\(\\s*['"]${escapedArgument}['"]\\s*\\)`).test(source)
+}
+
 const glassCss = read('src/themes/glass-orb.css')
 const premiumSelectors = read('src/components/generate/shared/PremiumVisualSelectors.tsx')
 const generatePg = read('src/pages/GeneratePG.tsx')
@@ -91,7 +97,7 @@ assert(
 
 assert(
   !premiumQuickModePanel.includes('Sparkles')
-    && /className="premium-quick-button"[\s\S]*\{t\(option\.labelKey\)\}/.test(premiumQuickModePanel)
+    && /className="premium-quick-button"[\s\S]*\{\s*t\(option\.labelKey\)\s*\}/.test(premiumQuickModePanel)
     && !/className="premium-quick-button"[\s\S]*<[^>]*Icon|className="premium-quick-button"[\s\S]*<Sparkles/.test(premiumQuickModePanel),
   'Premium quick mode buttons must render label-only controls without sparkle or star icons.',
 )
@@ -138,9 +144,9 @@ assert(
 )
 
 assert(
-  generateGo.includes("t('generateGo.chooseLanguageOrbit')")
-    && generateGo.includes("t('generateGo.selectVisualContext')")
-    && generateGo.includes("t('generateGo.auralAtmosphere')")
+  containsCall(generateGo, 't', 'generateGo.chooseLanguageOrbit')
+    && containsCall(generateGo, 't', 'generateGo.selectVisualContext')
+    && containsCall(generateGo, 't', 'generateGo.auralAtmosphere')
     && generateGo.includes('productLaneLabel(productLane)')
     && !generateGo.includes('Choose Language Orbit')
     && !generateGo.includes('Select Visual Context')
@@ -150,8 +156,8 @@ assert(
 
 assert(
   premiumQuickModePanel.includes('useTranslation')
-    && premiumQuickModePanel.includes("t('generate.quickGenerate')")
-    && premiumQuickModePanel.includes("t('generate.customize')")
+    && containsCall(premiumQuickModePanel, 't', 'generate.quickGenerate')
+    && containsCall(premiumQuickModePanel, 't', 'generate.customize')
     && !premiumQuickModePanel.includes('>Quick Generate<')
     && !premiumQuickModePanel.includes('>Customize<'),
   'Premium quick mode panel must render translated controls.',
@@ -159,15 +165,29 @@ assert(
 
 assert(
   premiumCustomizeStep.includes('useTranslation')
-    && premiumCustomizeStep.includes("t('premium.customize.title')")
-    && premiumCustomizeStep.includes("t('premium.meaning.title')")
-    && premiumCustomizeStep.includes("t('premium.presentation.title')")
-    && premiumCustomizeStep.includes("t('premium.artStyle.title')")
+    && containsCall(premiumCustomizeStep, 't', 'premium.customize.title')
+    && containsCall(premiumCustomizeStep, 't', 'premium.meaning.title')
+    && containsCall(premiumCustomizeStep, 't', 'premium.presentation.title')
+    && containsCall(premiumCustomizeStep, 't', 'premium.artStyle.title')
     && !premiumCustomizeStep.includes('Premium Card Customize')
     && !premiumCustomizeStep.includes('Meaning Strategy')
     && !premiumCustomizeStep.includes('Presentation Form')
     && !premiumCustomizeStep.includes('Art Style'),
   'Premium customize step must render translated headings.',
+)
+
+assert(
+  containsCall(categoryPicker, 't', 'generate.quickGenerate')
+    && containsCall(categoryPicker, 't', 'generate.customize')
+    && /label=\{\s*t\(option\.labelKey\)\s*\}/.test(categoryPicker)
+    && !/label="Quick Generate"|label="Customize"|label=\{option\.label\}/.test(categoryPicker),
+  'Premium quick choices in CategoryPicker must render translated labels.',
+)
+
+assert(
+  !/>\s*Quick Generate\s*</.test(categoryPicker)
+    && !/>\s*Customize\s*</.test(categoryPicker),
+  'CategoryPicker quick/customize controls must not render hardcoded English labels.',
 )
 
 assert(

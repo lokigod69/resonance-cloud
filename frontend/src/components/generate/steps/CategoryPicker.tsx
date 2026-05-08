@@ -51,7 +51,7 @@ export default function CategoryPicker({
 }: CategoryPickerProps) {
   const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
-  const { tp } = useTranslation()
+  const { t, tp } = useTranslation()
   const [mode, setMode] = useState<Mode>('idle')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [suggestCount, setSuggestCount] = useState<number>(10)
@@ -319,18 +319,18 @@ export default function CategoryPicker({
         {onQuickGenerate && state.productLane === 'card_premium' ? (
           <div className="grid w-full grid-cols-2 gap-2">
             <CategoryQuickButton
-              label="Quick Generate"
+              label={t('generate.quickGenerate')}
               primary
               onClick={() => submitQuickChoice()}
             />
             {PREMIUM_QUICK_MODE_OPTIONS.map((option) => (
               <CategoryQuickButton
                 key={option.value}
-                label={option.label}
+                label={t(option.labelKey)}
                 onClick={() => submitQuickChoice(option.value)}
               />
             ))}
-            <CategoryQuickButton label="Customize" onClick={handleGenerateDeck} />
+            <CategoryQuickButton label={t('generate.customize')} onClick={handleGenerateDeck} />
           </div>
         ) : (
           <>
@@ -340,12 +340,12 @@ export default function CategoryPicker({
                 onClick={() => submitQuickChoice()}
               >
                 <Zap className="h-4 w-4" />
-                Quick Generate
+                {t('generate.quickGenerate')}
               </PillButton>
             )}
             <PillButton variant={onQuickGenerate ? 'secondary' : undefined} glow={!onQuickGenerate} onClick={handleGenerateDeck}>
               <Wand2 className="h-4 w-4" />
-              Customize
+              {t('generate.customize')}
             </PillButton>
           </>
         )}
