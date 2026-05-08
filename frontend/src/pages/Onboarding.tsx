@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Music, ChevronRight, Gift, Check } from 'lucide-react'
-import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
+import { BASE_LANGUAGES, type Language } from '@/lib/languages'
 import { useTranslation } from '@/hooks/useTranslation'
 
 export default function Onboarding() {
@@ -29,6 +29,20 @@ export default function Onboarding() {
   const [redeemError, setRedeemError] = useState<string | null>(null)
   const [redeemSuccess, setRedeemSuccess] = useState<{ credits: number } | null>(null)
   const [redeeming, setRedeeming] = useState(false)
+
+  function getLocalizedLanguageLabel(lang: Language) {
+    const translatedName = t(`langName.${lang.value}`)
+    return lang.nativeName === translatedName ? translatedName : `${lang.nativeName} (${translatedName})`
+  }
+
+  function getRedeemErrorMessage(error?: string) {
+    const normalizedError = error?.toLowerCase() ?? ''
+
+    if (normalizedError.includes('already redeemed')) return t('credits.errorRedeemed')
+    if (normalizedError.includes('invalid') || normalizedError.includes('inactive')) return t('credits.errorInvalid')
+
+    return t('credits.errorFailed')
+  }
 
   async function handleLanguageContinue() {
     if (!selectedLanguage || !user) return
@@ -79,13 +93,13 @@ export default function Onboarding() {
       const { data, error: rpcError } = await supabase.rpc('redeem_invite_code', { code_text: code })
       if (rpcError || !data) {
         console.error('Invite code redemption failed:', rpcError)
-        setRedeemError('Failed to redeem code. Please try again.')
+        setRedeemError(t('credits.errorFailed'))
         return
       }
 
       const result = data as { success: boolean; credits_awarded?: number; error?: string }
       if (!result.success) {
-        setRedeemError(result.error || 'Failed to redeem code.')
+        setRedeemError(getRedeemErrorMessage(result.error))
       } else {
         setRedeemSuccess({ credits: result.credits_awarded || 0 })
         setInviteCode('')
@@ -93,7 +107,7 @@ export default function Onboarding() {
       }
     } catch (error) {
       console.error('Invite code redemption failed:', error)
-      setRedeemError('Failed to redeem code. Please try again.')
+      setRedeemError(t('credits.errorFailed'))
     } finally {
       setRedeeming(false)
     }
@@ -110,8 +124,8 @@ export default function Onboarding() {
         {/* Logo */}
         <div className="text-center space-y-2">
           <Music className="h-10 w-10 text-primary mx-auto" />
-          <h1 className="text-2xl font-bold">Welcome to Resonance</h1>
-          <p className="text-muted-foreground text-sm">Let's get you set up</p>
+          <h1 className="text-2xl font-bold">{t('onboarding.welcomeTitle')}</h1>
+          <p className="text-muted-foreground text-sm">{t('onboarding.welcomeSubtitle')}</p>
         </div>
 
         {/* Step indicator */}
@@ -124,20 +138,20 @@ export default function Onboarding() {
         {step === 1 && (
           <div className="glass rounded-xl p-8 space-y-6">
             <div className="text-center space-y-2">
-              <h2 className="text-xl font-semibold">What language do you speak?</h2>
+              <h2 className="text-xl font-semibold">{t('onboarding.languageTitle')}</h2>
               <p className="text-sm text-muted-foreground">
-                This helps us create better translations for you
+                {t('onboarding.languageDescription')}
               </p>
             </div>
 
             <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
               <SelectTrigger className="h-12 bg-card border-border">
-                <SelectValue placeholder="Select your language" />
+                <SelectValue placeholder={t('onboarding.languagePlaceholder')} />
               </SelectTrigger>
               <SelectContent>
                 {BASE_LANGUAGES.map((lang) => (
                   <SelectItem key={lang.value} value={lang.value}>
-                    {getDisplayLabel(lang)}
+                    {getLocalizedLanguageLabel(lang)}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -152,7 +166,7 @@ export default function Onboarding() {
               onClick={handleLanguageContinue}
               disabled={!selectedLanguage || saving}
             >
-              {saving ? 'Saving...' : 'Continue'}
+              {saving ? t('onboarding.saving') : t('onboarding.continue')}
               <ChevronRight className="h-4 w-4 ml-2" />
             </Button>
           </div>
@@ -163,16 +177,16 @@ export default function Onboarding() {
           <div className="glass rounded-xl p-8 space-y-6">
             <div className="text-center space-y-2">
               <Gift className="h-8 w-8 text-primary mx-auto" />
-              <h2 className="text-xl font-semibold">Enter your invite code</h2>
+              <h2 className="text-xl font-semibold">{t('onboarding.inviteTitle')}</h2>
               <p className="text-sm text-muted-foreground">
-                Redeem a code to get credits for generating videos
+                {t('onboarding.inviteDescription')}
               </p>
             </div>
 
             {!redeemSuccess ? (
               <div className="space-y-3">
                 <Input
-                  placeholder="e.g. RESONANZ-TEST-001"
+                  placeholder={t('credits.placeholder')}
                   value={inviteCode}
                   onChange={(e) => setInviteCode(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleRedeemCode()}
@@ -186,7 +200,7 @@ export default function Onboarding() {
                   onClick={handleRedeemCode}
                   disabled={redeeming || !inviteCode.trim()}
                 >
-                  {redeeming ? 'Redeeming...' : 'Redeem Code'}
+                  {redeeming ? t('credits.redeeming') : t('credits.redeemButton')}
                 </Button>
               </div>
             ) : (
@@ -195,10 +209,10 @@ export default function Onboarding() {
                   <Check className="h-6 w-6 text-green-400" />
                 </div>
                 <p className="text-lg font-medium">
-                  +{redeemSuccess.credits} credits added!
+                  {t('credits.added', { count: redeemSuccess.credits })}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  You're all set to start creating
+                  {t('onboarding.successDescription')}
                 </p>
               </div>
             )}
@@ -208,7 +222,7 @@ export default function Onboarding() {
               className="w-full h-12"
               onClick={handleFinish}
             >
-              {redeemSuccess ? 'Go to Decks' : 'Skip for now'}
+              {redeemSuccess ? t('onboarding.goToDecks') : t('onboarding.skipForNow')}
               <ChevronRight className="h-4 w-4 ml-2" />
             </Button>
           </div>

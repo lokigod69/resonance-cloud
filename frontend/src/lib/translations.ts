@@ -114,6 +114,20 @@ export const translations: Record<Locale, Record<string, string>> = {
     'error.profileFailed': 'Profile failed to load',
     'error.somethingWrong': 'Something went wrong',
 
+    // ── Onboarding ──
+    'onboarding.welcomeTitle': 'Welcome to Resonance',
+    'onboarding.welcomeSubtitle': 'Let\'s get you set up',
+    'onboarding.languageTitle': 'What language do you speak?',
+    'onboarding.languageDescription': 'This helps us create better translations for you',
+    'onboarding.languagePlaceholder': 'Select your language',
+    'onboarding.saving': 'Saving...',
+    'onboarding.continue': 'Continue',
+    'onboarding.inviteTitle': 'Enter your invite code',
+    'onboarding.inviteDescription': 'Redeem a code to get credits for generating videos',
+    'onboarding.successDescription': 'You\'re all set to start creating',
+    'onboarding.goToDecks': 'Go to Decks',
+    'onboarding.skipForNow': 'Skip for now',
+
     // ── Dashboard ──
     'dashboard.welcome': 'Welcome',
     'dashboard.welcomeUser': 'Welcome, {name}',
@@ -577,6 +591,20 @@ export const translations: Record<Locale, Record<string, string>> = {
     'error.profileFailed': 'Profil konnte nicht geladen werden',
     'error.somethingWrong': 'Etwas ist schiefgelaufen',
 
+    // ── Onboarding ──
+    'onboarding.welcomeTitle': 'Willkommen bei Resonance',
+    'onboarding.welcomeSubtitle': 'Lass uns dein Profil einrichten',
+    'onboarding.languageTitle': 'Was ist deine Muttersprache?',
+    'onboarding.languageDescription': 'Damit passen wir Resonance besser an dich an',
+    'onboarding.languagePlaceholder': 'Sprache wählen',
+    'onboarding.saving': 'Wird gespeichert...',
+    'onboarding.continue': 'Weiter',
+    'onboarding.inviteTitle': 'Einladungscode eingeben',
+    'onboarding.inviteDescription': 'Löse einen Code ein und erhalte Credits für Videos',
+    'onboarding.successDescription': 'Alles bereit zum Erstellen',
+    'onboarding.goToDecks': 'Zu Decks',
+    'onboarding.skipForNow': 'Vorerst überspringen',
+
     // ── Dashboard ──
     'dashboard.welcome': 'Willkommen',
     'dashboard.welcomeUser': 'Willkommen, {name}',
@@ -1036,6 +1064,20 @@ export const translations: Record<Locale, Record<string, string>> = {
     'error.sessionExpired': 'Session expirée',
     'error.profileFailed': 'Impossible de charger le profil',
     'error.somethingWrong': 'Une erreur est survenue',
+
+    // ── Onboarding ──
+    'onboarding.welcomeTitle': 'Bienvenue sur Resonance',
+    'onboarding.welcomeSubtitle': 'Configurons ton profil',
+    'onboarding.languageTitle': 'Quelle est ta langue maternelle ?',
+    'onboarding.languageDescription': 'Cela nous aide à mieux adapter les traductions',
+    'onboarding.languagePlaceholder': 'Choisis ta langue',
+    'onboarding.saving': 'Enregistrement...',
+    'onboarding.continue': 'Continuer',
+    'onboarding.inviteTitle': 'Entre ton code d\'invitation',
+    'onboarding.inviteDescription': 'Utilise un code pour obtenir des crédits vidéo',
+    'onboarding.successDescription': 'Tout est prêt pour créer',
+    'onboarding.goToDecks': 'Aller aux Decks',
+    'onboarding.skipForNow': 'Ignorer pour l\'instant',
 
     // ── Dashboard ──
     'dashboard.welcome': 'Bienvenue',
