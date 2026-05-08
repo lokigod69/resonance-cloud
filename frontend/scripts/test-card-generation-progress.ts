@@ -5,6 +5,7 @@ import {
   summarizeCardGenerationProgress,
   shouldUseGlobalQueuePosition,
 } from '../src/lib/cardGenerationProgress'
+import { translations } from '../src/lib/translations.ts'
 
 const summary = summarizeCardGenerationProgress([
   { status: 'complete' },
@@ -27,6 +28,24 @@ assert.deepEqual(summary, {
   failed: 2,
   total: 11,
 })
+
+assert.deepEqual(
+  {
+    complete: translations.de['status.complete.short'],
+    processing: translations.de['status.processing.short'],
+    queued: translations.de['status.queued.short'],
+    failed: translations.de['status.failed.short'],
+    title: translations.de['cardGenerationProgress.title'],
+  },
+  {
+    complete: 'Fertig',
+    processing: 'Lädt',
+    queued: 'Queue',
+    failed: 'Fehler',
+    title: 'Karten werden erstellt',
+  },
+  'German card progress labels must stay compact enough for mobile chips',
+)
 
 assert.equal(
   shouldUseGlobalQueuePosition({ status: 'generating', deck_type: 'card' }),

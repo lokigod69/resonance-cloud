@@ -114,6 +114,14 @@ export const translations: Record<Locale, Record<string, string>> = {
     'error.profileFailed': 'Profile failed to load',
     'error.somethingWrong': 'Something went wrong',
 
+    // ── Status ──
+    'status.complete.short': 'Complete',
+    'status.processing.short': 'Processing',
+    'status.queued.short': 'Queued',
+    'status.failed.short': 'Failed',
+    'cardGenerationProgress.title': 'Generating cards',
+    'cardGenerationProgress.ariaLabel': 'Card generation progress',
+
     // ── Onboarding ──
     'onboarding.welcomeTitle': 'Welcome to Resonance',
     'onboarding.welcomeSubtitle': 'Let\'s get you set up',
@@ -591,6 +599,14 @@ export const translations: Record<Locale, Record<string, string>> = {
     'error.profileFailed': 'Profil konnte nicht geladen werden',
     'error.somethingWrong': 'Etwas ist schiefgelaufen',
 
+    // ── Status ──
+    'status.complete.short': 'Fertig',
+    'status.processing.short': 'Lädt',
+    'status.queued.short': 'Queue',
+    'status.failed.short': 'Fehler',
+    'cardGenerationProgress.title': 'Karten werden erstellt',
+    'cardGenerationProgress.ariaLabel': 'Fortschritt der Kartenerstellung',
+
     // ── Onboarding ──
     'onboarding.welcomeTitle': 'Willkommen bei Resonance',
     'onboarding.welcomeSubtitle': 'Lass uns dein Profil einrichten',
@@ -1064,6 +1080,14 @@ export const translations: Record<Locale, Record<string, string>> = {
     'error.sessionExpired': 'Session expirée',
     'error.profileFailed': 'Impossible de charger le profil',
     'error.somethingWrong': 'Une erreur est survenue',
+
+    // ── Status ──
+    'status.complete.short': 'Terminé',
+    'status.processing.short': 'Actif',
+    'status.queued.short': 'File',
+    'status.failed.short': 'Erreur',
+    'cardGenerationProgress.title': 'Création des cartes',
+    'cardGenerationProgress.ariaLabel': 'Progression de la création des cartes',
 
     // ── Onboarding ──
     'onboarding.welcomeTitle': 'Bienvenue sur Resonance',
