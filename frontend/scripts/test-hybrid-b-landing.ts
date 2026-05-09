@@ -58,7 +58,7 @@ for (const path of [
 }
 
 assert(staticHtml.includes('Sonanda — Hybrid B Voyage'), 'Hybrid B public HTML must preserve page identity.')
-assert(staticHtml.includes('Let the language <span>sing for you.</span>'), 'Hybrid B hero copy must be current.')
+assert(staticHtml.includes('Let the language <span>flow into you.</span>'), 'Hybrid B hero copy must be current.')
 assert(
   staticHtml.includes('Bring a word to life through <span>image, video, and music.</span>'),
   'Hybrid B generation copy must include music.'
