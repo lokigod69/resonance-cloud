@@ -374,7 +374,7 @@ body {
 }
 
 .theme-popover {
-  background: var(--surface-glass-strong);
+  background: var(--popover);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   box-shadow: var(--shadow-elevated);
@@ -498,7 +498,7 @@ body {
 }
 
 [data-slot="select-content"] {
-  background: var(--surface-glass-strong);
+  background: var(--popover);
   border-color: var(--border-subtle);
   color: var(--text-primary);
   backdrop-filter: blur(22px);
