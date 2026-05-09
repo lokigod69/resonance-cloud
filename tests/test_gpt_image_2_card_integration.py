@@ -1575,7 +1575,7 @@ def test_direct_prompt_word_object_allows_target_word_and_bans_translation(monke
     assert result.gpt_image_2_card_metadata["answer_visibility"] == "target_word_embedded"
 
 
-def test_direct_prompt_non_word_object_safety_removes_target_word(monkeypatch, tmp_path):
+def test_direct_prompt_non_word_object_safety_keeps_writer_target_word(monkeypatch, tmp_path):
     from cloud_engines.image_engine import card_engine
     from cloud_engines.image_engine.layer2_direct_prompt import DirectPromptResult
 
@@ -1636,7 +1636,7 @@ def test_direct_prompt_non_word_object_safety_removes_target_word(monkeypatch, t
     result = card_engine.generate_card_image(payload)
 
     assert result.status == "success"
-    assert "viral" not in calls["prompt"].lower()
+    assert "viral" in calls["prompt"].lower()
     assert "photorealistic" not in calls["prompt"].lower()
     assert "Do not write the target word or direct answer/translation" in calls["prompt"]
 

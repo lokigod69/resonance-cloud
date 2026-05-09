@@ -237,7 +237,7 @@ def test_layer2_text_directive_follows_image_bridge_for_word_object_design():
     assert "direct answer/translation" in prompt
 
 
-def test_layer2_prompt_still_bans_target_word_except_word_object_design():
+def test_layer2_prompt_keeps_writer_scene_text_even_when_visible_text_is_banned():
     prompt = _prompt(
         word="Heimweh",
         translation="homesickness",
@@ -253,12 +253,12 @@ def test_layer2_prompt_still_bans_target_word_except_word_object_design():
         allow_target_word_in_prompt=True,
     )
 
-    assert "Heimweh" not in prompt
+    assert "Heimweh" in prompt
     assert "Heimweh" in embedded_prompt
     assert "direct answer/translation" in embedded_prompt
 
 
-def test_layer2_bridge_target_word_removal_falls_back_to_meaning():
+def test_layer2_bridge_keeps_writer_text_instead_of_removing_target_word():
     prompt = _prompt(
         word="viral",
         translation="viral",
@@ -267,9 +267,7 @@ def test_layer2_bridge_target_word_removal_falls_back_to_meaning():
         allow_target_word_in_prompt=False,
     )
 
-    assert "focused on ." not in prompt
-    assert "focused on the meaning" in prompt
-    assert "viral." not in prompt.lower().split("memory logic:", 1)[1]
+    assert "focused on viral." in prompt.lower().split("memory logic:", 1)[1]
 
 
 def test_layer2_prompt_with_bridge_style_and_long_scene_stays_under_cap():
@@ -458,22 +456,6 @@ def test_layer2_word_design_brief_sections_multisentence_context():
     assert f"Background context only: {german_context}" in prompt
     assert "Use Ein gemütlicher" not in prompt
     assert "only as background context" not in prompt
-
-
-def test_layer2_prompt_cleanup_repairs_broken_target_stripping_fragments():
-    prompt = _prompt(
-        word="viral",
-        translation="viral",
-        image_scene="A visible hook should lead into a clear scene of viral.",
-        image_bridge="Memory logic: () teaching viral.",
-        allow_target_word_in_prompt=False,
-    )
-
-    assert "lead into a clear scene of." not in prompt
-    assert "teaching ." not in prompt
-    assert "()" not in prompt
-    assert "lead into a clear scene of the meaning" in prompt
-    assert "teaching the meaning" in prompt
 
 
 def test_layer2_hard_cap_preserves_structured_mini_story():

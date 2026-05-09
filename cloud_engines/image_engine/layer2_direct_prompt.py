@@ -298,10 +298,6 @@ def sanitize_direct_prompt(
     allow_translation: bool = False,
 ) -> str:
     text = _strip_wrapping(_clean(prompt))
-    if not allow_target_word:
-        text = _remove_term(text, word)
-    if not allow_translation and _clean(translation).lower() != _clean(word).lower():
-        text = _remove_term(text, translation)
     text = _remove_photorealistic_contradiction(text, art_style)
     text = _repair_spacing(text)
     if allow_translation:
@@ -422,13 +418,6 @@ def _strip_wrapping(text: str) -> str:
     if (text.startswith('"') and text.endswith('"')) or (text.startswith("'") and text.endswith("'")):
         text = text[1:-1]
     return text.strip()
-
-
-def _remove_term(text: str, term: str) -> str:
-    term = _clean(term)
-    if not term:
-        return text
-    return re.sub(re.escape(term), "", text, flags=re.IGNORECASE)
 
 
 def _remove_photorealistic_contradiction(text: str, art_style: str) -> str:

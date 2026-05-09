@@ -114,35 +114,6 @@ def _sentence_trim(text: str, max_chars: int) -> str:
     return clipped.rstrip(" ,;:.") + "."
 
 
-def _remove_target_word(text: str, word: str, *, strip_terminal_punctuation: bool = True) -> str:
-    text = _clean(text)
-    word = _clean(word)
-    if not text or not word:
-        return text
-    patterns = {word}
-    ascii_word = (
-        word.replace("á", "a")
-        .replace("Á", "A")
-        .replace("é", "e")
-        .replace("É", "E")
-        .replace("í", "i")
-        .replace("Í", "I")
-        .replace("ó", "o")
-        .replace("Ó", "O")
-        .replace("ú", "u")
-        .replace("Ú", "U")
-    )
-    patterns.add(ascii_word)
-    for pattern_text in sorted(patterns, key=len, reverse=True):
-        if not pattern_text:
-            continue
-        text = re.sub(re.escape(pattern_text), "", text, flags=re.IGNORECASE)
-    cleaned = _clean(text)
-    if strip_terminal_punctuation:
-        return cleaned.strip(" ,;:.")
-    return cleaned
-
-
 def _repair_bridge_after_target_removal(text: str) -> str:
     text = _clean(text)
     if not text:
@@ -550,21 +521,8 @@ def build_gpt_image_2_prompt(
         word_design_brief=word_design_brief,
         mnemonic_hook=mnemonic_hook,
     )
-    scene_text = (
-        _clean(structured_scene)
-        if allow_target_word_in_prompt
-        else _remove_target_word(_clean(structured_scene), word)
-    )
-    if not allow_target_word_in_prompt:
-        scene_text = _repair_bridge_after_target_removal(scene_text)
+    scene_text = _clean(structured_scene)
     bridge_text = _clean(image_bridge)
-    if bridge_text and not allow_target_word_in_prompt:
-        bridge_text = _remove_target_word(
-            bridge_text,
-            word,
-            strip_terminal_punctuation=False,
-        )
-        bridge_text = _repair_bridge_after_target_removal(bridge_text)
     if not scene_text:
         scene_text = _fallback_scene(translation_text)
 
