@@ -1,7 +1,7 @@
 import { FeatureCard } from './assets/FeatureCard'
 import { LanguagePills } from './assets/LanguagePills'
 import { ModalityGlyphs } from './assets/ModalityGlyphs'
-import { ResonanceInstrumentMockup } from './assets/ResonanceInstrumentMockup'
+import { SonandaInstrumentMockup } from './assets/SonandaInstrumentMockup'
 import { hybridACopy, hybridAFeatures } from './copy'
 import { HybridAExperimentShell } from './HybridAExperimentShell'
 
@@ -10,7 +10,7 @@ export default function HybridALanding() {
     <HybridAExperimentShell>
       <section className="hybrid-a-hero" aria-labelledby="hybrid-a-title">
         <nav className="hybrid-a-nav" aria-label="Landing experiment">
-          <a className="hybrid-a-wordmark" href="/a" aria-label="resonance.pro home">
+          <a className="hybrid-a-wordmark" href="/a" aria-label="sonanda.studio home">
             {hybridACopy.wordmark}
           </a>
         </nav>
@@ -31,7 +31,7 @@ export default function HybridALanding() {
               </button>
             </div>
           </div>
-          <ResonanceInstrumentMockup />
+          <SonandaInstrumentMockup />
         </div>
       </section>
 
@@ -68,10 +68,10 @@ export default function HybridALanding() {
       </section>
 
       <footer className="hybrid-a-footer">
-        <a className="hybrid-a-wordmark" href="/a" aria-label="resonance.pro home">
+        <a className="hybrid-a-wordmark" href="/a" aria-label="sonanda.studio home">
           {hybridACopy.wordmark}
         </a>
-        <p>© 2026 Resonance. All rights reserved.</p>
+        <p>© 2026 Sonanda. All rights reserved.</p>
       </footer>
     </HybridAExperimentShell>
   )

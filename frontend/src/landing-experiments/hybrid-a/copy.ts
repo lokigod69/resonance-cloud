@@ -1,8 +1,8 @@
 export const hybridACopy = {
-  wordmark: 'resonance.pro',
+  wordmark: 'sonanda.studio',
   heroTitle: 'Make words resonate.',
   heroBody:
-    'Resonance is an AI-powered language-learning instrument. Every word can become image, audio, mnemonic, etymology, example, and study media — so vocabulary lands once and returns when you need it.',
+    'Sonanda is an AI-powered language-learning instrument. Every word can become image, audio, mnemonic, etymology, example, and study media — so vocabulary lands once and returns when you need it.',
   primaryCta: 'Begin',
   secondaryCta: 'How it works',
   quote: '“Words you can hear. Vocabulary you can feel.”',

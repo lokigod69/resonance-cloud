@@ -7,9 +7,9 @@ const panels = [
   { label: 'example', value: 'context line', tone: 'mint' },
 ] as const
 
-export function ResonanceInstrumentMockup() {
+export function SonandaInstrumentMockup() {
   return (
-    <div className="hybrid-a-instrument" aria-label="Abstract Resonance product mockup">
+    <div className="hybrid-a-instrument" aria-label="Abstract Sonanda product mockup">
       <div className="hybrid-a-instrument-topbar">
         <span />
         <span />

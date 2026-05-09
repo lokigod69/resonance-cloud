@@ -27,9 +27,9 @@ assert(
 
 assert(
   copy.includes('Make words resonate.')
-    && copy.includes('Resonance is an AI-powered language-learning instrument.')
-    && !new RegExp('So' + 'nanda').test(copy),
-  'Hybrid A copy must use the approved Resonance language and avoid the deprecated experiment name.'
+    && copy.includes('Sonanda is an AI-powered language-learning instrument.')
+    && !copy.includes('Reso' + 'nance'),
+  'Hybrid A copy must use Sonanda language and avoid the old product name.'
 )
 
 const expectedLanguages = [
@@ -60,7 +60,7 @@ for (const color of ['#0B0F1A', '#F5F7F8', '#5B6CFF', '#7CFFCB', '#A78BFA', '#E5
 }
 
 assert(
-  landing.includes('ResonanceInstrumentMockup')
+  landing.includes('SonandaInstrumentMockup')
     && landing.includes('FeatureCard')
     && landing.includes('LanguagePills')
     && landing.includes('hybridACopy.quote')

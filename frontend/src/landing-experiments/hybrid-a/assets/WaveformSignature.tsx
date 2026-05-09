@@ -4,7 +4,7 @@ export function WaveformSignature({ className = '' }: { className?: string }) {
       className={className}
       viewBox="0 0 520 120"
       role="img"
-      aria-label="Resonance waveform signature"
+      aria-label="Sonanda waveform signature"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
