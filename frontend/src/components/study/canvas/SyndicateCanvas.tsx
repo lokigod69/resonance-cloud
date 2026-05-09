@@ -3,6 +3,7 @@ import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 're
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { useTranslation } from '@/hooks/useTranslation'
+import { usePronunciation } from '@/hooks/usePronunciation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
@@ -458,15 +459,6 @@ function phraseClassName(text: string) {
   return 'syndicate-card-token'
 }
 
-function speakHeadword(word: CanvasModeProps['words'][number]) {
-  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return
-  const utterance = new SpeechSynthesisUtterance(word.word)
-  const lang = getStringField(word, ['target_language', 'language'])
-  if (lang) utterance.lang = lang
-  window.speechSynthesis.cancel()
-  window.speechSynthesis.speak(utterance)
-}
-
 export default function SyndicateCanvas({
   words,
   masteredWordIds,
@@ -490,6 +482,7 @@ export default function SyndicateCanvas({
   onExit,
   onContinue,
 }: CanvasModeProps) {
+  const { playWord } = usePronunciation()
   const viewport = useViewport()
   const [renderWords, setRenderWords] = useState<SyndicateWordState[]>(() => createWordStates(words, new Set(), viewport, masteredWordIds))
   const [revealedId, setRevealedId] = useState<string | null>(null)
@@ -1086,7 +1079,7 @@ export default function SyndicateCanvas({
             direction={direction}
             onClose={() => setRevealedId(null)}
             onImageError={() => handleImageError(selectedState.id)}
-            onSpeak={() => speakHeadword(selectedState.word)}
+            onSpeak={() => { void playWord(selectedState.word) }}
             autoReveal={autoReveal}
             onPass={handlePass}
             onFail={handleFail}

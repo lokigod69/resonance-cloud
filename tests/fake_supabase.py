@@ -276,6 +276,8 @@ class FakeSupabase:
             "system_settings": [],
             "profiles": [],
             "language_profiles": [],
+            "tts_assets": [],
+            "word_tts_assets": [],
         }
         self.rpc_calls: list[tuple[str, dict]] = []
         self.storage = _Storage()

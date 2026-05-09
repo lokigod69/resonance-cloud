@@ -558,6 +558,72 @@ class CardWorker:
             return False, upload_error
 
         update_data: dict[str, Any] = {"thumbnail_url": public_url}
+        tts_started = time.monotonic()
+        try:
+            from src.settings import resolve_settings
+            from src.services import pronunciation_tts
+
+            bookend_settings = resolve_settings(
+                "bookend",
+                getattr(manifest, "settings", {}) or {},
+                deck_context.get("settings") or {},
+            )
+            tts_updates = await pronunciation_tts.generate_target_headword_for_card(
+                sb=self.sb,
+                word_row=word,
+                language_code=str(getattr(manifest, "language_code", "") or "und"),
+                bookend_settings=bookend_settings,
+            )
+            update_data.update(tts_updates)
+            write_event_row(
+                stage="pending_image",
+                sub_step="tts_pronunciation",
+                status="success",
+                event_source="orchestrator",
+                word_id=word.get("id"),
+                deck_id=word.get("deck_id"),
+                user_id=word.get("user_id"),
+                job_id=word.get("generation_job_id"),
+                attempt=word.get("stage_attempts"),
+                model_provider="elevenlabs",
+                model_name=str(bookend_settings.get("model_id") or ""),
+                latency_ms=int((time.monotonic() - tts_started) * 1000),
+                metadata={
+                    "language_code": str(getattr(manifest, "language_code", "") or "und"),
+                    "voice_id": bookend_settings.get("voice_id"),
+                    "tts_audio_url": tts_updates.get("tts_audio_url"),
+                },
+            )
+        except Exception as e:
+            error_message = _bounded_error_message("tts_pronunciation", e)
+            update_data.update(
+                {
+                    "tts_audio_url": None,
+                    "tts_status": "failed",
+                    "tts_voice_id": None,
+                    "tts_generated_at": datetime.now(timezone.utc).isoformat(),
+                }
+            )
+            write_event_row(
+                stage="pending_image",
+                sub_step="tts_pronunciation",
+                status="failed",
+                event_source="orchestrator",
+                word_id=word.get("id"),
+                deck_id=word.get("deck_id"),
+                user_id=word.get("user_id"),
+                job_id=word.get("generation_job_id"),
+                attempt=word.get("stage_attempts"),
+                model_provider="elevenlabs",
+                error_message=error_message,
+                error_type=type(e).__name__,
+                latency_ms=int((time.monotonic() - tts_started) * 1000),
+            )
+            log.warning(
+                "card_worker: pronunciation TTS failed word=%s: %s",
+                word.get("id"),
+                e,
+            )
         if image_model == "gpt_image_2" and result.gpt_image_2_card_metadata:
             update_data["metadata"] = {
                 **word_metadata,

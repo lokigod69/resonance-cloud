@@ -53,6 +53,7 @@ type Word = {
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  tts_audio_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
   suno_storage_url: string | null

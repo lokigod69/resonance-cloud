@@ -42,6 +42,7 @@ import { useToast } from '@/components/Toast'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { useTranslation } from '@/hooks/useTranslation'
+import { usePronunciation } from '@/hooks/usePronunciation'
 import { getOrCreateShareLink } from '@/lib/shareWord'
 import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
 import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
@@ -78,6 +79,7 @@ type Word = {
   status: string
   video_url: string | null
   thumbnail_url: string | null
+  tts_audio_url: string | null
   video_url_b: string | null
   thumbnail_url_b: string | null
   suno_storage_url: string | null
@@ -103,6 +105,7 @@ export default function DeckViewPG() {
   const { user, refreshProfile } = useAuth()
   const { toast } = useToast()
   const { t, locale } = useTranslation()
+  const { playWord } = usePronunciation()
   const globalQueueEnabled = shouldUseGlobalQueuePosition(deck)
   const { jobsAhead, queuePaused, hasChecked, shouldShowQueue } = useQueuePosition(id, {
     enabled: !!id && globalQueueEnabled,
@@ -823,7 +826,13 @@ export default function DeckViewPG() {
                       <div className="px-6 pt-4 pb-2 flex flex-col items-center text-center bg-[#0d0d12]/70">
                         {isComplete ? (
                           <>
-                            <h2 className="text-2xl font-bold text-white long-copy">{word.word}</h2>
+                            <button
+                              type="button"
+                              onClick={() => { void playWord(word) }}
+                              className="bg-transparent border-0 p-0 text-2xl font-bold text-white long-copy cursor-pointer hover:opacity-85 transition-opacity"
+                            >
+                              {word.word}
+                            </button>
                             {word.translation && (
                               <p className="text-base text-gray-400 mt-1 long-copy">{word.translation}</p>
                             )}

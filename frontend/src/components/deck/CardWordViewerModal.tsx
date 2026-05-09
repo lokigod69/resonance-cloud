@@ -23,6 +23,7 @@ type CardViewerWord = {
   card_image_model?: string | null
   rating: number | null
   thumbnail_url: string | null
+  tts_audio_url: string | null
   metadata: Record<string, unknown> | null
 }
 

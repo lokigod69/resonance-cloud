@@ -3,6 +3,7 @@ import { Info } from 'lucide-react'
 import StarRating from '@/components/ui/StarRating'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
 import { useTranslation } from '@/hooks/useTranslation'
+import { usePronunciation } from '@/hooks/usePronunciation'
 
 /** Truncate art style at first ' — ' or ',' for clean row display */
 function formatArtStyle(value: string): string {
@@ -21,12 +22,16 @@ interface WordInfoPanelProps {
     ipa?: string | null
     rating?: number | null
     word_slug?: string | null
+    tts_audio_url?: string | null
+    target_language?: string | null
+    language?: string | null
   }
   onRate: (wordId: string, rating: number) => void
 }
 
 export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
   const { t } = useTranslation()
+  const { playWord } = usePronunciation()
   const [showMetadata, setShowMetadata] = useState(false)
   const learning = resolveCardLearningMetadata(word)
   const ipa = typeof word.ipa === 'string' ? word.ipa.trim() : ''
@@ -62,7 +67,13 @@ export default function WordInfoPanel({ word, onRate }: WordInfoPanelProps) {
         </button>
       )}
 
-      <h1 className="text-4xl font-bold long-copy">{word.word}</h1>
+      <button
+        type="button"
+        onClick={() => { void playWord(word) }}
+        className="mx-auto block bg-transparent border-0 p-0 text-4xl font-bold long-copy cursor-pointer hover:opacity-85 transition-opacity"
+      >
+        {word.word}
+      </button>
       {ipa && (
         <p className="text-sm text-muted-foreground/60 font-mono long-copy">
           /{ipa.replace(/^\/|\/$/g, '')}/
