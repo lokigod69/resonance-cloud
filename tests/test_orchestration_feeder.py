@@ -1305,6 +1305,138 @@ def test_bootstrap_skips_cancelling_word_via_transition_stage(monkeypatch, tmp_p
     assert upstream_queue.qsize() == 0
 
 
+def _bootstrap_word_target_setup(monkeypatch, tmp_path, sb, slug_value):
+    _install_module(
+        monkeypatch,
+        "src.settings",
+        save_defaults=lambda *_a, **_kw: None,
+        DEFAULT_SETTINGS={},
+    )
+    _install_module(
+        monkeypatch,
+        "src.storage",
+        create_job_workspace=lambda user_id, deck_id: tmp_path,
+    )
+    _install_module(
+        monkeypatch,
+        "src.workspace",
+        create_word_folder=lambda workspace_path, word_slug: (tmp_path / word_slug).mkdir(parents=True, exist_ok=True) or (tmp_path / word_slug),
+    )
+    _install_module(
+        monkeypatch,
+        "src.slugify",
+        slugify=lambda text: slug_value,
+        language_to_code=lambda language: "de",
+    )
+    _install_module(
+        monkeypatch,
+        "src.manifest",
+        create_manifest=lambda *_a, **_kw: (tmp_path / slug_value / "manifest.json").write_text("{}", encoding="utf-8"),
+    )
+    _install_job_runner_import_stubs(monkeypatch, sb)
+    import job_runner
+    importlib.reload(job_runner)
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"concept": {"llm_model": "deepseek/deepseek-v4-flash"}, "suno": {"enabled": False}})
+
+
+def test_bootstrap_translates_l1_phrase_input_to_target_language(monkeypatch, tmp_path):
+    """A phrase typed in base_language must be replaced with the LLM's word_target on the row."""
+    job = {
+        "id": "job-1",
+        "user_id": "u-1",
+        "deck_id": "d-1",
+        "target_language": "German",
+        "settings_override": {},
+        "art_style": None,
+        "movie_override": None,
+    }
+
+    sb = FakeSupabase()
+    sb.add_word(
+        id="w-1",
+        deck_id="d-1",
+        generation_job_id="job-1",
+        word="to milk the cow",
+        status="pending",
+        current_stage="pre_bootstrap",
+    )
+    sb._tables["profiles"].append({"id": "u-1", "base_language": "English"})
+
+    async def _run_enrichment(words, *_a, **_kw):
+        return [
+            {
+                "input_word": words[0]["word"],
+                "translation": "to milk the cow",
+                "word_target": "die Kuh melken",
+                "pos": "verb",
+            }
+        ]
+
+    _install_module(
+        monkeypatch,
+        "src.services.enrichment",
+        run_enrichment=_run_enrichment,
+    )
+    _bootstrap_word_target_setup(monkeypatch, tmp_path, sb, slug_value="die-kuh-melken")
+
+    upstream_queue = asyncio.Queue(maxsize=2)
+    _run(feeder.bootstrap_job(sb, job, upstream_queue=upstream_queue))
+
+    row = sb._tables["words"][0]
+    assert row["word"] == "die Kuh melken"
+    assert row["translation"] == "to milk the cow"
+    assert row["word_slug"] == "die-kuh-melken"
+
+
+def test_bootstrap_translates_l1_single_word_input_to_target_language(monkeypatch, tmp_path):
+    """A single L1 word is also replaced with the LLM's word_target — proves the single-word path is unaffected."""
+    job = {
+        "id": "job-1",
+        "user_id": "u-1",
+        "deck_id": "d-1",
+        "target_language": "German",
+        "settings_override": {},
+        "art_style": None,
+        "movie_override": None,
+    }
+
+    sb = FakeSupabase()
+    sb.add_word(
+        id="w-1",
+        deck_id="d-1",
+        generation_job_id="job-1",
+        word="milk",
+        status="pending",
+        current_stage="pre_bootstrap",
+    )
+    sb._tables["profiles"].append({"id": "u-1", "base_language": "English"})
+
+    async def _run_enrichment(words, *_a, **_kw):
+        return [
+            {
+                "input_word": words[0]["word"],
+                "translation": "milk",
+                "word_target": "Milch",
+                "pos": "noun",
+            }
+        ]
+
+    _install_module(
+        monkeypatch,
+        "src.services.enrichment",
+        run_enrichment=_run_enrichment,
+    )
+    _bootstrap_word_target_setup(monkeypatch, tmp_path, sb, slug_value="milch")
+
+    upstream_queue = asyncio.Queue(maxsize=2)
+    _run(feeder.bootstrap_job(sb, job, upstream_queue=upstream_queue))
+
+    row = sb._tables["words"][0]
+    assert row["word"] == "Milch"
+    assert row["translation"] == "milk"
+    assert row["word_slug"] == "milch"
+
+
 if __name__ == "__main__":
     failures = []
     for name, fn in sorted(globals().items()):

@@ -21,7 +21,7 @@ ENRICHMENT_SYSTEM_PROMPT = """You are Resonance's Quick Generate card enrichment
 
 Return only valid JSON.
 
-The user is studying {target_language}. Their interface language is {base_language}. Treat their input as a word or phrase they want to learn in {target_language}: translate it from {base_language} if needed, then enrich the target-language form. If the input looks like a typo of a real word in either language, treat it as the intended word and produce enrichment for that. Phrases (whitespace present) are fixed multi-word learning targets — preserve their structure.
+The user is studying {target_language}. Their interface language is {base_language}. Treat their input as a word or phrase they want to learn in {target_language}: translate it from {base_language} if needed, then enrich the target-language form. If the input looks like a typo of a real word in either language, treat it as the intended word and produce enrichment for that. Phrases (whitespace present) are fixed multi-word learning targets — keep them intact as a single unit (do not split or extract individual words from them), and still translate the whole phrase from {base_language} to {target_language} when the input is in {base_language}.
 
 Use real language people actually use. Avoid textbook or sterile examples. Prefer culturally authentic phrases native speakers would say over literal translations. Be honest: do not invent etymologies, cultural claims, or false sound-alikes.
 
@@ -273,7 +273,7 @@ async def run_enrichment(
     system_prompt = ENRICHMENT_SYSTEM_PROMPT.format(
         target_language=target_language, base_language=base_language
     )
-    user_prompt = f"Enrich these {target_language} vocabulary words: {word_list}"
+    user_prompt = f"Enrich these vocabulary inputs (target language: {target_language}, learner's base language: {base_language}): {word_list}"
 
     _call_start = time.monotonic()
     async with httpx.AsyncClient(timeout=60) as client:

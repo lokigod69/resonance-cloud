@@ -721,7 +721,6 @@ async def bootstrap_job(
     for word_rec in words:
         e = enrichment_map.get((word_rec.get("word") or "").lower(), {})
         original_word = word_rec.get("word") or ""
-        is_phrase = " " in original_word.strip()
 
         raw_tags = e.get("tags", "")
         tags_str = ", ".join(str(t) for t in raw_tags) if isinstance(raw_tags, list) else (raw_tags or "")
@@ -768,10 +767,7 @@ async def bootstrap_job(
         if isinstance(premium_generation_mode, dict):
             visual_card_plan["premium_generation_mode"] = premium_generation_mode
         current_metadata = word_rec.get("metadata") if isinstance(word_rec.get("metadata"), dict) else {}
-        if is_phrase:
-            raw_word_text = original_word
-        else:
-            raw_word_text = e.get("word_target", original_word)
+        raw_word_text = e.get("word_target", original_word)
         word_text_for_slug = (
             re.sub(r"\s+", " ", raw_word_text.strip())
             if isinstance(raw_word_text, str)
@@ -803,9 +799,8 @@ async def bootstrap_job(
             "example_gloss": e.get("example_gloss", "") or "",
             "tags": tags_str,
             "metadata": next_metadata,
+            "word": e.get("word_target", original_word),
         }
-        if not is_phrase:
-            update_data["word"] = e.get("word_target", original_word)
 
         def _write(u=update_data, wid=word_rec["id"]):
             return sb.table("words").update(u).eq("id", wid).execute()
@@ -847,12 +842,8 @@ async def bootstrap_job(
 
     for word_rec in words:
         original_word = word_rec.get("word") or ""
-        is_phrase = " " in original_word.strip()
         e = enrichment_map.get(original_word.lower(), {})
-        if is_phrase:
-            raw_word_text = original_word
-        else:
-            raw_word_text = e.get("word_target", original_word)
+        raw_word_text = e.get("word_target", original_word)
         word_text = re.sub(r"\s+", " ", raw_word_text.strip()) if isinstance(raw_word_text, str) else raw_word_text
         input_type = "phrase" if " " in word_text else "word"
         base_word_slug = slugify(word_text)
