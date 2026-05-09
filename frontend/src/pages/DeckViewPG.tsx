@@ -857,13 +857,11 @@ export default function DeckViewPG() {
                         ) : (
                           <>
                             <p className="text-lg font-bold text-white long-copy">{word.word}</p>
-                            <p className="text-xs text-gray-500 mt-1">
-                              {word.status === 'failed'
-                                ? isCardDeck ? t('deckview.cardFailure') : t('deckview.failed')
-                                : isPending
-                                  ? t('deckview.queued')
-                                  : isCardDeck ? t('deckview.cardCreation') : t('deckview.processing')}
-                            </p>
+                            {word.status === 'failed' && (
+                              <p className="text-xs text-gray-500 mt-1">
+                                {isCardDeck ? t('deckview.cardFailure') : t('deckview.failed')}
+                              </p>
+                            )}
                             {word.status === 'failed' && (
                               <div className="flex gap-2 mt-3">
                                 <button

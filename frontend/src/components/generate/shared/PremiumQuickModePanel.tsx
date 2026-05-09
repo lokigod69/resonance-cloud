@@ -1,4 +1,4 @@
-import { Settings, Zap } from 'lucide-react'
+import { Settings, Sparkles } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import {
   PREMIUM_QUICK_MODE_OPTIONS,
@@ -25,8 +25,8 @@ export default function PremiumQuickModePanel({
         onClick={onQuickGenerate}
         className="premium-quick-primary"
       >
-        <Zap className="h-4 w-4" />
-        <span>{t('generate.quickGenerate')}</span>
+        <Sparkles className="h-4 w-4" />
+        <span>{t('generate.primaryGenerate')}</span>
       </button>
 
       <div className="premium-quick-grid">

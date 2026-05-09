@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Loader2, RefreshCw, Wand2, X, Zap } from 'lucide-react'
+import { Loader2, RefreshCw, Sparkles, Wand2, X } from 'lucide-react'
 import PillButton from '../shared/PillButton'
 import { CATEGORY_GROUPS } from '@/data/categories'
 import { useAuth } from '@/hooks/useAuth'
@@ -70,10 +70,19 @@ export default function CategoryPicker({
     })),
   ]
 
+  const activeCategoryDisplay = (() => {
+    if (!activeCategory) return ''
+    for (const group of CATEGORY_GROUPS) {
+      const match = group.categories.find((c) => c.name === activeCategory)
+      if (match) return t(match.labelKey)
+    }
+    return activeCategory
+  })()
+
   async function fetchSuggestions(category: string) {
     const requestedCount = suggestCount
     if (!targetLanguage) {
-      setError('Pick a target language first')
+      setError(t('generate.words.pickTargetLanguageFirst'))
       return
     }
     setError(null)
@@ -82,7 +91,7 @@ export default function CategoryPicker({
     try {
       const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
       if (sessionError || !sessionData.session?.access_token) {
-        throw new Error('Your session expired. Please sign in again.')
+        throw new Error(t('generate.words.sessionExpired'))
       }
 
       const res = await fetch('/api/suggest-words', {
@@ -92,6 +101,7 @@ export default function CategoryPicker({
           Authorization: `Bearer ${sessionData.session.access_token}`,
         },
         body: JSON.stringify({
+          // category is the API contract value — keep it as the stable English `name`
           category,
           target_language: targetLanguage,
           base_language: baseLanguage,
@@ -108,11 +118,11 @@ export default function CategoryPicker({
         word: w.word,
         translation: w.translation,
       }))
-      if (next.length === 0) throw new Error('No suggestions returned')
+      if (next.length === 0) throw new Error(t('generate.words.noSuggestionsReturned'))
       setSlots(next)
       setMode('preview')
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to fetch suggestions')
+      setError(e instanceof Error ? e.message : t('generate.words.fetchSuggestionsFailed'))
       setMode('picking')
     }
   }
@@ -140,7 +150,7 @@ export default function CategoryPicker({
       .map((s) => s.word.trim())
       .filter((w) => w.length > 0)
     if (words.length === 0) {
-      setError('Add at least one word')
+      setError(t('generate.words.addAtLeastOne'))
       return
     }
     dispatch({ type: 'SET_WORDS', words })
@@ -170,7 +180,7 @@ export default function CategoryPicker({
         />
         <div className="word-count-slider-endpoints" aria-hidden="true">
           <span>1</span>
-          <span>Max 20</span>
+          <span>{t('generate.words.maxCount', { max: 20 })}</span>
         </div>
       </div>
     )
@@ -204,11 +214,23 @@ export default function CategoryPicker({
         animate={{ opacity: 1, y: 0 }}
         className="w-full space-y-5"
       >
+        {/* Top-level Back: clearly visible before the long category list */}
+        <div className="flex w-full justify-start">
+          <button
+            type="button"
+            onClick={() => setMode('idle')}
+            className="words-back-button"
+          >
+            {t('common.back')}
+          </button>
+        </div>
         {renderCountSlider()}
         <div className="w-full space-y-5 rounded-xl border border-border bg-card/40 p-4">
           {CATEGORY_GROUPS.map((group) => (
             <div key={group.label}>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3 text-center"><span aria-hidden="true">{group.emoji}</span> {group.label}</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3 text-center">
+                <span aria-hidden="true">{group.emoji}</span> {t(group.groupKey)}
+              </h3>
               <div className={`flex flex-wrap gap-2 ${group.categories.length === 1 ? 'justify-center' : ''}`}>
                 {group.categories.map((cat) => (
                   <button
@@ -217,7 +239,7 @@ export default function CategoryPicker({
                     onClick={() => fetchSuggestions(cat.name)}
                     className="inline-flex items-center gap-1 rounded-full px-4 py-2 min-h-[44px] text-sm text-foreground/80 bg-card border border-border hover:bg-accent hover:border-accent transition"
                   >
-                    <span aria-hidden="true">{cat.emoji}</span> {cat.name}
+                    <span aria-hidden="true">{cat.emoji}</span> {t(cat.labelKey)}
                   </button>
                 ))}
               </div>
@@ -225,13 +247,6 @@ export default function CategoryPicker({
           ))}
         </div>
         {error && <p className="text-xs text-red-400">{error}</p>}
-        <button
-          type="button"
-          onClick={() => setMode('idle')}
-          className="text-xs text-muted-foreground hover:text-foreground/70 transition"
-        >
-          ← Back
-        </button>
       </motion.div>
     )
   }
@@ -241,7 +256,7 @@ export default function CategoryPicker({
       <div className="flex flex-col items-center gap-3 py-10 text-muted-foreground">
         {renderCountSlider(true)}
         <Loader2 className="h-6 w-6 animate-spin" />
-        <p className="text-sm">Finding words…</p>
+        <p className="text-sm">{t('generate.words.findingWords')}</p>
       </div>
     )
   }
@@ -254,13 +269,15 @@ export default function CategoryPicker({
       className="w-full space-y-4"
     >
       <div className="flex items-center justify-between">
-        <p className="text-xs uppercase tracking-wider text-muted-foreground">{activeCategory}</p>
+        <p className="text-xs uppercase tracking-wider text-muted-foreground">
+          {activeCategoryDisplay}
+        </p>
         <button
           type="button"
           onClick={() => setMode('picking')}
           className="text-xs text-muted-foreground hover:text-foreground/70 transition"
         >
-          Change category
+          {t('generate.words.changeCategory')}
         </button>
       </div>
 
@@ -286,14 +303,14 @@ export default function CategoryPicker({
                 <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center sm:gap-2">
                   <input
                     type="text"
-                    placeholder="word"
+                    placeholder={t('generate.words.wordPlaceholder')}
                     value={slot.word}
                     onChange={(e) => updateEmptySlot(i, 'word', e.target.value)}
                     className="flex-1 min-w-0 bg-transparent text-sm text-foreground/90 placeholder:text-muted-foreground outline-none py-1"
                   />
                   <input
                     type="text"
-                    placeholder="translation"
+                    placeholder={t('generate.words.translationPlaceholder')}
                     value={slot.translation}
                     onChange={(e) => updateEmptySlot(i, 'translation', e.target.value)}
                     className="flex-1 sm:w-28 sm:flex-none min-w-0 bg-transparent text-xs text-foreground/60 placeholder:text-muted-foreground outline-none sm:text-right py-1"
@@ -304,7 +321,7 @@ export default function CategoryPicker({
                 type="button"
                 onClick={() => removeSlot(i)}
                 className="flex-shrink-0 w-11 h-11 flex items-center justify-center text-muted-foreground hover:text-foreground transition"
-                aria-label="Remove word"
+                aria-label={t('generate.words.removeWordAriaLabel')}
               >
                 <X className="h-5 w-5" />
               </button>
@@ -319,7 +336,7 @@ export default function CategoryPicker({
         {onQuickGenerate && state.productLane === 'card_premium' ? (
           <div className="grid w-full grid-cols-2 gap-2">
             <CategoryQuickButton
-              label={t('generate.quickGenerate')}
+              label={t('generate.primaryGenerate')}
               primary
               onClick={() => submitQuickChoice()}
             />
@@ -338,13 +355,18 @@ export default function CategoryPicker({
               <PillButton
                 glow
                 onClick={() => submitQuickChoice()}
+                className="px-10 py-4 text-base font-semibold"
               >
-                <Zap className="h-4 w-4" />
-                {t('generate.quickGenerate')}
+                <Sparkles className="h-5 w-5" />
+                {t('generate.primaryGenerate')}
               </PillButton>
             )}
-            <PillButton variant={onQuickGenerate ? 'secondary' : undefined} glow={!onQuickGenerate} onClick={handleGenerateDeck}>
-              <Wand2 className="h-4 w-4" />
+            <PillButton
+              variant="secondary"
+              onClick={handleGenerateDeck}
+              className="px-6 py-2.5 text-xs font-medium"
+            >
+              <Wand2 className="h-3.5 w-3.5" />
               {t('generate.customize')}
             </PillButton>
           </>
@@ -352,9 +374,10 @@ export default function CategoryPicker({
         <PillButton
           variant="secondary"
           onClick={() => activeCategory && fetchSuggestions(activeCategory)}
+          className="px-5 py-2 text-xs"
         >
-          <RefreshCw className="h-4 w-4" />
-          Regenerate All
+          <RefreshCw className="h-3.5 w-3.5" />
+          {t('generate.words.regenerateAll')}
         </PillButton>
       </div>
     </motion.div>
@@ -363,7 +386,7 @@ export default function CategoryPicker({
   function submitQuickChoice(mode?: PremiumQuickMode) {
     const words = displaySlots.map((s) => s.word.trim()).filter((w) => w.length > 0)
     if (words.length === 0) {
-      setError('Add at least one word')
+      setError(t('generate.words.addAtLeastOne'))
       return
     }
     dispatch({ type: 'SET_WORDS', words })
@@ -395,7 +418,7 @@ function CategoryQuickButton({
           : 'border-border/60 bg-card/50 text-foreground/85 hover:border-[var(--pg-accent-teal)]/40 hover:text-foreground'
       }`}
     >
-      {primary ? <Zap className="mr-1.5 inline h-4 w-4" /> : null}
+      {primary ? <Sparkles className="mr-1.5 inline h-4 w-4" /> : null}
       {label}
     </button>
   )

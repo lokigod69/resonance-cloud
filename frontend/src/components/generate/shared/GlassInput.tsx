@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 're
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, X, Plus } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useTranslation } from '@/hooks/useTranslation'
 
 interface GlassInputProps {
   onLock: (word: string) => void
@@ -17,8 +18,10 @@ export interface GlassInputHandle {
 
 export const GlassInput = forwardRef<GlassInputHandle, GlassInputProps>(
 function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProps, ref) {
+  const { t } = useTranslation()
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
+  const hasValue = value.trim().length > 0
 
   useEffect(() => {
     if (autoFocus && inputRef.current) {
@@ -35,6 +38,8 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
   }
 
   useImperativeHandle(ref, () => ({ flush: handleSubmit }))
+
+  const addLabel = t('generate.words.addWordAriaLabel')
 
   return (
     <motion.div
@@ -54,7 +59,7 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
             handleSubmit()
           }
         }}
-        placeholder={placeholder ?? 'Type a word and press Enter'}
+        placeholder={placeholder ?? t('generate.words.manualPlaceholder')}
         disabled={disabled}
         className={cn(
           'flex-1 rounded-xl px-4 py-3 text-sm text-foreground/90 placeholder:text-muted-foreground',
@@ -68,17 +73,22 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
       <motion.button
         type="button"
         onClick={handleSubmit}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        disabled={!value.trim() || disabled}
+        aria-label={addLabel}
+        title={addLabel}
+        whileHover={hasValue ? { scale: 1.08 } : undefined}
+        whileTap={hasValue ? { scale: 0.95 } : undefined}
+        disabled={!hasValue || disabled}
         className={cn(
-          'flex h-10 w-10 shrink-0 items-center justify-center rounded-full',
-          'glass border border-border text-muted-foreground',
-          'hover:text-foreground hover:border-accent transition-colors',
-          'disabled:opacity-30 disabled:pointer-events-none'
+          'flex h-12 w-12 shrink-0 items-center justify-center rounded-full',
+          'border-2 transition-all duration-200',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4ade80]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+          hasValue && !disabled
+            ? 'bg-[#4ade80]/20 border-[#4ade80]/60 text-[#4ade80] shadow-[0_0_18px_rgba(74,222,128,0.35)] hover:bg-[#4ade80]/30 hover:border-[#4ade80]/80'
+            : 'glass border-border text-muted-foreground',
+          'disabled:opacity-40 disabled:cursor-not-allowed disabled:shadow-none'
         )}
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-5 w-5" strokeWidth={2.6} />
       </motion.button>
     </motion.div>
   )

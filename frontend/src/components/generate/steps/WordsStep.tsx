@@ -42,11 +42,11 @@ export default function WordsStep({
 
   function handleLock(word: string) {
     if (state.words.some((w) => w.toLowerCase() === word.toLowerCase())) {
-      setError('Duplicate word')
+      setError(t('generate.wordExists'))
       return
     }
     if (isFull) {
-      setError(`Maximum ${MAX_WORDS} words per deck`)
+      setError(t('generate.maxWords', { max: MAX_WORDS }))
       return
     }
     setError(null)
@@ -108,19 +108,22 @@ export default function WordsStep({
           />
         )}
 
-        {/* Word input */}
-        {inputMode === 'manual' && !isFull && <GlassInput ref={glassInputRef} onLock={handleLock} autoFocus placeholder="Type a word and press Enter" />}
-
-        {/* Back to choices: only available before any manual words are locked */}
+        {/* Back-to-picker control — placed above the input so users see it
+            before typing. Only available before any manual words are locked. */}
         {inputMode === 'manual' && wordCount === 0 && (
-          <button
-            type="button"
-            onClick={() => setInputMode('picker')}
-            className="words-back-button"
-          >
-            Back
-          </button>
+          <div className="flex w-full justify-start">
+            <button
+              type="button"
+              onClick={() => setInputMode('picker')}
+              className="words-back-button"
+            >
+              {t('common.back')}
+            </button>
+          </div>
         )}
+
+        {/* Word input */}
+        {inputMode === 'manual' && !isFull && <GlassInput ref={glassInputRef} onLock={handleLock} autoFocus />}
 
         {/* Locked words */}
         {wordCount > 0 && (
@@ -166,9 +169,13 @@ export default function WordsStep({
                 />
               ) : (
                 <>
-                  <PillButton glow onClick={handleQuickGenerate}>
-                    <Sparkles className="h-4 w-4" />
-                    Quick Generate
+                  <PillButton
+                    glow
+                    onClick={handleQuickGenerate}
+                    className="px-10 py-4 text-base font-semibold"
+                  >
+                    <Sparkles className="h-5 w-5" />
+                    {t('generate.primaryGenerate')}
                   </PillButton>
                   <PillButton
                     variant="secondary"
@@ -177,9 +184,10 @@ export default function WordsStep({
                       dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
                       onCustomize?.()
                     }}
+                    className="px-6 py-2.5 text-xs font-medium"
                   >
-                    <Wand2 className="h-4 w-4" />
-                    Customize
+                    <Wand2 className="h-3.5 w-3.5" />
+                    {t('generate.customize')}
                   </PillButton>
                 </>
               )}

@@ -583,7 +583,7 @@ export default function DeckView() {
                   </div>
                 </div>
               ) : (
-                /* Pending / Processing */
+                /* Pending / Processing — status is shown only inside the media placeholder, not duplicated under the title */
                 <div className="glass rounded-xl overflow-hidden">
                   <div className="aspect-video flex items-center justify-center bg-card px-3 text-center">
                     <span className="text-xs font-medium text-muted-foreground">
@@ -594,11 +594,6 @@ export default function DeckView() {
                   </div>
                   <div className="p-3 space-y-0.5">
                     <p className="font-semibold text-sm truncate">{word.word}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {word.status === 'pending'
-                        ? t('deckview.queued')
-                        : isCardDeck ? t('deckview.cardCreation') : t('deckview.processing')}
-                    </p>
                     {cardDiagnostic && (
                       <p className="text-[11px] text-muted-foreground/70">
                         {cardDiagnostic.label}
