@@ -1,13 +1,32 @@
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import ScrollReveal from '@/components/landing/ScrollReveal'
 import { FeatureCard } from './assets/FeatureCard'
 import { LanguagePills } from './assets/LanguagePills'
 import { ModalityGlyphs } from './assets/ModalityGlyphs'
+import { SonandaMediaShowcase } from './assets/SonandaMediaShowcase'
 import { SonandaInstrumentMockup } from './assets/SonandaInstrumentMockup'
+import { SonandaScrollStory } from './assets/SonandaScrollStory'
 import { hybridACopy, hybridAFeatures } from './copy'
 import { HybridAExperimentShell } from './HybridAExperimentShell'
 
 export default function HybridALanding() {
+  const reducedMotion = useReducedMotion()
+  const { scrollY } = useScroll()
+  const heroY = useTransform(scrollY, [0, 520], [0, -175])
+  const heroOpacity = useTransform(scrollY, [0, 420], [1, 0])
+  const mockupY = useTransform(scrollY, [0, 620], [0, 105])
+  const mockupScale = useTransform(scrollY, [0, 620], [1, 1.08])
+  const fixedMediaOpacity = useTransform(scrollY, [0, 520, 1700], [0.62, 0.36, 0.16])
+  const fixedMediaScale = useTransform(scrollY, [0, 1200], [1, 1.08])
+
   return (
     <HybridAExperimentShell>
+      <motion.div
+        className="hybrid-a-fixed-media"
+        style={reducedMotion ? undefined : { opacity: fixedMediaOpacity, scale: fixedMediaScale }}
+        aria-hidden="true"
+      />
+
       <section className="hybrid-a-hero" aria-labelledby="hybrid-a-title">
         <nav className="hybrid-a-nav" aria-label="Landing experiment">
           <a className="hybrid-a-wordmark" href="/a" aria-label="sonanda.studio home">
@@ -16,7 +35,10 @@ export default function HybridALanding() {
         </nav>
 
         <div className="hybrid-a-hero-grid">
-          <div className="hybrid-a-hero-copy">
+          <motion.div
+            className="hybrid-a-hero-copy"
+            style={reducedMotion ? undefined : { y: heroY, opacity: heroOpacity }}
+          >
             <p className="hybrid-a-kicker">Precision memory instrument</p>
             <h1 id="hybrid-a-title">
               Make words resonate<span>.</span>
@@ -30,41 +52,57 @@ export default function HybridALanding() {
                 {hybridACopy.secondaryCta}
               </button>
             </div>
-          </div>
-          <SonandaInstrumentMockup />
+          </motion.div>
+          <motion.div
+            className="hybrid-a-hero-instrument-wrap"
+            style={reducedMotion ? undefined : { y: mockupY, scale: mockupScale }}
+          >
+            <SonandaInstrumentMockup />
+          </motion.div>
         </div>
       </section>
 
+      <SonandaMediaShowcase />
+      <SonandaScrollStory />
+
       <section className="hybrid-a-section" aria-labelledby="hybrid-a-instrument-heading">
-        <div className="hybrid-a-section-heading">
+        <ScrollReveal className="hybrid-a-section-heading" direction="blur">
           <p>the instrument</p>
           <h2 id="hybrid-a-instrument-heading">A focused loop for making vocabulary available.</h2>
-        </div>
+        </ScrollReveal>
         <div className="hybrid-a-feature-grid">
           {hybridAFeatures.map((feature, index) => (
-            <FeatureCard key={feature.title} index={index + 1} title={feature.title} body={feature.body} />
+            <ScrollReveal key={feature.title} delay={index * 0.08}>
+              <FeatureCard index={index + 1} title={feature.title} body={feature.body} />
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
       <section className="hybrid-a-section hybrid-a-surfaces-section" aria-labelledby="hybrid-a-surfaces-heading">
-        <div className="hybrid-a-section-heading">
+        <ScrollReveal className="hybrid-a-section-heading" direction="blur">
           <p>product surfaces</p>
           <h2 id="hybrid-a-surfaces-heading">Cards, sound, speech, and study modes in one studio system.</h2>
-        </div>
-        <ModalityGlyphs />
+        </ScrollReveal>
+        <ScrollReveal delay={0.08}>
+          <ModalityGlyphs />
+        </ScrollReveal>
       </section>
 
       <section className="hybrid-a-section hybrid-a-language-section" aria-labelledby="hybrid-a-languages-heading">
-        <div className="hybrid-a-section-heading">
+        <ScrollReveal className="hybrid-a-section-heading" direction="blur">
           <p>languages supported</p>
           <h2 id="hybrid-a-languages-heading">Built for multilingual study.</h2>
-        </div>
-        <LanguagePills />
+        </ScrollReveal>
+        <ScrollReveal delay={0.08}>
+          <LanguagePills />
+        </ScrollReveal>
       </section>
 
       <section className="hybrid-a-quote-section" aria-label="Editorial quote">
-        <blockquote>{hybridACopy.quote}</blockquote>
+        <ScrollReveal direction="blur">
+          <blockquote>{hybridACopy.quote}</blockquote>
+        </ScrollReveal>
       </section>
 
       <footer className="hybrid-a-footer">

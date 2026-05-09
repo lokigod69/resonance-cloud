@@ -17,6 +17,7 @@ const app = read('src/App.tsx')
 const copy = read('src/landing-experiments/hybrid-a/copy.ts')
 const css = read('src/landing-experiments/hybrid-a/hybridA.css')
 const landing = read('src/landing-experiments/hybrid-a/HybridALanding.tsx')
+const mediaShowcase = read('src/landing-experiments/hybrid-a/assets/SonandaMediaShowcase.tsx')
 
 assert(
   app.includes("import HybridALanding from '@/landing-experiments/hybrid-a/HybridALanding'")
@@ -63,9 +64,35 @@ assert(
   landing.includes('SonandaInstrumentMockup')
     && landing.includes('FeatureCard')
     && landing.includes('LanguagePills')
+    && landing.includes('SonandaMediaShowcase')
+    && landing.includes('SonandaScrollStory')
     && landing.includes('hybridACopy.quote')
     && copy.includes('Words you can hear. Vocabulary you can feel.'),
   'Hybrid A landing must render the reusable visual asset components and quote.'
+)
+
+assert(
+  landing.includes("from 'framer-motion'")
+    && landing.includes('useScroll')
+    && landing.includes('useTransform')
+    && landing.includes('useReducedMotion'),
+  'Hybrid A must include route-local framer-motion scroll parallax.'
+)
+
+assert(
+  mediaShowcase.includes("DEMO_WORDS")
+    && mediaShowcase.includes('videoUrl')
+    && mediaShowcase.includes('thumbnail')
+    && mediaShowcase.includes('<video'),
+  'Hybrid A media showcase must reuse existing Supabase-backed landing thumbnails and videos.'
+)
+
+assert(
+  css.includes('.hybrid-a-fixed-media')
+    && css.includes('.hybrid-a-scroll-story')
+    && css.includes('.hybrid-a-media-reel')
+    && css.includes('position: sticky'),
+  'Hybrid A CSS must include fixed atmosphere, sticky scroll story, and media reel styles.'
 )
 
 for (const asset of [
