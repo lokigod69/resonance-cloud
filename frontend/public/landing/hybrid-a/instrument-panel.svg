@@ -1,0 +1,37 @@
+<svg viewBox="0 0 960 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="640" rx="8" fill="#0B0F1A"/>
+  <circle cx="730" cy="115" r="260" fill="#A78BFA" opacity="0.16"/>
+  <circle cx="245" cy="110" r="220" fill="#5B6CFF" opacity="0.11"/>
+  <path d="M0 58H960" stroke="#E5C07B" opacity="0.25"/>
+  <g opacity="0.08" stroke="#F5F7F8">
+    <path d="M0 120H960M0 184H960M0 248H960M0 312H960M0 376H960M0 440H960M0 504H960M0 568H960"/>
+    <path d="M80 58V640M160 58V640M240 58V640M320 58V640M400 58V640M480 58V640M560 58V640M640 58V640M720 58V640M800 58V640M880 58V640"/>
+  </g>
+  <circle cx="36" cy="30" r="4" fill="#F5F7F8" opacity="0.35"/>
+  <circle cx="54" cy="30" r="4" fill="#F5F7F8" opacity="0.25"/>
+  <circle cx="72" cy="30" r="4" fill="#F5F7F8" opacity="0.18"/>
+  <text x="768" y="35" fill="#F5F7F8" opacity="0.46" font-family="Inter, Arial, sans-serif" font-size="12" letter-spacing="2">DECK SYNTHESIS</text>
+  <rect x="64" y="108" width="300" height="310" rx="8" fill="#F5F7F8" opacity="0.05" stroke="#F5F7F8" stroke-opacity="0.12"/>
+  <text x="88" y="338" fill="#F5F7F8" opacity="0.5" font-family="Inter, Arial, sans-serif" font-size="13" letter-spacing="2">LEXEME</text>
+  <text x="88" y="382" fill="#F5F7F8" font-family="Inter, Arial, sans-serif" font-size="50" font-weight="500">erinnern</text>
+  <text x="88" y="414" fill="#7CFFCB" font-family="Inter, Arial, sans-serif" font-size="18">to remember</text>
+  <path d="M418 276 C486 276 486 206 540 206 C600 206 596 366 656 366 C716 366 712 160 772 160 C832 160 828 292 900 292" stroke="#7CFFCB" stroke-width="18" stroke-linecap="round" opacity="0.1"/>
+  <path d="M418 276 C486 276 486 206 540 206 C600 206 596 366 656 366 C716 366 712 160 772 160 C832 160 828 292 900 292" stroke="#7CFFCB" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="540" cy="206" r="6" fill="#7CFFCB"/>
+  <circle cx="772" cy="160" r="6" fill="#7CFFCB"/>
+  <circle cx="656" cy="366" r="6" fill="#7CFFCB"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="64" y="468" width="190" height="104" rx="8" fill="#F5F7F8" opacity="0.05" stroke="#7CFFCB" stroke-opacity="0.5"/>
+    <text x="84" y="500" fill="#F5F7F8" opacity="0.5" font-size="12" letter-spacing="2">IMAGE</text>
+    <text x="84" y="548" fill="#F5F7F8" font-size="18" font-weight="500">visual concept</text>
+    <rect x="278" y="468" width="190" height="104" rx="8" fill="#F5F7F8" opacity="0.05" stroke="#5B6CFF" stroke-opacity="0.62"/>
+    <text x="298" y="500" fill="#F5F7F8" opacity="0.5" font-size="12" letter-spacing="2">AUDIO</text>
+    <text x="298" y="548" fill="#F5F7F8" font-size="18" font-weight="500">voice + music</text>
+    <rect x="492" y="468" width="190" height="104" rx="8" fill="#F5F7F8" opacity="0.05" stroke="#E5C07B" stroke-opacity="0.7"/>
+    <text x="512" y="500" fill="#F5F7F8" opacity="0.5" font-size="12" letter-spacing="2">MNEMONIC</text>
+    <text x="512" y="548" fill="#F5F7F8" font-size="18" font-weight="500">memory hook</text>
+    <rect x="706" y="468" width="190" height="104" rx="8" fill="#F5F7F8" opacity="0.05" stroke="#7CFFCB" stroke-opacity="0.5"/>
+    <text x="726" y="500" fill="#F5F7F8" opacity="0.5" font-size="12" letter-spacing="2">EXAMPLE</text>
+    <text x="726" y="548" fill="#F5F7F8" font-size="18" font-weight="500">context line</text>
+  </g>
+</svg>

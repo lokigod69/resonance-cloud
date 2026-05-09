@@ -47,6 +47,8 @@ import Speak from '@/pages/Speak'
 import AdminRoute from '@/components/AdminRoute'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import SharePage from '@/pages/SharePage'
+import HybridALanding from '@/landing-experiments/hybrid-a/HybridALanding'
+import LandingExperimentIndex from '@/landing-experiments/hybrid-a/LandingExperimentIndex'
 
 function ProtectedRoute() {
   const { session, loading: authLoading } = useAuth()
@@ -118,6 +120,9 @@ function AppRoutes() {
       {/* Fully public routes — no auth, no redirect */}
       <Route path="/share/:shareId" element={<SharePage />} />
       <Route path="/v/:shareId" element={<SharePage />} />
+      <Route path="/a" element={<HybridALanding />} />
+      <Route path="/landing" element={<LandingExperimentIndex />} />
+      <Route path="/landing/a" element={<HybridALanding />} />
 
       {/* Public routes */}
       <Route element={<PublicRoute />}>

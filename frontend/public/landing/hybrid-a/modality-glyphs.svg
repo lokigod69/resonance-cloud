@@ -1,0 +1,16 @@
+<svg viewBox="0 0 560 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="560" height="140" rx="8" fill="#0B0F1A"/>
+  <path d="M0 1H560" stroke="#E5C07B" opacity="0.35"/>
+  <g stroke="#7CFFCB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M54 40h42a6 6 0 0 1 6 6v36a6 6 0 0 1-6 6H54a6 6 0 0 1-6-6V46a6 6 0 0 1 6-6Zm8 13h24M62 64h30M62 75h15"/>
+    <path d="M188 40h42a6 6 0 0 1 6 6v36a6 6 0 0 1-6 6h-42a6 6 0 0 1-6-6V46a6 6 0 0 1 6-6Zm20 14 15 10-15 10V54Z"/>
+    <path d="M312 34a10 10 0 0 0-10 10v18a10 10 0 0 0 20 0V44a10 10 0 0 0-10-10Zm-22 29c0 14 9 24 22 24s22-10 22-24M312 87v13M302 100h20"/>
+    <path d="M444 40h42a6 6 0 0 1 6 6v36a6 6 0 0 1-6 6h-42a6 6 0 0 1-6-6V46a6 6 0 0 1 6-6Zm10 14h22M454 66h28M454 77h15M488 44l-10 10"/>
+  </g>
+  <g fill="#F5F7F8" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="500">
+    <text x="48" y="114">Premium Cards</text>
+    <text x="182" y="114">Video &amp; Music</text>
+    <text x="289" y="114">Speak Practice</text>
+    <text x="435" y="114">Study Modes</text>
+  </g>
+</svg>

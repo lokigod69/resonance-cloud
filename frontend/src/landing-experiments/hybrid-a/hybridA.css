@@ -1,0 +1,612 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Geist:wght@400;500;700&family=Inter:wght@400;500&display=swap');
+
+.hybrid-a-shell {
+  --hybrid-a-obsidian: #0B0F1A;
+  --hybrid-a-white: #F5F7F8;
+  --hybrid-a-indigo: #5B6CFF;
+  --hybrid-a-mint: #7CFFCB;
+  --hybrid-a-plum: #A78BFA;
+  --hybrid-a-brass: #E5C07B;
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 72% 12%, color-mix(in srgb, var(--hybrid-a-plum) 18%, transparent), transparent 31rem),
+    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--hybrid-a-indigo) 11%, transparent), transparent 28rem),
+    var(--hybrid-a-obsidian);
+  color: var(--hybrid-a-white);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.hybrid-a-shell *,
+.hybrid-a-shell *::before,
+.hybrid-a-shell *::after {
+  box-sizing: border-box;
+}
+
+.hybrid-a-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.75;
+  background:
+    linear-gradient(color-mix(in srgb, var(--hybrid-a-white) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--hybrid-a-white) 4%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at 50% 10%, black, transparent 70%);
+}
+
+.hybrid-a-shell::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: radial-gradient(circle, var(--hybrid-a-white) 1px, transparent 1px);
+  background-size: 19px 19px;
+}
+
+.hybrid-a-hero,
+.hybrid-a-section,
+.hybrid-a-quote-section,
+.hybrid-a-footer,
+.hybrid-a-index {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.hybrid-a-hero {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 1.25rem clamp(4rem, 8vw, 7rem);
+}
+
+.hybrid-a-nav {
+  position: absolute;
+  top: clamp(1.25rem, 4vw, 2rem);
+  left: clamp(1.25rem, 4vw, 2.5rem);
+  right: clamp(1.25rem, 4vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hybrid-a-wordmark {
+  color: var(--hybrid-a-white);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.hybrid-a-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 1.1fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  padding-top: 4.5rem;
+}
+
+.hybrid-a-hero-copy {
+  max-width: 41rem;
+}
+
+.hybrid-a-kicker,
+.hybrid-a-section-heading p {
+  margin: 0 0 1rem;
+  color: color-mix(in srgb, var(--hybrid-a-mint) 84%, var(--hybrid-a-white));
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hybrid-a-hero h1 {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--hybrid-a-white);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: clamp(4rem, 10vw, 8.6rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: 0;
+}
+
+.hybrid-a-hero h1 span {
+  color: var(--hybrid-a-brass);
+}
+
+.hybrid-a-hero-body {
+  max-width: 42rem;
+  margin: 1.5rem 0 0;
+  color: color-mix(in srgb, var(--hybrid-a-white) 78%, transparent);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.75;
+}
+
+.hybrid-a-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.hybrid-a-button {
+  min-height: 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--hybrid-a-white) 12%, transparent);
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.05rem;
+  color: var(--hybrid-a-white);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  background: transparent;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.hybrid-a-button:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--hybrid-a-mint) 55%, transparent);
+}
+
+.hybrid-a-button-primary {
+  border-color: color-mix(in srgb, var(--hybrid-a-mint) 38%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--hybrid-a-white) 12%, transparent), color-mix(in srgb, var(--hybrid-a-white) 4%, transparent));
+}
+
+.hybrid-a-button-secondary {
+  color: color-mix(in srgb, var(--hybrid-a-white) 74%, transparent);
+}
+
+.hybrid-a-instrument {
+  position: relative;
+  min-height: 32rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--hybrid-a-white) 12%, transparent);
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(color-mix(in srgb, var(--hybrid-a-white) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--hybrid-a-white) 5%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 78% 16%, color-mix(in srgb, var(--hybrid-a-indigo) 18%, transparent), transparent 16rem),
+    color-mix(in srgb, var(--hybrid-a-obsidian) 92%, transparent);
+  background-size: 36px 36px, 36px 36px, auto, auto;
+  box-shadow:
+    0 30px 90px color-mix(in srgb, var(--hybrid-a-obsidian) 80%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--hybrid-a-white) 14%, transparent);
+}
+
+.hybrid-a-instrument::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, color-mix(in srgb, var(--hybrid-a-white) 12%, transparent), transparent 34%);
+  opacity: 0.4;
+}
+
+.hybrid-a-instrument-topbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3.4rem;
+  padding: 0 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--hybrid-a-brass) 24%, transparent);
+}
+
+.hybrid-a-instrument-topbar > span {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--hybrid-a-white) 28%, transparent);
+}
+
+.hybrid-a-instrument-status {
+  margin-left: auto;
+  color: color-mix(in srgb, var(--hybrid-a-white) 48%, transparent);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hybrid-a-instrument-stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.7fr) minmax(12rem, 1fr);
+  gap: 1.2rem;
+  padding: clamp(1rem, 4vw, 2rem);
+}
+
+.hybrid-a-signal-map {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.signal-point {
+  position: absolute;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 999px;
+  background: var(--hybrid-a-mint);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--hybrid-a-mint) 80%, transparent);
+}
+
+.point-a {
+  top: 18%;
+  right: 18%;
+}
+
+.point-b {
+  top: 46%;
+  left: 48%;
+}
+
+.point-c {
+  right: 34%;
+  bottom: 16%;
+}
+
+.hybrid-a-word-panel,
+.hybrid-a-mini-panel,
+.hybrid-a-feature-card,
+.hybrid-a-surface,
+.hybrid-a-index-item {
+  border: 1px solid color-mix(in srgb, var(--hybrid-a-white) 11%, transparent);
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--hybrid-a-white) 5%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--hybrid-a-white) 9%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.hybrid-a-word-panel {
+  min-height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.2rem;
+}
+
+.hybrid-a-word-panel span,
+.hybrid-a-mini-panel span {
+  color: color-mix(in srgb, var(--hybrid-a-white) 50%, transparent);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hybrid-a-word-panel strong {
+  margin-top: 0.6rem;
+  color: var(--hybrid-a-white);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.hybrid-a-word-panel small {
+  color: color-mix(in srgb, var(--hybrid-a-mint) 82%, var(--hybrid-a-white));
+  font-size: 0.95rem;
+}
+
+.hybrid-a-instrument-wave {
+  align-self: center;
+  width: 100%;
+  color: var(--hybrid-a-mint);
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--hybrid-a-mint) 46%, transparent));
+}
+
+.hybrid-a-waveform-glow {
+  opacity: 0.13;
+}
+
+.hybrid-a-instrument-panels {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  padding: 0 clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 2rem);
+}
+
+.hybrid-a-mini-panel {
+  min-height: 7.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.85rem;
+}
+
+.hybrid-a-mini-panel strong {
+  color: var(--hybrid-a-white);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.hybrid-a-mini-panel[data-tone='mint'] {
+  border-bottom-color: color-mix(in srgb, var(--hybrid-a-mint) 58%, transparent);
+}
+
+.hybrid-a-mini-panel[data-tone='indigo'] {
+  border-bottom-color: color-mix(in srgb, var(--hybrid-a-indigo) 68%, transparent);
+}
+
+.hybrid-a-mini-panel[data-tone='brass'] {
+  border-bottom-color: color-mix(in srgb, var(--hybrid-a-brass) 72%, transparent);
+}
+
+.hybrid-a-section {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--hybrid-a-brass) 18%, transparent);
+}
+
+.hybrid-a-section-heading {
+  max-width: 44rem;
+}
+
+.hybrid-a-section h2,
+.hybrid-a-index h1 {
+  margin: 0;
+  color: var(--hybrid-a-white);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: clamp(2rem, 4.5vw, 4.4rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.hybrid-a-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hybrid-a-feature-card {
+  min-height: 15rem;
+  padding: 1.25rem;
+}
+
+.hybrid-a-feature-index {
+  color: var(--hybrid-a-brass);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.hybrid-a-feature-card h3 {
+  margin: 3.5rem 0 0.85rem;
+  color: var(--hybrid-a-white);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.hybrid-a-feature-card p {
+  margin: 0;
+  color: color-mix(in srgb, var(--hybrid-a-white) 66%, transparent);
+  line-height: 1.65;
+}
+
+.hybrid-a-surfaces-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.hybrid-a-surface {
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  color: var(--hybrid-a-mint);
+}
+
+.hybrid-a-surface svg {
+  width: 3.1rem;
+  height: 3.1rem;
+  opacity: 0.86;
+}
+
+.hybrid-a-surface span {
+  color: var(--hybrid-a-white);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.hybrid-a-language-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2rem;
+}
+
+.hybrid-a-language-pill {
+  border: 1px solid color-mix(in srgb, var(--hybrid-a-white) 12%, transparent);
+  border-radius: 999px;
+  padding: 0.65rem 0.85rem;
+  color: color-mix(in srgb, var(--hybrid-a-white) 78%, transparent);
+  background: color-mix(in srgb, var(--hybrid-a-white) 4%, transparent);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.hybrid-a-quote-section {
+  padding-block: clamp(4rem, 9vw, 8rem);
+  border-top: 1px solid color-mix(in srgb, var(--hybrid-a-brass) 18%, transparent);
+}
+
+.hybrid-a-quote-section blockquote {
+  max-width: 58rem;
+  margin: 0;
+  color: var(--hybrid-a-white);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2.6rem, 7vw, 6.8rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.hybrid-a-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.5rem 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--hybrid-a-brass) 22%, transparent);
+}
+
+.hybrid-a-footer p {
+  margin: 0;
+  color: color-mix(in srgb, var(--hybrid-a-white) 50%, transparent);
+  font-size: 0.86rem;
+}
+
+.hybrid-a-index {
+  min-height: 100dvh;
+  display: grid;
+  align-content: center;
+  gap: 2rem;
+  padding-block: 5rem;
+}
+
+.hybrid-a-index-panel {
+  max-width: 54rem;
+}
+
+.hybrid-a-index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hybrid-a-index-item {
+  min-height: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  justify-content: space-between;
+  padding: 1.1rem;
+  color: var(--hybrid-a-white);
+  text-decoration: none;
+}
+
+.hybrid-a-index-item span {
+  color: var(--hybrid-a-brass);
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.hybrid-a-index-item strong {
+  font-family: 'Geist', system-ui, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.hybrid-a-index-item small {
+  color: color-mix(in srgb, var(--hybrid-a-white) 55%, transparent);
+}
+
+.hybrid-a-index-item.is-active {
+  border-color: color-mix(in srgb, var(--hybrid-a-mint) 36%, transparent);
+}
+
+@media (max-width: 900px) {
+  .hybrid-a-hero {
+    min-height: auto;
+    padding-top: 6rem;
+  }
+
+  .hybrid-a-hero-grid,
+  .hybrid-a-instrument-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .hybrid-a-hero h1 {
+    max-width: 9ch;
+  }
+
+  .hybrid-a-feature-grid,
+  .hybrid-a-surfaces-grid,
+  .hybrid-a-index-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hybrid-a-instrument {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hybrid-a-hero,
+  .hybrid-a-section,
+  .hybrid-a-quote-section,
+  .hybrid-a-footer,
+  .hybrid-a-index {
+    padding-inline: 1rem;
+  }
+
+  .hybrid-a-nav {
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .hybrid-a-hero h1 {
+    font-size: clamp(3.5rem, 21vw, 5.3rem);
+  }
+
+  .hybrid-a-actions,
+  .hybrid-a-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hybrid-a-button {
+    width: 100%;
+  }
+
+  .hybrid-a-instrument-panels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hybrid-a-word-panel {
+    min-height: 12rem;
+  }
+
+  .hybrid-a-instrument-status {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hybrid-a-button {
+    transition: none;
+  }
+
+  .hybrid-a-button:hover {
+    transform: none;
+  }
+}
