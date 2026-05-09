@@ -345,8 +345,7 @@ def test_direct_prompt_template_calls_writer_and_sends_returned_prompt(monkeypat
         return DirectPromptResult(
             prompt=(
                 "Surreal 16:9 image with three visible beats: first a phone post sprouts legs, "
-                "second it races through a crowd, third everyone reacts in a wave. "
-                "Do not write the target word or direct answer/translation inside the image."
+                "second it races through a crowd, third everyone reacts in a wave."
             ),
             model="test-writer-model",
             raw_prompt="raw writer output",
@@ -395,8 +394,7 @@ def test_direct_prompt_template_calls_writer_and_sends_returned_prompt(monkeypat
     assert "three visible beats" in calls["provider_kwargs"]["prompt_text"]
     assert calls["provider_kwargs"]["prompt_text"] == (
         "Surreal 16:9 image with three visible beats: first a phone post sprouts legs, "
-        "second it races through a crowd, third everyone reacts in a wave. "
-        "Do not write the target word or direct answer/translation inside the image."
+        "second it races through a crowd, third everyone reacts in a wave."
     )
     metadata = result.gpt_image_2_card_metadata
     assert metadata is not None
@@ -427,7 +425,7 @@ def test_direct_prompt_v2_template_calls_writer_and_stores_v2_metadata(monkeypat
         return DirectPromptResult(
             prompt=(
                 "Cinematic 16:9 image with one clean visual moment: a glass vial releases a visible "
-                "trail through a cool blue room. Do not write the target word or direct answer/translation inside the image."
+                "trail through a cool blue room."
             ),
             model="test-writer-model",
             raw_prompt="raw writer output",
@@ -515,8 +513,7 @@ def test_direct_prompt_v3_template_calls_writer_and_stores_visual_craft_metadata
         return DirectPromptResult(
             prompt=(
                 "Realistic 16:9 documentary close-up of fogged glass and a half-hidden note, "
-                "low-key practical light, shallow depth of field, paper fibers sharp at the focal edge. "
-                "Do not write the target word or direct answer/translation inside the image."
+                "low-key practical light, shallow depth of field, paper fibers sharp at the focal edge."
             ),
             model="test-writer-model",
             raw_prompt="raw writer output",
@@ -1638,7 +1635,8 @@ def test_direct_prompt_non_word_object_safety_keeps_writer_target_word(monkeypat
     assert result.status == "success"
     assert "viral" in calls["prompt"].lower()
     assert "photorealistic" not in calls["prompt"].lower()
-    assert "Do not write the target word or direct answer/translation" in calls["prompt"]
+    assert "Do not write the target word" not in calls["prompt"]
+    assert "direct answer/translation" not in calls["prompt"]
 
 
 def test_card_image_model_validator_accepts_known_values_and_rejects_typos():

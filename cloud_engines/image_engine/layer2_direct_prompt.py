@@ -300,14 +300,6 @@ def sanitize_direct_prompt(
     text = _strip_wrapping(_clean(prompt))
     text = _remove_photorealistic_contradiction(text, art_style)
     text = _repair_spacing(text)
-    if allow_translation:
-        policy = "Use only short, carefully spelled visible study-card text."
-    elif allow_target_word:
-        policy = "Never write the direct answer/translation inside the image."
-    else:
-        policy = "Do not write the target word or direct answer/translation inside the image."
-    if "direct answer/translation" not in text.lower():
-        text = f"{text.rstrip(' .')}. {policy}"
     if len(text) > DIRECT_PROMPT_HARD_CAP:
         text = _trim_to_cap(text, DIRECT_PROMPT_HARD_CAP)
     return text

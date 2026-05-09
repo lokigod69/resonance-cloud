@@ -11,9 +11,6 @@ from typing import Any, Optional
 PROMPT_VERSION = "quick_generate_v1"
 PROMPT_HARD_CAP = 700
 ANSWER_VISIBILITY = "hidden"
-ANSWER_HIDDEN_SENTENCE = (
-    "Do not write the target word or direct answer/translation inside the image."
-)
 TARGET_WORD_EMBEDDED_SENTENCE = (
     "You may render the target word as instructed, but never write the direct answer/translation inside the image."
 )
@@ -239,7 +236,7 @@ def _assemble_balanced_prompt(
     image_bridge: Optional[str] = None,
     style_directive: Optional[str] = None,
     text_directive: Optional[str] = None,
-    answer_sentence: str = ANSWER_HIDDEN_SENTENCE,
+    answer_sentence: str = "",
     opening_sentence: Optional[str] = None,
 ) -> str:
     meaning = _clean(translation) or "the meaning"
@@ -291,9 +288,7 @@ def _assemble_simple_prompt(
     image_bridge: Optional[str] = None,
     style_directive: Optional[str] = None,
     text_directive: Optional[str] = None,
-    answer_sentence: str = (
-        "Do not write the target word or the direct answer/translation inside the image."
-    ),
+    answer_sentence: str = "",
     opening_sentence: Optional[str] = None,
 ) -> str:
     meaning = _clean(translation) or "the meaning"
@@ -344,7 +339,7 @@ def _assemble_cinematic_prompt(
     image_bridge: Optional[str] = None,
     style_directive: Optional[str] = None,
     text_directive: Optional[str] = None,
-    answer_sentence: str = ANSWER_HIDDEN_SENTENCE,
+    answer_sentence: str = "",
     opening_sentence: Optional[str] = None,
 ) -> str:
     meaning = _clean(translation) or "the meaning"
@@ -399,7 +394,7 @@ def _assemble_prompt(
     image_bridge: Optional[str] = None,
     style_directive: Optional[str] = None,
     text_directive: Optional[str] = None,
-    answer_sentence: str = ANSWER_HIDDEN_SENTENCE,
+    answer_sentence: str = "",
     opening_sentence: Optional[str] = None,
 ) -> str:
     if profile == RendererProfile.SIMPLE_VISUAL:
@@ -527,13 +522,7 @@ def build_gpt_image_2_prompt(
         scene_text = _fallback_scene(translation_text)
 
     profile = resolve_renderer_profile(renderer_profile, renderer_profile_source)
-    answer_sentence = (
-        TARGET_WORD_EMBEDDED_SENTENCE
-        if allow_target_word_in_prompt
-        else ANSWER_HIDDEN_SENTENCE
-    )
-    if profile == RendererProfile.SIMPLE_VISUAL and not allow_target_word_in_prompt:
-        answer_sentence = "Do not write the target word or the direct answer/translation inside the image."
+    answer_sentence = TARGET_WORD_EMBEDDED_SENTENCE if allow_target_word_in_prompt else ""
     opening_sentence = _layer2_opening(
         card_image_style,
         bool(
@@ -552,7 +541,7 @@ def build_gpt_image_2_prompt(
         text_directive=text_directive,
         answer_sentence=answer_sentence,
         opening_sentence=opening_sentence,
-    )
+    ).strip()
     if len(prompt) <= PROMPT_HARD_CAP:
         return prompt
 
@@ -566,7 +555,7 @@ def build_gpt_image_2_prompt(
             text_directive=text_directive,
             answer_sentence=answer_sentence,
             opening_sentence=opening_sentence,
-        )
+        ).strip()
         if len(compact_prompt) <= PROMPT_HARD_CAP:
             return compact_prompt
 
@@ -595,7 +584,7 @@ def build_gpt_image_2_prompt(
         text_directive=text_directive,
         answer_sentence=answer_sentence,
         opening_sentence=opening_sentence,
-    )
+    ).strip()
     if len(trimmed_prompt) <= PROMPT_HARD_CAP:
         return trimmed_prompt
     if opening_sentence:
@@ -608,7 +597,7 @@ def build_gpt_image_2_prompt(
             text_directive=text_directive,
             answer_sentence=answer_sentence,
             opening_sentence=opening_sentence,
-        )
+        ).strip()
         if len(compact_prompt) <= PROMPT_HARD_CAP:
             return compact_prompt
     return trimmed_prompt[:PROMPT_HARD_CAP].rsplit(" ", 1)[0].rstrip(" ,;:.") + "."

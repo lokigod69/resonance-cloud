@@ -64,7 +64,8 @@ def test_balanced_teaching_prompt_uses_d2_shape_and_image_scene():
     assert "Visual meaning to depict: turn left." in prompt
     assert "Scene:" in prompt
     assert "front wheels angled left" in prompt
-    assert "Do not write the target word or direct answer/translation inside the image." in prompt
+    assert "Do not write the target word" not in prompt
+    assert "direct answer/translation" not in prompt
     assert len(prompt) <= PROMPT_HARD_CAP
     for phrase in FORBIDDEN_LEAKS:
         assert phrase not in prompt
@@ -86,7 +87,8 @@ def test_simple_visual_prompt_is_meaning_only_and_omits_image_scene():
     assert "Depict this meaning clearly: to slip." in prompt
     assert "ausrutschen" not in prompt
     assert "commuter's boot skids" not in prompt
-    assert "Do not write the target word or the direct answer/translation inside the image." in prompt
+    assert "Do not write the target word" not in prompt
+    assert "direct answer/translation" not in prompt
 
 
 def test_cinematic_memory_prompt_uses_d4_shape_and_image_scene():
@@ -119,10 +121,11 @@ def test_final_prompt_uses_image_scene_not_mnemonic_as_scene_source():
     assert "Home weighs" not in prompt
 
 
-def test_all_renderer_profiles_include_answer_hidden_instruction():
+def test_all_renderer_profiles_omit_answer_hidden_instruction():
     for profile in ["simple_visual", "balanced_teaching", "cinematic_memory"]:
         prompt = _prompt(renderer_profile=profile)
-        assert "Do not write the target word" in prompt
+        assert "Do not write the target word" not in prompt
+        assert "direct answer/translation" not in prompt
         assert "No visible text, letters, captions" not in prompt
         assert "speech bubbles, thought bubbles" not in prompt
 
@@ -209,14 +212,14 @@ def test_null_mnemonic_confidence_suppresses_displayed_mnemonic():
     assert metadata["displayed_mnemonic"] is None
 
 
-def test_layer2_image_bridge_appears_between_scene_and_answer_hidden_sentence():
+def test_layer2_image_bridge_appears_after_scene_without_answer_hidden_sentence():
     image_bridge = "Memory logic: one absurd scene makes the meaning stick."
     prompt = _prompt(image_bridge=image_bridge)
 
     scene_index = prompt.index("Scene:")
     bridge_index = prompt.index(image_bridge)
-    answer_index = prompt.index("Do not write the target word")
-    assert scene_index < bridge_index < answer_index
+    assert scene_index < bridge_index
+    assert "Do not write the target word" not in prompt
 
 
 def test_layer2_text_directive_follows_image_bridge_for_word_object_design():
@@ -286,7 +289,7 @@ def test_layer2_prompt_with_bridge_style_and_long_scene_stays_under_cap():
     assert len(prompt) <= PROMPT_HARD_CAP
     assert "Memory logic:" in prompt
     assert "Style:" in prompt
-    assert "direct answer/translation" in prompt
+    assert "direct answer/translation" not in prompt
 
 
 def test_layer2_non_realistic_style_prompt_does_not_start_with_photorealistic():
