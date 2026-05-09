@@ -16,11 +16,11 @@ export default function LandingExperimentIndex() {
               <strong>Hybrid A - Studio Instrument</strong>
               <small>Active preview</small>
             </a>
-            <div className="hybrid-a-index-item" aria-disabled="true">
+            <a className="hybrid-a-index-item is-active" href="/landing/b">
               <span>B</span>
-              <strong>Placeholder</strong>
-              <small>Not built</small>
-            </div>
+              <strong>Hybrid B - Voyage Direction</strong>
+              <small>Active preview</small>
+            </a>
             <div className="hybrid-a-index-item" aria-disabled="true">
               <span>C</span>
               <strong>Placeholder</strong>

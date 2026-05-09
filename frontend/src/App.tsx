@@ -48,6 +48,7 @@ import AdminRoute from '@/components/AdminRoute'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import SharePage from '@/pages/SharePage'
 import HybridALanding from '@/landing-experiments/hybrid-a/HybridALanding'
+import HybridBLanding from '@/landing-experiments/hybrid-b/HybridBLanding'
 import LandingExperimentIndex from '@/landing-experiments/hybrid-a/LandingExperimentIndex'
 
 function ProtectedRoute() {
@@ -121,8 +122,10 @@ function AppRoutes() {
       <Route path="/share/:shareId" element={<SharePage />} />
       <Route path="/v/:shareId" element={<SharePage />} />
       <Route path="/a" element={<HybridALanding />} />
+      <Route path="/b" element={<HybridBLanding />} />
       <Route path="/landing" element={<LandingExperimentIndex />} />
       <Route path="/landing/a" element={<HybridALanding />} />
+      <Route path="/landing/b" element={<HybridBLanding />} />
 
       {/* Public routes */}
       <Route element={<PublicRoute />}>
