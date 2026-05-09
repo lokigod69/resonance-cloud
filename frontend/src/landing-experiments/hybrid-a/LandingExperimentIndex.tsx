@@ -5,7 +5,7 @@ export default function LandingExperimentIndex() {
     <HybridAExperimentShell>
       <section className="hybrid-a-index" aria-labelledby="landing-experiments-title">
         <a className="hybrid-a-wordmark" href="/a">
-          sonanda.studio
+          Sonanda
         </a>
         <div className="hybrid-a-index-panel">
           <p className="hybrid-a-kicker">landing experiments</p>

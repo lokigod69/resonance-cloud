@@ -29,8 +29,8 @@ export default function HybridALanding() {
 
       <section className="hybrid-a-hero" aria-labelledby="hybrid-a-title">
         <nav className="hybrid-a-nav" aria-label="Landing experiment">
-          <a className="hybrid-a-wordmark" href="/a" aria-label="sonanda.studio home">
-            {hybridACopy.wordmark}
+          <a className="hybrid-a-brand-lockup" href="/a" aria-label="Sonanda home">
+            <img src="/landing/hybrid-a/sonanda-logo.svg" alt={hybridACopy.wordmark} />
           </a>
         </nav>
 
@@ -106,7 +106,7 @@ export default function HybridALanding() {
       </section>
 
       <footer className="hybrid-a-footer">
-        <a className="hybrid-a-wordmark" href="/a" aria-label="sonanda.studio home">
+        <a className="hybrid-a-wordmark" href="/a" aria-label="Sonanda home">
           {hybridACopy.wordmark}
         </a>
         <p>© 2026 Sonanda. All rights reserved.</p>

@@ -2,15 +2,13 @@ import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { DEMO_WORDS } from '@/components/landing/landingData'
 
-const showcaseWords = [
+const videoWords = [
   DEMO_WORDS[0],
   DEMO_WORDS[1],
   DEMO_WORDS[3],
-  DEMO_WORDS[4],
   DEMO_WORDS[5],
-  DEMO_WORDS[7],
-  DEMO_WORDS[10],
   DEMO_WORDS[6],
+  DEMO_WORDS[7],
 ].filter(Boolean)
 
 export function SonandaMediaShowcase() {
@@ -24,7 +22,7 @@ export function SonandaMediaShowcase() {
         <h2 id="hybrid-a-media-heading">Words become visual anchors, sound, and motion.</h2>
       </div>
       <div className="hybrid-a-media-reel" aria-label="Generated vocabulary media examples">
-        {showcaseWords.map((word, index) => (
+        {videoWords.map((word, index) => (
           <motion.article
             className="hybrid-a-media-card"
             key={`${word.word}-${word.language}`}

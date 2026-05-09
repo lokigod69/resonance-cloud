@@ -1,5 +1,5 @@
 export const hybridACopy = {
-  wordmark: 'sonanda.studio',
+  wordmark: 'Sonanda',
   heroTitle: 'Make words resonate.',
   heroBody:
     'Sonanda is an AI-powered language-learning instrument. Every word can become image, audio, mnemonic, etymology, example, and study media — so vocabulary lands once and returns when you need it.',

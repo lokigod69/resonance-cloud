@@ -6,9 +6,15 @@ import { FeatureCard } from './FeatureCard'
 import { SonandaInstrumentMockup } from './SonandaInstrumentMockup'
 import { WaveformSignature } from './WaveformSignature'
 
-const storyWords = [DEMO_WORDS[0], DEMO_WORDS[1], DEMO_WORDS[3], DEMO_WORDS[4], DEMO_WORDS[5], DEMO_WORDS[7]].filter(Boolean)
+const imageWords = [
+  DEMO_WORDS[2],
+  DEMO_WORDS[8],
+  DEMO_WORDS[9],
+  DEMO_WORDS[10],
+  DEMO_WORDS[11],
+].filter(Boolean)
 
-type StoryWord = (typeof storyWords)[number]
+type StoryWord = (typeof imageWords)[number]
 
 function StoryMediaCard({ word }: { word: StoryWord }) {
   return (
@@ -43,7 +49,7 @@ export function SonandaScrollStory() {
       const rect = containerRef.current.getBoundingClientRect()
       setScrollMetrics({
         start: rect.top + window.scrollY,
-        travel: window.innerHeight * 1.85,
+        travel: window.innerHeight * 1.35,
       })
     }
 
@@ -53,17 +59,17 @@ export function SonandaScrollStory() {
   }, [])
 
   const progress = useTransform(scrollY, [scrollMetrics.start, scrollMetrics.start + scrollMetrics.travel], [0, 1])
-  const mediaScale = useTransform(progress, [0, 0.12], [0.72, 1])
-  const mediaOpacity = useTransform(progress, [0, 0.08, 0.24, 0.36], [0.45, 1, 1, 0])
-  const leftX = useTransform(progress, [0.12, 0.34], [0, -980])
-  const rightX = useTransform(progress, [0.12, 0.34], [0, 980])
-  const stageOpacity = useTransform(progress, [0.28, 0.42, 0.88, 1], [0, 1, 1, 0])
-  const stageScale = useTransform(progress, [0.28, 0.48], [0.84, 1])
-  const stageY = useTransform(progress, [0.28, 0.88], [80, -30])
-  const headingOpacity = useTransform(progress, [0.02, 0.18, 0.30], [1, 1, 0])
-  const instrumentOpacity = useTransform(progress, [0.34, 0.48], [0, 1])
-  const featureOpacity = useTransform(progress, [0.46, 0.62], [0, 1])
-  const waveformOpacity = useTransform(progress, [0.62, 0.76], [0, 1])
+  const mediaScale = useTransform(progress, [0, 0.1], [0.72, 1])
+  const mediaOpacity = useTransform(progress, [0, 0.06, 0.18, 0.28], [0.45, 1, 1, 0])
+  const leftX = useTransform(progress, [0.1, 0.28], [0, -980])
+  const rightX = useTransform(progress, [0.1, 0.28], [0, 980])
+  const stageOpacity = useTransform(progress, [0.24, 0.34, 1], [0, 1, 1])
+  const stageScale = useTransform(progress, [0.24, 0.4], [0.84, 1])
+  const stageY = useTransform(progress, [0.24, 1], [60, 0])
+  const headingOpacity = useTransform(progress, [0.02, 0.16, 0.26], [1, 1, 0])
+  const instrumentOpacity = useTransform(progress, [0.24, 0.34], [0, 1])
+  const featureOpacity = useTransform(progress, [0.34, 0.5], [0, 1])
+  const waveformOpacity = useTransform(progress, [0.5, 0.66], [0, 1])
 
   if (!isDesktop || reducedMotion === true) {
     return (
@@ -73,7 +79,7 @@ export function SonandaScrollStory() {
           <h2 id="hybrid-a-story-heading">A word becomes a field of cues.</h2>
         </div>
         <div className="hybrid-a-story-static-grid">
-          {storyWords.slice(0, 4).map((word) => (
+          {imageWords.slice(0, 4).map((word) => (
             <StoryMediaCard key={word.word} word={word} />
           ))}
         </div>
@@ -92,12 +98,12 @@ export function SonandaScrollStory() {
 
         <div className="hybrid-a-story-media-layer" aria-hidden="true">
           <motion.div className="hybrid-a-story-row" style={{ x: leftX, opacity: mediaOpacity, scale: mediaScale }}>
-            {storyWords.slice(0, 3).map((word) => (
+            {imageWords.slice(0, 3).map((word) => (
               <StoryMediaCard key={word.word} word={word} />
             ))}
           </motion.div>
           <motion.div className="hybrid-a-story-row" style={{ x: rightX, opacity: mediaOpacity, scale: mediaScale }}>
-            {storyWords.slice(3).map((word) => (
+            {imageWords.slice(3).map((word) => (
               <StoryMediaCard key={word.word} word={word} />
             ))}
           </motion.div>

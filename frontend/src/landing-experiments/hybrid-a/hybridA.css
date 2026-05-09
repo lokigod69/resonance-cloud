@@ -101,6 +101,19 @@
   text-decoration: none;
 }
 
+.hybrid-a-brand-lockup {
+  display: block;
+  width: min(18rem, 58vw);
+  text-decoration: none;
+}
+
+.hybrid-a-brand-lockup img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 44px color-mix(in srgb, var(--hybrid-a-mint) 12%, transparent));
+}
+
 .hybrid-a-hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 1.1fr);
@@ -135,16 +148,21 @@
 .hybrid-a-hero h1 {
   max-width: 11ch;
   margin: 0;
-  color: var(--hybrid-a-white);
+  color: var(--hybrid-a-mint);
   font-family: 'Geist', system-ui, sans-serif;
   font-size: clamp(4rem, 10vw, 8.6rem);
   font-weight: 700;
   line-height: 0.92;
   letter-spacing: 0;
+  background: linear-gradient(135deg, var(--hybrid-a-mint) 0%, var(--hybrid-a-indigo) 62%, var(--hybrid-a-brass) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hybrid-a-hero h1 span {
   color: var(--hybrid-a-brass);
+  -webkit-text-fill-color: var(--hybrid-a-brass);
 }
 
 .hybrid-a-hero-body {
@@ -470,7 +488,7 @@
 .hybrid-a-scroll-story {
   position: relative;
   z-index: 1;
-  height: 285vh;
+  height: 230vh;
   background:
     linear-gradient(180deg, transparent, var(--hybrid-a-obsidian) 14%, var(--hybrid-a-obsidian) 86%, transparent),
     radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--hybrid-a-indigo) 13%, transparent), transparent 34rem);

@@ -18,6 +18,13 @@ const copy = read('src/landing-experiments/hybrid-a/copy.ts')
 const css = read('src/landing-experiments/hybrid-a/hybridA.css')
 const landing = read('src/landing-experiments/hybrid-a/HybridALanding.tsx')
 const mediaShowcase = read('src/landing-experiments/hybrid-a/assets/SonandaMediaShowcase.tsx')
+const scrollStory = read('src/landing-experiments/hybrid-a/assets/SonandaScrollStory.tsx')
+
+function demoWordIndexes(source: string, arrayName: string): number[] {
+  const match = source.match(new RegExp(`const ${arrayName} = \\[([\\s\\S]*?)\\]\\.filter`))
+  if (!match) return []
+  return [...match[1].matchAll(/DEMO_WORDS\[(\d+)\]/g)].map((item) => Number(item[1]))
+}
 
 assert(
   app.includes("import HybridALanding from '@/landing-experiments/hybrid-a/HybridALanding'")
@@ -28,6 +35,8 @@ assert(
 
 assert(
   copy.includes('Make words resonate.')
+    && copy.includes("wordmark: 'Sonanda'")
+    && !copy.includes('.studio')
     && copy.includes('Sonanda is an AI-powered language-learning instrument.')
     && !copy.includes('Reso' + 'nance'),
   'Hybrid A copy must use Sonanda language and avoid the old product name.'
@@ -62,6 +71,8 @@ for (const color of ['#0B0F1A', '#F5F7F8', '#5B6CFF', '#7CFFCB', '#A78BFA', '#E5
 
 assert(
   landing.includes('SonandaInstrumentMockup')
+    && landing.includes('/landing/hybrid-a/sonanda-logo.svg')
+    && landing.includes('hybrid-a-brand-lockup')
     && landing.includes('FeatureCard')
     && landing.includes('LanguagePills')
     && landing.includes('SonandaMediaShowcase')
@@ -87,15 +98,28 @@ assert(
   'Hybrid A media showcase must reuse existing Supabase-backed landing thumbnails and videos.'
 )
 
+const videoWordIndexes = demoWordIndexes(mediaShowcase, 'videoWords')
+const imageWordIndexes = demoWordIndexes(scrollStory, 'imageWords')
+assert(videoWordIndexes.length > 0 && imageWordIndexes.length > 0, 'Hybrid A must declare explicit video and post-scroll image word sets.')
+assert(!videoWordIndexes.includes(4), 'Hybrid A video reel must not use the ferocious media slot.')
+assert(!imageWordIndexes.includes(4), 'Hybrid A post-scroll image set must not use the ferocious media slot.')
+assert(
+  videoWordIndexes.every((index) => !imageWordIndexes.includes(index)),
+  `Post-scroll image cards must use different DEMO_WORDS than video cards. video=${videoWordIndexes.join(',')} image=${imageWordIndexes.join(',')}`
+)
+
 assert(
   css.includes('.hybrid-a-fixed-media')
     && css.includes('.hybrid-a-scroll-story')
     && css.includes('.hybrid-a-media-reel')
-    && css.includes('position: sticky'),
+    && css.includes('position: sticky')
+    && css.includes('background-clip: text')
+    && css.includes('height: 230vh'),
   'Hybrid A CSS must include fixed atmosphere, sticky scroll story, and media reel styles.'
 )
 
 for (const asset of [
+  'public/landing/hybrid-a/sonanda-logo.svg',
   'public/landing/hybrid-a/instrument-panel.svg',
   'public/landing/hybrid-a/waveform-signature.svg',
   'public/landing/hybrid-a/modality-glyphs.svg',

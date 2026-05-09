@@ -1,0 +1,38 @@
+<svg viewBox="0 0 1040 280" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sonanda">
+  <defs>
+    <radialGradient id="sonandaHalo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(146 130) rotate(90) scale(118)">
+      <stop stop-color="#7CFFCB" stop-opacity="0.45"/>
+      <stop offset="0.48" stop-color="#5B6CFF" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sonandaWord" x1="250" y1="72" x2="840" y2="206" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7CFFCB"/>
+      <stop offset="0.58" stop-color="#F5F7F8"/>
+      <stop offset="1" stop-color="#5B6CFF"/>
+    </linearGradient>
+    <linearGradient id="sonandaTrace" x1="46" y1="135" x2="246" y2="135" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B6CFF"/>
+      <stop offset="0.5" stop-color="#7CFFCB"/>
+      <stop offset="1" stop-color="#E5C07B"/>
+    </linearGradient>
+    <filter id="sonandaGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1040" height="280" rx="24" fill="#0B0F1A" fill-opacity="0"/>
+  <g filter="url(#sonandaGlow)">
+    <circle cx="146" cy="130" r="118" fill="url(#sonandaHalo)"/>
+    <circle cx="146" cy="130" r="86" stroke="#5B6CFF" stroke-opacity="0.38" stroke-width="1.5"/>
+    <circle cx="146" cy="130" r="55" stroke="#7CFFCB" stroke-opacity="0.46" stroke-width="1.5"/>
+    <path d="M48 137C72 137 74 91 99 91C126 91 123 181 151 181C179 181 176 78 204 78C228 78 226 137 248 137" stroke="url(#sonandaTrace)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M74 190C108 217 184 217 218 190" stroke="#E5C07B" stroke-opacity="0.62" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="99" cy="91" r="6" fill="#7CFFCB"/>
+    <circle cx="151" cy="181" r="5" fill="#5B6CFF"/>
+    <circle cx="204" cy="78" r="6" fill="#E5C07B"/>
+  </g>
+  <text x="294" y="180" fill="url(#sonandaWord)" font-family="Geist, Inter, Arial, sans-serif" font-size="124" font-weight="700" letter-spacing="0">Sonanda</text>
+</svg>
