@@ -25,8 +25,10 @@ MAX_ERROR_MESSAGE_CHARS = 500
 DEFAULT_CARD_IMAGE_RENDER_TIMEOUT_SECONDS = 360.0
 
 
-def _card_image_storage_key(*, user_id: str, deck_id: str, word_slug: str) -> str:
-    return f"{user_id}/{deck_id}/cards/{word_slug}.png"
+def _card_image_storage_key(
+    *, user_id: str, deck_id: str, word_slug: str, word_id: str
+) -> str:
+    return f"{user_id}/{deck_id}/cards/{word_slug}_{word_id}.png"
 
 
 def _bounded_error_message(step: str, error: BaseException | str) -> str:
@@ -731,6 +733,7 @@ class CardWorker:
             user_id=user_id,
             deck_id=deck_id,
             word_slug=word_slug,
+            word_id=str(word["id"]),
         )
 
         def _upload() -> str:

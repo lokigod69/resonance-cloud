@@ -2402,15 +2402,17 @@ def test_card_storage_key_uses_unique_lab_variant_slug():
         user_id="user-1",
         deck_id="deck-1",
         word_slug="freedom-l2-001",
+        word_id="word-1",
     )
     second = _card_image_storage_key(
         user_id="user-1",
         deck_id="deck-1",
         word_slug="freedom-l2-002",
+        word_id="word-2",
     )
 
-    assert first == "user-1/deck-1/cards/freedom-l2-001.png"
-    assert second == "user-1/deck-1/cards/freedom-l2-002.png"
+    assert first == "user-1/deck-1/cards/freedom-l2-001_word-1.png"
+    assert second == "user-1/deck-1/cards/freedom-l2-002_word-2.png"
     assert first != second
 
 
@@ -2423,12 +2425,38 @@ def test_card_storage_key_is_unique_for_thirteen_same_word_infographic_variants(
             user_id="user-1",
             deck_id="deck-1",
             word_slug=slug,
+            word_id=f"word-{index:03d}",
         )
-        for slug in slugs
+        for index, slug in enumerate(slugs, start=1)
     ]
 
     assert len(keys) == 13
     assert len(set(keys)) == 13
-    assert keys[0] == "user-1/deck-1/cards/threshold-l2-safe1-001.png"
-    assert keys[-1] == "user-1/deck-1/cards/threshold-l2-safe1-013.png"
+    assert keys[0] == "user-1/deck-1/cards/threshold-l2-safe1-001_word-001.png"
+    assert keys[-1] == "user-1/deck-1/cards/threshold-l2-safe1-013_word-013.png"
     assert "user-1/deck-1/cards/threshold.png" not in keys
+
+
+def test_card_storage_key_is_unique_per_row_for_duplicate_word_slug():
+    from src.orchestration.card_worker import _card_image_storage_key
+
+    first = _card_image_storage_key(
+        user_id="user-1",
+        deck_id="deck-1",
+        word_slug="turtle",
+        word_id="00000000-0000-0000-0000-000000000001",
+    )
+    second = _card_image_storage_key(
+        user_id="user-1",
+        deck_id="deck-1",
+        word_slug="turtle",
+        word_id="00000000-0000-0000-0000-000000000002",
+    )
+
+    assert first != second
+    assert first == (
+        "user-1/deck-1/cards/turtle_00000000-0000-0000-0000-000000000001.png"
+    )
+    assert second == (
+        "user-1/deck-1/cards/turtle_00000000-0000-0000-0000-000000000002.png"
+    )
