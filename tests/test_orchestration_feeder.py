@@ -458,7 +458,7 @@ def test_bootstrap_writes_manifest_before_exposing_pending(monkeypatch, tmp_path
     import job_runner
     importlib.reload(job_runner)
 
-    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"concept": {"llm_model": "deepseek/deepseek-v4-flash"}, "suno": {"enabled": False}})
 
     original_transition = feeder.state.transition_stage
     pending_checks: list[Path] = []
@@ -615,7 +615,7 @@ def test_layer2_lab_repeated_words_get_unique_variant_slugs(monkeypatch, tmp_pat
     import job_runner
     importlib.reload(job_runner)
 
-    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"concept": {"llm_model": "deepseek/deepseek-v4-flash"}, "suno": {"enabled": False}})
 
     for current_job in jobs:
         _run(feeder.bootstrap_job(
@@ -746,7 +746,7 @@ def test_layer2_lab_same_word_infographic_variants_get_unique_slugs_and_metadata
     import job_runner
     importlib.reload(job_runner)
 
-    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"concept": {"llm_model": "deepseek/deepseek-v4-flash"}, "suno": {"enabled": False}})
 
     card_queue = asyncio.Queue(maxsize=20)
     for current_job in jobs:
@@ -900,7 +900,7 @@ def test_layer2_lab_append_runs_with_reset_indexes_do_not_collide(monkeypatch, t
     import job_runner
     importlib.reload(job_runner)
 
-    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"concept": {"llm_model": "deepseek/deepseek-v4-flash"}, "suno": {"enabled": False}})
 
     for current_job in jobs:
         _run(feeder.bootstrap_job(
@@ -1099,7 +1099,7 @@ def test_bootstrap_rolls_back_words_when_enrichment_fails(monkeypatch, tmp_path)
     import job_runner
     importlib.reload(job_runner)
 
-    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"concept": {"llm_model": "deepseek/deepseek-v4-flash"}, "suno": {"enabled": False}})
     info_logs: list[str] = []
     monkeypatch.setattr(
         feeder.log,
@@ -1189,7 +1189,7 @@ def test_bootstrap_crash_after_manifest_write_recovers_and_reruns(monkeypatch, t
     import job_runner
     importlib.reload(job_runner)
 
-    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"concept": {"llm_model": "deepseek/deepseek-v4-flash"}, "suno": {"enabled": False}})
 
     original_transition = feeder.state.transition_stage
     crashed = {"done": False}
@@ -1293,7 +1293,7 @@ def test_bootstrap_skips_cancelling_word_via_transition_stage(monkeypatch, tmp_p
     import job_runner
     importlib.reload(job_runner)
 
-    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"suno": {"enabled": False}})
+    monkeypatch.setattr(job_runner, "merge_settings", lambda *_a, **_kw: {"concept": {"llm_model": "deepseek/deepseek-v4-flash"}, "suno": {"enabled": False}})
 
     upstream_queue = asyncio.Queue(maxsize=1)
     with pytest.raises(RuntimeError, match="no words eligible for enrichment"):

@@ -686,7 +686,7 @@ async def bootstrap_job(
         base_language = "English"
 
     # Enrichment (single LLM call)
-    llm_model = merged.get("concept", {}).get("llm_model", "moonshotai/kimi-k2-0905")
+    llm_model = merged["concept"]["llm_model"]
     try:
         enrichment_results = await run_enrichment(
             words, target_language, base_language, llm_model,

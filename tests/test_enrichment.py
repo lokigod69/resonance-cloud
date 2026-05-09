@@ -41,6 +41,7 @@ def test_missing_openrouter_key_fallback_includes_gpt_image_2_fields(monkeypatch
         [{"word": "agua"}],
         target_language="Spanish",
         base_language="English",
+        llm_model="deepseek/deepseek-v4-flash",
     ))
 
     item = result[0]
@@ -338,6 +339,7 @@ class TestRunEnrichmentIntegration:
                 [{"word": "papagei"}, {"word": "sterben"}],
                 target_language="German",
                 base_language="English",
+                llm_model="deepseek/deepseek-v4-flash",
             ))
 
         # Article leak stripped, German noun capitalized.
@@ -382,6 +384,7 @@ class TestRunEnrichmentIntegration:
                     [{"word": "agua"}],
                     target_language="Spanish",
                     base_language="English",
+                    llm_model="deepseek/deepseek-v4-flash",
                 ))
 
         assert "OpenRouter enrichment request failed: status=404" in caplog.text

@@ -21,12 +21,7 @@ ENRICHMENT_SYSTEM_PROMPT = """You are Resonance's Quick Generate card enrichment
 
 Return only valid JSON.
 
-You create structured content for one vocabulary card. Given a list of vocabulary words,
-produce enrichment data for each word. The user is learning {target_language} and speaks {base_language}.
-
-Handle both directions: if the user typed a {base_language} word, figure out the {target_language} equivalent.
-
-If the input contains multiple words forming a phrase or sentence, treat the ENTIRE input as the learning target. Do NOT extract individual words from it. Set word_target to the full phrase translated into {target_language}. Translate the complete phrase, not individual words.
+The user is studying {target_language}. Their interface language is {base_language}. Treat their input as a word or phrase they want to learn in {target_language}: translate it from {base_language} if needed, then enrich the target-language form. If the input looks like a typo of a real word in either language, treat it as the intended word and produce enrichment for that. Phrases (whitespace present) are fixed multi-word learning targets — preserve their structure.
 
 Use real language people actually use. Avoid textbook or sterile examples. Prefer culturally authentic phrases native speakers would say over literal translations. Be honest: do not invent etymologies, cultural claims, or false sound-alikes.
 
@@ -267,7 +262,7 @@ async def run_enrichment(
     words: list[dict[str, Any]],
     target_language: str,
     base_language: str,
-    llm_model: str = "moonshotai/kimi-k2-0905",
+    llm_model: str,
 ) -> list[dict[str, Any]]:
     """Batch-enrich all words in a deck via OpenRouter LLM call."""
     if not OPENROUTER_API_KEY:
