@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -31,6 +31,7 @@ import StudyModeSelector from '@/pages/StudyModeSelector'
 import StudyFlashcard from '@/pages/StudyFlashcard'
 import StudyAudio from '@/pages/StudyAudio'
 import StudyCanvas from '@/pages/StudyCanvas'
+import GamesHub from '@/pages/GamesHub'
 import GenerateGO from '@/pages/GenerateGO'
 import Users from '@/pages/admin/Users'
 import Content from '@/pages/admin/Content'
@@ -51,6 +52,8 @@ import SharePage from '@/pages/SharePage'
 import HybridALanding from '@/landing-experiments/hybrid-a/HybridALanding'
 import HybridBLanding from '@/landing-experiments/hybrid-b/HybridBLanding'
 import LandingExperimentIndex from '@/landing-experiments/hybrid-a/LandingExperimentIndex'
+
+const SlicerGame = lazy(() => import('@/games/slicer/SlicerGame'))
 
 function ProtectedRoute() {
   const { session, loading: authLoading } = useAuth()
@@ -143,11 +146,20 @@ function AppRoutes() {
       <Route element={<ProtectedRoute />}>
         {/* Video player is full-screen, no layout */}
         <Route path="/deck/:id/word/:wordId" element={<VideoPlayer />} />
+        <Route
+          path="/games/slicer"
+          element={(
+            <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><ParticleSpinner preset="spirograph" size={160} /></div>}>
+              <SlicerGame />
+            </Suspense>
+          )}
+        />
 
         {/* User-facing routes — skin-aware layout */}
         {skin === 'glassy' ? (
           <Route element={<PolishGlassLayout />}>
             <Route path="/dashboard" element={<DashboardPG />} />
+            <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<DecksPG />} />
             <Route path="/generate" element={<GenerateGO />} />
             <Route path="/deck/:id" element={<DeckViewPG />} />
@@ -162,6 +174,7 @@ function AppRoutes() {
         ) : (
           <Route element={<AppLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<Decks />} />
             <Route path="/generate" element={<Generate />} />
             <Route path="/deck/:id" element={<DeckView />} />

@@ -8,6 +8,7 @@ import videoIcon from '@/assets/study-mode-icons/video.webp'
 import cardsIcon from '@/assets/study-mode-icons/cards.webp'
 import audioIcon from '@/assets/study-mode-icons/audio.webp'
 import canvasIcon from '@/assets/study-mode-icons/canvas.webp'
+import { GAMES } from '@/games/shared/registry'
 
 const STORAGE_KEY = 'resonance-study-mode'
 
@@ -34,7 +35,6 @@ export default function StudyModeSelector() {
   const { user } = useAuth()
   const { activeLanguage, setActiveLanguage } = useLanguage()
 
-  const [deckName, setDeckName] = useState<string | null>(null)
   const [allDecks, setAllDecks] = useState<{ id: string; name: string | null; target_language: string }[]>([])
   const [lastUsed, setLastUsed] = useState<string | null>(() => {
     try { return localStorage.getItem(STORAGE_KEY) } catch { return null }
@@ -54,14 +54,18 @@ export default function StudyModeSelector() {
     [allDecks],
   )
 
+  const selectedDeck = useMemo(
+    () => deckParam ? allDecks.find((item) => item.id === deckParam) ?? null : null,
+    [deckParam, allDecks],
+  )
+
+  const deckName = selectedDeck?.name ?? null
+
   useEffect(() => {
-    if (!deckParam || allDecks.length === 0) return
-    const deck = allDecks.find((item) => item.id === deckParam)
-    if (deck) {
-      setDeckName(deck.name)
-      if (deck.target_language) setActiveLanguage(deck.target_language)
+    if (selectedDeck?.target_language) {
+      setActiveLanguage(selectedDeck.target_language)
     }
-  }, [deckParam, allDecks, setActiveLanguage])
+  }, [selectedDeck?.target_language, setActiveLanguage])
 
   useEffect(() => {
     if (availableLanguages.length === 0) return
@@ -76,6 +80,13 @@ export default function StudyModeSelector() {
     setLastUsed(mode.key)
     const params = deckParam ? `?deck=${deckParam}` : ''
     navigate(`${mode.route}${params}`)
+  }
+
+  function selectGame(route: string) {
+    const params = new URLSearchParams()
+    params.set('returnTo', '/study')
+    if (activeLanguage) params.set('lang', activeLanguage)
+    navigate(`${route}?${params.toString()}`)
   }
 
   return (
@@ -139,6 +150,36 @@ export default function StudyModeSelector() {
               </button>
             )
           })}
+        </div>
+
+        <div className="mt-10 border-t border-border/60 pt-8">
+          <h2 className="mb-4 text-center text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            {t('study.games.section')}
+          </h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {GAMES.filter((game) => game.enabled).map((game) => (
+              <button
+                key={game.id}
+                type="button"
+                onClick={() => selectGame(game.route)}
+                className="study-mode-card relative flex min-h-[180px] flex-col items-center justify-center gap-4 rounded-2xl border border-border bg-card p-6 text-center backdrop-blur transition-all duration-200 hover:scale-[1.03] hover:border-accent hover:bg-accent active:scale-[0.98]"
+              >
+                <img
+                  src={game.iconSrc}
+                  alt={t(game.titleKey)}
+                  width={88}
+                  height={88}
+                  loading="eager"
+                  decoding="sync"
+                  className="h-[88px] w-[88px] rounded-2xl object-contain shadow-[0_0_24px_rgba(255,107,53,0.18)]"
+                />
+                <div>
+                  <h3 className="text-lg font-semibold">{t(game.titleKey)}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{t(game.subtitleKey)}</p>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

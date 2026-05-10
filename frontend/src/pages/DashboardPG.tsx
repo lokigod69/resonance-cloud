@@ -13,6 +13,7 @@ import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDe
 import WordLibrary from '@/components/dashboard/WordLibrary'
 import { QUOTES } from '@/data/quotes'
 import type { Locale } from '@/lib/translations'
+import gamesIcon from '@/assets/study-mode-icons/games.webp'
 
 type Deck = {
   id: string
@@ -324,6 +325,24 @@ export default function DashboardPG() {
                 />
               )}
             </div>
+
+            <button
+              type="button"
+              onClick={() => navigate(`/games${activeLanguage ? `?lang=${encodeURIComponent(activeLanguage)}` : ''}`)}
+              className="theme-panel mt-4 flex w-full items-center gap-4 rounded-xl p-4 text-left transition-colors hover:border-[var(--accent)]"
+            >
+              <img
+                src={gamesIcon}
+                alt=""
+                width={56}
+                height={56}
+                className="h-14 w-14 rounded-xl object-contain"
+              />
+              <span className="min-w-0">
+                <span className="block font-semibold text-[var(--text-primary)]">{t('dashboard.games.tile.title')}</span>
+                <span className="mt-1 block text-sm text-[var(--text-secondary)]">{t('dashboard.games.tile.subtitle')}</span>
+              </span>
+            </button>
 
             {/* Generate button */}
             <button

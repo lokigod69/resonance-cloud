@@ -222,6 +222,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'dashboard.viewStack': 'Stack',
     'dashboard.viewGrid': 'Grid',
     'dashboard.viewOrbs': 'Orbs',
+    'dashboard.games.tile.title': 'Games',
+    'dashboard.games.tile.subtitle': 'Slice through your active deck in a full-screen arcade review.',
 
     // ── Generate ──
     'generate.stepLanguage': 'Language',
@@ -371,6 +373,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'study.mode.audio.desc': 'Listen to the song, recall the word',
     'study.mode.canvas': 'Canvas',
     'study.mode.canvas.desc': 'Words floating in a themed world. Click to reveal.',
+    'study.games.section': 'Games',
+    'games.slicer.title': 'Lexicon Slice',
+    'games.slicer.subtitle': 'Arcade review with falling cards, audio prompts, and combo scoring.',
     'study.comingSoon': 'Coming soon',
     'study.lastUsed': 'Last used',
     'study.studyingDeck': 'Studying: {name}',
@@ -1077,6 +1082,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'dashboard.viewStack': 'Stapel',
     'dashboard.viewGrid': 'Raster',
     'dashboard.viewOrbs': 'Orbs',
+    'dashboard.games.tile.title': 'Spiele',
+    'dashboard.games.tile.subtitle': 'Schneide dich im Vollbild durch dein aktives Deck.',
 
     // ── Queue ──
     'queue.checking': 'Deine Warteschlangenposition wird ermittelt…',
@@ -1161,6 +1168,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'study.mode.audio.desc': 'Höre den Song, erinnere das Wort',
     'study.mode.canvas': 'Canvas',
     'study.mode.canvas.desc': 'Wörter schweben in einer thematischen Welt. Klicken zum Aufdecken.',
+    'study.games.section': 'Spiele',
+    'games.slicer.title': 'Lexicon Slice',
+    'games.slicer.subtitle': 'Arcade-Wiederholung mit fallenden Karten, Audioprompts und Combo-Wertung.',
     'study.comingSoon': 'Kommt bald',
     'study.lastUsed': 'Zuletzt verwendet',
     'study.studyingDeck': 'Lernen: {name}',
@@ -1911,6 +1921,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'dashboard.viewStack': 'Pile',
     'dashboard.viewGrid': 'Grille',
     'dashboard.viewOrbs': 'Orbs',
+    'dashboard.games.tile.title': 'Jeux',
+    'dashboard.games.tile.subtitle': 'Revise ton deck actif en plein ecran avec un mode arcade.',
 
     // ── Queue ──
     'queue.checking': 'Vérification de votre position…',
@@ -2085,6 +2097,9 @@ export const translations: Record<Locale, Record<string, string>> = {
     'study.mode.audio.desc': 'Écoute la chanson, rappelle le mot',
     'study.mode.canvas': 'Canevas',
     'study.mode.canvas.desc': 'Mots flottants dans un monde thématique. Cliquer pour révéler.',
+    'study.games.section': 'Jeux',
+    'games.slicer.title': 'Lexicon Slice',
+    'games.slicer.subtitle': 'Revision arcade avec cartes tombantes, prompts audio et combos.',
     'study.comingSoon': 'Bientôt disponible',
     'study.lastUsed': 'Dernier utilisé',
     'study.studyingDeck': 'Révision : {name}',
