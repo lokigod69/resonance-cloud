@@ -3,11 +3,14 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import type PhaserRuntime from 'phaser'
 import { createGameEventBus } from '../shared/GameEventBus'
 import { GameShell } from '../shared/GameShell'
+import { useGameDeck } from '../shared/useGameDeck'
 import { useIOSAudioPrimer } from '../shared/useIOSAudioPrimer'
 import { usePhaserMount } from '../shared/usePhaserMount'
 import { useRecordGameResult } from '../shared/useRecordGameResult'
+import { useAuth } from '@/hooks/useAuth'
 import type { GameEvent } from '../shared/gameEvents'
 import type { DeckDefinition, SessionStats } from './engine/types'
+import { wordsToSlicerDeck } from './adapters/deckAdapter'
 import { SlicerScene } from './scene/SlicerScene'
 import { DeckPicker, type SlicerDeckChoice } from './components/DeckPicker'
 import { PauseOverlay } from './components/PauseOverlay'
@@ -38,6 +41,7 @@ export default function SlicerGame() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const returnTo = searchParams.get('returnTo') || '/games'
+  const { profile } = useAuth()
   const bus = useMemo(() => createGameEventBus(), [])
   const recordResult = useRecordGameResult()
   const { primeOnGesture } = useIOSAudioPrimer()
@@ -48,14 +52,31 @@ export default function SlicerGame() {
   const [paused, setPaused] = useState(false)
   const [roundLabel, setRoundLabel] = useState<string | null>(null)
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null)
+  const [restartNonce, setRestartNonce] = useState(0)
 
-  const [slicerDeck] = useState<DeckDefinition | null>(null)
+  const { rows, loading: deckLoading, error: deckError } = useGameDeck(
+    selectedDeck ? 'slicer' : '',
+    selectedDeck?.id ?? null,
+    selectedDeck?.targetLanguage ?? null,
+  )
+
+  const slicerDeck = useMemo<DeckDefinition | null>(() => {
+    if (!selectedDeck || rows.length === 0) return null
+    return wordsToSlicerDeck(rows, {
+      mode: selectedDeck.mode,
+      targetLanguage: selectedDeck.targetLanguage,
+      baseLanguage: profile?.base_language ?? 'en',
+      deckId: selectedDeck.id,
+      deckTitle: selectedDeck.title,
+    })
+  }, [profile?.base_language, rows, selectedDeck])
 
   const handleExit = useCallback(() => {
     navigate(returnTo)
   }, [navigate, returnTo])
 
   const buildConfig = useCallback((Phaser: typeof PhaserRuntime) => {
+    void restartNonce
     if (!slicerDeck) return null
     return {
       type: Phaser.AUTO,
@@ -75,7 +96,7 @@ export default function SlicerGame() {
         antialias: true,
       },
     } satisfies Phaser.Types.Core.GameConfig
-  }, [slicerDeck])
+  }, [restartNonce, slicerDeck])
 
   const { gameRef, ready } = usePhaserMount({
     parentRef: phaserHostRef,
@@ -125,6 +146,7 @@ export default function SlicerGame() {
 
   const restartSession = useCallback(() => {
     if (!selectedDeck) return
+    setRestartNonce((current) => current + 1)
     setSessionStats(null)
     setRoundLabel(null)
     setPaused(false)
@@ -153,6 +175,16 @@ export default function SlicerGame() {
             onResume={resumeScene}
             onExit={handleExit}
           />
+        )}
+        {selectedDeck && deckLoading && (
+          <div className="pointer-events-auto absolute inset-x-4 top-24 z-40 mx-auto max-w-sm rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/55 p-4 text-center text-[#ffd2a5]">
+            Loading deck...
+          </div>
+        )}
+        {selectedDeck && deckError && (
+          <div className="pointer-events-auto absolute inset-x-4 top-24 z-40 mx-auto max-w-sm rounded-lg border border-red-400/30 bg-red-950/50 p-4 text-center text-red-100">
+            {deckError.message}
+          </div>
         )}
         <RoundOverlay label={roundLabel} />
         <PauseOverlay open={paused} onResume={resumeScene} onExit={handleExit} />
