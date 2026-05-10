@@ -6,8 +6,16 @@ import { useSkin, type SkinId } from '@/contexts/SkinContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { supabase, type AuthProfile } from '@/lib/supabase'
 import { createDashboardPointerTutorial } from '@/lib/tutorials/dashboard'
-import { createGenerateTutorial } from '@/lib/tutorials/generate'
-import type { TFunction, TutorialDefinition, TutorialId } from '@/lib/tutorials/types'
+import { createGenerateTutorial, resolveGenerateTutorialTarget } from '@/lib/tutorials/generate'
+import { clearTutorialHighlight } from '@/lib/tutorials/dom'
+import type {
+  GenerateTutorialController,
+  GenerateTutorialStepId,
+  TFunction,
+  TutorialDefinition,
+  TutorialDriveStep,
+  TutorialId,
+} from '@/lib/tutorials/types'
 import type { Driver, PopoverDOM } from 'driver.js'
 
 const driverPromise = () => import('driver.js').then((m) => m.driver)
@@ -47,6 +55,7 @@ interface TutorialContextValue {
   pendingTutorial: PendingTutorial | null
   setPendingTutorial: (request: PendingTutorial | null) => void
   tutorialActive: boolean
+  registerGenerateTutorialController: (controller: GenerateTutorialController | null) => () => void
 }
 
 const TutorialContext = createContext<TutorialContextValue | null>(null)
@@ -58,9 +67,93 @@ function applyTutorialPopover(popover: PopoverDOM, activeIndex: number, activeTu
   popover.wrapper.dataset.tutorialId = activeTutorialId ?? ''
   popover.wrapper.dataset.tutorialStep = String(activeIndex)
 
-  if (activeIndex === 0 || activeTutorialId === 'dashboard-pointer') {
-    popover.closeButton.textContent = t('tutorial.welcome.skip')
+  popover.closeButton.textContent = t('tutorial.welcome.skip')
+  popover.closeButton.classList.add('resonance-tutorial-skip-btn')
+  if (popover.closeButton.parentElement !== popover.footer) {
+    popover.footer.insertBefore(popover.closeButton, popover.footerButtons)
   }
+}
+
+const READY_FRAME_LIMIT = 20
+
+function isGenerateStepId(stepId: TutorialDriveStep['tutorialStepId']): stepId is GenerateTutorialStepId {
+  return (
+    stepId === 'language'
+    || stepId === 'product'
+    || stepId === 'category'
+    || stepId === 'manual'
+    || stepId === 'action-choice'
+    || stepId === 'complete'
+  )
+}
+
+function isReadyElement(target: Element | null): boolean {
+  if (!target) return false
+  if (!(target instanceof HTMLElement)) return true
+  return target.offsetWidth > 0 || target.offsetHeight > 0 || target.getClientRects().length > 0
+}
+
+async function afterPaint(): Promise<void> {
+  await new Promise<void>((resolve) => {
+    window.requestAnimationFrame(() => resolve())
+  })
+}
+
+async function waitForGenerateTarget(stepId: GenerateTutorialStepId): Promise<boolean> {
+  if (stepId === 'complete') return true
+  for (let frame = 0; frame < READY_FRAME_LIMIT; frame += 1) {
+    if (isReadyElement(resolveGenerateTutorialTarget(stepId))) return true
+    await afterPaint()
+  }
+  return false
+}
+
+async function prepareGenerateTutorialStep(
+  controller: GenerateTutorialController | null,
+  stepId: GenerateTutorialStepId,
+): Promise<boolean> {
+  if (stepId === 'complete') return true
+  const prepared = await controller?.prepareTutorialStep(stepId)
+  if (prepared === false) return false
+  await afterPaint()
+  return waitForGenerateTarget(stepId)
+}
+
+async function advanceGenerateTutorial(
+  driver: Driver,
+  definition: TutorialDefinition,
+  controller: GenerateTutorialController | null,
+): Promise<void> {
+  let nextIndex = (driver.getActiveIndex() ?? 0) + 1
+  while (nextIndex < definition.steps.length) {
+    const nextStep = definition.steps[nextIndex]
+    const stepId = nextStep.tutorialStepId
+    if (!isGenerateStepId(stepId)) {
+      driver.moveTo(nextIndex)
+      return
+    }
+
+    if (await prepareGenerateTutorialStep(controller, stepId)) {
+      driver.moveTo(nextIndex)
+      return
+    }
+
+    nextIndex += 1
+  }
+
+  driver.destroy()
+}
+
+async function findInitialGenerateStep(
+  definition: TutorialDefinition,
+  controller: GenerateTutorialController | null,
+): Promise<number> {
+  for (let index = 0; index < definition.steps.length; index += 1) {
+    const stepId = definition.steps[index].tutorialStepId
+    if (!isGenerateStepId(stepId)) return index
+    if (await prepareGenerateTutorialStep(controller, stepId)) return index
+  }
+  return Math.max(0, definition.steps.length - 1)
 }
 
 export function TutorialProvider({ children }: { children: ReactNode }) {
@@ -73,6 +166,7 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
   const profileRef = useRef<AuthProfile | null>(profile)
   const userIdRef = useRef<string | null>(user?.id ?? null)
   const driverRef = useRef<Driver | null>(null)
+  const generateControllerRef = useRef<GenerateTutorialController | null>(null)
   const activeTutorialIdRef = useRef<TutorialId | null>(null)
   const suppressMarkOnDestroyRef = useRef(false)
   const pathnameRef = useRef(location.pathname)
@@ -113,11 +207,18 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
 
     const createDriver = await driverPromise()
     let finalized = false
+    const generateController = generateControllerRef.current
+    let initialDriveIndex = 0
 
     driverRef.current?.destroy()
     activeTutorialIdRef.current = id
     suppressMarkOnDestroyRef.current = false
     setTutorialActive(true)
+
+    if (id === 'generate') {
+      await generateController?.resetForTutorial()
+      initialDriveIndex = await findInitialGenerateStep(definition, generateController ?? null)
+    }
 
     const driver = createDriver({
       steps: definition.steps,
@@ -125,12 +226,13 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
       smoothScroll: true,
       allowClose: true,
       overlayClickBehavior: 'close',
-      overlayColor: '#020617',
-      overlayOpacity: 0.78,
+      overlayColor: '#0e0810',
+      overlayOpacity: 0.9,
       stagePadding: 8,
       stageRadius: 12,
+      disableActiveInteraction: true,
       popoverClass: 'resonance-tutorial-popover',
-      showButtons: ['previous', 'next', 'close'],
+      showButtons: ['next', 'close'],
       doneBtnText: t(definition.completionDismissKey),
       nextBtnText: t('common.next'),
       prevBtnText: t('common.back'),
@@ -142,6 +244,7 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
         finalized = true
         const suppressMark = suppressMarkOnDestroyRef.current
         suppressMarkOnDestroyRef.current = false
+        clearTutorialHighlight()
         driverRef.current = null
         activeTutorialIdRef.current = null
         setTutorialActive(false)
@@ -149,11 +252,28 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
           void markSeen(definition)
         }
       },
+      onNextClick: (_element, _step, { driver }) => {
+        if (id !== 'generate') {
+          driver.moveNext()
+          return
+        }
+
+        void advanceGenerateTutorial(driver, definition, generateControllerRef.current)
+      },
     })
 
     driverRef.current = driver
-    driver.drive()
+    driver.drive(initialDriveIndex)
   }, [markSeen, skin, t])
+
+  const registerGenerateTutorialController = useCallback((controller: GenerateTutorialController | null) => {
+    generateControllerRef.current = controller
+    return () => {
+      if (generateControllerRef.current === controller) {
+        generateControllerRef.current = null
+      }
+    }
+  }, [])
 
   useEffect(() => {
     const handleDashboardGenerateClick = (event: MouseEvent) => {
@@ -191,8 +311,8 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const value = useMemo<TutorialContextValue>(
-    () => ({ start, pendingTutorial, setPendingTutorial, tutorialActive }),
-    [pendingTutorial, start, tutorialActive]
+    () => ({ start, pendingTutorial, setPendingTutorial, tutorialActive, registerGenerateTutorialController }),
+    [pendingTutorial, registerGenerateTutorialController, start, tutorialActive]
   )
 
   return (

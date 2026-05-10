@@ -20,6 +20,7 @@
     "test:i18n-display-labels": "tsx scripts/test-i18n-display-labels.ts",
     "test:admin-layer2-lab": "tsx scripts/test-admin-layer2-lab.ts",
     "test:card-generation-progress": "tsx scripts/test-card-generation-progress.ts",
+    "test:tutorial-v3": "tsx scripts/test-tutorial-v3.ts",
     "test:word-metadata": "tsx scripts/test-word-display-metadata.ts",
     "test:phase1f:admin": "tsx scripts/test-phase1f-admin-rpcs.ts",
     "test:phase1g:storage-cleanup": "tsx scripts/test-storage-cleanup.ts",
