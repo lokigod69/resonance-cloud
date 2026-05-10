@@ -35,6 +35,7 @@ type SlicerSceneData = {
   onExit?: () => void;
   onSceneReady?: () => void;
   easyMode?: boolean;
+  audio?: SlicerAudio;
 };
 
 export type SceneHost = SlicerSceneData;
@@ -110,7 +111,7 @@ export class SlicerScene extends Phaser.Scene {
   private onExit?: () => void;
   private onSceneReady?: () => void;
   private easyMode = false;
-  private readonly audio = new SlicerAudio();
+  private audio = new SlicerAudio();
   private readonly voicesReady = SlicerScene.loadVoices();
   private htmlAudio?: HTMLAudioElement;
   private activeCards: FallingCard[] = [];
@@ -152,6 +153,7 @@ export class SlicerScene extends Phaser.Scene {
     this.onExit = data.onExit;
     this.onSceneReady = data.onSceneReady;
     this.easyMode = Boolean(data.easyMode);
+    this.audio = data.audio ?? new SlicerAudio();
   }
 
   preload(): void {
@@ -400,7 +402,7 @@ export class SlicerScene extends Phaser.Scene {
     card.fallTween = this.tweens.add({
       targets: card,
       y: exitY,
-      duration: this.difficulty().fallMs * (this.easyMode ? 2 : 1),
+      duration: this.fallDurationMs(y, exitY, height),
       ease: 'Linear',
       onComplete: () => this.resolveCard(card, 'exit'),
     });
@@ -949,6 +951,13 @@ export class SlicerScene extends Phaser.Scene {
 
   private difficulty(): RoundDifficulty {
     return ROUND_DIFFICULTY[this.roundNumber - 1] ?? ROUND_DIFFICULTY[ROUND_DIFFICULTY.length - 1];
+  }
+
+  private fallDurationMs(startY: number, exitY: number, cardHeight: number): number {
+    const distance = Math.max(1, Math.abs(exitY - startY));
+    const referenceDistance = Math.max(1, this.scale.height + cardHeight * 2);
+    const baseDuration = this.difficulty().fallMs * (distance / referenceDistance);
+    return Math.max(900, Math.round(baseDuration * (this.easyMode ? 2 : 1)));
   }
 
   private wordsPerRound(): number {

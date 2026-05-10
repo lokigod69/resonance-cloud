@@ -17,6 +17,7 @@ import { PauseOverlay } from './components/PauseOverlay'
 import { RoundOverlay } from './components/RoundOverlay'
 import { SessionComplete } from './components/SessionComplete'
 import { SlicerHUD } from './components/SlicerHUD'
+import { SlicerAudio } from './scene/audio'
 import styles from './styles.module.css'
 
 type HudState = {
@@ -45,7 +46,12 @@ export default function SlicerGame() {
   const bus = useMemo(() => createGameEventBus(), [])
   const recordResult = useRecordGameResult()
   const { primeOnGesture } = useIOSAudioPrimer()
+  const slicerAudioRef = useRef<SlicerAudio | null>(null)
   const phaserHostRef = useRef<HTMLDivElement | null>(null)
+
+  if (slicerAudioRef.current === null) {
+    slicerAudioRef.current = new SlicerAudio()
+  }
 
   const [selectedDeck, setSelectedDeck] = useState<SlicerDeckChoice | null>(null)
   const [hud, setHud] = useState<HudState>(INITIAL_HUD)
@@ -140,6 +146,7 @@ export default function SlicerGame() {
       onExit: handleExit,
       onSceneReady: () => setReadySceneKey(sceneKey),
       easyMode,
+      audio: slicerAudioRef.current,
     })
   }, [bus, easyMode, gameRef, handleExit, primeOnGesture, ready, sceneKey, slicerDeck])
 
@@ -148,6 +155,8 @@ export default function SlicerGame() {
   }), [bus, recordResult])
 
   const handleDeckSelected = useCallback((choice: SlicerDeckChoice) => {
+    void primeOnGesture().catch(() => undefined)
+    void slicerAudioRef.current?.unlock().catch(() => undefined)
     setSelectedDeck(choice)
     setHud({
       ...INITIAL_HUD,
@@ -157,7 +166,7 @@ export default function SlicerGame() {
     setRoundLabel(null)
     setSessionStats(null)
     setReadySceneKey(null)
-  }, [])
+  }, [primeOnGesture])
 
   const pauseScene = useCallback(() => {
     gameRef.current?.scene.pause('slicer')
