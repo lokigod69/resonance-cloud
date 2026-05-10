@@ -41,6 +41,8 @@ import {
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useTutorial } from '@/components/tutorial/TutorialProvider'
+import { useTutorialTrigger } from '@/hooks/useTutorialTrigger'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 
@@ -67,15 +69,18 @@ export default function GeneratePG() {
   const hasNavigatedToDeckRef = useRef(false)
 
   const { t } = useTranslation()
+  const { tutorialActive } = useTutorial()
+  useTutorialTrigger('generate')
 
   const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
 
   useEffect(() => {
+    if (tutorialActive) return
     const frame = window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     })
     return () => window.cancelAnimationFrame(frame)
-  }, [pgStep])
+  }, [pgStep, tutorialActive])
 
   useEffect(() => {
     if (!deckIdParam) return

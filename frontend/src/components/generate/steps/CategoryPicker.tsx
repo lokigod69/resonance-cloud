@@ -188,7 +188,7 @@ export default function CategoryPicker({
 
   if (mode === 'idle') {
     return (
-      <div className="flex w-full flex-col items-center gap-3 pb-2">
+      <div className="flex w-full flex-col items-center gap-3 pb-2" data-tutorial-id="generate.category_picker">
         <button
           type="button"
           className="words-choice-button"
@@ -267,6 +267,7 @@ export default function CategoryPicker({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       className="w-full space-y-4"
+      data-tutorial-id="generate.category_picker"
     >
       <div className="flex items-center justify-between">
         <p className="text-xs uppercase tracking-wider text-muted-foreground">

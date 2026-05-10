@@ -75,6 +75,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.displayNamePlaceholder': 'Enter your name',
     'profile.baseLanguage': 'Base Language',
     'profile.selectLanguage': 'Select language',
+    'profile.tutorials': 'Tutorials',
     'profile.email': 'Email',
     'profile.signOut': 'Sign Out',
     'profile.saving': 'Saving...',
@@ -87,6 +88,24 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.avatar.uploadFailed': 'Avatar upload failed',
     'profile.avatar.invalid': 'Invalid image',
     'profile.avatar.tooLarge': 'Image too large (max 5 MB)',
+
+    // ── Tutorials ──
+    'tutorial.generate.modal.title': 'Generate your first deck',
+    'tutorial.generate.modal.subtitle': 'Walk through how Resonance turns words into decks.',
+    'tutorial.generate.modal.start': 'Start tour',
+    'tutorial.generate.modal.skip': 'Skip',
+    'tutorial.generate.step1.caption': 'Pick the language you\'re learning. Each flag opens a separate deck for that language.',
+    'tutorial.generate.step2.caption': 'Pick how Resonance turns your words into memory: Video & Music for full clips, or Card decks for image-led flashcards.',
+    'tutorial.generate.step3.caption': 'Start from a category and Resonance fills in five words for you.',
+    'tutorial.generate.step4.caption': 'Or type your own. Press Enter after each word to lock it in.',
+    'tutorial.generate.step5.caption': 'Quick Generate runs with sensible defaults — Resonance picks the vibe, art style, and music for you.',
+    'tutorial.generate.step6.caption': 'Customize lets you steer every detail across additional steps tailored to your lane.',
+    'tutorial.generate.complete.title': 'That\'s the Generate flow.',
+    'tutorial.generate.complete.body': 'You can replay this tour any time from your Profile.',
+    'tutorial.generate.complete.dismiss': 'Got it',
+    'tutorial.generate.replay.label': 'Generate tutorial',
+    'tutorial.generate.replay.lastSeen': 'Last seen {date}',
+    'tutorial.generate.replay.notYetSeen': 'Not yet seen',
 
     // ── Credits ──
     'credits.heading': 'Credits',
@@ -109,6 +128,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'common.refresh': 'Refresh',
     'common.cancel': 'Cancel',
     'common.back': '← Back',
+    'common.next': 'Next',
 
     // ── Add Word ──
     'addWord.title': 'Add Word',
@@ -909,6 +929,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.displayNamePlaceholder': 'Name eingeben',
     'profile.baseLanguage': 'Muttersprache',
     'profile.selectLanguage': 'Sprache wählen',
+    'profile.tutorials': 'Tutorials',
     'profile.email': 'E-Mail',
     'profile.signOut': 'Abmelden',
     'profile.saving': 'Speichern...',
@@ -921,6 +942,24 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.avatar.uploadFailed': 'Hochladen fehlgeschlagen',
     'profile.avatar.invalid': 'Ungültiges Bild',
     'profile.avatar.tooLarge': 'Bild zu groß (max. 5 MB)',
+
+    // ── Tutorials ──
+    'tutorial.generate.modal.title': 'Erstelle dein erstes Deck',
+    'tutorial.generate.modal.subtitle': 'Sieh, wie Resonance Wörter in Decks verwandelt.',
+    'tutorial.generate.modal.start': 'Tour starten',
+    'tutorial.generate.modal.skip': 'Überspringen',
+    'tutorial.generate.step1.caption': 'Wähle die Sprache, die du lernst. Jede Flagge öffnet ein eigenes Deck für diese Sprache.',
+    'tutorial.generate.step2.caption': 'Wähle, wie Resonance deine Wörter in Erinnerungen verwandelt: Video & Musik für komplette Clips, oder Kartendecks für bildbasierte Lernkarten.',
+    'tutorial.generate.step3.caption': 'Starte mit einer Kategorie und Resonance füllt fünf Wörter für dich aus.',
+    'tutorial.generate.step4.caption': 'Oder tippe eigene Wörter ein. Drücke Enter nach jedem Wort, um es zu übernehmen.',
+    'tutorial.generate.step5.caption': 'Quick Generate läuft mit sinnvollen Standardwerten — Resonance wählt Stimmung, Bildstil und Musik für dich.',
+    'tutorial.generate.step6.caption': 'Mit Customize steuerst du jedes Detail über weitere Schritte, die auf deinen Pfad zugeschnitten sind.',
+    'tutorial.generate.complete.title': 'Das war der Generate-Flow.',
+    'tutorial.generate.complete.body': 'Du kannst diese Tour jederzeit über dein Profil erneut starten.',
+    'tutorial.generate.complete.dismiss': 'Verstanden',
+    'tutorial.generate.replay.label': 'Generate-Tutorial',
+    'tutorial.generate.replay.lastSeen': 'Zuletzt gesehen am {date}',
+    'tutorial.generate.replay.notYetSeen': 'Noch nicht angesehen',
 
     // ── Credits ──
     'credits.heading': 'Credits',
@@ -943,6 +982,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'common.refresh': 'Aktualisieren',
     'common.cancel': 'Abbrechen',
     'common.back': '← Zurück',
+    'common.next': 'Weiter',
 
     // ── Add Word ──
     'addWord.title': 'Wort hinzufügen',
@@ -1741,6 +1781,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.displayNamePlaceholder': 'Entre ton nom',
     'profile.baseLanguage': 'Langue maternelle',
     'profile.selectLanguage': 'Choisir une langue',
+    'profile.tutorials': 'Tutoriels',
     'profile.email': 'E-mail',
     'profile.signOut': 'Déconnexion',
     'profile.saving': 'Enregistrement...',
@@ -1775,6 +1816,7 @@ export const translations: Record<Locale, Record<string, string>> = {
     'common.refresh': 'Actualiser',
     'common.cancel': 'Annuler',
     'common.back': '← Retour',
+    'common.next': 'Suivant',
 
     // ── Add Word ──
     'addWord.title': 'Ajouter un mot',

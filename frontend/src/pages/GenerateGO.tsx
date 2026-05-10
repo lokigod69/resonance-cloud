@@ -9,6 +9,8 @@ import { FlagIcon } from '@/components/ui/FlagIcon'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useTutorial } from '@/components/tutorial/TutorialProvider'
+import { useTutorialTrigger } from '@/hooks/useTutorialTrigger'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
 import {
@@ -89,6 +91,8 @@ export default function GenerateGO() {
   const { toast } = useToast()
   const { activeLanguage } = useLanguage()
   const { t, tp } = useTranslation()
+  const { tutorialActive } = useTutorial()
+  useTutorialTrigger('generate')
   const navigate = useNavigate()
 
   const [step, setStep] = useState(1)
@@ -214,6 +218,7 @@ export default function GenerateGO() {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
+    if (tutorialActive) return
     const ref = sectionRefs.current[step - 1]
     if (ref) {
       setTimeout(() => {
@@ -224,7 +229,7 @@ export default function GenerateGO() {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 150)
     }
-  }, [step])
+  }, [step, tutorialActive])
 
   const cardLane = isCardLane(productLane)
 
