@@ -8,6 +8,7 @@ import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { AlertCircle, RefreshCw, LogIn } from 'lucide-react'
 import LevelBadge from '@/components/dashboard/LevelBadge'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useTutorialTrigger } from '@/hooks/useTutorialTrigger'
 import WordDetailModal, { type LibraryWord } from '@/components/dashboard/WordDetailModal'
 import WordLibrary from '@/components/dashboard/WordLibrary'
 import { QUOTES } from '@/data/quotes'
@@ -23,6 +24,7 @@ type Deck = {
 }
 
 export default function DashboardPG() {
+  useTutorialTrigger('dashboard-pointer')
   const { profile, user, authError } = useAuth()
   const { activeLanguage, setActiveLanguage } = useLanguage()
   const navigate = useNavigate()

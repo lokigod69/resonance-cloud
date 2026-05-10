@@ -1,17 +1,26 @@
 import { useEffect, useRef } from 'react'
 import { useAuth } from '@/hooks/useAuth'
-import { TUTORIAL_START_SELECTORS, useTutorial } from '@/components/tutorial/TutorialProvider'
+import { getTutorialDefinition, TUTORIAL_START_SELECTORS, useTutorial } from '@/components/tutorial/TutorialProvider'
+import { useTranslation } from '@/hooks/useTranslation'
 import type { TutorialId } from '@/lib/tutorials/types'
 
 const MAX_READINESS_FRAMES = 50
 
+function isReadyTarget(target: Element): boolean {
+  if (!(target instanceof HTMLElement)) return true
+  return target.offsetWidth > 0 || target.offsetHeight > 0 || target.getClientRects().length > 0
+}
+
 function hasReadyTarget(id: TutorialId): boolean {
-  return TUTORIAL_START_SELECTORS[id].some((selector) => document.querySelector(selector))
+  return TUTORIAL_START_SELECTORS[id].some((selector) =>
+    Array.from(document.querySelectorAll(selector)).some(isReadyTarget)
+  )
 }
 
 export function useTutorialTrigger(id: TutorialId): void {
   const { profile, profileLoading } = useAuth()
   const { pendingTutorial, setPendingTutorial, start, tutorialActive } = useTutorial()
+  const { t } = useTranslation()
   const requestedRef = useRef(false)
 
   useEffect(() => {
@@ -19,8 +28,11 @@ export function useTutorialTrigger(id: TutorialId): void {
     if (profileLoading || !profile) return
 
     const pending = pendingTutorial?.id === id ? pendingTutorial : null
+    if (id === 'dashboard-pointer' && pendingTutorial) return
     if (requestedRef.current && !pending) return
-    const versionedKey = `${id}.v1`
+    const definition = getTutorialDefinition(id, t)
+    if (!definition) return
+    const versionedKey = definition.versionedKey
     const shouldStart = pending || profile.seen_tutorials?.[versionedKey] == null
     if (!shouldStart) return
 
@@ -53,5 +65,5 @@ export function useTutorialTrigger(id: TutorialId): void {
       cancelled = true
       window.cancelAnimationFrame(rafId)
     }
-  }, [id, pendingTutorial, profile, profileLoading, setPendingTutorial, start, tutorialActive])
+  }, [id, pendingTutorial, profile, profileLoading, setPendingTutorial, start, t, tutorialActive])
 }

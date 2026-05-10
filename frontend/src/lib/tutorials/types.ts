@@ -1,5 +1,5 @@
-export type TutorialId = 'generate'
-export type TutorialKey = `${TutorialId}.v${number}`
+export type TutorialId = 'generate' | 'dashboard-pointer'
+export type TutorialKey = `${string}.v${number}`
 export type TFunction = (key: string, vars?: Record<string, string | number>) => string
 
 export interface TutorialDefinition {

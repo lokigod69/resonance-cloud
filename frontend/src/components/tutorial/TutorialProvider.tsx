@@ -1,15 +1,21 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useLocation } from 'react-router-dom'
 import 'driver.js/dist/driver.css'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { supabase, type AuthProfile } from '@/lib/supabase'
+import { createDashboardPointerTutorial } from '@/lib/tutorials/dashboard'
 import { createGenerateTutorial } from '@/lib/tutorials/generate'
 import type { TFunction, TutorialDefinition, TutorialId } from '@/lib/tutorials/types'
 import type { Driver, PopoverDOM } from 'driver.js'
 
 const driverPromise = () => import('driver.js').then((m) => m.driver)
+const dashboardGenerateSelector = '[data-tutorial-id="dashboard.go_to_generate"]'
 
 export const TUTORIAL_START_SELECTORS: Record<TutorialId, string[]> = {
+  'dashboard-pointer': [
+    dashboardGenerateSelector,
+  ],
   generate: [
     '[data-tutorial-id="generate.lang_picker"]',
     '[data-tutorial-id="generate.product_lane"]',
@@ -20,8 +26,14 @@ export const TUTORIAL_START_SELECTORS: Record<TutorialId, string[]> = {
   ],
 }
 
-const TUTORIAL_FACTORIES: Record<TutorialId, (t: TFunction) => TutorialDefinition> = {
+export const TUTORIAL_FACTORIES: Record<TutorialId, (t: TFunction) => TutorialDefinition> = {
+  'dashboard-pointer': createDashboardPointerTutorial,
   generate: createGenerateTutorial,
+}
+
+export function getTutorialDefinition(id: TutorialId, t: TFunction): TutorialDefinition | null {
+  const createDefinition = TUTORIAL_FACTORIES[id]
+  return createDefinition ? createDefinition(t) : null
 }
 
 export interface PendingTutorial {
@@ -38,7 +50,7 @@ interface TutorialContextValue {
 
 const TutorialContext = createContext<TutorialContextValue | null>(null)
 
-function applyGlassyPopover(popover: PopoverDOM, activeIndex: number, t: TFunction) {
+function applyGlassyPopover(popover: PopoverDOM, activeIndex: number, activeTutorialId: TutorialId | null, t: TFunction) {
   const root = document.documentElement
   const glassy = root.classList.contains('skin-glassy')
 
@@ -66,8 +78,8 @@ function applyGlassyPopover(popover: PopoverDOM, activeIndex: number, t: TFuncti
   popover.nextButton.style.background = 'var(--accent)'
   popover.nextButton.style.color = 'var(--accent-foreground)'
 
-  if (activeIndex === 0) {
-    popover.closeButton.textContent = t('tutorial.generate.modal.skip')
+  if (activeIndex === 0 || activeTutorialId === 'dashboard-pointer') {
+    popover.closeButton.textContent = t(activeTutorialId === 'dashboard-pointer' ? 'tutorial.welcome.skip' : 'tutorial.generate.modal.skip')
     popover.closeButton.style.position = 'static'
     popover.closeButton.style.width = 'auto'
     popover.closeButton.style.height = 'auto'
@@ -78,11 +90,15 @@ function applyGlassyPopover(popover: PopoverDOM, activeIndex: number, t: TFuncti
 export function TutorialProvider({ children }: { children: ReactNode }) {
   const { user, profile, refreshProfile } = useAuth()
   const { t } = useTranslation()
+  const location = useLocation()
   const [pendingTutorial, setPendingTutorial] = useState<PendingTutorial | null>(null)
   const [tutorialActive, setTutorialActive] = useState(false)
   const profileRef = useRef<AuthProfile | null>(profile)
   const userIdRef = useRef<string | null>(user?.id ?? null)
   const driverRef = useRef<Driver | null>(null)
+  const activeTutorialIdRef = useRef<TutorialId | null>(null)
+  const suppressMarkOnDestroyRef = useRef(false)
+  const pathnameRef = useRef(location.pathname)
 
   useEffect(() => {
     profileRef.current = profile
@@ -115,14 +131,15 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
   }, [refreshProfile])
 
   const start = useCallback(async (id: TutorialId, opts?: { force?: boolean }) => {
-    const createDefinition = TUTORIAL_FACTORIES[id]
-    if (!createDefinition) return
+    const definition = getTutorialDefinition(id, t)
+    if (!definition) return
 
-    const definition = createDefinition(t)
     const createDriver = await driverPromise()
     let finalized = false
 
     driverRef.current?.destroy()
+    activeTutorialIdRef.current = id
+    suppressMarkOnDestroyRef.current = false
     setTutorialActive(true)
 
     const driver = createDriver({
@@ -139,14 +156,17 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
       nextBtnText: t('common.next'),
       prevBtnText: t('common.back'),
       onPopoverRender: (popover, { state }) => {
-        applyGlassyPopover(popover, state.activeIndex ?? 0, t)
+        applyGlassyPopover(popover, state.activeIndex ?? 0, activeTutorialIdRef.current, t)
       },
       onDestroyed: () => {
         if (finalized) return
         finalized = true
+        const suppressMark = suppressMarkOnDestroyRef.current
+        suppressMarkOnDestroyRef.current = false
         driverRef.current = null
+        activeTutorialIdRef.current = null
         setTutorialActive(false)
-        if (opts?.force !== true) {
+        if (!suppressMark && opts?.force !== true) {
           void markSeen(definition)
         }
       },
@@ -157,7 +177,36 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
   }, [markSeen, t])
 
   useEffect(() => {
+    const handleDashboardGenerateClick = (event: MouseEvent) => {
+      if (activeTutorialIdRef.current !== 'dashboard-pointer') return
+      const target = event.target instanceof Element
+        ? event.target.closest(dashboardGenerateSelector)
+        : null
+      if (!target) return
+
+      setPendingTutorial({ id: 'generate', force: false })
+      suppressMarkOnDestroyRef.current = true
+      driverRef.current?.destroy()
+    }
+
+    document.addEventListener('click', handleDashboardGenerateClick, true)
     return () => {
+      document.removeEventListener('click', handleDashboardGenerateClick, true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (pathnameRef.current === location.pathname) return
+    pathnameRef.current = location.pathname
+    if (!driverRef.current) return
+
+    suppressMarkOnDestroyRef.current = true
+    driverRef.current.destroy()
+  }, [location.pathname])
+
+  useEffect(() => {
+    return () => {
+      suppressMarkOnDestroyRef.current = true
       driverRef.current?.destroy()
     }
   }, [])

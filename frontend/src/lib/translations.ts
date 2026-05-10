@@ -90,6 +90,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.avatar.tooLarge': 'Image too large (max 5 MB)',
 
     // ── Tutorials ──
+    'tutorial.welcome.title': 'Generate your first deck',
+    'tutorial.welcome.subtitle': 'Two steps. Skip anytime.',
+    'tutorial.welcome.start': 'Take me there',
+    'tutorial.welcome.skip': 'Skip',
+    'tutorial.dashboard.gotoGenerate.caption': 'Click Generate to start.',
     'tutorial.generate.modal.title': 'Generate your first deck',
     'tutorial.generate.modal.subtitle': 'Walk through how Resonance turns words into decks.',
     'tutorial.generate.modal.start': 'Start tour',
@@ -944,6 +949,11 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.avatar.tooLarge': 'Bild zu groß (max. 5 MB)',
 
     // ── Tutorials ──
+    'tutorial.welcome.title': 'Erstelle dein erstes Deck',
+    'tutorial.welcome.subtitle': 'Zwei Schritte. Jederzeit überspringbar.',
+    'tutorial.welcome.start': 'Los geht\'s',
+    'tutorial.welcome.skip': 'Überspringen',
+    'tutorial.dashboard.gotoGenerate.caption': 'Klicke auf Erstellen.',
     'tutorial.generate.modal.title': 'Erstelle dein erstes Deck',
     'tutorial.generate.modal.subtitle': 'Sieh, wie Resonance Wörter in Decks verwandelt.',
     'tutorial.generate.modal.start': 'Tour starten',
