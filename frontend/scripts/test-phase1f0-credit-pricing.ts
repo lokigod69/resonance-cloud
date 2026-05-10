@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
-import { computeCreditCost } from '../src/components/generate/useWizardState'
+import { computeCreditCost, deckRowToProductLane } from '../src/components/generate/useWizardState'
 
 type RequestOptions = {
   method?: string
@@ -313,7 +313,9 @@ async function assertSubmitCost(
 
 async function main() {
   assert.equal(computeCreditCost('video', 2), 20)
-  assert.equal(computeCreditCost('card', 2), 2)
+  assert.equal(computeCreditCost('card_standard', 2), 2)
+  assert.equal(computeCreditCost('card_premium', 2), 10)
+  assert.equal(computeCreditCost(deckRowToProductLane('card', 'zturbo'), 2), 2)
 
   const cleanupIds: { userIds: string[]; deckIds: string[]; jobIds: string[] } = {
     userIds: [],
@@ -420,6 +422,7 @@ async function main() {
         user_id: user.id,
         deck_id: retryDeck.id,
         word: 'retry-me',
+        original_input: 'retry-me',
         status: 'failed',
         current_stage: 'failed',
         retry_requested: false,

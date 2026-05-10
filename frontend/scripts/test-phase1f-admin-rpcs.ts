@@ -517,6 +517,7 @@ async function main() {
         user_id: learner.id,
         deck_id: contentDeck.id,
         word: 'archive-me',
+        original_input: 'archive-me',
         status: 'complete',
         current_stage: 'complete',
         video_url: `${supabaseUrl}/storage/v1/object/public/videos/${learner.id}/${contentDeck.id}/archive-me/video.mp4`,

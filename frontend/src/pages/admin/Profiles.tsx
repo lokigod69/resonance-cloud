@@ -31,6 +31,15 @@ type LanguageProfile = {
   updated_at: string
 }
 
+type LanguageProfileRpcResult = {
+  id: string
+  language: string
+  name: string
+  is_active: boolean
+  settings: Record<string, Record<string, unknown>>
+  notes: string | null
+}
+
 const LANGUAGES = [
   'English', 'German', 'French', 'Italian', 'Spanish', 'Portuguese', 'Japanese',
   'Korean', 'Mandarin', 'Arabic', 'Russian', 'Turkish', 'Hindi',
@@ -75,32 +84,59 @@ export default function Profiles() {
     if (!selected) return
     setSaving(true)
     const cleanSettings = sanitizeDurationSettings(editSettings)
-    await supabase.from('language_profiles').update({
-      name: editName,
-      notes: editNotes || null,
-      settings: cleanSettings,
-    }).eq('id', selected.id)
-    await fetchProfiles()
-    // Re-select to refresh
-    const updated = profiles.find(p => p.id === selected.id)
-    if (updated) selectProfile({ ...updated, name: editName, notes: editNotes, settings: cleanSettings })
-    setSaving(false)
-    toast('Profile saved', 'success')
+    try {
+      const { data, error } = await supabase.rpc('admin_upsert_language_profile', {
+        p_profile_id: selected.id,
+        p_language: selected.language,
+        p_name: editName,
+        p_settings: cleanSettings,
+        p_notes: editNotes || null,
+        p_reason: 'Admin language profile update',
+      })
+      if (error) throw error
+      await fetchProfiles()
+      const updated = data as LanguageProfileRpcResult
+      selectProfile({ ...selected, ...updated, updated_at: new Date().toISOString() })
+      toast('Profile saved', 'success')
+    } catch (error: unknown) {
+      const msg = error instanceof Error ? error.message : String(error)
+      toast(msg, 'error')
+    } finally {
+      setSaving(false)
+    }
   }
 
   const activateProfile = async (profileId: string, language: string) => {
-    // Deactivate all profiles for this language first
-    await supabase.from('language_profiles').update({ is_active: false }).eq('language', language)
-    // Activate this one
-    await supabase.from('language_profiles').update({ is_active: true }).eq('id', profileId)
+    const { error } = await supabase.rpc('admin_set_language_profile_active', {
+      p_profile_id: profileId,
+      p_is_active: true,
+      p_reason: 'Admin language profile update',
+    })
+    if (error) {
+      toast(error.message, 'error')
+      return
+    }
     await fetchProfiles()
-    if (selected?.id === profileId) {
-      setSelected(prev => prev ? { ...prev, is_active: true } : null)
+    setProfiles(prev => prev.map(profile =>
+      profile.language === language
+        ? { ...profile, is_active: profile.id === profileId }
+        : profile
+    ))
+    if (selected?.language === language) {
+      setSelected(prev => prev ? { ...prev, is_active: prev.id === profileId } : null)
     }
   }
 
   const deactivateProfile = async (profileId: string) => {
-    await supabase.from('language_profiles').update({ is_active: false }).eq('id', profileId)
+    const { error } = await supabase.rpc('admin_set_language_profile_active', {
+      p_profile_id: profileId,
+      p_is_active: false,
+      p_reason: 'Admin language profile update',
+    })
+    if (error) {
+      toast(error.message, 'error')
+      return
+    }
     await fetchProfiles()
     if (selected?.id === profileId) {
       setSelected(prev => prev ? { ...prev, is_active: false } : null)
@@ -108,31 +144,49 @@ export default function Profiles() {
   }
 
   const duplicateProfile = async (profile: LanguageProfile) => {
-    await supabase.from('language_profiles').insert({
-      language: profile.language,
-      name: `${profile.name} (copy)`,
-      is_active: false,
-      settings: sanitizeDurationSettings(profile.settings),
-      notes: profile.notes,
+    const { error } = await supabase.rpc('admin_upsert_language_profile', {
+      p_profile_id: null,
+      p_language: profile.language,
+      p_name: `${profile.name} (copy)`,
+      p_settings: sanitizeDurationSettings(profile.settings),
+      p_notes: profile.notes,
+      p_reason: 'Admin language profile update',
     })
+    if (error) {
+      toast(error.message, 'error')
+      return
+    }
     await fetchProfiles()
   }
 
   const deleteProfile = async (profileId: string) => {
     if (!confirm('Delete this profile?')) return
-    await supabase.from('language_profiles').delete().eq('id', profileId)
+    const { error } = await supabase.rpc('admin_delete_language_profile', {
+      p_profile_id: profileId,
+      p_reason: 'Admin language profile update',
+    })
+    if (error) {
+      toast(error.message, 'error')
+      return
+    }
     if (selected?.id === profileId) setSelected(null)
     await fetchProfiles()
   }
 
   const createProfile = async () => {
     if (!newName.trim()) return
-    await supabase.from('language_profiles').insert({
-      language: newLanguage,
-      name: newName.trim(),
-      is_active: false,
-      settings: {},
+    const { error } = await supabase.rpc('admin_upsert_language_profile', {
+      p_profile_id: null,
+      p_language: newLanguage,
+      p_name: newName.trim(),
+      p_settings: {},
+      p_notes: null,
+      p_reason: 'Admin language profile update',
     })
+    if (error) {
+      toast(error.message, 'error')
+      return
+    }
     setShowCreate(false)
     setNewName('')
     await fetchProfiles()

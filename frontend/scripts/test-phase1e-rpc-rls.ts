@@ -202,12 +202,12 @@ try {
   ])
   cleanupIds.deckIds.push(sourceDeck.id, targetDeck.id, otherDeck.id)
 
-  type WordRow = { id: string; deck_id: string; status: string; current_stage: string; rating: number | null }
+  type WordRow = { id: string; deck_id: string; status: string; current_stage: string; rating: number | null; original_input?: string }
   const [moveWord, pendingWord, failedWord, otherWord] = await insertRows<WordRow>('words', [
-    { user_id: userA.id, deck_id: sourceDeck.id, word: 'phase1e_move', status: 'complete', current_stage: 'complete', rating: null },
-    { user_id: userA.id, deck_id: sourceDeck.id, word: 'phase1e_pending', status: 'pending', current_stage: 'pending', rating: null },
-    { user_id: userA.id, deck_id: sourceDeck.id, word: 'phase1e_failed', status: 'failed', current_stage: 'failed', rating: null },
-    { user_id: userB.id, deck_id: otherDeck.id, word: 'phase1e_other', status: 'complete', current_stage: 'complete', rating: null },
+    { user_id: userA.id, deck_id: sourceDeck.id, word: 'phase1e_move', original_input: 'phase1e_move', status: 'complete', current_stage: 'complete', rating: null },
+    { user_id: userA.id, deck_id: sourceDeck.id, word: 'phase1e_pending', original_input: 'phase1e_pending', status: 'pending', current_stage: 'pending', rating: null },
+    { user_id: userA.id, deck_id: sourceDeck.id, word: 'phase1e_failed', original_input: 'phase1e_failed', status: 'failed', current_stage: 'failed', rating: null },
+    { user_id: userB.id, deck_id: otherDeck.id, word: 'phase1e_other', original_input: 'phase1e_other', status: 'complete', current_stage: 'complete', rating: null },
   ])
 
   type JobRow = { id: string }

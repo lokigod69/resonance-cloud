@@ -23,6 +23,8 @@
     "test:word-metadata": "tsx scripts/test-word-display-metadata.ts",
     "test:phase1f:admin": "tsx scripts/test-phase1f-admin-rpcs.ts",
     "test:phase1g:storage-cleanup": "tsx scripts/test-storage-cleanup.ts",
+    "test:phase1h1:admin-config": "tsx scripts/test-phase1h1-admin-config-rpcs.ts",
+    "test:phase1h1:admin-config:guards": "tsx scripts/test-phase1h1-admin-config-rpcs.ts --guards",
     "verify:grok-ios-audio": "tsx scripts/verify-grok-ios-audio.ts",
     "verify:grok-ios-audio:dist": "tsx scripts/verify-built-grok-ios-audio.ts",
     "test:regressions": "node scripts/verify-admin-deck-regressions.mjs",

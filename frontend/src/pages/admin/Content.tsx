@@ -361,14 +361,26 @@ export default function Content() {
 
   const toggleReview = async (word: WordRecord) => {
     const next = !word.needs_review
-    // Optimistic update
     setDeckWords(prev => ({
       ...prev,
       [word.deck_id]: (prev[word.deck_id] || []).map(w =>
         w.id === word.id ? { ...w, needs_review: next } : w
       ),
     }))
-    await supabase.from('words').update({ needs_review: next }).eq('id', word.id)
+    const { error } = await supabase.rpc('admin_set_word_review_flag', {
+      p_word_id: word.id,
+      p_needs_review: next,
+      p_reason: 'Admin content review flag update',
+    })
+    if (error) {
+      setDeckWords(prev => ({
+        ...prev,
+        [word.deck_id]: (prev[word.deck_id] || []).map(w =>
+          w.id === word.id ? { ...w, needs_review: word.needs_review } : w
+        ),
+      }))
+      toast('Failed to update review flag', 'error')
+    }
   }
 
   const confirmDeleteWord = async () => {

@@ -117,27 +117,17 @@ export default function Voices() {
     if (!formName.trim() || !formVoiceId.trim()) return
     setSaving(true)
     try {
-      if (editing) {
-        const { error } = await supabase.from('voices').update({
-          name: formName.trim(),
-          voice_id: formVoiceId.trim(),
-          language: formLanguage,
-          language_code: formLanguageCode,
-          notes: formNotes.trim(),
-        }).eq('id', editing.id)
-        if (error) throw error
-        toast('Voice updated', 'success')
-      } else {
-        const { error } = await supabase.from('voices').insert({
-          name: formName.trim(),
-          voice_id: formVoiceId.trim(),
-          language: formLanguage,
-          language_code: formLanguageCode,
-          notes: formNotes.trim(),
-        })
-        if (error) throw error
-        toast('Voice added', 'success')
-      }
+      const { error } = await supabase.rpc('admin_upsert_voice', {
+        p_voice_row_id: editing?.id ?? null,
+        p_voice_id: formVoiceId.trim(),
+        p_name: formName.trim(),
+        p_language: formLanguage,
+        p_language_code: formLanguageCode,
+        p_notes: formNotes.trim(),
+        p_reason: 'Admin voice registry update',
+      })
+      if (error) throw error
+      toast(editing ? 'Voice updated' : 'Voice added', 'success')
       resetForm()
       await fetchVoices()
     } catch (e: unknown) {
@@ -150,7 +140,10 @@ export default function Voices() {
 
   const handleDelete = async (id: string) => {
     try {
-      const { error } = await supabase.from('voices').delete().eq('id', id)
+      const { error } = await supabase.rpc('admin_delete_voice', {
+        p_voice_row_id: id,
+        p_reason: 'Admin voice registry update',
+      })
       if (error) throw error
       setConfirmDelete(null)
       toast('Voice deleted', 'success')
