@@ -95,6 +95,10 @@ export default function SlicerGame() {
         pixelArt: false,
         antialias: true,
       },
+      input: {
+        activePointers: 2,
+        touch: true,
+      },
     } satisfies Phaser.Types.Core.GameConfig
   }, [restartNonce, slicerDeck])
 
