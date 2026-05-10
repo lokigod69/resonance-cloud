@@ -53,6 +53,7 @@ export default function SlicerGame() {
   const [roundLabel, setRoundLabel] = useState<string | null>(null)
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null)
   const [restartNonce, setRestartNonce] = useState(0)
+  const [readySceneKey, setReadySceneKey] = useState<string | null>(null)
 
   const { rows, loading: deckLoading, error: deckError } = useGameDeck(
     selectedDeck ? 'slicer' : '',
@@ -70,6 +71,12 @@ export default function SlicerGame() {
       deckTitle: selectedDeck.title,
     })
   }, [profile?.base_language, rows, selectedDeck])
+
+  const sceneKey = useMemo(() => {
+    if (!slicerDeck) return null
+    const imageFingerprint = slicerDeck.words.map((word) => `${word.id}:${word.imageUrl ?? ''}`).join('|')
+    return `${slicerDeck.id}:${slicerDeck.mode ?? 'audio_to_image'}:${restartNonce}:${imageFingerprint}`
+  }, [restartNonce, slicerDeck])
 
   const handleExit = useCallback(() => {
     navigate(returnTo)
@@ -108,16 +115,19 @@ export default function SlicerGame() {
     buildConfig,
   })
 
+  const preparingDeck = Boolean(selectedDeck && ready && sceneKey && readySceneKey !== sceneKey)
+
   useEffect(() => {
-    if (!ready || !gameRef.current || !slicerDeck) return undefined
+    if (!ready || !gameRef.current || !slicerDeck || !sceneKey) return undefined
     const game = gameRef.current
     game.scene.add('slicer', SlicerScene, true, {
       deck: slicerDeck,
       bus,
       primeAudioOnGesture: primeOnGesture,
       onExit: handleExit,
+      onSceneReady: () => setReadySceneKey(sceneKey),
     })
-  }, [bus, gameRef, handleExit, primeOnGesture, ready, slicerDeck])
+  }, [bus, gameRef, handleExit, primeOnGesture, ready, sceneKey, slicerDeck])
 
   useEffect(() => bus.on((event) => {
     handleGameEvent(event, recordResult, setHud, setRoundLabel, setSessionStats)
@@ -132,6 +142,7 @@ export default function SlicerGame() {
     setPaused(false)
     setRoundLabel(null)
     setSessionStats(null)
+    setReadySceneKey(null)
   }, [])
 
   const pauseScene = useCallback(() => {
@@ -150,6 +161,7 @@ export default function SlicerGame() {
     setSessionStats(null)
     setRoundLabel(null)
     setPaused(false)
+    setReadySceneKey(null)
     setHud({
       ...INITIAL_HUD,
       deckTitle: selectedDeck.title,
@@ -184,6 +196,11 @@ export default function SlicerGame() {
         {selectedDeck && deckError && (
           <div className="pointer-events-auto absolute inset-x-4 top-24 z-40 mx-auto max-w-sm rounded-lg border border-red-400/30 bg-red-950/50 p-4 text-center text-red-100">
             {deckError.message}
+          </div>
+        )}
+        {selectedDeck && ready && preparingDeck && (
+          <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 rounded-lg border border-[var(--slicer-border-subtle)] bg-black/55 px-5 py-3 text-center font-[var(--slicer-font-display)] text-xl text-[var(--slicer-text-primary)] shadow-[var(--slicer-shadow-soft)]">
+            Preparing cards…
           </div>
         )}
         <RoundOverlay label={roundLabel} />

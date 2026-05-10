@@ -33,6 +33,7 @@ type SlicerSceneData = {
   bus: GameEventBus;
   primeAudioOnGesture: () => Promise<void>;
   onExit?: () => void;
+  onSceneReady?: () => void;
 };
 
 export type SceneHost = SlicerSceneData;
@@ -106,6 +107,7 @@ export class SlicerScene extends Phaser.Scene {
   private bus!: GameEventBus;
   private primeAudioOnGesture: () => Promise<void> = () => Promise.resolve();
   private onExit?: () => void;
+  private onSceneReady?: () => void;
   private readonly audio = new SlicerAudio();
   private readonly voicesReady = SlicerScene.loadVoices();
   private htmlAudio?: HTMLAudioElement;
@@ -146,6 +148,7 @@ export class SlicerScene extends Phaser.Scene {
     this.bus = data.bus;
     this.primeAudioOnGesture = data.primeAudioOnGesture;
     this.onExit = data.onExit;
+    this.onSceneReady = data.onSceneReady;
   }
 
   preload(): void {
@@ -158,6 +161,16 @@ export class SlicerScene extends Phaser.Scene {
         this.load.spritesheet(key, path, { frameWidth: 512, frameHeight: 512 });
       } else {
         this.load.image(key, path);
+      }
+    }
+
+    const deckImageUrls = new Set<string>();
+    for (const word of this.deck.words) {
+      if (word.imageUrl) deckImageUrls.add(word.imageUrl);
+    }
+    for (const url of deckImageUrls) {
+      if (!this.textures.exists(url)) {
+        this.load.image(url, url);
       }
     }
   }
@@ -179,6 +192,7 @@ export class SlicerScene extends Phaser.Scene {
     this.input.keyboard?.on('keydown-ESC', () => this.onExit?.());
     this.scale.on('resize', () => this.resizeScene());
     this.startSession();
+    this.onSceneReady?.();
   }
 
   isReadyForScriptedSession(): boolean {
