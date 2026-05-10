@@ -2,7 +2,11 @@ import { SeededRandom } from './random';
 import type { DistractorStrategy, GameCard } from './types';
 
 export class DefaultDistractorStrategy implements DistractorStrategy {
-  constructor(private readonly seed = 'rainy-day') {}
+  private readonly seed: string;
+
+  constructor(seed = 'rainy-day') {
+    this.seed = seed;
+  }
 
   selectDistractors(target: GameCard, pool: GameCard[], count: number): GameCard[] {
     const random = new SeededRandom(`${this.seed}:${target.id}:${count}`);

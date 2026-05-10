@@ -24,6 +24,7 @@ type SessionEngineOptions = {
 };
 
 export class SessionEngine {
+  private readonly options: SessionEngineOptions;
   private readonly eventBus: EventBus;
   private readonly scoring = new ScoringSystem();
   private readonly lives = new LivesTracker(3);
@@ -35,7 +36,8 @@ export class SessionEngine {
   private stats: SessionStats = SessionEngine.emptyStats();
   private earnedUpgrades = new Set<UpgradeId>();
 
-  constructor(private readonly options: SessionEngineOptions) {
+  constructor(options: SessionEngineOptions) {
+    this.options = options;
     this.eventBus = options.eventBus ?? new ConsoleEventBus();
     this.sequencer = new PromptSequencer(
       options.deck,

@@ -3,8 +3,11 @@ import type { EngineEvent, EngineEventName, EventBus, EventListener } from './ty
 export class ConsoleEventBus implements EventBus {
   private readonly listeners = new Map<EngineEventName, Set<EventListener>>();
   private readonly anyListeners = new Set<EventListener>();
+  private readonly options: { silent?: boolean };
 
-  constructor(private readonly options: { silent?: boolean } = {}) {}
+  constructor(options: { silent?: boolean } = {}) {
+    this.options = options;
+  }
 
   emit(name: EngineEventName, payload: Record<string, unknown> = {}): void {
     const event: EngineEvent = { name, payload, at: Date.now() };

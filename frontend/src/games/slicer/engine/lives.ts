@@ -11,9 +11,11 @@ export type LifeLossSnapshot = LivesSnapshot & {
 };
 
 export class LivesTracker {
+  private readonly total: number;
   private remaining: number;
 
-  constructor(private readonly total = 3) {
+  constructor(total = 3) {
+    this.total = total;
     this.remaining = total;
   }
 
