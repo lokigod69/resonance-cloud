@@ -22,6 +22,13 @@ export function createDashboardPointerTutorial(t: TFunction): TutorialDefinition
 
   const navStep: DriveStep = {
     element: visibleGenerateNav,
+    onHighlightStarted: (_element, _step, { driver }) => {
+      driver.setConfig({
+        ...driver.getConfig(),
+        stagePadding: 10,
+        stageRadius: 12,
+      })
+    },
     popover: {
       description: t('tutorial.dashboard.gotoGenerate.caption'),
       side: 'bottom',
@@ -38,6 +45,13 @@ export function createDashboardPointerTutorial(t: TFunction): TutorialDefinition
     completionDismissKey,
     steps: [
       {
+        onHighlightStarted: (_element, _step, { driver }) => {
+          driver.setConfig({
+            ...driver.getConfig(),
+            stagePadding: 0,
+            stageRadius: 20,
+          })
+        },
         popover: {
           title: t('tutorial.welcome.title'),
           description: t('tutorial.welcome.subtitle'),

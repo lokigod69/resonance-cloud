@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { useLocation } from 'react-router-dom'
 import 'driver.js/dist/driver.css'
 import { useAuth } from '@/hooks/useAuth'
+import { useSkin, type SkinId } from '@/contexts/SkinContext'
 import { useTranslation } from '@/hooks/useTranslation'
 import { supabase, type AuthProfile } from '@/lib/supabase'
 import { createDashboardPointerTutorial } from '@/lib/tutorials/dashboard'
@@ -50,45 +51,21 @@ interface TutorialContextValue {
 
 const TutorialContext = createContext<TutorialContextValue | null>(null)
 
-function applyGlassyPopover(popover: PopoverDOM, activeIndex: number, activeTutorialId: TutorialId | null, t: TFunction) {
-  const root = document.documentElement
-  const glassy = root.classList.contains('skin-glassy')
-
+function applyTutorialPopover(popover: PopoverDOM, activeIndex: number, activeTutorialId: TutorialId | null, skin: SkinId, t: TFunction) {
   popover.wrapper.classList.add('resonance-tutorial-popover')
-  popover.wrapper.style.borderRadius = '16px'
-  popover.wrapper.style.color = 'var(--text-primary)'
-  popover.wrapper.style.border = '1px solid var(--border-subtle)'
-  popover.wrapper.style.boxShadow = 'var(--shadow-elevated)'
-
-  if (glassy) {
-    popover.wrapper.style.background = 'color-mix(in srgb, var(--go-glass-bg, var(--surface-glass)) 92%, transparent)'
-    popover.wrapper.style.backdropFilter = 'blur(24px) saturate(1.12)'
-    popover.wrapper.style.setProperty('-webkit-backdrop-filter', 'blur(24px) saturate(1.12)')
-  }
-
-  popover.title.style.color = 'var(--text-primary)'
-  popover.description.style.color = 'var(--text-secondary)'
-
-  for (const button of [popover.previousButton, popover.nextButton, popover.closeButton]) {
-    button.style.borderRadius = '999px'
-    button.style.border = '1px solid var(--border-subtle)'
-    button.style.fontWeight = '650'
-  }
-
-  popover.nextButton.style.background = 'var(--accent)'
-  popover.nextButton.style.color = 'var(--accent-foreground)'
+  popover.wrapper.classList.toggle('resonance-tutorial-popover--glassy', skin === 'glassy')
+  popover.wrapper.classList.toggle('resonance-tutorial-popover--classic', skin === 'classic')
+  popover.wrapper.dataset.tutorialId = activeTutorialId ?? ''
+  popover.wrapper.dataset.tutorialStep = String(activeIndex)
 
   if (activeIndex === 0 || activeTutorialId === 'dashboard-pointer') {
-    popover.closeButton.textContent = t(activeTutorialId === 'dashboard-pointer' ? 'tutorial.welcome.skip' : 'tutorial.generate.modal.skip')
-    popover.closeButton.style.position = 'static'
-    popover.closeButton.style.width = 'auto'
-    popover.closeButton.style.height = 'auto'
-    popover.closeButton.style.padding = '0.5rem 0.85rem'
+    popover.closeButton.textContent = t('tutorial.welcome.skip')
   }
 }
 
 export function TutorialProvider({ children }: { children: ReactNode }) {
   const { user, profile, refreshProfile } = useAuth()
+  const { skin } = useSkin()
   const { t } = useTranslation()
   const location = useLocation()
   const [pendingTutorial, setPendingTutorial] = useState<PendingTutorial | null>(null)
@@ -148,6 +125,8 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
       smoothScroll: true,
       allowClose: true,
       overlayClickBehavior: 'close',
+      overlayColor: '#020617',
+      overlayOpacity: 0.78,
       stagePadding: 8,
       stageRadius: 12,
       popoverClass: 'resonance-tutorial-popover',
@@ -156,7 +135,7 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
       nextBtnText: t('common.next'),
       prevBtnText: t('common.back'),
       onPopoverRender: (popover, { state }) => {
-        applyGlassyPopover(popover, state.activeIndex ?? 0, activeTutorialIdRef.current, t)
+        applyTutorialPopover(popover, state.activeIndex ?? 0, activeTutorialIdRef.current, skin, t)
       },
       onDestroyed: () => {
         if (finalized) return
@@ -174,7 +153,7 @@ export function TutorialProvider({ children }: { children: ReactNode }) {
 
     driverRef.current = driver
     driver.drive()
-  }, [markSeen, t])
+  }, [markSeen, skin, t])
 
   useEffect(() => {
     const handleDashboardGenerateClick = (event: MouseEvent) => {
