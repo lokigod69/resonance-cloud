@@ -74,3 +74,20 @@
   pointer-events: auto;
 }
 
+:global {
+  @keyframes round-overlay-fade {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, 8px);
+    }
+    18%,
+    74% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -6px);
+    }
+  }
+}

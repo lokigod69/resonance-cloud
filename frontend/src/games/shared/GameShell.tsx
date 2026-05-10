@@ -26,8 +26,11 @@ export function GameShell({ children, className, onExit }: GameShellProps) {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return
       event.preventDefault()
-      onExit?.()
-      navigate(returnTo)
+      if (onExit) {
+        onExit()
+      } else {
+        navigate(returnTo)
+      }
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -40,4 +43,3 @@ export function GameShell({ children, className, onExit }: GameShellProps) {
     </main>
   )
 }
-
