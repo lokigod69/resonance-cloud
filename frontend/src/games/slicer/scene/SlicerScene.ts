@@ -624,23 +624,6 @@ export class SlicerScene extends Phaser.Scene {
       }
       this.ambientEmitters.push(emberEmitter, sparkEmitter);
     }
-    if (config.diagonalSpark) {
-      this.ambientEmitters.push(
-        this.add.particles(0, 0, EMBER_ASSET_KEYS.particleSpark, {
-          x: { min: -80, max: this.scale.width + 80 },
-          y: { min: -80, max: this.scale.height * 0.7 },
-          lifespan: { min: 1200, max: 2400 },
-          speedX: { min: -45, max: 10 },
-          speedY: { min: 210, max: 360 },
-          scale: { start: 0.18, end: 0 },
-          alpha: { start: 0.76, end: 0 },
-          rotate: { min: 70, max: 82 },
-          frequency: 95,
-          maxParticles: 20,
-          blendMode: Phaser.BlendModes.ADD,
-        }).setDepth(-3),
-      );
-    }
     if (config.signature.emitterAccent === 'gold-glints') {
       this.ambientEmitters.push(
         this.add.particles(0, 0, EMBER_ASSET_KEYS.particleSpark, {
@@ -817,7 +800,6 @@ export class SlicerScene extends Phaser.Scene {
     if (content.kind === 'image' && this.textures.exists(content.url)) {
       const image = this.add.image(0, 0, content.url).setDisplaySize(width * 0.76, height * 0.76);
       card.add(image);
-      if (content.label) this.addTextContent(card, content.label, width, height, 0.1);
       return;
     }
     const text = content.kind === 'text' ? content.text : content.label ?? '';

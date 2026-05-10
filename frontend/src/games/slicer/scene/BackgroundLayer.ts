@@ -73,13 +73,6 @@ export class BackgroundLayer {
       this.overlay.fillRect(0, height * 0.82, width, height * 0.18);
     }
 
-    if (signature.name === 'rainfall') {
-      this.overlay.lineStyle(1, 0xff6b35, 0.18);
-      for (let x = -width * 0.2; x < width * 1.2; x += width * 0.045) {
-        this.overlay.lineBetween(x, 0, x - width * 0.055, height * 0.62);
-      }
-    }
-
     if (signature.name === 'aurora') {
       this.overlay.fillGradientStyle(0xff6b35, 0xffd700, 0xff6b35, 0xffd700, 0, 0, 0.24, 0);
       this.overlay.fillRect(-width * 0.08, height * 0.29, width * 1.16, Math.max(44, height * 0.09));

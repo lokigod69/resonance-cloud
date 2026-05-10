@@ -43,7 +43,6 @@ export default function GamesHub() {
                 />
                 <div>
                   <h2 className="text-lg font-semibold">{t(game.titleKey)}</h2>
-                  <p className="mt-1 text-sm text-muted-foreground">{t(game.subtitleKey)}</p>
                 </div>
               </button>
             )
@@ -53,4 +52,3 @@ export default function GamesHub() {
     </div>
   )
 }
-
