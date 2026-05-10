@@ -3,14 +3,21 @@ import { SeededRandom } from './random';
 import type { DistractorStrategy, GameDeck, LevelConfig, PromptRound } from './types';
 
 export class PromptSequencer {
+  private readonly deck: GameDeck;
+  private readonly strategy: DistractorStrategy;
+  private readonly random: SeededRandom;
   private cursor = 0;
   private roundCounter = 0;
 
   constructor(
-    private readonly deck: GameDeck,
-    private readonly strategy: DistractorStrategy = new DefaultDistractorStrategy(),
-    private readonly random = new SeededRandom(),
-  ) {}
+    deck: GameDeck,
+    strategy: DistractorStrategy = new DefaultDistractorStrategy(),
+    random = new SeededRandom(),
+  ) {
+    this.deck = deck;
+    this.strategy = strategy;
+    this.random = random;
+  }
 
   next(level: LevelConfig): PromptRound {
     const cards = this.deck.cards;

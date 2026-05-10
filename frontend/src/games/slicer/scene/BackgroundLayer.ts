@@ -23,12 +23,15 @@ const BASE_STOPS: Record<string, GradientStop> = {
 };
 
 export class BackgroundLayer {
+  private readonly scene: Phaser.Scene;
   private base?: Phaser.GameObjects.Graphics;
   private warmth?: Phaser.GameObjects.Graphics;
   private overlay?: Phaser.GameObjects.Graphics;
   private shimmerTween?: Phaser.Tweens.Tween;
 
-  constructor(private readonly scene: Phaser.Scene) {}
+  constructor(scene: Phaser.Scene) {
+    this.scene = scene;
+  }
 
   redraw(level: LevelConfig, config: EmberFxConfig): void {
     this.destroy();

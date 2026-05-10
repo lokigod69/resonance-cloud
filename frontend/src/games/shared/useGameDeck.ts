@@ -106,7 +106,7 @@ export function useGameDeck(gameId: string, deckId: string | null, language: str
       setRows([])
       setError(wordsError)
     } else {
-      setRows((data ?? []) as GameWordRow[])
+      setRows((data ?? []) as unknown as GameWordRow[])
     }
     setLoading(false)
   }, [deckId, gameId, language, userId])
