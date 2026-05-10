@@ -25,7 +25,7 @@ export function usePhaserMount({ parentRef, enabled, buildConfig }: PhaserMountO
       const { default: PhaserRuntime } = await import('phaser')
       if (cancelled || !parentRef.current) return
 
-      gameRef.current?.destroy(true)
+      gameRef.current?.destroy(true, false)
       gameRef.current = null
 
       const config = buildConfig(PhaserRuntime)
@@ -47,7 +47,7 @@ export function usePhaserMount({ parentRef, enabled, buildConfig }: PhaserMountO
       cancelled = true
       setReady(false)
       if (gameRef.current) {
-        gameRef.current.destroy(true)
+        gameRef.current.destroy(true, false)
         gameRef.current = null
       }
     }
@@ -55,4 +55,3 @@ export function usePhaserMount({ parentRef, enabled, buildConfig }: PhaserMountO
 
   return { gameRef, ready }
 }
-

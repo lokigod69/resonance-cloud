@@ -117,11 +117,6 @@ export default function SlicerGame() {
       primeAudioOnGesture: primeOnGesture,
       onExit: handleExit,
     })
-
-    return () => {
-      // usePhaserMount owns Phaser.Game teardown; removing the scene here races Phaser internals on refresh.
-      game.scene.stop('slicer')
-    }
   }, [bus, gameRef, handleExit, primeOnGesture, ready, slicerDeck])
 
   useEffect(() => bus.on((event) => {
