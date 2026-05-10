@@ -1,12 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useSkin, type SkinId } from '@/contexts/SkinContext'
 import { useTheme, type Theme } from '@/contexts/ThemeContext'
 import { supabase } from '@/lib/supabase'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
-import { useTutorial } from '@/components/tutorial/TutorialProvider'
-import type { TutorialId, TutorialKey } from '@/lib/tutorials/types'
 import {
   Dialog,
   DialogContent,
@@ -23,7 +20,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { LogOut, Check, Upload, Trash2, PlayCircle } from 'lucide-react'
+import { LogOut, Check, Upload, Trash2 } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { BASE_LANGUAGES, getDisplayLabel } from '@/lib/languages'
 import { useToast } from '@/components/Toast'
@@ -47,10 +44,6 @@ const ACCEPTED_INPUT_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 const MAX_INPUT_BYTES = 5 * 1024 * 1024 // 5 MB
 const OUTPUT_DIMENSION = 512
 const OUTPUT_QUALITY = 0.9
-
-const TUTORIALS: Array<{ id: TutorialId; labelKey: string; versionedKey: TutorialKey }> = [
-  { id: 'generate', labelKey: 'tutorial.generate.replay.label', versionedKey: 'generate.v1' },
-]
 
 function avatarObjectPath(userId: string): string {
   return `${userId}/${AVATAR_FILENAME}`
@@ -108,13 +101,10 @@ interface ProfileModalProps {
 
 export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) {
   const { profile, user, signOut, refreshProfile } = useAuth()
-  const { t, locale } = useTranslation()
+  const { t } = useTranslation()
   const { skin, setSkin } = useSkin()
   const { theme, setTheme } = useTheme()
   const { toast } = useToast()
-  const { setPendingTutorial } = useTutorial()
-  const navigate = useNavigate()
-  const location = useLocation()
 
   const [displayName, setDisplayName] = useState(profile?.display_name || '')
   const [baseLanguage, setBaseLanguage] = useState(profile?.base_language || '')
@@ -144,24 +134,6 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
     .join('')
     .toUpperCase()
     .slice(0, 2)
-
-  function tutorialStatus(versionedKey: TutorialKey): string {
-    const seenAt = profile?.seen_tutorials?.[versionedKey]
-    if (!seenAt) return t('tutorial.generate.replay.notYetSeen')
-    const seenDate = new Date(seenAt)
-    const formatted = Number.isNaN(seenDate.getTime())
-      ? seenAt
-      : new Intl.DateTimeFormat(locale, { dateStyle: 'medium' }).format(seenDate)
-    return t('tutorial.generate.replay.lastSeen', { date: formatted })
-  }
-
-  function handleReplayTutorial(id: TutorialId) {
-    setPendingTutorial({ id, force: true })
-    onOpenChange(false)
-    if (location.pathname !== '/generate') {
-      navigate('/generate')
-    }
-  }
 
   async function handleAvatarFile(file: File) {
     if (!user) return
@@ -468,26 +440,6 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
               {langSaving && <span className="text-xs text-muted-foreground shrink-0">{t('profile.saving')}</span>}
             </div>
           </div>
-
-          <section className="space-y-2">
-            <h3 className="text-sm font-medium">{t('profile.tutorials')}</h3>
-            <div className="space-y-2">
-              {TUTORIALS.map((tutorial) => (
-                <button
-                  key={tutorial.id}
-                  type="button"
-                  onClick={() => handleReplayTutorial(tutorial.id)}
-                  className="theme-chip flex w-full items-center justify-between gap-3 rounded-lg border px-4 py-3 text-left transition-all hover:border-primary/50"
-                >
-                  <span className="min-w-0">
-                    <span className="block text-sm font-medium">{t(tutorial.labelKey)}</span>
-                    <span className="block text-xs text-muted-foreground">{tutorialStatus(tutorial.versionedKey)}</span>
-                  </span>
-                  <PlayCircle className="h-4 w-4 shrink-0 text-muted-foreground" />
-                </button>
-              ))}
-            </div>
-          </section>
 
           {/* Email (read-only) */}
           <div className="space-y-2">

@@ -75,7 +75,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.displayNamePlaceholder': 'Enter your name',
     'profile.baseLanguage': 'Base Language',
     'profile.selectLanguage': 'Select language',
-    'profile.tutorials': 'Tutorials',
     'profile.email': 'Email',
     'profile.signOut': 'Sign Out',
     'profile.saving': 'Saving...',
@@ -88,25 +87,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.avatar.uploadFailed': 'Avatar upload failed',
     'profile.avatar.invalid': 'Invalid image',
     'profile.avatar.tooLarge': 'Image too large (max 5 MB)',
-
-    // ── Tutorials ──
-    'tutorial.welcome.title': 'Generate your first deck',
-    'tutorial.welcome.subtitle': 'Two steps. Skip anytime.',
-    'tutorial.welcome.start': 'Take me there',
-    'tutorial.welcome.skip': 'Skip',
-    'tutorial.dashboard.gotoGenerate.caption': 'Click Generate to start.',
-    'tutorial.generate.step1.caption': 'Pick a language.',
-    'tutorial.generate.step2.caption': 'Pick a product.',
-    'tutorial.generate.step3.caption': 'Pick a category — five words auto-filled.',
-    'tutorial.generate.step4.caption': 'Or type your own. Enter to lock in.',
-    'tutorial.generate.step5.caption': 'Quick Generate uses defaults. Customize gives full control.',
-    'tutorial.generate.step6.caption': 'Customize for full control.',
-    'tutorial.generate.complete.title': 'That\'s it.',
-    'tutorial.generate.complete.body': 'Replay anytime from your Profile.',
-    'tutorial.generate.complete.dismiss': 'Got it',
-    'tutorial.generate.replay.label': 'Generate tutorial',
-    'tutorial.generate.replay.lastSeen': 'Last seen {date}',
-    'tutorial.generate.replay.notYetSeen': 'Not yet seen',
 
     // ── Credits ──
     'credits.heading': 'Credits',
@@ -129,7 +109,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'common.refresh': 'Refresh',
     'common.cancel': 'Cancel',
     'common.back': '← Back',
-    'common.next': 'Next',
 
     // ── Add Word ──
     'addWord.title': 'Add Word',
@@ -935,7 +914,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.displayNamePlaceholder': 'Name eingeben',
     'profile.baseLanguage': 'Muttersprache',
     'profile.selectLanguage': 'Sprache wählen',
-    'profile.tutorials': 'Tutorials',
     'profile.email': 'E-Mail',
     'profile.signOut': 'Abmelden',
     'profile.saving': 'Speichern...',
@@ -948,25 +926,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.avatar.uploadFailed': 'Hochladen fehlgeschlagen',
     'profile.avatar.invalid': 'Ungültiges Bild',
     'profile.avatar.tooLarge': 'Bild zu groß (max. 5 MB)',
-
-    // ── Tutorials ──
-    'tutorial.welcome.title': 'Erstelle dein erstes Deck',
-    'tutorial.welcome.subtitle': 'Zwei Schritte. Jederzeit überspringbar.',
-    'tutorial.welcome.start': 'Los geht\'s',
-    'tutorial.welcome.skip': 'Überspringen',
-    'tutorial.dashboard.gotoGenerate.caption': 'Klicke auf Erstellen.',
-    'tutorial.generate.step1.caption': 'Sprache wählen.',
-    'tutorial.generate.step2.caption': 'Produkt wählen.',
-    'tutorial.generate.step3.caption': 'Kategorie wählen — fünf Wörter automatisch.',
-    'tutorial.generate.step4.caption': 'Oder selbst tippen. Enter zum Bestätigen.',
-    'tutorial.generate.step5.caption': 'Quick Generate nutzt Standardwerte. Customize für volle Kontrolle.',
-    'tutorial.generate.step6.caption': 'Customize für volle Kontrolle.',
-    'tutorial.generate.complete.title': 'Fertig.',
-    'tutorial.generate.complete.body': 'Wiederholen jederzeit über dein Profil.',
-    'tutorial.generate.complete.dismiss': 'Verstanden',
-    'tutorial.generate.replay.label': 'Generate-Tutorial',
-    'tutorial.generate.replay.lastSeen': 'Zuletzt gesehen am {date}',
-    'tutorial.generate.replay.notYetSeen': 'Noch nicht angesehen',
 
     // ── Credits ──
     'credits.heading': 'Credits',
@@ -989,7 +948,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'common.refresh': 'Aktualisieren',
     'common.cancel': 'Abbrechen',
     'common.back': '← Zurück',
-    'common.next': 'Weiter',
 
     // ── Add Word ──
     'addWord.title': 'Wort hinzufügen',
@@ -1793,7 +1751,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'profile.displayNamePlaceholder': 'Entre ton nom',
     'profile.baseLanguage': 'Langue maternelle',
     'profile.selectLanguage': 'Choisir une langue',
-    'profile.tutorials': 'Tutoriels',
     'profile.email': 'E-mail',
     'profile.signOut': 'Déconnexion',
     'profile.saving': 'Enregistrement...',
@@ -1828,7 +1785,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'common.refresh': 'Actualiser',
     'common.cancel': 'Annuler',
     'common.back': '← Retour',
-    'common.next': 'Suivant',
 
     // ── Add Word ──
     'addWord.title': 'Ajouter un mot',

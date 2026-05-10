@@ -7,7 +7,6 @@ import { SkinProvider, useSkin } from '@/contexts/SkinContext'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import { DialogProvider, useDialogs } from '@/contexts/DialogContext'
 import { ToastProvider } from '@/components/Toast'
-import { TutorialProvider } from '@/components/tutorial/TutorialProvider'
 import { AppLayout } from '@/components/layout/AppLayout'
 import PolishGlassLayout from '@/components/layout/PolishGlassLayout'
 import FerrariAdminLayout from '@/layouts/FerrariAdminLayout'
@@ -243,15 +242,13 @@ export default function App() {
       <SkinProvider>
       <ToastProvider>
       <AuthProvider>
-        <TutorialProvider>
-          <LanguageProvider>
-            <DialogProvider>
-              <DocumentLanguageSync />
-              <AppRoutes />
-              <AppShellDialogs />
-            </DialogProvider>
-          </LanguageProvider>
-        </TutorialProvider>
+        <LanguageProvider>
+          <DialogProvider>
+            <DocumentLanguageSync />
+            <AppRoutes />
+            <AppShellDialogs />
+          </DialogProvider>
+        </LanguageProvider>
       </AuthProvider>
       </ToastProvider>
       </SkinProvider>

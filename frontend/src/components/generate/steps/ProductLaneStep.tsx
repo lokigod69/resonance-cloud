@@ -55,7 +55,7 @@ export default function ProductLaneStep({
       : t('generate.productLane.title')
 
   return (
-    <div className={`premium-product-step premium-product-step-${skin}`} data-tutorial-id="generate.product_lane">
+    <div className={`premium-product-step premium-product-step-${skin}`}>
       {skin === 'glassy' ? <h3>{title}</h3> : <h2>{title}</h2>}
       <ProductLaneVisualSelector
         options={tiles}

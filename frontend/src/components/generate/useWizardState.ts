@@ -477,7 +477,6 @@ export interface WizardState {
 }
 
 export type WizardAction =
-  | { type: 'RESET' }
   | { type: 'SET_LANGUAGE'; language: string }
   | { type: 'PRESELECT_LANGUAGE'; language: string }
   | { type: 'ADD_WORD'; word: string }
@@ -575,9 +574,6 @@ export function computeCreditCost(lane: ProductLane | null, wordCount: number): 
 
 function wizardReducer(state: WizardState, action: WizardAction): WizardState {
   switch (action.type) {
-    case 'RESET':
-      return initialState
-
     case 'SET_LANGUAGE':
       return { ...state, language: action.language, step: 2 }
 

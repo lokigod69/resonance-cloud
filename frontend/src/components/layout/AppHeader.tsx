@@ -89,7 +89,6 @@ export function AppHeader() {
                 <Link
                   key={to}
                   to={to}
-                  data-tutorial-id={to === '/generate' ? 'dashboard.go_to_generate' : undefined}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
                     'flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors',
@@ -143,7 +142,6 @@ export function AppHeader() {
           <Link
             key={to}
             to={to}
-            data-tutorial-id={to === '/generate' ? 'dashboard.go_to_generate' : undefined}
             className={cn(
               'flex min-w-[68px] flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors',
               location.pathname === to || location.pathname.startsWith(to + '/')

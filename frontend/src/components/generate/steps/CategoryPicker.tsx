@@ -188,7 +188,7 @@ export default function CategoryPicker({
 
   if (mode === 'idle') {
     return (
-      <div className="flex w-full flex-col items-center gap-3 pb-2" data-tutorial-id="generate.category_picker">
+      <div className="flex w-full flex-col items-center gap-3 pb-2">
         <button
           type="button"
           className="words-choice-button"
@@ -225,7 +225,7 @@ export default function CategoryPicker({
           </button>
         </div>
         {renderCountSlider()}
-        <div className="w-full space-y-5 rounded-xl border border-border bg-card/40 p-4" data-tutorial-id="generate.category_picker">
+        <div className="w-full space-y-5 rounded-xl border border-border bg-card/40 p-4">
           {CATEGORY_GROUPS.map((group) => (
             <div key={group.label}>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3 text-center">
@@ -267,7 +267,6 @@ export default function CategoryPicker({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       className="w-full space-y-4"
-      data-tutorial-id="generate.category_picker"
     >
       <div className="flex items-center justify-between">
         <p className="text-xs uppercase tracking-wider text-muted-foreground">

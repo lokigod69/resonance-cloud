@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, ArrowLeft, Film } from 'lucide-react'
@@ -41,11 +41,8 @@ import {
 import { FlagIcon } from '@/components/ui/FlagIcon'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
-import { useTutorial } from '@/components/tutorial/TutorialProvider'
-import { useTutorialTrigger } from '@/hooks/useTutorialTrigger'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
-import type { GenerateTutorialController } from '@/lib/tutorials/types'
 
 /* ─── Constants ─────────────────────────────────── */
 
@@ -70,18 +67,15 @@ export default function GeneratePG() {
   const hasNavigatedToDeckRef = useRef(false)
 
   const { t } = useTranslation()
-  const { tutorialActive, registerGenerateTutorialController } = useTutorial()
-  useTutorialTrigger('generate')
 
   const [existingDeck, setExistingDeck] = useState<ExistingDeck | null>(null)
 
   useEffect(() => {
-    if (tutorialActive) return
     const frame = window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     })
     return () => window.cancelAnimationFrame(frame)
-  }, [pgStep, tutorialActive])
+  }, [pgStep])
 
   useEffect(() => {
     if (!deckIdParam) return
@@ -129,7 +123,6 @@ export default function GeneratePG() {
   // the wizard's own language state is still empty — never overwrites a manual choice.
   const { activeLanguage } = useLanguage()
   useEffect(() => {
-    if (tutorialActive) return
     if (deckIdParam) return
     if (state.language) return
     if (!activeLanguage) return
@@ -140,105 +133,7 @@ export default function GeneratePG() {
     }, 0)
 
     return () => window.clearTimeout(timeoutId)
-  }, [deckIdParam, state.language, activeLanguage, dispatch, tutorialActive])
-
-  const nextPaint = useCallback(
-    () => new Promise<void>((resolve) => window.requestAnimationFrame(() => resolve())),
-    [],
-  )
-
-  const clickWordsModeChoice = useCallback(async (label: string) => {
-    await nextPaint()
-    const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.words-choice-button'))
-    buttons.find((button) => button.textContent?.trim() === label)?.click()
-  }, [nextPaint])
-
-  const prepareWordsStep = useCallback(async (mode: 'picker' | 'manual', withWords = false) => {
-    setPgStep(1)
-    await nextPaint()
-    dispatch({ type: 'SET_LANGUAGE', language: state.language ?? activeLanguage ?? 'German' })
-    dispatch({ type: 'SET_PRODUCT_LANE', lane: 'video' })
-    dispatch({ type: 'SET_WORDS', words: withWords ? ['lernen'] : [] })
-    setPgStep(2)
-    await nextPaint()
-
-    if (mode === 'picker') {
-      await clickWordsModeChoice(t('generate.words.pickCategory'))
-    } else if (!withWords) {
-      await clickWordsModeChoice(t('generate.words.typeOwn'))
-    }
-
-    return true
-  }, [activeLanguage, clickWordsModeChoice, dispatch, nextPaint, state.language, t])
-
-  const prepareTutorialStep = useCallback<GenerateTutorialController['prepareTutorialStep']>(async (stepId) => {
-    if (stepId === 'language') {
-      if (existingDeck) return false
-      dispatch({ type: 'RESET' })
-      setPgStep(0)
-      return true
-    }
-
-    if (stepId === 'product') {
-      if (existingDeck?.deck_type === 'video') return false
-      if (!state.language && !existingDeck) {
-        dispatch({ type: 'SET_LANGUAGE', language: activeLanguage ?? 'German' })
-      }
-      setPgStep(1)
-      return true
-    }
-
-    if (stepId === 'category') {
-      return prepareWordsStep('picker')
-    }
-
-    if (stepId === 'manual') {
-      return prepareWordsStep('manual')
-    }
-
-    if (stepId === 'action-choice') {
-      return prepareWordsStep('manual', true)
-    }
-
-    return true
-  }, [activeLanguage, dispatch, existingDeck, prepareWordsStep, state.language])
-
-  const resetForTutorial = useCallback<GenerateTutorialController['resetForTutorial']>(async () => {
-    if (existingDeck) {
-      const lane: ProductLane =
-        existingDeck.deck_type === 'video'
-          ? 'video'
-          : existingDeck.last_card_image_model === 'gpt_image_2'
-            ? 'card_premium'
-            : 'card_standard'
-      dispatch({ type: 'SET_LANGUAGE', language: existingDeck.target_language })
-      dispatch({ type: 'SET_PRODUCT_LANE', lane })
-      dispatch({ type: 'SET_WORDS', words: [] })
-      setPgStep(existingDeck.deck_type === 'video' ? 2 : 1)
-    } else {
-      dispatch({ type: 'RESET' })
-      setPgStep(0)
-    }
-    await nextPaint()
-  }, [dispatch, existingDeck, nextPaint])
-
-  const generateTutorialController = useMemo<GenerateTutorialController>(() => ({
-    resetForTutorial,
-    prepareTutorialStep,
-    getTutorialStateSnapshot: () => ({
-      skin: 'classic',
-      hasExistingDeck: !!existingDeck,
-      existingDeckType: existingDeck?.deck_type ?? null,
-      step: pgStep,
-      language: state.language,
-      productLane: state.productLane,
-      wordCount: state.words.length,
-    }),
-  }), [existingDeck, pgStep, prepareTutorialStep, resetForTutorial, state.language, state.productLane, state.words.length])
-
-  useEffect(() => (
-    registerGenerateTutorialController(generateTutorialController)
-  ), [generateTutorialController, registerGenerateTutorialController])
+  }, [deckIdParam, state.language, activeLanguage, dispatch])
 
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
   const generatedQueueIsCard = existingDeck?.deck_type === 'card' || isCardLane(state.productLane)

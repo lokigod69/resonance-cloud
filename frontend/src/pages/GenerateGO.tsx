@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -9,11 +9,8 @@ import { FlagIcon } from '@/components/ui/FlagIcon'
 import { submitGeneration } from '@/components/generate/submitGeneration'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
 import { useTranslation } from '@/hooks/useTranslation'
-import { useTutorial } from '@/components/tutorial/TutorialProvider'
-import { useTutorialTrigger } from '@/hooks/useTutorialTrigger'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
 import { getGeneratedDeckHref, shouldNavigateGeneratedDeck } from '@/lib/cardGenerationProgress'
-import type { GenerateTutorialController } from '@/lib/tutorials/types'
 import {
   DEFAULT_CARD_LAYER2,
   DEFAULT_CARD_LAYER2_ART_STYLE,
@@ -92,8 +89,6 @@ export default function GenerateGO() {
   const { toast } = useToast()
   const { activeLanguage } = useLanguage()
   const { t, tp } = useTranslation()
-  const { tutorialActive, registerGenerateTutorialController } = useTutorial()
-  useTutorialTrigger('generate')
   const navigate = useNavigate()
 
   const [step, setStep] = useState(1)
@@ -182,7 +177,6 @@ export default function GenerateGO() {
 
   // Pre-seed from LanguageContext.
   useEffect(() => {
-    if (tutorialActive) return
     if (deckIdParam) return
     if (language) return
     if (!activeLanguage) return
@@ -193,7 +187,7 @@ export default function GenerateGO() {
     }, 0)
 
     return () => window.clearTimeout(timeoutId)
-  }, [deckIdParam, language, activeLanguage, tutorialActive])
+  }, [deckIdParam, language, activeLanguage])
 
   const queueDeckId = generatedDeckId ?? existingDeck?.id ?? null
   const generatedQueueIsCard = existingDeck?.deck_type === 'card' || isCardLane(productLane)
@@ -220,7 +214,6 @@ export default function GenerateGO() {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    if (tutorialActive) return
     const ref = sectionRefs.current[step - 1]
     if (ref) {
       setTimeout(() => {
@@ -231,126 +224,9 @@ export default function GenerateGO() {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 150)
     }
-  }, [step, tutorialActive])
+  }, [step])
 
   const cardLane = isCardLane(productLane)
-
-  const nextPaint = useCallback(
-    () => new Promise<void>((resolve) => window.requestAnimationFrame(() => resolve())),
-    [],
-  )
-
-  const resetSelectionsForTutorial = useCallback(() => {
-    setLanguage(null)
-    setWords([])
-    setVibe(null)
-    setMovieTitle('')
-    setShowMovieInput(false)
-    setArtStyle(null)
-    setExpandedCategory(null)
-    setGenre(null)
-    setLyricMode(null)
-    setProductLane(null)
-    setCardImageStyle(null)
-    setCardLayer2(null)
-    setPremiumQuickMode(DEFAULT_PREMIUM_QUICK_MODE)
-    setPremiumInfographicStyle(DEFAULT_PREMIUM_INFOGRAPHIC_STYLE)
-    setCustomGenre('')
-    setShowCustomInput(false)
-    setDeckName('')
-    setStep(1)
-  }, [])
-
-  const clickWordsModeChoice = useCallback(async (label: string) => {
-    await nextPaint()
-    const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('.words-choice-button'))
-    buttons.find((button) => button.textContent?.trim() === label)?.click()
-  }, [nextPaint])
-
-  const prepareWordsStep = useCallback(async (mode: 'picker' | 'manual', withWords = false) => {
-    setStep(2)
-    await nextPaint()
-    setLanguage((current) => current ?? activeLanguage ?? 'German')
-    setProductLane('video')
-    setWords(withWords ? ['lernen'] : [])
-    setStep(3)
-    await nextPaint()
-
-    if (mode === 'picker') {
-      await clickWordsModeChoice(t('generate.words.pickCategory'))
-    } else if (!withWords) {
-      await clickWordsModeChoice(t('generate.words.typeOwn'))
-    }
-
-    return true
-  }, [activeLanguage, clickWordsModeChoice, nextPaint, t])
-
-  const prepareTutorialStep = useCallback<GenerateTutorialController['prepareTutorialStep']>(async (stepId) => {
-    if (stepId === 'language') {
-      if (existingDeck) return false
-      resetSelectionsForTutorial()
-      return true
-    }
-
-    if (stepId === 'product') {
-      if (existingDeck?.deck_type === 'video') return false
-      if (!language && !existingDeck) {
-        setLanguage(activeLanguage ?? 'German')
-      }
-      setStep(2)
-      return true
-    }
-
-    if (stepId === 'category') {
-      return prepareWordsStep('picker')
-    }
-
-    if (stepId === 'manual') {
-      return prepareWordsStep('manual')
-    }
-
-    if (stepId === 'action-choice') {
-      return prepareWordsStep('manual', true)
-    }
-
-    return true
-  }, [activeLanguage, existingDeck, language, prepareWordsStep, resetSelectionsForTutorial])
-
-  const resetForTutorial = useCallback<GenerateTutorialController['resetForTutorial']>(async () => {
-    if (existingDeck) {
-      const lane: ProductLane =
-        existingDeck.deck_type === 'video'
-          ? 'video'
-          : existingDeck.last_card_image_model === 'gpt_image_2'
-            ? 'card_premium'
-            : 'card_standard'
-      setLanguage(existingDeck.target_language)
-      setProductLane(lane)
-      setWords([])
-      setStep(existingDeck.deck_type === 'video' ? 3 : 2)
-    } else {
-      resetSelectionsForTutorial()
-    }
-    await nextPaint()
-  }, [existingDeck, nextPaint, resetSelectionsForTutorial])
-
-  const generateTutorialController = useMemo<GenerateTutorialController>(() => ({
-    resetForTutorial,
-    prepareTutorialStep,
-    getTutorialStateSnapshot: () => ({
-      skin: 'glassy',
-      hasExistingDeck: !!existingDeck,
-      existingDeckType: existingDeck?.deck_type ?? null,
-      step,
-      language,
-      productLane,
-      wordCount: words.length,
-    }),
-  }), [existingDeck, language, prepareTutorialStep, productLane, resetForTutorial, step, words.length])
-
-  useEffect(() => (
-    registerGenerateTutorialController(generateTutorialController)
-  ), [generateTutorialController, registerGenerateTutorialController])
 
   // ── Orb class helper ──────────────────────────────
 
@@ -932,7 +808,7 @@ export default function GenerateGO() {
       {!existingDeck && step === 1 && (
         <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
           {step === 1 && <h3>{t('generateGo.chooseLanguageOrbit')}</h3>}
-          <div className="gen-orb-row gen-language-grid" data-tutorial-id="generate.lang_picker">
+          <div className="gen-orb-row gen-language-grid">
             {LANGUAGES.map(lang => (
               <button
                 type="button"
