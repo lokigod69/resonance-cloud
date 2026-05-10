@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Play } from 'lucide-react'
+import { ArrowLeft, Play } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
@@ -10,6 +11,7 @@ export type SlicerDeckChoice = {
   title: string
   targetLanguage: string
   mode: DeckMode
+  isPlayAll?: boolean
 }
 
 type DeckRow = {
@@ -29,6 +31,7 @@ const MODES: Array<{ value: DeckMode; label: string }> = [
 ]
 
 export function DeckPicker({ onSelect }: DeckPickerProps) {
+  const navigate = useNavigate()
   const { user } = useAuth()
   const { activeLanguage } = useLanguage()
   const [decks, setDecks] = useState<DeckRow[]>([])
@@ -77,9 +80,20 @@ export function DeckPicker({ onSelect }: DeckPickerProps) {
     return `Choose a ${activeLanguage.toUpperCase()} deck`
   }, [activeLanguage])
 
+  const playAllTitle = activeLanguage?.toLowerCase().startsWith('de') ? 'Alle Wörter' : 'All Words'
+  const playAllLabel = activeLanguage?.toLowerCase().startsWith('de') ? 'Alle Wörter spielen' : 'Play all words'
+
   return (
     <section className="pointer-events-auto absolute inset-0 z-30 grid place-items-center bg-black/45 px-4 text-[#fff1d0] backdrop-blur-sm">
       <div className="w-full max-w-5xl">
+        <button
+          type="button"
+          onClick={() => navigate('/games')}
+          className="mb-5 inline-flex min-h-10 items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/30 px-4 text-sm text-[#fff1d0] transition hover:bg-white/10"
+        >
+          <ArrowLeft size={16} />
+          Back
+        </button>
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="text-xs uppercase tracking-[0.18em] text-[#ff9155]/70">Lexicon Slice</p>
@@ -111,6 +125,27 @@ export function DeckPicker({ onSelect }: DeckPickerProps) {
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {activeLanguage && (
+              <button
+                type="button"
+                onClick={() => onSelect({
+                  id: `play-all-${activeLanguage}`,
+                  title: playAllTitle,
+                  targetLanguage: activeLanguage,
+                  mode,
+                  isPlayAll: true,
+                })}
+                className="group aspect-video rounded-lg border border-[rgba(255,215,0,0.42)] bg-[#ff6b35]/10 px-8 py-6 text-center shadow-[0_0_34px_rgba(255,215,0,0.18)] transition hover:bg-[#ff6b35]/15 hover:shadow-[0_0_42px_rgba(255,215,0,0.26)]"
+              >
+                <span className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full border border-[rgba(255,215,0,0.48)] bg-black/35 text-[#ffd700] transition group-hover:bg-[#ff6b35]/20">
+                  <Play size={17} />
+                </span>
+                <span className="block truncate font-serif text-2xl leading-tight text-[#ffd700]">{playAllLabel}</span>
+                <span className="mt-2 block text-xs uppercase tracking-[0.14em] text-[#ffd2a5]/70">
+                  {decks.reduce((total, deck) => total + (deck.word_count ?? 0), 0)} words
+                </span>
+              </button>
+            )}
             {decks.map((deck) => (
               <button
                 key={deck.id}

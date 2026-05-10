@@ -20,6 +20,7 @@ type WordsToSlicerDeckOptions = {
   wordsPerRound?: number
   deckId: string
   deckTitle: string
+  shuffle?: boolean
 }
 
 export function pickImageUrl(word: WordRow): string | undefined {
@@ -35,6 +36,8 @@ export function pickImageUrl(word: WordRow): string | undefined {
 }
 
 export function wordsToSlicerDeck(words: WordRow[], opts: WordsToSlicerDeckOptions): DeckDefinition {
+  const deckWords = opts.shuffle ? shuffleWords(words) : words
+
   return {
     id: opts.deckId,
     title: opts.deckTitle,
@@ -42,7 +45,7 @@ export function wordsToSlicerDeck(words: WordRow[], opts: WordsToSlicerDeckOptio
     target_language: opts.targetLanguage,
     base_language: opts.baseLanguage,
     words_per_round: opts.wordsPerRound ?? 5,
-    words: words.map((word) => ({
+    words: deckWords.map((word) => ({
       id: word.id,
       word: word.word,
       translation: word.translation ?? undefined,
@@ -52,3 +55,13 @@ export function wordsToSlicerDeck(words: WordRow[], opts: WordsToSlicerDeckOptio
   }
 }
 
+function shuffleWords<T>(words: T[]): T[] {
+  const shuffled = [...words]
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1))
+    const current = shuffled[index]
+    shuffled[index] = shuffled[swapIndex]
+    shuffled[swapIndex] = current
+  }
+  return shuffled
+}

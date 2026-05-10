@@ -55,9 +55,11 @@ export default function SlicerGame() {
   const [restartNonce, setRestartNonce] = useState(0)
   const [readySceneKey, setReadySceneKey] = useState<string | null>(null)
 
+  const selectedDeckId = selectedDeck?.isPlayAll ? null : selectedDeck?.id ?? null
+
   const { rows, loading: deckLoading, error: deckError } = useGameDeck(
     selectedDeck ? 'slicer' : '',
-    selectedDeck?.id ?? null,
+    selectedDeckId,
     selectedDeck?.targetLanguage ?? null,
   )
 
@@ -67,8 +69,9 @@ export default function SlicerGame() {
       mode: selectedDeck.mode,
       targetLanguage: selectedDeck.targetLanguage,
       baseLanguage: profile?.base_language ?? 'en',
-      deckId: selectedDeck.id,
+      deckId: selectedDeck.isPlayAll ? `play-all-${selectedDeck.targetLanguage}` : selectedDeck.id,
       deckTitle: selectedDeck.title,
+      shuffle: selectedDeck.isPlayAll,
     })
   }, [profile?.base_language, rows, selectedDeck])
 
@@ -81,6 +84,15 @@ export default function SlicerGame() {
   const handleExit = useCallback(() => {
     navigate(returnTo)
   }, [navigate, returnTo])
+
+  const handleReturnToPicker = useCallback(() => {
+    setSelectedDeck(null)
+    setSessionStats(null)
+    setPaused(false)
+    setRoundLabel(null)
+    setReadySceneKey(null)
+    setHud(INITIAL_HUD)
+  }, [])
 
   const buildConfig = useCallback((Phaser: typeof PhaserRuntime) => {
     void restartNonce
@@ -205,7 +217,7 @@ export default function SlicerGame() {
         )}
         <RoundOverlay label={roundLabel} />
         <PauseOverlay open={paused} onResume={resumeScene} onExit={handleExit} />
-        <SessionComplete stats={sessionStats} onRestart={restartSession} onExit={handleExit} />
+        <SessionComplete stats={sessionStats} onRestart={restartSession} onExit={handleReturnToPicker} />
       </div>
     </GameShell>
   )
