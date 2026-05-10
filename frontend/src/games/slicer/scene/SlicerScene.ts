@@ -34,6 +34,7 @@ type SlicerSceneData = {
   primeAudioOnGesture: () => Promise<void>;
   onExit?: () => void;
   onSceneReady?: () => void;
+  easyMode?: boolean;
 };
 
 export type SceneHost = SlicerSceneData;
@@ -108,6 +109,7 @@ export class SlicerScene extends Phaser.Scene {
   private primeAudioOnGesture: () => Promise<void> = () => Promise.resolve();
   private onExit?: () => void;
   private onSceneReady?: () => void;
+  private easyMode = false;
   private readonly audio = new SlicerAudio();
   private readonly voicesReady = SlicerScene.loadVoices();
   private htmlAudio?: HTMLAudioElement;
@@ -149,6 +151,7 @@ export class SlicerScene extends Phaser.Scene {
     this.primeAudioOnGesture = data.primeAudioOnGesture;
     this.onExit = data.onExit;
     this.onSceneReady = data.onSceneReady;
+    this.easyMode = Boolean(data.easyMode);
   }
 
   preload(): void {
@@ -397,7 +400,7 @@ export class SlicerScene extends Phaser.Scene {
     card.fallTween = this.tweens.add({
       targets: card,
       y: exitY,
-      duration: this.difficulty().fallMs,
+      duration: this.difficulty().fallMs * (this.easyMode ? 2 : 1),
       ease: 'Linear',
       onComplete: () => this.resolveCard(card, 'exit'),
     });

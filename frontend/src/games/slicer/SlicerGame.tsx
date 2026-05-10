@@ -54,6 +54,7 @@ export default function SlicerGame() {
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null)
   const [restartNonce, setRestartNonce] = useState(0)
   const [readySceneKey, setReadySceneKey] = useState<string | null>(null)
+  const [easyMode, setEasyMode] = useState(false)
 
   const selectedDeckId = selectedDeck?.isPlayAll ? null : selectedDeck?.id ?? null
 
@@ -138,8 +139,9 @@ export default function SlicerGame() {
       primeAudioOnGesture: primeOnGesture,
       onExit: handleExit,
       onSceneReady: () => setReadySceneKey(sceneKey),
+      easyMode,
     })
-  }, [bus, gameRef, handleExit, primeOnGesture, ready, sceneKey, slicerDeck])
+  }, [bus, easyMode, gameRef, handleExit, primeOnGesture, ready, sceneKey, slicerDeck])
 
   useEffect(() => bus.on((event) => {
     handleGameEvent(event, recordResult, setHud, setRoundLabel, setSessionStats)
@@ -184,7 +186,7 @@ export default function SlicerGame() {
     <GameShell className={styles.slicerStage} onExit={handleExit}>
       <div ref={phaserHostRef} className={styles.phaserHost} />
       <div className={styles.reactLayer}>
-        {!selectedDeck && <DeckPicker onSelect={handleDeckSelected} />}
+        {!selectedDeck && <DeckPicker easyMode={easyMode} onEasyModeChange={setEasyMode} onSelect={handleDeckSelected} />}
         {selectedDeck && (
           <SlicerHUD
             deckTitle={hud.deckTitle}

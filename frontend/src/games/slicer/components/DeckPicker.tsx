@@ -23,6 +23,8 @@ type DeckRow = {
 
 type DeckPickerProps = {
   onSelect: (choice: SlicerDeckChoice) => void
+  easyMode: boolean
+  onEasyModeChange: (enabled: boolean) => void
 }
 
 const MODES: Array<{ value: DeckMode; label: string }> = [
@@ -30,7 +32,7 @@ const MODES: Array<{ value: DeckMode; label: string }> = [
   { value: 'audio_to_text', label: 'Text' },
 ]
 
-export function DeckPicker({ onSelect }: DeckPickerProps) {
+export function DeckPicker({ easyMode, onEasyModeChange, onSelect }: DeckPickerProps) {
   const navigate = useNavigate()
   const { user } = useAuth()
   const { activeLanguage } = useLanguage()
@@ -99,17 +101,28 @@ export function DeckPicker({ onSelect }: DeckPickerProps) {
             <p className="text-xs uppercase tracking-[0.18em] text-[#ff9155]/70">Lexicon Slice</p>
             <h1 className="font-serif text-4xl leading-none sm:text-6xl">{title}</h1>
           </div>
-          <div className="inline-flex rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-1">
-            {MODES.map((item) => (
-              <button
-                key={item.value}
-                type="button"
-                onClick={() => setMode(item.value)}
-                className={`min-h-10 rounded-md px-4 text-sm transition ${mode === item.value ? 'bg-[#ff6b35]/25 text-[#ffd700]' : 'text-[#fff1d0]/70 hover:text-[#fff1d0]'}`}
-              >
-                {item.label}
-              </button>
-            ))}
+          <div className="flex flex-wrap justify-end gap-2">
+            <label className="inline-flex min-h-12 items-center gap-3 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 px-4 text-sm text-[#fff1d0]/80">
+              <span>Easy mode</span>
+              <input
+                type="checkbox"
+                checked={easyMode}
+                onChange={(event) => onEasyModeChange(event.currentTarget.checked)}
+                className="h-4 w-4 accent-[#ff6b35]"
+              />
+            </label>
+            <div className="inline-flex rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-1">
+              {MODES.map((item) => (
+                <button
+                  key={item.value}
+                  type="button"
+                  onClick={() => setMode(item.value)}
+                  className={`min-h-10 rounded-md px-4 text-sm transition ${mode === item.value ? 'bg-[#ff6b35]/25 text-[#ffd700]' : 'text-[#fff1d0]/70 hover:text-[#fff1d0]'}`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
