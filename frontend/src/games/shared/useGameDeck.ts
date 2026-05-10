@@ -35,8 +35,6 @@ const WORD_SELECT = [
   'tts_audio_url',
   'video_url_b',
   'thumbnail_url_b',
-  'image_url',
-  'image_urls',
   'suno_storage_url',
   'suno_storage_url_b',
   'suno_audio_url',
