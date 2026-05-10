@@ -57,6 +57,13 @@ type RoundDifficulty = {
 
 type AttemptCardKind = 'target' | 'distractor' | 'bomb';
 
+type CardSpawnLayout = {
+  cardWidth: number;
+  cardHeight: number;
+  exitY: number;
+  positions: Array<{ x: number; y: number }>;
+};
+
 type DebugState = {
   deckId: string;
   roundNumber: number;
@@ -338,21 +345,55 @@ export class SlicerScene extends Phaser.Scene {
     this.clearCards();
     this.currentTarget = target;
     const cards = this.cardsForTarget(target);
-    const width = this.scale.width;
-    const height = this.scale.height;
-    const cardWidth = Phaser.Math.Clamp(width * (width < height ? 0.38 : 0.2), 150, 260);
-    const cardHeight = cardWidth * 0.5625;
-    const lanes = [width * 0.2, width * 0.5, width * 0.8];
-    const laneWidth = width / 3;
-    const jitter = laneWidth * 0.1;
-    const yGap = Math.min(64, cardHeight * 0.45);
+    const layout = this.cardSpawnLayout(cards.length);
     const shuffled = Phaser.Utils.Array.Shuffle(cards);
     shuffled.forEach((card, index) => {
-      const x = lanes[index] + Phaser.Math.FloatBetween(-jitter, jitter);
-      const y = -cardHeight - index * yGap;
-      this.createFallingCard(card, x, y, cardWidth, cardHeight, height + cardHeight);
+      const position = layout.positions[index] ?? layout.positions[layout.positions.length - 1];
+      this.createFallingCard(card, position.x, position.y, layout.cardWidth, layout.cardHeight, layout.exitY);
     });
     void this.speakTarget(target);
+  }
+
+  private cardSpawnLayout(cardCount: number): CardSpawnLayout {
+    const width = this.scale.width;
+    const height = this.scale.height;
+    const narrowPortrait = this.isNarrowPortrait();
+    const maxCardWidth = narrowPortrait ? Math.min(420, width - 48) : Math.min(560, width * 0.3);
+    const minCardWidth = Math.min(narrowPortrait ? 250 : 300, maxCardWidth);
+    const cardWidth = Phaser.Math.Clamp(width * (narrowPortrait ? 0.78 : 0.22), minCardWidth, maxCardWidth);
+    const cardHeight = cardWidth * 0.5625;
+    const exitY = height + cardHeight;
+
+    if (narrowPortrait) {
+      const yGap = cardHeight + Math.min(110, cardHeight * 0.55);
+      return {
+        cardWidth,
+        cardHeight,
+        exitY,
+        positions: Array.from({ length: cardCount }, (_, index) => ({
+          x: width * 0.5,
+          y: -cardHeight - index * yGap,
+        })),
+      };
+    }
+
+    const laneRatios = cardCount <= 1 ? [0.5] : cardCount === 2 ? [0.34, 0.66] : [0.2, 0.5, 0.8];
+    const laneWidth = width / Math.max(1, laneRatios.length);
+    const jitter = Math.max(0, Math.min(width * 0.015, (laneWidth - cardWidth) * 0.35));
+    const yGap = Math.min(96, cardHeight * 0.38);
+    return {
+      cardWidth,
+      cardHeight,
+      exitY,
+      positions: laneRatios.slice(0, cardCount).map((ratio, index) => ({
+        x: width * ratio + Phaser.Math.FloatBetween(-jitter, jitter),
+        y: -cardHeight - index * yGap,
+      })),
+    };
+  }
+
+  private isNarrowPortrait(): boolean {
+    return this.scale.width < 768 && this.scale.width < this.scale.height;
   }
 
   private cardsForTarget(target: DeckWord): Array<{ word?: DeckWord; isTarget: boolean; isBomb: boolean }> {
@@ -813,14 +854,15 @@ export class SlicerScene extends Phaser.Scene {
 
   private addTextContent(card: FallingCard, text: string, width: number, height: number, yOffsetRatio: number): void {
     const safeWidth = width * 0.76;
-    const safeHeight = height * 0.76;
-    const maxFontSize = width * 0.15;
-    const minFontSize = 18;
-    const formatted = this.fitCardText(text, safeWidth, maxFontSize, minFontSize);
+    const safeHeight = height * 0.68;
+    const maxFontSize = Phaser.Math.Clamp(width * 0.14, 24, 56);
+    const minFontSize = Phaser.Math.Clamp(width * 0.065, 14, 18);
+    const formatted = this.fitCardText(text, safeWidth, safeHeight, maxFontSize, minFontSize);
+    const lineSpacing = Math.round(formatted.fontSize * 0.08);
     card.labelMetrics = {
       fontSize: formatted.fontSize,
       width: safeWidth,
-      height: formatted.lines * formatted.fontSize * 1.02,
+      height: formatted.height,
       lines: formatted.lines,
     };
     card.label = this.add
@@ -830,8 +872,8 @@ export class SlicerScene extends Phaser.Scene {
         color: '#fff1d0',
         align: 'center',
         fixedWidth: safeWidth,
-        fixedHeight: Math.min(safeHeight, card.labelMetrics.height + 8),
-        lineSpacing: Math.round(formatted.fontSize * -0.08),
+        fixedHeight: safeHeight,
+        lineSpacing,
         wordWrap: { width: safeWidth, useAdvancedWrap: true },
       })
       .setOrigin(0.5)
@@ -839,30 +881,106 @@ export class SlicerScene extends Phaser.Scene {
     card.add(card.label);
   }
 
-  private fitCardText(text: string, safeWidth: number, maxFontSize: number, minFontSize: number): { text: string; fontSize: number; lines: number } {
-    const singleLineSize = Math.min(maxFontSize, safeWidth / Math.max(1, text.length * 0.48));
-    if (singleLineSize >= minFontSize) {
-      return { text, fontSize: Math.max(minFontSize, singleLineSize), lines: 1 };
+  private fitCardText(
+    text: string,
+    safeWidth: number,
+    safeHeight: number,
+    maxFontSize: number,
+    minFontSize: number,
+  ): { text: string; fontSize: number; lines: number; height: number } {
+    const candidates = this.cardTextCandidates(text.trim() || text);
+    let best = { text, fontSize: minFontSize, lines: 1, height: minFontSize * 1.24 };
+
+    for (const lines of candidates) {
+      const lineCount = lines.length;
+      const longestWeight = Math.max(...lines.map((line) => this.textWeight(line)));
+      const widthSize = safeWidth / Math.max(1, longestWeight * 0.62);
+      const heightSize = safeHeight / Math.max(1, lineCount * 1.24);
+      const fontSize = Math.floor(Math.min(maxFontSize, widthSize, heightSize));
+      const height = lineCount * fontSize * 1.24;
+      const candidate = {
+        text: lines.join('\n'),
+        fontSize: Math.max(12, fontSize),
+        lines: lineCount,
+        height,
+      };
+      if (candidate.fontSize > best.fontSize) best = candidate;
+      if (candidate.fontSize >= minFontSize) return candidate;
     }
+
+    return best;
+  }
+
+  private cardTextCandidates(text: string): string[][] {
     const words = text.split(/\s+/).filter(Boolean);
-    if (words.length < 2) {
-      return { text, fontSize: minFontSize, lines: 1 };
-    }
-    let bestSplit = 1;
-    let bestScore = Number.POSITIVE_INFINITY;
-    for (let index = 1; index < words.length; index += 1) {
-      const left = words.slice(0, index).join(' ');
-      const right = words.slice(index).join(' ');
-      const score = Math.abs(left.length - right.length) + Math.max(left.length, right.length) * 0.1;
-      if (score < bestScore) {
-        bestScore = score;
-        bestSplit = index;
+    const candidates: string[][] = [[text]];
+    if (words.length > 1) {
+      const maxLines = Math.min(3, words.length);
+      for (let lineCount = 2; lineCount <= maxLines; lineCount += 1) {
+        candidates.push(this.splitWordsByWeight(words, lineCount));
       }
+      return candidates;
     }
-    const lines = [words.slice(0, bestSplit).join(' '), words.slice(bestSplit).join(' ')];
-    const longest = Math.max(...lines.map((line) => line.length));
-    const wrappedSize = Math.min(maxFontSize, safeWidth / Math.max(1, longest * 0.5));
-    return { text: lines.join('\n'), fontSize: Math.max(minFontSize, wrappedSize), lines: 2 };
+
+    const characters = Array.from(text);
+    if (characters.length > 8) {
+      candidates.push(this.splitCharactersByWeight(characters, 2));
+      candidates.push(this.splitCharactersByWeight(characters, 3));
+    }
+    return candidates;
+  }
+
+  private splitWordsByWeight(words: string[], lineCount: number): string[] {
+    const totalWeight = words.reduce((sum, word) => sum + this.textWeight(word), 0);
+    const targetWeight = totalWeight / lineCount;
+    const lines: string[][] = Array.from({ length: lineCount }, () => []);
+    let currentLine = 0;
+    let currentWeight = 0;
+
+    words.forEach((word, index) => {
+      const wordWeight = this.textWeight(word);
+      const remainingWords = words.length - index;
+      const remainingLines = lineCount - currentLine;
+      if (currentWeight > 0 && currentLine < lineCount - 1 && currentWeight + wordWeight > targetWeight && remainingWords >= remainingLines) {
+        currentLine += 1;
+        currentWeight = 0;
+      }
+      lines[currentLine].push(word);
+      currentWeight += wordWeight;
+    });
+
+    return lines.map((line) => line.join(' ')).filter(Boolean);
+  }
+
+  private splitCharactersByWeight(characters: string[], lineCount: number): string[] {
+    const totalWeight = characters.reduce((sum, character) => sum + this.textWeight(character), 0);
+    const targetWeight = totalWeight / lineCount;
+    const lines: string[] = [];
+    let current = '';
+    let currentWeight = 0;
+
+    characters.forEach((character) => {
+      const characterWeight = this.textWeight(character);
+      if (current && lines.length < lineCount - 1 && currentWeight + characterWeight > targetWeight) {
+        lines.push(current);
+        current = '';
+        currentWeight = 0;
+      }
+      current += character;
+      currentWeight += characterWeight;
+    });
+    if (current) lines.push(current);
+    return lines;
+  }
+
+  private textWeight(text: string): number {
+    return Array.from(text).reduce((total, character) => {
+      const code = character.charCodeAt(0);
+      if (/\s/.test(character)) return total + 0.35;
+      if (code > 127) return total + 1;
+      if (/[A-Z]/.test(character)) return total + 0.68;
+      return total + 0.56;
+    }, 0);
   }
 
   private createCardMotes(card: FallingCard): Phaser.GameObjects.Particles.ParticleEmitter {
