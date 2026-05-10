@@ -115,7 +115,8 @@ export default function SlicerGame() {
     })
 
     return () => {
-      game.scene.remove('slicer')
+      // usePhaserMount owns Phaser.Game teardown; removing the scene here races Phaser internals on refresh.
+      game.scene.stop('slicer')
     }
   }, [bus, gameRef, handleExit, primeOnGesture, ready, slicerDeck])
 
