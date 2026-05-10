@@ -123,7 +123,9 @@ export default function WordsStep({
         )}
 
         {/* Word input */}
-        {inputMode === 'manual' && !isFull && <GlassInput ref={glassInputRef} onLock={handleLock} autoFocus />}
+        {inputMode === 'manual' && !isFull && (
+          <GlassInput ref={glassInputRef} onLock={handleLock} autoFocus data-tutorial-id="generate.words_input" />
+        )}
 
         {/* Locked words */}
         {wordCount > 0 && (
@@ -173,6 +175,7 @@ export default function WordsStep({
                     glow
                     onClick={handleQuickGenerate}
                     className="px-10 py-4 text-base font-semibold"
+                    data-tutorial-id="generate.quick_generate_button"
                   >
                     <Sparkles className="h-5 w-5" />
                     {t('generate.primaryGenerate')}
@@ -185,6 +188,7 @@ export default function WordsStep({
                       onCustomize?.()
                     }}
                     className="px-6 py-2.5 text-xs font-medium"
+                    data-tutorial-id="generate.customize_button"
                   >
                     <Wand2 className="h-3.5 w-3.5" />
                     {t('generate.customize')}

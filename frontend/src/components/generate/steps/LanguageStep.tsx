@@ -70,6 +70,7 @@ export default function LanguageStep({ state, dispatch, existingDeck }: Language
         initial="hidden"
         animate="show"
         className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-lg w-full"
+        data-tutorial-id="generate.lang_picker"
       >
         {LANGUAGES.map((lang) => (
           <motion.div key={lang.value} variants={item}>

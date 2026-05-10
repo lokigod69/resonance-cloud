@@ -9,6 +9,7 @@ interface GlassInputProps {
   autoFocus?: boolean
   placeholder?: string
   disabled?: boolean
+  'data-tutorial-id'?: string
 }
 
 export interface GlassInputHandle {
@@ -17,7 +18,7 @@ export interface GlassInputHandle {
 }
 
 export const GlassInput = forwardRef<GlassInputHandle, GlassInputProps>(
-function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProps, ref) {
+function GlassInput({ onLock, autoFocus, placeholder, disabled, 'data-tutorial-id': tutorialId }: GlassInputProps, ref) {
   const { t } = useTranslation()
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -47,6 +48,7 @@ function GlassInput({ onLock, autoFocus, placeholder, disabled }: GlassInputProp
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
       className="flex w-full min-w-0 items-center gap-2"
+      data-tutorial-id={tutorialId}
     >
       <input
         ref={inputRef}

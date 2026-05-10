@@ -225,7 +225,7 @@ export default function CategoryPicker({
           </button>
         </div>
         {renderCountSlider()}
-        <div className="w-full space-y-5 rounded-xl border border-border bg-card/40 p-4">
+        <div className="w-full space-y-5 rounded-xl border border-border bg-card/40 p-4" data-tutorial-id="generate.category_picker">
           {CATEGORY_GROUPS.map((group) => (
             <div key={group.label}>
               <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3 text-center">

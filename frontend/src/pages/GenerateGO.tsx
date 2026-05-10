@@ -808,7 +808,7 @@ export default function GenerateGO() {
       {!existingDeck && step === 1 && (
         <div ref={el => { sectionRefs.current[0] = el }} className="gen-section">
           {step === 1 && <h3>{t('generateGo.chooseLanguageOrbit')}</h3>}
-          <div className="gen-orb-row gen-language-grid">
+          <div className="gen-orb-row gen-language-grid" data-tutorial-id="generate.lang_picker">
             {LANGUAGES.map(lang => (
               <button
                 type="button"

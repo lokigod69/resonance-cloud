@@ -8,6 +8,7 @@ interface PillButtonProps {
   className?: string
   disabled?: boolean
   onClick?: () => void
+  'data-tutorial-id'?: string
 }
 
 export default function PillButton({
@@ -17,6 +18,7 @@ export default function PillButton({
   children,
   disabled,
   onClick,
+  'data-tutorial-id': tutorialId,
 }: PillButtonProps) {
   return (
     <motion.button
@@ -25,6 +27,7 @@ export default function PillButton({
       whileHover={disabled ? undefined : { scale: 1.04 }}
       whileTap={disabled ? undefined : { scale: 0.96 }}
       disabled={disabled}
+      data-tutorial-id={tutorialId}
       className={cn(
         'inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5',
         'text-sm font-medium transition-all duration-200',
