@@ -16,6 +16,7 @@ import LandingPage from '@/pages/LandingPage'
 import Login from '@/pages/Login'
 import Onboarding from '@/pages/Onboarding'
 import Dashboard from '@/pages/Dashboard'
+import Today from '@/pages/Today'
 import Generate from '@/pages/Generate'
 import DeckView from '@/pages/DeckView'
 import VideoPlayer from '@/pages/VideoPlayer'
@@ -158,6 +159,7 @@ function AppRoutes() {
         {skin === 'glassy' ? (
           <Route element={<PolishGlassLayout />}>
             <Route path="/dashboard" element={<DashboardPG />} />
+            <Route path="/today" element={<Today />} />
             <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<DecksPG />} />
             <Route path="/generate" element={<GenerateGO />} />
@@ -173,6 +175,7 @@ function AppRoutes() {
         ) : (
           <Route element={<AppLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/today" element={<Today />} />
             <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<Decks />} />
             <Route path="/generate" element={<Generate />} />

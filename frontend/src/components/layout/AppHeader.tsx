@@ -15,6 +15,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/s
 import {
   Music,
   LayoutDashboard,
+  CalendarDays,
   Sparkles,
   BookOpen,
   Coins,
@@ -53,6 +54,7 @@ export function AppHeader() {
 
   const mainNav = [
     { to: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
+    { to: '/today', label: t('nav.today'), icon: CalendarDays },
     { to: '/decks', label: t('nav.decks'), icon: Library },
     { to: '/generate', label: t('nav.generate'), icon: Sparkles },
     { to: '/study', label: t('nav.study'), icon: BookOpen },
@@ -143,7 +145,7 @@ export function AppHeader() {
             key={to}
             to={to}
             className={cn(
-              'flex min-w-[68px] flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors',
+              'flex min-w-[60px] flex-col items-center gap-0.5 px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors lg:min-w-[68px] lg:px-4',
               location.pathname === to || location.pathname.startsWith(to + '/')
                 ? 'theme-chip-active'
                 : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'
@@ -160,7 +162,7 @@ export function AppHeader() {
             <DropdownMenuTrigger asChild>
               <button
                 className={cn(
-                  'flex min-w-[68px] flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors',
+                  'flex min-w-[60px] flex-col items-center gap-0.5 px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors lg:min-w-[68px] lg:px-4',
                   location.pathname.startsWith('/admin')
                     ? 'theme-chip-active'
                     : 'text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground'

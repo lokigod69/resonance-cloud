@@ -3,7 +3,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Coins, User, Shield, LayoutDashboard, Library, Sparkles, BookOpen, Music, Mic } from 'lucide-react'
+import { Menu, X, Coins, User, Shield, LayoutDashboard, CalendarDays, Library, Sparkles, BookOpen, Music, Mic } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -26,6 +26,7 @@ export default function PolishGlassLayout() {
 
   const navItems = [
     { label: t('nav.dashboard'), path: '/dashboard', icon: LayoutDashboard },
+    { label: t('nav.today'), path: '/today', icon: CalendarDays },
     { label: t('nav.decks'), path: '/decks', icon: Library },
     { label: t('nav.generate'), path: '/generate', icon: Sparkles },
     { label: t('nav.study'), path: '/study', icon: BookOpen },
@@ -96,7 +97,7 @@ export default function PolishGlassLayout() {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer ${
+              className={`flex min-w-[58px] flex-col items-center gap-0.5 px-2.5 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer lg:px-4 ${
                 isActive(item.path)
                   ? 'theme-chip-active'
                   : 'text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)]'
@@ -109,7 +110,7 @@ export default function PolishGlassLayout() {
           {isAdmin && (
             <Link
               to="/admin/content"
-              className={`flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer ${
+              className={`flex min-w-[58px] flex-col items-center gap-0.5 px-2.5 py-1.5 rounded-lg text-xs font-display font-medium transition-all cursor-pointer lg:px-4 ${
                 isActive('/admin')
                   ? 'theme-chip-active'
                   : 'text-[var(--text-muted)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)]'
