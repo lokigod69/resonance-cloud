@@ -150,13 +150,25 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
         )}
 
         <div className="mb-3 flex shrink-0 flex-col items-center gap-3 text-center">
-          <h1 className="font-[var(--runner-font-display)] text-3xl leading-none text-[#d0f0ff] drop-shadow-[0_0_16px_rgba(168,216,234,0.34)] sm:text-5xl">
+          <h1 className="font-[var(--runner-font-display)] text-2xl leading-none text-[#d0f0ff] drop-shadow-[0_0_16px_rgba(168,216,234,0.34)] sm:text-4xl">
             {title}
           </h1>
           <div className="flex flex-wrap justify-center gap-2">
-            <label className="inline-flex min-h-12 items-center gap-3 rounded-lg border border-[var(--runner-border-strong)] bg-[var(--surface-glass)] px-4 text-sm text-[#d0f0ff] shadow-[var(--runner-shadow-soft)]">
+            <label
+              className={`inline-flex min-h-12 items-center gap-3 rounded-lg border px-4 text-sm shadow-[var(--runner-shadow-soft)] transition ${
+                easyMode
+                  ? 'border-[rgba(79,195,247,0.78)] bg-[#173956]/92 text-[#d0f0ff]'
+                  : 'border-[var(--runner-border-subtle)] bg-[rgba(15,35,55,0.58)] text-[#a8d8ea]/76'
+              }`}
+            >
               <span>{t('games.runner.deckPicker.easyMode')}</span>
-              <span className="rounded-full border border-[var(--runner-border-subtle)] bg-[#0a1520]/54 px-2 py-0.5 text-xs text-[#a8d8ea]/78">
+              <span
+                className={`rounded-full border px-2 py-0.5 text-xs ${
+                  easyMode
+                    ? 'border-[rgba(79,195,247,0.56)] bg-[#0a1520]/72 text-[#d0f0ff]'
+                    : 'border-[var(--runner-border-subtle)] bg-[#0a1520]/42 text-[#a8d8ea]/72'
+                }`}
+              >
                 {modeHint}
               </span>
               <input
@@ -171,11 +183,12 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                 <button
                   key={item.value}
                   type="button"
+                  aria-pressed={displayMode === item.value}
                   onClick={() => setDisplayMode(item.value)}
-                  className={`min-h-10 rounded-md px-4 text-sm transition ${
+                  className={`min-h-10 rounded-md border px-4 text-sm transition ${
                     displayMode === item.value
-                      ? 'bg-[#2a4a6a]/80 text-white shadow-[inset_0_0_14px_rgba(79,195,247,0.16)]'
-                      : 'text-[#a8d8ea]/72 hover:text-[#d0f0ff]'
+                      ? 'border-[rgba(79,195,247,0.68)] bg-[#2a4a6a]/90 text-white shadow-[0_0_18px_rgba(79,195,247,0.22),inset_0_0_14px_rgba(79,195,247,0.16)]'
+                      : 'border-transparent text-[#a8d8ea]/72 hover:border-[rgba(168,216,234,0.22)] hover:text-[#d0f0ff]'
                   }`}
                 >
                   {t(item.labelKey)}
