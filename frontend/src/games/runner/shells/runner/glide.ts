@@ -68,6 +68,7 @@ const CARD_TRAVEL_MS = 1750;
 const CARD_PARK_PROGRESS = 0.66;
 const CARD_PARK_Y = 0.6;
 const POST_WAVE_DELAY = 1500;
+const GLIDE_EASY_DECISION_TIMER_MS = 60 * 60 * 1000;
 
 export class GlideRunnerScene extends Phaser.Scene {
   private engine!: SessionEngine;
@@ -252,7 +253,9 @@ export class GlideRunnerScene extends Phaser.Scene {
     this.activePrompt = prompt;
     this.phase = 'audio';
     this.selectedLane = 1;
-    this.decisionTimerMs = glideDecisionTimerMs(prompt.level);
+    this.decisionTimerMs = this.mode === 'glide'
+      ? GLIDE_EASY_DECISION_TIMER_MS
+      : glideDecisionTimerMs(prompt.level);
     this.decisionRemainingMs = this.decisionTimerMs;
     this.soundscape.startAmbient(prompt.level);
     void this.audio.speak(prompt.target.word, prompt.target.audioUrl, prompt.target.languageCode);
