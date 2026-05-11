@@ -667,6 +667,7 @@ export class SlicerScene extends Phaser.Scene {
         mode: deckMode(this.deck),
         biome: this.currentLevel().biome,
         combo: this.combo,
+        cardProgress: this.cardProgress(),
         isBluff,
         cardKind,
       },

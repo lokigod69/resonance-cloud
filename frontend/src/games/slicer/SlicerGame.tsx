@@ -339,6 +339,7 @@ function handleGameEvent(
     setHud((current) => ({
       ...current,
       combo: typeof event.metadata?.combo === 'number' ? event.metadata.combo : current.combo,
+      cardProgress: typeof event.metadata?.cardProgress === 'string' ? event.metadata.cardProgress : current.cardProgress,
       score: event.passed ? current.score + 100 : current.score,
       lives: event.passed ? current.lives : Math.max(0, current.lives - 1),
     }))
