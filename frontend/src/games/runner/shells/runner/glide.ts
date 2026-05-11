@@ -66,7 +66,7 @@ type GlideCard = {
 const CARD_SPAWN_DELAY = 1000;
 const CARD_TRAVEL_MS = 1750;
 const CARD_PARK_PROGRESS = 0.66;
-const CARD_PARK_Y = 0.6;
+const CARD_PARK_Y = 0.58;
 const POST_WAVE_DELAY = 1500;
 const GLIDE_EASY_DECISION_TIMER_MS = 60 * 60 * 1000;
 
@@ -357,18 +357,13 @@ export class GlideRunnerScene extends Phaser.Scene {
     const x = laneCenterFromEdgesX(card.lane, trackProgress, this.scale.width, level, time);
     const horizonY = this.scale.height * 0.35;
     const y = horizonY + (this.scale.height * CARD_PARK_Y - horizonY) * eased;
-    const laneGap = Math.abs(
-      laneCenterFromEdgesX(1, CARD_PARK_PROGRESS, this.scale.width, level, time) -
-        laneCenterFromEdgesX(0, CARD_PARK_PROGRESS, this.scale.width, level, time),
-    );
     const responsive = Phaser.Math.Clamp(
       Math.min(this.scale.width / 1100, this.scale.height / 780),
       0.45,
       1,
     );
-    const cardWidth = Math.min(270 * responsive, laneGap * 0.68);
+    const cardWidth = Math.min(this.scale.width * 0.12, this.scale.height * 0.215) * responsive;
     const cardHeight = cardWidth * 0.5625;
-    const laneOffset = card.lane - 1;
     const selectionPulse =
       card.selected && this.phase === 'parked' ? 1.035 + Math.sin(time / 175) * 0.015 : 1;
     card.x = x;
@@ -389,19 +384,16 @@ export class GlideRunnerScene extends Phaser.Scene {
     card.frame?.setPosition(x, y);
     card.frame?.setDisplaySize(card.width * 1.04, card.height * 1.04);
     card.frame?.setAlpha(card.wrong ? 0.54 : alpha * 0.92);
-    this.drawCardShape(card, card.width, card.height, laneOffset, eased);
+    this.drawCardShape(card, card.width, card.height);
   }
 
   private drawCardShape(
     card: GlideCard,
     width: number,
     height: number,
-    laneOffset: number,
-    eased: number,
   ): void {
-    const topRatio = 0.56 + eased * 0.3;
-    const topWidth = width * topRatio;
-    const topShift = laneOffset * width * (0.13 - eased * 0.05);
+    const topWidth = width;
+    const topShift = 0;
     const points = {
       bottomLeft: new Phaser.Math.Vector2(-width / 2, height / 2),
       bottomRight: new Phaser.Math.Vector2(width / 2, height / 2),
