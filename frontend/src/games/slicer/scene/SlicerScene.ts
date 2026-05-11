@@ -4,6 +4,7 @@ import type { CardContent, DeckDefinition, DeckMode, DeckWord, LevelConfig, Sess
 import type { GameEventBus } from '../../shared/GameEventBus';
 import { allLevels } from './levels';
 import {
+  EMBER_CARD_FRAME,
   EMBER_ASSET_KEYS,
   getAmbientParticleTiers,
   getEmberFxConfig,
@@ -873,8 +874,9 @@ export class SlicerScene extends Phaser.Scene {
 
   private addCardContent(card: FallingCard, content: CardContent, width: number, height: number): void {
     if (content.kind === 'image' && this.textures.exists(content.url)) {
-      const image = this.add.image(0, 0, content.url).setDisplaySize(width * 0.76, height * 0.76);
-      card.add(image);
+      const imageWidth = width * ((EMBER_CARD_FRAME.contentWidth + 42) / EMBER_CARD_FRAME.width);
+      const image = this.add.image(0, 0, content.url).setDisplaySize(imageWidth, imageWidth * 0.5625);
+      card.addAt(image, 0);
       return;
     }
     const text = content.kind === 'text' ? content.text : content.label ?? '';
