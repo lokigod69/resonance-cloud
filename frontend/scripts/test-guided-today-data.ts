@@ -7,6 +7,8 @@
 import {
   GUIDED_LESSONS,
   getCurrentGuidedLesson,
+  getGuidedReviewChoices,
+  getGuidedReviewItems,
   normalizeGuidedAnswer,
 } from '../src/data/guidedLessons.ts'
 import {
@@ -40,9 +42,11 @@ assert('base language is German', lesson.baseLanguage === 'German')
 assert('target language is English', lesson.targetLanguage === 'English')
 assert('title is First contact', lesson.title === 'First contact')
 assert('situation matches MVP', lesson.situation.en === 'You need to politely ask if someone speaks English.')
+assert('German situation exists for primary UI', lesson.situation.de === 'Du willst freundlich fragen, ob jemand Englisch spricht.')
 assert('core phrase matches MVP', lesson.corePhrase.targetText === 'Excuse me, do you speak English?')
 assert('German meaning matches MVP', lesson.corePhrase.baseText === 'Entschuldigung, sprechen Sie Englisch?')
 assert('lesson media has required caption', lesson.lessonMedia.caption.length > 0)
+assert('lesson media caption is German-first', lesson.lessonMedia.caption === 'Eine erste höfliche Frage, bevor ein Gespräch beginnt.')
 assert('empty media URL is allowed for intentional placeholder', lesson.lessonMedia.url === '')
 
 console.log('\n[phrase production]')
@@ -55,6 +59,24 @@ assert('type recall accepts English case-insensitively', lesson.typeRecall.accep
 assert('lesson items include five active recall entries', lesson.lessonItems.length === 5, lesson.lessonItems.length)
 assert('lesson items include please', lesson.lessonItems.some((item) => item.targetText === 'please' && item.baseText === 'bitte'))
 assert('lesson items include thank you', lesson.lessonItems.some((item) => item.targetText === 'thank you' && item.baseText === 'danke'))
+
+console.log('\n[review choices]')
+const pleaseItem = lesson.lessonItems.find((item) => item.id === 'please')
+assert('please item is present for review choice validation', pleaseItem !== undefined)
+if (pleaseItem) {
+  const choices = getGuidedReviewChoices(lesson, pleaseItem)
+  assert('review choices include the correct answer', choices.some((choice) => choice.isCorrect && choice.targetText === 'please'), choices)
+  assert('review choices include 3 total chips', choices.length === 3, choices)
+  assert('review choices are unique', new Set(choices.map((choice) => choice.id)).size === choices.length, choices)
+  assert('review choices include distractors from lesson items', choices.some((choice) => !choice.isCorrect), choices)
+}
+
+const filteredReviewItems = getGuidedReviewItems(lesson, new Set(['please', 'thank-you']))
+assert('known-item filtering excludes marked items', !filteredReviewItems.some((item) => item.id === 'please' || item.id === 'thank-you'), filteredReviewItems)
+assert('known-item filtering keeps remaining items', filteredReviewItems.length === 3, filteredReviewItems)
+
+const allKnownReviewItems = getGuidedReviewItems(lesson, new Set(lesson.lessonItems.map((item) => item.id)))
+assert('all known review items can be excluded', allKnownReviewItems.length === 0, allKnownReviewItems)
 
 console.log('\n[local progress]')
 const userId = 'user-123'

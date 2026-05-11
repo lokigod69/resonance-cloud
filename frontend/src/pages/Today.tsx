@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { getCurrentGuidedLesson } from '@/data/guidedLessons'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
-import { TodayHero } from '@/components/today/TodayHero'
+import { TodayCompactHeader, TodayHero } from '@/components/today/TodayHero'
 import { TodaySession } from '@/components/today/TodaySession'
 import {
   createEmptyTodayProgressState,
@@ -24,6 +24,7 @@ export default function Today() {
   const [progress, setProgress] = useState<TodayProgressState>(() => createEmptyTodayProgressState())
   const [sessionActive, setSessionActive] = useState(false)
   const [sessionKey, setSessionKey] = useState(0)
+  const [knownItemIds, setKnownItemIds] = useState<Set<string>>(() => new Set())
   const status = getTodayLessonStatus(progress, lesson)
   const terminalStatus = status === 'completed' || status === 'skipped'
 
@@ -32,6 +33,7 @@ export default function Today() {
     setProgress(readTodayProgressState(user?.id))
     setSessionActive(false)
     setSessionKey((current) => current + 1)
+    setKnownItemIds(new Set())
   }, [user?.id])
 
   const persistProgress = (nextProgress: TodayProgressState) => {
@@ -41,6 +43,18 @@ export default function Today() {
 
   const handleStart = () => {
     setSessionActive(true)
+  }
+
+  const handleToggleKnownItem = (itemId: string) => {
+    setKnownItemIds((current) => {
+      const next = new Set(current)
+      if (next.has(itemId)) {
+        next.delete(itemId)
+      } else {
+        next.add(itemId)
+      }
+      return next
+    })
   }
 
   const handleSkip = () => {
@@ -57,6 +71,7 @@ export default function Today() {
   const handleRestart = () => {
     const nextProgress = restartTodayLessonProgress(progress, lesson)
     persistProgress(nextProgress)
+    setKnownItemIds(new Set())
     setSessionKey((current) => current + 1)
     setSessionActive(true)
   }
@@ -73,14 +88,19 @@ export default function Today() {
       />
 
       <div className="grid gap-6">
-        <TodayHero
-          lesson={lesson}
-          status={status}
-          isSessionActive={sessionActive}
-          onStart={handleStart}
-          onSkip={handleSkip}
-          onRestart={handleRestart}
-        />
+        {!sessionActive && status === 'new' && (
+          <TodayHero
+            lesson={lesson}
+            status={status}
+            knownItemIds={knownItemIds}
+            onStart={handleStart}
+            onSkip={handleSkip}
+            onRestart={handleRestart}
+            onToggleKnownItem={handleToggleKnownItem}
+          />
+        )}
+
+        {sessionActive && <TodayCompactHeader lesson={lesson} />}
 
         {terminalStatus && !sessionActive && (
           <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6">
@@ -107,6 +127,7 @@ export default function Today() {
           <TodaySession
             key={sessionKey}
             lesson={lesson}
+            knownItemIds={knownItemIds}
             onComplete={handleComplete}
             onRestart={handleRestart}
           />

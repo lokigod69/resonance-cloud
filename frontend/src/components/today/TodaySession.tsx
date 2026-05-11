@@ -1,6 +1,6 @@
-import { CheckCircle2, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react'
+import { CheckCircle2, ChevronLeft, ChevronRight, RotateCcw, Volume2 } from 'lucide-react'
 import { useState } from 'react'
-import type { GuidedLesson } from '@/data/guidedLessons'
+import { getGuidedReviewItems, type GuidedLesson } from '@/data/guidedLessons'
 import type { TodayLessonResult } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
@@ -10,9 +10,11 @@ import { PhraseMapStep } from '@/components/today/PhraseMapStep'
 import { BuildPhraseStep, type BuildPhraseCheckState } from '@/components/today/BuildPhraseStep'
 import { TypeRecallStep, type TypeRecallCheckState } from '@/components/today/TypeRecallStep'
 import { ReviewStep, type ReviewStepResult } from '@/components/today/ReviewStep'
+import { speakGuidedText } from '@/components/today/speech'
 
 type TodaySessionProps = {
   lesson: GuidedLesson
+  knownItemIds: Set<string>
   onComplete: (result: TodayLessonResult) => void
   onRestart: () => void
 }
@@ -21,12 +23,13 @@ type SessionStep = 'scene' | 'phraseMap' | 'build' | 'type' | 'review' | 'comple
 
 const SESSION_STEPS: SessionStep[] = ['scene', 'phraseMap', 'build', 'type', 'review', 'complete']
 
-export function TodaySession({ lesson, onComplete, onRestart }: TodaySessionProps) {
+export function TodaySession({ lesson, knownItemIds, onComplete, onRestart }: TodaySessionProps) {
   const { t } = useTranslation()
+  const reviewItems = getGuidedReviewItems(lesson, knownItemIds)
   const [stepIndex, setStepIndex] = useState(0)
   const [buildState, setBuildState] = useState<BuildPhraseCheckState>({ status: 'idle', attempts: 0 })
   const [typeState, setTypeState] = useState<TypeRecallCheckState>({ status: 'idle', attempts: 0 })
-  const [reviewResult, setReviewResult] = useState<ReviewStepResult>({ reviewCorrect: 0, reviewTotal: lesson.lessonItems.length })
+  const [reviewResult, setReviewResult] = useState<ReviewStepResult>({ reviewCorrect: 0, reviewTotal: reviewItems.length })
   const step = SESSION_STEPS[stepIndex]
   const progress = Math.round(((stepIndex + 1) / SESSION_STEPS.length) * 100)
   const canGoBack = stepIndex > 0 && step !== 'complete'
@@ -34,7 +37,7 @@ export function TodaySession({ lesson, onComplete, onRestart }: TodaySessionProp
   const canContinue =
     step === 'scene'
     || step === 'phraseMap'
-    || (step === 'build' && buildState.status !== 'idle')
+    || (step === 'build' && buildState.status === 'correct')
     || (step === 'type' && typeState.status !== 'idle')
 
   const handleNext = () => {
@@ -85,7 +88,9 @@ export function TodaySession({ lesson, onComplete, onRestart }: TodaySessionProp
         {step === 'type' && (
           <TypeRecallStep lesson={lesson} onCheckStateChange={setTypeState} />
         )}
-        {step === 'review' && <ReviewStep lesson={lesson} onFinish={handleReviewFinish} />}
+        {step === 'review' && (
+          <ReviewStep lesson={lesson} reviewItems={reviewItems} onFinish={handleReviewFinish} />
+        )}
         {step === 'complete' && (
           <CompleteStep
             lesson={lesson}
@@ -102,7 +107,7 @@ export function TodaySession({ lesson, onComplete, onRestart }: TodaySessionProp
             {t('today.back')}
           </Button>
           <div className="flex flex-wrap items-center gap-3">
-            {(step === 'build' || step === 'type') && buildOrTypeWasWrong(step, buildState, typeState) && (
+            {step === 'type' && typeWasWrong(step, typeState) && (
               <span className="text-sm text-[var(--text-muted)]">
                 {t('today.continueAfterWrong')}
               </span>
@@ -130,13 +135,24 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
             {t('today.scene.situation')}
           </p>
           <p className="mt-2 text-lg leading-7 text-[var(--text-primary)]">
-            {lesson.situation.en}
+            {lesson.situation.de}
           </p>
         </div>
         <div className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)] p-4">
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-            {t('today.corePhrase')}
-          </p>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
+              {t('today.corePhrase')}
+            </p>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => speakGuidedText(lesson.corePhrase.targetText)}
+            >
+              <Volume2 className="h-4 w-4" />
+              {t('today.listen')}
+            </Button>
+          </div>
           <p className="mt-3 break-words text-3xl font-semibold leading-tight text-[var(--text-primary)]">
             {lesson.corePhrase.targetText}
           </p>
@@ -197,10 +213,9 @@ function CompleteStep({
   )
 }
 
-function buildOrTypeWasWrong(
+function typeWasWrong(
   step: SessionStep,
-  buildState: BuildPhraseCheckState,
   typeState: TypeRecallCheckState,
 ) {
-  return (step === 'build' && buildState.status === 'wrong') || (step === 'type' && typeState.status === 'wrong')
+  return step === 'type' && typeState.status === 'wrong'
 }

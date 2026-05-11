@@ -4,9 +4,16 @@ Date: 2026-05-11
 
 ## Summary
 
-Implemented an isolated authenticated `/today` route for the Guided Today MVP. The route presents one static guided lesson for the `English A1 Practical` path, focused on the phrase `Excuse me, do you speak English?` with German meaning and active production steps.
+Implemented and polished the isolated authenticated `/today` Guided Today prototype for one static lesson:
 
-The page is shared by Classic and Glassy skins and uses the existing theme tokens, panel/chip surfaces, and authenticated layouts. It does not call generation, does not write to Supabase, does not populate decks or words, and does not touch credits.
+- Path: `English A1 Practical`
+- Base language: German
+- Target language: English
+- Lesson 1: `First contact`
+- Core phrase: `Excuse me, do you speak English?`
+- German meaning: `Entschuldigung, sprechen Sie Englisch?`
+
+V2 keeps the prototype static and local-only while making the flow feel more like a calm Resonance guided lesson: the pre-start hero shows the full scene and item preview, the active session collapses to a compact header, the Scene step owns the large media slot, and review is lighter chip-based active recall.
 
 ## Files Changed
 
@@ -23,6 +30,7 @@ The page is shared by Classic and Glassy skins and uses the existing theme token
 - `frontend/src/components/today/BuildPhraseStep.tsx`
 - `frontend/src/components/today/TypeRecallStep.tsx`
 - `frontend/src/components/today/ReviewStep.tsx`
+- `frontend/src/components/today/speech.ts`
 - `frontend/scripts/test-guided-today-data.ts`
 - `docs/Product/GUIDED_TODAY_RESONANCE_MVP_REPORT.md`
 
@@ -40,20 +48,29 @@ The page is shared by Classic and Glassy skins and uses the existing theme token
 
 The session sequence is:
 
-1. Scene: media slot, situation, core phrase, German meaning.
-2. Phrase Map: phrase chunks with German equivalents.
-3. Build Phrase: chip arrangement for `Excuse me, do you speak English?`.
-4. Type Recall: `Excuse me, do you speak _____?`, accepting `English` and `english`.
-5. Review: typed active recall for five lesson items.
-6. Complete: local completion state, restart action, and next lesson teaser.
+1. Scene: prominent media slot, German situation, English core phrase, German meaning, and a browser `speechSynthesis` listen button for the English phrase. The button fails silently if speech synthesis is unavailable.
+2. Phrase Map: tappable phrase chunks that highlight English/German equivalents.
+3. Build Phrase: chip arrangement for `Excuse me, do you speak English?`; the correct order is accepted automatically and the Continue action becomes available after success.
+4. Type Recall: exactly one typed prompt, `Excuse me, do you speak _____?`, accepting `English` and `english`.
+5. Review: chip-choice active recall from German prompts for only the lesson items not marked `Kann ich schon` before starting.
+6. Complete: German completion copy, dynamic review count, local completion state, restart action, and next lesson teaser.
 
-Wrong answers show calm inline feedback and allow retry without penalty. The lesson-level skip action stores a local skipped state.
+Before the session starts, the hero includes a `Heute lernst du` preview for all five lesson items:
+
+- `excuse me` - `Entschuldigung`
+- `do you speak` - `sprechen Sie`
+- `English` - `Englisch`
+- `please` - `bitte`
+- `thank you` - `danke`
+
+Marking an item `Kann ich schon` affects only the current page/session review list. It does not remove required phrase chunks from Phrase Map or Build Phrase, does not write schema state, and does not create per-word skips.
 
 ## Intentionally Static
 
 - One static lesson is defined in `frontend/src/data/guidedLessons.ts`.
 - Lesson media uses an intentional styled placeholder because `lessonMedia.url` is empty.
 - Completion and skipped state are stored in user-scoped localStorage only.
+- Known-item marks are session-local React state only.
 - No raw answers are stored; only completion status and coarse counts are stored.
 - Next lesson is a teaser only.
 
@@ -64,8 +81,9 @@ To replace the placeholder later, edit only `frontend/src/data/guidedLessons.ts`
 - For an image, set `lessonMedia.type` to `image` and provide `url`.
 - For a video or music video, set `lessonMedia.type` to `video` or `music_video` and provide `url`.
 - Optionally provide `posterUrl`.
+- Keep `caption` as the learner-visible scene caption.
 
-When `url` is empty, the UI renders the styled placeholder and makes no media request.
+When `url` is empty, the UI renders the styled placeholder and makes no media request. When `lessonMedia.type` is `video` or `music_video` and `url` exists, the UI renders a `playsInline` controls video element.
 
 ## Not Touched
 
@@ -75,39 +93,40 @@ When `url` is empty, the UI renders the styled placeholder and makes no media re
 - Credits and pricing behavior.
 - Supabase migrations or schema.
 - Dashboard behavior.
-- Decks, Music, Study, and Speak internals.
+- Decks, words, and generation jobs.
+- Music, Study, and Speak internals.
 - Deck or word population.
 - Supabase writes.
-- Paid provider calls.
+- Paid provider calls, ElevenLabs, or real TTS providers.
+- Slicer files.
+
+## Future Resonance Layers, Not Implemented
+
+- Stock lesson TTS inventory: pre-generated English phrase/word audio via ElevenLabs or similar, stored once and reused for all learners.
+- Cinematic lesson scene videos: one pre-generated video per lesson/language pair, hosted as system media.
+- Phase reward song: after 5-10 lessons, the learner can generate or unlock a song using the phrases from the phase.
+- Games: Slicer/Strike/memory games unlock after phase completion, not inside Lesson 1.
+- Persistent progress/schema: later phase.
 
 ## Checks Run
 
 - `npx tsx scripts/test-guided-today-data.ts`
 - `npm run check:i18n`
 - `npm run build`
-- Targeted ESLint on changed frontend files and validation script.
-- Browser QA against local Vite:
+- Targeted ESLint on changed Today files.
+- `git diff --check`
+- `git diff --cached --check`
+- Local Vite browser QA:
   - unauthenticated `/today` redirects to `/login`
-  - authenticated Classic `/today` renders
-  - authenticated Glassy `/today` renders
-  - Start lesson works
-  - Build Phrase rejects incorrect order and accepts correct phrase
-  - Type Recall rejects empty answer and accepts lowercase `english`
-  - Review step completes active recall
-  - Skip lesson stores local state
-  - Completion persists after refresh
-  - Restart starts a fresh session
-  - no horizontal overflow at 390px, 640px, 768px, and 1280px in Classic and Glassy
-  - Dashboard, Generate, Decks, and Speak still render under the authenticated shell
-
-`npm run check:i18n` still reports the existing warn-only French Speak gaps; no Today or German coverage gaps were added.
+  - authenticated in-app browser QA could not be completed in this run because the browser security policy blocks synthetic localStorage session seeding and no local test credentials are available in the repo
 
 ## Remaining Risks
 
 - LocalStorage progress is device-local and not cross-device.
 - The placeholder media proves layout only; real image/video assets still need content review.
 - The static lesson data has no authoring workflow or backend inventory yet.
-- Synthetic local browser auth was used for route QA to avoid real Supabase writes.
+- Browser `speechSynthesis` voice quality and availability vary by browser and OS.
+- Authenticated visual QA should be rerun with a real test session; the code path is covered by TypeScript build, targeted lint, data validation, and route inspection for both Classic and Glassy branches.
 
 ## Recommended Next Phase
 
@@ -115,6 +134,7 @@ Add a small guided lesson inventory model after the product spine is validated:
 
 - move static lessons behind a typed loader boundary
 - add authored media URLs
+- add stock lesson audio references
 - add a real progress sync design
 - expand lessons in the English A1 Practical path
 - add a lightweight component test setup for session state transitions

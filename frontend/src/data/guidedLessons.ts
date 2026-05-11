@@ -33,6 +33,13 @@ export type LessonItem = {
   targetText: string
   baseText: string
   acceptedAnswers: string[]
+  reviewDistractorIds?: string[]
+}
+
+export type GuidedReviewChoice = {
+  id: string
+  targetText: string
+  isCorrect: boolean
 }
 
 export type GuidedLesson = {
@@ -110,16 +117,16 @@ export const GUIDED_LESSONS: GuidedLesson[] = [
       { id: 'english', targetText: 'English', baseText: 'Englisch' },
     ],
     lessonItems: [
-      { id: 'excuse-me', targetText: 'excuse me', baseText: 'Entschuldigung', acceptedAnswers: ['excuse me'] },
-      { id: 'do-you-speak', targetText: 'do you speak', baseText: 'sprechen Sie', acceptedAnswers: ['do you speak'] },
-      { id: 'english', targetText: 'English', baseText: 'Englisch', acceptedAnswers: ['English', 'english'] },
-      { id: 'please', targetText: 'please', baseText: 'bitte', acceptedAnswers: ['please'] },
-      { id: 'thank-you', targetText: 'thank you', baseText: 'danke', acceptedAnswers: ['thank you', 'thanks'] },
+      { id: 'excuse-me', targetText: 'excuse me', baseText: 'Entschuldigung', acceptedAnswers: ['excuse me'], reviewDistractorIds: ['please', 'thank-you'] },
+      { id: 'do-you-speak', targetText: 'do you speak', baseText: 'sprechen Sie', acceptedAnswers: ['do you speak'], reviewDistractorIds: ['english', 'please'] },
+      { id: 'english', targetText: 'English', baseText: 'Englisch', acceptedAnswers: ['English', 'english'], reviewDistractorIds: ['please', 'thank-you'] },
+      { id: 'please', targetText: 'please', baseText: 'bitte', acceptedAnswers: ['please'], reviewDistractorIds: ['thank-you', 'english'] },
+      { id: 'thank-you', targetText: 'thank you', baseText: 'danke', acceptedAnswers: ['thank you', 'thanks'], reviewDistractorIds: ['please', 'english'] },
     ],
     lessonMedia: {
       type: 'image',
       url: '',
-      caption: 'A first polite question before a conversation begins.',
+      caption: 'Eine erste höfliche Frage, bevor ein Gespräch beginnt.',
     },
     build: {
       targetText: 'Excuse me, do you speak English?',
@@ -133,7 +140,7 @@ export const GUIDED_LESSONS: GuidedLesson[] = [
     },
     nextLessonTeaser: {
       title: 'Polite follow-up',
-      situation: 'Ask someone to repeat that slowly.',
+      situation: 'Bitte jemanden, das langsam zu wiederholen.',
     },
   },
 ]
@@ -150,4 +157,44 @@ export function guidedAnswerMatches(input: string, acceptedAnswers: string[]) {
   const normalizedInput = normalizeGuidedAnswer(input)
   if (!normalizedInput) return false
   return acceptedAnswers.some((answer) => normalizeGuidedAnswer(answer) === normalizedInput)
+}
+
+export function getGuidedReviewItems(
+  lesson: GuidedLesson,
+  knownItemIds: Iterable<string>,
+) {
+  const knownIds = new Set(knownItemIds)
+  return lesson.lessonItems.filter((item) => !knownIds.has(item.id))
+}
+
+export function getGuidedReviewChoices(
+  lesson: GuidedLesson,
+  item: LessonItem,
+): GuidedReviewChoice[] {
+  const itemById = new Map(lesson.lessonItems.map((lessonItem) => [lessonItem.id, lessonItem]))
+  const explicitDistractors = item.reviewDistractorIds
+    ?.map((id) => itemById.get(id))
+    .filter((lessonItem): lessonItem is LessonItem => Boolean(lessonItem)) ?? []
+  const fallbackDistractors = lesson.lessonItems.filter((lessonItem) => lessonItem.id !== item.id)
+  const distractors = uniqueLessonItems([...explicitDistractors, ...fallbackDistractors])
+    .filter((lessonItem) => lessonItem.id !== item.id)
+    .slice(0, 2)
+
+  return [
+    { id: item.id, targetText: item.targetText, isCorrect: true },
+    ...distractors.map((lessonItem) => ({
+      id: lessonItem.id,
+      targetText: lessonItem.targetText,
+      isCorrect: false,
+    })),
+  ]
+}
+
+function uniqueLessonItems(items: LessonItem[]) {
+  const seen = new Set<string>()
+  return items.filter((item) => {
+    if (seen.has(item.id)) return false
+    seen.add(item.id)
+    return true
+  })
 }

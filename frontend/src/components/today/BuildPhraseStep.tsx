@@ -26,8 +26,24 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
     .map((chip, index) => ({ chip, index }))
     .filter(({ index }) => !selectedIndexes.includes(index))
 
-  const resetFeedback = (nextSelectedIndexes: number[]) => {
+  const buildPhraseFromIndexes = (indexes: number[]) => (
+    indexes.map((index) => lesson.build.chips[index]).join(' ')
+  )
+
+  const applySelection = (nextSelectedIndexes: number[]) => {
+    const nextPhrase = buildPhraseFromIndexes(nextSelectedIndexes)
     setSelectedIndexes(nextSelectedIndexes)
+
+    if (nextPhrase === lesson.build.targetText) {
+      if (status !== 'correct') {
+        const nextAttempts = attempts + 1
+        setAttempts(nextAttempts)
+        setStatus('correct')
+        onCheckStateChange({ status: 'correct', attempts: nextAttempts })
+      }
+      return
+    }
+
     if (status !== 'idle') {
       setStatus('idle')
       onCheckStateChange({ status: 'idle', attempts })
@@ -35,20 +51,20 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
   }
 
   const handleSelect = (index: number) => {
-    resetFeedback([...selectedIndexes, index])
+    applySelection([...selectedIndexes, index])
   }
 
   const handleRemove = (position: number) => {
-    resetFeedback(selectedIndexes.filter((_, index) => index !== position))
+    applySelection(selectedIndexes.filter((_, index) => index !== position))
   }
 
   const handleClear = () => {
-    resetFeedback([])
+    applySelection([])
   }
 
   const handleCheck = () => {
-    const nextAttempts = attempts + 1
     const nextStatus = selectedPhrase === lesson.build.targetText ? 'correct' : 'wrong'
+    const nextAttempts = status === 'correct' ? attempts : attempts + 1
     setAttempts(nextAttempts)
     setStatus(nextStatus)
     onCheckStateChange({ status: nextStatus, attempts: nextAttempts })
@@ -101,7 +117,7 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <Button onClick={handleCheck} disabled={selectedIndexes.length === 0}>
+        <Button onClick={handleCheck} disabled={selectedIndexes.length === 0 || status === 'correct'}>
           {t('today.checkAnswer')}
         </Button>
         <Button variant="ghost" onClick={handleClear} disabled={selectedIndexes.length === 0}>

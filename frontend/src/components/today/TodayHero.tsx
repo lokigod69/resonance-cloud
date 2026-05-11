@@ -9,10 +9,11 @@ import { cn } from '@/lib/utils'
 type TodayHeroProps = {
   lesson: GuidedLesson
   status: TodayVisibleStatus
-  isSessionActive: boolean
+  knownItemIds: Set<string>
   onStart: () => void
   onSkip: () => void
   onRestart: () => void
+  onToggleKnownItem: (itemId: string) => void
 }
 
 type LessonMediaFrameProps = {
@@ -26,6 +27,7 @@ export function LessonMediaFrame({ media, className }: LessonMediaFrameProps) {
   const posterUrl = media.posterUrl?.trim()
   const canRenderVideo = (media.type === 'video' || media.type === 'music_video') && mediaUrl.length > 0
   const canRenderImage = media.type === 'image' && mediaUrl.length > 0
+  const isPlaceholder = !canRenderVideo && !canRenderImage
 
   return (
     <figure className={cn('min-w-0', className)}>
@@ -64,9 +66,11 @@ export function LessonMediaFrame({ media, className }: LessonMediaFrameProps) {
           </div>
         )}
       </div>
-      <figcaption className="mt-3 text-xs leading-5 text-[var(--text-muted)]">
-        {media.caption}
-      </figcaption>
+      {!isPlaceholder && (
+        <figcaption className="mt-3 text-xs leading-5 text-[var(--text-muted)]">
+          {media.caption}
+        </figcaption>
+      )}
     </figure>
   )
 }
@@ -74,10 +78,11 @@ export function LessonMediaFrame({ media, className }: LessonMediaFrameProps) {
 export function TodayHero({
   lesson,
   status,
-  isSessionActive,
+  knownItemIds,
   onStart,
   onSkip,
   onRestart,
+  onToggleKnownItem,
 }: TodayHeroProps) {
   const { t } = useTranslation()
   const terminalStatus = status === 'completed' || status === 'skipped'
@@ -117,7 +122,7 @@ export function TodayHero({
               {lesson.lessonMetadata.title}
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--text-secondary)]">
-              {lesson.situation.en}
+              {lesson.situation.de}
             </p>
 
             <div className="mt-6 grid gap-3 rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4">
@@ -131,6 +136,57 @@ export function TodayHero({
                 {lesson.corePhrase.baseText}
               </p>
             </div>
+
+            <div className="mt-5 rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_42%,transparent)] p-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
+                    {t('today.itemsPreview.title')}
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
+                    {t('today.itemsPreview.subtitle')}
+                  </p>
+                </div>
+                {knownItemIds.size > 0 && (
+                  <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1 text-xs text-[var(--text-muted)]">
+                    {t('today.itemsPreview.knownCount', { count: knownItemIds.size })}
+                  </span>
+                )}
+              </div>
+
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                {lesson.lessonItems.map((item) => {
+                  const isKnown = knownItemIds.has(item.id)
+                  return (
+                    <div
+                      key={item.id}
+                      className={cn(
+                        'flex min-w-0 flex-col gap-3 rounded-lg border p-3 sm:flex-row sm:items-center sm:justify-between',
+                        isKnown
+                          ? 'border-[color-mix(in_srgb,var(--accent)_42%,transparent)] bg-[var(--accent-soft)]'
+                          : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_16%,transparent)]',
+                      )}
+                    >
+                      <div className="min-w-0">
+                        <p className="break-words text-sm font-semibold text-[var(--text-primary)]">{item.targetText}</p>
+                        <p className="mt-1 break-words text-xs text-[var(--text-secondary)]">{item.baseText}</p>
+                      </div>
+                      <Button
+                        type="button"
+                        variant={isKnown ? 'secondary' : 'outline'}
+                        size="sm"
+                        onClick={() => onToggleKnownItem(item.id)}
+                        className="self-start sm:self-center"
+                        aria-pressed={isKnown}
+                      >
+                        {isKnown && <CheckCircle2 className="h-4 w-4" />}
+                        {t('today.itemsPreview.knowThis')}
+                      </Button>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -140,12 +196,12 @@ export function TodayHero({
                 {t('today.restartLesson')}
               </Button>
             ) : (
-              <Button size="lg" onClick={onStart} disabled={isSessionActive}>
+              <Button size="lg" onClick={onStart}>
                 <Play className="h-4 w-4" />
-                {isSessionActive ? t('today.lessonInProgress') : t('today.startLesson')}
+                {t('today.startLesson')}
               </Button>
             )}
-            {status === 'new' && !isSessionActive && (
+            {status === 'new' && (
               <Button size="lg" variant="outline" onClick={onSkip}>
                 <SkipForward className="h-4 w-4" />
                 {t('today.skipLesson')}
@@ -167,6 +223,40 @@ export function TodayHero({
         </div>
 
         <LessonMediaFrame media={lesson.lessonMedia} className="lg:self-center" />
+      </div>
+    </section>
+  )
+}
+
+export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
+  const { t } = useTranslation()
+
+  return (
+    <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge variant="outline" className="border-[var(--border-strong)] bg-[var(--accent-soft)] text-[var(--text-primary)]">
+              {lesson.pathMetadata.title}
+            </Badge>
+            <span className="text-xs font-medium text-[var(--text-muted)]">
+              {lesson.pathMetadata.baseLanguage}{' -> '}{lesson.pathMetadata.targetLanguage}
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs text-[var(--text-muted)]">
+              <Clock3 className="h-3.5 w-3.5" />
+              {t('today.estimatedTime', { minutes: lesson.pathMetadata.estimatedMinutes })}
+            </span>
+          </div>
+          <h1 className="mt-3 break-words text-xl font-semibold text-[var(--text-primary)]">
+            {t('today.compactLessonTitle', {
+              sequence: lesson.lessonMetadata.sequence,
+              title: lesson.lessonMetadata.title,
+            })}
+          </h1>
+        </div>
+        <p className="max-w-md break-words text-sm leading-6 text-[var(--text-secondary)] md:text-right">
+          {lesson.corePhrase.targetText}
+        </p>
       </div>
     </section>
   )
