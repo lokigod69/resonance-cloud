@@ -350,19 +350,17 @@ export function GuidedVibePicker({
               aria-pressed={isSelected}
               onClick={() => onSelectVibe(vibeId)}
               className={cn(
-                'min-w-0 rounded-lg border p-3 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+                'min-w-0 rounded-lg border p-3 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
                 isSelected
                   ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)]'
                   : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_16%,transparent)]',
               )}
             >
-              <div className="flex items-center justify-between gap-2">
+              <span className="today-vibe-emblemSlot hidden" aria-hidden="true" />
+              <div className="flex min-h-5 items-center justify-center gap-2">
                 <span className="text-sm font-semibold text-[var(--text-primary)]">{vibe.label}</span>
-                {isSelected && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
+                {isSelected && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" aria-hidden="true" />}
               </div>
-              <p className="mt-1.5 line-clamp-1 text-sm leading-5 text-[var(--text-secondary)]">
-                {vibe.shortDescription}
-              </p>
             </button>
           )
         })}
@@ -396,9 +394,6 @@ export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
             })}
           </h1>
         </div>
-        <p className="max-w-md break-words text-sm leading-6 text-[var(--text-secondary)] md:text-right">
-          {lesson.corePhrase.targetText}
-        </p>
       </div>
     </section>
   )

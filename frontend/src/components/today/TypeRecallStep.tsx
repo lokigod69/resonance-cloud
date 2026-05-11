@@ -1,4 +1,4 @@
-import { CheckCircle2, XCircle } from 'lucide-react'
+import { XCircle } from 'lucide-react'
 import { useState } from 'react'
 import type { GuidedLesson } from '@/data/guidedLessons'
 import { getGuidedTypeFallbackChoices, guidedAnswerMatches } from '@/data/guidedLessons'
@@ -126,25 +126,12 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
         </div>
       )}
 
-      {status !== 'idle' && (
+      {status === 'wrong' && (
         <div
-          className={cn(
-            'inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm',
-            status === 'correct'
-              ? 'border-[color-mix(in_srgb,var(--accent)_46%,transparent)] bg-[var(--accent-soft)] text-[var(--text-primary)]'
-              : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] text-[var(--text-secondary)]',
-          )}
+          className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] px-3 py-1.5 text-sm text-[var(--text-secondary)]"
         >
-          {status === 'correct' ? (
-            <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--accent)]" />
-          ) : (
-            <XCircle className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />
-          )}
-          <span>
-            {status === 'correct'
-              ? t('today.type.correct')
-              : t('today.type.wrong')}
-          </span>
+          <XCircle className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />
+          <span>{t('today.type.wrong')}</span>
         </div>
       )}
     </div>

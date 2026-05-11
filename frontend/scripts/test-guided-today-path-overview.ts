@@ -135,9 +135,11 @@ const completeStepSource = sliceBetween(todaySessionSource, 'function CompleteSt
 const guidedVibePickerSource = sliceBetween(todayHeroSource, 'export function GuidedVibePicker', 'export function TodayCompactHeader')
 const todayCompactHeaderSource = sliceBetween(todayHeroSource, 'export function TodayCompactHeader', '')
 const lessonPathCardSource = sliceBetween(todayPathOverviewSource, 'function LessonPathCard', 'function StatusIcon')
+const recommendedLessonPanelSource = sliceBetween(todayPathOverviewSource, 'function RecommendedLessonPanel', 'function LessonPathCard')
 
 assert('overview lesson cards do not render trophy word labels', !containsAny(todayPathOverviewSource, ['today.path.trophyWord', 'lesson.trophyWord', '<Trophy']))
 assert('overview lesson cards do not render selected-vibe phrase previews', !todayPathOverviewSource.includes('lesson.corePhrase.targetText'))
+assert('overview lesson cards do not render situation descriptions', !lessonPathCardSource.includes('lesson.situation'))
 assert(
   'overview renders voice selector before recommended lesson panel',
   todayPathOverviewSource.indexOf('<GuidedVibePicker') > 0
@@ -145,12 +147,17 @@ assert(
 )
 assert('vibe picker does not render palette swatches', !containsAny(guidedVibePickerSource, ['vibeSwatches', 'backgroundColor: color']))
 assert('vibe picker does not render example phrases', !containsAny(guidedVibePickerSource, ['today.vibePicker.exampleLabel', 'variant?.corePhrase.targetText']))
+assert('vibe picker has an emblem slot prepared for future assets', guidedVibePickerSource.includes('today-vibe-emblemSlot'))
 assert('Scene step does not reveal trophy word', !containsAny(sceneStepSource, ['today.trophyWord.title', 'lesson.trophyWord']))
 assert('Complete step can reveal trophy word', containsAny(completeStepSource, ['today.trophyWord.title', 'lesson.trophyWord.word']))
 assert('session exposes explicit Back to path action outside step navigation', containsAny(todaySessionSource, ['today.path.backToPath', 'onViewPath']))
+assert('session header does not render selected-vibe phrase text', !todayCompactHeaderSource.includes('lesson.corePhrase.targetText'))
+assert('session source avoids target phrase spoiler in compact header', !containsAny(todayCompactHeaderSource, ['corePhrase', 'targetText']))
+assert('session has no generic bottom Back step control', !containsAny(todaySessionSource, ['handleBack', "t('today.back')"]))
 assert('Back to path handler only exits the session view', todayPageSource.includes('const handleExitToIntro = () => {\n    setSessionActive(false)\n  }'), sliceBetween(todayPageSource, 'const handleExitToIntro', 'const handleComplete'))
 const progressBeforeBackToPath = JSON.stringify(completedTwo)
 assert('Back to path does not mutate progress', JSON.stringify(completedTwo) === progressBeforeBackToPath, completedTwo)
+assert('recommended panel label is next lesson, not internal recommendation copy', recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')") && !recommendedLessonPanelSource.includes("t('today.path.recommendedLabel')"))
 
 console.log('\n[source-level UX teardown]')
 assert('Today compact header does not render time estimate', !containsAny(todayCompactHeaderSource, ['today.estimatedTime', 'estimatedMinutes', '<Clock3']))
@@ -158,7 +165,11 @@ assert('lesson cards use whole-card button semantics', lessonPathCardSource.incl
 assert('lesson cards avoid tiny-only open actions', !containsAny(lessonPathCardSource, ['getCardActionLabel', 'today.path.openLessonAction']))
 assert('match feedback avoids verbose expected correction copy', !containsAny(matchPairsSource, ['expected', 'Expected', 'Erwartet', 'today.matchPairs.expected']))
 assert('type recall wrong feedback does not reveal the answer by default', !typeRecallSource.includes("t('today.type.wrong', { answer"))
+assert('type recall correct feedback is visual-only', !typeRecallSource.includes("t('today.type.correct')"))
 assert('build feedback remains compact without expected correction copy', !containsAny(buildPhraseSource, ['expected', 'Expected', 'Erwartet', 'today.build.expected']))
+assert('build correct feedback text is not rendered', !containsAny(buildPhraseSource, ["t('today.build.correct')", 'CheckCircle2']))
+assert('completion can open the next lesson as primary action', completeStepSource.includes('onOpenNextLesson') && completeStepSource.includes("t('today.nextLesson')"))
+assert('completion restart action is visually tertiary', completeStepSource.includes('today-completion-replayAction'))
 
 const deterministicBuildChips = getDeterministicBuildChips(firstLesson)
 assert(
@@ -166,6 +177,15 @@ assert(
   deterministicBuildChips.map((entry) => entry.chip).join('|') !== firstLesson.build.chips.join('|'),
   deterministicBuildChips,
 )
+const buildShuffleSamples = lessons
+  .filter((lessonDefinition) => [1, 4, 8, 10].includes(lessonDefinition.lessonNumber))
+  .flatMap((lessonDefinition) => ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => resolveGuidedLessonVariant(lessonDefinition, vibeId)))
+const weakBuildShuffles = buildShuffleSamples.filter((lesson) => {
+  const shuffled = getDeterministicBuildChips(lesson)
+  const unchangedPositions = shuffled.filter((entry, position) => entry.index === position).length
+  return unchangedPositions > shuffled.length - 2 || startsWithTargetBuildOrder(lesson, shuffled)
+})
+assert('build chip shuffle avoids exact or near-original order across sampled lessons/vibes', weakBuildShuffles.length === 0, weakBuildShuffles)
 
 console.log('\n[content coherence audit]')
 const coherenceFlags = collectCoherenceFlags()
@@ -265,6 +285,20 @@ function collectCoherenceFlags() {
   }
 
   return flags
+}
+
+function startsWithTargetBuildOrder(
+  lesson: typeof firstLesson,
+  shuffled: Array<{ index: number }>,
+) {
+  const targetIndexes: number[] = []
+  for (let index = 0; index < lesson.build.chips.length; index += 1) {
+    targetIndexes.push(index)
+    if (targetIndexes.map((chipIndex) => lesson.build.chips[chipIndex]).join(' ') === lesson.build.targetText) {
+      return targetIndexes.every((chipIndex, position) => shuffled[position]?.index === chipIndex)
+    }
+  }
+  return false
 }
 
 function createMemoryStorage(): Storage {

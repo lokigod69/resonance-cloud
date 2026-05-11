@@ -36,6 +36,12 @@ export default function Today() {
     [progress, selectedLessonId, selectedVibeId],
   )
   const lesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
+  const nextLesson = useMemo(() => {
+    if (!lesson) return undefined
+    const currentIndex = overview.lessons.findIndex((entry) => entry.lesson.id === lesson.id)
+    if (currentIndex < 0) return undefined
+    return overview.lessons[currentIndex + 1]?.lesson
+  }, [lesson, overview.lessons])
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- user-scoped localStorage progress must refresh when the authenticated user changes
@@ -85,6 +91,15 @@ export default function Today() {
     setSessionActive(true)
   }
 
+  const handleOpenNextLesson = () => {
+    if (!nextLesson) {
+      handleExitToIntro()
+      return
+    }
+
+    handleOpenLesson(nextLesson.id)
+  }
+
   return (
     <div className="relative isolate mx-auto w-full max-w-6xl px-4 py-4 sm:px-6 lg:py-8">
       <div
@@ -113,11 +128,12 @@ export default function Today() {
           <TodaySession
             key={sessionKey}
             lesson={lesson}
+            nextLesson={nextLesson}
             knownItemIds={knownItemIds}
             onComplete={handleComplete}
             onRestart={handleRestart}
-            onExitToIntro={handleExitToIntro}
             onViewPath={handleExitToIntro}
+            onOpenNextLesson={handleOpenNextLesson}
           />
         )}
       </div>

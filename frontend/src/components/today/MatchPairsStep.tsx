@@ -71,9 +71,9 @@ export function MatchPairsStep({
         </Button>
       </div>
 
-      <div className="mx-auto grid w-full max-w-3xl gap-3 sm:grid-cols-2">
-        <div className="grid content-start gap-2">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+      <div className="mx-auto grid w-full max-w-2xl justify-center gap-4 sm:grid-cols-[minmax(9rem,14rem)_minmax(9rem,14rem)]">
+        <div className="grid content-start justify-items-center gap-2">
+          <p className="text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
             English
           </p>
           {pairs.map((pair) => (
@@ -89,8 +89,8 @@ export function MatchPairsStep({
           ))}
         </div>
 
-        <div className="grid content-start gap-2">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+        <div className="grid content-start justify-items-center gap-2">
+          <p className="text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
             Deutsch
           </p>
           {rightPairs.map((pair) => (
@@ -137,12 +137,12 @@ function MatchChip({
       disabled={isMatched}
       aria-pressed={isSelected || isMatched}
       className={cn(
-        'group flex min-h-10 min-w-0 items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-sm font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+        'group flex min-h-10 min-w-[8rem] max-w-full items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-sm font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
         isMatched
           ? 'border-[color-mix(in_srgb,#34d399_58%,transparent)] bg-[color-mix(in_srgb,#34d399_13%,transparent)] text-[var(--text-primary)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_24%,transparent)]'
           : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)] text-[var(--text-primary)] hover:-translate-y-0.5',
         isSelected && 'border-[color-mix(in_srgb,var(--accent)_62%,transparent)] bg-[color-mix(in_srgb,var(--accent-soft)_72%,transparent)]',
-        isWrong && 'border-[color-mix(in_srgb,#f87171_62%,transparent)] bg-[color-mix(in_srgb,#f87171_12%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_25%,transparent)]',
+        isWrong && 'animate-pulse border-[color-mix(in_srgb,#f87171_62%,transparent)] bg-[color-mix(in_srgb,#f87171_12%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_25%,transparent)]',
       )}
     >
       <span className="min-w-0 whitespace-normal break-normal leading-snug">{text}</span>

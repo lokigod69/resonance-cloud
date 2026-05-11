@@ -1,9 +1,8 @@
-import { CheckCircle2, Play } from 'lucide-react'
+import { CheckCircle2, Circle, Play } from 'lucide-react'
 import type { GuidedLesson, GuidedPathLessonCardStatus, GuidedPathOverview } from '@/data/guidedLessons'
 import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonStatus, type TodayProgressState } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { GuidedVibePicker } from '@/components/today/TodayHero'
 import { cn } from '@/lib/utils'
@@ -31,27 +30,24 @@ export function TodayPathOverview({
       <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="min-w-0">
-            <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-              {t('today.path.overviewLabel')}
-            </p>
-            <h1 className="mt-3 break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
+            <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
               {overview.pathMetadata?.title ?? 'English A1 Practical'}
             </h1>
-            <div className="mt-4 flex flex-wrap items-center gap-2">
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-[var(--text-secondary)]">
               {overview.pathMetadata && (
-                <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
+                <span>
                   {overview.pathMetadata.baseLanguage}{' -> '}{overview.pathMetadata.targetLanguage}
-                </Badge>
+                </span>
               )}
-              <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
+              <span>
                 {guidedVibes[selectedVibeId].label}
-              </Badge>
-              <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
+              </span>
+              <span className="text-xs text-[var(--text-muted)]">
                 {t('today.path.progress', {
                   completed: overview.completedCount,
                   total: overview.totalLessons,
                 })}
-              </Badge>
+              </span>
             </div>
           </div>
         </div>
@@ -77,13 +73,13 @@ export function TodayPathOverview({
       <section className="grid gap-3">
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
+            <p className="sr-only">
               {t('today.path.yourPath')}
             </p>
           </div>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
           {overview.lessons.map((entry) => (
             <LessonPathCard
               key={entry.lesson.id}
@@ -118,7 +114,7 @@ function RecommendedLessonPanel({
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div className="min-w-0">
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-            {isComplete ? t('today.path.completeLabel') : t('today.path.recommendedLabel')}
+            {isComplete ? t('today.path.completeLabel') : t('today.path.nextLessonLabel')}
           </p>
           <h2 className="mt-2 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">
             {isComplete
@@ -128,9 +124,11 @@ function RecommendedLessonPanel({
                 title: lesson.title,
               })}
           </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--text-secondary)]">
-            {isComplete ? t('today.path.completeBody') : lesson.situation.de}
-          </p>
+          {isComplete && (
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--text-secondary)]">
+              {t('today.path.completeBody')}
+            </p>
+          )}
         </div>
         <Button size="lg" onClick={() => onOpenLesson(lesson.id)}>
           {getActionLabel(t, visibleStatus, isComplete)}
@@ -171,7 +169,7 @@ function LessonPathCard({
     >
       <div className="flex items-start gap-3">
         <span className={cn(
-          'flex h-10 w-10 shrink-0 items-center justify-center rounded-full border text-lg font-semibold',
+          'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-base font-semibold',
           status === 'complete'
             ? 'border-[color-mix(in_srgb,#34d399_50%,transparent)] bg-[color-mix(in_srgb,#34d399_12%,transparent)] text-[#34d399]'
             : isRecommended
@@ -181,12 +179,7 @@ function LessonPathCard({
           {lesson.lessonNumber}
         </span>
         <div className="min-w-0 flex-1">
-          <div className="flex min-h-5 items-center justify-between gap-2">
-            {isRecommended ? (
-              <span className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--accent)]">
-                {t('today.path.status.current')}
-              </span>
-            ) : <span aria-hidden="true" />}
+          <div className="flex min-h-5 items-center justify-end">
             <StatusIcon status={status} />
           </div>
           <h3 className="mt-1 break-words text-base font-semibold leading-snug text-[var(--text-primary)]">
@@ -194,9 +187,6 @@ function LessonPathCard({
           </h3>
         </div>
       </div>
-      <p className="mt-3 line-clamp-2 break-words text-sm leading-5 text-[var(--text-secondary)]">
-        {lesson.situation.de}
-      </p>
     </button>
   )
 }
@@ -210,7 +200,7 @@ function StatusIcon({ status }: { status: GuidedPathLessonCardStatus }) {
     return <Play className="h-5 w-5 shrink-0 text-[var(--accent)]" />
   }
 
-  return null
+  return <Circle className="h-5 w-5 shrink-0 text-[var(--text-muted)]" />
 }
 
 function getActionLabel(

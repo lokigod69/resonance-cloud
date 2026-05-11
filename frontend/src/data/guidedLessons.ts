@@ -2292,7 +2292,7 @@ export function getGuidedMatchPairs(lesson: GuidedLesson): GuidedMatchPair[] {
 
 export function getDeterministicBuildChips(lesson: GuidedLesson) {
   const seed = `${lesson.id}:${lesson.vibeId}:build`
-  const shuffled = lesson.build.chips
+  let shuffled = lesson.build.chips
     .map((chip, index) => ({
       chip,
       index,
@@ -2301,10 +2301,20 @@ export function getDeterministicBuildChips(lesson: GuidedLesson) {
     .sort((left, right) => left.sortKey - right.sortKey)
     .map(({ chip, index }) => ({ chip, index }))
 
-  const unchanged = shuffled.every((entry, position) => entry.index === position)
-  if (!unchanged || shuffled.length < 2) return shuffled
+  if (shuffled.length < 2) return shuffled
+
+  const unchangedPositions = shuffled.filter((entry, position) => entry.index === position).length
+  const targetChipIndexes = getTargetBuildChipIndexes(lesson)
+  const startsWithTargetOrder = hasTargetBuildOrderPrefix(shuffled, targetChipIndexes)
+
+  if (unchangedPositions <= shuffled.length - 2 && !startsWithTargetOrder) return shuffled
 
   const offset = (stableHash(seed) % (shuffled.length - 1)) + 1
+  shuffled = [...shuffled.slice(offset), ...shuffled.slice(0, offset)]
+  if (!hasTargetBuildOrderPrefix(shuffled, targetChipIndexes)) {
+    return shuffled
+  }
+
   return [...shuffled.slice(offset), ...shuffled.slice(0, offset)]
 }
 
@@ -2364,6 +2374,24 @@ function uniqueLessonItems(items: LessonItem[]) {
     seen.add(item.id)
     return true
   })
+}
+
+function getTargetBuildChipIndexes(lesson: GuidedLesson) {
+  const targetIndexes: number[] = []
+  for (let index = 0; index < lesson.build.chips.length; index += 1) {
+    targetIndexes.push(index)
+    const candidate = targetIndexes.map((chipIndex) => lesson.build.chips[chipIndex]).join(' ')
+    if (candidate === lesson.build.targetText) return targetIndexes
+  }
+  return []
+}
+
+function hasTargetBuildOrderPrefix(
+  shuffled: Array<{ index: number }>,
+  targetChipIndexes: number[],
+) {
+  return targetChipIndexes.length > 1
+    && targetChipIndexes.every((chipIndex, position) => shuffled[position]?.index === chipIndex)
 }
 
 function stableHash(value: string) {

@@ -1,4 +1,4 @@
-import { CheckCircle2, RotateCcw, XCircle } from 'lucide-react'
+import { RotateCcw, XCircle } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { getDeterministicBuildChips, type GuidedLesson } from '@/data/guidedLessons'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -134,21 +134,12 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
         </Button>
       </div>
 
-      {status !== 'idle' && (
+      {status === 'wrong' && (
         <div
-          className={cn(
-            'mx-auto inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm',
-            status === 'correct'
-              ? 'border-[color-mix(in_srgb,var(--accent)_46%,transparent)] bg-[var(--accent-soft)] text-[var(--text-primary)]'
-              : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] text-[var(--text-secondary)]',
-          )}
+          className="mx-auto inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] px-3 py-1.5 text-sm text-[var(--text-secondary)]"
         >
-          {status === 'correct' ? (
-            <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--accent)]" />
-          ) : (
-            <XCircle className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />
-          )}
-          <span>{status === 'correct' ? t('today.build.correct') : t('today.build.wrong')}</span>
+          <XCircle className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />
+          <span>{t('today.build.wrong')}</span>
         </div>
       )}
     </div>

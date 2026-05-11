@@ -16,14 +16,23 @@ import { TODAY_SESSION_STEPS } from '@/components/today/sessionSteps'
 
 type TodaySessionProps = {
   lesson: GuidedLesson
+  nextLesson?: GuidedLesson
   knownItemIds: Set<string>
   onComplete: (result: TodayLessonResult) => void
   onRestart: () => void
-  onExitToIntro: () => void
   onViewPath: () => void
+  onOpenNextLesson: () => void
 }
 
-export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onExitToIntro, onViewPath }: TodaySessionProps) {
+export function TodaySession({
+  lesson,
+  nextLesson,
+  knownItemIds,
+  onComplete,
+  onRestart,
+  onViewPath,
+  onOpenNextLesson,
+}: TodaySessionProps) {
   const { t } = useTranslation()
   const matchPairs = getGuidedMatchPairs(lesson)
   const [stepIndex, setStepIndex] = useState(0)
@@ -47,7 +56,6 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
   })
   const step = TODAY_SESSION_STEPS[stepIndex]
   const progress = Math.round(((stepIndex + 1) / TODAY_SESSION_STEPS.length) * 100)
-  const canGoBack = step !== 'complete'
 
   const canContinue =
     step === 'scene'
@@ -65,15 +73,6 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
     }
 
     setStepIndex((current) => Math.min(current + 1, TODAY_SESSION_STEPS.length - 1))
-  }
-
-  const handleBack = () => {
-    if (stepIndex === 0) {
-      onExitToIntro()
-      return
-    }
-
-    setStepIndex((current) => Math.max(current - 1, 0))
   }
 
   const completeLesson = () => {
@@ -132,25 +131,21 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
         {step === 'complete' && (
           <CompleteStep
             lesson={lesson}
+            nextLesson={nextLesson}
             result={completionResult}
             onRestart={onRestart}
             onViewPath={onViewPath}
+            onOpenNextLesson={onOpenNextLesson}
           />
         )}
       </div>
 
       {step !== 'complete' && (
-        <div className="mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border-subtle)] pt-5">
-          <Button variant="ghost" onClick={handleBack} disabled={!canGoBack}>
-            <ChevronLeft className="h-4 w-4" />
-            {t('today.back')}
+        <div className="mt-7 flex flex-wrap items-center justify-end gap-3 border-t border-[var(--border-subtle)] pt-5">
+          <Button onClick={handleNext} disabled={!canContinue}>
+            {t('today.continue')}
+            <ChevronRight className="h-4 w-4" />
           </Button>
-          <div className="flex flex-wrap items-center gap-3">
-            <Button onClick={handleNext} disabled={!canContinue}>
-              {t('today.continue')}
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
         </div>
       )}
     </section>
@@ -201,14 +196,18 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
 
 function CompleteStep({
   lesson,
+  nextLesson,
   result,
   onRestart,
   onViewPath,
+  onOpenNextLesson,
 }: {
   lesson: GuidedLesson
+  nextLesson?: GuidedLesson
   result: TodayLessonResult
   onRestart: () => void
   onViewPath: () => void
+  onOpenNextLesson: () => void
 }) {
   const { t } = useTranslation()
   const completionLines = getTodayCompletionLines(result)
@@ -230,7 +229,7 @@ function CompleteStep({
           ))}
         </div>
       </div>
-      <div className="mx-auto w-full max-w-md rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-center">
+      <div className="mx-auto w-full max-w-sm rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-center">
         <p className="flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
           <Trophy className="h-4 w-4 text-[var(--accent)]" />
           {t('today.trophyWord.title')}
@@ -243,26 +242,24 @@ function CompleteStep({
             {lesson.trophyWord.meaning}
           </p>
         </div>
-        <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">
-          {lesson.trophyWord.whyThisWord}
-        </p>
-      </div>
-      <div className="mx-auto w-full max-w-xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-left">
-        <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-          {t('today.nextLesson')}
-        </p>
-        <p className="mt-2 text-lg font-semibold text-[var(--text-primary)]">
-          {lesson.nextLessonTeaser.title}
-        </p>
-        <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
-          {lesson.nextLessonTeaser.situation}
-        </p>
       </div>
       <div className="flex flex-wrap justify-center gap-3">
-        <Button onClick={onViewPath}>
-          {t('today.path.backToPath')}
-        </Button>
-        <Button variant="outline" onClick={onRestart}>
+        {nextLesson ? (
+          <Button onClick={onOpenNextLesson}>
+            {t('today.nextLesson')}
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        ) : (
+          <Button onClick={onViewPath}>
+            {t('today.path.backToPath')}
+          </Button>
+        )}
+        {nextLesson && (
+          <Button variant="outline" onClick={onViewPath}>
+            {t('today.path.backToPath')}
+          </Button>
+        )}
+        <Button className="today-completion-replayAction" variant="ghost" size="sm" onClick={onRestart}>
           <RotateCcw className="h-4 w-4" />
           {t('today.restartLesson')}
         </Button>
