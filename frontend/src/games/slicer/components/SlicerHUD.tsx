@@ -1,4 +1,4 @@
-import { DoorOpen, Pause, Play } from 'lucide-react'
+import { Play } from 'lucide-react'
 
 type SlicerHUDProps = {
   deckTitle: string
@@ -74,7 +74,11 @@ export function SlicerHUD({
           aria-label={paused ? 'Resume' : 'Pause'}
           title={paused ? 'Resume' : 'Pause'}
         >
-          {paused ? <Play size={18} /> : <Pause size={18} />}
+          {paused ? (
+            <Play size={18} />
+          ) : (
+            <img src="/games/slicer/branding/hud-pause.png" alt="" className="h-7 w-7 object-contain" aria-hidden="true" />
+          )}
         </button>
         <button
           type="button"
@@ -83,10 +87,9 @@ export function SlicerHUD({
           aria-label="Exit"
           title="Exit"
         >
-          <DoorOpen size={18} />
+          <img src="/games/slicer/branding/hud-exit.png" alt="" className="h-7 w-7 object-contain" aria-hidden="true" />
         </button>
       </div>
     </div>
   )
 }
-
