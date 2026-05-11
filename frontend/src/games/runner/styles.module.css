@@ -72,6 +72,12 @@
   overscroll-behavior: none;
 }
 
+.phaserHost :global(.lexicon-runner-shell .hud),
+.phaserHost :global(.lexicon-runner-shell [data-pause]),
+.phaserHost :global(.lexicon-runner-shell .screen:not([data-start]):not([data-pause])) {
+  display: none !important;
+}
+
 .reactLayer {
   position: absolute;
   inset: 0;
