@@ -27,7 +27,6 @@ type FallingCard = Phaser.GameObjects.Container & {
   labelMetrics?: { fontSize: number; width: number; height: number; lines: number };
   moteEmitter?: Phaser.GameObjects.Particles.ParticleEmitter;
   fallTween?: Phaser.Tweens.Tween;
-  fallHoldTimer?: Phaser.Time.TimerEvent;
 };
 
 type SlicerSceneData = {
@@ -113,7 +112,6 @@ const ROUND_DIFFICULTY: RoundDifficulty[] = [
   { spawnEveryMs: 1800, fallMs: 4000, bombs: 3 },
 ];
 
-const EASY_MODE_HOLD_MS = 2000;
 const EASY_MODE_HOLD_Y_RATIO = 0.5;
 const SLICE_HOLD_MS = 320;
 const SLICE_FADE_MS = 180;
@@ -458,11 +456,7 @@ export class SlicerScene extends Phaser.Scene {
     );
     card.fallTween = this.createFallTween(card, startY, holdY, height, () => {
       if (card.resolved || this.isComplete) return;
-      card.fallHoldTimer = this.time.delayedCall(EASY_MODE_HOLD_MS, () => {
-        card.fallHoldTimer = undefined;
-        if (card.resolved || this.isComplete) return;
-        card.fallTween = this.createFallTween(card, holdY, exitY, height, () => this.resolveCard(card, 'exit'));
-      });
+      card.fallTween = undefined;
     });
   }
 
@@ -1053,7 +1047,6 @@ export class SlicerScene extends Phaser.Scene {
   private destroyCard(card: FallingCard): void {
     card.moteEmitter?.destroy();
     card.fallTween?.stop();
-    card.fallHoldTimer?.remove(false);
     card.destroy();
   }
 
