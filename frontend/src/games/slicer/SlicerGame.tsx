@@ -63,7 +63,7 @@ export default function SlicerGame() {
   const [sessionStats, setSessionStats] = useState<SessionStats | null>(null)
   const [restartNonce, setRestartNonce] = useState(0)
   const [readySceneKey, setReadySceneKey] = useState<string | null>(null)
-  const [easyMode, setEasyMode] = useState(false)
+  const [easyMode, setEasyMode] = useState(true)
   const [slicerLanguage, setSlicerLanguage] = useState<string | null>(activeLanguage)
   const [studyCue, setStudyCue] = useState<SlicerStudyCue | null>(null)
 
