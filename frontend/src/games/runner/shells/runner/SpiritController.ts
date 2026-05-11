@@ -85,7 +85,7 @@ export class SpiritController {
   }
 
   baseAlignedY(height: number): number {
-    return height * 0.78 - (this.sprite.displayHeight * this.container.scaleY) / 2;
+    return height * 0.83 - (this.sprite.displayHeight * this.container.scaleY) / 2;
   }
 
   createAfterimage(x: number, y: number): Phaser.GameObjects.Image | Phaser.GameObjects.Sprite {

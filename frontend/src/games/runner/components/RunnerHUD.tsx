@@ -30,34 +30,36 @@ export function RunnerHUD({
   const lifeDots = Array.from({ length: 3 }, (_, index) => index < lives)
 
   return (
-    <div className="pointer-events-auto absolute left-3 right-3 top-[max(0.75rem,var(--app-safe-top))] z-40 flex flex-wrap items-center gap-2 text-[#d0f0ff] sm:left-4 sm:right-4">
-      <HudPanel label="Deck" value={deckTitle} wide />
-      <HudPanel label="Level" value={`${levelNumber} / 10`} />
-      <HudPanel label="Card" value={cardProgress} />
-      <HudPanel label="Score" value={score} />
-      <HudPanel label="Combo" value={combo} accent />
+    <div className="pointer-events-none absolute left-3 right-3 top-[max(0.75rem,var(--app-safe-top))] z-50 text-[#d0f0ff] sm:left-4 sm:right-4">
+      <div className="flex max-w-[calc(100%-7rem)] flex-wrap items-center gap-2">
+        <HudPanel label="Deck" value={deckTitle} wide />
+        <HudPanel label="Level" value={`${levelNumber} / 10`} />
+        <HudPanel label="Card" value={cardProgress} />
+        <HudPanel label="Score" value={score} />
+        <HudPanel label="Combo" value={combo} accent />
 
-      <div
-        className="flex min-h-11 items-center gap-2 rounded-lg border border-[var(--runner-border-subtle)] bg-[var(--surface-glass)] px-3 py-2 shadow-[var(--runner-shadow-soft)] backdrop-blur-md"
-        aria-label={`${lives} lives remaining`}
-      >
-        {lifeDots.map((active, index) => (
-          <img
-            key={index}
-            src={active ? '/games/runner/branding/life-filled.png' : '/games/runner/branding/life-dimmed.png'}
-            alt=""
-            aria-hidden="true"
-            className="h-6 w-6 object-contain"
-          />
-        ))}
+        <div
+          className="flex min-h-11 items-center gap-2 rounded-lg border border-[var(--runner-border-subtle)] bg-[var(--surface-glass)] px-3 py-2 shadow-[var(--runner-shadow-soft)] backdrop-blur-md"
+          aria-label={`${lives} lives remaining`}
+        >
+          {lifeDots.map((active, index) => (
+            <img
+              key={index}
+              src={active ? '/games/runner/branding/life-filled.png' : '/games/runner/branding/life-dimmed.png'}
+              alt=""
+              aria-hidden="true"
+              className="h-6 w-6 object-contain"
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="ml-auto flex gap-2">
+      <div className="pointer-events-auto absolute right-0 top-0 flex gap-2">
         <button
           type="button"
           onClick={paused ? onResume : onPause}
           disabled={!ready}
-          className="grid h-11 w-11 place-items-center rounded-full border border-[var(--runner-border-strong)] bg-[#0f2337]/72 text-[#d0f0ff] transition hover:bg-[#142d46]/90 hover:shadow-[0_0_18px_rgba(79,195,247,0.24)] disabled:cursor-not-allowed disabled:opacity-50"
+          className="grid h-12 w-12 place-items-center rounded-full border-2 border-[rgba(168,216,234,0.62)] bg-[#071827]/90 text-[#d0f0ff] shadow-[0_0_20px_rgba(79,195,247,0.28)] backdrop-blur-md transition hover:bg-[#142d46]/95 hover:shadow-[0_0_24px_rgba(79,195,247,0.4)] disabled:cursor-not-allowed disabled:opacity-50"
           aria-label={paused ? 'Resume' : 'Pause'}
           title={paused ? 'Resume' : 'Pause'}
         >
@@ -70,9 +72,9 @@ export function RunnerHUD({
         <button
           type="button"
           onClick={onExit}
-          className="grid h-11 w-11 place-items-center rounded-full border border-[var(--runner-border-strong)] bg-[#0f2337]/72 text-[#d0f0ff] transition hover:bg-[#142d46]/90 hover:shadow-[0_0_18px_rgba(79,195,247,0.24)]"
-          aria-label="Exit"
-          title="Exit"
+          className="grid h-12 w-12 place-items-center rounded-full border-2 border-[rgba(168,216,234,0.62)] bg-[#071827]/90 text-[#d0f0ff] shadow-[0_0_20px_rgba(79,195,247,0.28)] backdrop-blur-md transition hover:bg-[#142d46]/95 hover:shadow-[0_0_24px_rgba(79,195,247,0.4)]"
+          aria-label="Back to deck picker"
+          title="Back to deck picker"
         >
           <img src="/games/runner/branding/hud-exit.png" alt="" className="h-7 w-7 object-contain" aria-hidden="true" />
         </button>

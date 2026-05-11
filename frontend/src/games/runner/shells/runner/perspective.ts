@@ -11,7 +11,7 @@ const HORIZON_Y = 0.35;
 const DECISION_Y = 0.69;
 const HORIZON_SPREAD = 0.075;
 const FOREGROUND_SPREAD = 0.37;
-const RUNNER_PROGRESS = 0.52;
+const RUNNER_PROGRESS = 0.78;
 
 export function laneX(
   lane: number,
