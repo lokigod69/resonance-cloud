@@ -54,6 +54,7 @@ import HybridBLanding from '@/landing-experiments/hybrid-b/HybridBLanding'
 import LandingExperimentIndex from '@/landing-experiments/hybrid-a/LandingExperimentIndex'
 
 const SlicerGame = lazy(() => import('@/games/slicer/SlicerGame'))
+const RunnerGame = lazy(() => import('@/games/runner/RunnerGame'))
 
 function ProtectedRoute() {
   const { session, loading: authLoading } = useAuth()
@@ -151,6 +152,14 @@ function AppRoutes() {
           element={(
             <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><ParticleSpinner preset="spirograph" size={160} /></div>}>
               <SlicerGame />
+            </Suspense>
+          )}
+        />
+        <Route
+          path="/games/runner"
+          element={(
+            <Suspense fallback={<div className="flex min-h-screen items-center justify-center"><ParticleSpinner preset="spirograph" size={160} /></div>}>
+              <RunnerGame />
             </Suspense>
           )}
         />
