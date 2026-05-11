@@ -56,11 +56,17 @@ export function SlicerHUD({
         <div className="font-serif text-lg leading-5 text-[#ffd700]">{combo}</div>
       </div>
 
-      <div className="flex min-h-11 items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.2)] bg-black/35 px-3 py-2 backdrop-blur-md">
+      <div
+        className="flex min-h-11 items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.2)] bg-black/35 px-3 py-2 backdrop-blur-md"
+        aria-label={`${lives} lives remaining`}
+      >
         {lifeDots.map((active, index) => (
-          <span
+          <img
             key={index}
-            className={`block h-4 w-4 rounded-full ${active ? 'bg-[#ff6b35] shadow-[0_0_16px_rgba(255,69,0,0.58)]' : 'bg-stone-700 opacity-60'}`}
+            src={active ? '/games/slicer/branding/life-filled.png' : '/games/slicer/branding/life-dimmed.png'}
+            alt=""
+            aria-hidden="true"
+            className="h-6 w-6 object-contain"
           />
         ))}
       </div>
