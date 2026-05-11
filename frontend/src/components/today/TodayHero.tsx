@@ -26,12 +26,6 @@ type LessonMediaFrameProps = {
   showCaption?: boolean
 }
 
-const vibeSwatches: Record<ActiveGuidedVibeId, string[]> = {
-  bright: ['#facc15', '#22c55e', '#38bdf8'],
-  wistful: ['#94a3b8', '#60a5fa', '#c084fc'],
-  sharp: ['#f8fafc', '#ef4444', '#111827'],
-}
-
 export function LessonMediaFrame({
   media,
   className,
@@ -274,7 +268,6 @@ export function TodayHero({
             </div>
 
             <GuidedVibePicker
-              lesson={lesson}
               selectedVibeId={selectedVibeId}
               onSelectVibe={onSelectVibe}
             />
@@ -320,12 +313,10 @@ export function TodayHero({
 }
 
 export function GuidedVibePicker({
-  lesson,
   selectedVibeId,
   onSelectVibe,
   compact = false,
 }: {
-  lesson: GuidedLesson
   selectedVibeId: ActiveGuidedVibeId
   onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
   compact?: boolean
@@ -356,7 +347,6 @@ export function GuidedVibePicker({
       <div className="mt-4 grid gap-3 md:grid-cols-3">
         {ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => {
           const vibe = guidedVibes[vibeId]
-          const variant = lesson.vibeVariants[vibeId]
           const isSelected = selectedVibeId === vibeId
 
           return (
@@ -376,23 +366,8 @@ export function GuidedVibePicker({
                 <span className="text-sm font-semibold text-[var(--text-primary)]">{vibe.label}</span>
                 {isSelected && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
               </div>
-              <div className="mt-2 flex gap-1.5" aria-hidden="true">
-                {vibeSwatches[vibeId].map((color) => (
-                  <span
-                    key={color}
-                    className="h-2.5 w-7 rounded-full border border-[color-mix(in_srgb,var(--text-primary)_18%,transparent)]"
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
-              <p className="mt-3 text-sm leading-5 text-[var(--text-secondary)]">
+              <p className="mt-2 text-sm leading-5 text-[var(--text-secondary)]">
                 {vibe.shortDescription}
-              </p>
-              <p className="mt-3 text-xs font-medium uppercase tracking-[0.14em] text-[var(--text-muted)]">
-                {t('today.vibePicker.exampleLabel')}
-              </p>
-              <p className="mt-1 break-words text-sm font-semibold leading-5 text-[var(--text-primary)]">
-                {variant?.corePhrase.targetText}
               </p>
             </button>
           )

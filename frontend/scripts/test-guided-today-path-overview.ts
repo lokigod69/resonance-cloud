@@ -23,6 +23,8 @@ import {
   setSelectedGuidedVibe,
   todayGuidedVibeKey,
 } from '../src/lib/todayVibe.ts'
+import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 
 let failures = 0
 let passes = 0
@@ -119,6 +121,38 @@ const storedResultJson = JSON.stringify(completedTwo.courses[pathId]?.lessons[fi
 assert('no raw typed answers are stored', !containsAny(storedResultJson, ['typedAnswer', 'typeAnswer', 'typedRecallAnswer', 'rawAnswer']), completedTwo)
 assert('no raw speech transcripts are stored', !containsAny(storedResultJson, ['speechTranscript', 'transcriptText', 'rawTranscript']), completedTwo)
 
+console.log('\n[source-level UX simplification]')
+const todayPathOverviewSource = readSource('../src/components/today/TodayPathOverview.tsx')
+const todaySessionSource = readSource('../src/components/today/TodaySession.tsx')
+const todayHeroSource = readSource('../src/components/today/TodayHero.tsx')
+const todayPageSource = readSource('../src/pages/Today.tsx')
+const sceneStepSource = sliceBetween(todaySessionSource, 'function SceneStep', 'function CompleteStep')
+const completeStepSource = sliceBetween(todaySessionSource, 'function CompleteStep', 'function canContinueFromSpeak')
+const guidedVibePickerSource = sliceBetween(todayHeroSource, 'export function GuidedVibePicker', 'export function TodayCompactHeader')
+
+assert('overview lesson cards do not render trophy word labels', !containsAny(todayPathOverviewSource, ['today.path.trophyWord', 'lesson.trophyWord', '<Trophy']))
+assert('overview lesson cards do not render selected-vibe phrase previews', !todayPathOverviewSource.includes('lesson.corePhrase.targetText'))
+assert(
+  'overview renders voice selector before recommended lesson panel',
+  todayPathOverviewSource.indexOf('<GuidedVibePicker') > 0
+    && todayPathOverviewSource.indexOf('<GuidedVibePicker') < todayPathOverviewSource.indexOf('<RecommendedLessonPanel'),
+)
+assert('vibe picker does not render palette swatches', !containsAny(guidedVibePickerSource, ['vibeSwatches', 'backgroundColor: color']))
+assert('vibe picker does not render example phrases', !containsAny(guidedVibePickerSource, ['today.vibePicker.exampleLabel', 'variant?.corePhrase.targetText']))
+assert('Scene step does not reveal trophy word', !containsAny(sceneStepSource, ['today.trophyWord.title', 'lesson.trophyWord']))
+assert('Complete step can reveal trophy word', containsAny(completeStepSource, ['today.trophyWord.title', 'lesson.trophyWord.word']))
+assert('session exposes explicit Back to path action outside step navigation', containsAny(todaySessionSource, ['today.path.backToPath', 'onViewPath']))
+assert('Back to path handler only exits the session view', todayPageSource.includes('const handleExitToIntro = () => {\n    setSessionActive(false)\n  }'), sliceBetween(todayPageSource, 'const handleExitToIntro', 'const handleComplete'))
+const progressBeforeBackToPath = JSON.stringify(completedTwo)
+assert('Back to path does not mutate progress', JSON.stringify(completedTwo) === progressBeforeBackToPath, completedTwo)
+
+console.log('\n[content coherence audit]')
+const coherenceFlags = collectCoherenceFlags()
+for (const flag of coherenceFlags) {
+  console.warn(`  review ${flag}`)
+}
+assert('Lesson 8 variants avoid known incoherent review items and chips', !coherenceFlags.some((flag) => flag.includes('lesson 8')), coherenceFlags)
+
 console.log(`\n${passes} passed, ${failures} failed`)
 if (failures > 0) process.exit(1)
 
@@ -136,6 +170,78 @@ function minimalResult() {
 
 function containsAny(value: string, needles: string[]) {
   return needles.some((needle) => value.includes(needle))
+}
+
+function readSource(relativePath: string) {
+  return readFileSync(fileURLToPath(new URL(relativePath, import.meta.url)), 'utf8')
+}
+
+function sliceBetween(source: string, start: string, end: string) {
+  const startIndex = source.indexOf(start)
+  const endIndex = source.indexOf(end, startIndex)
+  if (startIndex < 0 || endIndex < 0) return ''
+  return source.slice(startIndex, endIndex)
+}
+
+function collectCoherenceFlags() {
+  const flags: string[] = []
+  const weakGenericItems = new Set(['almost', 'focused', 'decided'])
+  const knownLesson8OddPhrases = ['right call', 'good or odd']
+  const lesson8AllowedItems = new Set(['i love', 'i like', 'it', 'here', 'nice', 'good', 'place', 'quiet'])
+
+  for (const lessonDefinition of lessons) {
+    for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+      const variant = lessonDefinition.vibeVariants[vibeId]
+      if (!variant) continue
+
+      const searchableContext = [
+        lessonDefinition.title,
+        lessonDefinition.situation.en,
+        lessonDefinition.situation.de,
+        variant.corePhrase.targetText,
+        variant.corePhrase.baseText,
+        ...variant.chunks.flatMap((chunk) => [chunk.targetText, chunk.baseText]),
+      ].join(' ').toLowerCase()
+
+      const seenTargets = new Set<string>()
+      for (const item of variant.lessonItems) {
+        const target = item.targetText.toLowerCase()
+        if (seenTargets.has(target)) {
+          flags.push(`lesson ${lessonDefinition.lessonNumber}/${vibeId}: duplicated lesson item "${item.targetText}"`)
+        }
+        seenTargets.add(target)
+
+        if (item.baseText.trim().length < 2) {
+          flags.push(`lesson ${lessonDefinition.lessonNumber}/${vibeId}: suspiciously short German base text for "${item.targetText}"`)
+        }
+
+        if (weakGenericItems.has(target)) {
+          flags.push(`lesson ${lessonDefinition.lessonNumber}/${vibeId}: weak generic lesson item "${item.targetText}"`)
+        }
+
+        if (knownLesson8OddPhrases.some((phrase) => target.includes(phrase))) {
+          flags.push(`lesson ${lessonDefinition.lessonNumber}/${vibeId}: suspicious lesson item "${item.targetText}"`)
+        }
+
+        const targetWords = target.split(/\s+/).filter((word) => word.length > 2)
+        const relatedToContext = lessonDefinition.lessonNumber === 8 && lesson8AllowedItems.has(target)
+          ? true
+          : targetWords.some((word) => searchableContext.includes(word))
+        if (lessonDefinition.lessonNumber === 8 && !relatedToContext) {
+          flags.push(`lesson 8/${vibeId}: lesson item may be disconnected from I like/place context: "${item.targetText}"`)
+        }
+      }
+
+      for (const chip of variant.build.chips) {
+        const normalizedChip = chip.toLowerCase().replace(/[.!?,]/g, '').trim()
+        if (lessonDefinition.lessonNumber === 8 && knownLesson8OddPhrases.some((phrase) => normalizedChip.includes(phrase))) {
+          flags.push(`lesson 8/${vibeId}: suspicious build chip "${chip}"`)
+        }
+      }
+    }
+  }
+
+  return flags
 }
 
 function createMemoryStorage(): Storage {

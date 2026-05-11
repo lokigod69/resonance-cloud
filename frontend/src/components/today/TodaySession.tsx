@@ -1,4 +1,4 @@
-import { CheckCircle2, ChevronLeft, ChevronRight, RotateCcw, Volume2 } from 'lucide-react'
+import { CheckCircle2, ChevronLeft, ChevronRight, RotateCcw, Trophy, Volume2 } from 'lucide-react'
 import { useState } from 'react'
 import { getGuidedMatchPairs, type GuidedLesson } from '@/data/guidedLessons'
 import { getTodayCompletionLines, type TodayLessonResult } from '@/lib/todayProgress'
@@ -96,6 +96,10 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
       <div className="mb-6 grid gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
+            <Button type="button" variant="ghost" size="sm" className="-ml-2 mb-3" onClick={onViewPath}>
+              <ChevronLeft className="h-4 w-4" />
+              {t('today.path.backToPath')}
+            </Button>
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
               {t('today.sessionLabel')}
             </p>
@@ -193,27 +197,6 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
             {lesson.corePhrase.baseText}
           </p>
         </div>
-        <div className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_46%,transparent)] p-4">
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-            {t('today.trophyWord.title')}
-          </p>
-          <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <p className="break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">
-              {lesson.trophyWord.word}
-            </p>
-            <p className="break-words text-sm leading-6 text-[var(--text-secondary)]">
-              {lesson.trophyWord.meaning}
-            </p>
-          </div>
-          <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
-            <span className="font-medium text-[var(--text-primary)]">{t('today.trophyWord.exampleLabel')}: </span>
-            {lesson.trophyWord.example}
-          </p>
-          <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-            <span className="font-medium text-[var(--text-primary)]">{t('today.trophyWord.whyLabel')}: </span>
-            {lesson.trophyWord.whyThisWord}
-          </p>
-        </div>
       </div>
     </div>
   )
@@ -251,6 +234,28 @@ function CompleteStep({
         </div>
       </div>
       <div className="mx-auto w-full max-w-xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-left">
+        <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+          <Trophy className="h-4 w-4 text-[var(--accent)]" />
+          {t('today.trophyWord.title')}
+        </p>
+        <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <p className="break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">
+            {lesson.trophyWord.word}
+          </p>
+          <p className="break-words text-sm leading-6 text-[var(--text-secondary)]">
+            {lesson.trophyWord.meaning}
+          </p>
+        </div>
+        <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+          <span className="font-medium text-[var(--text-primary)]">{t('today.trophyWord.exampleLabel')}: </span>
+          {lesson.trophyWord.example}
+        </p>
+        <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+          <span className="font-medium text-[var(--text-primary)]">{t('today.trophyWord.whyLabel')}: </span>
+          {lesson.trophyWord.whyThisWord}
+        </p>
+      </div>
+      <div className="mx-auto w-full max-w-xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-left">
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
           {t('today.nextLesson')}
         </p>
@@ -263,7 +268,7 @@ function CompleteStep({
       </div>
       <div className="flex flex-wrap justify-center gap-3">
         <Button onClick={onViewPath}>
-          {t('today.path.viewPath')}
+          {t('today.path.backToPath')}
         </Button>
         <Button variant="outline" onClick={onRestart}>
           <RotateCcw className="h-4 w-4" />

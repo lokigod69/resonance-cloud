@@ -1,4 +1,4 @@
-import { CheckCircle2, Circle, Play, Route, Trophy } from 'lucide-react'
+import { CheckCircle2, Circle, Play, Route } from 'lucide-react'
 import type { GuidedLesson, GuidedPathLessonCardStatus, GuidedPathOverview } from '@/data/guidedLessons'
 import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonStatus, type TodayProgressState } from '@/lib/todayProgress'
@@ -59,20 +59,19 @@ export function TodayPathOverview({
       </section>
 
       {pathLesson && (
+        <GuidedVibePicker
+          selectedVibeId={selectedVibeId}
+          onSelectVibe={onSelectVibe}
+          compact
+        />
+      )}
+
+      {pathLesson && (
         <RecommendedLessonPanel
           lesson={pathLesson}
           progress={progress}
           isComplete={overview.isComplete}
           onOpenLesson={onOpenLesson}
-        />
-      )}
-
-      {pathLesson && (
-        <GuidedVibePicker
-          lesson={pathLesson}
-          selectedVibeId={selectedVibeId}
-          onSelectVibe={onSelectVibe}
-          compact
         />
       )}
 
@@ -120,7 +119,7 @@ function RecommendedLessonPanel({
 
   return (
     <section className="theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-6">
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div className="min-w-0">
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
             {isComplete ? t('today.path.completeLabel') : t('today.path.recommendedLabel')}
@@ -136,17 +135,6 @@ function RecommendedLessonPanel({
           <p className="mt-3 max-w-3xl text-sm leading-6 text-[var(--text-secondary)]">
             {isComplete ? t('today.path.completeBody') : lesson.situation.de}
           </p>
-          <div className="mt-4 grid gap-2 rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_48%,transparent)] p-3">
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-              {t('today.path.lessonCue')}
-            </p>
-            <p className="break-words text-lg font-semibold leading-snug text-[var(--text-primary)]">
-              {lesson.corePhrase.targetText}
-            </p>
-            <p className="break-words text-sm leading-6 text-[var(--text-secondary)]">
-              {lesson.corePhrase.baseText}
-            </p>
-          </div>
         </div>
         <Button size="lg" onClick={() => onOpenLesson(lesson.id)}>
           {getActionLabel(t, visibleStatus, isComplete)}
@@ -171,15 +159,9 @@ function LessonPathCard({
   const { t } = useTranslation()
 
   return (
-    <button
-      type="button"
-      onClick={() => onOpenLesson(lesson.id)}
-      aria-label={t('today.path.openLesson', {
-        sequence: lesson.lessonNumber,
-        title: lesson.title,
-      })}
+    <article
       className={cn(
-        'min-w-0 rounded-lg border p-3 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+        'min-w-0 rounded-lg border p-3 transition',
         isRecommended
           ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)]'
           : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_50%,transparent)]',
@@ -197,9 +179,9 @@ function LessonPathCard({
         <StatusIcon status={status} />
       </div>
       <p className="mt-3 line-clamp-2 break-words text-sm leading-5 text-[var(--text-secondary)]">
-        {lesson.corePhrase.targetText}
+        {lesson.situation.de}
       </p>
-      <div className="mt-4 flex flex-wrap items-center gap-2">
+      <div className="mt-4 flex items-center justify-between gap-2">
         <span className={cn(
           'rounded-full border px-2.5 py-1 text-xs font-medium',
           status === 'complete'
@@ -210,14 +192,20 @@ function LessonPathCard({
         )}>
           {getStatusLabel(t, status)}
         </span>
-        <span className="inline-flex min-w-0 items-center gap-1.5 rounded-full border border-[var(--border-subtle)] px-2.5 py-1 text-xs text-[var(--text-muted)]">
-          <Trophy className="h-3.5 w-3.5 shrink-0" />
-          <span className="truncate">
-            {t('today.path.trophyWord', { word: lesson.trophyWord.word })}
-          </span>
-        </span>
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          onClick={() => onOpenLesson(lesson.id)}
+          aria-label={t('today.path.openLesson', {
+            sequence: lesson.lessonNumber,
+            title: lesson.title,
+          })}
+        >
+          {getCardActionLabel(t, status)}
+        </Button>
       </div>
-    </button>
+    </article>
   )
 }
 
@@ -247,4 +235,9 @@ function getActionLabel(
   if (status === 'completed' || isPathComplete) return t('today.path.replayLesson')
   if (status === 'skipped') return t('today.path.continueLesson')
   return t('today.path.startLesson')
+}
+
+function getCardActionLabel(t: ReturnType<typeof useTranslation>['t'], status: GuidedPathLessonCardStatus) {
+  if (status === 'complete') return t('today.path.replayLesson')
+  return t('today.path.openLessonAction')
 }
