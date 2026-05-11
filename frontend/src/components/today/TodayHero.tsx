@@ -81,10 +81,7 @@ export function LessonMediaFrame({
                 <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_72%,transparent)] text-[var(--text-primary)]">
                   <Play className="h-4 w-4" />
                 </div>
-                <p className="text-xl font-semibold leading-snug text-[var(--text-primary)] sm:text-2xl">
-                  {t('today.media.previewTitle')}
-                </p>
-                <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+                <p className="text-lg font-semibold leading-snug text-[var(--text-primary)] sm:text-xl">
                   {t('today.media.previewHint')}
                 </p>
               </div>
@@ -166,10 +163,6 @@ export function TodayHero({
               <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
                 {lesson.pathMetadata.baseLanguage}{' -> '}{lesson.pathMetadata.targetLanguage}
               </Badge>
-              <span className="inline-flex items-center gap-1.5 text-xs text-[var(--text-muted)]">
-                <Clock3 className="h-3.5 w-3.5" />
-                {t('today.estimatedTime', { minutes: lesson.pathMetadata.estimatedMinutes })}
-              </span>
             </div>
 
             <p className="mt-5 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">

@@ -53,14 +53,9 @@ export function MatchPairsStep({
   return (
     <div className="grid gap-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h3 className="text-2xl font-semibold text-[var(--text-primary)]">
-            {t('today.matchPairs.title')}
-          </h3>
-          <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-            {t('today.matchPairs.subtitle')}
-          </p>
-        </div>
+        <p className="max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
+          {t('today.matchPairs.subtitle')}
+        </p>
         <Button type="button" variant="ghost" size="sm" onClick={handleReset} disabled={matchedPairIds.size === 0 && !selectedEnglishId}>
           <RotateCcw className="h-4 w-4" />
           {t('today.reset')}

@@ -121,9 +121,6 @@ export default function Today() {
                 <h2 className="mt-2 text-2xl font-semibold text-[var(--text-primary)]">
                   {status === 'completed' ? t('today.completion.title') : t('today.skippedTitle')}
                 </h2>
-                <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--text-secondary)]">
-                  {t('today.returningComplete')}
-                </p>
                 {status === 'completed' && storedCompletionLines && (
                   <div className="mt-3 flex max-w-2xl flex-wrap gap-2 text-sm font-medium leading-6 text-[var(--text-primary)]">
                     {storedCompletionLines.map((line) => (

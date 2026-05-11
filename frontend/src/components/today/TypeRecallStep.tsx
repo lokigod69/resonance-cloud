@@ -64,18 +64,13 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
   }
 
   return (
-    <div className="grid gap-5">
-      <div>
-        <h3 className="text-2xl font-semibold text-[var(--text-primary)]">
-          {t('today.type.title')}
-        </h3>
-        <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-          {t('today.type.prompt')}
-        </p>
-      </div>
+    <div className="grid justify-items-center gap-5 text-center">
+      <p className="max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
+        {t('today.type.prompt')}
+      </p>
 
-      <div className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4">
-        <div className="flex flex-col gap-3 text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:flex-row sm:flex-wrap sm:items-center sm:text-3xl">
+      <div className="w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4">
+        <div className="flex flex-col justify-center gap-3 text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:flex-row sm:flex-wrap sm:items-center sm:text-3xl">
           <span>{lesson.typeRecall.before}</span>
           <Input
             value={answer}
@@ -88,7 +83,7 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-3">
         <Button onClick={handleCheck}>
           {t('today.checkAnswer')}
         </Button>
@@ -100,11 +95,11 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
       </div>
 
       {fallbackVisible && (
-        <div className="grid gap-2">
+        <div className="grid justify-items-center gap-2">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
             {t('today.type.fallbackLabel')}
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {fallbackChoices.map((choice) => (
               <button
                 key={choice.targetText}

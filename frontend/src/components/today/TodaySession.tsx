@@ -12,7 +12,7 @@ import { TypeRecallStep, type TypeRecallCheckState } from '@/components/today/Ty
 import { SpeakStep, type SpeakCheckState } from '@/components/today/SpeakStep'
 import { speakGuidedText } from '@/components/today/speech'
 import { canUseBrowserSpeechRecognition } from '@/components/today/speechRecognition'
-import { TODAY_SESSION_STEPS, type TodaySessionStep } from '@/components/today/sessionSteps'
+import { TODAY_SESSION_STEPS } from '@/components/today/sessionSteps'
 
 type TodaySessionProps = {
   lesson: GuidedLesson
@@ -143,11 +143,6 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
             {t('today.back')}
           </Button>
           <div className="flex flex-wrap items-center gap-3">
-            {step === 'type' && typeWasWrong(step, typeState) && (
-              <span className="text-sm text-[var(--text-muted)]">
-                {t('today.continueAfterWrong')}
-              </span>
-            )}
             <Button onClick={handleNext} disabled={!canContinue}>
               {t('today.continue')}
               <ChevronRight className="h-4 w-4" />
@@ -249,13 +244,6 @@ function CompleteStep({
       </div>
     </div>
   )
-}
-
-function typeWasWrong(
-  step: TodaySessionStep,
-  typeState: TypeRecallCheckState,
-) {
-  return step === 'type' && typeState.status === 'wrong'
 }
 
 function canContinueFromSpeak(speakState: SpeakCheckState) {

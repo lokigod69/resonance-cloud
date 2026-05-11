@@ -13,7 +13,7 @@ Implemented and polished the isolated authenticated `/today` Guided Today protot
 - Core phrase: `Excuse me, do you speak English?`
 - German meaning: `Entschuldigung, sprechen Sie Englisch?`
 
-V5 keeps the prototype static and local-only while finalizing the Lesson 1 loop: the pre-start preview now uses the existing lesson video as a thumbnail-style surface, the primary Review step was removed, Type Recall gained an opt-in help fallback, and a browser-only Web Speech API Speak step closes the lesson with oral production.
+V6 keeps the prototype static and local-only while finishing the Lesson 1 UI copy pass: the intro is less text-heavy, step screens no longer repeat their header title inside the task body, feedback and completion pills are compact, and no architecture or backend behavior changed.
 
 ## Files Changed
 
@@ -95,6 +95,16 @@ Marking an item with the small known toggle affects only the current page/sessio
 - If browser speech recognition is unavailable, the Speak step shows a calm fallback with the sentence visible and allows continuing.
 - Intro media now uses the existing lesson video as a muted, no-controls preview surface; playable video remains in Step 1 Scene.
 - Still no schema, generation, credits, provider calls, cloud STT, or backend writes.
+
+## V6 Micro-Polish
+
+- Reduced intro copy by removing estimated time from the intro badge row and shortening the `Heute lernst du` helper text.
+- Shortened the skip action to `Lektion überspringen`.
+- Removed duplicated inner step titles from Match Pairs, Build Phrase, Type Recall, and Speak; the top step header is now the single title on each screen.
+- Centered the Type Recall phrase/input surface and kept Speak visually centered.
+- Compacted feedback and completion copy, including the known-word summary (`X übersprungen`).
+- Kept the intro media preview minimal: `Lektionsszene` and `Das Video startet in Schritt 1.`
+- No architecture, schema, inventory, Lesson 2, provider, generation, credit, or backend changes.
 
 ## Intentionally Static
 

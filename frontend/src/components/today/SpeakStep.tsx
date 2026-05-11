@@ -29,7 +29,6 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
   const attemptsRef = useRef(0)
   const statusRef = useRef<SpeakCheckState['status']>(canUseBrowserSpeechRecognition() ? 'idle' : 'unsupported')
   const [status, setStatus] = useState<SpeakCheckState['status']>(statusRef.current)
-  const [attempts, setAttempts] = useState(0)
   const [transcript, setTranscript] = useState('')
   const [transcriptMatch, setTranscriptMatch] = useState(0)
   const [hintVisible, setHintVisible] = useState(false)
@@ -64,7 +63,6 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
     const nextStatus = nextMatch >= lesson.speak.passingThreshold ? 'passed' : 'failed'
 
     attemptsRef.current = nextAttempts
-    setAttempts(nextAttempts)
     setTranscript(nextTranscript)
     setTranscriptMatch(nextMatch)
     updateStatus(nextStatus)
@@ -74,7 +72,6 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
   const handleRecognitionError = () => {
     const nextAttempts = attemptsRef.current + 1
     attemptsRef.current = nextAttempts
-    setAttempts(nextAttempts)
     setTranscriptMatch(0)
     updateStatus('failed')
     publishState('failed', nextAttempts, 0)
@@ -126,17 +123,12 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
       : t('today.speak.showSentence')
 
   return (
-    <div className="grid gap-5">
-      <div>
-        <h3 className="text-2xl font-semibold text-[var(--text-primary)]">
-          {t('today.speak.title')}
-        </h3>
-        <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-          {t('today.speak.prompt')}
-        </p>
-      </div>
+    <div className="grid justify-items-center gap-5 text-center">
+      <p className="max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
+        {t('today.speak.prompt')}
+      </p>
 
-      <div className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4">
+      <div className="w-full max-w-2xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4">
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
           {t('today.speak.cueLabel')}
         </p>
@@ -145,7 +137,7 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
         </p>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-3">
         <Button type="button" variant="outline" onClick={() => setHintVisible((current) => !current)}>
           <Eye className="h-4 w-4" />
           {hintButtonLabel}
@@ -206,12 +198,6 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
             {t('today.speak.continueAnyway')}
           </Button>
         </div>
-      )}
-
-      {attempts > 0 && (
-        <p className="text-xs text-[var(--text-muted)]">
-          {t('today.speak.attempts', { count: attempts })}
-        </p>
       )}
     </div>
   )

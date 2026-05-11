@@ -72,20 +72,15 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
 
   return (
     <div className="grid gap-5">
-      <div>
-        <h3 className="text-2xl font-semibold text-[var(--text-primary)]">
-          {t('today.build.title')}
-        </h3>
-        <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-          {t('today.build.prompt')}
-        </p>
-      </div>
+      <p className="max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
+        {t('today.build.prompt')}
+      </p>
 
       <div className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-3 sm:p-4">
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+        <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
           {t('today.build.answerLabel')}
         </p>
-        <div className="flex min-h-16 flex-wrap items-center gap-2 rounded-lg border border-dashed border-[var(--border-strong)] bg-[color-mix(in_srgb,var(--app-bg)_28%,transparent)] p-3">
+        <div className="flex min-h-16 flex-wrap items-center justify-center gap-2 rounded-lg border border-dashed border-[var(--border-strong)] bg-[color-mix(in_srgb,var(--app-bg)_28%,transparent)] p-3 text-center">
           {selectedIndexes.length === 0 ? (
             <span className="text-sm text-[var(--text-muted)]">{t('today.build.emptySelection')}</span>
           ) : (
@@ -103,7 +98,7 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap justify-center gap-2">
         {availableChips.map(({ chip, index }) => (
           <button
             key={`${chip}-${index}`}
@@ -116,7 +111,7 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
         ))}
       </div>
 
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-3">
         <Button onClick={handleCheck} disabled={selectedIndexes.length === 0 || status === 'correct'}>
           {t('today.checkAnswer')}
         </Button>
@@ -129,7 +124,7 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
       {status !== 'idle' && (
         <div
           className={cn(
-            'inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm',
+            'mx-auto inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm',
             status === 'correct'
               ? 'border-[color-mix(in_srgb,var(--accent)_46%,transparent)] bg-[var(--accent-soft)] text-[var(--text-primary)]'
               : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] text-[var(--text-secondary)]',

@@ -4,6 +4,7 @@
  * Run: npx tsx scripts/test-guided-today-data.ts
  */
 
+import { readFileSync } from 'node:fs'
 import {
   GUIDED_LESSONS,
   getCurrentGuidedLesson,
@@ -41,6 +42,14 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 }
 
 const lesson = getCurrentGuidedLesson()
+const germanT = createT('de')
+
+const todayHeroSource = readSource('../src/components/today/TodayHero.tsx')
+const todayIntroHeroSource = todayHeroSource.slice(0, todayHeroSource.indexOf('export function TodayCompactHeader'))
+const matchPairsSource = readSource('../src/components/today/MatchPairsStep.tsx')
+const buildPhraseSource = readSource('../src/components/today/BuildPhraseStep.tsx')
+const typeRecallSource = readSource('../src/components/today/TypeRecallStep.tsx')
+const speakStepSource = readSource('../src/components/today/SpeakStep.tsx')
 
 console.log('\n[lesson data]')
 assert('exactly one static lesson', GUIDED_LESSONS.length === 1, GUIDED_LESSONS.length)
@@ -57,6 +66,19 @@ assert('lesson media caption is German-first', lesson.lessonMedia.caption === 'E
 assert('lesson media uses provided local video asset', lesson.lessonMedia.type === 'video')
 assert('lesson media points at public guided video path', lesson.lessonMedia.url === '/guided/english-a1-practical/lesson-001-first-contact.mp4')
 
+console.log('\n[ui copy]')
+assert('intro helper copy is short', germanT('today.itemsPreview.subtitle') === 'Markiere Wörter, die du überspringen möchtest.')
+assert('skip button copy is short', germanT('today.skipLesson') === 'Lektion überspringen')
+assert('intro media preview copy is minimal', germanT('today.media.previewHint') === 'Das Video startet in Schritt 1.')
+assert('intro hero does not show estimated time', !todayIntroHeroSource.includes('today.estimatedTime'), todayIntroHeroSource)
+assert('intro media preview does not render extra title copy', !todayIntroHeroSource.includes('today.media.previewTitle'), todayIntroHeroSource)
+assert('match step does not duplicate the header title', !matchPairsSource.includes('today.matchPairs.title'), matchPairsSource)
+assert('build step does not duplicate the header title', !buildPhraseSource.includes('today.build.title'), buildPhraseSource)
+assert('type step does not duplicate the header title', !typeRecallSource.includes('today.type.title'), typeRecallSource)
+assert('speak step does not duplicate the header title', !speakStepSource.includes('today.speak.title'), speakStepSource)
+assert('speak feedback copy is compact', germanT('today.speak.passed') === 'Richtig.' && germanT('today.speak.failed') === 'Noch nicht.')
+assert('known completion copy is compact', germanT('today.completion.knownMarked') === '{known} übersprungen')
+
 console.log('\n[phrase production]')
 const builtPhrase = lesson.build.chips
   .filter((chip) => ['Excuse me,', 'do you speak', 'English?'].includes(chip))
@@ -64,7 +86,6 @@ const builtPhrase = lesson.build.chips
 
 assert('build chips can form the exact phrase', builtPhrase === lesson.build.targetText, builtPhrase)
 assert('type recall accepts English case-insensitively', lesson.typeRecall.acceptedAnswers.some((answer) => normalizeGuidedAnswer(answer) === 'english'))
-const germanT = createT('de')
 assert('type recall placeholder does not spoil the answer', normalizeGuidedAnswer(germanT('today.type.placeholder')) !== 'english')
 const typeFallbackChoices = getGuidedTypeFallbackChoices(lesson)
 assert('type fallback choices include English and distractors', JSON.stringify(typeFallbackChoices.map((choice) => choice.targetText)) === JSON.stringify([
@@ -227,3 +248,7 @@ assert(
 
 console.log(`\n${passes} passed, ${failures} failed`)
 if (failures > 0) process.exit(1)
+
+function readSource(relativePath: string) {
+  return readFileSync(new URL(relativePath, import.meta.url), 'utf8')
+}
