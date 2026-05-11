@@ -113,8 +113,6 @@ const ROUND_DIFFICULTY: RoundDifficulty[] = [
 ];
 
 const EASY_MODE_HOLD_Y_RATIO = 0.5;
-const SLICE_HOLD_MS = 320;
-const SLICE_FADE_MS = 180;
 
 export class SlicerScene extends Phaser.Scene {
   private deck!: DeckDefinition;
@@ -568,6 +566,7 @@ export class SlicerScene extends Phaser.Scene {
       this.emitAttempt(card.word, false, 'distractor', false);
       this.loseLife();
       this.audio.miss();
+      this.playWrongSliceShake();
       this.playWrongSliceEdgeFlash();
       this.playMissFx();
       this.clearCards();
@@ -791,18 +790,7 @@ export class SlicerScene extends Phaser.Scene {
         .setDepth(44)
         .setDisplaySize(fx.cardWidth, fx.cardHeight);
       cut.play('ember-card-cut');
-      cut.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
-        this.time.delayedCall(SLICE_HOLD_MS, () => {
-          if (!cut.active) return;
-          this.tweens.add({
-            targets: cut,
-            alpha: 0,
-            duration: SLICE_FADE_MS,
-            ease: 'Cubic.easeOut',
-            onComplete: () => cut.destroy(),
-          });
-        });
-      });
+      cut.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => cut.destroy());
     }
     const burst = this.makeImpactEmberBurst(fx.point, goldBiased);
     void burst;
@@ -1091,6 +1079,10 @@ export class SlicerScene extends Phaser.Scene {
       ease: 'Cubic.easeOut',
       onComplete: () => edge.destroy(),
     });
+  }
+
+  private playWrongSliceShake(): void {
+    this.cameras.main.shake(170, 0.006);
   }
 
   private warmBloom(): void {
