@@ -1165,6 +1165,8 @@ export class SlicerScene extends Phaser.Scene {
 
   private async speakTarget(target: DeckWord): Promise<void> {
     const prompt = resolvePrompt(this.deck, target);
+    await this.primeAudioOnGesture().catch(() => undefined);
+    await this.audio.unlock().catch(() => undefined);
     if (prompt.mode === 'audio_to_image' && target.audioUrl) {
       this.htmlAudio?.pause();
       const audio = new Audio(target.audioUrl);

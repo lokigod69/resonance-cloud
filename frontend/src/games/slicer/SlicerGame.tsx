@@ -50,6 +50,7 @@ export default function SlicerGame() {
   const recordResult = useRecordGameResult()
   const { primeOnGesture } = useIOSAudioPrimer()
   const slicerAudioRef = useRef<SlicerAudio | null>(null)
+  const audioPrimePromiseRef = useRef<Promise<void> | null>(null)
   const phaserHostRef = useRef<HTMLDivElement | null>(null)
 
   if (slicerAudioRef.current === null) {
@@ -142,28 +143,35 @@ export default function SlicerGame() {
 
   const preparingDeck = Boolean(selectedDeck && ready && sceneKey && readySceneKey !== sceneKey)
 
+  const primeSceneAudio = useCallback(async () => {
+    await audioPrimePromiseRef.current?.catch(() => undefined)
+    await primeOnGesture().catch(() => undefined)
+  }, [primeOnGesture])
+
   useEffect(() => {
     if (!ready || !gameRef.current || !slicerDeck || !sceneKey) return undefined
     const game = gameRef.current
     game.scene.add('slicer', SlicerScene, true, {
       deck: slicerDeck,
       bus,
-      primeAudioOnGesture: primeOnGesture,
+      primeAudioOnGesture: primeSceneAudio,
       onExit: handleExit,
       onSceneReady: () => setReadySceneKey(sceneKey),
       onTargetChange: setStudyCue,
       easyMode,
       audio: slicerAudioRef.current,
     })
-  }, [bus, easyMode, gameRef, handleExit, primeOnGesture, ready, sceneKey, slicerDeck])
+  }, [bus, easyMode, gameRef, handleExit, primeSceneAudio, ready, sceneKey, slicerDeck])
 
   useEffect(() => bus.on((event) => {
     handleGameEvent(event, recordResult, setHud, setRoundLabel, setSessionStats)
   }), [bus, recordResult])
 
   const handleDeckSelected = useCallback((choice: SlicerDeckChoice) => {
-    void primeOnGesture().catch(() => undefined)
-    void slicerAudioRef.current?.unlock().catch(() => undefined)
+    audioPrimePromiseRef.current = Promise.all([
+      primeOnGesture().catch(() => undefined),
+      slicerAudioRef.current?.unlock().catch(() => undefined),
+    ]).then(() => undefined)
     setSelectedDeck(choice)
     setHud({
       ...INITIAL_HUD,
