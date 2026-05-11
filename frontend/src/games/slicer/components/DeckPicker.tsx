@@ -230,7 +230,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                   })}
                   className="group aspect-video rounded-lg border border-[rgba(255,107,53,0.24)] bg-[url('/games/slicer/cards/frame-default.png')] bg-[length:100%_100%] px-8 py-6 text-center shadow-[0_0_26px_rgba(255,69,0,0.18)] transition hover:shadow-[0_0_34px_rgba(255,215,0,0.24)]"
                 >
-                  <span className="mx-auto mb-3 grid h-11 w-11 place-items-center rounded-full bg-black/25 transition group-hover:bg-[#ff6b35]/10">
+                  <span className="mx-auto mb-3 grid h-11 w-11 place-items-center rounded-full bg-black/25">
                     <img
                       src="/games/slicer/branding/play-button.png"
                       alt=""
