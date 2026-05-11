@@ -139,7 +139,16 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
         )}
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="text-xs uppercase tracking-[0.18em] text-[#ff9155]/70">Lexicon Slice</p>
+            <div className="mb-2 flex flex-col items-start">
+              <img
+                src="/games/slicer/branding/slicer-header.png"
+                alt="Slicer"
+                width={1600}
+                height={400}
+                className="h-auto w-[min(520px,82vw)] object-contain"
+              />
+              <p className="-mt-2 text-[10px] uppercase tracking-[0.22em] text-[#ff9155]/25">Lexicon Slice</p>
+            </div>
             <h1 className="font-serif text-4xl leading-none sm:text-6xl">{title}</h1>
           </div>
           <div className="flex flex-wrap justify-end gap-2">

@@ -1,5 +1,4 @@
 import type { ComponentType } from 'react'
-import slicerIcon from '@/assets/study-mode-icons/slicer.webp'
 
 export type GameEntry = {
   id: string
@@ -28,7 +27,7 @@ export const GAMES: GameEntry[] = [
     id: 'slicer',
     titleKey: 'games.slicer.title',
     subtitleKey: 'games.slicer.subtitle',
-    iconSrc: slicerIcon,
+    iconSrc: '/games/slicer/branding/slicer-tile-icon.png',
     route: '/games/slicer',
     enabled: true,
     component: loadGameComponent('../slicer/SlicerGame.tsx'),
