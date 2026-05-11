@@ -571,6 +571,7 @@ export class SlicerScene extends Phaser.Scene {
       this.emitAttempt(card.word, false, 'distractor', false);
       this.loseLife();
       this.audio.miss();
+      this.playWrongSliceEdgeFlash();
       this.playMissFx();
       this.clearCards();
       this.updateHud();
@@ -1062,6 +1063,26 @@ export class SlicerScene extends Phaser.Scene {
     edge.fillStyle(0x1a0a00, 0.1);
     edge.fillRect(0, 0, this.scale.width, this.scale.height);
     this.tweens.add({ targets: edge, alpha: 0, duration: 240, onComplete: () => edge.destroy() });
+  }
+
+  private playWrongSliceEdgeFlash(): void {
+    const width = this.scale.width;
+    const height = this.scale.height;
+    const edge = this.add.graphics().setDepth(97);
+    edge.lineStyle(34, 0xff1f1f, 0.26);
+    edge.strokeRect(0, 0, width, height);
+    edge.lineStyle(18, 0xff3b30, 0.42);
+    edge.strokeRect(3, 3, Math.max(0, width - 6), Math.max(0, height - 6));
+    edge.lineStyle(6, 0xffd0c0, 0.22);
+    edge.strokeRect(8, 8, Math.max(0, width - 16), Math.max(0, height - 16));
+    edge.setAlpha(0.88);
+    this.tweens.add({
+      targets: edge,
+      alpha: 0,
+      duration: 420,
+      ease: 'Cubic.easeOut',
+      onComplete: () => edge.destroy(),
+    });
   }
 
   private warmBloom(): void {
