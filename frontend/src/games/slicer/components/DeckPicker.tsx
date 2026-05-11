@@ -106,18 +106,18 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
   const playAllLabel = isGerman ? 'Alle Wörter spielen' : 'Play all words'
 
   return (
-    <section className="pointer-events-auto absolute inset-0 z-30 grid place-items-center bg-black/45 px-4 text-[#fff1d0] backdrop-blur-sm">
-      <div className="w-full max-w-5xl">
+    <section className="pointer-events-auto absolute inset-0 z-30 flex bg-black/45 px-4 py-4 text-[#fff1d0] backdrop-blur-sm sm:px-6 sm:py-6">
+      <div className="mx-auto flex h-full min-h-0 w-full max-w-6xl flex-col">
         <button
           type="button"
           onClick={() => navigate('/games')}
-          className="mb-5 inline-flex min-h-10 items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/30 px-4 text-sm text-[#fff1d0] transition hover:bg-white/10"
+          className="mb-3 inline-flex min-h-10 w-fit items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/30 px-4 text-sm text-[#fff1d0] transition hover:bg-white/10"
         >
           <ArrowLeft size={16} />
           Back
         </button>
         {availableLanguages.length > 1 && (
-          <div className="mb-5 flex flex-wrap justify-center gap-2">
+          <div className="mb-3 flex flex-wrap justify-center gap-2">
             {availableLanguages.map((language) => {
               const active = language === selectedLanguage
               return (
@@ -137,9 +137,9 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
             })}
           </div>
         )}
-        <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <div className="mb-2 flex flex-col items-start">
+        <div className="mb-4 flex shrink-0 flex-col items-center gap-3 text-center">
+          <div className="flex flex-col items-center">
+            <div className="mb-1 flex flex-col items-center">
               <img
                 src="/games/slicer/branding/slicer-header.png"
                 alt="Slicer"
@@ -149,9 +149,9 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
               />
               <p className="-mt-2 text-[10px] uppercase tracking-[0.22em] text-[#ff9155]/25">Lexicon Slice</p>
             </div>
-            <h1 className="font-serif text-4xl leading-none sm:text-6xl">{title}</h1>
+            <h1 className="font-serif text-3xl leading-none sm:text-5xl">{title}</h1>
           </div>
-          <div className="flex flex-wrap justify-end gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             <label className="inline-flex min-h-12 items-center gap-3 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 px-4 text-sm text-[#fff1d0]/80">
               <span>Easy mode</span>
               <input
@@ -176,62 +176,64 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
           </div>
         </div>
 
-        {loading ? (
-          <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
-            Loading decks...
-          </div>
-        ) : error ? (
-          <div className="rounded-lg border border-red-400/30 bg-red-950/30 p-8 text-center text-red-100">{error}</div>
-        ) : filteredDecks.length === 0 ? (
-          <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
-            No decks are ready for this language.
-          </div>
-        ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {selectedLanguage && (
-              <button
-                type="button"
-                onClick={() => onSelect({
-                  id: `play-all-${selectedLanguage}`,
-                  title: playAllTitle,
-                  targetLanguage: selectedLanguage,
-                  mode,
-                  isPlayAll: true,
-                })}
-                className="group aspect-video rounded-lg border border-[rgba(255,215,0,0.42)] bg-[#ff6b35]/10 px-8 py-6 text-center shadow-[0_0_34px_rgba(255,215,0,0.18)] transition hover:bg-[#ff6b35]/15 hover:shadow-[0_0_42px_rgba(255,215,0,0.26)]"
-              >
-                <span className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full border border-[rgba(255,215,0,0.48)] bg-black/35 text-[#ffd700] transition group-hover:bg-[#ff6b35]/20">
-                  <Play size={17} />
-                </span>
-                <span className="block truncate font-serif text-2xl leading-tight text-[#ffd700]">{playAllLabel}</span>
-                <span className="mt-2 block text-xs uppercase tracking-[0.14em] text-[#ffd2a5]/70">
-                  {filteredDecks.reduce((total, deck) => total + (deck.word_count ?? 0), 0)} words
-                </span>
-              </button>
-            )}
-            {filteredDecks.map((deck) => (
-              <button
-                key={deck.id}
-                type="button"
-                onClick={() => onSelect({
-                  id: deck.id,
-                  title: deck.name ?? 'Untitled deck',
-                  targetLanguage: deck.target_language,
-                  mode,
-                })}
-                className="group aspect-video rounded-lg border border-[rgba(255,107,53,0.24)] bg-[url('/games/slicer/cards/frame-default.png')] bg-[length:100%_100%] px-8 py-6 text-center shadow-[0_0_26px_rgba(255,69,0,0.18)] transition hover:shadow-[0_0_34px_rgba(255,215,0,0.24)]"
-              >
-                <span className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full border border-[rgba(255,107,53,0.34)] bg-black/35 text-[#ffd700] transition group-hover:bg-[#ff6b35]/20">
-                  <Play size={17} />
-                </span>
-                <span className="block truncate font-serif text-2xl leading-tight">{deck.name ?? 'Untitled deck'}</span>
-                <span className="mt-2 block text-xs uppercase tracking-[0.14em] text-[#ffd2a5]/70">
-                  {deck.word_count ?? 0} words
-                </span>
-              </button>
-            ))}
-          </div>
-        )}
+        <div className="min-h-0 flex-1 overflow-y-auto pr-1">
+          {loading ? (
+            <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
+              Loading decks...
+            </div>
+          ) : error ? (
+            <div className="rounded-lg border border-red-400/30 bg-red-950/30 p-8 text-center text-red-100">{error}</div>
+          ) : filteredDecks.length === 0 ? (
+            <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
+              No decks are ready for this language.
+            </div>
+          ) : (
+            <div className="grid gap-4 pb-6 sm:grid-cols-2 lg:grid-cols-3">
+              {selectedLanguage && (
+                <button
+                  type="button"
+                  onClick={() => onSelect({
+                    id: `play-all-${selectedLanguage}`,
+                    title: playAllTitle,
+                    targetLanguage: selectedLanguage,
+                    mode,
+                    isPlayAll: true,
+                  })}
+                  className="group aspect-video rounded-lg border border-[rgba(255,215,0,0.42)] bg-[#ff6b35]/10 px-8 py-6 text-center shadow-[0_0_34px_rgba(255,215,0,0.18)] transition hover:bg-[#ff6b35]/15 hover:shadow-[0_0_42px_rgba(255,215,0,0.26)]"
+                >
+                  <span className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full border border-[rgba(255,215,0,0.48)] bg-black/35 text-[#ffd700] transition group-hover:bg-[#ff6b35]/20">
+                    <Play size={17} />
+                  </span>
+                  <span className="block truncate font-serif text-2xl leading-tight text-[#ffd700]">{playAllLabel}</span>
+                  <span className="mt-2 block text-xs uppercase tracking-[0.14em] text-[#ffd2a5]/70">
+                    {filteredDecks.reduce((total, deck) => total + (deck.word_count ?? 0), 0)} words
+                  </span>
+                </button>
+              )}
+              {filteredDecks.map((deck) => (
+                <button
+                  key={deck.id}
+                  type="button"
+                  onClick={() => onSelect({
+                    id: deck.id,
+                    title: deck.name ?? 'Untitled deck',
+                    targetLanguage: deck.target_language,
+                    mode,
+                  })}
+                  className="group aspect-video rounded-lg border border-[rgba(255,107,53,0.24)] bg-[url('/games/slicer/cards/frame-default.png')] bg-[length:100%_100%] px-8 py-6 text-center shadow-[0_0_26px_rgba(255,69,0,0.18)] transition hover:shadow-[0_0_34px_rgba(255,215,0,0.24)]"
+                >
+                  <span className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full border border-[rgba(255,107,53,0.34)] bg-black/35 text-[#ffd700] transition group-hover:bg-[#ff6b35]/20">
+                    <Play size={17} />
+                  </span>
+                  <span className="block truncate font-serif text-2xl leading-tight">{deck.name ?? 'Untitled deck'}</span>
+                  <span className="mt-2 block text-xs uppercase tracking-[0.14em] text-[#ffd2a5]/70">
+                    {deck.word_count ?? 0} words
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   )
