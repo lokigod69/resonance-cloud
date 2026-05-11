@@ -15,6 +15,7 @@ import {
 import { createT } from '../src/lib/translations.ts'
 import {
   createEmptyTodayProgressState,
+  getTodayCompletionSummary,
   markTodayLessonComplete,
   markTodayLessonSkipped,
   todayProgressKey,
@@ -111,6 +112,21 @@ const completed = markTodayLessonComplete(empty, lesson, {
   typeAttempts: 1,
   reviewCorrect: 5,
   reviewTotal: 5,
+  knownItemCount: 0,
+})
+const partiallyKnownCompleted = markTodayLessonComplete(createEmptyTodayProgressState(), lesson, {
+  buildAttempts: 1,
+  typeAttempts: 1,
+  reviewCorrect: 1,
+  reviewTotal: 1,
+  knownItemCount: 4,
+})
+const allKnownCompleted = markTodayLessonComplete(createEmptyTodayProgressState(), lesson, {
+  buildAttempts: 1,
+  typeAttempts: 1,
+  reviewCorrect: 0,
+  reviewTotal: 0,
+  knownItemCount: 5,
 })
 const skipped = markTodayLessonSkipped(createEmptyTodayProgressState(), lesson)
 
@@ -120,6 +136,24 @@ assert(
   completed.courses[lesson.courseId]?.lessons[lesson.id]?.status === 'completed'
     && completed.courses[lesson.courseId]?.lessons[lesson.id]?.result?.buildAttempts === 2,
   completed,
+)
+assert(
+  'known item count is stored without raw answers',
+  partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.knownItemCount === 4
+    && JSON.stringify(partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result).includes('typedAnswer') === false,
+  partiallyKnownCompleted,
+)
+assert(
+  'completion summary supports no known items',
+  getTodayCompletionSummary(completed.courses[lesson.courseId]!.lessons[lesson.id]!.result!).key === 'today.completion.summary',
+)
+assert(
+  'completion summary supports some known items',
+  getTodayCompletionSummary(partiallyKnownCompleted.courses[lesson.courseId]!.lessons[lesson.id]!.result!).key === 'today.completion.summaryWithKnown',
+)
+assert(
+  'completion summary supports all known items',
+  getTodayCompletionSummary(allKnownCompleted.courses[lesson.courseId]!.lessons[lesson.id]!.result!).key === 'today.completion.summaryAllKnown',
 )
 assert(
   'skip status is stored separately from completion',

@@ -1,4 +1,4 @@
-import { CalendarDays, CheckCircle2, Clock3, Play, RotateCcw, SkipForward, Sparkles } from 'lucide-react'
+import { CalendarDays, Check, CheckCircle2, Circle, Clock3, Play, RotateCcw, SkipForward, Sparkles } from 'lucide-react'
 import type { GuidedLesson, GuidedLessonMedia } from '@/data/guidedLessons'
 import type { TodayVisibleStatus } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -19,20 +19,49 @@ type TodayHeroProps = {
 type LessonMediaFrameProps = {
   media: GuidedLessonMedia
   className?: string
+  mode?: 'preview' | 'playback'
+  showCaption?: boolean
 }
 
-export function LessonMediaFrame({ media, className }: LessonMediaFrameProps) {
+export function LessonMediaFrame({
+  media,
+  className,
+  mode = 'playback',
+  showCaption = false,
+}: LessonMediaFrameProps) {
   const { t } = useTranslation()
   const mediaUrl = media.url.trim()
   const posterUrl = media.posterUrl?.trim()
   const canRenderVideo = (media.type === 'video' || media.type === 'music_video') && mediaUrl.length > 0
   const canRenderImage = media.type === 'image' && mediaUrl.length > 0
   const isPlaceholder = !canRenderVideo && !canRenderImage
+  const shouldRenderPreview = mode === 'preview'
 
   return (
     <figure className={cn('min-w-0', className)}>
       <div className="theme-panel relative aspect-video min-h-[220px] overflow-hidden rounded-lg border border-[var(--border-subtle)]">
-        {canRenderVideo ? (
+        {shouldRenderPreview ? (
+          <div
+            className="flex h-full min-h-[220px] flex-col justify-between p-5 sm:p-6"
+            style={{
+              background:
+                'radial-gradient(ellipse at 18% 16%, var(--accent-glow), transparent 34%), radial-gradient(ellipse at 82% 18%, var(--accent-2-soft), transparent 34%), linear-gradient(135deg, color-mix(in srgb, var(--surface-2) 82%, transparent), color-mix(in srgb, var(--app-bg) 94%, transparent))',
+            }}
+          >
+            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
+              <Sparkles className="h-4 w-4 text-[var(--accent)]" />
+              {t('today.media.previewLabel')}
+            </div>
+            <div className="max-w-xl">
+              <p className="text-xl font-semibold leading-snug text-[var(--text-primary)] sm:text-2xl">
+                {t('today.media.previewTitle')}
+              </p>
+              <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+                {t('today.media.previewHint')}
+              </p>
+            </div>
+          </div>
+        ) : canRenderVideo ? (
           <video
             className="h-full w-full object-cover"
             src={mediaUrl}
@@ -66,7 +95,7 @@ export function LessonMediaFrame({ media, className }: LessonMediaFrameProps) {
           </div>
         )}
       </div>
-      {!isPlaceholder && (
+      {showCaption && !isPlaceholder && (
         <figcaption className="mt-3 text-xs leading-5 text-[var(--text-muted)]">
           {media.caption}
         </figcaption>
@@ -154,35 +183,54 @@ export function TodayHero({
                 )}
               </div>
 
-              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+              <div className="mt-4 overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_14%,transparent)]">
+                <div className="hidden grid-cols-[minmax(8rem,1fr)_minmax(8rem,1fr)_2.25rem] gap-3 border-b border-[var(--border-subtle)] px-3 py-2 text-xs font-medium uppercase tracking-[0.14em] text-[var(--text-muted)] sm:grid">
+                  <span>{t('today.itemsPreview.english')}</span>
+                  <span>{t('today.itemsPreview.german')}</span>
+                  <span className="sr-only">{t('today.itemsPreview.toggle')}</span>
+                </div>
                 {lesson.lessonItems.map((item) => {
                   const isKnown = knownItemIds.has(item.id)
                   return (
                     <div
                       key={item.id}
                       className={cn(
-                        'grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-lg border px-3 py-2',
-                        isKnown
-                          ? 'border-[color-mix(in_srgb,var(--accent)_42%,transparent)] bg-[var(--accent-soft)]'
-                          : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_16%,transparent)]',
+                        'grid min-w-0 grid-cols-[minmax(0,1fr)_auto] gap-x-3 gap-y-1 border-b border-[var(--border-subtle)] px-3 py-2 last:border-b-0 sm:grid-cols-[minmax(8rem,1fr)_minmax(8rem,1fr)_2.25rem] sm:items-center',
+                        isKnown && 'bg-[color-mix(in_srgb,var(--accent-soft)_54%,transparent)] opacity-70',
                       )}
                     >
-                      <div className="min-w-0 text-sm leading-6">
-                        <span className="font-semibold text-[var(--text-primary)]">{item.targetText}</span>
-                        <span className="px-2 text-[var(--text-muted)]">—</span>
-                        <span className="text-[var(--text-secondary)]">{item.baseText}</span>
-                      </div>
-                      <Button
-                        type="button"
-                        variant={isKnown ? 'secondary' : 'ghost'}
-                        size="sm"
-                        onClick={() => onToggleKnownItem(item.id)}
-                        className="h-8 rounded-full px-2.5 text-xs"
-                        aria-pressed={isKnown}
+                      <span
+                        className={cn(
+                          'min-w-0 text-sm font-semibold leading-6 text-[var(--text-primary)]',
+                          isKnown && 'line-through decoration-[var(--text-muted)] decoration-1',
+                        )}
                       >
-                        {isKnown && <CheckCircle2 className="h-4 w-4" />}
-                        {t('today.itemsPreview.knowThis')}
-                      </Button>
+                        {item.targetText}
+                      </span>
+                      <span
+                        className={cn(
+                          'min-w-0 text-sm leading-6 text-[var(--text-secondary)]',
+                          isKnown && 'line-through decoration-[var(--text-muted)] decoration-1',
+                        )}
+                      >
+                        {item.baseText}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => onToggleKnownItem(item.id)}
+                        className={cn(
+                          'col-start-2 row-span-2 row-start-1 flex h-8 w-8 items-center justify-center rounded-full border transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] sm:col-start-3 sm:row-span-1 sm:row-start-auto',
+                          isKnown
+                            ? 'border-[color-mix(in_srgb,var(--accent)_52%,transparent)] bg-[var(--accent-soft)] text-[var(--accent)]'
+                            : 'border-[var(--border-subtle)] text-[var(--text-muted)] hover:text-[var(--text-primary)]',
+                        )}
+                        aria-pressed={isKnown}
+                        aria-label={t(isKnown ? 'today.itemsPreview.unmarkKnown' : 'today.itemsPreview.markKnown', {
+                          item: item.targetText,
+                        })}
+                      >
+                        {isKnown ? <Check className="h-4 w-4" /> : <Circle className="h-4 w-4" />}
+                      </button>
                     </div>
                   )
                 })}
@@ -223,7 +271,7 @@ export function TodayHero({
           </div>
         </div>
 
-        <LessonMediaFrame media={lesson.lessonMedia} className="lg:self-center" />
+        <LessonMediaFrame media={lesson.lessonMedia} mode="preview" className="lg:self-center" />
       </div>
     </section>
   )

@@ -7,7 +7,18 @@ export type TodayLessonResult = {
   typeAttempts: number
   reviewCorrect: number
   reviewTotal: number
+  knownItemCount?: number
 }
+
+export type TodayCompletionSummary = {
+  key: 'today.completion.summary' | 'today.completion.summaryWithKnown' | 'today.completion.summaryAllKnown'
+  vars: Record<string, number>
+}
+
+export type TodayCompletionSummarySource = Pick<
+  TodayLessonResult,
+  'reviewCorrect' | 'reviewTotal' | 'knownItemCount'
+>
 
 export type TodayLessonProgress = {
   status: TodayLessonStatus
@@ -110,6 +121,36 @@ export function markTodayLessonSkipped(
           },
         },
       },
+    },
+  }
+}
+
+export function getTodayCompletionSummary(result: TodayCompletionSummarySource): TodayCompletionSummary {
+  const knownItemCount = Math.max(0, result.knownItemCount ?? 0)
+
+  if (knownItemCount > 0 && result.reviewTotal === 0) {
+    return {
+      key: 'today.completion.summaryAllKnown',
+      vars: { known: knownItemCount },
+    }
+  }
+
+  if (knownItemCount > 0) {
+    return {
+      key: 'today.completion.summaryWithKnown',
+      vars: {
+        correct: result.reviewCorrect,
+        total: result.reviewTotal,
+        known: knownItemCount,
+      },
+    }
+  }
+
+  return {
+    key: 'today.completion.summary',
+    vars: {
+      correct: result.reviewCorrect,
+      total: result.reviewTotal,
     },
   }
 }

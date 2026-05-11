@@ -13,7 +13,7 @@ Implemented and polished the isolated authenticated `/today` Guided Today protot
 - Core phrase: `Excuse me, do you speak English?`
 - German meaning: `Entschuldigung, sprechen Sie Englisch?`
 
-V3 keeps the prototype static and local-only while making the flow cleaner: the pre-start preview is compact, the active session uses a compact header, the Scene step owns the lesson video slot, passive phrase reading was replaced with Match Pairs, feedback is short check/X feedback, and review remains fast chip-based recall.
+V4 keeps the prototype static and local-only while finishing the Lesson 1 interaction polish: the pre-start preview is now a compact vocabulary list, the intro no longer duplicates the full lesson video moment, the Scene step owns video playback, Back from Step 1 returns to the intro, feedback stays compact, and completion copy now accounts for items marked as already known.
 
 ## Files Changed
 
@@ -56,7 +56,7 @@ The session sequence is:
 5. Review: chip-choice active recall from German prompts for only the lesson items not marked `Schon bekannt` before starting.
 6. Complete: German completion copy, dynamic review count, local completion state, restart action, and next lesson teaser.
 
-Before the session starts, the hero includes a `Heute lernst du` preview for all five lesson items:
+Before the session starts, the hero includes a compact `Heute lernst du` vocabulary list for all five lesson items:
 
 - `excuse me` - `Entschuldigung`
 - `do you speak` - `sprechen Sie`
@@ -64,7 +64,22 @@ Before the session starts, the hero includes a `Heute lernst du` preview for all
 - `please` - `bitte`
 - `thank you` - `danke`
 
-Marking an item `Schon bekannt` affects only the current page/session review list. It does not remove required chunks from Scene, Match Pairs, Build Phrase, or Type Recall, does not write schema state, and does not create per-word skips.
+Marking an item with the small known toggle affects only the current page/session review list. It does not remove required chunks from Scene, Match Pairs, Build Phrase, or Type Recall, does not write schema state, and does not create per-word skips.
+
+## V4 Finish Polish
+
+- Replaced the heavier pre-start item cards with a compact vocabulary list: English, Deutsch, and a small known toggle.
+- Known rows are visually dimmed/struck through and still only skip the final Review step.
+- Changed intro media into a poster-style lesson preview so the learner does not play the full video before Step 1.
+- Kept the playable lesson video in the Scene step as the primary lesson moment.
+- Removed duplicate caption/situation copy from the media area.
+- Back from Step 1 now returns to the intro without clearing known-item selections.
+- Completion uses a clearer success-toned check and summarizes skipped known items:
+  - `Wiederholung: 5/5` when nothing was marked known.
+  - `Wiederholung: 1/1 · 4 als bekannt markiert` when some items were skipped.
+  - `Kurze Wiederholung übersprungen · 5 als bekannt markiert` when all review items were skipped.
+- Kept Match Pairs, Build Phrase, Type Recall, and Review feedback short with compact check/X states.
+- Still no schema, generation, credits, provider calls, or backend writes.
 
 ## Intentionally Static
 
@@ -108,6 +123,8 @@ When `url` is empty, the UI renders the styled placeholder and makes no media re
 - Phase reward song: later feature after 5-10 lessons, not after Lesson 1. Later flow: learner finishes a phase, chooses stock song or custom genre, custom generation costs credits, and the generated song uses phrases/weak words from that phase.
 - Games: Slicer/Strike/memory games unlock after phase completion, not inside Lesson 1.
 - Persistent progress/schema: later phase.
+- Lesson 2+ can now reuse this template.
+- A later inventory model should support lesson video URL, optional poster URL, stock audio URLs, phase reward song configuration, and lesson item metadata.
 
 ## Checks Run
 

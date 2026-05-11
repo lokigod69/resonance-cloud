@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 export type ReviewStepResult = {
   reviewCorrect: number
   reviewTotal: number
+  knownItemCount?: number
 }
 
 type ReviewStepProps = {

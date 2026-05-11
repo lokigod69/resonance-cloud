@@ -41,6 +41,7 @@ export function MatchPairsStep({
     }
 
     setWrongPairId(pairId)
+    setSelectedEnglishId(null)
   }
 
   const handleReset = () => {

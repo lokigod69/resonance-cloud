@@ -1,7 +1,7 @@
 import { CheckCircle2, ChevronLeft, ChevronRight, RotateCcw, Volume2 } from 'lucide-react'
 import { useState } from 'react'
 import { getGuidedMatchPairs, getGuidedReviewItems, type GuidedLesson } from '@/data/guidedLessons'
-import type { TodayLessonResult } from '@/lib/todayProgress'
+import { getTodayCompletionSummary, type TodayLessonResult } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
@@ -17,13 +17,14 @@ type TodaySessionProps = {
   knownItemIds: Set<string>
   onComplete: (result: TodayLessonResult) => void
   onRestart: () => void
+  onExitToIntro: () => void
 }
 
 type SessionStep = 'scene' | 'matchPairs' | 'build' | 'type' | 'review' | 'complete'
 
 const SESSION_STEPS: SessionStep[] = ['scene', 'matchPairs', 'build', 'type', 'review', 'complete']
 
-export function TodaySession({ lesson, knownItemIds, onComplete, onRestart }: TodaySessionProps) {
+export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onExitToIntro }: TodaySessionProps) {
   const { t } = useTranslation()
   const matchPairs = getGuidedMatchPairs(lesson)
   const reviewItems = getGuidedReviewItems(lesson, knownItemIds)
@@ -31,10 +32,14 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart }: To
   const [matchedPairIds, setMatchedPairIds] = useState<Set<string>>(() => new Set())
   const [buildState, setBuildState] = useState<BuildPhraseCheckState>({ status: 'idle', attempts: 0 })
   const [typeState, setTypeState] = useState<TypeRecallCheckState>({ status: 'idle', attempts: 0 })
-  const [reviewResult, setReviewResult] = useState<ReviewStepResult>({ reviewCorrect: 0, reviewTotal: reviewItems.length })
+  const [reviewResult, setReviewResult] = useState<ReviewStepResult>({
+    reviewCorrect: 0,
+    reviewTotal: reviewItems.length,
+    knownItemCount: knownItemIds.size,
+  })
   const step = SESSION_STEPS[stepIndex]
   const progress = Math.round(((stepIndex + 1) / SESSION_STEPS.length) * 100)
-  const canGoBack = stepIndex > 0 && step !== 'complete'
+  const canGoBack = step !== 'complete'
 
   const canContinue =
     step === 'scene'
@@ -48,16 +53,26 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart }: To
   }
 
   const handleBack = () => {
+    if (stepIndex === 0) {
+      onExitToIntro()
+      return
+    }
+
     setStepIndex((current) => Math.max(current - 1, 0))
   }
 
   const handleReviewFinish = (result: ReviewStepResult) => {
-    setReviewResult(result)
+    const completedResult = {
+      ...result,
+      knownItemCount: knownItemIds.size,
+    }
+    setReviewResult(completedResult)
     onComplete({
       buildAttempts: buildState.attempts,
       typeAttempts: typeState.attempts,
-      reviewCorrect: result.reviewCorrect,
-      reviewTotal: result.reviewTotal,
+      reviewCorrect: completedResult.reviewCorrect,
+      reviewTotal: completedResult.reviewTotal,
+      knownItemCount: completedResult.knownItemCount,
     })
     setStepIndex(SESSION_STEPS.indexOf('complete'))
   }
@@ -183,21 +198,19 @@ function CompleteStep({
   onRestart: () => void
 }) {
   const { t } = useTranslation()
+  const summary = getTodayCompletionSummary(result)
 
   return (
     <div className="grid gap-5 text-center">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[var(--border-strong)] bg-[var(--accent-soft)]">
-        <CheckCircle2 className="h-7 w-7 text-[var(--accent)]" />
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[color-mix(in_srgb,#34d399_54%,transparent)] bg-[color-mix(in_srgb,#34d399_13%,transparent)]">
+        <CheckCircle2 className="h-7 w-7 text-[#34d399]" />
       </div>
       <div>
         <h3 className="text-3xl font-semibold text-[var(--text-primary)]">
           {t('today.completion.title')}
         </h3>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
-          {t('today.completion.summary', {
-            correct: result.reviewCorrect,
-            total: result.reviewTotal,
-          })}
+          {t(summary.key, summary.vars)}
         </p>
       </div>
       <div className="mx-auto w-full max-w-xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-left">

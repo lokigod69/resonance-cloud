@@ -6,6 +6,7 @@ import { TodayCompactHeader, TodayHero } from '@/components/today/TodayHero'
 import { TodaySession } from '@/components/today/TodaySession'
 import {
   createEmptyTodayProgressState,
+  getTodayCompletionSummary,
   getTodayLessonStatus,
   markTodayLessonComplete,
   markTodayLessonSkipped,
@@ -27,6 +28,10 @@ export default function Today() {
   const [knownItemIds, setKnownItemIds] = useState<Set<string>>(() => new Set())
   const status = getTodayLessonStatus(progress, lesson)
   const terminalStatus = status === 'completed' || status === 'skipped'
+  const storedLessonProgress = progress.courses[lesson.courseId]?.lessons[lesson.id]
+  const storedCompletionSummary = storedLessonProgress?.result
+    ? getTodayCompletionSummary(storedLessonProgress.result)
+    : null
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- user-scoped localStorage progress must refresh when the authenticated user changes
@@ -43,6 +48,10 @@ export default function Today() {
 
   const handleStart = () => {
     setSessionActive(true)
+  }
+
+  const handleExitToIntro = () => {
+    setSessionActive(false)
   }
 
   const handleToggleKnownItem = (itemId: string) => {
@@ -115,6 +124,11 @@ export default function Today() {
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--text-secondary)]">
                   {t('today.returningComplete')}
                 </p>
+                {status === 'completed' && storedCompletionSummary && (
+                  <p className="mt-2 max-w-2xl text-sm font-medium leading-6 text-[var(--text-primary)]">
+                    {t(storedCompletionSummary.key, storedCompletionSummary.vars)}
+                  </p>
+                )}
               </div>
               <Button variant="outline" onClick={handleRestart}>
                 {t('today.restartLesson')}
@@ -130,6 +144,7 @@ export default function Today() {
             knownItemIds={knownItemIds}
             onComplete={handleComplete}
             onRestart={handleRestart}
+            onExitToIntro={handleExitToIntro}
           />
         )}
       </div>
