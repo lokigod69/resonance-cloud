@@ -1,7 +1,7 @@
 import { CheckCircle2, ChevronLeft, ChevronRight, RotateCcw, Volume2 } from 'lucide-react'
 import { useState } from 'react'
-import { getGuidedMatchPairs, getGuidedReviewItems, type GuidedLesson } from '@/data/guidedLessons'
-import { getTodayCompletionSummary, type TodayLessonResult } from '@/lib/todayProgress'
+import { getGuidedMatchPairs, type GuidedLesson } from '@/data/guidedLessons'
+import { getTodayCompletionLines, type TodayLessonResult } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
@@ -9,8 +9,10 @@ import { LessonMediaFrame } from '@/components/today/TodayHero'
 import { MatchPairsStep } from '@/components/today/MatchPairsStep'
 import { BuildPhraseStep, type BuildPhraseCheckState } from '@/components/today/BuildPhraseStep'
 import { TypeRecallStep, type TypeRecallCheckState } from '@/components/today/TypeRecallStep'
-import { ReviewStep, type ReviewStepResult } from '@/components/today/ReviewStep'
+import { SpeakStep, type SpeakCheckState } from '@/components/today/SpeakStep'
 import { speakGuidedText } from '@/components/today/speech'
+import { canUseBrowserSpeechRecognition } from '@/components/today/speechRecognition'
+import { TODAY_SESSION_STEPS, type TodaySessionStep } from '@/components/today/sessionSteps'
 
 type TodaySessionProps = {
   lesson: GuidedLesson
@@ -20,25 +22,30 @@ type TodaySessionProps = {
   onExitToIntro: () => void
 }
 
-type SessionStep = 'scene' | 'matchPairs' | 'build' | 'type' | 'review' | 'complete'
-
-const SESSION_STEPS: SessionStep[] = ['scene', 'matchPairs', 'build', 'type', 'review', 'complete']
-
 export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onExitToIntro }: TodaySessionProps) {
   const { t } = useTranslation()
   const matchPairs = getGuidedMatchPairs(lesson)
-  const reviewItems = getGuidedReviewItems(lesson, knownItemIds)
   const [stepIndex, setStepIndex] = useState(0)
   const [matchedPairIds, setMatchedPairIds] = useState<Set<string>>(() => new Set())
   const [buildState, setBuildState] = useState<BuildPhraseCheckState>({ status: 'idle', attempts: 0 })
-  const [typeState, setTypeState] = useState<TypeRecallCheckState>({ status: 'idle', attempts: 0 })
-  const [reviewResult, setReviewResult] = useState<ReviewStepResult>({
-    reviewCorrect: 0,
-    reviewTotal: reviewItems.length,
-    knownItemCount: knownItemIds.size,
+  const [typeState, setTypeState] = useState<TypeRecallCheckState>({ status: 'idle', attempts: 0, usedFallback: false })
+  const [speakState, setSpeakState] = useState<SpeakCheckState>(() => ({
+    status: canUseBrowserSpeechRecognition() ? 'idle' : 'unsupported',
+    attempts: 0,
+    transcriptMatch: 0,
+    passed: false,
+  }))
+  const [completionResult, setCompletionResult] = useState<TodayLessonResult>({
+    buildAttempts: 0,
+    typeAttempts: 0,
+    typeUsedFallback: false,
+    speakAttempts: 0,
+    speakTranscriptMatch: 0,
+    speakPassed: false,
+    knownMarkedCount: knownItemIds.size,
   })
-  const step = SESSION_STEPS[stepIndex]
-  const progress = Math.round(((stepIndex + 1) / SESSION_STEPS.length) * 100)
+  const step = TODAY_SESSION_STEPS[stepIndex]
+  const progress = Math.round(((stepIndex + 1) / TODAY_SESSION_STEPS.length) * 100)
   const canGoBack = step !== 'complete'
 
   const canContinue =
@@ -46,10 +53,17 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
     || (step === 'matchPairs' && matchedPairIds.size === matchPairs.length)
     || (step === 'build' && buildState.status === 'correct')
     || (step === 'type' && typeState.status !== 'idle')
+    || (step === 'speak' && canContinueFromSpeak(speakState))
 
   const handleNext = () => {
     if (!canContinue) return
-    setStepIndex((current) => Math.min(current + 1, SESSION_STEPS.length - 1))
+
+    if (step === 'speak') {
+      completeLesson()
+      return
+    }
+
+    setStepIndex((current) => Math.min(current + 1, TODAY_SESSION_STEPS.length - 1))
   }
 
   const handleBack = () => {
@@ -61,20 +75,19 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
     setStepIndex((current) => Math.max(current - 1, 0))
   }
 
-  const handleReviewFinish = (result: ReviewStepResult) => {
-    const completedResult = {
-      ...result,
-      knownItemCount: knownItemIds.size,
-    }
-    setReviewResult(completedResult)
-    onComplete({
+  const completeLesson = () => {
+    const completedResult: TodayLessonResult = {
       buildAttempts: buildState.attempts,
       typeAttempts: typeState.attempts,
-      reviewCorrect: completedResult.reviewCorrect,
-      reviewTotal: completedResult.reviewTotal,
-      knownItemCount: completedResult.knownItemCount,
-    })
-    setStepIndex(SESSION_STEPS.indexOf('complete'))
+      typeUsedFallback: typeState.usedFallback,
+      speakAttempts: speakState.attempts,
+      speakTranscriptMatch: speakState.transcriptMatch,
+      speakPassed: speakState.passed,
+      knownMarkedCount: knownItemIds.size,
+    }
+    setCompletionResult(completedResult)
+    onComplete(completedResult)
+    setStepIndex(TODAY_SESSION_STEPS.indexOf('complete'))
   }
 
   return (
@@ -90,7 +103,7 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
             </h2>
           </div>
           <span className="text-sm text-[var(--text-muted)]">
-            {t('today.progressLabel', { current: stepIndex + 1, total: SESSION_STEPS.length })}
+            {t('today.progressLabel', { current: stepIndex + 1, total: TODAY_SESSION_STEPS.length })}
           </span>
         </div>
         <Progress value={progress} className="h-1.5 bg-[color-mix(in_srgb,var(--text-primary)_12%,transparent)]" />
@@ -111,19 +124,19 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
         {step === 'type' && (
           <TypeRecallStep lesson={lesson} onCheckStateChange={setTypeState} />
         )}
-        {step === 'review' && (
-          <ReviewStep lesson={lesson} reviewItems={reviewItems} onFinish={handleReviewFinish} />
+        {step === 'speak' && (
+          <SpeakStep lesson={lesson} onCheckStateChange={setSpeakState} />
         )}
         {step === 'complete' && (
           <CompleteStep
             lesson={lesson}
-            result={reviewResult}
+            result={completionResult}
             onRestart={onRestart}
           />
         )}
       </div>
 
-      {step !== 'review' && step !== 'complete' && (
+      {step !== 'complete' && (
         <div className="mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border-subtle)] pt-5">
           <Button variant="ghost" onClick={handleBack} disabled={!canGoBack}>
             <ChevronLeft className="h-4 w-4" />
@@ -194,11 +207,11 @@ function CompleteStep({
   onRestart,
 }: {
   lesson: GuidedLesson
-  result: ReviewStepResult
+  result: TodayLessonResult
   onRestart: () => void
 }) {
   const { t } = useTranslation()
-  const summary = getTodayCompletionSummary(result)
+  const completionLines = getTodayCompletionLines(result)
 
   return (
     <div className="grid gap-5 text-center">
@@ -209,9 +222,13 @@ function CompleteStep({
         <h3 className="text-3xl font-semibold text-[var(--text-primary)]">
           {t('today.completion.title')}
         </h3>
-        <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
-          {t(summary.key, summary.vars)}
-        </p>
+        <div className="mx-auto mt-4 grid max-w-xl gap-2 text-sm leading-6 text-[var(--text-secondary)]">
+          {completionLines.map((line) => (
+            <p key={line.key} className="rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_54%,transparent)] px-3 py-1.5">
+              {t(line.key, line.vars)}
+            </p>
+          ))}
+        </div>
       </div>
       <div className="mx-auto w-full max-w-xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-left">
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
@@ -235,8 +252,14 @@ function CompleteStep({
 }
 
 function typeWasWrong(
-  step: SessionStep,
+  step: TodaySessionStep,
   typeState: TypeRecallCheckState,
 ) {
   return step === 'type' && typeState.status === 'wrong'
+}
+
+function canContinueFromSpeak(speakState: SpeakCheckState) {
+  return speakState.status === 'passed'
+    || speakState.status === 'continued'
+    || speakState.status === 'unsupported'
 }

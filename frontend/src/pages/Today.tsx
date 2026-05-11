@@ -6,7 +6,7 @@ import { TodayCompactHeader, TodayHero } from '@/components/today/TodayHero'
 import { TodaySession } from '@/components/today/TodaySession'
 import {
   createEmptyTodayProgressState,
-  getTodayCompletionSummary,
+  getTodayCompletionLines,
   getTodayLessonStatus,
   markTodayLessonComplete,
   markTodayLessonSkipped,
@@ -29,8 +29,8 @@ export default function Today() {
   const status = getTodayLessonStatus(progress, lesson)
   const terminalStatus = status === 'completed' || status === 'skipped'
   const storedLessonProgress = progress.courses[lesson.courseId]?.lessons[lesson.id]
-  const storedCompletionSummary = storedLessonProgress?.result
-    ? getTodayCompletionSummary(storedLessonProgress.result)
+  const storedCompletionLines = storedLessonProgress?.result
+    ? getTodayCompletionLines(storedLessonProgress.result)
     : null
 
   useEffect(() => {
@@ -124,10 +124,14 @@ export default function Today() {
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--text-secondary)]">
                   {t('today.returningComplete')}
                 </p>
-                {status === 'completed' && storedCompletionSummary && (
-                  <p className="mt-2 max-w-2xl text-sm font-medium leading-6 text-[var(--text-primary)]">
-                    {t(storedCompletionSummary.key, storedCompletionSummary.vars)}
-                  </p>
+                {status === 'completed' && storedCompletionLines && (
+                  <div className="mt-3 flex max-w-2xl flex-wrap gap-2 text-sm font-medium leading-6 text-[var(--text-primary)]">
+                    {storedCompletionLines.map((line) => (
+                      <span key={line.key} className="rounded-full border border-[var(--border-subtle)] px-3 py-1">
+                        {t(line.key, line.vars)}
+                      </span>
+                    ))}
+                  </div>
                 )}
               </div>
               <Button variant="outline" onClick={handleRestart}>

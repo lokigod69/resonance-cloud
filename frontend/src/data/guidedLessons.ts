@@ -44,6 +44,11 @@ export type GuidedReviewChoice = {
   isCorrect: boolean
 }
 
+export type GuidedTypeFallbackChoice = {
+  targetText: string
+  isCorrect: boolean
+}
+
 export type GuidedLesson = {
   id: string
   courseId: string
@@ -75,6 +80,13 @@ export type GuidedLesson = {
     answer: string
     after: string
     acceptedAnswers: string[]
+    fallbackChoices: string[]
+  }
+  speak: {
+    baseCue: string
+    targetPhrase: string
+    language: 'en-US' | 'en-GB'
+    passingThreshold: number
   }
   nextLessonTeaser: {
     title: string
@@ -139,6 +151,13 @@ export const GUIDED_LESSONS: GuidedLesson[] = [
       answer: 'English',
       after: '?',
       acceptedAnswers: ['English', 'english'],
+      fallbackChoices: ['English', 'German', 'please', 'thank you'],
+    },
+    speak: {
+      baseCue: 'Entschuldigung, sprechen Sie Englisch?',
+      targetPhrase: 'Excuse me, do you speak English?',
+      language: 'en-US',
+      passingThreshold: 0.8,
     },
     nextLessonTeaser: {
       title: 'Polite follow-up',
@@ -198,6 +217,15 @@ export function getGuidedReviewChoices(
       isCorrect: false,
     })),
   ]
+}
+
+export function getGuidedTypeFallbackChoices(
+  lesson: GuidedLesson,
+): GuidedTypeFallbackChoice[] {
+  return lesson.typeRecall.fallbackChoices.map((choice) => ({
+    targetText: choice,
+    isCorrect: guidedAnswerMatches(choice, lesson.typeRecall.acceptedAnswers),
+  }))
 }
 
 function uniqueLessonItems(items: LessonItem[]) {

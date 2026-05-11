@@ -1,7 +1,7 @@
 import { CheckCircle2, XCircle } from 'lucide-react'
 import { useState } from 'react'
 import type { GuidedLesson } from '@/data/guidedLessons'
-import { guidedAnswerMatches } from '@/data/guidedLessons'
+import { getGuidedTypeFallbackChoices, guidedAnswerMatches } from '@/data/guidedLessons'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 export type TypeRecallCheckState = {
   status: 'idle' | 'correct' | 'wrong'
   attempts: number
+  usedFallback: boolean
 }
 
 type TypeRecallStepProps = {
@@ -22,21 +23,44 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
   const [answer, setAnswer] = useState('')
   const [status, setStatus] = useState<TypeRecallCheckState['status']>('idle')
   const [attempts, setAttempts] = useState(0)
+  const [fallbackVisible, setFallbackVisible] = useState(false)
+  const [usedFallback, setUsedFallback] = useState(false)
+  const fallbackChoices = getGuidedTypeFallbackChoices(lesson)
 
   const handleAnswerChange = (value: string) => {
     setAnswer(value)
     if (status !== 'idle') {
       setStatus('idle')
-      onCheckStateChange({ status: 'idle', attempts })
+      onCheckStateChange({ status: 'idle', attempts, usedFallback })
     }
   }
 
-  const handleCheck = () => {
+  const applyCheck = (value: string, nextUsedFallback: boolean) => {
     const nextAttempts = attempts + 1
-    const nextStatus = guidedAnswerMatches(answer, lesson.typeRecall.acceptedAnswers) ? 'correct' : 'wrong'
+    const nextStatus = guidedAnswerMatches(value, lesson.typeRecall.acceptedAnswers) ? 'correct' : 'wrong'
     setAttempts(nextAttempts)
     setStatus(nextStatus)
-    onCheckStateChange({ status: nextStatus, attempts: nextAttempts })
+    setUsedFallback(nextUsedFallback)
+    onCheckStateChange({
+      status: nextStatus,
+      attempts: nextAttempts,
+      usedFallback: nextUsedFallback,
+    })
+  }
+
+  const handleCheck = () => {
+    applyCheck(answer, usedFallback)
+  }
+
+  const handleShowFallback = () => {
+    setFallbackVisible(true)
+    setUsedFallback(true)
+    onCheckStateChange({ status, attempts, usedFallback: true })
+  }
+
+  const handleFallbackChoice = (choice: string) => {
+    setAnswer(choice)
+    applyCheck(choice, true)
   }
 
   return (
@@ -64,11 +88,39 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
         </div>
       </div>
 
-      <div>
+      <div className="flex flex-wrap items-center gap-3">
         <Button onClick={handleCheck}>
           {t('today.checkAnswer')}
         </Button>
+        {!fallbackVisible && (
+          <Button type="button" variant="ghost" onClick={handleShowFallback}>
+            {t('today.type.showFallback')}
+          </Button>
+        )}
       </div>
+
+      {fallbackVisible && (
+        <div className="grid gap-2">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+            {t('today.type.fallbackLabel')}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {fallbackChoices.map((choice) => (
+              <button
+                key={choice.targetText}
+                type="button"
+                onClick={() => handleFallbackChoice(choice.targetText)}
+                className={cn(
+                  'theme-chip min-h-10 rounded-md px-3 py-2 text-sm font-medium shadow-sm transition-transform hover:-translate-y-0.5',
+                  answer === choice.targetText && 'theme-chip-active',
+                )}
+              >
+                {choice.targetText}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {status !== 'idle' && (
         <div

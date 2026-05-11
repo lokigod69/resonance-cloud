@@ -5,8 +5,13 @@ export type TodayLessonStatus = 'completed' | 'skipped'
 export type TodayLessonResult = {
   buildAttempts: number
   typeAttempts: number
-  reviewCorrect: number
-  reviewTotal: number
+  typeUsedFallback?: boolean
+  speakAttempts?: number
+  speakTranscriptMatch?: number
+  speakPassed?: boolean
+  knownMarkedCount?: number
+  reviewCorrect?: number
+  reviewTotal?: number
   knownItemCount?: number
 }
 
@@ -17,8 +22,20 @@ export type TodayCompletionSummary = {
 
 export type TodayCompletionSummarySource = Pick<
   TodayLessonResult,
-  'reviewCorrect' | 'reviewTotal' | 'knownItemCount'
+  'reviewCorrect' | 'reviewTotal' | 'knownItemCount' | 'knownMarkedCount'
 >
+
+export type TodayCompletionLine = {
+  key:
+    | TodayCompletionSummary['key']
+    | 'today.completion.typePassed'
+    | 'today.completion.typeWithHelp'
+    | 'today.completion.speakPassed'
+    | 'today.completion.speakContinued'
+    | 'today.completion.speakSkipped'
+    | 'today.completion.knownMarked'
+  vars?: Record<string, number>
+}
 
 export type TodayLessonProgress = {
   status: TodayLessonStatus
@@ -126,9 +143,11 @@ export function markTodayLessonSkipped(
 }
 
 export function getTodayCompletionSummary(result: TodayCompletionSummarySource): TodayCompletionSummary {
-  const knownItemCount = Math.max(0, result.knownItemCount ?? 0)
+  const knownItemCount = getKnownMarkedCount(result)
+  const reviewCorrect = result.reviewCorrect ?? 0
+  const reviewTotal = result.reviewTotal ?? 0
 
-  if (knownItemCount > 0 && result.reviewTotal === 0) {
+  if (knownItemCount > 0 && reviewTotal === 0) {
     return {
       key: 'today.completion.summaryAllKnown',
       vars: { known: knownItemCount },
@@ -139,8 +158,8 @@ export function getTodayCompletionSummary(result: TodayCompletionSummarySource):
     return {
       key: 'today.completion.summaryWithKnown',
       vars: {
-        correct: result.reviewCorrect,
-        total: result.reviewTotal,
+        correct: reviewCorrect,
+        total: reviewTotal,
         known: knownItemCount,
       },
     }
@@ -149,10 +168,41 @@ export function getTodayCompletionSummary(result: TodayCompletionSummarySource):
   return {
     key: 'today.completion.summary',
     vars: {
-      correct: result.reviewCorrect,
-      total: result.reviewTotal,
+      correct: reviewCorrect,
+      total: reviewTotal,
     },
   }
+}
+
+export function getTodayCompletionLines(result: TodayLessonResult): TodayCompletionLine[] {
+  const hasV5Result = typeof result.speakPassed === 'boolean' || typeof result.typeUsedFallback === 'boolean'
+  if (!hasV5Result) {
+    return [getTodayCompletionSummary(result)]
+  }
+
+  const lines: TodayCompletionLine[] = [
+    {
+      key: result.typeUsedFallback ? 'today.completion.typeWithHelp' : 'today.completion.typePassed',
+    },
+  ]
+
+  if (result.speakPassed) {
+    lines.push({ key: 'today.completion.speakPassed' })
+  } else if ((result.speakAttempts ?? 0) > 0) {
+    lines.push({ key: 'today.completion.speakContinued' })
+  } else {
+    lines.push({ key: 'today.completion.speakSkipped' })
+  }
+
+  const knownMarkedCount = getKnownMarkedCount(result)
+  if (knownMarkedCount > 0) {
+    lines.push({
+      key: 'today.completion.knownMarked',
+      vars: { known: knownMarkedCount },
+    })
+  }
+
+  return lines
 }
 
 export function restartTodayLessonProgress(
@@ -225,6 +275,10 @@ function getCourseProgress(state: TodayProgressState, lesson: GuidedLesson): Tod
 
 function uniqueIds(ids: string[]) {
   return Array.from(new Set(ids))
+}
+
+function getKnownMarkedCount(result: Pick<TodayLessonResult, 'knownItemCount' | 'knownMarkedCount'>) {
+  return Math.max(0, result.knownMarkedCount ?? result.knownItemCount ?? 0)
 }
 
 function canUseLocalStorage() {

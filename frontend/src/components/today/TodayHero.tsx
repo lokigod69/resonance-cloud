@@ -41,24 +41,53 @@ export function LessonMediaFrame({
     <figure className={cn('min-w-0', className)}>
       <div className="theme-panel relative aspect-video min-h-[220px] overflow-hidden rounded-lg border border-[var(--border-subtle)]">
         {shouldRenderPreview ? (
-          <div
-            className="flex h-full min-h-[220px] flex-col justify-between p-5 sm:p-6"
-            style={{
-              background:
-                'radial-gradient(ellipse at 18% 16%, var(--accent-glow), transparent 34%), radial-gradient(ellipse at 82% 18%, var(--accent-2-soft), transparent 34%), linear-gradient(135deg, color-mix(in srgb, var(--surface-2) 82%, transparent), color-mix(in srgb, var(--app-bg) 94%, transparent))',
-            }}
-          >
-            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
-              <Sparkles className="h-4 w-4 text-[var(--accent)]" />
-              {t('today.media.previewLabel')}
-            </div>
-            <div className="max-w-xl">
-              <p className="text-xl font-semibold leading-snug text-[var(--text-primary)] sm:text-2xl">
-                {t('today.media.previewTitle')}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-                {t('today.media.previewHint')}
-              </p>
+          <div className="relative h-full min-h-[220px] overflow-hidden">
+            {canRenderVideo ? (
+              <video
+                className="h-full w-full object-cover opacity-80 saturate-[0.92]"
+                src={mediaUrl}
+                poster={posterUrl || undefined}
+                muted
+                playsInline
+                preload="metadata"
+                tabIndex={-1}
+                aria-hidden="true"
+              />
+            ) : canRenderImage ? (
+              <img className="h-full w-full object-cover opacity-80 saturate-[0.92]" src={mediaUrl} alt="" aria-hidden="true" />
+            ) : (
+              <div
+                className="h-full min-h-[220px]"
+                style={{
+                  background:
+                    'radial-gradient(ellipse at 18% 16%, var(--accent-glow), transparent 34%), radial-gradient(ellipse at 82% 18%, var(--accent-2-soft), transparent 34%), linear-gradient(135deg, color-mix(in srgb, var(--surface-2) 82%, transparent), color-mix(in srgb, var(--app-bg) 94%, transparent))',
+                }}
+              />
+            )}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(180deg, color-mix(in srgb, var(--app-bg) 24%, transparent), color-mix(in srgb, var(--app-bg) 78%, transparent)), radial-gradient(ellipse at 18% 16%, var(--accent-glow), transparent 44%)',
+              }}
+              aria-hidden="true"
+            />
+            <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6">
+              <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
+                <Sparkles className="h-4 w-4 text-[var(--accent)]" />
+                {t('today.media.previewLabel')}
+              </div>
+              <div className="max-w-xl">
+                <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_72%,transparent)] text-[var(--text-primary)]">
+                  <Play className="h-4 w-4" />
+                </div>
+                <p className="text-xl font-semibold leading-snug text-[var(--text-primary)] sm:text-2xl">
+                  {t('today.media.previewTitle')}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+                  {t('today.media.previewHint')}
+                </p>
+              </div>
             </div>
           </div>
         ) : canRenderVideo ? (

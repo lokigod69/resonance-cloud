@@ -10,11 +10,15 @@ import {
   getGuidedMatchPairs,
   getGuidedReviewChoices,
   getGuidedReviewItems,
+  getGuidedTypeFallbackChoices,
   normalizeGuidedAnswer,
 } from '../src/data/guidedLessons.ts'
+import { TODAY_SESSION_STEPS } from '../src/components/today/sessionSteps.ts'
+import { getSpeechWordOverlap } from '../src/components/today/speechRecognition.ts'
 import { createT } from '../src/lib/translations.ts'
 import {
   createEmptyTodayProgressState,
+  getTodayCompletionLines,
   getTodayCompletionSummary,
   markTodayLessonComplete,
   markTodayLessonSkipped,
@@ -62,9 +66,27 @@ assert('build chips can form the exact phrase', builtPhrase === lesson.build.tar
 assert('type recall accepts English case-insensitively', lesson.typeRecall.acceptedAnswers.some((answer) => normalizeGuidedAnswer(answer) === 'english'))
 const germanT = createT('de')
 assert('type recall placeholder does not spoil the answer', normalizeGuidedAnswer(germanT('today.type.placeholder')) !== 'english')
+const typeFallbackChoices = getGuidedTypeFallbackChoices(lesson)
+assert('type fallback choices include English and distractors', JSON.stringify(typeFallbackChoices.map((choice) => choice.targetText)) === JSON.stringify([
+  'English',
+  'German',
+  'please',
+  'thank you',
+]), typeFallbackChoices)
+assert('type fallback marks only English as correct', typeFallbackChoices.filter((choice) => choice.isCorrect).length === 1 && typeFallbackChoices[0]?.isCorrect === true, typeFallbackChoices)
 assert('lesson items include five active recall entries', lesson.lessonItems.length === 5, lesson.lessonItems.length)
 assert('lesson items include please', lesson.lessonItems.some((item) => item.targetText === 'please' && item.baseText === 'bitte'))
 assert('lesson items include thank you', lesson.lessonItems.some((item) => item.targetText === 'thank you' && item.baseText === 'danke'))
+
+console.log('\n[session flow]')
+assert('final step order is Scene, Match, Build, Type, Speak, Complete', JSON.stringify(TODAY_SESSION_STEPS) === JSON.stringify([
+  'scene',
+  'matchPairs',
+  'build',
+  'type',
+  'speak',
+  'complete',
+]), TODAY_SESSION_STEPS)
 
 console.log('\n[match pairs]')
 const matchPairs = getGuidedMatchPairs(lesson)
@@ -104,29 +126,45 @@ assert('core phrase chunks remain required when marked known', getGuidedMatchPai
 const allKnownReviewItems = getGuidedReviewItems(lesson, new Set(lesson.lessonItems.map((item) => item.id)))
 assert('all known review items can be excluded', allKnownReviewItems.length === 0, allKnownReviewItems)
 
+console.log('\n[speech overlap]')
+assert('speech word-overlap helper passes close transcript', getSpeechWordOverlap('excuse me do you speak english', lesson.corePhrase.targetText) >= 0.8)
+assert('speech word-overlap helper fails wrong transcript', getSpeechWordOverlap('thank you please', lesson.corePhrase.targetText) < 0.8)
+
 console.log('\n[local progress]')
 const userId = 'user-123'
 const empty = createEmptyTodayProgressState()
 const completed = markTodayLessonComplete(empty, lesson, {
   buildAttempts: 2,
   typeAttempts: 1,
+  typeUsedFallback: false,
+  speakAttempts: 1,
+  speakTranscriptMatch: 1,
+  speakPassed: true,
+  knownMarkedCount: 0,
   reviewCorrect: 5,
   reviewTotal: 5,
-  knownItemCount: 0,
 })
 const partiallyKnownCompleted = markTodayLessonComplete(createEmptyTodayProgressState(), lesson, {
   buildAttempts: 1,
   typeAttempts: 1,
+  typeUsedFallback: true,
+  speakAttempts: 1,
+  speakTranscriptMatch: 0.67,
+  speakPassed: false,
+  knownMarkedCount: 4,
   reviewCorrect: 1,
   reviewTotal: 1,
-  knownItemCount: 4,
 })
 const allKnownCompleted = markTodayLessonComplete(createEmptyTodayProgressState(), lesson, {
   buildAttempts: 1,
   typeAttempts: 1,
+  typeUsedFallback: false,
+  speakAttempts: 0,
+  speakTranscriptMatch: 0,
+  speakPassed: false,
+  knownMarkedCount: 5,
   reviewCorrect: 0,
   reviewTotal: 0,
-  knownItemCount: 5,
 })
 const skipped = markTodayLessonSkipped(createEmptyTodayProgressState(), lesson)
 
@@ -138,10 +176,34 @@ assert(
   completed,
 )
 assert(
-  'known item count is stored without raw answers',
-  partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.knownItemCount === 4
+  'known marked count is stored without raw answers',
+  partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.knownMarkedCount === 4
     && JSON.stringify(partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result).includes('typedAnswer') === false,
   partiallyKnownCompleted,
+)
+assert(
+  'type fallback and speak result are stored without raw transcripts',
+  partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.typeUsedFallback === true
+    && partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.speakAttempts === 1
+    && partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.speakPassed === false
+    && partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.speakTranscriptMatch === 0.67
+    && JSON.stringify(partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result).includes('speechTranscript') === false,
+  partiallyKnownCompleted,
+)
+assert(
+  'completion lines include type and speak summaries',
+  JSON.stringify(getTodayCompletionLines(completed.courses[lesson.courseId]!.lessons[lesson.id]!.result!).map((line) => line.key)) === JSON.stringify([
+    'today.completion.typePassed',
+    'today.completion.speakPassed',
+  ]),
+)
+assert(
+  'completion lines include help and known summaries',
+  JSON.stringify(getTodayCompletionLines(partiallyKnownCompleted.courses[lesson.courseId]!.lessons[lesson.id]!.result!).map((line) => line.key)) === JSON.stringify([
+    'today.completion.typeWithHelp',
+    'today.completion.speakContinued',
+    'today.completion.knownMarked',
+  ]),
 )
 assert(
   'completion summary supports no known items',

@@ -13,7 +13,7 @@ Implemented and polished the isolated authenticated `/today` Guided Today protot
 - Core phrase: `Excuse me, do you speak English?`
 - German meaning: `Entschuldigung, sprechen Sie Englisch?`
 
-V4 keeps the prototype static and local-only while finishing the Lesson 1 interaction polish: the pre-start preview is now a compact vocabulary list, the intro no longer duplicates the full lesson video moment, the Scene step owns video playback, Back from Step 1 returns to the intro, feedback stays compact, and completion copy now accounts for items marked as already known.
+V5 keeps the prototype static and local-only while finalizing the Lesson 1 loop: the pre-start preview now uses the existing lesson video as a thumbnail-style surface, the primary Review step was removed, Type Recall gained an opt-in help fallback, and a browser-only Web Speech API Speak step closes the lesson with oral production.
 
 ## Files Changed
 
@@ -26,6 +26,9 @@ V4 keeps the prototype static and local-only while finishing the Lesson 1 intera
 - `frontend/src/lib/todayProgress.ts`
 - `frontend/src/components/today/TodayHero.tsx`
 - `frontend/src/components/today/TodaySession.tsx`
+- `frontend/src/components/today/SpeakStep.tsx`
+- `frontend/src/components/today/sessionSteps.ts`
+- `frontend/src/components/today/speechRecognition.ts`
 - `frontend/src/components/today/MatchPairsStep.tsx`
 - `frontend/src/components/today/BuildPhraseStep.tsx`
 - `frontend/src/components/today/TypeRecallStep.tsx`
@@ -52,9 +55,9 @@ The session sequence is:
 1. Scene: prominent media slot, German situation, English core phrase, German meaning, and a browser `speechSynthesis` listen button for the English phrase. The button fails silently if speech synthesis is unavailable.
 2. Match Pairs: the learner connects English chunks to German meanings. Continue stays disabled until all pairs are matched.
 3. Build Phrase: chip arrangement for `Excuse me, do you speak English?`; the correct order is accepted automatically and the Continue action becomes available after success.
-4. Type Recall: exactly one typed prompt, `Excuse me, do you speak _____?`, accepting `English` and `english` without spoiling the answer in the placeholder.
-5. Review: chip-choice active recall from German prompts for only the lesson items not marked `Schon bekannt` before starting.
-6. Complete: German completion copy, dynamic review count, local completion state, restart action, and next lesson teaser.
+4. Type Recall: exactly one typed prompt, `Excuse me, do you speak _____?`, accepting `English` and `english` without spoiling the answer in the placeholder. The `Ich weiß nicht` help button reveals choices only after the learner asks.
+5. Speak: browser-native Web Speech API recognition prompts the learner to say `Excuse me, do you speak English?` from the German cue `Entschuldigung, sprechen Sie Englisch?`. It uses `en-US`, word-overlap matching, retry, and a `Trotzdem fortfahren` escape path.
+6. Complete: German completion copy, type/speak summary, known-marked summary when relevant, local completion state, restart action, and next lesson teaser.
 
 Before the session starts, the hero includes a compact `Heute lernst du` vocabulary list for all five lesson items:
 
@@ -64,7 +67,7 @@ Before the session starts, the hero includes a compact `Heute lernst du` vocabul
 - `please` - `bitte`
 - `thank you` - `danke`
 
-Marking an item with the small known toggle affects only the current page/session review list. It does not remove required chunks from Scene, Match Pairs, Build Phrase, or Type Recall, does not write schema state, and does not create per-word skips.
+Marking an item with the small known toggle affects only the current page/session completion summary/tracking. It does not remove required chunks from Scene, Match Pairs, Build Phrase, Type Recall, or Speak, does not write schema state, and does not create per-word skips.
 
 ## V4 Finish Polish
 
@@ -81,13 +84,25 @@ Marking an item with the small known toggle affects only the current page/sessio
 - Kept Match Pairs, Build Phrase, Type Recall, and Review feedback short with compact check/X states.
 - Still no schema, generation, credits, provider calls, or backend writes.
 
+## V5 Speak Loop Polish
+
+- Final Lesson 1 flow is now Scene -> Match Pairs -> Build Phrase -> Type Recall -> Speak -> Complete.
+- Removed the primary multiple-choice Review step from Lesson 1; the lesson now ends with oral production.
+- Added `Ich weiß nicht` to Type Recall. It reveals `English`, `German`, `please`, and `thank you` only after the learner asks for help.
+- Added a browser-only Speak step using the Web Speech API through a local wrapper. It does not import or use the existing Speak page, `useVoiceTutor`, Grok realtime, Whisper, OpenAI, ElevenLabs, or any paid provider.
+- Speech recognition language is `en-US` for this MVP. The transcript is evaluated locally with normalized word overlap against `Excuse me, do you speak English?` and a roughly 80% threshold.
+- Raw typed answers and raw speech transcripts are not stored. Local progress stores coarse fields only: build attempts, type attempts, whether type help was used, speak attempts, speech match score, speak pass/fail, and known-marked count.
+- If browser speech recognition is unavailable, the Speak step shows a calm fallback with the sentence visible and allows continuing.
+- Intro media now uses the existing lesson video as a muted, no-controls preview surface; playable video remains in Step 1 Scene.
+- Still no schema, generation, credits, provider calls, cloud STT, or backend writes.
+
 ## Intentionally Static
 
 - One static lesson is defined in `frontend/src/data/guidedLessons.ts`.
 - Lesson media uses the checked-in 2.4 MB public video asset at `/guided/english-a1-practical/lesson-001-first-contact.mp4`.
 - Completion and skipped state are stored in user-scoped localStorage only.
 - Known-item marks are session-local React state only.
-- No raw answers are stored; only completion status and coarse counts are stored.
+- No raw answers or raw speech transcripts are stored; only completion status and coarse counts/results are stored.
 - Next lesson is a teaser only.
 
 ## Media Replacement
@@ -124,6 +139,7 @@ When `url` is empty, the UI renders the styled placeholder and makes no media re
 - Games: Slicer/Strike/memory games unlock after phase completion, not inside Lesson 1.
 - Persistent progress/schema: later phase.
 - Lesson 2+ can now reuse this template.
+- Lesson 2 content is expected to be `Polite follow-up`.
 - A later inventory model should support lesson video URL, optional poster URL, stock audio URLs, phase reward song configuration, and lesson item metadata.
 
 ## Checks Run
