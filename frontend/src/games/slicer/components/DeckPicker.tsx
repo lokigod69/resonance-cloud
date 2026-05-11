@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { ArrowLeft, Play } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
-import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
+import { useTranslation } from '@/hooks/useTranslation'
 import type { DeckMode } from '../engine/types'
 
 export type SlicerDeckChoice = {
@@ -24,7 +24,9 @@ type DeckRow = {
 type DeckPickerProps = {
   onSelect: (choice: SlicerDeckChoice) => void
   easyMode: boolean
+  selectedLanguage: string | null
   onEasyModeChange: (enabled: boolean) => void
+  onLanguageChange: (language: string | null) => void
 }
 
 const MODES: Array<{ value: DeckMode; label: string }> = [
@@ -32,10 +34,10 @@ const MODES: Array<{ value: DeckMode; label: string }> = [
   { value: 'audio_to_text', label: 'Text' },
 ]
 
-export function DeckPicker({ easyMode, onEasyModeChange, onSelect }: DeckPickerProps) {
+export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLanguageChange, onSelect }: DeckPickerProps) {
   const navigate = useNavigate()
   const { user } = useAuth()
-  const { activeLanguage } = useLanguage()
+  const { t } = useTranslation()
   const [decks, setDecks] = useState<DeckRow[]>([])
   const [loading, setLoading] = useState(true)
   const [mode, setMode] = useState<DeckMode>('audio_to_image')
@@ -45,7 +47,7 @@ export function DeckPicker({ easyMode, onEasyModeChange, onSelect }: DeckPickerP
     let cancelled = false
     queueMicrotask(() => {
       if (cancelled) return
-      if (!user || !activeLanguage) {
+      if (!user) {
         setDecks([])
         setLoading(false)
         return
@@ -58,7 +60,6 @@ export function DeckPicker({ easyMode, onEasyModeChange, onSelect }: DeckPickerP
         .from('decks')
         .select('id, name, target_language, word_count')
         .eq('user_id', user.id)
-        .eq('target_language', activeLanguage)
         .order('created_at', { ascending: false })
         .then(({ data, error: decksError }) => {
           if (cancelled) return
@@ -75,15 +76,34 @@ export function DeckPicker({ easyMode, onEasyModeChange, onSelect }: DeckPickerP
     return () => {
       cancelled = true
     }
-  }, [activeLanguage, user])
+  }, [user])
+
+  const availableLanguages = useMemo(() => (
+    Array.from(new Set(decks.map((deck) => deck.target_language).filter(Boolean)))
+  ), [decks])
+
+  useEffect(() => {
+    if (loading || availableLanguages.length === 0) return
+    if (!selectedLanguage || !availableLanguages.includes(selectedLanguage)) {
+      onLanguageChange(availableLanguages[0])
+    }
+  }, [availableLanguages, loading, onLanguageChange, selectedLanguage])
+
+  const filteredDecks = useMemo(() => {
+    if (!selectedLanguage) return []
+    return decks.filter((deck) => deck.target_language === selectedLanguage)
+  }, [decks, selectedLanguage])
+
+  const languageLabel = selectedLanguage ? t(`langName.${selectedLanguage}`) : null
 
   const title = useMemo(() => {
-    if (!activeLanguage) return 'Choose a deck'
-    return `Choose a ${activeLanguage.toUpperCase()} deck`
-  }, [activeLanguage])
+    if (!languageLabel) return 'Choose a deck'
+    return `Choose a ${languageLabel} deck`
+  }, [languageLabel])
 
-  const playAllTitle = activeLanguage?.toLowerCase().startsWith('de') ? 'Alle Wörter' : 'All Words'
-  const playAllLabel = activeLanguage?.toLowerCase().startsWith('de') ? 'Alle Wörter spielen' : 'Play all words'
+  const isGerman = selectedLanguage?.toLowerCase().startsWith('de') ?? false
+  const playAllTitle = isGerman ? 'Alle Wörter' : 'All Words'
+  const playAllLabel = isGerman ? 'Alle Wörter spielen' : 'Play all words'
 
   return (
     <section className="pointer-events-auto absolute inset-0 z-30 grid place-items-center bg-black/45 px-4 text-[#fff1d0] backdrop-blur-sm">
@@ -96,6 +116,27 @@ export function DeckPicker({ easyMode, onEasyModeChange, onSelect }: DeckPickerP
           <ArrowLeft size={16} />
           Back
         </button>
+        {availableLanguages.length > 1 && (
+          <div className="mb-5 flex flex-wrap justify-center gap-2">
+            {availableLanguages.map((language) => {
+              const active = language === selectedLanguage
+              return (
+                <button
+                  key={language}
+                  type="button"
+                  onClick={() => onLanguageChange(language)}
+                  className={`min-h-10 rounded-full border px-3 py-2 text-sm transition ${
+                    active
+                      ? 'border-[rgba(255,215,0,0.55)] bg-[#ff6b35]/20 text-[#ffd700] shadow-[0_0_18px_rgba(255,215,0,0.12)]'
+                      : 'border-[rgba(255,107,53,0.2)] bg-black/25 text-[#ffd2a5]/70 hover:border-[rgba(255,107,53,0.38)] hover:text-[#fff1d0]'
+                  }`}
+                >
+                  {t(`langName.${language}`)}
+                </button>
+              )
+            })}
+          </div>
+        )}
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="text-xs uppercase tracking-[0.18em] text-[#ff9155]/70">Lexicon Slice</p>
@@ -132,19 +173,19 @@ export function DeckPicker({ easyMode, onEasyModeChange, onSelect }: DeckPickerP
           </div>
         ) : error ? (
           <div className="rounded-lg border border-red-400/30 bg-red-950/30 p-8 text-center text-red-100">{error}</div>
-        ) : decks.length === 0 ? (
+        ) : filteredDecks.length === 0 ? (
           <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
             No decks are ready for this language.
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {activeLanguage && (
+            {selectedLanguage && (
               <button
                 type="button"
                 onClick={() => onSelect({
-                  id: `play-all-${activeLanguage}`,
+                  id: `play-all-${selectedLanguage}`,
                   title: playAllTitle,
-                  targetLanguage: activeLanguage,
+                  targetLanguage: selectedLanguage,
                   mode,
                   isPlayAll: true,
                 })}
@@ -155,11 +196,11 @@ export function DeckPicker({ easyMode, onEasyModeChange, onSelect }: DeckPickerP
                 </span>
                 <span className="block truncate font-serif text-2xl leading-tight text-[#ffd700]">{playAllLabel}</span>
                 <span className="mt-2 block text-xs uppercase tracking-[0.14em] text-[#ffd2a5]/70">
-                  {decks.reduce((total, deck) => total + (deck.word_count ?? 0), 0)} words
+                  {filteredDecks.reduce((total, deck) => total + (deck.word_count ?? 0), 0)} words
                 </span>
               </button>
             )}
-            {decks.map((deck) => (
+            {filteredDecks.map((deck) => (
               <button
                 key={deck.id}
                 type="button"

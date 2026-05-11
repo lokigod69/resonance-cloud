@@ -8,6 +8,7 @@ import { useIOSAudioPrimer } from '../shared/useIOSAudioPrimer'
 import { usePhaserMount } from '../shared/usePhaserMount'
 import { useRecordGameResult } from '../shared/useRecordGameResult'
 import { useAuth } from '@/hooks/useAuth'
+import { useLanguage } from '@/contexts/LanguageContext'
 import type { GameEvent } from '../shared/gameEvents'
 import type { DeckDefinition, SessionStats } from './engine/types'
 import { wordsToSlicerDeck } from './adapters/deckAdapter'
@@ -43,6 +44,7 @@ export default function SlicerGame() {
   const [searchParams] = useSearchParams()
   const returnTo = searchParams.get('returnTo') || '/games'
   const { profile } = useAuth()
+  const { activeLanguage } = useLanguage()
   const bus = useMemo(() => createGameEventBus(), [])
   const recordResult = useRecordGameResult()
   const { primeOnGesture } = useIOSAudioPrimer()
@@ -61,6 +63,7 @@ export default function SlicerGame() {
   const [restartNonce, setRestartNonce] = useState(0)
   const [readySceneKey, setReadySceneKey] = useState<string | null>(null)
   const [easyMode, setEasyMode] = useState(false)
+  const [slicerLanguage, setSlicerLanguage] = useState<string | null>(activeLanguage)
 
   const selectedDeckId = selectedDeck?.isPlayAll ? null : selectedDeck?.id ?? null
 
@@ -195,7 +198,15 @@ export default function SlicerGame() {
     <GameShell className={styles.slicerStage} onExit={handleExit}>
       <div ref={phaserHostRef} className={styles.phaserHost} />
       <div className={styles.reactLayer}>
-        {!selectedDeck && <DeckPicker easyMode={easyMode} onEasyModeChange={setEasyMode} onSelect={handleDeckSelected} />}
+        {!selectedDeck && (
+          <DeckPicker
+            easyMode={easyMode}
+            selectedLanguage={slicerLanguage}
+            onEasyModeChange={setEasyMode}
+            onLanguageChange={setSlicerLanguage}
+            onSelect={handleDeckSelected}
+          />
+        )}
         {selectedDeck && (
           <SlicerHUD
             deckTitle={hud.deckTitle}
