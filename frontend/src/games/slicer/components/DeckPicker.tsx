@@ -98,8 +98,8 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
 
   const title = useMemo(() => {
     if (!languageLabel) return 'Choose a deck'
-    return `Choose a ${languageLabel} deck`
-  }, [languageLabel])
+    return t('slicer.deckPicker.heading', { language: languageLabel })
+  }, [languageLabel, t])
 
   const isGerman = selectedLanguage?.toLowerCase().startsWith('de') ?? false
   const playAllTitle = isGerman ? 'Alle Wörter' : 'All Words'
@@ -147,7 +147,6 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                 height={400}
                 className="h-auto w-[min(520px,82vw)] object-contain"
               />
-              <p className="-mt-2 text-[10px] uppercase tracking-[0.22em] text-[#ff9155]/25">Lexicon Slice</p>
             </div>
             <h1 className="font-serif text-3xl leading-none sm:text-5xl">{title}</h1>
           </div>
