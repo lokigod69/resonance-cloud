@@ -186,24 +186,20 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
               mode,
               isPlayAll: true,
             })}
-            className="group relative mb-4 min-h-28 shrink-0 overflow-hidden rounded-xl bg-[url('/games/slicer/branding/play-all-frame.png')] bg-[length:100%_100%] bg-center px-8 py-5 text-left transition duration-200 hover:scale-[1.01] hover:brightness-110 sm:min-h-32 sm:px-12"
+            className="group relative mb-4 min-h-28 shrink-0 overflow-hidden rounded-xl bg-[url('/games/slicer/branding/play-all-frame.png')] bg-[length:100%_100%] bg-center px-8 py-5 text-center transition duration-200 hover:scale-[1.01] hover:brightness-110 sm:min-h-32 sm:px-12"
           >
-            <span className="relative z-10 flex h-full items-center justify-between gap-5">
-              <span className="min-w-0">
-                <span className="block truncate font-serif text-3xl leading-none text-[#ffd700] drop-shadow-[0_0_14px_rgba(255,215,0,0.4)] sm:text-5xl">
-                  {playAllLabel}
-                </span>
-                <span className="mt-3 block text-xs uppercase tracking-[0.18em] text-[#ffd2a5]/72">
-                  {playAllWordCount} words
-                </span>
-              </span>
-              <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-black/20 transition group-hover:bg-[#ff6b35]/10 sm:h-20 sm:w-20">
+            <span className="relative z-10 flex h-full flex-col items-center justify-center">
+              <span className="block w-full max-w-2xl">
                 <img
-                  src="/games/slicer/branding/play-button.png"
-                  alt=""
-                  aria-hidden="true"
-                  className="h-full w-full object-contain"
+                  src="/games/slicer/branding/play-all-wordmark.png"
+                  alt={playAllLabel}
+                  width={1200}
+                  height={320}
+                  className="mx-auto h-auto w-[min(520px,82vw)] object-contain sm:w-[min(680px,76vw)]"
                 />
+              </span>
+              <span className="-mt-4 block text-xs uppercase tracking-[0.2em] text-[#ffd2a5]/78 sm:-mt-5">
+                {playAllWordCount} words
               </span>
             </span>
           </button>
