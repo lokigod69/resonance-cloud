@@ -86,6 +86,7 @@ export class GlideRunnerScene extends Phaser.Scene {
   private decisionRemainingMs = 0;
   private missFlash = 0;
   private debugVisualLevelIndex: number | null = null;
+  private keyboardHandler?: (event: KeyboardEvent) => void;
   private lastTapLane: LaneIndex | null = null;
   private lastTapAt = 0;
 
@@ -165,6 +166,9 @@ export class GlideRunnerScene extends Phaser.Scene {
     this.missFlash = Math.max(0, this.missFlash - delta / 420);
     paintPostOverlay(this.post, this.scale.width, this.scale.height, this.missFlash);
 
+    if (!this.activePrompt && this.spawnTimer > 0) {
+      this.spawnTimer -= delta;
+    }
     if (!this.engine.stats.complete && this.spawnTimer <= 0 && !this.activePrompt) {
       this.spawnPrompt();
     }
@@ -189,17 +193,32 @@ export class GlideRunnerScene extends Phaser.Scene {
   }
 
   private registerInput(): void {
-    const keys = this.input.keyboard?.addKeys('A,D,LEFT,RIGHT,SPACE,W') as
-      | Record<string, Phaser.Input.Keyboard.Key>
-      | undefined;
-    if (keys) {
-      keys.A.on('down', () => this.shiftSelection(-1));
-      keys.LEFT.on('down', () => this.shiftSelection(-1));
-      keys.D.on('down', () => this.shiftSelection(1));
-      keys.RIGHT.on('down', () => this.shiftSelection(1));
-      keys.SPACE.on('down', () => this.commitSelectedLane());
-      keys.W.on('down', () => this.commitSelectedLane());
-    }
+    this.keyboardHandler = (event: KeyboardEvent) => {
+      if (isEditableKeyTarget(event.target)) return;
+      const key = event.key.toLowerCase();
+      if (key === 'a' || key === 'arrowleft') {
+        event.preventDefault();
+        this.shiftSelection(-1);
+        return;
+      }
+      if (key === 'd' || key === 'arrowright') {
+        event.preventDefault();
+        this.shiftSelection(1);
+        return;
+      }
+      if (key === ' ' || key === 'w') {
+        event.preventDefault();
+        this.commitSelectedLane();
+      }
+    };
+    window.addEventListener('keydown', this.keyboardHandler);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      if (this.keyboardHandler) {
+        window.removeEventListener('keydown', this.keyboardHandler);
+        this.keyboardHandler = undefined;
+      }
+    });
+
     this.input.on('pointerup', (pointer: Phaser.Input.Pointer) => {
       if (this.phase !== 'parked') return;
       const lane = Math.min(2, Math.floor(pointer.x / (this.scale.width / 3))) as LaneIndex;
@@ -669,4 +688,10 @@ export class GlideRunnerScene extends Phaser.Scene {
   private currentLevel() {
     return levelForStats(this.levels, this.engine?.stats, this.debugVisualLevelIndex);
   }
+}
+
+function isEditableKeyTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) return false;
+  const tag = target.tagName.toLowerCase();
+  return target.isContentEditable || tag === 'input' || tag === 'textarea' || tag === 'select' || tag === 'button';
 }
