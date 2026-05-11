@@ -13,7 +13,7 @@ Implemented and polished the isolated authenticated `/today` Guided Today protot
 - Core phrase: `Excuse me, do you speak English?`
 - German meaning: `Entschuldigung, sprechen Sie Englisch?`
 
-V2 keeps the prototype static and local-only while making the flow feel more like a calm Resonance guided lesson: the pre-start hero shows the full scene and item preview, the active session collapses to a compact header, the Scene step owns the large media slot, and review is lighter chip-based active recall.
+V3 keeps the prototype static and local-only while making the flow cleaner: the pre-start preview is compact, the active session uses a compact header, the Scene step owns the lesson video slot, passive phrase reading was replaced with Match Pairs, feedback is short check/X feedback, and review remains fast chip-based recall.
 
 ## Files Changed
 
@@ -26,11 +26,12 @@ V2 keeps the prototype static and local-only while making the flow feel more lik
 - `frontend/src/lib/todayProgress.ts`
 - `frontend/src/components/today/TodayHero.tsx`
 - `frontend/src/components/today/TodaySession.tsx`
-- `frontend/src/components/today/PhraseMapStep.tsx`
+- `frontend/src/components/today/MatchPairsStep.tsx`
 - `frontend/src/components/today/BuildPhraseStep.tsx`
 - `frontend/src/components/today/TypeRecallStep.tsx`
 - `frontend/src/components/today/ReviewStep.tsx`
 - `frontend/src/components/today/speech.ts`
+- `frontend/public/guided/english-a1-practical/lesson-001-first-contact.mp4`
 - `frontend/scripts/test-guided-today-data.ts`
 - `docs/Product/GUIDED_TODAY_RESONANCE_MVP_REPORT.md`
 
@@ -49,10 +50,10 @@ V2 keeps the prototype static and local-only while making the flow feel more lik
 The session sequence is:
 
 1. Scene: prominent media slot, German situation, English core phrase, German meaning, and a browser `speechSynthesis` listen button for the English phrase. The button fails silently if speech synthesis is unavailable.
-2. Phrase Map: tappable phrase chunks that highlight English/German equivalents.
+2. Match Pairs: the learner connects English chunks to German meanings. Continue stays disabled until all pairs are matched.
 3. Build Phrase: chip arrangement for `Excuse me, do you speak English?`; the correct order is accepted automatically and the Continue action becomes available after success.
-4. Type Recall: exactly one typed prompt, `Excuse me, do you speak _____?`, accepting `English` and `english`.
-5. Review: chip-choice active recall from German prompts for only the lesson items not marked `Kann ich schon` before starting.
+4. Type Recall: exactly one typed prompt, `Excuse me, do you speak _____?`, accepting `English` and `english` without spoiling the answer in the placeholder.
+5. Review: chip-choice active recall from German prompts for only the lesson items not marked `Schon bekannt` before starting.
 6. Complete: German completion copy, dynamic review count, local completion state, restart action, and next lesson teaser.
 
 Before the session starts, the hero includes a `Heute lernst du` preview for all five lesson items:
@@ -63,20 +64,20 @@ Before the session starts, the hero includes a `Heute lernst du` preview for all
 - `please` - `bitte`
 - `thank you` - `danke`
 
-Marking an item `Kann ich schon` affects only the current page/session review list. It does not remove required phrase chunks from Phrase Map or Build Phrase, does not write schema state, and does not create per-word skips.
+Marking an item `Schon bekannt` affects only the current page/session review list. It does not remove required chunks from Scene, Match Pairs, Build Phrase, or Type Recall, does not write schema state, and does not create per-word skips.
 
 ## Intentionally Static
 
 - One static lesson is defined in `frontend/src/data/guidedLessons.ts`.
-- Lesson media uses an intentional styled placeholder because `lessonMedia.url` is empty.
+- Lesson media uses the checked-in 2.4 MB public video asset at `/guided/english-a1-practical/lesson-001-first-contact.mp4`.
 - Completion and skipped state are stored in user-scoped localStorage only.
 - Known-item marks are session-local React state only.
 - No raw answers are stored; only completion status and coarse counts are stored.
 - Next lesson is a teaser only.
 
-## Placeholder Media Replacement
+## Media Replacement
 
-To replace the placeholder later, edit only `frontend/src/data/guidedLessons.ts`:
+To replace the lesson video later, edit only `frontend/src/data/guidedLessons.ts`:
 
 - For an image, set `lessonMedia.type` to `image` and provide `url`.
 - For a video or music video, set `lessonMedia.type` to `video` or `music_video` and provide `url`.
@@ -104,7 +105,7 @@ When `url` is empty, the UI renders the styled placeholder and makes no media re
 
 - Stock lesson TTS inventory: pre-generated English phrase/word audio via ElevenLabs or similar, stored once and reused for all learners.
 - Cinematic lesson scene videos: one pre-generated video per lesson/language pair, hosted as system media.
-- Phase reward song: after 5-10 lessons, the learner can generate or unlock a song using the phrases from the phase.
+- Phase reward song: later feature after 5-10 lessons, not after Lesson 1. Later flow: learner finishes a phase, chooses stock song or custom genre, custom generation costs credits, and the generated song uses phrases/weak words from that phase.
 - Games: Slicer/Strike/memory games unlock after phase completion, not inside Lesson 1.
 - Persistent progress/schema: later phase.
 
@@ -118,12 +119,13 @@ When `url` is empty, the UI renders the styled placeholder and makes no media re
 - `git diff --cached --check`
 - Local Vite browser QA:
   - unauthenticated `/today` redirects to `/login`
+  - public lesson video URL loads through Vite at `/guided/english-a1-practical/lesson-001-first-contact.mp4`
   - authenticated in-app browser QA could not be completed in this run because the browser security policy blocks synthetic localStorage session seeding and no local test credentials are available in the repo
 
 ## Remaining Risks
 
 - LocalStorage progress is device-local and not cross-device.
-- The placeholder media proves layout only; real image/video assets still need content review.
+- The checked-in local video proves lesson-video playback, but final production hosting/storage policy still needs a product decision.
 - The static lesson data has no authoring workflow or backend inventory yet.
 - Browser `speechSynthesis` voice quality and availability vary by browser and OS.
 - Authenticated visual QA should be rerun with a real test session; the code path is covered by TypeScript build, targeted lint, data validation, and route inspection for both Classic and Glassy branches.

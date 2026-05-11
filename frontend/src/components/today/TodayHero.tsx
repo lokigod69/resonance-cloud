@@ -161,22 +161,23 @@ export function TodayHero({
                     <div
                       key={item.id}
                       className={cn(
-                        'flex min-w-0 flex-col gap-3 rounded-lg border p-3 sm:flex-row sm:items-center sm:justify-between',
+                        'grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-lg border px-3 py-2',
                         isKnown
                           ? 'border-[color-mix(in_srgb,var(--accent)_42%,transparent)] bg-[var(--accent-soft)]'
                           : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_16%,transparent)]',
                       )}
                     >
-                      <div className="min-w-0">
-                        <p className="break-words text-sm font-semibold text-[var(--text-primary)]">{item.targetText}</p>
-                        <p className="mt-1 break-words text-xs text-[var(--text-secondary)]">{item.baseText}</p>
+                      <div className="min-w-0 text-sm leading-6">
+                        <span className="font-semibold text-[var(--text-primary)]">{item.targetText}</span>
+                        <span className="px-2 text-[var(--text-muted)]">—</span>
+                        <span className="text-[var(--text-secondary)]">{item.baseText}</span>
                       </div>
                       <Button
                         type="button"
-                        variant={isKnown ? 'secondary' : 'outline'}
+                        variant={isKnown ? 'secondary' : 'ghost'}
                         size="sm"
                         onClick={() => onToggleKnownItem(item.id)}
-                        className="self-start sm:self-center"
+                        className="h-8 rounded-full px-2.5 text-xs"
                         aria-pressed={isKnown}
                       >
                         {isKnown && <CheckCircle2 className="h-4 w-4" />}

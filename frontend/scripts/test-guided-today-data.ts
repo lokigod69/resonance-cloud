@@ -7,10 +7,12 @@
 import {
   GUIDED_LESSONS,
   getCurrentGuidedLesson,
+  getGuidedMatchPairs,
   getGuidedReviewChoices,
   getGuidedReviewItems,
   normalizeGuidedAnswer,
 } from '../src/data/guidedLessons.ts'
+import { createT } from '../src/lib/translations.ts'
 import {
   createEmptyTodayProgressState,
   markTodayLessonComplete,
@@ -47,7 +49,8 @@ assert('core phrase matches MVP', lesson.corePhrase.targetText === 'Excuse me, d
 assert('German meaning matches MVP', lesson.corePhrase.baseText === 'Entschuldigung, sprechen Sie Englisch?')
 assert('lesson media has required caption', lesson.lessonMedia.caption.length > 0)
 assert('lesson media caption is German-first', lesson.lessonMedia.caption === 'Eine erste höfliche Frage, bevor ein Gespräch beginnt.')
-assert('empty media URL is allowed for intentional placeholder', lesson.lessonMedia.url === '')
+assert('lesson media uses provided local video asset', lesson.lessonMedia.type === 'video')
+assert('lesson media points at public guided video path', lesson.lessonMedia.url === '/guided/english-a1-practical/lesson-001-first-contact.mp4')
 
 console.log('\n[phrase production]')
 const builtPhrase = lesson.build.chips
@@ -56,9 +59,24 @@ const builtPhrase = lesson.build.chips
 
 assert('build chips can form the exact phrase', builtPhrase === lesson.build.targetText, builtPhrase)
 assert('type recall accepts English case-insensitively', lesson.typeRecall.acceptedAnswers.some((answer) => normalizeGuidedAnswer(answer) === 'english'))
+const germanT = createT('de')
+assert('type recall placeholder does not spoil the answer', normalizeGuidedAnswer(germanT('today.type.placeholder')) !== 'english')
 assert('lesson items include five active recall entries', lesson.lessonItems.length === 5, lesson.lessonItems.length)
 assert('lesson items include please', lesson.lessonItems.some((item) => item.targetText === 'please' && item.baseText === 'bitte'))
 assert('lesson items include thank you', lesson.lessonItems.some((item) => item.targetText === 'thank you' && item.baseText === 'danke'))
+
+console.log('\n[match pairs]')
+const matchPairs = getGuidedMatchPairs(lesson)
+assert('matching pairs exist for each core phrase chunk', matchPairs.length === 3, matchPairs)
+assert('matching pairs have exact ids and text', JSON.stringify(matchPairs.map((pair) => ({
+  id: pair.id,
+  targetText: pair.targetText,
+  baseText: pair.baseText,
+}))) === JSON.stringify([
+  { id: 'excuse-me', targetText: 'Excuse me', baseText: 'Entschuldigung' },
+  { id: 'do-you-speak', targetText: 'do you speak', baseText: 'sprechen Sie' },
+  { id: 'english', targetText: 'English', baseText: 'Englisch' },
+]), matchPairs)
 
 console.log('\n[review choices]')
 const pleaseItem = lesson.lessonItems.find((item) => item.id === 'please')
@@ -70,10 +88,17 @@ if (pleaseItem) {
   assert('review choices are unique', new Set(choices.map((choice) => choice.id)).size === choices.length, choices)
   assert('review choices include distractors from lesson items', choices.some((choice) => !choice.isCorrect), choices)
 }
+for (const item of lesson.lessonItems) {
+  const choices = getGuidedReviewChoices(lesson, item)
+  assert(`review choices can be generated for ${item.id}`, choices.length === 3 && choices.some((choice) => choice.id === item.id && choice.isCorrect), choices)
+}
 
 const filteredReviewItems = getGuidedReviewItems(lesson, new Set(['please', 'thank-you']))
 assert('known-item filtering excludes marked items', !filteredReviewItems.some((item) => item.id === 'please' || item.id === 'thank-you'), filteredReviewItems)
 assert('known-item filtering keeps remaining items', filteredReviewItems.length === 3, filteredReviewItems)
+const knownCoreIds = new Set(['excuse-me', 'do-you-speak', 'english'])
+assert('known-item filtering only affects Review items', getGuidedReviewItems(lesson, knownCoreIds).length === 2)
+assert('core phrase chunks remain required when marked known', getGuidedMatchPairs(lesson).length === 3 && lesson.build.targetText === 'Excuse me, do you speak English?')
 
 const allKnownReviewItems = getGuidedReviewItems(lesson, new Set(lesson.lessonItems.map((item) => item.id)))
 assert('all known review items can be excluded', allKnownReviewItems.length === 0, allKnownReviewItems)

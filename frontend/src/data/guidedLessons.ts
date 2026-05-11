@@ -28,6 +28,8 @@ export type PhraseChunk = {
   baseText: string
 }
 
+export type GuidedMatchPair = PhraseChunk
+
 export type LessonItem = {
   id: string
   targetText: string
@@ -124,13 +126,13 @@ export const GUIDED_LESSONS: GuidedLesson[] = [
       { id: 'thank-you', targetText: 'thank you', baseText: 'danke', acceptedAnswers: ['thank you', 'thanks'], reviewDistractorIds: ['please', 'english'] },
     ],
     lessonMedia: {
-      type: 'image',
-      url: '',
+      type: 'video',
+      url: '/guided/english-a1-practical/lesson-001-first-contact.mp4',
       caption: 'Eine erste höfliche Frage, bevor ein Gespräch beginnt.',
     },
     build: {
       targetText: 'Excuse me, do you speak English?',
-      chips: ['Excuse me,', 'please', 'do you speak', 'thank you', 'English?'],
+      chips: ['Excuse me,', 'do you speak', 'English?', 'please', 'thank you'],
     },
     typeRecall: {
       before: 'Excuse me, do you speak ',
@@ -157,6 +159,14 @@ export function guidedAnswerMatches(input: string, acceptedAnswers: string[]) {
   const normalizedInput = normalizeGuidedAnswer(input)
   if (!normalizedInput) return false
   return acceptedAnswers.some((answer) => normalizeGuidedAnswer(answer) === normalizedInput)
+}
+
+export function getGuidedMatchPairs(lesson: GuidedLesson): GuidedMatchPair[] {
+  return lesson.phraseChunks.map((chunk) => ({
+    id: chunk.id,
+    targetText: chunk.targetText,
+    baseText: chunk.baseText,
+  }))
 }
 
 export function getGuidedReviewItems(

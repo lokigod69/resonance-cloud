@@ -35,15 +35,12 @@ export function ReviewStep({ lesson, reviewItems, onFinish }: ReviewStepProps) {
           </p>
         </div>
 
-        <div className="rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,transparent)] bg-[var(--accent-soft)] p-5">
-          <div className="flex items-start gap-3">
-            <Sparkles className="mt-1 h-5 w-5 shrink-0 text-[var(--accent)]" />
+        <div className="rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,transparent)] bg-[var(--accent-soft)] p-4">
+          <div className="flex items-center gap-3">
+            <Sparkles className="h-5 w-5 shrink-0 text-[var(--accent)]" />
             <div>
               <p className="text-lg font-semibold text-[var(--text-primary)]">
                 {t('today.review.allKnown.title')}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-                {t('today.review.allKnown.confirmation')}
               </p>
             </div>
           </div>
@@ -148,16 +145,16 @@ export function ReviewStep({ lesson, reviewItems, onFinish }: ReviewStepProps) {
       {status !== 'idle' && (
         <div
           className={cn(
-            'flex items-start gap-3 rounded-lg border p-3 text-sm leading-6',
+            'inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm',
             status === 'correct'
               ? 'border-[color-mix(in_srgb,var(--accent)_46%,transparent)] bg-[var(--accent-soft)] text-[var(--text-primary)]'
               : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] text-[var(--text-secondary)]',
           )}
         >
           {status === 'correct' ? (
-            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent)]" />
+            <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--accent)]" />
           ) : (
-            <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--text-muted)]" />
+            <XCircle className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />
           )}
           <span>
             {status === 'correct'

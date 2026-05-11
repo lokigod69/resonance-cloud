@@ -1,12 +1,12 @@
 import { CheckCircle2, ChevronLeft, ChevronRight, RotateCcw, Volume2 } from 'lucide-react'
 import { useState } from 'react'
-import { getGuidedReviewItems, type GuidedLesson } from '@/data/guidedLessons'
+import { getGuidedMatchPairs, getGuidedReviewItems, type GuidedLesson } from '@/data/guidedLessons'
 import type { TodayLessonResult } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { LessonMediaFrame } from '@/components/today/TodayHero'
-import { PhraseMapStep } from '@/components/today/PhraseMapStep'
+import { MatchPairsStep } from '@/components/today/MatchPairsStep'
 import { BuildPhraseStep, type BuildPhraseCheckState } from '@/components/today/BuildPhraseStep'
 import { TypeRecallStep, type TypeRecallCheckState } from '@/components/today/TypeRecallStep'
 import { ReviewStep, type ReviewStepResult } from '@/components/today/ReviewStep'
@@ -19,14 +19,16 @@ type TodaySessionProps = {
   onRestart: () => void
 }
 
-type SessionStep = 'scene' | 'phraseMap' | 'build' | 'type' | 'review' | 'complete'
+type SessionStep = 'scene' | 'matchPairs' | 'build' | 'type' | 'review' | 'complete'
 
-const SESSION_STEPS: SessionStep[] = ['scene', 'phraseMap', 'build', 'type', 'review', 'complete']
+const SESSION_STEPS: SessionStep[] = ['scene', 'matchPairs', 'build', 'type', 'review', 'complete']
 
 export function TodaySession({ lesson, knownItemIds, onComplete, onRestart }: TodaySessionProps) {
   const { t } = useTranslation()
+  const matchPairs = getGuidedMatchPairs(lesson)
   const reviewItems = getGuidedReviewItems(lesson, knownItemIds)
   const [stepIndex, setStepIndex] = useState(0)
+  const [matchedPairIds, setMatchedPairIds] = useState<Set<string>>(() => new Set())
   const [buildState, setBuildState] = useState<BuildPhraseCheckState>({ status: 'idle', attempts: 0 })
   const [typeState, setTypeState] = useState<TypeRecallCheckState>({ status: 'idle', attempts: 0 })
   const [reviewResult, setReviewResult] = useState<ReviewStepResult>({ reviewCorrect: 0, reviewTotal: reviewItems.length })
@@ -36,7 +38,7 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart }: To
 
   const canContinue =
     step === 'scene'
-    || step === 'phraseMap'
+    || (step === 'matchPairs' && matchedPairIds.size === matchPairs.length)
     || (step === 'build' && buildState.status === 'correct')
     || (step === 'type' && typeState.status !== 'idle')
 
@@ -81,7 +83,13 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart }: To
 
       <div className="min-w-0">
         {step === 'scene' && <SceneStep lesson={lesson} />}
-        {step === 'phraseMap' && <PhraseMapStep lesson={lesson} />}
+        {step === 'matchPairs' && (
+          <MatchPairsStep
+            lesson={lesson}
+            matchedPairIds={matchedPairIds}
+            onMatchedPairIdsChange={setMatchedPairIds}
+          />
+        )}
         {step === 'build' && (
           <BuildPhraseStep lesson={lesson} onCheckStateChange={setBuildState} />
         )}
