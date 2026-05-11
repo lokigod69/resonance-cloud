@@ -7,6 +7,8 @@ import {
 } from './productionAssets';
 import { laneEdgeX } from './perspective';
 
+const SHOW_PROGRAMMATIC_LANES = false;
+
 type ParticleRecord = {
   image: Phaser.GameObjects.Image;
   speed: number;
@@ -105,7 +107,9 @@ export class BiomeRenderer {
     const { width, height } = this.scene.scale;
     this.scaleBackground(width, height);
     this.graphics.clear();
-    this.paintLanes(level, time, width, height);
+    if (SHOW_PROGRAMMATIC_LANES) {
+      this.paintLanes(level, time, width, height);
+    }
     this.foregroundMist.setSize(width, height);
     this.foregroundMist.setPosition(width / 2, height / 2);
     this.foregroundMist.tilePositionX += 0.18;
