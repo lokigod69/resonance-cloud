@@ -187,7 +187,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                 mode,
                 isPlayAll: true,
               })}
-              className="group relative min-h-28 w-full overflow-hidden rounded-xl bg-[url('/games/slicer/branding/play-all-frame.png')] bg-[length:100%_100%] bg-center px-8 py-5 text-center transition duration-200 hover:scale-[1.01] hover:brightness-110 sm:min-h-32 sm:px-12"
+              className="group relative min-h-20 w-full overflow-hidden rounded-xl bg-[url('/games/slicer/branding/play-all-frame.png')] bg-[length:100%_100%] bg-center px-6 py-3 text-center transition duration-200 hover:scale-[1.01] hover:brightness-110 sm:min-h-24 sm:px-10"
             >
               <span className="relative z-10 flex h-full items-center justify-center">
                 <img
@@ -195,7 +195,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                   alt={playAllLabel}
                   width={1200}
                   height={320}
-                  className="mx-auto h-auto w-[min(520px,82vw)] object-contain sm:w-[min(680px,76vw)]"
+                  className="mx-auto h-auto w-[min(420px,76vw)] object-contain sm:w-[min(560px,68vw)]"
                 />
               </span>
             </button>
