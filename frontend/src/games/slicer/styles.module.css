@@ -76,6 +76,15 @@
   pointer-events: auto;
 }
 
+.deckScroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.deckScroll::-webkit-scrollbar {
+  display: none;
+}
+
 .roundOverlay {
   animation: round-overlay-fade 1.35s ease both;
 }

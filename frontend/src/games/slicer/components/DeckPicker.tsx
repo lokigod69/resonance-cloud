@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ArrowLeft, Play } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
 import { useTranslation } from '@/hooks/useTranslation'
 import type { DeckMode } from '../engine/types'
+import styles from '../styles.module.css'
 
 export type SlicerDeckChoice = {
   id: string
@@ -104,6 +105,9 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
   const isGerman = selectedLanguage?.toLowerCase().startsWith('de') ?? false
   const playAllTitle = isGerman ? 'Alle Wörter' : 'All Words'
   const playAllLabel = isGerman ? 'Alle Wörter spielen' : 'Play all words'
+  const playAllWordCount = useMemo(() => (
+    filteredDecks.reduce((total, deck) => total + (deck.word_count ?? 0), 0)
+  ), [filteredDecks])
 
   return (
     <section className="pointer-events-auto absolute inset-0 z-30 flex bg-black/45 px-4 py-4 text-[#fff1d0] backdrop-blur-sm sm:px-6 sm:py-6">
@@ -116,6 +120,15 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
           <ArrowLeft size={16} />
           Back
         </button>
+        <div className="mb-3 flex shrink-0 justify-center">
+          <img
+            src="/games/slicer/branding/slicer-header.png"
+            alt="Slicer"
+            width={1600}
+            height={400}
+            className="h-auto w-[min(720px,94vw)] object-contain"
+          />
+        </div>
         {availableLanguages.length > 1 && (
           <div className="mb-3 flex flex-wrap justify-center gap-2">
             {availableLanguages.map((language) => {
@@ -137,19 +150,8 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
             })}
           </div>
         )}
-        <div className="mb-4 flex shrink-0 flex-col items-center gap-3 text-center">
-          <div className="flex flex-col items-center">
-            <div className="mb-1 flex flex-col items-center">
-              <img
-                src="/games/slicer/branding/slicer-header.png"
-                alt="Slicer"
-                width={1600}
-                height={400}
-                className="h-auto w-[min(520px,82vw)] object-contain"
-              />
-            </div>
-            <h1 className="font-serif text-3xl leading-none sm:text-5xl">{title}</h1>
-          </div>
+        <div className="mb-3 flex shrink-0 flex-col items-center gap-3 text-center">
+          <h1 className="font-serif text-2xl leading-none sm:text-4xl">{title}</h1>
           <div className="flex flex-wrap justify-center gap-2">
             <label className="inline-flex min-h-12 items-center gap-3 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 px-4 text-sm text-[#fff1d0]/80">
               <span>Easy mode</span>
@@ -174,8 +176,40 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
             </div>
           </div>
         </div>
+        {selectedLanguage && !loading && !error && filteredDecks.length > 0 && (
+          <button
+            type="button"
+            onClick={() => onSelect({
+              id: `play-all-${selectedLanguage}`,
+              title: playAllTitle,
+              targetLanguage: selectedLanguage,
+              mode,
+              isPlayAll: true,
+            })}
+            className="group relative mb-4 min-h-28 shrink-0 overflow-hidden rounded-xl bg-[url('/games/slicer/branding/play-all-frame.png')] bg-[length:100%_100%] bg-center px-8 py-5 text-left transition duration-200 hover:scale-[1.01] hover:brightness-110 sm:min-h-32 sm:px-12"
+          >
+            <span className="relative z-10 flex h-full items-center justify-between gap-5">
+              <span className="min-w-0">
+                <span className="block truncate font-serif text-3xl leading-none text-[#ffd700] drop-shadow-[0_0_14px_rgba(255,215,0,0.4)] sm:text-5xl">
+                  {playAllLabel}
+                </span>
+                <span className="mt-3 block text-xs uppercase tracking-[0.18em] text-[#ffd2a5]/72">
+                  {playAllWordCount} words
+                </span>
+              </span>
+              <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-black/20 transition group-hover:bg-[#ff6b35]/10 sm:h-20 sm:w-20">
+                <img
+                  src="/games/slicer/branding/play-button.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-full w-full object-contain"
+                />
+              </span>
+            </span>
+          </button>
+        )}
 
-        <div className="min-h-0 flex-1 overflow-y-auto pr-1">
+        <div className={`min-h-0 flex-1 overflow-y-auto ${styles.deckScroll}`}>
           {loading ? (
             <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
               Loading decks...
@@ -188,27 +222,6 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
             </div>
           ) : (
             <div className="grid gap-4 pb-6 sm:grid-cols-2 lg:grid-cols-3">
-              {selectedLanguage && (
-                <button
-                  type="button"
-                  onClick={() => onSelect({
-                    id: `play-all-${selectedLanguage}`,
-                    title: playAllTitle,
-                    targetLanguage: selectedLanguage,
-                    mode,
-                    isPlayAll: true,
-                  })}
-                  className="group aspect-video rounded-lg border border-[rgba(255,215,0,0.42)] bg-[#ff6b35]/10 px-8 py-6 text-center shadow-[0_0_34px_rgba(255,215,0,0.18)] transition hover:bg-[#ff6b35]/15 hover:shadow-[0_0_42px_rgba(255,215,0,0.26)]"
-                >
-                  <span className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full border border-[rgba(255,215,0,0.48)] bg-black/35 text-[#ffd700] transition group-hover:bg-[#ff6b35]/20">
-                    <Play size={17} />
-                  </span>
-                  <span className="block truncate font-serif text-2xl leading-tight text-[#ffd700]">{playAllLabel}</span>
-                  <span className="mt-2 block text-xs uppercase tracking-[0.14em] text-[#ffd2a5]/70">
-                    {filteredDecks.reduce((total, deck) => total + (deck.word_count ?? 0), 0)} words
-                  </span>
-                </button>
-              )}
               {filteredDecks.map((deck) => (
                 <button
                   key={deck.id}
@@ -221,8 +234,13 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                   })}
                   className="group aspect-video rounded-lg border border-[rgba(255,107,53,0.24)] bg-[url('/games/slicer/cards/frame-default.png')] bg-[length:100%_100%] px-8 py-6 text-center shadow-[0_0_26px_rgba(255,69,0,0.18)] transition hover:shadow-[0_0_34px_rgba(255,215,0,0.24)]"
                 >
-                  <span className="mx-auto mb-3 grid h-10 w-10 place-items-center rounded-full border border-[rgba(255,107,53,0.34)] bg-black/35 text-[#ffd700] transition group-hover:bg-[#ff6b35]/20">
-                    <Play size={17} />
+                  <span className="mx-auto mb-3 grid h-11 w-11 place-items-center rounded-full bg-black/25 transition group-hover:bg-[#ff6b35]/10">
+                    <img
+                      src="/games/slicer/branding/play-button.png"
+                      alt=""
+                      aria-hidden="true"
+                      className="h-full w-full object-contain"
+                    />
                   </span>
                   <span className="block truncate font-serif text-2xl leading-tight">{deck.name ?? 'Untitled deck'}</span>
                   <span className="mt-2 block text-xs uppercase tracking-[0.14em] text-[#ffd2a5]/70">
