@@ -13,6 +13,7 @@ import { RushRunnerScene } from './rush';
 import {
   createRunnerSessionEngine,
   type RunnerDebugController,
+  type RunnerCardDisplayMode,
   type RunnerSceneController,
 } from './runnerSession';
 import { RUNNER_MODE_STORAGE_KEY, normalizeRunnerMode, type RunnerMode } from './mode';
@@ -23,6 +24,7 @@ export interface MountRunnerOptions {
   parent: HTMLElement;
   mode?: RunnerMode;
   deck?: GameDeck;
+  displayMode?: RunnerCardDisplayMode;
   levels?: LevelConfig[];
   eventBus?: EventBus;
   audioBackend?: AudioBackend;
@@ -149,6 +151,7 @@ export function mountRunner(options: MountRunnerOptions): MountedRunner {
       sessionComplete,
       levels: runnerLevels,
       mode: sceneMode,
+      displayMode: options.displayMode ?? 'image',
       onSceneReady: (readyMode) => {
         options.onSceneReady?.(readyMode);
         if (pendingScriptedSession || window.__lexiconPathAutoplay) {

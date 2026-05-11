@@ -178,17 +178,17 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                 className="h-4 w-4 accent-[#4fc3f7]"
               />
             </label>
-            <div className="inline-flex rounded-lg border border-[var(--runner-border-strong)] bg-[var(--surface-glass)] p-1 shadow-[var(--runner-shadow-soft)]">
+            <div className="inline-flex rounded-xl border-2 border-[rgba(168,216,234,0.42)] bg-[#06131f]/88 p-1.5 shadow-[0_0_28px_rgba(79,195,247,0.2)]">
               {DISPLAY_MODES.map((item) => (
                 <button
                   key={item.value}
                   type="button"
                   aria-pressed={displayMode === item.value}
                   onClick={() => setDisplayMode(item.value)}
-                  className={`min-h-10 rounded-md border px-4 text-sm transition ${
+                  className={`min-h-11 rounded-lg border-2 px-5 text-sm font-semibold transition ${
                     displayMode === item.value
-                      ? 'border-[rgba(79,195,247,0.68)] bg-[#2a4a6a]/90 text-white shadow-[0_0_18px_rgba(79,195,247,0.22),inset_0_0_14px_rgba(79,195,247,0.16)]'
-                      : 'border-transparent text-[#a8d8ea]/72 hover:border-[rgba(168,216,234,0.22)] hover:text-[#d0f0ff]'
+                      ? 'border-[#d0f0ff] bg-[#d0f0ff] text-[#071827] shadow-[0_0_22px_rgba(168,216,234,0.62)]'
+                      : 'border-transparent bg-transparent text-[#a8d8ea]/64 hover:border-[rgba(168,216,234,0.28)] hover:text-[#d0f0ff]'
                   }`}
                 >
                   {t(item.labelKey)}

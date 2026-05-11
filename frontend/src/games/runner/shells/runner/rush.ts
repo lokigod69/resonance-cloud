@@ -22,7 +22,12 @@ import {
   spiritSheet,
   spiritStill,
 } from './productionAssets';
-import { levelForStats, runScriptedSession, type RunnerSceneInitData } from './runnerSession';
+import {
+  levelForStats,
+  runScriptedSession,
+  type RunnerCardDisplayMode,
+  type RunnerSceneInitData,
+} from './runnerSession';
 import { SpiritController } from './SpiritController';
 import type { PauseContext } from './types';
 
@@ -43,6 +48,7 @@ export class RushRunnerScene extends Phaser.Scene {
   private soundscape!: RunnerSoundscape;
   private levels!: LevelConfig[];
   private mode!: RunnerMode;
+  private displayMode: RunnerCardDisplayMode = 'image';
   private onSceneReady?: (mode: RunnerMode) => void;
   private onSessionComplete?: (stats: SessionStats) => void;
   private onRestart!: () => void;
@@ -78,6 +84,7 @@ export class RushRunnerScene extends Phaser.Scene {
     this.soundscape = data.soundscape;
     this.levels = data.levels;
     this.mode = data.mode;
+    this.displayMode = data.displayMode ?? 'image';
     this.onSceneReady = data.onSceneReady;
     this.onSessionComplete = data.onSessionComplete;
     this.onRestart = data.onRestart;
@@ -481,20 +488,35 @@ export class RushRunnerScene extends Phaser.Scene {
     }
   }
 
-  private createCard(_word: string, index: number, isBluff: boolean): Phaser.GameObjects.Container {
+  private createCard(word: string, index: number, isBluff: boolean): Phaser.GameObjects.Container {
     if (!cardFrame) {
       throw new Error('Missing production card-frame.png.');
     }
     const art = this.add.image(0, 0, cardArtKeyForIndex(index));
     art.setDisplaySize(560, 306);
     art.setAlpha(isBluff ? 0.82 : 0.94);
+    art.setVisible(this.displayMode === 'image');
     const frame = this.add.image(0, 0, cardFrame.key);
     frame.name = 'frame';
     frame.setDisplaySize(640, 360);
     frame.setBlendMode(Phaser.BlendModes.SCREEN);
+    const label = this.displayMode === 'text'
+      ? this.add.text(0, 0, word, {
+        align: 'center',
+        color: '#d0f0ff',
+        fontFamily: 'Outfit, Inter, sans-serif',
+        fontSize: '52px',
+        fontStyle: '700',
+        stroke: '#071827',
+        strokeThickness: 10,
+        wordWrap: { width: 460 },
+      })
+      : undefined;
+    label?.setOrigin(0.5);
     const container = this.add.container(this.scale.width / 2, this.scale.height * 0.35, [
       art,
       frame,
+      ...(label ? [label] : []),
     ]);
     container.setAlpha(0.35);
     return container;

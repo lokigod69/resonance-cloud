@@ -13,6 +13,8 @@ import type { AudioBackend, RunnerSoundscape } from './audio';
 import type { RunnerMode } from './mode';
 import type { PauseContext } from './types';
 
+export type RunnerCardDisplayMode = 'image' | 'text';
+
 export type RunnerSceneInitData = {
   engine: SessionEngine;
   bus: EventBus;
@@ -22,6 +24,7 @@ export type RunnerSceneInitData = {
   sessionComplete: SessionComplete;
   levels: LevelConfig[];
   mode: RunnerMode;
+  displayMode?: RunnerCardDisplayMode;
   onSceneReady?: (mode: RunnerMode) => void;
   onSessionComplete?: (stats: SessionStats) => void;
   onRestart: () => void;

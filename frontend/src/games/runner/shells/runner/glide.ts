@@ -22,7 +22,12 @@ import {
   spiritSheet,
   spiritStill,
 } from './productionAssets';
-import { levelForStats, runScriptedSession, type RunnerSceneInitData } from './runnerSession';
+import {
+  levelForStats,
+  runScriptedSession,
+  type RunnerCardDisplayMode,
+  type RunnerSceneInitData,
+} from './runnerSession';
 import { SpiritController } from './SpiritController';
 import type { PauseContext } from './types';
 
@@ -41,6 +46,7 @@ type GlideCard = {
   maskShape: Phaser.GameObjects.Graphics;
   mask: Phaser.Display.Masks.GeometryMask;
   art: Phaser.GameObjects.Image;
+  label?: Phaser.GameObjects.Text;
   frame?: Phaser.GameObjects.Image;
   promptCard: PromptCard;
   prompt: PromptWave;
@@ -71,6 +77,7 @@ export class GlideRunnerScene extends Phaser.Scene {
   private soundscape!: RunnerSoundscape;
   private levels!: LevelConfig[];
   private mode!: RunnerMode;
+  private displayMode: RunnerCardDisplayMode = 'image';
   private onSceneReady?: (mode: RunnerMode) => void;
   private onSessionComplete?: (stats: SessionStats) => void;
   private onRestart!: () => void;
@@ -103,6 +110,7 @@ export class GlideRunnerScene extends Phaser.Scene {
     this.soundscape = data.soundscape;
     this.levels = data.levels;
     this.mode = data.mode;
+    this.displayMode = data.displayMode ?? 'image';
     this.onSceneReady = data.onSceneReady;
     this.onSessionComplete = data.onSessionComplete;
     this.onRestart = data.onRestart;
@@ -261,7 +269,7 @@ export class GlideRunnerScene extends Phaser.Scene {
     this.phase = 'travelling';
     this.clearCards();
     prompt.cards.forEach((promptCard) => {
-      const card = this.createCardObject(prompt.index * 3 + promptCard.lane, promptCard.lane);
+      const card = this.createCardObject(prompt.index * 3 + promptCard.lane, promptCard);
       this.cards.push({
         ...card,
         promptCard,
@@ -283,8 +291,9 @@ export class GlideRunnerScene extends Phaser.Scene {
 
   private createCardObject(
     index: number,
-    lane: LaneIndex,
-  ): Pick<GlideCard, 'glow' | 'shadow' | 'maskShape' | 'mask' | 'art' | 'frame'> {
+    promptCard: PromptCard,
+  ): Pick<GlideCard, 'glow' | 'shadow' | 'maskShape' | 'mask' | 'art' | 'label' | 'frame'> {
+    const lane = promptCard.lane;
     const depth = 34 + lane;
     const glow = this.add.graphics();
     glow.setDepth(depth + 0.1);
@@ -296,6 +305,19 @@ export class GlideRunnerScene extends Phaser.Scene {
     art.setDepth(depth + 0.2);
     art.setOrigin(0.5);
     art.setMask(mask);
+    art.setVisible(this.displayMode === 'image');
+    const label = this.displayMode === 'text'
+      ? this.add.text(0, 0, promptCard.word, {
+        align: 'center',
+        color: '#d0f0ff',
+        fontFamily: 'Outfit, Inter, sans-serif',
+        fontStyle: '700',
+        stroke: '#071827',
+        strokeThickness: 5,
+      })
+      : undefined;
+    label?.setDepth(depth + 0.35);
+    label?.setOrigin(0.5);
     const frame = cardFrame ? this.add.image(0, 0, cardFrame.key) : undefined;
     if (frame) {
       frame.setDepth(depth + 0.3);
@@ -303,7 +325,7 @@ export class GlideRunnerScene extends Phaser.Scene {
       frame.setBlendMode(Phaser.BlendModes.SCREEN);
       frame.setMask(mask);
     }
-    return { glow, shadow, maskShape, mask, art, frame };
+    return { glow, shadow, maskShape, mask, art, label, frame };
   }
 
   private updateCards(delta: number, time: number): void {
@@ -354,6 +376,13 @@ export class GlideRunnerScene extends Phaser.Scene {
     card.art.setPosition(x, y);
     card.art.setDisplaySize(card.width, card.height);
     card.art.setAlpha(card.wrong ? 0.58 : card.committed ? 1 : alpha);
+    if (card.label) {
+      card.label.setPosition(x, y);
+      card.label.setFontSize(Math.max(18, Math.round(card.height * 0.28)));
+      card.label.setWordWrapWidth(card.width * 0.78);
+      card.label.setAlpha(card.wrong ? 0.58 : card.committed ? 1 : alpha);
+      card.label.setAngle((card.lane - 1) * 2);
+    }
     card.frame?.setPosition(x, y);
     card.frame?.setDisplaySize(card.width * 1.04, card.height * 1.04);
     card.frame?.setAlpha(card.wrong ? 0.54 : alpha * 0.92);
@@ -603,6 +632,7 @@ export class GlideRunnerScene extends Phaser.Scene {
       card.shadow.destroy();
       card.glow.destroy();
       card.art.destroy();
+      card.label?.destroy();
       card.frame?.destroy();
     });
     this.cards = [];

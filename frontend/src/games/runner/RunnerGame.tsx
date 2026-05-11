@@ -252,6 +252,7 @@ export default function RunnerGame() {
       parent,
       mode: runnerMode,
       deck: runnerDeck,
+      displayMode: selectedDeck?.displayMode ?? 'image',
       audioBackend: runnerAudio,
       eventBus,
       enableWindowKeyShortcuts: true,
@@ -271,7 +272,7 @@ export default function RunnerGame() {
         handle.destroy()
       },
     }
-  }, [audioReady, completeSession, eventBus, runnerAudio, runnerDeck, runnerMode])
+  }, [audioReady, completeSession, eventBus, runnerAudio, runnerDeck, runnerMode, selectedDeck])
 
   const { ready } = usePhaserMount({
     parentRef: phaserHostRef,
