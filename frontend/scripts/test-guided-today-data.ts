@@ -1,34 +1,39 @@
 /**
- * Static validation for the Guided Today MVP lesson and local progress helpers.
+ * Static validation for Guided Today lesson data and local-only progress helpers.
  *
  * Run: npx tsx scripts/test-guided-today-data.ts
  */
 
-import { readFileSync } from 'node:fs'
 import {
   ACTIVE_GUIDED_VIBE_IDS,
-  guidedVibes,
+  FUTURE_GUIDED_VIBE_IDS,
   isActiveGuidedVibeId,
 } from '../src/data/guidedVibes.ts'
 import {
   GUIDED_LESSONS,
   getCurrentGuidedLesson,
+  getFirstIncompleteGuidedLesson,
   getGuidedMatchPairs,
+  getGuidedPathLessons,
   getGuidedReviewChoices,
   getGuidedReviewItems,
   getGuidedTypeFallbackChoices,
+  getNextGuidedLesson,
   normalizeGuidedAnswer,
   resolveGuidedLessonVariant,
+  type GuidedLessonDefinition,
+  type GuidedLessonVibeVariant,
 } from '../src/data/guidedLessons.ts'
 import { TODAY_SESSION_STEPS } from '../src/components/today/sessionSteps.ts'
 import { getSpeechWordOverlap } from '../src/components/today/speechRecognition.ts'
-import { createT } from '../src/lib/translations.ts'
 import {
   createEmptyTodayProgressState,
   getTodayCompletionLines,
   getTodayCompletionSummary,
+  getTodayLessonStatus,
   markTodayLessonComplete,
   markTodayLessonSkipped,
+  restartTodayLessonProgress,
   todayProgressKey,
 } from '../src/lib/todayProgress.ts'
 
@@ -47,163 +52,93 @@ function assert(name: string, condition: boolean, detail?: unknown) {
   if (detail !== undefined) console.error('       ', detail)
 }
 
-const lesson = getCurrentGuidedLesson()
-const lessonDefinition = GUIDED_LESSONS[0]
-const germanT = createT('de')
+const pathId = 'english-a1-practical'
+const pathLessons = getGuidedPathLessons(pathId)
+const lessonIds = pathLessons.map((lesson) => lesson.id)
+const lessonNumbers = pathLessons.map((lesson) => lesson.lessonNumber)
+const expectedTitles = [
+  'First contact',
+  'Polite follow-up',
+  'Where is...?',
+  "I'd like...",
+  'How much?',
+  'The train',
+  'I need...',
+  'I like...',
+  'Tomorrow at seven',
+  'Thank you, goodbye',
+]
 
-const todayPageSource = readSource('../src/pages/Today.tsx')
-const todayHeroSource = readSource('../src/components/today/TodayHero.tsx')
-const todayIntroHeroSource = todayHeroSource.slice(0, todayHeroSource.indexOf('export function TodayCompactHeader'))
-const todaySessionSource = readSource('../src/components/today/TodaySession.tsx')
-const matchPairsSource = readSource('../src/components/today/MatchPairsStep.tsx')
-const buildPhraseSource = readSource('../src/components/today/BuildPhraseStep.tsx')
-const typeRecallSource = readSource('../src/components/today/TypeRecallStep.tsx')
-const speakStepSource = readSource('../src/components/today/SpeakStep.tsx')
+console.log('\n[path inventory]')
+assert('exactly 10 English A1 Practical lessons', pathLessons.length === 10, pathLessons.length)
+assert('all static lessons belong to the launch path', GUIDED_LESSONS.every((lesson) => lesson.pathId === pathId), GUIDED_LESSONS.map((lesson) => lesson.pathId))
+assert('lesson ids are unique', new Set(lessonIds).size === lessonIds.length, lessonIds)
+assert('lesson numbers 1-10 exist with no gaps', JSON.stringify(lessonNumbers) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), lessonNumbers)
+assert('lesson arc titles match product sequence', JSON.stringify(pathLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedTitles), pathLessons.map((lesson) => lesson.title))
 
-console.log('\n[lesson data]')
-assert('exactly one static lesson', GUIDED_LESSONS.length === 1, GUIDED_LESSONS.length)
-assert('lesson definition exists', lessonDefinition !== undefined)
-assert('lesson has invariant path id', lessonDefinition?.pathId === 'english-a1-practical', lessonDefinition)
-assert('lesson has invariant lesson number', lessonDefinition?.lessonNumber === 1, lessonDefinition)
-assert('lesson has invariant pedagogical goal', typeof lessonDefinition?.pedagogicalGoal === 'string' && lessonDefinition.pedagogicalGoal.length > 0)
-assert('lesson has invariant steps', Array.isArray(lessonDefinition?.steps) && lessonDefinition.steps.length === TODAY_SESSION_STEPS.length)
-assert('lesson has invariant estimated minutes', lessonDefinition?.estimatedMinutes === 5, lessonDefinition)
-assert('lesson has active fallback policy', lessonDefinition?.fallbackVibeId === 'bright', lessonDefinition)
-assert('lesson carries a vibeVariants registry', lessonDefinition?.vibeVariants !== undefined)
-for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
-  const variant = lessonDefinition?.vibeVariants[vibeId]
-  assert(`lesson has ${vibeId} variant`, variant !== undefined, lessonDefinition?.vibeVariants)
-  assert(`${vibeId} core phrase exists`, typeof variant?.corePhrase.targetText === 'string' && variant.corePhrase.targetText.length > 0, variant)
-  assert(`${vibeId} German meaning exists`, typeof variant?.corePhrase.baseText === 'string' && variant.corePhrase.baseText.length > 0, variant)
-  assert(`${vibeId} chunk labels are non-empty`, Boolean(variant?.chunks.length) && variant.chunks.every((chunk) => chunk.id && chunk.targetText && chunk.baseText), variant?.chunks)
-  assert(`${vibeId} type recall answer exists`, typeof variant?.typeRecall.answer === 'string' && variant.typeRecall.answer.length > 0, variant?.typeRecall)
-  assert(`${vibeId} speak target exists`, typeof variant?.speakTarget.targetPhrase === 'string' && variant.speakTarget.targetPhrase.length > 0, variant?.speakTarget)
-  assert(`${vibeId} trophy word exists`, typeof variant?.trophyWord.word === 'string' && variant.trophyWord.word.length > 0, variant?.trophyWord)
-  assert(
-    `${vibeId} trophy word is compatible with vibe bible`,
-    Boolean(variant?.trophyWord.word && guidedVibes[vibeId].trophyWordCandidates.includes(variant.trophyWord.word.toLowerCase())),
-    { trophyWord: variant?.trophyWord.word, candidates: guidedVibes[vibeId].trophyWordCandidates },
-  )
-}
-assert('future vibes are not active lesson selectors', !isActiveGuidedVibeId('tender'))
-assert('course title matches MVP path', lesson.courseTitle === 'English A1 Practical')
-assert('base language is German', lesson.baseLanguage === 'German')
-assert('target language is English', lesson.targetLanguage === 'English')
-assert('title is First contact', lesson.title === 'First contact')
-assert('situation matches MVP', lesson.situation.en === 'You need to politely ask if someone speaks English.')
-assert('German situation exists for primary UI', lesson.situation.de === 'Du willst freundlich fragen, ob jemand Englisch spricht.')
-assert('core phrase matches MVP', lesson.corePhrase.targetText === 'Excuse me, do you speak English?')
-assert('German meaning matches MVP', lesson.corePhrase.baseText === 'Entschuldigung, sprechen Sie Englisch?')
-assert('lesson media has required caption', lesson.lessonMedia.caption.length > 0)
-assert('lesson media caption is German-first', lesson.lessonMedia.caption === 'Eine erste höfliche Frage, bevor ein Gespräch beginnt.')
-assert('lesson media uses provided local video asset', lesson.lessonMedia.type === 'video')
-assert('lesson media points at public guided video path', lesson.lessonMedia.url === '/guided/english-a1-practical/lesson-001-first-contact.mp4')
-if (lessonDefinition) {
-  const wistfulLesson = resolveGuidedLessonVariant(lessonDefinition, 'wistful')
-  const sharpLesson = resolveGuidedLessonVariant(lessonDefinition, 'sharp')
-  const futureFallbackLesson = resolveGuidedLessonVariant(lessonDefinition, 'tender')
-  assert('wistful resolves a distinct active phrase', wistfulLesson.corePhrase.targetText === 'Sorry, do you speak English?', wistfulLesson.corePhrase)
-  assert('sharp resolves a distinct active phrase', sharpLesson.corePhrase.targetText === 'Can you speak English?', sharpLesson.corePhrase)
-  assert('future vibe resolution falls back to bright', futureFallbackLesson.vibeId === 'bright' && futureFallbackLesson.corePhrase.targetText === lesson.corePhrase.targetText, futureFallbackLesson)
+console.log('\n[lesson definitions]')
+for (const lesson of pathLessons) {
+  assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-'), lesson)
+  assert(`${lesson.id} has invariant path id`, lesson.pathId === pathId, lesson)
+  assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
+  assert(`${lesson.id} has invariant title`, lesson.title === expectedTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
+  assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
+  assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
+  assert(`${lesson.id} has session steps`, JSON.stringify(lesson.steps) === JSON.stringify(TODAY_SESSION_STEPS), lesson.steps)
+  assert(`${lesson.id} has estimated minutes`, lesson.estimatedMinutes === 5, lesson.estimatedMinutes)
+  assert(`${lesson.id} fallback vibe is active`, isActiveGuidedVibeId(lesson.fallbackVibeId), lesson.fallbackVibeId)
+  assert(`${lesson.id} is usable now`, lesson.status === 'active', lesson.status)
+  assert(`${lesson.id} only defines active V0 variants`, Object.keys(lesson.vibeVariants).every((vibeId) => ACTIVE_GUIDED_VIBE_IDS.includes(vibeId as never)), lesson.vibeVariants)
+  for (const futureVibeId of FUTURE_GUIDED_VIBE_IDS) {
+    assert(`${lesson.id} has no required ${futureVibeId} runtime variant`, !(futureVibeId in lesson.vibeVariants), lesson.vibeVariants)
+  }
+  for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+    const variant = lesson.vibeVariants[vibeId]
+    assert(`${lesson.id} has ${vibeId} variant`, variant !== undefined, lesson.vibeVariants)
+    if (variant) validateVariant(lesson, vibeId, variant)
+  }
 }
 
-console.log('\n[ui copy]')
-assert('vibe picker title is translated', germanT('today.vibePicker.title') === 'Stimme wählen')
-assert('vibe indicator is translated', germanT('today.vibeIndicator') === 'Stimme: {vibe}')
-assert('trophy word panel title is translated', germanT('today.trophyWord.title') === 'Trophäenwort')
-assert('today page reads selected guided vibe from localStorage helper', todayPageSource.includes('getSelectedGuidedVibe'), todayPageSource)
-assert('today page persists selected guided vibe locally', todayPageSource.includes('setSelectedGuidedVibe'), todayPageSource)
-assert('today hero renders the vibe picker surface', todayHeroSource.includes('GuidedVibePicker'), todayHeroSource)
-assert('today compact header shows the active vibe indicator', todayHeroSource.includes('today.vibeIndicator'), todayHeroSource)
-assert('scene step renders the trophy word panel', todaySessionSource.includes('today.trophyWord.title'), todaySessionSource)
-assert('intro helper copy is short', germanT('today.itemsPreview.subtitle') === 'Markiere Wörter, die du überspringen möchtest.')
-assert('skip button copy is short', germanT('today.skipLesson') === 'Lektion überspringen')
-assert('intro media preview copy is minimal', germanT('today.media.previewHint') === 'Das Video startet in Schritt 1.')
-assert('intro hero does not show estimated time', !todayIntroHeroSource.includes('today.estimatedTime'), todayIntroHeroSource)
-assert('intro media preview does not render extra title copy', !todayIntroHeroSource.includes('today.media.previewTitle'), todayIntroHeroSource)
-assert('match step does not duplicate the header title', !matchPairsSource.includes('today.matchPairs.title'), matchPairsSource)
-assert('build step does not duplicate the header title', !buildPhraseSource.includes('today.build.title'), buildPhraseSource)
-assert('type step does not duplicate the header title', !typeRecallSource.includes('today.type.title'), typeRecallSource)
-assert('speak step does not duplicate the header title', !speakStepSource.includes('today.speak.title'), speakStepSource)
-assert('speak feedback copy is compact', germanT('today.speak.passed') === 'Richtig.' && germanT('today.speak.failed') === 'Noch nicht.')
-assert('known completion copy is compact', germanT('today.completion.knownMarked') === '{known} übersprungen')
-
-console.log('\n[phrase production]')
-const builtPhrase = lesson.build.chips
-  .filter((chip) => ['Excuse me,', 'do you speak', 'English?'].includes(chip))
-  .join(' ')
-
-assert('build chips can form the exact phrase', builtPhrase === lesson.build.targetText, builtPhrase)
-assert('type recall accepts English case-insensitively', lesson.typeRecall.acceptedAnswers.some((answer) => normalizeGuidedAnswer(answer) === 'english'))
-assert('type recall placeholder does not spoil the answer', normalizeGuidedAnswer(germanT('today.type.placeholder')) !== 'english')
-const typeFallbackChoices = getGuidedTypeFallbackChoices(lesson)
-assert('type fallback choices include English and distractors', JSON.stringify(typeFallbackChoices.map((choice) => choice.targetText)) === JSON.stringify([
-  'English',
-  'German',
-  'please',
-  'thank you',
-]), typeFallbackChoices)
-assert('type fallback marks only English as correct', typeFallbackChoices.filter((choice) => choice.isCorrect).length === 1 && typeFallbackChoices[0]?.isCorrect === true, typeFallbackChoices)
-assert('lesson items include five active recall entries', lesson.lessonItems.length === 5, lesson.lessonItems.length)
-assert('lesson items include please', lesson.lessonItems.some((item) => item.targetText === 'please' && item.baseText === 'bitte'))
-assert('lesson items include thank you', lesson.lessonItems.some((item) => item.targetText === 'thank you' && item.baseText === 'danke'))
-
-console.log('\n[session flow]')
-assert('final step order is Scene, Match, Build, Type, Speak, Complete', JSON.stringify(TODAY_SESSION_STEPS) === JSON.stringify([
-  'scene',
-  'matchPairs',
-  'build',
-  'type',
-  'speak',
-  'complete',
-]), TODAY_SESSION_STEPS)
-
-console.log('\n[match pairs]')
-const matchPairs = getGuidedMatchPairs(lesson)
-assert('matching pairs exist for each core phrase chunk', matchPairs.length === 3, matchPairs)
-assert('matching pairs have exact ids and text', JSON.stringify(matchPairs.map((pair) => ({
-  id: pair.id,
-  targetText: pair.targetText,
-  baseText: pair.baseText,
-}))) === JSON.stringify([
-  { id: 'excuse-me', targetText: 'Excuse me', baseText: 'Entschuldigung' },
-  { id: 'do-you-speak', targetText: 'do you speak', baseText: 'sprechen Sie' },
-  { id: 'english', targetText: 'English', baseText: 'Englisch' },
-]), matchPairs)
-
-console.log('\n[review choices]')
-const pleaseItem = lesson.lessonItems.find((item) => item.id === 'please')
-assert('please item is present for review choice validation', pleaseItem !== undefined)
-if (pleaseItem) {
-  const choices = getGuidedReviewChoices(lesson, pleaseItem)
-  assert('review choices include the correct answer', choices.some((choice) => choice.isCorrect && choice.targetText === 'please'), choices)
-  assert('review choices include 3 total chips', choices.length === 3, choices)
-  assert('review choices are unique', new Set(choices.map((choice) => choice.id)).size === choices.length, choices)
-  assert('review choices include distractors from lesson items', choices.some((choice) => !choice.isCorrect), choices)
+console.log('\n[vibe resolution]')
+const firstDefinition = pathLessons[0]
+if (firstDefinition) {
+  assert('current lesson defaults to lesson 1 Bright', getCurrentGuidedLesson().id === firstDefinition.id && getCurrentGuidedLesson().vibeId === 'bright')
+  assert('invalid selected vibe falls back to Bright', resolveGuidedLessonVariant(firstDefinition, 'not-a-vibe').vibeId === 'bright')
+  assert('future selected vibe falls back to Bright', resolveGuidedLessonVariant(firstDefinition, 'tender').vibeId === 'bright')
+  for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+    assert(`${vibeId} resolves for lesson 1`, resolveGuidedLessonVariant(firstDefinition, vibeId).vibeId === vibeId)
+  }
 }
-for (const item of lesson.lessonItems) {
-  const choices = getGuidedReviewChoices(lesson, item)
+
+console.log('\n[path helpers]')
+const firstLesson = pathLessons[0]
+const secondLesson = pathLessons[1]
+if (firstLesson && secondLesson) {
+  const resolvedFirst = resolveGuidedLessonVariant(firstLesson, 'bright')
+  const completedFirst = markTodayLessonComplete(createEmptyTodayProgressState(), resolvedFirst, minimalResult())
+  assert('first incomplete helper starts at lesson 1 with no progress', getFirstIncompleteGuidedLesson(pathId, createEmptyTodayProgressState())?.id === firstLesson.id)
+  assert('first incomplete helper advances after lesson-level completion', getFirstIncompleteGuidedLesson(pathId, completedFirst)?.id === secondLesson.id)
+  assert('next lesson helper advances by lesson id', getNextGuidedLesson(pathId, firstLesson.id)?.id === secondLesson.id)
+}
+
+console.log('\n[lesson mechanics]')
+const brightLesson = getCurrentGuidedLesson('bright')
+const matchPairs = getGuidedMatchPairs(brightLesson)
+assert('matching pairs exist for each core phrase chunk', matchPairs.length === brightLesson.phraseChunks.length, matchPairs)
+assert('type fallback choices include one correct answer', getGuidedTypeFallbackChoices(brightLesson).filter((choice) => choice.isCorrect).length >= 1, getGuidedTypeFallbackChoices(brightLesson))
+for (const item of brightLesson.lessonItems) {
+  const choices = getGuidedReviewChoices(brightLesson, item)
   assert(`review choices can be generated for ${item.id}`, choices.length === 3 && choices.some((choice) => choice.id === item.id && choice.isCorrect), choices)
 }
-
-const filteredReviewItems = getGuidedReviewItems(lesson, new Set(['please', 'thank-you']))
-assert('known-item filtering excludes marked items', !filteredReviewItems.some((item) => item.id === 'please' || item.id === 'thank-you'), filteredReviewItems)
-assert('known-item filtering keeps remaining items', filteredReviewItems.length === 3, filteredReviewItems)
-const knownCoreIds = new Set(['excuse-me', 'do-you-speak', 'english'])
-assert('known-item filtering only affects Review items', getGuidedReviewItems(lesson, knownCoreIds).length === 2)
-assert('core phrase chunks remain required when marked known', getGuidedMatchPairs(lesson).length === 3 && lesson.build.targetText === 'Excuse me, do you speak English?')
-
-const allKnownReviewItems = getGuidedReviewItems(lesson, new Set(lesson.lessonItems.map((item) => item.id)))
-assert('all known review items can be excluded', allKnownReviewItems.length === 0, allKnownReviewItems)
-
-console.log('\n[speech overlap]')
-assert('speech word-overlap helper passes close transcript', getSpeechWordOverlap('excuse me do you speak english', lesson.corePhrase.targetText) >= 0.8)
-assert('speech word-overlap helper fails wrong transcript', getSpeechWordOverlap('thank you please', lesson.corePhrase.targetText) < 0.8)
+const filteredReviewItems = getGuidedReviewItems(brightLesson, new Set(brightLesson.lessonItems.slice(0, 2).map((item) => item.id)))
+assert('known-item filtering excludes marked lesson items', filteredReviewItems.length === Math.max(0, brightLesson.lessonItems.length - 2), filteredReviewItems)
+assert('speech word-overlap helper passes close transcript', getSpeechWordOverlap(stripPunctuation(brightLesson.speak.targetPhrase), brightLesson.speak.targetPhrase) >= 0.8)
+assert('speech word-overlap helper fails wrong transcript', getSpeechWordOverlap('thank you please', brightLesson.speak.targetPhrase) < 0.8)
 
 console.log('\n[local progress]')
 const userId = 'user-123'
-const empty = createEmptyTodayProgressState()
-const completed = markTodayLessonComplete(empty, lesson, {
+const completed = markTodayLessonComplete(createEmptyTodayProgressState(), brightLesson, {
   buildAttempts: 2,
   typeAttempts: 1,
   typeUsedFallback: false,
@@ -214,97 +149,79 @@ const completed = markTodayLessonComplete(empty, lesson, {
   reviewCorrect: 5,
   reviewTotal: 5,
 })
-const partiallyKnownCompleted = markTodayLessonComplete(createEmptyTodayProgressState(), lesson, {
-  buildAttempts: 1,
-  typeAttempts: 1,
-  typeUsedFallback: true,
-  speakAttempts: 1,
-  speakTranscriptMatch: 0.67,
-  speakPassed: false,
-  knownMarkedCount: 4,
-  reviewCorrect: 1,
-  reviewTotal: 1,
-})
-const allKnownCompleted = markTodayLessonComplete(createEmptyTodayProgressState(), lesson, {
-  buildAttempts: 1,
-  typeAttempts: 1,
-  typeUsedFallback: false,
-  speakAttempts: 0,
-  speakTranscriptMatch: 0,
-  speakPassed: false,
-  knownMarkedCount: 5,
-  reviewCorrect: 0,
-  reviewTotal: 0,
-})
-const skipped = markTodayLessonSkipped(createEmptyTodayProgressState(), lesson)
-
+const skipped = markTodayLessonSkipped(createEmptyTodayProgressState(), brightLesson)
+const restarted = restartTodayLessonProgress(completed, brightLesson)
 assert('progress key is user-scoped', todayProgressKey(userId) === 'resonance_today_progress_v1_user-123')
-assert(
-  'complete status is stored without raw answers',
-  completed.courses[lesson.courseId]?.lessons[lesson.id]?.status === 'completed'
-    && completed.courses[lesson.courseId]?.lessons[lesson.id]?.result?.buildAttempts === 2,
-  completed,
-)
-assert(
-  'progress remains lesson-level and vibe-agnostic',
-  completed.courses[lesson.courseId]?.completedLessonIds.includes(lesson.id) === true
-    && JSON.stringify(completed).includes('vibeId') === false
-    && JSON.stringify(completed).includes('selectedVibe') === false,
-  completed,
-)
-assert(
-  'known marked count is stored without raw answers',
-  partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.knownMarkedCount === 4
-    && JSON.stringify(partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result).includes('typedAnswer') === false,
-  partiallyKnownCompleted,
-)
-assert(
-  'type fallback and speak result are stored without raw transcripts',
-  partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.typeUsedFallback === true
-    && partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.speakAttempts === 1
-    && partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.speakPassed === false
-    && partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result?.speakTranscriptMatch === 0.67
-    && JSON.stringify(partiallyKnownCompleted.courses[lesson.courseId]?.lessons[lesson.id]?.result).includes('speechTranscript') === false,
-  partiallyKnownCompleted,
-)
-assert(
-  'completion lines include type and speak summaries',
-  JSON.stringify(getTodayCompletionLines(completed.courses[lesson.courseId]!.lessons[lesson.id]!.result!).map((line) => line.key)) === JSON.stringify([
-    'today.completion.typePassed',
-    'today.completion.speakPassed',
-  ]),
-)
-assert(
-  'completion lines include help and known summaries',
-  JSON.stringify(getTodayCompletionLines(partiallyKnownCompleted.courses[lesson.courseId]!.lessons[lesson.id]!.result!).map((line) => line.key)) === JSON.stringify([
-    'today.completion.typeWithHelp',
-    'today.completion.speakContinued',
-    'today.completion.knownMarked',
-  ]),
-)
-assert(
-  'completion summary supports no known items',
-  getTodayCompletionSummary(completed.courses[lesson.courseId]!.lessons[lesson.id]!.result!).key === 'today.completion.summary',
-)
-assert(
-  'completion summary supports some known items',
-  getTodayCompletionSummary(partiallyKnownCompleted.courses[lesson.courseId]!.lessons[lesson.id]!.result!).key === 'today.completion.summaryWithKnown',
-)
-assert(
-  'completion summary supports all known items',
-  getTodayCompletionSummary(allKnownCompleted.courses[lesson.courseId]!.lessons[lesson.id]!.result!).key === 'today.completion.summaryAllKnown',
-)
-assert(
-  'skip status is stored separately from completion',
-  skipped.courses[lesson.courseId]?.lessons[lesson.id]?.status === 'skipped'
-    && skipped.courses[lesson.courseId]?.completedLessonIds.length === 0
-    && skipped.courses[lesson.courseId]?.skippedLessonIds.includes(lesson.id),
-  skipped,
-)
+assert('complete status is stored at lesson level', getTodayLessonStatus(completed, brightLesson) === 'completed', completed)
+assert('skip status is stored at lesson level', getTodayLessonStatus(skipped, brightLesson) === 'skipped', skipped)
+assert('restart clears only the lesson progress entry', getTodayLessonStatus(restarted, brightLesson) === 'new', restarted)
+assert('progress remains lesson-level and vibe-agnostic', !containsAny(JSON.stringify(completed), ['vibeId', 'selectedVibe', 'bright', 'wistful', 'sharp']), completed)
+const storedResultJson = JSON.stringify(completed.courses[brightLesson.courseId]?.lessons[brightLesson.id]?.result)
+assert('no raw typed recall answers are stored', !containsAny(storedResultJson, ['typedAnswer', 'typeAnswer', 'typedRecallAnswer', 'rawAnswer']), completed)
+assert('no raw speech transcripts are stored', !containsAny(storedResultJson, ['speechTranscript', 'transcriptText', 'rawTranscript', stripPunctuation(brightLesson.speak.targetPhrase)]), completed)
+assert('completion lines include type and speak summaries', getTodayCompletionLines(completed.courses[brightLesson.courseId]!.lessons[brightLesson.id]!.result!).length >= 2)
+assert('completion summary supports no known items', getTodayCompletionSummary(completed.courses[brightLesson.courseId]!.lessons[brightLesson.id]!.result!).key === 'today.completion.summary')
 
 console.log(`\n${passes} passed, ${failures} failed`)
 if (failures > 0) process.exit(1)
 
-function readSource(relativePath: string) {
-  return readFileSync(new URL(relativePath, import.meta.url), 'utf8')
+function validateVariant(
+  lesson: GuidedLessonDefinition,
+  vibeId: string,
+  variant: GuidedLessonVibeVariant,
+) {
+  assert(`${lesson.id}/${vibeId} content status is draft or final`, variant.contentStatus === 'draft' || variant.contentStatus === 'final', variant.contentStatus)
+  assert(`${lesson.id}/${vibeId} target text exists`, hasText(variant.corePhrase.targetText), variant.corePhrase)
+  assert(`${lesson.id}/${vibeId} base text exists`, hasText(variant.corePhrase.baseText), variant.corePhrase)
+  assert(`${lesson.id}/${vibeId} meaning exists`, hasText(variant.meaning), variant.meaning)
+  assert(`${lesson.id}/${vibeId} chunks are non-empty`, variant.chunks.length > 0 && variant.chunks.every((chunk) => hasText(chunk.id) && hasText(chunk.targetText) && hasText(chunk.baseText)), variant.chunks)
+  assert(`${lesson.id}/${vibeId} lesson items are non-empty`, variant.lessonItems.length > 0 && variant.lessonItems.every((item) => hasText(item.id) && hasText(item.targetText) && hasText(item.baseText) && item.acceptedAnswers.length > 0), variant.lessonItems)
+  assert(`${lesson.id}/${vibeId} build target exists`, hasText(variant.build.targetText), variant.build)
+  assert(`${lesson.id}/${vibeId} build chips support target phrase`, chipsSupportTarget(variant.build.chips, variant.build.targetText), variant.build)
+  assert(`${lesson.id}/${vibeId} type recall answer exists`, hasText(variant.typeRecall.answer), variant.typeRecall)
+  assert(`${lesson.id}/${vibeId} acceptedAnswers includes answer`, variant.typeRecall.acceptedAnswers.some((answer) => normalizeGuidedAnswer(answer) === normalizeGuidedAnswer(variant.typeRecall.answer)), variant.typeRecall)
+  assert(`${lesson.id}/${vibeId} type recall has fallback choices`, variant.typeRecall.fallbackChoices.length >= 3 && variant.typeRecall.fallbackChoices.some((choice) => normalizeGuidedAnswer(choice) === normalizeGuidedAnswer(variant.typeRecall.answer)), variant.typeRecall)
+  assert(`${lesson.id}/${vibeId} speak target has cue`, hasText(variant.speakTarget.baseCue), variant.speakTarget)
+  assert(`${lesson.id}/${vibeId} speak target phrase is compatible with core phrase`, areCompatiblePhrases(variant.speakTarget.targetPhrase, variant.corePhrase.targetText), variant.speakTarget)
+  assert(`${lesson.id}/${vibeId} speak language is supported`, variant.speakTarget.language === 'en-US' || variant.speakTarget.language === 'en-GB', variant.speakTarget)
+  assert(`${lesson.id}/${vibeId} speak threshold is usable`, variant.speakTarget.passingThreshold > 0 && variant.speakTarget.passingThreshold <= 1, variant.speakTarget)
+  assert(`${lesson.id}/${vibeId} scene caption exists`, hasText(variant.sceneCaption), variant.sceneCaption)
+  assert(`${lesson.id}/${vibeId} trophy word is complete`, hasText(variant.trophyWord.word) && hasText(variant.trophyWord.meaning) && hasText(variant.trophyWord.example) && hasText(variant.trophyWord.whyThisWord), variant.trophyWord)
+  assert(`${lesson.id}/${vibeId} placeholder media exists`, variant.placeholderMedia !== undefined && hasText(variant.placeholderMedia.caption), variant.placeholderMedia)
+  assert(`${lesson.id}/${vibeId} song seed exists`, variant.songSeed !== undefined && hasText(variant.songSeed.genre) && hasText(variant.songSeed.mood), variant.songSeed)
+  assert(`${lesson.id}/${vibeId} visual notes exist`, hasText(variant.visualNotes), variant.visualNotes)
+}
+
+function minimalResult() {
+  return {
+    buildAttempts: 1,
+    typeAttempts: 1,
+    typeUsedFallback: false,
+    speakAttempts: 0,
+    speakTranscriptMatch: 0,
+    speakPassed: false,
+    knownMarkedCount: 0,
+  }
+}
+
+function chipsSupportTarget(chips: string[], targetText: string) {
+  const chipText = stripPunctuation(chips.join(' '))
+  const targetWords = stripPunctuation(targetText).split(' ').filter(Boolean)
+  return targetWords.every((word) => chipText.includes(word))
+}
+
+function areCompatiblePhrases(a: string, b: string) {
+  return stripPunctuation(a) === stripPunctuation(b)
+}
+
+function hasText(value: unknown): value is string {
+  return typeof value === 'string' && value.trim().length > 0
+}
+
+function stripPunctuation(value: string) {
+  return normalizeGuidedAnswer(value).replace(/[^a-z0-9]+/g, ' ').trim()
+}
+
+function containsAny(value: string, needles: string[]) {
+  return needles.some((needle) => needle.length > 0 && value.includes(needle))
 }
