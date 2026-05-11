@@ -362,7 +362,7 @@ export class GlideRunnerScene extends Phaser.Scene {
       0.45,
       1,
     );
-    const cardWidth = Math.min(this.scale.width * 0.12, this.scale.height * 0.215) * responsive;
+    const cardWidth = Math.min(this.scale.width * 0.13, this.scale.height * 0.24) * responsive;
     const cardHeight = cardWidth * 0.5625;
     const selectionPulse =
       card.selected && this.phase === 'parked' ? 1.035 + Math.sin(time / 175) * 0.015 : 1;
