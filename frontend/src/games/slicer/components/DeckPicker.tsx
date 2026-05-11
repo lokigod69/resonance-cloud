@@ -110,7 +110,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
       <div className="mx-auto flex h-full min-h-0 w-full max-w-6xl flex-col">
         <button
           type="button"
-          onClick={() => navigate('/games')}
+          onClick={() => navigate('/study')}
           className="mb-3 inline-flex min-h-10 w-fit items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/30 px-4 text-sm text-[#fff1d0] transition hover:bg-white/10"
         >
           <ArrowLeft size={16} />
