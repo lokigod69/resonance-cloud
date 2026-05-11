@@ -2290,6 +2290,24 @@ export function getGuidedMatchPairs(lesson: GuidedLesson): GuidedMatchPair[] {
   }))
 }
 
+export function getDeterministicBuildChips(lesson: GuidedLesson) {
+  const seed = `${lesson.id}:${lesson.vibeId}:build`
+  const shuffled = lesson.build.chips
+    .map((chip, index) => ({
+      chip,
+      index,
+      sortKey: stableHash(`${seed}:${chip}:${index}`),
+    }))
+    .sort((left, right) => left.sortKey - right.sortKey)
+    .map(({ chip, index }) => ({ chip, index }))
+
+  const unchanged = shuffled.every((entry, position) => entry.index === position)
+  if (!unchanged || shuffled.length < 2) return shuffled
+
+  const offset = (stableHash(seed) % (shuffled.length - 1)) + 1
+  return [...shuffled.slice(offset), ...shuffled.slice(0, offset)]
+}
+
 export function getGuidedReviewItems(
   lesson: GuidedLesson,
   knownItemIds: Iterable<string>,
@@ -2346,4 +2364,13 @@ function uniqueLessonItems(items: LessonItem[]) {
     seen.add(item.id)
     return true
   })
+}
+
+function stableHash(value: string) {
+  let hash = 2166136261
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index)
+    hash = Math.imul(hash, 16777619)
+  }
+  return hash >>> 0
 }

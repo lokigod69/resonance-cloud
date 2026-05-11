@@ -1,6 +1,6 @@
 import { CheckCircle2, RotateCcw, XCircle } from 'lucide-react'
-import { useState } from 'react'
-import type { GuidedLesson } from '@/data/guidedLessons'
+import { useMemo, useState } from 'react'
+import { getDeterministicBuildChips, type GuidedLesson } from '@/data/guidedLessons'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -20,10 +20,10 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([])
   const [status, setStatus] = useState<BuildPhraseCheckState['status']>('idle')
   const [attempts, setAttempts] = useState(0)
+  const shuffledChips = useMemo(() => getDeterministicBuildChips(lesson), [lesson])
   const selectedPhrase = selectedIndexes.map((index) => lesson.build.chips[index]).join(' ')
 
-  const availableChips = lesson.build.chips
-    .map((chip, index) => ({ chip, index }))
+  const availableChips = shuffledChips
     .filter(({ index }) => !selectedIndexes.includes(index))
 
   const buildPhraseFromIndexes = (indexes: number[]) => (
@@ -76,7 +76,16 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
         {t('today.build.prompt')}
       </p>
 
-      <div className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-3 sm:p-4">
+      <div
+        className={cn(
+          'rounded-lg border bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-3 transition sm:p-4',
+          status === 'correct'
+            ? 'border-[color-mix(in_srgb,#34d399_54%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_28%,transparent)]'
+            : status === 'wrong'
+              ? 'border-[color-mix(in_srgb,#f87171_58%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_24%,transparent)]'
+              : 'border-[var(--border-subtle)]',
+        )}
+      >
         <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
           {t('today.build.answerLabel')}
         </p>
@@ -89,7 +98,11 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
                 key={`${chipIndex}-${position}`}
                 type="button"
                 onClick={() => handleRemove(position)}
-                className="theme-chip-active min-h-11 rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition-transform hover:-translate-y-0.5"
+                className={cn(
+                  'theme-chip-active min-h-11 rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition-transform hover:-translate-y-0.5',
+                  status === 'correct' && 'ring-1 ring-[#34d399]',
+                  status === 'wrong' && 'ring-1 ring-[#f87171]',
+                )}
               >
                 {lesson.build.chips[chipIndex]}
               </button>

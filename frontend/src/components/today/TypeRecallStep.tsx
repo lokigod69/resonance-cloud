@@ -69,7 +69,16 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
         {t('today.type.prompt')}
       </p>
 
-      <div className="w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4">
+      <div
+        className={cn(
+          'w-full rounded-lg border bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4 transition',
+          status === 'correct'
+            ? 'border-[color-mix(in_srgb,#34d399_54%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_28%,transparent)]'
+            : status === 'wrong'
+              ? 'border-[color-mix(in_srgb,#f87171_58%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_24%,transparent)]'
+              : 'border-[var(--border-subtle)]',
+        )}
+      >
         <div className="flex flex-col justify-center gap-3 text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:flex-row sm:flex-wrap sm:items-center sm:text-3xl">
           <span>{lesson.typeRecall.before}</span>
           <Input
@@ -134,7 +143,7 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
           <span>
             {status === 'correct'
               ? t('today.type.correct')
-              : t('today.type.wrong', { answer: lesson.typeRecall.answer })}
+              : t('today.type.wrong')}
           </span>
         </div>
       )}

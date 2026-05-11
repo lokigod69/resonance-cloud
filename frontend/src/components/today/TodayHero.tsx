@@ -1,4 +1,4 @@
-import { CalendarDays, Check, CheckCircle2, Circle, Clock3, Play, RotateCcw, SkipForward, Sparkles } from 'lucide-react'
+import { CalendarDays, Check, CheckCircle2, Circle, Play, RotateCcw, SkipForward, Sparkles } from 'lucide-react'
 import type { GuidedLesson, GuidedLessonMedia } from '@/data/guidedLessons'
 import { ACTIVE_GUIDED_VIBE_IDS, guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { TodayVisibleStatus } from '@/lib/todayProgress'
@@ -335,16 +335,10 @@ export function GuidedVibePicker({
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
             {t('today.vibePicker.title')}
           </p>
-          <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
-            {t('today.vibePicker.subtitle')}
-          </p>
         </div>
-        <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1 text-xs text-[var(--text-muted)]">
-          {t('today.vibeIndicator', { vibe: guidedVibes[selectedVibeId].label })}
-        </span>
       </div>
 
-      <div className="mt-4 grid gap-3 md:grid-cols-3">
+      <div className="mt-3 grid gap-2 md:grid-cols-3">
         {ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => {
           const vibe = guidedVibes[vibeId]
           const isSelected = selectedVibeId === vibeId
@@ -366,7 +360,7 @@ export function GuidedVibePicker({
                 <span className="text-sm font-semibold text-[var(--text-primary)]">{vibe.label}</span>
                 {isSelected && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
               </div>
-              <p className="mt-2 text-sm leading-5 text-[var(--text-secondary)]">
+              <p className="mt-1.5 line-clamp-1 text-sm leading-5 text-[var(--text-secondary)]">
                 {vibe.shortDescription}
               </p>
             </button>
@@ -390,10 +384,6 @@ export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
             </Badge>
             <span className="text-xs font-medium text-[var(--text-muted)]">
               {lesson.pathMetadata.baseLanguage}{' -> '}{lesson.pathMetadata.targetLanguage}
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-xs text-[var(--text-muted)]">
-              <Clock3 className="h-3.5 w-3.5" />
-              {t('today.estimatedTime', { minutes: lesson.pathMetadata.estimatedMinutes })}
             </span>
             <span className="text-xs font-medium text-[var(--text-muted)]">
               {t('today.vibeIndicator', { vibe: guidedVibes[lesson.vibeId].label })}

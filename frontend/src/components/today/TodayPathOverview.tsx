@@ -1,4 +1,4 @@
-import { CheckCircle2, Circle, Play, Route } from 'lucide-react'
+import { CheckCircle2, Play } from 'lucide-react'
 import type { GuidedLesson, GuidedPathLessonCardStatus, GuidedPathOverview } from '@/data/guidedLessons'
 import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonStatus, type TodayProgressState } from '@/lib/todayProgress'
@@ -32,7 +32,6 @@ export function TodayPathOverview({
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="min-w-0">
             <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-              <Route className="h-4 w-4 text-[var(--accent)]" />
               {t('today.path.overviewLabel')}
             </p>
             <h1 className="mt-3 break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
@@ -45,7 +44,7 @@ export function TodayPathOverview({
                 </Badge>
               )}
               <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
-                {t('today.vibeIndicator', { vibe: guidedVibes[selectedVibeId].label })}
+                {guidedVibes[selectedVibeId].label}
               </Badge>
               <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
                 {t('today.path.progress', {
@@ -79,11 +78,8 @@ export function TodayPathOverview({
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-              {overview.totalLessons} lessons
+              {t('today.path.yourPath')}
             </p>
-            <h2 className="mt-1 text-xl font-semibold text-[var(--text-primary)]">
-              English A1 Practical
-            </h2>
           </div>
         </div>
 
@@ -159,53 +155,49 @@ function LessonPathCard({
   const { t } = useTranslation()
 
   return (
-    <article
+    <button
+      type="button"
+      onClick={() => onOpenLesson(lesson.id)}
+      aria-label={t('today.path.openLesson', {
+        sequence: lesson.lessonNumber,
+        title: lesson.title,
+      })}
       className={cn(
-        'min-w-0 rounded-lg border p-3 transition',
+        'group min-w-0 rounded-lg border p-3 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
         isRecommended
           ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)]'
           : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_50%,transparent)]',
       )}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--text-muted)]">
-            {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
-          </p>
+      <div className="flex items-start gap-3">
+        <span className={cn(
+          'flex h-10 w-10 shrink-0 items-center justify-center rounded-full border text-lg font-semibold',
+          status === 'complete'
+            ? 'border-[color-mix(in_srgb,#34d399_50%,transparent)] bg-[color-mix(in_srgb,#34d399_12%,transparent)] text-[#34d399]'
+            : isRecommended
+              ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]'
+              : 'border-[var(--border-subtle)] text-[var(--text-muted)]',
+        )}>
+          {lesson.lessonNumber}
+        </span>
+        <div className="min-w-0 flex-1">
+          <div className="flex min-h-5 items-center justify-between gap-2">
+            {isRecommended ? (
+              <span className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--accent)]">
+                {t('today.path.status.current')}
+              </span>
+            ) : <span aria-hidden="true" />}
+            <StatusIcon status={status} />
+          </div>
           <h3 className="mt-1 break-words text-base font-semibold leading-snug text-[var(--text-primary)]">
             {lesson.title}
           </h3>
         </div>
-        <StatusIcon status={status} />
       </div>
       <p className="mt-3 line-clamp-2 break-words text-sm leading-5 text-[var(--text-secondary)]">
         {lesson.situation.de}
       </p>
-      <div className="mt-4 flex items-center justify-between gap-2">
-        <span className={cn(
-          'rounded-full border px-2.5 py-1 text-xs font-medium',
-          status === 'complete'
-            ? 'border-[color-mix(in_srgb,#34d399_44%,transparent)] text-[#34d399]'
-            : isRecommended
-              ? 'border-[color-mix(in_srgb,var(--accent)_46%,transparent)] text-[var(--accent)]'
-              : 'border-[var(--border-subtle)] text-[var(--text-muted)]',
-        )}>
-          {getStatusLabel(t, status)}
-        </span>
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          onClick={() => onOpenLesson(lesson.id)}
-          aria-label={t('today.path.openLesson', {
-            sequence: lesson.lessonNumber,
-            title: lesson.title,
-          })}
-        >
-          {getCardActionLabel(t, status)}
-        </Button>
-      </div>
-    </article>
+    </button>
   )
 }
 
@@ -218,13 +210,7 @@ function StatusIcon({ status }: { status: GuidedPathLessonCardStatus }) {
     return <Play className="h-5 w-5 shrink-0 text-[var(--accent)]" />
   }
 
-  return <Circle className="h-5 w-5 shrink-0 text-[var(--text-muted)]" />
-}
-
-function getStatusLabel(t: ReturnType<typeof useTranslation>['t'], status: GuidedPathLessonCardStatus) {
-  if (status === 'complete') return t('today.path.status.complete')
-  if (status === 'current') return t('today.path.status.current')
-  return t('today.path.status.notStarted')
+  return null
 }
 
 function getActionLabel(
@@ -235,9 +221,4 @@ function getActionLabel(
   if (status === 'completed' || isPathComplete) return t('today.path.replayLesson')
   if (status === 'skipped') return t('today.path.continueLesson')
   return t('today.path.startLesson')
-}
-
-function getCardActionLabel(t: ReturnType<typeof useTranslation>['t'], status: GuidedPathLessonCardStatus) {
-  if (status === 'complete') return t('today.path.replayLesson')
-  return t('today.path.openLessonAction')
 }

@@ -100,10 +100,7 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
               <ChevronLeft className="h-4 w-4" />
               {t('today.path.backToPath')}
             </Button>
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-              {t('today.sessionLabel')}
-            </p>
-            <h2 className="mt-1 text-xl font-semibold text-[var(--text-primary)]">
+            <h2 className="text-xl font-semibold text-[var(--text-primary)]">
               {t(`today.step.${step}`)}
             </h2>
           </div>
@@ -233,25 +230,20 @@ function CompleteStep({
           ))}
         </div>
       </div>
-      <div className="mx-auto w-full max-w-xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-left">
-        <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+      <div className="mx-auto w-full max-w-md rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-center">
+        <p className="flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
           <Trophy className="h-4 w-4 text-[var(--accent)]" />
           {t('today.trophyWord.title')}
         </p>
-        <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <p className="break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">
+        <div className="mt-3">
+          <p className="break-words text-4xl font-semibold leading-tight text-[var(--text-primary)]">
             {lesson.trophyWord.word}
           </p>
-          <p className="break-words text-sm leading-6 text-[var(--text-secondary)]">
+          <p className="mt-1 break-words text-sm leading-6 text-[var(--text-secondary)]">
             {lesson.trophyWord.meaning}
           </p>
         </div>
-        <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
-          <span className="font-medium text-[var(--text-primary)]">{t('today.trophyWord.exampleLabel')}: </span>
-          {lesson.trophyWord.example}
-        </p>
-        <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-          <span className="font-medium text-[var(--text-primary)]">{t('today.trophyWord.whyLabel')}: </span>
+        <p className="mt-3 line-clamp-2 text-sm leading-6 text-[var(--text-secondary)]">
           {lesson.trophyWord.whyThisWord}
         </p>
       </div>

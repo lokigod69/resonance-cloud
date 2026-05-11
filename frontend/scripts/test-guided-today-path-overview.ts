@@ -9,6 +9,7 @@ import {
   FUTURE_GUIDED_VIBE_IDS,
 } from '../src/data/guidedVibes.ts'
 import {
+  getDeterministicBuildChips,
   getGuidedPathOverview,
   getGuidedPathLessons,
   resolveGuidedLessonVariant,
@@ -126,9 +127,14 @@ const todayPathOverviewSource = readSource('../src/components/today/TodayPathOve
 const todaySessionSource = readSource('../src/components/today/TodaySession.tsx')
 const todayHeroSource = readSource('../src/components/today/TodayHero.tsx')
 const todayPageSource = readSource('../src/pages/Today.tsx')
+const buildPhraseSource = readSource('../src/components/today/BuildPhraseStep.tsx')
+const matchPairsSource = readSource('../src/components/today/MatchPairsStep.tsx')
+const typeRecallSource = readSource('../src/components/today/TypeRecallStep.tsx')
 const sceneStepSource = sliceBetween(todaySessionSource, 'function SceneStep', 'function CompleteStep')
 const completeStepSource = sliceBetween(todaySessionSource, 'function CompleteStep', 'function canContinueFromSpeak')
 const guidedVibePickerSource = sliceBetween(todayHeroSource, 'export function GuidedVibePicker', 'export function TodayCompactHeader')
+const todayCompactHeaderSource = sliceBetween(todayHeroSource, 'export function TodayCompactHeader', '')
+const lessonPathCardSource = sliceBetween(todayPathOverviewSource, 'function LessonPathCard', 'function StatusIcon')
 
 assert('overview lesson cards do not render trophy word labels', !containsAny(todayPathOverviewSource, ['today.path.trophyWord', 'lesson.trophyWord', '<Trophy']))
 assert('overview lesson cards do not render selected-vibe phrase previews', !todayPathOverviewSource.includes('lesson.corePhrase.targetText'))
@@ -145,6 +151,21 @@ assert('session exposes explicit Back to path action outside step navigation', c
 assert('Back to path handler only exits the session view', todayPageSource.includes('const handleExitToIntro = () => {\n    setSessionActive(false)\n  }'), sliceBetween(todayPageSource, 'const handleExitToIntro', 'const handleComplete'))
 const progressBeforeBackToPath = JSON.stringify(completedTwo)
 assert('Back to path does not mutate progress', JSON.stringify(completedTwo) === progressBeforeBackToPath, completedTwo)
+
+console.log('\n[source-level UX teardown]')
+assert('Today compact header does not render time estimate', !containsAny(todayCompactHeaderSource, ['today.estimatedTime', 'estimatedMinutes', '<Clock3']))
+assert('lesson cards use whole-card button semantics', lessonPathCardSource.includes('<button') && !lessonPathCardSource.includes('<article'), lessonPathCardSource)
+assert('lesson cards avoid tiny-only open actions', !containsAny(lessonPathCardSource, ['getCardActionLabel', 'today.path.openLessonAction']))
+assert('match feedback avoids verbose expected correction copy', !containsAny(matchPairsSource, ['expected', 'Expected', 'Erwartet', 'today.matchPairs.expected']))
+assert('type recall wrong feedback does not reveal the answer by default', !typeRecallSource.includes("t('today.type.wrong', { answer"))
+assert('build feedback remains compact without expected correction copy', !containsAny(buildPhraseSource, ['expected', 'Expected', 'Erwartet', 'today.build.expected']))
+
+const deterministicBuildChips = getDeterministicBuildChips(firstLesson)
+assert(
+  'build chips are not presented in exact authored order',
+  deterministicBuildChips.map((entry) => entry.chip).join('|') !== firstLesson.build.chips.join('|'),
+  deterministicBuildChips,
+)
 
 console.log('\n[content coherence audit]')
 const coherenceFlags = collectCoherenceFlags()
@@ -178,8 +199,10 @@ function readSource(relativePath: string) {
 
 function sliceBetween(source: string, start: string, end: string) {
   const startIndex = source.indexOf(start)
+  if (startIndex < 0) return ''
+  if (end.length === 0) return source.slice(startIndex)
   const endIndex = source.indexOf(end, startIndex)
-  if (startIndex < 0 || endIndex < 0) return ''
+  if (endIndex < 0) return ''
   return source.slice(startIndex, endIndex)
 }
 
