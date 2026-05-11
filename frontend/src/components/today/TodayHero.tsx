@@ -1,5 +1,6 @@
 import { CalendarDays, Check, CheckCircle2, Circle, Clock3, Play, RotateCcw, SkipForward, Sparkles } from 'lucide-react'
 import type { GuidedLesson, GuidedLessonMedia } from '@/data/guidedLessons'
+import { ACTIVE_GUIDED_VIBE_IDS, guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { TodayVisibleStatus } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
@@ -14,6 +15,8 @@ type TodayHeroProps = {
   onSkip: () => void
   onRestart: () => void
   onToggleKnownItem: (itemId: string) => void
+  selectedVibeId: ActiveGuidedVibeId
+  onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
 }
 
 type LessonMediaFrameProps = {
@@ -21,6 +24,12 @@ type LessonMediaFrameProps = {
   className?: string
   mode?: 'preview' | 'playback'
   showCaption?: boolean
+}
+
+const vibeSwatches: Record<ActiveGuidedVibeId, string[]> = {
+  bright: ['#facc15', '#22c55e', '#38bdf8'],
+  wistful: ['#94a3b8', '#60a5fa', '#c084fc'],
+  sharp: ['#f8fafc', '#ef4444', '#111827'],
 }
 
 export function LessonMediaFrame({
@@ -138,6 +147,8 @@ export function TodayHero({
   onSkip,
   onRestart,
   onToggleKnownItem,
+  selectedVibeId,
+  onSelectVibe,
 }: TodayHeroProps) {
   const { t } = useTranslation()
   const terminalStatus = status === 'completed' || status === 'skipped'
@@ -162,6 +173,9 @@ export function TodayHero({
               </Badge>
               <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
                 {lesson.pathMetadata.baseLanguage}{' -> '}{lesson.pathMetadata.targetLanguage}
+              </Badge>
+              <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
+                {t('today.vibeIndicator', { vibe: guidedVibes[lesson.vibeId].label })}
               </Badge>
             </div>
 
@@ -258,6 +272,12 @@ export function TodayHero({
                 })}
               </div>
             </div>
+
+            <GuidedVibePicker
+              lesson={lesson}
+              selectedVibeId={selectedVibeId}
+              onSelectVibe={onSelectVibe}
+            />
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
@@ -299,6 +319,89 @@ export function TodayHero({
   )
 }
 
+export function GuidedVibePicker({
+  lesson,
+  selectedVibeId,
+  onSelectVibe,
+  compact = false,
+}: {
+  lesson: GuidedLesson
+  selectedVibeId: ActiveGuidedVibeId
+  onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
+  compact?: boolean
+}) {
+  const { t } = useTranslation()
+
+  return (
+    <section
+      className={cn(
+        'mt-5 rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_42%,transparent)] p-4',
+        compact && 'bg-[color-mix(in_srgb,var(--surface-1)_32%,transparent)]',
+      )}
+    >
+      <div className="flex flex-wrap items-end justify-between gap-2">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
+            {t('today.vibePicker.title')}
+          </p>
+          <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
+            {t('today.vibePicker.subtitle')}
+          </p>
+        </div>
+        <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1 text-xs text-[var(--text-muted)]">
+          {t('today.vibeIndicator', { vibe: guidedVibes[selectedVibeId].label })}
+        </span>
+      </div>
+
+      <div className="mt-4 grid gap-3 md:grid-cols-3">
+        {ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => {
+          const vibe = guidedVibes[vibeId]
+          const variant = lesson.vibeVariants[vibeId]
+          const isSelected = selectedVibeId === vibeId
+
+          return (
+            <button
+              key={vibeId}
+              type="button"
+              aria-pressed={isSelected}
+              onClick={() => onSelectVibe(vibeId)}
+              className={cn(
+                'min-w-0 rounded-lg border p-3 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+                isSelected
+                  ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)]'
+                  : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_16%,transparent)]',
+              )}
+            >
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-sm font-semibold text-[var(--text-primary)]">{vibe.label}</span>
+                {isSelected && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
+              </div>
+              <div className="mt-2 flex gap-1.5" aria-hidden="true">
+                {vibeSwatches[vibeId].map((color) => (
+                  <span
+                    key={color}
+                    className="h-2.5 w-7 rounded-full border border-[color-mix(in_srgb,var(--text-primary)_18%,transparent)]"
+                    style={{ backgroundColor: color }}
+                  />
+                ))}
+              </div>
+              <p className="mt-3 text-sm leading-5 text-[var(--text-secondary)]">
+                {vibe.shortDescription}
+              </p>
+              <p className="mt-3 text-xs font-medium uppercase tracking-[0.14em] text-[var(--text-muted)]">
+                {t('today.vibePicker.exampleLabel')}
+              </p>
+              <p className="mt-1 break-words text-sm font-semibold leading-5 text-[var(--text-primary)]">
+                {variant?.corePhrase.targetText}
+              </p>
+            </button>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
 export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
   const { t } = useTranslation()
 
@@ -316,6 +419,9 @@ export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
             <span className="inline-flex items-center gap-1.5 text-xs text-[var(--text-muted)]">
               <Clock3 className="h-3.5 w-3.5" />
               {t('today.estimatedTime', { minutes: lesson.pathMetadata.estimatedMinutes })}
+            </span>
+            <span className="text-xs font-medium text-[var(--text-muted)]">
+              {t('today.vibeIndicator', { vibe: guidedVibes[lesson.vibeId].label })}
             </span>
           </div>
           <h1 className="mt-3 break-words text-xl font-semibold text-[var(--text-primary)]">

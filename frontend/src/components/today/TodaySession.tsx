@@ -191,6 +191,27 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
             {lesson.corePhrase.baseText}
           </p>
         </div>
+        <div className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_46%,transparent)] p-4">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
+            {t('today.trophyWord.title')}
+          </p>
+          <div className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <p className="break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">
+              {lesson.trophyWord.word}
+            </p>
+            <p className="break-words text-sm leading-6 text-[var(--text-secondary)]">
+              {lesson.trophyWord.meaning}
+            </p>
+          </div>
+          <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+            <span className="font-medium text-[var(--text-primary)]">{t('today.trophyWord.exampleLabel')}: </span>
+            {lesson.trophyWord.example}
+          </p>
+          <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+            <span className="font-medium text-[var(--text-primary)]">{t('today.trophyWord.whyLabel')}: </span>
+            {lesson.trophyWord.whyThisWord}
+          </p>
+        </div>
       </div>
     </div>
   )

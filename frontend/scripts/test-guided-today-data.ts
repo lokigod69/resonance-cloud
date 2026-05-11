@@ -6,6 +6,11 @@
 
 import { readFileSync } from 'node:fs'
 import {
+  ACTIVE_GUIDED_VIBE_IDS,
+  guidedVibes,
+  isActiveGuidedVibeId,
+} from '../src/data/guidedVibes.ts'
+import {
   GUIDED_LESSONS,
   getCurrentGuidedLesson,
   getGuidedMatchPairs,
@@ -13,6 +18,7 @@ import {
   getGuidedReviewItems,
   getGuidedTypeFallbackChoices,
   normalizeGuidedAnswer,
+  resolveGuidedLessonVariant,
 } from '../src/data/guidedLessons.ts'
 import { TODAY_SESSION_STEPS } from '../src/components/today/sessionSteps.ts'
 import { getSpeechWordOverlap } from '../src/components/today/speechRecognition.ts'
@@ -42,10 +48,13 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 }
 
 const lesson = getCurrentGuidedLesson()
+const lessonDefinition = GUIDED_LESSONS[0]
 const germanT = createT('de')
 
+const todayPageSource = readSource('../src/pages/Today.tsx')
 const todayHeroSource = readSource('../src/components/today/TodayHero.tsx')
 const todayIntroHeroSource = todayHeroSource.slice(0, todayHeroSource.indexOf('export function TodayCompactHeader'))
+const todaySessionSource = readSource('../src/components/today/TodaySession.tsx')
 const matchPairsSource = readSource('../src/components/today/MatchPairsStep.tsx')
 const buildPhraseSource = readSource('../src/components/today/BuildPhraseStep.tsx')
 const typeRecallSource = readSource('../src/components/today/TypeRecallStep.tsx')
@@ -53,6 +62,30 @@ const speakStepSource = readSource('../src/components/today/SpeakStep.tsx')
 
 console.log('\n[lesson data]')
 assert('exactly one static lesson', GUIDED_LESSONS.length === 1, GUIDED_LESSONS.length)
+assert('lesson definition exists', lessonDefinition !== undefined)
+assert('lesson has invariant path id', lessonDefinition?.pathId === 'english-a1-practical', lessonDefinition)
+assert('lesson has invariant lesson number', lessonDefinition?.lessonNumber === 1, lessonDefinition)
+assert('lesson has invariant pedagogical goal', typeof lessonDefinition?.pedagogicalGoal === 'string' && lessonDefinition.pedagogicalGoal.length > 0)
+assert('lesson has invariant steps', Array.isArray(lessonDefinition?.steps) && lessonDefinition.steps.length === TODAY_SESSION_STEPS.length)
+assert('lesson has invariant estimated minutes', lessonDefinition?.estimatedMinutes === 5, lessonDefinition)
+assert('lesson has active fallback policy', lessonDefinition?.fallbackVibeId === 'bright', lessonDefinition)
+assert('lesson carries a vibeVariants registry', lessonDefinition?.vibeVariants !== undefined)
+for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+  const variant = lessonDefinition?.vibeVariants[vibeId]
+  assert(`lesson has ${vibeId} variant`, variant !== undefined, lessonDefinition?.vibeVariants)
+  assert(`${vibeId} core phrase exists`, typeof variant?.corePhrase.targetText === 'string' && variant.corePhrase.targetText.length > 0, variant)
+  assert(`${vibeId} German meaning exists`, typeof variant?.corePhrase.baseText === 'string' && variant.corePhrase.baseText.length > 0, variant)
+  assert(`${vibeId} chunk labels are non-empty`, Boolean(variant?.chunks.length) && variant.chunks.every((chunk) => chunk.id && chunk.targetText && chunk.baseText), variant?.chunks)
+  assert(`${vibeId} type recall answer exists`, typeof variant?.typeRecall.answer === 'string' && variant.typeRecall.answer.length > 0, variant?.typeRecall)
+  assert(`${vibeId} speak target exists`, typeof variant?.speakTarget.targetPhrase === 'string' && variant.speakTarget.targetPhrase.length > 0, variant?.speakTarget)
+  assert(`${vibeId} trophy word exists`, typeof variant?.trophyWord.word === 'string' && variant.trophyWord.word.length > 0, variant?.trophyWord)
+  assert(
+    `${vibeId} trophy word is compatible with vibe bible`,
+    Boolean(variant?.trophyWord.word && guidedVibes[vibeId].trophyWordCandidates.includes(variant.trophyWord.word.toLowerCase())),
+    { trophyWord: variant?.trophyWord.word, candidates: guidedVibes[vibeId].trophyWordCandidates },
+  )
+}
+assert('future vibes are not active lesson selectors', !isActiveGuidedVibeId('tender'))
 assert('course title matches MVP path', lesson.courseTitle === 'English A1 Practical')
 assert('base language is German', lesson.baseLanguage === 'German')
 assert('target language is English', lesson.targetLanguage === 'English')
@@ -65,8 +98,24 @@ assert('lesson media has required caption', lesson.lessonMedia.caption.length > 
 assert('lesson media caption is German-first', lesson.lessonMedia.caption === 'Eine erste höfliche Frage, bevor ein Gespräch beginnt.')
 assert('lesson media uses provided local video asset', lesson.lessonMedia.type === 'video')
 assert('lesson media points at public guided video path', lesson.lessonMedia.url === '/guided/english-a1-practical/lesson-001-first-contact.mp4')
+if (lessonDefinition) {
+  const wistfulLesson = resolveGuidedLessonVariant(lessonDefinition, 'wistful')
+  const sharpLesson = resolveGuidedLessonVariant(lessonDefinition, 'sharp')
+  const futureFallbackLesson = resolveGuidedLessonVariant(lessonDefinition, 'tender')
+  assert('wistful resolves a distinct active phrase', wistfulLesson.corePhrase.targetText === 'Sorry, do you speak English?', wistfulLesson.corePhrase)
+  assert('sharp resolves a distinct active phrase', sharpLesson.corePhrase.targetText === 'Can you speak English?', sharpLesson.corePhrase)
+  assert('future vibe resolution falls back to bright', futureFallbackLesson.vibeId === 'bright' && futureFallbackLesson.corePhrase.targetText === lesson.corePhrase.targetText, futureFallbackLesson)
+}
 
 console.log('\n[ui copy]')
+assert('vibe picker title is translated', germanT('today.vibePicker.title') === 'Stimme wählen')
+assert('vibe indicator is translated', germanT('today.vibeIndicator') === 'Stimme: {vibe}')
+assert('trophy word panel title is translated', germanT('today.trophyWord.title') === 'Trophäenwort')
+assert('today page reads selected guided vibe from localStorage helper', todayPageSource.includes('getSelectedGuidedVibe'), todayPageSource)
+assert('today page persists selected guided vibe locally', todayPageSource.includes('setSelectedGuidedVibe'), todayPageSource)
+assert('today hero renders the vibe picker surface', todayHeroSource.includes('GuidedVibePicker'), todayHeroSource)
+assert('today compact header shows the active vibe indicator', todayHeroSource.includes('today.vibeIndicator'), todayHeroSource)
+assert('scene step renders the trophy word panel', todaySessionSource.includes('today.trophyWord.title'), todaySessionSource)
 assert('intro helper copy is short', germanT('today.itemsPreview.subtitle') === 'Markiere Wörter, die du überspringen möchtest.')
 assert('skip button copy is short', germanT('today.skipLesson') === 'Lektion überspringen')
 assert('intro media preview copy is minimal', germanT('today.media.previewHint') === 'Das Video startet in Schritt 1.')
@@ -194,6 +243,13 @@ assert(
   'complete status is stored without raw answers',
   completed.courses[lesson.courseId]?.lessons[lesson.id]?.status === 'completed'
     && completed.courses[lesson.courseId]?.lessons[lesson.id]?.result?.buildAttempts === 2,
+  completed,
+)
+assert(
+  'progress remains lesson-level and vibe-agnostic',
+  completed.courses[lesson.courseId]?.completedLessonIds.includes(lesson.id) === true
+    && JSON.stringify(completed).includes('vibeId') === false
+    && JSON.stringify(completed).includes('selectedVibe') === false,
   completed,
 )
 assert(

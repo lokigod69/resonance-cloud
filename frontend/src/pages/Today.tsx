@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { getCurrentGuidedLesson } from '@/data/guidedLessons'
+import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
-import { TodayCompactHeader, TodayHero } from '@/components/today/TodayHero'
+import { GuidedVibePicker, TodayCompactHeader, TodayHero } from '@/components/today/TodayHero'
 import { TodaySession } from '@/components/today/TodaySession'
 import {
   createEmptyTodayProgressState,
@@ -16,12 +17,21 @@ import {
   type TodayLessonResult,
   type TodayProgressState,
 } from '@/lib/todayProgress'
+import {
+  getSelectedGuidedVibe,
+  setSelectedGuidedVibe,
+} from '@/lib/todayVibe'
 import { Button } from '@/components/ui/button'
 
+const GUIDED_TODAY_PATH_ID = 'english-a1-practical'
+
 export default function Today() {
-  const lesson = useMemo(() => getCurrentGuidedLesson(), [])
   const { user } = useAuth()
   const { t } = useTranslation()
+  const [selectedVibeId, setSelectedVibeId] = useState<ActiveGuidedVibeId>(() => (
+    getSelectedGuidedVibe(GUIDED_TODAY_PATH_ID)
+  ))
+  const lesson = useMemo(() => getCurrentGuidedLesson(selectedVibeId), [selectedVibeId])
   const [progress, setProgress] = useState<TodayProgressState>(() => createEmptyTodayProgressState())
   const [sessionActive, setSessionActive] = useState(false)
   const [sessionKey, setSessionKey] = useState(0)
@@ -85,6 +95,14 @@ export default function Today() {
     setSessionActive(true)
   }
 
+  const handleSelectVibe = (vibeId: ActiveGuidedVibeId) => {
+    setSelectedGuidedVibe(lesson.pathId, vibeId)
+    setSelectedVibeId(getSelectedGuidedVibe(lesson.pathId))
+    setSessionActive(false)
+    setSessionKey((current) => current + 1)
+    setKnownItemIds(new Set())
+  }
+
   return (
     <div className="relative isolate mx-auto w-full max-w-6xl px-4 py-4 sm:px-6 lg:py-8">
       <div
@@ -106,6 +124,8 @@ export default function Today() {
             onSkip={handleSkip}
             onRestart={handleRestart}
             onToggleKnownItem={handleToggleKnownItem}
+            selectedVibeId={selectedVibeId}
+            onSelectVibe={handleSelectVibe}
           />
         )}
 
@@ -135,6 +155,12 @@ export default function Today() {
                 {t('today.restartLesson')}
               </Button>
             </div>
+            <GuidedVibePicker
+              lesson={lesson}
+              selectedVibeId={selectedVibeId}
+              onSelectVibe={handleSelectVibe}
+              compact
+            />
           </section>
         )}
 
