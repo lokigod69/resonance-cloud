@@ -99,15 +99,15 @@ type DebugState = {
 };
 
 const ROUND_DIFFICULTY: RoundDifficulty[] = [
-  { spawnEveryMs: 3500, fallMs: 6000, bombs: 0 },
-  { spawnEveryMs: 3500, fallMs: 6000, bombs: 0 },
-  { spawnEveryMs: 3500, fallMs: 6000, bombs: 0 },
-  { spawnEveryMs: 2800, fallMs: 5500, bombs: 1 },
-  { spawnEveryMs: 2800, fallMs: 5500, bombs: 1 },
-  { spawnEveryMs: 2800, fallMs: 5500, bombs: 1 },
-  { spawnEveryMs: 2200, fallMs: 4500, bombs: 2 },
-  { spawnEveryMs: 2200, fallMs: 4500, bombs: 2 },
-  { spawnEveryMs: 2200, fallMs: 4500, bombs: 2 },
+  { spawnEveryMs: 3500, fallMs: 8000, bombs: 0 },
+  { spawnEveryMs: 3500, fallMs: 7600, bombs: 0 },
+  { spawnEveryMs: 3500, fallMs: 7200, bombs: 0 },
+  { spawnEveryMs: 2800, fallMs: 6800, bombs: 1 },
+  { spawnEveryMs: 2800, fallMs: 6200, bombs: 1 },
+  { spawnEveryMs: 2800, fallMs: 5600, bombs: 1 },
+  { spawnEveryMs: 2200, fallMs: 5000, bombs: 2 },
+  { spawnEveryMs: 2200, fallMs: 4600, bombs: 2 },
+  { spawnEveryMs: 2200, fallMs: 4300, bombs: 2 },
   { spawnEveryMs: 1800, fallMs: 4000, bombs: 3 },
 ];
 
