@@ -66,12 +66,24 @@
 
 .phaserHost canvas {
   display: block;
+  position: relative;
+  z-index: 1;
   width: 100% !important;
   height: 100% !important;
   touch-action: none;
   overscroll-behavior: none;
 }
 
+.phaserHost :global(.lexicon-runner-shell) {
+  background: transparent !important;
+  z-index: 0 !important;
+}
+
+.phaserHost :global(.lexicon-runner-shell::before) {
+  display: none;
+}
+
+.phaserHost :global(.lexicon-runner-shell [data-start]),
 .phaserHost :global(.lexicon-runner-shell .hud),
 .phaserHost :global(.lexicon-runner-shell [data-pause]),
 .phaserHost :global(.lexicon-runner-shell .screen:not([data-start]):not([data-pause])) {
