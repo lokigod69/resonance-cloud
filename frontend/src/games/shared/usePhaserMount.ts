@@ -3,18 +3,45 @@ import type Phaser from 'phaser'
 
 type PhaserModule = typeof Phaser
 
-type PhaserMountOptions = {
+type PhaserMountBase = {
   parentRef: RefObject<HTMLElement | null>
   enabled: boolean
-  buildConfig: (Phaser: PhaserModule) => Phaser.Types.Core.GameConfig | null
 }
 
-export function usePhaserMount({ parentRef, enabled, buildConfig }: PhaserMountOptions) {
+type PhaserMountWithBuildConfig = PhaserMountBase & {
+  buildConfig: (Phaser: PhaserModule) => Phaser.Types.Core.GameConfig | null
+  mount?: never
+}
+
+type PhaserMountWithExternal = PhaserMountBase & {
+  mount: (parent: HTMLElement) => { destroy: () => void } | null
+  buildConfig?: never
+}
+
+export type PhaserMountOptions = PhaserMountWithBuildConfig | PhaserMountWithExternal
+
+export function usePhaserMount(options: PhaserMountOptions) {
+  const { parentRef, enabled } = options
+  const buildConfig = options.buildConfig ?? null
+  const externalMount = options.mount ?? null
   const gameRef = useRef<Phaser.Game | null>(null)
+  const externalHandleRef = useRef<{ destroy: () => void } | null>(null)
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
     let cancelled = false
+
+    function destroyCurrentMount() {
+      if (externalHandleRef.current) {
+        externalHandleRef.current.destroy()
+        externalHandleRef.current = null
+      }
+
+      if (gameRef.current) {
+        gameRef.current.destroy(true, false)
+        gameRef.current = null
+      }
+    }
 
     async function mount() {
       if (!enabled || !parentRef.current) {
@@ -22,13 +49,26 @@ export function usePhaserMount({ parentRef, enabled, buildConfig }: PhaserMountO
         return
       }
 
+      const parent = parentRef.current
+
+      if (externalMount) {
+        destroyCurrentMount()
+        const handle = externalMount(parent)
+        if (cancelled) {
+          handle?.destroy()
+          return
+        }
+        externalHandleRef.current = handle
+        setReady(Boolean(handle))
+        return
+      }
+
       const { default: PhaserRuntime } = await import('phaser')
       if (cancelled || !parentRef.current) return
 
-      gameRef.current?.destroy(true, false)
-      gameRef.current = null
+      destroyCurrentMount()
 
-      const config = buildConfig(PhaserRuntime)
+      const config = buildConfig?.(PhaserRuntime) ?? null
       if (!config) {
         setReady(false)
         return
@@ -46,12 +86,9 @@ export function usePhaserMount({ parentRef, enabled, buildConfig }: PhaserMountO
     return () => {
       cancelled = true
       setReady(false)
-      if (gameRef.current) {
-        gameRef.current.destroy(true, false)
-        gameRef.current = null
-      }
+      destroyCurrentMount()
     }
-  }, [buildConfig, enabled, parentRef])
+  }, [buildConfig, enabled, externalMount, parentRef])
 
   return { gameRef, ready }
 }
