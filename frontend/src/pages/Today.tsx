@@ -84,10 +84,13 @@ export default function Today() {
     setKnownItemIds(new Set())
   }
 
-  const handleOpenLesson = (lessonId: string) => {
+  const handleSelectLesson = (lessonId: string) => {
     setSelectedLessonId(lessonId)
     setKnownItemIds(new Set())
     setSessionKey((current) => current + 1)
+  }
+
+  const handleStartSelectedLesson = () => {
     setSessionActive(true)
   }
 
@@ -97,7 +100,10 @@ export default function Today() {
       return
     }
 
-    handleOpenLesson(nextLesson.id)
+    setSelectedLessonId(nextLesson.id)
+    setKnownItemIds(new Set())
+    setSessionKey((current) => current + 1)
+    setSessionActive(true)
   }
 
   return (
@@ -118,7 +124,8 @@ export default function Today() {
             progress={progress}
             selectedVibeId={selectedVibeId}
             onSelectVibe={handleSelectVibe}
-            onOpenLesson={handleOpenLesson}
+            onSelectLesson={handleSelectLesson}
+            onStartLesson={handleStartSelectedLesson}
           />
         )}
 

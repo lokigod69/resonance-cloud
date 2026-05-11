@@ -6,6 +6,11 @@ export type FutureGuidedVibeId = typeof FUTURE_GUIDED_VIBE_IDS[number]
 export type GuidedVibeId = ActiveGuidedVibeId | FutureGuidedVibeId
 export type GuidedVibeStatus = 'active' | 'future'
 
+export type GuidedVibeEmblem = {
+  url: string
+  alt: string
+}
+
 export type GuidedVibe = {
   id: GuidedVibeId
   label: string
@@ -19,6 +24,7 @@ export type GuidedVibe = {
   uiAesthetic: string
   trophyWordCandidates: string[]
   status: GuidedVibeStatus
+  emblem?: GuidedVibeEmblem
 }
 
 export const DEFAULT_GUIDED_VIBE_ID: ActiveGuidedVibeId = 'bright'
@@ -38,6 +44,10 @@ export const guidedVibes = {
     uiAesthetic: 'Warm white space, clear contrast, soft yellow accents, minimal friction.',
     trophyWordCandidates: ['please', 'hello', 'easy', 'sure', 'great', 'smile'],
     status: 'active',
+    emblem: {
+      url: '/guided/vibes/bright-emblem.webp',
+      alt: 'Bright voice emblem',
+    },
   },
   wistful: {
     id: 'wistful',
@@ -53,6 +63,10 @@ export const guidedVibes = {
     uiAesthetic: 'Muted blue-gray surfaces, gentle highlights, spacious rhythm, calm motion.',
     trophyWordCandidates: ['sorry', 'quiet', 'home', 'lost', 'softly', 'again'],
     status: 'active',
+    emblem: {
+      url: '/guided/vibes/wistful-emblem.webp',
+      alt: 'Wistful voice emblem',
+    },
   },
   sharp: {
     id: 'sharp',
@@ -68,6 +82,10 @@ export const guidedVibes = {
     uiAesthetic: 'Sharper contrast, compact controls, clean dark/light edges, precise states.',
     trophyWordCandidates: ['clear', 'now', 'ready', 'fast', 'exact', 'focus'],
     status: 'active',
+    emblem: {
+      url: '/guided/vibes/sharp-emblem.webp',
+      alt: 'Sharp voice emblem',
+    },
   },
   tender: {
     id: 'tender',

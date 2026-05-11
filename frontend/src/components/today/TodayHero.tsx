@@ -338,7 +338,7 @@ export function GuidedVibePicker({
         </div>
       </div>
 
-      <div className="mt-3 grid gap-2 md:grid-cols-3">
+      <div className="mt-3 grid gap-3 md:grid-cols-3">
         {ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => {
           const vibe = guidedVibes[vibeId]
           const isSelected = selectedVibeId === vibeId
@@ -350,17 +350,30 @@ export function GuidedVibePicker({
               aria-pressed={isSelected}
               onClick={() => onSelectVibe(vibeId)}
               className={cn(
-                'min-w-0 rounded-lg border p-3 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+                'relative flex min-h-36 min-w-0 flex-col items-center justify-center rounded-lg border p-3 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
                 isSelected
-                  ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)]'
+                  ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)] shadow-[0_0_24px_color-mix(in_srgb,var(--accent)_18%,transparent)]'
                   : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_16%,transparent)]',
               )}
             >
-              <span className="today-vibe-emblemSlot hidden" aria-hidden="true" />
-              <div className="flex min-h-5 items-center justify-center gap-2">
+              <span className="today-vibe-emblemSlot flex h-20 w-20 items-center justify-center" aria-hidden="true">
+                {vibe.emblem?.url && (
+                  <img
+                    src={vibe.emblem.url}
+                    alt=""
+                    className="h-full w-full object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.42)]"
+                    draggable={false}
+                  />
+                )}
+              </span>
+              <div className="mt-3 flex min-h-5 items-center justify-center gap-2">
                 <span className="text-sm font-semibold text-[var(--text-primary)]">{vibe.label}</span>
-                {isSelected && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" aria-hidden="true" />}
               </div>
+              {isSelected && (
+                <span className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--accent)_62%,transparent)] bg-[color-mix(in_srgb,var(--app-bg)_72%,transparent)] text-[var(--accent)]">
+                  <Check className="h-4 w-4 shrink-0" aria-hidden="true" />
+                </span>
+              )}
             </button>
           )
         })}

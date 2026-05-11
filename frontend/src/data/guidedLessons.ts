@@ -164,6 +164,7 @@ export type GuidedPathLessonOverview = {
   lesson: GuidedLesson
   status: GuidedPathLessonCardStatus
   isRecommended: boolean
+  isSelected: boolean
 }
 
 export type GuidedPathOverview = {
@@ -2179,10 +2180,14 @@ export function getGuidedPathOverview(
   const recommendedDefinition = lessonDefinitions.find((lesson) => !completedLessonIds.has(lesson.id))
   const selectedDefinition = lessonDefinitions.find((lesson) => lesson.id === selectedLessonId)
   const isComplete = lessonDefinitions.length > 0 && recommendedDefinition === undefined
+  const effectiveSelectedDefinition = selectedDefinition
+    ?? recommendedDefinition
+    ?? lessonDefinitions[lessonDefinitions.length - 1]
 
   const lessons = lessonDefinitions.map((definition) => {
     const isCompleteLesson = completedLessonIds.has(definition.id)
     const isRecommended = !isComplete && definition.id === recommendedDefinition?.id
+    const isSelected = definition.id === effectiveSelectedDefinition?.id
     const status: GuidedPathLessonCardStatus = isCompleteLesson
       ? 'complete'
       : isRecommended
@@ -2193,6 +2198,7 @@ export function getGuidedPathOverview(
       lesson: resolveGuidedLessonVariant(definition, vibeId),
       status,
       isRecommended,
+      isSelected,
     }
   })
 
@@ -2202,8 +2208,8 @@ export function getGuidedPathOverview(
     recommendedLesson: recommendedDefinition
       ? resolveGuidedLessonVariant(recommendedDefinition, vibeId)
       : undefined,
-    selectedLesson: selectedDefinition
-      ? resolveGuidedLessonVariant(selectedDefinition, vibeId)
+    selectedLesson: effectiveSelectedDefinition
+      ? resolveGuidedLessonVariant(effectiveSelectedDefinition, vibeId)
       : undefined,
     completedCount: lessonDefinitions.filter((lesson) => completedLessonIds.has(lesson.id)).length,
     totalLessons: lessonDefinitions.length,
@@ -2290,6 +2296,19 @@ export function getGuidedMatchPairs(lesson: GuidedLesson): GuidedMatchPair[] {
   }))
 }
 
+export function getDeterministicMatchColumns(lesson: GuidedLesson) {
+  const pairs = getGuidedMatchPairs(lesson)
+  const english = stableShufflePairs(pairs, `${lesson.id}:${lesson.vibeId}:match:english`)
+  const germanCandidates = stableShufflePairs(pairs, `${lesson.id}:${lesson.vibeId}:match:german`)
+  let german = createDerangedMatchColumn(english, germanCandidates)
+
+  if (german.length === 0) {
+    german = germanCandidates
+  }
+
+  return { english, german }
+}
+
 export function getDeterministicBuildChips(lesson: GuidedLesson) {
   const seed = `${lesson.id}:${lesson.vibeId}:build`
   let shuffled = lesson.build.chips
@@ -2374,6 +2393,41 @@ function uniqueLessonItems(items: LessonItem[]) {
     seen.add(item.id)
     return true
   })
+}
+
+function stableShufflePairs(pairs: GuidedMatchPair[], seed: string) {
+  return pairs
+    .map((pair, index) => ({
+      pair,
+      sortKey: stableHash(`${seed}:${pair.id}:${index}`),
+    }))
+    .sort((left, right) => left.sortKey - right.sortKey)
+    .map(({ pair }) => pair)
+}
+
+function createDerangedMatchColumn(
+  english: GuidedMatchPair[],
+  germanCandidates: GuidedMatchPair[],
+) {
+  const usedIds = new Set<string>()
+  const result: GuidedMatchPair[] = []
+
+  function place(position: number): boolean {
+    if (position >= english.length) return true
+
+    for (const candidate of germanCandidates) {
+      if (usedIds.has(candidate.id) || candidate.id === english[position]?.id) continue
+      usedIds.add(candidate.id)
+      result[position] = candidate
+      if (place(position + 1)) return true
+      usedIds.delete(candidate.id)
+      result.splice(position, 1)
+    }
+
+    return false
+  }
+
+  return place(0) ? result : []
 }
 
 function getTargetBuildChipIndexes(lesson: GuidedLesson) {

@@ -60,6 +60,15 @@ for (const vibeId of [...expectedActiveVibes, ...expectedFutureVibes]) {
   assert(`${vibeId} has UI aesthetic notes`, vibe.uiAesthetic.length > 0, vibe)
   assert(`${vibeId} has trophy candidates`, vibe.trophyWordCandidates.length >= 4, vibe.trophyWordCandidates)
 }
+for (const vibeId of expectedActiveVibes) {
+  const vibe = getGuidedVibe(vibeId)
+  assert(`${vibeId} active vibe has an emblem URL`, typeof vibe.emblem?.url === 'string' && vibe.emblem.url === `/guided/vibes/${vibeId}-emblem.webp`, vibe)
+  assert(`${vibeId} active vibe has emblem alt text`, typeof vibe.emblem?.alt === 'string' && vibe.emblem.alt === `${vibe.label} voice emblem`, vibe)
+}
+for (const vibeId of expectedFutureVibes) {
+  const vibe = getGuidedVibe(vibeId)
+  assert(`${vibeId} future vibe does not require an emblem`, vibe.emblem === undefined, vibe)
+}
 
 console.log('\n[active resolver]')
 assert('bright is active', isActiveGuidedVibeId('bright'))

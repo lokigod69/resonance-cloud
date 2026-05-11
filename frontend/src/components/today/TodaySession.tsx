@@ -241,6 +241,11 @@ function CompleteStep({
           <p className="mt-1 break-words text-sm leading-6 text-[var(--text-secondary)]">
             {lesson.trophyWord.meaning}
           </p>
+          {lesson.trophyWord.example && (
+            <p className="mt-2 break-words text-xs leading-5 text-[var(--text-muted)]">
+              {lesson.trophyWord.example}
+            </p>
+          )}
         </div>
       </div>
       <div className="flex flex-wrap justify-center gap-3">

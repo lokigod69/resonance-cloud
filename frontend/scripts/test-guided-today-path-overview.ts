@@ -10,6 +10,7 @@ import {
 } from '../src/data/guidedVibes.ts'
 import {
   getDeterministicBuildChips,
+  getDeterministicMatchColumns,
   getGuidedPathOverview,
   getGuidedPathLessons,
   resolveGuidedLessonVariant,
@@ -68,6 +69,9 @@ assert('first incomplete advances to lesson 2 after lesson 1 completion', afterF
 assert('lesson 1 card is complete after completion', afterFirstOverview.lessons[0]?.status === 'complete', afterFirstOverview.lessons[0])
 assert('lesson 2 card is current after lesson 1 completion', afterFirstOverview.lessons[1]?.status === 'current', afterFirstOverview.lessons[1])
 assert('lesson 3 card is not started after lesson 1 completion', afterFirstOverview.lessons[2]?.status === 'not-started', afterFirstOverview.lessons[2])
+const selectedFifthOverview = getGuidedPathOverview(pathId, completedFirst, 'bright', lessons[4]?.id)
+assert('clicked lesson selection updates the selected lesson panel', selectedFifthOverview.selectedLesson?.id === lessons[4]?.id, selectedFifthOverview.selectedLesson?.id)
+assert('clicked lesson selection does not change first-incomplete recommendation', selectedFifthOverview.recommendedLesson?.id === secondLesson.id, selectedFifthOverview.recommendedLesson?.id)
 
 let allCompleteProgress = createEmptyTodayProgressState()
 for (const lessonDefinition of lessons) {
@@ -147,7 +151,8 @@ assert(
 )
 assert('vibe picker does not render palette swatches', !containsAny(guidedVibePickerSource, ['vibeSwatches', 'backgroundColor: color']))
 assert('vibe picker does not render example phrases', !containsAny(guidedVibePickerSource, ['today.vibePicker.exampleLabel', 'variant?.corePhrase.targetText']))
-assert('vibe picker has an emblem slot prepared for future assets', guidedVibePickerSource.includes('today-vibe-emblemSlot'))
+assert('vibe picker renders emblem images for active voice cards', guidedVibePickerSource.includes('<img') && guidedVibePickerSource.includes('vibe.emblem?.url'))
+assert('vibe picker keeps emblem images contained without stretching', guidedVibePickerSource.includes('object-contain'))
 assert('Scene step does not reveal trophy word', !containsAny(sceneStepSource, ['today.trophyWord.title', 'lesson.trophyWord']))
 assert('Complete step can reveal trophy word', containsAny(completeStepSource, ['today.trophyWord.title', 'lesson.trophyWord.word']))
 assert('session exposes explicit Back to path action outside step navigation', containsAny(todaySessionSource, ['today.path.backToPath', 'onViewPath']))
@@ -158,6 +163,10 @@ assert('Back to path handler only exits the session view', todayPageSource.inclu
 const progressBeforeBackToPath = JSON.stringify(completedTwo)
 assert('Back to path does not mutate progress', JSON.stringify(completedTwo) === progressBeforeBackToPath, completedTwo)
 assert('recommended panel label is next lesson, not internal recommendation copy', recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')") && !recommendedLessonPanelSource.includes("t('today.path.recommendedLabel')"))
+assert('Today page separates lesson selection from session start', containsAny(todayPageSource, ['const handleSelectLesson', 'setSelectedLessonId(lessonId)']) && containsAny(todayPageSource, ['const handleStartSelectedLesson', 'setSessionActive(true)']))
+assert('path overview receives a select handler and separate start handler', todayPathOverviewSource.includes('onSelectLesson') && todayPathOverviewSource.includes('onStartLesson'))
+assert('lesson cards select lessons without opening the session', lessonPathCardSource.includes('onSelectLesson(lesson.id)') && !lessonPathCardSource.includes('onOpenLesson(lesson.id)'))
+assert('selected lesson panel uses selected/recommended lesson label copy', recommendedLessonPanelSource.includes("t('today.path.selectedLessonLabel')") && recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')"))
 
 console.log('\n[source-level UX teardown]')
 assert('Today compact header does not render time estimate', !containsAny(todayCompactHeaderSource, ['today.estimatedTime', 'estimatedMinutes', '<Clock3']))
@@ -168,8 +177,10 @@ assert('type recall wrong feedback does not reveal the answer by default', !type
 assert('type recall correct feedback is visual-only', !typeRecallSource.includes("t('today.type.correct')"))
 assert('build feedback remains compact without expected correction copy', !containsAny(buildPhraseSource, ['expected', 'Expected', 'Erwartet', 'today.build.expected']))
 assert('build correct feedback text is not rendered', !containsAny(buildPhraseSource, ["t('today.build.correct')", 'CheckCircle2']))
+assert('build step auto-validates without an Antwort prüfen button', !containsAny(buildPhraseSource, ["t('today.checkAnswer')", 'handleCheck']))
 assert('completion can open the next lesson as primary action', completeStepSource.includes('onOpenNextLesson') && completeStepSource.includes("t('today.nextLesson')"))
 assert('completion restart action is visually tertiary', completeStepSource.includes('today-completion-replayAction'))
+assert('trophy completion avoids long why-it-matters copy', !completeStepSource.includes('whyThisWord'))
 
 const deterministicBuildChips = getDeterministicBuildChips(firstLesson)
 assert(
@@ -186,6 +197,15 @@ const weakBuildShuffles = buildShuffleSamples.filter((lesson) => {
   return unchangedPositions > shuffled.length - 2 || startsWithTargetBuildOrder(lesson, shuffled)
 })
 assert('build chip shuffle avoids exact or near-original order across sampled lessons/vibes', weakBuildShuffles.length === 0, weakBuildShuffles)
+
+const matchColumnSamples = lessons
+  .slice(0, 10)
+  .flatMap((lessonDefinition) => ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => resolveGuidedLessonVariant(lessonDefinition, vibeId)))
+const alignedMatchColumns = matchColumnSamples.filter((lesson) => {
+  const columns = getDeterministicMatchColumns(lesson)
+  return columns.english.some((pair, index) => columns.german[index]?.id === pair.id)
+})
+assert('match pair columns are independently shuffled and avoid row-aligned obvious pairs', alignedMatchColumns.length === 0, alignedMatchColumns.map((lesson) => `${lesson.id}/${lesson.vibeId}`))
 
 console.log('\n[content coherence audit]')
 const coherenceFlags = collectCoherenceFlags()

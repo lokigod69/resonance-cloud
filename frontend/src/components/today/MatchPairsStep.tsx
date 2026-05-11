@@ -1,6 +1,6 @@
 import { Check, RotateCcw, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { getGuidedMatchPairs, type GuidedLesson, type GuidedMatchPair } from '@/data/guidedLessons'
+import { getDeterministicMatchColumns, type GuidedLesson, type GuidedMatchPair } from '@/data/guidedLessons'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -17,8 +17,7 @@ export function MatchPairsStep({
   onMatchedPairIdsChange,
 }: MatchPairsStepProps) {
   const { t } = useTranslation()
-  const pairs = getGuidedMatchPairs(lesson)
-  const rightPairs = orderGermanPairs(pairs)
+  const columns = getDeterministicMatchColumns(lesson)
   const [selectedEnglishId, setSelectedEnglishId] = useState<string | null>(null)
   const [wrongPairIds, setWrongPairIds] = useState<Set<string>>(() => new Set())
   const wrongResetRef = useRef<number | undefined>(undefined)
@@ -71,12 +70,12 @@ export function MatchPairsStep({
         </Button>
       </div>
 
-      <div className="mx-auto grid w-full max-w-2xl justify-center gap-4 sm:grid-cols-[minmax(9rem,14rem)_minmax(9rem,14rem)]">
+      <div className="mx-auto grid w-full max-w-2xl justify-center gap-4 sm:grid-cols-[minmax(9rem,15rem)_minmax(9rem,15rem)]">
         <div className="grid content-start justify-items-center gap-2">
           <p className="text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
             English
           </p>
-          {pairs.map((pair) => (
+          {columns.english.map((pair) => (
             <MatchChip
               key={pair.id}
               pair={pair}
@@ -93,7 +92,7 @@ export function MatchPairsStep({
           <p className="text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
             Deutsch
           </p>
-          {rightPairs.map((pair) => (
+          {columns.german.map((pair) => (
             <MatchChip
               key={pair.id}
               pair={pair}
@@ -150,9 +149,4 @@ function MatchChip({
       {isWrong && !isMatched && <X className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />}
     </button>
   )
-}
-
-function orderGermanPairs(pairs: GuidedMatchPair[]) {
-  const order = ['english', 'excuse-me', 'do-you-speak']
-  return [...pairs].sort((left, right) => order.indexOf(left.id) - order.indexOf(right.id))
 }
