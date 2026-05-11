@@ -677,7 +677,7 @@ export class SlicerScene extends Phaser.Scene {
   private redrawBiome(): void {
     const level = this.currentLevel();
     const config = getEmberFxConfig(level, this.reducedMotion);
-    this.backgroundLayer?.redraw(level, config);
+    this.backgroundLayer?.redraw(level);
     this.visibleBiome = level.name;
     this.rebuildParticles(level, config);
   }
