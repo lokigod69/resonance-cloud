@@ -1,16 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
-import { getCurrentGuidedLesson } from '@/data/guidedLessons'
+import { getGuidedPathOverview } from '@/data/guidedLessons'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
-import { useTranslation } from '@/hooks/useTranslation'
-import { GuidedVibePicker, TodayCompactHeader, TodayHero } from '@/components/today/TodayHero'
+import { TodayCompactHeader } from '@/components/today/TodayHero'
+import { TodayPathOverview } from '@/components/today/TodayPathOverview'
 import { TodaySession } from '@/components/today/TodaySession'
 import {
   createEmptyTodayProgressState,
-  getTodayCompletionLines,
-  getTodayLessonStatus,
   markTodayLessonComplete,
-  markTodayLessonSkipped,
   readTodayProgressState,
   restartTodayLessonProgress,
   writeTodayProgressState,
@@ -21,31 +18,29 @@ import {
   getSelectedGuidedVibe,
   setSelectedGuidedVibe,
 } from '@/lib/todayVibe'
-import { Button } from '@/components/ui/button'
 
 const GUIDED_TODAY_PATH_ID = 'english-a1-practical'
 
 export default function Today() {
   const { user } = useAuth()
-  const { t } = useTranslation()
   const [selectedVibeId, setSelectedVibeId] = useState<ActiveGuidedVibeId>(() => (
     getSelectedGuidedVibe(GUIDED_TODAY_PATH_ID)
   ))
-  const lesson = useMemo(() => getCurrentGuidedLesson(selectedVibeId), [selectedVibeId])
   const [progress, setProgress] = useState<TodayProgressState>(() => createEmptyTodayProgressState())
+  const [selectedLessonId, setSelectedLessonId] = useState<string | undefined>(undefined)
   const [sessionActive, setSessionActive] = useState(false)
   const [sessionKey, setSessionKey] = useState(0)
   const [knownItemIds, setKnownItemIds] = useState<Set<string>>(() => new Set())
-  const status = getTodayLessonStatus(progress, lesson)
-  const terminalStatus = status === 'completed' || status === 'skipped'
-  const storedLessonProgress = progress.courses[lesson.courseId]?.lessons[lesson.id]
-  const storedCompletionLines = storedLessonProgress?.result
-    ? getTodayCompletionLines(storedLessonProgress.result)
-    : null
+  const overview = useMemo(
+    () => getGuidedPathOverview(GUIDED_TODAY_PATH_ID, progress, selectedVibeId, selectedLessonId),
+    [progress, selectedLessonId, selectedVibeId],
+  )
+  const lesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- user-scoped localStorage progress must refresh when the authenticated user changes
     setProgress(readTodayProgressState(user?.id))
+    setSelectedLessonId(undefined)
     setSessionActive(false)
     setSessionKey((current) => current + 1)
     setKnownItemIds(new Set())
@@ -56,38 +51,18 @@ export default function Today() {
     writeTodayProgressState(user?.id, nextProgress)
   }
 
-  const handleStart = () => {
-    setSessionActive(true)
-  }
-
   const handleExitToIntro = () => {
     setSessionActive(false)
   }
 
-  const handleToggleKnownItem = (itemId: string) => {
-    setKnownItemIds((current) => {
-      const next = new Set(current)
-      if (next.has(itemId)) {
-        next.delete(itemId)
-      } else {
-        next.add(itemId)
-      }
-      return next
-    })
-  }
-
-  const handleSkip = () => {
-    const nextProgress = markTodayLessonSkipped(progress, lesson)
-    persistProgress(nextProgress)
-    setSessionActive(false)
-  }
-
   const handleComplete = (result: TodayLessonResult) => {
+    if (!lesson) return
     const nextProgress = markTodayLessonComplete(progress, lesson, result)
     persistProgress(nextProgress)
   }
 
   const handleRestart = () => {
+    if (!lesson) return
     const nextProgress = restartTodayLessonProgress(progress, lesson)
     persistProgress(nextProgress)
     setKnownItemIds(new Set())
@@ -96,11 +71,18 @@ export default function Today() {
   }
 
   const handleSelectVibe = (vibeId: ActiveGuidedVibeId) => {
-    setSelectedGuidedVibe(lesson.pathId, vibeId)
-    setSelectedVibeId(getSelectedGuidedVibe(lesson.pathId))
+    setSelectedGuidedVibe(GUIDED_TODAY_PATH_ID, vibeId)
+    setSelectedVibeId(getSelectedGuidedVibe(GUIDED_TODAY_PATH_ID))
     setSessionActive(false)
     setSessionKey((current) => current + 1)
     setKnownItemIds(new Set())
+  }
+
+  const handleOpenLesson = (lessonId: string) => {
+    setSelectedLessonId(lessonId)
+    setKnownItemIds(new Set())
+    setSessionKey((current) => current + 1)
+    setSessionActive(true)
   }
 
   return (
@@ -115,56 +97,19 @@ export default function Today() {
       />
 
       <div className="grid gap-6">
-        {!sessionActive && status === 'new' && (
-          <TodayHero
-            lesson={lesson}
-            status={status}
-            knownItemIds={knownItemIds}
-            onStart={handleStart}
-            onSkip={handleSkip}
-            onRestart={handleRestart}
-            onToggleKnownItem={handleToggleKnownItem}
+        {!sessionActive && (
+          <TodayPathOverview
+            overview={overview}
+            progress={progress}
             selectedVibeId={selectedVibeId}
             onSelectVibe={handleSelectVibe}
+            onOpenLesson={handleOpenLesson}
           />
         )}
 
-        {sessionActive && <TodayCompactHeader lesson={lesson} />}
+        {sessionActive && lesson && <TodayCompactHeader lesson={lesson} />}
 
-        {terminalStatus && !sessionActive && (
-          <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
-                  {status === 'completed' ? t('today.completedBadge') : t('today.skippedBadge')}
-                </p>
-                <h2 className="mt-2 text-2xl font-semibold text-[var(--text-primary)]">
-                  {status === 'completed' ? t('today.completion.title') : t('today.skippedTitle')}
-                </h2>
-                {status === 'completed' && storedCompletionLines && (
-                  <div className="mt-3 flex max-w-2xl flex-wrap gap-2 text-sm font-medium leading-6 text-[var(--text-primary)]">
-                    {storedCompletionLines.map((line) => (
-                      <span key={line.key} className="rounded-full border border-[var(--border-subtle)] px-3 py-1">
-                        {t(line.key, line.vars)}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <Button variant="outline" onClick={handleRestart}>
-                {t('today.restartLesson')}
-              </Button>
-            </div>
-            <GuidedVibePicker
-              lesson={lesson}
-              selectedVibeId={selectedVibeId}
-              onSelectVibe={handleSelectVibe}
-              compact
-            />
-          </section>
-        )}
-
-        {sessionActive && (
+        {sessionActive && lesson && (
           <TodaySession
             key={sessionKey}
             lesson={lesson}
@@ -172,6 +117,7 @@ export default function Today() {
             onComplete={handleComplete}
             onRestart={handleRestart}
             onExitToIntro={handleExitToIntro}
+            onViewPath={handleExitToIntro}
           />
         )}
       </div>

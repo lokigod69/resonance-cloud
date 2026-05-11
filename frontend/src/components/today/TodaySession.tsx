@@ -20,9 +20,10 @@ type TodaySessionProps = {
   onComplete: (result: TodayLessonResult) => void
   onRestart: () => void
   onExitToIntro: () => void
+  onViewPath: () => void
 }
 
-export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onExitToIntro }: TodaySessionProps) {
+export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onExitToIntro, onViewPath }: TodaySessionProps) {
   const { t } = useTranslation()
   const matchPairs = getGuidedMatchPairs(lesson)
   const [stepIndex, setStepIndex] = useState(0)
@@ -132,6 +133,7 @@ export function TodaySession({ lesson, knownItemIds, onComplete, onRestart, onEx
             lesson={lesson}
             result={completionResult}
             onRestart={onRestart}
+            onViewPath={onViewPath}
           />
         )}
       </div>
@@ -221,10 +223,12 @@ function CompleteStep({
   lesson,
   result,
   onRestart,
+  onViewPath,
 }: {
   lesson: GuidedLesson
   result: TodayLessonResult
   onRestart: () => void
+  onViewPath: () => void
 }) {
   const { t } = useTranslation()
   const completionLines = getTodayCompletionLines(result)
@@ -257,7 +261,10 @@ function CompleteStep({
           {lesson.nextLessonTeaser.situation}
         </p>
       </div>
-      <div>
+      <div className="flex flex-wrap justify-center gap-3">
+        <Button onClick={onViewPath}>
+          {t('today.path.viewPath')}
+        </Button>
         <Button variant="outline" onClick={onRestart}>
           <RotateCcw className="h-4 w-4" />
           {t('today.restartLesson')}

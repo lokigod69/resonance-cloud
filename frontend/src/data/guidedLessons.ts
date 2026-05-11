@@ -158,6 +158,24 @@ export type GuidedLesson = GuidedLessonDefinition & {
   songSeed?: GuidedLessonSongSeed
 }
 
+export type GuidedPathLessonCardStatus = 'complete' | 'current' | 'not-started'
+
+export type GuidedPathLessonOverview = {
+  lesson: GuidedLesson
+  status: GuidedPathLessonCardStatus
+  isRecommended: boolean
+}
+
+export type GuidedPathOverview = {
+  pathMetadata: GuidedPathMetadata | undefined
+  lessons: GuidedPathLessonOverview[]
+  recommendedLesson: GuidedLesson | undefined
+  selectedLesson: GuidedLesson | undefined
+  completedCount: number
+  totalLessons: number
+  isComplete: boolean
+}
+
 const GUIDED_TODAY_PATH_METADATA: GuidedPathMetadata = {
   id: 'english-a1-practical',
   title: 'English A1 Practical',
@@ -2148,6 +2166,49 @@ export function getGuidedPathLessons(pathId: string) {
   return GUIDED_LESSONS
     .filter((lesson) => lesson.pathId === pathId)
     .sort((a, b) => a.lessonNumber - b.lessonNumber)
+}
+
+export function getGuidedPathOverview(
+  pathId: string,
+  progress: TodayProgressState,
+  vibeId?: GuidedVibeId | string | null,
+  selectedLessonId?: string,
+): GuidedPathOverview {
+  const lessonDefinitions = getGuidedPathLessons(pathId)
+  const completedLessonIds = new Set(progress.courses[pathId]?.completedLessonIds ?? [])
+  const recommendedDefinition = lessonDefinitions.find((lesson) => !completedLessonIds.has(lesson.id))
+  const selectedDefinition = lessonDefinitions.find((lesson) => lesson.id === selectedLessonId)
+  const isComplete = lessonDefinitions.length > 0 && recommendedDefinition === undefined
+
+  const lessons = lessonDefinitions.map((definition) => {
+    const isCompleteLesson = completedLessonIds.has(definition.id)
+    const isRecommended = !isComplete && definition.id === recommendedDefinition?.id
+    const status: GuidedPathLessonCardStatus = isCompleteLesson
+      ? 'complete'
+      : isRecommended
+        ? 'current'
+        : 'not-started'
+
+    return {
+      lesson: resolveGuidedLessonVariant(definition, vibeId),
+      status,
+      isRecommended,
+    }
+  })
+
+  return {
+    pathMetadata: lessonDefinitions[0]?.pathMetadata,
+    lessons,
+    recommendedLesson: recommendedDefinition
+      ? resolveGuidedLessonVariant(recommendedDefinition, vibeId)
+      : undefined,
+    selectedLesson: selectedDefinition
+      ? resolveGuidedLessonVariant(selectedDefinition, vibeId)
+      : undefined,
+    completedCount: lessonDefinitions.filter((lesson) => completedLessonIds.has(lesson.id)).length,
+    totalLessons: lessonDefinitions.length,
+    isComplete,
+  }
 }
 
 export function getFirstIncompleteGuidedLesson(
