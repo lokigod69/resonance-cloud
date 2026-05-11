@@ -891,8 +891,9 @@ export class SlicerScene extends Phaser.Scene {
       height: formatted.height,
       lines: formatted.lines,
     };
+    const centeredTextY = height * yOffsetRatio + ((safeHeight - formatted.height) / 2);
     card.label = this.add
-      .text(0, height * yOffsetRatio, formatted.text, {
+      .text(0, centeredTextY, formatted.text, {
         fontFamily: '"Cormorant Garamond", Georgia, serif',
         fontSize: `${Math.round(formatted.fontSize)}px`,
         color: '#fff1d0',
