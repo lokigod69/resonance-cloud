@@ -50,7 +50,7 @@ export function wordsToSlicerDeck(words: WordRow[], opts: WordsToSlicerDeckOptio
       word: word.word,
       translation: word.translation ?? undefined,
       imageUrl: pickImageUrl(word),
-      audioUrl: opts.mode === 'audio_to_image' ? word.tts_audio_url ?? undefined : undefined,
+      audioUrl: word.tts_audio_url ?? undefined,
     })),
   }
 }

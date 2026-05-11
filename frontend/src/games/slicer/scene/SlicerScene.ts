@@ -35,11 +35,20 @@ type SlicerSceneData = {
   primeAudioOnGesture: () => Promise<void>;
   onExit?: () => void;
   onSceneReady?: () => void;
+  onTargetChange?: (cue: SlicerStudyCue | null) => void;
   easyMode?: boolean;
   audio?: SlicerAudio;
 };
 
 export type SceneHost = SlicerSceneData;
+
+export type SlicerStudyCue = {
+  word: string;
+  translation?: string;
+  audioUrl?: string;
+  targetLanguage: string;
+  mode: DeckMode;
+};
 
 type SliceFxContext = {
   point: Phaser.Math.Vector2;
@@ -120,6 +129,7 @@ export class SlicerScene extends Phaser.Scene {
   private primeAudioOnGesture: () => Promise<void> = () => Promise.resolve();
   private onExit?: () => void;
   private onSceneReady?: () => void;
+  private onTargetChange?: (cue: SlicerStudyCue | null) => void;
   private easyMode = false;
   private audio = new SlicerAudio();
   private readonly voicesReady = SlicerScene.loadVoices();
@@ -162,6 +172,7 @@ export class SlicerScene extends Phaser.Scene {
     this.primeAudioOnGesture = data.primeAudioOnGesture;
     this.onExit = data.onExit;
     this.onSceneReady = data.onSceneReady;
+    this.onTargetChange = data.onTargetChange;
     this.easyMode = Boolean(data.easyMode);
     this.audio = data.audio ?? new SlicerAudio();
   }
@@ -347,6 +358,13 @@ export class SlicerScene extends Phaser.Scene {
     }
     this.clearCards();
     this.currentTarget = target;
+    this.onTargetChange?.({
+      word: target.word,
+      translation: target.translation,
+      audioUrl: target.audioUrl,
+      targetLanguage: this.deck.target_language,
+      mode: deckMode(this.deck),
+    });
     const cards = this.cardsForTarget(target);
     const layout = this.cardSpawnLayout(cards.length);
     const shuffled = Phaser.Utils.Array.Shuffle(cards);

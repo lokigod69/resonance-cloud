@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type Dispatch, type SetStateAction } from 'react'
+import { Volume2 } from 'lucide-react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import type PhaserRuntime from 'phaser'
 import { createGameEventBus } from '../shared/GameEventBus'
@@ -12,7 +13,7 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import type { GameEvent } from '../shared/gameEvents'
 import type { DeckDefinition, SessionStats } from './engine/types'
 import { wordsToSlicerDeck } from './adapters/deckAdapter'
-import { SlicerScene } from './scene/SlicerScene'
+import { SlicerScene, type SlicerStudyCue } from './scene/SlicerScene'
 import { DeckPicker, type SlicerDeckChoice } from './components/DeckPicker'
 import { PauseOverlay } from './components/PauseOverlay'
 import { RoundOverlay } from './components/RoundOverlay'
@@ -64,6 +65,7 @@ export default function SlicerGame() {
   const [readySceneKey, setReadySceneKey] = useState<string | null>(null)
   const [easyMode, setEasyMode] = useState(false)
   const [slicerLanguage, setSlicerLanguage] = useState<string | null>(activeLanguage)
+  const [studyCue, setStudyCue] = useState<SlicerStudyCue | null>(null)
 
   const selectedDeckId = selectedDeck?.isPlayAll ? null : selectedDeck?.id ?? null
 
@@ -101,6 +103,7 @@ export default function SlicerGame() {
     setPaused(false)
     setRoundLabel(null)
     setReadySceneKey(null)
+    setStudyCue(null)
     setHud(INITIAL_HUD)
   }, [])
 
@@ -148,6 +151,7 @@ export default function SlicerGame() {
       primeAudioOnGesture: primeOnGesture,
       onExit: handleExit,
       onSceneReady: () => setReadySceneKey(sceneKey),
+      onTargetChange: setStudyCue,
       easyMode,
       audio: slicerAudioRef.current,
     })
@@ -169,6 +173,7 @@ export default function SlicerGame() {
     setRoundLabel(null)
     setSessionStats(null)
     setReadySceneKey(null)
+    setStudyCue(null)
   }, [primeOnGesture])
 
   const pauseScene = useCallback(() => {
@@ -188,11 +193,29 @@ export default function SlicerGame() {
     setRoundLabel(null)
     setPaused(false)
     setReadySceneKey(null)
+    setStudyCue(null)
     setHud({
       ...INITIAL_HUD,
       deckTitle: selectedDeck.title,
     })
   }, [selectedDeck])
+
+  const replayStudyCue = useCallback(() => {
+    if (!studyCue) return
+    void playTargetAudio(studyCue, primeOnGesture, slicerAudioRef.current)
+  }, [primeOnGesture, studyCue])
+
+  const showStudyCue = Boolean(
+    selectedDeck
+      && studyCue
+      && ready
+      && !preparingDeck
+      && !paused
+      && !roundLabel
+      && !sessionStats
+      && !deckLoading
+      && !deckError,
+  )
 
   return (
     <GameShell className={styles.slicerStage} onExit={handleExit}>
@@ -237,12 +260,63 @@ export default function SlicerGame() {
             Preparing cards…
           </div>
         )}
+        {showStudyCue && studyCue && (
+          <AnswerReference cue={studyCue} onReplay={replayStudyCue} />
+        )}
         <RoundOverlay label={roundLabel} />
         <PauseOverlay open={paused} onResume={resumeScene} onExit={handleExit} />
         <SessionComplete stats={sessionStats} onRestart={restartSession} onExit={handleReturnToPicker} />
       </div>
     </GameShell>
   )
+}
+
+function AnswerReference({ cue, onReplay }: { cue: SlicerStudyCue; onReplay: () => void }) {
+  const displayText = cue.mode === 'audio_to_image' ? cue.word : cue.translation ?? cue.word
+
+  return (
+    <div className="pointer-events-auto absolute inset-x-4 bottom-5 z-30 mx-auto flex max-w-2xl items-center justify-between gap-4 rounded-xl border border-[rgba(255,107,53,0.24)] bg-black/58 px-5 py-3 text-[#fff1d0] shadow-[0_0_36px_rgba(255,69,0,0.16)] backdrop-blur-sm sm:bottom-7 sm:px-6">
+      <div className="min-w-0">
+        <div className="text-[10px] uppercase tracking-[0.22em] text-[#ff9155]/70">Current answer</div>
+        <div className="mt-1 truncate font-serif text-2xl leading-tight text-[#fff1d0] drop-shadow-[0_0_12px_rgba(255,100,0,0.34)] sm:text-4xl">
+          {displayText}
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={onReplay}
+        className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-[rgba(255,215,0,0.34)] bg-[#ff6b35]/12 text-[#ffd700] transition hover:bg-[#ff6b35]/22 hover:shadow-[0_0_18px_rgba(255,215,0,0.2)]"
+        aria-label="Replay target audio"
+      >
+        <Volume2 size={22} />
+      </button>
+    </div>
+  )
+}
+
+async function playTargetAudio(
+  cue: SlicerStudyCue,
+  primeOnGesture: () => Promise<void>,
+  audio: SlicerAudio | null,
+): Promise<void> {
+  await primeOnGesture().catch(() => undefined)
+  await audio?.unlock().catch(() => undefined)
+
+  if (cue.audioUrl) {
+    const player = new Audio(cue.audioUrl)
+    await player.play().catch(() => speakTargetCue(cue))
+    return
+  }
+
+  speakTargetCue(cue)
+}
+
+function speakTargetCue(cue: SlicerStudyCue): void {
+  if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) return
+  const utterance = new SpeechSynthesisUtterance(cue.word)
+  utterance.lang = cue.targetLanguage
+  window.speechSynthesis.cancel()
+  window.speechSynthesis.speak(utterance)
 }
 
 function handleGameEvent(
