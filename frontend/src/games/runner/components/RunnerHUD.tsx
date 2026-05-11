@@ -31,7 +31,7 @@ export function RunnerHUD({
 
   return (
     <div className="pointer-events-none absolute left-3 right-3 top-[max(0.75rem,var(--app-safe-top))] z-50 text-[#d0f0ff] sm:left-4 sm:right-4">
-      <div className="flex max-w-[calc(100%-7rem)] flex-wrap items-center gap-2">
+      <div className="flex max-w-[calc(100%-8.5rem)] flex-wrap items-center gap-2">
         <HudPanel label="Deck" value={deckTitle} wide />
         <HudPanel label="Level" value={`${levelNumber} / 10`} />
         <HudPanel label="Card" value={cardProgress} />
@@ -59,24 +59,24 @@ export function RunnerHUD({
           type="button"
           onClick={paused ? onResume : onPause}
           disabled={!ready}
-          className="grid h-12 w-12 place-items-center rounded-full border-2 border-[rgba(168,216,234,0.62)] bg-[#071827]/90 text-[#d0f0ff] shadow-[0_0_20px_rgba(79,195,247,0.28)] backdrop-blur-md transition hover:bg-[#142d46]/95 hover:shadow-[0_0_24px_rgba(79,195,247,0.4)] disabled:cursor-not-allowed disabled:opacity-50"
+          className="grid h-14 w-14 place-items-center rounded-full border-2 border-[rgba(208,240,255,0.82)] bg-[#06131f]/95 text-[#d0f0ff] shadow-[0_0_28px_rgba(79,195,247,0.38),inset_0_0_16px_rgba(168,216,234,0.12)] backdrop-blur-md transition hover:scale-105 hover:bg-[#183a58] hover:shadow-[0_0_34px_rgba(79,195,247,0.5)] active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 sm:h-16 sm:w-16"
           aria-label={paused ? 'Resume' : 'Pause'}
           title={paused ? 'Resume' : 'Pause'}
         >
           {paused ? (
             <Play size={18} />
           ) : (
-            <img src="/games/runner/branding/hud-pause.png" alt="" className="h-7 w-7 object-contain" aria-hidden="true" />
+            <img src="/games/runner/branding/hud-pause.png" alt="" className="h-10 w-10 object-contain sm:h-11 sm:w-11" aria-hidden="true" />
           )}
         </button>
         <button
           type="button"
           onClick={onExit}
-          className="grid h-12 w-12 place-items-center rounded-full border-2 border-[rgba(168,216,234,0.62)] bg-[#071827]/90 text-[#d0f0ff] shadow-[0_0_20px_rgba(79,195,247,0.28)] backdrop-blur-md transition hover:bg-[#142d46]/95 hover:shadow-[0_0_24px_rgba(79,195,247,0.4)]"
+          className="grid h-14 w-14 place-items-center rounded-full border-2 border-[rgba(208,240,255,0.82)] bg-[#06131f]/95 text-[#d0f0ff] shadow-[0_0_28px_rgba(79,195,247,0.38),inset_0_0_16px_rgba(168,216,234,0.12)] backdrop-blur-md transition hover:scale-105 hover:bg-[#183a58] hover:shadow-[0_0_34px_rgba(79,195,247,0.5)] active:scale-95 sm:h-16 sm:w-16"
           aria-label="Back to deck picker"
           title="Back to deck picker"
         >
-          <img src="/games/runner/branding/hud-exit.png" alt="" className="h-7 w-7 object-contain" aria-hidden="true" />
+          <img src="/games/runner/branding/hud-exit.png" alt="" className="h-10 w-10 object-contain sm:h-11 sm:w-11" aria-hidden="true" />
         </button>
       </div>
     </div>
