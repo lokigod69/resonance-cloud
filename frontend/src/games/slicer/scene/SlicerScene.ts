@@ -358,29 +358,17 @@ export class SlicerScene extends Phaser.Scene {
     const width = this.scale.width;
     const height = this.scale.height;
     const narrowPortrait = this.isNarrowPortrait();
-    const maxCardWidth = narrowPortrait ? Math.min(420, width - 48) : Math.min(560, width * 0.3);
-    const minCardWidth = Math.min(narrowPortrait ? 250 : 300, maxCardWidth);
-    const cardWidth = Phaser.Math.Clamp(width * (narrowPortrait ? 0.78 : 0.22), minCardWidth, maxCardWidth);
+    const cardWidthRatio = narrowPortrait ? 0.3 : 0.22;
+    const maxCardWidth = narrowPortrait ? Math.min(150, width * 0.31) : Math.min(560, width * 0.3);
+    const minCardWidth = Math.min(narrowPortrait ? 96 : 300, maxCardWidth);
+    const cardWidth = Phaser.Math.Clamp(width * cardWidthRatio, minCardWidth, maxCardWidth);
     const cardHeight = cardWidth * 0.5625;
     const exitY = height + cardHeight;
 
-    if (narrowPortrait) {
-      const yGap = cardHeight + Math.min(110, cardHeight * 0.55);
-      return {
-        cardWidth,
-        cardHeight,
-        exitY,
-        positions: Array.from({ length: cardCount }, (_, index) => ({
-          x: width * 0.5,
-          y: -cardHeight - index * yGap,
-        })),
-      };
-    }
-
-    const laneRatios = cardCount <= 1 ? [0.5] : cardCount === 2 ? [0.34, 0.66] : [0.2, 0.5, 0.8];
+    const laneRatios = this.laneRatios(cardCount, narrowPortrait);
     const laneWidth = width / Math.max(1, laneRatios.length);
     const jitter = Math.max(0, Math.min(width * 0.015, (laneWidth - cardWidth) * 0.35));
-    const yGap = Math.min(96, cardHeight * 0.38);
+    const yGap = narrowPortrait ? 0 : Math.min(96, cardHeight * 0.38);
     return {
       cardWidth,
       cardHeight,
@@ -390,6 +378,12 @@ export class SlicerScene extends Phaser.Scene {
         y: -cardHeight - index * yGap,
       })),
     };
+  }
+
+  private laneRatios(cardCount: number, narrowPortrait: boolean): number[] {
+    if (cardCount <= 1) return [0.5];
+    if (cardCount === 2) return narrowPortrait ? [0.3, 0.7] : [0.34, 0.66];
+    return narrowPortrait ? [0.18, 0.5, 0.82] : [0.2, 0.5, 0.8];
   }
 
   private isNarrowPortrait(): boolean {
