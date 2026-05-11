@@ -177,19 +177,19 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
           </div>
         </div>
         {selectedLanguage && !loading && !error && filteredDecks.length > 0 && (
-          <button
-            type="button"
-            onClick={() => onSelect({
-              id: `play-all-${selectedLanguage}`,
-              title: playAllTitle,
-              targetLanguage: selectedLanguage,
-              mode,
-              isPlayAll: true,
-            })}
-            className="group relative mb-4 min-h-28 shrink-0 overflow-hidden rounded-xl bg-[url('/games/slicer/branding/play-all-frame.png')] bg-[length:100%_100%] bg-center px-8 py-5 text-center transition duration-200 hover:scale-[1.01] hover:brightness-110 sm:min-h-32 sm:px-12"
-          >
-            <span className="relative z-10 flex h-full flex-col items-center justify-center">
-              <span className="block w-full max-w-2xl">
+          <div className="mb-4 shrink-0 text-center">
+            <button
+              type="button"
+              onClick={() => onSelect({
+                id: `play-all-${selectedLanguage}`,
+                title: playAllTitle,
+                targetLanguage: selectedLanguage,
+                mode,
+                isPlayAll: true,
+              })}
+              className="group relative min-h-28 w-full overflow-hidden rounded-xl bg-[url('/games/slicer/branding/play-all-frame.png')] bg-[length:100%_100%] bg-center px-8 py-5 text-center transition duration-200 hover:scale-[1.01] hover:brightness-110 sm:min-h-32 sm:px-12"
+            >
+              <span className="relative z-10 flex h-full items-center justify-center">
                 <img
                   src="/games/slicer/branding/play-all-wordmark.png"
                   alt={playAllLabel}
@@ -198,11 +198,11 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                   className="mx-auto h-auto w-[min(520px,82vw)] object-contain sm:w-[min(680px,76vw)]"
                 />
               </span>
-              <span className="-mt-4 block text-xs uppercase tracking-[0.2em] text-[#ffd2a5]/78 sm:-mt-5">
-                {playAllWordCount} words
-              </span>
-            </span>
-          </button>
+            </button>
+            <div className="mt-2 text-xs uppercase tracking-[0.18em] text-[#ffd2a5]/62">
+              {playAllWordCount} words
+            </div>
+          </div>
         )}
 
         <div className={`min-h-0 flex-1 overflow-y-auto ${styles.deckScroll}`}>
