@@ -1,0 +1,38 @@
+import type { LevelConfig } from '../engine';
+
+export const solstice: LevelConfig = {
+  id: 'solstice',
+  order: 9,
+  title: 'Solstice',
+  backgroundPlate: 'assets/production/backgrounds/bg-09-solstice.png',
+  laneTint: '#d0f0ff',
+  particleConfig: {
+    snowDensity: 0.08,
+    mistOpacity: 0.16,
+    breathRingOnLanding: true,
+    crystalDensity: 0.18,
+  },
+  ambientAudioPath: 'assets/production/audio/ambient-09-solstice.mp3',
+  runnerSpeed: 420,
+  tempo: 1.28,
+  forwardSpeed: 1.48,
+  audioToSpawnDelay: 1500,
+  cardTravelDuration: 3200,
+  postWaveDelay: 1180,
+  audioToTileMs: 4700,
+  timingWindowMs: 560,
+  distractorCount: 2,
+  bluffFrequency: 0.26,
+  decisionDistance: 0.7,
+  biome: {
+    name: 'Solstice',
+    sky: ['#1d1203', '#755516', '#f1c66a'],
+    horizon: '#d0b077',
+    lane: '#d3b77b',
+    cardGlow: '#fff0b8',
+    particle: 'gold',
+    ambient: { root: 246.94, color: '#d0b077', cutoff: 980 },
+    parallax: ['long amber rays', 'sunken gold terraces', 'floating dust'],
+  },
+  mechanics: { doublePrompts: true },
+};

@@ -1,0 +1,38 @@
+import type { LevelConfig } from '../engine';
+
+export const rainfall: LevelConfig = {
+  id: 'rainfall',
+  order: 2,
+  title: 'Rainfall',
+  backgroundPlate: 'assets/production/backgrounds/bg-02-rainfall.png',
+  laneTint: '#8dd0e8',
+  particleConfig: {
+    snowDensity: 0.2,
+    mistOpacity: 0.36,
+    breathRingOnLanding: true,
+    rainDensity: 0.44,
+  },
+  ambientAudioPath: 'assets/production/audio/ambient-02-rainfall.mp3',
+  runnerSpeed: 285,
+  tempo: 0.94,
+  forwardSpeed: 0.9,
+  audioToSpawnDelay: 1500,
+  cardTravelDuration: 4775,
+  postWaveDelay: 1460,
+  audioToTileMs: 6275,
+  timingWindowMs: 860,
+  distractorCount: 2,
+  bluffFrequency: 0,
+  decisionDistance: 0.82,
+  biome: {
+    name: 'Rainfall',
+    sky: ['#101923', '#1c3442', '#577b8a'],
+    horizon: '#91adb8',
+    lane: '#6f8790',
+    cardGlow: '#d7ebf0',
+    particle: 'rain',
+    ambient: { root: 146.83, color: '#91adb8', cutoff: 680 },
+    parallax: ['near rain streaks', 'misty rooftops', 'wet stone arches'],
+  },
+  mechanics: {},
+};

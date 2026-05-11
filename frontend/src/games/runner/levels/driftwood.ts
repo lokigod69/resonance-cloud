@@ -1,0 +1,37 @@
+import type { LevelConfig } from '../engine';
+
+export const driftwood: LevelConfig = {
+  id: 'driftwood',
+  order: 4,
+  title: 'Driftwood',
+  backgroundPlate: 'assets/production/backgrounds/bg-04-driftwood.png',
+  laneTint: '#a8d8ea',
+  particleConfig: {
+    snowDensity: 0.12,
+    mistOpacity: 0.26,
+    breathRingOnLanding: true,
+  },
+  ambientAudioPath: 'assets/production/audio/ambient-04-driftwood.mp3',
+  runnerSpeed: 300,
+  tempo: 0.9,
+  forwardSpeed: 0.96,
+  audioToSpawnDelay: 1500,
+  cardTravelDuration: 4325,
+  postWaveDelay: 1380,
+  audioToTileMs: 5825,
+  timingWindowMs: 960,
+  distractorCount: 2,
+  bluffFrequency: 0,
+  decisionDistance: 0.82,
+  biome: {
+    name: 'Driftwood',
+    sky: ['#17120d', '#3d3023', '#a78f69'],
+    horizon: '#d3b77b',
+    lane: '#8b7256',
+    cardGlow: '#f0d9a4',
+    particle: 'leaves',
+    ambient: { root: 130.81, color: '#d3b77b', cutoff: 540 },
+    parallax: ['slow cedar silhouettes', 'floating bark', 'warm shore haze'],
+  },
+  mechanics: {},
+};

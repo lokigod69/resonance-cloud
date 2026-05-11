@@ -1,0 +1,37 @@
+import type { LevelConfig } from '../engine';
+
+export const stillwater: LevelConfig = {
+  id: 'stillwater',
+  order: 1,
+  title: 'Stillwater',
+  backgroundPlate: 'assets/production/backgrounds/bg-01-stillwater.png',
+  laneTint: '#8dd0e8',
+  particleConfig: {
+    snowDensity: 0.32,
+    mistOpacity: 0.42,
+    breathRingOnLanding: true,
+  },
+  ambientAudioPath: 'assets/production/audio/ambient-01-stillwater.mp3',
+  runnerSpeed: 260,
+  tempo: 0.86,
+  forwardSpeed: 0.78,
+  audioToSpawnDelay: 1500,
+  cardTravelDuration: 5000,
+  postWaveDelay: 1500,
+  audioToTileMs: 6500,
+  timingWindowMs: 920,
+  distractorCount: 2,
+  bluffFrequency: 0,
+  decisionDistance: 0.84,
+  biome: {
+    name: 'Stillwater',
+    sky: ['#0f1720', '#183247', '#9ab8c7'],
+    horizon: '#7faad4',
+    lane: '#91adb8',
+    cardGlow: '#b8d8e8',
+    particle: 'motes',
+    ambient: { root: 164.81, color: '#7faad4', cutoff: 760 },
+    parallax: ['distant rain veil', 'flat lake mirror', 'reed silhouettes'],
+  },
+  mechanics: {},
+};

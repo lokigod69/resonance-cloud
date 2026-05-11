@@ -1,0 +1,38 @@
+import type { LevelConfig } from '../engine';
+
+export const geode: LevelConfig = {
+  id: 'geode',
+  order: 6,
+  title: 'Geode',
+  backgroundPlate: 'assets/production/backgrounds/bg-06-geode.png',
+  laneTint: '#d0f0ff',
+  particleConfig: {
+    snowDensity: 0.12,
+    mistOpacity: 0.2,
+    breathRingOnLanding: true,
+    crystalDensity: 0.38,
+  },
+  ambientAudioPath: 'assets/production/audio/ambient-06-geode.mp3',
+  runnerSpeed: 365,
+  tempo: 1.12,
+  forwardSpeed: 1.24,
+  audioToSpawnDelay: 1500,
+  cardTravelDuration: 3875,
+  postWaveDelay: 1300,
+  audioToTileMs: 5375,
+  timingWindowMs: 680,
+  distractorCount: 2,
+  bluffFrequency: 0.2,
+  decisionDistance: 0.76,
+  biome: {
+    name: 'Geode',
+    sky: ['#0b1015', '#182b30', '#b5aa9a'],
+    horizon: '#b5aa9a',
+    lane: '#6f8790',
+    cardGlow: '#e9e0c8',
+    particle: 'crystal',
+    ambient: { root: 220, color: '#b5aa9a', cutoff: 1040 },
+    parallax: ['crystal refractions', 'faceted horizon', 'slow prism dust'],
+  },
+  mechanics: { tileRotation: true },
+};

@@ -1,0 +1,37 @@
+import type { LevelConfig } from '../engine';
+
+export const mistwood: LevelConfig = {
+  id: 'mistwood',
+  order: 8,
+  title: 'Mistwood',
+  backgroundPlate: 'assets/production/backgrounds/bg-08-mistwood.png',
+  laneTint: '#a8d8ea',
+  particleConfig: {
+    snowDensity: 0.12,
+    mistOpacity: 0.58,
+    breathRingOnLanding: true,
+  },
+  ambientAudioPath: 'assets/production/audio/ambient-08-mistwood.mp3',
+  runnerSpeed: 370,
+  tempo: 1.18,
+  forwardSpeed: 1.34,
+  audioToSpawnDelay: 1500,
+  cardTravelDuration: 3425,
+  postWaveDelay: 1220,
+  audioToTileMs: 4925,
+  timingWindowMs: 600,
+  distractorCount: 2,
+  bluffFrequency: 0.24,
+  decisionDistance: 0.72,
+  biome: {
+    name: 'Mistwood',
+    sky: ['#0c1512', '#24352f', '#7f9b88'],
+    horizon: '#91adb8',
+    lane: '#607a6d',
+    cardGlow: '#d9e8d5',
+    particle: 'fog',
+    ambient: { root: 155.56, color: '#91adb8', cutoff: 480 },
+    parallax: ['fog curtains', 'dark trunks', 'dew-lit understory'],
+  },
+  mechanics: { fogBursts: true },
+};
