@@ -18,6 +18,7 @@ import {
   getSelectedGuidedVibe,
   setSelectedGuidedVibe,
 } from '@/lib/todayVibe'
+import '@/components/today/Today.css'
 
 const GUIDED_TODAY_PATH_ID = 'english-a1-practical'
 
@@ -107,7 +108,10 @@ export default function Today() {
   }
 
   return (
-    <div className="relative isolate mx-auto w-full max-w-6xl px-4 py-4 sm:px-6 lg:py-8">
+    <div
+      className="today-shell relative isolate mx-auto w-full max-w-6xl px-4 py-4 sm:px-6 lg:py-8"
+      data-guided-vibe={selectedVibeId}
+    >
       <div
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] opacity-70"
         style={{

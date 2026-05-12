@@ -131,6 +131,7 @@ const todayPathOverviewSource = readSource('../src/components/today/TodayPathOve
 const todaySessionSource = readSource('../src/components/today/TodaySession.tsx')
 const todayHeroSource = readSource('../src/components/today/TodayHero.tsx')
 const todayPageSource = readSource('../src/pages/Today.tsx')
+const todayCssSource = readOptionalSource('../src/components/today/Today.css')
 const buildPhraseSource = readSource('../src/components/today/BuildPhraseStep.tsx')
 const matchPairsSource = readSource('../src/components/today/MatchPairsStep.tsx')
 const typeRecallSource = readSource('../src/components/today/TypeRecallStep.tsx')
@@ -167,6 +168,29 @@ assert('Today page separates lesson selection from session start', containsAny(t
 assert('path overview receives a select handler and separate start handler', todayPathOverviewSource.includes('onSelectLesson') && todayPathOverviewSource.includes('onStartLesson'))
 assert('lesson cards select lessons without opening the session', lessonPathCardSource.includes('onSelectLesson(lesson.id)') && !lessonPathCardSource.includes('onOpenLesson(lesson.id)'))
 assert('selected lesson panel uses selected/recommended lesson label copy', recommendedLessonPanelSource.includes("t('today.path.selectedLessonLabel')") && recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')"))
+
+console.log('\n[source-level atmosphere tokens]')
+assert('Today root exposes selected vibe as a data attribute', todayPageSource.includes('data-guided-vibe={selectedVibeId}'))
+assert('Today imports scoped atmosphere CSS', todayPageSource.includes("components/today/Today.css"))
+for (const token of [
+  '--today-accent',
+  '--today-accent-strong',
+  '--today-accent-soft',
+  '--today-glow',
+  '--today-border',
+  '--today-panel',
+  '--today-text-soft',
+]) {
+  assert(`Today CSS defines ${token}`, todayCssSource.includes(token))
+}
+for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+  assert(`Today CSS defines scoped ${vibeId} atmosphere`, todayCssSource.includes(`[data-guided-vibe="${vibeId}"]`))
+}
+assert('Today CSS aliases local tokens to existing accent consumers', containsAny(todayCssSource, ['--accent: var(--today-accent)', '--primary: var(--today-accent)']))
+assert('Today CSS accents selected vibe cards with local tokens', todayCssSource.includes('.today-vibe-card[aria-pressed="true"]') && todayCssSource.includes('var(--today-glow)'))
+assert('Today CSS accents progress indicator inside Today only', todayCssSource.includes('[data-slot="progress-indicator"]') && todayCssSource.includes('var(--today-accent-strong)'))
+assert('Today CSS accents default primary buttons inside Today only', todayCssSource.includes('[data-slot="button"][data-variant="default"]') && todayCssSource.includes('var(--today-accent-strong)'))
+assert('Today CSS keeps vibe emblems contained', todayCssSource.includes('.today-vibe-emblem') && todayCssSource.includes('object-fit: contain'))
 
 console.log('\n[source-level UX teardown]')
 assert('Today compact header does not render time estimate', !containsAny(todayCompactHeaderSource, ['today.estimatedTime', 'estimatedMinutes', '<Clock3']))
@@ -235,6 +259,14 @@ function containsAny(value: string, needles: string[]) {
 
 function readSource(relativePath: string) {
   return readFileSync(fileURLToPath(new URL(relativePath, import.meta.url)), 'utf8')
+}
+
+function readOptionalSource(relativePath: string) {
+  try {
+    return readSource(relativePath)
+  } catch {
+    return ''
+  }
 }
 
 function sliceBetween(source: string, start: string, end: string) {

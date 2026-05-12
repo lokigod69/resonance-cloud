@@ -118,7 +118,7 @@ function RecommendedLessonPanel({
   const visibleStatus = getTodayLessonStatus(progress, lesson)
 
   return (
-    <section className="theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-6">
+    <section className="today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-6">
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div className="min-w-0">
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
@@ -164,13 +164,15 @@ function LessonPathCard({
         title: lesson.title,
       })}
       className={cn(
-        'group flex min-h-32 min-w-0 flex-col rounded-lg border p-3 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+        'today-path-card group flex min-h-32 min-w-0 flex-col rounded-lg border p-3 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
         isSelected
           ? 'border-[color-mix(in_srgb,var(--accent)_64%,transparent)] bg-[var(--accent-soft)] shadow-[0_0_0_1px_color-mix(in_srgb,var(--accent)_18%,transparent)]'
           : isRecommended
           ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)]'
           : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_50%,transparent)]',
       )}
+      data-recommended={isRecommended}
+      data-selected={isSelected}
     >
       <div className="flex h-full items-start gap-3">
         <span className={cn(

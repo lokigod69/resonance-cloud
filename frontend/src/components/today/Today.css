@@ -1,0 +1,159 @@
+.today-shell {
+  --today-accent: #f3c64d;
+  --today-accent-strong: #ffd76a;
+  --today-accent-soft: rgba(243, 198, 77, 0.16);
+  --today-glow: rgba(255, 214, 106, 0.3);
+  --today-border: rgba(255, 216, 126, 0.28);
+  --today-panel: rgba(31, 28, 22, 0.68);
+  --today-text-soft: #f4dfb0;
+  --today-on-accent: #211704;
+  --accent: var(--today-accent);
+  --accent-soft: var(--today-accent-soft);
+  --accent-glow: var(--today-glow);
+  --accent-2-soft: color-mix(in srgb, var(--today-accent-strong) 14%, transparent);
+  --border-subtle: var(--today-border);
+  --border-strong: color-mix(in srgb, var(--today-accent-strong) 54%, var(--today-border));
+  --surface-glass: var(--today-panel);
+  --surface-glass-strong: color-mix(in srgb, var(--today-panel) 88%, var(--app-bg));
+  --primary: var(--today-accent);
+  --primary-foreground: var(--today-on-accent);
+  --ring: var(--today-accent);
+}
+
+.today-shell[data-guided-vibe="bright"] {
+  --today-accent: #f3c64d;
+  --today-accent-strong: #ffdc73;
+  --today-accent-soft: rgba(243, 198, 77, 0.17);
+  --today-glow: rgba(255, 214, 106, 0.32);
+  --today-border: rgba(255, 216, 126, 0.31);
+  --today-panel: rgba(32, 29, 22, 0.68);
+  --today-text-soft: #f5dfaa;
+  --today-on-accent: #241906;
+}
+
+.today-shell[data-guided-vibe="wistful"] {
+  --today-accent: #9fb7cc;
+  --today-accent-strong: #c1d4e3;
+  --today-accent-soft: rgba(134, 161, 184, 0.16);
+  --today-glow: rgba(142, 174, 204, 0.24);
+  --today-border: rgba(165, 188, 207, 0.27);
+  --today-panel: rgba(18, 25, 34, 0.7);
+  --today-text-soft: #bdc9d6;
+  --today-on-accent: #07111a;
+}
+
+.today-shell[data-guided-vibe="sharp"] {
+  --today-accent: #6ee7ff;
+  --today-accent-strong: #d5dde3;
+  --today-accent-soft: rgba(76, 219, 255, 0.12);
+  --today-glow: rgba(48, 211, 255, 0.22);
+  --today-border: rgba(159, 184, 198, 0.32);
+  --today-panel: rgba(8, 11, 14, 0.78);
+  --today-text-soft: #c3cdd5;
+  --today-on-accent: #05080a;
+}
+
+.today-shell::before {
+  pointer-events: none;
+  position: absolute;
+  inset: 0.5rem 0 -1.5rem;
+  z-index: -20;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(ellipse at 18% 6%, color-mix(in srgb, var(--today-glow) 82%, transparent), transparent 40%),
+    radial-gradient(ellipse at 86% 12%, color-mix(in srgb, var(--today-accent-soft) 80%, transparent), transparent 38%),
+    linear-gradient(180deg, color-mix(in srgb, var(--today-panel) 42%, transparent), transparent 68%);
+  content: "";
+}
+
+.today-shell[data-guided-vibe="wistful"]::before {
+  background:
+    radial-gradient(ellipse at 20% 0%, color-mix(in srgb, var(--today-glow) 70%, transparent), transparent 44%),
+    radial-gradient(ellipse at 72% 18%, rgba(176, 165, 206, 0.1), transparent 36%),
+    linear-gradient(180deg, color-mix(in srgb, var(--today-panel) 48%, transparent), transparent 72%);
+}
+
+.today-shell[data-guided-vibe="sharp"]::before {
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--today-glow) 72%, transparent), transparent 34%),
+    linear-gradient(110deg, transparent 10%, color-mix(in srgb, var(--today-accent) 10%, transparent) 48%, transparent 52%),
+    linear-gradient(180deg, color-mix(in srgb, var(--today-panel) 58%, transparent), transparent 68%);
+}
+
+.today-shell .theme-panel {
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--today-panel) 94%, transparent), color-mix(in srgb, var(--surface-1) 34%, transparent));
+  border-color: var(--today-border);
+}
+
+.today-shell .text-\[var\(--text-muted\)\] {
+  color: var(--today-text-soft);
+}
+
+.today-vibe-card {
+  min-height: 9rem;
+}
+
+.today-vibe-card[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 66%, transparent);
+  background:
+    radial-gradient(ellipse at 50% 10%, color-mix(in srgb, var(--today-glow) 62%, transparent), transparent 62%),
+    color-mix(in srgb, var(--today-accent-soft) 82%, var(--today-panel));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--today-accent) 22%, transparent),
+    0 16px 38px color-mix(in srgb, var(--today-glow) 82%, transparent);
+}
+
+.today-vibe-emblemSlot {
+  overflow: visible;
+}
+
+.today-vibe-emblem {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.today-path-card[data-selected="true"],
+.today-path-card[data-recommended="true"],
+.today-recommended-panel {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 48%, var(--today-border));
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--today-accent-soft) 78%, transparent), color-mix(in srgb, var(--today-panel) 86%, transparent));
+  box-shadow: 0 14px 32px color-mix(in srgb, var(--today-glow) 42%, transparent);
+}
+
+.today-path-card[data-selected="true"] {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--today-accent) 24%, transparent),
+    0 16px 34px color-mix(in srgb, var(--today-glow) 50%, transparent);
+}
+
+.today-shell [data-slot="progress-indicator"] {
+  background: linear-gradient(90deg, var(--today-accent), var(--today-accent-strong));
+  box-shadow: 0 0 18px var(--today-glow);
+}
+
+.today-shell [data-slot="button"][data-variant="default"] {
+  background: linear-gradient(135deg, var(--today-accent-strong), var(--today-accent));
+  color: var(--today-on-accent);
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--today-glow) 54%, transparent);
+}
+
+.today-shell [data-slot="button"][data-variant="default"]:hover {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--today-accent-strong) 88%, white), var(--today-accent));
+}
+
+.today-shell :is(button, a, input, select, textarea, [tabindex]):focus-visible {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--today-accent) 28%, transparent),
+    0 0 0 1px var(--today-accent-strong);
+}
+
+.today-trophy-panel {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 46%, var(--today-border));
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--today-glow) 48%, transparent), transparent 58%),
+    color-mix(in srgb, var(--today-panel) 86%, transparent);
+}

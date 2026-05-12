@@ -350,7 +350,7 @@ export function GuidedVibePicker({
               aria-pressed={isSelected}
               onClick={() => onSelectVibe(vibeId)}
               className={cn(
-                'relative flex min-h-36 min-w-0 flex-col items-center justify-center rounded-lg border p-3 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+                'today-vibe-card relative flex min-h-36 min-w-0 flex-col items-center justify-center rounded-lg border p-3 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
                 isSelected
                   ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)] shadow-[0_0_24px_color-mix(in_srgb,var(--accent)_18%,transparent)]'
                   : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_16%,transparent)]',
@@ -361,7 +361,7 @@ export function GuidedVibePicker({
                   <img
                     src={vibe.emblem.url}
                     alt=""
-                    className="h-full w-full object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.42)]"
+                    className="today-vibe-emblem h-full w-full object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.42)]"
                     draggable={false}
                   />
                 )}

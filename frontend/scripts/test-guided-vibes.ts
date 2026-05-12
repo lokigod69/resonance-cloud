@@ -20,6 +20,8 @@ import {
   setSelectedGuidedVibe,
   todayGuidedVibeKey,
 } from '../src/lib/todayVibe.ts'
+import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 
 let failures = 0
 let passes = 0
@@ -64,6 +66,7 @@ for (const vibeId of expectedActiveVibes) {
   const vibe = getGuidedVibe(vibeId)
   assert(`${vibeId} active vibe has an emblem URL`, typeof vibe.emblem?.url === 'string' && vibe.emblem.url === `/guided/vibes/${vibeId}-emblem.webp`, vibe)
   assert(`${vibeId} active vibe has emblem alt text`, typeof vibe.emblem?.alt === 'string' && vibe.emblem.alt === `${vibe.label} voice emblem`, vibe)
+  assert(`${vibeId} production emblem is WebP with alpha`, hasWebpAlpha(`../public/guided/vibes/${vibeId}-emblem.webp`))
 }
 for (const vibeId of expectedFutureVibes) {
   const vibe = getGuidedVibe(vibeId)
@@ -132,4 +135,24 @@ function createMemoryStorage(): Storage {
       values.set(key, value)
     },
   }
+}
+
+function hasWebpAlpha(relativePath: string) {
+  const buffer = readFileSync(fileURLToPath(new URL(relativePath, import.meta.url)))
+  if (buffer.toString('ascii', 0, 4) !== 'RIFF' || buffer.toString('ascii', 8, 12) !== 'WEBP') {
+    return false
+  }
+
+  const format = buffer.toString('ascii', 12, 16)
+  if (format === 'VP8L') {
+    return true
+  }
+
+  if (format === 'VP8X') {
+    const flags = buffer[20] ?? 0
+    const hasAlphaFlag = (flags & 0b00010000) !== 0
+    return hasAlphaFlag && buffer.includes(Buffer.from('ALPH'))
+  }
+
+  return false
 }
