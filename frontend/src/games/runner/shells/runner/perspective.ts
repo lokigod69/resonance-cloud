@@ -10,8 +10,16 @@ export type PerspectivePoint = {
 const HORIZON_Y = 0.35;
 const DECISION_Y = 0.69;
 const HORIZON_SPREAD = 0.075;
-const FOREGROUND_SPREAD = 0.158;
+const FOREGROUND_SPREAD_DESKTOP = 0.17;
+const FOREGROUND_SPREAD_MOBILE = 0.265;
 const RUNNER_PROGRESS = 0.78;
+
+function foregroundSpreadRatio(width: number): number {
+  if (width <= 480) return FOREGROUND_SPREAD_MOBILE;
+  if (width >= 900) return FOREGROUND_SPREAD_DESKTOP;
+  const blend = (width - 480) / 420;
+  return Phaser.Math.Linear(FOREGROUND_SPREAD_MOBILE, FOREGROUND_SPREAD_DESKTOP, blend);
+}
 
 export function laneX(
   lane: number,
@@ -21,7 +29,7 @@ export function laneX(
   timeMs: number,
 ): number {
   const center = width / 2;
-  const bottomSpread = width * FOREGROUND_SPREAD;
+  const bottomSpread = width * foregroundSpreadRatio(width);
   const horizonSpread = width * HORIZON_SPREAD;
   const variable = level.mechanics.variableLaneWidth ? 1 + Math.sin(timeMs / 900) * 0.12 : 1;
   const spread = (horizonSpread + (bottomSpread - horizonSpread) * progress) * variable;

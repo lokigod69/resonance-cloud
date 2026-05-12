@@ -57,6 +57,7 @@ type GlideCard = {
   committed: boolean;
   correct: boolean;
   wrong: boolean;
+  feedbackStartedAt: number | null;
   x: number;
   y: number;
   width: number;
@@ -65,10 +66,11 @@ type GlideCard = {
 
 const CARD_SPAWN_DELAY = 1000;
 const CARD_TRAVEL_MS = 1750;
-const CARD_PARK_PROGRESS = 0.66;
+const CARD_PARK_PROGRESS = 0.78;
 const CARD_PARK_Y = 0.58;
 const POST_WAVE_DELAY = 1500;
 const GLIDE_EASY_DECISION_TIMER_MS = 60 * 60 * 1000;
+const RESOLUTION_HOLD_MS = 850;
 
 export class GlideRunnerScene extends Phaser.Scene {
   private engine!: SessionEngine;
@@ -95,8 +97,11 @@ export class GlideRunnerScene extends Phaser.Scene {
   private missFlash = 0;
   private debugVisualLevelIndex: number | null = null;
   private keyboardHandler?: (event: KeyboardEvent) => void;
-  private lastTapLane: LaneIndex | null = null;
-  private lastTapAt = 0;
+  private spiritLanePosition = 1;
+  private spiritLaneShiftStart = 1;
+  private spiritLaneShiftElapsed = 0;
+  private readonly spiritLaneShiftDuration = 260;
+  private isSpiritLaneShifting = false;
 
   constructor() {
     super('GlideRunnerScene');
@@ -169,7 +174,7 @@ export class GlideRunnerScene extends Phaser.Scene {
   update(time: number, delta: number): void {
     const level = this.currentLevel();
     this.biome.update(level, time);
-    this.updateSpirit(time);
+    this.updateSpirit(time, delta);
     this.updateCards(delta, time);
     this.updateWaveTimers(delta);
     this.missFlash = Math.max(0, this.missFlash - delta / 420);
@@ -230,18 +235,10 @@ export class GlideRunnerScene extends Phaser.Scene {
 
     this.input.on('pointerup', (pointer: Phaser.Input.Pointer) => {
       if (this.phase !== 'parked') return;
-      const lane = Math.min(2, Math.floor(pointer.x / (this.scale.width / 3))) as LaneIndex;
-      const now = this.time.now;
-      if (this.lastTapLane === lane && now - this.lastTapAt < 520) {
-        this.selectedLane = lane;
-        this.updateSelectionStyles();
-        this.commitSelectedLane();
-        return;
-      }
-      this.lastTapLane = lane;
-      this.lastTapAt = now;
-      this.selectedLane = lane;
-      this.updateSelectionStyles();
+      const point = this.pointerCanvasPoint(pointer);
+      const target = this.cardAtPoint(point.x, point.y);
+      if (!target) return;
+      this.commitLane(target.lane);
     });
   }
 
@@ -253,6 +250,7 @@ export class GlideRunnerScene extends Phaser.Scene {
     this.activePrompt = prompt;
     this.phase = 'audio';
     this.selectedLane = 1;
+    this.resetSpiritLane();
     this.decisionTimerMs = this.mode === 'glide'
       ? GLIDE_EASY_DECISION_TIMER_MS
       : glideDecisionTimerMs(prompt.level);
@@ -284,6 +282,7 @@ export class GlideRunnerScene extends Phaser.Scene {
         committed: false,
         correct: false,
         wrong: false,
+        feedbackStartedAt: null,
         x: 0,
         y: 0,
         width: 0,
@@ -326,7 +325,6 @@ export class GlideRunnerScene extends Phaser.Scene {
       frame.setDepth(depth + 0.3);
       frame.setOrigin(0.5);
       frame.setBlendMode(Phaser.BlendModes.SCREEN);
-      frame.setMask(mask);
     }
     return { glow, shadow, maskShape, mask, art, label, frame };
   }
@@ -356,34 +354,47 @@ export class GlideRunnerScene extends Phaser.Scene {
     const level = this.currentLevel();
     const x = laneCenterFromEdgesX(card.lane, trackProgress, this.scale.width, level, time);
     const horizonY = this.scale.height * 0.35;
-    const y = horizonY + (this.scale.height * CARD_PARK_Y - horizonY) * eased;
+    const parkY = this.scale.width < 640 ? 0.56 : CARD_PARK_Y;
+    const y = horizonY + (this.scale.height * parkY - horizonY) * eased;
     const responsive = Phaser.Math.Clamp(
       Math.min(this.scale.width / 1100, this.scale.height / 780),
       0.45,
       1,
     );
-    const cardWidth = Math.min(this.scale.width * 0.13, this.scale.height * 0.24) * responsive;
+    const cardWidth = this.scale.width < 640
+      ? Phaser.Math.Clamp(this.scale.width * 0.2, 64, 84)
+      : Math.min(this.scale.width * 0.135, this.scale.height * 0.25) * responsive;
     const cardHeight = cardWidth * 0.5625;
+    const feedbackAge = card.feedbackStartedAt === null ? null : time - card.feedbackStartedAt;
+    const shake = card.wrong && feedbackAge !== null && feedbackAge < 440
+      ? Math.sin(feedbackAge / 28) * 8 * (1 - feedbackAge / 440)
+      : 0;
+    const dissolve = card.correct && feedbackAge !== null
+      ? Phaser.Math.Clamp((feedbackAge - 120) / 460, 0, 1)
+      : 0;
     const selectionPulse =
       card.selected && this.phase === 'parked' ? 1.035 + Math.sin(time / 175) * 0.015 : 1;
-    card.x = x;
+    const commitPulse = card.committed && this.phase === 'committing'
+      ? 1.04 + Math.sin(time / 70) * 0.018
+      : 1;
+    card.x = x + shake;
     card.y = y;
-    card.width = cardWidth * selectionPulse;
-    card.height = cardHeight * selectionPulse;
+    card.width = cardWidth * selectionPulse * commitPulse * (1 + dissolve * 0.08);
+    card.height = cardHeight * selectionPulse * commitPulse * (1 + dissolve * 0.08);
     const alpha = card.wrong ? 0.72 : 0.38 + eased * 0.62;
-    card.art.setPosition(x, y);
+    const resolvedAlpha = card.correct ? 1 - dissolve : alpha;
+    card.art.setPosition(card.x, y);
     card.art.setDisplaySize(card.width, card.height);
-    card.art.setAlpha(card.wrong ? 0.58 : card.committed ? 1 : alpha);
+    card.art.setAlpha(card.wrong ? 0.58 : card.committed ? resolvedAlpha : alpha);
     if (card.label) {
-      card.label.setPosition(x, y);
+      card.label.setPosition(card.x, y);
       card.label.setFontSize(Math.max(18, Math.round(card.height * 0.28)));
       card.label.setWordWrapWidth(card.width * 0.78);
-      card.label.setAlpha(card.wrong ? 0.58 : card.committed ? 1 : alpha);
-      card.label.setAngle((card.lane - 1) * 2);
+      card.label.setAlpha(card.wrong ? 0.58 : card.committed ? resolvedAlpha : alpha);
     }
-    card.frame?.setPosition(x, y);
-    card.frame?.setDisplaySize(card.width * 1.04, card.height * 1.04);
-    card.frame?.setAlpha(card.wrong ? 0.54 : alpha * 0.92);
+    card.frame?.setPosition(card.x, y);
+    card.frame?.setDisplaySize(card.width * 1.08, card.height * 1.08);
+    card.frame?.setAlpha(card.wrong ? 0.7 : (card.committed ? resolvedAlpha : alpha) * 0.95);
     this.drawCardShape(card, card.width, card.height);
   }
 
@@ -473,7 +484,11 @@ export class GlideRunnerScene extends Phaser.Scene {
 
   private shiftSelection(delta: -1 | 1): void {
     if (this.phase !== 'parked') return;
+    const previousLane = this.selectedLane;
     this.selectedLane = Phaser.Math.Clamp(this.selectedLane + delta, 0, 2) as LaneIndex;
+    if (this.selectedLane === previousLane) return;
+    this.startSpiritLaneShift(previousLane, this.selectedLane);
+    this.spirit.shift(this.selectedLane < previousLane ? 'left' : 'right');
     this.updateSelectionStyles();
     this.paintLaneBreath(this.selectedLane);
   }
@@ -482,6 +497,51 @@ export class GlideRunnerScene extends Phaser.Scene {
     this.cards.forEach((card) => {
       card.selected = card.lane === this.selectedLane && this.phase === 'parked';
     });
+  }
+
+  private commitLane(lane: LaneIndex): void {
+    this.selectedLane = lane;
+    this.updateSelectionStyles();
+    this.commitSelectedLane();
+  }
+
+  private cardAtPoint(x: number, y: number): GlideCard | undefined {
+    return this.cards.find((card) => (
+      x >= card.x - card.width / 2 &&
+      x <= card.x + card.width / 2 &&
+      y >= card.y - card.height / 2 &&
+      y <= card.y + card.height / 2
+    ));
+  }
+
+  private pointerCanvasPoint(pointer: Phaser.Input.Pointer): { x: number; y: number } {
+    const event = pointer.event;
+    if (event instanceof PointerEvent || event instanceof MouseEvent) {
+      const rect = this.game.canvas.getBoundingClientRect();
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top,
+      };
+    }
+    return { x: pointer.x, y: pointer.y };
+  }
+
+  private startSpiritLaneShift(previousLane: LaneIndex, lane: LaneIndex): void {
+    this.spiritLaneShiftStart = this.spiritLanePosition;
+    this.spiritLaneShiftElapsed = 0;
+    this.isSpiritLaneShifting = true;
+    this.spiritLanePosition = Phaser.Math.Clamp(
+      this.spiritLanePosition,
+      Math.min(previousLane, lane),
+      Math.max(previousLane, lane),
+    );
+  }
+
+  private resetSpiritLane(): void {
+    this.spiritLanePosition = 1;
+    this.spiritLaneShiftStart = 1;
+    this.spiritLaneShiftElapsed = 0;
+    this.isSpiritLaneShifting = false;
   }
 
   private commitSelectedLane(): void {
@@ -496,13 +556,21 @@ export class GlideRunnerScene extends Phaser.Scene {
     });
     const targetX = target.x;
     const targetY = target.y + target.height * 0.56;
+    this.spirit.run();
+    [90, 180, 270, 360].forEach((delay) => {
+      this.time.delayedCall(delay, () => {
+        if (this.phase === 'committing') {
+          this.spirit.createAfterimage(this.spirit.container.x, this.spirit.container.y);
+        }
+      });
+    });
     this.tweens.add({
       targets: this.spirit.container,
       x: targetX,
       y: targetY,
-      scale: 1.15,
-      duration: 560,
-      ease: 'Sine.easeInOut',
+      scale: 1.04,
+      duration: 620,
+      ease: 'Cubic.easeInOut',
       onComplete: () => this.resolveCommittedLane(target),
     });
   }
@@ -510,6 +578,7 @@ export class GlideRunnerScene extends Phaser.Scene {
   private resolveCommittedLane(target: GlideCard): void {
     if (!this.activePrompt) return;
     this.phase = 'resolving';
+    target.feedbackStartedAt = this.time.now;
     const resolution = this.engine.resolveLane(this.selectedLane, this.activePrompt.id);
     if (target.promptCard.isCorrect && !target.prompt.isBluff) {
       this.soundscape.play(resolution.stats.combo % 3 === 0 ? 'combo' : 'correct');
@@ -556,7 +625,7 @@ export class GlideRunnerScene extends Phaser.Scene {
       this.onSessionComplete?.(stats);
       return;
     }
-    this.time.delayedCall(650, () => {
+    this.time.delayedCall(RESOLUTION_HOLD_MS, () => {
       this.returnSpiritToCenter();
       this.clearCards();
       this.activePrompt = null;
@@ -567,6 +636,7 @@ export class GlideRunnerScene extends Phaser.Scene {
   }
 
   private returnSpiritToCenter(): void {
+    this.resetSpiritLane();
     this.tweens.add({
       targets: this.spirit.container,
       x: laneCenterX(1, this.scale.width, this.currentLevel(), this.time.now),
@@ -634,9 +704,22 @@ export class GlideRunnerScene extends Phaser.Scene {
     this.hud?.updateDecisionTimer(0, false);
   }
 
-  private updateSpirit(time: number): void {
-    if (this.phase === 'committing') return;
-    const x = laneCenterX(1, this.scale.width, this.currentLevel(), time);
+  private updateSpirit(time: number, delta: number): void {
+    if (this.phase === 'committing' || this.phase === 'resolving') return;
+    if (this.phase === 'parked' && this.isSpiritLaneShifting) {
+      this.spiritLaneShiftElapsed += delta;
+      const progress = Phaser.Math.Clamp(this.spiritLaneShiftElapsed / this.spiritLaneShiftDuration, 0, 1);
+      const eased = Phaser.Math.Easing.Sine.InOut(progress);
+      this.spiritLanePosition = Phaser.Math.Linear(this.spiritLaneShiftStart, this.selectedLane, eased);
+      if (progress >= 1) {
+        this.spiritLanePosition = this.selectedLane;
+        this.isSpiritLaneShifting = false;
+      }
+    } else if (this.phase !== 'parked') {
+      this.resetSpiritLane();
+    }
+    const lanePosition = this.phase === 'parked' ? this.spiritLanePosition : 1;
+    const x = laneCenterX(lanePosition as LaneIndex, this.scale.width, this.currentLevel(), time);
     this.spirit.container.setPosition(x, this.spiritBaseY() + Math.sin(time / 230) * 3);
     this.spirit.update(time);
   }

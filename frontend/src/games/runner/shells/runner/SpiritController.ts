@@ -25,18 +25,16 @@ export class SpiritController {
     this.afterimageKey = afterimageKey;
     this.createAnimations();
     this.sprite = scene.add.sprite(0, 0, sheetKey);
-    this.sprite.setScale(1.26);
     this.sprite.play('spirit-idle');
 
     this.progression = scene.add.sprite(0, 0, sheetKey, 48);
-    this.progression.setScale(1.3);
     this.progression.setAlpha(0);
     this.progression.setBlendMode(Phaser.BlendModes.ADD);
 
     this.burst = scene.add.sprite(0, 0, sheetKey, 56);
-    this.burst.setScale(1.62);
     this.burst.setAlpha(0);
     this.burst.setBlendMode(Phaser.BlendModes.ADD);
+    this.resizeForViewport(scene.scale.width, scene.scale.height);
 
     this.container = scene.add.container(x, y, [this.progression, this.sprite, this.burst]);
     this.container.setDepth(62);
@@ -60,7 +58,9 @@ export class SpiritController {
   }
 
   run(): void {
-    this.idle();
+    if (this.state === 'run') return;
+    this.state = 'run';
+    this.sprite.play('spirit-idle', true);
   }
 
   shift(direction: 'left' | 'right'): void {
@@ -85,7 +85,22 @@ export class SpiritController {
   }
 
   baseAlignedY(height: number): number {
-    return height * 0.83 - (this.sprite.displayHeight * this.container.scaleY) / 2;
+    this.resizeForViewport(this.scene.scale.width, height);
+    const bottomRatio = this.scene.scale.width < 640 ? 0.84 : 0.895;
+    return height * bottomRatio - (this.sprite.displayHeight * this.container.scaleY) / 2;
+  }
+
+  resizeForViewport(width: number, height: number): void {
+    const mobile = width < 640;
+    const targetFrameHeight = Phaser.Math.Clamp(
+      height * (mobile ? 0.29 : 0.26),
+      mobile ? 205 : 214,
+      mobile ? 236 : 244,
+    );
+    const scale = targetFrameHeight / this.sprite.height;
+    this.sprite.setScale(scale);
+    this.progression.setScale(scale * 1.03);
+    this.burst.setScale(scale * 1.28);
   }
 
   createAfterimage(x: number, y: number): Phaser.GameObjects.Image | Phaser.GameObjects.Sprite {

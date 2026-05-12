@@ -5,13 +5,13 @@ export class LaneInput {
   private downY = 0;
   private readonly scene: Phaser.Scene;
   private readonly onLane: (lane: LaneIndex) => void;
-  private readonly onDash: () => void;
+  private readonly onDash: (lane?: LaneIndex) => void;
   private keyboardHandler?: (event: KeyboardEvent) => void;
 
   constructor(
     scene: Phaser.Scene,
     onLane: (lane: LaneIndex) => void,
-    onDash: () => void,
+    onDash: (lane?: LaneIndex) => void,
   ) {
     this.scene = scene;
     this.onLane = onLane;
@@ -61,24 +61,38 @@ export class LaneInput {
     });
 
     this.scene.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-      this.downX = pointer.x;
-      this.downY = pointer.y;
+      const point = this.pointerCanvasPoint(pointer);
+      this.downX = point.x;
+      this.downY = point.y;
     });
     this.scene.input.on('pointerup', (pointer: Phaser.Input.Pointer) => {
-      const dx = pointer.x - this.downX;
-      const dy = pointer.y - this.downY;
+      const point = this.pointerCanvasPoint(pointer);
+      const dx = point.x - this.downX;
+      const dy = point.y - this.downY;
       if (Math.abs(dx) > 42 && Math.abs(dx) > Math.abs(dy)) {
         this.shift(dx > 0 ? 1 : -1);
         return;
       }
       const third = this.scene.scale.width / 3;
-      this.onLane(Math.min(2, Math.floor(pointer.x / third)) as LaneIndex);
+      this.onDash(Math.min(2, Math.floor(point.x / third)) as LaneIndex);
     });
   }
 
   private shift(delta: -1 | 1): void {
     const current = Number(this.scene.registry.get('lane') ?? 1);
     this.onLane(Phaser.Math.Clamp(current + delta, 0, 2) as LaneIndex);
+  }
+
+  private pointerCanvasPoint(pointer: Phaser.Input.Pointer): { x: number; y: number } {
+    const event = pointer.event;
+    if (event instanceof PointerEvent || event instanceof MouseEvent) {
+      const rect = this.scene.game.canvas.getBoundingClientRect();
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top,
+      };
+    }
+    return { x: pointer.x, y: pointer.y };
   }
 }
 

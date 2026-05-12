@@ -104,6 +104,9 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
     filteredDecks.reduce((total, deck) => total + (deck.word_count ?? 0), 0)
   ), [filteredDecks])
   const modeHint = easyMode ? t('games.runner.deckPicker.glide') : t('games.runner.deckPicker.rush')
+  const selectDisplayMode = (mode: RunnerDisplayMode) => {
+    setDisplayMode(mode)
+  }
 
   return (
     <section className="pointer-events-auto absolute inset-0 z-30 flex bg-[#0a1520]/62 px-4 py-4 text-[#d0f0ff] backdrop-blur-sm sm:px-6 sm:py-6">
@@ -178,13 +181,25 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                 className="h-4 w-4 accent-[#4fc3f7]"
               />
             </label>
-            <div className="inline-flex rounded-xl border-2 border-[rgba(168,216,234,0.42)] bg-[#06131f]/88 p-1.5 shadow-[0_0_28px_rgba(79,195,247,0.2)]">
+            <div
+              data-runner-interactive="true"
+              onPointerDown={(event) => event.stopPropagation()}
+              className="inline-flex rounded-xl border-2 border-[rgba(168,216,234,0.42)] bg-[#06131f]/88 p-1.5 shadow-[0_0_28px_rgba(79,195,247,0.2)]"
+            >
               {DISPLAY_MODES.map((item) => (
                 <button
                   key={item.value}
                   type="button"
                   aria-pressed={displayMode === item.value}
-                  onClick={() => setDisplayMode(item.value)}
+                  onPointerDown={(event) => {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    selectDisplayMode(item.value)
+                  }}
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    selectDisplayMode(item.value)
+                  }}
                   className={`min-h-11 rounded-lg border-2 px-5 text-sm font-semibold transition ${
                     displayMode === item.value
                       ? 'border-[#d0f0ff] bg-[#d0f0ff] text-[#071827] shadow-[0_0_22px_rgba(168,216,234,0.62)]'

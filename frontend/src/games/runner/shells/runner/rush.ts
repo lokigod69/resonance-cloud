@@ -38,7 +38,13 @@ type RunnerCard = {
   lane: LaneIndex;
   depth: number;
   resolved: boolean;
+  committed: boolean;
+  correct: boolean;
+  wrong: boolean;
+  feedbackStartedAt: number | null;
 };
+
+const RESOLUTION_HOLD_MS = 850;
 
 export class RushRunnerScene extends Phaser.Scene {
   private engine!: SessionEngine;
@@ -65,6 +71,7 @@ export class RushRunnerScene extends Phaser.Scene {
   private activePrompt: PromptWave | null = null;
   private cardsSpawned = false;
   private thresholdResolved = false;
+  private isCommitting = false;
   private spawnTimer = 0;
   private missFlash = 0;
   private echoGlow: Phaser.GameObjects.Graphics | null = null;
@@ -105,10 +112,7 @@ export class RushRunnerScene extends Phaser.Scene {
     new LaneInput(
       this,
       (lane) => this.selectLane(lane),
-      () => {
-        this.spawnTimer = Math.max(0, this.spawnTimer - 280);
-        this.soundscape.play('footstep');
-      },
+      (lane) => this.commitLane(lane),
     ).create();
     this.registry.set('lane', this.runnerLane);
     this.hud.update(this.engine.stats, this.currentLevel().title);
@@ -212,6 +216,10 @@ export class RushRunnerScene extends Phaser.Scene {
         lane: card.lane,
         depth: 1,
         resolved: false,
+        committed: false,
+        correct: false,
+        wrong: false,
+        feedbackStartedAt: null,
       });
     });
     if (
@@ -224,7 +232,9 @@ export class RushRunnerScene extends Phaser.Scene {
 
   private updateCards(delta: number, time: number): void {
     this.cards.forEach((card) => {
-      card.depth -= delta / Math.max(1200, card.prompt.level.cardTravelDuration);
+      if (!this.isCommitting) {
+        card.depth -= delta / Math.max(1200, card.prompt.level.cardTravelDuration);
+      }
       const point = perspectivePoint(
         card.lane,
         card.depth,
@@ -239,11 +249,21 @@ export class RushRunnerScene extends Phaser.Scene {
         1,
       );
       card.container.setPosition(point.x, point.y);
-      card.container.setScale(point.scale * responsive * 0.86);
-      card.container.setRotation(
-        card.prompt.level.mechanics.tileRotation ? Math.sin(time / 600 + card.lane) * 0.035 : 0,
+      const feedbackAge = card.feedbackStartedAt === null ? null : time - card.feedbackStartedAt;
+      const shake = card.wrong && feedbackAge !== null && feedbackAge < 440
+        ? Math.sin(feedbackAge / 28) * 0.035 * (1 - feedbackAge / 440)
+        : 0;
+      const dissolve = card.correct && feedbackAge !== null
+        ? Phaser.Math.Clamp((feedbackAge - 120) / 460, 0, 1)
+        : 0;
+      const commitPulse = card.committed && this.isCommitting ? 1.04 + Math.sin(time / 70) * 0.018 : 1;
+      card.container.setScale(point.scale * responsive * 0.78 * commitPulse * (1 + dissolve * 0.08));
+      card.container.setRotation(shake);
+      card.container.setAlpha(
+        card.correct
+          ? 1 - dissolve
+          : Phaser.Math.Clamp(0.35 + (1 - card.depth) * 1.2, 0.35, 1),
       );
-      card.container.setAlpha(Phaser.Math.Clamp(0.35 + (1 - card.depth) * 1.2, 0.35, 1));
       if (
         card.depth <= 0 &&
         !this.thresholdResolved &&
@@ -262,6 +282,7 @@ export class RushRunnerScene extends Phaser.Scene {
   }
 
   private selectLane(lane: LaneIndex): void {
+    if (this.isCommitting) return;
     const previousLane = this.runnerLane;
     this.runnerLane = lane;
     this.registry.set('lane', lane);
@@ -274,6 +295,63 @@ export class RushRunnerScene extends Phaser.Scene {
     if (lane !== previousLane) {
       this.resolveBluffFail();
     }
+  }
+
+  private commitLane(lane = this.runnerLane): void {
+    if (!this.activePrompt || this.cards.length === 0 || this.thresholdResolved || this.isCommitting) return;
+    const target = this.cards.find((card) => card.lane === lane && !card.resolved);
+    if (!target) return;
+    this.runnerLane = lane;
+    this.registry.set('lane', lane);
+    this.lanePosition = lane;
+    this.isLaneShifting = false;
+    this.thresholdResolved = true;
+    this.isCommitting = true;
+    target.committed = true;
+    target.resolved = true;
+    this.spirit.run();
+    [90, 180, 270, 360].forEach((delay) => {
+      this.time.delayedCall(delay, () => {
+        if (this.isCommitting) {
+          this.spirit.createAfterimage(this.spirit.container.x, this.spirit.container.y);
+        }
+      });
+    });
+    const targetX = target.container.x;
+    const targetY = target.container.y + target.frame.displayHeight * target.container.scaleY * 0.52;
+    this.tweens.add({
+      targets: this.spirit.container,
+      x: targetX,
+      y: targetY,
+      scale: 1.04,
+      duration: 620,
+      ease: 'Cubic.easeInOut',
+      onComplete: () => this.resolveCommittedLane(target, lane),
+    });
+  }
+
+  private resolveCommittedLane(target: RunnerCard, lane: LaneIndex): void {
+    if (!this.activePrompt) return;
+    target.feedbackStartedAt = this.time.now;
+    const prompt = this.activePrompt;
+    const resolution = this.engine.resolveLane(lane, prompt.id);
+    if (!prompt.isBluff && lane === prompt.correctLane) {
+      target.correct = true;
+      this.soundscape.play(resolution.stats.combo % 3 === 0 ? 'combo' : 'correct');
+      this.spirit.land();
+      this.landingFx(target.container.x, target.container.y, lane);
+    } else {
+      target.wrong = true;
+      this.soundscape.play('miss');
+      this.spirit.fall();
+      this.missFlash = 1;
+      this.landingFx(target.container.x, target.container.y, lane);
+    }
+    this.time.delayedCall(RESOLUTION_HOLD_MS, () => {
+      this.clearPrompt();
+      this.returnSpiritToCenter();
+      this.afterResolution(resolution.stats);
+    });
   }
 
   private resolveAtThreshold(): void {
@@ -411,7 +489,29 @@ export class RushRunnerScene extends Phaser.Scene {
     this.cards = [];
   }
 
+  private returnSpiritToCenter(): void {
+    this.runnerLane = 1;
+    this.lanePosition = 1;
+    this.registry.set('lane', 1);
+    this.tweens.add({
+      targets: this.spirit.container,
+      x: runnerLaneX(1, this.scale.width, this.currentLevel(), this.time.now),
+      y: this.spiritBaseY(),
+      scale: 1,
+      duration: 420,
+      ease: 'Sine.easeInOut',
+      onComplete: () => {
+        this.isCommitting = false;
+        if (!this.activePrompt) this.spirit.idle();
+      },
+    });
+  }
+
   private updateRunner(delta: number, time: number): void {
+    if (this.isCommitting) {
+      this.spirit.update(time);
+      return;
+    }
     if (this.isLaneShifting) {
       this.laneShiftElapsed += delta;
       const progress = Phaser.Math.Clamp(this.laneShiftElapsed / this.laneShiftDuration, 0, 1);
@@ -493,7 +593,7 @@ export class RushRunnerScene extends Phaser.Scene {
       throw new Error('Missing production card-frame.png.');
     }
     const art = this.add.image(0, 0, cardArtKeyForIndex(index));
-    art.setDisplaySize(560, 306);
+    art.setDisplaySize(592, 333);
     art.setAlpha(isBluff ? 0.82 : 0.94);
     art.setVisible(this.displayMode === 'image');
     const frame = this.add.image(0, 0, cardFrame.key);
