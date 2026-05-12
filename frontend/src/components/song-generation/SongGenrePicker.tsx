@@ -18,6 +18,8 @@ export function SongGenrePicker({
   const normalizedValue = value || 'auto'
   const presetValues = useMemo(() => PRESET_GENRES.map((genre) => genre.value), [])
   const isCustom = value !== null && !presetValues.includes(value as (typeof presetValues)[number])
+  const hasCustomText = Boolean(custom.trim())
+  const capturedCustomValue = isCustom ? value : custom.trim().toLowerCase()
 
   function commitCustomGenre(rawValue: string) {
     const trimmed = rawValue.trim().toLowerCase()
@@ -48,38 +50,38 @@ export function SongGenrePicker({
         })}
       </div>
 
-      <div className="flex gap-2">
-        <Input
-          value={custom}
-          onChange={(event) => {
-            const nextCustom = event.target.value
-            setCustom(nextCustom)
-            commitCustomGenre(nextCustom)
-          }}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') {
-              commitCustomGenre(custom)
-            }
-          }}
-          maxLength={40}
-          placeholder={t('modal.generateSong.customGenrePlaceholder')}
-        />
-        <button
-          type="button"
-          onClick={() => commitCustomGenre(custom)}
-          disabled={!custom.trim()}
-          className="h-9 rounded-md border border-border px-3 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground disabled:opacity-40"
-          aria-label={t('modal.generateSong.genreLabel')}
-        >
-          <Check className="h-4 w-4" />
-        </button>
-      </div>
+      <div className="space-y-2">
+        <div className="relative">
+          {hasCustomText && (
+            <Check className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-primary" />
+          )}
+          <Input
+            value={custom}
+            onChange={(event) => {
+              const nextCustom = event.target.value
+              setCustom(nextCustom)
+              commitCustomGenre(nextCustom)
+            }}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                commitCustomGenre(custom)
+              }
+            }}
+            maxLength={40}
+            className={hasCustomText ? 'border-primary bg-primary/10 pr-9 text-primary' : ''}
+            placeholder={t('modal.generateSong.customGenrePlaceholder')}
+          />
+        </div>
 
-      {isCustom && (
-        <p className="text-xs text-muted-foreground">
-          {value}
-        </p>
-      )}
+        {hasCustomText && (
+          <div className="flex flex-wrap gap-2">
+            <div className="h-9 rounded-md border border-primary bg-primary/10 px-3 text-sm font-medium text-primary transition-colors inline-flex items-center gap-2">
+              <Check className="h-4 w-4" />
+              {capturedCustomValue}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
