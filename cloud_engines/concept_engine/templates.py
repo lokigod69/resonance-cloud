@@ -487,34 +487,61 @@ def generate_reliable(word: str, article: str, duration: int = CLIP_DURATION_DEF
 # ---------------------------------------------------------------------------
 
 def generate_suno_lyrics(word: str, article: str = "") -> str:
-    """Generate verse/chorus/outro lyrics for Suno API. Target: 20-35 second output.
+    """Generate multi-section lyrics for Suno API.
 
-    Always produces 5 repetitions of the word across three sections.
+    Produces a syllable-aware repetition pattern; Suno typically renders
+    45-90s depending on genre and word length.
     Article (if present) is placed on 2 randomly chosen lines.
 
     For phrases, use generate_phrase_suno_lyrics() instead.
     """
+    from .syllables import analyze_word
+
     has_article = article and article.lower() != "none"
     word_with_article = f"{article} {word}" if has_article else word
 
-    lines = [word] * 5
+    syllable_info = analyze_word(word, "de")
+    if syllable_info.count <= 2:
+        sections = (
+            ("Intro", 1),
+            ("Verse", 2),
+            ("Pre-Chorus", 2),
+            ("Chorus", 3),
+            ("Bridge", 2),
+            ("Verse 2", 2),
+            ("Outro", 2),
+        )
+    elif syllable_info.count <= 4:
+        sections = (
+            ("Intro", 1),
+            ("Verse", 2),
+            ("Pre-Chorus", 2),
+            ("Chorus", 3),
+            ("Outro", 2),
+        )
+    else:
+        sections = (
+            ("Intro", 1),
+            ("Verse", 2),
+            ("Chorus", 2),
+            ("Outro", 1),
+        )
+
+    repetition_count = sum(line_count for _, line_count in sections)
+    lines = [word] * repetition_count
     if has_article:
-        positions = random.sample(range(5), 2)
+        positions = random.sample(range(repetition_count), 2)
         for pos in positions:
             lines[pos] = word_with_article
 
-    return (
-        f"[Verse]\n"
-        f"{lines[0]}\n"
-        f"{lines[1]}\n"
-        f"\n"
-        f"[Chorus]\n"
-        f"{lines[2]}\n"
-        f"{lines[3]}\n"
-        f"\n"
-        f"[Outro]\n"
-        f"{lines[4]}"
-    )
+    rendered_sections = []
+    offset = 0
+    for section_name, line_count in sections:
+        section_lines = lines[offset:offset + line_count]
+        rendered_sections.append(f"[{section_name}]\n" + "\n".join(section_lines))
+        offset += line_count
+
+    return "\n\n".join(rendered_sections)
 
 
 # ---------------------------------------------------------------------------
