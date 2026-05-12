@@ -123,21 +123,23 @@ body,
   letter-spacing: 1px;
 }
 
-h1,
-h2 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: 0;
-}
+@layer base {
+  h1,
+  h2 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
 
-h1 {
-  font-size: clamp(40px, 8vw, 74px);
-  line-height: 0.95;
-}
+  h1 {
+    font-size: clamp(40px, 8vw, 74px);
+    line-height: 0.95;
+  }
 
-h2 {
-  font-size: clamp(32px, 6vw, 52px);
+  h2 {
+    font-size: clamp(32px, 6vw, 52px);
+  }
 }
 
 .lede {
