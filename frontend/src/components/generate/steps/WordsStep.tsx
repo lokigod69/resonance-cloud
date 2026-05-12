@@ -12,6 +12,7 @@ import {
 } from '../useWizardState'
 import CategoryPicker from './CategoryPicker'
 import { useTranslation } from '@/hooks/useTranslation'
+import { wordsEqual } from '@/lib/wordEquality'
 
 interface WordsStepProps {
   state: WizardState
@@ -33,15 +34,9 @@ export default function WordsStep({
   const glassInputRef = useRef<GlassInputHandle>(null)
   const wordCount = state.words.length
   const isFull = wordCount >= MAX_WORDS
-  // Picker gated to initial entry (wordCount === 0). This prevents CategoryPicker's
-  // SET_WORDS dispatch from wiping words the user already typed manually — once
-  // any manual words exist, the picker is no longer reachable for this step.
-  const [inputMode, setInputMode] = useState<'picker' | 'manual'>(
-    wordCount === 0 ? 'picker' : 'manual'
-  )
 
   function handleLock(word: string) {
-    if (state.words.some((w) => w.toLowerCase() === word.toLowerCase())) {
+    if (state.words.some((w) => wordsEqual(w, word))) {
       setError(t('generate.wordExists'))
       return
     }
@@ -53,13 +48,23 @@ export default function WordsStep({
     dispatch({ type: 'ADD_WORD', word })
   }
 
+  // Synchronously flush GlassInput's typed-but-unlocked value into the list.
+  // dispatch(ADD_WORD) is async and may not have landed before the caller
+  // reads state.words, so we prepend the flushed value explicitly.
   function collectWords(): string[] {
     const flushed = glassInputRef.current?.flush() ?? null
-    // Collect the definitive word list synchronously — state.words may not
-    // yet include the flushed word because dispatch(ADD_WORD) is async.
     return flushed
-      ? [...state.words.filter(w => w.toLowerCase() !== flushed.toLowerCase()), flushed]
+      ? [...state.words.filter((w) => !wordsEqual(w, flushed)), flushed]
       : [...state.words]
+  }
+
+  function handleMergeWords(words: string[]) {
+    // Flush any half-typed input first so it isn't silently dropped when the
+    // user reaches for a category mid-typing. Order: flushed first, then
+    // suggestions — the reducer's dedup walks the list in iteration order.
+    const flushed = glassInputRef.current?.flush() ?? null
+    const incoming = flushed ? [flushed, ...words] : words
+    dispatch({ type: 'ADD_WORDS', words: incoming })
   }
 
   function handleQuickGenerate() {
@@ -72,6 +77,12 @@ export default function WordsStep({
     const allWords = collectWords()
     dispatch({ type: 'CHOOSE_PATH', path: 'quick' })
     onPremiumQuickModeGenerate?.(allWords, mode)
+  }
+
+  function handleCustomize() {
+    glassInputRef.current?.flush()
+    dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
+    onCustomize?.()
   }
 
   return (
@@ -88,43 +99,20 @@ export default function WordsStep({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
-        className="text-sm text-muted-foreground mb-8"
+        className="text-sm text-muted-foreground mb-6"
       >
         {tp('generate.wordCountSlider', wordCount)}
       </motion.p>
 
       <div className={`w-full min-w-0 space-y-5 ${state.productLane === 'card_premium' ? 'max-w-xl' : 'max-w-md'}`}>
-        {inputMode === 'picker' && (
-          <CategoryPicker
-            state={state}
-            dispatch={dispatch}
-            onConfirm={() => {
-              dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
-              onCustomize?.()
-            }}
-            onSwitchToManual={() => setInputMode('manual')}
-            onQuickGenerate={onQuickGenerate}
-            onPremiumQuickModeGenerate={onPremiumQuickModeGenerate}
+        {/* Always-visible input */}
+        {!isFull && (
+          <GlassInput
+            ref={glassInputRef}
+            onLock={handleLock}
+            autoFocus
+            placeholder={t('generate.words.unifiedPlaceholder')}
           />
-        )}
-
-        {/* Back-to-picker control — placed above the input so users see it
-            before typing. Only available before any manual words are locked. */}
-        {inputMode === 'manual' && wordCount === 0 && (
-          <div className="flex w-full justify-start">
-            <button
-              type="button"
-              onClick={() => setInputMode('picker')}
-              className="words-back-button"
-            >
-              {t('common.back')}
-            </button>
-          </div>
-        )}
-
-        {/* Word input */}
-        {inputMode === 'manual' && !isFull && (
-          <GlassInput ref={glassInputRef} onLock={handleLock} autoFocus />
         )}
 
         {/* Locked words */}
@@ -135,19 +123,27 @@ export default function WordsStep({
           />
         )}
 
-        {/* Error */}
+        {/* Lock error */}
         <AnimatePresence>
           {error && (
             <motion.p
               initial={{ opacity: 0, y: -5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="text-xs text-red-400"
+              className="text-xs text-red-400 text-center"
             >
               {error}
             </motion.p>
           )}
         </AnimatePresence>
+
+        {/* Categories section — always visible */}
+        <div className="pt-2">
+          <p className="text-xs uppercase tracking-wider text-muted-foreground text-center mb-3">
+            {t('generate.words.categoriesSubhead')}
+          </p>
+          <CategoryPicker state={state} onMergeWords={handleMergeWords} />
+        </div>
 
         {/* Action buttons — appear after first word */}
         <AnimatePresence>
@@ -163,11 +159,7 @@ export default function WordsStep({
                 <PremiumQuickModePanel
                   onQuickGenerate={handleQuickGenerate}
                   onModeGenerate={handleModeGenerate}
-                  onCustomize={() => {
-                    glassInputRef.current?.flush()
-                    dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
-                    onCustomize?.()
-                  }}
+                  onCustomize={handleCustomize}
                 />
               ) : (
                 <>
@@ -181,11 +173,7 @@ export default function WordsStep({
                   </PillButton>
                   <PillButton
                     variant="secondary"
-                    onClick={() => {
-                      glassInputRef.current?.flush()
-                      dispatch({ type: 'CHOOSE_PATH', path: 'custom' })
-                      onCustomize?.()
-                    }}
+                    onClick={handleCustomize}
                     className="px-6 py-2.5 text-xs font-medium"
                   >
                     <Wand2 className="h-3.5 w-3.5" />
