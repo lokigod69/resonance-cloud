@@ -1,5 +1,6 @@
 import { useReducer, useCallback } from 'react'
 import { MAX_WORDS } from './wizardData'
+import { wordsEqual } from '@/lib/wordEquality'
 
 export type ProductLane = 'video' | 'card_standard' | 'card_premium'
 
@@ -480,6 +481,7 @@ export type WizardAction =
   | { type: 'SET_LANGUAGE'; language: string }
   | { type: 'PRESELECT_LANGUAGE'; language: string }
   | { type: 'ADD_WORD'; word: string }
+  | { type: 'ADD_WORDS'; words: string[] }
   | { type: 'REMOVE_WORD'; index: number }
   | { type: 'SET_WORDS'; words: string[] }
   | { type: 'SET_VIBE'; vibe: string }
@@ -584,8 +586,20 @@ function wizardReducer(state: WizardState, action: WizardAction): WizardState {
       const trimmed = action.word.trim()
       if (!trimmed) return state
       if (state.words.length >= MAX_WORDS) return state
-      if (state.words.some((w) => w.toLowerCase() === trimmed.toLowerCase())) return state
+      if (state.words.some((w) => wordsEqual(w, trimmed))) return state
       return { ...state, words: [...state.words, trimmed] }
+    }
+
+    case 'ADD_WORDS': {
+      const next = [...state.words]
+      for (const raw of action.words) {
+        const word = raw.trim()
+        if (!word) continue
+        if (next.some((existing) => wordsEqual(existing, word))) continue
+        if (next.length >= MAX_WORDS) break
+        next.push(word)
+      }
+      return next.length === state.words.length ? state : { ...state, words: next }
     }
 
     case 'REMOVE_WORD':
