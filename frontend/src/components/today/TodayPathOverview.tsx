@@ -1,7 +1,7 @@
 import { CheckCircle2, Circle, Play } from 'lucide-react'
 import type { GuidedLesson, GuidedPathLessonCardStatus, GuidedPathOverview } from '@/data/guidedLessons'
 import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
-import { getTodayLessonStatus, type TodayProgressState } from '@/lib/todayProgress'
+import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { GuidedVibePicker } from '@/components/today/TodayHero'
@@ -72,6 +72,7 @@ export function TodayPathOverview({
         <RecommendedLessonPanel
           lesson={pathLesson}
           progress={progress}
+          selectedVibeId={selectedVibeId}
           isSelectedRecommendation={isSelectedRecommendation}
           onStartLesson={onStartLesson}
         />
@@ -94,6 +95,7 @@ export function TodayPathOverview({
               status={entry.status}
               isRecommended={entry.isRecommended}
               isSelected={entry.isSelected}
+              completedVibeIds={entry.completedVibeIds}
               onSelectLesson={onSelectLesson}
             />
           ))}
@@ -106,16 +108,18 @@ export function TodayPathOverview({
 function RecommendedLessonPanel({
   lesson,
   progress,
+  selectedVibeId,
   isSelectedRecommendation,
   onStartLesson,
 }: {
   lesson: GuidedLesson
   progress: TodayProgressState
+  selectedVibeId: ActiveGuidedVibeId
   isSelectedRecommendation: boolean
   onStartLesson: () => void
 }) {
   const { t } = useTranslation()
-  const visibleStatus = getTodayLessonStatus(progress, lesson)
+  const visibleStatus = getTodayLessonVibeStatus(progress, lesson, selectedVibeId)
 
   return (
     <section className="today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-6">
@@ -145,12 +149,14 @@ function LessonPathCard({
   status,
   isRecommended,
   isSelected,
+  completedVibeIds,
   onSelectLesson,
 }: {
   lesson: GuidedLesson
   status: GuidedPathLessonCardStatus
   isRecommended: boolean
   isSelected: boolean
+  completedVibeIds: ActiveGuidedVibeId[]
   onSelectLesson: (lessonId: string) => void
 }) {
   const { t } = useTranslation()
@@ -192,9 +198,41 @@ function LessonPathCard({
           <h3 className="mt-1 break-words text-base font-semibold leading-snug text-[var(--text-primary)]">
             {lesson.title}
           </h3>
+          <CompletedVibeBadges completedVibeIds={completedVibeIds} />
         </div>
       </div>
     </button>
+  )
+}
+
+function CompletedVibeBadges({ completedVibeIds }: { completedVibeIds: ActiveGuidedVibeId[] }) {
+  if (completedVibeIds.length === 0) return <span className="mt-auto block min-h-7" aria-hidden="true" />
+
+  return (
+    <span className="today-vibe-completionBadges mt-auto flex min-h-7 flex-wrap items-end gap-1 pt-3" aria-hidden="true">
+      {completedVibeIds.map((vibeId) => {
+        const vibe = guidedVibes[vibeId]
+
+        return (
+          <span
+            key={vibeId}
+            className="today-vibe-completionBadge"
+            data-completed-vibe={vibeId}
+            title={vibe.label}
+          >
+            {guidedVibes[vibeId].emblem?.url && (
+              <img
+                src={guidedVibes[vibeId].emblem?.url}
+                alt=""
+                className="today-vibe-completionBadgeImage"
+                draggable={false}
+              />
+            )}
+            <CheckCircle2 className="today-vibe-completionBadgeCheck" />
+          </span>
+        )
+      })}
+    </span>
   )
 }
 
@@ -212,7 +250,7 @@ function StatusIcon({ status }: { status: GuidedPathLessonCardStatus }) {
 
 function getActionLabel(
   t: ReturnType<typeof useTranslation>['t'],
-  status: ReturnType<typeof getTodayLessonStatus>,
+  status: ReturnType<typeof getTodayLessonVibeStatus>,
 ) {
   if (status === 'completed') return t('today.path.replayLesson')
   if (status === 'skipped') return t('today.path.continueLesson')

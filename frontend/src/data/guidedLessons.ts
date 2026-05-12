@@ -1,4 +1,5 @@
 import {
+  ACTIVE_GUIDED_VIBE_IDS,
   DEFAULT_GUIDED_VIBE_ID,
   isActiveGuidedVibeId,
   type ActiveGuidedVibeId,
@@ -165,6 +166,7 @@ export type GuidedPathLessonOverview = {
   status: GuidedPathLessonCardStatus
   isRecommended: boolean
   isSelected: boolean
+  completedVibeIds: ActiveGuidedVibeId[]
 }
 
 export type GuidedPathOverview = {
@@ -2199,6 +2201,7 @@ export function getGuidedPathOverview(
       status,
       isRecommended,
       isSelected,
+      completedVibeIds: getCompletedGuidedLessonVibeIds(progress, pathId, definition.id),
     }
   })
 
@@ -2384,6 +2387,17 @@ function materializeLessonMedia(variant: GuidedLessonVibeVariant): GuidedLessonM
     posterUrl: variant.placeholderMedia?.posterUrl,
     caption: variant.placeholderMedia?.caption ?? variant.sceneCaption,
   }
+}
+
+function getCompletedGuidedLessonVibeIds(
+  progress: TodayProgressState,
+  pathId: string,
+  lessonId: string,
+): ActiveGuidedVibeId[] {
+  const vibeCompletions = progress.courses[pathId]?.lessons[lessonId]?.vibeCompletions
+  if (!vibeCompletions) return []
+
+  return ACTIVE_GUIDED_VIBE_IDS.filter((vibeId) => Boolean(vibeCompletions[vibeId]?.completedAt))
 }
 
 function uniqueLessonItems(items: LessonItem[]) {

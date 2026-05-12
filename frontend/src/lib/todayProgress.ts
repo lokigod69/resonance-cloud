@@ -1,4 +1,5 @@
 import type { GuidedLesson } from '@/data/guidedLessons'
+import { ACTIVE_GUIDED_VIBE_IDS, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 
 export type TodayLessonStatus = 'completed' | 'skipped'
 
@@ -37,11 +38,17 @@ export type TodayCompletionLine = {
   vars?: Record<string, number>
 }
 
+export type TodayVibeCompletion = {
+  completedAt: string
+  result?: TodayLessonResult
+}
+
 export type TodayLessonProgress = {
   status: TodayLessonStatus
   completedAt?: string
   skippedAt?: string
   result?: TodayLessonResult
+  vibeCompletions?: Partial<Record<ActiveGuidedVibeId, TodayVibeCompletion>>
 }
 
 export type TodayCourseProgress = {
@@ -54,7 +61,7 @@ export type TodayCourseProgress = {
 }
 
 export type TodayProgressState = {
-  schemaVersion: 1
+  schemaVersion: 2
   updatedAt: string
   courses: Record<string, TodayCourseProgress>
 }
@@ -67,7 +74,7 @@ export function todayProgressKey(userId: string) {
 
 export function createEmptyTodayProgressState(): TodayProgressState {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     updatedAt: new Date(0).toISOString(),
     courses: {},
   }
@@ -80,6 +87,33 @@ export function getTodayLessonStatus(
   return state.courses[lesson.courseId]?.lessons[lesson.id]?.status ?? 'new'
 }
 
+export function getTodayLessonVibeStatus(
+  state: TodayProgressState,
+  lesson: GuidedLesson,
+  vibeId: ActiveGuidedVibeId,
+): TodayVisibleStatus {
+  const progress = state.courses[lesson.courseId]?.lessons[lesson.id]
+  if (progress?.vibeCompletions?.[vibeId]?.completedAt) {
+    return 'completed'
+  }
+
+  if (progress?.status === 'skipped') {
+    return 'skipped'
+  }
+
+  return 'new'
+}
+
+export function getCompletedTodayLessonVibeIds(
+  state: TodayProgressState,
+  lesson: Pick<GuidedLesson, 'courseId' | 'id'>,
+): ActiveGuidedVibeId[] {
+  const vibeCompletions = state.courses[lesson.courseId]?.lessons[lesson.id]?.vibeCompletions
+  if (!vibeCompletions) return []
+
+  return ACTIVE_GUIDED_VIBE_IDS.filter((vibeId) => Boolean(vibeCompletions[vibeId]?.completedAt))
+}
+
 export function markTodayLessonComplete(
   state: TodayProgressState,
   lesson: GuidedLesson,
@@ -87,11 +121,20 @@ export function markTodayLessonComplete(
 ): TodayProgressState {
   const timestamp = new Date().toISOString()
   const course = getCourseProgress(state, lesson)
+  const currentLessonProgress = course.lessons[lesson.id]
   const completedLessonIds = uniqueIds([...course.completedLessonIds, lesson.id])
   const skippedLessonIds = course.skippedLessonIds.filter((id) => id !== lesson.id)
+  const vibeCompletions = {
+    ...currentLessonProgress?.vibeCompletions,
+    [lesson.vibeId]: {
+      completedAt: timestamp,
+      result,
+    },
+  }
 
   return {
     ...state,
+    schemaVersion: 2,
     updatedAt: timestamp,
     courses: {
       ...state.courses,
@@ -105,6 +148,7 @@ export function markTodayLessonComplete(
             status: 'completed',
             completedAt: timestamp,
             result,
+            vibeCompletions,
           },
         },
       },
@@ -123,6 +167,7 @@ export function markTodayLessonSkipped(
 
   return {
     ...state,
+    schemaVersion: 2,
     updatedAt: timestamp,
     courses: {
       ...state.courses,
@@ -215,6 +260,7 @@ export function restartTodayLessonProgress(
 
   return {
     ...state,
+    schemaVersion: 2,
     updatedAt: new Date().toISOString(),
     courses: {
       ...state.courses,
@@ -236,12 +282,12 @@ export function readTodayProgressState(userId: string | undefined): TodayProgres
   try {
     const raw = window.localStorage.getItem(todayProgressKey(userId))
     if (!raw) return createEmptyTodayProgressState()
-    const parsed = JSON.parse(raw) as Partial<TodayProgressState>
-    if (parsed.schemaVersion !== 1 || typeof parsed.courses !== 'object' || parsed.courses === null) {
+    const parsed = JSON.parse(raw) as { schemaVersion?: unknown; updatedAt?: unknown; courses?: unknown }
+    if ((parsed.schemaVersion !== 1 && parsed.schemaVersion !== 2) || typeof parsed.courses !== 'object' || parsed.courses === null) {
       return createEmptyTodayProgressState()
     }
     return {
-      schemaVersion: 1,
+      schemaVersion: 2,
       updatedAt: typeof parsed.updatedAt === 'string' ? parsed.updatedAt : new Date(0).toISOString(),
       courses: parsed.courses as Record<string, TodayCourseProgress>,
     }

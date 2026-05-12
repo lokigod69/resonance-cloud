@@ -28,13 +28,17 @@ import { TODAY_SESSION_STEPS } from '../src/components/today/sessionSteps.ts'
 import { getSpeechWordOverlap } from '../src/components/today/speechRecognition.ts'
 import {
   createEmptyTodayProgressState,
+  getCompletedTodayLessonVibeIds,
   getTodayCompletionLines,
   getTodayCompletionSummary,
   getTodayLessonStatus,
+  getTodayLessonVibeStatus,
   markTodayLessonComplete,
   markTodayLessonSkipped,
+  readTodayProgressState,
   restartTodayLessonProgress,
   todayProgressKey,
+  writeTodayProgressState,
 } from '../src/lib/todayProgress.ts'
 
 let failures = 0
@@ -168,15 +172,51 @@ const completed = markTodayLessonComplete(createEmptyTodayProgressState(), brigh
 const skipped = markTodayLessonSkipped(createEmptyTodayProgressState(), brightLesson)
 const restarted = restartTodayLessonProgress(completed, brightLesson)
 assert('progress key is user-scoped', todayProgressKey(userId) === 'resonance_today_progress_v1_user-123')
+assert('empty progress starts at schema version 2', createEmptyTodayProgressState().schemaVersion === 2, createEmptyTodayProgressState())
 assert('complete status is stored at lesson level', getTodayLessonStatus(completed, brightLesson) === 'completed', completed)
 assert('skip status is stored at lesson level', getTodayLessonStatus(skipped, brightLesson) === 'skipped', skipped)
 assert('restart clears only the lesson progress entry', getTodayLessonStatus(restarted, brightLesson) === 'new', restarted)
-assert('progress remains lesson-level and vibe-agnostic', !containsAny(JSON.stringify(completed), ['vibeId', 'selectedVibe', 'bright', 'wistful', 'sharp']), completed)
+assert('completing a lesson records the active vibe completion', getTodayLessonVibeStatus(completed, brightLesson, 'bright') === 'completed', completed)
+assert('completing one vibe keeps the lesson complete overall', getTodayLessonStatus(completed, resolveGuidedLessonVariant(firstDefinition!, 'wistful')) === 'completed', completed)
+assert('uncompleted selected vibe stays startable even when lesson is complete overall', getTodayLessonVibeStatus(completed, resolveGuidedLessonVariant(firstDefinition!, 'wistful'), 'wistful') === 'new', completed)
+assert('completed vibe ids include only completed active vibes', JSON.stringify(getCompletedTodayLessonVibeIds(completed, brightLesson)) === JSON.stringify(['bright']), getCompletedTodayLessonVibeIds(completed, brightLesson))
+const completedBrightAndSharp = markTodayLessonComplete(completed, resolveGuidedLessonVariant(firstDefinition!, 'sharp'), minimalResult())
+assert('additional vibe completion keeps one overall lesson completion', completedBrightAndSharp.courses[pathId]?.completedLessonIds.filter((id) => id === brightLesson.id).length === 1, completedBrightAndSharp)
+assert('additional vibe completion appends badge-ready active vibe ids', JSON.stringify(getCompletedTodayLessonVibeIds(completedBrightAndSharp, brightLesson)) === JSON.stringify(['bright', 'sharp']), getCompletedTodayLessonVibeIds(completedBrightAndSharp, brightLesson))
 const storedResultJson = JSON.stringify(completed.courses[brightLesson.courseId]?.lessons[brightLesson.id]?.result)
 assert('no raw typed recall answers are stored', !containsAny(storedResultJson, ['typedAnswer', 'typeAnswer', 'typedRecallAnswer', 'rawAnswer']), completed)
 assert('no raw speech transcripts are stored', !containsAny(storedResultJson, ['speechTranscript', 'transcriptText', 'rawTranscript', stripPunctuation(brightLesson.speak.targetPhrase)]), completed)
 assert('completion lines include type and speak summaries', getTodayCompletionLines(completed.courses[brightLesson.courseId]!.lessons[brightLesson.id]!.result!).length >= 2)
 assert('completion summary supports no known items', getTodayCompletionSummary(completed.courses[brightLesson.courseId]!.lessons[brightLesson.id]!.result!).key === 'today.completion.summary')
+
+console.log('\n[local progress migration]')
+const originalWindow = globalThis.window
+Object.defineProperty(globalThis, 'window', {
+  value: { localStorage: createMemoryStorage() },
+  configurable: true,
+})
+
+try {
+  const legacyState = {
+    schemaVersion: 1,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    courses: JSON.parse(JSON.stringify(completed.courses)),
+  }
+  delete legacyState.courses[pathId]?.lessons[brightLesson.id]?.vibeCompletions
+  window.localStorage.setItem(todayProgressKey(userId), JSON.stringify(legacyState))
+  const migrated = readTodayProgressState(userId)
+  assert('legacy schema v1 localStorage is migrated to schema version 2', migrated.schemaVersion === 2, migrated)
+  assert('legacy schema v1 completed lesson remains complete overall', getTodayLessonStatus(migrated, brightLesson) === 'completed', migrated)
+  assert('legacy schema v1 does not invent per-vibe badges', getCompletedTodayLessonVibeIds(migrated, brightLesson).length === 0, migrated)
+  writeTodayProgressState(userId, completedBrightAndSharp)
+  const stored = JSON.parse(window.localStorage.getItem(todayProgressKey(userId)) ?? '{}') as { schemaVersion?: number }
+  assert('written localStorage progress uses schema version 2', stored.schemaVersion === 2, stored)
+} finally {
+  Object.defineProperty(globalThis, 'window', {
+    value: originalWindow,
+    configurable: true,
+  })
+}
 
 console.log(`\n${passes} passed, ${failures} failed`)
 if (failures > 0) process.exit(1)
@@ -240,6 +280,31 @@ function stripPunctuation(value: string) {
 
 function containsAny(value: string, needles: string[]) {
   return needles.some((needle) => needle.length > 0 && value.includes(needle))
+}
+
+function createMemoryStorage(): Storage {
+  const values = new Map<string, string>()
+
+  return {
+    get length() {
+      return values.size
+    },
+    clear() {
+      values.clear()
+    },
+    getItem(key: string) {
+      return values.get(key) ?? null
+    },
+    key(index: number) {
+      return Array.from(values.keys())[index] ?? null
+    },
+    removeItem(key: string) {
+      values.delete(key)
+    },
+    setItem(key: string, value: string) {
+      values.set(key, value)
+    },
+  }
 }
 
 function phraseContainsAnswer(lesson: ReturnType<typeof resolveGuidedLessonVariant>) {

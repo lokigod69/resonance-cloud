@@ -78,14 +78,16 @@ export function LessonMediaFrame({
             <div className="absolute inset-0 flex flex-col justify-between p-5 sm:p-6">
               <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--text-muted)]">
                 <Sparkles className="h-4 w-4 text-[var(--accent)]" />
-                {t('today.media.previewLabel')}
+                {isPlaceholder ? t('today.media.placeholderLabel') : t('today.media.previewLabel')}
               </div>
               <div className="max-w-xl">
-                <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_72%,transparent)] text-[var(--text-primary)]">
-                  <Play className="h-4 w-4" />
-                </div>
+                {!isPlaceholder && (
+                  <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_72%,transparent)] text-[var(--text-primary)]">
+                    <Play className="h-4 w-4" />
+                  </div>
+                )}
                 <p className="text-lg font-semibold leading-snug text-[var(--text-primary)] sm:text-xl">
-                  {t('today.media.previewHint')}
+                  {isPlaceholder ? media.caption : t('today.media.previewHint')}
                 </p>
               </div>
             </div>
@@ -115,9 +117,6 @@ export function LessonMediaFrame({
             </div>
             <div className="max-w-xl">
               <p className="text-xl font-semibold leading-snug text-[var(--text-primary)] sm:text-2xl">
-                {t('today.media.placeholderTitle')}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
                 {media.caption}
               </p>
             </div>

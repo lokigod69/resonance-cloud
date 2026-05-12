@@ -1,6 +1,7 @@
 import { CheckCircle2, ChevronLeft, ChevronRight, RotateCcw, Trophy, Volume2 } from 'lucide-react'
 import { useState } from 'react'
 import { getGuidedMatchPairs, type GuidedLesson } from '@/data/guidedLessons'
+import { guidedVibes } from '@/data/guidedVibes'
 import { getTodayCompletionLines, type TodayLessonResult } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
@@ -211,11 +212,20 @@ function CompleteStep({
 }) {
   const { t } = useTranslation()
   const completionLines = getTodayCompletionLines(result)
+  const vibe = guidedVibes[lesson.vibeId]
 
   return (
     <div className="grid gap-5 text-center">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[color-mix(in_srgb,#34d399_54%,transparent)] bg-[color-mix(in_srgb,#34d399_13%,transparent)]">
-        <CheckCircle2 className="h-7 w-7 text-[#34d399]" />
+      <div className="today-completion-vibeBadge mx-auto" aria-label={vibe.label}>
+        {guidedVibes[lesson.vibeId].emblem?.url && (
+          <img
+            src={guidedVibes[lesson.vibeId].emblem?.url}
+            alt=""
+            className="today-completion-vibeBadgeImage"
+            draggable={false}
+          />
+        )}
+        <CheckCircle2 className="today-completion-vibeBadgeCheck" aria-hidden="true" />
       </div>
       <div>
         <h3 className="text-3xl font-semibold text-[var(--text-primary)]">

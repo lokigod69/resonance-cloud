@@ -76,7 +76,7 @@
 .today-shell[data-guided-vibe="sharp"]::before {
   background:
     radial-gradient(ellipse at 86% 8%, color-mix(in srgb, var(--today-glow) 76%, transparent), transparent 34%),
-    linear-gradient(122deg, transparent 34%, color-mix(in srgb, var(--today-accent) 12%, transparent) 64%, transparent 72%),
+    linear-gradient(238deg, transparent 30%, color-mix(in srgb, var(--today-accent) 13%, transparent) 58%, transparent 70%),
     linear-gradient(180deg, color-mix(in srgb, var(--today-panel) 58%, transparent), transparent 68%);
 }
 
@@ -113,6 +113,57 @@
   height: 100%;
   object-fit: contain;
   width: 100%;
+}
+
+.today-vibe-completionBadge {
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 50% 22%, color-mix(in srgb, var(--today-glow) 60%, transparent), transparent 64%),
+    color-mix(in srgb, var(--today-panel) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--today-accent-strong) 56%, var(--today-border));
+  border-radius: 999px;
+  box-shadow: 0 0 14px color-mix(in srgb, var(--today-glow) 46%, transparent);
+  display: inline-flex;
+  height: 1.75rem;
+  justify-content: center;
+  position: relative;
+  width: 1.75rem;
+}
+
+.today-vibe-completionBadge[data-completed-vibe="bright"] {
+  --today-badge-accent: #ffdc73;
+}
+
+.today-vibe-completionBadge[data-completed-vibe="wistful"] {
+  --today-badge-accent: #c1d4e3;
+}
+
+.today-vibe-completionBadge[data-completed-vibe="sharp"] {
+  --today-badge-accent: #6ee7ff;
+}
+
+.today-vibe-completionBadgeImage {
+  display: block;
+  height: 1.35rem;
+  object-fit: contain;
+  width: 1.35rem;
+}
+
+.today-vibe-completionBadgeCheck {
+  background: color-mix(in srgb, #34d399 82%, var(--app-bg));
+  border: 1px solid color-mix(in srgb, #d1fae5 74%, transparent);
+  border-radius: 999px;
+  bottom: -0.18rem;
+  color: #04120b;
+  height: 0.78rem;
+  padding: 0.08rem;
+  position: absolute;
+  right: -0.18rem;
+  width: 0.78rem;
+}
+
+.today-vibe-completionBadge[data-completed-vibe] {
+  border-color: color-mix(in srgb, var(--today-badge-accent) 62%, var(--today-border));
 }
 
 .today-path-card[data-selected="true"],
@@ -156,4 +207,41 @@
   background:
     radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--today-glow) 48%, transparent), transparent 58%),
     color-mix(in srgb, var(--today-panel) 86%, transparent);
+}
+
+.today-completion-vibeBadge {
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 50% 18%, color-mix(in srgb, var(--today-glow) 88%, transparent), transparent 68%),
+    color-mix(in srgb, var(--today-panel) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--today-accent-strong) 64%, var(--today-border));
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--today-accent) 18%, transparent),
+    0 18px 40px color-mix(in srgb, var(--today-glow) 68%, transparent);
+  display: inline-flex;
+  height: 4.75rem;
+  justify-content: center;
+  position: relative;
+  width: 4.75rem;
+}
+
+.today-completion-vibeBadgeImage {
+  display: block;
+  height: 3.65rem;
+  object-fit: contain;
+  width: 3.65rem;
+}
+
+.today-completion-vibeBadgeCheck {
+  background: color-mix(in srgb, #34d399 84%, var(--app-bg));
+  border: 1px solid color-mix(in srgb, #d1fae5 76%, transparent);
+  border-radius: 999px;
+  bottom: 0.1rem;
+  color: #04120b;
+  height: 1.45rem;
+  padding: 0.18rem;
+  position: absolute;
+  right: 0.1rem;
+  width: 1.45rem;
 }

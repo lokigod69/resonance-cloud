@@ -67,6 +67,7 @@ const completedFirst = markTodayLessonComplete(createEmptyTodayProgressState(), 
 const afterFirstOverview = getGuidedPathOverview(pathId, completedFirst, 'bright')
 assert('first incomplete advances to lesson 2 after lesson 1 completion', afterFirstOverview.recommendedLesson?.id === secondLesson.id, afterFirstOverview.recommendedLesson?.id)
 assert('lesson 1 card is complete after completion', afterFirstOverview.lessons[0]?.status === 'complete', afterFirstOverview.lessons[0])
+assert('lesson 1 card exposes completed Bright vibe badge data after Bright completion', JSON.stringify(afterFirstOverview.lessons[0]?.completedVibeIds) === JSON.stringify(['bright']), afterFirstOverview.lessons[0])
 assert('lesson 2 card is current after lesson 1 completion', afterFirstOverview.lessons[1]?.status === 'current', afterFirstOverview.lessons[1])
 assert('lesson 3 card is not started after lesson 1 completion', afterFirstOverview.lessons[2]?.status === 'not-started', afterFirstOverview.lessons[2])
 const selectedFifthOverview = getGuidedPathOverview(pathId, completedFirst, 'bright', lessons[4]?.id)
@@ -95,6 +96,10 @@ const completedTwo = markTodayLessonComplete(completedFirst, secondLesson, minim
 const restartedSecond = restartTodayLessonProgress(completedTwo, secondLesson)
 assert('restart clears selected lesson progress', !restartedSecond.courses[pathId]?.completedLessonIds.includes(secondLesson.id), restartedSecond)
 assert('restart does not clear other completed lessons', restartedSecond.courses[pathId]?.completedLessonIds.includes(firstLesson.id) === true, restartedSecond)
+const completedFirstSharp = markTodayLessonComplete(completedFirst, resolveGuidedLessonVariant(firstLessonDefinition, 'sharp'), minimalResult())
+const afterFirstSharpOverview = getGuidedPathOverview(pathId, completedFirstSharp, 'wistful')
+assert('completing another vibe keeps one overall completed lesson', afterFirstSharpOverview.completedCount === 1, afterFirstSharpOverview)
+assert('path card exposes multiple completed active vibe badges', JSON.stringify(afterFirstSharpOverview.lessons[0]?.completedVibeIds) === JSON.stringify(['bright', 'sharp']), afterFirstSharpOverview.lessons[0])
 
 console.log('\n[vibe behavior]')
 const originalWindow = globalThis.window
@@ -169,6 +174,8 @@ assert('path overview receives a select handler and separate start handler', tod
 assert('lesson cards select lessons without opening the session', lessonPathCardSource.includes('onSelectLesson(lesson.id)') && !lessonPathCardSource.includes('onOpenLesson(lesson.id)'))
 assert('selected lesson panel keeps selected/recommended label copy screen-reader only', recommendedLessonPanelSource.includes('className="sr-only"') && recommendedLessonPanelSource.includes("t('today.path.selectedLessonLabel')") && recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')"))
 assert('selected lesson panel visible copy is reduced to lesson, title, action', !recommendedLessonPanelSource.includes('uppercase tracking-[0.18em] text-[var(--text-muted)]'))
+assert('selected lesson panel action label uses selected-vibe completion status', recommendedLessonPanelSource.includes('getTodayLessonVibeStatus(progress, lesson, selectedVibeId)') && recommendedLessonPanelSource.includes('selectedVibeId'), recommendedLessonPanelSource)
+assert('lesson cards render completed vibe badge emblems', lessonPathCardSource.includes('completedVibeIds') && lessonPathCardSource.includes('today-vibe-completionBadge') && lessonPathCardSource.includes('guidedVibes[vibeId].emblem?.url'), lessonPathCardSource)
 
 console.log('\n[source-level atmosphere tokens]')
 assert('Today root exposes selected vibe as a data attribute', todayPageSource.includes('data-guided-vibe={selectedVibeId}'))
@@ -194,6 +201,7 @@ assert('Today CSS accents default primary buttons inside Today only', todayCssSo
 assert('Today CSS keeps vibe emblems contained', todayCssSource.includes('.today-vibe-emblem') && todayCssSource.includes('object-fit: contain'))
 const sharpAtmosphereSource = sliceBetween(todayCssSource, '.today-shell[data-guided-vibe="sharp"]::before', '.today-shell .theme-panel')
 assert('Sharp atmosphere comes from top-right', containsAny(sharpAtmosphereSource, ['ellipse at 82% 4%', 'ellipse at 86% 8%', 'ellipse at 84% 6%']) && !sharpAtmosphereSource.includes('ellipse at 50% 0%'), sharpAtmosphereSource)
+assert('Sharp atmosphere uses mirrored top-right to bottom-left beam, not old 122deg beam', containsAny(sharpAtmosphereSource, ['linear-gradient(238deg', 'linear-gradient(242deg', 'linear-gradient(235deg']) && !sharpAtmosphereSource.includes('linear-gradient(122deg'), sharpAtmosphereSource)
 
 console.log('\n[source-level UX teardown]')
 assert('Today compact header does not render time estimate', !containsAny(todayCompactHeaderSource, ['today.estimatedTime', 'estimatedMinutes', '<Clock3']))
@@ -209,6 +217,8 @@ assert('build step auto-validates without an Antwort prüfen button', !containsA
 assert('completion can open the next lesson as primary action', completeStepSource.includes('onOpenNextLesson') && completeStepSource.includes("t('today.nextLesson')"))
 assert('completion restart action is visually tertiary', completeStepSource.includes('today-completion-replayAction'))
 assert('trophy completion avoids long why-it-matters copy', !completeStepSource.includes('whyThisWord'))
+assert('scene placeholder uses lesson media caption as primary text', todayHeroSource.includes('today.media.placeholderLabel') && !todayHeroSource.includes("t('today.media.placeholderTitle')") && containsAny(todayHeroSource, ['{media.caption}', 'media.caption']), todayHeroSource)
+assert('completion screen renders selected vibe emblem badge with success check overlay', completeStepSource.includes('today-completion-vibeBadge') && completeStepSource.includes('guidedVibes[lesson.vibeId].emblem?.url') && completeStepSource.includes('<CheckCircle2'), completeStepSource)
 
 const deterministicBuildChips = getDeterministicBuildChips(firstLesson)
 assert(
