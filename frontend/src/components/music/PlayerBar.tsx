@@ -218,10 +218,40 @@ export function PlayerBar({
       </div>
 
       {/* Center: waveform + time */}
-      <div className="order-3 sm:order-2 basis-full sm:basis-auto flex-1 flex items-center gap-2 sm:gap-3 min-w-0 justify-center sm:justify-start">
-        <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 w-10 text-right">
-          {formatTime(currentTime)}
-        </span>
+      <div className="order-3 sm:order-2 basis-full sm:basis-auto flex-1 min-w-0">
+        <div className="hidden sm:flex items-center justify-between gap-3 pb-1">
+          <div className="min-w-0">
+            <div className="truncate text-sm font-medium text-foreground">
+              {currentTrack?.word ?? 'No track selected'}
+            </div>
+            <div className="truncate text-[11px] text-muted-foreground">
+              {currentTrack?.genre ?? currentTrack?.deckName ?? 'Choose a track to start listening'}
+            </div>
+          </div>
+
+          {showLyricsButton && (
+            <button
+              onClick={onToggleLyrics}
+              disabled={lyricsDisabled}
+              className={`hidden sm:inline-flex h-8 shrink-0 items-center gap-2 rounded-md border border-border/80 px-3 text-xs font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-30 ${PLAYER_FOCUS_RING_CLASS} ${
+                lyricsOpen
+                  ? 'bg-[var(--media-player-accent-soft,var(--accent-soft))] text-[var(--media-player-accent,var(--accent))]'
+                  : 'bg-background/60 text-foreground hover:bg-white/10'
+              }`}
+              aria-pressed={lyricsOpen}
+              aria-label="Lyrics"
+              title="Lyrics"
+            >
+              <FileText size={14} />
+              <span>Lyrics</span>
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 justify-center sm:justify-start">
+          <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 w-10 text-right">
+            {formatTime(currentTime)}
+          </span>
 
         {/* Waveform — desktop only */}
         <div className="hidden sm:block flex-1 h-8 min-w-0">
@@ -230,6 +260,8 @@ export function PlayerBar({
             progress={progress}
             onSeek={onSeek}
             className="w-full h-full"
+            variant="line"
+            disabled={seekDisabled}
           />
         </div>
 
@@ -261,9 +293,10 @@ export function PlayerBar({
           />
         </div>
 
-        <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 w-10">
-          {formatTime(duration)}
-        </span>
+          <span className="text-[11px] font-mono text-muted-foreground tabular-nums shrink-0 w-10">
+            {formatTime(duration)}
+          </span>
+        </div>
       </div>
 
       {/* Right: shuffle, repeat, volume */}
@@ -296,7 +329,7 @@ export function PlayerBar({
           <button
             onClick={onToggleLyrics}
             disabled={lyricsDisabled}
-            className={`w-8 h-8 ${PLAYER_SOFT_ICON_BUTTON_CLASS} ${
+            className={`w-8 h-8 sm:hidden ${PLAYER_SOFT_ICON_BUTTON_CLASS} ${
               lyricsOpen ? PLAYER_ACTIVE_TOGGLE_CLASS : PLAYER_INACTIVE_TOGGLE_CLASS
             }`}
             aria-pressed={lyricsOpen}
