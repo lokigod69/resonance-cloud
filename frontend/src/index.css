@@ -157,6 +157,7 @@
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+  scrollbar-gutter: stable;
   overflow-x: hidden;
 }
 
