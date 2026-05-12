@@ -49,7 +49,7 @@ export default function PolishGlassLayout() {
       </div>
 
       {/* Top Navigation */}
-      <nav className="app-topnav fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 flex items-center z-50 pointer-events-auto">
+      <nav className="app-topnav fixed top-0 left-0 w-full min-h-[var(--glassy-header-offset)] px-4 sm:px-6 pt-[calc(var(--app-safe-top)+0.5rem)] pb-2 flex items-center z-50 pointer-events-auto !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen((o) => !o)}
