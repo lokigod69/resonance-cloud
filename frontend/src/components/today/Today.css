@@ -74,10 +74,11 @@
 }
 
 .today-shell[data-guided-vibe="sharp"]::before {
+  inset: -0.75rem -1.75rem -2.25rem -0.75rem;
   background:
-    radial-gradient(ellipse at 86% 8%, color-mix(in srgb, var(--today-glow) 76%, transparent), transparent 34%),
-    linear-gradient(238deg, transparent 30%, color-mix(in srgb, var(--today-accent) 13%, transparent) 58%, transparent 70%),
-    linear-gradient(180deg, color-mix(in srgb, var(--today-panel) 58%, transparent), transparent 68%);
+    radial-gradient(ellipse at 86% 8%, color-mix(in srgb, var(--today-glow) 84%, transparent), transparent 58%),
+    radial-gradient(ellipse at 14% 12%, color-mix(in srgb, var(--today-accent-soft) 58%, transparent), transparent 46%),
+    linear-gradient(180deg, color-mix(in srgb, var(--today-panel) 54%, transparent), transparent 74%);
 }
 
 .today-shell .theme-panel {
