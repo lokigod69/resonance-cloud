@@ -30,7 +30,7 @@
   --field-bg: rgba(188, 213, 223, 0.052);
   --field-border: rgba(188, 213, 223, 0.13);
 
-  --nav-bg: rgba(12, 19, 27, 0.78);
+  --nav-bg: rgba(12, 19, 27, 0.62);
   --nav-active-bg: var(--accent-soft);
   --nav-active-text: var(--text-primary);
 
@@ -120,7 +120,7 @@ body {
 /* Glassy nav: more glass-like (lower alpha) but compensated by heavier blur in .skin-glassy .app-topnav.
    Selector specificity (0,2,0) wins against per-theme overrides regardless of import order. */
 .skin-glassy[class*="theme-"] {
-  --nav-bg: color-mix(in srgb, var(--app-bg) 85%, transparent);
+  --nav-bg: color-mix(in srgb, var(--app-bg) 68%, transparent);
 }
 
 .skin-classic,
@@ -152,7 +152,7 @@ body {
     linear-gradient(180deg, #f6f0e7, #efe6d8);
   --surface-glass: rgba(255, 248, 239, 0.66);
   --surface-glass-strong: rgba(255, 248, 239, 0.86);
-  --nav-bg: rgba(246, 240, 231, 0.92);
+  --nav-bg: rgba(246, 240, 231, 0.78);
 }
 
 .app-shell {
@@ -279,8 +279,8 @@ body {
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   box-shadow: 0 10px 30px color-mix(in srgb, var(--app-bg) 34%, transparent);
-  backdrop-filter: blur(28px) saturate(1.35);
-  -webkit-backdrop-filter: blur(28px) saturate(1.35);
+  backdrop-filter: blur(40px) saturate(1.4);
+  -webkit-backdrop-filter: blur(40px) saturate(1.4);
 }
 
 .skin-classic .app-topnav {
@@ -306,10 +306,10 @@ body {
     linear-gradient(
       90deg,
       transparent 0%,
-      color-mix(in srgb, var(--accent) 16%, transparent) 50%,
+      color-mix(in srgb, var(--accent) 12%, transparent) 50%,
       transparent 100%
     );
-  opacity: 0.45;
+  opacity: 0.28;
 }
 
 .skin-classic .app-topnav > * {
@@ -318,8 +318,8 @@ body {
 }
 
 .skin-glassy .app-topnav {
-  backdrop-filter: blur(36px) saturate(1.4);
-  -webkit-backdrop-filter: blur(36px) saturate(1.4);
+  backdrop-filter: blur(48px) saturate(1.5);
+  -webkit-backdrop-filter: blur(48px) saturate(1.5);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
