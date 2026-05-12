@@ -19,6 +19,11 @@ export function SongGenrePicker({
   const presetValues = useMemo(() => PRESET_GENRES.map((genre) => genre.value), [])
   const isCustom = value !== null && !presetValues.includes(value as (typeof presetValues)[number])
 
+  function commitCustomGenre(rawValue: string) {
+    const trimmed = rawValue.trim().toLowerCase()
+    onChange(trimmed || null)
+  }
+
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap gap-2">
@@ -46,11 +51,14 @@ export function SongGenrePicker({
       <div className="flex gap-2">
         <Input
           value={custom}
-          onChange={(event) => setCustom(event.target.value)}
+          onChange={(event) => {
+            const nextCustom = event.target.value
+            setCustom(nextCustom)
+            commitCustomGenre(nextCustom)
+          }}
           onKeyDown={(event) => {
             if (event.key === 'Enter') {
-              const trimmed = custom.trim().toLowerCase()
-              if (trimmed) onChange(trimmed)
+              commitCustomGenre(custom)
             }
           }}
           maxLength={40}
@@ -58,10 +66,7 @@ export function SongGenrePicker({
         />
         <button
           type="button"
-          onClick={() => {
-            const trimmed = custom.trim().toLowerCase()
-            if (trimmed) onChange(trimmed)
-          }}
+          onClick={() => commitCustomGenre(custom)}
           disabled={!custom.trim()}
           className="h-9 rounded-md border border-border px-3 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground disabled:opacity-40"
           aria-label={t('modal.generateSong.genreLabel')}

@@ -325,7 +325,7 @@ def test_song_only_concept_builds_payload_and_prefers_suno_lyrics(tmp_path, monk
     assert payload.content.translation == "hello"
     assert payload.content.language == "French"
     assert payload.content.language_code == "fr"
-    assert payload.content.external_music_caption == "existing caption"
+    assert payload.content.external_music_caption is None
     assert payload.settings.lyric_mode == "contextual"
     assert payload.settings.genre == "acoustic pop"
     assert result["concept_data"]["lyrics"] == "provider lyrics"
@@ -642,6 +642,23 @@ def test_frontend_song_submit_is_single_flight_and_idempotency_key_tracks_settin
 
     assert "if (!track || submitting || insufficientCredits) return" in modal
     assert "disabled={!track || insufficientCredits || submitting}" in modal
+
+
+def test_frontend_song_genre_picker_commits_custom_text_while_typing():
+    picker = (
+        REPO_ROOT
+        / "frontend"
+        / "src"
+        / "components"
+        / "song-generation"
+        / "SongGenrePicker.tsx"
+    ).read_text(encoding="utf-8")
+
+    assert "function commitCustomGenre(rawValue: string)" in picker
+    assert "const nextCustom = event.target.value" in picker
+    assert "setCustom(nextCustom)" in picker
+    assert "commitCustomGenre(nextCustom)" in picker
+    assert "onChange(trimmed || null)" in picker
 
 
 def test_frontend_music_track_has_audio_helper_accepts_storage_or_provider_url():
