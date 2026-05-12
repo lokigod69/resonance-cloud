@@ -54,6 +54,7 @@ import {
   PremiumSummaryRow,
   type PremiumSummaryItem,
 } from '@/components/generate/shared/PremiumVisualSelectors'
+import { wordsEqual } from '@/lib/wordEquality'
 
 const GO_GENRES = [
   { value: 'auto', label: 'Auto' },
@@ -294,11 +295,26 @@ export default function GenerateGO() {
     switch (action.type) {
       case 'ADD_WORD':
         setWords(prev =>
-          prev.some(w => w.toLowerCase() === action.word.toLowerCase())
+          prev.some(w => wordsEqual(w, action.word))
             ? prev
             : [...prev, action.word].slice(0, MAX_WORDS),
         )
         break
+      case 'ADD_WORDS': {
+        const incoming = action.words
+        setWords(prev => {
+          const next = [...prev]
+          for (const raw of incoming) {
+            const word = raw.trim()
+            if (!word) continue
+            if (next.some(existing => wordsEqual(existing, word))) continue
+            if (next.length >= MAX_WORDS) break
+            next.push(word)
+          }
+          return next
+        })
+        break
+      }
       case 'REMOVE_WORD':
         setWords(prev => prev.filter((_, i) => i !== action.index))
         break
@@ -858,7 +874,7 @@ export default function GenerateGO() {
                 onCustomize={() => setStep(4)}
               />
               <p style={{ textAlign: 'center', color: 'var(--go-text-secondary)', fontSize: '0.8rem', marginTop: 12 }}>
-                {t('generateGo.wordsOfMax', { count: words.length, max: MAX_WORDS })} · {typeof credits === 'number' ? `${credits} ${t('credits.available')}` : t('generateGo.creditsCheckOnGenerate')}
+                {typeof credits === 'number' ? `${credits} ${t('credits.available')}` : t('generateGo.creditsCheckOnGenerate')}
               </p>
             </div>
           ) : (
