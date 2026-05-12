@@ -11,6 +11,7 @@ import {
 import {
   getDeterministicBuildChips,
   getDeterministicMatchColumns,
+  getGuidedTodayPathOptions,
   getGuidedPathOverview,
   getGuidedPathLessons,
   resolveGuidedLessonVariant,
@@ -43,8 +44,10 @@ function assert(name: string, condition: boolean, detail?: unknown) {
   if (detail !== undefined) console.error('       ', detail)
 }
 
-const pathId = 'english-a1-practical'
-const lessons = getGuidedPathLessons(pathId)
+const pathOneId = 'english-a1-practical-1'
+const pathTwoId = 'english-a1-practical-2'
+const lessons = getGuidedPathLessons(pathOneId)
+const pathTwoLessons = getGuidedPathLessons(pathTwoId)
 const firstLessonDefinition = lessons[0]
 const secondLessonDefinition = lessons[1]
 
@@ -56,21 +59,23 @@ const firstLesson = resolveGuidedLessonVariant(firstLessonDefinition, 'bright')
 const secondLesson = resolveGuidedLessonVariant(secondLessonDefinition, 'bright')
 
 console.log('\n[path overview status]')
-const emptyOverview = getGuidedPathOverview(pathId, createEmptyTodayProgressState(), 'bright')
-assert('overview exposes 10 lessons', emptyOverview.lessons.length === 10, emptyOverview.lessons.length)
+const emptyOverview = getGuidedPathOverview(pathOneId, createEmptyTodayProgressState(), 'bright')
+assert('A1 Practical 1 overview exposes 10 lessons', emptyOverview.lessons.length === 10, emptyOverview.lessons.length)
+const emptyPathTwoOverview = getGuidedPathOverview(pathTwoId, createEmptyTodayProgressState(), 'sharp')
+assert('A1 Practical 2 overview exposes 10 lessons', emptyPathTwoOverview.lessons.length === 10, emptyPathTwoOverview.lessons.length)
 assert('empty progress recommends lesson 1', emptyOverview.recommendedLesson?.id === firstLesson.id, emptyOverview.recommendedLesson?.id)
 assert('empty progress is not path complete', !emptyOverview.isComplete)
 assert('lesson 1 is current with empty progress', emptyOverview.lessons[0]?.status === 'current', emptyOverview.lessons[0])
 assert('lesson 2 is not started with empty progress', emptyOverview.lessons[1]?.status === 'not-started', emptyOverview.lessons[1])
 
 const completedFirst = markTodayLessonComplete(createEmptyTodayProgressState(), firstLesson, minimalResult())
-const afterFirstOverview = getGuidedPathOverview(pathId, completedFirst, 'bright')
+const afterFirstOverview = getGuidedPathOverview(pathOneId, completedFirst, 'bright')
 assert('first incomplete advances to lesson 2 after lesson 1 completion', afterFirstOverview.recommendedLesson?.id === secondLesson.id, afterFirstOverview.recommendedLesson?.id)
 assert('lesson 1 card is complete after completion', afterFirstOverview.lessons[0]?.status === 'complete', afterFirstOverview.lessons[0])
 assert('lesson 1 card exposes completed Bright vibe badge data after Bright completion', JSON.stringify(afterFirstOverview.lessons[0]?.completedVibeIds) === JSON.stringify(['bright']), afterFirstOverview.lessons[0])
 assert('lesson 2 card is current after lesson 1 completion', afterFirstOverview.lessons[1]?.status === 'current', afterFirstOverview.lessons[1])
 assert('lesson 3 card is not started after lesson 1 completion', afterFirstOverview.lessons[2]?.status === 'not-started', afterFirstOverview.lessons[2])
-const selectedFifthOverview = getGuidedPathOverview(pathId, completedFirst, 'bright', lessons[4]?.id)
+const selectedFifthOverview = getGuidedPathOverview(pathOneId, completedFirst, 'bright', lessons[4]?.id)
 assert('clicked lesson selection updates the selected lesson panel', selectedFifthOverview.selectedLesson?.id === lessons[4]?.id, selectedFifthOverview.selectedLesson?.id)
 assert('clicked lesson selection does not change first-incomplete recommendation', selectedFifthOverview.recommendedLesson?.id === secondLesson.id, selectedFifthOverview.recommendedLesson?.id)
 
@@ -82,24 +87,28 @@ for (const lessonDefinition of lessons) {
     minimalResult(),
   )
 }
-const allCompleteOverview = getGuidedPathOverview(pathId, allCompleteProgress, 'sharp')
+const allCompleteOverview = getGuidedPathOverview(pathOneId, allCompleteProgress, 'sharp')
 assert('all-complete state is detectable', allCompleteOverview.isComplete)
 assert('all-complete state has no recommended lesson', allCompleteOverview.recommendedLesson === undefined, allCompleteOverview.recommendedLesson)
 assert('all cards are complete when path is complete', allCompleteOverview.lessons.every((lesson) => lesson.status === 'complete'), allCompleteOverview.lessons)
 
 console.log('\n[pure selection and restart behavior]')
 const progressBeforeSelection = JSON.stringify(completedFirst)
-getGuidedPathOverview(pathId, completedFirst, 'wistful', secondLesson.id)
+getGuidedPathOverview(pathOneId, completedFirst, 'wistful', secondLesson.id)
 assert('lesson selection does not mutate progress', JSON.stringify(completedFirst) === progressBeforeSelection, completedFirst)
 
 const completedTwo = markTodayLessonComplete(completedFirst, secondLesson, minimalResult())
 const restartedSecond = restartTodayLessonProgress(completedTwo, secondLesson)
-assert('restart clears selected lesson progress', !restartedSecond.courses[pathId]?.completedLessonIds.includes(secondLesson.id), restartedSecond)
-assert('restart does not clear other completed lessons', restartedSecond.courses[pathId]?.completedLessonIds.includes(firstLesson.id) === true, restartedSecond)
+assert('restart clears selected lesson progress', !restartedSecond.courses[pathOneId]?.completedLessonIds.includes(secondLesson.id), restartedSecond)
+assert('restart does not clear other completed lessons', restartedSecond.courses[pathOneId]?.completedLessonIds.includes(firstLesson.id) === true, restartedSecond)
 const completedFirstSharp = markTodayLessonComplete(completedFirst, resolveGuidedLessonVariant(firstLessonDefinition, 'sharp'), minimalResult())
-const afterFirstSharpOverview = getGuidedPathOverview(pathId, completedFirstSharp, 'wistful')
+const afterFirstSharpOverview = getGuidedPathOverview(pathOneId, completedFirstSharp, 'wistful')
 assert('completing another vibe keeps one overall completed lesson', afterFirstSharpOverview.completedCount === 1, afterFirstSharpOverview)
 assert('path card exposes multiple completed active vibe badges', JSON.stringify(afterFirstSharpOverview.lessons[0]?.completedVibeIds) === JSON.stringify(['bright', 'sharp']), afterFirstSharpOverview.lessons[0])
+const pathTwoFirst = resolveGuidedLessonVariant(pathTwoLessons[0]!, 'bright')
+const completedAcrossPaths = markTodayLessonComplete(completedFirst, pathTwoFirst, minimalResult())
+assert('A1 Practical 1 count stays scoped after A1 Practical 2 completion', getGuidedPathOverview(pathOneId, completedAcrossPaths, 'bright').completedCount === 1, completedAcrossPaths)
+assert('A1 Practical 2 count stays scoped after A1 Practical 1 completion', getGuidedPathOverview(pathTwoId, completedAcrossPaths, 'bright').completedCount === 1, completedAcrossPaths)
 
 console.log('\n[vibe behavior]')
 const originalWindow = globalThis.window
@@ -110,15 +119,19 @@ Object.defineProperty(globalThis, 'window', {
 
 try {
   const progressBeforeVibe = JSON.stringify(completedFirst)
-  setSelectedGuidedVibe(pathId, 'sharp')
-  assert('active vibe switch persists selected voice', getSelectedGuidedVibe(pathId) === 'sharp')
+  setSelectedGuidedVibe(pathOneId, 'sharp')
+  assert('active vibe switch persists selected voice', getSelectedGuidedVibe(pathOneId) === 'sharp')
+  assert('path-specific vibe selection does not bleed into A1 Practical 2', getSelectedGuidedVibe(pathTwoId) === 'bright')
+  setSelectedGuidedVibe(pathTwoId, 'wistful')
+  assert('A1 Practical 2 can persist its own selected voice', getSelectedGuidedVibe(pathTwoId) === 'wistful')
+  assert('A1 Practical 1 keeps its selected voice', getSelectedGuidedVibe(pathOneId) === 'sharp')
   assert('vibe switch does not mutate progress', JSON.stringify(completedFirst) === progressBeforeVibe, completedFirst)
   for (const futureVibeId of FUTURE_GUIDED_VIBE_IDS) {
-    setSelectedGuidedVibe(pathId, futureVibeId)
-    assert(`${futureVibeId} remains non-selectable`, getSelectedGuidedVibe(pathId) === 'bright')
+    setSelectedGuidedVibe(pathOneId, futureVibeId)
+    assert(`${futureVibeId} remains non-selectable`, getSelectedGuidedVibe(pathOneId) === 'bright')
   }
   assert('only active launch vibes are selectable', JSON.stringify(ACTIVE_GUIDED_VIBE_IDS) === JSON.stringify(['bright', 'wistful', 'sharp']), ACTIVE_GUIDED_VIBE_IDS)
-  assert('vibe storage key remains path-scoped', todayGuidedVibeKey(pathId) === 'resonance_guided_vibe__english-a1-practical')
+  assert('vibe storage key remains path-scoped', todayGuidedVibeKey(pathOneId) === 'resonance_guided_vibe__english-a1-practical-1')
 } finally {
   Object.defineProperty(globalThis, 'window', {
     value: originalWindow,
@@ -127,7 +140,7 @@ try {
 }
 
 console.log('\n[privacy]')
-const storedResultJson = JSON.stringify(completedTwo.courses[pathId]?.lessons[firstLesson.id]?.result)
+const storedResultJson = JSON.stringify(completedTwo.courses[pathOneId]?.lessons[firstLesson.id]?.result)
 assert('no raw typed answers are stored', !containsAny(storedResultJson, ['typedAnswer', 'typeAnswer', 'typedRecallAnswer', 'rawAnswer']), completedTwo)
 assert('no raw speech transcripts are stored', !containsAny(storedResultJson, ['speechTranscript', 'transcriptText', 'rawTranscript']), completedTwo)
 
@@ -171,6 +184,9 @@ assert('Back to path does not mutate progress', JSON.stringify(completedTwo) ===
 assert('recommended panel label is next lesson, not internal recommendation copy', recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')") && !recommendedLessonPanelSource.includes("t('today.path.recommendedLabel')"))
 assert('Today page separates lesson selection from session start', containsAny(todayPageSource, ['const handleSelectLesson', 'setSelectedLessonId(lessonId)']) && containsAny(todayPageSource, ['const handleStartSelectedLesson', 'setSessionActive(true)']))
 assert('path overview receives a select handler and separate start handler', todayPathOverviewSource.includes('onSelectLesson') && todayPathOverviewSource.includes('onStartLesson'))
+assert('path selector source exposes both active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId]), getGuidedTodayPathOptions())
+assert('Today page stores selected path id and passes path options to overview', containsAny(todayPageSource, ['selectedPathId', 'getGuidedTodayPathOptions']) && todayPathOverviewSource.includes('pathOptions'))
+assert('path overview renders compact path selector controls', todayPathOverviewSource.includes('onSelectPath') && todayPathOverviewSource.includes('today-path-switcher'))
 assert('lesson cards select lessons without opening the session', lessonPathCardSource.includes('onSelectLesson(lesson.id)') && !lessonPathCardSource.includes('onOpenLesson(lesson.id)'))
 assert('selected lesson panel keeps selected/recommended label copy screen-reader only', recommendedLessonPanelSource.includes('className="sr-only"') && recommendedLessonPanelSource.includes("t('today.path.selectedLessonLabel')") && recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')"))
 assert('selected lesson panel visible copy is reduced to lesson, title, action', !recommendedLessonPanelSource.includes('uppercase tracking-[0.18em] text-[var(--text-muted)]'))

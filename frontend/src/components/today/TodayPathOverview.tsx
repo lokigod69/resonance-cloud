@@ -1,5 +1,11 @@
 import { CheckCircle2, Circle, Play } from 'lucide-react'
-import type { GuidedLesson, GuidedPathLessonCardStatus, GuidedPathOverview } from '@/data/guidedLessons'
+import {
+  getGuidedPathLessons,
+  type GuidedLesson,
+  type GuidedPathLessonCardStatus,
+  type GuidedPathMetadata,
+  type GuidedPathOverview,
+} from '@/data/guidedLessons'
 import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -9,8 +15,11 @@ import { cn } from '@/lib/utils'
 
 type TodayPathOverviewProps = {
   overview: GuidedPathOverview
+  pathOptions: GuidedPathMetadata[]
+  selectedPathId: string
   progress: TodayProgressState
   selectedVibeId: ActiveGuidedVibeId
+  onSelectPath: (pathId: string) => void
   onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
   onSelectLesson: (lessonId: string) => void
   onStartLesson: () => void
@@ -18,8 +27,11 @@ type TodayPathOverviewProps = {
 
 export function TodayPathOverview({
   overview,
+  pathOptions,
+  selectedPathId,
   progress,
   selectedVibeId,
+  onSelectPath,
   onSelectVibe,
   onSelectLesson,
   onStartLesson,
@@ -57,6 +69,12 @@ export function TodayPathOverview({
               </span>
             </div>
           </div>
+          <PathSwitcher
+            pathOptions={pathOptions}
+            selectedPathId={selectedPathId}
+            progress={progress}
+            onSelectPath={onSelectPath}
+          />
         </div>
       </section>
 
@@ -101,6 +119,52 @@ export function TodayPathOverview({
           ))}
         </div>
       </section>
+    </div>
+  )
+}
+
+function PathSwitcher({
+  pathOptions,
+  selectedPathId,
+  progress,
+  onSelectPath,
+}: {
+  pathOptions: GuidedPathMetadata[]
+  selectedPathId: string
+  progress: TodayProgressState
+  onSelectPath: (pathId: string) => void
+}) {
+  if (pathOptions.length <= 1) return null
+
+  return (
+    <div className="today-path-switcher flex w-full flex-wrap gap-2 lg:w-auto lg:justify-end">
+      {pathOptions.map((path) => {
+        const isSelected = path.id === selectedPathId
+        const totalLessons = getGuidedPathLessons(path.id).length
+        const completedCount = progress.courses[path.id]?.completedLessonIds.length ?? 0
+
+        return (
+          <button
+            key={path.id}
+            type="button"
+            aria-pressed={isSelected}
+            onClick={() => onSelectPath(path.id)}
+            className={cn(
+              'min-w-40 rounded-lg border px-3 py-2 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+              isSelected
+                ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)] text-[var(--text-primary)]'
+                : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_36%,transparent)] text-[var(--text-secondary)]',
+            )}
+          >
+            <span className="block text-sm font-semibold leading-5">
+              {path.shortTitle}
+            </span>
+            <span className="mt-0.5 block text-xs leading-5 text-[var(--text-muted)]">
+              {completedCount}/{totalLessons}
+            </span>
+          </button>
+        )
+      })}
     </div>
   )
 }

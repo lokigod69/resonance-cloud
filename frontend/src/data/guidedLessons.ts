@@ -19,6 +19,8 @@ export type GuidedLessonMedia = {
 export type GuidedPathMetadata = {
   id: string
   title: string
+  shortTitle: string
+  subtitle: string
   level: 'A1'
   baseLanguage: 'German'
   targetLanguage: 'English'
@@ -179,9 +181,22 @@ export type GuidedPathOverview = {
   isComplete: boolean
 }
 
-const GUIDED_TODAY_PATH_METADATA: GuidedPathMetadata = {
-  id: 'english-a1-practical',
-  title: 'English A1 Practical',
+const GUIDED_TODAY_PATH_ONE_METADATA: GuidedPathMetadata = {
+  id: 'english-a1-practical-1',
+  title: 'English A1 Practical 1',
+  shortTitle: 'A1 Practical 1',
+  subtitle: 'First Survival Phrases',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'English',
+  estimatedMinutes: 5,
+}
+
+const GUIDED_TODAY_PATH_TWO_METADATA: GuidedPathMetadata = {
+  id: 'english-a1-practical-2',
+  title: 'English A1 Practical 2',
+  shortTitle: 'A1 Practical 2',
+  subtitle: 'Small Help and Simple Choices',
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'English',
@@ -1804,16 +1819,824 @@ const sharpLesson010: GuidedLessonVibeVariant = {
   visualNotes: "Three sharp caption beats, black-white-brass palette, no linger state.",
 }
 
+type A1P2VariantInput = {
+  targetText: string
+  baseText: string
+  meaning: string
+  chunks: PhraseChunk[]
+  targetChips: string[]
+  distractors: string[]
+  typeRecall: GuidedLessonVibeVariant['typeRecall']
+  sceneCaption: string
+  trophyWord: GuidedLessonTrophyWord
+  mediaCaption: string
+  songSeed: GuidedLessonSongSeed
+  visualNotes: string
+}
+
+type A1P2LessonInput = {
+  slug: string
+  title: string
+  situation: GuidedLessonDefinition['situation']
+  pedagogicalGoal: string
+  variants: Record<ActiveGuidedVibeId, A1P2VariantInput>
+}
+
+const a1Practical2Inputs: A1P2LessonInput[] = [
+  {
+    slug: 'i-dont-understand',
+    title: "I don't understand",
+    situation: {
+      en: "You miss the meaning and need simple help without pretending.",
+      de: "Du verstehst die Bedeutung nicht und bittest einfach um Hilfe.",
+    },
+    pedagogicalGoal: "Say you do not understand and ask for help.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "Hi there, I don't understand. Could you help me?",
+        baseText: "Hallo, ich verstehe das nicht. Koennten Sie mir helfen?",
+        meaning: "Eine warme, ehrliche Bitte um Hilfe, wenn der Sinn noch nicht klar ist.",
+        chunks: [
+          chunk('hi-there', 'Hi there', 'Hallo'),
+          chunk('i-dont-understand', "I don't understand", 'ich verstehe das nicht'),
+          chunk('could-you-help-me', 'Could you help me', 'koennten Sie mir helfen'),
+        ],
+        targetChips: ['Hi there,', "I don't understand.", 'Could you help me?'],
+        distractors: ['again', 'lovely'],
+        typeRecall: recall('Hi there, I don\'t ', 'understand', '. Could you help me?', ['understand', 'help me', 'again', 'English']),
+        sceneCaption: "Im kleinen Laden bleibt Bright offen: erst ehrlich sein, dann freundlich um Hilfe bitten.",
+        trophyWord: trophy('lovely', 'nett', 'Lovely, thank you.', 'Lovely macht die Hilfe warm, ohne kindlich zu werden.'),
+        mediaCaption: "Heller Laden, kurzer Blick auf ein Schild, dann die freundliche Bitte um Hilfe.",
+        songSeed: { genre: 'light acoustic pop', mood: 'open and helped' },
+        visualNotes: 'Warm daylight, open hand cue, soft yellow focus on help me.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "Sorry, I don't understand. Could you help me?",
+        baseText: "Entschuldigung, ich verstehe das nicht. Koennten Sie mir helfen?",
+        meaning: "Eine leise, ehrliche Bitte, wenn du den Sinn nicht greifen kannst.",
+        chunks: [
+          chunk('sorry', 'Sorry', 'Entschuldigung'),
+          chunk('i-dont-understand', "I don't understand", 'ich verstehe das nicht'),
+          chunk('could-you-help-me', 'Could you help me', 'koennten Sie mir helfen'),
+        ],
+        targetChips: ['Sorry,', "I don't understand.", 'Could you help me?'],
+        distractors: ['slowly', 'quiet'],
+        typeRecall: recall('Sorry, I don\'t ', 'understand', '. Could you help me?', ['understand', 'again', 'slowly', 'please']),
+        sceneCaption: "Wistful gibt kurz zu, dass der Sinn fehlt, und laesst die Bitte ruhig stehen.",
+        trophyWord: trophy('gently', 'sanft', 'Gently, please.', 'Gently haelt die Bitte weich und trotzdem praktisch.'),
+        mediaCaption: "Ruhige Theke, gedimmtes Licht, ein kurzer Moment bevor die Bitte kommt.",
+        songSeed: { genre: 'soft indie folk', mood: 'gentle repair' },
+        visualNotes: 'Muted blue-gray, slow pause before understand, gentle replay pulse.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "I don't understand. Help me, please.",
+        baseText: "Ich verstehe das nicht. Helfen Sie mir bitte.",
+        meaning: "Eine klare, kurze Aussage: Problem nennen, Hilfe holen.",
+        chunks: [
+          chunk('i-dont-understand', "I don't understand", 'ich verstehe das nicht'),
+          chunk('help-me', 'Help me', 'helfen Sie mir'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        targetChips: ["I don't understand.", 'Help me,', 'please.'],
+        distractors: ['quick', 'again'],
+        typeRecall: recall('I don\'t ', 'understand', '. Help me, please.', ['understand', 'help me', 'quick', 'repeat']),
+        sceneCaption: "Sharp verliert keine Zeit: Nicht verstanden, Hilfe gebraucht, bitte.",
+        trophyWord: trophy('clear', 'klar', 'Clear, thank you.', 'Clear passt zu Sharps Ziel: die Lage schnell klar machen.'),
+        mediaCaption: "Klares Schild, kurze Rueckfrage, direkter Blick zur Person am Schalter.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'clear repair' },
+        visualNotes: 'High contrast, squared help cue, no extra copy.',
+      }),
+    },
+  },
+  {
+    slug: 'write-it-down',
+    title: 'Write it down',
+    situation: {
+      en: "You need a name, address, price, or number written down.",
+      de: "Du brauchst einen Namen, eine Adresse, einen Preis oder eine Zahl schriftlich.",
+    },
+    pedagogicalGoal: "Ask someone to write something down.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "Could you write it down, please?",
+        baseText: "Koennten Sie es bitte aufschreiben?",
+        meaning: "Eine freundliche Bitte, eine wichtige Information schriftlich zu bekommen.",
+        chunks: [
+          chunk('could-you', 'Could you', 'koennten Sie'),
+          chunk('write-it-down', 'write it down', 'es aufschreiben'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        targetChips: ['Could you', 'write it down,', 'please?'],
+        distractors: ['glad', 'show me'],
+        typeRecall: recall('Could you ', 'write it down', ', please?', ['write it down', 'write', 'down', 'show me']),
+        sceneCaption: "Bright laesst die Info nicht verschwinden und bittet freundlich um Schrift.",
+        trophyWord: trophy('glad', 'froh', "I'm glad, thank you.", 'Glad passt zu Brights erleichtertem Dank nach der Hilfe.'),
+        mediaCaption: "Notizblock am Tresen, Stift in der Hand, die Information wird festgehalten.",
+        songSeed: { genre: 'sunny indie pop', mood: 'helpful and light' },
+        visualNotes: 'Paper cue, warm pen stroke, compact written-word highlight.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "Could you write it down for me?",
+        baseText: "Koennten Sie es fuer mich aufschreiben?",
+        meaning: "Eine weichere Bitte, weil Gesprochenes zu schnell wieder weg ist.",
+        chunks: [
+          chunk('could-you', 'Could you', 'koennten Sie'),
+          chunk('write-it-down', 'write it down', 'es aufschreiben'),
+          chunk('for-me', 'for me', 'fuer mich'),
+        ],
+        targetChips: ['Could you', 'write it down', 'for me?'],
+        distractors: ['perhaps', 'again'],
+        typeRecall: recall('Could you ', 'write it down', ' for me?', ['write it down', 'again', 'for me', 'say it']),
+        sceneCaption: "Wistful bittet um eine kleine Spur auf Papier, damit der Moment bleibt.",
+        trophyWord: trophy('slowly', 'langsam', 'Slowly, please.', 'Slowly erinnert daran, dass Tempo Teil der Hilfe ist.'),
+        mediaCaption: "Ein ruhiger Stift ueber Papier, die Adresse wird langsam lesbar.",
+        songSeed: { genre: 'soft indie folk', mood: 'quiet written help' },
+        visualNotes: 'Soft paper texture, slower motion, blue-gray ink line.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "Write it down, please.",
+        baseText: "Schreiben Sie es bitte auf.",
+        meaning: "Eine knappe, hoefliche Anweisung, wenn die Information genau sein muss.",
+        chunks: [
+          chunk('write', 'Write', 'schreiben Sie'),
+          chunk('it-down', 'it down', 'es auf'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        targetChips: ['Write', 'it down,', 'please.'],
+        distractors: ['quick', 'show'],
+        typeRecall: recall('', 'Write it down', ', please.', ['Write it down', 'write', 'quick', 'show me']),
+        sceneCaption: "Sharp macht aus der Bitte einen klaren naechsten Schritt: aufschreiben.",
+        trophyWord: trophy('quick', 'schnell', 'Quick note, please.', 'Quick haelt den Moment kurz und zielgerichtet.'),
+        mediaCaption: "Schalterkante, Stift, kurze Notiz, keine Umwege.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'quick note' },
+        visualNotes: 'Black-white card, fast underline on write, compact note frame.',
+      }),
+    },
+  },
+  {
+    slug: 'show-me',
+    title: 'Show me',
+    situation: {
+      en: "You need someone to point on a map, phone, or menu.",
+      de: "Jemand soll dir etwas auf einer Karte, dem Handy oder der Speisekarte zeigen.",
+    },
+    pedagogicalGoal: "Ask someone to show you something on a map, phone, or menu.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "Could you show me on the map?",
+        baseText: "Koennten Sie es mir auf der Karte zeigen?",
+        meaning: "Eine freundliche Bitte, etwas sichtbar zu machen.",
+        chunks: [
+          chunk('could-you', 'Could you', 'koennten Sie'),
+          chunk('show-me', 'show me', 'mir zeigen'),
+          chunk('on-the-map', 'on the map', 'auf der Karte'),
+        ],
+        targetChips: ['Could you', 'show me', 'on the map?'],
+        distractors: ['brilliant', 'write'],
+        typeRecall: recall('Could you ', 'show me', ' on the map?', ['show me', 'write it', 'map', 'help me']),
+        sceneCaption: "Bright macht die Hilfe sichtbar: ein Finger auf der Karte reicht.",
+        trophyWord: trophy('brilliant', 'prima', 'Brilliant, thank you.', 'Brilliant ist Brights kurzer, warmer Erfolgston.'),
+        mediaCaption: "Offene Karte auf einem Tisch, ein Finger zeigt den richtigen Ort.",
+        songSeed: { genre: 'light acoustic pop', mood: 'visible answer' },
+        visualNotes: 'Map pin glow, friendly yellow path, warm confirmation beat.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "Could you show me here, please?",
+        baseText: "Koennten Sie es mir hier bitte zeigen?",
+        meaning: "Eine vorsichtige Bitte, direkt auf dem Ding vor dir zu zeigen.",
+        chunks: [
+          chunk('could-you', 'Could you', 'koennten Sie'),
+          chunk('show-me', 'show me', 'mir zeigen'),
+          chunk('here-please', 'here, please', 'hier bitte'),
+        ],
+        targetChips: ['Could you', 'show me', 'here, please?'],
+        distractors: ['perhaps', 'write'],
+        typeRecall: recall('Could you ', 'show me', ' here, please?', ['show me', 'write down', 'here', 'again']),
+        sceneCaption: "Wistful haelt das Handy hin und bittet leise um den sichtbaren Punkt.",
+        trophyWord: trophy('perhaps', 'vielleicht', 'Perhaps here?', 'Perhaps gibt Wistful eine vorsichtige, echte Frageform.'),
+        mediaCaption: "Handybildschirm im Halbdunkel, ein vorsichtiger Finger zeigt auf die Stelle.",
+        songSeed: { genre: 'soft indie folk', mood: 'soft pointing' },
+        visualNotes: 'Dim phone glow, small hand gesture, gentle focus ring.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "Show me on the map, please.",
+        baseText: "Zeigen Sie es mir bitte auf der Karte.",
+        meaning: "Eine direkte Bitte, sofort den Ort zu sehen.",
+        chunks: [
+          chunk('show-me', 'Show me', 'zeigen Sie mir'),
+          chunk('on-the-map', 'on the map', 'auf der Karte'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        targetChips: ['Show me', 'on the map,', 'please.'],
+        distractors: ['exactly', 'write'],
+        typeRecall: recall('', 'Show me', ' on the map, please.', ['Show me', 'write it', 'map', 'again']),
+        sceneCaption: "Sharp will den Punkt sehen, nicht darueber reden.",
+        trophyWord: trophy('exactly', 'genau', 'Exactly there.', 'Exactly passt, wenn die Stelle klar gezeigt ist.'),
+        mediaCaption: "Karte, Zielpunkt, klare Linie vom Finger zum Ort.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'exact location' },
+        visualNotes: 'Crisp pointer line, hard map crop, exact target dot.',
+      }),
+    },
+  },
+  {
+    slug: 'which-one',
+    title: 'Which one?',
+    situation: {
+      en: "You choose between two visible options.",
+      de: "Du waehlst zwischen zwei sichtbaren Optionen.",
+    },
+    pedagogicalGoal: "Ask a simple choice question.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "Which one is better, this one or that one?",
+        baseText: "Welches ist bitte besser, dieses hier oder jenes dort?",
+        meaning: "Eine offene Wahlfrage zwischen zwei sichtbaren Dingen.",
+        chunks: [
+          chunk('which-one', 'Which one', 'welches'),
+          chunk('is-better', 'is better', 'ist besser'),
+          chunk('this-or-that', 'this one or that one', 'dieses hier oder jenes dort'),
+        ],
+        targetChips: ['Which one', 'is better,', 'this one or that one?'],
+        distractors: ['ready', 'where'],
+        typeRecall: recall('Which one is better, ', 'this one', ' or that one?', ['this one', 'that one', 'better', 'ready']),
+        sceneCaption: "Bright macht die Wahl leicht: zwei Dinge, eine freundliche Frage.",
+        trophyWord: trophy('ready', 'bereit', "I'm ready.", 'Ready zeigt, dass Bright nach der Wahl direkt weiter kann.'),
+        mediaCaption: "Zwei Gebaeckstuecke im Schaufenster, die Wahl liegt sichtbar da.",
+        songSeed: { genre: 'sunny indie pop', mood: 'friendly choice' },
+        visualNotes: 'Two-option layout, warm selection glow, clear this/that labels.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "Perhaps this one or that one?",
+        baseText: "Vielleicht dieses hier oder jenes dort?",
+        meaning: "Eine sanfte Wahlfrage, wenn du noch unsicher bist.",
+        chunks: [
+          chunk('perhaps', 'Perhaps', 'vielleicht'),
+          chunk('this-one', 'this one', 'dieses hier'),
+          chunk('or-that-one', 'or that one', 'oder jenes dort'),
+        ],
+        targetChips: ['Perhaps', 'this one', 'or that one?'],
+        distractors: ['quiet', 'better'],
+        typeRecall: recall('Perhaps ', 'this one', ' or that one?', ['this one', 'that one', 'perhaps', 'again']),
+        sceneCaption: "Wistful laesst die Wahl offen, ohne die Situation schwer zu machen.",
+        trophyWord: trophy('quiet', 'ruhig', 'A quiet choice.', 'Quiet passt zu Wistfuls leiser Entscheidungsenergie.'),
+        mediaCaption: "Zwei kleine Optionen im weichen Licht, ein kurzer unsicherer Blick.",
+        songSeed: { genre: 'soft indie folk', mood: 'quiet choice' },
+        visualNotes: 'Soft split focus, gentle hover between two options, low contrast.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "Which one: this or that?",
+        baseText: "Welches bitte: dieses oder jenes?",
+        meaning: "Eine knappe Wahlfrage mit zwei Optionen.",
+        chunks: [
+          chunk('which-one', 'Which one', 'welches'),
+          chunk('this', 'this', 'dieses'),
+          chunk('or-that', 'or that', 'oder jenes'),
+        ],
+        targetChips: ['Which one:', 'this', 'or that?'],
+        distractors: ['ready', 'please'],
+        typeRecall: recall('', 'Which one', ': this or that?', ['Which one', 'this or that', 'ready', 'please']),
+        sceneCaption: "Sharp reduziert die Auswahl auf zwei Punkte: dieses oder jenes.",
+        trophyWord: trophy('ready', 'bereit', 'Ready to choose.', 'Ready haelt die Wahl kurz und handlungsnah.'),
+        mediaCaption: "Zwei klare Produktkanten, kurzer Blick, schnelle Entscheidung.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'binary choice' },
+        visualNotes: 'Hard A/B framing, crisp cursor, no decoration.',
+      }),
+    },
+  },
+  {
+    slug: 'do-you-have',
+    title: 'Do you have...?',
+    situation: {
+      en: "You ask whether a shop, cafe, or desk has the thing you need.",
+      de: "Du fragst, ob ein Laden, Cafe oder Schalter das hat, was du brauchst.",
+    },
+    pedagogicalGoal: "Ask if something is available.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "Hi, do you have this?",
+        baseText: "Hallo, haben Sie das hier?",
+        meaning: "Eine freundliche Verfuegbarkeitsfrage mit dem Ding direkt vor dir.",
+        chunks: [
+          chunk('hi', 'Hi', 'Hallo'),
+          chunk('do-you-have', 'do you have', 'haben Sie'),
+          chunk('this', 'this', 'das hier'),
+        ],
+        targetChips: ['Hi,', 'do you have', 'this?'],
+        distractors: ['charming', 'where'],
+        typeRecall: recall('Hi, do you ', 'have this', '?', ['have this', 'show this', 'this', 'where']),
+        sceneCaption: "Bright fragt offen und zeigt auf das, was gebraucht wird.",
+        trophyWord: trophy('charming', 'nett', 'Charming, thanks.', 'Charming gibt Bright eine warme Laden-Note ohne Uebertreibung.'),
+        mediaCaption: "Kleiner Laden, Artikel in der Hand, offene Frage an die Theke.",
+        songSeed: { genre: 'light acoustic pop', mood: 'warm availability' },
+        visualNotes: 'Shelf highlight, friendly hand cue, soft coral item outline.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "Do you have this, perhaps?",
+        baseText: "Haben Sie das hier vielleicht?",
+        meaning: "Eine vorsichtige Frage, ob etwas verfuegbar ist.",
+        chunks: [
+          chunk('do-you-have', 'Do you have', 'haben Sie'),
+          chunk('this', 'this', 'das hier'),
+          chunk('perhaps', 'perhaps', 'vielleicht'),
+        ],
+        targetChips: ['Do you have', 'this,', 'perhaps?'],
+        distractors: ['soft', 'where'],
+        typeRecall: recall('Do you ', 'have this', ', perhaps?', ['have this', 'this', 'perhaps', 'show me']),
+        sceneCaption: "Wistful fragt behutsam, als koennte die Antwort auch nein sein.",
+        trophyWord: trophy('soft', 'sanft', 'Soft answer, thank you.', 'Soft haelt die Frage vorsichtig, aber nutzbar.'),
+        mediaCaption: "Regallicht, ein Gegenstand in der Hand, die Frage bleibt klein.",
+        songSeed: { genre: 'soft indie folk', mood: 'soft availability' },
+        visualNotes: 'Muted shelf, small maybe cue, gentle item glow.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "Do you have this?",
+        baseText: "Haben Sie das hier?",
+        meaning: "Eine direkte Verfuegbarkeitsfrage.",
+        chunks: [
+          chunk('do-you-have', 'Do you have', 'haben Sie'),
+          chunk('this', 'this', 'das hier'),
+        ],
+        targetChips: ['Do you have', 'this?'],
+        distractors: ['certain', 'please'],
+        typeRecall: recall('Do you ', 'have this', '?', ['have this', 'this', 'certain', 'where']),
+        sceneCaption: "Sharp fragt genau nach dem Gegenstand, ohne Zusatz.",
+        trophyWord: trophy('certain', 'sicher', 'Certain, thanks.', 'Certain passt zu Sharps Wunsch nach einer eindeutigen Antwort.'),
+        mediaCaption: "Produkt in der Hand, Blick zur Kasse, klare Ja-oder-nein-Frage.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'available or not' },
+        visualNotes: 'Clean product crop, yes/no contrast, hard edge around this.',
+      }),
+    },
+  },
+  {
+    slug: 'by-card',
+    title: 'By card',
+    situation: {
+      en: "You reach the payment moment and need card or cash language.",
+      de: "Du bist beim Bezahlen und brauchst Sprache fuer Karte oder Bargeld.",
+    },
+    pedagogicalGoal: "Ask to pay by card or cash.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "Could I pay by card, please?",
+        baseText: "Koennte ich bitte mit Karte bezahlen?",
+        meaning: "Eine freundliche Zahlungsfrage an der Kasse.",
+        chunks: [
+          chunk('could-i-pay', 'Could I pay', 'koennte ich bezahlen'),
+          chunk('by-card', 'by card', 'mit Karte'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        targetChips: ['Could I pay', 'by card,', 'please?'],
+        distractors: ['easy', 'cash'],
+        typeRecall: recall('Could I ', 'pay by card', ', please?', ['pay by card', 'pay cash', 'card', 'easy']),
+        sceneCaption: "Bright erreicht die Kasse und fragt freundlich nach Karte.",
+        trophyWord: trophy('easy', 'einfach', 'Easy, thank you.', 'Easy ist die kleine Erleichterung, wenn Bezahlen klappt.'),
+        mediaCaption: "Kontaktloses Kartenlesegeraet, heller Tresen, kurzer Zahlungsblick.",
+        songSeed: { genre: 'sunny indie pop', mood: 'easy payment' },
+        visualNotes: 'Card tap glow, warm receipt edge, bright payment confirmation.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "Can I pay by card, please?",
+        baseText: "Kann ich bitte mit Karte bezahlen?",
+        meaning: "Eine ruhige Frage, ob Karte in Ordnung ist.",
+        chunks: [
+          chunk('can-i-pay', 'Can I pay', 'kann ich bezahlen'),
+          chunk('by-card', 'by card', 'mit Karte'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        targetChips: ['Can I pay', 'by card,', 'please?'],
+        distractors: ['again', 'cash'],
+        typeRecall: recall('Can I ', 'pay by card', ', please?', ['pay by card', 'card', 'cash', 'again']),
+        sceneCaption: "Wistful fragt leise, bevor die Karte den Leser beruehrt.",
+        trophyWord: trophy('again', 'noch einmal', 'Again, please.', 'Again bleibt ein nuetzliches Reparaturwort im Bezahlmoment.'),
+        mediaCaption: "Kartenleser im weichen Licht, ein kurzer fragender Blick.",
+        songSeed: { genre: 'soft indie folk', mood: 'careful payment' },
+        visualNotes: 'Dim terminal glow, small pause before tap, soft blue highlight.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "Can I pay by card?",
+        baseText: "Kann ich mit Karte bezahlen?",
+        meaning: "Eine kurze Frage nach Kartenzahlung.",
+        chunks: [
+          chunk('can-i-pay', 'Can I pay', 'kann ich bezahlen'),
+          chunk('by-card', 'by card', 'mit Karte'),
+        ],
+        targetChips: ['Can I pay', 'by card?'],
+        distractors: ['straight', 'cash'],
+        typeRecall: recall('Can I ', 'pay by card', '?', ['pay by card', 'card', 'cash', 'receipt']),
+        sceneCaption: "Sharp klaert die Zahlungsart, bevor Zeit verloren geht.",
+        trophyWord: trophy('straight', 'direkt', 'Straight to payment.', 'Straight beschreibt die direkte Zahlungsloesung.'),
+        mediaCaption: "Kartenleser, klare Handbewegung, direkte Zahlungsfrage.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'straight payment' },
+        visualNotes: 'Crisp terminal crop, straight line to card, no soft extras.',
+      }),
+    },
+  },
+  {
+    slug: 'a-receipt-please',
+    title: 'A receipt, please',
+    situation: {
+      en: "You need a receipt, a bag, or both before leaving.",
+      de: "Du brauchst vor dem Gehen eine Quittung, eine Tuete oder beides.",
+    },
+    pedagogicalGoal: "Ask for a receipt or bag.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "A receipt, please, and a bag.",
+        baseText: "Eine Quittung bitte, und eine Tuete.",
+        meaning: "Eine freundliche Zusatzbitte kurz vor dem Gehen.",
+        chunks: [
+          chunk('a-receipt', 'A receipt', 'eine Quittung'),
+          chunk('please', 'please', 'bitte'),
+          chunk('and-a-bag', 'and a bag', 'und eine Tuete'),
+        ],
+        targetChips: ['A receipt,', 'please,', 'and a bag.'],
+        distractors: ['splendid', 'card'],
+        typeRecall: recall('A ', 'receipt', ', please, and a bag.', ['receipt', 'bag', 'card', 'splendid']),
+        sceneCaption: "Bright erinnert sich rechtzeitig und fragt warm nach Quittung und Tuete.",
+        trophyWord: trophy('splendid', 'prima', 'Splendid, thank you.', 'Splendid gibt dem kleinen Zusatz einen hellen Abschluss.'),
+        mediaCaption: "Kasse, Quittungsrolle, kleine Tuete am Rand des Tresens.",
+        songSeed: { genre: 'light acoustic pop', mood: 'small extra' },
+        visualNotes: 'Receipt curl, bag outline, warm thank-you beat.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "A receipt, please. And a bag?",
+        baseText: "Eine Quittung bitte. Und eine Tuete?",
+        meaning: "Eine kleine Zusatzfrage, fast schon beim Weggehen.",
+        chunks: [
+          chunk('a-receipt', 'A receipt', 'eine Quittung'),
+          chunk('please', 'please', 'bitte'),
+          chunk('and-a-bag', 'And a bag', 'und eine Tuete'),
+        ],
+        targetChips: ['A receipt,', 'please.', 'And a bag?'],
+        distractors: ['near', 'card'],
+        typeRecall: recall('A ', 'receipt', ', please. And a bag?', ['receipt', 'bag', 'card', 'again']),
+        sceneCaption: "Wistful haelt kurz inne und fuegt die Tuete vorsichtig hinzu.",
+        trophyWord: trophy('near', 'nah', 'Near the door.', 'Near bleibt einfach und passt zum fast abgeschlossenen Moment.'),
+        mediaCaption: "Die Hand schon nahe an der Tuere, die Quittung kommt noch dazu.",
+        songSeed: { genre: 'soft indie folk', mood: 'small afterthought' },
+        visualNotes: 'Door-side pause, soft receipt paper, low warm edge.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "Receipt and bag, please.",
+        baseText: "Quittung und Tuete, bitte.",
+        meaning: "Eine knappe, klare Zusatzbitte an der Kasse.",
+        chunks: [
+          chunk('receipt', 'Receipt', 'Quittung'),
+          chunk('and-bag', 'and bag', 'und Tuete'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        targetChips: ['Receipt', 'and bag,', 'please.'],
+        distractors: ['focused', 'card'],
+        typeRecall: recall('', 'Receipt', ' and bag, please.', ['Receipt', 'bag', 'card', 'cash']),
+        sceneCaption: "Sharp nennt beide Dinge in einem Zug.",
+        trophyWord: trophy('focused', 'konzentriert', 'Focused and done.', 'Focused passt zu Sharps kurzer Kassenliste.'),
+        mediaCaption: "Quittung, Tuete, kurzer Blick zur Kasse, fertig.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'focused checkout' },
+        visualNotes: 'Two-item checklist, crisp check marks, compact receipt crop.',
+      }),
+    },
+  },
+  {
+    slug: 'i-have-a-reservation',
+    title: 'I have a reservation',
+    situation: {
+      en: "You arrive at a restaurant, hotel, or desk with a booking.",
+      de: "Du kommst mit einer Reservierung im Restaurant, Hotel oder am Schalter an.",
+    },
+    pedagogicalGoal: "Use a basic booking phrase.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "Hi, I have a reservation.",
+        baseText: "Hallo, ich habe eine Reservierung.",
+        meaning: "Ein freundlicher Start fuer einen gebuchten Platz oder Termin.",
+        chunks: [
+          chunk('hi', 'Hi', 'Hallo'),
+          chunk('i-have', 'I have', 'ich habe'),
+          chunk('a-reservation', 'a reservation', 'eine Reservierung'),
+        ],
+        targetChips: ['Hi,', 'I have', 'a reservation.'],
+        distractors: ['kind', 'table'],
+        typeRecall: recall('Hi, I have a ', 'reservation', '.', ['reservation', 'table', 'booking', 'kind']),
+        sceneCaption: "Bright kommt an und macht den gebuchten Moment freundlich klar.",
+        trophyWord: trophy('kind', 'freundlich', 'Kind of you, thanks.', 'Kind passt zum warmen Empfang am Anfang.'),
+        mediaCaption: "Restaurantpult, Reservierungsliste, offener erster Satz.",
+        songSeed: { genre: 'sunny indie pop', mood: 'friendly arrival' },
+        visualNotes: 'Reservation book glow, warm host stand, soft name-line highlight.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "I have a reservation, I think.",
+        baseText: "Ich habe eine Reservierung, glaube ich.",
+        meaning: "Eine vorsichtige Buchungsphrase, wenn du noch pruefst.",
+        chunks: [
+          chunk('i-have', 'I have', 'ich habe'),
+          chunk('a-reservation', 'a reservation', 'eine Reservierung'),
+          chunk('i-think', 'I think', 'glaube ich'),
+        ],
+        targetChips: ['I have', 'a reservation,', 'I think.'],
+        distractors: ['calm', 'table'],
+        typeRecall: recall('I have a ', 'reservation', ', I think.', ['reservation', 'table', 'name', 'again']),
+        sceneCaption: "Wistful gibt die Reservierung an, mit einem kleinen unsicheren Rand.",
+        trophyWord: trophy('calm', 'ruhig', 'Calm, thank you.', 'Calm haelt die Ankunft leise und kontrolliert.'),
+        mediaCaption: "Leiser Empfangstisch, Name auf einer Liste, kurzer pruefender Blick.",
+        songSeed: { genre: 'soft indie folk', mood: 'quiet arrival' },
+        visualNotes: 'Low light host stand, soft name card, gentle uncertainty cue.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "I have a reservation.",
+        baseText: "Ich habe eine Reservierung.",
+        meaning: "Eine direkte Buchungsphrase ohne Zusatz.",
+        chunks: [
+          chunk('i-have', 'I have', 'ich habe'),
+          chunk('a-reservation', 'a reservation', 'eine Reservierung'),
+        ],
+        targetChips: ['I have', 'a reservation.'],
+        distractors: ['direct', 'table'],
+        typeRecall: recall('I have a ', 'reservation', '.', ['reservation', 'table', 'name', 'direct']),
+        sceneCaption: "Sharp sagt den Status zuerst: Reservierung vorhanden.",
+        trophyWord: trophy('direct', 'direkt', 'Direct and clear.', 'Direct ist Sharps ganze Empfangsstrategie.'),
+        mediaCaption: "Hoststand, Name wird geprueft, direkter Satz ohne Small Talk.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'direct arrival' },
+        visualNotes: 'Clean reservation line, hard white label, efficient framing.',
+      }),
+    },
+  },
+  {
+    slug: 'is-this-right',
+    title: 'Is this right?',
+    situation: {
+      en: "You confirm a bus, train, place, or item before committing.",
+      de: "Du bestaetigst Bus, Zug, Ort oder Gegenstand, bevor du weitermachst.",
+    },
+    pedagogicalGoal: "Confirm bus, train, place, or item.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "Is this the right bus?",
+        baseText: "Ist das der richtige Bus?",
+        meaning: "Eine klare, freundliche Bestaetigung vor dem Einsteigen.",
+        chunks: [
+          chunk('is-this', 'Is this', 'ist das'),
+          chunk('the-right', 'the right', 'der richtige'),
+          chunk('bus', 'bus', 'Bus'),
+        ],
+        targetChips: ['Is this', 'the right', 'bus?'],
+        distractors: ['sure', 'train'],
+        typeRecall: recall('Is this the ', 'right bus', '?', ['right bus', 'right', 'train', 'sure']),
+        sceneCaption: "Bright fragt vor dem Einstieg und bleibt dabei freundlich klar.",
+        trophyWord: trophy('sure', 'sicher', 'Sure, thank you.', 'Sure ist der leichte Moment, wenn die Antwort passt.'),
+        mediaCaption: "Bushaltestelle, Liniennummer, kurzer Check vor dem Einsteigen.",
+        songSeed: { genre: 'light acoustic pop', mood: 'sure before moving' },
+        visualNotes: 'Bus number highlight, warm yes cue, open boarding frame.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "Is this right, please?",
+        baseText: "Ist das bitte richtig?",
+        meaning: "Eine vorsichtige Bestaetigungsfrage, bevor du dich festlegst.",
+        chunks: [
+          chunk('is-this', 'Is this', 'ist das'),
+          chunk('right', 'right', 'richtig'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        targetChips: ['Is this', 'right,', 'please?'],
+        distractors: ['simple', 'bus'],
+        typeRecall: recall('Is this ', 'right', ', please?', ['right', 'bus', 'train', 'again']),
+        sceneCaption: "Wistful prueft den Moment leise, bevor er weitergeht.",
+        trophyWord: trophy('simple', 'einfach', 'Simple question.', 'Simple haelt die Bestaetigung klein und machbar.'),
+        mediaCaption: "Haltestellenschild im weichen Licht, die Frage bleibt vorsichtig.",
+        songSeed: { genre: 'soft indie folk', mood: 'careful check' },
+        visualNotes: 'Soft sign focus, small question mark pulse, subdued confirmation.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "Is this the right train?",
+        baseText: "Ist das der richtige Zug?",
+        meaning: "Eine direkte Bestaetigung fuer den richtigen Zug.",
+        chunks: [
+          chunk('is-this', 'Is this', 'ist das'),
+          chunk('the-right', 'the right', 'der richtige'),
+          chunk('train', 'train', 'Zug'),
+        ],
+        targetChips: ['Is this', 'the right', 'train?'],
+        distractors: ['settled', 'bus'],
+        typeRecall: recall('Is this the ', 'right train', '?', ['right train', 'right', 'bus', 'settled']),
+        sceneCaption: "Sharp klaert Zug und Richtung, bevor die Tuer schliesst.",
+        trophyWord: trophy('settled', 'geklaert', 'Settled, thanks.', 'Settled ist der Zustand nach der schnellen Bestaetigung.'),
+        mediaCaption: "Bahnsteigkante, Zuganzeige, klare Frage vor dem Einstieg.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'settled route' },
+        visualNotes: 'Train display crop, sharp green check, directional grid.',
+      }),
+    },
+  },
+  {
+    slug: 'one-moment',
+    title: 'One moment',
+    situation: {
+      en: "You need someone to wait while you find a card, word, or answer.",
+      de: "Jemand soll kurz warten, waehrend du Karte, Wort oder Antwort suchst.",
+    },
+    pedagogicalGoal: "Ask someone to wait briefly.",
+    variants: {
+      bright: createA1P2VariantInput({
+        targetText: "One moment, please. I'm almost ready.",
+        baseText: "Einen Moment bitte. Ich bin fast bereit.",
+        meaning: "Eine warme Bitte um kurze Zeit, ohne die Szene zu stoppen.",
+        chunks: [
+          chunk('one-moment', 'One moment', 'einen Moment'),
+          chunk('please', 'please', 'bitte'),
+          chunk('im-almost-ready', "I'm almost ready", 'ich bin fast bereit'),
+        ],
+        targetChips: ['One moment,', 'please.', "I'm almost ready."],
+        distractors: ['cheerful', 'again'],
+        typeRecall: recall('', 'One moment', ', please. I\'m almost ready.', ['One moment', 'almost ready', 'again', 'wait']),
+        sceneCaption: "Bright braucht kurz Zeit und laesst trotzdem gute Energie im Raum.",
+        trophyWord: trophy('cheerful', 'heiter', 'Cheerful, thank you.', 'Cheerful passt zum hellen Warten ohne Druck.'),
+        mediaCaption: "Kartenetui offen, kleiner Blick zur Kasse, ein kurzer freundlicher Moment.",
+        songSeed: { genre: 'sunny indie pop', mood: 'brief pause' },
+        visualNotes: 'Warm pause icon, open wallet cue, almost-ready yellow pulse.',
+      }),
+      wistful: createA1P2VariantInput({
+        targetText: "One moment, please. I need a second.",
+        baseText: "Einen Moment bitte. Ich brauche eine Sekunde.",
+        meaning: "Eine ruhige Bitte, kurz suchen oder denken zu duerfen.",
+        chunks: [
+          chunk('one-moment', 'One moment', 'einen Moment'),
+          chunk('please', 'please', 'bitte'),
+          chunk('i-need-a-second', 'I need a second', 'ich brauche eine Sekunde'),
+        ],
+        targetChips: ['One moment,', 'please.', 'I need a second.'],
+        distractors: ['patient', 'again'],
+        typeRecall: recall('', 'One moment', ', please. I need a second.', ['One moment', 'second', 'again', 'wait']),
+        sceneCaption: "Wistful nimmt sich eine kleine Sekunde, ohne sich zu verlieren.",
+        trophyWord: trophy('patient', 'geduldig', 'Patient, thank you.', 'Patient beschreibt die ruhige Hilfe, die diese Phrase braucht.'),
+        mediaCaption: "Ein Blick in die Tasche, eine ruhige Handbewegung, die Szene wartet.",
+        songSeed: { genre: 'soft indie folk', mood: 'patient pause' },
+        visualNotes: 'Slow hand motion, soft pause ring, blue-gray stillness.',
+      }),
+      sharp: createA1P2VariantInput({
+        targetText: "One moment. I'm ready soon.",
+        baseText: "Einen Moment. Ich bin gleich bereit.",
+        meaning: "Eine kurze Wartebitte mit klarem Abschluss.",
+        chunks: [
+          chunk('one-moment', 'One moment', 'einen Moment'),
+          chunk('im-ready-soon', "I'm ready soon", 'ich bin gleich bereit'),
+        ],
+        targetChips: ['One moment.', "I'm ready soon."],
+        distractors: ['done', 'please'],
+        typeRecall: recall('', 'One moment', '. I\'m ready soon.', ['One moment', 'ready soon', 'done', 'wait']),
+        sceneCaption: "Sharp stoppt kurz, setzt aber sofort das Ende der Pause.",
+        trophyWord: trophy('done', 'fertig', 'Done. Thanks.', 'Done schliesst die kurze Pause klar ab.'),
+        mediaCaption: "Kurzer Stopp an der Kasse, Karte fast bereit, weiter in einem Schlag.",
+        songSeed: { genre: 'minimal synth pulse', mood: 'brief hold' },
+        visualNotes: 'Compact pause mark, hard reset line, done state flash.',
+      }),
+    },
+  },
+]
+
+const a1Practical2Lessons: GuidedLessonDefinition[] = a1Practical2Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `english-a1-practical-2-${String(lessonNumber).padStart(3, '0')}-${lessonInput.slug}`
+  const nextInput = a1Practical2Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_TWO_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_TWO_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Path complete',
+      situation: nextInput?.situation.de ?? 'Du hast A1 Practical 2 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: createA1P2Variant(lessonInput.variants.bright),
+      wistful: createA1P2Variant(lessonInput.variants.wistful),
+      sharp: createA1P2Variant(lessonInput.variants.sharp),
+    },
+  }
+})
+
+function createA1P2VariantInput(input: A1P2VariantInput) {
+  return input
+}
+
+function createA1P2Variant(input: A1P2VariantInput): GuidedLessonVibeVariant {
+  const chunkItems = input.chunks.map((phraseChunk) => lessonItem(
+    phraseChunk.id,
+    phraseChunk.targetText,
+    phraseChunk.baseText,
+  ))
+  const trophyId = `trophy-${input.trophyWord.word.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+
+  return {
+    contentStatus: 'draft',
+    corePhrase: {
+      targetText: input.targetText,
+      baseText: input.baseText,
+    },
+    meaning: input.meaning,
+    chunks: input.chunks,
+    lessonItems: [
+      ...chunkItems,
+      lessonItem(trophyId, input.trophyWord.word, input.trophyWord.meaning),
+    ],
+    build: {
+      targetText: input.targetText,
+      chips: [...input.targetChips, ...input.distractors],
+    },
+    typeRecall: input.typeRecall,
+    speakTarget: {
+      baseCue: input.baseText,
+      targetPhrase: input.targetText,
+      language: 'en-US',
+      passingThreshold: 0.8,
+    },
+    sceneCaption: input.sceneCaption,
+    trophyWord: input.trophyWord,
+    placeholderMedia: {
+      type: 'video',
+      caption: input.mediaCaption,
+    },
+    songSeed: input.songSeed,
+    visualNotes: input.visualNotes,
+  }
+}
+
+function chunk(id: string, targetText: string, baseText: string): PhraseChunk {
+  return { id, targetText, baseText }
+}
+
+function lessonItem(id: string, targetText: string, baseText: string): LessonItem {
+  return {
+    id,
+    targetText,
+    baseText,
+    acceptedAnswers: uniqueAnswers([
+      targetText,
+      targetText.toLowerCase(),
+      targetText.replace(/['.?!,]/g, ''),
+      targetText.toLowerCase().replace(/['.?!,]/g, ''),
+    ]),
+  }
+}
+
+function recall(
+  before: string,
+  answer: string,
+  after: string,
+  fallbackChoices: string[],
+): GuidedLessonVibeVariant['typeRecall'] {
+  return {
+    before,
+    answer,
+    after,
+    acceptedAnswers: uniqueAnswers([
+      answer,
+      answer.toLowerCase(),
+      answer.replace(/['.?!,]/g, ''),
+      answer.toLowerCase().replace(/['.?!,]/g, ''),
+    ]),
+    fallbackChoices,
+  }
+}
+
+function trophy(
+  word: string,
+  meaning: string,
+  example: string,
+  whyThisWord: string,
+): GuidedLessonTrophyWord {
+  return { word, meaning, example, whyThisWord }
+}
+
+function uniqueAnswers(answers: string[]) {
+  return Array.from(new Set(answers.filter((answer) => answer.trim().length > 0)))
+}
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 1,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-001-first-contact",
       sequence: 1,
@@ -1842,13 +2665,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   {
     id: "english-a1-practical-002-polite-follow-up",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 2,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-002-polite-follow-up",
       sequence: 2,
@@ -1877,13 +2700,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   {
     id: "english-a1-practical-003-where-is",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 3,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-003-where-is",
       sequence: 3,
@@ -1912,13 +2735,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   {
     id: "english-a1-practical-004-id-like",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 4,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-004-id-like",
       sequence: 4,
@@ -1947,13 +2770,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   {
     id: "english-a1-practical-005-how-much",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 5,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-005-how-much",
       sequence: 5,
@@ -1982,13 +2805,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   {
     id: "english-a1-practical-006-the-train",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 6,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-006-the-train",
       sequence: 6,
@@ -2017,13 +2840,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   {
     id: "english-a1-practical-007-i-need",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 7,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-007-i-need",
       sequence: 7,
@@ -2052,13 +2875,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   {
     id: "english-a1-practical-008-i-like",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 8,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-008-i-like",
       sequence: 8,
@@ -2087,13 +2910,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   {
     id: "english-a1-practical-009-tomorrow-at-seven",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 9,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-009-tomorrow-at-seven",
       sequence: 9,
@@ -2122,13 +2945,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   {
     id: "english-a1-practical-010-thank-you-goodbye",
-    pathId: GUIDED_TODAY_PATH_METADATA.id,
-    courseTitle: GUIDED_TODAY_PATH_METADATA.title,
-    level: GUIDED_TODAY_PATH_METADATA.level,
+    pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ONE_METADATA.level,
     lessonNumber: 10,
-    baseLanguage: GUIDED_TODAY_PATH_METADATA.baseLanguage,
-    targetLanguage: GUIDED_TODAY_PATH_METADATA.targetLanguage,
-    pathMetadata: GUIDED_TODAY_PATH_METADATA,
+    baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-010-thank-you-goodbye",
       sequence: 10,
@@ -2155,14 +2978,22 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
       sharp: sharpLesson010,
     },
   },
+  ...a1Practical2Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
-  const lesson = getGuidedPathLessons(GUIDED_TODAY_PATH_METADATA.id)[0]
+  const lesson = getGuidedPathLessons(GUIDED_TODAY_PATH_ONE_METADATA.id)[0]
   if (!lesson) {
     throw new Error('No Guided Today lesson is configured.')
   }
   return resolveGuidedLessonVariant(lesson, vibeId)
+}
+
+export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
+  return [
+    GUIDED_TODAY_PATH_ONE_METADATA,
+    GUIDED_TODAY_PATH_TWO_METADATA,
+  ]
 }
 
 export function getGuidedPathLessons(pathId: string) {

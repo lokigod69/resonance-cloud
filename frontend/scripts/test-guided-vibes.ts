@@ -38,7 +38,7 @@ function assert(name: string, condition: boolean, detail?: unknown) {
   if (detail !== undefined) console.error('       ', detail)
 }
 
-const pathId = 'english-a1-practical'
+const pathId = 'english-a1-practical-1'
 const expectedActiveVibes: GuidedVibeId[] = ['bright', 'wistful', 'sharp']
 const expectedFutureVibes: GuidedVibeId[] = ['tender', 'bold', 'cheeky']
 
@@ -92,7 +92,7 @@ Object.defineProperty(globalThis, 'window', {
 })
 
 try {
-  assert('storage key is path-scoped', todayGuidedVibeKey(pathId) === 'resonance_guided_vibe__english-a1-practical')
+  assert('storage key is path-scoped', todayGuidedVibeKey(pathId) === 'resonance_guided_vibe__english-a1-practical-1')
   assert('missing selected vibe defaults to bright', getSelectedGuidedVibe(pathId) === 'bright')
   setSelectedGuidedVibe(pathId, 'sharp')
   assert('selected active vibe persists locally', getSelectedGuidedVibe(pathId) === 'sharp')

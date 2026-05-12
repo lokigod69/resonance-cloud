@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { getGuidedPathOverview } from '@/data/guidedLessons'
+import { getGuidedPathOverview, getGuidedTodayPathOptions } from '@/data/guidedLessons'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
 import { TodayCompactHeader } from '@/components/today/TodayHero'
@@ -20,12 +20,13 @@ import {
 } from '@/lib/todayVibe'
 import '@/components/today/Today.css'
 
-const GUIDED_TODAY_PATH_ID = 'english-a1-practical'
-
 export default function Today() {
   const { user } = useAuth()
+  const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
+  const defaultPathId = pathOptions[0]?.id ?? 'english-a1-practical-1'
+  const [selectedPathId, setSelectedPathId] = useState(defaultPathId)
   const [selectedVibeId, setSelectedVibeId] = useState<ActiveGuidedVibeId>(() => (
-    getSelectedGuidedVibe(GUIDED_TODAY_PATH_ID)
+    getSelectedGuidedVibe(defaultPathId)
   ))
   const [progress, setProgress] = useState<TodayProgressState>(() => createEmptyTodayProgressState())
   const [selectedLessonId, setSelectedLessonId] = useState<string | undefined>(undefined)
@@ -33,8 +34,8 @@ export default function Today() {
   const [sessionKey, setSessionKey] = useState(0)
   const [knownItemIds, setKnownItemIds] = useState<Set<string>>(() => new Set())
   const overview = useMemo(
-    () => getGuidedPathOverview(GUIDED_TODAY_PATH_ID, progress, selectedVibeId, selectedLessonId),
-    [progress, selectedLessonId, selectedVibeId],
+    () => getGuidedPathOverview(selectedPathId, progress, selectedVibeId, selectedLessonId),
+    [progress, selectedLessonId, selectedPathId, selectedVibeId],
   )
   const lesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
   const nextLesson = useMemo(() => {
@@ -47,11 +48,12 @@ export default function Today() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- user-scoped localStorage progress must refresh when the authenticated user changes
     setProgress(readTodayProgressState(user?.id))
+    setSelectedVibeId(getSelectedGuidedVibe(selectedPathId))
     setSelectedLessonId(undefined)
     setSessionActive(false)
     setSessionKey((current) => current + 1)
     setKnownItemIds(new Set())
-  }, [user?.id])
+  }, [selectedPathId, user?.id])
 
   const persistProgress = (nextProgress: TodayProgressState) => {
     setProgress(nextProgress)
@@ -60,6 +62,16 @@ export default function Today() {
 
   const handleExitToIntro = () => {
     setSessionActive(false)
+  }
+
+  const handleSelectPath = (pathId: string) => {
+    if (pathId === selectedPathId) return
+    setSelectedPathId(pathId)
+    setSelectedVibeId(getSelectedGuidedVibe(pathId))
+    setSelectedLessonId(undefined)
+    setSessionActive(false)
+    setKnownItemIds(new Set())
+    setSessionKey((current) => current + 1)
   }
 
   const handleComplete = (result: TodayLessonResult) => {
@@ -78,8 +90,8 @@ export default function Today() {
   }
 
   const handleSelectVibe = (vibeId: ActiveGuidedVibeId) => {
-    setSelectedGuidedVibe(GUIDED_TODAY_PATH_ID, vibeId)
-    setSelectedVibeId(getSelectedGuidedVibe(GUIDED_TODAY_PATH_ID))
+    setSelectedGuidedVibe(selectedPathId, vibeId)
+    setSelectedVibeId(getSelectedGuidedVibe(selectedPathId))
     setSessionActive(false)
     setSessionKey((current) => current + 1)
     setKnownItemIds(new Set())
@@ -125,8 +137,11 @@ export default function Today() {
         {!sessionActive && (
           <TodayPathOverview
             overview={overview}
+            pathOptions={pathOptions}
+            selectedPathId={selectedPathId}
             progress={progress}
             selectedVibeId={selectedVibeId}
+            onSelectPath={handleSelectPath}
             onSelectVibe={handleSelectVibe}
             onSelectLesson={handleSelectLesson}
             onStartLesson={handleStartSelectedLesson}

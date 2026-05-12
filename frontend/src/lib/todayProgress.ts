@@ -68,6 +68,9 @@ export type TodayProgressState = {
 
 export type TodayVisibleStatus = TodayLessonStatus | 'new'
 
+const LEGACY_GUIDED_TODAY_PATH_ID = 'english-a1-practical'
+const GUIDED_TODAY_PATH_ONE_ID = 'english-a1-practical-1'
+
 export function todayProgressKey(userId: string) {
   return `resonance_today_progress_v1_${userId}`
 }
@@ -289,7 +292,7 @@ export function readTodayProgressState(userId: string | undefined): TodayProgres
     return {
       schemaVersion: 2,
       updatedAt: typeof parsed.updatedAt === 'string' ? parsed.updatedAt : new Date(0).toISOString(),
-      courses: parsed.courses as Record<string, TodayCourseProgress>,
+      courses: migrateLegacyTodayCourseIds(parsed.courses as Record<string, TodayCourseProgress>),
     }
   } catch {
     return createEmptyTodayProgressState()
@@ -316,6 +319,22 @@ function getCourseProgress(state: TodayProgressState, lesson: GuidedLesson): Tod
     completedLessonIds: [],
     skippedLessonIds: [],
     lessons: {},
+  }
+}
+
+function migrateLegacyTodayCourseIds(courses: Record<string, TodayCourseProgress>) {
+  if (!(LEGACY_GUIDED_TODAY_PATH_ID in courses) || GUIDED_TODAY_PATH_ONE_ID in courses) {
+    return courses
+  }
+
+  const {
+    [LEGACY_GUIDED_TODAY_PATH_ID]: legacyCourse,
+    ...remainingCourses
+  } = courses
+
+  return {
+    ...remainingCourses,
+    [GUIDED_TODAY_PATH_ONE_ID]: legacyCourse,
   }
 }
 
