@@ -309,6 +309,7 @@ export class RushRunnerScene extends Phaser.Scene {
     this.isCommitting = true;
     target.committed = true;
     target.resolved = true;
+    target.container.setDepth(70);
     this.spirit.run();
     [90, 180, 270, 360].forEach((delay) => {
       this.time.delayedCall(delay, () => {
@@ -593,12 +594,12 @@ export class RushRunnerScene extends Phaser.Scene {
       throw new Error('Missing production card-frame.png.');
     }
     const art = this.add.image(0, 0, cardArtKeyForIndex(index));
-    art.setDisplaySize(592, 333);
+    art.setDisplaySize(560, 315);
     art.setAlpha(isBluff ? 0.82 : 0.94);
     art.setVisible(this.displayMode === 'image');
     const frame = this.add.image(0, 0, cardFrame.key);
     frame.name = 'frame';
-    frame.setDisplaySize(640, 360);
+    frame.setDisplaySize(720, 405);
     frame.setBlendMode(Phaser.BlendModes.SCREEN);
     const label = this.displayMode === 'text'
       ? this.add.text(0, 0, word, {

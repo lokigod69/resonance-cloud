@@ -11,8 +11,9 @@ import type { Hud } from '../../ui/hud';
 import type { SessionComplete } from '../../ui/sessionComplete';
 import type { AudioBackend, RunnerSoundscape } from './audio';
 import { BiomeRenderer } from './biomeRenderer';
+import { isTextEntryKeyTarget } from './input';
 import { glideDecisionTimerMs, type RunnerMode } from './mode';
-import { decisionThresholdY, laneCenterFromEdgesX, laneCenterX } from './perspective';
+import { decisionThresholdY, laneCenterFromEdgesX, laneCenterX, runnerLaneX } from './perspective';
 import { createPostOverlay, paintPostOverlay } from './postFx';
 import {
   cardArtKeyForIndex,
@@ -196,11 +197,11 @@ export class GlideRunnerScene extends Phaser.Scene {
       this,
       spiritSheet.key,
       spiritStill?.key,
-      laneCenterX(1, this.scale.width, this.currentLevel(), this.time.now),
+      runnerLaneX(1, this.scale.width, this.currentLevel(), this.time.now),
       this.scale.height * 0.56,
     );
     this.spirit.container.setPosition(
-      laneCenterX(1, this.scale.width, this.currentLevel(), this.time.now),
+      runnerLaneX(1, this.scale.width, this.currentLevel(), this.time.now),
       this.spiritBaseY(),
     );
     this.spirit.idle();
@@ -208,7 +209,7 @@ export class GlideRunnerScene extends Phaser.Scene {
 
   private registerInput(): void {
     this.keyboardHandler = (event: KeyboardEvent) => {
-      if (isEditableKeyTarget(event.target)) return;
+      if (isTextEntryKeyTarget(event.target)) return;
       const key = event.key.toLowerCase();
       if (key === 'a' || key === 'arrowleft') {
         event.preventDefault();
@@ -225,10 +226,10 @@ export class GlideRunnerScene extends Phaser.Scene {
         this.commitSelectedLane();
       }
     };
-    window.addEventListener('keydown', this.keyboardHandler);
+    window.addEventListener('keydown', this.keyboardHandler, true);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       if (this.keyboardHandler) {
-        window.removeEventListener('keydown', this.keyboardHandler);
+        window.removeEventListener('keydown', this.keyboardHandler, true);
         this.keyboardHandler = undefined;
       }
     });
@@ -385,17 +386,26 @@ export class GlideRunnerScene extends Phaser.Scene {
     const resolvedAlpha = card.correct ? 1 - dissolve : alpha;
     card.art.setPosition(card.x, y);
     card.art.setDisplaySize(card.width, card.height);
-    card.art.setAlpha(card.wrong ? 0.58 : card.committed ? resolvedAlpha : alpha);
+    card.art.setAlpha(card.wrong ? 0.92 : card.committed ? resolvedAlpha : alpha);
     if (card.label) {
       card.label.setPosition(card.x, y);
       card.label.setFontSize(Math.max(18, Math.round(card.height * 0.28)));
       card.label.setWordWrapWidth(card.width * 0.78);
-      card.label.setAlpha(card.wrong ? 0.58 : card.committed ? resolvedAlpha : alpha);
+      card.label.setAlpha(card.wrong ? 0.92 : card.committed ? resolvedAlpha : alpha);
     }
     card.frame?.setPosition(card.x, y);
-    card.frame?.setDisplaySize(card.width * 1.08, card.height * 1.08);
-    card.frame?.setAlpha(card.wrong ? 0.7 : (card.committed ? resolvedAlpha : alpha) * 0.95);
+    card.frame?.setDisplaySize(card.width * 1.28, card.height * 1.28);
+    card.frame?.setAlpha(card.wrong ? 0.96 : (card.committed ? resolvedAlpha : alpha) * 0.95);
+    this.setCardDepth(card, card.committed ? 68 + card.lane : 34 + card.lane);
     this.drawCardShape(card, card.width, card.height);
+  }
+
+  private setCardDepth(card: GlideCard, depth: number): void {
+    card.shadow.setDepth(depth);
+    card.glow.setDepth(depth + 0.1);
+    card.art.setDepth(depth + 0.2);
+    card.frame?.setDepth(depth + 0.35);
+    card.label?.setDepth(depth + 0.45);
   }
 
   private drawCardShape(
@@ -639,7 +649,7 @@ export class GlideRunnerScene extends Phaser.Scene {
     this.resetSpiritLane();
     this.tweens.add({
       targets: this.spirit.container,
-      x: laneCenterX(1, this.scale.width, this.currentLevel(), this.time.now),
+      x: runnerLaneX(1, this.scale.width, this.currentLevel(), this.time.now),
       y: this.spiritBaseY(),
       scale: 1,
       duration: 420,
@@ -719,7 +729,7 @@ export class GlideRunnerScene extends Phaser.Scene {
       this.resetSpiritLane();
     }
     const lanePosition = this.phase === 'parked' ? this.spiritLanePosition : 1;
-    const x = laneCenterX(lanePosition as LaneIndex, this.scale.width, this.currentLevel(), time);
+    const x = runnerLaneX(lanePosition, this.scale.width, this.currentLevel(), time);
     this.spirit.container.setPosition(x, this.spiritBaseY() + Math.sin(time / 230) * 3);
     this.spirit.update(time);
   }
@@ -796,10 +806,4 @@ export class GlideRunnerScene extends Phaser.Scene {
   private currentLevel() {
     return levelForStats(this.levels, this.engine?.stats, this.debugVisualLevelIndex);
   }
-}
-
-function isEditableKeyTarget(target: EventTarget | null): boolean {
-  if (!(target instanceof HTMLElement)) return false;
-  const tag = target.tagName.toLowerCase();
-  return target.isContentEditable || tag === 'input' || tag === 'textarea' || tag === 'select' || tag === 'button';
 }

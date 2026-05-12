@@ -7,6 +7,7 @@ type SpeechSynthesisWindow = Window & {
 export class RunnerAudio implements AudioBackend {
   private context: AudioContext | null = null;
   private primePromise: Promise<void> | null = null;
+  private currentSource: AudioBufferSourceNode | null = null;
   private currentAudio: HTMLAudioElement | null = null;
   private currentUtterance: SpeechSynthesisUtterance | null = null;
 
@@ -28,14 +29,25 @@ export class RunnerAudio implements AudioBackend {
     this.cancel();
 
     if (audioUrl) {
-      const played = await this.playAudioUrl(audioUrl).catch(() => false);
+      const played = await this.playTrainedAudioUrl(audioUrl).catch(() => false);
       if (played) return;
+      return;
     }
 
     await this.speakWithSynthesis(word, language);
   }
 
   cancel(): void {
+    if (this.currentSource) {
+      try {
+        this.currentSource.stop();
+      } catch {
+        // Source may already have ended.
+      }
+      this.currentSource.disconnect();
+      this.currentSource = null;
+    }
+
     if (this.currentAudio) {
       this.currentAudio.pause();
       this.currentAudio.removeAttribute('src');
@@ -73,7 +85,34 @@ export class RunnerAudio implements AudioBackend {
     }
   }
 
-  private async playAudioUrl(audioUrl: string): Promise<boolean> {
+  private async playTrainedAudioUrl(audioUrl: string): Promise<boolean> {
+    return await this.playDecodedAudioUrl(audioUrl)
+      || await this.playHtmlAudioUrl(audioUrl);
+  }
+
+  private async playDecodedAudioUrl(audioUrl: string): Promise<boolean> {
+    if (!this.context || typeof fetch !== 'function') return false;
+
+    try {
+      const response = await fetch(audioUrl);
+      if (!response.ok) return false;
+      const data = await response.arrayBuffer();
+      const buffer = await this.context.decodeAudioData(data.slice(0));
+      const source = this.context.createBufferSource();
+      source.buffer = buffer;
+      source.connect(this.context.destination);
+      source.onended = () => {
+        if (this.currentSource === source) this.currentSource = null;
+      };
+      this.currentSource = source;
+      source.start();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  private async playHtmlAudioUrl(audioUrl: string): Promise<boolean> {
     const player = new Audio(audioUrl);
     this.currentAudio = player;
     player.preload = 'auto';
@@ -85,16 +124,13 @@ export class RunnerAudio implements AudioBackend {
       return false;
     }
 
-    return new Promise<boolean>((resolve) => {
-      player.onended = () => {
-        if (this.currentAudio === player) this.currentAudio = null;
-        resolve(true);
-      };
-      player.onerror = () => {
-        if (this.currentAudio === player) this.currentAudio = null;
-        resolve(false);
-      };
-    });
+    player.onended = () => {
+      if (this.currentAudio === player) this.currentAudio = null;
+    };
+    player.onerror = () => {
+      if (this.currentAudio === player) this.currentAudio = null;
+    };
+    return true;
   }
 
   private async speakWithSynthesis(word: string, language?: string): Promise<void> {

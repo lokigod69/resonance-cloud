@@ -20,7 +20,7 @@ export class LaneInput {
 
   create(): void {
     this.keyboardHandler = (event: KeyboardEvent) => {
-      if (isEditableKeyTarget(event.target)) return;
+      if (isTextEntryKeyTarget(event.target)) return;
       const key = event.key.toLowerCase();
       if (key === 'a' || key === 'arrowleft') {
         event.preventDefault();
@@ -52,10 +52,10 @@ export class LaneInput {
         this.onDash();
       }
     };
-    window.addEventListener('keydown', this.keyboardHandler);
+    window.addEventListener('keydown', this.keyboardHandler, true);
     this.scene.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       if (this.keyboardHandler) {
-        window.removeEventListener('keydown', this.keyboardHandler);
+        window.removeEventListener('keydown', this.keyboardHandler, true);
         this.keyboardHandler = undefined;
       }
     });
@@ -96,8 +96,8 @@ export class LaneInput {
   }
 }
 
-function isEditableKeyTarget(target: EventTarget | null): boolean {
+export function isTextEntryKeyTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
   const tag = target.tagName.toLowerCase();
-  return target.isContentEditable || tag === 'input' || tag === 'textarea' || tag === 'select' || tag === 'button';
+  return target.isContentEditable || tag === 'input' || tag === 'textarea' || tag === 'select';
 }

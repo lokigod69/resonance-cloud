@@ -184,7 +184,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
             <div
               data-runner-interactive="true"
               onPointerDown={(event) => event.stopPropagation()}
-              className="inline-flex rounded-xl border-2 border-[rgba(168,216,234,0.42)] bg-[#06131f]/88 p-1.5 shadow-[0_0_28px_rgba(79,195,247,0.2)]"
+              className={styles.displayModeToggle}
             >
               {DISPLAY_MODES.map((item) => (
                 <button
@@ -200,10 +200,8 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                     event.stopPropagation()
                     selectDisplayMode(item.value)
                   }}
-                  className={`min-h-11 rounded-lg border-2 px-5 text-sm font-semibold transition ${
-                    displayMode === item.value
-                      ? 'border-[#d0f0ff] bg-[#d0f0ff] text-[#071827] shadow-[0_0_22px_rgba(168,216,234,0.62)]'
-                      : 'border-transparent bg-transparent text-[#a8d8ea]/64 hover:border-[rgba(168,216,234,0.28)] hover:text-[#d0f0ff]'
+                  className={`${styles.displayModeButton} ${
+                    displayMode === item.value ? styles.displayModeButtonActive : ''
                   }`}
                 >
                   {t(item.labelKey)}

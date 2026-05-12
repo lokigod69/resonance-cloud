@@ -86,16 +86,16 @@ export class SpiritController {
 
   baseAlignedY(height: number): number {
     this.resizeForViewport(this.scene.scale.width, height);
-    const bottomRatio = this.scene.scale.width < 640 ? 0.84 : 0.895;
-    return height * bottomRatio - (this.sprite.displayHeight * this.container.scaleY) / 2;
+    const bottomRatio = this.scene.scale.width < 640 ? 0.815 : 0.865;
+    return height * bottomRatio - (this.sprite.displayHeight * this.container.scaleY) / 2 - 8;
   }
 
   resizeForViewport(width: number, height: number): void {
     const mobile = width < 640;
     const targetFrameHeight = Phaser.Math.Clamp(
-      height * (mobile ? 0.29 : 0.26),
-      mobile ? 205 : 214,
-      mobile ? 236 : 244,
+      height * (mobile ? 0.27 : 0.24),
+      mobile ? 190 : 196,
+      mobile ? 220 : 226,
     );
     const scale = targetFrameHeight / this.sprite.height;
     this.sprite.setScale(scale);

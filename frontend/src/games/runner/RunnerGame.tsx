@@ -391,7 +391,10 @@ function AnswerReference({
   const displayText = displayMode === 'image' ? card.word : card.translation
 
   return (
-    <div className="pointer-events-auto absolute inset-x-4 bottom-5 z-30 mx-auto flex max-w-2xl items-center justify-between gap-4 rounded-lg border-2 border-[var(--runner-border-strong)] bg-[var(--surface-glass)] px-5 py-3 text-[#d0f0ff] shadow-[var(--runner-shadow-soft)] backdrop-blur-md sm:bottom-7 sm:px-6">
+    <div
+      data-runner-interactive="true"
+      className="pointer-events-auto absolute bottom-5 left-1/2 z-30 flex w-[min(calc(100vw-2rem),42rem)] -translate-x-1/2 items-center justify-between gap-4 rounded-lg border-2 border-[var(--runner-border-strong)] bg-[var(--surface-glass)] px-5 py-3 text-[#d0f0ff] shadow-[var(--runner-shadow-soft)] backdrop-blur-md sm:bottom-7 sm:px-6"
+    >
       <div className="min-w-0">
         <div className="text-[10px] uppercase tracking-[0.22em] text-[#a8d8ea]/70">Current answer</div>
         <div className="mt-1 truncate font-[var(--runner-font-display)] text-3xl leading-tight text-[#d0f0ff] drop-shadow-[0_0_12px_rgba(168,216,234,0.34)] sm:text-5xl">

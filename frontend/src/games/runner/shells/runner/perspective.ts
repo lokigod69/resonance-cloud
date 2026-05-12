@@ -13,6 +13,7 @@ const HORIZON_SPREAD = 0.075;
 const FOREGROUND_SPREAD_DESKTOP = 0.17;
 const FOREGROUND_SPREAD_MOBILE = 0.265;
 const RUNNER_PROGRESS = 0.78;
+const RUNNER_FOOT_PROGRESS = 0.9;
 
 function foregroundSpreadRatio(width: number): number {
   if (width <= 480) return FOREGROUND_SPREAD_MOBILE;
@@ -71,7 +72,7 @@ export function runnerLaneX(
   level: LevelConfig,
   timeMs: number,
 ): number {
-  return laneCenterFromEdgesX(lane, RUNNER_PROGRESS, width, level, timeMs);
+  return laneCenterFromEdgesX(lane, RUNNER_FOOT_PROGRESS, width, level, timeMs);
 }
 
 export function decisionThresholdY(height: number): number {
