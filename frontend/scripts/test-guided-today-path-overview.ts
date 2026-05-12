@@ -217,7 +217,8 @@ assert('Today CSS accents default primary buttons inside Today only', todayCssSo
 assert('Today CSS keeps vibe emblems contained', todayCssSource.includes('.today-vibe-emblem') && todayCssSource.includes('object-fit: contain'))
 const sharpAtmosphereSource = sliceBetween(todayCssSource, '.today-shell[data-guided-vibe="sharp"]::before', '.today-shell .theme-panel')
 assert('Sharp atmosphere comes from top-right', containsAny(sharpAtmosphereSource, ['ellipse at 82% 4%', 'ellipse at 86% 8%', 'ellipse at 84% 6%']) && !sharpAtmosphereSource.includes('ellipse at 50% 0%'), sharpAtmosphereSource)
-assert('Sharp atmosphere uses mirrored top-right to bottom-left beam, not old 122deg beam', containsAny(sharpAtmosphereSource, ['linear-gradient(238deg', 'linear-gradient(242deg', 'linear-gradient(235deg']) && !sharpAtmosphereSource.includes('linear-gradient(122deg'), sharpAtmosphereSource)
+assert('Sharp atmosphere uses a wide top-right radial falloff', containsAny(sharpAtmosphereSource, ['transparent 56%', 'transparent 58%', 'transparent 60%']), sharpAtmosphereSource)
+assert('Sharp atmosphere keeps only the vertical fade and no diagonal beam', countOccurrences(sharpAtmosphereSource, 'linear-gradient(') === 1 && sharpAtmosphereSource.includes('linear-gradient(180deg') && !containsAny(sharpAtmosphereSource, ['linear-gradient(122deg', 'linear-gradient(235deg', 'linear-gradient(238deg', 'linear-gradient(242deg']), sharpAtmosphereSource)
 
 console.log('\n[source-level UX teardown]')
 assert('Today compact header does not render time estimate', !containsAny(todayCompactHeaderSource, ['today.estimatedTime', 'estimatedMinutes', '<Clock3']))
@@ -285,6 +286,10 @@ function minimalResult() {
 
 function containsAny(value: string, needles: string[]) {
   return needles.some((needle) => value.includes(needle))
+}
+
+function countOccurrences(value: string, needle: string) {
+  return value.split(needle).length - 1
 }
 
 function readSource(relativePath: string) {
