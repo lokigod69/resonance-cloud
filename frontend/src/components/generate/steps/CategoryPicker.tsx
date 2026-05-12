@@ -60,6 +60,7 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
   ]
 
   function resetExpansion() {
+    fetchSeq.current += 1
     setActiveCategoryName(null)
     setSlots([])
     setStatus('idle')
@@ -78,11 +79,11 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
     setError(null)
     setNotice(null)
     setActiveCategoryName(category.name)
-    fetchSuggestions(category.name)
+    fetchSuggestions(category.name, 10)
   }
 
-  async function fetchSuggestions(category: string) {
-    const requestedCount = suggestCount
+  async function fetchSuggestions(category: string, count: number) {
+    const requestedCount = count
     if (!targetLanguage) {
       setError(t('generate.words.pickTargetLanguageFirst'))
       setStatus('error')
@@ -139,6 +140,7 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
   }
 
   function updateEmptySlot(index: number, field: 'word' | 'translation', value: string) {
+    setNotice(null)
     setSlots((prev) => {
       const next = [...prev]
       while (next.length <= index) {
@@ -297,7 +299,7 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
               </PillButton>
               <PillButton
                 variant="secondary"
-                onClick={() => activeCategoryName && fetchSuggestions(activeCategoryName)}
+                onClick={() => activeCategoryName && fetchSuggestions(activeCategoryName, suggestCount)}
                 className="px-5 py-2 text-xs"
               >
                 <RefreshCw className="h-3.5 w-3.5" />
