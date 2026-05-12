@@ -112,10 +112,11 @@ def build_song_only_concept(
     language = _target_language(job, word, deck)
     language_code = _language_code(language, word, deck)
     vocal_gender = _first_text(job.get("vocal_gender")) or "female"
-    genre = _first_text(job.get("genre")) or "auto"
+    user_genre = _first_text(job.get("genre")) or "auto"
     lyric_mode = _first_text(job.get("lyric_mode")) or "reliable"
     output_dir = get_workspace_root() / "music_only" / job_id / "concept"
     output_dir.mkdir(parents=True, exist_ok=True)
+    external_caption = _external_music_caption(word) if user_genre == "auto" else None
 
     payload = ConceptPayload(
         content=ConceptContent(
@@ -127,13 +128,13 @@ def build_song_only_concept(
                 mnemonic=_first_text(word.get("mnemonic"), word.get("article")) or "",
                 pos=_first_text(word.get("pos")) or "",
             ),
-            external_music_caption=_external_music_caption(word),
+            external_music_caption=external_caption,
             input_type="phrase" if " " in word_text.strip() else "word",
         ),
         settings=ConceptSettings(
             vocal_gender=vocal_gender,
             lyric_mode=lyric_mode,
-            genre=genre,
+            genre=user_genre,
             caption_style="production",
         ),
         output_dir=str(output_dir),
@@ -167,4 +168,3 @@ def build_song_only_concept(
         "artifact_path": str(artifact_file),
         "output_dir": str(output_dir),
     }
-
