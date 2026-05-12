@@ -19,6 +19,7 @@ import { VideoControls } from '@/components/VideoControls'
 import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
+import { useDeleteWords } from '@/hooks/useDeleteWords'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { GenerationWheelLoader } from '@/components/ui/GenerationWheelLoader'
@@ -92,7 +93,7 @@ export default function DeckView() {
     enabled: !!id && globalQueueEnabled,
   })
   const [retrying, setRetrying] = useState<string | null>(null)
-  const [deleting, setDeleting] = useState<string | null>(null)
+  const [deletingWordId, setDeletingWordId] = useState<string | null>(null)
   const [deletingDeck, setDeletingDeck] = useState(false)
 
   // ── Edit mode state ──
@@ -100,6 +101,7 @@ export default function DeckView() {
   const [selectedWords, setSelectedWords] = useState<Set<string>>(new Set())
   const [showDeckPicker, setShowDeckPicker] = useState(false)
   const { moveWords, moving } = useMoveWords(id!)
+  const { deleteWords, deleting } = useDeleteWords(id!)
 
   const handleRetry = async (word: Word) => {
     if (!user) return
@@ -157,24 +159,50 @@ export default function DeckView() {
 
   const handleDeleteWord = async (word: Word) => {
     if (!confirm(t('deckview.confirmRemove', { word: word.word }))) return
-    setDeleting(word.id)
+    setDeletingWordId(word.id)
     try {
-      const { data, error } = await supabase.rpc('archive_word', {
-        p_word_id: word.id,
-      })
-      if (error) throw error
-
-      const result = data as { deck?: Pick<Deck, 'word_count' | 'status'> } | null
-      const remaining = words.filter(w => w.id !== word.id)
-      setWords(remaining)
-      if (result?.deck) {
-        setDeck((prev) => prev ? { ...prev, ...result.deck } : prev)
+      const result = await deleteWords([word.id])
+      if (result.success) {
+        setWords((prev) => prev.filter(w => w.id !== word.id))
+        setSelectedWords((prev) => {
+          if (!prev.has(word.id)) return prev
+          const next = new Set(prev)
+          next.delete(word.id)
+          return next
+        })
+        if (result.deck) {
+          setDeck((prev) => prev ? { ...prev, ...result.deck } : prev)
+        }
+        toast(t('deckview.wordRemoved'), 'success')
+      } else {
+        toast(result.error || t('deckview.removeFailed'), 'error')
       }
-      toast(t('deckview.wordRemoved'), 'success')
     } catch {
       toast(t('deckview.removeFailed'), 'error')
     } finally {
-      setDeleting(null)
+      setDeletingWordId(null)
+    }
+  }
+
+  const handleDeleteSelected = async () => {
+    const wordIds = Array.from(selectedWords)
+    if (wordIds.length === 0) return
+    if (!confirm(t('deckview.confirmDeleteSelected', { count: wordIds.length }))) return
+
+    const result = await deleteWords(wordIds)
+    if (result.success) {
+      const deleted = new Set(wordIds)
+      setWords((prev) => prev.filter(w => !deleted.has(w.id)))
+      setSelectedWords(new Set())
+      setEditMode(false)
+      if (result.deck) {
+        setDeck((prev) => prev ? { ...prev, ...result.deck } : prev)
+      } else {
+        setDeck((prev) => prev ? { ...prev, word_count: Math.max(0, prev.word_count - wordIds.length) } : prev)
+      }
+      toast(t('deckview.wordsDeleted', { count: wordIds.length }), 'success')
+    } else {
+      toast(result.error || t('deckview.deleteSelectedFailed'), 'error')
     }
   }
 
@@ -502,9 +530,25 @@ export default function DeckView() {
                       </div>
                     </div>
                     )}
+                    {!editMode && (
+                      <button
+                        type="button"
+                        title={t('deckview.remove')}
+                        aria-label={t('deckview.remove')}
+                        onClick={(e) => { e.stopPropagation(); void handleDeleteWord(word) }}
+                        disabled={deleting || deletingWordId === word.id}
+                        className="absolute top-2 right-2 z-20 h-7 w-7 rounded-full bg-black/60 border border-red-500/40 text-red-300 backdrop-blur-sm flex items-center justify-center transition-colors hover:bg-red-500/15 hover:text-red-200 disabled:opacity-50"
+                      >
+                        {deletingWordId === word.id ? (
+                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                        ) : (
+                          <Trash2 className="h-3.5 w-3.5" />
+                        )}
+                      </button>
+                    )}
                     {/* Version indicator on card */}
                     {word.video_url_b && (
-                      <span className="absolute top-2 right-2 px-1.5 py-0.5 rounded-full bg-black/60 border border-white/20 text-white text-[10px] font-medium backdrop-blur-sm z-10">
+                      <span className={`absolute top-2 ${!editMode ? 'right-10' : 'right-2'} px-1.5 py-0.5 rounded-full bg-black/60 border border-white/20 text-white text-[10px] font-medium backdrop-blur-sm z-10`}>
                         {getStoredVersion(word.id).toUpperCase()}
                       </span>
                     )}
@@ -574,7 +618,7 @@ export default function DeckView() {
                           variant="ghost"
                           className="h-7 text-xs text-destructive-foreground/50 hover:text-destructive-foreground"
                           onClick={(e) => { e.stopPropagation(); handleDeleteWord(word) }}
-                          disabled={deleting === word.id}
+                          disabled={deleting || deletingWordId === word.id}
                         >
                           <Trash2 className="h-3 w-3" />
                         </Button>
@@ -675,21 +719,37 @@ export default function DeckView() {
       {/* Edit mode action bar */}
       {editMode && selectedWords.size > 0 && (
         <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
-          <div className="flex items-center justify-between px-6 py-3 max-w-5xl mx-auto">
-            <span className="text-sm text-white/70">
+          <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <span className="text-sm text-white/70 sm:shrink-0">
               {t('deckview.nSelected', { count: selectedWords.size })}
             </span>
-            <Button
-              size="sm"
-              disabled={moving}
-              onClick={() => setShowDeckPicker(true)}
-              className="bg-emerald-500 hover:bg-emerald-600 text-black font-medium"
-            >
-              {moving ? (
-                <Loader2 className="h-4 w-4 animate-spin mr-2" />
-              ) : null}
-              {t('deckview.moveToDeck')}
-            </Button>
+            <div className="grid grid-cols-1 gap-2 sm:flex sm:items-center">
+              <Button
+                size="sm"
+                variant="outline"
+                disabled={deleting || moving}
+                onClick={handleDeleteSelected}
+                className="w-full border-red-500/40 text-red-300 hover:bg-red-500/10 hover:text-red-200 sm:w-auto"
+              >
+                {deleting ? (
+                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                ) : (
+                  <Trash2 className="h-4 w-4 mr-2" />
+                )}
+                {t('deckview.deleteSelected')}
+              </Button>
+              <Button
+                size="sm"
+                disabled={moving || deleting}
+                onClick={() => setShowDeckPicker(true)}
+                className="w-full bg-emerald-500 hover:bg-emerald-600 text-black font-medium sm:w-auto"
+              >
+                {moving ? (
+                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                ) : null}
+                {t('deckview.moveToDeck')}
+              </Button>
+            </div>
           </div>
         </div>
       )}

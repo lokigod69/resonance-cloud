@@ -40,6 +40,7 @@ import { VideoControls } from '@/components/VideoControls'
 import { VolumeControl } from '@/components/VolumeControl'
 import { useToast } from '@/components/Toast'
 import { useQueuePosition } from '@/hooks/useQueuePosition'
+import { useDeleteWords } from '@/hooks/useDeleteWords'
 import { VerbCycler } from '@/components/ui/VerbCycler'
 import { useTranslation } from '@/hooks/useTranslation'
 import { usePronunciation } from '@/hooks/usePronunciation'
@@ -111,7 +112,7 @@ export default function DeckViewPG() {
     enabled: !!id && globalQueueEnabled,
   })
   const [retrying, setRetrying] = useState<string | null>(null)
-  const [deleting, setDeleting] = useState<string | null>(null)
+  const [deletingWordId, setDeletingWordId] = useState<string | null>(null)
   const [sharing, setSharing] = useState(false)
   const [deletingDeck, setDeletingDeck] = useState(false)
   const [shareSuccess, setShareSuccess] = useState(false)
@@ -121,6 +122,7 @@ export default function DeckViewPG() {
   const [selectedWords, setSelectedWords] = useState<Set<string>>(new Set())
   const [showDeckPicker, setShowDeckPicker] = useState(false)
   const { moveWords, moving } = useMoveWords(id!)
+  const { deleteWords, deleting } = useDeleteWords(id!)
 
   const handleRetry = async (word: Word) => {
     if (!user) return
@@ -167,24 +169,57 @@ export default function DeckViewPG() {
 
   const handleDeleteWord = async (word: Word) => {
     if (!confirm(t('deckview.confirmRemove', { word: word.word }))) return
-    setDeleting(word.id)
+    setDeletingWordId(word.id)
     try {
-      const { data, error } = await supabase.rpc('archive_word', {
-        p_word_id: word.id,
-      })
-      if (error) throw error
-
-      const result = data as { deck?: Pick<Deck, 'word_count' | 'status'> } | null
-      const remaining = words.filter(w => w.id !== word.id)
-      setWords(remaining)
-      if (result?.deck) {
-        setDeck((prev) => prev ? { ...prev, ...result.deck } : prev)
+      const result = await deleteWords([word.id])
+      if (result.success) {
+        setWords((prev) => prev.filter(w => w.id !== word.id))
+        setSelectedWords((prev) => {
+          if (!prev.has(word.id)) return prev
+          const next = new Set(prev)
+          next.delete(word.id)
+          return next
+        })
+        if (result.deck) {
+          setDeck((prev) => prev ? { ...prev, ...result.deck } : prev)
+        }
+        if (activeIndex >= words.length - 1) {
+          setActiveIndex(Math.max(0, words.length - 2))
+        }
+        toast(t('deckview.wordRemoved'), 'success')
+      } else {
+        toast(result.error || t('deckview.removeFailed'), 'error')
       }
-      toast(t('deckview.wordRemoved'), 'success')
     } catch {
       toast(t('deckview.removeFailed'), 'error')
     } finally {
-      setDeleting(null)
+      setDeletingWordId(null)
+    }
+  }
+
+  const handleDeleteSelected = async () => {
+    const wordIds = Array.from(selectedWords)
+    if (wordIds.length === 0) return
+    if (!confirm(t('deckview.confirmDeleteSelected', { count: wordIds.length }))) return
+
+    const result = await deleteWords(wordIds)
+    if (result.success) {
+      const deleted = new Set(wordIds)
+      const remainingCount = words.filter(w => !deleted.has(w.id)).length
+      setWords((prev) => prev.filter(w => !deleted.has(w.id)))
+      setSelectedWords(new Set())
+      setEditMode(false)
+      if (result.deck) {
+        setDeck((prev) => prev ? { ...prev, ...result.deck } : prev)
+      } else {
+        setDeck((prev) => prev ? { ...prev, word_count: Math.max(0, prev.word_count - wordIds.length) } : prev)
+      }
+      if (activeIndex >= remainingCount) {
+        setActiveIndex(Math.max(0, remainingCount - 1))
+      }
+      toast(t('deckview.wordsDeleted', { count: wordIds.length }), 'success')
+    } else {
+      toast(result.error || t('deckview.deleteSelectedFailed'), 'error')
     }
   }
 
@@ -630,6 +665,20 @@ export default function DeckViewPG() {
                   }`}>
                     {isSelected && <Check className="h-3.5 w-3.5" />}
                   </div>
+                  <button
+                    type="button"
+                    title={t('deckview.remove')}
+                    aria-label={t('deckview.remove')}
+                    onClick={(e) => { e.stopPropagation(); void handleDeleteWord(word) }}
+                    disabled={deleting || deletingWordId === word.id}
+                    className="absolute top-2 right-2 z-10 h-7 w-7 rounded-full bg-black/60 border border-red-500/40 text-red-300 backdrop-blur-sm flex items-center justify-center transition-colors hover:bg-red-500/15 hover:text-red-200 disabled:opacity-50"
+                  >
+                    {deletingWordId === word.id ? (
+                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                    ) : (
+                      <Trash2 className="h-3.5 w-3.5" />
+                    )}
+                  </button>
 
                   {/* Thumbnail */}
                   <div className="aspect-[4/3] relative">
@@ -845,14 +894,28 @@ export default function DeckViewPG() {
                             <div className="flex justify-center mt-2">
                               <StarRating rating={word.rating ?? null} onChange={(r) => handleRate(word.id, r)} />
                             </div>
-                            <button
-                              onClick={() => handleShare(word)}
-                              disabled={sharing}
-                              className="flex items-center gap-2 px-4 py-2 mt-3 rounded-lg border border-white/10 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-colors disabled:opacity-50"
-                            >
-                              <Share2 className="w-4 h-4" />
-                              {sharing ? 'Sharing...' : shareSuccess ? 'Link copied!' : 'Share'}
-                            </button>
+                            <div className="flex flex-wrap justify-center gap-2 mt-3">
+                              <button
+                                onClick={() => handleShare(word)}
+                                disabled={sharing}
+                                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-colors disabled:opacity-50"
+                              >
+                                <Share2 className="w-4 h-4" />
+                                {sharing ? 'Sharing...' : shareSuccess ? 'Link copied!' : 'Share'}
+                              </button>
+                              <button
+                                onClick={() => handleDeleteWord(word)}
+                                disabled={deleting || deletingWordId === word.id}
+                                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-red-500/30 text-sm text-red-300 hover:bg-red-500/10 hover:text-red-200 transition-colors disabled:opacity-50"
+                              >
+                                {deletingWordId === word.id ? (
+                                  <Loader2 className="h-4 w-4 animate-spin" />
+                                ) : (
+                                  <Trash2 className="h-4 w-4" />
+                                )}
+                                {t('deckview.remove')}
+                              </button>
+                            </div>
                           </>
                         ) : (
                           <>
@@ -874,7 +937,7 @@ export default function DeckViewPG() {
                                 </button>
                                 <button
                                   onClick={() => handleDeleteWord(word)}
-                                  disabled={deleting === word.id}
+                                  disabled={deleting || deletingWordId === word.id}
                                   className="px-3 py-1.5 text-xs text-red-400 hover:text-red-300 bg-white/5 hover:bg-white/10 rounded-lg transition-colors disabled:opacity-50"
                                 >
                                   <Trash2 className="h-3 w-3 inline mr-1" />
@@ -1092,18 +1155,28 @@ export default function DeckViewPG() {
       {/* Edit mode action bar */}
       {editMode && selectedWords.size > 0 && (
         <div className="fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-xl border-t border-white/10" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
-          <div className="flex items-center justify-between px-6 py-3 max-w-5xl mx-auto">
-            <span className="text-sm text-white/70 font-display">
+          <div className="flex flex-col gap-3 px-4 py-3 max-w-5xl mx-auto sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <span className="text-sm text-white/70 font-display sm:shrink-0">
               {t('deckview.nSelected', { count: selectedWords.size })}
             </span>
-            <button
-              disabled={moving}
-              onClick={() => setShowDeckPicker(true)}
-              className="px-5 py-2 rounded-xl bg-[var(--pg-accent-teal)] text-black text-sm font-display font-semibold hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition-all flex items-center gap-2"
-            >
-              {moving && <Loader2 className="h-4 w-4 animate-spin" />}
-              {t('deckview.moveToDeck')}
-            </button>
+            <div className="grid grid-cols-1 gap-2 sm:flex sm:items-center">
+              <button
+                disabled={deleting || moving}
+                onClick={handleDeleteSelected}
+                className="w-full px-5 py-2 rounded-xl border border-red-500/40 bg-black/35 text-red-300 text-sm font-display font-semibold hover:bg-red-500/10 hover:text-red-200 disabled:opacity-40 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 sm:w-auto"
+              >
+                {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+                {t('deckview.deleteSelected')}
+              </button>
+              <button
+                disabled={moving || deleting}
+                onClick={() => setShowDeckPicker(true)}
+                className="w-full px-5 py-2 rounded-xl bg-[var(--pg-accent-teal)] text-black text-sm font-display font-semibold hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 sm:w-auto"
+              >
+                {moving && <Loader2 className="h-4 w-4 animate-spin" />}
+                {t('deckview.moveToDeck')}
+              </button>
+            </div>
           </div>
         </div>
       )}
