@@ -6,6 +6,9 @@ export interface Category {
   name: string
   emoji: string
   labelKey: string
+  /** When set, render as a free-floating pill outside the grouped grid.
+   *  `'bottom'` pins this category beneath all groups. */
+  pinned?: 'bottom'
 }
 
 export interface CategoryGroup {
@@ -16,14 +19,6 @@ export interface CategoryGroup {
 }
 
 export const CATEGORY_GROUPS: CategoryGroup[] = [
-  {
-    label: 'Surprise Me',
-    groupKey: 'category.group.surpriseMe',
-    emoji: '🎲',
-    categories: [
-      { name: 'Random Mix', emoji: '🎲', labelKey: 'category.randomMix' },
-    ],
-  },
   {
     label: 'Essentials',
     groupKey: 'category.group.essentials',
@@ -94,4 +89,11 @@ export const CATEGORY_GROUPS: CategoryGroup[] = [
       { name: 'Emotional Nuance', emoji: '🎭', labelKey: 'category.emotionalNuance' },
     ],
   },
+]
+
+// Free-floating categories rendered outside CATEGORY_GROUPS. Random Mix lives
+// at the bottom of the picker rather than under a one-entry "Surprise Me"
+// group header.
+export const PINNED_BOTTOM_CATEGORIES: Category[] = [
+  { name: 'Random Mix', emoji: '🎲', labelKey: 'category.randomMix', pinned: 'bottom' },
 ]
