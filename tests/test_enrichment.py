@@ -24,6 +24,7 @@ if str(_ORCH_ROOT) not in sys.path:
 
 from src.services import enrichment as enrichment_mod  # noqa: E402
 from src.services.enrichment import (  # noqa: E402
+    ENRICHMENT_SYSTEM_PROMPT,
     _capitalize_german_noun,
     _strip_target_article,
     run_enrichment,
@@ -32,6 +33,17 @@ from src.services.enrichment import (  # noqa: E402
 
 def _run(coro):
     return asyncio.new_event_loop().run_until_complete(coro)
+
+
+def test_enrichment_system_prompt_preserves_register_and_omits_provider_softening():
+    system_prompt = ENRICHMENT_SYSTEM_PROMPT.format(
+        target_language="Cebuano",
+        base_language="English",
+    )
+
+    assert "All text outputs match the source register" in system_prompt
+    assert "Keep it respectful and non-explicit" not in system_prompt
+    assert "GPT Image-2" not in system_prompt
 
 
 def test_missing_openrouter_key_fallback_includes_gpt_image_2_fields(monkeypatch):

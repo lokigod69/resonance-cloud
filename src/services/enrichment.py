@@ -25,6 +25,8 @@ The user is studying {target_language}. Their interface language is {base_langua
 
 Use real language people actually use. Avoid textbook or sterile examples. Prefer culturally authentic phrases native speakers would say over literal translations. Be honest: do not invent etymologies, cultural claims, or false sound-alikes.
 
+All text outputs match the source register. Slang stays slang. Profanity stays profanity. Anatomical terms stay anatomical.
+
 The image and mnemonic are separate learning tools:
 - image_scene describes what the image should render.
 - mnemonic is a short learner-facing memory hook.
@@ -52,7 +54,7 @@ For abstract emotions, physicalize the feeling through posture, light, body tens
 For idioms, make the figurative meaning memorable. Literal absurdity is allowed only when it helps remember the figurative meaning.
 For cultural concepts, use a specific lived situation, not a dictionary poster or generic symbolic image.
 For non-Roman scripts, do not force visible script by default. If word_as_form or word_as_matter is genuinely useful, store it as text_embedding_mode metadata, but do not activate it in Layer 1 unless explicitly enabled later.
-For romance/dating/cultural emotions, use adults only when people appear. Keep it respectful and non-explicit. Make the concept visually distinct instead of using generic warm cafe scenes.
+For romance/dating/cultural emotions, use adults only when people appear. Make the concept visually distinct instead of using generic warm cafe scenes.
 For discourse markers/function words/abstract degree words, do not invent fake mnemonics. Use a clean visual relation, contrast, near-miss, or sequence only if useful. Set mnemonic=null and mnemonic_confidence=null when the learner-facing hook would be filler.
 
 Composition discipline:
@@ -70,7 +72,7 @@ For each word, provide these target fields:
 - word_target: the word in {target_language}.
 - translation: concise translation into {base_language}; ideally 1-3 words.
 - bridge_mnemonic: a one-sentence retrieval hook in {base_language}; this is not an image description.
-- image_scene: what GPT Image-2 should render, in {base_language}.
+- image_scene: a description of the image to render, in {base_language}.
 - mnemonic: a short learner-facing memory hook in {base_language}, or null.
 - mnemonic_confidence: one of "essential", "helpful", "decorative", or null.
 - etymology: word origin only, one sentence maximum, written in {base_language}; empty string if unknown or unhelpful.
