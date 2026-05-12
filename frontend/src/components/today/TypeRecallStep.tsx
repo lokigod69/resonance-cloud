@@ -1,14 +1,14 @@
 import { XCircle } from 'lucide-react'
 import { useState } from 'react'
 import type { GuidedLesson } from '@/data/guidedLessons'
-import { getGuidedTypeFallbackChoices, guidedAnswerMatches } from '@/data/guidedLessons'
+import { guidedAnswerMatches } from '@/data/guidedLessons'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/lib/utils'
 
 export type TypeRecallCheckState = {
-  status: 'idle' | 'correct' | 'wrong'
+  status: 'idle' | 'correct' | 'wrong' | 'revealed'
   attempts: number
   usedFallback: boolean
 }
@@ -25,7 +25,6 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
   const [attempts, setAttempts] = useState(0)
   const [fallbackVisible, setFallbackVisible] = useState(false)
   const [usedFallback, setUsedFallback] = useState(false)
-  const fallbackChoices = getGuidedTypeFallbackChoices(lesson)
 
   const handleAnswerChange = (value: string) => {
     setAnswer(value)
@@ -55,12 +54,8 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
   const handleShowFallback = () => {
     setFallbackVisible(true)
     setUsedFallback(true)
-    onCheckStateChange({ status, attempts, usedFallback: true })
-  }
-
-  const handleFallbackChoice = (choice: string) => {
-    setAnswer(choice)
-    applyCheck(choice, true)
+    setStatus('revealed')
+    onCheckStateChange({ status: 'revealed', attempts, usedFallback: true })
   }
 
   return (
@@ -76,7 +71,9 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
             ? 'border-[color-mix(in_srgb,#34d399_54%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_28%,transparent)]'
             : status === 'wrong'
               ? 'border-[color-mix(in_srgb,#f87171_58%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_24%,transparent)]'
-              : 'border-[var(--border-subtle)]',
+              : status === 'revealed'
+                ? 'border-[color-mix(in_srgb,var(--accent)_42%,transparent)]'
+                : 'border-[var(--border-subtle)]',
         )}
       >
         <div className="flex flex-col justify-center gap-3 text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:flex-row sm:flex-wrap sm:items-center sm:text-3xl">
@@ -86,7 +83,7 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
             onChange={(event) => handleAnswerChange(event.target.value)}
             placeholder={t('today.type.placeholder')}
             aria-label={t('today.type.inputLabel')}
-            className="h-12 w-full text-xl font-semibold sm:w-48 sm:text-2xl"
+            className="h-12 w-full text-xl font-semibold sm:w-64 sm:text-2xl md:w-72"
           />
           <span>{lesson.typeRecall.after}</span>
         </div>
@@ -104,26 +101,9 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
       </div>
 
       {fallbackVisible && (
-        <div className="grid justify-items-center gap-2">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            {t('today.type.fallbackLabel')}
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {fallbackChoices.map((choice) => (
-              <button
-                key={choice.targetText}
-                type="button"
-                onClick={() => handleFallbackChoice(choice.targetText)}
-                className={cn(
-                  'theme-chip min-h-10 rounded-md px-3 py-2 text-sm font-medium shadow-sm transition-transform hover:-translate-y-0.5',
-                  answer === choice.targetText && 'theme-chip-active',
-                )}
-              >
-                {choice.targetText}
-              </button>
-            ))}
-          </div>
-        </div>
+        <p className="rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
+          {t('today.type.answerLine', { answer: lesson.typeRecall.answer })}
+        </p>
       )}
 
       {status === 'wrong' && (

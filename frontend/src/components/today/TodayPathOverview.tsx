@@ -121,10 +121,10 @@ function RecommendedLessonPanel({
     <section className="today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-6">
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div className="min-w-0">
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
+          <p className="sr-only">
             {isSelectedRecommendation ? t('today.path.nextLessonLabel') : t('today.path.selectedLessonLabel')}
           </p>
-          <p className="mt-2 text-sm font-medium text-[var(--text-secondary)]">
+          <p className="text-sm font-medium text-[var(--text-secondary)]">
             {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
           </p>
           <h2 className="mt-2 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">

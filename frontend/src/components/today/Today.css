@@ -75,8 +75,8 @@
 
 .today-shell[data-guided-vibe="sharp"]::before {
   background:
-    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--today-glow) 72%, transparent), transparent 34%),
-    linear-gradient(110deg, transparent 10%, color-mix(in srgb, var(--today-accent) 10%, transparent) 48%, transparent 52%),
+    radial-gradient(ellipse at 86% 8%, color-mix(in srgb, var(--today-glow) 76%, transparent), transparent 34%),
+    linear-gradient(122deg, transparent 34%, color-mix(in srgb, var(--today-accent) 12%, transparent) 64%, transparent 72%),
     linear-gradient(180deg, color-mix(in srgb, var(--today-panel) 58%, transparent), transparent 68%);
 }
 

@@ -54,6 +54,7 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 
 const pathId = 'english-a1-practical'
 const pathLessons = getGuidedPathLessons(pathId)
+const firstDefinition = pathLessons[0]
 const lessonIds = pathLessons.map((lesson) => lesson.id)
 const lessonNumbers = pathLessons.map((lesson) => lesson.lessonNumber)
 const expectedTitles = [
@@ -100,8 +101,23 @@ for (const lesson of pathLessons) {
   }
 }
 
+console.log('\n[type recall polish]')
+const lowValueTypeRecallTargets = new Set(['english', 'this', 'here', 'please', 'it'])
+for (const lessonDefinition of pathLessons) {
+  for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+    const lesson = resolveGuidedLessonVariant(lessonDefinition, vibeId)
+    const normalizedAnswer = normalizeGuidedAnswer(lesson.typeRecall.answer)
+    assert(`${lesson.id}/${vibeId} type recall avoids low-value final-word target`, !lowValueTypeRecallTargets.has(normalizedAnswer), lesson.typeRecall)
+    assert(`${lesson.id}/${vibeId} type recall answer appears in the visible phrase`, phraseContainsAnswer(lesson), lesson.typeRecall)
+    assert(`${lesson.id}/${vibeId} speak cue is learner-facing German`, looksLikeGermanCue(lesson.speak.baseCue), lesson.speak.baseCue)
+  }
+}
+if (firstDefinition) {
+  const lessonOneBright = resolveGuidedLessonVariant(firstDefinition, 'bright')
+  assert('lesson 1 Bright recalls speak, not English', normalizeGuidedAnswer(lessonOneBright.typeRecall.answer) === 'speak', lessonOneBright.typeRecall)
+}
+
 console.log('\n[vibe resolution]')
-const firstDefinition = pathLessons[0]
 if (firstDefinition) {
   assert('current lesson defaults to lesson 1 Bright', getCurrentGuidedLesson().id === firstDefinition.id && getCurrentGuidedLesson().vibeId === 'bright')
   assert('invalid selected vibe falls back to Bright', resolveGuidedLessonVariant(firstDefinition, 'not-a-vibe').vibeId === 'bright')
@@ -224,4 +240,48 @@ function stripPunctuation(value: string) {
 
 function containsAny(value: string, needles: string[]) {
   return needles.some((needle) => needle.length > 0 && value.includes(needle))
+}
+
+function phraseContainsAnswer(lesson: ReturnType<typeof resolveGuidedLessonVariant>) {
+  const phrase = normalizeGuidedAnswer(`${lesson.typeRecall.before} ${lesson.typeRecall.answer} ${lesson.typeRecall.after}`)
+  const target = normalizeGuidedAnswer(lesson.corePhrase.targetText)
+  return target.includes(normalizeGuidedAnswer(lesson.typeRecall.answer)) && phrase.includes(normalizeGuidedAnswer(lesson.typeRecall.answer))
+}
+
+function looksLikeGermanCue(value: string) {
+  const normalized = value.toLowerCase()
+  const germanSignals = [
+    'sie',
+    'ich',
+    'du',
+    'mir',
+    'mich',
+    'bitte',
+    'danke',
+    'wie',
+    'wo',
+    'wann',
+    'welcher',
+    'morgen',
+    'tschüss',
+    'auf wiedersehen',
+    'könnte',
+    'könnten',
+    'sprechen',
+    'brauche',
+    'hilfe',
+  ]
+  const englishLeakage = [
+    'clear question',
+    'speak fortify',
+    'quick question',
+    'good place',
+    'how much',
+    'what time',
+    'where is',
+    'thank you',
+    'goodbye',
+  ]
+  return germanSignals.some((signal) => normalized.includes(signal))
+    && !englishLeakage.some((signal) => normalized.includes(signal))
 }
