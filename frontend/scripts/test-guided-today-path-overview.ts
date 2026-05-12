@@ -307,7 +307,7 @@ function countOccurrences(value: string, needle: string) {
 }
 
 function readSource(relativePath: string) {
-  return readFileSync(fileURLToPath(new URL(relativePath, import.meta.url)), 'utf8')
+  return readFileSync(fileURLToPath(new URL(relativePath, import.meta.url)), 'utf8').replace(/\r\n/g, '\n')
 }
 
 function readOptionalSource(relativePath: string) {

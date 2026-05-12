@@ -15,6 +15,10 @@ import {
   type TodayProgressState,
 } from '@/lib/todayProgress'
 import {
+  buildGuidedCheckpointPlan,
+  hasPendingGuidedCheckpoint,
+} from '@/lib/guidedCheckpoint'
+import {
   getSelectedGuidedVibe,
   setSelectedGuidedVibe,
 } from '@/lib/todayVibe'
@@ -37,6 +41,11 @@ export default function Today() {
     () => getGuidedPathOverview(selectedPathId, progress, selectedVibeId, selectedLessonId),
     [progress, selectedLessonId, selectedPathId, selectedVibeId],
   )
+  const checkpointPlan = useMemo(() => (
+    hasPendingGuidedCheckpoint(progress, selectedVibeId)
+      ? buildGuidedCheckpointPlan(progress, selectedVibeId)
+      : undefined
+  ), [progress, selectedVibeId])
   const lesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
   const nextLesson = useMemo(() => {
     if (!lesson) return undefined
@@ -141,6 +150,10 @@ export default function Today() {
             selectedPathId={selectedPathId}
             progress={progress}
             selectedVibeId={selectedVibeId}
+            checkpointCard={checkpointPlan ? {
+              href: `/today/checkpoint?vibe=${selectedVibeId}`,
+              completedPathCount: checkpointPlan.completedPathCount,
+            } : undefined}
             onSelectPath={handleSelectPath}
             onSelectVibe={handleSelectVibe}
             onSelectLesson={handleSelectLesson}

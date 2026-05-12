@@ -10,6 +10,7 @@ import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
+import { CheckpointCard } from '@/components/today/CheckpointCard'
 import { GuidedVibePicker } from '@/components/today/TodayHero'
 import { cn } from '@/lib/utils'
 
@@ -19,6 +20,10 @@ type TodayPathOverviewProps = {
   selectedPathId: string
   progress: TodayProgressState
   selectedVibeId: ActiveGuidedVibeId
+  checkpointCard?: {
+    href: string
+    completedPathCount: number
+  }
   onSelectPath: (pathId: string) => void
   onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
   onSelectLesson: (lessonId: string) => void
@@ -31,6 +36,7 @@ export function TodayPathOverview({
   selectedPathId,
   progress,
   selectedVibeId,
+  checkpointCard,
   onSelectPath,
   onSelectVibe,
   onSelectLesson,
@@ -117,6 +123,12 @@ export function TodayPathOverview({
               onSelectLesson={onSelectLesson}
             />
           ))}
+          {checkpointCard && (
+            <CheckpointCard
+              href={checkpointCard.href}
+              completedPathCount={checkpointCard.completedPathCount}
+            />
+          )}
         </div>
       </section>
     </div>
