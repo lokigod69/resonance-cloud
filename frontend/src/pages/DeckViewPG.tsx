@@ -665,21 +665,6 @@ export default function DeckViewPG() {
                   }`}>
                     {isSelected && <Check className="h-3.5 w-3.5" />}
                   </div>
-                  <button
-                    type="button"
-                    title={t('deckview.remove')}
-                    aria-label={t('deckview.remove')}
-                    onClick={(e) => { e.stopPropagation(); void handleDeleteWord(word) }}
-                    disabled={deleting || deletingWordId === word.id}
-                    className="absolute top-2 right-2 z-10 h-7 w-7 rounded-full bg-black/60 border border-red-500/40 text-red-300 backdrop-blur-sm flex items-center justify-center transition-colors hover:bg-red-500/15 hover:text-red-200 disabled:opacity-50"
-                  >
-                    {deletingWordId === word.id ? (
-                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                    ) : (
-                      <Trash2 className="h-3.5 w-3.5" />
-                    )}
-                  </button>
-
                   {/* Thumbnail */}
                   <div className="aspect-[4/3] relative">
                     {word.thumbnail_url ? (
@@ -902,18 +887,6 @@ export default function DeckViewPG() {
                               >
                                 <Share2 className="w-4 h-4" />
                                 {sharing ? 'Sharing...' : shareSuccess ? 'Link copied!' : 'Share'}
-                              </button>
-                              <button
-                                onClick={() => handleDeleteWord(word)}
-                                disabled={deleting || deletingWordId === word.id}
-                                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-red-500/30 text-sm text-red-300 hover:bg-red-500/10 hover:text-red-200 transition-colors disabled:opacity-50"
-                              >
-                                {deletingWordId === word.id ? (
-                                  <Loader2 className="h-4 w-4 animate-spin" />
-                                ) : (
-                                  <Trash2 className="h-4 w-4" />
-                                )}
-                                {t('deckview.remove')}
                               </button>
                             </div>
                           </>

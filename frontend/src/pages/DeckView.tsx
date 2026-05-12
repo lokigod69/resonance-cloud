@@ -530,22 +530,6 @@ export default function DeckView() {
                       </div>
                     </div>
                     )}
-                    {!editMode && (
-                      <button
-                        type="button"
-                        title={t('deckview.remove')}
-                        aria-label={t('deckview.remove')}
-                        onClick={(e) => { e.stopPropagation(); void handleDeleteWord(word) }}
-                        disabled={deleting || deletingWordId === word.id}
-                        className="absolute top-2 right-2 z-20 h-7 w-7 rounded-full bg-black/60 border border-red-500/40 text-red-300 backdrop-blur-sm flex items-center justify-center transition-colors hover:bg-red-500/15 hover:text-red-200 disabled:opacity-50"
-                      >
-                        {deletingWordId === word.id ? (
-                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                        ) : (
-                          <Trash2 className="h-3.5 w-3.5" />
-                        )}
-                      </button>
-                    )}
                     {/* Version indicator on card */}
                     {word.video_url_b && (
                       <span className={`absolute top-2 ${!editMode ? 'right-10' : 'right-2'} px-1.5 py-0.5 rounded-full bg-black/60 border border-white/20 text-white text-[10px] font-medium backdrop-blur-sm z-10`}>
