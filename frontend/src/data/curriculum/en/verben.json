@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "verben",
+  "category_display": {
+    "en": "Verbs",
+    "de": "Verben (Handlungen)"
+  },
+  "icon": "🏃",
+  "column": "sprachaufbau",
+  "cap_total_entries": 100,
+  "max_levels": 5,
+  "generator_model": "gpt-5",
+  "generated_at": "2026-05-13T07:39:13Z",
+  "generator_version": "1.0",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "basic_actions_to_be_to_have_to_go",
+      "theme_display": {
+        "en": "Basic actions (to be, to have, to go)",
+        "de": "Grundlegende Handlungen (sein, haben, gehen)"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "to be", "pos": "verb", "glosses": { "de": "sein" } },
+        { "term": "to have", "pos": "verb", "glosses": { "de": "haben" } },
+        { "term": "to go", "pos": "verb", "glosses": { "de": "gehen" } },
+        { "term": "to come", "pos": "verb", "glosses": { "de": "kommen" } },
+        { "term": "to do", "pos": "verb", "glosses": { "de": "tun" } },
+        { "term": "to make", "pos": "verb", "glosses": { "de": "machen" } },
+        { "term": "to get", "pos": "verb", "glosses": { "de": "bekommen" } },
+        { "term": "to give", "pos": "verb", "glosses": { "de": "geben" } },
+        { "term": "to take", "pos": "verb", "glosses": { "de": "nehmen" } },
+        { "term": "to want", "pos": "verb", "glosses": { "de": "wollen" } },
+        { "term": "to need", "pos": "verb", "glosses": { "de": "brauchen" } },
+        { "term": "to like", "pos": "verb", "glosses": { "de": "mögen" } },
+        { "term": "to see", "pos": "verb", "glosses": { "de": "sehen" } },
+        { "term": "to know", "pos": "verb", "glosses": { "de": "wissen" } },
+        { "term": "to think", "pos": "verb", "glosses": { "de": "denken" } },
+        { "term": "to say", "pos": "verb", "glosses": { "de": "sagen" } },
+        { "term": "to eat", "pos": "verb", "glosses": { "de": "essen" } },
+        { "term": "to drink", "pos": "verb", "glosses": { "de": "trinken" } },
+        { "term": "to sleep", "pos": "verb", "glosses": { "de": "schlafen" } },
+        { "term": "to work", "pos": "verb", "glosses": { "de": "arbeiten" } }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "movement_and_motion",
+      "theme_display": {
+        "en": "Movement and motion",
+        "de": "Bewegung und Fortbewegung"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "to walk", "pos": "verb", "glosses": { "de": "laufen" } },
+        { "term": "to run", "pos": "verb", "glosses": { "de": "rennen" } },
+        { "term": "to drive", "pos": "verb", "glosses": { "de": "fahren" } },
+        { "term": "to fly", "pos": "verb", "glosses": { "de": "fliegen" } },
+        { "term": "to swim", "pos": "verb", "glosses": { "de": "schwimmen" } },
+        { "term": "to jump", "pos": "verb", "glosses": { "de": "springen" } },
+        { "term": "to climb", "pos": "verb", "glosses": { "de": "klettern" } },
+        { "term": "to fall", "pos": "verb", "glosses": { "de": "fallen" } },
+        { "term": "to stand", "pos": "verb", "glosses": { "de": "stehen" } },
+        { "term": "to sit", "pos": "verb", "glosses": { "de": "sitzen" } },
+        { "term": "to turn", "pos": "verb", "glosses": { "de": "drehen" } },
+        { "term": "to move", "pos": "verb", "glosses": { "de": "sich bewegen" } },
+        { "term": "to stop", "pos": "verb", "glosses": { "de": "anhalten" } },
+        { "term": "to leave", "pos": "verb", "glosses": { "de": "verlassen" } },
+        { "term": "to arrive", "pos": "verb", "glosses": { "de": "ankommen" } },
+        { "term": "to enter", "pos": "verb", "glosses": { "de": "eintreten" } },
+        { "term": "to exit", "pos": "verb", "glosses": { "de": "hinausgehen" } },
+        { "term": "to cross", "pos": "verb", "glosses": { "de": "überqueren" } },
+        { "term": "to follow", "pos": "verb", "glosses": { "de": "folgen" } },
+        { "term": "to return", "pos": "verb", "glosses": { "de": "zurückkehren" } }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "daily_activities",
+      "theme_display": {
+        "en": "Daily activities",
+        "de": "Tägliche Aktivitäten"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "to wake up", "pos": "verb", "glosses": { "de": "aufwachen" } },
+        { "term": "to get up", "pos": "verb", "glosses": { "de": "aufstehen" } },
+        { "term": "to wash", "pos": "verb", "glosses": { "de": "waschen" } },
+        { "term": "to shower", "pos": "verb", "glosses": { "de": "duschen" } },
+        { "term": "to brush", "pos": "verb", "glosses": { "de": "bürsten" } },
+        { "term": "to dress", "pos": "verb", "glosses": { "de": "sich anziehen" } },
+        { "term": "to cook", "pos": "verb", "glosses": { "de": "kochen" } },
+        { "term": "to clean", "pos": "verb", "glosses": { "de": "putzen" } },
+        { "term": "to shop", "pos": "verb", "glosses": { "de": "einkaufen" } },
+        { "term": "to pay", "pos": "verb", "glosses": { "de": "bezahlen" } },
+        { "term": "to wait", "pos": "verb", "glosses": { "de": "warten" } },
+        { "term": "to meet", "pos": "verb", "glosses": { "de": "treffen" } },
+        { "term": "to help", "pos": "verb", "glosses": { "de": "helfen" } },
+        { "term": "to study", "pos": "verb", "glosses": { "de": "lernen" } },
+        { "term": "to exercise", "pos": "verb", "glosses": { "de": "trainieren" } },
+        { "term": "to rest", "pos": "verb", "glosses": { "de": "sich ausruhen" } },
+        { "term": "to watch", "pos": "verb", "glosses": { "de": "anschauen" } },
+        { "term": "to play", "pos": "verb", "glosses": { "de": "spielen" } },
+        { "term": "to open", "pos": "verb", "glosses": { "de": "öffnen" } },
+        { "term": "to close", "pos": "verb", "glosses": { "de": "schließen" } }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "communication_and_cognition",
+      "theme_display": {
+        "en": "Communication and cognition",
+        "de": "Kommunikation und Denken"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "to speak", "pos": "verb", "glosses": { "de": "sprechen" } },
+        { "term": "to ask", "pos": "verb", "glosses": { "de": "fragen" } },
+        { "term": "to answer", "pos": "verb", "glosses": { "de": "antworten" } },
+        { "term": "to read", "pos": "verb", "glosses": { "de": "lesen" } },
+        { "term": "to write", "pos": "verb", "glosses": { "de": "schreiben" } },
+        { "term": "to understand", "pos": "verb", "glosses": { "de": "verstehen" } },
+        { "term": "to remember", "pos": "verb", "glosses": { "de": "sich erinnern" } },
+        { "term": "to forget", "pos": "verb", "glosses": { "de": "vergessen" } },
+        { "term": "to learn", "pos": "verb", "glosses": { "de": "lernen" } },
+        { "term": "to believe", "pos": "verb", "glosses": { "de": "glauben" } },
+        { "term": "to explain", "pos": "verb", "glosses": { "de": "erklären" } },
+        { "term": "to listen", "pos": "verb", "glosses": { "de": "zuhören" } },
+        { "term": "to tell", "pos": "verb", "glosses": { "de": "erzählen" } },
+        { "term": "to call", "pos": "verb", "glosses": { "de": "anrufen" } },
+        { "term": "to mean", "pos": "verb", "glosses": { "de": "bedeuten" } },
+        { "term": "to discuss", "pos": "verb", "glosses": { "de": "diskutieren" } },
+        { "term": "to plan", "pos": "verb", "glosses": { "de": "planen" } },
+        { "term": "to imagine", "pos": "verb", "glosses": { "de": "sich vorstellen" } },
+        { "term": "to guess", "pos": "verb", "glosses": { "de": "raten" } },
+        { "term": "to judge", "pos": "verb", "glosses": { "de": "beurteilen" } }
+      ]
+    },
+    {
+      "level": 5,
+      "theme_slug": "abstract_and_modal",
+      "theme_display": {
+        "en": "Abstract and modal",
+        "de": "Abstrakt und modal"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "to become", "pos": "verb", "glosses": { "de": "werden" } },
+        { "term": "to seem", "pos": "verb", "glosses": { "de": "scheinen" } },
+        { "term": "to happen", "pos": "verb", "glosses": { "de": "passieren" } },
+        { "term": "to exist", "pos": "verb", "glosses": { "de": "existieren" } },
+        { "term": "to matter", "pos": "verb", "glosses": { "de": "wichtig sein" } },
+        { "term": "to depend", "pos": "verb", "glosses": { "de": "abhängen" } },
+        { "term": "to include", "pos": "verb", "glosses": { "de": "einschließen" } },
+        { "term": "to continue", "pos": "verb", "glosses": { "de": "fortsetzen" } },
+        { "term": "to change", "pos": "verb", "glosses": { "de": "sich ändern" } },
+        { "term": "to choose", "pos": "verb", "glosses": { "de": "wählen" } },
+        { "term": "to try", "pos": "verb", "glosses": { "de": "versuchen" } },
+        { "term": "to use", "pos": "verb", "glosses": { "de": "benutzen" } },
+        { "term": "to allow", "pos": "verb", "glosses": { "de": "erlauben" } },
+        { "term": "to expect", "pos": "verb", "glosses": { "de": "erwarten" } },
+        { "term": "to hope", "pos": "verb", "glosses": { "de": "hoffen" } },
+        { "term": "to wish", "pos": "verb", "glosses": { "de": "wünschen" } },
+        { "term": "to prefer", "pos": "verb", "glosses": { "de": "bevorzugen" } },
+        { "term": "to agree", "pos": "verb", "glosses": { "de": "zustimmen" } },
+        { "term": "to promise", "pos": "verb", "glosses": { "de": "versprechen" } },
+        { "term": "to be able", "pos": "verb", "glosses": { "de": "können" } }
+      ]
+    }
+  ]
+}

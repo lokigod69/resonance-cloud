@@ -1,0 +1,602 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "zahlen_zeit",
+  "category_display": {
+    "en": "Numbers & Time",
+    "de": "Zahlen & Zeit"
+  },
+  "icon": "🔢",
+  "column": "grundlagen",
+  "cap_total_entries": 72,
+  "max_levels": 5,
+  "generator_model": "gpt-5",
+  "generated_at": "2026-05-13T07:59:10Z",
+  "generator_version": "1.0",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "numbers_0_9",
+      "theme_display": {
+        "en": "Numbers 0-9",
+        "de": "Zahlen 0-9"
+      },
+      "entry_count": 10,
+      "entries": [
+        {
+          "term": "zero",
+          "pos": "number",
+          "value": 0,
+          "glosses": {
+            "de": "null"
+          }
+        },
+        {
+          "term": "one",
+          "pos": "number",
+          "value": 1,
+          "glosses": {
+            "de": "eins"
+          }
+        },
+        {
+          "term": "two",
+          "pos": "number",
+          "value": 2,
+          "glosses": {
+            "de": "zwei"
+          }
+        },
+        {
+          "term": "three",
+          "pos": "number",
+          "value": 3,
+          "glosses": {
+            "de": "drei"
+          }
+        },
+        {
+          "term": "four",
+          "pos": "number",
+          "value": 4,
+          "glosses": {
+            "de": "vier"
+          }
+        },
+        {
+          "term": "five",
+          "pos": "number",
+          "value": 5,
+          "glosses": {
+            "de": "fünf"
+          }
+        },
+        {
+          "term": "six",
+          "pos": "number",
+          "value": 6,
+          "glosses": {
+            "de": "sechs"
+          }
+        },
+        {
+          "term": "seven",
+          "pos": "number",
+          "value": 7,
+          "glosses": {
+            "de": "sieben"
+          }
+        },
+        {
+          "term": "eight",
+          "pos": "number",
+          "value": 8,
+          "glosses": {
+            "de": "acht"
+          }
+        },
+        {
+          "term": "nine",
+          "pos": "number",
+          "value": 9,
+          "glosses": {
+            "de": "neun"
+          }
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "numbers_10_100",
+      "theme_display": {
+        "en": "Numbers 10–100",
+        "de": "Zahlen 10–100"
+      },
+      "entry_count": 19,
+      "entries": [
+        {
+          "term": "ten",
+          "pos": "number",
+          "value": 10,
+          "glosses": {
+            "de": "zehn"
+          }
+        },
+        {
+          "term": "eleven",
+          "pos": "number",
+          "value": 11,
+          "glosses": {
+            "de": "elf"
+          }
+        },
+        {
+          "term": "twelve",
+          "pos": "number",
+          "value": 12,
+          "glosses": {
+            "de": "zwölf"
+          }
+        },
+        {
+          "term": "thirteen",
+          "pos": "number",
+          "value": 13,
+          "glosses": {
+            "de": "dreizehn"
+          }
+        },
+        {
+          "term": "fourteen",
+          "pos": "number",
+          "value": 14,
+          "glosses": {
+            "de": "vierzehn"
+          }
+        },
+        {
+          "term": "fifteen",
+          "pos": "number",
+          "value": 15,
+          "glosses": {
+            "de": "fünfzehn"
+          }
+        },
+        {
+          "term": "sixteen",
+          "pos": "number",
+          "value": 16,
+          "glosses": {
+            "de": "sechzehn"
+          }
+        },
+        {
+          "term": "seventeen",
+          "pos": "number",
+          "value": 17,
+          "glosses": {
+            "de": "siebzehn"
+          }
+        },
+        {
+          "term": "eighteen",
+          "pos": "number",
+          "value": 18,
+          "glosses": {
+            "de": "achtzehn"
+          }
+        },
+        {
+          "term": "nineteen",
+          "pos": "number",
+          "value": 19,
+          "glosses": {
+            "de": "neunzehn"
+          }
+        },
+        {
+          "term": "twenty",
+          "pos": "number",
+          "value": 20,
+          "glosses": {
+            "de": "zwanzig"
+          }
+        },
+        {
+          "term": "thirty",
+          "pos": "number",
+          "value": 30,
+          "glosses": {
+            "de": "dreißig"
+          }
+        },
+        {
+          "term": "forty",
+          "pos": "number",
+          "value": 40,
+          "glosses": {
+            "de": "vierzig"
+          }
+        },
+        {
+          "term": "fifty",
+          "pos": "number",
+          "value": 50,
+          "glosses": {
+            "de": "fünfzig"
+          }
+        },
+        {
+          "term": "sixty",
+          "pos": "number",
+          "value": 60,
+          "glosses": {
+            "de": "sechzig"
+          }
+        },
+        {
+          "term": "seventy",
+          "pos": "number",
+          "value": 70,
+          "glosses": {
+            "de": "siebzig"
+          }
+        },
+        {
+          "term": "eighty",
+          "pos": "number",
+          "value": 80,
+          "glosses": {
+            "de": "achtzig"
+          }
+        },
+        {
+          "term": "ninety",
+          "pos": "number",
+          "value": 90,
+          "glosses": {
+            "de": "neunzig"
+          }
+        },
+        {
+          "term": "one hundred",
+          "pos": "number",
+          "value": 100,
+          "glosses": {
+            "de": "einhundert"
+          }
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "hundreds_and_thousands",
+      "theme_display": {
+        "en": "Hundreds and thousands",
+        "de": "Hunderter und Tausender"
+      },
+      "entry_count": 10,
+      "entries": [
+        {
+          "term": "one hundred",
+          "pos": "number",
+          "value": 100,
+          "glosses": {
+            "de": "einhundert"
+          }
+        },
+        {
+          "term": "two hundred",
+          "pos": "number",
+          "value": 200,
+          "glosses": {
+            "de": "zweihundert"
+          }
+        },
+        {
+          "term": "three hundred",
+          "pos": "number",
+          "value": 300,
+          "glosses": {
+            "de": "dreihundert"
+          }
+        },
+        {
+          "term": "four hundred",
+          "pos": "number",
+          "value": 400,
+          "glosses": {
+            "de": "vierhundert"
+          }
+        },
+        {
+          "term": "five hundred",
+          "pos": "number",
+          "value": 500,
+          "glosses": {
+            "de": "fünfhundert"
+          }
+        },
+        {
+          "term": "six hundred",
+          "pos": "number",
+          "value": 600,
+          "glosses": {
+            "de": "sechshundert"
+          }
+        },
+        {
+          "term": "one thousand",
+          "pos": "number",
+          "value": 1000,
+          "glosses": {
+            "de": "eintausend"
+          }
+        },
+        {
+          "term": "two thousand",
+          "pos": "number",
+          "value": 2000,
+          "glosses": {
+            "de": "zweitausend"
+          }
+        },
+        {
+          "term": "five thousand",
+          "pos": "number",
+          "value": 5000,
+          "glosses": {
+            "de": "fünftausend"
+          }
+        },
+        {
+          "term": "ten thousand",
+          "pos": "number",
+          "value": 10000,
+          "glosses": {
+            "de": "zehntausend"
+          }
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "telling_time",
+      "theme_display": {
+        "en": "Telling time",
+        "de": "Uhrzeit sagen"
+      },
+      "entry_count": 10,
+      "entries": [
+        {
+          "term": "one o'clock",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "ein Uhr"
+          }
+        },
+        {
+          "term": "two o'clock",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "zwei Uhr"
+          }
+        },
+        {
+          "term": "half past one",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "halb zwei"
+          }
+        },
+        {
+          "term": "quarter past one",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "viertel nach eins"
+          }
+        },
+        {
+          "term": "quarter to two",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "viertel vor zwei"
+          }
+        },
+        {
+          "term": "in the morning",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "am Morgen"
+          }
+        },
+        {
+          "term": "in the afternoon",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "am Nachmittag"
+          }
+        },
+        {
+          "term": "in the evening",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "am Abend"
+          }
+        },
+        {
+          "term": "at night",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "in der Nacht"
+          }
+        },
+        {
+          "term": "at noon",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "um zwölf Uhr mittags"
+          }
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "theme_slug": "days_months_dates",
+      "theme_display": {
+        "en": "Days, months, dates",
+        "de": "Tage, Monate, Daten"
+      },
+      "entry_count": 21,
+      "entries": [
+        {
+          "term": "Monday",
+          "pos": "day",
+          "glosses": {
+            "de": "der Montag"
+          }
+        },
+        {
+          "term": "Tuesday",
+          "pos": "day",
+          "glosses": {
+            "de": "der Dienstag"
+          }
+        },
+        {
+          "term": "Wednesday",
+          "pos": "day",
+          "glosses": {
+            "de": "der Mittwoch"
+          }
+        },
+        {
+          "term": "Thursday",
+          "pos": "day",
+          "glosses": {
+            "de": "der Donnerstag"
+          }
+        },
+        {
+          "term": "Friday",
+          "pos": "day",
+          "glosses": {
+            "de": "der Freitag"
+          }
+        },
+        {
+          "term": "Saturday",
+          "pos": "day",
+          "glosses": {
+            "de": "der Samstag"
+          }
+        },
+        {
+          "term": "Sunday",
+          "pos": "day",
+          "glosses": {
+            "de": "der Sonntag"
+          }
+        },
+        {
+          "term": "January",
+          "pos": "month",
+          "glosses": {
+            "de": "der Januar"
+          }
+        },
+        {
+          "term": "February",
+          "pos": "month",
+          "glosses": {
+            "de": "der Februar"
+          }
+        },
+        {
+          "term": "March",
+          "pos": "month",
+          "glosses": {
+            "de": "der März"
+          }
+        },
+        {
+          "term": "April",
+          "pos": "month",
+          "glosses": {
+            "de": "der April"
+          }
+        },
+        {
+          "term": "May",
+          "pos": "month",
+          "glosses": {
+            "de": "der Mai"
+          }
+        },
+        {
+          "term": "June",
+          "pos": "month",
+          "glosses": {
+            "de": "der Juni"
+          }
+        },
+        {
+          "term": "July",
+          "pos": "month",
+          "glosses": {
+            "de": "der Juli"
+          }
+        },
+        {
+          "term": "August",
+          "pos": "month",
+          "glosses": {
+            "de": "der August"
+          }
+        },
+        {
+          "term": "September",
+          "pos": "month",
+          "glosses": {
+            "de": "der September"
+          }
+        },
+        {
+          "term": "October",
+          "pos": "month",
+          "glosses": {
+            "de": "der Oktober"
+          }
+        },
+        {
+          "term": "November",
+          "pos": "month",
+          "glosses": {
+            "de": "der November"
+          }
+        },
+        {
+          "term": "December",
+          "pos": "month",
+          "glosses": {
+            "de": "der Dezember"
+          }
+        },
+        {
+          "term": "today",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "heute"
+          }
+        },
+        {
+          "term": "tomorrow",
+          "pos": "time_expression",
+          "glosses": {
+            "de": "morgen"
+          }
+        }
+      ]
+    }
+  ]
+}

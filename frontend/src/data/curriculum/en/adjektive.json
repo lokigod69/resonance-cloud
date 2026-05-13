@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "adjektive",
+  "category_display": {
+    "en": "Adjectives",
+    "de": "Adjektive (Beschreibungen)"
+  },
+  "icon": "🎨",
+  "column": "sprachaufbau",
+  "cap_total_entries": 100,
+  "max_levels": 5,
+  "generator_model": "gpt-5",
+  "generated_at": "2026-05-13T07:37:14Z",
+  "generator_version": "1.0",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "size_shape_basic_appearance",
+      "theme_display": {
+        "en": "Size, shape, basic appearance",
+        "de": "Größe, Form und grundlegendes Aussehen"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "big", "pos": "adjective", "glosses": { "de": "groß" } },
+        { "term": "small", "pos": "adjective", "glosses": { "de": "klein" } },
+        { "term": "long", "pos": "adjective", "glosses": { "de": "lang" } },
+        { "term": "short", "pos": "adjective", "glosses": { "de": "kurz" } },
+        { "term": "wide", "pos": "adjective", "glosses": { "de": "breit" } },
+        { "term": "narrow", "pos": "adjective", "glosses": { "de": "schmal" } },
+        { "term": "thick", "pos": "adjective", "glosses": { "de": "dick" } },
+        { "term": "thin", "pos": "adjective", "glosses": { "de": "dünn" } },
+        { "term": "round", "pos": "adjective", "glosses": { "de": "rund" } },
+        { "term": "square", "pos": "adjective", "glosses": { "de": "quadratisch" } },
+        { "term": "straight", "pos": "adjective", "glosses": { "de": "gerade" } },
+        { "term": "curved", "pos": "adjective", "glosses": { "de": "gebogen" } },
+        { "term": "clean", "pos": "adjective", "glosses": { "de": "sauber" } },
+        { "term": "dirty", "pos": "adjective", "glosses": { "de": "schmutzig" } },
+        { "term": "light", "pos": "adjective", "glosses": { "de": "hell" } },
+        { "term": "dark", "pos": "adjective", "glosses": { "de": "dunkel" } },
+        { "term": "new", "pos": "adjective", "glosses": { "de": "neu" } },
+        { "term": "old", "pos": "adjective", "glosses": { "de": "alt" } },
+        { "term": "beautiful", "pos": "adjective", "glosses": { "de": "schön" } },
+        { "term": "ugly", "pos": "adjective", "glosses": { "de": "hässlich" } }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "temperature_weather_sensation",
+      "theme_display": {
+        "en": "Temperature, weather, sensation",
+        "de": "Temperatur, Wetter und Empfindung"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "hot", "pos": "adjective", "glosses": { "de": "heiß" } },
+        { "term": "cold", "pos": "adjective", "glosses": { "de": "kalt" } },
+        { "term": "warm", "pos": "adjective", "glosses": { "de": "warm" } },
+        { "term": "cool", "pos": "adjective", "glosses": { "de": "kühl" } },
+        { "term": "wet", "pos": "adjective", "glosses": { "de": "nass" } },
+        { "term": "dry", "pos": "adjective", "glosses": { "de": "trocken" } },
+        { "term": "sunny", "pos": "adjective", "glosses": { "de": "sonnig" } },
+        { "term": "cloudy", "pos": "adjective", "glosses": { "de": "bewölkt" } },
+        { "term": "windy", "pos": "adjective", "glosses": { "de": "windig" } },
+        { "term": "rainy", "pos": "adjective", "glosses": { "de": "regnerisch" } },
+        { "term": "snowy", "pos": "adjective", "glosses": { "de": "verschneit" } },
+        { "term": "stormy", "pos": "adjective", "glosses": { "de": "stürmisch" } },
+        { "term": "humid", "pos": "adjective", "glosses": { "de": "feucht" } },
+        { "term": "fresh", "pos": "adjective", "glosses": { "de": "frisch" } },
+        { "term": "tired", "pos": "adjective", "glosses": { "de": "müde" } },
+        { "term": "hungry", "pos": "adjective", "glosses": { "de": "hungrig" } },
+        { "term": "thirsty", "pos": "adjective", "glosses": { "de": "durstig" } },
+        { "term": "sick", "pos": "adjective", "glosses": { "de": "krank" } },
+        { "term": "comfortable", "pos": "adjective", "glosses": { "de": "bequem" } },
+        { "term": "painful", "pos": "adjective", "glosses": { "de": "schmerzhaft" } }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "personality_and_emotion",
+      "theme_display": {
+        "en": "Personality and emotion",
+        "de": "Persönlichkeit und Gefühle"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "happy", "pos": "adjective", "glosses": { "de": "glücklich" } },
+        { "term": "sad", "pos": "adjective", "glosses": { "de": "traurig" } },
+        { "term": "angry", "pos": "adjective", "glosses": { "de": "wütend" } },
+        { "term": "calm", "pos": "adjective", "glosses": { "de": "ruhig" } },
+        { "term": "friendly", "pos": "adjective", "glosses": { "de": "freundlich" } },
+        { "term": "unfriendly", "pos": "adjective", "glosses": { "de": "unfreundlich" } },
+        { "term": "kind", "pos": "adjective", "glosses": { "de": "nett" } },
+        { "term": "mean", "pos": "adjective", "glosses": { "de": "gemein" } },
+        { "term": "shy", "pos": "adjective", "glosses": { "de": "schüchtern" } },
+        { "term": "brave", "pos": "adjective", "glosses": { "de": "mutig" } },
+        { "term": "nervous", "pos": "adjective", "glosses": { "de": "nervös" } },
+        { "term": "relaxed", "pos": "adjective", "glosses": { "de": "entspannt" } },
+        { "term": "honest", "pos": "adjective", "glosses": { "de": "ehrlich" } },
+        { "term": "dishonest", "pos": "adjective", "glosses": { "de": "unehrlich" } },
+        { "term": "patient", "pos": "adjective", "glosses": { "de": "geduldig" } },
+        { "term": "impatient", "pos": "adjective", "glosses": { "de": "ungeduldig" } },
+        { "term": "jealous", "pos": "adjective", "glosses": { "de": "eifersüchtig" } },
+        { "term": "proud", "pos": "adjective", "glosses": { "de": "stolz" } },
+        { "term": "lonely", "pos": "adjective", "glosses": { "de": "einsam" } },
+        { "term": "excited", "pos": "adjective", "glosses": { "de": "aufgeregt" } }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "quality_and_judgment",
+      "theme_display": {
+        "en": "Quality and judgment",
+        "de": "Qualität und Bewertung"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "good", "pos": "adjective", "glosses": { "de": "gut" } },
+        { "term": "bad", "pos": "adjective", "glosses": { "de": "schlecht" } },
+        { "term": "easy", "pos": "adjective", "glosses": { "de": "einfach" } },
+        { "term": "difficult", "pos": "adjective", "glosses": { "de": "schwierig" } },
+        { "term": "right", "pos": "adjective", "glosses": { "de": "richtig" } },
+        { "term": "wrong", "pos": "adjective", "glosses": { "de": "falsch" } },
+        { "term": "important", "pos": "adjective", "glosses": { "de": "wichtig" } },
+        { "term": "unimportant", "pos": "adjective", "glosses": { "de": "unwichtig" } },
+        { "term": "cheap", "pos": "adjective", "glosses": { "de": "billig" } },
+        { "term": "expensive", "pos": "adjective", "glosses": { "de": "teuer" } },
+        { "term": "useful", "pos": "adjective", "glosses": { "de": "nützlich" } },
+        { "term": "useless", "pos": "adjective", "glosses": { "de": "nutzlos" } },
+        { "term": "safe", "pos": "adjective", "glosses": { "de": "sicher" } },
+        { "term": "dangerous", "pos": "adjective", "glosses": { "de": "gefährlich" } },
+        { "term": "possible", "pos": "adjective", "glosses": { "de": "möglich" } },
+        { "term": "impossible", "pos": "adjective", "glosses": { "de": "unmöglich" } },
+        { "term": "ready", "pos": "adjective", "glosses": { "de": "bereit" } },
+        { "term": "normal", "pos": "adjective", "glosses": { "de": "normal" } },
+        { "term": "special", "pos": "adjective", "glosses": { "de": "besonders" } },
+        { "term": "strange", "pos": "adjective", "glosses": { "de": "seltsam" } }
+      ]
+    },
+    {
+      "level": 5,
+      "theme_slug": "abstract_and_figurative",
+      "theme_display": {
+        "en": "Abstract and figurative",
+        "de": "Abstrakt und bildlich"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "logical", "pos": "adjective", "glosses": { "de": "logisch" } },
+        { "term": "emotional", "pos": "adjective", "glosses": { "de": "emotional" } },
+        { "term": "personal", "pos": "adjective", "glosses": { "de": "persönlich" } },
+        { "term": "public", "pos": "adjective", "glosses": { "de": "öffentlich" } },
+        { "term": "private", "pos": "adjective", "glosses": { "de": "privat" } },
+        { "term": "social", "pos": "adjective", "glosses": { "de": "sozial" } },
+        { "term": "political", "pos": "adjective", "glosses": { "de": "politisch" } },
+        { "term": "cultural", "pos": "adjective", "glosses": { "de": "kulturell" } },
+        { "term": "natural", "pos": "adjective", "glosses": { "de": "natürlich" } },
+        { "term": "artificial", "pos": "adjective", "glosses": { "de": "künstlich" } },
+        { "term": "local", "pos": "adjective", "glosses": { "de": "lokal" } },
+        { "term": "global", "pos": "adjective", "glosses": { "de": "global" } },
+        { "term": "official", "pos": "adjective", "glosses": { "de": "offiziell" } },
+        { "term": "legal", "pos": "adjective", "glosses": { "de": "legal" } },
+        { "term": "illegal", "pos": "adjective", "glosses": { "de": "illegal" } },
+        { "term": "formal", "pos": "adjective", "glosses": { "de": "formell" } },
+        { "term": "informal", "pos": "adjective", "glosses": { "de": "informell" } },
+        { "term": "active", "pos": "adjective", "glosses": { "de": "aktiv" } },
+        { "term": "passive", "pos": "adjective", "glosses": { "de": "passiv" } },
+        { "term": "creative", "pos": "adjective", "glosses": { "de": "kreativ" } }
+      ]
+    }
+  ]
+}

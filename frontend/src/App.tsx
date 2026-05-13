@@ -18,6 +18,9 @@ import Onboarding from '@/pages/Onboarding'
 import Dashboard from '@/pages/Dashboard'
 import Today from '@/pages/Today'
 import GuidedCheckpoint from '@/pages/GuidedCheckpoint'
+import CategoryListPage from '@/pages/categories/CategoryListPage'
+import CategoryDetailPage from '@/pages/categories/CategoryDetailPage'
+import LevelDetailPage from '@/pages/categories/LevelDetailPage'
 import Generate from '@/pages/Generate'
 import DeckView from '@/pages/DeckView'
 import VideoPlayer from '@/pages/VideoPlayer'
@@ -171,6 +174,9 @@ function AppRoutes() {
             <Route path="/dashboard" element={<DashboardPG />} />
             <Route path="/today" element={<Today />} />
             <Route path="/today/checkpoint" element={<GuidedCheckpoint />} />
+            <Route path="/categories" element={<CategoryListPage />} />
+            <Route path="/categories/:categorySlug" element={<CategoryDetailPage />} />
+            <Route path="/categories/:categorySlug/:levelNumber" element={<LevelDetailPage />} />
             <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<DecksPG />} />
             <Route path="/generate" element={<GenerateGO />} />
@@ -188,6 +194,9 @@ function AppRoutes() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/today" element={<Today />} />
             <Route path="/today/checkpoint" element={<GuidedCheckpoint />} />
+            <Route path="/categories" element={<CategoryListPage />} />
+            <Route path="/categories/:categorySlug" element={<CategoryDetailPage />} />
+            <Route path="/categories/:categorySlug/:levelNumber" element={<LevelDetailPage />} />
             <Route path="/games" element={<GamesHub />} />
             <Route path="/decks" element={<Decks />} />
             <Route path="/generate" element={<Generate />} />

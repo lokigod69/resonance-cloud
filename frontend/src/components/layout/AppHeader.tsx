@@ -55,6 +55,7 @@ export function AppHeader() {
   const mainNav = [
     { to: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
     { to: '/today', label: t('nav.today'), icon: CalendarDays },
+    { to: '/categories', label: t('nav.categories'), icon: ListOrdered },
     { to: '/decks', label: t('nav.decks'), icon: Library },
     { to: '/generate', label: t('nav.generate'), icon: Sparkles },
     { to: '/study', label: t('nav.study'), icon: BookOpen },

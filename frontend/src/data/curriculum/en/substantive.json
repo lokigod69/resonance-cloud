@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "substantive",
+  "category_display": {
+    "en": "Nouns",
+    "de": "Substantive (Dinge)"
+  },
+  "icon": "📦",
+  "column": "sprachaufbau",
+  "cap_total_entries": 100,
+  "max_levels": 5,
+  "generator_model": "gpt-5",
+  "generated_at": "2026-05-13T07:35:17Z",
+  "generator_version": "1.0",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "everyday_objects",
+      "theme_display": {
+        "en": "Everyday objects",
+        "de": "Alltagsgegenstände"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "table", "pos": "noun", "glosses": { "de": "der Tisch" } },
+        { "term": "chair", "pos": "noun", "glosses": { "de": "der Stuhl" } },
+        { "term": "bed", "pos": "noun", "glosses": { "de": "das Bett" } },
+        { "term": "door", "pos": "noun", "glosses": { "de": "die Tür" } },
+        { "term": "window", "pos": "noun", "glosses": { "de": "das Fenster" } },
+        { "term": "phone", "pos": "noun", "glosses": { "de": "das Telefon" } },
+        { "term": "key", "pos": "noun", "glosses": { "de": "der Schlüssel" } },
+        { "term": "bag", "pos": "noun", "glosses": { "de": "die Tasche" } },
+        { "term": "book", "pos": "noun", "glosses": { "de": "das Buch" } },
+        { "term": "pen", "pos": "noun", "glosses": { "de": "der Stift" } },
+        { "term": "cup", "pos": "noun", "glosses": { "de": "die Tasse" } },
+        { "term": "plate", "pos": "noun", "glosses": { "de": "der Teller" } },
+        { "term": "spoon", "pos": "noun", "glosses": { "de": "der Löffel" } },
+        { "term": "fork", "pos": "noun", "glosses": { "de": "die Gabel" } },
+        { "term": "knife", "pos": "noun", "glosses": { "de": "das Messer" } },
+        { "term": "bottle", "pos": "noun", "glosses": { "de": "die Flasche" } },
+        { "term": "glass", "pos": "noun", "glosses": { "de": "das Glas" } },
+        { "term": "lamp", "pos": "noun", "glosses": { "de": "die Lampe" } },
+        { "term": "computer", "pos": "noun", "glosses": { "de": "der Computer" } },
+        { "term": "television", "pos": "noun", "glosses": { "de": "der Fernseher" } }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "food_and_drink",
+      "theme_display": {
+        "en": "Food and drink",
+        "de": "Essen und Trinken"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "bread", "pos": "noun", "glosses": { "de": "das Brot" } },
+        { "term": "water", "pos": "noun", "glosses": { "de": "das Wasser" } },
+        { "term": "coffee", "pos": "noun", "glosses": { "de": "der Kaffee" } },
+        { "term": "tea", "pos": "noun", "glosses": { "de": "der Tee" } },
+        { "term": "milk", "pos": "noun", "glosses": { "de": "die Milch" } },
+        { "term": "juice", "pos": "noun", "glosses": { "de": "der Saft" } },
+        { "term": "apple", "pos": "noun", "glosses": { "de": "der Apfel" } },
+        { "term": "banana", "pos": "noun", "glosses": { "de": "die Banane" } },
+        { "term": "cheese", "pos": "noun", "glosses": { "de": "der Käse" } },
+        { "term": "egg", "pos": "noun", "glosses": { "de": "das Ei" } },
+        { "term": "meat", "pos": "noun", "glosses": { "de": "das Fleisch" } },
+        { "term": "fish", "pos": "noun", "glosses": { "de": "der Fisch" } },
+        { "term": "rice", "pos": "noun", "glosses": { "de": "der Reis" } },
+        { "term": "pasta", "pos": "noun", "glosses": { "de": "die Nudeln" } },
+        { "term": "soup", "pos": "noun", "glosses": { "de": "die Suppe" } },
+        { "term": "salad", "pos": "noun", "glosses": { "de": "der Salat" } },
+        { "term": "potato", "pos": "noun", "glosses": { "de": "die Kartoffel" } },
+        { "term": "tomato", "pos": "noun", "glosses": { "de": "die Tomate" } },
+        { "term": "sugar", "pos": "noun", "glosses": { "de": "der Zucker" } },
+        { "term": "salt", "pos": "noun", "glosses": { "de": "das Salz" } }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "places_and_buildings",
+      "theme_display": {
+        "en": "Places and buildings",
+        "de": "Orte und Gebäude"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "house", "pos": "noun", "glosses": { "de": "das Haus" } },
+        { "term": "apartment", "pos": "noun", "glosses": { "de": "die Wohnung" } },
+        { "term": "school", "pos": "noun", "glosses": { "de": "die Schule" } },
+        { "term": "office", "pos": "noun", "glosses": { "de": "das Büro" } },
+        { "term": "store", "pos": "noun", "glosses": { "de": "das Geschäft" } },
+        { "term": "restaurant", "pos": "noun", "glosses": { "de": "das Restaurant" } },
+        { "term": "hospital", "pos": "noun", "glosses": { "de": "das Krankenhaus" } },
+        { "term": "hotel", "pos": "noun", "glosses": { "de": "das Hotel" } },
+        { "term": "bank", "pos": "noun", "glosses": { "de": "die Bank" } },
+        { "term": "station", "pos": "noun", "glosses": { "de": "der Bahnhof" } },
+        { "term": "airport", "pos": "noun", "glosses": { "de": "der Flughafen" } },
+        { "term": "park", "pos": "noun", "glosses": { "de": "der Park" } },
+        { "term": "library", "pos": "noun", "glosses": { "de": "die Bibliothek" } },
+        { "term": "church", "pos": "noun", "glosses": { "de": "die Kirche" } },
+        { "term": "museum", "pos": "noun", "glosses": { "de": "das Museum" } },
+        { "term": "cinema", "pos": "noun", "glosses": { "de": "das Kino" } },
+        { "term": "market", "pos": "noun", "glosses": { "de": "der Markt" } },
+        { "term": "pharmacy", "pos": "noun", "glosses": { "de": "die Apotheke" } },
+        { "term": "bakery", "pos": "noun", "glosses": { "de": "die Bäckerei" } },
+        { "term": "bathroom", "pos": "noun", "glosses": { "de": "das Badezimmer" } }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "people_and_roles",
+      "theme_display": {
+        "en": "People and roles",
+        "de": "Menschen und Rollen"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "person", "pos": "noun", "glosses": { "de": "die Person" } },
+        { "term": "man", "pos": "noun", "glosses": { "de": "der Mann" } },
+        { "term": "woman", "pos": "noun", "glosses": { "de": "die Frau" } },
+        { "term": "child", "pos": "noun", "glosses": { "de": "das Kind" } },
+        { "term": "friend", "pos": "noun", "glosses": { "de": "der Freund" } },
+        { "term": "neighbor", "pos": "noun", "glosses": { "de": "der Nachbar" } },
+        { "term": "teacher", "pos": "noun", "glosses": { "de": "der Lehrer" } },
+        { "term": "student", "pos": "noun", "glosses": { "de": "der Schüler" } },
+        { "term": "doctor", "pos": "noun", "glosses": { "de": "der Arzt" } },
+        { "term": "nurse", "pos": "noun", "glosses": { "de": "die Krankenschwester" } },
+        { "term": "police officer", "pos": "noun", "glosses": { "de": "der Polizist" } },
+        { "term": "driver", "pos": "noun", "glosses": { "de": "der Fahrer" } },
+        { "term": "waiter", "pos": "noun", "glosses": { "de": "der Kellner" } },
+        { "term": "cook", "pos": "noun", "glosses": { "de": "der Koch" } },
+        { "term": "boss", "pos": "noun", "glosses": { "de": "der Chef" } },
+        { "term": "worker", "pos": "noun", "glosses": { "de": "der Arbeiter" } },
+        { "term": "customer", "pos": "noun", "glosses": { "de": "der Kunde" } },
+        { "term": "guest", "pos": "noun", "glosses": { "de": "der Gast" } },
+        { "term": "artist", "pos": "noun", "glosses": { "de": "der Künstler" } },
+        { "term": "farmer", "pos": "noun", "glosses": { "de": "der Bauer" } }
+      ]
+    },
+    {
+      "level": 5,
+      "theme_slug": "abstract_concepts",
+      "theme_display": {
+        "en": "Abstract concepts",
+        "de": "Abstrakte Begriffe"
+      },
+      "entry_count": 20,
+      "entries": [
+        { "term": "idea", "pos": "noun", "glosses": { "de": "die Idee" } },
+        { "term": "time", "pos": "noun", "glosses": { "de": "die Zeit" } },
+        { "term": "life", "pos": "noun", "glosses": { "de": "das Leben" } },
+        { "term": "work", "pos": "noun", "glosses": { "de": "die Arbeit" } },
+        { "term": "love", "pos": "noun", "glosses": { "de": "die Liebe" } },
+        { "term": "truth", "pos": "noun", "glosses": { "de": "die Wahrheit" } },
+        { "term": "reason", "pos": "noun", "glosses": { "de": "der Grund" } },
+        { "term": "problem", "pos": "noun", "glosses": { "de": "das Problem" } },
+        { "term": "question", "pos": "noun", "glosses": { "de": "die Frage" } },
+        { "term": "answer", "pos": "noun", "glosses": { "de": "die Antwort" } },
+        { "term": "decision", "pos": "noun", "glosses": { "de": "die Entscheidung" } },
+        { "term": "chance", "pos": "noun", "glosses": { "de": "die Chance" } },
+        { "term": "fear", "pos": "noun", "glosses": { "de": "die Angst" } },
+        { "term": "hope", "pos": "noun", "glosses": { "de": "die Hoffnung" } },
+        { "term": "freedom", "pos": "noun", "glosses": { "de": "die Freiheit" } },
+        { "term": "peace", "pos": "noun", "glosses": { "de": "der Frieden" } },
+        { "term": "success", "pos": "noun", "glosses": { "de": "der Erfolg" } },
+        { "term": "mistake", "pos": "noun", "glosses": { "de": "der Fehler" } },
+        { "term": "change", "pos": "noun", "glosses": { "de": "die Veränderung" } },
+        { "term": "difference", "pos": "noun", "glosses": { "de": "der Unterschied" } }
+      ]
+    }
+  ]
+}

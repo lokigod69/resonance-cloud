@@ -3,7 +3,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 import { useProfileAvatarUrl } from '@/hooks/useProfileAvatarUrl'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Coins, User, Shield, LayoutDashboard, CalendarDays, Library, Sparkles, BookOpen, Music, Mic } from 'lucide-react'
+import { Menu, X, Coins, User, Shield, LayoutDashboard, CalendarDays, Library, Sparkles, BookOpen, Music, Mic, ListOrdered } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -27,6 +27,7 @@ export default function PolishGlassLayout() {
   const navItems = [
     { label: t('nav.dashboard'), path: '/dashboard', icon: LayoutDashboard },
     { label: t('nav.today'), path: '/today', icon: CalendarDays },
+    { label: t('nav.categories'), path: '/categories', icon: ListOrdered },
     { label: t('nav.decks'), path: '/decks', icon: Library },
     { label: t('nav.generate'), path: '/generate', icon: Sparkles },
     { label: t('nav.study'), path: '/study', icon: BookOpen },

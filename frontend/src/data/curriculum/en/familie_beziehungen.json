@@ -1,0 +1,272 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "familie_beziehungen",
+  "category_display": {
+    "en": "Family & Relationships",
+    "de": "Familie & Beziehungen"
+  },
+  "icon": "👨‍👩‍👧",
+  "column": "grundlagen",
+  "cap_total_entries": 30,
+  "max_levels": 4,
+  "generator_model": "gpt-5",
+  "generated_at": "2026-05-13T07:08:26Z",
+  "generator_version": "1.0",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "immediate_family",
+      "theme_display": {
+        "en": "Immediate family",
+        "de": "Engste Familie"
+      },
+      "entry_count": 6,
+      "entries": [
+        {
+          "term": "father",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Vater"
+          }
+        },
+        {
+          "term": "mother",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Mutter"
+          }
+        },
+        {
+          "term": "brother",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Bruder"
+          }
+        },
+        {
+          "term": "sister",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Schwester"
+          }
+        },
+        {
+          "term": "son",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Sohn"
+          }
+        },
+        {
+          "term": "daughter",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Tochter"
+          }
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "extended_family",
+      "theme_display": {
+        "en": "Extended family",
+        "de": "Erweiterte Familie"
+      },
+      "entry_count": 8,
+      "entries": [
+        {
+          "term": "grandfather",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Großvater"
+          }
+        },
+        {
+          "term": "grandmother",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Großmutter"
+          }
+        },
+        {
+          "term": "uncle",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Onkel"
+          }
+        },
+        {
+          "term": "aunt",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Tante"
+          }
+        },
+        {
+          "term": "cousin",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Cousin"
+          }
+        },
+        {
+          "term": "nephew",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Neffe"
+          }
+        },
+        {
+          "term": "niece",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Nichte"
+          }
+        },
+        {
+          "term": "grandchild",
+          "pos": "noun",
+          "glosses": {
+            "de": "das Enkelkind"
+          }
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "in_laws_and_step_relations",
+      "theme_display": {
+        "en": "In-laws and step relations",
+        "de": "Schwieger- und Stiefbeziehungen"
+      },
+      "entry_count": 8,
+      "entries": [
+        {
+          "term": "father-in-law",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Schwiegervater"
+          }
+        },
+        {
+          "term": "mother-in-law",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Schwiegermutter"
+          }
+        },
+        {
+          "term": "brother-in-law",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Schwager"
+          }
+        },
+        {
+          "term": "sister-in-law",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Schwägerin"
+          }
+        },
+        {
+          "term": "son-in-law",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Schwiegersohn"
+          }
+        },
+        {
+          "term": "daughter-in-law",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Schwiegertochter"
+          }
+        },
+        {
+          "term": "stepfather",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Stiefvater"
+          }
+        },
+        {
+          "term": "stepmother",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Stiefmutter"
+          }
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "relationship_states_and_terms_of_endearment",
+      "theme_display": {
+        "en": "Relationship states and terms of endearment",
+        "de": "Beziehungsstatus und Kosenamen"
+      },
+      "entry_count": 8,
+      "entries": [
+        {
+          "term": "single",
+          "pos": "adjective",
+          "glosses": {
+            "de": "ledig"
+          }
+        },
+        {
+          "term": "married",
+          "pos": "adjective",
+          "glosses": {
+            "de": "verheiratet"
+          }
+        },
+        {
+          "term": "divorced",
+          "pos": "adjective",
+          "glosses": {
+            "de": "geschieden"
+          }
+        },
+        {
+          "term": "engaged",
+          "pos": "adjective",
+          "glosses": {
+            "de": "verlobt"
+          }
+        },
+        {
+          "term": "partner",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Partner"
+          }
+        },
+        {
+          "term": "boyfriend",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Freund"
+          }
+        },
+        {
+          "term": "girlfriend",
+          "pos": "noun",
+          "glosses": {
+            "de": "die Freundin"
+          }
+        },
+        {
+          "term": "sweetheart",
+          "pos": "noun",
+          "glosses": {
+            "de": "der Schatz"
+          }
+        }
+      ]
+    }
+  ]
+}
