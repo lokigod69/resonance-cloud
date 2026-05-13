@@ -42,6 +42,100 @@ import {
   writeTodayProgressState,
 } from '../src/lib/todayProgress.ts'
 
+const ASCII_GERMAN_TRANSLITERATION_MARKERS = [
+  'Koenn',
+  'koenn',
+  'waere',
+  'waehrend',
+  'spaeter',
+  'laesst',
+  'nuetzlich',
+  'fuer',
+  'ueber',
+  'muessen',
+  'Strasse',
+  'Cafe',
+  'Naehe',
+  'naech',
+  'schliess',
+  'Tuer',
+  'Oeffnung',
+  'Oeffnungs',
+  'frueh',
+  'Bestaetigung',
+  'Staedt',
+  'gueltig',
+  'naeh',
+  'faehr',
+  'waer',
+  'haeng',
+  'spaet',
+  'verspaet',
+  'aender',
+  'erklaer',
+  'gefaehr',
+  'aergerlich',
+  'maennlich',
+  'naeher',
+  'waehl',
+  'Gebaeck',
+  'Geraet',
+  'moecht',
+  'oeffn',
+  'geoeffnet',
+  'schoen',
+  'hoer',
+  'moeglich',
+  'unmoeglich',
+  'froehlich',
+  'broetchen',
+  'hoeflich',
+  'koerperlich',
+  'loesung',
+  'Zahlungsloesung',
+  'pruef',
+  'geprueft',
+  'frueher',
+  'Uebertreibung',
+  'uebersetz',
+  'uebernacht',
+  'muess',
+  'duerf',
+  'fuenf',
+  'gluecklich',
+  'buero',
+  'spuer',
+  'gruess',
+  'Verfuegbar',
+  'fuegt',
+  'beruehrt',
+  'Rueck',
+  'klaert',
+  'Tuete',
+  'duerfen',
+  'strass',
+  'weiss',
+  'heiss',
+  'gross',
+  'groesse',
+  'dreissig',
+  'spass',
+  'Fuss',
+  'Fussweg',
+  'gruss',
+  'Kartenlesegeraet',
+  'Ladentuer',
+  'Ausstiegstuer',
+] as const
+
+const MOJIBAKE_PATTERN = /Ã[\x80-\xBF]/
+// Lost-byte diacritic corruption: a literal "?" placeholder that replaces a
+// non-ASCII byte. The lost char can land mid-word ("T?r" was "Tür") OR
+// word-initial ("?ber" was "über"). We flag any "?" that is immediately
+// followed by a Latin letter — a legitimate sentence-ending "?" is followed
+// by whitespace, end-of-string, or punctuation, never a bare letter.
+const CORRUPT_DIACRITIC_PATTERN = /\?[A-Za-z]/
+
 let failures = 0
 let passes = 0
 
@@ -238,9 +332,93 @@ for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
   assert(`A1 Practical 3 ${vibeId} uses at least three opener families`, new Set(openerFamilies).size >= 3, openerFamilies)
 }
 
+console.log('\n[German diacritic detector unit checks]')
+
+const expectedScannedGermanFieldKinds = [
+  'chunks[*].baseText',
+  'corePhrase.baseText',
+  'lessonItems[*].baseText',
+  'meaning',
+  'nextLessonTeaser.situation',
+  'placeholderMedia.caption',
+  'sceneCaption',
+  'situation.de',
+  'speakTarget.baseCue',
+  'trophyWord.example',
+  'trophyWord.meaning',
+  'trophyWord.whyThisWord',
+]
+const actualScannedGermanFieldKinds = getScannedGermanFieldKinds()
+assert(
+  'German guard scans every required learner-facing field kind',
+  JSON.stringify(actualScannedGermanFieldKinds) === JSON.stringify(expectedScannedGermanFieldKinds),
+  { expected: expectedScannedGermanFieldKinds, actual: actualScannedGermanFieldKinds },
+)
+
+const positiveAsciiCases: Array<[string, string]> = [
+  ['Welcher Bus faehrt zum Museum?', 'faehr'],
+  ['Du pruefst, ob es offen ist.', 'pruef'],
+  ['...kurze Rueckfrage...', 'Rueck'],
+  ['...zu Fuss gehen', 'Fuss'],
+  ['Eine Tuete bitte.', 'Tuete'],
+  ['Die naechste Haltestelle', 'naech'],
+]
+for (const [sample, expectedMarker] of positiveAsciiCases) {
+  const markers = detectAsciiGermanTransliterationMarkers(sample)
+  assert(
+    `ASCII detector flags ${JSON.stringify(sample)} (marker: ${expectedMarker})`,
+    markers.some((marker) => marker.toLowerCase() === expectedMarker.toLowerCase()),
+    markers,
+  )
+}
+
+const mojibakeSample = 'schÃ¶n / nett'
+assert(
+  `mojibake detector flags ${JSON.stringify(mojibakeSample)}`,
+  detectMojibake(mojibakeSample) && !detectCorruptDiacritic(mojibakeSample),
+  { mojibake: detectMojibake(mojibakeSample), corruptDiacritic: detectCorruptDiacritic(mojibakeSample) },
+)
+
+const corruptSample = 'etwas Einfaches ?ber einen Ort'
+assert(
+  `corrupt-diacritic detector flags ${JSON.stringify(corruptSample)}`,
+  detectCorruptDiacritic(corruptSample) && !detectMojibake(corruptSample),
+  { corruptDiacritic: detectCorruptDiacritic(corruptSample), mojibake: detectMojibake(corruptSample) },
+)
+
+const negativeCleanSamples = [
+  'Wann schließt es heute?',
+  'Die nächste Haltestelle',
+  'Ist hier jetzt geöffnet?',
+  'Café Adler',
+  'Wasser',
+  'Klasse',
+  'dass',
+  'geschlossen',
+  'queue',
+  'vague',
+  'Boeing',
+]
+for (const sample of negativeCleanSamples) {
+  const asciiMarkers = detectAsciiGermanTransliterationMarkers(sample)
+  const corrupt = detectCorruptDiacritic(sample)
+  const mojibake = detectMojibake(sample)
+  assert(
+    `no detector flags clean sample ${JSON.stringify(sample)}`,
+    asciiMarkers.length === 0 && !corrupt && !mojibake,
+    { asciiMarkers, corrupt, mojibake },
+  )
+}
+
 console.log('\n[German learner-facing diacritics]')
 const asciiGermanFlags = collectAsciiGermanTransliterationFlags()
 assert('German learner-facing Guided Today fields avoid common ASCII transliterations', asciiGermanFlags.length === 0, asciiGermanFlags)
+
+const corruptDiacriticFlags = collectCorruptDiacriticFlags()
+assert('German learner-facing Guided Today fields avoid lost-byte (?) diacritic corruption', corruptDiacriticFlags.length === 0, corruptDiacriticFlags)
+
+const mojibakeFlags = collectMojibakeFlags()
+assert('German learner-facing Guided Today fields avoid UTF-8 mojibake (Ã¶ etc.)', mojibakeFlags.length === 0, mojibakeFlags)
 
 console.log('\n[vibe resolution]')
 if (firstDefinition) {
@@ -423,65 +601,92 @@ function containsAny(value: string, needles: string[]) {
   return needles.some((needle) => needle.length > 0 && value.includes(needle))
 }
 
-function collectAsciiGermanTransliterationFlags() {
-  const flags: string[] = []
-  const markers = [
-    'Koenn',
-    'koenn',
-    'waere',
-    'waehrend',
-    'spaeter',
-    'laesst',
-    'nuetzlich',
-    'fuer',
-    'ueber',
-    'muessen',
-    'Strasse',
-    'Cafe',
-    'Naehe',
-    'naech',
-    'schliess',
-    'Tuer',
-    'Oeffnung',
-    'Oeffnungs',
-    'frueh',
-    'Bestaetigung',
-    'Staedt',
-    'gueltig',
-  ]
+type GermanFieldEntry = { path: string; value: string }
 
+function collectGermanFieldEntries(): GermanFieldEntry[] {
+  const entries: GermanFieldEntry[] = []
   for (const lessonDefinition of GUIDED_LESSONS) {
-    const lessonFields = [
-      ['situation.de', lessonDefinition.situation.de],
-    ] as const
-    for (const [field, value] of lessonFields) {
-      if (/[A-Za-z]\?[A-Za-z]/.test(value)) flags.push(`${lessonDefinition.id}:${field}:corrupt-diacritic`)
-      for (const marker of markers) {
-        if (value.includes(marker)) flags.push(`${lessonDefinition.id}:${field}:${marker}`)
-      }
+    const lessonPrefix = lessonDefinition.id
+    entries.push({ path: `${lessonPrefix}:situation.de`, value: lessonDefinition.situation.de })
+    const teaserSituation = lessonDefinition.nextLessonTeaser?.situation
+    if (typeof teaserSituation === 'string' && teaserSituation.length > 0) {
+      entries.push({ path: `${lessonPrefix}:nextLessonTeaser.situation`, value: teaserSituation })
     }
 
     for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
       const variant = lessonDefinition.vibeVariants[vibeId]
       if (!variant) continue
-      const variantFields = [
-        ['corePhrase.baseText', variant.corePhrase.baseText],
-        ['sceneCaption', variant.sceneCaption],
-        ['placeholderMedia.caption', variant.placeholderMedia?.caption ?? ''],
-        ['trophyWord.meaning', variant.trophyWord.meaning],
-        ['trophyWord.example', variant.trophyWord.example],
-        ['trophyWord.whyThisWord', variant.trophyWord.whyThisWord],
-      ] as const
+      const variantPrefix = `${lessonPrefix}/${vibeId}`
 
-      for (const [field, value] of variantFields) {
-        if (/[A-Za-z]\?[A-Za-z]/.test(value)) flags.push(`${lessonDefinition.id}/${vibeId}:${field}:corrupt-diacritic`)
-        for (const marker of markers) {
-          if (value.includes(marker)) flags.push(`${lessonDefinition.id}/${vibeId}:${field}:${marker}`)
-        }
+      entries.push({ path: `${variantPrefix}:meaning`, value: variant.meaning })
+      entries.push({ path: `${variantPrefix}:corePhrase.baseText`, value: variant.corePhrase.baseText })
+      variant.chunks.forEach((phraseChunk, idx) => {
+        entries.push({ path: `${variantPrefix}:chunks[${idx}].baseText`, value: phraseChunk.baseText })
+      })
+      variant.lessonItems.forEach((item, idx) => {
+        entries.push({ path: `${variantPrefix}:lessonItems[${idx}].baseText`, value: item.baseText })
+      })
+      entries.push({ path: `${variantPrefix}:sceneCaption`, value: variant.sceneCaption })
+      const placeholderCaption = variant.placeholderMedia?.caption
+      if (typeof placeholderCaption === 'string' && placeholderCaption.length > 0) {
+        entries.push({ path: `${variantPrefix}:placeholderMedia.caption`, value: placeholderCaption })
       }
+      entries.push({ path: `${variantPrefix}:speakTarget.baseCue`, value: variant.speakTarget.baseCue })
+      entries.push({ path: `${variantPrefix}:trophyWord.meaning`, value: variant.trophyWord.meaning })
+      entries.push({ path: `${variantPrefix}:trophyWord.example`, value: variant.trophyWord.example })
+      entries.push({ path: `${variantPrefix}:trophyWord.whyThisWord`, value: variant.trophyWord.whyThisWord })
     }
   }
+  return entries
+}
 
+function getScannedGermanFieldKinds(): string[] {
+  const kinds = new Set<string>()
+  for (const { path } of collectGermanFieldEntries()) {
+    const afterLesson = path.split(':').slice(1).join(':')
+    kinds.add(afterLesson.replace(/\[\d+\]/g, '[*]'))
+  }
+  return Array.from(kinds).sort()
+}
+
+function detectAsciiGermanTransliterationMarkers(value: string): string[] {
+  const lower = value.toLowerCase()
+  return ASCII_GERMAN_TRANSLITERATION_MARKERS.filter((marker) =>
+    lower.includes(marker.toLowerCase()),
+  )
+}
+
+function detectCorruptDiacritic(value: string): boolean {
+  return CORRUPT_DIACRITIC_PATTERN.test(value)
+}
+
+function detectMojibake(value: string): boolean {
+  return MOJIBAKE_PATTERN.test(value)
+}
+
+function collectAsciiGermanTransliterationFlags(): string[] {
+  const flags: string[] = []
+  for (const { path, value } of collectGermanFieldEntries()) {
+    for (const marker of detectAsciiGermanTransliterationMarkers(value)) {
+      flags.push(`${path}:${marker}`)
+    }
+  }
+  return flags
+}
+
+function collectCorruptDiacriticFlags(): string[] {
+  const flags: string[] = []
+  for (const { path, value } of collectGermanFieldEntries()) {
+    if (detectCorruptDiacritic(value)) flags.push(`${path}:corrupt-diacritic`)
+  }
+  return flags
+}
+
+function collectMojibakeFlags(): string[] {
+  const flags: string[] = []
+  for (const { path, value } of collectGermanFieldEntries()) {
+    if (detectMojibake(value)) flags.push(`${path}:mojibake`)
+  }
   return flags
 }
 
