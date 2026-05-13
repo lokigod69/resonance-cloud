@@ -238,6 +238,10 @@ for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
   assert(`A1 Practical 3 ${vibeId} uses at least three opener families`, new Set(openerFamilies).size >= 3, openerFamilies)
 }
 
+console.log('\n[German learner-facing diacritics]')
+const asciiGermanFlags = collectAsciiGermanTransliterationFlags()
+assert('German learner-facing Guided Today fields avoid common ASCII transliterations', asciiGermanFlags.length === 0, asciiGermanFlags)
+
 console.log('\n[vibe resolution]')
 if (firstDefinition) {
   assert('current lesson defaults to lesson 1 Bright', getCurrentGuidedLesson().id === firstDefinition.id && getCurrentGuidedLesson().vibeId === 'bright')
@@ -417,6 +421,68 @@ function stripPunctuation(value: string) {
 
 function containsAny(value: string, needles: string[]) {
   return needles.some((needle) => needle.length > 0 && value.includes(needle))
+}
+
+function collectAsciiGermanTransliterationFlags() {
+  const flags: string[] = []
+  const markers = [
+    'Koenn',
+    'koenn',
+    'waere',
+    'waehrend',
+    'spaeter',
+    'laesst',
+    'nuetzlich',
+    'fuer',
+    'ueber',
+    'muessen',
+    'Strasse',
+    'Cafe',
+    'Naehe',
+    'naech',
+    'schliess',
+    'Tuer',
+    'Oeffnung',
+    'Oeffnungs',
+    'frueh',
+    'Bestaetigung',
+    'Staedt',
+    'gueltig',
+  ]
+
+  for (const lessonDefinition of GUIDED_LESSONS) {
+    const lessonFields = [
+      ['situation.de', lessonDefinition.situation.de],
+    ] as const
+    for (const [field, value] of lessonFields) {
+      if (/[A-Za-z]\?[A-Za-z]/.test(value)) flags.push(`${lessonDefinition.id}:${field}:corrupt-diacritic`)
+      for (const marker of markers) {
+        if (value.includes(marker)) flags.push(`${lessonDefinition.id}:${field}:${marker}`)
+      }
+    }
+
+    for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+      const variant = lessonDefinition.vibeVariants[vibeId]
+      if (!variant) continue
+      const variantFields = [
+        ['corePhrase.baseText', variant.corePhrase.baseText],
+        ['sceneCaption', variant.sceneCaption],
+        ['placeholderMedia.caption', variant.placeholderMedia?.caption ?? ''],
+        ['trophyWord.meaning', variant.trophyWord.meaning],
+        ['trophyWord.example', variant.trophyWord.example],
+        ['trophyWord.whyThisWord', variant.trophyWord.whyThisWord],
+      ] as const
+
+      for (const [field, value] of variantFields) {
+        if (/[A-Za-z]\?[A-Za-z]/.test(value)) flags.push(`${lessonDefinition.id}/${vibeId}:${field}:corrupt-diacritic`)
+        for (const marker of markers) {
+          if (value.includes(marker)) flags.push(`${lessonDefinition.id}/${vibeId}:${field}:${marker}`)
+        }
+      }
+    }
+  }
+
+  return flags
 }
 
 function createMemoryStorage(): Storage {

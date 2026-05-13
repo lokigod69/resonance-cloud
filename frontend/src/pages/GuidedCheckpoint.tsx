@@ -2,8 +2,9 @@ import { ChevronLeft, ChevronRight, CheckCircle2, Mic, MicOff, RotateCcw } from 
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { getGuidedTodayPathOptions, guidedAnswerMatches } from '@/data/guidedLessons'
-import { isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
+import { guidedVibes, isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
+import { useTranslation } from '@/hooks/useTranslation'
 import {
   buildGuidedCheckpointPlan,
   completeGuidedCheckpoint,
@@ -82,16 +83,16 @@ export default function GuidedCheckpoint() {
   }
 
   if (!plan || !currentItem) {
-    return <CheckpointUnavailable />
+    return <CheckpointUnavailable selectedVibeId={selectedVibeId} />
   }
 
   if (phase === 'summary' && summary) {
-    return <CheckpointSummary record={summary} onBackToToday={() => navigate('/today')} />
+    return <CheckpointSummary record={summary} selectedVibeId={selectedVibeId} onBackToToday={() => navigate('/today')} />
   }
 
   return (
     <main
-      className="today-shell relative isolate mx-auto grid min-h-dvh w-full max-w-4xl content-start gap-5 px-4 py-4 sm:px-6 lg:py-8"
+      className="today-shell today-checkpoint-shell relative isolate mx-auto grid min-h-dvh w-full max-w-4xl content-start gap-5 px-4 py-4 sm:px-6 lg:py-8"
       data-guided-vibe={selectedVibeId}
     >
       <div
@@ -132,21 +133,23 @@ function CheckpointHeader({
   itemIndex: number
   progressValue: number
 }) {
+  const { t } = useTranslation()
+
   return (
-    <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6">
+    <section className="theme-panel today-checkpoint-header rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6">
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div>
           <Button asChild type="button" variant="ghost" size="sm" className="-ml-2 mb-3">
             <Link to="/today">
               <ChevronLeft className="h-4 w-4" />
-              Back to Today
+              {t('today.checkpoint.backToToday')}
             </Link>
           </Button>
           <p className="text-sm font-medium text-[var(--text-secondary)]">
-            Quick Review
+            {t('today.checkpoint.title')}
           </p>
           <h1 className="mt-1 text-2xl font-semibold leading-tight text-[var(--text-primary)]">
-            Retrieval checkpoint
+            {t('today.checkpoint.heading')}
           </h1>
         </div>
         <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
@@ -174,16 +177,17 @@ function CheckpointTypeStep({
   onAdvance: () => void
 }) {
   const submitted = result !== undefined
+  const { t } = useTranslation()
 
   return (
-    <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
+    <section className="theme-panel today-checkpoint-step rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
       <div className="grid justify-items-center gap-5 text-center">
         <p className="text-sm leading-6 text-[var(--text-secondary)]">
-          Type the English phrase from the German prompt.
+          {t('today.checkpoint.typePrompt')}
         </p>
-        <div className="w-full max-w-2xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4">
+        <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            German prompt
+            {t('today.checkpoint.germanPrompt')}
           </p>
           <p className="mt-3 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
             {item.lesson.corePhrase.baseText}
@@ -195,27 +199,27 @@ function CheckpointTypeStep({
             value={answer}
             onChange={(event) => onAnswerChange(event.target.value)}
             disabled={submitted}
-            placeholder="Type in English"
-            aria-label="English recall answer"
-            className="h-12 text-center text-xl font-semibold sm:text-2xl"
+            placeholder={t('today.checkpoint.typePlaceholder')}
+            aria-label={t('today.checkpoint.answerLabel')}
+            className="today-checkpoint-input h-12 text-center text-xl font-semibold sm:text-2xl"
           />
           {!submitted && (
             <Button type="submit" disabled={!answer.trim()}>
-              Check
+              {t('today.checkpoint.check')}
             </Button>
           )}
         </form>
 
         {submitted && (
           <div className="grid justify-items-center gap-3">
-            <p className="inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
+            <p className="today-checkpoint-resultPill inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm text-[var(--text-secondary)]">
               {result === 'correct' && <CheckCircle2 className="h-4 w-4 text-[#34d399]" />}
               {result === 'correct'
-                ? 'Correct on the first try'
-                : `Correct answer: ${item.lesson.typeRecall.answer}`}
+                ? t('today.checkpoint.correctFirstTry')
+                : t('today.checkpoint.correctAnswer', { answer: item.lesson.typeRecall.answer })}
             </p>
             <Button type="button" onClick={onAdvance}>
-              Speak
+              {t('today.checkpoint.speak')}
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
@@ -232,6 +236,7 @@ function CheckpointSpeakStep({
   item: GuidedCheckpointPlanItem
   onDone: () => void
 }) {
+  const { t } = useTranslation()
   const recognitionRef = useRef<BrowserSpeechRecognizer | null>(null)
   const [status, setStatus] = useState<'idle' | 'listening' | 'done' | 'unsupported'>(
     canUseBrowserSpeechRecognition() ? 'idle' : 'unsupported',
@@ -277,14 +282,14 @@ function CheckpointSpeakStep({
   }
 
   return (
-    <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
+    <section className="theme-panel today-checkpoint-step rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
       <div className="grid justify-items-center gap-5 text-center">
         <p className="text-sm leading-6 text-[var(--text-secondary)]">
-          Say the phrase aloud. No score is recorded for speaking.
+          {t('today.checkpoint.speakPrompt')}
         </p>
-        <div className="w-full max-w-2xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4">
+        <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            Speak from this cue
+            {t('today.checkpoint.speakCue')}
           </p>
           <p className="mt-3 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
             {item.lesson.speak.baseCue}
@@ -295,18 +300,18 @@ function CheckpointSpeakStep({
           {isSupported && (
             <Button type="button" variant="outline" onClick={status === 'listening' ? handleStop : handleStart}>
               {status === 'listening' ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
-              {status === 'listening' ? 'Stop' : 'Record'}
+              {status === 'listening' ? t('today.checkpoint.stop') : t('today.checkpoint.record')}
             </Button>
           )}
           <Button type="button" onClick={onDone}>
-            {status === 'done' ? 'Next' : 'Done'}
+            {status === 'done' ? t('today.checkpoint.next') : t('today.checkpoint.done')}
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
 
         {status === 'unsupported' && (
-          <p className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_70%,transparent)] px-3 py-2 text-sm leading-6 text-[var(--text-secondary)]">
-            Speech recognition is not available in this browser. Continue after saying it aloud.
+          <p className="today-checkpoint-resultPill rounded-lg border px-3 py-2 text-sm leading-6 text-[var(--text-secondary)]">
+            {t('today.checkpoint.speechUnsupported')}
           </p>
         )}
       </div>
@@ -316,42 +321,62 @@ function CheckpointSpeakStep({
 
 function CheckpointSummary({
   record,
+  selectedVibeId,
   onBackToToday,
 }: {
   record: GuidedCheckpointRecord
+  selectedVibeId: ActiveGuidedVibeId
   onBackToToday: () => void
 }) {
+  const { t } = useTranslation()
+  const vibe = guidedVibes[selectedVibeId]
+
   return (
-    <main className="today-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6">
-      <section className="theme-panel w-full rounded-lg border border-[var(--border-subtle)] p-6 text-center sm:p-8">
-        <CheckCircle2 className="mx-auto h-10 w-10 text-[#34d399]" aria-hidden="true" />
+    <main className="today-shell today-checkpoint-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6" data-guided-vibe={selectedVibeId}>
+      <section className="theme-panel today-checkpoint-summary w-full rounded-lg border border-[var(--border-subtle)] p-6 text-center sm:p-8">
+        <span className="today-completion-vibeBadge mx-auto" aria-hidden="true">
+          {vibe.emblem?.url && (
+            <img
+              src={vibe.emblem.url}
+              alt=""
+              className="today-completion-vibeBadgeImage"
+              draggable={false}
+            />
+          )}
+          <CheckCircle2 className="today-completion-vibeBadgeCheck" />
+        </span>
         <h1 className="mt-4 text-3xl font-semibold text-[var(--text-primary)]">
-          Quick Review complete
+          {t('today.checkpoint.completeTitle')}
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-[var(--text-secondary)]">
-          {record.itemsCorrectFirstTry} out of {record.itemsReviewed} correct on first try
+          {t('today.checkpoint.completeBody', {
+            correct: record.itemsCorrectFirstTry,
+            total: record.itemsReviewed,
+          })}
         </p>
         <Button type="button" className="mt-6" onClick={onBackToToday}>
-          Back to Today
+          {t('today.checkpoint.backToToday')}
         </Button>
       </section>
     </main>
   )
 }
 
-function CheckpointUnavailable() {
+function CheckpointUnavailable({ selectedVibeId }: { selectedVibeId: ActiveGuidedVibeId }) {
+  const { t } = useTranslation()
+
   return (
-    <main className="today-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6">
+    <main className="today-shell today-checkpoint-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6" data-guided-vibe={selectedVibeId}>
       <section className="theme-panel w-full rounded-lg border border-[var(--border-subtle)] p-6 text-center sm:p-8">
         <RotateCcw className="mx-auto h-10 w-10 text-[var(--accent)]" aria-hidden="true" />
         <h1 className="mt-4 text-3xl font-semibold text-[var(--text-primary)]">
-          No Quick Review right now
+          {t('today.checkpoint.unavailableTitle')}
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-[var(--text-secondary)]">
-          Complete a full Guided Today path in your active vibe to start a checkpoint.
+          {t('today.checkpoint.unavailableBody')}
         </p>
         <Button asChild type="button" className="mt-6">
-          <Link to="/today">Back to Today</Link>
+          <Link to="/today">{t('today.checkpoint.backToToday')}</Link>
         </Button>
       </section>
     </main>

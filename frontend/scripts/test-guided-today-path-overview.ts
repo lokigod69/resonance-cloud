@@ -206,6 +206,10 @@ assert('selected lesson panel keeps selected/recommended label copy screen-reade
 assert('selected lesson panel visible copy is reduced to lesson, title, action', !recommendedLessonPanelSource.includes('uppercase tracking-[0.18em] text-[var(--text-muted)]'))
 assert('selected lesson panel action label uses selected-vibe completion status', recommendedLessonPanelSource.includes('getTodayLessonVibeStatus(progress, lesson, selectedVibeId)') && recommendedLessonPanelSource.includes('selectedVibeId'), recommendedLessonPanelSource)
 assert('lesson cards render completed vibe badge emblems', lessonPathCardSource.includes('completedVibeIds') && lessonPathCardSource.includes('today-vibe-completionBadge') && lessonPathCardSource.includes('guidedVibes[vibeId].emblem?.url'), lessonPathCardSource)
+assert('lesson cards derive the primary start target from selected state, not recommendation alone', lessonPathCardSource.includes('isStartTarget={isSelected}') && lessonPathCardSource.includes('data-start-target={isSelected}'), lessonPathCardSource)
+assert('recommended non-selected lesson does not keep a competing play icon', lessonPathCardSource.includes('StatusIcon') && lessonPathCardSource.includes('isStartTarget') && !lessonPathCardSource.includes("status === 'current'") && !lessonPathCardSource.includes('status === "current"'), lessonPathCardSource)
+assert('completed vibe badges suppress redundant same-level completion check', lessonPathCardSource.includes("showCompletionFallback={status === 'complete' && completedVibeIds.length === 0}") && !lessonPathCardSource.includes('today-vibe-completionBadgeCheck'), lessonPathCardSource)
+assert('path switcher can wrap without crushing the header title', todayPathOverviewSource.includes('today-path-header') && todayPathOverviewSource.includes('today-path-switcher') && todayCssSource.includes('.today-path-switcher'), todayPathOverviewSource)
 
 console.log('\n[source-level atmosphere tokens]')
 assert('Today root exposes selected vibe as a data attribute', todayPageSource.includes('data-guided-vibe={selectedVibeId}'))

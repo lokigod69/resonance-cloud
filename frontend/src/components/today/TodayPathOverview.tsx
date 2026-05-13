@@ -53,7 +53,7 @@ export function TodayPathOverview({
   return (
     <div className="grid gap-5">
       <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="today-path-header flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
           <div className="min-w-0">
             <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
               {overview.pathMetadata?.title ?? 'English A1 Practical'}
@@ -149,7 +149,7 @@ function PathSwitcher({
   if (pathOptions.length <= 1) return null
 
   return (
-    <div className="today-path-switcher flex w-full flex-wrap gap-2 lg:w-auto lg:justify-end">
+    <div className="today-path-switcher flex w-full flex-wrap gap-2 xl:w-auto xl:justify-end">
       {pathOptions.map((path) => {
         const isSelected = path.id === selectedPathId
         const totalLessons = getGuidedPathLessons(path.id).length
@@ -162,7 +162,7 @@ function PathSwitcher({
             aria-pressed={isSelected}
             onClick={() => onSelectPath(path.id)}
             className={cn(
-              'min-w-40 rounded-lg border px-3 py-2 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+              'min-w-0 rounded-lg border px-3 py-2 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
               isSelected
                 ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)] text-[var(--text-primary)]'
                 : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_36%,transparent)] text-[var(--text-secondary)]',
@@ -255,21 +255,27 @@ function LessonPathCard({
       )}
       data-recommended={isRecommended}
       data-selected={isSelected}
+      data-start-target={isSelected}
     >
       <div className="flex h-full items-start gap-3">
         <span className={cn(
           'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-base font-semibold',
-          status === 'complete'
+          status === 'complete' && completedVibeIds.length === 0
             ? 'border-[color-mix(in_srgb,#34d399_50%,transparent)] bg-[color-mix(in_srgb,#34d399_12%,transparent)] text-[#34d399]'
-            : isRecommended
+            : isSelected
               ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]'
+              : isRecommended
+                ? 'border-[color-mix(in_srgb,var(--today-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--today-accent-soft)_42%,transparent)] text-[var(--today-text-soft)]'
               : 'border-[var(--border-subtle)] text-[var(--text-muted)]',
         )}>
           {lesson.lessonNumber}
         </span>
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex min-h-5 items-center justify-end">
-            <StatusIcon status={status} />
+            <StatusIcon
+              isStartTarget={isSelected}
+              showCompletionFallback={status === 'complete' && completedVibeIds.length === 0}
+            />
           </div>
           <h3 className="mt-1 break-words text-base font-semibold leading-snug text-[var(--text-primary)]">
             {lesson.title}
@@ -304,7 +310,6 @@ function CompletedVibeBadges({ completedVibeIds }: { completedVibeIds: ActiveGui
                 draggable={false}
               />
             )}
-            <CheckCircle2 className="today-vibe-completionBadgeCheck" />
           </span>
         )
       })}
@@ -312,12 +317,18 @@ function CompletedVibeBadges({ completedVibeIds }: { completedVibeIds: ActiveGui
   )
 }
 
-function StatusIcon({ status }: { status: GuidedPathLessonCardStatus }) {
-  if (status === 'complete') {
+function StatusIcon({
+  isStartTarget,
+  showCompletionFallback,
+}: {
+  isStartTarget: boolean
+  showCompletionFallback: boolean
+}) {
+  if (showCompletionFallback) {
     return <CheckCircle2 className="h-5 w-5 shrink-0 text-[#34d399]" />
   }
 
-  if (status === 'current') {
+  if (isStartTarget) {
     return <Play className="h-5 w-5 shrink-0 text-[var(--accent)]" />
   }
 

@@ -150,25 +150,21 @@
   width: 1.35rem;
 }
 
-.today-vibe-completionBadgeCheck {
-  background: color-mix(in srgb, #34d399 82%, var(--app-bg));
-  border: 1px solid color-mix(in srgb, #d1fae5 74%, transparent);
-  border-radius: 999px;
-  bottom: -0.18rem;
-  color: #04120b;
-  height: 0.78rem;
-  padding: 0.08rem;
-  position: absolute;
-  right: -0.18rem;
-  width: 0.78rem;
-}
-
 .today-vibe-completionBadge[data-completed-vibe] {
   border-color: color-mix(in srgb, var(--today-badge-accent) 62%, var(--today-border));
 }
 
+.today-path-header {
+  align-items: stretch;
+}
+
+.today-path-switcher {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(9.5rem, 100%), 1fr));
+  max-width: 100%;
+}
+
 .today-path-card[data-selected="true"],
-.today-path-card[data-recommended="true"],
 .today-recommended-panel {
   border-color: color-mix(in srgb, var(--today-accent-strong) 48%, var(--today-border));
   background:
@@ -180,6 +176,62 @@
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--today-accent) 24%, transparent),
     0 16px 34px color-mix(in srgb, var(--today-glow) 50%, transparent);
+}
+
+.today-path-card[data-recommended="true"][data-selected="false"] {
+  border-color: color-mix(in srgb, var(--today-accent) 30%, var(--today-border));
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--today-accent-soft) 34%, transparent), color-mix(in srgb, var(--today-panel) 82%, transparent));
+}
+
+.today-checkpoint-card {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 52%, var(--today-border));
+  background:
+    radial-gradient(ellipse at 88% 0%, color-mix(in srgb, var(--today-glow) 54%, transparent), transparent 64%),
+    linear-gradient(145deg, color-mix(in srgb, var(--today-panel) 92%, transparent), color-mix(in srgb, var(--today-accent-soft) 42%, transparent));
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--today-glow) 28%, transparent);
+}
+
+.today-checkpoint-cardAccent {
+  background: linear-gradient(90deg, var(--today-accent), var(--today-accent-strong));
+}
+
+.today-checkpoint-cardIcon {
+  background: color-mix(in srgb, var(--today-accent-soft) 72%, transparent);
+  border-color: color-mix(in srgb, var(--today-accent-strong) 56%, transparent);
+  color: var(--today-accent-strong);
+}
+
+.today-checkpoint-cardKicker {
+  background: color-mix(in srgb, var(--today-accent-soft) 78%, transparent);
+  color: var(--today-accent-strong);
+}
+
+.today-checkpoint-shell::before {
+  inset: 0.25rem 0 -1rem;
+}
+
+.today-checkpoint-header,
+.today-checkpoint-step,
+.today-checkpoint-summary {
+  box-shadow: 0 18px 42px color-mix(in srgb, var(--today-glow) 24%, transparent);
+}
+
+.today-checkpoint-promptCard {
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--today-glow) 34%, transparent), transparent 68%),
+    color-mix(in srgb, var(--surface-1) 62%, transparent);
+  border-color: color-mix(in srgb, var(--today-accent-strong) 34%, var(--today-border));
+}
+
+.today-checkpoint-input {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 34%, var(--border-subtle));
+  background: color-mix(in srgb, var(--surface-1) 72%, transparent);
+}
+
+.today-checkpoint-resultPill {
+  background: color-mix(in srgb, var(--surface-2) 72%, transparent);
+  border-color: color-mix(in srgb, var(--today-accent-strong) 30%, var(--today-border));
 }
 
 .today-shell [data-slot="progress-indicator"] {
