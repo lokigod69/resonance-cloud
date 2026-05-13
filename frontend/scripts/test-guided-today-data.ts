@@ -154,9 +154,11 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 const pathOneId = 'english-a1-practical-1'
 const pathTwoId = 'english-a1-practical-2'
 const pathThreeId = 'english-a1-practical-3'
+const pathFourId = 'english-a1-practical-4'
 const pathLessons = getGuidedPathLessons(pathOneId)
 const pathTwoLessons = getGuidedPathLessons(pathTwoId)
 const pathThreeLessons = getGuidedPathLessons(pathThreeId)
+const pathFourLessons = getGuidedPathLessons(pathFourId)
 const firstDefinition = pathLessons[0]
 const lessonIds = pathLessons.map((lesson) => lesson.id)
 const lessonNumbers = pathLessons.map((lesson) => lesson.lessonNumber)
@@ -196,18 +198,32 @@ const expectedPathThreeTitles = [
   'By foot or by taxi?',
   'I missed my stop',
 ]
+const expectedPathFourTitles = [
+  'A table, please',
+  'The menu',
+  "I'd like tea",
+  'No sugar',
+  'Is it fresh?',
+  'Anything else?',
+  'To go, please',
+  'It was good',
+  'Small talk at the counter',
+  'The bill, please',
+]
 
 console.log('\n[path inventory]')
 assert('A1 Practical 1 resolves 10 lessons', pathLessons.length === 10, pathLessons.length)
 assert('A1 Practical 2 resolves 10 lessons', pathTwoLessons.length === 10, pathTwoLessons.length)
 assert('A1 Practical 3 resolves 10 lessons', pathThreeLessons.length === 10, pathThreeLessons.length)
-assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
+assert('A1 Practical 4 resolves 10 lessons', pathFourLessons.length === 10, pathFourLessons.length)
+assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
 assert('lesson ids are unique', new Set(lessonIds).size === lessonIds.length, lessonIds)
 assert('lesson numbers 1-10 exist with no gaps', JSON.stringify(lessonNumbers) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), lessonNumbers)
 assert('A1 Practical 1 arc titles match product sequence', JSON.stringify(pathLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedTitles), pathLessons.map((lesson) => lesson.title))
 assert('A1 Practical 2 arc titles match product sequence', JSON.stringify(pathTwoLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathTwoTitles), pathTwoLessons.map((lesson) => lesson.title))
 assert('A1 Practical 3 arc titles match product sequence', JSON.stringify(pathThreeLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathThreeTitles), pathThreeLessons.map((lesson) => lesson.title))
-assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId]), getGuidedTodayPathOptions())
+assert('A1 Practical 4 arc titles match product sequence', JSON.stringify(pathFourLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathFourTitles), pathFourLessons.map((lesson) => lesson.title))
+assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId]), getGuidedTodayPathOptions())
 
 console.log('\n[lesson definitions]')
 for (const lesson of pathLessons) {
@@ -281,10 +297,34 @@ for (const lesson of pathThreeLessons) {
   }
 }
 
+for (const lesson of pathFourLessons) {
+  assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-4-'), lesson)
+  assert(`${lesson.id} has invariant path id`, lesson.pathId === pathFourId, lesson)
+  assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
+  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathFourTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
+  assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
+  assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
+  assert(`${lesson.id} uses existing Foundation session steps`, JSON.stringify(lesson.steps) === JSON.stringify(TODAY_SESSION_STEPS), lesson.steps)
+  assert(`${lesson.id} has estimated minutes`, lesson.estimatedMinutes === 5, lesson.estimatedMinutes)
+  assert(`${lesson.id} fallback vibe is active`, isActiveGuidedVibeId(lesson.fallbackVibeId), lesson.fallbackVibeId)
+  assert(`${lesson.id} is usable now`, lesson.status === 'active', lesson.status)
+  assert(`${lesson.id} has Bright, Wistful, Sharp variants`, ACTIVE_GUIDED_VIBE_IDS.every((vibeId) => lesson.vibeVariants[vibeId] !== undefined), lesson.vibeVariants)
+  assert(`${lesson.id} only defines active V0 variants`, Object.keys(lesson.vibeVariants).every((vibeId) => ACTIVE_GUIDED_VIBE_IDS.includes(vibeId as never)), lesson.vibeVariants)
+  for (const futureVibeId of FUTURE_GUIDED_VIBE_IDS) {
+    assert(`${lesson.id} has no required ${futureVibeId} runtime variant`, !(futureVibeId in lesson.vibeVariants), lesson.vibeVariants)
+  }
+  for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+    const variant = lesson.vibeVariants[vibeId]
+    assert(`${lesson.id} has ${vibeId} variant`, variant !== undefined, lesson.vibeVariants)
+    if (variant) validateVariant(lesson, vibeId, variant)
+  }
+}
+
 console.log('\n[type recall polish]')
 const existingLowValueTypeRecallTargets = new Set(['english', 'this', 'here', 'please', 'it'])
 const a1P3LowValueTypeRecallTargets = new Set(['english', 'this', 'here', 'please', 'it', 'left', 'right', 'bus', 'stop', 'ticket'])
-for (const lessonDefinition of [...pathLessons, ...pathTwoLessons, ...pathThreeLessons]) {
+for (const lessonDefinition of [...pathLessons, ...pathTwoLessons, ...pathThreeLessons, ...pathFourLessons]) {
   for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
     const lesson = resolveGuidedLessonVariant(lessonDefinition, vibeId)
     const normalizedAnswer = normalizeGuidedAnswer(lesson.typeRecall.answer)
@@ -331,6 +371,33 @@ for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
     .map(getOpenerFamily)
   assert(`A1 Practical 3 ${vibeId} uses at least three opener families`, new Set(openerFamilies).size >= 3, openerFamilies)
 }
+
+console.log('\n[A1 Practical 4 content polish]')
+for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+  const trophyWords = pathFourLessons
+    .map((lessonDefinition) => lessonDefinition.vibeVariants[vibeId]?.trophyWord.word)
+    .filter((word): word is string => typeof word === 'string')
+    .map((word) => normalizeGuidedAnswer(word))
+  assert(`A1 Practical 4 ${vibeId} trophy words are distinct`, new Set(trophyWords).size === 10, trophyWords)
+
+  const openerFamilies = pathFourLessons
+    .map((lessonDefinition) => lessonDefinition.vibeVariants[vibeId]?.corePhrase.targetText ?? '')
+    .map(getOpenerFamily)
+  assert(`A1 Practical 4 ${vibeId} uses at least three opener families`, new Set(openerFamilies).size >= 3, openerFamilies)
+  assert(`A1 Practical 4 ${vibeId} uses no opener family more than three times`, Math.max(...countValues(openerFamilies).values()) <= 3, openerFamilies)
+}
+const wistfulSorryCount = pathFourLessons
+  .filter((lessonDefinition) => normalizeGuidedAnswer(lessonDefinition.vibeVariants.wistful?.corePhrase.targetText ?? '').startsWith('sorry'))
+  .length
+assert('A1 Practical 4 Wistful uses Sorry in no more than two lessons', wistfulSorryCount <= 2, wistfulSorryCount)
+const brightIdLoveCount = pathFourLessons
+  .filter((lessonDefinition) => normalizeGuidedAnswer(lessonDefinition.vibeVariants.bright?.corePhrase.targetText ?? '').startsWith("i'd love"))
+  .length
+assert("A1 Practical 4 Bright uses I'd love in no more than three lessons", brightIdLoveCount <= 3, brightIdLoveCount)
+const sharpPleaseCount = pathFourLessons
+  .filter((lessonDefinition) => normalizeGuidedAnswer(lessonDefinition.vibeVariants.sharp?.corePhrase.targetText ?? '').startsWith('please'))
+  .length
+assert('A1 Practical 4 Sharp uses Please in no more than four lessons', sharpPleaseCount <= 4, sharpPleaseCount)
 
 console.log('\n[German diacritic detector unit checks]')
 
@@ -496,6 +563,12 @@ const completedPathTwoFirst = markTodayLessonComplete(completed, pathTwoBrightLe
     const pathThreeBrightLesson = resolveGuidedLessonVariant(pathThreeFirstDefinition, 'bright')
     const completedPathThreeFirst = markTodayLessonComplete(completedPathTwoFirst, pathThreeBrightLesson, minimalResult())
     assert('path progress does not mix A1 Practical 3 with earlier paths', completedPathThreeFirst.courses[pathOneId]?.completedLessonIds.length === 1 && completedPathThreeFirst.courses[pathTwoId]?.completedLessonIds.length === 1 && completedPathThreeFirst.courses[pathThreeId]?.completedLessonIds.length === 1, completedPathThreeFirst)
+    const pathFourFirstDefinition = pathFourLessons[0]
+    if (pathFourFirstDefinition) {
+      const pathFourBrightLesson = resolveGuidedLessonVariant(pathFourFirstDefinition, 'bright')
+      const completedPathFourFirst = markTodayLessonComplete(completedPathThreeFirst, pathFourBrightLesson, minimalResult())
+      assert('path progress does not mix A1 Practical 4 with earlier paths', completedPathFourFirst.courses[pathOneId]?.completedLessonIds.length === 1 && completedPathFourFirst.courses[pathTwoId]?.completedLessonIds.length === 1 && completedPathFourFirst.courses[pathThreeId]?.completedLessonIds.length === 1 && completedPathFourFirst.courses[pathFourId]?.completedLessonIds.length === 1, completedPathFourFirst)
+    }
   }
 
 console.log('\n[local progress migration]')
@@ -599,6 +672,12 @@ function stripPunctuation(value: string) {
 
 function containsAny(value: string, needles: string[]) {
   return needles.some((needle) => needle.length > 0 && value.includes(needle))
+}
+
+function countValues(values: string[]) {
+  const counts = new Map<string, number>()
+  for (const value of values) counts.set(value, (counts.get(value) ?? 0) + 1)
+  return counts
 }
 
 type GermanFieldEntry = { path: string; value: string }
@@ -743,6 +822,13 @@ function looksLikeGermanCue(value: string) {
     'sprechen',
     'brauche',
     'hilfe',
+    'heute',
+    'das',
+    'tisch',
+    'tee',
+    'zucker',
+    'frisch',
+    'rechnung',
   ]
   const englishLeakage = [
     'clear question',

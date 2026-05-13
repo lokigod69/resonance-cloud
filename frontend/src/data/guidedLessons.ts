@@ -214,6 +214,17 @@ const GUIDED_TODAY_PATH_THREE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_FOUR_METADATA: GuidedPathMetadata = {
+  id: 'english-a1-practical-4',
+  title: 'English A1 Practical 4',
+  shortTitle: 'A1 Practical 4',
+  subtitle: 'Food, Café, Shop, Small Talk',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'English',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const brightLesson001: GuidedLessonVibeVariant = {
@@ -1835,6 +1846,7 @@ type A1P2VariantInput = {
   baseText: string
   meaning: string
   chunks: PhraseChunk[]
+  extraLessonItems?: PhraseChunk[]
   targetChips: string[]
   distractors: string[]
   typeRecall: GuidedLessonVibeVariant['typeRecall']
@@ -3229,6 +3241,820 @@ const a1Practical3Lessons: GuidedLessonDefinition[] = a1Practical3Inputs.map((le
   }
 })
 
+type A1P4LessonInput = A1P2LessonInput
+
+const a1Practical4Inputs: A1P4LessonInput[] = [
+  {
+    slug: 'a-table-please',
+    title: 'A table, please',
+    situation: {
+      en: 'You enter a cafe or restaurant and ask for a table.',
+      de: 'Du betrittst ein Café oder Restaurant und fragst nach einem Tisch.',
+    },
+    pedagogicalGoal: 'Ask politely for a table, often with party size.',
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: 'Could we have a table for two, please?',
+        baseText: 'Könnten wir bitte einen Tisch für zwei Personen haben?',
+        meaning: 'Eine warme Bitte beim Ankommen, mit der Personenzahl gleich dabei.',
+        chunks: [
+          chunk('could-we-have', 'Could we have', 'könnten wir haben'),
+          chunk('a-table-for-two', 'a table for two', 'einen Tisch für zwei Personen'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('by-the-window', 'by the window', 'am Fenster'),
+          chunk('follow-me', 'follow me', 'folgen Sie mir bitte'),
+        ],
+        targetChips: ['Could we have', 'a table for two,', 'please?'],
+        distractors: ['welcome', 'menu'],
+        typeRecall: recall('Could we have ', 'a table for two', ', please?', ['a table for two', 'by the window', 'two people', 'the menu']),
+        sceneCaption: 'Bright kommt am Café-Eingang an und fragt offen nach einem Tisch für zwei.',
+        trophyWord: trophy('welcome', 'willkommen', 'Welcome in.', 'Welcome passt zum warmen ersten Moment an der Tür.'),
+        mediaCaption: 'Café-Eingang mit Gastgeberin, zwei Menüs in der Hand und ein freier Tisch im Blick.',
+        songSeed: { genre: 'light acoustic pop', mood: 'warm arrival' },
+        visualNotes: 'Warm entrance light, host gesture, table-for-two highlight.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: 'Just a table for two, if you have one?',
+        baseText: 'Einfach einen Tisch für zwei, falls einer frei ist?',
+        meaning: 'Eine vorsichtige Tischfrage, klein gehalten und trotzdem klar.',
+        chunks: [
+          chunk('just-a-table', 'Just a table', 'einfach einen Tisch'),
+          chunk('for-two', 'for two', 'für zwei'),
+          chunk('if-you-have-one', 'if you have one', 'falls einer frei ist'),
+        ],
+        extraLessonItems: [
+          chunk('near-the-door', 'near the door', 'in der Nähe der Tür'),
+          chunk('thank-you', 'thank you', 'danke'),
+        ],
+        targetChips: ['Just a table', 'for two,', 'if you have one?'],
+        distractors: ['quietly', 'menu'],
+        typeRecall: recall('Just a ', 'table for two', ', if you have one?', ['table for two', 'near the door', 'thank you', 'menu']),
+        sceneCaption: 'Wistful bleibt an der Tür stehen und fragt leise nach einem freien Tisch.',
+        trophyWord: trophy('quietly', 'leise', 'Quietly, please.', 'Quietly hält die Bitte vorsichtig, ohne traurig zu wirken.'),
+        mediaCaption: 'Ruhiger Restauranteingang, Hand an der Jacke, Gastgeber mit Menüs vor einem kleinen Tisch.',
+        songSeed: { genre: 'soft indie folk', mood: 'quiet arrival' },
+        visualNotes: 'Muted entry light, small pause, soft table marker.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: 'Table for two, please.',
+        baseText: 'Einen Tisch für zwei, bitte.',
+        meaning: 'Eine knappe, höfliche Ansage mit der wichtigsten Information zuerst.',
+        chunks: [
+          chunk('table', 'Table', 'Tisch'),
+          chunk('for-two', 'for two', 'für zwei'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('window', 'window', 'Fenster'),
+          chunk('free', 'free', 'frei'),
+        ],
+        targetChips: ['Table', 'for two,', 'please.'],
+        distractors: ['clear', 'menu'],
+        typeRecall: recall('', 'Table for two', ', please.', ['Table for two', 'by the window', 'free table', 'menu']),
+        sceneCaption: 'Sharp nennt am Eingang sofort Tisch und Personenzahl.',
+        trophyWord: trophy('clear', 'klar', 'Clear table request.', 'Clear passt zur schnellen, eindeutigen Tischfrage.'),
+        mediaCaption: 'Klare Eingangslinie, Gastgeber mit Menüs, Blick direkt zum freien Zweiertisch.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'clean arrival' },
+        visualNotes: 'High-contrast doorway, two-seat icon, clipped host cue.',
+      }),
+    },
+  },
+  {
+    slug: 'the-menu',
+    title: 'The menu',
+    situation: {
+      en: 'You ask for the menu or ask what is available today.',
+      de: 'Du bittest um die Speisekarte oder fragst, was es heute gibt.',
+    },
+    pedagogicalGoal: 'Ask for or about the menu in a cafe or small restaurant.',
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: 'Could I see the menu, please?',
+        baseText: 'Könnte ich bitte die Speisekarte sehen?',
+        meaning: 'Eine freundliche Bitte, die Auswahl zuerst in Ruhe zu sehen.',
+        chunks: [
+          chunk('could-i-see', 'Could I see', 'könnte ich sehen'),
+          chunk('the-menu', 'the menu', 'die Speisekarte'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('specials', 'specials', 'Tagesgerichte'),
+          chunk('dessert', 'dessert', 'Nachtisch'),
+        ],
+        targetChips: ['Could I see', 'the menu,', 'please?'],
+        distractors: ['choice', 'bill'],
+        typeRecall: recall('Could I see ', 'the menu', ', please?', ['the menu', 'today\'s specials', 'dessert', 'bill']),
+        sceneCaption: 'Bright nimmt die Speisekarte freundlich an und schaut auf die Tagesgerichte.',
+        trophyWord: trophy('choice', 'Auswahl', 'Good choice.', 'Choice passt zum Moment, in dem die Karte Möglichkeiten öffnet.'),
+        mediaCaption: 'Server reicht eine Speisekarte über den Tisch, Tagesgerichte stehen auf einer kleinen Tafel.',
+        songSeed: { genre: 'light acoustic pop', mood: 'curious menu' },
+        visualNotes: 'Open menu spread, warm specials marker, simple choice cue.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: 'May I look at the menu for a moment?',
+        baseText: 'Darf ich kurz in die Speisekarte schauen?',
+        meaning: 'Eine sanfte Bitte um einen kleinen Moment zum Lesen.',
+        chunks: [
+          chunk('may-i-look', 'May I look', 'darf ich schauen'),
+          chunk('at-the-menu', 'at the menu', 'in die Speisekarte'),
+          chunk('for-a-moment', 'for a moment', 'kurz'),
+        ],
+        extraLessonItems: [
+          chunk('drinks', 'drinks', 'Getränke'),
+          chunk('food', 'food', 'Essen'),
+        ],
+        targetChips: ['May I look', 'at the menu', 'for a moment?'],
+        distractors: ['wondering', 'bill'],
+        typeRecall: recall('May I look at ', 'the menu', ' for a moment?', ['the menu', 'drinks', 'for a moment', 'bill']),
+        sceneCaption: 'Wistful hält die Speisekarte einen Moment und entscheidet ohne Eile.',
+        trophyWord: trophy('wondering', 'überlegend', 'Just wondering.', 'Wondering gibt dem Lesen eine vorsichtige, suchende Stimme.'),
+        mediaCaption: 'Weiches Licht auf der Speisekarte, Getränkeseite offen, Finger wartet am Rand.',
+        songSeed: { genre: 'soft indie folk', mood: 'slow menu look' },
+        visualNotes: 'Muted menu page, soft pause, wondering highlight.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: 'The menu, please.',
+        baseText: 'Die Speisekarte, bitte.',
+        meaning: 'Eine direkte, höfliche Bitte ohne Umweg.',
+        chunks: [
+          chunk('the-menu', 'The menu', 'die Speisekarte'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('today-specials', "today's specials", 'heutige Tagesgerichte'),
+          chunk('drinks', 'drinks', 'Getränke'),
+          chunk('food', 'food', 'Essen'),
+        ],
+        targetChips: ['The menu,', 'please.'],
+        distractors: ['quick', 'bill'],
+        typeRecall: recall('', 'The menu', ', please.', ['The menu', "today's specials", 'drinks', 'bill']),
+        sceneCaption: 'Sharp holt die Speisekarte und scannt sofort die Auswahl.',
+        trophyWord: trophy('quick', 'schnell', 'Quick scan.', 'Quick passt zum kurzen Blick über die Karte.'),
+        mediaCaption: 'Speisekarte in der Hand, klare Tageskarte daneben, Blick direkt auf die Bestellseite.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'menu scan' },
+        visualNotes: 'Crisp menu crop, fast scan line, no decorative pause.',
+      }),
+    },
+  },
+  {
+    slug: 'id-like-tea',
+    title: "I'd like tea",
+    situation: {
+      en: 'You order tea or another simple drink.',
+      de: 'Du bestellst einen Tee oder ein einfaches Getränk.',
+    },
+    pedagogicalGoal: 'Order a simple drink with an optional preparation detail.',
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: "I'd love a tea with lemon, please.",
+        baseText: 'Ich hätte gern einen Tee mit Zitrone, bitte.',
+        meaning: 'Eine warme Bestellung für Tee mit einer einfachen Ergänzung.',
+        chunks: [
+          chunk('id-love', "I'd love", 'ich hätte gern'),
+          chunk('a-tea', 'a tea', 'einen Tee'),
+          chunk('with-lemon', 'with lemon', 'mit Zitrone'),
+        ],
+        extraLessonItems: [
+          chunk('hot', 'hot', 'heiß'),
+          chunk('thank-you', 'thank you', 'danke'),
+        ],
+        targetChips: ["I'd love", 'a tea', 'with lemon,', 'please.'],
+        distractors: ['cozy', 'sugar'],
+        typeRecall: recall("I'd love ", 'a tea with lemon', ', please.', ['a tea with lemon', 'with milk', 'hot tea', 'sugar']),
+        sceneCaption: 'Bright bestellt am Tresen einen heißen Tee mit Zitrone.',
+        trophyWord: trophy('cozy', 'gemütlich', 'Cozy tea, thanks.', 'Cozy trägt die warme Tee-Stimmung, bleibt aber alltagstauglich.'),
+        mediaCaption: 'Tresen mit heißen Getränken, Teekanne sichtbar, Zitronenscheibe neben der Tasse.',
+        songSeed: { genre: 'light acoustic pop', mood: 'warm tea order' },
+        visualNotes: 'Steam cue, lemon accent, friendly cup highlight.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: "Maybe a tea with milk, if that's okay?",
+        baseText: 'Vielleicht einen Tee mit Milch, wenn das in Ordnung ist?',
+        meaning: 'Eine weiche Bestellung, die Raum für eine Antwort lässt.',
+        chunks: [
+          chunk('maybe-a-tea', 'Maybe a tea', 'vielleicht einen Tee'),
+          chunk('with-milk', 'with milk', 'mit Milch'),
+          chunk('if-thats-okay', "if that's okay", 'wenn das in Ordnung ist'),
+        ],
+        extraLessonItems: [
+          chunk('soft', 'soft', 'sanft'),
+          chunk('hot', 'hot', 'heiß'),
+        ],
+        targetChips: ['Maybe a tea', 'with milk,', "if that's okay?"],
+        distractors: ['soothing', 'lemon'],
+        typeRecall: recall('Maybe ', 'a tea with milk', ", if that's okay?", ['a tea with milk', 'with lemon', 'hot tea', 'sugar']),
+        sceneCaption: 'Wistful bestellt Tee mit Milch und macht die Bitte klein.',
+        trophyWord: trophy('soothing', 'beruhigend', 'Soothing tea.', 'Soothing passt zu Wistfuls ruhigem Getränkemoment.'),
+        mediaCaption: 'Leiser Tresen, Milchkännchen neben der Tasse, Dampf steigt langsam auf.',
+        songSeed: { genre: 'soft indie folk', mood: 'soft tea order' },
+        visualNotes: 'Blue-gray steam, small milk pour, soft okay cue.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: 'Black tea, please.',
+        baseText: 'Schwarzen Tee, bitte.',
+        meaning: 'Eine kurze Bestellung mit klarer Tee-Art.',
+        chunks: [
+          chunk('black-tea', 'Black tea', 'schwarzen Tee'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('hot', 'hot', 'heiß'),
+          chunk('with-milk', 'with milk', 'mit Milch'),
+          chunk('with-lemon', 'with lemon', 'mit Zitrone'),
+        ],
+        targetChips: ['Black tea,', 'please.'],
+        distractors: ['plain', 'coffee'],
+        typeRecall: recall('', 'Black tea', ', please.', ['Black tea', 'with milk', 'with lemon', 'coffee']),
+        sceneCaption: 'Sharp bestellt direkt schwarzen Tee und wartet auf die Tasse.',
+        trophyWord: trophy('black', 'schwarz', 'Black tea.', 'Black ist die knappe Zubereitungsinfo für Tee.'),
+        mediaCaption: 'Getränkemenü am Tresen, schwarzer Tee markiert, Tasse unter dem Ausguss.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'plain tea order' },
+        visualNotes: 'Hard tea label, black cup line, compact counter frame.',
+      }),
+    },
+  },
+  {
+    slug: 'no-sugar',
+    title: 'No sugar',
+    situation: {
+      en: 'You say that you do not want sugar.',
+      de: 'Du sagst, dass du keinen Zucker möchtest.',
+    },
+    pedagogicalGoal: 'State a simple preference about sugar.',
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: 'No sugar for me, thank you.',
+        baseText: 'Für mich keinen Zucker, danke.',
+        meaning: 'Eine freundliche, klare Vorliebe ohne Zucker.',
+        chunks: [
+          chunk('no-sugar', 'No sugar', 'keinen Zucker'),
+          chunk('for-me', 'for me', 'für mich'),
+          chunk('thank-you', 'thank you', 'danke'),
+        ],
+        extraLessonItems: [
+          chunk('without-sugar', 'without sugar', 'ohne Zucker'),
+          chunk('milk', 'milk', 'Milch'),
+        ],
+        targetChips: ['No sugar', 'for me,', 'thank you.'],
+        distractors: ['clean', 'lemon'],
+        typeRecall: recall('', 'No sugar', ' for me, thank you.', ['No sugar', 'without sugar', 'with milk', 'lemon']),
+        sceneCaption: 'Bright lehnt Zucker freundlich ab, während die Tasse vorbereitet wird.',
+        trophyWord: trophy('clean', 'klar', 'Clean taste.', 'Clean passt zur einfachen Vorliebe ohne Zucker.'),
+        mediaCaption: 'Tasse auf dem Tresen, Zuckerpäckchen daneben, freundliche Handbewegung zum Ablehnen.',
+        songSeed: { genre: 'light acoustic pop', mood: 'clear preference' },
+        visualNotes: 'Sugar packet aside, warm refusal gesture, clean cup focus.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: "No sugar, if that's alright?",
+        baseText: 'Keinen Zucker, wenn das in Ordnung ist?',
+        meaning: 'Eine sanfte Vorliebe, fast entschuldigend, aber verständlich.',
+        chunks: [
+          chunk('no-sugar', 'No sugar', 'keinen Zucker'),
+          chunk('if-thats-alright', "if that's alright", 'wenn das in Ordnung ist'),
+        ],
+        extraLessonItems: [
+          chunk('without', 'without', 'ohne'),
+          chunk('milk', 'milk', 'Milch'),
+          chunk('lemon', 'lemon', 'Zitrone'),
+        ],
+        targetChips: ['No sugar,', "if that's alright?"],
+        distractors: ['plain', 'milk'],
+        typeRecall: recall('', 'No sugar', ", if that's alright?", ['No sugar', 'without sugar', 'with milk', 'lemon']),
+        sceneCaption: 'Wistful sagt die Vorliebe weich, bevor Zucker in die Tasse kommt.',
+        trophyWord: trophy('plain', 'einfach', 'Plain is fine.', 'Plain hält die Vorliebe schlicht und ruhig.'),
+        mediaCaption: 'Zuckerpäckchen bleibt liegen, Tasse im weichen Licht, kleine ablehnende Geste.',
+        songSeed: { genre: 'soft indie folk', mood: 'plain preference' },
+        visualNotes: 'Soft sugar packet shadow, small no cue, gentle cup line.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: 'No sugar.',
+        baseText: 'Keinen Zucker.',
+        meaning: 'Eine direkte Vorliebe ohne Zusatz.',
+        chunks: [
+          chunk('no-sugar', 'No sugar', 'keinen Zucker'),
+        ],
+        extraLessonItems: [
+          chunk('without-sugar', 'without sugar', 'ohne Zucker'),
+          chunk('milk', 'milk', 'Milch'),
+          chunk('lemon', 'lemon', 'Zitrone'),
+          chunk('thanks', 'thanks', 'danke'),
+        ],
+        targetChips: ['No', 'sugar.'],
+        distractors: ['none', 'milk'],
+        typeRecall: recall('', 'No sugar', '.', ['No sugar', 'without sugar', 'with milk', 'lemon']),
+        sceneCaption: 'Sharp setzt die Grenze kurz: kein Zucker.',
+        trophyWord: trophy('none', 'keiner', 'None for me.', 'None ist Sharps knappes Wort für nichts hinzufügen.'),
+        mediaCaption: 'Klare Tasse, Zuckerpäckchen bleibt geschlossen, kurze Geste neben dem Löffel.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'no sugar' },
+        visualNotes: 'Sugar packet crossed by hard line, compact preference state.',
+      }),
+    },
+  },
+  {
+    slug: 'is-it-fresh',
+    title: 'Is it fresh?',
+    situation: {
+      en: 'You ask whether a food item is fresh.',
+      de: 'Du fragst, ob ein Lebensmittel frisch ist.',
+    },
+    pedagogicalGoal: 'Ask a simple freshness question about food.',
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: 'Is it fresh today, please?',
+        baseText: 'Ist es heute bitte frisch?',
+        meaning: 'Eine freundliche Frage nach Frische am selben Tag.',
+        chunks: [
+          chunk('is-it', 'Is it', 'ist es'),
+          chunk('fresh-today', 'fresh today', 'heute frisch'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('bread', 'bread', 'Brot'),
+          chunk('pastry', 'pastry', 'Gebäck'),
+        ],
+        targetChips: ['Is it', 'fresh today,', 'please?'],
+        distractors: ['crisp', 'old'],
+        typeRecall: recall('Is it ', 'fresh today', ', please?', ['fresh today', "today's bread", 'pastry', 'old']),
+        sceneCaption: 'Bright fragt an der Auslage freundlich, ob das Gebäck heute frisch ist.',
+        trophyWord: trophy('crisp', 'knusprig', 'Crisp today.', 'Crisp gibt frischem Gebäck eine klare, appetitliche Note.'),
+        mediaCaption: 'Bäckerei-Auslage mit Brot und Gebäck, kleines Heute-Schild direkt daneben.',
+        songSeed: { genre: 'light acoustic pop', mood: 'fresh counter' },
+        visualNotes: 'Warm bakery case, crisp bread edge, today label.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: 'Just checking, is the bread fresh?',
+        baseText: 'Ich frage nur kurz: Ist das Brot frisch?',
+        meaning: 'Eine vorsichtige Nachfrage, bevor du etwas auswählst.',
+        chunks: [
+          chunk('just-checking', 'Just checking', 'ich frage nur kurz'),
+          chunk('is-the-bread', 'is the bread', 'ist das Brot'),
+          chunk('fresh', 'fresh', 'frisch'),
+        ],
+        extraLessonItems: [
+          chunk('today', 'today', 'heute'),
+          chunk('fruit', 'fruit', 'Obst'),
+        ],
+        targetChips: ['Just checking,', 'is the bread', 'fresh?'],
+        distractors: ['careful', 'old'],
+        typeRecall: recall('Just checking, ', 'is the bread fresh', '?', ['is the bread fresh', 'fresh today', 'fruit', 'old']),
+        sceneCaption: 'Wistful prüft das Brot vorsichtig, ohne die Person hinter der Theke zu drängen.',
+        trophyWord: trophy('careful', 'vorsichtig', 'Careful check.', 'Careful passt zur kleinen Nachfrage vor dem Kauf.'),
+        mediaCaption: 'Ruhige Brotauslage, Hand knapp vor der Scheibe, Blick auf das frische Brot.',
+        songSeed: { genre: 'soft indie folk', mood: 'careful freshness check' },
+        visualNotes: 'Soft bakery glass, careful hand pause, bread focus.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: 'Fresh today?',
+        baseText: 'Heute frisch?',
+        meaning: 'Eine sehr kurze Frage nach der heutigen Frische.',
+        chunks: [
+          chunk('fresh', 'Fresh', 'frisch'),
+          chunk('today', 'today', 'heute'),
+        ],
+        extraLessonItems: [
+          chunk('bread', 'bread', 'Brot'),
+          chunk('pastry', 'pastry', 'Gebäck'),
+          chunk('fruit', 'fruit', 'Obst'),
+        ],
+        targetChips: ['Fresh', 'today?'],
+        distractors: ['now', 'old'],
+        typeRecall: recall('', 'Fresh today', '?', ['Fresh today', "today's bread", 'fruit', 'old']),
+        sceneCaption: 'Sharp zeigt auf die Auslage und klärt die Frische in zwei Worten.',
+        trophyWord: trophy('today', 'heute', 'Fresh today.', 'Today ist hier die entscheidende Zeitangabe.'),
+        mediaCaption: 'Klare Frischetheke, Brot vorne, heutiges Datum auf einem kleinen Schild.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'fresh now' },
+        visualNotes: 'Hard today marker, bakery item crop, direct question state.',
+      }),
+    },
+  },
+  {
+    slug: 'anything-else',
+    title: 'Anything else?',
+    situation: {
+      en: "You answer 'Anything else?' with yes, no, or one extra item.",
+      de: "Du antwortest auf die Frage 'Sonst noch etwas?' und sagst entweder ja oder nein.",
+    },
+    pedagogicalGoal: "Respond to a common service follow-up with a short add-on or close.",
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: 'Yes, a croissant too, please.',
+        baseText: 'Ja, ein Croissant auch, bitte.',
+        meaning: 'Eine warme Ergänzung, wenn noch ein kleines Teil dazukommt.',
+        chunks: [
+          chunk('yes', 'Yes', 'ja'),
+          chunk('a-croissant-too', 'a croissant too', 'ein Croissant auch'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('water', 'water', 'Wasser'),
+          chunk('thats-all', "that's all", 'das ist alles'),
+        ],
+        targetChips: ['Yes,', 'a croissant too,', 'please.'],
+        distractors: ['plenty', 'bag'],
+        typeRecall: recall('Yes, ', 'a croissant too', ', please.', ['a croissant too', "that's all", 'water', 'bag']),
+        sceneCaption: 'Bright ergänzt am Tresen noch ein Croissant und schließt freundlich ab.',
+        trophyWord: trophy('plenty', 'reichlich', 'Plenty, thank you.', 'Plenty passt zum warmen Gefühl, genug ausgewählt zu haben.'),
+        mediaCaption: 'Tresen mit Kaffee, Croissantzange in der Hand, die Bedienung wartet auf die Antwort.',
+        songSeed: { genre: 'light acoustic pop', mood: 'small add-on' },
+        visualNotes: 'Warm pastry cue, yes marker, friendly add-on beat.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: "No, that's all, thank you.",
+        baseText: 'Nein, das ist alles, danke.',
+        meaning: 'Eine ruhige Absage, wenn die Bestellung vollständig ist.',
+        chunks: [
+          chunk('no', 'No', 'nein'),
+          chunk('thats-all', "that's all", 'das ist alles'),
+          chunk('thank-you', 'thank you', 'danke'),
+        ],
+        extraLessonItems: [
+          chunk('just', 'just', 'nur'),
+          chunk('water', 'water', 'Wasser'),
+        ],
+        targetChips: ['No,', "that's all,", 'thank you.'],
+        distractors: ['enough', 'more'],
+        typeRecall: recall('No, ', "that's all", ', thank you.', ["that's all", 'just water', 'more', 'croissant']),
+        sceneCaption: 'Wistful entscheidet, dass es reicht, und bedankt sich leise.',
+        trophyWord: trophy('enough', 'genug', 'Enough, thank you.', 'Enough gibt der ruhigen Absage einen nützlichen Abschluss.'),
+        mediaCaption: 'Kleine Bestellung auf dem Tresen, Bedienung wartet, Wistful schließt mit einem Dank.',
+        songSeed: { genre: 'soft indie folk', mood: 'quiet enough' },
+        visualNotes: 'Small order grouping, soft no cue, enough line.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: "That's all, thanks.",
+        baseText: 'Das ist alles, danke.',
+        meaning: 'Eine knappe Antwort, die die Bestellung beendet.',
+        chunks: [
+          chunk('thats-all', "That's all", 'das ist alles'),
+          chunk('thanks', 'thanks', 'danke'),
+        ],
+        extraLessonItems: [
+          chunk('no', 'no', 'nein'),
+          chunk('yes', 'yes', 'ja'),
+          chunk('next', 'next', 'nächste'),
+        ],
+        targetChips: ["That's all,", 'thanks.'],
+        distractors: ['done', 'more'],
+        typeRecall: recall('', "That's all", ', thanks.', ["That's all", 'one more', 'next', 'water']),
+        sceneCaption: 'Sharp beendet die Bestellung kurz und gibt den Tresen frei.',
+        trophyWord: trophy('done', 'erledigt', 'Done, thanks.', 'Done passt zum abgeschlossenen Bestellmoment.'),
+        mediaCaption: 'Artikel stehen fertig am Tresen, kurzer Dank, Bedienung greift zur Kasse.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'order complete' },
+        visualNotes: 'Compact order line, done state, hard counter edge.',
+      }),
+    },
+  },
+  {
+    slug: 'to-go-please',
+    title: 'To go, please',
+    situation: {
+      en: 'You say that you want the food or drink to take away.',
+      de: 'Du sagst, dass du das Essen oder Getränk zum Mitnehmen möchtest.',
+    },
+    pedagogicalGoal: 'Ask for an order to take away.',
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: 'Could I get that to go, please?',
+        baseText: 'Könnte ich das bitte zum Mitnehmen bekommen?',
+        meaning: 'Eine freundliche Bitte, die Bestellung mitzunehmen.',
+        chunks: [
+          chunk('could-i-get-that', 'Could I get that', 'könnte ich das bekommen'),
+          chunk('to-go', 'to go', 'zum Mitnehmen'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('bag', 'bag', 'Tüte'),
+          chunk('cup', 'cup', 'Becher'),
+        ],
+        targetChips: ['Could I get that', 'to go,', 'please?'],
+        distractors: ['ready', 'here'],
+        typeRecall: recall('Could I get that ', 'to go', ', please?', ['to go', 'to take away', 'for here', 'bag']),
+        sceneCaption: 'Bright bittet am Tresen freundlich darum, die Bestellung mitzunehmen.',
+        trophyWord: trophy('ready', 'bereit', 'Ready to go.', 'Ready passt zur verpackten Bestellung auf dem Tresen.'),
+        mediaCaption: 'Pappbecher und Tüte auf dem Tresen, Hand faltet die Verpackung zu.',
+        songSeed: { genre: 'light acoustic pop', mood: 'packed and ready' },
+        visualNotes: 'Warm takeaway bag, cup lid cue, ready label.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: 'To go, if possible?',
+        baseText: 'Zum Mitnehmen bitte, wenn das möglich ist?',
+        meaning: 'Eine rücksichtsvolle Bitte, falls Mitnehmen möglich ist.',
+        chunks: [
+          chunk('to-go', 'To go', 'zum Mitnehmen'),
+          chunk('if-possible', 'if possible', 'wenn das möglich ist'),
+        ],
+        extraLessonItems: [
+          chunk('takeaway', 'takeaway', 'zum Mitnehmen'),
+          chunk('bag', 'bag', 'Tüte'),
+          chunk('eat-in', 'eat in', 'hier essen'),
+        ],
+        targetChips: ['To go,', 'if possible?'],
+        distractors: ['lightly', 'here'],
+        typeRecall: recall('', 'To go', ', if possible?', ['To go', 'to take away', 'eat in', 'bag']),
+        sceneCaption: 'Wistful fragt leise nach Mitnehmen, während die Tüte bereitliegt.',
+        trophyWord: trophy('lightly', 'leicht', 'Lightly packed.', 'Lightly passt zu einer kleinen, rücksichtsvollen Bitte.'),
+        mediaCaption: 'Ruhige Packbewegung, Tüte halb offen, Becher wartet neben der Kasse.',
+        songSeed: { genre: 'soft indie folk', mood: 'soft takeaway' },
+        visualNotes: 'Soft bag fold, gentle movement, low-pressure possible cue.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: 'To go, please.',
+        baseText: 'Zum Mitnehmen, bitte.',
+        meaning: 'Eine kurze Mitnahmebitte mit klarer Richtung.',
+        chunks: [
+          chunk('to-go', 'To go', 'zum Mitnehmen'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('takeaway', 'takeaway', 'zum Mitnehmen'),
+          chunk('here', 'here', 'hier'),
+          chunk('packed', 'packed', 'eingepackt'),
+        ],
+        targetChips: ['To go,', 'please.'],
+        distractors: ['packed', 'here'],
+        typeRecall: recall('', 'To go', ', please.', ['To go', 'for here', 'packed', 'cup']),
+        sceneCaption: 'Sharp entscheidet Mitnehmen und lässt die Bestellung einpacken.',
+        trophyWord: trophy('packed', 'eingepackt', 'Packed to go.', 'Packed ist das direkte Ergebnis der kurzen Mitnahmebitte.'),
+        mediaCaption: 'Tüte auf dem Tresen, Becherdeckel sitzt, Packbewegung fast abgeschlossen.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'packed order' },
+        visualNotes: 'Hard bag outline, packed label, compact counter crop.',
+      }),
+    },
+  },
+  {
+    slug: 'it-was-good',
+    title: 'It was good',
+    situation: {
+      en: 'After eating or drinking, you say that it was good.',
+      de: 'Du sagst nach dem Essen oder Trinken, dass es gut war.',
+    },
+    pedagogicalGoal: 'Give a brief compliment after food or drink.',
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: 'That was lovely, thank you.',
+        baseText: 'Das war sehr schön, danke.',
+        meaning: 'Ein kurzer, erwachsener Dank nach einem guten Essen.',
+        chunks: [
+          chunk('that-was', 'That was', 'das war'),
+          chunk('lovely', 'lovely', 'sehr schön'),
+          chunk('thank-you', 'thank you', 'danke'),
+        ],
+        extraLessonItems: [
+          chunk('good', 'good', 'gut'),
+          chunk('delicious', 'delicious', 'lecker'),
+        ],
+        targetChips: ['That was', 'lovely,', 'thank you.'],
+        distractors: ['again', 'bad'],
+        typeRecall: recall('', 'That was lovely', ', thank you.', ['That was lovely', 'it was good', 'delicious', 'again']),
+        sceneCaption: 'Bright schaut auf den leeren Teller und bedankt sich für das gute Essen.',
+        trophyWord: trophy('lovely', 'sehr schön', 'That was lovely.', 'Lovely gibt dem Lob Wärme, ohne übertrieben zu klingen.'),
+        mediaCaption: 'Leerer Teller, Tasse daneben, freundliche Geste nach dem letzten Bissen.',
+        songSeed: { genre: 'light acoustic pop', mood: 'warm praise' },
+        visualNotes: 'Warm empty plate, subtle thank-you cue, lovely highlight.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: 'That was really nice.',
+        baseText: 'Das war wirklich schön, danke.',
+        meaning: 'Ein leises, ehrliches Lob nach dem Trinken oder Essen.',
+        chunks: [
+          chunk('that-was', 'That was', 'das war'),
+          chunk('really-nice', 'really nice', 'wirklich schön'),
+        ],
+        extraLessonItems: [
+          chunk('good', 'good', 'gut'),
+          chunk('thank-you', 'thank you', 'danke'),
+          chunk('again', 'again', 'wieder'),
+        ],
+        targetChips: ['That was', 'really nice.'],
+        distractors: ['kind', 'bad'],
+        typeRecall: recall('That was ', 'really nice', '.', ['really nice', 'it was good', 'thank you', 'again']),
+        sceneCaption: 'Wistful lässt ein ruhiges Lob stehen, ohne daraus eine große Szene zu machen.',
+        trophyWord: trophy('kind', 'freundlich', 'That was kind.', 'Kind passt zur leisen Wertschätzung nach dem Service.'),
+        mediaCaption: 'Halbleere Tasse, ruhiger Blick zur Theke, kleines ehrliches Lächeln.',
+        songSeed: { genre: 'soft indie folk', mood: 'quiet appreciation' },
+        visualNotes: 'Soft cup shadow, small smile cue, restrained praise line.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: 'Very good, thanks.',
+        baseText: 'Sehr gut, danke.',
+        meaning: 'Ein kurzes, klares Lob am Ende.',
+        chunks: [
+          chunk('very-good', 'Very good', 'sehr gut'),
+          chunk('thanks', 'thanks', 'danke'),
+        ],
+        extraLessonItems: [
+          chunk('good', 'good', 'gut'),
+          chunk('delicious', 'delicious', 'lecker'),
+          chunk('again', 'again', 'wieder'),
+        ],
+        targetChips: ['Very good,', 'thanks.'],
+        distractors: ['solid', 'bad'],
+        typeRecall: recall('', 'Very good', ', thanks.', ['Very good', 'very tasty', 'again', 'bad']),
+        sceneCaption: 'Sharp gibt ein kurzes Lob und beendet den Moment.',
+        trophyWord: trophy('solid', 'solide', 'Solid meal.', 'Solid ist Sharps knappes, positives Urteil.'),
+        mediaCaption: 'Leerer Teller, Serviette gefaltet, kurzer Daumen neben der Tasse.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'brief praise' },
+        visualNotes: 'Hard plate crop, solid check cue, concise praise state.',
+      }),
+    },
+  },
+  {
+    slug: 'small-talk-at-the-counter',
+    title: 'Small talk at the counter',
+    situation: {
+      en: 'You exchange a few friendly words with the person behind the counter.',
+      de: 'Du wechselst ein paar freundliche Worte mit der Person hinter dem Tresen.',
+    },
+    pedagogicalGoal: 'Say one short small-talk line about the day, weather, or counter mood.',
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: "Beautiful day, isn't it?",
+        baseText: 'Schöner Tag heute, oder?',
+        meaning: 'Ein warmer Small-Talk-Start über den Tag.',
+        chunks: [
+          chunk('beautiful-day', 'Beautiful day', 'schöner Tag'),
+          chunk('isnt-it', "isn't it", 'oder'),
+        ],
+        extraLessonItems: [
+          chunk('weather', 'weather', 'Wetter'),
+          chunk('today', 'today', 'heute'),
+          chunk('nice', 'nice', 'nett'),
+        ],
+        targetChips: ['Beautiful day,', "isn't it?"],
+        distractors: ['chatty', 'rain'],
+        typeRecall: recall('', 'Beautiful day', ", isn't it?", ['Beautiful day', 'lovely day', 'busy today', 'rain']),
+        sceneCaption: 'Bright nutzt den kurzen Blickkontakt am Tresen für eine freundliche Bemerkung.',
+        trophyWord: trophy('chatty', 'gesprächig', 'A chatty day.', 'Chatty passt zur kleinen offenen Bemerkung am Tresen.'),
+        mediaCaption: 'Tresen mit Tageslicht im Fenster, kurzer Blickkontakt, Kaffeemaschine im Hintergrund.',
+        songSeed: { genre: 'light acoustic pop', mood: 'friendly counter chat' },
+        visualNotes: 'Warm counter light, eye-contact cue, day label.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: "Quiet today, isn't it?",
+        baseText: 'Heute ist es ruhig, oder?',
+        meaning: 'Eine schüchterne Beobachtung, die trotzdem freundlich bleibt.',
+        chunks: [
+          chunk('quiet-today', 'Quiet today', 'heute ruhig'),
+          chunk('isnt-it', "isn't it", 'oder'),
+        ],
+        extraLessonItems: [
+          chunk('weather', 'weather', 'Wetter'),
+          chunk('busy', 'busy', 'viel los'),
+          chunk('nice', 'nice', 'nett'),
+        ],
+        targetChips: ['Quiet today,', "isn't it?"],
+        distractors: ['shy', 'loud'],
+        typeRecall: recall('', 'Quiet today', ", isn't it?", ['Quiet today', 'busy today', 'lovely day', 'loud']),
+        sceneCaption: 'Wistful bemerkt die ruhige Theke und sagt nur einen kleinen Satz.',
+        trophyWord: trophy('shy', 'schüchtern', 'A shy hello.', 'Shy beschreibt die leise Beobachtung ohne Traurigkeit.'),
+        mediaCaption: 'Ruhiger Tresen, wenige Gäste, kurzer Blick zur Person hinter der Kasse.',
+        songSeed: { genre: 'soft indie folk', mood: 'quiet counter note' },
+        visualNotes: 'Muted counter space, small observation pulse, shy line.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: 'Busy day.',
+        baseText: 'Viel los heute.',
+        meaning: 'Eine sehr kurze Bemerkung, die den Moment anerkennt.',
+        chunks: [
+          chunk('busy-day', 'Busy day', 'viel los heute'),
+        ],
+        extraLessonItems: [
+          chunk('today', 'today', 'heute'),
+          chunk('weather', 'weather', 'Wetter'),
+          chunk('quiet', 'quiet', 'ruhig'),
+          chunk('nice', 'nice', 'nett'),
+        ],
+        targetChips: ['Busy', 'day.'],
+        distractors: ['brief', 'quiet'],
+        typeRecall: recall('', 'Busy day', '.', ['Busy day', 'busy today', 'quiet today', 'weather']),
+        sceneCaption: 'Sharp erkennt den vollen Tresen kurz an und hält die Schlange nicht auf.',
+        trophyWord: trophy('brief', 'kurz', 'Brief note.', 'Brief passt zu Sharps Small Talk ohne Umwege.'),
+        mediaCaption: 'Voller Tresen, Bestellungen laufen, ein kurzer Blick reicht für die Bemerkung.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'brief counter note' },
+        visualNotes: 'Busy counter crop, short text beat, clean acknowledgement.',
+      }),
+    },
+  },
+  {
+    slug: 'the-bill-please',
+    title: 'The bill, please',
+    situation: {
+      en: 'At the end, you ask for the bill.',
+      de: 'Du bittest am Ende um die Rechnung.',
+    },
+    pedagogicalGoal: 'Ask for the bill and optionally connect it to payment.',
+    variants: {
+      bright: createA1P4VariantInput({
+        targetText: 'Could I have the bill, please?',
+        baseText: 'Könnte ich bitte die Rechnung haben?',
+        meaning: 'Ein freundlicher Abschluss, bevor du bezahlst.',
+        chunks: [
+          chunk('could-i-have', 'Could I have', 'könnte ich haben'),
+          chunk('the-bill', 'the bill', 'die Rechnung'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('card', 'card', 'Karte'),
+          chunk('cash', 'cash', 'Bargeld'),
+        ],
+        targetChips: ['Could I have', 'the bill,', 'please?'],
+        distractors: ['settled', 'menu'],
+        typeRecall: recall('Could I have ', 'the bill', ', please?', ['the bill', 'altogether', 'by card', 'menu']),
+        sceneCaption: 'Bright beendet den Besuch höflich und bittet um die Rechnung.',
+        trophyWord: trophy('settled', 'bezahlt', 'All settled.', 'Settled passt zum ruhigen Abschluss nach dem Bezahlen.'),
+        mediaCaption: 'Rechnungsmappe auf dem Tisch, Karte daneben, freundlicher Blick zur Bedienung.',
+        songSeed: { genre: 'light acoustic pop', mood: 'settled close' },
+        visualNotes: 'Warm bill folder, card cue, settled close state.',
+      }),
+      wistful: createA1P4VariantInput({
+        targetText: "Just the bill, if that's alright?",
+        baseText: 'Nur die Rechnung, wenn das in Ordnung ist?',
+        meaning: 'Eine sanfte Bitte um den Abschluss der Szene.',
+        chunks: [
+          chunk('just-the-bill', 'Just the bill', 'nur die Rechnung'),
+          chunk('if-thats-alright', "if that's alright", 'wenn das in Ordnung ist'),
+        ],
+        extraLessonItems: [
+          chunk('card', 'card', 'Karte'),
+          chunk('together', 'together', 'zusammen'),
+          chunk('separately', 'separately', 'getrennt'),
+        ],
+        targetChips: ['Just the bill,', "if that's alright?"],
+        distractors: ['softly', 'menu'],
+        typeRecall: recall('Just ', 'the bill', ", if that's alright?", ['the bill', 'separately', 'together', 'menu']),
+        sceneCaption: 'Wistful bittet leise um die Rechnung und bleibt beim Abschluss freundlich.',
+        trophyWord: trophy('softly', 'sanft', 'Softly closed.', 'Softly passt zum vorsichtigen Ende der Begegnung.'),
+        mediaCaption: 'Ruhiger Tisch, kleine Rechnungsmappe, Hand liegt neben der Bankkarte.',
+        songSeed: { genre: 'soft indie folk', mood: 'gentle close' },
+        visualNotes: 'Soft bill folder, calm card edge, quiet ending cue.',
+      }),
+      sharp: createA1P4VariantInput({
+        targetText: 'The bill, please.',
+        baseText: 'Die Rechnung, bitte.',
+        meaning: 'Eine direkte, höfliche Bitte um die Rechnung.',
+        chunks: [
+          chunk('the-bill', 'The bill', 'die Rechnung'),
+          chunk('please', 'please', 'bitte'),
+        ],
+        extraLessonItems: [
+          chunk('card', 'card', 'Karte'),
+          chunk('cash', 'cash', 'Bargeld'),
+          chunk('total', 'total', 'Summe'),
+        ],
+        targetChips: ['The bill,', 'please.'],
+        distractors: ['total', 'menu'],
+        typeRecall: recall('', 'The bill', ', please.', ['The bill', 'the menu', 'total', 'card']),
+        sceneCaption: 'Sharp fragt nach der Rechnung und ist bereit zu zahlen.',
+        trophyWord: trophy('total', 'Summe', 'Total, please.', 'Total passt zum klaren Zahlungsende.'),
+        mediaCaption: 'Rechnungsmappe, Kartengerät am Tischrand, Summe auf dem kleinen Display.',
+        songSeed: { genre: 'minimal synth pulse', mood: 'bill close' },
+        visualNotes: 'Hard bill folder crop, total line, precise payment frame.',
+      }),
+    },
+  },
+]
+
+const a1Practical4Lessons: GuidedLessonDefinition[] = a1Practical4Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `english-a1-practical-4-${String(lessonNumber).padStart(3, '0')}-${lessonInput.slug}`
+  const nextInput = a1Practical4Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FOUR_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FOUR_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Path complete',
+      situation: nextInput?.situation.de ?? 'Du hast A1 Practical 4 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: createA1P2Variant(lessonInput.variants.bright),
+      wistful: createA1P2Variant(lessonInput.variants.wistful),
+      sharp: createA1P2Variant(lessonInput.variants.sharp),
+    },
+  }
+})
+
 function createA1P3VariantInput(input: A1P3VariantInput) {
   return input
 }
@@ -3237,8 +4063,17 @@ function createA1P2VariantInput(input: A1P2VariantInput) {
   return input
 }
 
+function createA1P4VariantInput(input: A1P2VariantInput) {
+  return input
+}
+
 function createA1P2Variant(input: A1P2VariantInput): GuidedLessonVibeVariant {
   const chunkItems = input.chunks.map((phraseChunk) => lessonItem(
+    phraseChunk.id,
+    phraseChunk.targetText,
+    phraseChunk.baseText,
+  ))
+  const extraItems = (input.extraLessonItems ?? []).map((phraseChunk) => lessonItem(
     phraseChunk.id,
     phraseChunk.targetText,
     phraseChunk.baseText,
@@ -3255,6 +4090,7 @@ function createA1P2Variant(input: A1P2VariantInput): GuidedLessonVibeVariant {
     chunks: input.chunks,
     lessonItems: [
       ...chunkItems,
+      ...extraItems,
       lessonItem(trophyId, input.trophyWord.word, input.trophyWord.meaning),
     ],
     build: {
@@ -3683,6 +4519,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   ...a1Practical2Lessons,
   ...a1Practical3Lessons,
+  ...a1Practical4Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -3698,6 +4535,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_ONE_METADATA,
     GUIDED_TODAY_PATH_TWO_METADATA,
     GUIDED_TODAY_PATH_THREE_METADATA,
+    GUIDED_TODAY_PATH_FOUR_METADATA,
   ]
 }
 
