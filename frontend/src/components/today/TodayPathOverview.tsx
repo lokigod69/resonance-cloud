@@ -34,8 +34,6 @@ const GUIDED_SEGMENT_REVIEWS = [
   },
 ] as const
 
-const WISTFUL_LESSON_NUMBER_ASSETS = new Set([1, 2, 5])
-
 type TodayPathOverviewProps = {
   overview: GuidedPathOverview
   pathOptions: GuidedPathMetadata[]
@@ -378,7 +376,7 @@ function LessonNumberMarker({
     )
   }
 
-  if (selectedVibeId === 'wistful' && WISTFUL_LESSON_NUMBER_ASSETS.has(lessonNumber)) {
+  if (selectedVibeId === 'wistful' && lessonNumber >= 1 && lessonNumber <= 5) {
     const paddedLessonNumber = String(lessonNumber).padStart(2, '0')
 
     return (
