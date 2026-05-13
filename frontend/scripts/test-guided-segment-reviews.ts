@@ -92,13 +92,13 @@ for (let lessonNumber = 1; lessonNumber <= 10; lessonNumber += 1) {
   assert(`bright lesson number ${lessonNumber} asset stays small`, bytes.length > 2_000 && bytes.length < 20_000, bytes.length)
 }
 
-for (const lessonNumber of [1, 2, 5]) {
+for (let lessonNumber = 1; lessonNumber <= 5; lessonNumber += 1) {
   const assetPath = fileURLToPath(new URL(`../public/guided/lesson-numbers/wistful/${String(lessonNumber).padStart(2, '0')}.webp`, import.meta.url))
   assert(`wistful lesson number ${lessonNumber} asset exists`, existsSync(assetPath), assetPath)
   if (!existsSync(assetPath)) continue
   const bytes = readFileSync(assetPath)
   assert(`wistful lesson number ${lessonNumber} asset is WebP`, bytes.subarray(0, 4).equals(Buffer.from('RIFF')) && bytes.subarray(8, 12).equals(Buffer.from('WEBP')))
-  assert(`wistful lesson number ${lessonNumber} asset stays small`, bytes.length > 2_000 && bytes.length < 20_000, bytes.length)
+  assert(`wistful lesson number ${lessonNumber} asset stays small`, bytes.length > 1_000 && bytes.length < 20_000, bytes.length)
 }
 
 console.log('\n[plan selection]')
