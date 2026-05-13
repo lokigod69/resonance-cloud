@@ -1,12 +1,13 @@
 import { ChevronLeft, ChevronRight, CheckCircle2, Mic, MicOff, RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { getGuidedTodayPathOptions, guidedAnswerMatches } from '@/data/guidedLessons'
+import { getGuidedTodayPathOptions, guidedAnswerMatches, type GuidedPathMetadata } from '@/data/guidedLessons'
 import { guidedVibes, isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import {
   buildGuidedCheckpointPlan,
+  buildGuidedPathCheckPlan,
   completeGuidedCheckpoint,
   type GuidedCheckpointPlan,
   type GuidedCheckpointPlanItem,
@@ -30,12 +31,19 @@ export default function GuidedCheckpoint() {
   const { user } = useAuth()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const defaultPathId = getGuidedTodayPathOptions()[0]?.id ?? 'english-a1-practical-1'
-  const selectedVibeId = resolveCheckpointVibe(searchParams.get('vibe'), defaultPathId)
+  const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
+  const defaultPathId = pathOptions[0]?.id ?? 'english-a1-practical-1'
+  const selectedPathId = resolveCheckpointPath(searchParams.get('path'), defaultPathId, pathOptions)
+  const selectedVibeId = resolveCheckpointVibe(searchParams.get('vibe'), selectedPathId)
+  const isPathCheckMode = searchParams.get('mode') === 'path-check'
   const progress = useMemo(() => readTodayProgressState(user?.id), [user?.id])
   const plan = useMemo(
-    () => buildGuidedCheckpointPlan(progress, selectedVibeId),
-    [progress, selectedVibeId],
+    () => (
+      isPathCheckMode
+        ? buildGuidedPathCheckPlan(selectedPathId, selectedVibeId)
+        : buildGuidedCheckpointPlan(progress, selectedVibeId)
+    ),
+    [isPathCheckMode, progress, selectedPathId, selectedVibeId],
   )
   const [phase, setPhase] = useState<CheckpointPhase>('type')
   const [itemIndex, setItemIndex] = useState(0)
@@ -70,7 +78,9 @@ export default function GuidedCheckpoint() {
     if (!plan) return
 
     if (itemIndex >= plan.items.length - 1) {
-      const record = completeGuidedCheckpoint(selectedVibeId, reviewedItemsRef.current)
+      const record = isPathCheckMode
+        ? createLocalCheckpointRecord(reviewedItemsRef.current)
+        : completeGuidedCheckpoint(selectedVibeId, reviewedItemsRef.current)
       setSummary(record)
       setPhase('summary')
       return
@@ -87,7 +97,7 @@ export default function GuidedCheckpoint() {
   }
 
   if (phase === 'summary' && summary) {
-    return <CheckpointSummary record={summary} selectedVibeId={selectedVibeId} onBackToToday={() => navigate('/today')} />
+    return <CheckpointSummary record={summary} selectedVibeId={selectedVibeId} isPathCheckMode={isPathCheckMode} onBackToToday={() => navigate('/today')} />
   }
 
   return (
@@ -104,7 +114,7 @@ export default function GuidedCheckpoint() {
         aria-hidden="true"
       />
 
-      <CheckpointHeader plan={plan} itemIndex={itemIndex} progressValue={progressValue} />
+      <CheckpointHeader plan={plan} itemIndex={itemIndex} progressValue={progressValue} isPathCheckMode={isPathCheckMode} />
 
       {phase === 'type' && (
         <CheckpointTypeStep
@@ -128,10 +138,12 @@ function CheckpointHeader({
   plan,
   itemIndex,
   progressValue,
+  isPathCheckMode,
 }: {
   plan: GuidedCheckpointPlan
   itemIndex: number
   progressValue: number
+  isPathCheckMode: boolean
 }) {
   const { t } = useTranslation()
 
@@ -146,10 +158,10 @@ function CheckpointHeader({
             </Link>
           </Button>
           <p className="text-sm font-medium text-[var(--text-secondary)]">
-            {t('today.checkpoint.title')}
+            {isPathCheckMode ? t('today.path.pathCheck') : t('today.checkpoint.title')}
           </p>
           <h1 className="mt-1 text-2xl font-semibold leading-tight text-[var(--text-primary)]">
-            {t('today.checkpoint.heading')}
+            {isPathCheckMode ? t('today.checkpoint.pathCheckHeading') : t('today.checkpoint.heading')}
           </h1>
         </div>
         <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
@@ -322,10 +334,12 @@ function CheckpointSpeakStep({
 function CheckpointSummary({
   record,
   selectedVibeId,
+  isPathCheckMode,
   onBackToToday,
 }: {
   record: GuidedCheckpointRecord
   selectedVibeId: ActiveGuidedVibeId
+  isPathCheckMode: boolean
   onBackToToday: () => void
 }) {
   const { t } = useTranslation()
@@ -346,7 +360,7 @@ function CheckpointSummary({
           <CheckCircle2 className="today-completion-vibeBadgeCheck" />
         </span>
         <h1 className="mt-4 text-3xl font-semibold text-[var(--text-primary)]">
-          {t('today.checkpoint.completeTitle')}
+          {isPathCheckMode ? t('today.checkpoint.pathCheckCompleteTitle') : t('today.checkpoint.completeTitle')}
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-[var(--text-secondary)]">
           {t('today.checkpoint.completeBody', {
@@ -385,4 +399,30 @@ function CheckpointUnavailable({ selectedVibeId }: { selectedVibeId: ActiveGuide
 
 function resolveCheckpointVibe(value: string | null, defaultPathId: string): ActiveGuidedVibeId {
   return isActiveGuidedVibeId(value) ? value : getSelectedGuidedVibe(defaultPathId)
+}
+
+function resolveCheckpointPath(
+  value: string | null,
+  defaultPathId: string,
+  pathOptions: GuidedPathMetadata[],
+) {
+  return pathOptions.some((path) => path.id === value) ? value! : defaultPathId
+}
+
+function createLocalCheckpointRecord(
+  items: GuidedCheckpointReviewedItem[],
+  completedAt: Date = new Date(),
+): GuidedCheckpointRecord {
+  return {
+    completedAt: completedAt.toISOString(),
+    itemsReviewed: items.length,
+    itemsCorrectFirstTry: items.filter((item) => item.firstTryCorrect).length,
+    items: items.map((item) => ({
+      lessonId: item.lessonId,
+      pathId: item.pathId,
+      vibe: item.vibe,
+      firstTryCorrect: item.firstTryCorrect,
+      needsReview: item.needsReview,
+    })),
+  }
 }

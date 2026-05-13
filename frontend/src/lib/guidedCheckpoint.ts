@@ -135,6 +135,32 @@ export function buildGuidedCheckpointPlan(
   }
 }
 
+export function buildGuidedPathCheckPlan(
+  pathId: string,
+  vibe: ActiveGuidedVibeId,
+  random: RandomSource = Math.random,
+  itemCount = GUIDED_CHECKPOINT_ITEM_COUNT,
+): GuidedCheckpointPlan | undefined {
+  const items = getGuidedPathLessons(pathId).map((lesson) => {
+    const resolvedLesson = resolveGuidedLessonVariant(lesson, vibe)
+    return {
+      lesson: resolvedLesson,
+      lessonId: resolvedLesson.id,
+      pathId,
+      vibe,
+    }
+  })
+
+  if (items.length < itemCount) return undefined
+
+  return {
+    vibe,
+    checkpointIndex: 0,
+    completedPathCount: 1,
+    items: shuffle(items, random).slice(0, itemCount),
+  }
+}
+
 export function getGuidedCheckpointCount(vibe: ActiveGuidedVibeId) {
   return getGuidedCheckpointIndexes(vibe).length
 }

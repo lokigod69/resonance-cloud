@@ -5,7 +5,7 @@
  */
 
 import { getGuidedPathLessons, resolveGuidedLessonVariant } from '../src/data/guidedLessons.ts'
-import { buildGuidedCheckpointPlan } from '../src/lib/guidedCheckpoint.ts'
+import { buildGuidedCheckpointPlan, buildGuidedPathCheckPlan } from '../src/lib/guidedCheckpoint.ts'
 import { createEmptyTodayProgressState, markTodayLessonComplete, type TodayProgressState } from '../src/lib/todayProgress.ts'
 import type { ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
 
@@ -54,6 +54,15 @@ console.log('\n[edge cases]')
 const partialProgress = completePartialPath('bright', 7)
 const partialPlan = buildGuidedCheckpointPlan(partialProgress, 'bright', fixedRng())
 assert('pool under 8 items does not build a checkpoint plan', partialPlan === undefined, partialPlan)
+
+console.log('\n[path check]')
+const emptyProgressSnapshot = JSON.stringify(createEmptyTodayProgressState())
+const pathCheckPlan = buildGuidedPathCheckPlan(pathIds[2]!, 'sharp', fixedRng())
+assert('Path Check can build a plan without completed lessons', pathCheckPlan?.items.length === 8, pathCheckPlan)
+assert('Path Check samples only the selected path', pathCheckPlan?.items.every((item) => item.pathId === pathIds[2]) === true, pathCheckPlan)
+assert('Path Check preserves the selected active vibe', pathCheckPlan?.items.every((item) => item.vibe === 'sharp') === true, pathCheckPlan)
+assert('Path Check plan building does not mutate lesson progress', JSON.stringify(createEmptyTodayProgressState()) === emptyProgressSnapshot)
+assert('unknown Path Check path does not build a plan', buildGuidedPathCheckPlan('english-a1-practical-999', 'bright', fixedRng()) === undefined)
 
 console.log(`\n${passes} passed, ${failures} failed`)
 if (failures > 0) process.exit(1)

@@ -200,7 +200,7 @@ assert('Today page separates lesson selection from session start', containsAny(t
 assert('path overview receives a select handler and separate start handler', todayPathOverviewSource.includes('onSelectLesson') && todayPathOverviewSource.includes('onStartLesson'))
 assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId]), getGuidedTodayPathOptions())
 assert('Today page stores selected path id and passes path options to overview', containsAny(todayPageSource, ['selectedPathId', 'getGuidedTodayPathOptions']) && todayPathOverviewSource.includes('pathOptions'))
-assert('path overview renders compact path selector controls', todayPathOverviewSource.includes('onSelectPath') && todayPathOverviewSource.includes('today-path-switcher'))
+assert('path overview opens the directory instead of permanent path chips', todayPathOverviewSource.includes('onSelectPath') && todayPathOverviewSource.includes('GuidedPathDirectory') && todayPathOverviewSource.includes("t('today.path.changePath')") && !todayPathOverviewSource.includes('today-path-switcher'))
 assert('lesson cards select lessons without opening the session', lessonPathCardSource.includes('onSelectLesson(lesson.id)') && !lessonPathCardSource.includes('onOpenLesson(lesson.id)'))
 assert('selected lesson panel keeps selected/recommended label copy screen-reader only', recommendedLessonPanelSource.includes('className="sr-only"') && recommendedLessonPanelSource.includes("t('today.path.selectedLessonLabel')") && recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')"))
 assert('selected lesson panel visible copy is reduced to lesson, title, action', !recommendedLessonPanelSource.includes('uppercase tracking-[0.18em] text-[var(--text-muted)]'))
@@ -209,7 +209,7 @@ assert('lesson cards render completed vibe badge emblems', lessonPathCardSource.
 assert('lesson cards derive the primary start target from selected state, not recommendation alone', lessonPathCardSource.includes('isStartTarget={isSelected}') && lessonPathCardSource.includes('data-start-target={isSelected}'), lessonPathCardSource)
 assert('recommended non-selected lesson does not keep a competing play icon', lessonPathCardSource.includes('StatusIcon') && lessonPathCardSource.includes('isStartTarget') && !lessonPathCardSource.includes("status === 'current'") && !lessonPathCardSource.includes('status === "current"'), lessonPathCardSource)
 assert('completed vibe badges suppress redundant same-level completion check', lessonPathCardSource.includes("showCompletionFallback={status === 'complete' && completedVibeIds.length === 0}") && !lessonPathCardSource.includes('today-vibe-completionBadgeCheck'), lessonPathCardSource)
-assert('path switcher can wrap without crushing the header title', todayPathOverviewSource.includes('today-path-header') && todayPathOverviewSource.includes('today-path-switcher') && todayCssSource.includes('.today-path-switcher'), todayPathOverviewSource)
+assert('path header keeps only compact actions beside the title', todayPathOverviewSource.includes('today-path-header') && todayPathOverviewSource.includes('today-path-actions') && todayCssSource.includes('.today-path-actions'), todayPathOverviewSource)
 
 console.log('\n[source-level atmosphere tokens]')
 assert('Today root exposes selected vibe as a data attribute', todayPageSource.includes('data-guided-vibe={selectedVibeId}'))

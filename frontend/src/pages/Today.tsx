@@ -154,6 +154,7 @@ export default function Today() {
               href: `/today/checkpoint?vibe=${selectedVibeId}`,
               completedPathCount: checkpointPlan.completedPathCount,
             } : undefined}
+            pathCheckHref={`/today/checkpoint?mode=path-check&path=${selectedPathId}&vibe=${selectedVibeId}`}
             onSelectPath={handleSelectPath}
             onSelectVibe={handleSelectVibe}
             onSelectLesson={handleSelectLesson}

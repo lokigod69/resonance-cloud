@@ -1,6 +1,7 @@
-import { CheckCircle2, Circle, Play } from 'lucide-react'
+import { CheckCircle2, Circle, ClipboardCheck, Play } from 'lucide-react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
-  getGuidedPathLessons,
   type GuidedLesson,
   type GuidedPathLessonCardStatus,
   type GuidedPathMetadata,
@@ -11,6 +12,7 @@ import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayPr
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
+import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
 import { GuidedVibePicker } from '@/components/today/TodayHero'
 import { cn } from '@/lib/utils'
 
@@ -24,6 +26,7 @@ type TodayPathOverviewProps = {
     href: string
     completedPathCount: number
   }
+  pathCheckHref: string
   onSelectPath: (pathId: string) => void
   onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
   onSelectLesson: (lessonId: string) => void
@@ -37,17 +40,24 @@ export function TodayPathOverview({
   progress,
   selectedVibeId,
   checkpointCard,
+  pathCheckHref,
   onSelectPath,
   onSelectVibe,
   onSelectLesson,
   onStartLesson,
 }: TodayPathOverviewProps) {
   const { t } = useTranslation()
+  const [directoryOpen, setDirectoryOpen] = useState(false)
   const pathLesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
   const isSelectedRecommendation = Boolean(
     pathLesson
       && overview.recommendedLesson
       && pathLesson.id === overview.recommendedLesson.id,
+  )
+  const hasExplicitLessonSelection = Boolean(
+    pathLesson
+      && overview.recommendedLesson
+      && pathLesson.id !== overview.recommendedLesson.id,
   )
 
   return (
@@ -75,11 +85,25 @@ export function TodayPathOverview({
               </span>
             </div>
           </div>
-          <PathSwitcher
+          <div className="today-path-actions flex flex-wrap gap-2 xl:justify-end">
+            <Button asChild type="button" variant="outline" size="sm">
+              <Link to={pathCheckHref}>
+                <ClipboardCheck className="h-4 w-4" />
+                {t('today.path.pathCheck')}
+              </Link>
+            </Button>
+            <Button type="button" variant="outline" size="sm" onClick={() => setDirectoryOpen(true)}>
+              {t('today.path.changePath')}
+            </Button>
+          </div>
+          <GuidedPathDirectory
+            open={directoryOpen}
             pathOptions={pathOptions}
             selectedPathId={selectedPathId}
             progress={progress}
+            pathCheckHref={pathCheckHref}
             onSelectPath={onSelectPath}
+            onClose={() => setDirectoryOpen(false)}
           />
         </div>
       </section>
@@ -119,6 +143,7 @@ export function TodayPathOverview({
               status={entry.status}
               isRecommended={entry.isRecommended}
               isSelected={entry.isSelected}
+              isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
               completedVibeIds={entry.completedVibeIds}
               onSelectLesson={onSelectLesson}
             />
@@ -131,52 +156,6 @@ export function TodayPathOverview({
           )}
         </div>
       </section>
-    </div>
-  )
-}
-
-function PathSwitcher({
-  pathOptions,
-  selectedPathId,
-  progress,
-  onSelectPath,
-}: {
-  pathOptions: GuidedPathMetadata[]
-  selectedPathId: string
-  progress: TodayProgressState
-  onSelectPath: (pathId: string) => void
-}) {
-  if (pathOptions.length <= 1) return null
-
-  return (
-    <div className="today-path-switcher flex w-full flex-wrap gap-2 xl:w-auto xl:justify-end">
-      {pathOptions.map((path) => {
-        const isSelected = path.id === selectedPathId
-        const totalLessons = getGuidedPathLessons(path.id).length
-        const completedCount = progress.courses[path.id]?.completedLessonIds.length ?? 0
-
-        return (
-          <button
-            key={path.id}
-            type="button"
-            aria-pressed={isSelected}
-            onClick={() => onSelectPath(path.id)}
-            className={cn(
-              'min-w-0 rounded-lg border px-3 py-2 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
-              isSelected
-                ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)] text-[var(--text-primary)]'
-                : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_36%,transparent)] text-[var(--text-secondary)]',
-            )}
-          >
-            <span className="block text-sm font-semibold leading-5">
-              {path.shortTitle}
-            </span>
-            <span className="mt-0.5 block text-xs leading-5 text-[var(--text-muted)]">
-              {completedCount}/{totalLessons}
-            </span>
-          </button>
-        )
-      })}
     </div>
   )
 }
@@ -225,6 +204,7 @@ function LessonPathCard({
   status,
   isRecommended,
   isSelected,
+  isRecommendationQuiet,
   completedVibeIds,
   onSelectLesson,
 }: {
@@ -232,6 +212,7 @@ function LessonPathCard({
   status: GuidedPathLessonCardStatus
   isRecommended: boolean
   isSelected: boolean
+  isRecommendationQuiet: boolean
   completedVibeIds: ActiveGuidedVibeId[]
   onSelectLesson: (lessonId: string) => void
 }) {
@@ -249,11 +230,12 @@ function LessonPathCard({
         'today-path-card group flex min-h-32 min-w-0 flex-col rounded-lg border p-3 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
         isSelected
           ? 'border-[color-mix(in_srgb,var(--accent)_64%,transparent)] bg-[var(--accent-soft)] shadow-[0_0_0_1px_color-mix(in_srgb,var(--accent)_18%,transparent)]'
-          : isRecommended
+          : isRecommended && !isRecommendationQuiet
           ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)]'
           : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_50%,transparent)]',
       )}
       data-recommended={isRecommended}
+      data-recommended-quiet={isRecommendationQuiet}
       data-selected={isSelected}
       data-start-target={isSelected}
     >
@@ -264,7 +246,7 @@ function LessonPathCard({
             ? 'border-[color-mix(in_srgb,#34d399_50%,transparent)] bg-[color-mix(in_srgb,#34d399_12%,transparent)] text-[#34d399]'
             : isSelected
               ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]'
-              : isRecommended
+              : isRecommended && !isRecommendationQuiet
                 ? 'border-[color-mix(in_srgb,var(--today-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--today-accent-soft)_42%,transparent)] text-[var(--today-text-soft)]'
               : 'border-[var(--border-subtle)] text-[var(--text-muted)]',
         )}>
