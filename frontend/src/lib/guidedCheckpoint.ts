@@ -174,6 +174,7 @@ export function buildGuidedSegmentReviewPlan(
   random: RandomSource = Math.random,
   itemCount = GUIDED_SEGMENT_REVIEW_ITEM_COUNT,
 ): GuidedCheckpointPlan | undefined {
+  void progress
   const segmentDefinition = getGuidedSegmentReviewDefinition(segment)
   if (!segmentDefinition) return undefined
 
@@ -181,7 +182,6 @@ export function buildGuidedSegmentReviewPlan(
     .filter((lesson) => (
       lesson.lessonNumber >= segmentDefinition.startLesson
       && lesson.lessonNumber <= segmentDefinition.endLesson
-      && isLessonCompletedInVibe(progress, pathId, lesson.id, vibe)
     ))
     .map((lesson) => {
       const resolvedLesson = resolveGuidedLessonVariant(lesson, vibe)

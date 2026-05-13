@@ -51,37 +51,47 @@ assert('overview references lessons 1-5 for Review 1', overviewSource.includes('
 assert('overview references lessons 6-10 for Review 2', overviewSource.includes('start: 6') && overviewSource.includes('end: 10'))
 assert('review nodes do not reuse normal lesson-card styling as their primary hook', overviewSource.includes('today-segment-review') && !sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('today-path-card'))
 assert('review tile links use segment-review route mode', overviewSource.includes('mode=segment-review') && overviewSource.includes('segment=${segment.segment}'))
-assert('review tiles show segment progress', overviewSource.includes('completedCount') && overviewSource.includes('/5'))
-assert('review tile locked state has no navigation', overviewSource.includes('aria-disabled') && overviewSource.includes('today.path.notReadyYet'))
-assert('review assets are referenced by active vibe', overviewSource.includes('/guided/reviews/${selectedVibeId}-review.webp'))
+assert('review tiles are always rendered as clickable links', sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('<Link') && !sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('if (!isAvailable)'))
+assert('review tiles no longer render visible progress text', !sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('/5'))
+assert('review tiles no longer render visible lock or not-ready state', !containsAny(sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel'), ['aria-disabled', 'today.path.notReadyYet', '<Lock', 'today.path.startReview']))
+assert('review assets are referenced by active vibe as PNGs', overviewSource.includes('/guided/reviews/${selectedVibeId}-review.png'))
+assert('review tiles do not reference the old WebP review assets', !overviewSource.includes('-review.webp'))
 assert('CSS defines separated segment review tile styling', cssSource.includes('.today-segment-reviewTile') && cssSource.includes('.today-path-segmentGrid'))
+assert('CSS renders the review asset as a wide banner, not a small icon', cssSource.includes('.today-segment-reviewImage') && containsAny(cssSource, ['max-width: min(100%, 52rem)', 'max-width: min(100%,52rem)', 'width: min(100%, 52rem)']))
 
 console.log('\n[assets]')
 for (const vibeId of ['bright', 'wistful', 'sharp'] as const) {
-  const assetPath = fileURLToPath(new URL(`../public/guided/reviews/${vibeId}-review.webp`, import.meta.url))
+  const assetPath = fileURLToPath(new URL(`../public/guided/reviews/${vibeId}-review.png`, import.meta.url))
+  const sourceAssetPath = fileURLToPath(new URL(`../public/guided/reviews/source/${vibeId}-review-source.png`, import.meta.url))
   assert(`${vibeId} review asset exists`, existsSync(assetPath), assetPath)
+  assert(`${vibeId} source review asset exists`, existsSync(sourceAssetPath), sourceAssetPath)
   if (existsSync(assetPath)) {
     const bytes = readFileSync(assetPath)
-    assert(`${vibeId} review asset is a WebP file`, bytes.subarray(0, 4).toString('ascii') === 'RIFF' && bytes.subarray(8, 12).toString('ascii') === 'WEBP')
-    assert(`${vibeId} review asset has a reasonable file size`, bytes.length > 1000 && bytes.length < 180_000, bytes.length)
+    assert(`${vibeId} review asset is a PNG file`, bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])))
+    assert(`${vibeId} review asset has RGBA color type`, bytes[25] === 6, bytes[25])
+    assert(`${vibeId} review asset has a reasonable file size`, bytes.length > 100_000 && bytes.length < 2_500_000, bytes.length)
+  }
+  if (existsSync(sourceAssetPath)) {
+    const sourceBytes = readFileSync(sourceAssetPath)
+    assert(`${vibeId} source review asset is a PNG file`, sourceBytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])))
   }
 }
 
 console.log('\n[plan selection]')
 for (const pathId of pathIds) {
-  const progress = completeLessons(pathId, 'bright', 1, 5)
-  const plan = buildGuidedSegmentReviewPlan(progress, pathId, 1, 'bright', fixedRng())
-  assert(`${pathId} Review 1 builds from completed segment lessons`, plan?.items.length === 5, plan)
+  const plan = buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathId, 1, 'bright', fixedRng())
+  assert(`${pathId} Review 1 builds all five segment lessons without completion progress`, plan?.items.length === 5, plan)
   assert(`${pathId} Review 1 samples only selected path`, plan?.items.every((item) => item.pathId === pathId) === true, plan)
   assert(`${pathId} Review 1 samples only lessons 1-5`, plan?.items.every((item) => lessonNumber(item.lessonId) >= 1 && lessonNumber(item.lessonId) <= 5) === true, plan?.items.map((item) => item.lessonId))
 }
 
-const secondSegmentProgress = completeLessons(pathIds[1]!, 'sharp', 6, 10)
+const secondSegmentProgress = createEmptyTodayProgressState()
 const secondSegmentPlan = buildGuidedSegmentReviewPlan(secondSegmentProgress, pathIds[1]!, 2, 'sharp', fixedRng())
+assert('Review 2 builds all five segment lessons without completion progress', secondSegmentPlan?.items.length === 5, secondSegmentPlan)
 assert('Review 2 samples only lessons 6-10', secondSegmentPlan?.items.every((item) => lessonNumber(item.lessonId) >= 6 && lessonNumber(item.lessonId) <= 10) === true, secondSegmentPlan?.items.map((item) => item.lessonId))
 assert('Segment Review preserves selected active vibe', secondSegmentPlan?.items.every((item) => item.vibe === 'sharp') === true, secondSegmentPlan)
-assert('Segment Review can build before the full path is complete', buildGuidedSegmentReviewPlan(completeLessons(pathIds[0]!, 'bright', 1, 2), pathIds[0]!, 1, 'bright', fixedRng())?.items.length === 2)
-assert('Segment Review is unavailable with no completed lessons in the selected segment/vibe', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[0]!, 1, 'bright', fixedRng()) === undefined)
+assert('Segment Review samples the full segment even when only two lessons are complete', buildGuidedSegmentReviewPlan(completeLessons(pathIds[0]!, 'bright', 1, 2), pathIds[0]!, 1, 'bright', fixedRng())?.items.length === 5)
+assert('Segment Review is available with no completed lessons in the selected segment/vibe', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[0]!, 1, 'bright', fixedRng())?.items.length === 5)
 assert('Segment Review rejects unknown segment ids', buildGuidedSegmentReviewPlan(secondSegmentProgress, pathIds[0]!, 3, 'sharp', fixedRng()) === undefined)
 
 console.log('\n[route and prompt]')
@@ -167,6 +177,10 @@ function sliceBetween(source: string, start: string, end: string) {
   const endIndex = source.indexOf(end, startIndex)
   if (endIndex < 0) return ''
   return source.slice(startIndex, endIndex)
+}
+
+function containsAny(value: string, needles: string[]) {
+  return needles.some((needle) => value.includes(needle))
 }
 
 function createMemoryStorage(): Storage {
