@@ -284,7 +284,6 @@ body {
 }
 
 .skin-classic .app-topnav {
-  position: sticky;
   isolation: isolate;
   background: transparent;
   border-bottom-color: color-mix(in srgb, var(--accent) 24%, var(--border-subtle));

@@ -254,8 +254,8 @@ export default function DashboardPG() {
     <div className="w-full max-w-full overflow-x-hidden">
       <div className="px-4 sm:px-6 max-w-4xl mx-auto flex flex-col min-h-[calc(100vh-5rem)]">
         {/* Welcome */}
-        <div className="flex flex-col items-center text-center mb-6">
-          <h1 className="text-2xl sm:text-3xl font-bold font-display tracking-tight break-words text-foreground">
+        <div className="classic-dashboard-header">
+          <h1 className="break-words">
             {profile?.display_name
               ? t('dashboard.welcomeUser', { name: profile.display_name })
               : t('dashboard.welcome')}
