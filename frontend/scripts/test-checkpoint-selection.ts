@@ -1,0 +1,126 @@
+/**
+ * Static validation for Guided Today Quick Review checkpoint selection.
+ *
+ * Run: npx tsx scripts/test-checkpoint-selection.ts
+ */
+
+import { getGuidedPathLessons, resolveGuidedLessonVariant } from '../src/data/guidedLessons.ts'
+import { buildGuidedCheckpointPlan } from '../src/lib/guidedCheckpoint.ts'
+import { createEmptyTodayProgressState, markTodayLessonComplete, type TodayProgressState } from '../src/lib/todayProgress.ts'
+import type { ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
+
+let failures = 0
+let passes = 0
+
+function assert(name: string, condition: boolean, detail?: unknown) {
+  if (condition) {
+    passes += 1
+    console.log(`  ok  ${name}`)
+    return
+  }
+
+  failures += 1
+  console.error(`  FAIL ${name}`)
+  if (detail !== undefined) console.error('       ', detail)
+}
+
+const pathIds = [
+  'english-a1-practical-1',
+  'english-a1-practical-2',
+  'english-a1-practical-3',
+]
+
+console.log('\n[distribution]')
+const onePathPlan = buildGuidedCheckpointPlan(completePaths(['bright']), 'bright', fixedRng())
+assert('one completed path yields 8 checkpoint items', onePathPlan?.items.length === 8, onePathPlan)
+assert('one completed path samples only that path', countByPath(onePathPlan).get(pathIds[0]!) === 8, countByPath(onePathPlan))
+
+const twoPathPlan = buildGuidedCheckpointPlan(completePaths(['bright', 'bright']), 'bright', fixedRng())
+assert('two completed paths yields 8 checkpoint items', twoPathPlan?.items.length === 8, twoPathPlan)
+assert('two completed paths split 4/4', JSON.stringify(pathCounts(twoPathPlan)) === JSON.stringify([4, 4]), pathCounts(twoPathPlan))
+
+const threePathPlan = buildGuidedCheckpointPlan(completePaths(['bright', 'bright', 'bright']), 'bright', fixedRng())
+assert('three completed paths yields 8 checkpoint items', threePathPlan?.items.length === 8, threePathPlan)
+assert('three completed paths split 3/3/2 with newest path on the floor', JSON.stringify(pathCounts(threePathPlan)) === JSON.stringify([3, 3, 2]), pathCounts(threePathPlan))
+assert('multi-path checkpoint order avoids adjacent same-path items where possible', maxSamePathRun(threePathPlan) <= 1, threePathPlan?.items.map((item) => item.pathId))
+
+console.log('\n[vibe filtering]')
+const mixedVibeProgress = completePaths(['bright', 'wistful'])
+const brightOnlyPlan = buildGuidedCheckpointPlan(mixedVibeProgress, 'bright', fixedRng())
+assert('selection pool filters by active vibe only', JSON.stringify(pathCounts(brightOnlyPlan)) === JSON.stringify([8]), pathCounts(brightOnlyPlan))
+assert('selected items preserve the active vibe', brightOnlyPlan?.items.every((item) => item.vibe === 'bright') === true, brightOnlyPlan)
+
+console.log('\n[edge cases]')
+const partialProgress = completePartialPath('bright', 7)
+const partialPlan = buildGuidedCheckpointPlan(partialProgress, 'bright', fixedRng())
+assert('pool under 8 items does not build a checkpoint plan', partialPlan === undefined, partialPlan)
+
+console.log(`\n${passes} passed, ${failures} failed`)
+if (failures > 0) process.exit(1)
+
+function completePaths(vibesByPath: ActiveGuidedVibeId[]): TodayProgressState {
+  return vibesByPath.reduce((state, vibeId, index) => completePath(state, pathIds[index]!, vibeId), createEmptyTodayProgressState())
+}
+
+function completePartialPath(vibeId: ActiveGuidedVibeId, lessonCount: number): TodayProgressState {
+  return getGuidedPathLessons(pathIds[0]!)
+    .slice(0, lessonCount)
+    .reduce((state, definition) => (
+      markTodayLessonComplete(state, resolveGuidedLessonVariant(definition, vibeId), minimalResult())
+    ), createEmptyTodayProgressState())
+}
+
+function completePath(state: TodayProgressState, pathId: string, vibeId: ActiveGuidedVibeId): TodayProgressState {
+  return getGuidedPathLessons(pathId).reduce((nextState, definition) => (
+    markTodayLessonComplete(nextState, resolveGuidedLessonVariant(definition, vibeId), minimalResult())
+  ), state)
+}
+
+function countByPath(plan: ReturnType<typeof buildGuidedCheckpointPlan>) {
+  const counts = new Map<string, number>()
+  for (const item of plan?.items ?? []) {
+    counts.set(item.pathId, (counts.get(item.pathId) ?? 0) + 1)
+  }
+  return counts
+}
+
+function pathCounts(plan: ReturnType<typeof buildGuidedCheckpointPlan>) {
+  const counts = countByPath(plan)
+  return pathIds.map((pathId) => counts.get(pathId) ?? 0).filter((count) => count > 0)
+}
+
+function maxSamePathRun(plan: ReturnType<typeof buildGuidedCheckpointPlan>) {
+  let maxRun = 0
+  let currentRun = 0
+  let currentPath = ''
+  for (const item of plan?.items ?? []) {
+    if (item.pathId === currentPath) {
+      currentRun += 1
+    } else {
+      currentPath = item.pathId
+      currentRun = 1
+    }
+    maxRun = Math.max(maxRun, currentRun)
+  }
+  return maxRun
+}
+
+function fixedRng() {
+  let value = 0.17
+  return () => {
+    value = (value * 3.91) % 1
+    return value
+  }
+}
+
+function minimalResult() {
+  return {
+    buildAttempts: 1,
+    typeAttempts: 1,
+    typeUsedFallback: false,
+    speakAttempts: 0,
+    speakTranscriptMatch: 0,
+    speakPassed: false,
+    knownMarkedCount: 0,
+  }
+}
