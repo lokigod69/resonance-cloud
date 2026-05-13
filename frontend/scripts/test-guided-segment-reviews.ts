@@ -54,18 +54,18 @@ assert('review tile links use segment-review route mode', overviewSource.include
 assert('review tiles are always rendered as clickable links', sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('<Link') && !sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('if (!isAvailable)'))
 assert('review tiles no longer render visible progress text', !sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('/5'))
 assert('review tiles no longer render visible lock or not-ready state', !containsAny(sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel'), ['aria-disabled', 'today.path.notReadyYet', '<Lock', 'today.path.startReview']))
-assert('review assets are referenced by active vibe as PNGs', overviewSource.includes('${selectedVibeId}-review.png') && overviewSource.includes('/guided/reviews/${assetName}'))
-assert('review tile references complete asset from segment review completion state', overviewSource.includes('readGuidedSegmentReviewRecord') && overviewSource.includes('${selectedVibeId}-review-complete.png') && overviewSource.includes('data-review-complete'))
-assert('review tiles do not reference the old WebP review assets', !overviewSource.includes('-review.webp'))
+assert('review assets are referenced by active vibe as WebPs', overviewSource.includes('${selectedVibeId}-review.webp') && overviewSource.includes('/guided/reviews/${assetName}'))
+assert('review tile references complete WebP asset from segment review completion state', overviewSource.includes('readGuidedSegmentReviewRecord') && overviewSource.includes('${selectedVibeId}-review-complete.webp') && overviewSource.includes('data-review-complete'))
+assert('review tiles no longer reference PNG review assets', !overviewSource.includes('-review.png'))
 assert('CSS defines separated segment review tile styling', cssSource.includes('.today-segment-reviewTile') && cssSource.includes('.today-path-segmentGrid'))
 assert('CSS constrains review banner size and keeps it object-contained', cssSource.includes('.today-segment-reviewImage') && cssSource.includes('max-height: 5.75rem') && cssSource.includes('max-width: min(100%, 42rem)') && cssSource.includes('object-fit: contain'))
 
 console.log('\n[assets]')
 for (const vibeId of ['bright', 'wistful', 'sharp'] as const) {
-  const assetPath = fileURLToPath(new URL(`../public/guided/reviews/${vibeId}-review.png`, import.meta.url))
-  const completeAssetPath = fileURLToPath(new URL(`../public/guided/reviews/${vibeId}-review-complete.png`, import.meta.url))
-  const sourceAssetPath = fileURLToPath(new URL(`../public/guided/reviews/source/${vibeId}-review-source.png`, import.meta.url))
-  const completeSourceAssetPath = fileURLToPath(new URL(`../public/guided/reviews/source/${vibeId}-review-complete-source.png`, import.meta.url))
+  const assetPath = fileURLToPath(new URL(`../public/guided/reviews/${vibeId}-review.webp`, import.meta.url))
+  const completeAssetPath = fileURLToPath(new URL(`../public/guided/reviews/${vibeId}-review-complete.webp`, import.meta.url))
+  const sourceAssetPath = fileURLToPath(new URL(`../public/guided/reviews/source/${vibeId}-review-source.webp`, import.meta.url))
+  const completeSourceAssetPath = fileURLToPath(new URL(`../public/guided/reviews/source/${vibeId}-review-complete-source.webp`, import.meta.url))
   assert(`${vibeId} review asset exists`, existsSync(assetPath), assetPath)
   assert(`${vibeId} complete review asset exists`, existsSync(completeAssetPath), completeAssetPath)
   assert(`${vibeId} source review asset exists`, existsSync(sourceAssetPath), sourceAssetPath)
@@ -78,10 +78,18 @@ for (const vibeId of ['bright', 'wistful', 'sharp'] as const) {
   ] as const) {
     if (!existsSync(path)) continue
     const bytes = readFileSync(path)
-    assert(`${vibeId} ${label} is a PNG file`, bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])))
-    assert(`${vibeId} ${label} has RGBA color type`, bytes[25] === 6, bytes[25])
-    assert(`${vibeId} ${label} has a reasonable file size`, bytes.length > 100_000 && bytes.length < 2_500_000, bytes.length)
+    assert(`${vibeId} ${label} is a WebP file`, bytes.subarray(0, 4).equals(Buffer.from('RIFF')) && bytes.subarray(8, 12).equals(Buffer.from('WEBP')))
+    assert(`${vibeId} ${label} has a compact file size`, bytes.length > 25_000 && bytes.length < 250_000, bytes.length)
   }
+}
+
+for (let lessonNumber = 1; lessonNumber <= 10; lessonNumber += 1) {
+  const assetPath = fileURLToPath(new URL(`../public/guided/lesson-numbers/bright/${String(lessonNumber).padStart(2, '0')}.webp`, import.meta.url))
+  assert(`bright lesson number ${lessonNumber} asset exists`, existsSync(assetPath), assetPath)
+  if (!existsSync(assetPath)) continue
+  const bytes = readFileSync(assetPath)
+  assert(`bright lesson number ${lessonNumber} asset is WebP`, bytes.subarray(0, 4).equals(Buffer.from('RIFF')) && bytes.subarray(8, 12).equals(Buffer.from('WEBP')))
+  assert(`bright lesson number ${lessonNumber} asset stays small`, bytes.length > 2_000 && bytes.length < 20_000, bytes.length)
 }
 
 console.log('\n[plan selection]')

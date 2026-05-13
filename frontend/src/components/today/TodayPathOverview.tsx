@@ -173,6 +173,7 @@ export function TodayPathOverview({
                       isSelected={entry.isSelected}
                       isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
                       completedVibeIds={entry.completedVibeIds}
+                      selectedVibeId={selectedVibeId}
                       onSelectLesson={onSelectLesson}
                     />
                   ))}
@@ -219,7 +220,7 @@ function SegmentReviewTile({
   isReviewComplete: boolean
 }) {
   const accessibleLabel = `${label}: ${rangeLabel}`
-  const assetName = isReviewComplete ? `${selectedVibeId}-review-complete.png` : `${selectedVibeId}-review.png`
+  const assetName = isReviewComplete ? `${selectedVibeId}-review-complete.webp` : `${selectedVibeId}-review.webp`
 
   return (
     <Link
@@ -289,6 +290,7 @@ function LessonPathCard({
   isSelected,
   isRecommendationQuiet,
   completedVibeIds,
+  selectedVibeId,
   onSelectLesson,
 }: {
   lesson: GuidedLesson
@@ -297,6 +299,7 @@ function LessonPathCard({
   isSelected: boolean
   isRecommendationQuiet: boolean
   completedVibeIds: ActiveGuidedVibeId[]
+  selectedVibeId: ActiveGuidedVibeId
   onSelectLesson: (lessonId: string) => void
 }) {
   const { t } = useTranslation()
@@ -333,7 +336,7 @@ function LessonPathCard({
                 ? 'border-[color-mix(in_srgb,var(--today-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--today-accent-soft)_42%,transparent)] text-[var(--today-text-soft)]'
               : 'border-[var(--border-subtle)] text-[var(--text-muted)]',
         )}>
-          {lesson.lessonNumber}
+          <LessonNumberMarker lessonNumber={lesson.lessonNumber} selectedVibeId={selectedVibeId} />
         </span>
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex min-h-5 items-center justify-end">
@@ -350,6 +353,30 @@ function LessonPathCard({
       </div>
     </button>
   )
+}
+
+function LessonNumberMarker({
+  lessonNumber,
+  selectedVibeId,
+}: {
+  lessonNumber: number
+  selectedVibeId: ActiveGuidedVibeId
+}) {
+  if (selectedVibeId === 'bright') {
+    const paddedLessonNumber = String(lessonNumber).padStart(2, '0')
+
+    return (
+      <img
+        src={`/guided/lesson-numbers/bright/${paddedLessonNumber}.webp`}
+        alt=""
+        className="today-path-cardNumberImage"
+        draggable={false}
+        data-lesson-number-asset="bright"
+      />
+    )
+  }
+
+  return <>{lessonNumber}</>
 }
 
 function CompletedVibeBadges({ completedVibeIds }: { completedVibeIds: ActiveGuidedVibeId[] }) {

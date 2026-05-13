@@ -229,6 +229,14 @@
   box-shadow: none;
 }
 
+.today-path-cardNumberImage {
+  display: block;
+  height: 2.35rem;
+  margin: -0.125rem;
+  object-fit: contain;
+  width: 2.35rem;
+}
+
 .today-path-segmentGrid {
   align-items: stretch;
 }
