@@ -234,51 +234,50 @@
 }
 
 .today-segment-reviewTile {
+  background:
+    radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--today-glow) 54%, transparent), transparent 68%),
+    linear-gradient(135deg, color-mix(in srgb, var(--today-panel) 72%, transparent), color-mix(in srgb, var(--surface-1) 24%, transparent));
+  border-color: color-mix(in srgb, var(--today-accent-strong) 32%, var(--today-border));
+  box-shadow: 0 16px 34px color-mix(in srgb, var(--today-glow) 24%, transparent);
+  min-height: 7.5rem;
   overflow: hidden;
   position: relative;
-  background:
-    radial-gradient(ellipse at 10% 50%, color-mix(in srgb, var(--today-glow) 58%, transparent), transparent 56%),
-    linear-gradient(135deg, color-mix(in srgb, var(--today-panel) 90%, transparent), color-mix(in srgb, var(--today-accent-soft) 38%, transparent));
-  border-color: color-mix(in srgb, var(--today-accent-strong) 46%, var(--today-border));
-  box-shadow: 0 14px 30px color-mix(in srgb, var(--today-glow) 26%, transparent);
 }
 
-.today-segment-reviewTile[data-review-ready="complete"] {
+.today-segment-reviewTile:hover {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 58%, var(--today-border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--today-accent) 18%, transparent),
+    0 20px 44px color-mix(in srgb, var(--today-glow) 42%, transparent);
+}
+
+.today-segment-reviewTile[data-review-strength="partial"],
+.today-segment-reviewTile[data-review-strength="complete"] {
   border-color: color-mix(in srgb, var(--today-accent-strong) 66%, var(--today-border));
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--today-accent) 20%, transparent),
     0 18px 36px color-mix(in srgb, var(--today-glow) 46%, transparent);
 }
 
-.today-segment-reviewTileLocked {
-  opacity: 0.64;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--today-panel) 76%, transparent), color-mix(in srgb, var(--surface-1) 36%, transparent));
-  box-shadow: none;
-}
-
-.today-segment-reviewAccent {
-  background: linear-gradient(180deg, var(--today-accent-strong), var(--today-accent));
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 0.18rem;
-}
-
-.today-segment-reviewImageWrap {
-  align-items: center;
-  display: inline-flex;
-  height: 3.25rem;
-  justify-content: center;
-  width: 3.25rem;
-}
-
 .today-segment-reviewImage {
   display: block;
-  height: 3rem;
+  max-height: 8.5rem;
+  max-width: min(100%, 52rem);
   object-fit: contain;
-  width: 3rem;
+  width: min(100%, 52rem);
+}
+
+.today-segment-reviewCompleteMark {
+  background: color-mix(in srgb, var(--today-accent-strong) 88%, var(--app-bg));
+  border: 1px solid color-mix(in srgb, white 58%, transparent);
+  border-radius: 999px;
+  color: var(--today-on-accent);
+  height: 1.35rem;
+  padding: 0.18rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 1.35rem;
 }
 
 .today-checkpoint-card {

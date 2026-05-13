@@ -1,4 +1,4 @@
-import { CheckCircle2, Circle, Lock, Play, RefreshCw } from 'lucide-react'
+import { CheckCircle2, Circle, Play } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -173,9 +173,9 @@ export function TodayPathOverview({
                 </div>
                 <SegmentReviewTile
                   href={`/today/checkpoint?mode=segment-review&path=${selectedPathId}&segment=${segment.segment}&vibe=${selectedVibeId}`}
+                  segment={segment.segment}
                   label={t(segment.labelKey)}
                   rangeLabel={t(segment.rangeKey)}
-                  progressLabel={`${completedCount}/5`}
                   completedCount={completedCount}
                   selectedVibeId={selectedVibeId}
                 />
@@ -196,73 +196,40 @@ export function TodayPathOverview({
 
 function SegmentReviewTile({
   href,
+  segment,
   label,
   rangeLabel,
-  progressLabel,
   completedCount,
   selectedVibeId,
 }: {
   href: string
+  segment: number
   label: string
   rangeLabel: string
-  progressLabel: string
   completedCount: number
   selectedVibeId: ActiveGuidedVibeId
 }) {
-  const { t } = useTranslation()
-  const isAvailable = completedCount > 0
   const isRecommended = completedCount >= 5
-  const content = (
-    <>
-      <span className="today-segment-reviewAccent" aria-hidden="true" />
-      <span className="today-segment-reviewImageWrap" aria-hidden="true">
-        <img
-          src={`/guided/reviews/${selectedVibeId}-review.webp`}
-          alt=""
-          className="today-segment-reviewImage"
-          draggable={false}
-        />
-      </span>
-      <span className="grid min-w-0 gap-1">
-        <span className="flex flex-wrap items-center gap-2">
-          <span className="text-base font-semibold leading-tight text-[var(--text-primary)]">
-            {label}
-          </span>
-          <span className="rounded-full border border-[var(--border-subtle)] px-2 py-0.5 text-xs text-[var(--text-secondary)]">
-            {progressLabel}
-          </span>
-        </span>
-        <span className="text-sm leading-5 text-[var(--text-secondary)]">
-          {rangeLabel}
-        </span>
-        <span className="mt-1 inline-flex w-fit items-center gap-1.5 text-xs font-semibold text-[var(--today-text-soft)]">
-          {isAvailable ? <RefreshCw className="h-3.5 w-3.5" /> : <Lock className="h-3.5 w-3.5" />}
-          {isAvailable ? t('today.path.startReview') : t('today.path.notReadyYet')}
-        </span>
-      </span>
-      {isRecommended && <CheckCircle2 className="h-5 w-5 shrink-0 text-[var(--today-accent-strong)]" />}
-    </>
-  )
-
-  if (!isAvailable) {
-    return (
-      <div
-        className="today-segment-reviewTile today-segment-reviewTileLocked grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-lg border p-3"
-        aria-disabled="true"
-        data-review-ready="false"
-      >
-        {content}
-      </div>
-    )
-  }
+  const accessibleLabel = `${label}: ${rangeLabel}`
 
   return (
     <Link
       to={href}
-      className="today-segment-reviewTile grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-lg border p-3 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-      data-review-ready={isRecommended ? 'complete' : 'partial'}
+      aria-label={accessibleLabel}
+      title={accessibleLabel}
+      className="today-segment-reviewTile flex min-w-0 items-center justify-center rounded-lg border px-3 py-4 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] sm:px-5 sm:py-5"
+      data-review-segment={segment}
+      data-review-completed-count={completedCount}
+      data-review-strength={isRecommended ? 'complete' : completedCount > 0 ? 'partial' : 'fresh'}
     >
-      {content}
+      <span className="sr-only">{accessibleLabel}</span>
+      <img
+        src={`/guided/reviews/${selectedVibeId}-review.png`}
+        alt=""
+        className="today-segment-reviewImage"
+        draggable={false}
+      />
+      {isRecommended && <CheckCircle2 className="today-segment-reviewCompleteMark" aria-hidden="true" />}
     </Link>
   )
 }
