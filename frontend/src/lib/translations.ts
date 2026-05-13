@@ -209,9 +209,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ── Categories ──
     'categories.eyebrow': 'Curriculum',
     'categories.title': 'Categories',
-    'categories.subtitle': 'Browse focused English vocabulary categories and preview every level before study mode arrives.',
+    'categories.subtitle': 'Browse focused English vocabulary categories and review the levels and words.',
     'categories.openCategory': 'Open {title}',
-    'categories.preview': 'Preview',
     'categories.backToCategories': 'Back to categories',
     'categories.backToCategory': 'Back to category',
     'categories.notFound.title': 'Category not found',
@@ -229,14 +228,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'categories.entry.mnemonic': 'Memory aid:',
     'categories.entry.etymology': 'Origin:',
     'categories.entry.example': 'Example:',
-    'categories.pos.noun': 'Noun',
-    'categories.pos.verb': 'Verb',
-    'categories.pos.adjective': 'Adjective',
-    'categories.pos.phrase': 'Phrase',
-    'categories.pos.number': 'Number',
-    'categories.pos.day': 'Day',
-    'categories.pos.month': 'Month',
-    'categories.pos.time_expression': 'Time',
 
     // ── Today ──
     'today.estimatedTime': 'Etwa {minutes} Min.',
@@ -1281,9 +1272,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ── Categories ──
     'categories.eyebrow': 'Curriculum',
     'categories.title': 'Kategorien',
-    'categories.subtitle': 'Durchsuche fokussierte Englisch-Kategorien und sieh dir jedes Level an, bevor der Lernmodus startet.',
+    'categories.subtitle': 'Durchstöbere fokussierte Englisch-Kategorien und sieh dir die Level und Wörter an.',
     'categories.openCategory': '{title} öffnen',
-    'categories.preview': 'Vorschau',
     'categories.backToCategories': 'Zurück zu Kategorien',
     'categories.backToCategory': 'Zurück zur Kategorie',
     'categories.notFound.title': 'Kategorie nicht gefunden',
@@ -1301,14 +1291,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'categories.entry.mnemonic': 'Merksatz:',
     'categories.entry.etymology': 'Herkunft:',
     'categories.entry.example': 'Beispiel:',
-    'categories.pos.noun': 'Substantiv',
-    'categories.pos.verb': 'Verb',
-    'categories.pos.adjective': 'Adjektiv',
-    'categories.pos.phrase': 'Phrase',
-    'categories.pos.number': 'Zahl',
-    'categories.pos.day': 'Tag',
-    'categories.pos.month': 'Monat',
-    'categories.pos.time_expression': 'Zeit',
 
     // ── Today ──
     'today.estimatedTime': 'Etwa {minutes} Min.',
@@ -2351,9 +2333,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     // ── Categories ──
     'categories.eyebrow': 'Curriculum',
     'categories.title': 'Catégories',
-    'categories.subtitle': 'Parcourez des catégories ciblées de vocabulaire anglais et prévisualisez chaque niveau avant l’arrivée du mode étude.',
+    'categories.subtitle': 'Parcourez des catégories ciblées de vocabulaire anglais et consultez les niveaux et les mots.',
     'categories.openCategory': 'Ouvrir {title}',
-    'categories.preview': 'Aperçu',
     'categories.backToCategories': 'Retour aux catégories',
     'categories.backToCategory': 'Retour à la catégorie',
     'categories.notFound.title': 'Catégorie introuvable',
@@ -2371,14 +2352,6 @@ export const translations: Record<Locale, Record<string, string>> = {
     'categories.entry.mnemonic': 'Aide-mémoire :',
     'categories.entry.etymology': 'Origine :',
     'categories.entry.example': 'Exemple :',
-    'categories.pos.noun': 'Nom',
-    'categories.pos.verb': 'Verbe',
-    'categories.pos.adjective': 'Adjectif',
-    'categories.pos.phrase': 'Expression',
-    'categories.pos.number': 'Nombre',
-    'categories.pos.day': 'Jour',
-    'categories.pos.month': 'Mois',
-    'categories.pos.time_expression': 'Heure',
 
     // ── Today ──
     'today.estimatedTime': 'Etwa {minutes} Min.',

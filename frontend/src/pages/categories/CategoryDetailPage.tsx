@@ -60,7 +60,6 @@ export default function CategoryDetailPage() {
                 <span className={styles.rowMeta}>{tp('categories.entryCount', level.entries.length)}</span>
               </div>
               <span className={styles.rowAction}>
-                {t('categories.preview')}
                 <ChevronRight className="h-4 w-4" aria-hidden="true" />
               </span>
             </Link>

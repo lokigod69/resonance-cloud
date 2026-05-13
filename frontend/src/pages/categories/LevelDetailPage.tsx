@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, BookOpen } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import {
@@ -64,21 +63,14 @@ export default function LevelDetailPage() {
           <h1 className={styles.title}>{getLevelTitle(level)}</h1>
           <p className={styles.subtitle}>{category.title}</p>
         </div>
-      </header>
-
-      <div className={styles.toolbar}>
-        <div className={styles.tileMeta}>
-          <span className={styles.chip}>{category.title}</span>
-          <span className={styles.chip}>{t('categories.levelLabel', { number: level.level })}</span>
-        </div>
-        <div className={styles.disabledStudy}>
-          <Button type="button" disabled>
+        <div className={styles.heroAction}>
+          <button type="button" disabled aria-disabled="true" className={styles.disabledStudy}>
             <BookOpen className="h-4 w-4" aria-hidden="true" />
-            {t('categories.startLearning')}
-          </Button>
-          <span className={styles.soonBadge}>{t('categories.comingSoon')}</span>
+            <span>{t('categories.startLearning')}</span>
+            <span className={styles.soonBadge}>{t('categories.comingSoon')}</span>
+          </button>
         </div>
-      </div>
+      </header>
 
       <div className={styles.entryGrid}>
         {level.entries.map((entry) => {
@@ -89,7 +81,6 @@ export default function LevelDetailPage() {
               {imageUrl && <img src={imageUrl} alt="" loading="lazy" className={styles.entryImage} />}
               <div className={styles.entryTopline}>
                 <h2 className={styles.term}>{entry.term}</h2>
-                <span className={styles.posBadge}>{t(`categories.pos.${entry.pos}`)}</span>
               </div>
               <p className={styles.gloss}>{getCurriculumGloss(entry, baseLanguageIso)}</p>
               {(entry.ipa || entry.mnemonic || entry.etymology || examples.length > 0) && (

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronRight } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { listCurriculumCategories, type CurriculumCategory } from '@/data/curriculumCategories'
 import styles from './Categories.module.css'
@@ -61,10 +60,6 @@ export default function CategoryListPage() {
               <div className={styles.tileMeta}>
                 <span className={styles.chip}>{tp('categories.levelCount', category.levelCount)}</span>
                 <span className={styles.chip}>{tp('categories.entryCount', category.totalEntries)}</span>
-                <span className={styles.rowAction}>
-                  {t('categories.preview')}
-                  <ChevronRight className="h-4 w-4" aria-hidden="true" />
-                </span>
               </div>
             </div>
           </Link>
