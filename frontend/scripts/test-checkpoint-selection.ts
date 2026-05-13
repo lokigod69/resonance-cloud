@@ -28,6 +28,7 @@ const pathIds = [
   'english-a1-practical-1',
   'english-a1-practical-2',
   'english-a1-practical-3',
+  'english-a1-practical-4',
 ]
 
 console.log('\n[distribution]')
@@ -43,6 +44,11 @@ const threePathPlan = buildGuidedCheckpointPlan(completePaths(['bright', 'bright
 assert('three completed paths yields 8 checkpoint items', threePathPlan?.items.length === 8, threePathPlan)
 assert('three completed paths split 3/3/2 with newest path on the floor', JSON.stringify(pathCounts(threePathPlan)) === JSON.stringify([3, 3, 2]), pathCounts(threePathPlan))
 assert('multi-path checkpoint order avoids adjacent same-path items where possible', maxSamePathRun(threePathPlan) <= 1, threePathPlan?.items.map((item) => item.pathId))
+
+const fourPathPlan = buildGuidedCheckpointPlan(completePaths(['bright', 'bright', 'bright', 'bright']), 'bright', fixedRng())
+assert('four completed paths yields 8 checkpoint items', fourPathPlan?.items.length === 8, fourPathPlan)
+assert('four completed paths split 2/2/2/2', JSON.stringify(pathCounts(fourPathPlan)) === JSON.stringify([2, 2, 2, 2]), pathCounts(fourPathPlan))
+assert('four-path checkpoint order avoids adjacent same-path items where possible', maxSamePathRun(fourPathPlan) <= 1, fourPathPlan?.items.map((item) => item.pathId))
 
 console.log('\n[vibe filtering]')
 const mixedVibeProgress = completePaths(['bright', 'wistful'])
@@ -61,6 +67,9 @@ const pathCheckPlan = buildGuidedPathCheckPlan(pathIds[2]!, 'sharp', fixedRng())
 assert('Path Check can build a plan without completed lessons', pathCheckPlan?.items.length === 8, pathCheckPlan)
 assert('Path Check samples only the selected path', pathCheckPlan?.items.every((item) => item.pathId === pathIds[2]) === true, pathCheckPlan)
 assert('Path Check preserves the selected active vibe', pathCheckPlan?.items.every((item) => item.vibe === 'sharp') === true, pathCheckPlan)
+const pathFourCheckPlan = buildGuidedPathCheckPlan(pathIds[3]!, 'wistful', fixedRng())
+assert('A1 Practical 4 Path Check can build a plan without completed lessons', pathFourCheckPlan?.items.length === 8, pathFourCheckPlan)
+assert('A1 Practical 4 Path Check samples only A1P4', pathFourCheckPlan?.items.every((item) => item.pathId === pathIds[3]) === true, pathFourCheckPlan)
 assert('Path Check plan building does not mutate lesson progress', JSON.stringify(createEmptyTodayProgressState()) === emptyProgressSnapshot)
 assert('unknown Path Check path does not build a plan', buildGuidedPathCheckPlan('english-a1-practical-999', 'bright', fixedRng()) === undefined)
 

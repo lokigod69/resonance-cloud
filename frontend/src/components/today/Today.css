@@ -235,11 +235,11 @@
 
 .today-segment-reviewTile {
   background:
-    radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--today-glow) 54%, transparent), transparent 68%),
+    radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--today-glow) 42%, transparent), transparent 68%),
     linear-gradient(135deg, color-mix(in srgb, var(--today-panel) 72%, transparent), color-mix(in srgb, var(--surface-1) 24%, transparent));
   border-color: color-mix(in srgb, var(--today-accent-strong) 32%, var(--today-border));
-  box-shadow: 0 16px 34px color-mix(in srgb, var(--today-glow) 24%, transparent);
-  min-height: 7.5rem;
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--today-glow) 20%, transparent);
+  min-height: 7rem;
   overflow: hidden;
   position: relative;
 }
@@ -261,23 +261,16 @@
 
 .today-segment-reviewImage {
   display: block;
-  max-height: 8.5rem;
-  max-width: min(100%, 52rem);
+  max-height: 5.75rem;
+  max-width: min(100%, 42rem);
   object-fit: contain;
-  width: min(100%, 52rem);
+  width: min(100%, 42rem);
 }
 
-.today-segment-reviewCompleteMark {
-  background: color-mix(in srgb, var(--today-accent-strong) 88%, var(--app-bg));
-  border: 1px solid color-mix(in srgb, white 58%, transparent);
-  border-radius: 999px;
-  color: var(--today-on-accent);
-  height: 1.35rem;
-  padding: 0.18rem;
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  width: 1.35rem;
+.today-segment-reviewTile[data-review-complete="true"] {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--today-accent) 28%, transparent),
+    0 18px 38px color-mix(in srgb, var(--today-glow) 56%, transparent);
 }
 
 .today-checkpoint-card {
@@ -320,6 +313,16 @@
   border-color: color-mix(in srgb, var(--today-accent-strong) 34%, var(--today-border));
 }
 
+.today-checkpoint-promptCard[data-result="correct"] {
+  border-color: color-mix(in srgb, #34d399 58%, var(--today-border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, #34d399 20%, transparent);
+}
+
+.today-checkpoint-promptCard[data-result="wrong"] {
+  border-color: color-mix(in srgb, #f59e0b 54%, var(--today-border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, #f59e0b 18%, transparent);
+}
+
 .today-checkpoint-input {
   border-color: color-mix(in srgb, var(--today-accent-strong) 34%, var(--border-subtle));
   background: color-mix(in srgb, var(--surface-1) 72%, transparent);
@@ -328,6 +331,18 @@
 .today-checkpoint-resultPill {
   background: color-mix(in srgb, var(--surface-2) 72%, transparent);
   border-color: color-mix(in srgb, var(--today-accent-strong) 30%, var(--today-border));
+}
+
+@media (max-width: 640px) {
+  .today-segment-reviewTile {
+    min-height: 6.25rem;
+  }
+
+  .today-segment-reviewImage {
+    max-height: 4.85rem;
+    max-width: min(100%, 34rem);
+    width: min(100%, 34rem);
+  }
 }
 
 .today-shell [data-slot="progress-indicator"] {

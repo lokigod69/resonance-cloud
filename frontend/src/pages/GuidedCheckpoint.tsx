@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, CheckCircle2, Mic, MicOff, RotateCcw } from 'lucide-react'
-import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { getGuidedTodayPathOptions, guidedAnswerMatches, type GuidedPathMetadata } from '@/data/guidedLessons'
 import { guidedVibes, isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
@@ -110,6 +110,7 @@ export default function GuidedCheckpoint() {
     return (
       <CheckpointSummary
         record={summary}
+        planItems={plan.items}
         selectedVibeId={selectedVibeId}
         isPathCheckMode={isPathCheckMode}
         isSegmentReviewMode={isSegmentReviewMode}
@@ -154,7 +155,11 @@ export default function GuidedCheckpoint() {
       )}
 
       {phase === 'speak' && (
-        <CheckpointSpeakStep item={currentItem} onDone={handleNextItem} />
+        <CheckpointSpeakStep
+          item={currentItem}
+          isLastItem={Boolean(plan && itemIndex >= plan.items.length - 1)}
+          onDone={handleNextItem}
+        />
       )}
     </main>
   )
@@ -174,10 +179,10 @@ function CheckpointHeader({
   isSegmentReviewMode: boolean
 }) {
   const { t } = useTranslation()
-  const title = isPathCheckMode
-    ? t('today.path.pathCheck')
-    : isSegmentReviewMode
-      ? t('today.checkpoint.segmentTitle')
+  const title = isSegmentReviewMode
+    ? undefined
+    : isPathCheckMode
+      ? t('today.path.pathCheck')
       : t('today.checkpoint.title')
   const heading = isPathCheckMode
     ? t('today.checkpoint.pathCheckHeading')
@@ -195,9 +200,11 @@ function CheckpointHeader({
               {t('today.checkpoint.backToToday')}
             </Link>
           </Button>
-          <p className="text-sm font-medium text-[var(--text-secondary)]">
-            {title}
-          </p>
+          {title && (
+            <p className="text-sm font-medium text-[var(--text-secondary)]">
+              {title}
+            </p>
+          )}
           <h1 className="mt-1 text-2xl font-semibold leading-tight text-[var(--text-primary)]">
             {heading}
           </h1>
@@ -237,10 +244,21 @@ function CheckpointTypeStep({
 }) {
   const submitted = result !== undefined
   const { t } = useTranslation()
+  const continueButtonRef = useRef<HTMLButtonElement | null>(null)
+
+  useEffect(() => {
+    if (submitted) continueButtonRef.current?.focus()
+  }, [submitted])
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLFormElement>) => {
+    if (event.key !== 'Enter' || !submitted) return
+    event.preventDefault()
+    onAdvance()
+  }
 
   return (
     <section className="theme-panel today-checkpoint-step rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
-      <div className="grid justify-items-center gap-5 text-center">
+      <form className="grid justify-items-center gap-5 text-center" onSubmit={onSubmit} onKeyDown={handleKeyDown}>
         <p className="text-sm leading-6 text-[var(--text-secondary)]">
           {isSegmentReviewMode
             ? t('today.checkpoint.segmentTypePrompt')
@@ -250,19 +268,14 @@ function CheckpointTypeStep({
         </p>
 
         {isSegmentReviewMode && (
-          <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4">
-            <div className="flex flex-col justify-center gap-3 text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:flex-row sm:flex-wrap sm:items-center sm:text-3xl">
-              <span>{item.lesson.typeRecall.before}</span>
-              <Input
-                value={answer}
-                onChange={(event) => onAnswerChange(event.target.value)}
-                disabled={submitted}
-                placeholder={t('today.checkpoint.typePlaceholder')}
-                aria-label={t('today.checkpoint.answerLabel')}
-                className="today-checkpoint-input h-12 w-full text-center text-xl font-semibold sm:w-64 sm:text-2xl md:w-72"
-              />
-              <span>{item.lesson.typeRecall.after}</span>
-            </div>
+          <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4" data-result={result ?? 'pending'}>
+            <TypeRecallPhrase
+              before={item.lesson.typeRecall.before}
+              after={item.lesson.typeRecall.after}
+              answer={answer}
+              submitted={submitted}
+              onAnswerChange={onAnswerChange}
+            />
             <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
               {t('today.checkpoint.germanCue')}
             </p>
@@ -273,7 +286,7 @@ function CheckpointTypeStep({
         )}
 
         {!isSegmentReviewMode && (
-          <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4">
+          <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4" data-result={result ?? 'pending'}>
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
               {t('today.checkpoint.germanPrompt')}
             </p>
@@ -283,7 +296,7 @@ function CheckpointTypeStep({
           </div>
         )}
 
-        <form className="grid w-full max-w-xl justify-items-center gap-4" onSubmit={onSubmit}>
+        <div className="grid w-full max-w-xl justify-items-center gap-4">
           {!isSegmentReviewMode && (
             <Input
               value={answer}
@@ -299,32 +312,71 @@ function CheckpointTypeStep({
               {t('today.checkpoint.check')}
             </Button>
           )}
-        </form>
+        </div>
 
         {submitted && (
           <div className="grid justify-items-center gap-3">
-            <p className="today-checkpoint-resultPill inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm text-[var(--text-secondary)]">
+            <p className="today-checkpoint-resultPill inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm text-[var(--text-secondary)]" aria-live="polite">
               {result === 'correct' && <CheckCircle2 className="h-4 w-4 text-[#34d399]" />}
               {result === 'correct'
                 ? t('today.checkpoint.correctFirstTry')
                 : t('today.checkpoint.correctAnswer', { answer: item.lesson.typeRecall.answer })}
             </p>
-            <Button type="button" onClick={onAdvance}>
-              {t('today.checkpoint.speak')}
+            <Button ref={continueButtonRef} type="button" onClick={onAdvance}>
+              {t('today.checkpoint.next')}
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
         )}
-      </div>
+      </form>
     </section>
+  )
+}
+
+function TypeRecallPhrase({
+  before,
+  after,
+  answer,
+  submitted,
+  onAnswerChange,
+}: {
+  before: string
+  after: string
+  answer: string
+  submitted: boolean
+  onAnswerChange: (value: string) => void
+}) {
+  const { t } = useTranslation()
+  const hasBefore = before.trim().length > 0
+  const hasAfter = after.trim().length > 0
+
+  return (
+    <div
+      className="flex flex-col justify-center gap-3 text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:flex-row sm:flex-wrap sm:items-center sm:text-3xl"
+      data-empty-before={!hasBefore}
+      data-empty-after={!hasAfter}
+    >
+      {hasBefore && <span>{before}</span>}
+      <Input
+        value={answer}
+        onChange={(event) => onAnswerChange(event.target.value)}
+        disabled={submitted}
+        placeholder={t('today.checkpoint.typePlaceholder')}
+        aria-label={t('today.checkpoint.answerLabel')}
+        className="today-checkpoint-input h-12 w-full text-center text-xl font-semibold sm:w-64 sm:text-2xl md:w-72"
+      />
+      {hasAfter && <span>{after}</span>}
+    </div>
   )
 }
 
 function CheckpointSpeakStep({
   item,
+  isLastItem,
   onDone,
 }: {
   item: GuidedCheckpointPlanItem
+  isLastItem: boolean
   onDone: () => void
 }) {
   const { t } = useTranslation()
@@ -379,10 +431,7 @@ function CheckpointSpeakStep({
           {t('today.checkpoint.speakPrompt')}
         </p>
         <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            {t('today.checkpoint.speakCue')}
-          </p>
-          <p className="mt-3 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
+          <p className="break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
             {item.lesson.speak.baseCue}
           </p>
         </div>
@@ -395,7 +444,7 @@ function CheckpointSpeakStep({
             </Button>
           )}
           <Button type="button" onClick={onDone}>
-            {status === 'done' ? t('today.checkpoint.next') : t('today.checkpoint.done')}
+            {isLastItem ? t('today.checkpoint.done') : t('today.checkpoint.next')}
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
@@ -412,12 +461,14 @@ function CheckpointSpeakStep({
 
 function CheckpointSummary({
   record,
+  planItems,
   selectedVibeId,
   isPathCheckMode,
   isSegmentReviewMode,
   onBackToToday,
 }: {
   record: GuidedCheckpointRecord
+  planItems: GuidedCheckpointPlanItem[]
   selectedVibeId: ActiveGuidedVibeId
   isPathCheckMode: boolean
   isSegmentReviewMode: boolean
@@ -425,6 +476,7 @@ function CheckpointSummary({
 }) {
   const { t } = useTranslation()
   const vibe = guidedVibes[selectedVibeId]
+  const missedItems = getMissedSummaryItems(record, planItems)
 
   return (
     <main className="today-shell today-checkpoint-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6" data-guided-vibe={selectedVibeId}>
@@ -453,12 +505,56 @@ function CheckpointSummary({
             total: record.itemsReviewed,
           })}
         </p>
+        {missedItems.length > 0 ? (
+          <div className="mx-auto mt-5 grid max-w-xl gap-3 text-left">
+            <h2 className="text-sm font-semibold text-[var(--text-primary)]">
+              {t('today.checkpoint.practiceAgainTitle')}
+            </h2>
+            <ul className="grid gap-2">
+              {missedItems.map((item) => (
+                <li
+                  key={`${item.pathId}:${item.lessonId}:${item.vibe}`}
+                  className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_54%,transparent)] px-3 py-2"
+                >
+                  <p className="text-sm font-medium text-[var(--text-primary)]">
+                    {item.lessonTitle}
+                  </p>
+                  <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                    {t('today.checkpoint.correctAnswer', { answer: item.answer })}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
+            {t('today.checkpoint.allCorrectBody')}
+          </p>
+        )}
         <Button type="button" className="mt-6" onClick={onBackToToday}>
           {t('today.checkpoint.backToToday')}
         </Button>
       </section>
     </main>
   )
+}
+
+function getMissedSummaryItems(record: GuidedCheckpointRecord, planItems: GuidedCheckpointPlanItem[]) {
+  return record.items
+    .filter((item) => item.needsReview)
+    .map((item) => {
+      const planItem = planItems.find((candidate) => (
+        candidate.lessonId === item.lessonId
+        && candidate.pathId === item.pathId
+        && candidate.vibe === item.vibe
+      ))
+
+      return {
+        ...item,
+        lessonTitle: planItem?.lesson.title ?? item.lessonId,
+        answer: planItem?.lesson.typeRecall.answer ?? '',
+      }
+    })
 }
 
 function CheckpointUnavailable({ selectedVibeId }: { selectedVibeId: ActiveGuidedVibeId }) {

@@ -54,26 +54,33 @@ assert('review tile links use segment-review route mode', overviewSource.include
 assert('review tiles are always rendered as clickable links', sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('<Link') && !sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('if (!isAvailable)'))
 assert('review tiles no longer render visible progress text', !sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel').includes('/5'))
 assert('review tiles no longer render visible lock or not-ready state', !containsAny(sliceBetween(overviewSource, 'function SegmentReviewTile', 'function RecommendedLessonPanel'), ['aria-disabled', 'today.path.notReadyYet', '<Lock', 'today.path.startReview']))
-assert('review assets are referenced by active vibe as PNGs', overviewSource.includes('/guided/reviews/${selectedVibeId}-review.png'))
+assert('review assets are referenced by active vibe as PNGs', overviewSource.includes('${selectedVibeId}-review.png') && overviewSource.includes('/guided/reviews/${assetName}'))
+assert('review tile references complete asset from segment review completion state', overviewSource.includes('readGuidedSegmentReviewRecord') && overviewSource.includes('${selectedVibeId}-review-complete.png') && overviewSource.includes('data-review-complete'))
 assert('review tiles do not reference the old WebP review assets', !overviewSource.includes('-review.webp'))
 assert('CSS defines separated segment review tile styling', cssSource.includes('.today-segment-reviewTile') && cssSource.includes('.today-path-segmentGrid'))
-assert('CSS renders the review asset as a wide banner, not a small icon', cssSource.includes('.today-segment-reviewImage') && containsAny(cssSource, ['max-width: min(100%, 52rem)', 'max-width: min(100%,52rem)', 'width: min(100%, 52rem)']))
+assert('CSS constrains review banner size and keeps it object-contained', cssSource.includes('.today-segment-reviewImage') && cssSource.includes('max-height: 5.75rem') && cssSource.includes('max-width: min(100%, 42rem)') && cssSource.includes('object-fit: contain'))
 
 console.log('\n[assets]')
 for (const vibeId of ['bright', 'wistful', 'sharp'] as const) {
   const assetPath = fileURLToPath(new URL(`../public/guided/reviews/${vibeId}-review.png`, import.meta.url))
+  const completeAssetPath = fileURLToPath(new URL(`../public/guided/reviews/${vibeId}-review-complete.png`, import.meta.url))
   const sourceAssetPath = fileURLToPath(new URL(`../public/guided/reviews/source/${vibeId}-review-source.png`, import.meta.url))
+  const completeSourceAssetPath = fileURLToPath(new URL(`../public/guided/reviews/source/${vibeId}-review-complete-source.png`, import.meta.url))
   assert(`${vibeId} review asset exists`, existsSync(assetPath), assetPath)
+  assert(`${vibeId} complete review asset exists`, existsSync(completeAssetPath), completeAssetPath)
   assert(`${vibeId} source review asset exists`, existsSync(sourceAssetPath), sourceAssetPath)
-  if (existsSync(assetPath)) {
-    const bytes = readFileSync(assetPath)
-    assert(`${vibeId} review asset is a PNG file`, bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])))
-    assert(`${vibeId} review asset has RGBA color type`, bytes[25] === 6, bytes[25])
-    assert(`${vibeId} review asset has a reasonable file size`, bytes.length > 100_000 && bytes.length < 2_500_000, bytes.length)
-  }
-  if (existsSync(sourceAssetPath)) {
-    const sourceBytes = readFileSync(sourceAssetPath)
-    assert(`${vibeId} source review asset is a PNG file`, sourceBytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])))
+  assert(`${vibeId} complete source review asset exists`, existsSync(completeSourceAssetPath), completeSourceAssetPath)
+  for (const [label, path] of [
+    ['review asset', assetPath],
+    ['complete review asset', completeAssetPath],
+    ['source review asset', sourceAssetPath],
+    ['complete source review asset', completeSourceAssetPath],
+  ] as const) {
+    if (!existsSync(path)) continue
+    const bytes = readFileSync(path)
+    assert(`${vibeId} ${label} is a PNG file`, bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])))
+    assert(`${vibeId} ${label} has RGBA color type`, bytes[25] === 6, bytes[25])
+    assert(`${vibeId} ${label} has a reasonable file size`, bytes.length > 100_000 && bytes.length < 2_500_000, bytes.length)
   }
 }
 
@@ -99,6 +106,11 @@ assert('checkpoint route detects segment-review mode', checkpointSource.includes
 assert('checkpoint route uses Segment Review plan builder', checkpointSource.includes('buildGuidedSegmentReviewPlan'))
 assert('Segment Review completion does not call normal checkpoint storage writer', checkpointSource.includes('completeGuidedSegmentReview') && checkpointSource.includes('isSegmentReviewMode') && checkpointSource.includes('completeGuidedCheckpoint(selectedVibeId'))
 assert('Segment Review type step uses Type Recall before/input/after shape', checkpointSource.includes('item.lesson.typeRecall.before') && checkpointSource.includes('item.lesson.typeRecall.after'))
+assert('Segment Review type step handles empty-before and empty-after layouts', checkpointSource.includes('data-empty-before={!hasBefore}') && checkpointSource.includes('data-empty-after={!hasAfter}'))
+assert('Enter key can continue after type feedback', checkpointSource.includes('KeyboardEvent<HTMLFormElement>') && checkpointSource.includes("event.key !== 'Enter'") && checkpointSource.includes('onAdvance()'))
+assert('Segment Review type action continues with Weiter instead of Speak', checkpointSource.includes("t('today.checkpoint.next')") && !sliceBetween(checkpointSource, 'function CheckpointTypeStep', 'function TypeRecallPhrase').includes("t('today.checkpoint.speak')"))
+assert('Speak step removes non-evaluation copy and extra cue label', !checkpointSource.includes('Sprechen wird hier nicht bewertet') && !sliceBetween(checkpointSource, 'function CheckpointSpeakStep', 'function CheckpointSummary').includes('today.checkpoint.speakCue'))
+assert('completion summary includes missed-item review data', checkpointSource.includes('getMissedSummaryItems') && checkpointSource.includes('today.checkpoint.practiceAgainTitle') && checkpointSource.includes('item.lesson.typeRecall.answer'))
 assert('Segment Review prompt uses the dedicated phrase completion copy', checkpointSource.includes('today.checkpoint.segmentTypePrompt'))
 assert('Segment Review shows German cue separately', checkpointSource.includes('today.checkpoint.germanCue') && checkpointSource.includes('item.lesson.corePhrase.baseText'))
 assert('Path Check keeps a diagnostic label', checkpointSource.includes('today.checkpoint.pathCheckDiagnostic') || checkpointSource.includes('pathCheckHeading'))

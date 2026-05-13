@@ -9,6 +9,7 @@ import {
 } from '@/data/guidedLessons'
 import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
+import { readGuidedSegmentReviewRecord, type GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
@@ -154,6 +155,11 @@ export function TodayPathOverview({
             const completedCount = segmentLessons.filter((entry) => (
               getTodayLessonVibeStatus(progress, entry.lesson, selectedVibeId) === 'completed'
             )).length
+            const reviewRecord = readGuidedSegmentReviewRecord(
+              selectedPathId,
+              segment.segment,
+              selectedVibeId,
+            )
 
             return (
               <div key={segment.segment} className="grid gap-2">
@@ -178,6 +184,7 @@ export function TodayPathOverview({
                   rangeLabel={t(segment.rangeKey)}
                   completedCount={completedCount}
                   selectedVibeId={selectedVibeId}
+                  isReviewComplete={Boolean(reviewRecord)}
                 />
               </div>
             )
@@ -201,16 +208,18 @@ function SegmentReviewTile({
   rangeLabel,
   completedCount,
   selectedVibeId,
+  isReviewComplete,
 }: {
   href: string
-  segment: number
+  segment: GuidedSegmentReviewNumber
   label: string
   rangeLabel: string
   completedCount: number
   selectedVibeId: ActiveGuidedVibeId
+  isReviewComplete: boolean
 }) {
-  const isRecommended = completedCount >= 5
   const accessibleLabel = `${label}: ${rangeLabel}`
+  const assetName = isReviewComplete ? `${selectedVibeId}-review-complete.png` : `${selectedVibeId}-review.png`
 
   return (
     <Link
@@ -220,16 +229,16 @@ function SegmentReviewTile({
       className="today-segment-reviewTile flex min-w-0 items-center justify-center rounded-lg border px-3 py-4 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] sm:px-5 sm:py-5"
       data-review-segment={segment}
       data-review-completed-count={completedCount}
-      data-review-strength={isRecommended ? 'complete' : completedCount > 0 ? 'partial' : 'fresh'}
+      data-review-complete={isReviewComplete}
+      data-review-strength={isReviewComplete ? 'complete' : completedCount > 0 ? 'partial' : 'fresh'}
     >
       <span className="sr-only">{accessibleLabel}</span>
       <img
-        src={`/guided/reviews/${selectedVibeId}-review.png`}
+        src={`/guided/reviews/${assetName}`}
         alt=""
         className="today-segment-reviewImage"
         draggable={false}
       />
-      {isRecommended && <CheckCircle2 className="today-segment-reviewCompleteMark" aria-hidden="true" />}
     </Link>
   )
 }

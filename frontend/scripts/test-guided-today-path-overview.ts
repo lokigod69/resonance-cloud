@@ -47,9 +47,11 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 const pathOneId = 'english-a1-practical-1'
 const pathTwoId = 'english-a1-practical-2'
 const pathThreeId = 'english-a1-practical-3'
+const pathFourId = 'english-a1-practical-4'
 const lessons = getGuidedPathLessons(pathOneId)
 const pathTwoLessons = getGuidedPathLessons(pathTwoId)
 const pathThreeLessons = getGuidedPathLessons(pathThreeId)
+const pathFourLessons = getGuidedPathLessons(pathFourId)
 const firstLessonDefinition = lessons[0]
 const secondLessonDefinition = lessons[1]
 
@@ -67,6 +69,8 @@ const emptyPathTwoOverview = getGuidedPathOverview(pathTwoId, createEmptyTodayPr
 assert('A1 Practical 2 overview exposes 10 lessons', emptyPathTwoOverview.lessons.length === 10, emptyPathTwoOverview.lessons.length)
 const emptyPathThreeOverview = getGuidedPathOverview(pathThreeId, createEmptyTodayProgressState(), 'wistful')
 assert('A1 Practical 3 overview exposes 10 lessons', emptyPathThreeOverview.lessons.length === 10, emptyPathThreeOverview.lessons.length)
+const emptyPathFourOverview = getGuidedPathOverview(pathFourId, createEmptyTodayProgressState(), 'bright')
+assert('A1 Practical 4 overview exposes 10 lessons', emptyPathFourOverview.lessons.length === 10, emptyPathFourOverview.lessons.length)
 assert('empty progress recommends lesson 1', emptyOverview.recommendedLesson?.id === firstLesson.id, emptyOverview.recommendedLesson?.id)
 assert('empty progress is not path complete', !emptyOverview.isComplete)
 assert('lesson 1 is current with empty progress', emptyOverview.lessons[0]?.status === 'current', emptyOverview.lessons[0])
@@ -119,6 +123,13 @@ if (pathThreeFirstDefinition) {
   const completedAcrossThreePaths = markTodayLessonComplete(completedAcrossPaths, pathThreeFirst, minimalResult())
   assert('A1 Practical 3 count stays scoped after earlier path completions', getGuidedPathOverview(pathThreeId, completedAcrossThreePaths, 'sharp').completedCount === 1, completedAcrossThreePaths)
   assert('earlier path counts stay scoped after A1 Practical 3 completion', getGuidedPathOverview(pathOneId, completedAcrossThreePaths, 'bright').completedCount === 1 && getGuidedPathOverview(pathTwoId, completedAcrossThreePaths, 'bright').completedCount === 1, completedAcrossThreePaths)
+  const pathFourFirstDefinition = pathFourLessons[0]
+  if (pathFourFirstDefinition) {
+    const pathFourFirst = resolveGuidedLessonVariant(pathFourFirstDefinition, 'bright')
+    const completedAcrossFourPaths = markTodayLessonComplete(completedAcrossThreePaths, pathFourFirst, minimalResult())
+    assert('A1 Practical 4 count stays scoped after earlier path completions', getGuidedPathOverview(pathFourId, completedAcrossFourPaths, 'bright').completedCount === 1, completedAcrossFourPaths)
+    assert('earlier path counts stay scoped after A1 Practical 4 completion', getGuidedPathOverview(pathOneId, completedAcrossFourPaths, 'bright').completedCount === 1 && getGuidedPathOverview(pathTwoId, completedAcrossFourPaths, 'bright').completedCount === 1 && getGuidedPathOverview(pathThreeId, completedAcrossFourPaths, 'sharp').completedCount === 1, completedAcrossFourPaths)
+  }
 }
 
 console.log('\n[vibe behavior]')
@@ -139,6 +150,9 @@ try {
   setSelectedGuidedVibe(pathThreeId, 'bright')
   assert('A1 Practical 3 can persist its own selected voice', getSelectedGuidedVibe(pathThreeId) === 'bright')
   assert('A1 Practical 2 keeps its selected voice after A1 Practical 3 selection', getSelectedGuidedVibe(pathTwoId) === 'wistful')
+  setSelectedGuidedVibe(pathFourId, 'sharp')
+  assert('A1 Practical 4 can persist its own selected voice', getSelectedGuidedVibe(pathFourId) === 'sharp')
+  assert('A1 Practical 3 keeps its selected voice after A1 Practical 4 selection', getSelectedGuidedVibe(pathThreeId) === 'bright')
   assert('vibe switch does not mutate progress', JSON.stringify(completedFirst) === progressBeforeVibe, completedFirst)
   for (const futureVibeId of FUTURE_GUIDED_VIBE_IDS) {
     setSelectedGuidedVibe(pathOneId, futureVibeId)
@@ -198,7 +212,7 @@ assert('Back to path does not mutate progress', JSON.stringify(completedTwo) ===
 assert('recommended panel label is next lesson, not internal recommendation copy', recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')") && !recommendedLessonPanelSource.includes("t('today.path.recommendedLabel')"))
 assert('Today page separates lesson selection from session start', containsAny(todayPageSource, ['const handleSelectLesson', 'setSelectedLessonId(lessonId)']) && containsAny(todayPageSource, ['const handleStartSelectedLesson', 'setSessionActive(true)']))
 assert('path overview receives a select handler and separate start handler', todayPathOverviewSource.includes('onSelectLesson') && todayPathOverviewSource.includes('onStartLesson'))
-assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId]), getGuidedTodayPathOptions())
+assert('path selector source exposes implemented active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId]), getGuidedTodayPathOptions())
 assert('Today page stores selected path id and passes path options to overview', containsAny(todayPageSource, ['selectedPathId', 'getGuidedTodayPathOptions']) && todayPathOverviewSource.includes('pathOptions'))
 assert('path overview opens the directory instead of permanent path chips', todayPathOverviewSource.includes('onSelectPath') && todayPathOverviewSource.includes('GuidedPathDirectory') && todayPathOverviewSource.includes("t('today.path.changePath')") && !todayPathOverviewSource.includes('today-path-switcher'))
 assert('main Today header no longer renders visible Path Check action', !sliceBetween(todayPathOverviewSource, '<div className="today-path-actions', '<GuidedPathDirectory').includes('today.path.pathCheck'))
@@ -209,7 +223,9 @@ const segmentReviewTileSource = sliceBetween(todayPathOverviewSource, 'function 
 assert('segment review tiles stay always clickable', segmentReviewTileSource.includes('<Link') && !segmentReviewTileSource.includes('aria-disabled') && !segmentReviewTileSource.includes('if (!isAvailable)'))
 assert('segment review tiles hide visible progress and lock copy', !containsAny(segmentReviewTileSource, ['progressLabel', '/5', 'today.path.notReadyYet', 'today.path.startReview', '<Lock']))
 assert('segment review tiles keep completion metadata without changing 0/10 lesson completion count', todayPathOverviewSource.includes('data-review-completed-count') && !todayPathOverviewSource.includes('totalLessons +'))
-assert('segment review tiles use active vibe PNG review assets', todayPathOverviewSource.includes('/guided/reviews/${selectedVibeId}-review.png') && !todayPathOverviewSource.includes('-review.webp'))
+assert('segment review tiles use active vibe PNG review assets', todayPathOverviewSource.includes('${selectedVibeId}-review.png') && todayPathOverviewSource.includes('/guided/reviews/${assetName}') && !todayPathOverviewSource.includes('-review.webp'))
+assert('segment review tiles use local segment review completion for complete asset state', todayPathOverviewSource.includes('readGuidedSegmentReviewRecord') && segmentReviewTileSource.includes('${selectedVibeId}-review-complete.png') && segmentReviewTileSource.includes('data-review-complete'))
+assert('segment review tile CSS constrains banner size', todayCssSource.includes('min-height: 7rem') && todayCssSource.includes('max-height: 5.75rem') && todayCssSource.includes('max-width: min(100%, 42rem)'))
 assert('lesson cards select lessons without opening the session', lessonPathCardSource.includes('onSelectLesson(lesson.id)') && !lessonPathCardSource.includes('onOpenLesson(lesson.id)'))
 assert('selected lesson panel keeps selected/recommended label copy screen-reader only', recommendedLessonPanelSource.includes('className="sr-only"') && recommendedLessonPanelSource.includes("t('today.path.selectedLessonLabel')") && recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')"))
 assert('selected lesson panel visible copy is reduced to lesson, title, action', !recommendedLessonPanelSource.includes('uppercase tracking-[0.18em] text-[var(--text-muted)]'))
