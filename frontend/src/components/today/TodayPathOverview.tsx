@@ -390,7 +390,7 @@ function LessonNumberMarker({
     )
   }
 
-  if (selectedVibeId === 'sharp' && lessonNumber >= 1 && lessonNumber <= 5) {
+  if (selectedVibeId === 'sharp') {
     const paddedLessonNumber = String(lessonNumber).padStart(2, '0')
 
     return (
