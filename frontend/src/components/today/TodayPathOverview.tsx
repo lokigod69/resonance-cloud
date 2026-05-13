@@ -376,7 +376,7 @@ function LessonNumberMarker({
     )
   }
 
-  if (selectedVibeId === 'wistful' && lessonNumber >= 1 && lessonNumber <= 5) {
+  if (selectedVibeId === 'wistful') {
     const paddedLessonNumber = String(lessonNumber).padStart(2, '0')
 
     return (
