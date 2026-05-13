@@ -5,7 +5,7 @@
  */
 
 import { getGuidedPathLessons, resolveGuidedLessonVariant } from '../src/data/guidedLessons.ts'
-import { buildGuidedCheckpointPlan, buildGuidedPathCheckPlan } from '../src/lib/guidedCheckpoint.ts'
+import { buildGuidedCheckpointPlan, buildGuidedPathCheckPlan, buildGuidedSegmentReviewPlan } from '../src/lib/guidedCheckpoint.ts'
 import { createEmptyTodayProgressState, markTodayLessonComplete, type TodayProgressState } from '../src/lib/todayProgress.ts'
 import type { ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
 
@@ -64,6 +64,21 @@ assert('Path Check preserves the selected active vibe', pathCheckPlan?.items.eve
 assert('Path Check plan building does not mutate lesson progress', JSON.stringify(createEmptyTodayProgressState()) === emptyProgressSnapshot)
 assert('unknown Path Check path does not build a plan', buildGuidedPathCheckPlan('english-a1-practical-999', 'bright', fixedRng()) === undefined)
 
+console.log('\n[segment review]')
+const segmentOnePlan = buildGuidedSegmentReviewPlan(completePartialPath('bright', 5), pathIds[0]!, 1, 'bright', fixedRng())
+assert('Segment Review 1 samples only selected path', segmentOnePlan?.items.every((item) => item.pathId === pathIds[0]) === true, segmentOnePlan)
+assert('Segment Review 1 samples only lessons 1-5', segmentOnePlan?.items.every((item) => lessonNumber(item.lessonId) >= 1 && lessonNumber(item.lessonId) <= 5) === true, segmentOnePlan?.items.map((item) => item.lessonId))
+assert('Segment Review preserves selected active vibe', segmentOnePlan?.items.every((item) => item.vibe === 'bright') === true, segmentOnePlan)
+const segmentTwoProgress = getGuidedPathLessons(pathIds[1]!)
+  .slice(5, 10)
+  .reduce((state, definition) => (
+    markTodayLessonComplete(state, resolveGuidedLessonVariant(definition, 'sharp'), minimalResult())
+  ), createEmptyTodayProgressState())
+const segmentTwoPlan = buildGuidedSegmentReviewPlan(segmentTwoProgress, pathIds[1]!, 2, 'sharp', fixedRng())
+assert('Segment Review 2 samples only lessons 6-10', segmentTwoPlan?.items.every((item) => lessonNumber(item.lessonId) >= 6 && lessonNumber(item.lessonId) <= 10) === true, segmentTwoPlan?.items.map((item) => item.lessonId))
+assert('Segment Review does not require the whole path to be complete', buildGuidedSegmentReviewPlan(completePartialPath('bright', 2), pathIds[0]!, 1, 'bright', fixedRng())?.items.length === 2)
+assert('Segment Review is unavailable before any selected segment lessons are complete', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[0]!, 1, 'bright', fixedRng()) === undefined)
+
 console.log(`\n${passes} passed, ${failures} failed`)
 if (failures > 0) process.exit(1)
 
@@ -112,6 +127,11 @@ function maxSamePathRun(plan: ReturnType<typeof buildGuidedCheckpointPlan>) {
     maxRun = Math.max(maxRun, currentRun)
   }
   return maxRun
+}
+
+function lessonNumber(lessonId: string) {
+  const match = lessonId.match(/-(\d{3})-/)
+  return match ? Number.parseInt(match[1]!, 10) : 0
 }
 
 function fixedRng() {

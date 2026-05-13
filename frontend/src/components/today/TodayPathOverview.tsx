@@ -1,4 +1,4 @@
-import { CheckCircle2, Circle, ClipboardCheck, Play } from 'lucide-react'
+import { CheckCircle2, Circle, Lock, Play, RefreshCw } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -15,6 +15,23 @@ import { CheckpointCard } from '@/components/today/CheckpointCard'
 import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
 import { GuidedVibePicker } from '@/components/today/TodayHero'
 import { cn } from '@/lib/utils'
+
+const GUIDED_SEGMENT_REVIEWS = [
+  {
+    segment: 1,
+    start: 1,
+    end: 5,
+    labelKey: 'today.path.reviewOne',
+    rangeKey: 'today.path.reviewOneRange',
+  },
+  {
+    segment: 2,
+    start: 6,
+    end: 10,
+    labelKey: 'today.path.reviewTwo',
+    rangeKey: 'today.path.reviewTwoRange',
+  },
+] as const
 
 type TodayPathOverviewProps = {
   overview: GuidedPathOverview
@@ -86,12 +103,6 @@ export function TodayPathOverview({
             </div>
           </div>
           <div className="today-path-actions flex flex-wrap gap-2 xl:justify-end">
-            <Button asChild type="button" variant="outline" size="sm">
-              <Link to={pathCheckHref}>
-                <ClipboardCheck className="h-4 w-4" />
-                {t('today.path.pathCheck')}
-              </Link>
-            </Button>
             <Button type="button" variant="outline" size="sm" onClick={() => setDirectoryOpen(true)}>
               {t('today.path.changePath')}
             </Button>
@@ -135,19 +146,42 @@ export function TodayPathOverview({
           </div>
         </div>
 
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
-          {overview.lessons.map((entry) => (
-            <LessonPathCard
-              key={entry.lesson.id}
-              lesson={entry.lesson}
-              status={entry.status}
-              isRecommended={entry.isRecommended}
-              isSelected={entry.isSelected}
-              isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
-              completedVibeIds={entry.completedVibeIds}
-              onSelectLesson={onSelectLesson}
-            />
-          ))}
+        <div className="today-path-segments grid gap-3">
+          {GUIDED_SEGMENT_REVIEWS.map((segment) => {
+            const segmentLessons = overview.lessons.filter((entry) => (
+              entry.lesson.lessonNumber >= segment.start && entry.lesson.lessonNumber <= segment.end
+            ))
+            const completedCount = segmentLessons.filter((entry) => (
+              getTodayLessonVibeStatus(progress, entry.lesson, selectedVibeId) === 'completed'
+            )).length
+
+            return (
+              <div key={segment.segment} className="grid gap-2">
+                <div className="today-path-segmentGrid grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+                  {segmentLessons.map((entry) => (
+                    <LessonPathCard
+                      key={entry.lesson.id}
+                      lesson={entry.lesson}
+                      status={entry.status}
+                      isRecommended={entry.isRecommended}
+                      isSelected={entry.isSelected}
+                      isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
+                      completedVibeIds={entry.completedVibeIds}
+                      onSelectLesson={onSelectLesson}
+                    />
+                  ))}
+                </div>
+                <SegmentReviewTile
+                  href={`/today/checkpoint?mode=segment-review&path=${selectedPathId}&segment=${segment.segment}&vibe=${selectedVibeId}`}
+                  label={t(segment.labelKey)}
+                  rangeLabel={t(segment.rangeKey)}
+                  progressLabel={`${completedCount}/5`}
+                  completedCount={completedCount}
+                  selectedVibeId={selectedVibeId}
+                />
+              </div>
+            )
+          })}
           {checkpointCard && (
             <CheckpointCard
               href={checkpointCard.href}
@@ -157,6 +191,79 @@ export function TodayPathOverview({
         </div>
       </section>
     </div>
+  )
+}
+
+function SegmentReviewTile({
+  href,
+  label,
+  rangeLabel,
+  progressLabel,
+  completedCount,
+  selectedVibeId,
+}: {
+  href: string
+  label: string
+  rangeLabel: string
+  progressLabel: string
+  completedCount: number
+  selectedVibeId: ActiveGuidedVibeId
+}) {
+  const { t } = useTranslation()
+  const isAvailable = completedCount > 0
+  const isRecommended = completedCount >= 5
+  const content = (
+    <>
+      <span className="today-segment-reviewAccent" aria-hidden="true" />
+      <span className="today-segment-reviewImageWrap" aria-hidden="true">
+        <img
+          src={`/guided/reviews/${selectedVibeId}-review.webp`}
+          alt=""
+          className="today-segment-reviewImage"
+          draggable={false}
+        />
+      </span>
+      <span className="grid min-w-0 gap-1">
+        <span className="flex flex-wrap items-center gap-2">
+          <span className="text-base font-semibold leading-tight text-[var(--text-primary)]">
+            {label}
+          </span>
+          <span className="rounded-full border border-[var(--border-subtle)] px-2 py-0.5 text-xs text-[var(--text-secondary)]">
+            {progressLabel}
+          </span>
+        </span>
+        <span className="text-sm leading-5 text-[var(--text-secondary)]">
+          {rangeLabel}
+        </span>
+        <span className="mt-1 inline-flex w-fit items-center gap-1.5 text-xs font-semibold text-[var(--today-text-soft)]">
+          {isAvailable ? <RefreshCw className="h-3.5 w-3.5" /> : <Lock className="h-3.5 w-3.5" />}
+          {isAvailable ? t('today.path.startReview') : t('today.path.notReadyYet')}
+        </span>
+      </span>
+      {isRecommended && <CheckCircle2 className="h-5 w-5 shrink-0 text-[var(--today-accent-strong)]" />}
+    </>
+  )
+
+  if (!isAvailable) {
+    return (
+      <div
+        className="today-segment-reviewTile today-segment-reviewTileLocked grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-lg border p-3"
+        aria-disabled="true"
+        data-review-ready="false"
+      >
+        {content}
+      </div>
+    )
+  }
+
+  return (
+    <Link
+      to={href}
+      className="today-segment-reviewTile grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-lg border p-3 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+      data-review-ready={isRecommended ? 'complete' : 'partial'}
+    >
+      {content}
+    </Link>
   )
 }
 

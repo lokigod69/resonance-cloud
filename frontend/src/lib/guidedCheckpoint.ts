@@ -9,6 +9,9 @@ import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { TodayProgressState } from '@/lib/todayProgress'
 
 export const GUIDED_CHECKPOINT_ITEM_COUNT = 8
+export const GUIDED_SEGMENT_REVIEW_ITEM_COUNT = 5
+
+export type GuidedSegmentReviewNumber = 1 | 2
 
 export type GuidedCheckpointPlanItem = {
   lesson: GuidedLesson
@@ -21,6 +24,8 @@ export type GuidedCheckpointPlan = {
   vibe: ActiveGuidedVibeId
   checkpointIndex: number
   completedPathCount: number
+  pathId?: string
+  segment?: GuidedSegmentReviewNumber
   items: GuidedCheckpointPlanItem[]
 }
 
@@ -161,6 +166,45 @@ export function buildGuidedPathCheckPlan(
   }
 }
 
+export function buildGuidedSegmentReviewPlan(
+  progress: TodayProgressState,
+  pathId: string,
+  segment: number,
+  vibe: ActiveGuidedVibeId,
+  random: RandomSource = Math.random,
+  itemCount = GUIDED_SEGMENT_REVIEW_ITEM_COUNT,
+): GuidedCheckpointPlan | undefined {
+  const segmentDefinition = getGuidedSegmentReviewDefinition(segment)
+  if (!segmentDefinition) return undefined
+
+  const items = getGuidedPathLessons(pathId)
+    .filter((lesson) => (
+      lesson.lessonNumber >= segmentDefinition.startLesson
+      && lesson.lessonNumber <= segmentDefinition.endLesson
+      && isLessonCompletedInVibe(progress, pathId, lesson.id, vibe)
+    ))
+    .map((lesson) => {
+      const resolvedLesson = resolveGuidedLessonVariant(lesson, vibe)
+      return {
+        lesson: resolvedLesson,
+        lessonId: resolvedLesson.id,
+        pathId,
+        vibe,
+      }
+    })
+
+  if (items.length === 0) return undefined
+
+  return {
+    vibe,
+    checkpointIndex: 0,
+    completedPathCount: 0,
+    pathId,
+    segment: segmentDefinition.segment,
+    items: shuffle(items, random).slice(0, itemCount),
+  }
+}
+
 export function getGuidedCheckpointCount(vibe: ActiveGuidedVibeId) {
   return getGuidedCheckpointIndexes(vibe).length
 }
@@ -218,6 +262,72 @@ export function completeGuidedCheckpoint(
   }
 
   return record
+}
+
+export function guidedSegmentReviewKey(
+  pathId: string,
+  segment: GuidedSegmentReviewNumber,
+  vibe: ActiveGuidedVibeId,
+) {
+  return `guided_segment_review_${pathId}_${vibe}_${segment}`
+}
+
+export function readGuidedSegmentReviewRecord(
+  pathId: string,
+  segment: GuidedSegmentReviewNumber,
+  vibe: ActiveGuidedVibeId,
+): GuidedCheckpointRecord | undefined {
+  if (!canUseLocalStorage()) return undefined
+
+  try {
+    const raw = window.localStorage.getItem(guidedSegmentReviewKey(pathId, segment, vibe))
+    if (!raw) return undefined
+    const parsed = JSON.parse(raw) as GuidedCheckpointRecord
+    if (!isGuidedCheckpointRecord(parsed, vibe)) return undefined
+    return parsed
+  } catch {
+    return undefined
+  }
+}
+
+export function completeGuidedSegmentReview(
+  pathId: string,
+  segment: GuidedSegmentReviewNumber,
+  vibe: ActiveGuidedVibeId,
+  items: GuidedCheckpointReviewedItem[],
+  completedAt: Date = new Date(),
+): GuidedCheckpointRecord {
+  const record: GuidedCheckpointRecord = {
+    completedAt: completedAt.toISOString(),
+    itemsReviewed: items.length,
+    itemsCorrectFirstTry: items.filter((item) => item.firstTryCorrect).length,
+    items: items.map((item) => ({
+      lessonId: item.lessonId,
+      pathId: item.pathId,
+      vibe: item.vibe,
+      firstTryCorrect: item.firstTryCorrect,
+      needsReview: item.needsReview,
+    })),
+  }
+
+  if (!canUseLocalStorage()) return record
+
+  try {
+    window.localStorage.setItem(
+      guidedSegmentReviewKey(pathId, segment, vibe),
+      JSON.stringify(record),
+    )
+  } catch {
+    return record
+  }
+
+  return record
+}
+
+function getGuidedSegmentReviewDefinition(segment: number): { segment: GuidedSegmentReviewNumber; startLesson: number; endLesson: number } | undefined {
+  if (segment === 1) return { segment: 1, startLesson: 1, endLesson: 5 }
+  if (segment === 2) return { segment: 2, startLesson: 6, endLesson: 10 }
+  return undefined
 }
 
 function getCompletedGuidedCheckpointPathIds(

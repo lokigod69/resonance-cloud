@@ -8,7 +8,10 @@ import { useTranslation } from '@/hooks/useTranslation'
 import {
   buildGuidedCheckpointPlan,
   buildGuidedPathCheckPlan,
+  buildGuidedSegmentReviewPlan,
   completeGuidedCheckpoint,
+  completeGuidedSegmentReview,
+  type GuidedSegmentReviewNumber,
   type GuidedCheckpointPlan,
   type GuidedCheckpointPlanItem,
   type GuidedCheckpointRecord,
@@ -35,15 +38,20 @@ export default function GuidedCheckpoint() {
   const defaultPathId = pathOptions[0]?.id ?? 'english-a1-practical-1'
   const selectedPathId = resolveCheckpointPath(searchParams.get('path'), defaultPathId, pathOptions)
   const selectedVibeId = resolveCheckpointVibe(searchParams.get('vibe'), selectedPathId)
-  const isPathCheckMode = searchParams.get('mode') === 'path-check'
+  const checkpointMode = searchParams.get('mode')
+  const isPathCheckMode = checkpointMode === 'path-check'
+  const isSegmentReviewMode = checkpointMode === 'segment-review'
+  const selectedSegment = resolveSegmentReviewNumber(searchParams.get('segment'))
   const progress = useMemo(() => readTodayProgressState(user?.id), [user?.id])
   const plan = useMemo(
     () => (
       isPathCheckMode
         ? buildGuidedPathCheckPlan(selectedPathId, selectedVibeId)
+        : isSegmentReviewMode && selectedSegment
+          ? buildGuidedSegmentReviewPlan(progress, selectedPathId, selectedSegment, selectedVibeId)
         : buildGuidedCheckpointPlan(progress, selectedVibeId)
     ),
-    [isPathCheckMode, progress, selectedPathId, selectedVibeId],
+    [isPathCheckMode, isSegmentReviewMode, progress, selectedPathId, selectedSegment, selectedVibeId],
   )
   const [phase, setPhase] = useState<CheckpointPhase>('type')
   const [itemIndex, setItemIndex] = useState(0)
@@ -78,9 +86,11 @@ export default function GuidedCheckpoint() {
     if (!plan) return
 
     if (itemIndex >= plan.items.length - 1) {
-      const record = isPathCheckMode
-        ? createLocalCheckpointRecord(reviewedItemsRef.current)
-        : completeGuidedCheckpoint(selectedVibeId, reviewedItemsRef.current)
+      const record = isSegmentReviewMode && selectedSegment
+        ? completeGuidedSegmentReview(selectedPathId, selectedSegment, selectedVibeId, reviewedItemsRef.current)
+        : isPathCheckMode
+          ? createLocalCheckpointRecord(reviewedItemsRef.current)
+          : completeGuidedCheckpoint(selectedVibeId, reviewedItemsRef.current)
       setSummary(record)
       setPhase('summary')
       return
@@ -97,7 +107,15 @@ export default function GuidedCheckpoint() {
   }
 
   if (phase === 'summary' && summary) {
-    return <CheckpointSummary record={summary} selectedVibeId={selectedVibeId} isPathCheckMode={isPathCheckMode} onBackToToday={() => navigate('/today')} />
+    return (
+      <CheckpointSummary
+        record={summary}
+        selectedVibeId={selectedVibeId}
+        isPathCheckMode={isPathCheckMode}
+        isSegmentReviewMode={isSegmentReviewMode}
+        onBackToToday={() => navigate('/today')}
+      />
+    )
   }
 
   return (
@@ -114,7 +132,13 @@ export default function GuidedCheckpoint() {
         aria-hidden="true"
       />
 
-      <CheckpointHeader plan={plan} itemIndex={itemIndex} progressValue={progressValue} isPathCheckMode={isPathCheckMode} />
+      <CheckpointHeader
+        plan={plan}
+        itemIndex={itemIndex}
+        progressValue={progressValue}
+        isPathCheckMode={isPathCheckMode}
+        isSegmentReviewMode={isSegmentReviewMode}
+      />
 
       {phase === 'type' && (
         <CheckpointTypeStep
@@ -124,6 +148,8 @@ export default function GuidedCheckpoint() {
           onAnswerChange={setAnswer}
           onSubmit={handleTypeSubmit}
           onAdvance={handleAdvanceToSpeak}
+          isSegmentReviewMode={isSegmentReviewMode}
+          isPathCheckMode={isPathCheckMode}
         />
       )}
 
@@ -139,13 +165,25 @@ function CheckpointHeader({
   itemIndex,
   progressValue,
   isPathCheckMode,
+  isSegmentReviewMode,
 }: {
   plan: GuidedCheckpointPlan
   itemIndex: number
   progressValue: number
   isPathCheckMode: boolean
+  isSegmentReviewMode: boolean
 }) {
   const { t } = useTranslation()
+  const title = isPathCheckMode
+    ? t('today.path.pathCheck')
+    : isSegmentReviewMode
+      ? t('today.checkpoint.segmentTitle')
+      : t('today.checkpoint.title')
+  const heading = isPathCheckMode
+    ? t('today.checkpoint.pathCheckHeading')
+    : isSegmentReviewMode
+      ? t('today.checkpoint.segmentHeading', { segment: plan.segment ?? 1 })
+      : t('today.checkpoint.heading')
 
   return (
     <section className="theme-panel today-checkpoint-header rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6">
@@ -158,11 +196,16 @@ function CheckpointHeader({
             </Link>
           </Button>
           <p className="text-sm font-medium text-[var(--text-secondary)]">
-            {isPathCheckMode ? t('today.path.pathCheck') : t('today.checkpoint.title')}
+            {title}
           </p>
           <h1 className="mt-1 text-2xl font-semibold leading-tight text-[var(--text-primary)]">
-            {isPathCheckMode ? t('today.checkpoint.pathCheckHeading') : t('today.checkpoint.heading')}
+            {heading}
           </h1>
+          {isPathCheckMode && (
+            <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
+              {t('today.checkpoint.pathCheckDiagnostic')}
+            </p>
+          )}
         </div>
         <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
           {itemIndex + 1}/{plan.items.length}
@@ -180,6 +223,8 @@ function CheckpointTypeStep({
   onAnswerChange,
   onSubmit,
   onAdvance,
+  isSegmentReviewMode,
+  isPathCheckMode,
 }: {
   item: GuidedCheckpointPlanItem
   answer: string
@@ -187,6 +232,8 @@ function CheckpointTypeStep({
   onAnswerChange: (value: string) => void
   onSubmit: (event: FormEvent<HTMLFormElement>) => void
   onAdvance: () => void
+  isSegmentReviewMode: boolean
+  isPathCheckMode: boolean
 }) {
   const submitted = result !== undefined
   const { t } = useTranslation()
@@ -195,26 +242,58 @@ function CheckpointTypeStep({
     <section className="theme-panel today-checkpoint-step rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
       <div className="grid justify-items-center gap-5 text-center">
         <p className="text-sm leading-6 text-[var(--text-secondary)]">
-          {t('today.checkpoint.typePrompt')}
+          {isSegmentReviewMode
+            ? t('today.checkpoint.segmentTypePrompt')
+            : isPathCheckMode
+              ? t('today.checkpoint.pathCheckTypePrompt')
+              : t('today.checkpoint.typePrompt')}
         </p>
-        <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            {t('today.checkpoint.germanPrompt')}
-          </p>
-          <p className="mt-3 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
-            {item.lesson.corePhrase.baseText}
-          </p>
-        </div>
+
+        {isSegmentReviewMode && (
+          <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4">
+            <div className="flex flex-col justify-center gap-3 text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:flex-row sm:flex-wrap sm:items-center sm:text-3xl">
+              <span>{item.lesson.typeRecall.before}</span>
+              <Input
+                value={answer}
+                onChange={(event) => onAnswerChange(event.target.value)}
+                disabled={submitted}
+                placeholder={t('today.checkpoint.typePlaceholder')}
+                aria-label={t('today.checkpoint.answerLabel')}
+                className="today-checkpoint-input h-12 w-full text-center text-xl font-semibold sm:w-64 sm:text-2xl md:w-72"
+              />
+              <span>{item.lesson.typeRecall.after}</span>
+            </div>
+            <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+              {t('today.checkpoint.germanCue')}
+            </p>
+            <p className="mt-1 break-words text-sm leading-6 text-[var(--text-secondary)]">
+              {item.lesson.corePhrase.baseText}
+            </p>
+          </div>
+        )}
+
+        {!isSegmentReviewMode && (
+          <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+              {t('today.checkpoint.germanPrompt')}
+            </p>
+            <p className="mt-3 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
+              {item.lesson.corePhrase.baseText}
+            </p>
+          </div>
+        )}
 
         <form className="grid w-full max-w-xl justify-items-center gap-4" onSubmit={onSubmit}>
-          <Input
-            value={answer}
-            onChange={(event) => onAnswerChange(event.target.value)}
-            disabled={submitted}
-            placeholder={t('today.checkpoint.typePlaceholder')}
-            aria-label={t('today.checkpoint.answerLabel')}
-            className="today-checkpoint-input h-12 text-center text-xl font-semibold sm:text-2xl"
-          />
+          {!isSegmentReviewMode && (
+            <Input
+              value={answer}
+              onChange={(event) => onAnswerChange(event.target.value)}
+              disabled={submitted}
+              placeholder={t('today.checkpoint.typePlaceholder')}
+              aria-label={t('today.checkpoint.answerLabel')}
+              className="today-checkpoint-input h-12 text-center text-xl font-semibold sm:text-2xl"
+            />
+          )}
           {!submitted && (
             <Button type="submit" disabled={!answer.trim()}>
               {t('today.checkpoint.check')}
@@ -335,11 +414,13 @@ function CheckpointSummary({
   record,
   selectedVibeId,
   isPathCheckMode,
+  isSegmentReviewMode,
   onBackToToday,
 }: {
   record: GuidedCheckpointRecord
   selectedVibeId: ActiveGuidedVibeId
   isPathCheckMode: boolean
+  isSegmentReviewMode: boolean
   onBackToToday: () => void
 }) {
   const { t } = useTranslation()
@@ -360,7 +441,11 @@ function CheckpointSummary({
           <CheckCircle2 className="today-completion-vibeBadgeCheck" />
         </span>
         <h1 className="mt-4 text-3xl font-semibold text-[var(--text-primary)]">
-          {isPathCheckMode ? t('today.checkpoint.pathCheckCompleteTitle') : t('today.checkpoint.completeTitle')}
+          {isPathCheckMode
+            ? t('today.checkpoint.pathCheckCompleteTitle')
+            : isSegmentReviewMode
+              ? t('today.checkpoint.segmentCompleteTitle')
+              : t('today.checkpoint.completeTitle')}
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-[var(--text-secondary)]">
           {t('today.checkpoint.completeBody', {
@@ -407,6 +492,12 @@ function resolveCheckpointPath(
   pathOptions: GuidedPathMetadata[],
 ) {
   return pathOptions.some((path) => path.id === value) ? value! : defaultPathId
+}
+
+function resolveSegmentReviewNumber(value: string | null): GuidedSegmentReviewNumber | undefined {
+  if (value === '1') return 1
+  if (value === '2') return 2
+  return undefined
 }
 
 function createLocalCheckpointRecord(

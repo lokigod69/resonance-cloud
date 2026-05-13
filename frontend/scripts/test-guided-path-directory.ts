@@ -59,7 +59,8 @@ assert('overview no longer defines inline PathSwitcher', !overviewSource.include
 assert('overview no longer renders permanent path chip row', !overviewSource.includes('today-path-switcher'))
 assert('overview renders compact Change path trigger', overviewSource.includes("today.path.changePath") && overviewSource.includes('setDirectoryOpen(true)'))
 assert('Today page passes Path Check href into overview', todaySource.includes('pathCheckHref=') && todaySource.includes('mode=path-check'))
-assert('Path Check is available from the current path header or directory', overviewSource.includes('pathCheckHref') && directorySource.includes('pathCheckHref'))
+assert('main Today header no longer renders Path Check as a visible action', !sliceBetween(overviewSource, '<div className="today-path-actions', '<GuidedPathDirectory').includes('today.path.pathCheck'))
+assert('Path Check remains available from the path directory as a diagnostic action', overviewSource.includes('pathCheckHref') && directorySource.includes('pathCheckHref') && directorySource.includes('today.path.pathCheck'))
 
 console.log('\n[selection state]')
 assert('overview detects explicit selected lesson competing with recommendation', overviewSource.includes('hasExplicitLessonSelection'))
@@ -67,7 +68,7 @@ assert('lesson card receives quiet recommended state', overviewSource.includes('
 assert('quiet recommended lesson does not receive primary selected/start visual', overviewSource.includes('data-recommended-quiet={isRecommendationQuiet}') && overviewSource.includes('data-start-target={isSelected}'))
 
 console.log('\n[path check route]')
-assert('checkpoint route detects path-check mode', checkpointSource.includes("mode') === 'path-check'") || checkpointSource.includes('"path-check"'))
+assert('checkpoint route detects path-check mode', checkpointSource.includes("checkpointMode === 'path-check'") || checkpointSource.includes('"path-check"'))
 assert('checkpoint route uses Path Check plan builder', checkpointSource.includes('buildGuidedPathCheckPlan'))
 assert('Path Check summary does not call checkpoint storage writer', checkpointSource.includes('createLocalCheckpointRecord') && checkpointSource.includes('isPathCheckMode'))
 assert('checkpoint lib exports Path Check plan builder', checkpointLibSource.includes('export function buildGuidedPathCheckPlan'))
@@ -82,4 +83,12 @@ function readSource(relativePath: string) {
 
 function containsAny(value: string, needles: string[]) {
   return needles.some((needle) => value.includes(needle))
+}
+
+function sliceBetween(source: string, start: string, end: string) {
+  const startIndex = source.indexOf(start)
+  if (startIndex < 0) return ''
+  const endIndex = source.indexOf(end, startIndex)
+  if (endIndex < 0) return ''
+  return source.slice(startIndex, endIndex)
 }
