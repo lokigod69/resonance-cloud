@@ -101,6 +101,15 @@ for (let lessonNumber = 1; lessonNumber <= 5; lessonNumber += 1) {
   assert(`wistful lesson number ${lessonNumber} asset stays small`, bytes.length > 1_000 && bytes.length < 20_000, bytes.length)
 }
 
+for (let lessonNumber = 1; lessonNumber <= 5; lessonNumber += 1) {
+  const assetPath = fileURLToPath(new URL(`../public/guided/lesson-numbers/sharp/${String(lessonNumber).padStart(2, '0')}.webp`, import.meta.url))
+  assert(`sharp lesson number ${lessonNumber} asset exists`, existsSync(assetPath), assetPath)
+  if (!existsSync(assetPath)) continue
+  const bytes = readFileSync(assetPath)
+  assert(`sharp lesson number ${lessonNumber} asset is WebP`, bytes.subarray(0, 4).equals(Buffer.from('RIFF')) && bytes.subarray(8, 12).equals(Buffer.from('WEBP')))
+  assert(`sharp lesson number ${lessonNumber} asset stays small`, bytes.length > 1_000 && bytes.length < 20_000, bytes.length)
+}
+
 console.log('\n[plan selection]')
 for (const pathId of pathIds) {
   const plan = buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathId, 1, 'bright', fixedRng())

@@ -390,6 +390,20 @@ function LessonNumberMarker({
     )
   }
 
+  if (selectedVibeId === 'sharp' && lessonNumber >= 1 && lessonNumber <= 5) {
+    const paddedLessonNumber = String(lessonNumber).padStart(2, '0')
+
+    return (
+      <img
+        src={`/guided/lesson-numbers/sharp/${paddedLessonNumber}.webp`}
+        alt=""
+        className="today-path-cardNumberImage"
+        draggable={false}
+        data-lesson-number-asset="sharp"
+      />
+    )
+  }
+
   return <>{lessonNumber}</>
 }
 
