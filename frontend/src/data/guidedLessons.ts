@@ -4103,7 +4103,7 @@ const a1Practical5Inputs: A1P5LessonInput[] = [
       }),
       wistful: createA1P5VariantInput({
         targetText: 'Sorry, the bus was slow.',
-        baseText: 'Entschuldigung, ich war im langsamen Bus.',
+        baseText: 'Entschuldigung, der Bus war langsam.',
         meaning: 'Eine ruhige Erklärung, warum du zu spät bist, ohne die Szene schwer zu machen.',
         chunks: [
           chunk('sorry', 'Sorry', 'Entschuldigung'),
@@ -4368,7 +4368,7 @@ const a1Practical5Inputs: A1P5LessonInput[] = [
       }),
       sharp: createA1P5VariantInput({
         targetText: 'Pleasure.',
-        baseText: 'Ich freue mich.',
+        baseText: 'Freut mich.',
         meaning: 'Eine kurze positive Antwort nach der Vorstellung.',
         chunks: [
           chunk('pleasure', 'Pleasure', 'ich freue mich'),
@@ -4583,8 +4583,8 @@ const a1Practical5Inputs: A1P5LessonInput[] = [
         visualNotes: 'Warm cafe edge, evening cue, friendly invitation focus.',
       }),
       wistful: createA1P5VariantInput({
-        targetText: 'Maybe, are you free tonight?',
-        baseText: 'Vielleicht: Hast du heute Abend Zeit?',
+        targetText: 'Would you be free tonight?',
+        baseText: 'Wärst du heute Abend frei?',
         meaning: 'Eine vorsichtige Verfügbarkeitsfrage mit Raum für Nein.',
         chunks: [
           chunk('maybe', 'Maybe', 'vielleicht'),
@@ -4596,7 +4596,7 @@ const a1Practical5Inputs: A1P5LessonInput[] = [
           chunk('time', 'time', 'Zeit'),
           chunk('plan', 'plan', 'Plan'),
         ],
-        targetChips: ['Maybe,', 'are you free tonight?'],
+        targetChips: ['Would you', 'be free tonight?'],
         distractors: ['tentative', 'tomorrow'],
         typeRecall: recall('Maybe, are you ', 'free tonight', '?', ['free tonight', 'tonight at six', 'busy tonight', 'later']),
         sceneCaption: 'Wistful fragt mit kleiner Pause, ob heute Abend Zeit ist.',
@@ -4640,7 +4640,7 @@ const a1Practical5Inputs: A1P5LessonInput[] = [
     variants: {
       bright: createA1P5VariantInput({
         targetText: "Let's meet at the café!",
-        baseText: 'Ich schlage vor, wir treffen uns im Café!',
+        baseText: 'Lass uns im Café treffen!',
         meaning: 'Ein warmer Vorschlag für einen Treffpunkt.',
         chunks: [
           chunk('lets-meet', "Let's meet", 'treffen wir uns'),
