@@ -34,6 +34,8 @@ const GUIDED_SEGMENT_REVIEWS = [
   },
 ] as const
 
+const WISTFUL_LESSON_NUMBER_ASSETS = new Set([1, 2, 5])
+
 type TodayPathOverviewProps = {
   overview: GuidedPathOverview
   pathOptions: GuidedPathMetadata[]
@@ -372,6 +374,20 @@ function LessonNumberMarker({
         className="today-path-cardNumberImage"
         draggable={false}
         data-lesson-number-asset="bright"
+      />
+    )
+  }
+
+  if (selectedVibeId === 'wistful' && WISTFUL_LESSON_NUMBER_ASSETS.has(lessonNumber)) {
+    const paddedLessonNumber = String(lessonNumber).padStart(2, '0')
+
+    return (
+      <img
+        src={`/guided/lesson-numbers/wistful/${paddedLessonNumber}.webp`}
+        alt=""
+        className="today-path-cardNumberImage"
+        draggable={false}
+        data-lesson-number-asset="wistful"
       />
     )
   }
