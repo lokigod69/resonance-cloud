@@ -3563,7 +3563,7 @@ const a1Practical4Inputs: A1P4LessonInput[] = [
     variants: {
       bright: createA1P4VariantInput({
         targetText: 'Is it fresh today, please?',
-        baseText: 'Ist es heute bitte frisch?',
+        baseText: 'Ist das heute frisch?',
         meaning: 'Eine freundliche Frage nach Frische am selben Tag.',
         chunks: [
           chunk('is-it', 'Is it', 'ist es'),
@@ -3739,7 +3739,7 @@ const a1Practical4Inputs: A1P4LessonInput[] = [
       }),
       wistful: createA1P4VariantInput({
         targetText: 'To go, if possible?',
-        baseText: 'Zum Mitnehmen bitte, wenn das möglich ist?',
+        baseText: 'Zum Mitnehmen, wenn das möglich ist?',
         meaning: 'Eine rücksichtsvolle Bitte, falls Mitnehmen möglich ist.',
         chunks: [
           chunk('to-go', 'To go', 'zum Mitnehmen'),
@@ -3816,7 +3816,7 @@ const a1Practical4Inputs: A1P4LessonInput[] = [
       }),
       wistful: createA1P4VariantInput({
         targetText: 'That was really nice.',
-        baseText: 'Das war wirklich schön, danke.',
+        baseText: 'Das war wirklich schön.',
         meaning: 'Ein leises, ehrliches Lob nach dem Trinken oder Essen.',
         chunks: [
           chunk('that-was', 'That was', 'das war'),
