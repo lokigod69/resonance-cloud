@@ -1,5 +1,6 @@
 import type { GameWordRow } from '../../shared/useGameDeck';
 import type { GameDeck } from '../engine/types';
+import { getCardThumbUrl } from '@/lib/imageUrls';
 
 const FALLBACK_IMAGE_URL = '/games/runner/cards/frame-default.png';
 
@@ -60,11 +61,13 @@ export function pickImageUrl(word: RunnerWordRow): string | undefined {
     ? word.image_urls.map(normalizeUrl).find((url): url is string => Boolean(url))
     : undefined;
 
-  return firstImage
+  const imageUrl = firstImage
     ?? normalizeUrl(word.image_url)
     ?? normalizeUrl(word.thumbnail_url)
     ?? normalizeUrl(word.thumbnail_url_b)
     ?? undefined;
+
+  return getCardThumbUrl(imageUrl, 512) ?? undefined;
 }
 
 function normalizeText(value: string | null | undefined): string | undefined {

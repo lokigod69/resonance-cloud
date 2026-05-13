@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import WordInfoPanel from '@/components/WordInfoPanel'
 import { getOrCreateShareLink } from '@/lib/shareWord'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
+import { getCardFullUrl } from '@/lib/imageUrls'
 
 type CardViewerWord = {
   id: string
@@ -141,7 +142,7 @@ export default function CardWordViewerModal({
               )}
 
               <GeneratedMediaFrame
-                src={word.thumbnail_url}
+                src={getCardFullUrl(word.thumbnail_url)}
                 alt={word.word}
                 variant="modal"
                 className="max-h-[min(62vh,44rem)]"

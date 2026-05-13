@@ -5,6 +5,7 @@
  */
 
 import { useEffect, useRef } from 'react'
+import { getCardThumbUrl } from '@/lib/imageUrls'
 
 type OrbDockWord = {
   id: string
@@ -45,7 +46,7 @@ export default function OrbDock({ words, currentIndex, onSelect }: OrbDockProps)
             title={word.word}
           >
             {word.thumbnail_url ? (
-              <img src={word.thumbnail_url} alt={word.word} />
+              <img src={getCardThumbUrl(word.thumbnail_url) ?? undefined} alt={word.word} />
             ) : (
               <div
                 style={{

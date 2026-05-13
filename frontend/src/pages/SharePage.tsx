@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
+import { getCardFullUrl } from '@/lib/imageUrls'
 
 interface SharedWordData {
   share_id: string
@@ -86,7 +87,7 @@ export default function SharePage() {
             />
           ) : data.thumbnail_url ? (
             <img
-              src={data.thumbnail_url}
+              src={getCardFullUrl(data.thumbnail_url) ?? undefined}
               alt={data.word}
               className="w-full h-full object-contain"
             />

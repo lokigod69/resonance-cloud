@@ -1,5 +1,6 @@
 import type { GameWordRow } from '../../shared/useGameDeck'
 import type { DeckDefinition, DeckMode } from '../engine/types'
+import { getCardThumbUrl } from '@/lib/imageUrls'
 
 export type WordRow = Pick<
   GameWordRow,
@@ -28,11 +29,13 @@ export function pickImageUrl(word: WordRow): string | undefined {
     ? word.image_urls.find((url): url is string => Boolean(url))
     : undefined
 
-  return firstImage
+  const imageUrl = firstImage
     ?? word.image_url
     ?? word.thumbnail_url
     ?? word.thumbnail_url_b
     ?? undefined
+
+  return getCardThumbUrl(imageUrl, 512) ?? undefined
 }
 
 export function wordsToSlicerDeck(words: WordRow[], opts: WordsToSlicerDeckOptions): DeckDefinition {

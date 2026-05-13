@@ -103,11 +103,12 @@ export default function DashboardPG() {
       try {
         const { data: deckRows } = await supabase
           .from('decks')
-          .select('id, target_language')
+          .select('id, target_language, deck_type')
           .eq('user_id', user.id)
           .eq('target_language', activeLanguage)
         const deckIds = (deckRows ?? []).map((d) => d.id)
         const deckLanguageById = new Map((deckRows ?? []).map((d) => [d.id, d.target_language]))
+        const deckTypeById = new Map((deckRows ?? []).map((d) => [d.id, d.deck_type]))
         if (deckIds.length === 0) {
           if (!cancelled) setLibraryWords([])
           return
@@ -124,6 +125,7 @@ export default function DashboardPG() {
           setLibraryWords((wordRows ?? []).map((word) => ({
             ...word,
             target_language: deckLanguageById.get(word.deck_id) ?? activeLanguage,
+            deck_type: deckTypeById.get(word.deck_id) ?? null,
           })) as LibraryWord[])
         }
       } finally {

@@ -3,6 +3,7 @@ import { X, Play } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getDisplayArticle } from './articleDisplay'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
+import { getCardFullUrl } from '@/lib/imageUrls'
 
 export type LibraryWord = {
   id: string
@@ -17,6 +18,7 @@ export type LibraryWord = {
   thumbnail_url: string | null
   metadata: Record<string, unknown> | null
   deck_id: string
+  deck_type?: 'video' | 'card' | null
   target_language: string | null
   created_at: string
 }
@@ -106,7 +108,7 @@ function WordDetailBody({ word, onWatchVideo, deckName }: { word: LibraryWord; o
     <div className="p-5 pt-1 sm:p-7 sm:pt-2 pb-[calc(env(safe-area-inset-bottom,0px)+1rem)] space-y-4 text-foreground">
       {word.thumbnail_url && (
         <GeneratedMediaFrame
-          src={word.thumbnail_url}
+          src={word.deck_type === 'card' ? getCardFullUrl(word.thumbnail_url) : word.thumbnail_url}
           alt={word.word}
           variant="detail"
           className="mb-4 max-h-[min(58vh,34rem)]"

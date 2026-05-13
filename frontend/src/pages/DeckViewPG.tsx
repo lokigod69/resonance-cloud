@@ -48,6 +48,7 @@ import { getOrCreateShareLink } from '@/lib/shareWord'
 import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
 import { resolveCardLearningMetadata } from '@/lib/wordDisplayMetadata'
 import { getDeckLanguageLabel } from '@/lib/i18nDisplay'
+import { getCardFullUrl, getCardThumbUrl } from '@/lib/imageUrls'
 
 type Deck = {
   id: string
@@ -669,7 +670,7 @@ export default function DeckViewPG() {
                   <div className="aspect-[4/3] relative">
                     {word.thumbnail_url ? (
                       <img
-                        src={word.thumbnail_url}
+                        src={isCardDeck ? getCardThumbUrl(word.thumbnail_url) ?? undefined : word.thumbnail_url}
                         alt={word.word}
                         className={`w-full h-full ${isCardDeck ? 'object-contain bg-black/40' : 'object-cover'}`}
                       />
@@ -773,7 +774,11 @@ export default function DeckViewPG() {
                         {/* Thumbnail — shown when video not active, or as poster behind video */}
                         {isComplete && (offset === 0 ? activeThumbnailUrl : word.thumbnail_url) && videoActiveIndex !== i && (
                           <img
-                            src={(offset === 0 ? activeThumbnailUrl : word.thumbnail_url)!}
+                            src={
+                              isCardDeck
+                                ? getCardFullUrl(offset === 0 ? activeThumbnailUrl : word.thumbnail_url) ?? undefined
+                                : (offset === 0 ? activeThumbnailUrl : word.thumbnail_url)!
+                            }
                             alt={word.word}
                             draggable={false}
                             className={`absolute inset-0 w-full h-full ${isCardDeck ? 'object-contain bg-black/40 pointer-events-none select-none' : 'object-cover'}`}

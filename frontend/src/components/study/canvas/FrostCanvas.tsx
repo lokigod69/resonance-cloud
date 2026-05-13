@@ -6,6 +6,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { usePronunciation } from '@/hooks/usePronunciation'
 import { syncCanvasCardTop, useCanvasSafeAreaCacheReset } from '@/lib/canvasPositioning'
 import { resolveCardLearningMetadata, type WordLike } from '@/lib/wordDisplayMetadata'
+import { getCardFullUrl } from '@/lib/imageUrls'
 import { CANVAS_MODES, type CanvasMode, type CanvasModeProps } from './types'
 
 type LaneColumn = 'left' | 'right'
@@ -214,12 +215,12 @@ function getImageUrl(word: CanvasModeProps['words'][number] | null | undefined) 
   const imageUrls = record?.image_urls
   if (Array.isArray(imageUrls)) {
     const first = imageUrls.find((url): url is string => typeof url === 'string' && url.trim().length > 0)
-    if (first) return first
+    if (first) return getCardFullUrl(first)
   }
 
   for (const key of ['image_url', 'thumbnail_url', 'thumbnail_url_b']) {
     const value = record?.[key]
-    if (typeof value === 'string' && value.trim().length > 0) return value
+    if (typeof value === 'string' && value.trim().length > 0) return getCardFullUrl(value)
   }
 
   return null

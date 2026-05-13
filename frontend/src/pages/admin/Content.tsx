@@ -36,6 +36,7 @@ import {
 import { useToast } from '@/components/Toast'
 import WordDetailPanel from '@/components/admin/WordDetailPanel'
 import StarRating from '@/components/ui/StarRating'
+import { getCardThumbUrl } from '@/lib/imageUrls'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -50,6 +51,7 @@ type Deck = {
   movie_override: string | null
   word_count: number
   status: string
+  deck_type?: 'video' | 'card' | null
   created_at: string
   updated_at: string
   profiles?: { display_name: string | null } | null
@@ -619,7 +621,7 @@ export default function Content() {
                           <div className="h-10 w-10 rounded bg-zinc-800 flex-shrink-0 overflow-hidden flex items-center justify-center">
                             {word.thumbnail_url ? (
                               <img
-                                src={word.thumbnail_url}
+                                src={deck.deck_type === 'card' ? getCardThumbUrl(word.thumbnail_url) ?? undefined : word.thumbnail_url}
                                 alt={word.word}
                                 className="h-full w-full object-cover"
                               />

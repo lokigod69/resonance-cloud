@@ -28,6 +28,7 @@ import { getOrCreateShareLink } from '@/lib/shareWord'
 import { shouldUseGlobalQueuePosition, summarizeCardGenerationProgress } from '@/lib/cardGenerationProgress'
 import { classifyCardGenerationFailure, getCardRetryAction } from '@/lib/cardFailureClassification'
 import { getDeckLanguageLabel } from '@/lib/i18nDisplay'
+import { getCardThumbUrl } from '@/lib/imageUrls'
 
 type Deck = {
   id: string
@@ -512,7 +513,7 @@ export default function DeckView() {
                   <div className="aspect-video relative bg-card">
                     {word.thumbnail_url ? (
                       <img
-                        src={word.thumbnail_url}
+                        src={isCardDeck ? getCardThumbUrl(word.thumbnail_url) ?? undefined : word.thumbnail_url}
                         alt={word.word}
                         loading="lazy"
                         className={`w-full h-full ${isCardDeck ? 'object-contain bg-card' : 'object-cover'}`}

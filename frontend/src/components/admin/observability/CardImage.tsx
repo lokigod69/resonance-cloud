@@ -1,4 +1,5 @@
 import styles from './observability.module.css'
+import { getCardFullUrl } from '@/lib/imageUrls'
 
 export default function CardImage({ src }: { src: string | null }) {
   if (!src) return null
@@ -7,7 +8,7 @@ export default function CardImage({ src }: { src: string | null }) {
     <div className={styles.finalVideo}>
       <span className={styles.bodyLabel}>GENERATED CARD IMAGE</span>
       <img
-        src={src}
+        src={getCardFullUrl(src) ?? undefined}
         alt="Generated card image"
         style={{
           display: 'block',

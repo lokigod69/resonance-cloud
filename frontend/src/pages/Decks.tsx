@@ -8,6 +8,7 @@ import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
+import { getCardThumbUrl } from '@/lib/imageUrls'
 
 type Deck = {
   id: string
@@ -235,7 +236,8 @@ export default function Decks() {
         <div className="classic-decks-grid">
           {filteredDecks.map((deck) => {
             const counts = wordCounts[deck.id] || { completed: 0, total: deck.word_count }
-            const thumb = deckThumbnails[deck.id]
+            const rawThumb = deckThumbnails[deck.id]
+            const thumb = deck.deck_type === 'card' ? getCardThumbUrl(rawThumb) ?? undefined : rawThumb
             const deckLanguageLabel = getDeckLanguageLabel(deck.target_language, t)
             const displayName = deck.name || t('generateGo.languageDeckName', { language: deckLanguageLabel })
 

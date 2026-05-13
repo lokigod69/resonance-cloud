@@ -33,6 +33,7 @@ import {
 import { useTranslation } from '@/hooks/useTranslation'
 import GeneratedMediaFrame from '@/components/media/GeneratedMediaFrame'
 import { getDeckLanguageLabel, getDeckStatusLabel } from '@/lib/i18nDisplay'
+import { getCardThumbUrl } from '@/lib/imageUrls'
 
 type Deck = {
   id: string
@@ -431,6 +432,11 @@ function getDeckMeta(
   return { counts, progress, displayName, languageLabel }
 }
 
+function getDeckThumbnailUrl(deck: Deck, thumbnail: string | undefined): string | undefined {
+  if (!thumbnail) return undefined
+  return deck.deck_type === 'card' ? getCardThumbUrl(thumbnail) ?? undefined : thumbnail
+}
+
 /* ─── Stack View ─────────────────────────────────── */
 
 function StackView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
@@ -501,7 +507,7 @@ function StackCard({ deck, index, isTop, topDragX, onSwipe, onClick, wordCounts,
   const x = useMotionValue(0)
   const { t, tp, locale } = useTranslation()
   const { counts, displayName, languageLabel } = getDeckMeta(deck, wordCounts, locale, t)
-  const thumb = thumbnails[deck.id]
+  const thumb = getDeckThumbnailUrl(deck, thumbnails[deck.id])
 
   useEffect(() => {
     if (isTop) {
@@ -612,7 +618,7 @@ function GridView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {decks.map((deck, i) => {
         const { counts, displayName, languageLabel } = getDeckMeta(deck, wordCounts, locale, t)
-        const thumb = thumbnails[deck.id]
+        const thumb = getDeckThumbnailUrl(deck, thumbnails[deck.id])
 
         return (
           <motion.button
@@ -720,7 +726,7 @@ function WaterDecksView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) 
 
     for (let i = start; i <= end; i++) {
       const deck = decks[i]
-      const thumb = deck ? thumbnails[deck.id] : undefined
+      const thumb = deck ? getDeckThumbnailUrl(deck, thumbnails[deck.id]) : undefined
 
       if (thumb) {
         const img = new Image()
@@ -1020,7 +1026,7 @@ function WaterDeckCard({
 }: WaterDeckCardProps) {
   const { t, tp, locale } = useTranslation()
   const { counts, displayName, languageLabel } = getDeckMeta(deck, wordCounts, locale, t)
-  const thumb = thumbnails[deck.id]
+  const thumb = getDeckThumbnailUrl(deck, thumbnails[deck.id])
   const isGenerating = deck.status === 'generating'
   const virtualOffset = useTransform(carouselPosition, (position) => index - (Number.isFinite(position) ? position : 0))
   const rawVirtualDistance = useTransform(virtualOffset, (value) => Math.abs(value))
@@ -1235,7 +1241,7 @@ function OrbsView({ decks, wordCounts, thumbnails, onSelect }: ViewProps) {
       <div className="orbs-decks-atmosphere" aria-hidden="true" />
       {orbs.map((orb) => {
         const { displayName } = getDeckMeta(orb.deck, wordCounts, locale, t)
-        const thumb = thumbnails[orb.deck.id]
+        const thumb = getDeckThumbnailUrl(orb.deck, thumbnails[orb.deck.id])
 
         return (
           <motion.div

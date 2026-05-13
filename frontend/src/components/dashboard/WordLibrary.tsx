@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import type { LibraryWord } from './WordDetailModal'
 import { getDisplayArticle } from './articleDisplay'
 import { useTranslation } from '@/hooks/useTranslation'
+import { getCardThumbUrl } from '@/lib/imageUrls'
 
 type SortMode = 'recent' | 'az' | 'za'
 type FilterMode = 'all' | 'words' | 'phrases'
@@ -97,7 +98,7 @@ export default function WordLibrary({ words, onWordClick, emptyMessage }: WordLi
               >
                 {word.thumbnail_url ? (
                   <img
-                    src={word.thumbnail_url}
+                    src={word.deck_type === 'card' ? getCardThumbUrl(word.thumbnail_url) ?? undefined : word.thumbnail_url}
                     alt=""
                     className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
                     loading="lazy"
