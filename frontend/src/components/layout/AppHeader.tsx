@@ -71,7 +71,7 @@ export function AppHeader() {
     .slice(0, 2)
 
   return (
-    <header className="app-topnav flex items-center px-4 md:px-6 py-2 gap-2 sticky top-0 z-40 !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
+    <header className="app-topnav fixed top-0 left-0 right-0 flex items-center px-4 md:px-6 py-2 gap-2 z-50 !backdrop-blur-3xl !backdrop-saturate-150 !bg-black/40">
       {/* Mobile hamburger */}
       <div className="md:hidden">
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>

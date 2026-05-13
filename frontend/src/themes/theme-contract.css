@@ -286,13 +286,7 @@ body {
 .skin-classic .app-topnav {
   position: sticky;
   isolation: isolate;
-  background:
-    linear-gradient(
-      90deg,
-      var(--nav-bg) 0%,
-      color-mix(in srgb, var(--nav-bg) 86%, var(--accent) 8%) 50%,
-      var(--nav-bg) 100%
-    );
+  background: transparent;
   border-bottom-color: color-mix(in srgb, var(--accent) 24%, var(--border-subtle));
 }
 
@@ -309,7 +303,7 @@ body {
       color-mix(in srgb, var(--accent) 12%, transparent) 50%,
       transparent 100%
     );
-  opacity: 0.28;
+  opacity: 0.15;
 }
 
 .skin-classic .app-topnav > * {
