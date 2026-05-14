@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
     "test": "tsx scripts/test-deck-delete-ui.ts",
+    "test:guided-today": "tsx scripts/test-guided-vibes.ts && tsx scripts/test-guided-today-data.ts && tsx scripts/test-guided-path-directory.ts && tsx scripts/test-guided-today-path-overview.ts && tsx scripts/test-guided-segment-reviews.ts && tsx scripts/test-guided-cross-vibe.ts",
     "check:i18n": "tsx scripts/check-i18n-coverage.ts",
     "preview": "vite preview",
     "typecheck:api": "tsc -p tsconfig.api.json --noEmit",
