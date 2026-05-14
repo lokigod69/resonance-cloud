@@ -360,7 +360,6 @@ export default function FrostCanvas({
   onToggleImages,
   onToggleDirection,
   onToggleAutoReveal,
-  onExit,
   onContinue,
 }: CanvasModeProps) {
   const { playWord } = usePronunciation()
@@ -765,7 +764,6 @@ export default function FrostCanvas({
           onToggleAutoReveal={onToggleAutoReveal}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
-          onExit={onExit}
         />
 
         <div className="absolute inset-0 z-10">
@@ -877,7 +875,6 @@ interface ToolbarProps {
   onToggleAutoReveal: () => void
   onPrevPage: () => void
   onNextPage: () => void
-  onExit: () => void
 }
 
 function Toolbar({
@@ -896,24 +893,22 @@ function Toolbar({
   onToggleAutoReveal,
   onPrevPage,
   onNextPage,
-  onExit,
 }: ToolbarProps) {
   const { t } = useTranslation()
   const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
+  // Left padding clears the CanvasShell Back chip; top padding respects the iOS notch.
   return (
-    <div ref={toolbarRef} data-toolbar className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-start gap-2 px-3 py-2 sm:gap-3 sm:px-4 sm:py-3 bg-black/50 border-b border-white/10">
-      <button
-        onClick={(event) => {
-          event.stopPropagation()
-          onExit()
-        }}
-        className="h-9 px-3 text-xs uppercase tracking-widest text-white/30 hover:text-[#a8d8ea] border border-white/10 hover:border-[#a8d8ea]/50 bg-black/50 rounded-lg"
-      >
-        {t('study.canvas.exit')}
-      </button>
-
+    <div
+      ref={toolbarRef}
+      data-toolbar
+      className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-start gap-2 py-2 pr-3 sm:gap-3 sm:py-3 sm:pr-4 bg-black/50 border-b border-white/10"
+      style={{
+        paddingTop: 'max(0.5rem, calc(env(safe-area-inset-top, 0px) + 0.25rem))',
+        paddingLeft: 'calc(env(safe-area-inset-left, 0px) + 5.25rem)',
+      }}
+    >
       <div className="flex flex-wrap gap-1">
         {CANVAS_MODES.map((mode) => (
           <button

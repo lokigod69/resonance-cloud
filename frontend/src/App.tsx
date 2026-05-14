@@ -167,6 +167,8 @@ function AppRoutes() {
             </Suspense>
           )}
         />
+        {/* Canvas is a headerless immersion mode (like the games above) — lifted out of the skin layouts so no global header overlaps its toolbar */}
+        <Route path="/study/canvas" element={<StudyCanvas />} />
 
         {/* User-facing routes — skin-aware layout */}
         {skin === 'glassy' ? (
@@ -185,7 +187,6 @@ function AppRoutes() {
             <Route path="/study/video" element={<StudyPG />} />
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
             <Route path="/study/audio" element={<StudyAudio />} />
-            <Route path="/study/canvas" element={<StudyCanvas />} />
             <Route path="/music" element={<MusicPG />} />
             <Route path="/speak" element={<Speak />} />
           </Route>
@@ -205,7 +206,6 @@ function AppRoutes() {
             <Route path="/study/video" element={<Study />} />
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
             <Route path="/study/audio" element={<StudyAudio />} />
-            <Route path="/study/canvas" element={<StudyCanvas />} />
             <Route path="/music" element={<Music />} />
             <Route path="/speak" element={<Speak />} />
           </Route>
