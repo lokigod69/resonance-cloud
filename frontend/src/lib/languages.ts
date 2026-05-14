@@ -58,14 +58,17 @@ export const SPEAK_LANGUAGES   = LANGUAGES.filter((l) => l.isSpeak)
 
 // Maps an ISO code (e.g. 'en') to the canonical wizard-value form
 // (e.g. 'English') used by decks.target_language and profiles.base_language.
-// Mirror of profileBaseLanguageToIso in curriculumCategories.ts. Falls back
-// to the raw input if unrecognized so the caller can still surface a coherent
-// error downstream.
+// Mirror of profileBaseLanguageToIso in curriculumCategories.ts. Also accepts
+// the full-word form (case-insensitive) as a defensive path against schema
+// drift in curriculum JSON. Falls back to the raw input if unrecognized so
+// the caller can still surface a coherent error downstream. Empty string on
+// null/undefined is load-bearing — triggers the RPC's required-param check.
 export function isoToWizardValue(iso: string | null | undefined): string {
   if (!iso) return ''
   const normalized = iso.toLowerCase()
   return (
     LANGUAGES.find((l) => l.code.toLowerCase() === normalized)?.value
+    ?? LANGUAGES.find((l) => l.value.toLowerCase() === normalized)?.value
     ?? iso
   )
 }

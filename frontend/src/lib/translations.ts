@@ -1138,6 +1138,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Spanish': 'Spanish',
     'langName.Hindi': 'Hindi',
     'langName.Korean': 'Korean',
+    'langName.Portuguese': 'Portuguese',
+    'langName.Arabic': 'Arabic',
     // ISO-code aliases — safety net so any path that hands an ISO code to the
     // labeler still resolves a localized name. Keep in sync with langName.<FullWord>.
     'langName.de':  'German',
@@ -1151,6 +1153,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.es':  'Spanish',
     'langName.hi':  'Hindi',
     'langName.ko':  'Korean',
+    'langName.pt':  'Portuguese',
+    'langName.ar':  'Arabic',
 
     // ── Category groups (display labels; underlying API value stays English) ──
     'category.group.essentials': 'Essentials',
@@ -2271,6 +2275,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Spanish': 'Spanisch',
     'langName.Hindi': 'Hindi',
     'langName.Korean': 'Koreanisch',
+    'langName.Portuguese': 'Portugiesisch',
+    'langName.Arabic': 'Arabisch',
     // ISO-Code-Aliase — Sicherheitsnetz für Aufrufer, die einen ISO-Code an
     // den Labeler übergeben. Mit langName.<Vollform> synchron halten.
     'langName.de':  'Deutsch',
@@ -2284,6 +2290,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.es':  'Spanisch',
     'langName.hi':  'Hindi',
     'langName.ko':  'Koreanisch',
+    'langName.pt':  'Portugiesisch',
+    'langName.ar':  'Arabisch',
 
     // ── Kategorie-Gruppen (Anzeigetexte; API-Wert bleibt englisch) ──
     'category.group.essentials': 'Grundlagen',
@@ -3373,6 +3381,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.Spanish': 'Espagnol',
     'langName.Hindi': 'Hindi',
     'langName.Korean': 'Coréen',
+    'langName.Portuguese': 'portugais',
+    'langName.Arabic': 'arabe',
     // Alias des codes ISO — filet de sécurité pour les appelants qui passent
     // un code ISO au labeler. À synchroniser avec langName.<FormeComplète>.
     'langName.de':  'Allemand',
@@ -3386,6 +3396,8 @@ export const translations: Record<Locale, Record<string, string>> = {
     'langName.es':  'Espagnol',
     'langName.hi':  'Hindi',
     'langName.ko':  'Coréen',
+    'langName.pt':  'portugais',
+    'langName.ar':  'arabe',
 
     // ── Groupes de catégories (libellés d'affichage; valeur API en anglais) ──
     'category.group.essentials': 'Essentiels',
