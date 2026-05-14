@@ -1247,7 +1247,7 @@ function Toolbar({
         }}
         aria-label={exitLabel}
         title={exitLabel}
-        className="grid h-11 w-11 shrink-0 place-items-center border border-[#00fff2] bg-[#00fff2] text-black font-mono shadow-[0_0_18px_rgba(0,255,242,0.55)] transition-colors hover:bg-white hover:shadow-[0_0_24px_rgba(0,255,242,0.9)]"
+        className="grid h-11 w-11 shrink-0 place-items-center border border-[#00fff2]/70 bg-[#00fff2]/10 text-[#00fff2] font-mono shadow-[0_0_10px_rgba(0,255,242,0.18)] transition-colors hover:border-[#00fff2] hover:bg-[#00fff2]/20 hover:text-white hover:shadow-[0_0_18px_rgba(0,255,242,0.45)]"
       >
         <DoorOpen size={20} aria-hidden="true" />
       </button>
