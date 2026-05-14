@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 
 export type CardDetailField = {
   key: string
@@ -27,9 +28,6 @@ type CardDetailModalProps = {
   model: CardDetailModel | null
   onClose: () => void
 }
-
-let bodyScrollLockCount = 0
-let previousBodyOverflow: string | null = null
 
 function getFocusable(container: HTMLElement | null): HTMLElement[] {
   if (!container) return []
@@ -129,23 +127,7 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
   const previousFocusRef = useRef<HTMLElement | null>(null)
   const isOpen = Boolean(model)
 
-  useEffect(() => {
-    if (!isOpen) return
-
-    if (bodyScrollLockCount === 0) {
-      previousBodyOverflow = document.body.style.overflow
-      document.body.style.overflow = 'hidden'
-    }
-    bodyScrollLockCount += 1
-
-    return () => {
-      bodyScrollLockCount = Math.max(0, bodyScrollLockCount - 1)
-      if (bodyScrollLockCount === 0) {
-        document.body.style.overflow = previousBodyOverflow ?? ''
-        previousBodyOverflow = null
-      }
-    }
-  }, [isOpen])
+  useBodyScrollLock(isOpen)
 
   useEffect(() => {
     if (!model) return
@@ -208,7 +190,8 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
             role="dialog"
             aria-modal="true"
             aria-labelledby="card-detail-title"
-            className="relative max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-t-2xl p-5 pb-[calc(env(safe-area-inset-bottom,0px)+1rem)] outline-none sm:max-h-[88vh] sm:rounded-2xl sm:p-7"
+            data-body-scroll-lock-scrollable="true"
+            className="relative max-h-[92vh] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-t-2xl p-5 pb-[calc(env(safe-area-inset-bottom,0px)+1rem)] outline-none sm:max-h-[88vh] sm:rounded-2xl sm:p-7"
             style={{
               background: 'var(--surface-glass-strong)',
               border: '1px solid var(--border-strong)',
