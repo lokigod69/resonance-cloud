@@ -1,8 +1,10 @@
-import { useMemo, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, BookOpen } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { ArrowLeft, BookOpen, Check } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
+import { useToast } from '@/components/Toast'
+import { supabase } from '@/lib/supabase'
 import CurriculumEntryDetailModal from '@/components/categories/CurriculumEntryDetailModal'
 import CurriculumEntryImage from '@/components/categories/CurriculumEntryImage'
 import {
@@ -15,13 +17,22 @@ import {
   type CurriculumEnrichmentEntry,
   type CurriculumEntry,
 } from '@/data/curriculumCategories'
+import {
+  getImportedCurriculumDeck,
+  importCurriculumLevel,
+} from '@/lib/curriculumDeckBridge'
 import styles from './Categories.module.css'
 
 export default function LevelDetailPage() {
   const { categorySlug, levelNumber } = useParams<{ categorySlug: string; levelNumber: string }>()
-  const { profile } = useAuth()
+  const { profile, user } = useAuth()
   const { t, tp } = useTranslation()
+  const { toast } = useToast()
+  const navigate = useNavigate()
   const [selectedEntry, setSelectedEntry] = useState<CurriculumEntry | null>(null)
+  const [importedDeckId, setImportedDeckId] = useState<string | null>(null)
+  const [deckLookupLoading, setDeckLookupLoading] = useState(true)
+  const [importing, setImporting] = useState(false)
   const category = getCurriculumCategoryBySlug(categorySlug)
   const level = getCurriculumLevel(categorySlug, levelNumber)
   const baseLanguageIso = profileBaseLanguageToIso(profile?.base_language)
@@ -34,6 +45,77 @@ export default function LevelDetailPage() {
     }
     return result
   }, [enrichment, level?.level])
+
+  useEffect(() => {
+    let cancelled = false
+    setDeckLookupLoading(true)
+    setImportedDeckId(null)
+
+    if (!user?.id || !category || !level) {
+      setDeckLookupLoading(false)
+      return () => {
+        cancelled = true
+      }
+    }
+
+    void getImportedCurriculumDeck(supabase, user.id, category.slug, level.level)
+      .then((row) => {
+        if (cancelled) return
+        setImportedDeckId(row?.id ?? null)
+      })
+      .catch((error) => {
+        if (cancelled) return
+        console.error('[categories] imported-deck lookup failed', error)
+      })
+      .finally(() => {
+        if (cancelled) return
+        setDeckLookupLoading(false)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [user?.id, category, level])
+
+  const returnTo = useMemo(() => {
+    if (!category || !level) return null
+    return `/categories/${category.slug}/${level.level}`
+  }, [category, level])
+
+  const launchCanvas = useCallback(
+    (deckId: string) => {
+      if (!returnTo) return
+      const params = new URLSearchParams({ deck: deckId, returnTo })
+      navigate(`/study/canvas?${params.toString()}`)
+    },
+    [navigate, returnTo],
+  )
+
+  const handleStartLearning = useCallback(async () => {
+    if (!category || !level || !returnTo) return
+
+    if (importedDeckId) {
+      launchCanvas(importedDeckId)
+      return
+    }
+
+    setImporting(true)
+    try {
+      const deckId = await importCurriculumLevel(
+        supabase,
+        category,
+        level,
+        baseLanguageIso,
+        getLevelTitle(level),
+      )
+      setImportedDeckId(deckId)
+      launchCanvas(deckId)
+    } catch (error) {
+      console.error('[categories] curriculum import failed', error)
+      toast(t('categories.importFailed'), 'error')
+      setImporting(false)
+    }
+  }, [baseLanguageIso, category, importedDeckId, launchCanvas, level, returnTo, t, toast])
 
   if (!category || !level) {
     return (
@@ -54,6 +136,13 @@ export default function LevelDetailPage() {
     )
   }
 
+  const studyActionDisabled = importing || deckLookupLoading
+  const studyActionLabel = importing
+    ? t('categories.importing')
+    : importedDeckId
+      ? t('categories.continueLearning')
+      : t('categories.startLearning')
+
   return (
     <section className={styles.page}>
       <Link to={`/categories/${category.slug}`} className={styles.backLink}>
@@ -66,15 +155,33 @@ export default function LevelDetailPage() {
         <div>
           <p className={styles.eyebrow}>
             {t('categories.levelLabel', { number: level.level })} · {tp('categories.entryCount', level.entries.length)}
+            {importedDeckId ? (
+              <>
+                {' · '}
+                <span className={styles.tileImportedBadge}>
+                  <Check className="h-3 w-3" aria-hidden="true" />
+                  {t('categories.imported')}
+                </span>
+              </>
+            ) : null}
           </p>
           <h1 className={styles.title}>{getLevelTitle(level)}</h1>
           <p className={styles.subtitle}>{category.title}</p>
         </div>
         <div className={styles.heroAction}>
-          <button type="button" disabled aria-disabled="true" className={styles.disabledStudy}>
-            <BookOpen className="h-4 w-4" aria-hidden="true" />
-            <span>{t('categories.startLearning')}</span>
-            <span className={styles.soonBadge}>{t('categories.comingSoon')}</span>
+          <button
+            type="button"
+            className={styles.studyAction}
+            onClick={handleStartLearning}
+            disabled={studyActionDisabled}
+            aria-busy={importing || undefined}
+          >
+            {importing ? (
+              <span className={styles.studyActionSpinner} aria-hidden="true" />
+            ) : (
+              <BookOpen className="h-4 w-4" aria-hidden="true" />
+            )}
+            <span>{studyActionLabel}</span>
           </button>
         </div>
       </header>
