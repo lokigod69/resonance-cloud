@@ -114,9 +114,7 @@ export default function CurriculumEntryDetailModal({
     const gender = clean(enrichment.gender)
     if (plural) nounFields.push(`${t('categories.modal.plural')}: ${plural}`)
     if (gender) nounFields.push(`${t('categories.modal.gender')}: ${gender}`)
-    if (typeof enrichment.countable === 'boolean') {
-      nounFields.push(`${t('categories.modal.countable')}: ${booleanLabel(enrichment.countable, t)}`)
-    }
+    if (enrichment.countable === false) nounFields.push(t('categories.modal.uncountable'))
     if (nounFields.length > 0) {
       sections.push({
         key: 'noun-fields',

@@ -28,6 +28,9 @@ type CardDetailModalProps = {
   onClose: () => void
 }
 
+let bodyScrollLockCount = 0
+let previousBodyOverflow: string | null = null
+
 function getFocusable(container: HTMLElement | null): HTMLElement[] {
   if (!container) return []
   return Array.from(
@@ -124,6 +127,25 @@ export default function CardDetailModal({ model, onClose }: CardDetailModalProps
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const previousFocusRef = useRef<HTMLElement | null>(null)
+  const isOpen = Boolean(model)
+
+  useEffect(() => {
+    if (!isOpen) return
+
+    if (bodyScrollLockCount === 0) {
+      previousBodyOverflow = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+    }
+    bodyScrollLockCount += 1
+
+    return () => {
+      bodyScrollLockCount = Math.max(0, bodyScrollLockCount - 1)
+      if (bodyScrollLockCount === 0) {
+        document.body.style.overflow = previousBodyOverflow ?? ''
+        previousBodyOverflow = null
+      }
+    }
+  }, [isOpen])
 
   useEffect(() => {
     if (!model) return
