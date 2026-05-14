@@ -8,7 +8,7 @@
   },
   "icon": "🔢",
   "column": "grundlagen",
-  "cap_total_entries": 72,
+  "cap_total_entries": 70,
   "max_levels": 5,
   "generator_model": "gpt-5",
   "generated_at": "2026-05-13T07:59:10Z",

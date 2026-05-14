@@ -1,0 +1,1198 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "familie_beziehungen",
+  "source_languages_filled": [
+    "de"
+  ],
+  "generator_model": "gpt-5",
+  "generated_at": "2026-05-13T13:07:14Z",
+  "generator_version": "1.1",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "immediate_family",
+      "entries": [
+        {
+          "term": "father",
+          "pos": "noun",
+          "ipa": "/ˈfɑːðər/",
+          "etymology": "From Old English fæder, from Proto-Germanic *fadēr.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "family.immediate",
+          "synonyms": [
+            "dad",
+            "papa"
+          ],
+          "collocations": [
+            "father figure",
+            "founding father",
+            "father of two"
+          ],
+          "tags": [
+            "family",
+            "people",
+            "core"
+          ],
+          "example": "My father said he would fix the old chair.",
+          "prerequisites": [],
+          "plural": "fathers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "Englisch 'father' ist der alte Verwandte von 'Vater': V/F am Anfang, weicher stimmhafter th-Laut am Ende.",
+              "example_gloss": "Mein Vater sagte, er würde den alten Stuhl reparieren.",
+              "false_friends": [],
+              "common_mistake": "Das th in 'father' ist stimmhaft /ð/, nicht deutsches /t/."
+            }
+          }
+        },
+        {
+          "term": "mother",
+          "pos": "noun",
+          "ipa": "/ˈmʌðər/",
+          "etymology": "From Old English mōdor, from Proto-Germanic *mōdēr.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "family.immediate",
+          "synonyms": [
+            "mom",
+            "mama"
+          ],
+          "collocations": [
+            "mother tongue",
+            "mother hen",
+            "mother of three"
+          ],
+          "tags": [
+            "family",
+            "people",
+            "core"
+          ],
+          "example": "My mother said she would bring tea.",
+          "prerequisites": [],
+          "plural": "mothers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Mother' und 'Mutter' teilen das m und den weichen Verwandtschaftskern; merke dir nur den englischen kurzen /ʌ/-Vokal plus th.",
+              "example_gloss": "Meine Mutter sagte, sie würde Tee mitbringen.",
+              "false_friends": [],
+              "common_mistake": "Die erste Silbe klingt /mʌ/, nicht wie deutsches 'Mu' in 'Mutter'."
+            }
+          }
+        },
+        {
+          "term": "brother",
+          "pos": "noun",
+          "ipa": "/ˈbrʌðər/",
+          "etymology": "From Old English brōþor, from Proto-Germanic *brōþēr.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "family.immediate",
+          "synonyms": [
+            "bro"
+          ],
+          "collocations": [
+            "brother-in-arms",
+            "big brother",
+            "brotherly love"
+          ],
+          "tags": [
+            "family",
+            "people",
+            "core"
+          ],
+          "example": "My brother forgot his football boots.",
+          "prerequisites": [],
+          "plural": "brothers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "Bei 'brother' steckt 'Bruder' noch im Anfang 'bro-'; dann biegt das Wort in den englischen th-Laut statt deutsches d ab.",
+              "example_gloss": "Mein Bruder hat seine Fußballschuhe vergessen.",
+              "false_friends": [],
+              "common_mistake": "Nicht wie deutsches 'Bruder' mit /d/ sprechen; die Mitte ist stimmhaftes /ð/."
+            }
+          }
+        },
+        {
+          "term": "sister",
+          "pos": "noun",
+          "ipa": "/ˈsɪstər/",
+          "etymology": "From Old English sweostor, from Proto-Germanic *swestēr.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "family.immediate",
+          "synonyms": [
+            "sis"
+          ],
+          "collocations": [
+            "sister city",
+            "sister company",
+            "sister ship"
+          ],
+          "tags": [
+            "family",
+            "people",
+            "core"
+          ],
+          "example": "My sister left her red scarf at home.",
+          "prerequisites": [],
+          "plural": "sisters",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sister' wirkt wie 'Schwester' nach dem Abschneiden von 'Schw-': s + ist + er bleibt als englischer Kern.",
+              "example_gloss": "Meine Schwester hat ihren roten Schal zu Hause gelassen.",
+              "false_friends": [],
+              "common_mistake": "Der Anfang ist ein klares /s/, kein deutsches 'sch'."
+            }
+          }
+        },
+        {
+          "term": "son",
+          "pos": "noun",
+          "ipa": "/sʌn/",
+          "etymology": "From Old English sunu, from Proto-Germanic *sunuz.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "family.immediate",
+          "synonyms": [],
+          "collocations": [
+            "only son",
+            "native son",
+            "prodigal son"
+          ],
+          "tags": [
+            "family",
+            "people",
+            "core"
+          ],
+          "example": "Their son smiled when he saw the train.",
+          "prerequisites": [],
+          "plural": "sons",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Son' ist der kurze englische Cousin von 'Sohn': gleicher s-Anfang, aber kein langes deutsches o.",
+              "example_gloss": "Ihr Sohn lächelte, als er den Zug sah.",
+              "false_friends": [],
+              "common_mistake": "'Son' klingt wie 'sun' /sʌn/, nicht wie deutsches 'Sohn' mit langem /oː/."
+            }
+          }
+        },
+        {
+          "term": "daughter",
+          "pos": "noun",
+          "ipa": "/ˈdɔːtər/",
+          "etymology": "From Old English dohtor, from Proto-Germanic *duhtēr.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "family.immediate",
+          "synonyms": [],
+          "collocations": [
+            "eldest daughter",
+            "daughter cell",
+            "daughter company"
+          ],
+          "tags": [
+            "family",
+            "people",
+            "core"
+          ],
+          "example": "Their daughter packed her violin for school.",
+          "prerequisites": [],
+          "plural": "daughters",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Daughter' und 'Tochter' sind verwandt: denk an d/t am Anfang und daran, dass das englische gh ganz verschwindet.",
+              "example_gloss": "Ihre Tochter packte ihre Geige für die Schule ein.",
+              "false_friends": [],
+              "common_mistake": "Das gh ist stumm; nicht 'daug-hter' aussprechen."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "extended_family",
+      "entries": [
+        {
+          "term": "grandfather",
+          "pos": "noun",
+          "ipa": "/ˈɡrændˌfɑːðər/",
+          "etymology": "A compound of grand- from Old French grant (great, large) and father from Old English fæder.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "family.extended",
+          "synonyms": [
+            "grandpa",
+            "granddad"
+          ],
+          "collocations": [
+            "grandfather clock",
+            "grandfather clause",
+            "grandfather figure"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "My grandfather told me he was born near the sea.",
+          "prerequisites": [
+            "father"
+          ],
+          "plural": "grandfathers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Grandfather' ist wörtlich der 'große Vater': grand- entspricht der Groß-Idee in 'Großvater', dann folgt father.",
+              "example_gloss": "Mein Großvater erzählte mir, dass er am Meer geboren wurde.",
+              "false_friends": [],
+              "common_mistake": "In schneller Sprache fällt das d von 'grand' oft fast weg; trotzdem schreibt man 'grandfather'."
+            }
+          }
+        },
+        {
+          "term": "grandmother",
+          "pos": "noun",
+          "ipa": "/ˈɡrændˌmʌðər/",
+          "etymology": "A compound of grand- from Old French grant (great, large) and mother from Old English mōdor.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "family.extended",
+          "synonyms": [
+            "grandma",
+            "granny"
+          ],
+          "collocations": [
+            "grandmother clock",
+            "grandmother hypothesis",
+            "grandmother figure"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "My grandmother says she still writes letters by hand.",
+          "prerequisites": [
+            "mother"
+          ],
+          "plural": "grandmothers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "Für 'grandmother' nimm 'Großmutter' auseinander: grand- trägt das Groß-, mother trägt die Mutter.",
+              "example_gloss": "Meine Großmutter sagt, dass sie noch Briefe von Hand schreibt.",
+              "false_friends": [],
+              "common_mistake": "Nicht 'grand mutter' mit deutschem u sprechen; 'mother' hat den kurzen /ʌ/-Vokal."
+            }
+          }
+        },
+        {
+          "term": "uncle",
+          "pos": "noun",
+          "ipa": "/ˈʌŋkəl/",
+          "etymology": "From Middle English uncle, from Old French oncle, from Latin avunculus (maternal uncle).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "family.extended",
+          "synonyms": [],
+          "collocations": [
+            "Uncle Sam",
+            "Dutch uncle",
+            "rich uncle"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "Her uncle said he could drive us to the station.",
+          "prerequisites": [
+            "father",
+            "mother"
+          ],
+          "plural": "uncles",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Uncle' sieht dem deutschen 'Onkel' ähnlich, aber der englische Mund startet mit kurzem /ʌ/ und endet weich auf -cle.",
+              "example_gloss": "Ihr Onkel sagte, er könne uns zum Bahnhof fahren.",
+              "false_friends": [],
+              "common_mistake": "Das englische 'u' in 'uncle' klingt /ʌ/, nicht wie deutsches 'On-' in 'Onkel'."
+            }
+          }
+        },
+        {
+          "term": "aunt",
+          "pos": "noun",
+          "ipa": "/ænt/",
+          "etymology": "From Middle English aunte, from Old French ante, from Latin amita (paternal aunt).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "family.extended",
+          "synonyms": [
+            "auntie"
+          ],
+          "collocations": [
+            "agony aunt",
+            "maiden aunt",
+            "Aunt Sally"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "My aunt said she keeps old family photos in a blue box.",
+          "prerequisites": [
+            "father",
+            "mother"
+          ],
+          "plural": "aunts",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Aunt' ist nicht wie 'Tante' gebaut; stell dir vor, die Tante verliert ihr T und bleibt als kurzes 'ant/aunt' übrig.",
+              "example_gloss": "Meine Tante sagte, sie bewahre alte Familienfotos in einer blauen Kiste auf.",
+              "false_friends": [],
+              "common_mistake": "Viele US-Sprecher sagen /ænt/, also wie 'ant'; nicht automatisch /aʊnt/ lesen."
+            }
+          }
+        },
+        {
+          "term": "cousin",
+          "pos": "noun",
+          "ipa": "/ˈkʌzən/",
+          "etymology": "From Middle English cosin, from Old French cosin, from Latin consobrinus (mother's sister's child).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "family.extended",
+          "synonyms": [],
+          "collocations": [
+            "first cousin",
+            "second cousin",
+            "kissing cousin"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "My cousin Alex visits every July.",
+          "prerequisites": [
+            "uncle",
+            "aunt"
+          ],
+          "plural": "cousins",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cousin' sieht französisch aus wie im Deutschen, aber Englisch spricht die Mitte stimmhaft: /kʌzən/.",
+              "example_gloss": "Mein Cousin beziehungsweise meine Cousine Alex kommt jeden Juli zu Besuch.",
+              "false_friends": [
+                {
+                  "source_term": "Cousin",
+                  "note": "Deutsch 'Cousin' ist oft männlich; englisch 'cousin' ist geschlechtsneutral und deckt auch 'Cousine' ab."
+                }
+              ],
+              "common_mistake": "Englisch 'cousin' braucht kein Geschlecht; für eine Cousine sagt man ebenfalls 'cousin'."
+            }
+          }
+        },
+        {
+          "term": "nephew",
+          "pos": "noun",
+          "ipa": "/ˈnɛfjuː/",
+          "etymology": "From Middle English nevew, from Old French neveu, from Latin nepos (grandson, nephew).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "family.extended",
+          "synonyms": [],
+          "collocations": [
+            "great-nephew"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "His nephew showed him a drawing of a rocket.",
+          "prerequisites": [
+            "brother",
+            "sister"
+          ],
+          "plural": "nephews",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Nephew' gehört zu 'Neffe': beide starten mit nef-, aber Englisch hängt ein weiches -yoo an.",
+              "example_gloss": "Sein Neffe zeigte ihm eine Zeichnung von einer Rakete.",
+              "false_friends": [],
+              "common_mistake": "Die Endung ist /juː/; nicht bei einem deutschen kurzen 'Neff' stehen bleiben."
+            }
+          }
+        },
+        {
+          "term": "niece",
+          "pos": "noun",
+          "ipa": "/niːs/",
+          "etymology": "From Middle English nece, from Old French nece, from Late Latin neptia, related to Latin neptis (granddaughter, niece).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "family.extended",
+          "synonyms": [],
+          "collocations": [
+            "great-niece"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "Her niece waved when she came out of school.",
+          "prerequisites": [
+            "brother",
+            "sister"
+          ],
+          "plural": "nieces",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Niece' passt zu 'Nichte' über den n-Anfang, aber Englisch macht daraus ein langes, sauberes /niːs/.",
+              "example_gloss": "Ihre Nichte winkte, als sie aus der Schule kam.",
+              "false_friends": [
+                {
+                  "source_term": "nies",
+                  "note": "German 'nies-' as in 'niesen' is about sneezing; English 'niece' means 'Nichte'."
+                }
+              ],
+              "common_mistake": "'Niece' klingt /niːs/ und nicht wie 'nice' /naɪs/."
+            }
+          }
+        },
+        {
+          "term": "grandchild",
+          "pos": "noun",
+          "ipa": "/ˈɡrændˌtʃaɪld/",
+          "etymology": "A compound of grand- from Old French grant (great, large) and child from Old English cild.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "family.extended",
+          "synonyms": [],
+          "collocations": [
+            "first grandchild",
+            "great-grandchild"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "Their first grandchild was born in June.",
+          "prerequisites": [
+            "son",
+            "daughter"
+          ],
+          "plural": "grandchildren",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Grandchild' ist das Enkelkind von 'child': grand- markiert die Generation darüber, child bleibt das Kind.",
+              "example_gloss": "Ihr erstes Enkelkind wurde im Juni geboren.",
+              "false_friends": [],
+              "common_mistake": "Der Plural ist unregelmäßig 'grandchildren', nicht 'grandchilds'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "in_laws_and_step_relations",
+      "entries": [
+        {
+          "term": "father-in-law",
+          "pos": "noun",
+          "ipa": "/ˈfɑːðər ɪn lɔː/",
+          "etymology": "A compound of father and in-law; law comes from Old English lagu, reinforced by Old Norse lagu, and the kinship use refers to relationship by law rather than blood.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "family.in_law",
+          "synonyms": [],
+          "collocations": [
+            "future father-in-law",
+            "former father-in-law"
+          ],
+          "tags": [
+            "family",
+            "marriage"
+          ],
+          "example": "My father-in-law lent me his ladder.",
+          "prerequisites": [
+            "father",
+            "married"
+          ],
+          "plural": "fathers-in-law",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Father-in-law' ist der Vater durch das Gesetz der Ehe: father plus in-law, genau der Schwiegervater.",
+              "example_gloss": "Mein Schwiegervater lieh mir seine Leiter.",
+              "false_friends": [],
+              "common_mistake": "Der Plural setzt -s an den Verwandten: 'fathers-in-law', nicht 'father-in-laws'."
+            }
+          }
+        },
+        {
+          "term": "mother-in-law",
+          "pos": "noun",
+          "ipa": "/ˈmʌðər ɪn lɔː/",
+          "etymology": "A compound of mother and in-law; mother is from Old English mōdor, and in-law marks kinship created by marriage law.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "family.in_law",
+          "synonyms": [],
+          "collocations": [
+            "future mother-in-law",
+            "former mother-in-law"
+          ],
+          "tags": [
+            "family",
+            "marriage"
+          ],
+          "example": "My mother-in-law brought her photo album.",
+          "prerequisites": [
+            "mother",
+            "married"
+          ],
+          "plural": "mothers-in-law",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "Bei 'mother-in-law' kommt die Mutter nicht aus der Blutlinie, sondern 'in law' durch die Ehe.",
+              "example_gloss": "Meine Schwiegermutter brachte ihr Fotoalbum mit.",
+              "false_friends": [],
+              "common_mistake": "Auch hier heißt der Plural 'mothers-in-law', nicht 'mother-in-laws'."
+            }
+          }
+        },
+        {
+          "term": "brother-in-law",
+          "pos": "noun",
+          "ipa": "/ˈbrʌðər ɪn lɔː/",
+          "etymology": "A compound of brother from Old English brōþor and in-law, the marriage-law relation marker.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "family.in_law",
+          "synonyms": [],
+          "collocations": [
+            "future brother-in-law",
+            "former brother-in-law"
+          ],
+          "tags": [
+            "family",
+            "marriage"
+          ],
+          "example": "Her brother-in-law moved in next door after the wedding.",
+          "prerequisites": [
+            "brother",
+            "married"
+          ],
+          "plural": "brothers-in-law",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Brother-in-law' ist kein Bruder im Blut, sondern der Bruder auf der Gesetzes-Seite der Ehe.",
+              "example_gloss": "Ihr Schwager zog nach der Hochzeit nebenan ein.",
+              "false_friends": [],
+              "common_mistake": "Deutsch 'Schwager' deckt mehrere englische Beziehungen ab; 'brother-in-law' passt für den Bruder des Ehepartners oder den Mann eines Geschwisters."
+            }
+          }
+        },
+        {
+          "term": "sister-in-law",
+          "pos": "noun",
+          "ipa": "/ˈsɪstər ɪn lɔː/",
+          "etymology": "A compound of sister from Old English sweostor and in-law, marking kinship through marriage.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "family.in_law",
+          "synonyms": [],
+          "collocations": [
+            "future sister-in-law",
+            "former sister-in-law"
+          ],
+          "tags": [
+            "family",
+            "marriage"
+          ],
+          "example": "His sister-in-law helped choose a suit for the wedding.",
+          "prerequisites": [
+            "sister",
+            "married"
+          ],
+          "plural": "sisters-in-law",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sister-in-law' ist die Schwester über die Ehe-Regel: sister bleibt hörbar, in-law erklärt die Schwägerin.",
+              "example_gloss": "Seine Schwägerin half ihm, einen Anzug für die Hochzeit auszusuchen.",
+              "false_friends": [],
+              "common_mistake": "Der Plural ist 'sisters-in-law'; das -s gehört an 'sister'."
+            }
+          }
+        },
+        {
+          "term": "son-in-law",
+          "pos": "noun",
+          "ipa": "/ˈsʌn ɪn lɔː/",
+          "etymology": "A compound of son from Old English sunu and in-law, denoting a son relation created by marriage.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "family.in_law",
+          "synonyms": [],
+          "collocations": [
+            "future son-in-law",
+            "former son-in-law"
+          ],
+          "tags": [
+            "family",
+            "marriage"
+          ],
+          "example": "Their son-in-law fixed the boiler over the weekend.",
+          "prerequisites": [
+            "son",
+            "married"
+          ],
+          "plural": "sons-in-law",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "Beim 'son-in-law' ist 'son' der Schwieger-Sohn, nicht der eigene Sohn; in-law macht die Eheverbindung sichtbar.",
+              "example_gloss": "Ihr Schwiegersohn reparierte am Wochenende den Heizkessel.",
+              "false_friends": [],
+              "common_mistake": "Aussprache von 'son' bleibt /sʌn/ wie 'sun', auch in 'son-in-law'."
+            }
+          }
+        },
+        {
+          "term": "daughter-in-law",
+          "pos": "noun",
+          "ipa": "/ˈdɔːtər ɪn lɔː/",
+          "etymology": "A compound of daughter from Old English dohtor and in-law, the marriage-law kinship marker.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "family.in_law",
+          "synonyms": [],
+          "collocations": [
+            "future daughter-in-law",
+            "former daughter-in-law"
+          ],
+          "tags": [
+            "family",
+            "marriage"
+          ],
+          "example": "Their daughter-in-law planted roses along the garden path.",
+          "prerequisites": [
+            "daughter",
+            "married"
+          ],
+          "plural": "daughters-in-law",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Daughter-in-law' verbindet die schwierige 'daughter' mit in-law: die Tochter durch Ehe, also Schwiegertochter.",
+              "example_gloss": "Ihre Schwiegertochter pflanzte Rosen entlang des Gartenwegs.",
+              "false_friends": [],
+              "common_mistake": "Das gh in 'daughter' bleibt auch hier stumm; nicht in 'daughter-in-law' hörbar machen."
+            }
+          }
+        },
+        {
+          "term": "stepfather",
+          "pos": "noun",
+          "ipa": "/ˈstɛpˌfɑːðər/",
+          "etymology": "A compound of step- from Old English stēop- (bereaved, orphaned) and father from Old English fæder.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "family.step",
+          "synonyms": [
+            "stepdad"
+          ],
+          "collocations": [
+            "new stepfather",
+            "future stepfather"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "Her stepfather waited outside the gym after practice.",
+          "prerequisites": [
+            "father"
+          ],
+          "plural": "stepfathers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Stepfather' ist nicht der Vater eines Schritts; step- ist der alte Familienvorsatz wie in Stiefvater.",
+              "example_gloss": "Ihr Stiefvater wartete nach dem Training vor der Sporthalle.",
+              "false_friends": [
+                {
+                  "source_term": "Step",
+                  "note": "Deutsch 'Step' meint oft ein Sportgerät oder einen Tanzschritt; englisch 'stepfather' bedeutet 'Stiefvater'."
+                }
+              ],
+              "common_mistake": "Als Familienwort wird es meist geschlossen geschrieben: 'stepfather', nicht 'step father'."
+            }
+          }
+        },
+        {
+          "term": "stepmother",
+          "pos": "noun",
+          "ipa": "/ˈstɛpˌmʌðər/",
+          "etymology": "A compound of step- from Old English stēop- (bereaved, orphaned) and mother from Old English mōdor.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "family.step",
+          "synonyms": [
+            "stepmom"
+          ],
+          "collocations": [
+            "new stepmother",
+            "future stepmother"
+          ],
+          "tags": [
+            "family",
+            "people"
+          ],
+          "example": "His stepmother packed an extra slice of cake for him.",
+          "prerequisites": [
+            "mother"
+          ],
+          "plural": "stepmothers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "In 'stepmother' steckt derselbe step-/Stief-Vorsatz wie bei stepfather, dann kommt mother mit kurzem /ʌ/.",
+              "example_gloss": "Seine Stiefmutter packte ihm ein zusätzliches Stück Kuchen ein.",
+              "false_friends": [
+                {
+                  "source_term": "Step",
+                  "note": "Deutsch 'Step' ist oft ein Sport- oder Tanzwort; in englisch 'stepmother' markiert 'step-' eine Stiefbeziehung."
+                }
+              ],
+              "common_mistake": "Nicht als zwei deutsche Konzepte 'Schritt Mutter' verstehen; 'stepmother' ist ein festes Familienwort."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "relationship_states_and_terms_of_endearment",
+      "entries": [
+        {
+          "term": "single",
+          "pos": "adjective",
+          "ipa": "/ˈsɪŋɡəl/",
+          "etymology": "From Middle English single, from Old French sengle, from Latin singulus (one each, individual).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "relationships.status",
+          "synonyms": [
+            "unmarried"
+          ],
+          "collocations": [
+            "single parent",
+            "single life",
+            "single person"
+          ],
+          "tags": [
+            "relationships",
+            "status"
+          ],
+          "example": "After the breakup, Omar is single again.",
+          "prerequisites": [],
+          "comparative": null,
+          "superlative": null,
+          "antonym": "married",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Single' kommt von der Einzahl-Idee wie lateinisch singulus: eine Person, kein Paar.",
+              "example_gloss": "Nach der Trennung ist Omar wieder single.",
+              "false_friends": [],
+              "common_mistake": "Als Beziehungsstatus ist 'single' ein Adjektiv: 'I am single', nicht 'I am a single' ohne Nomen."
+            }
+          }
+        },
+        {
+          "term": "married",
+          "pos": "adjective",
+          "ipa": "/ˈmærid/",
+          "etymology": "Past participle of marry, from Middle English marien, from Old French marier, from Latin maritare (to wed).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "relationships.status",
+          "synonyms": [
+            "wed",
+            "wedded"
+          ],
+          "collocations": [
+            "married couple",
+            "married life",
+            "married name"
+          ],
+          "tags": [
+            "relationships",
+            "status",
+            "marriage"
+          ],
+          "example": "They are married and wear matching rings.",
+          "prerequisites": [],
+          "comparative": null,
+          "superlative": null,
+          "antonym": "single",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Married' steckt in 'marriage': stell dir zwei Ringe vor, die das kurze /mær/ zusammenhalten.",
+              "example_gloss": "Sie sind verheiratet und tragen passende Ringe.",
+              "false_friends": [],
+              "common_mistake": "Englisch sagt 'married to someone', nicht 'married with someone'."
+            }
+          }
+        },
+        {
+          "term": "divorced",
+          "pos": "adjective",
+          "ipa": "/dɪˈvɔːrst/",
+          "etymology": "From divorce, from Old French divorce/divorcer, from Latin divortium (separation), related to divertere (to turn apart).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "relationships.status",
+          "synonyms": [],
+          "collocations": [
+            "divorced parents",
+            "divorced couple",
+            "recently divorced"
+          ],
+          "tags": [
+            "relationships",
+            "status",
+            "marriage"
+          ],
+          "example": "She is divorced, but she and her ex share custody.",
+          "prerequisites": [
+            "married"
+          ],
+          "comparative": null,
+          "superlative": null,
+          "antonym": "married",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Divorced' enthält die Idee von zwei Wegen, die auseinandergehen: Latin divertere heißt wegdrehen.",
+              "example_gloss": "Sie ist geschieden, aber sie und ihr Ex teilen sich das Sorgerecht.",
+              "false_friends": [],
+              "common_mistake": "Bei Personen heißt es 'divorced from someone', nicht 'divorced with someone'."
+            }
+          }
+        },
+        {
+          "term": "engaged",
+          "pos": "adjective",
+          "ipa": "/ɪnˈɡeɪdʒd/",
+          "etymology": "Past participle of engage, from Middle French engager (to pledge), built on gage (pledge).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 4,
+          "topic": "relationships.status",
+          "synonyms": [
+            "betrothed"
+          ],
+          "collocations": [
+            "engaged couple",
+            "newly engaged",
+            "engaged to be married"
+          ],
+          "tags": [
+            "relationships",
+            "status",
+            "marriage"
+          ],
+          "example": "They got engaged and chose a wedding date.",
+          "prerequisites": [],
+          "comparative": null,
+          "superlative": null,
+          "antonym": "single",
+          "per_source": {
+            "de": {
+              "mnemonic": "Bei 'engaged' denk an ein 'gage', ein Pfand: Der Ring ist das sichtbare Pfand der Verlobung.",
+              "example_gloss": "Sie haben sich verlobt und ein Hochzeitsdatum ausgesucht.",
+              "false_friends": [
+                {
+                  "source_term": "engagiert",
+                  "note": "Deutsch 'engagiert' heißt meist einsatzfreudig oder sozial aktiv; englisch 'engaged' kann im Beziehungskontext 'verlobt' bedeuten."
+                }
+              ],
+              "common_mistake": "Für Verlobung sagt man 'engaged to someone', nicht nur das deutsche 'engagiert' im Sinn von einsatzfreudig."
+            }
+          }
+        },
+        {
+          "term": "partner",
+          "pos": "noun",
+          "ipa": "/ˈpɑːrtnər/",
+          "etymology": "From Middle English partner/partener, related to parcener (one who shares), from Anglo-French parcener and Old French part (share).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "relationships.person",
+          "synonyms": [
+            "companion",
+            "mate"
+          ],
+          "collocations": [
+            "life partner",
+            "business partner",
+            "dance partner"
+          ],
+          "tags": [
+            "relationships",
+            "people"
+          ],
+          "example": "Sam introduced Taylor as their partner at dinner.",
+          "prerequisites": [],
+          "plural": "partners",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Partner' ist fast identisch mit Deutsch 'Partner'; merke dir nur das englische r und die Betonung am Anfang.",
+              "example_gloss": "Sam stellte Taylor beim Abendessen als Partner beziehungsweise Partnerin vor.",
+              "false_friends": [],
+              "common_mistake": "Englisch 'partner' ist geschlechtsneutral; nicht zu 'boyfriend' oder 'girlfriend' wechseln, wenn Geschlecht oder Beziehungsart offen bleiben soll."
+            }
+          }
+        },
+        {
+          "term": "boyfriend",
+          "pos": "noun",
+          "ipa": "/ˈbɔɪˌfrɛnd/",
+          "etymology": "A compound of boy, from Middle English boi (origin uncertain), and friend from Old English frēond.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "relationships.person",
+          "synonyms": [
+            "partner"
+          ],
+          "collocations": [
+            "ex-boyfriend",
+            "steady boyfriend",
+            "long-distance boyfriend"
+          ],
+          "tags": [
+            "relationships",
+            "people"
+          ],
+          "example": "Lisa's boyfriend said he would call after work.",
+          "prerequisites": [],
+          "plural": "boyfriends",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Boyfriend' ist nicht irgendein männlicher Freund: boy + friend verschmilzt im Englischen zum romantischen Partner.",
+              "example_gloss": "Lisas Freund sagte, er würde nach der Arbeit anrufen.",
+              "false_friends": [
+                {
+                  "source_term": "Freund",
+                  "note": "Deutsch 'Freund' kann platonischer Freund oder fester Freund sein; englisch 'boyfriend' ist romantisch."
+                }
+              ],
+              "common_mistake": "Für einen rein platonischen männlichen Freund sagt man 'male friend' oder 'friend', nicht automatisch 'boyfriend'."
+            }
+          }
+        },
+        {
+          "term": "girlfriend",
+          "pos": "noun",
+          "ipa": "/ˈɡɜːrlˌfrɛnd/",
+          "etymology": "A compound of girl, from Middle English gurle/gerle (origin uncertain), and friend from Old English frēond.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "relationships.person",
+          "synonyms": [
+            "partner"
+          ],
+          "collocations": [
+            "ex-girlfriend",
+            "steady girlfriend",
+            "long-distance girlfriend"
+          ],
+          "tags": [
+            "relationships",
+            "people"
+          ],
+          "example": "Mark's girlfriend said she liked the apartment.",
+          "prerequisites": [],
+          "plural": "girlfriends",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Girlfriend' ist girl + friend, aber als ein Wort wird daraus die feste romantische Rolle.",
+              "example_gloss": "Marks Freundin sagte, ihr gefalle die Wohnung.",
+              "false_friends": [
+                {
+                  "source_term": "Freundin",
+                  "note": "Deutsch 'Freundin' kann platonische Freundin oder feste Freundin sein; englisch 'girlfriend' meint meist die romantische Partnerin."
+                }
+              ],
+              "common_mistake": "Für eine platonische Freundin sagt man eher 'female friend' oder einfach 'friend', nicht 'girlfriend', wenn keine romantische Bedeutung gemeint ist."
+            }
+          }
+        },
+        {
+          "term": "sweetheart",
+          "pos": "noun",
+          "ipa": "/ˈswiːtˌhɑːrt/",
+          "etymology": "A compound of sweet from Old English swēte and heart from Old English heorte; used as a term of affection since Middle English.",
+          "register": "colloquial",
+          "frequency_band": "B1",
+          "difficulty": 4,
+          "topic": "relationships.endearment",
+          "synonyms": [
+            "darling",
+            "beloved"
+          ],
+          "collocations": [
+            "high school sweetheart",
+            "childhood sweetheart",
+            "sweetheart deal"
+          ],
+          "tags": [
+            "relationships",
+            "affection"
+          ],
+          "example": "Grandma calls Grandpa her sweetheart.",
+          "prerequisites": [
+            "grandfather",
+            "grandmother"
+          ],
+          "plural": "sweethearts",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sweetheart' ist wörtlich ein süßes Herz; als Kosename landet es nahe bei deutschem 'Schatz'.",
+              "example_gloss": "Oma nennt Opa ihren Schatz.",
+              "false_friends": [],
+              "common_mistake": "Nicht medizinisch als 'süßes Herz' verstehen; als Anrede oder Nomen ist es ein Kosename."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

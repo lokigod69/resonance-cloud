@@ -1,0 +1,1766 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "zahlen_zeit",
+  "source_languages_filled": [
+    "de"
+  ],
+  "generator_model": "claude-opus-4-0520",
+  "generated_at": "2026-05-13T17:06:00Z",
+  "generator_version": "1.1-opus",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "numbers_0_9",
+      "entries": [
+        {
+          "term": "zero",
+          "pos": "number",
+          "ipa": "/ˈzɪəroʊ/",
+          "etymology": "From Italian zero, from Medieval Latin zephirum, from Arabic ṣifr (empty, cipher).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": ["nought", "nil"],
+          "collocations": ["zero tolerance", "below zero", "zero chance"],
+          "tags": ["number", "core"],
+          "example": "The temperature dropped to zero last night.",
+          "prerequisites": [],
+          "value": 0,
+          "ordinal_form": "zeroth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Zero' kommt über Italienisch und Arabisch — ein völlig anderer Stamm als deutsch 'null'. Merke: z wie in 'Ziel', dann -ero wie ein kleiner Held der Leere.",
+              "example_gloss": "Die Temperatur fiel letzte Nacht auf null.",
+              "false_friends": [
+                {
+                  "source_term": "null",
+                  "note": "Deutsch 'null' und englisch 'null' existieren beide, aber englisch 'null' bedeutet 'nichtig/ungültig' (Technik), nicht die Zahl 0. Die Zahl heißt 'zero'."
+                }
+              ],
+              "common_mistake": "Im Englischen gibt es mehrere Wörter für 0: 'zero' (Zahl), 'oh' (Telefonnummern), 'nil' (Sport), 'nought' (britisch). Deutsch nutzt immer 'null'."
+            }
+          }
+        },
+        {
+          "term": "one",
+          "pos": "number",
+          "ipa": "/wʌn/",
+          "etymology": "From Old English ān, from Proto-Germanic *ainaz.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["one by one", "one of a kind", "one another"],
+          "tags": ["number", "core"],
+          "example": "I have one sister and two brothers.",
+          "prerequisites": [],
+          "value": 1,
+          "ordinal_form": "first",
+          "per_source": {
+            "de": {
+              "mnemonic": "'One' beginnt mit /w/ — das geschriebene 'o' täuscht. Denk an 'won' (gewonnen): gleiche Aussprache, gleicher /wʌn/-Laut.",
+              "example_gloss": "Ich habe eine Schwester und zwei Brüder.",
+              "false_friends": [],
+              "common_mistake": "Aussprache ist /wʌn/, nicht /oʊn/. Das 'o' wird wie ein deutsches kurzes 'a' gesprochen, mit vorgesetztem /w/."
+            }
+          }
+        },
+        {
+          "term": "two",
+          "pos": "number",
+          "ipa": "/tuː/",
+          "etymology": "From Old English twā, from Proto-Germanic *twō.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": ["pair", "couple"],
+          "collocations": ["two-way", "in two", "two-thirds"],
+          "tags": ["number", "core"],
+          "example": "Two tickets for the evening show, please.",
+          "prerequisites": [],
+          "value": 2,
+          "ordinal_form": "second",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Two' ist ein Kognat von 'zwei' — gleicher tw-Anlaut, aber Englisch verschluckt das w in der Schrift nicht. Aussprache /tuː/ wie 'too'.",
+              "example_gloss": "Zwei Karten für die Abendvorstellung, bitte.",
+              "false_friends": [],
+              "common_mistake": "Verwechslung von 'two' (2), 'too' (auch/zu) und 'to' (Präposition) — alle drei klingen gleich: /tuː/."
+            }
+          }
+        },
+        {
+          "term": "three",
+          "pos": "number",
+          "ipa": "/θriː/",
+          "etymology": "From Old English þrēo, from Proto-Germanic *þrīz.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["three-piece", "three times", "rule of three"],
+          "tags": ["number", "core"],
+          "example": "She put three candles on the birthday cake.",
+          "prerequisites": [],
+          "value": 3,
+          "ordinal_form": "third",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Three' startet mit dem th-Laut /θ/ — Zunge zwischen die Zähne, dann ein langes /iː/. Deutsch 'drei' hat denselben dr-Anlaut verloren.",
+              "example_gloss": "Sie stellte drei Kerzen auf die Geburtstagstorte.",
+              "false_friends": [],
+              "common_mistake": "Das th /θ/ ist stimmlos und nicht wie deutsches /d/ oder /s/. Häufigster Fehler: 'sree' statt /θriː/."
+            }
+          }
+        },
+        {
+          "term": "four",
+          "pos": "number",
+          "ipa": "/fɔːr/",
+          "etymology": "From Old English fēower, from Proto-Germanic *fedwōr.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["four-leaf clover", "four seasons", "on all fours"],
+          "tags": ["number", "core"],
+          "example": "Four chairs stood around the kitchen table.",
+          "prerequisites": [],
+          "value": 4,
+          "ordinal_form": "fourth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Four' klingt fast wie 'for' — beide /fɔːr/. Verwandt mit deutsch 'vier': f bleibt, aber der Vokal wechselt von /iː/ zu /ɔː/.",
+              "example_gloss": "Vier Stühle standen um den Küchentisch.",
+              "false_friends": [],
+              "common_mistake": "'Four' /fɔːr/ und 'for' /fɔːr/ sind Homophone. Schriftlich nicht verwechseln."
+            }
+          }
+        },
+        {
+          "term": "five",
+          "pos": "number",
+          "ipa": "/faɪv/",
+          "etymology": "From Old English fīf, from Proto-Germanic *fimf.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["high five", "five-star", "nine to five"],
+          "tags": ["number", "core"],
+          "example": "The train leaves in five minutes.",
+          "prerequisites": [],
+          "value": 5,
+          "ordinal_form": "fifth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Five' teilt den f-Anlaut mit 'fünf', aber der Vokal ist der englische Diphthong /aɪ/ wie in 'life'. Fünf Finger = five fingers, gleicher Stamm.",
+              "example_gloss": "Der Zug fährt in fünf Minuten.",
+              "false_friends": [],
+              "common_mistake": "Das Ordinal 'fifth' verliert das v und wird /fɪfθ/ — nicht 'fiveth'. Außerdem schwieriger th-Laut am Ende."
+            }
+          }
+        },
+        {
+          "term": "six",
+          "pos": "number",
+          "ipa": "/sɪks/",
+          "etymology": "From Old English siex, from Proto-Germanic *sehs.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["six-pack", "at sixes and sevens", "sixth sense"],
+          "tags": ["number", "core"],
+          "example": "Six students waited outside the library.",
+          "prerequisites": [],
+          "value": 6,
+          "ordinal_form": "sixth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Six' und 'sechs' sind fast identische Kognaten — sechs hat nur das ch in der Mitte, das Englisch fallen lässt. Kurz und scharf: /sɪks/.",
+              "example_gloss": "Sechs Schüler warteten vor der Bibliothek.",
+              "false_friends": [],
+              "common_mistake": "Das Ordinal 'sixth' /sɪksθ/ kombiniert /ks/ mit /θ/ — ein schwieriger Konsonantencluster für deutsche Sprecher."
+            }
+          }
+        },
+        {
+          "term": "seven",
+          "pos": "number",
+          "ipa": "/ˈsɛvən/",
+          "etymology": "From Old English seofon, from Proto-Germanic *sebun.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["seven days", "lucky seven", "seven deadly sins"],
+          "tags": ["number", "core"],
+          "example": "The shop opens at seven in the morning.",
+          "prerequisites": [],
+          "value": 7,
+          "ordinal_form": "seventh",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Seven' und 'sieben' sind klare Kognaten: s-Anlaut, -ven/-ben am Ende. Das englische e ist kurz /ɛ/, nicht langes /iː/.",
+              "example_gloss": "Das Geschäft öffnet um sieben Uhr morgens.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "eight",
+          "pos": "number",
+          "ipa": "/eɪt/",
+          "etymology": "From Old English eahta, from Proto-Germanic *ahtōu.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["figure eight", "behind the eight ball"],
+          "tags": ["number", "core"],
+          "example": "We invited eight people to the dinner party.",
+          "prerequisites": [],
+          "value": 8,
+          "ordinal_form": "eighth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Eight' klingt exakt wie 'ate' (aß) — /eɪt/. Das gh ist komplett stumm. Verwandt mit 'acht': gleicher Vokal-Kern, aber Englisch macht daraus einen Diphthong.",
+              "example_gloss": "Wir luden acht Leute zur Dinnerparty ein.",
+              "false_friends": [],
+              "common_mistake": "Das gh in 'eight' ist stumm: /eɪt/, nicht /eɪɡt/. Gleiches gilt für 'eighth' /eɪtθ/."
+            }
+          }
+        },
+        {
+          "term": "nine",
+          "pos": "number",
+          "ipa": "/naɪn/",
+          "etymology": "From Old English nigon, from Proto-Germanic *newun.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["nine to five", "cloud nine", "nine lives"],
+          "tags": ["number", "core"],
+          "example": "The meeting starts at nine sharp.",
+          "prerequisites": [],
+          "value": 9,
+          "ordinal_form": "ninth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Nine' reimt sich auf 'fine' und 'wine'. Deutsch 'neun' hat den gleichen n-Anlaut, aber einen anderen Vokal: /ɔʏ/ statt /aɪ/.",
+              "example_gloss": "Die Besprechung beginnt um Punkt neun.",
+              "false_friends": [],
+              "common_mistake": "Das Ordinal 'ninth' verliert das e: nicht 'nineth', sondern 'ninth'. Häufiger Schreibfehler."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "numbers_10_100",
+      "entries": [
+        {
+          "term": "ten",
+          "pos": "number",
+          "ipa": "/tɛn/",
+          "etymology": "From Old English tīen, from Proto-Germanic *tehun.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["top ten", "ten out of ten", "ten percent"],
+          "tags": ["number", "core"],
+          "example": "She counted ten coins in her pocket.",
+          "prerequisites": [],
+          "value": 10,
+          "ordinal_form": "tenth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Ten' und 'zehn' sind enge Kognaten — t/z am Anfang, gleicher kurzer Vokal. Merke: ten reimt sich auf 'hen' und 'pen'.",
+              "example_gloss": "Sie zählte zehn Münzen in ihrer Tasche.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "eleven",
+          "pos": "number",
+          "ipa": "/ɪˈlɛvən/",
+          "etymology": "From Old English endleofan, meaning 'one left over' (after ten).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["eleven o'clock", "the eleventh hour"],
+          "tags": ["number", "core"],
+          "example": "Eleven players make up a football team.",
+          "prerequisites": ["one", "ten"],
+          "value": 11,
+          "ordinal_form": "eleventh",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Eleven' hat keine erkennbare Verbindung zu 'elf' auf den ersten Blick, aber beide bedeuten 'eins übrig nach zehn'. Merke: e-LEV-en, die Betonung sitzt in der Mitte.",
+              "example_gloss": "Elf Spieler bilden eine Fußballmannschaft.",
+              "false_friends": [],
+              "common_mistake": "Die Betonung liegt auf der zweiten Silbe: /ɪˈlɛvən/, nicht auf der ersten."
+            }
+          }
+        },
+        {
+          "term": "twelve",
+          "pos": "number",
+          "ipa": "/twɛlv/",
+          "etymology": "From Old English twelf, meaning 'two left over' (after ten).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": ["dozen"],
+          "collocations": ["twelve months", "twelve o'clock", "the twelve apostles"],
+          "tags": ["number", "core"],
+          "example": "She counted twelve candles on the birthday cake.",
+          "prerequisites": ["two", "ten"],
+          "value": 12,
+          "ordinal_form": "twelfth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Twelve' beginnt wie 'two' mit /tw/. Deutsch 'zwölf' zeigt die gleiche Verwandtschaft: zw-. Das v am Ende ist stimmhaft.",
+              "example_gloss": "Sie zählte zwölf Kerzen auf der Geburtstagstorte.",
+              "false_friends": [],
+              "common_mistake": "Das Ordinal 'twelfth' /twɛlfθ/ ist schwer auszusprechen — das v wird zu f, dann folgt th. Nicht 'twelveth' schreiben."
+            }
+          }
+        },
+        {
+          "term": "thirteen",
+          "pos": "number",
+          "ipa": "/ˌθɜːrˈtiːn/",
+          "etymology": "From Old English þrēotīene, a compound of three and ten with the suffix -teen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["Friday the thirteenth", "baker's dozen"],
+          "tags": ["number", "core"],
+          "example": "The elevator skipped floor thirteen.",
+          "prerequisites": ["three", "ten"],
+          "value": 13,
+          "ordinal_form": "thirteenth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Thirteen' hat die Betonung am ENDE: thir-TEEN. Im Gegensatz dazu hat 'thirty' die Betonung am Anfang: THIR-ty. Dieses Betonungsmuster ist der Schlüssel.",
+              "example_gloss": "Der Aufzug übersprang den dreizehnten Stock.",
+              "false_friends": [],
+              "common_mistake": "Verwechslung mit 'thirty' (30): thirteen /ˌθɜːrˈtiːn/ hat Endbetonung, thirty /ˈθɜːrti/ hat Anfangsbetonung."
+            }
+          }
+        },
+        {
+          "term": "fourteen",
+          "pos": "number",
+          "ipa": "/ˌfɔːrˈtiːn/",
+          "etymology": "From Old English fēowertīene, a compound of four and ten with the suffix -teen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["fourteen days", "Valentine's Day (February fourteenth)"],
+          "tags": ["number", "core"],
+          "example": "The package arrived after fourteen days.",
+          "prerequisites": ["four", "ten"],
+          "value": 14,
+          "ordinal_form": "fourteenth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Fourteen' bewahrt das u von 'four' — im Gegensatz zu 'forty', das es verliert. four + teen = fourteen, aber forty hat kein u.",
+              "example_gloss": "Das Paket kam nach vierzehn Tagen an.",
+              "false_friends": [],
+              "common_mistake": "Verwechslung mit 'forty' (40): fourteen /ˌfɔːrˈtiːn/ hat Endbetonung, forty /ˈfɔːrti/ hat Anfangsbetonung."
+            }
+          }
+        },
+        {
+          "term": "fifteen",
+          "pos": "number",
+          "ipa": "/ˌfɪfˈtiːn/",
+          "etymology": "From Old English fīftīene, a compound of five and ten with the suffix -teen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["fifteen minutes", "a quarter of an hour"],
+          "tags": ["number", "core"],
+          "example": "The bus arrives in fifteen minutes.",
+          "prerequisites": ["five", "ten"],
+          "value": 15,
+          "ordinal_form": "fifteenth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Fifteen' hat /f/ am Anfang und in der Mitte: fif-TEEN. Der Vokal wechselt von /aɪ/ in 'five' zu /ɪ/ in 'fifteen'.",
+              "example_gloss": "Der Bus kommt in fünfzehn Minuten.",
+              "false_friends": [],
+              "common_mistake": "Verwechslung mit 'fifty' (50): fifteen /ˌfɪfˈtiːn/ hat Endbetonung, fifty /ˈfɪfti/ hat Anfangsbetonung."
+            }
+          }
+        },
+        {
+          "term": "sixteen",
+          "pos": "number",
+          "ipa": "/ˌsɪksˈtiːn/",
+          "etymology": "From Old English siextīene, a compound of six and ten with the suffix -teen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["sweet sixteen"],
+          "tags": ["number", "core"],
+          "example": "She got her driving permit at sixteen.",
+          "prerequisites": ["six", "ten"],
+          "value": 16,
+          "ordinal_form": "sixteenth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sixteen' ist durchsichtig: six + teen. Deutsch 'sechzehn' folgt demselben Muster: sechs + zehn.",
+              "example_gloss": "Mit sechzehn bekam sie ihre Fahrerlaubnis.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "seventeen",
+          "pos": "number",
+          "ipa": "/ˌsɛvənˈtiːn/",
+          "etymology": "From Old English seofontīene, a compound of seven and ten with the suffix -teen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": [],
+          "tags": ["number", "core"],
+          "example": "Seventeen guests confirmed for the wedding.",
+          "prerequisites": ["seven", "ten"],
+          "value": 17,
+          "ordinal_form": "seventeenth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Seventeen' ist seven + teen, genau wie 'siebzehn' = sieben + zehn. Der Kognat macht es leicht — nur die Betonung auf -TEEN beachten.",
+              "example_gloss": "Siebzehn Gäste haben für die Hochzeit zugesagt.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "eighteen",
+          "pos": "number",
+          "ipa": "/ˌeɪˈtiːn/",
+          "etymology": "From Old English eahtatīene, a compound of eight and ten with the suffix -teen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["eighteen years old", "coming of age"],
+          "tags": ["number", "core"],
+          "example": "You can vote at eighteen in most countries.",
+          "prerequisites": ["eight", "ten"],
+          "value": 18,
+          "ordinal_form": "eighteenth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Eighteen' hat nur ein t, obwohl 'eight' auf t endet und '-teen' mit t beginnt. Schreibung: eight + een = eighteen, nicht eightteen.",
+              "example_gloss": "In den meisten Ländern darf man mit achtzehn wählen.",
+              "false_friends": [],
+              "common_mistake": "Nur ein t in 'eighteen': nicht 'eightteen'. Das gh bleibt wie bei 'eight' stumm."
+            }
+          }
+        },
+        {
+          "term": "nineteen",
+          "pos": "number",
+          "ipa": "/ˌnaɪnˈtiːn/",
+          "etymology": "From Old English nigontīene, a compound of nine and ten with the suffix -teen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["the nineteenth century", "COVID-19"],
+          "tags": ["number", "core"],
+          "example": "She started university at nineteen.",
+          "prerequisites": ["nine", "ten"],
+          "value": 19,
+          "ordinal_form": "nineteenth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Nineteen' ist nine + teen. Betonung auf -TEEN, nicht auf nine. Verwechslungsgefahr mit 'ninety' (90), das NINE-ty betont wird.",
+              "example_gloss": "Sie begann mit neunzehn ihr Studium.",
+              "false_friends": [],
+              "common_mistake": "Verwechslung mit 'ninety' (90): nineteen /ˌnaɪnˈtiːn/ vs. ninety /ˈnaɪnti/. Endbetonung = teen, Anfangsbetonung = tens."
+            }
+          }
+        },
+        {
+          "term": "twenty",
+          "pos": "number",
+          "ipa": "/ˈtwɛnti/",
+          "etymology": "From Old English twentig, meaning 'two groups of ten', from Proto-Germanic *twaintigaz.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": ["score"],
+          "collocations": ["twenty-four seven", "roaring twenties"],
+          "tags": ["number", "core"],
+          "example": "He walked twenty minutes to school every day.",
+          "prerequisites": ["two", "ten"],
+          "value": 20,
+          "ordinal_form": "twentieth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Twenty' beginnt mit dem tw- von 'two'. Deutsch 'zwanzig' zeigt dasselbe Muster: zw- von 'zwei'. Die Zehner-Endung ist -ty statt -zig.",
+              "example_gloss": "Er ging jeden Tag zwanzig Minuten zur Schule.",
+              "false_friends": [],
+              "common_mistake": "Im gesprochenen Amerikanisch wird das t oft zu einem Flap oder ganz verschluckt: /ˈtwɛni/. Trotzdem ist das t in der Schrift."
+            }
+          }
+        },
+        {
+          "term": "thirty",
+          "pos": "number",
+          "ipa": "/ˈθɜːrti/",
+          "etymology": "From Old English þrītig, meaning 'three groups of ten', from Proto-Germanic *þrīz tigiwiz.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["thirty days", "dirty thirty"],
+          "tags": ["number", "core"],
+          "example": "There are thirty days in September.",
+          "prerequisites": ["three", "ten"],
+          "value": 30,
+          "ordinal_form": "thirtieth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Thirty' hat Anfangsbetonung: THIR-ty. 'Thirteen' hat Endbetonung: thir-TEEN. Das ist der akustische Unterschied zwischen 30 und 13.",
+              "example_gloss": "Der September hat dreißig Tage.",
+              "false_friends": [],
+              "common_mistake": "Der th-Laut /θ/ plus der r-gefärbte Vokal /ɜːr/ macht 'thirty' zu einem der am häufigsten falsch ausgesprochenen Zahlwörter für deutsche Sprecher."
+            }
+          }
+        },
+        {
+          "term": "forty",
+          "pos": "number",
+          "ipa": "/ˈfɔːrti/",
+          "etymology": "From Old English fēowertig, meaning 'four groups of ten'. The modern spelling lost the u of 'four'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["forty winks", "the Roaring Forties", "Ali Baba and the Forty Thieves"],
+          "tags": ["number", "core"],
+          "example": "He ran forty laps around the track.",
+          "prerequisites": ["four", "ten"],
+          "value": 40,
+          "ordinal_form": "fortieth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Forty' verliert das u von 'four' — das ist die berühmteste Rechtschreibfalle: f-o-r-t-y, NICHT f-o-u-r-t-y.",
+              "example_gloss": "Er lief vierzig Runden um die Bahn.",
+              "false_friends": [],
+              "common_mistake": "Häufigster Schreibfehler im Englischen: 'fourty' ist FALSCH. Korrekt ist 'forty' ohne u, obwohl 'four' und 'fourteen' das u behalten."
+            }
+          }
+        },
+        {
+          "term": "fifty",
+          "pos": "number",
+          "ipa": "/ˈfɪfti/",
+          "etymology": "From Old English fīftig, meaning 'five groups of ten'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["fifty-fifty", "the nifty fifties"],
+          "tags": ["number", "core"],
+          "example": "The shop offers a fifty percent discount today.",
+          "prerequisites": ["five", "ten"],
+          "value": 50,
+          "ordinal_form": "fiftieth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Fifty' hat Anfangsbetonung FIF-ty; 'fifteen' hat Endbetonung fif-TEEN. Bei Telefongesprächen auf die Betonung achten: FIFTY vs. fifTEEN.",
+              "example_gloss": "Das Geschäft bietet heute fünfzig Prozent Rabatt.",
+              "false_friends": [],
+              "common_mistake": "Verwechslung mit 'fifteen' (15) am Telefon: fifty /ˈfɪfti/ vs. fifteen /ˌfɪfˈtiːn/. Betone die erste Silbe für 50."
+            }
+          }
+        },
+        {
+          "term": "sixty",
+          "pos": "number",
+          "ipa": "/ˈsɪksti/",
+          "etymology": "From Old English siextig, meaning 'six groups of ten'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["sixty seconds", "the Swinging Sixties"],
+          "tags": ["number", "core"],
+          "example": "There are sixty seconds in one minute.",
+          "prerequisites": ["six", "ten"],
+          "value": 60,
+          "ordinal_form": "sixtieth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sixty' ist durchsichtig: six + ty. Deutsch 'sechzig' folgt dem gleichen Muster: sechs + zig.",
+              "example_gloss": "Eine Minute hat sechzig Sekunden.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "seventy",
+          "pos": "number",
+          "ipa": "/ˈsɛvənti/",
+          "etymology": "From Old English hundseofontig, meaning 'seven groups of ten'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["the nineteen seventies"],
+          "tags": ["number", "core"],
+          "example": "My grandfather is seventy years old this year.",
+          "prerequisites": ["seven", "ten"],
+          "value": 70,
+          "ordinal_form": "seventieth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Seventy' = seven + ty, wie 'siebzig' = sieben + zig. Betonung auf der ersten Silbe: SEV-en-ty.",
+              "example_gloss": "Mein Großvater wird dieses Jahr siebzig.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "eighty",
+          "pos": "number",
+          "ipa": "/ˈeɪti/",
+          "etymology": "From Old English hundeahtatig, meaning 'eight groups of ten'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["around the world in eighty days"],
+          "tags": ["number", "core"],
+          "example": "The speed limit on this road is eighty kilometres per hour.",
+          "prerequisites": ["eight", "ten"],
+          "value": 80,
+          "ordinal_form": "eightieth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Eighty' /ˈeɪti/ klingt fast wie 'A.T.' — leichter zu merken als die Schreibung mit gh vermuten lässt. Das gh ist wie bei 'eight' stumm.",
+              "example_gloss": "Auf dieser Straße gilt ein Tempolimit von achtzig Stundenkilometern.",
+              "false_friends": [],
+              "common_mistake": "Das gh bleibt stumm: /ˈeɪti/, nicht /ˈeɪɡti/. Verwechslung mit 'eighteen' (18) vermeiden: eighty = EIGHty, eighteen = eigh-TEEN."
+            }
+          }
+        },
+        {
+          "term": "ninety",
+          "pos": "number",
+          "ipa": "/ˈnaɪnti/",
+          "etymology": "From Old English hundnigontig, meaning 'nine groups of ten'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["the nineties", "ninety-nine"],
+          "tags": ["number", "core"],
+          "example": "Ninety percent of the students passed the exam.",
+          "prerequisites": ["nine", "ten"],
+          "value": 90,
+          "ordinal_form": "ninetieth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Ninety' bewahrt das e von 'nine' — im Gegensatz zu 'ninth', das es verliert. nine → ninety (mit e), aber nine → ninth (ohne e).",
+              "example_gloss": "Neunzig Prozent der Schüler bestanden die Prüfung.",
+              "false_friends": [],
+              "common_mistake": "Schreibung: 'ninety' behält das e (nicht 'ninty'). Verwechslung mit 'nineteen' (19): ninety = NINE-ty, nineteen = nine-TEEN."
+            }
+          }
+        },
+        {
+          "term": "one hundred",
+          "pos": "number",
+          "ipa": "/wʌn ˈhʌndrəd/",
+          "etymology": "Hundred is from Old English hundred, from Proto-Germanic *hundą, related to Latin centum.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["one hundred percent", "a hundred times"],
+          "tags": ["number", "core"],
+          "example": "The book has exactly one hundred pages.",
+          "prerequisites": ["one"],
+          "value": 100,
+          "ordinal_form": "one hundredth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Hundred' und 'hundert' sind fast identische Kognaten. Nur die Endung unterscheidet sich: -ed vs. -ert. Man sagt 'one hundred' oder 'a hundred', nie nur 'hundred' allein.",
+              "example_gloss": "Das Buch hat genau einhundert Seiten.",
+              "false_friends": [],
+              "common_mistake": "Sowohl 'one hundred' als auch 'a hundred' sind korrekt. 'Hundred' bleibt im Plural unverändert: 'two hundred', nicht 'two hundreds'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "hundreds_and_thousands",
+      "entries": [
+        {
+          "term": "one hundred",
+          "pos": "number",
+          "ipa": "/wʌn ˈhʌndrəd/",
+          "etymology": "Hundred is from Old English hundred, from Proto-Germanic *hundą, cognate with Latin centum and Sanskrit śatám.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["one hundred percent", "a hundred years"],
+          "tags": ["number", "core"],
+          "example": "The old house is over one hundred years old.",
+          "prerequisites": ["one"],
+          "value": 100,
+          "ordinal_form": "one hundredth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Hundred' und 'hundert' sind fast identisch — einer der transparentesten Kognaten zwischen Deutsch und Englisch.",
+              "example_gloss": "Das alte Haus ist über einhundert Jahre alt.",
+              "false_friends": [],
+              "common_mistake": "'Hundred' bleibt nach Zahlen im Plural unverändert: 'five hundred', nicht 'five hundreds'. Nur 'hundreds of people' (ohne Zahl davor) bekommt ein s."
+            }
+          }
+        },
+        {
+          "term": "two hundred",
+          "pos": "number",
+          "ipa": "/tuː ˈhʌndrəd/",
+          "etymology": "A transparent compound: the cardinal 'two' from Old English twā plus 'hundred' from Old English hundred.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": [],
+          "tags": ["number", "core"],
+          "example": "The concert hall seats two hundred people.",
+          "prerequisites": ["two", "one hundred"],
+          "value": 200,
+          "ordinal_form": "two hundredth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Two hundred' folgt demselben Muster wie 'zweihundert' — nur getrennt geschrieben statt zusammen.",
+              "example_gloss": "Der Konzertsaal fasst zweihundert Personen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "three hundred",
+          "pos": "number",
+          "ipa": "/θriː ˈhʌndrəd/",
+          "etymology": "A transparent compound: the cardinal 'three' from Old English þrēo plus 'hundred' from Old English hundred.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": [],
+          "tags": ["number", "core"],
+          "example": "The village has about three hundred residents.",
+          "prerequisites": ["three", "one hundred"],
+          "value": 300,
+          "ordinal_form": "three hundredth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Three hundred' kombiniert den schwierigen th-Laut /θ/ von 'three' mit dem leichten Kognaten 'hundred'. Den th-Laut üben, der Rest ist einfach.",
+              "example_gloss": "Das Dorf hat etwa dreihundert Einwohner.",
+              "false_friends": [],
+              "common_mistake": "Der th-Laut in 'three' bleibt auch in 'three hundred' stimmlos /θ/: nicht /sriː/ oder /triː/."
+            }
+          }
+        },
+        {
+          "term": "four hundred",
+          "pos": "number",
+          "ipa": "/fɔːr ˈhʌndrəd/",
+          "etymology": "A transparent compound: the cardinal 'four' from Old English fēower plus 'hundred' from Old English hundred.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": [],
+          "tags": ["number", "core"],
+          "example": "The flight costs four hundred euros.",
+          "prerequisites": ["four", "one hundred"],
+          "value": 400,
+          "ordinal_form": "four hundredth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Four hundred' — beide Teile sind Kognaten: four/vier, hundred/hundert. Zwei bekannte Bausteine ergeben ein einfaches Kompositum.",
+              "example_gloss": "Der Flug kostet vierhundert Euro.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "five hundred",
+          "pos": "number",
+          "ipa": "/faɪv ˈhʌndrəd/",
+          "etymology": "A transparent compound: the cardinal 'five' from Old English fīf plus 'hundred' from Old English hundred.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": [],
+          "tags": ["number", "core"],
+          "example": "She saved five hundred dollars for the trip.",
+          "prerequisites": ["five", "one hundred"],
+          "value": 500,
+          "ordinal_form": "five hundredth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Five hundred' — der Diphthong /aɪv/ in 'five' plus der bekannte Kognat 'hundred'. Zusammen ein leicht merkbares Paar.",
+              "example_gloss": "Sie sparte fünfhundert Dollar für die Reise.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "six hundred",
+          "pos": "number",
+          "ipa": "/sɪks ˈhʌndrəd/",
+          "etymology": "A transparent compound: the cardinal 'six' from Old English siex plus 'hundred' from Old English hundred.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": [],
+          "tags": ["number", "core"],
+          "example": "The school has six hundred students this year.",
+          "prerequisites": ["six", "one hundred"],
+          "value": 600,
+          "ordinal_form": "six hundredth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Six hundred' — sechs/six sind Kognaten, hundert/hundred ebenfalls. Der Cluster /ksh/ zwischen den Wörtern ist der einzige Stolperstein.",
+              "example_gloss": "Die Schule hat dieses Jahr sechshundert Schüler.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "one thousand",
+          "pos": "number",
+          "ipa": "/wʌn ˈθaʊzənd/",
+          "etymology": "Thousand is from Old English þūsend, from Proto-Germanic *þūsundī.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["a thousand times", "one in a thousand"],
+          "tags": ["number", "core"],
+          "example": "The marathon attracted one thousand runners.",
+          "prerequisites": ["one"],
+          "value": 1000,
+          "ordinal_form": "one thousandth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Thousand' und 'tausend' sind Kognaten: th/t am Anfang, -sand/-send am Ende. Der th-Laut /θ/ ist der Unterschied.",
+              "example_gloss": "Der Marathon zog eintausend Läufer an.",
+              "false_friends": [],
+              "common_mistake": "Der th-Laut /θ/ in 'thousand' ist stimmlos. Wie bei 'hundred' bleibt 'thousand' nach Zahlen ohne Plural-s: 'five thousand', nicht 'five thousands'."
+            }
+          }
+        },
+        {
+          "term": "two thousand",
+          "pos": "number",
+          "ipa": "/tuː ˈθaʊzənd/",
+          "etymology": "A transparent compound: the cardinal 'two' from Old English twā plus 'thousand' from Old English þūsend.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["the year two thousand"],
+          "tags": ["number", "core"],
+          "example": "The city was founded in the year two thousand.",
+          "prerequisites": ["two", "one thousand"],
+          "value": 2000,
+          "ordinal_form": "two thousandth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Two thousand' wird bei Jahreszahlen oft als 'the year two thousand' gesagt — nicht 'twenty hundred' wie bei späteren Jahren (2010 = twenty ten).",
+              "example_gloss": "Die Stadt wurde im Jahr zweitausend gegründet.",
+              "false_friends": [],
+              "common_mistake": "Jahreszahlen: 'two thousand' (2000), aber ab 2010 oft 'twenty ten', 'twenty eleven' etc. Beide Formen koexistieren."
+            }
+          }
+        },
+        {
+          "term": "five thousand",
+          "pos": "number",
+          "ipa": "/faɪv ˈθaʊzənd/",
+          "etymology": "A transparent compound: the cardinal 'five' from Old English fīf plus 'thousand' from Old English þūsend.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": [],
+          "tags": ["number", "core"],
+          "example": "The stadium holds five thousand spectators.",
+          "prerequisites": ["five", "one thousand"],
+          "value": 5000,
+          "ordinal_form": "five thousandth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Five thousand' — auf Englisch getrennt geschrieben und gesprochen, auf Deutsch zusammen: fünftausend. Der Aufbau ist identisch.",
+              "example_gloss": "Das Stadion fasst fünftausend Zuschauer.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "ten thousand",
+          "pos": "number",
+          "ipa": "/tɛn ˈθaʊzənd/",
+          "etymology": "A transparent compound: the cardinal 'ten' from Old English tīen plus 'thousand' from Old English þūsend.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "numbers.cardinal",
+          "synonyms": [],
+          "collocations": ["ten thousand steps"],
+          "tags": ["number", "core"],
+          "example": "She tries to walk ten thousand steps every day.",
+          "prerequisites": ["ten", "one thousand"],
+          "value": 10000,
+          "ordinal_form": "ten thousandth",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Ten thousand' — beide Wörter sind Kognaten (ten/zehn, thousand/tausend). Der einzige Stolperstein ist das th /θ/ in 'thousand'.",
+              "example_gloss": "Sie versucht, jeden Tag zehntausend Schritte zu gehen.",
+              "false_friends": [],
+              "common_mistake": "Im Englischen wird bei großen Zahlen ein Komma als Tausendertrennzeichen verwendet: 10,000. Deutsch nutzt einen Punkt: 10.000."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "telling_time",
+      "entries": [
+        {
+          "term": "one o'clock",
+          "pos": "time_expression",
+          "ipa": "/wʌn əˈklɒk/",
+          "etymology": "O'clock is a contraction of 'of the clock', from Early Modern English time-telling conventions.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.clock",
+          "synonyms": [],
+          "collocations": ["at one o'clock", "one o'clock sharp"],
+          "tags": ["time", "core"],
+          "example": "The lunch break starts at one o'clock.",
+          "prerequisites": ["one"],
+          "per_source": {
+            "de": {
+              "mnemonic": "'O'clock' ist eine Abkürzung von 'of the clock'. Im Deutschen sagt man 'ein Uhr' — Englisch sagt 'one of the clock', verkürzt zu 'one o'clock'.",
+              "example_gloss": "Die Mittagspause beginnt um ein Uhr.",
+              "false_friends": [],
+              "common_mistake": "Präposition: 'at one o'clock', nicht 'on one o'clock' oder 'um one o'clock'. Englisch nutzt 'at' für Uhrzeiten."
+            }
+          }
+        },
+        {
+          "term": "two o'clock",
+          "pos": "time_expression",
+          "ipa": "/tuː əˈklɒk/",
+          "etymology": "O'clock is a contraction of 'of the clock', used since the 15th century to distinguish clock time from sundial time.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.clock",
+          "synonyms": [],
+          "collocations": ["at two o'clock", "two o'clock in the afternoon"],
+          "tags": ["time", "core"],
+          "example": "The meeting is scheduled for two o'clock.",
+          "prerequisites": ["two"],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Two o'clock' — nach der Zahl kommt immer o'clock für volle Stunden. Im 24h-System sagt Englisch trotzdem 'two o'clock', nicht 'fourteen o'clock'.",
+              "example_gloss": "Die Besprechung ist für zwei Uhr angesetzt.",
+              "false_friends": [],
+              "common_mistake": "Englisch nutzt im Alltag das 12-Stunden-System: 'two o'clock in the afternoon', nicht 'fourteen o'clock'."
+            }
+          }
+        },
+        {
+          "term": "half past one",
+          "pos": "time_expression",
+          "ipa": "/hɑːf pɑːst wʌn/",
+          "etymology": "Uses 'half' from Old English healf and 'past' as a time preposition indicating minutes after the hour.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "time.clock",
+          "synonyms": [],
+          "collocations": ["at half past one", "half past twelve"],
+          "tags": ["time", "core"],
+          "example": "The dentist appointment is at half past one.",
+          "prerequisites": ["one o'clock"],
+          "per_source": {
+            "de": {
+              "mnemonic": "ACHTUNG: 'half past one' = 1:30. Deutsch 'halb zwei' = auch 1:30, ABER die Logik ist umgekehrt: Deutsch blickt auf die NÄCHSTE Stunde (halb zwei), Englisch auf die VERGANGENE (half past one).",
+              "example_gloss": "Der Zahnarzttermin ist um halb zwei.",
+              "false_friends": [
+                {
+                  "source_term": "halb",
+                  "note": "Deutsch 'halb zwei' = 1:30 (halb zur nächsten Stunde). Englisch 'half past TWO' = 2:30 (halb nach der vergangenen Stunde). Die Zahl ist verschoben!"
+                }
+              ],
+              "common_mistake": "Häufigster Fehler: Deutsch 'halb sieben' = 6:30, aber Englisch 'half past seven' = 7:30. Die Zahl in der englischen Form ist immer die vergangene Stunde."
+            }
+          }
+        },
+        {
+          "term": "quarter past one",
+          "pos": "time_expression",
+          "ipa": "/ˈkwɔːrtər pɑːst wʌn/",
+          "etymology": "Uses 'quarter' from Old French quartier, from Latin quartarius (fourth part), meaning 15 minutes past the hour.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "time.clock",
+          "synonyms": [],
+          "collocations": ["at quarter past", "a quarter after"],
+          "tags": ["time", "core"],
+          "example": "The train leaves at quarter past one.",
+          "prerequisites": ["one o'clock"],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Quarter past one' = Viertel nach eins (1:15). Hier stimmt die Logik mit dem Deutschen überein: 'past' = 'nach'. Ein Quarter = 15 Minuten.",
+              "example_gloss": "Der Zug fährt um Viertel nach eins.",
+              "false_friends": [],
+              "common_mistake": "Amerikanisch sagt oft 'a quarter after one' statt 'quarter past one'. Beide sind korrekt."
+            }
+          }
+        },
+        {
+          "term": "quarter to two",
+          "pos": "time_expression",
+          "ipa": "/ˈkwɔːrtər tə tuː/",
+          "etymology": "Uses 'quarter' for 15 minutes and 'to' as a time preposition indicating minutes before the next hour.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "time.clock",
+          "synonyms": [],
+          "collocations": ["at quarter to", "a quarter of"],
+          "tags": ["time", "core"],
+          "example": "We need to leave at quarter to two.",
+          "prerequisites": ["two o'clock"],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Quarter to two' = Viertel vor zwei (1:45). 'To' bedeutet hier 'vor' — wie weit es noch BIS zur nächsten Stunde ist.",
+              "example_gloss": "Wir müssen um Viertel vor zwei gehen.",
+              "false_friends": [],
+              "common_mistake": "Amerikanisch sagt oft 'a quarter of two' oder 'one forty-five' statt 'quarter to two'."
+            }
+          }
+        },
+        {
+          "term": "in the morning",
+          "pos": "time_expression",
+          "ipa": "/ɪn ðə ˈmɔːrnɪŋ/",
+          "etymology": "Morning comes from Middle English morwening, from Old English morgen (morrow, morning).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.daypart",
+          "synonyms": [],
+          "collocations": ["early in the morning", "this morning", "tomorrow morning"],
+          "tags": ["time", "core"],
+          "example": "I wake up at seven in the morning.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Morning' und 'Morgen' sind Kognaten — gleicher Stamm. Die Präposition ist 'in': IN the morning, nicht 'am Morgen' direkt übersetzen.",
+              "example_gloss": "Ich wache um sieben Uhr morgens auf.",
+              "false_friends": [
+                {
+                  "source_term": "Morgen",
+                  "note": "Deutsch 'Morgen' bedeutet sowohl 'morning' als auch 'tomorrow'. Englisch trennt: 'morning' (Tageszeit) vs. 'tomorrow' (der nächste Tag)."
+                }
+              ],
+              "common_mistake": "Präposition: 'in the morning', aber 'on Monday morning'. Sobald ein Wochentag dabei ist, wechselt die Präposition zu 'on'."
+            }
+          }
+        },
+        {
+          "term": "in the afternoon",
+          "pos": "time_expression",
+          "ipa": "/ɪn ði ˌæftərˈnuːn/",
+          "etymology": "A compound of 'after' from Old English æfter and 'noon' from Old English nōn; originally meant the time after the midday meal.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.daypart",
+          "synonyms": [],
+          "collocations": ["this afternoon", "tomorrow afternoon", "yesterday afternoon"],
+          "tags": ["time", "core"],
+          "example": "The children play outside in the afternoon.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Afternoon' ist wörtlich 'nach dem Mittag': after + noon. Deutsch 'Nachmittag' folgt exakt derselben Logik: nach + Mittag.",
+              "example_gloss": "Die Kinder spielen nachmittags draußen.",
+              "false_friends": [],
+              "common_mistake": "Gleiche Präpositionsregel wie 'in the morning': 'in the afternoon', aber 'on Tuesday afternoon'."
+            }
+          }
+        },
+        {
+          "term": "in the evening",
+          "pos": "time_expression",
+          "ipa": "/ɪn ði ˈiːvnɪŋ/",
+          "etymology": "Evening comes from Old English ǣfnung, from ǣfen (the period approaching night).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.daypart",
+          "synonyms": [],
+          "collocations": ["this evening", "tomorrow evening", "yesterday evening"],
+          "tags": ["time", "core"],
+          "example": "We always call my grandmother on Sunday evening.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Evening' klingt wie 'Abend' + '-ing'. Merke den langen /iː/-Vokal am Anfang — das unterscheidet es von 'even' (gleich/eben).",
+              "example_gloss": "Wir rufen immer am Sonntagabend unsere Großmutter an.",
+              "false_friends": [],
+              "common_mistake": "Gleiche Regel: 'in the evening', aber 'on Friday evening'. Mit Wochentag → 'on'."
+            }
+          }
+        },
+        {
+          "term": "at night",
+          "pos": "time_expression",
+          "ipa": "/æt naɪt/",
+          "etymology": "Night comes from Old English niht, from Proto-Germanic *nahtiz, cognate with German Nacht and Latin nox.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "time.daypart",
+          "synonyms": [],
+          "collocations": ["last night", "tonight", "at night"],
+          "tags": ["time", "core"],
+          "example": "The city looks beautiful at night.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Night' und 'Nacht' sind enge Kognaten — gleicher Anfang, gleiches gh (stumm im Englischen). Aber ACHTUNG: die Präposition wechselt zu 'at'!",
+              "example_gloss": "Die Stadt sieht nachts wunderschön aus.",
+              "false_friends": [],
+              "common_mistake": "Präpositionswechsel: 'in the morning/afternoon/evening', ABER 'at night' — nicht 'in the night'. Das ist einer der häufigsten Fehler."
+            }
+          }
+        },
+        {
+          "term": "at noon",
+          "pos": "time_expression",
+          "ipa": "/æt nuːn/",
+          "etymology": "Noon comes from Old English nōn, from Latin nōna hōra (ninth hour, originally 3 PM), which later shifted to mean midday.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "time.daypart",
+          "synonyms": ["at midday"],
+          "collocations": ["around noon", "before noon", "by noon"],
+          "tags": ["time", "core"],
+          "example": "The sun is strongest at noon.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Noon' kommt aus dem Lateinischen nōna hōra — die neunte Stunde, die sich von 15:00 auf 12:00 verschob. Heute bedeutet es exakt Mittag, 12:00.",
+              "example_gloss": "Die Sonne ist um die Mittagszeit am stärksten.",
+              "false_friends": [],
+              "common_mistake": "Gleiche Präposition wie 'at night': 'at noon', nicht 'in noon'. Beide Extrempunkte (Mittag, Nacht) nutzen 'at'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "theme_slug": "days_months_dates",
+      "entries": [
+        {
+          "term": "Monday",
+          "pos": "day",
+          "ipa": "/ˈmʌndeɪ/",
+          "etymology": "From Old English Mōnandæg (Moon's day), a calque of Latin diēs Lūnae.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["on Monday", "Monday morning", "every Monday"],
+          "tags": ["time", "calendar"],
+          "example": "The library is closed every Monday.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Monday' = Moon day, 'Montag' = Mond-Tag. Beide leiten sich vom Mond ab — einer der klarsten Tag-Kognaten.",
+              "example_gloss": "Die Bibliothek ist jeden Montag geschlossen.",
+              "false_friends": [],
+              "common_mistake": "Präposition: 'on Monday', nicht 'at Monday' oder 'am Monday'. Tage nutzen immer 'on'."
+            }
+          }
+        },
+        {
+          "term": "Tuesday",
+          "pos": "day",
+          "ipa": "/ˈtuːzdeɪ/",
+          "etymology": "From Old English Tīwesdæg (Tiw's day). Tiw was the Norse god of war, corresponding to Mars in Latin diēs Martis.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["on Tuesday", "next Tuesday", "Tuesday evening"],
+          "tags": ["time", "calendar"],
+          "example": "We have a team meeting every Tuesday.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Tuesday' kommt vom Gott Tiw (Kriegsgott). Deutsch 'Dienstag' kommt von 'Dings-Tag' (Thing/Versammlung). Verschiedene Wurzeln — Klang hilft nicht, man muss es einfach lernen.",
+              "example_gloss": "Wir haben jeden Dienstag ein Teammeeting.",
+              "false_friends": [],
+              "common_mistake": "Die Aussprache beginnt mit /tjuːz/ oder /tuːz/, nicht mit /tʊ/. Der Anfang klingt wie 'choose' mit einem t."
+            }
+          }
+        },
+        {
+          "term": "Wednesday",
+          "pos": "day",
+          "ipa": "/ˈwɛnzdeɪ/",
+          "etymology": "From Old English Wōdnesdæg (Woden's day). Woden was the chief Germanic god, corresponding to Mercury in Latin diēs Mercuriī.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 4,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["on Wednesday", "Wednesday afternoon", "last Wednesday"],
+          "tags": ["time", "calendar"],
+          "example": "The farmers' market is open on Wednesday afternoon.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Wednesday' wird WENZ-day gesprochen — das d und das erste e sind stumm. Drei Silben in der Schrift, zwei in der Aussprache.",
+              "example_gloss": "Der Bauernmarkt hat am Mittwochnachmittag geöffnet.",
+              "false_friends": [],
+              "common_mistake": "Das d in 'Wednesday' ist stumm: /ˈwɛnzdeɪ/, nicht /ˈwɛdnɛzdeɪ/. Einer der häufigsten Aussprachefehler bei Lernern."
+            }
+          }
+        },
+        {
+          "term": "Thursday",
+          "pos": "day",
+          "ipa": "/ˈθɜːrzdeɪ/",
+          "etymology": "From Old English Þūnresdæg (Thunder's day / Thor's day), corresponding to Latin diēs Iovis (Jupiter's day).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["on Thursday", "Thursday night", "this Thursday"],
+          "tags": ["time", "calendar"],
+          "example": "My piano lesson is on Thursday at four.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Thursday' = Thor's day (Donner-Gott). Deutsch 'Donnerstag' = Donner-Tag. Gleicher germanischer Gott, verschiedene Wortform.",
+              "example_gloss": "Mein Klavierunterricht ist am Donnerstag um vier.",
+              "false_friends": [],
+              "common_mistake": "Der th-Laut /θ/ am Anfang: stimmlos, nicht wie deutsches /d/. 'Thursday' beginnt mit demselben /θ/ wie 'three' und 'thirteen'."
+            }
+          }
+        },
+        {
+          "term": "Friday",
+          "pos": "day",
+          "ipa": "/ˈfraɪdeɪ/",
+          "etymology": "From Old English Frīgedæg (Frigg's day). Frigg was the Norse goddess of love, corresponding to Venus in Latin diēs Veneris.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["on Friday", "Friday night", "Thank God it's Friday"],
+          "tags": ["time", "calendar"],
+          "example": "We usually order pizza on Friday evening.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Friday' und 'Freitag' teilen den Fr-Anfang — beide von der Göttin Freya/Frigg. Der Diphthong /aɪ/ in 'Fri-' ist der englische Schlüssellaut.",
+              "example_gloss": "Freitagabend bestellen wir meistens Pizza.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "Saturday",
+          "pos": "day",
+          "ipa": "/ˈsætərdeɪ/",
+          "etymology": "From Old English Sæternesdæg (Saturn's day), the only English weekday named after a Roman rather than Germanic deity.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["on Saturday", "Saturday morning", "every Saturday"],
+          "tags": ["time", "calendar"],
+          "example": "The children go swimming every Saturday morning.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Saturday' kommt vom römischen Gott Saturn — der einzige englische Wochentag ohne germanischen Götternamen. Deutsch 'Samstag' hat einen ganz anderen Ursprung (vom Sabbat).",
+              "example_gloss": "Die Kinder gehen jeden Samstagmorgen schwimmen.",
+              "false_friends": [],
+              "common_mistake": "Im gesprochenen Englisch wird das t in der Mitte oft zu einem Flap: /ˈsæɾərdeɪ/. Die Schreibung behält das t."
+            }
+          }
+        },
+        {
+          "term": "Sunday",
+          "pos": "day",
+          "ipa": "/ˈsʌndeɪ/",
+          "etymology": "From Old English Sunnandæg (Sun's day), a calque of Latin diēs Sōlis.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["on Sunday", "Sunday roast", "Sunday school"],
+          "tags": ["time", "calendar"],
+          "example": "The whole family gathers for lunch on Sunday.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sunday' = Sun's day, 'Sonntag' = Sonn-Tag. Perfekte Kognaten — Sonne/Sun im Namen, Tag/day am Ende.",
+              "example_gloss": "Die ganze Familie trifft sich sonntags zum Mittagessen.",
+              "false_friends": [],
+              "common_mistake": "Tage und Monate werden auf Englisch IMMER großgeschrieben: 'Sunday', nicht 'sunday'. Im Deutschen auch, aber im Englischen gilt dies nur für Eigennamen."
+            }
+          }
+        },
+        {
+          "term": "January",
+          "pos": "month",
+          "ipa": "/ˈdʒænjuˌɛri/",
+          "etymology": "From Latin Iānuārius, named after Janus, the two-faced Roman god of beginnings and doorways.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in January", "January sales", "mid-January"],
+          "tags": ["time", "calendar"],
+          "example": "January is usually the coldest month of the year.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'January' und 'Januar' sind fast identisch — Jan- bleibt gleich, nur die Endung wechselt: -uary statt -uar. Betonung auf der ersten Silbe.",
+              "example_gloss": "Der Januar ist normalerweise der kälteste Monat des Jahres.",
+              "false_friends": [],
+              "common_mistake": "Präposition: 'in January', nicht 'on January' oder 'im January'. Monate nutzen 'in'."
+            }
+          }
+        },
+        {
+          "term": "February",
+          "pos": "month",
+          "ipa": "/ˈfɛbruˌɛri/",
+          "etymology": "From Latin Februārius, named after Februa, the Roman purification festival held on February 15th.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in February", "February fourteenth", "late February"],
+          "tags": ["time", "calendar"],
+          "example": "February is the shortest month of the year.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'February' hat ein verstecktes r in der ersten Silbe, das oft verschluckt wird: FEB-ru-ary, nicht FEB-u-ary. Deutsch 'Februar' hat das gleiche r-Problem nicht.",
+              "example_gloss": "Der Februar ist der kürzeste Monat des Jahres.",
+              "false_friends": [],
+              "common_mistake": "Die Aussprache schwankt: /ˈfɛbruˌɛri/ (mit r) oder /ˈfɛbjuˌɛri/ (ohne r). Beide gelten als akzeptabel."
+            }
+          }
+        },
+        {
+          "term": "March",
+          "pos": "month",
+          "ipa": "/mɑːrtʃ/",
+          "etymology": "From Latin Mārtius, named after Mars, the Roman god of war. March was the first month of the early Roman calendar.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in March", "March winds", "the Ides of March"],
+          "tags": ["time", "calendar"],
+          "example": "The first flowers appear in March.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'March' und 'März' teilen den Mar-Stamm — beide vom Kriegsgott Mars. Die englische Endung -ch klingt wie /tʃ/, nicht wie deutsches -z.",
+              "example_gloss": "Die ersten Blumen erscheinen im März.",
+              "false_friends": [
+                {
+                  "source_term": "marsch",
+                  "note": "Deutsch 'marschieren' / Englisch 'to march' (gehen/marschieren) ist ein anderes Wort als der Monat 'March' — gleiche Schreibung, verschiedene Bedeutung."
+                }
+              ],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "April",
+          "pos": "month",
+          "ipa": "/ˈeɪprəl/",
+          "etymology": "From Latin Aprīlis, possibly from aperīre (to open), referring to the opening of buds in spring.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in April", "April Fools' Day", "April showers"],
+          "tags": ["time", "calendar"],
+          "example": "Her birthday is in April, right after Easter.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'April' sieht auf Deutsch und Englisch gleich aus, wird aber anders betont: Englisch /ˈeɪprəl/ mit langem /eɪ/ am Anfang, Deutsch mit kurzem a.",
+              "example_gloss": "Ihr Geburtstag ist im April, direkt nach Ostern.",
+              "false_friends": [],
+              "common_mistake": "Die erste Silbe klingt /eɪ/ wie in 'ape', nicht /a/ wie im Deutschen. Betonung bleibt auf der ersten Silbe."
+            }
+          }
+        },
+        {
+          "term": "May",
+          "pos": "month",
+          "ipa": "/meɪ/",
+          "etymology": "From Latin Māius, named after Maia, the Roman goddess of growth and spring.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in May", "May Day", "maypole"],
+          "tags": ["time", "calendar"],
+          "example": "The roses bloom in May.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'May' und 'Mai' klingen fast gleich — /meɪ/ vs. /maɪ/. Ein Buchstabe Unterschied, gleicher Monat. Leichtester Monatsname für deutsche Lerner.",
+              "example_gloss": "Die Rosen blühen im Mai.",
+              "false_friends": [
+                {
+                  "source_term": "may",
+                  "note": "Englisch 'may' (Kleinschreibung) ist auch ein Modalverb: 'May I help you?' (Darf ich helfen?). Nur als Monat großgeschrieben."
+                }
+              ],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "June",
+          "pos": "month",
+          "ipa": "/dʒuːn/",
+          "etymology": "From Latin Iūnius, named after Juno, the Roman goddess of marriage and queen of the gods.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in June", "June wedding", "midsummer"],
+          "tags": ["time", "calendar"],
+          "example": "School ends in June and starts again in September.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'June' beginnt mit dem englischen /dʒ/-Laut, nicht mit deutschem /j/. Deutsch 'Juni' beginnt mit /j/, Englisch 'June' mit /dʒ/ wie in 'jump'.",
+              "example_gloss": "Die Schule endet im Juni und beginnt im September wieder.",
+              "false_friends": [],
+              "common_mistake": "Der Anfangslaut ist /dʒ/ (wie in 'jump'), nicht /j/ (wie in deutsch 'Juni'). Das ist der Hauptunterschied."
+            }
+          }
+        },
+        {
+          "term": "July",
+          "pos": "month",
+          "ipa": "/dʒuˈlaɪ/",
+          "etymology": "From Latin Iūlius, renamed in honor of Julius Caesar, who was born in this month.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in July", "the Fourth of July", "mid-July"],
+          "tags": ["time", "calendar"],
+          "example": "We usually go on holiday in July.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'July' hat die Betonung auf der ZWEITEN Silbe: ju-LY. Deutsch 'Juli' betont die erste: JU-li. Derselbe /dʒ/-Laut wie bei 'June'.",
+              "example_gloss": "Wir fahren normalerweise im Juli in den Urlaub.",
+              "false_friends": [],
+              "common_mistake": "Betonung: /dʒuˈlaɪ/ mit Betonung auf -LY, nicht auf der ersten Silbe wie im Deutschen."
+            }
+          }
+        },
+        {
+          "term": "August",
+          "pos": "month",
+          "ipa": "/ˈɔːɡəst/",
+          "etymology": "From Latin Augustus, renamed in honor of Emperor Augustus Caesar in 8 BC.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in August", "late August", "August heat"],
+          "tags": ["time", "calendar"],
+          "example": "The music festival takes place every August.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'August' sieht deutsch und englisch gleich aus, klingt aber anders: Englisch /ˈɔːɡəst/ betont die erste Silbe mit /ɔː/, Deutsch betont die zweite mit /ʊ/.",
+              "example_gloss": "Das Musikfestival findet jeden August statt.",
+              "false_friends": [
+                {
+                  "source_term": "August",
+                  "note": "Deutsch 'August' ist auch ein männlicher Vorname (betont auf der zweiten Silbe). Englisch 'August' als Monat betont die erste Silbe."
+                }
+              ],
+              "common_mistake": "Die Betonung liegt auf der ERSTEN Silbe: /ˈɔːɡəst/. Deutsch betont die zweite: au-GUST. Die Schreibung ist identisch."
+            }
+          }
+        },
+        {
+          "term": "September",
+          "pos": "month",
+          "ipa": "/sɛpˈtɛmbər/",
+          "etymology": "From Latin september, from septem (seven). It was the seventh month in the early Roman calendar before January and February were added.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in September", "early September", "September equinox"],
+          "tags": ["time", "calendar"],
+          "example": "The new school year begins in September.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'September' ist identisch in Schreibung und fast identisch in Aussprache. Merke nur die englische Betonung auf der zweiten Silbe: sep-TEM-ber.",
+              "example_gloss": "Das neue Schuljahr beginnt im September.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "October",
+          "pos": "month",
+          "ipa": "/ɑːkˈtoʊbər/",
+          "etymology": "From Latin octōber, from octō (eight). It was the eighth month in the early Roman calendar.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in October", "October fest", "late October"],
+          "tags": ["time", "calendar"],
+          "example": "The leaves turn red and gold in October.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'October' und 'Oktober' — ein Buchstabe Unterschied (c vs. k). Die englische Aussprache hat einen langen /oʊ/ in der zweiten Silbe.",
+              "example_gloss": "Die Blätter werden im Oktober rot und golden.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "November",
+          "pos": "month",
+          "ipa": "/noʊˈvɛmbər/",
+          "etymology": "From Latin november, from novem (nine). It was the ninth month in the early Roman calendar.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in November", "Thanksgiving (in November)", "November rain"],
+          "tags": ["time", "calendar"],
+          "example": "The first snow often falls in November.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'November' ist in beiden Sprachen identisch geschrieben. Der einzige Unterschied: der englische /oʊ/-Diphthong in der ersten Silbe statt deutsches kurzes /o/.",
+              "example_gloss": "Der erste Schnee fällt oft im November.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "December",
+          "pos": "month",
+          "ipa": "/dɪˈsɛmbər/",
+          "etymology": "From Latin december, from decem (ten). It was the tenth month in the early Roman calendar.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.calendar",
+          "synonyms": [],
+          "collocations": ["in December", "December holidays", "mid-December"],
+          "tags": ["time", "calendar"],
+          "example": "We always visit my grandparents in December.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'December' und 'Dezember' — c vs. z, ansonsten identisch. Die englische Betonung liegt auf der zweiten Silbe wie im Deutschen: de-CEM-ber.",
+              "example_gloss": "Wir besuchen immer im Dezember meine Großeltern.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "today",
+          "pos": "time_expression",
+          "ipa": "/təˈdeɪ/",
+          "etymology": "From Old English tō dæge, meaning 'on (this) day'. The compound fused into a single word in Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "time.relative",
+          "synonyms": [],
+          "collocations": ["today's newspaper", "later today", "as of today"],
+          "tags": ["time", "core"],
+          "example": "I have a dentist appointment today at three.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Today' = to + day (zu diesem Tag). Deutsch 'heute' hat keine sichtbare Verbindung. Merke: today reimt sich auf 'hooray' — der Tag ist da!",
+              "example_gloss": "Ich habe heute um drei einen Zahnarzttermin.",
+              "false_friends": [],
+              "common_mistake": "'Today' und 'tomorrow' stehen OHNE Präposition: 'I go today', nicht 'I go on today'. Deutsch nutzt ebenfalls keine Präposition vor 'heute'."
+            }
+          }
+        },
+        {
+          "term": "tomorrow",
+          "pos": "time_expression",
+          "ipa": "/təˈmɒroʊ/",
+          "etymology": "From Middle English to morwe, from Old English tō morgenne (on the morrow). Related to German Morgen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "time.relative",
+          "synonyms": [],
+          "collocations": ["tomorrow morning", "the day after tomorrow", "see you tomorrow"],
+          "tags": ["time", "core"],
+          "example": "Tomorrow we are driving to the coast.",
+          "prerequisites": [],
+          "per_source": {
+            "de": {
+              "mnemonic": "'Tomorrow' kommt von 'to morrow' — verwandt mit deutsch 'Morgen'. Aber ACHTUNG: deutsch 'Morgen' = sowohl 'tomorrow' als auch 'morning'. Englisch trennt das.",
+              "example_gloss": "Morgen fahren wir an die Küste.",
+              "false_friends": [
+                {
+                  "source_term": "Morgen",
+                  "note": "Deutsch 'Morgen' heißt 'tomorrow' UND 'morning'. Englisch trennt strikt: 'tomorrow' (der nächste Tag) vs. 'morning' (die Tageszeit)."
+                }
+              ],
+              "common_mistake": "Keine Präposition: 'tomorrow', nicht 'on tomorrow'. Gleiche Regel wie 'today'."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

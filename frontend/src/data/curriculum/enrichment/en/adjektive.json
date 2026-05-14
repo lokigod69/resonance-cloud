@@ -1,0 +1,2689 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "adjektive",
+  "source_languages_filled": [
+    "de"
+  ],
+  "generator_model": "claude-opus-4-7",
+  "generated_at": "2026-05-13T13:54:00Z",
+  "generator_version": "1.1-opus",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "size_shape_basic_appearance",
+      "entries": [
+        {
+          "term": "big",
+          "pos": "adjective",
+          "ipa": "/bɪɡ/",
+          "etymology": "Of uncertain origin, attested from c. 1300 in Middle English as 'big' meaning strong or stout; the sense 'large' emerged by the 16th century.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.size",
+          "synonyms": ["large", "huge"],
+          "collocations": ["big deal", "big picture", "big mistake"],
+          "tags": ["size", "core"],
+          "example": "The dog next door is big enough to reach the kitchen counter.",
+          "prerequisites": [],
+          "comparative": "bigger",
+          "superlative": "biggest",
+          "antonym": "small",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Big' ist kurz, knackig und einsilbig — wie etwas, das vor Größe fast platzt. Der harte /ɡ/-Laut am Ende klingt wie ein kräftiger Stoß.",
+              "example_gloss": "Der Hund nebenan ist groß genug, um an die Küchentheke zu reichen.",
+              "false_friends": [],
+              "common_mistake": "Steigerung verdoppelt das g: 'bigger', 'biggest' — nicht 'biger'."
+            }
+          }
+        },
+        {
+          "term": "small",
+          "pos": "adjective",
+          "ipa": "/smɔːl/",
+          "etymology": "From Old English smæl (thin, narrow), from Proto-Germanic *smalaz; the sense shifted from 'thin' to 'little' over time.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.size",
+          "synonyms": ["little", "tiny"],
+          "collocations": ["small talk", "small print", "small change"],
+          "tags": ["size", "core"],
+          "example": "She keeps her keys in a small leather pouch.",
+          "prerequisites": [],
+          "comparative": "smaller",
+          "superlative": "smallest",
+          "antonym": "big",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Small' beginnt mit 'schm-' ähnlich wie 'schmal' — und 'schmal' war tatsächlich die Ursprungsbedeutung: dünn, eng, klein.",
+              "example_gloss": "Sie bewahrt ihre Schlüssel in einem kleinen Lederbeutel auf.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "long",
+          "pos": "adjective",
+          "ipa": "/lɒŋ/",
+          "etymology": "From Old English lang, from Proto-Germanic *langaz; cognate with German 'lang'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.size",
+          "synonyms": ["lengthy", "extended"],
+          "collocations": ["long story", "long run", "long way"],
+          "tags": ["size", "core"],
+          "example": "The queue at the bakery was already long before it opened.",
+          "prerequisites": [],
+          "comparative": "longer",
+          "superlative": "longest",
+          "antonym": "short",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Long' und 'lang' sind fast identisch — gleicher Anfang, gleicher Nasal am Ende. Nur der Vokal verschiebt sich: deutsches a wird englisches /ɒ/.",
+              "example_gloss": "Die Schlange an der Bäckerei war schon lang, bevor sie öffnete.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "short",
+          "pos": "adjective",
+          "ipa": "/ʃɔːt/",
+          "etymology": "From Old English sceort (short, not long), from Proto-Germanic *skurtaz; related to German 'kurz' via a shared PIE root *sker- (to cut).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.size",
+          "synonyms": ["brief"],
+          "collocations": ["short notice", "short cut", "short story"],
+          "tags": ["size", "core"],
+          "example": "His speech was short — barely three minutes.",
+          "prerequisites": [],
+          "comparative": "shorter",
+          "superlative": "shortest",
+          "antonym": "long",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Short' und 'kurz' haben dieselbe indogermanische Wurzel *sker- (schneiden): etwas Kurzes ist abgeschnitten. Im Englischen blieb das sch- am Anfang.",
+              "example_gloss": "Seine Rede war kurz — kaum drei Minuten.",
+              "false_friends": [],
+              "common_mistake": "Nicht mit 'shirt' verwechseln: 'short' /ʃɔːt/ vs. 'shirt' /ʃɜːt/."
+            }
+          }
+        },
+        {
+          "term": "wide",
+          "pos": "adjective",
+          "ipa": "/waɪd/",
+          "etymology": "From Old English wīd (broad, spacious), from Proto-Germanic *wīdaz; cognate with German 'weit'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.size",
+          "synonyms": ["broad"],
+          "collocations": ["wide awake", "wide range", "wide open"],
+          "tags": ["size", "shape"],
+          "example": "The river is so wide that you cannot see the other bank clearly.",
+          "prerequisites": [],
+          "comparative": "wider",
+          "superlative": "widest",
+          "antonym": "narrow",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Wide' und 'weit' sind Geschwister: gleicher w-Anfang, gleiche Bedeutung. Nur die Endung ändert sich — englisch /waɪd/, deutsch /vaɪt/.",
+              "example_gloss": "Der Fluss ist so breit, dass man das andere Ufer kaum sehen kann.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "narrow",
+          "pos": "adjective",
+          "ipa": "/ˈnæroʊ/",
+          "etymology": "From Old English nearu (narrow, constricted, cramped), from Proto-Germanic *narwaz.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.size",
+          "synonyms": ["slim", "tight"],
+          "collocations": ["narrow escape", "narrow margin", "narrow path"],
+          "tags": ["size", "shape"],
+          "example": "We squeezed through a narrow gap between two old buildings.",
+          "prerequisites": [],
+          "comparative": "narrower",
+          "superlative": "narrowest",
+          "antonym": "wide",
+          "per_source": {
+            "de": {
+              "mnemonic": "Stell dir einen engen Flur vor, der sich 'nar-row' zusammenquetscht — die zwei Silben klingen wie ein Nachhaken: NAR (eng!) + ROW (Reihe).",
+              "example_gloss": "Wir zwängten uns durch eine schmale Lücke zwischen zwei alten Gebäuden.",
+              "false_friends": [],
+              "common_mistake": "'Narrow' hat zwei r-Laute in der Schreibung, aber nur ein /r/ wird gesprochen."
+            }
+          }
+        },
+        {
+          "term": "thick",
+          "pos": "adjective",
+          "ipa": "/θɪk/",
+          "etymology": "From Old English þicce (thick, dense), from Proto-Germanic *þikuz; cognate with German 'dick'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.size",
+          "synonyms": ["dense"],
+          "collocations": ["thick skin", "thick fog", "thick slice"],
+          "tags": ["size", "texture"],
+          "example": "She cut a thick slice of bread for breakfast.",
+          "prerequisites": [],
+          "comparative": "thicker",
+          "superlative": "thickest",
+          "antonym": "thin",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Thick' ist 'dick' mit einem th davor statt d: th+ick = dick. Der Anlaut verschiebt sich vom deutschen /d/ zum englischen /θ/.",
+              "example_gloss": "Sie schnitt eine dicke Scheibe Brot zum Frühstück.",
+              "false_friends": [],
+              "common_mistake": "Das th ist stimmlos /θ/, gesprochen mit der Zunge zwischen den Zähnen — nicht wie deutsches /d/ oder /t/."
+            }
+          }
+        },
+        {
+          "term": "thin",
+          "pos": "adjective",
+          "ipa": "/θɪn/",
+          "etymology": "From Old English þynne (thin, not thick), from Proto-Germanic *þunnuz; cognate with German 'dünn'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.size",
+          "synonyms": ["slim", "slender"],
+          "collocations": ["thin ice", "thin air", "thin line"],
+          "tags": ["size", "texture"],
+          "example": "The walls in this old flat are paper-thin.",
+          "prerequisites": [],
+          "comparative": "thinner",
+          "superlative": "thinnest",
+          "antonym": "thick",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Thin' und 'dünn' sind Verwandte: th statt d, i statt ü, n bleibt n. Die germanische Lautverschiebung macht den Unterschied.",
+              "example_gloss": "Die Wände in dieser alten Wohnung sind papierdünn.",
+              "false_friends": [],
+              "common_mistake": "Steigerung verdoppelt das n: 'thinner', 'thinnest' — nicht 'thiner'."
+            }
+          }
+        },
+        {
+          "term": "round",
+          "pos": "adjective",
+          "ipa": "/raʊnd/",
+          "etymology": "From Old French roond (round), from Latin rotundus (round, circular), from rota (wheel).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.shape",
+          "synonyms": ["circular"],
+          "collocations": ["round trip", "round table", "round number"],
+          "tags": ["shape", "core"],
+          "example": "The children sat around a round wooden table.",
+          "prerequisites": [],
+          "comparative": "rounder",
+          "superlative": "roundest",
+          "antonym": "square",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Round' und 'rund' klingen fast gleich — beide kommen vom lateinischen rotundus (Rad). Der englische Diphthong /aʊ/ dehnt sich wie ein Kreis.",
+              "example_gloss": "Die Kinder saßen um einen runden Holztisch.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "square",
+          "pos": "adjective",
+          "ipa": "/skwɛr/",
+          "etymology": "From Old French esquare (square, quadrilateral), from Vulgar Latin *exquadra, from Latin ex- + quadrare (to make square), from quadrus (a square).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "qualities.shape",
+          "synonyms": ["rectangular"],
+          "collocations": ["square meal", "square deal", "town square"],
+          "tags": ["shape", "geometry"],
+          "example": "The pizza box is square, but the pizza inside is round.",
+          "prerequisites": [],
+          "comparative": "squarer",
+          "superlative": "squarest",
+          "antonym": "round",
+          "per_source": {
+            "de": {
+              "mnemonic": "In 'square' steckt Latein quadrare: das qu- ist noch da, nur vorne hängt ein s-. Denk: s + qua(drat) + re.",
+              "example_gloss": "Die Pizzaschachtel ist quadratisch, aber die Pizza darin ist rund.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /skwɛr/, nicht /skwaːr/ — das u in 'qu' ist stumm; es klingt wie 'skwär'."
+            }
+          }
+        },
+        {
+          "term": "straight",
+          "pos": "adjective",
+          "ipa": "/streɪt/",
+          "etymology": "From Middle English streight, past participle of strecchen (to stretch), from Old English streccan; literally 'stretched out'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "qualities.shape",
+          "synonyms": ["direct"],
+          "collocations": ["straight line", "straight answer", "straight ahead"],
+          "tags": ["shape", "direction"],
+          "example": "Draw a straight line from one dot to the other.",
+          "prerequisites": [],
+          "comparative": "straighter",
+          "superlative": "straightest",
+          "antonym": "curved",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Straight' kommt von 'stretch' (strecken) — etwas Gestrecktes ist gerade. Deutsch 'strecken' und englisch 'stretch' sind Verwandte.",
+              "example_gloss": "Zeichne eine gerade Linie von einem Punkt zum anderen.",
+              "false_friends": [],
+              "common_mistake": "Das 'aigh' wird /eɪ/ gesprochen wie in 'late'; die Buchstabenfolge -aight täuscht — 'straight' reimt auf 'late'."
+            }
+          }
+        },
+        {
+          "term": "curved",
+          "pos": "adjective",
+          "ipa": "/kɜːvd/",
+          "etymology": "From curve, from Latin curvus (bent, crooked), via Old French courbe; -ed suffix marks the adjectival form.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.shape",
+          "synonyms": ["bent", "arched"],
+          "collocations": ["curved surface", "curved line", "gently curved"],
+          "tags": ["shape", "geometry"],
+          "example": "The architect designed a building with a beautifully curved glass roof.",
+          "prerequisites": [],
+          "comparative": "more curved",
+          "superlative": "most curved",
+          "antonym": "straight",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Curved' kommt vom lateinischen curvus (gebogen) — die Kurve im Deutschen ist dasselbe Wort. Eine 'Kurve' ist etwas 'Curved'.",
+              "example_gloss": "Der Architekt entwarf ein Gebäude mit einem wunderschön gebogenen Glasdach.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "clean",
+          "pos": "adjective",
+          "ipa": "/kliːn/",
+          "etymology": "From Old English clǣne (clean, pure, clear), from Proto-Germanic *klainiz; originally meant 'pure, clear' before narrowing to 'free from dirt'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.appearance",
+          "synonyms": ["tidy", "spotless"],
+          "collocations": ["clean slate", "clean energy", "clean break"],
+          "tags": ["appearance", "hygiene"],
+          "example": "Put the clean towels on the top shelf, please.",
+          "prerequisites": [],
+          "comparative": "cleaner",
+          "superlative": "cleanest",
+          "antonym": "dirty",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Clean' klingt wie 'klein' — stell dir vor, etwas wird so klein geputzt, bis kein Fleck mehr übrig ist. Gleicher Klang, verschiedene Bedeutung.",
+              "example_gloss": "Leg die sauberen Handtücher bitte ins obere Regal.",
+              "false_friends": [
+                {
+                  "source_term": "klein",
+                  "note": "Deutsch 'klein' bedeutet 'small', nicht 'clean'. Gleiche Aussprache, völlig andere Bedeutung."
+                }
+              ],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "dirty",
+          "pos": "adjective",
+          "ipa": "/ˈdɜːti/",
+          "etymology": "From Middle English drit (dirt, excrement) + -y suffix, from Old Norse drit; 'dirty' literally means 'covered in dirt'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.appearance",
+          "synonyms": ["filthy", "grimy"],
+          "collocations": ["dirty work", "dirty trick", "dirty laundry"],
+          "tags": ["appearance", "hygiene"],
+          "example": "After playing football in the rain, his kit was completely dirty.",
+          "prerequisites": [],
+          "comparative": "dirtier",
+          "superlative": "dirtiest",
+          "antonym": "clean",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Dirty' hat 'dirt' (Dreck) als Stamm — und 'Dreck' und 'dirt' klingen verwandt: d-r-Anlaut, kurzer Vokal. Dirty = dreckig.",
+              "example_gloss": "Nach dem Fußballspielen im Regen war seine Ausrüstung völlig schmutzig.",
+              "false_friends": [],
+              "common_mistake": "Steigerung: y wird zu i — 'dirtier', 'dirtiest', nicht 'dirtyer'."
+            }
+          }
+        },
+        {
+          "term": "light",
+          "pos": "adjective",
+          "ipa": "/laɪt/",
+          "etymology": "From Old English lēoht (bright, luminous), from Proto-Germanic *leuhtaz; cognate with German 'Licht'. Distinct from 'light' meaning 'not heavy' (from Old English līht).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.appearance",
+          "synonyms": ["bright", "pale"],
+          "collocations": ["light blue", "light sleeper", "light rain"],
+          "tags": ["appearance", "color"],
+          "example": "The living room gets wonderful light in the afternoon.",
+          "prerequisites": [],
+          "comparative": "lighter",
+          "superlative": "lightest",
+          "antonym": "dark",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Light' und 'Licht' sind Zwillinge — gleiche germanische Wurzel. Im Englischen ist das -ght stumm: nur /laɪt/.",
+              "example_gloss": "Das Wohnzimmer bekommt am Nachmittag wunderbares Licht.",
+              "false_friends": [],
+              "common_mistake": "'Light' bedeutet sowohl 'hell' als auch 'leicht' — der Kontext entscheidet. Nicht verwirren lassen."
+            }
+          }
+        },
+        {
+          "term": "dark",
+          "pos": "adjective",
+          "ipa": "/dɑːk/",
+          "etymology": "From Old English deorc (dark, obscure), of uncertain further origin; possibly related to Old High German tarchannen (to conceal).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.appearance",
+          "synonyms": ["dim", "gloomy"],
+          "collocations": ["dark horse", "dark chocolate", "dark side"],
+          "tags": ["appearance", "color"],
+          "example": "It gets dark here around five o'clock in December.",
+          "prerequisites": [],
+          "comparative": "darker",
+          "superlative": "darkest",
+          "antonym": "light",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Dark' hat keinen direkten deutschen Verwandten — aber stell dir einen Hai im Dunkeln vor: a 'dark shark'. Der Reim hilft beim Merken.",
+              "example_gloss": "Im Dezember wird es hier gegen fünf Uhr dunkel.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "new",
+          "pos": "adjective",
+          "ipa": "/njuː/",
+          "etymology": "From Old English nīwe (new, fresh, recent), from Proto-Germanic *niwjaz; cognate with German 'neu' and Latin novus.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.age",
+          "synonyms": ["fresh", "modern"],
+          "collocations": ["brand new", "new year", "new to something"],
+          "tags": ["age", "core"],
+          "example": "She bought a new pair of running shoes for the marathon.",
+          "prerequisites": [],
+          "comparative": "newer",
+          "superlative": "newest",
+          "antonym": "old",
+          "per_source": {
+            "de": {
+              "mnemonic": "'New' und 'neu' sind fast identisch — gleiche Wurzel, gleiche Bedeutung. Der einzige Unterschied: englisch spricht man /njuː/, nicht /nɔɪ/.",
+              "example_gloss": "Sie kaufte ein neues Paar Laufschuhe für den Marathon.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /njuː/ mit einem j-Laut nach dem n, nicht einfach /nuː/."
+            }
+          }
+        },
+        {
+          "term": "old",
+          "pos": "adjective",
+          "ipa": "/oʊld/",
+          "etymology": "From Old English eald (old, aged), from Proto-Germanic *aldaz; cognate with German 'alt'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.age",
+          "synonyms": ["aged", "ancient"],
+          "collocations": ["old-fashioned", "old friend", "old habits"],
+          "tags": ["age", "core"],
+          "example": "That old oak tree has been standing there for over two hundred years.",
+          "prerequisites": [],
+          "comparative": "older",
+          "superlative": "oldest",
+          "antonym": "new",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Old' und 'alt' sind direkte Verwandte — gleiche Proto-Germanische Wurzel *aldaz. Das englische 'o' verschob sich vom deutschen 'a'.",
+              "example_gloss": "Diese alte Eiche steht dort schon seit über zweihundert Jahren.",
+              "false_friends": [],
+              "common_mistake": "Auch 'elder/eldest' existiert für Familienmitglieder: 'my elder brother'. 'Older' ist allgemeiner."
+            }
+          }
+        },
+        {
+          "term": "beautiful",
+          "pos": "adjective",
+          "ipa": "/ˈbjuːtɪfəl/",
+          "etymology": "From Middle English beaute (from Old French biauté, from Latin bellitas, related to bellus 'pretty') + -ful; a native English formation replacing the French adjective 'beau'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "qualities.appearance",
+          "synonyms": ["lovely", "gorgeous"],
+          "collocations": ["beautiful day", "beautiful view", "beautiful music"],
+          "tags": ["appearance", "quality"],
+          "example": "The sunset over the lake was absolutely beautiful.",
+          "prerequisites": [],
+          "comparative": "more beautiful",
+          "superlative": "most beautiful",
+          "antonym": "ugly",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Beautiful' ist beauty + ful: voller Schönheit. 'Beauty' kommt aus dem Französischen (beauté); die englische Endung -ful macht daraus ein Adjektiv.",
+              "example_gloss": "Der Sonnenuntergang über dem See war absolut wunderschön.",
+              "false_friends": [],
+              "common_mistake": "Schreibung: 'beau-ti-ful', nicht 'beautyfull'. Nur ein l am Ende, und das y wird zu i."
+            }
+          }
+        },
+        {
+          "term": "ugly",
+          "pos": "adjective",
+          "ipa": "/ˈʌɡli/",
+          "etymology": "From Old Norse uggligr (fearful, dreadful), from uggr (fear); the sense softened from 'frightening' to merely 'unpleasant to look at'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.appearance",
+          "synonyms": ["unattractive", "hideous"],
+          "collocations": ["ugly truth", "ugly duckling", "ugly scene"],
+          "tags": ["appearance", "quality"],
+          "example": "The ugly duckling turned into a swan — that is a famous fairy tale.",
+          "prerequisites": [],
+          "comparative": "uglier",
+          "superlative": "ugliest",
+          "antonym": "beautiful",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Ugly' kommt vom altnordischen uggr (Angst) — etwas so Hässliches, dass es Angst macht. Der harte /ʌɡ/-Anfang klingt unangenehm, passend zur Bedeutung.",
+              "example_gloss": "Das hässliche Entlein verwandelte sich in einen Schwan — das ist ein berühmtes Märchen.",
+              "false_friends": [],
+              "common_mistake": "Steigerung: y wird zu i — 'uglier', 'ugliest', nicht 'uglyer'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "temperature_weather_sensation",
+      "entries": [
+        {
+          "term": "hot",
+          "pos": "adjective",
+          "ipa": "/hɒt/",
+          "etymology": "From Old English hāt (hot, burning), from Proto-Germanic *haitaz; cognate with German 'heiß'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.temperature",
+          "synonyms": ["boiling", "scorching"],
+          "collocations": ["hot topic", "hot dog", "hot water"],
+          "tags": ["temperature", "sensation"],
+          "example": "Be careful — the stove is still hot from cooking.",
+          "prerequisites": [],
+          "comparative": "hotter",
+          "superlative": "hottest",
+          "antonym": "cold",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Hot' und 'heiß' teilen den h-Anfang und die Hitze-Bedeutung. Das kurze englische /hɒt/ klingt wie ein schneller Schmerzlaut beim Berühren.",
+              "example_gloss": "Vorsicht — der Herd ist vom Kochen noch heiß.",
+              "false_friends": [],
+              "common_mistake": "Steigerung verdoppelt das t: 'hotter', 'hottest' — nicht 'hoter'."
+            }
+          }
+        },
+        {
+          "term": "cold",
+          "pos": "adjective",
+          "ipa": "/koʊld/",
+          "etymology": "From Old English ceald (cold), from Proto-Germanic *kaldaz; cognate with German 'kalt'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.temperature",
+          "synonyms": ["chilly", "freezing"],
+          "collocations": ["cold shoulder", "cold weather", "catch a cold"],
+          "tags": ["temperature", "sensation"],
+          "example": "The coffee sat too long and went completely cold.",
+          "prerequisites": [],
+          "comparative": "colder",
+          "superlative": "coldest",
+          "antonym": "hot",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cold' und 'kalt' sind Geschwisterwörter: gleicher k-Anlaut, gleiches -ld am Ende. Nur der Vokal verschiebt sich: deutsch /a/, englisch /oʊ/.",
+              "example_gloss": "Der Kaffee stand zu lange und wurde völlig kalt.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "warm",
+          "pos": "adjective",
+          "ipa": "/wɔːm/",
+          "etymology": "From Old English wearm (warm), from Proto-Germanic *warmaz; cognate with German 'warm'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.temperature",
+          "synonyms": ["mild", "tepid"],
+          "collocations": ["warm welcome", "warm smile", "warm clothes"],
+          "tags": ["temperature", "sensation"],
+          "example": "Wrap up warm — it is going to snow tonight.",
+          "prerequisites": [],
+          "comparative": "warmer",
+          "superlative": "warmest",
+          "antonym": "cool",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Warm' ist identisch mit deutsch 'warm' — nur die Aussprache ändert sich: englisch /wɔːm/ mit offenem o statt deutschem /a/.",
+              "example_gloss": "Zieh dich warm an — es wird heute Nacht schneien.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /wɔːm/, das a klingt wie ein offenes o. Nicht wie deutsches 'warm' mit /a/."
+            }
+          }
+        },
+        {
+          "term": "cool",
+          "pos": "adjective",
+          "ipa": "/kuːl/",
+          "etymology": "From Old English cōl (cool, not warm), from Proto-Germanic *kōlaz; cognate with German 'kühl'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.temperature",
+          "synonyms": ["chilly"],
+          "collocations": ["cool breeze", "cool down", "keep cool"],
+          "tags": ["temperature", "sensation"],
+          "example": "The basement stays cool even in the middle of summer.",
+          "prerequisites": [],
+          "comparative": "cooler",
+          "superlative": "coolest",
+          "antonym": "warm",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cool' und 'kühl' sind Verwandte: gleicher k-Anlaut, gleiche Bedeutung. Der deutsche Umlaut ü wird im Englischen zum langen /uː/.",
+              "example_gloss": "Der Keller bleibt sogar mitten im Sommer kühl.",
+              "false_friends": [],
+              "common_mistake": "'Cool' bedeutet auch 'lässig/toll' in der Umgangssprache — den Kontext beachten."
+            }
+          }
+        },
+        {
+          "term": "wet",
+          "pos": "adjective",
+          "ipa": "/wɛt/",
+          "etymology": "From Old English wǣt (wet, moist), from Proto-Germanic *wētaz; related to English 'water'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.sensation",
+          "synonyms": ["damp", "moist"],
+          "collocations": ["wet blanket", "wet paint", "wet season"],
+          "tags": ["sensation", "weather"],
+          "example": "Don't sit on that bench — the paint is still wet.",
+          "prerequisites": [],
+          "comparative": "wetter",
+          "superlative": "wettest",
+          "antonym": "dry",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Wet' ist verwandt mit 'Wasser' (water) — beides beginnt mit w und dreht sich um Feuchtigkeit. Kurz und nass, wie ein Tropfen.",
+              "example_gloss": "Setz dich nicht auf die Bank — die Farbe ist noch nass.",
+              "false_friends": [],
+              "common_mistake": "Steigerung verdoppelt das t: 'wetter', 'wettest' — nicht 'weter'. Nicht mit deutsch 'Wetter' verwechseln."
+            }
+          }
+        },
+        {
+          "term": "dry",
+          "pos": "adjective",
+          "ipa": "/draɪ/",
+          "etymology": "From Old English dryge (dry, arid), from Proto-Germanic *drūgiz; cognate with German 'trocken' only distantly.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.sensation",
+          "synonyms": ["arid", "parched"],
+          "collocations": ["dry season", "dry humor", "dry skin"],
+          "tags": ["sensation", "weather"],
+          "example": "This summer has been so dry that the grass turned brown.",
+          "prerequisites": [],
+          "comparative": "drier",
+          "superlative": "driest",
+          "antonym": "wet",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Dry' klingt wie 'drei' — stell dir vor, nach drei Tagen ohne Regen ist alles dry/trocken.",
+              "example_gloss": "Dieser Sommer war so trocken, dass das Gras braun wurde.",
+              "false_friends": [
+                {
+                  "source_term": "drei",
+                  "note": "Deutsch 'drei' ist die Zahl 3, klingt aber fast wie englisch 'dry' (trocken). Verwechslungsgefahr bei der Aussprache."
+                }
+              ],
+              "common_mistake": "Steigerung: 'drier/driest' oder 'dryer/dryest' — beide Schreibungen korrekt, 'drier/driest' bevorzugt."
+            }
+          }
+        },
+        {
+          "term": "sunny",
+          "pos": "adjective",
+          "ipa": "/ˈsʌni/",
+          "etymology": "From sun (Old English sunne, from Proto-Germanic *sunnōn) + -y suffix; 'full of sun'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.weather",
+          "synonyms": ["bright", "clear"],
+          "collocations": ["sunny day", "sunny side", "sunny spot"],
+          "tags": ["weather", "core"],
+          "example": "We picked a sunny spot in the park for our picnic.",
+          "prerequisites": [],
+          "comparative": "sunnier",
+          "superlative": "sunniest",
+          "antonym": "cloudy",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sunny' ist sun + y, genauso wie 'sonnig' = Sonne + ig. Gleiche Bauweise, gleiche Bedeutung.",
+              "example_gloss": "Wir suchten uns einen sonnigen Platz im Park für unser Picknick.",
+              "false_friends": [],
+              "common_mistake": "Steigerung: y zu i — 'sunnier', 'sunniest', nicht 'sunnyer'."
+            }
+          }
+        },
+        {
+          "term": "cloudy",
+          "pos": "adjective",
+          "ipa": "/ˈklaʊdi/",
+          "etymology": "From cloud (Old English clūd, originally 'rock, hill', sense shifted to 'cloud' by Middle English) + -y suffix.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.weather",
+          "synonyms": ["overcast", "grey"],
+          "collocations": ["cloudy sky", "cloudy day", "partly cloudy"],
+          "tags": ["weather", "core"],
+          "example": "The forecast says it will be cloudy with a chance of rain.",
+          "prerequisites": [],
+          "comparative": "cloudier",
+          "superlative": "cloudiest",
+          "antonym": "sunny",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cloudy' hat 'cloud' (Wolke) als Stamm. Deutsch 'Wolke' klingt anders, aber die Wortbildung ist gleich: cloud+y = wolkig.",
+              "example_gloss": "Die Vorhersage sagt bewölkt mit Regenchance.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "windy",
+          "pos": "adjective",
+          "ipa": "/ˈwɪndi/",
+          "etymology": "From wind (Old English wind, from Proto-Germanic *windaz) + -y suffix; cognate with German 'windig'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.weather",
+          "synonyms": ["blustery", "breezy"],
+          "collocations": ["windy day", "windy weather", "windy road"],
+          "tags": ["weather", "core"],
+          "example": "Hold on to your hat — it is extremely windy today.",
+          "prerequisites": [],
+          "comparative": "windier",
+          "superlative": "windiest",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Windy' und 'windig' sind praktisch dasselbe Wort: Wind + y/ig. Kein Trick nötig — direkte Eins-zu-eins-Entsprechung.",
+              "example_gloss": "Halt deinen Hut fest — es ist heute extrem windig.",
+              "false_friends": [],
+              "common_mistake": "Nicht verwechseln: 'windy' /ˈwɪndi/ (windig) vs. 'winding' /ˈwaɪndɪŋ/ (kurvenreich). Unterschiedliche Vokale!"
+            }
+          }
+        },
+        {
+          "term": "rainy",
+          "pos": "adjective",
+          "ipa": "/ˈreɪni/",
+          "etymology": "From rain (Old English regn, from Proto-Germanic *regnaz) + -y suffix; cognate with German 'Regen'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.weather",
+          "synonyms": ["wet", "showery"],
+          "collocations": ["rainy day", "rainy season", "save for a rainy day"],
+          "tags": ["weather", "core"],
+          "example": "She always carries an umbrella on rainy days.",
+          "prerequisites": [],
+          "comparative": "rainier",
+          "superlative": "rainiest",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Rainy' kommt von 'rain' — und 'rain' kommt von 'Regen'. Gleicher germanischer Stamm, nur verkürzt: Regen → rain → rainy.",
+              "example_gloss": "Sie trägt an regnerischen Tagen immer einen Regenschirm.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "snowy",
+          "pos": "adjective",
+          "ipa": "/ˈsnoʊi/",
+          "etymology": "From snow (Old English snāw, from Proto-Germanic *snaiwaz) + -y suffix; cognate with German 'Schnee'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.weather",
+          "synonyms": ["wintry"],
+          "collocations": ["snowy landscape", "snowy mountain", "snowy weather"],
+          "tags": ["weather", "winter"],
+          "example": "The snowy peaks of the Alps were visible from the hotel balcony.",
+          "prerequisites": [],
+          "comparative": "snowier",
+          "superlative": "snowiest",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Snowy' kommt von 'snow', und 'snow' ist verwandt mit 'Schnee': sn- statt schn-. Der germanische Anlaut vereinfacht sich im Englischen.",
+              "example_gloss": "Die verschneiten Gipfel der Alpen waren vom Hotelbalkon aus sichtbar.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "stormy",
+          "pos": "adjective",
+          "ipa": "/ˈstɔːmi/",
+          "etymology": "From storm (Old English storm, from Proto-Germanic *sturmaz) + -y suffix; cognate with German 'Sturm'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.weather",
+          "synonyms": ["turbulent", "tempestuous"],
+          "collocations": ["stormy weather", "stormy relationship", "stormy sea"],
+          "tags": ["weather", "core"],
+          "example": "The sailors returned to port because the sea was too stormy.",
+          "prerequisites": [],
+          "comparative": "stormier",
+          "superlative": "stormiest",
+          "antonym": "calm",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Stormy' und 'stürmisch' haben denselben Stamm: Storm/Sturm. Der englische Vokal /ɔː/ ersetzt das deutsche /ʊ/.",
+              "example_gloss": "Die Seeleute kehrten in den Hafen zurück, weil die See zu stürmisch war.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "humid",
+          "pos": "adjective",
+          "ipa": "/ˈhjuːmɪd/",
+          "etymology": "From Latin humidus (moist, wet), from humere (to be moist); entered English in the 16th century.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.weather",
+          "synonyms": ["muggy", "damp"],
+          "collocations": ["humid climate", "humid air", "hot and humid"],
+          "tags": ["weather", "sensation"],
+          "example": "Singapore is humid all year round — you start sweating the moment you step outside.",
+          "prerequisites": [],
+          "comparative": "more humid",
+          "superlative": "most humid",
+          "antonym": "dry",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Humid' kommt direkt vom lateinischen humidus — das Fremdwort 'humid' existiert auch im Deutschen. Gleiche Wurzel, gleiche Bedeutung.",
+              "example_gloss": "Singapur ist das ganze Jahr über feucht — man fängt an zu schwitzen, sobald man nach draußen geht.",
+              "false_friends": [],
+              "common_mistake": "Aussprache beginnt mit /hjuː/, nicht /huː/ — das h wird gehaucht, dann folgt ein j-Laut."
+            }
+          }
+        },
+        {
+          "term": "fresh",
+          "pos": "adjective",
+          "ipa": "/frɛʃ/",
+          "etymology": "From Old English fersc (fresh, unsalted), reinforced by Old French freis/fresche (fresh, new), from Proto-Germanic *friskaz; cognate with German 'frisch'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.sensation",
+          "synonyms": ["cool", "crisp"],
+          "collocations": ["fresh air", "fresh start", "fresh bread"],
+          "tags": ["sensation", "quality"],
+          "example": "Open the window — we need some fresh air in here.",
+          "prerequisites": [],
+          "comparative": "fresher",
+          "superlative": "freshest",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Fresh' und 'frisch' sind direkte Verwandte: fr- am Anfang, sch-Laut am Ende. Nur der Vokal unterscheidet sich: englisch /ɛ/, deutsch /ɪ/.",
+              "example_gloss": "Mach das Fenster auf — wir brauchen hier drin frische Luft.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "tired",
+          "pos": "adjective",
+          "ipa": "/ˈtaɪəd/",
+          "etymology": "Past participle of tire, from Old English tēorian (to become weary, fail); the adjective use 'feeling fatigued' is well established since Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.sensation",
+          "synonyms": ["exhausted", "weary"],
+          "collocations": ["tired of something", "dead tired", "tired eyes"],
+          "tags": ["sensation", "body"],
+          "example": "After hiking for six hours, everyone was too tired to cook.",
+          "prerequisites": [],
+          "comparative": "more tired",
+          "superlative": "most tired",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Tired' hat kein deutsches Verwandtenwort — aber der Klang 'tai-erd' erinnert an 'Tier, das müde ist'. Ein müdes Tier ist tired.",
+              "example_gloss": "Nach sechs Stunden Wandern war jeder zu müde zum Kochen.",
+              "false_friends": [],
+              "common_mistake": "Nicht 'I am tire' sagen — das -d gehört dazu: 'I am tired'. Das Partizip ist die Adjektivform."
+            }
+          }
+        },
+        {
+          "term": "hungry",
+          "pos": "adjective",
+          "ipa": "/ˈhʌŋɡri/",
+          "etymology": "From Old English hungrig (hungry), from hungor (hunger) + -ig suffix; cognate with German 'hungrig'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.sensation",
+          "synonyms": ["starving", "famished"],
+          "collocations": ["hungry for success", "go hungry", "hungry eyes"],
+          "tags": ["sensation", "body"],
+          "example": "The children came home from school absolutely hungry.",
+          "prerequisites": [],
+          "comparative": "hungrier",
+          "superlative": "hungriest",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Hungry' und 'hungrig' sind fast identisch: gleicher Stamm, gleiche Endung -y/-ig. Einer der einfachsten Eins-zu-eins-Transfers.",
+              "example_gloss": "Die Kinder kamen total hungrig aus der Schule nach Hause.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "thirsty",
+          "pos": "adjective",
+          "ipa": "/ˈθɜːsti/",
+          "etymology": "From Old English þurstig (thirsty), from þurst (thirst) + -ig suffix; cognate with German 'durstig'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.sensation",
+          "synonyms": ["parched"],
+          "collocations": ["thirsty work", "thirsty for knowledge"],
+          "tags": ["sensation", "body"],
+          "example": "After running five kilometres, I was incredibly thirsty.",
+          "prerequisites": [],
+          "comparative": "thirstier",
+          "superlative": "thirstiest",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Thirsty' und 'durstig' sind Verwandte: th statt d (germanische Lautverschiebung), gleiche Endung -y/-ig. Durst → thirst → thirsty.",
+              "example_gloss": "Nach fünf Kilometern Laufen war ich unglaublich durstig.",
+              "false_friends": [],
+              "common_mistake": "Das th ist stimmlos /θ/ — Zunge zwischen die Zähne, nicht einfach /d/ wie im Deutschen."
+            }
+          }
+        },
+        {
+          "term": "sick",
+          "pos": "adjective",
+          "ipa": "/sɪk/",
+          "etymology": "From Old English sēoc (ill, diseased), from Proto-Germanic *seukaz; cognate with German 'siech' (archaic for 'ailing').",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.sensation",
+          "synonyms": ["ill", "unwell"],
+          "collocations": ["call in sick", "feel sick", "sick leave"],
+          "tags": ["sensation", "health"],
+          "example": "He stayed home because he felt sick after eating the shellfish.",
+          "prerequisites": [],
+          "comparative": null,
+          "superlative": null,
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sick' ist verwandt mit dem alten deutschen Wort 'siech' (kränklich). Beide starten mit s und meinen krank. Im modernen Deutsch selten, im Englischen allgegenwärtig.",
+              "example_gloss": "Er blieb zu Hause, weil ihm nach den Muscheln schlecht war.",
+              "false_friends": [],
+              "common_mistake": "Im britischen Englisch kann 'sick' speziell 'sich übergeben' bedeuten: 'I feel sick' = mir ist übel, nicht nur allgemein krank."
+            }
+          }
+        },
+        {
+          "term": "comfortable",
+          "pos": "adjective",
+          "ipa": "/ˈkʌmftəbəl/",
+          "etymology": "From Old French confortable (strengthening), from conforter (to comfort), from Late Latin confortare (to strengthen); the modern sense 'physically at ease' developed in English.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "qualities.sensation",
+          "synonyms": ["cozy", "snug"],
+          "collocations": ["comfortable chair", "comfortable silence", "comfortable lead"],
+          "tags": ["sensation", "quality"],
+          "example": "This armchair is the most comfortable seat in the whole house.",
+          "prerequisites": [],
+          "comparative": "more comfortable",
+          "superlative": "most comfortable",
+          "antonym": "uncomfortable",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Comfortable' hat 'comfort' (Komfort) als Kern — ein Wort, das auch im Deutschen bekannt ist. Comfort + able = fähig Komfort zu geben = bequem.",
+              "example_gloss": "Dieser Sessel ist der bequemste Sitzplatz im ganzen Haus.",
+              "false_friends": [
+                {
+                  "source_term": "komfortabel",
+                  "note": "Deutsch 'komfortabel' bezieht sich eher auf Luxus/Ausstattung, englisch 'comfortable' ist breiter: auch persönliches Wohlbefinden ('I feel comfortable')."
+                }
+              ],
+              "common_mistake": "Aussprache: nur drei Silben /ˈkʌmf-tə-bəl/, nicht vier 'com-for-ta-ble'. Das zweite o wird verschluckt."
+            }
+          }
+        },
+        {
+          "term": "painful",
+          "pos": "adjective",
+          "ipa": "/ˈpeɪnfəl/",
+          "etymology": "From pain (from Old French peine, from Latin poena 'punishment, penalty', from Greek poinē) + -ful suffix; literally 'full of pain'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.sensation",
+          "synonyms": ["sore", "agonizing"],
+          "collocations": ["painful experience", "painful memory", "painful truth"],
+          "tags": ["sensation", "body"],
+          "example": "The injection was quick but surprisingly painful.",
+          "prerequisites": [],
+          "comparative": "more painful",
+          "superlative": "most painful",
+          "antonym": "painless",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Painful' = pain (Schmerz) + ful (voll): voller Schmerz = schmerzhaft. Das Wort baut sich logisch auf wie deutsch 'schmerz-haft'.",
+              "example_gloss": "Die Spritze war schnell, aber überraschend schmerzhaft.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "personality_and_emotion",
+      "entries": [
+        {
+          "term": "happy",
+          "pos": "adjective",
+          "ipa": "/ˈhæpi/",
+          "etymology": "From Middle English happy (fortunate, lucky), from hap (luck, fortune), from Old Norse happ (good luck); the sense 'feeling pleasure' developed in the 14th century.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.emotion",
+          "synonyms": ["glad", "cheerful", "joyful"],
+          "collocations": ["happy birthday", "happy ending", "happy hour"],
+          "tags": ["emotion", "core"],
+          "example": "She looked happy when she opened the birthday card.",
+          "prerequisites": [],
+          "comparative": "happier",
+          "superlative": "happiest",
+          "antonym": "sad",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Happy' kommt von 'hap' (Glück/Zufall) — wer happy ist, hat sein Glück gefunden. Der fröhliche Doppel-p-Klang passt zur Bedeutung.",
+              "example_gloss": "Sie sah glücklich aus, als sie die Geburtstagskarte öffnete.",
+              "false_friends": [],
+              "common_mistake": "Steigerung: y zu i — 'happier', 'happiest', nicht 'happyer'."
+            }
+          }
+        },
+        {
+          "term": "sad",
+          "pos": "adjective",
+          "ipa": "/sæd/",
+          "etymology": "From Old English sæd (sated, full, weary), from Proto-Germanic *sadaz; the meaning shifted from 'satisfied/weary' to 'sorrowful' by Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.emotion",
+          "synonyms": ["unhappy", "sorrowful"],
+          "collocations": ["sad news", "sad story", "sad face"],
+          "tags": ["emotion", "core"],
+          "example": "The ending of the film was so sad that half the audience cried.",
+          "prerequisites": [],
+          "comparative": "sadder",
+          "superlative": "saddest",
+          "antonym": "happy",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sad' klingt kurz und gedämpft — wie ein leiser Seufzer. Das Wort hat keinen deutschen Verwandten; es muss als eigener Klang gelernt werden.",
+              "example_gloss": "Das Ende des Films war so traurig, dass die halbe Zuschauermenge weinte.",
+              "false_friends": [],
+              "common_mistake": "Steigerung verdoppelt das d: 'sadder', 'saddest' — nicht 'sader'."
+            }
+          }
+        },
+        {
+          "term": "angry",
+          "pos": "adjective",
+          "ipa": "/ˈæŋɡri/",
+          "etymology": "From anger (from Old Norse angr 'grief, sorrow') + -y suffix; originally meant 'troubled', the sense 'wrathful' developed in the 14th century.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.emotion",
+          "synonyms": ["furious", "mad"],
+          "collocations": ["angry at someone", "angry mob", "angry words"],
+          "tags": ["emotion", "core"],
+          "example": "My neighbour was angry because someone parked in his spot.",
+          "prerequisites": [],
+          "comparative": "angrier",
+          "superlative": "angriest",
+          "antonym": "calm",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Angry' steckt voller Spannung: das 'ang' klingt wie 'Angst', und Wut ist oft Angst, die nach außen explodiert.",
+              "example_gloss": "Mein Nachbar war wütend, weil jemand auf seinem Platz geparkt hatte.",
+              "false_friends": [],
+              "common_mistake": "Präposition: 'angry at/with someone', nicht 'angry on someone' (deutsche Interferenz von 'wütend auf')."
+            }
+          }
+        },
+        {
+          "term": "calm",
+          "pos": "adjective",
+          "ipa": "/kɑːm/",
+          "etymology": "From Old French calme (stillness), from Italian calma, probably from Late Latin cauma (heat of the day, siesta time), from Greek kauma (burning heat); the l is silent.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.emotion",
+          "synonyms": ["peaceful", "serene"],
+          "collocations": ["stay calm", "calm down", "calm voice"],
+          "tags": ["emotion", "personality"],
+          "example": "She stayed calm even when the fire alarm went off.",
+          "prerequisites": [],
+          "comparative": "calmer",
+          "superlative": "calmest",
+          "antonym": "angry",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Calm' hat ein stummes l — es bleibt still wie die Ruhe selbst: /kɑːm/. Stille Buchstaben für ein stilles Gefühl.",
+              "example_gloss": "Sie blieb ruhig, selbst als der Feueralarm losging.",
+              "false_friends": [],
+              "common_mistake": "Das l ist stumm: /kɑːm/, nicht /kælm/. Genau wie in 'palm' und 'salmon'."
+            }
+          }
+        },
+        {
+          "term": "friendly",
+          "pos": "adjective",
+          "ipa": "/ˈfrɛndli/",
+          "etymology": "From friend (Old English frēond, from Proto-Germanic *frijōndz, present participle of *frijōną 'to love') + -ly suffix.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.personality",
+          "synonyms": ["warm", "amiable"],
+          "collocations": ["friendly advice", "user-friendly", "eco-friendly"],
+          "tags": ["personality", "social"],
+          "example": "The new teacher was friendly and remembered everyone's name.",
+          "prerequisites": [],
+          "comparative": "friendlier",
+          "superlative": "friendliest",
+          "antonym": "unfriendly",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Friendly' = friend + ly, genau wie 'freundlich' = Freund + lich. Gleiche Bauweise, gleiche Bedeutung, gleiche Wurzel.",
+              "example_gloss": "Der neue Lehrer war freundlich und erinnerte sich an jeden Namen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "unfriendly",
+          "pos": "adjective",
+          "ipa": "/ʌnˈfrɛndli/",
+          "etymology": "From un- (not) + friendly; a straightforward negation prefix parallel to German 'un-freundlich'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "qualities.personality",
+          "synonyms": ["hostile", "cold"],
+          "collocations": ["unfriendly tone", "unfriendly reception"],
+          "tags": ["personality", "social"],
+          "example": "The receptionist gave us an unfriendly look when we walked in late.",
+          "prerequisites": ["friendly"],
+          "comparative": "unfriendlier",
+          "superlative": "unfriendliest",
+          "antonym": "friendly",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Unfriendly' = un + friendly, exakt wie 'unfreundlich' = un + freundlich. Die Vorsilbe un- funktioniert in beiden Sprachen gleich.",
+              "example_gloss": "Die Empfangsdame warf uns einen unfreundlichen Blick zu, als wir zu spät kamen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "kind",
+          "pos": "adjective",
+          "ipa": "/kaɪnd/",
+          "etymology": "From Old English gecynde (natural, native, innate), from cynn (kin, race); the sense 'benevolent' developed from 'natural, well-born' in Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.personality",
+          "synonyms": ["nice", "generous"],
+          "collocations": ["kind words", "kind heart", "kind of"],
+          "tags": ["personality", "core"],
+          "example": "It was kind of you to help the old woman with her bags.",
+          "prerequisites": [],
+          "comparative": "kinder",
+          "superlative": "kindest",
+          "antonym": "mean",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Kind' auf Englisch heißt nett, nicht Kind! Merke: 'Ein kind Kind' macht keinen Sinn — aber 'a kind child' schon.",
+              "example_gloss": "Es war nett von dir, der alten Frau mit ihren Taschen zu helfen.",
+              "false_friends": [
+                {
+                  "source_term": "Kind",
+                  "note": "Deutsch 'Kind' bedeutet 'child', nicht 'kind' (nett). Einer der bekanntesten deutsch-englischen falschen Freunde."
+                }
+              ],
+              "common_mistake": "Nicht mit deutsch 'Kind' (child) verwechseln! Englisch 'kind' = nett/freundlich."
+            }
+          }
+        },
+        {
+          "term": "mean",
+          "pos": "adjective",
+          "ipa": "/miːn/",
+          "etymology": "From Old English gemǣne (common, shared), from Proto-Germanic *gamainiz; the sense 'base, unkind' developed from 'low in status/common'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.personality",
+          "synonyms": ["cruel", "unkind"],
+          "collocations": ["mean streak", "mean comment", "no mean feat"],
+          "tags": ["personality", "core"],
+          "example": "It was mean of him to laugh at her mistake in front of everyone.",
+          "prerequisites": [],
+          "comparative": "meaner",
+          "superlative": "meanest",
+          "antonym": "kind",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Mean' als Adjektiv heißt gemein — und klingt auch ähnlich! Mean ≈ gemein: gleicher Wortstamm, gleiche Grundbedeutung.",
+              "example_gloss": "Es war gemein von ihm, vor allen über ihren Fehler zu lachen.",
+              "false_friends": [],
+              "common_mistake": "'Mean' hat viele Bedeutungen: gemein (adj.), bedeuten (verb), Mittelwert (noun). Der Kontext entscheidet."
+            }
+          }
+        },
+        {
+          "term": "shy",
+          "pos": "adjective",
+          "ipa": "/ʃaɪ/",
+          "etymology": "From Old English scēoh (timid, easily frightened), from Proto-Germanic *skeuhaz.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.personality",
+          "synonyms": ["timid", "reserved"],
+          "collocations": ["shy child", "shy away from", "shy smile"],
+          "tags": ["personality", "social"],
+          "example": "As a child, she was so shy that she hid behind her mother's legs.",
+          "prerequisites": [],
+          "comparative": "shyer",
+          "superlative": "shyest",
+          "antonym": "bold",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Shy' reimt sich auf 'die' — denk an das schüchterne Kind, das sich hinter einem Vorhang versteckt und 'shy' flüstert.",
+              "example_gloss": "Als Kind war sie so schüchtern, dass sie sich hinter den Beinen ihrer Mutter versteckte.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "brave",
+          "pos": "adjective",
+          "ipa": "/breɪv/",
+          "etymology": "From Middle French brave (bold, splendid), from Italian bravo (bold, courageous), possibly from Latin barbarus (foreign, wild) or from Vulgar Latin *brabus.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.personality",
+          "synonyms": ["courageous", "bold"],
+          "collocations": ["brave soldier", "brave new world", "brave face"],
+          "tags": ["personality", "character"],
+          "example": "The brave firefighter carried the child out of the burning building.",
+          "prerequisites": [],
+          "comparative": "braver",
+          "superlative": "bravest",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Brave' klingt wie 'brav', aber Vorsicht: es bedeutet MUTIG, nicht brav! Ein braver Hund ist nicht dasselbe wie ein brave dog.",
+              "example_gloss": "Der mutige Feuerwehrmann trug das Kind aus dem brennenden Gebäude.",
+              "false_friends": [
+                {
+                  "source_term": "brav",
+                  "note": "Deutsch 'brav' bedeutet 'well-behaved/good', NICHT 'brave' (mutig). Klassischer falscher Freund."
+                }
+              ],
+              "common_mistake": "Falscher Freund: 'brave' ≠ brav! Brave = mutig; brav = well-behaved/good."
+            }
+          }
+        },
+        {
+          "term": "nervous",
+          "pos": "adjective",
+          "ipa": "/ˈnɜːvəs/",
+          "etymology": "From Latin nervosus (sinewy, vigorous), from nervus (sinew, nerve); the modern sense 'anxious, agitated' is an English development from the 18th century.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.emotion",
+          "synonyms": ["anxious", "uneasy"],
+          "collocations": ["nervous breakdown", "nervous laugh", "nervous system"],
+          "tags": ["emotion", "personality"],
+          "example": "He gets nervous before every exam, even when he has studied well.",
+          "prerequisites": [],
+          "comparative": "more nervous",
+          "superlative": "most nervous",
+          "antonym": "relaxed",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Nervous' und 'nervös' sind fast identisch: gleiche Wurzel (Nerv/nerve), gleiche Bedeutung. Nur die Endung ändert sich: -ous statt -ös.",
+              "example_gloss": "Er wird vor jeder Prüfung nervös, selbst wenn er gut gelernt hat.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "relaxed",
+          "pos": "adjective",
+          "ipa": "/rɪˈlækst/",
+          "etymology": "Past participle of relax, from Latin relaxare (to loosen, open), from re- (back) + laxare (to loosen), from laxus (loose).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.emotion",
+          "synonyms": ["laid-back", "easygoing"],
+          "collocations": ["relaxed atmosphere", "relaxed attitude", "feel relaxed"],
+          "tags": ["emotion", "personality"],
+          "example": "After a long bath, she felt completely relaxed.",
+          "prerequisites": [],
+          "comparative": "more relaxed",
+          "superlative": "most relaxed",
+          "antonym": "nervous",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Relaxed' = relax + ed. Das Wort 'relaxen' ist im Deutschen eingebürgert, also ist der Sprung minimal.",
+              "example_gloss": "Nach einem langen Bad fühlte sie sich völlig entspannt.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "honest",
+          "pos": "adjective",
+          "ipa": "/ˈɒnɪst/",
+          "etymology": "From Old French honeste (decent, honorable), from Latin honestus (honored, respected), from honos (honor); the h is silent.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "qualities.personality",
+          "synonyms": ["truthful", "sincere"],
+          "collocations": ["honest opinion", "honest mistake", "to be honest"],
+          "tags": ["personality", "character"],
+          "example": "To be honest, I think we should take a different route.",
+          "prerequisites": [],
+          "comparative": "more honest",
+          "superlative": "most honest",
+          "antonym": "dishonest",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Honest' kommt vom französischen honeste (ehrenhaft) — und Ehre steckt auch in ehrlich. Das h ist stumm: /ˈɒnɪst/.",
+              "example_gloss": "Ehrlich gesagt, ich denke, wir sollten eine andere Route nehmen.",
+              "false_friends": [],
+              "common_mistake": "Das h ist stumm: 'an honest person', nicht 'a honest person'. Der Artikel wechselt wegen des Vokallauts."
+            }
+          }
+        },
+        {
+          "term": "dishonest",
+          "pos": "adjective",
+          "ipa": "/dɪsˈɒnɪst/",
+          "etymology": "From dis- (negation) + honest; formed in English on the model of Old French deshoneste.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.personality",
+          "synonyms": ["deceitful", "untruthful"],
+          "collocations": ["dishonest behavior", "dishonest answer"],
+          "tags": ["personality", "character"],
+          "example": "It would be dishonest to pretend I liked the food when I did not.",
+          "prerequisites": ["honest"],
+          "comparative": "more dishonest",
+          "superlative": "most dishonest",
+          "antonym": "honest",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Dishonest' = dis + honest: die Vorsilbe dis- negiert wie 'un-' im Deutschen. Unehrlich = dishonest.",
+              "example_gloss": "Es wäre unehrlich, so zu tun, als hätte mir das Essen geschmeckt, obwohl es nicht so war.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "patient",
+          "pos": "adjective",
+          "ipa": "/ˈpeɪʃənt/",
+          "etymology": "From Old French pacient (enduring, calm), from Latin patientem (bearing, enduring), present participle of pati (to suffer, endure).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "qualities.personality",
+          "synonyms": ["tolerant"],
+          "collocations": ["patient person", "be patient", "patient with someone"],
+          "tags": ["personality", "character"],
+          "example": "Good teachers are patient with students who learn slowly.",
+          "prerequisites": [],
+          "comparative": "more patient",
+          "superlative": "most patient",
+          "antonym": "impatient",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Patient' als Adjektiv heißt geduldig — nicht verwechseln mit dem Nomen 'patient' (Krankenhaus-Patient). Gleiche Schreibung, anderer Kontext.",
+              "example_gloss": "Gute Lehrer sind geduldig mit Schülern, die langsam lernen.",
+              "false_friends": [
+                {
+                  "source_term": "Patient",
+                  "note": "Deutsch 'Patient' ist nur das Nomen (kranke Person). Als Adjektiv existiert es im Deutschen nicht — englisch 'patient' = geduldig."
+                }
+              ],
+              "common_mistake": "Zwei Bedeutungen: 'patient' (adj.) = geduldig, 'patient' (noun) = Krankenhaus-Patient. Die Betonung ist gleich."
+            }
+          }
+        },
+        {
+          "term": "impatient",
+          "pos": "adjective",
+          "ipa": "/ɪmˈpeɪʃənt/",
+          "etymology": "From Latin impatientem (not enduring), from in- (not) + patientem; entered English via Old French.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.personality",
+          "synonyms": ["restless"],
+          "collocations": ["impatient driver", "grow impatient", "impatient with"],
+          "tags": ["personality", "character"],
+          "example": "The impatient driver honked his horn at every red light.",
+          "prerequisites": ["patient"],
+          "comparative": "more impatient",
+          "superlative": "most impatient",
+          "antonym": "patient",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Impatient' = im (nicht) + patient (geduldig): ungeduldig. Die lateinische Vorsilbe im- ist wie deutsch un-.",
+              "example_gloss": "Der ungeduldige Fahrer hupte bei jeder roten Ampel.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "jealous",
+          "pos": "adjective",
+          "ipa": "/ˈdʒɛləs/",
+          "etymology": "From Old French jalous (zealous, jealous), from Medieval Latin zelosus, from Latin zelus (zeal, jealousy), from Greek zelos (ardor, jealousy).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.emotion",
+          "synonyms": ["envious"],
+          "collocations": ["jealous boyfriend", "jealous of someone", "jealous rage"],
+          "tags": ["emotion", "personality"],
+          "example": "He became jealous when he saw her talking to someone else at the party.",
+          "prerequisites": [],
+          "comparative": "more jealous",
+          "superlative": "most jealous",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Jealous' kommt vom griechischen zelos (Eifer) — derselbe Stamm wie in 'Zelot'. Die englische Schreibung mit j statt z ist die französische Verkleidung.",
+              "example_gloss": "Er wurde eifersüchtig, als er sie auf der Party mit jemand anderem reden sah.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈdʒɛləs/ mit weichem dʒ am Anfang, nicht /jɛləs/."
+            }
+          }
+        },
+        {
+          "term": "proud",
+          "pos": "adjective",
+          "ipa": "/praʊd/",
+          "etymology": "From Old English prūd/prūt (proud, arrogant), from Old French prud/proz (brave, valiant), from Late Latin prode (advantageous), from Latin prodesse (to be useful).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.emotion",
+          "synonyms": ["pleased"],
+          "collocations": ["proud parent", "proud of something", "proud moment"],
+          "tags": ["emotion", "character"],
+          "example": "Her parents were proud when she graduated from university.",
+          "prerequisites": [],
+          "comparative": "prouder",
+          "superlative": "proudest",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Proud' hat keinen offensichtlichen deutschen Verwandten — aber der Klang /praʊd/ mit seinem breiten Diphthong klingt nach etwas, das Raum einnimmt, wie Stolz.",
+              "example_gloss": "Ihre Eltern waren stolz, als sie ihr Studium abschloss.",
+              "false_friends": [],
+              "common_mistake": "Präposition: 'proud of something/someone', nicht 'proud on' oder 'proud for'."
+            }
+          }
+        },
+        {
+          "term": "lonely",
+          "pos": "adjective",
+          "ipa": "/ˈloʊnli/",
+          "etymology": "From lone (shortened from alone) + -ly suffix; 'alone' is from all + one. Used as adjective since the 16th century.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.emotion",
+          "synonyms": ["isolated", "lonesome"],
+          "collocations": ["lonely road", "lonely hearts", "feel lonely"],
+          "tags": ["emotion", "social"],
+          "example": "Moving to a new city can feel lonely at first.",
+          "prerequisites": [],
+          "comparative": "lonelier",
+          "superlative": "loneliest",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Lonely' = lone (allein) + ly. 'Alone' wiederum ist 'all one' — komplett eins, also ganz allein. Lonely ist das Gefühl dazu.",
+              "example_gloss": "In eine neue Stadt zu ziehen kann sich anfangs einsam anfühlen.",
+              "false_friends": [],
+              "common_mistake": "'Lonely' beschreibt ein negatives Gefühl; 'alone' ist neutral (nur Zustand). 'I am alone' ≠ 'I am lonely'."
+            }
+          }
+        },
+        {
+          "term": "excited",
+          "pos": "adjective",
+          "ipa": "/ɪkˈsaɪtɪd/",
+          "etymology": "Past participle of excite, from Latin excitare (to call forth, rouse), from ex- (out) + citare (to set in motion, summon).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.emotion",
+          "synonyms": ["thrilled", "eager"],
+          "collocations": ["excited about", "excited to see", "excited crowd"],
+          "tags": ["emotion", "core"],
+          "example": "The children were excited about going to the amusement park.",
+          "prerequisites": [],
+          "comparative": "more excited",
+          "superlative": "most excited",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Excited' hat das lateinische citare (in Bewegung setzen) als Kern: man wird innerlich in Bewegung gesetzt, aufgeregt. Ex + cite = herausrufen.",
+              "example_gloss": "Die Kinder waren aufgeregt, weil sie in den Vergnügungspark gehen sollten.",
+              "false_friends": [],
+              "common_mistake": "'Excited' (aufgeregt/begeistert) vs. 'exciting' (aufregend): 'I am excited' (Zustand), 'the film is exciting' (Eigenschaft)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "quality_and_judgment",
+      "entries": [
+        {
+          "term": "good",
+          "pos": "adjective",
+          "ipa": "/ɡʊd/",
+          "etymology": "From Old English gōd (good, virtuous), from Proto-Germanic *gōdaz; cognate with German 'gut'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["fine", "great"],
+          "collocations": ["good morning", "good idea", "good at something"],
+          "tags": ["quality", "core"],
+          "example": "She is really good at solving puzzles quickly.",
+          "prerequisites": [],
+          "comparative": "better",
+          "superlative": "best",
+          "antonym": "bad",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Good' und 'gut' teilen den g-Anfang und die gleiche Grundbedeutung. Der Vokal verschiebt sich: deutsch /uː/, englisch /ʊ/.",
+              "example_gloss": "Sie ist wirklich gut darin, Rätsel schnell zu lösen.",
+              "false_friends": [],
+              "common_mistake": "Steigerung komplett unregelmäßig: good → better → best. Nicht 'gooder' oder 'goodest'."
+            }
+          }
+        },
+        {
+          "term": "bad",
+          "pos": "adjective",
+          "ipa": "/bæd/",
+          "etymology": "Of uncertain origin; possibly from Old English bæddel (hermaphrodite) used pejoratively, or from Old English bǣdan (to defile); attested from the 13th century.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["poor", "terrible"],
+          "collocations": ["bad luck", "bad mood", "bad habit"],
+          "tags": ["quality", "core"],
+          "example": "The weather has been bad all week — nothing but rain.",
+          "prerequisites": [],
+          "comparative": "worse",
+          "superlative": "worst",
+          "antonym": "good",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Bad' hat keine deutsche Verwandtschaft — aber der kurze, harte Klang /bæd/ klingt unangenehm, passend zur Bedeutung.",
+              "example_gloss": "Das Wetter war die ganze Woche schlecht — nichts als Regen.",
+              "false_friends": [
+                {
+                  "source_term": "Bad",
+                  "note": "Deutsch 'Bad' bedeutet 'bath/bathroom', NICHT 'bad' (schlecht). Gleiche Schreibung, völlig andere Bedeutung."
+                }
+              ],
+              "common_mistake": "Steigerung komplett unregelmäßig: bad → worse → worst. Nicht 'badder' oder 'baddest'."
+            }
+          }
+        },
+        {
+          "term": "easy",
+          "pos": "adjective",
+          "ipa": "/ˈiːzi/",
+          "etymology": "From Old French aisié (at ease, comfortable), from aise (ease, comfort), possibly of Germanic origin; the sense 'not difficult' developed in Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.judgment",
+          "synonyms": ["simple", "straightforward"],
+          "collocations": ["easy going", "easy task", "take it easy"],
+          "tags": ["quality", "core"],
+          "example": "The first few questions on the test were easy.",
+          "prerequisites": [],
+          "comparative": "easier",
+          "superlative": "easiest",
+          "antonym": "difficult",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Easy' kommt von 'ease' (Leichtigkeit/Bequemlichkeit) — wenn etwas 'at ease' ist, ist es leicht. Die Redewendung 'easy-peasy' verdeutlicht die Einfachheit.",
+              "example_gloss": "Die ersten paar Fragen im Test waren einfach.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "difficult",
+          "pos": "adjective",
+          "ipa": "/ˈdɪfɪkəlt/",
+          "etymology": "From Latin difficilis (hard, troublesome), from dis- (not) + facilis (easy), from facere (to do); entered English via Old French.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["hard", "challenging"],
+          "collocations": ["difficult decision", "difficult question", "difficult situation"],
+          "tags": ["quality", "core"],
+          "example": "Learning to drive was more difficult than I expected.",
+          "prerequisites": [],
+          "comparative": "more difficult",
+          "superlative": "most difficult",
+          "antonym": "easy",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Difficult' steckt voller lateinischer Verneinung: dis + facilis = nicht leicht. Im Deutschen nutzt man stattdessen 'schwierig' — kein Verwandter.",
+              "example_gloss": "Autofahren zu lernen war schwieriger als erwartet.",
+              "false_friends": [],
+              "common_mistake": "Drei Silben: /ˈdɪf-ɪ-kəlt/, nicht zwei. Das mittlere i wird oft verschluckt, aber geschrieben wird es."
+            }
+          }
+        },
+        {
+          "term": "right",
+          "pos": "adjective",
+          "ipa": "/raɪt/",
+          "etymology": "From Old English riht (just, proper, straight), from Proto-Germanic *rehtaz; cognate with German 'recht' and Latin rectus.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["correct", "proper"],
+          "collocations": ["right answer", "right time", "right away"],
+          "tags": ["judgment", "core"],
+          "example": "You picked the right moment to ask — she was in a great mood.",
+          "prerequisites": [],
+          "comparative": null,
+          "superlative": null,
+          "antonym": "wrong",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Right' und 'recht' sind direkte Verwandte: gleiche Wurzel, gleiche Bedeutung (richtig, Recht). Nur die Schreibung unterscheidet sich: gh statt ch.",
+              "example_gloss": "Du hast den richtigen Moment gewählt zu fragen — sie war bester Laune.",
+              "false_friends": [],
+              "common_mistake": "'Right' hat viele Bedeutungen: richtig (adj.), rechts (direction), Recht (noun). Kontext beachten."
+            }
+          }
+        },
+        {
+          "term": "wrong",
+          "pos": "adjective",
+          "ipa": "/rɒŋ/",
+          "etymology": "From Old Norse rangr (crooked, wrong), replacing Old English wrang; ultimately from Proto-Germanic *wrangaz (twisted).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.judgment",
+          "synonyms": ["incorrect", "mistaken"],
+          "collocations": ["wrong answer", "wrong way", "go wrong"],
+          "tags": ["judgment", "core"],
+          "example": "I took the wrong bus and ended up on the other side of town.",
+          "prerequisites": [],
+          "comparative": null,
+          "superlative": null,
+          "antonym": "right",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Wrong' kommt vom Altnordischen rangr (verdreht, krumm) — etwas Falsches ist eben verdreht. Das w am Anfang ist stumm: /rɒŋ/.",
+              "example_gloss": "Ich nahm den falschen Bus und landete auf der anderen Seite der Stadt.",
+              "false_friends": [],
+              "common_mistake": "Das w ist stumm: /rɒŋ/, nicht /wrɒŋ/. Wie bei 'write', 'wrap', 'wrist'."
+            }
+          }
+        },
+        {
+          "term": "important",
+          "pos": "adjective",
+          "ipa": "/ɪmˈpɔːtənt/",
+          "etymology": "From Medieval Latin importantem (of great consequence), from Latin importare (to bring in, to matter), from in- + portare (to carry).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["significant", "crucial"],
+          "collocations": ["important meeting", "important decision", "most important"],
+          "tags": ["judgment", "core"],
+          "example": "It is important to drink enough water when you exercise.",
+          "prerequisites": [],
+          "comparative": "more important",
+          "superlative": "most important",
+          "antonym": "unimportant",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Important' steckt in 'Import': etwas Importiertes (Hereingetragenes) hat Gewicht, ist von Bedeutung. Im Deutschen ist 'important' als Fremdwort bekannt.",
+              "example_gloss": "Es ist wichtig, beim Sport genug Wasser zu trinken.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "unimportant",
+          "pos": "adjective",
+          "ipa": "/ˌʌnɪmˈpɔːtənt/",
+          "etymology": "From un- (not) + important; a straightforward English negation.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["trivial", "minor"],
+          "collocations": ["unimportant detail", "seemingly unimportant"],
+          "tags": ["judgment", "quality"],
+          "example": "Whether we leave at nine or ten is unimportant — we will arrive late either way.",
+          "prerequisites": ["important"],
+          "comparative": "more unimportant",
+          "superlative": "most unimportant",
+          "antonym": "important",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Unimportant' = un + important: die Vorsilbe un- negiert wie im Deutschen. Unwichtig = unimportant.",
+              "example_gloss": "Ob wir um neun oder zehn losfahren, ist unwichtig — wir kommen sowieso zu spät an.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "cheap",
+          "pos": "adjective",
+          "ipa": "/tʃiːp/",
+          "etymology": "From Old English cēap (a purchase, trade, bargain), from Proto-Germanic *kaupō (trade); cognate with German 'kaufen'. The sense shifted from 'bargain' to 'low-priced'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "qualities.value",
+          "synonyms": ["inexpensive", "affordable"],
+          "collocations": ["cheap flight", "cheap trick", "on the cheap"],
+          "tags": ["value", "quality"],
+          "example": "We found a cheap hotel near the train station.",
+          "prerequisites": [],
+          "comparative": "cheaper",
+          "superlative": "cheapest",
+          "antonym": "expensive",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cheap' und 'kaufen' sind historisch verwandt! Old English cēap = Handel/Kauf. Etwas Billiges ist ein guter Kauf.",
+              "example_gloss": "Wir fanden ein billiges Hotel in der Nähe des Bahnhofs.",
+              "false_friends": [],
+              "common_mistake": "'Cheap' kann auch abwertend sein (billig im Sinne von minderwertig). 'Inexpensive' ist neutraler."
+            }
+          }
+        },
+        {
+          "term": "expensive",
+          "pos": "adjective",
+          "ipa": "/ɪkˈspɛnsɪv/",
+          "etymology": "From Medieval Latin expensivus, from Latin expensa (expense), from expendere (to weigh out, pay out); entered English in the 17th century.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "qualities.value",
+          "synonyms": ["costly", "pricey"],
+          "collocations": ["expensive taste", "expensive mistake", "too expensive"],
+          "tags": ["value", "quality"],
+          "example": "The repairs were more expensive than buying a new washing machine.",
+          "prerequisites": [],
+          "comparative": "more expensive",
+          "superlative": "most expensive",
+          "antonym": "cheap",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Expensive' hat 'expense' (Ausgabe) als Kern. Wer hohe Ausgaben (expenses) hat, kauft expensive Dinge.",
+              "example_gloss": "Die Reparatur war teurer als eine neue Waschmaschine zu kaufen.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: Betonung auf der zweiten Silbe /ɪkˈspɛn-sɪv/, nicht auf der ersten."
+            }
+          }
+        },
+        {
+          "term": "useful",
+          "pos": "adjective",
+          "ipa": "/ˈjuːsfəl/",
+          "etymology": "From use (Old French us, from Latin usus 'use, employment') + -ful suffix; literally 'full of use'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "qualities.judgment",
+          "synonyms": ["helpful", "practical"],
+          "collocations": ["useful information", "useful tool", "come in useful"],
+          "tags": ["quality", "judgment"],
+          "example": "A pocket knife is a useful thing to have when you go camping.",
+          "prerequisites": [],
+          "comparative": "more useful",
+          "superlative": "most useful",
+          "antonym": "useless",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Useful' = use (Nutzen) + ful (voll): voller Nutzen = nützlich. Exakt wie 'nütz-lich' gebaut.",
+              "example_gloss": "Ein Taschenmesser ist eine nützliche Sache beim Camping.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "useless",
+          "pos": "adjective",
+          "ipa": "/ˈjuːsləs/",
+          "etymology": "From use + -less (without); 'without use' — parallel to German 'nutz-los'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "qualities.judgment",
+          "synonyms": ["pointless", "worthless"],
+          "collocations": ["completely useless", "useless information"],
+          "tags": ["quality", "judgment"],
+          "example": "This broken umbrella is completely useless in the rain.",
+          "prerequisites": ["useful"],
+          "comparative": "more useless",
+          "superlative": "most useless",
+          "antonym": "useful",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Useless' = use + less (ohne): ohne Nutzen = nutzlos. Genau wie deutsch 'nutz-los' gebaut, mit -less statt -los.",
+              "example_gloss": "Dieser kaputte Regenschirm ist im Regen völlig nutzlos.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "safe",
+          "pos": "adjective",
+          "ipa": "/seɪf/",
+          "etymology": "From Old French sauf (safe, secure), from Latin salvus (uninjured, healthy); related to 'salvation'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "qualities.judgment",
+          "synonyms": ["secure", "protected"],
+          "collocations": ["safe place", "safe to say", "safe journey"],
+          "tags": ["safety", "quality"],
+          "example": "Keep your passport in a safe place while travelling.",
+          "prerequisites": [],
+          "comparative": "safer",
+          "superlative": "safest",
+          "antonym": "dangerous",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Safe' kommt vom lateinischen salvus (heil/gerettet) — derselbe Stamm wie 'Salve!' (Sei gegrüßt/Sei heil). Ein Safe (Tresor) hält Dinge safe.",
+              "example_gloss": "Bewahre deinen Reisepass an einem sicheren Ort auf, wenn du reist.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "dangerous",
+          "pos": "adjective",
+          "ipa": "/ˈdeɪndʒərəs/",
+          "etymology": "From Old French dangereus (difficult, reluctant), from dangier (power, dominion, peril), from Vulgar Latin *dominiarium (authority of a lord).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["hazardous", "risky"],
+          "collocations": ["dangerous road", "dangerous animal", "dangerous situation"],
+          "tags": ["safety", "quality"],
+          "example": "Swimming in this river is dangerous because of the strong current.",
+          "prerequisites": [],
+          "comparative": "more dangerous",
+          "superlative": "most dangerous",
+          "antonym": "safe",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Dangerous' hat 'danger' (Gefahr) als Kern — und 'Danger' sieht man auf Warnschildern überall. Danger + ous = gefährlich.",
+              "example_gloss": "In diesem Fluss zu schwimmen ist wegen der starken Strömung gefährlich.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "possible",
+          "pos": "adjective",
+          "ipa": "/ˈpɒsəbəl/",
+          "etymology": "From Old French possible, from Latin possibilis (that can be done), from posse (to be able); related to 'potent' and 'power'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["feasible", "achievable"],
+          "collocations": ["as soon as possible", "possible solution", "if possible"],
+          "tags": ["judgment", "abstract"],
+          "example": "Is it possible to change my flight to a later one?",
+          "prerequisites": [],
+          "comparative": null,
+          "superlative": null,
+          "antonym": "impossible",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Possible' und 'possibel' (veraltet) teilen den lateinischen Stamm posse (können). Im Deutschen nutzt man 'möglich', aber 'possible' ist als Fremdwort erkennbar.",
+              "example_gloss": "Ist es möglich, meinen Flug auf einen späteren umzubuchen?",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "impossible",
+          "pos": "adjective",
+          "ipa": "/ɪmˈpɒsəbəl/",
+          "etymology": "From Latin impossibilis, from in- (not) + possibilis (possible); entered English via Old French.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["unachievable"],
+          "collocations": ["mission impossible", "impossible task", "almost impossible"],
+          "tags": ["judgment", "abstract"],
+          "example": "Finishing the project by Friday is almost impossible without extra help.",
+          "prerequisites": ["possible"],
+          "comparative": null,
+          "superlative": null,
+          "antonym": "possible",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Impossible' = im (nicht) + possible: unmöglich. Die Vorsilbe im- ist die lateinische Version von un-.",
+              "example_gloss": "Das Projekt bis Freitag fertigzustellen, ist ohne zusätzliche Hilfe fast unmöglich.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "ready",
+          "pos": "adjective",
+          "ipa": "/ˈrɛdi/",
+          "etymology": "From Old English rǣde (prepared, prompt), from Proto-Germanic *raidijaz (arranged, prepared); related to the verb 'to ride' via the sense 'set to go'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "qualities.state",
+          "synonyms": ["prepared", "set"],
+          "collocations": ["ready to go", "get ready", "ready-made"],
+          "tags": ["state", "core"],
+          "example": "Are you ready? The taxi will be here in five minutes.",
+          "prerequisites": [],
+          "comparative": null,
+          "superlative": null,
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Ready' klingt wie 'Reh, die' — stell dir ein Reh vor, das bereit ist, über den Zaun zu springen: ready to jump!",
+              "example_gloss": "Bist du fertig? Das Taxi kommt in fünf Minuten.",
+              "false_friends": [],
+              "common_mistake": "'Ready' wird nicht gesteigert: man sagt nicht 'readier' oder 'readiest'. 'More ready' ist möglich aber selten."
+            }
+          }
+        },
+        {
+          "term": "normal",
+          "pos": "adjective",
+          "ipa": "/ˈnɔːməl/",
+          "etymology": "From Latin normalis (made according to a carpenter's square, standard), from norma (carpenter's square, rule, pattern).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "qualities.judgment",
+          "synonyms": ["ordinary", "usual", "typical"],
+          "collocations": ["normal life", "normal temperature", "back to normal"],
+          "tags": ["judgment", "core"],
+          "example": "Everything went back to normal after the storm passed.",
+          "prerequisites": [],
+          "comparative": "more normal",
+          "superlative": "most normal",
+          "antonym": "strange",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Normal' ist im Deutschen und Englischen identisch: gleiche Schreibung, gleiche Bedeutung, gleiche lateinische Wurzel. Ein Geschenk für Lernende.",
+              "example_gloss": "Nach dem Sturm kehrte alles wieder zur Normalität zurück.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈnɔːməl/ — Betonung auf der ersten Silbe, wie im Deutschen."
+            }
+          }
+        },
+        {
+          "term": "special",
+          "pos": "adjective",
+          "ipa": "/ˈspɛʃəl/",
+          "etymology": "From Old French espécial (special, particular), from Latin specialis (individual, particular), from species (appearance, kind).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["unique", "particular"],
+          "collocations": ["special occasion", "special offer", "special needs"],
+          "tags": ["judgment", "quality"],
+          "example": "Today is a special day — it is their wedding anniversary.",
+          "prerequisites": [],
+          "comparative": "more special",
+          "superlative": "most special",
+          "antonym": "ordinary",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Special' und 'speziell' sind offensichtliche Verwandte: gleicher lateinischer Stamm specialis. Nur die Endung unterscheidet sich: -al vs. -ell.",
+              "example_gloss": "Heute ist ein besonderer Tag — es ist ihr Hochzeitstag.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈspɛʃəl/ — das c wird /ʃ/ (wie sch), nicht /ts/ wie in deutsch 'speziell'."
+            }
+          }
+        },
+        {
+          "term": "strange",
+          "pos": "adjective",
+          "ipa": "/streɪndʒ/",
+          "etymology": "From Old French estrange (foreign, unusual), from Latin extraneus (foreign, external), from extra (outside); originally meant 'foreign' before shifting to 'unusual'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.judgment",
+          "synonyms": ["odd", "weird", "unusual"],
+          "collocations": ["strange feeling", "strange noise", "strange behavior"],
+          "tags": ["judgment", "quality"],
+          "example": "There was a strange noise coming from the attic at night.",
+          "prerequisites": [],
+          "comparative": "stranger",
+          "superlative": "strangest",
+          "antonym": "normal",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Strange' kommt von extraneus (von außen) — ein Fremder (stranger) ist jemand von außerhalb. Was von außen kommt, wirkt strange/seltsam.",
+              "example_gloss": "Nachts kam ein seltsames Geräusch vom Dachboden.",
+              "false_friends": [],
+              "common_mistake": "Nicht verwechseln: 'strange' (adj., seltsam) vs. 'stranger' (noun, Fremder). 'Stranger' als Komparativ existiert auch: 'stranger than fiction'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "theme_slug": "abstract_and_figurative",
+      "entries": [
+        {
+          "term": "logical",
+          "pos": "adjective",
+          "ipa": "/ˈlɒdʒɪkəl/",
+          "etymology": "From Latin logicalis, from logica (logic), from Greek logikē (art of reasoning), from logos (reason, word).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 2,
+          "topic": "qualities.abstract",
+          "synonyms": ["rational", "reasonable"],
+          "collocations": ["logical conclusion", "logical thinking", "logical step"],
+          "tags": ["abstract", "thinking"],
+          "example": "The detective followed a logical chain of evidence to solve the case.",
+          "prerequisites": [],
+          "comparative": "more logical",
+          "superlative": "most logical",
+          "antonym": "illogical",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Logical' und 'logisch' teilen den griechischen Stamm logos. Nur die Endung ändert sich: -al statt -isch.",
+              "example_gloss": "Der Detektiv folgte einer logischen Beweiskette, um den Fall zu lösen.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈlɒdʒ-ɪ-kəl/ — das g wird /dʒ/ gesprochen (wie j), nicht /g/ wie im Deutschen."
+            }
+          }
+        },
+        {
+          "term": "emotional",
+          "pos": "adjective",
+          "ipa": "/ɪˈmoʊʃənəl/",
+          "etymology": "From emotion (from French émotion, from émouvoir 'to stir up', from Latin emovere 'to move out') + -al suffix.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["passionate", "sentimental"],
+          "collocations": ["emotional support", "emotional response", "emotional intelligence"],
+          "tags": ["abstract", "emotion"],
+          "example": "The farewell speech was so emotional that several people wiped their eyes.",
+          "prerequisites": [],
+          "comparative": "more emotional",
+          "superlative": "most emotional",
+          "antonym": "rational",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Emotional' ist im Deutschen und Englischen fast identisch — gleicher Stamm, gleiche Bedeutung. Nur die Aussprache ändert sich: englisch /ɪˈmoʊʃənəl/.",
+              "example_gloss": "Die Abschiedsrede war so emotional, dass sich mehrere Leute die Augen wischten.",
+              "false_friends": [],
+              "common_mistake": "Betonung auf der zweiten Silbe: /ɪˈMOʊ-ʃə-nəl/, nicht auf der ersten."
+            }
+          }
+        },
+        {
+          "term": "personal",
+          "pos": "adjective",
+          "ipa": "/ˈpɜːsənəl/",
+          "etymology": "From Old French personel, from Latin personalis (of or pertaining to a person), from persona (person, mask).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["individual", "private"],
+          "collocations": ["personal opinion", "personal space", "personal trainer"],
+          "tags": ["abstract", "social"],
+          "example": "That is a personal question — I would rather not answer it.",
+          "prerequisites": [],
+          "comparative": "more personal",
+          "superlative": "most personal",
+          "antonym": "impersonal",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Personal' und 'persönlich' teilen den Stamm persona. Aber Vorsicht: deutsch 'das Personal' als Nomen bedeutet 'staff', nicht 'personal'!",
+              "example_gloss": "Das ist eine persönliche Frage — ich möchte sie lieber nicht beantworten.",
+              "false_friends": [
+                {
+                  "source_term": "Personal",
+                  "note": "Deutsch 'das Personal' (Nomen) bedeutet 'staff/personnel', NICHT das Adjektiv 'personal' (persönlich)."
+                }
+              ],
+              "common_mistake": "Deutsch 'das Personal' = englisch 'the staff'. Nicht verwechseln mit dem Adjektiv 'personal' (persönlich)."
+            }
+          }
+        },
+        {
+          "term": "public",
+          "pos": "adjective",
+          "ipa": "/ˈpʌblɪk/",
+          "etymology": "From Old French publique, from Latin publicus (of the people, of the state), alteration of poplicus, from populus (people).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["open", "communal"],
+          "collocations": ["public transport", "public opinion", "public holiday"],
+          "tags": ["abstract", "social"],
+          "example": "The park is a public space — everyone is welcome here.",
+          "prerequisites": [],
+          "comparative": "more public",
+          "superlative": "most public",
+          "antonym": "private",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Public' kommt von populus (Volk) — was dem Volk gehört, ist public/öffentlich. Das deutsche 'Publikum' hat den gleichen Stamm.",
+              "example_gloss": "Der Park ist ein öffentlicher Raum — jeder ist hier willkommen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "private",
+          "pos": "adjective",
+          "ipa": "/ˈpraɪvət/",
+          "etymology": "From Latin privatus (set apart, belonging to oneself), past participle of privare (to bereave, deprive), from privus (individual, personal).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["personal", "confidential"],
+          "collocations": ["private life", "private school", "private property"],
+          "tags": ["abstract", "social"],
+          "example": "This is a private conversation — could you give us a moment?",
+          "prerequisites": [],
+          "comparative": "more private",
+          "superlative": "most private",
+          "antonym": "public",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Private' und 'privat' sind fast identisch: gleicher lateinischer Stamm, gleiche Bedeutung. Nur die Aussprache ändert sich: englisch /ˈpraɪ-vət/ mit langem ai.",
+              "example_gloss": "Das ist ein privates Gespräch — könntest du uns einen Moment geben?",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈpraɪ-vət/ — die erste Silbe hat einen Diphthong /aɪ/, nicht /iː/ wie in deutsch 'privat'."
+            }
+          }
+        },
+        {
+          "term": "social",
+          "pos": "adjective",
+          "ipa": "/ˈsoʊʃəl/",
+          "etymology": "From Latin socialis (of companionship, allied), from socius (companion, ally); entered English in the 16th century.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["communal", "societal"],
+          "collocations": ["social media", "social skills", "social worker"],
+          "tags": ["abstract", "social"],
+          "example": "Social media has changed the way people communicate.",
+          "prerequisites": [],
+          "comparative": "more social",
+          "superlative": "most social",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Social' und 'sozial' teilen den lateinischen Stamm socius (Gefährte). Nur die Schreibung ändert sich: c statt z, -al statt -al.",
+              "example_gloss": "Soziale Medien haben die Art und Weise verändert, wie Menschen kommunizieren.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈsoʊ-ʃəl/ — das c wird /ʃ/ gesprochen, nicht /ts/ wie in deutsch 'sozial'."
+            }
+          }
+        },
+        {
+          "term": "political",
+          "pos": "adjective",
+          "ipa": "/pəˈlɪtɪkəl/",
+          "etymology": "From Latin politicus, from Greek politikos (of citizens, of the state), from politēs (citizen), from polis (city); the -al suffix is an English addition.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["governmental"],
+          "collocations": ["political party", "political system", "political debate"],
+          "tags": ["abstract", "society"],
+          "example": "The decision to build a new airport was highly political.",
+          "prerequisites": [],
+          "comparative": "more political",
+          "superlative": "most political",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Political' und 'politisch' sind direkte Verwandte: gleicher griechischer Stamm polis (Stadt/Staat). Endung -cal statt -sch.",
+              "example_gloss": "Die Entscheidung, einen neuen Flughafen zu bauen, war hochpolitisch.",
+              "false_friends": [],
+              "common_mistake": "Betonung auf der zweiten Silbe: /pəˈLɪ-tɪ-kəl/, nicht auf der ersten wie in deutsch 'politisch'."
+            }
+          }
+        },
+        {
+          "term": "cultural",
+          "pos": "adjective",
+          "ipa": "/ˈkʌltʃərəl/",
+          "etymology": "From culture (from Latin cultura 'cultivation, tending', from colere 'to till, cultivate') + -al suffix.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 4,
+          "topic": "qualities.abstract",
+          "synonyms": ["artistic"],
+          "collocations": ["cultural heritage", "cultural difference", "cultural exchange"],
+          "tags": ["abstract", "society"],
+          "example": "Berlin has a rich cultural scene with theatres, galleries, and concert halls.",
+          "prerequisites": [],
+          "comparative": "more cultural",
+          "superlative": "most cultural",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cultural' und 'kulturell' teilen den lateinischen Stamm cultura. Englisch nutzt -al, Deutsch nutzt -ell.",
+              "example_gloss": "Berlin hat eine reiche kulturelle Szene mit Theatern, Galerien und Konzerthallen.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈkʌl-tʃə-rəl/ — das t wird zu /tʃ/ (wie tsch), nicht /t/ wie in deutsch 'kulturell'."
+            }
+          }
+        },
+        {
+          "term": "natural",
+          "pos": "adjective",
+          "ipa": "/ˈnætʃərəl/",
+          "etymology": "From Old French naturel, from Latin naturalis (by birth, according to nature), from natura (nature), from nasci (to be born).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["organic", "innate"],
+          "collocations": ["natural disaster", "natural resources", "natural beauty"],
+          "tags": ["abstract", "nature"],
+          "example": "The lake is surrounded by natural beauty that no photograph can capture.",
+          "prerequisites": [],
+          "comparative": "more natural",
+          "superlative": "most natural",
+          "antonym": "artificial",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Natural' und 'natürlich' haben denselben Stamm natura. Die Aussprache ändert sich stärker: englisch /ˈnætʃ-rəl/ mit tsch-Laut.",
+              "example_gloss": "Der See ist umgeben von natürlicher Schönheit, die kein Foto einfangen kann.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈnæ-tʃə-rəl/ — das t wird /tʃ/ (wie tsch). Betonung auf der ersten Silbe."
+            }
+          }
+        },
+        {
+          "term": "artificial",
+          "pos": "adjective",
+          "ipa": "/ˌɑːtɪˈfɪʃəl/",
+          "etymology": "From Latin artificialis (of or belonging to art), from artificium (craftsmanship, art), from ars (art) + facere (to make).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 4,
+          "topic": "qualities.abstract",
+          "synonyms": ["synthetic", "man-made"],
+          "collocations": ["artificial intelligence", "artificial light", "artificial flavoring"],
+          "tags": ["abstract", "technology"],
+          "example": "The flowers on the table looked real, but they were actually artificial.",
+          "prerequisites": [],
+          "comparative": "more artificial",
+          "superlative": "most artificial",
+          "antonym": "natural",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Artificial' enthält ars (Kunst) + facere (machen): kunstgemacht = künstlich. Deutsch 'artifiziell' existiert als Fremdwort, ist aber selten.",
+              "example_gloss": "Die Blumen auf dem Tisch sahen echt aus, aber sie waren tatsächlich künstlich.",
+              "false_friends": [],
+              "common_mistake": "Betonung auf der dritten Silbe: /ˌɑːtɪˈFɪʃəl/. Vier Silben, nicht drei."
+            }
+          }
+        },
+        {
+          "term": "local",
+          "pos": "adjective",
+          "ipa": "/ˈloʊkəl/",
+          "etymology": "From Old French local, from Late Latin localis (pertaining to a place), from Latin locus (place).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "qualities.abstract",
+          "synonyms": ["regional", "nearby"],
+          "collocations": ["local news", "local government", "local time"],
+          "tags": ["abstract", "place"],
+          "example": "We asked a local farmer where to find the best cheese.",
+          "prerequisites": [],
+          "comparative": "more local",
+          "superlative": "most local",
+          "antonym": "global",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Local' und 'lokal' sind identisch: gleiche Schreibung (fast), gleiche Bedeutung, gleicher lateinischer Stamm locus (Ort).",
+              "example_gloss": "Wir fragten einen örtlichen Bauern, wo man den besten Käse findet.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈloʊ-kəl/ mit langem o-Diphthong, nicht /lo-ˈkaːl/ wie in deutsch 'lokal'."
+            }
+          }
+        },
+        {
+          "term": "global",
+          "pos": "adjective",
+          "ipa": "/ˈɡloʊbəl/",
+          "etymology": "From French global, from Latin globus (sphere, ball); used in English since the 17th century to mean 'worldwide'.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["worldwide", "international"],
+          "collocations": ["global warming", "global economy", "global village"],
+          "tags": ["abstract", "scale"],
+          "example": "Climate change is a global problem that no single country can solve alone.",
+          "prerequisites": [],
+          "comparative": "more global",
+          "superlative": "most global",
+          "antonym": "local",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Global' und 'global' sind identisch: gleicher Stamm globus (Kugel/Erdball), gleiche Bedeutung. Nur die Aussprache variiert: /ˈɡloʊ-bəl/.",
+              "example_gloss": "Der Klimawandel ist ein globales Problem, das kein einzelnes Land allein lösen kann.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "official",
+          "pos": "adjective",
+          "ipa": "/əˈfɪʃəl/",
+          "etymology": "From Old French official, from Latin officialis (of duty, of office), from officium (duty, service, office).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 4,
+          "topic": "qualities.abstract",
+          "synonyms": ["formal", "authorized"],
+          "collocations": ["official statement", "official language", "official website"],
+          "tags": ["abstract", "authority"],
+          "example": "The official announcement came two hours after the meeting ended.",
+          "prerequisites": [],
+          "comparative": "more official",
+          "superlative": "most official",
+          "antonym": "unofficial",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Official' und 'offiziell' sind enge Verwandte: gleicher Stamm officium (Amt). Endung -al statt -ell.",
+              "example_gloss": "Die offizielle Ankündigung kam zwei Stunden nach dem Ende des Treffens.",
+              "false_friends": [],
+              "common_mistake": "Betonung auf der zweiten Silbe: /əˈFɪ-ʃəl/, nicht auf der ersten."
+            }
+          }
+        },
+        {
+          "term": "legal",
+          "pos": "adjective",
+          "ipa": "/ˈliːɡəl/",
+          "etymology": "From Old French légal, from Latin legalis (pertaining to the law), from lex (law, statute).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["lawful", "legitimate"],
+          "collocations": ["legal advice", "legal system", "legal rights"],
+          "tags": ["abstract", "law"],
+          "example": "Is it legal to park here, or will I get a ticket?",
+          "prerequisites": [],
+          "comparative": "more legal",
+          "superlative": "most legal",
+          "antonym": "illegal",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Legal' ist im Deutschen und Englischen identisch: gleiche Schreibung, gleicher Stamm lex (Gesetz), gleiche Bedeutung.",
+              "example_gloss": "Ist es legal, hier zu parken, oder bekomme ich einen Strafzettel?",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈliː-ɡəl/ mit langem /iː/, nicht /eː/ wie in deutsch 'legal'."
+            }
+          }
+        },
+        {
+          "term": "illegal",
+          "pos": "adjective",
+          "ipa": "/ɪˈliːɡəl/",
+          "etymology": "From French illégal, from Latin illegalis, from in- (not) + legalis (legal); the prefix il- is a form of in- before l.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["unlawful", "criminal"],
+          "collocations": ["illegal activity", "illegal parking", "illegal substance"],
+          "tags": ["abstract", "law"],
+          "example": "Downloading copyrighted films without paying is illegal.",
+          "prerequisites": ["legal"],
+          "comparative": "more illegal",
+          "superlative": "most illegal",
+          "antonym": "legal",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Illegal' ist im Deutschen und Englischen identisch: il- (nicht) + legal = gesetzwidrig. Einer der einfachsten Transfers.",
+              "example_gloss": "Urheberrechtlich geschützte Filme herunterzuladen, ohne zu bezahlen, ist illegal.",
+              "false_friends": [],
+              "common_mistake": "Betonung auf der zweiten Silbe: /ɪˈLIː-ɡəl/, nicht auf der ersten."
+            }
+          }
+        },
+        {
+          "term": "formal",
+          "pos": "adjective",
+          "ipa": "/ˈfɔːməl/",
+          "etymology": "From Latin formalis (of or pertaining to form), from forma (form, shape, mold).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["official", "ceremonial"],
+          "collocations": ["formal dress", "formal education", "formal complaint"],
+          "tags": ["abstract", "social"],
+          "example": "The dinner was formal — everyone wore suits and evening dresses.",
+          "prerequisites": [],
+          "comparative": "more formal",
+          "superlative": "most formal",
+          "antonym": "informal",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Formal' und 'formell' teilen den Stamm forma (Form). Was in Form ist, ist formell/formal.",
+              "example_gloss": "Das Abendessen war formell — alle trugen Anzüge und Abendkleider.",
+              "false_friends": [
+                {
+                  "source_term": "formal",
+                  "note": "Deutsch 'formal' kann auch 'nur der Form nach' bedeuten (formaler Fehler = Formfehler). Englisch 'formal' betont eher den feierlichen/offiziellen Charakter."
+                }
+              ],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "informal",
+          "pos": "adjective",
+          "ipa": "/ɪnˈfɔːməl/",
+          "etymology": "From in- (not) + formal; formed in English as the direct negation of 'formal'.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["casual", "relaxed"],
+          "collocations": ["informal meeting", "informal language", "informal setting"],
+          "tags": ["abstract", "social"],
+          "example": "The meeting was informal — we just sat around the kitchen table and talked.",
+          "prerequisites": ["formal"],
+          "comparative": "more informal",
+          "superlative": "most informal",
+          "antonym": "formal",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Informal' = in (nicht) + formal: ungezwungen. Deutsch 'informell' ist ein direkter Verwandter.",
+              "example_gloss": "Das Treffen war informell — wir saßen einfach um den Küchentisch und redeten.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "active",
+          "pos": "adjective",
+          "ipa": "/ˈæktɪv/",
+          "etymology": "From Old French actif, from Latin activus (active, practical), from actus (a doing, a driving), past participle of agere (to do, to drive).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "qualities.abstract",
+          "synonyms": ["energetic", "dynamic"],
+          "collocations": ["active lifestyle", "active member", "active volcano"],
+          "tags": ["abstract", "activity"],
+          "example": "My grandmother is still very active — she swims three times a week.",
+          "prerequisites": [],
+          "comparative": "more active",
+          "superlative": "most active",
+          "antonym": "passive",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Active' und 'aktiv' sind fast identisch: gleicher Stamm actus (Handlung), gleiche Bedeutung. Nur die Schreibung: c statt k, -ve statt -v.",
+              "example_gloss": "Meine Großmutter ist immer noch sehr aktiv — sie schwimmt dreimal pro Woche.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈæk-tɪv/ — das a ist ein kurzes /æ/ wie in 'cat', nicht /aː/ wie in deutsch 'aktiv'."
+            }
+          }
+        },
+        {
+          "term": "passive",
+          "pos": "adjective",
+          "ipa": "/ˈpæsɪv/",
+          "etymology": "From Latin passivus (capable of feeling or suffering), from passus, past participle of pati (to suffer, endure); related to 'patient'.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 4,
+          "topic": "qualities.abstract",
+          "synonyms": ["inactive", "submissive"],
+          "collocations": ["passive voice", "passive income", "passive resistance"],
+          "tags": ["abstract", "activity"],
+          "example": "He took a passive role in the discussion and let others do the talking.",
+          "prerequisites": [],
+          "comparative": "more passive",
+          "superlative": "most passive",
+          "antonym": "active",
+          "per_source": {
+            "de": {
+              "mnemonic": "'Passive' und 'passiv' sind direkte Verwandte: lateinisch pati (erdulden). Wer passiv ist, erduldet, statt zu handeln.",
+              "example_gloss": "Er nahm eine passive Rolle in der Diskussion ein und ließ andere reden.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈpæ-sɪv/ — das a ist kurz /æ/ wie in 'cat'. Im Grammatikkontext: 'passive voice' = Passiv."
+            }
+          }
+        },
+        {
+          "term": "creative",
+          "pos": "adjective",
+          "ipa": "/kriˈeɪtɪv/",
+          "etymology": "From create (from Latin creare 'to produce, bring forth') + -ive suffix; attested in English from the 17th century.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 4,
+          "topic": "qualities.abstract",
+          "synonyms": ["imaginative", "inventive", "original"],
+          "collocations": ["creative writing", "creative solution", "creative thinking"],
+          "tags": ["abstract", "art"],
+          "example": "She found a creative way to reuse old glass jars as flower vases.",
+          "prerequisites": [],
+          "comparative": "more creative",
+          "superlative": "most creative",
+          "antonym": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Creative' und 'kreativ' teilen den Stamm creare (erschaffen). Gleiche Bedeutung, gleiche Wurzel. Der Unterschied liegt in der Aussprache: /kriˈeɪtɪv/ mit langem ei.",
+              "example_gloss": "Sie fand eine kreative Möglichkeit, alte Glasgläser als Blumenvasen wiederzuverwenden.",
+              "false_friends": [],
+              "common_mistake": "Betonung auf der zweiten Silbe: /kriˈEɪ-tɪv/. Das 'ea' wird /iˈeɪ/ gesprochen, nicht /eː/ wie in deutsch 'kreativ'."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+

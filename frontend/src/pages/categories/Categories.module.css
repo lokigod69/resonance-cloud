@@ -285,16 +285,40 @@
 }
 
 .entryCard {
+  display: block;
+  width: 100%;
   min-height: 100%;
   border: 1px solid var(--border-subtle);
   border-radius: 0.5rem;
   padding: 1rem;
   background: var(--surface-glass);
+  color: var(--text-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.entryCard:hover {
+  transform: translateY(-1px);
+  border-color: var(--border-strong);
+  background: var(--surface-glass-strong);
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+
+.entryCard:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-color: var(--border-strong);
 }
 
 .entryImage {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 0.45rem;
   border: 1px solid var(--border-subtle);

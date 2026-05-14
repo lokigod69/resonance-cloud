@@ -1,0 +1,2888 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "substantive",
+  "source_languages_filled": [
+    "de"
+  ],
+  "generator_model": "claude-opus-4-20250514",
+  "generated_at": "2026-05-13T14:53:00Z",
+  "generator_version": "1.1-opus",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "everyday_objects",
+      "entries": [
+        {
+          "term": "table",
+          "pos": "noun",
+          "ipa": "/ˈteɪbəl/",
+          "etymology": "From Old French table, from Latin tabula (board, plank, writing tablet).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.furniture",
+          "synonyms": ["desk"],
+          "collocations": ["kitchen table", "table manners", "round table"],
+          "tags": ["furniture", "household", "core"],
+          "example": "The old wooden table wobbled whenever someone leaned on it.",
+          "prerequisites": [],
+          "plural": "tables",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Table' kommt vom lateinischen tabula — stell dir eine flache Holztafel (Tabula) vor, die zum Tisch wird.",
+              "example_gloss": "Der alte Holztisch wackelte, sobald sich jemand dagegen lehnte.",
+              "false_friends": [
+                {
+                  "source_term": "Tablett",
+                  "note": "Deutsch 'Tablett' ist ein Serviertablett (englisch 'tray'), nicht 'table' (Tisch)."
+                }
+              ],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "chair",
+          "pos": "noun",
+          "ipa": "/tʃɛːr/",
+          "etymology": "From Old French chaiere, from Latin cathedra (seat), from Greek kathedra (sitting down).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "objects.furniture",
+          "synonyms": ["seat"],
+          "collocations": ["armchair", "chair lift", "high chair"],
+          "tags": ["furniture", "household", "core"],
+          "example": "She pulled a chair up to the fireplace and started reading.",
+          "prerequisites": [],
+          "plural": "chairs",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Chair' beginnt mit dem tsch-Laut /tʃ/ — wie ein quietschender Stuhl, der über den Boden geschoben wird: tsch-ääär.",
+              "example_gloss": "Sie zog einen Stuhl zum Kamin und fing an zu lesen.",
+              "false_friends": [],
+              "common_mistake": "Der Anfangslaut ist /tʃ/ wie in 'Tschüss', nicht /k/ oder /ʃ/."
+            }
+          }
+        },
+        {
+          "term": "bed",
+          "pos": "noun",
+          "ipa": "/bɛd/",
+          "etymology": "From Old English bedd, from Proto-Germanic *badją (sleeping place, garden plot).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.furniture",
+          "synonyms": [],
+          "collocations": ["bed and breakfast", "bunk bed", "go to bed"],
+          "tags": ["furniture", "household", "core"],
+          "example": "The children jumped on the bed until a spring broke.",
+          "prerequisites": [],
+          "plural": "beds",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Bed' und 'Bett' sind fast identisch: gleicher Anfangslaut, gleiches kurzes e — nur das d am Ende statt doppeltem t.",
+              "example_gloss": "Die Kinder hüpften auf dem Bett, bis eine Feder brach.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "door",
+          "pos": "noun",
+          "ipa": "/dɔːr/",
+          "etymology": "From Old English duru (door) and dor (gate), from Proto-Germanic *durz, related to Latin foris.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.building",
+          "synonyms": ["entrance", "gate"],
+          "collocations": ["front door", "next door", "door handle"],
+          "tags": ["building", "household", "core"],
+          "example": "Someone knocked on the front door just after midnight.",
+          "prerequisites": [],
+          "plural": "doors",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Door' klingt nah an 'Tor' — gleicher Langvokal, verwandter germanischer Stamm. Nur: 'door' ist die normale Tür, nicht nur das Tor.",
+              "example_gloss": "Jemand klopfte kurz nach Mitternacht an die Haustür.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "window",
+          "pos": "noun",
+          "ipa": "/ˈwɪndoʊ/",
+          "etymology": "From Old Norse vindauga, literally 'wind-eye' (vindr 'wind' + auga 'eye').",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.building",
+          "synonyms": [],
+          "collocations": ["window seat", "window shopping", "window of opportunity"],
+          "tags": ["building", "household", "core"],
+          "example": "Rain drummed against the window all afternoon.",
+          "prerequisites": [],
+          "plural": "windows",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Window' ist wörtlich ein 'Wind-Auge' aus dem Altnordischen — stell dir ein Auge in der Wand vor, durch das der Wind hereinschaut.",
+              "example_gloss": "Den ganzen Nachmittag trommelte der Regen gegen das Fenster.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "phone",
+          "pos": "noun",
+          "ipa": "/foʊn/",
+          "etymology": "Clipped from telephone, coined 1835 from Greek tēle (far) + phōnē (voice, sound).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.technology",
+          "synonyms": ["telephone", "mobile"],
+          "collocations": ["phone call", "phone number", "phone screen"],
+          "tags": ["technology", "communication", "core"],
+          "example": "His phone buzzed three times during the meeting.",
+          "prerequisites": [],
+          "plural": "phones",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Phone' ist die kurze Form von 'telephone' — im Deutschen sagt man 'Telefon', im Englischen wird das erste Stück abgeschnitten und nur der griechische Kern phōnē (Stimme) bleibt.",
+              "example_gloss": "Sein Telefon summte dreimal während des Meetings.",
+              "false_friends": [
+                {
+                  "source_term": "Handy",
+                  "note": "Deutsch 'Handy' bedeutet Mobiltelefon; englisch 'handy' ist ein Adjektiv und bedeutet 'praktisch/nützlich'. Für Mobiltelefon sagt man 'mobile phone' oder 'cell phone'."
+                }
+              ],
+              "common_mistake": "Deutsch 'Handy' für Mobiltelefon ist im Englischen falsch. Sage 'mobile phone', 'cell phone' oder einfach 'phone'."
+            }
+          }
+        },
+        {
+          "term": "key",
+          "pos": "noun",
+          "ipa": "/kiː/",
+          "etymology": "From Old English cǣġ (key), of uncertain ultimate origin; no close cognates outside English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "objects.everyday",
+          "synonyms": [],
+          "collocations": ["key ring", "key point", "key card"],
+          "tags": ["objects", "security", "core"],
+          "example": "I left my key inside the apartment and the door locked behind me.",
+          "prerequisites": [],
+          "plural": "keys",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Key' reimt sich auf 'frei' — mit dem richtigen Schlüssel bist du frei. Aussprache: langes /iː/.",
+              "example_gloss": "Ich ließ meinen Schlüssel in der Wohnung und die Tür fiel hinter mir ins Schloss.",
+              "false_friends": [],
+              "common_mistake": "Aussprache ist /kiː/ mit langem i, nicht wie deutsches 'kei' mit Diphthong."
+            }
+          }
+        },
+        {
+          "term": "bag",
+          "pos": "noun",
+          "ipa": "/bæɡ/",
+          "etymology": "From Old Norse baggi (pack, bundle); entered English in the 13th century.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.everyday",
+          "synonyms": ["sack"],
+          "collocations": ["shopping bag", "sleeping bag", "bag of tricks"],
+          "tags": ["objects", "travel", "core"],
+          "example": "She shoved her umbrella into the bag and ran for the bus.",
+          "prerequisites": [],
+          "plural": "bags",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Bag' klingt kurz und prall wie ein gefüllter Beutel: /bæɡ/ — ein Knacklaut am Ende, wie das Zuziehen einer Tasche.",
+              "example_gloss": "Sie stopfte ihren Regenschirm in die Tasche und rannte zum Bus.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "book",
+          "pos": "noun",
+          "ipa": "/bʊk/",
+          "etymology": "From Old English bōc, from Proto-Germanic *bōkō, related to 'beech' — early runes were carved on beech bark.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.everyday",
+          "synonyms": ["volume"],
+          "collocations": ["book club", "phone book", "open book"],
+          "tags": ["education", "objects", "core"],
+          "example": "He found a dusty book wedged behind the radiator.",
+          "prerequisites": [],
+          "plural": "books",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Book' und 'Buch' teilen den germanischen Stamm *bōkō (Buche) — Runen wurden auf Buchenrinde geritzt; merke: gleicher Anfang, kurzer /ʊ/-Vokal im Englischen.",
+              "example_gloss": "Er fand ein staubiges Buch, das hinter der Heizung eingeklemmt war.",
+              "false_friends": [],
+              "common_mistake": "Der Vokal ist kurzes /ʊ/ wie in 'put', nicht langes /uː/ wie in 'food'."
+            }
+          }
+        },
+        {
+          "term": "pen",
+          "pos": "noun",
+          "ipa": "/pɛn/",
+          "etymology": "From Old French penne, from Latin penna (feather) — originally a quill for writing.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.stationery",
+          "synonyms": ["ballpoint"],
+          "collocations": ["pen name", "pen pal", "fountain pen"],
+          "tags": ["stationery", "writing", "core"],
+          "example": "The teacher's red pen rolled off the desk and under a chair.",
+          "prerequisites": [],
+          "plural": "pens",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Pen' kommt von lateinisch penna (Feder) — stell dir eine Gänsefeder vor, die sich in einen modernen Stift verwandelt: pen wie penna.",
+              "example_gloss": "Der rote Stift der Lehrerin rollte vom Schreibtisch und unter einen Stuhl.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "cup",
+          "pos": "noun",
+          "ipa": "/kʌp/",
+          "etymology": "From Old English cuppe, from Late Latin cuppa (cup, drinking vessel), probably from Latin cūpa (tub, cask).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.kitchen",
+          "synonyms": ["mug"],
+          "collocations": ["cup of tea", "World Cup", "cup holder"],
+          "tags": ["kitchen", "objects", "core"],
+          "example": "She wrapped both hands around a warm cup of coffee.",
+          "prerequisites": [],
+          "plural": "cups",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cup' hat denselben lateinischen Stamm cuppa wie 'Kuppe' — denk an die runde Kuppe einer Tasse von oben.",
+              "example_gloss": "Sie umschloss eine warme Tasse Kaffee mit beiden Händen.",
+              "false_friends": [],
+              "common_mistake": "Der Vokal ist /ʌ/ wie in 'sun', nicht wie deutsches 'u' in 'Kuppe'."
+            }
+          }
+        },
+        {
+          "term": "plate",
+          "pos": "noun",
+          "ipa": "/pleɪt/",
+          "etymology": "From Old French plate (thin piece of metal), from Medieval Latin plata (plate armor, silver), from Vulgar Latin *plattus (flat).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.kitchen",
+          "synonyms": ["dish"],
+          "collocations": ["dinner plate", "license plate", "clean plate"],
+          "tags": ["kitchen", "objects", "core"],
+          "example": "He stacked the dirty plates next to the sink.",
+          "prerequisites": [],
+          "plural": "plates",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Plate' klingt wie 'platt' — ein Teller ist eine flache, platte Scheibe. Gleicher lateinischer Stamm.",
+              "example_gloss": "Er stapelte die schmutzigen Teller neben dem Spülbecken.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "spoon",
+          "pos": "noun",
+          "ipa": "/spuːn/",
+          "etymology": "From Old English spōn (splinter, chip of wood); the eating-utensil sense developed because early spoons were carved from wood chips.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "objects.kitchen",
+          "synonyms": [],
+          "collocations": ["tablespoon", "teaspoon", "wooden spoon"],
+          "tags": ["kitchen", "objects", "core"],
+          "example": "The baby banged a spoon on the high chair until everyone laughed.",
+          "prerequisites": [],
+          "plural": "spoons",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Spoon' beginnt mit sp- wie deutsch 'Span' (Holzspan) — die ersten Löffel waren geschnitzte Holzspäne; das lange /uː/ klingt wie das runde Löffelmaul.",
+              "example_gloss": "Das Baby schlug mit einem Löffel auf den Hochstuhl, bis alle lachten.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "fork",
+          "pos": "noun",
+          "ipa": "/fɔːrk/",
+          "etymology": "From Old English forca, from Latin furca (pitchfork, forked stake).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.kitchen",
+          "synonyms": [],
+          "collocations": ["knife and fork", "fork in the road", "tuning fork"],
+          "tags": ["kitchen", "objects", "core"],
+          "example": "He twirled the spaghetti around his fork like a spinning wheel.",
+          "prerequisites": [],
+          "plural": "forks",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Fork' kommt von lateinisch furca (die Gabel/Forke) — im Deutschen gibt es 'Forke' als Heugabel; der englische Küchenfreund heißt genauso.",
+              "example_gloss": "Er wickelte die Spaghetti um seine Gabel wie ein Spinnrad.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "knife",
+          "pos": "noun",
+          "ipa": "/naɪf/",
+          "etymology": "From Old English cnīf, probably borrowed from Old Norse knífr.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "objects.kitchen",
+          "synonyms": ["blade"],
+          "collocations": ["knife and fork", "pocket knife", "bread knife"],
+          "tags": ["kitchen", "objects", "core"],
+          "example": "She used a sharp knife to slice the birthday cake into even pieces.",
+          "prerequisites": [],
+          "plural": "knives",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Knife' ist verwandt mit deutsch 'Kneif' (Kneifzange): gleicher kn-Stamm, aber das englische k ist stumm — nur /naɪf/.",
+              "example_gloss": "Sie benutzte ein scharfes Messer, um den Geburtstagskuchen in gleichmäßige Stücke zu schneiden.",
+              "false_friends": [],
+              "common_mistake": "Das k am Anfang ist stumm: /naɪf/, nicht /knaɪf/. Der Plural wechselt f→v: 'knives', nicht 'knifes'."
+            }
+          }
+        },
+        {
+          "term": "bottle",
+          "pos": "noun",
+          "ipa": "/ˈbɒtəl/",
+          "etymology": "From Old French boteille, from Late Latin butticula, diminutive of buttis (cask).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.kitchen",
+          "synonyms": [],
+          "collocations": ["water bottle", "bottle cap", "wine bottle"],
+          "tags": ["kitchen", "objects", "core"],
+          "example": "He grabbed a bottle of water from the fridge before his run.",
+          "prerequisites": [],
+          "plural": "bottles",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Bottle' teilt den Stamm mit 'Bottich' (altes Fasswort): aus dem lateinischen buttis-Fass schrumpfte die butticula zur kleinen Flasche.",
+              "example_gloss": "Er schnappte sich eine Flasche Wasser aus dem Kühlschrank, bevor er laufen ging.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "glass",
+          "pos": "noun",
+          "ipa": "/ɡlɑːs/",
+          "etymology": "From Old English glæs, from Proto-Germanic *glasą (glass, amber); related to the verb 'to gleam'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "objects.kitchen",
+          "synonyms": ["tumbler"],
+          "collocations": ["glass of water", "wine glass", "glass ceiling"],
+          "tags": ["kitchen", "material", "core"],
+          "example": "She filled each glass with lemonade and set them on the tray.",
+          "prerequisites": [],
+          "plural": "glasses",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Glass' und 'Glas' sind fast identisch — derselbe germanische Stamm. Merke nur: der englische Plural braucht -es: 'glasses'.",
+              "example_gloss": "Sie füllte jedes Glas mit Limonade und stellte sie auf das Tablett.",
+              "false_friends": [],
+              "common_mistake": "'Glass' als Material ist unzählbar ('made of glass'). Als Trinkgefäß ist es zählbar ('two glasses'). Außerdem: 'glasses' (Plural) bedeutet auch 'Brille'."
+            }
+          }
+        },
+        {
+          "term": "lamp",
+          "pos": "noun",
+          "ipa": "/læmp/",
+          "etymology": "From Old French lampe, from Latin lampas, from Greek lampas (torch, light), related to lampein (to shine).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.household",
+          "synonyms": ["light"],
+          "collocations": ["desk lamp", "street lamp", "lava lamp"],
+          "tags": ["household", "objects", "core"],
+          "example": "A small lamp on the nightstand cast a warm circle of light.",
+          "prerequisites": [],
+          "plural": "lamps",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Lamp' und 'Lampe' sind fast identisch — das e am Ende fällt weg, der Rest ist gleich.",
+              "example_gloss": "Eine kleine Lampe auf dem Nachttisch warf einen warmen Lichtkreis.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "computer",
+          "pos": "noun",
+          "ipa": "/kəmˈpjuːtər/",
+          "etymology": "From compute + -er; compute from Latin computare (to reckon, sum up), from com- (together) + putare (to settle, reckon).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "objects.technology",
+          "synonyms": ["PC"],
+          "collocations": ["computer science", "computer screen", "laptop computer"],
+          "tags": ["technology", "objects", "core"],
+          "example": "The computer froze right in the middle of saving his essay.",
+          "prerequisites": [],
+          "plural": "computers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Computer' ist im Deutschen eingebürgert — achte nur auf die englische Betonung: com-PJU-ter, nicht COM-puter.",
+              "example_gloss": "Der Computer fror genau in dem Moment ein, als er seinen Aufsatz speicherte.",
+              "false_friends": [],
+              "common_mistake": "Die Betonung liegt auf der zweiten Silbe: /kəmˈpjuːtər/, nicht auf der ersten wie oft im Deutschen."
+            }
+          }
+        },
+        {
+          "term": "television",
+          "pos": "noun",
+          "ipa": "/ˈtɛlɪˌvɪʒən/",
+          "etymology": "Coined c. 1907 from Greek tēle- (far) + Latin visio (seeing, sight). A hybrid Greek-Latin compound.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "objects.technology",
+          "synonyms": ["TV", "telly"],
+          "collocations": ["television set", "television show", "reality television"],
+          "tags": ["technology", "entertainment", "core"],
+          "example": "They gathered around the television to watch the World Cup final.",
+          "prerequisites": [],
+          "plural": "televisions",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Television' zerlegt sich in tele- (fern) + vision (Sehen) — das deutsche 'Fernseher' ist die wörtliche Übersetzung. Im Alltag sagt man meist 'TV' oder britisch 'telly'.",
+              "example_gloss": "Sie versammelten sich um den Fernseher, um das WM-Finale zu sehen.",
+              "false_friends": [],
+              "common_mistake": "Im Englischen sagt man 'watch television', nicht 'see television'. Auch: 'on television', nicht 'in television'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "food_and_drink",
+      "entries": [
+        {
+          "term": "bread",
+          "pos": "noun",
+          "ipa": "/brɛd/",
+          "etymology": "From Old English brēad (morsel, piece of food); the specific 'baked loaf' sense became dominant in Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "food.staple",
+          "synonyms": ["loaf"],
+          "collocations": ["bread and butter", "slice of bread", "bread basket"],
+          "tags": ["food", "staple", "core"],
+          "example": "He bought a warm loaf of bread from the bakery on the corner.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Bread' und 'Brot' sind germanische Geschwister — gleicher br-Anfang, aber das englische Wort endet auf -ead statt -ot.",
+              "example_gloss": "Er kaufte ein warmes Brot in der Bäckerei an der Ecke.",
+              "false_friends": [],
+              "common_mistake": "'Bread' ist im Englischen unzählbar: 'a loaf of bread' oder 'some bread', nicht 'a bread'. Für Scheiben: 'a slice of bread'."
+            }
+          }
+        },
+        {
+          "term": "water",
+          "pos": "noun",
+          "ipa": "/ˈwɔːtər/",
+          "etymology": "From Old English wæter, from Proto-Germanic *watōr, from PIE *wódr̥ (water).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.drink",
+          "synonyms": [],
+          "collocations": ["glass of water", "drinking water", "water supply"],
+          "tags": ["drink", "nature", "core"],
+          "example": "She always keeps a glass of water on her desk while studying.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Water' und 'Wasser' sind fast identisch — gleicher Stamm *watōr, gleicher w-Anlaut. Der Unterschied: Englisch hat ein t, Deutsch ein doppeltes s.",
+              "example_gloss": "Sie hat beim Lernen immer ein Glas Wasser auf dem Schreibtisch stehen.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈwɔːtər/ mit stimmhaftem w, nicht /v/ wie im Deutschen."
+            }
+          }
+        },
+        {
+          "term": "coffee",
+          "pos": "noun",
+          "ipa": "/ˈkɒfi/",
+          "etymology": "From Turkish kahve, from Arabic qahwa (wine, coffee); entered English in the 1590s via Italian caffè.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.drink",
+          "synonyms": [],
+          "collocations": ["coffee break", "coffee shop", "cup of coffee"],
+          "tags": ["drink", "food", "core"],
+          "example": "The smell of fresh coffee drifted from the kitchen every morning.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Coffee' und 'Kaffee' sind Zwillinge — gleiche arabische Quelle qahwa. Merke: Englisch hat ein o statt a und ein kurzes ee am Ende.",
+              "example_gloss": "Jeden Morgen zog der Duft von frischem Kaffee aus der Küche.",
+              "false_friends": [],
+              "common_mistake": "Im Café bestellt man 'a coffee' (= eine Tasse Kaffee) — hier wird 'coffee' ausnahmsweise zählbar gebraucht."
+            }
+          }
+        },
+        {
+          "term": "tea",
+          "pos": "noun",
+          "ipa": "/tiː/",
+          "etymology": "From Dutch thee, from Malay teh, ultimately from Chinese Min Nan dialect tê.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.drink",
+          "synonyms": [],
+          "collocations": ["tea time", "cup of tea", "tea bag"],
+          "tags": ["drink", "food", "core"],
+          "example": "Grandma pours her tea through a silver strainer she brought from England.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Tea' und 'Tee' sind fast gleich — beide kommen vom chinesischen tê. Merke: gleicher Vokal /iː/, gleiche Buchstaben.",
+              "example_gloss": "Oma gießt ihren Tee durch ein silbernes Sieb, das sie aus England mitgebracht hat.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "milk",
+          "pos": "noun",
+          "ipa": "/mɪlk/",
+          "etymology": "From Old English meolc/milc, from Proto-Germanic *meluks.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.drink",
+          "synonyms": [],
+          "collocations": ["milk carton", "whole milk", "milk and honey"],
+          "tags": ["drink", "food", "core"],
+          "example": "There was barely enough milk left for one bowl of cereal.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Milk' und 'Milch' teilen den Stamm meluks — gleicher m-i-l-Anfang; nur das k am Ende statt ch.",
+              "example_gloss": "Es war kaum noch genug Milch für eine Schüssel Müsli übrig.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "juice",
+          "pos": "noun",
+          "ipa": "/dʒuːs/",
+          "etymology": "From Old French jus (juice, sap), from Latin iūs (broth, juice).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "food.drink",
+          "synonyms": [],
+          "collocations": ["orange juice", "apple juice", "fruit juice"],
+          "tags": ["drink", "food", "core"],
+          "example": "She squeezed six oranges to make fresh juice for breakfast.",
+          "prerequisites": [],
+          "plural": "juices",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Juice' beginnt mit dem /dʒ/-Laut — stell dir vor, wie der Saft (jus) spritzt: dsch-uuus.",
+              "example_gloss": "Sie presste sechs Orangen aus, um frischen Saft zum Frühstück zu machen.",
+              "false_friends": [],
+              "common_mistake": "Anfangslaut ist /dʒ/ wie in 'jam', nicht /j/ wie in deutschem 'ja'."
+            }
+          }
+        },
+        {
+          "term": "apple",
+          "pos": "noun",
+          "ipa": "/ˈæpəl/",
+          "etymology": "From Old English æppel (apple, any fruit), from Proto-Germanic *aplaz.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.fruit",
+          "synonyms": [],
+          "collocations": ["apple pie", "apple tree", "apple cider"],
+          "tags": ["food", "fruit", "core"],
+          "example": "He bit into the apple and juice ran down his chin.",
+          "prerequisites": [],
+          "plural": "apples",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Apple' und 'Apfel' sind alte Verwandte — gleicher germanischer Stamm *aplaz. Das pf im Deutschen wurde zum pp im Englischen.",
+              "example_gloss": "Er biss in den Apfel und Saft lief ihm über das Kinn.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "banana",
+          "pos": "noun",
+          "ipa": "/bəˈnɑːnə/",
+          "etymology": "From Spanish or Portuguese banana, probably from a West African language (Wolof or Mande).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.fruit",
+          "synonyms": [],
+          "collocations": ["banana split", "banana peel", "banana bread"],
+          "tags": ["food", "fruit", "core"],
+          "example": "She peeled a banana and dropped it into the blender with yogurt.",
+          "prerequisites": [],
+          "plural": "bananas",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Banana' und 'Banane' sind fast identisch — gleicher westafrikanischer Ursprung. Merke nur die letzte Silbe: englisch -na statt deutsch -ne.",
+              "example_gloss": "Sie schälte eine Banane und warf sie zusammen mit Joghurt in den Mixer.",
+              "false_friends": [],
+              "common_mistake": "Betonung auf der zweiten Silbe: /bəˈnɑːnə/, nicht auf der ersten."
+            }
+          }
+        },
+        {
+          "term": "cheese",
+          "pos": "noun",
+          "ipa": "/tʃiːz/",
+          "etymology": "From Old English cēse/cȳse, from Latin cāseus (cheese).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "food.dairy",
+          "synonyms": [],
+          "collocations": ["cream cheese", "grilled cheese", "cheese and crackers"],
+          "tags": ["food", "dairy", "core"],
+          "example": "He grated parmesan cheese over the pasta until it looked like snow.",
+          "prerequisites": [],
+          "plural": "cheeses",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cheese' und 'Käse' stammen beide vom lateinischen cāseus — der ch-Anfang /tʃ/ im Englischen und der K-Anfang im Deutschen gehen auf denselben Laut zurück.",
+              "example_gloss": "Er rieb Parmesankäse über die Nudeln, bis es wie Schnee aussah.",
+              "false_friends": [],
+              "common_mistake": "'Cheese' ist als Material/Substanz unzählbar ('some cheese'). Für Sorten wird es zählbar: 'French cheeses'."
+            }
+          }
+        },
+        {
+          "term": "egg",
+          "pos": "noun",
+          "ipa": "/ɛɡ/",
+          "etymology": "From Old Norse egg, which displaced the native Old English ǣg; both from Proto-Germanic *ajją.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.staple",
+          "synonyms": [],
+          "collocations": ["fried egg", "boiled egg", "egg yolk"],
+          "tags": ["food", "staple", "core"],
+          "example": "She cracked an egg into the pan and it sizzled immediately.",
+          "prerequisites": [],
+          "plural": "eggs",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Egg' und 'Ei' haben beide den germanischen Stamm *ajją, aber die Formen gingen auseinander — merke: 'egg' hat drei Buchstaben wie 'Ei' nur zwei.",
+              "example_gloss": "Sie schlug ein Ei in die Pfanne und es zischte sofort.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "meat",
+          "pos": "noun",
+          "ipa": "/miːt/",
+          "etymology": "From Old English mete (food in general); narrowed to 'flesh of animals' by the 14th century.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "food.protein",
+          "synonyms": [],
+          "collocations": ["red meat", "white meat", "meat pie"],
+          "tags": ["food", "protein", "core"],
+          "example": "The butcher wrapped the meat in brown paper and tied it with string.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Meat' bedeutete im Altenglischen jede Art Essen (vgl. deutsch 'Mett' = Hackfleisch) — heute ist es auf Fleisch eingeengt. Der alte Stamm verbindet die Wörter.",
+              "example_gloss": "Der Metzger wickelte das Fleisch in braunes Papier und band es mit Schnur zusammen.",
+              "false_friends": [],
+              "common_mistake": "'Meat' ist unzählbar. Sage 'a piece of meat', nicht 'a meat'. Für Fleischsorten: 'types of meat'."
+            }
+          }
+        },
+        {
+          "term": "fish",
+          "pos": "noun",
+          "ipa": "/fɪʃ/",
+          "etymology": "From Old English fisc, from Proto-Germanic *fiskaz, from PIE *pisk- (fish).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "food.protein",
+          "synonyms": [],
+          "collocations": ["fish and chips", "fish tank", "cold fish"],
+          "tags": ["food", "animal", "core"],
+          "example": "We caught three fish in the lake and grilled them over an open fire.",
+          "prerequisites": [],
+          "plural": "fish",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Fish' und 'Fisch' sind direkte germanische Verwandte — gleicher Anlaut f-i-s, nur das sch/sh am Ende unterscheidet sich leicht.",
+              "example_gloss": "Wir fingen drei Fische im See und grillten sie über offenem Feuer.",
+              "false_friends": [],
+              "common_mistake": "Der Plural von 'fish' ist normalerweise 'fish' (ohne -es): 'two fish', nicht 'two fishes'. 'Fishes' wird nur für verschiedene Arten verwendet."
+            }
+          }
+        },
+        {
+          "term": "rice",
+          "pos": "noun",
+          "ipa": "/raɪs/",
+          "etymology": "From Old French ris, from Italian riso, from Latin orȳza, from Greek óryza, ultimately from an Indo-Iranian source.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "food.staple",
+          "synonyms": [],
+          "collocations": ["rice pudding", "fried rice", "brown rice"],
+          "tags": ["food", "staple", "core"],
+          "example": "She rinsed the rice three times before putting it in the cooker.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Rice' und 'Reis' teilen den lateinisch-griechischen Stamm orȳza — gleicher r-Anlaut, aber Englisch hat den Diphthong /aɪ/ statt langem /aɪ̯/.",
+              "example_gloss": "Sie spülte den Reis dreimal ab, bevor sie ihn in den Kocher gab.",
+              "false_friends": [],
+              "common_mistake": "'Rice' ist immer unzählbar. Sage 'some rice' oder 'a bowl of rice', nicht 'a rice'."
+            }
+          }
+        },
+        {
+          "term": "pasta",
+          "pos": "noun",
+          "ipa": "/ˈpæstə/",
+          "etymology": "From Italian pasta (paste, dough), from Late Latin pasta (dough, pastry cake), from Greek pastē (barley porridge).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.staple",
+          "synonyms": ["noodles"],
+          "collocations": ["pasta sauce", "fresh pasta", "pasta dish"],
+          "tags": ["food", "staple", "core"],
+          "example": "The pasta was perfectly al dente — firm but not crunchy.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Pasta' ist im Deutschen eingebürgert — merke nur, dass es im Englischen /ˈpæstə/ mit kurzem a ausgesprochen wird, nicht /ˈpaːsta/.",
+              "example_gloss": "Die Nudeln waren perfekt al dente — fest, aber nicht knusprig.",
+              "false_friends": [],
+              "common_mistake": "Englisch 'pasta' ist normalerweise unzählbar: 'some pasta', nicht 'a pasta'. Deutsch 'Nudeln' ist Plural, aber 'pasta' nicht."
+            }
+          }
+        },
+        {
+          "term": "soup",
+          "pos": "noun",
+          "ipa": "/suːp/",
+          "etymology": "From Old French soupe (soup, broth poured on bread), from Late Latin suppa (bread soaked in broth), of Germanic origin.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.dish",
+          "synonyms": ["broth"],
+          "collocations": ["chicken soup", "soup kitchen", "soup bowl"],
+          "tags": ["food", "dish", "core"],
+          "example": "On cold evenings, nothing beats a bowl of homemade soup.",
+          "prerequisites": [],
+          "plural": "soups",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Soup' und 'Suppe' teilen denselben Stamm suppa — die Suppe war ursprünglich Brot in Brühe. Englisch verliert nur die Endung -pe.",
+              "example_gloss": "An kalten Abenden geht nichts über eine Schüssel selbstgemachte Suppe.",
+              "false_friends": [],
+              "common_mistake": "Als Gericht ist 'soup' unzählbar: 'some soup', 'a bowl of soup'. Für Sorten zählbar: 'two soups on the menu'."
+            }
+          }
+        },
+        {
+          "term": "salad",
+          "pos": "noun",
+          "ipa": "/ˈsæləd/",
+          "etymology": "From Old French salade, from Vulgar Latin *salāta, from Latin sal (salt) — originally 'salted vegetables'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.dish",
+          "synonyms": [],
+          "collocations": ["green salad", "salad dressing", "fruit salad"],
+          "tags": ["food", "dish", "core"],
+          "example": "She tossed a colourful salad with tomatoes, olives, and feta.",
+          "prerequisites": [],
+          "plural": "salads",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Salad' und 'Salat' kommen beide vom lateinischen sal (Salz) — gesalzenes Gemüse. Gleicher Anfang, nur die Endung: -ad statt -at.",
+              "example_gloss": "Sie warf einen bunten Salat mit Tomaten, Oliven und Feta zusammen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "potato",
+          "pos": "noun",
+          "ipa": "/pəˈteɪtoʊ/",
+          "etymology": "From Spanish patata, blending Taino batata (sweet potato) and Quechua papa (potato); entered English in the 1560s.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "food.vegetable",
+          "synonyms": ["spud"],
+          "collocations": ["baked potato", "mashed potatoes", "potato salad"],
+          "tags": ["food", "vegetable", "core"],
+          "example": "She peeled five potatoes for the stew while humming a song.",
+          "prerequisites": [],
+          "plural": "potatoes",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Potato' klingt anders als 'Kartoffel' — merke dir den spanischen Klang: po-TAY-to. Kein germanischer Verwandter.",
+              "example_gloss": "Sie schälte fünf Kartoffeln für den Eintopf, während sie ein Lied summte.",
+              "false_friends": [],
+              "common_mistake": "Der Plural braucht -es: 'potatoes', nicht 'potatos'."
+            }
+          }
+        },
+        {
+          "term": "tomato",
+          "pos": "noun",
+          "ipa": "/təˈmɑːtoʊ/",
+          "etymology": "From Spanish tomate, from Nahuatl tomatl (the swelling fruit).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "food.vegetable",
+          "synonyms": [],
+          "collocations": ["tomato sauce", "cherry tomato", "tomato soup"],
+          "tags": ["food", "vegetable", "core"],
+          "example": "The vine-ripened tomatoes burst with flavour in the summer salad.",
+          "prerequisites": [],
+          "plural": "tomatoes",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Tomato' und 'Tomate' teilen den Nahuatl-Stamm tomatl — fast identisch. Merke: Briten sagen /təˈmɑːtəʊ/, Amerikaner /təˈmeɪtoʊ/.",
+              "example_gloss": "Die reifen Strauchtomaten platzten vor Geschmack im Sommersalat.",
+              "false_friends": [],
+              "common_mistake": "Der Plural braucht -es: 'tomatoes', nicht 'tomatos'. Gleiche Regel wie 'potatoes'."
+            }
+          }
+        },
+        {
+          "term": "sugar",
+          "pos": "noun",
+          "ipa": "/ˈʃʊɡər/",
+          "etymology": "From Old French sucre, from Medieval Latin succarum, from Arabic sukkar, from Persian shakar, from Sanskrit śárkarā (ground sugar).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "food.ingredient",
+          "synonyms": [],
+          "collocations": ["sugar cube", "blood sugar", "sugar cane"],
+          "tags": ["food", "ingredient", "core"],
+          "example": "He stirred two spoons of sugar into his coffee and tasted it.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sugar' und 'Zucker' stammen beide letztlich vom Sanskrit śárkarā — gleiche Fernherkunft, aber die englische Form behält das s am Anfang (über Arabisch sukkar).",
+              "example_gloss": "Er rührte zwei Löffel Zucker in seinen Kaffee und probierte.",
+              "false_friends": [],
+              "common_mistake": "Der Anlaut ist /ʃ/ (wie 'sch'), nicht /s/: 'sugar' wird /ˈʃʊɡər/ gesprochen."
+            }
+          }
+        },
+        {
+          "term": "salt",
+          "pos": "noun",
+          "ipa": "/sɔːlt/",
+          "etymology": "From Old English sealt, from Proto-Germanic *saltą, from PIE *séh₂ls (salt). Cognate with German Salz, Latin sal.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "food.ingredient",
+          "synonyms": [],
+          "collocations": ["salt and pepper", "sea salt", "pinch of salt"],
+          "tags": ["food", "ingredient", "core"],
+          "example": "She added a pinch of salt and the soup suddenly tasted alive.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Salt' und 'Salz' sind fast identisch — gleicher germanischer und lateinischer Stamm sal. Nur das z wird zum t.",
+              "example_gloss": "Sie gab eine Prise Salz dazu und die Suppe schmeckte plötzlich lebendig.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "places_and_buildings",
+      "entries": [
+        {
+          "term": "house",
+          "pos": "noun",
+          "ipa": "/haʊs/",
+          "etymology": "From Old English hūs (dwelling, house), from Proto-Germanic *hūsą.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.residential",
+          "synonyms": ["home"],
+          "collocations": ["house key", "town house", "house warming"],
+          "tags": ["building", "residential", "core"],
+          "example": "Their house sits at the end of a quiet cul-de-sac lined with cherry trees.",
+          "prerequisites": [],
+          "plural": "houses",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'House' und 'Haus' sind germanische Zwillinge — gleicher Stamm *hūsą, gleicher h-Anlaut. Der Diphthong /aʊ/ ist fast identisch.",
+              "example_gloss": "Ihr Haus steht am Ende einer ruhigen Sackgasse, gesäumt von Kirschbäumen.",
+              "false_friends": [],
+              "common_mistake": "Im Plural wird das stimmlose /s/ zu stimmhaftem /z/: 'houses' /ˈhaʊzɪz/."
+            }
+          }
+        },
+        {
+          "term": "apartment",
+          "pos": "noun",
+          "ipa": "/əˈpɑːrtmənt/",
+          "etymology": "From French appartement, from Italian appartamento, from appartare (to separate), from a parte (apart).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.residential",
+          "synonyms": ["flat"],
+          "collocations": ["apartment building", "studio apartment", "apartment complex"],
+          "tags": ["building", "residential", "core"],
+          "example": "Their apartment on the fifth floor has a small balcony overlooking the park.",
+          "prerequisites": [],
+          "plural": "apartments",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Apartment' ist im Deutschen als Lehnwort bekannt — im Englischen ist es das Standardwort (AmE), während Briten 'flat' sagen.",
+              "example_gloss": "Ihre Wohnung im fünften Stock hat einen kleinen Balkon mit Blick auf den Park.",
+              "false_friends": [],
+              "common_mistake": "Im britischen Englisch sagt man eher 'flat'; 'apartment' ist vor allem amerikanisch."
+            }
+          }
+        },
+        {
+          "term": "school",
+          "pos": "noun",
+          "ipa": "/skuːl/",
+          "etymology": "From Old English scōl, from Latin schola (lecture, school), from Greek skholē (leisure, study).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.education",
+          "synonyms": [],
+          "collocations": ["school bus", "after school", "school uniform"],
+          "tags": ["education", "building", "core"],
+          "example": "The school bell rang and children flooded through the gates.",
+          "prerequisites": [],
+          "plural": "schools",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'School' und 'Schule' kommen beide vom griechischen skholē (Muße) — gleiches Sch am Anfang, gleiche Grundidee.",
+              "example_gloss": "Die Schulglocke läutete und die Kinder strömten durch die Tore.",
+              "false_friends": [],
+              "common_mistake": "Ohne Artikel meint 'at school' den Schulbetrieb ('She is at school'), mit Artikel meint 'at the school' das Gebäude ('I waited at the school')."
+            }
+          }
+        },
+        {
+          "term": "office",
+          "pos": "noun",
+          "ipa": "/ˈɒfɪs/",
+          "etymology": "From Latin officium (service, duty, function), via Old French office.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "places.work",
+          "synonyms": ["workplace"],
+          "collocations": ["post office", "office hours", "head office"],
+          "tags": ["work", "building", "core"],
+          "example": "She left the office early to pick up her daughter from school.",
+          "prerequisites": [],
+          "plural": "offices",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Office' kommt vom lateinischen officium (Pflicht/Dienst) — gleiche Herkunft wie 'offiziell'. Deutsch 'Büro' hat eine andere Quelle.",
+              "example_gloss": "Sie verließ das Büro früh, um ihre Tochter von der Schule abzuholen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "store",
+          "pos": "noun",
+          "ipa": "/stɔːr/",
+          "etymology": "From Old French estore (provisions, supplies), from Latin instaurare (to renew, restore).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "places.commercial",
+          "synonyms": ["shop"],
+          "collocations": ["grocery store", "department store", "in store"],
+          "tags": ["shopping", "building", "core"],
+          "example": "The corner store stays open until ten even on Sundays.",
+          "prerequisites": [],
+          "plural": "stores",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Store' ist vor allem amerikanisch für Laden/Geschäft; Briten sagen 'shop'. Merke: 'store' kann auch Lager/Vorrat bedeuten.",
+              "example_gloss": "Der Laden an der Ecke hat bis zehn geöffnet, sogar sonntags.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "restaurant",
+          "pos": "noun",
+          "ipa": "/ˈrɛstərɒnt/",
+          "etymology": "From French restaurant (restorative food), from restaurer (to restore), from Latin restaurare.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "places.commercial",
+          "synonyms": [],
+          "collocations": ["restaurant menu", "fast food restaurant", "restaurant owner"],
+          "tags": ["food", "building", "core"],
+          "example": "The Italian restaurant on the harbour serves the best seafood in town.",
+          "prerequisites": [],
+          "plural": "restaurants",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Restaurant' ist im Deutschen identisch, aber die englische Aussprache verschluckt Silben: /ˈrɛstərɒnt/ statt deutsch /ʁɛstoˈʁɑ̃/.",
+              "example_gloss": "Das italienische Restaurant am Hafen serviert die besten Meeresfrüchte der Stadt.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: Das Wort hat im Englischen oft nur zwei hörbare Silben: /ˈrɛstrɒnt/, nicht die französische Betonung am Ende."
+            }
+          }
+        },
+        {
+          "term": "hospital",
+          "pos": "noun",
+          "ipa": "/ˈhɒspɪtəl/",
+          "etymology": "From Old French hospital, from Medieval Latin hospitale (guest house), from Latin hospes (host, guest).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.medical",
+          "synonyms": [],
+          "collocations": ["in hospital", "hospital ward", "hospital bed"],
+          "tags": ["medical", "building", "core"],
+          "example": "The hospital on the hill was built in 1923 and still has the original clock tower.",
+          "prerequisites": [],
+          "plural": "hospitals",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Hospital' ist im Deutschen veraltet, aber noch verständlich — das Standardwort ist 'Krankenhaus'. Englisch behielt das lateinische hospitale.",
+              "example_gloss": "Das Krankenhaus auf dem Hügel wurde 1923 gebaut und hat noch den originalen Uhrturm.",
+              "false_friends": [],
+              "common_mistake": "Im britischen Englisch: 'in hospital' (ohne Artikel) bei Behandlung; im amerikanischen Englisch: 'in the hospital'."
+            }
+          }
+        },
+        {
+          "term": "hotel",
+          "pos": "noun",
+          "ipa": "/hoʊˈtɛl/",
+          "etymology": "From French hôtel (large house, hotel), from Old French hostel, from Latin hospitale (guest house).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "places.commercial",
+          "synonyms": ["inn"],
+          "collocations": ["hotel room", "hotel lobby", "five-star hotel"],
+          "tags": ["travel", "building", "core"],
+          "example": "We checked into the hotel just as a thunderstorm rolled in.",
+          "prerequisites": [],
+          "plural": "hotels",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Hotel' ist im Deutschen identisch — merke nur die englische Betonung auf der zweiten Silbe: ho-TEL.",
+              "example_gloss": "Wir checkten gerade im Hotel ein, als ein Gewitter aufzog.",
+              "false_friends": [],
+              "common_mistake": "Betonung im Englischen auf der zweiten Silbe: /hoʊˈtɛl/, nicht auf der ersten."
+            }
+          }
+        },
+        {
+          "term": "bank",
+          "pos": "noun",
+          "ipa": "/bæŋk/",
+          "etymology": "From Middle French banque, from Italian banca (bench, money-changer's table), from Germanic *bankiz (bench).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.commercial",
+          "synonyms": [],
+          "collocations": ["bank account", "bank note", "river bank"],
+          "tags": ["finance", "building", "core"],
+          "example": "The bank on the high street closes at four on weekdays.",
+          "prerequisites": [],
+          "plural": "banks",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Bank' ist im Deutschen mehrdeutig (Sitzbank oder Geldbank); im Englischen auch — 'bank' heißt Geldinstitut ODER Ufer ('river bank'), aber NICHT Sitzbank ('bench').",
+              "example_gloss": "Die Bank in der Hauptstraße schließt an Wochentagen um vier.",
+              "false_friends": [
+                {
+                  "source_term": "Bank",
+                  "note": "Deutsch 'Bank' als Sitzgelegenheit ist englisch 'bench', nicht 'bank'. Englisch 'bank' ist nur das Geldinstitut oder das Flussufer."
+                }
+              ],
+              "common_mistake": "Für die Sitzbank sage 'bench', nicht 'bank'. 'Bank' im Englischen ist nur die Finanzbank oder das Flussufer."
+            }
+          }
+        },
+        {
+          "term": "station",
+          "pos": "noun",
+          "ipa": "/ˈsteɪʃən/",
+          "etymology": "From Old French station, from Latin statiō (standing place, post), from stāre (to stand).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.transport",
+          "synonyms": [],
+          "collocations": ["train station", "bus station", "police station"],
+          "tags": ["transport", "building", "core"],
+          "example": "The last train left the station just after midnight.",
+          "prerequisites": [],
+          "plural": "stations",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Station' existiert auch im Deutschen, aber als Bahnhof nutzt man es seltener. Englisch 'station' = Bahnhof, Haltestelle, Polizeistation.",
+              "example_gloss": "Der letzte Zug verließ den Bahnhof kurz nach Mitternacht.",
+              "false_friends": [],
+              "common_mistake": "Deutsch 'Bahnhof' ist spezifisch; englisch 'station' ist breiter: train station, bus station, fire station, radio station."
+            }
+          }
+        },
+        {
+          "term": "airport",
+          "pos": "noun",
+          "ipa": "/ˈɛːrpɔːrt/",
+          "etymology": "A compound of air (from Old French air, from Latin āēr, from Greek aēr) and port (from Latin portus, harbor).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.transport",
+          "synonyms": [],
+          "collocations": ["airport security", "airport terminal", "airport lounge"],
+          "tags": ["transport", "building", "core"],
+          "example": "We arrived at the airport two hours early and spent the time reading.",
+          "prerequisites": [],
+          "plural": "airports",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Airport' ist wörtlich ein Luft-Hafen: air (Luft) + port (Hafen). Deutsch 'Flughafen' ist die exakte Übersetzung: Flug = air, Hafen = port.",
+              "example_gloss": "Wir kamen zwei Stunden zu früh am Flughafen an und verbrachten die Zeit mit Lesen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "park",
+          "pos": "noun",
+          "ipa": "/pɑːrk/",
+          "etymology": "From Old French parc (enclosed area), from Medieval Latin parricus, of Germanic origin.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "places.recreation",
+          "synonyms": ["garden"],
+          "collocations": ["national park", "car park", "theme park"],
+          "tags": ["nature", "recreation", "core"],
+          "example": "Children chased pigeons across the park while their parents sat on benches.",
+          "prerequisites": [],
+          "plural": "parks",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Park' ist im Deutschen identisch — gleiche Schreibweise, gleiche Bedeutung. Nur die Aussprache des r unterscheidet sich.",
+              "example_gloss": "Kinder jagten Tauben durch den Park, während ihre Eltern auf Bänken saßen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "library",
+          "pos": "noun",
+          "ipa": "/ˈlaɪbrəri/",
+          "etymology": "From Old French librairie (collection of books), from Latin librāria (bookshop), from liber (book).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "places.education",
+          "synonyms": [],
+          "collocations": ["public library", "library card", "lending library"],
+          "tags": ["education", "building", "core"],
+          "example": "She found a quiet corner in the library and studied until closing time.",
+          "prerequisites": [],
+          "plural": "libraries",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Library' kommt von liber (Buch) — Vorsicht: es bedeutet 'Bibliothek', nicht 'Buchhandlung'. Für Buchhandlung sage 'bookshop'.",
+              "example_gloss": "Sie fand eine ruhige Ecke in der Bibliothek und lernte bis zur Schließzeit.",
+              "false_friends": [],
+              "common_mistake": "Drei Silben: /ˈlaɪ-brə-ri/, nicht zwei. Viele Lerner verschlucken die mittlere Silbe."
+            }
+          }
+        },
+        {
+          "term": "church",
+          "pos": "noun",
+          "ipa": "/tʃɜːrtʃ/",
+          "etymology": "From Old English cirice/circe, from Proto-Germanic *kirikō, from Greek kyriakón (Lord's house), from kýrios (lord).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "places.religious",
+          "synonyms": ["chapel"],
+          "collocations": ["church service", "church bell", "go to church"],
+          "tags": ["building", "religion", "core"],
+          "example": "The old stone church at the crossroads has been there since the 14th century.",
+          "prerequisites": [],
+          "plural": "churches",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Church' und 'Kirche' sind Verwandte — beide vom griechischen kyriakón (Haus des Herrn). Merke: ch am Anfang und Ende wie ein doppeltes /tʃ/.",
+              "example_gloss": "Die alte Steinkirche an der Kreuzung steht dort seit dem 14. Jahrhundert.",
+              "false_friends": [],
+              "common_mistake": "Beide /tʃ/-Laute (Anfang und Ende) müssen klar sein: /tʃɜːrtʃ/. Nicht wie deutsches 'ch' in 'Kirche'."
+            }
+          }
+        },
+        {
+          "term": "museum",
+          "pos": "noun",
+          "ipa": "/mjuːˈziːəm/",
+          "etymology": "From Latin mūsēum (library, study), from Greek mouseîon (seat of the Muses), from moûsa (muse).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.cultural",
+          "synonyms": ["gallery"],
+          "collocations": ["art museum", "museum exhibit", "natural history museum"],
+          "tags": ["culture", "building", "core"],
+          "example": "The museum's dinosaur skeleton is so tall it nearly touches the ceiling.",
+          "prerequisites": [],
+          "plural": "museums",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Museum' ist im Deutschen gleich — achte nur auf die englische Aussprache: /mjuːˈziːəm/ mit stimmhaftem z in der Mitte.",
+              "example_gloss": "Das Dinosaurierskelett im Museum ist so groß, dass es fast die Decke berührt.",
+              "false_friends": [],
+              "common_mistake": "Das s in 'museum' wird stimmhaft /z/ gesprochen, nicht wie deutsches stimmloses s."
+            }
+          }
+        },
+        {
+          "term": "cinema",
+          "pos": "noun",
+          "ipa": "/ˈsɪnəmə/",
+          "etymology": "Shortened from cinematograph, from French cinématographe, from Greek kínēma (movement) + gráphein (to write).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.entertainment",
+          "synonyms": ["movie theater"],
+          "collocations": ["go to the cinema", "cinema ticket", "home cinema"],
+          "tags": ["entertainment", "building", "core"],
+          "example": "We went to the cinema on a rainy afternoon and watched a comedy.",
+          "prerequisites": [],
+          "plural": "cinemas",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cinema' ist britisch für Kino — vom griechischen kínēma (Bewegung). Im Deutschen sagt man 'Kino', im Englischen je nach Region 'cinema' (BrE) oder 'movie theater' (AmE).",
+              "example_gloss": "Wir gingen an einem verregneten Nachmittag ins Kino und sahen eine Komödie.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "market",
+          "pos": "noun",
+          "ipa": "/ˈmɑːrkɪt/",
+          "etymology": "From Old North French market, from Latin mercātus (trade, marketplace), from mercārī (to trade).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "places.commercial",
+          "synonyms": ["bazaar"],
+          "collocations": ["flea market", "stock market", "market stall"],
+          "tags": ["shopping", "commercial", "core"],
+          "example": "Every Saturday, farmers set up stalls at the market in the town square.",
+          "prerequisites": [],
+          "plural": "markets",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Market' und 'Markt' sind fast identisch — gleicher lateinischer Stamm mercātus. Nur das e erscheint im Englischen zwischen k und t.",
+              "example_gloss": "Jeden Samstag bauen Bauern Stände auf dem Markt auf dem Stadtplatz auf.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "pharmacy",
+          "pos": "noun",
+          "ipa": "/ˈfɑːrməsi/",
+          "etymology": "From Old French farmacie, from Medieval Latin pharmacia, from Greek pharmakeía (use of drugs), from phármakon (drug, medicine).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "places.medical",
+          "synonyms": ["chemist", "drugstore"],
+          "collocations": ["pharmacy counter", "24-hour pharmacy", "pharmacy chain"],
+          "tags": ["medical", "shopping", "core"],
+          "example": "He stopped at the pharmacy to pick up his prescription on the way home.",
+          "prerequisites": [],
+          "plural": "pharmacies",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Pharmacy' klingt wie 'Pharmazie' — aber Achtung: deutsch 'Apotheke' ist der Laden; 'Pharmazie' ist die Wissenschaft. Englisch 'pharmacy' meint beides.",
+              "example_gloss": "Er hielt auf dem Heimweg an der Apotheke an, um sein Rezept abzuholen.",
+              "false_friends": [],
+              "common_mistake": "Im Britischen sagt man auch 'chemist' oder 'chemist's' für Apotheke. 'Pharmacy' funktioniert überall."
+            }
+          }
+        },
+        {
+          "term": "bakery",
+          "pos": "noun",
+          "ipa": "/ˈbeɪkəri/",
+          "etymology": "From bake (Old English bacan, from Proto-Germanic *bakaną) + -ery (suffix denoting a place).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "places.commercial",
+          "synonyms": [],
+          "collocations": ["local bakery", "bakery goods", "artisan bakery"],
+          "tags": ["food", "shopping", "core"],
+          "example": "The bakery fills the whole street with the smell of fresh rolls at dawn.",
+          "prerequisites": [],
+          "plural": "bakeries",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Bakery' = bake + -ery (Ort des Backens). Deutsch 'Bäckerei' folgt dem gleichen Muster: backen + -erei.",
+              "example_gloss": "Die Bäckerei erfüllt die ganze Straße mit dem Duft frischer Brötchen bei Tagesanbruch.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "bathroom",
+          "pos": "noun",
+          "ipa": "/ˈbɑːθruːm/",
+          "etymology": "A compound of bath (from Old English bæþ, from Proto-Germanic *baþą) and room (from Old English rūm).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "places.residential",
+          "synonyms": ["restroom", "washroom"],
+          "collocations": ["bathroom mirror", "bathroom floor", "go to the bathroom"],
+          "tags": ["household", "building", "core"],
+          "example": "The bathroom tiles were cold under her bare feet first thing in the morning.",
+          "prerequisites": [],
+          "plural": "bathrooms",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Bathroom' ist wörtlich Bad-Raum — genau wie deutsch 'Badezimmer'. In Amerika meint 'bathroom' auch die Toilette.",
+              "example_gloss": "Die Badezimmerfliesen waren kalt unter ihren bloßen Füßen gleich am Morgen.",
+              "false_friends": [],
+              "common_mistake": "In Amerika fragt man nach dem 'bathroom' auch in öffentlichen Gebäuden; in Großbritannien sagt man 'toilet' oder 'loo'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "people_and_roles",
+      "entries": [
+        {
+          "term": "person",
+          "pos": "noun",
+          "ipa": "/ˈpɜːrsən/",
+          "etymology": "From Old French persone, from Latin persōna (mask, character, person).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "people.general",
+          "synonyms": ["individual"],
+          "collocations": ["in person", "person in charge", "missing person"],
+          "tags": ["people", "core"],
+          "example": "Only one person knew the combination to the safe.",
+          "prerequisites": [],
+          "plural": "people",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Person' ist im Deutschen identisch — aber der englische Plural ist unregelmäßig: 'people', nicht 'persons' (außer in juristischer Sprache).",
+              "example_gloss": "Nur eine Person kannte die Kombination zum Tresor.",
+              "false_friends": [],
+              "common_mistake": "Der Standardplural ist 'people' (zwei people), nicht 'persons'. 'Persons' ist nur juristisch/formell."
+            }
+          }
+        },
+        {
+          "term": "man",
+          "pos": "noun",
+          "ipa": "/mæn/",
+          "etymology": "From Old English mann (human being, person), from Proto-Germanic *mann-. Originally gender-neutral; narrowed to 'adult male' in Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "people.general",
+          "synonyms": ["gentleman"],
+          "collocations": ["old man", "best man", "man-made"],
+          "tags": ["people", "gender", "core"],
+          "example": "A tall man in a grey coat held the door open for us.",
+          "prerequisites": [],
+          "plural": "men",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Man' und 'Mann' sind germanische Zwillinge — gleicher Stamm, gleiche Bedeutung. Merke: Englisch hat nur ein n.",
+              "example_gloss": "Ein großer Mann in einem grauen Mantel hielt uns die Tür auf.",
+              "false_friends": [],
+              "common_mistake": "Plural ist 'men' /mɛn/, nicht 'mans'. Der Vokal wechselt: /æ/ → /ɛ/."
+            }
+          }
+        },
+        {
+          "term": "woman",
+          "pos": "noun",
+          "ipa": "/ˈwʊmən/",
+          "etymology": "From Old English wīfmann (wife-person): wīf (woman) + mann (person). The pronunciation shifted over centuries.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "people.general",
+          "synonyms": ["lady"],
+          "collocations": ["young woman", "businesswoman", "woman of the year"],
+          "tags": ["people", "gender", "core"],
+          "example": "The woman behind the counter smiled and handed me the receipt.",
+          "prerequisites": [],
+          "plural": "women",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Woman' hat keinen deutschen Verwandten — merke: Singular /ˈwʊmən/, Plural /ˈwɪmɪn/. Die Schreibung bleibt fast gleich, aber der Vokal wechselt hörbar.",
+              "example_gloss": "Die Frau hinter der Theke lächelte und reichte mir die Quittung.",
+              "false_friends": [],
+              "common_mistake": "Singular: /ˈwʊmən/ (u wie in 'put'). Plural: /ˈwɪmɪn/ (i wie in 'bit'). Nicht verwechseln."
+            }
+          }
+        },
+        {
+          "term": "child",
+          "pos": "noun",
+          "ipa": "/tʃaɪld/",
+          "etymology": "From Old English cild (child, infant), of uncertain further origin; no clear cognates in other Germanic languages.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "people.general",
+          "synonyms": ["kid"],
+          "collocations": ["only child", "child care", "inner child"],
+          "tags": ["people", "family", "core"],
+          "example": "Every child in the class drew a picture of their favourite animal.",
+          "prerequisites": [],
+          "plural": "children",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Child' hat keinen offensichtlichen deutschen Verwandten — merke den Diphthong /aɪ/ in der Mitte und den unregelmäßigen Plural 'children'.",
+              "example_gloss": "Jedes Kind in der Klasse malte ein Bild seines Lieblingstieres.",
+              "false_friends": [],
+              "common_mistake": "Plural ist 'children', nicht 'childs'. Einer der wenigen englischen -ren-Plurale."
+            }
+          }
+        },
+        {
+          "term": "friend",
+          "pos": "noun",
+          "ipa": "/frɛnd/",
+          "etymology": "From Old English frēond (friend, lover), originally the present participle of frēon (to love), from Proto-Germanic *frijōndz.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "people.social",
+          "synonyms": ["mate", "pal"],
+          "collocations": ["best friend", "close friend", "make friends"],
+          "tags": ["people", "social", "core"],
+          "example": "My best friend and I have known each other since primary school.",
+          "prerequisites": [],
+          "plural": "friends",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Friend' und 'Freund' sind fast identisch — gleicher germanischer Stamm *frijōndz. Das ie im Englischen klingt /ɛ/, nicht /iː/.",
+              "example_gloss": "Mein bester Freund und ich kennen uns seit der Grundschule.",
+              "false_friends": [
+                {
+                  "source_term": "Freund",
+                  "note": "Deutsch 'Freund' kann platonisch oder romantisch sein; englisch 'friend' ist nur platonisch. Für romantisch: 'boyfriend/girlfriend/partner'."
+                }
+              ],
+              "common_mistake": "'Friend' ist nur der platonische Freund. 'My friend Lisa' impliziert keine romantische Beziehung."
+            }
+          }
+        },
+        {
+          "term": "neighbor",
+          "pos": "noun",
+          "ipa": "/ˈneɪbər/",
+          "etymology": "From Old English nēahgebūr (near-dweller): nēah (near) + gebūr (dweller, farmer).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "people.social",
+          "synonyms": [],
+          "collocations": ["next-door neighbor", "good neighbor", "neighbor's cat"],
+          "tags": ["people", "social", "core"],
+          "example": "Our neighbor waters our plants whenever we go on holiday.",
+          "prerequisites": [],
+          "plural": "neighbors",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Neighbor' und 'Nachbar' sind germanische Verwandte: nēah=nah, gebūr=Bauer/Bewohner. Gleiche Idee: der nahe Wohnende.",
+              "example_gloss": "Unser Nachbar gießt unsere Pflanzen, wann immer wir in den Urlaub fahren.",
+              "false_friends": [],
+              "common_mistake": "Britische Schreibung: 'neighbour' mit -ou-. Amerikanisch: 'neighbor'."
+            }
+          }
+        },
+        {
+          "term": "teacher",
+          "pos": "noun",
+          "ipa": "/ˈtiːtʃər/",
+          "etymology": "From teach (Old English tǣcan, to show, instruct) + -er (agent suffix).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "people.profession",
+          "synonyms": ["instructor"],
+          "collocations": ["school teacher", "teacher's pet", "substitute teacher"],
+          "tags": ["people", "education", "core"],
+          "example": "The maths teacher explained the problem three different ways until everyone understood.",
+          "prerequisites": [],
+          "plural": "teachers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Teacher' = teach + -er, wie 'Lehrer' = lehren + -er. Gleiches Bauschema, gleiches Suffix.",
+              "example_gloss": "Der Mathelehrer erklärte das Problem auf drei verschiedene Weisen, bis alle es verstanden.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "student",
+          "pos": "noun",
+          "ipa": "/ˈstjuːdənt/",
+          "etymology": "From Latin studens (studying), present participle of studēre (to study, be eager).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "people.education",
+          "synonyms": ["pupil", "learner"],
+          "collocations": ["university student", "exchange student", "student loan"],
+          "tags": ["people", "education", "core"],
+          "example": "The student raised her hand to ask about the homework deadline.",
+          "prerequisites": [],
+          "plural": "students",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Student' ist im Deutschen gleich — aber englisch 'student' kann auch Schüler jeder Altersstufe bedeuten, nicht nur Uni-Studenten.",
+              "example_gloss": "Die Schülerin hob die Hand, um nach der Abgabefrist der Hausaufgabe zu fragen.",
+              "false_friends": [],
+              "common_mistake": "Englisch 'student' gilt für alle Altersstufen. Deutsch 'Student' meist nur Uni; 'Schüler' ist auch ein 'student'."
+            }
+          }
+        },
+        {
+          "term": "doctor",
+          "pos": "noun",
+          "ipa": "/ˈdɒktər/",
+          "etymology": "From Old French doctour, from Latin doctor (teacher), from docēre (to teach).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "people.profession",
+          "synonyms": ["physician"],
+          "collocations": ["family doctor", "doctor's appointment", "doctor's note"],
+          "tags": ["people", "medical", "core"],
+          "example": "The doctor listened carefully before writing the prescription.",
+          "prerequisites": [],
+          "plural": "doctors",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Doctor' und 'Doktor' sind fast identisch — gleicher lateinischer Stamm docēre (lehren). Im Englischen wird er /ˈdɒktər/ mit kurzem o gesprochen.",
+              "example_gloss": "Der Arzt hörte aufmerksam zu, bevor er das Rezept schrieb.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "nurse",
+          "pos": "noun",
+          "ipa": "/nɜːrs/",
+          "etymology": "From Old French norrice (nurse, wet-nurse), from Late Latin nūtrīcia, from Latin nūtrīx (she who suckles), from nūtrīre (to nourish).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "people.profession",
+          "synonyms": [],
+          "collocations": ["night nurse", "nurse practitioner", "school nurse"],
+          "tags": ["people", "medical", "core"],
+          "example": "The nurse checked his blood pressure and wrote the numbers on the chart.",
+          "prerequisites": [],
+          "plural": "nurses",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Nurse' kommt von lateinisch nūtrīre (nähren) — die Krankenschwester als die Nährende. Kein deutscher Verwandter, neues Wort merken.",
+              "example_gloss": "Die Krankenschwester überprüfte seinen Blutdruck und notierte die Werte auf der Karteikarte.",
+              "false_friends": [],
+              "common_mistake": "Englisch 'nurse' ist geschlechtsneutral; es gibt auch männliche nurses. Deutsch 'Krankenschwester' ist weiblich."
+            }
+          }
+        },
+        {
+          "term": "police officer",
+          "pos": "noun",
+          "ipa": "/pəˈliːs ˈɒfɪsər/",
+          "etymology": "Police from French police, from Latin polītīa (state, civil administration), from Greek polīteía. Officer from Old French officier, from Medieval Latin officiarius.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "people.profession",
+          "synonyms": ["cop"],
+          "collocations": ["police officer on duty", "senior police officer"],
+          "tags": ["people", "law", "core"],
+          "example": "A police officer directed traffic at the broken intersection.",
+          "prerequisites": [],
+          "plural": "police officers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Police officer' ist die geschlechtsneutrale Form — 'policeman/policewoman' existiert, aber 'officer' ist der moderne Standard.",
+              "example_gloss": "Ein Polizist regelte den Verkehr an der defekten Kreuzung.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "driver",
+          "pos": "noun",
+          "ipa": "/ˈdraɪvər/",
+          "etymology": "From drive (Old English drīfan, to push, propel) + -er (agent suffix).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "people.profession",
+          "synonyms": [],
+          "collocations": ["taxi driver", "bus driver", "driver's license"],
+          "tags": ["people", "transport", "core"],
+          "example": "The taxi driver took a shortcut through the back streets.",
+          "prerequisites": [],
+          "plural": "drivers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Driver' = drive + -er, parallel zu 'Fahrer' = fahren + -er. Gleiche Wortbildung, leicht zu merken.",
+              "example_gloss": "Der Taxifahrer nahm eine Abkürzung durch die Seitenstraßen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "waiter",
+          "pos": "noun",
+          "ipa": "/ˈweɪtər/",
+          "etymology": "From wait (Old French waitier, to watch) + -er. Originally 'one who waits upon' guests.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "people.profession",
+          "synonyms": ["server"],
+          "collocations": ["head waiter", "call the waiter"],
+          "tags": ["people", "food", "core"],
+          "example": "The waiter brought the menu and recommended the fish of the day.",
+          "prerequisites": [],
+          "plural": "waiters",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Waiter' kommt von 'to wait' (warten/bedienen) — der Kellner wartet auf deine Bestellung. Geschlechtsneutral: 'server'.",
+              "example_gloss": "Der Kellner brachte die Speisekarte und empfahl den Tagesfisch.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "cook",
+          "pos": "noun",
+          "ipa": "/kʊk/",
+          "etymology": "From Old English cōc, from Vulgar Latin cocus, from Latin coquus (cook), from coquere (to cook).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "people.profession",
+          "synonyms": ["chef"],
+          "collocations": ["head cook", "good cook", "cook book"],
+          "tags": ["people", "food", "core"],
+          "example": "She is the best cook in the family — her roast chicken is legendary.",
+          "prerequisites": [],
+          "plural": "cooks",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cook' und 'Koch' sind Verwandte — beide vom lateinischen coquus. Gleicher k-Laut am Anfang, nur die Vokale unterscheiden sich.",
+              "example_gloss": "Sie ist die beste Köchin in der Familie — ihr Brathähnchen ist legendär.",
+              "false_friends": [
+                {
+                  "source_term": "Koch",
+                  "note": "Deutsch 'Koch' = englisch 'cook' (allgemein). Aber 'chef' ist der professionelle Küchenchef; nicht jeder cook ist ein chef."
+                }
+              ],
+              "common_mistake": "Verwechslung mit 'chef': Ein 'cook' ist jeder, der kocht; ein 'chef' ist ein ausgebildeter Profi-Koch."
+            }
+          }
+        },
+        {
+          "term": "boss",
+          "pos": "noun",
+          "ipa": "/bɒs/",
+          "etymology": "From Dutch baas (master, foreman), brought to America by Dutch colonists in the 17th century.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "people.profession",
+          "synonyms": ["manager", "supervisor"],
+          "collocations": ["big boss", "boss around", "like a boss"],
+          "tags": ["people", "work", "core"],
+          "example": "Her boss agreed to let her work from home on Fridays.",
+          "prerequisites": [],
+          "plural": "bosses",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Boss' ist im Deutschen als Lehnwort bekannt. Aber Achtung: deutsch 'Chef' ist NICHT englisch 'chef' — deutsch 'Chef' = englisch 'boss'!",
+              "example_gloss": "Ihr Chef stimmte zu, sie freitags von zu Hause arbeiten zu lassen.",
+              "false_friends": [
+                {
+                  "source_term": "Chef",
+                  "note": "Deutsch 'Chef' = englisch 'boss' (Vorgesetzter). Englisch 'chef' = Profikoch. Einer der bekanntesten deutsch-englischen falschen Freunde."
+                }
+              ],
+              "common_mistake": "Deutsch 'Chef' ist NICHT englisch 'chef'. Sage 'boss' oder 'manager' für den Vorgesetzten. Englisch 'chef' ist nur der Profikoch."
+            }
+          }
+        },
+        {
+          "term": "worker",
+          "pos": "noun",
+          "ipa": "/ˈwɜːrkər/",
+          "etymology": "From work (Old English weorc, from Proto-Germanic *werką) + -er (agent suffix).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "people.profession",
+          "synonyms": ["employee", "laborer"],
+          "collocations": ["factory worker", "social worker", "key worker"],
+          "tags": ["people", "work", "core"],
+          "example": "Construction workers started drilling at seven in the morning.",
+          "prerequisites": [],
+          "plural": "workers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Worker' = work + -er, genau wie 'Arbeiter' = arbeiten + -er. Gleiche Wortbildung, gleiche Bedeutung.",
+              "example_gloss": "Bauarbeiter fingen um sieben Uhr morgens an zu bohren.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "customer",
+          "pos": "noun",
+          "ipa": "/ˈkʌstəmər/",
+          "etymology": "From custom (habitual buying) + -er. Custom from Old French costume, from Latin consuetudo (habit).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "people.commercial",
+          "synonyms": ["client", "buyer"],
+          "collocations": ["customer service", "regular customer", "customer complaint"],
+          "tags": ["people", "shopping", "core"],
+          "example": "The first customer of the day bought two loaves of bread and a coffee.",
+          "prerequisites": [],
+          "plural": "customers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Customer' kommt von 'custom' (Gewohnheit) — der Stammkunde ist der gewohnheitsmäßige Käufer. Deutsch 'Kunde' hat einen anderen Stamm.",
+              "example_gloss": "Der erste Kunde des Tages kaufte zwei Brote und einen Kaffee.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "guest",
+          "pos": "noun",
+          "ipa": "/ɡɛst/",
+          "etymology": "From Old Norse gestr (guest, stranger), from Proto-Germanic *gastiz. Cognate with German Gast.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "people.social",
+          "synonyms": ["visitor"],
+          "collocations": ["dinner guest", "hotel guest", "guest room"],
+          "tags": ["people", "social", "core"],
+          "example": "We set up the guest room with fresh towels and flowers.",
+          "prerequisites": [],
+          "plural": "guests",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Guest' und 'Gast' teilen den germanischen Stamm *gastiz — fast gleich, nur der Vokal wechselt: deutsch a, englisch e.",
+              "example_gloss": "Wir richteten das Gästezimmer mit frischen Handtüchern und Blumen her.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "artist",
+          "pos": "noun",
+          "ipa": "/ˈɑːrtɪst/",
+          "etymology": "From French artiste, from Italian artista, from Latin ars, artis (skill, craft).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "people.profession",
+          "synonyms": ["creator"],
+          "collocations": ["street artist", "con artist", "artist's studio"],
+          "tags": ["people", "culture", "core"],
+          "example": "The artist spent three months painting a mural on the side of the building.",
+          "prerequisites": [],
+          "plural": "artists",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Artist' existiert auch auf Deutsch, meint dort aber eher einen Zirkus-/Varietékünstler. Englisch 'artist' ist breiter: Maler, Bildhauer, Musiker — jeder Künstler.",
+              "example_gloss": "Der Künstler verbrachte drei Monate damit, ein Wandgemälde an die Hauswand zu malen.",
+              "false_friends": [
+                {
+                  "source_term": "Artist",
+                  "note": "Deutsch 'Artist' = Zirkus-/Varietékünstler. Englisch 'artist' = jeder Künstler (Maler, Musiker etc.). Für Zirkusartist sagt man englisch 'acrobat' oder 'performer'."
+                }
+              ],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "farmer",
+          "pos": "noun",
+          "ipa": "/ˈfɑːrmər/",
+          "etymology": "From farm (originally 'a fixed payment', from Old French ferme, from Medieval Latin firma) + -er.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "people.profession",
+          "synonyms": [],
+          "collocations": ["dairy farmer", "farmer's market", "small farmer"],
+          "tags": ["people", "agriculture", "core"],
+          "example": "The farmer drove his tractor across the muddy field at sunrise.",
+          "prerequisites": [],
+          "plural": "farmers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Farmer' ist im Deutschen eingebürgert — merke: ursprünglich von ferme (Pacht), nicht von farm (Bauernhof). Deutsch 'Bauer' hat einen anderen Stamm.",
+              "example_gloss": "Der Bauer fuhr bei Sonnenaufgang mit seinem Traktor über das schlammige Feld.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "theme_slug": "abstract_concepts",
+      "entries": [
+        {
+          "term": "idea",
+          "pos": "noun",
+          "ipa": "/aɪˈdɪə/",
+          "etymology": "From Latin idea (form, notion), from Greek idéa (form, pattern), from ideîn (to see).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "concepts.thought",
+          "synonyms": ["notion", "concept"],
+          "collocations": ["good idea", "no idea", "bright idea"],
+          "tags": ["abstract", "thought", "core"],
+          "example": "Her idea sounded strange at first, but it solved the problem.",
+          "prerequisites": [],
+          "plural": "ideas",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Idea' und 'Idee' sind fast identisch — gleicher griechischer Stamm idéa. Merke nur die englische Aussprache: /aɪˈdɪə/ mit Diphthong am Anfang.",
+              "example_gloss": "Ihre Idee klang zunächst seltsam, aber sie löste das Problem.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /aɪˈdɪə/, nicht /iˈdeː/ wie im Deutschen."
+            }
+          }
+        },
+        {
+          "term": "time",
+          "pos": "noun",
+          "ipa": "/taɪm/",
+          "etymology": "From Old English tīma (time, period), from Proto-Germanic *tīmô, related to Old Norse tími (time, proper time).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "concepts.general",
+          "synonyms": ["period", "moment"],
+          "collocations": ["on time", "time flies", "spare time"],
+          "tags": ["abstract", "time", "core"],
+          "example": "We ran out of time before we could finish the last question.",
+          "prerequisites": [],
+          "plural": "times",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Time' ist verwandt mit dem altnordischen tími — kein direkter deutscher Verwandter (deutsch hat 'Zeit'). Merke: /taɪm/ reimt sich auf 'I'm'.",
+              "example_gloss": "Uns ging die Zeit aus, bevor wir die letzte Frage beantworten konnten.",
+              "false_friends": [],
+              "common_mistake": "Als abstraktes Konzept ist 'time' unzählbar ('I have no time'). Als Anlass/Mal wird es zählbar: 'three times'."
+            }
+          }
+        },
+        {
+          "term": "life",
+          "pos": "noun",
+          "ipa": "/laɪf/",
+          "etymology": "From Old English līf (life, body), from Proto-Germanic *lībą.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "concepts.general",
+          "synonyms": ["existence"],
+          "collocations": ["way of life", "daily life", "life expectancy"],
+          "tags": ["abstract", "existence", "core"],
+          "example": "Life in a small village moves at a different pace than in the city.",
+          "prerequisites": [],
+          "plural": "lives",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Life' und 'Leben' sind beide germanisch, aber die Formen gingen auseinander. Merke: Singular 'life' /laɪf/, Plural 'lives' /laɪvz/ — das f wird zu v.",
+              "example_gloss": "Das Leben in einem kleinen Dorf hat ein anderes Tempo als in der Stadt.",
+              "false_friends": [],
+              "common_mistake": "Der Plural wechselt f→v: 'lives' /laɪvz/, nicht 'lifes'. Gleiche Regel wie 'knife/knives'."
+            }
+          }
+        },
+        {
+          "term": "work",
+          "pos": "noun",
+          "ipa": "/wɜːrk/",
+          "etymology": "From Old English weorc (work, deed, action), from Proto-Germanic *werką.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "concepts.activity",
+          "synonyms": ["labor", "employment"],
+          "collocations": ["at work", "hard work", "work of art"],
+          "tags": ["abstract", "work", "core"],
+          "example": "After a long day of work, he sat down and did nothing for an hour.",
+          "prerequisites": [],
+          "plural": "works",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Work' und 'Werk' sind germanische Verwandte — gleicher Stamm *werką. Aber Achtung: deutsch 'Werk' ist eher das Ergebnis; englisch 'work' ist die Tätigkeit.",
+              "example_gloss": "Nach einem langen Arbeitstag setzte er sich hin und tat eine Stunde lang nichts.",
+              "false_friends": [],
+              "common_mistake": "Als Tätigkeit ist 'work' unzählbar: 'I have a lot of work', nicht 'many works'. Für Kunstwerke oder Fabrikwerke: 'works' (zählbar)."
+            }
+          }
+        },
+        {
+          "term": "love",
+          "pos": "noun",
+          "ipa": "/lʌv/",
+          "etymology": "From Old English lufu (love, affection), from Proto-Germanic *lubō, related to Old High German luba (love).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "concepts.emotion",
+          "synonyms": ["affection", "devotion"],
+          "collocations": ["fall in love", "love letter", "love at first sight"],
+          "tags": ["abstract", "emotion", "core"],
+          "example": "Her love for music started when she first heard her grandmother play the piano.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Love' und 'Liebe' sind germanische Verwandte (beide von *lubō) — kein cognate-Trick nötig; das kurze /lʌv/ ist einfach zu merken.",
+              "example_gloss": "Ihre Liebe zur Musik begann, als sie zum ersten Mal ihre Großmutter Klavier spielen hörte.",
+              "false_friends": [],
+              "common_mistake": "Als Gefühl ist 'love' unzählbar. Nicht 'a love' für das Gefühl, sondern 'love' ohne Artikel."
+            }
+          }
+        },
+        {
+          "term": "truth",
+          "pos": "noun",
+          "ipa": "/truːθ/",
+          "etymology": "From Old English trēowþ/trīewþ (faithfulness, truth), from trēowe (true), from Proto-Germanic *trewwō.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "concepts.value",
+          "synonyms": ["fact", "reality"],
+          "collocations": ["tell the truth", "the whole truth", "moment of truth"],
+          "tags": ["abstract", "value", "core"],
+          "example": "She finally told the truth about what happened that night.",
+          "prerequisites": [],
+          "plural": "truths",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Truth' kommt von 'true' + -th (Zustandssuffix) — wie 'Wahrheit' von 'wahr' + -heit. Gleiches Bildungsmuster.",
+              "example_gloss": "Sie erzählte endlich die Wahrheit darüber, was in jener Nacht passiert war.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /truːθ/ mit stimmlosem th /θ/ am Ende. Nicht /truːt/ oder /truːs/."
+            }
+          }
+        },
+        {
+          "term": "reason",
+          "pos": "noun",
+          "ipa": "/ˈriːzən/",
+          "etymology": "From Old French raison, from Latin ratiō (reckoning, calculation, reason), from reri (to think).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "concepts.thought",
+          "synonyms": ["cause", "motive"],
+          "collocations": ["for this reason", "good reason", "reason to believe"],
+          "tags": ["abstract", "thought", "core"],
+          "example": "Nobody could think of a reason why the front door was left open.",
+          "prerequisites": [],
+          "plural": "reasons",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Reason' stammt von lateinisch ratiō — im Deutschen kennt man 'Räson' (Vernunft). Gleicher Stamm, aber 'reason' heißt Grund ODER Vernunft.",
+              "example_gloss": "Niemand konnte sich einen Grund vorstellen, warum die Haustür offen gelassen wurde.",
+              "false_friends": [],
+              "common_mistake": "'Reason' hat zwei Bedeutungen: (1) Grund/Ursache: 'the reason why'; (2) Vernunft: 'listen to reason'."
+            }
+          }
+        },
+        {
+          "term": "problem",
+          "pos": "noun",
+          "ipa": "/ˈprɒbləm/",
+          "etymology": "From Old French probleme, from Latin problēma, from Greek próblēma (obstacle, thing thrown forward), from probállein (to throw forward).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "concepts.general",
+          "synonyms": ["issue", "difficulty"],
+          "collocations": ["no problem", "solve a problem", "problem solving"],
+          "tags": ["abstract", "general", "core"],
+          "example": "The biggest problem was that nobody had brought a map.",
+          "prerequisites": [],
+          "plural": "problems",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Problem' ist im Deutschen identisch — gleiche Schreibweise, gleiche Bedeutung. Nur die Betonung: englisch auf der ersten Silbe /ˈprɒbləm/.",
+              "example_gloss": "Das größte Problem war, dass niemand eine Karte mitgebracht hatte.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "question",
+          "pos": "noun",
+          "ipa": "/ˈkwɛstʃən/",
+          "etymology": "From Old French question, from Latin quaestiō (a seeking, inquiry), from quaerere (to seek, ask).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "concepts.communication",
+          "synonyms": ["query", "inquiry"],
+          "collocations": ["ask a question", "good question", "out of the question"],
+          "tags": ["abstract", "communication", "core"],
+          "example": "She asked a question that nobody in the room could answer.",
+          "prerequisites": [],
+          "plural": "questions",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Question' beginnt mit /kw/ — stell dir das lateinische quaerere (suchen/fragen) vor. Anders als deutsch 'Frage', das germanisch ist.",
+              "example_gloss": "Sie stellte eine Frage, die niemand im Raum beantworten konnte.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /ˈkwɛstʃən/ mit /tʃ/ in der Mitte, nicht /ˈkwestion/ mit hartem t."
+            }
+          }
+        },
+        {
+          "term": "answer",
+          "pos": "noun",
+          "ipa": "/ˈɑːnsər/",
+          "etymology": "From Old English andswaru (answer, reply), from and- (against) + swerian (to swear, affirm).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "concepts.communication",
+          "synonyms": ["reply", "response"],
+          "collocations": ["right answer", "short answer", "answer key"],
+          "tags": ["abstract", "communication", "core"],
+          "example": "He thought about it for a long time before he gave his answer.",
+          "prerequisites": [],
+          "plural": "answers",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Answer' kommt von altenglisch and-swaru (Gegen-Schwur) — ursprünglich eine feierliche Gegenaussage. Das w ist stumm: /ˈɑːnsər/.",
+              "example_gloss": "Er dachte lange darüber nach, bevor er seine Antwort gab.",
+              "false_friends": [],
+              "common_mistake": "Das w ist stumm: /ˈɑːnsər/, nicht /ˈɑːnswər/."
+            }
+          }
+        },
+        {
+          "term": "decision",
+          "pos": "noun",
+          "ipa": "/dɪˈsɪʒən/",
+          "etymology": "From Latin dēcīsiō (a cutting off, settlement), from dēcīdere (to cut off, decide), from de- (off) + caedere (to cut).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "concepts.thought",
+          "synonyms": ["choice", "resolution"],
+          "collocations": ["make a decision", "difficult decision", "final decision"],
+          "tags": ["abstract", "thought", "core"],
+          "example": "It was a difficult decision, but she chose to move abroad.",
+          "prerequisites": [],
+          "plural": "decisions",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Decision' kommt von lateinisch dēcīdere (abschneiden) — eine Entscheidung schneidet Alternativen ab. Deutsch 'Dezision' existiert als Fachbegriff.",
+              "example_gloss": "Es war eine schwierige Entscheidung, aber sie entschied sich, ins Ausland zu ziehen.",
+              "false_friends": [],
+              "common_mistake": "Die Endung -sion wird /ʒən/ ausgesprochen, nicht /siɔn/ wie im Deutschen."
+            }
+          }
+        },
+        {
+          "term": "chance",
+          "pos": "noun",
+          "ipa": "/tʃɑːns/",
+          "etymology": "From Old French cheance (accident, fortune, luck), from Vulgar Latin *cadentia (falling), from Latin cadere (to fall).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "concepts.general",
+          "synonyms": ["opportunity", "possibility"],
+          "collocations": ["by chance", "last chance", "take a chance"],
+          "tags": ["abstract", "general", "core"],
+          "example": "This is your last chance to sign up before the deadline.",
+          "prerequisites": [],
+          "plural": "chances",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Chance' und deutsch 'Chance' sehen gleich aus — aber Englisch meint auch Zufall/Risiko ('by chance' = zufällig), nicht nur Gelegenheit.",
+              "example_gloss": "Das ist deine letzte Chance, dich vor dem Stichtag anzumelden.",
+              "false_friends": [
+                {
+                  "source_term": "Chance",
+                  "note": "Deutsch 'Chance' = Gelegenheit. Englisch 'chance' bedeutet zusätzlich Zufall ('by chance') und Risiko ('take a chance'). Die Bedeutung ist breiter."
+                }
+              ],
+              "common_mistake": "Aussprache: /tʃɑːns/ mit /tʃ/ am Anfang, nicht /ʃɑ̃s/ wie im Französischen oder Deutschen."
+            }
+          }
+        },
+        {
+          "term": "fear",
+          "pos": "noun",
+          "ipa": "/fɪər/",
+          "etymology": "From Old English fǣr (calamity, sudden danger), from Proto-Germanic *fērō. The sense shifted from 'danger' to 'feeling of dread'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "concepts.emotion",
+          "synonyms": ["dread", "fright"],
+          "collocations": ["fear of heights", "overcome fear", "for fear of"],
+          "tags": ["abstract", "emotion", "core"],
+          "example": "His fear of flying kept him from visiting his family overseas.",
+          "prerequisites": [],
+          "plural": "fears",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Fear' ist verwandt mit deutsch 'Gefahr' — gleicher germanischer Stamm *fērō. Die Bedeutung verschob sich: 'Gefahr' blieb das äußere Risiko, 'fear' wurde das innere Gefühl.",
+              "example_gloss": "Seine Flugangst hielt ihn davon ab, seine Familie im Ausland zu besuchen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "hope",
+          "pos": "noun",
+          "ipa": "/hoʊp/",
+          "etymology": "From Old English hopa (hope, expectation), from Proto-Germanic *hupan.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "concepts.emotion",
+          "synonyms": ["optimism", "expectation"],
+          "collocations": ["ray of hope", "false hope", "in the hope of"],
+          "tags": ["abstract", "emotion", "core"],
+          "example": "Even after the setback, she held on to the hope that things would improve.",
+          "prerequisites": [],
+          "plural": "hopes",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Hope' und 'hoffen' teilen den germanischen Stamm *hupan — gleiches h am Anfang, gleiche Grundidee. 'Hope' ist Nomen und Verb zugleich.",
+              "example_gloss": "Selbst nach dem Rückschlag hielt sie an der Hoffnung fest, dass sich die Dinge bessern würden.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "freedom",
+          "pos": "noun",
+          "ipa": "/ˈfriːdəm/",
+          "etymology": "From Old English frēodōm: frēo (free) + -dōm (state, condition). A native English compound.",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "concepts.value",
+          "synonyms": ["liberty", "independence"],
+          "collocations": ["freedom of speech", "personal freedom", "freedom fighter"],
+          "tags": ["abstract", "value", "core"],
+          "example": "Freedom of speech is protected in many constitutions around the world.",
+          "prerequisites": [],
+          "plural": "freedoms",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Freedom' = free + -dom (Zustand), genau wie 'Freiheit' = frei + -heit. Gleiches Bauschema: Adjektiv + Zustandssuffix.",
+              "example_gloss": "Redefreiheit ist in vielen Verfassungen weltweit geschützt.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "peace",
+          "pos": "noun",
+          "ipa": "/piːs/",
+          "etymology": "From Old French pais, from Latin pāx, pācis (peace, compact), from PIE *peh₂ḱ- (to fasten).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "concepts.value",
+          "synonyms": ["tranquility", "calm"],
+          "collocations": ["world peace", "peace of mind", "peace treaty"],
+          "tags": ["abstract", "value", "core"],
+          "example": "After years of conflict, the two countries finally signed a peace agreement.",
+          "prerequisites": [],
+          "plural": null,
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": false,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Peace' kommt vom lateinischen pāx — nicht verwandt mit deutsch 'Frieden' (germanisch). Merke: /piːs/ klingt wie 'piece' (Stück), ist aber ein anderes Wort.",
+              "example_gloss": "Nach Jahren des Konflikts unterzeichneten die beiden Länder endlich ein Friedensabkommen.",
+              "false_friends": [],
+              "common_mistake": "'Peace' (Frieden) und 'piece' (Stück) sind Homophone: beide /piːs/. Nur der Kontext unterscheidet sie."
+            }
+          }
+        },
+        {
+          "term": "success",
+          "pos": "noun",
+          "ipa": "/səkˈsɛs/",
+          "etymology": "From Latin successus (advance, succession, happy outcome), from succēdere (to come after, follow up).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "concepts.achievement",
+          "synonyms": ["achievement", "triumph"],
+          "collocations": ["key to success", "great success", "success story"],
+          "tags": ["abstract", "achievement", "core"],
+          "example": "The play was a huge success — every performance sold out.",
+          "prerequisites": [],
+          "plural": "successes",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Success' kommt von lateinisch succēdere (nachfolgen, gelingen) — im Deutschen kennt man 'Sukzession' (Nachfolge). 'Erfolg' ist der germanische Ersatz.",
+              "example_gloss": "Das Stück war ein riesiger Erfolg — jede Vorstellung war ausverkauft.",
+              "false_friends": [],
+              "common_mistake": "Doppeltes c und doppeltes s: 'success', 'successful'. Häufiger Rechtschreibfehler."
+            }
+          }
+        },
+        {
+          "term": "mistake",
+          "pos": "noun",
+          "ipa": "/mɪˈsteɪk/",
+          "etymology": "From Old Norse mistaka (to take wrongly, misunderstand): mis- (wrongly) + taka (to take).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "concepts.general",
+          "synonyms": ["error", "blunder"],
+          "collocations": ["make a mistake", "common mistake", "big mistake"],
+          "tags": ["abstract", "general", "core"],
+          "example": "Everyone makes mistakes — the important thing is to learn from them.",
+          "prerequisites": [],
+          "plural": "mistakes",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Mistake' kommt vom Altnordischen: mis- (falsch) + taka (nehmen) — also wörtlich 'falsch nehmen/greifen'. Deutsch 'Fehler' hat einen anderen Stamm.",
+              "example_gloss": "Jeder macht Fehler — das Wichtige ist, daraus zu lernen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "change",
+          "pos": "noun",
+          "ipa": "/tʃeɪndʒ/",
+          "etymology": "From Old French changier, from Late Latin cambiāre (to exchange), probably of Celtic origin.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "concepts.general",
+          "synonyms": ["shift", "transformation"],
+          "collocations": ["climate change", "make a change", "spare change"],
+          "tags": ["abstract", "general", "core"],
+          "example": "The sudden change in weather caught everyone by surprise.",
+          "prerequisites": [],
+          "plural": "changes",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Change' hat zwei Bedeutungen: (1) Veränderung, (2) Wechselgeld ('spare change'). Deutsch 'Wechsel' deckt beides ab, aber 'Veränderung' ist der häufigere Sinn.",
+              "example_gloss": "Der plötzliche Wetterwechsel überraschte alle.",
+              "false_friends": [],
+              "common_mistake": "'Change' als Wechselgeld ist unzählbar: 'some change', nicht 'a change'. Als Veränderung ist es zählbar: 'many changes'."
+            }
+          }
+        },
+        {
+          "term": "difference",
+          "pos": "noun",
+          "ipa": "/ˈdɪfərəns/",
+          "etymology": "From Old French difference, from Latin differentia (diversity, difference), from differre (to carry apart, differ).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "concepts.general",
+          "synonyms": ["distinction", "contrast"],
+          "collocations": ["make a difference", "tell the difference", "big difference"],
+          "tags": ["abstract", "general", "core"],
+          "example": "There is a big difference between knowing a word and using it correctly.",
+          "prerequisites": [],
+          "plural": "differences",
+          "plural_genitive": null,
+          "gender": null,
+          "article": null,
+          "countable": true,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Difference' und 'Differenz' teilen den lateinischen Stamm differre — fast identisch. Aber englisch 'difference' ist das Alltagswort; deutsch 'Differenz' ist eher mathematisch/formell.",
+              "example_gloss": "Es gibt einen großen Unterschied zwischen ein Wort zu kennen und es richtig zu benutzen.",
+              "false_friends": [
+                {
+                  "source_term": "Differenz",
+                  "note": "Deutsch 'Differenz' wird eher mathematisch/formell gebraucht. Englisch 'difference' ist das normale Alltagswort für 'Unterschied'."
+                }
+              ],
+              "common_mistake": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

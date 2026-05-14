@@ -1,0 +1,4353 @@
+{
+  "schema_version": "1.0",
+  "target_language": "en",
+  "category_slug": "verben",
+  "source_languages_filled": [
+    "de"
+  ],
+  "generator_model": "claude-opus-4-20250514",
+  "generated_at": "2026-05-13T18:42:03Z",
+  "generator_version": "1.1-opus",
+  "levels": [
+    {
+      "level": 1,
+      "theme_slug": "basic_actions_to_be_to_have_to_go",
+      "entries": [
+        {
+          "term": "to be",
+          "pos": "verb",
+          "ipa": "/biː/",
+          "etymology": "From Old English bēon (to be, exist) and wesan, merging two Proto-Germanic roots *beuną and *wesaną. The most suppletive verb in English: am/is/are/was/were all derive from different stems.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.state",
+          "synonyms": [
+            "exist"
+          ],
+          "collocations": [
+            "be able to",
+            "be going to",
+            "be supposed to"
+          ],
+          "tags": [
+            "state",
+            "core",
+            "auxiliary"
+          ],
+          "example": "I am tired after the long walk.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to be",
+            "third_person_present": "is",
+            "past_simple": "was/were",
+            "past_participle": "been",
+            "present_participle": "being"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Be' ist das englische 'sein', aber mit dem wildesten Formenwechsel der Sprache: I am, you are, he is, was, were, been — keine zwei Formen vom selben Stamm.",
+              "example_gloss": "Ich bin müde nach dem langen Spaziergang.",
+              "false_friends": [],
+              "common_mistake": "Deutsche sagen oft 'I am agree' oder 'I am like it' — 'be' wird nicht als Hilfsverb vor Vollverben gestellt wie im Deutschen manchmal 'sein'."
+            }
+          }
+        },
+        {
+          "term": "to have",
+          "pos": "verb",
+          "ipa": "/hæv/",
+          "etymology": "From Old English habban, from Proto-Germanic *habjaną. Cognate with German haben.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.possession",
+          "synonyms": [
+            "own",
+            "possess"
+          ],
+          "collocations": [
+            "have to",
+            "have a look",
+            "have breakfast"
+          ],
+          "tags": [
+            "possession",
+            "core",
+            "auxiliary"
+          ],
+          "example": "She has two cats and a small dog.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to have",
+            "third_person_present": "has",
+            "past_simple": "had",
+            "past_participle": "had",
+            "present_participle": "having"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Have' und 'haben' sind germanische Geschwister: gleicher h-Anfang, gleiche Besitz-Bedeutung. Merk dir nur, dass die dritte Person 'has' wird, nicht 'haves'.",
+              "example_gloss": "Sie hat zwei Katzen und einen kleinen Hund.",
+              "false_friends": [],
+              "common_mistake": "Dritte Person ist 'has', nicht 'haves'. Außerdem: 'I have a question', nicht 'I have a ask'."
+            }
+          }
+        },
+        {
+          "term": "to go",
+          "pos": "verb",
+          "ipa": "/ɡəʊ/",
+          "etymology": "From Old English gān, from Proto-Germanic *gāną. The past tense 'went' is borrowed from the verb 'wend' (Old English wendan).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "travel",
+            "head"
+          ],
+          "collocations": [
+            "go ahead",
+            "go home",
+            "go shopping"
+          ],
+          "tags": [
+            "movement",
+            "core"
+          ],
+          "example": "We go to the beach every Sunday when the weather is clear.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to go",
+            "third_person_present": "goes",
+            "past_simple": "went",
+            "past_participle": "gone",
+            "present_participle": "going"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Go' ist kurz wie ein Startschuss — und past tense 'went' kommt aus einem ganz anderen Verb (wenden). Diese Mischung macht es einzigartig.",
+              "example_gloss": "Wir gehen jeden Sonntag zum Strand, wenn das Wetter klar ist.",
+              "false_friends": [],
+              "common_mistake": "'Went' ist die Vergangenheit, nicht 'goed'. Auch: 'go home' ohne Präposition, nicht 'go to home'."
+            }
+          }
+        },
+        {
+          "term": "to come",
+          "pos": "verb",
+          "ipa": "/kʌm/",
+          "etymology": "From Old English cuman, from Proto-Germanic *kwemaną. Cognate with German kommen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "arrive",
+            "approach"
+          ],
+          "collocations": [
+            "come back",
+            "come true",
+            "come along"
+          ],
+          "tags": [
+            "movement",
+            "core"
+          ],
+          "example": "Can you come to my birthday party on Saturday?",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to come",
+            "third_person_present": "comes",
+            "past_simple": "came",
+            "past_participle": "come",
+            "present_participle": "coming"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Come' ist das englische 'kommen' ohne doppeltes m: gleicher k-Laut am Anfang, aber Englisch schreibt c. Past participle bleibt 'come' — wie der Infinitiv.",
+              "example_gloss": "Kannst du am Samstag zu meiner Geburtstagsfeier kommen?",
+              "false_friends": [],
+              "common_mistake": "Past participle ist 'come', nicht 'comed' oder 'camed'. Also: 'She has come', nicht 'She has came'."
+            }
+          }
+        },
+        {
+          "term": "to do",
+          "pos": "verb",
+          "ipa": "/duː/",
+          "etymology": "From Old English dōn, from Proto-Germanic *dōną. One of the oldest verbs in English, serving both as a main verb and as an auxiliary for questions and negation.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.general",
+          "synonyms": [
+            "perform",
+            "carry out"
+          ],
+          "collocations": [
+            "do homework",
+            "do the dishes",
+            "do business"
+          ],
+          "tags": [
+            "action",
+            "core",
+            "auxiliary"
+          ],
+          "example": "He does his homework at the kitchen table every evening.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to do",
+            "third_person_present": "does",
+            "past_simple": "did",
+            "past_participle": "done",
+            "present_participle": "doing"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Do' klingt wie 'du' auf Deutsch — aber es heißt 'tun'. Besonders tückisch: 'do' wird auch als Hilfsverb für Fragen gebraucht ('Do you like it?'), was es im Deutschen nicht gibt.",
+              "example_gloss": "Er macht seine Hausaufgaben jeden Abend am Küchentisch.",
+              "false_friends": [],
+              "common_mistake": "Im Englischen braucht man 'do' als Hilfsverb in Fragen und Verneinungen: 'Do you know?', nicht 'Know you?'. Das ist der größte Strukturunterschied zum Deutschen."
+            }
+          }
+        },
+        {
+          "term": "to make",
+          "pos": "verb",
+          "ipa": "/meɪk/",
+          "etymology": "From Old English macian (to form, construct), from Proto-West Germanic *makōn. Cognate with German machen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.creation",
+          "synonyms": [
+            "create",
+            "produce"
+          ],
+          "collocations": [
+            "make sense",
+            "make a decision",
+            "make breakfast"
+          ],
+          "tags": [
+            "creation",
+            "core"
+          ],
+          "example": "They make fresh bread at the bakery every morning.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to make",
+            "third_person_present": "makes",
+            "past_simple": "made",
+            "past_participle": "made",
+            "present_participle": "making"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Make' und 'machen' teilen den m-Anfang und die Bedeutung 'herstellen'. Der Unterschied zu 'do': make erzeugt etwas Konkretes (make bread, make a cake), do erledigt eine Tätigkeit (do homework, do sport).",
+              "example_gloss": "In der Bäckerei machen sie jeden Morgen frisches Brot.",
+              "false_friends": [],
+              "common_mistake": "Deutsch 'machen' wird im Englischen mal 'make', mal 'do': 'make a cake' aber 'do homework'. Es gibt keine einfache Regel — Kollokationen lernen."
+            }
+          }
+        },
+        {
+          "term": "to get",
+          "pos": "verb",
+          "ipa": "/ɡɛt/",
+          "etymology": "From Old Norse geta (to obtain, beget), which replaced the native Old English form. One of the most polysemous verbs in English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.acquisition",
+          "synonyms": [
+            "receive",
+            "obtain"
+          ],
+          "collocations": [
+            "get ready",
+            "get up",
+            "get along"
+          ],
+          "tags": [
+            "acquisition",
+            "core"
+          ],
+          "example": "I got a letter from my grandmother last week.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to get",
+            "third_person_present": "gets",
+            "past_simple": "got",
+            "past_participle": "got",
+            "present_participle": "getting"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Get' ist das englische Universalwerkzeug — bekommen, werden, holen, verstehen. Merke: 'I get it' = ich verstehe es, 'I get a gift' = ich bekomme ein Geschenk, 'I get tired' = ich werde müde.",
+              "example_gloss": "Ich habe letzte Woche einen Brief von meiner Großmutter bekommen.",
+              "false_friends": [
+                {
+                  "source_term": "bekommen",
+                  "note": "Deutsch 'bekommen' = englisch 'to get/receive'. Verwechsle nicht mit 'to become' (= werden). 'I become a letter' ist falsch."
+                }
+              ],
+              "common_mistake": "Britisches Englisch: get/got/got. Amerikanisches Englisch erlaubt auch 'gotten' als past participle. Außerdem: 'to get' hat dutzende Bedeutungen — Kontext entscheidet."
+            }
+          }
+        },
+        {
+          "term": "to give",
+          "pos": "verb",
+          "ipa": "/ɡɪv/",
+          "etymology": "From Old English giefan, reinforced by Old Norse gefa, both from Proto-Germanic *gebaną. Cognate with German geben.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.transfer",
+          "synonyms": [
+            "offer",
+            "hand"
+          ],
+          "collocations": [
+            "give up",
+            "give a hand",
+            "give advice"
+          ],
+          "tags": [
+            "transfer",
+            "core"
+          ],
+          "example": "She gave her brother a book for his birthday.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to give",
+            "third_person_present": "gives",
+            "past_simple": "gave",
+            "past_participle": "given",
+            "present_participle": "giving"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Give' und 'geben' sind germanische Zwillinge: g-Anfang, gleiche Grundbedeutung. Englisch kürzt auf drei Buchstaben. Past: gave, Partizip: given — das -n am Ende wie bei deutschen starken Verben (gegeben).",
+              "example_gloss": "Sie hat ihrem Bruder ein Buch zum Geburtstag geschenkt.",
+              "false_friends": [],
+              "common_mistake": "Doppeltes Objekt: 'Give me the book' oder 'Give the book to me' — beides richtig. Aber nicht 'Give to me the book'."
+            }
+          }
+        },
+        {
+          "term": "to take",
+          "pos": "verb",
+          "ipa": "/teɪk/",
+          "etymology": "From Old English tacan, from Old Norse taka (to take, grasp), from Proto-Germanic *takōną.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.acquisition",
+          "synonyms": [
+            "grab",
+            "seize"
+          ],
+          "collocations": [
+            "take care",
+            "take place",
+            "take a look"
+          ],
+          "tags": [
+            "action",
+            "core"
+          ],
+          "example": "Take your umbrella — it looks like rain.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to take",
+            "third_person_present": "takes",
+            "past_simple": "took",
+            "past_participle": "taken",
+            "present_participle": "taking"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Take' reimt sich auf 'Steak' — stell dir vor, du nimmst (take) ein Steak vom Teller. Past 'took' hat den gleichen kurzen Vokal wie 'book'.",
+              "example_gloss": "Nimm deinen Regenschirm mit — es sieht nach Regen aus.",
+              "false_friends": [],
+              "common_mistake": "Verwechslung mit 'bring': 'take' = mitnehmen (weg vom Sprecher), 'bring' = mitbringen (zum Sprecher). Deutsche benutzen 'mitnehmen' für beides."
+            }
+          }
+        },
+        {
+          "term": "to want",
+          "pos": "verb",
+          "ipa": "/wɒnt/",
+          "etymology": "From Old Norse vanta (to lack, be deficient). Originally meant 'to lack', shifted to 'to desire' by the 16th century.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.desire",
+          "synonyms": [
+            "wish",
+            "desire"
+          ],
+          "collocations": [
+            "want to",
+            "want something back"
+          ],
+          "tags": [
+            "desire",
+            "core"
+          ],
+          "example": "I want a glass of cold water after this run.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to want",
+            "third_person_present": "wants",
+            "past_simple": "wanted",
+            "past_participle": "wanted",
+            "present_participle": "wanting"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Want' klingt wie 'Wand' — stell dir vor, du drückst mit der Hand gegen eine Wand, weil du unbedingt auf die andere Seite willst. Das Verlangen steckt im Wort.",
+              "example_gloss": "Ich möchte nach diesem Lauf ein Glas kaltes Wasser.",
+              "false_friends": [],
+              "common_mistake": "'Want' ist ein Zustandsverb: 'I want', nicht 'I am wanting'. Auch: 'I want to go', nicht 'I want go' — das 'to' darf nicht fehlen."
+            }
+          }
+        },
+        {
+          "term": "to need",
+          "pos": "verb",
+          "ipa": "/niːd/",
+          "etymology": "From Old English nēodian (to be necessary), from nēod (necessity, need). Germanic root shared with German Not (distress).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.necessity",
+          "synonyms": [
+            "require"
+          ],
+          "collocations": [
+            "need to",
+            "need help",
+            "need time"
+          ],
+          "tags": [
+            "necessity",
+            "core"
+          ],
+          "example": "You need a warm jacket for the mountain hike.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to need",
+            "third_person_present": "needs",
+            "past_simple": "needed",
+            "past_participle": "needed",
+            "present_participle": "needing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Need' reimt sich auf 'Lied' — stell dir ein dringendes Lied vor, das ruft: 'Ich brauche das!' Der lange /iː/-Laut streckt das Verlangen.",
+              "example_gloss": "Du brauchst eine warme Jacke für die Bergwanderung.",
+              "false_friends": [],
+              "common_mistake": "'Need' als Vollverb braucht 'do' in Fragen: 'Do you need help?'. Als Modal (selten, formell) geht auch 'Need I go?' — aber Anfänger sollten die Vollverb-Form nutzen."
+            }
+          }
+        },
+        {
+          "term": "to like",
+          "pos": "verb",
+          "ipa": "/laɪk/",
+          "etymology": "From Old English līcian (to please, be pleasing), from Proto-Germanic *līkōną. Originally impersonal: 'me likes' meant 'it pleases me'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.preference",
+          "synonyms": [
+            "enjoy",
+            "appreciate"
+          ],
+          "collocations": [
+            "like to",
+            "would like",
+            "like best"
+          ],
+          "tags": [
+            "preference",
+            "core"
+          ],
+          "example": "He likes Italian food, especially pizza with fresh basil.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to like",
+            "third_person_present": "likes",
+            "past_simple": "liked",
+            "past_participle": "liked",
+            "present_participle": "liking"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Like' klingt wie 'laik' — denk an das deutsche 'gleich': was einem gleicht, das mag man (like). Historisch kommt 'like' tatsächlich von 'gefallen'.",
+              "example_gloss": "Er mag italienisches Essen, besonders Pizza mit frischem Basilikum.",
+              "false_friends": [],
+              "common_mistake": "'Like' ist stativ — kein Progressive: 'I like it', nicht 'I am liking it'. Auch: 'I like swimming' oder 'I like to swim', beides korrekt."
+            }
+          }
+        },
+        {
+          "term": "to see",
+          "pos": "verb",
+          "ipa": "/siː/",
+          "etymology": "From Old English sēon, from Proto-Germanic *sehwaną. Cognate with German sehen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.perception",
+          "synonyms": [
+            "spot",
+            "notice"
+          ],
+          "collocations": [
+            "see you later",
+            "see a doctor",
+            "see the point"
+          ],
+          "tags": [
+            "perception",
+            "core"
+          ],
+          "example": "Can you see the lighthouse from here?",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to see",
+            "third_person_present": "sees",
+            "past_simple": "saw",
+            "past_participle": "seen",
+            "present_participle": "seeing"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'See' und 'sehen' sind eng verwandt: gleicher s-Anfang, gleiche Bedeutung. Englisch hat das h verloren und den Vokal zu /iː/ gestreckt.",
+              "example_gloss": "Kannst du den Leuchtturm von hier aus sehen?",
+              "false_friends": [
+                {
+                  "source_term": "See",
+                  "note": "Deutsch 'See' (maskulin) = lake, 'See' (feminin) = sea. Englisch 'see' ist nur das Verb 'sehen'."
+                }
+              ],
+              "common_mistake": "'See' ist ein Wahrnehmungsverb (unkontrolliert): 'I see the bird' (es fällt mir ins Auge). 'Watch' = aktiv zuschauen, 'look at' = aktiv hinschauen. Deutsche übersetzen 'sehen' oft pauschal mit 'see'."
+            }
+          }
+        },
+        {
+          "term": "to know",
+          "pos": "verb",
+          "ipa": "/nəʊ/",
+          "etymology": "From Old English cnāwan (to perceive, know), from Proto-Germanic *knēaną. The silent k is a relic of the original pronunciation.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "understand",
+            "recognize"
+          ],
+          "collocations": [
+            "know how",
+            "know by heart",
+            "know the difference"
+          ],
+          "tags": [
+            "cognition",
+            "core"
+          ],
+          "example": "I know the answer, but I forgot the right word.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to know",
+            "third_person_present": "knows",
+            "past_simple": "knew",
+            "past_participle": "known",
+            "present_participle": "knowing"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "Das stumme k in 'know' verrät die germanische Herkunft: im Althochdeutschen wurde das k in 'knāwan' noch gesprochen, genau wie deutsches 'kennen' mit k beginnt.",
+              "example_gloss": "Ich kenne die Antwort, aber mir fällt das richtige Wort nicht ein.",
+              "false_friends": [],
+              "common_mistake": "Deutsch unterscheidet 'wissen' (Fakten) und 'kennen' (Personen/Orte). Englisch benutzt für beides 'know': 'I know the answer' und 'I know her'. Außerdem stativ: 'I know', nicht 'I am knowing'."
+            }
+          }
+        },
+        {
+          "term": "to think",
+          "pos": "verb",
+          "ipa": "/θɪŋk/",
+          "etymology": "From Old English þencan, from Proto-Germanic *þankijaną. Related to German denken and the noun 'thought' (Old English þōht).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "believe",
+            "consider"
+          ],
+          "collocations": [
+            "think about",
+            "think of",
+            "think twice"
+          ],
+          "tags": [
+            "cognition",
+            "core"
+          ],
+          "example": "I think the train leaves at half past seven.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to think",
+            "third_person_present": "thinks",
+            "past_simple": "thought",
+            "past_participle": "thought",
+            "present_participle": "thinking"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Think' und 'denken' sind germanische Geschwister: der th-Laut /θ/ war im Altgermanischen ein d. Past 'thought' klingt wie 'thort' — alles quetscht sich zusammen.",
+              "example_gloss": "Ich denke, der Zug fährt um halb acht.",
+              "false_friends": [],
+              "common_mistake": "Der th-Laut /θ/ in 'think' ist stimmlos — Zunge an die Zähne, nicht deutsches /d/ oder /s/. Häufigster Aussprachefehler deutscher Lerner bei diesem Verb."
+            }
+          }
+        },
+        {
+          "term": "to say",
+          "pos": "verb",
+          "ipa": "/seɪ/",
+          "etymology": "From Old English secgan, from Proto-Germanic *sagjaną. Cognate with German sagen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.communication",
+          "synonyms": [
+            "state",
+            "mention"
+          ],
+          "collocations": [
+            "say hello",
+            "say goodbye",
+            "say sorry"
+          ],
+          "tags": [
+            "communication",
+            "core"
+          ],
+          "example": "She said the meeting starts at nine, not ten.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to say",
+            "third_person_present": "says",
+            "past_simple": "said",
+            "past_participle": "said",
+            "present_participle": "saying"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Say' ist 'sagen' ohne das -gen: s-a bleibt als Kern. Beachte: 'says' wird /sɛz/ gesprochen, nicht /seɪz/.",
+              "example_gloss": "Sie sagte, das Treffen beginnt um neun, nicht um zehn.",
+              "false_friends": [],
+              "common_mistake": "'Say' braucht kein indirektes Objekt: 'She said that…', nicht 'She said me that…'. Für 'jemandem etwas sagen' nimm 'tell': 'She told me that…'."
+            }
+          }
+        },
+        {
+          "term": "to eat",
+          "pos": "verb",
+          "ipa": "/iːt/",
+          "etymology": "From Old English etan, from Proto-Germanic *etaną. Cognate with German essen (via older form ezzan).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.consumption",
+          "synonyms": [
+            "consume",
+            "dine"
+          ],
+          "collocations": [
+            "eat out",
+            "eat breakfast",
+            "eat lunch"
+          ],
+          "tags": [
+            "food",
+            "core"
+          ],
+          "example": "We usually eat dinner together at seven.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to eat",
+            "third_person_present": "eats",
+            "past_simple": "ate",
+            "past_participle": "eaten",
+            "present_participle": "eating"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Eat' und 'essen' teilen den e-Vokal und die Grundbedeutung. Past 'ate' wird im Britischen /ɛt/ gesprochen — kurz wie das deutsche 'Bett'.",
+              "example_gloss": "Wir essen normalerweise um sieben zusammen zu Abend.",
+              "false_friends": [],
+              "common_mistake": "Aussprache von 'ate': Britisch /ɛt/, Amerikanisch /eɪt/. Nicht wie deutsches 'a-te' mit zwei Silben."
+            }
+          }
+        },
+        {
+          "term": "to drink",
+          "pos": "verb",
+          "ipa": "/drɪŋk/",
+          "etymology": "From Old English drincan, from Proto-Germanic *drinkaną. Cognate with German trinken — the d/t variation is a regular consonant shift.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.consumption",
+          "synonyms": [
+            "sip"
+          ],
+          "collocations": [
+            "drink water",
+            "drink up",
+            "soft drink"
+          ],
+          "tags": [
+            "food",
+            "core"
+          ],
+          "example": "He drinks two cups of coffee before leaving the house.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to drink",
+            "third_person_present": "drinks",
+            "past_simple": "drank",
+            "past_participle": "drunk",
+            "present_participle": "drinking"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Drink' ist 'trinken' mit d statt t — die hochdeutsche Lautverschiebung hat das d zum t gemacht, Englisch behielt das ältere d. Vokalwechsel: drink/drank/drunk wie sing/sang/sung.",
+              "example_gloss": "Er trinkt zwei Tassen Kaffee, bevor er das Haus verlässt.",
+              "false_friends": [],
+              "common_mistake": "Past participle 'drunk' ist auch ein Adjektiv (betrunken). Verwechslungsgefahr: 'I have drunk water' (Perfekt) vs. 'He is drunk' (betrunken)."
+            }
+          }
+        },
+        {
+          "term": "to sleep",
+          "pos": "verb",
+          "ipa": "/sliːp/",
+          "etymology": "From Old English slǣpan, from Proto-Germanic *slēpaną. Cognate with German schlafen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.rest",
+          "synonyms": [
+            "rest",
+            "nap"
+          ],
+          "collocations": [
+            "sleep well",
+            "sleep in",
+            "sleep tight"
+          ],
+          "tags": [
+            "rest",
+            "core"
+          ],
+          "example": "The baby slept through the entire thunderstorm last night.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to sleep",
+            "third_person_present": "sleeps",
+            "past_simple": "slept",
+            "past_participle": "slept",
+            "present_participle": "sleeping"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sleep' und 'schlafen' starten beide mit sl/schl. Englisch kürzt: das sch wird sl, das lange a wird ee /iː/. Past 'slept' — kurzer Schnitt, wie ein schnelles Einschlafen.",
+              "example_gloss": "Das Baby hat letzte Nacht das ganze Gewitter durchgeschlafen.",
+              "false_friends": [],
+              "common_mistake": "Past und Partizip sind beide 'slept', nicht 'sleeped'. Die ee→e-Verkürzung im Past ist typisch: keep/kept, feel/felt, sleep/slept."
+            }
+          }
+        },
+        {
+          "term": "to work",
+          "pos": "verb",
+          "ipa": "/wɜːk/",
+          "etymology": "From Old English wyrcan/weorc (to work, make), from Proto-Germanic *werkijaną. Cognate with German Werk (work, product).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.occupation",
+          "synonyms": [
+            "labor",
+            "toil"
+          ],
+          "collocations": [
+            "work hard",
+            "work out",
+            "work together"
+          ],
+          "tags": [
+            "occupation",
+            "core"
+          ],
+          "example": "My father works at a car factory near the river.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to work",
+            "third_person_present": "works",
+            "past_simple": "worked",
+            "past_participle": "worked",
+            "present_participle": "working"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Work' und 'Werk' sind Zwillinge: gleiche Konsonanten w-r-k, gleiche Grundbedeutung. Englisch benutzt es als Verb, wo Deutsch oft 'arbeiten' sagt.",
+              "example_gloss": "Mein Vater arbeitet in einer Autofabrik in der Nähe des Flusses.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /wɜːk/ mit dem typisch englischen /ɜː/-Vokal (wie in 'bird', 'nurse'). Deutsche sagen oft /vɔrk/ mit deutschem w und o — beides falsch."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "theme_slug": "movement_and_motion",
+      "entries": [
+        {
+          "term": "to walk",
+          "pos": "verb",
+          "ipa": "/wɔːk/",
+          "etymology": "From Old English wealcan (to roll, toss). The modern sense of 'travel on foot' developed in Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.movement",
+          "synonyms": [
+            "stroll",
+            "stride"
+          ],
+          "collocations": [
+            "walk away",
+            "go for a walk",
+            "walk the dog"
+          ],
+          "tags": [
+            "movement",
+            "core"
+          ],
+          "example": "We walk to school every morning because it is only ten minutes away.",
+          "prerequisites": [
+            "to go"
+          ],
+          "conjugation": {
+            "infinitive": "to walk",
+            "third_person_present": "walks",
+            "past_simple": "walked",
+            "past_participle": "walked",
+            "present_participle": "walking"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Walk' hat ein stummes l — /wɔːk/. Es bedeutet 'zu Fuß gehen'. Denk an: 'Ich walke zum Park' — ohne das l zu hören.",
+              "example_gloss": "Wir laufen jeden Morgen zur Schule, weil es nur zehn Minuten entfernt ist.",
+              "false_friends": [
+                {
+                  "source_term": "walken",
+                  "note": "Deutsch 'walken' = Stoff/Leder bearbeiten oder Nordic Walking. Englisch 'walk' = einfach zu Fuß gehen."
+                }
+              ],
+              "common_mistake": "Das l in 'walk' ist stumm: /wɔːk/, nicht /wɔːlk/. Gleiche Regel bei 'talk', 'chalk'."
+            }
+          }
+        },
+        {
+          "term": "to run",
+          "pos": "verb",
+          "ipa": "/rʌn/",
+          "etymology": "From Old English rinnan (to flow, run), from Proto-Germanic *rinnaną. Originally 'to flow' — still visible in 'the river runs'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "jog",
+            "sprint"
+          ],
+          "collocations": [
+            "run a business",
+            "run out of",
+            "run into"
+          ],
+          "tags": [
+            "movement",
+            "core"
+          ],
+          "example": "She runs five kilometres through the park every Tuesday.",
+          "prerequisites": [
+            "to walk"
+          ],
+          "conjugation": {
+            "infinitive": "to run",
+            "third_person_present": "runs",
+            "past_simple": "ran",
+            "past_participle": "run",
+            "present_participle": "running"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Run' ist kurz und einsilbig wie ein Sprint. Past participle bleibt 'run' — gleich wie der Infinitiv, aber past simple wird 'ran' mit kurzem a.",
+              "example_gloss": "Sie läuft jeden Dienstag fünf Kilometer durch den Park.",
+              "false_friends": [
+                {
+                  "source_term": "rennen",
+                  "note": "Deutsch 'rennen' ist immer schnell; englisch 'run' deckt Joggen bis Sprinten ab und hat übertragene Bedeutungen (run a business)."
+                }
+              ],
+              "common_mistake": "Past tense: 'ran', nicht 'runned'. Doppeltes n beim -ing: 'running', nicht 'runing'."
+            }
+          }
+        },
+        {
+          "term": "to drive",
+          "pos": "verb",
+          "ipa": "/draɪv/",
+          "etymology": "From Old English drīfan (to drive, push), from Proto-Germanic *drībaną. Cognate with German treiben.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "steer"
+          ],
+          "collocations": [
+            "drive a car",
+            "drive someone crazy",
+            "drive home"
+          ],
+          "tags": [
+            "movement",
+            "transport"
+          ],
+          "example": "My brother drives to work because the bus takes too long.",
+          "prerequisites": [
+            "to go"
+          ],
+          "conjugation": {
+            "infinitive": "to drive",
+            "third_person_present": "drives",
+            "past_simple": "drove",
+            "past_participle": "driven",
+            "present_participle": "driving"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Drive' und 'treiben' sind alte Verwandte: d/t-Wechsel wie bei drink/trinken. Aber 'drive' heißt heute vor allem 'Auto fahren'.",
+              "example_gloss": "Mein Bruder fährt mit dem Auto zur Arbeit, weil der Bus zu lange braucht.",
+              "false_friends": [
+                {
+                  "source_term": "fahren",
+                  "note": "Deutsch 'fahren' = Auto, Fahrrad, Zug, Boot. Englisch: 'drive' (Auto selbst lenken), 'ride' (Fahrrad/Pferd), 'take the train' (als Passagier)."
+                }
+              ],
+              "common_mistake": "'Ich fahre mit dem Zug' ≠ 'I drive by train'. Richtig: 'I take the train'. 'Drive' nur für selbst gelenkte Fahrzeuge."
+            }
+          }
+        },
+        {
+          "term": "to fly",
+          "pos": "verb",
+          "ipa": "/flaɪ/",
+          "etymology": "From Old English flēogan, from Proto-Germanic *fleuganą. Cognate with German fliegen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "soar",
+            "glide"
+          ],
+          "collocations": [
+            "fly a kite",
+            "fly away",
+            "time flies"
+          ],
+          "tags": [
+            "movement",
+            "transport"
+          ],
+          "example": "Birds fly south when autumn turns cold.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to fly",
+            "third_person_present": "flies",
+            "past_simple": "flew",
+            "past_participle": "flown",
+            "present_participle": "flying"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Fly' und 'fliegen' teilen den fl-Anfang. Vokalreihe: fly /aɪ/, flew /uː/, flown /əʊ/ — drei verschiedene Vokale, wie bei know/knew/known.",
+              "example_gloss": "Vögel fliegen nach Süden, wenn der Herbst kalt wird.",
+              "false_friends": [],
+              "common_mistake": "Dritte Person: 'flies', nicht 'flys'. Das y wird zu ie vor -s. Past: 'flew', nicht 'flied'."
+            }
+          }
+        },
+        {
+          "term": "to swim",
+          "pos": "verb",
+          "ipa": "/swɪm/",
+          "etymology": "From Old English swimman, from Proto-Germanic *swimmaną. Cognate with German schwimmen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.movement",
+          "synonyms": [],
+          "collocations": [
+            "swim laps",
+            "go swimming",
+            "swim across"
+          ],
+          "tags": [
+            "movement",
+            "sport"
+          ],
+          "example": "The children swim in the lake every summer afternoon.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to swim",
+            "third_person_present": "swims",
+            "past_simple": "swam",
+            "past_participle": "swum",
+            "present_participle": "swimming"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Swim' ist 'schwimmen' ohne sch: sw statt schw. Vokalwechsel swim/swam/swum folgt dem i/a/u-Muster wie drink/drank/drunk.",
+              "example_gloss": "Die Kinder schwimmen jeden Sommernachmittag im See.",
+              "false_friends": [],
+              "common_mistake": "Doppeltes m beim -ing: 'swimming', nicht 'swiming'. Kurzer Vokal + einzelner Konsonant = verdoppeln."
+            }
+          }
+        },
+        {
+          "term": "to jump",
+          "pos": "verb",
+          "ipa": "/dʒʌmp/",
+          "etymology": "Of uncertain origin; attested from early 16th century. Possibly imitative of the landing sound.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.movement",
+          "synonyms": [
+            "leap",
+            "hop"
+          ],
+          "collocations": [
+            "jump rope",
+            "jump to conclusions",
+            "high jump"
+          ],
+          "tags": [
+            "movement",
+            "action"
+          ],
+          "example": "The cat jumped onto the kitchen counter and knocked over a glass.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to jump",
+            "third_person_present": "jumps",
+            "past_simple": "jumped",
+            "past_participle": "jumped",
+            "present_participle": "jumping"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Jump' klingt wie ein federnder Aufprall: dsch-amp! Der /dʒ/-Laut am Anfang gibt dem Wort Sprungkraft, die deutsch 'springen' nicht hat.",
+              "example_gloss": "Die Katze sprang auf die Küchentheke und stieß ein Glas um.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "to climb",
+          "pos": "verb",
+          "ipa": "/klaɪm/",
+          "etymology": "From Old English climban, from Proto-Germanic *klimbaną. The silent b is preserved in spelling from the original pronunciation.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "ascend",
+            "scale"
+          ],
+          "collocations": [
+            "climb a mountain",
+            "climb stairs",
+            "climb a ladder"
+          ],
+          "tags": [
+            "movement",
+            "action"
+          ],
+          "example": "They climbed the old stone steps to reach the castle gate.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to climb",
+            "third_person_present": "climbs",
+            "past_simple": "climbed",
+            "past_participle": "climbed",
+            "present_participle": "climbing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Climb' hat ein stummes b am Ende — wie 'lamb', 'comb', 'thumb'. Denk an 'klimmen' (klettern), ein altdeutsches Verwandtenwort.",
+              "example_gloss": "Sie stiegen die alten Steintreppen hinauf, um zum Burgtor zu gelangen.",
+              "false_friends": [],
+              "common_mistake": "Das b ist stumm: /klaɪm/, nicht /klaɪmb/. Regelmäßig: climbed /klaɪmd/."
+            }
+          }
+        },
+        {
+          "term": "to fall",
+          "pos": "verb",
+          "ipa": "/fɔːl/",
+          "etymology": "From Old English feallan, from Proto-Germanic *fallaną. Cognate with German fallen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "drop",
+            "tumble"
+          ],
+          "collocations": [
+            "fall down",
+            "fall asleep",
+            "fall in love"
+          ],
+          "tags": [
+            "movement",
+            "core"
+          ],
+          "example": "Leaves fall from the trees when October comes.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to fall",
+            "third_person_present": "falls",
+            "past_simple": "fell",
+            "past_participle": "fallen",
+            "present_participle": "falling"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Fall' und 'fallen' sind fast identisch — gleiche Konsonanten, gleiche Bedeutung. Partizip 'fallen' ist sogar deckungsgleich mit dem Deutschen.",
+              "example_gloss": "Die Blätter fallen von den Bäumen, wenn der Oktober kommt.",
+              "false_friends": [
+                {
+                  "source_term": "Fall",
+                  "note": "Deutsch 'Fall' (Nomen) = case/instance. Englisch 'fall' als Nomen = Herbst (amerikanisch) oder Sturz."
+                }
+              ],
+              "common_mistake": "'Fell' ist past von 'fall', nicht von 'feel' (feel/felt/felt). Verwechslungsgefahr!"
+            }
+          }
+        },
+        {
+          "term": "to stand",
+          "pos": "verb",
+          "ipa": "/stænd/",
+          "etymology": "From Old English standan, from Proto-Germanic *standaną. Cognate with German stehen (via older standen).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.position",
+          "synonyms": [
+            "rise"
+          ],
+          "collocations": [
+            "stand up",
+            "stand still",
+            "stand in line"
+          ],
+          "tags": [
+            "position",
+            "core"
+          ],
+          "example": "Please stand behind the yellow line until the train stops.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to stand",
+            "third_person_present": "stands",
+            "past_simple": "stood",
+            "past_participle": "stood",
+            "present_participle": "standing"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Stand' klingt wie deutsch 'Stand'. Past 'stood' hat /ʊ/ wie in 'good'. Auch übertragen: 'I can't stand noise' = ich kann Lärm nicht ertragen.",
+              "example_gloss": "Bitte stellen Sie sich hinter die gelbe Linie, bis der Zug hält.",
+              "false_friends": [],
+              "common_mistake": "Past: 'stood', nicht 'standed'. Auch: 'stand up' = aufstehen, 'stand' = stehen."
+            }
+          }
+        },
+        {
+          "term": "to sit",
+          "pos": "verb",
+          "ipa": "/sɪt/",
+          "etymology": "From Old English sittan, from Proto-Germanic *sitjaną. Cognate with German sitzen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.position",
+          "synonyms": [],
+          "collocations": [
+            "sit down",
+            "sit still",
+            "sit an exam"
+          ],
+          "tags": [
+            "position",
+            "core"
+          ],
+          "example": "She sat by the window and watched the rain for an hour.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to sit",
+            "third_person_present": "sits",
+            "past_simple": "sat",
+            "past_participle": "sat",
+            "present_participle": "sitting"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Sit' und 'sitzen' sind direkte Verwandte: gleicher Anfang, gleiche Bedeutung. Vokalwechsel sit/sat/sat — i wird a.",
+              "example_gloss": "Sie saß am Fenster und beobachtete eine Stunde lang den Regen.",
+              "false_friends": [],
+              "common_mistake": "Doppeltes t beim -ing: 'sitting', nicht 'siting'. Britisch: 'sit an exam' = eine Prüfung ablegen."
+            }
+          }
+        },
+        {
+          "term": "to turn",
+          "pos": "verb",
+          "ipa": "/tɜːn/",
+          "etymology": "From Old English turnian and Old French torner, both from Latin tornare (to turn on a lathe), from tornus (lathe).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "rotate",
+            "spin"
+          ],
+          "collocations": [
+            "turn around",
+            "turn off",
+            "turn left"
+          ],
+          "tags": [
+            "movement",
+            "direction"
+          ],
+          "example": "Turn left at the traffic lights and the shop is on your right.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to turn",
+            "third_person_present": "turns",
+            "past_simple": "turned",
+            "past_participle": "turned",
+            "present_participle": "turning"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Turn' kommt vom Lateinischen tornus (Drehbank) — stell dir eine Drehbewegung vor. Phrasal verbs: turn on/off (ein-/ausschalten), turn around (umdrehen).",
+              "example_gloss": "Biegen Sie an der Ampel links ab und das Geschäft ist auf der rechten Seite.",
+              "false_friends": [
+                {
+                  "source_term": "turnen",
+                  "note": "Deutsch 'turnen' = gymnastics/to do gymnastics. Englisch 'turn' = drehen, abbiegen."
+                }
+              ],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "to move",
+          "pos": "verb",
+          "ipa": "/muːv/",
+          "etymology": "From Anglo-French mover, from Latin movēre (to set in motion). Replaced Old English styrian in most contexts.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.movement",
+          "synonyms": [
+            "shift",
+            "relocate"
+          ],
+          "collocations": [
+            "move house",
+            "move on",
+            "move forward"
+          ],
+          "tags": [
+            "movement",
+            "core"
+          ],
+          "example": "We moved to Berlin when I was seven years old.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to move",
+            "third_person_present": "moves",
+            "past_simple": "moved",
+            "past_participle": "moved",
+            "present_participle": "moving"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Move' klingt wie 'Muff' mit langem u — /muːv/. Es deckt 'bewegen' und 'umziehen' ab. 'Move house' ist britisch für 'umziehen'.",
+              "example_gloss": "Wir sind nach Berlin gezogen, als ich sieben war.",
+              "false_friends": [],
+              "common_mistake": "Deutsch 'sich bewegen' = reflexiv, aber englisch 'move' braucht oft kein Reflexiv: 'Don't move!' nicht 'Don't move yourself!'"
+            }
+          }
+        },
+        {
+          "term": "to stop",
+          "pos": "verb",
+          "ipa": "/stɒp/",
+          "etymology": "From Old English stoppian (to block, plug up), from Proto-West Germanic *stoppōn. Related to German stopfen (to stuff).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.movement",
+          "synonyms": [
+            "halt",
+            "cease"
+          ],
+          "collocations": [
+            "stop sign",
+            "bus stop",
+            "stop talking"
+          ],
+          "tags": [
+            "movement",
+            "core"
+          ],
+          "example": "The bus stopped right in front of the post office.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to stop",
+            "third_person_present": "stops",
+            "past_simple": "stopped",
+            "past_participle": "stopped",
+            "present_participle": "stopping"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Stop' ist international bekannt — das Stoppschild ist überall gleich. Verwandt mit 'stopfen': das Loch stopfen = den Fluss stoppen.",
+              "example_gloss": "Der Bus hielt direkt vor der Post.",
+              "false_friends": [],
+              "common_mistake": "Doppeltes p: 'stopped', 'stopping' — kurzer Vokal + einzelner Konsonant = verdoppeln. Auch: 'stop doing' (aufhören zu tun) vs. 'stop to do' (anhalten um zu tun)."
+            }
+          }
+        },
+        {
+          "term": "to leave",
+          "pos": "verb",
+          "ipa": "/liːv/",
+          "etymology": "From Old English lǣfan (to leave behind, bequeath), from Proto-Germanic *laibijaną. Related to German bleiben through a shared root.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.movement",
+          "synonyms": [
+            "depart",
+            "exit"
+          ],
+          "collocations": [
+            "leave home",
+            "leave behind",
+            "leave a message"
+          ],
+          "tags": [
+            "movement",
+            "core"
+          ],
+          "example": "She leaves the office at half past five every day.",
+          "prerequisites": [
+            "to go"
+          ],
+          "conjugation": {
+            "infinitive": "to leave",
+            "third_person_present": "leaves",
+            "past_simple": "left",
+            "past_participle": "left",
+            "present_participle": "leaving"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Leave' hat zwei Hauptbedeutungen: 'verlassen' und 'lassen/zurücklassen'. Past 'left' ist auch die Richtung 'links' — aber das sind zwei verschiedene Wörter.",
+              "example_gloss": "Sie verlässt jeden Tag um halb sechs das Büro.",
+              "false_friends": [],
+              "common_mistake": "Doppeldeutigkeit: 'I left my bag' = ich habe meine Tasche zurückgelassen. 'I left the room' = ich habe den Raum verlassen. Kontext entscheidet."
+            }
+          }
+        },
+        {
+          "term": "to arrive",
+          "pos": "verb",
+          "ipa": "/əˈraɪv/",
+          "etymology": "From Old French ariver (to reach shore), from Vulgar Latin *arripare (to come to shore), from Latin ad (to) + ripa (shore).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "reach"
+          ],
+          "collocations": [
+            "arrive at",
+            "arrive in",
+            "arrive on time"
+          ],
+          "tags": [
+            "movement",
+            "travel"
+          ],
+          "example": "The train arrived ten minutes late because of the snow.",
+          "prerequisites": [
+            "to go",
+            "to come"
+          ],
+          "conjugation": {
+            "infinitive": "to arrive",
+            "third_person_present": "arrives",
+            "past_simple": "arrived",
+            "past_participle": "arrived",
+            "present_participle": "arriving"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Arrive' enthält 'rive' — denk an das Ufer (französisch rive). Wer ankommt, erreicht das Ufer. Lateinisch ad + ripa = ans Ufer kommen.",
+              "example_gloss": "Der Zug kam wegen des Schnees zehn Minuten zu spät an.",
+              "false_friends": [],
+              "common_mistake": "Präposition: 'arrive at' (Gebäude, Flughafen) vs. 'arrive in' (Stadt, Land). Nie: 'arrive to'! Deutsch 'ankommen in' verleitet zu 'arrive to'."
+            }
+          }
+        },
+        {
+          "term": "to enter",
+          "pos": "verb",
+          "ipa": "/ˈɛntər/",
+          "etymology": "From Old French entrer, from Latin intrare (to go into), from intra (within).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "go in"
+          ],
+          "collocations": [
+            "enter a room",
+            "enter data",
+            "enter a competition"
+          ],
+          "tags": [
+            "movement",
+            "action"
+          ],
+          "example": "Please enter the building through the main entrance.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to enter",
+            "third_person_present": "enters",
+            "past_simple": "entered",
+            "past_participle": "entered",
+            "present_participle": "entering"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Enter' kommt von lateinisch intrare — hinein-gehen. Die Enter-Taste auf der Tastatur heißt so, weil man damit 'eintritt' ins System.",
+              "example_gloss": "Bitte betreten Sie das Gebäude durch den Haupteingang.",
+              "false_friends": [],
+              "common_mistake": "'Enter' ist transitiv: 'enter the room', nicht 'enter into the room' (doppelte Präposition). Ausnahme: 'enter into a contract' ist idiomatisch."
+            }
+          }
+        },
+        {
+          "term": "to exit",
+          "pos": "verb",
+          "ipa": "/ˈɛɡzɪt/",
+          "etymology": "From Latin exitus (a going out), past participle of exire (to go out), from ex (out) + ire (to go).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "actions.movement",
+          "synonyms": [
+            "leave"
+          ],
+          "collocations": [
+            "exit a building",
+            "emergency exit",
+            "exit the motorway"
+          ],
+          "tags": [
+            "movement",
+            "action"
+          ],
+          "example": "Passengers should exit the train on the left side.",
+          "prerequisites": [
+            "to enter"
+          ],
+          "conjugation": {
+            "infinitive": "to exit",
+            "third_person_present": "exits",
+            "past_simple": "exited",
+            "past_participle": "exited",
+            "present_participle": "exiting"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Exit' ist das Gegenstück zu 'enter': ex- (heraus) + ire (gehen). Bekannt von Notausgang-Schildern weltweit.",
+              "example_gloss": "Fahrgäste sollten den Zug auf der linken Seite verlassen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "to cross",
+          "pos": "verb",
+          "ipa": "/krɒs/",
+          "etymology": "From Old Norse kross (cross), from Latin crux (cross). The verb sense 'to go across' developed from the noun.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "traverse"
+          ],
+          "collocations": [
+            "cross the road",
+            "cross out",
+            "cross-country"
+          ],
+          "tags": [
+            "movement",
+            "action"
+          ],
+          "example": "Look both ways before you cross the street.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to cross",
+            "third_person_present": "crosses",
+            "past_simple": "crossed",
+            "past_participle": "crossed",
+            "present_participle": "crossing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cross' kommt vom Kreuz — wenn du eine Straße überquerst, kreuzst du sie. Deutsch 'kreuzen' und englisch 'cross' sind Verwandte.",
+              "example_gloss": "Schau in beide Richtungen, bevor du die Straße überquerst.",
+              "false_friends": [],
+              "common_mistake": "Dritte Person: 'crosses' mit -es, weil das Wort auf -ss endet. Auch: 'cross' kann 'verärgert' als Adjektiv bedeuten (britisch)."
+            }
+          }
+        },
+        {
+          "term": "to follow",
+          "pos": "verb",
+          "ipa": "/ˈfɒləʊ/",
+          "etymology": "From Old English folgian (to accompany, follow), from Proto-Germanic *fulgāną.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "actions.movement",
+          "synonyms": [
+            "pursue",
+            "trail"
+          ],
+          "collocations": [
+            "follow me",
+            "follow the rules",
+            "follow up"
+          ],
+          "tags": [
+            "movement",
+            "action"
+          ],
+          "example": "Follow this path and you will reach the lake in ten minutes.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to follow",
+            "third_person_present": "follows",
+            "past_simple": "followed",
+            "past_participle": "followed",
+            "present_participle": "following"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Follow' klingt am Anfang wie 'folgen' — fol- bleibt erhalten. Das Wort hat auch abstrakte Bedeutung: 'I follow' = 'ich verstehe' (umgangssprachlich).",
+              "example_gloss": "Folgen Sie diesem Weg und Sie erreichen den See in zehn Minuten.",
+              "false_friends": [],
+              "common_mistake": "'Follow' ist transitiv: 'Follow me', nicht 'Follow to me'. Kein 'nach' oder 'to' nötig."
+            }
+          }
+        },
+        {
+          "term": "to return",
+          "pos": "verb",
+          "ipa": "/rɪˈtɜːn/",
+          "etymology": "From Old French retorner, from Latin re- (back) + tornare (to turn). Literally 'to turn back'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.movement",
+          "synonyms": [
+            "come back",
+            "go back"
+          ],
+          "collocations": [
+            "return home",
+            "return a call",
+            "return ticket"
+          ],
+          "tags": [
+            "movement",
+            "travel"
+          ],
+          "example": "He returned home after three years abroad.",
+          "prerequisites": [
+            "to go",
+            "to come"
+          ],
+          "conjugation": {
+            "infinitive": "to return",
+            "third_person_present": "returns",
+            "past_simple": "returned",
+            "past_participle": "returned",
+            "present_participle": "returning"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Return' enthält 're-' (zurück) + 'turn' (drehen) — sich zurückdrehen, zurückkehren. Auch: etwas zurückgeben ('return a book').",
+              "example_gloss": "Er kehrte nach drei Jahren im Ausland nach Hause zurück.",
+              "false_friends": [],
+              "common_mistake": "'Return' ist intransitiv (zurückkehren) und transitiv (zurückgeben). 'Return back' ist redundant — 're-' bedeutet schon 'zurück'."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "theme_slug": "daily_activities",
+      "entries": [
+        {
+          "term": "to wake up",
+          "pos": "verb",
+          "ipa": "/weɪk ʌp/",
+          "etymology": "From Old English wacan (to become awake) + up. The phrasal verb solidified in Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [
+            "awaken"
+          ],
+          "collocations": [
+            "wake up early",
+            "wake-up call"
+          ],
+          "tags": [
+            "daily",
+            "routine"
+          ],
+          "example": "I wake up at six every morning, even on weekends.",
+          "prerequisites": [
+            "to sleep"
+          ],
+          "conjugation": {
+            "infinitive": "to wake up",
+            "third_person_present": "wakes up",
+            "past_simple": "woke up",
+            "past_participle": "woken up",
+            "present_participle": "waking up"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Wake up' ist ein Phrasal Verb: 'wake' allein heißt auch 'erwachen', aber 'up' verstärkt. Past 'woke' klingt wie 'Wok' — stell dir vor, der Wecker klingt wie ein Wok-Schlag.",
+              "example_gloss": "Ich wache jeden Morgen um sechs auf, auch am Wochenende.",
+              "false_friends": [],
+              "common_mistake": "Unregelmäßig: wake/woke/woken. Nicht 'waked up'. Die Partikel 'up' trennt sich: 'She woke me up', nicht 'She woke up me'."
+            }
+          }
+        },
+        {
+          "term": "to get up",
+          "pos": "verb",
+          "ipa": "/ɡɛt ʌp/",
+          "etymology": "Phrasal verb from get (Old Norse geta) + up. 'Get up' in the sense of rising from bed is attested from the 15th century.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.daily",
+          "synonyms": [
+            "rise"
+          ],
+          "collocations": [
+            "get up early",
+            "get up late"
+          ],
+          "tags": [
+            "daily",
+            "routine"
+          ],
+          "example": "He gets up at seven and makes coffee before anything else.",
+          "prerequisites": [
+            "to wake up"
+          ],
+          "conjugation": {
+            "infinitive": "to get up",
+            "third_person_present": "gets up",
+            "past_simple": "got up",
+            "past_participle": "got up",
+            "present_participle": "getting up"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Get up' = aufstehen. 'Wake up' = aufwachen. Im Deutschen ist 'aufstehen' beides, aber im Englischen: erst wake up (Augen auf), dann get up (aus dem Bett).",
+              "example_gloss": "Er steht um sieben auf und macht Kaffee, bevor er irgendetwas anderes tut.",
+              "false_friends": [],
+              "common_mistake": "Unterschied zu 'wake up': 'wake up' = bewusst werden, 'get up' = physisch aufstehen. 'I woke up at six but didn't get up until seven.'"
+            }
+          }
+        },
+        {
+          "term": "to wash",
+          "pos": "verb",
+          "ipa": "/wɒʃ/",
+          "etymology": "From Old English wascan, from Proto-Germanic *waskaną. Cognate with German waschen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.daily",
+          "synonyms": [
+            "clean",
+            "rinse"
+          ],
+          "collocations": [
+            "wash hands",
+            "wash dishes",
+            "wash clothes"
+          ],
+          "tags": [
+            "daily",
+            "hygiene"
+          ],
+          "example": "Please wash your hands before dinner.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to wash",
+            "third_person_present": "washes",
+            "past_simple": "washed",
+            "past_participle": "washed",
+            "present_participle": "washing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Wash' und 'waschen' sind fast gleich: w-a-sch. Englisch spricht das a als /ɒ/ (kurzes o), nicht wie deutsches a.",
+              "example_gloss": "Bitte wasch dir die Hände vor dem Abendessen.",
+              "false_friends": [],
+              "common_mistake": "Dritte Person: 'washes' mit -es (wie bei allen Verben auf -sh, -ch, -s, -x). Aussprache: /wɒʃ/, das a klingt wie ein kurzes o."
+            }
+          }
+        },
+        {
+          "term": "to shower",
+          "pos": "verb",
+          "ipa": "/ˈʃaʊər/",
+          "etymology": "From Middle English shour (rain shower), from Old English scūr. The bathroom sense developed in the 19th century from 'shower-bath'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [],
+          "collocations": [
+            "take a shower",
+            "shower gel"
+          ],
+          "tags": [
+            "daily",
+            "hygiene"
+          ],
+          "example": "She showers every morning before breakfast.",
+          "prerequisites": [
+            "to wash"
+          ],
+          "conjugation": {
+            "infinitive": "to shower",
+            "third_person_present": "showers",
+            "past_simple": "showered",
+            "past_participle": "showered",
+            "present_participle": "showering"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Shower' bedeutet sowohl 'Dusche' als auch 'Regenschauer'. Der sh-Laut /ʃ/ ist wie deutsches sch. Zwei Silben: /ˈʃaʊ-ər/.",
+              "example_gloss": "Sie duscht jeden Morgen vor dem Frühstück.",
+              "false_friends": [
+                {
+                  "source_term": "Show",
+                  "note": "Deutsch 'Show' = Vorstellung/Sendung. Englisch 'shower' = Dusche/Schauer. Nicht verwechseln."
+                }
+              ],
+              "common_mistake": "Aussprache: zwei Silben /ˈʃaʊər/, nicht eine. Auch: 'take a shower' (AE) und 'have a shower' (BE) sind beide korrekt."
+            }
+          }
+        },
+        {
+          "term": "to brush",
+          "pos": "verb",
+          "ipa": "/brʌʃ/",
+          "etymology": "From Old French broisse/broce (brushwood), of uncertain Germanic origin. Originally referred to sweeping with a brush of twigs.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [],
+          "collocations": [
+            "brush teeth",
+            "brush hair",
+            "brush up on"
+          ],
+          "tags": [
+            "daily",
+            "hygiene"
+          ],
+          "example": "The dentist says you should brush your teeth twice a day.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to brush",
+            "third_person_present": "brushes",
+            "past_simple": "brushed",
+            "past_participle": "brushed",
+            "present_participle": "brushing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Brush' klingt am Anfang wie 'Brust' — aber mit sch am Ende. Für Zähne: 'brush your teeth', für Haare: 'brush your hair'. Ein Wort, zwei Alltags-Routinen.",
+              "example_gloss": "Der Zahnarzt sagt, man sollte sich zweimal am Tag die Zähne putzen.",
+              "false_friends": [],
+              "common_mistake": "Deutsch 'bürsten' passt für Haare, aber für Zähne sagt Deutsch 'putzen'. Englisch benutzt 'brush' für beides."
+            }
+          }
+        },
+        {
+          "term": "to dress",
+          "pos": "verb",
+          "ipa": "/drɛs/",
+          "etymology": "From Old French dresser (to arrange, prepare), from Vulgar Latin *directiare, from Latin directus (straight).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [
+            "clothe"
+          ],
+          "collocations": [
+            "get dressed",
+            "dress up",
+            "dress code"
+          ],
+          "tags": [
+            "daily",
+            "clothing"
+          ],
+          "example": "She dressed quickly and ran to catch the bus.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to dress",
+            "third_person_present": "dresses",
+            "past_simple": "dressed",
+            "past_participle": "dressed",
+            "present_participle": "dressing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Dress' als Verb = sich anziehen, als Nomen = Kleid. Kommt von französisch dresser (vorbereiten). 'Get dressed' ist die häufigste Alltagsform.",
+              "example_gloss": "Sie zog sich schnell an und rannte, um den Bus zu erwischen.",
+              "false_friends": [],
+              "common_mistake": "Reflexiv-Falle: Deutsch 'sich anziehen' → Englisch 'get dressed' oder 'dress' ohne Reflexivpronomen. Nicht 'dress myself' im Alltag."
+            }
+          }
+        },
+        {
+          "term": "to cook",
+          "pos": "verb",
+          "ipa": "/kʊk/",
+          "etymology": "From Old English cōc (cook, noun), from Latin coquus. The verb developed from the noun in late Old English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.daily",
+          "synonyms": [
+            "prepare"
+          ],
+          "collocations": [
+            "cook dinner",
+            "cook a meal",
+            "home-cooked"
+          ],
+          "tags": [
+            "daily",
+            "food"
+          ],
+          "example": "My grandmother cooks the best pasta I have ever tasted.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to cook",
+            "third_person_present": "cooks",
+            "past_simple": "cooked",
+            "past_participle": "cooked",
+            "present_participle": "cooking"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Cook' und 'Koch' sind Verwandte — gleicher Ursprung im Lateinischen coquus. Englisch benutzt dasselbe Wort als Verb (kochen) und Nomen (Koch).",
+              "example_gloss": "Meine Großmutter kocht die beste Pasta, die ich je gegessen habe.",
+              "false_friends": [
+                {
+                  "source_term": "kochen",
+                  "note": "Deutsch 'kochen' = cook (allgemein) ODER boil (Wasser). Englisch unterscheidet: 'cook a meal' vs. 'boil water'."
+                }
+              ],
+              "common_mistake": "'Cook' ≠ 'boil'. Wasser kochen = 'boil water', nicht 'cook water'. Eine Mahlzeit zubereiten = 'cook a meal'."
+            }
+          }
+        },
+        {
+          "term": "to clean",
+          "pos": "verb",
+          "ipa": "/kliːn/",
+          "etymology": "From Old English clǣne (pure, clear), from Proto-Germanic *klainiz. Used as a verb since Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.daily",
+          "synonyms": [
+            "tidy",
+            "scrub"
+          ],
+          "collocations": [
+            "clean up",
+            "clean the house",
+            "spring clean"
+          ],
+          "tags": [
+            "daily",
+            "household"
+          ],
+          "example": "We clean the kitchen every evening after dinner.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to clean",
+            "third_person_present": "cleans",
+            "past_simple": "cleaned",
+            "past_participle": "cleaned",
+            "present_participle": "cleaning"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Clean' klingt wie 'klein' — aber bedeutet 'sauber/reinigen'. Merke: klein ≠ clean. Der ee-Laut /iː/ ist lang.",
+              "example_gloss": "Wir putzen jeden Abend nach dem Essen die Küche.",
+              "false_friends": [
+                {
+                  "source_term": "klein",
+                  "note": "Deutsch 'klein' = small/little. Englisch 'clean' = sauber/reinigen. Ähnlicher Klang, komplett andere Bedeutung."
+                }
+              ],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "to shop",
+          "pos": "verb",
+          "ipa": "/ʃɒp/",
+          "etymology": "From Old English sceoppa (booth, stall). The verb sense 'to visit shops to buy things' is attested from the 18th century.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "actions.daily",
+          "synonyms": [
+            "buy"
+          ],
+          "collocations": [
+            "go shopping",
+            "shop online",
+            "shop around"
+          ],
+          "tags": [
+            "daily",
+            "commerce"
+          ],
+          "example": "They shop for groceries at the market every Saturday.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to shop",
+            "third_person_present": "shops",
+            "past_simple": "shopped",
+            "past_participle": "shopped",
+            "present_participle": "shopping"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Shop' ist als Nomen (Laden) und Verb (einkaufen) gleich. 'Go shopping' ist die idiomatische Formulierung für 'einkaufen gehen'.",
+              "example_gloss": "Sie kaufen jeden Samstag Lebensmittel auf dem Markt.",
+              "false_friends": [],
+              "common_mistake": "Doppeltes p: 'shopped', 'shopping'. 'Go shopping' ist intransitiv; für bestimmte Dinge: 'shop for groceries'."
+            }
+          }
+        },
+        {
+          "term": "to pay",
+          "pos": "verb",
+          "ipa": "/peɪ/",
+          "etymology": "From Old French paier, from Latin pacare (to appease, pacify), from pax (peace). Originally 'to pacify a creditor'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [
+            "settle"
+          ],
+          "collocations": [
+            "pay attention",
+            "pay the bill",
+            "pay in cash"
+          ],
+          "tags": [
+            "daily",
+            "commerce"
+          ],
+          "example": "Can I pay by card, or do you only accept cash?",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to pay",
+            "third_person_present": "pays",
+            "past_simple": "paid",
+            "past_participle": "paid",
+            "present_participle": "paying"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Pay' kommt von lateinisch pax (Frieden) — man 'befriedet' den Gläubiger durch Bezahlung. Past 'paid' — nicht 'payed' (das wäre nur Seefahrt-Fachsprache).",
+              "example_gloss": "Kann ich mit Karte bezahlen, oder nehmen Sie nur Bargeld?",
+              "false_friends": [],
+              "common_mistake": "Past: 'paid', nicht 'payed'. Auch: 'pay for something' mit Präposition: 'I paid for the ticket', nicht 'I paid the ticket' (außer bei Rechnungen: 'pay the bill')."
+            }
+          }
+        },
+        {
+          "term": "to wait",
+          "pos": "verb",
+          "ipa": "/weɪt/",
+          "etymology": "From Old North French waitier (to watch, guard), of Germanic origin. Related to German warten (to wait) and wachen (to watch).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [
+            "hold on"
+          ],
+          "collocations": [
+            "wait for",
+            "wait in line",
+            "can't wait"
+          ],
+          "tags": [
+            "daily",
+            "core"
+          ],
+          "example": "We waited twenty minutes for the bus in the rain.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to wait",
+            "third_person_present": "waits",
+            "past_simple": "waited",
+            "past_participle": "waited",
+            "present_participle": "waiting"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Wait' und 'warten' teilen den w-Anfang und die Bedeutung. Aber Achtung: englisch 'wait FOR someone', deutsch 'auf jemanden warten'.",
+              "example_gloss": "Wir haben zwanzig Minuten im Regen auf den Bus gewartet.",
+              "false_friends": [],
+              "common_mistake": "Präposition: 'wait FOR the bus', nicht 'wait the bus'. Deutsch 'warten auf' → 'wait for'. Die Präposition fehlt fast immer bei Anfängern."
+            }
+          }
+        },
+        {
+          "term": "to meet",
+          "pos": "verb",
+          "ipa": "/miːt/",
+          "etymology": "From Old English mētan (to encounter, find), from Proto-Germanic *mōtijaną.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [
+            "encounter"
+          ],
+          "collocations": [
+            "meet up",
+            "meet someone",
+            "nice to meet you"
+          ],
+          "tags": [
+            "daily",
+            "social"
+          ],
+          "example": "I am meeting my old school friend for lunch on Friday.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to meet",
+            "third_person_present": "meets",
+            "past_simple": "met",
+            "past_participle": "met",
+            "present_participle": "meeting"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Meet' klingt wie 'Miet-' (mieten) — aber bedeutet 'treffen'. Past 'met' ist kurz: ee wird e, wie bei sleep/slept, feel/felt.",
+              "example_gloss": "Ich treffe mich am Freitag mit meinem alten Schulfreund zum Mittagessen.",
+              "false_friends": [],
+              "common_mistake": "'Nice to meet you' (Kennenlernen) vs. 'Nice to see you' (Wiedersehen). Deutsche sagen oft 'meet' auch beim Wiedersehen — das ist 'see' im Englischen."
+            }
+          }
+        },
+        {
+          "term": "to help",
+          "pos": "verb",
+          "ipa": "/hɛlp/",
+          "etymology": "From Old English helpan, from Proto-Germanic *helpaną. Cognate with German helfen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.daily",
+          "synonyms": [
+            "assist",
+            "aid"
+          ],
+          "collocations": [
+            "help out",
+            "help yourself",
+            "can't help"
+          ],
+          "tags": [
+            "daily",
+            "social"
+          ],
+          "example": "Could you help me carry these bags to the car?",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to help",
+            "third_person_present": "helps",
+            "past_simple": "helped",
+            "past_participle": "helped",
+            "present_participle": "helping"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Help' und 'helfen' sind germanische Geschwister: gleicher Anfang, gleiche Bedeutung. Englisch ist regelmäßig (helped), Deutsch nicht (half/geholfen).",
+              "example_gloss": "Könntest du mir helfen, diese Taschen zum Auto zu tragen?",
+              "false_friends": [],
+              "common_mistake": "'Help someone do something' oder 'help someone to do something' — beides korrekt. Aber nicht: 'help someone for doing something'."
+            }
+          }
+        },
+        {
+          "term": "to study",
+          "pos": "verb",
+          "ipa": "/ˈstʌdi/",
+          "etymology": "From Old French estudier, from Latin studēre (to be eager, to devote oneself to).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [
+            "learn",
+            "revise"
+          ],
+          "collocations": [
+            "study hard",
+            "study abroad",
+            "study for an exam"
+          ],
+          "tags": [
+            "daily",
+            "education"
+          ],
+          "example": "She studies French every evening for thirty minutes.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to study",
+            "third_person_present": "studies",
+            "past_simple": "studied",
+            "past_participle": "studied",
+            "present_participle": "studying"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Study' kommt von lateinisch studēre (sich eifrig widmen). Dritte Person: y→ies: 'studies'. Deutsch hat zwei Wörter: 'lernen' (allgemein) und 'studieren' (Uni).",
+              "example_gloss": "Sie lernt jeden Abend dreißig Minuten lang Französisch.",
+              "false_friends": [
+                {
+                  "source_term": "studieren",
+                  "note": "Deutsch 'studieren' = nur an der Uni. Englisch 'study' = jedes Lernen, auch Schulaufgaben. Für Uni-Studium: 'study at university'."
+                }
+              ],
+              "common_mistake": "Dritte Person: 'studies', nicht 'studys'. Y nach Konsonant wird ie + s."
+            }
+          }
+        },
+        {
+          "term": "to exercise",
+          "pos": "verb",
+          "ipa": "/ˈɛksəsaɪz/",
+          "etymology": "From Old French exerciser, from Latin exercitare (to train, keep busy), frequentative of exercēre.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.daily",
+          "synonyms": [
+            "work out",
+            "train"
+          ],
+          "collocations": [
+            "exercise regularly",
+            "exercise caution",
+            "exercise regime"
+          ],
+          "tags": [
+            "daily",
+            "health"
+          ],
+          "example": "The doctor recommended that she exercise at least three times a week.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to exercise",
+            "third_person_present": "exercises",
+            "past_simple": "exercised",
+            "past_participle": "exercised",
+            "present_participle": "exercising"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Exercise' hat drei Silben: EX-er-size. Im Alltag bedeutet es 'Sport treiben', formell auch 'ausüben' (exercise your rights). Nicht mit 'exorcise' verwechseln!",
+              "example_gloss": "Der Arzt empfahl, dass sie mindestens dreimal pro Woche Sport treibe.",
+              "false_friends": [],
+              "common_mistake": "Rechtschreibung: 'exercise', nicht 'excercise' oder 'exercize'. Das c klingt wie /s/."
+            }
+          }
+        },
+        {
+          "term": "to rest",
+          "pos": "verb",
+          "ipa": "/rɛst/",
+          "etymology": "From Old English ræstan/restan, from Proto-Germanic *rastō (rest, repose).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "actions.daily",
+          "synonyms": [
+            "relax",
+            "unwind"
+          ],
+          "collocations": [
+            "rest assured",
+            "rest in peace",
+            "have a rest"
+          ],
+          "tags": [
+            "daily",
+            "health"
+          ],
+          "example": "After the hike, we rested on a bench near the fountain.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to rest",
+            "third_person_present": "rests",
+            "past_simple": "rested",
+            "past_participle": "rested",
+            "present_participle": "resting"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Rest' als Verb = sich ausruhen. Aber als Nomen hat 'rest' auch die Bedeutung 'der Rest' — genau wie im Deutschen!",
+              "example_gloss": "Nach der Wanderung ruhten wir uns auf einer Bank in der Nähe des Brunnens aus.",
+              "false_friends": [
+                {
+                  "source_term": "Rest",
+                  "note": "Deutsch 'Rest' = remainder/leftovers. Englisch 'rest' = sich ausruhen (Verb) ODER der Rest (Nomen: 'the rest of the cake'). Doppelbedeutung!"
+                }
+              ],
+              "common_mistake": "Deutsch 'sich ausruhen' ist reflexiv, Englisch nicht: 'I rested', nicht 'I rested myself'."
+            }
+          }
+        },
+        {
+          "term": "to watch",
+          "pos": "verb",
+          "ipa": "/wɒtʃ/",
+          "etymology": "From Old English wæccan (to keep watch, be awake), from Proto-Germanic *wakjaną. Related to German wachen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [
+            "observe"
+          ],
+          "collocations": [
+            "watch TV",
+            "watch out",
+            "watch a film"
+          ],
+          "tags": [
+            "daily",
+            "entertainment"
+          ],
+          "example": "We watched a documentary about sharks after dinner.",
+          "prerequisites": [
+            "to see"
+          ],
+          "conjugation": {
+            "infinitive": "to watch",
+            "third_person_present": "watches",
+            "past_simple": "watched",
+            "past_participle": "watched",
+            "present_participle": "watching"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Watch' kommt von 'wachen' — aktives Hinsehen. Im Englischen: 'watch' = bewusst zuschauen (Film, Spiel), 'see' = wahrnehmen, 'look' = hinschauen.",
+              "example_gloss": "Wir haben nach dem Abendessen eine Dokumentation über Haie angeschaut.",
+              "false_friends": [],
+              "common_mistake": "Dritte Person: 'watches' mit -es. Unterscheide: 'watch TV/a film' (aktiv), 'see a film at the cinema' (das Erlebnis), 'look at a photo' (Blick richten)."
+            }
+          }
+        },
+        {
+          "term": "to play",
+          "pos": "verb",
+          "ipa": "/pleɪ/",
+          "etymology": "From Old English plegian/plegan (to exercise, play), of uncertain further origin.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.daily",
+          "synonyms": [],
+          "collocations": [
+            "play a game",
+            "play music",
+            "play a role"
+          ],
+          "tags": [
+            "daily",
+            "entertainment"
+          ],
+          "example": "The children play football in the garden after school.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to play",
+            "third_person_present": "plays",
+            "past_simple": "played",
+            "past_participle": "played",
+            "present_participle": "playing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Play' deckt 'spielen' komplett ab — Spiel, Instrument, Rolle. Bei Instrumenten: 'play the piano' mit 'the', bei Sportarten: 'play football' ohne 'the'.",
+              "example_gloss": "Die Kinder spielen nach der Schule Fußball im Garten.",
+              "false_friends": [],
+              "common_mistake": "Artikel-Regel: 'play the guitar' (Instrument braucht 'the'), aber 'play tennis' (Sport ohne 'the'). Deutsche vergessen oft das 'the' beim Instrument."
+            }
+          }
+        },
+        {
+          "term": "to open",
+          "pos": "verb",
+          "ipa": "/ˈəʊpən/",
+          "etymology": "From Old English openian, from open (adjective), from Proto-Germanic *upanaz (raised, lifted).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.daily",
+          "synonyms": [
+            "unlock"
+          ],
+          "collocations": [
+            "open the door",
+            "open a book",
+            "open-minded"
+          ],
+          "tags": [
+            "daily",
+            "action"
+          ],
+          "example": "She opened the window to let in some fresh air.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to open",
+            "third_person_present": "opens",
+            "past_simple": "opened",
+            "past_participle": "opened",
+            "present_participle": "opening"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Open' und 'öffnen' sind Verwandte: gleiche germanische Wurzel *upanaz (aufgehoben). Der o-Anfang und die Bedeutung passen perfekt.",
+              "example_gloss": "Sie öffnete das Fenster, um frische Luft hereinzulassen.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "to close",
+          "pos": "verb",
+          "ipa": "/kləʊz/",
+          "etymology": "From Old French clos- (stem of clore), from Latin claudere (to shut, close).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.daily",
+          "synonyms": [
+            "shut"
+          ],
+          "collocations": [
+            "close the door",
+            "close a deal",
+            "close down"
+          ],
+          "tags": [
+            "daily",
+            "action"
+          ],
+          "example": "Please close the door quietly — the baby is sleeping.",
+          "prerequisites": [
+            "to open"
+          ],
+          "conjugation": {
+            "infinitive": "to close",
+            "third_person_present": "closes",
+            "past_simple": "closed",
+            "past_participle": "closed",
+            "present_participle": "closing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Close' als Verb /kləʊz/ hat stimmhaftes s, als Adjektiv /kləʊs/ stimmloses s. Verb: 'close the door'. Adjektiv: 'a close friend' (ein enger Freund).",
+              "example_gloss": "Bitte schließ die Tür leise — das Baby schläft.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: Verb 'close' = /kləʊz/ (stimmhaft), Adjektiv 'close' = /kləʊs/ (stimmlos). Gleiche Schreibung, verschiedene Laute."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "theme_slug": "communication_and_cognition",
+      "entries": [
+        {
+          "term": "to speak",
+          "pos": "verb",
+          "ipa": "/spiːk/",
+          "etymology": "From Old English sprecan/specan, from Proto-Germanic *sprekaną. Cognate with German sprechen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.communication",
+          "synonyms": [
+            "talk"
+          ],
+          "collocations": [
+            "speak up",
+            "speak a language",
+            "so to speak"
+          ],
+          "tags": [
+            "communication",
+            "core"
+          ],
+          "example": "She speaks three languages fluently.",
+          "prerequisites": [
+            "to say"
+          ],
+          "conjugation": {
+            "infinitive": "to speak",
+            "third_person_present": "speaks",
+            "past_simple": "spoke",
+            "past_participle": "spoken",
+            "present_participle": "speaking"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Speak' und 'sprechen' sind Zwillinge: sp-Anfang, gleiche Bedeutung. Vokalwechsel speak/spoke/spoken wie break/broke/broken.",
+              "example_gloss": "Sie spricht drei Sprachen fließend.",
+              "false_friends": [],
+              "common_mistake": "'Speak' vs. 'talk': 'speak' ist formeller und betont die Fähigkeit ('speak German'), 'talk' betont den Austausch ('talk to someone'). Beide sind möglich bei Sprachen."
+            }
+          }
+        },
+        {
+          "term": "to ask",
+          "pos": "verb",
+          "ipa": "/ɑːsk/",
+          "etymology": "From Old English āscian/āxian, from Proto-Germanic *aiskōną.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.communication",
+          "synonyms": [
+            "inquire",
+            "request"
+          ],
+          "collocations": [
+            "ask a question",
+            "ask for help",
+            "ask someone out"
+          ],
+          "tags": [
+            "communication",
+            "core"
+          ],
+          "example": "He asked the teacher if he could leave early.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to ask",
+            "third_person_present": "asks",
+            "past_simple": "asked",
+            "past_participle": "asked",
+            "present_participle": "asking"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Ask' ist kompakt — drei Buchstaben für 'fragen'. Beachte die zwei Muster: 'ask someone something' (jemandem etwas fragen) und 'ask for something' (um etwas bitten).",
+              "example_gloss": "Er fragte den Lehrer, ob er früher gehen dürfe.",
+              "false_friends": [],
+              "common_mistake": "'Ask FOR something' = um etwas bitten ('ask for help'). 'Ask someone something' = jemanden etwas fragen. Nicht: 'ask to someone' oder 'ask someone for a question'."
+            }
+          }
+        },
+        {
+          "term": "to answer",
+          "pos": "verb",
+          "ipa": "/ˈɑːnsər/",
+          "etymology": "From Old English andswarian, from and- (against) + swerian (to swear). Literally 'to swear back'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.communication",
+          "synonyms": [
+            "reply",
+            "respond"
+          ],
+          "collocations": [
+            "answer the phone",
+            "answer a question",
+            "answer back"
+          ],
+          "tags": [
+            "communication",
+            "core"
+          ],
+          "example": "She answered every question on the test correctly.",
+          "prerequisites": [
+            "to ask"
+          ],
+          "conjugation": {
+            "infinitive": "to answer",
+            "third_person_present": "answers",
+            "past_simple": "answered",
+            "past_participle": "answered",
+            "present_participle": "answering"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Answer' kommt von 'and-swerian' — dagegen schwören, also entgegnen. Das w ist stumm: /ˈɑːnsər/, nicht /ˈɑːnswər/.",
+              "example_gloss": "Sie beantwortete jede Frage im Test richtig.",
+              "false_friends": [],
+              "common_mistake": "'Answer' ist transitiv: 'answer the question', nicht 'answer to the question'. Aber: 'reply to' und 'respond to' brauchen 'to'."
+            }
+          }
+        },
+        {
+          "term": "to read",
+          "pos": "verb",
+          "ipa": "/riːd/",
+          "etymology": "From Old English rǣdan (to advise, read), from Proto-Germanic *rēdaną. Cognate with German raten (to advise, guess).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.communication",
+          "synonyms": [
+            "peruse"
+          ],
+          "collocations": [
+            "read aloud",
+            "read a book",
+            "well-read"
+          ],
+          "tags": [
+            "communication",
+            "education"
+          ],
+          "example": "He reads the newspaper on the train every morning.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to read",
+            "third_person_present": "reads",
+            "past_simple": "read",
+            "past_participle": "read",
+            "present_participle": "reading"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Read' und 'raten' sind historisch verwandt — im Altenglischen hieß rǣdan noch 'beraten'. Tücke: Past 'read' wird /rɛd/ gesprochen, sieht aber gleich aus!",
+              "example_gloss": "Er liest jeden Morgen die Zeitung im Zug.",
+              "false_friends": [],
+              "common_mistake": "Gleiche Schreibung, verschiedene Aussprache: Präsens 'read' = /riːd/, Past 'read' = /rɛd/. 'I read a book yesterday' klingt wie 'red'."
+            }
+          }
+        },
+        {
+          "term": "to write",
+          "pos": "verb",
+          "ipa": "/raɪt/",
+          "etymology": "From Old English wrītan (to score, draw, write), from Proto-Germanic *wrītaną. Cognate with German reißen (to tear).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.communication",
+          "synonyms": [
+            "compose",
+            "pen"
+          ],
+          "collocations": [
+            "write a letter",
+            "write down",
+            "write an email"
+          ],
+          "tags": [
+            "communication",
+            "education"
+          ],
+          "example": "She wrote a long letter to her friend in Canada.",
+          "prerequisites": [
+            "to read"
+          ],
+          "conjugation": {
+            "infinitive": "to write",
+            "third_person_present": "writes",
+            "past_simple": "wrote",
+            "past_participle": "written",
+            "present_participle": "writing"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Write' hat ein stummes w — /raɪt/. Verwandt mit 'reißen' (Runen in Holz ritzen). Drei verschiedene Formen: write/wrote/written.",
+              "example_gloss": "Sie schrieb einen langen Brief an ihre Freundin in Kanada.",
+              "false_friends": [],
+              "common_mistake": "Stummes w: /raɪt/, nicht /wraɪt/. Klingt wie 'right' und 'rite' — drei Homophone! Past participle 'written' hat doppeltes t."
+            }
+          }
+        },
+        {
+          "term": "to understand",
+          "pos": "verb",
+          "ipa": "/ˌʌndəˈstænd/",
+          "etymology": "From Old English understandan (to comprehend), literally 'to stand among/under'. The metaphor is 'standing close to' an idea.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "comprehend",
+            "grasp"
+          ],
+          "collocations": [
+            "understand clearly",
+            "easy to understand",
+            "I understand"
+          ],
+          "tags": [
+            "cognition",
+            "core"
+          ],
+          "example": "I understand the grammar, but I still make mistakes when I speak.",
+          "prerequisites": [
+            "to know"
+          ],
+          "conjugation": {
+            "infinitive": "to understand",
+            "third_person_present": "understands",
+            "past_simple": "understood",
+            "past_participle": "understood",
+            "present_participle": "understanding"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Understand' = unter + stehen — wörtlich 'darunter stehen', metaphorisch 'einer Sache nahestehen'. Past 'understood' wie bei 'stand/stood'.",
+              "example_gloss": "Ich verstehe die Grammatik, aber ich mache trotzdem Fehler, wenn ich spreche.",
+              "false_friends": [],
+              "common_mistake": "Stativ: 'I understand', nicht 'I am understanding'. Past: 'understood', nicht 'understanded'."
+            }
+          }
+        },
+        {
+          "term": "to remember",
+          "pos": "verb",
+          "ipa": "/rɪˈmɛmbər/",
+          "etymology": "From Old French remembrer, from Late Latin rememorari (to recall to mind), from re- + memorari (to be mindful).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "recall",
+            "recollect"
+          ],
+          "collocations": [
+            "remember to",
+            "remember doing",
+            "I remember"
+          ],
+          "tags": [
+            "cognition",
+            "memory"
+          ],
+          "example": "I remember the day we moved into this house.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to remember",
+            "third_person_present": "remembers",
+            "past_simple": "remembered",
+            "past_participle": "remembered",
+            "present_participle": "remembering"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Remember' enthält 'member' — stell dir vor, du setzt Erinnerungsteile (members) wieder zusammen (re-). Lateinisch re-memorari.",
+              "example_gloss": "Ich erinnere mich an den Tag, an dem wir in dieses Haus eingezogen sind.",
+              "false_friends": [],
+              "common_mistake": "'Remember to do' (daran denken etwas zu tun) vs. 'remember doing' (sich erinnern etwas getan zu haben). Großer Bedeutungsunterschied!"
+            }
+          }
+        },
+        {
+          "term": "to forget",
+          "pos": "verb",
+          "ipa": "/fəˈɡɛt/",
+          "etymology": "From Old English forgietan, from for- (away) + gietan (to grasp). Literally 'to lose one's grasp on'.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "overlook"
+          ],
+          "collocations": [
+            "forget about",
+            "don't forget",
+            "forget to"
+          ],
+          "tags": [
+            "cognition",
+            "memory"
+          ],
+          "example": "He forgot his keys and had to wait outside until his wife came home.",
+          "prerequisites": [
+            "to remember"
+          ],
+          "conjugation": {
+            "infinitive": "to forget",
+            "third_person_present": "forgets",
+            "past_simple": "forgot",
+            "past_participle": "forgotten",
+            "present_participle": "forgetting"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Forget' enthält for- (weg) + get (greifen) — den Griff auf etwas verlieren. Past: forgot, Partizip: forgotten — das doppelte t und -en am Ende.",
+              "example_gloss": "Er vergaß seine Schlüssel und musste draußen warten, bis seine Frau nach Hause kam.",
+              "false_friends": [],
+              "common_mistake": "Wie 'remember': 'forget to do' (vergessen etwas zu tun) vs. 'forget doing' (vergessen etwas getan zu haben). Past participle: 'forgotten', nicht 'forgot' im Perfekt."
+            }
+          }
+        },
+        {
+          "term": "to learn",
+          "pos": "verb",
+          "ipa": "/lɜːn/",
+          "etymology": "From Old English leornian, from Proto-Germanic *liznōną. Cognate with German lernen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "acquire",
+            "pick up"
+          ],
+          "collocations": [
+            "learn by heart",
+            "learn from mistakes",
+            "learn a language"
+          ],
+          "tags": [
+            "cognition",
+            "education"
+          ],
+          "example": "Children learn languages faster when they hear them every day.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to learn",
+            "third_person_present": "learns",
+            "past_simple": "learned",
+            "past_participle": "learned",
+            "present_participle": "learning"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Learn' und 'lernen' sind direkte Verwandte: gleicher Anfang, gleiche Bedeutung. Aber 'learn' ≠ 'studieren' — learn ist breiter.",
+              "example_gloss": "Kinder lernen Sprachen schneller, wenn sie sie jeden Tag hören.",
+              "false_friends": [
+                {
+                  "source_term": "lernen",
+                  "note": "Deutsch 'lernen' kann 'learn' (neues Wissen aufnehmen) ODER 'study' (aktiv üben) bedeuten. Englisch unterscheidet: 'learn' = Ergebnis, 'study' = Prozess."
+                }
+              ],
+              "common_mistake": "Britisch: 'learnt' (past) ist gängig. Amerikanisch: 'learned'. Beides korrekt."
+            }
+          }
+        },
+        {
+          "term": "to believe",
+          "pos": "verb",
+          "ipa": "/bɪˈliːv/",
+          "etymology": "From Old English belȳfan/gelēafan, from Proto-Germanic *galaubijaną. Cognate with German glauben.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "trust"
+          ],
+          "collocations": [
+            "believe in",
+            "hard to believe",
+            "I believe so"
+          ],
+          "tags": [
+            "cognition",
+            "core"
+          ],
+          "example": "I believe the shop closes at six on Saturdays.",
+          "prerequisites": [
+            "to think"
+          ],
+          "conjugation": {
+            "infinitive": "to believe",
+            "third_person_present": "believes",
+            "past_simple": "believed",
+            "past_participle": "believed",
+            "present_participle": "believing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Believe' und 'glauben' sind germanische Verwandte: be-lieve enthält das alte *laubjan (vertrauen). Merke: ie wird /iː/ gesprochen.",
+              "example_gloss": "Ich glaube, der Laden schließt samstags um sechs.",
+              "false_friends": [],
+              "common_mistake": "Stativ: 'I believe', nicht 'I am believing'. Auch: 'believe someone' (jemandem glauben) vs. 'believe in someone' (an jemanden glauben)."
+            }
+          }
+        },
+        {
+          "term": "to explain",
+          "pos": "verb",
+          "ipa": "/ɪkˈspleɪn/",
+          "etymology": "From Latin explanare (to make plain, flatten out), from ex- (out) + planus (flat, plain).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.communication",
+          "synonyms": [
+            "clarify",
+            "describe"
+          ],
+          "collocations": [
+            "explain why",
+            "explain to someone",
+            "self-explanatory"
+          ],
+          "tags": [
+            "communication",
+            "education"
+          ],
+          "example": "The guide explained how the old clock tower works.",
+          "prerequisites": [
+            "to understand"
+          ],
+          "conjugation": {
+            "infinitive": "to explain",
+            "third_person_present": "explains",
+            "past_simple": "explained",
+            "past_participle": "explained",
+            "present_participle": "explaining"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Explain' enthält 'plain' (klar/einfach) — etwas klar machen. Lateinisch ex-planare = ausbreiten, flach legen.",
+              "example_gloss": "Der Führer erklärte, wie der alte Glockenturm funktioniert.",
+              "false_friends": [],
+              "common_mistake": "'Explain something TO someone', nicht 'explain someone something'. 'Explain me this' ist falsch — richtig: 'Explain this to me'."
+            }
+          }
+        },
+        {
+          "term": "to listen",
+          "pos": "verb",
+          "ipa": "/ˈlɪsən/",
+          "etymology": "From Old English hlysnan (to listen), from Proto-Germanic *hlusinōną. The h was lost in Middle English.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.communication",
+          "synonyms": [
+            "hear"
+          ],
+          "collocations": [
+            "listen to",
+            "listen carefully",
+            "listen up"
+          ],
+          "tags": [
+            "communication",
+            "core"
+          ],
+          "example": "Listen to the announcement — they just changed the platform.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to listen",
+            "third_person_present": "listens",
+            "past_simple": "listened",
+            "past_participle": "listened",
+            "present_participle": "listening"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Listen' hat ein stummes t: /ˈlɪsən/. Es bedeutet 'zuhören' — aktives Lauschen, nicht passives Hören ('hear').",
+              "example_gloss": "Hör die Durchsage an — sie haben gerade das Gleis geändert.",
+              "false_friends": [
+                {
+                  "source_term": "List",
+                  "note": "Deutsch 'List' = cunning/trick. Englisch 'listen' = zuhören. Völlig verschiedene Wörter."
+                }
+              ],
+              "common_mistake": "Immer mit 'to': 'listen TO music', nicht 'listen music'. Deutsche vergessen das 'to', weil Deutsch kein Äquivalent hat ('Musik hören')."
+            }
+          }
+        },
+        {
+          "term": "to tell",
+          "pos": "verb",
+          "ipa": "/tɛl/",
+          "etymology": "From Old English tellan (to count, reckon, narrate), from Proto-Germanic *taljaną. Cognate with German erzählen and zählen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.communication",
+          "synonyms": [
+            "inform",
+            "narrate"
+          ],
+          "collocations": [
+            "tell a story",
+            "tell the truth",
+            "tell someone"
+          ],
+          "tags": [
+            "communication",
+            "core"
+          ],
+          "example": "She told me that the flight had been cancelled.",
+          "prerequisites": [
+            "to say"
+          ],
+          "conjugation": {
+            "infinitive": "to tell",
+            "third_person_present": "tells",
+            "past_simple": "told",
+            "past_participle": "told",
+            "present_participle": "telling"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Tell' ist verwandt mit 'erzählen' und 'zählen'. Kernunterschied zu 'say': tell braucht IMMER eine Person: 'tell someone something'.",
+              "example_gloss": "Sie sagte mir, dass der Flug gestrichen wurde.",
+              "false_friends": [],
+              "common_mistake": "'Tell someone something' — 'say something (to someone)'. NICHT: 'tell to someone' oder 'say me'. Das ist der häufigste Verwechslungsfehler deutscher Lerner."
+            }
+          }
+        },
+        {
+          "term": "to call",
+          "pos": "verb",
+          "ipa": "/kɔːl/",
+          "etymology": "From Old Norse kalla (to call, shout), from Proto-Germanic *kallōną.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 1,
+          "topic": "actions.communication",
+          "synonyms": [
+            "phone",
+            "ring"
+          ],
+          "collocations": [
+            "call back",
+            "call off",
+            "phone call"
+          ],
+          "tags": [
+            "communication",
+            "core"
+          ],
+          "example": "I will call you when I arrive at the station.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to call",
+            "third_person_present": "calls",
+            "past_simple": "called",
+            "past_participle": "called",
+            "present_participle": "calling"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Call' bedeutet 'rufen' UND 'anrufen'. Am Telefon: 'call someone' = jemanden anrufen. Auch: 'call someone something' = jemanden etwas nennen.",
+              "example_gloss": "Ich rufe dich an, wenn ich am Bahnhof ankomme.",
+              "false_friends": [],
+              "common_mistake": ""
+            }
+          }
+        },
+        {
+          "term": "to mean",
+          "pos": "verb",
+          "ipa": "/miːn/",
+          "etymology": "From Old English mǣnan (to intend, signify), from Proto-Germanic *mainijaną. Cognate with German meinen.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "signify",
+            "intend"
+          ],
+          "collocations": [
+            "mean to",
+            "what does it mean",
+            "I mean"
+          ],
+          "tags": [
+            "cognition",
+            "communication"
+          ],
+          "example": "What does this word mean in English?",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to mean",
+            "third_person_present": "means",
+            "past_simple": "meant",
+            "past_participle": "meant",
+            "present_participle": "meaning"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Mean' und 'meinen' sind direkte Verwandte: gleicher Klang, ähnliche Bedeutung. Aber 'mean' hat zusätzlich 'bedeuten' und als Adjektiv 'gemein'.",
+              "example_gloss": "Was bedeutet dieses Wort auf Englisch?",
+              "false_friends": [
+                {
+                  "source_term": "meinen",
+                  "note": "Deutsch 'meinen' = to think/to mean (Meinung). Englisch 'mean' = bedeuten ODER beabsichtigen. 'I mean' kann beides sein."
+                }
+              ],
+              "common_mistake": "Past: 'meant' /mɛnt/, nicht 'meaned'. Auch: 'mean' als Adjektiv = gemein/fies, als Nomen = Mittelwert — drei verschiedene Bedeutungen!"
+            }
+          }
+        },
+        {
+          "term": "to discuss",
+          "pos": "verb",
+          "ipa": "/dɪˈskʌs/",
+          "etymology": "From Latin discussus, past participle of discutere (to dash to pieces, examine), from dis- (apart) + quatere (to shake).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "actions.communication",
+          "synonyms": [
+            "debate",
+            "talk over"
+          ],
+          "collocations": [
+            "discuss a topic",
+            "discuss the matter",
+            "open discussion"
+          ],
+          "tags": [
+            "communication",
+            "formal"
+          ],
+          "example": "We need to discuss the schedule before the meeting starts.",
+          "prerequisites": [
+            "to speak"
+          ],
+          "conjugation": {
+            "infinitive": "to discuss",
+            "third_person_present": "discusses",
+            "past_simple": "discussed",
+            "past_participle": "discussed",
+            "present_participle": "discussing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Discuss' kommt von Lateinisch dis-cutere — auseinander-schütteln, also ein Thema von allen Seiten betrachten. Ähnlich wie deutsch 'diskutieren'.",
+              "example_gloss": "Wir müssen den Zeitplan besprechen, bevor das Meeting beginnt.",
+              "false_friends": [
+                {
+                  "source_term": "diskutieren",
+                  "note": "Deutsch 'diskutieren über etwas'. Englisch 'discuss something' OHNE 'about'! 'Discuss about' ist der häufigste Fehler."
+                }
+              ],
+              "common_mistake": "'Discuss' ist transitiv: 'discuss the problem', NICHT 'discuss about the problem'. Das 'about' ist der klassische Interferenzfehler aus dem Deutschen."
+            }
+          }
+        },
+        {
+          "term": "to plan",
+          "pos": "verb",
+          "ipa": "/plæn/",
+          "etymology": "From French plan (ground plan), from Latin planum (flat surface). Originally an architectural term.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "arrange",
+            "organize"
+          ],
+          "collocations": [
+            "plan ahead",
+            "plan a trip",
+            "plan to"
+          ],
+          "tags": [
+            "cognition",
+            "action"
+          ],
+          "example": "They planned a surprise party for their mother's birthday.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to plan",
+            "third_person_present": "plans",
+            "past_simple": "planned",
+            "past_participle": "planned",
+            "present_participle": "planning"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Plan' ist im Deutschen und Englischen identisch als Nomen. Als Verb: 'to plan' = planen. Doppeltes n: 'planned', 'planning'.",
+              "example_gloss": "Sie planten eine Überraschungsparty für den Geburtstag ihrer Mutter.",
+              "false_friends": [],
+              "common_mistake": "Doppeltes n bei Konjugation: 'planned', 'planning' — kurzer Vokal + einzelner Konsonant = verdoppeln."
+            }
+          }
+        },
+        {
+          "term": "to imagine",
+          "pos": "verb",
+          "ipa": "/ɪˈmædʒɪn/",
+          "etymology": "From Old French imaginer, from Latin imaginari (to form a mental picture), from imago (image).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "envision",
+            "picture"
+          ],
+          "collocations": [
+            "imagine that",
+            "hard to imagine",
+            "just imagine"
+          ],
+          "tags": [
+            "cognition",
+            "creativity"
+          ],
+          "example": "Imagine living in a country where the sun never sets in summer.",
+          "prerequisites": [
+            "to think"
+          ],
+          "conjugation": {
+            "infinitive": "to imagine",
+            "third_person_present": "imagines",
+            "past_simple": "imagined",
+            "past_participle": "imagined",
+            "present_participle": "imagining"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Imagine' enthält 'image' — ein Bild im Kopf formen. John Lennons 'Imagine' hat das Wort weltberühmt gemacht.",
+              "example_gloss": "Stell dir vor, in einem Land zu leben, wo die Sonne im Sommer nie untergeht.",
+              "false_friends": [],
+              "common_mistake": "'Imagine' + -ing: 'Imagine living there', nicht 'Imagine to live there'. Auch: Deutsch 'sich vorstellen' ist reflexiv, Englisch nicht."
+            }
+          }
+        },
+        {
+          "term": "to guess",
+          "pos": "verb",
+          "ipa": "/ɡɛs/",
+          "etymology": "From Middle English gessen, probably from Old Norse or a Scandinavian source. Of uncertain further origin.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "estimate",
+            "suppose"
+          ],
+          "collocations": [
+            "guess what",
+            "take a guess",
+            "I guess so"
+          ],
+          "tags": [
+            "cognition",
+            "informal"
+          ],
+          "example": "Can you guess how old this building is?",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to guess",
+            "third_person_present": "guesses",
+            "past_simple": "guessed",
+            "past_participle": "guessed",
+            "present_participle": "guessing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Guess' klingt fast wie 'Geste' — aber bedeutet 'raten/vermuten'. Im Amerikanischen auch: 'I guess' = 'ich nehme an' (umgangssprachlich).",
+              "example_gloss": "Kannst du erraten, wie alt dieses Gebäude ist?",
+              "false_friends": [],
+              "common_mistake": "Dritte Person: 'guesses' mit -es (endet auf -ss). 'I guess' im Amerikanischen = 'I suppose/I think' — lockerer als im Deutschen."
+            }
+          }
+        },
+        {
+          "term": "to judge",
+          "pos": "verb",
+          "ipa": "/dʒʌdʒ/",
+          "etymology": "From Old French jugier, from Latin iudicare (to judge), from ius (law) + dicare (to declare).",
+          "register": "neutral",
+          "frequency_band": "B1",
+          "difficulty": 3,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "assess",
+            "evaluate"
+          ],
+          "collocations": [
+            "judge by",
+            "don't judge",
+            "judging by"
+          ],
+          "tags": [
+            "cognition",
+            "evaluation"
+          ],
+          "example": "Don't judge a book by its cover.",
+          "prerequisites": [
+            "to think"
+          ],
+          "conjugation": {
+            "infinitive": "to judge",
+            "third_person_present": "judges",
+            "past_simple": "judged",
+            "past_participle": "judged",
+            "present_participle": "judging"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Judge' kommt vom lateinischen iudicare (Recht sprechen). Auch als Nomen: 'a judge' = ein Richter. Der dsch-Laut /dʒ/ kommt zweimal vor: am Anfang und Ende.",
+              "example_gloss": "Beurteile ein Buch nicht nach seinem Einband.",
+              "false_friends": [],
+              "common_mistake": "Aussprache: /dʒʌdʒ/ — der g-Laut am Ende ist wie dsch, nicht wie deutsches g. Auch: 'judging by/from' = nach... zu urteilen."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "theme_slug": "abstract_and_modal",
+      "entries": [
+        {
+          "term": "to become",
+          "pos": "verb",
+          "ipa": "/bɪˈkʌm/",
+          "etymology": "From Old English becuman (to come to, arrive, happen), from be- + cuman (to come). Cognate with German bekommen.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "turn into",
+            "grow"
+          ],
+          "collocations": [
+            "become aware",
+            "become famous",
+            "become clear"
+          ],
+          "tags": [
+            "abstract",
+            "change"
+          ],
+          "example": "She became a doctor after six years of study.",
+          "prerequisites": [
+            "to be"
+          ],
+          "conjugation": {
+            "infinitive": "to become",
+            "third_person_present": "becomes",
+            "past_simple": "became",
+            "past_participle": "become",
+            "present_participle": "becoming"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Become' = WERDEN. Das ist der berühmteste falsche Freund überhaupt: 'bekommen' auf Deutsch = 'to get/receive'. 'Become' hat NICHTS mit 'bekommen' zu tun.",
+              "example_gloss": "Sie wurde nach sechs Jahren Studium Ärztin.",
+              "false_friends": [
+                {
+                  "source_term": "bekommen",
+                  "note": "DER klassische falsche Freund! Deutsch 'bekommen' = to get/receive. Englisch 'become' = werden. 'I become a letter' ist Unsinn — richtig: 'I get a letter'."
+                }
+              ],
+              "common_mistake": "Berühmtester falscher Freund: 'become' ≠ 'bekommen'. 'I became a letter' (Ich wurde ein Brief?!). Richtig: 'I got/received a letter'."
+            }
+          }
+        },
+        {
+          "term": "to seem",
+          "pos": "verb",
+          "ipa": "/siːm/",
+          "etymology": "From Old Norse sœma (to befit, conform to), from Proto-Germanic *sōmijaną.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "appear"
+          ],
+          "collocations": [
+            "seem to",
+            "it seems",
+            "seem like"
+          ],
+          "tags": [
+            "abstract",
+            "perception"
+          ],
+          "example": "It seems like a good idea, but let us think about it first.",
+          "prerequisites": [
+            "to be"
+          ],
+          "conjugation": {
+            "infinitive": "to seem",
+            "third_person_present": "seems",
+            "past_simple": "seemed",
+            "past_participle": "seemed",
+            "present_participle": "seeming"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Seem' hat keinen direkten deutschen Verwandten. Es bedeutet 'scheinen/den Anschein haben'. Muster: 'It seems that…' oder 'He seems tired'.",
+              "example_gloss": "Es scheint eine gute Idee zu sein, aber lass uns erst darüber nachdenken.",
+              "false_friends": [],
+              "common_mistake": "'Seem' ist ein Linking Verb: 'She seems happy' (nicht 'She seems happily'). Adjektiv nach 'seem', nicht Adverb."
+            }
+          }
+        },
+        {
+          "term": "to happen",
+          "pos": "verb",
+          "ipa": "/ˈhæpən/",
+          "etymology": "From Middle English happenen, from hap (chance, luck), from Old Norse happ (good luck). Same root as 'happy' and 'perhaps'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.events",
+          "synonyms": [
+            "occur",
+            "take place"
+          ],
+          "collocations": [
+            "happen to",
+            "what happened",
+            "happen by chance"
+          ],
+          "tags": [
+            "abstract",
+            "events"
+          ],
+          "example": "What happened to the lamp that used to be on the desk?",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to happen",
+            "third_person_present": "happens",
+            "past_simple": "happened",
+            "past_participle": "happened",
+            "present_participle": "happening"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Happen' kommt vom altnordischen happ (Glück, Zufall) — derselbe Stamm steckt in 'happy' und 'perhaps'. Was geschieht, ist sprachlich ein Stück Zufall.",
+              "example_gloss": "Was ist mit der Lampe passiert, die früher auf dem Schreibtisch stand?",
+              "false_friends": [],
+              "common_mistake": "'Happen' ist intransitiv: 'Something happens', nicht 'I happen something'. Für 'jemandem passieren' nutzt man 'to': 'It happened to me'."
+            }
+          }
+        },
+        {
+          "term": "to exist",
+          "pos": "verb",
+          "ipa": "/ɪɡˈzɪst/",
+          "etymology": "From Latin exsistere (to step forth, appear, be), from ex- (out) + sistere (to stand, place). Literally 'to stand out into being'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.state",
+          "synonyms": [
+            "be"
+          ],
+          "collocations": [
+            "barely exist",
+            "cease to exist",
+            "exist as"
+          ],
+          "tags": [
+            "abstract",
+            "state"
+          ],
+          "example": "Photographs from that summer still exist in an old shoebox.",
+          "prerequisites": [
+            "to be"
+          ],
+          "conjugation": {
+            "infinitive": "to exist",
+            "third_person_present": "exists",
+            "past_simple": "existed",
+            "past_participle": "existed",
+            "present_participle": "existing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Exist' und 'existieren' teilen Latein ex-sistere (heraustreten ins Sein). Aussprache: das x wird hier /ɡz/ — 'eg-ZIST', nicht 'ek-SIST'.",
+              "example_gloss": "Fotos von jenem Sommer existieren noch in einer alten Schuhschachtel.",
+              "false_friends": [],
+              "common_mistake": "Stativ — selten im Progressive: 'It exists', nicht 'It is existing'. Aussprache des x als /ɡz/, mit stimmhaftem z, ist für deutsche Ohren ungewohnt."
+            }
+          }
+        },
+        {
+          "term": "to matter",
+          "pos": "verb",
+          "ipa": "/ˈmætər/",
+          "etymology": "From the noun matter (Latin materia, substance, subject). The verb sense 'to be of importance' developed in the 16th century from the idiom 'it is a matter of consequence'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "count"
+          ],
+          "collocations": [
+            "doesn't matter",
+            "matter to",
+            "what really matters"
+          ],
+          "tags": [
+            "abstract",
+            "importance"
+          ],
+          "example": "Your opinion matters to her, even if she does not show it.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to matter",
+            "third_person_present": "matters",
+            "past_simple": "mattered",
+            "past_participle": "mattered",
+            "present_participle": "mattering"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Matter' als Verb heißt 'wichtig sein' — wörtlich 'Materie/Substanz haben'. Was matter, hat Gewicht. Diese Verb-Bedeutung gibt es im Deutschen nicht.",
+              "example_gloss": "Deine Meinung ist ihr wichtig, auch wenn sie es nicht zeigt.",
+              "false_friends": [
+                {
+                  "source_term": "Materie",
+                  "note": "Deutsch 'Materie' ist nur das Nomen (substance). Die englische Verb-Bedeutung 'wichtig sein' fehlt im Deutschen — das ist eine echte Bedeutungslücke."
+                }
+              ],
+              "common_mistake": "'Matter TO someone' mit 'to', nicht 'for': 'It matters to me', nicht 'It matters for me'. Häufige Formel: 'It doesn't matter' = es ist egal."
+            }
+          }
+        },
+        {
+          "term": "to depend",
+          "pos": "verb",
+          "ipa": "/dɪˈpɛnd/",
+          "etymology": "From Latin dēpendēre (to hang down, hang from), from de- (down) + pendēre (to hang). Same root as 'pendulum' and 'pending'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "rely"
+          ],
+          "collocations": [
+            "depend on",
+            "it depends",
+            "depend upon"
+          ],
+          "tags": [
+            "abstract",
+            "relation"
+          ],
+          "example": "Whether we hike tomorrow depends on the weather.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to depend",
+            "third_person_present": "depends",
+            "past_simple": "depended",
+            "past_participle": "depended",
+            "present_participle": "depending"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Depend' enthält Latein pendēre (hängen) — wie ein Pendel hängt es an seinem Anker. Was abhängt, hängt sprachlich am 'on'.",
+              "example_gloss": "Ob wir morgen wandern, hängt vom Wetter ab.",
+              "false_friends": [],
+              "common_mistake": "Präposition: 'depend ON', nicht 'depend FROM' (wörtliche Übersetzung von 'abhängen von'). Auch nicht 'depend of'. Nur 'depend on something/someone'."
+            }
+          }
+        },
+        {
+          "term": "to include",
+          "pos": "verb",
+          "ipa": "/ɪnˈkluːd/",
+          "etymology": "From Latin includere (to shut in, enclose), from in- (in) + claudere (to close). Same root as 'close', 'conclude', 'exclude'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "contain",
+            "involve"
+          ],
+          "collocations": [
+            "include in",
+            "service included",
+            "including"
+          ],
+          "tags": [
+            "abstract",
+            "containment"
+          ],
+          "example": "The price includes breakfast and free Wi-Fi.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to include",
+            "third_person_present": "includes",
+            "past_simple": "included",
+            "past_participle": "included",
+            "present_participle": "including"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Include' und 'exclude' teilen den Stamm claudere (schließen) — etwas inkludieren heißt es ins Innere einschließen, etwas ausschließen heißt es hinausschließen.",
+              "example_gloss": "Der Preis beinhaltet Frühstück und kostenloses WLAN.",
+              "false_friends": [],
+              "common_mistake": "Transitiv: 'include something' direkt, nicht 'include about something'. Das Partizip 'including' wird oft als Präposition genutzt: 'including taxes' = inklusive Steuern."
+            }
+          }
+        },
+        {
+          "term": "to continue",
+          "pos": "verb",
+          "ipa": "/kənˈtɪnjuː/",
+          "etymology": "From Latin continuāre (to join together, make uninterrupted), from continuus (uninterrupted), from continēre (to hold together).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "carry on",
+            "go on"
+          ],
+          "collocations": [
+            "continue to",
+            "continue with",
+            "to be continued"
+          ],
+          "tags": [
+            "abstract",
+            "duration"
+          ],
+          "example": "She continued reading even after the lights went out.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to continue",
+            "third_person_present": "continues",
+            "past_simple": "continued",
+            "past_participle": "continued",
+            "present_participle": "continuing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Continue' und 'kontinuierlich' teilen Latein continuus (ohne Unterbrechung). Wer continued, hält den Faden zusammen.",
+              "example_gloss": "Sie las weiter, sogar nachdem das Licht ausgegangen war.",
+              "false_friends": [],
+              "common_mistake": "Beide Muster sind erlaubt und fast bedeutungsgleich: 'continue to read' und 'continue reading'. 'Continue with X' = mit X weitermachen — die Präposition ist 'with', nicht 'in'."
+            }
+          }
+        },
+        {
+          "term": "to change",
+          "pos": "verb",
+          "ipa": "/tʃeɪndʒ/",
+          "etymology": "From Old French changier, from Late Latin cambiare (to exchange), possibly of Celtic origin.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "alter",
+            "modify"
+          ],
+          "collocations": [
+            "change clothes",
+            "change trains",
+            "climate change"
+          ],
+          "tags": [
+            "abstract",
+            "core"
+          ],
+          "example": "The weather can change very quickly in the mountains.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to change",
+            "third_person_present": "changes",
+            "past_simple": "changed",
+            "past_participle": "changed",
+            "present_participle": "changing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Change' kommt vom Spätlateinischen cambiare — tauschen, wechseln. Auch als Nomen: 'change' = Veränderung oder Wechselgeld.",
+              "example_gloss": "Das Wetter kann sich in den Bergen sehr schnell ändern.",
+              "false_friends": [
+                {
+                  "source_term": "Chance",
+                  "note": "Deutsch 'Chance' = opportunity. Englisch 'change' = Veränderung/Wechselgeld. 'Chance' auf Englisch = Gelegenheit/Zufall."
+                }
+              ],
+              "common_mistake": "Deutsch 'Chance' ≠ englisch 'change'. 'Give me a change' (Wechselgeld) vs. 'Give me a chance' (Gelegenheit). Unterschiedliche Wörter!"
+            }
+          }
+        },
+        {
+          "term": "to choose",
+          "pos": "verb",
+          "ipa": "/tʃuːz/",
+          "etymology": "From Old English cēosan (to choose, taste, try), from Proto-Germanic *keusaną. Cognate with the archaic German verb 'kiesen' (still visible in 'Kurfürst' — elector).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 3,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "select",
+            "pick"
+          ],
+          "collocations": [
+            "choose between",
+            "choose wisely",
+            "pick and choose"
+          ],
+          "tags": [
+            "abstract",
+            "decision"
+          ],
+          "example": "If you could choose any country to visit, where would you go?",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to choose",
+            "third_person_present": "chooses",
+            "past_simple": "chose",
+            "past_participle": "chosen",
+            "present_participle": "choosing"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Choose' ist der germanische Verwandte des veralteten deutschen 'kiesen' — noch sichtbar im 'Kurfürst' (Kur = Wahl). Past 'chose' /tʃoʊz/, Partizip 'chosen' /ˈtʃoʊzən/.",
+              "example_gloss": "Wenn du dir irgendein Land zum Besuch aussuchen könntest, wohin würdest du fahren?",
+              "false_friends": [],
+              "common_mistake": "Unregelmäßig: choose /tʃuːz/ → chose /tʃoʊz/ → chosen /ˈtʃoʊzən/. Niemals 'choosed'. Achtung: der Vokal wechselt von langem /uː/ zu Diphthong /oʊ/."
+            }
+          }
+        },
+        {
+          "term": "to try",
+          "pos": "verb",
+          "ipa": "/traɪ/",
+          "etymology": "From Anglo-French trier (to pick out, sift), from Old French trier, of uncertain origin.",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "attempt"
+          ],
+          "collocations": [
+            "try hard",
+            "try on",
+            "try out"
+          ],
+          "tags": [
+            "abstract",
+            "effort"
+          ],
+          "example": "I tried to fix the bicycle myself, but the chain was broken.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to try",
+            "third_person_present": "tries",
+            "past_simple": "tried",
+            "past_participle": "tried",
+            "present_participle": "trying"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Try' reimt sich auf 'fly' — stell dir vor, du versuchst zu fliegen. Dritte Person: y→ies: 'tries'. Past: y→ied: 'tried'.",
+              "example_gloss": "Ich versuchte, das Fahrrad selbst zu reparieren, aber die Kette war gerissen.",
+              "false_friends": [],
+              "common_mistake": "'Try to do' (versuchen zu tun) vs. 'try doing' (etwas ausprobieren). 'Try to open the jar' = anstrengen. 'Try opening it with a knife' = eine Methode testen."
+            }
+          }
+        },
+        {
+          "term": "to use",
+          "pos": "verb",
+          "ipa": "/juːz/",
+          "etymology": "From Old French user (to employ, practise), from Latin usus, past participle of uti (to use, enjoy).",
+          "register": "neutral",
+          "frequency_band": "A1",
+          "difficulty": 2,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "employ",
+            "utilize"
+          ],
+          "collocations": [
+            "use up",
+            "make use of",
+            "used to"
+          ],
+          "tags": [
+            "abstract",
+            "core"
+          ],
+          "example": "Can I use your charger for a minute?",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to use",
+            "third_person_present": "uses",
+            "past_simple": "used",
+            "past_participle": "used",
+            "present_participle": "using"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Use' hat zwei verschiedene Aussprachen: Verb 'to use' /juːz/ mit stimmhaftem z, Nomen 'use' /juːs/ mit stimmlosem s. Wie 'house' /haʊs/ vs. 'to house' /haʊz/.",
+              "example_gloss": "Kann ich dein Ladegerät kurz benutzen?",
+              "false_friends": [],
+              "common_mistake": "Aussprache: Verb /juːz/, Nomen /juːs/ — ein Buchstabe gleich, ein Laut verschieden. Außerdem: 'used to do' (Gewohnheit in der Vergangenheit) wird /juːst tə/ gesprochen."
+            }
+          }
+        },
+        {
+          "term": "to allow",
+          "pos": "verb",
+          "ipa": "/əˈlaʊ/",
+          "etymology": "From Old French alouer (to approve), from Medieval Latin allaudare (to praise), influenced by Latin allocare (to place).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "permit",
+            "let"
+          ],
+          "collocations": [
+            "allow someone to",
+            "not allowed",
+            "allow for"
+          ],
+          "tags": [
+            "abstract",
+            "permission"
+          ],
+          "example": "Smoking is not allowed inside the building.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to allow",
+            "third_person_present": "allows",
+            "past_simple": "allowed",
+            "past_participle": "allowed",
+            "present_participle": "allowing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Allow' klingt wie 'a-lau' — denk an erlauben. Tatsächlich kommt es vom Französischen, nicht vom Deutschen, aber die Bedeutung passt: erlauben = allow.",
+              "example_gloss": "Rauchen ist im Gebäude nicht erlaubt.",
+              "false_friends": [
+                {
+                  "source_term": "erlauben",
+                  "note": "Deutsch 'erlauben' und 'allow' bedeuten dasselbe, aber die Satzmuster unterscheiden sich: 'allow someone TO do' vs. 'jemandem erlauben ZU tun'."
+                }
+              ],
+              "common_mistake": "'Allow someone TO do something' — das 'to' darf nicht fehlen. 'Let someone do something' ohne 'to'. Verwechslung der Muster ist häufig."
+            }
+          }
+        },
+        {
+          "term": "to expect",
+          "pos": "verb",
+          "ipa": "/ɪkˈspɛkt/",
+          "etymology": "From Latin exspectāre (to look out for, await), from ex- (out) + spectāre (to look). Same root as 'spectator', 'inspect', 'respect'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.cognition",
+          "synonyms": [
+            "anticipate"
+          ],
+          "collocations": [
+            "expect to",
+            "as expected",
+            "expecting a baby"
+          ],
+          "tags": [
+            "cognition",
+            "abstract"
+          ],
+          "example": "I did not expect so many people at the opening night.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to expect",
+            "third_person_present": "expects",
+            "past_simple": "expected",
+            "past_participle": "expected",
+            "present_participle": "expecting"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Expect' enthält spectāre (schauen) wie in 'spectator'. Wer expects, schaut nach etwas aus, das kommen soll — ein gerichteter Blick in die Zukunft.",
+              "example_gloss": "Ich habe nicht so viele Leute bei der Premiere erwartet.",
+              "false_friends": [],
+              "common_mistake": "Englisch nutzt eine Infinitivkonstruktion, wo Deutsch einen dass-Satz hat: 'I expect him to come', nicht 'I expect that he comes'. Auch idiomatisch: 'She is expecting' = sie ist schwanger."
+            }
+          }
+        },
+        {
+          "term": "to hope",
+          "pos": "verb",
+          "ipa": "/həʊp/",
+          "etymology": "From Old English hopian, from Proto-Germanic *hupōną.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 1,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "wish"
+          ],
+          "collocations": [
+            "hope for",
+            "I hope so",
+            "hope to"
+          ],
+          "tags": [
+            "abstract",
+            "emotion"
+          ],
+          "example": "I hope the weather stays warm for the festival this weekend.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to hope",
+            "third_person_present": "hopes",
+            "past_simple": "hoped",
+            "past_participle": "hoped",
+            "present_participle": "hoping"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Hope' und 'hoffen' teilen den h-o-p Kern. Einfaches, regelmäßiges Verb. 'I hope so' = ich hoffe es, 'I hope not' = hoffentlich nicht.",
+              "example_gloss": "Ich hoffe, das Wetter bleibt warm für das Festival dieses Wochenende.",
+              "false_friends": [],
+              "common_mistake": "'Hope' + Präsens für Zukunft: 'I hope it rains' (nicht 'I hope it will rain' — beides möglich, aber Präsens ist natürlicher)."
+            }
+          }
+        },
+        {
+          "term": "to wish",
+          "pos": "verb",
+          "ipa": "/wɪʃ/",
+          "etymology": "From Old English wȳscan, from Proto-Germanic *wunskijaną. Cognate with German wünschen.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "desire"
+          ],
+          "collocations": [
+            "wish for",
+            "I wish",
+            "best wishes"
+          ],
+          "tags": [
+            "abstract",
+            "desire"
+          ],
+          "example": "I wish I could speak Italian as well as you do.",
+          "prerequisites": [
+            "to want",
+            "to hope"
+          ],
+          "conjugation": {
+            "infinitive": "to wish",
+            "third_person_present": "wishes",
+            "past_simple": "wished",
+            "past_participle": "wished",
+            "present_participle": "wishing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Wish' und 'wünschen' sind direkte Verwandte: w-Anfang, sch/sh-Ende. 'I wish' + Past = irrealer Wunsch: 'I wish I knew' = Ich wünschte, ich wüsste.",
+              "example_gloss": "Ich wünschte, ich könnte so gut Italienisch sprechen wie du.",
+              "false_friends": [],
+              "common_mistake": "'Wish' + Past für irreale Wünsche: 'I wish I HAD more time' (nicht 'I wish I have'). Das Past signalisiert Irrealis — wie der deutsche Konjunktiv II."
+            }
+          }
+        },
+        {
+          "term": "to prefer",
+          "pos": "verb",
+          "ipa": "/prɪˈfɜːr/",
+          "etymology": "From Latin praeferre (to set before, carry in front), from prae- (before) + ferre (to carry).",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.abstract",
+          "synonyms": [
+            "favour"
+          ],
+          "collocations": [
+            "prefer to",
+            "I'd prefer",
+            "prefer over"
+          ],
+          "tags": [
+            "abstract",
+            "preference"
+          ],
+          "example": "I prefer tea to coffee in the morning.",
+          "prerequisites": [
+            "to like"
+          ],
+          "conjugation": {
+            "infinitive": "to prefer",
+            "third_person_present": "prefers",
+            "past_simple": "preferred",
+            "past_participle": "preferred",
+            "present_participle": "preferring"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Prefer' enthält 'pre-' (vor) + 'fer' (tragen) — etwas vorziehen, wörtlich 'vor-tragen'. Doppeltes r: 'preferred', 'preferring'.",
+              "example_gloss": "Ich trinke morgens lieber Tee als Kaffee.",
+              "false_friends": [],
+              "common_mistake": "Muster: 'prefer A TO B' (nicht 'than'!). 'I prefer tea to coffee'. Auch: 'prefer doing' oder 'prefer to do' — beides korrekt."
+            }
+          }
+        },
+        {
+          "term": "to agree",
+          "pos": "verb",
+          "ipa": "/əˈɡriː/",
+          "etymology": "From Old French agréer (to please, accept), from à (to) + gré (will, pleasure), from Latin grātus (pleasing). Same root as 'grateful', 'gratitude'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 3,
+          "topic": "actions.communication",
+          "synonyms": [
+            "concur",
+            "consent"
+          ],
+          "collocations": [
+            "agree with",
+            "agree to",
+            "agree on"
+          ],
+          "tags": [
+            "communication",
+            "abstract"
+          ],
+          "example": "Everyone agreed that the meeting had been useful.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to agree",
+            "third_person_present": "agrees",
+            "past_simple": "agreed",
+            "past_participle": "agreed",
+            "present_participle": "agreeing"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Agree' enthält das französische gré (Wohlgefallen) — wer zustimmt, gibt ein Stück Wohlwollen. Doppeltes e am Ende, Betonung hinten: a-GREE.",
+              "example_gloss": "Alle waren sich einig, dass das Treffen nützlich gewesen war.",
+              "false_friends": [],
+              "common_mistake": "'Agree' ist Vollverb, kein Adjektiv: 'I agree', nicht 'I am agree'. Drei Muster: 'agree WITH someone' (jemandem zustimmen), 'agree TO a proposal' (einem Vorschlag), 'agree ON a plan' (sich auf einen Plan einigen)."
+            }
+          }
+        },
+        {
+          "term": "to promise",
+          "pos": "verb",
+          "ipa": "/ˈprɒmɪs/",
+          "etymology": "From Latin promissum (a promise), neuter past participle of promittere (to send forth, promise), from pro- (forth) + mittere (to send). Same root as 'mission', 'message'.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 2,
+          "topic": "actions.communication",
+          "synonyms": [
+            "pledge",
+            "vow"
+          ],
+          "collocations": [
+            "promise to",
+            "keep a promise",
+            "break a promise"
+          ],
+          "tags": [
+            "communication",
+            "commitment"
+          ],
+          "example": "She promised to call as soon as she landed.",
+          "prerequisites": [],
+          "conjugation": {
+            "infinitive": "to promise",
+            "third_person_present": "promises",
+            "past_simple": "promised",
+            "past_participle": "promised",
+            "present_participle": "promising"
+          },
+          "is_irregular": false,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Promise' enthält Latein pro-mittere (vorausschicken) — ein Versprechen wird in die Zukunft vorausgeschickt. Aussprache /ˈprɒmɪs/: das End-e ist stumm, das s stimmlos.",
+              "example_gloss": "Sie versprach anzurufen, sobald sie gelandet sei.",
+              "false_friends": [],
+              "common_mistake": "Zwei Satzmuster: 'promise TO do something' (versprechen zu tun) und 'promise someone something' direkt mit zwei Objekten ('I promise you a surprise'). Nicht: 'promise TO someone'."
+            }
+          }
+        },
+        {
+          "term": "to be able",
+          "pos": "verb",
+          "ipa": "/tə bi ˈeɪbəl/",
+          "etymology": "'Able' from Old French able, from Latin habilis (handy, fit), from habēre (to have, handle). 'Be able to' developed as the periphrastic equivalent of 'can' for tenses where modal 'can' has no form.",
+          "register": "neutral",
+          "frequency_band": "A2",
+          "difficulty": 4,
+          "topic": "actions.modal",
+          "synonyms": [
+            "can"
+          ],
+          "collocations": [
+            "be able to",
+            "not able to",
+            "have been able to"
+          ],
+          "tags": [
+            "modal",
+            "ability"
+          ],
+          "example": "After the surgery he was able to walk again within two weeks.",
+          "prerequisites": [
+            "to be"
+          ],
+          "conjugation": {
+            "infinitive": "to be able",
+            "third_person_present": "is able",
+            "past_simple": "was/were able",
+            "past_participle": "been able",
+            "present_participle": "being able"
+          },
+          "is_irregular": true,
+          "case_pattern": null,
+          "per_source": {
+            "de": {
+              "mnemonic": "'Be able to' ist der Lückenfüller für 'can': dort wo 'can' versagt (Zukunft, Perfekt, nach Modalverben), springt 'be able to' ein. Deutsch 'können' kann alle Formen — Englisch braucht den Umweg.",
+              "example_gloss": "Nach der Operation konnte er innerhalb von zwei Wochen wieder laufen.",
+              "false_friends": [],
+              "common_mistake": "Modalverben lassen sich nicht stapeln: 'I will be able to', nicht 'I will can'. Perfekt: 'I have been able to', nicht 'I have could'. Genau dafür existiert 'be able to'."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

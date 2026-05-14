@@ -1,32 +1,39 @@
+import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, BookOpen } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
+import CurriculumEntryDetailModal from '@/components/categories/CurriculumEntryDetailModal'
+import CurriculumEntryImage from '@/components/categories/CurriculumEntryImage'
 import {
+  getCurriculumEnrichmentBySlug,
   getCurriculumCategoryBySlug,
   getCurriculumGloss,
   getCurriculumLevel,
   getLevelTitle,
   profileBaseLanguageToIso,
+  type CurriculumEnrichmentEntry,
   type CurriculumEntry,
 } from '@/data/curriculumCategories'
 import styles from './Categories.module.css'
-
-function entryImageUrl(entry: CurriculumEntry): string | null {
-  return entry.image_url ?? entry.imageUrl ?? null
-}
-
-function usageExamples(entry: CurriculumEntry): string[] {
-  return entry.usage_examples ?? entry.examples ?? []
-}
 
 export default function LevelDetailPage() {
   const { categorySlug, levelNumber } = useParams<{ categorySlug: string; levelNumber: string }>()
   const { profile } = useAuth()
   const { t, tp } = useTranslation()
+  const [selectedEntry, setSelectedEntry] = useState<CurriculumEntry | null>(null)
   const category = getCurriculumCategoryBySlug(categorySlug)
   const level = getCurriculumLevel(categorySlug, levelNumber)
   const baseLanguageIso = profileBaseLanguageToIso(profile?.base_language)
+  const enrichment = getCurriculumEnrichmentBySlug(categorySlug)
+  const enrichmentByTerm = useMemo(() => {
+    const result = new Map<string, CurriculumEnrichmentEntry>()
+    const enrichmentLevel = enrichment?.levels.find((item) => item.level === level?.level)
+    for (const item of enrichmentLevel?.entries ?? []) {
+      result.set(item.term, item)
+    }
+    return result
+  }, [enrichment, level?.level])
 
   if (!category || !level) {
     return (
@@ -74,29 +81,40 @@ export default function LevelDetailPage() {
 
       <div className={styles.entryGrid}>
         {level.entries.map((entry) => {
-          const imageUrl = entryImageUrl(entry)
-          const examples = usageExamples(entry)
+          const gloss = getCurriculumGloss(entry, baseLanguageIso)
           return (
-            <article key={`${level.level}-${entry.term}`} className={styles.entryCard}>
-              {imageUrl && <img src={imageUrl} alt="" loading="lazy" className={styles.entryImage} />}
+            <button
+              key={`${level.level}-${entry.term}`}
+              type="button"
+              className={styles.entryCard}
+              onClick={() => setSelectedEntry(entry)}
+              aria-label={t('categories.entry.openDetail', { term: entry.term, gloss })}
+            >
+              <CurriculumEntryImage
+                languageIso={category.data.target_language}
+                categorySlug={category.slug}
+                term={entry.term}
+                fallbackEmoji={category.icon}
+                alt=""
+                className={styles.entryImage}
+              />
               <div className={styles.entryTopline}>
                 <h2 className={styles.term}>{entry.term}</h2>
               </div>
-              <p className={styles.gloss}>{getCurriculumGloss(entry, baseLanguageIso)}</p>
-              {(entry.ipa || entry.mnemonic || entry.etymology || examples.length > 0) && (
-                <div className={styles.enrichment}>
-                  {entry.ipa && <span><strong>{t('categories.entry.ipa')}</strong> {entry.ipa}</span>}
-                  {entry.mnemonic && <span><strong>{t('categories.entry.mnemonic')}</strong> {entry.mnemonic}</span>}
-                  {entry.etymology && <span><strong>{t('categories.entry.etymology')}</strong> {entry.etymology}</span>}
-                  {examples.map((example) => (
-                    <span key={example}><strong>{t('categories.entry.example')}</strong> {example}</span>
-                  ))}
-                </div>
-              )}
-            </article>
+              <p className={styles.gloss}>{gloss}</p>
+            </button>
           )
         })}
       </div>
+
+      <CurriculumEntryDetailModal
+        entry={selectedEntry}
+        enrichment={selectedEntry ? enrichmentByTerm.get(selectedEntry.term) ?? null : null}
+        categorySlug={category.slug}
+        languageIso={category.data.target_language}
+        baseLanguageIso={baseLanguageIso}
+        onClose={() => setSelectedEntry(null)}
+      />
     </section>
   )
 }
