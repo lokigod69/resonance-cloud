@@ -55,3 +55,17 @@ export const BASE_LANGUAGES    = LANGUAGES.filter((l) => l.isBase)
 export const WIZARD_LANGUAGES  = LANGUAGES.filter((l) => l.isWizard)
 export const LANDING_LANGUAGES = LANGUAGES.filter((l) => l.isLanding)
 export const SPEAK_LANGUAGES   = LANGUAGES.filter((l) => l.isSpeak)
+
+// Maps an ISO code (e.g. 'en') to the canonical wizard-value form
+// (e.g. 'English') used by decks.target_language and profiles.base_language.
+// Mirror of profileBaseLanguageToIso in curriculumCategories.ts. Falls back
+// to the raw input if unrecognized so the caller can still surface a coherent
+// error downstream.
+export function isoToWizardValue(iso: string | null | undefined): string {
+  if (!iso) return ''
+  const normalized = iso.toLowerCase()
+  return (
+    LANGUAGES.find((l) => l.code.toLowerCase() === normalized)?.value
+    ?? iso
+  )
+}

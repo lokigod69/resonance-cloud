@@ -9,6 +9,7 @@ import {
   type CurriculumPerSourceEnrichment,
 } from '@/data/curriculumCategories'
 import { curriculumEntryImagePath, normalizeCurriculumTerm } from '@/lib/curriculumImagePath'
+import { isoToWizardValue } from '@/lib/languages'
 
 // Pre-rendered pilot entry assets currently in public/curriculum/categories.
 // When more pilot assets land, expand this set. Terms not in the set get a
@@ -264,6 +265,7 @@ export async function importCurriculumLevel(
     p_level_number: level.level,
     p_level_name: levelName,
     p_entries: entries,
+    p_target_language: isoToWizardValue(category.data.target_language),
   })
   if (error) throw error
   if (typeof data !== 'string') {
