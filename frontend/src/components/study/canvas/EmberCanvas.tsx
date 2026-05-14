@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
+import { DoorOpen } from 'lucide-react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -384,6 +385,7 @@ export default function EmberCanvas({
   onToggleImages,
   onToggleDirection,
   onToggleAutoReveal,
+  onExit,
   onContinue,
 }: CanvasModeProps) {
   const { playWord } = usePronunciation()
@@ -782,6 +784,7 @@ export default function EmberCanvas({
           onToggleAutoReveal={onToggleAutoReveal}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
+          onExit={onExit}
         />
 
         <div className="absolute inset-0 z-10">
@@ -869,6 +872,7 @@ interface ToolbarProps {
   onToggleAutoReveal: () => void
   onPrevPage: () => void
   onNextPage: () => void
+  onExit: () => void
 }
 
 function Toolbar({
@@ -887,112 +891,130 @@ function Toolbar({
   onToggleAutoReveal,
   onPrevPage,
   onNextPage,
+  onExit,
 }: ToolbarProps) {
   const { t } = useTranslation()
+  const exitLabel = t('study.canvas.exit')
   const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
-  // Left padding clears the CanvasShell Back chip; top padding respects the iOS notch.
+  // Top padding respects the iOS notch; right-anchored Exit is the primary egress.
   return (
     <div
       ref={toolbarRef}
       data-toolbar
-      className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-start gap-2 py-2 pr-3 sm:gap-3 sm:py-3 sm:pr-4 bg-black/40 border-b border-orange-900/30"
+      className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex items-start gap-2 pb-2 sm:gap-3 sm:pb-3 bg-black/40 border-b border-orange-900/30"
       style={{
         paddingTop: 'max(0.5rem, calc(env(safe-area-inset-top, 0px) + 0.25rem))',
-        paddingLeft: 'calc(env(safe-area-inset-left, 0px) + 5.25rem)',
+        paddingLeft: 'max(0.75rem, calc(env(safe-area-inset-left, 0px) + 0.75rem))',
+        paddingRight: 'max(0.75rem, calc(env(safe-area-inset-right, 0px) + 0.75rem))',
       }}
     >
-      <div className="flex flex-wrap gap-1">
-        {CANVAS_MODES.map((mode) => (
-          <button
-            key={mode}
-            onClick={(event) => {
-              event.stopPropagation()
-              onSwitchMode(mode)
-            }}
-            disabled={mode === activeMode}
-            className={`h-9 px-3 text-xs uppercase tracking-widest border bg-black/50 rounded transition-colors ${
-              mode === activeMode
-                ? 'text-orange-500 border-orange-500 cursor-default'
-                : 'text-orange-900 border-orange-900/30 hover:text-orange-500 hover:border-orange-500'
-            }`}
-          >
-            {mode}
-          </button>
-        ))}
-      </div>
+      <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:gap-3">
+        <div className="flex flex-wrap gap-1">
+          {CANVAS_MODES.map((mode) => (
+            <button
+              key={mode}
+              onClick={(event) => {
+                event.stopPropagation()
+                onSwitchMode(mode)
+              }}
+              disabled={mode === activeMode}
+              className={`h-9 px-3 text-xs uppercase tracking-widest border bg-black/50 rounded transition-colors ${
+                mode === activeMode
+                  ? 'text-orange-500 border-orange-500 cursor-default'
+                  : 'text-orange-900 border-orange-900/30 hover:text-orange-500 hover:border-orange-500'
+              }`}
+            >
+              {mode}
+            </button>
+          ))}
+        </div>
 
-      <div className="flex min-w-0 flex-wrap items-center justify-start gap-2">
-        {canToggleDirection && (
+        <div className="flex min-w-0 flex-wrap items-center justify-start gap-2">
+          {canToggleDirection && (
+            <button
+              onClick={(event) => {
+                event.stopPropagation()
+                onToggleDirection()
+              }}
+              className="h-9 px-3 text-xs uppercase tracking-widest text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded"
+              title={t('study.canvas.swapPromptAnswer')}
+            >
+              <span className="text-orange-500">{visibleCode}</span>
+              <span className="mx-1 text-orange-900">→</span>
+              <span>{hiddenCode}</span>
+            </button>
+          )}
+
+          <label
+            className="h-9 px-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded cursor-pointer"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <input
+              type="checkbox"
+              checked={autoReveal === 'off'}
+              onChange={onToggleAutoReveal}
+              className="accent-orange-500"
+            />
+            {t('study.canvas.hideAnswer')}
+          </label>
+
           <button
             onClick={(event) => {
               event.stopPropagation()
-              onToggleDirection()
+              onToggleImages()
             }}
             className="h-9 px-3 text-xs uppercase tracking-widest text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded"
-            title={t('study.canvas.swapPromptAnswer')}
+            title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
           >
-            <span className="text-orange-500">{visibleCode}</span>
-            <span className="mx-1 text-orange-900">→</span>
-            <span>{hiddenCode}</span>
+            {showImages ? 'Aa' : 'Img'}
           </button>
-        )}
 
-        <label
-          className="h-9 px-3 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded cursor-pointer"
-          onClick={(event) => event.stopPropagation()}
-        >
-          <input
-            type="checkbox"
-            checked={autoReveal === 'off'}
-            onChange={onToggleAutoReveal}
-            className="accent-orange-500"
-          />
-          {t('study.canvas.hideAnswer')}
-        </label>
-
-        <button
-          onClick={(event) => {
-            event.stopPropagation()
-            onToggleImages()
-          }}
-          className="h-9 px-3 text-xs uppercase tracking-widest text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded"
-          title={showImages ? t('study.canvas.showText') : t('study.canvas.showImages')}
-        >
-          {showImages ? 'Aa' : 'Img'}
-        </button>
-
-        {totalPages > 1 && (
-          <>
-            <span className="px-2 text-xs text-orange-500/60 tracking-widest whitespace-nowrap">
-              {t('study.canvas.pageOf', { current: currentPage + 1, total: totalPages })}
-            </span>
-            <button
-              onClick={(event) => {
-                event.stopPropagation()
-                onPrevPage()
-              }}
-              disabled={currentPage === 0}
-              className="w-9 h-9 text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label={t('study.canvas.previousPage')}
-            >
-              ‹
-            </button>
-            <button
-              onClick={(event) => {
-                event.stopPropagation()
-                onNextPage()
-              }}
-              disabled={currentPage >= totalPages - 1}
-              className="w-9 h-9 text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded disabled:opacity-30 disabled:cursor-not-allowed"
-              aria-label={t('study.canvas.nextPage')}
-            >
-              ›
-            </button>
-          </>
-        )}
+          {totalPages > 1 && (
+            <>
+              <span className="px-2 text-xs text-orange-500/60 tracking-widest whitespace-nowrap">
+                {t('study.canvas.pageOf', { current: currentPage + 1, total: totalPages })}
+              </span>
+              <button
+                onClick={(event) => {
+                  event.stopPropagation()
+                  onPrevPage()
+                }}
+                disabled={currentPage === 0}
+                className="w-9 h-9 text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded disabled:opacity-30 disabled:cursor-not-allowed"
+                aria-label={t('study.canvas.previousPage')}
+              >
+                ‹
+              </button>
+              <button
+                onClick={(event) => {
+                  event.stopPropagation()
+                  onNextPage()
+                }}
+                disabled={currentPage >= totalPages - 1}
+                className="w-9 h-9 text-orange-900 hover:text-orange-500 border border-orange-900/30 hover:border-orange-500 bg-black/50 rounded disabled:opacity-30 disabled:cursor-not-allowed"
+                aria-label={t('study.canvas.nextPage')}
+              >
+                ›
+              </button>
+            </>
+          )}
+        </div>
       </div>
+
+      <button
+        type="button"
+        onClick={(event) => {
+          event.stopPropagation()
+          onExit()
+        }}
+        aria-label={exitLabel}
+        title={exitLabel}
+        className="grid h-11 w-11 shrink-0 place-items-center rounded-md border border-orange-300 bg-orange-500 text-white shadow-[0_0_18px_rgba(255,107,53,0.55)] transition-colors hover:bg-orange-400 hover:shadow-[0_0_24px_rgba(255,170,90,0.85)]"
+      >
+        <DoorOpen size={20} aria-hidden="true" />
+      </button>
     </div>
   )
 }

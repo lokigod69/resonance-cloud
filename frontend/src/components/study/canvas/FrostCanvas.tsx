@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, MouseEvent as ReactMouseEvent, RefObject } from 'react'
+import { DoorOpen } from 'lucide-react'
 import { useBodyScrollLock } from '@/hooks/useBodyScrollLock'
 import { useViewport, type CanvasViewport } from '@/hooks/useViewport'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -360,6 +361,7 @@ export default function FrostCanvas({
   onToggleImages,
   onToggleDirection,
   onToggleAutoReveal,
+  onExit,
   onContinue,
 }: CanvasModeProps) {
   const { playWord } = usePronunciation()
@@ -764,6 +766,7 @@ export default function FrostCanvas({
           onToggleAutoReveal={onToggleAutoReveal}
           onPrevPage={onPrevPage}
           onNextPage={onNextPage}
+          onExit={onExit}
         />
 
         <div className="absolute inset-0 z-10">
@@ -875,6 +878,7 @@ interface ToolbarProps {
   onToggleAutoReveal: () => void
   onPrevPage: () => void
   onNextPage: () => void
+  onExit: () => void
 }
 
 function Toolbar({
@@ -893,22 +897,26 @@ function Toolbar({
   onToggleAutoReveal,
   onPrevPage,
   onNextPage,
+  onExit,
 }: ToolbarProps) {
   const { t } = useTranslation()
+  const exitLabel = t('study.canvas.exit')
   const visibleCode = direction === 'target-visible' ? languagePair.targetCode : languagePair.baseCode
   const hiddenCode = direction === 'target-visible' ? languagePair.baseCode : languagePair.targetCode
 
-  // Left padding clears the CanvasShell Back chip; top padding respects the iOS notch.
+  // Top padding respects the iOS notch; right-anchored Exit is the primary egress.
   return (
     <div
       ref={toolbarRef}
       data-toolbar
-      className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex flex-wrap items-center justify-start gap-2 py-2 pr-3 sm:gap-3 sm:py-3 sm:pr-4 bg-black/50 border-b border-white/10"
+      className="sticky top-0 md:absolute md:top-0 left-0 right-0 z-40 flex items-start gap-2 pb-2 sm:gap-3 sm:pb-3 bg-black/50 border-b border-white/10"
       style={{
         paddingTop: 'max(0.5rem, calc(env(safe-area-inset-top, 0px) + 0.25rem))',
-        paddingLeft: 'calc(env(safe-area-inset-left, 0px) + 5.25rem)',
+        paddingLeft: 'max(0.75rem, calc(env(safe-area-inset-left, 0px) + 0.75rem))',
+        paddingRight: 'max(0.75rem, calc(env(safe-area-inset-right, 0px) + 0.75rem))',
       }}
     >
+      <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:gap-3">
       <div className="flex flex-wrap gap-1">
         {CANVAS_MODES.map((mode) => (
           <button
@@ -999,6 +1007,20 @@ function Toolbar({
           </>
         )}
       </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={(event) => {
+          event.stopPropagation()
+          onExit()
+        }}
+        aria-label={exitLabel}
+        title={exitLabel}
+        className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-[#cfeefb] bg-[#bfe6f7] text-slate-900 shadow-[0_0_18px_rgba(168,216,234,0.55)] transition-colors hover:bg-white hover:shadow-[0_0_24px_rgba(207,238,251,0.85)]"
+      >
+        <DoorOpen size={20} aria-hidden="true" />
+      </button>
     </div>
   )
 }

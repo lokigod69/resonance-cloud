@@ -7,6 +7,7 @@ import EmberCanvas from '@/components/study/canvas/EmberCanvas'
 import FrostCanvas from '@/components/study/canvas/FrostCanvas'
 import SyndicateCanvas from '@/components/study/canvas/SyndicateCanvas'
 import ZenCanvas from '@/components/study/canvas/ZenCanvas'
+import { CanvasShell } from '@/components/study/canvas/CanvasShell'
 import type { CanvasAutoReveal, CanvasDirection, CanvasLanguagePair, CanvasMode } from '@/components/study/canvas/types'
 import { getCardFaces } from '@/lib/cardFaces'
 import { LANGUAGES } from '@/lib/languages'
@@ -374,10 +375,12 @@ export default function StudyCanvas() {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center gap-4">
-        <ParticleSpinner preset="heart" size={140} />
-        <p className="text-sm text-white/50">Loading…</p>
-      </div>
+      <CanvasShell>
+        <div className="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center gap-4">
+          <ParticleSpinner preset="heart" size={140} />
+          <p className="text-sm text-white/50">Loading…</p>
+        </div>
+      </CanvasShell>
     )
   }
 
@@ -391,31 +394,29 @@ export default function StudyCanvas() {
           : ZenCanvas
 
   return (
-    <CanvasShell>
-      <ActiveModeComponent
-        key={`${activeMode}-${shuffleNonce}-${currentPage}-${direction}`}
-        words={currentPageWords}
-        masteredWordIds={passedWords}
-        showImages={showImages}
-        sessionComplete={sessionComplete}
-        direction={direction}
-        autoReveal={autoReveal}
-        languagePair={languagePair}
-        canToggleDirection={hasCompleteDeckLanguagePair}
-        currentPage={currentPage}
-        totalPages={totalPages}
-        activeMode={activeMode}
-        onPass={handlePass}
-        onFail={handleFail}
-        onPrevPage={handlePrevPage}
-        onNextPage={handleNextPage}
-        onSwitchMode={handleSwitchMode}
-        onToggleImages={handleToggleImages}
-        onToggleDirection={handleToggleDirection}
-        onToggleAutoReveal={handleToggleAutoReveal}
-        onExit={goToReturnOrStudy}
-        onContinue={goToReturnOrStudy}
-      />
-    </CanvasShell>
+    <ActiveModeComponent
+      key={`${activeMode}-${shuffleNonce}-${currentPage}-${direction}`}
+      words={currentPageWords}
+      masteredWordIds={passedWords}
+      showImages={showImages}
+      sessionComplete={sessionComplete}
+      direction={direction}
+      autoReveal={autoReveal}
+      languagePair={languagePair}
+      canToggleDirection={hasCompleteDeckLanguagePair}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      activeMode={activeMode}
+      onPass={handlePass}
+      onFail={handleFail}
+      onPrevPage={handlePrevPage}
+      onNextPage={handleNextPage}
+      onSwitchMode={handleSwitchMode}
+      onToggleImages={handleToggleImages}
+      onToggleDirection={handleToggleDirection}
+      onToggleAutoReveal={handleToggleAutoReveal}
+      onExit={goToReturnOrStudy}
+      onContinue={goToReturnOrStudy}
+    />
   )
 }
