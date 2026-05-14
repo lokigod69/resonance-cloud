@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Check } from 'lucide-react'
+import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
+import { supabase } from '@/lib/supabase'
 import { listCurriculumCategories, type CurriculumCategory } from '@/data/curriculumCategories'
+import { listImportedCurriculumDecks } from '@/lib/curriculumDeckBridge'
 import styles from './Categories.module.css'
 
 function CategoryHero({ category }: { category: CurriculumCategory }) {
@@ -29,7 +33,39 @@ function CategoryHero({ category }: { category: CurriculumCategory }) {
 
 export default function CategoryListPage() {
   const { t, tp } = useTranslation()
+  const { user } = useAuth()
   const categories = listCurriculumCategories()
+  const [importedCategorySlugs, setImportedCategorySlugs] = useState<Set<string>>(new Set())
+
+  useEffect(() => {
+    let cancelled = false
+    if (!user?.id) {
+      setImportedCategorySlugs(new Set())
+      return () => {
+        cancelled = true
+      }
+    }
+
+    void listImportedCurriculumDecks(supabase, user.id)
+      .then((rows) => {
+        if (cancelled) return
+        const next = new Set<string>()
+        for (const row of rows) {
+          if (row.curriculum_category_slug) {
+            next.add(row.curriculum_category_slug)
+          }
+        }
+        setImportedCategorySlugs(next)
+      })
+      .catch((error) => {
+        if (cancelled) return
+        console.error('[categories] imported-decks lookup failed', error)
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [user?.id])
 
   return (
     <section className={styles.page}>
@@ -42,28 +78,37 @@ export default function CategoryListPage() {
       </header>
 
       <div className={styles.grid}>
-        {categories.map((category) => (
-          <Link
-            key={category.slug}
-            to={`/categories/${category.slug}`}
-            className={styles.tile}
-            aria-label={t('categories.openCategory', { title: category.title })}
-          >
-            <div className={styles.hero}>
-              <CategoryHero category={category} />
-            </div>
-            <div className={styles.tileBody}>
-              <h2 className={styles.tileTitle}>
-                <span className={styles.tileEmoji} aria-hidden="true">{category.icon}</span>
-                <span>{category.title}</span>
-              </h2>
-              <div className={styles.tileMeta}>
-                <span className={styles.chip}>{tp('categories.levelCount', category.levelCount)}</span>
-                <span className={styles.chip}>{tp('categories.entryCount', category.totalEntries)}</span>
+        {categories.map((category) => {
+          const isImported = importedCategorySlugs.has(category.slug)
+          return (
+            <Link
+              key={category.slug}
+              to={`/categories/${category.slug}`}
+              className={styles.tile}
+              aria-label={t('categories.openCategory', { title: category.title })}
+            >
+              <div className={styles.hero}>
+                <CategoryHero category={category} />
               </div>
-            </div>
-          </Link>
-        ))}
+              <div className={styles.tileBody}>
+                <h2 className={styles.tileTitle}>
+                  <span className={styles.tileEmoji} aria-hidden="true">{category.icon}</span>
+                  <span>{category.title}</span>
+                </h2>
+                <div className={styles.tileMeta}>
+                  <span className={styles.chip}>{tp('categories.levelCount', category.levelCount)}</span>
+                  <span className={styles.chip}>{tp('categories.entryCount', category.totalEntries)}</span>
+                  {isImported ? (
+                    <span className={styles.tileImportedBadge}>
+                      <Check className="h-3 w-3" aria-hidden="true" />
+                      {t('categories.imported')}
+                    </span>
+                  ) : null}
+                </div>
+              </div>
+            </Link>
+          )
+        })}
       </div>
     </section>
   )
