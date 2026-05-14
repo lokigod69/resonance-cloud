@@ -14,6 +14,7 @@ import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
 import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
+import { SegmentTrophyTile } from '@/components/today/SegmentTrophyTile'
 import { GuidedVibePicker } from '@/components/today/TodayHero'
 import { cn } from '@/lib/utils'
 
@@ -178,15 +179,22 @@ export function TodayPathOverview({
                     />
                   ))}
                 </div>
-                <SegmentReviewTile
-                  href={`/today/checkpoint?mode=segment-review&path=${selectedPathId}&segment=${segment.segment}&vibe=${selectedVibeId}`}
-                  segment={segment.segment}
-                  label={t(segment.labelKey)}
-                  rangeLabel={t(segment.rangeKey)}
-                  completedCount={completedCount}
-                  selectedVibeId={selectedVibeId}
-                  isReviewComplete={Boolean(reviewRecord)}
-                />
+                <div className="today-path-reviewPair grid gap-2 md:grid-cols-2">
+                  <SegmentReviewTile
+                    href={`/today/checkpoint?mode=segment-review&path=${selectedPathId}&segment=${segment.segment}&vibe=${selectedVibeId}`}
+                    segment={segment.segment}
+                    label={t(segment.labelKey)}
+                    rangeLabel={t(segment.rangeKey)}
+                    completedCount={completedCount}
+                    selectedVibeId={selectedVibeId}
+                    isReviewComplete={Boolean(reviewRecord)}
+                  />
+                  <SegmentTrophyTile
+                    pathId={selectedPathId}
+                    segment={segment.segment}
+                    vibeId={selectedVibeId}
+                  />
+                </div>
               </div>
             )
           })}

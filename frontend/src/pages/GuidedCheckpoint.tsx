@@ -19,9 +19,11 @@ import {
 } from '@/lib/guidedCheckpoint'
 import { readTodayProgressState } from '@/lib/todayProgress'
 import { getSelectedGuidedVibe } from '@/lib/todayVibe'
+import { fetchTrophySongCanonical, type TrophySongRow } from '@/lib/trophySongsClient'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Progress } from '@/components/ui/progress'
+import { TrophySongPanel } from '@/components/today/trophy/TrophySongPanel'
 import {
   canUseBrowserSpeechRecognition,
   createBrowserSpeechRecognizer,
@@ -41,17 +43,20 @@ export default function GuidedCheckpoint() {
   const checkpointMode = searchParams.get('mode')
   const isPathCheckMode = checkpointMode === 'path-check'
   const isSegmentReviewMode = checkpointMode === 'segment-review'
+  const isTrophyClozeMode = checkpointMode === 'trophy-cloze'
   const selectedSegment = resolveSegmentReviewNumber(searchParams.get('segment'))
   const progress = useMemo(() => readTodayProgressState(user?.id), [user?.id])
   const plan = useMemo(
     () => (
-      isPathCheckMode
+      isTrophyClozeMode
+        ? undefined
+        : isPathCheckMode
         ? buildGuidedPathCheckPlan(selectedPathId, selectedVibeId)
         : isSegmentReviewMode && selectedSegment
           ? buildGuidedSegmentReviewPlan(progress, selectedPathId, selectedSegment, selectedVibeId)
         : buildGuidedCheckpointPlan(progress, selectedVibeId)
     ),
-    [isPathCheckMode, isSegmentReviewMode, progress, selectedPathId, selectedSegment, selectedVibeId],
+    [isPathCheckMode, isSegmentReviewMode, isTrophyClozeMode, progress, selectedPathId, selectedSegment, selectedVibeId],
   )
   const [phase, setPhase] = useState<CheckpointPhase>('type')
   const [itemIndex, setItemIndex] = useState(0)
@@ -100,6 +105,17 @@ export default function GuidedCheckpoint() {
     setAnswer('')
     setTypeResult(undefined)
     setPhase('type')
+  }
+
+  if (isTrophyClozeMode) {
+    return (
+      <TrophyCheckpoint
+        pathId={selectedPathId}
+        segment={selectedSegment}
+        vibe={selectedVibeId}
+        onBackToToday={() => navigate('/today')}
+      />
+    )
   }
 
   if (!plan || !currentItem) {
@@ -163,6 +179,88 @@ export default function GuidedCheckpoint() {
       )}
     </main>
   )
+}
+
+function TrophyCheckpoint({
+  pathId,
+  segment,
+  vibe,
+  onBackToToday,
+}: {
+  pathId: string
+  segment: GuidedSegmentReviewNumber | undefined
+  vibe: ActiveGuidedVibeId
+  onBackToToday: () => void
+}) {
+  const { t } = useTranslation()
+  const [row, setRow] = useState<TrophySongRow | undefined>(undefined)
+  const [loading, setLoading] = useState(true)
+  const [unavailable, setUnavailable] = useState(false)
+
+  useEffect(() => {
+    let active = true
+
+    async function loadTrophySong() {
+      if (!segment) {
+        setLoading(false)
+        setUnavailable(true)
+        return
+      }
+
+      setLoading(true)
+      setUnavailable(false)
+
+      try {
+        const nextRow = await fetchTrophySongCanonical(pathId, segment, vibe)
+        if (!active) return
+        setRow(nextRow)
+      } catch {
+        if (!active) return
+        setUnavailable(true)
+      } finally {
+        if (active) setLoading(false)
+      }
+    }
+
+    void loadTrophySong()
+
+    return () => {
+      active = false
+    }
+  }, [pathId, segment, vibe])
+
+  if (loading) {
+    return (
+      <main className="today-shell today-checkpoint-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6" data-guided-vibe={vibe}>
+        <section className="theme-panel w-full rounded-lg border border-[var(--border-subtle)] p-6 text-center sm:p-8">
+          <h1 className="text-3xl font-semibold text-[var(--text-primary)]">
+            {t('today.trophy.loadingTitle')}
+          </h1>
+        </section>
+      </main>
+    )
+  }
+
+  if (unavailable || !row) {
+    return (
+      <main className="today-shell today-checkpoint-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6" data-guided-vibe={vibe}>
+        <section className="theme-panel w-full rounded-lg border border-[var(--border-subtle)] p-6 text-center sm:p-8">
+          <RotateCcw className="mx-auto h-10 w-10 text-[var(--accent)]" aria-hidden="true" />
+          <h1 className="mt-4 text-3xl font-semibold text-[var(--text-primary)]">
+            {t('today.trophy.unavailableTitle')}
+          </h1>
+          <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-[var(--text-secondary)]">
+            {t('today.trophy.unavailableBody')}
+          </p>
+          <Button type="button" className="mt-6" onClick={onBackToToday}>
+            {t('today.checkpoint.backToToday')}
+          </Button>
+        </section>
+      </main>
+    )
+  }
+
+  return <TrophySongPanel row={row} onComplete={onBackToToday} />
 }
 
 function CheckpointHeader({
