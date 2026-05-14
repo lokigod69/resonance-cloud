@@ -95,6 +95,34 @@
   min-height: 9rem;
 }
 
+.today-vibe-pickerCompact {
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+  min-height: 2.5rem;
+}
+
+.today-vibe-pill {
+  background:
+    radial-gradient(ellipse at 18% 0%, color-mix(in srgb, var(--today-glow) 48%, transparent), transparent 62%),
+    color-mix(in srgb, var(--today-panel) 78%, transparent);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--today-glow) 18%, transparent);
+  max-height: 3rem;
+}
+
+.today-vibe-pickerOptions {
+  max-height: 5rem;
+  width: 100%;
+}
+
+.today-vibe-pickerOptions .today-vibe-card {
+  min-height: 3rem;
+}
+
+.today-vibe-option[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 62%, transparent);
+}
+
 .today-vibe-card[aria-pressed="true"] {
   border-color: color-mix(in srgb, var(--today-accent-strong) 66%, transparent);
   background:

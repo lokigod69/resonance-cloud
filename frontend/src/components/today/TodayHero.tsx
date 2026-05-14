@@ -1,4 +1,5 @@
-import { CalendarDays, Check, CheckCircle2, Circle, Play, RotateCcw, SkipForward, Sparkles } from 'lucide-react'
+import { CalendarDays, Check, CheckCircle2, ChevronDown, Circle, Play, RotateCcw, SkipForward, Sparkles } from 'lucide-react'
+import { useState } from 'react'
 import type { GuidedLesson, GuidedLessonMedia } from '@/data/guidedLessons'
 import { ACTIVE_GUIDED_VIBE_IDS, guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { TodayVisibleStatus } from '@/lib/todayProgress'
@@ -321,6 +322,75 @@ export function GuidedVibePicker({
   compact?: boolean
 }) {
   const { t } = useTranslation()
+  const [expanded, setExpanded] = useState(false)
+  const selectedVibe = guidedVibes[selectedVibeId]
+
+  if (compact) {
+    const handleSelectVibe = (vibeId: ActiveGuidedVibeId) => {
+      onSelectVibe(vibeId)
+      setExpanded(false)
+    }
+
+    return (
+      <section
+        className="today-vibe-pickerCompact"
+        data-expanded={expanded}
+        aria-label={t('today.vibePicker.title')}
+      >
+        <button
+          type="button"
+          className="today-vibe-pill inline-flex max-w-full items-center gap-2 rounded-full border border-[var(--border-subtle)] px-3 py-2 text-sm font-medium text-[var(--text-primary)] transition hover:border-[color-mix(in_srgb,var(--accent)_54%,var(--border-subtle))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          aria-expanded={expanded}
+          onClick={() => setExpanded((current) => !current)}
+        >
+          <span className="min-w-0 truncate">
+            {t('today.vibePicker.compactLabel')}: {selectedVibe.label}
+          </span>
+          <ChevronDown
+            className={cn('h-4 w-4 shrink-0 transition-transform', expanded && 'rotate-180')}
+            aria-hidden="true"
+          />
+        </button>
+
+        {expanded && (
+          <div className="today-vibe-pickerOptions mt-2 grid grid-cols-3 gap-2">
+            {ACTIVE_GUIDED_VIBE_IDS.map((vibeId) => {
+              const vibe = guidedVibes[vibeId]
+              const isSelected = selectedVibeId === vibeId
+
+              return (
+                <button
+                  key={vibeId}
+                  type="button"
+                  aria-pressed={isSelected}
+                  onClick={() => handleSelectVibe(vibeId)}
+                  className={cn(
+                    'today-vibe-card today-vibe-option relative flex min-w-0 items-center gap-2 rounded-lg border px-2.5 py-2 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+                    isSelected
+                      ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)] shadow-[0_0_24px_color-mix(in_srgb,var(--accent)_18%,transparent)]'
+                      : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_16%,transparent)]',
+                  )}
+                >
+                  <span className="today-vibe-emblemSlot flex h-8 w-8 shrink-0 items-center justify-center" aria-hidden="true">
+                    {vibe.emblem?.url && (
+                      <img
+                        src={vibe.emblem.url}
+                        alt=""
+                        className="today-vibe-emblem h-full w-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.36)]"
+                        draggable={false}
+                      />
+                    )}
+                  </span>
+                  <span className="min-w-0 truncate text-sm font-semibold text-[var(--text-primary)]">{vibe.label}</span>
+                  {isSelected && <Check className="ml-auto h-4 w-4 shrink-0 text-[var(--accent)]" aria-hidden="true" />}
+                </button>
+              )
+            })}
+          </div>
+        )}
+      </section>
+    )
+  }
 
   return (
     <section

@@ -176,6 +176,7 @@ export function TodayPathOverview({
                       completedVibeIds={entry.completedVibeIds}
                       selectedVibeId={selectedVibeId}
                       onSelectLesson={onSelectLesson}
+                      onStartLesson={onStartLesson}
                     />
                   ))}
                 </div>
@@ -300,6 +301,7 @@ function LessonPathCard({
   completedVibeIds,
   selectedVibeId,
   onSelectLesson,
+  onStartLesson,
 }: {
   lesson: GuidedLesson
   status: GuidedPathLessonCardStatus
@@ -309,13 +311,21 @@ function LessonPathCard({
   completedVibeIds: ActiveGuidedVibeId[]
   selectedVibeId: ActiveGuidedVibeId
   onSelectLesson: (lessonId: string) => void
+  onStartLesson: () => void
 }) {
   const { t } = useTranslation()
+
+  const handleLessonTap = () => {
+    onSelectLesson(lesson.id)
+    if (isMobileViewport()) {
+      onStartLesson()
+    }
+  }
 
   return (
     <button
       type="button"
-      onClick={() => onSelectLesson(lesson.id)}
+      onClick={handleLessonTap}
       aria-label={t('today.path.openLesson', {
         sequence: lesson.lessonNumber,
         title: lesson.title,
@@ -361,6 +371,10 @@ function LessonPathCard({
       </div>
     </button>
   )
+}
+
+function isMobileViewport() {
+  return typeof window !== 'undefined' && window.innerWidth < 768
 }
 
 function LessonNumberMarker({
