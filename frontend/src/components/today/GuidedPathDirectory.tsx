@@ -2,6 +2,7 @@ import { CheckCircle2, ClipboardCheck, X } from 'lucide-react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getGuidedPathLessons, type GuidedPathMetadata } from '@/data/guidedLessons'
+import { formatGuidedPathLabel } from '@/lib/guidedPathLabels'
 import { useTranslation } from '@/hooks/useTranslation'
 import type { TodayProgressState } from '@/lib/todayProgress'
 import { Button } from '@/components/ui/button'
@@ -28,12 +29,6 @@ const GUIDED_PATH_DIRECTORY_GROUPS = [
     ],
   },
 ] as const
-
-const COMPACT_PATH_LABELS: Record<string, string> = {
-  'english-a1-practical-1': 'A1 P1',
-  'english-a1-practical-2': 'A1 P2',
-  'english-a1-practical-3': 'A1 P3',
-}
 
 export function GuidedPathDirectory({
   open,
@@ -94,10 +89,10 @@ export function GuidedPathDirectory({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-[var(--text-primary)]">
-                  {compactPathLabel(selectedPath)} - {selectedPath.subtitle}
+                  {formatGuidedPathLabel(selectedPath)}
                 </p>
                 <p className="mt-1 text-xs text-[var(--text-secondary)]">
-                  {selectedPath.baseLanguage} {'->'} {selectedPath.targetLanguage} - {t('today.path.progress', getPathProgress(progress, selectedPath.id))}
+                  {t('today.path.compactProgress', getPathProgress(progress, selectedPath.id))}
                 </p>
               </div>
               <Button asChild type="button" size="sm" variant="outline">
@@ -139,16 +134,13 @@ export function GuidedPathDirectory({
                     <span className="flex items-start justify-between gap-2">
                       <span className="min-w-0">
                         <span className="block text-base font-semibold text-[var(--text-primary)]">
-                          {compactPathLabel(path)}
-                        </span>
-                        <span className="mt-1 block text-xs leading-5 text-[var(--text-secondary)]">
-                          {path.subtitle}
+                          {formatGuidedPathLabel(path)}
                         </span>
                       </span>
                       {isSelected && <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
                     </span>
                     <span className="mt-3 block text-xs text-[var(--text-muted)]">
-                      {pathProgress.completed}/{pathProgress.total}
+                      {t('today.path.compactProgress', pathProgress)}
                     </span>
                   </button>
                 )
@@ -159,10 +151,6 @@ export function GuidedPathDirectory({
       </section>
     </div>
   )
-}
-
-function compactPathLabel(path: GuidedPathMetadata) {
-  return COMPACT_PATH_LABELS[path.id] ?? path.shortTitle
 }
 
 function getPathProgress(progress: TodayProgressState, pathId: string) {

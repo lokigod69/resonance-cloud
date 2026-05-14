@@ -30,6 +30,7 @@ const pathIds = [
 ]
 
 const directorySource = readSource('../src/components/today/GuidedPathDirectory.tsx')
+const pathLabelSource = readSource('../src/lib/guidedPathLabels.ts')
 const overviewSource = readSource('../src/components/today/TodayPathOverview.tsx')
 const todaySource = readSource('../src/pages/Today.tsx')
 const checkpointSource = readSource('../src/pages/GuidedCheckpoint.tsx')
@@ -41,12 +42,11 @@ assert('directory component source exists', directorySource.length > 0)
 for (const pathId of pathIds) {
   assert(`directory references ${pathId}`, directorySource.includes(pathId) || JSON.stringify(getGuidedTodayPathOptions()).includes(pathId))
 }
-for (const label of ['A1 P1', 'A1 P2', 'A1 P3']) {
-  assert(`directory exposes compact chooser label ${label}`, directorySource.includes(label))
+for (const label of ['English A1 P1', 'English A1 P2', 'English A1 P3']) {
+  assert(`directory exposes compact chooser label ${label}`, pathLabelSource.includes(label))
 }
-for (const subtitle of ['First Survival Phrases', 'Small Help and Simple Choices', 'Moving Around']) {
-  assert(`directory can show subtitle ${subtitle}`, directorySource.includes('path.subtitle') || directorySource.includes(subtitle))
-}
+assert('directory intentionally hides path subtitles', !directorySource.includes('path.subtitle'))
+assert('directory shows compact progress instead of language or subtitle copy', directorySource.includes("t('today.path.compactProgress'") && !directorySource.includes('baseLanguage'))
 assert('directory includes lightweight category group structure', containsAny(directorySource, ['categoryLabel', 'directoryGroup', 'today.path.directoryGroupPractical']))
 assert('directory is rendered as an accessible dialog', directorySource.includes('role="dialog"') && directorySource.includes('aria-modal="true"'))
 assert('directory closes when a path is selected', directorySource.includes('onSelectPath(path.id)') && directorySource.includes('onClose()'))

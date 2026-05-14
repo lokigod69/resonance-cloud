@@ -1,8 +1,8 @@
-import { CheckCircle2, ChevronLeft, ChevronRight, RotateCcw, Trophy, Volume2 } from 'lucide-react'
+import { ChevronRight, Trophy, Volume2 } from 'lucide-react'
 import { useState } from 'react'
 import { getGuidedMatchPairs, type GuidedLesson } from '@/data/guidedLessons'
 import { guidedVibes } from '@/data/guidedVibes'
-import { getTodayCompletionLines, type TodayLessonResult } from '@/lib/todayProgress'
+import type { TodayLessonResult } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
@@ -20,7 +20,6 @@ type TodaySessionProps = {
   nextLesson?: GuidedLesson
   knownItemIds: Set<string>
   onComplete: (result: TodayLessonResult) => void
-  onRestart: () => void
   onViewPath: () => void
   onOpenNextLesson: () => void
 }
@@ -30,7 +29,6 @@ export function TodaySession({
   nextLesson,
   knownItemIds,
   onComplete,
-  onRestart,
   onViewPath,
   onOpenNextLesson,
 }: TodaySessionProps) {
@@ -46,15 +44,6 @@ export function TodaySession({
     transcriptMatch: 0,
     passed: false,
   }))
-  const [completionResult, setCompletionResult] = useState<TodayLessonResult>({
-    buildAttempts: 0,
-    typeAttempts: 0,
-    typeUsedFallback: false,
-    speakAttempts: 0,
-    speakTranscriptMatch: 0,
-    speakPassed: false,
-    knownMarkedCount: knownItemIds.size,
-  })
   const step = TODAY_SESSION_STEPS[stepIndex]
   const progress = Math.round(((stepIndex + 1) / TODAY_SESSION_STEPS.length) * 100)
 
@@ -86,7 +75,6 @@ export function TodaySession({
       speakPassed: speakState.passed,
       knownMarkedCount: knownItemIds.size,
     }
-    setCompletionResult(completedResult)
     onComplete(completedResult)
     setStepIndex(TODAY_SESSION_STEPS.indexOf('complete'))
   }
@@ -96,12 +84,8 @@ export function TodaySession({
       <div className="mb-6 grid gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <Button type="button" variant="ghost" size="sm" className="-ml-2 mb-3" onClick={onViewPath}>
-              <ChevronLeft className="h-4 w-4" />
-              {t('today.path.backToPath')}
-            </Button>
             <h2 className="text-xl font-semibold text-[var(--text-primary)]">
-              {t(`today.step.${step}`)}
+              {t('today.lessonInProgress')}
             </h2>
           </div>
           <span className="text-sm text-[var(--text-muted)]">
@@ -133,8 +117,6 @@ export function TodaySession({
           <CompleteStep
             lesson={lesson}
             nextLesson={nextLesson}
-            result={completionResult}
-            onRestart={onRestart}
             onViewPath={onViewPath}
             onOpenNextLesson={onOpenNextLesson}
           />
@@ -198,20 +180,15 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
 function CompleteStep({
   lesson,
   nextLesson,
-  result,
-  onRestart,
   onViewPath,
   onOpenNextLesson,
 }: {
   lesson: GuidedLesson
   nextLesson?: GuidedLesson
-  result: TodayLessonResult
-  onRestart: () => void
   onViewPath: () => void
   onOpenNextLesson: () => void
 }) {
   const { t } = useTranslation()
-  const completionLines = getTodayCompletionLines(result)
   const vibe = guidedVibes[lesson.vibeId]
 
   return (
@@ -225,19 +202,11 @@ function CompleteStep({
             draggable={false}
           />
         )}
-        <CheckCircle2 className="today-completion-vibeBadgeCheck" aria-hidden="true" />
       </div>
       <div>
         <h3 className="text-3xl font-semibold text-[var(--text-primary)]">
           {t('today.completion.title')}
         </h3>
-        <div className="mx-auto mt-4 grid max-w-xl gap-2 text-sm leading-6 text-[var(--text-secondary)]">
-          {completionLines.map((line) => (
-            <p key={line.key} className="rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_54%,transparent)] px-3 py-1.5">
-              {t(line.key, line.vars)}
-            </p>
-          ))}
-        </div>
       </div>
       <div className="today-trophy-panel mx-auto w-full max-w-sm rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] p-4 text-center">
         <p className="flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
@@ -274,10 +243,6 @@ function CompleteStep({
             {t('today.path.backToPath')}
           </Button>
         )}
-        <Button className="today-completion-replayAction" variant="ghost" size="sm" onClick={onRestart}>
-          <RotateCcw className="h-4 w-4" />
-          {t('today.restartLesson')}
-        </Button>
       </div>
     </div>
   )

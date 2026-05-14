@@ -10,6 +10,7 @@ import {
 import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
 import { readGuidedSegmentReviewRecord, type GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
+import { formatGuidedPathLabel } from '@/lib/guidedPathLabels'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
@@ -85,24 +86,14 @@ export function TodayPathOverview({
         <div className="today-path-header flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
           <div className="min-w-0">
             <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
-              {overview.pathMetadata?.title ?? 'English A1 Practical'}
+              {formatGuidedPathLabel(overview.pathMetadata)}
             </h1>
-            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-[var(--text-secondary)]">
-              {overview.pathMetadata && (
-                <span>
-                  {overview.pathMetadata.baseLanguage}{' -> '}{overview.pathMetadata.targetLanguage}
-                </span>
-              )}
-              <span>
-                {guidedVibes[selectedVibeId].label}
-              </span>
-              <span className="text-xs text-[var(--text-muted)]">
-                {t('today.path.progress', {
-                  completed: overview.completedCount,
-                  total: overview.totalLessons,
-                })}
-              </span>
-            </div>
+            <p className="mt-2 text-sm text-[var(--text-muted)]">
+              {t('today.path.compactProgress', {
+                completed: overview.completedCount,
+                total: overview.totalLessons,
+              })}
+            </p>
           </div>
           <div className="today-path-actions flex flex-wrap gap-2 xl:justify-end">
             <Button type="button" variant="outline" size="sm" onClick={() => setDirectoryOpen(true)}>

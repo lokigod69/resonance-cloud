@@ -2,14 +2,12 @@ import { useEffect, useMemo, useState } from 'react'
 import { getGuidedPathOverview, getGuidedTodayPathOptions } from '@/data/guidedLessons'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
-import { TodayCompactHeader } from '@/components/today/TodayHero'
 import { TodayPathOverview } from '@/components/today/TodayPathOverview'
 import { TodaySession } from '@/components/today/TodaySession'
 import {
   createEmptyTodayProgressState,
   markTodayLessonComplete,
   readTodayProgressState,
-  restartTodayLessonProgress,
   writeTodayProgressState,
   type TodayLessonResult,
   type TodayProgressState,
@@ -89,15 +87,6 @@ export default function Today() {
     persistProgress(nextProgress)
   }
 
-  const handleRestart = () => {
-    if (!lesson) return
-    const nextProgress = restartTodayLessonProgress(progress, lesson)
-    persistProgress(nextProgress)
-    setKnownItemIds(new Set())
-    setSessionKey((current) => current + 1)
-    setSessionActive(true)
-  }
-
   const handleSelectVibe = (vibeId: ActiveGuidedVibeId) => {
     setSelectedGuidedVibe(selectedPathId, vibeId)
     setSelectedVibeId(getSelectedGuidedVibe(selectedPathId))
@@ -162,8 +151,6 @@ export default function Today() {
           />
         )}
 
-        {sessionActive && lesson && <TodayCompactHeader lesson={lesson} />}
-
         {sessionActive && lesson && (
           <TodaySession
             key={sessionKey}
@@ -171,7 +158,6 @@ export default function Today() {
             nextLesson={nextLesson}
             knownItemIds={knownItemIds}
             onComplete={handleComplete}
-            onRestart={handleRestart}
             onViewPath={handleExitToIntro}
             onOpenNextLesson={handleOpenNextLesson}
           />
