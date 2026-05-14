@@ -124,20 +124,19 @@ body,
 }
 
 @layer base {
-  h1,
-  h2 {
+  .lexicon-runner-shell :where(h1, h2) {
     margin: 0;
     font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: 0;
   }
 
-  h1 {
+  .lexicon-runner-shell h1 {
     font-size: clamp(40px, 8vw, 74px);
     line-height: 0.95;
   }
 
-  h2 {
+  .lexicon-runner-shell h2 {
     font-size: clamp(32px, 6vw, 52px);
   }
 }

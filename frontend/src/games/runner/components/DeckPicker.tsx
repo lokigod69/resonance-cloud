@@ -114,7 +114,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
         <button
           type="button"
           onClick={() => navigate('/study')}
-          className="mb-3 inline-flex min-h-10 w-fit items-center gap-2 rounded-lg border border-[var(--runner-border-subtle)] bg-[#0f2337]/70 px-4 text-sm text-[#a8d8ea] transition hover:border-[var(--runner-border-strong)] hover:bg-[#142d46]/82"
+          className="mb-3 inline-flex min-h-11 w-fit items-center gap-2 rounded-lg border border-[var(--runner-border-subtle)] bg-[#0f2337]/70 px-4 text-sm text-[#a8d8ea] transition hover:border-[var(--runner-border-strong)] hover:bg-[#142d46]/82"
         >
           <ArrowLeft size={16} />
           {t('games.runner.deckPicker.back')}
@@ -139,7 +139,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                   key={language}
                   type="button"
                   onClick={() => onLanguageChange(language)}
-                  className={`min-h-10 rounded-full border px-3 py-2 text-sm transition ${
+                  className={`min-h-11 rounded-full border px-3 py-2 text-sm transition ${
                     active
                       ? 'border-[rgba(79,195,247,0.78)] bg-[#142d46]/90 text-[#d0f0ff] shadow-[0_0_22px_rgba(79,195,247,0.24),inset_0_0_18px_rgba(79,195,247,0.08)]'
                       : 'border-[var(--runner-border-subtle)] bg-[#0f2337]/56 text-[#a8d8ea]/74 hover:border-[var(--runner-border-strong)] hover:text-[#d0f0ff]'

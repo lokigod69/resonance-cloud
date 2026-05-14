@@ -86,7 +86,7 @@ export class SpiritController {
 
   baseAlignedY(height: number): number {
     this.resizeForViewport(this.scene.scale.width, height);
-    const bottomRatio = this.scene.scale.width < 640 ? 0.815 : 0.865;
+    const bottomRatio = this.scene.scale.width < 640 ? 0.78 : 0.82;
     return height * bottomRatio - (this.sprite.displayHeight * this.container.scaleY) / 2 - 8;
   }
 

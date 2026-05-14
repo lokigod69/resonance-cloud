@@ -593,15 +593,17 @@ export class RushRunnerScene extends Phaser.Scene {
     if (!cardFrame) {
       throw new Error('Missing production card-frame.png.');
     }
-    const art = this.add.image(0, 0, cardArtKeyForIndex(index));
-    art.setDisplaySize(560, 315);
-    art.setAlpha(isBluff ? 0.82 : 0.94);
-    art.setVisible(this.displayMode === 'image');
+    const isImageMode = this.displayMode === 'image';
+    const art = isImageMode ? this.add.image(0, 0, cardArtKeyForIndex(index)) : undefined;
+    if (art) {
+      art.setDisplaySize(560, 315);
+      art.setAlpha(isBluff ? 0.82 : 0.94);
+    }
     const frame = this.add.image(0, 0, cardFrame.key);
     frame.name = 'frame';
-    frame.setDisplaySize(720, 405);
+    frame.setDisplaySize(605, 340);
     frame.setBlendMode(Phaser.BlendModes.SCREEN);
-    const label = this.displayMode === 'text'
+    const label = !isImageMode
       ? this.add.text(0, 0, word, {
         align: 'center',
         color: '#d0f0ff',
@@ -615,7 +617,7 @@ export class RushRunnerScene extends Phaser.Scene {
       : undefined;
     label?.setOrigin(0.5);
     const container = this.add.container(this.scale.width / 2, this.scale.height * 0.35, [
-      art,
+      ...(art ? [art] : []),
       frame,
       ...(label ? [label] : []),
     ]);

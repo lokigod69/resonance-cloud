@@ -45,8 +45,8 @@ type GlideCard = {
   glow: Phaser.GameObjects.Graphics;
   shadow: Phaser.GameObjects.Graphics;
   maskShape: Phaser.GameObjects.Graphics;
-  mask: Phaser.Display.Masks.GeometryMask;
-  art: Phaser.GameObjects.Image;
+  mask?: Phaser.Display.Masks.GeometryMask;
+  art?: Phaser.GameObjects.Image;
   label?: Phaser.GameObjects.Text;
   frame?: Phaser.GameObjects.Image;
   promptCard: PromptCard;
@@ -303,13 +303,17 @@ export class GlideRunnerScene extends Phaser.Scene {
     const shadow = this.add.graphics();
     shadow.setDepth(depth);
     const maskShape = this.make.graphics({ x: 0, y: 0 }, false);
-    const mask = maskShape.createGeometryMask();
-    const art = this.add.image(0, 0, cardArtKeyForIndex(index));
-    art.setDepth(depth + 0.2);
-    art.setOrigin(0.5);
-    art.setMask(mask);
-    art.setVisible(this.displayMode === 'image');
-    const label = this.displayMode === 'text'
+    const isImageMode = this.displayMode === 'image';
+    let mask: Phaser.Display.Masks.GeometryMask | undefined;
+    let art: Phaser.GameObjects.Image | undefined;
+    if (isImageMode) {
+      mask = maskShape.createGeometryMask();
+      art = this.add.image(0, 0, cardArtKeyForIndex(index));
+      art.setDepth(depth + 0.2);
+      art.setOrigin(0.5);
+      art.setMask(mask);
+    }
+    const label = !isImageMode
       ? this.add.text(0, 0, promptCard.word, {
         align: 'center',
         color: '#d0f0ff',
@@ -362,9 +366,11 @@ export class GlideRunnerScene extends Phaser.Scene {
       0.45,
       1,
     );
-    const cardWidth = this.scale.width < 640
+    const cardFinalWidth = this.scale.width < 640
       ? Phaser.Math.Clamp(this.scale.width * 0.2, 64, 84)
       : Math.min(this.scale.width * 0.135, this.scale.height * 0.25) * responsive;
+    const perspectiveScale = 0.18 + eased * 0.82;
+    const cardWidth = cardFinalWidth * perspectiveScale;
     const cardHeight = cardWidth * 0.5625;
     const feedbackAge = card.feedbackStartedAt === null ? null : time - card.feedbackStartedAt;
     const shake = card.wrong && feedbackAge !== null && feedbackAge < 440
@@ -384,9 +390,9 @@ export class GlideRunnerScene extends Phaser.Scene {
     card.height = cardHeight * selectionPulse * commitPulse * (1 + dissolve * 0.08);
     const alpha = card.wrong ? 0.72 : 0.38 + eased * 0.62;
     const resolvedAlpha = card.correct ? 1 - dissolve : alpha;
-    card.art.setPosition(card.x, y);
-    card.art.setDisplaySize(card.width, card.height);
-    card.art.setAlpha(card.wrong ? 0.92 : card.committed ? resolvedAlpha : alpha);
+    card.art?.setPosition(card.x, y);
+    card.art?.setDisplaySize(card.width, card.height);
+    card.art?.setAlpha(card.wrong ? 0.92 : card.committed ? resolvedAlpha : alpha);
     if (card.label) {
       card.label.setPosition(card.x, y);
       card.label.setFontSize(Math.max(18, Math.round(card.height * 0.28)));
@@ -394,7 +400,7 @@ export class GlideRunnerScene extends Phaser.Scene {
       card.label.setAlpha(card.wrong ? 0.92 : card.committed ? resolvedAlpha : alpha);
     }
     card.frame?.setPosition(card.x, y);
-    card.frame?.setDisplaySize(card.width * 1.28, card.height * 1.28);
+    card.frame?.setDisplaySize(card.width * 1.08, card.height * 1.08);
     card.frame?.setAlpha(card.wrong ? 0.96 : (card.committed ? resolvedAlpha : alpha) * 0.95);
     this.setCardDepth(card, card.committed ? 68 + card.lane : 34 + card.lane);
     this.drawCardShape(card, card.width, card.height);
@@ -403,7 +409,7 @@ export class GlideRunnerScene extends Phaser.Scene {
   private setCardDepth(card: GlideCard, depth: number): void {
     card.shadow.setDepth(depth);
     card.glow.setDepth(depth + 0.1);
-    card.art.setDepth(depth + 0.2);
+    card.art?.setDepth(depth + 0.2);
     card.frame?.setDepth(depth + 0.35);
     card.label?.setDepth(depth + 0.45);
   }
@@ -701,12 +707,12 @@ export class GlideRunnerScene extends Phaser.Scene {
 
   private clearCards(): void {
     this.cards.forEach((card) => {
-      card.art.clearMask(true);
+      card.art?.clearMask(true);
       card.frame?.clearMask(false);
       card.maskShape.destroy();
       card.shadow.destroy();
       card.glow.destroy();
-      card.art.destroy();
+      card.art?.destroy();
       card.label?.destroy();
       card.frame?.destroy();
     });
