@@ -565,6 +565,526 @@ Man muss es nicht zweimal sagen
 Entschieden. Geklaert. Fertig.
 Entschieden. Geklaert. Fertig.`,
   }),
+  defineGuidedTrophySong({
+    id: 'english-a1-practical-2-segment-1-bright-trophy-song',
+    pathId: 'english-a1-practical-2',
+    segment: 1,
+    vibe: 'bright',
+    trophyWords: ['lovely', 'glad', 'brilliant', 'ready', 'charming'],
+    styleFamily: 'sunlit-acoustic-pop',
+    songStyleLabel: 'Sunlit acoustic pop',
+    musicCaption: 'Sunlit acoustic pop with a Bright, confident, encouraging voice; mid-tempo around 104 bpm, singable and warm but not childish; bright lead vocal with light harmony on the hook, clean consonants, no melisma; acoustic guitar, soft piano taps, brushed kit, handclap lift, warm bass; clear English diction so "lovely, glad, brilliant, ready, charming" all land cleanly; avoid nursery-rhyme bounce, avoid generic commercial jingle, avoid over-polished EDM-pop.',
+    audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-1-bright-trophy-song/candidate-a.mp3',
+    audioCandidates: defineAudioCandidates(
+      'english-a1-practical-2-segment-1-bright-trophy-song',
+      'https://tempfile.aiquickdraw.com/r/953eaa629e914c3ca7eb0b94fca9b1ca.mp3',
+      'https://tempfile.aiquickdraw.com/r/1519352f29cb424a9bcbea91db912c4b.mp3',
+      'a1p2',
+    ),
+    audioStatus: 'ready',
+    rawLyricsWithWrappers: `[Verse 1]
+I missed the meaning in the room
+You wrote it on the page
+That was <<lovely>>, thank you
+Like a lamp beside the phrase
+
+[Pre-Chorus]
+You pointed once, I found the line
+And the answer turned around
+
+[Chorus]
+I'm <<glad>> you wrote it down
+Glad the words came shining through
+<<Brilliant>> little note in a busy town
+I'm <<ready>> now with you
+
+[Verse 2]
+Which one? I asked you at the counter
+You smiled and made it clear
+A <<charming>> little choice was waiting
+Right there, right here
+
+[Chorus]
+I'm glad you wrote it down
+Glad the words came shining through
+Brilliant little note in a busy town
+I'm ready now with you
+
+[Bridge]
+Lovely on the paper
+Charming in the light
+Ready for the next small question
+Ready for the ride
+
+[Outro]
+Glad, glad, glad it came through
+Brilliant, ready, thanks to you`,
+    lyricsTranslationDe: `[Verse 1]
+Ich habe die Bedeutung im Raum verpasst
+Du hast sie auf die Seite geschrieben
+Das war nett, danke
+Wie eine Lampe neben dem Satz
+
+[Pre-Chorus]
+Du hast einmal gezeigt, ich fand die Zeile
+Und die Antwort drehte sich um
+
+[Chorus]
+Ich bin froh, dass du es aufgeschrieben hast
+Froh, dass die Worte durchgeleuchtet haben
+Eine prima kleine Notiz in einer vollen Stadt
+Ich bin jetzt bereit mit dir
+
+[Verse 2]
+Welche? fragte ich dich am Tresen
+Du hast gelaechelt und es klar gemacht
+Eine charmante kleine Wahl wartete
+Genau dort, genau hier
+
+[Chorus]
+Ich bin froh, dass du es aufgeschrieben hast
+Froh, dass die Worte durchgeleuchtet haben
+Eine prima kleine Notiz in einer vollen Stadt
+Ich bin jetzt bereit mit dir
+
+[Bridge]
+Nett auf dem Papier
+Charmant im Licht
+Bereit fuer die naechste kleine Frage
+Bereit fuer die Fahrt
+
+[Outro]
+Froh, froh, froh, dass es angekommen ist
+Prima, bereit, dank dir`,
+  }),
+  defineGuidedTrophySong({
+    id: 'english-a1-practical-2-segment-2-bright-trophy-song',
+    pathId: 'english-a1-practical-2',
+    segment: 2,
+    vibe: 'bright',
+    trophyWords: ['easy', 'splendid', 'kind', 'sure', 'cheerful'],
+    styleFamily: 'bright-handclap-pop',
+    songStyleLabel: 'Bright handclap pop',
+    musicCaption: 'Bright handclap pop at ~112 bpm with a warm, confident reward feel; Bright voice - encouraging, socially generous, clear, never childish; crisp lead vocal with a small group lift on the hook, no melisma; muted guitar, handclaps, light piano, rounded bass, clean pop kit; clear English diction so "easy, splendid, kind, sure, cheerful" all land cleanly; avoid kids-song cadence, avoid stadium chant, avoid glossy top-40 excess.',
+    audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-2-bright-trophy-song/candidate-a.mp3',
+    audioCandidates: defineAudioCandidates(
+      'english-a1-practical-2-segment-2-bright-trophy-song',
+      'https://tempfile.aiquickdraw.com/r/695d1a4117664fdd9708a8a9e1e7fe5f.mp3',
+      'https://tempfile.aiquickdraw.com/r/6cb4542279614172ac8234f00177423e.mp3',
+      'a1p2',
+    ),
+    audioStatus: 'ready',
+    rawLyricsWithWrappers: `[Verse 1]
+Card on the counter, answer in the light
+That was <<easy>>, thank you
+Nothing got too heavy
+The small machine went through
+
+[Pre-Chorus]
+A receipt near the door
+One more smile before I go
+
+[Chorus]
+What a <<splendid>> little finish
+<<Kind>> of you to see me through
+I'm <<sure>> of where I'm going
+<<Cheerful>> in the queue
+
+[Verse 2]
+Reservation under my name
+You found it right away
+Sure, sure, the room is waiting
+And cheerful is the day
+
+[Chorus]
+What a splendid little finish
+Kind of you to see me through
+I'm sure of where I'm going
+Cheerful in the queue
+
+[Bridge]
+Easy at the payment
+Kind at the door
+Splendid in the small things
+I can ask for more
+
+[Outro]
+Cheerful, sure, easy
+Splendid, kind, and free`,
+    lyricsTranslationDe: `[Verse 1]
+Karte auf dem Tresen, Antwort im Licht
+Das war einfach, danke
+Nichts wurde zu schwer
+Das kleine Geraet ging durch
+
+[Pre-Chorus]
+Eine Quittung nahe der Tuer
+Noch ein Laecheln, bevor ich gehe
+
+[Chorus]
+Was fuer ein prima kleiner Abschluss
+Freundlich von dir, mich durchzubringen
+Ich bin sicher, wohin ich gehe
+Heiter in der Schlange
+
+[Verse 2]
+Reservierung unter meinem Namen
+Du hast sie sofort gefunden
+Sicher, sicher, das Zimmer wartet
+Und heiter ist der Tag
+
+[Chorus]
+Was fuer ein prima kleiner Abschluss
+Freundlich von dir, mich durchzubringen
+Ich bin sicher, wohin ich gehe
+Heiter in der Schlange
+
+[Bridge]
+Einfach beim Bezahlen
+Freundlich an der Tuer
+Prima in den kleinen Dingen
+Ich kann nach mehr fragen
+
+[Outro]
+Heiter, sicher, einfach
+Prima, freundlich und frei`,
+  }),
+  defineGuidedTrophySong({
+    id: 'english-a1-practical-2-segment-1-wistful-trophy-song',
+    pathId: 'english-a1-practical-2',
+    segment: 1,
+    vibe: 'wistful',
+    trophyWords: ['gently', 'slowly', 'perhaps', 'quiet', 'soft'],
+    styleFamily: 'moonlit-indie-folk',
+    songStyleLabel: 'Moonlit indie folk',
+    musicCaption: 'Moonlit indie folk at ~78 bpm, soft and reflective without melodrama; Wistful voice - spacious, careful, intimate but not whispered; clear vocal with breath around phrase endings, no ASMR, no heavy vibrato; fingerpicked guitar, muted felt piano, brushed cymbals, low warm bass, faint pad; clear English diction so "gently, slowly, perhaps, quiet, soft" all land cleanly; avoid piano-ballad cliche, avoid sad-girl-pop shape, avoid sleepy monotone.',
+    audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-1-wistful-trophy-song/candidate-a.mp3',
+    audioCandidates: defineAudioCandidates(
+      'english-a1-practical-2-segment-1-wistful-trophy-song',
+      'https://tempfile.aiquickdraw.com/r/a952897ee2144ea5b2e83a8bd5bc3344.mp3',
+      'https://tempfile.aiquickdraw.com/r/155b70628ffe463ca5970753dd72312f.mp3',
+      'a1p2',
+    ),
+    audioStatus: 'ready',
+    rawLyricsWithWrappers: `[Verse 1]
+Say it <<gently>>, I am near
+The room is full of half-heard sound
+If you write it <<slowly>>
+I can follow what I found
+
+[Chorus]
+<<Perhaps>> here, perhaps this way
+A <<quiet>> mark beside the line
+Keep it <<soft>>, keep it close
+Soft enough for me to try
+
+[Verse 2]
+You pointed to the smaller sign
+And waited while I knew
+Slowly, gently, there it was
+A door I could walk through
+
+[Chorus]
+Perhaps here, perhaps this way
+A quiet mark beside the line
+Keep it soft, keep it close
+Soft enough for me to try
+
+[Bridge]
+No hurry in the answer
+No shame inside the pause
+Just a softly open window
+And a line that almost talks
+
+[Outro]
+Soft enough, quiet enough
+Perhaps I know it now`,
+    lyricsTranslationDe: `[Verse 1]
+Sag es sanft, ich bin nah
+Der Raum ist voll halb gehoerter Geraeusche
+Wenn du es langsam schreibst
+Kann ich folgen, was ich gefunden habe
+
+[Chorus]
+Vielleicht hier, vielleicht so
+Eine ruhige Markierung neben der Zeile
+Halte es weich, halte es nah
+Weich genug, damit ich es versuche
+
+[Verse 2]
+Du hast auf das kleinere Schild gezeigt
+Und gewartet, waehrend ich verstand
+Langsam, sanft, da war es
+Eine Tuer, durch die ich gehen konnte
+
+[Chorus]
+Vielleicht hier, vielleicht so
+Eine ruhige Markierung neben der Zeile
+Halte es weich, halte es nah
+Weich genug, damit ich es versuche
+
+[Bridge]
+Keine Eile in der Antwort
+Keine Scham in der Pause
+Nur ein weich geoeffnetes Fenster
+Und eine Zeile, die fast spricht
+
+[Outro]
+Weich genug, ruhig genug
+Vielleicht weiss ich es jetzt`,
+  }),
+  defineGuidedTrophySong({
+    id: 'english-a1-practical-2-segment-2-wistful-trophy-song',
+    pathId: 'english-a1-practical-2',
+    segment: 2,
+    vibe: 'wistful',
+    trophyWords: ['again', 'near', 'calm', 'simple', 'patient'],
+    styleFamily: 'soft-downtempo-folk',
+    songStyleLabel: 'Soft downtempo folk',
+    musicCaption: 'Soft downtempo folk at ~84 bpm with a gentle pulse and reflective space; Wistful voice - calm, patient, warm but restrained; close vocal with clean diction and soft phrase endings, no melodrama; nylon guitar, low brushed beat, small electric piano motif, airy pad, rounded bass; clear English diction so "again, near, calm, simple, patient" all land cleanly; avoid lo-fi haze, avoid piano-ballad weight, avoid overly poetic obscurity.',
+    audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-2-wistful-trophy-song/candidate-a.mp3',
+    audioCandidates: defineAudioCandidates(
+      'english-a1-practical-2-segment-2-wistful-trophy-song',
+      'https://tempfile.aiquickdraw.com/r/81b07c63ac4341aba2ddbd6b7a0fbce1.mp3',
+      'https://tempfile.aiquickdraw.com/r/ed35e1d9dbab4612848d4ca19856fb24.mp3',
+      'a1p2',
+    ),
+    audioStatus: 'ready',
+    rawLyricsWithWrappers: `[Verse 1]
+Say it <<again>> at the counter
+The card light turns to green
+The receipt is somewhere <<near>>
+By the door, half-seen
+
+[Chorus]
+Stay <<calm>>, stay close
+Keep it <<simple>>, one more line
+<<Patient>> as the room slows down
+Patient with the time
+
+[Verse 2]
+My name is on the paper
+You found it in the glow
+Near enough to touch it
+Simple enough to know
+
+[Chorus]
+Stay calm, stay close
+Keep it simple, one more line
+Patient as the room slows down
+Patient with the time
+
+[Bridge]
+Again, I ask it softly
+Again, you make it plain
+Near the quiet doorway
+I can start again
+
+[Outro]
+Calm, simple, patient
+Near the light again`,
+    lyricsTranslationDe: `[Verse 1]
+Sag es noch einmal am Tresen
+Das Kartenlicht wird gruen
+Die Quittung ist irgendwo nah
+Bei der Tuer, halb gesehen
+
+[Chorus]
+Bleib ruhig, bleib nah
+Halte es einfach, noch eine Zeile
+Geduldig, waehrend der Raum langsamer wird
+Geduldig mit der Zeit
+
+[Verse 2]
+Mein Name steht auf dem Papier
+Du hast ihn im Licht gefunden
+Nah genug, um ihn zu beruehren
+Einfach genug, um es zu wissen
+
+[Chorus]
+Bleib ruhig, bleib nah
+Halte es einfach, noch eine Zeile
+Geduldig, waehrend der Raum langsamer wird
+Geduldig mit der Zeit
+
+[Bridge]
+Noch einmal frage ich leise
+Noch einmal machst du es klar
+Nahe der ruhigen Tuer
+Kann ich wieder anfangen
+
+[Outro]
+Ruhig, einfach, geduldig
+Nahe am Licht, noch einmal`,
+  }),
+  defineGuidedTrophySong({
+    id: 'english-a1-practical-2-segment-1-sharp-trophy-song',
+    pathId: 'english-a1-practical-2',
+    segment: 1,
+    vibe: 'sharp',
+    trophyWords: ['clear', 'quick', 'exactly', 'decided', 'certain'],
+    styleFamily: 'clean-synth-grid',
+    songStyleLabel: 'Clean synth grid',
+    musicCaption: 'Clean synth grid at ~108 bpm, crisp and precise with a compact reward hook; Sharp voice - direct, controlled, high-contrast, never rude or robotic; dry lead vocal with tight timing, no vocoder, no ornamentation; short synth pluck motif, clipped hats, low square bass, minimal kick, no pads washing over diction; clear English diction so "clear, quick, exactly, decided, certain" all land cleanly; avoid industrial darkness, avoid trap posture, avoid boss-mode cliche.',
+    audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-1-sharp-trophy-song/candidate-a.mp3',
+    audioCandidates: defineAudioCandidates(
+      'english-a1-practical-2-segment-1-sharp-trophy-song',
+      'https://tempfile.aiquickdraw.com/r/d77dedd0971441cf8277c158860c7703.mp3',
+      'https://tempfile.aiquickdraw.com/r/c027f0663ce94e05ad98a97964d6967b.mp3',
+      'a1p2',
+    ),
+    audioStatus: 'ready',
+    rawLyricsWithWrappers: `[Verse 1]
+Make it <<clear>> on the page
+One clean line, no drift
+Keep it <<quick>>, I can use it
+Show me where it fits
+
+[Chorus]
+<<Exactly>> there, no second guess
+<<Decided>> now, this one
+<<Certain>> in the little steps
+Certain when it's done
+
+[Verse 2]
+Counter. Choice. Short answer.
+The sign is in my sight
+Clear enough to move me
+Quick enough for right
+
+[Chorus]
+Exactly there, no second guess
+Decided now, this one
+Certain in the little steps
+Certain when it's done
+
+[Bridge]
+No extra words around it
+No fog inside the sound
+Exactly means I found it
+Decided means I found
+
+[Outro]
+Clear. Quick. Certain.
+Exactly. Decided. Done.`,
+    lyricsTranslationDe: `[Verse 1]
+Mach es klar auf der Seite
+Eine saubere Zeile, kein Abdriften
+Halte es schnell, ich kann es nutzen
+Zeig mir, wo es passt
+
+[Chorus]
+Genau dort, kein zweites Raten
+Jetzt entschieden, dieses hier
+Sicher in den kleinen Schritten
+Sicher, wenn es fertig ist
+
+[Verse 2]
+Tresen. Wahl. Kurze Antwort.
+Das Schild ist in meinem Blick
+Klar genug, um mich weiterzubringen
+Schnell genug fuer richtig
+
+[Chorus]
+Genau dort, kein zweites Raten
+Jetzt entschieden, dieses hier
+Sicher in den kleinen Schritten
+Sicher, wenn es fertig ist
+
+[Bridge]
+Keine Extra-Worte darum herum
+Kein Nebel im Klang
+Genau heisst, ich habe es gefunden
+Entschieden heisst, ich habe gefunden
+
+[Outro]
+Klar. Schnell. Sicher.
+Genau. Entschieden. Fertig.`,
+  }),
+  defineGuidedTrophySong({
+    id: 'english-a1-practical-2-segment-2-sharp-trophy-song',
+    pathId: 'english-a1-practical-2',
+    segment: 2,
+    vibe: 'sharp',
+    trophyWords: ['straight', 'focused', 'direct', 'settled', 'done'],
+    styleFamily: 'crisp-bass-pop',
+    songStyleLabel: 'Crisp bass pop',
+    musicCaption: 'Crisp bass pop at ~114 bpm, compact and precise with a dry rhythmic hook; Sharp voice - direct, settled, focused, warm enough for service moments but never soft-edged; tight vocal timing, no vocoder, no melisma; punchy bass, clipped guitar mutes, clean kit, small synth accent, sparse harmony only on the hook; clear English diction so "straight, focused, direct, settled, done" all land cleanly; avoid aggressive hip-hop posture, avoid cold techno, avoid motivational slogan energy.',
+    audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-2-sharp-trophy-song/candidate-a.mp3',
+    audioCandidates: defineAudioCandidates(
+      'english-a1-practical-2-segment-2-sharp-trophy-song',
+      'https://tempfile.aiquickdraw.com/r/e37d71cdd3834d00bff9833d7a267646.mp3',
+      'https://tempfile.aiquickdraw.com/r/eae1db88a8a149c087001afd9cd0fe79.mp3',
+      'a1p2',
+    ),
+    audioStatus: 'ready',
+    rawLyricsWithWrappers: `[Verse 1]
+Card first, <<straight>> to payment
+Receipt set by the door
+Eyes <<focused>> on the counter
+No need to ask for more
+
+[Chorus]
+Keep it <<direct>>, keep it clean
+<<Settled>> in one line
+<<Done>> means done, and done means done
+Right on time
+
+[Verse 2]
+Reservation. Name checked.
+The answer lands in place
+Direct little sentence
+Settled on my face
+
+[Chorus]
+Keep it direct, keep it clean
+Settled in one line
+Done means done, and done means done
+Right on time
+
+[Bridge]
+Straight is the road out
+Focused is the view
+Done is the small door closing
+Cleanly after you
+
+[Outro]
+Direct. Settled. Done.
+Direct. Settled. Done.`,
+    lyricsTranslationDe: `[Verse 1]
+Karte zuerst, direkt zum Bezahlen
+Quittung bei der Tuer
+Augen konzentriert auf den Tresen
+Ich muss nicht mehr fragen
+
+[Chorus]
+Halte es direkt, halte es sauber
+Geklaert in einer Zeile
+Fertig heisst fertig, und fertig heisst fertig
+Genau rechtzeitig
+
+[Verse 2]
+Reservierung. Name geprueft.
+Die Antwort landet an ihrem Platz
+Ein direkter kleiner Satz
+Geklaert auf meinem Gesicht
+
+[Chorus]
+Halte es direkt, halte es sauber
+Geklaert in einer Zeile
+Fertig heisst fertig, und fertig heisst fertig
+Genau rechtzeitig
+
+[Bridge]
+Direkt ist der Weg hinaus
+Konzentriert ist der Blick
+Fertig ist die kleine Tuer, die sich schliesst
+Sauber nach dir
+
+[Outro]
+Direkt. Geklaert. Fertig.
+Direkt. Geklaert. Fertig.`,
+  }),
 ]
 
 export function deriveTrophySongClozePositions(rawLyricsWithWrappers: string): GuidedTrophySongClozePosition[] {
@@ -666,16 +1186,16 @@ function normalizeTrophyWord(word: string) {
   return word.trim().toLowerCase()
 }
 
-function defineAudioCandidates(catalogId: string, providerUrlA: string, providerUrlB?: string) {
+function defineAudioCandidates(catalogId: string, providerUrlA: string, providerUrlB?: string, assetCollection = 'a1p1') {
   return {
     A: {
-      publicUrl: `/guided/trophy-songs/a1p1/${catalogId}/candidate-a.mp3`,
+      publicUrl: `/guided/trophy-songs/${assetCollection}/${catalogId}/candidate-a.mp3`,
       providerUrl: providerUrlA,
     },
     ...(providerUrlB
       ? {
           B: {
-            publicUrl: `/guided/trophy-songs/a1p1/${catalogId}/candidate-b.mp3`,
+            publicUrl: `/guided/trophy-songs/${assetCollection}/${catalogId}/candidate-b.mp3`,
             providerUrl: providerUrlB,
           },
         }

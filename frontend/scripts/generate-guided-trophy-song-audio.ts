@@ -35,16 +35,17 @@ type Manifest = {
 const KIE_API_BASE = 'https://api.kie.ai/api/v1'
 const POLL_INTERVAL_MS = 10_000
 const MAX_POLL_MS = 15 * 60_000
+const ASSET_COLLECTION = 'a1p2'
 const TARGET_IDS = new Set([
-  'english-a1-practical-1-segment-1-bright-trophy-song',
-  'english-a1-practical-1-segment-2-bright-trophy-song',
-  'english-a1-practical-1-segment-1-wistful-trophy-song',
-  'english-a1-practical-1-segment-2-wistful-trophy-song',
-  'english-a1-practical-1-segment-1-sharp-trophy-song',
-  'english-a1-practical-1-segment-2-sharp-trophy-song',
+  'english-a1-practical-2-segment-1-bright-trophy-song',
+  'english-a1-practical-2-segment-2-bright-trophy-song',
+  'english-a1-practical-2-segment-1-wistful-trophy-song',
+  'english-a1-practical-2-segment-2-wistful-trophy-song',
+  'english-a1-practical-2-segment-1-sharp-trophy-song',
+  'english-a1-practical-2-segment-2-sharp-trophy-song',
 ])
 
-const manifestPath = fileURLToPath(new URL('../public/guided/trophy-songs/a1p1/manifest.json', import.meta.url))
+const manifestPath = fileURLToPath(new URL(`../public/guided/trophy-songs/${ASSET_COLLECTION}/manifest.json`, import.meta.url))
 const envPath = fileURLToPath(new URL('../../.env', import.meta.url))
 const apiKey = loadKieApiKey()
 const manifest = readManifest()
@@ -271,7 +272,7 @@ function localCandidatePath(catalogId: string, candidate: 'A' | 'B') {
 }
 
 function publicCandidateUrl(catalogId: string, candidate: 'A' | 'B') {
-  return `/guided/trophy-songs/a1p1/${catalogId}/candidate-${candidate.toLowerCase()}.mp3`
+  return `/guided/trophy-songs/${ASSET_COLLECTION}/${catalogId}/candidate-${candidate.toLowerCase()}.mp3`
 }
 
 function readManifest(): Manifest {

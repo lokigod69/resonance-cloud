@@ -114,6 +114,12 @@ const supportedTuples = [
   ['english-a1-practical-1', 2, 'wistful'],
   ['english-a1-practical-1', 1, 'sharp'],
   ['english-a1-practical-1', 2, 'sharp'],
+  ['english-a1-practical-2', 1, 'bright'],
+  ['english-a1-practical-2', 2, 'bright'],
+  ['english-a1-practical-2', 1, 'wistful'],
+  ['english-a1-practical-2', 2, 'wistful'],
+  ['english-a1-practical-2', 1, 'sharp'],
+  ['english-a1-practical-2', 2, 'sharp'],
 ] as const
 for (const [pathId, segment, vibe] of supportedTuples) {
   const row = await fetchTrophySongCanonical(pathId, segment, vibe)
@@ -122,7 +128,7 @@ for (const [pathId, segment, vibe] of supportedTuples) {
 
 let unsupportedError: unknown
 try {
-  await fetchTrophySongCanonical('english-a1-practical-2', 1, 'bright')
+  await fetchTrophySongCanonical('english-a1-practical-3', 1, 'bright')
 } catch (error) {
   unsupportedError = error
 }

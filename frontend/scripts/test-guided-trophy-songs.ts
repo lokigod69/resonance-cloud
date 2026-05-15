@@ -4,7 +4,7 @@
  * Run: npx tsx scripts/test-guided-trophy-songs.ts
  */
 
-import { existsSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import {
   GUIDED_TROPHY_SONGS,
@@ -31,19 +31,56 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 }
 
 console.log('\n[guided trophy song catalog]')
-assert('catalog has exactly six rows', GUIDED_TROPHY_SONGS.length === 6, GUIDED_TROPHY_SONGS.length)
+assert('catalog has exactly twelve rows', GUIDED_TROPHY_SONGS.length === 12, GUIDED_TROPHY_SONGS.length)
 assert(
   'catalog ids are unique',
   new Set(GUIDED_TROPHY_SONGS.map((row) => row.id)).size === GUIDED_TROPHY_SONGS.length,
   GUIDED_TROPHY_SONGS.map((row) => row.id),
 )
+assert(
+  'A1P1 still has six rows',
+  GUIDED_TROPHY_SONGS.filter((row) => row.pathId === 'english-a1-practical-1').length === 6,
+  GUIDED_TROPHY_SONGS.map((row) => row.id),
+)
+assert(
+  'A1P2 has six rows',
+  GUIDED_TROPHY_SONGS.filter((row) => row.pathId === 'english-a1-practical-2').length === 6,
+  GUIDED_TROPHY_SONGS.map((row) => row.id),
+)
+assert(
+  'A1P3-A1P5 trophy songs are not generated in this pass',
+  GUIDED_TROPHY_SONGS.every((row) => ['english-a1-practical-1', 'english-a1-practical-2'].includes(row.pathId)),
+  GUIDED_TROPHY_SONGS.map((row) => row.pathId),
+)
+
+const expectedTrophyWords = new Map<string, string[]>([
+  ['english-a1-practical-1-segment-1-bright-trophy-song', ['delighted', 'marvelous', 'glad', 'eager', 'splendid']],
+  ['english-a1-practical-1-segment-2-bright-trophy-song', ['ready', 'lovely', 'charming', 'wonderful', 'brilliant']],
+  ['english-a1-practical-1-segment-1-wistful-trophy-song', ['gently', 'slowly', 'lost', 'quiet', 'perhaps']],
+  ['english-a1-practical-1-segment-2-wistful-trophy-song', ['almost', 'soft', 'again', 'a little', 'lingering']],
+  ['english-a1-practical-1-segment-1-sharp-trophy-song', ['clear', 'quick', 'straight', 'ready', 'exactly']],
+  ['english-a1-practical-1-segment-2-sharp-trophy-song', ['certain', 'focused', 'decided', 'settled', 'done']],
+  ['english-a1-practical-2-segment-1-bright-trophy-song', ['lovely', 'glad', 'brilliant', 'ready', 'charming']],
+  ['english-a1-practical-2-segment-2-bright-trophy-song', ['easy', 'splendid', 'kind', 'sure', 'cheerful']],
+  ['english-a1-practical-2-segment-1-wistful-trophy-song', ['gently', 'slowly', 'perhaps', 'quiet', 'soft']],
+  ['english-a1-practical-2-segment-2-wistful-trophy-song', ['again', 'near', 'calm', 'simple', 'patient']],
+  ['english-a1-practical-2-segment-1-sharp-trophy-song', ['clear', 'quick', 'exactly', 'decided', 'certain']],
+  ['english-a1-practical-2-segment-2-sharp-trophy-song', ['straight', 'focused', 'direct', 'settled', 'done']],
+])
+
+const manifestEntries = [
+  ...readManifest('a1p1'),
+  ...readManifest('a1p2'),
+]
 
 for (const row of GUIDED_TROPHY_SONGS) {
   const wrappedMatches = Array.from(row.rawLyricsWithWrappers.matchAll(/<<([^<>]+)>>/g))
   const derived = deriveTrophySongClozePositions(row.rawLyricsWithWrappers)
   const allowedWords = new Set(row.trophyWords)
+  const expectedWords = expectedTrophyWords.get(row.id)
 
   assert(`${row.id} has five trophy words`, row.trophyWords.length === 5, row.trophyWords)
+  assert(`${row.id} has expected trophy words`, JSON.stringify(row.trophyWords) === JSON.stringify(expectedWords), row.trophyWords)
   assert(`${row.id} raw lyrics have exactly five wrapped occurrences`, wrappedMatches.length === 5, wrappedMatches.map((match) => match[1]))
   assert(
     `${row.id} every wrapped word belongs to trophy words`,
@@ -70,6 +107,7 @@ for (const row of GUIDED_TROPHY_SONGS) {
     Boolean(row.audioCandidates.B?.publicUrl && existsSync(publicPath(row.audioCandidates.B.publicUrl))),
     row.audioCandidates.B,
   )
+  assert(`${row.id} manifest entry exists`, manifestEntries.some((entry) => entry.catalogId === row.id && entry.providerStatus === 'success'), row.id)
 }
 
 console.log('\n[candidate selection]')
@@ -103,6 +141,14 @@ if (failures > 0) process.exit(1)
 function publicPath(audioPublicUrl: string) {
   const relativePublicPath = audioPublicUrl.replace(/^\//, '')
   return fileURLToPath(new URL(`../public/${relativePublicPath}`, import.meta.url))
+}
+
+function readManifest(assetCollection: 'a1p1' | 'a1p2') {
+  const manifestPath = fileURLToPath(new URL(`../public/guided/trophy-songs/${assetCollection}/manifest.json`, import.meta.url))
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
+    entries?: Array<{ catalogId: string; providerStatus: string }>
+  }
+  return manifest.entries ?? []
 }
 
 function createMemoryStorage(): Storage {
