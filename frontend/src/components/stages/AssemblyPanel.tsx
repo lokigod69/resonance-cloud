@@ -95,7 +95,7 @@ export function AssemblyPanel({ slug, detail, onSelect, onRefresh }: AssemblyPan
                   </button>
                 )}
                 <button
-                  onClick={async () => { setDeletingVer(v.version); try { await deleteVersion(slug, 'assembly', v.version); await onRefresh() } catch {} setDeletingVer(null) }}
+                  onClick={async () => { setDeletingVer(v.version); try { await deleteVersion(slug, 'assembly', v.version); await onRefresh() } catch { /* noop: delete failure leaves the row visible */ } setDeletingVer(null) }}
                   className="p-1 text-[var(--text-muted)] hover:text-[var(--error)] opacity-0 group-hover/ver:opacity-100 transition-opacity cursor-pointer"
                   title="Delete run"
                 >

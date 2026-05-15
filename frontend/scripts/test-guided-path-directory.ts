@@ -9,7 +9,6 @@ import { fileURLToPath } from 'node:url'
 import {
   getGuidedPathLessons,
   getGuidedPathOverview,
-  getGuidedTodayPathOptions,
 } from '../src/data/guidedLessons.ts'
 import {
   buildGuidedCheckpointPlan,

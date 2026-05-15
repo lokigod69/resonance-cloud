@@ -22,7 +22,7 @@ export function ImagePanel({ slug, detail, onSelect, onRefresh }: StageProps) {
   const toggle = (v: string) => {
     setExpanded(prev => {
       const next = new Set(prev)
-      next.has(v) ? next.delete(v) : next.add(v)
+      if (next.has(v)) next.delete(v); else next.add(v)
       return next
     })
     if (!(v in meta)) {
@@ -44,7 +44,7 @@ export function ImagePanel({ slug, detail, onSelect, onRefresh }: StageProps) {
     try {
       await deleteImage(slug, version, filename)
       await onRefresh()
-    } catch {}
+    } catch { /* noop: delete failure leaves the image visible */ }
     setDeleting(null)
   }
 
@@ -62,7 +62,7 @@ export function ImagePanel({ slug, detail, onSelect, onRefresh }: StageProps) {
           isExpanded={expanded.has(v.version)}
           onToggle={() => toggle(v.version)}
           onSelect={() => onSelect(v.version)}
-          onDelete={async () => { setDeletingVer(v.version); try { await deleteVersion(slug, 'images', v.version); await onRefresh() } catch {} setDeletingVer(null) }}
+          onDelete={async () => { setDeletingVer(v.version); try { await deleteVersion(slug, 'images', v.version); await onRefresh() } catch { /* noop: delete failure leaves the row visible */ } setDeletingVer(null) }}
           deleting={deletingVer === v.version}
           stage="images"
           index={i}

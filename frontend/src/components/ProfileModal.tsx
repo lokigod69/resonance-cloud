@@ -112,7 +112,7 @@ export default function ProfileModal({ open, onOpenChange }: ProfileModalProps) 
   // Sync state when modal opens or profile data changes
   useEffect(() => {
     if (open) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- opening the modal should hydrate editable fields from the current profile snapshot
+       
       setDisplayName(profile?.display_name || '')
       setBaseLanguage(profile?.base_language || '')
     }

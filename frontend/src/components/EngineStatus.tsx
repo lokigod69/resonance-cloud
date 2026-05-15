@@ -11,7 +11,7 @@ export function EngineStatus() {
     try {
       const data = await getEnginesHealth()
       setEngines(data)
-    } catch {}
+    } catch { /* noop: engines remain in last-known state on transient failure */ }
     setChecking(false)
   }
 

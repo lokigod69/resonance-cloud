@@ -62,7 +62,7 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
       setSelectedPresetSlug(slug)
       setSaved(false)
       toast(`Loaded preset "${preset.name}"`, 'success')
-    } catch (err) {
+    } catch {
       toast('Failed to load preset', 'error')
     }
   }
@@ -78,7 +78,7 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
       setPresetNameInput('')
       await refreshPresets()
       toast(`Saved preset "${result.name}"`, 'success')
-    } catch (err) {
+    } catch {
       toast('Failed to save preset', 'error')
     }
   }
@@ -90,7 +90,7 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
       if (selectedPresetSlug === slug) setSelectedPresetSlug(null)
       await refreshPresets()
       toast('Preset deleted', 'success')
-    } catch (err) {
+    } catch {
       toast('Failed to delete preset', 'error')
     }
   }
@@ -104,7 +104,7 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
           setLoading(false)
           return
         }
-      } catch {}
+      } catch { /* noop: malformed stored settings fall through to defaults */ }
     }
     getDefaults().then(d => {
       setSettings(sanitizeDurationSettings(d))

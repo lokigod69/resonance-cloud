@@ -28,7 +28,7 @@ export function StageSettings({ slug, stage, onOverridesChange }: StageSettingsP
       setEffective(data.effective)
       setOverrides(data.overrides)
       onOverridesChange?.(Object.keys(data.overrides).length > 0)
-    } catch {}
+    } catch { /* noop: fetch failures leave panel empty until next mount */ }
     setLoading(false)
   }, [slug, stage, onOverridesChange])
 
@@ -51,7 +51,7 @@ export function StageSettings({ slug, stage, onOverridesChange }: StageSettingsP
     debounceRef.current = setTimeout(async () => {
       try {
         await updateWordSettings(slug, stage, { [key]: value })
-      } catch {}
+      } catch { /* noop: debounced write failures recover on next change */ }
     }, 500)
   }
 
@@ -61,7 +61,7 @@ export function StageSettings({ slug, stage, onOverridesChange }: StageSettingsP
     try {
       await deleteWordStageSettings(slug, stage)
       await fetchSettings()
-    } catch {}
+    } catch { /* noop: reset failure leaves overrides in place */ }
     setResetting(false)
   }
 

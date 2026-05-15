@@ -33,7 +33,7 @@ export function WorkspaceManager({ onClose, onSwitch }: WorkspaceManagerProps) {
     try {
       const ws = await listWorkspaces()
       setWorkspaces(ws)
-    } catch {}
+    } catch { /* noop: failed list leaves panel empty until next reload */ }
     setLoading(false)
   }
 

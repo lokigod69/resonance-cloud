@@ -108,7 +108,7 @@ function buildPresets(size: number): Record<Preset, { fn: PlotFn; scale: number 
   }
 
   // ─── Heart Wave ──────────────────────────────────────────────────────────
-  function heartFn(p: number, _ds: number): readonly [number, number] {
+  function heartFn(p: number): readonly [number, number] {
     const x = -1 + p * 2
     const sr = Math.max(0, 1 - x * x)
     const wave = 1.2 * Math.sqrt(sr) * Math.sin(x * 12 * Math.PI)
@@ -203,7 +203,7 @@ export function ParticleSpinner({ preset, size = 120, random = false, className 
 
     rafId = requestAnimationFrame(draw)
     return () => cancelAnimationFrame(rafId)
-  }, [activePreset, size]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [activePreset, size])  
 
   return (
     <canvas

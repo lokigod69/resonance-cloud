@@ -16,7 +16,7 @@ export function ConceptPanel({ slug, detail, onSelect, onRefresh }: StageProps) 
     try {
       const data = await getConceptArtifact(slug, versionName)
       setEditing({ version: versionName, data })
-    } catch {}
+    } catch { /* noop: failed fetch leaves edit modal closed */ }
   }
 
   const handleSave = async () => {
@@ -31,7 +31,7 @@ export function ConceptPanel({ slug, detail, onSelect, onRefresh }: StageProps) 
       setEditing(null)
       await onRefresh()
       onSelect(result.new_version)
-    } catch {}
+    } catch { /* noop: save failure leaves edit modal open with current values */ }
     setSaving(false)
   }
 
@@ -111,7 +111,7 @@ function ConceptVersionCard({ slug, versionName, isSelected, onSelect, onEdit, i
       try {
         const d = await getConceptArtifact(slug, versionName)
         setData(d)
-      } catch {}
+      } catch { /* noop: missing artifact leaves card body empty when expanded */ }
     }
     setExpanded(!expanded)
   }

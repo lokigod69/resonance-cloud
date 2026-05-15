@@ -19,7 +19,7 @@ export function SongPanel({ slug, detail, onSelect, onRefresh }: StageProps) {
   const toggle = (v: string) => {
     setExpanded(prev => {
       const next = new Set(prev)
-      next.has(v) ? next.delete(v) : next.add(v)
+      if (next.has(v)) next.delete(v); else next.add(v)
       return next
     })
     if (!(v in meta)) {
@@ -49,7 +49,7 @@ export function SongPanel({ slug, detail, onSelect, onRefresh }: StageProps) {
           isSelected={!!selected?.startsWith(v.version)}
           isExpanded={expanded.has(v.version)}
           onToggle={() => toggle(v.version)}
-          onDelete={async () => { setDeletingVer(v.version); try { await deleteVersion(slug, 'song', v.version); await onRefresh() } catch {} setDeletingVer(null) }}
+          onDelete={async () => { setDeletingVer(v.version); try { await deleteVersion(slug, 'song', v.version); await onRefresh() } catch { /* noop: delete failure leaves the row visible */ } setDeletingVer(null) }}
           deleting={deletingVer === v.version}
           stage="song"
           index={i}

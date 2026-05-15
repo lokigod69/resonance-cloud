@@ -27,7 +27,7 @@ export function AutopilotPanel({ words, onClose, onStatusChange }: AutopilotPane
         if (!s.running) {
           if (pollingRef.current) clearInterval(pollingRef.current)
         }
-      } catch {}
+      } catch { /* noop: status poll retries on next mount/tick */ }
     }
     poll()
   }, [])
@@ -47,7 +47,7 @@ export function AutopilotPanel({ words, onClose, onStatusChange }: AutopilotPane
         if (!s.running) {
           if (pollingRef.current) clearInterval(pollingRef.current)
         }
-      } catch {}
+      } catch { /* noop: poll retries on next interval tick */ }
     }, 1500)
   }
 
