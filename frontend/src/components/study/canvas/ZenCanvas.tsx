@@ -1181,6 +1181,7 @@ function RevealModal({
   const usage = learning?.usageExample
   const hasRichData = !!learning?.mnemonic || !!learning?.etymology || !!usage
   const [answerRevealed, setAnswerRevealed] = useState(autoReveal === 'on')
+  const [imageLoaded, setImageLoaded] = useState(false)
   const canGrade = autoReveal === 'on' || answerRevealed
   useBodyScrollLock(true)
 
@@ -1188,6 +1189,11 @@ function RevealModal({
     // eslint-disable-next-line react-hooks/set-state-in-effect -- preserve existing reveal reset behavior.
     setAnswerRevealed(autoReveal === 'on')
   }, [autoReveal, word.id])
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset skeleton when modal opens with a new image.
+    setImageLoaded(false)
+  }, [imageUrl])
 
   const revealAnswer = () => {
     if (!canGrade) setAnswerRevealed(true)
@@ -1258,15 +1264,24 @@ function RevealModal({
 
           {imageUrl && (
             <div className="mb-6 flex justify-center">
-              <img
-                src={imageUrl}
-                alt={word.word}
-                onError={onImageError}
-                className="max-w-[140px] max-h-[140px] md:max-w-[160px] md:max-h-[160px] rounded-lg object-cover opacity-80 hover:opacity-100 transition-opacity"
+              <div
+                className="relative w-[140px] md:w-[160px] aspect-video overflow-hidden rounded-lg"
                 style={{
                   boxShadow: '0 2px 12px rgba(10, 10, 10, 0.4), 0 0 20px rgba(255, 255, 255, 0.04)',
                 }}
-              />
+              >
+                <div
+                  className={`absolute inset-0 animate-pulse bg-amber-100/[0.06] transition-opacity duration-300 ${imageLoaded ? 'opacity-0' : 'opacity-100'}`}
+                  aria-hidden="true"
+                />
+                <img
+                  src={imageUrl}
+                  alt={word.word}
+                  onLoad={() => setImageLoaded(true)}
+                  onError={onImageError}
+                  className={`relative h-full w-full object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-80 hover:opacity-100' : 'opacity-0'}`}
+                />
+              </div>
             </div>
           )}
 
