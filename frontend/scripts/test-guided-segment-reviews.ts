@@ -42,7 +42,7 @@ const pathIds = [
   'english-a1-practical-4',
   'english-a1-practical-5',
 ]
-const segmentStoryPathIds = pathIds.slice(0, 3)
+const segmentStoryPathIds = pathIds
 
 console.log('\n[overview source]')
 const overviewSource = readSource('../src/components/today/TodayPathOverview.tsx')
@@ -165,8 +165,8 @@ for (const pathId of segmentStoryPathIds) {
   }
 }
 assert('unknown path has no segment story (falls back gracefully)', getGuidedSegmentStory('english-a1-practical-99', 1) === undefined)
-assert('A1 Practical 4 Segment Review route can fall back without story copy', getGuidedSegmentStory(pathIds[3]!, 1) === undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[3]!, 1, 'bright', fixedRng())?.items.length === 5)
-assert('A1 Practical 5 Segment Review route can fall back without story copy', getGuidedSegmentStory(pathIds[4]!, 2) === undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[4]!, 2, 'sharp', fixedRng())?.items.length === 5)
+assert('A1 Practical 4 Segment Review route uses story copy', getGuidedSegmentStory(pathIds[3]!, 1) !== undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[3]!, 1, 'bright', fixedRng())?.items.length === 5)
+assert('A1 Practical 5 Segment Review route uses story copy', getGuidedSegmentStory(pathIds[4]!, 2) !== undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[4]!, 2, 'sharp', fixedRng())?.items.length === 5)
 
 console.log('\n[route and prompt]')
 assert('checkpoint route detects segment-review mode', checkpointSource.includes('mode') && checkpointSource.includes('segment-review'))

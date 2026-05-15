@@ -80,6 +80,50 @@ const STORIES: Record<StoryKey, GuidedSegmentStory> = {
       { lessonNumber: 10, scene: 'Du sagst, dass du die Haltestelle verpasst hast.' },
     ],
   },
+  'english-a1-practical-4:1': {
+    title: 'Ankommen im Café',
+    intro: 'Du kommst im Café oder Shop an. Du fragst nach Tisch, Karte, Getränk, Wunsch und Frische.',
+    beats: [
+      { lessonNumber: 1, scene: 'Du fragst am Eingang nach einem Tisch.' },
+      { lessonNumber: 2, scene: 'Du bittest um die Karte oder schaust kurz hinein.' },
+      { lessonNumber: 3, scene: 'Du bestellst ein einfaches Getränk.' },
+      { lessonNumber: 4, scene: 'Du sagst klar, dass du keinen Zucker möchtest.' },
+      { lessonNumber: 5, scene: 'Du fragst an der Auslage, ob es frisch ist.' },
+    ],
+  },
+  'english-a1-practical-4:2': {
+    title: 'Bestellung abschließen',
+    intro: 'Die Bestellung ist fast fertig. Du sagst, was noch fehlt, nimmst etwas mit und beendest den Besuch höflich.',
+    beats: [
+      { lessonNumber: 6, scene: 'Du entscheidest, ob noch etwas dazukommt.' },
+      { lessonNumber: 7, scene: 'Du sagst, dass du die Bestellung mitnehmen möchtest.' },
+      { lessonNumber: 8, scene: 'Du gibst ein kurzes Lob nach dem Essen oder Trinken.' },
+      { lessonNumber: 9, scene: 'Du machst einen kleinen Satz Small Talk am Tresen.' },
+      { lessonNumber: 10, scene: 'Du fragst nach der Rechnung und schließt freundlich ab.' },
+    ],
+  },
+  'english-a1-practical-5:1': {
+    title: 'Eine kleine Panne klären',
+    intro: 'Etwas läuft nicht ganz rund. Du entschuldigst dich, ordnest die Situation und kommst wieder ins Gespräch.',
+    beats: [
+      { lessonNumber: 1, scene: 'Du kommst spät an und entschuldigst dich kurz.' },
+      { lessonNumber: 2, scene: 'Du sagst ehrlich, dass du etwas vergessen hast.' },
+      { lessonNumber: 3, scene: 'Du fragst nach dem Namen, damit ihr weitermachen könnt.' },
+      { lessonNumber: 4, scene: 'Du reagierst freundlich auf die Vorstellung.' },
+      { lessonNumber: 5, scene: 'Du fragst locker, woher die andere Person kommt.' },
+    ],
+  },
+  'english-a1-practical-5:2': {
+    title: 'Einen einfachen Plan machen',
+    intro: 'Das Gespräch wird konkreter. Du prüfst Ort und Zeit, schlägst etwas vor und bestätigst den Plan.',
+    beats: [
+      { lessonNumber: 6, scene: 'Du fragst, ob die Person hier wohnt.' },
+      { lessonNumber: 7, scene: 'Du prüfst, ob heute Abend Zeit ist.' },
+      { lessonNumber: 8, scene: 'Du schlägst das Café als Treffpunkt vor.' },
+      { lessonNumber: 9, scene: 'Du verschiebst den Plan freundlich auf morgen.' },
+      { lessonNumber: 10, scene: 'Du verabschiedest dich und bestätigst morgen.' },
+    ],
+  },
 }
 
 export function getGuidedSegmentStory(
