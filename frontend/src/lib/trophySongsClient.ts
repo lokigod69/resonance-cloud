@@ -1,19 +1,33 @@
 import {
-  getGuidedPathLessons,
-  resolveGuidedLessonVariant,
-} from '@/data/guidedLessons'
+  GUIDED_TROPHY_SONGS,
+  type GuidedTrophySongAudioCandidate,
+  type GuidedTrophySongAudioStatus,
+  type GuidedTrophySongCandidateId,
+} from '@/data/guidedTrophySongs'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 
 export type TrophySongRow = {
+  id: string
   pathId: string
   segment: GuidedSegmentReviewNumber
   vibe: ActiveGuidedVibeId
   audioPublicUrl: string | null
+  audioStatus: GuidedTrophySongAudioStatus
+  audioCandidates: Partial<Record<GuidedTrophySongCandidateId, GuidedTrophySongAudioCandidate>>
+  activeCandidateDefault: GuidedTrophySongCandidateId
+  rawLyricsWithWrappers: string
+  wrappedLyrics: string
+  providerLyrics: string
+  displayLyrics: string
   lyricsDisplay: string
   clozePositions: Array<{ lineIndex: number; word: string; startChar: number; endChar: number }>
   trophyWords: string[]
+  styleFamily: string
+  songStyleLabel: string
   musicCaption: string
+  lyricsTranslationDe: string
+  studyLines: Array<{ lineIndex: number; line: string; hiddenWord: string }>
 }
 
 export class TrophySongNotAvailableError extends Error {
@@ -23,64 +37,24 @@ export class TrophySongNotAvailableError extends Error {
   }
 }
 
-// Mock implementation. Real backend client replaces this file later.
 export async function fetchTrophySongCanonical(
   pathId: string,
   segment: GuidedSegmentReviewNumber,
   vibe: ActiveGuidedVibeId,
 ): Promise<TrophySongRow> {
-  if (pathId !== 'english-a1-practical-1' || segment !== 1 || vibe !== 'bright') {
+  const row = GUIDED_TROPHY_SONGS.find((candidate) => (
+    candidate.pathId === pathId
+    && candidate.segment === segment
+    && candidate.vibe === vibe
+  ))
+
+  if (!row) {
     throw new TrophySongNotAvailableError(pathId, segment, vibe)
   }
 
-  const trophyWords = getGuidedPathLessons(pathId)
-    .filter((lesson) => lesson.lessonNumber >= 1 && lesson.lessonNumber <= 5)
-    .map((lesson) => resolveGuidedLessonVariant(lesson, vibe).trophyWord.word)
-
-  const wrappedLines = [
-    `I am <<delighted>> to see the sun.`,
-    `The <<marvelous>> flowers bloom in the park.`,
-    `I feel <<glad>> to walk this path.`,
-    `I am <<eager>> to find a bench.`,
-    `This <<splendid>> day makes me smile.`,
-  ]
-  const lyrics = unwrapClozeLines(wrappedLines)
-
   return {
-    pathId,
-    segment,
-    vibe,
-    audioPublicUrl: null,
-    lyricsDisplay: lyrics.lines.join('\n'),
-    clozePositions: lyrics.clozePositions,
-    trophyWords,
-    musicCaption: 'Bright V1 mock trophy song: a sunny five-line recap for lessons 1-5.',
-  }
-}
-
-function unwrapClozeLines(wrappedLines: string[]): Pick<TrophySongRow, 'lyricsDisplay' | 'clozePositions'> & { lines: string[] } {
-  const clozePattern = /<<([^<>]+)>>/
-  const lines: string[] = []
-  const clozePositions = wrappedLines.map((wrappedLine, lineIndex) => {
-    const match = clozePattern.exec(wrappedLine)
-    const word = match?.[1] ?? ''
-    const wrapperStart = match?.index ?? -1
-    const line = wrappedLine.replace(clozePattern, word)
-    const startChar = wrapperStart
-
-    lines.push(line)
-
-    return {
-      lineIndex,
-      word,
-      startChar,
-      endChar: startChar + word.length,
-    }
-  })
-
-  return {
-    lines,
-    lyricsDisplay: lines.join('\n'),
-    clozePositions,
+    ...row,
+    wrappedLyrics: row.rawLyricsWithWrappers,
+    lyricsDisplay: row.displayLyrics,
   }
 }

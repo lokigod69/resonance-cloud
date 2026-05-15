@@ -39,7 +39,7 @@ export function TrophyLyricClozeDrill({
   onComplete,
 }: TrophyLyricClozeDrillProps) {
   const { t } = useTranslation()
-  const lines = useMemo(() => lyricsDisplay.split('\n').slice(0, 5), [lyricsDisplay])
+  const lines = useMemo(() => lyricsDisplay.split('\n'), [lyricsDisplay])
   const [attempts, setAttempts] = useState<Record<number, LineAttempt>>({})
   const completedRef = useRef(false)
   const attemptedCount = Object.values(attempts).filter((attempt) => attempt.attempted).length
@@ -141,7 +141,7 @@ export function TrophyLyricClozeDrill({
                   onChange={(event) => handleValueChange(position.lineIndex, event.target.value)}
                   onBlur={() => markAttempted(position)}
                   onKeyDown={(event) => handleKeyDown(event, position)}
-                  disabled={completedRef.current}
+                  disabled={completeReady}
                   aria-label={t('today.trophy.drill.inputLabel', { word: trophyWords[position.lineIndex] ?? position.word })}
                   className={cn(
                     'today-trophy-clozeInput h-11 min-w-28 text-center font-semibold',

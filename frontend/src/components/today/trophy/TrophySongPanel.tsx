@@ -4,6 +4,7 @@ import {
   getGuidedPathLessons,
   resolveGuidedLessonVariant,
 } from '@/data/guidedLessons'
+import { guidedVibes } from '@/data/guidedVibes'
 import type { TrophySongRow } from '@/lib/trophySongsClient'
 import {
   createGuidedTrophyClozeRecord,
@@ -24,6 +25,7 @@ type TrophySongPanelProps = {
 
 export function TrophySongPanel({ row, onComplete }: TrophySongPanelProps) {
   const { t } = useTranslation()
+  const voiceLabel = guidedVibes[row.vibe]?.label ?? row.vibe
   const trophyWords = getGuidedPathLessons(row.pathId)
     .filter((lesson) => (
       row.segment === 1
@@ -68,6 +70,12 @@ export function TrophySongPanel({ row, onComplete }: TrophySongPanelProps) {
             <h1 className="mt-1 break-words text-3xl font-semibold leading-tight text-[var(--text-primary)]">
               {t('today.trophy.panelTitle')}
             </h1>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <MetadataPill label="Style" value={row.songStyleLabel} />
+              <MetadataPill label="Voice" value={voiceLabel} />
+              <MetadataPill label="Segment" value={String(row.segment)} />
+              <MetadataPill label="Audio" value={formatAudioStatus(row.audioStatus)} />
+            </div>
           </div>
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-subtle)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
             <Music2 className="h-4 w-4 text-[var(--accent)]" />
@@ -82,7 +90,18 @@ export function TrophySongPanel({ row, onComplete }: TrophySongPanelProps) {
         ))}
       </section>
 
-      <TrophySongPlayer audioUrl={row.audioPublicUrl} caption={row.musicCaption} />
+      <TrophySongPlayer
+        catalogId={row.id}
+        audioStatus={row.audioStatus}
+        audioCandidates={row.audioCandidates}
+        activeCandidateDefault={row.activeCandidateDefault}
+        caption={row.musicCaption}
+      />
+
+      <TrophyLyricsReview
+        displayLyrics={row.displayLyrics}
+        lyricsTranslationDe={row.lyricsTranslationDe}
+      />
 
       <TrophyLyricClozeDrill
         lyricsDisplay={row.lyricsDisplay}
@@ -92,4 +111,49 @@ export function TrophySongPanel({ row, onComplete }: TrophySongPanelProps) {
       />
     </main>
   )
+}
+
+function MetadataPill({ label, value }: { label: string; value: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] px-3 py-1.5 text-xs text-[var(--text-secondary)]">
+      <span className="font-semibold text-[var(--text-primary)]">{label}</span>
+      <span>{value}</span>
+    </span>
+  )
+}
+
+function TrophyLyricsReview({
+  displayLyrics,
+  lyricsTranslationDe,
+}: {
+  displayLyrics: string
+  lyricsTranslationDe: string
+}) {
+  return (
+    <section className="today-trophy-lyrics rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
+      <div className="grid gap-4 lg:grid-cols-2">
+        <LyricColumn title="English lyrics" body={displayLyrics} />
+        <LyricColumn title="German translation" body={lyricsTranslationDe} />
+      </div>
+    </section>
+  )
+}
+
+function LyricColumn({ title, body }: { title: string; body: string }) {
+  return (
+    <article className="min-w-0 rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_52%,transparent)] p-4">
+      <h2 className="text-sm font-semibold text-[var(--text-primary)]">
+        {title}
+      </h2>
+      <pre className="mt-3 max-h-[520px] overflow-auto whitespace-pre-wrap break-words font-sans text-sm leading-7 text-[var(--text-secondary)]">
+        {body}
+      </pre>
+    </article>
+  )
+}
+
+function formatAudioStatus(status: TrophySongRow['audioStatus']) {
+  if (status === 'ready') return 'Ready'
+  if (status === 'failed') return 'Failed'
+  return 'Missing'
 }

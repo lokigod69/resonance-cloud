@@ -1,21 +1,47 @@
 import { Pause, Play, RotateCcw } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import {
+  readGuidedTrophySongCandidate,
+  writeGuidedTrophySongCandidate,
+  type GuidedTrophySongAudioCandidate,
+  type GuidedTrophySongAudioStatus,
+  type GuidedTrophySongCandidateId,
+} from '@/data/guidedTrophySongs'
 import { Button } from '@/components/ui/button'
 import { useTranslation } from '@/hooks/useTranslation'
 
 type TrophySongPlayerProps = {
-  audioUrl: string | null
+  catalogId: string
+  audioStatus: GuidedTrophySongAudioStatus
+  audioCandidates: Partial<Record<GuidedTrophySongCandidateId, GuidedTrophySongAudioCandidate>>
+  activeCandidateDefault: GuidedTrophySongCandidateId
   caption: string
 }
 
-export function TrophySongPlayer({ audioUrl, caption }: TrophySongPlayerProps) {
+export function TrophySongPlayer({
+  catalogId,
+  audioStatus,
+  audioCandidates,
+  activeCandidateDefault,
+  caption,
+}: TrophySongPlayerProps) {
   const { t } = useTranslation()
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [selectedCandidate, setSelectedCandidate] = useState<GuidedTrophySongCandidateId | undefined>(() => (
+    readGuidedTrophySongCandidate(catalogId, audioCandidates, activeCandidateDefault)
+  ))
   const [status, setStatus] = useState<'idle' | 'playing' | 'ended'>('idle')
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const audioUrl = selectedCandidate ? audioCandidates[selectedCandidate]?.publicUrl ?? null : null
+  const hasAudio = audioStatus === 'ready' && Boolean(audioUrl)
 
   useEffect(() => {
+    setSelectedCandidate(readGuidedTrophySongCandidate(catalogId, audioCandidates, activeCandidateDefault))
+  }, [activeCandidateDefault, audioCandidates, catalogId])
+
+  useEffect(() => {
+    audioRef.current?.pause()
     setStatus('idle')
     setCurrentTime(0)
     setDuration(0)
@@ -39,6 +65,12 @@ export function TrophySongPlayer({ audioUrl, caption }: TrophySongPlayerProps) {
     setStatus('playing')
   }
 
+  const handleCandidateChange = (candidate: GuidedTrophySongCandidateId) => {
+    if (!audioCandidates[candidate]?.publicUrl) return
+    writeGuidedTrophySongCandidate(catalogId, candidate)
+    setSelectedCandidate(candidate)
+  }
+
   const buttonLabel = status === 'playing'
     ? t('today.trophy.player.pause')
     : status === 'ended'
@@ -53,15 +85,35 @@ export function TrophySongPlayer({ audioUrl, caption }: TrophySongPlayerProps) {
             {t('today.trophy.player.title')}
           </p>
           <p className="mt-1 text-sm leading-6 text-[var(--text-secondary)]">
-            {audioUrl ? caption : t('today.trophy.player.comingSoon')}
+            {hasAudio ? caption : t('today.trophy.player.comingSoon')}
           </p>
         </div>
-        <div className="flex shrink-0 items-center gap-3">
+        <div className="flex shrink-0 flex-wrap items-center gap-3">
+          <div className="inline-flex rounded-lg border border-[var(--border-subtle)] p-1" aria-label="Song candidate">
+            {(['A', 'B'] as const).map((candidate) => {
+              const available = Boolean(audioCandidates[candidate]?.publicUrl)
+              const selected = selectedCandidate === candidate
+
+              return (
+                <button
+                  key={candidate}
+                  type="button"
+                  disabled={!available}
+                  onClick={() => handleCandidateChange(candidate)}
+                  className="min-h-9 min-w-10 rounded-md px-3 text-sm font-semibold text-[var(--text-secondary)] transition enabled:hover:bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] disabled:opacity-40 data-[selected=true]:bg-[var(--accent)] data-[selected=true]:text-[var(--button-primary-text)]"
+                  data-selected={selected}
+                  aria-pressed={selected}
+                >
+                  {candidate}
+                </button>
+              )
+            })}
+          </div>
           <Button
             type="button"
             size="lg"
-            variant={audioUrl ? 'default' : 'outline'}
-            disabled={!audioUrl}
+            variant={hasAudio ? 'default' : 'outline'}
+            disabled={!hasAudio}
             onClick={handleToggle}
             className="min-h-12"
           >
@@ -73,7 +125,7 @@ export function TrophySongPlayer({ audioUrl, caption }: TrophySongPlayerProps) {
           </span>
         </div>
       </div>
-      {audioUrl && (
+      {hasAudio && audioUrl && (
         <audio
           ref={audioRef}
           src={audioUrl}

@@ -81,32 +81,52 @@ try {
   })
 }
 
-console.log('\n[mock trophy client]')
+console.log('\n[static trophy client]')
 const supportedRow = await fetchTrophySongCanonical('english-a1-practical-1', 1, 'bright')
-assert('mock client returns the supported canonical trophy row', supportedRow.pathId === 'english-a1-practical-1' && supportedRow.segment === 1 && supportedRow.vibe === 'bright', supportedRow)
+assert('static client returns the supported canonical trophy row', supportedRow.pathId === 'english-a1-practical-1' && supportedRow.segment === 1 && supportedRow.vibe === 'bright', supportedRow)
 assert(
-  'mock client resolves Bright trophy words from lessons 1-5',
+  'static client resolves Bright trophy words from catalog',
   JSON.stringify(supportedRow.trophyWords) === JSON.stringify(['delighted', 'marvelous', 'glad', 'eager', 'splendid']),
   supportedRow.trophyWords,
 )
-assert('mock client keeps audio null in V1 mock mode', supportedRow.audioPublicUrl === null)
-assert('mock client returns five lyric lines and five cloze positions', supportedRow.lyricsDisplay.split('\n').length === 5 && supportedRow.clozePositions.length === 5, supportedRow)
+assert(
+  'static client points to generated trophy song audio after MP3s are attached',
+  supportedRow.audioPublicUrl === '/guided/trophy-songs/a1p1/english-a1-practical-1-segment-1-bright-trophy-song/candidate-a.mp3'
+    && supportedRow.audioStatus === 'ready',
+  supportedRow,
+)
+assert('static client returns full song lyrics and five cloze positions', supportedRow.lyricsDisplay.split('\n').length > 5 && supportedRow.clozePositions.length === 5, supportedRow)
 assert(
   'cloze positions point at the literal trophy words in their lyric lines',
   supportedRow.clozePositions.every((position) => {
     const line = supportedRow.lyricsDisplay.split('\n')[position.lineIndex] ?? ''
-    return line.slice(position.startChar, position.endChar) === position.word
+    return line.slice(position.startChar, position.endChar).toLowerCase() === position.word
   }),
   supportedRow.clozePositions,
 )
+assert('static client strips wrappers from provider lyrics', !supportedRow.providerLyrics.includes('<<') && !supportedRow.providerLyrics.includes('>>'))
+assert('static client exposes German translation', supportedRow.lyricsTranslationDe.length > 0)
+
+const supportedTuples = [
+  ['english-a1-practical-1', 1, 'bright'],
+  ['english-a1-practical-1', 2, 'bright'],
+  ['english-a1-practical-1', 1, 'wistful'],
+  ['english-a1-practical-1', 2, 'wistful'],
+  ['english-a1-practical-1', 1, 'sharp'],
+  ['english-a1-practical-1', 2, 'sharp'],
+] as const
+for (const [pathId, segment, vibe] of supportedTuples) {
+  const row = await fetchTrophySongCanonical(pathId, segment, vibe)
+  assert(`static client supports ${pathId}/${segment}/${vibe}`, row.pathId === pathId && row.segment === segment && row.vibe === vibe)
+}
 
 let unsupportedError: unknown
 try {
-  await fetchTrophySongCanonical('english-a1-practical-1', 2, 'bright')
+  await fetchTrophySongCanonical('english-a1-practical-2', 1, 'bright')
 } catch (error) {
   unsupportedError = error
 }
-assert('mock client throws typed unavailable error for unsupported tuples', unsupportedError instanceof TrophySongNotAvailableError, unsupportedError)
+assert('static client throws typed unavailable error for unsupported tuples', unsupportedError instanceof TrophySongNotAvailableError, unsupportedError)
 
 console.log('\n[answer matching]')
 const accepted = getTrophyClozeAcceptedAnswers('Splendid!')
@@ -120,6 +140,7 @@ console.log('\n[source wiring]')
 const overviewSource = readSource('../src/components/today/TodayPathOverview.tsx')
 const trophyTileSource = readSource('../src/components/today/SegmentTrophyTile.tsx')
 const checkpointSource = readSource('../src/pages/GuidedCheckpoint.tsx')
+const clozeDrillSource = readSource('../src/components/today/trophy/TrophyLyricClozeDrill.tsx')
 const cssSource = readSource('../src/components/today/Today.css')
 const translationsSource = readSource('../src/lib/translations.ts')
 const packageSource = readSource('../package.json')
@@ -128,6 +149,7 @@ assert('overview imports and renders SegmentTrophyTile beside existing review ti
 assert('trophy tile uses trophy-cloze checkpoint route mode', trophyTileSource.includes('mode=trophy-cloze') && trophyTileSource.includes('segment=${segment}') && trophyTileSource.includes('vibe=${vibeId}'))
 assert('checkpoint route detects trophy-cloze mode without removing existing modes', checkpointSource.includes("checkpointMode === 'trophy-cloze'") && checkpointSource.includes("checkpointMode === 'segment-review'") && checkpointSource.includes("checkpointMode === 'path-check'"))
 assert('checkpoint route renders TrophySongPanel for trophy mode', checkpointSource.includes('TrophySongPanel') && checkpointSource.includes('fetchTrophySongCanonical'))
+assert('cloze drill reads full song lyrics instead of slicing to first five lines', !clozeDrillSource.includes('.slice(0, 5)'))
 assert('trophy tile and panel styling are present', cssSource.includes('.today-segment-trophyTile') && cssSource.includes('.today-trophy-clozeInput'))
 assert('English and German trophy translations are present', countOccurrences(translationsSource, "'today.trophy.tileTitle'") >= 2 && translationsSource.includes("'today.trophy.player.play'"))
 assert('guided trophy cloze test is part of test:guided-today chain', packageSource.includes('scripts/test-guided-trophy-cloze.ts'))
