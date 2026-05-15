@@ -146,6 +146,28 @@ const STORIES: Record<StoryKey, GuidedSegmentStory> = {
       { lessonNumber: 10, scene: 'Du bedankst dich und sagst, dass es dir besser geht.' },
     ],
   },
+  'english-a1-practical-7:1': {
+    title: 'Am Bahnhof orientieren',
+    intro: 'Du bist am Bahnhof oder in der Nähe. Du fragst nach Ticket, Bus, Zeit, Zug und Taxi.',
+    beats: [
+      { lessonNumber: 1, scene: 'Du bittest am Schalter um eine Fahrkarte.' },
+      { lessonNumber: 2, scene: 'Du suchst den Bus oder die Haltestelle.' },
+      { lessonNumber: 3, scene: 'Du fragst, wann Bus oder Zug abfährt.' },
+      { lessonNumber: 4, scene: 'Du prüfst, ob es der richtige Zug ist.' },
+      { lessonNumber: 5, scene: 'Du bittest darum, ein Taxi zu rufen.' },
+    ],
+  },
+  'english-a1-practical-7:2': {
+    title: 'Die Fahrt abschließen',
+    intro: 'Du klärst das Ziel, bittest ums Anhalten, fragst nach der Dauer und sagst am Ende, dass du angekommen bist.',
+    beats: [
+      { lessonNumber: 6, scene: 'Du bestätigst, dass ihr dorthin fahren könnt.' },
+      { lessonNumber: 7, scene: 'Du bittest den Fahrer, hier zu halten.' },
+      { lessonNumber: 8, scene: 'Du sagst, dass du zum Bahnhof fährst.' },
+      { lessonNumber: 9, scene: 'Du fragst, wie lange die Fahrt dauert.' },
+      { lessonNumber: 10, scene: 'Du sagst, dass du angekommen bist.' },
+    ],
+  },
 }
 
 export function getGuidedSegmentStory(

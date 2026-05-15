@@ -50,12 +50,14 @@ const pathThreeId = 'english-a1-practical-3'
 const pathFourId = 'english-a1-practical-4'
 const pathFiveId = 'english-a1-practical-5'
 const pathSixId = 'english-a1-practical-6'
+const pathSevenId = 'english-a1-practical-7'
 const lessons = getGuidedPathLessons(pathOneId)
 const pathTwoLessons = getGuidedPathLessons(pathTwoId)
 const pathThreeLessons = getGuidedPathLessons(pathThreeId)
 const pathFourLessons = getGuidedPathLessons(pathFourId)
 const pathFiveLessons = getGuidedPathLessons(pathFiveId)
 const pathSixLessons = getGuidedPathLessons(pathSixId)
+const pathSevenLessons = getGuidedPathLessons(pathSevenId)
 const firstLessonDefinition = lessons[0]
 const secondLessonDefinition = lessons[1]
 
@@ -79,6 +81,8 @@ const emptyPathFiveOverview = getGuidedPathOverview(pathFiveId, createEmptyToday
 assert('A1 Practical 5 overview exposes 10 lessons', emptyPathFiveOverview.lessons.length === 10, emptyPathFiveOverview.lessons.length)
 const emptyPathSixOverview = getGuidedPathOverview(pathSixId, createEmptyTodayProgressState(), 'bright')
 assert('A1 Practical 6 overview exposes 10 lessons', emptyPathSixOverview.lessons.length === 10, emptyPathSixOverview.lessons.length)
+const emptyPathSevenOverview = getGuidedPathOverview(pathSevenId, createEmptyTodayProgressState(), 'wistful')
+assert('A1 Practical 7 overview exposes 10 lessons', emptyPathSevenOverview.lessons.length === 10, emptyPathSevenOverview.lessons.length)
 assert('empty progress recommends lesson 1', emptyOverview.recommendedLesson?.id === firstLesson.id, emptyOverview.recommendedLesson?.id)
 assert('empty progress is not path complete', !emptyOverview.isComplete)
 assert('lesson 1 is current with empty progress', emptyOverview.lessons[0]?.status === 'current', emptyOverview.lessons[0])
@@ -149,6 +153,13 @@ if (pathThreeFirstDefinition) {
         const completedAcrossSixPaths = markTodayLessonComplete(completedAcrossFivePaths, pathSixFirst, minimalResult())
         assert('A1 Practical 6 count stays scoped after earlier path completions', getGuidedPathOverview(pathSixId, completedAcrossSixPaths, 'bright').completedCount === 1, completedAcrossSixPaths)
         assert('earlier path counts stay scoped after A1 Practical 6 completion', getGuidedPathOverview(pathOneId, completedAcrossSixPaths, 'bright').completedCount === 1 && getGuidedPathOverview(pathTwoId, completedAcrossSixPaths, 'bright').completedCount === 1 && getGuidedPathOverview(pathThreeId, completedAcrossSixPaths, 'sharp').completedCount === 1 && getGuidedPathOverview(pathFourId, completedAcrossSixPaths, 'bright').completedCount === 1 && getGuidedPathOverview(pathFiveId, completedAcrossSixPaths, 'wistful').completedCount === 1, completedAcrossSixPaths)
+        const pathSevenFirstDefinition = pathSevenLessons[0]
+        if (pathSevenFirstDefinition) {
+          const pathSevenFirst = resolveGuidedLessonVariant(pathSevenFirstDefinition, 'wistful')
+          const completedAcrossSevenPaths = markTodayLessonComplete(completedAcrossSixPaths, pathSevenFirst, minimalResult())
+          assert('A1 Practical 7 count stays scoped after earlier path completions', getGuidedPathOverview(pathSevenId, completedAcrossSevenPaths, 'wistful').completedCount === 1, completedAcrossSevenPaths)
+          assert('earlier path counts stay scoped after A1 Practical 7 completion', getGuidedPathOverview(pathOneId, completedAcrossSevenPaths, 'bright').completedCount === 1 && getGuidedPathOverview(pathTwoId, completedAcrossSevenPaths, 'bright').completedCount === 1 && getGuidedPathOverview(pathThreeId, completedAcrossSevenPaths, 'sharp').completedCount === 1 && getGuidedPathOverview(pathFourId, completedAcrossSevenPaths, 'bright').completedCount === 1 && getGuidedPathOverview(pathFiveId, completedAcrossSevenPaths, 'wistful').completedCount === 1 && getGuidedPathOverview(pathSixId, completedAcrossSevenPaths, 'bright').completedCount === 1, completedAcrossSevenPaths)
+        }
       }
     }
   }
@@ -181,6 +192,9 @@ try {
   setSelectedGuidedVibe(pathSixId, 'bright')
   assert('A1 Practical 6 can persist its own selected voice', getSelectedGuidedVibe(pathSixId) === 'bright')
   assert('A1 Practical 5 keeps its selected voice after A1 Practical 6 selection', getSelectedGuidedVibe(pathFiveId) === 'wistful')
+  setSelectedGuidedVibe(pathSevenId, 'sharp')
+  assert('A1 Practical 7 can persist its own selected voice', getSelectedGuidedVibe(pathSevenId) === 'sharp')
+  assert('A1 Practical 6 keeps its selected voice after A1 Practical 7 selection', getSelectedGuidedVibe(pathSixId) === 'bright')
   assert('vibe switch does not mutate progress', JSON.stringify(completedFirst) === progressBeforeVibe, completedFirst)
   for (const futureVibeId of FUTURE_GUIDED_VIBE_IDS) {
     setSelectedGuidedVibe(pathOneId, futureVibeId)
@@ -240,7 +254,7 @@ assert('Back to path does not mutate progress', JSON.stringify(completedTwo) ===
 assert('recommended panel label is next lesson, not internal recommendation copy', recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')") && !recommendedLessonPanelSource.includes("t('today.path.recommendedLabel')"))
 assert('Today page separates lesson selection from session start', containsAny(todayPageSource, ['const handleSelectLesson', 'setSelectedLessonId(lessonId)']) && containsAny(todayPageSource, ['const handleStartSelectedLesson', 'setSessionActive(true)']))
 assert('path overview receives a select handler and separate start handler', todayPathOverviewSource.includes('onSelectLesson') && todayPathOverviewSource.includes('onStartLesson'))
-assert('path selector source exposes implemented active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId]), getGuidedTodayPathOptions())
+assert('path selector source exposes implemented active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId]), getGuidedTodayPathOptions())
 assert('Today page stores selected path id and passes path options to overview', containsAny(todayPageSource, ['selectedPathId', 'getGuidedTodayPathOptions']) && todayPathOverviewSource.includes('pathOptions'))
 assert('path overview opens the directory instead of permanent path chips', todayPathOverviewSource.includes('onSelectPath') && todayPathOverviewSource.includes('GuidedPathDirectory') && todayPathOverviewSource.includes("t('today.path.changePath')") && !todayPathOverviewSource.includes('today-path-switcher'))
 assert('main Today header no longer renders visible Path Check action', !sliceBetween(todayPathOverviewSource, '<div className="today-path-actions', '<GuidedPathDirectory').includes('today.path.pathCheck'))
