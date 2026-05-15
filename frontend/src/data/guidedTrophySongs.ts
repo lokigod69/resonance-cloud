@@ -570,520 +570,528 @@ Entschieden. Geklaert. Fertig.`,
     pathId: 'english-a1-practical-2',
     segment: 1,
     vibe: 'bright',
-    trophyWords: ['lovely', 'glad', 'brilliant', 'ready', 'charming'],
-    styleFamily: 'sunlit-acoustic-pop',
-    songStyleLabel: 'Sunlit acoustic pop',
-    musicCaption: 'Sunlit acoustic pop with a Bright, confident, encouraging voice; mid-tempo around 104 bpm, singable and warm but not childish; bright lead vocal with light harmony on the hook, clean consonants, no melisma; acoustic guitar, soft piano taps, brushed kit, handclap lift, warm bass; clear English diction so "lovely, glad, brilliant, ready, charming" all land cleanly; avoid nursery-rhyme bounce, avoid generic commercial jingle, avoid over-polished EDM-pop.',
+    trophyWords: ['happy', 'warm', 'right', 'fine', 'fresh'],
+    styleFamily: 'soft-funk-open-window',
+    songStyleLabel: 'Soft funk open window',
+    musicCaption: 'Warm-analog soft funk at ~108 bpm with a mid-pocket syncopation and sixteenth-note ghost notes on the bass; clean chicken-pick electric guitar, live bass guitar carrying the harmony, Rhodes pad entering only on the chorus, tight dry kit with rim-shots, one handclap placed precisely on beat 2 of the chorus only; close dry vocal sitting just behind the beat, spoken-sung in the verses and lifted half a step on the chorus, single-take feel, no reverb wash; verse tight, chorus loose, settled bridge with a single Rhodes chord change, no chorus lift, no drop; clear English diction so "happy, warm, right, fine, fresh" all land cleanly inside the pocket; avoid fake corporate optimism, boss-mode posture, handclap-pop attractor, kids-show cadence, glossy top-40 lift, Vulfpeck pastiche, and smooth-jazz shimmer.',
     audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-1-bright-trophy-song/candidate-a.mp3',
     audioCandidates: defineAudioCandidates(
       'english-a1-practical-2-segment-1-bright-trophy-song',
-      'https://tempfile.aiquickdraw.com/r/953eaa629e914c3ca7eb0b94fca9b1ca.mp3',
-      'https://tempfile.aiquickdraw.com/r/1519352f29cb424a9bcbea91db912c4b.mp3',
+      'https://tempfile.aiquickdraw.com/r/6922881a615e4019b3e703e3d45721b9.mp3',
+      'https://tempfile.aiquickdraw.com/r/320b9ab9365f4b17a344a3bb2db1c364.mp3',
       'a1p2',
     ),
     audioStatus: 'ready',
     rawLyricsWithWrappers: `[Verse 1]
-I missed the meaning in the room
-You wrote it on the page
-That was <<lovely>>, thank you
-Like a lamp beside the phrase
+Friday afternoon, I ask too much
+You slow it down so I can hear
+Word by word the shop gets clearer
+I am small and I am here
 
 [Pre-Chorus]
-You pointed once, I found the line
-And the answer turned around
+You point at the line, then you point twice
+You wait while I catch up
+And the right card lands in my hand
 
 [Chorus]
-I'm <<glad>> you wrote it down
-Glad the words came shining through
-<<Brilliant>> little note in a busy town
-I'm <<ready>> now with you
+I feel <<happy>>
+A small, real, Friday kind of happy
+You are <<warm>>, the room is <<fresh>>
+And the answer was <<right>>
 
 [Verse 2]
-Which one? I asked you at the counter
-You smiled and made it clear
-A <<charming>> little choice was waiting
-Right there, right here
-
-[Chorus]
-I'm glad you wrote it down
-Glad the words came shining through
-Brilliant little note in a busy town
-I'm ready now with you
+Which one - I held them out
+You said either is <<fine>>
+But the first one was the one
+And you stayed a minute longer
 
 [Bridge]
-Lovely on the paper
-Charming in the light
-Ready for the next small question
-Ready for the ride
+The street outside is gold
+The bakery smells like a new week
+I am not lost - I am late, that is all
+And late today is fine
+
+[Chorus]
+I feel happy
+A small, real, Friday kind of happy
+You are warm, the room is fresh
+And the answer was right
 
 [Outro]
-Glad, glad, glad it came through
-Brilliant, ready, thanks to you`,
+You smile, I smile
+Friday is the right kind of day`,
     lyricsTranslationDe: `[Verse 1]
-Ich habe die Bedeutung im Raum verpasst
-Du hast sie auf die Seite geschrieben
-Das war nett, danke
-Wie eine Lampe neben dem Satz
+Freitagnachmittag, ich frage zu viel
+Du machst es langsamer, damit ich es hoere
+Wort fuer Wort wird der Laden klarer
+Ich bin klein und ich bin hier
 
 [Pre-Chorus]
-Du hast einmal gezeigt, ich fand die Zeile
-Und die Antwort drehte sich um
+Du zeigst auf die Zeile, dann zeigst du zweimal
+Du wartest, waehrend ich aufhole
+Und die richtige Karte landet in meiner Hand
 
 [Chorus]
-Ich bin froh, dass du es aufgeschrieben hast
-Froh, dass die Worte durchgeleuchtet haben
-Eine prima kleine Notiz in einer vollen Stadt
-Ich bin jetzt bereit mit dir
+Ich fuehle mich gluecklich
+Eine kleine, echte Freitags-Art von gluecklich
+Du bist warm, der Raum ist frisch
+Und die Antwort war richtig
 
 [Verse 2]
-Welche? fragte ich dich am Tresen
-Du hast gelaechelt und es klar gemacht
-Eine charmante kleine Wahl wartete
-Genau dort, genau hier
-
-[Chorus]
-Ich bin froh, dass du es aufgeschrieben hast
-Froh, dass die Worte durchgeleuchtet haben
-Eine prima kleine Notiz in einer vollen Stadt
-Ich bin jetzt bereit mit dir
+Welche - ich hielt sie heraus
+Du sagtest, beide sind gut
+Aber die erste war die eine
+Und du bliebst eine Minute laenger
 
 [Bridge]
-Nett auf dem Papier
-Charmant im Licht
-Bereit fuer die naechste kleine Frage
-Bereit fuer die Fahrt
+Die Strasse draussen ist golden
+Die Baeckerei riecht nach einer neuen Woche
+Ich bin nicht verloren - ich bin nur spaet
+Und spaet heute ist in Ordnung
+
+[Chorus]
+Ich fuehle mich gluecklich
+Eine kleine, echte Freitags-Art von gluecklich
+Du bist warm, der Raum ist frisch
+Und die Antwort war richtig
 
 [Outro]
-Froh, froh, froh, dass es angekommen ist
-Prima, bereit, dank dir`,
+Du laechelst, ich laechle
+Freitag ist die richtige Art von Tag`,
   }),
   defineGuidedTrophySong({
     id: 'english-a1-practical-2-segment-2-bright-trophy-song',
     pathId: 'english-a1-practical-2',
     segment: 2,
     vibe: 'bright',
-    trophyWords: ['easy', 'splendid', 'kind', 'sure', 'cheerful'],
-    styleFamily: 'bright-handclap-pop',
-    songStyleLabel: 'Bright handclap pop',
-    musicCaption: 'Bright handclap pop at ~112 bpm with a warm, confident reward feel; Bright voice - encouraging, socially generous, clear, never childish; crisp lead vocal with a small group lift on the hook, no melisma; muted guitar, handclaps, light piano, rounded bass, clean pop kit; clear English diction so "easy, splendid, kind, sure, cheerful" all land cleanly; avoid kids-song cadence, avoid stadium chant, avoid glossy top-40 excess.',
+    trophyWords: ['easy', 'neat', 'kind', 'sure', 'cheerful'],
+    styleFamily: 'highlife-walk',
+    songStyleLabel: 'Highlife walk',
+    musicCaption: 'Warm-analog highlife walk at ~100 bpm with two interlocking electric guitars, walking bass guitar, conga at the rhythmic centre, and hi-hat lifting the top end; rhythm guitar plays a soft repeating figure, lead guitar plays a brighter interlocking line, conga drives the floor, no rock kit; spoken-sung lead with a small group response on the hook only; circular two-chord pattern with a half-step lift on the hook; steady hypnotic walk, small textural lift on the bridge (conga louder, lead guitar quieter), no chorus lift, no drop; clear English diction so "easy, neat, kind, sure, cheerful" all land cleanly between the guitar parts; avoid caricature of any African idiom, children\'s-song bounce, big-band brass, stadium-anthem chord changes, and handclap-pop default.',
     audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-2-bright-trophy-song/candidate-a.mp3',
     audioCandidates: defineAudioCandidates(
       'english-a1-practical-2-segment-2-bright-trophy-song',
-      'https://tempfile.aiquickdraw.com/r/695d1a4117664fdd9708a8a9e1e7fe5f.mp3',
-      'https://tempfile.aiquickdraw.com/r/6cb4542279614172ac8234f00177423e.mp3',
+      'https://tempfile.aiquickdraw.com/r/8ec97eded0824121ae01df975e4766e6.mp3',
+      'https://tempfile.aiquickdraw.com/r/be9b587a4b284547a20dc64b897c5e05.mp3',
       'a1p2',
     ),
     audioStatus: 'ready',
     rawLyricsWithWrappers: `[Verse 1]
-Card on the counter, answer in the light
-That was <<easy>>, thank you
-Nothing got too heavy
-The small machine went through
-
-[Pre-Chorus]
-A receipt near the door
-One more smile before I go
+Card on the counter, two lines on the screen
+You tap, I tap, it works
+A <<neat>> receipt slides over
+The bell on the door, no rush
 
 [Chorus]
-What a <<splendid>> little finish
-<<Kind>> of you to see me through
-I'm <<sure>> of where I'm going
-<<Cheerful>> in the queue
+Step by step, <<easy>> like a Tuesday
+<<Kind>> hands at every door
+I am <<sure>> the room is waiting
+And the lobby holds the floor
 
 [Verse 2]
-Reservation under my name
-You found it right away
-Sure, sure, the room is waiting
-And cheerful is the day
+Reservation under my last name
+You spell it back like a tune
+Two keys in a small envelope
+Sun across the room at noon
 
 [Chorus]
-What a splendid little finish
-Kind of you to see me through
-I'm sure of where I'm going
-Cheerful in the queue
+Step by step, easy like a Tuesday
+Kind hands at every door
+I am sure the room is waiting
+And the lobby holds the floor
 
 [Bridge]
-Easy at the payment
-Kind at the door
-Splendid in the small things
-I can ask for more
+Brass on the corner, conga on the block
+No hurry in the city today
+Receipt in the pocket, key in the palm
+A <<cheerful>> bow on the way
 
 [Outro]
-Cheerful, sure, easy
-Splendid, kind, and free`,
+Doors and small kindnesses
+A walking kind of song`,
     lyricsTranslationDe: `[Verse 1]
-Karte auf dem Tresen, Antwort im Licht
-Das war einfach, danke
-Nichts wurde zu schwer
-Das kleine Geraet ging durch
-
-[Pre-Chorus]
-Eine Quittung nahe der Tuer
-Noch ein Laecheln, bevor ich gehe
+Karte auf dem Tresen, zwei Zeilen auf dem Schirm
+Du tippst, ich tippe, es klappt
+Eine ordentliche Quittung gleitet herueber
+Die Glocke an der Tuer, keine Eile
 
 [Chorus]
-Was fuer ein prima kleiner Abschluss
-Freundlich von dir, mich durchzubringen
-Ich bin sicher, wohin ich gehe
-Heiter in der Schlange
+Schritt fuer Schritt, einfach wie ein Dienstag
+Freundliche Haende an jeder Tuer
+Ich bin sicher, das Zimmer wartet
+Und die Lobby haelt den Boden
 
 [Verse 2]
-Reservierung unter meinem Namen
-Du hast sie sofort gefunden
-Sicher, sicher, das Zimmer wartet
-Und heiter ist der Tag
+Reservierung unter meinem Nachnamen
+Du buchstabierst ihn zurueck wie eine Melodie
+Zwei Schluessel in einem kleinen Umschlag
+Sonne ueber dem Zimmer am Mittag
 
 [Chorus]
-Was fuer ein prima kleiner Abschluss
-Freundlich von dir, mich durchzubringen
-Ich bin sicher, wohin ich gehe
-Heiter in der Schlange
+Schritt fuer Schritt, einfach wie ein Dienstag
+Freundliche Haende an jeder Tuer
+Ich bin sicher, das Zimmer wartet
+Und die Lobby haelt den Boden
 
 [Bridge]
-Einfach beim Bezahlen
-Freundlich an der Tuer
-Prima in den kleinen Dingen
-Ich kann nach mehr fragen
+Bleche an der Ecke, Conga im Block
+Keine Eile in der Stadt heute
+Quittung in der Tasche, Schluessel in der Hand
+Eine heitere Verbeugung auf dem Weg
 
 [Outro]
-Heiter, sicher, einfach
-Prima, freundlich und frei`,
+Tueren und kleine Freundlichkeiten
+Eine gehende Art von Lied`,
   }),
   defineGuidedTrophySong({
     id: 'english-a1-practical-2-segment-1-wistful-trophy-song',
     pathId: 'english-a1-practical-2',
     segment: 1,
     vibe: 'wistful',
-    trophyWords: ['gently', 'slowly', 'perhaps', 'quiet', 'soft'],
-    styleFamily: 'moonlit-indie-folk',
-    songStyleLabel: 'Moonlit indie folk',
-    musicCaption: 'Moonlit indie folk at ~78 bpm, soft and reflective without melodrama; Wistful voice - spacious, careful, intimate but not whispered; clear vocal with breath around phrase endings, no ASMR, no heavy vibrato; fingerpicked guitar, muted felt piano, brushed cymbals, low warm bass, faint pad; clear English diction so "gently, slowly, perhaps, quiet, soft" all land cleanly; avoid piano-ballad cliche, avoid sad-girl-pop shape, avoid sleepy monotone.',
+    trophyWords: ['maybe', 'kindly', 'somewhere', 'either', 'anywhere'],
+    styleFamily: 'shoegaze-pulse',
+    songStyleLabel: 'Shoegaze pulse',
+    musicCaption: 'Shoegaze pulse at ~104 bpm with a straight rock pulse buried under two heavily reverbed electric guitars; bass guitar holding root notes, dry kit pushing through the wash, hidden vocal harmony entering only on the second chorus, no piano, no synth pad; airy buried-but-clear lead vocal that pushes through the guitar wall, never whispered, no ASMR, no heavy vibrato; minor-suspended verses with no resolution, single half-step lift only on the second chorus, outro strips back to one guitar; clear English diction so "maybe, kindly, somewhere, either, anywhere" all land cleanly through the wash; avoid trailer-crescendo, sad-girl-pop chorus shape, soft-folk default, felt-piano cliche, lo-fi study-beat haze, and karaoke vocal exposure.',
     audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-1-wistful-trophy-song/candidate-a.mp3',
     audioCandidates: defineAudioCandidates(
       'english-a1-practical-2-segment-1-wistful-trophy-song',
-      'https://tempfile.aiquickdraw.com/r/a952897ee2144ea5b2e83a8bd5bc3344.mp3',
-      'https://tempfile.aiquickdraw.com/r/155b70628ffe463ca5970753dd72312f.mp3',
+      'https://tempfile.aiquickdraw.com/r/26cba527c1be460aa6fc7e3e68afdbae.mp3',
+      'https://tempfile.aiquickdraw.com/r/df707e96b4ca414cb7b603ff2bb94c6f.mp3',
       'a1p2',
     ),
     audioStatus: 'ready',
     rawLyricsWithWrappers: `[Verse 1]
-Say it <<gently>>, I am near
-The room is full of half-heard sound
-If you write it <<slowly>>
-I can follow what I found
-
-[Chorus]
-<<Perhaps>> here, perhaps this way
-A <<quiet>> mark beside the line
-Keep it <<soft>>, keep it close
-Soft enough for me to try
+<<Maybe>> in the half-heard room
+Maybe just a half-clear shape
+The window does not close, the rain
+Has nothing to say
 
 [Verse 2]
-You pointed to the smaller sign
-And waited while I knew
-Slowly, gently, there it was
-A door I could walk through
+Could you <<kindly>> write the line
+Where the letters go
+Soft as the paper takes the ink
+And the door waits in a row
 
 [Chorus]
-Perhaps here, perhaps this way
-A quiet mark beside the line
-Keep it soft, keep it close
-Soft enough for me to try
+<<Somewhere>> in the second column
+<<Either>> the one above or below
+<<Anywhere>> the answer rests
+I will watch for it slow
 
-[Bridge]
-No hurry in the answer
-No shame inside the pause
-Just a softly open window
-And a line that almost talks
+[Verse 3]
+You waited while I held the page
+Half a word, half a sigh
+Either or another way
+Somewhere almost clear
+
+[Chorus]
+Somewhere in the second column
+Either the one above or below
+Anywhere the answer rests
+I will watch for it slow
 
 [Outro]
-Soft enough, quiet enough
-Perhaps I know it now`,
+Maybe the rain will lift by six
+And the door will stay half-open`,
     lyricsTranslationDe: `[Verse 1]
-Sag es sanft, ich bin nah
-Der Raum ist voll halb gehoerter Geraeusche
-Wenn du es langsam schreibst
-Kann ich folgen, was ich gefunden habe
-
-[Chorus]
-Vielleicht hier, vielleicht so
-Eine ruhige Markierung neben der Zeile
-Halte es weich, halte es nah
-Weich genug, damit ich es versuche
+Vielleicht in dem halb gehoerten Raum
+Vielleicht nur eine halb-klare Form
+Das Fenster schliesst sich nicht, der Regen
+Hat nichts zu sagen
 
 [Verse 2]
-Du hast auf das kleinere Schild gezeigt
-Und gewartet, waehrend ich verstand
-Langsam, sanft, da war es
-Eine Tuer, durch die ich gehen konnte
+Koenntest du es freundlich schreiben
+Wohin die Buchstaben gehoeren
+Sanft, wie das Papier die Tinte aufnimmt
+Und die Tuer wartet in einer Reihe
 
 [Chorus]
-Vielleicht hier, vielleicht so
-Eine ruhige Markierung neben der Zeile
-Halte es weich, halte es nah
-Weich genug, damit ich es versuche
+Irgendwo in der zweiten Spalte
+Entweder die darueber oder darunter
+Wo auch immer die Antwort ruht
+Ich werde langsam darauf warten
 
-[Bridge]
-Keine Eile in der Antwort
-Keine Scham in der Pause
-Nur ein weich geoeffnetes Fenster
-Und eine Zeile, die fast spricht
+[Verse 3]
+Du hast gewartet, waehrend ich die Seite hielt
+Ein halbes Wort, ein halber Seufzer
+So oder anders
+Irgendwo fast klar
+
+[Chorus]
+Irgendwo in der zweiten Spalte
+Entweder die darueber oder darunter
+Wo auch immer die Antwort ruht
+Ich werde langsam darauf warten
 
 [Outro]
-Weich genug, ruhig genug
-Vielleicht weiss ich es jetzt`,
+Vielleicht hebt sich der Regen um sechs
+Und die Tuer bleibt halb offen`,
   }),
   defineGuidedTrophySong({
     id: 'english-a1-practical-2-segment-2-wistful-trophy-song',
     pathId: 'english-a1-practical-2',
     segment: 2,
     vibe: 'wistful',
-    trophyWords: ['again', 'near', 'calm', 'simple', 'patient'],
-    styleFamily: 'soft-downtempo-folk',
-    songStyleLabel: 'Soft downtempo folk',
-    musicCaption: 'Soft downtempo folk at ~84 bpm with a gentle pulse and reflective space; Wistful voice - calm, patient, warm but restrained; close vocal with clean diction and soft phrase endings, no melodrama; nylon guitar, low brushed beat, small electric piano motif, airy pad, rounded bass; clear English diction so "again, near, calm, simple, patient" all land cleanly; avoid lo-fi haze, avoid piano-ballad weight, avoid overly poetic obscurity.',
+    trophyWords: ['carefully', 'near', 'calm', 'simple', 'patient'],
+    styleFamily: 'dub-techno-memory-loop',
+    songStyleLabel: 'Dub-techno memory loop',
+    musicCaption: 'Spacious dub-techno memory loop at ~118 bpm with a sparse dub pulse, kick on 1 and 3, and an off-beat detuned chord stab; sub-bass under the kick, dub-delay tail on the chord, distant pad, light clave on the off-beats, no full drum kit, no melodic synth lead; detached spoken-sung lead vocal close to the mic and slightly reverbed at the tails, patient without ever being sleepy; modal two-chord hypnotic loop, narrow melody, no chorus lift; bridge introduces one extra dub-delay layer and removes it again, no drop, no big build; clear English diction so "carefully, near, calm, simple, patient" all land cleanly above the dub delays; avoid club-anthem build-and-drop, sad-piano breakdown, lo-fi study-beat haze, ambient-folk default, and soft-felt-piano cliche.',
     audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-2-wistful-trophy-song/candidate-a.mp3',
     audioCandidates: defineAudioCandidates(
       'english-a1-practical-2-segment-2-wistful-trophy-song',
-      'https://tempfile.aiquickdraw.com/r/81b07c63ac4341aba2ddbd6b7a0fbce1.mp3',
-      'https://tempfile.aiquickdraw.com/r/ed35e1d9dbab4612848d4ca19856fb24.mp3',
+      'https://tempfile.aiquickdraw.com/r/fd0fe38ef2b145b78bf827644e592af2.mp3',
+      'https://tempfile.aiquickdraw.com/r/29cd5d430dd14bab88a6c003e4aa2eeb.mp3',
       'a1p2',
     ),
     audioStatus: 'ready',
-    rawLyricsWithWrappers: `[Verse 1]
-Say it <<again>> at the counter
-The card light turns to green
-The receipt is somewhere <<near>>
-By the door, half-seen
+    rawLyricsWithWrappers: `[Section 1]
+The terminal turns green
+I press it <<carefully>>, slow
+The receipt is sitting <<near>>
+By the door, half-glow
 
-[Chorus]
-Stay <<calm>>, stay close
-Keep it <<simple>>, one more line
-<<Patient>> as the room slows down
-Patient with the time
+[Section 2]
+At the desk I say the name
+My booking is on the page
+The hostess marks it <<calm>>
+And the room is open stage
 
-[Verse 2]
-My name is on the paper
-You found it in the glow
-Near enough to touch it
-Simple enough to know
+[Section 3]
+A <<simple>> check before the bus
+The driver gives a nod
+I stand until the next light
+A <<patient>> minute on the road
 
-[Chorus]
-Stay calm, stay close
-Keep it simple, one more line
-Patient as the room slows down
-Patient with the time
+[Section 4]
+Slow check at the desk
+The light comes back to green
+A whole quiet hour between
+And the booking holds the room
 
-[Bridge]
-Again, I ask it softly
-Again, you make it plain
-Near the quiet doorway
-I can start again
-
-[Outro]
-Calm, simple, patient
-Near the light again`,
-    lyricsTranslationDe: `[Verse 1]
-Sag es noch einmal am Tresen
-Das Kartenlicht wird gruen
-Die Quittung ist irgendwo nah
-Bei der Tuer, halb gesehen
-
-[Chorus]
-Bleib ruhig, bleib nah
-Halte es einfach, noch eine Zeile
-Geduldig, waehrend der Raum langsamer wird
-Geduldig mit der Zeit
-
-[Verse 2]
-Mein Name steht auf dem Papier
-Du hast ihn im Licht gefunden
-Nah genug, um ihn zu beruehren
-Einfach genug, um es zu wissen
-
-[Chorus]
-Bleib ruhig, bleib nah
-Halte es einfach, noch eine Zeile
-Geduldig, waehrend der Raum langsamer wird
-Geduldig mit der Zeit
-
-[Bridge]
-Noch einmal frage ich leise
-Noch einmal machst du es klar
-Nahe der ruhigen Tuer
-Kann ich wieder anfangen
+[Section 5]
+Patient by the door
+Patient by the door
+The loop comes back around
+And the loop comes back around
 
 [Outro]
-Ruhig, einfach, geduldig
-Nahe am Licht, noch einmal`,
+The terminal goes green
+The room holds the name
+And the loop comes back`,
+    lyricsTranslationDe: `[Section 1]
+Das Terminal wird gruen
+Ich druecke es vorsichtig, langsam
+Die Quittung liegt nah
+Bei der Tuer, im Halblicht
+
+[Section 2]
+Am Empfang sage ich den Namen
+Meine Buchung steht auf der Seite
+Die Hostess haelt es ruhig
+Und das Zimmer ist offene Buehne
+
+[Section 3]
+Ein einfacher Check vor dem Bus
+Der Fahrer nickt
+Ich stehe bis zum naechsten Licht
+Eine geduldige Minute auf der Strasse
+
+[Section 4]
+Langsamer Check am Empfang
+Das Licht kommt zurueck auf gruen
+Eine ganze ruhige Stunde dazwischen
+Und die Buchung haelt das Zimmer
+
+[Section 5]
+Geduldig an der Tuer
+Geduldig an der Tuer
+Die Schleife kommt zurueck
+Und die Schleife kommt zurueck
+
+[Outro]
+Das Terminal wird gruen
+Der Raum haelt den Namen
+Und die Schleife kommt zurueck`,
   }),
   defineGuidedTrophySong({
     id: 'english-a1-practical-2-segment-1-sharp-trophy-song',
     pathId: 'english-a1-practical-2',
     segment: 1,
     vibe: 'sharp',
-    trophyWords: ['clear', 'quick', 'exactly', 'decided', 'certain'],
-    styleFamily: 'clean-synth-grid',
-    songStyleLabel: 'Clean synth grid',
-    musicCaption: 'Clean synth grid at ~108 bpm, crisp and precise with a compact reward hook; Sharp voice - direct, controlled, high-contrast, never rude or robotic; dry lead vocal with tight timing, no vocoder, no ornamentation; short synth pluck motif, clipped hats, low square bass, minimal kick, no pads washing over diction; clear English diction so "clear, quick, exactly, decided, certain" all land cleanly; avoid industrial darkness, avoid trap posture, avoid boss-mode cliche.',
+    trophyWords: ['short', 'spelling', 'sign', 'option', 'stock'],
+    styleFamily: 'crisp-funk-bass-precision',
+    songStyleLabel: 'Crisp funk-bass precision',
+    musicCaption: 'Crisp funk-bass precision at ~108 bpm with a very tight syncopated pocket; percussive funk bass at the centre of the mix doing most of the harmonic work, muted clean electric guitar, dry kit with rim-shots and chorus-only handclaps placed precisely, one Rhodes accent on the chorus hook only, no synth, no pad; close dry vocal with tight timing, no vocoder, no melisma, no ornamentation, a crisp decisive Sharp posture with a small playful edge; steady groove, second chorus adds the Rhodes accent and removes it on the bridge, no chorus lift, no drop; clear English diction so "short, spelling, sign, option, stock" all land cleanly on the bass pocket; avoid Vulfpeck pastiche, comedy-funk, minimal-synth-grid attractor, boss-mode posture, motivational slogan energy, and smooth-jazz shimmer.',
     audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-1-sharp-trophy-song/candidate-a.mp3',
     audioCandidates: defineAudioCandidates(
       'english-a1-practical-2-segment-1-sharp-trophy-song',
-      'https://tempfile.aiquickdraw.com/r/d77dedd0971441cf8277c158860c7703.mp3',
-      'https://tempfile.aiquickdraw.com/r/c027f0663ce94e05ad98a97964d6967b.mp3',
+      'https://tempfile.aiquickdraw.com/r/3681a5c9f96d4b4598de969762a2f491.mp3',
+      'https://tempfile.aiquickdraw.com/r/c83df97002cd459fbae9ad5f6ee0b4d1.mp3',
       'a1p2',
     ),
     audioStatus: 'ready',
     rawLyricsWithWrappers: `[Verse 1]
-Make it <<clear>> on the page
-One clean line, no drift
-Keep it <<quick>>, I can use it
-Show me where it fits
+<<Short>> question at the counter
+I will keep it on one breath
+Could you tell me the <<spelling>>
+Letter by letter, please
+
+[Pre-Chorus]
+You write it on the napkin
+And the address comes back clean
 
 [Chorus]
-<<Exactly>> there, no second guess
-<<Decided>> now, this one
-<<Certain>> in the little steps
-Certain when it's done
+The <<sign>> says open until ten
+First <<option>> on the right
+"In <<stock>> today?" - "Yes, it is"
+All three answered clean
 
 [Verse 2]
-Counter. Choice. Short answer.
-The sign is in my sight
-Clear enough to move me
-Quick enough for right
+A second at the page
+A pen in someone's hand
+Three small asks at a counter
+And the bag slides into my hand
 
 [Chorus]
-Exactly there, no second guess
-Decided now, this one
-Certain in the little steps
-Certain when it's done
+The sign says open until ten
+First option on the right
+"In stock today?" - "Yes, it is"
+All three answered clean
 
 [Bridge]
-No extra words around it
-No fog inside the sound
-Exactly means I found it
-Decided means I found
+The bass keeps the pocket
+The pocket keeps the line
+Three quick asks at a counter
+And the corner makes me stop
 
 [Outro]
-Clear. Quick. Certain.
-Exactly. Decided. Done.`,
+The napkin's in my pocket
+The address is in my head
+Out the door, on the road`,
     lyricsTranslationDe: `[Verse 1]
-Mach es klar auf der Seite
-Eine saubere Zeile, kein Abdriften
-Halte es schnell, ich kann es nutzen
-Zeig mir, wo es passt
+Kurze Frage am Tresen
+Ich halte sie in einem Atem
+Koenntest du mir die Schreibweise sagen
+Buchstabe fuer Buchstabe, bitte
+
+[Pre-Chorus]
+Du schreibst sie auf eine Serviette
+Und die Adresse kommt sauber zurueck
 
 [Chorus]
-Genau dort, kein zweites Raten
-Jetzt entschieden, dieses hier
-Sicher in den kleinen Schritten
-Sicher, wenn es fertig ist
+Das Schild sagt "offen bis zehn"
+Erste Option rechts
+"Heute auf Lager?" - "Ja, ist es"
+Alle drei sauber beantwortet
 
 [Verse 2]
-Tresen. Wahl. Kurze Antwort.
-Das Schild ist in meinem Blick
-Klar genug, um mich weiterzubringen
-Schnell genug fuer richtig
+Eine Sekunde an der Seite
+Ein Stift in jemandes Hand
+Drei kleine Fragen an einem Tresen
+Und die Tuete gleitet in meine Hand
 
 [Chorus]
-Genau dort, kein zweites Raten
-Jetzt entschieden, dieses hier
-Sicher in den kleinen Schritten
-Sicher, wenn es fertig ist
+Das Schild sagt "offen bis zehn"
+Erste Option rechts
+"Heute auf Lager?" - "Ja, ist es"
+Alle drei sauber beantwortet
 
 [Bridge]
-Keine Extra-Worte darum herum
-Kein Nebel im Klang
-Genau heisst, ich habe es gefunden
-Entschieden heisst, ich habe gefunden
+Der Bass haelt die Pocket
+Die Pocket haelt die Linie
+Drei schnelle Fragen an einem Tresen
+Und die Ecke laesst mich anhalten
 
 [Outro]
-Klar. Schnell. Sicher.
-Genau. Entschieden. Fertig.`,
+Die Serviette ist in meiner Tasche
+Die Adresse ist in meinem Kopf
+Aus der Tuer, auf die Strasse`,
   }),
   defineGuidedTrophySong({
     id: 'english-a1-practical-2-segment-2-sharp-trophy-song',
     pathId: 'english-a1-practical-2',
     segment: 2,
     vibe: 'sharp',
-    trophyWords: ['straight', 'focused', 'direct', 'settled', 'done'],
-    styleFamily: 'crisp-bass-pop',
-    songStyleLabel: 'Crisp bass pop',
-    musicCaption: 'Crisp bass pop at ~114 bpm, compact and precise with a dry rhythmic hook; Sharp voice - direct, settled, focused, warm enough for service moments but never soft-edged; tight vocal timing, no vocoder, no melisma; punchy bass, clipped guitar mutes, clean kit, small synth accent, sparse harmony only on the hook; clear English diction so "straight, focused, direct, settled, done" all land cleanly; avoid aggressive hip-hop posture, avoid cold techno, avoid motivational slogan energy.',
+    trophyWords: ['now', 'printed', 'direct', 'correct', 'wait'],
+    styleFamily: 'drumline-precision',
+    songStyleLabel: 'Drumline precision',
+    musicCaption: 'Drumline precision at ~112 bpm with a marching snare pattern and no full drum kit; occasional bass drum hit, trumpet-and-alto-sax brass entering only on the chorus, no melodic instrument under the verses, no synth, no guitar; close dry vocal, tight timing, crisp Sharp posture that becomes briefly chant-like on the chorus hook; drums-and-voice only on the verse, brass enters on the chorus, brass exits on the verse return, bridge keeps the snare and adds a single new brass figure, no drop, no big build; clear English diction so "now, printed, direct, correct, wait" all land cleanly between the snare hits; avoid marching-band caricature, sports-anthem energy, motivational slogan tone, boss-battle posture, minimal-synth attractor, and aggressive hip-hop posture.',
     audioPublicUrl: '/guided/trophy-songs/a1p2/english-a1-practical-2-segment-2-sharp-trophy-song/candidate-a.mp3',
     audioCandidates: defineAudioCandidates(
       'english-a1-practical-2-segment-2-sharp-trophy-song',
-      'https://tempfile.aiquickdraw.com/r/e37d71cdd3834d00bff9833d7a267646.mp3',
-      'https://tempfile.aiquickdraw.com/r/eae1db88a8a149c087001afd9cd0fe79.mp3',
+      'https://tempfile.aiquickdraw.com/r/97cae96dd7eb42bdb9684638d6661ea0.mp3',
+      'https://tempfile.aiquickdraw.com/r/dbc23e157508491ab09fdd2670882cdf.mp3',
       'a1p2',
     ),
     audioStatus: 'ready',
     rawLyricsWithWrappers: `[Verse 1]
-Card first, <<straight>> to payment
-Receipt set by the door
-Eyes <<focused>> on the counter
-No need to ask for more
+Card on the counter, pay it <<now>>
+"Could I have it <<printed>>, please?"
+A small receipt slides across the desk
+And the brass on the corner stays
 
 [Chorus]
-Keep it <<direct>>, keep it clean
-<<Settled>> in one line
-<<Done>> means done, and done means done
-Right on time
+<<Direct>> at the desk, the name in line
+"That is <<correct>>" - and the room is mine
+A small bow back, a quick exchange
+And the next door's missed
 
 [Verse 2]
-Reservation. Name checked.
-The answer lands in place
-Direct little sentence
-Settled on my face
+The platform sign, the route is true
+Train pulling slow into the gate
+"Is that the seven?" "Correct."
+And the doors don't have to wait
 
 [Chorus]
-Keep it direct, keep it clean
-Settled in one line
-Done means done, and done means done
-Right on time
+Direct at the desk, the name in line
+"That is correct" - and the room is mine
+A small bow back, a quick exchange
+And the next door's missed
 
 [Bridge]
-Straight is the road out
-Focused is the view
-Done is the small door closing
-Cleanly after you
+The snare on the corner counts me off
+Brass on the stair, brass at the door
+I <<wait>> for the green to turn
+And cross when the count says go
 
 [Outro]
-Direct. Settled. Done.
-Direct. Settled. Done.`,
+The seven is the seven
+The platform clears the gate
+Three small steps and out`,
     lyricsTranslationDe: `[Verse 1]
-Karte zuerst, direkt zum Bezahlen
-Quittung bei der Tuer
-Augen konzentriert auf den Tresen
-Ich muss nicht mehr fragen
+Karte auf den Tresen, jetzt zahlen
+"Koennte ich es gedruckt haben, bitte?"
+Eine kleine Quittung gleitet ueber den Tresen
+Und die Bleche an der Ecke bleiben
 
 [Chorus]
-Halte es direkt, halte es sauber
-Geklaert in einer Zeile
-Fertig heisst fertig, und fertig heisst fertig
-Genau rechtzeitig
+Direkt am Empfang, der Name in der Reihe
+"Das stimmt" - und das Zimmer ist meins
+Eine kleine Verbeugung zurueck, ein schneller Austausch
+Und die naechste Tuer ist versaeumt
 
 [Verse 2]
-Reservierung. Name geprueft.
-Die Antwort landet an ihrem Platz
-Ein direkter kleiner Satz
-Geklaert auf meinem Gesicht
+Das Bahnsteigschild, die Strecke stimmt
+Der Zug rollt langsam ins Tor
+"Ist das die Sieben?" "Stimmt."
+Und die Tueren muessen nicht warten
 
 [Chorus]
-Halte es direkt, halte es sauber
-Geklaert in einer Zeile
-Fertig heisst fertig, und fertig heisst fertig
-Genau rechtzeitig
+Direkt am Empfang, der Name in der Reihe
+"Das stimmt" - und das Zimmer ist meins
+Eine kleine Verbeugung zurueck, ein schneller Austausch
+Und die naechste Tuer ist versaeumt
 
 [Bridge]
-Direkt ist der Weg hinaus
-Konzentriert ist der Blick
-Fertig ist die kleine Tuer, die sich schliesst
-Sauber nach dir
+Die Snare an der Ecke zaehlt mich ein
+Bleche auf der Treppe, Bleche an der Tuer
+Ich warte, dass die Ampel umspringt
+Und gehe, wenn der Takt es sagt
 
 [Outro]
-Direkt. Geklaert. Fertig.
-Direkt. Geklaert. Fertig.`,
+Die Sieben ist die Sieben
+Der Bahnsteig leert das Tor
+Drei kleine Schritte, und raus`,
   }),
 ]
 

@@ -60,12 +60,12 @@ const expectedTrophyWords = new Map<string, string[]>([
   ['english-a1-practical-1-segment-2-wistful-trophy-song', ['almost', 'soft', 'again', 'a little', 'lingering']],
   ['english-a1-practical-1-segment-1-sharp-trophy-song', ['clear', 'quick', 'straight', 'ready', 'exactly']],
   ['english-a1-practical-1-segment-2-sharp-trophy-song', ['certain', 'focused', 'decided', 'settled', 'done']],
-  ['english-a1-practical-2-segment-1-bright-trophy-song', ['lovely', 'glad', 'brilliant', 'ready', 'charming']],
-  ['english-a1-practical-2-segment-2-bright-trophy-song', ['easy', 'splendid', 'kind', 'sure', 'cheerful']],
-  ['english-a1-practical-2-segment-1-wistful-trophy-song', ['gently', 'slowly', 'perhaps', 'quiet', 'soft']],
-  ['english-a1-practical-2-segment-2-wistful-trophy-song', ['again', 'near', 'calm', 'simple', 'patient']],
-  ['english-a1-practical-2-segment-1-sharp-trophy-song', ['clear', 'quick', 'exactly', 'decided', 'certain']],
-  ['english-a1-practical-2-segment-2-sharp-trophy-song', ['straight', 'focused', 'direct', 'settled', 'done']],
+  ['english-a1-practical-2-segment-1-bright-trophy-song', ['happy', 'warm', 'right', 'fine', 'fresh']],
+  ['english-a1-practical-2-segment-2-bright-trophy-song', ['easy', 'neat', 'kind', 'sure', 'cheerful']],
+  ['english-a1-practical-2-segment-1-wistful-trophy-song', ['maybe', 'kindly', 'somewhere', 'either', 'anywhere']],
+  ['english-a1-practical-2-segment-2-wistful-trophy-song', ['carefully', 'near', 'calm', 'simple', 'patient']],
+  ['english-a1-practical-2-segment-1-sharp-trophy-song', ['short', 'spelling', 'sign', 'option', 'stock']],
+  ['english-a1-practical-2-segment-2-sharp-trophy-song', ['now', 'printed', 'direct', 'correct', 'wait']],
 ])
 
 const manifestEntries = [
