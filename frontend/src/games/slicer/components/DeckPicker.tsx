@@ -30,9 +30,9 @@ type DeckPickerProps = {
   onLanguageChange: (language: string | null) => void
 }
 
-const MODES: Array<{ value: DeckMode; label: string }> = [
-  { value: 'audio_to_image', label: 'Image' },
-  { value: 'audio_to_text', label: 'Text' },
+const MODES: Array<{ value: DeckMode; labelKey: 'imageMode' | 'textMode' }> = [
+  { value: 'audio_to_image', labelKey: 'imageMode' },
+  { value: 'audio_to_text', labelKey: 'textMode' },
 ]
 
 export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLanguageChange, onSelect }: DeckPickerProps) {
@@ -98,27 +98,28 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
   const languageLabel = selectedLanguage ? t(`langName.${selectedLanguage}`) : null
 
   const title = useMemo(() => {
-    if (!languageLabel) return 'Choose a deck'
+    if (!languageLabel) return t('slicer.deckPicker.chooseDeck')
     return t('slicer.deckPicker.heading', { language: languageLabel })
   }, [languageLabel, t])
 
   const isGerman = selectedLanguage?.toLowerCase().startsWith('de') ?? false
   const playAllTitle = isGerman ? 'Alle Wörter' : 'All Words'
   const playAllLabel = isGerman ? 'Alle Wörter spielen' : 'Play all words'
+  const untitledDeck = t('slicer.deckPicker.untitledDeck')
   const playAllWordCount = useMemo(() => (
     filteredDecks.reduce((total, deck) => total + (deck.word_count ?? 0), 0)
   ), [filteredDecks])
 
   return (
-    <section className="pointer-events-auto absolute inset-0 z-30 flex bg-black/45 px-4 py-4 text-[#fff1d0] backdrop-blur-sm sm:px-6 sm:py-6">
+    <section className="pointer-events-auto absolute inset-0 z-30 flex bg-black/45 px-4 pt-[max(1rem,var(--app-safe-top))] pb-4 text-[#fff1d0] backdrop-blur-sm sm:px-6 sm:py-6">
       <div className="mx-auto flex h-full min-h-0 w-full max-w-6xl flex-col">
         <button
           type="button"
           onClick={() => navigate('/study')}
-          className="mb-3 inline-flex min-h-10 w-fit items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/30 px-4 text-sm text-[#fff1d0] transition hover:bg-white/10"
+          className="mb-3 inline-flex min-h-11 w-fit items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/30 px-4 text-sm text-[#fff1d0] transition hover:bg-white/10"
         >
           <ArrowLeft size={16} />
-          Back
+          {t('slicer.deckPicker.back')}
         </button>
         <div className="mb-3 flex shrink-0 justify-center">
           <img
@@ -126,7 +127,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
             alt="Slicer"
             width={1600}
             height={400}
-            className="h-auto w-[min(720px,94vw)] object-contain"
+            className="h-auto w-[min(540px,72vw)] object-contain sm:w-[min(720px,94vw)]"
           />
         </div>
         {availableLanguages.length > 1 && (
@@ -138,7 +139,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                   key={language}
                   type="button"
                   onClick={() => onLanguageChange(language)}
-                  className={`min-h-10 rounded-full border px-3 py-2 text-sm transition ${
+                  className={`min-h-11 rounded-full border px-3 py-2 text-sm transition ${
                     active
                       ? 'border-[rgba(255,215,0,0.55)] bg-[#ff6b35]/20 text-[#ffd700] shadow-[0_0_18px_rgba(255,215,0,0.12)]'
                       : 'border-[rgba(255,107,53,0.2)] bg-black/25 text-[#ffd2a5]/70 hover:border-[rgba(255,107,53,0.38)] hover:text-[#fff1d0]'
@@ -154,7 +155,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
           <h1 className="font-serif text-2xl leading-none sm:text-4xl">{title}</h1>
           <div className="flex flex-wrap justify-center gap-2">
             <label className="inline-flex min-h-12 items-center gap-3 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 px-4 text-sm text-[#fff1d0]/80">
-              <span>Easy mode</span>
+              <span>{t('slicer.deckPicker.easyMode')}</span>
               <input
                 type="checkbox"
                 checked={easyMode}
@@ -168,9 +169,9 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                   key={item.value}
                   type="button"
                   onClick={() => setMode(item.value)}
-                  className={`min-h-10 rounded-md px-4 text-sm transition ${mode === item.value ? 'bg-[#ff6b35]/25 text-[#ffd700]' : 'text-[#fff1d0]/70 hover:text-[#fff1d0]'}`}
+                  className={`min-h-11 rounded-md px-4 text-sm transition ${mode === item.value ? 'bg-[#ff6b35]/25 text-[#ffd700]' : 'text-[#fff1d0]/70 hover:text-[#fff1d0]'}`}
                 >
-                  {item.label}
+                  {t(`slicer.deckPicker.${item.labelKey}`)}
                 </button>
               ))}
             </div>
@@ -200,31 +201,31 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
               </span>
             </button>
             <div className="mt-2 text-xs uppercase tracking-[0.18em] text-[#ffd2a5]/62">
-              {playAllWordCount} words
+              {t('slicer.deckPicker.wordCount', { count: playAllWordCount })}
             </div>
           </div>
         )}
 
-        <div className={`min-h-0 flex-1 overflow-y-auto ${styles.deckScroll}`}>
+        <div className={`min-h-0 flex-1 overflow-y-auto ${styles.deckScroll} ${styles.deckScrollFade}`}>
           {loading ? (
             <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
-              Loading decks...
+              {t('slicer.deckPicker.loading')}
             </div>
           ) : error ? (
             <div className="rounded-lg border border-red-400/30 bg-red-950/30 p-8 text-center text-red-100">{error}</div>
           ) : filteredDecks.length === 0 ? (
             <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
-              No decks are ready for this language.
+              {t('slicer.deckPicker.empty')}
             </div>
           ) : (
-            <div className="grid gap-4 pb-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 pb-[max(1.5rem,calc(var(--app-safe-bottom)+0.5rem))] sm:grid-cols-2 lg:grid-cols-3">
               {filteredDecks.map((deck) => (
                 <button
                   key={deck.id}
                   type="button"
                   onClick={() => onSelect({
                     id: deck.id,
-                    title: deck.name ?? 'Untitled deck',
+                    title: deck.name ?? untitledDeck,
                     targetLanguage: deck.target_language,
                     mode,
                   })}
@@ -238,9 +239,9 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
                       className="h-full w-full object-contain"
                     />
                   </span>
-                  <span className="block truncate font-serif text-2xl leading-tight">{deck.name ?? 'Untitled deck'}</span>
+                  <span className="block truncate font-serif text-2xl leading-tight">{deck.name ?? untitledDeck}</span>
                   <span className="mt-2 block text-xs uppercase tracking-[0.14em] text-[#ffd2a5]/70">
-                    {deck.word_count ?? 0} words
+                    {t('slicer.deckPicker.wordCount', { count: deck.word_count ?? 0 })}
                   </span>
                 </button>
               ))}
