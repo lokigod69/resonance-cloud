@@ -22,7 +22,7 @@ const MODES: ModeConfig[] = [
   { key: 'video', iconSrc: videoIcon, titleKey: 'study.mode.video', route: '/study/video', enabled: true },
   { key: 'flashcard', iconSrc: cardsIcon, titleKey: 'study.mode.flashcard', route: '/study/flashcard', enabled: true },
   { key: 'audio', iconSrc: audioIcon, titleKey: 'study.mode.audio', route: '/study/audio', enabled: true },
-  { key: 'canvas', iconSrc: canvasIcon, titleKey: 'study.mode.canvas', route: '/study/canvas', enabled: true },
+  { key: 'canvas', iconSrc: canvasIcon, titleKey: 'study.mode.canvas', route: '/study/canvas/select', enabled: true },
 ]
 
 export default function StudyModeSelector() {

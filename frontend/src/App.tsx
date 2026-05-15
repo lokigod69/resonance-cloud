@@ -35,6 +35,7 @@ import StudyModeSelector from '@/pages/StudyModeSelector'
 import StudyFlashcard from '@/pages/StudyFlashcard'
 import StudyAudio from '@/pages/StudyAudio'
 import StudyCanvas from '@/pages/StudyCanvas'
+import CanvasDeckPicker from '@/pages/CanvasDeckPicker'
 import GamesHub from '@/pages/GamesHub'
 import GenerateGO from '@/pages/GenerateGO'
 import Users from '@/pages/admin/Users'
@@ -187,6 +188,7 @@ function AppRoutes() {
             <Route path="/study/video" element={<StudyPG />} />
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
             <Route path="/study/audio" element={<StudyAudio />} />
+            <Route path="/study/canvas/select" element={<CanvasDeckPicker />} />
             <Route path="/music" element={<MusicPG />} />
             <Route path="/speak" element={<Speak />} />
           </Route>
@@ -206,6 +208,7 @@ function AppRoutes() {
             <Route path="/study/video" element={<Study />} />
             <Route path="/study/flashcard" element={<StudyFlashcard />} />
             <Route path="/study/audio" element={<StudyAudio />} />
+            <Route path="/study/canvas/select" element={<CanvasDeckPicker />} />
             <Route path="/music" element={<Music />} />
             <Route path="/speak" element={<Speak />} />
           </Route>
