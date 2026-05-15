@@ -190,6 +190,28 @@ const STORIES: Record<StoryKey, GuidedSegmentStory> = {
       { lessonNumber: 10, scene: 'Du sagst an der Rezeption, dass du auscheckst.' },
     ],
   },
+  'english-a1-practical-9:1': {
+    title: 'Ein Treffen abmachen',
+    intro: 'Du lernst jemanden kennen, fragst nach Zeit, schlägst später vor und einigst dich auf einen Ort.',
+    beats: [
+      { lessonNumber: 1, scene: 'Du begrüßt eine neue Person höflich.' },
+      { lessonNumber: 2, scene: 'Du fragst, ob die Person heute Zeit hat.' },
+      { lessonNumber: 3, scene: 'Du schlägst vor, euch später zu treffen.' },
+      { lessonNumber: 4, scene: 'Du fragst, welche Uhrzeit passt.' },
+      { lessonNumber: 5, scene: 'Du schlägst diesen Ort als Treffpunkt vor.' },
+    ],
+  },
+  'english-a1-practical-9:2': {
+    title: 'Plan klären und verabschieden',
+    intro: 'Du wartest draußen, meldest eine Verspätung, änderst den Plan und schließt den Abend höflich ab.',
+    beats: [
+      { lessonNumber: 6, scene: 'Du sagst, dass du draußen wartest.' },
+      { lessonNumber: 7, scene: 'Du meldest, dass du spät dran bist.' },
+      { lessonNumber: 8, scene: 'Du fragst, ob ihr den Plan ändern könnt.' },
+      { lessonNumber: 9, scene: 'Du bestätigst, dass ihr euch morgen seht.' },
+      { lessonNumber: 10, scene: 'Du verabschiedest dich höflich am Abend.' },
+    ],
+  },
 }
 
 export function getGuidedSegmentStory(

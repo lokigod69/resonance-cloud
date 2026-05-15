@@ -9,6 +9,7 @@ const GUIDED_PATH_LABELS: Record<string, string> = {
   'english-a1-practical-6': 'English A1 P6',
   'english-a1-practical-7': 'English A1 P7',
   'english-a1-practical-8': 'English A1 P8',
+  'english-a1-practical-9': 'English A1 P9',
 }
 
 export function formatGuidedPathLabel(path: GuidedPathMetadata | undefined) {
