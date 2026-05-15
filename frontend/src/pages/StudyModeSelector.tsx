@@ -10,8 +10,6 @@ import audioIcon from '@/assets/study-mode-icons/audio.webp'
 import canvasIcon from '@/assets/study-mode-icons/canvas.webp'
 import { GAMES } from '@/games/shared/registry'
 
-const STORAGE_KEY = 'resonance-study-mode'
-
 type ModeConfig = {
   key: string
   iconSrc: string
@@ -36,9 +34,6 @@ export default function StudyModeSelector() {
   const { activeLanguage, setActiveLanguage } = useLanguage()
 
   const [allDecks, setAllDecks] = useState<{ id: string; name: string | null; target_language: string }[]>([])
-  const [lastUsed, setLastUsed] = useState<string | null>(() => {
-    try { return localStorage.getItem(STORAGE_KEY) } catch { return null }
-  })
 
   useEffect(() => {
     if (!user) return
@@ -76,8 +71,6 @@ export default function StudyModeSelector() {
 
   function selectMode(mode: ModeConfig) {
     if (!mode.enabled) return
-    localStorage.setItem(STORAGE_KEY, mode.key)
-    setLastUsed(mode.key)
     const params = deckParam ? `?deck=${deckParam}` : ''
     navigate(`${mode.route}${params}`)
   }
@@ -106,7 +99,6 @@ export default function StudyModeSelector() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {MODES.map((mode) => {
-            const isLastUsed = lastUsed === mode.key
             const title = t(mode.titleKey)
 
             return (
@@ -141,12 +133,6 @@ export default function StudyModeSelector() {
                 />
 
                 <h3 className="text-lg font-semibold">{title}</h3>
-
-                {isLastUsed && mode.enabled && (
-                  <span className="text-[11px] text-gray-500">
-                    {t('study.lastUsed')}
-                  </span>
-                )}
               </button>
             )
           })}

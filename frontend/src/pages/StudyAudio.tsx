@@ -26,7 +26,6 @@ import { SimulatedWaveform } from '@/components/music/SimulatedWaveform'
 import { VolumeControl } from '@/components/VolumeControl'
 import { PLAYER_SOFT_ICON_BUTTON_CLASS } from '@/lib/playerStyles'
 
-const STORAGE_KEY = 'resonance-study-mode'
 const THUMB_KEY = 'resonance-audio-thumbnail'
 
 function formatTime(s: number): string {
@@ -80,11 +79,6 @@ export default function StudyAudio() {
     el.volume = volume
     el.muted = isMuted || volume === 0
   }, [volume, isMuted, audioUrl])
-
-  // Persist last-used mode
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, 'audio')
-  }, [])
 
   // Persist thumbnail preference
   const toggleThumbnail = useCallback(() => {

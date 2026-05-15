@@ -14,8 +14,6 @@ import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
 
-const STORAGE_KEY = 'resonance-study-mode'
-
 export default function StudyFlashcard() {
   const navigate = useNavigate()
   const { t, tp } = useTranslation()
@@ -26,11 +24,6 @@ export default function StudyFlashcard() {
     revealed, setRevealed, decks, deckFilter, setDeckFilter,
     handleRemembered, handleReviewLater, restart,
   } = useStudyUI({ videoRef, studyMode: 'flashcard' })
-
-  // Persist last-used mode
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, 'flashcard')
-  }, [])
 
   // Flashcard-specific keyboard shortcuts (1/2 for review/remember)
   useEffect(() => {
