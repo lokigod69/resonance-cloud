@@ -212,6 +212,28 @@ const STORIES: Record<StoryKey, GuidedSegmentStory> = {
       { lessonNumber: 10, scene: 'Du verabschiedest dich höflich am Abend.' },
     ],
   },
+  'english-a1-practical-10:1': {
+    title: 'Den Tag abschließen',
+    intro: 'Du beendest einen kleinen Tag draußen: Du sagst, was gut war, bedankst dich und merkst, dass du müde bist.',
+    beats: [
+      { lessonNumber: 1, scene: 'Du sagst, dass der heutige Tag gut war.' },
+      { lessonNumber: 2, scene: 'Du sagst, dass dir dieser Ort gefallen hat.' },
+      { lessonNumber: 3, scene: 'Du bedankst dich für die Hilfe.' },
+      { lessonNumber: 4, scene: 'Du sagst, dass du viel gelernt hast.' },
+      { lessonNumber: 5, scene: 'Du sagst, dass du jetzt müde bist.' },
+    ],
+  },
+  'english-a1-practical-10:2': {
+    title: 'Höflich gehen',
+    intro: 'Du schließt die Begegnung: Du sagst, dass du gehen musst, bestätigst morgen und verabschiedest dich ruhig.',
+    beats: [
+      { lessonNumber: 6, scene: 'Du sagst, dass du jetzt gehen musst.' },
+      { lessonNumber: 7, scene: 'Du sagst, dass ihr euch beim nächsten Mal seht.' },
+      { lessonNumber: 8, scene: 'Du bestätigst, dass morgen für dich passt.' },
+      { lessonNumber: 9, scene: 'Du wünschst eine gute Nacht.' },
+      { lessonNumber: 10, scene: 'Du verabschiedest dich für jetzt.' },
+    ],
+  },
 }
 
 export function getGuidedSegmentStory(

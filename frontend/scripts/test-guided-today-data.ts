@@ -160,6 +160,7 @@ const pathSixId = 'english-a1-practical-6'
 const pathSevenId = 'english-a1-practical-7'
 const pathEightId = 'english-a1-practical-8'
 const pathNineId = 'english-a1-practical-9'
+const pathTenId = 'english-a1-practical-10'
 const pathLessons = getGuidedPathLessons(pathOneId)
 const pathTwoLessons = getGuidedPathLessons(pathTwoId)
 const pathThreeLessons = getGuidedPathLessons(pathThreeId)
@@ -169,6 +170,7 @@ const pathSixLessons = getGuidedPathLessons(pathSixId)
 const pathSevenLessons = getGuidedPathLessons(pathSevenId)
 const pathEightLessons = getGuidedPathLessons(pathEightId)
 const pathNineLessons = getGuidedPathLessons(pathNineId)
+const pathTenLessons = getGuidedPathLessons(pathTenId)
 const firstDefinition = pathLessons[0]
 const lessonIds = pathLessons.map((lesson) => lesson.id)
 const lessonNumbers = pathLessons.map((lesson) => lesson.lessonNumber)
@@ -280,6 +282,18 @@ const expectedPathNineTitles = [
   'See you tomorrow',
   'Have a good evening',
 ]
+const expectedPathTenTitles = [
+  'Today was good',
+  'I liked this place',
+  'Thank you for your help',
+  'I learned a lot',
+  'I am tired now',
+  'I need to go',
+  'See you next time',
+  'Tomorrow works for me',
+  'Have a good night',
+  'Goodbye for now',
+]
 
 console.log('\n[path inventory]')
 assert('A1 Practical 1 resolves 10 lessons', pathLessons.length === 10, pathLessons.length)
@@ -291,7 +305,8 @@ assert('A1 Practical 6 resolves 10 lessons', pathSixLessons.length === 10, pathS
 assert('A1 Practical 7 resolves 10 lessons', pathSevenLessons.length === 10, pathSevenLessons.length)
 assert('A1 Practical 8 resolves 10 lessons', pathEightLessons.length === 10, pathEightLessons.length)
 assert('A1 Practical 9 resolves 10 lessons', pathNineLessons.length === 10, pathNineLessons.length)
-assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
+assert('A1 Practical 10 resolves 10 lessons', pathTenLessons.length === 10, pathTenLessons.length)
+assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
 assert('lesson ids are unique', new Set(lessonIds).size === lessonIds.length, lessonIds)
 assert('lesson numbers 1-10 exist with no gaps', JSON.stringify(lessonNumbers) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), lessonNumbers)
 assert('A1 Practical 1 arc titles match product sequence', JSON.stringify(pathLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedTitles), pathLessons.map((lesson) => lesson.title))
@@ -303,7 +318,8 @@ assert('A1 Practical 6 arc titles match product sequence', JSON.stringify(pathSi
 assert('A1 Practical 7 arc titles match product sequence', JSON.stringify(pathSevenLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathSevenTitles), pathSevenLessons.map((lesson) => lesson.title))
 assert('A1 Practical 8 arc titles match product sequence', JSON.stringify(pathEightLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathEightTitles), pathEightLessons.map((lesson) => lesson.title))
 assert('A1 Practical 9 arc titles match product sequence', JSON.stringify(pathNineLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathNineTitles), pathNineLessons.map((lesson) => lesson.title))
-assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId]), getGuidedTodayPathOptions())
+assert('A1 Practical 10 arc titles match product sequence', JSON.stringify(pathTenLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathTenTitles), pathTenLessons.map((lesson) => lesson.title))
+assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId]), getGuidedTodayPathOptions())
 
 console.log('\n[lesson definitions]')
 for (const lesson of pathLessons) {
@@ -521,10 +537,34 @@ for (const lesson of pathNineLessons) {
   }
 }
 
+for (const lesson of pathTenLessons) {
+  assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-10-'), lesson)
+  assert(`${lesson.id} has invariant path id`, lesson.pathId === pathTenId, lesson)
+  assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
+  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathTenTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
+  assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
+  assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
+  assert(`${lesson.id} uses existing Foundation session steps`, JSON.stringify(lesson.steps) === JSON.stringify(TODAY_SESSION_STEPS), lesson.steps)
+  assert(`${lesson.id} has estimated minutes`, lesson.estimatedMinutes === 5, lesson.estimatedMinutes)
+  assert(`${lesson.id} fallback vibe is active`, isActiveGuidedVibeId(lesson.fallbackVibeId), lesson.fallbackVibeId)
+  assert(`${lesson.id} is usable now`, lesson.status === 'active', lesson.status)
+  assert(`${lesson.id} has Bright, Wistful, Sharp variants`, ACTIVE_GUIDED_VIBE_IDS.every((vibeId) => lesson.vibeVariants[vibeId] !== undefined), lesson.vibeVariants)
+  assert(`${lesson.id} only defines active V0 variants`, Object.keys(lesson.vibeVariants).every((vibeId) => ACTIVE_GUIDED_VIBE_IDS.includes(vibeId as never)), lesson.vibeVariants)
+  for (const futureVibeId of FUTURE_GUIDED_VIBE_IDS) {
+    assert(`${lesson.id} has no required ${futureVibeId} runtime variant`, !(futureVibeId in lesson.vibeVariants), lesson.vibeVariants)
+  }
+  for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+    const variant = lesson.vibeVariants[vibeId]
+    assert(`${lesson.id} has ${vibeId} variant`, variant !== undefined, lesson.vibeVariants)
+    if (variant) validateVariant(lesson, vibeId, variant)
+  }
+}
+
 console.log('\n[type recall polish]')
 const existingLowValueTypeRecallTargets = new Set(['english', 'this', 'here', 'please', 'it'])
 const a1P3LowValueTypeRecallTargets = new Set(['english', 'this', 'here', 'please', 'it', 'left', 'right', 'bus', 'stop', 'ticket'])
-for (const lessonDefinition of [...pathLessons, ...pathTwoLessons, ...pathThreeLessons, ...pathFourLessons, ...pathFiveLessons, ...pathSixLessons, ...pathSevenLessons, ...pathEightLessons, ...pathNineLessons]) {
+for (const lessonDefinition of [...pathLessons, ...pathTwoLessons, ...pathThreeLessons, ...pathFourLessons, ...pathFiveLessons, ...pathSixLessons, ...pathSevenLessons, ...pathEightLessons, ...pathNineLessons, ...pathTenLessons]) {
   for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
     const lesson = resolveGuidedLessonVariant(lessonDefinition, vibeId)
     const normalizedAnswer = normalizeGuidedAnswer(lesson.typeRecall.answer)
@@ -747,6 +787,37 @@ assert(
   pathNineDatingOrComplexityMarkers.filter((marker) => JSON.stringify(pathNineLessons).toLowerCase().includes(marker)),
 )
 
+console.log('\n[A1 Practical 10 content polish]')
+for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+  const trophyWords = pathTenLessons
+    .map((lessonDefinition) => lessonDefinition.vibeVariants[vibeId]?.trophyWord.word)
+    .filter((word): word is string => typeof word === 'string')
+    .map((word) => normalizeGuidedAnswer(word))
+  assert(`A1 Practical 10 ${vibeId} trophy words are distinct`, new Set(trophyWords).size === 10, trophyWords)
+
+  const openerFamilies = pathTenLessons
+    .map((lessonDefinition) => lessonDefinition.vibeVariants[vibeId]?.corePhrase.targetText ?? '')
+    .map(getOpenerFamily)
+  assert(`A1 Practical 10 ${vibeId} uses at least three opener families`, new Set(openerFamilies).size >= 3, openerFamilies)
+  assert(`A1 Practical 10 ${vibeId} uses no opener family more than three times`, Math.max(...countValues(openerFamilies).values()) <= 3, openerFamilies)
+}
+const pathTenComplexWrapUpMarkers = [
+  'deep reflection',
+  'emotional journey',
+  'forever',
+  'farewell forever',
+  'heartbroken',
+  'destiny',
+  'soul',
+  'advanced',
+  'because of everything',
+]
+assert(
+  'A1 Practical 10 avoids long, dramatic, or advanced wrap-up copy',
+  !containsAny(JSON.stringify(pathTenLessons).toLowerCase(), pathTenComplexWrapUpMarkers),
+  pathTenComplexWrapUpMarkers.filter((marker) => JSON.stringify(pathTenLessons).toLowerCase().includes(marker)),
+)
+
 console.log('\n[German diacritic detector unit checks]')
 
 const expectedScannedGermanFieldKinds = [
@@ -941,6 +1012,12 @@ const completedPathTwoFirst = markTodayLessonComplete(completed, pathTwoBrightLe
                 const pathNineBrightLesson = resolveGuidedLessonVariant(pathNineFirstDefinition, 'bright')
                 const completedPathNineFirst = markTodayLessonComplete(completedPathEightFirst, pathNineBrightLesson, minimalResult())
                 assert('path progress does not mix A1 Practical 9 with earlier paths', completedPathNineFirst.courses[pathOneId]?.completedLessonIds.length === 1 && completedPathNineFirst.courses[pathTwoId]?.completedLessonIds.length === 1 && completedPathNineFirst.courses[pathThreeId]?.completedLessonIds.length === 1 && completedPathNineFirst.courses[pathFourId]?.completedLessonIds.length === 1 && completedPathNineFirst.courses[pathFiveId]?.completedLessonIds.length === 1 && completedPathNineFirst.courses[pathSixId]?.completedLessonIds.length === 1 && completedPathNineFirst.courses[pathSevenId]?.completedLessonIds.length === 1 && completedPathNineFirst.courses[pathEightId]?.completedLessonIds.length === 1 && completedPathNineFirst.courses[pathNineId]?.completedLessonIds.length === 1, completedPathNineFirst)
+                const pathTenFirstDefinition = pathTenLessons[0]
+                if (pathTenFirstDefinition) {
+                  const pathTenBrightLesson = resolveGuidedLessonVariant(pathTenFirstDefinition, 'bright')
+                  const completedPathTenFirst = markTodayLessonComplete(completedPathNineFirst, pathTenBrightLesson, minimalResult())
+                  assert('path progress does not mix A1 Practical 10 with earlier paths', completedPathTenFirst.courses[pathOneId]?.completedLessonIds.length === 1 && completedPathTenFirst.courses[pathTwoId]?.completedLessonIds.length === 1 && completedPathTenFirst.courses[pathThreeId]?.completedLessonIds.length === 1 && completedPathTenFirst.courses[pathFourId]?.completedLessonIds.length === 1 && completedPathTenFirst.courses[pathFiveId]?.completedLessonIds.length === 1 && completedPathTenFirst.courses[pathSixId]?.completedLessonIds.length === 1 && completedPathTenFirst.courses[pathSevenId]?.completedLessonIds.length === 1 && completedPathTenFirst.courses[pathEightId]?.completedLessonIds.length === 1 && completedPathTenFirst.courses[pathNineId]?.completedLessonIds.length === 1 && completedPathTenFirst.courses[pathTenId]?.completedLessonIds.length === 1, completedPathTenFirst)
+                }
               }
             }
           }

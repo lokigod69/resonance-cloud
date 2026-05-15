@@ -1,5 +1,5 @@
 /**
- * Cross-Vibe Distinctness Test for Guided Today A1P1-A1P9.
+ * Cross-Vibe Distinctness Test for Guided Today A1P1-A1P10.
  *
  * Enforces that within a single lesson, the three vibe variants (bright,
  * wistful, sharp) diverge by more than a leading or trailing hedge alone.
@@ -28,6 +28,7 @@ const ACTIVE_PATHS = [
   'english-a1-practical-7',
   'english-a1-practical-8',
   'english-a1-practical-9',
+  'english-a1-practical-10',
 ] as const
 
 type ActivePathId = (typeof ACTIVE_PATHS)[number]
@@ -360,7 +361,7 @@ if (trophyCollisions.length > 0) {
     failureCount += 1
   }
 } else {
-console.log('\n[trophy distinctness] all lessons in A1P1-A1P9 have pairwise-distinct trophy words across vibes')
+console.log('\n[trophy distinctness] all lessons in A1P1-A1P10 have pairwise-distinct trophy words across vibes')
 }
 
 console.log(`\nsummary: ${totalPairs} pairs, ${hardFails.length} hard fails, ${warns.length} warns, ${allowlistHits.length} allowlist hits, ${trophyCollisions.length} trophy collisions`)
