@@ -422,6 +422,19 @@
   border-color: color-mix(in srgb, var(--today-accent-strong) 30%, var(--today-border));
 }
 
+.today-checkpoint-storyIntro {
+  max-width: 36rem;
+}
+
+.today-checkpoint-storyScene {
+  font-style: italic;
+  color: color-mix(in srgb, var(--text-primary) 84%, transparent);
+}
+
+.today-checkpoint-resultRow {
+  min-height: 2rem;
+}
+
 @media (max-width: 640px) {
   .today-segment-reviewTile {
     min-height: 6.25rem;

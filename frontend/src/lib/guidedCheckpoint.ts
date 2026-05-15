@@ -175,6 +175,7 @@ export function buildGuidedSegmentReviewPlan(
   itemCount = GUIDED_SEGMENT_REVIEW_ITEM_COUNT,
 ): GuidedCheckpointPlan | undefined {
   void progress
+  void random
   const segmentDefinition = getGuidedSegmentReviewDefinition(segment)
   if (!segmentDefinition) return undefined
 
@@ -183,6 +184,7 @@ export function buildGuidedSegmentReviewPlan(
       lesson.lessonNumber >= segmentDefinition.startLesson
       && lesson.lessonNumber <= segmentDefinition.endLesson
     ))
+    .sort((left, right) => left.lessonNumber - right.lessonNumber)
     .map((lesson) => {
       const resolvedLesson = resolveGuidedLessonVariant(lesson, vibe)
       return {
@@ -201,7 +203,7 @@ export function buildGuidedSegmentReviewPlan(
     completedPathCount: 0,
     pathId,
     segment: segmentDefinition.segment,
-    items: shuffle(items, random).slice(0, itemCount),
+    items: items.slice(0, itemCount),
   }
 }
 

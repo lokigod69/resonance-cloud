@@ -13,6 +13,10 @@ import {
   guidedSegmentReviewKey,
   readGuidedSegmentReviewRecord,
 } from '../src/lib/guidedCheckpoint.ts'
+import {
+  getGuidedSegmentSceneForLesson,
+  getGuidedSegmentStory,
+} from '../src/lib/guidedSegmentStories.ts'
 import { createEmptyTodayProgressState, markTodayLessonComplete } from '../src/lib/todayProgress.ts'
 import type { ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
 
@@ -116,16 +120,39 @@ for (const pathId of pathIds) {
   assert(`${pathId} Review 1 builds all five segment lessons without completion progress`, plan?.items.length === 5, plan)
   assert(`${pathId} Review 1 samples only selected path`, plan?.items.every((item) => item.pathId === pathId) === true, plan)
   assert(`${pathId} Review 1 samples only lessons 1-5`, plan?.items.every((item) => lessonNumber(item.lessonId) >= 1 && lessonNumber(item.lessonId) <= 5) === true, plan?.items.map((item) => item.lessonId))
+  assert(`${pathId} Review 1 keeps lessons in story order 1→5`, JSON.stringify(plan?.items.map((item) => lessonNumber(item.lessonId))) === JSON.stringify([1, 2, 3, 4, 5]), plan?.items.map((item) => item.lessonId))
 }
 
 const secondSegmentProgress = createEmptyTodayProgressState()
 const secondSegmentPlan = buildGuidedSegmentReviewPlan(secondSegmentProgress, pathIds[1]!, 2, 'sharp', fixedRng())
 assert('Review 2 builds all five segment lessons without completion progress', secondSegmentPlan?.items.length === 5, secondSegmentPlan)
 assert('Review 2 samples only lessons 6-10', secondSegmentPlan?.items.every((item) => lessonNumber(item.lessonId) >= 6 && lessonNumber(item.lessonId) <= 10) === true, secondSegmentPlan?.items.map((item) => item.lessonId))
+assert('Review 2 keeps lessons in story order 6→10', JSON.stringify(secondSegmentPlan?.items.map((item) => lessonNumber(item.lessonId))) === JSON.stringify([6, 7, 8, 9, 10]), secondSegmentPlan?.items.map((item) => item.lessonId))
 assert('Segment Review preserves selected active vibe', secondSegmentPlan?.items.every((item) => item.vibe === 'sharp') === true, secondSegmentPlan)
 assert('Segment Review samples the full segment even when only two lessons are complete', buildGuidedSegmentReviewPlan(completeLessons(pathIds[0]!, 'bright', 1, 2), pathIds[0]!, 1, 'bright', fixedRng())?.items.length === 5)
 assert('Segment Review is available with no completed lessons in the selected segment/vibe', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[0]!, 1, 'bright', fixedRng())?.items.length === 5)
 assert('Segment Review rejects unknown segment ids', buildGuidedSegmentReviewPlan(secondSegmentProgress, pathIds[0]!, 3, 'sharp', fixedRng()) === undefined)
+
+console.log('\n[segment story scaffold]')
+for (const pathId of pathIds) {
+  for (const segment of [1, 2] as const) {
+    const story = getGuidedSegmentStory(pathId, segment)
+    assert(`${pathId} segment ${segment} has a story title`, typeof story?.title === 'string' && story.title.length > 0)
+    assert(`${pathId} segment ${segment} has a story intro`, typeof story?.intro === 'string' && story.intro.length > 0)
+    assert(`${pathId} segment ${segment} has five beats`, story?.beats.length === 5, story?.beats)
+    const expectedLessonNumbers = segment === 1 ? [1, 2, 3, 4, 5] : [6, 7, 8, 9, 10]
+    assert(
+      `${pathId} segment ${segment} beats cover all five lesson numbers in order`,
+      JSON.stringify(story?.beats.map((beat) => beat.lessonNumber)) === JSON.stringify(expectedLessonNumbers),
+      story?.beats.map((beat) => beat.lessonNumber),
+    )
+    for (const lessonNumberInSegment of expectedLessonNumbers) {
+      const scene = getGuidedSegmentSceneForLesson(pathId, segment, lessonNumberInSegment)
+      assert(`${pathId} segment ${segment} lesson ${lessonNumberInSegment} has a scene line`, typeof scene === 'string' && scene.length > 0)
+    }
+  }
+}
+assert('unknown path has no segment story (falls back gracefully)', getGuidedSegmentStory('english-a1-practical-99', 1) === undefined)
 
 console.log('\n[route and prompt]')
 assert('checkpoint route detects segment-review mode', checkpointSource.includes('mode') && checkpointSource.includes('segment-review'))
@@ -141,6 +168,11 @@ assert('Segment Review prompt uses the dedicated phrase completion copy', checkp
 assert('Segment Review shows German cue separately', checkpointSource.includes('today.checkpoint.germanCue') && checkpointSource.includes('item.lesson.corePhrase.baseText'))
 assert('Path Check keeps a diagnostic label', checkpointSource.includes('today.checkpoint.pathCheckDiagnostic') || checkpointSource.includes('pathCheckHeading'))
 assert('checkpoint lib exports Segment Review plan builder', checkpointLibSource.includes('export function buildGuidedSegmentReviewPlan'))
+assert('Segment Review imports the story scaffold helpers', checkpointSource.includes("from '@/lib/guidedSegmentStories'") && checkpointSource.includes('getGuidedSegmentStory') && checkpointSource.includes('getGuidedSegmentSceneForLesson'))
+assert('Segment Review renders the story intro in the header', checkpointSource.includes('data-segment-story-intro') && checkpointSource.includes('segmentStory.intro'))
+assert('Segment Review renders the per-lesson scene line above the phrase', checkpointSource.includes('data-segment-story-scene') && checkpointSource.includes('segmentScene'))
+assert('Segment Review type input uses the new "Fehlenden Teil einsetzen" placeholder key', checkpointSource.includes('today.checkpoint.segmentInputPlaceholder'))
+assert('Segment Review compact feedback only renders the answer pill on wrong, no big correctFirstTry banner', !sliceBetween(checkpointSource, 'function CheckpointTypeStep', 'function TypeRecallPhrase').includes("t('today.checkpoint.correctFirstTry')"))
 
 console.log('\n[segment completion storage]')
 const originalWindow = globalThis.window
