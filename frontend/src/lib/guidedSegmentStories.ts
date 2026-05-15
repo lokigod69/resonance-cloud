@@ -170,23 +170,23 @@ const STORIES: Record<StoryKey, GuidedSegmentStory> = {
   },
   'english-a1-practical-8:1': {
     title: 'Ankommen im Hotel',
-    intro: 'Du kommst im Hotel oder G?stehaus an. Du nennst die Reservierung, fragst nach Zimmer, Schl?ssel und WLAN.',
+    intro: 'Du kommst im Hotel oder Gästehaus an. Du nennst die Reservierung, fragst nach Zimmer, Schlüssel und WLAN.',
     beats: [
       { lessonNumber: 1, scene: 'Du sagst an der Rezeption, dass du eine Reservierung hast.' },
       { lessonNumber: 2, scene: 'Du bittest kurz um ein Zimmer.' },
       { lessonNumber: 3, scene: 'Du fragst, wo dein Zimmer ist.' },
-      { lessonNumber: 4, scene: 'Du fragst nach dem Schl?ssel.' },
+      { lessonNumber: 4, scene: 'Du fragst nach dem Schlüssel.' },
       { lessonNumber: 5, scene: 'Du fragst, ob es WLAN gibt.' },
     ],
   },
   'english-a1-practical-8:2': {
     title: 'Im Zimmer und beim Abschied',
-    intro: 'Du kl?rst einfache Dinge im Aufenthalt: Bad, Handtuch, Schlaf, Fr?hst?ck und Auschecken.',
+    intro: 'Du klärst einfache Dinge im Aufenthalt: Bad, Handtuch, Schlaf, Frühstück und Auschecken.',
     beats: [
       { lessonNumber: 6, scene: 'Du fragst, wo das Bad ist.' },
       { lessonNumber: 7, scene: 'Du bittest um ein Handtuch.' },
-      { lessonNumber: 8, scene: 'Du sagst, dass du schlafen m?chtest.' },
-      { lessonNumber: 9, scene: 'Du fragst nach der Fr?hst?ckszeit.' },
+      { lessonNumber: 8, scene: 'Du sagst, dass du schlafen möchtest.' },
+      { lessonNumber: 9, scene: 'Du fragst nach der Frühstückszeit.' },
       { lessonNumber: 10, scene: 'Du sagst an der Rezeption, dass du auscheckst.' },
     ],
   },
