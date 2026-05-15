@@ -299,6 +299,16 @@ const GUIDED_TODAY_PATH_TEN_METADATA: GuidedPathMetadata = {
 
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
+const LESSON_001_SPEAK_CORE = {
+  acceptedAnswers: [
+    'Do you speak English?',
+    'Hi, do you speak English?',
+    'Hello, do you speak English?',
+  ],
+  requiredTokens: ['do', 'you', 'speak', 'english'],
+  optionalTokens: ['hi', 'hello', 'there', 'sorry', 'to', 'ask', 'happen', 'quick', 'question'],
+}
+
 const brightLesson001: GuidedLessonVibeVariant = {
   contentStatus: "draft",
   corePhrase: {
@@ -334,6 +344,7 @@ const brightLesson001: GuidedLessonVibeVariant = {
     targetPhrase: "Hi there, do you speak English?",
     language: "en-US",
     passingThreshold: 0.8,
+    ...LESSON_001_SPEAK_CORE,
   },
   sceneCaption: "Morgenlicht im Café, ein offener Blick, und die erste Frage klingt wie ein freundlicher Start.",
   trophyWord: {
@@ -873,6 +884,7 @@ const wistfulLesson001: GuidedLessonVibeVariant = {
     targetPhrase: "Sorry to ask — do you happen to speak English?",
     language: "en-US",
     passingThreshold: 0.8,
+    ...LESSON_001_SPEAK_CORE,
   },
   sceneCaption: "Am Café-Eingang steht die Frage einen Atemzug lang im Raum, bevor sie gesprochen wird.",
   trophyWord: {
@@ -1412,6 +1424,7 @@ const sharpLesson001: GuidedLessonVibeVariant = {
     targetPhrase: "Quick question — do you speak English?",
     language: "en-US",
     passingThreshold: 0.8,
+    ...LESSON_001_SPEAK_CORE,
   },
   sceneCaption: "Sharp öffnet mit der Aufgabe, nicht mit Small Talk.",
   trophyWord: {

@@ -143,6 +143,10 @@ const voiceChat = await import('../api/voice-chat.ts')
 const guidedTranscribe = await import('../api/guided-transcribe.ts')
 const suggestWords = await import('../api/suggest-words.ts')
 const grokToken = await import('../api/grok-token.ts')
+const guidedTranscribeMethods = guidedTranscribe as typeof guidedTranscribe & {
+  GET?: (req: Request) => Promise<Response> | Response
+  PUT?: (req: Request) => Promise<Response> | Response
+}
 
 function request(body: unknown, token?: string): Request {
   const headers: Record<string, string> = {
@@ -240,6 +244,24 @@ await (async function corsPreflightDoesNotCallProviders() {
   assert.equal(providerCalls.length, 0, 'preflight must not call providers')
 })()
 
+await (async function guidedTranscribeRejectsNonPostMethods() {
+  resetMocks()
+  assert.equal(typeof guidedTranscribeMethods.GET, 'function', 'guided-transcribe must export an explicit GET rejection')
+  assert.equal(typeof guidedTranscribeMethods.PUT, 'function', 'guided-transcribe must export an explicit PUT rejection')
+  const getReq = new Request('https://resonanz.pro/api/test', {
+    method: 'GET',
+    headers: { Origin: 'https://resonanz.pro' },
+  })
+  const putReq = new Request('https://resonanz.pro/api/test', {
+    method: 'PUT',
+    headers: { Origin: 'https://resonanz.pro' },
+  })
+  await expectStatus('guided-transcribe GET returns 405', await guidedTranscribeMethods.GET(getReq), 405)
+  await expectStatus('guided-transcribe PUT returns 405', await guidedTranscribeMethods.PUT(putReq), 405)
+  assert.equal(providerCalls.length, 0, 'guided-transcribe non-POST methods must not call providers')
+  assert.deepEqual(callSequence, [], 'guided-transcribe non-POST methods must not call auth or quota')
+})()
+
 await (async function disallowedCorsOriginGetsNoAllowOrigin() {
   resetMocks()
   const req = new Request('https://resonanz.pro/api/test', {
@@ -284,6 +306,7 @@ await (async function guidedTranscribeRejectsOversizedAudioBeforeProvider() {
   }, 'valid-token'))
   assert.ok([400, 413].includes(res.status), `expected 400/413, got ${res.status}`)
   await res.text()
+  assert.deepEqual(callSequence, [], 'guided-transcribe oversized audio must reject before auth and quota')
   assert.equal(providerCalls.length, 0, 'guided-transcribe oversized audio must not call providers')
 })()
 
@@ -294,6 +317,7 @@ await (async function guidedTranscribeRejectsHistoryBeforeProvider() {
     history: [{ role: 'user', content: 'hello' }],
   }, 'valid-token'))
   await expectStatus('guided-transcribe history returns 400', res, 400)
+  assert.deepEqual(callSequence, [], 'guided-transcribe history must reject before auth and quota')
   assert.equal(providerCalls.length, 0, 'guided-transcribe history must not call providers')
 })()
 
@@ -304,6 +328,7 @@ await (async function guidedTranscribeRejectsUnsupportedMimeBeforeProvider() {
     mime_type: 'video/mp4',
   }, 'valid-token'))
   await expectStatus('guided-transcribe unsupported mime returns 400', res, 400)
+  assert.deepEqual(callSequence, [], 'guided-transcribe unsupported mime must reject before auth and quota')
   assert.equal(providerCalls.length, 0, 'guided-transcribe unsupported mime must not call providers')
 })()
 

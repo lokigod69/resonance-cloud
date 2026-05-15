@@ -1,4 +1,4 @@
-import { optionsResponse } from './_shared/cors'
+import { corsHeaders, optionsResponse } from './_shared/cors'
 import { ApiError, apiErrorResponse, errorResponse, jsonResponse, readJsonWithLimit, sanitizedProviderError } from './_shared/http'
 import { requireSupabaseUser } from './_shared/auth'
 import { consumeApiQuota } from './_shared/quota'
@@ -27,12 +27,28 @@ export async function OPTIONS(req?: Request): Promise<Response> {
   return optionsResponse(req)
 }
 
+export function GET(req: Request): Response {
+  return methodNotAllowed(req)
+}
+
+export function PUT(req: Request): Response {
+  return methodNotAllowed(req)
+}
+
+export function PATCH(req: Request): Response {
+  return methodNotAllowed(req)
+}
+
+export function DELETE(req: Request): Response {
+  return methodNotAllowed(req)
+}
+
 export async function POST(req: Request): Promise<Response> {
   let body: GuidedTranscribeBody
   try {
-    const user = await requireSupabaseUser(req)
     const rawBody = await readJsonWithLimit<unknown>(req, GUIDED_TRANSCRIBE_BODY_MAX_BYTES)
     body = validateGuidedTranscribeBody(rawBody)
+    const user = await requireSupabaseUser(req)
     await consumeApiQuota(user.id, 'voice_chat')
   } catch (err) {
     if (err instanceof ApiError) return apiErrorResponse(req, err)
@@ -71,6 +87,17 @@ export async function POST(req: Request): Promise<Response> {
     console.error('[guided-transcribe] STT failed:', err instanceof Error ? err.message : err)
     return sanitizedProviderError(req, 'Speech transcription service unavailable')
   }
+}
+
+function methodNotAllowed(req: Request): Response {
+  return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+    status: 405,
+    headers: {
+      ...corsHeaders(req),
+      Allow: 'POST, OPTIONS',
+      'Content-Type': 'application/json',
+    },
+  })
 }
 
 function validateGuidedTranscribeBody(raw: unknown): GuidedTranscribeBody {
