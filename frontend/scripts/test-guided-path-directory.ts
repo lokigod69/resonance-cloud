@@ -6,7 +6,17 @@
 
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import { getGuidedTodayPathOptions } from '../src/data/guidedLessons.ts'
+import {
+  getGuidedPathLessons,
+  getGuidedPathOverview,
+  getGuidedTodayPathOptions,
+} from '../src/data/guidedLessons.ts'
+import {
+  buildGuidedCheckpointPlan,
+  buildGuidedPathCheckPlan,
+  buildGuidedSegmentReviewPlan,
+} from '../src/lib/guidedCheckpoint.ts'
+import { createEmptyTodayProgressState } from '../src/lib/todayProgress.ts'
 
 let failures = 0
 let passes = 0
@@ -27,6 +37,8 @@ const pathIds = [
   'english-a1-practical-1',
   'english-a1-practical-2',
   'english-a1-practical-3',
+  'english-a1-practical-4',
+  'english-a1-practical-5',
 ]
 
 const directorySource = readSource('../src/components/today/GuidedPathDirectory.tsx')
@@ -39,10 +51,10 @@ const cssSource = readSource('../src/components/today/Today.css')
 
 console.log('\n[path directory source]')
 assert('directory component source exists', directorySource.length > 0)
-for (const pathId of pathIds) {
-  assert(`directory references ${pathId}`, directorySource.includes(pathId) || JSON.stringify(getGuidedTodayPathOptions()).includes(pathId))
-}
-for (const label of ['English A1 P1', 'English A1 P2', 'English A1 P3']) {
+const directoryPathIds = unique(Array.from(directorySource.matchAll(/'english-a1-practical-\d+'/g), ([match]) => match.slice(1, -1)))
+assert('directory exposes exactly English A1 Practical 1-5', JSON.stringify(directoryPathIds) === JSON.stringify(pathIds), directoryPathIds)
+assert('directory does not expose future A1/A2 paths', !containsAny(directorySource, ['english-a1-practical-6', 'english-a2-', 'category-practice', 'language-expansion']))
+for (const label of ['English A1 P1', 'English A1 P2', 'English A1 P3', 'English A1 P4', 'English A1 P5']) {
   assert(`directory exposes compact chooser label ${label}`, pathLabelSource.includes(label))
 }
 assert('directory intentionally hides path subtitles', !directorySource.includes('path.subtitle'))
@@ -52,6 +64,21 @@ assert('directory is rendered as an accessible dialog', directorySource.includes
 assert('directory closes when a path is selected', directorySource.includes('onSelectPath(path.id)') && directorySource.includes('onClose()'))
 assert('directory path rows are keyboard-focusable buttons', directorySource.includes('<button') && directorySource.includes('focus-visible:ring'))
 assert('directory has mobile sheet and desktop panel styling hooks', cssSource.includes('.today-path-directoryOverlay') && cssSource.includes('@media (max-width: 640px)'))
+
+console.log('\n[exposed path behavior]')
+const emptyProgress = createEmptyTodayProgressState()
+for (const pathId of pathIds) {
+  const lessons = getGuidedPathLessons(pathId)
+  assert(`${pathId} has 10 lessons`, lessons.length === 10, lessons.length)
+  assert(`${pathId} overview loads the same 10 lessons`, getGuidedPathOverview(pathId, emptyProgress, 'bright').lessons.length === 10)
+  assert(`${pathId} Path Check samples only the selected path`, buildGuidedPathCheckPlan(pathId, 'sharp', fixedRng())?.items.every((item) => item.pathId === pathId) === true)
+  for (const segment of [1, 2] as const) {
+    const segmentPlan = buildGuidedSegmentReviewPlan(emptyProgress, pathId, segment, 'wistful', fixedRng())
+    assert(`${pathId} Segment Review ${segment} has five lessons`, segmentPlan?.items.length === 5, segmentPlan)
+    assert(`${pathId} Segment Review ${segment} samples only the selected path`, segmentPlan?.items.every((item) => item.pathId === pathId) === true, segmentPlan)
+  }
+}
+assert('Quick Review remains unavailable with no completed path', buildGuidedCheckpointPlan(emptyProgress, 'bright', fixedRng()) === undefined)
 
 console.log('\n[header integration]')
 assert('overview imports path directory component', overviewSource.includes("GuidedPathDirectory"))
@@ -83,6 +110,18 @@ function readSource(relativePath: string) {
 
 function containsAny(value: string, needles: string[]) {
   return needles.some((needle) => value.includes(needle))
+}
+
+function unique(values: string[]) {
+  return Array.from(new Set(values))
+}
+
+function fixedRng() {
+  let value = 0.31
+  return () => {
+    value = (value * 3.79) % 1
+    return value
+  }
 }
 
 function sliceBetween(source: string, start: string, end: string) {

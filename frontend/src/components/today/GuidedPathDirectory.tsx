@@ -18,15 +18,19 @@ type GuidedPathDirectoryProps = {
   onClose: () => void
 }
 
+const GUIDED_A1_PRACTICAL_DIRECTORY_PATH_IDS = [
+  'english-a1-practical-1',
+  'english-a1-practical-2',
+  'english-a1-practical-3',
+  'english-a1-practical-4',
+  'english-a1-practical-5',
+] as const
+
 const GUIDED_PATH_DIRECTORY_GROUPS = [
   {
     id: 'practical',
     categoryLabel: 'Praktisch',
-    pathIds: [
-      'english-a1-practical-1',
-      'english-a1-practical-2',
-      'english-a1-practical-3',
-    ],
+    pathIds: GUIDED_A1_PRACTICAL_DIRECTORY_PATH_IDS,
   },
 ] as const
 
