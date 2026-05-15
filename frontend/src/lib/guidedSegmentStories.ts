@@ -124,6 +124,28 @@ const STORIES: Record<StoryKey, GuidedSegmentStory> = {
       { lessonNumber: 10, scene: 'Du verabschiedest dich und bestätigst morgen.' },
     ],
   },
+  'english-a1-practical-6:1': {
+    title: 'Kleine Hilfe in der Apotheke',
+    intro: 'Dir geht es nicht gut. Du suchst eine Apotheke, sagst kurz, was du brauchst, und bleibst bei einfachen Sätzen.',
+    beats: [
+      { lessonNumber: 1, scene: 'Du sagst, dass es dir nicht gut geht.' },
+      { lessonNumber: 2, scene: 'Du fragst nach einer Apotheke in der Nähe.' },
+      { lessonNumber: 3, scene: 'Du bittest allgemein um Medizin.' },
+      { lessonNumber: 4, scene: 'Du zeigst, wo es weh tut.' },
+      { lessonNumber: 5, scene: 'Du sagst, dass du Kopfschmerzen hast.' },
+    ],
+  },
+  'english-a1-practical-6:2': {
+    title: 'Ruhig Hilfe holen und abschließen',
+    intro: 'Du klärst kleine Bedürfnisse: Wasser, Arzt, Allergie, Hilfe rufen. Am Ende sagst du, dass es besser ist.',
+    beats: [
+      { lessonNumber: 6, scene: 'Du bittest um Wasser.' },
+      { lessonNumber: 7, scene: 'Du fragst, ob ein Arzt in der Nähe ist.' },
+      { lessonNumber: 8, scene: 'Du sagst, dass du eine Allergie hast.' },
+      { lessonNumber: 9, scene: 'Du bittest jemanden, Hilfe zu rufen.' },
+      { lessonNumber: 10, scene: 'Du bedankst dich und sagst, dass es dir besser geht.' },
+    ],
+  },
 }
 
 export function getGuidedSegmentStory(
