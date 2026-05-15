@@ -50,29 +50,32 @@ export default function CanvasDeckPicker() {
 
   useEffect(() => {
     let cancelled = false
-    if (!user) {
-      setDecks([])
-      setLoading(false)
-      return
-    }
-    setLoading(true)
-    setError(null)
-
-    supabase
-      .from('decks')
-      .select('id, name, target_language, word_count')
-      .eq('user_id', user.id)
-      .order('created_at', { ascending: false })
-      .then(({ data, error: decksError }) => {
-        if (cancelled) return
-        if (decksError) {
-          setError(decksError.message)
-          setDecks([])
-        } else {
-          setDecks((data ?? []) as DeckRow[])
-        }
+    queueMicrotask(() => {
+      if (cancelled) return
+      if (!user) {
+        setDecks([])
         setLoading(false)
-      })
+        return
+      }
+      setLoading(true)
+      setError(null)
+
+      supabase
+        .from('decks')
+        .select('id, name, target_language, word_count')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false })
+        .then(({ data, error: decksError }) => {
+          if (cancelled) return
+          if (decksError) {
+            setError(decksError.message)
+            setDecks([])
+          } else {
+            setDecks((data ?? []) as DeckRow[])
+          }
+          setLoading(false)
+        })
+    })
 
     return () => {
       cancelled = true
