@@ -39,6 +39,7 @@ const pathIds = [
   'english-a1-practical-3',
   'english-a1-practical-4',
   'english-a1-practical-5',
+  'english-a1-practical-6',
 ]
 
 const directorySource = readSource('../src/components/today/GuidedPathDirectory.tsx')
@@ -52,9 +53,9 @@ const cssSource = readSource('../src/components/today/Today.css')
 console.log('\n[path directory source]')
 assert('directory component source exists', directorySource.length > 0)
 const directoryPathIds = unique(Array.from(directorySource.matchAll(/'english-a1-practical-\d+'/g), ([match]) => match.slice(1, -1)))
-assert('directory exposes exactly English A1 Practical 1-5', JSON.stringify(directoryPathIds) === JSON.stringify(pathIds), directoryPathIds)
-assert('directory does not expose future A1/A2 paths', !containsAny(directorySource, ['english-a1-practical-6', 'english-a2-', 'category-practice', 'language-expansion']))
-for (const label of ['English A1 P1', 'English A1 P2', 'English A1 P3', 'English A1 P4', 'English A1 P5']) {
+assert('directory exposes exactly English A1 Practical 1-6', JSON.stringify(directoryPathIds) === JSON.stringify(pathIds), directoryPathIds)
+assert('directory does not expose future A1/A2 paths', !containsAny(directorySource, ['english-a1-practical-7', 'english-a2-', 'category-practice', 'language-expansion']))
+for (const label of ['English A1 P1', 'English A1 P2', 'English A1 P3', 'English A1 P4', 'English A1 P5', 'English A1 P6']) {
   assert(`directory exposes compact chooser label ${label}`, pathLabelSource.includes(label))
 }
 assert('directory intentionally hides path subtitles', !directorySource.includes('path.subtitle'))
