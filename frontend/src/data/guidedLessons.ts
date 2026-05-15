@@ -104,6 +104,12 @@ export type GuidedLessonVibeVariant = {
   speakTarget: {
     baseCue: string
     targetPhrase: string
+    germanPrompt?: string
+    targetAnswer?: string
+    acceptedAnswers?: string[]
+    requiredTokens?: string[]
+    optionalTokens?: string[]
+    maxRecordingSeconds?: number
     language: 'en-US' | 'en-GB'
     passingThreshold: number
   }
@@ -293,6 +299,17 @@ const brightLesson001: GuidedLessonVibeVariant = {
   speakTarget: {
     baseCue: "Hallo, sprechen Sie Englisch?",
     targetPhrase: "Hi there, do you speak English?",
+    germanPrompt: "Hallo, sprechen Sie Englisch?",
+    targetAnswer: "Do you speak English?",
+    acceptedAnswers: [
+      "Do you speak English?",
+      "Hi, do you speak English?",
+      "Hello, do you speak English?",
+      "Hi there, do you speak English?",
+    ],
+    requiredTokens: ["do", "you", "speak", "english"],
+    optionalTokens: ["hi", "hello", "there"],
+    maxRecordingSeconds: 12,
     language: "en-US",
     passingThreshold: 0.8,
   },
@@ -6699,6 +6716,10 @@ function createA1P2Variant(input: A1P2VariantInput): GuidedLessonVibeVariant {
     speakTarget: {
       baseCue: input.baseText,
       targetPhrase: input.targetText,
+      germanPrompt: input.baseText,
+      targetAnswer: input.targetText,
+      acceptedAnswers: [input.targetText],
+      maxRecordingSeconds: 12,
       language: 'en-US',
       passingThreshold: 0.8,
     },

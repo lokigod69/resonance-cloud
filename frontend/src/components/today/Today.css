@@ -385,6 +385,51 @@
   color: var(--today-accent-strong);
 }
 
+.today-speak-recordingButton {
+  animation: today-speak-button-pulse 1.25s ease-in-out infinite;
+}
+
+.today-speak-recordingStatus {
+  background: color-mix(in srgb, #ef4444 14%, transparent);
+  border-color: color-mix(in srgb, #ef4444 54%, var(--today-border));
+  color: color-mix(in srgb, #fecaca 82%, var(--text-primary));
+}
+
+.today-speak-recordingDot {
+  animation: today-speak-dot-pulse 1s ease-in-out infinite;
+  background: #ef4444;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0 color-mix(in srgb, #ef4444 54%, transparent);
+  display: inline-block;
+  height: 0.55rem;
+  width: 0.55rem;
+}
+
+@keyframes today-speak-button-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, #ef4444 28%, transparent);
+  }
+
+  50% {
+    box-shadow: 0 0 0 0.35rem color-mix(in srgb, #ef4444 0%, transparent);
+  }
+}
+
+@keyframes today-speak-dot-pulse {
+  0% {
+    transform: scale(0.92);
+  }
+
+  50% {
+    transform: scale(1.18);
+  }
+
+  100% {
+    transform: scale(0.92);
+  }
+}
+
 .today-checkpoint-shell::before {
   inset: 0.25rem 0 -1rem;
 }

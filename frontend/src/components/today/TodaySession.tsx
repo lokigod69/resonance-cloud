@@ -12,7 +12,7 @@ import { BuildPhraseStep, type BuildPhraseCheckState } from '@/components/today/
 import { TypeRecallStep, type TypeRecallCheckState } from '@/components/today/TypeRecallStep'
 import { SpeakStep, type SpeakCheckState } from '@/components/today/SpeakStep'
 import { speakGuidedText } from '@/components/today/speech'
-import { canUseBrowserSpeechRecognition } from '@/components/today/speechRecognition'
+import { canUseGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
 import { TODAY_SESSION_STEPS } from '@/components/today/sessionSteps'
 
 type TodaySessionProps = {
@@ -39,7 +39,7 @@ export function TodaySession({
   const [buildState, setBuildState] = useState<BuildPhraseCheckState>({ status: 'idle', attempts: 0 })
   const [typeState, setTypeState] = useState<TypeRecallCheckState>({ status: 'idle', attempts: 0, usedFallback: false })
   const [speakState, setSpeakState] = useState<SpeakCheckState>(() => ({
-    status: canUseBrowserSpeechRecognition() ? 'idle' : 'unsupported',
+    status: canUseGuidedSpeechRecognition() ? 'idle' : 'unsupported',
     attempts: 0,
     transcriptMatch: 0,
     passed: false,

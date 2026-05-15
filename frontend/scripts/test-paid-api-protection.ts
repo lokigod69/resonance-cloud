@@ -140,6 +140,7 @@ globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise
 }
 
 const voiceChat = await import('../api/voice-chat.ts')
+const guidedTranscribe = await import('../api/guided-transcribe.ts')
 const suggestWords = await import('../api/suggest-words.ts')
 const grokToken = await import('../api/grok-token.ts')
 
@@ -167,11 +168,24 @@ const validVoiceBody = {
   history: [],
 }
 
+const validGuidedTranscribeBody = {
+  audio_base64: Buffer.from('guided audio sample'.repeat(40)).toString('base64'),
+  mime_type: 'audio/webm;codecs=opus',
+  language: 'en-US',
+}
+
 await (async function voiceRejectsMissingAuth() {
   resetMocks()
   const res = await voiceChat.POST(request(validVoiceBody))
   await expectStatus('voice-chat missing auth returns 401', res, 401)
   assert.equal(providerCalls.length, 0, 'voice-chat missing auth must not call providers')
+})()
+
+await (async function guidedTranscribeRejectsMissingAuth() {
+  resetMocks()
+  const res = await guidedTranscribe.POST(request(validGuidedTranscribeBody))
+  await expectStatus('guided-transcribe missing auth returns 401', res, 401)
+  assert.equal(providerCalls.length, 0, 'guided-transcribe missing auth must not call providers')
 })()
 
 await (async function suggestRejectsMissingAuth() {
@@ -197,6 +211,7 @@ await (async function invalidAuthReturns401() {
   resetMocks()
   const responses = await Promise.all([
     voiceChat.POST(request(validVoiceBody, 'invalid-token')),
+    guidedTranscribe.POST(request(validGuidedTranscribeBody, 'invalid-token')),
     suggestWords.POST(request({
       category: 'Food',
       target_language: 'Spanish',
@@ -219,6 +234,7 @@ await (async function corsPreflightDoesNotCallProviders() {
     headers: { Origin: 'https://resonanz.pro' },
   })
   await expectStatus('voice-chat preflight returns 204', await voiceChat.OPTIONS(req), 204)
+  await expectStatus('guided-transcribe preflight returns 204', await guidedTranscribe.OPTIONS(req), 204)
   await expectStatus('suggest-words preflight returns 204', await suggestWords.OPTIONS(req), 204)
   await expectStatus('grok-token preflight returns 204', await grokToken.OPTIONS(req), 204)
   assert.equal(providerCalls.length, 0, 'preflight must not call providers')
@@ -258,6 +274,37 @@ await (async function voiceRejectsOversizedHistoryBeforeProvider() {
   assert.ok([400, 413].includes(res.status), `expected 400/413, got ${res.status}`)
   await res.text()
   assert.equal(providerCalls.length, 0, 'voice-chat oversized history must not call providers')
+})()
+
+await (async function guidedTranscribeRejectsOversizedAudioBeforeProvider() {
+  resetMocks()
+  const res = await guidedTranscribe.POST(request({
+    ...validGuidedTranscribeBody,
+    audio_base64: 'A'.repeat(4_000_000),
+  }, 'valid-token'))
+  assert.ok([400, 413].includes(res.status), `expected 400/413, got ${res.status}`)
+  await res.text()
+  assert.equal(providerCalls.length, 0, 'guided-transcribe oversized audio must not call providers')
+})()
+
+await (async function guidedTranscribeRejectsHistoryBeforeProvider() {
+  resetMocks()
+  const res = await guidedTranscribe.POST(request({
+    ...validGuidedTranscribeBody,
+    history: [{ role: 'user', content: 'hello' }],
+  }, 'valid-token'))
+  await expectStatus('guided-transcribe history returns 400', res, 400)
+  assert.equal(providerCalls.length, 0, 'guided-transcribe history must not call providers')
+})()
+
+await (async function guidedTranscribeRejectsUnsupportedMimeBeforeProvider() {
+  resetMocks()
+  const res = await guidedTranscribe.POST(request({
+    ...validGuidedTranscribeBody,
+    mime_type: 'video/mp4',
+  }, 'valid-token'))
+  await expectStatus('guided-transcribe unsupported mime returns 400', res, 400)
+  assert.equal(providerCalls.length, 0, 'guided-transcribe unsupported mime must not call providers')
 })()
 
 await (async function suggestRejectsBadInputBeforeProvider() {
@@ -374,6 +421,22 @@ await (async function successfulVoiceChatCallsProviderAfterQuota() {
     callSequence,
     ['auth', 'quota', 'provider:groq-chat', 'provider:mistral'],
     'voice-chat provider calls must happen after auth and quota',
+  )
+})()
+
+await (async function successfulGuidedTranscribeCallsOnlySttAfterQuota() {
+  resetMocks()
+  const res = await guidedTranscribe.POST(request(validGuidedTranscribeBody, 'valid-token'))
+  await expectStatus('successful guided-transcribe returns 200', res, 200)
+  assert.deepEqual(
+    providerCalls,
+    ['https://api.groq.com/openai/v1/audio/transcriptions'],
+    'successful guided-transcribe should call only Groq STT once',
+  )
+  assert.deepEqual(
+    callSequence,
+    ['auth', 'quota', 'provider:groq-stt'],
+    'guided-transcribe provider call must happen after auth and quota',
   )
 })()
 
