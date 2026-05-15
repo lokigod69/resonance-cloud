@@ -39,7 +39,10 @@ const pathIds = [
   'english-a1-practical-1',
   'english-a1-practical-2',
   'english-a1-practical-3',
+  'english-a1-practical-4',
+  'english-a1-practical-5',
 ]
+const segmentStoryPathIds = pathIds.slice(0, 3)
 
 console.log('\n[overview source]')
 const overviewSource = readSource('../src/components/today/TodayPathOverview.tsx')
@@ -116,25 +119,34 @@ for (let lessonNumber = 1; lessonNumber <= 10; lessonNumber += 1) {
 
 console.log('\n[plan selection]')
 for (const pathId of pathIds) {
-  const plan = buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathId, 1, 'bright', fixedRng())
-  assert(`${pathId} Review 1 builds all five segment lessons without completion progress`, plan?.items.length === 5, plan)
-  assert(`${pathId} Review 1 samples only selected path`, plan?.items.every((item) => item.pathId === pathId) === true, plan)
-  assert(`${pathId} Review 1 samples only lessons 1-5`, plan?.items.every((item) => lessonNumber(item.lessonId) >= 1 && lessonNumber(item.lessonId) <= 5) === true, plan?.items.map((item) => item.lessonId))
-  assert(`${pathId} Review 1 keeps lessons in story order 1→5`, JSON.stringify(plan?.items.map((item) => lessonNumber(item.lessonId))) === JSON.stringify([1, 2, 3, 4, 5]), plan?.items.map((item) => item.lessonId))
+  for (const segment of [1, 2] as const) {
+    const expectedLessonNumbers = segment === 1 ? [1, 2, 3, 4, 5] : [6, 7, 8, 9, 10]
+    const plan = buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathId, segment, 'bright', fixedRng())
+    assert(`${pathId} Review ${segment} builds all five segment lessons without completion progress`, plan?.items.length === 5, plan)
+    assert(`${pathId} Review ${segment} records the selected segment`, plan?.segment === segment, plan)
+    assert(`${pathId} Review ${segment} samples only selected path`, plan?.items.every((item) => item.pathId === pathId) === true, plan)
+    assert(`${pathId} Review ${segment} samples only lessons ${expectedLessonNumbers[0]}-${expectedLessonNumbers[4]}`, plan?.items.every((item) => expectedLessonNumbers.includes(lessonNumber(item.lessonId))) === true, plan?.items.map((item) => item.lessonId))
+    assert(`${pathId} Review ${segment} keeps lessons in story order`, JSON.stringify(plan?.items.map((item) => lessonNumber(item.lessonId))) === JSON.stringify(expectedLessonNumbers), plan?.items.map((item) => item.lessonId))
+    assert(`${pathId} Review ${segment} items have Type Recall cloze data`, plan?.items.every((item) => item.lesson.typeRecall.before !== undefined && item.lesson.typeRecall.after !== undefined && item.lesson.typeRecall.answer.length > 0) === true, plan)
+    assert(`${pathId} Review ${segment} items have German cue data`, plan?.items.every((item) => item.lesson.corePhrase.baseText.length > 0) === true, plan)
+    assert(`${pathId} Review ${segment} items have Speak cue data`, plan?.items.every((item) => item.lesson.speak.baseCue.length > 0 && item.lesson.speak.language.length > 0) === true, plan)
+  }
 }
 
 const secondSegmentProgress = createEmptyTodayProgressState()
-const secondSegmentPlan = buildGuidedSegmentReviewPlan(secondSegmentProgress, pathIds[1]!, 2, 'sharp', fixedRng())
+const secondSegmentPlan = buildGuidedSegmentReviewPlan(secondSegmentProgress, pathIds[3]!, 2, 'sharp', fixedRng())
 assert('Review 2 builds all five segment lessons without completion progress', secondSegmentPlan?.items.length === 5, secondSegmentPlan)
+assert('Review 2 samples only A1 Practical 4 when selected', secondSegmentPlan?.items.every((item) => item.pathId === pathIds[3]) === true, secondSegmentPlan)
 assert('Review 2 samples only lessons 6-10', secondSegmentPlan?.items.every((item) => lessonNumber(item.lessonId) >= 6 && lessonNumber(item.lessonId) <= 10) === true, secondSegmentPlan?.items.map((item) => item.lessonId))
-assert('Review 2 keeps lessons in story order 6→10', JSON.stringify(secondSegmentPlan?.items.map((item) => lessonNumber(item.lessonId))) === JSON.stringify([6, 7, 8, 9, 10]), secondSegmentPlan?.items.map((item) => item.lessonId))
+assert('Review 2 keeps lessons in story order 6-10', JSON.stringify(secondSegmentPlan?.items.map((item) => lessonNumber(item.lessonId))) === JSON.stringify([6, 7, 8, 9, 10]), secondSegmentPlan?.items.map((item) => item.lessonId))
 assert('Segment Review preserves selected active vibe', secondSegmentPlan?.items.every((item) => item.vibe === 'sharp') === true, secondSegmentPlan)
 assert('Segment Review samples the full segment even when only two lessons are complete', buildGuidedSegmentReviewPlan(completeLessons(pathIds[0]!, 'bright', 1, 2), pathIds[0]!, 1, 'bright', fixedRng())?.items.length === 5)
 assert('Segment Review is available with no completed lessons in the selected segment/vibe', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[0]!, 1, 'bright', fixedRng())?.items.length === 5)
+assert('A1 Practical 5 Segment Review is available with no completed lessons in the selected segment/vibe', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[4]!, 2, 'wistful', fixedRng())?.items.length === 5)
 assert('Segment Review rejects unknown segment ids', buildGuidedSegmentReviewPlan(secondSegmentProgress, pathIds[0]!, 3, 'sharp', fixedRng()) === undefined)
 
 console.log('\n[segment story scaffold]')
-for (const pathId of pathIds) {
+for (const pathId of segmentStoryPathIds) {
   for (const segment of [1, 2] as const) {
     const story = getGuidedSegmentStory(pathId, segment)
     assert(`${pathId} segment ${segment} has a story title`, typeof story?.title === 'string' && story.title.length > 0)
@@ -153,6 +165,8 @@ for (const pathId of pathIds) {
   }
 }
 assert('unknown path has no segment story (falls back gracefully)', getGuidedSegmentStory('english-a1-practical-99', 1) === undefined)
+assert('A1 Practical 4 Segment Review route can fall back without story copy', getGuidedSegmentStory(pathIds[3]!, 1) === undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[3]!, 1, 'bright', fixedRng())?.items.length === 5)
+assert('A1 Practical 5 Segment Review route can fall back without story copy', getGuidedSegmentStory(pathIds[4]!, 2) === undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[4]!, 2, 'sharp', fixedRng())?.items.length === 5)
 
 console.log('\n[route and prompt]')
 assert('checkpoint route detects segment-review mode', checkpointSource.includes('mode') && checkpointSource.includes('segment-review'))
@@ -190,9 +204,9 @@ try {
     needsReview: index === 1,
   })) ?? []
   const beforeProgress = JSON.stringify(secondSegmentProgress)
-  const record = completeGuidedSegmentReview(pathIds[1]!, 2, 'sharp', reviewed, new Date('2026-05-13T00:00:00.000Z'))
-  assert('Segment Review writes a separate local summary key', window.localStorage.getItem(guidedSegmentReviewKey(pathIds[1]!, 2, 'sharp')) !== null)
-  assert('Segment Review record round-trips from storage', readGuidedSegmentReviewRecord(pathIds[1]!, 2, 'sharp')?.itemsReviewed === record.itemsReviewed)
+  const record = completeGuidedSegmentReview(pathIds[3]!, 2, 'sharp', reviewed, new Date('2026-05-13T00:00:00.000Z'))
+  assert('Segment Review writes a separate local summary key', window.localStorage.getItem(guidedSegmentReviewKey(pathIds[3]!, 2, 'sharp')) !== null)
+  assert('Segment Review record round-trips from storage', readGuidedSegmentReviewRecord(pathIds[3]!, 2, 'sharp')?.itemsReviewed === record.itemsReviewed)
   assert('Segment Review completion does not mutate lesson progress', JSON.stringify(secondSegmentProgress) === beforeProgress)
 } finally {
   Object.defineProperty(globalThis, 'window', {
