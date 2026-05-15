@@ -26,6 +26,7 @@ const GUIDED_A1_PRACTICAL_DIRECTORY_PATH_IDS = [
   'english-a1-practical-5',
   'english-a1-practical-6',
   'english-a1-practical-7',
+  'english-a1-practical-8',
 ] as const
 
 const GUIDED_PATH_DIRECTORY_GROUPS = [

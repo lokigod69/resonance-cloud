@@ -43,6 +43,7 @@ const pathIds = [
   'english-a1-practical-5',
   'english-a1-practical-6',
   'english-a1-practical-7',
+  'english-a1-practical-8',
 ]
 const segmentStoryPathIds = pathIds
 
@@ -147,6 +148,7 @@ assert('Segment Review is available with no completed lessons in the selected se
 assert('A1 Practical 5 Segment Review is available with no completed lessons in the selected segment/vibe', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[4]!, 2, 'wistful', fixedRng())?.items.length === 5)
 assert('A1 Practical 6 Segment Review is available with no completed lessons in the selected segment/vibe', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[5]!, 2, 'sharp', fixedRng())?.items.length === 5)
 assert('A1 Practical 7 Segment Review is available with no completed lessons in the selected segment/vibe', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[6]!, 1, 'bright', fixedRng())?.items.length === 5)
+assert('A1 Practical 8 Segment Review is available with no completed lessons in the selected segment/vibe', buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[7]!, 2, 'wistful', fixedRng())?.items.length === 5)
 assert('Segment Review rejects unknown segment ids', buildGuidedSegmentReviewPlan(secondSegmentProgress, pathIds[0]!, 3, 'sharp', fixedRng()) === undefined)
 
 console.log('\n[segment story scaffold]')
@@ -173,6 +175,7 @@ assert('A1 Practical 4 Segment Review route uses story copy', getGuidedSegmentSt
 assert('A1 Practical 5 Segment Review route uses story copy', getGuidedSegmentStory(pathIds[4]!, 2) !== undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[4]!, 2, 'sharp', fixedRng())?.items.length === 5)
 assert('A1 Practical 6 Segment Review route uses story copy', getGuidedSegmentStory(pathIds[5]!, 1) !== undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[5]!, 1, 'wistful', fixedRng())?.items.length === 5)
 assert('A1 Practical 7 Segment Review route uses story copy', getGuidedSegmentStory(pathIds[6]!, 2) !== undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[6]!, 2, 'sharp', fixedRng())?.items.length === 5)
+assert('A1 Practical 8 Segment Review route uses story copy', getGuidedSegmentStory(pathIds[7]!, 1) !== undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[7]!, 1, 'bright', fixedRng())?.items.length === 5)
 
 console.log('\n[route and prompt]')
 assert('checkpoint route detects segment-review mode', checkpointSource.includes('mode') && checkpointSource.includes('segment-review'))
