@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
-type QuotaAction = 'voice_chat' | 'suggest_words' | 'grok_token'
+type QuotaAction = 'voice_chat' | 'guided_transcribe' | 'suggest_words' | 'grok_token'
 
 type QuotaSettings = {
   enforcement_enabled: boolean
@@ -37,11 +37,12 @@ type DraftLimits = Record<QuotaAction, { perMinute: string; perDay: string }>
 
 const ACTION_LABELS: Record<QuotaAction, string> = {
   voice_chat: 'voice_chat',
+  guided_transcribe: 'Guided Today STT',
   suggest_words: 'suggest_words',
   grok_token: 'grok_token',
 }
 
-const ACTION_ORDER: QuotaAction[] = ['voice_chat', 'suggest_words', 'grok_token']
+const ACTION_ORDER: QuotaAction[] = ['voice_chat', 'guided_transcribe', 'suggest_words', 'grok_token']
 
 function formatDate(value: string | null): string {
   if (!value) return 'Never'

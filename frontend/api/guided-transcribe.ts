@@ -49,7 +49,7 @@ export async function POST(req: Request): Promise<Response> {
     const rawBody = await readJsonWithLimit<unknown>(req, GUIDED_TRANSCRIBE_BODY_MAX_BYTES)
     body = validateGuidedTranscribeBody(rawBody)
     const user = await requireSupabaseUser(req)
-    await consumeApiQuota(user.id, 'voice_chat')
+    await consumeApiQuota(user.id, 'guided_transcribe')
   } catch (err) {
     if (err instanceof ApiError) return apiErrorResponse(req, err)
     console.error('[guided-transcribe] Request gate failed:', err instanceof Error ? err.message : err)

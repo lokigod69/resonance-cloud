@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { ApiError } from './http'
 
-export type ApiQuotaAction = 'voice_chat' | 'suggest_words' | 'grok_token'
+export type ApiQuotaAction = 'voice_chat' | 'guided_transcribe' | 'suggest_words' | 'grok_token'
 
 export interface ApiQuotaResult {
   allowed: boolean

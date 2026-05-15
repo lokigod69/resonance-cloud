@@ -48,12 +48,14 @@ let providerCalls: string[] = []
 let quotaResult: QuotaResult = defaultQuota
 let quotaShouldFail = false
 let callSequence: string[] = []
+let quotaActions: string[] = []
 
 function resetMocks() {
   providerCalls = []
   quotaResult = defaultQuota
   quotaShouldFail = false
   callSequence = []
+  quotaActions = []
 }
 
 function json(body: unknown, init?: ResponseInit): Response {
@@ -98,6 +100,8 @@ globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise
 
   if (url === 'https://supabase.test/rest/v1/rpc/consume_api_quota') {
     callSequence.push('quota')
+    const rawBody = typeof init?.body === 'string' ? JSON.parse(init.body) as { p_action?: string } : {}
+    quotaActions.push(rawBody.p_action ?? '')
     if (quotaShouldFail) {
       return json({ message: 'quota rpc unavailable' }, { status: 500 })
     }
@@ -390,6 +394,25 @@ await (async function overQuotaPreventsProviderCall() {
   assert.equal(providerCalls.length, 0, 'over-quota request must not call providers')
 })()
 
+await (async function guidedTranscribeOverQuotaPreventsProviderCall() {
+  resetMocks()
+  quotaResult = {
+    ...defaultQuota,
+    action: 'guided_transcribe',
+    allowed: false,
+    mode: 'enforced',
+    remaining_minute: 0,
+    remaining_day: 0,
+    retry_after_seconds: 42,
+    reason: 'minute_limit_exceeded',
+  }
+  const res = await guidedTranscribe.POST(request(validGuidedTranscribeBody, 'valid-token'))
+  await expectStatus('guided-transcribe over quota returns 429', res, 429)
+  assert.deepEqual(quotaActions, ['guided_transcribe'], 'guided-transcribe over-quota path must consume guided_transcribe')
+  assert.deepEqual(callSequence, ['auth', 'quota'], 'guided-transcribe over-quota path must stop before provider')
+  assert.equal(providerCalls.length, 0, 'guided-transcribe over-quota request must not call providers')
+})()
+
 await (async function successfulRequestCallsProviderAfterGates() {
   resetMocks()
   const res = await suggestWords.POST(request({
@@ -409,6 +432,7 @@ await (async function successfulRequestCallsProviderAfterGates() {
     ['auth', 'quota', 'avoid-list', 'provider:openrouter'],
     'suggest-words provider call must happen after auth and quota',
   )
+  assert.deepEqual(quotaActions, ['suggest_words'], 'suggest-words must consume suggest_words quota')
 })()
 
 await (async function successfulGrokTokenCallsXaiAfterQuota() {
@@ -425,6 +449,7 @@ await (async function successfulGrokTokenCallsXaiAfterQuota() {
     ['auth', 'quota', 'provider:xai'],
     'xAI call must happen after auth and quota',
   )
+  assert.deepEqual(quotaActions, ['grok_token'], 'grok-token must consume grok_token quota')
 })()
 
 await (async function successfulVoiceChatCallsProviderAfterQuota() {
@@ -447,6 +472,7 @@ await (async function successfulVoiceChatCallsProviderAfterQuota() {
     ['auth', 'quota', 'provider:groq-chat', 'provider:mistral'],
     'voice-chat provider calls must happen after auth and quota',
   )
+  assert.deepEqual(quotaActions, ['voice_chat'], 'voice-chat must consume voice_chat quota')
 })()
 
 await (async function successfulGuidedTranscribeCallsOnlySttAfterQuota() {
@@ -463,6 +489,7 @@ await (async function successfulGuidedTranscribeCallsOnlySttAfterQuota() {
     ['auth', 'quota', 'provider:groq-stt'],
     'guided-transcribe provider call must happen after auth and quota',
   )
+  assert.deepEqual(quotaActions, ['guided_transcribe'], 'guided-transcribe must consume guided_transcribe quota')
 })()
 
 await (async function currentFrontendLanguageValuesRemainAccepted() {
