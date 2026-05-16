@@ -111,12 +111,16 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
   ), [filteredDecks])
 
   return (
-    <section className="pointer-events-auto absolute inset-0 z-30 flex bg-black/45 px-4 pt-[max(1rem,var(--app-safe-top))] pb-4 text-[#fff1d0] backdrop-blur-sm sm:px-6 sm:py-6">
-      <div className="mx-auto flex h-full min-h-0 w-full max-w-6xl flex-col">
+    <section
+      className={`pointer-events-auto absolute inset-0 z-30 overflow-y-auto bg-black/45 px-4 pt-[max(0.25rem,var(--app-safe-top))] pb-4 text-[#fff1d0] backdrop-blur-sm sm:px-6 sm:pt-6 sm:pb-6 ${styles.deckScroll}`}
+      data-body-scroll-lock-scrollable="true"
+      style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
+    >
+      <div className="mx-auto flex w-full max-w-6xl flex-col">
         <button
           type="button"
           onClick={() => navigate('/study')}
-          className="mb-3 inline-flex min-h-11 w-fit items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/30 px-4 text-sm text-[#fff1d0] transition hover:bg-white/10"
+          className="mb-2 inline-flex min-h-11 w-fit items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/30 px-4 text-sm text-[#fff1d0] transition hover:bg-white/10 sm:mb-3"
         >
           <ArrowLeft size={16} />
           {t('slicer.deckPicker.back')}
@@ -206,11 +210,7 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
           </div>
         )}
 
-        <div
-          className={`min-h-0 flex-1 overflow-y-auto ${styles.deckScroll} ${styles.deckScrollFade}`}
-          data-body-scroll-lock-scrollable="true"
-          style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
-        >
+        <div className="flex-1">
           {loading ? (
             <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
               {t('slicer.deckPicker.loading')}

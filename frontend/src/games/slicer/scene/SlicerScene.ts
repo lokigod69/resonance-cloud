@@ -459,9 +459,16 @@ export class SlicerScene extends Phaser.Scene {
     const headerClearance = Math.max(96, screenHeight * 0.16);
     const yGap = Phaser.Math.Clamp(screenHeight * 0.025, 12, 28);
     const totalStack = cardCount * layout.cardHeight + Math.max(0, cardCount - 1) * yGap;
-    const bottomMargin = Math.max(24, screenHeight * 0.06);
-    const maxTop = Math.max(headerClearance, screenHeight - bottomMargin - totalStack);
-    const topY = Math.min(headerClearance, maxTop);
+    // Reserve space at the bottom for the AnswerReference banner (~80-100px tall + safe area).
+    const bannerReserve = Math.min(120, screenHeight * 0.18);
+    const playAreaTop = headerClearance;
+    const playAreaBottom = screenHeight - bannerReserve;
+    const playAreaHeight = Math.max(totalStack, playAreaBottom - playAreaTop);
+    // Center the full stack vertically within the play area.
+    const centeredTop = playAreaTop + (playAreaHeight - totalStack) / 2;
+    // Clamp so cards never overlap the HUD top or the banner.
+    const maxTop = Math.max(playAreaTop, playAreaBottom - totalStack);
+    const topY = Phaser.Math.Clamp(centeredTop, playAreaTop, maxTop);
     const slots: number[] = [];
     for (let index = 0; index < cardCount; index += 1) {
       slots.push(topY + layout.cardHeight / 2 + index * (layout.cardHeight + yGap));

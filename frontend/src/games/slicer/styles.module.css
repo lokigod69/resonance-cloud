@@ -85,11 +85,6 @@
   display: none;
 }
 
-.deckScrollFade {
-  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent);
-  mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent);
-}
-
 .roundOverlay {
   animation: round-overlay-fade 1.35s ease both;
 }
