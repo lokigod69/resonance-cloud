@@ -1,6 +1,7 @@
 import { lazy, type ComponentType, type LazyExoticComponent } from 'react'
 
 const RELOAD_FLAG_PREFIX = 'lazyWithRetry:reloaded:'
+const RELOAD_TIMEOUT_MS = 10_000
 
 function isDynamicImportFailure(error: unknown): boolean {
   if (!error) return false
@@ -11,12 +12,13 @@ function isDynamicImportFailure(error: unknown): boolean {
     if (message.includes('Failed to fetch dynamically imported module')) return true
     if (message.includes('error loading dynamically imported module')) return true
     if (message.includes('Importing a module script failed')) return true
+    if (message.includes('Expected a JavaScript module script')) return true
     if (message.includes('Expected a JavaScript-or-Wasm module script')) return true
   }
   return false
 }
 
-export function lazyWithRetry<T extends ComponentType<unknown>>(
+export function lazyWithRetry<T extends ComponentType<any>>(
   factory: () => Promise<{ default: T }>,
   key: string,
 ): LazyExoticComponent<T> {
@@ -39,13 +41,18 @@ export function lazyWithRetry<T extends ComponentType<unknown>>(
         alreadyReloaded = false
       }
       if (alreadyReloaded) throw error
+      let flagWritten = false
       try {
         window.sessionStorage.setItem(flag, '1')
+        flagWritten = true
       } catch {
-        // ignore
+        // Storage unavailable (e.g., Safari private mode) — cannot guard against a reload loop
       }
+      if (!flagWritten) throw error
       window.location.reload()
-      return new Promise<{ default: T }>(() => undefined)
+      return new Promise<{ default: T }>((_resolve, reject) => {
+        window.setTimeout(() => reject(error), RELOAD_TIMEOUT_MS)
+      })
     }
   })
 }

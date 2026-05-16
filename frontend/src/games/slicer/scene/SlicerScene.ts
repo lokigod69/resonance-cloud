@@ -215,7 +215,7 @@ export class SlicerScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, this.scale.width, this.scale.height);
     this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => void this.beginSwipe(pointer));
     this.input.on('pointermove', (pointer: Phaser.Input.Pointer) => this.moveSwipe(pointer));
-    this.input.on('pointerup', () => this.endSwipe());
+    this.input.on('pointerup', (pointer: Phaser.Input.Pointer) => this.endSwipe(pointer));
     this.input.keyboard?.on('keydown-ESC', () => this.onExit?.());
     this.scale.on('resize', () => this.resizeScene());
     this.startSession();
@@ -409,10 +409,19 @@ export class SlicerScene extends Phaser.Scene {
   private cardSpawnLayoutPortrait(cardCount: number): CardSpawnLayout {
     const width = this.scale.width;
     const height = this.scale.height;
-    const cardWidth = Phaser.Math.Clamp(width * 0.86, 260, 420);
-    const cardHeight = cardWidth * 0.5625;
-    const exitY = height + cardHeight;
+    const headerClearance = Math.max(96, height * 0.16);
+    const bannerReserve = Math.min(120, height * 0.18);
+    const availableHeight = Math.max(0, height - headerClearance - bannerReserve);
     const yGap = Phaser.Math.Clamp(height * 0.025, 12, 28);
+    let cardWidth = Phaser.Math.Clamp(width * 0.86, 260, 420);
+    let cardHeight = cardWidth * 0.5625;
+    const required = cardCount * cardHeight + Math.max(0, cardCount - 1) * yGap;
+    if (cardCount > 0 && required > availableHeight) {
+      const maxCardHeight = Math.max(60, (availableHeight - Math.max(0, cardCount - 1) * yGap) / cardCount);
+      cardHeight = maxCardHeight;
+      cardWidth = cardHeight / 0.5625;
+    }
+    const exitY = height + cardHeight;
     const centerX = width / 2;
     const positions: Array<{ x: number; y: number }> = [];
     for (let index = 0; index < cardCount; index += 1) {
@@ -464,9 +473,9 @@ export class SlicerScene extends Phaser.Scene {
     const bannerReserve = Math.min(120, screenHeight * 0.18);
     const playAreaTop = headerClearance;
     const playAreaBottom = screenHeight - bannerReserve;
-    const playAreaHeight = Math.max(totalStack, playAreaBottom - playAreaTop);
-    // Center the full stack vertically within the play area.
-    const centeredTop = playAreaTop + (playAreaHeight - totalStack) / 2;
+    const playAreaHeight = Math.max(0, playAreaBottom - playAreaTop);
+    // Center the full stack vertically within the play area when it fits.
+    const centeredTop = playAreaTop + Math.max(0, (playAreaHeight - totalStack) / 2);
     // Clamp so cards never overlap the HUD top or the banner.
     const maxTop = Math.max(playAreaTop, playAreaBottom - totalStack);
     const topY = Phaser.Math.Clamp(centeredTop, playAreaTop, maxTop);
@@ -569,15 +578,40 @@ export class SlicerScene extends Phaser.Scene {
           mastered: Boolean(card.word?.mastered),
         };
         this.resolveCard(card, 'slice');
-        break;
+        if (this.activeCards.length === 0) break;
       }
     }
     this.lastPointer = current;
   }
 
-  private endSwipe(): void {
+  private endSwipe(pointer?: Phaser.Input.Pointer): void {
+    this.tryResolveTap(pointer);
     this.lastPointer = undefined;
     this.fadeTrail(120);
+  }
+
+  private tryResolveTap(pointer?: Phaser.Input.Pointer): void {
+    if (!pointer || this.paused || this.transitioning || this.isComplete) return;
+    if (this.trailPoints.length === 0) return;
+    const start = this.trailPoints[0];
+    const tapPoint = new Phaser.Math.Vector2(pointer.x, pointer.y);
+    const totalDistance = Phaser.Math.Distance.Between(start.x, start.y, tapPoint.x, tapPoint.y);
+    if (totalDistance > 12) return;
+    for (const card of [...this.activeCards]) {
+      if (card.resolved) continue;
+      if (card.getBounds().contains(tapPoint.x, tapPoint.y)) {
+        this.lastSliceFx = {
+          point: tapPoint.clone(),
+          cardX: card.x,
+          cardY: card.y,
+          cardWidth: card.width,
+          cardHeight: card.height,
+          mastered: Boolean(card.word?.mastered),
+        };
+        this.resolveCard(card, 'slice');
+        return;
+      }
+    }
   }
 
   private resolveCard(card: FallingCard, reason: 'slice' | 'exit'): void {
