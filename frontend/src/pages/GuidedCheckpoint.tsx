@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, CheckCircle2, Mic, MicOff, RotateCcw } from 'lucide-react'
+import { ChevronLeft, ChevronRight, CheckCircle2, RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { getGuidedTodayPathOptions, guidedAnswerMatches, type GuidedPathMetadata } from '@/data/guidedLessons'
@@ -30,10 +30,10 @@ import { Input } from '@/components/ui/input'
 import { Progress } from '@/components/ui/progress'
 import { TrophySongPanel } from '@/components/today/trophy/TrophySongPanel'
 import {
-  canUseBrowserSpeechRecognition,
-  createBrowserSpeechRecognizer,
-  type BrowserSpeechRecognizer,
-} from '@/components/today/speechRecognition'
+  GuidedSpeechPrompt,
+  type GuidedSpeechPromptCheckState,
+} from '@/components/today/GuidedSpeechPrompt'
+import { canUseGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
 
 type CheckpointPhase = 'type' | 'speak' | 'summary'
 
@@ -110,6 +110,21 @@ export default function GuidedCheckpoint() {
     setAnswer('')
     setTypeResult(undefined)
     setPhase('type')
+  }
+
+  const handleContinueAnywayFromSpeak = () => {
+    if (currentItem) {
+      const currentReview = reviewedItemsRef.current[itemIndex]
+      reviewedItemsRef.current[itemIndex] = {
+        ...currentReview,
+        lessonId: currentReview?.lessonId ?? currentItem.lessonId,
+        pathId: currentReview?.pathId ?? currentItem.pathId,
+        vibe: currentReview?.vibe ?? currentItem.vibe,
+        firstTryCorrect: false,
+        needsReview: true,
+      }
+    }
+    handleNextItem()
   }
 
   if (isTrophyClozeMode) {
@@ -190,6 +205,7 @@ export default function GuidedCheckpoint() {
           item={currentItem}
           isLastItem={Boolean(plan && itemIndex >= plan.items.length - 1)}
           onDone={handleNextItem}
+          onContinueAnyway={handleContinueAnywayFromSpeak}
         />
       )}
     </main>
@@ -513,86 +529,46 @@ function CheckpointSpeakStep({
   item,
   isLastItem,
   onDone,
+  onContinueAnyway,
 }: {
   item: GuidedCheckpointPlanItem
   isLastItem: boolean
   onDone: () => void
+  onContinueAnyway: () => void
 }) {
   const { t } = useTranslation()
-  const recognitionRef = useRef<BrowserSpeechRecognizer | null>(null)
-  const [status, setStatus] = useState<'idle' | 'listening' | 'done' | 'unsupported'>(
-    canUseBrowserSpeechRecognition() ? 'idle' : 'unsupported',
-  )
-  const isSupported = canUseBrowserSpeechRecognition()
-
-  useEffect(() => () => {
-    recognitionRef.current?.abort()
-    recognitionRef.current = null
-  }, [])
-
-  const finishAttempt = () => {
-    recognitionRef.current = null
-    setStatus('done')
-  }
-
-  const handleStart = () => {
-    const recognizer = createBrowserSpeechRecognizer({
-      lang: item.lesson.speak.language,
-      onResult: finishAttempt,
-      onError: finishAttempt,
-      onEnd: () => {
-        setStatus((current) => (current === 'listening' ? 'done' : current))
-      },
-    })
-
-    if (!recognizer) {
-      setStatus('unsupported')
-      return
-    }
-
-    recognitionRef.current = recognizer
-    setStatus('listening')
-    try {
-      recognizer.start()
-    } catch {
-      finishAttempt()
-    }
-  }
-
-  const handleStop = () => {
-    recognitionRef.current?.stop()
-  }
+  const [speechState, setSpeechState] = useState<GuidedSpeechPromptCheckState>(() => ({
+    status: canUseGuidedSpeechRecognition() ? 'idle' : 'unsupported',
+    attempts: 0,
+    transcriptMatch: 0,
+    passed: false,
+  }))
+  const canAdvance = speechState.status === 'passed'
 
   return (
     <section className="theme-panel today-checkpoint-step rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
-      <div className="grid justify-items-center gap-5 text-center">
-        <p className="text-sm leading-6 text-[var(--text-secondary)]">
-          {t('today.checkpoint.speakPrompt')}
-        </p>
-        <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4">
-          <p className="break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
-            {item.lesson.speak.baseCue}
-          </p>
-        </div>
+      <div className="grid justify-items-center gap-5">
+        <GuidedSpeechPrompt
+          prompt={t('today.checkpoint.speakPrompt')}
+          cueText={item.lesson.speak.germanPrompt ?? item.lesson.speak.baseCue}
+          targetAnswer={item.lesson.speak.targetAnswer ?? item.lesson.speak.targetPhrase}
+          displayAnswer={item.lesson.speak.displayAnswer ?? item.lesson.speak.targetAnswer ?? item.lesson.speak.targetPhrase}
+          acceptedAnswers={item.lesson.speak.acceptedAnswers}
+          requiredTokens={item.lesson.speak.requiredTokens}
+          optionalTokens={item.lesson.speak.optionalTokens}
+          language={item.lesson.speak.language}
+          maxRecordingSeconds={item.lesson.speak.maxRecordingSeconds}
+          showHintButton={false}
+          cueCardClassName="today-checkpoint-promptCard"
+          onCheckStateChange={setSpeechState}
+          onContinueAnyway={onContinueAnyway}
+          allowContinueWhenUnsupported
+        />
 
-        <div className="flex flex-wrap justify-center gap-3">
-          {isSupported && (
-            <Button type="button" variant="outline" onClick={status === 'listening' ? handleStop : handleStart}>
-              {status === 'listening' ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
-              {status === 'listening' ? t('today.checkpoint.stop') : t('today.checkpoint.record')}
-            </Button>
-          )}
-          <Button type="button" onClick={onDone}>
-            {isLastItem ? t('today.checkpoint.done') : t('today.checkpoint.next')}
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-
-        {status === 'unsupported' && (
-          <p className="today-checkpoint-resultPill rounded-lg border px-3 py-2 text-sm leading-6 text-[var(--text-secondary)]">
-            {t('today.checkpoint.speechUnsupported')}
-          </p>
-        )}
+        <Button type="button" onClick={onDone} disabled={!canAdvance}>
+          {isLastItem ? t('today.checkpoint.done') : t('today.checkpoint.next')}
+          <ChevronRight className="h-4 w-4" />
+        </Button>
       </div>
     </section>
   )

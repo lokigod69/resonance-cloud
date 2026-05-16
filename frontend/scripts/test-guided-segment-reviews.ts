@@ -54,6 +54,7 @@ const overviewSource = readSource('../src/components/today/TodayPathOverview.tsx
 const todaySource = readSource('../src/pages/Today.tsx')
 const checkpointSource = readSource('../src/pages/GuidedCheckpoint.tsx')
 const checkpointLibSource = readSource('../src/lib/guidedCheckpoint.ts')
+const guidedSpeechPromptSource = readOptionalSource('../src/components/today/GuidedSpeechPrompt.tsx')
 const cssSource = readSource('../src/components/today/Today.css')
 
 assert('Today header no longer renders the visible Path Check button', !sliceBetween(overviewSource, '<div className="today-path-actions', '<GuidedPathDirectory').includes("today.path.pathCheck"))
@@ -184,6 +185,7 @@ assert('A1 Practical 9 Segment Review route uses story copy', getGuidedSegmentSt
 assert('A1 Practical 10 Segment Review route uses story copy', getGuidedSegmentStory(pathIds[9]!, 1) !== undefined && buildGuidedSegmentReviewPlan(createEmptyTodayProgressState(), pathIds[9]!, 1, 'sharp', fixedRng())?.items.length === 5)
 
 console.log('\n[route and prompt]')
+const checkpointSpeakSource = sliceBetween(checkpointSource, 'function CheckpointSpeakStep', 'function CheckpointSummary')
 assert('checkpoint route detects segment-review mode', checkpointSource.includes('mode') && checkpointSource.includes('segment-review'))
 assert('checkpoint route uses Segment Review plan builder', checkpointSource.includes('buildGuidedSegmentReviewPlan'))
 assert('Segment Review completion does not call normal checkpoint storage writer', checkpointSource.includes('completeGuidedSegmentReview') && checkpointSource.includes('isSegmentReviewMode') && checkpointSource.includes('completeGuidedCheckpoint(selectedVibeId'))
@@ -202,6 +204,13 @@ assert('Segment Review renders the story intro in the header', checkpointSource.
 assert('Segment Review renders the per-lesson scene line above the phrase', checkpointSource.includes('data-segment-story-scene') && checkpointSource.includes('segmentScene'))
 assert('Segment Review type input uses the new "Fehlenden Teil einsetzen" placeholder key', checkpointSource.includes('today.checkpoint.segmentInputPlaceholder'))
 assert('Segment Review compact feedback only renders the answer pill on wrong, no big correctFirstTry banner', !sliceBetween(checkpointSource, 'function CheckpointTypeStep', 'function TypeRecallPhrase').includes("t('today.checkpoint.correctFirstTry')"))
+assert('Segment Review speech uses shared guided STT prompt', checkpointSpeakSource.includes('<GuidedSpeechPrompt') && guidedSpeechPromptSource.includes('useGuidedSpeechRecognition'), checkpointSpeakSource)
+assert('Segment Review speech uses guided speech checker path', guidedSpeechPromptSource.includes('checkGuidedSpeechAnswer') && guidedSpeechPromptSource.includes('/api/guided-transcribe') === false)
+assert('Segment Review no longer imports browser-native speech recognition', !checkpointSource.includes("components/today/speechRecognition") && !checkpointSource.includes('createBrowserSpeechRecognizer'), checkpointSource)
+assert('Segment Review maps to original lesson speak config', checkpointSpeakSource.includes('targetAnswer={item.lesson.speak.targetAnswer ?? item.lesson.speak.targetPhrase}') && checkpointSpeakSource.includes('displayAnswer={item.lesson.speak.displayAnswer'), checkpointSpeakSource)
+assert('Segment Review Weiter is locked before correct speech', checkpointSpeakSource.includes('disabled={!canAdvance}') && checkpointSpeakSource.includes("speechState.status === 'passed'"), checkpointSpeakSource)
+assert('Segment Review exposes continue-anyway after failed speech state', checkpointSpeakSource.includes('onContinueAnyway={onContinueAnyway}') && checkpointSource.includes('onContinueAnyway={handleContinueAnywayFromSpeak}') && guidedSpeechPromptSource.includes("status === 'failed'") && guidedSpeechPromptSource.includes("status === 'error'"), checkpointSpeakSource)
+assert('active recording state does not use crossed-out mic icon', !checkpointSpeakSource.includes('MicOff') && !guidedSpeechPromptSource.includes('MicOff'), guidedSpeechPromptSource)
 
 console.log('\n[segment completion storage]')
 const originalWindow = globalThis.window
@@ -268,6 +277,14 @@ function minimalResult() {
 
 function readSource(relativePath: string) {
   return readFileSync(fileURLToPath(new URL(relativePath, import.meta.url)), 'utf8').replace(/\r\n/g, '\n')
+}
+
+function readOptionalSource(relativePath: string) {
+  try {
+    return readSource(relativePath)
+  } catch {
+    return ''
+  }
 }
 
 function sliceBetween(source: string, start: string, end: string) {
