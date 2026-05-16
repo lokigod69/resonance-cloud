@@ -1,4 +1,5 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
+import { lazyWithRetry } from '@/utils/lazyWithRetry'
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { AuthContext, useAuth, useAuthState } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -60,8 +61,8 @@ import HybridALanding from '@/landing-experiments/hybrid-a/HybridALanding'
 import HybridBLanding from '@/landing-experiments/hybrid-b/HybridBLanding'
 import LandingExperimentIndex from '@/landing-experiments/hybrid-a/LandingExperimentIndex'
 
-const SlicerGame = lazy(() => import('@/games/slicer/SlicerGame'))
-const RunnerGame = lazy(() => import('@/games/runner/RunnerGame'))
+const SlicerGame = lazyWithRetry(() => import('@/games/slicer/SlicerGame'), 'slicer-game')
+const RunnerGame = lazyWithRetry(() => import('@/games/runner/RunnerGame'), 'runner-game')
 
 function ProtectedRoute() {
   const { session, loading: authLoading } = useAuth()
