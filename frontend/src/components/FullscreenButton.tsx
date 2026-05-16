@@ -1,6 +1,11 @@
 import { useState, useEffect, useCallback, type RefObject } from 'react'
 import { Maximize, Minimize } from 'lucide-react'
 
+// Non-standard iOS Safari video fullscreen API. Not in lib.dom.d.ts.
+interface IOSSafariVideoElement {
+  webkitEnterFullscreen: () => void
+}
+
 interface FullscreenButtonProps {
   targetRef: RefObject<HTMLVideoElement | HTMLDivElement | null>
   className?: string
@@ -33,9 +38,9 @@ export function FullscreenButton({
       document.exitFullscreen().catch(() => {})
     } else if (el.requestFullscreen) {
       el.requestFullscreen().catch(() => {})
-    } else if ('webkitEnterFullscreen' in el && typeof (el as any).webkitEnterFullscreen === 'function') {
+    } else if ('webkitEnterFullscreen' in el && typeof (el as Partial<IOSSafariVideoElement>).webkitEnterFullscreen === 'function') {
       // iOS Safari fallback for video elements
-      ;(el as any).webkitEnterFullscreen()
+      ;(el as IOSSafariVideoElement).webkitEnterFullscreen()
     }
   }, [targetRef])
 

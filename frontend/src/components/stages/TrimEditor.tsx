@@ -124,8 +124,8 @@ export function TrimEditor({ slug, version, videoSrc, videoDuration, onSaved, on
     try {
       await trimAssembly(slug, version, trimStart, trimEnd)
       onSaved()
-    } catch (err: any) {
-      setError(err.message ?? 'Trim failed')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Trim failed')
     } finally {
       setSaving(false)
     }

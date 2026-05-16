@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Download, Trash2, Loader } from 'lucide-react'
 import { deleteVersion, mediaUrl, getGenerationMeta } from '../../api'
-import type { WordDetail } from '../../api'
+import type { GenerationMeta, WordDetail } from '../../api'
 import { getVersionStyle } from '../../lib/stageColors'
 import { EmptyStage } from './shared'
 
@@ -28,7 +28,7 @@ export function BookendPanel({ slug, detail, onRefresh }: BookendPanelProps) {
   const versions = detail.stages.bookend?.versions ?? []
   const selected = detail.stages.bookend?.selected ?? null
   const [deletingVer, setDeletingVer] = useState<string | null>(null)
-  const [meta, setMeta] = useState<Record<string, Record<string, any> | null>>({})
+  const [meta, setMeta] = useState<Record<string, GenerationMeta | null>>({})
 
   useEffect(() => {
     versions.forEach(v => {

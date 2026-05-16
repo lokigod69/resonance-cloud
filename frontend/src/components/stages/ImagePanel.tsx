@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Trash2, Loader, ZoomIn } from 'lucide-react'
 import { deleteImage, deleteVersion, mediaUrl, getGenerationMeta } from '../../api'
-import type { Storyboard, StoryboardScene } from '../../api'
+import type { GenerationMeta, Storyboard, StoryboardScene } from '../../api'
 import { CollapsibleRun } from '../CollapsibleRun'
 import { ImageLightbox } from '../ImageLightbox'
 import type { StageProps } from './shared'
@@ -17,7 +17,7 @@ export function ImagePanel({ slug, detail, onSelect, onRefresh }: StageProps) {
   )
   const [activeScene, setActiveScene] = useState<{ version: string; index: number } | null>(null)
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
-  const [meta, setMeta] = useState<Record<string, Record<string, any> | null>>({})
+  const [meta, setMeta] = useState<Record<string, GenerationMeta | null>>({})
 
   const toggle = (v: string) => {
     setExpanded(prev => {
@@ -138,7 +138,7 @@ function truncateModel(model: string): string {
   return idx >= 0 ? model.slice(idx + 1) : model
 }
 
-function GenerationInfoBar({ meta, storyboard }: { meta: Record<string, any>; storyboard: Storyboard | null }) {
+function GenerationInfoBar({ meta, storyboard }: { meta: GenerationMeta; storyboard: Storyboard | null }) {
   const settings = meta.settings ?? {}
   const steps = meta.steps ?? {}
   const sb = storyboard

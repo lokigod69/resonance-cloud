@@ -57,8 +57,8 @@ export function AutopilotPanel({ words, onClose, onStatusChange }: AutopilotPane
       const slugs = selectAll ? undefined : selectedWords
       await startAutopilot(slugs, pauseAtSong)
       startPolling()
-    } catch (e: any) {
-      alert(e.message)
+    } catch (e) {
+      alert(e instanceof Error ? e.message : String(e))
     }
     setStarting(false)
   }

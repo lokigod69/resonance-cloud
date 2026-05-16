@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { deleteVersion, mediaUrl, getGenerationMeta } from '../../api'
+import type { GenerationMeta } from '../../api'
 import { CollapsibleRun } from '../CollapsibleRun'
 import type { StageProps } from './shared'
 import { EmptyStage } from './shared'
@@ -11,7 +12,7 @@ export function VideoPanel({ slug, detail, onSelect, onRefresh }: StageProps) {
   const [expanded, setExpanded] = useState<Set<string>>(
     new Set(selected ? [selected] : versions.length ? [versions[versions.length - 1].version] : [])
   )
-  const [meta, setMeta] = useState<Record<string, Record<string, any> | null>>({})
+  const [meta, setMeta] = useState<Record<string, GenerationMeta | null>>({})
 
   const toggle = (v: string) => {
     setExpanded(prev => {
@@ -72,7 +73,7 @@ export function VideoPanel({ slug, detail, onSelect, onRefresh }: StageProps) {
   )
 }
 
-function MetaRow({ meta }: { meta: Record<string, any> }) {
+function MetaRow({ meta }: { meta: GenerationMeta }) {
   const settings = meta.inputs?.settings_used ?? {}
   const cost = meta.cost?.estimated_usd
   const prompt = meta.inputs?.video_prompt

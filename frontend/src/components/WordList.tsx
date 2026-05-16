@@ -36,8 +36,8 @@ export function WordList({ words, selectedSlug, onSelect, onRefresh, runningWord
     try {
       await deleteWord(slug)
       onRefresh()
-    } catch (err: any) {
-      alert(`Failed to delete: ${err.message}`)
+    } catch (err) {
+      alert(`Failed to delete: ${err instanceof Error ? err.message : String(err)}`)
     }
     setDeleting(null)
   }
@@ -47,8 +47,8 @@ export function WordList({ words, selectedSlug, onSelect, onRefresh, runningWord
     try {
       await toggleMute(slug, !currentMuted)
       onRefresh()
-    } catch (err: any) {
-      alert(`Failed to toggle mute: ${err.message}`)
+    } catch (err) {
+      alert(`Failed to toggle mute: ${err instanceof Error ? err.message : String(err)}`)
     }
   }
 
@@ -57,8 +57,8 @@ export function WordList({ words, selectedSlug, onSelect, onRefresh, runningWord
     try {
       await toggleApprove(slug)
       onRefresh()
-    } catch (err: any) {
-      const text = typeof err.message === 'string' ? err.message : String(err)
+    } catch (err) {
+      const text = err instanceof Error ? err.message : String(err)
       // Extract the meaningful part from "400: ..." error format
       const match = text.match(/Cannot approve[^"]*/)
       toast(match ? match[0] : 'Complete all stages first', 'error')
@@ -69,8 +69,8 @@ export function WordList({ words, selectedSlug, onSelect, onRefresh, runningWord
     try {
       await muteAll(muted)
       onRefresh()
-    } catch (err: any) {
-      alert(`Failed: ${err.message}`)
+    } catch (err) {
+      alert(`Failed: ${err instanceof Error ? err.message : String(err)}`)
     }
   }
 

@@ -44,8 +44,8 @@ export function WorkspaceChooser({ onWorkspaceSelected }: WorkspaceChooserProps)
     try {
       await openWorkspaceFolder(trimmed)
       onWorkspaceSelected()
-    } catch (err: any) {
-      setFolderError(err.message || 'Failed to open folder')
+    } catch (err) {
+      setFolderError(err instanceof Error ? err.message : 'Failed to open folder')
       setOpeningFolder(false)
     }
   }

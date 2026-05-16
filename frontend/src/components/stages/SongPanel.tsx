@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Check } from 'lucide-react'
 import { deleteVersion, mediaUrl, getGenerationMeta } from '../../api'
+import type { GenerationMeta } from '../../api'
 import { AudioPlayer } from '../AudioPlayer'
 import { CollapsibleRun } from '../CollapsibleRun'
 import type { StageProps } from './shared'
@@ -14,7 +15,7 @@ export function SongPanel({ slug, detail, onSelect, onRefresh }: StageProps) {
   const [expanded, setExpanded] = useState<Set<string>>(
     new Set(selectedVersion ? [selectedVersion] : versions.length ? [versions[versions.length - 1].version] : [])
   )
-  const [meta, setMeta] = useState<Record<string, Record<string, any> | null>>({})
+  const [meta, setMeta] = useState<Record<string, GenerationMeta | null>>({})
 
   const toggle = (v: string) => {
     setExpanded(prev => {
@@ -100,7 +101,7 @@ function loraShortName(path: string): string {
   return file.replace(/\.(safetensors|pt|bin|ckpt)$/, '')
 }
 
-function SongInfoBar({ meta }: { meta: Record<string, any> }) {
+function SongInfoBar({ meta }: { meta: GenerationMeta }) {
   const settings = meta.inputs?.settings_used ?? {}
   const lora = meta.lora
   const outputs = meta.outputs

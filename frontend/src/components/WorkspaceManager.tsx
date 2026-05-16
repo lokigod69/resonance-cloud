@@ -62,8 +62,8 @@ export function WorkspaceManager({ onClose, onSwitch }: WorkspaceManagerProps) {
       setCreating(false)
       await load()
       onSwitch()
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err))
     }
   }
 
@@ -74,8 +74,8 @@ export function WorkspaceManager({ onClose, onSwitch }: WorkspaceManagerProps) {
       await switchWorkspace(path)
       onSwitch()
       onClose()
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err))
     }
     setSwitching(null)
   }
@@ -91,8 +91,8 @@ export function WorkspaceManager({ onClose, onSwitch }: WorkspaceManagerProps) {
       // If the renamed workspace was active, refresh parent state
       const ws = workspaces.find(w => w.path === path)
       if (ws?.active) onSwitch()
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err))
     }
   }
 
@@ -105,8 +105,8 @@ export function WorkspaceManager({ onClose, onSwitch }: WorkspaceManagerProps) {
     try {
       await deleteWorkspace(ws.path)
       await load()
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err))
     }
     setDeletingPath(null)
   }

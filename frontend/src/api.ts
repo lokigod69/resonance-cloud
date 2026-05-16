@@ -462,8 +462,59 @@ export const trimAssembly = (slug: string, sourceVersion: string, trimStart: num
 
 // ─── Generation metadata ──────────────────────────────────────────────────────
 
+/**
+ * Loose shape for the per-stage generation meta blob returned by the orchestrator.
+ * Stages emit overlapping subsets of these fields; everything is optional.
+ * Unknown nested values surface as `unknown` via the index signatures so callers
+ * narrow at the access site.
+ */
+export interface MetaSettings {
+  // image stage
+  llm_model?: string
+  frame_narrative?: string
+  art_style?: string
+  // song stage
+  duration?: number
+  seed?: number
+  // video stage
+  video_mode?: string
+  resolution?: string
+  fps?: number
+  // assembly stage
+  assembly_mode?: string
+  // bookend stage
+  voice_id?: string
+  text_color?: string
+  [key: string]: unknown
+}
+
+export interface GenerationMeta {
+  outputs?: {
+    duration_seconds?: number
+    tts_duration_seconds?: number
+    resolution?: string
+    file_size_bytes?: number
+    requested_duration?: number
+    takes?: string[]
+    [key: string]: unknown
+  }
+  inputs?: {
+    settings_used?: MetaSettings
+    caption?: string
+    video_prompt?: string
+    [key: string]: unknown
+  }
+  settings?: MetaSettings
+  steps?: Record<string, { llm_model?: string; model?: string } | undefined>
+  lora?: { active?: boolean; path?: string; strength?: number } | null
+  cost?: { estimated_usd?: number }
+  acestep?: { model?: string }
+  duration_seconds?: number
+  [key: string]: unknown
+}
+
 export const getGenerationMeta = (slug: string, stage: string, version: string) =>
-  req<{meta: Record<string, unknown> | null}>(`/words/${slug}/stages/${stage}/${version}/meta`)
+  req<{meta: GenerationMeta | null}>(`/words/${slug}/stages/${stage}/${version}/meta`)
 
 // ─── Media URLs ───────────────────────────────────────────────────────────────
 

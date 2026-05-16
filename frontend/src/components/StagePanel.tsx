@@ -46,8 +46,8 @@ export function StagePanel({ slug, stage, detail, onRefresh, setRunningStage, pi
     try {
       await runStage(slug, stage)
       await onRefresh()
-    } catch (e: any) {
-      setError(e.message)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e))
     } finally {
       setRunning(false)
       setRunningStage(null)
@@ -58,8 +58,8 @@ export function StagePanel({ slug, stage, detail, onRefresh, setRunningStage, pi
     try {
       await selectVersion(slug, stage, version)
       await onRefresh()
-    } catch (e: any) {
-      setError(e.message)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e))
     }
   }
 

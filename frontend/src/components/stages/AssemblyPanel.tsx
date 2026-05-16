@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Download, Trash2, Loader, Scissors, AlertTriangle } from 'lucide-react'
 import { deleteVersion, mediaUrl, getGenerationMeta } from '../../api'
 import { TrimEditor } from './TrimEditor'
-import type { WordDetail } from '../../api'
+import type { GenerationMeta, WordDetail } from '../../api'
 import { getVersionStyle } from '../../lib/stageColors'
 import { EmptyStage } from './shared'
 
@@ -31,7 +31,7 @@ export function AssemblyPanel({ slug, detail, onSelect, onRefresh }: AssemblyPan
   const selected = detail.stages.final.selected
   const [deletingVer, setDeletingVer] = useState<string | null>(null)
   const [editingVer, setEditingVer] = useState<string | null>(null)
-  const [meta, setMeta] = useState<Record<string, Record<string, any> | null>>({})
+  const [meta, setMeta] = useState<Record<string, GenerationMeta | null>>({})
 
   useEffect(() => {
     versions.forEach(v => {

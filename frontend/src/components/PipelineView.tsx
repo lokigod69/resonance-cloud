@@ -100,7 +100,7 @@ export function PipelineView({ detail, selectedStage, onSelectStage, runningStag
     const stage = stageMap[key as keyof typeof stageMap]
     const vCount = key === 'concept'
       ? (stage as typeof detail.stages.concept)?.versions?.length ?? 0
-      : (stage as any)?.versions?.length ?? 0
+      : (stage as { versions?: unknown[] } | undefined)?.versions?.length ?? 0
 
     if (selected) return { status: 'done', version_count: vCount, selected }
     if (vCount > 0) return { status: 'pending_selection', version_count: vCount, selected: null }
