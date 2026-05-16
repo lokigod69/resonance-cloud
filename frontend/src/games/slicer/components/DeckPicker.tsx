@@ -206,7 +206,11 @@ export function DeckPicker({ easyMode, selectedLanguage, onEasyModeChange, onLan
           </div>
         )}
 
-        <div className={`min-h-0 flex-1 overflow-y-auto ${styles.deckScroll} ${styles.deckScrollFade}`}>
+        <div
+          className={`min-h-0 flex-1 overflow-y-auto ${styles.deckScroll} ${styles.deckScrollFade}`}
+          data-body-scroll-lock-scrollable="true"
+          style={{ touchAction: 'pan-y', WebkitOverflowScrolling: 'touch' }}
+        >
           {loading ? (
             <div className="rounded-lg border border-[rgba(255,107,53,0.24)] bg-black/35 p-8 text-center text-[#ffd2a5]/80">
               {t('slicer.deckPicker.loading')}

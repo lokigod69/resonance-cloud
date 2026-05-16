@@ -284,9 +284,19 @@ function AnswerReference({ cue, onReplay }: { cue: SlicerStudyCue; onReplay: () 
 
   return (
     <div className="pointer-events-auto absolute inset-x-4 bottom-[max(1.25rem,calc(var(--app-safe-bottom)+0.5rem))] z-30 mx-auto flex max-w-2xl items-center justify-between gap-4 rounded-xl border border-[rgba(255,107,53,0.24)] bg-black/58 px-5 py-3 text-[#fff1d0] shadow-[0_0_36px_rgba(255,69,0,0.16)] backdrop-blur-sm sm:bottom-7 sm:px-6">
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1">
         <div className="text-[10px] uppercase tracking-[0.22em] text-[#ff9155]/70">Current answer</div>
-        <div className="mt-1 truncate font-serif text-2xl leading-tight text-[#fff1d0] drop-shadow-[0_0_12px_rgba(255,100,0,0.34)] sm:text-4xl">
+        <div
+          className="mt-1 font-serif text-lg leading-tight text-[#fff1d0] drop-shadow-[0_0_12px_rgba(255,100,0,0.34)] sm:text-2xl md:text-3xl lg:text-4xl"
+          style={{
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            overflowWrap: 'anywhere',
+            wordBreak: 'break-word',
+          }}
+        >
           {displayText}
         </div>
       </div>

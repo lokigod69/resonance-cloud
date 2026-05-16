@@ -368,9 +368,11 @@ export class SlicerScene extends Phaser.Scene {
     const cards = this.cardsForTarget(target);
     const layout = this.cardSpawnLayout(cards.length);
     const shuffled = Phaser.Utils.Array.Shuffle(cards);
+    const stackEasyHoldYs = this.easyModeHoldYsForLayout(layout, shuffled.length);
     shuffled.forEach((card, index) => {
       const position = layout.positions[index] ?? layout.positions[layout.positions.length - 1];
-      this.createFallingCard(card, position.x, position.y, layout.cardWidth, layout.cardHeight, layout.exitY);
+      const easyHoldY = stackEasyHoldYs?.[index];
+      this.createFallingCard(card, position.x, position.y, layout.cardWidth, layout.cardHeight, layout.exitY, easyHoldY);
     });
     void this.speakTarget(target);
   }
@@ -379,17 +381,19 @@ export class SlicerScene extends Phaser.Scene {
     const width = this.scale.width;
     const height = this.scale.height;
     const narrowPortrait = this.isNarrowPortrait();
-    const cardWidthRatio = narrowPortrait ? 0.3 : 0.22;
-    const maxCardWidth = narrowPortrait ? Math.min(150, width * 0.31) : Math.min(560, width * 0.3);
-    const minCardWidth = Math.min(narrowPortrait ? 96 : 300, maxCardWidth);
+    if (narrowPortrait) return this.cardSpawnLayoutPortrait(cardCount);
+
+    const cardWidthRatio = 0.22;
+    const maxCardWidth = Math.min(560, width * 0.3);
+    const minCardWidth = Math.min(300, maxCardWidth);
     const cardWidth = Phaser.Math.Clamp(width * cardWidthRatio, minCardWidth, maxCardWidth);
     const cardHeight = cardWidth * 0.5625;
     const exitY = height + cardHeight;
 
-    const laneRatios = this.laneRatios(cardCount, narrowPortrait);
+    const laneRatios = this.laneRatios(cardCount);
     const laneWidth = width / Math.max(1, laneRatios.length);
     const jitter = Math.max(0, Math.min(width * 0.015, (laneWidth - cardWidth) * 0.35));
-    const yGap = narrowPortrait ? 0 : Math.min(96, cardHeight * 0.38);
+    const yGap = Math.min(96, cardHeight * 0.38);
     return {
       cardWidth,
       cardHeight,
@@ -401,10 +405,28 @@ export class SlicerScene extends Phaser.Scene {
     };
   }
 
-  private laneRatios(cardCount: number, narrowPortrait: boolean): number[] {
+  private cardSpawnLayoutPortrait(cardCount: number): CardSpawnLayout {
+    const width = this.scale.width;
+    const height = this.scale.height;
+    const cardWidth = Phaser.Math.Clamp(width * 0.86, 260, 420);
+    const cardHeight = cardWidth * 0.5625;
+    const exitY = height + cardHeight;
+    const yGap = Phaser.Math.Clamp(height * 0.025, 12, 28);
+    const centerX = width / 2;
+    const positions: Array<{ x: number; y: number }> = [];
+    for (let index = 0; index < cardCount; index += 1) {
+      positions.push({
+        x: centerX,
+        y: -cardHeight - index * (cardHeight + yGap),
+      });
+    }
+    return { cardWidth, cardHeight, exitY, positions };
+  }
+
+  private laneRatios(cardCount: number): number[] {
     if (cardCount <= 1) return [0.5];
-    if (cardCount === 2) return narrowPortrait ? [0.3, 0.7] : [0.34, 0.66];
-    return narrowPortrait ? [0.18, 0.5, 0.82] : [0.2, 0.5, 0.8];
+    if (cardCount === 2) return [0.34, 0.66];
+    return [0.2, 0.5, 0.8];
   }
 
   private isNarrowPortrait(): boolean {
@@ -431,6 +453,22 @@ export class SlicerScene extends Phaser.Scene {
     return output;
   }
 
+  private easyModeHoldYsForLayout(layout: CardSpawnLayout, cardCount: number): number[] | undefined {
+    if (!this.isNarrowPortrait()) return undefined;
+    const screenHeight = this.scale.height;
+    const headerClearance = Math.max(96, screenHeight * 0.16);
+    const yGap = Phaser.Math.Clamp(screenHeight * 0.025, 12, 28);
+    const totalStack = cardCount * layout.cardHeight + Math.max(0, cardCount - 1) * yGap;
+    const bottomMargin = Math.max(24, screenHeight * 0.06);
+    const maxTop = Math.max(headerClearance, screenHeight - bottomMargin - totalStack);
+    const topY = Math.min(headerClearance, maxTop);
+    const slots: number[] = [];
+    for (let index = 0; index < cardCount; index += 1) {
+      slots.push(topY + layout.cardHeight / 2 + index * (layout.cardHeight + yGap));
+    }
+    return slots;
+  }
+
   private createFallingCard(
     cardData: { word?: DeckWord; isTarget: boolean; isBomb: boolean },
     x: number,
@@ -438,6 +476,7 @@ export class SlicerScene extends Phaser.Scene {
     width: number,
     height: number,
     exitY: number,
+    easyHoldY?: number,
   ): FallingCard {
     const frameKey = cardData.isBomb ? EMBER_ASSET_KEYS.bombIdle : EMBER_ASSET_KEYS.frameDefault;
     const frame = this.add.image(0, 0, frameKey).setDisplaySize(width, height);
@@ -456,7 +495,7 @@ export class SlicerScene extends Phaser.Scene {
     }
     card.moteEmitter = this.createCardMotes(card);
     if (this.easyMode) {
-      this.startEasyModeFall(card, y, exitY, height);
+      this.startEasyModeFall(card, y, exitY, height, easyHoldY);
     } else {
       card.fallTween = this.createFallTween(card, y, exitY, height, () => this.resolveCard(card, 'exit'));
     }
@@ -464,12 +503,14 @@ export class SlicerScene extends Phaser.Scene {
     return card;
   }
 
-  private startEasyModeFall(card: FallingCard, startY: number, exitY: number, height: number): void {
-    const holdY = Phaser.Math.Clamp(
-      this.scale.height * EASY_MODE_HOLD_Y_RATIO,
-      startY + height,
-      exitY - height,
-    );
+  private startEasyModeFall(card: FallingCard, startY: number, exitY: number, height: number, overrideHoldY?: number): void {
+    const holdY = overrideHoldY !== undefined
+      ? Phaser.Math.Clamp(overrideHoldY, startY + height, exitY - height)
+      : Phaser.Math.Clamp(
+          this.scale.height * EASY_MODE_HOLD_Y_RATIO,
+          startY + height,
+          exitY - height,
+        );
     card.fallTween = this.createFallTween(card, startY, holdY, height, () => {
       if (card.resolved || this.isComplete) return;
       card.fallTween = undefined;
