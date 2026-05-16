@@ -163,6 +163,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
 
   useEffect(() => {
     let stale = false
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- triggers fetch+sort when deps change; setState happens inside async fetchAndSort body
     fetchAndSort(() => stale)
     return () => { stale = true }
   }, [fetchAndSort])
@@ -170,6 +171,7 @@ export function useStudySession(deckId?: string | null, studyMode: StudyMode = '
   useEffect(() => {
     retryQueueRef.current = []
     retryCountRef.current = new Map()
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets session stats when deckId/studyMode/language change; canonical reset-on-key pattern
     setSessionStats({ remembered: 0, reviewLater: 0 })
   }, [deckId, studyMode, language])
 

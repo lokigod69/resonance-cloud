@@ -22,6 +22,7 @@ export default function CategoryDetailPage() {
   useEffect(() => {
     let cancelled = false
     if (!user?.id || !category) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- resets imported-levels when user/category clears; canonical reset-on-key pattern
       setImportedLevels(new Set())
       return () => {
         cancelled = true

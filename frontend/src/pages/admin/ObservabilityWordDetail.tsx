@@ -61,6 +61,7 @@ export default function ObservabilityWordDetail() {
     if (!wordId) return
 
     let cancelled = false
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets loading/error state when wordId changes before re-fetching; canonical fetch-on-key pattern
     setLoading(true)
     setError(null)
 

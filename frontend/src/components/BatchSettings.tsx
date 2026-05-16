@@ -114,6 +114,7 @@ export function BatchSettings({ onClose }: BatchSettingsProps) {
       setLoading(false)
       setError('Failed to load settings. Please try again.')
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount-only hydrate; `locked` is captured intentionally and not tracked
   }, [])
 
   const handleChange = (stage: string, key: string, value: unknown) => {

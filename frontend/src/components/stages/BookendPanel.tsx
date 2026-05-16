@@ -38,6 +38,7 @@ export function BookendPanel({ slug, detail, onRefresh }: BookendPanelProps) {
           .catch(() => setMeta(prev => ({ ...prev, [v.version]: null })))
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional capture of `meta`; including it would re-trigger after every setMeta call and infinite-loop
   }, [slug, versions])
 
   if (versions.length === 0) {

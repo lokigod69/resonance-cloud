@@ -37,7 +37,14 @@ export function WorkspaceManager({ onClose, onSwitch }: WorkspaceManagerProps) {
     setLoading(false)
   }
 
-  useEffect(() => { load() }, [])
+  useEffect(() => {
+    let cancelled = false
+    listWorkspaces()
+      .then(ws => { if (!cancelled) setWorkspaces(ws) })
+      .catch(() => { /* noop: failed list leaves panel empty until next reload */ })
+      .finally(() => { if (!cancelled) setLoading(false) })
+    return () => { cancelled = true }
+  }, [])
 
   // Collect unique languages from existing workspaces for the dropdown
   const knownLanguages = useMemo(() => {

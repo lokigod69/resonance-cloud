@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 type Preset = 'rose' | 'starburst' | 'spiral' | 'spirograph' | 'heart'
@@ -128,9 +128,9 @@ function buildPresets(size: number): Record<Preset, { fn: PlotFn; scale: number 
 
 export function ParticleSpinner({ preset, size = 120, random = false, className }: ParticleSpinnerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  // Stable random preset — picked once on mount, never changes
-  const stableRandom = useRef<Preset>(ALL_PRESETS[Math.floor(Math.random() * ALL_PRESETS.length)])
-  const activePreset: Preset = preset ?? (random ? stableRandom.current : 'rose')
+  // Stable random preset — picked once on mount via lazy initializer, never changes
+  const [stableRandom] = useState<Preset>(() => ALL_PRESETS[Math.floor(Math.random() * ALL_PRESETS.length)])
+  const activePreset: Preset = preset ?? (random ? stableRandom : 'rose')
 
   useEffect(() => {
     const canvas = canvasRef.current

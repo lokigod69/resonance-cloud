@@ -48,6 +48,7 @@ export default function LevelDetailPage() {
 
   useEffect(() => {
     let cancelled = false
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets loading/state when key (user/category/level) changes before async fetch; canonical fetch-on-key pattern
     setDeckLookupLoading(true)
     setImportedDeckId(null)
 

@@ -33,6 +33,7 @@ export function StageSettings({ slug, stage, onOverridesChange }: StageSettingsP
   }, [slug, stage, onOverridesChange])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- re-fetches settings when slug/stage change (via fetchSettings identity); resets loading state for the new fetch
     setLoading(true)
     fetchSettings()
     return () => {

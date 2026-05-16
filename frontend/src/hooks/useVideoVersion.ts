@@ -37,6 +37,7 @@ export function useVideoVersion(word: WordWithVersions) {
   // Re-read stored preference when word changes
   useEffect(() => {
     if (!word.video_url_b) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-way sync from localStorage scoped per word.id; reset-on-key pattern
       setVersion('a')
       return
     }

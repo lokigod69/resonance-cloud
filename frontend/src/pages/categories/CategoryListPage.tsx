@@ -40,6 +40,7 @@ export default function CategoryListPage() {
   useEffect(() => {
     let cancelled = false
     if (!user?.id) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- resets imported categories when user clears; canonical reset-on-key pattern
       setImportedCategorySlugs(new Set())
       return () => {
         cancelled = true

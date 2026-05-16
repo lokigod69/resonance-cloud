@@ -19,7 +19,9 @@ export function VerbCycler({ intervalMs = 5000, className }: VerbCyclerProps) {
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   )
   const verbRef = useRef(verb)
-  verbRef.current = verb
+  useEffect(() => {
+    verbRef.current = verb
+  }, [verb])
 
   useEffect(() => {
     const fadeOut = reducedMotion.current ? 0 : 300

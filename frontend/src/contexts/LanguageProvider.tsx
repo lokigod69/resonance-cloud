@@ -15,6 +15,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // When user id changes (login / switch user), load that user's scoped language
   useEffect(() => {
     if (!userId) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- external system sync (localStorage scoped per userId); userId is async-loaded so lazy init is not viable
       setActiveLanguageState(null)
       return
     }

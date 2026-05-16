@@ -72,7 +72,7 @@ export default function Dashboard() {
       return
     }
     loadDecks(user.id)
-  }, [user?.id, loadDecks])
+  }, [user, loadDecks])
 
   // Derive the list of languages the user has decks in
   const availableLanguages = useMemo(() => {
@@ -141,7 +141,7 @@ export default function Dashboard() {
     return () => {
       cancelled = true
     }
-  }, [user?.id, activeLanguage])
+  }, [user, activeLanguage])
 
   useEffect(() => {
     if (!queryWordId) {

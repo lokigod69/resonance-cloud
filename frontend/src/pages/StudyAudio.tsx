@@ -67,6 +67,7 @@ export default function StudyAudio() {
   // Reset audio state when word changes; pause explicitly to prevent bleed during exit animation
   useEffect(() => {
     audioRef.current?.pause()
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- canonical reset-on-key pattern; resets playback state when the current word changes
     setAudioProgress(0)
     setAudioDuration(0)
     setIsPlaying(false)

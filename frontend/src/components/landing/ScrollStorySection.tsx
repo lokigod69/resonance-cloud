@@ -40,7 +40,7 @@ export default function ScrollStorySection() {
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)')
-    setIsDesktop(mq.matches)
+    // Initial value already captured via useState lazy initializer; just subscribe.
     const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
     mq.addEventListener('change', handler)
     return () => mq.removeEventListener('change', handler)

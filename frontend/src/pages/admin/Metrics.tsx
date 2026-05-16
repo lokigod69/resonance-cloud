@@ -299,7 +299,10 @@ export default function Metrics() {
     setLoading(false)
   }, [])
 
-  useEffect(() => { load() }, [load])
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time fetch on mount; load() is also wired to the refresh button via onClick
+    load()
+  }, [load])
 
   if (loading || !metrics) {
     return (

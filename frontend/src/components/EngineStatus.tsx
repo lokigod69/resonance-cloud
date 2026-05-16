@@ -4,7 +4,7 @@ import { RefreshCw } from 'lucide-react'
 
 export function EngineStatus() {
   const [engines, setEngines] = useState<EngineHealth[]>([])
-  const [checking, setChecking] = useState(false)
+  const [checking, setChecking] = useState(true)
 
   const check = async () => {
     setChecking(true)
@@ -15,7 +15,14 @@ export function EngineStatus() {
     setChecking(false)
   }
 
-  useEffect(() => { check() }, [])
+  useEffect(() => {
+    let cancelled = false
+    getEnginesHealth()
+      .then(data => { if (!cancelled) setEngines(data) })
+      .catch(() => { /* noop: engines remain in last-known state on transient failure */ })
+      .finally(() => { if (!cancelled) setChecking(false) })
+    return () => { cancelled = true }
+  }, [])
 
   return (
     <div className="flex items-center gap-3">

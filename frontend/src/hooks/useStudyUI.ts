@@ -43,6 +43,7 @@ export function useStudyUI({ videoRef, studyMode = 'video' }: UseStudyUIOptions)
   // Reset deck filter when language changes (selected deck may not be in new language)
   useEffect(() => {
     if (deckParam) return // don't override explicit deck param
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resets user-controlled filter when activeLanguage changes; canonical reset-on-key pattern
     setDeckFilter('all')
   }, [activeLanguage, deckParam])
 
@@ -57,6 +58,7 @@ export function useStudyUI({ videoRef, studyMode = 'video' }: UseStudyUIOptions)
 
   // Reset session state when deck filter or language changes
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- canonical reset-on-key pattern; the parent does not pass a key prop so the reset is handled here
     setCurrentIndex(0)
     setRevealed(false)
     setSessionComplete(false)

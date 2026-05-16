@@ -51,6 +51,7 @@ export function ComboControl({ value, options, presets, presetGroups, labels, on
     const custom = sv !== '' && !allFixed.includes(sv) && !allFixed.includes(Number(sv))
     setShowCustom(custom)
     if (custom) setCustomVal(sv)
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- options/allFixed are derived fresh each render; tracking only `value` is intentional
   }, [value])
 
   return (
@@ -252,7 +253,7 @@ export function VoiceSelector({ value, onChange }: {
       setShowCustom(true)
       setCustomVal(currentId)
     }
-  }, [voicesLoaded, currentId])
+  }, [voicesLoaded, currentId, voices])
 
   const isInCustomMode = showCustom || (currentId !== '' && !selectedVoice && voicesLoaded)
 

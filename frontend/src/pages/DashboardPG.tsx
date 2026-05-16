@@ -72,7 +72,7 @@ export default function DashboardPG() {
       return
     }
     loadDecks(user.id)
-  }, [user?.id, loadDecks])
+  }, [user, loadDecks])
 
   const availableLanguages = useMemo(() => {
     return Array.from(new Set(decks.map((d) => d.target_language))).filter(Boolean)
@@ -136,7 +136,7 @@ export default function DashboardPG() {
     return () => {
       cancelled = true
     }
-  }, [user?.id, activeLanguage])
+  }, [user, activeLanguage])
 
   useEffect(() => {
     if (!queryWordId) {

@@ -30,6 +30,7 @@ export function AutopilotPanel({ words, onClose, onStatusChange }: AutopilotPane
       } catch { /* noop: status poll retries on next mount/tick */ }
     }
     poll()
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- mount-only poll; onStatusChange is invoked but the effect is intentionally not subscribed to its identity
   }, [])
 
   useEffect(() => {
