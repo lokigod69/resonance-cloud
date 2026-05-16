@@ -122,6 +122,7 @@ const ROUND_DIFFICULTY: RoundDifficulty[] = [
 ];
 
 const EASY_MODE_HOLD_Y_RATIO = 0.5;
+const PORTRAIT_FALL_SPEED_MULTIPLIER = 1.3;
 
 export class SlicerScene extends Phaser.Scene {
   private deck!: DeckDefinition;
@@ -1193,7 +1194,8 @@ export class SlicerScene extends Phaser.Scene {
     const distance = Math.max(1, Math.abs(exitY - startY));
     const referenceDistance = Math.max(1, this.scale.height + cardHeight * 2);
     const baseDuration = this.difficulty().fallMs * (distance / referenceDistance);
-    return Math.max(900, Math.round(baseDuration));
+    const adjusted = this.isNarrowPortrait() ? baseDuration / PORTRAIT_FALL_SPEED_MULTIPLIER : baseDuration;
+    return Math.max(900, Math.round(adjusted));
   }
 
   private wordsPerRound(): number {
