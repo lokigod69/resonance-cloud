@@ -156,31 +156,33 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
           {hintButtonLabel}
         </Button>
         {isSupported && (
-          <Button
-            type="button"
-            variant={isRecording ? 'destructive' : 'default'}
-            className={cn(isRecording && 'today-speak-recordingButton')}
-            onClick={isRecording ? handleStop : handleStart}
-            disabled={isBusy}
-          >
-            {speech.status === 'transcribing' ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : isRecording ? (
-              <>
-                <span className="today-speak-recordingDot" aria-hidden="true" />
+          <div className="today-speak-recordingControl">
+            <Button
+              type="button"
+              variant={isRecording ? 'destructive' : 'default'}
+              className={cn(isRecording && 'today-speak-recordingButton')}
+              onClick={isRecording ? handleStop : handleStart}
+              disabled={isBusy}
+            >
+              {speech.status === 'transcribing' ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : isRecording ? (
                 <MicOff className="h-4 w-4" />
-              </>
-            ) : (
-              <Mic className="h-4 w-4" />
-            )}
-            {speech.status === 'requesting_permission'
-              ? t('today.speak.requestingPermission')
-              : speech.status === 'transcribing'
-                ? t('today.speak.transcribing')
-                : isRecording
-                  ? t('today.speak.stopRecording')
-                  : t('today.speak.startRecording')}
-          </Button>
+              ) : (
+                <Mic className="h-4 w-4" />
+              )}
+              {speech.status === 'requesting_permission'
+                ? t('today.speak.requestingPermission')
+                : speech.status === 'transcribing'
+                  ? t('today.speak.transcribing')
+                  : isRecording
+                    ? t('today.speak.stopRecording')
+                    : t('today.speak.startRecording')}
+            </Button>
+            <span className="today-speak-recordingDotSlot" aria-hidden="true">
+              <span className={cn('today-speak-recordingDot', !isRecording && 'today-speak-recordingDot--idle')} />
+            </span>
+          </div>
         )}
       </div>
 

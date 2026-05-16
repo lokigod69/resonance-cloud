@@ -389,6 +389,20 @@
   animation: today-speak-button-pulse 1.25s ease-in-out infinite;
 }
 
+.today-speak-recordingControl {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.45rem;
+}
+
+.today-speak-recordingDotSlot {
+  align-items: center;
+  display: inline-flex;
+  height: 2.25rem;
+  justify-content: center;
+  width: 0.7rem;
+}
+
 .today-speak-recordingDot {
   animation: today-speak-dot-pulse 1s ease-in-out infinite;
   background: #fecaca;
@@ -396,7 +410,13 @@
   box-shadow: 0 0 0 0 color-mix(in srgb, #fecaca 62%, transparent);
   display: inline-block;
   height: 0.55rem;
+  pointer-events: none;
   width: 0.55rem;
+}
+
+.today-speak-recordingDot--idle {
+  animation: none;
+  opacity: 0;
 }
 
 .today-speak-transcriptCard {
