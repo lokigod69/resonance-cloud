@@ -104,6 +104,7 @@ export type GuidedLessonVibeVariant = {
   speakTarget: {
     baseCue: string
     targetPhrase: string
+    displayAnswer?: string
     germanPrompt?: string
     targetAnswer?: string
     acceptedAnswers?: string[]
@@ -300,10 +301,12 @@ const GUIDED_TODAY_PATH_TEN_METADATA: GuidedPathMetadata = {
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
+  displayAnswer: 'Do you speak English?',
   acceptedAnswers: [
     'Do you speak English?',
     'Hi, do you speak English?',
     'Hello, do you speak English?',
+    'Hi there, do you speak English?',
   ],
   requiredTokens: ['do', 'you', 'speak', 'english'],
   optionalTokens: ['hi', 'hello', 'there', 'sorry', 'to', 'ask', 'happen', 'quick', 'question'],

@@ -389,20 +389,67 @@
   animation: today-speak-button-pulse 1.25s ease-in-out infinite;
 }
 
-.today-speak-recordingStatus {
-  background: color-mix(in srgb, #ef4444 14%, transparent);
-  border-color: color-mix(in srgb, #ef4444 54%, var(--today-border));
-  color: color-mix(in srgb, #fecaca 82%, var(--text-primary));
-}
-
 .today-speak-recordingDot {
   animation: today-speak-dot-pulse 1s ease-in-out infinite;
-  background: #ef4444;
+  background: #fecaca;
   border-radius: 999px;
-  box-shadow: 0 0 0 0 color-mix(in srgb, #ef4444 54%, transparent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, #fecaca 62%, transparent);
   display: inline-block;
   height: 0.55rem;
   width: 0.55rem;
+}
+
+.today-speak-transcriptCard {
+  background:
+    radial-gradient(ellipse at 88% 0%, color-mix(in srgb, var(--today-glow) 18%, transparent), transparent 58%),
+    color-mix(in srgb, var(--surface-1) 62%, transparent);
+  border-color: var(--border-subtle);
+}
+
+.today-speak-transcriptCard--passed {
+  background:
+    radial-gradient(ellipse at 86% 0%, color-mix(in srgb, #34d399 22%, transparent), transparent 60%),
+    color-mix(in srgb, #34d399 8%, var(--surface-1));
+  border-color: color-mix(in srgb, #34d399 58%, var(--today-border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, #34d399 12%, transparent),
+    0 14px 32px color-mix(in srgb, #34d399 18%, transparent);
+}
+
+.today-speak-transcriptCard--close {
+  background:
+    radial-gradient(ellipse at 86% 0%, color-mix(in srgb, #f59e0b 18%, transparent), transparent 60%),
+    color-mix(in srgb, #f59e0b 7%, var(--surface-1));
+  border-color: color-mix(in srgb, #f59e0b 42%, var(--today-border));
+}
+
+.today-speak-transcriptCard--failed {
+  background: color-mix(in srgb, var(--surface-2) 72%, transparent);
+  border-color: var(--border-subtle);
+}
+
+.today-speak-transcriptResult {
+  background: color-mix(in srgb, var(--surface-1) 72%, transparent);
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.today-speak-transcriptResult--passed {
+  background: color-mix(in srgb, #34d399 15%, transparent);
+  border-color: color-mix(in srgb, #34d399 54%, transparent);
+  color: color-mix(in srgb, #bbf7d0 86%, var(--text-primary));
+}
+
+.today-speak-transcriptResult--close {
+  background: color-mix(in srgb, #f59e0b 13%, transparent);
+  border-color: color-mix(in srgb, #f59e0b 54%, transparent);
+  color: color-mix(in srgb, #fde68a 86%, var(--text-primary));
+}
+
+.today-speak-transcriptResult--failed {
+  background: color-mix(in srgb, var(--surface-2) 78%, transparent);
+  border-color: var(--border-subtle);
+  color: var(--text-secondary);
 }
 
 @keyframes today-speak-button-pulse {

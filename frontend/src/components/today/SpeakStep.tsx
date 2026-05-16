@@ -125,7 +125,15 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
       : t('today.speak.showSentence')
   const isRecording = speech.status === 'recording'
   const isBusy = speech.status === 'requesting_permission' || speech.status === 'transcribing'
-  const expectedAnswer = lesson.speak.targetAnswer ?? lesson.speak.targetPhrase
+  const expectedAnswer = lesson.speak.displayAnswer ?? lesson.speak.targetAnswer ?? lesson.speak.targetPhrase
+  const transcriptFeedbackVisible = Boolean(feedbackVisible && speech.transcript)
+  const transcriptFeedbackLabel = status === 'passed'
+    ? t('today.speak.passed')
+    : status === 'close'
+      ? t('today.speak.close')
+      : status === 'continued'
+        ? t('today.speak.continued')
+        : t('today.speak.failed')
 
   return (
     <div className="grid justify-items-center gap-5 text-center">
@@ -158,7 +166,10 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
             {speech.status === 'transcribing' ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : isRecording ? (
-              <MicOff className="h-4 w-4" />
+              <>
+                <span className="today-speak-recordingDot" aria-hidden="true" />
+                <MicOff className="h-4 w-4" />
+              </>
             ) : (
               <Mic className="h-4 w-4" />
             )}
@@ -172,13 +183,6 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
           </Button>
         )}
       </div>
-
-      {isRecording && (
-        <div className="today-speak-recordingStatus inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm">
-          <span className="today-speak-recordingDot" aria-hidden="true" />
-          {t('today.speak.recording')}
-        </div>
-      )}
 
       {hintVisible && (
         <div className="inline-flex w-fit max-w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] px-3 py-2 text-sm font-semibold text-[var(--text-primary)]">
@@ -200,43 +204,41 @@ export function SpeakStep({ lesson, onCheckStateChange }: SpeakStepProps) {
       )}
 
       {speech.transcript && (
-        <div className="w-full max-w-2xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_62%,transparent)] p-4 text-left">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            {t('today.speak.heardLabel')}
-          </p>
+        <div
+          className={cn(
+            'today-speak-transcriptCard w-full max-w-2xl rounded-lg border p-4 text-left',
+            status === 'passed' && 'today-speak-transcriptCard--passed',
+            status === 'close' && 'today-speak-transcriptCard--close',
+            (status === 'failed' || status === 'continued') && 'today-speak-transcriptCard--failed',
+          )}
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
+              {t('today.speak.heardLabel')}
+            </p>
+            {transcriptFeedbackVisible && (
+              <span
+                className={cn(
+                  'today-speak-transcriptResult inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold',
+                  status === 'passed' && 'today-speak-transcriptResult--passed',
+                  status === 'close' && 'today-speak-transcriptResult--close',
+                  (status === 'failed' || status === 'continued') && 'today-speak-transcriptResult--failed',
+                )}
+              >
+                {status === 'passed' ? (
+                  <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+                ) : status === 'close' ? (
+                  <AlertCircle className="h-3.5 w-3.5 shrink-0" />
+                ) : (
+                  <XCircle className="h-3.5 w-3.5 shrink-0" />
+                )}
+                {transcriptFeedbackLabel}
+              </span>
+            )}
+          </div>
           <p className="mt-2 break-words text-base leading-7 text-[var(--text-primary)]">
             &quot;{speech.transcript}&quot;
           </p>
-        </div>
-      )}
-
-      {feedbackVisible && (
-        <div
-          className={cn(
-            'inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm',
-            status === 'passed'
-              ? 'border-[color-mix(in_srgb,#34d399_54%,transparent)] bg-[color-mix(in_srgb,#34d399_13%,transparent)] text-[var(--text-primary)]'
-              : status === 'close'
-                ? 'border-[color-mix(in_srgb,#f59e0b_54%,transparent)] bg-[color-mix(in_srgb,#f59e0b_12%,transparent)] text-[var(--text-primary)]'
-              : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] text-[var(--text-secondary)]',
-          )}
-        >
-          {status === 'passed' ? (
-            <CheckCircle2 className="h-4 w-4 shrink-0 text-[#34d399]" />
-          ) : status === 'close' ? (
-            <AlertCircle className="h-4 w-4 shrink-0 text-[#f59e0b]" />
-          ) : (
-            <XCircle className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />
-          )}
-          <span>
-            {status === 'passed'
-              ? t('today.speak.passed')
-              : status === 'close'
-                ? t('today.speak.close')
-                : status === 'continued'
-                ? t('today.speak.continued')
-                : t('today.speak.failed')}
-          </span>
         </div>
       )}
 

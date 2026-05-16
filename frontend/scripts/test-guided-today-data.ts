@@ -579,6 +579,23 @@ for (const lessonDefinition of [...pathLessons, ...pathTwoLessons, ...pathThreeL
 if (firstDefinition) {
   const lessonOneBright = resolveGuidedLessonVariant(firstDefinition, 'bright')
   assert('lesson 1 Bright recalls speak, not English', normalizeGuidedAnswer(lessonOneBright.typeRecall.answer) === 'speak', lessonOneBright.typeRecall)
+  for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
+    const lesson = resolveGuidedLessonVariant(firstDefinition, vibeId)
+    assert(
+      `lesson 1 ${vibeId} displays the core speak expectation`,
+      lesson.speak.displayAnswer === 'Do you speak English?',
+      lesson.speak,
+    )
+    assert(
+      `lesson 1 ${vibeId} still accepts greeting variants`,
+      ['Do you speak English?', 'Hi, do you speak English?', 'Hello, do you speak English?', 'Hi there, do you speak English?']
+        .every((answer) => [
+          lesson.speak.targetPhrase,
+          ...(lesson.speak.acceptedAnswers ?? []),
+        ].some((acceptedAnswer) => normalizeGuidedAnswer(acceptedAnswer) === normalizeGuidedAnswer(answer))),
+      lesson.speak,
+    )
+  }
 }
 
 console.log('\n[A1 Practical 2 content polish]')
