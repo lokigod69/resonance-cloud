@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Link, Outlet, useOutletContext } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, Outlet } from 'react-router-dom'
 import styles from './FerrariAdminLayout.module.css'
 
 export default function FerrariAdminLayout() {
@@ -19,12 +19,4 @@ export default function FerrariAdminLayout() {
       </main>
     </div>
   )
-}
-
-export function useFerrariTitle(title: string) {
-  const { setTitle } = useOutletContext<{ setTitle: (title: string) => void }>()
-
-  useEffect(() => {
-    setTitle(title)
-  }, [title, setTitle])
 }

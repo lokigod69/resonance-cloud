@@ -1,17 +1,11 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/lib/supabase'
-
-interface LanguageContextValue {
-  activeLanguage: string | null
-  setActiveLanguage: (lang: string | null) => void
-}
+import { LanguageContext } from './LanguageContext'
 
 const LEGACY_STORAGE_KEY = 'resonance_active_language'
 const storageKeyFor = (userId: string | null | undefined) =>
   userId ? `resonance_active_language_${userId}` : null
-
-const LanguageContext = createContext<LanguageContextValue | null>(null)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth()
@@ -76,10 +70,4 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       {children}
     </LanguageContext.Provider>
   )
-}
-
-export function useLanguage(): LanguageContextValue {
-  const ctx = useContext(LanguageContext)
-  if (!ctx) throw new Error('useLanguage must be used within LanguageProvider')
-  return ctx
 }

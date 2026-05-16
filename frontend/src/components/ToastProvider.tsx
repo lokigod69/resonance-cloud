@@ -1,14 +1,8 @@
-import { useState, useCallback, createContext, useContext, useRef } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { X } from 'lucide-react'
+import { ToastContext, type ToastType } from './Toast'
 
-type ToastType = 'success' | 'error' | 'info'
 interface ToastItem { id: number; message: string; type: ToastType }
-
-const ToastContext = createContext<{ toast: (message: string, type?: ToastType) => void }>({
-  toast: () => {},
-})
-
-export const useToast = () => useContext(ToastContext)
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([])

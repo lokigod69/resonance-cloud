@@ -8,7 +8,7 @@ import {
   type FailureCount,
   type PipelineEvent,
 } from '@/lib/observability'
-import { useFerrariTitle } from '@/layouts/FerrariAdminLayout'
+import { useFerrariTitle } from '@/layouts/useFerrariTitle'
 
 type AggregateData = {
   failures: FailureCount[]

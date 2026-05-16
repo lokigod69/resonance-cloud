@@ -1,13 +1,5 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react'
-
-interface DialogContextValue {
-  profileOpen: boolean
-  setProfileOpen: (open: boolean) => void
-  redeemOpen: boolean
-  setRedeemOpen: (open: boolean) => void
-}
-
-const DialogContext = createContext<DialogContextValue | null>(null)
+import { useCallback, useMemo, useState, type ReactNode } from 'react'
+import { DialogContext, type DialogContextValue } from './DialogContext'
 
 export function DialogProvider({ children }: { children: ReactNode }) {
   const [profileOpen, setProfileOpenState] = useState(false)
@@ -27,10 +19,4 @@ export function DialogProvider({ children }: { children: ReactNode }) {
   )
 
   return <DialogContext.Provider value={value}>{children}</DialogContext.Provider>
-}
-
-export function useDialogs(): DialogContextValue {
-  const ctx = useContext(DialogContext)
-  if (!ctx) throw new Error('useDialogs must be used within DialogProvider')
-  return ctx
 }

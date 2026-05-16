@@ -1,11 +1,5 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
-
-export type SkinId = 'classic' | 'glassy'
-
-interface SkinContextValue {
-  skin: SkinId
-  setSkin: (skin: SkinId) => void
-}
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { SkinContext, type SkinId } from './SkinContext'
 
 const STORAGE_KEY = 'resonance-skin'
 const VALID_SKINS: SkinId[] = ['classic', 'glassy']
@@ -24,11 +18,6 @@ function migrateSkinId(raw: string | null): SkinId {
   if (raw in LEGACY_MAP) return LEGACY_MAP[raw]
   return 'classic'
 }
-
-const SkinContext = createContext<SkinContextValue>({
-  skin: 'classic',
-  setSkin: () => {},
-})
 
 export function SkinProvider({ children }: { children: ReactNode }) {
   const [skin, setSkinState] = useState<SkinId>(() => {
@@ -66,5 +55,3 @@ export function SkinProvider({ children }: { children: ReactNode }) {
     </SkinContext.Provider>
   )
 }
-
-export const useSkin = () => useContext(SkinContext)

@@ -1,9 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { supabase } from '../lib/supabase'
-
-export type Theme = 'midnight' | 'rainy-day' | 'red-wine' | 'slate' | 'warm-linen'
-
-export const DEFAULT_THEME: Theme = 'rainy-day'
+import { ThemeContext, DEFAULT_THEME, type Theme } from './ThemeContext'
 
 const VALID_THEMES: Theme[] = ['rainy-day', 'midnight', 'red-wine', 'slate', 'warm-linen']
 const LEGACY_THEME_CLASSES = ['theme-deep-blue']
@@ -16,16 +13,6 @@ const MIGRATION_MAP: Record<string, Theme> = {
   soft: DEFAULT_THEME,
   'deep-blue': 'midnight',
 }
-
-interface ThemeContextType {
-  theme: Theme
-  setTheme: (theme: Theme) => void
-}
-
-const ThemeContext = createContext<ThemeContextType>({
-  theme: DEFAULT_THEME,
-  setTheme: () => {},
-})
 
 const LIGHT_THEMES: Theme[] = ['warm-linen']
 
@@ -94,5 +81,3 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     </ThemeContext.Provider>
   )
 }
-
-export const useTheme = () => useContext(ThemeContext)

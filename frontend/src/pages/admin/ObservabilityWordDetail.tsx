@@ -18,7 +18,7 @@ import {
   type WordRow,
 } from '@/lib/observability'
 import { supabase } from '@/lib/supabase'
-import { useFerrariTitle } from '@/layouts/FerrariAdminLayout'
+import { useFerrariTitle } from '@/layouts/useFerrariTitle'
 
 const VIDEO_DECK_STAGES = ['concept', 'images', 'video', 'assembly', 'bookend', 'suno_bakein']
 const CARD_DECK_STAGES = ['concept', 'pending_image']
