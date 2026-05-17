@@ -2,10 +2,12 @@ import { CheckCircle2, Circle, Play } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
+  getPathVibesAvailable,
   type GuidedLesson,
   type GuidedPathLessonCardStatus,
   type GuidedPathMetadata,
   type GuidedPathOverview,
+  type GuidedTargetLanguage,
 } from '@/data/guidedLessons'
 import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
@@ -14,6 +16,7 @@ import { formatGuidedPathLabel } from '@/lib/guidedPathLabels'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
+import { GuidedLanguagePicker } from '@/components/today/GuidedLanguagePicker'
 import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
 import { SegmentTrophyTile } from '@/components/today/SegmentTrophyTile'
 import { GuidedVibePicker } from '@/components/today/TodayHero'
@@ -42,6 +45,8 @@ type TodayPathOverviewProps = {
   selectedPathId: string
   progress: TodayProgressState
   selectedVibeId: ActiveGuidedVibeId
+  selectedLanguage: GuidedTargetLanguage
+  availableLanguages: GuidedTargetLanguage[]
   checkpointCard?: {
     href: string
     completedPathCount: number
@@ -49,6 +54,7 @@ type TodayPathOverviewProps = {
   pathCheckHref: string
   onSelectPath: (pathId: string) => void
   onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
+  onSelectLanguage: (language: GuidedTargetLanguage) => void
   onSelectLesson: (lessonId: string) => void
   onStartLesson: () => void
 }
@@ -59,16 +65,21 @@ export function TodayPathOverview({
   selectedPathId,
   progress,
   selectedVibeId,
+  selectedLanguage,
+  availableLanguages,
   checkpointCard,
   pathCheckHref,
   onSelectPath,
   onSelectVibe,
+  onSelectLanguage,
   onSelectLesson,
   onStartLesson,
 }: TodayPathOverviewProps) {
   const { t } = useTranslation()
   const [directoryOpen, setDirectoryOpen] = useState(false)
   const pathLesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
+  const pathVibesAvailable = getPathVibesAvailable(selectedPathId)
+  const shouldShowVibePicker = pathLesson !== undefined && pathVibesAvailable.length > 1
   const isSelectedRecommendation = Boolean(
     pathLesson
       && overview.recommendedLesson
@@ -106,13 +117,20 @@ export function TodayPathOverview({
             selectedPathId={selectedPathId}
             progress={progress}
             pathCheckHref={pathCheckHref}
+            targetLanguage={selectedLanguage}
             onSelectPath={onSelectPath}
             onClose={() => setDirectoryOpen(false)}
           />
         </div>
       </section>
 
-      {pathLesson && (
+      <GuidedLanguagePicker
+        availableLanguages={availableLanguages}
+        selectedLanguage={selectedLanguage}
+        onSelectLanguage={onSelectLanguage}
+      />
+
+      {shouldShowVibePicker && (
         <GuidedVibePicker
           selectedVibeId={selectedVibeId}
           onSelectVibe={onSelectVibe}

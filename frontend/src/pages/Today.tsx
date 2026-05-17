@@ -1,6 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { getGuidedPathOverview, getGuidedTodayPathOptions } from '@/data/guidedLessons'
+import {
+  getGuidedPathOverview,
+  getGuidedTodayPathOptions,
+  type GuidedPathMetadata,
+  type GuidedTargetLanguage,
+} from '@/data/guidedLessons'
 import { isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
 import { TodayPathOverview } from '@/components/today/TodayPathOverview'
@@ -21,14 +26,37 @@ import {
   getSelectedGuidedVibe,
   setSelectedGuidedVibe,
 } from '@/lib/todayVibe'
+import {
+  getSelectedGuidedTargetLanguage,
+  setSelectedGuidedTargetLanguage,
+} from '@/lib/todayLanguage'
 import '@/components/today/Today.css'
 
 export default function Today() {
   const { user } = useAuth()
   const [searchParams] = useSearchParams()
   const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
-  const defaultPathId = pathOptions[0]?.id ?? 'english-a1-practical-1'
-  const queryPathId = resolveTodayPathId(searchParams.get('path'), pathOptions)
+  const availableLanguages = useMemo(() => collectAvailableLanguages(pathOptions), [pathOptions])
+  const initialLanguage = useMemo(() => {
+    const stored = getSelectedGuidedTargetLanguage()
+    return availableLanguages.includes(stored) ? stored : (availableLanguages[0] ?? 'English')
+  }, [availableLanguages])
+  const queryPathId = useMemo(
+    () => resolveTodayPathId(searchParams.get('path'), pathOptions),
+    [pathOptions, searchParams],
+  )
+  const queryPathLanguage = useMemo(() => (
+    queryPathId
+      ? pathOptions.find((path) => path.id === queryPathId)?.targetLanguage
+      : undefined
+  ), [pathOptions, queryPathId])
+  const [selectedLanguage, setSelectedLanguageState] = useState<GuidedTargetLanguage>(
+    queryPathLanguage ?? initialLanguage,
+  )
+  const defaultPathId = useMemo(
+    () => pickDefaultPathForLanguage(pathOptions, selectedLanguage),
+    [pathOptions, selectedLanguage],
+  )
   const queryVibeId = resolveTodayVibeId(searchParams.get('vibe'))
   const initialPathId = queryPathId ?? defaultPathId
   const [selectedPathId, setSelectedPathId] = useState(initialPathId)
@@ -71,6 +99,13 @@ export default function Today() {
     if (queryPathId) setSelectedPathId(queryPathId)
   }, [queryPathId])
 
+  useEffect(() => {
+    if (queryPathLanguage && queryPathLanguage !== selectedLanguage) {
+      setSelectedLanguageState(queryPathLanguage)
+      setSelectedGuidedTargetLanguage(queryPathLanguage)
+    }
+  }, [queryPathLanguage, selectedLanguage])
+
   const persistProgress = (nextProgress: TodayProgressState) => {
     setProgress(nextProgress)
     writeTodayProgressState(user?.id, nextProgress)
@@ -82,8 +117,26 @@ export default function Today() {
 
   const handleSelectPath = (pathId: string) => {
     if (pathId === selectedPathId) return
+    const pathLanguage = pathOptions.find((path) => path.id === pathId)?.targetLanguage
+    if (pathLanguage && pathLanguage !== selectedLanguage) {
+      setSelectedLanguageState(pathLanguage)
+      setSelectedGuidedTargetLanguage(pathLanguage)
+    }
     setSelectedPathId(pathId)
     setSelectedVibeId(getSelectedGuidedVibe(pathId))
+    setSelectedLessonId(undefined)
+    setSessionActive(false)
+    setKnownItemIds(new Set())
+    setSessionKey((current) => current + 1)
+  }
+
+  const handleSelectLanguage = (language: GuidedTargetLanguage) => {
+    if (language === selectedLanguage) return
+    const nextPathId = pickDefaultPathForLanguage(pathOptions, language)
+    setSelectedLanguageState(language)
+    setSelectedGuidedTargetLanguage(language)
+    setSelectedPathId(nextPathId)
+    setSelectedVibeId(getSelectedGuidedVibe(nextPathId))
     setSelectedLessonId(undefined)
     setSessionActive(false)
     setKnownItemIds(new Set())
@@ -148,6 +201,8 @@ export default function Today() {
             selectedPathId={selectedPathId}
             progress={progress}
             selectedVibeId={selectedVibeId}
+            selectedLanguage={selectedLanguage}
+            availableLanguages={availableLanguages}
             checkpointCard={checkpointPlan ? {
               href: `/today/checkpoint?path=${selectedPathId}&vibe=${selectedVibeId}`,
               completedPathCount: checkpointPlan.completedPathCount,
@@ -155,6 +210,7 @@ export default function Today() {
             pathCheckHref={`/today/checkpoint?mode=path-check&path=${selectedPathId}&vibe=${selectedVibeId}`}
             onSelectPath={handleSelectPath}
             onSelectVibe={handleSelectVibe}
+            onSelectLanguage={handleSelectLanguage}
             onSelectLesson={handleSelectLesson}
             onStartLesson={handleStartSelectedLesson}
           />
@@ -182,4 +238,27 @@ function resolveTodayPathId(value: string | null, pathOptions: Array<{ id: strin
 
 function resolveTodayVibeId(value: string | null): ActiveGuidedVibeId | undefined {
   return isActiveGuidedVibeId(value) ? value : undefined
+}
+
+function collectAvailableLanguages(pathOptions: GuidedPathMetadata[]): GuidedTargetLanguage[] {
+  const seen = new Set<GuidedTargetLanguage>()
+  const ordered: GuidedTargetLanguage[] = []
+  for (const path of pathOptions) {
+    if (!seen.has(path.targetLanguage)) {
+      seen.add(path.targetLanguage)
+      ordered.push(path.targetLanguage)
+    }
+  }
+  return ordered
+}
+
+function pickDefaultPathForLanguage(
+  pathOptions: GuidedPathMetadata[],
+  language: GuidedTargetLanguage,
+): string {
+  return (
+    pathOptions.find((path) => path.targetLanguage === language)?.id
+    ?? pathOptions[0]?.id
+    ?? 'english-a1-practical-1'
+  )
 }
