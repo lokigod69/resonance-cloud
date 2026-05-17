@@ -412,6 +412,17 @@ const GUIDED_TODAY_PATH_FRENCH_SIX_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA: GuidedPathMetadata = {
+  id: 'french-a1-practical-7',
+  title: 'French A1 Practical 7',
+  shortTitle: 'A1 Practical 7',
+  subtitle: 'Bahnhof und Weiterfahrt auf Französisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'French',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -14942,6 +14953,551 @@ const brightFrenchP6Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Entspannter Abschluss, Glas Wasser, freundlicher Dank.',
 }
 
+const brightFrenchP7Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Je voudrais un ticket, s'il vous plaît.",
+    baseText: 'Ich hätte gern ein Ticket, bitte.',
+  },
+  meaning: 'Eine höfliche Bitte am Bahnhofsschalter oder Busbahnhofsschalter.',
+  chunks: [
+    { id: 'je-voudrais', targetText: 'Je voudrais', baseText: 'Ich hätte gern' },
+    { id: 'un-ticket', targetText: 'un ticket,', baseText: 'ein Ticket,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'ticket', targetText: 'ticket', baseText: 'Ticket', acceptedAnswers: ['ticket', 'Ticket'] },
+    { id: 'un-ticket', targetText: 'un ticket', baseText: 'ein Ticket', acceptedAnswers: ['un ticket', 'Un ticket'] },
+    { id: 'je-voudrais', targetText: 'je voudrais', baseText: 'ich hätte gern', acceptedAnswers: ['je voudrais', 'Je voudrais'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: 'bitte', acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 's’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', 'sil vous plait'] },
+  ],
+  build: {
+    targetText: "Je voudrais un ticket, s'il vous plaît.",
+    chips: ['Je voudrais', 'un ticket,', "s'il vous plaît.", 'une table', 'à demain'],
+  },
+  typeRecall: {
+    before: 'Je voudrais un ',
+    answer: 'ticket',
+    after: ", s'il vous plaît.",
+    acceptedAnswers: ['ticket', 'Ticket'],
+    fallbackChoices: ['ticket', 'café', 'plan', 'sac'],
+  },
+  speakTarget: {
+    baseCue: 'Ich hätte gern ein Ticket, bitte.',
+    targetPhrase: "Je voudrais un ticket, s'il vous plaît.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['voudrais', 'ticket', 'plaît'],
+    optionalTokens: ['je', 'un', 'sil', 's', 'il', 'vous', 'plait'],
+  },
+  sceneCaption: 'Am Schalter bittest du höflich um ein Ticket.',
+  trophyWord: {
+    word: 'ticket',
+    meaning: 'Ticket',
+    example: "Je voudrais un ticket, s'il vous plaît.",
+    whyThisWord: 'Ticket ist im Bus- und Nahverkehr natürlich. Für Züge steht oft billet, aber das hattest du schon; hier bleibt der Schalterkontext klar.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bahnhofsschalter, eine kurze höfliche Ticketbitte.',
+  },
+  songSeed: {
+    genre: 'bright travel acoustic',
+    mood: 'buying a ticket',
+  },
+  visualNotes: 'Heller Bahnhofsschalter, Ticketfenster, klare Servicebitte.',
+}
+
+const brightFrenchP7Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Le bus est à quel quai, s'il vous plaît ?",
+    baseText: 'An welchem Bussteig ist der Bus, bitte?',
+  },
+  meaning: 'Eine höfliche Standortfrage am Busbahnhof, nicht die Frage nach der richtigen Linie.',
+  chunks: [
+    { id: 'le-bus-est', targetText: 'Le bus est', baseText: 'Der Bus ist' },
+    { id: 'a-quel-quai', targetText: 'à quel quai,', baseText: 'an welchem Bussteig,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'quai', targetText: 'quai', baseText: 'Bahnsteig / Bussteig', acceptedAnswers: ['quai', 'Quai'] },
+    { id: 'a-quel-quai', targetText: 'à quel quai', baseText: 'an welchem Steig', acceptedAnswers: ['à quel quai', 'a quel quai', 'À quel quai', 'A quel quai'] },
+    { id: 'le-bus', targetText: 'le bus', baseText: 'der Bus', acceptedAnswers: ['le bus', 'Le bus'] },
+    { id: 'est', targetText: 'est', baseText: 'ist', acceptedAnswers: ['est', 'Est'] },
+  ],
+  build: {
+    targetText: "Le bus est à quel quai, s'il vous plaît ?",
+    chips: ['Le bus est', 'à quel quai,', "s'il vous plaît ?", 'un café', 'ce train'],
+  },
+  typeRecall: {
+    before: 'Le bus est à quel ',
+    answer: 'quai',
+    after: ", s'il vous plaît ?",
+    acceptedAnswers: ['quai', 'Quai'],
+    fallbackChoices: ['quai', 'coin', 'parc', 'soir'],
+  },
+  speakTarget: {
+    baseCue: 'An welchem Bussteig ist der Bus, bitte?',
+    targetPhrase: "Le bus est à quel quai, s'il vous plaît ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['bus', 'quel', 'quai'],
+    optionalTokens: ['le', 'est', 'à', 'a', 'sil', 's', 'il', 'vous', 'plaît', 'plait'],
+  },
+  sceneCaption: 'Am Busbahnhof fragst du nach dem Steig, nicht nach der Linie.',
+  trophyWord: {
+    word: 'quai',
+    meaning: 'Bahnsteig / Bussteig',
+    example: 'Le bus est à quel quai ?',
+    whyThisWord: 'Quai ist am Bahnhof der Bahnsteig und am Busbahnhof der Steig. Die Frage sucht den Ort, nicht die Route.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Busbahnhof mit nummerierten Steigen.',
+  },
+  songSeed: {
+    genre: 'station acoustic',
+    mood: 'finding the platform',
+  },
+  visualNotes: 'Bussteig-Schilder, Reisetasche, höfliche Nachfrage.',
+}
+
+const brightFrenchP7Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Ça part à quelle heure, s'il vous plaît ?",
+    baseText: 'Um wie viel Uhr fährt es ab, bitte?',
+  },
+  meaning: 'Eine einfache Frage nach der Abfahrtszeit von Bus oder Zug.',
+  chunks: [
+    { id: 'ca-part', targetText: 'Ça part', baseText: 'Es fährt ab' },
+    { id: 'a-quelle-heure', targetText: 'à quelle heure,', baseText: 'um wie viel Uhr,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'part', targetText: 'part', baseText: 'fährt ab', acceptedAnswers: ['part', 'Part'] },
+    { id: 'ca-part', targetText: 'ça part', baseText: 'es fährt ab', acceptedAnswers: ['ça part', 'ca part', 'Ça part', 'Ca part'] },
+    { id: 'quelle-heure', targetText: 'quelle heure', baseText: 'welche Uhrzeit', acceptedAnswers: ['quelle heure', 'Quelle heure'] },
+    { id: 'a-quelle-heure', targetText: 'à quelle heure', baseText: 'um wie viel Uhr', acceptedAnswers: ['à quelle heure', 'a quelle heure', 'À quelle heure', 'A quelle heure'] },
+  ],
+  build: {
+    targetText: "Ça part à quelle heure, s'il vous plaît ?",
+    chips: ['Ça part', 'à quelle heure,', "s'il vous plaît ?", 'je suis arrivé', 'un médicament'],
+  },
+  typeRecall: {
+    before: 'Ça ',
+    answer: 'part',
+    after: " à quelle heure, s'il vous plaît ?",
+    acceptedAnswers: ['part', 'Part'],
+    fallbackChoices: ['part', 'vais', 'peux', 'viens'],
+  },
+  speakTarget: {
+    baseCue: 'Um wie viel Uhr fährt es ab, bitte?',
+    targetPhrase: "Ça part à quelle heure, s'il vous plaît ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['part', 'quelle', 'heure'],
+    optionalTokens: ['ça', 'ca', 'à', 'a', 'sil', 's', 'il', 'vous', 'plaît', 'plait'],
+  },
+  sceneCaption: 'Am Schalter oder Bahnsteig fragst du nach der Abfahrtszeit.',
+  trophyWord: {
+    word: 'part',
+    meaning: 'fährt ab',
+    example: 'Ça part à quelle heure ?',
+    whyThisWord: 'Part kommt von partir. In Reiseplänen fragt ça part à quelle heure? natürlich nach der Abfahrt.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Abfahrtstafel und kurze Frage nach der Uhrzeit.',
+  },
+  songSeed: {
+    genre: 'light station rhythm',
+    mood: 'checking departure time',
+  },
+  visualNotes: 'Abfahrtstafel, Uhr, klare Zeitfrage.',
+}
+
+const brightFrenchP7Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "C'est bien ce train ?",
+    baseText: 'Ist das wirklich dieser Zug?',
+  },
+  meaning: 'Eine kurze Kontrolle vor dem Einsteigen in genau diesen Zug.',
+  chunks: [
+    { id: 'cest-bien', targetText: "C'est bien", baseText: 'Es ist wirklich' },
+    { id: 'ce-train', targetText: 'ce train ?', baseText: 'dieser Zug?' },
+  ],
+  lessonItems: [
+    { id: 'ce', targetText: 'ce', baseText: 'dieser', acceptedAnswers: ['ce', 'Ce'] },
+    { id: 'ce-train', targetText: 'ce train', baseText: 'dieser Zug', acceptedAnswers: ['ce train', 'Ce train'] },
+    { id: 'cest', targetText: "c'est", baseText: 'das ist', acceptedAnswers: ["c'est", "C'est", 'c’est', 'C’est', 'c est', 'C est'] },
+    { id: 'bien', targetText: 'bien', baseText: 'wirklich / doch', acceptedAnswers: ['bien', 'Bien'] },
+  ],
+  build: {
+    targetText: "C'est bien ce train ?",
+    chips: ["C'est bien", 'ce train ?', 'à quel quai', 'un taxi'],
+  },
+  typeRecall: {
+    before: "C'est bien ",
+    answer: 'ce',
+    after: ' train ?',
+    acceptedAnswers: ['ce', 'Ce'],
+    fallbackChoices: ['ce', 'ça', 'où', 'bon'],
+  },
+  speakTarget: {
+    baseCue: 'Ist das wirklich dieser Zug?',
+    targetPhrase: "C'est bien ce train ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['bien', 'ce', 'train'],
+    optionalTokens: ['cest', 'c', 'est'],
+  },
+  sceneCaption: 'Am Bahnsteig prüfst du direkt vor dem Einsteigen den konkreten Zug.',
+  trophyWord: {
+    word: 'ce',
+    meaning: 'dieser',
+    example: "C'est bien ce train ?",
+    whyThisWord: 'Ce steht vor maskulinen Nomen wie train. C’est zeigt die Pflichtelision: nicht ce est.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Zug am Bahnsteig, kurze Kontrolle vor dem Einsteigen.',
+  },
+  songSeed: {
+    genre: 'bright platform acoustic',
+    mood: 'confirming the train',
+  },
+  visualNotes: 'Zugtür, Bahnsteig, konkrete Rückfrage.',
+}
+
+const brightFrenchP7Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "J'ai besoin d'un taxi, s'il vous plaît.",
+    baseText: 'Ich brauche ein Taxi, bitte.',
+  },
+  meaning: 'Eine höfliche Bitte nach einem Taxi am Hotel, Bahnhof oder Straßenrand.',
+  chunks: [
+    { id: 'jai-besoin', targetText: "J'ai besoin", baseText: 'Ich brauche' },
+    { id: 'dun-taxi', targetText: "d'un taxi,", baseText: 'ein Taxi,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'besoin', targetText: 'besoin', baseText: 'Bedarf / brauche', acceptedAnswers: ['besoin', 'Besoin'] },
+    { id: 'jai-besoin', targetText: "j'ai besoin", baseText: 'ich brauche', acceptedAnswers: ["j'ai besoin", "J'ai besoin", 'j’ai besoin', 'J’ai besoin', 'jai besoin', 'Jai besoin'] },
+    { id: 'dun-taxi', targetText: "d'un taxi", baseText: 'ein Taxi', acceptedAnswers: ["d'un taxi", "D'un taxi", 'd’un taxi', 'D’un taxi', 'd un taxi', 'D un taxi'] },
+    { id: 'taxi', targetText: 'taxi', baseText: 'Taxi', acceptedAnswers: ['taxi', 'Taxi'] },
+  ],
+  build: {
+    targetText: "J'ai besoin d'un taxi, s'il vous plaît.",
+    chips: ["J'ai besoin", "d'un taxi,", "s'il vous plaît.", 'le bus', 'à la tête'],
+  },
+  typeRecall: {
+    before: "J'ai ",
+    answer: 'besoin',
+    after: " d'un taxi, s'il vous plaît.",
+    acceptedAnswers: ['besoin', 'Besoin'],
+    fallbackChoices: ['besoin', 'mal', 'retard', 'mieux'],
+  },
+  speakTarget: {
+    baseCue: 'Ich brauche ein Taxi, bitte.',
+    targetPhrase: "J'ai besoin d'un taxi, s'il vous plaît.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['besoin', 'taxi', 'plaît'],
+    optionalTokens: ['jai', 'j', 'ai', 'dun', 'd', 'un', 'sil', 's', 'il', 'vous', 'plait'],
+  },
+  sceneCaption: 'Vor dem Hotel oder Bahnhof bittest du höflich um ein Taxi.',
+  trophyWord: {
+    word: 'besoin',
+    meaning: 'Bedarf / ich brauche',
+    example: "J'ai besoin d'un taxi.",
+    whyThisWord: 'Besoin steht in der A1-Struktur avoir besoin de. Vor un wird de zu d’un elidiert.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hotel- oder Bahnhofsvorplatz, Taxi-Anfrage.',
+  },
+  songSeed: {
+    genre: 'city travel acoustic',
+    mood: 'asking for a taxi',
+  },
+  visualNotes: 'Taxistand, Koffer, höfliche Bitte.',
+}
+
+const brightFrenchP7Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'On va à la gare ?',
+    baseText: 'Gehen/fahren wir zum Bahnhof?',
+  },
+  meaning: 'Eine lockere Rückfrage unter Mitreisenden mit on als gesprochenem wir.',
+  chunks: [
+    { id: 'on-va', targetText: 'On va', baseText: 'Wir gehen / fahren' },
+    { id: 'a-la-gare', targetText: 'à la gare ?', baseText: 'zum Bahnhof?' },
+  ],
+  lessonItems: [
+    { id: 'gare', targetText: 'gare', baseText: 'Bahnhof', acceptedAnswers: ['gare', 'Gare'] },
+    { id: 'a-la-gare', targetText: 'à la gare', baseText: 'zum Bahnhof', acceptedAnswers: ['à la gare', 'a la gare', 'À la gare', 'A la gare'] },
+    { id: 'on-va', targetText: 'on va', baseText: 'wir gehen / fahren', acceptedAnswers: ['on va', 'On va'] },
+    { id: 'va', targetText: 'va', baseText: 'geht / fährt', acceptedAnswers: ['va', 'Va'] },
+  ],
+  build: {
+    targetText: 'On va à la gare ?',
+    chips: ['On va', 'à la gare ?', 'je voudrais', 'le médecin'],
+  },
+  typeRecall: {
+    before: 'On va à la ',
+    answer: 'gare',
+    after: ' ?',
+    acceptedAnswers: ['gare', 'Gare'],
+    fallbackChoices: ['gare', 'pharmacie', 'table', 'carte'],
+  },
+  speakTarget: {
+    baseCue: 'Gehen/fahren wir zum Bahnhof?',
+    targetPhrase: 'On va à la gare ?',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['on', 'va', 'gare'],
+    optionalTokens: ['à', 'a', 'la'],
+  },
+  sceneCaption: 'Mit einer Begleitperson klärst du locker, ob ihr zum Bahnhof geht oder fahrt.',
+  trophyWord: {
+    word: 'gare',
+    meaning: 'Bahnhof',
+    example: 'On va à la gare ?',
+    whyThisWord: 'Gare ist der Bahnhof. In gesprochener Alltagssprache bedeutet on hier wir; das ist keine formelle vous-Situation.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Zwei Reisende mit Gepäck auf dem Weg zum Bahnhof.',
+  },
+  songSeed: {
+    genre: 'warm travel acoustic',
+    mood: 'going together',
+  },
+  visualNotes: 'Mitreisende, Gepäck, lockere gemeinsame Entscheidung.',
+}
+
+const brightFrenchP7Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Arrêtez-vous ici, s’il vous plaît.',
+    baseText: 'Halten Sie bitte hier an.',
+  },
+  meaning: 'Eine höfliche Bitte an Fahrer oder Fahrerin, an der aktuellen Stelle zu halten.',
+  chunks: [
+    { id: 'arretez-vous', targetText: 'Arrêtez-vous', baseText: 'Halten Sie an' },
+    { id: 'ici', targetText: 'ici,', baseText: 'hier,' },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'arretez', targetText: 'arrêtez', baseText: 'halten Sie an', acceptedAnswers: ['arrêtez', 'arretez', 'Arrêtez', 'Arretez'] },
+    { id: 'arretez-vous', targetText: 'arrêtez-vous', baseText: 'halten Sie an', acceptedAnswers: ['arrêtez-vous', 'arretez-vous', 'Arrêtez-vous', 'Arretez-vous', 'arrêtez vous', 'arretez vous'] },
+    { id: 'ici', targetText: 'ici', baseText: 'hier', acceptedAnswers: ['ici', 'Ici'] },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: 'bitte', acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+  ],
+  build: {
+    targetText: 'Arrêtez-vous ici, s’il vous plaît.',
+    chips: ['Arrêtez-vous', 'ici,', 's’il vous plaît.', 'on va', 'un ticket'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Arrêtez-vous',
+    after: ' ici, s’il vous plaît.',
+    acceptedAnswers: ['Arrêtez-vous', 'Arretez-vous', 'arrêtez-vous', 'arretez-vous', 'Arrêtez vous', 'Arretez vous'],
+    fallbackChoices: ['Arrêtez-vous', 'Allez-vous', 'Écrivez-vous', 'Appelez-vous'],
+  },
+  speakTarget: {
+    baseCue: 'Halten Sie bitte hier an.',
+    targetPhrase: 'Arrêtez-vous ici, s’il vous plaît.',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['arrêtez', 'ici', 'plaît'],
+    optionalTokens: ['arretez', 'vous', 'sil', 's', 'il', 'plait'],
+  },
+  sceneCaption: 'Im Taxi oder Bus bittest du mit vous darum, hier anzuhalten.',
+  trophyWord: {
+    word: 'arrêtez',
+    meaning: 'halten Sie an',
+    example: 'Arrêtez-vous ici, s’il vous plaît.',
+    whyThisWord: 'Arrêtez-vous ist die höfliche vous-Form. Bei Fahrerinnen und Fahrern ist vous die richtige A1-Registerwahl.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Innenraum eines Taxis, höfliche Bitte zum Anhalten.',
+  },
+  songSeed: {
+    genre: 'soft city acoustic',
+    mood: 'asking to stop',
+  },
+  visualNotes: 'Taxifenster, Haltepunkt, klare höfliche Bitte.',
+}
+
+const brightFrenchP7Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Je vais à la gare.',
+    baseText: 'Ich gehe/fahre zum Bahnhof.',
+  },
+  meaning: 'Eine einfache Aussage über dein aktuelles Ziel.',
+  chunks: [
+    { id: 'je-vais', targetText: 'Je vais', baseText: 'Ich gehe / fahre' },
+    { id: 'a-la-gare', targetText: 'à la gare.', baseText: 'zum Bahnhof.' },
+  ],
+  lessonItems: [
+    { id: 'vais', targetText: 'vais', baseText: 'gehe / fahre', acceptedAnswers: ['vais', 'Vais'] },
+    { id: 'je-vais', targetText: 'je vais', baseText: 'ich gehe / fahre', acceptedAnswers: ['je vais', 'Je vais'] },
+    { id: 'a-la-gare', targetText: 'à la gare', baseText: 'zum Bahnhof', acceptedAnswers: ['à la gare', 'a la gare', 'À la gare', 'A la gare'] },
+    { id: 'gare', targetText: 'gare', baseText: 'Bahnhof', acceptedAnswers: ['gare', 'Gare'] },
+  ],
+  build: {
+    targetText: 'Je vais à la gare.',
+    chips: ['Je vais', 'à la gare.', 'vous pouvez', 'un ticket'],
+  },
+  typeRecall: {
+    before: 'Je ',
+    answer: 'vais',
+    after: ' à la gare.',
+    acceptedAnswers: ['vais', 'Vais'],
+    fallbackChoices: ['vais', 'viens', 'peux', 'sens'],
+  },
+  speakTarget: {
+    baseCue: 'Ich gehe/fahre zum Bahnhof.',
+    targetPhrase: 'Je vais à la gare.',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['vais', 'gare'],
+    optionalTokens: ['je', 'à', 'a', 'la'],
+  },
+  sceneCaption: 'Du sagst knapp, wohin du gerade unterwegs bist.',
+  trophyWord: {
+    word: 'vais',
+    meaning: 'gehe / fahre',
+    example: 'Je vais à la gare.',
+    whyThisWord: 'Vais ist die je-Form von aller. Im Französischen deckt aller hier gehen und fahren zum Ziel ab.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Reisende Person auf dem Weg zum Bahnhof.',
+  },
+  songSeed: {
+    genre: 'moving acoustic',
+    mood: 'heading to the station',
+  },
+  visualNotes: 'Straße Richtung Bahnhof, kurze Zielaussage.',
+}
+
+const brightFrenchP7Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Ça prend combien de temps ?',
+    baseText: 'Wie lange dauert das?',
+  },
+  meaning: 'Eine einfache Frage nach der Dauer einer Fahrt.',
+  chunks: [
+    { id: 'ca-prend', targetText: 'Ça prend', baseText: 'Das nimmt / dauert' },
+    { id: 'combien-de-temps', targetText: 'combien de temps ?', baseText: 'wie viel Zeit?' },
+  ],
+  lessonItems: [
+    { id: 'temps', targetText: 'temps', baseText: 'Zeit', acceptedAnswers: ['temps', 'Temps'] },
+    { id: 'combien-de-temps', targetText: 'combien de temps', baseText: 'wie lange', acceptedAnswers: ['combien de temps', 'Combien de temps'] },
+    { id: 'ca-prend', targetText: 'ça prend', baseText: 'es dauert', acceptedAnswers: ['ça prend', 'ca prend', 'Ça prend', 'Ca prend'] },
+    { id: 'prend', targetText: 'prend', baseText: 'nimmt / dauert', acceptedAnswers: ['prend', 'Prend'] },
+  ],
+  build: {
+    targetText: 'Ça prend combien de temps ?',
+    chips: ['Ça prend', 'combien de temps ?', 'à quel quai', 'je suis allergique'],
+  },
+  typeRecall: {
+    before: 'Ça prend combien de ',
+    answer: 'temps',
+    after: ' ?',
+    acceptedAnswers: ['temps', 'Temps'],
+    fallbackChoices: ['temps', 'ticket', 'quai', 'soir'],
+  },
+  speakTarget: {
+    baseCue: 'Wie lange dauert das?',
+    targetPhrase: 'Ça prend combien de temps ?',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['prend', 'combien', 'temps'],
+    optionalTokens: ['ça', 'ca', 'de'],
+  },
+  sceneCaption: 'Vor oder während der Fahrt fragst du nach der ungefähren Dauer.',
+  trophyWord: {
+    word: 'temps',
+    meaning: 'Zeit',
+    example: 'Ça prend combien de temps ?',
+    whyThisWord: 'Temps bedeutet Zeit. In combien de temps? bildet es die natürliche A1-Frage nach der Dauer.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Taxi, Bus oder Zug; kurze Frage nach der Fahrtzeit.',
+  },
+  songSeed: {
+    genre: 'steady travel acoustic',
+    mood: 'asking duration',
+  },
+  visualNotes: 'Uhr, Verkehr, ruhige Dauerfrage.',
+}
+
+const brightFrenchP7Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Je suis arrivé, merci.',
+    baseText: 'Ich bin angekommen, danke.',
+  },
+  meaning: 'Ein höflicher Abschluss beim Aussteigen oder nach der Ankunft.',
+  chunks: [
+    { id: 'je-suis-arrive', targetText: 'Je suis arrivé,', baseText: 'Ich bin angekommen,' },
+    { id: 'merci', targetText: 'merci.', baseText: 'danke.' },
+  ],
+  lessonItems: [
+    { id: 'arrive', targetText: 'arrivé', baseText: 'angekommen', acceptedAnswers: ['arrivé', 'arrive', 'Arrivé', 'Arrive', 'arrivée', 'Arrivée'] },
+    { id: 'je-suis-arrive', targetText: 'je suis arrivé', baseText: 'ich bin angekommen', acceptedAnswers: ['je suis arrivé', 'Je suis arrivé', 'je suis arrive', 'Je suis arrive', 'je suis arrivée', 'Je suis arrivée'] },
+    { id: 'je-suis', targetText: 'je suis', baseText: 'ich bin', acceptedAnswers: ['je suis', 'Je suis'] },
+    { id: 'merci', targetText: 'merci', baseText: 'danke', acceptedAnswers: ['merci', 'Merci'] },
+  ],
+  build: {
+    targetText: 'Je suis arrivé, merci.',
+    chips: ['Je suis arrivé,', 'merci.', 'ça part', 'd’un taxi'],
+  },
+  typeRecall: {
+    before: 'Je suis ',
+    answer: 'arrivé',
+    after: ', merci.',
+    acceptedAnswers: ['arrivé', 'arrive', 'Arrivé', 'Arrive', 'arrivée', 'Arrivée'],
+    fallbackChoices: ['arrivé', 'allergique', 'ouvert', 'désolé'],
+  },
+  speakTarget: {
+    baseCue: 'Ich bin angekommen, danke.',
+    targetPhrase: 'Je suis arrivé, merci.',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['suis', 'arrivé', 'merci'],
+    optionalTokens: ['je', 'arrive', 'arrivée'],
+  },
+  sceneCaption: 'Beim Aussteigen oder am Ziel sagst du, dass du angekommen bist, und bedankst dich.',
+  trophyWord: {
+    word: 'arrivé',
+    meaning: 'angekommen',
+    example: 'Je suis arrivé, merci.',
+    whyThisWord: 'Arrivé ist die maskuline Schreibform. Eine Sprecherin schreibt arrivée; beide klingen gleich, deshalb akzeptiert die Übung beide Formen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Ankunft am Ziel, kurzer Dank beim Aussteigen.',
+  },
+  songSeed: {
+    genre: 'arrival acoustic',
+    mood: 'arriving and thanking',
+  },
+  visualNotes: 'Ankunft, offenes Taxi oder Zugtür, ruhiger Dank.',
+}
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -18602,6 +19158,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
       bright: brightFrenchP6Lesson010,
     },
   },
+  {
+    id: 'french-a1-practical-7-lesson-1-un-ticket',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-1-un-ticket',
+      sequence: 1,
+      title: 'Ein Ticket',
+    },
+    title: 'Ein Ticket',
+    situation: {
+      en: 'At a station counter, ask for one ticket politely.',
+      de: 'Am Bahnhofsschalter bittest du höflich um ein Ticket.',
+    },
+    pedagogicalGoal: 'Je voudrais als höfliche Schalterformel für ein Ticket produktiv verwenden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Welcher Steig?',
+      situation: 'Du fragst, an welchem Steig der Bus ist.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson001,
+    },
+  },
+  {
+    id: 'french-a1-practical-7-lesson-2-a-quel-quai',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-2-a-quel-quai',
+      sequence: 2,
+      title: 'Welcher Steig?',
+    },
+    title: 'Welcher Steig?',
+    situation: {
+      en: 'At a bus station, ask where the bus is located without asking which route to take.',
+      de: 'Am Busbahnhof fragst du nach dem Standort des Busses, nicht nach der Linie.',
+    },
+    pedagogicalGoal: 'Quai als Bahnhofswort mit à quel in einer höflichen Standortfrage abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Abfahrtszeit',
+      situation: 'Du fragst, wann Bus oder Zug abfährt.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson002,
+    },
+  },
+  {
+    id: 'french-a1-practical-7-lesson-3-ca-part',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-3-ca-part',
+      sequence: 3,
+      title: 'Abfahrtszeit',
+    },
+    title: 'Abfahrtszeit',
+    situation: {
+      en: 'At a station counter or platform, ask what time the bus or train departs.',
+      de: 'Am Schalter oder Bahnsteig fragst du, um wie viel Uhr Bus oder Zug abfährt.',
+    },
+    pedagogicalGoal: 'Ça part à quelle heure als natürliche A1-Frage nach der Abfahrt verwenden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Dieser Zug?',
+      situation: 'Du prüfst vor dem Einsteigen den konkreten Zug.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson003,
+    },
+  },
+  {
+    id: 'french-a1-practical-7-lesson-4-ce-train',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-4-ce-train',
+      sequence: 4,
+      title: 'Dieser Zug?',
+    },
+    title: 'Dieser Zug?',
+    situation: {
+      en: 'On the platform, confirm that this specific train is the one you should board.',
+      de: 'Am Bahnsteig prüfst du, ob genau dieser Zug der richtige ist.',
+    },
+    pedagogicalGoal: 'Ce vor maskulinem Nomen und c’est-Elision in einer Zugkontrolle abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ein Taxi brauchen',
+      situation: 'Du bittest höflich um ein Taxi.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson004,
+    },
+  },
+  {
+    id: 'french-a1-practical-7-lesson-5-besoin-dun-taxi',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-5-besoin-dun-taxi',
+      sequence: 5,
+      title: 'Ein Taxi brauchen',
+    },
+    title: 'Ein Taxi brauchen',
+    situation: {
+      en: 'Outside a station or hotel, ask politely for a taxi.',
+      de: 'Vor Bahnhof oder Hotel bittest du höflich um ein Taxi.',
+    },
+    pedagogicalGoal: 'Avoir besoin de mit d’un in einer Taxi-Bitte korrekt verwenden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Zum Bahnhof?',
+      situation: 'Du klärst locker, ob ihr zum Bahnhof geht oder fahrt.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson005,
+    },
+  },
+  {
+    id: 'french-a1-practical-7-lesson-6-on-va-a-la-gare',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-6-on-va-a-la-gare',
+      sequence: 6,
+      title: 'Zum Bahnhof?',
+    },
+    title: 'Zum Bahnhof?',
+    situation: {
+      en: 'With another traveler, confirm that you are going to the station together.',
+      de: 'Mit einer Begleitperson klärst du, ob ihr zusammen zum Bahnhof geht oder fahrt.',
+    },
+    pedagogicalGoal: 'On als gesprochenes wir mit à la gare in einer lockeren Rückfrage verwenden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Hier anhalten',
+      situation: 'Du bittest Fahrer oder Fahrerin, hier anzuhalten.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson006,
+    },
+  },
+  {
+    id: 'french-a1-practical-7-lesson-7-arretez-vous-ici',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-7-arretez-vous-ici',
+      sequence: 7,
+      title: 'Hier anhalten',
+    },
+    title: 'Hier anhalten',
+    situation: {
+      en: 'Inside a taxi or bus, ask the driver politely to stop here.',
+      de: 'Im Taxi oder Bus bittest du den Fahrer oder die Fahrerin höflich, hier anzuhalten.',
+    },
+    pedagogicalGoal: 'Die formelle vous-Imperativform arrêtez-vous in einer Fahrtsituation abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich fahre zum Bahnhof',
+      situation: 'Du sagst, wohin du unterwegs bist.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson007,
+    },
+  },
+  {
+    id: 'french-a1-practical-7-lesson-8-je-vais-a-la-gare',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-8-je-vais-a-la-gare',
+      sequence: 8,
+      title: 'Ich fahre zum Bahnhof',
+    },
+    title: 'Ich fahre zum Bahnhof',
+    situation: {
+      en: 'In casual travel talk or to a driver, state that you are heading to the station.',
+      de: 'Im Reisegespräch oder gegenüber einem Fahrer sagst du, dass du zum Bahnhof unterwegs bist.',
+    },
+    pedagogicalGoal: 'Je vais à la gare als einfache Zielaussage produktiv machen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wie lange?',
+      situation: 'Du fragst nach der Dauer der Fahrt.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson008,
+    },
+  },
+  {
+    id: 'french-a1-practical-7-lesson-9-combien-de-temps',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-9-combien-de-temps',
+      sequence: 9,
+      title: 'Wie lange?',
+    },
+    title: 'Wie lange?',
+    situation: {
+      en: 'Before or during a ride, ask how long it takes.',
+      de: 'Vor oder während der Fahrt fragst du, wie lange es dauert.',
+    },
+    pedagogicalGoal: 'Combien de temps als A1-Dauerfrage in einer Fahrt verwenden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Angekommen',
+      situation: 'Du meldest die Ankunft und bedankst dich.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson009,
+    },
+  },
+  {
+    id: 'french-a1-practical-7-lesson-10-je-suis-arrive',
+    pathId: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-7-lesson-10-je-suis-arrive',
+      sequence: 10,
+      title: 'Angekommen',
+    },
+    title: 'Angekommen',
+    situation: {
+      en: 'Arriving or stepping out of a ride, say that you have arrived and thank the other person.',
+      de: 'Beim Ankommen oder Aussteigen sagst du, dass du angekommen bist, und bedankst dich.',
+    },
+    pedagogicalGoal: 'Je suis arrivé mit geschlechtsabhängiger Schreibvariante und Dank abschließen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast French A1 Practical 7 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP7Lesson010,
+    },
+  },
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -18634,6 +19520,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
     GUIDED_TODAY_PATH_FRENCH_FIVE_METADATA,
     GUIDED_TODAY_PATH_FRENCH_SIX_METADATA,
+    GUIDED_TODAY_PATH_FRENCH_SEVEN_METADATA,
   ]
 }
 
