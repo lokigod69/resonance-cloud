@@ -346,6 +346,17 @@ const GUIDED_TODAY_PATH_FRENCH_ONE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_FRENCH_TWO_METADATA: GuidedPathMetadata = {
+  id: 'french-a1-practical-2',
+  title: 'French A1 Practical 2',
+  shortTitle: 'A1 Practical 2',
+  subtitle: 'Kleine Bitten am Tresen auf Französisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'French',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -11615,6 +11626,554 @@ const brightFrenchLesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Sanftes Honig-Licht beim Ausgang, kurzer Nachklang, ruhige letzte Geste.',
 }
 
+const brightFrenchP2Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Excusez-moi, je ne comprends pas. Vous pouvez m'aider ?",
+    baseText: 'Entschuldigen Sie, ich verstehe nicht. Können Sie mir helfen?',
+  },
+  meaning: 'Eine höfliche Service-Pause: du sagst klar, dass du nicht verstehst, und bittest mit vous um Hilfe.',
+  chunks: [
+    { id: 'excusez-moi', targetText: 'Excusez-moi,', baseText: 'Entschuldigen Sie,' },
+    { id: 'je-ne-comprends-pas', targetText: 'je ne comprends pas.', baseText: 'ich verstehe nicht.' },
+    { id: 'vous-pouvez-maider', targetText: "Vous pouvez m'aider ?", baseText: 'Können Sie mir helfen?' },
+  ],
+  lessonItems: [
+    { id: 'excusez-moi', targetText: 'excusez-moi', baseText: 'entschuldigen Sie', acceptedAnswers: ['excusez-moi', 'Excusez-moi', 'excusez moi', 'Excusez moi'] },
+    { id: 'ne-comprends-pas', targetText: 'je ne comprends pas', baseText: 'ich verstehe nicht', acceptedAnswers: ['je ne comprends pas', 'Je ne comprends pas'] },
+    { id: 'pouvez', targetText: 'vous pouvez', baseText: 'Sie können', acceptedAnswers: ['vous pouvez', 'Vous pouvez'] },
+    { id: 'aider', targetText: "m'aider", baseText: 'mir helfen', acceptedAnswers: ["m'aider", "M'aider", 'm aider', 'M aider'] },
+    { id: 'comprendre', targetText: 'comprendre', baseText: 'verstehen', acceptedAnswers: ['comprendre', 'Comprendre'] },
+  ],
+  build: {
+    targetText: "Excusez-moi, je ne comprends pas. Vous pouvez m'aider ?",
+    chips: ['Excusez-moi,', 'je ne comprends pas.', "Vous pouvez m'aider ?", 'répéter', 'merci'],
+  },
+  typeRecall: {
+    before: 'Excusez-moi, je ne ',
+    answer: 'comprends',
+    after: " pas. Vous pouvez m'aider ?",
+    acceptedAnswers: ['comprends', 'Comprends'],
+    fallbackChoices: ['comprends', 'comprenez', 'parle', 'écoute'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigen Sie, ich verstehe nicht. Können Sie mir helfen?',
+    targetPhrase: "Excusez-moi, je ne comprends pas. Vous pouvez m'aider ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['excusez', 'comprends', 'pas', 'aider'],
+    optionalTokens: ['moi', 'je', 'ne', 'vous', 'pouvez'],
+  },
+  sceneCaption: 'Am Schalter stoppst du freundlich den Ablauf und machst die Bitte um Hilfe klar.',
+  trophyWord: {
+    word: 'comprendre',
+    meaning: 'verstehen',
+    example: 'Je ne comprends pas.',
+    whyThisWord: 'Comprendre ist das A1-Verb für Verstehen. In der Service-Szene bleibt die vollständige Negation "je ne comprends pas" die saubere Lernform; "vous" ist hier die höfliche Form für eine fremde Person.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Heller Schalter, kurze ruhige Unterbrechung, offene Hilfe-Geste.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic chanson-light',
+    mood: 'clear and asking',
+  },
+  visualNotes: 'Warmer Tresen, kleiner Pausenmoment, Fokus auf freundlicher Klarheit.',
+}
+
+const brightFrenchP2Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Vous pouvez l'écrire, s'il vous plaît ?",
+    baseText: 'Können Sie es bitte aufschreiben?',
+  },
+  meaning: 'Eine präzise Bitte am Schalter, damit Name, Adresse oder Nummer schriftlich sicher werden.',
+  chunks: [
+    { id: 'vous-pouvez', targetText: 'Vous pouvez', baseText: 'Können Sie' },
+    { id: 'lecrire', targetText: "l'écrire,", baseText: 'es aufschreiben,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'vous-pouvez', targetText: 'vous pouvez', baseText: 'Sie können', acceptedAnswers: ['vous pouvez', 'Vous pouvez'] },
+    { id: 'lecrire', targetText: "l'écrire", baseText: 'es schreiben / aufschreiben', acceptedAnswers: ["l'écrire", "L'écrire", 'l ecrire', 'L ecrire', 'lecrire'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: 'bitte', acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+    { id: 'ici', targetText: 'ici', baseText: 'hier', acceptedAnswers: ['ici', 'Ici'] },
+    { id: 'ecrire', targetText: 'écrire', baseText: 'schreiben', acceptedAnswers: ['écrire', 'ecrire', 'Écrire', 'Ecrire'] },
+  ],
+  build: {
+    targetText: "Vous pouvez l'écrire, s'il vous plaît ?",
+    chips: ['Vous pouvez', "l'écrire,", "s'il vous plaît ?", 'ici', 'merci'],
+  },
+  typeRecall: {
+    before: 'Vous pouvez ',
+    answer: "l'écrire",
+    after: ", s'il vous plaît ?",
+    acceptedAnswers: ["l'écrire", "L'écrire", 'l ecrire', 'L ecrire', 'lecrire'],
+    fallbackChoices: ["l'écrire", 'le dire', 'répéter', 'montrer'],
+  },
+  speakTarget: {
+    baseCue: 'Können Sie es bitte aufschreiben?',
+    targetPhrase: "Vous pouvez l'écrire, s'il vous plaît ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['pouvez', 'écrire', 'plaît'],
+    optionalTokens: ['vous', 'sil', 's', 'il', 'plait'],
+  },
+  sceneCaption: 'Du hältst Notiz oder Telefon hin und bittest freundlich um die schriftliche Form.',
+  trophyWord: {
+    word: 'écrire',
+    meaning: 'schreiben',
+    example: "Vous pouvez l'écrire ?",
+    whyThisWord: "Écrire ist der A1-Anker für Schriftlichkeit. In \"l'écrire\" zeigt die Form die verpflichtende Elision vor Vokal; \"le écrire\" wäre falsch.",
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Notizfeld auf dem Tresen, Stift daneben, ruhige Bitte um Schrift.',
+  },
+  songSeed: {
+    genre: 'soft acoustic chanson-light',
+    mood: 'precise and helpful',
+  },
+  visualNotes: 'Klares Papier, heller Rand, Akzent auf dem geschriebenen Detail.',
+}
+
+const brightFrenchP2Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Vous pouvez me montrer où c'est sur le plan ?",
+    baseText: 'Können Sie mir auf dem Stadtplan zeigen, wo das ist?',
+  },
+  meaning: 'Eine konkrete Bitte, einen Ort mit einer Geste auf Plan, Karte oder Handy zu zeigen.',
+  chunks: [
+    { id: 'vous-pouvez-me-montrer', targetText: 'Vous pouvez me montrer', baseText: 'Können Sie mir zeigen' },
+    { id: 'ou-cest', targetText: "où c'est", baseText: 'wo das ist' },
+    { id: 'sur-le-plan', targetText: 'sur le plan ?', baseText: 'auf dem Stadtplan?' },
+  ],
+  lessonItems: [
+    { id: 'montrer', targetText: 'montrer', baseText: 'zeigen', acceptedAnswers: ['montrer', 'Montrer'] },
+    { id: 'me-montrer', targetText: 'me montrer', baseText: 'mir zeigen', acceptedAnswers: ['me montrer', 'Me montrer'] },
+    { id: 'plan', targetText: 'plan', baseText: 'Plan / Stadtplan', acceptedAnswers: ['plan', 'Plan'] },
+    { id: 'sur-le-plan', targetText: 'sur le plan', baseText: 'auf dem Stadtplan', acceptedAnswers: ['sur le plan', 'Sur le plan'] },
+  ],
+  build: {
+    targetText: "Vous pouvez me montrer où c'est sur le plan ?",
+    chips: ['Vous pouvez me montrer', "où c'est", 'sur le plan ?', 'ici', 'là'],
+  },
+  typeRecall: {
+    before: "Vous pouvez me montrer où c'est sur le ",
+    answer: 'plan',
+    after: ' ?',
+    acceptedAnswers: ['plan', 'Plan'],
+    fallbackChoices: ['plan', 'nom', 'ticket', 'sac'],
+  },
+  speakTarget: {
+    baseCue: 'Können Sie mir auf dem Stadtplan zeigen, wo das ist?',
+    targetPhrase: "Vous pouvez me montrer où c'est sur le plan ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['pouvez', 'montrer', 'où', 'plan'],
+    optionalTokens: ['vous', 'me', 'cest', 'sur', 'le'],
+  },
+  sceneCaption: 'Du hältst den Stadtplan offen und bittest die Person, den Ort sichtbar zu markieren.',
+  trophyWord: {
+    word: 'plan',
+    meaning: 'Plan / Stadtplan',
+    example: 'Le plan est ici.',
+    whyThisWord: 'Plan ist im Französischen der praktische Stadtplan oder Lageplan. Nicht mit einem abstrakten deutschen "Plan" verwechseln: hier geht es um die sichtbare Karte vor dir.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Stadtplan auf dem Tisch, Finger zeigt auf eine Ecke, helle Orientierungsszene.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'navigating together',
+  },
+  visualNotes: 'Planlinien im Fokus, warmer Fingerzeig, klare Ortsmarkierung.',
+}
+
+const brightFrenchP2Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Ça ou ça, s'il vous plaît ?",
+    baseText: 'Das hier oder das da, bitte?',
+  },
+  meaning: 'Eine sehr kurze Wahlfrage zwischen zwei sichtbaren Optionen; die Zeigegeste trägt den Unterschied.',
+  chunks: [
+    { id: 'ca', targetText: 'Ça', baseText: 'das hier' },
+    { id: 'ou-ca', targetText: 'ou ça,', baseText: 'oder das da,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'ca', targetText: 'ça', baseText: 'das / das hier', acceptedAnswers: ['ça', 'ca', 'Ça', 'Ca'] },
+    { id: 'ou', targetText: 'ou', baseText: 'oder', acceptedAnswers: ['ou', 'Ou'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: 'bitte', acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+    { id: 'celui-la', targetText: 'celui-là', baseText: 'der da', acceptedAnswers: ['celui-là', 'celui-la', 'Celui-là', 'Celui-la'] },
+  ],
+  build: {
+    targetText: "Ça ou ça, s'il vous plaît ?",
+    chips: ['Ça', 'ou ça,', "s'il vous plaît ?", 'celui-là', 'merci'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Ça',
+    after: " ou ça, s'il vous plaît ?",
+    acceptedAnswers: ['ça', 'ca', 'Ça', 'Ca'],
+    fallbackChoices: ['Ça', 'Où', 'Quand', 'Qui'],
+  },
+  speakTarget: {
+    baseCue: 'Das hier oder das da, bitte?',
+    targetPhrase: "Ça ou ça, s'il vous plaît ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['ça'],
+    optionalTokens: ['ou', 'sil', 'vous', 'plaît', 'plait'],
+  },
+  sceneCaption: 'Vor zwei Stücken oder zwei Varianten zeigst du nacheinander und stellst die knappe Wahlfrage.',
+  trophyWord: {
+    word: 'ça',
+    meaning: 'das',
+    example: 'Je voudrais ça, s’il vous plaît.',
+    whyThisWord: 'Ça ist das A1-Zeigewort für etwas Sichtbares. Es bleibt im Servicekontext natürlich, wenn die Geste klar ist; "s’il vous plaît" hält die Bitte höflich.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Zwei sichtbare Optionen auf der Theke, kurze Zeigegeste links und rechts.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic chanson-light',
+    mood: 'light choice',
+  },
+  visualNotes: 'Zwei helle Auswahlpunkte, kurze Bewegung, klarer Fokus auf ça.',
+}
+
+const brightFrenchP2Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Vous avez ça ?',
+    baseText: 'Haben Sie das?',
+  },
+  meaning: 'Eine knappe, höfliche Verfügbarkeitsfrage im Laden, wenn du auf etwas Sichtbares zeigst.',
+  chunks: [
+    { id: 'vous-avez', targetText: 'Vous avez', baseText: 'Haben Sie' },
+    { id: 'ca', targetText: 'ça ?', baseText: 'das?' },
+  ],
+  lessonItems: [
+    { id: 'vous-avez', targetText: 'vous avez', baseText: 'Sie haben / haben Sie', acceptedAnswers: ['vous avez', 'Vous avez'] },
+    { id: 'avez', targetText: 'avez', baseText: 'haben (Sie)', acceptedAnswers: ['avez', 'Avez'] },
+    { id: 'ca', targetText: 'ça', baseText: 'das', acceptedAnswers: ['ça', 'ca', 'Ça', 'Ca'] },
+    { id: 'en-bleu', targetText: 'en bleu', baseText: 'in Blau', acceptedAnswers: ['en bleu', 'En bleu'] },
+  ],
+  build: {
+    targetText: 'Vous avez ça ?',
+    chips: ['Vous avez', 'ça ?', 'en bleu', 'ici'],
+  },
+  typeRecall: {
+    before: 'Vous ',
+    answer: 'avez',
+    after: ' ça ?',
+    acceptedAnswers: ['avez', 'Avez'],
+    fallbackChoices: ['avez', 'êtes', 'allez', 'faites'],
+  },
+  speakTarget: {
+    baseCue: 'Haben Sie das?',
+    targetPhrase: 'Vous avez ça ?',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['vous', 'avez', 'ça'],
+    optionalTokens: ['ca', 'ici', 'bleu'],
+  },
+  sceneCaption: 'Im Laden zeigst du auf ein Modell oder Foto und fragst schlicht nach der Verfügbarkeit.',
+  trophyWord: {
+    word: 'avez',
+    meaning: 'haben Sie',
+    example: 'Vous avez ça ?',
+    whyThisWord: 'Avez ist die vous-Form von avoir. In Läden ist "vous avez... ?" eine natürliche A1-Frage an Personal; "vous" ist hier höfliches Singular gegenüber einer fremden Person.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kleines Geschäft, Hand zeigt auf ein Bild oder Modell, ruhige Nachfrage.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'practical shop check',
+  },
+  visualNotes: 'Schaufensterlicht, Objekt im Fokus, kurze klare Frage.',
+}
+
+const brightFrenchP2Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Je peux payer par carte ?',
+    baseText: 'Kann ich mit Karte zahlen?',
+  },
+  meaning: 'Die Standardfrage an der Kasse, ob Kartenzahlung möglich ist.',
+  chunks: [
+    { id: 'je-peux-payer', targetText: 'Je peux payer', baseText: 'Kann ich zahlen' },
+    { id: 'par-carte', targetText: 'par carte ?', baseText: 'mit Karte?' },
+  ],
+  lessonItems: [
+    { id: 'je-peux', targetText: 'je peux', baseText: 'ich kann', acceptedAnswers: ['je peux', 'Je peux'] },
+    { id: 'payer', targetText: 'payer', baseText: 'zahlen', acceptedAnswers: ['payer', 'Payer'] },
+    { id: 'carte', targetText: 'carte', baseText: 'Karte', acceptedAnswers: ['carte', 'Carte'] },
+    { id: 'par-carte', targetText: 'par carte', baseText: 'mit Karte', acceptedAnswers: ['par carte', 'Par carte'] },
+  ],
+  build: {
+    targetText: 'Je peux payer par carte ?',
+    chips: ['Je peux payer', 'par carte ?', 'en espèces', 'merci'],
+  },
+  typeRecall: {
+    before: 'Je peux payer par ',
+    answer: 'carte',
+    after: ' ?',
+    acceptedAnswers: ['carte', 'Carte'],
+    fallbackChoices: ['carte', 'ticket', 'sac', 'plan'],
+  },
+  speakTarget: {
+    baseCue: 'Kann ich mit Karte zahlen?',
+    targetPhrase: 'Je peux payer par carte ?',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['peux', 'payer', 'carte'],
+    optionalTokens: ['je', 'par', 'espèces', 'especes'],
+  },
+  sceneCaption: 'An der Kasse hältst du die Karte bereit und fragst kurz nach der Zahlungsart.',
+  trophyWord: {
+    word: 'peux',
+    meaning: 'ich kann',
+    example: 'Je peux payer par carte ?',
+    whyThisWord: 'Peux ist die je-Form von pouvoir und auf A1 der einfache Modal-Anker für "Kann ich...?". Die Karte bleibt im Satz, aber der Lernanker ist das robuste Verb.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kartenterminal an der Kasse, Karte in der Hand, freundliche Bezahlfrage.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'easy checkout',
+  },
+  visualNotes: 'Terminal-Detail, heller Kassenrand, kurzer Bestätigungsbeat.',
+}
+
+const brightFrenchP2Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Un ticket et un sac, s'il vous plaît.",
+    baseText: 'Einen Beleg und eine Tüte, bitte.',
+  },
+  meaning: 'Zwei kleine Kassenbitten in einer höflichen Zeile: Beleg mitnehmen und eine Tüte dazu.',
+  chunks: [
+    { id: 'un-ticket', targetText: 'Un ticket', baseText: 'Einen Beleg' },
+    { id: 'et-un-sac', targetText: 'et un sac,', baseText: 'und eine Tüte,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'ticket', targetText: 'ticket', baseText: 'Kassenbon / Beleg', acceptedAnswers: ['ticket', 'Ticket'] },
+    { id: 'sac', targetText: 'sac', baseText: 'Tüte / Tasche', acceptedAnswers: ['sac', 'Sac'] },
+    { id: 'un-sac', targetText: 'un sac', baseText: 'eine Tüte', acceptedAnswers: ['un sac', 'Un sac'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: 'bitte', acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+  ],
+  build: {
+    targetText: "Un ticket et un sac, s'il vous plaît.",
+    chips: ['Un ticket', 'et un sac,', "s'il vous plaît.", 'merci', 'la carte'],
+  },
+  typeRecall: {
+    before: 'Un ',
+    answer: 'ticket',
+    after: " et un sac, s'il vous plaît.",
+    acceptedAnswers: ['ticket', 'Ticket'],
+    fallbackChoices: ['ticket', 'plan', 'bus', 'nom'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Beleg und eine Tüte, bitte.',
+    targetPhrase: "Un ticket et un sac, s'il vous plaît.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['ticket', 'sac', 'plaît'],
+    optionalTokens: ['un', 'et', 'sil', 'vous', 'plait'],
+  },
+  sceneCaption: 'Am Ende des Kaufs fragst du freundlich nach Bon und Tüte, ohne den Ablauf aufzuhalten.',
+  trophyWord: {
+    word: 'sac',
+    meaning: 'Tüte / Tasche',
+    example: "Un sac, s'il vous plaît.",
+    whyThisWord: 'Sac ist ein einfacher A1-Gegenstand im Ladenkontext. In der Kassenphrase bleibt "ticket" als Servicewort stehen, aber der sichere produktive Anker ist die Tüte.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kassentresen mit kleinem Bon und gefaltetem Papierbeutel.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'neat checkout',
+  },
+  visualNotes: 'Bonpapier, kleine Tüte, warmer Abschluss an der Kasse.',
+}
+
+const brightFrenchP2Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "J'ai une réservation au nom de Martin.",
+    baseText: 'Ich habe eine Reservierung auf den Namen Martin.',
+  },
+  meaning: 'Eine höfliche Ankunftszeile am Restaurantempfang: Reservierung und Name sofort klar nennen.',
+  chunks: [
+    { id: 'jai-une-reservation', targetText: "J'ai une réservation", baseText: 'Ich habe eine Reservierung' },
+    { id: 'au-nom-de-martin', targetText: 'au nom de Martin.', baseText: 'auf den Namen Martin.' },
+  ],
+  lessonItems: [
+    { id: 'jai', targetText: "j'ai", baseText: 'ich habe', acceptedAnswers: ["j'ai", "J'ai", 'jai', 'Jai'] },
+    { id: 'reservation', targetText: 'réservation', baseText: 'Reservierung', acceptedAnswers: ['réservation', 'reservation', 'Réservation', 'Reservation'] },
+    { id: 'nom', targetText: 'nom', baseText: 'Name', acceptedAnswers: ['nom', 'Nom'] },
+    { id: 'au-nom-de', targetText: 'au nom de', baseText: 'auf den Namen von', acceptedAnswers: ['au nom de', 'Au nom de'] },
+  ],
+  build: {
+    targetText: "J'ai une réservation au nom de Martin.",
+    chips: ["J'ai une réservation", 'au nom de Martin.', 'pour deux', 'bonsoir'],
+  },
+  typeRecall: {
+    before: "J'ai une ",
+    answer: 'réservation',
+    after: ' au nom de Martin.',
+    acceptedAnswers: ['réservation', 'reservation', 'Réservation', 'Reservation'],
+    fallbackChoices: ['réservation', 'addition', 'carte', 'gare'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe eine Reservierung auf den Namen Martin.',
+    targetPhrase: "J'ai une réservation au nom de Martin.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['réservation', 'nom', 'martin'],
+    optionalTokens: ['jai', 'j', 'ai', 'une', 'au', 'de'],
+  },
+  sceneCaption: 'Am Empfang nennst du ruhig die Reservierung und den Namen, damit der Eintrag schnell gefunden wird.',
+  trophyWord: {
+    word: 'réservation',
+    meaning: 'Reservierung',
+    example: "J'ai une réservation.",
+    whyThisWord: 'Réservation ist der A1-Serviceanker für Restaurant und Hotel. Die Elision in "j’ai" ist verpflichtend; "je ai" wäre keine korrekte französische Form.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Restaurantpult, Reservierungsbuch offen, freundlicher Empfang.',
+  },
+  songSeed: {
+    genre: 'warm acoustic chanson-light',
+    mood: 'arriving clearly',
+  },
+  visualNotes: 'Reservierungsbuch im Licht, ruhiger Blick zur Gastgeberin, klarer Name.',
+}
+
+const brightFrenchP2Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Excusez-moi, c'est le bon bus ?",
+    baseText: 'Entschuldigen Sie, ist das der richtige Bus?',
+  },
+  meaning: 'Eine kurze Kontrollfrage an Haltestelle oder Fahrer, bevor du einsteigst.',
+  chunks: [
+    { id: 'excusez-moi', targetText: 'Excusez-moi,', baseText: 'Entschuldigen Sie,' },
+    { id: 'cest-le-bon', targetText: "c'est le bon", baseText: 'ist das der richtige' },
+    { id: 'bus', targetText: 'bus ?', baseText: 'Bus?' },
+  ],
+  lessonItems: [
+    { id: 'excusez-moi', targetText: 'excusez-moi', baseText: 'entschuldigen Sie', acceptedAnswers: ['excusez-moi', 'Excusez-moi', 'excusez moi', 'Excusez moi'] },
+    { id: 'cest', targetText: "c'est", baseText: 'das ist / ist das', acceptedAnswers: ["c'est", "C'est", 'c est', 'C est'] },
+    { id: 'bon', targetText: 'bon', baseText: 'richtig / gut', acceptedAnswers: ['bon', 'Bon'] },
+    { id: 'bus', targetText: 'bus', baseText: 'Bus', acceptedAnswers: ['bus', 'Bus'] },
+  ],
+  build: {
+    targetText: "Excusez-moi, c'est le bon bus ?",
+    chips: ['Excusez-moi,', "c'est le bon", 'bus ?', 'train', 'merci'],
+  },
+  typeRecall: {
+    before: "Excusez-moi, c'est le bon ",
+    answer: 'bus',
+    after: ' ?',
+    acceptedAnswers: ['bus', 'Bus'],
+    fallbackChoices: ['bus', 'sac', 'ticket', 'plan'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigen Sie, ist das der richtige Bus?',
+    targetPhrase: "Excusez-moi, c'est le bon bus ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['excusez', 'bon', 'bus'],
+    optionalTokens: ['moi', 'cest', 'c', 'est', 'le'],
+  },
+  sceneCaption: 'Vor dem Einsteigen prüfst du kurz beim Fahrer oder an der Haltestelle, ob es der richtige Bus ist.',
+  trophyWord: {
+    word: 'bus',
+    meaning: 'Bus',
+    example: "C'est le bon bus ?",
+    whyThisWord: 'Bus ist im Französischen wie im Deutschen kurz und alltagstauglich. Die Kontrollfrage nutzt "c’est"; die Elision ist Pflicht, "ce est" wäre falsch.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Haltestelle, Busfront im Licht, kurze Frage vor dem Einstieg.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'checking the route',
+  },
+  visualNotes: 'Busnummer im Fokus, heller Straßenrand, kurzer Entscheidungsbeat.',
+}
+
+const brightFrenchP2Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Un instant, s'il vous plaît.",
+    baseText: 'Einen Augenblick, bitte.',
+  },
+  meaning: 'Eine höfliche kurze Pause, wenn du am Schalter etwas suchst, zahlst oder prüfst.',
+  chunks: [
+    { id: 'un-instant', targetText: 'Un instant,', baseText: 'Einen Augenblick,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'instant', targetText: 'instant', baseText: 'Augenblick', acceptedAnswers: ['instant', 'Instant'] },
+    { id: 'un-instant', targetText: 'un instant', baseText: 'einen Augenblick', acceptedAnswers: ['un instant', 'Un instant'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: 'bitte', acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+    { id: 'attendez', targetText: 'attendez', baseText: 'warten Sie', acceptedAnswers: ['attendez', 'Attendez'] },
+  ],
+  build: {
+    targetText: "Un instant, s'il vous plaît.",
+    chips: ['Un instant,', "s'il vous plaît.", 'attendez', 'merci'],
+  },
+  typeRecall: {
+    before: 'Un ',
+    answer: 'instant',
+    after: ", s'il vous plaît.",
+    acceptedAnswers: ['instant', 'Instant'],
+    fallbackChoices: ['instant', 'ticket', 'bus', 'plan'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Augenblick, bitte.',
+    targetPhrase: "Un instant, s'il vous plaît.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['instant', 'plaît'],
+    optionalTokens: ['un', 'sil', 'vous', 'plait'],
+  },
+  sceneCaption: 'Du suchst kurz Karte oder Notiz und hältst die andere Person mit einer höflichen Pause im Gespräch.',
+  trophyWord: {
+    word: 'instant',
+    meaning: 'Augenblick',
+    example: "Un instant, s'il vous plaît.",
+    whyThisWord: 'Instant ist die kurze höfliche Pause in Service- und Telefonsituationen. In "s’il vous plaît" ist die Elision obligatorisch; das "vous" hält den Ton höflich.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kasse oder Schalter, eine Hand sucht kurz in der Tasche, ruhige Wartebitte.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'patient and bright',
+  },
+  visualNotes: 'Ruhige Pause, weiches Licht, kleiner Fokus auf Karte oder Notiz.',
+}
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -13295,6 +13854,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
       bright: brightFrenchLesson010,
     },
   },
+  {
+    id: 'french-a1-practical-2-lesson-1-je-ne-comprends-pas',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-1-je-ne-comprends-pas',
+      sequence: 1,
+      title: 'Ich verstehe nicht',
+    },
+    title: 'Ich verstehe nicht',
+    situation: {
+      en: 'At a counter, admit non-understanding and ask politely for simple help.',
+      de: 'Am Schalter sagst du höflich, dass du nicht verstehst, und bittest um Hilfe.',
+    },
+    pedagogicalGoal: 'Eine höfliche Klärungsbitte mit vollständiger französischer Negation und vous abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Bitte aufschreiben',
+      situation: 'Du bittest darum, eine Information aufzuschreiben.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson001,
+    },
+  },
+  {
+    id: 'french-a1-practical-2-lesson-2-lecrire',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-2-lecrire',
+      sequence: 2,
+      title: 'Bitte aufschreiben',
+    },
+    title: 'Bitte aufschreiben',
+    situation: {
+      en: 'At a desk or counter, ask for important information to be written down.',
+      de: 'Am Schalter bittest du darum, eine wichtige Information aufzuschreiben.',
+    },
+    pedagogicalGoal: 'Eine schriftliche Klärungsbitte mit l’écrire und s’il vous plaît formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Auf dem Plan zeigen',
+      situation: 'Du bittest darum, einen Ort auf dem Plan zu zeigen.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson002,
+    },
+  },
+  {
+    id: 'french-a1-practical-2-lesson-3-sur-le-plan',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-3-sur-le-plan',
+      sequence: 3,
+      title: 'Auf dem Plan zeigen',
+    },
+    title: 'Auf dem Plan zeigen',
+    situation: {
+      en: 'Ask someone to show a location on a map, phone, or visible surface.',
+      de: 'Du bittest eine fremde Person, dir einen Ort auf dem Plan zu zeigen.',
+    },
+    pedagogicalGoal: 'Eine konkrete Zeigebitte mit montrer und sur le plan abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Dieses oder jenes?',
+      situation: 'Du fragst zwischen zwei sichtbaren Optionen.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson003,
+    },
+  },
+  {
+    id: 'french-a1-practical-2-lesson-4-ca-ou-ca',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-4-ca-ou-ca',
+      sequence: 4,
+      title: 'Dieses oder jenes?',
+    },
+    title: 'Dieses oder jenes?',
+    situation: {
+      en: 'In a bakery or shop, ask a binary choice between two visible options.',
+      de: 'In Bäckerei oder Laden fragst du zwischen zwei sichtbaren Optionen.',
+    },
+    pedagogicalGoal: 'Eine kurze Wahlfrage mit ça und höflichem s’il vous plaît stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Haben Sie das?',
+      situation: 'Du fragst, ob ein Artikel verfügbar ist.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson004,
+    },
+  },
+  {
+    id: 'french-a1-practical-2-lesson-5-vous-avez-ca',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-5-vous-avez-ca',
+      sequence: 5,
+      title: 'Haben Sie das?',
+    },
+    title: 'Haben Sie das?',
+    situation: {
+      en: 'In a shop, ask whether a visible or pictured item is available.',
+      de: 'Im Laden fragst du, ob ein sichtbarer oder gezeigter Artikel verfügbar ist.',
+    },
+    pedagogicalGoal: 'Eine natürliche Verfügbarkeitsfrage mit vous avez ça bilden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Mit Karte bezahlen',
+      situation: 'Du fragst an der Kasse, ob Kartenzahlung möglich ist.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson005,
+    },
+  },
+  {
+    id: 'french-a1-practical-2-lesson-6-payer-par-carte',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-6-payer-par-carte',
+      sequence: 6,
+      title: 'Mit Karte bezahlen',
+    },
+    title: 'Mit Karte bezahlen',
+    situation: {
+      en: 'At a cafe or shop till, ask whether card payment is accepted.',
+      de: 'An der Kasse fragst du, ob du mit Karte zahlen kannst.',
+    },
+    pedagogicalGoal: 'Die französische Standardfrage für Kartenzahlung mit payer par carte abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Beleg und Tüte',
+      situation: 'Du bittest am Kassenende um Bon und Tüte.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson006,
+    },
+  },
+  {
+    id: 'french-a1-practical-2-lesson-7-ticket-et-sac',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-7-ticket-et-sac',
+      sequence: 7,
+      title: 'Beleg und Tüte',
+    },
+    title: 'Beleg und Tüte',
+    situation: {
+      en: 'At the till, ask for a receipt and optionally a bag.',
+      de: 'An der Kasse bittest du um einen Beleg und eine Tüte.',
+    },
+    pedagogicalGoal: 'Zwei kleine Kassenbitten in einer höflichen französischen Phrase verbinden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich habe eine Reservierung',
+      situation: 'Du meldest dich am Empfang mit einer Reservierung.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson007,
+    },
+  },
+  {
+    id: 'french-a1-practical-2-lesson-8-reservation',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-8-reservation',
+      sequence: 8,
+      title: 'Ich habe eine Reservierung',
+    },
+    title: 'Ich habe eine Reservierung',
+    situation: {
+      en: 'At a restaurant host stand, announce that you have a reservation.',
+      de: 'Am Restaurantempfang sagst du, dass du eine Reservierung hast.',
+    },
+    pedagogicalGoal: 'Eine Ankunftszeile mit j’ai, réservation und au nom de formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist das der richtige Bus?',
+      situation: 'Du prüfst vor dem Einsteigen, ob es der richtige Bus ist.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson008,
+    },
+  },
+  {
+    id: 'french-a1-practical-2-lesson-9-bon-bus',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-9-bon-bus',
+      sequence: 9,
+      title: 'Ist das der richtige Bus?',
+    },
+    title: 'Ist das der richtige Bus?',
+    situation: {
+      en: 'At a bus stop, confirm that this is the correct bus.',
+      de: 'An der Haltestelle prüfst du, ob das der richtige Bus ist.',
+    },
+    pedagogicalGoal: 'Eine kurze Bestätigungsfrage mit c’est le bon bus stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Einen Augenblick',
+      situation: 'Du bittest höflich um einen kurzen Moment.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson009,
+    },
+  },
+  {
+    id: 'french-a1-practical-2-lesson-10-un-instant',
+    pathId: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-2-lesson-10-un-instant',
+      sequence: 10,
+      title: 'Einen Augenblick',
+    },
+    title: 'Einen Augenblick',
+    situation: {
+      en: 'Ask someone to wait briefly while you handle a small task.',
+      de: 'Du bittest höflich um einen kurzen Moment, während du etwas erledigst.',
+    },
+    pedagogicalGoal: 'Eine knappe höfliche Wartebitte mit un instant und s’il vous plaît abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast French A1 Practical 2 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP2Lesson010,
+    },
+  },
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -13321,6 +14210,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
   ]
 }
 
