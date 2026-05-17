@@ -357,6 +357,17 @@ const GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_SPANISH_SIX_METADATA: GuidedPathMetadata = {
+  id: 'spanish-a1-practical-6',
+  title: 'Spanish A1 Practical 6',
+  shortTitle: 'A1 Practical 6',
+  subtitle: 'Gesundheit, Apotheke, kleine Bedürfnisse',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Spanish',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA: GuidedPathMetadata = {
   id: 'italian-a1-practical-1',
   title: 'Italian A1 Practical 1',
@@ -12335,6 +12346,553 @@ const brightSpanishP5Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Tür-Detail, sanftes Goldlicht, kurzer Winkemoment.',
 }
 
+const brightSpanishP6Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Estoy enfermo. ¿Me puede ayudar?',
+    baseText: 'Ich bin krank. Können Sie mir helfen?',
+  },
+  meaning: 'Eine kurze, ruhige Aussage über dein Unwohlsein verbunden mit einer höflichen Bitte um Hilfe.',
+  chunks: [
+    { id: 'estoy-enfermo', targetText: 'Estoy enfermo.', baseText: 'Ich bin krank.' },
+    { id: 'me-puede', targetText: '¿Me puede', baseText: 'Können Sie mir' },
+    { id: 'ayudar', targetText: 'ayudar?', baseText: 'helfen?' },
+  ],
+  lessonItems: [
+    { id: 'estoy', targetText: 'estoy', baseText: 'ich bin (Zustand)', acceptedAnswers: ['estoy', 'Estoy'] },
+    { id: 'enfermo', targetText: 'enfermo', baseText: 'krank', acceptedAnswers: ['enfermo', 'Enfermo'] },
+    { id: 'puede', targetText: 'puede', baseText: 'können Sie', acceptedAnswers: ['puede', 'Puede'] },
+    { id: 'ayudar', targetText: 'ayudar', baseText: 'helfen', acceptedAnswers: ['ayudar', 'Ayudar'] },
+  ],
+  build: {
+    targetText: 'Estoy enfermo. ¿Me puede ayudar?',
+    chips: ['Estoy enfermo.', '¿Me puede', 'ayudar?', 'mal', 'aquí'],
+  },
+  typeRecall: {
+    before: 'Estoy ',
+    answer: 'enfermo',
+    after: '. ¿Me puede ayudar?',
+    acceptedAnswers: ['enfermo', 'Enfermo'],
+    fallbackChoices: ['enfermo', 'cansado', 'mareado', 'mal'],
+  },
+  speakTarget: {
+    baseCue: 'Ich bin krank. Können Sie mir helfen?',
+    targetPhrase: 'Estoy enfermo. ¿Me puede ayudar?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['estoy', 'enfermo', 'puede', 'ayudar'],
+    optionalTokens: ['me', 'aquí', 'mal'],
+  },
+  sceneCaption: 'In der Apotheke oder am Empfang sagst du ruhig, dass du dich nicht wohl fühlst, und bittest um Hilfe.',
+  trophyWord: {
+    word: 'enfermo',
+    meaning: 'krank',
+    example: 'Estoy enfermo desde ayer.',
+    whyThisWord: 'Enfermo ist auf A1 das direkte Zustands-Adjektiv für „krank". Achtung: Iberisch nutzt es mit „estar" (vorübergehender Zustand), nicht mit „ser".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Apothekentheke am Vormittag, ruhiger leiser Ton, hilfsbereite Geste vom Personal.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle ask for help',
+  },
+  visualNotes: 'Sanftes Innenraumlicht, blasse Pastellfarben, kleiner Atemzug der Erleichterung.',
+}
+
+const brightSpanishP6Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Hay una farmacia cerca?',
+    baseText: 'Gibt es eine Apotheke in der Nähe?',
+  },
+  meaning: 'Eine kurze, höfliche Frage nach einer nahegelegenen Apotheke.',
+  chunks: [
+    { id: 'hay', targetText: '¿Hay', baseText: 'Gibt es' },
+    { id: 'una-farmacia', targetText: 'una farmacia', baseText: 'eine Apotheke' },
+    { id: 'cerca', targetText: 'cerca?', baseText: 'in der Nähe?' },
+  ],
+  lessonItems: [
+    { id: 'hay', targetText: 'hay', baseText: 'es gibt', acceptedAnswers: ['hay', 'Hay'] },
+    { id: 'una', targetText: 'una', baseText: 'eine', acceptedAnswers: ['una', 'Una'] },
+    { id: 'farmacia', targetText: 'farmacia', baseText: 'Apotheke', acceptedAnswers: ['farmacia', 'Farmacia'] },
+    { id: 'cerca', targetText: 'cerca', baseText: 'in der Nähe', acceptedAnswers: ['cerca', 'Cerca'] },
+  ],
+  build: {
+    targetText: '¿Hay una farmacia cerca?',
+    chips: ['¿Hay', 'una farmacia', 'cerca?', 'aquí', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿Hay una ',
+    answer: 'farmacia',
+    after: ' cerca?',
+    acceptedAnswers: ['farmacia', 'Farmacia'],
+    fallbackChoices: ['farmacia', 'tienda', 'oficina', 'panadería'],
+  },
+  speakTarget: {
+    baseCue: 'Gibt es eine Apotheke in der Nähe?',
+    targetPhrase: '¿Hay una farmacia cerca?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['hay', 'farmacia', 'cerca'],
+    optionalTokens: ['una', 'aquí', 'por', 'favor'],
+  },
+  sceneCaption: 'Auf dem Gehweg sprichst du jemanden an und fragst, ob es in der Nähe eine Apotheke gibt.',
+  trophyWord: {
+    word: 'farmacia',
+    meaning: 'Apotheke',
+    example: 'La farmacia abre a las nueve.',
+    whyThisWord: 'Farmacia ist auf A1 das eindeutige Apotheke-Wort in Spanien und Standard in der Iberischen Variante — wichtige Stadtorientierung im Krankheitsfall. In Lateinamerika ist auch „botica" oder „droguería" gebräuchlich; in Spanien bleibt „farmacia" der Regelbegriff.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Gehweg mit grünem Apotheken-Kreuz im Hintergrund, ruhige Frage an jemanden.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'searching for help nearby',
+  },
+  visualNotes: 'Grünes Apothekenkreuz als visueller Anker, sanftes Tageslicht.',
+}
+
+const brightSpanishP6Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Necesito un medicamento, por favor.',
+    baseText: 'Ich brauche ein Medikament, bitte.',
+  },
+  meaning: 'Eine kurze, allgemeine Bitte um ein Medikament am Apothekentresen — ohne genaue Spezifikation.',
+  chunks: [
+    { id: 'necesito', targetText: 'Necesito', baseText: 'Ich brauche' },
+    { id: 'un-medicamento', targetText: 'un medicamento,', baseText: 'ein Medikament,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'necesito', targetText: 'necesito', baseText: 'ich brauche', acceptedAnswers: ['necesito', 'Necesito'] },
+    { id: 'un', targetText: 'un', baseText: 'ein', acceptedAnswers: ['un', 'Un'] },
+    { id: 'medicamento', targetText: 'medicamento', baseText: 'Medikament', acceptedAnswers: ['medicamento', 'Medicamento'] },
+    { id: 'algo', targetText: 'algo', baseText: 'etwas', acceptedAnswers: ['algo', 'Algo'] },
+  ],
+  build: {
+    targetText: 'Necesito un medicamento, por favor.',
+    chips: ['Necesito', 'un medicamento,', 'por favor.', 'pastilla', 'jarabe'],
+  },
+  typeRecall: {
+    before: 'Necesito un ',
+    answer: 'medicamento',
+    after: ', por favor.',
+    acceptedAnswers: ['medicamento', 'Medicamento'],
+    fallbackChoices: ['medicamento', 'pastilla', 'jarabe', 'remedio'],
+  },
+  speakTarget: {
+    baseCue: 'Ich brauche ein Medikament, bitte.',
+    targetPhrase: 'Necesito un medicamento, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['necesito', 'medicamento', 'por', 'favor'],
+    optionalTokens: ['un', 'algo'],
+  },
+  sceneCaption: 'Am Apothekentresen formulierst du ruhig eine allgemeine Bitte um ein Medikament.',
+  trophyWord: {
+    word: 'medicamento',
+    meaning: 'Medikament',
+    example: '¿Tiene un medicamento para esto?',
+    whyThisWord: 'Medicamento ist auf A1 das allgemeine Wort für ein Heilmittel — bewusst unspezifisch, damit das eigentliche Gespräch erst danach entstehen kann.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Apothekentresen mit Schubladen und Beratungsgespräch im Hintergrund.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'careful pharmacy ask',
+  },
+  visualNotes: 'Detail auf Tresen und Hand, ruhiges Pastellgrün.',
+}
+
+const brightSpanishP6Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Me duele aquí.',
+    baseText: 'Es tut mir hier weh.',
+  },
+  meaning: 'Eine kurze, konkrete Schmerz-Angabe mit Zeigegeste auf eine Körperstelle.',
+  chunks: [
+    { id: 'me-duele', targetText: 'Me duele', baseText: 'Es tut mir weh' },
+    { id: 'aqui', targetText: 'aquí.', baseText: 'hier.' },
+  ],
+  lessonItems: [
+    { id: 'me', targetText: 'me', baseText: 'mir', acceptedAnswers: ['me', 'Me'] },
+    { id: 'duele', targetText: 'duele', baseText: 'tut weh (3 Pers. Sg.)', acceptedAnswers: ['duele', 'Duele'] },
+    { id: 'aqui', targetText: 'aquí', baseText: 'hier', acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+    { id: 'dolor', targetText: 'dolor', baseText: 'Schmerz', acceptedAnswers: ['dolor', 'Dolor'] },
+  ],
+  build: {
+    targetText: 'Me duele aquí.',
+    chips: ['Me duele', 'aquí.', 'dolor', 'mucho', 'desde ayer'],
+  },
+  typeRecall: {
+    before: 'Me ',
+    answer: 'duele',
+    after: ' aquí.',
+    acceptedAnswers: ['duele', 'Duele'],
+    fallbackChoices: ['duele', 'pasa', 'pica', 'molesta'],
+  },
+  speakTarget: {
+    baseCue: 'Es tut mir hier weh.',
+    targetPhrase: 'Me duele aquí.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['me', 'duele', 'aquí'],
+    optionalTokens: ['dolor', 'mucho'],
+  },
+  sceneCaption: 'In der Sprechstunde oder Apotheke zeigst du mit dem Finger auf die schmerzende Stelle.',
+  trophyWord: {
+    word: 'duele',
+    meaning: 'tut weh (3. Pers. Sg. von doler)',
+    example: 'Me duele la cabeza.',
+    whyThisWord: 'Duele steht in der dativ-reflexiven Iberischen Schmerz-Konstruktion „me duele ..." — strukturell anders als Deutsch („mir tut weh"), aber strukturell dem deutschen „Mir tut der Kopf weh" gleichwertig.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hand auf Schulter oder Bauch, kurze schmerzhafte Geste, ruhige Beratungs-Atmosphäre.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle pain disclosure',
+  },
+  visualNotes: 'Detail auf Hand-an-Körper-Geste, warmes weiches Licht, ruhiger Ton.',
+}
+
+const brightSpanishP6Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Tengo dolor de cabeza.',
+    baseText: 'Ich habe Kopfschmerzen.',
+  },
+  meaning: 'Eine kurze, klare Symptom-Angabe — das häufigste A1-Beschwerdebild.',
+  chunks: [
+    { id: 'tengo', targetText: 'Tengo', baseText: 'Ich habe' },
+    { id: 'dolor-de', targetText: 'dolor de', baseText: 'Schmerz im' },
+    { id: 'cabeza', targetText: 'cabeza.', baseText: 'Kopf.' },
+  ],
+  lessonItems: [
+    { id: 'tengo', targetText: 'tengo', baseText: 'ich habe', acceptedAnswers: ['tengo', 'Tengo'] },
+    { id: 'dolor', targetText: 'dolor', baseText: 'Schmerz', acceptedAnswers: ['dolor', 'Dolor'] },
+    { id: 'cabeza', targetText: 'cabeza', baseText: 'Kopf', acceptedAnswers: ['cabeza', 'Cabeza'] },
+    { id: 'estomago', targetText: 'estómago', baseText: 'Magen', acceptedAnswers: ['estómago', 'estomago', 'Estómago', 'Estomago'] },
+  ],
+  build: {
+    targetText: 'Tengo dolor de cabeza.',
+    chips: ['Tengo', 'dolor de', 'cabeza.', 'estómago', 'desde ayer'],
+  },
+  typeRecall: {
+    before: 'Tengo dolor de ',
+    answer: 'cabeza',
+    after: '.',
+    acceptedAnswers: ['cabeza', 'Cabeza'],
+    fallbackChoices: ['cabeza', 'estómago', 'espalda', 'garganta'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe Kopfschmerzen.',
+    targetPhrase: 'Tengo dolor de cabeza.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['tengo', 'dolor', 'cabeza'],
+    optionalTokens: ['de', 'mucho', 'desde'],
+  },
+  sceneCaption: 'Am Apothekentresen nennst du ruhig das konkrete Symptom.',
+  trophyWord: {
+    word: 'cabeza',
+    meaning: 'Kopf',
+    example: 'Me duele la cabeza.',
+    whyThisWord: 'Cabeza ist auf A1 der wichtigste Körperteil-Begriff für Beschwerden — über „dolor de cabeza" öffnen sich alle weiteren Symptom-Wendungen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hand am Kopf, kurzer Moment der Belastung, ruhige Apothekenszene.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'naming a symptom',
+  },
+  visualNotes: 'Sanftes Profillicht, Hand-an-Kopf-Geste, leichter Anflug von Müdigkeit.',
+}
+
+const brightSpanishP6Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Agua, por favor.',
+    baseText: 'Wasser, bitte.',
+  },
+  meaning: 'Eine sehr kurze, höfliche Bitte um Wasser — überall einsetzbar.',
+  chunks: [
+    { id: 'agua', targetText: 'Agua,', baseText: 'Wasser,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'agua', targetText: 'agua', baseText: 'Wasser', acceptedAnswers: ['agua', 'Agua'] },
+    { id: 'fria', targetText: 'fría', baseText: 'kalt (fem.)', acceptedAnswers: ['fría', 'fria', 'Fría', 'Fria'] },
+    { id: 'sin-gas', targetText: 'sin gas', baseText: 'ohne Kohlensäure', acceptedAnswers: ['sin gas', 'Sin gas'] },
+    { id: 'con-gas', targetText: 'con gas', baseText: 'mit Kohlensäure', acceptedAnswers: ['con gas', 'Con gas'] },
+  ],
+  build: {
+    targetText: 'Agua, por favor.',
+    chips: ['Agua,', 'por favor.', 'fría', 'sin gas', 'con gas'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Agua',
+    after: ', por favor.',
+    acceptedAnswers: ['agua', 'Agua'],
+    fallbackChoices: ['Agua', 'Zumo', 'Leche', 'Refresco'],
+  },
+  speakTarget: {
+    baseCue: 'Wasser, bitte.',
+    targetPhrase: 'Agua, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['agua', 'por', 'favor'],
+    optionalTokens: ['fría', 'sin', 'gas'],
+  },
+  sceneCaption: 'In der Apotheke oder im Café bittest du kurz und höflich um Wasser.',
+  trophyWord: {
+    word: 'agua',
+    meaning: 'Wasser',
+    example: 'Un vaso de agua, por favor.',
+    whyThisWord: 'Agua ist auf A1 das alltäglichste Bedürfnis-Wort. Achtung Gender-Falle: „agua" ist grammatisch feminin. Der Artikel „el agua" erscheint nur wegen einer Lautregel (betontes „a-" am Wortanfang); alle anderen Übereinstimmungen bleiben feminin: „el agua fría", „mucha agua", „esa agua". Nicht mit Maskulinum verwechseln.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Glas Wasser auf dem Tresen, ruhige Übergabe, helles Mittagslicht.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'simple ask for water',
+  },
+  visualNotes: 'Glas-Detail mit klarem Wasser, sanftes Reflexlicht.',
+}
+
+const brightSpanishP6Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Hay un médico cerca?',
+    baseText: 'Gibt es einen Arzt in der Nähe?',
+  },
+  meaning: 'Eine kurze, ruhige Frage nach einem Arzt in der Nähe — kein Notruf, eine Orientierungsfrage.',
+  chunks: [
+    { id: 'hay', targetText: '¿Hay', baseText: 'Gibt es' },
+    { id: 'un-medico', targetText: 'un médico', baseText: 'einen Arzt' },
+    { id: 'cerca', targetText: 'cerca?', baseText: 'in der Nähe?' },
+  ],
+  lessonItems: [
+    { id: 'medico', targetText: 'médico', baseText: 'Arzt', acceptedAnswers: ['médico', 'medico', 'Médico', 'Medico'] },
+    { id: 'un', targetText: 'un', baseText: 'einen', acceptedAnswers: ['un', 'Un'] },
+    { id: 'cerca', targetText: 'cerca', baseText: 'in der Nähe', acceptedAnswers: ['cerca', 'Cerca'] },
+    { id: 'consulta', targetText: 'consulta', baseText: 'Sprechstunde', acceptedAnswers: ['consulta', 'Consulta'] },
+  ],
+  build: {
+    targetText: '¿Hay un médico cerca?',
+    chips: ['¿Hay', 'un médico', 'cerca?', 'consulta', 'aquí'],
+  },
+  typeRecall: {
+    before: '¿Hay un ',
+    answer: 'médico',
+    after: ' cerca?',
+    acceptedAnswers: ['médico', 'medico', 'Médico', 'Medico'],
+    fallbackChoices: ['médico', 'enfermero', 'farmacéutico', 'dentista'],
+  },
+  speakTarget: {
+    baseCue: 'Gibt es einen Arzt in der Nähe?',
+    targetPhrase: '¿Hay un médico cerca?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['hay', 'médico', 'cerca'],
+    optionalTokens: ['un', 'consulta', 'aquí'],
+  },
+  sceneCaption: 'Am Empfang eines Hotels oder in einer Apotheke fragst du ruhig, ob ein Arzt in der Nähe ist.',
+  trophyWord: {
+    word: 'médico',
+    meaning: 'Arzt',
+    example: '¿Dónde está el médico de guardia?',
+    whyThisWord: 'Médico ist in Spanien das übliche A1-Wort für Arzt — Iberisch klarer Begriff, „doctor" wird im Alltag oft als Titel verwendet, „médico" als Beruf.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Empfangstresen mit Schild zur ärztlichen Sprechstunde, ruhige Beratungs-Stimmung.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'looking for nearby doctor',
+  },
+  visualNotes: 'Detail auf Praxis-Schild, sanftes Tageslicht, ruhiger Innenraum.',
+}
+
+const brightSpanishP6Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Tengo alergia.',
+    baseText: 'Ich habe eine Allergie.',
+  },
+  meaning: 'Eine kurze, klare Aussage über eine Allergie — wichtig vor Bestellung oder Behandlung.',
+  chunks: [
+    { id: 'tengo', targetText: 'Tengo', baseText: 'Ich habe' },
+    { id: 'alergia', targetText: 'alergia.', baseText: 'eine Allergie.' },
+  ],
+  lessonItems: [
+    { id: 'tengo', targetText: 'tengo', baseText: 'ich habe', acceptedAnswers: ['tengo', 'Tengo'] },
+    { id: 'alergia', targetText: 'alergia', baseText: 'Allergie', acceptedAnswers: ['alergia', 'Alergia'] },
+    { id: 'a', targetText: 'a', baseText: 'gegen / auf', acceptedAnswers: ['a', 'A'] },
+    { id: 'polen', targetText: 'polen', baseText: 'Pollen', acceptedAnswers: ['polen', 'Polen'] },
+  ],
+  build: {
+    targetText: 'Tengo alergia.',
+    chips: ['Tengo', 'alergia.', 'a', 'polen', 'frutos secos'],
+  },
+  typeRecall: {
+    before: 'Tengo ',
+    answer: 'alergia',
+    after: '.',
+    acceptedAnswers: ['alergia', 'Alergia'],
+    fallbackChoices: ['alergia', 'asma', 'fiebre', 'tos'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe eine Allergie.',
+    targetPhrase: 'Tengo alergia.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['tengo', 'alergia'],
+    optionalTokens: ['a', 'polen', 'frutos', 'secos'],
+  },
+  sceneCaption: 'In Apotheke, Restaurant oder Praxis machst du kurz auf deine Allergie aufmerksam.',
+  trophyWord: {
+    word: 'alergia',
+    meaning: 'Allergie',
+    example: 'Tengo alergia al polen.',
+    whyThisWord: 'Alergia ist auf A1 das zentrale Sicherheits-Wort vor Essen oder Medikamenten. Iberisch nutzt die „tener"-Konstruktion (anders als Italienisch/Französisch „sein"), daher kein Geschlechts-Suffix nötig.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Apothekentresen oder Restauranttisch, kurzer ernster Blick, ruhige Aufklärung.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'careful disclosure',
+  },
+  visualNotes: 'Sanfter Profilblick, ruhige Hand-Geste zur Brust, neutrales Pastell.',
+}
+
+const brightSpanishP6Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Puede llamar a alguien, por favor?',
+    baseText: 'Können Sie bitte jemanden rufen?',
+  },
+  meaning: 'Eine ruhige Bitte, jemanden zur Hilfe zu holen — ohne dramatische Eskalation.',
+  chunks: [
+    { id: 'puede-llamar', targetText: '¿Puede llamar', baseText: 'Können Sie rufen' },
+    { id: 'a-alguien', targetText: 'a alguien,', baseText: 'jemanden,' },
+    { id: 'por-favor', targetText: 'por favor?', baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'puede', targetText: 'puede', baseText: 'können Sie', acceptedAnswers: ['puede', 'Puede'] },
+    { id: 'llamar', targetText: 'llamar', baseText: 'rufen / anrufen', acceptedAnswers: ['llamar', 'Llamar'] },
+    { id: 'alguien', targetText: 'alguien', baseText: 'jemanden', acceptedAnswers: ['alguien', 'Alguien'] },
+    { id: 'pronto', targetText: 'pronto', baseText: 'schnell / bald', acceptedAnswers: ['pronto', 'Pronto'] },
+  ],
+  build: {
+    targetText: '¿Puede llamar a alguien, por favor?',
+    chips: ['¿Puede llamar', 'a alguien,', 'por favor?', 'pronto', 'aquí'],
+  },
+  typeRecall: {
+    before: '¿Puede ',
+    answer: 'llamar',
+    after: ' a alguien, por favor?',
+    acceptedAnswers: ['llamar', 'Llamar'],
+    fallbackChoices: ['llamar', 'avisar', 'buscar', 'pedir'],
+  },
+  speakTarget: {
+    baseCue: 'Können Sie bitte jemanden rufen?',
+    targetPhrase: '¿Puede llamar a alguien, por favor?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['puede', 'llamar', 'alguien', 'por', 'favor'],
+    optionalTokens: ['a', 'pronto', 'aquí'],
+  },
+  sceneCaption: 'Du fühlst dich unwohl und bittest jemanden ruhig, eine andere Person zur Hilfe zu holen.',
+  trophyWord: {
+    word: 'llamar',
+    meaning: 'rufen / anrufen',
+    example: '¿Puede llamar a un médico?',
+    whyThisWord: 'Llamar ist auf A1 das vielseitige „rufen"-Verb — telefonieren und herbeirufen in einem. Achtung: nicht als Notruf-Idiom hochskalieren; bleib höflich-ruhig.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bittende Geste mit einer Hand, leichter ernster Ton, ruhige Reaktion des Gegenübers.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'soft request for help',
+  },
+  visualNotes: 'Innenraum-Detail, ruhige Atmungspause, sanfte Hand-Bewegung.',
+}
+
+const brightSpanishP6Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Ya estoy mejor. Muchas gracias.',
+    baseText: 'Es geht mir schon besser. Vielen Dank.',
+  },
+  meaning: 'Ein warmer Abschluss nach einer Hilfssituation — du gibst Rückmeldung, dass es dir besser geht.',
+  chunks: [
+    { id: 'ya-estoy', targetText: 'Ya estoy', baseText: 'Es geht mir schon' },
+    { id: 'mejor', targetText: 'mejor.', baseText: 'besser.' },
+    { id: 'muchas-gracias', targetText: 'Muchas gracias.', baseText: 'Vielen Dank.' },
+  ],
+  lessonItems: [
+    { id: 'ya', targetText: 'ya', baseText: 'schon / jetzt', acceptedAnswers: ['ya', 'Ya'] },
+    { id: 'estoy', targetText: 'estoy', baseText: 'ich bin (Zustand)', acceptedAnswers: ['estoy', 'Estoy'] },
+    { id: 'bien', targetText: 'bien', baseText: 'gut (Adv.)', acceptedAnswers: ['bien', 'Bien'] },
+    { id: 'pronto', targetText: 'pronto', baseText: 'bald / schnell', acceptedAnswers: ['pronto', 'Pronto'] },
+  ],
+  build: {
+    targetText: 'Ya estoy mejor. Muchas gracias.',
+    chips: ['Ya estoy', 'mejor.', 'Muchas gracias.', 'bien', 'pronto'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Ya',
+    after: ' estoy mejor. Muchas gracias.',
+    acceptedAnswers: ['ya', 'Ya'],
+    fallbackChoices: ['Ya', 'Hoy', 'Pronto', 'Ahora'],
+  },
+  speakTarget: {
+    baseCue: 'Es geht mir schon besser. Vielen Dank.',
+    targetPhrase: 'Ya estoy mejor. Muchas gracias.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['ya', 'estoy', 'mejor'],
+    optionalTokens: ['muchas', 'todo', 'bien'],
+  },
+  sceneCaption: 'Am Ende der Beratung gibst du der Apothekerin oder dem Personal kurz Rückmeldung, dass es dir besser geht.',
+  trophyWord: {
+    word: 'ya',
+    meaning: 'schon / jetzt schon',
+    example: 'Ya estoy listo.',
+    whyThisWord: 'Ya markiert auf A1 den Übergang „jetzt-besser-als-vorher" — kurz, wirksam und in vielen Iberischen Wendungen unentbehrlich.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Apothekentür beim Verlassen, leichtes Lächeln, kurzer dankbarer Blick zurück.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'gentle recovery and thanks',
+  },
+  visualNotes: 'Warmes Ausgangslicht, ruhige Verabschiedungs-Geste, Anflug von Erleichterung.',
+}
+
 const brightItalianLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -22388,6 +22946,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'spanish-a1-practical-6-001-estoy-enfermo',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-001-estoy-enfermo',
+      sequence: 1,
+      title: 'Mir ist nicht gut',
+    },
+    title: 'Mir ist nicht gut',
+    situation: {
+      en: 'At a pharmacy or hotel desk, say you feel unwell and ask for basic help.',
+      de: 'In der Apotheke oder am Empfang sagst du, dass du dich nicht wohl fühlst, und bittest um Hilfe.',
+    },
+    pedagogicalGoal: 'Eine kurze Aussage über Unwohlsein mit einer höflichen Hilfsbitte verbinden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Eine Apotheke in der Nähe?',
+      situation: 'Du fragst nach einer Apotheke in der Nähe.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson001,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-6-002-hay-farmacia',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-002-hay-farmacia',
+      sequence: 2,
+      title: 'Eine Apotheke in der Nähe?',
+    },
+    title: 'Eine Apotheke in der Nähe?',
+    situation: {
+      en: 'On the sidewalk, ask politely whether a pharmacy is nearby.',
+      de: 'Auf dem Gehweg fragst du, ob eine Apotheke in der Nähe ist.',
+    },
+    pedagogicalGoal: 'Mit „¿Hay ... cerca?" nach einem nahegelegenen Ziel fragen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich brauche ein Medikament',
+      situation: 'Am Tresen formulierst du eine allgemeine Bitte.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson002,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-6-003-necesito-medicamento',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-003-necesito-medicamento',
+      sequence: 3,
+      title: 'Ich brauche ein Medikament',
+    },
+    title: 'Ich brauche ein Medikament',
+    situation: {
+      en: 'At a pharmacy counter, ask in a general way for a medicine.',
+      de: 'Am Apothekentresen formulierst du eine allgemeine Bitte um ein Medikament.',
+    },
+    pedagogicalGoal: 'Eine bewusst allgemein gehaltene A1-Bitte um ein Medikament aussprechen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Es tut mir hier weh',
+      situation: 'Du zeigst auf die schmerzende Stelle.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson003,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-6-004-me-duele-aqui',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-004-me-duele-aqui',
+      sequence: 4,
+      title: 'Es tut mir hier weh',
+    },
+    title: 'Es tut mir hier weh',
+    situation: {
+      en: 'At a pharmacy or doctor reception, point to a body location and say it hurts.',
+      de: 'In Apotheke oder Sprechstunde zeigst du auf eine Körperstelle und sagst, dass es dort wehtut.',
+    },
+    pedagogicalGoal: 'Die dativ-reflexive Iberische Schmerz-Konstruktion „me duele aquí" sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich habe Kopfschmerzen',
+      situation: 'Du nennst ein konkretes Symptom.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson004,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-6-005-dolor-cabeza',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-005-dolor-cabeza',
+      sequence: 5,
+      title: 'Ich habe Kopfschmerzen',
+    },
+    title: 'Ich habe Kopfschmerzen',
+    situation: {
+      en: 'At a pharmacy counter, state a common symptom: headache.',
+      de: 'Am Apothekentresen nennst du das häufige A1-Symptom Kopfschmerzen.',
+    },
+    pedagogicalGoal: 'Die Iberische „tener + dolor de ..."-Konstruktion für ein konkretes Symptom abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wasser, bitte',
+      situation: 'Du bittest kurz um Wasser.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson005,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-6-006-agua-por-favor',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-006-agua-por-favor',
+      sequence: 6,
+      title: 'Wasser, bitte',
+    },
+    title: 'Wasser, bitte',
+    situation: {
+      en: 'In a pharmacy, café, or social setting, ask for water politely.',
+      de: 'In Apotheke, Café oder Wartebereich bittest du kurz um Wasser.',
+    },
+    pedagogicalGoal: 'Eine sehr kurze, universelle Bitte um Wasser sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Gibt es einen Arzt in der Nähe?',
+      situation: 'Du fragst, ob ein Arzt in der Nähe ist.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson006,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-6-007-hay-medico',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-007-hay-medico',
+      sequence: 7,
+      title: 'Ein Arzt in der Nähe?',
+    },
+    title: 'Ein Arzt in der Nähe?',
+    situation: {
+      en: 'At a hotel desk or public space, ask politely whether a doctor is nearby.',
+      de: 'Am Empfang oder im öffentlichen Raum fragst du nach einem Arzt in der Nähe.',
+    },
+    pedagogicalGoal: 'Mit „médico" eine ruhige Orientierungsfrage stellen — keine Notruf-Eskalation.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich habe eine Allergie',
+      situation: 'Du machst auf eine Allergie aufmerksam.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson007,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-6-008-tengo-alergia',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-008-tengo-alergia',
+      sequence: 8,
+      title: 'Ich habe eine Allergie',
+    },
+    title: 'Ich habe eine Allergie',
+    situation: {
+      en: 'At a pharmacy, restaurant, or hotel, disclose an allergy.',
+      de: 'In Apotheke, Restaurant oder Hotel machst du auf eine Allergie aufmerksam.',
+    },
+    pedagogicalGoal: 'Mit der „tener"-Konstruktion eine Allergie kurz und sicher offenlegen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Bitte rufen Sie jemanden',
+      situation: 'Du bittest ruhig um Hilfe.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson008,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-6-009-llamar-alguien',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-009-llamar-alguien',
+      sequence: 9,
+      title: 'Bitte rufen Sie jemanden',
+    },
+    title: 'Bitte rufen Sie jemanden',
+    situation: {
+      en: 'In a public space, ask another person calmly to call for help.',
+      de: 'In einer Apotheke oder öffentlichen Situation bittest du jemanden ruhig, eine andere Person zu rufen.',
+    },
+    pedagogicalGoal: 'Eine ruhige Iberische Hilfsbitte ohne Notruf-Eskalation formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Schon besser, vielen Dank',
+      situation: 'Du schließt die Situation mit einer warmen Rückmeldung.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson009,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-6-010-ya-mejor-gracias',
+    pathId: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-6-010-ya-mejor-gracias',
+      sequence: 10,
+      title: 'Schon besser, vielen Dank',
+    },
+    title: 'Schon besser, vielen Dank',
+    situation: {
+      en: 'At the end of a health interaction, say you feel better and thank the helper.',
+      de: 'Am Ende einer Hilfssituation sagst du, dass es dir besser geht, und bedankst dich.',
+    },
+    pedagogicalGoal: 'Eine warme Abschluss-Rückmeldung mit „ya estoy mejor" sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Spanish A1 Practical 6 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP6Lesson010,
+    },
+  },
+  {
     id: 'italian-a1-practical-001-primo-contatto',
     pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
@@ -27364,6 +28252,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
     GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
     GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,
