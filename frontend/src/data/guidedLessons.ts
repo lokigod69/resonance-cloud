@@ -412,6 +412,17 @@ const GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA: GuidedPathMetadata = {
+  id: 'italian-a1-practical-6',
+  title: 'Italian A1 Practical 6',
+  shortTitle: 'A1 Practical 6',
+  subtitle: 'Apotheke und kleine Beschwerden auf Italienisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Italian',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_FRENCH_ONE_METADATA: GuidedPathMetadata = {
   id: 'french-a1-practical-1',
   title: 'French A1 Practical 1',
@@ -15045,6 +15056,552 @@ const brightItalianP5Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Türgriff-Detail, sanfter Honig-Akzent, ruhige Wink-Bewegung.',
 }
 
+const brightItalianP6Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Non sto bene, mi può aiutare?',
+    baseText: 'Mir geht es nicht gut, können Sie mir helfen?',
+  },
+  meaning: 'Eine ruhige, höfliche Eröffnung an der Apothekentheke, wenn etwas nicht stimmt.',
+  chunks: [
+    { id: 'non-sto-bene', targetText: 'Non sto bene,', baseText: 'Mir geht es nicht gut,' },
+    { id: 'mi-puo-aiutare', targetText: 'mi può aiutare?', baseText: 'können Sie mir helfen?' },
+  ],
+  lessonItems: [
+    { id: 'bene', targetText: 'bene', baseText: 'gut (Adverb)', acceptedAnswers: ['bene', 'Bene'] },
+    { id: 'sto', targetText: 'sto', baseText: 'ich bin / es geht mir', acceptedAnswers: ['sto', 'Sto'] },
+    { id: 'aiutare', targetText: 'aiutare', baseText: 'helfen', acceptedAnswers: ['aiutare', 'Aiutare'] },
+    { id: 'male-adv', targetText: 'male', baseText: 'schlecht (Adverb)', acceptedAnswers: ['male', 'Male'] },
+  ],
+  build: {
+    targetText: 'Non sto bene, mi può aiutare?',
+    chips: ['Non sto bene,', 'mi può aiutare?', 'male', 'davvero'],
+  },
+  typeRecall: {
+    before: 'Non sto ',
+    answer: 'bene',
+    after: ', mi può aiutare?',
+    acceptedAnswers: ['bene', 'Bene'],
+    fallbackChoices: ['bene', 'male', 'pronto', 'sicuro'],
+  },
+  speakTarget: {
+    baseCue: 'Mir geht es nicht gut, können Sie mir helfen?',
+    targetPhrase: 'Non sto bene, mi può aiutare?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['non', 'sto', 'bene', 'aiutare'],
+    optionalTokens: ['mi', 'può', 'scusi'],
+  },
+  sceneCaption: 'An der Apothekentheke nennst du in einem ruhigen Satz, dass es dir nicht gut geht.',
+  trophyWord: {
+    word: 'bene',
+    meaning: 'gut (Adverb)',
+    example: 'Sto bene, grazie.',
+    whyThisWord: 'Bene ist auf A1 das Adverb zu "essere/stare" — Vorsicht: nicht "buono" (Adjektiv) verwenden, wenn das Wohlbefinden gemeint ist. "Sto bene" / "Non sto bene" ist die zentrale italienische Wendung für Befindlichkeit.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Apothekentheke, kleine vorbereitende Geste, ruhiger ehrlicher Blick.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle ask for help',
+  },
+  visualNotes: 'Sanftes Pastellgrün, weiches Tresen-Licht, ruhige Hand am Tresen.',
+}
+
+const brightItalianP6Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "C'è una farmacia qui vicino?",
+    baseText: 'Gibt es eine Apotheke in der Nähe?',
+  },
+  meaning: 'Eine kurze Existenz-Frage auf dem Gehweg auf der Suche nach der nächsten Apotheke.',
+  chunks: [
+    { id: 'c-e', targetText: "C'è", baseText: 'Gibt es' },
+    { id: 'una-farmacia', targetText: 'una farmacia', baseText: 'eine Apotheke' },
+    { id: 'qui-vicino', targetText: 'qui vicino?', baseText: 'hier in der Nähe?' },
+  ],
+  lessonItems: [
+    { id: 'farmacia', targetText: 'farmacia', baseText: 'Apotheke', acceptedAnswers: ['farmacia', 'Farmacia'] },
+    { id: 'c-e-item', targetText: "c'è", baseText: 'es gibt', acceptedAnswers: ["c'è", "c'e", 'ce', "C'è", "C'e"] },
+    { id: 'vicino', targetText: 'vicino', baseText: 'nah / in der Nähe', acceptedAnswers: ['vicino', 'Vicino'] },
+    { id: 'qua', targetText: 'qua', baseText: 'hier (Variante)', acceptedAnswers: ['qua', 'Qua'] },
+  ],
+  build: {
+    targetText: "C'è una farmacia qui vicino?",
+    chips: ["C'è", 'una farmacia', 'qui vicino?', 'qua', 'aperta'],
+  },
+  typeRecall: {
+    before: "C'è una ",
+    answer: 'farmacia',
+    after: ' qui vicino?',
+    acceptedAnswers: ['farmacia', 'Farmacia'],
+    fallbackChoices: ['farmacia', 'banca', 'piazza', 'chiesa'],
+  },
+  speakTarget: {
+    baseCue: 'Gibt es eine Apotheke in der Nähe?',
+    targetPhrase: "C'è una farmacia qui vicino?",
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['farmacia', 'qui', 'vicino'],
+    optionalTokens: ["c'è", 'una', 'scusi'],
+  },
+  sceneCaption: 'Auf dem Bürgersteig sprichst du einen Passanten kurz an und fragst nach der nächsten Apotheke.',
+  trophyWord: {
+    word: 'farmacia',
+    meaning: 'Apotheke',
+    example: "La farmacia è qui vicino.",
+    whyThisWord: 'Farmacia ist auf A1 die italienische Apotheke — am grünen Kreuzschild zu erkennen. Die Existenz-Wendung "c\'è una farmacia" mit Elision von "ci + è" ist die Standardfrage nach kleinen Orten in der Nähe.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Gehweg-Detail mit grünem Apothekenkreuz im Hintergrund, kurze Suchgeste.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'looking for help',
+  },
+  visualNotes: 'Grünes Apothekenkreuz im Hintergrund, warmes Tageslicht, ruhige Such-Bewegung.',
+}
+
+const brightItalianP6Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Vorrei una medicina, per favore.',
+    baseText: 'Ich hätte gerne ein Medikament, bitte.',
+  },
+  meaning: 'Eine knappe, höfliche Bitte um ein Medikament an der Apothekentheke.',
+  chunks: [
+    { id: 'vorrei', targetText: 'Vorrei', baseText: 'Ich hätte gerne' },
+    { id: 'una-medicina', targetText: 'una medicina,', baseText: 'ein Medikament,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'medicina', targetText: 'medicina', baseText: 'Medikament / Arznei', acceptedAnswers: ['medicina', 'Medicina'] },
+    { id: 'una', targetText: 'una', baseText: 'eine', acceptedAnswers: ['una', 'Una'] },
+    { id: 'pasticca', targetText: 'pasticca', baseText: 'Tablette', acceptedAnswers: ['pasticca', 'Pasticca'] },
+    { id: 'forte', targetText: 'forte', baseText: 'stark', acceptedAnswers: ['forte', 'Forte'] },
+  ],
+  build: {
+    targetText: 'Vorrei una medicina, per favore.',
+    chips: ['Vorrei', 'una medicina,', 'per favore.', 'pasticca', 'forte'],
+  },
+  typeRecall: {
+    before: 'Vorrei una ',
+    answer: 'medicina',
+    after: ', per favore.',
+    acceptedAnswers: ['medicina', 'Medicina'],
+    fallbackChoices: ['medicina', 'tisana', 'crema', 'benda'],
+  },
+  speakTarget: {
+    baseCue: 'Ich hätte gerne ein Medikament, bitte.',
+    targetPhrase: 'Vorrei una medicina, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['vorrei', 'medicina', 'per', 'favore'],
+    optionalTokens: ['una', 'pasticca', 'grazie'],
+  },
+  sceneCaption: 'Am Apothekentresen bittest du in einem ruhigen Satz um ein Medikament.',
+  trophyWord: {
+    word: 'medicina',
+    meaning: 'Medikament / Arznei',
+    example: 'Una medicina per il mal di testa.',
+    whyThisWord: 'Medicina ist auf A1 das italienische Wort für "Medikament" und ist auch der Name des Fachgebiets Medizin. In der Apotheke fragt man typisch "una medicina per..." — eine A1-sichere Eröffnung ohne Diagnose-Vokabular.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Apothekentresen mit kleinen Schachteln im Hintergrund, ruhige Bitt-Geste.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'simple ask',
+  },
+  visualNotes: 'Pastellgrün und Weiß, kleine Schachtel-Details, warmes Tresenlicht.',
+}
+
+const brightItalianP6Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Mi fa male qui.',
+    baseText: 'Es tut mir hier weh.',
+  },
+  meaning: 'Eine direkte, gestenbegleitete Schmerzangabe — Stelle zeigen.',
+  chunks: [
+    { id: 'mi-fa-male', targetText: 'Mi fa male', baseText: 'Es tut mir weh' },
+    { id: 'qui', targetText: 'qui.', baseText: 'hier.' },
+  ],
+  lessonItems: [
+    { id: 'male-noun', targetText: 'male', baseText: 'Schmerz / Übel', acceptedAnswers: ['male', 'Male'] },
+    { id: 'mi-fa', targetText: 'mi fa', baseText: 'mir macht (es)', acceptedAnswers: ['mi fa', 'Mi fa'] },
+    { id: 'qui-item', targetText: 'qui', baseText: 'hier', acceptedAnswers: ['qui', 'Qui'] },
+    { id: 'molto', targetText: 'molto', baseText: 'sehr', acceptedAnswers: ['molto', 'Molto'] },
+  ],
+  build: {
+    targetText: 'Mi fa male qui.',
+    chips: ['Mi fa male', 'qui.', 'molto', 'davvero'],
+  },
+  typeRecall: {
+    before: 'Mi fa ',
+    answer: 'male',
+    after: ' qui.',
+    acceptedAnswers: ['male', 'Male'],
+    fallbackChoices: ['male', 'bene', 'caldo', 'freddo'],
+  },
+  speakTarget: {
+    baseCue: 'Es tut mir hier weh.',
+    targetPhrase: 'Mi fa male qui.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['fa', 'male', 'qui'],
+    optionalTokens: ['mi', 'molto', 'davvero'],
+  },
+  sceneCaption: 'Am Empfang oder Tresen zeigst du kurz auf die schmerzende Stelle.',
+  trophyWord: {
+    word: 'male',
+    meaning: 'Schmerz / Übel (Substantiv) — auch Adverb "schlecht"',
+    example: 'Mi fa male la testa.',
+    whyThisWord: 'Male ist auf A1 doppelt: als Substantiv "Schmerz/Übel" in "fa male" (es tut weh / mal di testa) und als Adverb "schlecht" ("sto male"). Der Kontext disambiguiert. Die Konstruktion "mi fa male" wörtlich "mir macht weh" ist der italienische Standard für Beschwerden.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hand zeigt eine Stelle am Körper, ruhiger ernster Blick, weiches Licht.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'pointing gently',
+  },
+  visualNotes: 'Hand-zur-Stelle-Geste im Vordergrund, gedämpftes Apothekenlicht, ruhiger Halt.',
+}
+
+const brightItalianP6Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Ho mal di testa.',
+    baseText: 'Ich habe Kopfschmerzen.',
+  },
+  meaning: 'Eine knappe, klare Angabe eines häufigen Symptoms ohne Diagnose.',
+  chunks: [
+    { id: 'ho', targetText: 'Ho', baseText: 'Ich habe' },
+    { id: 'mal-di-testa', targetText: 'mal di testa.', baseText: 'Kopfschmerzen.' },
+  ],
+  lessonItems: [
+    { id: 'testa', targetText: 'testa', baseText: 'Kopf', acceptedAnswers: ['testa', 'Testa'] },
+    { id: 'mal-di', targetText: 'mal di', baseText: 'Schmerzen an / Übel an', acceptedAnswers: ['mal di', 'Mal di'] },
+    { id: 'stomaco', targetText: 'stomaco', baseText: 'Magen', acceptedAnswers: ['stomaco', 'Stomaco'] },
+    { id: 'gola', targetText: 'gola', baseText: 'Hals', acceptedAnswers: ['gola', 'Gola'] },
+  ],
+  build: {
+    targetText: 'Ho mal di testa.',
+    chips: ['Ho', 'mal di testa.', 'stomaco', 'gola'],
+  },
+  typeRecall: {
+    before: 'Ho mal di ',
+    answer: 'testa',
+    after: '.',
+    acceptedAnswers: ['testa', 'Testa'],
+    fallbackChoices: ['testa', 'stomaco', 'gola', 'denti'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe Kopfschmerzen.',
+    targetPhrase: 'Ho mal di testa.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['ho', 'mal', 'testa'],
+    optionalTokens: ['di', 'molto', 'davvero'],
+  },
+  sceneCaption: 'An der Apothekentheke nennst du knapp dein Symptom — Kopfschmerzen.',
+  trophyWord: {
+    word: 'testa',
+    meaning: 'Kopf',
+    example: 'Mi fa male la testa.',
+    whyThisWord: 'Testa ist auf A1 das italienische Wort für Kopf und bildet das Standard-Muster "mal di + Körperteil" (mal di testa, mal di stomaco, mal di gola). Sehr produktive Konstruktion in der Apotheke.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hand kurz an der Schläfe, ruhiger ernster Blick, Apothekenlicht.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'symptom report',
+  },
+  visualNotes: 'Schläfen-Detail-Geste, gedämpftes Apothekenlicht, ruhiger Atemmoment.',
+}
+
+const brightItalianP6Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Un bicchiere d'acqua, per favore.",
+    baseText: 'Ein Glas Wasser, bitte.',
+  },
+  meaning: 'Eine kurze, höfliche Bitte um Wasser in der Apotheke oder im Café.',
+  chunks: [
+    { id: 'un-bicchiere', targetText: 'Un bicchiere', baseText: 'Ein Glas' },
+    { id: 'd-acqua', targetText: "d'acqua,", baseText: 'Wasser,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'acqua', targetText: 'acqua', baseText: 'Wasser', acceptedAnswers: ['acqua', 'Acqua'] },
+    { id: 'bicchiere', targetText: 'bicchiere', baseText: 'Glas', acceptedAnswers: ['bicchiere', 'Bicchiere'] },
+    { id: 'naturale', targetText: 'naturale', baseText: 'still (Wasser)', acceptedAnswers: ['naturale', 'Naturale'] },
+    { id: 'frizzante', targetText: 'frizzante', baseText: 'sprudelnd', acceptedAnswers: ['frizzante', 'Frizzante'] },
+  ],
+  build: {
+    targetText: "Un bicchiere d'acqua, per favore.",
+    chips: ['Un bicchiere', "d'acqua,", 'per favore.', 'naturale', 'frizzante'],
+  },
+  typeRecall: {
+    before: "Un bicchiere d'",
+    answer: 'acqua',
+    after: ', per favore.',
+    acceptedAnswers: ['acqua', 'Acqua'],
+    fallbackChoices: ['acqua', 'aria', 'aranciata', 'amaro'],
+  },
+  speakTarget: {
+    baseCue: 'Ein Glas Wasser, bitte.',
+    targetPhrase: "Un bicchiere d'acqua, per favore.",
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['bicchiere', 'acqua', 'per', 'favore'],
+    optionalTokens: ['un', 'naturale', 'frizzante', 'grazie'],
+  },
+  sceneCaption: 'An der Apothekentheke bittest du um ein Glas Wasser, um die Tablette einzunehmen.',
+  trophyWord: {
+    word: 'acqua',
+    meaning: 'Wasser',
+    example: "Un bicchiere d'acqua naturale.",
+    whyThisWord: 'Acqua ist auf A1 vokalisch und nimmt deshalb den elidierten Artikel: "l\'acqua" (statt "la acqua"), "un\'acqua" (statt "una acqua"), und in der Wendung "d\'acqua" (statt "di acqua"). Eine der wichtigsten Elisions-Übungen auf A1.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Glas auf der Theke, klares Wasser eingegossen, ruhige Übergabe-Geste.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'quiet relief',
+  },
+  visualNotes: 'Glas-Detail mit Lichtbrechung im Wasser, weiches Tresenlicht, sanfter Wassergeräusch-Beat.',
+}
+
+const brightItalianP6Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "C'è un medico qui vicino?",
+    baseText: 'Gibt es einen Arzt in der Nähe?',
+  },
+  meaning: 'Eine ruhige Frage nach einem Arzt — kein Notruf, sondern Orientierung.',
+  chunks: [
+    { id: 'c-e', targetText: "C'è", baseText: 'Gibt es' },
+    { id: 'un-medico', targetText: 'un medico', baseText: 'einen Arzt' },
+    { id: 'qui-vicino', targetText: 'qui vicino?', baseText: 'hier in der Nähe?' },
+  ],
+  lessonItems: [
+    { id: 'medico', targetText: 'medico', baseText: 'Arzt', acceptedAnswers: ['medico', 'Medico'] },
+    { id: 'dottore', targetText: 'dottore', baseText: 'Doktor (Anrede)', acceptedAnswers: ['dottore', 'Dottore'] },
+    { id: 'qui-vicino-item', targetText: 'qui vicino', baseText: 'hier in der Nähe', acceptedAnswers: ['qui vicino', 'Qui vicino'] },
+    { id: 'ambulatorio', targetText: 'ambulatorio', baseText: 'Sprechzimmer / Praxis', acceptedAnswers: ['ambulatorio', 'Ambulatorio'] },
+  ],
+  build: {
+    targetText: "C'è un medico qui vicino?",
+    chips: ["C'è", 'un medico', 'qui vicino?', 'dottore', 'ambulatorio'],
+  },
+  typeRecall: {
+    before: "C'è un ",
+    answer: 'medico',
+    after: ' qui vicino?',
+    acceptedAnswers: ['medico', 'Medico'],
+    fallbackChoices: ['medico', 'dottore', 'infermiere', 'farmacista'],
+  },
+  speakTarget: {
+    baseCue: 'Gibt es einen Arzt in der Nähe?',
+    targetPhrase: "C'è un medico qui vicino?",
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['medico', 'qui', 'vicino'],
+    optionalTokens: ["c'è", 'un', 'scusi'],
+  },
+  sceneCaption: 'An der Hoteltheke oder am Empfang fragst du höflich nach einem Arzt in der Gegend.',
+  trophyWord: {
+    word: 'medico',
+    meaning: 'Arzt (allgemein)',
+    example: "C'è un medico in albergo?",
+    whyThisWord: 'Medico ist auf A1 der Arzt im Allgemeinen; "dottore" ist die persönliche Anrede ("Dottore, mi può aiutare?"). Im italienischen Alltag wechseln beide flexibel. Achtung: kein Notruf-Vokabular — das wäre "pronto soccorso".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hotelempfang mit kleinem Klingelschalter, ruhige Frage Richtung Empfang.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'asking for guidance',
+  },
+  visualNotes: 'Empfangstresen-Detail, sanftes Hotel-Licht, ruhige Frage-Geste.',
+}
+
+const brightItalianP6Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Sono allergico.',
+    baseText: 'Ich bin allergisch.',
+  },
+  meaning: 'Eine klare, knappe Mitteilung an die Apothekerin oder Bedienung über eine Allergie.',
+  chunks: [
+    { id: 'sono', targetText: 'Sono', baseText: 'Ich bin' },
+    { id: 'allergico', targetText: 'allergico.', baseText: 'allergisch.' },
+  ],
+  lessonItems: [
+    { id: 'allergico', targetText: 'allergico', baseText: 'allergisch (m.)', acceptedAnswers: ['allergico', 'Allergico'] },
+    { id: 'allergica', targetText: 'allergica', baseText: 'allergisch (f.)', acceptedAnswers: ['allergica', 'Allergica'] },
+    { id: 'al-latte', targetText: 'al latte', baseText: 'gegen Milch', acceptedAnswers: ['al latte', 'Al latte'] },
+    { id: 'alle-noci', targetText: 'alle noci', baseText: 'gegen Nüsse', acceptedAnswers: ['alle noci', 'Alle noci'] },
+  ],
+  build: {
+    targetText: 'Sono allergico.',
+    chips: ['Sono', 'allergico.', 'al latte', 'alle noci'],
+  },
+  typeRecall: {
+    before: 'Sono ',
+    answer: 'allergico',
+    after: '.',
+    acceptedAnswers: ['allergico', 'Allergico'],
+    fallbackChoices: ['allergico', 'allergica', 'malato', 'stanco'],
+  },
+  speakTarget: {
+    baseCue: 'Ich bin allergisch.',
+    targetPhrase: 'Sono allergico.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['sono', 'allergico'],
+    optionalTokens: ['allergica', 'latte', 'noci', 'al'],
+  },
+  sceneCaption: 'Beim Bestellen oder in der Apotheke nennst du knapp eine Allergie als Vorabwarnung.',
+  trophyWord: {
+    word: 'allergico',
+    meaning: 'allergisch (maskulin singular)',
+    example: 'Sono allergico al latte.',
+    whyThisWord: 'Allergico kongruiert auf A1 mit dem Subjekt: maskulin "sono allergico", feminin "sono allergica", Plural "siamo allergici / allergiche". Die Präposition "a" verschmilzt mit dem Artikel: al latte, alle noci, ai pesci.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Apotheken- oder Restaurant-Tresen, kurze klare Geste mit erhobener Hand, ruhiger Blick.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'precise disclosure',
+  },
+  visualNotes: 'Klare Handgeste im Vordergrund, sanftes Tresenlicht, ruhiger Sprechmoment.',
+}
+
+const brightItalianP6Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Può chiamare qualcuno, per favore?',
+    baseText: 'Können Sie jemanden rufen, bitte?',
+  },
+  meaning: 'Eine ruhige Bitte um Hilfe von außen, ohne Notfall-Schärfe.',
+  chunks: [
+    { id: 'puo-chiamare', targetText: 'Può chiamare', baseText: 'Können Sie rufen' },
+    { id: 'qualcuno', targetText: 'qualcuno,', baseText: 'jemanden,' },
+    { id: 'per-favore', targetText: 'per favore?', baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'chiamare', targetText: 'chiamare', baseText: 'rufen / anrufen', acceptedAnswers: ['chiamare', 'Chiamare'] },
+    { id: 'qualcuno-item', targetText: 'qualcuno', baseText: 'jemand / jemanden', acceptedAnswers: ['qualcuno', 'Qualcuno'] },
+    { id: 'puo', targetText: 'può', baseText: 'können Sie', acceptedAnswers: ['può', 'puo', 'Può', 'Puo'] },
+    { id: 'subito-item', targetText: 'subito', baseText: 'sofort', acceptedAnswers: ['subito', 'Subito'] },
+  ],
+  build: {
+    targetText: 'Può chiamare qualcuno, per favore?',
+    chips: ['Può chiamare', 'qualcuno,', 'per favore?', 'subito', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Può ',
+    answer: 'chiamare',
+    after: ' qualcuno, per favore?',
+    acceptedAnswers: ['chiamare', 'Chiamare'],
+    fallbackChoices: ['chiamare', 'vedere', 'cercare', 'parlare'],
+  },
+  speakTarget: {
+    baseCue: 'Können Sie jemanden rufen, bitte?',
+    targetPhrase: 'Può chiamare qualcuno, per favore?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['può', 'chiamare', 'qualcuno', 'per', 'favore'],
+    optionalTokens: ['subito', 'scusi'],
+  },
+  sceneCaption: 'Im öffentlichen Raum bittest du eine andere Person, jemanden zu rufen, der weiterhelfen kann.',
+  trophyWord: {
+    word: 'chiamare',
+    meaning: 'rufen / anrufen',
+    example: 'Può chiamare il medico?',
+    whyThisWord: 'Chiamare ist auf A1 das Allzweck-Verb für rufen und telefonisch anrufen. Reflexiv "chiamarsi" heißt "heißen" (Come ti chiami?). Vorsicht: nicht mit deutschem "klagen" verwechseln — kein Verwandtschaftsbezug.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Empfangstresen mit Telefon, kurze Bitt-Geste Richtung Empfangs-Person.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'calm request',
+  },
+  visualNotes: 'Telefon-Detail im Vordergrund, sanftes Empfangslicht, ruhige Bitte-Geste.',
+}
+
+const brightItalianP6Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Adesso sto meglio, grazie.',
+    baseText: 'Jetzt geht es mir besser, danke.',
+  },
+  meaning: 'Eine warme Bestätigung am Ende der Apothekenszene, dass es besser geht.',
+  chunks: [
+    { id: 'adesso', targetText: 'Adesso', baseText: 'Jetzt' },
+    { id: 'sto-meglio', targetText: 'sto meglio,', baseText: 'geht es mir besser,' },
+    { id: 'grazie', targetText: 'grazie.', baseText: 'danke.' },
+  ],
+  lessonItems: [
+    { id: 'meglio', targetText: 'meglio', baseText: 'besser', acceptedAnswers: ['meglio', 'Meglio'] },
+    { id: 'adesso-item', targetText: 'adesso', baseText: 'jetzt', acceptedAnswers: ['adesso', 'Adesso'] },
+    { id: 'molto-meglio', targetText: 'molto meglio', baseText: 'viel besser', acceptedAnswers: ['molto meglio', 'Molto meglio'] },
+    { id: 'peggio', targetText: 'peggio', baseText: 'schlimmer', acceptedAnswers: ['peggio', 'Peggio'] },
+  ],
+  build: {
+    targetText: 'Adesso sto meglio, grazie.',
+    chips: ['Adesso', 'sto meglio,', 'grazie.', 'molto meglio', 'davvero'],
+  },
+  typeRecall: {
+    before: 'Adesso sto ',
+    answer: 'meglio',
+    after: ', grazie.',
+    acceptedAnswers: ['meglio', 'Meglio'],
+    fallbackChoices: ['meglio', 'peggio', 'bene', 'così'],
+  },
+  speakTarget: {
+    baseCue: 'Jetzt geht es mir besser, danke.',
+    targetPhrase: 'Adesso sto meglio, grazie.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['sto', 'meglio', 'grazie'],
+    optionalTokens: ['adesso', 'molto', 'davvero'],
+  },
+  sceneCaption: 'Beim Verlassen der Apotheke drehst du dich kurz um und bestätigst, dass es besser geht.',
+  trophyWord: {
+    word: 'meglio',
+    meaning: 'besser (Vergleichsform von "bene")',
+    example: 'Sto meglio adesso.',
+    whyThisWord: 'Meglio ist auf A1 die unregelmäßige Vergleichsform von "bene" (gut) und steht im Paar mit "peggio" (schlimmer, Vergleich von "male"). Achtung: nicht mit Adjektiv "migliore" verwechseln — meglio ist Adverb, migliore ist Adjektiv.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Apothekenausgang, kurzer Lächeln-Moment im Gehen, warmes Spätlicht.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'warm recovery',
+  },
+  visualNotes: 'Sanfter Übergang Richtung Ausgang, warmes Honiglicht, ruhige Erholungsstimmung.',
+}
+
 const brightFrenchLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -23481,6 +24038,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'italian-a1-practical-6-lesson-1-non-sto-bene',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-1-non-sto-bene',
+      sequence: 1,
+      title: 'Mir geht es nicht gut',
+    },
+    title: 'Mir geht es nicht gut',
+    situation: {
+      en: 'At a pharmacy counter, signal you feel unwell and ask for help.',
+      de: 'An der Apothekentheke sagst du, dass es dir nicht gut geht, und bittest um Hilfe.',
+    },
+    pedagogicalGoal: 'Ein kurzes Befindlichkeitssignal mit Hilfsbitte auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Eine Apotheke in der Nähe?',
+      situation: 'Du fragst nach der nächsten Apotheke.',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson001,
+    },
+  },
+  {
+    id: 'italian-a1-practical-6-lesson-2-farmacia',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-2-farmacia',
+      sequence: 2,
+      title: 'Eine Apotheke in der Nähe?',
+    },
+    title: 'Eine Apotheke in der Nähe?',
+    situation: {
+      en: 'On the sidewalk, ask whether a pharmacy is nearby.',
+      de: 'Auf dem Bürgersteig fragst du nach der nächsten Apotheke.',
+    },
+    pedagogicalGoal: 'Eine Existenz-Frage mit "c\'è" auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ein Medikament, bitte',
+      situation: 'Du bittest in der Apotheke um ein Medikament.',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson002,
+    },
+  },
+  {
+    id: 'italian-a1-practical-6-lesson-3-medicina',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-3-medicina',
+      sequence: 3,
+      title: 'Ein Medikament, bitte',
+    },
+    title: 'Ein Medikament, bitte',
+    situation: {
+      en: 'At a pharmacy counter, ask for medicine in a general way.',
+      de: 'Am Apothekentresen bittest du allgemein um ein Medikament.',
+    },
+    pedagogicalGoal: 'Eine unspezifische Medikamenten-Bitte auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Es tut mir hier weh',
+      situation: 'Du zeigst auf die schmerzende Stelle.',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson003,
+    },
+  },
+  {
+    id: 'italian-a1-practical-6-lesson-4-mi-fa-male',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-4-mi-fa-male',
+      sequence: 4,
+      title: 'Es tut mir hier weh',
+    },
+    title: 'Es tut mir hier weh',
+    situation: {
+      en: 'Point to a body location and say it hurts.',
+      de: 'Du zeigst auf eine Stelle und sagst, dass es weh tut.',
+    },
+    pedagogicalGoal: 'Eine gestenbegleitete Schmerzangabe auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich habe Kopfschmerzen',
+      situation: 'Du nennst dein Symptom — Kopfschmerzen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson004,
+    },
+  },
+  {
+    id: 'italian-a1-practical-6-lesson-5-mal-di-testa',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-5-mal-di-testa',
+      sequence: 5,
+      title: 'Ich habe Kopfschmerzen',
+    },
+    title: 'Ich habe Kopfschmerzen',
+    situation: {
+      en: 'At a pharmacy counter, state a common symptom: headache.',
+      de: 'An der Apothekentheke nennst du das Symptom — Kopfschmerzen.',
+    },
+    pedagogicalGoal: 'Das Standard-Muster "mal di + Körperteil" auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ein Glas Wasser',
+      situation: 'Du bittest um ein Glas Wasser.',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson005,
+    },
+  },
+  {
+    id: 'italian-a1-practical-6-lesson-6-bicchiere-acqua',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-6-bicchiere-acqua',
+      sequence: 6,
+      title: 'Ein Glas Wasser',
+    },
+    title: 'Ein Glas Wasser',
+    situation: {
+      en: 'At a pharmacy or café, ask for a glass of water.',
+      de: 'In der Apotheke oder im Café bittest du um ein Glas Wasser.',
+    },
+    pedagogicalGoal: 'Die Bitte um ein Glas Wasser mit Elision "d\'acqua" abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ein Arzt in der Nähe?',
+      situation: 'Du fragst nach einem Arzt in der Gegend.',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson006,
+    },
+  },
+  {
+    id: 'italian-a1-practical-6-lesson-7-medico',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-7-medico',
+      sequence: 7,
+      title: 'Ein Arzt in der Nähe?',
+    },
+    title: 'Ein Arzt in der Nähe?',
+    situation: {
+      en: 'At a hotel desk, ask whether a doctor is nearby.',
+      de: 'An der Hoteltheke fragst du nach einem Arzt in der Gegend.',
+    },
+    pedagogicalGoal: 'Die ruhige Frage nach einem Arzt ohne Notruf-Eskalation auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich bin allergisch',
+      situation: 'Du nennst eine Allergie als Vorwarnung.',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson007,
+    },
+  },
+  {
+    id: 'italian-a1-practical-6-lesson-8-allergico',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-8-allergico',
+      sequence: 8,
+      title: 'Ich bin allergisch',
+    },
+    title: 'Ich bin allergisch',
+    situation: {
+      en: 'Disclose an allergy at a pharmacy, restaurant or hotel.',
+      de: 'In Apotheke, Restaurant oder Hotel nennst du eine Allergie.',
+    },
+    pedagogicalGoal: 'Eine knappe Allergie-Mitteilung mit kopulärem "sono + Adjektiv" auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Können Sie jemanden rufen?',
+      situation: 'Du bittest, jemanden zur Hilfe zu rufen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson008,
+    },
+  },
+  {
+    id: 'italian-a1-practical-6-lesson-9-chiamare-qualcuno',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-9-chiamare-qualcuno',
+      sequence: 9,
+      title: 'Können Sie jemanden rufen?',
+    },
+    title: 'Können Sie jemanden rufen?',
+    situation: {
+      en: 'Ask another person to call for help (non-emergency).',
+      de: 'Du bittest, jemanden zur Hilfe zu rufen — kein Notruf.',
+    },
+    pedagogicalGoal: 'Eine ruhige Bitte um Drittunterstützung auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Jetzt geht es mir besser',
+      situation: 'Du schließt die Szene mit "Es geht mir besser".',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson009,
+    },
+  },
+  {
+    id: 'italian-a1-practical-6-lesson-10-sto-meglio',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-6-lesson-10-sto-meglio',
+      sequence: 10,
+      title: 'Jetzt geht es mir besser',
+    },
+    title: 'Jetzt geht es mir besser',
+    situation: {
+      en: 'Close the health interaction with "I feel better, thanks".',
+      de: 'Am Ende der Szene bestätigst du warm, dass es besser geht.',
+    },
+    pedagogicalGoal: 'Eine warme Schluss-Aussage mit Komparativ "meglio" auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Italian A1 Practical 6 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP6Lesson010,
+    },
+  },
+  {
     id: 'french-a1-practical-1-lesson-1-bonjour-francais',
     pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
@@ -26482,6 +27369,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
     GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
     GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
     GUIDED_TODAY_PATH_FRENCH_THREE_METADATA,
