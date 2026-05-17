@@ -1,7 +1,11 @@
 import { CheckCircle2, ClipboardCheck, X } from 'lucide-react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getGuidedPathLessons, type GuidedPathMetadata } from '@/data/guidedLessons'
+import {
+  getGuidedPathLessons,
+  type GuidedPathMetadata,
+  type GuidedTargetLanguage,
+} from '@/data/guidedLessons'
 import { formatGuidedPathLabel } from '@/lib/guidedPathLabels'
 import { useTranslation } from '@/hooks/useTranslation'
 import type { TodayProgressState } from '@/lib/todayProgress'
@@ -14,30 +18,13 @@ type GuidedPathDirectoryProps = {
   selectedPathId: string
   progress: TodayProgressState
   pathCheckHref: string
+  targetLanguage?: GuidedTargetLanguage
   onSelectPath: (pathId: string) => void
   onClose: () => void
 }
 
-const GUIDED_A1_PRACTICAL_DIRECTORY_PATH_IDS = [
-  'english-a1-practical-1',
-  'english-a1-practical-2',
-  'english-a1-practical-3',
-  'english-a1-practical-4',
-  'english-a1-practical-5',
-  'english-a1-practical-6',
-  'english-a1-practical-7',
-  'english-a1-practical-8',
-  'english-a1-practical-9',
-  'english-a1-practical-10',
-] as const
-
-const GUIDED_PATH_DIRECTORY_GROUPS = [
-  {
-    id: 'practical',
-    categoryLabel: 'Praktisch',
-    pathIds: GUIDED_A1_PRACTICAL_DIRECTORY_PATH_IDS,
-  },
-] as const
+const DIRECTORY_GROUP_ID = 'practical'
+const DIRECTORY_GROUP_CATEGORY_LABEL = 'Praktisch'
 
 export function GuidedPathDirectory({
   open,
@@ -45,17 +32,22 @@ export function GuidedPathDirectory({
   selectedPathId,
   progress,
   pathCheckHref,
+  targetLanguage = 'English',
   onSelectPath,
   onClose,
 }: GuidedPathDirectoryProps) {
   const { t } = useTranslation()
   const selectedPath = pathOptions.find((path) => path.id === selectedPathId) ?? pathOptions[0]
-  const groupedPathOptions = GUIDED_PATH_DIRECTORY_GROUPS.map((group) => ({
-    ...group,
-    paths: group.pathIds
-      .map((pathId) => pathOptions.find((path) => path.id === pathId))
-      .filter((path): path is GuidedPathMetadata => Boolean(path)),
-  })).filter((group) => group.paths.length > 0)
+  const pathsForSelectedLanguage = pathOptions.filter((path) => path.targetLanguage === targetLanguage)
+  const groupedPathOptions = pathsForSelectedLanguage.length > 0
+    ? [
+        {
+          id: DIRECTORY_GROUP_ID,
+          categoryLabel: DIRECTORY_GROUP_CATEGORY_LABEL,
+          paths: pathsForSelectedLanguage,
+        },
+      ]
+    : []
 
   useEffect(() => {
     if (!open) return undefined
