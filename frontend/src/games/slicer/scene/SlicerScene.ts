@@ -575,7 +575,7 @@ export class SlicerScene extends Phaser.Scene {
           mastered: Boolean(card.word?.mastered),
         };
         this.resolveCard(card, 'slice');
-        if (this.activeCards.length === 0) break;
+        break;
       }
     }
     this.lastPointer = current;
