@@ -335,6 +335,17 @@ const GUIDED_TODAY_PATH_SPANISH_THREE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA: GuidedPathMetadata = {
+  id: 'spanish-a1-practical-4',
+  title: 'Spanish A1 Practical 4',
+  shortTitle: 'A1 Practical 4',
+  subtitle: 'Essen, Café, Laden, Small Talk',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Spanish',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA: GuidedPathMetadata = {
   id: 'italian-a1-practical-1',
   title: 'Italian A1 Practical 1',
@@ -11218,6 +11229,548 @@ const brightSpanishP3Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Haltestellen-Schild im weichen Abendlicht, ruhiger Atemzug, sanfte Hilfsgeste.',
 }
 
+const brightSpanishP4Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Una mesa para dos, por favor.',
+    baseText: 'Einen Tisch für zwei, bitte.',
+  },
+  meaning: 'Eine kurze, freundliche Bitte um einen Tisch am Empfang eines Restaurants oder Cafés.',
+  chunks: [
+    { id: 'una-mesa', targetText: 'Una mesa', baseText: 'Einen Tisch' },
+    { id: 'para-dos', targetText: 'para dos,', baseText: 'für zwei,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'una', targetText: 'una', baseText: 'einen / eine', acceptedAnswers: ['una', 'Una'] },
+    { id: 'mesa', targetText: 'mesa', baseText: 'Tisch', acceptedAnswers: ['mesa', 'Mesa'] },
+    { id: 'para', targetText: 'para', baseText: 'für', acceptedAnswers: ['para', 'Para'] },
+    { id: 'dos', targetText: 'dos', baseText: 'zwei', acceptedAnswers: ['dos', 'Dos'] },
+  ],
+  build: {
+    targetText: 'Una mesa para dos, por favor.',
+    chips: ['Una mesa', 'para dos,', 'por favor.', 'gracias', 'fuera'],
+  },
+  typeRecall: {
+    before: 'Una ',
+    answer: 'mesa',
+    after: ' para dos, por favor.',
+    acceptedAnswers: ['mesa', 'Mesa'],
+    fallbackChoices: ['mesa', 'silla', 'fila', 'barra'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Tisch für zwei, bitte.',
+    targetPhrase: 'Una mesa para dos, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['una', 'mesa', 'dos', 'por', 'favor'],
+    optionalTokens: ['para', 'gracias', 'fuera'],
+  },
+  sceneCaption: 'Am Hoststand fragst du höflich nach einem Tisch für zwei Personen.',
+  trophyWord: {
+    word: 'mesa',
+    meaning: 'Tisch',
+    example: 'Una mesa para dos.',
+    whyThisWord: 'Mesa ist auf A1 das zentrale Service-Wort für jedes Restaurant — kurz, eindeutig, sofort einsetzbar.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Restauranteingang am Abend, warmes Licht, Hostess mit Reservierungsbuch.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'arriving at a small place',
+  },
+  visualNotes: 'Eingangsbereich, sanftes Schummerlicht, freundliche Geste in Richtung Tisch.',
+}
+
+const brightSpanishP4Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿La carta, por favor?',
+    baseText: 'Die Karte, bitte?',
+  },
+  meaning: 'Eine kurze, höfliche Bitte um die Speisekarte am Tisch.',
+  chunks: [
+    { id: 'la-carta', targetText: '¿La carta,', baseText: 'Die Karte,' },
+    { id: 'por-favor', targetText: 'por favor?', baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'la', targetText: 'la', baseText: 'die (fem.)', acceptedAnswers: ['la', 'La'] },
+    { id: 'carta', targetText: 'carta', baseText: 'Speisekarte', acceptedAnswers: ['carta', 'Carta'] },
+    { id: 'hoy', targetText: 'hoy', baseText: 'heute', acceptedAnswers: ['hoy', 'Hoy'] },
+    { id: 'recomendar', targetText: 'recomendar', baseText: 'empfehlen', acceptedAnswers: ['recomendar', 'Recomendar'] },
+  ],
+  build: {
+    targetText: '¿La carta, por favor?',
+    chips: ['¿La carta,', 'por favor?', 'hoy', 'gracias', 'recomendar'],
+  },
+  typeRecall: {
+    before: '¿La ',
+    answer: 'carta',
+    after: ', por favor?',
+    acceptedAnswers: ['carta', 'Carta'],
+    fallbackChoices: ['carta', 'menú', 'cuenta', 'lista'],
+  },
+  speakTarget: {
+    baseCue: 'Die Karte, bitte?',
+    targetPhrase: '¿La carta, por favor?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['carta', 'por', 'favor'],
+    optionalTokens: ['la', 'hoy', 'gracias'],
+  },
+  sceneCaption: 'Du sitzt am Tisch und bittest die Bedienung höflich um die Speisekarte.',
+  trophyWord: {
+    word: 'carta',
+    meaning: 'Speisekarte',
+    example: 'La carta, por favor.',
+    whyThisWord: 'La carta ist in Spanien das Standardwort für Speisekarte; menú bedeutet dort meist „Tagesmenü" — wichtige Unterscheidung schon auf A1.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tisch im Restaurant, Bedienung reicht die Karte herüber, ruhige Übergabe.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'menu request',
+  },
+  visualNotes: 'Detail auf Speisekarte, warmes Licht, gemütliche Tischszene.',
+}
+
+const brightSpanishP4Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Un té, por favor.',
+    baseText: 'Einen Tee, bitte.',
+  },
+  meaning: 'Eine knappe, höfliche Bestellung am Tresen oder am Tisch.',
+  chunks: [
+    { id: 'un-te', targetText: 'Un té,', baseText: 'Einen Tee,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'un', targetText: 'un', baseText: 'einen', acceptedAnswers: ['un', 'Un'] },
+    { id: 'te', targetText: 'té', baseText: 'Tee', acceptedAnswers: ['té', 'te', 'Té', 'Te'] },
+    { id: 'con-leche', targetText: 'con leche', baseText: 'mit Milch', acceptedAnswers: ['con leche', 'Con leche'] },
+    { id: 'agua', targetText: 'agua', baseText: 'Wasser', acceptedAnswers: ['agua', 'Agua'] },
+  ],
+  build: {
+    targetText: 'Un té, por favor.',
+    chips: ['Un té,', 'por favor.', 'con leche', 'agua', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Un ',
+    answer: 'té',
+    after: ', por favor.',
+    acceptedAnswers: ['té', 'te', 'Té', 'Te'],
+    fallbackChoices: ['té', 'agua', 'zumo', 'leche'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Tee, bitte.',
+    targetPhrase: 'Un té, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['un', 'té', 'por', 'favor'],
+    optionalTokens: ['con', 'leche', 'gracias'],
+  },
+  sceneCaption: 'Am Tresen oder am Tisch nennst du kurz, was du trinken möchtest.',
+  trophyWord: {
+    word: 'té',
+    meaning: 'Tee',
+    example: 'Un té con leche, por favor.',
+    whyThisWord: 'Té ist auf A1 das direkte Wort für Tee und bildet das Paar mit „café" für jede Getränkebestellung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tasse Tee mit Dampf, warmes Tresenlicht, ruhige Bestellung.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'warm tea order',
+  },
+  visualNotes: 'Detail auf Teetasse und Untertasse, warmes Goldlicht.',
+}
+
+const brightSpanishP4Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Sin azúcar, por favor.',
+    baseText: 'Ohne Zucker, bitte.',
+  },
+  meaning: 'Eine kurze Präferenz beim Bestellen — du verzichtest auf eine Zutat.',
+  chunks: [
+    { id: 'sin-azucar', targetText: 'Sin azúcar,', baseText: 'Ohne Zucker,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'sin', targetText: 'sin', baseText: 'ohne', acceptedAnswers: ['sin', 'Sin'] },
+    { id: 'azucar', targetText: 'azúcar', baseText: 'Zucker', acceptedAnswers: ['azúcar', 'azucar', 'Azúcar', 'Azucar'] },
+    { id: 'leche', targetText: 'leche', baseText: 'Milch', acceptedAnswers: ['leche', 'Leche'] },
+    { id: 'dulce', targetText: 'dulce', baseText: 'süß', acceptedAnswers: ['dulce', 'Dulce'] },
+  ],
+  build: {
+    targetText: 'Sin azúcar, por favor.',
+    chips: ['Sin azúcar,', 'por favor.', 'con leche', 'dulce', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Sin ',
+    answer: 'azúcar',
+    after: ', por favor.',
+    acceptedAnswers: ['azúcar', 'azucar', 'Azúcar', 'Azucar'],
+    fallbackChoices: ['azúcar', 'leche', 'sal', 'hielo'],
+  },
+  speakTarget: {
+    baseCue: 'Ohne Zucker, bitte.',
+    targetPhrase: 'Sin azúcar, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['sin', 'azúcar', 'por', 'favor'],
+    optionalTokens: ['leche', 'dulce', 'gracias'],
+  },
+  sceneCaption: 'Beim Bestellen verzichtest du höflich auf eine Zutat, ohne ein langes Gespräch zu starten.',
+  trophyWord: {
+    word: 'azúcar',
+    meaning: 'Zucker',
+    example: 'Café sin azúcar, por favor.',
+    whyThisWord: 'Azúcar ist auf A1 das direkte Zutaten-Wort am Tresen und reicht für jede einfache Anpassung der Bestellung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Zuckerschale wird auf dem Tresen zur Seite geschoben, kurze freundliche Geste.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'small preference at the counter',
+  },
+  visualNotes: 'Detail auf Zuckerschale, sanftes Tresenlicht, ruhige Handgeste.',
+}
+
+const brightSpanishP4Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Es fresco?',
+    baseText: 'Ist es frisch?',
+  },
+  meaning: 'Eine kurze Frage zur Frische eines Lebensmittels vor der Bestellung.',
+  chunks: [
+    { id: 'es', targetText: '¿Es', baseText: 'Ist es' },
+    { id: 'fresco', targetText: 'fresco?', baseText: 'frisch?' },
+  ],
+  lessonItems: [
+    { id: 'es', targetText: 'es', baseText: 'ist', acceptedAnswers: ['es', 'Es'] },
+    { id: 'fresco', targetText: 'fresco', baseText: 'frisch', acceptedAnswers: ['fresco', 'Fresco'] },
+    { id: 'caliente', targetText: 'caliente', baseText: 'warm', acceptedAnswers: ['caliente', 'Caliente'] },
+    { id: 'frio', targetText: 'frío', baseText: 'kalt', acceptedAnswers: ['frío', 'frio', 'Frío', 'Frio'] },
+  ],
+  build: {
+    targetText: '¿Es fresco?',
+    chips: ['¿Es', 'fresco?', 'caliente', 'frío', 'hoy'],
+  },
+  typeRecall: {
+    before: '¿Es ',
+    answer: 'fresco',
+    after: '?',
+    acceptedAnswers: ['fresco', 'Fresco'],
+    fallbackChoices: ['fresco', 'caliente', 'frío', 'maduro'],
+  },
+  speakTarget: {
+    baseCue: 'Ist es frisch?',
+    targetPhrase: '¿Es fresco?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['es', 'fresco'],
+    optionalTokens: ['hoy', 'por', 'favor'],
+  },
+  sceneCaption: 'Am Marktstand oder Tresen tippst du kurz auf das Lebensmittel und fragst, ob es frisch ist.',
+  trophyWord: {
+    word: 'fresco',
+    meaning: 'frisch',
+    example: 'El pescado está fresco.',
+    whyThisWord: 'Fresco ist auf A1 das einfache Qualitätswort für Lebensmittel und reicht in Bäckerei, Markt und Café.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Marktstand mit Lebensmitteln, ein Fingerzeig auf das gewünschte Stück, prüfender Blick.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'simple freshness check',
+  },
+  visualNotes: 'Detail auf Auslage, warme Stand-Beleuchtung, leichte Frage in der Geste.',
+}
+
+const brightSpanishP4Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Nada más, gracias.',
+    baseText: 'Nichts mehr, danke.',
+  },
+  meaning: 'Eine ruhige Antwort auf die Service-Rückfrage „¿Algo más?" — du schließt die Bestellung höflich.',
+  chunks: [
+    { id: 'nada-mas', targetText: 'Nada más,', baseText: 'Nichts mehr,' },
+    { id: 'gracias', targetText: 'gracias.', baseText: 'danke.' },
+  ],
+  lessonItems: [
+    { id: 'nada', targetText: 'nada', baseText: 'nichts', acceptedAnswers: ['nada', 'Nada'] },
+    { id: 'mas', targetText: 'más', baseText: 'mehr', acceptedAnswers: ['más', 'mas', 'Más', 'Mas'] },
+    { id: 'gracias', targetText: 'gracias', baseText: 'danke', acceptedAnswers: ['gracias', 'Gracias'] },
+    { id: 'suficiente', targetText: 'suficiente', baseText: 'genug', acceptedAnswers: ['suficiente', 'Suficiente'] },
+  ],
+  build: {
+    targetText: 'Nada más, gracias.',
+    chips: ['Nada más,', 'gracias.', 'suficiente', 'todo', 'la cuenta'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Nada',
+    after: ' más, gracias.',
+    acceptedAnswers: ['nada', 'Nada'],
+    fallbackChoices: ['Nada', 'Algo', 'Otro', 'Más'],
+  },
+  speakTarget: {
+    baseCue: 'Nichts mehr, danke.',
+    targetPhrase: 'Nada más, gracias.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['nada', 'más', 'gracias'],
+    optionalTokens: ['suficiente', 'todo'],
+  },
+  sceneCaption: 'Auf die Service-Rückfrage „¿Algo más?" schließt du die Bestellung freundlich ab.',
+  trophyWord: {
+    word: 'nada',
+    meaning: 'nichts',
+    example: 'Nada más, gracias.',
+    whyThisWord: 'Nada ist auf A1 die direkte, höfliche Verneinung — kurz, klar, kein Drama.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tresen-Moment, ruhiges Lächeln nach der Frage „¿Algo más?", warme Beleuchtung.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'closing the order',
+  },
+  visualNotes: 'Tresen mit Tasse, ruhige Handgeste, warmes Goldlicht.',
+}
+
+const brightSpanishP4Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Para llevar, por favor.',
+    baseText: 'Zum Mitnehmen, bitte.',
+  },
+  meaning: 'Eine kurze, höfliche Bitte am Tresen, die Bestellung mitzunehmen statt vor Ort zu essen.',
+  chunks: [
+    { id: 'para-llevar', targetText: 'Para llevar,', baseText: 'Zum Mitnehmen,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'para', targetText: 'para', baseText: 'zum / für', acceptedAnswers: ['para', 'Para'] },
+    { id: 'llevar', targetText: 'llevar', baseText: 'mitnehmen / tragen', acceptedAnswers: ['llevar', 'Llevar'] },
+    { id: 'aqui', targetText: 'aquí', baseText: 'hier', acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+    { id: 'comer', targetText: 'comer', baseText: 'essen', acceptedAnswers: ['comer', 'Comer'] },
+  ],
+  build: {
+    targetText: 'Para llevar, por favor.',
+    chips: ['Para llevar,', 'por favor.', 'aquí', 'comer', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Para ',
+    answer: 'llevar',
+    after: ', por favor.',
+    acceptedAnswers: ['llevar', 'Llevar'],
+    fallbackChoices: ['llevar', 'comer', 'tomar', 'beber'],
+  },
+  speakTarget: {
+    baseCue: 'Zum Mitnehmen, bitte.',
+    targetPhrase: 'Para llevar, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['para', 'llevar', 'por', 'favor'],
+    optionalTokens: ['aquí', 'comer', 'gracias'],
+  },
+  sceneCaption: 'Am Tresen sagst du kurz und freundlich, dass du die Bestellung mitnehmen möchtest.',
+  trophyWord: {
+    word: 'llevar',
+    meaning: 'mitnehmen / tragen',
+    example: 'Un café para llevar.',
+    whyThisWord: 'Llevar ist auf A1 das Mitnehm-Verb am Tresen und bildet die feste Wendung „para llevar" für jeden To-Go-Moment.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Becher mit Pappdeckel auf der Theke, kurze Übergabegeste, warme Schiebebewegung Richtung Tür.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'to-go pickup',
+  },
+  visualNotes: 'Coffee-to-go-Becher im warmen Licht, Tresenkante, schneller Übergabemoment.',
+}
+
+const brightSpanishP4Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Estaba muy bueno.',
+    baseText: 'Es war sehr gut.',
+  },
+  meaning: 'Ein kurzer, lockerer Kommentar nach dem Essen oder Trinken — du gibst ein positives Urteil ab.',
+  chunks: [
+    { id: 'estaba', targetText: 'Estaba', baseText: 'Es war' },
+    { id: 'muy-bueno', targetText: 'muy bueno.', baseText: 'sehr gut.' },
+  ],
+  lessonItems: [
+    { id: 'estaba', targetText: 'estaba', baseText: 'es war (feste A1-Wendung)', acceptedAnswers: ['estaba', 'Estaba'] },
+    { id: 'muy', targetText: 'muy', baseText: 'sehr', acceptedAnswers: ['muy', 'Muy'] },
+    { id: 'bueno', targetText: 'bueno', baseText: 'gut', acceptedAnswers: ['bueno', 'Bueno'] },
+    { id: 'rico', targetText: 'rico', baseText: 'lecker', acceptedAnswers: ['rico', 'Rico'] },
+  ],
+  build: {
+    targetText: 'Estaba muy bueno.',
+    chips: ['Estaba', 'muy bueno.', 'rico', 'gracias', 'todo'],
+  },
+  typeRecall: {
+    before: 'Estaba muy ',
+    answer: 'bueno',
+    after: '.',
+    acceptedAnswers: ['bueno', 'Bueno'],
+    fallbackChoices: ['bueno', 'rico', 'mejor', 'genial'],
+  },
+  speakTarget: {
+    baseCue: 'Es war sehr gut.',
+    targetPhrase: 'Estaba muy bueno.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['estaba', 'bueno'],
+    optionalTokens: ['muy', 'rico', 'todo'],
+  },
+  sceneCaption: 'Nach dem Essen drehst du dich kurz zur Bedienung und gibst eine knappe, freundliche Rückmeldung.',
+  trophyWord: {
+    word: 'bueno',
+    meaning: 'gut',
+    example: 'Estaba muy bueno, gracias.',
+    whyThisWord: 'Bueno ist auf A1 das einfache positive Urteil und bildet zusammen mit „estaba" die natürliche Iberische Lob-Wendung nach dem Essen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Leerer Teller am Ende der Mahlzeit, ruhige Geste nach hinten zur Bedienung, warmes Licht.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'satisfied wrap-up',
+  },
+  visualNotes: 'Detail auf leeren Teller, sanftes Abendlicht, zufriedener Atem.',
+}
+
+const brightSpanishP4Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Hace buen tiempo hoy.',
+    baseText: 'Es ist heute schönes Wetter.',
+  },
+  meaning: 'Eine lockere Small-Talk-Bemerkung über das Wetter, während du an der Theke wartest.',
+  chunks: [
+    { id: 'hace', targetText: 'Hace', baseText: 'Es ist' },
+    { id: 'buen-tiempo', targetText: 'buen tiempo', baseText: 'schönes Wetter' },
+    { id: 'hoy', targetText: 'hoy.', baseText: 'heute.' },
+  ],
+  lessonItems: [
+    { id: 'hace', targetText: 'hace', baseText: 'es ist (Wetter)', acceptedAnswers: ['hace', 'Hace'] },
+    { id: 'buen', targetText: 'buen', baseText: 'gutes / schönes', acceptedAnswers: ['buen', 'Buen'] },
+    { id: 'tiempo', targetText: 'tiempo', baseText: 'Wetter / Zeit', acceptedAnswers: ['tiempo', 'Tiempo'] },
+    { id: 'hoy', targetText: 'hoy', baseText: 'heute', acceptedAnswers: ['hoy', 'Hoy'] },
+  ],
+  build: {
+    targetText: 'Hace buen tiempo hoy.',
+    chips: ['Hace', 'buen tiempo', 'hoy.', 'calor', 'sol'],
+  },
+  typeRecall: {
+    before: 'Hace buen ',
+    answer: 'tiempo',
+    after: ' hoy.',
+    acceptedAnswers: ['tiempo', 'Tiempo'],
+    fallbackChoices: ['tiempo', 'calor', 'sol', 'día'],
+  },
+  speakTarget: {
+    baseCue: 'Es ist heute schönes Wetter.',
+    targetPhrase: 'Hace buen tiempo hoy.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['hace', 'tiempo', 'hoy'],
+    optionalTokens: ['buen', 'calor', 'sol'],
+  },
+  sceneCaption: 'Während du an der Theke wartest, sagst du locker etwas Nettes über den Tag.',
+  trophyWord: {
+    word: 'tiempo',
+    meaning: 'Wetter / Zeit',
+    example: 'Hace buen tiempo.',
+    whyThisWord: 'Tiempo trägt auf A1 zwei Bedeutungen — Wetter und Zeit. Im hace-Konstrukt steht es für „das Wetter ist..."; im Alltag öffnet es jede Small-Talk-Zeile zum Tag.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café-Fenster mit Sonnenschein, Blick nach draußen, ruhige Bemerkung zwischen Bestellungen.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'small talk at the counter',
+  },
+  visualNotes: 'Fensterlicht, warmer Glanz, leichte zufriedene Geste.',
+}
+
+const brightSpanishP4Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'La cuenta, por favor.',
+    baseText: 'Die Rechnung, bitte.',
+  },
+  meaning: 'Eine kurze, höfliche Bitte um die Rechnung am Ende der Mahlzeit.',
+  chunks: [
+    { id: 'la-cuenta', targetText: 'La cuenta,', baseText: 'Die Rechnung,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'la', targetText: 'la', baseText: 'die (fem.)', acceptedAnswers: ['la', 'La'] },
+    { id: 'cuenta', targetText: 'cuenta', baseText: 'Rechnung', acceptedAnswers: ['cuenta', 'Cuenta'] },
+    { id: 'pagar', targetText: 'pagar', baseText: 'zahlen', acceptedAnswers: ['pagar', 'Pagar'] },
+    { id: 'todo', targetText: 'todo', baseText: 'alles', acceptedAnswers: ['todo', 'Todo'] },
+  ],
+  build: {
+    targetText: 'La cuenta, por favor.',
+    chips: ['La cuenta,', 'por favor.', 'pagar', 'todo', 'gracias'],
+  },
+  typeRecall: {
+    before: 'La ',
+    answer: 'cuenta',
+    after: ', por favor.',
+    acceptedAnswers: ['cuenta', 'Cuenta'],
+    fallbackChoices: ['cuenta', 'carta', 'mesa', 'recibo'],
+  },
+  speakTarget: {
+    baseCue: 'Die Rechnung, bitte.',
+    targetPhrase: 'La cuenta, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['cuenta', 'por', 'favor'],
+    optionalTokens: ['la', 'pagar', 'gracias'],
+  },
+  sceneCaption: 'Am Ende der Mahlzeit hebst du kurz die Hand und bittest höflich um die Rechnung.',
+  trophyWord: {
+    word: 'cuenta',
+    meaning: 'Rechnung',
+    example: 'La cuenta, por favor.',
+    whyThisWord: 'Cuenta ist in Spanien die feste Wendung für die Restaurantrechnung — nicht zu verwechseln mit „cuánto" (wie viel) trotz ähnlicher Form.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tisch nach dem Essen, kurze Geste in Richtung Bedienung, ruhige Abschluss-Stimmung.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'closing the meal',
+  },
+  visualNotes: 'Detail auf leeren Teller und Glas, warmes Abendlicht.',
+}
+
 const brightItalianLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -20065,6 +20618,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'spanish-a1-practical-4-001-una-mesa',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-001-una-mesa',
+      sequence: 1,
+      title: 'Einen Tisch, bitte',
+    },
+    title: 'Einen Tisch, bitte',
+    situation: {
+      en: 'At a restaurant entrance, politely ask for a table.',
+      de: 'Am Empfang fragst du höflich nach einem Tisch.',
+    },
+    pedagogicalGoal: 'Eine kurze, freundliche Bitte um einen Tisch im Restaurant oder Café formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Die Karte, bitte',
+      situation: 'Du bittest am Tisch um die Speisekarte.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson001,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-4-002-la-carta',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-002-la-carta',
+      sequence: 2,
+      title: 'Die Karte, bitte',
+    },
+    title: 'Die Karte, bitte',
+    situation: {
+      en: 'Seated at a table, politely ask for the menu.',
+      de: 'Am Tisch sitzend bittest du höflich um die Speisekarte.',
+    },
+    pedagogicalGoal: 'Auf Spanisch um die Speisekarte bitten und das iberische „la carta" sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Einen Tee, bitte',
+      situation: 'Du bestellst ein einfaches Getränk.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson002,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-4-003-un-te',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-003-un-te',
+      sequence: 3,
+      title: 'Einen Tee, bitte',
+    },
+    title: 'Einen Tee, bitte',
+    situation: {
+      en: 'At a café table or counter, order a tea with a polite marker.',
+      de: 'Am Café-Tisch oder Tresen bestellst du höflich einen Tee.',
+    },
+    pedagogicalGoal: 'Eine kurze, klare Getränkebestellung auf Spanisch — Pendant zu „Un café" aus P1.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ohne Zucker',
+      situation: 'Du verzichtest höflich auf eine Zutat.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson003,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-4-004-sin-azucar',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-004-sin-azucar',
+      sequence: 4,
+      title: 'Ohne Zucker',
+    },
+    title: 'Ohne Zucker',
+    situation: {
+      en: 'At a café counter, politely refuse sugar on your drink.',
+      de: 'Am Tresen verzichtest du höflich auf Zucker im Getränk.',
+    },
+    pedagogicalGoal: 'Eine einfache „ohne ..."-Präferenz beim Bestellen ausdrücken.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist es frisch?',
+      situation: 'Du fragst nach der Frische eines Lebensmittels.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson004,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-4-005-es-fresco',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-005-es-fresco',
+      sequence: 5,
+      title: 'Ist es frisch?',
+    },
+    title: 'Ist es frisch?',
+    situation: {
+      en: 'At a market or counter, ask politely whether the food is fresh.',
+      de: 'Am Marktstand oder Tresen fragst du höflich nach der Frische.',
+    },
+    pedagogicalGoal: 'Eine kurze Qualitätsfrage zu einem Lebensmittel höflich stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Nichts mehr, danke',
+      situation: 'Du schließt die Bestellung freundlich ab.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson005,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-4-006-nada-mas',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-006-nada-mas',
+      sequence: 6,
+      title: 'Nichts mehr, danke',
+    },
+    title: 'Nichts mehr, danke',
+    situation: {
+      en: 'Reply to the server\'s “anything else?” with a polite close.',
+      de: 'Du antwortest auf „¿Algo más?" und schließt die Bestellung freundlich ab.',
+    },
+    pedagogicalGoal: 'Auf Spanisch eine Bestellung höflich abschließen mit der festen Wendung „Nada más, gracias".',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Zum Mitnehmen',
+      situation: 'Du bittest, die Bestellung mitzunehmen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson006,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-4-007-para-llevar',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-007-para-llevar',
+      sequence: 7,
+      title: 'Zum Mitnehmen',
+    },
+    title: 'Zum Mitnehmen',
+    situation: {
+      en: 'At a café counter, ask politely for the order to be takeaway.',
+      de: 'Am Tresen sagst du, dass du die Bestellung mitnehmen möchtest.',
+    },
+    pedagogicalGoal: 'Die feste iberische To-Go-Wendung „para llevar" sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Es war sehr gut',
+      situation: 'Du gibst eine kurze positive Rückmeldung nach dem Essen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson007,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-4-008-estaba-bueno',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-008-estaba-bueno',
+      sequence: 8,
+      title: 'Es war sehr gut',
+    },
+    title: 'Es war sehr gut',
+    situation: {
+      en: 'After the meal, give a short positive verdict.',
+      de: 'Nach dem Essen gibst du eine kurze positive Rückmeldung.',
+    },
+    pedagogicalGoal: 'Eine kurze positive Rückmeldung als feste A1-Wendung abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Schönes Wetter heute',
+      situation: 'Du sagst etwas Lockeres über den Tag.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson008,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-4-009-hace-buen-tiempo',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-009-hace-buen-tiempo',
+      sequence: 9,
+      title: 'Schönes Wetter heute',
+    },
+    title: 'Schönes Wetter heute',
+    situation: {
+      en: 'In small talk with a server, comment briefly on the day or weather.',
+      de: 'Beim Small Talk mit der Bedienung sagst du locker etwas über den Tag.',
+    },
+    pedagogicalGoal: 'Einen kurzen lockeren Small-Talk-Satz auf Spanisch über das Wetter äußern.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Die Rechnung, bitte',
+      situation: 'Du bittest am Ende der Mahlzeit um die Rechnung.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson009,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-4-010-la-cuenta',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-4-010-la-cuenta',
+      sequence: 10,
+      title: 'Die Rechnung, bitte',
+    },
+    title: 'Die Rechnung, bitte',
+    situation: {
+      en: 'At the end of the meal, ask politely for the bill.',
+      de: 'Am Ende der Mahlzeit bittest du höflich um die Rechnung.',
+    },
+    pedagogicalGoal: 'Die feste Wendung „La cuenta, por favor" am Mahlzeit-Ende sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Spanish A1 Practical 4 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP4Lesson010,
+    },
+  },
+  {
     id: 'italian-a1-practical-001-primo-contatto',
     pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
@@ -24709,6 +25592,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
     GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
     GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,
