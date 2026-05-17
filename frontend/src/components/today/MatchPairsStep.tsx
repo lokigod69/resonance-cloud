@@ -1,8 +1,9 @@
-import { Check, RotateCcw, X } from 'lucide-react'
+import { Check, RotateCcw, Volume2, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { getDeterministicMatchColumns, type GuidedLesson, type GuidedMatchPair } from '@/data/guidedLessons'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
+import { playGuidedAudio } from '@/lib/guidedAudio'
 import { cn } from '@/lib/utils'
 
 type MatchPairsStepProps = {
@@ -58,6 +59,18 @@ export function MatchPairsStep({
     setWrongPairIds(new Set())
   }
 
+  const handleEnglishListen = (pair: GuidedMatchPair) => {
+    void playGuidedAudio({
+      pathId: lesson.pathId,
+      lessonId: lesson.id,
+      vibe: lesson.vibeId,
+      surface: 'chunk',
+      surfaceKey: pair.id,
+      text: pair.targetText,
+      lang: lesson.speak.language,
+    })
+  }
+
   return (
     <div className="grid gap-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -84,6 +97,7 @@ export function MatchPairsStep({
               isSelected={selectedEnglishId === pair.id}
               isWrong={wrongPairIds.has(pair.id)}
               onClick={() => handleEnglishSelect(pair.id)}
+              onListen={() => handleEnglishListen(pair)}
             />
           ))}
         </div>
@@ -119,6 +133,7 @@ function MatchChip({
   isSelected,
   isWrong,
   onClick,
+  onListen,
 }: {
   pair: GuidedMatchPair
   side: 'target' | 'base'
@@ -126,27 +141,41 @@ function MatchChip({
   isSelected: boolean
   isWrong: boolean
   onClick: () => void
+  onListen?: () => void
 }) {
   const text = side === 'target' ? pair.targetText : pair.baseText
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={isMatched}
-      aria-pressed={isSelected || isMatched}
-      className={cn(
-        'group flex min-h-10 min-w-[8rem] max-w-full items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-sm font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
-        isMatched
-          ? 'border-[color-mix(in_srgb,#34d399_58%,transparent)] bg-[color-mix(in_srgb,#34d399_13%,transparent)] text-[var(--text-primary)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_24%,transparent)]'
-          : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)] text-[var(--text-primary)] hover:-translate-y-0.5',
-        isSelected && 'border-[color-mix(in_srgb,var(--accent)_62%,transparent)] bg-[color-mix(in_srgb,var(--accent-soft)_72%,transparent)]',
-        isWrong && 'animate-pulse border-[color-mix(in_srgb,#f87171_62%,transparent)] bg-[color-mix(in_srgb,#f87171_12%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_25%,transparent)]',
+    <div className="flex w-full max-w-full items-center justify-center gap-1.5">
+      <button
+        type="button"
+        onClick={onClick}
+        disabled={isMatched}
+        aria-pressed={isSelected || isMatched}
+        className={cn(
+          'group flex min-h-10 min-w-[8rem] max-w-full flex-1 items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-sm font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+          isMatched
+            ? 'border-[color-mix(in_srgb,#34d399_58%,transparent)] bg-[color-mix(in_srgb,#34d399_13%,transparent)] text-[var(--text-primary)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_24%,transparent)]'
+            : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)] text-[var(--text-primary)] hover:-translate-y-0.5',
+          isSelected && 'border-[color-mix(in_srgb,var(--accent)_62%,transparent)] bg-[color-mix(in_srgb,var(--accent-soft)_72%,transparent)]',
+          isWrong && 'animate-pulse border-[color-mix(in_srgb,#f87171_62%,transparent)] bg-[color-mix(in_srgb,#f87171_12%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#f87171_25%,transparent)]',
+        )}
+      >
+        <span className="min-w-0 whitespace-normal break-normal leading-snug">{text}</span>
+        {isMatched && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
+        {isWrong && !isMatched && <X className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />}
+      </button>
+      {onListen && (
+        <button
+          type="button"
+          onClick={onListen}
+          className="inline-flex size-8 shrink-0 items-center justify-center rounded-md border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] text-[var(--text-secondary)] transition hover:bg-[color-mix(in_srgb,var(--accent-soft)_58%,transparent)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          aria-label={`Listen: ${pair.targetText}`}
+          title={`Listen: ${pair.targetText}`}
+        >
+          <Volume2 className="h-4 w-4" />
+        </button>
       )}
-    >
-      <span className="min-w-0 whitespace-normal break-normal leading-snug">{text}</span>
-      {isMatched && <Check className="h-4 w-4 shrink-0 text-[var(--accent)]" />}
-      {isWrong && !isMatched && <X className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />}
-    </button>
+    </div>
   )
 }

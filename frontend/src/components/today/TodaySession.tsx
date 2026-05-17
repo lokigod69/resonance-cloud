@@ -1,8 +1,9 @@
 import { ChevronRight, Trophy, Volume2 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getGuidedMatchPairs, type GuidedLesson } from '@/data/guidedLessons'
 import { guidedVibes } from '@/data/guidedVibes'
 import type { TodayLessonResult } from '@/lib/todayProgress'
+import { playGuidedAudio, stopGuidedAudio } from '@/lib/guidedAudio'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
@@ -11,7 +12,6 @@ import { MatchPairsStep } from '@/components/today/MatchPairsStep'
 import { BuildPhraseStep, type BuildPhraseCheckState } from '@/components/today/BuildPhraseStep'
 import { TypeRecallStep, type TypeRecallCheckState } from '@/components/today/TypeRecallStep'
 import { SpeakStep, type SpeakCheckState } from '@/components/today/SpeakStep'
-import { speakGuidedText } from '@/components/today/speech'
 import { canUseGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
 import { TODAY_SESSION_STEPS } from '@/components/today/sessionSteps'
 
@@ -46,6 +46,8 @@ export function TodaySession({
   }))
   const step = TODAY_SESSION_STEPS[stepIndex]
   const progress = Math.round(((stepIndex + 1) / TODAY_SESSION_STEPS.length) * 100)
+
+  useEffect(() => stopGuidedAudio, [])
 
   const canContinue =
     step === 'scene'
@@ -137,6 +139,17 @@ export function TodaySession({
 
 function SceneStep({ lesson }: { lesson: GuidedLesson }) {
   const { t } = useTranslation()
+  const handleListen = () => {
+    void playGuidedAudio({
+      pathId: lesson.pathId,
+      lessonId: lesson.id,
+      vibe: lesson.vibeId,
+      surface: 'corePhrase',
+      surfaceKey: '__self',
+      text: lesson.corePhrase.targetText,
+      lang: lesson.speak.language,
+    })
+  }
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.8fr)] lg:items-center">
@@ -159,7 +172,7 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
               type="button"
               variant="outline"
               size="sm"
-              onClick={() => speakGuidedText(lesson.corePhrase.targetText, lesson.speak.language)}
+              onClick={handleListen}
             >
               <Volume2 className="h-4 w-4" />
               {t('today.listen')}
@@ -190,6 +203,17 @@ function CompleteStep({
 }) {
   const { t } = useTranslation()
   const vibe = guidedVibes[lesson.vibeId]
+  const handleTrophyListen = () => {
+    void playGuidedAudio({
+      pathId: lesson.pathId,
+      lessonId: lesson.id,
+      vibe: lesson.vibeId,
+      surface: 'trophyWord',
+      surfaceKey: '__self',
+      text: lesson.trophyWord.word,
+      lang: lesson.speak.language,
+    })
+  }
 
   return (
     <div className="grid gap-5 text-center">
@@ -214,9 +238,21 @@ function CompleteStep({
           {t('today.trophyWord.title')}
         </p>
         <div className="mt-3">
-          <p className="break-words text-4xl font-semibold leading-tight text-[var(--text-primary)]">
-            {lesson.trophyWord.word}
-          </p>
+          <div className="flex min-w-0 items-center justify-center gap-2">
+            <p className="min-w-0 break-words text-4xl font-semibold leading-tight text-[var(--text-primary)]">
+              {lesson.trophyWord.word}
+            </p>
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon-sm"
+              onClick={handleTrophyListen}
+              aria-label={`${t('today.listen')}: ${lesson.trophyWord.word}`}
+              title={`${t('today.listen')}: ${lesson.trophyWord.word}`}
+            >
+              <Volume2 className="h-4 w-4" />
+            </Button>
+          </div>
           <p className="mt-1 break-words text-sm leading-6 text-[var(--text-secondary)]">
             {lesson.trophyWord.meaning}
           </p>
