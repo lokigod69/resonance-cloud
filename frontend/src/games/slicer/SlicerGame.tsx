@@ -215,7 +215,11 @@ export default function SlicerGame() {
   )
 
   return (
-    <GameShell className={styles.slicerStage} onExit={handleExitToSummary}>
+    // GameShell's onExit fires on window ESC. When the viewer is still at the
+    // in-app DeckPicker (no session yet) we hand it `undefined` so GameShell
+    // falls back to its built-in navigate(returnTo) — otherwise ESC at the
+    // picker would pop a meaningless 0/0 summary instead of leaving Slicer.
+    <GameShell className={styles.slicerStage} onExit={selectedDeck ? handleExitToSummary : undefined}>
       <div ref={phaserHostRef} className={styles.phaserHost} />
       <div className={styles.reactLayer}>
         {!selectedDeck && (
