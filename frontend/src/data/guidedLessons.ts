@@ -9772,6 +9772,25 @@ export function getGuidedPathLessons(pathId: string) {
     .sort((a, b) => a.lessonNumber - b.lessonNumber)
 }
 
+export function getPathVibesAvailable(pathId: string): ActiveGuidedVibeId[] {
+  const lessons = getGuidedPathLessons(pathId)
+  if (lessons.length === 0) return []
+  const union = new Set<ActiveGuidedVibeId>()
+  for (const lesson of lessons) {
+    for (const vibeId of Object.keys(lesson.vibeVariants)) {
+      if (isActiveGuidedVibeId(vibeId)) union.add(vibeId)
+    }
+  }
+  return ACTIVE_GUIDED_VIBE_IDS.filter((vibeId) => union.has(vibeId))
+}
+
+export const GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES: Record<GuidedTargetLanguage, GuidedSpeakLocale[]> = {
+  English: ['en-US', 'en-GB'],
+  Spanish: ['es-ES'],
+  Italian: ['it-IT'],
+  French: ['fr-FR'],
+}
+
 export function getGuidedPathOverview(
   pathId: string,
   progress: TodayProgressState,

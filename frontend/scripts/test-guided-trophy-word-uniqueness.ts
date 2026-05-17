@@ -22,29 +22,26 @@
  * Run: npx tsx scripts/test-guided-trophy-word-uniqueness.ts
  */
 
-import { GUIDED_LESSONS } from '../src/data/guidedLessons.ts'
-import type { ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
+import {
+  GUIDED_LESSONS,
+  getGuidedTodayPathOptions,
+  type GuidedTargetLanguage,
+} from '../src/data/guidedLessons.ts'
+import { isActiveGuidedVibeId, type ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
 
 type Vibe = ActiveGuidedVibeId
-type Cell = { pathId: string; lessonNumber: number; vibe: Vibe; word: string }
+type Cell = { pathId: string; lessonNumber: number; vibe: Vibe; word: string; targetLanguage: GuidedTargetLanguage }
 type AllowlistEntry = {
   word: string
   cells: Array<{ pathId: string; lessonNumber: number; vibe: Vibe }>
   reason: string
 }
 
-const ACTIVE_PATHS = [
-  'english-a1-practical-1',
-  'english-a1-practical-2',
-  'english-a1-practical-3',
-  'english-a1-practical-4',
-  'english-a1-practical-5',
-  'english-a1-practical-6',
-  'english-a1-practical-7',
-  'english-a1-practical-8',
-  'english-a1-practical-9',
-  'english-a1-practical-10',
-]
+const ACTIVE_PATH_OPTIONS = getGuidedTodayPathOptions()
+const ACTIVE_PATHS = ACTIVE_PATH_OPTIONS.map((path) => path.id)
+const TARGET_LANGUAGE_BY_PATH = new Map<string, GuidedTargetLanguage>(
+  ACTIVE_PATH_OPTIONS.map((path) => [path.id, path.targetLanguage]),
+)
 
 const VIBES: Vibe[] = ['bright', 'wistful', 'sharp']
 
@@ -93,17 +90,16 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 }
 
 // ---- Field presence / non-empty hard-fail ----
-console.log('\n[trophy field presence — A1P1-A1P10]')
+console.log('\n[trophy field presence]')
 const allCells: Cell[] = []
+let expectedCells = 0
 for (const lesson of GUIDED_LESSONS) {
   if (!ACTIVE_PATHS.includes(lesson.pathId)) continue
-  for (const vibe of VIBES) {
-    const variant = lesson.vibeVariants[vibe]
-    if (!variant) {
-      failures += 1
-      console.error(`  FAIL missing variant ${lesson.pathId}|L${lesson.lessonNumber}|${vibe}`)
-      continue
-    }
+  const pathTargetLanguage = TARGET_LANGUAGE_BY_PATH.get(lesson.pathId)!
+  const presentVibes = Object.keys(lesson.vibeVariants).filter(isActiveGuidedVibeId)
+  expectedCells += presentVibes.length
+  for (const vibe of presentVibes) {
+    const variant = lesson.vibeVariants[vibe]!
     const t = variant.trophyWord
     if (!t) {
       failures += 1
@@ -125,12 +121,12 @@ for (const lesson of GUIDED_LESSONS) {
         lessonNumber: lesson.lessonNumber,
         vibe,
         word: variant.trophyWord.word.toLowerCase(),
+        targetLanguage: pathTargetLanguage,
       })
     }
   }
 }
 
-const expectedCells = ACTIVE_PATHS.length * 10 * VIBES.length
 assert(
   `expected ${expectedCells} active trophy cells; observed ${allCells.length}`,
   allCells.length === expectedCells,
@@ -202,10 +198,10 @@ if (withinPathFound === 0) {
   console.log('  (all paths internally distinct)')
 }
 
-// ---- A1P1 ↔ A1P2 same-vibe hard check (historical guard) ----
-console.log('\n[A1P1 ↔ A1P2 same-vibe trophy uniqueness]')
-const p1 = allCells.filter((c) => c.pathId === 'english-a1-practical-1')
-const p2 = allCells.filter((c) => c.pathId === 'english-a1-practical-2')
+// ---- A1P1 ↔ A1P2 same-vibe hard check (historical guard, English-only) ----
+console.log('\n[English A1P1 ↔ A1P2 same-vibe trophy uniqueness]')
+const p1 = allCells.filter((c) => c.pathId === 'english-a1-practical-1' && c.targetLanguage === 'English')
+const p2 = allCells.filter((c) => c.pathId === 'english-a1-practical-2' && c.targetLanguage === 'English')
 const collisions: Array<{ word: string; p1Cell: Cell; p2Cell: Cell }> = []
 for (const p2Cell of p2) {
   const p1Match = p1.find((p1Cell) => p1Cell.vibe === p2Cell.vibe && p1Cell.word === p2Cell.word)
@@ -226,13 +222,14 @@ if (collisions.length === 0) {
   }
 }
 
-// ---- Global multiplicity hard-fail + warn ----
-console.log(`\n[global multiplicity — hard-fail at > ${GLOBAL_HARD_FAIL_THRESHOLD}, warn at > 1]`)
+// ---- Global multiplicity hard-fail + warn (per-language scope) ----
+console.log(`\n[per-language global multiplicity — hard-fail at > ${GLOBAL_HARD_FAIL_THRESHOLD}, warn at > 1]`)
 const wordGroups = new Map<string, Cell[]>()
 for (const cell of allCells) {
-  const existing = wordGroups.get(cell.word) ?? []
+  const key = `${cell.targetLanguage}::${cell.word}`
+  const existing = wordGroups.get(key) ?? []
   existing.push(cell)
-  wordGroups.set(cell.word, existing)
+  wordGroups.set(key, existing)
 }
 
 const repeats = Array.from(wordGroups.entries())
@@ -243,23 +240,24 @@ let warnedRepeats = 0
 let hardFailedRepeats = 0
 
 if (repeats.length === 0) {
-  assert('every trophy word is globally unique', true)
+  assert('every trophy word is globally unique within its target language', true)
 } else {
-  for (const [word, cells] of repeats) {
+  for (const [key, cells] of repeats) {
+    const [language, word] = key.split('::', 2) as [string, string]
     const allow = CROSS_PATH_ALLOWLIST.find((entry) => entry.word === word && sameCellSet(cells, entry.cells))
     if (cells.length > GLOBAL_HARD_FAIL_THRESHOLD) {
       if (allow) {
         passes += 1
-        console.log(`  ok  allowed global repeat "${word}" (${cells.length} cells) — ${allow.reason}`)
+        console.log(`  ok  allowed ${language} global repeat "${word}" (${cells.length} cells) — ${allow.reason}`)
       } else {
         failures += 1
         hardFailedRepeats += 1
-        console.error(`  FAIL "${word}" appears ${cells.length} times (> ${GLOBAL_HARD_FAIL_THRESHOLD}): ${cells.map(cellKey).join(', ')}`)
+        console.error(`  FAIL ${language} trophy "${word}" appears ${cells.length} times (> ${GLOBAL_HARD_FAIL_THRESHOLD}): ${cells.map(cellKey).join(', ')}`)
       }
     } else {
       warnedRepeats += 1
       const marker = allow ? '[allowed]' : '[warn]'
-      console.log(`  ${marker} "${word}" — ${cells.map(cellKey).join(', ')}`)
+      console.log(`  ${marker} ${language} "${word}" — ${cells.map(cellKey).join(', ')}`)
     }
   }
 }

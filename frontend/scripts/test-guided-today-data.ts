@@ -10,6 +10,7 @@ import {
   isActiveGuidedVibeId,
 } from '../src/data/guidedVibes.ts'
 import {
+  GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES,
   getGuidedTodayPathOptions,
   GUIDED_LESSONS,
   getCurrentGuidedLesson,
@@ -1103,7 +1104,8 @@ function validateVariant(
   assert(`${lesson.id}/${vibeId} type recall has fallback choices`, variant.typeRecall.fallbackChoices.length >= 3 && variant.typeRecall.fallbackChoices.some((choice) => normalizeGuidedAnswer(choice) === normalizeGuidedAnswer(variant.typeRecall.answer)), variant.typeRecall)
   assert(`${lesson.id}/${vibeId} speak target has cue`, hasText(variant.speakTarget.baseCue), variant.speakTarget)
   assert(`${lesson.id}/${vibeId} speak target phrase is compatible with core phrase`, areCompatiblePhrases(variant.speakTarget.targetPhrase, variant.corePhrase.targetText), variant.speakTarget)
-  assert(`${lesson.id}/${vibeId} speak language is supported`, variant.speakTarget.language === 'en-US' || variant.speakTarget.language === 'en-GB', variant.speakTarget)
+  const expectedLocales = GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES[lesson.targetLanguage]
+  assert(`${lesson.id}/${vibeId} speak language matches path targetLanguage (${lesson.targetLanguage})`, expectedLocales.includes(variant.speakTarget.language), { observed: variant.speakTarget.language, expected: expectedLocales })
   assert(`${lesson.id}/${vibeId} speak threshold is usable`, variant.speakTarget.passingThreshold > 0 && variant.speakTarget.passingThreshold <= 1, variant.speakTarget)
   assert(`${lesson.id}/${vibeId} scene caption exists`, hasText(variant.sceneCaption), variant.sceneCaption)
   assert(`${lesson.id}/${vibeId} trophy word is complete`, hasText(variant.trophyWord.word) && hasText(variant.trophyWord.meaning) && hasText(variant.trophyWord.example) && hasText(variant.trophyWord.whyThisWord), variant.trophyWord)

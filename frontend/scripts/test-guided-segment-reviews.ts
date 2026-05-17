@@ -6,7 +6,11 @@
 
 import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import { getGuidedPathLessons, resolveGuidedLessonVariant } from '../src/data/guidedLessons.ts'
+import {
+  getGuidedPathLessons,
+  getGuidedTodayPathOptions,
+  resolveGuidedLessonVariant,
+} from '../src/data/guidedLessons.ts'
 import {
   buildGuidedSegmentReviewPlan,
   completeGuidedSegmentReview,
@@ -35,18 +39,9 @@ function assert(name: string, condition: boolean, detail?: unknown) {
   if (detail !== undefined) console.error('       ', detail)
 }
 
-const pathIds = [
-  'english-a1-practical-1',
-  'english-a1-practical-2',
-  'english-a1-practical-3',
-  'english-a1-practical-4',
-  'english-a1-practical-5',
-  'english-a1-practical-6',
-  'english-a1-practical-7',
-  'english-a1-practical-8',
-  'english-a1-practical-9',
-  'english-a1-practical-10',
-]
+const pathIds = getGuidedTodayPathOptions()
+  .filter((path) => path.targetLanguage === 'English')
+  .map((path) => path.id)
 const segmentStoryPathIds = pathIds
 
 console.log('\n[overview source]')

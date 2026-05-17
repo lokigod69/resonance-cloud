@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url'
 import {
   getGuidedPathLessons,
   getGuidedPathOverview,
+  getGuidedTodayPathOptions,
 } from '../src/data/guidedLessons.ts'
 import {
   buildGuidedCheckpointPlan,
@@ -32,18 +33,10 @@ function assert(name: string, condition: boolean, detail?: unknown) {
   if (detail !== undefined) console.error('       ', detail)
 }
 
-const pathIds = [
-  'english-a1-practical-1',
-  'english-a1-practical-2',
-  'english-a1-practical-3',
-  'english-a1-practical-4',
-  'english-a1-practical-5',
-  'english-a1-practical-6',
-  'english-a1-practical-7',
-  'english-a1-practical-8',
-  'english-a1-practical-9',
-  'english-a1-practical-10',
-]
+const englishPathIds = getGuidedTodayPathOptions()
+  .filter((path) => path.targetLanguage === 'English')
+  .map((path) => path.id)
+const pathIds = englishPathIds
 
 const directorySource = readSource('../src/components/today/GuidedPathDirectory.tsx')
 const pathLabelSource = readSource('../src/lib/guidedPathLabels.ts')
@@ -56,7 +49,12 @@ const cssSource = readSource('../src/components/today/Today.css')
 console.log('\n[path directory source]')
 assert('directory component source exists', directorySource.length > 0)
 const directoryPathIds = unique(Array.from(directorySource.matchAll(/'english-a1-practical-\d+'/g), ([match]) => match.slice(1, -1)))
-assert('directory exposes exactly English A1 Practical 1-10', JSON.stringify(directoryPathIds) === JSON.stringify(pathIds), directoryPathIds)
+assert(
+  'directory exposes every English A1 Practical path from metadata',
+  englishPathIds.every((pathId) => directoryPathIds.includes(pathId))
+    && directoryPathIds.every((pathId) => englishPathIds.includes(pathId)),
+  { observed: directoryPathIds, expected: englishPathIds },
+)
 assert('directory does not expose future A1/A2 paths', !containsAny(directorySource, ['english-a1-practical-11', 'english-a2-', 'category-practice', 'language-expansion']))
 for (const label of ['English A1 P1', 'English A1 P2', 'English A1 P3', 'English A1 P4', 'English A1 P5', 'English A1 P6', 'English A1 P7', 'English A1 P8', 'English A1 P9', 'English A1 P10']) {
   assert(`directory exposes compact chooser label ${label}`, pathLabelSource.includes(label))

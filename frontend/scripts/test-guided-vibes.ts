@@ -93,6 +93,10 @@ Object.defineProperty(globalThis, 'window', {
 
 try {
   assert('storage key is path-scoped', todayGuidedVibeKey(pathId) === 'resonance_guided_vibe__english-a1-practical-1')
+  assert(
+    'storage key scope works for non-English path ids',
+    todayGuidedVibeKey('spanish-a1-practical-1') === 'resonance_guided_vibe__spanish-a1-practical-1',
+  )
   assert('missing selected vibe defaults to bright', getSelectedGuidedVibe(pathId) === 'bright')
   setSelectedGuidedVibe(pathId, 'sharp')
   assert('selected active vibe persists locally', getSelectedGuidedVibe(pathId) === 'sharp')

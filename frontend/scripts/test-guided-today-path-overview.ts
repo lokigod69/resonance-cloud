@@ -300,7 +300,17 @@ assert('Back to path does not mutate progress', JSON.stringify(completedTwo) ===
 assert('recommended panel label is next lesson, not internal recommendation copy', recommendedLessonPanelSource.includes("t('today.path.nextLessonLabel')") && !recommendedLessonPanelSource.includes("t('today.path.recommendedLabel')"))
 assert('Today page separates lesson selection from session start', containsAny(todayPageSource, ['const handleSelectLesson', 'setSelectedLessonId(lessonId)']) && containsAny(todayPageSource, ['const handleStartSelectedLesson', 'setSessionActive(true)']))
 assert('path overview receives a select handler and separate start handler', todayPathOverviewSource.includes('onSelectLesson') && todayPathOverviewSource.includes('onStartLesson'))
-assert('path selector source exposes implemented active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId]), getGuidedTodayPathOptions())
+const englishPathIdsInOrder = getGuidedTodayPathOptions()
+  .filter((path) => path.targetLanguage === 'English')
+  .map((path) => path.id)
+assert(
+  'path selector source exposes implemented active English paths',
+  JSON.stringify(englishPathIdsInOrder) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId]),
+  englishPathIdsInOrder,
+)
+for (const path of getGuidedTodayPathOptions()) {
+  assert(`${path.id} (${path.targetLanguage}) overview exposes 10 lessons`, getGuidedPathLessons(path.id).length === 10, path)
+}
 assert('Today page stores selected path id and passes path options to overview', containsAny(todayPageSource, ['selectedPathId', 'getGuidedTodayPathOptions']) && todayPathOverviewSource.includes('pathOptions'))
 assert('path overview opens the directory instead of permanent path chips', todayPathOverviewSource.includes('onSelectPath') && todayPathOverviewSource.includes('GuidedPathDirectory') && todayPathOverviewSource.includes("t('today.path.changePath')") && !todayPathOverviewSource.includes('today-path-switcher'))
 assert('main Today header no longer renders visible Path Check action', !sliceBetween(todayPathOverviewSource, '<div className="today-path-actions', '<GuidedPathDirectory').includes('today.path.pathCheck'))

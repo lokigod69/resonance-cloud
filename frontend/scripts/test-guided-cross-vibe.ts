@@ -15,23 +15,11 @@
 
 import {
   GUIDED_LESSONS,
+  getGuidedTodayPathOptions,
 } from '../src/data/guidedLessons.ts'
 import type { ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
 
-const ACTIVE_PATHS = [
-  'english-a1-practical-1',
-  'english-a1-practical-2',
-  'english-a1-practical-3',
-  'english-a1-practical-4',
-  'english-a1-practical-5',
-  'english-a1-practical-6',
-  'english-a1-practical-7',
-  'english-a1-practical-8',
-  'english-a1-practical-9',
-  'english-a1-practical-10',
-] as const
-
-type ActivePathId = (typeof ACTIVE_PATHS)[number]
+const ACTIVE_PATHS = getGuidedTodayPathOptions().map((path) => path.id)
 
 const VIBE_ORDER: ActiveGuidedVibeId[] = ['bright', 'sharp', 'wistful']
 
@@ -224,13 +212,18 @@ let totalPairs = 0
 
 const trophyCollisions: { pathId: string; lessonNumber: number; word: string; vibes: string[] }[] = []
 
+const skippedLessonsByPath = new Map<string, number>()
+
 for (const lesson of GUIDED_LESSONS) {
-  if (!ACTIVE_PATHS.includes(lesson.pathId as ActivePathId)) continue
+  if (!ACTIVE_PATHS.includes(lesson.pathId)) continue
 
   const bright = lesson.vibeVariants.bright
   const wistful = lesson.vibeVariants.wistful
   const sharp = lesson.vibeVariants.sharp
-  if (!bright || !wistful || !sharp) continue
+  if (!bright || !wistful || !sharp) {
+    skippedLessonsByPath.set(lesson.pathId, (skippedLessonsByPath.get(lesson.pathId) ?? 0) + 1)
+    continue
+  }
 
   const trophyByVibe: Record<'bright' | 'sharp' | 'wistful', string> = {
     bright: bright.trophyWord.word.toLowerCase(),
@@ -313,6 +306,13 @@ console.log(`  allowlist entries: ${ALLOWLIST.length}`)
 console.log(`  allowlist hits: ${allowlistHits.length}`)
 console.log(`  hard fails: ${hardFails.length}`)
 console.log(`  warns: ${warns.length}`)
+
+if (skippedLessonsByPath.size > 0) {
+  console.log('\n[cross-vibe] skipped lessons (missing one or more active variants)')
+  for (const [pathId, count] of skippedLessonsByPath) {
+    console.log(`  [skip] ${pathId}: ${count} lesson(s) skipped — does not have all of bright/wistful/sharp`)
+  }
+}
 
 if (allowlistHits.length > 0) {
   console.log('\n[allowlist hits]')
