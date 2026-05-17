@@ -346,6 +346,17 @@ const GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA: GuidedPathMetadata = {
+  id: 'spanish-a1-practical-5',
+  title: 'Spanish A1 Practical 5',
+  shortTitle: 'A1 Practical 5',
+  subtitle: 'Kleine Probleme, Vorstellungen, Pläne',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Spanish',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA: GuidedPathMetadata = {
   id: 'italian-a1-practical-1',
   title: 'Italian A1 Practical 1',
@@ -11793,6 +11804,548 @@ const brightSpanishP4Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Detail auf leeren Teller und Glas, warmes Abendlicht.',
 }
 
+const brightSpanishP5Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Perdón por llegar tarde.',
+    baseText: 'Entschuldigung, dass ich zu spät bin.',
+  },
+  meaning: 'Eine kurze Entschuldigung beim Eintreten, wenn du nach der vereinbarten Zeit kommst.',
+  chunks: [
+    { id: 'perdon', targetText: 'Perdón', baseText: 'Entschuldigung' },
+    { id: 'por-llegar', targetText: 'por llegar', baseText: 'für das Ankommen' },
+    { id: 'tarde', targetText: 'tarde.', baseText: 'zu spät.' },
+  ],
+  lessonItems: [
+    { id: 'perdon', targetText: 'perdón', baseText: 'Entschuldigung', acceptedAnswers: ['perdón', 'perdon', 'Perdón', 'Perdon'] },
+    { id: 'llegar', targetText: 'llegar', baseText: 'ankommen', acceptedAnswers: ['llegar', 'Llegar'] },
+    { id: 'tarde', targetText: 'tarde', baseText: 'spät', acceptedAnswers: ['tarde', 'Tarde'] },
+    { id: 'temprano', targetText: 'temprano', baseText: 'früh', acceptedAnswers: ['temprano', 'Temprano'] },
+  ],
+  build: {
+    targetText: 'Perdón por llegar tarde.',
+    chips: ['Perdón', 'por llegar', 'tarde.', 'temprano', 'pronto'],
+  },
+  typeRecall: {
+    before: 'Perdón por llegar ',
+    answer: 'tarde',
+    after: '.',
+    acceptedAnswers: ['tarde', 'Tarde'],
+    fallbackChoices: ['tarde', 'temprano', 'pronto', 'ahora'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, dass ich zu spät bin.',
+    targetPhrase: 'Perdón por llegar tarde.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['perdón', 'llegar', 'tarde'],
+    optionalTokens: ['por', 'pronto'],
+  },
+  sceneCaption: 'Beim Eintreten in eine kleine Verabredung entschuldigst du dich kurz für die Verspätung.',
+  trophyWord: {
+    word: 'tarde',
+    meaning: 'spät / Nachmittag',
+    example: 'Llegué tarde otra vez.',
+    whyThisWord: 'Tarde trägt auf A1 zwei Bedeutungen — „spät" (zeitlich) und „Nachmittag" (Tageszeit). Die Entschuldigung „por llegar tarde" ist die feste Iberische A1-Wendung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Türschwelle eines kleinen Cafés, kurzer Blick auf die Uhr, ruhige Geste der Entschuldigung.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'apologetic arrival',
+  },
+  visualNotes: 'Schwellen-Moment, sanftes Licht im Hintergrund, leichte freundliche Verlegenheit.',
+}
+
+const brightSpanishP5Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Lo siento, se me olvidó.',
+    baseText: 'Tut mir leid, ich habe es vergessen.',
+  },
+  meaning: 'Eine kurze, ehrliche Eingeständnis-Wendung, wenn dir gerade etwas entfallen ist.',
+  chunks: [
+    { id: 'lo-siento', targetText: 'Lo siento,', baseText: 'Tut mir leid,' },
+    { id: 'se-me-olvido', targetText: 'se me olvidó.', baseText: 'ich habe es vergessen.' },
+  ],
+  lessonItems: [
+    { id: 'lo-siento', targetText: 'lo siento', baseText: 'tut mir leid', acceptedAnswers: ['lo siento', 'Lo siento'] },
+    { id: 'olvido', targetText: 'olvidó', baseText: 'es entfiel / ist entfallen (feste A1-Wendung)', acceptedAnswers: ['olvidó', 'olvido', 'Olvidó', 'Olvido'] },
+    { id: 'recordar', targetText: 'recordar', baseText: 'sich erinnern', acceptedAnswers: ['recordar', 'Recordar'] },
+    { id: 'otra-vez', targetText: 'otra vez', baseText: 'noch einmal', acceptedAnswers: ['otra vez', 'Otra vez'] },
+  ],
+  build: {
+    targetText: 'Lo siento, se me olvidó.',
+    chips: ['Lo siento,', 'se me olvidó.', 'recordar', 'otra vez', 'ya'],
+  },
+  typeRecall: {
+    before: 'Lo siento, se me ',
+    answer: 'olvidó',
+    after: '.',
+    acceptedAnswers: ['olvidó', 'olvido', 'Olvidó', 'Olvido'],
+    fallbackChoices: ['olvidó', 'perdió', 'rompió', 'cayó'],
+  },
+  speakTarget: {
+    baseCue: 'Tut mir leid, ich habe es vergessen.',
+    targetPhrase: 'Lo siento, se me olvidó.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['lo', 'siento', 'olvidó'],
+    optionalTokens: ['se', 'me', 'otra', 'vez'],
+  },
+  sceneCaption: 'Mitten im Gespräch merkst du, dass dir etwas entfallen ist, und sagst es ruhig.',
+  trophyWord: {
+    word: 'olvidó',
+    meaning: 'es entfiel (feste A1-Wendung „se me olvidó")',
+    example: 'Se me olvidó el libro.',
+    whyThisWord: 'Olvidó steht hier in der unpersönlich wirkenden Konstruktion „se me olvidó" — die natürliche Iberische A1-Wendung für „ich habe es vergessen". Als ganze Chunk-Wendung lernen, nicht als Grammatik zerlegen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kurze Pause im Gespräch, leichter Schulterzucker, ruhige ehrliche Geste.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle forgetting',
+  },
+  visualNotes: 'Innenraum, sanftes Licht, kleiner Atemzug der Erinnerung.',
+}
+
+const brightSpanishP5Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Cómo te llamas?',
+    baseText: 'Wie heißt du?',
+  },
+  meaning: 'Die kanonische Iberische Frage nach dem Namen unter Gleichaltrigen, mit tú-Form.',
+  chunks: [
+    { id: 'como', targetText: '¿Cómo', baseText: 'Wie' },
+    { id: 'te-llamas', targetText: 'te llamas?', baseText: 'heißt du?' },
+  ],
+  lessonItems: [
+    { id: 'como', targetText: 'cómo', baseText: 'wie', acceptedAnswers: ['cómo', 'como', 'Cómo', 'Como'] },
+    { id: 'te', targetText: 'te', baseText: 'dich (reflexiv)', acceptedAnswers: ['te', 'Te'] },
+    { id: 'llamas', targetText: 'llamas', baseText: 'du heißt / du nennst dich', acceptedAnswers: ['llamas', 'Llamas'] },
+    { id: 'soy', targetText: 'soy', baseText: 'ich bin', acceptedAnswers: ['soy', 'Soy'] },
+  ],
+  build: {
+    targetText: '¿Cómo te llamas?',
+    chips: ['¿Cómo', 'te llamas?', 'soy', 'mucho gusto', 'pues'],
+  },
+  typeRecall: {
+    before: '¿Cómo te ',
+    answer: 'llamas',
+    after: '?',
+    acceptedAnswers: ['llamas', 'Llamas'],
+    fallbackChoices: ['llamas', 'llamo', 'eres', 'vives'],
+  },
+  speakTarget: {
+    baseCue: 'Wie heißt du?',
+    targetPhrase: '¿Cómo te llamas?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['cómo', 'te', 'llamas'],
+    optionalTokens: ['soy', 'hola'],
+  },
+  sceneCaption: 'In einer lockeren Begegnung fragst du die andere Person nach ihrem Namen.',
+  trophyWord: {
+    word: 'llamas',
+    meaning: 'du heißt / du nennst dich (2. Pers. Sg. von llamarse)',
+    example: '¿Cómo te llamas? Yo me llamo Ana.',
+    whyThisWord: 'Llamas ist hier die 2. Pers. Sg. von llamarse („sich nennen") in der tú-Form — die natürliche, lockere Iberische A1-Frage nach dem Namen. Achtung: gleiches Wort gibt es auch als Substantiv „Flammen" — Kontext entscheidet.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kurzer offener Blick, leichte Begrüßungsgeste, lockerer erster Kontakt.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'casual first meet',
+  },
+  visualNotes: 'Augenkontakt-Moment, warmes Licht, leichte lächelnde Geste.',
+}
+
+const brightSpanishP5Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Mucho gusto. Igualmente.',
+    baseText: 'Sehr erfreut. Gleichfalls.',
+  },
+  meaning: 'Eine kurze, warme Antwort nach der Vorstellung — die kanonische Iberische A1-Wendung.',
+  chunks: [
+    { id: 'mucho-gusto', targetText: 'Mucho gusto.', baseText: 'Sehr erfreut.' },
+    { id: 'igualmente', targetText: 'Igualmente.', baseText: 'Gleichfalls.' },
+  ],
+  lessonItems: [
+    { id: 'mucho', targetText: 'mucho', baseText: 'viel / sehr', acceptedAnswers: ['mucho', 'Mucho'] },
+    { id: 'gusto', targetText: 'gusto', baseText: 'Freude / Vergnügen', acceptedAnswers: ['gusto', 'Gusto'] },
+    { id: 'igualmente', targetText: 'igualmente', baseText: 'gleichfalls', acceptedAnswers: ['igualmente', 'Igualmente'] },
+    { id: 'encantado', targetText: 'encantado', baseText: 'erfreut (Mann) / Encantada (Frau)', acceptedAnswers: ['encantado', 'Encantado', 'encantada', 'Encantada'] },
+  ],
+  build: {
+    targetText: 'Mucho gusto. Igualmente.',
+    chips: ['Mucho gusto.', 'Igualmente.', 'encantado', 'pues', 'igual'],
+  },
+  typeRecall: {
+    before: 'Mucho ',
+    answer: 'gusto',
+    after: '. Igualmente.',
+    acceptedAnswers: ['gusto', 'Gusto'],
+    fallbackChoices: ['gusto', 'placer', 'honor', 'gracias'],
+  },
+  speakTarget: {
+    baseCue: 'Sehr erfreut. Gleichfalls.',
+    targetPhrase: 'Mucho gusto. Igualmente.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['mucho', 'gusto'],
+    optionalTokens: ['igualmente', 'encantado'],
+  },
+  sceneCaption: 'Nach der Vorstellung gibt es einen kurzen, warmen Austausch — beide Seiten zufrieden.',
+  trophyWord: {
+    word: 'gusto',
+    meaning: 'Freude / Vergnügen',
+    example: 'Mucho gusto en conocerte.',
+    whyThisWord: 'Gusto in „Mucho gusto" ist die feste Iberische A1-Antwort auf eine Vorstellung — geschlechtsneutral und in ganz Spanien einsetzbar.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Zwei Hände, kurzer Händedruck, freundlicher Blickaustausch.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'warm pleased-to-meet',
+  },
+  visualNotes: 'Detail auf Händedruck, sanftes Tageslicht, leichtes Lächeln im Bildrand.',
+}
+
+const brightSpanishP5Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿De dónde eres?',
+    baseText: 'Woher kommst du?',
+  },
+  meaning: 'Eine kurze, lockere Frage nach der Herkunft in einem ersten Gespräch.',
+  chunks: [
+    { id: 'de-donde', targetText: '¿De dónde', baseText: 'Woher' },
+    { id: 'eres', targetText: 'eres?', baseText: 'kommst du? / bist du?' },
+  ],
+  lessonItems: [
+    { id: 'de-donde', targetText: 'de dónde', baseText: 'woher', acceptedAnswers: ['de dónde', 'de donde'] },
+    { id: 'eres', targetText: 'eres', baseText: 'du bist', acceptedAnswers: ['eres', 'Eres'] },
+    { id: 'soy-de', targetText: 'soy de', baseText: 'ich komme aus', acceptedAnswers: ['soy de', 'Soy de'] },
+    { id: 'pais', targetText: 'país', baseText: 'Land', acceptedAnswers: ['país', 'pais', 'País', 'Pais'] },
+  ],
+  build: {
+    targetText: '¿De dónde eres?',
+    chips: ['¿De dónde', 'eres?', 'soy de', 'país', 'ciudad'],
+  },
+  typeRecall: {
+    before: '¿De dónde ',
+    answer: 'eres',
+    after: '?',
+    acceptedAnswers: ['eres', 'Eres'],
+    fallbackChoices: ['eres', 'vives', 'vienes', 'estás'],
+  },
+  speakTarget: {
+    baseCue: 'Woher kommst du?',
+    targetPhrase: '¿De dónde eres?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['dónde', 'eres'],
+    optionalTokens: ['de', 'soy', 'país'],
+  },
+  sceneCaption: 'Im ersten Smalltalk fragst du die andere Person locker nach ihrer Herkunft.',
+  trophyWord: {
+    word: 'eres',
+    meaning: 'du bist (2. Pers. Sg. von ser)',
+    example: '¿De dónde eres?',
+    whyThisWord: 'Eres ist auf A1 die zentrale 2.-Personen-Form von „ser" und öffnet jede Herkunfts-, Nationalitäts- und Identitätsfrage in der tú-Form.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Lockeres Gespräch an einem Tisch, kurzer interessierter Blick, ruhige Frage.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'curious first chat',
+  },
+  visualNotes: 'Sitzende Geste, sanftes Licht, einfache Blickrichtung.',
+}
+
+const brightSpanishP5Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Vives aquí?',
+    baseText: 'Wohnst du hier?',
+  },
+  meaning: 'Eine knappe, lockere Folgefrage, ob die andere Person hier lebt.',
+  chunks: [
+    { id: 'vives', targetText: '¿Vives', baseText: 'Wohnst du' },
+    { id: 'aqui', targetText: 'aquí?', baseText: 'hier?' },
+  ],
+  lessonItems: [
+    { id: 'vives', targetText: 'vives', baseText: 'du wohnst / du lebst', acceptedAnswers: ['vives', 'Vives'] },
+    { id: 'aqui', targetText: 'aquí', baseText: 'hier', acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+    { id: 'cerca', targetText: 'cerca', baseText: 'in der Nähe', acceptedAnswers: ['cerca', 'Cerca'] },
+    { id: 'visito', targetText: 'visito', baseText: 'ich besuche', acceptedAnswers: ['visito', 'Visito'] },
+  ],
+  build: {
+    targetText: '¿Vives aquí?',
+    chips: ['¿Vives', 'aquí?', 'cerca', 'visito', 'siempre'],
+  },
+  typeRecall: {
+    before: '¿',
+    answer: 'Vives',
+    after: ' aquí?',
+    acceptedAnswers: ['vives', 'Vives'],
+    fallbackChoices: ['Vives', 'Eres', 'Trabajas', 'Estudias'],
+  },
+  speakTarget: {
+    baseCue: 'Wohnst du hier?',
+    targetPhrase: '¿Vives aquí?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['vives', 'aquí'],
+    optionalTokens: ['cerca', 'visito'],
+  },
+  sceneCaption: 'Nach der Herkunftsfrage prüfst du locker, ob die andere Person tatsächlich hier wohnt.',
+  trophyWord: {
+    word: 'vives',
+    meaning: 'du wohnst (2. Pers. Sg. von vivir)',
+    example: '¿Vives en Madrid?',
+    whyThisWord: 'Vives unterscheidet auf A1 klar zwischen Herkunft (ser) und Wohnort (vivir) — wichtiger Iberischer Smalltalk-Klassiker.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Ruhige Café-Szene, lockerer Blick auf die andere Person, interessierte Folgefrage.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'follow-up curiosity',
+  },
+  visualNotes: 'Café-Innenraum, warmes Licht, leichte interessierte Kopfhaltung.',
+}
+
+const brightSpanishP5Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Estás libre esta noche?',
+    baseText: 'Hast du heute Abend Zeit?',
+  },
+  meaning: 'Eine kurze, lockere Frage nach Verfügbarkeit am Abend.',
+  chunks: [
+    { id: 'estas-libre', targetText: '¿Estás libre', baseText: 'Hast du Zeit' },
+    { id: 'esta-noche', targetText: 'esta noche?', baseText: 'heute Abend?' },
+  ],
+  lessonItems: [
+    { id: 'estas', targetText: 'estás', baseText: 'du bist (Zustand)', acceptedAnswers: ['estás', 'estas', 'Estás', 'Estas'] },
+    { id: 'libre', targetText: 'libre', baseText: 'frei', acceptedAnswers: ['libre', 'Libre'] },
+    { id: 'esta-noche', targetText: 'esta noche', baseText: 'heute Abend / heute Nacht', acceptedAnswers: ['esta noche', 'Esta noche'] },
+    { id: 'ocupado', targetText: 'ocupado', baseText: 'beschäftigt', acceptedAnswers: ['ocupado', 'Ocupado'] },
+  ],
+  build: {
+    targetText: '¿Estás libre esta noche?',
+    chips: ['¿Estás libre', 'esta noche?', 'ocupado', 'mañana', 'después'],
+  },
+  typeRecall: {
+    before: '¿Estás ',
+    answer: 'libre',
+    after: ' esta noche?',
+    acceptedAnswers: ['libre', 'Libre'],
+    fallbackChoices: ['libre', 'ocupado', 'cansado', 'listo'],
+  },
+  speakTarget: {
+    baseCue: 'Hast du heute Abend Zeit?',
+    targetPhrase: '¿Estás libre esta noche?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['estás', 'libre', 'noche'],
+    optionalTokens: ['esta', 'ocupado'],
+  },
+  sceneCaption: 'Lockeres Gespräch am Nachmittag — du fragst die andere Person, ob heute Abend etwas geht.',
+  trophyWord: {
+    word: 'libre',
+    meaning: 'frei (Zeit, Verfügbarkeit)',
+    example: 'No estoy libre hoy.',
+    whyThisWord: 'Libre ist auf A1 das einfache Verfügbarkeits-Adjektiv für lockere Verabredungen — bildet das Paar mit ocupado.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Nachmittagsszene auf einer Terrasse, lockerer Blick auf den Abend, leichte Einladungsgeste.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'casual evening pitch',
+  },
+  visualNotes: 'Terrasse in goldenem Spätlicht, ruhige Geste, offene Stimmung.',
+}
+
+const brightSpanishP5Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Quedamos en el café?',
+    baseText: 'Treffen wir uns im Café?',
+  },
+  meaning: 'Ein lockerer Vorschlag, sich an einem konkreten Ort zu treffen — die typische Iberische A1-Wendung.',
+  chunks: [
+    { id: 'quedamos', targetText: '¿Quedamos', baseText: 'Treffen wir uns' },
+    { id: 'en-el-cafe', targetText: 'en el café?', baseText: 'im Café?' },
+  ],
+  lessonItems: [
+    { id: 'quedamos', targetText: 'quedamos', baseText: 'wir treffen uns / verabreden uns', acceptedAnswers: ['quedamos', 'Quedamos'] },
+    { id: 'en-el', targetText: 'en el', baseText: 'im / in dem', acceptedAnswers: ['en el', 'En el'] },
+    { id: 'cafe', targetText: 'café', baseText: 'Café', acceptedAnswers: ['café', 'cafe', 'Café', 'Cafe'] },
+    { id: 'bar', targetText: 'bar', baseText: 'Bar / Kneipe', acceptedAnswers: ['bar', 'Bar'] },
+  ],
+  build: {
+    targetText: '¿Quedamos en el café?',
+    chips: ['¿Quedamos', 'en el café?', 'bar', 'plaza', 'a las ocho'],
+  },
+  typeRecall: {
+    before: '¿',
+    answer: 'Quedamos',
+    after: ' en el café?',
+    acceptedAnswers: ['quedamos', 'Quedamos'],
+    fallbackChoices: ['Quedamos', 'Vamos', 'Salimos', 'Pasamos'],
+  },
+  speakTarget: {
+    baseCue: 'Treffen wir uns im Café?',
+    targetPhrase: '¿Quedamos en el café?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['quedamos', 'café'],
+    optionalTokens: ['en', 'el', 'bar', 'a', 'las', 'ocho'],
+  },
+  sceneCaption: 'Im Verabredungsgespräch schlägst du locker einen konkreten Treffpunkt vor.',
+  trophyWord: {
+    word: 'quedamos',
+    meaning: 'wir treffen uns / verabreden uns (1. Pers. Pl. von quedar)',
+    example: '¿Quedamos a las ocho?',
+    whyThisWord: 'Quedamos ist auf A1 das zentrale Iberische Verabredungs-Verb — im Spanischen heißt „quedar" auch „sich treffen", anders als im LatAm-Spanisch.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Lockere Café-Tür-Szene, fingerzeigende Geste in Richtung Treffpunkt, freundliche Verabredung.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'casual plan-making',
+  },
+  visualNotes: 'Detail auf Café-Außenseite, warmes Nachmittagslicht, einladende Geste.',
+}
+
+const brightSpanishP5Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Quizás mañana, ¿vale?',
+    baseText: 'Vielleicht morgen, okay?',
+  },
+  meaning: 'Eine sanfte, höfliche Verschiebung auf den nächsten Tag.',
+  chunks: [
+    { id: 'quizas', targetText: 'Quizás', baseText: 'Vielleicht' },
+    { id: 'manana', targetText: 'mañana,', baseText: 'morgen,' },
+    { id: 'vale', targetText: '¿vale?', baseText: 'okay?' },
+  ],
+  lessonItems: [
+    { id: 'quizas', targetText: 'quizás', baseText: 'vielleicht', acceptedAnswers: ['quizás', 'quizas', 'Quizás', 'Quizas'] },
+    { id: 'manana', targetText: 'mañana', baseText: 'morgen (Tag) / Morgen (Tageszeit)', acceptedAnswers: ['mañana', 'manana', 'Mañana', 'Manana'] },
+    { id: 'vale', targetText: 'vale', baseText: 'okay / einverstanden', acceptedAnswers: ['vale', 'Vale'] },
+    { id: 'mejor-otro-dia', targetText: 'otro día', baseText: 'ein anderer Tag', acceptedAnswers: ['otro día', 'otro dia', 'Otro día', 'Otro dia'] },
+  ],
+  build: {
+    targetText: 'Quizás mañana, ¿vale?',
+    chips: ['Quizás', 'mañana,', '¿vale?', 'otro día', 'pronto'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Quizás',
+    after: ' mañana, ¿vale?',
+    acceptedAnswers: ['quizás', 'quizas', 'Quizás', 'Quizas'],
+    fallbackChoices: ['Quizás', 'Tal vez', 'Igual', 'Quizá'],
+  },
+  speakTarget: {
+    baseCue: 'Vielleicht morgen, okay?',
+    targetPhrase: 'Quizás mañana, ¿vale?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['quizás', 'mañana'],
+    optionalTokens: ['vale', 'otro', 'día'],
+  },
+  sceneCaption: 'Du kannst heute nicht und verschiebst den Plan locker auf den nächsten Tag.',
+  trophyWord: {
+    word: 'quizás',
+    meaning: 'vielleicht',
+    example: 'Quizás otro día.',
+    whyThisWord: 'Quizás ist auf A1 der weiche Vielleicht-Hedger — höflicher als ein direktes „no" und in jedem lockeren Plan-Gespräch passend.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Lockere Geste mit halb gehobener Hand, sanfter Blick zur Seite, warmes Nachmittagslicht.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle reschedule',
+  },
+  visualNotes: 'Sanfter Übergangs-Moment, weicher Lichtwechsel, leichte unentschiedene Geste.',
+}
+
+const brightSpanishP5Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Hasta mañana. Adiós.',
+    baseText: 'Bis morgen. Auf Wiedersehen.',
+  },
+  meaning: 'Ein kurzer, warmer Abschluss mit Verabschiedung und konkretem nächsten Termin.',
+  chunks: [
+    { id: 'hasta-manana', targetText: 'Hasta mañana.', baseText: 'Bis morgen.' },
+    { id: 'adios', targetText: 'Adiós.', baseText: 'Auf Wiedersehen.' },
+  ],
+  lessonItems: [
+    { id: 'hasta', targetText: 'hasta', baseText: 'bis', acceptedAnswers: ['hasta', 'Hasta'] },
+    { id: 'manana', targetText: 'mañana', baseText: 'morgen (Tag)', acceptedAnswers: ['mañana', 'manana', 'Mañana', 'Manana'] },
+    { id: 'adios', targetText: 'adiós', baseText: 'auf Wiedersehen', acceptedAnswers: ['adiós', 'adios', 'Adiós', 'Adios'] },
+    { id: 'hasta-luego', targetText: 'hasta luego', baseText: 'bis später', acceptedAnswers: ['hasta luego', 'Hasta luego'] },
+  ],
+  build: {
+    targetText: 'Hasta mañana. Adiós.',
+    chips: ['Hasta mañana.', 'Adiós.', 'hasta luego', 'vale', 'pronto'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Hasta',
+    after: ' mañana. Adiós.',
+    acceptedAnswers: ['hasta', 'Hasta'],
+    fallbackChoices: ['Hasta', 'Buen', 'Buenas', 'Adiós'],
+  },
+  speakTarget: {
+    baseCue: 'Bis morgen. Auf Wiedersehen.',
+    targetPhrase: 'Hasta mañana. Adiós.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['hasta', 'mañana', 'adiós'],
+    optionalTokens: ['luego', 'vale'],
+  },
+  sceneCaption: 'Beim Verlassen des Treffens schließt du die Szene mit einem warmen Bis-morgen-Gruß ab.',
+  trophyWord: {
+    word: 'hasta',
+    meaning: 'bis (Zeit-/Ort-Präposition)',
+    example: 'Hasta luego, hasta mañana, hasta pronto.',
+    whyThisWord: 'Hasta öffnet auf A1 alle Abschieds-Wendungen mit Zeit-Anker: hasta mañana, hasta luego, hasta pronto — ein einziges Wort, mehrere natürliche Verabschiedungen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tür im Hintergrund, kurze Verabschiedungsgeste, warmes Abendlicht.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'warm see-you-tomorrow',
+  },
+  visualNotes: 'Tür-Detail, sanftes Goldlicht, kurzer Winkemoment.',
+}
+
 const brightItalianLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -22061,6 +22614,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'spanish-a1-practical-5-001-perdon-tarde',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-001-perdon-tarde',
+      sequence: 1,
+      title: 'Entschuldigung für die Verspätung',
+    },
+    title: 'Entschuldigung für die Verspätung',
+    situation: {
+      en: 'At a casual appointment, apologize for arriving late.',
+      de: 'Bei einer lockeren Verabredung entschuldigst du dich für die Verspätung.',
+    },
+    pedagogicalGoal: 'Eine kurze Entschuldigung für die Verspätung formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Tut mir leid, vergessen',
+      situation: 'Du gestehst, dass dir etwas entfallen ist.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson001,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-5-002-se-me-olvido',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-002-se-me-olvido',
+      sequence: 2,
+      title: 'Tut mir leid, vergessen',
+    },
+    title: 'Tut mir leid, vergessen',
+    situation: {
+      en: 'Mid-conversation, admit you forgot something with a casual fixed expression.',
+      de: 'Mitten im Gespräch gestehst du locker, dass dir etwas entfallen ist.',
+    },
+    pedagogicalGoal: 'Die feste Iberische A1-Wendung „se me olvidó" für ein ehrliches Eingeständnis abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wie heißt du?',
+      situation: 'Du fragst nach dem Namen der anderen Person.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson002,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-5-003-como-te-llamas',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-003-como-te-llamas',
+      sequence: 3,
+      title: 'Wie heißt du?',
+    },
+    title: 'Wie heißt du?',
+    situation: {
+      en: 'In a casual encounter, ask another person for their name.',
+      de: 'In einer lockeren Begegnung fragst du nach dem Namen der anderen Person.',
+    },
+    pedagogicalGoal: 'Die kanonische tú-Frage nach dem Namen abrufen — der T/V-Verzweigungspunkt für Spanisch.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Sehr erfreut',
+      situation: 'Du antwortest warm nach der Vorstellung.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson003,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-5-004-mucho-gusto',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-004-mucho-gusto',
+      sequence: 4,
+      title: 'Sehr erfreut',
+    },
+    title: 'Sehr erfreut',
+    situation: {
+      en: 'After being introduced, reply warmly with the canonical Iberian fixed expression.',
+      de: 'Nach der Vorstellung antwortest du warm mit der festen Iberischen A1-Wendung.',
+    },
+    pedagogicalGoal: 'Die feste Iberische A1-Antwort „Mucho gusto" und das Echo „Igualmente" sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Woher kommst du?',
+      situation: 'Du fragst nach der Herkunft.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson004,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-5-005-de-donde-eres',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-005-de-donde-eres',
+      sequence: 5,
+      title: 'Woher kommst du?',
+    },
+    title: 'Woher kommst du?',
+    situation: {
+      en: 'In a casual chat, ask the other person where they are from.',
+      de: 'Im lockeren Smalltalk fragst du nach der Herkunft.',
+    },
+    pedagogicalGoal: 'Eine kurze Herkunftsfrage in der tú-Form formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wohnst du hier?',
+      situation: 'Du prüfst, ob die Person hier wohnt.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson005,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-5-006-vives-aqui',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-006-vives-aqui',
+      sequence: 6,
+      title: 'Wohnst du hier?',
+    },
+    title: 'Wohnst du hier?',
+    situation: {
+      en: 'After the origin question, check whether the person lives locally.',
+      de: 'Nach der Herkunftsfrage prüfst du, ob die Person hier wohnt.',
+    },
+    pedagogicalGoal: 'Die kurze Folgefrage zum Wohnort in der tú-Form formulieren und ser/vivir unterscheiden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Heute Abend Zeit?',
+      situation: 'Du fragst nach Verfügbarkeit am Abend.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson006,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-5-007-estas-libre',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-007-estas-libre',
+      sequence: 7,
+      title: 'Heute Abend Zeit?',
+    },
+    title: 'Heute Abend Zeit?',
+    situation: {
+      en: 'In a casual social moment, ask whether the other has time tonight.',
+      de: 'Im lockeren Gespräch fragst du, ob heute Abend Zeit ist.',
+    },
+    pedagogicalGoal: 'Die kurze Verfügbarkeitsfrage „¿Estás libre esta noche?" sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Treffen wir uns im Café?',
+      situation: 'Du schlägst einen Treffpunkt vor.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson007,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-5-008-quedamos-cafe',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-008-quedamos-cafe',
+      sequence: 8,
+      title: 'Treffen wir uns im Café?',
+    },
+    title: 'Treffen wir uns im Café?',
+    situation: {
+      en: 'Suggest a casual meeting place using the canonical Iberian quedar verb.',
+      de: 'Du schlägst locker einen Treffpunkt vor — mit dem Iberischen quedar-Verb.',
+    },
+    pedagogicalGoal: 'Die feste Iberische A1-Wendung „quedamos en..." für ein Verabredungsangebot abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Vielleicht morgen',
+      situation: 'Du verschiebst sanft auf den nächsten Tag.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson008,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-5-009-quizas-manana',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-009-quizas-manana',
+      sequence: 9,
+      title: 'Vielleicht morgen',
+    },
+    title: 'Vielleicht morgen',
+    situation: {
+      en: 'Politely postpone a casual plan to the next day.',
+      de: 'Du verschiebst einen lockeren Plan höflich auf den nächsten Tag.',
+    },
+    pedagogicalGoal: 'Mit „quizás" einen Plan weich auf einen späteren Zeitpunkt verschieben.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Bis morgen',
+      situation: 'Du schließt das Treffen mit einem Bis-morgen-Gruß ab.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson009,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-5-010-hasta-manana',
+    pathId: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-5-010-hasta-manana',
+      sequence: 10,
+      title: 'Bis morgen',
+    },
+    title: 'Bis morgen',
+    situation: {
+      en: 'Close a casual meeting with a “see you tomorrow” goodbye.',
+      de: 'Du schließt die lockere Begegnung mit einem Bis-morgen-Gruß ab.',
+    },
+    pedagogicalGoal: 'Die feste A1-Wendung „Hasta mañana" als warmer Abschluss abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Spanish A1 Practical 5 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP5Lesson010,
+    },
+  },
+  {
     id: 'italian-a1-practical-001-primo-contatto',
     pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
@@ -27366,6 +28249,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
     GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
     GUIDED_TODAY_PATH_SPANISH_FOUR_METADATA,
+    GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,
