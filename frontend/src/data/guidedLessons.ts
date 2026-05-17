@@ -412,6 +412,17 @@ const GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA: GuidedPathMetadata = {
+  id: 'italian-a1-practical-7',
+  title: 'Italian A1 Practical 7',
+  shortTitle: 'A1 Practical 7',
+  subtitle: 'Reise und Verkehrsmittel auf Italienisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Italian',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_FRENCH_ONE_METADATA: GuidedPathMetadata = {
   id: 'french-a1-practical-1',
   title: 'French A1 Practical 1',
@@ -15049,6 +15060,551 @@ const brightItalianP6Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Sanfter Übergang Richtung Ausgang, warmes Honiglicht, ruhige Erholungsstimmung.',
 }
 
+const brightItalianP7Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Un biglietto di sola andata, per favore.',
+    baseText: 'Eine einfache Fahrkarte, bitte.',
+  },
+  meaning: 'Eine konkrete Bahnhof-Bestellung — Einzelfahrkarte ohne Rückfahrt.',
+  chunks: [
+    { id: 'un-biglietto', targetText: 'Un biglietto', baseText: 'Eine Fahrkarte' },
+    { id: 'di-sola-andata', targetText: 'di sola andata,', baseText: 'einfache,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'andata', targetText: 'andata', baseText: 'Hinfahrt', acceptedAnswers: ['andata', 'Andata'] },
+    { id: 'ritorno-item', targetText: 'ritorno', baseText: 'Rückfahrt', acceptedAnswers: ['ritorno', 'Ritorno'] },
+    { id: 'sola', targetText: 'sola', baseText: 'nur (f.)', acceptedAnswers: ['sola', 'Sola'] },
+    { id: 'biglietto-item', targetText: 'biglietto', baseText: 'Fahrkarte', acceptedAnswers: ['biglietto', 'Biglietto'] },
+  ],
+  build: {
+    targetText: 'Un biglietto di sola andata, per favore.',
+    chips: ['Un biglietto', 'di sola andata,', 'per favore.', 'ritorno', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Un biglietto di sola ',
+    answer: 'andata',
+    after: ', per favore.',
+    acceptedAnswers: ['andata', 'Andata'],
+    fallbackChoices: ['andata', 'ritorno', 'fermata', 'partenza'],
+  },
+  speakTarget: {
+    baseCue: 'Eine einfache Fahrkarte, bitte.',
+    targetPhrase: 'Un biglietto di sola andata, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['biglietto', 'andata', 'per', 'favore'],
+    optionalTokens: ['un', 'di', 'sola', 'grazie'],
+  },
+  sceneCaption: 'Am Bahnhofsschalter formulierst du klar, dass nur die Hinfahrt gewünscht ist.',
+  trophyWord: {
+    word: 'andata',
+    meaning: 'Hinfahrt (Einzelfahrkarte)',
+    example: 'Andata e ritorno, per favore.',
+    whyThisWord: 'Andata ist auf A1 die Hinfahrt im Paar mit "ritorno" (Rückfahrt). "Di sola andata" = "nur einfach", "andata e ritorno" = "hin und zurück" — die zwei Standardformeln am italienischen Schalter.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bahnhofs-Schalter mit Fahrkartentasten, klare Bestellgeste, ruhiger Tresen-Akzent.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'ready to depart',
+  },
+  visualNotes: 'Schalter-Detail mit Tickethalter, warmes Hallenlicht, klare Übergabe-Spur.',
+}
+
+const brightItalianP7Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Scusi, dov'è il bus per il centro?",
+    baseText: 'Entschuldigung, wo ist der Bus ins Zentrum?',
+  },
+  meaning: 'Eine ortsbezogene Frage am Bahnhof oder Vorplatz, wo genau der Bus ins Zentrum hält.',
+  chunks: [
+    { id: 'scusi', targetText: 'Scusi,', baseText: 'Entschuldigung,' },
+    { id: 'dove-e-il-bus', targetText: "dov'è il bus", baseText: 'wo ist der Bus' },
+    { id: 'per-il-centro', targetText: 'per il centro?', baseText: 'ins Zentrum?' },
+  ],
+  lessonItems: [
+    { id: 'centro', targetText: 'centro', baseText: 'Zentrum / Stadtmitte', acceptedAnswers: ['centro', 'Centro'] },
+    { id: 'bus-item', targetText: 'bus', baseText: 'Bus (Kurzform)', acceptedAnswers: ['bus', 'Bus'] },
+    { id: 'fermata-item', targetText: 'fermata', baseText: 'Haltestelle', acceptedAnswers: ['fermata', 'Fermata'] },
+    { id: 'qui-vicino-p7', targetText: 'qui vicino', baseText: 'hier in der Nähe', acceptedAnswers: ['qui vicino', 'Qui vicino'] },
+  ],
+  build: {
+    targetText: "Scusi, dov'è il bus per il centro?",
+    chips: ['Scusi,', "dov'è il bus", 'per il centro?', 'fermata', 'qui vicino'],
+  },
+  typeRecall: {
+    before: "Scusi, dov'è il bus per il ",
+    answer: 'centro',
+    after: '?',
+    acceptedAnswers: ['centro', 'Centro'],
+    fallbackChoices: ['centro', 'porto', 'mare', 'museo'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, wo ist der Bus ins Zentrum?',
+    targetPhrase: "Scusi, dov'è il bus per il centro?",
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['scusi', 'bus', 'centro'],
+    optionalTokens: ["dov'è", 'per', 'il', 'fermata'],
+  },
+  sceneCaption: 'Am Bahnhofs-Ausgang fragst du höflich nach dem Bus zur Stadtmitte.',
+  trophyWord: {
+    word: 'centro',
+    meaning: 'Zentrum / Innenstadt',
+    example: 'In centro c\'è la stazione.',
+    whyThisWord: 'Centro ist auf A1 die Stadtmitte und steht typisch ohne Artikel in Präpositionalphrasen: "in centro" (im Zentrum), "per il centro" (Richtung Zentrum). Vorsicht: nicht mit dem deutschen "Zentrum" überlappen — Italienisch wirkt kürzer.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bahnhofs-Vorplatz mit Stadtanzeige, kurze Frage Richtung Ortskundigem.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'orienting',
+  },
+  visualNotes: 'Bahnhofs-Vorplatz-Detail mit Wegweiser, warmes Tageslicht, ruhige Frage-Geste.',
+}
+
+const brightItalianP7Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Quando è la prossima partenza?",
+    baseText: 'Wann ist die nächste Abfahrt?',
+  },
+  meaning: 'Eine direkte Frage nach der nächsten Abfahrt am Schalter oder Anzeigebrett.',
+  chunks: [
+    { id: 'quando', targetText: 'Quando', baseText: 'Wann' },
+    { id: 'e-la-prossima', targetText: 'è la prossima', baseText: 'ist die nächste' },
+    { id: 'partenza', targetText: 'partenza?', baseText: 'Abfahrt?' },
+  ],
+  lessonItems: [
+    { id: 'partenza', targetText: 'partenza', baseText: 'Abfahrt', acceptedAnswers: ['partenza', 'Partenza'] },
+    { id: 'arrivo', targetText: 'arrivo', baseText: 'Ankunft', acceptedAnswers: ['arrivo', 'Arrivo'] },
+    { id: 'prossima-item', targetText: 'prossima', baseText: 'nächste', acceptedAnswers: ['prossima', 'Prossima'] },
+    { id: 'quando-item', targetText: 'quando', baseText: 'wann', acceptedAnswers: ['quando', 'Quando'] },
+  ],
+  build: {
+    targetText: 'Quando è la prossima partenza?',
+    chips: ['Quando', 'è la prossima', 'partenza?', 'arrivo', 'orario'],
+  },
+  typeRecall: {
+    before: 'Quando è la prossima ',
+    answer: 'partenza',
+    after: '?',
+    acceptedAnswers: ['partenza', 'Partenza'],
+    fallbackChoices: ['partenza', 'arrivo', 'fermata', 'corsa'],
+  },
+  speakTarget: {
+    baseCue: 'Wann ist die nächste Abfahrt?',
+    targetPhrase: 'Quando è la prossima partenza?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['quando', 'prossima', 'partenza'],
+    optionalTokens: ['è', 'la', 'per', 'favore'],
+  },
+  sceneCaption: 'Am Anzeigetafel-Schalter klärst du, wann der nächste Zug oder Bus fährt.',
+  trophyWord: {
+    word: 'partenza',
+    meaning: 'Abfahrt',
+    example: 'La partenza è alle nove.',
+    whyThisWord: 'Partenza ist auf A1 die Abfahrt im Paar mit "arrivo" (Ankunft) — die zwei Wörter strukturieren jede italienische Anzeigetafel. Verwandt mit "partire" (abfahren).',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Anzeigetafel mit roten und grünen Linien, kurze Frage Richtung Schalter.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'checking the time',
+  },
+  visualNotes: 'Anzeigetafel-Detail, warmes Hallenlicht, fließende Schrift-Animation.',
+}
+
+const brightItalianP7Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Da quale binario parte?',
+    baseText: 'Von welchem Gleis fährt er ab?',
+  },
+  meaning: 'Eine konkrete Frage am Schalter oder auf dem Bahnsteig nach dem Abfahrtsgleis.',
+  chunks: [
+    { id: 'da-quale-binario', targetText: 'Da quale binario', baseText: 'Von welchem Gleis' },
+    { id: 'parte', targetText: 'parte?', baseText: 'fährt er ab?' },
+  ],
+  lessonItems: [
+    { id: 'binario', targetText: 'binario', baseText: 'Gleis / Bahnsteig', acceptedAnswers: ['binario', 'Binario'] },
+    { id: 'quale-item', targetText: 'quale', baseText: 'welcher / welche', acceptedAnswers: ['quale', 'Quale'] },
+    { id: 'numero-item', targetText: 'numero', baseText: 'Nummer', acceptedAnswers: ['numero', 'Numero'] },
+    { id: 'parte-item', targetText: 'parte', baseText: 'fährt ab', acceptedAnswers: ['parte', 'Parte'] },
+  ],
+  build: {
+    targetText: 'Da quale binario parte?',
+    chips: ['Da quale binario', 'parte?', 'numero', 'orario'],
+  },
+  typeRecall: {
+    before: 'Da quale ',
+    answer: 'binario',
+    after: ' parte?',
+    acceptedAnswers: ['binario', 'Binario'],
+    fallbackChoices: ['binario', 'treno', 'bus', 'porta'],
+  },
+  speakTarget: {
+    baseCue: 'Von welchem Gleis fährt er ab?',
+    targetPhrase: 'Da quale binario parte?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['binario', 'parte'],
+    optionalTokens: ['da', 'quale', 'numero'],
+  },
+  sceneCaption: 'Am Schalter oder Anzeigentafel klärst du, von welchem Gleis dein Zug abfährt.',
+  trophyWord: {
+    word: 'binario',
+    meaning: 'Gleis / Bahnsteig',
+    example: 'Binario quattro, per favore.',
+    whyThisWord: 'Binario ist auf A1 das Gleis (mit Bahnsteig). Die typische italienische Bahnhofs-Ansage ist "Binario + Nummer" — kürzer als die deutsche Form. "Da quale binario parte?" ist die Standardfrage.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bahnsteig-Schild mit großer Nummer, kurzer Blick zur Anzeige.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'platform-bound',
+  },
+  visualNotes: 'Bahnsteig-Nummer im Fokus, warmes Hallenlicht, ruhige Vor-Ankündigung.',
+}
+
+const brightItalianP7Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Mi serve un taxi, per favore.',
+    baseText: 'Ich brauche ein Taxi, bitte.',
+  },
+  meaning: 'Eine ruhige, direkte Bitte um ein Taxi am Hoteleingang oder Bahnhofs-Vorplatz.',
+  chunks: [
+    { id: 'mi-serve', targetText: 'Mi serve', baseText: 'Ich brauche' },
+    { id: 'un-taxi', targetText: 'un taxi,', baseText: 'ein Taxi,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'taxi', targetText: 'taxi', baseText: 'Taxi', acceptedAnswers: ['taxi', 'Taxi'] },
+    { id: 'serve', targetText: 'serve', baseText: '(mir) wird benötigt', acceptedAnswers: ['serve', 'Serve'] },
+    { id: 'subito-taxi', targetText: 'subito', baseText: 'sofort', acceptedAnswers: ['subito', 'Subito'] },
+    { id: 'autista', targetText: 'autista', baseText: 'Fahrer', acceptedAnswers: ['autista', 'Autista'] },
+  ],
+  build: {
+    targetText: 'Mi serve un taxi, per favore.',
+    chips: ['Mi serve', 'un taxi,', 'per favore.', 'subito', 'autista'],
+  },
+  typeRecall: {
+    before: 'Mi serve un ',
+    answer: 'taxi',
+    after: ', per favore.',
+    acceptedAnswers: ['taxi', 'Taxi'],
+    fallbackChoices: ['taxi', 'bus', 'treno', 'auto'],
+  },
+  speakTarget: {
+    baseCue: 'Ich brauche ein Taxi, bitte.',
+    targetPhrase: 'Mi serve un taxi, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['serve', 'taxi', 'per', 'favore'],
+    optionalTokens: ['mi', 'un', 'subito', 'grazie'],
+  },
+  sceneCaption: 'Vor dem Hotel oder Bahnhofs-Vorplatz fragst du höflich nach einem Taxi.',
+  trophyWord: {
+    word: 'taxi',
+    meaning: 'Taxi',
+    example: 'Un taxi per la stazione, grazie.',
+    whyThisWord: 'Taxi ist auf A1 ein internationales Wort — unveränderlich im Plural ("due taxi") und im Italienischen männlich ("il taxi"). Die Konstruktion "mi serve" ist eine sehr natürliche italienische Bitte-Wendung: wörtlich "mir wird benötigt".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hoteleingang am Abend, Taxi am Bordstein, klare Bitt-Geste.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'on the curb',
+  },
+  visualNotes: 'Taxi-Dach mit Lichtleuchte, sanftes Abendlicht, ruhige Vorab-Geste.',
+}
+
+const brightItalianP7Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Andiamo alla stazione.',
+    baseText: 'Wir fahren zum Bahnhof.',
+  },
+  meaning: 'Eine kurze Absprache mit Mitreisendem oder Taxifahrer über das Ziel.',
+  chunks: [
+    { id: 'andiamo', targetText: 'Andiamo', baseText: 'Wir fahren' },
+    { id: 'alla-stazione', targetText: 'alla stazione.', baseText: 'zum Bahnhof.' },
+  ],
+  lessonItems: [
+    { id: 'andiamo', targetText: 'andiamo', baseText: 'wir gehen / fahren', acceptedAnswers: ['andiamo', 'Andiamo'] },
+    { id: 'stazione-item', targetText: 'stazione', baseText: 'Bahnhof', acceptedAnswers: ['stazione', 'Stazione'] },
+    { id: 'aeroporto', targetText: 'aeroporto', baseText: 'Flughafen', acceptedAnswers: ['aeroporto', 'Aeroporto'] },
+    { id: 'porto', targetText: 'porto', baseText: 'Hafen', acceptedAnswers: ['porto', 'Porto'] },
+  ],
+  build: {
+    targetText: 'Andiamo alla stazione.',
+    chips: ['Andiamo', 'alla stazione.', 'aeroporto', 'porto'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Andiamo',
+    after: ' alla stazione.',
+    acceptedAnswers: ['andiamo', 'Andiamo'],
+    fallbackChoices: ['Andiamo', 'Vado', 'Vai', 'Vanno'],
+  },
+  speakTarget: {
+    baseCue: 'Wir fahren zum Bahnhof.',
+    targetPhrase: 'Andiamo alla stazione.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['andiamo', 'stazione'],
+    optionalTokens: ['alla', 'aeroporto', 'subito'],
+  },
+  sceneCaption: 'Am Bordstein wendest du dich zum Mitreisenden und kündigst das Ziel an.',
+  trophyWord: {
+    word: 'andiamo',
+    meaning: 'wir gehen / wir fahren (1. Person Plural)',
+    example: 'Andiamo, è tardi!',
+    whyThisWord: 'Andiamo ist die 1.-Plural-Form von "andare" (gehen/fahren) und funktioniert auch als zwingender Aufruf ("Los geht\'s!"). Auf A1 die häufigste Wir-Form für Bewegung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Taxi-Innenraum, Blick nach vorn zur Straße, ruhige Ziel-Ansage.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'getting going',
+  },
+  visualNotes: 'Lenkrad und Straße im Vordergrund, sanftes Morgenlicht, klarer Anfahr-Beat.',
+}
+
+const brightItalianP7Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Si fermi qui, per favore.',
+    baseText: 'Halten Sie hier, bitte.',
+  },
+  meaning: 'Die ruhige, höfliche Anweisung an den Taxifahrer, an dieser Stelle zu halten.',
+  chunks: [
+    { id: 'si-fermi', targetText: 'Si fermi', baseText: 'Halten Sie' },
+    { id: 'qui', targetText: 'qui,', baseText: 'hier,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'fermi', targetText: 'fermi', baseText: 'halten Sie (Lei-Imperativ)', acceptedAnswers: ['fermi', 'Fermi'] },
+    { id: 'si-fermi-item', targetText: 'si fermi', baseText: 'halten Sie an (reflexiv, Lei)', acceptedAnswers: ['si fermi', 'Si fermi'] },
+    { id: 'qui-item-p7', targetText: 'qui', baseText: 'hier', acceptedAnswers: ['qui', 'Qui'] },
+    { id: 'davanti', targetText: 'davanti', baseText: 'davor / vor', acceptedAnswers: ['davanti', 'Davanti'] },
+  ],
+  build: {
+    targetText: 'Si fermi qui, per favore.',
+    chips: ['Si fermi', 'qui,', 'per favore.', 'davanti', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Si ',
+    answer: 'fermi',
+    after: ' qui, per favore.',
+    acceptedAnswers: ['fermi', 'Fermi'],
+    fallbackChoices: ['fermi', 'parli', 'venga', 'guardi'],
+  },
+  speakTarget: {
+    baseCue: 'Halten Sie hier, bitte.',
+    targetPhrase: 'Si fermi qui, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['fermi', 'qui', 'per', 'favore'],
+    optionalTokens: ['si', 'davanti', 'grazie'],
+  },
+  sceneCaption: 'Im fahrenden Taxi hebst du kurz die Hand und sagst dem Fahrer höflich, hier zu halten.',
+  trophyWord: {
+    word: 'fermi',
+    meaning: 'halten Sie (Lei-Imperativ von "fermarsi")',
+    example: 'Si fermi al semaforo.',
+    whyThisWord: 'Fermi ist der Lei-Imperativ von "fermarsi" (anhalten, reflexiv) und steht mit dem Reflexivpronomen "si" zusammen: "Si fermi qui". Verwandt mit "fermata" (Haltestelle). Im Taxi die natürliche höfliche Anweisung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Taxi-Innenraum, kurze Geste zum Fahrer, ruhiges Bremsmoment.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle stop',
+  },
+  visualNotes: 'Bremsleuchte-Reflexion, weiches Innenlicht, ruhige Hand-Geste.',
+}
+
+const brightItalianP7Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Vado all'aeroporto.",
+    baseText: 'Ich fahre zum Flughafen.',
+  },
+  meaning: 'Eine knappe Mitteilung über das eigene Ziel — typisch im Taxi oder an der Rezeption.',
+  chunks: [
+    { id: 'vado', targetText: 'Vado', baseText: 'Ich fahre' },
+    { id: 'all-aeroporto', targetText: "all'aeroporto.", baseText: 'zum Flughafen.' },
+  ],
+  lessonItems: [
+    { id: 'vado', targetText: 'vado', baseText: 'ich gehe / fahre', acceptedAnswers: ['vado', 'Vado'] },
+    { id: 'vai', targetText: 'vai', baseText: 'du gehst', acceptedAnswers: ['vai', 'Vai'] },
+    { id: 'aeroporto-item', targetText: 'aeroporto', baseText: 'Flughafen', acceptedAnswers: ['aeroporto', 'Aeroporto'] },
+    { id: 'in-treno', targetText: 'in treno', baseText: 'mit dem Zug', acceptedAnswers: ['in treno', 'In treno'] },
+  ],
+  build: {
+    targetText: "Vado all'aeroporto.",
+    chips: ['Vado', "all'aeroporto.", 'in treno', 'vai'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Vado',
+    after: " all'aeroporto.",
+    acceptedAnswers: ['vado', 'Vado'],
+    fallbackChoices: ['Vado', 'Vai', 'Vieni', 'Sono'],
+  },
+  speakTarget: {
+    baseCue: 'Ich fahre zum Flughafen.',
+    targetPhrase: "Vado all'aeroporto.",
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['vado', 'aeroporto'],
+    optionalTokens: ["all'", 'in', 'treno'],
+  },
+  sceneCaption: 'Im Taxi oder an der Rezeption gibst du knapp dein Ziel an.',
+  trophyWord: {
+    word: 'vado',
+    meaning: 'ich gehe / ich fahre (1. Person Singular)',
+    example: 'Vado a casa, è tardi.',
+    whyThisWord: 'Vado ist die 1.-Singular-Form von "andare" (gehen/fahren) — eines der ersten unregelmäßigen Verben auf A1: vado, vai, va, andiamo, andate, vanno. Vor Vokalen verschmilzt die Präposition: "a + il" → "al", "a + l\'" → "all\'" wie in "all\'aeroporto".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Taxi-Sitz hinten, Blick aus dem Fenster auf vorbeiziehende Straße, ruhiger Ansage-Moment.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'on the way',
+  },
+  visualNotes: 'Fenster-Bewegungsspur, sanftes Reise-Licht, ruhiger Innenraum.',
+}
+
+const brightItalianP7Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Quanto dura il viaggio?',
+    baseText: 'Wie lange dauert die Fahrt?',
+  },
+  meaning: 'Eine konkrete Dauerfrage im Taxi oder vor der Bus-/Zugfahrt.',
+  chunks: [
+    { id: 'quanto-dura', targetText: 'Quanto dura', baseText: 'Wie lange dauert' },
+    { id: 'il-viaggio', targetText: 'il viaggio?', baseText: 'die Fahrt?' },
+  ],
+  lessonItems: [
+    { id: 'viaggio', targetText: 'viaggio', baseText: 'Reise / Fahrt', acceptedAnswers: ['viaggio', 'Viaggio'] },
+    { id: 'dura', targetText: 'dura', baseText: 'dauert', acceptedAnswers: ['dura', 'Dura'] },
+    { id: 'ore', targetText: 'ore', baseText: 'Stunden', acceptedAnswers: ['ore', 'Ore'] },
+    { id: 'minuti-item-p7', targetText: 'minuti', baseText: 'Minuten', acceptedAnswers: ['minuti', 'Minuti'] },
+  ],
+  build: {
+    targetText: 'Quanto dura il viaggio?',
+    chips: ['Quanto dura', 'il viaggio?', 'ore', 'minuti'],
+  },
+  typeRecall: {
+    before: 'Quanto dura il ',
+    answer: 'viaggio',
+    after: '?',
+    acceptedAnswers: ['viaggio', 'Viaggio'],
+    fallbackChoices: ['viaggio', 'volo', 'tragitto', 'percorso'],
+  },
+  speakTarget: {
+    baseCue: 'Wie lange dauert die Fahrt?',
+    targetPhrase: 'Quanto dura il viaggio?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['quanto', 'dura', 'viaggio'],
+    optionalTokens: ['il', 'ore', 'minuti'],
+  },
+  sceneCaption: 'Vor oder im Fahrzeug klärst du, wie lange das Ganze dauert.',
+  trophyWord: {
+    word: 'viaggio',
+    meaning: 'Reise / Fahrt',
+    example: 'Buon viaggio!',
+    whyThisWord: 'Viaggio ist auf A1 die Reise im Allgemeinen — Stadtfahrt, Zugfahrt, Flugreise. Verwandt mit "viaggiare" (reisen). Die Wendung "buon viaggio!" ist der italienische Standard-Abschiedsgruß vor Reisen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Uhr und Karte im Vordergrund, kurze fragende Geste Richtung Fahrer.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'gauging the ride',
+  },
+  visualNotes: 'Uhren-Detail mit Fahrlinie, warmes Mittagslicht, klare Frage-Aura.',
+}
+
+const brightItalianP7Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Siamo arrivati. Grazie!',
+    baseText: 'Wir sind angekommen. Danke!',
+  },
+  meaning: 'Eine kurze Ankunftsmeldung beim Aussteigen aus Taxi, Bus oder Zug.',
+  chunks: [
+    { id: 'siamo-arrivati', targetText: 'Siamo arrivati.', baseText: 'Wir sind angekommen.' },
+    { id: 'grazie', targetText: 'Grazie!', baseText: 'Danke!' },
+  ],
+  lessonItems: [
+    { id: 'arrivato', targetText: 'arrivato', baseText: 'angekommen (m. Sg.)', acceptedAnswers: ['arrivato', 'Arrivato'] },
+    { id: 'arrivata', targetText: 'arrivata', baseText: 'angekommen (f. Sg.)', acceptedAnswers: ['arrivata', 'Arrivata'] },
+    { id: 'arrivati', targetText: 'arrivati', baseText: 'angekommen (m. Pl.)', acceptedAnswers: ['arrivati', 'Arrivati'] },
+    { id: 'arrivate', targetText: 'arrivate', baseText: 'angekommen (f. Pl.)', acceptedAnswers: ['arrivate', 'Arrivate'] },
+  ],
+  build: {
+    targetText: 'Siamo arrivati. Grazie!',
+    chips: ['Siamo arrivati.', 'Grazie!', 'finalmente', 'davvero'],
+  },
+  typeRecall: {
+    before: 'Siamo ',
+    answer: 'arrivati',
+    after: '. Grazie!',
+    acceptedAnswers: ['arrivati', 'Arrivati'],
+    fallbackChoices: ['arrivati', 'partiti', 'tornati', 'pronti'],
+  },
+  speakTarget: {
+    baseCue: 'Wir sind angekommen. Danke!',
+    targetPhrase: 'Siamo arrivati. Grazie!',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['siamo', 'arrivati', 'grazie'],
+    optionalTokens: ['finalmente', 'davvero'],
+  },
+  sceneCaption: 'Beim Aussteigen drehst du dich kurz um, bestätigst die Ankunft und dankst.',
+  trophyWord: {
+    word: 'arrivato',
+    meaning: 'angekommen (Partizip — maskulin singular)',
+    example: 'Sono arrivato, grazie.',
+    whyThisWord: 'Arrivato ist das regelmäßige Partizip von "arrivare" und kongruiert mit dem Subjekt: maskulin "arrivato", feminin "arrivata", Plural "arrivati / arrivate". Mit "essere" gebildet: "sono arrivato" / "siamo arrivati". Die Gender-Kongruenz ist hier essentiell.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Taxi- oder Bahn-Aussteigen, kurzer Dankesgest, warmes Ankunfts-Licht.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'closing the journey',
+  },
+  visualNotes: 'Tür-Detail beim Aussteigen, warmes Spätlicht, sanfter Schluss-Akzent.',
+}
+
 const brightFrenchLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -23485,6 +24041,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'italian-a1-practical-7-lesson-1-andata',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-1-andata',
+      sequence: 1,
+      title: 'Eine einfache Fahrkarte',
+    },
+    title: 'Eine einfache Fahrkarte',
+    situation: {
+      en: 'At a station ticket window, ask for a single ticket.',
+      de: 'Am Bahnhofsschalter bittest du um eine einfache Fahrkarte.',
+    },
+    pedagogicalGoal: 'Eine spezifische Bahnhofs-Bestellung mit "andata" auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wo ist der Bus ins Zentrum?',
+      situation: 'Du fragst nach dem Bus zur Stadtmitte.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson001,
+    },
+  },
+  {
+    id: 'italian-a1-practical-7-lesson-2-centro',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-2-centro',
+      sequence: 2,
+      title: 'Wo ist der Bus ins Zentrum?',
+    },
+    title: 'Wo ist der Bus ins Zentrum?',
+    situation: {
+      en: 'Outside a station, ask where the bus to downtown is.',
+      de: 'Vor dem Bahnhof fragst du nach dem Bus ins Zentrum.',
+    },
+    pedagogicalGoal: 'Eine ortsbezogene Frage nach einem Verkehrsmittel auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wann ist die nächste Abfahrt?',
+      situation: 'Du fragst nach der nächsten Abfahrtszeit.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson002,
+    },
+  },
+  {
+    id: 'italian-a1-practical-7-lesson-3-partenza',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-3-partenza',
+      sequence: 3,
+      title: 'Wann ist die nächste Abfahrt?',
+    },
+    title: 'Wann ist die nächste Abfahrt?',
+    situation: {
+      en: 'At an info desk, ask when the next departure is.',
+      de: 'Am Infoschalter fragst du nach der nächsten Abfahrt.',
+    },
+    pedagogicalGoal: 'Eine kurze Frage nach der Abfahrtszeit mit "partenza" abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Von welchem Gleis?',
+      situation: 'Du klärst, von welchem Gleis dein Zug fährt.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson003,
+    },
+  },
+  {
+    id: 'italian-a1-practical-7-lesson-4-binario',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-4-binario',
+      sequence: 4,
+      title: 'Von welchem Gleis?',
+    },
+    title: 'Von welchem Gleis?',
+    situation: {
+      en: 'On the platform, ask which platform the train departs from.',
+      de: 'Du klärst, von welchem Gleis der Zug abfährt.',
+    },
+    pedagogicalGoal: 'Eine konkrete Gleis-Frage auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich brauche ein Taxi',
+      situation: 'Du bittest um ein Taxi.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson004,
+    },
+  },
+  {
+    id: 'italian-a1-practical-7-lesson-5-taxi',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-5-taxi',
+      sequence: 5,
+      title: 'Ich brauche ein Taxi',
+    },
+    title: 'Ich brauche ein Taxi',
+    situation: {
+      en: 'At a hotel exit, ask for a taxi.',
+      de: 'Vor dem Hotel bittest du um ein Taxi.',
+    },
+    pedagogicalGoal: 'Eine direkte Taxi-Bitte mit "mi serve" auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wir fahren zum Bahnhof',
+      situation: 'Du teilst das Ziel mit.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson005,
+    },
+  },
+  {
+    id: 'italian-a1-practical-7-lesson-6-andiamo',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-6-andiamo',
+      sequence: 6,
+      title: 'Wir fahren zum Bahnhof',
+    },
+    title: 'Wir fahren zum Bahnhof',
+    situation: {
+      en: 'At the curb, confirm with companion or driver where you are going.',
+      de: 'Am Bordstein kündigst du das Ziel an.',
+    },
+    pedagogicalGoal: 'Die 1.-Plural-Form "andiamo" für ein gemeinsames Ziel abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Halten Sie hier',
+      situation: 'Du bittest den Fahrer, hier zu halten.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson006,
+    },
+  },
+  {
+    id: 'italian-a1-practical-7-lesson-7-si-fermi',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-7-si-fermi',
+      sequence: 7,
+      title: 'Halten Sie hier',
+    },
+    title: 'Halten Sie hier',
+    situation: {
+      en: 'In a taxi, ask the driver to stop here.',
+      de: 'Im Taxi bittest du den Fahrer, hier zu halten.',
+    },
+    pedagogicalGoal: 'Eine höfliche Lei-Imperativ-Anweisung an den Fahrer abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich fahre zum Flughafen',
+      situation: 'Du nennst dein Ziel.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson007,
+    },
+  },
+  {
+    id: 'italian-a1-practical-7-lesson-8-vado',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-8-vado',
+      sequence: 8,
+      title: 'Ich fahre zum Flughafen',
+    },
+    title: 'Ich fahre zum Flughafen',
+    situation: {
+      en: 'State that you are heading to a destination.',
+      de: 'Du gibst dein Ziel an.',
+    },
+    pedagogicalGoal: 'Die 1.-Singular-Form "vado" mit verschmolzener Präposition "all\'" abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wie lange dauert die Fahrt?',
+      situation: 'Du fragst nach der Fahrzeit.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson008,
+    },
+  },
+  {
+    id: 'italian-a1-practical-7-lesson-9-viaggio',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-9-viaggio',
+      sequence: 9,
+      title: 'Wie lange dauert die Fahrt?',
+    },
+    title: 'Wie lange dauert die Fahrt?',
+    situation: {
+      en: 'Ask the duration of the ride.',
+      de: 'Du fragst, wie lange die Fahrt dauert.',
+    },
+    pedagogicalGoal: 'Eine Dauerfrage mit "dura" und "viaggio" auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wir sind angekommen',
+      situation: 'Du schließt die Fahrt mit Dank ab.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson009,
+    },
+  },
+  {
+    id: 'italian-a1-practical-7-lesson-10-siamo-arrivati',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-7-lesson-10-siamo-arrivati',
+      sequence: 10,
+      title: 'Wir sind angekommen',
+    },
+    title: 'Wir sind angekommen',
+    situation: {
+      en: 'Announce arrival and close the travel interaction.',
+      de: 'Beim Aussteigen schließt du die Fahrt mit Dank ab.',
+    },
+    pedagogicalGoal: 'Die kongruente Partizip-Form "arrivati" mit "siamo" abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Italian A1 Practical 7 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP7Lesson010,
+    },
+  },
+  {
     id: 'french-a1-practical-1-lesson-1-bonjour-francais',
     pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
@@ -26486,6 +27372,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_SIX_METADATA,
+    GUIDED_TODAY_PATH_ITALIAN_SEVEN_METADATA,
     GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
     GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
     GUIDED_TODAY_PATH_FRENCH_THREE_METADATA,
