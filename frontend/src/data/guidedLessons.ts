@@ -324,6 +324,17 @@ const GUIDED_TODAY_PATH_SPANISH_TWO_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_SPANISH_THREE_METADATA: GuidedPathMetadata = {
+  id: 'spanish-a1-practical-3',
+  title: 'Spanish A1 Practical 3',
+  shortTitle: 'A1 Practical 3',
+  subtitle: 'Wege, Verkehr, kleine Reisefragen',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Spanish',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA: GuidedPathMetadata = {
   id: 'italian-a1-practical-1',
   title: 'Italian A1 Practical 1',
@@ -10637,6 +10648,554 @@ const brightSpanishP2Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Detail auf wartender Hand, sanftes Licht, ruhiger Atemzug.',
 }
 
+const brightSpanishP3Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Perdón, ¿a la derecha o a la izquierda?',
+    baseText: 'Entschuldigung, rechts oder links?',
+  },
+  meaning: 'Eine kurze, höfliche Frage nach der Richtung, wenn du jemanden auf dem Gehweg ansprichst.',
+  chunks: [
+    { id: 'perdon', targetText: 'Perdón,', baseText: 'Entschuldigung,' },
+    { id: 'a-la-derecha', targetText: '¿a la derecha', baseText: 'rechts' },
+    { id: 'o-a-la-izquierda', targetText: 'o a la izquierda?', baseText: 'oder links?' },
+  ],
+  lessonItems: [
+    { id: 'derecha', targetText: 'derecha', baseText: 'rechts', acceptedAnswers: ['derecha', 'Derecha'] },
+    { id: 'izquierda', targetText: 'izquierda', baseText: 'links', acceptedAnswers: ['izquierda', 'Izquierda'] },
+    { id: 'a-la', targetText: 'a la', baseText: 'nach', acceptedAnswers: ['a la', 'A la'] },
+    { id: 'recto', targetText: 'recto', baseText: 'geradeaus', acceptedAnswers: ['recto', 'Recto'] },
+  ],
+  build: {
+    targetText: 'Perdón, ¿a la derecha o a la izquierda?',
+    chips: ['Perdón,', '¿a la derecha', 'o a la izquierda?', 'recto', 'por favor'],
+  },
+  typeRecall: {
+    before: 'Perdón, ¿a la ',
+    answer: 'derecha',
+    after: ' o a la izquierda?',
+    acceptedAnswers: ['derecha', 'Derecha'],
+    fallbackChoices: ['derecha', 'izquierda', 'recto', 'detrás'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, rechts oder links?',
+    targetPhrase: 'Perdón, ¿a la derecha o a la izquierda?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['perdón', 'derecha', 'izquierda'],
+    optionalTokens: ['a', 'la', 'o', 'por', 'favor'],
+  },
+  sceneCaption: 'Auf dem Gehweg hältst du jemanden kurz an und fragst nach der Richtung an der nächsten Straße.',
+  trophyWord: {
+    word: 'derecha',
+    meaning: 'rechts',
+    example: 'Es a la derecha.',
+    whyThisWord: 'Derecha ist auf A1 das verlässliche Richtungswort und bildet das Paar mit izquierda, das jede Wegfrage löst.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Vormittag auf einer ruhigen Straße, ein kurzer Blick zur nächsten Kreuzung, freundliche Geste.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'open inquiry on a sidewalk',
+  },
+  visualNotes: 'Straßenkreuzung im weichen Licht, Pfeil-Hinweis im Hintergrund, klare Geste der Hand.',
+}
+
+const brightSpanishP3Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Está lejos de aquí?',
+    baseText: 'Ist es weit von hier?',
+  },
+  meaning: 'Eine kurze, höfliche Frage zur Entfernung, bevor du dich entscheidest, zu Fuß zu gehen.',
+  chunks: [
+    { id: 'esta', targetText: '¿Está', baseText: 'Ist es' },
+    { id: 'lejos', targetText: 'lejos', baseText: 'weit' },
+    { id: 'de-aqui', targetText: 'de aquí?', baseText: 'von hier?' },
+  ],
+  lessonItems: [
+    { id: 'esta', targetText: 'está', baseText: 'ist (Ort/Zustand)', acceptedAnswers: ['está', 'esta', 'Está', 'Esta'] },
+    { id: 'lejos', targetText: 'lejos', baseText: 'weit', acceptedAnswers: ['lejos', 'Lejos'] },
+    { id: 'cerca', targetText: 'cerca', baseText: 'nah', acceptedAnswers: ['cerca', 'Cerca'] },
+    { id: 'aqui', targetText: 'aquí', baseText: 'hier', acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+  ],
+  build: {
+    targetText: '¿Está lejos de aquí?',
+    chips: ['¿Está', 'lejos', 'de aquí?', 'cerca', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿Está ',
+    answer: 'lejos',
+    after: ' de aquí?',
+    acceptedAnswers: ['lejos', 'Lejos'],
+    fallbackChoices: ['lejos', 'cerca', 'aquí', 'allí'],
+  },
+  speakTarget: {
+    baseCue: 'Ist es weit von hier?',
+    targetPhrase: '¿Está lejos de aquí?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['está', 'lejos', 'aquí'],
+    optionalTokens: ['de', 'cerca', 'por', 'favor'],
+  },
+  sceneCaption: 'Vor dem Aufbruch fragst du noch kurz nach, ob das Ziel zu Fuß erreichbar ist.',
+  trophyWord: {
+    word: 'lejos',
+    meaning: 'weit',
+    example: 'No está lejos.',
+    whyThisWord: 'Lejos ist auf A1 der einfache Entfernungsmarker und bildet das Paar mit cerca — zwei Wörter, jede Wegentscheidung gelöst.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Blick die Straße entlang, Ziel weit im Hintergrund, prüfende Pause.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'distance check before walking',
+  },
+  visualNotes: 'Perspektive die Straße hinunter, sanftes Tageslicht, Hand am Telefon mit Karte.',
+}
+
+const brightSpanishP3Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Está abierto ahora?',
+    baseText: 'Ist es jetzt offen?',
+  },
+  meaning: 'Eine ruhige Frage vor der Tür, bevor du hineingehst.',
+  chunks: [
+    { id: 'esta', targetText: '¿Está', baseText: 'Ist es' },
+    { id: 'abierto', targetText: 'abierto', baseText: 'offen' },
+    { id: 'ahora', targetText: 'ahora?', baseText: 'jetzt?' },
+  ],
+  lessonItems: [
+    { id: 'esta', targetText: 'está', baseText: 'ist (Zustand)', acceptedAnswers: ['está', 'esta', 'Está', 'Esta'] },
+    { id: 'abierto', targetText: 'abierto', baseText: 'offen', acceptedAnswers: ['abierto', 'Abierto'] },
+    { id: 'cerrado', targetText: 'cerrado', baseText: 'geschlossen', acceptedAnswers: ['cerrado', 'Cerrado'] },
+    { id: 'ahora', targetText: 'ahora', baseText: 'jetzt', acceptedAnswers: ['ahora', 'Ahora'] },
+  ],
+  build: {
+    targetText: '¿Está abierto ahora?',
+    chips: ['¿Está', 'abierto', 'ahora?', 'cerrado', 'hoy'],
+  },
+  typeRecall: {
+    before: '¿Está ',
+    answer: 'abierto',
+    after: ' ahora?',
+    acceptedAnswers: ['abierto', 'Abierto'],
+    fallbackChoices: ['abierto', 'cerrado', 'libre', 'lleno'],
+  },
+  speakTarget: {
+    baseCue: 'Ist es jetzt offen?',
+    targetPhrase: '¿Está abierto ahora?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['está', 'abierto', 'ahora'],
+    optionalTokens: ['cerrado', 'hoy', 'por', 'favor'],
+  },
+  sceneCaption: 'Vor der Tür eines kleinen Ladens prüfst du kurz das Schild und fragst zur Sicherheit nach.',
+  trophyWord: {
+    word: 'abierto',
+    meaning: 'offen / geöffnet',
+    example: 'Ya está abierto.',
+    whyThisWord: 'Abierto ist auf A1 der direkte Zustands-Adjektiv für jedes Geschäft und Café — bildet das Paar mit cerrado.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Türrahmen am Vormittag, Schild im Fokus, ein prüfender Schritt vorne.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'doorstep check',
+  },
+  visualNotes: 'Schwellen-Moment, weiches Licht, Schild-Detail mit Öffnungszeiten.',
+}
+
+const brightSpanishP3Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Qué autobús va al centro?',
+    baseText: 'Welcher Bus fährt ins Zentrum?',
+  },
+  meaning: 'Eine kurze Frage an der Bushaltestelle, welche Linie zum Ziel fährt.',
+  chunks: [
+    { id: 'que-autobus', targetText: '¿Qué autobús', baseText: 'Welcher Bus' },
+    { id: 'va', targetText: 'va', baseText: 'fährt' },
+    { id: 'al-centro', targetText: 'al centro?', baseText: 'ins Zentrum?' },
+  ],
+  lessonItems: [
+    { id: 'que', targetText: 'qué', baseText: 'welcher', acceptedAnswers: ['qué', 'que', 'Qué', 'Que'] },
+    { id: 'autobus', targetText: 'autobús', baseText: 'Bus', acceptedAnswers: ['autobús', 'autobus', 'Autobús', 'Autobus'] },
+    { id: 'va', targetText: 'va', baseText: 'fährt / geht', acceptedAnswers: ['va', 'Va'] },
+    { id: 'centro', targetText: 'centro', baseText: 'Zentrum', acceptedAnswers: ['centro', 'Centro'] },
+  ],
+  build: {
+    targetText: '¿Qué autobús va al centro?',
+    chips: ['¿Qué autobús', 'va', 'al centro?', 'parada', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿Qué ',
+    answer: 'autobús',
+    after: ' va al centro?',
+    acceptedAnswers: ['autobús', 'autobus', 'Autobús', 'Autobus'],
+    fallbackChoices: ['autobús', 'metro', 'tranvía', 'taxi'],
+  },
+  speakTarget: {
+    baseCue: 'Welcher Bus fährt ins Zentrum?',
+    targetPhrase: '¿Qué autobús va al centro?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['qué', 'autobús', 'va', 'centro'],
+    optionalTokens: ['al', 'por', 'favor', 'señora', 'señor'],
+  },
+  sceneCaption: 'An der Bushaltestelle sprichst du jemanden an und fragst nach der richtigen Linie ins Zentrum.',
+  trophyWord: {
+    word: 'autobús',
+    meaning: 'Bus',
+    example: 'El autobús sale ahora.',
+    whyThisWord: 'Autobús ist auf A1 das zentrale Wort für den städtischen Nahverkehr in Spanien und öffnet jede Linien- oder Fahrplanfrage.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bushaltestelle mit Linienplan, kurzer Fingerzeig auf die Liste, freundliche Frage.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'choosing the right line',
+  },
+  visualNotes: 'Detail auf Liniennummern und Haltestellen-Schild, klare Linien, warmes Stadtlicht.',
+}
+
+const brightSpanishP3Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Por favor, ¿la próxima es la mía?',
+    baseText: 'Bitte, ist die nächste meine?',
+  },
+  meaning: 'Eine ruhige Bestätigungsfrage im Bus, ob deine Haltestelle als nächstes kommt.',
+  chunks: [
+    { id: 'por-favor', targetText: 'Por favor,', baseText: 'Bitte,' },
+    { id: 'la-proxima', targetText: '¿la próxima', baseText: 'ist die nächste' },
+    { id: 'es-la-mia', targetText: 'es la mía?', baseText: 'meine?' },
+  ],
+  lessonItems: [
+    { id: 'proxima', targetText: 'próxima', baseText: 'nächste (fem.)', acceptedAnswers: ['próxima', 'proxima', 'Próxima', 'Proxima'] },
+    { id: 'parada', targetText: 'parada', baseText: 'Haltestelle', acceptedAnswers: ['parada', 'Parada'] },
+    { id: 'mia', targetText: 'mía', baseText: 'meine (fem.)', acceptedAnswers: ['mía', 'mia', 'Mía', 'Mia'] },
+    { id: 'siguiente', targetText: 'siguiente', baseText: 'nächste', acceptedAnswers: ['siguiente', 'Siguiente'] },
+  ],
+  build: {
+    targetText: 'Por favor, ¿la próxima es la mía?',
+    chips: ['Por favor,', '¿la próxima', 'es la mía?', 'parada', 'siguiente'],
+  },
+  typeRecall: {
+    before: 'Por favor, ¿la ',
+    answer: 'próxima',
+    after: ' es la mía?',
+    acceptedAnswers: ['próxima', 'proxima', 'Próxima', 'Proxima'],
+    fallbackChoices: ['próxima', 'última', 'primera', 'siguiente'],
+  },
+  speakTarget: {
+    baseCue: 'Bitte, ist die nächste meine?',
+    targetPhrase: 'Por favor, ¿la próxima es la mía?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['próxima', 'mía'],
+    optionalTokens: ['por', 'favor', 'la', 'es', 'parada'],
+  },
+  sceneCaption: 'Im Bus drehst du dich kurz zur Fahrerin und prüfst, ob die nächste Haltestelle deine ist.',
+  trophyWord: {
+    word: 'próxima',
+    meaning: 'nächste (fem.)',
+    example: 'La próxima es la mía.',
+    whyThisWord: 'Próxima ist auf A1 das einfache Reihenwort für „der/die/das nächste" — im Verkehr, im Plan, im Gespräch.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Inneres eines Stadtbusses, Anzeigetafel mit Haltestellen, kurzer Frage-Moment.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'on-board check',
+  },
+  visualNotes: 'Detail auf Anzeigetafel im Bus, warmes Tageslicht durchs Fenster.',
+}
+
+const brightSpanishP3Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Un billete, por favor.',
+    baseText: 'Eine Fahrkarte, bitte.',
+  },
+  meaning: 'Eine kurze, freundliche Bestellung am Schalter oder Automaten.',
+  chunks: [
+    { id: 'un-billete', targetText: 'Un billete,', baseText: 'Eine Fahrkarte,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'un', targetText: 'un', baseText: 'einen / ein', acceptedAnswers: ['un', 'Un'] },
+    { id: 'billete', targetText: 'billete', baseText: 'Fahrkarte / Ticket', acceptedAnswers: ['billete', 'Billete'] },
+    { id: 'sencillo', targetText: 'sencillo', baseText: 'einfach (nur hin)', acceptedAnswers: ['sencillo', 'Sencillo'] },
+    { id: 'ida', targetText: 'ida', baseText: 'Hinfahrt', acceptedAnswers: ['ida', 'Ida'] },
+  ],
+  build: {
+    targetText: 'Un billete, por favor.',
+    chips: ['Un billete,', 'por favor.', 'sencillo', 'ida', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Un ',
+    answer: 'billete',
+    after: ', por favor.',
+    acceptedAnswers: ['billete', 'Billete'],
+    fallbackChoices: ['billete', 'abono', 'pase', 'recibo'],
+  },
+  speakTarget: {
+    baseCue: 'Eine Fahrkarte, bitte.',
+    targetPhrase: 'Un billete, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['un', 'billete', 'por', 'favor'],
+    optionalTokens: ['sencillo', 'ida', 'gracias'],
+  },
+  sceneCaption: 'Am Schalter sagst du kurz und freundlich, dass du eine Fahrkarte möchtest.',
+  trophyWord: {
+    word: 'billete',
+    meaning: 'Fahrkarte / Ticket',
+    example: 'Un billete sencillo, por favor.',
+    whyThisWord: 'Billete ist in Spanien das zentrale A1-Wort für Fahrkarte (LatAm sagt häufig „boleto" — Iberisch bleibt billete).',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Schalterfenster im Bahnhof, Hand reicht eine Karte heraus, ruhige Übergabe.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'simple ticket request',
+  },
+  visualNotes: 'Detail auf Schalter und Karte, warmes Hallenlicht.',
+}
+
+const brightSpanishP3Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿A qué hora cierra?',
+    baseText: 'Wann schließt es?',
+  },
+  meaning: 'Eine kurze Frage nach der Schließzeit, bevor du deinen Besuch planst.',
+  chunks: [
+    { id: 'a-que-hora', targetText: '¿A qué hora', baseText: 'Um wie viel Uhr' },
+    { id: 'cierra', targetText: 'cierra?', baseText: 'schließt es?' },
+  ],
+  lessonItems: [
+    { id: 'a-que-hora', targetText: 'a qué hora', baseText: 'um wie viel Uhr', acceptedAnswers: ['a qué hora', 'a que hora'] },
+    { id: 'cierra', targetText: 'cierra', baseText: 'schließt (3. Pers.)', acceptedAnswers: ['cierra', 'Cierra'] },
+    { id: 'abre', targetText: 'abre', baseText: 'öffnet', acceptedAnswers: ['abre', 'Abre'] },
+    { id: 'hoy', targetText: 'hoy', baseText: 'heute', acceptedAnswers: ['hoy', 'Hoy'] },
+  ],
+  build: {
+    targetText: '¿A qué hora cierra?',
+    chips: ['¿A qué hora', 'cierra?', 'abre', 'hoy', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿A qué hora ',
+    answer: 'cierra',
+    after: '?',
+    acceptedAnswers: ['cierra', 'Cierra'],
+    fallbackChoices: ['cierra', 'abre', 'sale', 'llega'],
+  },
+  speakTarget: {
+    baseCue: 'Wann schließt es?',
+    targetPhrase: '¿A qué hora cierra?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['qué', 'hora', 'cierra'],
+    optionalTokens: ['a', 'hoy', 'por', 'favor'],
+  },
+  sceneCaption: 'Vor dem Schaufenster fragst du jemanden, der gerade herauskommt, nach der Schließzeit.',
+  trophyWord: {
+    word: 'cierra',
+    meaning: 'schließt (3. Pers. Sg.)',
+    example: 'Cierra a las siete.',
+    whyThisWord: 'Cierra ist auf A1 die direkte 3.-Personen-Form von cerrar — und damit das Tür-Wort für Öffnungszeiten in Laden und Museum.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Schaufenster mit Öffnungszeiten-Schild, ein kurzer Blick auf die Uhr.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'closing-time inquiry',
+  },
+  visualNotes: 'Detail auf Schild und Uhr, ruhige Pause auf dem Gehweg.',
+}
+
+const brightSpanishP3Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Por favor, ¿está en la esquina?',
+    baseText: 'Bitte, ist es an der Ecke?',
+  },
+  meaning: 'Eine ruhige Frage nach einem Ort, der an der nächsten Straßenecke liegen sollte.',
+  chunks: [
+    { id: 'por-favor', targetText: 'Por favor,', baseText: 'Bitte,' },
+    { id: 'esta', targetText: '¿está', baseText: 'ist es' },
+    { id: 'en-la-esquina', targetText: 'en la esquina?', baseText: 'an der Ecke?' },
+  ],
+  lessonItems: [
+    { id: 'por-favor', targetText: 'por favor', baseText: 'bitte', acceptedAnswers: ['por favor', 'Por favor'] },
+    { id: 'esta', targetText: 'está', baseText: 'ist (Ort)', acceptedAnswers: ['está', 'esta', 'Está', 'Esta'] },
+    { id: 'esquina', targetText: 'esquina', baseText: 'Ecke (Straße)', acceptedAnswers: ['esquina', 'Esquina'] },
+    { id: 'calle', targetText: 'calle', baseText: 'Straße', acceptedAnswers: ['calle', 'Calle'] },
+  ],
+  build: {
+    targetText: 'Por favor, ¿está en la esquina?',
+    chips: ['Por favor,', '¿está', 'en la esquina?', 'calle', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Por favor, ¿está en la ',
+    answer: 'esquina',
+    after: '?',
+    acceptedAnswers: ['esquina', 'Esquina'],
+    fallbackChoices: ['esquina', 'calle', 'plaza', 'avenida'],
+  },
+  speakTarget: {
+    baseCue: 'Bitte, ist es an der Ecke?',
+    targetPhrase: 'Por favor, ¿está en la esquina?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['por', 'favor', 'está', 'esquina'],
+    optionalTokens: ['en', 'la', 'calle'],
+  },
+  sceneCaption: 'Auf dem Gehweg zeigst du in Richtung Ecke und prüfst, ob das Ziel wirklich dort liegt.',
+  trophyWord: {
+    word: 'esquina',
+    meaning: 'Ecke (Straße)',
+    example: 'En la esquina, a la derecha.',
+    whyThisWord: 'Esquina ist auf A1 das konkrete Stadt-Landmarkenwort und bezeichnet immer die Straßenecke — anders als das eher räumliche „rincón" (Ecke im Raum).',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Straßenecke im Vormittagslicht, ein Fingerzeig nach vorne, ruhiger Prüf-Moment.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'street-corner landmark',
+  },
+  visualNotes: 'Eckhaus in der Frame-Mitte, sanftes Licht von rechts, klare Pfeil-Richtung.',
+}
+
+const brightSpanishP3Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿A pie o en taxi?',
+    baseText: 'Zu Fuß oder mit dem Taxi?',
+  },
+  meaning: 'Eine lockere, kurze Frage zwischen zwei Mitreisenden über die nächste Fortbewegung.',
+  chunks: [
+    { id: 'a-pie', targetText: '¿A pie', baseText: 'Zu Fuß' },
+    { id: 'o', targetText: 'o', baseText: 'oder' },
+    { id: 'en-taxi', targetText: 'en taxi?', baseText: 'mit dem Taxi?' },
+  ],
+  lessonItems: [
+    { id: 'a-pie', targetText: 'a pie', baseText: 'zu Fuß', acceptedAnswers: ['a pie', 'A pie'] },
+    { id: 'o', targetText: 'o', baseText: 'oder', acceptedAnswers: ['o', 'O'] },
+    { id: 'taxi', targetText: 'taxi', baseText: 'Taxi', acceptedAnswers: ['taxi', 'Taxi'] },
+    { id: 'andar', targetText: 'andar', baseText: 'gehen (zu Fuß)', acceptedAnswers: ['andar', 'Andar'] },
+  ],
+  build: {
+    targetText: '¿A pie o en taxi?',
+    chips: ['¿A pie', 'o', 'en taxi?', 'andar', 'rápido'],
+  },
+  typeRecall: {
+    before: '¿A pie o en ',
+    answer: 'taxi',
+    after: '?',
+    acceptedAnswers: ['taxi', 'Taxi'],
+    fallbackChoices: ['taxi', 'autobús', 'metro', 'coche'],
+  },
+  speakTarget: {
+    baseCue: 'Zu Fuß oder mit dem Taxi?',
+    targetPhrase: '¿A pie o en taxi?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['pie', 'taxi'],
+    optionalTokens: ['a', 'en', 'o', 'andar'],
+  },
+  sceneCaption: 'Am Ende einer Begegnung schaut ihr euch kurz an und entscheidet, wie ihr weitermacht.',
+  trophyWord: {
+    word: 'taxi',
+    meaning: 'Taxi',
+    example: 'Vamos en taxi.',
+    whyThisWord: 'Taxi ist auf A1 das international verständliche Wort und in Spanien das normale Transportmittel für späte Stunden oder weite Wege.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Abendstraße mit Taxischild im Hintergrund, zwei Personen entscheiden den nächsten Schritt.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'easy two-way decision',
+  },
+  visualNotes: 'Bürgersteig in Dämmerlicht, Taxischild als Akzent, lockere Geste zwischen zwei Personen.',
+}
+
+const brightSpanishP3Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Me he pasado la parada. ¿Me puede ayudar?',
+    baseText: 'Ich habe die Haltestelle verpasst. Können Sie mir helfen?',
+  },
+  meaning: 'Eine ruhige Bitte um Hilfe, wenn du deine Haltestelle verpasst hast und nicht weißt, wie du zurückkommst.',
+  chunks: [
+    { id: 'me-he-pasado', targetText: 'Me he pasado', baseText: 'Ich habe (die Haltestelle) verpasst' },
+    { id: 'la-parada', targetText: 'la parada.', baseText: 'die Haltestelle.' },
+    { id: 'me-puede-ayudar', targetText: '¿Me puede ayudar?', baseText: 'Können Sie mir helfen?' },
+  ],
+  lessonItems: [
+    { id: 'me-he-pasado', targetText: 'me he pasado', baseText: 'ich habe verpasst (feste A1-Wendung)', acceptedAnswers: ['me he pasado', 'Me he pasado'] },
+    { id: 'parada', targetText: 'parada', baseText: 'Haltestelle', acceptedAnswers: ['parada', 'Parada'] },
+    { id: 'volver', targetText: 'volver', baseText: 'zurückkommen', acceptedAnswers: ['volver', 'Volver'] },
+    { id: 'bajar', targetText: 'bajar', baseText: 'aussteigen', acceptedAnswers: ['bajar', 'Bajar'] },
+  ],
+  build: {
+    targetText: 'Me he pasado la parada. ¿Me puede ayudar?',
+    chips: ['Me he pasado', 'la parada.', '¿Me puede ayudar?', 'volver', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Me he pasado la ',
+    answer: 'parada',
+    after: '. ¿Me puede ayudar?',
+    acceptedAnswers: ['parada', 'Parada'],
+    fallbackChoices: ['parada', 'estación', 'bajada', 'salida'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe die Haltestelle verpasst. Können Sie mir helfen?',
+    targetPhrase: 'Me he pasado la parada. ¿Me puede ayudar?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['pasado', 'parada', 'ayudar'],
+    optionalTokens: ['me', 'he', 'la', 'puede', 'volver'],
+  },
+  sceneCaption: 'Du steigst eine Station zu spät aus und bittest ruhig die nächste Person um eine kurze Orientierung.',
+  trophyWord: {
+    word: 'parada',
+    meaning: 'Haltestelle',
+    example: 'Esta es mi parada.',
+    whyThisWord: 'Parada ist auf A1 das Bus- und Tram-Stop-Wort in Spanien — kürzer als „estación" und in jedem Nahverkehrs-Moment richtig.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bahnsteig oder Bushaltestelle am Spätnachmittag, kurzer prüfender Blick auf den Plan.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle recovery from a missed stop',
+  },
+  visualNotes: 'Haltestellen-Schild im weichen Abendlicht, ruhiger Atemzug, sanfte Hilfsgeste.',
+}
+
 const brightItalianLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -18071,6 +18630,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'spanish-a1-practical-3-001-derecha-izquierda',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-001-derecha-izquierda',
+      sequence: 1,
+      title: 'Rechts oder links?',
+    },
+    title: 'Rechts oder links?',
+    situation: {
+      en: 'On a sidewalk, ask politely whether to turn right or left.',
+      de: 'Auf dem Gehweg fragst du höflich nach links oder rechts.',
+    },
+    pedagogicalGoal: 'Eine kurze Richtungsfrage auf Spanisch stellen und die Paar-Wörter derecha/izquierda sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist es weit?',
+      situation: 'Du fragst nach der Entfernung zu Fuß.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson001,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-3-002-esta-lejos',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-002-esta-lejos',
+      sequence: 2,
+      title: 'Ist es weit?',
+    },
+    title: 'Ist es weit?',
+    situation: {
+      en: 'Mid-navigation, ask politely whether the destination is far.',
+      de: 'Mitten in der Navigation fragst du höflich nach der Entfernung.',
+    },
+    pedagogicalGoal: 'Höflich nach der Entfernung zum Ziel fragen, bevor du dich für eine Fortbewegungsart entscheidest.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist es offen?',
+      situation: 'Du prüfst vor der Tür, ob es offen ist.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson002,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-3-003-esta-abierto',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-003-esta-abierto',
+      sequence: 3,
+      title: 'Ist es offen?',
+    },
+    title: 'Ist es offen?',
+    situation: {
+      en: 'In front of a shop or café, ask politely whether it is currently open.',
+      de: 'Vor einem Laden oder Café fragst du höflich, ob es jetzt offen ist.',
+    },
+    pedagogicalGoal: 'Vor dem Eintreten höflich klären, ob das Ziel gerade geöffnet ist.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Welcher Bus?',
+      situation: 'An der Haltestelle fragst du nach der richtigen Linie.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson003,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-3-004-que-autobus',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-004-que-autobus',
+      sequence: 4,
+      title: 'Welcher Bus?',
+    },
+    title: 'Welcher Bus?',
+    situation: {
+      en: 'At a bus stop, ask politely which bus goes to your destination.',
+      de: 'An der Haltestelle fragst du höflich, welcher Bus zu deinem Ziel fährt.',
+    },
+    pedagogicalGoal: 'Die richtige Buslinie höflich erfragen, ohne mit einer komplexen Fahrplanfrage zu starten.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist das die nächste?',
+      situation: 'Im Bus prüfst du, ob deine Haltestelle als nächstes kommt.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson004,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-3-005-proxima-parada',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-005-proxima-parada',
+      sequence: 5,
+      title: 'Ist das die nächste?',
+    },
+    title: 'Ist das die nächste?',
+    situation: {
+      en: 'On a moving bus, confirm whether your stop is coming next.',
+      de: 'Im fahrenden Bus prüfst du, ob deine Haltestelle als nächstes kommt.',
+    },
+    pedagogicalGoal: 'Im Bus eine kurze Bestätigung holen, dass die nächste Haltestelle die richtige ist.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ein Ticket, bitte',
+      situation: 'Am Schalter kaufst du eine Fahrkarte.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson005,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-3-006-un-billete',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-006-un-billete',
+      sequence: 6,
+      title: 'Ein Ticket, bitte',
+    },
+    title: 'Ein Ticket, bitte',
+    situation: {
+      en: 'At a counter, ask politely for a single transit ticket.',
+      de: 'Am Schalter bestellst du eine einfache Fahrkarte.',
+    },
+    pedagogicalGoal: 'Eine kurze, freundliche Bestellung am Verkehrs-Schalter abgeben.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wann schließt es?',
+      situation: 'Du fragst nach der Schließzeit.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson006,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-3-007-a-que-hora-cierra',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-007-a-que-hora-cierra',
+      sequence: 7,
+      title: 'Wann schließt es?',
+    },
+    title: 'Wann schließt es?',
+    situation: {
+      en: 'Outside a shop or museum, ask politely about the closing time.',
+      de: 'Vor einem Laden oder Museum fragst du höflich nach der Schließzeit.',
+    },
+    pedagogicalGoal: 'Eine kurze Uhrzeitfrage zu den Öffnungszeiten höflich abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'An der Ecke',
+      situation: 'Du fragst, ob das Ziel an der Ecke liegt.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson007,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-3-008-en-la-esquina',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-008-en-la-esquina',
+      sequence: 8,
+      title: 'An der Ecke',
+    },
+    title: 'An der Ecke',
+    situation: {
+      en: 'On the sidewalk, ask politely whether the destination is on the corner.',
+      de: 'Auf dem Gehweg fragst du höflich, ob das Ziel an der Straßenecke liegt.',
+    },
+    pedagogicalGoal: 'Eine Straßenecke als konkreten Landmarken-Bezugspunkt in einer Wegfrage einsetzen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Zu Fuß oder mit dem Taxi?',
+      situation: 'Du entscheidest gemeinsam über die Fortbewegung.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson008,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-3-009-pie-o-taxi',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-009-pie-o-taxi',
+      sequence: 9,
+      title: 'Zu Fuß oder mit dem Taxi?',
+    },
+    title: 'Zu Fuß oder mit dem Taxi?',
+    situation: {
+      en: 'At the end of the night, choose between walking and taking a taxi.',
+      de: 'Am Ende des Abends entscheidet ihr euch zwischen zu Fuß und Taxi.',
+    },
+    pedagogicalGoal: 'Eine lockere Wahl zwischen zwei Fortbewegungsarten formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich habe die Haltestelle verpasst',
+      situation: 'Du bittest um Hilfe nach einer verpassten Haltestelle.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson009,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-3-010-me-pasado-parada',
+    pathId: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-3-010-me-pasado-parada',
+      sequence: 10,
+      title: 'Ich habe die Haltestelle verpasst',
+    },
+    title: 'Ich habe die Haltestelle verpasst',
+    situation: {
+      en: 'After stepping off late, ask politely for help recovering.',
+      de: 'Nach einer zu späten Ausstiegs-Haltestelle bittest du höflich um Hilfe.',
+    },
+    pedagogicalGoal: 'Eine kurze, ruhige Hilfsbitte nach einer verpassten Haltestelle formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Spanish A1 Practical 3 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP3Lesson010,
+    },
+  },
+  {
     id: 'italian-a1-practical-001-primo-contatto',
     pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
@@ -22054,6 +22943,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_TEN_METADATA,
     GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
     GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    GUIDED_TODAY_PATH_SPANISH_THREE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,
