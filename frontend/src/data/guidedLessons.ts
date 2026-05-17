@@ -379,6 +379,17 @@ const GUIDED_TODAY_PATH_FRENCH_THREE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA: GuidedPathMetadata = {
+  id: 'french-a1-practical-4',
+  title: 'French A1 Practical 4',
+  shortTitle: 'A1 Practical 4',
+  subtitle: 'Café und Restaurant auf Französisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'French',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -13286,6 +13297,548 @@ const brightFrenchP3Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Haltestellenanzeige, leichter Schreck, sofort höfliche Hilfe-Frage.',
 }
 
+const brightFrenchP4Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Une table pour deux, s’il vous plaît.',
+    baseText: 'Einen Tisch für zwei, bitte.',
+  },
+  meaning: 'Eine höfliche kurze Bitte am Restaurant- oder Café-Eingang.',
+  chunks: [
+    { id: 'une-table', targetText: 'Une table', baseText: 'Einen Tisch' },
+    { id: 'pour-deux', targetText: 'pour deux,', baseText: 'für zwei,' },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'table', targetText: 'table', baseText: 'Tisch', acceptedAnswers: ['table', 'Table'] },
+    { id: 'une-table', targetText: 'une table', baseText: 'ein Tisch', acceptedAnswers: ['une table', 'Une table'] },
+    { id: 'pour-deux', targetText: 'pour deux', baseText: 'für zwei', acceptedAnswers: ['pour deux', 'Pour deux'] },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: 'bitte', acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+  ],
+  build: {
+    targetText: 'Une table pour deux, s’il vous plaît.',
+    chips: ['Une table', 'pour deux,', 's’il vous plaît.', 'un billet', 'merci'],
+  },
+  typeRecall: {
+    before: 'Une ',
+    answer: 'table',
+    after: ' pour deux, s’il vous plaît.',
+    acceptedAnswers: ['table', 'Table'],
+    fallbackChoices: ['table', 'carte', 'addition', 'thé'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Tisch für zwei, bitte.',
+    targetPhrase: 'Une table pour deux, s’il vous plaît.',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['table', 'deux', 'plaît'],
+    optionalTokens: ['une', 'pour', 'sil', 's', 'il', 'vous', 'plait'],
+  },
+  sceneCaption: 'Am Eingang nennst du dem Personal direkt die gewünschte Tischgröße.',
+  trophyWord: {
+    word: 'table',
+    meaning: 'Tisch',
+    example: 'Une table pour deux, s’il vous plaît.',
+    whyThisWord: 'Table ist im Französischen feminin: "une table". In Servicekontexten hält "vous" den Ton höflich gegenüber dem Personal.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Restaurant-Eingang, Empfangspult, freundliche Tischbitte.',
+  },
+  songSeed: {
+    genre: 'bright cafe acoustic',
+    mood: 'arriving at a table',
+  },
+  visualNotes: 'Helles Restaurantfoyer, zwei Gedecke, kurzer Empfangsmoment.',
+}
+
+const brightFrenchP4Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'La carte, s’il vous plaît.',
+    baseText: 'Die Speisekarte, bitte.',
+  },
+  meaning: 'Eine natürliche kurze Bitte um die Speisekarte am Tisch.',
+  chunks: [
+    { id: 'la-carte', targetText: 'La carte,', baseText: 'Die Speisekarte,' },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'carte', targetText: 'carte', baseText: 'Speisekarte / Karte', acceptedAnswers: ['carte', 'Carte'] },
+    { id: 'la-carte', targetText: 'la carte', baseText: 'die Speisekarte', acceptedAnswers: ['la carte', 'La carte'] },
+    { id: 'menu', targetText: 'menu', baseText: 'Menü', acceptedAnswers: ['menu', 'Menu'] },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: 'bitte', acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+  ],
+  build: {
+    targetText: 'La carte, s’il vous plaît.',
+    chips: ['La carte,', 's’il vous plaît.', 'un café', 'au coin'],
+  },
+  typeRecall: {
+    before: 'La ',
+    answer: 'carte',
+    after: ', s’il vous plaît.',
+    acceptedAnswers: ['carte', 'Carte'],
+    fallbackChoices: ['carte', 'table', 'thé', 'sucre'],
+  },
+  speakTarget: {
+    baseCue: 'Die Speisekarte, bitte.',
+    targetPhrase: 'La carte, s’il vous plaît.',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['carte', 'plaît'],
+    optionalTokens: ['la', 'sil', 's', 'il', 'vous', 'plait'],
+  },
+  sceneCaption: 'Am Tisch bittest du höflich um die Karte, bevor du bestellst.',
+  trophyWord: {
+    word: 'carte',
+    meaning: 'Speisekarte / Karte',
+    example: 'La carte, s’il vous plaît.',
+    whyThisWord: 'Carte ist im Restaurant die natürliche Speisekarte. Das ist kein Problem mit der Zahlungskarte aus P2: Der Kontext entscheidet die Bedeutung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Restauranttisch, leeres Gedeck, Bedienung bringt die Karte.',
+  },
+  songSeed: {
+    genre: 'soft bistro acoustic',
+    mood: 'opening the menu',
+  },
+  visualNotes: 'Tischkante, Karte im Licht, ruhige Bitte am Anfang.',
+}
+
+const brightFrenchP4Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Je voudrais un thé, s’il vous plaît.',
+    baseText: 'Ich hätte gern einen Tee, bitte.',
+  },
+  meaning: 'Eine höfliche Getränkebestellung mit je voudrais.',
+  chunks: [
+    { id: 'je-voudrais', targetText: 'Je voudrais', baseText: 'Ich hätte gern' },
+    { id: 'un-the', targetText: 'un thé,', baseText: 'einen Tee,' },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'voudrais', targetText: 'je voudrais', baseText: 'ich hätte gern', acceptedAnswers: ['je voudrais', 'Je voudrais'] },
+    { id: 'the', targetText: 'thé', baseText: 'Tee', acceptedAnswers: ['thé', 'the', 'Thé', 'The'] },
+    { id: 'un-the', targetText: 'un thé', baseText: 'ein Tee', acceptedAnswers: ['un thé', 'un the', 'Un thé', 'Un the'] },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: 'bitte', acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+  ],
+  build: {
+    targetText: 'Je voudrais un thé, s’il vous plaît.',
+    chips: ['Je voudrais', 'un thé,', 's’il vous plaît.', 'une table', 'l’addition'],
+  },
+  typeRecall: {
+    before: 'Je voudrais un ',
+    answer: 'thé',
+    after: ', s’il vous plaît.',
+    acceptedAnswers: ['thé', 'the', 'Thé', 'The'],
+    fallbackChoices: ['thé', 'sucre', 'carte', 'table'],
+  },
+  speakTarget: {
+    baseCue: 'Ich hätte gern einen Tee, bitte.',
+    targetPhrase: 'Je voudrais un thé, s’il vous plaît.',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['voudrais', 'thé', 'plaît'],
+    optionalTokens: ['je', 'un', 'the', 'sil', 's', 'il', 'vous', 'plait'],
+  },
+  sceneCaption: 'Beim Bestellen wählst du Tee und hältst die Bitte höflich.',
+  trophyWord: {
+    word: 'thé',
+    meaning: 'Tee',
+    example: 'Je voudrais un thé.',
+    whyThisWord: 'Thé ist ein einfaches A1-Getränkewort. Der Akzent unterscheidet die Standardschreibung; ohne Akzent bleibt es als Tippvariante tolerierbar.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café-Tisch mit Teetasse und kurzer höflicher Bestellung.',
+  },
+  songSeed: {
+    genre: 'bright acoustic chanson-light',
+    mood: 'ordering tea',
+  },
+  visualNotes: 'Tasse, Dampf, helle Tischfläche, warme Bestellung.',
+}
+
+const brightFrenchP4Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Sans sucre, s’il vous plaît.',
+    baseText: 'Ohne Zucker, bitte.',
+  },
+  meaning: 'Eine kurze höfliche Vorliebe beim Getränk: kein Zucker.',
+  chunks: [
+    { id: 'sans-sucre', targetText: 'Sans sucre,', baseText: 'Ohne Zucker,' },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'sans', targetText: 'sans', baseText: 'ohne', acceptedAnswers: ['sans', 'Sans'] },
+    { id: 'sucre', targetText: 'sucre', baseText: 'Zucker', acceptedAnswers: ['sucre', 'Sucre'] },
+    { id: 'sans-sucre', targetText: 'sans sucre', baseText: 'ohne Zucker', acceptedAnswers: ['sans sucre', 'Sans sucre'] },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: 'bitte', acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+  ],
+  build: {
+    targetText: 'Sans sucre, s’il vous plaît.',
+    chips: ['Sans sucre,', 's’il vous plaît.', 'avec lait', 'merci'],
+  },
+  typeRecall: {
+    before: 'Sans ',
+    answer: 'sucre',
+    after: ', s’il vous plaît.',
+    acceptedAnswers: ['sucre', 'Sucre'],
+    fallbackChoices: ['sucre', 'thé', 'table', 'frais'],
+  },
+  speakTarget: {
+    baseCue: 'Ohne Zucker, bitte.',
+    targetPhrase: 'Sans sucre, s’il vous plaît.',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['sans', 'sucre', 'plaît'],
+    optionalTokens: ['sil', 's', 'il', 'vous', 'plait'],
+  },
+  sceneCaption: 'Während das Getränk vorbereitet wird, sagst du kurz, dass du keinen Zucker möchtest.',
+  trophyWord: {
+    word: 'sucre',
+    meaning: 'Zucker',
+    example: 'Sans sucre, s’il vous plaît.',
+    whyThisWord: 'Sucre ist ein A1-Caféwort. "Sans sucre" ist die natürliche kurze Gruppe, nicht eine umständliche ganze Negation.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tasse am Tresen, Zuckerpäckchen bleibt liegen, höfliche Vorliebe.',
+  },
+  songSeed: {
+    genre: 'soft cafe acoustic',
+    mood: 'simple preference',
+  },
+  visualNotes: 'Zuckerpäckchen, Tasse, kurze klare Präferenz.',
+}
+
+const brightFrenchP4Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "C'est frais ?",
+    baseText: 'Ist das frisch?',
+  },
+  meaning: 'Eine kurze Nachfrage am Bäckerei- oder Markttresen, ob ein sichtbares Essen frisch ist.',
+  chunks: [
+    { id: 'cest', targetText: "C'est", baseText: 'Ist das' },
+    { id: 'frais', targetText: 'frais ?', baseText: 'frisch?' },
+  ],
+  lessonItems: [
+    { id: 'cest', targetText: "c'est", baseText: 'das ist / ist das', acceptedAnswers: ["c'est", "C'est", 'c’est', 'C’est', 'c est', 'C est'] },
+    { id: 'frais', targetText: 'frais', baseText: 'frisch', acceptedAnswers: ['frais', 'Frais', 'frai', 'Frai'] },
+    { id: 'pain', targetText: 'pain', baseText: 'Brot', acceptedAnswers: ['pain', 'Pain'] },
+    { id: 'aujourdhui', targetText: "aujourd'hui", baseText: 'heute', acceptedAnswers: ["aujourd'hui", "Aujourd'hui", 'aujourd’hui', 'Aujourd’hui', 'aujourdhui', 'Aujourdhui'] },
+  ],
+  build: {
+    targetText: "C'est frais ?",
+    chips: ["C'est", 'frais ?', 'sans sucre', 'la carte'],
+  },
+  typeRecall: {
+    before: "C'est ",
+    answer: 'frais',
+    after: ' ?',
+    acceptedAnswers: ['frais', 'Frais', 'frai', 'Frai'],
+    fallbackChoices: ['frais', 'bon', 'beau', 'loin'],
+  },
+  speakTarget: {
+    baseCue: 'Ist das frisch?',
+    targetPhrase: "C'est frais ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['frais'],
+    optionalTokens: ['cest', 'c', 'est'],
+  },
+  sceneCaption: 'An der Auslage zeigst du auf ein Gebäck und fragst schlicht nach der Frische.',
+  trophyWord: {
+    word: 'frais',
+    meaning: 'frisch',
+    example: "C'est frais ?",
+    whyThisWord: 'Frais ist das Standardwort für frisch bei Lebensmitteln. Das s bleibt in der Standardschreibung, auch wenn es meist nicht hörbar ist.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bäckerei-Auslage mit frischem Brot und kurzer Nachfrage.',
+  },
+  songSeed: {
+    genre: 'warm bakery acoustic',
+    mood: 'checking freshness',
+  },
+  visualNotes: 'Gebäck, helles Thekenlicht, kurze natürliche Frage.',
+}
+
+const brightFrenchP4Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Non merci, c'est tout.",
+    baseText: 'Nein danke, das ist alles.',
+  },
+  meaning: 'Eine höfliche Antwort, wenn das Personal fragt, ob noch etwas dazukommt.',
+  chunks: [
+    { id: 'non-merci', targetText: 'Non merci,', baseText: 'Nein danke,' },
+    { id: 'cest-tout', targetText: "c'est tout.", baseText: 'das ist alles.' },
+  ],
+  lessonItems: [
+    { id: 'non-merci', targetText: 'non merci', baseText: 'nein danke', acceptedAnswers: ['non merci', 'Non merci'] },
+    { id: 'tout', targetText: 'tout', baseText: 'alles', acceptedAnswers: ['tout', 'Tout', 'tou', 'Tou'] },
+    { id: 'cest-tout', targetText: "c'est tout", baseText: 'das ist alles', acceptedAnswers: ["c'est tout", "C'est tout", 'c’est tout', 'C’est tout', 'c est tout', 'C est tout'] },
+    { id: 'encore', targetText: 'encore', baseText: 'noch / wieder', acceptedAnswers: ['encore', 'Encore'] },
+  ],
+  build: {
+    targetText: "Non merci, c'est tout.",
+    chips: ['Non merci,', "c'est tout.", 'un thé', 'une table'],
+  },
+  typeRecall: {
+    before: "Non merci, c'est ",
+    answer: 'tout',
+    after: '.',
+    acceptedAnswers: ['tout', 'Tout', 'tou', 'Tou'],
+    fallbackChoices: ['tout', 'sucre', 'carte', 'beau'],
+  },
+  speakTarget: {
+    baseCue: 'Nein danke, das ist alles.',
+    targetPhrase: "Non merci, c'est tout.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['non', 'merci', 'tout'],
+    optionalTokens: ['cest', 'c', 'est'],
+  },
+  sceneCaption: 'Nach der Nachfrage des Personals schließt du deine Bestellung höflich ab.',
+  trophyWord: {
+    word: 'tout',
+    meaning: 'alles',
+    example: "C'est tout.",
+    whyThisWord: 'Tout ist ein sehr häufiges A1-Wort. In "c’est tout" beendet es eine Bestellung knapp und höflich.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café-Tresen, Bestellung abgeschlossen, freundliches Kopfnicken.',
+  },
+  songSeed: {
+    genre: 'light checkout acoustic',
+    mood: 'closing the order',
+  },
+  visualNotes: 'Tresen, kleine Bestellung, klarer Abschluss ohne Hast.',
+}
+
+const brightFrenchP4Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'À emporter, s’il vous plaît.',
+    baseText: 'Zum Mitnehmen, bitte.',
+  },
+  meaning: 'Die feste Café-Formel, wenn die Bestellung mitgenommen werden soll.',
+  chunks: [
+    { id: 'a-emporter', targetText: 'À emporter,', baseText: 'Zum Mitnehmen,' },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'emporter', targetText: 'emporter', baseText: 'mitnehmen', acceptedAnswers: ['emporter', 'Emporter'] },
+    { id: 'a-emporter', targetText: 'à emporter', baseText: 'zum Mitnehmen', acceptedAnswers: ['à emporter', 'a emporter', 'À emporter', 'A emporter'] },
+    { id: 'sur-place', targetText: 'sur place', baseText: 'vor Ort', acceptedAnswers: ['sur place', 'Sur place'] },
+    { id: 'sil-vous-plait', targetText: 's’il vous plaît', baseText: 'bitte', acceptedAnswers: ['s’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', "s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 'sil vous plait'] },
+  ],
+  build: {
+    targetText: 'À emporter, s’il vous plaît.',
+    chips: ['À emporter,', 's’il vous plaît.', 'sur place', 'la carte'],
+  },
+  typeRecall: {
+    before: 'À ',
+    answer: 'emporter',
+    after: ', s’il vous plaît.',
+    acceptedAnswers: ['emporter', 'Emporter'],
+    fallbackChoices: ['emporter', 'addition', 'table', 'frais'],
+  },
+  speakTarget: {
+    baseCue: 'Zum Mitnehmen, bitte.',
+    targetPhrase: 'À emporter, s’il vous plaît.',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['emporter', 'plaît'],
+    optionalTokens: ['a', 'à', 'sil', 's', 'il', 'vous', 'plait'],
+  },
+  sceneCaption: 'Am Café-Tresen sagst du direkt, dass die Bestellung zum Mitnehmen ist.',
+  trophyWord: {
+    word: 'emporter',
+    meaning: 'mitnehmen',
+    example: 'À emporter, s’il vous plaît.',
+    whyThisWord: 'Emporter ist der Kern der festen Serviceformel "à emporter". Das ist die natürliche französische Form für "zum Mitnehmen".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café-Theke mit Pappbecher und kleiner Tüte zum Mitnehmen.',
+  },
+  songSeed: {
+    genre: 'quick bright acoustic',
+    mood: 'takeaway order',
+  },
+  visualNotes: 'Pappbecher, Theke, schneller aber höflicher Mitnahme-Moment.',
+}
+
+const brightFrenchP4Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "C'était très bon.",
+    baseText: 'Es war sehr gut.',
+  },
+  meaning: 'Ein kurzer positiver Satz nach dem Essen oder Trinken.',
+  chunks: [
+    { id: 'cetait', targetText: "C'était", baseText: 'Es war' },
+    { id: 'tres-bon', targetText: 'très bon.', baseText: 'sehr gut.' },
+  ],
+  lessonItems: [
+    { id: 'cetait', targetText: "c'était", baseText: 'es war', acceptedAnswers: ["c'était", "C'était", 'c’était', 'C’était', 'c’etait', 'C’etait', 'c etait', 'C etait'] },
+    { id: 'tres', targetText: 'très', baseText: 'sehr', acceptedAnswers: ['très', 'tres', 'Très', 'Tres'] },
+    { id: 'bon', targetText: 'bon', baseText: 'gut', acceptedAnswers: ['bon', 'Bon'] },
+    { id: 'tres-bon', targetText: 'très bon', baseText: 'sehr gut', acceptedAnswers: ['très bon', 'tres bon', 'Très bon', 'Tres bon'] },
+  ],
+  build: {
+    targetText: "C'était très bon.",
+    chips: ["C'était", 'très bon.', 'sans sucre', 'merci'],
+  },
+  typeRecall: {
+    before: "C'était très ",
+    answer: 'bon',
+    after: '.',
+    acceptedAnswers: ['bon', 'Bon'],
+    fallbackChoices: ['bon', 'beau', 'frais', 'loin'],
+  },
+  speakTarget: {
+    baseCue: 'Es war sehr gut.',
+    targetPhrase: "C'était très bon.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['était', 'très', 'bon'],
+    optionalTokens: ['c', 'cetait', 'etait', 'tres'],
+  },
+  sceneCaption: 'Nach dem Essen gibst du eine kurze freundliche Rückmeldung.',
+  trophyWord: {
+    word: 'bon',
+    meaning: 'gut / lecker',
+    example: "C'était très bon.",
+    whyThisWord: 'Bon ist ein Grundwort für einfache positive Urteile. Bei Essen heißt es natürlich auch "lecker".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Leerer Teller, freundliches Nicken, kurze positive Rückmeldung.',
+  },
+  songSeed: {
+    genre: 'warm bistro acoustic',
+    mood: 'simple compliment',
+  },
+  visualNotes: 'Teller, Serviette, heller Abschluss am Tisch.',
+}
+
+const brightFrenchP4Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Il fait beau aujourd'hui.",
+    baseText: 'Heute ist schönes Wetter.',
+  },
+  meaning: 'Eine leichte Small-Talk-Zeile über das Wetter am Tresen.',
+  chunks: [
+    { id: 'il-fait-beau', targetText: 'Il fait beau', baseText: 'Es ist schön' },
+    { id: 'aujourdhui', targetText: "aujourd'hui.", baseText: 'heute.' },
+  ],
+  lessonItems: [
+    { id: 'il-fait', targetText: 'il fait', baseText: 'es macht / es ist beim Wetter', acceptedAnswers: ['il fait', 'Il fait'] },
+    { id: 'beau', targetText: 'beau', baseText: 'schön', acceptedAnswers: ['beau', 'Beau'] },
+    { id: 'aujourdhui', targetText: "aujourd'hui", baseText: 'heute', acceptedAnswers: ["aujourd'hui", "Aujourd'hui", 'aujourd’hui', 'Aujourd’hui', 'aujourdhui', 'Aujourdhui'] },
+    { id: 'il-fait-beau', targetText: 'il fait beau', baseText: 'es ist schönes Wetter', acceptedAnswers: ['il fait beau', 'Il fait beau'] },
+  ],
+  build: {
+    targetText: "Il fait beau aujourd'hui.",
+    chips: ['Il fait beau', "aujourd'hui.", 'à emporter', 'l’addition'],
+  },
+  typeRecall: {
+    before: 'Il fait ',
+    answer: 'beau',
+    after: " aujourd'hui.",
+    acceptedAnswers: ['beau', 'Beau'],
+    fallbackChoices: ['beau', 'bon', 'frais', 'sucre'],
+  },
+  speakTarget: {
+    baseCue: 'Heute ist schönes Wetter.',
+    targetPhrase: "Il fait beau aujourd'hui.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['fait', 'beau', 'aujourd'],
+    optionalTokens: ['il', 'hui', 'aujourdhui'],
+  },
+  sceneCaption: 'Beim Bezahlen machst du eine kurze freundliche Bemerkung über das Wetter.',
+  trophyWord: {
+    word: 'beau',
+    meaning: 'schön',
+    example: "Il fait beau aujourd'hui.",
+    whyThisWord: 'Beau ist ein A1-Grundwort. Beim Wetter sagt man fest "il fait beau"; das ist keine wörtliche deutsche Satzstruktur.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café-Tresen mit Sonnenlicht am Fenster und leichter Small-Talk-Zeile.',
+  },
+  songSeed: {
+    genre: 'sunny cafe acoustic',
+    mood: 'light small talk',
+  },
+  visualNotes: 'Sonnenlicht, Kassenmoment, kleine freundliche Wetterbemerkung.',
+}
+
+const brightFrenchP4Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "L'addition, s'il vous plaît.",
+    baseText: 'Die Rechnung, bitte.',
+  },
+  meaning: 'Die kurze Standardformel, um am Ende des Essens die Rechnung zu bekommen.',
+  chunks: [
+    { id: 'laddition', targetText: "L'addition,", baseText: 'Die Rechnung,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'addition', targetText: 'addition', baseText: 'Rechnung', acceptedAnswers: ['addition', 'Addition'] },
+    { id: 'laddition', targetText: "l'addition", baseText: 'die Rechnung', acceptedAnswers: ["l'addition", "L'addition", 'l’addition', 'L’addition', 'l addition', 'L addition'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: 'bitte', acceptedAnswers: ["s'il vous plaît", "S'il vous plaît", "s'il vous plait", "S'il vous plait", 's’il vous plaît', 'S’il vous plaît', 's’il vous plait', 'S’il vous plait', 's il vous plait', 'sil vous plait'] },
+    { id: 'payer', targetText: 'payer', baseText: 'bezahlen', acceptedAnswers: ['payer', 'Payer'] },
+  ],
+  build: {
+    targetText: "L'addition, s'il vous plaît.",
+    chips: ["L'addition,", "s'il vous plaît.", 'la carte', 'un billet'],
+  },
+  typeRecall: {
+    before: "L'",
+    answer: 'addition',
+    after: ", s'il vous plaît.",
+    acceptedAnswers: ['addition', 'Addition'],
+    fallbackChoices: ['addition', 'table', 'carte', 'thé'],
+  },
+  speakTarget: {
+    baseCue: 'Die Rechnung, bitte.',
+    targetPhrase: "L'addition, s'il vous plaît.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['addition', 'plaît'],
+    optionalTokens: ['l', 'sil', 's', 'il', 'vous', 'plait'],
+  },
+  sceneCaption: 'Am Ende des Essens bittest du das Personal höflich um die Rechnung.',
+  trophyWord: {
+    word: 'addition',
+    meaning: 'Rechnung im Restaurant',
+    example: "L'addition, s'il vous plaît.",
+    whyThisWord: 'Addition ist im Restaurant die Rechnung, nicht eine Rechenaufgabe im deutschen Sinn. Wegen des Vokals steht korrekt "l’addition", nicht "la addition".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Restauranttisch am Ende des Essens, kurze Bitte um die Rechnung.',
+  },
+  songSeed: {
+    genre: 'soft bistro acoustic',
+    mood: 'ending the meal',
+  },
+  visualNotes: 'Rechnungsschale, Tischkante, höflicher Abschluss.',
+}
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -15956,6 +16509,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
       bright: brightFrenchP3Lesson010,
     },
   },
+  {
+    id: 'french-a1-practical-4-lesson-1-table-pour-deux',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-1-table-pour-deux',
+      sequence: 1,
+      title: 'Ein Tisch für zwei',
+    },
+    title: 'Ein Tisch für zwei',
+    situation: {
+      en: 'At a restaurant entrance, ask the host for a table for two.',
+      de: 'Am Restauranteingang bittest du um einen Tisch für zwei Personen.',
+    },
+    pedagogicalGoal: 'Eine höfliche Tischbitte mit une table pour deux abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Die Speisekarte',
+      situation: 'Du bittest am Tisch um die Karte.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson001,
+    },
+  },
+  {
+    id: 'french-a1-practical-4-lesson-2-la-carte',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-2-la-carte',
+      sequence: 2,
+      title: 'Die Speisekarte',
+    },
+    title: 'Die Speisekarte',
+    situation: {
+      en: 'Seated at a table, ask politely to see the restaurant menu.',
+      de: 'Am Tisch bittest du höflich um die Speisekarte.',
+    },
+    pedagogicalGoal: 'Die natürliche Restaurantbitte la carte, s’il vous plaît verwenden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Einen Tee bestellen',
+      situation: 'Du bestellst ein anderes Getränk als Kaffee.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson002,
+    },
+  },
+  {
+    id: 'french-a1-practical-4-lesson-3-un-the',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-3-un-the',
+      sequence: 3,
+      title: 'Einen Tee bestellen',
+    },
+    title: 'Einen Tee bestellen',
+    situation: {
+      en: 'At a cafe table, order a simple non-coffee drink politely.',
+      de: 'Am Cafétisch bestellst du höflich einen Tee.',
+    },
+    pedagogicalGoal: 'Eine Servicebestellung mit je voudrais und un thé bilden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ohne Zucker',
+      situation: 'Du sagst beim Getränk, dass du keinen Zucker möchtest.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson003,
+    },
+  },
+  {
+    id: 'french-a1-practical-4-lesson-4-sans-sucre',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-4-sans-sucre',
+      sequence: 4,
+      title: 'Ohne Zucker',
+    },
+    title: 'Ohne Zucker',
+    situation: {
+      en: 'At a counter or table, specify that you want the drink without sugar.',
+      de: 'Am Tresen oder Tisch sagst du, dass du das Getränk ohne Zucker möchtest.',
+    },
+    pedagogicalGoal: 'Die kurze Vorliebe sans sucre in höflichem Servicekontext abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist das frisch?',
+      situation: 'Du fragst an der Auslage, ob etwas frisch ist.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson004,
+    },
+  },
+  {
+    id: 'french-a1-practical-4-lesson-5-cest-frais',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-5-cest-frais',
+      sequence: 5,
+      title: 'Ist das frisch?',
+    },
+    title: 'Ist das frisch?',
+    situation: {
+      en: 'At a bakery or market counter, ask whether a visible food item is fresh.',
+      de: 'An Bäckerei- oder Marktstand fragst du, ob ein sichtbares Lebensmittel frisch ist.',
+    },
+    pedagogicalGoal: 'Eine kurze Zustandsfrage mit c’est frais stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Das ist alles',
+      situation: 'Du beendest eine Bestellung nach der Nachfrage des Personals.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson005,
+    },
+  },
+  {
+    id: 'french-a1-practical-4-lesson-6-cest-tout',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-6-cest-tout',
+      sequence: 6,
+      title: 'Das ist alles',
+    },
+    title: 'Das ist alles',
+    situation: {
+      en: 'At a cafe or shop counter, close the order after being asked if you want anything else.',
+      de: 'Am Café- oder Ladentresen beendest du die Bestellung nach der Nachfrage des Personals.',
+    },
+    pedagogicalGoal: 'Eine höfliche Abschlussantwort mit non merci und c’est tout abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Zum Mitnehmen',
+      situation: 'Du sagst, dass die Bestellung zum Mitnehmen ist.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson006,
+    },
+  },
+  {
+    id: 'french-a1-practical-4-lesson-7-a-emporter',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-7-a-emporter',
+      sequence: 7,
+      title: 'Zum Mitnehmen',
+    },
+    title: 'Zum Mitnehmen',
+    situation: {
+      en: 'At a cafe counter, ask for the order to be takeaway rather than dine-in.',
+      de: 'Am Cafétresen sagst du, dass die Bestellung zum Mitnehmen sein soll.',
+    },
+    pedagogicalGoal: 'Die feste Serviceformel à emporter korrekt einsetzen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Es war sehr gut',
+      situation: 'Du gibst nach dem Essen eine kurze positive Rückmeldung.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson007,
+    },
+  },
+  {
+    id: 'french-a1-practical-4-lesson-8-cetait-bon',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-8-cetait-bon',
+      sequence: 8,
+      title: 'Es war sehr gut',
+    },
+    title: 'Es war sehr gut',
+    situation: {
+      en: 'After eating or drinking, give a brief positive verdict.',
+      de: 'Nach Essen oder Getränk gibst du eine kurze positive Rückmeldung.',
+    },
+    pedagogicalGoal: 'Ein einfaches positives Urteil mit c’était très bon formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Schönes Wetter',
+      situation: 'Du machst eine kurze Small-Talk-Zeile über das Wetter.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson008,
+    },
+  },
+  {
+    id: 'french-a1-practical-4-lesson-9-il-fait-beau',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-9-il-fait-beau',
+      sequence: 9,
+      title: 'Schönes Wetter',
+    },
+    title: 'Schönes Wetter',
+    situation: {
+      en: 'At a cafe or shop counter, make one light small-talk line about the weather.',
+      de: 'Am Café- oder Ladentresen machst du eine leichte Small-Talk-Bemerkung über das Wetter.',
+    },
+    pedagogicalGoal: 'Eine kurze Wetterbemerkung mit il fait beau abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Die Rechnung',
+      situation: 'Du bittest am Ende des Essens um die Rechnung.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson009,
+    },
+  },
+  {
+    id: 'french-a1-practical-4-lesson-10-laddition',
+    pathId: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-4-lesson-10-laddition',
+      sequence: 10,
+      title: 'Die Rechnung',
+    },
+    title: 'Die Rechnung',
+    situation: {
+      en: 'At the end of a meal, ask politely for the bill.',
+      de: 'Am Ende des Essens bittest du höflich um die Rechnung.',
+    },
+    pedagogicalGoal: 'Die französische Restaurantformel l’addition, s’il vous plaît abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast French A1 Practical 4 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightFrenchP4Lesson010,
+    },
+  },
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -15985,6 +16868,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
     GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
     GUIDED_TODAY_PATH_FRENCH_THREE_METADATA,
+    GUIDED_TODAY_PATH_FRENCH_FOUR_METADATA,
   ]
 }
 
