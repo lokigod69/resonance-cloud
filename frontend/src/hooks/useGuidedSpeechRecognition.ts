@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { setIOSAudioSessionType } from '@/lib/grokIOSAudioDiagnostics'
+import type { GuidedSpeakLocale } from '@/data/guidedLessons'
 
 export type GuidedSpeechRecognitionStatus =
   | 'idle'
@@ -11,7 +12,7 @@ export type GuidedSpeechRecognitionStatus =
   | 'error'
 
 export type UseGuidedSpeechRecognitionOptions = {
-  language: 'en-US' | 'en-GB'
+  language: GuidedSpeakLocale
   maxRecordingSeconds?: number
 }
 

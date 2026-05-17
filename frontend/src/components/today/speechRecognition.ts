@@ -36,14 +36,16 @@ export type BrowserSpeechRecognizer = {
   abort: () => void
 }
 
+export type BrowserSpeechRecognizerLang = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR'
+
 export type BrowserSpeechRecognizerOptions = {
-  lang: 'en-US' | 'en-GB'
+  lang: BrowserSpeechRecognizerLang
   onResult: (transcript: string) => void
   onError: () => void
   onEnd: () => void
 }
 
-export const TODAY_SPEECH_RECOGNITION_LANG = 'en-US'
+export const TODAY_SPEECH_RECOGNITION_LANG: BrowserSpeechRecognizerLang = 'en-US'
 
 export function getBrowserSpeechRecognitionConstructor(): BrowserSpeechRecognitionConstructor | null {
   if (typeof window === 'undefined') return null

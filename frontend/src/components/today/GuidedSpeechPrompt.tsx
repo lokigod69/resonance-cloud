@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { checkGuidedSpeechAnswer, type GuidedSpeechCheckResult } from '@/lib/guidedSpeechCheck'
 import { canUseGuidedSpeechRecognition, useGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
+import type { GuidedSpeakLocale } from '@/data/guidedLessons'
 
 export type GuidedSpeechPromptCheckState = {
   status: 'idle' | 'requesting_permission' | 'recording' | 'transcribing' | 'passed' | 'close' | 'failed' | 'continued' | 'unsupported' | 'error'
@@ -22,7 +23,7 @@ type GuidedSpeechPromptProps = {
   acceptedAnswers?: string[]
   requiredTokens?: string[]
   optionalTokens?: string[]
-  language: 'en-US' | 'en-GB'
+  language: GuidedSpeakLocale
   maxRecordingSeconds?: number
   showHintButton?: boolean
   cueCardClassName?: string

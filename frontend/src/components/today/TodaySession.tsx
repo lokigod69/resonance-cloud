@@ -159,7 +159,7 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
               type="button"
               variant="outline"
               size="sm"
-              onClick={() => speakGuidedText(lesson.corePhrase.targetText)}
+              onClick={() => speakGuidedText(lesson.corePhrase.targetText, lesson.speak.language)}
             >
               <Volume2 className="h-4 w-4" />
               {t('today.listen')}

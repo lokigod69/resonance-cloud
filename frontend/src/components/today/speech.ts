@@ -1,4 +1,6 @@
-export function speakGuidedText(text: string, lang = 'en-US') {
+import type { GuidedSpeakLocale } from '@/data/guidedLessons'
+
+export function speakGuidedText(text: string, lang: GuidedSpeakLocale = 'en-US') {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
     return
   }

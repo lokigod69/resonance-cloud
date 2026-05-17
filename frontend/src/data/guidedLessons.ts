@@ -16,14 +16,18 @@ export type GuidedLessonMedia = {
   caption: string
 }
 
+export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French'
+export type GuidedBaseLanguage = 'German' | 'English'
+export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR'
+
 export type GuidedPathMetadata = {
   id: string
   title: string
   shortTitle: string
   subtitle: string
   level: 'A1'
-  baseLanguage: 'German'
-  targetLanguage: 'English'
+  baseLanguage: GuidedBaseLanguage
+  targetLanguage: GuidedTargetLanguage
   estimatedMinutes: number
 }
 
@@ -111,7 +115,7 @@ export type GuidedLessonVibeVariant = {
     requiredTokens?: string[]
     optionalTokens?: string[]
     maxRecordingSeconds?: number
-    language: 'en-US' | 'en-GB'
+    language: GuidedSpeakLocale
     passingThreshold: number
   }
   sceneCaption: string
@@ -128,8 +132,8 @@ export type GuidedLessonDefinition = {
   courseTitle: string
   level: 'A1'
   lessonNumber: number
-  baseLanguage: 'German'
-  targetLanguage: 'English'
+  baseLanguage: GuidedBaseLanguage
+  targetLanguage: GuidedTargetLanguage
   pathMetadata: GuidedPathMetadata
   lessonMetadata: GuidedLessonMetadata
   title: string
