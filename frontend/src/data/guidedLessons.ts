@@ -368,6 +368,17 @@ const GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA: GuidedPathMetadata = {
+  id: 'italian-a1-practical-5',
+  title: 'Italian A1 Practical 5',
+  shortTitle: 'A1 Practical 5',
+  subtitle: 'Kennenlernen und Verabredungen auf Italienisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Italian',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_FRENCH_ONE_METADATA: GuidedPathMetadata = {
   id: 'french-a1-practical-1',
   title: 'French A1 Practical 1',
@@ -12829,6 +12840,546 @@ const brightItalianP4Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Rechnungs-Detail auf Tablett, sanfte Kerzen-Reflektion, ruhiger Schluss-Akzent.',
 }
 
+const brightItalianP5Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Scusa, sono in ritardo.',
+    baseText: 'Entschuldige, ich bin spät dran.',
+  },
+  meaning: 'Eine kurze, lockere Entschuldigung bei einem Freund oder einer Freundin, wenn du zu spät kommst.',
+  chunks: [
+    { id: 'scusa', targetText: 'Scusa,', baseText: 'Entschuldige,' },
+    { id: 'sono', targetText: 'sono', baseText: 'ich bin' },
+    { id: 'in-ritardo', targetText: 'in ritardo.', baseText: 'spät dran.' },
+  ],
+  lessonItems: [
+    { id: 'tardi', targetText: 'tardi', baseText: 'spät', acceptedAnswers: ['tardi', 'Tardi'] },
+    { id: 'scusa', targetText: 'scusa', baseText: 'entschuldige (du)', acceptedAnswers: ['scusa', 'Scusa'] },
+    { id: 'in-ritardo', targetText: 'in ritardo', baseText: 'spät / verspätet', acceptedAnswers: ['in ritardo', 'In ritardo'] },
+    { id: 'davvero', targetText: 'davvero', baseText: 'wirklich', acceptedAnswers: ['davvero', 'Davvero'] },
+  ],
+  build: {
+    targetText: 'Scusa, sono in ritardo.',
+    chips: ['Scusa,', 'sono', 'in ritardo.', 'tardi', 'davvero'],
+  },
+  typeRecall: {
+    before: 'Sono ',
+    answer: 'tardi',
+    after: '.',
+    acceptedAnswers: ['tardi', 'Tardi'],
+    fallbackChoices: ['tardi', 'presto', 'qui', 'pronto'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldige, ich bin spät dran.',
+    targetPhrase: 'Scusa, sono in ritardo.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['scusa', 'sono', 'ritardo'],
+    optionalTokens: ['in', 'tardi', 'davvero'],
+  },
+  sceneCaption: 'Du trittst etwas später ein und entschuldigst dich locker bei einem Freund.',
+  trophyWord: {
+    word: 'tardi',
+    meaning: 'spät',
+    example: 'Sono arrivato tardi, scusa.',
+    whyThisWord: 'Tardi ist auf A1 das Adverb für "spät" und steht im Paar mit "presto" (früh). Vorsicht: das Substantiv "ritardo" ist verwandt, aber eigenständig — "in ritardo" = "spät dran". Die du-Form "scusa" ist hier die natürliche Wahl unter Freunden.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tür im Vordergrund, Freund am Tisch wartend, kurze Entschuldigungsgeste.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle apology',
+  },
+  visualNotes: 'Türrahmen-Detail, weiche Bewegungsspur, ruhiger Eintreten-Beat.',
+}
+
+const brightItalianP5Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Ho dimenticato il nome.',
+    baseText: 'Ich habe den Namen vergessen.',
+  },
+  meaning: 'Eine ehrliche, lockere Zugabe, dass eine Information entfallen ist.',
+  chunks: [
+    { id: 'ho-dimenticato', targetText: 'Ho dimenticato', baseText: 'Ich habe vergessen' },
+    { id: 'il-nome', targetText: 'il nome.', baseText: 'den Namen.' },
+  ],
+  lessonItems: [
+    { id: 'dimenticato', targetText: 'dimenticato', baseText: 'vergessen (Partizip)', acceptedAnswers: ['dimenticato', 'Dimenticato'] },
+    { id: 'ho', targetText: 'ho', baseText: 'ich habe', acceptedAnswers: ['ho', 'Ho'] },
+    { id: 'ricordare', targetText: 'ricordare', baseText: 'sich erinnern', acceptedAnswers: ['ricordare', 'Ricordare'] },
+    { id: 'davvero', targetText: 'davvero', baseText: 'wirklich', acceptedAnswers: ['davvero', 'Davvero'] },
+  ],
+  build: {
+    targetText: 'Ho dimenticato il nome.',
+    chips: ['Ho dimenticato', 'il nome.', 'numero', 'davvero'],
+  },
+  typeRecall: {
+    before: 'Ho ',
+    answer: 'dimenticato',
+    after: ' il nome.',
+    acceptedAnswers: ['dimenticato', 'Dimenticato'],
+    fallbackChoices: ['dimenticato', 'ricordato', 'visto', 'sentito'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe den Namen vergessen.',
+    targetPhrase: 'Ho dimenticato il nome.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['ho', 'dimenticato', 'nome'],
+    optionalTokens: ['il', 'davvero', 'scusa'],
+  },
+  sceneCaption: 'Mitten im Gespräch gibst du ruhig zu, dass dir der Name entfallen ist.',
+  trophyWord: {
+    word: 'dimenticato',
+    meaning: 'vergessen (Partizip von "dimenticare")',
+    example: 'Ho dimenticato la chiave, scusa.',
+    whyThisWord: 'Dimenticato ist auf A1 das regelmäßige Partizip von "dimenticare" und bildet mit "ho" das Standard-Perfekt "ich habe vergessen". Bei weiblichem Subjekt als Adjektiv kongruiert es: "Mi sono dimenticata" — Vorsicht bei Reflexivkonstruktionen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kurze nachdenkliche Pause, Hand am Kopf, ehrlicher Blick.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'honest pause',
+  },
+  visualNotes: 'Stirn-Detail-Geste, sanftes Licht, ruhiger Erinnerungs-Beat.',
+}
+
+const brightItalianP5Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Come ti chiami?',
+    baseText: 'Wie heißt du?',
+  },
+  meaning: 'Die klassische italienische Frage nach dem Namen unter Gleichaltrigen.',
+  chunks: [
+    { id: 'come', targetText: 'Come', baseText: 'Wie' },
+    { id: 'ti-chiami', targetText: 'ti chiami?', baseText: 'heißt du?' },
+  ],
+  lessonItems: [
+    { id: 'nome', targetText: 'nome', baseText: 'Name', acceptedAnswers: ['nome', 'Nome'] },
+    { id: 'ti-chiami', targetText: 'ti chiami', baseText: 'du heißt (reflexiv)', acceptedAnswers: ['ti chiami', 'Ti chiami'] },
+    { id: 'mi-chiamo', targetText: 'mi chiamo', baseText: 'ich heiße (reflexiv)', acceptedAnswers: ['mi chiamo', 'Mi chiamo'] },
+    { id: 'piacere', targetText: 'piacere', baseText: 'freut mich (kennenzulernen)', acceptedAnswers: ['piacere', 'Piacere'] },
+  ],
+  build: {
+    targetText: 'Come ti chiami?',
+    chips: ['Come', 'ti chiami?', 'piacere', 'nome'],
+  },
+  typeRecall: {
+    before: 'Il tuo ',
+    answer: 'nome',
+    after: '?',
+    acceptedAnswers: ['nome', 'Nome'],
+    fallbackChoices: ['nome', 'cognome', 'lavoro', 'numero'],
+  },
+  speakTarget: {
+    baseCue: 'Wie heißt du?',
+    targetPhrase: 'Come ti chiami?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['come', 'chiami'],
+    optionalTokens: ['ti', 'nome', 'piacere'],
+  },
+  sceneCaption: 'Locker im Gespräch wendest du dich an die andere Person und fragst nach dem Namen.',
+  trophyWord: {
+    word: 'nome',
+    meaning: 'Name (Vorname)',
+    example: 'Il tuo nome è bello.',
+    whyThisWord: 'Nome ist auf A1 der Vorname; der Nachname heißt "cognome". Vorsicht beim deutschen "Name" — im Italienischen klar unterschieden. Die du-Frage "Come ti chiami?" ist reflexiv ("Wie nennst du dich?") und im Italienischen die universale Eröffnung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Lockerer Treffpunkt, offener Blickkontakt, kurze Vorstellungsgeste.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'first meeting',
+  },
+  visualNotes: 'Zwei Personen halbprofil, sanfter Korall-Akzent, warme erste Begegnung.',
+}
+
+const brightItalianP5Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Piacere di conoscerti.',
+    baseText: 'Freut mich, dich kennenzulernen.',
+  },
+  meaning: 'Die warme, klassische Antwort nach der ersten Vorstellung.',
+  chunks: [
+    { id: 'piacere', targetText: 'Piacere', baseText: 'Freut mich' },
+    { id: 'di-conoscerti', targetText: 'di conoscerti.', baseText: 'dich kennenzulernen.' },
+  ],
+  lessonItems: [
+    { id: 'piacere', targetText: 'piacere', baseText: 'Vergnügen / freut mich', acceptedAnswers: ['piacere', 'Piacere'] },
+    { id: 'conoscere', targetText: 'conoscere', baseText: 'kennenlernen', acceptedAnswers: ['conoscere', 'Conoscere'] },
+    { id: 'conoscerti', targetText: 'conoscerti', baseText: 'dich kennenzulernen', acceptedAnswers: ['conoscerti', 'Conoscerti'] },
+    { id: 'anche', targetText: 'anche', baseText: 'auch', acceptedAnswers: ['anche', 'Anche'] },
+  ],
+  build: {
+    targetText: 'Piacere di conoscerti.',
+    chips: ['Piacere', 'di conoscerti.', 'anche', 'davvero'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Piacere',
+    after: ' di conoscerti.',
+    acceptedAnswers: ['piacere', 'Piacere'],
+    fallbackChoices: ['Piacere', 'Grazie', 'Ciao', 'Salve'],
+  },
+  speakTarget: {
+    baseCue: 'Freut mich, dich kennenzulernen.',
+    targetPhrase: 'Piacere di conoscerti.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['piacere', 'conoscerti'],
+    optionalTokens: ['di', 'anche', 'molto'],
+  },
+  sceneCaption: 'Nach der ersten Vorstellung gibst du ein warmes, kurzes Echo zurück.',
+  trophyWord: {
+    word: 'piacere',
+    meaning: 'Vergnügen / freut mich (Begrüßungsformel)',
+    example: 'Piacere mio.',
+    whyThisWord: 'Piacere als Substantiv heißt "Vergnügen" und wird in der ersten Begegnung als Kurzform für "Es freut mich" benutzt — komplette Antwort allein, oft mit "mio" verstärkt ("Das Vergnügen ist auf meiner Seite"). Achtung: gleiches Wort ist auch ein Verb ("gefallen") — der Kontext disambiguiert klar.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kurzer Handschlag oder Wangenkuss, ruhiger Begrüßungsmoment.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'first warm meeting',
+  },
+  visualNotes: 'Hände im Vordergrund, warmes Honiglicht, sanfter Annäherungsmoment.',
+}
+
+const brightItalianP5Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Da dove vieni?',
+    baseText: 'Woher kommst du?',
+  },
+  meaning: 'Die lockere Frage nach der Herkunft beim Kennenlernen.',
+  chunks: [
+    { id: 'da-dove', targetText: 'Da dove', baseText: 'Woher' },
+    { id: 'vieni', targetText: 'vieni?', baseText: 'kommst du?' },
+  ],
+  lessonItems: [
+    { id: 'vieni', targetText: 'vieni', baseText: 'du kommst', acceptedAnswers: ['vieni', 'Vieni'] },
+    { id: 'vengo', targetText: 'vengo', baseText: 'ich komme', acceptedAnswers: ['vengo', 'Vengo'] },
+    { id: 'paese', targetText: 'paese', baseText: 'Land / Dorf', acceptedAnswers: ['paese', 'Paese'] },
+    { id: 'citta', targetText: 'città', baseText: 'Stadt', acceptedAnswers: ['città', 'citta', 'Città', 'Citta'] },
+  ],
+  build: {
+    targetText: 'Da dove vieni?',
+    chips: ['Da dove', 'vieni?', 'città', 'paese'],
+  },
+  typeRecall: {
+    before: 'Da dove ',
+    answer: 'vieni',
+    after: '?',
+    acceptedAnswers: ['vieni', 'Vieni'],
+    fallbackChoices: ['vieni', 'vai', 'sei', 'stai'],
+  },
+  speakTarget: {
+    baseCue: 'Woher kommst du?',
+    targetPhrase: 'Da dove vieni?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['dove', 'vieni'],
+    optionalTokens: ['da', 'allora'],
+  },
+  sceneCaption: 'Im Gespräch fragst du locker nach der Heimat der anderen Person.',
+  trophyWord: {
+    word: 'vieni',
+    meaning: 'du kommst (2. Person Singular von venire)',
+    example: 'Da dove vieni? — Vengo da Berlino.',
+    whyThisWord: 'Vieni ist die 2.-Person-Singular von "venire" (kommen) — eine der ersten unregelmäßigen Verbformen auf A1. Die du-Frage "Da dove vieni?" mit der Antwort "Vengo da..." ist das italienische Standardpaar.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Gespräch am Tisch, Karte oder Globus im Hintergrund, kurze offene Frage.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'gentle curiosity',
+  },
+  visualNotes: 'Karten-Stillleben im Hintergrund, warmes Tischlicht, offene Geste.',
+}
+
+const brightItalianP5Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Sei di qui?',
+    baseText: 'Bist du von hier?',
+  },
+  meaning: 'Eine kurze Frage, ob die andere Person aus der Gegend stammt.',
+  chunks: [
+    { id: 'sei', targetText: 'Sei', baseText: 'Bist du' },
+    { id: 'di-qui', targetText: 'di qui?', baseText: 'von hier?' },
+  ],
+  lessonItems: [
+    { id: 'qui', targetText: 'qui', baseText: 'hier', acceptedAnswers: ['qui', 'Qui'] },
+    { id: 'sei', targetText: 'sei', baseText: 'du bist', acceptedAnswers: ['sei', 'Sei'] },
+    { id: 'sono', targetText: 'sono', baseText: 'ich bin', acceptedAnswers: ['sono', 'Sono'] },
+    { id: 'in-vacanza', targetText: 'in vacanza', baseText: 'im Urlaub', acceptedAnswers: ['in vacanza', 'In vacanza'] },
+  ],
+  build: {
+    targetText: 'Sei di qui?',
+    chips: ['Sei', 'di qui?', 'in vacanza', 'sono'],
+  },
+  typeRecall: {
+    before: 'Sei di ',
+    answer: 'qui',
+    after: '?',
+    acceptedAnswers: ['qui', 'Qui'],
+    fallbackChoices: ['qui', 'là', 'lì', 'qua'],
+  },
+  speakTarget: {
+    baseCue: 'Bist du von hier?',
+    targetPhrase: 'Sei di qui?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['sei', 'qui'],
+    optionalTokens: ['di', 'allora'],
+  },
+  sceneCaption: 'Im lockeren Gespräch klärst du, ob die andere Person aus der Stadt stammt.',
+  trophyWord: {
+    word: 'qui',
+    meaning: 'hier',
+    example: 'Vivo qui da due anni.',
+    whyThisWord: 'Qui ist auf A1 das räumliche "hier" und steht im Paar mit "lì" / "là" (dort). Sehr kurz, sehr italienisch — in jeder Ortsfrage einsetzbar. Synonym "qua" funktioniert ebenfalls; beide sind A1.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Caféecke, lockere Schultern, kurzer Blick durchs Fenster nach draußen.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'casual local check',
+  },
+  visualNotes: 'Innenraum mit Fensterblick, warmes Nachmittagslicht, offene Haltung.',
+}
+
+const brightItalianP5Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Sei libero stasera?',
+    baseText: 'Hast du heute Abend Zeit?',
+  },
+  meaning: 'Die direkte, lockere Frage, ob jemand abends frei ist.',
+  chunks: [
+    { id: 'sei-libero', targetText: 'Sei libero', baseText: 'Bist du frei' },
+    { id: 'stasera', targetText: 'stasera?', baseText: 'heute Abend?' },
+  ],
+  lessonItems: [
+    { id: 'stasera', targetText: 'stasera', baseText: 'heute Abend', acceptedAnswers: ['stasera', 'Stasera'] },
+    { id: 'libero', targetText: 'libero', baseText: 'frei (m.)', acceptedAnswers: ['libero', 'Libero'] },
+    { id: 'libera', targetText: 'libera', baseText: 'frei (f.)', acceptedAnswers: ['libera', 'Libera'] },
+    { id: 'tempo', targetText: 'tempo', baseText: 'Zeit', acceptedAnswers: ['tempo', 'Tempo'] },
+  ],
+  build: {
+    targetText: 'Sei libero stasera?',
+    chips: ['Sei libero', 'stasera?', 'tempo', 'libera'],
+  },
+  typeRecall: {
+    before: 'Sei libero ',
+    answer: 'stasera',
+    after: '?',
+    acceptedAnswers: ['stasera', 'Stasera'],
+    fallbackChoices: ['stasera', 'oggi', 'domani', 'adesso'],
+  },
+  speakTarget: {
+    baseCue: 'Hast du heute Abend Zeit?',
+    targetPhrase: 'Sei libero stasera?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['sei', 'libero', 'stasera'],
+    optionalTokens: ['libera', 'tempo'],
+  },
+  sceneCaption: 'Am Ende des Gesprächs fragst du locker nach freier Zeit für den Abend.',
+  trophyWord: {
+    word: 'stasera',
+    meaning: 'heute Abend',
+    example: 'Stasera ci vediamo al bar.',
+    whyThisWord: 'Stasera ist eine A1-Verschmelzung von "questa sera" (dieser Abend) und unterscheidet sich klar von "ieri sera" (gestern Abend) und "domani sera" (morgen Abend). Sehr italienisch — eine der ersten zusammengewachsenen Zeitformen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Spätnachmittag-Licht im Café, lockere Schulterneigung, offene Verabredungs-Geste.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'planning the night',
+  },
+  visualNotes: 'Goldenes Abendlicht von der Seite, warmer Korall-Akzent, ruhiger Plan-Beat.',
+}
+
+const brightItalianP5Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Ci vediamo al bar?',
+    baseText: 'Sehen wir uns im Café?',
+  },
+  meaning: 'Ein lockerer Treffpunkt-Vorschlag — Café als italienischer Standardort.',
+  chunks: [
+    { id: 'ci-vediamo', targetText: 'Ci vediamo', baseText: 'Wir sehen uns' },
+    { id: 'al-bar', targetText: 'al bar?', baseText: 'im Café?' },
+  ],
+  lessonItems: [
+    { id: 'bar', targetText: 'bar', baseText: 'Café / Bar', acceptedAnswers: ['bar', 'Bar'] },
+    { id: 'ci-vediamo', targetText: 'ci vediamo', baseText: 'wir sehen uns', acceptedAnswers: ['ci vediamo', 'Ci vediamo'] },
+    { id: 'al', targetText: 'al', baseText: 'im (a + il)', acceptedAnswers: ['al', 'Al'] },
+    { id: 'piazza', targetText: 'piazza', baseText: 'Platz', acceptedAnswers: ['piazza', 'Piazza'] },
+  ],
+  build: {
+    targetText: 'Ci vediamo al bar?',
+    chips: ['Ci vediamo', 'al bar?', 'piazza', 'più tardi'],
+  },
+  typeRecall: {
+    before: 'Ci vediamo al ',
+    answer: 'bar',
+    after: '?',
+    acceptedAnswers: ['bar', 'Bar'],
+    fallbackChoices: ['bar', 'parco', 'cinema', 'museo'],
+  },
+  speakTarget: {
+    baseCue: 'Sehen wir uns im Café?',
+    targetPhrase: 'Ci vediamo al bar?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['vediamo', 'bar'],
+    optionalTokens: ['ci', 'al', 'piazza'],
+  },
+  sceneCaption: 'Du machst einen lockeren Treffpunkt-Vorschlag am Caféfenster.',
+  trophyWord: {
+    word: 'bar',
+    meaning: 'Café / Bar (italienisch alltäglich)',
+    example: 'Andiamo al bar.',
+    whyThisWord: 'Bar im italienischen Alltag heißt das normale Tagescafé — Espresso, Croissants, Smalltalk —, nicht die abendliche englische Cocktail-Bar. Achtung: das ist genau der Punkt, wo deutsche Sprecher stolpern: "Bar" auf Deutsch hat eine andere Stimmung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Fensterblick auf eine italienische Caféfassade, kurzer Vorschlagsmoment.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'planning to meet',
+  },
+  visualNotes: 'Caféfront im Vordergrund, warmes Abendlicht, lockere Verabredungs-Geste.',
+}
+
+const brightItalianP5Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Magari domani?',
+    baseText: 'Vielleicht morgen?',
+  },
+  meaning: 'Eine sanfte Verschiebung des Plans auf den nächsten Tag.',
+  chunks: [
+    { id: 'magari', targetText: 'Magari', baseText: 'Vielleicht' },
+    { id: 'domani', targetText: 'domani?', baseText: 'morgen?' },
+  ],
+  lessonItems: [
+    { id: 'magari', targetText: 'magari', baseText: 'vielleicht / am liebsten', acceptedAnswers: ['magari', 'Magari'] },
+    { id: 'domani', targetText: 'domani', baseText: 'morgen (am nächsten Tag)', acceptedAnswers: ['domani', 'Domani'] },
+    { id: 'allora', targetText: 'allora', baseText: 'also / dann', acceptedAnswers: ['allora', 'Allora'] },
+    { id: 'va-bene-cosi', targetText: 'va bene così', baseText: 'so passt es', acceptedAnswers: ['va bene così', 'va bene cosi'] },
+  ],
+  build: {
+    targetText: 'Magari domani?',
+    chips: ['Magari', 'domani?', 'allora', 'va bene'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Magari',
+    after: ' domani?',
+    acceptedAnswers: ['magari', 'Magari'],
+    fallbackChoices: ['Magari', 'Forse', 'Allora', 'Sempre'],
+  },
+  speakTarget: {
+    baseCue: 'Vielleicht morgen?',
+    targetPhrase: 'Magari domani?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['magari', 'domani'],
+    optionalTokens: ['allora', 'va', 'bene'],
+  },
+  sceneCaption: 'Du verschiebst den Plan höflich-locker auf einen anderen Tag.',
+  trophyWord: {
+    word: 'magari',
+    meaning: 'vielleicht / am liebsten (mit Wunschton)',
+    example: 'Magari ci vediamo domani.',
+    whyThisWord: 'Magari ist ein A1-Italienisch-Schlüsselwort mit doppeltem Sinn: höflich-relativ ("vielleicht, eher unwahrscheinlich") und enthusiastisch-wünschend ("am liebsten ja!"). Der Tonfall entscheidet. Sehr italienisch — kein direktes deutsches Pendant.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kurzer offener Blick zur Seite, lockere Schulterbewegung, ruhige Verschiebungsgeste.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle reschedule',
+  },
+  visualNotes: 'Café-Außenbereich am späten Nachmittag, sanfter Pastellrosa-Akzent, ruhiger Plan-Wechsel.',
+}
+
+const brightItalianP5Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'A domani!',
+    baseText: 'Bis morgen!',
+  },
+  meaning: 'Der kurze italienische Standard-Abschied, wenn man sich am nächsten Tag wieder sieht.',
+  chunks: [
+    { id: 'a-domani', targetText: 'A domani!', baseText: 'Bis morgen!' },
+  ],
+  lessonItems: [
+    { id: 'domani', targetText: 'domani', baseText: 'morgen (am nächsten Tag)', acceptedAnswers: ['domani', 'Domani'] },
+    { id: 'a-presto', targetText: 'a presto', baseText: 'bis bald', acceptedAnswers: ['a presto', 'A presto'] },
+    { id: 'a-dopo', targetText: 'a dopo', baseText: 'bis später', acceptedAnswers: ['a dopo', 'A dopo'] },
+    { id: 'ciao', targetText: 'ciao', baseText: 'tschüss (informell)', acceptedAnswers: ['ciao', 'Ciao'] },
+  ],
+  build: {
+    targetText: 'A domani!',
+    chips: ['A domani!', 'a presto', 'a dopo', 'ciao'],
+  },
+  typeRecall: {
+    before: 'A ',
+    answer: 'domani',
+    after: '!',
+    acceptedAnswers: ['domani', 'Domani'],
+    fallbackChoices: ['domani', 'dopo', 'presto', 'tardi'],
+  },
+  speakTarget: {
+    baseCue: 'Bis morgen!',
+    targetPhrase: 'A domani!',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['domani'],
+    optionalTokens: ['a', 'ciao', 'allora'],
+  },
+  sceneCaption: 'Am Ende des Treffens schließt du die Begegnung mit einem kurzen, freundlichen Wiedersehens-Abschied.',
+  trophyWord: {
+    word: 'domani',
+    meaning: 'morgen (am nächsten Tag)',
+    example: 'A domani, ciao!',
+    whyThisWord: 'Domani ist auf A1 das Standardwort für "morgen" als Tag — Vorsicht: für "morgen früh" (Tageszeit) sagt das Italienische "domani mattina". Die Wendung "A domani!" ist die kurze Abschiedsform unter Freunden.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café-Ausgang am Abend, kurzer Winker, warmer Lichtspur beim Weggehen.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'warm close',
+  },
+  visualNotes: 'Türgriff-Detail, sanfter Honig-Akzent, ruhige Wink-Bewegung.',
+}
+
 const brightFrenchLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -19945,6 +20496,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'italian-a1-practical-5-lesson-1-scusa-ritardo',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-1-scusa-ritardo',
+      sequence: 1,
+      title: 'Entschuldige die Verspätung',
+    },
+    title: 'Entschuldige die Verspätung',
+    situation: {
+      en: 'Casually apologize to a friend for being late.',
+      de: 'Du entschuldigst dich locker bei einem Freund für die Verspätung.',
+    },
+    pedagogicalGoal: 'Eine kurze Entschuldigung mit du-Form auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Den Namen vergessen',
+      situation: 'Du gibst zu, dass dir der Name entfallen ist.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson001,
+    },
+  },
+  {
+    id: 'italian-a1-practical-5-lesson-2-ho-dimenticato',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-2-ho-dimenticato',
+      sequence: 2,
+      title: 'Den Namen vergessen',
+    },
+    title: 'Den Namen vergessen',
+    situation: {
+      en: 'Admit you forgot a name or detail.',
+      de: 'Du gibst ruhig zu, dass dir der Name entfallen ist.',
+    },
+    pedagogicalGoal: 'Eine kurze Zugabe mit Perfekt "ho + Partizip" sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wie heißt du?',
+      situation: 'Du fragst nach dem Namen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson002,
+    },
+  },
+  {
+    id: 'italian-a1-practical-5-lesson-3-come-ti-chiami',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-3-come-ti-chiami',
+      sequence: 3,
+      title: 'Wie heißt du?',
+    },
+    title: 'Wie heißt du?',
+    situation: {
+      en: 'In a casual setting, ask the other for their name.',
+      de: 'Locker im Gespräch fragst du nach dem Namen.',
+    },
+    pedagogicalGoal: 'Die Namensfrage mit reflexiver du-Form auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Freut mich',
+      situation: 'Du antwortest warm nach der Vorstellung.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson003,
+    },
+  },
+  {
+    id: 'italian-a1-practical-5-lesson-4-piacere',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-4-piacere',
+      sequence: 4,
+      title: 'Freut mich',
+    },
+    title: 'Freut mich',
+    situation: {
+      en: 'Reply warmly after a casual introduction.',
+      de: 'Nach der Vorstellung antwortest du locker und herzlich.',
+    },
+    pedagogicalGoal: 'Die feste Begrüßungs-Formel nach der Vorstellung sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Woher kommst du?',
+      situation: 'Du fragst nach der Herkunft.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson004,
+    },
+  },
+  {
+    id: 'italian-a1-practical-5-lesson-5-da-dove-vieni',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-5-da-dove-vieni',
+      sequence: 5,
+      title: 'Woher kommst du?',
+    },
+    title: 'Woher kommst du?',
+    situation: {
+      en: 'Casually ask where the other is from.',
+      de: 'Locker fragst du nach der Herkunft.',
+    },
+    pedagogicalGoal: 'Die Frage nach der Herkunft mit 2. Person sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Bist du von hier?',
+      situation: 'Du klärst, ob die Person aus der Gegend ist.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson005,
+    },
+  },
+  {
+    id: 'italian-a1-practical-5-lesson-6-sei-di-qui',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-6-sei-di-qui',
+      sequence: 6,
+      title: 'Bist du von hier?',
+    },
+    title: 'Bist du von hier?',
+    situation: {
+      en: 'Check whether the other is local.',
+      de: 'Du klärst, ob die Person hier wohnt.',
+    },
+    pedagogicalGoal: 'Eine ortsbezogene Identitätsfrage auf Italienisch stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Heute Abend Zeit?',
+      situation: 'Du fragst nach Zeit für den Abend.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson006,
+    },
+  },
+  {
+    id: 'italian-a1-practical-5-lesson-7-stasera-libero',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-7-stasera-libero',
+      sequence: 7,
+      title: 'Heute Abend Zeit?',
+    },
+    title: 'Heute Abend Zeit?',
+    situation: {
+      en: 'Ask whether the other has time tonight.',
+      de: 'Du fragst, ob die Person heute Abend frei ist.',
+    },
+    pedagogicalGoal: 'Eine Verfügbarkeitsfrage für den Abend mit "stasera" abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Im Café?',
+      situation: 'Du schlägst einen Treffpunkt vor.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson007,
+    },
+  },
+  {
+    id: 'italian-a1-practical-5-lesson-8-al-bar',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-8-al-bar',
+      sequence: 8,
+      title: 'Im Café?',
+    },
+    title: 'Im Café?',
+    situation: {
+      en: 'Suggest meeting at the café.',
+      de: 'Du schlägst das Café als Treffpunkt vor.',
+    },
+    pedagogicalGoal: 'Einen lockeren Treffpunkt-Vorschlag auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Vielleicht morgen',
+      situation: 'Du verschiebst den Plan auf morgen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson008,
+    },
+  },
+  {
+    id: 'italian-a1-practical-5-lesson-9-magari-domani',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-9-magari-domani',
+      sequence: 9,
+      title: 'Vielleicht morgen',
+    },
+    title: 'Vielleicht morgen',
+    situation: {
+      en: 'Postpone the plan to tomorrow.',
+      de: 'Du verschiebst den Plan locker auf morgen.',
+    },
+    pedagogicalGoal: 'Eine sanfte Plan-Verschiebung mit "magari" auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Bis morgen',
+      situation: 'Du verabschiedest dich locker bis zum nächsten Tag.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson009,
+    },
+  },
+  {
+    id: 'italian-a1-practical-5-lesson-10-a-domani',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-5-lesson-10-a-domani',
+      sequence: 10,
+      title: 'Bis morgen',
+    },
+    title: 'Bis morgen',
+    situation: {
+      en: 'Close the casual encounter with "see you tomorrow".',
+      de: 'Du schließt das lockere Treffen mit "bis morgen" ab.',
+    },
+    pedagogicalGoal: 'Den italienischen Wiedersehens-Abschied unter Freunden sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Italian A1 Practical 5 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP5Lesson010,
+    },
+  },
+  {
     id: 'french-a1-practical-1-lesson-1-bonjour-francais',
     pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
@@ -22942,6 +23823,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    GUIDED_TODAY_PATH_ITALIAN_FIVE_METADATA,
     GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
     GUIDED_TODAY_PATH_FRENCH_TWO_METADATA,
     GUIDED_TODAY_PATH_FRENCH_THREE_METADATA,
