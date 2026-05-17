@@ -1,10 +1,9 @@
-import { ChevronLeft, Music2 } from 'lucide-react'
+import { ChevronLeft } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import {
   getGuidedPathLessons,
   resolveGuidedLessonVariant,
 } from '@/data/guidedLessons'
-import { guidedVibes } from '@/data/guidedVibes'
 import type { TrophySongRow } from '@/lib/trophySongsClient'
 import {
   createGuidedTrophyClozeRecord,
@@ -26,7 +25,6 @@ type TrophySongPanelProps = {
 
 export function TrophySongPanel({ row, backToTodayHref, onComplete }: TrophySongPanelProps) {
   const { t } = useTranslation()
-  const voiceLabel = guidedVibes[row.vibe]?.label ?? row.vibe
   const trophyWords = getGuidedPathLessons(row.pathId)
     .filter((lesson) => (
       row.segment === 1
@@ -63,26 +61,9 @@ export function TrophySongPanel({ row, backToTodayHref, onComplete }: TrophySong
             {t('today.checkpoint.backToToday')}
           </Link>
         </Button>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-          <div className="min-w-0">
-            <p className="text-sm font-medium text-[var(--text-secondary)]">
-              {t('today.trophy.panelKicker', { segment: row.segment })}
-            </p>
-            <h1 className="mt-1 break-words text-3xl font-semibold leading-tight text-[var(--text-primary)]">
-              {t('today.trophy.panelTitle')}
-            </h1>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <MetadataPill label="Style" value={row.songStyleLabel} />
-              <MetadataPill label="Voice" value={voiceLabel} />
-              <MetadataPill label="Segment" value={String(row.segment)} />
-              <MetadataPill label="Audio" value={formatAudioStatus(row.audioStatus)} />
-            </div>
-          </div>
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-subtle)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
-            <Music2 className="h-4 w-4 text-[var(--accent)]" />
-            {t('today.trophy.panelBadge')}
-          </span>
-        </div>
+        <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)]">
+          {t('today.trophy.panelTitle')}
+        </h1>
       </section>
 
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -114,15 +95,6 @@ export function TrophySongPanel({ row, backToTodayHref, onComplete }: TrophySong
   )
 }
 
-function MetadataPill({ label, value }: { label: string; value: string }) {
-  return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] px-3 py-1.5 text-xs text-[var(--text-secondary)]">
-      <span className="font-semibold text-[var(--text-primary)]">{label}</span>
-      <span>{value}</span>
-    </span>
-  )
-}
-
 function TrophyLyricsReview({
   displayLyrics,
   lyricsTranslationDe,
@@ -151,10 +123,4 @@ function LyricColumn({ title, body }: { title: string; body: string }) {
       </pre>
     </article>
   )
-}
-
-function formatAudioStatus(status: TrophySongRow['audioStatus']) {
-  if (status === 'ready') return 'Ready'
-  if (status === 'failed') return 'Failed'
-  return 'Missing'
 }

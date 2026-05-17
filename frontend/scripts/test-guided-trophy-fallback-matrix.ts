@@ -64,7 +64,10 @@ function assert(name: string, condition: boolean, detail?: unknown) {
 
 console.log('\n[matrix inventory]')
 const pathOptions = getGuidedTodayPathOptions()
-assert('Guided Today exposes the 10 expected A1P1-A1P10 paths in order', JSON.stringify(pathOptions.map((path) => path.id)) === JSON.stringify(ACTIVE_PATHS))
+const englishA1PracticalPathIds = pathOptions
+  .map((path) => path.id)
+  .filter((pathId) => pathId.startsWith('english-a1-practical-'))
+assert('Guided Today exposes the 10 expected English A1P1-A1P10 paths in order', JSON.stringify(englishA1PracticalPathIds) === JSON.stringify(ACTIVE_PATHS))
 assert('matrix is 10 paths x 2 segments x 3 active vibes', ACTIVE_PATHS.length * SEGMENTS.length * VIBES.length === 60)
 
 console.log('\n[trophy fallback matrix]')
@@ -198,6 +201,9 @@ assert('missing song rows render TrophyWordFallbackPanel', checkpointSource.incl
 assert('song panel still renders player, lyrics, and cloze drill for canonical rows', songPanelSource.includes('TrophySongPlayer') && songPanelSource.includes('TrophyLyricsReview') && songPanelSource.includes('TrophyLyricClozeDrill'))
 assert('fallback panel renders TrophyWordCard from local fallback words', fallbackPanelSource.includes('getGuidedTrophyWordsForSegment') && fallbackPanelSource.includes('<TrophyWordCard key={trophyWord.word}'))
 assert('fallback panel has a non-playable song placeholder', fallbackPanelSource.includes("t('today.trophy.player.comingSoon')") && !fallbackPanelSource.includes('TrophySongPlayer') && !fallbackPanelSource.includes('<audio') && !fallbackPanelSource.includes('TrophyLyricClozeDrill'))
+assert('fallback panel hides path voice and segment metadata pills', !fallbackPanelSource.includes('MetadataPill') && !fallbackPanelSource.includes('getGuidedTodayPathOptions') && !fallbackPanelSource.includes('guidedVibes,'))
+assert('fallback panel avoids segment kicker and status badge copy', !fallbackPanelSource.includes('today.trophy.panelKicker') && !fallbackPanelSource.includes('today.trophy.panelBadge'))
+assert('canonical song panel hides debug-style metadata pills while keeping the real player', !songPanelSource.includes('MetadataPill') && !songPanelSource.includes('formatAudioStatus') && !songPanelSource.includes('guidedVibes') && songPanelSource.includes('TrophySongPlayer'))
 assert('fallback matrix test is part of test:guided-today chain', packageSource.includes('scripts/test-guided-trophy-fallback-matrix.ts'))
 
 console.log('\n[coverage table]')
