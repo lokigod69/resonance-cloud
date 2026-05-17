@@ -302,6 +302,17 @@ const GUIDED_TODAY_PATH_TEN_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_SPANISH_ONE_METADATA: GuidedPathMetadata = {
+  id: 'spanish-a1-practical-1',
+  title: 'Spanish A1 Practical 1',
+  shortTitle: 'A1 Practical 1',
+  subtitle: 'Erste Hilfsphrasen auf Spanisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Spanish',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -9381,6 +9392,554 @@ function uniqueAnswers(answers: string[]) {
   return Array.from(new Set(answers.filter((answer) => answer.trim().length > 0)))
 }
 
+const brightSpanishLesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Hola, ¿habla español?',
+    baseText: 'Hallo, sprechen Sie Spanisch?',
+  },
+  meaning: 'Eine offene, freundliche Eröffnung, bevor du auf Spanisch weitersprichst.',
+  chunks: [
+    { id: 'hola', targetText: 'Hola,', baseText: 'Hallo,' },
+    { id: 'habla', targetText: '¿habla', baseText: 'sprechen Sie' },
+    { id: 'espanol', targetText: 'español?', baseText: 'Spanisch?' },
+  ],
+  lessonItems: [
+    { id: 'hola', targetText: 'hola', baseText: 'hallo', acceptedAnswers: ['hola', 'Hola'] },
+    { id: 'habla', targetText: 'habla', baseText: 'spricht / sprechen Sie', acceptedAnswers: ['habla', 'Habla'] },
+    { id: 'espanol', targetText: 'español', baseText: 'Spanisch', acceptedAnswers: ['español', 'espanol', 'Español', 'Espanol'] },
+    { id: 'usted', targetText: 'usted', baseText: 'Sie (höflich)', acceptedAnswers: ['usted', 'Usted'] },
+  ],
+  build: {
+    targetText: 'Hola, ¿habla español?',
+    chips: ['Hola,', '¿habla', 'español?', 'usted', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Hola, ¿',
+    answer: 'habla',
+    after: ' español?',
+    acceptedAnswers: ['habla', 'Habla'],
+    fallbackChoices: ['habla', 'hablas', 'español', 'usted'],
+  },
+  speakTarget: {
+    baseCue: 'Hallo, sprechen Sie Spanisch?',
+    targetPhrase: 'Hola, ¿habla español?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['hola', 'habla', 'español'],
+    optionalTokens: ['usted', 'por', 'favor'],
+  },
+  sceneCaption: 'Vor der Theke im Café fragst du höflich, ob hier Spanisch gesprochen wird.',
+  trophyWord: {
+    word: 'hola',
+    meaning: 'hallo',
+    example: 'Hola, buenos días.',
+    whyThisWord: 'Hola ist der erste freundliche Schritt in jede spanische Szene und passt morgens wie nachmittags.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Morgenlicht im Café, offene Theke, ruhiger erster Gruß auf Spanisch.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic flamenco-light',
+    mood: 'warm first contact',
+  },
+  visualNotes: 'Warmes Honig-Licht, Café-Theke, sanfter Korall-Akzent auf Hola.',
+}
+
+const brightSpanishLesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Perdón, ¿puede repetirlo?',
+    baseText: 'Entschuldigung, können Sie das wiederholen?',
+  },
+  meaning: 'Eine höfliche Bitte, etwas noch einmal zu hören, ohne den Faden zu verlieren.',
+  chunks: [
+    { id: 'perdon', targetText: 'Perdón,', baseText: 'Entschuldigung,' },
+    { id: 'puede', targetText: '¿puede', baseText: 'können Sie' },
+    { id: 'repetirlo', targetText: 'repetirlo?', baseText: 'es wiederholen?' },
+  ],
+  lessonItems: [
+    { id: 'perdon', targetText: 'perdón', baseText: 'Entschuldigung', acceptedAnswers: ['perdón', 'perdon', 'Perdón', 'Perdon'] },
+    { id: 'puede', targetText: 'puede', baseText: 'können Sie', acceptedAnswers: ['puede', 'Puede'] },
+    { id: 'repetir', targetText: 'repetir', baseText: 'wiederholen', acceptedAnswers: ['repetir', 'Repetir'] },
+    { id: 'mas-despacio', targetText: 'más despacio', baseText: 'langsamer', acceptedAnswers: ['más despacio', 'mas despacio'] },
+  ],
+  build: {
+    targetText: 'Perdón, ¿puede repetirlo?',
+    chips: ['Perdón,', '¿puede', 'repetirlo?', 'más despacio', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Perdón, ¿puede ',
+    answer: 'repetirlo',
+    after: '?',
+    acceptedAnswers: ['repetirlo', 'Repetirlo'],
+    fallbackChoices: ['repetirlo', 'repetir', 'decirlo', 'hablar'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, können Sie das wiederholen?',
+    targetPhrase: 'Perdón, ¿puede repetirlo?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['perdón', 'puede', 'repetirlo'],
+    optionalTokens: ['más', 'despacio', 'por', 'favor'],
+  },
+  sceneCaption: 'Mitten im Gespräch hebst du kurz die Hand und bittest höflich um eine Wiederholung.',
+  trophyWord: {
+    word: 'perdón',
+    meaning: 'Entschuldigung',
+    example: 'Perdón, no entiendo.',
+    whyThisWord: 'Perdón öffnet jede Korrektur freundlich und ist auf A1 die sichere Eröffnung für jede kleine Pause im Gespräch.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Sanftes Café-Licht, kurze Pause am Tresen, ruhige Rückfrage.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle pause',
+  },
+  visualNotes: 'Pausen-Beat, sanfter Glow um Perdón, ruhiger Atemmoment.',
+}
+
+const brightSpanishLesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Por favor, ¿dónde está la estación?',
+    baseText: 'Bitte, wo ist der Bahnhof?',
+  },
+  meaning: 'Eine kurze, freundliche Frage nach einem klaren Ziel in der Stadt.',
+  chunks: [
+    { id: 'por-favor', targetText: 'Por favor,', baseText: 'Bitte,' },
+    { id: 'donde-esta', targetText: '¿dónde está', baseText: 'wo ist' },
+    { id: 'la-estacion', targetText: 'la estación?', baseText: 'der Bahnhof?' },
+  ],
+  lessonItems: [
+    { id: 'por-favor', targetText: 'por favor', baseText: 'bitte', acceptedAnswers: ['por favor', 'Por favor'] },
+    { id: 'donde', targetText: 'dónde', baseText: 'wo', acceptedAnswers: ['dónde', 'donde', 'Dónde', 'Donde'] },
+    { id: 'esta', targetText: 'está', baseText: 'ist (Ort)', acceptedAnswers: ['está', 'esta', 'Está', 'Esta'] },
+    { id: 'estacion', targetText: 'estación', baseText: 'Bahnhof', acceptedAnswers: ['estación', 'estacion', 'Estación', 'Estacion'] },
+  ],
+  build: {
+    targetText: 'Por favor, ¿dónde está la estación?',
+    chips: ['Por favor,', '¿dónde está', 'la estación?', 'aquí', 'cerca'],
+  },
+  typeRecall: {
+    before: 'Por favor, ¿',
+    answer: 'dónde',
+    after: ' está la estación?',
+    acceptedAnswers: ['dónde', 'donde', 'Dónde', 'Donde'],
+    fallbackChoices: ['dónde', 'cuándo', 'cómo', 'quién'],
+  },
+  speakTarget: {
+    baseCue: 'Bitte, wo ist der Bahnhof?',
+    targetPhrase: 'Por favor, ¿dónde está la estación?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['por', 'favor', 'dónde', 'está', 'estación'],
+    optionalTokens: ['la', 'el', 'señor', 'señora'],
+  },
+  sceneCaption: 'Auf dem Gehweg sprichst du jemanden kurz an und fragst nach dem Bahnhof.',
+  trophyWord: {
+    word: 'dónde',
+    meaning: 'wo',
+    example: '¿Dónde está el museo?',
+    whyThisWord: 'Dónde ist das spanische Schlüsselwort für jede Ortsfrage und auf A1 sofort übertragbar auf Bahnhof, Café oder Apotheke.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Helle Straße am Vormittag, ein Bahnhofsschild in der Ferne, offene Geste.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'open and asking',
+  },
+  visualNotes: 'Goldene Richtungsachse, Bahnhofssymbol am Horizont, warme Hinweisspur.',
+}
+
+const brightSpanishLesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Un café, por favor.',
+    baseText: 'Einen Kaffee, bitte.',
+  },
+  meaning: 'Eine knappe, höfliche Bestellung am Tresen, mit klarem Höflichkeitswort.',
+  chunks: [
+    { id: 'un-cafe', targetText: 'Un café,', baseText: 'Einen Kaffee,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'un', targetText: 'un', baseText: 'einen / ein', acceptedAnswers: ['un', 'Un'] },
+    { id: 'cafe', targetText: 'café', baseText: 'Kaffee', acceptedAnswers: ['café', 'cafe', 'Café', 'Cafe'] },
+    { id: 'por-favor', targetText: 'por favor', baseText: 'bitte', acceptedAnswers: ['por favor', 'Por favor'] },
+    { id: 'con-leche', targetText: 'con leche', baseText: 'mit Milch', acceptedAnswers: ['con leche', 'Con leche'] },
+  ],
+  build: {
+    targetText: 'Un café, por favor.',
+    chips: ['Un café,', 'por favor.', 'con leche', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Un ',
+    answer: 'café',
+    after: ', por favor.',
+    acceptedAnswers: ['café', 'cafe', 'Café', 'Cafe'],
+    fallbackChoices: ['café', 'té', 'agua', 'zumo'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Kaffee, bitte.',
+    targetPhrase: 'Un café, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['un', 'café', 'por', 'favor'],
+    optionalTokens: ['con', 'leche', 'gracias'],
+  },
+  sceneCaption: 'Am Tresen klingt die Bestellung kurz, ruhig und freundlich.',
+  trophyWord: {
+    word: 'café',
+    meaning: 'Kaffee',
+    example: 'Un café con leche, por favor.',
+    whyThisWord: 'Café ist auf A1 der direkte Einstieg in jede Tresenbestellung und in allen spanischsprachigen Ländern sofort verständlich.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tasse auf der Theke, warmes Morgenlicht, ruhige Bestellung.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'fresh and easy',
+  },
+  visualNotes: 'Tassen-Detail in goldenem Licht, kurzer Tresenmoment, sanfte Wärme.',
+}
+
+const brightSpanishLesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Cuánto cuesta esto?',
+    baseText: 'Wie viel kostet das?',
+  },
+  meaning: 'Eine direkte, höfliche Preisfrage zu einem Gegenstand vor dir.',
+  chunks: [
+    { id: 'cuanto', targetText: '¿Cuánto', baseText: 'Wie viel' },
+    { id: 'cuesta', targetText: 'cuesta', baseText: 'kostet' },
+    { id: 'esto', targetText: 'esto?', baseText: 'das?' },
+  ],
+  lessonItems: [
+    { id: 'cuanto', targetText: 'cuánto', baseText: 'wie viel', acceptedAnswers: ['cuánto', 'cuanto', 'Cuánto', 'Cuanto'] },
+    { id: 'cuesta', targetText: 'cuesta', baseText: 'kostet', acceptedAnswers: ['cuesta', 'Cuesta'] },
+    { id: 'esto', targetText: 'esto', baseText: 'das hier', acceptedAnswers: ['esto', 'Esto'] },
+    { id: 'caro', targetText: 'caro', baseText: 'teuer', acceptedAnswers: ['caro', 'Caro'] },
+  ],
+  build: {
+    targetText: '¿Cuánto cuesta esto?',
+    chips: ['¿Cuánto', 'cuesta', 'esto?', 'caro', 'barato'],
+  },
+  typeRecall: {
+    before: '¿',
+    answer: 'Cuánto',
+    after: ' cuesta esto?',
+    acceptedAnswers: ['cuánto', 'cuanto', 'Cuánto', 'Cuanto'],
+    fallbackChoices: ['Cuánto', 'Cómo', 'Cuándo', 'Qué'],
+  },
+  speakTarget: {
+    baseCue: 'Wie viel kostet das?',
+    targetPhrase: '¿Cuánto cuesta esto?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['cuánto', 'cuesta', 'esto'],
+    optionalTokens: ['por', 'favor', 'señora', 'señor'],
+  },
+  sceneCaption: 'Im kleinen Laden hältst du den Gegenstand in der Hand und fragst nach dem Preis.',
+  trophyWord: {
+    word: 'cuánto',
+    meaning: 'wie viel',
+    example: '¿Cuánto es?',
+    whyThisWord: 'Cuánto deckt auf A1 alle Mengen- und Preisfragen im Alltag ab und ersetzt zuverlässig komplexe Konstruktionen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kleines Ladenlokal, Gegenstand auf dem Tresen, klare Preisfrage.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'curious and direct',
+  },
+  visualNotes: 'Preisschild im Fokus, warme Pastellfarben, ruhige Beleuchtung.',
+}
+
+const brightSpanishLesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿A qué hora sale el tren?',
+    baseText: 'Um wie viel Uhr fährt der Zug?',
+  },
+  meaning: 'Eine klare Frage nach der Abfahrtszeit am Bahnhof.',
+  chunks: [
+    { id: 'a-que-hora', targetText: '¿A qué hora', baseText: 'Um wie viel Uhr' },
+    { id: 'sale', targetText: 'sale', baseText: 'fährt' },
+    { id: 'el-tren', targetText: 'el tren?', baseText: 'der Zug?' },
+  ],
+  lessonItems: [
+    { id: 'a-que-hora', targetText: 'a qué hora', baseText: 'um wie viel Uhr', acceptedAnswers: ['a qué hora', 'a que hora'] },
+    { id: 'sale', targetText: 'sale', baseText: 'fährt ab', acceptedAnswers: ['sale', 'Sale'] },
+    { id: 'tren', targetText: 'tren', baseText: 'Zug', acceptedAnswers: ['tren', 'Tren'] },
+    { id: 'anden', targetText: 'andén', baseText: 'Bahnsteig', acceptedAnswers: ['andén', 'anden', 'Andén', 'Anden'] },
+  ],
+  build: {
+    targetText: '¿A qué hora sale el tren?',
+    chips: ['¿A qué hora', 'sale', 'el tren?', 'andén', 'ahora'],
+  },
+  typeRecall: {
+    before: '¿A qué hora sale el ',
+    answer: 'tren',
+    after: '?',
+    acceptedAnswers: ['tren', 'Tren'],
+    fallbackChoices: ['tren', 'autobús', 'andén', 'taxi'],
+  },
+  speakTarget: {
+    baseCue: 'Um wie viel Uhr fährt der Zug?',
+    targetPhrase: '¿A qué hora sale el tren?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['qué', 'hora', 'sale', 'tren'],
+    optionalTokens: ['a', 'el', 'por', 'favor'],
+  },
+  sceneCaption: 'Am Informationsschalter im Bahnhof fragst du nach der Abfahrtszeit.',
+  trophyWord: {
+    word: 'tren',
+    meaning: 'Zug',
+    example: 'El tren sale a las ocho.',
+    whyThisWord: 'Tren ist auf A1 das zentrale Reisewort für Spanien und öffnet das ganze Bahnhofs-Vokabular.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Helle Bahnhofshalle, Anzeigetafel im Hintergrund, ruhige Frage am Schalter.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'ready and moving',
+  },
+  visualNotes: 'Uhr- und Tafel-Detail, warme Halle, klare Linienführung Richtung Bahnsteig.',
+}
+
+const brightSpanishLesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Necesito ayuda, por favor.',
+    baseText: 'Ich brauche Hilfe, bitte.',
+  },
+  meaning: 'Eine knappe, höfliche Bitte um Hilfe, ohne das Problem schon zu benennen.',
+  chunks: [
+    { id: 'necesito', targetText: 'Necesito', baseText: 'Ich brauche' },
+    { id: 'ayuda', targetText: 'ayuda,', baseText: 'Hilfe,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'necesito', targetText: 'necesito', baseText: 'ich brauche', acceptedAnswers: ['necesito', 'Necesito'] },
+    { id: 'ayuda', targetText: 'ayuda', baseText: 'Hilfe', acceptedAnswers: ['ayuda', 'Ayuda'] },
+    { id: 'por-favor', targetText: 'por favor', baseText: 'bitte', acceptedAnswers: ['por favor', 'Por favor'] },
+    { id: 'aqui', targetText: 'aquí', baseText: 'hier', acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+  ],
+  build: {
+    targetText: 'Necesito ayuda, por favor.',
+    chips: ['Necesito', 'ayuda,', 'por favor.', 'aquí', 'gracias'],
+  },
+  typeRecall: {
+    before: 'Necesito ',
+    answer: 'ayuda',
+    after: ', por favor.',
+    acceptedAnswers: ['ayuda', 'Ayuda'],
+    fallbackChoices: ['ayuda', 'agua', 'información', 'tiempo'],
+  },
+  speakTarget: {
+    baseCue: 'Ich brauche Hilfe, bitte.',
+    targetPhrase: 'Necesito ayuda, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['necesito', 'ayuda', 'por', 'favor'],
+    optionalTokens: ['señora', 'señor', 'aquí'],
+  },
+  sceneCaption: 'In der Apotheke gehst du ruhig zur Theke und nennst kurz, dass du Hilfe brauchst.',
+  trophyWord: {
+    word: 'ayuda',
+    meaning: 'Hilfe',
+    example: '¿Me puede ayudar? Necesito ayuda.',
+    whyThisWord: 'Ayuda ist auf A1 das direkte Hilfe-Wort und funktioniert in Apotheke, Bahnhof und Empfang gleichermaßen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Ruhige Apothekentheke, klares Licht, kurzer Hilferuf ohne Drama.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'calm and asking',
+  },
+  visualNotes: 'Ruhiger Innenraum, sanftes Pastellgrün, klare Geste am Tresen.',
+}
+
+const brightSpanishLesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Este sitio es muy bonito.',
+    baseText: 'Dieser Ort ist sehr schön.',
+  },
+  meaning: 'Ein kurzer, positiver Small-Talk-Kommentar über das Lokal oder den Raum.',
+  chunks: [
+    { id: 'este-sitio', targetText: 'Este sitio', baseText: 'Dieser Ort' },
+    { id: 'es-muy', targetText: 'es muy', baseText: 'ist sehr' },
+    { id: 'bonito', targetText: 'bonito.', baseText: 'schön.' },
+  ],
+  lessonItems: [
+    { id: 'este-sitio', targetText: 'este sitio', baseText: 'dieser Ort', acceptedAnswers: ['este sitio', 'Este sitio'] },
+    { id: 'es', targetText: 'es', baseText: 'ist', acceptedAnswers: ['es', 'Es'] },
+    { id: 'muy', targetText: 'muy', baseText: 'sehr', acceptedAnswers: ['muy', 'Muy'] },
+    { id: 'bonito', targetText: 'bonito', baseText: 'schön / hübsch', acceptedAnswers: ['bonito', 'Bonito'] },
+  ],
+  build: {
+    targetText: 'Este sitio es muy bonito.',
+    chips: ['Este sitio', 'es muy', 'bonito.', 'tranquilo', 'genial'],
+  },
+  typeRecall: {
+    before: 'Este sitio es muy ',
+    answer: 'bonito',
+    after: '.',
+    acceptedAnswers: ['bonito', 'Bonito'],
+    fallbackChoices: ['bonito', 'tranquilo', 'pequeño', 'nuevo'],
+  },
+  speakTarget: {
+    baseCue: 'Dieser Ort ist sehr schön.',
+    targetPhrase: 'Este sitio es muy bonito.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['este', 'sitio', 'bonito'],
+    optionalTokens: ['es', 'muy', 'aquí'],
+  },
+  sceneCaption: 'Im Café drehst du dich kurz zum Gegenüber und sagst etwas Nettes über den Ort.',
+  trophyWord: {
+    word: 'bonito',
+    meaning: 'schön / hübsch',
+    example: 'Este sitio es muy bonito.',
+    whyThisWord: 'Bonito ist auf A1 das warme, neutrale Lob-Wort für Orte und Dinge und ersetzt sicher größere Ausdrücke.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café von innen, warmes Licht, ein kurzer zufriedener Blick.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'happy and present',
+  },
+  visualNotes: 'Innenraum mit weichen Schatten, Korall-Akzent, sanftes Lächeln im Hintergrund.',
+}
+
+const brightSpanishLesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Mañana a las siete. ¡Perfecto!',
+    baseText: 'Morgen um sieben. Perfekt!',
+  },
+  meaning: 'Eine kurze Bestätigung eines Plans mit Tag, Uhrzeit und freundlichem Zusatz.',
+  chunks: [
+    { id: 'manana', targetText: 'Mañana', baseText: 'Morgen' },
+    { id: 'a-las-siete', targetText: 'a las siete.', baseText: 'um sieben.' },
+    { id: 'perfecto', targetText: '¡Perfecto!', baseText: 'Perfekt!' },
+  ],
+  lessonItems: [
+    { id: 'manana', targetText: 'mañana', baseText: 'morgen (am nächsten Tag)', acceptedAnswers: ['mañana', 'manana', 'Mañana', 'Manana'] },
+    { id: 'a-las-siete', targetText: 'a las siete', baseText: 'um sieben Uhr', acceptedAnswers: ['a las siete', 'A las siete'] },
+    { id: 'perfecto', targetText: 'perfecto', baseText: 'perfekt', acceptedAnswers: ['perfecto', 'Perfecto'] },
+    { id: 'vale', targetText: 'vale', baseText: 'okay / einverstanden', acceptedAnswers: ['vale', 'Vale'] },
+  ],
+  build: {
+    targetText: 'Mañana a las siete. ¡Perfecto!',
+    chips: ['Mañana', 'a las siete.', '¡Perfecto!', 'vale', 'genial'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Mañana',
+    after: ' a las siete. ¡Perfecto!',
+    acceptedAnswers: ['mañana', 'manana', 'Mañana', 'Manana'],
+    fallbackChoices: ['Mañana', 'Hoy', 'Ahora', 'Después'],
+  },
+  speakTarget: {
+    baseCue: 'Morgen um sieben. Perfekt!',
+    targetPhrase: 'Mañana a las siete. ¡Perfecto!',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['mañana', 'siete', 'perfecto'],
+    optionalTokens: ['a', 'las', 'vale', 'genial'],
+  },
+  sceneCaption: 'Am Ende der Begegnung bestätigst du locker den Termin für morgen.',
+  trophyWord: {
+    word: 'mañana',
+    meaning: 'morgen (am nächsten Tag)',
+    example: 'Hasta mañana a las siete.',
+    whyThisWord: 'Mañana trägt auf A1 zwei Bedeutungen — Morgen und am nächsten Tag — und ist Schlüssel jeder kurzfristigen Planung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Spätnachmittag, kurzer Handschlag oder Nicken, ruhige Bestätigung.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'easy plan confirmation',
+  },
+  visualNotes: 'Warmes Abendlicht, Uhr-Akzent, ruhiges Nicken vor dem nächsten Tag.',
+}
+
+const brightSpanishLesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Muchas gracias. Adiós.',
+    baseText: 'Vielen Dank. Auf Wiedersehen.',
+  },
+  meaning: 'Ein warmer Abschluss mit deutlichem Dank und freundlichem Abschied.',
+  chunks: [
+    { id: 'muchas-gracias', targetText: 'Muchas gracias.', baseText: 'Vielen Dank.' },
+    { id: 'adios', targetText: 'Adiós.', baseText: 'Auf Wiedersehen.' },
+  ],
+  lessonItems: [
+    { id: 'muchas', targetText: 'muchas', baseText: 'viele', acceptedAnswers: ['muchas', 'Muchas'] },
+    { id: 'gracias', targetText: 'gracias', baseText: 'danke', acceptedAnswers: ['gracias', 'Gracias'] },
+    { id: 'adios', targetText: 'adiós', baseText: 'auf Wiedersehen', acceptedAnswers: ['adiós', 'adios', 'Adiós', 'Adios'] },
+    { id: 'hasta-luego', targetText: 'hasta luego', baseText: 'bis später', acceptedAnswers: ['hasta luego', 'Hasta luego'] },
+  ],
+  build: {
+    targetText: 'Muchas gracias. Adiós.',
+    chips: ['Muchas gracias.', 'Adiós.', 'hasta luego', 'vale'],
+  },
+  typeRecall: {
+    before: 'Muchas ',
+    answer: 'gracias',
+    after: '. Adiós.',
+    acceptedAnswers: ['gracias', 'Gracias'],
+    fallbackChoices: ['gracias', 'adiós', 'hola', 'perdón'],
+  },
+  speakTarget: {
+    baseCue: 'Vielen Dank. Auf Wiedersehen.',
+    targetPhrase: 'Muchas gracias. Adiós.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['gracias', 'adiós'],
+    optionalTokens: ['muchas', 'hasta', 'luego'],
+  },
+  sceneCaption: 'Im Gehen drehst du dich noch einmal kurz um und schließt die Szene warm ab.',
+  trophyWord: {
+    word: 'gracias',
+    meaning: 'danke',
+    example: 'Muchas gracias por todo.',
+    whyThisWord: 'Gracias schließt auf A1 jede Service-Szene sicher ab und ist als alleinstehende Antwort vollständig.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tür im Hintergrund, warmes Licht, kurzer Dank im Gehen.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'warm goodbye',
+  },
+  visualNotes: 'Sanftes Honig-Licht beim Ausgang, kurzer Nachklang, ruhige letzte Geste.',
+}
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -9741,6 +10300,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...a1Practical8Lessons,
   ...a1Practical9Lessons,
   ...a1Practical10Lessons,
+  {
+    id: 'spanish-a1-practical-001-primer-contacto',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-001-primer-contacto',
+      sequence: 1,
+      title: 'Erster Kontakt',
+    },
+    title: 'Erster Kontakt',
+    situation: {
+      en: 'At a Spanish café counter, ask politely whether the other speaks Spanish.',
+      de: 'Im Café fragst du höflich, ob jemand Spanisch spricht.',
+    },
+    pedagogicalGoal: 'Eine höfliche Einstiegsfrage auf Spanisch stellen, bevor das Gespräch weitergeht.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Höfliche Rückfrage',
+      situation: 'Du bittest jemanden, das Gesagte zu wiederholen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson001,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-002-pedir-repeticion',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-002-pedir-repeticion',
+      sequence: 2,
+      title: 'Höfliche Rückfrage',
+    },
+    title: 'Höfliche Rückfrage',
+    situation: {
+      en: 'Mid-exchange, politely ask the other to repeat what they said.',
+      de: 'Mitten im Gespräch bittest du jemanden, etwas zu wiederholen.',
+    },
+    pedagogicalGoal: 'Höflich signalisieren, dass etwas wiederholt werden soll, ohne das Gespräch zu blockieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wo ist...?',
+      situation: 'Auf der Straße fragst du nach dem Bahnhof.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson002,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-003-donde-esta',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-003-donde-esta',
+      sequence: 3,
+      title: 'Wo ist...?',
+    },
+    title: 'Wo ist...?',
+    situation: {
+      en: 'On the street, ask politely where the station is.',
+      de: 'Auf der Straße fragst du höflich nach dem Bahnhof.',
+    },
+    pedagogicalGoal: 'Eine einfache Ortsfrage auf Spanisch stellen und ein konkretes Ziel benennen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Einen Kaffee, bitte',
+      situation: 'Am Tresen bestellst du einen Kaffee.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson003,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-004-un-cafe',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-004-un-cafe',
+      sequence: 4,
+      title: 'Einen Kaffee, bitte',
+    },
+    title: 'Einen Kaffee, bitte',
+    situation: {
+      en: 'At a Spanish café counter, order a coffee politely.',
+      de: 'Am Café-Tresen bestellst du einen Kaffee.',
+    },
+    pedagogicalGoal: 'Eine kurze, klare Bestellung auf Spanisch mit Höflichkeitswort abgeben.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Was kostet das?',
+      situation: 'Im Laden fragst du nach dem Preis.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson004,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-005-cuanto-cuesta',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-005-cuanto-cuesta',
+      sequence: 5,
+      title: 'Was kostet das?',
+    },
+    title: 'Was kostet das?',
+    situation: {
+      en: 'In a small shop, ask the price of an item.',
+      de: 'Im kleinen Laden fragst du nach dem Preis eines Gegenstands.',
+    },
+    pedagogicalGoal: 'Eine direkte Preisfrage auf Spanisch stellen und auf den Gegenstand vor dir beziehen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Am Bahnhof',
+      situation: 'Am Bahnhof fragst du nach der Abfahrtszeit.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson005,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-006-el-tren',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-006-el-tren',
+      sequence: 6,
+      title: 'Am Bahnhof',
+    },
+    title: 'Am Bahnhof',
+    situation: {
+      en: 'At a station info desk, ask when the train leaves.',
+      de: 'Am Bahnhofs-Schalter fragst du nach der Abfahrtszeit.',
+    },
+    pedagogicalGoal: 'Eine kurze Reisefrage auf Spanisch stellen, mit Uhrzeit- und Verkehrsmittelwortschatz.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich brauche Hilfe',
+      situation: 'In der Apotheke oder am Schalter bittest du um Hilfe.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson006,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-007-necesito-ayuda',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-007-necesito-ayuda',
+      sequence: 7,
+      title: 'Ich brauche Hilfe',
+    },
+    title: 'Ich brauche Hilfe',
+    situation: {
+      en: 'At a pharmacy or info desk, ask for help politely.',
+      de: 'In der Apotheke oder am Schalter bittest du um Hilfe.',
+    },
+    pedagogicalGoal: 'Eine kurze, höfliche Bitte um Hilfe auf Spanisch formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Es gefällt mir',
+      situation: 'Beim Small Talk sagst du etwas Nettes über den Ort.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson007,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-008-me-gusta-este-sitio',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-008-me-gusta-este-sitio',
+      sequence: 8,
+      title: 'Es gefällt mir',
+    },
+    title: 'Es gefällt mir',
+    situation: {
+      en: 'Inside a café, make a short positive remark about the place.',
+      de: 'Im Café sagst du locker etwas Nettes über den Ort.',
+    },
+    pedagogicalGoal: 'Einen kurzen, positiven Small-Talk-Satz auf Spanisch zum aktuellen Ort äußern.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Morgen um sieben',
+      situation: 'Beim Planen bestätigst du den Termin für morgen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson008,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-009-manana-a-las-siete',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-009-manana-a-las-siete',
+      sequence: 9,
+      title: 'Morgen um sieben',
+    },
+    title: 'Morgen um sieben',
+    situation: {
+      en: 'At the end of an encounter, confirm a plan for tomorrow at seven.',
+      de: 'Am Ende der Begegnung bestätigst du den Termin morgen um sieben.',
+    },
+    pedagogicalGoal: 'Einen einfachen Plan auf Spanisch mit Tag und Uhrzeit bestätigen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Danke und Auf Wiedersehen',
+      situation: 'Du schließt die Szene mit Dank und Abschied ab.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson009,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-010-gracias-adios',
+    pathId: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-010-gracias-adios',
+      sequence: 10,
+      title: 'Danke und Auf Wiedersehen',
+    },
+    title: 'Danke und Auf Wiedersehen',
+    situation: {
+      en: 'Close the scene with thanks and a polite goodbye.',
+      de: 'Du schließt die Szene mit Dank und einem freundlichen Abschied ab.',
+    },
+    pedagogicalGoal: 'Eine kurze Dank-und-Abschied-Wendung auf Spanisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Spanish A1 Practical 1 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishLesson010,
+    },
+  },
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -9763,6 +10652,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_EIGHT_METADATA,
     GUIDED_TODAY_PATH_NINE_METADATA,
     GUIDED_TODAY_PATH_TEN_METADATA,
+    GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
   ]
 }
 
