@@ -313,6 +313,17 @@ const GUIDED_TODAY_PATH_SPANISH_ONE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA: GuidedPathMetadata = {
+  id: 'italian-a1-practical-1',
+  title: 'Italian A1 Practical 1',
+  shortTitle: 'A1 Practical 1',
+  subtitle: 'Erste Hilfsphrasen auf Italienisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Italian',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -9940,6 +9951,553 @@ const brightSpanishLesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Sanftes Honig-Licht beim Ausgang, kurzer Nachklang, ruhige letzte Geste.',
 }
 
+const brightItalianLesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Salve, parla italiano?',
+    baseText: 'Hallo, sprechen Sie Italienisch?',
+  },
+  meaning: 'Eine höfliche Eröffnungsfrage, bevor das Gespräch auf Italienisch weiterläuft.',
+  chunks: [
+    { id: 'salve', targetText: 'Salve,', baseText: 'Hallo,' },
+    { id: 'parla', targetText: 'parla', baseText: 'sprechen Sie' },
+    { id: 'italiano', targetText: 'italiano?', baseText: 'Italienisch?' },
+  ],
+  lessonItems: [
+    { id: 'salve', targetText: 'salve', baseText: 'hallo (höflich)', acceptedAnswers: ['salve', 'Salve'] },
+    { id: 'parla', targetText: 'parla', baseText: 'spricht / sprechen Sie', acceptedAnswers: ['parla', 'Parla'] },
+    { id: 'italiano', targetText: 'italiano', baseText: 'Italienisch', acceptedAnswers: ['italiano', 'Italiano'] },
+    { id: 'lei', targetText: 'Lei', baseText: 'Sie (höflich)', acceptedAnswers: ['Lei', 'lei'] },
+  ],
+  build: {
+    targetText: 'Salve, parla italiano?',
+    chips: ['Salve,', 'parla', 'italiano?', 'Lei', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Salve, ',
+    answer: 'parla',
+    after: ' italiano?',
+    acceptedAnswers: ['parla', 'Parla'],
+    fallbackChoices: ['parla', 'parli', 'italiano', 'Lei'],
+  },
+  speakTarget: {
+    baseCue: 'Hallo, sprechen Sie Italienisch?',
+    targetPhrase: 'Salve, parla italiano?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['salve', 'parla', 'italiano'],
+    optionalTokens: ['Lei', 'per', 'favore'],
+  },
+  sceneCaption: 'Vor der Theke im Café fragst du höflich, ob hier Italienisch gesprochen wird.',
+  trophyWord: {
+    word: 'salve',
+    meaning: 'hallo (höflich, tageszeitenneutral)',
+    example: 'Salve, come va?',
+    whyThisWord: 'Salve eröffnet auf A1 jede Service-Szene höflich und passt morgens wie nachmittags, ohne zwischen "buongiorno" und "buonasera" wählen zu müssen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Morgenlicht im Café, offene Theke, ruhiger erster Gruß auf Italienisch.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic mediterranean',
+    mood: 'warm first contact',
+  },
+  visualNotes: 'Warmes Honig-Licht, Café-Theke, sanfter Korall-Akzent auf Salve.',
+}
+
+const brightItalianLesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Scusi, può ripetere?',
+    baseText: 'Entschuldigung, können Sie das wiederholen?',
+  },
+  meaning: 'Eine höfliche Bitte, das eben Gesagte noch einmal zu hören.',
+  chunks: [
+    { id: 'scusi', targetText: 'Scusi,', baseText: 'Entschuldigung,' },
+    { id: 'puo', targetText: 'può', baseText: 'können Sie' },
+    { id: 'ripetere', targetText: 'ripetere?', baseText: 'wiederholen?' },
+  ],
+  lessonItems: [
+    { id: 'scusi', targetText: 'scusi', baseText: 'Entschuldigung (höflich)', acceptedAnswers: ['scusi', 'Scusi'] },
+    { id: 'puo', targetText: 'può', baseText: 'können Sie', acceptedAnswers: ['può', 'puo', 'Può', 'Puo'] },
+    { id: 'ripetere', targetText: 'ripetere', baseText: 'wiederholen', acceptedAnswers: ['ripetere', 'Ripetere'] },
+    { id: 'piu-lentamente', targetText: 'più lentamente', baseText: 'langsamer', acceptedAnswers: ['più lentamente', 'piu lentamente'] },
+  ],
+  build: {
+    targetText: 'Scusi, può ripetere?',
+    chips: ['Scusi,', 'può', 'ripetere?', 'più lentamente', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Scusi, può ',
+    answer: 'ripetere',
+    after: '?',
+    acceptedAnswers: ['ripetere', 'Ripetere'],
+    fallbackChoices: ['ripetere', 'parlare', 'dire', 'ascoltare'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, können Sie das wiederholen?',
+    targetPhrase: 'Scusi, può ripetere?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['scusi', 'può', 'ripetere'],
+    optionalTokens: ['più', 'lentamente', 'per', 'favore'],
+  },
+  sceneCaption: 'Mitten im Gespräch hebst du kurz die Hand und bittest höflich um eine Wiederholung.',
+  trophyWord: {
+    word: 'scusi',
+    meaning: 'Entschuldigung (höflich, Lei)',
+    example: 'Scusi, non ho capito.',
+    whyThisWord: 'Scusi ist die höfliche Lei-Form von "Entschuldigung" und eröffnet auf A1 jede Korrektur, Rückfrage oder kleine Pause im Gespräch. Achtung: "scusa" ist die du-Form.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Sanftes Café-Licht, kurze Pause am Tresen, ruhige Rückfrage.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle pause',
+  },
+  visualNotes: 'Pausen-Beat, sanfter Glow um Scusi, ruhiger Atemmoment.',
+}
+
+const brightItalianLesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Scusi, dov'è la stazione?",
+    baseText: 'Entschuldigung, wo ist der Bahnhof?',
+  },
+  meaning: 'Eine kurze, höfliche Frage nach einem klaren Ziel in der Stadt.',
+  chunks: [
+    { id: 'scusi', targetText: 'Scusi,', baseText: 'Entschuldigung,' },
+    { id: 'dove-e', targetText: "dov'è", baseText: 'wo ist' },
+    { id: 'la-stazione', targetText: 'la stazione?', baseText: 'der Bahnhof?' },
+  ],
+  lessonItems: [
+    { id: 'dove', targetText: 'dove', baseText: 'wo', acceptedAnswers: ['dove', 'Dove'] },
+    { id: 'e', targetText: 'è', baseText: 'ist (Ort)', acceptedAnswers: ['è', 'e', 'È', 'E'] },
+    { id: 'stazione', targetText: 'stazione', baseText: 'Bahnhof', acceptedAnswers: ['stazione', 'Stazione'] },
+    { id: 'qui-vicino', targetText: 'qui vicino', baseText: 'hier in der Nähe', acceptedAnswers: ['qui vicino', 'Qui vicino'] },
+  ],
+  build: {
+    targetText: "Scusi, dov'è la stazione?",
+    chips: ['Scusi,', "dov'è", 'la stazione?', 'qui vicino', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Scusi, ',
+    answer: "dov'è",
+    after: ' la stazione?',
+    acceptedAnswers: ["dov'è", 'dove è', "Dov'è", 'Dove è'],
+    fallbackChoices: ["dov'è", 'come', 'quando', 'chi'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, wo ist der Bahnhof?',
+    targetPhrase: "Scusi, dov'è la stazione?",
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['scusi', 'dove', 'stazione'],
+    optionalTokens: ['è', 'la', 'qui', 'vicino', 'per', 'favore'],
+  },
+  sceneCaption: 'Auf dem Gehweg sprichst du jemanden kurz an und fragst höflich nach dem Bahnhof.',
+  trophyWord: {
+    word: 'dove',
+    meaning: 'wo',
+    example: "Dov'è il museo?",
+    whyThisWord: 'Dove ist auf A1 das zentrale Frage-Wort für jede Ortsfrage und vor Vokalen wird daraus die Verschmelzung "dov\'è" — eine der wichtigsten kleinen Italienisch-Reflexe.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Helle Straße am Vormittag, ein Bahnhofsschild in der Ferne, offene Geste.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'open and asking',
+  },
+  visualNotes: 'Goldene Richtungsachse, Bahnhofssymbol am Horizont, warme Hinweisspur.',
+}
+
+const brightItalianLesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Vorrei un caffè, per favore.',
+    baseText: 'Ich hätte gerne einen Kaffee, bitte.',
+  },
+  meaning: 'Eine höfliche Bestellung am Tresen mit dem italienischen Konditional als sanftem Wunsch.',
+  chunks: [
+    { id: 'vorrei', targetText: 'Vorrei', baseText: 'Ich hätte gerne' },
+    { id: 'un-caffe', targetText: 'un caffè,', baseText: 'einen Kaffee,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'vorrei', targetText: 'vorrei', baseText: 'ich hätte gerne', acceptedAnswers: ['vorrei', 'Vorrei'] },
+    { id: 'un', targetText: 'un', baseText: 'einen / ein', acceptedAnswers: ['un', 'Un'] },
+    { id: 'caffe', targetText: 'caffè', baseText: 'Kaffee', acceptedAnswers: ['caffè', 'caffe', 'Caffè', 'Caffe'] },
+    { id: 'per-favore', targetText: 'per favore', baseText: 'bitte', acceptedAnswers: ['per favore', 'Per favore', 'per piacere', 'Per piacere'] },
+  ],
+  build: {
+    targetText: 'Vorrei un caffè, per favore.',
+    chips: ['Vorrei', 'un caffè,', 'per favore.', 'macchiato', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Vorrei un ',
+    answer: 'caffè',
+    after: ', per favore.',
+    acceptedAnswers: ['caffè', 'caffe', 'Caffè', 'Caffe'],
+    fallbackChoices: ['caffè', 'tè', 'acqua', 'vino'],
+  },
+  speakTarget: {
+    baseCue: 'Ich hätte gerne einen Kaffee, bitte.',
+    targetPhrase: 'Vorrei un caffè, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['vorrei', 'caffè', 'per', 'favore'],
+    optionalTokens: ['un', 'macchiato', 'grazie'],
+  },
+  sceneCaption: 'Am Tresen klingt die Bestellung kurz, ruhig und freundlich mit dem typischen "vorrei".',
+  trophyWord: {
+    word: 'caffè',
+    meaning: 'Kaffee (espresso)',
+    example: 'Un caffè, per favore.',
+    whyThisWord: 'Caffè ist auf A1 das Tresen-Wort schlechthin — im Italienischen bedeutet "un caffè" immer einen Espresso, nicht den deutschen "Becher Kaffee". Schreibe den Grave-Akzent: caffè, nicht caffe.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Espresso-Tasse auf der Theke, warmes Morgenlicht, ruhige Bestellung.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic mediterranean',
+    mood: 'fresh and easy',
+  },
+  visualNotes: 'Espresso-Detail in goldenem Licht, kurzer Tresenmoment, sanfte Wärme.',
+}
+
+const brightItalianLesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Quanto costa?',
+    baseText: 'Wie viel kostet das?',
+  },
+  meaning: 'Eine direkte, höfliche Preisfrage zu einem Gegenstand vor dir.',
+  chunks: [
+    { id: 'quanto', targetText: 'Quanto', baseText: 'Wie viel' },
+    { id: 'costa', targetText: 'costa?', baseText: 'kostet?' },
+  ],
+  lessonItems: [
+    { id: 'quanto', targetText: 'quanto', baseText: 'wie viel', acceptedAnswers: ['quanto', 'Quanto'] },
+    { id: 'costa', targetText: 'costa', baseText: 'kostet', acceptedAnswers: ['costa', 'Costa'] },
+    { id: 'questo', targetText: 'questo', baseText: 'das hier', acceptedAnswers: ['questo', 'Questo'] },
+    { id: 'caro', targetText: 'caro', baseText: 'teuer', acceptedAnswers: ['caro', 'Caro'] },
+  ],
+  build: {
+    targetText: 'Quanto costa?',
+    chips: ['Quanto', 'costa?', 'questo', 'caro', 'troppo'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Quanto',
+    after: ' costa?',
+    acceptedAnswers: ['quanto', 'Quanto'],
+    fallbackChoices: ['Quanto', 'Come', 'Quando', 'Chi'],
+  },
+  speakTarget: {
+    baseCue: 'Wie viel kostet das?',
+    targetPhrase: 'Quanto costa?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['quanto', 'costa'],
+    optionalTokens: ['questo', 'per', 'favore', 'scusi'],
+  },
+  sceneCaption: 'Im kleinen Laden hältst du den Gegenstand in der Hand und fragst nach dem Preis.',
+  trophyWord: {
+    word: 'quanto',
+    meaning: 'wie viel',
+    example: "Quanto costa? Quant'è?",
+    whyThisWord: 'Quanto öffnet auf A1 jede Preis- und Mengenfrage am Tresen und verschmilzt vor Vokalen oft zu "quant\'è". Achtung: das Wort kongruiert mit dem Bezugswort (quanti caffè, quante volte).',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kleines Ladenlokal, Gegenstand auf dem Tresen, klare Preisfrage.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'curious and direct',
+  },
+  visualNotes: 'Preisschild im Fokus, warme Pastellfarben, ruhige Beleuchtung.',
+}
+
+const brightItalianLesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'A che ora parte il treno?',
+    baseText: 'Um wie viel Uhr fährt der Zug?',
+  },
+  meaning: 'Eine klare Frage nach der Abfahrtszeit am Bahnhof.',
+  chunks: [
+    { id: 'a-che-ora', targetText: 'A che ora', baseText: 'Um wie viel Uhr' },
+    { id: 'parte', targetText: 'parte', baseText: 'fährt' },
+    { id: 'il-treno', targetText: 'il treno?', baseText: 'der Zug?' },
+  ],
+  lessonItems: [
+    { id: 'a-che-ora', targetText: 'a che ora', baseText: 'um wie viel Uhr', acceptedAnswers: ['a che ora', 'A che ora'] },
+    { id: 'parte', targetText: 'parte', baseText: 'fährt ab', acceptedAnswers: ['parte', 'Parte'] },
+    { id: 'treno', targetText: 'treno', baseText: 'Zug', acceptedAnswers: ['treno', 'Treno'] },
+    { id: 'binario', targetText: 'binario', baseText: 'Bahnsteig / Gleis', acceptedAnswers: ['binario', 'Binario'] },
+  ],
+  build: {
+    targetText: 'A che ora parte il treno?',
+    chips: ['A che ora', 'parte', 'il treno?', 'binario', 'adesso'],
+  },
+  typeRecall: {
+    before: 'A che ora parte il ',
+    answer: 'treno',
+    after: '?',
+    acceptedAnswers: ['treno', 'Treno'],
+    fallbackChoices: ['treno', 'autobus', 'binario', 'taxi'],
+  },
+  speakTarget: {
+    baseCue: 'Um wie viel Uhr fährt der Zug?',
+    targetPhrase: 'A che ora parte il treno?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['ora', 'parte', 'treno'],
+    optionalTokens: ['a', 'che', 'il', 'per', 'favore'],
+  },
+  sceneCaption: 'Am Informationsschalter im Bahnhof fragst du nach der Abfahrtszeit.',
+  trophyWord: {
+    word: 'treno',
+    meaning: 'Zug',
+    example: 'Il treno parte alle otto.',
+    whyThisWord: 'Treno ist auf A1 das zentrale Reisewort für Italien und öffnet das ganze Bahnhofs-Vokabular von "binario" bis "biglietto".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Helle Bahnhofshalle, Anzeigetafel im Hintergrund, ruhige Frage am Schalter.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'ready and moving',
+  },
+  visualNotes: 'Uhr- und Tafel-Detail, warme Halle, klare Linienführung Richtung Bahnsteig.',
+}
+
+const brightItalianLesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Ho bisogno di aiuto, per favore.',
+    baseText: 'Ich brauche Hilfe, bitte.',
+  },
+  meaning: 'Eine knappe, höfliche Bitte um Hilfe, ohne das Problem schon zu benennen.',
+  chunks: [
+    { id: 'ho-bisogno', targetText: 'Ho bisogno', baseText: 'Ich brauche' },
+    { id: 'di-aiuto', targetText: 'di aiuto,', baseText: 'Hilfe,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'ho-bisogno', targetText: 'ho bisogno', baseText: 'ich brauche', acceptedAnswers: ['ho bisogno', 'Ho bisogno'] },
+    { id: 'aiuto', targetText: 'aiuto', baseText: 'Hilfe', acceptedAnswers: ['aiuto', 'Aiuto'] },
+    { id: 'per-favore', targetText: 'per favore', baseText: 'bitte', acceptedAnswers: ['per favore', 'Per favore', 'per piacere', 'Per piacere'] },
+    { id: 'qui', targetText: 'qui', baseText: 'hier', acceptedAnswers: ['qui', 'Qui'] },
+  ],
+  build: {
+    targetText: 'Ho bisogno di aiuto, per favore.',
+    chips: ['Ho bisogno', 'di aiuto,', 'per favore.', 'qui', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Ho bisogno di ',
+    answer: 'aiuto',
+    after: ', per favore.',
+    acceptedAnswers: ['aiuto', 'Aiuto'],
+    fallbackChoices: ['aiuto', 'acqua', 'tempo', 'spazio'],
+  },
+  speakTarget: {
+    baseCue: 'Ich brauche Hilfe, bitte.',
+    targetPhrase: 'Ho bisogno di aiuto, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['bisogno', 'aiuto', 'per', 'favore'],
+    optionalTokens: ['ho', 'di', 'qui', 'scusi'],
+  },
+  sceneCaption: 'In der Apotheke gehst du ruhig zur Theke und nennst kurz, dass du Hilfe brauchst.',
+  trophyWord: {
+    word: 'aiuto',
+    meaning: 'Hilfe',
+    example: 'Ho bisogno di aiuto.',
+    whyThisWord: 'Aiuto ist auf A1 das direkte Hilfe-Wort und funktioniert in Apotheke, Bahnhof und am Empfang gleichermaßen. Lautlich beachten: drei Silben, "a-iu-to".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Ruhige Apothekentheke, klares Licht, kurzer Hilferuf ohne Drama.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'calm and asking',
+  },
+  visualNotes: 'Ruhiger Innenraum, sanftes Pastellgrün, klare Geste am Tresen.',
+}
+
+const brightItalianLesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Mi piace molto questo posto.',
+    baseText: 'Mir gefällt dieser Ort sehr.',
+  },
+  meaning: 'Ein kurzer, warmer Small-Talk-Satz über das Lokal oder den Raum.',
+  chunks: [
+    { id: 'mi-piace-molto', targetText: 'Mi piace molto', baseText: 'Mir gefällt sehr' },
+    { id: 'questo-posto', targetText: 'questo posto.', baseText: 'dieser Ort.' },
+  ],
+  lessonItems: [
+    { id: 'mi-piace', targetText: 'mi piace', baseText: 'es gefällt mir', acceptedAnswers: ['mi piace', 'Mi piace'] },
+    { id: 'molto', targetText: 'molto', baseText: 'sehr', acceptedAnswers: ['molto', 'Molto'] },
+    { id: 'questo', targetText: 'questo', baseText: 'dieses', acceptedAnswers: ['questo', 'Questo'] },
+    { id: 'posto', targetText: 'posto', baseText: 'Ort / Platz', acceptedAnswers: ['posto', 'Posto'] },
+  ],
+  build: {
+    targetText: 'Mi piace molto questo posto.',
+    chips: ['Mi piace molto', 'questo posto.', 'tranquillo', 'bello'],
+  },
+  typeRecall: {
+    before: 'Mi piace molto questo ',
+    answer: 'posto',
+    after: '.',
+    acceptedAnswers: ['posto', 'Posto'],
+    fallbackChoices: ['posto', 'bar', 'tavolo', 'angolo'],
+  },
+  speakTarget: {
+    baseCue: 'Mir gefällt dieser Ort sehr.',
+    targetPhrase: 'Mi piace molto questo posto.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['piace', 'questo', 'posto'],
+    optionalTokens: ['mi', 'molto', 'tanto'],
+  },
+  sceneCaption: 'Im Café drehst du dich kurz zum Gegenüber und sagst etwas Nettes über den Ort.',
+  trophyWord: {
+    word: 'posto',
+    meaning: 'Ort / Platz',
+    example: 'Questo posto è bellissimo.',
+    whyThisWord: 'Posto ist auf A1 das warme, neutrale Wort für jeden Ort, Tisch oder Sitzplatz und ersetzt sicher kompliziertere Begriffe wie "luogo".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café von innen, warmes Licht, ein kurzer zufriedener Blick.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'happy and present',
+  },
+  visualNotes: 'Innenraum mit weichen Schatten, Korall-Akzent, sanftes Lächeln im Hintergrund.',
+}
+
+const brightItalianLesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Domani alle sette. Perfetto!',
+    baseText: 'Morgen um sieben. Perfekt!',
+  },
+  meaning: 'Eine kurze Bestätigung eines Plans mit Tag, Uhrzeit und freundlichem Zusatz.',
+  chunks: [
+    { id: 'domani', targetText: 'Domani', baseText: 'Morgen' },
+    { id: 'alle-sette', targetText: 'alle sette.', baseText: 'um sieben.' },
+    { id: 'perfetto', targetText: 'Perfetto!', baseText: 'Perfekt!' },
+  ],
+  lessonItems: [
+    { id: 'domani', targetText: 'domani', baseText: 'morgen (am nächsten Tag)', acceptedAnswers: ['domani', 'Domani'] },
+    { id: 'alle-sette', targetText: 'alle sette', baseText: 'um sieben Uhr', acceptedAnswers: ['alle sette', 'Alle sette'] },
+    { id: 'perfetto', targetText: 'perfetto', baseText: 'perfekt', acceptedAnswers: ['perfetto', 'Perfetto'] },
+    { id: 'va-bene', targetText: 'va bene', baseText: 'okay / einverstanden', acceptedAnswers: ['va bene', 'Va bene'] },
+  ],
+  build: {
+    targetText: 'Domani alle sette. Perfetto!',
+    chips: ['Domani', 'alle sette.', 'Perfetto!', 'va bene', 'ottimo'],
+  },
+  typeRecall: {
+    before: 'Domani alle sette. ',
+    answer: 'Perfetto',
+    after: '!',
+    acceptedAnswers: ['perfetto', 'Perfetto'],
+    fallbackChoices: ['Perfetto', 'Ottimo', 'Bene', 'Magari'],
+  },
+  speakTarget: {
+    baseCue: 'Morgen um sieben. Perfekt!',
+    targetPhrase: 'Domani alle sette. Perfetto!',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['domani', 'sette', 'perfetto'],
+    optionalTokens: ['alle', 'va', 'bene', 'ottimo'],
+  },
+  sceneCaption: 'Am Ende der Begegnung bestätigst du locker den Termin für morgen.',
+  trophyWord: {
+    word: 'perfetto',
+    meaning: 'perfekt (zustimmend)',
+    example: 'Domani alle sette? Perfetto!',
+    whyThisWord: 'Perfetto ist auf A1 die freundliche, leichte Zustimmung und ersetzt sicher die englischen Floskeln "great" oder "brilliant". Wird im Italienischen sehr oft als alleinstehende Antwort verwendet.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Spätnachmittag, kurzer Handschlag oder Nicken, ruhige Bestätigung.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'easy plan confirmation',
+  },
+  visualNotes: 'Warmes Abendlicht, Uhr-Akzent, ruhiges Nicken vor dem nächsten Tag.',
+}
+
+const brightItalianLesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Grazie mille. Arrivederci.',
+    baseText: 'Vielen Dank. Auf Wiedersehen.',
+  },
+  meaning: 'Ein warmer Abschluss mit deutlichem Dank und freundlichem höflichem Abschied.',
+  chunks: [
+    { id: 'grazie-mille', targetText: 'Grazie mille.', baseText: 'Vielen Dank.' },
+    { id: 'arrivederci', targetText: 'Arrivederci.', baseText: 'Auf Wiedersehen.' },
+  ],
+  lessonItems: [
+    { id: 'grazie', targetText: 'grazie', baseText: 'danke', acceptedAnswers: ['grazie', 'Grazie'] },
+    { id: 'mille', targetText: 'mille', baseText: 'tausend (verstärkt: vielen)', acceptedAnswers: ['mille', 'Mille'] },
+    { id: 'arrivederci', targetText: 'arrivederci', baseText: 'auf Wiedersehen (höflich)', acceptedAnswers: ['arrivederci', 'Arrivederci'] },
+    { id: 'a-presto', targetText: 'a presto', baseText: 'bis bald', acceptedAnswers: ['a presto', 'A presto'] },
+  ],
+  build: {
+    targetText: 'Grazie mille. Arrivederci.',
+    chips: ['Grazie mille.', 'Arrivederci.', 'a presto', 'buona giornata'],
+  },
+  typeRecall: {
+    before: 'Grazie mille. ',
+    answer: 'Arrivederci',
+    after: '.',
+    acceptedAnswers: ['arrivederci', 'Arrivederci'],
+    fallbackChoices: ['Arrivederci', 'Ciao', 'Salve', 'Scusi'],
+  },
+  speakTarget: {
+    baseCue: 'Vielen Dank. Auf Wiedersehen.',
+    targetPhrase: 'Grazie mille. Arrivederci.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['grazie', 'arrivederci'],
+    optionalTokens: ['mille', 'a', 'presto', 'buona', 'giornata'],
+  },
+  sceneCaption: 'Im Gehen drehst du dich noch einmal kurz um und schließt die Szene warm und höflich ab.',
+  trophyWord: {
+    word: 'arrivederci',
+    meaning: 'auf Wiedersehen (höflich)',
+    example: 'Grazie mille. Arrivederci.',
+    whyThisWord: 'Arrivederci schließt auf A1 jede Service-Szene höflich ab und ist die sichere Lei-Variante von "ciao". Wörtlich "auf das Wiedersehen" — das "a rivederci" gibt dem Wort seine warme Schwingung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tür im Hintergrund, warmes Licht, kurzer Dank im Gehen.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic mediterranean',
+    mood: 'warm goodbye',
+  },
+  visualNotes: 'Sanftes Honig-Licht beim Ausgang, kurzer Nachklang, ruhige letzte Geste.',
+}
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -10630,6 +11188,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
       bright: brightSpanishLesson010,
     },
   },
+  {
+    id: 'italian-a1-practical-001-primo-contatto',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-001-primo-contatto',
+      sequence: 1,
+      title: 'Erster Kontakt',
+    },
+    title: 'Erster Kontakt',
+    situation: {
+      en: 'At an Italian café counter, ask politely whether the other speaks Italian.',
+      de: 'Im Café fragst du höflich, ob jemand Italienisch spricht.',
+    },
+    pedagogicalGoal: 'Eine höfliche Einstiegsfrage auf Italienisch stellen, bevor das Gespräch weitergeht.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Höfliche Rückfrage',
+      situation: 'Du bittest jemanden, das Gesagte zu wiederholen.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson001,
+    },
+  },
+  {
+    id: 'italian-a1-practical-002-chiedere-ripetere',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-002-chiedere-ripetere',
+      sequence: 2,
+      title: 'Höfliche Rückfrage',
+    },
+    title: 'Höfliche Rückfrage',
+    situation: {
+      en: 'Mid-exchange, politely ask the other to repeat what they said.',
+      de: 'Mitten im Gespräch bittest du jemanden, etwas zu wiederholen.',
+    },
+    pedagogicalGoal: 'Höflich signalisieren, dass etwas wiederholt werden soll, ohne das Gespräch zu blockieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wo ist...?',
+      situation: 'Auf der Straße fragst du nach dem Bahnhof.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson002,
+    },
+  },
+  {
+    id: 'italian-a1-practical-003-dov-e',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-003-dov-e',
+      sequence: 3,
+      title: 'Wo ist...?',
+    },
+    title: 'Wo ist...?',
+    situation: {
+      en: 'On the street, ask politely where the station is.',
+      de: 'Auf der Straße fragst du höflich nach dem Bahnhof.',
+    },
+    pedagogicalGoal: 'Eine einfache Ortsfrage auf Italienisch stellen und ein konkretes Ziel benennen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Einen Kaffee, bitte',
+      situation: 'Am Tresen bestellst du einen Kaffee.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson003,
+    },
+  },
+  {
+    id: 'italian-a1-practical-004-un-caffe',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-004-un-caffe',
+      sequence: 4,
+      title: 'Einen Kaffee, bitte',
+    },
+    title: 'Einen Kaffee, bitte',
+    situation: {
+      en: 'At an Italian café counter, order a coffee politely with "vorrei".',
+      de: 'Am Café-Tresen bestellst du höflich einen Kaffee mit "vorrei".',
+    },
+    pedagogicalGoal: 'Eine kurze, klare Bestellung auf Italienisch mit Konditional und Höflichkeitswort abgeben.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Was kostet das?',
+      situation: 'Im Laden fragst du nach dem Preis.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson004,
+    },
+  },
+  {
+    id: 'italian-a1-practical-005-quanto-costa',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-005-quanto-costa',
+      sequence: 5,
+      title: 'Was kostet das?',
+    },
+    title: 'Was kostet das?',
+    situation: {
+      en: 'In a small shop, ask the price of an item.',
+      de: 'Im kleinen Laden fragst du nach dem Preis eines Gegenstands.',
+    },
+    pedagogicalGoal: 'Eine direkte Preisfrage auf Italienisch stellen und auf den Gegenstand vor dir beziehen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Am Bahnhof',
+      situation: 'Am Bahnhof fragst du nach der Abfahrtszeit.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson005,
+    },
+  },
+  {
+    id: 'italian-a1-practical-006-il-treno',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-006-il-treno',
+      sequence: 6,
+      title: 'Am Bahnhof',
+    },
+    title: 'Am Bahnhof',
+    situation: {
+      en: 'At a station info desk, ask when the train leaves.',
+      de: 'Am Bahnhofs-Schalter fragst du nach der Abfahrtszeit.',
+    },
+    pedagogicalGoal: 'Eine kurze Reisefrage auf Italienisch stellen, mit Uhrzeit- und Verkehrsmittelwortschatz.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich brauche Hilfe',
+      situation: 'In der Apotheke oder am Schalter bittest du um Hilfe.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson006,
+    },
+  },
+  {
+    id: 'italian-a1-practical-007-ho-bisogno-di-aiuto',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-007-ho-bisogno-di-aiuto',
+      sequence: 7,
+      title: 'Ich brauche Hilfe',
+    },
+    title: 'Ich brauche Hilfe',
+    situation: {
+      en: 'At a pharmacy or info desk, ask for help politely.',
+      de: 'In der Apotheke oder am Schalter bittest du um Hilfe.',
+    },
+    pedagogicalGoal: 'Eine kurze, höfliche Bitte um Hilfe auf Italienisch formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Es gefällt mir',
+      situation: 'Beim Small Talk sagst du etwas Nettes über den Ort.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson007,
+    },
+  },
+  {
+    id: 'italian-a1-practical-008-mi-piace-questo-posto',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-008-mi-piace-questo-posto',
+      sequence: 8,
+      title: 'Es gefällt mir',
+    },
+    title: 'Es gefällt mir',
+    situation: {
+      en: 'Inside a café, make a short positive remark about the place.',
+      de: 'Im Café sagst du locker etwas Nettes über den Ort.',
+    },
+    pedagogicalGoal: 'Einen kurzen, positiven Small-Talk-Satz auf Italienisch zum aktuellen Ort äußern.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Morgen um sieben',
+      situation: 'Beim Planen bestätigst du den Termin für morgen.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson008,
+    },
+  },
+  {
+    id: 'italian-a1-practical-009-domani-alle-sette',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-009-domani-alle-sette',
+      sequence: 9,
+      title: 'Morgen um sieben',
+    },
+    title: 'Morgen um sieben',
+    situation: {
+      en: 'At the end of an encounter, confirm a plan for tomorrow at seven.',
+      de: 'Am Ende der Begegnung bestätigst du den Termin morgen um sieben.',
+    },
+    pedagogicalGoal: 'Einen einfachen Plan auf Italienisch mit Tag und Uhrzeit bestätigen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Danke und Auf Wiedersehen',
+      situation: 'Du schließt die Szene mit Dank und Abschied ab.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson009,
+    },
+  },
+  {
+    id: 'italian-a1-practical-010-grazie-arrivederci',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-010-grazie-arrivederci',
+      sequence: 10,
+      title: 'Danke und Auf Wiedersehen',
+    },
+    title: 'Danke und Auf Wiedersehen',
+    situation: {
+      en: 'Close the scene with thanks and a polite goodbye.',
+      de: 'Du schließt die Szene mit Dank und einem freundlichen Abschied ab.',
+    },
+    pedagogicalGoal: 'Eine kurze Dank-und-Abschied-Wendung auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Italian A1 Practical 1 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightItalianLesson010,
+    },
+  },
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -10653,6 +11541,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_NINE_METADATA,
     GUIDED_TODAY_PATH_TEN_METADATA,
     GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
+    GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
   ]
 }
 
