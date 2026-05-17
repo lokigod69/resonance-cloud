@@ -324,6 +324,17 @@ const GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA: GuidedPathMetadata = {
+  id: 'italian-a1-practical-2',
+  title: 'Italian A1 Practical 2',
+  shortTitle: 'A1 Practical 2',
+  subtitle: 'Kleine Bitten am Tresen auf Italienisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Italian',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -9951,6 +9962,555 @@ const brightSpanishLesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Sanftes Honig-Licht beim Ausgang, kurzer Nachklang, ruhige letzte Geste.',
 }
 
+const brightSpanishP2Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'No entiendo, ¿me puede ayudar?',
+    baseText: 'Ich verstehe nicht, können Sie mir helfen?',
+  },
+  meaning: 'Eine kurze, höfliche Bitte um Hilfe, wenn etwas unklar bleibt.',
+  chunks: [
+    { id: 'no-entiendo', targetText: 'No entiendo,', baseText: 'Ich verstehe nicht,' },
+    { id: 'me-puede', targetText: '¿me puede', baseText: 'können Sie mir' },
+    { id: 'ayudar', targetText: 'ayudar?', baseText: 'helfen?' },
+  ],
+  lessonItems: [
+    { id: 'no', targetText: 'no', baseText: 'nicht', acceptedAnswers: ['no', 'No'] },
+    { id: 'entiendo', targetText: 'entiendo', baseText: 'ich verstehe', acceptedAnswers: ['entiendo', 'Entiendo'] },
+    { id: 'puede', targetText: 'puede', baseText: 'können Sie', acceptedAnswers: ['puede', 'Puede'] },
+    { id: 'ayudar', targetText: 'ayudar', baseText: 'helfen', acceptedAnswers: ['ayudar', 'Ayudar'] },
+  ],
+  build: {
+    targetText: 'No entiendo, ¿me puede ayudar?',
+    chips: ['No entiendo,', '¿me puede', 'ayudar?', 'gracias', 'por favor'],
+  },
+  typeRecall: {
+    before: 'No ',
+    answer: 'entiendo',
+    after: ', ¿me puede ayudar?',
+    acceptedAnswers: ['entiendo', 'Entiendo'],
+    fallbackChoices: ['entiendo', 'comprendo', 'oigo', 'hablo'],
+  },
+  speakTarget: {
+    baseCue: 'Ich verstehe nicht, können Sie mir helfen?',
+    targetPhrase: 'No entiendo, ¿me puede ayudar?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['no', 'entiendo', 'puede', 'ayudar'],
+    optionalTokens: ['me', 'por', 'favor'],
+  },
+  sceneCaption: 'Am Tresen merkst du, dass du etwas verpasst hast, und bittest ruhig um Hilfe.',
+  trophyWord: {
+    word: 'entiendo',
+    meaning: 'ich verstehe',
+    example: 'Lo siento, no entiendo.',
+    whyThisWord: 'Entiendo signalisiert auf A1 sofort Verständnis oder Nichtverständnis und öffnet jede Klärungsfrage am Tresen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kleiner Laden am Vormittag, ein kurzer ratloser Moment, sanfte Zuwendung der Verkäuferin.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'open and asking',
+  },
+  visualNotes: 'Pausen-Moment, sanftes Licht über der Theke, warme Geste vom Personal.',
+}
+
+const brightSpanishP2Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Me lo puede escribir, por favor?',
+    baseText: 'Können Sie mir das bitte aufschreiben?',
+  },
+  meaning: 'Eine ruhige Bitte, eine genaue Angabe (Name, Adresse, Preis) aufzuschreiben.',
+  chunks: [
+    { id: 'me-lo-puede', targetText: '¿Me lo puede', baseText: 'Können Sie mir das' },
+    { id: 'escribir', targetText: 'escribir,', baseText: 'aufschreiben,' },
+    { id: 'por-favor', targetText: 'por favor?', baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'me-lo', targetText: 'me lo', baseText: 'mir das', acceptedAnswers: ['me lo', 'Me lo'] },
+    { id: 'puede', targetText: 'puede', baseText: 'können Sie', acceptedAnswers: ['puede', 'Puede'] },
+    { id: 'escribir', targetText: 'escribir', baseText: 'aufschreiben / schreiben', acceptedAnswers: ['escribir', 'Escribir'] },
+    { id: 'aqui', targetText: 'aquí', baseText: 'hier', acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+  ],
+  build: {
+    targetText: '¿Me lo puede escribir, por favor?',
+    chips: ['¿Me lo puede', 'escribir,', 'por favor?', 'aquí', 'gracias'],
+  },
+  typeRecall: {
+    before: '¿Me lo puede ',
+    answer: 'escribir',
+    after: ', por favor?',
+    acceptedAnswers: ['escribir', 'Escribir'],
+    fallbackChoices: ['escribir', 'decir', 'repetir', 'enseñar'],
+  },
+  speakTarget: {
+    baseCue: 'Können Sie mir das bitte aufschreiben?',
+    targetPhrase: '¿Me lo puede escribir, por favor?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['me', 'puede', 'escribir', 'por', 'favor'],
+    optionalTokens: ['lo', 'aquí', 'señora', 'señor'],
+  },
+  sceneCaption: 'An der Theke bittest du höflich darum, dass eine wichtige Angabe aufgeschrieben wird.',
+  trophyWord: {
+    word: 'escribir',
+    meaning: 'schreiben / aufschreiben',
+    example: '¿Me lo puede escribir aquí?',
+    whyThisWord: 'Escribir ist auf A1 das Schlüsselverb, um eine genaue Angabe schriftlich zu erfassen — Name, Adresse, Preis.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Notizblock auf der Theke, Stift in der Hand, ruhiges Aufschreiben einer Information.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'careful note-taking',
+  },
+  visualNotes: 'Detail auf Stift und Block, weiches Tageslicht, ruhige Hand.',
+}
+
+const brightSpanishP2Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Me lo puede mostrar en el mapa?',
+    baseText: 'Können Sie mir das auf der Karte zeigen?',
+  },
+  meaning: 'Eine ruhige Bitte, einen Ort oder Punkt auf einer Karte oder einem Bildschirm zu zeigen.',
+  chunks: [
+    { id: 'me-lo-puede', targetText: '¿Me lo puede', baseText: 'Können Sie mir das' },
+    { id: 'mostrar', targetText: 'mostrar', baseText: 'zeigen' },
+    { id: 'en-el-mapa', targetText: 'en el mapa?', baseText: 'auf der Karte?' },
+  ],
+  lessonItems: [
+    { id: 'mostrar', targetText: 'mostrar', baseText: 'zeigen', acceptedAnswers: ['mostrar', 'Mostrar'] },
+    { id: 'mapa', targetText: 'mapa', baseText: 'Karte', acceptedAnswers: ['mapa', 'Mapa'] },
+    { id: 'aqui', targetText: 'aquí', baseText: 'hier', acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+    { id: 'puede', targetText: 'puede', baseText: 'können Sie', acceptedAnswers: ['puede', 'Puede'] },
+  ],
+  build: {
+    targetText: '¿Me lo puede mostrar en el mapa?',
+    chips: ['¿Me lo puede', 'mostrar', 'en el mapa?', 'aquí', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿Me lo puede ',
+    answer: 'mostrar',
+    after: ' en el mapa?',
+    acceptedAnswers: ['mostrar', 'Mostrar'],
+    fallbackChoices: ['mostrar', 'enseñar', 'indicar', 'decir'],
+  },
+  speakTarget: {
+    baseCue: 'Können Sie mir das auf der Karte zeigen?',
+    targetPhrase: '¿Me lo puede mostrar en el mapa?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['me', 'puede', 'mostrar', 'mapa'],
+    optionalTokens: ['lo', 'en', 'el', 'por', 'favor'],
+  },
+  sceneCaption: 'Karte auf der Theke, ein Finger sucht den Punkt — du bittest, ihn dir zu zeigen.',
+  trophyWord: {
+    word: 'mostrar',
+    meaning: 'zeigen',
+    example: '¿Me lo puede mostrar aquí?',
+    whyThisWord: 'Mostrar ist auf A1 das verlässliche Verb, um sich einen Ort oder Punkt visuell zeigen zu lassen — sicher in Laden, Hotel oder am Bahnhof.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Stadtplan auf der Theke, ein Finger tippt vorsichtig auf einen Punkt.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'curious and pointing',
+  },
+  visualNotes: 'Kartenausschnitt im Fokus, warmes Tageslicht, ruhiger Zeigefinger.',
+}
+
+const brightSpanishP2Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Cuál es mejor, éste o ése?',
+    baseText: 'Welcher ist besser, dieser oder jener?',
+  },
+  meaning: 'Eine ruhige Wahlfrage zwischen zwei sichtbaren Optionen, mit höflichem Vergleich.',
+  chunks: [
+    { id: 'cual-es', targetText: '¿Cuál es', baseText: 'Welcher ist' },
+    { id: 'mejor', targetText: 'mejor,', baseText: 'besser,' },
+    { id: 'este-o-ese', targetText: 'éste o ése?', baseText: 'dieser oder jener?' },
+  ],
+  lessonItems: [
+    { id: 'cual', targetText: 'cuál', baseText: 'welcher', acceptedAnswers: ['cuál', 'cual', 'Cuál', 'Cual'] },
+    { id: 'mejor', targetText: 'mejor', baseText: 'besser', acceptedAnswers: ['mejor', 'Mejor'] },
+    { id: 'este', targetText: 'éste', baseText: 'dieser (hier)', acceptedAnswers: ['éste', 'este', 'Éste', 'Este'] },
+    { id: 'ese', targetText: 'ése', baseText: 'jener (da)', acceptedAnswers: ['ése', 'ese', 'Ése', 'Ese'] },
+  ],
+  build: {
+    targetText: '¿Cuál es mejor, éste o ése?',
+    chips: ['¿Cuál es', 'mejor,', 'éste o ése?', 'gracias', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿Cuál es ',
+    answer: 'mejor',
+    after: ', éste o ése?',
+    acceptedAnswers: ['mejor', 'Mejor'],
+    fallbackChoices: ['mejor', 'peor', 'igual', 'nuevo'],
+  },
+  speakTarget: {
+    baseCue: 'Welcher ist besser, dieser oder jener?',
+    targetPhrase: '¿Cuál es mejor, éste o ése?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['cuál', 'mejor', 'éste', 'ése'],
+    optionalTokens: ['es', 'o', 'por', 'favor'],
+  },
+  sceneCaption: 'Zwei kleine Stücke auf der Theke, du wiegst sie kurz und fragst nach der besseren Wahl.',
+  trophyWord: {
+    word: 'mejor',
+    meaning: 'besser',
+    example: 'Éste es mejor.',
+    whyThisWord: 'Mejor ist auf A1 das einfache Vergleichswort und reicht für jede Wahl zwischen zwei sichtbaren Optionen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Zwei Optionen auf der Theke nebeneinander, ruhiger Blickvergleich.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'curious comparison',
+  },
+  visualNotes: 'Zwei Objekte in weicher Beleuchtung, sanfter Vergleichs-Frame.',
+}
+
+const brightSpanishP2Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Tiene más, por favor?',
+    baseText: 'Haben Sie mehr davon, bitte?',
+  },
+  meaning: 'Eine kurze Frage nach Verfügbarkeit, ob es noch mehr von einem Artikel gibt.',
+  chunks: [
+    { id: 'tiene', targetText: '¿Tiene', baseText: 'Haben Sie' },
+    { id: 'mas', targetText: 'más,', baseText: 'mehr,' },
+    { id: 'por-favor', targetText: 'por favor?', baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'tiene', targetText: 'tiene', baseText: 'haben Sie / hat', acceptedAnswers: ['tiene', 'Tiene'] },
+    { id: 'mas', targetText: 'más', baseText: 'mehr', acceptedAnswers: ['más', 'mas', 'Más', 'Mas'] },
+    { id: 'otro', targetText: 'otro', baseText: 'ein anderer', acceptedAnswers: ['otro', 'Otro'] },
+    { id: 'por-favor', targetText: 'por favor', baseText: 'bitte', acceptedAnswers: ['por favor', 'Por favor'] },
+  ],
+  build: {
+    targetText: '¿Tiene más, por favor?',
+    chips: ['¿Tiene', 'más,', 'por favor?', 'otro', 'gracias'],
+  },
+  typeRecall: {
+    before: '¿',
+    answer: 'Tiene',
+    after: ' más, por favor?',
+    acceptedAnswers: ['tiene', 'Tiene'],
+    fallbackChoices: ['Tiene', 'Hay', 'Quiere', 'Trae'],
+  },
+  speakTarget: {
+    baseCue: 'Haben Sie mehr davon, bitte?',
+    targetPhrase: '¿Tiene más, por favor?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['tiene', 'más', 'por', 'favor'],
+    optionalTokens: ['otro', 'aquí', 'señora', 'señor'],
+  },
+  sceneCaption: 'Vor dem leeren Regal fragst du am Tresen, ob hinten noch etwas davon liegt.',
+  trophyWord: {
+    word: 'tiene',
+    meaning: 'haben Sie (höflich) / hat',
+    example: '¿Tiene más, por favor?',
+    whyThisWord: 'Tiene öffnet auf A1 alle Verfügbarkeits- und Besitzfragen im höflichen Service-Register; ohne dieses Wort ginge kein Einkaufsgespräch.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Helles Regal mit einem letzten Stück, ruhige Frage in Richtung Verkaufspersonal.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'open inquiry',
+  },
+  visualNotes: 'Regal in weichem Licht, Fokus auf das letzte Objekt, freundliche Anfrage.',
+}
+
+const brightSpanishP2Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Puedo pagar con tarjeta?',
+    baseText: 'Kann ich mit Karte zahlen?',
+  },
+  meaning: 'Eine direkte Frage am Tresen, ob Kartenzahlung möglich ist.',
+  chunks: [
+    { id: 'puedo-pagar', targetText: '¿Puedo pagar', baseText: 'Kann ich zahlen' },
+    { id: 'con', targetText: 'con', baseText: 'mit' },
+    { id: 'tarjeta', targetText: 'tarjeta?', baseText: 'Karte?' },
+  ],
+  lessonItems: [
+    { id: 'puedo', targetText: 'puedo', baseText: 'kann ich', acceptedAnswers: ['puedo', 'Puedo'] },
+    { id: 'pagar', targetText: 'pagar', baseText: 'zahlen', acceptedAnswers: ['pagar', 'Pagar'] },
+    { id: 'con', targetText: 'con', baseText: 'mit', acceptedAnswers: ['con', 'Con'] },
+    { id: 'tarjeta', targetText: 'tarjeta', baseText: 'Karte', acceptedAnswers: ['tarjeta', 'Tarjeta'] },
+  ],
+  build: {
+    targetText: '¿Puedo pagar con tarjeta?',
+    chips: ['¿Puedo pagar', 'con', 'tarjeta?', 'efectivo', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿Puedo pagar con ',
+    answer: 'tarjeta',
+    after: '?',
+    acceptedAnswers: ['tarjeta', 'Tarjeta'],
+    fallbackChoices: ['tarjeta', 'efectivo', 'dinero', 'móvil'],
+  },
+  speakTarget: {
+    baseCue: 'Kann ich mit Karte zahlen?',
+    targetPhrase: '¿Puedo pagar con tarjeta?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['puedo', 'pagar', 'tarjeta'],
+    optionalTokens: ['con', 'por', 'favor', 'aquí'],
+  },
+  sceneCaption: 'An der Kasse hältst du die Karte bereit und fragst kurz, ob das geht.',
+  trophyWord: {
+    word: 'tarjeta',
+    meaning: 'Karte (Bank- oder Kreditkarte)',
+    example: '¿Acepta tarjeta?',
+    whyThisWord: 'Tarjeta ist auf A1 das zentrale Zahlungswort in Spanien und öffnet jede Kassenfrage in Laden, Café oder Restaurant.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kasse mit Kartenterminal, Hand mit Karte, kurzer Blickkontakt vor der Zahlung.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'ready to pay',
+  },
+  visualNotes: 'Kassenausschnitt mit Terminal-Detail, ruhige Hand, klare Geste.',
+}
+
+const brightSpanishP2Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Me pone una bolsa, por favor?',
+    baseText: 'Können Sie mir eine Tüte geben, bitte?',
+  },
+  meaning: 'Eine kurze, höfliche Bitte um eine Tüte am Ende eines kleinen Einkaufs.',
+  chunks: [
+    { id: 'me-pone', targetText: '¿Me pone', baseText: 'Können Sie mir geben' },
+    { id: 'una-bolsa', targetText: 'una bolsa,', baseText: 'eine Tüte,' },
+    { id: 'por-favor', targetText: 'por favor?', baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'me-pone', targetText: 'me pone', baseText: 'können Sie mir geben', acceptedAnswers: ['me pone', 'Me pone'] },
+    { id: 'una', targetText: 'una', baseText: 'eine', acceptedAnswers: ['una', 'Una'] },
+    { id: 'bolsa', targetText: 'bolsa', baseText: 'Tüte / Tasche', acceptedAnswers: ['bolsa', 'Bolsa'] },
+    { id: 'recibo', targetText: 'recibo', baseText: 'Quittung', acceptedAnswers: ['recibo', 'Recibo'] },
+  ],
+  build: {
+    targetText: '¿Me pone una bolsa, por favor?',
+    chips: ['¿Me pone', 'una bolsa,', 'por favor?', 'recibo', 'gracias'],
+  },
+  typeRecall: {
+    before: '¿Me pone una ',
+    answer: 'bolsa',
+    after: ', por favor?',
+    acceptedAnswers: ['bolsa', 'Bolsa'],
+    fallbackChoices: ['bolsa', 'caja', 'mochila', 'cesta'],
+  },
+  speakTarget: {
+    baseCue: 'Können Sie mir eine Tüte geben, bitte?',
+    targetPhrase: '¿Me pone una bolsa, por favor?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['me', 'pone', 'bolsa', 'por', 'favor'],
+    optionalTokens: ['una', 'recibo', 'señora', 'señor'],
+  },
+  sceneCaption: 'Beim Bezahlen hebst du die kleinen Einkäufe und bittest um eine Tüte zum Mitnehmen.',
+  trophyWord: {
+    word: 'bolsa',
+    meaning: 'Tüte / Tasche',
+    example: 'Una bolsa, por favor.',
+    whyThisWord: 'Bolsa ist auf A1 die konkrete Tüte am Kassentresen und reicht in allen kleinen Einkaufsszenen — Laden, Bäckerei, Markt.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hand legt kleine Einkäufe auf den Tresen, eine Tüte rauscht über die Kante.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'small purchase wrap-up',
+  },
+  visualNotes: 'Tütendetail im warmen Licht, ruhige Übergabe-Geste.',
+}
+
+const brightSpanishP2Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Tengo una reserva a las ocho.',
+    baseText: 'Ich habe eine Reservierung um acht.',
+  },
+  meaning: 'Du meldest dich am Empfang oder am Hoststand mit deiner Reservierung an.',
+  chunks: [
+    { id: 'tengo-una', targetText: 'Tengo una', baseText: 'Ich habe eine' },
+    { id: 'reserva', targetText: 'reserva', baseText: 'Reservierung' },
+    { id: 'a-las-ocho', targetText: 'a las ocho.', baseText: 'um acht.' },
+  ],
+  lessonItems: [
+    { id: 'tengo', targetText: 'tengo', baseText: 'ich habe', acceptedAnswers: ['tengo', 'Tengo'] },
+    { id: 'una', targetText: 'una', baseText: 'eine', acceptedAnswers: ['una', 'Una'] },
+    { id: 'reserva', targetText: 'reserva', baseText: 'Reservierung', acceptedAnswers: ['reserva', 'Reserva'] },
+    { id: 'a-las-ocho', targetText: 'a las ocho', baseText: 'um acht Uhr', acceptedAnswers: ['a las ocho', 'A las ocho'] },
+  ],
+  build: {
+    targetText: 'Tengo una reserva a las ocho.',
+    chips: ['Tengo una', 'reserva', 'a las ocho.', 'gracias', 'por favor'],
+  },
+  typeRecall: {
+    before: 'Tengo una ',
+    answer: 'reserva',
+    after: ' a las ocho.',
+    acceptedAnswers: ['reserva', 'Reserva'],
+    fallbackChoices: ['reserva', 'cita', 'mesa', 'hora'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe eine Reservierung um acht.',
+    targetPhrase: 'Tengo una reserva a las ocho.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['tengo', 'reserva', 'ocho'],
+    optionalTokens: ['una', 'a', 'las', 'por', 'favor'],
+  },
+  sceneCaption: 'Am Empfang sprichst du den Gastgeber an und nennst ruhig Reservierungszeit und Namen.',
+  trophyWord: {
+    word: 'reserva',
+    meaning: 'Reservierung',
+    example: 'Tengo una reserva a mi nombre.',
+    whyThisWord: 'Reserva ist auf A1 das eindeutige Ankunftswort für Restaurant, Friseur oder einen anderen Service-Termin.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hoststand mit Reservierungsbuch, kurzer Blick auf den Namen, ruhige Begrüßung.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'arriving with a plan',
+  },
+  visualNotes: 'Empfangstisch in warmem Licht, Detail auf Reservierungsbuch.',
+}
+
+const brightSpanishP2Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Es éste el correcto?',
+    baseText: 'Ist das der richtige?',
+  },
+  meaning: 'Eine kurze Sicherheitsfrage, bevor du dich für ein Objekt, einen Bus oder eine Sache entscheidest.',
+  chunks: [
+    { id: 'es-este', targetText: '¿Es éste', baseText: 'Ist das' },
+    { id: 'el-correcto', targetText: 'el correcto?', baseText: 'der richtige?' },
+  ],
+  lessonItems: [
+    { id: 'es', targetText: 'es', baseText: 'ist', acceptedAnswers: ['es', 'Es'] },
+    { id: 'este', targetText: 'éste', baseText: 'dieser hier', acceptedAnswers: ['éste', 'este', 'Éste', 'Este'] },
+    { id: 'correcto', targetText: 'correcto', baseText: 'richtig / korrekt', acceptedAnswers: ['correcto', 'Correcto'] },
+    { id: 'seguro', targetText: 'seguro', baseText: 'sicher', acceptedAnswers: ['seguro', 'Seguro'] },
+  ],
+  build: {
+    targetText: '¿Es éste el correcto?',
+    chips: ['¿Es éste', 'el correcto?', 'seguro', 'por favor', 'gracias'],
+  },
+  typeRecall: {
+    before: '¿Es éste el ',
+    answer: 'correcto',
+    after: '?',
+    acceptedAnswers: ['correcto', 'Correcto'],
+    fallbackChoices: ['correcto', 'mejor', 'bueno', 'seguro'],
+  },
+  speakTarget: {
+    baseCue: 'Ist das der richtige?',
+    targetPhrase: '¿Es éste el correcto?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['es', 'éste', 'correcto'],
+    optionalTokens: ['el', 'por', 'favor', 'seguro'],
+  },
+  sceneCaption: 'Vor dem Schritt nach vorn fragst du kurz nach, ob es wirklich das richtige Objekt ist.',
+  trophyWord: {
+    word: 'correcto',
+    meaning: 'richtig / korrekt',
+    example: '¿Es éste el correcto?',
+    whyThisWord: 'Correcto ist auf A1 die ruhige, präzise Bestätigung — kein Reflex-Ja, sondern eine klare Sicherheitsfrage vor einer kleinen Entscheidung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Zwei ähnliche Objekte nebeneinander, ein kurzer prüfender Moment vor der Wahl.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'careful confirm',
+  },
+  visualNotes: 'Doppelobjekt-Frame, sanfter Vergleichston, ruhige Frage in der Geste.',
+}
+
+const brightSpanishP2Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Un momento, por favor. Ya casi.',
+    baseText: 'Einen Moment, bitte. Gleich.',
+  },
+  meaning: 'Eine ruhige Bitte um einen kurzen Augenblick, während du noch etwas suchst oder zählst.',
+  chunks: [
+    { id: 'un-momento', targetText: 'Un momento,', baseText: 'Einen Moment,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+    { id: 'ya-casi', targetText: 'Ya casi.', baseText: 'Gleich.' },
+  ],
+  lessonItems: [
+    { id: 'un', targetText: 'un', baseText: 'einen', acceptedAnswers: ['un', 'Un'] },
+    { id: 'momento', targetText: 'momento', baseText: 'Moment / Augenblick', acceptedAnswers: ['momento', 'Momento'] },
+    { id: 'por-favor', targetText: 'por favor', baseText: 'bitte', acceptedAnswers: ['por favor', 'Por favor'] },
+    { id: 'ya-casi', targetText: 'ya casi', baseText: 'gleich / fast', acceptedAnswers: ['ya casi', 'Ya casi'] },
+  ],
+  build: {
+    targetText: 'Un momento, por favor. Ya casi.',
+    chips: ['Un momento,', 'por favor.', 'Ya casi.', 'gracias', 'aquí'],
+  },
+  typeRecall: {
+    before: 'Un ',
+    answer: 'momento',
+    after: ', por favor. Ya casi.',
+    acceptedAnswers: ['momento', 'Momento'],
+    fallbackChoices: ['momento', 'minuto', 'segundo', 'instante'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Moment, bitte. Gleich.',
+    targetPhrase: 'Un momento, por favor. Ya casi.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['momento', 'por', 'favor'],
+    optionalTokens: ['un', 'ya', 'casi', 'gracias'],
+  },
+  sceneCaption: 'An der Theke kramst du kurz in der Tasche und hältst den Moment ruhig mit einem freundlichen Wort.',
+  trophyWord: {
+    word: 'momento',
+    meaning: 'Moment / Augenblick',
+    example: 'Un momento, por favor.',
+    whyThisWord: 'Momento ist die festste A1-Wendung für eine kurze Pause am Tresen oder im Gespräch und reicht oft als komplette Antwort allein.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hand in der Geldbörse an der Kasse, kurzer suchender Moment, ruhiges Lächeln.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'brief patient pause',
+  },
+  visualNotes: 'Detail auf wartender Hand, sanftes Licht, ruhiger Atemzug.',
+}
+
 const brightItalianLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -10496,6 +11056,552 @@ const brightItalianLesson010: GuidedLessonVibeVariant = {
     mood: 'warm goodbye',
   },
   visualNotes: 'Sanftes Honig-Licht beim Ausgang, kurzer Nachklang, ruhige letzte Geste.',
+}
+
+const brightItalianP2Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Scusi, non capisco. Mi può aiutare?',
+    baseText: 'Entschuldigung, ich verstehe nicht. Können Sie mir helfen?',
+  },
+  meaning: 'Eine ruhige, höfliche Eröffnung: kurz zugeben, dass etwas unklar ist, und um Hilfe bitten.',
+  chunks: [
+    { id: 'scusi', targetText: 'Scusi,', baseText: 'Entschuldigung,' },
+    { id: 'non-capisco', targetText: 'non capisco.', baseText: 'ich verstehe nicht.' },
+    { id: 'mi-puo-aiutare', targetText: 'Mi può aiutare?', baseText: 'Können Sie mir helfen?' },
+  ],
+  lessonItems: [
+    { id: 'capisco', targetText: 'capisco', baseText: 'ich verstehe', acceptedAnswers: ['capisco', 'Capisco'] },
+    { id: 'non-capisco', targetText: 'non capisco', baseText: 'ich verstehe nicht', acceptedAnswers: ['non capisco', 'Non capisco'] },
+    { id: 'mi-puo', targetText: 'mi può', baseText: 'können Sie mir', acceptedAnswers: ['mi può', 'mi puo', 'Mi può', 'Mi puo'] },
+    { id: 'aiutare', targetText: 'aiutare', baseText: 'helfen', acceptedAnswers: ['aiutare', 'Aiutare'] },
+  ],
+  build: {
+    targetText: 'Scusi, non capisco. Mi può aiutare?',
+    chips: ['Scusi,', 'non capisco.', 'Mi può aiutare?', 'aiutare', 'per favore'],
+  },
+  typeRecall: {
+    before: 'Scusi, non ',
+    answer: 'capisco',
+    after: '. Mi può aiutare?',
+    acceptedAnswers: ['capisco', 'Capisco'],
+    fallbackChoices: ['capisco', 'capisce', 'parlo', 'sento'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, ich verstehe nicht. Können Sie mir helfen?',
+    targetPhrase: 'Scusi, non capisco. Mi può aiutare?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['scusi', 'non', 'capisco', 'aiutare'],
+    optionalTokens: ['mi', 'può', 'per', 'favore'],
+  },
+  sceneCaption: 'Mitten im Gespräch gibst du ruhig zu, dass du etwas nicht verstanden hast, und öffnest die Bitte um Hilfe.',
+  trophyWord: {
+    word: 'capisco',
+    meaning: 'ich verstehe',
+    example: 'Non capisco, mi scusi.',
+    whyThisWord: 'Capisco ist auf A1 das zentrale Verständnis-Verb in der 1. Person und öffnet jede Klärungsbitte ohne Drama. Negation einfach mit "non" davor: non capisco.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tresen, ruhige Geste, kurze ehrliche Bitte um Hilfe.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'calm and asking',
+  },
+  visualNotes: 'Sanftes Pastellgrün, ehrlicher Blick, ruhige Mikropause vor der Bitte.',
+}
+
+const brightItalianP2Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Può scriverlo, per favore?',
+    baseText: 'Können Sie es bitte aufschreiben?',
+  },
+  meaning: 'Eine knappe, höfliche Bitte, eine wichtige Information aufzuschreiben.',
+  chunks: [
+    { id: 'puo', targetText: 'Può', baseText: 'Können Sie' },
+    { id: 'scriverlo', targetText: 'scriverlo,', baseText: 'es aufschreiben,' },
+    { id: 'per-favore', targetText: 'per favore?', baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'puo', targetText: 'può', baseText: 'können Sie', acceptedAnswers: ['può', 'puo', 'Può', 'Puo'] },
+    { id: 'scrivere', targetText: 'scrivere', baseText: 'schreiben', acceptedAnswers: ['scrivere', 'Scrivere'] },
+    { id: 'scriverlo', targetText: 'scriverlo', baseText: 'es aufschreiben', acceptedAnswers: ['scriverlo', 'Scriverlo'] },
+    { id: 'qui', targetText: 'qui', baseText: 'hier', acceptedAnswers: ['qui', 'Qui'] },
+  ],
+  build: {
+    targetText: 'Può scriverlo, per favore?',
+    chips: ['Può', 'scriverlo,', 'per favore?', 'qui', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Può ',
+    answer: 'scriverlo',
+    after: ', per favore?',
+    acceptedAnswers: ['scriverlo', 'Scriverlo'],
+    fallbackChoices: ['scriverlo', 'dirlo', 'ripeterlo', 'mostrarlo'],
+  },
+  speakTarget: {
+    baseCue: 'Können Sie es bitte aufschreiben?',
+    targetPhrase: 'Può scriverlo, per favore?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['può', 'scriverlo', 'per', 'favore'],
+    optionalTokens: ['qui', 'mi', 'lo'],
+  },
+  sceneCaption: 'Am Schalter reichst du Stift oder Notiz hin und bittest, etwas Wichtiges aufzuschreiben.',
+  trophyWord: {
+    word: 'scrivere',
+    meaning: 'schreiben',
+    example: 'Può scriverlo qui?',
+    whyThisWord: 'Scrivere ist das A1-Verb für jede Schreib-Bitte und nimmt die kleinen Anhänge sehr italienisch: scriverlo = "es schreiben", scrivermi = "mir schreiben".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Notizzettel auf der Theke, Stift bereit, ruhige Hilfe-Geste.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'precise and helpful',
+  },
+  visualNotes: 'Klare Linien, Notizzettel im Fokus, sanfter Akzent auf der Spitze des Stifts.',
+}
+
+const brightItalianP2Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Mi può mostrare sulla mappa?',
+    baseText: 'Können Sie es mir auf der Karte zeigen?',
+  },
+  meaning: 'Eine konkrete Bitte, einen Ort auf der Karte (oder dem Handy) zu zeigen.',
+  chunks: [
+    { id: 'mi-puo-mostrare', targetText: 'Mi può mostrare', baseText: 'Können Sie mir zeigen' },
+    { id: 'sulla-mappa', targetText: 'sulla mappa?', baseText: 'auf der Karte?' },
+  ],
+  lessonItems: [
+    { id: 'mostrare', targetText: 'mostrare', baseText: 'zeigen', acceptedAnswers: ['mostrare', 'Mostrare'] },
+    { id: 'mappa', targetText: 'mappa', baseText: 'Karte (Stadtplan)', acceptedAnswers: ['mappa', 'Mappa'] },
+    { id: 'sulla', targetText: 'sulla', baseText: 'auf der', acceptedAnswers: ['sulla', 'Sulla'] },
+    { id: 'qui', targetText: 'qui', baseText: 'hier', acceptedAnswers: ['qui', 'Qui'] },
+  ],
+  build: {
+    targetText: 'Mi può mostrare sulla mappa?',
+    chips: ['Mi può mostrare', 'sulla mappa?', 'qui', 'per favore'],
+  },
+  typeRecall: {
+    before: 'Mi può mostrare sulla ',
+    answer: 'mappa',
+    after: '?',
+    acceptedAnswers: ['mappa', 'Mappa'],
+    fallbackChoices: ['mappa', 'foto', 'schermo', 'pagina'],
+  },
+  speakTarget: {
+    baseCue: 'Können Sie es mir auf der Karte zeigen?',
+    targetPhrase: 'Mi può mostrare sulla mappa?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['mostrare', 'mappa'],
+    optionalTokens: ['mi', 'può', 'sulla', 'per', 'favore'],
+  },
+  sceneCaption: 'Am Schalter oder auf dem Bürgersteig hältst du die Karte hin und bittest um eine konkrete Geste.',
+  trophyWord: {
+    word: 'mappa',
+    meaning: 'Karte (Stadtplan)',
+    example: 'Dov\'è sulla mappa?',
+    whyThisWord: 'Mappa ist auf A1 die Karte in der Hand oder auf dem Handy. Vorsicht: das deutsche "Mappe" (Ordner) heißt im Italienischen "cartella" — falscher Freund.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Stadtkarte auf dem Tresen, Finger zeigt eine Linie, ruhige Frage.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'navigating together',
+  },
+  visualNotes: 'Karte im Fokus, warmes Hinweislicht, leichte Hand-Bewegung.',
+}
+
+const brightItalianP2Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Questo o quello?',
+    baseText: 'Dieses oder jenes?',
+  },
+  meaning: 'Eine knappe Auswahl-Frage zwischen zwei sichtbaren Möglichkeiten.',
+  chunks: [
+    { id: 'questo', targetText: 'Questo', baseText: 'Dieses' },
+    { id: 'o', targetText: 'o', baseText: 'oder' },
+    { id: 'quello', targetText: 'quello?', baseText: 'jenes?' },
+  ],
+  lessonItems: [
+    { id: 'questo', targetText: 'questo', baseText: 'dieses (hier)', acceptedAnswers: ['questo', 'Questo'] },
+    { id: 'quello', targetText: 'quello', baseText: 'jenes (dort)', acceptedAnswers: ['quello', 'Quello'] },
+    { id: 'o', targetText: 'o', baseText: 'oder', acceptedAnswers: ['o', 'O'] },
+    { id: 'meglio', targetText: 'meglio', baseText: 'besser', acceptedAnswers: ['meglio', 'Meglio'] },
+  ],
+  build: {
+    targetText: 'Questo o quello?',
+    chips: ['Questo', 'o', 'quello?', 'meglio', 'qui'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Questo',
+    after: ' o quello?',
+    acceptedAnswers: ['questo', 'Questo'],
+    fallbackChoices: ['Questo', 'Quello', 'Quale', 'Quanto'],
+  },
+  speakTarget: {
+    baseCue: 'Dieses oder jenes?',
+    targetPhrase: 'Questo o quello?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['questo', 'quello'],
+    optionalTokens: ['o', 'meglio', 'per', 'favore'],
+  },
+  sceneCaption: 'Vor zwei kleinen Stücken Gebäck zeigst du kurz beide und stellst die Wahlfrage.',
+  trophyWord: {
+    word: 'questo',
+    meaning: 'dieses (hier)',
+    example: 'Questo o quello?',
+    whyThisWord: 'Questo ist auf A1 das maskuline Nahzeige-Wort und kongruiert mit dem Bezugswort: questo caffè, questa mela, questi panini, queste cose. Das Gegenstück fern ist "quello".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Zwei kleine Stücke nebeneinander, Finger zeigt erst auf das eine, dann auf das andere.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'curious and choosing',
+  },
+  visualNotes: 'Symmetrische Zwei-Objekt-Komposition, warmes Licht, klare Auswahl-Stimmung.',
+}
+
+const brightItalianP2Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Questo è disponibile?',
+    baseText: 'Ist das verfügbar?',
+  },
+  meaning: 'Eine kurze, höfliche Frage, ob etwas Sichtbares gerade vorhanden ist.',
+  chunks: [
+    { id: 'questo', targetText: 'Questo', baseText: 'Dieses' },
+    { id: 'e', targetText: 'è', baseText: 'ist' },
+    { id: 'disponibile', targetText: 'disponibile?', baseText: 'verfügbar?' },
+  ],
+  lessonItems: [
+    { id: 'disponibile', targetText: 'disponibile', baseText: 'verfügbar / erhältlich', acceptedAnswers: ['disponibile', 'Disponibile'] },
+    { id: 'e', targetText: 'è', baseText: 'ist', acceptedAnswers: ['è', 'e', 'È', 'E'] },
+    { id: 'ancora', targetText: 'ancora', baseText: 'noch', acceptedAnswers: ['ancora', 'Ancora'] },
+    { id: 'subito', targetText: 'subito', baseText: 'sofort', acceptedAnswers: ['subito', 'Subito'] },
+  ],
+  build: {
+    targetText: 'Questo è disponibile?',
+    chips: ['Questo', 'è', 'disponibile?', 'ancora', 'subito'],
+  },
+  typeRecall: {
+    before: 'Questo è ',
+    answer: 'disponibile',
+    after: '?',
+    acceptedAnswers: ['disponibile', 'Disponibile'],
+    fallbackChoices: ['disponibile', 'pronto', 'libero', 'aperto'],
+  },
+  speakTarget: {
+    baseCue: 'Ist das verfügbar?',
+    targetPhrase: 'Questo è disponibile?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['questo', 'disponibile'],
+    optionalTokens: ['è', 'ancora', 'subito', 'per', 'favore'],
+  },
+  sceneCaption: 'Im kleinen Laden zeigst du kurz auf etwas und fragst, ob es gerade noch zu haben ist.',
+  trophyWord: {
+    word: 'disponibile',
+    meaning: 'verfügbar / erhältlich',
+    example: 'È ancora disponibile?',
+    whyThisWord: 'Disponibile deckt auf A1 sowohl Ware ("ist erhältlich") als auch Personen ("hat Zeit") ab und ist im Dienstleistungs-Italienisch das natürlichere Wort als ein wörtliches "avete...?".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Ladentheke, Gegenstand im Fokus, ruhige Verfügbarkeitsfrage.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'practical and asking',
+  },
+  visualNotes: 'Gegenstand im Fokus, warmer Tresen-Akzent, dezent fragender Blick.',
+}
+
+const brightItalianP2Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Posso pagare con la carta?',
+    baseText: 'Kann ich mit Karte zahlen?',
+  },
+  meaning: 'Die höfliche Standard-Frage am Tresen, ob Kartenzahlung möglich ist.',
+  chunks: [
+    { id: 'posso-pagare', targetText: 'Posso pagare', baseText: 'Kann ich zahlen' },
+    { id: 'con-la-carta', targetText: 'con la carta?', baseText: 'mit Karte?' },
+  ],
+  lessonItems: [
+    { id: 'posso', targetText: 'posso', baseText: 'kann ich', acceptedAnswers: ['posso', 'Posso'] },
+    { id: 'pagare', targetText: 'pagare', baseText: 'zahlen', acceptedAnswers: ['pagare', 'Pagare'] },
+    { id: 'carta', targetText: 'carta', baseText: 'Karte / Papier', acceptedAnswers: ['carta', 'Carta'] },
+    { id: 'contanti', targetText: 'contanti', baseText: 'Bargeld', acceptedAnswers: ['contanti', 'Contanti'] },
+  ],
+  build: {
+    targetText: 'Posso pagare con la carta?',
+    chips: ['Posso pagare', 'con la carta?', 'contanti', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Posso pagare con la ',
+    answer: 'carta',
+    after: '?',
+    acceptedAnswers: ['carta', 'Carta'],
+    fallbackChoices: ['carta', 'banca', 'mancia', 'fattura'],
+  },
+  speakTarget: {
+    baseCue: 'Kann ich mit Karte zahlen?',
+    targetPhrase: 'Posso pagare con la carta?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['posso', 'pagare', 'carta'],
+    optionalTokens: ['con', 'la', 'per', 'favore'],
+  },
+  sceneCaption: 'An der Kasse hältst du die Karte kurz hoch und stellst die Standard-Zahlungsfrage.',
+  trophyWord: {
+    word: 'carta',
+    meaning: 'Karte (Plastik) / Papier',
+    example: 'Pagare con la carta.',
+    whyThisWord: 'Carta heißt im Italienischen sowohl die Bankkarte als auch Papier — der Kontext macht eindeutig, was gemeint ist. Achtung: die deutsche "Karte" (Speisekarte) heißt italienisch "menù", nicht "carta".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kartenterminal nah, Karte in der Hand, ruhige Zahlungsgeste.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'practical checkout',
+  },
+  visualNotes: 'Terminal-Detail, warme Kassenlichter, kurzer Bestätigungs-Beat.',
+}
+
+const brightItalianP2Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Lo scontrino e una busta, per favore.',
+    baseText: 'Den Beleg und eine Tüte, bitte.',
+  },
+  meaning: 'Zwei knappe Bitten am Kassenende: Kassenzettel mitnehmen und Tüte dazu.',
+  chunks: [
+    { id: 'lo-scontrino', targetText: 'Lo scontrino', baseText: 'Den Beleg' },
+    { id: 'e-una-busta', targetText: 'e una busta,', baseText: 'und eine Tüte,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'scontrino', targetText: 'scontrino', baseText: 'Kassenbon / Beleg', acceptedAnswers: ['scontrino', 'Scontrino'] },
+    { id: 'busta', targetText: 'busta', baseText: 'Tüte / Beutel', acceptedAnswers: ['busta', 'Busta'] },
+    { id: 'lo', targetText: 'lo', baseText: 'den (vor s+Konsonant)', acceptedAnswers: ['lo', 'Lo'] },
+    { id: 'una', targetText: 'una', baseText: 'eine', acceptedAnswers: ['una', 'Una'] },
+  ],
+  build: {
+    targetText: 'Lo scontrino e una busta, per favore.',
+    chips: ['Lo scontrino', 'e una busta,', 'per favore.', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Lo ',
+    answer: 'scontrino',
+    after: ' e una busta, per favore.',
+    acceptedAnswers: ['scontrino', 'Scontrino'],
+    fallbackChoices: ['scontrino', 'biglietto', 'documento', 'foglio'],
+  },
+  speakTarget: {
+    baseCue: 'Den Beleg und eine Tüte, bitte.',
+    targetPhrase: 'Lo scontrino e una busta, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['scontrino', 'busta', 'per', 'favore'],
+    optionalTokens: ['lo', 'una', 'e', 'grazie'],
+  },
+  sceneCaption: 'An der Kasse nimmst du die Tüte entgegen und fragst gleichzeitig nach dem Kassenbon.',
+  trophyWord: {
+    word: 'scontrino',
+    meaning: 'Kassenbon / Beleg',
+    example: 'Vuole lo scontrino?',
+    whyThisWord: 'Scontrino ist auf A1 das italienische Kassenwort schlechthin — kürzer und alltäglicher als "ricevuta", die eher die offizielle Quittung ist. Wegen s+Konsonant nimmt es den Artikel "lo": lo scontrino.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kassendetail, Beleg löst sich aus dem Drucker, Tüte am Tresen.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'wrapping up the buy',
+  },
+  visualNotes: 'Belegdrucker-Detail, Tüten-Akzent, warme Schluss-Stimmung.',
+}
+
+const brightItalianP2Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Ho una prenotazione.',
+    baseText: 'Ich habe eine Reservierung.',
+  },
+  meaning: 'Die kurze, klare Eröffnung an Restaurant-Empfang oder Service-Theke, wenn ein Platz reserviert ist.',
+  chunks: [
+    { id: 'ho', targetText: 'Ho', baseText: 'Ich habe' },
+    { id: 'una-prenotazione', targetText: 'una prenotazione.', baseText: 'eine Reservierung.' },
+  ],
+  lessonItems: [
+    { id: 'ho', targetText: 'ho', baseText: 'ich habe', acceptedAnswers: ['ho', 'Ho'] },
+    { id: 'prenotazione', targetText: 'prenotazione', baseText: 'Reservierung', acceptedAnswers: ['prenotazione', 'Prenotazione'] },
+    { id: 'una', targetText: 'una', baseText: 'eine', acceptedAnswers: ['una', 'Una'] },
+    { id: 'a-nome', targetText: 'a nome', baseText: 'auf den Namen', acceptedAnswers: ['a nome', 'A nome'] },
+  ],
+  build: {
+    targetText: 'Ho una prenotazione.',
+    chips: ['Ho', 'una prenotazione.', 'a nome', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Ho una ',
+    answer: 'prenotazione',
+    after: '.',
+    acceptedAnswers: ['prenotazione', 'Prenotazione'],
+    fallbackChoices: ['prenotazione', 'domanda', 'richiesta', 'fattura'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe eine Reservierung.',
+    targetPhrase: 'Ho una prenotazione.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['ho', 'prenotazione'],
+    optionalTokens: ['una', 'a', 'nome', 'per', 'favore'],
+  },
+  sceneCaption: 'Am Restaurant-Empfang öffnest du die Szene knapp und sicher mit dem Reservierungs-Stichwort.',
+  trophyWord: {
+    word: 'prenotazione',
+    meaning: 'Reservierung / Buchung',
+    example: 'Ho una prenotazione a nome Rossi.',
+    whyThisWord: 'Prenotazione deckt auf A1 jede Reservierung ab — Restaurant, Hotel, Friseur, Arzt. Das Verb dazu ist "prenotare". Wichtig: kein falscher Freund — passt eins zu eins.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Empfangsstand, kleine Liste auf dem Tresen, ruhige Ankunft.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'arriving with a name',
+  },
+  visualNotes: 'Empfangs-Pult mit Reservierungs-Liste, kurzer Blick auf die Uhr, warme Begrüßung.',
+}
+
+const brightItalianP2Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Questo è giusto?',
+    baseText: 'Ist das richtig?',
+  },
+  meaning: 'Eine kurze, freundliche Vergewisserung, bevor du etwas annimmst oder dich festlegst.',
+  chunks: [
+    { id: 'questo', targetText: 'Questo', baseText: 'Dieses' },
+    { id: 'e', targetText: 'è', baseText: 'ist' },
+    { id: 'giusto', targetText: 'giusto?', baseText: 'richtig?' },
+  ],
+  lessonItems: [
+    { id: 'giusto', targetText: 'giusto', baseText: 'richtig', acceptedAnswers: ['giusto', 'Giusto'] },
+    { id: 'e', targetText: 'è', baseText: 'ist', acceptedAnswers: ['è', 'e', 'È', 'E'] },
+    { id: 'sicuro', targetText: 'sicuro', baseText: 'sicher', acceptedAnswers: ['sicuro', 'Sicuro'] },
+    { id: 'esatto', targetText: 'esatto', baseText: 'genau', acceptedAnswers: ['esatto', 'Esatto'] },
+  ],
+  build: {
+    targetText: 'Questo è giusto?',
+    chips: ['Questo', 'è', 'giusto?', 'sicuro', 'esatto'],
+  },
+  typeRecall: {
+    before: 'Questo è ',
+    answer: 'giusto',
+    after: '?',
+    acceptedAnswers: ['giusto', 'Giusto'],
+    fallbackChoices: ['giusto', 'sicuro', 'esatto', 'corretto'],
+  },
+  speakTarget: {
+    baseCue: 'Ist das richtig?',
+    targetPhrase: 'Questo è giusto?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['questo', 'giusto'],
+    optionalTokens: ['è', 'sicuro', 'esatto', 'per', 'favore'],
+  },
+  sceneCaption: 'Bevor du einsteigst oder mitnimmst, hebst du das Objekt kurz und fragst freundlich nach.',
+  trophyWord: {
+    word: 'giusto',
+    meaning: 'richtig / korrekt',
+    example: 'Questo è giusto, grazie.',
+    whyThisWord: 'Giusto ist auf A1 das warme Bestätigungs-Wort: "richtig", "stimmt", "passt". Als alleinstehende Antwort sagt der italienische Gesprächspartner oft nur "Giusto!" — kurz und entspannt.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Objekt in der Hand, kurzer Blickkontakt, freundliche Vergewisserung.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'checking gently',
+  },
+  visualNotes: 'Hände im Vordergrund, weiches Licht, kurzes Bestätigungs-Nicken im Hintergrund.',
+}
+
+const brightItalianP2Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Un momento, per favore.',
+    baseText: 'Einen Moment, bitte.',
+  },
+  meaning: 'Eine ruhige, höfliche Bitte um eine kurze Pause, während du etwas erledigst.',
+  chunks: [
+    { id: 'un-momento', targetText: 'Un momento,', baseText: 'Einen Moment,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'momento', targetText: 'momento', baseText: 'Moment', acceptedAnswers: ['momento', 'Momento'] },
+    { id: 'un', targetText: 'un', baseText: 'einen / ein', acceptedAnswers: ['un', 'Un'] },
+    { id: 'attimo', targetText: 'attimo', baseText: 'Augenblick', acceptedAnswers: ['attimo', 'Attimo'] },
+    { id: 'subito', targetText: 'subito', baseText: 'sofort', acceptedAnswers: ['subito', 'Subito'] },
+  ],
+  build: {
+    targetText: 'Un momento, per favore.',
+    chips: ['Un momento,', 'per favore.', 'attimo', 'subito'],
+  },
+  typeRecall: {
+    before: 'Un ',
+    answer: 'momento',
+    after: ', per favore.',
+    acceptedAnswers: ['momento', 'Momento'],
+    fallbackChoices: ['momento', 'attimo', 'minuto', 'secondo'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Moment, bitte.',
+    targetPhrase: 'Un momento, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['momento', 'per', 'favore'],
+    optionalTokens: ['un', 'attimo', 'subito', 'scusi'],
+  },
+  sceneCaption: 'Mitten im Bezahlen suchst du kurz die Karte oder das Wort und bittest höflich um einen Moment.',
+  trophyWord: {
+    word: 'momento',
+    meaning: 'Moment / Augenblick',
+    example: 'Un momento, per favore.',
+    whyThisWord: 'Momento ist auf A1 die universelle Mini-Pause-Bitte im italienischen Service-Alltag. Synonym ist "un attimo" — ebenfalls A1, oft sogar kürzer.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Geldbeutel halb offen, kurzer Blick nach unten, ruhige Mikropause.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle pause',
+  },
+  visualNotes: 'Ruhige Detailaufnahme, leichter Verschnauf-Beat, sanfter Übergang.',
 }
 
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
@@ -11189,6 +12295,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'spanish-a1-practical-2-001-no-entiendo',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-001-no-entiendo',
+      sequence: 1,
+      title: 'Ich verstehe nicht',
+    },
+    title: 'Ich verstehe nicht',
+    situation: {
+      en: "At a small shop or counter, admit you don't understand and ask for help.",
+      de: 'Am Tresen sagst du, dass du nicht verstehst, und bittest um Hilfe.',
+    },
+    pedagogicalGoal: 'Auf Spanisch sagen, dass du etwas nicht verstanden hast, und höflich um Hilfe bitten.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Können Sie das aufschreiben?',
+      situation: 'Du bittest, eine wichtige Angabe aufzuschreiben.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson001,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-2-002-escribir',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-002-escribir',
+      sequence: 2,
+      title: 'Können Sie das aufschreiben?',
+    },
+    title: 'Können Sie das aufschreiben?',
+    situation: {
+      en: 'At a counter, ask politely to have a name, address, or price written down.',
+      de: 'An der Theke bittest du, eine wichtige Angabe aufzuschreiben.',
+    },
+    pedagogicalGoal: 'Bitten, dass eine genaue Angabe für dich aufgeschrieben wird.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Zeigen Sie es mir',
+      situation: 'Du bittest, einen Punkt auf der Karte zu zeigen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson002,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-2-003-mostrar',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-003-mostrar',
+      sequence: 3,
+      title: 'Zeigen Sie es mir',
+    },
+    title: 'Zeigen Sie es mir',
+    situation: {
+      en: 'At a counter or sidewalk, ask politely to be shown a location on a map.',
+      de: 'Du bittest darum, einen Punkt auf der Karte gezeigt zu bekommen.',
+    },
+    pedagogicalGoal: 'Bitten, dass ein Ort visuell — z. B. auf einer Karte — gezeigt wird.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Welcher ist besser?',
+      situation: 'Du fragst nach der besseren von zwei Optionen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson003,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-2-004-cual-mejor',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-004-cual-mejor',
+      sequence: 4,
+      title: 'Welcher ist besser?',
+    },
+    title: 'Welcher ist besser?',
+    situation: {
+      en: 'At a shop, ask politely which of two options is better.',
+      de: 'Im Laden fragst du, welche von zwei Optionen besser ist.',
+    },
+    pedagogicalGoal: 'Höflich nach der besseren von zwei sichtbaren Optionen fragen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Haben Sie mehr?',
+      situation: 'Du fragst nach der Verfügbarkeit eines Artikels.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson004,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-2-005-tiene-mas',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-005-tiene-mas',
+      sequence: 5,
+      title: 'Haben Sie mehr?',
+    },
+    title: 'Haben Sie mehr?',
+    situation: {
+      en: 'In a small shop, ask politely whether more is available.',
+      de: 'Im Laden fragst du, ob es noch mehr davon gibt.',
+    },
+    pedagogicalGoal: 'Nach Verfügbarkeit fragen, ob es noch mehr von einem Artikel gibt.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Mit Karte zahlen',
+      situation: 'Du fragst, ob Kartenzahlung möglich ist.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson005,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-2-006-pagar-tarjeta',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-006-pagar-tarjeta',
+      sequence: 6,
+      title: 'Mit Karte zahlen',
+    },
+    title: 'Mit Karte zahlen',
+    situation: {
+      en: 'At the till, ask politely whether card payment is accepted.',
+      de: 'An der Kasse fragst du, ob Kartenzahlung möglich ist.',
+    },
+    pedagogicalGoal: 'An der Kasse höflich nach Kartenzahlung fragen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Eine Tüte, bitte',
+      situation: 'Du bittest um eine Tüte am Ende des Einkaufs.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson006,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-2-007-una-bolsa',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-007-una-bolsa',
+      sequence: 7,
+      title: 'Eine Tüte, bitte',
+    },
+    title: 'Eine Tüte, bitte',
+    situation: {
+      en: 'At the till, ask politely for a bag with your purchase.',
+      de: 'An der Kasse bittest du höflich um eine Tüte.',
+    },
+    pedagogicalGoal: 'Um eine Tüte am Ende eines kleinen Einkaufs bitten.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich habe eine Reservierung',
+      situation: 'Du meldest dich am Empfang an.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson007,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-2-008-tengo-reserva',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-008-tengo-reserva',
+      sequence: 8,
+      title: 'Ich habe eine Reservierung',
+    },
+    title: 'Ich habe eine Reservierung',
+    situation: {
+      en: 'At a restaurant or counter, announce your arrival with a reservation.',
+      de: 'Am Empfang meldest du dich mit deiner Reservierung an.',
+    },
+    pedagogicalGoal: 'Sich am Empfang mit einer Reservierung anmelden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist das der richtige?',
+      situation: 'Du bestätigst, dass es das richtige Objekt ist.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson008,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-2-009-es-este-correcto',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-009-es-este-correcto',
+      sequence: 9,
+      title: 'Ist das der richtige?',
+    },
+    title: 'Ist das der richtige?',
+    situation: {
+      en: 'Before committing, confirm politely that this is the correct one.',
+      de: 'Vor der Entscheidung bestätigst du, dass es das richtige ist.',
+    },
+    pedagogicalGoal: 'Vor einer Entscheidung höflich bestätigen, dass es das richtige Objekt oder die richtige Wahl ist.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Einen Moment, bitte',
+      situation: 'Du bittest um einen kurzen Augenblick.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson009,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-2-010-un-momento',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TWO_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-2-010-un-momento',
+      sequence: 10,
+      title: 'Einen Moment, bitte',
+    },
+    title: 'Einen Moment, bitte',
+    situation: {
+      en: 'At a counter, ask the other to wait briefly while you finish a small task.',
+      de: 'An der Theke bittest du um einen kurzen Moment.',
+    },
+    pedagogicalGoal: 'Um einen kurzen Moment bitten, ohne die Szene zu blockieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Spanish A1 Practical 2 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP2Lesson010,
+    },
+  },
+  {
     id: 'italian-a1-practical-001-primo-contatto',
     pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
@@ -11518,6 +12954,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
       bright: brightItalianLesson010,
     },
   },
+  {
+    id: 'italian-a1-practical-2-lesson-1-non-capisco',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-1-non-capisco',
+      sequence: 1,
+      title: 'Ich verstehe nicht',
+    },
+    title: 'Ich verstehe nicht',
+    situation: {
+      en: 'Mid-exchange, admit you do not understand and ask for help.',
+      de: 'Mitten im Gespräch gibst du zu, dass du etwas nicht verstanden hast, und bittest um Hilfe.',
+    },
+    pedagogicalGoal: 'Höflich Verständnis-Schwierigkeit zugeben und eine offene Bitte um Hilfe formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Bitte aufschreiben',
+      situation: 'Du bittest, etwas aufzuschreiben.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson001,
+    },
+  },
+  {
+    id: 'italian-a1-practical-2-lesson-2-scriverlo',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-2-scriverlo',
+      sequence: 2,
+      title: 'Bitte aufschreiben',
+    },
+    title: 'Bitte aufschreiben',
+    situation: {
+      en: 'Ask politely that the information be written down.',
+      de: 'Du bittest höflich, eine Information aufzuschreiben.',
+    },
+    pedagogicalGoal: 'Eine konkrete Schreib-Bitte auf Italienisch sicher äußern.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Auf der Karte zeigen',
+      situation: 'Du bittest, einen Ort auf der Karte zu zeigen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson002,
+    },
+  },
+  {
+    id: 'italian-a1-practical-2-lesson-3-sulla-mappa',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-3-sulla-mappa',
+      sequence: 3,
+      title: 'Auf der Karte zeigen',
+    },
+    title: 'Auf der Karte zeigen',
+    situation: {
+      en: 'Ask someone to show a location on a map or phone.',
+      de: 'Du bittest, einen Ort auf der Karte oder dem Handy zu zeigen.',
+    },
+    pedagogicalGoal: 'Eine Zeige-Bitte auf Italienisch mit konkretem Hilfsmittel formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Dies oder das?',
+      situation: 'Du fragst, welche von zwei sichtbaren Möglichkeiten es sein soll.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson003,
+    },
+  },
+  {
+    id: 'italian-a1-practical-2-lesson-4-questo-o-quello',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-4-questo-o-quello',
+      sequence: 4,
+      title: 'Dies oder das?',
+    },
+    title: 'Dies oder das?',
+    situation: {
+      en: 'At a counter, ask which of two visible items is meant.',
+      de: 'Am Tresen fragst du, welches von zwei sichtbaren Stücken gemeint ist.',
+    },
+    pedagogicalGoal: 'Eine binäre Wahlfrage mit italienischen Demonstrativen sicher stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist es verfügbar?',
+      situation: 'Du fragst, ob etwas noch zu haben ist.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson004,
+    },
+  },
+  {
+    id: 'italian-a1-practical-2-lesson-5-disponibile',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-5-disponibile',
+      sequence: 5,
+      title: 'Ist es verfügbar?',
+    },
+    title: 'Ist es verfügbar?',
+    situation: {
+      en: 'In a small shop, ask whether an item is available.',
+      de: 'Im kleinen Laden fragst du, ob etwas noch zu haben ist.',
+    },
+    pedagogicalGoal: 'Eine konkrete Verfügbarkeitsfrage auf Italienisch sicher äußern.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Mit Karte zahlen',
+      situation: 'An der Kasse fragst du, ob du mit Karte zahlen kannst.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson005,
+    },
+  },
+  {
+    id: 'italian-a1-practical-2-lesson-6-pagare-carta',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-6-pagare-carta',
+      sequence: 6,
+      title: 'Mit Karte zahlen',
+    },
+    title: 'Mit Karte zahlen',
+    situation: {
+      en: 'At the till, ask whether you can pay by card.',
+      de: 'An der Kasse fragst du, ob du mit Karte zahlen kannst.',
+    },
+    pedagogicalGoal: 'Die Standard-Frage nach Kartenzahlung auf Italienisch sicher stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Der Beleg',
+      situation: 'Du bittest um Kassenbon und Tüte.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson006,
+    },
+  },
+  {
+    id: 'italian-a1-practical-2-lesson-7-scontrino-busta',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-7-scontrino-busta',
+      sequence: 7,
+      title: 'Der Beleg',
+    },
+    title: 'Der Beleg',
+    situation: {
+      en: 'At the till, ask for the receipt and a bag.',
+      de: 'An der Kasse bittest du um Beleg und eine Tüte.',
+    },
+    pedagogicalGoal: 'Zwei kleine Bitten am Kassenende auf Italienisch zusammenfassen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich habe eine Reservierung',
+      situation: 'Am Empfang nennst du deine Reservierung.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson007,
+    },
+  },
+  {
+    id: 'italian-a1-practical-2-lesson-8-prenotazione',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-8-prenotazione',
+      sequence: 8,
+      title: 'Ich habe eine Reservierung',
+    },
+    title: 'Ich habe eine Reservierung',
+    situation: {
+      en: 'At a service counter, announce an existing reservation.',
+      de: 'Am Empfang öffnest du die Szene mit deiner Reservierung.',
+    },
+    pedagogicalGoal: 'Eine bestehende Reservierung auf Italienisch knapp und sicher ankündigen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist es das richtige?',
+      situation: 'Du vergewisserst dich, bevor du dich festlegst.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson008,
+    },
+  },
+  {
+    id: 'italian-a1-practical-2-lesson-9-questo-e-giusto',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-9-questo-e-giusto',
+      sequence: 9,
+      title: 'Ist es das richtige?',
+    },
+    title: 'Ist es das richtige?',
+    situation: {
+      en: 'Confirm an item or place is the correct one before committing.',
+      de: 'Du vergewisserst dich kurz, bevor du dich festlegst.',
+    },
+    pedagogicalGoal: 'Eine kurze Bestätigungsfrage vor dem Festlegen auf Italienisch sicher stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Einen Moment, bitte',
+      situation: 'Du bittest um einen kurzen Moment Zeit.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson009,
+    },
+  },
+  {
+    id: 'italian-a1-practical-2-lesson-10-un-momento',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-2-lesson-10-un-momento',
+      sequence: 10,
+      title: 'Einen Moment, bitte',
+    },
+    title: 'Einen Moment, bitte',
+    situation: {
+      en: 'Ask someone to wait briefly while you handle a small task.',
+      de: 'Du bittest um einen kurzen Moment, während du etwas erledigst.',
+    },
+    pedagogicalGoal: 'Eine ruhige Pausen-Bitte auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Italian A1 Practical 2 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP2Lesson010,
+    },
+  },
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -11542,6 +13308,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_TEN_METADATA,
     GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
+    GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
   ]
 }
 
