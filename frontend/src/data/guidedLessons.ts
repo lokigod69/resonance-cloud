@@ -335,6 +335,17 @@ const GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_FRENCH_ONE_METADATA: GuidedPathMetadata = {
+  id: 'french-a1-practical-1',
+  title: 'French A1 Practical 1',
+  shortTitle: 'A1 Practical 1',
+  subtitle: 'Erste Hilfsphrasen auf Französisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'French',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -11055,6 +11066,555 @@ const brightItalianP2Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Ruhige Detailaufnahme, leichter Verschnauf-Beat, sanfter Übergang.',
 }
 
+const brightFrenchLesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Bonjour, vous parlez français ?',
+    baseText: 'Guten Tag, sprechen Sie Französisch?',
+  },
+  meaning: 'Eine höfliche Eröffnungsfrage am Tresen, bevor das Gespräch auf Französisch weiterläuft.',
+  chunks: [
+    { id: 'bonjour', targetText: 'Bonjour,', baseText: 'Guten Tag,' },
+    { id: 'vous-parlez', targetText: 'vous parlez', baseText: 'sprechen Sie' },
+    { id: 'francais', targetText: 'français ?', baseText: 'Französisch?' },
+  ],
+  lessonItems: [
+    { id: 'bonjour', targetText: 'bonjour', baseText: 'Guten Tag / Hallo', acceptedAnswers: ['bonjour', 'Bonjour'] },
+    { id: 'vous', targetText: 'vous', baseText: 'Sie (höflich)', acceptedAnswers: ['vous', 'Vous'] },
+    { id: 'parlez', targetText: 'parlez', baseText: 'sprechen Sie', acceptedAnswers: ['parlez', 'Parlez'] },
+    { id: 'francais', targetText: 'français', baseText: 'Französisch', acceptedAnswers: ['français', 'francais', 'Français', 'Francais'] },
+  ],
+  build: {
+    targetText: 'Bonjour, vous parlez français ?',
+    chips: ['Bonjour,', 'vous parlez', 'français ?', 'merci', 'pardon'],
+  },
+  typeRecall: {
+    before: 'Bonjour, vous ',
+    answer: 'parlez',
+    after: ' français ?',
+    acceptedAnswers: ['parlez', 'Parlez'],
+    fallbackChoices: ['parlez', 'parle', 'français', 'vous'],
+  },
+  speakTarget: {
+    baseCue: 'Guten Tag, sprechen Sie Französisch?',
+    targetPhrase: 'Bonjour, vous parlez français ?',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['bonjour', 'vous', 'parlez'],
+    optionalTokens: ['français', 'francais', 'merci', 'pardon'],
+  },
+  sceneCaption: 'Vor der Theke im Café fragst du höflich, ob die andere Person Französisch spricht.',
+  trophyWord: {
+    word: 'bonjour',
+    meaning: 'Guten Tag / Hallo',
+    example: 'Bonjour, vous parlez français ?',
+    whyThisWord: 'Bonjour ist die sichere A1-Eröffnung in Frankreich: im Servicekontext neutral, höflich und tageszeitlich breiter als ein lockeres "salut". Hier steht "vous" als höfliche Singularform für eine fremde Person.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Morgenlicht im Café, offene Theke, ruhiger erster Gruß auf Französisch.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic chanson-light',
+    mood: 'warm first contact',
+  },
+  visualNotes: 'Warmes Honig-Licht, Café-Theke, sanfter Korall-Akzent auf Bonjour.',
+}
+
+const brightFrenchLesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Pardon, vous pouvez répéter, s'il vous plaît ?",
+    baseText: 'Entschuldigung, können Sie das bitte wiederholen?',
+  },
+  meaning: 'Eine höfliche Bitte, das eben Gesagte noch einmal zu hören.',
+  chunks: [
+    { id: 'pardon', targetText: 'Pardon,', baseText: 'Entschuldigung,' },
+    { id: 'vous-pouvez-repeter', targetText: 'vous pouvez répéter,', baseText: 'können Sie wiederholen,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'pardon', targetText: 'pardon', baseText: 'Entschuldigung', acceptedAnswers: ['pardon', 'Pardon'] },
+    { id: 'pouvez', targetText: 'pouvez', baseText: 'können Sie', acceptedAnswers: ['pouvez', 'Pouvez'] },
+    { id: 'repeter', targetText: 'répéter', baseText: 'wiederholen', acceptedAnswers: ['répéter', 'repeter', 'Répéter', 'Repeter'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: 'bitte (höflich)', acceptedAnswers: ["s'il vous plaît", "s'il vous plait", 'sil vous plaît', 'sil vous plait'] },
+  ],
+  build: {
+    targetText: "Pardon, vous pouvez répéter, s'il vous plaît ?",
+    chips: ['Pardon,', 'vous pouvez', 'répéter,', "s'il vous plaît ?", 'lentement'],
+  },
+  typeRecall: {
+    before: 'Pardon, vous pouvez ',
+    answer: 'répéter',
+    after: ", s'il vous plaît ?",
+    acceptedAnswers: ['répéter', 'repeter', 'Répéter', 'Repeter'],
+    fallbackChoices: ['répéter', 'parler', 'dire', 'écouter'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, können Sie das bitte wiederholen?',
+    targetPhrase: "Pardon, vous pouvez répéter, s'il vous plaît ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['pardon', 'vous', 'pouvez'],
+    optionalTokens: ['répéter', 'repeter', 'sil', 'plait', 'lentement'],
+  },
+  sceneCaption: 'Mitten im Gespräch bittest du ruhig und höflich um eine Wiederholung.',
+  trophyWord: {
+    word: 'pardon',
+    meaning: 'Entschuldigung',
+    example: 'Pardon, vous pouvez répéter ?',
+    whyThisWord: 'Pardon ist auf A1 die kurze, natürliche Reparatur-Eröffnung, wenn du etwas nicht verstanden hast. In dieser Service-Szene bleibt "vous" konsequent höflich.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Sanftes Café-Licht, kurze Pause am Tresen, ruhige Rückfrage.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle pause',
+  },
+  visualNotes: 'Pausen-Beat, sanfter Glow um Pardon, ruhiger Atemmoment.',
+}
+
+const brightFrenchLesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Excusez-moi, où est la gare ?',
+    baseText: 'Entschuldigung, wo ist der Bahnhof?',
+  },
+  meaning: 'Eine kurze, höfliche Frage nach einem klaren Ziel in der Stadt.',
+  chunks: [
+    { id: 'excusez-moi', targetText: 'Excusez-moi,', baseText: 'Entschuldigung,' },
+    { id: 'ou-est', targetText: 'où est', baseText: 'wo ist' },
+    { id: 'la-gare', targetText: 'la gare ?', baseText: 'der Bahnhof?' },
+  ],
+  lessonItems: [
+    { id: 'excusez-moi', targetText: 'excusez-moi', baseText: 'entschuldigen Sie', acceptedAnswers: ['excusez-moi', 'Excusez-moi', 'excusez moi'] },
+    { id: 'ou', targetText: 'où', baseText: 'wo', acceptedAnswers: ['où', 'ou', 'Où', 'Ou'] },
+    { id: 'est', targetText: 'est', baseText: 'ist', acceptedAnswers: ['est', 'Est'] },
+    { id: 'gare', targetText: 'gare', baseText: 'Bahnhof', acceptedAnswers: ['gare', 'Gare'] },
+  ],
+  build: {
+    targetText: 'Excusez-moi, où est la gare ?',
+    chips: ['Excusez-moi,', 'où est', 'la gare ?', 'ici', 'merci'],
+  },
+  typeRecall: {
+    before: 'Excusez-moi, ',
+    answer: 'où',
+    after: ' est la gare ?',
+    acceptedAnswers: ['où', 'ou', 'Où', 'Ou'],
+    fallbackChoices: ['où', 'quand', 'comment', 'qui'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, wo ist der Bahnhof?',
+    targetPhrase: 'Excusez-moi, où est la gare ?',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['excusez', 'moi', 'est', 'gare'],
+    optionalTokens: ['où', 'ou', 'la', 'ici', 'merci'],
+  },
+  sceneCaption: 'Auf dem Gehweg sprichst du jemanden höflich an und fragst nach dem Bahnhof.',
+  trophyWord: {
+    word: 'où',
+    meaning: 'wo',
+    example: 'Où est la gare ?',
+    whyThisWord: 'Où ist das A1-Schlüsselwort für Ortsfragen. Der Akzent unterscheidet es von "ou" ohne Akzent, das "oder" bedeutet; in Tippantworten tolerieren wir die fehlende Akzenttaste.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Helle Straße am Vormittag, ein Bahnhofsschild in der Ferne, offene Geste.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'open and asking',
+  },
+  visualNotes: 'Goldene Richtungsachse, Bahnhofssymbol am Horizont, warme Hinweisspur.',
+}
+
+const brightFrenchLesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Je voudrais un café, s'il vous plaît.",
+    baseText: 'Ich hätte gerne einen Kaffee, bitte.',
+  },
+  meaning: 'Eine höfliche Bestellung am Tresen mit dem französischen Wunsch-Konditional.',
+  chunks: [
+    { id: 'je-voudrais', targetText: 'Je voudrais', baseText: 'Ich hätte gerne' },
+    { id: 'un-cafe', targetText: 'un café,', baseText: 'einen Kaffee,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'je-voudrais', targetText: 'je voudrais', baseText: 'ich hätte gerne', acceptedAnswers: ['je voudrais', 'Je voudrais'] },
+    { id: 'un', targetText: 'un', baseText: 'einen / ein', acceptedAnswers: ['un', 'Un'] },
+    { id: 'cafe', targetText: 'café', baseText: 'Kaffee', acceptedAnswers: ['café', 'cafe', 'Café', 'Cafe'] },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît", baseText: 'bitte (höflich)', acceptedAnswers: ["s'il vous plaît", "s'il vous plait", 'sil vous plaît', 'sil vous plait'] },
+  ],
+  build: {
+    targetText: "Je voudrais un café, s'il vous plaît.",
+    chips: ['Je voudrais', 'un café,', "s'il vous plaît.", 'merci', 'avec du lait'],
+  },
+  typeRecall: {
+    before: 'Je voudrais un ',
+    answer: 'café',
+    after: ", s'il vous plaît.",
+    acceptedAnswers: ['café', 'cafe', 'Café', 'Cafe'],
+    fallbackChoices: ['café', 'thé', 'eau', 'vin'],
+  },
+  speakTarget: {
+    baseCue: 'Ich hätte gerne einen Kaffee, bitte.',
+    targetPhrase: "Je voudrais un café, s'il vous plaît.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['je', 'voudrais', 'un'],
+    optionalTokens: ['café', 'cafe', 'sil', 'vous', 'plait', 'merci'],
+  },
+  sceneCaption: 'Am Tresen klingt die Bestellung kurz, ruhig und freundlich mit "je voudrais".',
+  trophyWord: {
+    word: 'café',
+    meaning: 'Kaffee / Café',
+    example: "Je voudrais un café, s'il vous plaît.",
+    whyThisWord: 'Café ist A1-Alltag: Getränk und Ort teilen im Französischen dieselbe Form. Im Servicekontext ist "je voudrais" höflicher und natürlicher als das direkte "je veux".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kaffeetasse auf der Theke, warmes Morgenlicht, ruhige Bestellung.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic chanson-light',
+    mood: 'fresh and easy',
+  },
+  visualNotes: 'Tassen-Detail in goldenem Licht, kurzer Tresenmoment, sanfte Wärme.',
+}
+
+const brightFrenchLesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Combien ça coûte, s'il vous plaît ?",
+    baseText: 'Wie viel kostet das bitte?',
+  },
+  meaning: 'Eine direkte, höfliche Preisfrage zu einem Gegenstand vor dir.',
+  chunks: [
+    { id: 'combien', targetText: 'Combien', baseText: 'Wie viel' },
+    { id: 'ca-coute', targetText: 'ça coûte,', baseText: 'kostet das,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît ?", baseText: 'bitte?' },
+  ],
+  lessonItems: [
+    { id: 'combien', targetText: 'combien', baseText: 'wie viel', acceptedAnswers: ['combien', 'Combien'] },
+    { id: 'ca', targetText: 'ça', baseText: 'das', acceptedAnswers: ['ça', 'ca', 'Ça', 'Ca'] },
+    { id: 'coute', targetText: 'coûte', baseText: 'kostet', acceptedAnswers: ['coûte', 'coute', 'Coûte', 'Coute'] },
+    { id: 'cher', targetText: 'cher', baseText: 'teuer', acceptedAnswers: ['cher', 'Cher'] },
+  ],
+  build: {
+    targetText: "Combien ça coûte, s'il vous plaît ?",
+    chips: ['Combien', 'ça coûte,', "s'il vous plaît ?", 'cher', 'merci'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Combien',
+    after: " ça coûte, s'il vous plaît ?",
+    acceptedAnswers: ['combien', 'Combien'],
+    fallbackChoices: ['Combien', 'Comment', 'Quand', 'Où'],
+  },
+  speakTarget: {
+    baseCue: 'Wie viel kostet das bitte?',
+    targetPhrase: "Combien ça coûte, s'il vous plaît ?",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['combien', 'ça', 'coûte'],
+    optionalTokens: ['ca', 'coute', 'sil', 'vous', 'plait', 'cher'],
+  },
+  sceneCaption: 'Im kleinen Laden hältst du den Gegenstand in der Hand und fragst nach dem Preis.',
+  trophyWord: {
+    word: 'combien',
+    meaning: 'wie viel',
+    example: 'Combien ça coûte ?',
+    whyThisWord: 'Combien deckt auf A1 Preis- und Mengenfragen ab. In der Preisfrage ist "ça coûte" die natürliche kurze Form; kein spanisches oder italienisches Fragezeichen davor.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kleines Ladenlokal, Gegenstand auf dem Tresen, klare Preisfrage.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'curious and direct',
+  },
+  visualNotes: 'Preisschild im Fokus, warme Pastellfarben, ruhige Beleuchtung.',
+}
+
+const brightFrenchLesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'À quelle heure part le train ?',
+    baseText: 'Um wie viel Uhr fährt der Zug?',
+  },
+  meaning: 'Eine klare Frage nach der Abfahrtszeit am Bahnhof.',
+  chunks: [
+    { id: 'a-quelle-heure', targetText: 'À quelle heure', baseText: 'Um wie viel Uhr' },
+    { id: 'part', targetText: 'part', baseText: 'fährt ab' },
+    { id: 'le-train', targetText: 'le train ?', baseText: 'der Zug?' },
+  ],
+  lessonItems: [
+    { id: 'a-quelle-heure', targetText: 'à quelle heure', baseText: 'um wie viel Uhr', acceptedAnswers: ['à quelle heure', 'a quelle heure', 'À quelle heure', 'A quelle heure'] },
+    { id: 'part', targetText: 'part', baseText: 'fährt ab', acceptedAnswers: ['part', 'Part'] },
+    { id: 'train', targetText: 'train', baseText: 'Zug', acceptedAnswers: ['train', 'Train'] },
+    { id: 'heure', targetText: 'heure', baseText: 'Uhrzeit / Stunde', acceptedAnswers: ['heure', 'Heure'] },
+  ],
+  build: {
+    targetText: 'À quelle heure part le train ?',
+    chips: ['À quelle heure', 'part', 'le train ?', 'gare', 'maintenant'],
+  },
+  typeRecall: {
+    before: 'À quelle heure part le ',
+    answer: 'train',
+    after: ' ?',
+    acceptedAnswers: ['train', 'Train'],
+    fallbackChoices: ['train', 'bus', 'métro', 'taxi'],
+  },
+  speakTarget: {
+    baseCue: 'Um wie viel Uhr fährt der Zug?',
+    targetPhrase: 'À quelle heure part le train ?',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['quelle', 'heure', 'part', 'train'],
+    optionalTokens: ['à', 'a', 'le', 'gare', 'maintenant'],
+  },
+  sceneCaption: 'Am Informationsschalter im Bahnhof fragst du nach der Abfahrtszeit.',
+  trophyWord: {
+    word: 'train',
+    meaning: 'Zug',
+    example: 'Le train part à huit heures.',
+    whyThisWord: 'Train ist ein A1-Kernwort für Reisen in Frankreich. Die Frage bleibt einfach im Präsens; "part" ist hier "fährt ab".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Helle Bahnhofshalle, Anzeigetafel im Hintergrund, ruhige Frage am Schalter.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'ready and moving',
+  },
+  visualNotes: 'Uhr- und Tafel-Detail, warme Halle, klare Linienführung Richtung Bahnsteig.',
+}
+
+const brightFrenchLesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "J'ai besoin d'aide, s'il vous plaît.",
+    baseText: 'Ich brauche Hilfe, bitte.',
+  },
+  meaning: 'Eine knappe, höfliche Bitte um Hilfe, ohne das Problem schon zu benennen.',
+  chunks: [
+    { id: 'jai-besoin', targetText: "J'ai besoin", baseText: 'Ich brauche' },
+    { id: 'daide', targetText: "d'aide,", baseText: 'Hilfe,' },
+    { id: 'sil-vous-plait', targetText: "s'il vous plaît.", baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'jai-besoin', targetText: "j'ai besoin", baseText: 'ich brauche', acceptedAnswers: ["j'ai besoin", 'j ai besoin', "J'ai besoin"] },
+    { id: 'aide', targetText: 'aide', baseText: 'Hilfe', acceptedAnswers: ['aide', 'Aide'] },
+    { id: 'daide', targetText: "d'aide", baseText: 'von Hilfe / Hilfe', acceptedAnswers: ["d'aide", 'd aide', "D'aide"] },
+    { id: 'ici', targetText: 'ici', baseText: 'hier', acceptedAnswers: ['ici', 'Ici'] },
+  ],
+  build: {
+    targetText: "J'ai besoin d'aide, s'il vous plaît.",
+    chips: ["J'ai besoin", "d'aide,", "s'il vous plaît.", 'ici', 'merci'],
+  },
+  typeRecall: {
+    before: "J'ai besoin d'",
+    answer: 'aide',
+    after: ", s'il vous plaît.",
+    acceptedAnswers: ['aide', 'Aide'],
+    fallbackChoices: ['aide', 'eau', 'heure', 'adresse'],
+  },
+  speakTarget: {
+    baseCue: 'Ich brauche Hilfe, bitte.',
+    targetPhrase: "J'ai besoin d'aide, s'il vous plaît.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['jai', 'besoin', 'aide'],
+    optionalTokens: ['sil', 'vous', 'plait', 'ici', 'merci'],
+  },
+  sceneCaption: 'In der Apotheke gehst du ruhig zur Theke und sagst, dass du Hilfe brauchst.',
+  trophyWord: {
+    word: 'aide',
+    meaning: 'Hilfe',
+    example: "J'ai besoin d'aide.",
+    whyThisWord: "Aide ist das A1-Hilfe-Wort für Apotheke, Bahnhof und Empfang. Die Form \"d'aide\" zeigt die nötige Elision nach \"de\": nicht \"de aide\".",
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Ruhige Apothekentheke, klares Licht, kurze Bitte um Hilfe ohne Drama.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'calm and asking',
+  },
+  visualNotes: 'Ruhiger Innenraum, sanftes Pastellgrün, klare Geste am Tresen.',
+}
+
+const brightFrenchLesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "C'est très joli ici.",
+    baseText: 'Es ist hier sehr schön.',
+  },
+  meaning: 'Ein kurzer, positiver Small-Talk-Satz über das Lokal oder den Ort.',
+  chunks: [
+    { id: 'cest', targetText: "C'est", baseText: 'Es ist' },
+    { id: 'tres-joli', targetText: 'très joli', baseText: 'sehr schön' },
+    { id: 'ici', targetText: 'ici.', baseText: 'hier.' },
+  ],
+  lessonItems: [
+    { id: 'cest', targetText: "c'est", baseText: 'es ist / das ist', acceptedAnswers: ["c'est", 'c est', "C'est"] },
+    { id: 'tres', targetText: 'très', baseText: 'sehr', acceptedAnswers: ['très', 'tres', 'Très', 'Tres'] },
+    { id: 'joli', targetText: 'joli', baseText: 'schön / hübsch', acceptedAnswers: ['joli', 'Joli'] },
+    { id: 'ici', targetText: 'ici', baseText: 'hier', acceptedAnswers: ['ici', 'Ici'] },
+  ],
+  build: {
+    targetText: "C'est très joli ici.",
+    chips: ["C'est", 'très joli', 'ici.', 'calme', 'merci'],
+  },
+  typeRecall: {
+    before: "C'est très joli ",
+    answer: 'ici',
+    after: '.',
+    acceptedAnswers: ['ici', 'Ici'],
+    fallbackChoices: ['ici', 'là', 'où', 'gare'],
+  },
+  speakTarget: {
+    baseCue: 'Es ist hier sehr schön.',
+    targetPhrase: "C'est très joli ici.",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['cest', 'joli', 'ici'],
+    optionalTokens: ['très', 'tres', 'calme'],
+  },
+  sceneCaption: 'Im Café drehst du dich kurz zum Gegenüber und sagst etwas Nettes über den Ort.',
+  trophyWord: {
+    word: 'ici',
+    meaning: 'hier',
+    example: "C'est très joli ici.",
+    whyThisWord: "Ici ist ein A1-Ortsanker und macht den Satz sofort auf den aktuellen Raum bezogen. \"C'est\" zeigt die Pflicht-Elision: nicht \"ce est\".",
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café von innen, warmes Licht, ein kurzer zufriedener Blick.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'happy and present',
+  },
+  visualNotes: 'Innenraum mit weichen Schatten, Korall-Akzent, sanftes Lächeln im Hintergrund.',
+}
+
+const brightFrenchLesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Demain à sept heures. D'accord !",
+    baseText: 'Morgen um sieben Uhr. Einverstanden!',
+  },
+  meaning: 'Eine kurze Bestätigung eines Plans mit Tag, Uhrzeit und Zustimmung.',
+  chunks: [
+    { id: 'demain', targetText: 'Demain', baseText: 'Morgen' },
+    { id: 'a-sept-heures', targetText: 'à sept heures.', baseText: 'um sieben Uhr.' },
+    { id: 'daccord', targetText: "D'accord !", baseText: 'Einverstanden!' },
+  ],
+  lessonItems: [
+    { id: 'demain', targetText: 'demain', baseText: 'morgen', acceptedAnswers: ['demain', 'Demain'] },
+    { id: 'a-sept-heures', targetText: 'à sept heures', baseText: 'um sieben Uhr', acceptedAnswers: ['à sept heures', 'a sept heures', 'À sept heures', 'A sept heures'] },
+    { id: 'sept', targetText: 'sept', baseText: 'sieben', acceptedAnswers: ['sept', 'Sept'] },
+    { id: 'daccord', targetText: "d'accord", baseText: 'einverstanden / okay', acceptedAnswers: ["d'accord", 'd accord', "D'accord"] },
+  ],
+  build: {
+    targetText: "Demain à sept heures. D'accord !",
+    chips: ['Demain', 'à sept heures.', "D'accord !", 'merci', 'ici'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Demain',
+    after: " à sept heures. D'accord !",
+    acceptedAnswers: ['demain', 'Demain'],
+    fallbackChoices: ['Demain', "Aujourd'hui", 'Maintenant', 'Hier'],
+  },
+  speakTarget: {
+    baseCue: 'Morgen um sieben Uhr. Einverstanden!',
+    targetPhrase: "Demain à sept heures. D'accord !",
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['demain', 'sept', 'heures'],
+    optionalTokens: ['à', 'a', 'daccord', 'accord', 'merci'],
+  },
+  sceneCaption: 'Am Ende der Begegnung bestätigst du locker den Termin für morgen.',
+  trophyWord: {
+    word: 'demain',
+    meaning: 'morgen',
+    example: "Demain à sept heures, d'accord.",
+    whyThisWord: 'Demain ist ein A1-Zeitanker für kurzfristige Planung. Die Zahl sieben bleibt A1-sicher; wir vermeiden die schwierigen französischen 70/80/90-Zahlen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Spätnachmittag, kurzer Handschlag oder Nicken, ruhige Bestätigung.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'easy plan confirmation',
+  },
+  visualNotes: 'Warmes Abendlicht, Uhr-Akzent, ruhiges Nicken vor dem nächsten Tag.',
+}
+
+const brightFrenchLesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Merci beaucoup. Au revoir.',
+    baseText: 'Vielen Dank. Auf Wiedersehen.',
+  },
+  meaning: 'Ein warmer Abschluss mit deutlichem Dank und höflichem Abschied.',
+  chunks: [
+    { id: 'merci-beaucoup', targetText: 'Merci beaucoup.', baseText: 'Vielen Dank.' },
+    { id: 'au-revoir', targetText: 'Au revoir.', baseText: 'Auf Wiedersehen.' },
+  ],
+  lessonItems: [
+    { id: 'merci', targetText: 'merci', baseText: 'danke', acceptedAnswers: ['merci', 'Merci'] },
+    { id: 'beaucoup', targetText: 'beaucoup', baseText: 'viel / sehr', acceptedAnswers: ['beaucoup', 'Beaucoup'] },
+    { id: 'au-revoir', targetText: 'au revoir', baseText: 'auf Wiedersehen', acceptedAnswers: ['au revoir', 'Au revoir'] },
+    { id: 'a-bientot', targetText: 'à bientôt', baseText: 'bis bald', acceptedAnswers: ['à bientôt', 'a bientot', 'À bientôt', 'A bientot'] },
+  ],
+  build: {
+    targetText: 'Merci beaucoup. Au revoir.',
+    chips: ['Merci beaucoup.', 'Au revoir.', 'à bientôt', "d'accord"],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Merci',
+    after: ' beaucoup. Au revoir.',
+    acceptedAnswers: ['merci', 'Merci'],
+    fallbackChoices: ['Merci', 'Bonjour', 'Pardon', 'Demain'],
+  },
+  speakTarget: {
+    baseCue: 'Vielen Dank. Auf Wiedersehen.',
+    targetPhrase: 'Merci beaucoup. Au revoir.',
+    language: 'fr-FR',
+    passingThreshold: 0.8,
+    requiredTokens: ['merci', 'beaucoup', 'revoir'],
+    optionalTokens: ['au', 'bientôt', 'bientot'],
+  },
+  sceneCaption: 'Im Gehen drehst du dich noch einmal kurz um und schließt die Szene höflich ab.',
+  trophyWord: {
+    word: 'merci',
+    meaning: 'danke',
+    example: 'Merci beaucoup. Au revoir.',
+    whyThisWord: 'Merci schließt auf A1 jede Service-Szene sicher ab und ist allein schon vollständig. Mit "beaucoup" wird daraus ein klares "vielen Dank".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tür im Hintergrund, warmes Licht, kurzer Dank im Gehen.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic chanson-light',
+    mood: 'warm goodbye',
+  },
+  visualNotes: 'Sanftes Honig-Licht beim Ausgang, kurzer Nachklang, ruhige letzte Geste.',
+}
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -12405,6 +12965,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
       bright: brightItalianP2Lesson010,
     },
   },
+  {
+    id: 'french-a1-practical-1-lesson-1-bonjour-francais',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-1-bonjour-francais',
+      sequence: 1,
+      title: 'Sprechen Sie Französisch?',
+    },
+    title: 'Sprechen Sie Französisch?',
+    situation: {
+      en: 'At a cafe counter, ask whether someone speaks French.',
+      de: 'Im Café fragst du höflich, ob jemand Französisch spricht.',
+    },
+    pedagogicalGoal: 'Eine höfliche französische Eröffnungsfrage im Servicekontext sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Bitte wiederholen',
+      situation: 'Du bittest höflich darum, etwas zu wiederholen.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson001,
+    },
+  },
+  {
+    id: 'french-a1-practical-1-lesson-2-repeter',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-2-repeter',
+      sequence: 2,
+      title: 'Bitte wiederholen',
+    },
+    title: 'Bitte wiederholen',
+    situation: {
+      en: 'Mid-exchange, ask politely for repetition.',
+      de: 'Mitten im Gespräch bittest du höflich um eine Wiederholung.',
+    },
+    pedagogicalGoal: 'Eine Reparaturbitte mit höflichem vous und s’il vous plaît formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wo ist der Bahnhof?',
+      situation: 'Du fragst auf der Straße nach dem Bahnhof.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson002,
+    },
+  },
+  {
+    id: 'french-a1-practical-1-lesson-3-ou-est-la-gare',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-3-ou-est-la-gare',
+      sequence: 3,
+      title: 'Wo ist der Bahnhof?',
+    },
+    title: 'Wo ist der Bahnhof?',
+    situation: {
+      en: 'On the sidewalk, ask a passerby where the station is.',
+      de: 'Auf dem Gehweg fragst du eine fremde Person nach dem Bahnhof.',
+    },
+    pedagogicalGoal: 'Eine höfliche Ortsfrage mit où est sicher stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Einen Kaffee bestellen',
+      situation: 'Du bestellst höflich einen Kaffee.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson003,
+    },
+  },
+  {
+    id: 'french-a1-practical-1-lesson-4-cafe',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-4-cafe',
+      sequence: 4,
+      title: 'Einen Kaffee bestellen',
+    },
+    title: 'Einen Kaffee bestellen',
+    situation: {
+      en: 'At a cafe counter, order a coffee politely.',
+      de: 'Am Café-Tresen bestellst du höflich einen Kaffee.',
+    },
+    pedagogicalGoal: 'Eine Servicebestellung mit je voudrais statt je veux abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Nach dem Preis fragen',
+      situation: 'Du fragst, wie viel etwas kostet.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson004,
+    },
+  },
+  {
+    id: 'french-a1-practical-1-lesson-5-combien-ca-coute',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-5-combien-ca-coute',
+      sequence: 5,
+      title: 'Nach dem Preis fragen',
+    },
+    title: 'Nach dem Preis fragen',
+    situation: {
+      en: 'In a small shop, ask how much a visible item costs.',
+      de: 'Im kleinen Laden fragst du nach dem Preis eines sichtbaren Gegenstands.',
+    },
+    pedagogicalGoal: 'Eine einfache Preisfrage mit combien ça coûte stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wann fährt der Zug?',
+      situation: 'Du fragst im Bahnhof nach der Abfahrtszeit.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson005,
+    },
+  },
+  {
+    id: 'french-a1-practical-1-lesson-6-train',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-6-train',
+      sequence: 6,
+      title: 'Wann fährt der Zug?',
+    },
+    title: 'Wann fährt der Zug?',
+    situation: {
+      en: 'At a train station, ask what time the train leaves.',
+      de: 'Im Bahnhof fragst du, um wie viel Uhr der Zug fährt.',
+    },
+    pedagogicalGoal: 'Eine einfache Zeitfrage im Bahnhof mit à quelle heure formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich brauche Hilfe',
+      situation: 'Du sagst höflich, dass du Hilfe brauchst.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson006,
+    },
+  },
+  {
+    id: 'french-a1-practical-1-lesson-7-aide',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-7-aide',
+      sequence: 7,
+      title: 'Ich brauche Hilfe',
+    },
+    title: 'Ich brauche Hilfe',
+    situation: {
+      en: 'At a counter, state that you need help.',
+      de: 'Am Schalter sagst du höflich, dass du Hilfe brauchst.',
+    },
+    pedagogicalGoal: 'Eine knappe Hilfe-Bitte mit j’ai besoin d’aide äußern.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Es ist schön hier',
+      situation: 'Du machst einen kurzen positiven Kommentar über den Ort.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson007,
+    },
+  },
+  {
+    id: 'french-a1-practical-1-lesson-8-joli-ici',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-8-joli-ici',
+      sequence: 8,
+      title: 'Es ist schön hier',
+    },
+    title: 'Es ist schön hier',
+    situation: {
+      en: 'Inside a cafe or shop, make a short positive comment about the place.',
+      de: 'In einem Café oder Laden sagst du etwas Nettes über den Ort.',
+    },
+    pedagogicalGoal: 'Einen einfachen positiven Ortskommentar mit c’est und ici bilden.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Morgen um sieben',
+      situation: 'Du bestätigst einen Plan für morgen.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson008,
+    },
+  },
+  {
+    id: 'french-a1-practical-1-lesson-9-demain-sept-heures',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-9-demain-sept-heures',
+      sequence: 9,
+      title: 'Morgen um sieben',
+    },
+    title: 'Morgen um sieben',
+    situation: {
+      en: 'Confirm a plan for tomorrow at seven.',
+      de: 'Du bestätigst locker einen Termin für morgen um sieben.',
+    },
+    pedagogicalGoal: 'Einen einfachen Plan mit Morgen- und Uhrzeitanker bestätigen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Danke und Auf Wiedersehen',
+      situation: 'Du schließt die Szene mit Dank und Abschied ab.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson009,
+    },
+  },
+  {
+    id: 'french-a1-practical-1-lesson-10-merci-au-revoir',
+    pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
+    lessonMetadata: {
+      id: 'french-a1-practical-1-lesson-10-merci-au-revoir',
+      sequence: 10,
+      title: 'Danke und Auf Wiedersehen',
+    },
+    title: 'Danke und Auf Wiedersehen',
+    situation: {
+      en: 'Close the scene with thanks and a polite goodbye.',
+      de: 'Du schließt die Szene mit Dank und höflichem Abschied ab.',
+    },
+    pedagogicalGoal: 'Eine kurze Dank-und-Abschied-Wendung auf Französisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast French A1 Practical 1 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightFrenchLesson010,
+    },
+  },
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -12430,6 +13320,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_SPANISH_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
+    GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
   ]
 }
 
