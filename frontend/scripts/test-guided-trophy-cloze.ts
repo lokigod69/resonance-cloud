@@ -13,6 +13,7 @@ import {
 } from '../src/lib/trophySongsClient.ts'
 import {
   getTrophyClozeAcceptedAnswers,
+  getGuidedTrophyWordsForSegment,
   guidedTrophyClozeKey,
   readGuidedTrophyClozeRecord,
   writeGuidedTrophyClozeRecord,
@@ -107,6 +108,17 @@ assert(
 assert('static client strips wrappers from provider lyrics', !supportedRow.providerLyrics.includes('<<') && !supportedRow.providerLyrics.includes('>>'))
 assert('static client exposes German translation', supportedRow.lyricsTranslationDe.length > 0)
 
+console.log('\n[local trophy fallback]')
+const p8SegmentOneWords = getGuidedTrophyWordsForSegment('english-a1-practical-8', 1, 'sharp')
+const p8SegmentTwoWords = getGuidedTrophyWordsForSegment('english-a1-practical-8', 2, 'sharp')
+assert('P8 segment 1 fallback derives five Sharp trophy word cards from local lessons', p8SegmentOneWords.length === 5, p8SegmentOneWords)
+assert('P8 segment 2 fallback derives five Sharp trophy word cards from local lessons', p8SegmentTwoWords.length === 5, p8SegmentTwoWords)
+assert(
+  'P8 fallback derives distinct segment trophy word sets without requiring song rows',
+  new Set([...p8SegmentOneWords, ...p8SegmentTwoWords].map((word) => word.word)).size === 10,
+  { segmentOne: p8SegmentOneWords, segmentTwo: p8SegmentTwoWords },
+)
+
 const supportedTuples = [
   ['english-a1-practical-1', 1, 'bright'],
   ['english-a1-practical-1', 2, 'bright'],
@@ -147,6 +159,7 @@ const overviewSource = readSource('../src/components/today/TodayPathOverview.tsx
 const trophyTileSource = readSource('../src/components/today/SegmentTrophyTile.tsx')
 const checkpointSource = readSource('../src/pages/GuidedCheckpoint.tsx')
 const clozeDrillSource = readSource('../src/components/today/trophy/TrophyLyricClozeDrill.tsx')
+const fallbackPanelSource = readSource('../src/components/today/trophy/TrophyWordFallbackPanel.tsx')
 const cssSource = readSource('../src/components/today/Today.css')
 const translationsSource = readSource('../src/lib/translations.ts')
 const packageSource = readSource('../package.json')
@@ -155,6 +168,8 @@ assert('overview imports and renders SegmentTrophyTile beside existing review ti
 assert('trophy tile uses trophy-cloze checkpoint route mode', trophyTileSource.includes('mode=trophy-cloze') && trophyTileSource.includes('segment=${segment}') && trophyTileSource.includes('vibe=${vibeId}'))
 assert('checkpoint route detects trophy-cloze mode without removing existing modes', checkpointSource.includes("checkpointMode === 'trophy-cloze'") && checkpointSource.includes("checkpointMode === 'segment-review'") && checkpointSource.includes("checkpointMode === 'path-check'"))
 assert('checkpoint route renders TrophySongPanel for trophy mode', checkpointSource.includes('TrophySongPanel') && checkpointSource.includes('fetchTrophySongCanonical'))
+assert('checkpoint route renders local trophy-word fallback when no canonical song row exists', checkpointSource.includes('TrophyWordFallbackPanel') && fallbackPanelSource.includes('getGuidedTrophyWordsForSegment') && fallbackPanelSource.includes('TrophyWordCard'))
+assert('trophy back links preserve selected path and vibe', checkpointSource.includes('backToTodayHref') && checkpointSource.includes('path=${pathId}') && checkpointSource.includes('vibe=${vibe}'))
 assert('cloze drill reads full song lyrics instead of slicing to first five lines', !clozeDrillSource.includes('.slice(0, 5)'))
 assert('trophy tile and panel styling are present', cssSource.includes('.today-segment-trophyTile') && cssSource.includes('.today-trophy-clozeInput'))
 assert('English and German trophy translations are present', countOccurrences(translationsSource, "'today.trophy.tileTitle'") >= 2 && translationsSource.includes("'today.trophy.player.play'"))

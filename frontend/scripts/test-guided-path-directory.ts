@@ -90,6 +90,9 @@ assert('overview no longer defines inline PathSwitcher', !overviewSource.include
 assert('overview no longer renders permanent path chip row', !overviewSource.includes('today-path-switcher'))
 assert('overview renders compact Change path trigger', overviewSource.includes("today.path.changePath") && overviewSource.includes('setDirectoryOpen(true)'))
 assert('Today page passes Path Check href into overview', todaySource.includes('pathCheckHref=') && todaySource.includes('mode=path-check'))
+assert('Today page reads selected path from validated query params', todaySource.includes('useSearchParams') && todaySource.includes("searchParams.get('path')") && todaySource.includes('resolveTodayPathId') && todaySource.includes('pathOptions.some'))
+assert('Today page reads selected active vibe from query params', todaySource.includes("searchParams.get('vibe')") && todaySource.includes('resolveTodayVibeId'))
+assert('Quick Review checkpoint link preserves current path and vibe for back navigation', todaySource.includes('path=${selectedPathId}') && todaySource.includes('vibe=${selectedVibeId}'))
 assert('main Today header no longer renders Path Check as a visible action', !sliceBetween(overviewSource, '<div className="today-path-actions', '<GuidedPathDirectory').includes('today.path.pathCheck'))
 assert('Path Check remains available from the path directory as a diagnostic action', overviewSource.includes('pathCheckHref') && directorySource.includes('pathCheckHref') && directorySource.includes('today.path.pathCheck'))
 

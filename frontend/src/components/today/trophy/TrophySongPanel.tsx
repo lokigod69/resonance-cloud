@@ -20,10 +20,11 @@ import { TrophyWordCard } from '@/components/today/trophy/TrophyWordCard'
 
 type TrophySongPanelProps = {
   row: TrophySongRow
+  backToTodayHref: string
   onComplete: (record: GuidedTrophyClozeRecord) => void
 }
 
-export function TrophySongPanel({ row, onComplete }: TrophySongPanelProps) {
+export function TrophySongPanel({ row, backToTodayHref, onComplete }: TrophySongPanelProps) {
   const { t } = useTranslation()
   const voiceLabel = guidedVibes[row.vibe]?.label ?? row.vibe
   const trophyWords = getGuidedPathLessons(row.pathId)
@@ -57,7 +58,7 @@ export function TrophySongPanel({ row, onComplete }: TrophySongPanelProps) {
 
       <section className="theme-panel today-trophy-panel rounded-lg border p-4 sm:p-6">
         <Button asChild type="button" variant="ghost" size="sm" className="-ml-2 mb-4">
-          <Link to="/today">
+          <Link to={backToTodayHref}>
             <ChevronLeft className="h-4 w-4" />
             {t('today.checkpoint.backToToday')}
           </Link>

@@ -1,3 +1,8 @@
+import {
+  getGuidedPathLessons,
+  resolveGuidedLessonVariant,
+  type GuidedLessonTrophyWord,
+} from '@/data/guidedLessons'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 
@@ -86,6 +91,20 @@ export function createGuidedTrophyClozeRecord(
       correct: item.correct,
     })),
   }
+}
+
+export function getGuidedTrophyWordsForSegment(
+  pathId: string,
+  segment: GuidedSegmentReviewNumber,
+  vibe: ActiveGuidedVibeId,
+): GuidedLessonTrophyWord[] {
+  return getGuidedPathLessons(pathId)
+    .filter((lesson) => (
+      segment === 1
+        ? lesson.lessonNumber >= 1 && lesson.lessonNumber <= 5
+        : lesson.lessonNumber >= 6 && lesson.lessonNumber <= 10
+    ))
+    .map((lesson) => resolveGuidedLessonVariant(lesson, vibe).trophyWord)
 }
 
 export function getTrophyClozeAcceptedAnswers(word: string) {

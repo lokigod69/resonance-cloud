@@ -29,6 +29,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Progress } from '@/components/ui/progress'
 import { TrophySongPanel } from '@/components/today/trophy/TrophySongPanel'
+import { TrophyWordFallbackPanel } from '@/components/today/trophy/TrophyWordFallbackPanel'
 import {
   GuidedSpeechPrompt,
   type GuidedSpeechPromptCheckState,
@@ -50,6 +51,7 @@ export default function GuidedCheckpoint() {
   const isSegmentReviewMode = checkpointMode === 'segment-review'
   const isTrophyClozeMode = checkpointMode === 'trophy-cloze'
   const selectedSegment = resolveSegmentReviewNumber(searchParams.get('segment'))
+  const backToTodayHref = buildTodayPathHref(selectedPathId, selectedVibeId)
   const progress = useMemo(() => readTodayProgressState(user?.id), [user?.id])
   const plan = useMemo(
     () => (
@@ -133,13 +135,14 @@ export default function GuidedCheckpoint() {
         pathId={selectedPathId}
         segment={selectedSegment}
         vibe={selectedVibeId}
-        onBackToToday={() => navigate('/today')}
+        backToTodayHref={backToTodayHref}
+        onBackToToday={() => navigate(backToTodayHref)}
       />
     )
   }
 
   if (!plan || !currentItem) {
-    return <CheckpointUnavailable selectedVibeId={selectedVibeId} />
+    return <CheckpointUnavailable selectedVibeId={selectedVibeId} backToTodayHref={backToTodayHref} />
   }
 
   const segmentStory = isSegmentReviewMode && plan.segment
@@ -158,7 +161,7 @@ export default function GuidedCheckpoint() {
         isPathCheckMode={isPathCheckMode}
         isSegmentReviewMode={isSegmentReviewMode}
         segmentStory={segmentStory}
-        onBackToToday={() => navigate('/today')}
+        backToTodayHref={backToTodayHref}
       />
     )
   }
@@ -184,6 +187,7 @@ export default function GuidedCheckpoint() {
         isPathCheckMode={isPathCheckMode}
         isSegmentReviewMode={isSegmentReviewMode}
         segmentStory={segmentStory}
+        backToTodayHref={backToTodayHref}
       />
 
       {phase === 'type' && (
@@ -216,11 +220,13 @@ function TrophyCheckpoint({
   pathId,
   segment,
   vibe,
+  backToTodayHref,
   onBackToToday,
 }: {
   pathId: string
   segment: GuidedSegmentReviewNumber | undefined
   vibe: ActiveGuidedVibeId
+  backToTodayHref: string
   onBackToToday: () => void
 }) {
   const { t } = useTranslation()
@@ -247,7 +253,7 @@ function TrophyCheckpoint({
         setRow(nextRow)
       } catch {
         if (!active) return
-        setUnavailable(true)
+        setRow(undefined)
       } finally {
         if (active) setLoading(false)
       }
@@ -272,7 +278,7 @@ function TrophyCheckpoint({
     )
   }
 
-  if (unavailable || !row) {
+  if (unavailable || !segment) {
     return (
       <main className="today-shell today-checkpoint-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6" data-guided-vibe={vibe}>
         <section className="theme-panel w-full rounded-lg border border-[var(--border-subtle)] p-6 text-center sm:p-8">
@@ -283,15 +289,26 @@ function TrophyCheckpoint({
           <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-[var(--text-secondary)]">
             {t('today.trophy.unavailableBody')}
           </p>
-          <Button type="button" className="mt-6" onClick={onBackToToday}>
-            {t('today.checkpoint.backToToday')}
+          <Button asChild type="button" className="mt-6">
+            <Link to={backToTodayHref}>{t('today.checkpoint.backToToday')}</Link>
           </Button>
         </section>
       </main>
     )
   }
 
-  return <TrophySongPanel row={row} onComplete={onBackToToday} />
+  if (!row) {
+    return (
+      <TrophyWordFallbackPanel
+        pathId={pathId}
+        segment={segment}
+        vibe={vibe}
+        backToTodayHref={backToTodayHref}
+      />
+    )
+  }
+
+  return <TrophySongPanel row={row} backToTodayHref={backToTodayHref} onComplete={onBackToToday} />
 }
 
 function CheckpointHeader({
@@ -301,6 +318,7 @@ function CheckpointHeader({
   isPathCheckMode,
   isSegmentReviewMode,
   segmentStory,
+  backToTodayHref,
 }: {
   plan: GuidedCheckpointPlan
   itemIndex: number
@@ -308,6 +326,7 @@ function CheckpointHeader({
   isPathCheckMode: boolean
   isSegmentReviewMode: boolean
   segmentStory?: GuidedSegmentStory
+  backToTodayHref: string
 }) {
   const { t } = useTranslation()
   const title = isSegmentReviewMode
@@ -327,7 +346,7 @@ function CheckpointHeader({
       <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div>
           <Button asChild type="button" variant="ghost" size="sm" className="-ml-2 mb-3">
-            <Link to="/today">
+            <Link to={backToTodayHref}>
               <ChevronLeft className="h-4 w-4" />
               {t('today.checkpoint.backToToday')}
             </Link>
@@ -581,7 +600,7 @@ function CheckpointSummary({
   isPathCheckMode,
   isSegmentReviewMode,
   segmentStory,
-  onBackToToday,
+  backToTodayHref,
 }: {
   record: GuidedCheckpointRecord
   planItems: GuidedCheckpointPlanItem[]
@@ -589,7 +608,7 @@ function CheckpointSummary({
   isPathCheckMode: boolean
   isSegmentReviewMode: boolean
   segmentStory?: GuidedSegmentStory
-  onBackToToday: () => void
+  backToTodayHref: string
 }) {
   const { t } = useTranslation()
   const vibe = guidedVibes[selectedVibeId]
@@ -648,8 +667,8 @@ function CheckpointSummary({
             {t('today.checkpoint.allCorrectBody')}
           </p>
         )}
-        <Button type="button" className="mt-6" onClick={onBackToToday}>
-          {t('today.checkpoint.backToToday')}
+        <Button asChild type="button" className="mt-6">
+          <Link to={backToTodayHref}>{t('today.checkpoint.backToToday')}</Link>
         </Button>
       </section>
     </main>
@@ -674,7 +693,13 @@ function getMissedSummaryItems(record: GuidedCheckpointRecord, planItems: Guided
     })
 }
 
-function CheckpointUnavailable({ selectedVibeId }: { selectedVibeId: ActiveGuidedVibeId }) {
+function CheckpointUnavailable({
+  selectedVibeId,
+  backToTodayHref,
+}: {
+  selectedVibeId: ActiveGuidedVibeId
+  backToTodayHref: string
+}) {
   const { t } = useTranslation()
 
   return (
@@ -688,11 +713,15 @@ function CheckpointUnavailable({ selectedVibeId }: { selectedVibeId: ActiveGuide
           {t('today.checkpoint.unavailableBody')}
         </p>
         <Button asChild type="button" className="mt-6">
-          <Link to="/today">{t('today.checkpoint.backToToday')}</Link>
+          <Link to={backToTodayHref}>{t('today.checkpoint.backToToday')}</Link>
         </Button>
       </section>
     </main>
   )
+}
+
+function buildTodayPathHref(pathId: string, vibe: ActiveGuidedVibeId) {
+  return `/today?path=${pathId}&vibe=${vibe}`
 }
 
 function resolveCheckpointVibe(value: string | null, defaultPathId: string): ActiveGuidedVibeId {

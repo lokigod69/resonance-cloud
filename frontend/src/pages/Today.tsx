@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { getGuidedPathOverview, getGuidedTodayPathOptions } from '@/data/guidedLessons'
-import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
+import { isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
 import { TodayPathOverview } from '@/components/today/TodayPathOverview'
 import { TodaySession } from '@/components/today/TodaySession'
@@ -24,11 +25,15 @@ import '@/components/today/Today.css'
 
 export default function Today() {
   const { user } = useAuth()
+  const [searchParams] = useSearchParams()
   const pathOptions = useMemo(() => getGuidedTodayPathOptions(), [])
   const defaultPathId = pathOptions[0]?.id ?? 'english-a1-practical-1'
-  const [selectedPathId, setSelectedPathId] = useState(defaultPathId)
+  const queryPathId = resolveTodayPathId(searchParams.get('path'), pathOptions)
+  const queryVibeId = resolveTodayVibeId(searchParams.get('vibe'))
+  const initialPathId = queryPathId ?? defaultPathId
+  const [selectedPathId, setSelectedPathId] = useState(initialPathId)
   const [selectedVibeId, setSelectedVibeId] = useState<ActiveGuidedVibeId>(() => (
-    getSelectedGuidedVibe(defaultPathId)
+    queryVibeId ?? getSelectedGuidedVibe(initialPathId)
   ))
   const [progress, setProgress] = useState<TodayProgressState>(() => createEmptyTodayProgressState())
   const [selectedLessonId, setSelectedLessonId] = useState<string | undefined>(undefined)
@@ -55,12 +60,16 @@ export default function Today() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- user-scoped localStorage progress must refresh when the authenticated user changes
     setProgress(readTodayProgressState(user?.id))
-    setSelectedVibeId(getSelectedGuidedVibe(selectedPathId))
+    setSelectedVibeId(queryVibeId ?? getSelectedGuidedVibe(selectedPathId))
     setSelectedLessonId(undefined)
     setSessionActive(false)
     setSessionKey((current) => current + 1)
     setKnownItemIds(new Set())
-  }, [selectedPathId, user?.id])
+  }, [queryVibeId, selectedPathId, user?.id])
+
+  useEffect(() => {
+    if (queryPathId) setSelectedPathId(queryPathId)
+  }, [queryPathId])
 
   const persistProgress = (nextProgress: TodayProgressState) => {
     setProgress(nextProgress)
@@ -140,7 +149,7 @@ export default function Today() {
             progress={progress}
             selectedVibeId={selectedVibeId}
             checkpointCard={checkpointPlan ? {
-              href: `/today/checkpoint?vibe=${selectedVibeId}`,
+              href: `/today/checkpoint?path=${selectedPathId}&vibe=${selectedVibeId}`,
               completedPathCount: checkpointPlan.completedPathCount,
             } : undefined}
             pathCheckHref={`/today/checkpoint?mode=path-check&path=${selectedPathId}&vibe=${selectedVibeId}`}
@@ -165,4 +174,12 @@ export default function Today() {
       </div>
     </div>
   )
+}
+
+function resolveTodayPathId(value: string | null, pathOptions: Array<{ id: string }>) {
+  return pathOptions.some((path) => path.id === value) ? value! : undefined
+}
+
+function resolveTodayVibeId(value: string | null): ActiveGuidedVibeId | undefined {
+  return isActiveGuidedVibeId(value) ? value : undefined
 }
