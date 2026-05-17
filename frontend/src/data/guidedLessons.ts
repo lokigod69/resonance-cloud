@@ -346,6 +346,17 @@ const GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA: GuidedPathMetadata = {
+  id: 'italian-a1-practical-4',
+  title: 'Italian A1 Practical 4',
+  shortTitle: 'A1 Practical 4',
+  subtitle: 'Im Café und Restaurant auf Italienisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Italian',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_FRENCH_ONE_METADATA: GuidedPathMetadata = {
   id: 'french-a1-practical-1',
   title: 'French A1 Practical 1',
@@ -11622,6 +11633,549 @@ const brightItalianP3Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Bus von hinten im Hintergrund, ruhiger Vordergrund-Blick, sanfte Hilfegeste.',
 }
 
+const brightItalianP4Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Un tavolo per due, per favore.',
+    baseText: 'Einen Tisch für zwei, bitte.',
+  },
+  meaning: 'Die kurze, höfliche Eröffnung an der Restaurant-Tür mit Personenzahl.',
+  chunks: [
+    { id: 'un-tavolo', targetText: 'Un tavolo', baseText: 'Einen Tisch' },
+    { id: 'per-due', targetText: 'per due,', baseText: 'für zwei,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'tavolo', targetText: 'tavolo', baseText: 'Tisch', acceptedAnswers: ['tavolo', 'Tavolo'] },
+    { id: 'per-due', targetText: 'per due', baseText: 'für zwei', acceptedAnswers: ['per due', 'Per due'] },
+    { id: 'fuori', targetText: 'fuori', baseText: 'draußen', acceptedAnswers: ['fuori', 'Fuori'] },
+    { id: 'dentro', targetText: 'dentro', baseText: 'drinnen', acceptedAnswers: ['dentro', 'Dentro'] },
+  ],
+  build: {
+    targetText: 'Un tavolo per due, per favore.',
+    chips: ['Un tavolo', 'per due,', 'per favore.', 'fuori', 'dentro'],
+  },
+  typeRecall: {
+    before: 'Un ',
+    answer: 'tavolo',
+    after: ' per due, per favore.',
+    acceptedAnswers: ['tavolo', 'Tavolo'],
+    fallbackChoices: ['tavolo', 'posto', 'piatto', 'banco'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Tisch für zwei, bitte.',
+    targetPhrase: 'Un tavolo per due, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['tavolo', 'due', 'per', 'favore'],
+    optionalTokens: ['un', 'fuori', 'dentro', 'grazie'],
+  },
+  sceneCaption: 'Vor dem Restaurant-Empfang nennst du in einem ruhigen Satz die Personenzahl.',
+  trophyWord: {
+    word: 'tavolo',
+    meaning: 'Tisch',
+    example: 'Un tavolo per due, per favore.',
+    whyThisWord: 'Tavolo ist auf A1 das zentrale Restaurantwort und bildet mit "per due / per tre / per quattro" jede Reservierungs-Eröffnung. Plural: i tavoli (regelmäßig).',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Restaurant-Empfang am Abend, kleine Tafel im Hintergrund, kurze Begrüßung.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'sitting down to dine',
+  },
+  visualNotes: 'Empfangs-Detail mit Tisch im Hintergrund, warmes Restaurant-Licht, ruhige Geste.',
+}
+
+const brightItalianP4Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Il menù, per favore.',
+    baseText: 'Die Speisekarte, bitte.',
+  },
+  meaning: 'Die kurze Bitte um die Speisekarte am Tisch oder Tresen.',
+  chunks: [
+    { id: 'il-menu', targetText: 'Il menù,', baseText: 'Die Speisekarte,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'menu', targetText: 'menù', baseText: 'Speisekarte', acceptedAnswers: ['menù', 'menu', 'Menù', 'Menu'] },
+    { id: 'il', targetText: 'il', baseText: 'die / der (m.)', acceptedAnswers: ['il', 'Il'] },
+    { id: 'carta-vini', targetText: 'la carta dei vini', baseText: 'die Weinkarte', acceptedAnswers: ['la carta dei vini', 'La carta dei vini'] },
+    { id: 'specialita', targetText: 'specialità', baseText: 'Spezialität', acceptedAnswers: ['specialità', 'specialita', 'Specialità', 'Specialita'] },
+  ],
+  build: {
+    targetText: 'Il menù, per favore.',
+    chips: ['Il menù,', 'per favore.', 'specialità', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Il ',
+    answer: 'menù',
+    after: ', per favore.',
+    acceptedAnswers: ['menù', 'menu', 'Menù', 'Menu'],
+    fallbackChoices: ['menù', 'conto', 'piatto', 'vino'],
+  },
+  speakTarget: {
+    baseCue: 'Die Speisekarte, bitte.',
+    targetPhrase: 'Il menù, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['menù', 'per', 'favore'],
+    optionalTokens: ['il', 'grazie', 'scusi'],
+  },
+  sceneCaption: 'Am Tisch sitzend gibst du dem Servier-Personal das Zeichen für die Karte.',
+  trophyWord: {
+    word: 'menù',
+    meaning: 'Speisekarte',
+    example: 'Il menù del giorno, per favore.',
+    whyThisWord: 'Menù ist auf A1 das italienische Wort für die Speisekarte — Achtung: das italienische "carta" am Tisch meint dagegen die Weinkarte oder Spielkarten, nicht die Speisekarte. Schreibe den Grave-Akzent: menù, nicht menu.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tisch im Restaurant, Speisekarte gleitet ins Bild, ruhige Geste.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'ready to order',
+  },
+  visualNotes: 'Karte im Vordergrund, warmes Kerzenlicht, weicher Tisch-Akzent.',
+}
+
+const brightItalianP4Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Vorrei un tè, per favore.',
+    baseText: 'Ich hätte gerne einen Tee, bitte.',
+  },
+  meaning: 'Eine höfliche Bestellung eines Tees mit dem italienischen "vorrei".',
+  chunks: [
+    { id: 'vorrei', targetText: 'Vorrei', baseText: 'Ich hätte gerne' },
+    { id: 'un-te', targetText: 'un tè,', baseText: 'einen Tee,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'te', targetText: 'tè', baseText: 'Tee', acceptedAnswers: ['tè', 'te', 'Tè', 'Te'] },
+    { id: 'vorrei', targetText: 'vorrei', baseText: 'ich hätte gerne', acceptedAnswers: ['vorrei', 'Vorrei'] },
+    { id: 'caldo', targetText: 'caldo', baseText: 'heiß / warm', acceptedAnswers: ['caldo', 'Caldo'] },
+    { id: 'limone', targetText: 'limone', baseText: 'Zitrone', acceptedAnswers: ['limone', 'Limone'] },
+  ],
+  build: {
+    targetText: 'Vorrei un tè, per favore.',
+    chips: ['Vorrei', 'un tè,', 'per favore.', 'caldo', 'limone'],
+  },
+  typeRecall: {
+    before: 'Vorrei un ',
+    answer: 'tè',
+    after: ', per favore.',
+    acceptedAnswers: ['tè', 'te', 'Tè', 'Te'],
+    fallbackChoices: ['tè', 'latte', 'succo', 'acqua'],
+  },
+  speakTarget: {
+    baseCue: 'Ich hätte gerne einen Tee, bitte.',
+    targetPhrase: 'Vorrei un tè, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['vorrei', 'tè', 'per', 'favore'],
+    optionalTokens: ['un', 'caldo', 'limone', 'grazie'],
+  },
+  sceneCaption: 'Am Tisch sitzend bestellst du ruhig einen Tee mit der höflichen Konditional-Wendung.',
+  trophyWord: {
+    word: 'tè',
+    meaning: 'Tee',
+    example: 'Un tè caldo con limone.',
+    whyThisWord: 'Tè trägt den Grave-Akzent, um es von "te" (dich, dich selbst) zu unterscheiden — eine der wenigen aber wichtigen Stolperfallen am italienischen A1-Anfang. Beim Sprechen klar lang ausgesprochen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tasse mit Tee am Tisch, warmer Dampf, ruhige Bestellgeste.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'quiet afternoon order',
+  },
+  visualNotes: 'Tasse mit Tee in goldenem Licht, sanfter Dampf, ruhiger Stillleben-Akzent.',
+}
+
+const brightItalianP4Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Senza zucchero, per favore.',
+    baseText: 'Ohne Zucker, bitte.',
+  },
+  meaning: 'Eine knappe Vorzugs-Angabe beim Getränk — kein Zucker.',
+  chunks: [
+    { id: 'senza-zucchero', targetText: 'Senza zucchero,', baseText: 'Ohne Zucker,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'senza', targetText: 'senza', baseText: 'ohne', acceptedAnswers: ['senza', 'Senza'] },
+    { id: 'zucchero', targetText: 'zucchero', baseText: 'Zucker', acceptedAnswers: ['zucchero', 'Zucchero'] },
+    { id: 'con', targetText: 'con', baseText: 'mit', acceptedAnswers: ['con', 'Con'] },
+    { id: 'latte', targetText: 'latte', baseText: 'Milch', acceptedAnswers: ['latte', 'Latte'] },
+  ],
+  build: {
+    targetText: 'Senza zucchero, per favore.',
+    chips: ['Senza zucchero,', 'per favore.', 'con', 'latte'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Senza',
+    after: ' zucchero, per favore.',
+    acceptedAnswers: ['senza', 'Senza'],
+    fallbackChoices: ['Senza', 'Con', 'Solo', 'Molto'],
+  },
+  speakTarget: {
+    baseCue: 'Ohne Zucker, bitte.',
+    targetPhrase: 'Senza zucchero, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['senza', 'zucchero', 'per', 'favore'],
+    optionalTokens: ['con', 'latte', 'grazie'],
+  },
+  sceneCaption: 'Am Tresen oder Tisch gibst du beim Zubereiten kurz die Vorliebe an.',
+  trophyWord: {
+    word: 'senza',
+    meaning: 'ohne',
+    example: 'Senza zucchero, senza latte.',
+    whyThisWord: 'Senza ist die A1-Präposition für jede Abwesenheit und steht im Paar mit "con". Sehr kurz, sehr präzise — kein Artikel nötig: senza zucchero, senza latte, senza problema.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Zuckerschale am Tresen, kurze Handgeste zur Ablehnung, ruhiger Sprachmoment.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gently specifying',
+  },
+  visualNotes: 'Zuckerschale leicht zurückgeschoben, warmes Tisch-Licht, ruhige Handbewegung.',
+}
+
+const brightItalianP4Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'È fresco?',
+    baseText: 'Ist es frisch?',
+  },
+  meaning: 'Eine kurze Qualitätsfrage zu Brot, Obst oder anderem Lebensmittel am Tresen.',
+  chunks: [
+    { id: 'e', targetText: 'È', baseText: 'Ist es' },
+    { id: 'fresco', targetText: 'fresco?', baseText: 'frisch?' },
+  ],
+  lessonItems: [
+    { id: 'fresco', targetText: 'fresco', baseText: 'frisch', acceptedAnswers: ['fresco', 'Fresco'] },
+    { id: 'oggi', targetText: 'oggi', baseText: 'heute', acceptedAnswers: ['oggi', 'Oggi'] },
+    { id: 'pane', targetText: 'pane', baseText: 'Brot', acceptedAnswers: ['pane', 'Pane'] },
+    { id: 'frutta', targetText: 'frutta', baseText: 'Obst', acceptedAnswers: ['frutta', 'Frutta'] },
+  ],
+  build: {
+    targetText: 'È fresco?',
+    chips: ['È', 'fresco?', 'oggi', 'pane'],
+  },
+  typeRecall: {
+    before: 'È ',
+    answer: 'fresco',
+    after: '?',
+    acceptedAnswers: ['fresco', 'Fresco'],
+    fallbackChoices: ['fresco', 'caldo', 'buono', 'pronto'],
+  },
+  speakTarget: {
+    baseCue: 'Ist es frisch?',
+    targetPhrase: 'È fresco?',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['fresco'],
+    optionalTokens: ['è', 'oggi', 'pane', 'scusi'],
+  },
+  sceneCaption: 'Am Bäckerei-Tresen zeigst du kurz auf ein Stück Brot und prüfst die Frische.',
+  trophyWord: {
+    word: 'fresco',
+    meaning: 'frisch',
+    example: 'Il pane è fresco di oggi.',
+    whyThisWord: 'Fresco kongruiert auf A1 mit dem Bezugswort: il pane è fresco, la frutta è fresca, i panini sono freschi, le mele sono fresche. Eine der ersten Adjektiv-Kongruenz-Übungen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bäckerei-Tresen mit Brot, kurze Geste zur Auswahl, sanfter Mehlglanz.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'morning bakery',
+  },
+  visualNotes: 'Brot-Stillleben, warmes Krusten-Detail, ruhiger Mehl-Akzent.',
+}
+
+const brightItalianP4Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: "Nient'altro, grazie.",
+    baseText: 'Nichts mehr, danke.',
+  },
+  meaning: 'Die freundliche Schluss-Antwort auf die Service-Frage "Sonst noch etwas?".',
+  chunks: [
+    { id: 'nient-altro', targetText: "Nient'altro,", baseText: 'Nichts mehr,' },
+    { id: 'grazie', targetText: 'grazie.', baseText: 'danke.' },
+  ],
+  lessonItems: [
+    { id: 'altro', targetText: 'altro', baseText: 'andere(s) / etwas anderes', acceptedAnswers: ['altro', 'Altro'] },
+    { id: 'nient-altro', targetText: "nient'altro", baseText: 'nichts mehr / nichts anderes', acceptedAnswers: ["nient'altro", 'niente altro', "Nient'altro", 'Niente altro'] },
+    { id: 'tutto', targetText: 'tutto', baseText: 'alles', acceptedAnswers: ['tutto', 'Tutto'] },
+    { id: 'basta', targetText: 'basta', baseText: 'es reicht', acceptedAnswers: ['basta', 'Basta'] },
+  ],
+  build: {
+    targetText: "Nient'altro, grazie.",
+    chips: ["Nient'altro,", 'grazie.', 'basta', 'tutto'],
+  },
+  typeRecall: {
+    before: "Nient'",
+    answer: 'altro',
+    after: ', grazie.',
+    acceptedAnswers: ['altro', 'Altro'],
+    fallbackChoices: ['altro', 'tutto', 'basta', 'solo'],
+  },
+  speakTarget: {
+    baseCue: 'Nichts mehr, danke.',
+    targetPhrase: "Nient'altro, grazie.",
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['altro', 'grazie'],
+    optionalTokens: ['niente', 'basta', 'tutto'],
+  },
+  sceneCaption: 'Am Tresen schließt du die Bestellung freundlich mit einer kurzen Schluss-Antwort.',
+  trophyWord: {
+    word: 'altro',
+    meaning: 'andere(s) / etwas anderes',
+    example: "Vuole altro? — Nient'altro, grazie.",
+    whyThisWord: 'Altro ist auf A1 das Pronomen für "etwas anderes / mehr" und bildet die elidierte Wendung "nient\'altro" (niente + altro). Service-Italienisch fragt fast immer "Vuole altro?" — die Antwort liegt hier.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tresen-Detail nach der Bestellung, kurze Schlussgeste, ruhiges Lächeln.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'finishing the order',
+  },
+  visualNotes: 'Bestelldetail im Vordergrund, warmes Schluss-Licht, ruhige Hand.',
+}
+
+const brightItalianP4Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Da portare via, per favore.',
+    baseText: 'Zum Mitnehmen, bitte.',
+  },
+  meaning: 'Die feste Wendung am Tresen, wenn die Bestellung mitgenommen werden soll.',
+  chunks: [
+    { id: 'da-portare-via', targetText: 'Da portare via,', baseText: 'Zum Mitnehmen,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'portare', targetText: 'portare', baseText: 'tragen / bringen', acceptedAnswers: ['portare', 'Portare'] },
+    { id: 'via', targetText: 'via', baseText: 'weg', acceptedAnswers: ['via', 'Via'] },
+    { id: 'qui', targetText: 'qui', baseText: 'hier (zum Essen vor Ort)', acceptedAnswers: ['qui', 'Qui'] },
+    { id: 'da', targetText: 'da', baseText: 'zum (in "da portare via")', acceptedAnswers: ['da', 'Da'] },
+  ],
+  build: {
+    targetText: 'Da portare via, per favore.',
+    chips: ['Da portare via,', 'per favore.', 'qui', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Da ',
+    answer: 'portare',
+    after: ' via, per favore.',
+    acceptedAnswers: ['portare', 'Portare'],
+    fallbackChoices: ['portare', 'mangiare', 'bere', 'pagare'],
+  },
+  speakTarget: {
+    baseCue: 'Zum Mitnehmen, bitte.',
+    targetPhrase: 'Da portare via, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['portare', 'via', 'per', 'favore'],
+    optionalTokens: ['da', 'grazie'],
+  },
+  sceneCaption: 'Am Tresen gibst du beim Bestellen kurz die feste Wendung für Mitnehmen.',
+  trophyWord: {
+    word: 'portare',
+    meaning: 'tragen / bringen',
+    example: 'Da portare via, grazie.',
+    whyThisWord: 'Portare ist auf A1 das Allzweck-Verb für tragen/bringen und steht im idiomatischen "da portare via" (= "zum Wegtragen") — die feste Schwester-Wendung von "qui" (zum Hieressen).',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tüte mit Bestellung am Tresen, kurze Übergabegeste, ruhiges Mitnehmen.',
+  },
+  songSeed: {
+    genre: 'upbeat acoustic',
+    mood: 'on the go',
+  },
+  visualNotes: 'Tüten-Detail im Vordergrund, sanfter Übergabe-Akzent, ruhiger Schritt-Beat.',
+}
+
+const brightItalianP4Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Era molto buono!',
+    baseText: 'Es war sehr gut!',
+  },
+  meaning: 'Ein kurzes, herzliches Lob nach dem Essen oder Trinken.',
+  chunks: [
+    { id: 'era', targetText: 'Era', baseText: 'Es war' },
+    { id: 'molto', targetText: 'molto', baseText: 'sehr' },
+    { id: 'buono', targetText: 'buono!', baseText: 'gut!' },
+  ],
+  lessonItems: [
+    { id: 'buono', targetText: 'buono', baseText: 'gut (m.)', acceptedAnswers: ['buono', 'Buono'] },
+    { id: 'era', targetText: 'era', baseText: 'es war (Imperfekt)', acceptedAnswers: ['era', 'Era'] },
+    { id: 'molto', targetText: 'molto', baseText: 'sehr', acceptedAnswers: ['molto', 'Molto'] },
+    { id: 'davvero', targetText: 'davvero', baseText: 'wirklich', acceptedAnswers: ['davvero', 'Davvero'] },
+  ],
+  build: {
+    targetText: 'Era molto buono!',
+    chips: ['Era', 'molto', 'buono!', 'davvero', 'grazie'],
+  },
+  typeRecall: {
+    before: 'Era molto ',
+    answer: 'buono',
+    after: '!',
+    acceptedAnswers: ['buono', 'Buono'],
+    fallbackChoices: ['buono', 'caldo', 'fresco', 'comodo'],
+  },
+  speakTarget: {
+    baseCue: 'Es war sehr gut!',
+    targetPhrase: 'Era molto buono!',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['era', 'buono'],
+    optionalTokens: ['molto', 'davvero', 'grazie'],
+  },
+  sceneCaption: 'Am Tisch nach dem Essen drehst du dich kurz zur Bedienung und lobst die Mahlzeit.',
+  trophyWord: {
+    word: 'buono',
+    meaning: 'gut (maskulin singular)',
+    example: 'Era molto buono, complimenti!',
+    whyThisWord: 'Buono kongruiert auf A1 mit dem Bezugswort: il caffè è buono, la pasta è buona, i panini sono buoni, le pizze sono buone. Im Imperfekt "era buono" für "es war gut" — der natürliche Abschluss am Tisch.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Leerer Teller am Tisch, zufriedener Blick, kurzer Dankesgesten-Moment.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'satisfied close',
+  },
+  visualNotes: 'Tisch-Stillleben nach dem Essen, warme Schlussbeleuchtung, ruhiger Lobmoment.',
+}
+
+const brightItalianP4Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Che bella giornata oggi!',
+    baseText: 'Was für ein schöner Tag heute!',
+  },
+  meaning: 'Eine kurze, lockere Small-Talk-Bemerkung über den heutigen Tag am Tresen.',
+  chunks: [
+    { id: 'che-bella-giornata', targetText: 'Che bella giornata', baseText: 'Was für ein schöner Tag' },
+    { id: 'oggi', targetText: 'oggi!', baseText: 'heute!' },
+  ],
+  lessonItems: [
+    { id: 'oggi', targetText: 'oggi', baseText: 'heute', acceptedAnswers: ['oggi', 'Oggi'] },
+    { id: 'giornata', targetText: 'giornata', baseText: 'Tag (Verlauf)', acceptedAnswers: ['giornata', 'Giornata'] },
+    { id: 'bella', targetText: 'bella', baseText: 'schön (f.)', acceptedAnswers: ['bella', 'Bella'] },
+    { id: 'che', targetText: 'che', baseText: 'was für (Ausruf)', acceptedAnswers: ['che', 'Che'] },
+  ],
+  build: {
+    targetText: 'Che bella giornata oggi!',
+    chips: ['Che bella giornata', 'oggi!', 'davvero', 'sole'],
+  },
+  typeRecall: {
+    before: 'Che bella giornata ',
+    answer: 'oggi',
+    after: '!',
+    acceptedAnswers: ['oggi', 'Oggi'],
+    fallbackChoices: ['oggi', 'ieri', 'domani', 'sempre'],
+  },
+  speakTarget: {
+    baseCue: 'Was für ein schöner Tag heute!',
+    targetPhrase: 'Che bella giornata oggi!',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['bella', 'giornata', 'oggi'],
+    optionalTokens: ['che', 'davvero', 'sole'],
+  },
+  sceneCaption: 'Am Tresen drehst du dich locker zur Bedienung und teilst eine kurze positive Bemerkung.',
+  trophyWord: {
+    word: 'oggi',
+    meaning: 'heute',
+    example: 'Oggi è una bella giornata.',
+    whyThisWord: 'Oggi ist auf A1 das zentrale Zeitwort für "heute" und steht im Trio mit "ieri" (gestern) und "domani" (morgen). In Italien ein häufiger Small-Talk-Anker: "Che giornata oggi!"',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café-Tresen am Vormittag, Sonnenlicht durchs Fenster, kurzer Kommentar zum Tag.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'warm small talk',
+  },
+  visualNotes: 'Sonnenlicht-Streifen auf der Theke, warmer Korall-Akzent, ruhiger Lächel-Beat.',
+}
+
+const brightItalianP4Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Il conto, per favore.',
+    baseText: 'Die Rechnung, bitte.',
+  },
+  meaning: 'Die feste Schluss-Bitte am Tisch, die Rechnung zu bekommen.',
+  chunks: [
+    { id: 'il-conto', targetText: 'Il conto,', baseText: 'Die Rechnung,' },
+    { id: 'per-favore', targetText: 'per favore.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'conto', targetText: 'conto', baseText: 'Rechnung', acceptedAnswers: ['conto', 'Conto'] },
+    { id: 'il', targetText: 'il', baseText: 'die / der (m.)', acceptedAnswers: ['il', 'Il'] },
+    { id: 'separato', targetText: 'separato', baseText: 'getrennt', acceptedAnswers: ['separato', 'Separato'] },
+    { id: 'mancia', targetText: 'mancia', baseText: 'Trinkgeld', acceptedAnswers: ['mancia', 'Mancia'] },
+  ],
+  build: {
+    targetText: 'Il conto, per favore.',
+    chips: ['Il conto,', 'per favore.', 'separato', 'mancia'],
+  },
+  typeRecall: {
+    before: 'Il ',
+    answer: 'conto',
+    after: ', per favore.',
+    acceptedAnswers: ['conto', 'Conto'],
+    fallbackChoices: ['conto', 'menù', 'piatto', 'tavolo'],
+  },
+  speakTarget: {
+    baseCue: 'Die Rechnung, bitte.',
+    targetPhrase: 'Il conto, per favore.',
+    language: 'it-IT',
+    passingThreshold: 0.8,
+    requiredTokens: ['conto', 'per', 'favore'],
+    optionalTokens: ['il', 'separato', 'grazie'],
+  },
+  sceneCaption: 'Am Ende der Mahlzeit hebst du kurz die Hand und bittest um die Rechnung.',
+  trophyWord: {
+    word: 'conto',
+    meaning: 'Rechnung (am Tisch)',
+    example: 'Il conto, per favore. Separato?',
+    whyThisWord: 'Conto ist auf A1 das italienische Wort für die Rechnung am Tisch — Achtung: das deutsche "Konto" (Bankkonto) heißt im Italienischen auch "conto", aber dann meist mit Zusatz "conto in banca". Im Restaurant immer kurz "il conto".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kleines Tablett mit Rechnung am Tisch, ruhiges Abend-Licht, freundlicher Abschluss.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'closing the meal',
+  },
+  visualNotes: 'Rechnungs-Detail auf Tablett, sanfte Kerzen-Reflektion, ruhiger Schluss-Akzent.',
+}
+
 const brightFrenchLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -13852,6 +14406,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'italian-a1-practical-4-lesson-1-un-tavolo',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-1-un-tavolo',
+      sequence: 1,
+      title: 'Ein Tisch für zwei',
+    },
+    title: 'Ein Tisch für zwei',
+    situation: {
+      en: 'At the restaurant entrance, ask for a table.',
+      de: 'Am Restaurant-Empfang bittest du um einen Tisch.',
+    },
+    pedagogicalGoal: 'Eine knappe Tisch-Bitte mit Personenzahl auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Die Speisekarte, bitte',
+      situation: 'Am Tisch bittest du um die Karte.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson001,
+    },
+  },
+  {
+    id: 'italian-a1-practical-4-lesson-2-il-menu',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-2-il-menu',
+      sequence: 2,
+      title: 'Die Speisekarte, bitte',
+    },
+    title: 'Die Speisekarte, bitte',
+    situation: {
+      en: 'At the table, ask for the menu.',
+      de: 'Am Tisch bittest du um die Speisekarte.',
+    },
+    pedagogicalGoal: 'Die kurze italienische Karten-Bitte sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ein Tee, bitte',
+      situation: 'Du bestellst einen Tee am Tisch.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson002,
+    },
+  },
+  {
+    id: 'italian-a1-practical-4-lesson-3-un-te',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-3-un-te',
+      sequence: 3,
+      title: 'Ein Tee, bitte',
+    },
+    title: 'Ein Tee, bitte',
+    situation: {
+      en: 'At a table, order a tea politely with "vorrei".',
+      de: 'Am Tisch bestellst du höflich einen Tee mit "vorrei".',
+    },
+    pedagogicalGoal: 'Eine zweite Bestellung mit dem höflichen "vorrei" auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ohne Zucker',
+      situation: 'Du gibst eine Vorzugs-Angabe an.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson003,
+    },
+  },
+  {
+    id: 'italian-a1-practical-4-lesson-4-senza-zucchero',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-4-senza-zucchero',
+      sequence: 4,
+      title: 'Ohne Zucker',
+    },
+    title: 'Ohne Zucker',
+    situation: {
+      en: 'At a counter or table, specify "no sugar" politely.',
+      de: 'Am Tresen oder Tisch nennst du kurz die Vorliebe — kein Zucker.',
+    },
+    pedagogicalGoal: 'Eine einfache Vorzugs-Angabe mit "senza" auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ist es frisch?',
+      situation: 'In der Bäckerei prüfst du die Frische.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson004,
+    },
+  },
+  {
+    id: 'italian-a1-practical-4-lesson-5-fresco',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-5-fresco',
+      sequence: 5,
+      title: 'Ist es frisch?',
+    },
+    title: 'Ist es frisch?',
+    situation: {
+      en: 'At a bakery counter, ask whether the bread is fresh.',
+      de: 'Am Bäckerei-Tresen prüfst du die Frische des Brotes.',
+    },
+    pedagogicalGoal: 'Eine kurze Qualitätsfrage zu Lebensmitteln auf Italienisch sicher stellen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Nichts mehr, danke',
+      situation: 'Du beendest die Bestellung freundlich.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson005,
+    },
+  },
+  {
+    id: 'italian-a1-practical-4-lesson-6-nient-altro',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-6-nient-altro',
+      sequence: 6,
+      title: 'Nichts mehr, danke',
+    },
+    title: 'Nichts mehr, danke',
+    situation: {
+      en: 'Respond to "anything else?" with a polite close.',
+      de: 'Beantworte "Sonst noch etwas?" mit einer freundlichen Schluss-Antwort.',
+    },
+    pedagogicalGoal: 'Eine kurze Schluss-Antwort auf die Service-Frage "Sonst noch etwas?" sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Zum Mitnehmen',
+      situation: 'Du bittest, dass die Bestellung mitgenommen wird.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson006,
+    },
+  },
+  {
+    id: 'italian-a1-practical-4-lesson-7-portare-via',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-7-portare-via',
+      sequence: 7,
+      title: 'Zum Mitnehmen',
+    },
+    title: 'Zum Mitnehmen',
+    situation: {
+      en: 'At a counter, ask for the order to be takeaway.',
+      de: 'Am Tresen bittest du, dass die Bestellung zum Mitnehmen ist.',
+    },
+    pedagogicalGoal: 'Die feste Wendung "da portare via" auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Es war sehr gut',
+      situation: 'Nach dem Essen gibst du ein kurzes Lob.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson007,
+    },
+  },
+  {
+    id: 'italian-a1-practical-4-lesson-8-era-buono',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-8-era-buono',
+      sequence: 8,
+      title: 'Es war sehr gut',
+    },
+    title: 'Es war sehr gut',
+    situation: {
+      en: 'After the meal, give a short positive verdict.',
+      de: 'Nach dem Essen gibst du am Tisch ein kurzes Lob.',
+    },
+    pedagogicalGoal: 'Ein kurzes vergangenes Lob mit "era + Adjektiv" auf Italienisch abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Was für ein schöner Tag',
+      situation: 'Kurzer Small Talk mit der Bedienung.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson008,
+    },
+  },
+  {
+    id: 'italian-a1-practical-4-lesson-9-bella-giornata',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-9-bella-giornata',
+      sequence: 9,
+      title: 'Was für ein schöner Tag',
+    },
+    title: 'Was für ein schöner Tag',
+    situation: {
+      en: 'At a counter, share a short positive comment about the day.',
+      de: 'Am Tresen teilst du eine kurze positive Bemerkung zum Tag.',
+    },
+    pedagogicalGoal: 'Eine kurze Small-Talk-Bemerkung mit "che + Adjektiv + Nomen" auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Die Rechnung, bitte',
+      situation: 'Am Ende der Mahlzeit bittest du um die Rechnung.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson009,
+    },
+  },
+  {
+    id: 'italian-a1-practical-4-lesson-10-il-conto',
+    pathId: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
+    lessonMetadata: {
+      id: 'italian-a1-practical-4-lesson-10-il-conto',
+      sequence: 10,
+      title: 'Die Rechnung, bitte',
+    },
+    title: 'Die Rechnung, bitte',
+    situation: {
+      en: 'At the end of the meal, ask for the bill.',
+      de: 'Am Ende der Mahlzeit bittest du um die Rechnung.',
+    },
+    pedagogicalGoal: 'Die feste Schluss-Bitte am Tisch auf Italienisch sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Italian A1 Practical 4 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightItalianP4Lesson010,
+    },
+  },
+  {
     id: 'french-a1-practical-1-lesson-1-bonjour-francais',
     pathId: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_FRENCH_ONE_METADATA.title,
@@ -14207,6 +15091,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,
+    GUIDED_TODAY_PATH_ITALIAN_FOUR_METADATA,
     GUIDED_TODAY_PATH_FRENCH_ONE_METADATA,
   ]
 }
