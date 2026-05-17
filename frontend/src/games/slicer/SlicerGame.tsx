@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type Dispatch, type SetStateAction } from 'react'
 import { Volume2 } from 'lucide-react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
 import type PhaserRuntime from 'phaser'
 import { createGameEventBus } from '../shared/GameEventBus'
 import { GameShell } from '../shared/GameShell'
@@ -11,39 +10,38 @@ import { useRecordGameResult } from '../shared/useRecordGameResult'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import type { GameEvent } from '../shared/gameEvents'
-import type { DeckDefinition, SessionStats } from './engine/types'
+import type { DeckDefinition } from './engine/types'
 import { wordsToSlicerDeck } from './adapters/deckAdapter'
 import { SlicerScene, type SlicerStudyCue } from './scene/SlicerScene'
 import { DeckPicker, type SlicerDeckChoice } from './components/DeckPicker'
 import { PauseOverlay } from './components/PauseOverlay'
 import { RoundOverlay } from './components/RoundOverlay'
-import { SessionComplete } from './components/SessionComplete'
+import { SessionComplete, type SlicerSessionResult } from './components/SessionComplete'
 import { SlicerHUD } from './components/SlicerHUD'
 import { SlicerAudio } from './scene/audio'
 import styles from './styles.module.css'
 
+type CardProgress = { current: number; total: number }
+
 type HudState = {
   deckTitle: string
   roundNumber: number
-  cardProgress: string
-  score: number
-  combo: number
+  cardProgress: CardProgress
   lives: number
 }
+
+const DEFAULT_CARDS_PER_ROUND = 5
 
 const INITIAL_HUD: HudState = {
   deckTitle: 'Lexicon Slice',
   roundNumber: 1,
-  cardProgress: '1 / 5',
-  score: 0,
-  combo: 0,
+  cardProgress: { current: 1, total: DEFAULT_CARDS_PER_ROUND },
   lives: 3,
 }
 
+const INITIAL_TALLY: SlicerSessionResult = { correct: 0, wrong: 0 }
+
 export default function SlicerGame() {
-  const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
-  const returnTo = searchParams.get('returnTo') || '/games'
   const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
   const bus = useMemo(() => createGameEventBus(), [])
@@ -61,8 +59,9 @@ export default function SlicerGame() {
   const [hud, setHud] = useState<HudState>(INITIAL_HUD)
   const [paused, setPaused] = useState(false)
   const [roundLabel, setRoundLabel] = useState<string | null>(null)
-  const [sessionStats, setSessionStats] = useState<SessionStats | null>(null)
-  const [restartNonce, setRestartNonce] = useState(0)
+  const [sessionResult, setSessionResult] = useState<SlicerSessionResult | null>(null)
+  const tallyRef = useRef<SlicerSessionResult>(INITIAL_TALLY)
+  const [restartNonce] = useState(0)
   const [readySceneKey, setReadySceneKey] = useState<string | null>(null)
   const [easyMode, setEasyMode] = useState(true)
   const [slicerLanguage, setSlicerLanguage] = useState<string | null>(activeLanguage)
@@ -94,13 +93,10 @@ export default function SlicerGame() {
     return `${slicerDeck.id}:${slicerDeck.mode ?? 'audio_to_image'}:${restartNonce}:${imageFingerprint}`
   }, [restartNonce, slicerDeck])
 
-  const handleExit = useCallback(() => {
-    navigate(returnTo)
-  }, [navigate, returnTo])
-
   const handleReturnToPicker = useCallback(() => {
     setSelectedDeck(null)
-    setSessionStats(null)
+    setSessionResult(null)
+    tallyRef.current = INITIAL_TALLY
     setPaused(false)
     setRoundLabel(null)
     setReadySceneKey(null)
@@ -148,6 +144,12 @@ export default function SlicerGame() {
     await primeOnGesture().catch(() => undefined)
   }, [primeOnGesture])
 
+  const handleExitToSummary = useCallback(() => {
+    gameRef.current?.scene.pause('slicer')
+    setPaused(false)
+    setSessionResult((current) => current ?? { ...tallyRef.current })
+  }, [gameRef])
+
   useEffect(() => {
     if (!ready || !gameRef.current || !slicerDeck || !sceneKey) return undefined
     const game = gameRef.current
@@ -155,16 +157,16 @@ export default function SlicerGame() {
       deck: slicerDeck,
       bus,
       primeAudioOnGesture: primeSceneAudio,
-      onExit: handleExit,
+      onExit: handleExitToSummary,
       onSceneReady: () => setReadySceneKey(sceneKey),
       onTargetChange: setStudyCue,
       easyMode,
       audio: slicerAudioRef.current,
     })
-  }, [bus, easyMode, gameRef, handleExit, primeSceneAudio, ready, sceneKey, slicerDeck])
+  }, [bus, easyMode, gameRef, handleExitToSummary, primeSceneAudio, ready, sceneKey, slicerDeck])
 
   useEffect(() => bus.on((event) => {
-    handleGameEvent(event, recordResult, setHud, setRoundLabel, setSessionStats)
+    handleGameEvent(event, recordResult, setHud, setRoundLabel, setSessionResult, tallyRef)
   }), [bus, recordResult])
 
   const handleDeckSelected = useCallback((choice: SlicerDeckChoice) => {
@@ -179,7 +181,8 @@ export default function SlicerGame() {
     })
     setPaused(false)
     setRoundLabel(null)
-    setSessionStats(null)
+    setSessionResult(null)
+    tallyRef.current = INITIAL_TALLY
     setReadySceneKey(null)
     setStudyCue(null)
   }, [primeOnGesture])
@@ -194,20 +197,6 @@ export default function SlicerGame() {
     setPaused(false)
   }, [gameRef])
 
-  const restartSession = useCallback(() => {
-    if (!selectedDeck) return
-    setRestartNonce((current) => current + 1)
-    setSessionStats(null)
-    setRoundLabel(null)
-    setPaused(false)
-    setReadySceneKey(null)
-    setStudyCue(null)
-    setHud({
-      ...INITIAL_HUD,
-      deckTitle: selectedDeck.title,
-    })
-  }, [selectedDeck])
-
   const replayStudyCue = useCallback(() => {
     if (!studyCue) return
     void playTargetAudio(studyCue, primeOnGesture, slicerAudioRef.current)
@@ -220,13 +209,13 @@ export default function SlicerGame() {
       && !preparingDeck
       && !paused
       && !roundLabel
-      && !sessionStats
+      && !sessionResult
       && !deckLoading
       && !deckError,
   )
 
   return (
-    <GameShell className={styles.slicerStage} onExit={handleExit}>
+    <GameShell className={styles.slicerStage} onExit={handleExitToSummary}>
       <div ref={phaserHostRef} className={styles.phaserHost} />
       <div className={styles.reactLayer}>
         {!selectedDeck && (
@@ -243,14 +232,12 @@ export default function SlicerGame() {
             deckTitle={hud.deckTitle}
             roundNumber={hud.roundNumber}
             cardProgress={hud.cardProgress}
-            score={hud.score}
-            combo={hud.combo}
             lives={hud.lives}
             paused={paused}
             ready={ready}
             onPause={pauseScene}
             onResume={resumeScene}
-            onExit={handleExit}
+            onExit={handleExitToSummary}
           />
         )}
         {selectedDeck && deckLoading && (
@@ -272,8 +259,8 @@ export default function SlicerGame() {
           <AnswerReference cue={studyCue} onReplay={replayStudyCue} />
         )}
         <RoundOverlay label={roundLabel} />
-        <PauseOverlay open={paused} onResume={resumeScene} onExit={handleExit} />
-        <SessionComplete stats={sessionStats} onRestart={restartSession} onExit={handleReturnToPicker} />
+        <PauseOverlay open={paused && !sessionResult} onResume={resumeScene} onExit={handleExitToSummary} />
+        <SessionComplete result={sessionResult} onExit={handleReturnToPicker} />
       </div>
     </GameShell>
   )
@@ -332,15 +319,19 @@ function handleGameEvent(
   recordResult: (event: Extract<GameEvent, { type: 'game_attempt' }>) => void,
   setHud: Dispatch<SetStateAction<HudState>>,
   setRoundLabel: Dispatch<SetStateAction<string | null>>,
-  setSessionStats: Dispatch<SetStateAction<SessionStats | null>>,
+  setSessionResult: Dispatch<SetStateAction<SlicerSessionResult | null>>,
+  tallyRef: { current: SlicerSessionResult },
 ) {
   if (event.type === 'game_attempt') {
     recordResult(event)
+    tallyRef.current = {
+      correct: tallyRef.current.correct + (event.passed ? 1 : 0),
+      wrong: tallyRef.current.wrong + (event.passed ? 0 : 1),
+    }
+    const nextCardProgress = readCardProgress(event.metadata?.cardProgress)
     setHud((current) => ({
       ...current,
-      combo: typeof event.metadata?.combo === 'number' ? event.metadata.combo : current.combo,
-      cardProgress: typeof event.metadata?.cardProgress === 'string' ? event.metadata.cardProgress : current.cardProgress,
-      score: event.passed ? current.score + 100 : current.score,
+      cardProgress: nextCardProgress ?? current.cardProgress,
       lives: event.passed ? current.lives : Math.max(0, current.lives - 1),
     }))
     return
@@ -354,24 +345,20 @@ function handleGameEvent(
       setHud((current) => ({
         ...current,
         roundNumber: Math.min(10, round + 1),
-        cardProgress: '1 / 5',
+        cardProgress: { current: 1, total: current.cardProgress.total },
       }))
     }
     return
   }
 
   if (event.type === 'session_complete') {
-    const stats = event.payload?.stats
-    if (isSessionStats(stats)) setSessionStats(stats)
+    setSessionResult((current) => current ?? { ...tallyRef.current })
   }
 }
 
-function isSessionStats(value: unknown): value is SessionStats {
-  if (!value || typeof value !== 'object') return false
-  const candidate = value as Partial<Record<keyof SessionStats, unknown>>
-  return typeof candidate.score === 'number'
-    && typeof candidate.correct === 'number'
-    && typeof candidate.missed === 'number'
-    && typeof candidate.skipped === 'number'
-    && typeof candidate.maxCombo === 'number'
+function readCardProgress(value: unknown): CardProgress | null {
+  if (!value || typeof value !== 'object') return null
+  const candidate = value as { current?: unknown; total?: unknown }
+  if (typeof candidate.current !== 'number' || typeof candidate.total !== 'number') return null
+  return { current: candidate.current, total: candidate.total }
 }

@@ -1,12 +1,12 @@
 import { Play } from 'lucide-react'
 import { useTranslation } from '@/hooks/useTranslation'
 
+type CardProgress = { current: number; total: number }
+
 type SlicerHUDProps = {
   deckTitle: string
   roundNumber: number
-  cardProgress: string
-  score: number
-  combo: number
+  cardProgress: CardProgress
   lives: number
   paused: boolean
   ready: boolean
@@ -19,8 +19,6 @@ export function SlicerHUD({
   deckTitle,
   roundNumber,
   cardProgress,
-  score,
-  combo,
   lives,
   paused,
   ready,
@@ -32,6 +30,8 @@ export function SlicerHUD({
   const lifeDots = Array.from({ length: 3 }, (_, index) => index < lives)
   const pauseLabel = paused ? t('slicer.hud.resume') : t('slicer.hud.pause')
   const exitLabel = t('slicer.hud.exit')
+  const roundLabel = `Round ${roundNumber}/10`
+  const cardLabel = `Card ${cardProgress.current}/${cardProgress.total}`
 
   return (
     <div className="pointer-events-auto absolute left-3 right-3 top-[max(0.75rem,var(--app-safe-top))] z-40 flex flex-wrap items-center gap-1.5 text-[#fff1d0] sm:left-4 sm:right-4 sm:gap-2">
@@ -40,9 +40,9 @@ export function SlicerHUD({
         <div className="flex min-w-0 items-center gap-1 font-serif text-sm leading-tight">
           <span className="min-w-0 truncate">{deckTitle}</span>
           <span className="shrink-0 text-[#ff9155]/60">·</span>
-          <span className="shrink-0" aria-label={`Round ${roundNumber} of 10`}>R{roundNumber}</span>
+          <span className="shrink-0" aria-label={`Round ${roundNumber} of 10`}>{roundLabel}</span>
           <span className="shrink-0 text-[#ff9155]/60">·</span>
-          <span className="shrink-0" aria-label={`Card ${cardProgress}`}>{cardProgress}</span>
+          <span className="shrink-0" aria-label={`Card ${cardProgress.current} of ${cardProgress.total}`}>{cardLabel}</span>
         </div>
       </div>
 
@@ -55,34 +55,13 @@ export function SlicerHUD({
       {/* Desktop round chip */}
       <div className="hidden min-h-11 rounded-lg border border-[rgba(255,107,53,0.2)] bg-black/35 px-3 py-2 backdrop-blur-md sm:block">
         <div className="text-[10px] uppercase tracking-[0.16em] text-[#ff9155]/70">Round</div>
-        <div className="font-serif text-lg leading-5">{roundNumber} / 10</div>
+        <div className="font-serif text-lg leading-5">{roundNumber} of 10</div>
       </div>
 
       {/* Desktop card chip */}
       <div className="hidden min-h-11 rounded-lg border border-[rgba(255,107,53,0.2)] bg-black/35 px-3 py-2 backdrop-blur-md sm:block">
         <div className="text-[10px] uppercase tracking-[0.16em] text-[#ff9155]/70">Card</div>
-        <div className="font-serif text-lg leading-5">{cardProgress}</div>
-      </div>
-
-      {/* Mobile combined score+combo */}
-      <div
-        className="flex min-h-11 shrink-0 items-center gap-2 rounded-lg border border-[rgba(255,107,53,0.2)] bg-black/35 px-2.5 py-1.5 font-serif text-base leading-tight backdrop-blur-md sm:hidden"
-        aria-label={`Score ${score}, Combo ${combo}`}
-      >
-        <span>{score}</span>
-        <span className="text-[#ffd700]">×{combo}</span>
-      </div>
-
-      {/* Desktop score chip */}
-      <div className="hidden min-h-11 rounded-lg border border-[rgba(255,107,53,0.2)] bg-black/35 px-3 py-2 backdrop-blur-md sm:block">
-        <div className="text-[10px] uppercase tracking-[0.16em] text-[#ff9155]/70">Score</div>
-        <div className="font-serif text-lg leading-5">{score}</div>
-      </div>
-
-      {/* Desktop combo chip */}
-      <div className="hidden min-h-11 rounded-lg border border-[rgba(255,107,53,0.2)] bg-black/35 px-3 py-2 backdrop-blur-md sm:block">
-        <div className="text-[10px] uppercase tracking-[0.16em] text-[#ff9155]/70">Combo</div>
-        <div className="font-serif text-lg leading-5 text-[#ffd700]">{combo}</div>
+        <div className="font-serif text-lg leading-5">{cardProgress.current} of {cardProgress.total}</div>
       </div>
 
       {/* Lives - compact on mobile, full on desktop */}

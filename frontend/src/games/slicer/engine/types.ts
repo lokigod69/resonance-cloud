@@ -153,13 +153,11 @@ export type AssetLoader = {
 export type LifeLossReason = 'wrong_slice' | 'bomb_hit' | 'missed_target' | 'bluff_failed';
 
 export type SessionStats = {
-  score: number;
   correct: number;
   missed: number;
   skipped: number;
   bluffsResisted: number;
   bluffsFailed: number;
-  maxCombo: number;
   livesLost: number;
   upgradesEarned: UpgradeId[];
   completedLevels: string[];

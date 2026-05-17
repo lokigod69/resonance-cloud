@@ -82,12 +82,11 @@ type DebugState = {
   resolvedWords: number;
   currentTarget?: string;
   lives: number;
-  score: number;
   combo: number;
   isComplete: boolean;
   rendererDpr: number;
   deckMode: DeckMode;
-  cardProgress: string;
+  cardProgress: { current: number; total: number };
   visibleBiome: string;
   lastPointerBurst?: { x: number; y: number; count: number };
   lastSpoken?: { text: string; lang: string; voice?: string };
@@ -148,9 +147,10 @@ export class SlicerScene extends Phaser.Scene {
   private roundWordIndex = 0;
   private bombsRemaining = 0;
   private lives = 3;
-  private score = 0;
+  // Scene-local combo counter retained purely to drive slice-trail thickness
+  // (drawTrail) and gold-vs-orange ember tinting (playCorrectSliceFx). Not
+  // displayed, not persisted in event metadata, not part of SessionStats.
   private combo = 0;
-  private maxCombo = 0;
   private stats: SessionStats = SlicerScene.emptyStats();
   private isComplete = false;
   private testMode = false;
@@ -295,7 +295,6 @@ export class SlicerScene extends Phaser.Scene {
       resolvedWords: this.roundWordIndex,
       currentTarget: this.currentTarget?.word,
       lives: this.lives,
-      score: this.score,
       combo: this.combo,
       isComplete: this.isComplete,
       rendererDpr: this.rendererDpr,
@@ -326,9 +325,7 @@ export class SlicerScene extends Phaser.Scene {
     this.roundNumber = 1;
     this.roundWordIndex = 0;
     this.lives = 3;
-    this.score = 0;
     this.combo = 0;
-    this.maxCombo = 0;
     this.isComplete = false;
     this.transitioning = false;
     this.lastPointerBurst = undefined;
@@ -640,11 +637,7 @@ export class SlicerScene extends Phaser.Scene {
       this.roundWordIndex += 1;
       if (reason === 'slice') {
         this.combo += 1;
-        this.maxCombo = Math.max(this.maxCombo, this.combo);
-        this.score += 100 * Math.max(1, Math.min(4, this.combo));
         this.stats.correct += 1;
-        this.stats.score = this.score;
-        this.stats.maxCombo = this.maxCombo;
         this.audio.sliceReward();
         this.playCorrectSliceFx();
         this.emitAttempt(card.word, true, 'target', false);
@@ -749,7 +742,6 @@ export class SlicerScene extends Phaser.Scene {
       metadata: {
         mode: deckMode(this.deck),
         biome: this.currentLevel().biome,
-        combo: this.combo,
         cardProgress: this.cardProgress(),
         isBluff,
         cardKind,
@@ -1242,10 +1234,10 @@ export class SlicerScene extends Phaser.Scene {
       .map((word) => ({ ...word, translation: word.translation ?? word.word }));
   }
 
-  private cardProgress(): string {
+  private cardProgress(): { current: number; total: number } {
     const total = Math.max(1, this.currentRoundWords.length || this.wordsPerRound());
     const current = Phaser.Math.Clamp(this.roundWordIndex + 1, 1, total);
-    return `${current} / ${total}`;
+    return { current, total };
   }
 
   private async speakTarget(target: DeckWord): Promise<void> {
@@ -1338,13 +1330,11 @@ export class SlicerScene extends Phaser.Scene {
 
   private static emptyStats(): SessionStats {
     return {
-      score: 0,
       correct: 0,
       missed: 0,
       skipped: 0,
       bluffsResisted: 0,
       bluffsFailed: 0,
-      maxCombo: 0,
       livesLost: 0,
       upgradesEarned: [],
       completedLevels: [],
