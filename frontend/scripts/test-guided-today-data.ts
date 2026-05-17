@@ -187,6 +187,18 @@ const expectedTitles = [
   'Tomorrow at seven',
   'Thank you, goodbye',
 ]
+const expectedBrightPathOnePhrases = [
+  'Hi there, do you speak English?',
+  'Sorry, could you say that again?',
+  'Hi, could you help me? Where is the station?',
+  "I'd like a coffee, please.",
+  'How much is this?',
+  'Hi, what time is the train?',
+  'Hi, could you help me, please?',
+  'I love it here.',
+  'Tomorrow at seven? Great!',
+  'Wonderful, thanks so much. Goodbye.',
+]
 const expectedPathTwoTitles = [
   "I don't understand",
   'Write it down',
@@ -332,6 +344,7 @@ assert('A1 Practical 8 arc titles match product sequence', JSON.stringify(pathEi
 assert('A1 Practical 9 arc titles match product sequence', JSON.stringify(pathNineLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathNineTitles), pathNineLessons.map((lesson) => lesson.title))
 assert('A1 Practical 10 arc titles match product sequence', JSON.stringify(pathTenLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathTenTitles), pathTenLessons.map((lesson) => lesson.title))
 assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, italianPathOneId, italianPathTwoId, italianPathThreeId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId]), getGuidedTodayPathOptions())
+assert('A1 Practical 1 Bright phrase baseline matches PR4 product corrections', JSON.stringify(pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? '')) === JSON.stringify(expectedBrightPathOnePhrases), pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? ''))
 
 console.log('\n[lesson definitions]')
 for (const lesson of pathLessons) {
