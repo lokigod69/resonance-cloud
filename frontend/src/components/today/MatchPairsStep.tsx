@@ -19,6 +19,8 @@ export function MatchPairsStep({
 }: MatchPairsStepProps) {
   const { t } = useTranslation()
   const columns = getDeterministicMatchColumns(lesson)
+  const targetColumnLabel = t(`today.language.${lesson.targetLanguage}`) || t('today.matchPairs.targetColumn')
+  const baseColumnLabel = t(`today.language.${lesson.baseLanguage}`) || t('today.matchPairs.baseColumn')
   const [selectedEnglishId, setSelectedEnglishId] = useState<string | null>(null)
   const [wrongPairIds, setWrongPairIds] = useState<Set<string>>(() => new Set())
   const wrongResetRef = useRef<number | undefined>(undefined)
@@ -86,7 +88,7 @@ export function MatchPairsStep({
       <div className="mx-auto grid w-full max-w-2xl justify-center gap-4 sm:grid-cols-[minmax(9rem,15rem)_minmax(9rem,15rem)]">
         <div className="grid content-start justify-items-center gap-2">
           <p className="text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            English
+            {targetColumnLabel}
           </p>
           {columns.english.map((pair) => (
             <MatchChip
@@ -98,13 +100,14 @@ export function MatchPairsStep({
               isWrong={wrongPairIds.has(pair.id)}
               onClick={() => handleEnglishSelect(pair.id)}
               onListen={() => handleEnglishListen(pair)}
+              listenLabel={t('today.listenToItem', { item: pair.targetText })}
             />
           ))}
         </div>
 
         <div className="grid content-start justify-items-center gap-2">
           <p className="text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-            Deutsch
+            {baseColumnLabel}
           </p>
           {columns.german.map((pair) => (
             <MatchChip
@@ -134,6 +137,7 @@ function MatchChip({
   isWrong,
   onClick,
   onListen,
+  listenLabel,
 }: {
   pair: GuidedMatchPair
   side: 'target' | 'base'
@@ -142,6 +146,7 @@ function MatchChip({
   isWrong: boolean
   onClick: () => void
   onListen?: () => void
+  listenLabel?: string
 }) {
   const text = side === 'target' ? pair.targetText : pair.baseText
 
@@ -170,8 +175,8 @@ function MatchChip({
           type="button"
           onClick={onListen}
           className="inline-flex size-8 shrink-0 items-center justify-center rounded-md border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] text-[var(--text-secondary)] transition hover:bg-[color-mix(in_srgb,var(--accent-soft)_58%,transparent)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-          aria-label={`Listen: ${pair.targetText}`}
-          title={`Listen: ${pair.targetText}`}
+          aria-label={listenLabel}
+          title={listenLabel}
         >
           <Volume2 className="h-4 w-4" />
         </button>

@@ -2,6 +2,7 @@ import { CalendarDays, Check, CheckCircle2, ChevronDown, Circle, Play, RotateCcw
 import { useState } from 'react'
 import type { GuidedLesson, GuidedLessonMedia } from '@/data/guidedLessons'
 import { ACTIVE_GUIDED_VIBE_IDS, guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
+import { formatGuidedPathFullTitle } from '@/lib/guidedPathLabels'
 import type { TodayVisibleStatus } from '@/lib/todayProgress'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
@@ -146,6 +147,8 @@ export function TodayHero({
 }: TodayHeroProps) {
   const { t } = useTranslation()
   const terminalStatus = status === 'completed' || status === 'skipped'
+  const pathTitle = formatGuidedPathFullTitle(lesson.pathMetadata, t)
+  const pathDirection = `${t(`today.language.${lesson.pathMetadata.baseLanguage}`)} -> ${t(`today.language.${lesson.pathMetadata.targetLanguage}`)}`
 
   return (
     <section className="theme-panel relative overflow-hidden rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
@@ -163,10 +166,10 @@ export function TodayHero({
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="outline" className="border-[var(--border-strong)] bg-[var(--accent-soft)] text-[var(--text-primary)]">
-                {lesson.pathMetadata.title}
+                {pathTitle}
               </Badge>
               <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
-                {lesson.pathMetadata.baseLanguage}{' -> '}{lesson.pathMetadata.targetLanguage}
+                {pathDirection}
               </Badge>
               <Badge variant="outline" className="border-[var(--border-subtle)] text-[var(--text-secondary)]">
                 {t('today.vibeIndicator', { vibe: guidedVibes[lesson.vibeId].label })}
@@ -453,6 +456,8 @@ export function GuidedVibePicker({
 
 export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
   const { t } = useTranslation()
+  const pathTitle = formatGuidedPathFullTitle(lesson.pathMetadata, t)
+  const pathDirection = `${t(`today.language.${lesson.pathMetadata.baseLanguage}`)} -> ${t(`today.language.${lesson.pathMetadata.targetLanguage}`)}`
 
   return (
     <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
@@ -460,10 +465,10 @@ export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="outline" className="border-[var(--border-strong)] bg-[var(--accent-soft)] text-[var(--text-primary)]">
-              {lesson.pathMetadata.title}
+              {pathTitle}
             </Badge>
             <span className="text-xs font-medium text-[var(--text-muted)]">
-              {lesson.pathMetadata.baseLanguage}{' -> '}{lesson.pathMetadata.targetLanguage}
+              {pathDirection}
             </span>
             <span className="text-xs font-medium text-[var(--text-muted)]">
               {t('today.vibeIndicator', { vibe: guidedVibes[lesson.vibeId].label })}

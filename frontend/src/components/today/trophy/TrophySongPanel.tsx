@@ -102,11 +102,13 @@ function TrophyLyricsReview({
   displayLyrics: string
   lyricsTranslationDe: string
 }) {
+  const { t } = useTranslation()
+
   return (
     <section className="today-trophy-lyrics rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
       <div className="grid gap-4 lg:grid-cols-2">
-        <LyricColumn title="English lyrics" body={displayLyrics} />
-        <LyricColumn title="German translation" body={lyricsTranslationDe} />
+        <LyricColumn title={t('today.trophy.lyrics.targetTitle')} body={displayLyrics} />
+        <LyricColumn title={t('today.trophy.lyrics.baseTitle')} body={lyricsTranslationDe} />
       </div>
     </section>
   )

@@ -17,6 +17,7 @@ import {
   buildGuidedSegmentReviewPlan,
 } from '../src/lib/guidedCheckpoint.ts'
 import { formatGuidedPathLabel } from '../src/lib/guidedPathLabels.ts'
+import { createT } from '../src/lib/translations.ts'
 import { createEmptyTodayProgressState } from '../src/lib/todayProgress.ts'
 
 let failures = 0
@@ -68,6 +69,16 @@ for (const path of englishPathOptions) {
     `formatGuidedPathLabel generates compact chooser label ${expectedLabel}`,
     formatGuidedPathLabel(path) === expectedLabel,
     { observed: formatGuidedPathLabel(path), expected: expectedLabel },
+  )
+  assert(
+    `formatGuidedPathLabel localizes compact chooser label to German`,
+    formatGuidedPathLabel(path, createT('de')) === `Englisch A1 P${numberSuffix}`,
+    { observed: formatGuidedPathLabel(path, createT('de')), expected: `Englisch A1 P${numberSuffix}` },
+  )
+  assert(
+    `formatGuidedPathLabel localizes compact chooser label to French`,
+    formatGuidedPathLabel(path, createT('fr')) === `anglais A1 P${numberSuffix}`,
+    { observed: formatGuidedPathLabel(path, createT('fr')), expected: `anglais A1 P${numberSuffix}` },
   )
 }
 assert('directory intentionally hides path subtitles', !directorySource.includes('path.subtitle'))
