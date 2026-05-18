@@ -16,9 +16,9 @@ export type GuidedLessonMedia = {
   caption: string
 }
 
-export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French'
+export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'German' | 'Cebuano'
 export type GuidedBaseLanguage = 'German' | 'English'
-export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR'
+export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'de-DE' | 'ceb-PH'
 
 export type GuidedPathMetadata = {
   id: string
@@ -629,6 +629,17 @@ const GUIDED_TODAY_PATH_FRENCH_TEN_METADATA: GuidedPathMetadata = {
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'French',
+  estimatedMinutes: 5,
+}
+
+const GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-1',
+  title: 'Cebuano A1 Praxis 1',
+  shortTitle: 'A1 Praxis 1',
+  subtitle: 'Erste Hilfsphrasen auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
   estimatedMinutes: 5,
 }
 
@@ -24865,6 +24876,704 @@ const brightFrenchP10Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Heller Abschlussbildschirm, ruhiger höflicher Abschied.',
 }
 
+type CebuanoP1LessonInput = {
+  slug: string
+  title: string
+  situation: GuidedLessonDefinition['situation']
+  pedagogicalGoal: string
+  variant: GuidedLessonVibeVariant
+}
+
+function cebuanoAnswers(...answers: string[]) {
+  return uniqueAnswers(answers)
+}
+
+const brightCebuanoP1Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Kumusta. Makasulti ka og Cebuano?',
+    baseText: 'Hallo. Sprichst du Cebuano?',
+  },
+  meaning: 'Eine einfache erste Frage, bevor du auf Cebuano weitersprichst.',
+  chunks: [
+    { id: 'kumusta', targetText: 'Kumusta.', baseText: 'Hallo.' },
+    { id: 'makasulti-ka', targetText: 'Makasulti ka', baseText: 'kannst du sprechen' },
+    { id: 'og-cebuano', targetText: 'og Cebuano?', baseText: 'Cebuano?' },
+  ],
+  lessonItems: [
+    { id: 'kumusta', targetText: 'kumusta', baseText: 'hallo / wie geht es', acceptedAnswers: cebuanoAnswers('kumusta', 'Kumusta', 'komusta', 'Komusta') },
+    { id: 'makasulti', targetText: 'makasulti', baseText: 'sprechen können', acceptedAnswers: cebuanoAnswers('makasulti', 'Makasulti') },
+    { id: 'makasulti-ka', targetText: 'makasulti ka', baseText: 'du kannst sprechen', acceptedAnswers: cebuanoAnswers('makasulti ka', 'Makasulti ka') },
+    { id: 'cebuano', targetText: 'Cebuano', baseText: 'Cebuano', acceptedAnswers: cebuanoAnswers('Cebuano', 'cebuano', 'Bisaya', 'bisaya') },
+  ],
+  build: {
+    targetText: 'Kumusta. Makasulti ka og Cebuano?',
+    chips: ['Kumusta.', 'Makasulti ka', 'og Cebuano?', 'palihug', 'salamat'],
+  },
+  typeRecall: {
+    before: 'Kumusta. ',
+    answer: 'Makasulti ka',
+    after: ' og Cebuano?',
+    acceptedAnswers: cebuanoAnswers('Makasulti ka', 'makasulti ka'),
+    fallbackChoices: ['Makasulti ka', 'Asa ka', 'Tagpila ni', 'Salamat kaayo'],
+  },
+  speakTarget: {
+    baseCue: 'Hallo. Sprichst du Cebuano?',
+    targetPhrase: 'Kumusta. Makasulti ka og Cebuano?',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['kumusta', 'makasulti', 'ka', 'cebuano'],
+    optionalTokens: ['og', 'komusta', 'bisaya'],
+  },
+  sceneCaption: 'Sa hayag nga kapihan, mangutana ka una kon makasulti siya og Cebuano.',
+  trophyWord: {
+    word: 'kumusta',
+    meaning: 'hallo / wie geht es',
+    example: 'Kumusta. Makasulti ka og Cebuano?',
+    whyThisWord: 'Kumusta ist ein spanisches Lehnwort und auch in Tagalog bekannt; hier bleibt die Struktur Cebuano durch makasulti ka og Cebuano.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Heller Cafétresen, erste freundliche Cebuano-Frage.',
+  },
+  songSeed: {
+    genre: 'light acoustic pop',
+    mood: 'friendly Cebuano first contact',
+  },
+  visualNotes: 'Bright daylight, café counter, Cebuano opener as the clear focal line.',
+}
+
+const brightCebuanoP1Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Pasaylo, wala ko kasabot. Palihug, balika.',
+    baseText: 'Entschuldigung, ich habe nicht verstanden. Bitte wiederhole es.',
+  },
+  meaning: 'Eine kurze Entschuldigung plus Bitte um Wiederholung.',
+  chunks: [
+    { id: 'pasaylo', targetText: 'Pasaylo,', baseText: 'Entschuldigung,' },
+    { id: 'wala-ko-kasabot', targetText: 'wala ko kasabot.', baseText: 'ich habe nicht verstanden.' },
+    { id: 'palihug-balika', targetText: 'Palihug, balika.', baseText: 'Bitte wiederhole es.' },
+  ],
+  lessonItems: [
+    { id: 'pasaylo', targetText: 'pasaylo', baseText: 'Entschuldigung', acceptedAnswers: cebuanoAnswers('pasaylo', 'Pasaylo') },
+    { id: 'wala-ko', targetText: 'wala ko', baseText: 'ich habe nicht / ich bin nicht', acceptedAnswers: cebuanoAnswers('wala ko', 'Wala ko') },
+    { id: 'kasabot', targetText: 'kasabot', baseText: 'verstanden', acceptedAnswers: cebuanoAnswers('kasabot', 'Kasabot') },
+    { id: 'balika', targetText: 'balika', baseText: 'wiederhole es', acceptedAnswers: cebuanoAnswers('balika', 'Balika') },
+  ],
+  build: {
+    targetText: 'Pasaylo, wala ko kasabot. Palihug, balika.',
+    chips: ['Pasaylo,', 'wala ko kasabot.', 'Palihug,', 'balika.', 'tagpila'],
+  },
+  typeRecall: {
+    before: 'Pasaylo, wala ko ',
+    answer: 'kasabot',
+    after: '. Palihug, balika.',
+    acceptedAnswers: cebuanoAnswers('kasabot', 'Kasabot'),
+    fallbackChoices: ['kasabot', 'kape', 'estasyon', 'ugma'],
+  },
+  speakTarget: {
+    baseCue: 'Entschuldigung, ich habe nicht verstanden. Bitte wiederhole es.',
+    targetPhrase: 'Pasaylo, wala ko kasabot. Palihug, balika.',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['pasaylo', 'wala', 'ko', 'kasabot', 'balika'],
+    optionalTokens: ['palihug', 'palihog'],
+  },
+  sceneCaption: 'Sa tunga sa istorya, klaro nimo nga wala ka kasabot ug nangayo ka og balik.',
+  trophyWord: {
+    word: 'pasaylo',
+    meaning: 'Entschuldigung',
+    example: 'Pasaylo, wala ko kasabot.',
+    whyThisWord: 'Pasaylo ist Cebuano für eine Entschuldigung. Es setzt bewusst eine Cebuano-Form statt einer Tagalog-Entschuldigung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kurzer Moment am Tresen, du bittest ruhig um Wiederholung.',
+  },
+  songSeed: {
+    genre: 'soft acoustic pop',
+    mood: 'polite repeat request',
+  },
+  visualNotes: 'Small pause gesture, clear repeat cue, no pressure.',
+}
+
+const brightCebuanoP1Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Maayong adlaw. Asa ang estasyon?',
+    baseText: 'Guten Tag. Wo ist der Bahnhof?',
+  },
+  meaning: 'Eine warme Begrüßung plus einfache Wo-Frage nach einem Ort.',
+  chunks: [
+    { id: 'maayong-adlaw', targetText: 'Maayong adlaw.', baseText: 'Guten Tag.' },
+    { id: 'asa-ang', targetText: 'Asa ang', baseText: 'wo ist der/die/das' },
+    { id: 'estasyon', targetText: 'estasyon?', baseText: 'Bahnhof?' },
+  ],
+  lessonItems: [
+    { id: 'maayong-adlaw', targetText: 'maayong adlaw', baseText: 'guten Tag', acceptedAnswers: cebuanoAnswers('maayong adlaw', 'Maayong adlaw') },
+    { id: 'asa', targetText: 'asa', baseText: 'wo', acceptedAnswers: cebuanoAnswers('asa', 'Asa') },
+    { id: 'ang', targetText: 'ang', baseText: 'der/die/das (Fokusmarker)', acceptedAnswers: cebuanoAnswers('ang', 'Ang') },
+    { id: 'estasyon', targetText: 'estasyon', baseText: 'Bahnhof / Station', acceptedAnswers: cebuanoAnswers('estasyon', 'Estasyon') },
+  ],
+  build: {
+    targetText: 'Maayong adlaw. Asa ang estasyon?',
+    chips: ['Maayong adlaw.', 'Asa ang', 'estasyon?', 'kape', 'ugma'],
+  },
+  typeRecall: {
+    before: 'Maayong adlaw. ',
+    answer: 'Asa',
+    after: ' ang estasyon?',
+    acceptedAnswers: cebuanoAnswers('Asa', 'asa'),
+    fallbackChoices: ['Asa', 'Unsa', 'Kanus-a', 'Tagpila'],
+  },
+  speakTarget: {
+    baseCue: 'Guten Tag. Wo ist der Bahnhof?',
+    targetPhrase: 'Maayong adlaw. Asa ang estasyon?',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['maayong', 'adlaw', 'asa', 'estasyon'],
+    optionalTokens: ['ang'],
+  },
+  sceneCaption: 'Sa dalan, mangutana ka og direksiyon gamit ang asa ug ang estasyon.',
+  trophyWord: {
+    word: 'asa',
+    meaning: 'wo',
+    example: 'Asa ang estasyon?',
+    whyThisWord: 'Asa ist der Cebuano-Wo-Frager. Das ist ein klarer Unterschied zur Tagalog-Wo-Frage.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Helle Straße, kurzer Halt, Frage nach dem Bahnhof.',
+  },
+  songSeed: {
+    genre: 'sunny street acoustic',
+    mood: 'asking directions',
+  },
+  visualNotes: 'Street sign, bright marker on asa, station icon.',
+}
+
+const brightCebuanoP1Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Usa ka kape, palihug.',
+    baseText: 'Einen Kaffee, bitte.',
+  },
+  meaning: 'Eine kurze, natürliche Bestellung am Cafétresen.',
+  chunks: [
+    { id: 'usa-ka-kape', targetText: 'Usa ka kape,', baseText: 'ein Kaffee,' },
+    { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'usa', targetText: 'usa', baseText: 'eins / ein', acceptedAnswers: cebuanoAnswers('usa', 'Usa') },
+    { id: 'kape', targetText: 'kape', baseText: 'Kaffee', acceptedAnswers: cebuanoAnswers('kape', 'Kape', 'cafe', 'Cafe') },
+    { id: 'palihug', targetText: 'palihug', baseText: 'bitte', acceptedAnswers: cebuanoAnswers('palihug', 'Palihug', 'palihog', 'Palihog') },
+    { id: 'usa-ka', targetText: 'usa ka', baseText: 'ein Stück / eine Einheit', acceptedAnswers: cebuanoAnswers('usa ka', 'Usa ka') },
+  ],
+  build: {
+    targetText: 'Usa ka kape, palihug.',
+    chips: ['Usa ka', 'kape,', 'palihug.', 'estasyon', 'salamat'],
+  },
+  typeRecall: {
+    before: 'Usa ka kape, ',
+    answer: 'palihug',
+    after: '.',
+    acceptedAnswers: cebuanoAnswers('palihug', 'Palihug', 'palihog', 'Palihog'),
+    fallbackChoices: ['palihug', 'pasaylo', 'tagpila', 'asa'],
+  },
+  speakTarget: {
+    baseCue: 'Einen Kaffee, bitte.',
+    targetPhrase: 'Usa ka kape, palihug.',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['usa', 'ka', 'kape', 'palihug'],
+    optionalTokens: ['palihog', 'cafe'],
+  },
+  sceneCaption: 'Sa kapihan, mubo ug klaro ang imong pangayo: usa ka kape, palihug.',
+  trophyWord: {
+    word: 'palihug',
+    meaning: 'bitte',
+    example: 'Usa ka kape, palihug.',
+    whyThisWord: 'Palihug ist sehr Cebuano für bitte. Es vermeidet Tagalog-Bitteformen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Cafétresen, einfache Bestellung mit freundlichem Bitte.',
+  },
+  songSeed: {
+    genre: 'bright cafe pop',
+    mood: 'ordering coffee',
+  },
+  visualNotes: 'Coffee cup, polite marker highlighted, warm counter light.',
+}
+
+const brightCebuanoP1Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Tagpila ni?',
+    baseText: 'Wie viel kostet das hier?',
+  },
+  meaning: 'Eine sehr kurze Preisfrage zu einem sichtbaren Gegenstand.',
+  chunks: [
+    { id: 'tagpila', targetText: 'Tagpila', baseText: 'wie viel kostet' },
+    { id: 'ni', targetText: 'ni?', baseText: 'das hier?' },
+  ],
+  lessonItems: [
+    { id: 'tagpila', targetText: 'tagpila', baseText: 'wie viel kostet', acceptedAnswers: cebuanoAnswers('tagpila', 'Tagpila', 'tag pila', 'Tag pila') },
+    { id: 'ni', targetText: 'ni', baseText: 'dies hier', acceptedAnswers: cebuanoAnswers('ni', 'Ni') },
+    { id: 'pila', targetText: 'pila', baseText: 'wie viel', acceptedAnswers: cebuanoAnswers('pila', 'Pila') },
+    { id: 'kuwarta', targetText: 'kuwarta', baseText: 'Geld', acceptedAnswers: cebuanoAnswers('kuwarta', 'Kuwarta') },
+  ],
+  build: {
+    targetText: 'Tagpila ni?',
+    chips: ['Tagpila', 'ni?', 'asa', 'ugma'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Tagpila',
+    after: ' ni?',
+    acceptedAnswers: cebuanoAnswers('Tagpila', 'tagpila', 'Tag pila', 'tag pila'),
+    fallbackChoices: ['Tagpila', 'Asa', 'Kanus-a', 'Salamat'],
+  },
+  speakTarget: {
+    baseCue: 'Wie viel kostet das hier?',
+    targetPhrase: 'Tagpila ni?',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['tagpila', 'ni'],
+    optionalTokens: ['tag', 'pila'],
+  },
+  sceneCaption: 'Sa gamay nga tindahan, itudlo nimo ang butang ug mangutana: tagpila ni?',
+  trophyWord: {
+    word: 'tagpila',
+    meaning: 'wie viel kostet',
+    example: 'Tagpila ni?',
+    whyThisWord: 'Tagpila ist die Cebuano-Preisfrage. Das ist nicht die Tagalog-Preisfrage.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kleiner Laden, sichtbarer Gegenstand, kurze Preisfrage.',
+  },
+  songSeed: {
+    genre: 'light market pop',
+    mood: 'asking price',
+  },
+  visualNotes: 'Price tag, pointing gesture, tagpila as the anchor.',
+}
+
+const brightCebuanoP1Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Kanus-a moabot ang tren?',
+    baseText: 'Wann kommt der Zug?',
+  },
+  meaning: 'Eine einfache Zeitfrage am Bahnhof.',
+  chunks: [
+    { id: 'kanus-a', targetText: 'Kanus-a', baseText: 'wann' },
+    { id: 'moabot-ang', targetText: 'moabot ang', baseText: 'kommt der/die/das' },
+    { id: 'tren', targetText: 'tren?', baseText: 'Zug?' },
+  ],
+  lessonItems: [
+    { id: 'kanus-a', targetText: 'kanus-a', baseText: 'wann', acceptedAnswers: cebuanoAnswers('kanus-a', 'Kanus-a', 'kanusa', 'Kanusa') },
+    { id: 'moabot', targetText: 'moabot', baseText: 'ankommen / kommen', acceptedAnswers: cebuanoAnswers('moabot', 'Moabot') },
+    { id: 'tren', targetText: 'tren', baseText: 'Zug', acceptedAnswers: cebuanoAnswers('tren', 'Tren') },
+    { id: 'ang-tren', targetText: 'ang tren', baseText: 'der Zug', acceptedAnswers: cebuanoAnswers('ang tren', 'Ang tren') },
+  ],
+  build: {
+    targetText: 'Kanus-a moabot ang tren?',
+    chips: ['Kanus-a', 'moabot ang', 'tren?', 'kape', 'nindot'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Kanus-a',
+    after: ' moabot ang tren?',
+    acceptedAnswers: cebuanoAnswers('Kanus-a', 'kanus-a', 'Kanusa', 'kanusa'),
+    fallbackChoices: ['Kanus-a', 'Asa', 'Tagpila', 'Kumusta'],
+  },
+  speakTarget: {
+    baseCue: 'Wann kommt der Zug?',
+    targetPhrase: 'Kanus-a moabot ang tren?',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['kanus', 'a', 'moabot', 'tren'],
+    optionalTokens: ['kanusa', 'ang'],
+  },
+  sceneCaption: 'Sa estasyon, tan-aw ka sa riles ug mangutana kanus-a moabot ang tren.',
+  trophyWord: {
+    word: 'kanus-a',
+    meaning: 'wann',
+    example: 'Kanus-a moabot ang tren?',
+    whyThisWord: 'Kanus-a ist der Cebuano-Wann-Frager. Das ist ein wichtiger Abstand zur Tagalog-Wann-Frage.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bahnhof, Zuganzeige, einfache Wann-Frage.',
+  },
+  songSeed: {
+    genre: 'bright station acoustic',
+    mood: 'train timing',
+  },
+  visualNotes: 'Train platform, clock accent, hyphen in kanus-a preserved.',
+}
+
+const brightCebuanoP1Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Kinahanglan ko og tabang, palihug.',
+    baseText: 'Ich brauche Hilfe, bitte.',
+  },
+  meaning: 'Eine direkte Bitte um Hilfe in einer Service-Situation.',
+  chunks: [
+    { id: 'kinahanglan-ko', targetText: 'Kinahanglan ko', baseText: 'ich brauche' },
+    { id: 'og-tabang', targetText: 'og tabang,', baseText: 'Hilfe,' },
+    { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'kinahanglan', targetText: 'kinahanglan', baseText: 'brauchen / notwendig', acceptedAnswers: cebuanoAnswers('kinahanglan', 'Kinahanglan') },
+    { id: 'ko', targetText: 'ko', baseText: 'ich / mein (Enklitikum)', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+    { id: 'og', targetText: 'og', baseText: 'Objektmarker', acceptedAnswers: cebuanoAnswers('og', 'Og', 'ug', 'Ug') },
+    { id: 'tabang', targetText: 'tabang', baseText: 'Hilfe', acceptedAnswers: cebuanoAnswers('tabang', 'Tabang') },
+  ],
+  build: {
+    targetText: 'Kinahanglan ko og tabang, palihug.',
+    chips: ['Kinahanglan ko', 'og tabang,', 'palihug.', 'maayong adlaw', 'tren'],
+  },
+  typeRecall: {
+    before: 'Kinahanglan ko og ',
+    answer: 'tabang',
+    after: ', palihug.',
+    acceptedAnswers: cebuanoAnswers('tabang', 'Tabang'),
+    fallbackChoices: ['tabang', 'kape', 'tren', 'kuwarta'],
+  },
+  speakTarget: {
+    baseCue: 'Ich brauche Hilfe, bitte.',
+    targetPhrase: 'Kinahanglan ko og tabang, palihug.',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['kinahanglan', 'ko', 'tabang'],
+    optionalTokens: ['og', 'ug', 'palihug', 'palihog'],
+  },
+  sceneCaption: 'Sa botika o sa lamesa sa tabang, klaro nimo nga kinahanglan ka og tabang.',
+  trophyWord: {
+    word: 'tabang',
+    meaning: 'Hilfe',
+    example: 'Kinahanglan ko og tabang, palihug.',
+    whyThisWord: 'Tabang ist das Cebuano-Wort für Hilfe. Die Phrase nutzt ko als Enklitikum und og vor dem Objekt.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Infoschalter oder Apotheke, klare Bitte um Hilfe.',
+  },
+  songSeed: {
+    genre: 'supportive acoustic pop',
+    mood: 'asking for help',
+  },
+  visualNotes: 'Help desk, bright support cue, og tabang grouped together.',
+}
+
+const brightCebuanoP1Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Nindot dinhi.',
+    baseText: 'Hier ist es schön.',
+  },
+  meaning: 'Ein kurzer positiver Small-Talk-Satz über den Ort.',
+  chunks: [
+    { id: 'nindot', targetText: 'Nindot', baseText: 'schön / gut' },
+    { id: 'dinhi', targetText: 'dinhi.', baseText: 'hier.' },
+  ],
+  lessonItems: [
+    { id: 'nindot', targetText: 'nindot', baseText: 'schön / gut', acceptedAnswers: cebuanoAnswers('nindot', 'Nindot') },
+    { id: 'dinhi', targetText: 'dinhi', baseText: 'hier', acceptedAnswers: cebuanoAnswers('dinhi', 'Dinhi') },
+    { id: 'dako', targetText: 'dako', baseText: 'groß', acceptedAnswers: cebuanoAnswers('dako', 'Dako') },
+    { id: 'gamay', targetText: 'gamay', baseText: 'klein', acceptedAnswers: cebuanoAnswers('gamay', 'Gamay') },
+  ],
+  build: {
+    targetText: 'Nindot dinhi.',
+    chips: ['Nindot', 'dinhi.', 'tagpila', 'pasaylo'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Nindot',
+    after: ' dinhi.',
+    acceptedAnswers: cebuanoAnswers('Nindot', 'nindot'),
+    fallbackChoices: ['Nindot', 'Dako', 'Gamay', 'Wala'],
+  },
+  speakTarget: {
+    baseCue: 'Hier ist es schön.',
+    targetPhrase: 'Nindot dinhi.',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['nindot', 'dinhi'],
+    optionalTokens: [],
+  },
+  sceneCaption: 'Sulod sa kapihan, mosulti ka og usa ka maayong linya: nindot dinhi.',
+  trophyWord: {
+    word: 'nindot',
+    meaning: 'schön / gut',
+    example: 'Nindot dinhi.',
+    whyThisWord: 'Nindot ist ein sehr Cebuano positives Alltagswort. Es vermeidet das Tagalog-Standardwort für schön.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Schöner heller Ort, ein kurzer positiver Kommentar.',
+  },
+  songSeed: {
+    genre: 'warm cafe acoustic',
+    mood: 'positive small talk',
+  },
+  visualNotes: 'Bright interior, short compliment, nindot highlighted.',
+}
+
+const brightCebuanoP1Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Ugma sa alas siyete? Sige.',
+    baseText: 'Morgen um sieben? In Ordnung.',
+  },
+  meaning: 'Eine kurze Bestätigung für einen Plan am nächsten Tag.',
+  chunks: [
+    { id: 'ugma', targetText: 'Ugma', baseText: 'morgen' },
+    { id: 'sa-alas-siyete', targetText: 'sa alas siyete?', baseText: 'um sieben?' },
+    { id: 'sige', targetText: 'Sige.', baseText: 'in Ordnung.' },
+  ],
+  lessonItems: [
+    { id: 'ugma', targetText: 'ugma', baseText: 'morgen', acceptedAnswers: cebuanoAnswers('ugma', 'Ugma') },
+    { id: 'alas-siyete', targetText: 'alas siyete', baseText: 'um sieben', acceptedAnswers: cebuanoAnswers('alas siyete', 'Alas siyete', 'alas siete', 'Alas siete') },
+    { id: 'sige', targetText: 'sige', baseText: 'okay / in Ordnung', acceptedAnswers: cebuanoAnswers('sige', 'Sige') },
+    { id: 'karon', targetText: 'karon', baseText: 'jetzt / heute', acceptedAnswers: cebuanoAnswers('karon', 'Karon') },
+  ],
+  build: {
+    targetText: 'Ugma sa alas siyete? Sige.',
+    chips: ['Ugma', 'sa alas siyete?', 'Sige.', 'gahapon', 'tagpila'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Ugma',
+    after: ' sa alas siyete? Sige.',
+    acceptedAnswers: cebuanoAnswers('Ugma', 'ugma'),
+    fallbackChoices: ['Ugma', 'Karon', 'Gahapon', 'Asa'],
+  },
+  speakTarget: {
+    baseCue: 'Morgen um sieben? In Ordnung.',
+    targetPhrase: 'Ugma sa alas siyete? Sige.',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['ugma', 'alas', 'siyete', 'sige'],
+    optionalTokens: ['sa', 'siete'],
+  },
+  sceneCaption: 'Sa sabot, mouyon ka: ugma sa alas siyete, sige.',
+  trophyWord: {
+    word: 'ugma',
+    meaning: 'morgen',
+    example: 'Ugma sa alas siyete? Sige.',
+    whyThisWord: 'Ugma ist Cebuano für morgen. Das ist ein klares Gegenstück zur Tagalog-Zeitform.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kurzer Plan, Uhrzeit und freundliche Zustimmung.',
+  },
+  songSeed: {
+    genre: 'bright planning pop',
+    mood: 'agreeing to tomorrow',
+  },
+  visualNotes: 'Small calendar card, seven o clock, sige confirmation.',
+}
+
+const brightCebuanoP1Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Salamat kaayo. Babay.',
+    baseText: 'Vielen Dank. Tschüss.',
+  },
+  meaning: 'Ein kurzer Dank plus Abschied am Ende einer Hilfe-Szene.',
+  chunks: [
+    { id: 'salamat-kaayo', targetText: 'Salamat kaayo.', baseText: 'vielen Dank.' },
+    { id: 'babay', targetText: 'Babay.', baseText: 'tschüss.' },
+  ],
+  lessonItems: [
+    { id: 'salamat', targetText: 'salamat', baseText: 'danke', acceptedAnswers: cebuanoAnswers('salamat', 'Salamat') },
+    { id: 'kaayo', targetText: 'kaayo', baseText: 'sehr', acceptedAnswers: cebuanoAnswers('kaayo', 'Kaayo') },
+    { id: 'babay', targetText: 'babay', baseText: 'tschüss', acceptedAnswers: cebuanoAnswers('babay', 'Babay', 'bye-bye', 'Bye-bye') },
+    { id: 'walay-sapayan', targetText: 'walay sapayan', baseText: 'gern geschehen', acceptedAnswers: cebuanoAnswers('walay sapayan', 'Walay sapayan') },
+  ],
+  build: {
+    targetText: 'Salamat kaayo. Babay.',
+    chips: ['Salamat kaayo.', 'Babay.', 'kumusta', 'palihug'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Salamat kaayo',
+    after: '. Babay.',
+    acceptedAnswers: cebuanoAnswers('Salamat kaayo', 'salamat kaayo'),
+    fallbackChoices: ['Salamat kaayo', 'Maayong adlaw', 'Tagpila ni', 'Kanus-a'],
+  },
+  speakTarget: {
+    baseCue: 'Vielen Dank. Tschüss.',
+    targetPhrase: 'Salamat kaayo. Babay.',
+    language: 'ceb-PH',
+    passingThreshold: 0.55,
+    requiredTokens: ['salamat', 'kaayo', 'babay'],
+    optionalTokens: ['bye'],
+  },
+  sceneCaption: 'Human sa tabang, mosulti ka og salamat kaayo ug mopauli nga hayag ang tono.',
+  trophyWord: {
+    word: 'salamat',
+    meaning: 'danke',
+    example: 'Salamat kaayo. Babay.',
+    whyThisWord: 'Salamat ist geteilt mit Tagalog und anderen Sprachen, aber kaayo und babay halten die Abschlussform in natürlichem Cebuano.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Abschluss am Tresen, Dank und kurzer Abschied.',
+  },
+  songSeed: {
+    genre: 'closing acoustic pop',
+    mood: 'thank you goodbye',
+  },
+  visualNotes: 'Warm exit light, thank-you gesture, simple closing phrase.',
+}
+
+const cebuanoA1Practical1Inputs: CebuanoP1LessonInput[] = [
+  {
+    slug: 'first-contact',
+    title: 'Erster Kontakt',
+    situation: {
+      en: 'At a Cebuano café counter, ask whether the other person speaks Cebuano.',
+      de: 'Im Café fragst du, ob die andere Person Cebuano spricht.',
+    },
+    pedagogicalGoal: 'Eine einfache Cebuano-Einstiegsfrage stellen, bevor das Gespräch weitergeht.',
+    variant: brightCebuanoP1Lesson001,
+  },
+  {
+    slug: 'repeat-please',
+    title: 'Bitte wiederholen',
+    situation: {
+      en: 'You missed what was said and ask for a repeat.',
+      de: 'Du hast etwas nicht verstanden und bittest um Wiederholung.',
+    },
+    pedagogicalGoal: 'Nichtverstehen mit wala ko kasabot ausdrücken und höflich um Wiederholung bitten.',
+    variant: brightCebuanoP1Lesson002,
+  },
+  {
+    slug: 'where-is-station',
+    title: 'Wo ist der Bahnhof?',
+    situation: {
+      en: 'On the sidewalk, ask where the station is.',
+      de: 'Auf dem Bürgersteig fragst du, wo der Bahnhof ist.',
+    },
+    pedagogicalGoal: 'Eine einfache Asa-Frage mit ang vor dem Ort verwenden.',
+    variant: brightCebuanoP1Lesson003,
+  },
+  {
+    slug: 'coffee-please',
+    title: 'Kaffee, bitte',
+    situation: {
+      en: 'At a café counter, order one coffee politely.',
+      de: 'Am Cafétresen bestellst du höflich einen Kaffee.',
+    },
+    pedagogicalGoal: 'Eine sehr kurze Bestellung mit palihug abschließen.',
+    variant: brightCebuanoP1Lesson004,
+  },
+  {
+    slug: 'how-much',
+    title: 'Wie viel?',
+    situation: {
+      en: 'In a small shop, ask the price of the item here.',
+      de: 'In einem kleinen Laden fragst du nach dem Preis dieses Gegenstands.',
+    },
+    pedagogicalGoal: 'Die Cebuano-Preisfrage Tagpila ni? sicher verwenden.',
+    variant: brightCebuanoP1Lesson005,
+  },
+  {
+    slug: 'train-time',
+    title: 'Wann kommt der Zug?',
+    situation: {
+      en: 'At a station, ask when the train arrives.',
+      de: 'Am Bahnhof fragst du, wann der Zug kommt.',
+    },
+    pedagogicalGoal: 'Eine Kanus-a-Zeitfrage mit ang tren bilden.',
+    variant: brightCebuanoP1Lesson006,
+  },
+  {
+    slug: 'need-help',
+    title: 'Ich brauche Hilfe',
+    situation: {
+      en: 'At a pharmacy or help desk, say that you need help.',
+      de: 'In der Apotheke oder am Infoschalter sagst du, dass du Hilfe brauchst.',
+    },
+    pedagogicalGoal: 'Kinahanglan ko og tabang als praktische Hilfebitte sprechen.',
+    variant: brightCebuanoP1Lesson007,
+  },
+  {
+    slug: 'nice-here',
+    title: 'Hier ist es schön',
+    situation: {
+      en: 'Inside a café or shop, make a short positive comment.',
+      de: 'In einem Café oder Laden machst du einen kurzen positiven Kommentar.',
+    },
+    pedagogicalGoal: 'Einen einfachen positiven Small-Talk-Satz mit nindot verwenden.',
+    variant: brightCebuanoP1Lesson008,
+  },
+  {
+    slug: 'tomorrow-seven',
+    title: 'Morgen um sieben',
+    situation: {
+      en: 'Confirm a simple plan for tomorrow at seven.',
+      de: 'Du bestätigst einen einfachen Plan für morgen um sieben.',
+    },
+    pedagogicalGoal: 'Einen Plan mit ugma und sige kurz bestätigen.',
+    variant: brightCebuanoP1Lesson009,
+  },
+  {
+    slug: 'thanks-goodbye',
+    title: 'Danke und tschüss',
+    situation: {
+      en: 'Close the interaction with thanks and goodbye.',
+      de: 'Du schließt die Situation mit Dank und Abschied ab.',
+    },
+    pedagogicalGoal: 'Einen praktischen Abschluss mit salamat kaayo und babay sagen.',
+    variant: brightCebuanoP1Lesson010,
+  },
+]
+
+const cebuanoA1Practical1Lessons: GuidedLessonDefinition[] = cebuanoA1Practical1Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-1-lesson-${lessonNumber}`
+  const nextInput = cebuanoA1Practical1Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 1 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: lessonInput.variant,
+    },
+  }
+})
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -34435,6 +35144,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     nextLessonTeaser: { title: 'Pfad abgeschlossen', situation: 'Du hast French A1 Practical 10 abgeschlossen.' },
     vibeVariants: { bright: brightFrenchP10Lesson010 },
   },
+  ...cebuanoA1Practical1Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -34487,6 +35197,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_FRENCH_EIGHT_METADATA,
     GUIDED_TODAY_PATH_FRENCH_NINE_METADATA,
     GUIDED_TODAY_PATH_FRENCH_TEN_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA,
   ]
 }
 
@@ -34513,6 +35224,8 @@ export const GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES: Record<GuidedTargetLanguage, 
   Spanish: ['es-ES'],
   Italian: ['it-IT'],
   French: ['fr-FR'],
+  German: ['de-DE'],
+  Cebuano: ['ceb-PH'],
 }
 
 export function getGuidedPathOverview(

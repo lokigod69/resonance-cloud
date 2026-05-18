@@ -319,37 +319,11 @@ assert('A1 Practical 7 resolves 10 lessons', pathSevenLessons.length === 10, pat
 assert('A1 Practical 8 resolves 10 lessons', pathEightLessons.length === 10, pathEightLessons.length)
 assert('A1 Practical 9 resolves 10 lessons', pathNineLessons.length === 10, pathNineLessons.length)
 assert('A1 Practical 10 resolves 10 lessons', pathTenLessons.length === 10, pathTenLessons.length)
-const spanishPathOneId = 'spanish-a1-practical-1'
-const spanishPathTwoId = 'spanish-a1-practical-2'
-const spanishPathThreeId = 'spanish-a1-practical-3'
-const spanishPathFourId = 'spanish-a1-practical-4'
-const spanishPathFiveId = 'spanish-a1-practical-5'
-const spanishPathSixId = 'spanish-a1-practical-6'
-const spanishPathSevenId = 'spanish-a1-practical-7'
-const spanishPathEightId = 'spanish-a1-practical-8'
-const spanishPathNineId = 'spanish-a1-practical-9'
-const spanishPathTenId = 'spanish-a1-practical-10'
-const italianPathOneId = 'italian-a1-practical-1'
-const italianPathTwoId = 'italian-a1-practical-2'
-const italianPathThreeId = 'italian-a1-practical-3'
-const italianPathFourId = 'italian-a1-practical-4'
-const italianPathFiveId = 'italian-a1-practical-5'
-const italianPathSixId = 'italian-a1-practical-6'
-const italianPathSevenId = 'italian-a1-practical-7'
-const italianPathEightId = 'italian-a1-practical-8'
-const italianPathNineId = 'italian-a1-practical-9'
-const italianPathTenId = 'italian-a1-practical-10'
-const frenchPathOneId = 'french-a1-practical-1'
-const frenchPathTwoId = 'french-a1-practical-2'
-const frenchPathThreeId = 'french-a1-practical-3'
-const frenchPathFourId = 'french-a1-practical-4'
-const frenchPathFiveId = 'french-a1-practical-5'
-const frenchPathSixId = 'french-a1-practical-6'
-const frenchPathSevenId = 'french-a1-practical-7'
-const frenchPathEightId = 'french-a1-practical-8'
-const frenchPathNineId = 'french-a1-practical-9'
-const frenchPathTenId = 'french-a1-practical-10'
-assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
+const cebuanoPathOneId = 'cebuano-a1-practical-1'
+const activePathIds = getGuidedTodayPathOptions().map((path) => path.id)
+const lessonBackedPathIds = Array.from(new Set(GUIDED_LESSONS.map((lesson) => lesson.pathId)))
+assert('Cebuano A1 Practical 1 resolves 10 lessons', getGuidedPathLessons(cebuanoPathOneId).length === 10, getGuidedPathLessons(cebuanoPathOneId).length)
+assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => activePathIds.includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
 assert('lesson ids are unique', new Set(lessonIds).size === lessonIds.length, lessonIds)
 assert('lesson numbers 1-10 exist with no gaps', JSON.stringify(lessonNumbers) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), lessonNumbers)
 assert('A1 Practical 1 arc titles match product sequence', JSON.stringify(pathLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedTitles), pathLessons.map((lesson) => lesson.title))
@@ -362,7 +336,7 @@ assert('A1 Practical 7 arc titles match product sequence', JSON.stringify(pathSe
 assert('A1 Practical 8 arc titles match product sequence', JSON.stringify(pathEightLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathEightTitles), pathEightLessons.map((lesson) => lesson.title))
 assert('A1 Practical 9 arc titles match product sequence', JSON.stringify(pathNineLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathNineTitles), pathNineLessons.map((lesson) => lesson.title))
 assert('A1 Practical 10 arc titles match product sequence', JSON.stringify(pathTenLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathTenTitles), pathTenLessons.map((lesson) => lesson.title))
-assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId]), getGuidedTodayPathOptions())
+assert('path selector source exposes all lesson-backed active paths', JSON.stringify(activePathIds) === JSON.stringify(lessonBackedPathIds), { activePathIds, lessonBackedPathIds })
 assert('A1 Practical 1 Bright phrase baseline matches PR4 product corrections', JSON.stringify(pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? '')) === JSON.stringify(expectedBrightPathOnePhrases), pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? ''))
 
 console.log('\n[lesson definitions]')
