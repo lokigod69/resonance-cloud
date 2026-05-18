@@ -16,9 +16,9 @@ export type GuidedLessonMedia = {
   caption: string
 }
 
-export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese'
+export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German'
 export type GuidedBaseLanguage = 'German' | 'English'
-export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR'
+export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE'
 
 export type GuidedPathMetadata = {
   id: string
@@ -739,6 +739,17 @@ const GUIDED_TODAY_PATH_PORTUGUESE_TEN_METADATA: GuidedPathMetadata = {
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'Portuguese',
+  estimatedMinutes: 5,
+}
+
+const GUIDED_TODAY_PATH_GERMAN_ONE_METADATA: GuidedPathMetadata = {
+  id: 'german-a1-practical-1',
+  title: 'German A1 Practical 1',
+  shortTitle: 'A1 Practical 1',
+  subtitle: 'First survival phrases in German',
+  level: 'A1',
+  baseLanguage: 'English',
+  targetLanguage: 'German',
   estimatedMinutes: 5,
 }
 
@@ -25009,6 +25020,554 @@ const brightPortugueseP8Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Rezeption mit Gepäck, Schlüsselkarte und freundlichem Abschluss.',
 }
 
+const brightGermanLesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Guten Tag, sprechen Sie Deutsch?',
+    baseText: 'Hello, do you speak German?',
+  },
+  meaning: 'A polite opener before a German-language conversation begins.',
+  chunks: [
+    { id: 'guten-tag', targetText: 'Guten Tag,', baseText: 'Hello,' },
+    { id: 'sprechen-sie', targetText: 'sprechen Sie', baseText: 'do you speak' },
+    { id: 'deutsch', targetText: 'Deutsch?', baseText: 'German?' },
+  ],
+  lessonItems: [
+    { id: 'guten-tag', targetText: 'Guten Tag', baseText: 'hello (formal, daytime)', acceptedAnswers: ['Guten Tag', 'guten tag'] },
+    { id: 'sprechen', targetText: 'sprechen', baseText: 'to speak', acceptedAnswers: ['sprechen', 'Sprechen'] },
+    { id: 'sie', targetText: 'Sie', baseText: 'you (formal)', acceptedAnswers: ['Sie', 'sie'] },
+    { id: 'deutsch', targetText: 'Deutsch', baseText: 'German', acceptedAnswers: ['Deutsch', 'deutsch'] },
+  ],
+  build: {
+    targetText: 'Guten Tag, sprechen Sie Deutsch?',
+    chips: ['Guten Tag,', 'sprechen Sie', 'Deutsch?', 'Englisch?', 'bitte'],
+  },
+  typeRecall: {
+    before: 'Guten Tag, ',
+    answer: 'sprechen',
+    after: ' Sie Deutsch?',
+    acceptedAnswers: ['sprechen', 'Sprechen'],
+    fallbackChoices: ['sprechen', 'sprichst', 'spricht', 'hören'],
+  },
+  speakTarget: {
+    baseCue: 'Hello, do you speak German?',
+    targetPhrase: 'Guten Tag, sprechen Sie Deutsch?',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['guten', 'tag', 'sprechen', 'sie'],
+    optionalTokens: ['deutsch', 'bitte'],
+  },
+  sceneCaption: 'At the café counter, you open a polite German service interaction with a clean greeting.',
+  trophyWord: {
+    word: 'sprechen',
+    meaning: 'to speak',
+    example: 'Sprechen Sie Deutsch?',
+    whyThisWord: 'Sprechen is the A1 anchor verb behind every "do you speak ___?" question. It has a vowel change in the du form (du sprichst, e → i) but the Sie form is regular (Sie sprechen) and matches third-person plural — at A1 you can stay safe with the Sie form everywhere in service contexts.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Morning light at a German café counter, open posture, calm first greeting.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic alpine-light',
+    mood: 'warm first contact',
+  },
+  visualNotes: 'Warm honey light, café counter, soft coral accent on Guten Tag.',
+}
+
+const brightGermanLesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Entschuldigung, können Sie das bitte wiederholen?',
+    baseText: 'Sorry, can you please repeat that?',
+  },
+  meaning: 'A polite repair: ask the other person to say it again without breaking the flow.',
+  chunks: [
+    { id: 'entschuldigung', targetText: 'Entschuldigung,', baseText: 'Sorry,' },
+    { id: 'koennen-sie-das', targetText: 'können Sie das', baseText: 'can you' },
+    { id: 'bitte-wiederholen', targetText: 'bitte wiederholen?', baseText: 'please repeat?' },
+  ],
+  lessonItems: [
+    { id: 'entschuldigung', targetText: 'Entschuldigung', baseText: 'sorry / excuse me', acceptedAnswers: ['Entschuldigung', 'entschuldigung'] },
+    { id: 'koennen', targetText: 'können', baseText: 'can (formal)', acceptedAnswers: ['können', 'koennen', 'Können', 'Koennen'] },
+    { id: 'bitte', targetText: 'bitte', baseText: 'please', acceptedAnswers: ['bitte', 'Bitte'] },
+    { id: 'wiederholen', targetText: 'wiederholen', baseText: 'to repeat', acceptedAnswers: ['wiederholen', 'Wiederholen'] },
+  ],
+  build: {
+    targetText: 'Entschuldigung, können Sie das bitte wiederholen?',
+    chips: ['Entschuldigung,', 'können Sie das', 'bitte wiederholen?', 'langsamer', 'danke'],
+  },
+  typeRecall: {
+    before: 'Entschuldigung, können Sie das bitte ',
+    answer: 'wiederholen',
+    after: '?',
+    acceptedAnswers: ['wiederholen', 'Wiederholen'],
+    fallbackChoices: ['wiederholen', 'sagen', 'sprechen', 'helfen'],
+  },
+  speakTarget: {
+    baseCue: 'Sorry, can you please repeat that?',
+    targetPhrase: 'Entschuldigung, können Sie das bitte wiederholen?',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['entschuldigung', 'können', 'sie', 'wiederholen'],
+    optionalTokens: ['das', 'bitte', 'koennen', 'langsamer'],
+  },
+  sceneCaption: 'Mid-conversation you raise your hand briefly and politely ask for a repeat.',
+  trophyWord: {
+    word: 'Entschuldigung',
+    meaning: 'sorry / excuse me',
+    example: 'Entschuldigung, ich verstehe nicht.',
+    whyThisWord: 'Entschuldigung is the A1 polite gating word for any small interruption — opening a question, asking for a repeat, or repairing a misunderstanding. Grammatically a feminine noun (die Entschuldigung, "an apology") but used here as a fixed interjection. The slightly more formal alternative is Verzeihung; both are safe in service contexts.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Soft café light, brief pause at the counter, calm repair gesture.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle pause',
+  },
+  visualNotes: 'Pause beat, soft glow around Entschuldigung, calm breath moment.',
+}
+
+const brightGermanLesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Entschuldigung, wo ist der Bahnhof?',
+    baseText: 'Excuse me, where is the station?',
+  },
+  meaning: 'A short, polite where-question for a clear destination in town.',
+  chunks: [
+    { id: 'entschuldigung', targetText: 'Entschuldigung,', baseText: 'Excuse me,' },
+    { id: 'wo-ist', targetText: 'wo ist', baseText: 'where is' },
+    { id: 'der-bahnhof', targetText: 'der Bahnhof?', baseText: 'the station?' },
+  ],
+  lessonItems: [
+    { id: 'wo', targetText: 'wo', baseText: 'where', acceptedAnswers: ['wo', 'Wo'] },
+    { id: 'ist', targetText: 'ist', baseText: 'is', acceptedAnswers: ['ist', 'Ist'] },
+    { id: 'der', targetText: 'der', baseText: 'the (m, Nom)', acceptedAnswers: ['der', 'Der'] },
+    { id: 'bahnhof', targetText: 'Bahnhof', baseText: 'train station', acceptedAnswers: ['Bahnhof', 'bahnhof'] },
+  ],
+  build: {
+    targetText: 'Entschuldigung, wo ist der Bahnhof?',
+    chips: ['Entschuldigung,', 'wo ist', 'der Bahnhof?', 'hier', 'links'],
+  },
+  typeRecall: {
+    before: 'Entschuldigung, ',
+    answer: 'wo',
+    after: ' ist der Bahnhof?',
+    acceptedAnswers: ['wo', 'Wo'],
+    fallbackChoices: ['wo', 'wer', 'was', 'wann'],
+  },
+  speakTarget: {
+    baseCue: 'Excuse me, where is the station?',
+    targetPhrase: 'Entschuldigung, wo ist der Bahnhof?',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['entschuldigung', 'wo', 'ist', 'bahnhof'],
+    optionalTokens: ['der', 'bitte'],
+  },
+  sceneCaption: 'On a daytime sidewalk you politely approach a passerby and ask for the station.',
+  trophyWord: {
+    word: 'Bahnhof',
+    meaning: 'train station',
+    example: 'Wo ist der Bahnhof?',
+    whyThisWord: 'Bahnhof is the A1 anchor compound noun for train travel: Bahn (rail) + Hof (yard) → train station. Masculine — der Bahnhof. Plural is irregular with umlaut + e: die Bahnhöfe. Once you know der Bahnhof you instantly recognise der Hauptbahnhof (main station) and der Busbahnhof (bus station).',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bright morning street, a distant station sign, open gesture toward a passerby.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic alpine-light',
+    mood: 'asking for a direction',
+  },
+  visualNotes: 'Bright daytime city, simple gesture, soft accent on Bahnhof.',
+}
+
+const brightGermanLesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Ich möchte einen Kaffee, bitte.',
+    baseText: "I'd like a coffee, please.",
+  },
+  meaning: 'A polite coffee order using the canonical A1 service request "Ich möchte".',
+  chunks: [
+    { id: 'ich-moechte', targetText: 'Ich möchte', baseText: "I'd like" },
+    { id: 'einen-kaffee', targetText: 'einen Kaffee,', baseText: 'a coffee,' },
+    { id: 'bitte', targetText: 'bitte.', baseText: 'please.' },
+  ],
+  lessonItems: [
+    { id: 'ich', targetText: 'ich', baseText: 'I', acceptedAnswers: ['ich', 'Ich'] },
+    { id: 'moechte', targetText: 'möchte', baseText: "would like (polite)", acceptedAnswers: ['möchte', 'moechte', 'Möchte', 'Moechte'] },
+    { id: 'einen', targetText: 'einen', baseText: 'a (m, Akkusativ)', acceptedAnswers: ['einen', 'Einen'] },
+    { id: 'kaffee', targetText: 'Kaffee', baseText: 'coffee', acceptedAnswers: ['Kaffee', 'kaffee'] },
+  ],
+  build: {
+    targetText: 'Ich möchte einen Kaffee, bitte.',
+    chips: ['Ich möchte', 'einen Kaffee,', 'bitte.', 'Tee', 'danke'],
+  },
+  typeRecall: {
+    before: 'Ich ',
+    answer: 'möchte',
+    after: ' einen Kaffee, bitte.',
+    acceptedAnswers: ['möchte', 'moechte', 'Möchte', 'Moechte'],
+    fallbackChoices: ['möchte', 'habe', 'brauche', 'trinke'],
+  },
+  speakTarget: {
+    baseCue: "I'd like a coffee, please.",
+    targetPhrase: 'Ich möchte einen Kaffee, bitte.',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['ich', 'möchte', 'kaffee'],
+    optionalTokens: ['einen', 'bitte', 'moechte'],
+  },
+  sceneCaption: 'At the café counter you order a coffee with a polite request marker.',
+  trophyWord: {
+    word: 'möchte',
+    meaning: 'would like (polite)',
+    example: 'Ich möchte einen Kaffee.',
+    whyThisWord: 'Möchte is the A1 polite-conditional form for ordering and requesting anywhere in a German-speaking country. It is socially softer than "Ich will" ("I want"), which is grammatically simpler but feels blunt in service. Note the case shift on the noun: der Kaffee (Nominativ) becomes einen Kaffee (Akkusativ) as the direct object of möchte. Umlauts unavailable on a keyboard? Standard substitute is "moechte".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Café counter at mid-morning, espresso machine humming, calm order moment.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic alpine-light',
+    mood: 'easy ordering',
+  },
+  visualNotes: 'Warm counter lighting, mug accent, soft glow on möchte.',
+}
+
+const brightGermanLesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Wie viel kostet das?',
+    baseText: 'How much does this cost?',
+  },
+  meaning: 'A direct A1 price question with deictic "das" pointing at the item in front of you.',
+  chunks: [
+    { id: 'wie-viel', targetText: 'Wie viel', baseText: 'How much' },
+    { id: 'kostet-das', targetText: 'kostet das?', baseText: 'does this cost?' },
+  ],
+  lessonItems: [
+    { id: 'wie', targetText: 'wie', baseText: 'how', acceptedAnswers: ['wie', 'Wie'] },
+    { id: 'viel', targetText: 'viel', baseText: 'much / a lot', acceptedAnswers: ['viel', 'Viel'] },
+    { id: 'kostet', targetText: 'kostet', baseText: 'costs (3rd-p sg)', acceptedAnswers: ['kostet', 'Kostet'] },
+    { id: 'das', targetText: 'das', baseText: 'this / that', acceptedAnswers: ['das', 'Das'] },
+  ],
+  build: {
+    targetText: 'Wie viel kostet das?',
+    chips: ['Wie viel', 'kostet das?', 'bitte', 'hier', 'danke'],
+  },
+  typeRecall: {
+    before: 'Wie viel ',
+    answer: 'kostet',
+    after: ' das?',
+    acceptedAnswers: ['kostet', 'Kostet'],
+    fallbackChoices: ['kostet', 'kauft', 'macht', 'bringt'],
+  },
+  speakTarget: {
+    baseCue: 'How much does this cost?',
+    targetPhrase: 'Wie viel kostet das?',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['wie', 'viel', 'kostet', 'das'],
+    optionalTokens: ['bitte'],
+  },
+  sceneCaption: 'In a small shop you point at an item and ask the price clearly.',
+  trophyWord: {
+    word: 'kostet',
+    meaning: 'costs (3rd-person singular of kosten)',
+    example: 'Wie viel kostet das?',
+    whyThisWord: 'Kostet is the A1 verb form behind every price question in German shops, markets, and cafés. The verb kosten is regular (ich koste, du kostest, es kostet). Modern spelling is two words — Wie viel — though older texts sometimes show "Wieviel" collapsed.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Small shop counter, item in hand, friendly attendant nearby.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'small transaction',
+  },
+  visualNotes: 'Crisp shop interior, price tag accent, brief tap on the item.',
+}
+
+const brightGermanLesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Wann fährt der Zug nach Berlin?',
+    baseText: 'When does the train to Berlin leave?',
+  },
+  meaning: 'A short A1 travel question at a train station: departure time plus destination.',
+  chunks: [
+    { id: 'wann', targetText: 'Wann', baseText: 'When' },
+    { id: 'faehrt-der-zug', targetText: 'fährt der Zug', baseText: 'does the train' },
+    { id: 'nach-berlin', targetText: 'nach Berlin?', baseText: 'to Berlin leave?' },
+  ],
+  lessonItems: [
+    { id: 'wann', targetText: 'wann', baseText: 'when', acceptedAnswers: ['wann', 'Wann'] },
+    { id: 'faehrt', targetText: 'fährt', baseText: 'goes / departs', acceptedAnswers: ['fährt', 'faehrt', 'Fährt', 'Faehrt'] },
+    { id: 'zug', targetText: 'Zug', baseText: 'train', acceptedAnswers: ['Zug', 'zug'] },
+    { id: 'nach', targetText: 'nach', baseText: 'to (place)', acceptedAnswers: ['nach', 'Nach'] },
+  ],
+  build: {
+    targetText: 'Wann fährt der Zug nach Berlin?',
+    chips: ['Wann', 'fährt der Zug', 'nach Berlin?', 'heute', 'bitte'],
+  },
+  typeRecall: {
+    before: 'Wann fährt der ',
+    answer: 'Zug',
+    after: ' nach Berlin?',
+    acceptedAnswers: ['Zug', 'zug'],
+    fallbackChoices: ['Zug', 'Bus', 'Bahnhof', 'Mann'],
+  },
+  speakTarget: {
+    baseCue: 'When does the train to Berlin leave?',
+    targetPhrase: 'Wann fährt der Zug nach Berlin?',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['wann', 'fährt', 'zug'],
+    optionalTokens: ['der', 'nach', 'berlin', 'faehrt'],
+  },
+  sceneCaption: 'At the station information desk you ask when a train to Berlin departs.',
+  trophyWord: {
+    word: 'Zug',
+    meaning: 'train',
+    example: 'Der Zug fährt um sieben.',
+    whyThisWord: 'Zug is the A1 anchor noun for train travel anywhere German is spoken. Masculine — der Zug. Plural is irregular with umlaut + e: die Züge. The preposition "nach" with city names takes Dativ but no article: nach Berlin, never "nach dem Berlin".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Bright station hall, platform numbers on a board, calm question at the info desk.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'travel-ready',
+  },
+  visualNotes: 'Open station hall, soft platform signage glow, accent on Zug.',
+}
+
+const brightGermanLesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Entschuldigung, ich brauche Hilfe.',
+    baseText: 'Excuse me, I need help.',
+  },
+  meaning: 'A polite A1 help-ask that opens the request without specifying the issue.',
+  chunks: [
+    { id: 'entschuldigung', targetText: 'Entschuldigung,', baseText: 'Excuse me,' },
+    { id: 'ich-brauche', targetText: 'ich brauche', baseText: 'I need' },
+    { id: 'hilfe', targetText: 'Hilfe.', baseText: 'help.' },
+  ],
+  lessonItems: [
+    { id: 'ich', targetText: 'ich', baseText: 'I', acceptedAnswers: ['ich', 'Ich'] },
+    { id: 'brauche', targetText: 'brauche', baseText: 'need (1st-p sg)', acceptedAnswers: ['brauche', 'Brauche'] },
+    { id: 'hilfe', targetText: 'Hilfe', baseText: 'help', acceptedAnswers: ['Hilfe', 'hilfe'] },
+    { id: 'bitte', targetText: 'bitte', baseText: 'please', acceptedAnswers: ['bitte', 'Bitte'] },
+  ],
+  build: {
+    targetText: 'Entschuldigung, ich brauche Hilfe.',
+    chips: ['Entschuldigung,', 'ich brauche', 'Hilfe.', 'bitte', 'Wasser'],
+  },
+  typeRecall: {
+    before: 'Entschuldigung, ich brauche ',
+    answer: 'Hilfe',
+    after: '.',
+    acceptedAnswers: ['Hilfe', 'hilfe'],
+    fallbackChoices: ['Hilfe', 'Wasser', 'Kaffee', 'Zeit'],
+  },
+  speakTarget: {
+    baseCue: 'Excuse me, I need help.',
+    targetPhrase: 'Entschuldigung, ich brauche Hilfe.',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['entschuldigung', 'ich', 'brauche', 'hilfe'],
+    optionalTokens: ['bitte'],
+  },
+  sceneCaption: 'At a pharmacy or info desk you politely open a request for help.',
+  trophyWord: {
+    word: 'Hilfe',
+    meaning: 'help',
+    example: 'Ich brauche Hilfe.',
+    whyThisWord: 'Hilfe is the A1 anchor noun for any open help request. Feminine — die Hilfe. Used here as the direct object of brauche, but feminine singular looks identical in Nominativ and Akkusativ, so the form does not change. Pair with brauchen (to need) — both A1 core. Useful as a one-word call in emergencies.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Pharmacy counter, soft daylight, calm open-handed request.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'asking for help',
+  },
+  visualNotes: 'Pharmacy light, calm gesture, soft accent on Hilfe.',
+}
+
+const brightGermanLesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Es ist sehr schön hier.',
+    baseText: "It's really nice here.",
+  },
+  meaning: 'A short positive small-talk comment about the place you are in.',
+  chunks: [
+    { id: 'es-ist', targetText: 'Es ist', baseText: "It's" },
+    { id: 'sehr-schoen', targetText: 'sehr schön', baseText: 'really nice' },
+    { id: 'hier', targetText: 'hier.', baseText: 'here.' },
+  ],
+  lessonItems: [
+    { id: 'es-ist', targetText: 'es ist', baseText: 'it is', acceptedAnswers: ['es ist', 'Es ist'] },
+    { id: 'sehr', targetText: 'sehr', baseText: 'very / really', acceptedAnswers: ['sehr', 'Sehr'] },
+    { id: 'schoen', targetText: 'schön', baseText: 'nice / beautiful', acceptedAnswers: ['schön', 'schoen', 'Schön', 'Schoen'] },
+    { id: 'hier', targetText: 'hier', baseText: 'here', acceptedAnswers: ['hier', 'Hier'] },
+  ],
+  build: {
+    targetText: 'Es ist sehr schön hier.',
+    chips: ['Es ist', 'sehr schön', 'hier.', 'heute', 'okay'],
+  },
+  typeRecall: {
+    before: 'Es ist sehr ',
+    answer: 'schön',
+    after: ' hier.',
+    acceptedAnswers: ['schön', 'schoen', 'Schön', 'Schoen'],
+    fallbackChoices: ['schön', 'gut', 'warm', 'ruhig'],
+  },
+  speakTarget: {
+    baseCue: "It's really nice here.",
+    targetPhrase: 'Es ist sehr schön hier.',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['es', 'ist', 'schön'],
+    optionalTokens: ['sehr', 'hier', 'schoen'],
+  },
+  sceneCaption: 'Inside a café you turn briefly to a companion and say something nice about the place.',
+  trophyWord: {
+    word: 'schön',
+    meaning: 'nice / beautiful',
+    example: 'Es ist schön hier.',
+    whyThisWord: 'Schön is the A1 anchor adjective that works for places (schön hier), people (sehr schön), weather (Es ist schön draußen), and as a standalone polite acknowledgement (Schön!). The ö is a true umlaut: where umlauts are not available on a keyboard, the standard substitute is "schoen", not "schon" (which is a different A1 word meaning "already").',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Warm café interior, soft window light, an easy contented glance.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'happy and present',
+  },
+  visualNotes: 'Soft interior shadows, coral accent on schön.',
+}
+
+const brightGermanLesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Morgen um sieben Uhr. Perfekt!',
+    baseText: "Tomorrow at seven o'clock. Perfect!",
+  },
+  meaning: 'Confirm a near-future plan with a clear time anchor and a positive affirmation.',
+  chunks: [
+    { id: 'morgen', targetText: 'Morgen', baseText: 'Tomorrow' },
+    { id: 'um-sieben-uhr', targetText: 'um sieben Uhr.', baseText: "at seven o'clock." },
+    { id: 'perfekt', targetText: 'Perfekt!', baseText: 'Perfect!' },
+  ],
+  lessonItems: [
+    { id: 'morgen', targetText: 'morgen', baseText: 'tomorrow', acceptedAnswers: ['morgen', 'Morgen'] },
+    { id: 'um', targetText: 'um', baseText: 'at (clock time)', acceptedAnswers: ['um', 'Um'] },
+    { id: 'sieben', targetText: 'sieben', baseText: 'seven', acceptedAnswers: ['sieben', 'Sieben'] },
+    { id: 'perfekt', targetText: 'perfekt', baseText: 'perfect / great', acceptedAnswers: ['perfekt', 'Perfekt'] },
+  ],
+  build: {
+    targetText: 'Morgen um sieben Uhr. Perfekt!',
+    chips: ['Morgen', 'um sieben Uhr.', 'Perfekt!', 'okay', 'danke'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Morgen',
+    after: ' um sieben Uhr. Perfekt!',
+    acceptedAnswers: ['morgen', 'Morgen'],
+    fallbackChoices: ['Morgen', 'Heute', 'Jetzt', 'Gestern'],
+  },
+  speakTarget: {
+    baseCue: "Tomorrow at seven o'clock. Perfect!",
+    targetPhrase: 'Morgen um sieben Uhr. Perfekt!',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['morgen', 'sieben'],
+    optionalTokens: ['um', 'uhr', 'perfekt', 'okay'],
+  },
+  sceneCaption: 'At the end of an encounter you confirm a next-day meeting with a clear time.',
+  trophyWord: {
+    word: 'morgen',
+    meaning: 'tomorrow (adverb)',
+    example: 'Morgen um sieben Uhr.',
+    whyThisWord: 'Morgen is the A1 time anchor for next-day planning. Watch the capitalisation rule: lowercase "morgen" is the adverb ("tomorrow"); capitalised "Morgen" is the masculine noun (der Morgen, "morning"). At the start of a sentence either version looks capitalised. Pairs cleanly with "Perfekt" as a beginner-safe affirmation.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Late-afternoon light, brief nod, calm confirmation before parting.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'easy plan confirmation',
+  },
+  visualNotes: 'Warm evening light, clock accent, quiet nod toward tomorrow.',
+}
+
+const brightGermanLesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Vielen Dank. Auf Wiedersehen.',
+    baseText: 'Thank you very much. Goodbye.',
+  },
+  meaning: 'A warm formal close with a clear thanks and a polite goodbye.',
+  chunks: [
+    { id: 'vielen-dank', targetText: 'Vielen Dank.', baseText: 'Thank you very much.' },
+    { id: 'auf-wiedersehen', targetText: 'Auf Wiedersehen.', baseText: 'Goodbye.' },
+  ],
+  lessonItems: [
+    { id: 'vielen', targetText: 'vielen', baseText: 'many / much (Akk)', acceptedAnswers: ['vielen', 'Vielen'] },
+    { id: 'dank', targetText: 'Dank', baseText: 'thanks (noun)', acceptedAnswers: ['Dank', 'dank'] },
+    { id: 'auf-wiedersehen', targetText: 'Auf Wiedersehen', baseText: 'goodbye (formal)', acceptedAnswers: ['Auf Wiedersehen', 'auf wiedersehen'] },
+    { id: 'tschuess', targetText: 'Tschüss', baseText: 'bye (casual)', acceptedAnswers: ['Tschüss', 'Tschuess', 'tschüss', 'tschuess'] },
+  ],
+  build: {
+    targetText: 'Vielen Dank. Auf Wiedersehen.',
+    chips: ['Vielen Dank.', 'Auf Wiedersehen.', 'Tschüss', 'bitte'],
+  },
+  typeRecall: {
+    before: 'Vielen Dank. Auf ',
+    answer: 'Wiedersehen',
+    after: '.',
+    acceptedAnswers: ['Wiedersehen', 'wiedersehen'],
+    fallbackChoices: ['Wiedersehen', 'Morgen', 'Bahnhof', 'Hilfe'],
+  },
+  speakTarget: {
+    baseCue: 'Thank you very much. Goodbye.',
+    targetPhrase: 'Vielen Dank. Auf Wiedersehen.',
+    language: 'de-DE',
+    passingThreshold: 0.8,
+    requiredTokens: ['vielen', 'dank', 'wiedersehen'],
+    optionalTokens: ['auf', 'tschüss', 'tschuess'],
+  },
+  sceneCaption: 'On your way out you turn briefly and close the scene politely.',
+  trophyWord: {
+    word: 'Wiedersehen',
+    meaning: 'seeing again (used in the formal goodbye)',
+    example: 'Auf Wiedersehen.',
+    whyThisWord: 'Wiedersehen is the A1 anchor inside the formal goodbye Auf Wiedersehen — a neuter compound noun (das Wiedersehen = wieder "again" + sehen "to see"). On the phone, Germans say Auf Wiederhören ("hearing again") instead. The casual peer equivalent is Tschüss.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Doorway in the background, warm light, brief thank-you on the way out.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic alpine-light',
+    mood: 'warm goodbye',
+  },
+  visualNotes: 'Soft honey light at the exit, brief lingering glow, calm last gesture.',
+}
+
 const brightPortugueseP9Lesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: { targetText: 'Oi, eu sou Ana. Prazer.', baseText: 'Hi, ich bin Ana. Freut mich.' },
@@ -41644,6 +42203,276 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     nextLessonTeaser: { title: 'Pfad abgeschlossen', situation: 'Du hast French A1 Practical 10 abgeschlossen.' },
     vibeVariants: { bright: brightFrenchP10Lesson010 },
   },
+  {
+    id: 'german-a1-practical-1-lesson-1-first-contact',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-1-first-contact', sequence: 1, title: 'First contact' },
+    title: 'First contact',
+    situation: {
+      en: 'At a German café counter, politely ask whether the other person speaks German.',
+      de: 'Am Tresen eines deutschen Cafés fragst du höflich, ob die andere Person Deutsch spricht.',
+    },
+    pedagogicalGoal: 'Open a German service interaction with a polite gating question, using the Sie form safely.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Polite follow-up',
+      situation: 'Mid-conversation, ask politely for a repeat.',
+    },
+    vibeVariants: { bright: brightGermanLesson001 },
+  },
+  {
+    id: 'german-a1-practical-1-lesson-2-polite-follow-up',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-2-polite-follow-up', sequence: 2, title: 'Polite follow-up' },
+    title: 'Polite follow-up',
+    situation: {
+      en: 'Mid-exchange, politely ask the other person to repeat what they said.',
+      de: 'Mitten im Gespräch bittest du höflich darum, das Gesagte zu wiederholen.',
+    },
+    pedagogicalGoal: 'Recover politely when speech is too fast by asking for a repeat with Sie + bitte.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Where is...?',
+      situation: 'On the street, ask politely for the train station.',
+    },
+    vibeVariants: { bright: brightGermanLesson002 },
+  },
+  {
+    id: 'german-a1-practical-1-lesson-3-where-is',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-3-where-is', sequence: 3, title: 'Where is...?' },
+    title: 'Where is...?',
+    situation: {
+      en: 'On the sidewalk, politely ask a passerby where the station is.',
+      de: 'Auf dem Gehweg fragst du eine fremde Person höflich nach dem Bahnhof.',
+    },
+    pedagogicalGoal: 'Ask a clean A1 where-question with the masculine Nominativ article and a concrete landmark.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: "I'd like...",
+      situation: 'At a German café counter, politely order a coffee.',
+    },
+    vibeVariants: { bright: brightGermanLesson003 },
+  },
+  {
+    id: 'german-a1-practical-1-lesson-4-id-like',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-4-id-like', sequence: 4, title: "I'd like..." },
+    title: "I'd like...",
+    situation: {
+      en: 'At a café counter, order a coffee using the polite ich möchte form.',
+      de: 'Am Café-Tresen bestellst du höflich einen Kaffee mit der Wendung „Ich möchte".',
+    },
+    pedagogicalGoal: 'Place a short, clear order with the A1 polite-conditional möchte and an Akkusativ direct object.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'How much?',
+      situation: 'In a small shop, ask the price of an item.',
+    },
+    vibeVariants: { bright: brightGermanLesson004 },
+  },
+  {
+    id: 'german-a1-practical-1-lesson-5-how-much',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-5-how-much', sequence: 5, title: 'How much?' },
+    title: 'How much?',
+    situation: {
+      en: 'In a small shop, point at an item and ask the price.',
+      de: 'Im kleinen Laden zeigst du auf einen Gegenstand und fragst nach dem Preis.',
+    },
+    pedagogicalGoal: 'Ask a direct A1 price question with deictic das pointing at the visible item.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'At the station',
+      situation: 'At a station info desk, ask when a train departs.',
+    },
+    vibeVariants: { bright: brightGermanLesson005 },
+  },
+  {
+    id: 'german-a1-practical-1-lesson-6-at-the-station',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-6-at-the-station', sequence: 6, title: 'At the station' },
+    title: 'At the station',
+    situation: {
+      en: 'At a station info desk, ask when the train to Berlin departs.',
+      de: 'Am Bahnhofs-Schalter fragst du nach der Abfahrtszeit des Zugs nach Berlin.',
+    },
+    pedagogicalGoal: 'Combine a wann-question with the strong verb fährt and the destination preposition nach.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'I need help',
+      situation: 'At a pharmacy or info desk, politely ask for help.',
+    },
+    vibeVariants: { bright: brightGermanLesson006 },
+  },
+  {
+    id: 'german-a1-practical-1-lesson-7-i-need-help',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-7-i-need-help', sequence: 7, title: 'I need help' },
+    title: 'I need help',
+    situation: {
+      en: 'At a pharmacy or info desk, politely open a request for help.',
+      de: 'In der Apotheke oder am Schalter bittest du höflich um Hilfe.',
+    },
+    pedagogicalGoal: 'Open an A1 help-ask with brauchen + Hilfe, leaving room for any follow-up.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'I like it here',
+      situation: 'Inside a café, make a short positive remark about the place.',
+    },
+    vibeVariants: { bright: brightGermanLesson007 },
+  },
+  {
+    id: 'german-a1-practical-1-lesson-8-i-like-it-here',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-8-i-like-it-here', sequence: 8, title: 'I like it here' },
+    title: 'I like it here',
+    situation: {
+      en: 'Inside a café, turn briefly to a companion and say something nice about the place.',
+      de: 'Im Café drehst du dich kurz zur Begleitung und sagst etwas Nettes über den Ort.',
+    },
+    pedagogicalGoal: 'Make a short positive small-talk comment with the A1 anchor adjective schön.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Tomorrow at seven',
+      situation: "Confirm a next-day meeting at seven o'clock.",
+    },
+    vibeVariants: { bright: brightGermanLesson008 },
+  },
+  {
+    id: 'german-a1-practical-1-lesson-9-tomorrow-at-seven',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-9-tomorrow-at-seven', sequence: 9, title: 'Tomorrow at seven' },
+    title: 'Tomorrow at seven',
+    situation: {
+      en: "At the end of an encounter, confirm tomorrow's plan at seven o'clock.",
+      de: 'Am Ende der Begegnung bestätigst du den Termin morgen um sieben Uhr.',
+    },
+    pedagogicalGoal: 'Confirm a near-future plan with a clean A1 time anchor and a positive affirmation.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Thanks and goodbye',
+      situation: 'Close the scene with a clear thanks and a polite goodbye.',
+    },
+    vibeVariants: { bright: brightGermanLesson009 },
+  },
+  {
+    id: 'german-a1-practical-1-lesson-10-thanks-and-goodbye',
+    pathId: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
+    lessonMetadata: { id: 'german-a1-practical-1-lesson-10-thanks-and-goodbye', sequence: 10, title: 'Thanks and goodbye' },
+    title: 'Thanks and goodbye',
+    situation: {
+      en: 'Close the scene with a clear thanks and a polite formal goodbye.',
+      de: 'Du schließt die Szene mit deutlichem Dank und einem höflichen, formellen Abschied ab.',
+    },
+    pedagogicalGoal: 'Recall the formal close Vielen Dank + Auf Wiedersehen and note the casual peer alternative.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Path complete',
+      situation: 'You have completed German A1 Practical 1.',
+    },
+    vibeVariants: { bright: brightGermanLesson010 },
+  },
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -41706,6 +42535,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_PORTUGUESE_EIGHT_METADATA,
     GUIDED_TODAY_PATH_PORTUGUESE_NINE_METADATA,
     GUIDED_TODAY_PATH_PORTUGUESE_TEN_METADATA,
+    GUIDED_TODAY_PATH_GERMAN_ONE_METADATA,
   ]
 }
 
@@ -41733,6 +42563,7 @@ export const GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES: Record<GuidedTargetLanguage, 
   Italian: ['it-IT'],
   French: ['fr-FR'],
   Portuguese: ['pt-BR'],
+  German: ['de-DE'],
 }
 
 export function getGuidedPathOverview(
