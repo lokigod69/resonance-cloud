@@ -354,8 +354,10 @@ const portuguesePathTwoId = 'portuguese-a1-practical-2'
 const portuguesePathThreeId = 'portuguese-a1-practical-3'
 const portuguesePathFourId = 'portuguese-a1-practical-4'
 const portuguesePathFiveId = 'portuguese-a1-practical-5'
+const portuguesePathSixId = 'portuguese-a1-practical-6'
 const portuguesePathFiveLessons = getGuidedPathLessons(portuguesePathFiveId)
-assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
+const portuguesePathSixLessons = getGuidedPathLessons(portuguesePathSixId)
+assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
 assert('lesson ids are unique', new Set(lessonIds).size === lessonIds.length, lessonIds)
 assert('lesson numbers 1-10 exist with no gaps', JSON.stringify(lessonNumbers) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), lessonNumbers)
 assert('A1 Practical 1 arc titles match product sequence', JSON.stringify(pathLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedTitles), pathLessons.map((lesson) => lesson.title))
@@ -368,7 +370,7 @@ assert('A1 Practical 7 arc titles match product sequence', JSON.stringify(pathSe
 assert('A1 Practical 8 arc titles match product sequence', JSON.stringify(pathEightLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathEightTitles), pathEightLessons.map((lesson) => lesson.title))
 assert('A1 Practical 9 arc titles match product sequence', JSON.stringify(pathNineLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathNineTitles), pathNineLessons.map((lesson) => lesson.title))
 assert('A1 Practical 10 arc titles match product sequence', JSON.stringify(pathTenLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathTenTitles), pathTenLessons.map((lesson) => lesson.title))
-assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId]), getGuidedTodayPathOptions())
+assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId]), getGuidedTodayPathOptions())
 const portuguesePathFiveBrightVariants = portuguesePathFiveLessons.map((lesson) => lesson.vibeVariants.bright)
 const expectedPortuguesePathFiveTrophies = ['atraso', 'esqueci', 'nome', 'prazer', 'cidade', 'mora', 'noite', 'parque', 'talvez', 'tchau']
 const priorPortugueseTrophies = new Set([
@@ -406,6 +408,41 @@ const portugueseP5LessonFiveVoceItem = portuguesePathFiveBrightVariants[4]?.less
 const portugueseP5LessonTenAteItem = portuguesePathFiveBrightVariants[9]?.lessonItems.find((item) => item.id === 'ate-amanha')
 assert('Portuguese A1 Practical 5 accepts partial diacritic variants for você é', ['voce é', 'você e'].every((answer) => portugueseP5LessonFiveVoceItem?.acceptedAnswers?.includes(answer)), portugueseP5LessonFiveVoceItem)
 assert('Portuguese A1 Practical 5 accepts partial diacritic variants for até amanhã', ['ate amanhã', 'até amanha'].every((answer) => portugueseP5LessonTenAteItem?.acceptedAnswers?.includes(answer)), portugueseP5LessonTenAteItem)
+const portuguesePathSixBrightVariants = portuguesePathSixLessons.map((lesson) => lesson.vibeVariants.bright)
+const expectedPortuguesePathSixTrophies = ['mal', 'farmácia', 'remédio', 'dói', 'cabeça', 'água', 'médico', 'alergia', 'ligar', 'bem']
+const priorPortugueseThroughP5Trophies = new Set([
+  ...priorPortugueseTrophies,
+  ...expectedPortuguesePathFiveTrophies,
+])
+const portuguesePathSixTrophies = portuguesePathSixBrightVariants
+  .map((variant) => variant?.trophyWord.word ?? '')
+  .map((word) => normalizeGuidedAnswer(word))
+assert('Portuguese A1 Practical 6 trophy order is locked', JSON.stringify(portuguesePathSixTrophies) === JSON.stringify(expectedPortuguesePathSixTrophies), portuguesePathSixTrophies)
+assert('Portuguese A1 Practical 6 trophies avoid prior Portuguese trophies', portuguesePathSixTrophies.every((word) => !priorPortugueseThroughP5Trophies.has(word)), portuguesePathSixTrophies)
+assert('Portuguese A1 Practical 6 uses pt-BR in every speak target', portuguesePathSixBrightVariants.every((variant) => variant?.speakTarget.language === 'pt-BR'), portuguesePathSixBrightVariants.map((variant) => variant?.speakTarget.language))
+const portuguesePathSixTargetSurfaces = portuguesePathSixBrightVariants.flatMap((variant) => [
+  variant?.corePhrase.targetText,
+  variant?.build.targetText,
+  variant?.typeRecall.before,
+  variant?.typeRecall.answer,
+  variant?.typeRecall.after,
+  variant?.speakTarget.targetPhrase,
+  variant?.trophyWord.example,
+  ...(variant?.chunks.map((chunk) => chunk.targetText) ?? []),
+  ...(variant?.lessonItems.map((item) => item.targetText) ?? []),
+].filter((text): text is string => typeof text === 'string'))
+assert('Portuguese A1 Practical 6 has no Spanish inverted punctuation', portuguesePathSixTargetSurfaces.every((text) => !/[¿¡]/.test(text)), portuguesePathSixTargetSurfaces)
+assert('Portuguese A1 Practical 6 has no default tu forms', portuguesePathSixTargetSurfaces.every((text) => !/\btu\b/i.test(text) && !/\bestás\b/i.test(text) && !/\bfalas\b/i.test(text)), portuguesePathSixTargetSurfaces)
+assert('Portuguese A1 Practical 6 trophies live in productive target text', portuguesePathSixBrightVariants.every((variant) => {
+  if (!variant) return false
+  const trophy = normalizeGuidedAnswer(variant.trophyWord.word)
+  return [variant.corePhrase.targetText, variant.build.targetText, variant.typeRecall.answer, variant.speakTarget.targetPhrase, variant.trophyWord.example]
+    .some((text) => normalizeGuidedAnswer(text).includes(trophy))
+}), portuguesePathSixTrophies)
+const portugueseP6HealthOverreachMarkers = ['dose', 'dosagem', 'tome dois', 'diagnóstico', 'tratamento', 'emergência', 'pronto-socorro']
+assert('Portuguese A1 Practical 6 avoids dosage, diagnosis, treatment, and emergency copy', portuguesePathSixTargetSurfaces.every((text) => !portugueseP6HealthOverreachMarkers.some((marker) => normalizeGuidedAnswer(text).includes(normalizeGuidedAnswer(marker)))), portuguesePathSixTargetSurfaces)
+const portugueseP6LessonTenObrigadoItem = portuguesePathSixBrightVariants[9]?.lessonItems.find((item) => item.id === 'obrigado')
+assert('Portuguese A1 Practical 6 accepts obrigado and obrigada speaker-gender variants', ['obrigado', 'obrigada'].every((answer) => portugueseP6LessonTenObrigadoItem?.acceptedAnswers?.includes(answer)), portugueseP6LessonTenObrigadoItem)
 assert('A1 Practical 1 Bright phrase baseline matches PR4 product corrections', JSON.stringify(pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? '')) === JSON.stringify(expectedBrightPathOnePhrases), pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? ''))
 
 console.log('\n[lesson definitions]')
