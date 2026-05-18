@@ -97,7 +97,7 @@ export function TodayPathOverview({
         <div className="today-path-header flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
           <div className="min-w-0">
             <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
-              {formatGuidedPathLabel(overview.pathMetadata)}
+              {formatGuidedPathLabel(overview.pathMetadata, t)}
             </h1>
             <p className="mt-2 text-sm text-[var(--text-muted)]">
               {t('today.path.compactProgress', {

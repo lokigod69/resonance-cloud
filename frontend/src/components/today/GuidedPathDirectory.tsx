@@ -90,7 +90,7 @@ export function GuidedPathDirectory({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-sm font-semibold text-[var(--text-primary)]">
-                  {formatGuidedPathLabel(selectedPath)}
+                  {formatGuidedPathLabel(selectedPath, t)}
                 </p>
                 <p className="mt-1 text-xs text-[var(--text-secondary)]">
                   {t('today.path.compactProgress', getPathProgress(progress, selectedPath.id))}
@@ -135,7 +135,7 @@ export function GuidedPathDirectory({
                     <span className="flex items-start justify-between gap-2">
                       <span className="min-w-0">
                         <span className="block text-base font-semibold text-[var(--text-primary)]">
-                          {formatGuidedPathLabel(path)}
+                          {formatGuidedPathLabel(path, t)}
                         </span>
                       </span>
                       {isSelected && <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--accent)]" />}

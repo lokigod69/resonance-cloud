@@ -89,7 +89,10 @@ export function TrophySongPlayer({
           </p>
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-3">
-          <div className="inline-flex rounded-lg border border-[var(--border-subtle)] p-1" aria-label="Song candidate">
+          <div
+            className="inline-flex rounded-lg border border-[var(--border-subtle)] p-1"
+            aria-label={t('today.trophy.player.candidateSelector')}
+          >
             {(['A', 'B'] as const).map((candidate) => {
               const available = Boolean(audioCandidates[candidate]?.publicUrl)
               const selected = selectedCandidate === candidate
