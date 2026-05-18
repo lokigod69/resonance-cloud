@@ -9846,7 +9846,7 @@ const brightSpanishLesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Por favor, ¿dónde está la estación?',
-    chips: ['Por favor,', '¿dónde está', 'la estación?', 'aquí', 'cerca'],
+    chips: ['Por favor,', '¿dónde está', 'la estación?', 'centro', 'cerca'],
   },
   typeRecall: {
     before: 'Por favor, ¿',
@@ -10065,7 +10065,7 @@ const brightSpanishLesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Necesito ayuda, por favor.',
-    chips: ['Necesito', 'ayuda,', 'por favor.', 'aquí', 'gracias'],
+    chips: ['Necesito', 'ayuda,', 'por favor.', 'señor', 'gracias'],
   },
   typeRecall: {
     before: 'Necesito ',
@@ -10080,7 +10080,7 @@ const brightSpanishLesson007: GuidedLessonVibeVariant = {
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['necesito', 'ayuda', 'por', 'favor'],
-    optionalTokens: ['señora', 'señor', 'aquí'],
+    optionalTokens: ['señora', 'señor', 'perdón'],
   },
   sceneCaption: 'In der Apotheke gehst du ruhig zur Theke und nennst kurz, dass du Hilfe brauchst.',
   trophyWord: {
@@ -10135,7 +10135,7 @@ const brightSpanishLesson008: GuidedLessonVibeVariant = {
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['este', 'sitio', 'bonito'],
-    optionalTokens: ['es', 'muy', 'aquí'],
+    optionalTokens: ['es', 'muy', 'genial'],
   },
   sceneCaption: 'Im Café drehst du dich kurz zum Gegenüber und sagst etwas Nettes über den Ort.',
   trophyWord: {
@@ -10394,7 +10394,7 @@ const brightSpanishP2Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: '¿Me lo puede mostrar en el mapa?',
-    chips: ['¿Me lo puede', 'mostrar', 'en el mapa?', 'aquí', 'por favor'],
+    chips: ['¿Me lo puede', 'mostrar', 'en el mapa?', 'derecho', 'por favor'],
   },
   typeRecall: {
     before: '¿Me lo puede ',
@@ -10519,7 +10519,7 @@ const brightSpanishP2Lesson005: GuidedLessonVibeVariant = {
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['tiene', 'más', 'por', 'favor'],
-    optionalTokens: ['otro', 'aquí', 'señora', 'señor'],
+    optionalTokens: ['otro', 'algo', 'señora', 'señor'],
   },
   sceneCaption: 'Vor dem leeren Regal fragst du am Tresen, ob hinten noch etwas davon liegt.',
   trophyWord: {
@@ -10574,7 +10574,7 @@ const brightSpanishP2Lesson006: GuidedLessonVibeVariant = {
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['se', 'puede', 'pagar', 'tarjeta'],
-    optionalTokens: ['con', 'por', 'favor', 'aquí'],
+    optionalTokens: ['con', 'por', 'favor', 'gracias'],
   },
   sceneCaption: 'An der Kasse hältst du die Karte bereit und fragst kurz, ob das geht.',
   trophyWord: {
@@ -10778,7 +10778,7 @@ const brightSpanishP2Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Un momento, por favor. Ya casi.',
-    chips: ['Un momento,', 'por favor.', 'Ya casi.', 'gracias', 'aquí'],
+    chips: ['Un momento,', 'por favor.', 'Ya casi.', 'gracias', 'segundo'],
   },
   typeRecall: {
     before: 'Un ',
@@ -12465,7 +12465,7 @@ const brightSpanishP6Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Estoy enfermo. ¿Me puede ayudar?',
-    chips: ['Estoy enfermo.', '¿Me puede', 'ayudar?', 'mal', 'aquí'],
+    chips: ['Estoy enfermo.', '¿Me puede', 'ayudar?', 'mal', 'dolor'],
   },
   typeRecall: {
     before: 'Estoy ',
@@ -12480,7 +12480,7 @@ const brightSpanishP6Lesson001: GuidedLessonVibeVariant = {
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['estoy', 'enfermo', 'puede', 'ayudar'],
-    optionalTokens: ['me', 'aquí', 'mal'],
+    optionalTokens: ['me', 'mal', 'médico'],
   },
   sceneCaption: 'In der Apotheke oder am Empfang sagst du ruhig, dass du dich nicht wohl fühlst, und bittest um Hilfe.',
   trophyWord: {
@@ -12902,7 +12902,7 @@ const brightSpanishP6Lesson009: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: '¿Puede llamar a alguien, por favor?',
-    chips: ['¿Puede llamar', 'a alguien,', 'por favor?', 'pronto', 'aquí'],
+    chips: ['¿Puede llamar', 'a alguien,', 'por favor?', 'pronto', 'médico'],
   },
   typeRecall: {
     before: '¿Puede ',
@@ -12917,7 +12917,7 @@ const brightSpanishP6Lesson009: GuidedLessonVibeVariant = {
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['puede', 'llamar', 'alguien', 'por', 'favor'],
-    optionalTokens: ['a', 'pronto', 'aquí'],
+    optionalTokens: ['a', 'pronto', 'médico'],
   },
   sceneCaption: 'Du fühlst dich unwohl und bittest jemanden ruhig, eine andere Person zur Hilfe zu holen.',
   trophyWord: {
@@ -13067,7 +13067,7 @@ const brightSpanishP7Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: '¿Dónde está la estación, por favor?',
-    chips: ['¿Dónde está', 'la estación,', 'por favor?', 'aquí', 'centro'],
+    chips: ['¿Dónde está', 'la estación,', 'por favor?', 'metro', 'centro'],
   },
   typeRecall: {
     before: '¿Dónde está la ',
@@ -13082,7 +13082,7 @@ const brightSpanishP7Lesson002: GuidedLessonVibeVariant = {
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['dónde', 'está', 'estación', 'por', 'favor'],
-    optionalTokens: ['la', 'aquí'],
+    optionalTokens: ['la', 'metro'],
   },
   sceneCaption: 'Du sprichst jemanden ruhig an und fragst nach dem Bahnhof oder der Hauptstation.',
   trophyWord: {
@@ -13175,7 +13175,7 @@ const brightSpanishP7Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: '¿Es este el andén?',
-    chips: ['¿Es este', 'el andén?', 'número', 'aquí', 'por favor'],
+    chips: ['¿Es este', 'el andén?', 'número', 'vía', 'por favor'],
   },
   typeRecall: {
     before: '¿Es este el ',
@@ -13501,7 +13501,7 @@ const brightSpanishP7Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ya he llegado. Todo bien.',
-    chips: ['Ya he llegado.', 'Todo bien.', 'aquí', 'pronto', 'perfecto'],
+    chips: ['Ya he llegado.', 'Todo bien.', 'gracias', 'pronto', 'perfecto'],
   },
   typeRecall: {
     before: 'Ya he ',
