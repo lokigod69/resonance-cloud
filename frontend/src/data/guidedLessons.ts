@@ -401,6 +401,17 @@ const GUIDED_TODAY_PATH_SPANISH_NINE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_SPANISH_TEN_METADATA: GuidedPathMetadata = {
+  id: 'spanish-a1-practical-10',
+  title: 'Spanish A1 Practical 10',
+  shortTitle: 'A1 Practical 10',
+  subtitle: 'Tagesabschluss, Small Talk, gut verabschieden',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Spanish',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA: GuidedPathMetadata = {
   id: 'italian-a1-practical-1',
   title: 'Italian A1 Practical 1',
@@ -14601,6 +14612,548 @@ const brightSpanishP9Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Goldenes Innenlicht im Hintergrund, ruhiger Verabschiedungsmoment an der Tür.',
 }
 
+const brightSpanishP10Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Fue un buen día.',
+    baseText: 'Es war ein guter Tag.',
+  },
+  meaning: 'Ein kurzer, lockerer positiver Tagesabschluss — Iberisches Pretérito-Indefinido.',
+  chunks: [
+    { id: 'fue', targetText: 'Fue', baseText: 'Es war' },
+    { id: 'un-buen-dia', targetText: 'un buen día.', baseText: 'ein guter Tag.' },
+  ],
+  lessonItems: [
+    { id: 'dia', targetText: 'día', baseText: 'Tag', acceptedAnswers: ['día', 'dia', 'Día', 'Dia'] },
+    { id: 'fue', targetText: 'fue', baseText: 'es war (Pret. von ser)', acceptedAnswers: ['fue', 'Fue'] },
+    { id: 'buen', targetText: 'buen', baseText: 'gut (vor masc. Nomen)', acceptedAnswers: ['buen', 'Buen'] },
+    { id: 'tranquilo', targetText: 'tranquilo', baseText: 'ruhig', acceptedAnswers: ['tranquilo', 'Tranquilo'] },
+  ],
+  build: {
+    targetText: 'Fue un buen día.',
+    chips: ['Fue', 'un buen día.', 'tranquilo', 'genial', 'estupendo'],
+  },
+  typeRecall: {
+    before: 'Fue un buen ',
+    answer: 'día',
+    after: '.',
+    acceptedAnswers: ['día', 'dia', 'Día', 'Dia'],
+    fallbackChoices: ['día', 'rato', 'paseo', 'momento'],
+  },
+  speakTarget: {
+    baseCue: 'Es war ein guter Tag.',
+    targetPhrase: 'Fue un buen día.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['fue', 'buen', 'día'],
+    optionalTokens: ['un', 'tranquilo', 'genial'],
+  },
+  sceneCaption: 'Am Tagesende drehst du dich kurz zu deinem Begleiter und sagst, dass der Tag gut war.',
+  trophyWord: {
+    word: 'día',
+    meaning: 'Tag',
+    example: 'Ha sido un buen día.',
+    whyThisWord: 'Día ist auf A1 die Iberische Tagesangabe. Apokopiertes „buen" vor maskulinem Singular-Nomen ist Pflicht („buen día"), volle Form „bueno" nur nach dem Nomen oder allein.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Sonnenuntergang, ruhiger Schlussatemzug, lockere zufriedene Haltung.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'satisfied day-end',
+  },
+  visualNotes: 'Warmes Abendlicht, ruhiger Übergang von Tag zu Abend.',
+}
+
+const brightSpanishP10Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Es un sitio muy agradable.',
+    baseText: 'Es ist ein sehr angenehmer Ort.',
+  },
+  meaning: 'Ein freundlicher Schlusskommentar zu einem Ort, kurz vor dem Verlassen.',
+  chunks: [
+    { id: 'es-un-sitio', targetText: 'Es un sitio', baseText: 'Es ist ein Ort' },
+    { id: 'muy', targetText: 'muy', baseText: 'sehr' },
+    { id: 'agradable', targetText: 'agradable.', baseText: 'angenehm.' },
+  ],
+  lessonItems: [
+    { id: 'agradable', targetText: 'agradable', baseText: 'angenehm', acceptedAnswers: ['agradable', 'Agradable'] },
+    { id: 'sitio', targetText: 'sitio', baseText: 'Ort', acceptedAnswers: ['sitio', 'Sitio'] },
+    { id: 'muy', targetText: 'muy', baseText: 'sehr', acceptedAnswers: ['muy', 'Muy'] },
+    { id: 'acogedor', targetText: 'acogedor', baseText: 'gemütlich', acceptedAnswers: ['acogedor', 'Acogedor'] },
+  ],
+  build: {
+    targetText: 'Es un sitio muy agradable.',
+    chips: ['Es un sitio', 'muy', 'agradable.', 'acogedor', 'especial'],
+  },
+  typeRecall: {
+    before: 'Es un sitio muy ',
+    answer: 'agradable',
+    after: '.',
+    acceptedAnswers: ['agradable', 'Agradable'],
+    fallbackChoices: ['agradable', 'acogedor', 'tranquilo', 'especial'],
+  },
+  speakTarget: {
+    baseCue: 'Es ist ein sehr angenehmer Ort.',
+    targetPhrase: 'Es un sitio muy agradable.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['sitio', 'agradable'],
+    optionalTokens: ['es', 'un', 'muy', 'acogedor'],
+  },
+  sceneCaption: 'Vor dem Verlassen drehst du dich kurz um und gibst ein freundliches Lob zum Ort.',
+  trophyWord: {
+    word: 'agradable',
+    meaning: 'angenehm',
+    example: 'Una tarde muy agradable.',
+    whyThisWord: 'Agradable ist auf A1 das neutrale Iberische Lob-Adjektiv für Orte und Erlebnisse — geschlechtsinvariant.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Cafétür beim Verlassen, kurzer rückblickender Blick, warmes Licht im Innenraum.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'leaving with a smile',
+  },
+  visualNotes: 'Schwellen-Moment beim Hinausgehen, sanftes Innenlicht im Hintergrund.',
+}
+
+const brightSpanishP10Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Le agradezco mucho.',
+    baseText: 'Ich danke Ihnen sehr.',
+  },
+  meaning: 'Eine warme höfliche Iberische Dankesform (usted) — persönlicher als „gracias" allein.',
+  chunks: [
+    { id: 'le-agradezco', targetText: 'Le agradezco', baseText: 'Ich danke Ihnen' },
+    { id: 'mucho', targetText: 'mucho.', baseText: 'sehr.' },
+  ],
+  lessonItems: [
+    { id: 'agradezco', targetText: 'agradezco', baseText: 'ich danke (1. Pers. Sg. agradecer)', acceptedAnswers: ['agradezco', 'Agradezco'] },
+    { id: 'le', targetText: 'le', baseText: 'Ihnen (usted-Dativ)', acceptedAnswers: ['le', 'Le'] },
+    { id: 'mucho', targetText: 'mucho', baseText: 'sehr / viel', acceptedAnswers: ['mucho', 'Mucho'] },
+    { id: 'de-corazon', targetText: 'de corazón', baseText: 'von Herzen', acceptedAnswers: ['de corazón', 'de corazon'] },
+  ],
+  build: {
+    targetText: 'Le agradezco mucho.',
+    chips: ['Le agradezco', 'mucho.', 'de corazón', 'sinceramente', 'de verdad'],
+  },
+  typeRecall: {
+    before: 'Le ',
+    answer: 'agradezco',
+    after: ' mucho.',
+    acceptedAnswers: ['agradezco', 'Agradezco'],
+    fallbackChoices: ['agradezco', 'doy', 'pago', 'pido'],
+  },
+  speakTarget: {
+    baseCue: 'Ich danke Ihnen sehr.',
+    targetPhrase: 'Le agradezco mucho.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['le', 'agradezco', 'mucho'],
+    optionalTokens: ['de', 'corazón', 'verdad'],
+  },
+  sceneCaption: 'Du bedankst dich am Ende einer Hilfssituation höflich, warm und persönlich.',
+  trophyWord: {
+    word: 'agradezco',
+    meaning: 'ich danke (1. Pers. Sg. von agradecer)',
+    example: 'Le agradezco la ayuda.',
+    whyThisWord: 'Agradezco geht über das einfache „gracias" hinaus und drückt persönliche, warme Wertschätzung aus. „Le agradezco" ist die höfliche usted-Form (für Service-Personal, ältere Personen); im familiären Register würde „te agradezco" verwendet.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kurzer warmer Händedruck oder Lächeln, sanftes Tageslicht.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'warm personal thanks',
+  },
+  visualNotes: 'Detail auf zwei Hände im freundlichen Austausch, sanfter Lichtkreis.',
+}
+
+const brightSpanishP10Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Aprendí mucho.',
+    baseText: 'Ich habe viel gelernt.',
+  },
+  meaning: 'Eine kurze, lockere Reflexion am Tagesende über das, was du gelernt hast.',
+  chunks: [
+    { id: 'aprendi', targetText: 'Aprendí', baseText: 'Ich lernte' },
+    { id: 'mucho', targetText: 'mucho.', baseText: 'viel.' },
+  ],
+  lessonItems: [
+    { id: 'aprendi', targetText: 'aprendí', baseText: 'ich lernte / habe gelernt (Pret.)', acceptedAnswers: ['aprendí', 'aprendi', 'Aprendí', 'Aprendi'] },
+    { id: 'mucho', targetText: 'mucho', baseText: 'viel', acceptedAnswers: ['mucho', 'Mucho'] },
+    { id: 'algo-nuevo', targetText: 'algo nuevo', baseText: 'etwas Neues', acceptedAnswers: ['algo nuevo', 'Algo nuevo'] },
+    { id: 'esta-tarde', targetText: 'esta tarde', baseText: 'heute Nachmittag', acceptedAnswers: ['esta tarde', 'Esta tarde'] },
+  ],
+  build: {
+    targetText: 'Aprendí mucho.',
+    chips: ['Aprendí', 'mucho.', 'algo nuevo', 'esta tarde', 'todo'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Aprendí',
+    after: ' mucho.',
+    acceptedAnswers: ['aprendí', 'aprendi', 'Aprendí', 'Aprendi'],
+    fallbackChoices: ['Aprendí', 'Hice', 'Vi', 'Pensé'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe viel gelernt.',
+    targetPhrase: 'Aprendí mucho.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['aprendí', 'mucho'],
+    optionalTokens: ['algo', 'nuevo'],
+  },
+  sceneCaption: 'Am Ende des Tages drehst du dich kurz zur Reflexion und sagst, dass du viel gelernt hast.',
+  trophyWord: {
+    word: 'aprendí',
+    meaning: 'ich lernte / habe gelernt (1. Pers. Sg. Pretérito Indefinido)',
+    example: 'Aprendí muchas palabras nuevas.',
+    whyThisWord: 'Aprendí ist die Iberische A1-Reflexionsform für „ich habe gelernt" — als feste Lern-Wendung speichern, nicht das ganze Pretérito-Paradigma zerlegen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Sanfter Schlussmoment nach dem Lernen, Notizbuch oder Buch zur Seite gelegt.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'gentle reflection',
+  },
+  visualNotes: 'Detail auf geschlossenes Notizbuch, ruhiger Lichteinfall.',
+}
+
+const brightSpanishP10Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Estoy cansado ahora.',
+    baseText: 'Ich bin jetzt müde.',
+  },
+  meaning: 'Eine kurze, lockere Aussage über Müdigkeit am Tagesende. Akzeptiert auch die feminine Form „cansada".',
+  chunks: [
+    { id: 'estoy-cansado', targetText: 'Estoy cansado', baseText: 'Ich bin müde' },
+    { id: 'ahora', targetText: 'ahora.', baseText: 'jetzt.' },
+  ],
+  lessonItems: [
+    { id: 'cansado', targetText: 'cansado', baseText: 'müde (masc.) / weibl. „cansada"', acceptedAnswers: ['cansado', 'cansada', 'Cansado', 'Cansada'] },
+    { id: 'ahora', targetText: 'ahora', baseText: 'jetzt', acceptedAnswers: ['ahora', 'Ahora'] },
+    { id: 'un-poco', targetText: 'un poco', baseText: 'ein bisschen', acceptedAnswers: ['un poco', 'Un poco'] },
+    { id: 'agotado', targetText: 'agotado', baseText: 'erschöpft', acceptedAnswers: ['agotado', 'agotada', 'Agotado', 'Agotada'] },
+  ],
+  build: {
+    targetText: 'Estoy cansado ahora.',
+    chips: ['Estoy cansado', 'ahora.', 'un poco', 'agotado', 'mucho'],
+  },
+  typeRecall: {
+    before: 'Estoy ',
+    answer: 'cansado',
+    after: ' ahora.',
+    acceptedAnswers: ['cansado', 'cansada', 'Cansado', 'Cansada'],
+    fallbackChoices: ['cansado', 'agotado', 'ocupado', 'feliz'],
+  },
+  speakTarget: {
+    baseCue: 'Ich bin jetzt müde.',
+    targetPhrase: 'Estoy cansado ahora.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['estoy', 'cansado', 'ahora'],
+    optionalTokens: ['un', 'poco', 'agotado'],
+  },
+  sceneCaption: 'Am Tagesende erkennst du, dass du müde bist, und sagst es kurz aus.',
+  trophyWord: {
+    word: 'cansado',
+    meaning: 'müde (maskulin) / „cansada" feminin',
+    example: 'Estoy cansado, voy a dormir.',
+    whyThisWord: 'Cansado markiert auf A1 körperliche/mentale Müdigkeit. Iberisch ist die Genusform Pflicht (cansado/cansada). Die acceptedAnswers nehmen beide Formen an.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Sanfter Sessel im Abendlicht, kurzer Atemzug zur Ruhe.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'gentle tiredness',
+  },
+  visualNotes: 'Sessel und warme Lampe, leichter Schlummer-Look.',
+}
+
+const brightSpanishP10Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Tengo que irme.',
+    baseText: 'Ich muss los.',
+  },
+  meaning: 'Eine kurze, freundliche Ansage am Ende eines Treffens, dass du jetzt aufbrichst.',
+  chunks: [
+    { id: 'tengo-que', targetText: 'Tengo que', baseText: 'Ich muss' },
+    { id: 'irme', targetText: 'irme.', baseText: 'gehen (mich gehen).' },
+  ],
+  lessonItems: [
+    { id: 'irme', targetText: 'irme', baseText: 'gehen / aufbrechen (reflexiv)', acceptedAnswers: ['irme', 'Irme'] },
+    { id: 'tengo-que', targetText: 'tengo que', baseText: 'ich muss', acceptedAnswers: ['tengo que', 'Tengo que'] },
+    { id: 'volver', targetText: 'volver', baseText: 'zurückkommen', acceptedAnswers: ['volver', 'Volver'] },
+    { id: 'marcho', targetText: 'me marcho', baseText: 'ich gehe', acceptedAnswers: ['me marcho', 'Me marcho'] },
+  ],
+  build: {
+    targetText: 'Tengo que irme.',
+    chips: ['Tengo que', 'irme.', 'volver', 'me marcho', 'pronto'],
+  },
+  typeRecall: {
+    before: 'Tengo que ',
+    answer: 'irme',
+    after: '.',
+    acceptedAnswers: ['irme', 'Irme'],
+    fallbackChoices: ['irme', 'volver', 'salir', 'subir'],
+  },
+  speakTarget: {
+    baseCue: 'Ich muss los.',
+    targetPhrase: 'Tengo que irme.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['tengo', 'irme'],
+    optionalTokens: ['que', 'volver', 'pronto'],
+  },
+  sceneCaption: 'Am Ende eines Treffens schaust du auf die Uhr und sagst freundlich, dass du jetzt los musst.',
+  trophyWord: {
+    word: 'irme',
+    meaning: 'gehen / weggehen (reflexives Infinitiv „irse")',
+    example: 'Tengo que irme ya.',
+    whyThisWord: 'Irme ist auf A1 die natürliche Iberische Aufbruchsform — reflexives „irse" markiert „sich gehen" im Sinne von „los/weg", anders als das neutrale „ir".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Aufstehen vom Tisch, kurzer Blick zur Uhr, freundlicher Abschied.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'soft leaving',
+  },
+  visualNotes: 'Stuhl wird zurückgeschoben, warmes Café-Licht.',
+}
+
+const brightSpanishP10Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Hasta pronto.',
+    baseText: 'Bis bald.',
+  },
+  meaning: 'Eine kurze, offene Verabschiedung ohne festen nächsten Termin.',
+  chunks: [
+    { id: 'hasta', targetText: 'Hasta', baseText: 'Bis' },
+    { id: 'pronto', targetText: 'pronto.', baseText: 'bald.' },
+  ],
+  lessonItems: [
+    { id: 'pronto', targetText: 'pronto', baseText: 'bald', acceptedAnswers: ['pronto', 'Pronto'] },
+    { id: 'la-proxima-vez', targetText: 'la próxima vez', baseText: 'beim nächsten Mal', acceptedAnswers: ['la próxima vez', 'la proxima vez'] },
+    { id: 'cuidate', targetText: 'cuídate', baseText: 'pass auf dich auf', acceptedAnswers: ['cuídate', 'cuidate', 'Cuídate', 'Cuidate'] },
+    { id: 'un-abrazo', targetText: 'un abrazo', baseText: 'eine Umarmung', acceptedAnswers: ['un abrazo', 'Un abrazo'] },
+  ],
+  build: {
+    targetText: 'Hasta pronto.',
+    chips: ['Hasta', 'pronto.', 'cuídate', 'un abrazo', 'la próxima vez'],
+  },
+  typeRecall: {
+    before: 'Hasta ',
+    answer: 'pronto',
+    after: '.',
+    acceptedAnswers: ['pronto', 'Pronto'],
+    fallbackChoices: ['pronto', 'siempre', 'nunca', 'ahora'],
+  },
+  speakTarget: {
+    baseCue: 'Bis bald.',
+    targetPhrase: 'Hasta pronto.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['hasta', 'pronto'],
+    optionalTokens: ['cuídate', 'un', 'abrazo'],
+  },
+  sceneCaption: 'Beim offenen Abschied — du weißt noch nicht wann ihr euch wiederseht — sagst du locker „bis bald".',
+  trophyWord: {
+    word: 'pronto',
+    meaning: 'bald',
+    example: 'Hasta pronto, cuídate.',
+    whyThisWord: 'Pronto bedeutet auf A1 „bald / in Kürze" — zeitlich näher als „luego" (P9, später am Tag) und offener als „hasta mañana" (bis morgen). Als Abschiedsformel „Hasta pronto" ist es die offene Variante ohne festen Termin.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Tür beim Verlassen, lockerer Winkemoment, warmes Tageslicht.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'open-ended see-you',
+  },
+  visualNotes: 'Türrahmen-Detail, lockere Wink-Geste in der Bildmitte.',
+}
+
+const brightSpanishP10Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Mañana me viene bien.',
+    baseText: 'Morgen passt mir gut.',
+  },
+  meaning: 'Eine kurze Iberische Bestätigung, dass ein vorgeschlagener Termin morgen für dich funktioniert.',
+  chunks: [
+    { id: 'manana', targetText: 'Mañana', baseText: 'Morgen' },
+    { id: 'me-viene', targetText: 'me viene', baseText: 'passt mir' },
+    { id: 'bien', targetText: 'bien.', baseText: 'gut.' },
+  ],
+  lessonItems: [
+    { id: 'bien', targetText: 'bien', baseText: 'gut (Adv.)', acceptedAnswers: ['bien', 'Bien'] },
+    { id: 'me-viene', targetText: 'me viene', baseText: 'passt mir', acceptedAnswers: ['me viene', 'Me viene'] },
+    { id: 'perfecto', targetText: 'perfecto', baseText: 'perfekt', acceptedAnswers: ['perfecto', 'Perfecto'] },
+    { id: 'a-las-siete', targetText: 'a las siete', baseText: 'um sieben Uhr', acceptedAnswers: ['a las siete', 'A las siete'] },
+  ],
+  build: {
+    targetText: 'Mañana me viene bien.',
+    chips: ['Mañana', 'me viene', 'bien.', 'perfecto', 'a las siete'],
+  },
+  typeRecall: {
+    before: 'Mañana me viene ',
+    answer: 'bien',
+    after: '.',
+    acceptedAnswers: ['bien', 'Bien'],
+    fallbackChoices: ['bien', 'mal', 'genial', 'fatal'],
+  },
+  speakTarget: {
+    baseCue: 'Morgen passt mir gut.',
+    targetPhrase: 'Mañana me viene bien.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['viene', 'bien'],
+    optionalTokens: ['mañana', 'me', 'perfecto'],
+  },
+  sceneCaption: 'In der Verabredung bestätigst du, dass der Vorschlag für morgen passt.',
+  trophyWord: {
+    word: 'bien',
+    meaning: 'gut (Adverb der Eignung)',
+    example: 'Me viene bien a las siete.',
+    whyThisWord: 'Bien in „me viene bien" ist die Iberische Standard-Bestätigungsform für Termin- und Vorschlagsabsprachen — kürzer als „está perfecto" und natürlicher als „de acuerdo". Nicht zu verwechseln mit „bueno" (P4-Trophäe, Adjektiv: „Estaba muy bueno") — „bien" ist hier Adverb der Eignung.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Kalender- oder Telefon-Display, ruhiges Nicken zur Bestätigung.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'plan confirmed',
+  },
+  visualNotes: 'Telefon-Display mit markiertem Termin, sanftes Lampenlicht.',
+}
+
+const brightSpanishP10Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Buenas noches a todos.',
+    baseText: 'Gute Nacht euch allen.',
+  },
+  meaning: 'Ein höflicher Iberischer Abendabschluss, an mehrere Personen gerichtet.',
+  chunks: [
+    { id: 'buenas-noches', targetText: 'Buenas noches', baseText: 'Gute Nacht' },
+    { id: 'a-todos', targetText: 'a todos.', baseText: 'euch allen.' },
+  ],
+  lessonItems: [
+    { id: 'buenas', targetText: 'buenas', baseText: 'gut (fem. Pl., feste Grußform)', acceptedAnswers: ['buenas', 'Buenas'] },
+    { id: 'a-todos', targetText: 'a todos', baseText: 'an alle / euch allen', acceptedAnswers: ['a todos', 'A todos'] },
+    { id: 'igualmente', targetText: 'igualmente', baseText: 'ebenfalls', acceptedAnswers: ['igualmente', 'Igualmente'] },
+    { id: 'hasta-otro-dia', targetText: 'hasta otro día', baseText: 'bis zu einem anderen Tag', acceptedAnswers: ['hasta otro día', 'hasta otro dia'] },
+  ],
+  build: {
+    targetText: 'Buenas noches a todos.',
+    chips: ['Buenas noches', 'a todos.', 'igualmente', 'hasta otro día', 'cuídate'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Buenas',
+    after: ' noches a todos.',
+    acceptedAnswers: ['buenas', 'Buenas'],
+    fallbackChoices: ['Buenas', 'Buen', 'Buenos', 'Buena'],
+  },
+  speakTarget: {
+    baseCue: 'Gute Nacht euch allen.',
+    targetPhrase: 'Buenas noches a todos.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['buenas', 'noches', 'todos'],
+    optionalTokens: ['a', 'igualmente'],
+  },
+  sceneCaption: 'Vor dem Verlassen einer Gruppe verabschiedest du dich höflich von allen Anwesenden.',
+  trophyWord: {
+    word: 'buenas',
+    meaning: 'gut (Iberische feste Grußform — „buenas tardes/noches")',
+    example: 'Buenas noches, hasta mañana.',
+    whyThisWord: 'Buenas in der festen Iberischen Wendung „buenas tardes/noches" steht im femininen Plural als Höflichkeits-Marker — Apokope-Sonderfall, der nicht analytisch zerlegt wird.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Türrahmen am späten Abend, sanfte Wink-Geste an mehrere Personen.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'group good-night',
+  },
+  visualNotes: 'Türrahmen-Detail im Abendlicht, kleine Gruppe im warmen Innenraum.',
+}
+
+const brightSpanishP10Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Adiós por ahora.',
+    baseText: 'Auf Wiedersehen für jetzt.',
+  },
+  meaning: 'Der höfliche Iberische Schlussabschied am Ende des gesamten A1-Praktischen Kurses — Meta-Schluss des 10-Pfade-Bogens.',
+  chunks: [
+    { id: 'adios', targetText: 'Adiós', baseText: 'Auf Wiedersehen' },
+    { id: 'por-ahora', targetText: 'por ahora.', baseText: 'für jetzt.' },
+  ],
+  lessonItems: [
+    { id: 'adios', targetText: 'adiós', baseText: 'auf Wiedersehen', acceptedAnswers: ['adiós', 'adios', 'Adiós', 'Adios'] },
+    { id: 'por-ahora', targetText: 'por ahora', baseText: 'für jetzt', acceptedAnswers: ['por ahora', 'Por ahora'] },
+    { id: 'cuidate', targetText: 'cuídate', baseText: 'pass auf dich auf', acceptedAnswers: ['cuídate', 'cuidate', 'Cuídate', 'Cuidate'] },
+    { id: 'suerte', targetText: 'suerte', baseText: 'Glück / viel Erfolg', acceptedAnswers: ['suerte', 'Suerte'] },
+  ],
+  build: {
+    targetText: 'Adiós por ahora.',
+    chips: ['Adiós', 'por ahora.', 'cuídate', 'suerte', 'un abrazo'],
+  },
+  typeRecall: {
+    before: '',
+    answer: 'Adiós',
+    after: ' por ahora.',
+    acceptedAnswers: ['adiós', 'adios', 'Adiós', 'Adios'],
+    fallbackChoices: ['Adiós', 'Hola', 'Chau', 'Vale'],
+  },
+  speakTarget: {
+    baseCue: 'Auf Wiedersehen für jetzt.',
+    targetPhrase: 'Adiós por ahora.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['adiós', 'ahora'],
+    optionalTokens: ['por', 'cuídate', 'suerte'],
+  },
+  sceneCaption: 'Am Schluss des gesamten Kurses gibst du eine warme Meta-Verabschiedung an die ganze Geschichte ab.',
+  trophyWord: {
+    word: 'adiós',
+    meaning: 'auf Wiedersehen / Abschied',
+    example: 'Adiós, hasta otra.',
+    whyThisWord: 'Adiós ist das eindeutige Iberische Abschiedswort — formaler als „chau" oder „hasta luego" und passend als finale Meta-Verabschiedung nach 100 A1-Lektionen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Final-Frame: Tür schließt sich langsam, warmes Licht bleibt zurück, sanftes Lächeln.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'curriculum-closing farewell',
+  },
+  visualNotes: 'Letzter Frame des gesamten Kurses, langsamer Lichtübergang, ruhige Abschiedsbewegung.',
+}
+
 const brightItalianLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -27643,6 +28196,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'spanish-a1-practical-10-001-buen-dia',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-001-buen-dia',
+      sequence: 1,
+      title: 'Es war ein guter Tag',
+    },
+    title: 'Es war ein guter Tag',
+    situation: {
+      en: 'At day-end, say the day was good in a short positive wrap-up.',
+      de: 'Am Tagesende fasst du den Tag mit einem kurzen positiven Satz zusammen.',
+    },
+    pedagogicalGoal: 'Eine lockere Iberische Tagesabschluss-Wendung mit Pretérito „fue" abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ein angenehmer Ort',
+      situation: 'Du gibst ein kurzes Lob zum Ort vor dem Gehen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson001,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-10-002-sitio-agradable',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-002-sitio-agradable',
+      sequence: 2,
+      title: 'Ein angenehmer Ort',
+    },
+    title: 'Ein angenehmer Ort',
+    situation: {
+      en: 'Before leaving, say something positive about the place.',
+      de: 'Vor dem Verlassen sagst du etwas Nettes zum Ort.',
+    },
+    pedagogicalGoal: 'Mit „agradable" einen freundlichen Schlusskommentar zum aktuellen Ort formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich danke dir sehr',
+      situation: 'Du bedankst dich warm bei einer Person.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson002,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-10-003-te-agradezco',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-003-te-agradezco',
+      sequence: 3,
+      title: 'Ich danke dir sehr',
+    },
+    title: 'Ich danke dir sehr',
+    situation: {
+      en: 'Thank someone warmly and personally for their help.',
+      de: 'Du bedankst dich warm und persönlich bei jemandem für Hilfe.',
+    },
+    pedagogicalGoal: 'Mit „te agradezco" eine warme, persönliche Iberische Dankesform abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich habe viel gelernt',
+      situation: 'Du sagst, dass du heute viel gelernt hast.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson003,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-10-004-aprendi-mucho',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-004-aprendi-mucho',
+      sequence: 4,
+      title: 'Ich habe viel gelernt',
+    },
+    title: 'Ich habe viel gelernt',
+    situation: {
+      en: 'In a reflection moment at day-end, say you learned a lot.',
+      de: 'Im Reflexionsmoment am Tagesende sagst du, dass du viel gelernt hast.',
+    },
+    pedagogicalGoal: 'Mit „aprendí" eine kurze Iberische Lern-Reflexion am Tagesende formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich bin müde',
+      situation: 'Du sagst, dass du jetzt müde bist.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson004,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-10-005-estoy-cansado',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-005-estoy-cansado',
+      sequence: 5,
+      title: 'Ich bin müde',
+    },
+    title: 'Ich bin müde',
+    situation: {
+      en: 'At day-end, casually state that you are tired now.',
+      de: 'Am Tagesende sagst du locker, dass du jetzt müde bist.',
+    },
+    pedagogicalGoal: 'Mit „cansado/-a" eine lockere Müdigkeits-Aussage in Iberischem Spanisch formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich muss los',
+      situation: 'Du signalisierst freundlich deinen Aufbruch.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson005,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-10-006-tengo-que-irme',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-006-tengo-que-irme',
+      sequence: 6,
+      title: 'Ich muss los',
+    },
+    title: 'Ich muss los',
+    situation: {
+      en: 'At the end of an interaction, announce you need to leave.',
+      de: 'Am Ende des Treffens signalisierst du freundlich, dass du gehen musst.',
+    },
+    pedagogicalGoal: 'Die feste Iberische Aufbruchsform „tengo que irme" sicher abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Bis bald',
+      situation: 'Du verabschiedest dich offen, ohne festen Termin.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson006,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-10-007-hasta-pronto',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-007-hasta-pronto',
+      sequence: 7,
+      title: 'Bis bald',
+    },
+    title: 'Bis bald',
+    situation: {
+      en: 'Close an interaction with an open-ended "see you soon".',
+      de: 'Du verabschiedest dich offen, ohne festen Wiedersehenstermin.',
+    },
+    pedagogicalGoal: 'Den Iberischen offenen Abschied „Hasta pronto" abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Morgen passt mir gut',
+      situation: 'Du bestätigst einen Vorschlag für morgen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson007,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-10-008-manana-me-viene-bien',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-008-manana-me-viene-bien',
+      sequence: 8,
+      title: 'Morgen passt mir gut',
+    },
+    title: 'Morgen passt mir gut',
+    situation: {
+      en: 'In casual planning, confirm that tomorrow works for you.',
+      de: 'Beim lockeren Planen bestätigst du, dass morgen passt.',
+    },
+    pedagogicalGoal: 'Die feste Iberische Bestätigungsform „me viene bien" für Termine abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Gute Nacht euch allen',
+      situation: 'Du verabschiedest dich höflich von der Gruppe.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson008,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-10-009-buenas-noches',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-009-buenas-noches',
+      sequence: 9,
+      title: 'Gute Nacht euch allen',
+    },
+    title: 'Gute Nacht euch allen',
+    situation: {
+      en: 'At the end of an evening, politely close with "good night to everyone".',
+      de: 'Am Ende des Abends verabschiedest du dich höflich von allen.',
+    },
+    pedagogicalGoal: 'Die feste höfliche Iberische Abendabschluss-Wendung „Buenas noches a todos" abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Auf Wiedersehen für jetzt',
+      situation: 'Du schließt den ganzen Pfad mit einer warmen Meta-Verabschiedung.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson009,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-10-010-adios-por-ahora',
+    pathId: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-10-010-adios-por-ahora',
+      sequence: 10,
+      title: 'Auf Wiedersehen für jetzt',
+    },
+    title: 'Auf Wiedersehen für jetzt',
+    situation: {
+      en: 'Close the whole 100-lesson arc with a short polite "goodbye for now".',
+      de: 'Du schließt den gesamten 100-Lektionen-Bogen mit einer warmen Meta-Verabschiedung.',
+    },
+    pedagogicalGoal: 'Die finale Meta-Verabschiedung „Adiós por ahora" als Iberischen Schluss des A1-Pfade-Bogens abrufen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'A1 Spanisch abgeschlossen',
+      situation: 'Du hast alle 10 Spanish A1 Practical Pfade abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP10Lesson010,
+    },
+  },
+  {
     id: 'italian-a1-practical-001-primo-contatto',
     pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
@@ -33583,6 +34466,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_SPANISH_SEVEN_METADATA,
     GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
     GUIDED_TODAY_PATH_SPANISH_NINE_METADATA,
+    GUIDED_TODAY_PATH_SPANISH_TEN_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,
