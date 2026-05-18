@@ -379,6 +379,17 @@ const GUIDED_TODAY_PATH_SPANISH_SEVEN_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA: GuidedPathMetadata = {
+  id: 'spanish-a1-practical-8',
+  title: 'Spanish A1 Practical 8',
+  shortTitle: 'A1 Practical 8',
+  subtitle: 'Hotel, Zimmer, irgendwo bleiben',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Spanish',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA: GuidedPathMetadata = {
   id: 'italian-a1-practical-1',
   title: 'Italian A1 Practical 1',
@@ -13492,6 +13503,551 @@ const brightSpanishP7Lesson010: GuidedLessonVibeVariant = {
   visualNotes: 'Außenseite des Taxis, ruhiger Abschiedsmoment, warmes Tageslicht.',
 }
 
+const brightSpanishP8Lesson001: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Tengo una habitación reservada.',
+    baseText: 'Ich habe ein Zimmer reserviert.',
+  },
+  meaning: 'Eine kurze Anmeldung am Hotel-Empfang mit Hinweis auf die Reservierung.',
+  chunks: [
+    { id: 'tengo-una', targetText: 'Tengo una', baseText: 'Ich habe ein' },
+    { id: 'habitacion', targetText: 'habitación', baseText: 'Zimmer' },
+    { id: 'reservada', targetText: 'reservada.', baseText: 'reserviert.' },
+  ],
+  lessonItems: [
+    { id: 'habitacion', targetText: 'habitación', baseText: 'Zimmer', acceptedAnswers: ['habitación', 'habitacion', 'Habitación', 'Habitacion'] },
+    { id: 'reservada', targetText: 'reservada', baseText: 'reserviert (fem.)', acceptedAnswers: ['reservada', 'Reservada'] },
+    { id: 'doble', targetText: 'doble', baseText: 'Doppelzimmer', acceptedAnswers: ['doble', 'Doble'] },
+    { id: 'individual', targetText: 'individual', baseText: 'Einzelzimmer', acceptedAnswers: ['individual', 'Individual'] },
+  ],
+  build: {
+    targetText: 'Tengo una habitación reservada.',
+    chips: ['Tengo una', 'habitación', 'reservada.', 'doble', 'individual'],
+  },
+  typeRecall: {
+    before: 'Tengo una ',
+    answer: 'habitación',
+    after: ' reservada.',
+    acceptedAnswers: ['habitación', 'habitacion', 'Habitación', 'Habitacion'],
+    fallbackChoices: ['habitación', 'cuarto', 'suite', 'cama'],
+  },
+  speakTarget: {
+    baseCue: 'Ich habe ein Zimmer reserviert.',
+    targetPhrase: 'Tengo una habitación reservada.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['tengo', 'habitación', 'reservada'],
+    optionalTokens: ['una', 'doble', 'individual'],
+  },
+  sceneCaption: 'Am Hotel-Empfang nennst du kurz, dass eine Reservierung auf deinen Namen vorliegt.',
+  trophyWord: {
+    word: 'habitación',
+    meaning: 'Hotelzimmer',
+    example: 'Una habitación doble, por favor.',
+    whyThisWord: 'Habitación ist das spezifische Hotel-Wort in Spanien — natürlicher als „cuarto" für Hotelzimmer. Iberisch klar gegenüber LatAm-Variationen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hotel-Empfang in warmem Abendlicht, Koffer neben dem Tresen, ruhige Begrüßung.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'hotel check-in',
+  },
+  visualNotes: 'Detail auf Empfangstresen mit Glocke, Schlüssel-Brett im Hintergrund.',
+}
+
+const brightSpanishP8Lesson002: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Una habitación para esta noche, por favor.',
+    baseText: 'Ein Zimmer für heute Nacht, bitte.',
+  },
+  meaning: 'Eine kurze, höfliche Anfrage für ein Zimmer ohne vorherige Buchung.',
+  chunks: [
+    { id: 'una-habitacion', targetText: 'Una habitación', baseText: 'Ein Zimmer' },
+    { id: 'para-esta-noche', targetText: 'para esta noche,', baseText: 'für heute Nacht,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'noche', targetText: 'noche', baseText: 'Nacht / Abend', acceptedAnswers: ['noche', 'Noche'] },
+    { id: 'esta', targetText: 'esta', baseText: 'diese (fem.)', acceptedAnswers: ['esta', 'Esta'] },
+    { id: 'dos-noches', targetText: 'dos noches', baseText: 'zwei Nächte', acceptedAnswers: ['dos noches', 'Dos noches'] },
+    { id: 'disponible', targetText: 'disponible', baseText: 'verfügbar', acceptedAnswers: ['disponible', 'Disponible'] },
+  ],
+  build: {
+    targetText: 'Una habitación para esta noche, por favor.',
+    chips: ['Una habitación', 'para esta noche,', 'por favor.', 'dos noches', 'disponible'],
+  },
+  typeRecall: {
+    before: 'Una habitación para esta ',
+    answer: 'noche',
+    after: ', por favor.',
+    acceptedAnswers: ['noche', 'Noche'],
+    fallbackChoices: ['noche', 'semana', 'mes', 'fin de semana'],
+  },
+  speakTarget: {
+    baseCue: 'Ein Zimmer für heute Nacht, bitte.',
+    targetPhrase: 'Una habitación para esta noche, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['habitación', 'esta', 'noche', 'por', 'favor'],
+    optionalTokens: ['una', 'para'],
+  },
+  sceneCaption: 'Am Empfang fragst du höflich, ob spontan ein Zimmer für heute Nacht frei ist.',
+  trophyWord: {
+    word: 'noche',
+    meaning: 'Nacht / Abend',
+    example: 'Buenas noches. Una noche, por favor.',
+    whyThisWord: 'Noche deckt auf A1 sowohl Nacht als auch Abend ab — zentrale Iberische Zeitangabe für Hotel- und Restaurant-Szenen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Empfang am späten Abend, sanftes warmes Licht, kurzer prüfender Blick zur Liste.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'late check-in inquiry',
+  },
+  visualNotes: 'Empfangslampe, ruhige Nachtatmosphäre, kurzer Wartemoment.',
+}
+
+const brightSpanishP8Lesson003: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿En qué piso está mi habitación?',
+    baseText: 'In welchem Stockwerk ist mein Zimmer?',
+  },
+  meaning: 'Eine kurze Orientierungsfrage nach dem Stockwerk nach dem Einchecken.',
+  chunks: [
+    { id: 'en-que-piso', targetText: '¿En qué piso', baseText: 'In welchem Stockwerk' },
+    { id: 'esta-mi-habitacion', targetText: 'está mi habitación?', baseText: 'ist mein Zimmer?' },
+  ],
+  lessonItems: [
+    { id: 'piso', targetText: 'piso', baseText: 'Stockwerk / Etage', acceptedAnswers: ['piso', 'Piso'] },
+    { id: 'qué', targetText: 'qué', baseText: 'welches', acceptedAnswers: ['qué', 'que', 'Qué', 'Que'] },
+    { id: 'mi', targetText: 'mi', baseText: 'mein/-e', acceptedAnswers: ['mi', 'Mi'] },
+    { id: 'ascensor', targetText: 'ascensor', baseText: 'Aufzug', acceptedAnswers: ['ascensor', 'Ascensor'] },
+  ],
+  build: {
+    targetText: '¿En qué piso está mi habitación?',
+    chips: ['¿En qué piso', 'está mi habitación?', 'ascensor', 'planta', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿En qué ',
+    answer: 'piso',
+    after: ' está mi habitación?',
+    acceptedAnswers: ['piso', 'Piso'],
+    fallbackChoices: ['piso', 'planta', 'cuarto', 'ala'],
+  },
+  speakTarget: {
+    baseCue: 'In welchem Stockwerk ist mein Zimmer?',
+    targetPhrase: '¿En qué piso está mi habitación?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['qué', 'piso', 'habitación'],
+    optionalTokens: ['en', 'está', 'mi'],
+  },
+  sceneCaption: 'Nach dem Einchecken nimmst du den Schlüssel und fragst kurz nach dem Stockwerk.',
+  trophyWord: {
+    word: 'piso',
+    meaning: 'Stockwerk / Etage',
+    example: 'Mi habitación está en el tercer piso.',
+    whyThisWord: 'Piso ist auf A1 das Standardwort für Stockwerk im Iberischen — Achtung: in Spanien bedeutet „piso" zusätzlich „Wohnung", in LatAm meist nur „Boden". Hier klar Hotel-Etage.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Empfangstheke mit Schlüsselkarte in der Hand, Blick zur Aufzugstür.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'after check-in orientation',
+  },
+  visualNotes: 'Schlüssel-Detail in der Hand, Lobby-Hintergrund, ruhiger Übergangsmoment.',
+}
+
+const brightSpanishP8Lesson004: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'La llave, por favor.',
+    baseText: 'Den Schlüssel, bitte.',
+  },
+  meaning: 'Eine knappe, höfliche Bitte um den Zimmerschlüssel am Empfang.',
+  chunks: [
+    { id: 'la-llave', targetText: 'La llave,', baseText: 'Den Schlüssel,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'llave', targetText: 'llave', baseText: 'Schlüssel', acceptedAnswers: ['llave', 'Llave'] },
+    { id: 'la', targetText: 'la', baseText: 'den/die (fem.)', acceptedAnswers: ['la', 'La'] },
+    { id: 'puerta', targetText: 'puerta', baseText: 'Tür', acceptedAnswers: ['puerta', 'Puerta'] },
+    { id: 'numero', targetText: 'número', baseText: 'Nummer', acceptedAnswers: ['número', 'numero', 'Número', 'Numero'] },
+  ],
+  build: {
+    targetText: 'La llave, por favor.',
+    chips: ['La llave,', 'por favor.', 'número', 'puerta', 'ahora'],
+  },
+  typeRecall: {
+    before: 'La ',
+    answer: 'llave',
+    after: ', por favor.',
+    acceptedAnswers: ['llave', 'Llave'],
+    fallbackChoices: ['llave', 'puerta', 'lista', 'firma'],
+  },
+  speakTarget: {
+    baseCue: 'Den Schlüssel, bitte.',
+    targetPhrase: 'La llave, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['llave', 'por', 'favor'],
+    optionalTokens: ['la', 'número'],
+  },
+  sceneCaption: 'Am Empfang bittest du kurz und höflich um den Zimmerschlüssel.',
+  trophyWord: {
+    word: 'llave',
+    meaning: 'Schlüssel',
+    example: 'La llave de la habitación, por favor.',
+    whyThisWord: 'Llave ist auf A1 das eindeutige Hotel-Schlüssel-Wort — gilt auch für moderne Schlüsselkarten („tarjeta-llave") und ist Iberisch wie LatAm gleichermaßen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Schlüssel oder Karte über den Tresen, ruhige Übergabegeste.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'room key handover',
+  },
+  visualNotes: 'Detail auf Schlüssel/Karte, warmes Lobby-Licht, Hand des Empfangs.',
+}
+
+const brightSpanishP8Lesson005: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Tienen wifi aquí?',
+    baseText: 'Habt ihr hier WLAN?',
+  },
+  meaning: 'Eine kurze Frage nach WLAN-Verfügbarkeit im Hotel oder Café.',
+  chunks: [
+    { id: 'tienen', targetText: '¿Tienen', baseText: 'Habt ihr' },
+    { id: 'wifi', targetText: 'wifi', baseText: 'WLAN' },
+    { id: 'aqui', targetText: 'aquí?', baseText: 'hier?' },
+  ],
+  lessonItems: [
+    { id: 'wifi', targetText: 'wifi', baseText: 'WLAN', acceptedAnswers: ['wifi', 'Wifi', 'WiFi'] },
+    { id: 'tienen', targetText: 'tienen', baseText: 'habt ihr / haben sie', acceptedAnswers: ['tienen', 'Tienen'] },
+    { id: 'contrasena', targetText: 'contraseña', baseText: 'Passwort', acceptedAnswers: ['contraseña', 'contrasena', 'Contraseña', 'Contrasena'] },
+    { id: 'gratis', targetText: 'gratis', baseText: 'kostenlos', acceptedAnswers: ['gratis', 'Gratis'] },
+  ],
+  build: {
+    targetText: '¿Tienen wifi aquí?',
+    chips: ['¿Tienen', 'wifi', 'aquí?', 'contraseña', 'gratis'],
+  },
+  typeRecall: {
+    before: '¿Tienen ',
+    answer: 'wifi',
+    after: ' aquí?',
+    acceptedAnswers: ['wifi', 'Wifi', 'WiFi'],
+    fallbackChoices: ['wifi', 'internet', 'enchufe', 'señal'],
+  },
+  speakTarget: {
+    baseCue: 'Habt ihr hier WLAN?',
+    targetPhrase: '¿Tienen wifi aquí?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['tienen', 'wifi', 'aquí'],
+    optionalTokens: ['contraseña', 'gratis'],
+  },
+  sceneCaption: 'Am Empfang oder Tresen fragst du kurz, ob hier WLAN verfügbar ist.',
+  trophyWord: {
+    word: 'wifi',
+    meaning: 'WLAN',
+    example: '¿Cuál es la contraseña del wifi?',
+    whyThisWord: 'Wifi ist im Iberischen als Lehnwort fest etabliert und wird oft „wifi" (gesprochen wie /ˈwifi/) ausgesprochen — Aussprache leicht anders als im Deutschen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Lobby-Tresen mit kleinem WLAN-Schild, ein Gerät auf der Theke, ruhige Frage.',
+  },
+  songSeed: {
+    genre: 'sunny indie pop',
+    mood: 'casual tech inquiry',
+  },
+  visualNotes: 'WLAN-Symbol als visueller Anker, helles Lobby-Detail.',
+}
+
+const brightSpanishP8Lesson006: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Dónde está el baño?',
+    baseText: 'Wo ist die Toilette?',
+  },
+  meaning: 'Eine kurze, höfliche Frage nach der Toilette im Hotel, Café oder Restaurant.',
+  chunks: [
+    { id: 'donde-esta', targetText: '¿Dónde está', baseText: 'Wo ist' },
+    { id: 'el-bano', targetText: 'el baño?', baseText: 'die Toilette?' },
+  ],
+  lessonItems: [
+    { id: 'bano', targetText: 'baño', baseText: 'Toilette / Badezimmer', acceptedAnswers: ['baño', 'bano', 'Baño', 'Bano'] },
+    { id: 'el', targetText: 'el', baseText: 'der/das (masc.)', acceptedAnswers: ['el', 'El'] },
+    { id: 'aseos', targetText: 'aseos', baseText: 'WC (öffentlich)', acceptedAnswers: ['aseos', 'Aseos'] },
+    { id: 'planta-baja', targetText: 'planta baja', baseText: 'Erdgeschoss', acceptedAnswers: ['planta baja', 'Planta baja'] },
+  ],
+  build: {
+    targetText: '¿Dónde está el baño?',
+    chips: ['¿Dónde está', 'el baño?', 'aseos', 'planta baja', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿Dónde está el ',
+    answer: 'baño',
+    after: '?',
+    acceptedAnswers: ['baño', 'bano', 'Baño', 'Bano'],
+    fallbackChoices: ['baño', 'aseo', 'lavabo', 'servicio'],
+  },
+  speakTarget: {
+    baseCue: 'Wo ist die Toilette?',
+    targetPhrase: '¿Dónde está el baño?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['dónde', 'está', 'baño'],
+    optionalTokens: ['el', 'aseos', 'planta', 'baja'],
+  },
+  sceneCaption: 'Im Hotel oder Restaurant fragst du kurz nach dem Weg zur Toilette.',
+  trophyWord: {
+    word: 'baño',
+    meaning: 'Toilette / Badezimmer',
+    example: '¿Hay baño aquí?',
+    whyThisWord: 'Baño ist auf A1 das umfassende Iberische Wort für Toilette und Bad — universell in Hotel und Privatwohnung. Öffentliche WC werden oft „aseos" oder „servicios" beschildert.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hotel-Korridor mit Wegweiser-Schildern, ruhige Frage in den Raum.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'short location ask',
+  },
+  visualNotes: 'Korridor-Schild im Bildvordergrund, sanftes Innenlicht.',
+}
+
+const brightSpanishP8Lesson007: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Una toalla, por favor.',
+    baseText: 'Ein Handtuch, bitte.',
+  },
+  meaning: 'Eine kurze, höfliche Bitte um ein Handtuch im Hotelzimmer.',
+  chunks: [
+    { id: 'una-toalla', targetText: 'Una toalla,', baseText: 'Ein Handtuch,' },
+    { id: 'por-favor', targetText: 'por favor.', baseText: 'bitte.' },
+  ],
+  lessonItems: [
+    { id: 'toalla', targetText: 'toalla', baseText: 'Handtuch', acceptedAnswers: ['toalla', 'Toalla'] },
+    { id: 'una', targetText: 'una', baseText: 'ein/eine (fem.)', acceptedAnswers: ['una', 'Una'] },
+    { id: 'sabanas', targetText: 'sábanas', baseText: 'Bettlaken', acceptedAnswers: ['sábanas', 'sabanas', 'Sábanas', 'Sabanas'] },
+    { id: 'almohada', targetText: 'almohada', baseText: 'Kissen', acceptedAnswers: ['almohada', 'Almohada'] },
+  ],
+  build: {
+    targetText: 'Una toalla, por favor.',
+    chips: ['Una toalla,', 'por favor.', 'sábanas', 'almohada', 'limpia'],
+  },
+  typeRecall: {
+    before: 'Una ',
+    answer: 'toalla',
+    after: ', por favor.',
+    acceptedAnswers: ['toalla', 'Toalla'],
+    fallbackChoices: ['toalla', 'sábana', 'almohada', 'manta'],
+  },
+  speakTarget: {
+    baseCue: 'Ein Handtuch, bitte.',
+    targetPhrase: 'Una toalla, por favor.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['toalla', 'por', 'favor'],
+    optionalTokens: ['una', 'limpia'],
+  },
+  sceneCaption: 'Du rufst am Empfang an oder gehst kurz hin und bittest um ein Handtuch.',
+  trophyWord: {
+    word: 'toalla',
+    meaning: 'Handtuch',
+    example: 'Necesito una toalla limpia.',
+    whyThisWord: 'Toalla ist auf A1 das konkrete Hotel-Anfrage-Wort — Iberisch klar von „pañuelo" (Taschentuch) zu trennen.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hotel-Bad mit gefaltetem Handtuch auf der Ablage, ruhige Übergabegeste am Empfang.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'small hotel request',
+  },
+  visualNotes: 'Handtuch-Detail in weichem Weiß, sanftes Badezimmerlicht.',
+}
+
+const brightSpanishP8Lesson008: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: 'Voy a dormir.',
+    baseText: 'Ich gehe schlafen.',
+  },
+  meaning: 'Eine lockere Aussage am Tagesende — du gehst schlafen.',
+  chunks: [
+    { id: 'voy-a', targetText: 'Voy a', baseText: 'Ich werde / Ich gehe' },
+    { id: 'dormir', targetText: 'dormir.', baseText: 'schlafen.' },
+  ],
+  lessonItems: [
+    { id: 'dormir', targetText: 'dormir', baseText: 'schlafen', acceptedAnswers: ['dormir', 'Dormir'] },
+    { id: 'cama', targetText: 'cama', baseText: 'Bett', acceptedAnswers: ['cama', 'Cama'] },
+    { id: 'descansar', targetText: 'descansar', baseText: 'ausruhen', acceptedAnswers: ['descansar', 'Descansar'] },
+    { id: 'temprano', targetText: 'temprano', baseText: 'früh', acceptedAnswers: ['temprano', 'Temprano'] },
+  ],
+  build: {
+    targetText: 'Voy a dormir.',
+    chips: ['Voy a', 'dormir.', 'cama', 'descansar', 'temprano'],
+  },
+  typeRecall: {
+    before: 'Voy a ',
+    answer: 'dormir',
+    after: '.',
+    acceptedAnswers: ['dormir', 'Dormir'],
+    fallbackChoices: ['dormir', 'descansar', 'salir', 'volver'],
+  },
+  speakTarget: {
+    baseCue: 'Ich gehe schlafen.',
+    targetPhrase: 'Voy a dormir.',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['dormir'],
+    optionalTokens: ['voy', 'a', 'cama', 'descansar'],
+  },
+  sceneCaption: 'Am Tagesende sagst du locker, dass du jetzt schlafen gehst.',
+  trophyWord: {
+    word: 'dormir',
+    meaning: 'schlafen',
+    example: 'Necesito dormir bien.',
+    whyThisWord: 'Dormir ist auf A1 das einfache Schlaf-Verb — Iberisch das Standardwort für „ins Bett gehen" und „schlafen" als Aktivität.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Sanft beleuchtetes Hotelzimmer, ruhige Nachtmusik, Bett im Hintergrund.',
+  },
+  songSeed: {
+    genre: 'soft acoustic',
+    mood: 'end-of-day rest',
+  },
+  visualNotes: 'Bett-Detail mit weichem Lampenlicht, gedämpfte Farben.',
+}
+
+const brightSpanishP8Lesson009: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿A qué hora es el desayuno?',
+    baseText: 'Um wie viel Uhr gibt es Frühstück?',
+  },
+  meaning: 'Eine kurze Frage nach der Frühstückszeit im Hotel.',
+  chunks: [
+    { id: 'a-que-hora', targetText: '¿A qué hora', baseText: 'Um wie viel Uhr' },
+    { id: 'es-el', targetText: 'es el', baseText: 'gibt es' },
+    { id: 'desayuno', targetText: 'desayuno?', baseText: 'Frühstück?' },
+  ],
+  lessonItems: [
+    { id: 'desayuno', targetText: 'desayuno', baseText: 'Frühstück', acceptedAnswers: ['desayuno', 'Desayuno'] },
+    { id: 'a-que-hora', targetText: 'a qué hora', baseText: 'um wie viel Uhr', acceptedAnswers: ['a qué hora', 'a que hora'] },
+    { id: 'comedor', targetText: 'comedor', baseText: 'Speisesaal', acceptedAnswers: ['comedor', 'Comedor'] },
+    { id: 'incluido', targetText: 'incluido', baseText: 'inklusive', acceptedAnswers: ['incluido', 'Incluido'] },
+  ],
+  build: {
+    targetText: '¿A qué hora es el desayuno?',
+    chips: ['¿A qué hora', 'es el', 'desayuno?', 'comedor', 'incluido'],
+  },
+  typeRecall: {
+    before: '¿A qué hora es el ',
+    answer: 'desayuno',
+    after: '?',
+    acceptedAnswers: ['desayuno', 'Desayuno'],
+    fallbackChoices: ['desayuno', 'almuerzo', 'comida', 'cena'],
+  },
+  speakTarget: {
+    baseCue: 'Um wie viel Uhr gibt es Frühstück?',
+    targetPhrase: '¿A qué hora es el desayuno?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['qué', 'hora', 'desayuno'],
+    optionalTokens: ['a', 'es', 'el', 'comedor'],
+  },
+  sceneCaption: 'Am Empfang oder Hotelfrühstückssaal fragst du nach der Frühstückszeit.',
+  trophyWord: {
+    word: 'desayuno',
+    meaning: 'Frühstück',
+    example: 'El desayuno está incluido.',
+    whyThisWord: 'Desayuno ist auf A1 das eindeutige Iberische Frühstücks-Wort und Schlüssel jeder Hotel-Morgen-Frage.',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Frühstücksraum am Morgen, Buffet im Hintergrund, ruhige Frage am Eingang.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'morning hotel inquiry',
+  },
+  visualNotes: 'Frühstücks-Buffet-Detail, helles Morgenlicht, Kaffeetasse im Vordergrund.',
+}
+
+const brightSpanishP8Lesson010: GuidedLessonVibeVariant = {
+  contentStatus: 'draft',
+  corePhrase: {
+    targetText: '¿Puedo hacer la salida ahora?',
+    baseText: 'Kann ich jetzt auschecken?',
+  },
+  meaning: 'Eine kurze Frage am Empfang, ob du jetzt auschecken kannst.',
+  chunks: [
+    { id: 'puedo', targetText: '¿Puedo', baseText: 'Kann ich' },
+    { id: 'hacer-la-salida', targetText: 'hacer la salida', baseText: 'das Auschecken machen' },
+    { id: 'ahora', targetText: 'ahora?', baseText: 'jetzt?' },
+  ],
+  lessonItems: [
+    { id: 'salida', targetText: 'salida', baseText: 'Ausgang / Auscheckmoment', acceptedAnswers: ['salida', 'Salida'] },
+    { id: 'puedo', targetText: 'puedo', baseText: 'kann ich', acceptedAnswers: ['puedo', 'Puedo'] },
+    { id: 'ahora', targetText: 'ahora', baseText: 'jetzt', acceptedAnswers: ['ahora', 'Ahora'] },
+    { id: 'factura', targetText: 'factura', baseText: 'Rechnung', acceptedAnswers: ['factura', 'Factura'] },
+  ],
+  build: {
+    targetText: '¿Puedo hacer la salida ahora?',
+    chips: ['¿Puedo', 'hacer la salida', 'ahora?', 'factura', 'por favor'],
+  },
+  typeRecall: {
+    before: '¿Puedo hacer la ',
+    answer: 'salida',
+    after: ' ahora?',
+    acceptedAnswers: ['salida', 'Salida'],
+    fallbackChoices: ['salida', 'entrada', 'firma', 'factura'],
+  },
+  speakTarget: {
+    baseCue: 'Kann ich jetzt auschecken?',
+    targetPhrase: '¿Puedo hacer la salida ahora?',
+    language: 'es-ES',
+    passingThreshold: 0.8,
+    requiredTokens: ['puedo', 'salida', 'ahora'],
+    optionalTokens: ['hacer', 'la', 'factura'],
+  },
+  sceneCaption: 'Am Ende deines Aufenthalts gehst du an den Empfang und fragst nach dem Checkout.',
+  trophyWord: {
+    word: 'salida',
+    meaning: 'Ausgang / Auschecken',
+    example: 'La hora de salida es a las doce.',
+    whyThisWord: 'Salida deckt auf A1 sowohl Ausgang als auch den Checkout-Moment ab; im Hotel ein A1-tauglicher Ersatz für das anglozentrische „check-out".',
+  },
+  placeholderMedia: {
+    type: 'video',
+    caption: 'Hotel-Empfang am Vormittag, Koffer neben dem Tresen, ruhige Abschlussfrage.',
+  },
+  songSeed: {
+    genre: 'sunny acoustic',
+    mood: 'hotel check-out',
+  },
+  visualNotes: 'Koffer-Detail neben Empfangstheke, klares Tageslicht.',
+}
+
 const brightItalianLesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
@@ -25874,6 +26430,336 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
   },
   {
+    id: 'spanish-a1-practical-8-001-habitacion-reservada',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 1,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-001-habitacion-reservada',
+      sequence: 1,
+      title: 'Ich habe ein Zimmer reserviert',
+    },
+    title: 'Ich habe ein Zimmer reserviert',
+    situation: {
+      en: 'At a hotel front desk, open check-in by stating you have a reservation.',
+      de: 'Am Hotel-Empfang meldest du dich mit deiner Reservierung an.',
+    },
+    pedagogicalGoal: 'Den Iberischen Hotel-Check-in mit „habitación reservada" eröffnen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ein Zimmer für heute Nacht',
+      situation: 'Du fragst spontan nach einem Zimmer.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson001,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-8-002-habitacion-noche',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 2,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-002-habitacion-noche',
+      sequence: 2,
+      title: 'Ein Zimmer für heute Nacht',
+    },
+    title: 'Ein Zimmer für heute Nacht',
+    situation: {
+      en: 'As a walk-in at a hotel, ask for a room for tonight.',
+      de: 'Ohne Buchung fragst du nach einem Zimmer für heute Nacht.',
+    },
+    pedagogicalGoal: 'Ohne vorherige Reservierung höflich nach einem Zimmer fragen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'In welchem Stockwerk?',
+      situation: 'Du fragst nach dem Stockwerk deines Zimmers.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson002,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-8-003-en-que-piso',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 3,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-003-en-que-piso',
+      sequence: 3,
+      title: 'In welchem Stockwerk?',
+    },
+    title: 'In welchem Stockwerk?',
+    situation: {
+      en: 'After check-in, ask where your room is.',
+      de: 'Nach dem Einchecken fragst du nach dem Stockwerk deines Zimmers.',
+    },
+    pedagogicalGoal: 'Eine kurze Orientierungsfrage nach dem Stockwerk formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Den Schlüssel, bitte',
+      situation: 'Du bittest um den Zimmerschlüssel.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson003,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-8-004-la-llave',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 4,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-004-la-llave',
+      sequence: 4,
+      title: 'Den Schlüssel, bitte',
+    },
+    title: 'Den Schlüssel, bitte',
+    situation: {
+      en: 'At the front desk, ask politely for the room key.',
+      de: 'Am Empfang bittest du höflich um den Zimmerschlüssel.',
+    },
+    pedagogicalGoal: 'Eine kurze, freundliche Bitte um den Hotelzimmer-Schlüssel formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Habt ihr WLAN?',
+      situation: 'Du fragst nach WLAN-Verfügbarkeit.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson004,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-8-005-tienen-wifi',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 5,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-005-tienen-wifi',
+      sequence: 5,
+      title: 'Habt ihr WLAN?',
+    },
+    title: 'Habt ihr WLAN?',
+    situation: {
+      en: 'At a hotel lobby or café, ask whether there is Wi-Fi.',
+      de: 'In der Hotellobby oder am Tresen fragst du nach WLAN.',
+    },
+    pedagogicalGoal: 'Eine kurze Iberische Frage nach WLAN-Verfügbarkeit formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wo ist die Toilette?',
+      situation: 'Du fragst nach der Toilette.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson005,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-8-006-donde-bano',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 6,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-006-donde-bano',
+      sequence: 6,
+      title: 'Wo ist die Toilette?',
+    },
+    title: 'Wo ist die Toilette?',
+    situation: {
+      en: 'In a hotel, guesthouse, or restaurant, ask where the bathroom is.',
+      de: 'Im Hotel, in der Pension oder im Restaurant fragst du nach der Toilette.',
+    },
+    pedagogicalGoal: 'Eine kurze Orientierungsfrage zum Bad oder zur Toilette formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ein Handtuch, bitte',
+      situation: 'Du bittest um ein Handtuch.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson006,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-8-007-una-toalla',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 7,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-007-una-toalla',
+      sequence: 7,
+      title: 'Ein Handtuch, bitte',
+    },
+    title: 'Ein Handtuch, bitte',
+    situation: {
+      en: 'At the hotel room or front desk, ask for a towel.',
+      de: 'Am Empfang oder im Hotelzimmer bittest du um ein Handtuch.',
+    },
+    pedagogicalGoal: 'Eine kurze, höfliche Bitte um ein Handtuch formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Ich gehe schlafen',
+      situation: 'Du sagst, dass du jetzt schlafen gehst.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson007,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-8-008-voy-a-dormir',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 8,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-008-voy-a-dormir',
+      sequence: 8,
+      title: 'Ich gehe schlafen',
+    },
+    title: 'Ich gehe schlafen',
+    situation: {
+      en: 'At day-end in a hotel room or to a companion, say you are going to sleep.',
+      de: 'Am Tagesende sagst du, dass du jetzt schlafen gehst.',
+    },
+    pedagogicalGoal: 'Eine lockere Aussage über das Schlafengehen formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Wann gibt es Frühstück?',
+      situation: 'Du fragst nach der Frühstückszeit.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson008,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-8-009-desayuno-hora',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 9,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-009-desayuno-hora',
+      sequence: 9,
+      title: 'Wann gibt es Frühstück?',
+    },
+    title: 'Wann gibt es Frühstück?',
+    situation: {
+      en: 'At the hotel desk, ask about breakfast time.',
+      de: 'Am Hotel-Empfang fragst du nach der Frühstückszeit.',
+    },
+    pedagogicalGoal: 'Eine kurze Frage nach der Frühstückszeit im Hotel formulieren.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Kann ich auschecken?',
+      situation: 'Du fragst nach dem Auschecken.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson009,
+    },
+  },
+  {
+    id: 'spanish-a1-practical-8-010-hacer-salida',
+    pathId: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.level,
+    lessonNumber: 10,
+    baseLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
+    lessonMetadata: {
+      id: 'spanish-a1-practical-8-010-hacer-salida',
+      sequence: 10,
+      title: 'Kann ich auschecken?',
+    },
+    title: 'Kann ich auschecken?',
+    situation: {
+      en: 'At the front desk, ask whether you can check out now.',
+      de: 'Am Empfang fragst du, ob du jetzt auschecken kannst.',
+    },
+    pedagogicalGoal: 'Den Iberischen Hotel-Checkout mit „hacer la salida" abschließen.',
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: 'Pfad abgeschlossen',
+      situation: 'Du hast Spanish A1 Practical 8 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: brightSpanishP8Lesson010,
+    },
+  },
+  {
     id: 'italian-a1-practical-001-primo-contatto',
     pathId: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA.title,
@@ -31812,6 +32698,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_SPANISH_FIVE_METADATA,
     GUIDED_TODAY_PATH_SPANISH_SIX_METADATA,
     GUIDED_TODAY_PATH_SPANISH_SEVEN_METADATA,
+    GUIDED_TODAY_PATH_SPANISH_EIGHT_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_ITALIAN_THREE_METADATA,
