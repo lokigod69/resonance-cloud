@@ -178,6 +178,10 @@ const pathSevenLessons = getGuidedPathLessons(pathSevenId)
 const pathEightLessons = getGuidedPathLessons(pathEightId)
 const pathNineLessons = getGuidedPathLessons(pathNineId)
 const pathTenLessons = getGuidedPathLessons(pathTenId)
+const authoredBaseText = (lesson: GuidedLessonDefinition, value: GuidedBaseContentValue) => resolveGuidedBaseContent(value, {
+  authoredBaseLanguage: lesson.baseLanguage,
+}).text
+const lessonTitles = (lessons: GuidedLessonDefinition[]) => lessons.map((lesson) => authoredBaseText(lesson, lesson.title))
 const firstDefinition = pathLessons[0]
 const lessonIds = pathLessons.map((lesson) => lesson.id)
 const lessonNumbers = pathLessons.map((lesson) => lesson.lessonNumber)
@@ -553,16 +557,16 @@ assert('Cebuano A1 Practical 10 resolves 10 lessons', cebuanoPathTenLessons.leng
 assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, cebuanoPathFourId, germanPathNineId, cebuanoPathFiveId, germanPathTenId, cebuanoPathSixId, indonesianPathOneId, indonesianPathTwoId, indonesianPathThreeId, indonesianPathFourId, indonesianPathFiveId, indonesianPathSixId, indonesianPathSevenId, indonesianPathEightId, indonesianPathNineId, indonesianPathTenId, cebuanoPathSevenId, cebuanoPathEightId, cebuanoPathNineId, cebuanoPathTenId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
 assert('lesson ids are unique', new Set(lessonIds).size === lessonIds.length, lessonIds)
 assert('lesson numbers 1-10 exist with no gaps', JSON.stringify(lessonNumbers) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), lessonNumbers)
-assert('A1 Practical 1 arc titles match product sequence', JSON.stringify(pathLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedTitles), pathLessons.map((lesson) => lesson.title))
-assert('A1 Practical 2 arc titles match product sequence', JSON.stringify(pathTwoLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathTwoTitles), pathTwoLessons.map((lesson) => lesson.title))
-assert('A1 Practical 3 arc titles match product sequence', JSON.stringify(pathThreeLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathThreeTitles), pathThreeLessons.map((lesson) => lesson.title))
-assert('A1 Practical 4 arc titles match product sequence', JSON.stringify(pathFourLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathFourTitles), pathFourLessons.map((lesson) => lesson.title))
-assert('A1 Practical 5 arc titles match product sequence', JSON.stringify(pathFiveLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathFiveTitles), pathFiveLessons.map((lesson) => lesson.title))
-assert('A1 Practical 6 arc titles match product sequence', JSON.stringify(pathSixLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathSixTitles), pathSixLessons.map((lesson) => lesson.title))
-assert('A1 Practical 7 arc titles match product sequence', JSON.stringify(pathSevenLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathSevenTitles), pathSevenLessons.map((lesson) => lesson.title))
-assert('A1 Practical 8 arc titles match product sequence', JSON.stringify(pathEightLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathEightTitles), pathEightLessons.map((lesson) => lesson.title))
-assert('A1 Practical 9 arc titles match product sequence', JSON.stringify(pathNineLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathNineTitles), pathNineLessons.map((lesson) => lesson.title))
-assert('A1 Practical 10 arc titles match product sequence', JSON.stringify(pathTenLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathTenTitles), pathTenLessons.map((lesson) => lesson.title))
+assert('A1 Practical 1 arc titles match product sequence', JSON.stringify(lessonTitles(pathLessons)) === JSON.stringify(expectedTitles), lessonTitles(pathLessons))
+assert('A1 Practical 2 arc titles match product sequence', JSON.stringify(lessonTitles(pathTwoLessons)) === JSON.stringify(expectedPathTwoTitles), lessonTitles(pathTwoLessons))
+assert('A1 Practical 3 arc titles match product sequence', JSON.stringify(lessonTitles(pathThreeLessons)) === JSON.stringify(expectedPathThreeTitles), lessonTitles(pathThreeLessons))
+assert('A1 Practical 4 arc titles match product sequence', JSON.stringify(lessonTitles(pathFourLessons)) === JSON.stringify(expectedPathFourTitles), lessonTitles(pathFourLessons))
+assert('A1 Practical 5 arc titles match product sequence', JSON.stringify(lessonTitles(pathFiveLessons)) === JSON.stringify(expectedPathFiveTitles), lessonTitles(pathFiveLessons))
+assert('A1 Practical 6 arc titles match product sequence', JSON.stringify(lessonTitles(pathSixLessons)) === JSON.stringify(expectedPathSixTitles), lessonTitles(pathSixLessons))
+assert('A1 Practical 7 arc titles match product sequence', JSON.stringify(lessonTitles(pathSevenLessons)) === JSON.stringify(expectedPathSevenTitles), lessonTitles(pathSevenLessons))
+assert('A1 Practical 8 arc titles match product sequence', JSON.stringify(lessonTitles(pathEightLessons)) === JSON.stringify(expectedPathEightTitles), lessonTitles(pathEightLessons))
+assert('A1 Practical 9 arc titles match product sequence', JSON.stringify(lessonTitles(pathNineLessons)) === JSON.stringify(expectedPathNineTitles), lessonTitles(pathNineLessons))
+assert('A1 Practical 10 arc titles match product sequence', JSON.stringify(lessonTitles(pathTenLessons)) === JSON.stringify(expectedPathTenTitles), lessonTitles(pathTenLessons))
 assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, cebuanoPathFourId, germanPathNineId, cebuanoPathFiveId, germanPathTenId, cebuanoPathSixId, indonesianPathOneId, indonesianPathTwoId, indonesianPathThreeId, indonesianPathFourId, indonesianPathFiveId, indonesianPathSixId, indonesianPathSevenId, indonesianPathEightId, indonesianPathNineId, indonesianPathTenId, cebuanoPathSevenId, cebuanoPathEightId, cebuanoPathNineId, cebuanoPathTenId]), getGuidedTodayPathOptions())
 const indonesianPathOneBrightVariants = indonesianPathOneLessons.map((lesson) => lesson.vibeVariants.bright)
 const expectedIndonesianPathOneTrophies = ['selamat pagi', 'tidak', 'di mana', 'kopi', 'berapa', 'jam', 'tolong', 'di sini', 'besok', 'terima kasih']
@@ -1691,7 +1695,7 @@ for (const lesson of pathLessons) {
   assert(`${lesson.id} preserves existing A1 Practical 1 lesson id shape`, lesson.id.startsWith('english-a1-practical-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathOneId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -1714,7 +1718,7 @@ for (const lesson of pathTwoLessons) {
   assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-2-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathTwoId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathTwoTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedPathTwoTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -1738,7 +1742,7 @@ for (const lesson of pathThreeLessons) {
   assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-3-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathThreeId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathThreeTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedPathThreeTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -1762,7 +1766,7 @@ for (const lesson of pathFourLessons) {
   assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-4-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathFourId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathFourTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedPathFourTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -1786,7 +1790,7 @@ for (const lesson of pathFiveLessons) {
   assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-5-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathFiveId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathFiveTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedPathFiveTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -1810,7 +1814,7 @@ for (const lesson of pathSixLessons) {
   assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-6-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathSixId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathSixTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedPathSixTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -1834,7 +1838,7 @@ for (const lesson of pathSevenLessons) {
   assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-7-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathSevenId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathSevenTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedPathSevenTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -1858,7 +1862,7 @@ for (const lesson of pathEightLessons) {
   assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-8-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathEightId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathEightTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedPathEightTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -1882,7 +1886,7 @@ for (const lesson of pathNineLessons) {
   assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-9-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathNineId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathNineTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedPathNineTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -1906,7 +1910,7 @@ for (const lesson of pathTenLessons) {
   assert(`${lesson.id} has invariant id`, lesson.id.startsWith('english-a1-practical-10-'), lesson)
   assert(`${lesson.id} has invariant path id`, lesson.pathId === pathTenId, lesson)
   assert(`${lesson.id} has invariant lesson number`, lesson.lessonNumber >= 1 && lesson.lessonNumber <= 10, lesson)
-  assert(`${lesson.id} has invariant title`, lesson.title === expectedPathTenTitles[lesson.lessonNumber - 1], lesson.title)
+  assert(`${lesson.id} has invariant title`, authoredBaseText(lesson, lesson.title) === expectedPathTenTitles[lesson.lessonNumber - 1], lesson.title)
   assert(`${lesson.id} has invariant situation`, hasText(lesson.situation.en) && hasText(lesson.situation.de), lesson.situation)
   assert(`${lesson.id} has invariant pedagogical goal`, hasText(lesson.pedagogicalGoal), lesson.pedagogicalGoal)
   assert(`${lesson.id} uses guided-today-v0 mode`, lesson.modeSet === 'guided-today-v0', lesson.modeSet)
@@ -2683,8 +2687,11 @@ function phraseContainsAnswer(lesson: ReturnType<typeof resolveGuidedLessonVaria
   return target.includes(normalizeGuidedAnswer(lesson.typeRecall.answer)) && phrase.includes(normalizeGuidedAnswer(lesson.typeRecall.answer))
 }
 
-function looksLikeGermanCue(value: string) {
-  const normalized = value.toLowerCase()
+function looksLikeGermanCue(value: GuidedBaseContentValue) {
+  const text = resolveGuidedBaseContent(value, {
+    authoredBaseLanguage: 'German',
+  }).text
+  const normalized = text.toLowerCase()
   const germanSignals = Array.from(new Set([
     'sie',
     'ich',
@@ -2801,10 +2808,10 @@ function looksLikeGermanCue(value: string) {
     'thank you',
     'goodbye',
   ]
-  const hasGermanDiacritic = /[äöüßÄÖÜ]/.test(value)
+  const hasGermanDiacritic = /[äöüßÄÖÜ]/.test(text)
   const hasGermanSignal = germanSignals.some((signal) => {
     const escapedSignal = signal.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    return new RegExp(`(^|[^\\p{L}])${escapedSignal}(?=$|[^\\p{L}])`, 'iu').test(value)
+    return new RegExp(`(^|[^\\p{L}])${escapedSignal}(?=$|[^\\p{L}])`, 'iu').test(text)
   })
   return (hasGermanDiacritic || hasGermanSignal)
     && !englishLeakage.some((signal) => normalized.includes(signal))
