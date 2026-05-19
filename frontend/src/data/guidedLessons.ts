@@ -907,6 +907,17 @@ const GUIDED_TODAY_PATH_GERMAN_TEN_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-6',
+  title: 'Cebuano A1 Praxis 6',
+  shortTitle: 'A1 Praxis 6',
+  subtitle: 'Gesundheit, Apotheke und kleine Bedürfnisse auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA: GuidedPathMetadata = {
   id: 'indonesian-a1-practical-1',
   title: 'Indonesisch A1 Praxis 1',
@@ -38281,6 +38292,546 @@ const cebuanoA1Practical5Lessons: GuidedLessonDefinition[] = cebuanoA1Practical5
   }
 })
 
+const cebuanoA1Practical6Inputs: CebuanoP2LessonInput[] = [
+  {
+    slug: 'not-feeling-well',
+    title: 'Mir geht es nicht gut',
+    situation: {
+      en: 'You feel unwell and need to say it simply.',
+      de: 'Dir geht es nicht gut und du sagst es einfach.',
+    },
+    pedagogicalGoal: 'Lain akong pamati als vorsichtige A1-Gesundheitsphrase nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Lain akong pamati.',
+        baseText: 'Mir geht es nicht gut.',
+      },
+      meaning: 'Eine einfache Zustandsmeldung ohne Diagnose oder lange Erklärung.',
+      chunks: [
+        { id: 'lain', targetText: 'Lain', baseText: 'anders / nicht in Ordnung' },
+        { id: 'akong-pamati', targetText: 'akong pamati.', baseText: 'mein Befinden.' },
+      ],
+      lessonItems: [
+        { id: 'pamati', targetText: 'pamati', baseText: 'Befinden / Gefühl', acceptedAnswers: cebuanoAnswers('pamati', 'Pamati') },
+        { id: 'akong', targetText: 'akong', baseText: 'mein / meine', acceptedAnswers: cebuanoAnswers('akong', 'Akong') },
+        { id: 'lain', targetText: 'lain', baseText: 'anders / nicht in Ordnung', acceptedAnswers: cebuanoAnswers('lain', 'Lain') },
+        { id: 'paminaw', targetText: 'paminaw', baseText: 'Gefühl / Empfinden', acceptedAnswers: cebuanoAnswers('paminaw', 'Paminaw') },
+      ],
+      buildChips: ['Lain', 'akong pamati.', 'tambal', 'doktor'],
+      typeRecall: {
+        before: 'Lain akong ',
+        answer: 'pamati',
+        after: '.',
+        acceptedAnswers: cebuanoAnswers('pamati', 'Pamati'),
+        fallbackChoices: ['pamati', 'botika', 'tambal', 'ulo'],
+      },
+      speakTarget: {
+        baseCue: 'Mir geht es nicht gut.',
+        targetPhrase: 'Lain akong pamati.',
+        requiredTokens: ['lain', 'akong', 'pamati'],
+        optionalTokens: ['paminaw'],
+      },
+      sceneCaption: 'Sa gamay nga problema sa lawas, moingon ka nga lain akong pamati.',
+      trophyWord: {
+        word: 'pamati',
+        meaning: 'Befinden / Gefühl',
+        example: 'Lain akong pamati.',
+        whyThisWord: 'Pamati hält die Aussage bei einem einfachen Befinden statt bei einer Diagnose.',
+      },
+      placeholderCaption: 'Person sitting down and saying they do not feel well.',
+      songMood: 'quiet health check-in',
+      visualNotes: 'Simple health moment, hand on chest, pamati highlighted.',
+    }),
+  },
+  {
+    slug: 'pharmacy-nearby',
+    title: 'Apotheke in der Nähe?',
+    situation: {
+      en: 'Ask whether there is a pharmacy nearby.',
+      de: 'Du fragst, ob es in der Nähe eine Apotheke gibt.',
+    },
+    pedagogicalGoal: 'Naay botika duol diri? als kurze Ortsfrage für eine Apotheke verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Naay botika duol diri?',
+        baseText: 'Gibt es hier in der Nähe eine Apotheke?',
+      },
+      meaning: 'Eine praktische Frage nach dem richtigen Ort für kleine Gesundheitsbedürfnisse.',
+      chunks: [
+        { id: 'naay-botika', targetText: 'Naay botika', baseText: 'gibt es eine Apotheke' },
+        { id: 'duol-diri', targetText: 'duol diri?', baseText: 'nahe hier?' },
+      ],
+      lessonItems: [
+        { id: 'botika', targetText: 'botika', baseText: 'Apotheke', acceptedAnswers: cebuanoAnswers('botika', 'Botika', 'botica', 'Botica', 'butika', 'Butika') },
+        { id: 'naay', targetText: 'naay', baseText: 'es gibt', acceptedAnswers: cebuanoAnswers('naay', 'Naay', 'naa y', 'Naa y') },
+        { id: 'duol', targetText: 'duol', baseText: 'nah / in der Nähe', acceptedAnswers: cebuanoAnswers('duol', 'Duol') },
+        { id: 'diri', targetText: 'diri', baseText: 'hier', acceptedAnswers: cebuanoAnswers('diri', 'Diri') },
+      ],
+      buildChips: ['Naay botika', 'duol diri?', 'pamati', 'sakit'],
+      typeRecall: {
+        before: 'Naay ',
+        answer: 'botika',
+        after: ' duol diri?',
+        acceptedAnswers: cebuanoAnswers('botika', 'Botika', 'botica', 'Botica', 'butika', 'Butika'),
+        fallbackChoices: ['botika', 'tambal', 'doktor', 'pamati'],
+      },
+      speakTarget: {
+        baseCue: 'Gibt es hier in der Nähe eine Apotheke?',
+        targetPhrase: 'Naay botika duol diri?',
+        requiredTokens: ['naay', 'botika', 'duol', 'diri'],
+        optionalTokens: ['botica', 'butika', 'naa'],
+      },
+      sceneCaption: 'Sa dalan, nangutana ka kon naay botika duol diri.',
+      trophyWord: {
+        word: 'botika',
+        meaning: 'Apotheke',
+        example: 'Naay botika duol diri?',
+        whyThisWord: 'Botika ist der direkte Cebuano-Ortanker für Apotheke oder Drogerie.',
+      },
+      placeholderCaption: 'Looking for a nearby pharmacy on the street.',
+      songMood: 'finding a pharmacy nearby',
+      visualNotes: 'Street corner, pharmacy sign, botika highlighted.',
+    }),
+  },
+  {
+    slug: 'need-medicine',
+    title: 'Ich brauche Medizin',
+    situation: {
+      en: 'At a pharmacy, say that you need medicine.',
+      de: 'In der Apotheke sagst du, dass du Medizin brauchst.',
+    },
+    pedagogicalGoal: 'Kinahanglan ko og tambal als einfache Bedarfsphrase sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Kinahanglan ko og tambal.',
+        baseText: 'Ich brauche Medizin.',
+      },
+      meaning: 'Eine knappe Bedarfsphrase ohne Dosierung oder medizinischen Rat.',
+      chunks: [
+        { id: 'kinahanglan-ko', targetText: 'Kinahanglan ko', baseText: 'ich brauche' },
+        { id: 'og-tambal', targetText: 'og tambal.', baseText: 'Medizin.' },
+      ],
+      lessonItems: [
+        { id: 'tambal', targetText: 'tambal', baseText: 'Medizin / Arznei', acceptedAnswers: cebuanoAnswers('tambal', 'Tambal') },
+        { id: 'kinahanglan', targetText: 'kinahanglan', baseText: 'brauchen / nötig', acceptedAnswers: cebuanoAnswers('kinahanglan', 'Kinahanglan') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'og', targetText: 'og', baseText: 'ein / von', acceptedAnswers: cebuanoAnswers('og', 'Og', 'ug', 'Ug') },
+      ],
+      buildChips: ['Kinahanglan ko', 'og tambal.', 'botika', 'ulo'],
+      typeRecall: {
+        before: 'Kinahanglan ko og ',
+        answer: 'tambal',
+        after: '.',
+        acceptedAnswers: cebuanoAnswers('tambal', 'Tambal'),
+        fallbackChoices: ['tambal', 'botika', 'doktor', 'pamati'],
+      },
+      speakTarget: {
+        baseCue: 'Ich brauche Medizin.',
+        targetPhrase: 'Kinahanglan ko og tambal.',
+        requiredTokens: ['kinahanglan', 'ko', 'tambal'],
+        optionalTokens: ['og', 'ug'],
+      },
+      sceneCaption: 'Sa botika, klaro nga kinahanglan ko og tambal.',
+      trophyWord: {
+        word: 'tambal',
+        meaning: 'Medizin / Arznei',
+        example: 'Kinahanglan ko og tambal.',
+        whyThisWord: 'Tambal ist der zentrale A1-Anker für Medizin, ohne über Behandlung zu sprechen.',
+      },
+      placeholderCaption: 'Asking for medicine at a pharmacy counter.',
+      songMood: 'simple medicine request',
+      visualNotes: 'Pharmacy counter, medicine shelf, tambal highlighted.',
+    }),
+  },
+  {
+    slug: 'it-hurts-here',
+    title: 'Es tut hier weh',
+    situation: {
+      en: 'Point to a place and say it hurts here.',
+      de: 'Du zeigst auf eine Stelle und sagst, dass es hier weh tut.',
+    },
+    pedagogicalGoal: 'Sakit diri als kurze Schmerzangabe mit Zeigen verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Sakit diri.',
+        baseText: 'Es tut hier weh.',
+      },
+      meaning: 'Eine minimale Schmerzangabe, wenn Zeigen mehr leistet als Erklärung.',
+      chunks: [
+        { id: 'sakit', targetText: 'Sakit', baseText: 'es tut weh' },
+        { id: 'diri', targetText: 'diri.', baseText: 'hier.' },
+      ],
+      lessonItems: [
+        { id: 'sakit', targetText: 'sakit', baseText: 'weh / Schmerz', acceptedAnswers: cebuanoAnswers('sakit', 'Sakit') },
+        { id: 'diri', targetText: 'diri', baseText: 'hier', acceptedAnswers: cebuanoAnswers('diri', 'Diri') },
+        { id: 'kasakit', targetText: 'kasakit', baseText: 'Schmerz', acceptedAnswers: cebuanoAnswers('kasakit', 'Kasakit') },
+        { id: 'lawas', targetText: 'lawas', baseText: 'Körper', acceptedAnswers: cebuanoAnswers('lawas', 'Lawas') },
+      ],
+      buildChips: ['Sakit', 'diri.', 'tambal', 'botika'],
+      typeRecall: {
+        before: '',
+        answer: 'Sakit',
+        after: ' diri.',
+        acceptedAnswers: cebuanoAnswers('Sakit', 'sakit'),
+        fallbackChoices: ['Sakit', 'Tambal', 'Pamati', 'Inom'],
+      },
+      speakTarget: {
+        baseCue: 'Es tut hier weh.',
+        targetPhrase: 'Sakit diri.',
+        requiredTokens: ['sakit', 'diri'],
+        optionalTokens: ['kasakit'],
+      },
+      sceneCaption: 'Nagtudlo ka sa parte sa lawas ug moingon og sakit diri.',
+      trophyWord: {
+        word: 'sakit',
+        meaning: 'weh / Schmerz',
+        example: 'Sakit diri.',
+        whyThisWord: 'Sakit ist der kurze Cebuano-Anker für Schmerz, passend für Zeigen und einfache Hilfe.',
+      },
+      placeholderCaption: 'Pointing to where it hurts.',
+      songMood: 'pointing out pain calmly',
+      visualNotes: 'Simple body outline, pointing gesture, sakit highlighted.',
+    }),
+  },
+  {
+    slug: 'headache',
+    title: 'Ich habe Kopfschmerzen',
+    situation: {
+      en: 'Say that your head hurts.',
+      de: 'Du sagst, dass dein Kopf weh tut.',
+    },
+    pedagogicalGoal: 'Labad akong ulo als einfache Kopfschmerzphrase sprechen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Labad akong ulo.',
+        baseText: 'Ich habe Kopfschmerzen.',
+      },
+      meaning: 'Eine konkrete A1-Beschwerde, ohne Ursache oder Behandlung zu erklären.',
+      chunks: [
+        { id: 'labad-akong', targetText: 'Labad akong', baseText: 'schmerzt mein' },
+        { id: 'ulo', targetText: 'ulo.', baseText: 'Kopf.' },
+      ],
+      lessonItems: [
+        { id: 'ulo', targetText: 'ulo', baseText: 'Kopf', acceptedAnswers: cebuanoAnswers('ulo', 'Ulo') },
+        { id: 'labad', targetText: 'labad', baseText: 'Kopfschmerz / schmerzend', acceptedAnswers: cebuanoAnswers('labad', 'Labad') },
+        { id: 'akong', targetText: 'akong', baseText: 'mein / meine', acceptedAnswers: cebuanoAnswers('akong', 'Akong') },
+        { id: 'sakit-sa-ulo', targetText: 'sakit sa ulo', baseText: 'Kopfschmerz', acceptedAnswers: cebuanoAnswers('sakit sa ulo', 'Sakit sa ulo') },
+      ],
+      buildChips: ['Labad akong', 'ulo.', 'sakit', 'tambal'],
+      typeRecall: {
+        before: 'Labad akong ',
+        answer: 'ulo',
+        after: '.',
+        acceptedAnswers: cebuanoAnswers('ulo', 'Ulo'),
+        fallbackChoices: ['ulo', 'moinom', 'botika', 'sakit'],
+      },
+      speakTarget: {
+        baseCue: 'Ich habe Kopfschmerzen.',
+        targetPhrase: 'Labad akong ulo.',
+        requiredTokens: ['labad', 'akong', 'ulo'],
+        optionalTokens: ['sakit'],
+      },
+      sceneCaption: 'Nagpahibalo ka nga labad akong ulo, walay dugang nga medikal nga detalye.',
+      trophyWord: {
+        word: 'ulo',
+        meaning: 'Kopf',
+        example: 'Labad akong ulo.',
+        whyThisWord: 'Ulo macht Kopfschmerz als konkrete Körperstelle lernbar und kurz.',
+      },
+      placeholderCaption: 'Holding head gently during a headache.',
+      songMood: 'simple headache phrase',
+      visualNotes: 'Head icon, calm health cue, ulo highlighted.',
+    }),
+  },
+  {
+    slug: 'need-water',
+    title: 'Ich brauche Wasser',
+    situation: {
+      en: 'Say that you need to drink water.',
+      de: 'Du sagst, dass du Wasser trinken musst.',
+    },
+    pedagogicalGoal: 'Kinahanglan ko moinom og tubig als kleine Bedürfnisphrase verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Kinahanglan ko moinom og tubig.',
+        baseText: 'Ich muss Wasser trinken.',
+      },
+      meaning: 'Ein kleiner körperlicher Bedarf, ohne dass Wasser als neuer Pokal wiederholt wird.',
+      chunks: [
+        { id: 'kinahanglan-ko-moinom', targetText: 'Kinahanglan ko moinom', baseText: 'ich muss trinken' },
+        { id: 'og-tubig', targetText: 'og tubig.', baseText: 'Wasser.' },
+      ],
+      lessonItems: [
+        { id: 'moinom', targetText: 'moinom', baseText: 'trinken werden / trinken', acceptedAnswers: cebuanoAnswers('moinom', 'Moinom', 'mo-inom', 'Mo-inom') },
+        { id: 'inom', targetText: 'inom', baseText: 'trinken', acceptedAnswers: cebuanoAnswers('inom', 'Inom') },
+        { id: 'tubig', targetText: 'tubig', baseText: 'Wasser', acceptedAnswers: cebuanoAnswers('tubig', 'Tubig') },
+        { id: 'kinahanglan', targetText: 'kinahanglan', baseText: 'müssen / brauchen', acceptedAnswers: cebuanoAnswers('kinahanglan', 'Kinahanglan') },
+      ],
+      buildChips: ['Kinahanglan ko moinom', 'og tubig.', 'doktor', 'sakit'],
+      typeRecall: {
+        before: 'Kinahanglan ko ',
+        answer: 'moinom',
+        after: ' og tubig.',
+        acceptedAnswers: cebuanoAnswers('moinom', 'Moinom', 'mo-inom', 'Mo-inom'),
+        fallbackChoices: ['moinom', 'ulo', 'tambal', 'doktor'],
+      },
+      speakTarget: {
+        baseCue: 'Ich muss Wasser trinken.',
+        targetPhrase: 'Kinahanglan ko moinom og tubig.',
+        requiredTokens: ['kinahanglan', 'ko', 'moinom', 'tubig'],
+        optionalTokens: ['mo', 'inom', 'og', 'ug'],
+      },
+      sceneCaption: 'Sa init o kakapoy, moingon ka nga kinahanglan ko moinom og tubig.',
+      trophyWord: {
+        word: 'moinom',
+        meaning: 'trinken',
+        example: 'Kinahanglan ko moinom og tubig.',
+        whyThisWord: 'Moinom hält die Wasserphrase neu, obwohl tubig schon früher als Pokal genutzt wurde.',
+      },
+      placeholderCaption: 'Taking a small water break.',
+      songMood: 'drinking water to recover',
+      visualNotes: 'Water bottle, short rest, moinom highlighted.',
+    }),
+  },
+  {
+    slug: 'doctor-here',
+    title: 'Gibt es einen Arzt?',
+    situation: {
+      en: 'Ask whether there is a doctor here.',
+      de: 'Du fragst, ob es hier einen Arzt gibt.',
+    },
+    pedagogicalGoal: 'Naay doktor diri? als einfache Frage nach medizinischer Hilfe verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Naay doktor diri?',
+        baseText: 'Gibt es hier einen Arzt?',
+      },
+      meaning: 'Eine klare Frage nach einer Person, ohne Notfall oder Diagnose zu behaupten.',
+      chunks: [
+        { id: 'naay-doktor', targetText: 'Naay doktor', baseText: 'gibt es einen Arzt' },
+        { id: 'diri', targetText: 'diri?', baseText: 'hier?' },
+      ],
+      lessonItems: [
+        { id: 'doktor', targetText: 'doktor', baseText: 'Arzt / Ärztin', acceptedAnswers: cebuanoAnswers('doktor', 'Doktor', 'doctor', 'Doctor') },
+        { id: 'naay', targetText: 'naay', baseText: 'es gibt', acceptedAnswers: cebuanoAnswers('naay', 'Naay', 'naa y', 'Naa y') },
+        { id: 'diri', targetText: 'diri', baseText: 'hier', acceptedAnswers: cebuanoAnswers('diri', 'Diri') },
+        { id: 'tabang-medikal', targetText: 'tabang medikal', baseText: 'medizinische Hilfe', acceptedAnswers: cebuanoAnswers('tabang medikal', 'Tabang medikal') },
+      ],
+      buildChips: ['Naay doktor', 'diri?', 'botika', 'pamati'],
+      typeRecall: {
+        before: 'Naay ',
+        answer: 'doktor',
+        after: ' diri?',
+        acceptedAnswers: cebuanoAnswers('doktor', 'Doktor', 'doctor', 'Doctor'),
+        fallbackChoices: ['doktor', 'botika', 'tambal', 'pamati'],
+      },
+      speakTarget: {
+        baseCue: 'Gibt es hier einen Arzt?',
+        targetPhrase: 'Naay doktor diri?',
+        requiredTokens: ['naay', 'doktor', 'diri'],
+        optionalTokens: ['doctor', 'naa'],
+      },
+      sceneCaption: 'Kung kinahanglan og medikal nga tabang, mangutana ka kon naay doktor diri.',
+      trophyWord: {
+        word: 'doktor',
+        meaning: 'Arzt / Ärztin',
+        example: 'Naay doktor diri?',
+        whyThisWord: 'Doktor bleibt eine einfache Personenfrage, ohne medizinische Entscheidung zu treffen.',
+      },
+      placeholderCaption: 'Asking whether a doctor is nearby.',
+      songMood: 'asking for a doctor calmly',
+      visualNotes: 'Clinic desk, simple question, doktor highlighted.',
+    }),
+  },
+  {
+    slug: 'allergy',
+    title: 'Ich habe eine Allergie',
+    situation: {
+      en: 'Say that you have a peanut allergy.',
+      de: 'Du sagst, dass du eine Erdnussallergie hast.',
+    },
+    pedagogicalGoal: 'Alerdyi ko sa mani als kurze Allergiegrenze sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Alerdyi ko sa mani.',
+        baseText: 'Ich bin allergisch gegen Erdnüsse.',
+      },
+      meaning: 'Eine wichtige Grenze bei Essen oder Medizin, ohne Details auszubreiten.',
+      chunks: [
+        { id: 'alerdyi-ko', targetText: 'Alerdyi ko', baseText: 'ich bin allergisch' },
+        { id: 'sa-mani', targetText: 'sa mani.', baseText: 'gegen Erdnüsse.' },
+      ],
+      lessonItems: [
+        { id: 'alerdyi', targetText: 'alerdyi', baseText: 'allergisch / Allergie', acceptedAnswers: cebuanoAnswers('alerdyi', 'Alerdyi', 'allergy', 'Allergy') },
+        { id: 'mani', targetText: 'mani', baseText: 'Erdnuss', acceptedAnswers: cebuanoAnswers('mani', 'Mani') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'sa-mani', targetText: 'sa mani', baseText: 'gegen Erdnüsse', acceptedAnswers: cebuanoAnswers('sa mani', 'Sa mani') },
+      ],
+      buildChips: ['Alerdyi ko', 'sa mani.', 'tambal', 'doktor'],
+      typeRecall: {
+        before: '',
+        answer: 'Alerdyi',
+        after: ' ko sa mani.',
+        acceptedAnswers: cebuanoAnswers('Alerdyi', 'alerdyi', 'Allergy', 'allergy'),
+        fallbackChoices: ['Alerdyi', 'Doktor', 'Tambal', 'Pamati'],
+      },
+      speakTarget: {
+        baseCue: 'Ich bin allergisch gegen Erdnüsse.',
+        targetPhrase: 'Alerdyi ko sa mani.',
+        requiredTokens: ['alerdyi', 'ko', 'mani'],
+        optionalTokens: ['allergy', 'sa'],
+      },
+      sceneCaption: 'Sa pagkaon o tambal, klaro nga moingon ka: alerdyi ko sa mani.',
+      trophyWord: {
+        word: 'alerdyi',
+        meaning: 'allergisch / Allergie',
+        example: 'Alerdyi ko sa mani.',
+        whyThisWord: 'Alerdyi ist ein kurzer Sicherheitsanker für Essen, Medizin und einfache Grenzen.',
+      },
+      placeholderCaption: 'Pointing out a peanut allergy before eating.',
+      songMood: 'clear allergy boundary',
+      visualNotes: 'Food counter, nut symbol crossed out, alerdyi highlighted.',
+    }),
+  },
+  {
+    slug: 'call-for-help',
+    title: 'Kannst du Hilfe rufen?',
+    situation: {
+      en: 'Ask someone to call for help.',
+      de: 'Du bittest jemanden, Hilfe zu rufen.',
+    },
+    pedagogicalGoal: 'Pwede ka motawag og tabang? als grundlegende Hilferuf-Frage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Pwede ka motawag og tabang?',
+        baseText: 'Kannst du Hilfe rufen?',
+      },
+      meaning: 'Eine einfache Bitte, Unterstützung zu holen, ohne Notfallsprache zu dramatisieren.',
+      chunks: [
+        { id: 'pwede-ka', targetText: 'Pwede ka', baseText: 'kannst du' },
+        { id: 'motawag-og-tabang', targetText: 'motawag og tabang?', baseText: 'Hilfe rufen?' },
+      ],
+      lessonItems: [
+        { id: 'motawag', targetText: 'motawag', baseText: 'rufen / anrufen', acceptedAnswers: cebuanoAnswers('motawag', 'Motawag', 'mo-tawag', 'Mo-tawag') },
+        { id: 'pwede', targetText: 'pwede', baseText: 'kann / möglich', acceptedAnswers: cebuanoAnswers('pwede', 'Pwede', 'puwede', 'Puwede') },
+        { id: 'tabang', targetText: 'tabang', baseText: 'Hilfe', acceptedAnswers: cebuanoAnswers('tabang', 'Tabang') },
+        { id: 'ka', targetText: 'ka', baseText: 'du', acceptedAnswers: cebuanoAnswers('ka', 'Ka') },
+      ],
+      buildChips: ['Pwede ka', 'motawag og tabang?', 'alerdyi', 'doktor'],
+      typeRecall: {
+        before: 'Pwede ka ',
+        answer: 'motawag',
+        after: ' og tabang?',
+        acceptedAnswers: cebuanoAnswers('motawag', 'Motawag', 'mo-tawag', 'Mo-tawag'),
+        fallbackChoices: ['motawag', 'alerdyi', 'botika', 'ulo'],
+      },
+      speakTarget: {
+        baseCue: 'Kannst du Hilfe rufen?',
+        targetPhrase: 'Pwede ka motawag og tabang?',
+        requiredTokens: ['pwede', 'ka', 'motawag', 'tabang'],
+        optionalTokens: ['puwede', 'og', 'ug', 'mo', 'tawag'],
+      },
+      sceneCaption: 'Kung kinahanglan og tawo nga motabang, mangutana ka: pwede ka motawag og tabang?',
+      trophyWord: {
+        word: 'motawag',
+        meaning: 'rufen / anrufen',
+        example: 'Pwede ka motawag og tabang?',
+        whyThisWord: 'Motawag macht aus Hilfe eine konkrete Handlung, ohne tabang als Pokal zu wiederholen.',
+      },
+      placeholderCaption: 'Asking someone to call for help.',
+      songMood: 'calling for simple help',
+      visualNotes: 'Phone in hand, helper nearby, motawag highlighted.',
+    }),
+  },
+  {
+    slug: 'feel-better-now',
+    title: 'Mir geht es jetzt besser',
+    situation: {
+      en: 'Say that you feel better now.',
+      de: 'Du sagst, dass es dir jetzt besser geht.',
+    },
+    pedagogicalGoal: 'Maayo na akong pamati als kurze Entwarnung am Ende sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Maayo na akong pamati.',
+        baseText: 'Mir geht es jetzt besser.',
+      },
+      meaning: 'Ein einfacher Abschluss, wenn die Lage wieder okay ist.',
+      chunks: [
+        { id: 'maayo-na', targetText: 'Maayo na', baseText: 'schon besser / gut jetzt' },
+        { id: 'akong-pamati', targetText: 'akong pamati.', baseText: 'mein Befinden.' },
+      ],
+      lessonItems: [
+        { id: 'maayo', targetText: 'maayo', baseText: 'gut / besser', acceptedAnswers: cebuanoAnswers('maayo', 'Maayo') },
+        { id: 'na', targetText: 'na', baseText: 'schon / jetzt', acceptedAnswers: cebuanoAnswers('na', 'Na') },
+        { id: 'pamati', targetText: 'pamati', baseText: 'Befinden / Gefühl', acceptedAnswers: cebuanoAnswers('pamati', 'Pamati') },
+        { id: 'akong', targetText: 'akong', baseText: 'mein / meine', acceptedAnswers: cebuanoAnswers('akong', 'Akong') },
+      ],
+      buildChips: ['Maayo na', 'akong pamati.', 'sakit', 'alerdyi'],
+      typeRecall: {
+        before: '',
+        answer: 'Maayo',
+        after: ' na akong pamati.',
+        acceptedAnswers: cebuanoAnswers('Maayo', 'maayo'),
+        fallbackChoices: ['Maayo', 'Motawag', 'Alerdyi', 'Doktor'],
+      },
+      speakTarget: {
+        baseCue: 'Mir geht es jetzt besser.',
+        targetPhrase: 'Maayo na akong pamati.',
+        requiredTokens: ['maayo', 'na', 'akong', 'pamati'],
+        optionalTokens: ['paminaw'],
+      },
+      sceneCaption: 'Human mopahulay, moingon ka nga maayo na akong pamati.',
+      trophyWord: {
+        word: 'maayo',
+        meaning: 'gut / besser',
+        example: 'Maayo na akong pamati.',
+        whyThisWord: 'Maayo schließt die kleine Gesundheitssequenz mit einer klaren Entwarnung.',
+      },
+      placeholderCaption: 'Feeling better after a short rest.',
+      songMood: 'recovering and feeling better',
+      visualNotes: 'Small rest, calmer expression, maayo highlighted.',
+    }),
+  },
+]
+
+const cebuanoA1Practical6Lessons: GuidedLessonDefinition[] = cebuanoA1Practical6Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-6-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = cebuanoA1Practical6Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 6 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: lessonInput.variant,
+    },
+  }
+})
+
 type IndonesianP1VariantInput = {
   corePhrase: GuidedLessonVibeVariant['corePhrase']
   meaning: string
@@ -52991,7 +53542,6 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     vibeVariants: { bright: brightGermanP9Lesson010 },
   },
   ...cebuanoA1Practical5Lessons,
-  ...indonesianA1Practical1Lessons,
   {
     id: 'german-a1-practical-10-lesson-1-good-day',
     pathId: GUIDED_TODAY_PATH_GERMAN_TEN_METADATA.id,
@@ -53232,6 +53782,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     nextLessonTeaser: { title: 'Path complete', situation: 'You have completed German A1 Practical 10 — and all 100 lessons.' },
     vibeVariants: { bright: brightGermanP10Lesson010 },
   },
+  ...cebuanoA1Practical6Lessons,
+  ...indonesianA1Practical1Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -53309,6 +53861,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_GERMAN_NINE_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_FIVE_METADATA,
     GUIDED_TODAY_PATH_GERMAN_TEN_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA,
     GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA,
   ]
 }
