@@ -20824,7 +20824,7 @@ const brightPortugueseLesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Olá, você fala português?',
-    chips: ['Olá,', 'você fala', 'português?', 'obrigado', 'tchau'],
+    chips: ['Olá,', 'você fala', 'português?', 'bom dia', 'boa tarde'],
   },
   typeRecall: {
     before: 'Olá, você ',
@@ -20934,7 +20934,7 @@ const brightPortugueseLesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Com licença, onde fica a estação?',
-    chips: ['Com licença,', 'onde fica', 'a estação?', 'a conta', 'a água'],
+    chips: ['Com licença,', 'onde fica', 'a estação?', 'o banheiro', 'o mapa'],
   },
   typeRecall: {
     before: 'Com licença, ',
@@ -21043,7 +21043,7 @@ const brightPortugueseLesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Quanto custa isso, por favor?',
-    chips: ['Quanto', 'custa isso,', 'por favor?', 'onde', 'aqui'],
+    chips: ['Quanto', 'custa isso,', 'por favor?', 'onde', 'barato'],
   },
   typeRecall: {
     before: '',
@@ -21098,14 +21098,14 @@ const brightPortugueseLesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'A que horas sai o trem?',
-    chips: ['A que horas', 'sai', 'o trem?', 'a estação', 'agora'],
+    chips: ['A que horas', 'sai', 'o trem?', 'a estação', 'meio-dia'],
   },
   typeRecall: {
     before: 'A que horas sai o ',
     answer: 'trem',
     after: '?',
     acceptedAnswers: ['trem', 'Trem'],
-    fallbackChoices: ['trem', 'café', 'cardápio', 'nome'],
+    fallbackChoices: ['trem', 'café', 'cardápio', 'bilhete'],
   },
   speakTarget: {
     baseCue: 'Um wie viel Uhr fährt der Zug?',
@@ -21153,14 +21153,14 @@ const brightPortugueseLesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Eu preciso de ajuda, por favor.',
-    chips: ['Eu preciso', 'de ajuda,', 'por favor.', 'socorro', 'tchau'],
+    chips: ['Eu preciso', 'de ajuda,', 'por favor.', 'socorro', 'com licença'],
   },
   typeRecall: {
     before: 'Eu preciso de ',
     answer: 'ajuda',
     after: ', por favor.',
     acceptedAnswers: ['ajuda', 'Ajuda'],
-    fallbackChoices: ['ajuda', 'água', 'conta', 'estação'],
+    fallbackChoices: ['ajuda', 'mapa', 'táxi', 'estação'],
   },
   speakTarget: {
     baseCue: 'Ich brauche Hilfe, bitte.',
@@ -21214,7 +21214,7 @@ const brightPortugueseLesson008: GuidedLessonVibeVariant = {
     answer: 'Aqui',
     after: ' no café é muito bonito.',
     acceptedAnswers: ['aqui', 'Aqui'],
-    fallbackChoices: ['Aqui', 'Ali', 'Hoje', 'Onde'],
+    fallbackChoices: ['Aqui', 'Ali', 'Lá', 'Onde'],
   },
   speakTarget: {
     baseCue: 'Hier im Café ist es sehr schön.',
@@ -21262,14 +21262,14 @@ const brightPortugueseLesson009: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Amanhã às sete. Perfeito!',
-    chips: ['Amanhã', 'às sete.', 'Perfeito!', 'hoje', 'agora'],
+    chips: ['Amanhã', 'às sete.', 'Perfeito!', 'ontem', 'depois'],
   },
   typeRecall: {
     before: '',
     answer: 'Amanhã',
     after: ' às sete. Perfeito!',
     acceptedAnswers: ['amanhã', 'amanha', 'Amanhã', 'Amanha'],
-    fallbackChoices: ['Amanhã', 'Hoje', 'Ontem', 'Agora'],
+    fallbackChoices: ['Amanhã', 'Hoje', 'Ontem', 'Depois'],
   },
   speakTarget: {
     baseCue: 'Morgen um sieben. Perfekt!',
@@ -21372,7 +21372,7 @@ const brightPortugueseP2Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Eu não entendo. Você pode me ajudar?',
-    chips: ['Eu não entendo.', 'Você pode', 'me ajudar?', 'repetir', 'a conta'],
+    chips: ['Eu não entendo.', 'Você pode', 'me ajudar?', 'repetir', 'devagar'],
   },
   typeRecall: {
     before: 'Eu não ',
@@ -21489,7 +21489,7 @@ const brightPortugueseP2Lesson003: GuidedLessonVibeVariant = {
     answer: 'mapa',
     after: '?',
     acceptedAnswers: ['mapa', 'Mapa'],
-    fallbackChoices: ['mapa', 'nome', 'cartão', 'recibo'],
+    fallbackChoices: ['mapa', 'rua', 'cartão', 'recibo'],
   },
   speakTarget: {
     baseCue: 'Können Sie es mir auf der Karte zeigen?',
@@ -21536,14 +21536,14 @@ const brightPortugueseP2Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Qual é melhor, este ou esse?',
-    chips: ['Qual é melhor,', 'este ou esse?', 'quanto', 'tchau'],
+    chips: ['Qual é melhor,', 'este ou esse?', 'quanto', 'novo'],
   },
   typeRecall: {
     before: 'Qual é ',
     answer: 'melhor',
     after: ', este ou esse?',
     acceptedAnswers: ['melhor', 'Melhor'],
-    fallbackChoices: ['melhor', 'bonito', 'caro', 'certo'],
+    fallbackChoices: ['melhor', 'bonito', 'caro', 'novo'],
   },
   speakTarget: {
     baseCue: 'Welches ist besser, dieses hier oder das da?',
@@ -21590,14 +21590,14 @@ const brightPortugueseP2Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Você tem isso disponível?',
-    chips: ['Você tem', 'isso disponível?', 'no mapa', 'agora'],
+    chips: ['Você tem', 'isso disponível?', 'no mapa', 'na loja'],
   },
   typeRecall: {
     before: 'Você tem isso ',
     answer: 'disponível',
     after: '?',
     acceptedAnswers: ['disponível', 'disponivel', 'Disponível', 'Disponivel'],
-    fallbackChoices: ['disponível', 'certo', 'melhor', 'caro'],
+    fallbackChoices: ['disponível', 'novo', 'melhor', 'caro'],
   },
   speakTarget: {
     baseCue: 'Haben Sie das verfügbar?',
@@ -21605,7 +21605,7 @@ const brightPortugueseP2Lesson005: GuidedLessonVibeVariant = {
     language: 'pt-BR',
     passingThreshold: 0.8,
     requiredTokens: ['voce', 'tem', 'isso', 'disponivel'],
-    optionalTokens: ['você', 'disponível', 'agora'],
+    optionalTokens: ['você', 'disponível', 'na', 'loja'],
   },
   sceneCaption: 'Im kleinen Laden fragst du, ob ein gewünschter Artikel gerade verfügbar ist.',
   trophyWord: {
@@ -21651,7 +21651,7 @@ const brightPortugueseP2Lesson006: GuidedLessonVibeVariant = {
     answer: 'cartão',
     after: '?',
     acceptedAnswers: ['cartão', 'cartao', 'Cartão', 'Cartao'],
-    fallbackChoices: ['cartão', 'mapa', 'sacola', 'nome'],
+    fallbackChoices: ['cartão', 'mapa', 'sacola', 'recibo'],
   },
   speakTarget: {
     baseCue: 'Kann ich mit Karte bezahlen?',
@@ -21862,14 +21862,14 @@ const brightPortugueseP2Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Um momento, por favor.',
-    chips: ['Um momento,', 'por favor.', 'posso pagar', 'certo'],
+    chips: ['Um momento,', 'por favor.', 'posso pagar', 'só um'],
   },
   typeRecall: {
     before: 'Um ',
     answer: 'momento',
     after: ', por favor.',
     acceptedAnswers: ['momento', 'Momento'],
-    fallbackChoices: ['momento', 'mapa', 'cartão', 'nome'],
+    fallbackChoices: ['momento', 'mapa', 'cartão', 'recibo'],
   },
   speakTarget: {
     baseCue: 'Einen Moment, bitte.',
@@ -21977,7 +21977,7 @@ const brightPortugueseP3Lesson002: GuidedLessonVibeVariant = {
     answer: 'longe',
     after: ' a pé?',
     acceptedAnswers: ['longe', 'Longe'],
-    fallbackChoices: ['longe', 'perto', 'aberto', 'certo'],
+    fallbackChoices: ['longe', 'perto', 'aberto', 'reto'],
   },
   speakTarget: {
     baseCue: 'Ist es zu Fuß weit?',
@@ -22024,7 +22024,7 @@ const brightPortugueseP3Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Está aberto agora?',
-    chips: ['Está aberto', 'agora?', 'fechado', 'hoje'],
+    chips: ['Está aberto', 'agora?', 'fechado', 'cedo'],
   },
   typeRecall: {
     before: 'Está ',
@@ -22086,7 +22086,7 @@ const brightPortugueseP3Lesson004: GuidedLessonVibeVariant = {
     answer: 'ônibus',
     after: ' vai para o centro?',
     acceptedAnswers: ['ônibus', 'onibus', 'Ônibus', 'Onibus'],
-    fallbackChoices: ['ônibus', 'táxi', 'passagem', 'centro'],
+    fallbackChoices: ['ônibus', 'táxi', 'passagem', 'rua'],
   },
   speakTarget: {
     baseCue: 'Welcher Bus fährt ins Zentrum?',
@@ -22133,7 +22133,7 @@ const brightPortugueseP3Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'A próxima parada é a minha?',
-    chips: ['A próxima parada', 'é a minha?', 'centro', 'longe'],
+    chips: ['A próxima parada', 'é a minha?', 'primeira', 'longe'],
   },
   typeRecall: {
     before: 'A ',
@@ -22187,7 +22187,7 @@ const brightPortugueseP3Lesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Uma passagem, por favor.',
-    chips: ['Uma passagem,', 'por favor.', 'centro', 'ônibus'],
+    chips: ['Uma passagem,', 'por favor.', 'ida', 'ônibus'],
   },
   typeRecall: {
     before: 'Uma ',
@@ -22241,14 +22241,14 @@ const brightPortugueseP3Lesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'A que horas fecha?',
-    chips: ['A que horas', 'fecha?', 'abre', 'hoje'],
+    chips: ['A que horas', 'fecha?', 'abre', 'cedo'],
   },
   typeRecall: {
     before: 'A que horas ',
     answer: 'fecha',
     after: '?',
     acceptedAnswers: ['fecha', 'Fecha'],
-    fallbackChoices: ['fecha', 'abre', 'fica', 'vai'],
+    fallbackChoices: ['fecha', 'abre', 'demora', 'vai'],
   },
   speakTarget: {
     baseCue: 'Um wie viel Uhr schließt es?',
@@ -22466,7 +22466,7 @@ const brightPortugueseP4Lesson001: GuidedLessonVibeVariant = {
     answer: 'mesa',
     after: ' para dois, por favor.',
     acceptedAnswers: ['mesa', 'Mesa'],
-    fallbackChoices: ['mesa', 'conta', 'água', 'chá'],
+    fallbackChoices: ['mesa', 'cardápio', 'pão', 'chá'],
   },
   speakTarget: {
     baseCue: 'Einen Tisch für zwei, bitte.',
@@ -22520,7 +22520,7 @@ const brightPortugueseP4Lesson002: GuidedLessonVibeVariant = {
     answer: 'cardápio',
     after: ', por favor.',
     acceptedAnswers: ['cardápio', 'cardapio', 'Cardápio', 'Cardapio'],
-    fallbackChoices: ['cardápio', 'mesa', 'conta', 'chá'],
+    fallbackChoices: ['cardápio', 'pão', 'vinho', 'chá'],
   },
   speakTarget: {
     baseCue: 'Die Speisekarte, bitte.',
@@ -22575,7 +22575,7 @@ const brightPortugueseP4Lesson003: GuidedLessonVibeVariant = {
     answer: 'chá',
     after: ' gelado, por favor.',
     acceptedAnswers: ['chá', 'cha', 'Chá', 'Cha'],
-    fallbackChoices: ['chá', 'mesa', 'conta', 'cardápio'],
+    fallbackChoices: ['chá', 'água', 'pão', 'cardápio'],
   },
   speakTarget: {
     baseCue: 'Einen Eistee, bitte.',
@@ -22629,7 +22629,7 @@ const brightPortugueseP4Lesson004: GuidedLessonVibeVariant = {
     answer: 'açúcar',
     after: ', por favor.',
     acceptedAnswers: ['açúcar', 'acucar', 'Açúcar', 'Acucar'],
-    fallbackChoices: ['açúcar', 'chá', 'mesa', 'conta'],
+    fallbackChoices: ['açúcar', 'chá', 'sal', 'pão'],
   },
   speakTarget: {
     baseCue: 'Ohne Zucker, bitte.',
@@ -22683,7 +22683,7 @@ const brightPortugueseP4Lesson005: GuidedLessonVibeVariant = {
     answer: 'fresco',
     after: '?',
     acceptedAnswers: ['fresco', 'Fresco'],
-    fallbackChoices: ['fresco', 'gelado', 'certo', 'aberto'],
+    fallbackChoices: ['fresco', 'gelado', 'quente', 'aberto'],
   },
   speakTarget: {
     baseCue: 'Ist dieses Brot frisch?',
@@ -22738,7 +22738,7 @@ const brightPortugueseP4Lesson006: GuidedLessonVibeVariant = {
     answer: 'mais',
     after: ' uma água, por favor.',
     acceptedAnswers: ['mais', 'Mais'],
-    fallbackChoices: ['mais', 'mesa', 'levar', 'fresco'],
+    fallbackChoices: ['mais', 'chá', 'levar', 'fresco'],
   },
   speakTarget: {
     baseCue: 'Nur noch ein Wasser, bitte.',
@@ -22901,7 +22901,7 @@ const brightPortugueseP4Lesson009: GuidedLessonVibeVariant = {
     answer: 'Hoje',
     after: ' está bonito, né?',
     acceptedAnswers: ['Hoje', 'hoje'],
-    fallbackChoices: ['Hoje', 'Mais', 'Mesa', 'Conta'],
+    fallbackChoices: ['Hoje', 'Mais', 'Pão', 'Chá'],
   },
   speakTarget: {
     baseCue: 'Heute ist es schön, oder?',
@@ -22955,7 +22955,7 @@ const brightPortugueseP4Lesson010: GuidedLessonVibeVariant = {
     answer: 'conta',
     after: ', por favor.',
     acceptedAnswers: ['conta', 'Conta'],
-    fallbackChoices: ['conta', 'mesa', 'cardápio', 'chá'],
+    fallbackChoices: ['conta', 'pão', 'cardápio', 'chá'],
   },
   speakTarget: {
     baseCue: 'Die Rechnung, bitte.',
@@ -23009,7 +23009,7 @@ const brightPortugueseP5Lesson001: GuidedLessonVibeVariant = {
     answer: 'atraso',
     after: '.',
     acceptedAnswers: ['atraso', 'Atraso'],
-    fallbackChoices: ['atraso', 'nome', 'noite', 'parque'],
+    fallbackChoices: ['atraso', 'cidade', 'tempo', 'parque'],
   },
   speakTarget: {
     baseCue: 'Entschuldige die Verspätung.',
@@ -23117,7 +23117,7 @@ const brightPortugueseP5Lesson003: GuidedLessonVibeVariant = {
     answer: 'nome',
     after: '?',
     acceptedAnswers: ['nome', 'Nome'],
-    fallbackChoices: ['nome', 'atraso', 'noite', 'parque'],
+    fallbackChoices: ['nome', 'atraso', 'cidade', 'parque'],
   },
   speakTarget: {
     baseCue: 'Wie ist dein Name?',
@@ -23226,7 +23226,7 @@ const brightPortugueseP5Lesson005: GuidedLessonVibeVariant = {
     answer: 'cidade',
     after: '?',
     acceptedAnswers: ['cidade', 'Cidade'],
-    fallbackChoices: ['cidade', 'nome', 'noite', 'parque'],
+    fallbackChoices: ['cidade', 'prazer', 'tempo', 'parque'],
   },
   speakTarget: {
     baseCue: 'Aus welcher Stadt bist du?',
@@ -23334,7 +23334,7 @@ const brightPortugueseP5Lesson007: GuidedLessonVibeVariant = {
     answer: 'noite',
     after: '?',
     acceptedAnswers: ['noite', 'Noite'],
-    fallbackChoices: ['noite', 'cidade', 'nome', 'parque'],
+    fallbackChoices: ['noite', 'cidade', 'tempo', 'parque'],
   },
   speakTarget: {
     baseCue: 'Hast du heute Abend Zeit?',
@@ -23381,7 +23381,7 @@ const brightPortugueseP5Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Vamos nos encontrar no parque?',
-    chips: ['Vamos nos encontrar', 'no parque?', 'esta noite', 'tchau'],
+    chips: ['Vamos nos encontrar', 'no parque?', 'esta noite', 'depois'],
   },
   typeRecall: {
     before: 'Vamos nos encontrar no ',
@@ -23442,7 +23442,7 @@ const brightPortugueseP5Lesson009: GuidedLessonVibeVariant = {
     answer: 'Talvez',
     after: ' amanhã.',
     acceptedAnswers: ['talvez', 'Talvez'],
-    fallbackChoices: ['Talvez', 'Tchau', 'Prazer', 'Vamos'],
+    fallbackChoices: ['Talvez', 'Hoje', 'Prazer', 'Vamos'],
   },
   speakTarget: {
     baseCue: 'Vielleicht morgen.',
@@ -23543,14 +23543,14 @@ const brightPortugueseP6Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Estou me sentindo mal. Você pode ajudar?',
-    chips: ['Estou me sentindo mal.', 'Você pode ajudar?', 'farmácia', 'água'],
+    chips: ['Estou me sentindo mal.', 'Você pode ajudar?', 'farmácia', 'médico'],
   },
   typeRecall: {
     before: 'Estou me sentindo ',
     answer: 'mal',
     after: '. Você pode ajudar?',
     acceptedAnswers: ['mal', 'Mal'],
-    fallbackChoices: ['mal', 'bem', 'água', 'médico'],
+    fallbackChoices: ['mal', 'bem', 'alergia', 'médico'],
   },
   speakTarget: {
     baseCue: 'Mir geht es schlecht. Kannst du helfen?',
@@ -23604,7 +23604,7 @@ const brightPortugueseP6Lesson002: GuidedLessonVibeVariant = {
     answer: 'farmácia',
     after: ' perto daqui?',
     acceptedAnswers: ['farmácia', 'farmacia', 'Farmácia', 'Farmacia'],
-    fallbackChoices: ['farmácia', 'médico', 'água', 'alergia'],
+    fallbackChoices: ['farmácia', 'médico', 'dor', 'alergia'],
   },
   speakTarget: {
     baseCue: 'Gibt es hier in der Nähe eine Apotheke?',
@@ -23659,7 +23659,7 @@ const brightPortugueseP6Lesson003: GuidedLessonVibeVariant = {
     answer: 'remédio',
     after: ', por favor.',
     acceptedAnswers: ['remédio', 'remedio', 'Remédio', 'Remedio'],
-    fallbackChoices: ['remédio', 'água', 'médico', 'farmácia'],
+    fallbackChoices: ['remédio', 'dor', 'médico', 'farmácia'],
   },
   speakTarget: {
     baseCue: 'Ich brauche ein Medikament, bitte.',
@@ -23767,7 +23767,7 @@ const brightPortugueseP6Lesson005: GuidedLessonVibeVariant = {
     answer: 'cabeça',
     after: '.',
     acceptedAnswers: ['cabeça', 'cabeca', 'Cabeça', 'Cabeca'],
-    fallbackChoices: ['cabeça', 'água', 'farmácia', 'alergia'],
+    fallbackChoices: ['cabeça', 'mal', 'farmácia', 'alergia'],
   },
   speakTarget: {
     baseCue: 'Ich habe Kopfschmerzen.',
@@ -23875,7 +23875,7 @@ const brightPortugueseP6Lesson007: GuidedLessonVibeVariant = {
     answer: 'médico',
     after: ' por perto?',
     acceptedAnswers: ['médico', 'medico', 'Médico', 'Medico'],
-    fallbackChoices: ['médico', 'remédio', 'água', 'cabeça'],
+    fallbackChoices: ['médico', 'remédio', 'alergia', 'cabeça'],
   },
   speakTarget: {
     baseCue: 'Gibt es einen Arzt in der Nähe?',
@@ -23929,7 +23929,7 @@ const brightPortugueseP6Lesson008: GuidedLessonVibeVariant = {
     answer: 'alergia',
     after: '.',
     acceptedAnswers: ['alergia', 'Alergia'],
-    fallbackChoices: ['alergia', 'água', 'cabeça', 'farmácia'],
+    fallbackChoices: ['alergia', 'remédio', 'cabeça', 'farmácia'],
   },
   speakTarget: {
     baseCue: 'Ich habe eine Allergie.',
@@ -24037,7 +24037,7 @@ const brightPortugueseP6Lesson010: GuidedLessonVibeVariant = {
     answer: 'bem',
     after: ' agora. Obrigado pela ajuda.',
     acceptedAnswers: ['bem', 'Bem'],
-    fallbackChoices: ['bem', 'mal', 'água', 'dói'],
+    fallbackChoices: ['bem', 'mal', 'alergia', 'dói'],
   },
   speakTarget: {
     baseCue: 'Mir geht es jetzt gut. Danke für die Hilfe.',
@@ -24092,7 +24092,7 @@ const brightPortugueseP7Lesson001: GuidedLessonVibeVariant = {
     answer: 'bilhete',
     after: ' para o centro, por favor.',
     acceptedAnswers: ['bilhete', 'Bilhete'],
-    fallbackChoices: ['bilhete', 'plataforma', 'tempo', 'centro'],
+    fallbackChoices: ['bilhete', 'plataforma', 'tempo', 'estação'],
   },
   speakTarget: {
     baseCue: 'Ein Ticket ins Zentrum, bitte.',
@@ -24147,7 +24147,7 @@ const brightPortugueseP7Lesson002: GuidedLessonVibeVariant = {
     answer: 'plataforma',
     after: ' do ônibus?',
     acceptedAnswers: ['plataforma', 'Plataforma'],
-    fallbackChoices: ['plataforma', 'estação', 'bilhete', 'centro'],
+    fallbackChoices: ['plataforma', 'estação', 'bilhete', 'parada'],
   },
   speakTarget: {
     baseCue: 'Wo ist die Busplattform?',
@@ -24194,14 +24194,14 @@ const brightPortugueseP7Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'A que horas sai o ônibus?',
-    chips: ['A que horas', 'sai o ônibus?', 'plataforma', 'centro'],
+    chips: ['A que horas', 'sai o ônibus?', 'plataforma', 'estação'],
   },
   typeRecall: {
     before: 'A que horas ',
     answer: 'sai',
     after: ' o ônibus?',
     acceptedAnswers: ['sai', 'Sai'],
-    fallbackChoices: ['sai', 'vai', 'fica', 'para'],
+    fallbackChoices: ['sai', 'vai', 'demora', 'para'],
   },
   speakTarget: {
     baseCue: 'Um wie viel Uhr fährt der Bus ab?',
@@ -24468,7 +24468,7 @@ const brightPortugueseP7Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Vou para a estação.',
-    chips: ['Vou', 'para a estação.', 'táxi', 'centro'],
+    chips: ['Vou', 'para a estação.', 'táxi', 'ônibus'],
   },
   typeRecall: {
     before: 'Vou para a ',
@@ -24522,14 +24522,14 @@ const brightPortugueseP7Lesson009: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Quanto tempo demora?',
-    chips: ['Quanto tempo', 'demora?', 'agora', 'estação'],
+    chips: ['Quanto tempo', 'demora?', 'ônibus', 'estação'],
   },
   typeRecall: {
     before: 'Quanto ',
     answer: 'tempo',
     after: ' demora?',
     acceptedAnswers: ['tempo', 'Tempo'],
-    fallbackChoices: ['tempo', 'bilhete', 'táxi', 'centro'],
+    fallbackChoices: ['tempo', 'bilhete', 'táxi', 'demora'],
   },
   speakTarget: {
     baseCue: 'Wie lange dauert es?',
@@ -24628,13 +24628,13 @@ const brightPortugueseP8Lesson001: GuidedLessonVibeVariant = {
     { id: 'tenho', targetText: 'tenho', baseText: 'ich habe', acceptedAnswers: ['tenho', 'Tenho'] },
     { id: 'uma-reserva', targetText: 'uma reserva', baseText: 'eine Reservierung', acceptedAnswers: ['uma reserva', 'Uma reserva'] },
   ],
-  build: { targetText: 'Tenho uma reserva no hotel.', chips: ['Tenho uma reserva', 'no hotel.', 'quarto', 'chave'] },
+  build: { targetText: 'Tenho uma reserva no hotel.', chips: ['Tenho uma reserva', 'no hotel.', 'andar', 'chave'] },
   typeRecall: {
     before: 'Tenho uma reserva no ',
     answer: 'hotel',
     after: '.',
     acceptedAnswers: ['hotel', 'Hotel'],
-    fallbackChoices: ['hotel', 'quarto', 'banheiro', 'andar'],
+    fallbackChoices: ['hotel', 'reserva', 'banheiro', 'andar'],
   },
   speakTarget: {
     baseCue: 'Ich habe eine Reservierung im Hotel.',
@@ -24725,7 +24725,7 @@ const brightPortugueseP8Lesson003: GuidedLessonVibeVariant = {
     answer: 'andar',
     after: ' fica o meu quarto?',
     acceptedAnswers: ['andar', 'Andar'],
-    fallbackChoices: ['andar', 'quarto', 'hotel', 'banheiro'],
+    fallbackChoices: ['andar', 'chave', 'hotel', 'banheiro'],
   },
   speakTarget: {
     baseCue: 'In welchem Stock ist mein Zimmer?',
@@ -24771,7 +24771,7 @@ const brightPortugueseP8Lesson004: GuidedLessonVibeVariant = {
     answer: 'chave',
     after: ' do quarto, por favor.',
     acceptedAnswers: ['chave', 'Chave'],
-    fallbackChoices: ['chave', 'toalha', 'quarto', 'wifi'],
+    fallbackChoices: ['chave', 'toalha', 'andar', 'wifi'],
   },
   speakTarget: {
     baseCue: 'Den Zimmerschlüssel, bitte.',
@@ -24855,13 +24855,13 @@ const brightPortugueseP8Lesson006: GuidedLessonVibeVariant = {
     { id: 'onde-fica', targetText: 'onde fica', baseText: 'wo ist', acceptedAnswers: ['onde fica', 'Onde fica'] },
     { id: 'fica', targetText: 'fica', baseText: 'befindet sich / ist', acceptedAnswers: ['fica', 'Fica'] },
   ],
-  build: { targetText: 'Onde fica o banheiro?', chips: ['Onde fica', 'o banheiro?', 'quarto', 'hotel'] },
+  build: { targetText: 'Onde fica o banheiro?', chips: ['Onde fica', 'o banheiro?', 'chave', 'hotel'] },
   typeRecall: {
     before: 'Onde fica o ',
     answer: 'banheiro',
     after: '?',
     acceptedAnswers: ['banheiro', 'Banheiro'],
-    fallbackChoices: ['banheiro', 'quarto', 'andar', 'hotel'],
+    fallbackChoices: ['banheiro', 'toalha', 'andar', 'hotel'],
   },
   speakTarget: {
     baseCue: 'Wo ist das Bad?',
@@ -24945,7 +24945,7 @@ const brightPortugueseP8Lesson008: GuidedLessonVibeVariant = {
     { id: 'quero', targetText: 'quero', baseText: 'ich will / möchte', acceptedAnswers: ['quero', 'Quero'] },
     { id: 'agora', targetText: 'agora', baseText: 'jetzt', acceptedAnswers: ['agora', 'Agora'] },
   ],
-  build: { targetText: 'Quero dormir agora.', chips: ['Quero dormir', 'agora.', 'café da manhã', 'quarto'] },
+  build: { targetText: 'Quero dormir agora.', chips: ['Quero dormir', 'agora.', 'café da manhã', 'check-out'] },
   typeRecall: {
     before: 'Quero ',
     answer: 'dormir',
@@ -24990,7 +24990,7 @@ const brightPortugueseP8Lesson009: GuidedLessonVibeVariant = {
     { id: 'a-que-horas', targetText: 'a que horas', baseText: 'um wie viel Uhr', acceptedAnswers: ['a que horas', 'A que horas'] },
     { id: 'da-manha', targetText: 'da manhã', baseText: 'des Morgens', acceptedAnswers: ['da manhã', 'da manha', 'Da manhã', 'Da manha'] },
   ],
-  build: { targetText: 'A que horas é o café da manhã?', chips: ['A que horas', 'é o café da manhã?', 'check-out', 'quarto'] },
+  build: { targetText: 'A que horas é o café da manhã?', chips: ['A que horas', 'é o café da manhã?', 'check-out', 'toalha'] },
   typeRecall: {
     before: 'A que horas é o café da ',
     answer: 'manhã',
@@ -25042,7 +25042,7 @@ const brightPortugueseP8Lesson010: GuidedLessonVibeVariant = {
     answer: 'check-out',
     after: ' agora.',
     acceptedAnswers: ['check-out', 'checkout', 'Check-out', 'Checkout'],
-    fallbackChoices: ['check-out', 'Wi-Fi', 'quarto', 'banheiro'],
+    fallbackChoices: ['check-out', 'Wi-Fi', 'toalha', 'banheiro'],
   },
   speakTarget: {
     baseCue: 'Ich mache jetzt den Check-out.',
@@ -27829,8 +27829,8 @@ const brightPortugueseP9Lesson002: GuidedLessonVibeVariant = {
     { id: 'hoje', targetText: 'hoje', baseText: 'heute', acceptedAnswers: ['hoje', 'Hoje'] },
     { id: 'esta-livre', targetText: 'está livre', baseText: 'ist frei', acceptedAnswers: ['está livre', 'esta livre', 'Está livre', 'Esta livre'] },
   ],
-  build: { targetText: 'Você está livre hoje?', chips: ['Você está', 'livre hoje?', 'depois', 'aqui'] },
-  typeRecall: { before: 'Você está ', answer: 'livre', after: ' hoje?', acceptedAnswers: ['livre', 'Livre'], fallbackChoices: ['livre', 'fora', 'boa', 'junto'] },
+  build: { targetText: 'Você está livre hoje?', chips: ['Você está', 'livre hoje?', 'depois', 'cedo'] },
+  typeRecall: { before: 'Você está ', answer: 'livre', after: ' hoje?', acceptedAnswers: ['livre', 'Livre'], fallbackChoices: ['livre', 'ocupado', 'boa', 'junto'] },
   speakTarget: { baseCue: 'Hast du heute Zeit?', targetPhrase: 'Você está livre hoje?', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['voce', 'esta', 'livre', 'hoje'], optionalTokens: ['você', 'está'] },
   sceneCaption: 'Du fragst eine Person locker nach Zeit heute.',
   trophyWord: { word: 'livre', meaning: 'frei', example: 'Você está livre hoje?', whyThisWord: 'Livre ist die natürliche A1-Frage nach Verfügbarkeit. Você steht mit der 3. Person Singular: está, nicht estás.' },
@@ -27853,8 +27853,8 @@ const brightPortugueseP9Lesson003: GuidedLessonVibeVariant = {
     { id: 'encontrar', targetText: 'encontrar', baseText: 'treffen / finden', acceptedAnswers: ['encontrar', 'Encontrar'] },
     { id: 'nos-encontrar', targetText: 'nos encontrar', baseText: 'uns treffen', acceptedAnswers: ['nos encontrar', 'Nos encontrar'] },
   ],
-  build: { targetText: 'Podemos nos encontrar depois?', chips: ['Podemos nos encontrar', 'depois?', 'livre hoje', 'boa noite'] },
-  typeRecall: { before: 'Podemos nos encontrar ', answer: 'depois', after: '?', acceptedAnswers: ['depois', 'Depois'], fallbackChoices: ['depois', 'agora', 'fora', 'cedo'] },
+  build: { targetText: 'Podemos nos encontrar depois?', chips: ['Podemos nos encontrar', 'depois?', 'livre hoje', 'até mais'] },
+  typeRecall: { before: 'Podemos nos encontrar ', answer: 'depois', after: '?', acceptedAnswers: ['depois', 'Depois'], fallbackChoices: ['depois', 'cedo', 'tarde', 'junto'] },
   speakTarget: { baseCue: 'Können wir uns später treffen?', targetPhrase: 'Podemos nos encontrar depois?', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['podemos', 'encontrar', 'depois'], optionalTokens: ['nos'] },
   sceneCaption: 'Du schlägst für später am Tag ein Treffen vor.',
   trophyWord: { word: 'depois', meaning: 'später / danach', example: 'Podemos nos encontrar depois?', whyThisWord: 'Depois ist das A1-Wort für später oder danach. Es ersetzt hier kein spanisches luego.' },
@@ -27902,7 +27902,7 @@ const brightPortugueseP9Lesson005: GuidedLessonVibeVariant = {
     { id: 'encontrar', targetText: 'encontrar', baseText: 'treffen', acceptedAnswers: ['encontrar', 'Encontrar'] },
     { id: 'vamos-nos', targetText: 'vamos nos', baseText: 'wir werden uns', acceptedAnswers: ['vamos nos', 'Vamos nos'] },
   ],
-  build: { targetText: 'Vamos nos encontrar aqui mesmo?', chips: ['Vamos nos encontrar', 'aqui mesmo?', 'fora', 'horário'] },
+  build: { targetText: 'Vamos nos encontrar aqui mesmo?', chips: ['Vamos nos encontrar', 'aqui mesmo?', 'depois', 'horário'] },
   typeRecall: { before: 'Vamos nos encontrar aqui ', answer: 'mesmo', after: '?', acceptedAnswers: ['mesmo', 'Mesmo'], fallbackChoices: ['mesmo', 'depois', 'livre', 'boa'] },
   speakTarget: { baseCue: 'Treffen wir uns genau hier?', targetPhrase: 'Vamos nos encontrar aqui mesmo?', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['vamos', 'encontrar', 'aqui', 'mesmo'], optionalTokens: ['nos'] },
   sceneCaption: 'Du schlägst den Ort, an dem ihr gerade seid, als Treffpunkt vor.',
@@ -27926,7 +27926,7 @@ const brightPortugueseP9Lesson006: GuidedLessonVibeVariant = {
     { id: 'esperando', targetText: 'esperando', baseText: 'wartend / ich warte', acceptedAnswers: ['esperando', 'Esperando'] },
     { id: 'estou-esperando', targetText: 'estou esperando', baseText: 'ich warte', acceptedAnswers: ['estou esperando', 'Estou esperando'] },
   ],
-  build: { targetText: 'Estou esperando lá fora.', chips: ['Estou esperando', 'lá fora.', 'chegar tarde', 'aqui mesmo'] },
+  build: { targetText: 'Estou esperando lá fora.', chips: ['Estou esperando', 'lá fora.', 'chegar tarde', 'horário'] },
   typeRecall: { before: 'Estou esperando lá ', answer: 'fora', after: '.', acceptedAnswers: ['fora', 'Fora'], fallbackChoices: ['fora', 'livre', 'depois', 'boa'] },
   speakTarget: { baseCue: 'Ich warte draußen.', targetPhrase: 'Estou esperando lá fora.', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['estou', 'esperando', 'fora'], optionalTokens: ['la', 'lá'] },
   sceneCaption: 'Du schreibst oder sagst, dass du draußen wartest.',
@@ -27999,8 +27999,8 @@ const brightPortugueseP9Lesson009: GuidedLessonVibeVariant = {
     { id: 'se-ve', targetText: 'se vê', baseText: 'sieht sich', acceptedAnswers: ['se vê', 'se ve', 'Se vê', 'Se ve'] },
     { id: 'amanha', targetText: 'amanhã', baseText: 'morgen', acceptedAnswers: ['amanhã', 'amanha', 'Amanhã', 'Amanha'] },
   ],
-  build: { targetText: 'A gente se vê amanhã.', chips: ['A gente', 'se vê', 'amanhã.', 'boa noite'] },
-  typeRecall: { before: 'A ', answer: 'gente', after: ' se vê amanhã.', acceptedAnswers: ['gente', 'Gente'], fallbackChoices: ['gente', 'horário', 'fora', 'mesmo'] },
+  build: { targetText: 'A gente se vê amanhã.', chips: ['A gente', 'se vê', 'amanhã.', 'até logo'] },
+  typeRecall: { before: 'A ', answer: 'gente', after: ' se vê amanhã.', acceptedAnswers: ['gente', 'Gente'], fallbackChoices: ['gente', 'horário', 'depois', 'mesmo'] },
   speakTarget: { baseCue: 'Wir sehen uns morgen.', targetPhrase: 'A gente se vê amanhã.', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['gente', 've', 'amanha'], optionalTokens: ['a', 'se', 'vê', 'amanhã'] },
   sceneCaption: 'Du beendest eine lockere Planung mit wir sehen uns morgen.',
   trophyWord: { word: 'gente', meaning: 'Leute / wir in a gente', example: 'A gente se vê amanhã.', whyThisWord: 'A gente ist in Brasilien die sehr häufige casual Wir-Form und nimmt grammatisch 3. Person Singular: a gente se vê.' },
@@ -28024,7 +28024,7 @@ const brightPortugueseP9Lesson010: GuidedLessonVibeVariant = {
     { id: 'ate', targetText: 'até', baseText: 'bis', acceptedAnswers: ['até', 'ate', 'Até', 'Ate'] },
   ],
   build: { targetText: 'Boa noite. Até amanhã.', chips: ['Boa noite.', 'Até amanhã.', 'a gente se vê', 'oi'] },
-  typeRecall: { before: '', answer: 'Boa', after: ' noite. Até amanhã.', acceptedAnswers: ['boa', 'Boa'], fallbackChoices: ['Boa', 'Livre', 'Fora', 'Mesmo'] },
+  typeRecall: { before: '', answer: 'Boa', after: ' noite. Até amanhã.', acceptedAnswers: ['boa', 'Boa'], fallbackChoices: ['Boa', 'Livre', 'Tarde', 'Mesmo'] },
   speakTarget: { baseCue: 'Schönen Abend. Bis morgen.', targetPhrase: 'Boa noite. Até amanhã.', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['boa', 'noite', 'ate', 'amanha'], optionalTokens: ['até', 'amanhã'] },
   sceneCaption: 'Am Abend schließt du freundlich mit schönen Abend und bis morgen.',
   trophyWord: { word: 'boa', meaning: 'gute / schönen', example: 'Boa noite.', whyThisWord: 'Boa ist die feminine Form in festen Grüßen wie boa noite. In Brasilien deckt boa noite sowohl guten Abend als auch gute Nacht ab.' },
@@ -28072,7 +28072,7 @@ const brightPortugueseP10Lesson002: GuidedLessonVibeVariant = {
     { id: 'deste', targetText: 'deste', baseText: 'von diesem', acceptedAnswers: ['deste', 'Deste'] },
   ],
   build: { targetText: 'Gostei deste lugar.', chips: ['Gostei', 'deste lugar.', 'bom dia', 'por enquanto'] },
-  typeRecall: { before: 'Gostei deste ', answer: 'lugar', after: '.', acceptedAnswers: ['lugar', 'Lugar'], fallbackChoices: ['lugar', 'dia', 'fora', 'mesa'] },
+  typeRecall: { before: 'Gostei deste ', answer: 'lugar', after: '.', acceptedAnswers: ['lugar', 'Lugar'], fallbackChoices: ['lugar', 'dia', 'plano', 'hora'] },
   speakTarget: { baseCue: 'Mir hat dieser Ort gefallen.', targetPhrase: 'Gostei deste lugar.', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['gostei', 'deste', 'lugar'], optionalTokens: [] },
   sceneCaption: 'Beim Verlassen eines Cafés oder Museums machst du ein kurzes Kompliment.',
   trophyWord: { word: 'lugar', meaning: 'Ort', example: 'Gostei deste lugar.', whyThisWord: 'Lugar ist das natürliche A1-Wort für Ort. Gostei de ist eine feste brasilianische Rückblicksform: gefallen haben, mit de-Kontraktion in deste.' },
@@ -28127,7 +28127,7 @@ const brightPortugueseP10Lesson004: GuidedLessonVibeVariant = {
     { id: 'aprendi-muito', targetText: 'aprendi muito', baseText: 'ich habe viel gelernt', acceptedAnswers: ['aprendi muito', 'Aprendi muito'] },
     { id: 'hoje', targetText: 'hoje', baseText: 'heute', acceptedAnswers: ['hoje', 'Hoje'] },
   ],
-  build: { targetText: 'Aprendi muito hoje.', chips: ['Aprendi', 'muito hoje.', 'gostei', 'boa noite'] },
+  build: { targetText: 'Aprendi muito hoje.', chips: ['Aprendi', 'muito hoje.', 'gostei', 'por enquanto'] },
   typeRecall: { before: '', answer: 'Aprendi', after: ' muito hoje.', acceptedAnswers: ['aprendi', 'Aprendi'], fallbackChoices: ['Aprendi', 'Cheguei', 'Gostei', 'Preciso'] },
   speakTarget: { baseCue: 'Ich habe heute viel gelernt.', targetPhrase: 'Aprendi muito hoje.', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['aprendi', 'muito', 'hoje'], optionalTokens: [] },
   sceneCaption: 'Du reflektierst kurz über das, was du heute gelernt hast.',
@@ -28152,7 +28152,7 @@ const brightPortugueseP10Lesson005: GuidedLessonVibeVariant = {
     { id: 'estou', targetText: 'estou', baseText: 'ich bin', acceptedAnswers: ['estou', 'Estou'] },
   ],
   build: { targetText: 'Estou cansado agora.', chips: ['Estou cansado', 'agora.', 'aprendi muito', 'até logo'] },
-  typeRecall: { before: 'Estou ', answer: 'cansado', after: ' agora.', acceptedAnswers: ['cansado', 'cansada', 'Cansado', 'Cansada'], fallbackChoices: ['cansado', 'livre', 'aberto', 'certo'] },
+  typeRecall: { before: 'Estou ', answer: 'cansado', after: ' agora.', acceptedAnswers: ['cansado', 'cansada', 'Cansado', 'Cansada'], fallbackChoices: ['cansado', 'livre', 'aberto', 'tarde'] },
   speakTarget: {
     baseCue: 'Ich bin jetzt müde.',
     targetPhrase: 'Estou cansado agora.',
@@ -28208,7 +28208,7 @@ const brightPortugueseP10Lesson007: GuidedLessonVibeVariant = {
     { id: 'ate', targetText: 'até', baseText: 'bis', acceptedAnswers: ['até', 'ate', 'Até', 'Ate'] },
   ],
   build: { targetText: 'Até a próxima vez.', chips: ['Até a próxima', 'vez.', 'amanhã funciona', 'obrigado'] },
-  typeRecall: { before: 'Até a próxima ', answer: 'vez', after: '.', acceptedAnswers: ['vez', 'Vez'], fallbackChoices: ['vez', 'dia', 'hora', 'noite'] },
+  typeRecall: { before: 'Até a próxima ', answer: 'vez', after: '.', acceptedAnswers: ['vez', 'Vez'], fallbackChoices: ['vez', 'dia', 'hora', 'logo'] },
   speakTarget: { baseCue: 'Bis zum nächsten Mal.', targetPhrase: 'Até a próxima vez.', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['ate', 'proxima', 'vez'], optionalTokens: ['até', 'próxima', 'a'] },
   sceneCaption: 'Du verabschiedest dich, ohne einen festen nächsten Termin zu nennen.',
   trophyWord: { word: 'vez', meaning: 'Mal', example: 'Até a próxima vez.', whyThisWord: 'Vez macht aus próxima die feste Abschiedsform nächstes Mal. Die kanonische Form behält den Akut in próxima.' },
@@ -28280,7 +28280,7 @@ const brightPortugueseP10Lesson010: GuidedLessonVibeVariant = {
     { id: 'logo-mais', targetText: 'logo mais', baseText: 'gleich / bald später', acceptedAnswers: ['logo mais', 'Logo mais'] },
   ],
   build: { targetText: 'Até logo.', chips: ['Até', 'logo.', 'durma bem', 'obrigado'] },
-  typeRecall: { before: 'Até ', answer: 'logo', after: '.', acceptedAnswers: ['logo', 'Logo'], fallbackChoices: ['logo', 'vez', 'dia', 'fora'] },
+  typeRecall: { before: 'Até ', answer: 'logo', after: '.', acceptedAnswers: ['logo', 'Logo'], fallbackChoices: ['logo', 'vez', 'dia', 'bem'] },
   speakTarget: { baseCue: 'Bis bald.', targetPhrase: 'Até logo.', language: 'pt-BR', passingThreshold: 0.8, requiredTokens: ['ate', 'logo'], optionalTokens: ['até'] },
   sceneCaption: 'Du beendest den 100-Lektionen-Bogen mit einem kurzen Abschied fürs Erste.',
   trophyWord: { word: 'logo', meaning: 'bald', example: 'Até logo.', whyThisWord: 'Até logo ist eine natürliche brasilianische Abschiedsform für bis bald. Die Meta-Nuance fürs Erste bleibt in der Szene, nicht als steife wörtliche Übersetzung.' },
