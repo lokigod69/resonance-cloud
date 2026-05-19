@@ -863,6 +863,17 @@ const GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-4',
+  title: 'Cebuano A1 Praxis 4',
+  shortTitle: 'A1 Praxis 4',
+  subtitle: 'Café, Essen und kleine Ladenfragen auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -36050,6 +36061,553 @@ const cebuanoA1Practical3Lessons: GuidedLessonDefinition[] = cebuanoA1Practical3
   }
 })
 
+const cebuanoA1Practical4Inputs: CebuanoP2LessonInput[] = [
+  {
+    slug: 'table-for-two',
+    title: 'Tisch für zwei',
+    situation: {
+      en: 'At a small restaurant, ask for a table for two people.',
+      de: 'In einem kleinen Restaurant bittest du um einen Tisch für zwei Personen.',
+    },
+    pedagogicalGoal: 'Lamesa para sa duha, palihug als kurze Restaurantbitte sprechen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Lamesa para sa duha, palihug.',
+        baseText: 'Einen Tisch für zwei, bitte.',
+      },
+      meaning: 'Eine knappe Bitte am Eingang eines Restaurants oder Cafés.',
+      chunks: [
+        { id: 'lamesa', targetText: 'Lamesa', baseText: 'Tisch' },
+        { id: 'para-sa-duha', targetText: 'para sa duha,', baseText: 'für zwei,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'lamesa', targetText: 'lamesa', baseText: 'Tisch', acceptedAnswers: cebuanoAnswers('lamesa', 'Lamesa') },
+        { id: 'duha', targetText: 'duha', baseText: 'zwei', acceptedAnswers: cebuanoAnswers('duha', 'Duha') },
+        { id: 'para-sa', targetText: 'para sa', baseText: 'für / für ... bestimmt', acceptedAnswers: cebuanoAnswers('para sa', 'Para sa') },
+        { id: 'palihug', targetText: 'palihug', baseText: 'bitte', acceptedAnswers: cebuanoAnswers('palihug', 'Palihug', 'palihog', 'Palihog') },
+      ],
+      buildChips: ['Lamesa', 'para sa duha,', 'palihug.', 'menu', 'tubig'],
+      typeRecall: {
+        before: '',
+        answer: 'Lamesa',
+        after: ' para sa duha, palihug.',
+        acceptedAnswers: cebuanoAnswers('Lamesa', 'lamesa'),
+        fallbackChoices: ['Lamesa', 'Menu', 'Tubig', 'Asukar'],
+      },
+      speakTarget: {
+        baseCue: 'Einen Tisch für zwei, bitte.',
+        targetPhrase: 'Lamesa para sa duha, palihug.',
+        requiredTokens: ['lamesa', 'para', 'duha'],
+        optionalTokens: ['sa', 'palihug', 'palihog'],
+      },
+      sceneCaption: 'Sa gamay nga kan-anan, mangayo ka og lamesa para sa duha.',
+      trophyWord: {
+        word: 'lamesa',
+        meaning: 'Tisch',
+        example: 'Lamesa para sa duha, palihug.',
+        whyThisWord: 'Lamesa ist der sofort nutzbare Anker, wenn du in einem Lokal ankommst.',
+      },
+      placeholderCaption: 'Small restaurant host stand with two guests.',
+      songMood: 'asking for a table',
+      visualNotes: 'Restaurant doorway, two seats, lamesa highlighted.',
+    }),
+  },
+  {
+    slug: 'menu-please',
+    title: 'Die Speisekarte',
+    situation: {
+      en: 'After sitting down, ask for the menu.',
+      de: 'Nachdem du sitzt, bittest du um die Speisekarte.',
+    },
+    pedagogicalGoal: 'Menu, palihug als minimale Café- und Restaurantbitte verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Menu, palihug.',
+        baseText: 'Die Speisekarte, bitte.',
+      },
+      meaning: 'Eine sehr kurze Bitte, wenn du noch nichts bestellen kannst.',
+      chunks: [
+        { id: 'menu', targetText: 'Menu,', baseText: 'Speisekarte,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'menu', targetText: 'menu', baseText: 'Menu / Speisekarte', acceptedAnswers: cebuanoAnswers('menu', 'Menu') },
+        { id: 'palihug', targetText: 'palihug', baseText: 'bitte', acceptedAnswers: cebuanoAnswers('palihug', 'Palihug', 'palihog', 'Palihog') },
+        { id: 'kan-anan', targetText: 'kan-anan', baseText: 'Restaurant / Essplatz', acceptedAnswers: cebuanoAnswers('kan-anan', 'Kan-anan') },
+        { id: 'tan-aw', targetText: 'tan-aw', baseText: 'schauen', acceptedAnswers: cebuanoAnswers('tan-aw', 'Tan-aw') },
+      ],
+      buildChips: ['Menu,', 'palihug.', 'lamesa', 'bayranan'],
+      typeRecall: {
+        before: '',
+        answer: 'Menu',
+        after: ', palihug.',
+        acceptedAnswers: cebuanoAnswers('Menu', 'menu'),
+        fallbackChoices: ['Menu', 'Lamesa', 'Tubig', 'Presko'],
+      },
+      speakTarget: {
+        baseCue: 'Die Speisekarte, bitte.',
+        targetPhrase: 'Menu, palihug.',
+        requiredTokens: ['menu'],
+        optionalTokens: ['palihug', 'palihog'],
+      },
+      sceneCaption: 'Human molingkod, mangayo ka og menu sa matinahuron nga paagi.',
+      trophyWord: {
+        word: 'menu',
+        meaning: 'Menu / Speisekarte',
+        example: 'Menu, palihug.',
+        whyThisWord: 'Menu ist ein robuster Restaurantanker und direkt wiedererkennbar.',
+      },
+      placeholderCaption: 'Table setting with a server bringing a menu.',
+      songMood: 'asking for the menu',
+      visualNotes: 'Menu card on table, menu highlighted.',
+    }),
+  },
+  {
+    slug: 'water-for-now',
+    title: 'Erst einmal Wasser',
+    situation: {
+      en: 'Before ordering food, ask for water for now.',
+      de: 'Vor dem Essen bestellst du erst einmal Wasser.',
+    },
+    pedagogicalGoal: 'Tubig lang sa, palihug als einfache Getränkebitte nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Tubig lang sa, palihug.',
+        baseText: 'Erst einmal nur Wasser, bitte.',
+      },
+      meaning: 'Eine sichere erste Bestellung, wenn du noch überlegst.',
+      chunks: [
+        { id: 'tubig', targetText: 'Tubig', baseText: 'Wasser' },
+        { id: 'lang-sa', targetText: 'lang sa,', baseText: 'erst einmal nur,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'tubig', targetText: 'tubig', baseText: 'Wasser', acceptedAnswers: cebuanoAnswers('tubig', 'Tubig') },
+        { id: 'lang-sa', targetText: 'lang sa', baseText: 'erst einmal nur', acceptedAnswers: cebuanoAnswers('lang sa', 'Lang sa') },
+        { id: 'inom', targetText: 'inom', baseText: 'trinken', acceptedAnswers: cebuanoAnswers('inom', 'Inom') },
+        { id: 'baso', targetText: 'baso', baseText: 'Glas', acceptedAnswers: cebuanoAnswers('baso', 'Baso') },
+      ],
+      buildChips: ['Tubig', 'lang sa,', 'palihug.', 'asukar', 'menu'],
+      typeRecall: {
+        before: '',
+        answer: 'Tubig',
+        after: ' lang sa, palihug.',
+        acceptedAnswers: cebuanoAnswers('Tubig', 'tubig'),
+        fallbackChoices: ['Tubig', 'Menu', 'Lamesa', 'Bayranan'],
+      },
+      speakTarget: {
+        baseCue: 'Erst einmal nur Wasser, bitte.',
+        targetPhrase: 'Tubig lang sa, palihug.',
+        requiredTokens: ['tubig', 'lang'],
+        optionalTokens: ['sa', 'palihug', 'palihog'],
+      },
+      sceneCaption: 'Sa wala pa ka mopili og pagkaon, mangayo ka og tubig lang sa.',
+      trophyWord: {
+        word: 'tubig',
+        meaning: 'Wasser',
+        example: 'Tubig lang sa, palihug.',
+        whyThisWord: 'Tubig ist ein Kernwort für jede Café-, Laden- und Alltagssituation.',
+      },
+      placeholderCaption: 'Glass of water ordered before food.',
+      songMood: 'ordering water first',
+      visualNotes: 'Water glass, simple table, tubig highlighted.',
+    }),
+  },
+  {
+    slug: 'without-sugar',
+    title: 'Ohne Zucker',
+    situation: {
+      en: 'Ordering a drink, ask for it without sugar.',
+      de: 'Beim Bestellen eines Getränks sagst du, dass du keinen Zucker möchtest.',
+    },
+    pedagogicalGoal: 'Walay asukar, palihug als klare Ohne-Zucker-Bitte sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Walay asukar, palihug.',
+        baseText: 'Ohne Zucker, bitte.',
+      },
+      meaning: 'Eine einfache Anpassung für Kaffee, Tee oder Saft.',
+      chunks: [
+        { id: 'walay', targetText: 'Walay', baseText: 'ohne / es gibt kein' },
+        { id: 'asukar', targetText: 'asukar,', baseText: 'Zucker,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'asukar', targetText: 'asukar', baseText: 'Zucker', acceptedAnswers: cebuanoAnswers('asukar', 'Asukar') },
+        { id: 'walay', targetText: 'walay', baseText: 'ohne / kein', acceptedAnswers: cebuanoAnswers('walay', 'Walay') },
+        { id: 'kape', targetText: 'kape', baseText: 'Kaffee', acceptedAnswers: cebuanoAnswers('kape', 'Kape') },
+        { id: 'tsaa', targetText: 'tsaa', baseText: 'Tee', acceptedAnswers: cebuanoAnswers('tsaa', 'Tsaa') },
+      ],
+      buildChips: ['Walay', 'asukar,', 'palihug.', 'tubig', 'lami'],
+      typeRecall: {
+        before: 'Walay ',
+        answer: 'asukar',
+        after: ', palihug.',
+        acceptedAnswers: cebuanoAnswers('asukar', 'Asukar'),
+        fallbackChoices: ['asukar', 'tubig', 'menu', 'dugang'],
+      },
+      speakTarget: {
+        baseCue: 'Ohne Zucker, bitte.',
+        targetPhrase: 'Walay asukar, palihug.',
+        requiredTokens: ['walay', 'asukar'],
+        optionalTokens: ['palihug', 'palihog'],
+      },
+      sceneCaption: 'Sa pag-order og kape, klaro nimo nga walay asukar.',
+      trophyWord: {
+        word: 'asukar',
+        meaning: 'Zucker',
+        example: 'Walay asukar, palihug.',
+        whyThisWord: 'Asukar ist ein praktisches Bestellwort, besonders wenn du Getränke anpasst.',
+      },
+      placeholderCaption: 'Coffee cup beside a sugar bowl crossed out.',
+      songMood: 'ordering without sugar',
+      visualNotes: 'Drink order, sugar packet, asukar highlighted.',
+    }),
+  },
+  {
+    slug: 'is-this-fresh',
+    title: 'Ist das frisch?',
+    situation: {
+      en: 'At a food stall, ask if the item is fresh.',
+      de: 'An einem Essensstand fragst du, ob die Ware frisch ist.',
+    },
+    pedagogicalGoal: 'Presko ba ni? als kurze Qualitätsfrage einsetzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Presko ba ni?',
+        baseText: 'Ist das frisch?',
+      },
+      meaning: 'Eine knappe Frage vor dem Kaufen oder Probieren.',
+      chunks: [
+        { id: 'presko-ba', targetText: 'Presko ba', baseText: 'ist es frisch' },
+        { id: 'ni', targetText: 'ni?', baseText: 'das hier?' },
+      ],
+      lessonItems: [
+        { id: 'presko', targetText: 'presko', baseText: 'frisch', acceptedAnswers: cebuanoAnswers('presko', 'Presko') },
+        { id: 'ni', targetText: 'ni', baseText: 'dies hier', acceptedAnswers: cebuanoAnswers('ni', 'Ni') },
+        { id: 'pagkaon', targetText: 'pagkaon', baseText: 'Essen', acceptedAnswers: cebuanoAnswers('pagkaon', 'Pagkaon') },
+        { id: 'prutas', targetText: 'prutas', baseText: 'Obst', acceptedAnswers: cebuanoAnswers('prutas', 'Prutas') },
+      ],
+      buildChips: ['Presko ba', 'ni?', 'lami', 'tubig'],
+      typeRecall: {
+        before: '',
+        answer: 'Presko',
+        after: ' ba ni?',
+        acceptedAnswers: cebuanoAnswers('Presko', 'presko'),
+        fallbackChoices: ['Presko', 'Lami', 'Menu', 'Dugang'],
+      },
+      speakTarget: {
+        baseCue: 'Ist das frisch?',
+        targetPhrase: 'Presko ba ni?',
+        requiredTokens: ['presko', 'ba', 'ni'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Sa tindahan sa pagkaon, mangutana ka kon presko ba ni.',
+      trophyWord: {
+        word: 'presko',
+        meaning: 'frisch',
+        example: 'Presko ba ni?',
+        whyThisWord: 'Presko hilft bei Essens- und Marktfragen, bevor du kaufst.',
+      },
+      placeholderCaption: 'Food stall with fresh produce on display.',
+      songMood: 'checking freshness',
+      visualNotes: 'Food stall, fresh item, presko highlighted.',
+    }),
+  },
+  {
+    slug: 'more-water',
+    title: 'Mehr Wasser',
+    situation: {
+      en: 'At the table, ask for more water.',
+      de: 'Am Tisch bittest du um mehr Wasser.',
+    },
+    pedagogicalGoal: 'Dugang tubig, palihug als kurze Nachbestellung sprechen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Dugang tubig, palihug.',
+        baseText: 'Mehr Wasser, bitte.',
+      },
+      meaning: 'Eine einfache Nachbestellung, wenn dein Glas leer ist.',
+      chunks: [
+        { id: 'dugang', targetText: 'Dugang', baseText: 'mehr / zusätzlich' },
+        { id: 'tubig', targetText: 'tubig,', baseText: 'Wasser,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'dugang', targetText: 'dugang', baseText: 'mehr / zusätzlich', acceptedAnswers: cebuanoAnswers('dugang', 'Dugang') },
+        { id: 'tubig', targetText: 'tubig', baseText: 'Wasser', acceptedAnswers: cebuanoAnswers('tubig', 'Tubig') },
+        { id: 'baso', targetText: 'baso', baseText: 'Glas', acceptedAnswers: cebuanoAnswers('baso', 'Baso') },
+        { id: 'puno', targetText: 'puno', baseText: 'voll', acceptedAnswers: cebuanoAnswers('puno', 'Puno') },
+      ],
+      buildChips: ['Dugang', 'tubig,', 'palihug.', 'asukar', 'bayranan'],
+      typeRecall: {
+        before: '',
+        answer: 'Dugang',
+        after: ' tubig, palihug.',
+        acceptedAnswers: cebuanoAnswers('Dugang', 'dugang'),
+        fallbackChoices: ['Dugang', 'Presko', 'Lami', 'Menu'],
+      },
+      speakTarget: {
+        baseCue: 'Mehr Wasser, bitte.',
+        targetPhrase: 'Dugang tubig, palihug.',
+        requiredTokens: ['dugang', 'tubig'],
+        optionalTokens: ['palihug', 'palihog'],
+      },
+      sceneCaption: 'Nahurot ang baso, mao nga mangayo ka og dugang tubig.',
+      trophyWord: {
+        word: 'dugang',
+        meaning: 'mehr / zusätzlich',
+        example: 'Dugang tubig, palihug.',
+        whyThisWord: 'Dugang erweitert einfache Bestellungen, ohne neue Satzstruktur zu brauchen.',
+      },
+      placeholderCaption: 'Empty glass at a café table.',
+      songMood: 'asking for more water',
+      visualNotes: 'Water pitcher near table, dugang highlighted.',
+    }),
+  },
+  {
+    slug: 'to-take-away',
+    title: 'Zum Mitnehmen',
+    situation: {
+      en: 'At a counter, ask whether the food can be taken away.',
+      de: 'Am Tresen fragst du, ob du das Essen mitnehmen kannst.',
+    },
+    pedagogicalGoal: 'Mahimo ba ni dad-on? als einfache Mitnahmefrage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Mahimo ba ni dad-on?',
+        baseText: 'Kann man das mitnehmen?',
+      },
+      meaning: 'Eine kurze Frage, wenn du Essen nicht vor Ort essen willst.',
+      chunks: [
+        { id: 'mahimo-ba', targetText: 'Mahimo ba', baseText: 'ist es möglich' },
+        { id: 'ni', targetText: 'ni', baseText: 'dies hier' },
+        { id: 'dad-on', targetText: 'dad-on?', baseText: 'mitzunehmen?' },
+      ],
+      lessonItems: [
+        { id: 'dad-on', targetText: 'dad-on', baseText: 'mitnehmen', acceptedAnswers: cebuanoAnswers('dad-on', 'Dad-on', 'dad on', 'Dad on') },
+        { id: 'mahimo', targetText: 'mahimo', baseText: 'möglich / kann', acceptedAnswers: cebuanoAnswers('mahimo', 'Mahimo') },
+        { id: 'ni', targetText: 'ni', baseText: 'dies hier', acceptedAnswers: cebuanoAnswers('ni', 'Ni') },
+        { id: 'putos', targetText: 'putos', baseText: 'einpacken / Paket', acceptedAnswers: cebuanoAnswers('putos', 'Putos') },
+      ],
+      buildChips: ['Mahimo ba', 'ni', 'dad-on?', 'lamesa', 'presko'],
+      typeRecall: {
+        before: 'Mahimo ba ni ',
+        answer: 'dad-on',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('dad-on', 'Dad-on', 'dad on', 'Dad on'),
+        fallbackChoices: ['dad-on', 'dugang', 'lami', 'tubig'],
+      },
+      speakTarget: {
+        baseCue: 'Kann man das mitnehmen?',
+        targetPhrase: 'Mahimo ba ni dad-on?',
+        requiredTokens: ['mahimo', 'ba', 'ni', 'dad', 'on'],
+        optionalTokens: ['putos'],
+      },
+      sceneCaption: 'Sa counter, mangutana ka kon mahimo ba ni dad-on.',
+      trophyWord: {
+        word: 'dad-on',
+        meaning: 'mitnehmen',
+        example: 'Mahimo ba ni dad-on?',
+        whyThisWord: 'Dad-on ist ein praktischer Mitnahmeanker für Essen, Pakete und kleine Einkäufe.',
+      },
+      placeholderCaption: 'Takeaway counter with packed food.',
+      songMood: 'asking for takeaway',
+      visualNotes: 'Counter, paper bag, dad-on highlighted.',
+    }),
+  },
+  {
+    slug: 'very-tasty',
+    title: 'Sehr lecker',
+    situation: {
+      en: 'During a meal, say that this is very tasty.',
+      de: 'Beim Essen sagst du, dass es sehr lecker ist.',
+    },
+    pedagogicalGoal: 'Lami kaayo ni als einfache positive Rückmeldung geben.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Lami kaayo ni.',
+        baseText: 'Das ist sehr lecker.',
+      },
+      meaning: 'Ein freundlicher Kommentar zu Essen oder Getränk.',
+      chunks: [
+        { id: 'lami', targetText: 'Lami', baseText: 'lecker' },
+        { id: 'kaayo', targetText: 'kaayo', baseText: 'sehr' },
+        { id: 'ni', targetText: 'ni.', baseText: 'das hier.' },
+      ],
+      lessonItems: [
+        { id: 'lami', targetText: 'lami', baseText: 'lecker / gut im Geschmack', acceptedAnswers: cebuanoAnswers('lami', 'Lami') },
+        { id: 'kaayo', targetText: 'kaayo', baseText: 'sehr', acceptedAnswers: cebuanoAnswers('kaayo', 'Kaayo') },
+        { id: 'ni', targetText: 'ni', baseText: 'dies hier', acceptedAnswers: cebuanoAnswers('ni', 'Ni') },
+        { id: 'pagkaon', targetText: 'pagkaon', baseText: 'Essen', acceptedAnswers: cebuanoAnswers('pagkaon', 'Pagkaon') },
+      ],
+      buildChips: ['Lami', 'kaayo', 'ni.', 'presko', 'asukar'],
+      typeRecall: {
+        before: '',
+        answer: 'Lami',
+        after: ' kaayo ni.',
+        acceptedAnswers: cebuanoAnswers('Lami', 'lami'),
+        fallbackChoices: ['Lami', 'Presko', 'Dugang', 'Menu'],
+      },
+      speakTarget: {
+        baseCue: 'Das ist sehr lecker.',
+        targetPhrase: 'Lami kaayo ni.',
+        requiredTokens: ['lami', 'kaayo', 'ni'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Pagtilaw nimo, moingon ka nga lami kaayo ni.',
+      trophyWord: {
+        word: 'lami',
+        meaning: 'lecker',
+        example: 'Lami kaayo ni.',
+        whyThisWord: 'Lami ist ein positives Alltagswort für Essen, Trinken und Empfehlungen.',
+      },
+      placeholderCaption: 'Meal tasting moment with a positive reaction.',
+      songMood: 'saying it tastes good',
+      visualNotes: 'Food plate, happy reaction, lami highlighted.',
+    }),
+  },
+  {
+    slug: 'for-now-please',
+    title: 'Für jetzt',
+    situation: {
+      en: 'When the server asks if you need anything else, say that this is enough for now.',
+      de: 'Wenn die Bedienung nachfragt, sagst du, dass es für jetzt reicht.',
+    },
+    pedagogicalGoal: 'Karon lang sa, palihug als kurze Für-jetzt-Antwort verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Karon lang sa, palihug.',
+        baseText: 'Für jetzt reicht das, bitte.',
+      },
+      meaning: 'Eine knappe Antwort, wenn du noch nichts Weiteres brauchst.',
+      chunks: [
+        { id: 'karon', targetText: 'Karon', baseText: 'jetzt' },
+        { id: 'lang-sa', targetText: 'lang sa,', baseText: 'erst einmal nur,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'karon', targetText: 'karon', baseText: 'jetzt', acceptedAnswers: cebuanoAnswers('karon', 'Karon') },
+        { id: 'lang-sa', targetText: 'lang sa', baseText: 'erst einmal nur', acceptedAnswers: cebuanoAnswers('lang sa', 'Lang sa') },
+        { id: 'igo', targetText: 'igo', baseText: 'genug', acceptedAnswers: cebuanoAnswers('igo', 'Igo') },
+        { id: 'unya', targetText: 'unya', baseText: 'später', acceptedAnswers: cebuanoAnswers('unya', 'Unya') },
+      ],
+      buildChips: ['Karon', 'lang sa,', 'palihug.', 'dugang', 'bayranan'],
+      typeRecall: {
+        before: '',
+        answer: 'Karon',
+        after: ' lang sa, palihug.',
+        acceptedAnswers: cebuanoAnswers('Karon', 'karon'),
+        fallbackChoices: ['Karon', 'Dugang', 'Presko', 'Lami'],
+      },
+      speakTarget: {
+        baseCue: 'Für jetzt reicht das, bitte.',
+        targetPhrase: 'Karon lang sa, palihug.',
+        requiredTokens: ['karon', 'lang'],
+        optionalTokens: ['sa', 'palihug', 'palihog'],
+      },
+      sceneCaption: 'Nangutana ang server kon naa pa, ug motubag ka nga karon lang sa.',
+      trophyWord: {
+        word: 'karon',
+        meaning: 'jetzt',
+        example: 'Karon lang sa, palihug.',
+        whyThisWord: 'Karon verbindet Zeit und Entscheidung und ist in Laden- und Caféantworten sehr brauchbar.',
+      },
+      placeholderCaption: 'Server checking whether anything else is needed.',
+      songMood: 'saying for now',
+      visualNotes: 'Café table pause, hand gesture, karon highlighted.',
+    }),
+  },
+  {
+    slug: 'bill-please',
+    title: 'Die Rechnung',
+    situation: {
+      en: 'At the end of the meal, ask for the bill.',
+      de: 'Am Ende des Essens bittest du um die Rechnung.',
+    },
+    pedagogicalGoal: 'Ang bayranan, palihug als einfache Rechnungsbitte sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Ang bayranan, palihug.',
+        baseText: 'Die Rechnung, bitte.',
+      },
+      meaning: 'Eine direkte Bitte, wenn du bezahlen möchtest.',
+      chunks: [
+        { id: 'ang-bayranan', targetText: 'Ang bayranan,', baseText: 'die Rechnung,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'bayranan', targetText: 'bayranan', baseText: 'Rechnung / zu bezahlen', acceptedAnswers: cebuanoAnswers('bayranan', 'Bayranan') },
+        { id: 'ang', targetText: 'ang', baseText: 'der / die / das', acceptedAnswers: cebuanoAnswers('ang', 'Ang') },
+        { id: 'bayad', targetText: 'bayad', baseText: 'Zahlung / zahlen', acceptedAnswers: cebuanoAnswers('bayad', 'Bayad') },
+        { id: 'kwarta', targetText: 'kwarta', baseText: 'Geld', acceptedAnswers: cebuanoAnswers('kwarta', 'Kwarta') },
+      ],
+      buildChips: ['Ang bayranan,', 'palihug.', 'resibo', 'dugang'],
+      typeRecall: {
+        before: 'Ang ',
+        answer: 'bayranan',
+        after: ', palihug.',
+        acceptedAnswers: cebuanoAnswers('bayranan', 'Bayranan'),
+        fallbackChoices: ['bayranan', 'resibo', 'menu', 'tubig'],
+      },
+      speakTarget: {
+        baseCue: 'Die Rechnung, bitte.',
+        targetPhrase: 'Ang bayranan, palihug.',
+        requiredTokens: ['ang', 'bayranan'],
+        optionalTokens: ['palihug', 'palihog', 'bayad'],
+      },
+      sceneCaption: 'Human mokaon, mangayo ka sa bayranan aron makabayad.',
+      trophyWord: {
+        word: 'bayranan',
+        meaning: 'Rechnung / zu bezahlen',
+        example: 'Ang bayranan, palihug.',
+        whyThisWord: 'Bayranan beendet die Café- und Restaurantszene mit einer klaren Zahlungsbitte.',
+      },
+      placeholderCaption: 'End of meal, bill folder on the table.',
+      songMood: 'asking for the bill',
+      visualNotes: 'Receipt folder, payment moment, bayranan highlighted.',
+    }),
+  },
+]
+
+const cebuanoA1Practical4Lessons: GuidedLessonDefinition[] = cebuanoA1Practical4Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-4-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = cebuanoA1Practical4Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 4 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: lessonInput.variant,
+    },
+  }
+})
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -49913,6 +50471,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     vibeVariants: { bright: brightGermanP8Lesson010 },
   },
   ...cebuanoA1Practical3Lessons,
+  ...cebuanoA1Practical4Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -49986,6 +50545,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA,
     GUIDED_TODAY_PATH_GERMAN_EIGHT_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA,
   ]
 }
 
