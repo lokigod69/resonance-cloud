@@ -1,9 +1,16 @@
 import { CalendarDays, Check, CheckCircle2, ChevronDown, Circle, Play, RotateCcw, SkipForward, Sparkles } from 'lucide-react'
 import { useState } from 'react'
-import type { GuidedLesson, GuidedLessonMedia } from '@/data/guidedLessons'
+import {
+  resolveGuidedBaseContent,
+  resolveGuidedLessonEffectiveBaseLanguage,
+  type GuidedBaseLanguage,
+  type GuidedLesson,
+  type GuidedLessonMedia,
+} from '@/data/guidedLessons'
 import { ACTIVE_GUIDED_VIBE_IDS, guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { formatGuidedPathFullTitle } from '@/lib/guidedPathLabels'
 import type { TodayVisibleStatus } from '@/lib/todayProgress'
+import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -23,6 +30,8 @@ type TodayHeroProps = {
 
 type LessonMediaFrameProps = {
   media: GuidedLessonMedia
+  authoredBaseLanguage: GuidedBaseLanguage
+  preferredBaseLanguage?: string | null
   className?: string
   mode?: 'preview' | 'playback'
   showCaption?: boolean
@@ -30,11 +39,14 @@ type LessonMediaFrameProps = {
 
 export function LessonMediaFrame({
   media,
+  authoredBaseLanguage,
+  preferredBaseLanguage,
   className,
   mode = 'playback',
   showCaption = false,
 }: LessonMediaFrameProps) {
   const { t } = useTranslation()
+  const caption = resolveGuidedBaseContent(media.caption, { preferredBaseLanguage, authoredBaseLanguage }).text
   const mediaUrl = media.url.trim()
   const posterUrl = media.posterUrl?.trim()
   const canRenderVideo = (media.type === 'video' || media.type === 'music_video') && mediaUrl.length > 0
@@ -89,7 +101,7 @@ export function LessonMediaFrame({
                   </div>
                 )}
                 <p className="text-lg font-semibold leading-snug text-[var(--text-primary)] sm:text-xl">
-                  {isPlaceholder ? media.caption : t('today.media.previewHint')}
+                  {isPlaceholder ? caption : t('today.media.previewHint')}
                 </p>
               </div>
             </div>
@@ -104,7 +116,7 @@ export function LessonMediaFrame({
             preload="metadata"
           />
         ) : canRenderImage ? (
-          <img className="h-full w-full object-cover" src={mediaUrl} alt={media.caption} />
+          <img className="h-full w-full object-cover" src={mediaUrl} alt={caption} />
         ) : (
           <div
             className="flex h-full min-h-[220px] flex-col justify-end p-5 sm:p-6"
@@ -119,7 +131,7 @@ export function LessonMediaFrame({
             </div>
             <div className="max-w-xl">
               <p className="text-xl font-semibold leading-snug text-[var(--text-primary)] sm:text-2xl">
-                {media.caption}
+                {caption}
               </p>
             </div>
           </div>
@@ -127,7 +139,7 @@ export function LessonMediaFrame({
       </div>
       {showCaption && !isPlaceholder && (
         <figcaption className="mt-3 text-xs leading-5 text-[var(--text-muted)]">
-          {media.caption}
+          {caption}
         </figcaption>
       )}
     </figure>
@@ -146,9 +158,20 @@ export function TodayHero({
   onSelectVibe,
 }: TodayHeroProps) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const preferredBaseLanguage = profile?.base_language
   const terminalStatus = status === 'completed' || status === 'skipped'
   const pathTitle = formatGuidedPathFullTitle(lesson.pathMetadata, t)
-  const pathDirection = `${t(`today.language.${lesson.pathMetadata.baseLanguage}`)} -> ${t(`today.language.${lesson.pathMetadata.targetLanguage}`)}`
+  const resolvedTitle = resolveGuidedBaseContent(lesson.lessonMetadata.title, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).text
+  const resolvedCoreBase = resolveGuidedBaseContent(lesson.corePhrase.baseText, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  })
+  const effectiveBaseLanguage = resolvedCoreBase.language
+  const pathDirection = `${t(`today.language.${effectiveBaseLanguage}`)} -> ${t(`today.language.${lesson.pathMetadata.targetLanguage}`)}`
 
   return (
     <section className="theme-panel relative overflow-hidden rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
@@ -181,7 +204,7 @@ export function TodayHero({
               {t('today.lessonLabel', { sequence: lesson.lessonMetadata.sequence })}
             </p>
             <h1 className="mt-3 break-words text-3xl font-semibold leading-tight tracking-normal text-[var(--text-primary)] sm:text-4xl">
-              {lesson.lessonMetadata.title}
+              {resolvedTitle}
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--text-secondary)]">
               {lesson.situation.de}
@@ -195,7 +218,7 @@ export function TodayHero({
                 {lesson.corePhrase.targetText}
               </p>
               <p className="break-words text-sm leading-6 text-[var(--text-secondary)]">
-                {lesson.corePhrase.baseText}
+                {resolvedCoreBase.text}
               </p>
             </div>
 
@@ -218,12 +241,16 @@ export function TodayHero({
 
               <div className="mt-4 overflow-hidden rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--app-bg)_14%,transparent)]">
                 <div className="hidden grid-cols-[minmax(8rem,1fr)_minmax(8rem,1fr)_2.25rem] gap-3 border-b border-[var(--border-subtle)] px-3 py-2 text-xs font-medium uppercase tracking-[0.14em] text-[var(--text-muted)] sm:grid">
-                  <span>{t('today.itemsPreview.english')}</span>
-                  <span>{t('today.itemsPreview.german')}</span>
+                  <span>{t(`today.language.${lesson.targetLanguage}`)}</span>
+                  <span>{t(`today.language.${effectiveBaseLanguage}`)}</span>
                   <span className="sr-only">{t('today.itemsPreview.toggle')}</span>
                 </div>
                 {lesson.lessonItems.map((item) => {
                   const isKnown = knownItemIds.has(item.id)
+                  const resolvedItemBase = resolveGuidedBaseContent(item.baseText, {
+                    preferredBaseLanguage,
+                    authoredBaseLanguage: lesson.baseLanguage,
+                  }).text
                   return (
                     <div
                       key={item.id}
@@ -246,7 +273,7 @@ export function TodayHero({
                           isKnown && 'line-through decoration-[var(--text-muted)] decoration-1',
                         )}
                       >
-                        {item.baseText}
+                        {resolvedItemBase}
                       </span>
                       <button
                         type="button"
@@ -309,7 +336,13 @@ export function TodayHero({
           </div>
         </div>
 
-        <LessonMediaFrame media={lesson.lessonMedia} mode="preview" className="lg:self-center" />
+        <LessonMediaFrame
+          media={lesson.lessonMedia}
+          authoredBaseLanguage={lesson.baseLanguage}
+          preferredBaseLanguage={preferredBaseLanguage}
+          mode="preview"
+          className="lg:self-center"
+        />
       </div>
     </section>
   )
@@ -456,8 +489,15 @@ export function GuidedVibePicker({
 
 export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const preferredBaseLanguage = profile?.base_language
   const pathTitle = formatGuidedPathFullTitle(lesson.pathMetadata, t)
-  const pathDirection = `${t(`today.language.${lesson.pathMetadata.baseLanguage}`)} -> ${t(`today.language.${lesson.pathMetadata.targetLanguage}`)}`
+  const resolvedTitle = resolveGuidedBaseContent(lesson.lessonMetadata.title, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).text
+  const effectiveBaseLanguage = resolveGuidedLessonEffectiveBaseLanguage(lesson, preferredBaseLanguage)
+  const pathDirection = `${t(`today.language.${effectiveBaseLanguage}`)} -> ${t(`today.language.${lesson.pathMetadata.targetLanguage}`)}`
 
   return (
     <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
@@ -477,7 +517,7 @@ export function TodayCompactHeader({ lesson }: { lesson: GuidedLesson }) {
           <h1 className="mt-3 break-words text-xl font-semibold text-[var(--text-primary)]">
             {t('today.compactLessonTitle', {
               sequence: lesson.lessonMetadata.sequence,
-              title: lesson.lessonMetadata.title,
+              title: resolvedTitle,
             })}
           </h1>
         </div>

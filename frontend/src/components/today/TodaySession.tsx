@@ -10,10 +10,11 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { getGuidedMatchPairs, type GuidedLesson } from '@/data/guidedLessons'
+import { getGuidedMatchPairs, resolveGuidedBaseContent, type GuidedLesson } from '@/data/guidedLessons'
 import { guidedVibes } from '@/data/guidedVibes'
 import type { TodayLessonResult } from '@/lib/todayProgress'
 import { playGuidedAudio, stopGuidedAudio } from '@/lib/guidedAudio'
+import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { LessonMediaFrame } from '@/components/today/TodayHero'
@@ -43,6 +44,12 @@ export function TodaySession({
   onOpenNextLesson,
 }: TodaySessionProps) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const preferredBaseLanguage = profile?.base_language
+  const resolvedLessonTitle = resolveGuidedBaseContent(lesson.title, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).text
   const matchPairs = getGuidedMatchPairs(lesson)
   const [stepIndex, setStepIndex] = useState(0)
   const [matchedPairIds, setMatchedPairIds] = useState<Set<string>>(() => new Set())
@@ -107,7 +114,7 @@ export function TodaySession({
               {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
             </p>
             <h2 className="today-session-title">
-              {lesson.title}
+              {resolvedLessonTitle}
             </h2>
           </div>
           <span className="today-session-countPill">
@@ -252,6 +259,12 @@ function getStepVisualState(
 
 function SceneStep({ lesson }: { lesson: GuidedLesson }) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const preferredBaseLanguage = profile?.base_language
+  const resolvedCoreBase = resolveGuidedBaseContent(lesson.corePhrase.baseText, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).text
   const handleListen = () => {
     void playGuidedAudio({
       pathId: lesson.pathId,
@@ -266,7 +279,11 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
 
   return (
     <div className="today-scene-step grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.8fr)] lg:items-center">
-      <LessonMediaFrame media={lesson.lessonMedia} />
+      <LessonMediaFrame
+        media={lesson.lessonMedia}
+        authoredBaseLanguage={lesson.baseLanguage}
+        preferredBaseLanguage={preferredBaseLanguage}
+      />
       <div className="today-scene-copy grid gap-4">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
@@ -295,7 +312,7 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
             {lesson.corePhrase.targetText}
           </p>
           <p className="mt-3 break-words text-base leading-7 text-[var(--text-secondary)]">
-            {lesson.corePhrase.baseText}
+            {resolvedCoreBase}
           </p>
         </div>
       </div>
@@ -315,7 +332,13 @@ function CompleteStep({
   onOpenNextLesson: () => void
 }) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const preferredBaseLanguage = profile?.base_language
   const vibe = guidedVibes[lesson.vibeId]
+  const trophyMeaning = resolveGuidedBaseContent(lesson.trophyWord.meaning, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).text
   const handleTrophyListen = () => {
     void playGuidedAudio({
       pathId: lesson.pathId,
@@ -367,7 +390,7 @@ function CompleteStep({
             </Button>
           </div>
           <p className="mt-1 break-words text-sm leading-6 text-[var(--text-secondary)]">
-            {lesson.trophyWord.meaning}
+            {trophyMeaning}
           </p>
           {lesson.trophyWord.example && (
             <p className="mt-2 break-words text-xs leading-5 text-[var(--text-muted)]">

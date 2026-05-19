@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url'
 import {
   getGuidedPathLessons,
   getGuidedTodayPathOptions,
+  resolveGuidedBaseContent,
   resolveGuidedLessonVariant,
 } from '../src/data/guidedLessons.ts'
 import {
@@ -129,8 +130,8 @@ for (const pathId of pathIds) {
     assert(`${pathId} Review ${segment} samples only lessons ${expectedLessonNumbers[0]}-${expectedLessonNumbers[4]}`, plan?.items.every((item) => expectedLessonNumbers.includes(lessonNumber(item.lessonId))) === true, plan?.items.map((item) => item.lessonId))
     assert(`${pathId} Review ${segment} keeps lessons in story order`, JSON.stringify(plan?.items.map((item) => lessonNumber(item.lessonId))) === JSON.stringify(expectedLessonNumbers), plan?.items.map((item) => item.lessonId))
     assert(`${pathId} Review ${segment} items have Type Recall cloze data`, plan?.items.every((item) => item.lesson.typeRecall.before !== undefined && item.lesson.typeRecall.after !== undefined && item.lesson.typeRecall.answer.length > 0) === true, plan)
-    assert(`${pathId} Review ${segment} items have German cue data`, plan?.items.every((item) => item.lesson.corePhrase.baseText.length > 0) === true, plan)
-    assert(`${pathId} Review ${segment} items have Speak cue data`, plan?.items.every((item) => item.lesson.speak.baseCue.length > 0 && item.lesson.speak.language.length > 0) === true, plan)
+    assert(`${pathId} Review ${segment} items have base cue data`, plan?.items.every((item) => resolveGuidedBaseContent(item.lesson.corePhrase.baseText, { authoredBaseLanguage: item.lesson.baseLanguage }).text.length > 0) === true, plan)
+    assert(`${pathId} Review ${segment} items have Speak cue data`, plan?.items.every((item) => resolveGuidedBaseContent(item.lesson.speak.baseCue, { authoredBaseLanguage: item.lesson.baseLanguage }).text.length > 0 && item.lesson.speak.language.length > 0) === true, plan)
   }
 }
 
@@ -191,7 +192,7 @@ assert('Segment Review type action continues with Weiter instead of Speak', chec
 assert('Speak step removes non-evaluation copy and extra cue label', !checkpointSource.includes('Sprechen wird hier nicht bewertet') && !sliceBetween(checkpointSource, 'function CheckpointSpeakStep', 'function CheckpointSummary').includes('today.checkpoint.speakCue'))
 assert('completion summary includes missed-item review data', checkpointSource.includes('getMissedSummaryItems') && checkpointSource.includes('today.checkpoint.practiceAgainTitle') && checkpointSource.includes('item.lesson.typeRecall.answer'))
 assert('Segment Review prompt uses the dedicated phrase completion copy', checkpointSource.includes('today.checkpoint.segmentTypePrompt'))
-assert('Segment Review shows German cue separately', checkpointSource.includes('today.checkpoint.germanCue') && checkpointSource.includes('item.lesson.corePhrase.baseText'))
+assert('Segment Review shows resolved base cue separately', checkpointSource.includes('today.checkpoint.baseCue') && checkpointSource.includes('resolveGuidedBaseContent') && checkpointSource.includes('item.lesson.corePhrase.baseText'))
 assert('Path Check keeps a diagnostic label', checkpointSource.includes('today.checkpoint.pathCheckDiagnostic') || checkpointSource.includes('pathCheckHeading'))
 assert('checkpoint lib exports Segment Review plan builder', checkpointLibSource.includes('export function buildGuidedSegmentReviewPlan'))
 assert('Segment Review imports the story scaffold helpers', checkpointSource.includes("from '@/lib/guidedSegmentStories'") && checkpointSource.includes('getGuidedSegmentStory') && checkpointSource.includes('getGuidedSegmentSceneForLesson'))

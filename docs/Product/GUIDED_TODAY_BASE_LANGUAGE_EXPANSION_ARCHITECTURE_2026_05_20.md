@@ -249,6 +249,27 @@ Phase 4+: Future base-language audiences.
 - Add Spanish-L1, French-L1, and other audiences after English-L1 succeeds.
 - Treat every new base audience as a content and QA project, not just a schema fill.
 
+## 5A. Phase 1 Implementation Status
+
+Sir Robert resolved the architecture after this investigation: Option C rollout to Option B steady-state, with no Option A path-family duplication.
+
+Phase 1 is split into mandatory direct-to-main implementation slices:
+
+- PR A foundation: add the `GuidedBaseContentLocale` / `GuidedBaseContentText` model, resolver helpers, temporary `string | GuidedBaseContentText` field unions, renderer resolver usage, base-neutral checkpoint labels, and resolver-aware tests. No lesson data is migrated in PR A.
+- PR B German-target migration: wrap `german-a1-practical-*` base-language fields as `{ en: existingValue }`.
+- PR C-I German-base migrations: wrap the remaining families as `{ de: existingValue }` in this order: English, Spanish, French, Italian, Portuguese, Indonesian, Cebuano.
+- PR J strict schema: remove temporary string unions after all 800 lessons are migrated.
+
+PR A foundation commit subject:
+
+```text
+feat(guided-today): add base-language content resolver foundation
+```
+
+PR A intentionally leaves all existing lesson data as strings. The resolver treats legacy string fields as authored-base content, so current rendering remains content-equivalent while later migration commits convert each path family to explicit locale maps.
+
+Effective base-language labels must reflect the resolved content locale, not merely the learner profile preference. During Option C fallback, an English-L1 learner on a German-authored Spanish path still sees `German -> Spanish`; once English content exists, the same resolver can produce `English -> Spanish`.
+
 ## 6. Open Decisions for Sir Robert
 
 1. Option A vs B vs C. Recommendation: C rollout, B steady-state.
@@ -278,4 +299,3 @@ Phase 4+: Future base-language audiences.
 - Runtime schema implementation.
 - Adding English baseText content.
 - Touching rendering code, tests, path metadata, or existing lessons in this goal.
-

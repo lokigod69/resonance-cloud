@@ -1,6 +1,7 @@
 import { Check, RotateCcw, Volume2, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { getDeterministicMatchColumns, type GuidedLesson, type GuidedMatchPair } from '@/data/guidedLessons'
+import { getDeterministicMatchColumns, resolveGuidedBaseContent, type GuidedLesson, type GuidedMatchPair } from '@/data/guidedLessons'
+import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { playGuidedAudio } from '@/lib/guidedAudio'
@@ -18,9 +19,15 @@ export function MatchPairsStep({
   onMatchedPairIdsChange,
 }: MatchPairsStepProps) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const preferredBaseLanguage = profile?.base_language
   const columns = getDeterministicMatchColumns(lesson)
   const targetColumnLabel = t(`today.language.${lesson.targetLanguage}`) || t('today.matchPairs.targetColumn')
-  const baseColumnLabel = t(`today.language.${lesson.baseLanguage}`) || t('today.matchPairs.baseColumn')
+  const effectiveBaseLanguage = resolveGuidedBaseContent(lesson.corePhrase.baseText, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).language
+  const baseColumnLabel = t(`today.language.${effectiveBaseLanguage}`) || t('today.matchPairs.baseColumn')
   const [selectedEnglishId, setSelectedEnglishId] = useState<string | null>(null)
   const [wrongPairIds, setWrongPairIds] = useState<Set<string>>(() => new Set())
   const wrongResetRef = useRef<number | undefined>(undefined)
@@ -114,6 +121,10 @@ export function MatchPairsStep({
               key={pair.id}
               pair={pair}
               side="base"
+              displayText={resolveGuidedBaseContent(pair.baseText, {
+                preferredBaseLanguage,
+                authoredBaseLanguage: lesson.baseLanguage,
+              }).text}
               isMatched={matchedPairIds.has(pair.id)}
               isSelected={false}
               isWrong={wrongPairIds.has(pair.id)}
@@ -138,9 +149,11 @@ function MatchChip({
   onClick,
   onListen,
   listenLabel,
+  displayText,
 }: {
   pair: GuidedMatchPair
   side: 'target' | 'base'
+  displayText?: string
   isMatched: boolean
   isSelected: boolean
   isWrong: boolean
@@ -148,7 +161,7 @@ function MatchChip({
   onListen?: () => void
   listenLabel?: string
 }) {
-  const text = side === 'target' ? pair.targetText : pair.baseText
+  const text = displayText ?? (side === 'target' ? pair.targetText : '')
 
   return (
     <div className="today-match-chipRow flex w-full max-w-full items-center justify-center gap-1.5">

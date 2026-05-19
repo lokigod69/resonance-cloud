@@ -1,6 +1,7 @@
 import { ChevronLeft } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import {
+  getGuidedPathMetadata,
   getGuidedPathLessons,
   resolveGuidedLessonVariant,
 } from '@/data/guidedLessons'
@@ -25,6 +26,7 @@ type TrophySongPanelProps = {
 
 export function TrophySongPanel({ row, backToTodayHref, onComplete }: TrophySongPanelProps) {
   const { t } = useTranslation()
+  const pathMetadata = getGuidedPathMetadata(row.pathId)
   const trophyWords = getGuidedPathLessons(row.pathId)
     .filter((lesson) => (
       row.segment === 1
@@ -68,7 +70,11 @@ export function TrophySongPanel({ row, backToTodayHref, onComplete }: TrophySong
 
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {trophyWords.map((trophyWord) => (
-          <TrophyWordCard key={trophyWord.word} trophyWord={trophyWord} />
+          <TrophyWordCard
+            key={trophyWord.word}
+            trophyWord={trophyWord}
+            authoredBaseLanguage={pathMetadata?.baseLanguage ?? 'German'}
+          />
         ))}
       </section>
 

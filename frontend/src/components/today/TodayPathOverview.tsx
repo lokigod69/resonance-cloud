@@ -2,6 +2,7 @@ import { Play, Settings } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
+  resolveGuidedBaseContent,
   type GuidedLesson,
   type GuidedPathLessonCardStatus,
   type GuidedPathMetadata,
@@ -12,6 +13,7 @@ import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
 import { readGuidedSegmentReviewRecord, type GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 import { formatGuidedPathLabel } from '@/lib/guidedPathLabels'
+import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
@@ -73,6 +75,8 @@ export function TodayPathOverview({
   onStartLesson,
 }: TodayPathOverviewProps) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const preferredBaseLanguage = profile?.base_language
   const [directoryOpen, setDirectoryOpen] = useState(false)
   const pathLesson = overview.recommendedLesson ?? overview.selectedLesson ?? overview.lessons[0]?.lesson
   const isSelectedRecommendation = Boolean(
@@ -133,6 +137,7 @@ export function TodayPathOverview({
       {pathLesson && (
         <RecommendedLessonPanel
           lesson={pathLesson}
+          preferredBaseLanguage={preferredBaseLanguage}
           isSelectedRecommendation={isSelectedRecommendation}
           onStartLesson={onStartLesson}
         />
@@ -168,6 +173,7 @@ export function TodayPathOverview({
                     <LessonPathCard
                       key={entry.lesson.id}
                       lesson={entry.lesson}
+                      preferredBaseLanguage={preferredBaseLanguage}
                       status={entry.status}
                       isRecommended={entry.isRecommended}
                       isSelected={entry.isSelected}
@@ -254,14 +260,20 @@ function SegmentReviewTile({
 
 function RecommendedLessonPanel({
   lesson,
+  preferredBaseLanguage,
   isSelectedRecommendation,
   onStartLesson,
 }: {
   lesson: GuidedLesson
+  preferredBaseLanguage?: string | null
   isSelectedRecommendation: boolean
   onStartLesson: (lessonId?: string) => void
 }) {
   const { t } = useTranslation()
+  const title = resolveGuidedBaseContent(lesson.title, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).text
 
   return (
     <section className="today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-3 sm:p-4">
@@ -274,7 +286,7 @@ function RecommendedLessonPanel({
             {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
           </p>
           <h2 className="mt-1 break-words text-lg font-semibold leading-tight text-[var(--text-primary)] sm:text-2xl">
-            {lesson.title}
+            {title}
           </h2>
         </div>
         <Button size="lg" onClick={() => onStartLesson(lesson.id)}>
@@ -288,6 +300,7 @@ function RecommendedLessonPanel({
 
 function LessonPathCard({
   lesson,
+  preferredBaseLanguage,
   status,
   isRecommended,
   isSelected,
@@ -298,6 +311,7 @@ function LessonPathCard({
   onStartLesson,
 }: {
   lesson: GuidedLesson
+  preferredBaseLanguage?: string | null
   status: GuidedPathLessonCardStatus
   isRecommended: boolean
   isSelected: boolean
@@ -309,6 +323,10 @@ function LessonPathCard({
 }) {
   const { t } = useTranslation()
   const completedSelectedVibe = completedVibeIds.includes(selectedVibeId)
+  const title = resolveGuidedBaseContent(lesson.title, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).text
 
   const handleLessonTap = () => {
     onSelectLesson(lesson.id)
@@ -321,7 +339,7 @@ function LessonPathCard({
       onClick={handleLessonTap}
       aria-label={t('today.path.openLesson', {
         sequence: lesson.lessonNumber,
-        title: lesson.title,
+        title,
       })}
       className={cn(
         'today-path-card group flex min-w-0 items-center justify-center rounded-lg border p-1 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
@@ -348,7 +366,7 @@ function LessonPathCard({
       <span className="sr-only">
         {t('today.compactLessonTitle', {
           sequence: lesson.lessonNumber,
-          title: lesson.title,
+          title,
         })}
       </span>
     </button>

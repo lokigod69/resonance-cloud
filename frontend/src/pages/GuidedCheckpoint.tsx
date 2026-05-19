@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight, CheckCircle2, RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { getGuidedTodayPathOptions, guidedAnswerMatches, type GuidedPathMetadata } from '@/data/guidedLessons'
+import { getGuidedTodayPathOptions, guidedAnswerMatches, resolveGuidedBaseContent, type GuidedPathMetadata } from '@/data/guidedLessons'
 import { guidedVibes, isActiveGuidedVibeId, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -405,6 +405,11 @@ function CheckpointTypeStep({
 }) {
   const submitted = result !== undefined
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const resolvedBasePrompt = resolveGuidedBaseContent(item.lesson.corePhrase.baseText, {
+    preferredBaseLanguage: profile?.base_language,
+    authoredBaseLanguage: item.lesson.baseLanguage,
+  }).text
   const continueButtonRef = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
@@ -448,10 +453,10 @@ function CheckpointTypeStep({
               placeholderKey="today.checkpoint.segmentInputPlaceholder"
             />
             <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-              {t('today.checkpoint.germanCue')}
+              {t('today.checkpoint.baseCue')}
             </p>
             <p className="mt-1 break-words text-sm leading-6 text-[var(--text-secondary)]">
-              {item.lesson.corePhrase.baseText}
+              {resolvedBasePrompt}
             </p>
           </div>
         )}
@@ -459,10 +464,10 @@ function CheckpointTypeStep({
         {!isSegmentReviewMode && (
           <div className="today-checkpoint-promptCard w-full max-w-2xl rounded-lg border p-4" data-result={result ?? 'pending'}>
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-              {t('today.checkpoint.germanPrompt')}
+              {t('today.checkpoint.basePrompt')}
             </p>
             <p className="mt-3 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-3xl">
-              {item.lesson.corePhrase.baseText}
+              {resolvedBasePrompt}
             </p>
           </div>
         )}
@@ -556,6 +561,11 @@ function CheckpointSpeakStep({
   onContinueAnyway: () => void
 }) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const cueText = resolveGuidedBaseContent(item.lesson.speak.baseCue, {
+    preferredBaseLanguage: profile?.base_language,
+    authoredBaseLanguage: item.lesson.baseLanguage,
+  }).text
   const [speechState, setSpeechState] = useState<GuidedSpeechPromptCheckState>(() => ({
     status: canUseGuidedSpeechRecognition() ? 'idle' : 'unsupported',
     attempts: 0,
@@ -569,7 +579,7 @@ function CheckpointSpeakStep({
       <div className="grid justify-items-center gap-5">
         <GuidedSpeechPrompt
           prompt={t('today.checkpoint.speakPrompt')}
-          cueText={item.lesson.speak.germanPrompt ?? item.lesson.speak.baseCue}
+          cueText={cueText}
           targetAnswer={item.lesson.speak.targetAnswer ?? item.lesson.speak.targetPhrase}
           displayAnswer={item.lesson.speak.displayAnswer ?? item.lesson.speak.targetAnswer ?? item.lesson.speak.targetPhrase}
           acceptedAnswers={item.lesson.speak.acceptedAnswers}
@@ -611,8 +621,9 @@ function CheckpointSummary({
   backToTodayHref: string
 }) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
   const vibe = guidedVibes[selectedVibeId]
-  const missedItems = getMissedSummaryItems(record, planItems)
+  const missedItems = getMissedSummaryItems(record, planItems, profile?.base_language)
 
   return (
     <main className="today-shell today-checkpoint-shell mx-auto grid min-h-dvh w-full max-w-3xl place-items-center px-4 py-8 sm:px-6" data-guided-vibe={selectedVibeId}>
@@ -675,7 +686,11 @@ function CheckpointSummary({
   )
 }
 
-function getMissedSummaryItems(record: GuidedCheckpointRecord, planItems: GuidedCheckpointPlanItem[]) {
+function getMissedSummaryItems(
+  record: GuidedCheckpointRecord,
+  planItems: GuidedCheckpointPlanItem[],
+  preferredBaseLanguage?: string | null,
+) {
   return record.items
     .filter((item) => item.needsReview)
     .map((item) => {
@@ -687,7 +702,12 @@ function getMissedSummaryItems(record: GuidedCheckpointRecord, planItems: Guided
 
       return {
         ...item,
-        lessonTitle: planItem?.lesson.title ?? item.lessonId,
+        lessonTitle: planItem
+          ? resolveGuidedBaseContent(planItem.lesson.title, {
+            preferredBaseLanguage,
+            authoredBaseLanguage: planItem.lesson.baseLanguage,
+          }).text
+          : item.lessonId,
         answer: planItem?.lesson.typeRecall.answer ?? '',
       }
     })

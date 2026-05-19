@@ -25,6 +25,7 @@
 import {
   GUIDED_LESSONS,
   getGuidedTodayPathOptions,
+  resolveGuidedBaseContent,
   type GuidedTargetLanguage,
 } from '../src/data/guidedLessons.ts'
 import { isActiveGuidedVibeId, type ActiveGuidedVibeId } from '../src/data/guidedVibes.ts'
@@ -106,10 +107,19 @@ for (const lesson of GUIDED_LESSONS) {
       console.error(`  FAIL missing trophyWord at ${lesson.pathId}|L${lesson.lessonNumber}|${vibe}`)
       continue
     }
-    const fields: Array<keyof typeof t> = ['word', 'meaning', 'example', 'whyThisWord']
+    const targetFields: Array<keyof typeof t> = ['word', 'example']
+    const baseFields: Array<keyof typeof t> = ['meaning', 'whyThisWord']
     let cellOk = true
-    for (const field of fields) {
+    for (const field of targetFields) {
       if (typeof t[field] !== 'string' || t[field].trim().length === 0) {
+        failures += 1
+        console.error(`  FAIL empty trophy.${String(field)} at ${lesson.pathId}|L${lesson.lessonNumber}|${vibe}`)
+        cellOk = false
+      }
+    }
+    for (const field of baseFields) {
+      const resolved = resolveGuidedBaseContent(t[field], { authoredBaseLanguage: lesson.baseLanguage }).text
+      if (resolved.trim().length === 0) {
         failures += 1
         console.error(`  FAIL empty trophy.${String(field)} at ${lesson.pathId}|L${lesson.lessonNumber}|${vibe}`)
         cellOk = false

@@ -9,22 +9,97 @@ import type { TodayProgressState } from '@/lib/todayProgress'
 
 export type LessonMediaType = 'image' | 'video' | 'music_video'
 
+export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German' | 'Cebuano' | 'Indonesian'
+export type GuidedBaseLanguage = 'German' | 'English'
+export type GuidedBaseContentLocale = 'en' | 'de'
+export type GuidedBaseContentText = Partial<Record<GuidedBaseContentLocale, string>>
+export type GuidedBaseContentValue = string | GuidedBaseContentText
+export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH' | 'id-ID'
+
+export const GUIDED_BASE_LANGUAGE_TO_CONTENT_LOCALE: Partial<Record<string, GuidedBaseContentLocale>> = {
+  English: 'en',
+  German: 'de',
+} satisfies Partial<Record<string, GuidedBaseContentLocale>>
+
+export function guidedBaseLanguageToContentLocale(
+  baseLanguage: string | null | undefined,
+): GuidedBaseContentLocale | undefined {
+  return baseLanguage ? GUIDED_BASE_LANGUAGE_TO_CONTENT_LOCALE[baseLanguage] : undefined
+}
+
+export function guidedContentLocaleToBaseLanguage(locale: GuidedBaseContentLocale): GuidedBaseLanguage {
+  return locale === 'de' ? 'German' : 'English'
+}
+
+export function isGuidedBaseContentText(value: GuidedBaseContentValue | undefined): value is GuidedBaseContentText {
+  return typeof value === 'object' && value !== null
+}
+
+export function resolveGuidedBaseContent(
+  value: GuidedBaseContentValue | undefined,
+  options: {
+    preferredBaseLanguage?: string | null
+    authoredBaseLanguage: GuidedBaseLanguage
+  },
+): {
+  text: string
+  locale: GuidedBaseContentLocale
+  language: GuidedBaseLanguage
+  isFallback: boolean
+} {
+  const authoredLocale = guidedBaseLanguageToContentLocale(options.authoredBaseLanguage) ?? 'en'
+  const preferredLocale = guidedBaseLanguageToContentLocale(options.preferredBaseLanguage)
+
+  if (!isGuidedBaseContentText(value)) {
+    return {
+      text: value ?? '',
+      locale: authoredLocale,
+      language: guidedContentLocaleToBaseLanguage(authoredLocale),
+      isFallback: false,
+    }
+  }
+
+  const preferredText = preferredLocale ? value[preferredLocale]?.trim() : undefined
+  if (preferredLocale && preferredText) {
+    return {
+      text: value[preferredLocale] ?? '',
+      locale: preferredLocale,
+      language: guidedContentLocaleToBaseLanguage(preferredLocale),
+      isFallback: false,
+    }
+  }
+
+  const authoredText = value[authoredLocale]?.trim()
+  if (authoredText) {
+    return {
+      text: value[authoredLocale] ?? '',
+      locale: authoredLocale,
+      language: guidedContentLocaleToBaseLanguage(authoredLocale),
+      isFallback: preferredLocale !== undefined && preferredLocale !== authoredLocale,
+    }
+  }
+
+  const fallbackLocale = (['en', 'de'] as const).find((locale) => value[locale]?.trim()) ?? authoredLocale
+  return {
+    text: value[fallbackLocale] ?? '',
+    locale: fallbackLocale,
+    language: guidedContentLocaleToBaseLanguage(fallbackLocale),
+    isFallback: fallbackLocale !== preferredLocale,
+  }
+}
+
 export type GuidedLessonMedia = {
   type: LessonMediaType
   url: string
   posterUrl?: string
-  caption: string
+  caption: GuidedBaseContentValue
 }
-
-export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German' | 'Cebuano' | 'Indonesian'
-export type GuidedBaseLanguage = 'German' | 'English'
-export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH' | 'id-ID'
 
 export type GuidedPathMetadata = {
   id: string
   title: string
   shortTitle: string
-  subtitle: string
+  subtitle: GuidedBaseContentValue
   level: 'A1'
   baseLanguage: GuidedBaseLanguage
   targetLanguage: GuidedTargetLanguage
@@ -34,13 +109,13 @@ export type GuidedPathMetadata = {
 export type GuidedLessonMetadata = {
   id: string
   sequence: number
-  title: string
+  title: GuidedBaseContentValue
 }
 
 export type PhraseChunk = {
   id: string
   targetText: string
-  baseText: string
+  baseText: GuidedBaseContentValue
 }
 
 export type GuidedMatchPair = PhraseChunk
@@ -48,7 +123,7 @@ export type GuidedMatchPair = PhraseChunk
 export type LessonItem = {
   id: string
   targetText: string
-  baseText: string
+  baseText: GuidedBaseContentValue
   acceptedAnswers: string[]
   reviewDistractorIds?: string[]
 }
@@ -68,9 +143,9 @@ export type GuidedLessonStep = 'scene' | 'matchPairs' | 'build' | 'type' | 'spea
 
 export type GuidedLessonTrophyWord = {
   word: string
-  meaning: string
+  meaning: GuidedBaseContentValue
   example: string
-  whyThisWord: string
+  whyThisWord: GuidedBaseContentValue
 }
 
 export type GuidedLessonSongSeed = {
@@ -82,16 +157,16 @@ export type GuidedLessonPlaceholderMedia = {
   type?: LessonMediaType
   url?: string
   posterUrl?: string
-  caption?: string
+  caption?: GuidedBaseContentValue
 }
 
 export type GuidedLessonVibeVariant = {
   contentStatus: 'final' | 'draft'
   corePhrase: {
     targetText: string
-    baseText: string
+    baseText: GuidedBaseContentValue
   }
-  meaning: string
+  meaning: GuidedBaseContentValue
   chunks: PhraseChunk[]
   lessonItems: LessonItem[]
   build: {
@@ -106,10 +181,9 @@ export type GuidedLessonVibeVariant = {
     fallbackChoices: string[]
   }
   speakTarget: {
-    baseCue: string
+    baseCue: GuidedBaseContentValue
     targetPhrase: string
     displayAnswer?: string
-    germanPrompt?: string
     targetAnswer?: string
     acceptedAnswers?: string[]
     requiredTokens?: string[]
@@ -118,7 +192,7 @@ export type GuidedLessonVibeVariant = {
     language: GuidedSpeakLocale
     passingThreshold: number
   }
-  sceneCaption: string
+  sceneCaption: GuidedBaseContentValue
   trophyWord: GuidedLessonTrophyWord
   videoUrl?: string
   placeholderMedia?: GuidedLessonPlaceholderMedia
@@ -136,7 +210,7 @@ export type GuidedLessonDefinition = {
   targetLanguage: GuidedTargetLanguage
   pathMetadata: GuidedPathMetadata
   lessonMetadata: GuidedLessonMetadata
-  title: string
+  title: GuidedBaseContentValue
   situation: {
     en: string
     de: string
@@ -148,8 +222,8 @@ export type GuidedLessonDefinition = {
   fallbackVibeId: ActiveGuidedVibeId
   status: 'active' | 'coming-soon'
   nextLessonTeaser: {
-    title: string
-    situation: string
+    title: GuidedBaseContentValue
+    situation: GuidedBaseContentValue
   }
   vibeVariants: Partial<Record<ActiveGuidedVibeId, GuidedLessonVibeVariant>>
 }
@@ -168,7 +242,7 @@ export type GuidedLesson = GuidedLessonDefinition & {
   typeRecall: GuidedLessonVibeVariant['typeRecall']
   speak: GuidedLessonVibeVariant['speakTarget']
   trophyWord: GuidedLessonTrophyWord
-  sceneCaption: string
+  sceneCaption: GuidedBaseContentValue
   songSeed?: GuidedLessonSongSeed
 }
 
@@ -190,6 +264,16 @@ export type GuidedPathOverview = {
   completedCount: number
   totalLessons: number
   isComplete: boolean
+}
+
+export function resolveGuidedLessonEffectiveBaseLanguage(
+  lesson: GuidedLesson,
+  preferredBaseLanguage?: string | null,
+): GuidedBaseLanguage {
+  return resolveGuidedBaseContent(lesson.corePhrase.baseText, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).language
 }
 
 const GUIDED_TODAY_PATH_ONE_METADATA: GuidedPathMetadata = {
@@ -10074,11 +10158,11 @@ function createA1P2Variant(input: A1P2VariantInput): GuidedLessonVibeVariant {
   }
 }
 
-function chunk(id: string, targetText: string, baseText: string): PhraseChunk {
+function chunk(id: string, targetText: string, baseText: GuidedBaseContentValue): PhraseChunk {
   return { id, targetText, baseText }
 }
 
-function lessonItem(id: string, targetText: string, baseText: string): LessonItem {
+function lessonItem(id: string, targetText: string, baseText: GuidedBaseContentValue): LessonItem {
   return {
     id,
     targetText,
@@ -59873,6 +59957,10 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA,
   ]
+}
+
+export function getGuidedPathMetadata(pathId: string): GuidedPathMetadata | undefined {
+  return getGuidedTodayPathOptions().find((metadata) => metadata.id === pathId)
 }
 
 export function getGuidedPathLessons(pathId: string) {

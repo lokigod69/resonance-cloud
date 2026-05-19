@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url'
 import {
   getGuidedPathLessons,
   getGuidedTodayPathOptions,
+  resolveGuidedBaseContent,
   resolveGuidedLessonVariant,
 } from '../src/data/guidedLessons.ts'
 import { DEFAULT_GUIDED_VIBE_ID } from '../src/data/guidedVibes.ts'
@@ -45,7 +46,8 @@ const ACTIVE_PATHS = [
 
 const SEGMENTS: Segment[] = [1, 2]
 const VIBES: ActiveGuidedVibeId[] = ['bright', 'wistful', 'sharp']
-const TROPHY_FIELDS = ['word', 'meaning', 'example', 'whyThisWord'] as const
+const TROPHY_TARGET_FIELDS = ['word', 'example'] as const
+const TROPHY_BASE_FIELDS = ['meaning', 'whyThisWord'] as const
 
 let failures = 0
 let passes = 0
@@ -110,10 +112,17 @@ for (const pathId of ACTIVE_PATHS) {
       )
 
       for (const [index, trophyWord] of fallbackWords.entries()) {
-        for (const field of TROPHY_FIELDS) {
+        for (const field of TROPHY_TARGET_FIELDS) {
           assert(
             `${pathId} segment ${segment} ${vibe} lesson ${expectedLessonNumbers[index]} has non-empty ${field}`,
             typeof trophyWord[field] === 'string' && trophyWord[field].trim().length > 0,
+            trophyWord,
+          )
+        }
+        for (const field of TROPHY_BASE_FIELDS) {
+          assert(
+            `${pathId} segment ${segment} ${vibe} lesson ${expectedLessonNumbers[index]} has non-empty ${field}`,
+            resolveGuidedBaseContent(trophyWord[field], { authoredBaseLanguage: 'German' }).text.trim().length > 0,
             trophyWord,
           )
         }
@@ -199,7 +208,7 @@ assert('Today reads and validates path/vibe query params', todaySource.includes(
 assert('canonical song rows render TrophySongPanel', checkpointSource.includes('if (!row)') && checkpointSource.includes('return <TrophySongPanel row={row}'))
 assert('missing song rows render TrophyWordFallbackPanel', checkpointSource.includes('setRow(undefined)') && checkpointSource.includes('return (\n      <TrophyWordFallbackPanel'))
 assert('song panel still renders player, lyrics, and cloze drill for canonical rows', songPanelSource.includes('TrophySongPlayer') && songPanelSource.includes('TrophyLyricsReview') && songPanelSource.includes('TrophyLyricClozeDrill'))
-assert('fallback panel renders TrophyWordCard from local fallback words', fallbackPanelSource.includes('getGuidedTrophyWordsForSegment') && fallbackPanelSource.includes('<TrophyWordCard key={trophyWord.word}'))
+assert('fallback panel renders TrophyWordCard from local fallback words', fallbackPanelSource.includes('getGuidedTrophyWordsForSegment') && fallbackPanelSource.includes('<TrophyWordCard') && fallbackPanelSource.includes('key={trophyWord.word}') && fallbackPanelSource.includes('authoredBaseLanguage'))
 assert('fallback panel has a non-playable song placeholder', fallbackPanelSource.includes("t('today.trophy.player.comingSoon')") && !fallbackPanelSource.includes('TrophySongPlayer') && !fallbackPanelSource.includes('<audio') && !fallbackPanelSource.includes('TrophyLyricClozeDrill'))
 assert('fallback panel hides path voice and segment metadata pills', !fallbackPanelSource.includes('MetadataPill') && !fallbackPanelSource.includes('getGuidedTodayPathOptions') && !fallbackPanelSource.includes('guidedVibes,'))
 assert('fallback panel avoids segment kicker and status badge copy', !fallbackPanelSource.includes('today.trophy.panelKicker') && !fallbackPanelSource.includes('today.trophy.panelBadge'))

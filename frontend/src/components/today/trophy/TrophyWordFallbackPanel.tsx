@@ -1,5 +1,6 @@
 import { ChevronLeft } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { getGuidedPathMetadata } from '@/data/guidedLessons'
 import type { ActiveGuidedVibeId } from '@/data/guidedVibes'
 import type { GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 import { getGuidedTrophyWordsForSegment } from '@/lib/guidedTrophy'
@@ -21,6 +22,7 @@ export function TrophyWordFallbackPanel({
   backToTodayHref,
 }: TrophyWordFallbackPanelProps) {
   const { t } = useTranslation()
+  const pathMetadata = getGuidedPathMetadata(pathId)
   const trophyWords = getGuidedTrophyWordsForSegment(pathId, segment, vibe)
 
   return (
@@ -51,7 +53,11 @@ export function TrophyWordFallbackPanel({
 
       <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {trophyWords.map((trophyWord) => (
-          <TrophyWordCard key={trophyWord.word} trophyWord={trophyWord} />
+          <TrophyWordCard
+            key={trophyWord.word}
+            trophyWord={trophyWord}
+            authoredBaseLanguage={pathMetadata?.baseLanguage ?? 'German'}
+          />
         ))}
       </section>
 

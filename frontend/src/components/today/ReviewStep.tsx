@@ -1,6 +1,7 @@
 import { CheckCircle2, Sparkles, XCircle } from 'lucide-react'
 import { useState } from 'react'
-import { getGuidedReviewChoices, type GuidedLesson, type GuidedReviewChoice, type LessonItem } from '@/data/guidedLessons'
+import { getGuidedReviewChoices, resolveGuidedBaseContent, type GuidedLesson, type GuidedReviewChoice, type LessonItem } from '@/data/guidedLessons'
+import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -19,6 +20,8 @@ type ReviewStepProps = {
 
 export function ReviewStep({ lesson, reviewItems, onFinish }: ReviewStepProps) {
   const { t } = useTranslation()
+  const { profile } = useAuth()
+  const preferredBaseLanguage = profile?.base_language
   const [itemIndex, setItemIndex] = useState(0)
   const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null)
   const [status, setStatus] = useState<'idle' | 'correct' | 'wrong'>('idle')
@@ -57,6 +60,10 @@ export function ReviewStep({ lesson, reviewItems, onFinish }: ReviewStepProps) {
   }
 
   const item = reviewItems[itemIndex]
+  const resolvedBasePrompt = resolveGuidedBaseContent(item.baseText, {
+    preferredBaseLanguage,
+    authoredBaseLanguage: lesson.baseLanguage,
+  }).text
   const choices = rotateChoices(getGuidedReviewChoices(lesson, item), itemIndex)
   const isLastItem = itemIndex === reviewItems.length - 1
 
@@ -105,7 +112,7 @@ export function ReviewStep({ lesson, reviewItems, onFinish }: ReviewStepProps) {
           {t('today.review.basePrompt')}
         </p>
         <p className="mt-3 break-words text-3xl font-semibold leading-tight text-[var(--text-primary)]">
-          {item.baseText}
+          {resolvedBasePrompt}
         </p>
         <p className="mt-5 text-sm font-medium text-[var(--text-muted)]">
           {t('today.review.choicePrompt')}

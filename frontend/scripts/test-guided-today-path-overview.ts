@@ -14,6 +14,7 @@ import {
   getGuidedTodayPathOptions,
   getGuidedPathOverview,
   getGuidedPathLessons,
+  resolveGuidedBaseContent,
   resolveGuidedLessonVariant,
 } from '../src/data/guidedLessons.ts'
 import {
@@ -504,12 +505,15 @@ function collectCoherenceFlags() {
       if (!variant) continue
 
       const searchableContext = [
-        lessonDefinition.title,
+        resolveGuidedBaseContent(lessonDefinition.title, { authoredBaseLanguage: lessonDefinition.baseLanguage }).text,
         lessonDefinition.situation.en,
         lessonDefinition.situation.de,
         variant.corePhrase.targetText,
-        variant.corePhrase.baseText,
-        ...variant.chunks.flatMap((chunk) => [chunk.targetText, chunk.baseText]),
+        resolveGuidedBaseContent(variant.corePhrase.baseText, { authoredBaseLanguage: lessonDefinition.baseLanguage }).text,
+        ...variant.chunks.flatMap((chunk) => [
+          chunk.targetText,
+          resolveGuidedBaseContent(chunk.baseText, { authoredBaseLanguage: lessonDefinition.baseLanguage }).text,
+        ]),
       ].join(' ').toLowerCase()
 
       const seenTargets = new Set<string>()
@@ -520,7 +524,7 @@ function collectCoherenceFlags() {
         }
         seenTargets.add(target)
 
-        if (item.baseText.trim().length < 2) {
+        if (resolveGuidedBaseContent(item.baseText, { authoredBaseLanguage: lessonDefinition.baseLanguage }).text.trim().length < 2) {
           flags.push(`lesson ${lessonDefinition.lessonNumber}/${vibeId}: suspiciously short German base text for "${item.targetText}"`)
         }
 

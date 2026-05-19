@@ -12,6 +12,8 @@ import {
 import {
   GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES,
   getGuidedTodayPathOptions,
+  guidedBaseLanguageToContentLocale,
+  guidedContentLocaleToBaseLanguage,
   GUIDED_LESSONS,
   getCurrentGuidedLesson,
   getFirstIncompleteGuidedLesson,
@@ -22,7 +24,10 @@ import {
   getGuidedTypeFallbackChoices,
   getNextGuidedLesson,
   normalizeGuidedAnswer,
+  resolveGuidedBaseContent,
   resolveGuidedLessonVariant,
+  type GuidedBaseContentValue,
+  type GuidedBaseLanguage,
   type GuidedLessonDefinition,
   type GuidedLessonVibeVariant,
 } from '../src/data/guidedLessons.ts'
@@ -2207,7 +2212,6 @@ const expectedScannedGermanFieldKinds = [
   'sceneCaption',
   'situation.de',
   'speakTarget.baseCue',
-  'trophyWord.example',
   'trophyWord.meaning',
   'trophyWord.whyThisWord',
 ]
@@ -2282,6 +2286,40 @@ assert('German learner-facing Guided Today fields avoid lost-byte (?) diacritic 
 
 const mojibakeFlags = collectMojibakeFlags()
 assert('German learner-facing Guided Today fields avoid UTF-8 mojibake (Ã¶ etc.)', mojibakeFlags.length === 0, mojibakeFlags)
+
+console.log('\n[base content resolver]')
+const legacyString = resolveGuidedBaseContent(
+  'Legacy German cue',
+  { preferredBaseLanguage: 'English', authoredBaseLanguage: 'German' },
+)
+assert('legacy string content resolves as authored base during transition', legacyString.text === 'Legacy German cue' && legacyString.locale === 'de' && legacyString.language === 'German' && !legacyString.isFallback, legacyString)
+
+const preferredAvailable = resolveGuidedBaseContent(
+  { de: 'Deutsch', en: 'English' },
+  { preferredBaseLanguage: 'English', authoredBaseLanguage: 'German' },
+)
+assert('dual-locale content prefers available profile base', preferredAvailable.text === 'English' && preferredAvailable.locale === 'en' && preferredAvailable.language === 'English' && !preferredAvailable.isFallback, preferredAvailable)
+
+const germanFallback = resolveGuidedBaseContent(
+  { de: 'Deutscher Hinweis' },
+  { preferredBaseLanguage: 'English', authoredBaseLanguage: 'German' },
+)
+assert('German-base content falls back to German when English is preferred but absent', germanFallback.text === 'Deutscher Hinweis' && germanFallback.locale === 'de' && germanFallback.language === 'German', germanFallback)
+assert('German-base fallback reports fallback state for known but unavailable preferred base', germanFallback.isFallback, germanFallback)
+
+const englishAuthored = resolveGuidedBaseContent(
+  { en: 'English cue' },
+  { preferredBaseLanguage: 'English', authoredBaseLanguage: 'English' },
+)
+assert('German-target English-authored content resolves English for English preference', englishAuthored.text === 'English cue' && englishAuthored.locale === 'en' && englishAuthored.language === 'English' && !englishAuthored.isFallback, englishAuthored)
+
+const unknownPreferred = resolveGuidedBaseContent(
+  { de: 'Autorisierter deutscher Hinweis' },
+  { preferredBaseLanguage: 'Spanish', authoredBaseLanguage: 'German' },
+)
+assert('unknown preferred base language silently falls back to authored base', unknownPreferred.text === 'Autorisierter deutscher Hinweis' && unknownPreferred.locale === 'de' && unknownPreferred.language === 'German', unknownPreferred)
+assert('base language to content locale map is intentionally limited', guidedBaseLanguageToContentLocale('English') === 'en' && guidedBaseLanguageToContentLocale('German') === 'de' && guidedBaseLanguageToContentLocale('Spanish') === undefined, guidedBaseLanguageToContentLocale('Spanish'))
+assert('content locale maps back to display base language', guidedContentLocaleToBaseLanguage('en') === 'English' && guidedContentLocaleToBaseLanguage('de') === 'German', { en: guidedContentLocaleToBaseLanguage('en'), de: guidedContentLocaleToBaseLanguage('de') })
 
 console.log('\n[vibe resolution]')
 if (firstDefinition) {
@@ -2452,23 +2490,23 @@ function validateVariant(
 ) {
   assert(`${lesson.id}/${vibeId} content status is draft or final`, variant.contentStatus === 'draft' || variant.contentStatus === 'final', variant.contentStatus)
   assert(`${lesson.id}/${vibeId} target text exists`, hasText(variant.corePhrase.targetText), variant.corePhrase)
-  assert(`${lesson.id}/${vibeId} base text exists`, hasText(variant.corePhrase.baseText), variant.corePhrase)
-  assert(`${lesson.id}/${vibeId} meaning exists`, hasText(variant.meaning), variant.meaning)
-  assert(`${lesson.id}/${vibeId} chunks are non-empty`, variant.chunks.length > 0 && variant.chunks.every((chunk) => hasText(chunk.id) && hasText(chunk.targetText) && hasText(chunk.baseText)), variant.chunks)
-  assert(`${lesson.id}/${vibeId} lesson items are non-empty`, variant.lessonItems.length > 0 && variant.lessonItems.every((item) => hasText(item.id) && hasText(item.targetText) && hasText(item.baseText) && item.acceptedAnswers.length > 0), variant.lessonItems)
+  assert(`${lesson.id}/${vibeId} base text exists`, hasBaseContentText(variant.corePhrase.baseText, lesson.baseLanguage), variant.corePhrase)
+  assert(`${lesson.id}/${vibeId} meaning exists`, hasBaseContentText(variant.meaning, lesson.baseLanguage), variant.meaning)
+  assert(`${lesson.id}/${vibeId} chunks are non-empty`, variant.chunks.length > 0 && variant.chunks.every((chunk) => hasText(chunk.id) && hasText(chunk.targetText) && hasBaseContentText(chunk.baseText, lesson.baseLanguage)), variant.chunks)
+  assert(`${lesson.id}/${vibeId} lesson items are non-empty`, variant.lessonItems.length > 0 && variant.lessonItems.every((item) => hasText(item.id) && hasText(item.targetText) && hasBaseContentText(item.baseText, lesson.baseLanguage) && item.acceptedAnswers.length > 0), variant.lessonItems)
   assert(`${lesson.id}/${vibeId} build target exists`, hasText(variant.build.targetText), variant.build)
   assert(`${lesson.id}/${vibeId} build chips support target phrase`, chipsSupportTarget(variant.build.chips, variant.build.targetText), variant.build)
   assert(`${lesson.id}/${vibeId} type recall answer exists`, hasText(variant.typeRecall.answer), variant.typeRecall)
   assert(`${lesson.id}/${vibeId} acceptedAnswers includes answer`, variant.typeRecall.acceptedAnswers.some((answer) => normalizeGuidedAnswer(answer) === normalizeGuidedAnswer(variant.typeRecall.answer)), variant.typeRecall)
   assert(`${lesson.id}/${vibeId} type recall has fallback choices`, variant.typeRecall.fallbackChoices.length >= 3 && variant.typeRecall.fallbackChoices.some((choice) => normalizeGuidedAnswer(choice) === normalizeGuidedAnswer(variant.typeRecall.answer)), variant.typeRecall)
-  assert(`${lesson.id}/${vibeId} speak target has cue`, hasText(variant.speakTarget.baseCue), variant.speakTarget)
+  assert(`${lesson.id}/${vibeId} speak target has cue`, hasBaseContentText(variant.speakTarget.baseCue, lesson.baseLanguage), variant.speakTarget)
   assert(`${lesson.id}/${vibeId} speak target phrase is compatible with core phrase`, areCompatiblePhrases(variant.speakTarget.targetPhrase, variant.corePhrase.targetText), variant.speakTarget)
   const expectedLocales = GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES[lesson.targetLanguage]
   assert(`${lesson.id}/${vibeId} speak language matches path targetLanguage (${lesson.targetLanguage})`, expectedLocales.includes(variant.speakTarget.language), { observed: variant.speakTarget.language, expected: expectedLocales })
   assert(`${lesson.id}/${vibeId} speak threshold is usable`, variant.speakTarget.passingThreshold > 0 && variant.speakTarget.passingThreshold <= 1, variant.speakTarget)
-  assert(`${lesson.id}/${vibeId} scene caption exists`, hasText(variant.sceneCaption), variant.sceneCaption)
-  assert(`${lesson.id}/${vibeId} trophy word is complete`, hasText(variant.trophyWord.word) && hasText(variant.trophyWord.meaning) && hasText(variant.trophyWord.example) && hasText(variant.trophyWord.whyThisWord), variant.trophyWord)
-  assert(`${lesson.id}/${vibeId} placeholder media exists`, variant.placeholderMedia !== undefined && hasText(variant.placeholderMedia.caption), variant.placeholderMedia)
+  assert(`${lesson.id}/${vibeId} scene caption exists`, hasBaseContentText(variant.sceneCaption, lesson.baseLanguage), variant.sceneCaption)
+  assert(`${lesson.id}/${vibeId} trophy word is complete`, hasText(variant.trophyWord.word) && hasBaseContentText(variant.trophyWord.meaning, lesson.baseLanguage) && hasText(variant.trophyWord.example) && hasBaseContentText(variant.trophyWord.whyThisWord, lesson.baseLanguage), variant.trophyWord)
+  assert(`${lesson.id}/${vibeId} placeholder media exists`, variant.placeholderMedia !== undefined && hasBaseContentText(variant.placeholderMedia.caption, lesson.baseLanguage), variant.placeholderMedia)
   assert(`${lesson.id}/${vibeId} song seed exists`, variant.songSeed !== undefined && hasText(variant.songSeed.genre) && hasText(variant.songSeed.mood), variant.songSeed)
   assert(`${lesson.id}/${vibeId} visual notes exist`, hasText(variant.visualNotes), variant.visualNotes)
 }
@@ -2499,6 +2537,10 @@ function hasText(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0
 }
 
+function hasBaseContentText(value: GuidedBaseContentValue | undefined, authoredBaseLanguage: GuidedBaseLanguage) {
+  return hasText(resolveGuidedBaseContent(value, { authoredBaseLanguage }).text)
+}
+
 function stripPunctuation(value: string) {
   return normalizeGuidedAnswer(value).replace(/[^a-z0-9]+/g, ' ').trim()
 }
@@ -2519,40 +2561,45 @@ function collectGermanFieldEntries(): GermanFieldEntry[] {
   const entries: GermanFieldEntry[] = []
   for (const lessonDefinition of GUIDED_LESSONS) {
     const lessonPrefix = lessonDefinition.id
-    entries.push({ path: `${lessonPrefix}:situation.de`, value: lessonDefinition.situation.de })
 
     if (lessonDefinition.baseLanguage !== 'German') continue
 
-    const teaserSituation = lessonDefinition.nextLessonTeaser?.situation
-    if (typeof teaserSituation === 'string' && teaserSituation.length > 0) {
-      entries.push({ path: `${lessonPrefix}:nextLessonTeaser.situation`, value: teaserSituation })
-    }
+    entries.push({ path: `${lessonPrefix}:situation.de`, value: lessonDefinition.situation.de })
+    collectGermanLeaf(entries, `${lessonPrefix}:nextLessonTeaser.situation`, lessonDefinition.nextLessonTeaser?.situation)
 
     for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
       const variant = lessonDefinition.vibeVariants[vibeId]
       if (!variant) continue
       const variantPrefix = `${lessonPrefix}/${vibeId}`
 
-      entries.push({ path: `${variantPrefix}:meaning`, value: variant.meaning })
-      entries.push({ path: `${variantPrefix}:corePhrase.baseText`, value: variant.corePhrase.baseText })
+      collectGermanLeaf(entries, `${variantPrefix}:meaning`, variant.meaning)
+      collectGermanLeaf(entries, `${variantPrefix}:corePhrase.baseText`, variant.corePhrase.baseText)
       variant.chunks.forEach((phraseChunk, idx) => {
-        entries.push({ path: `${variantPrefix}:chunks[${idx}].baseText`, value: phraseChunk.baseText })
+        collectGermanLeaf(entries, `${variantPrefix}:chunks[${idx}].baseText`, phraseChunk.baseText)
       })
       variant.lessonItems.forEach((item, idx) => {
-        entries.push({ path: `${variantPrefix}:lessonItems[${idx}].baseText`, value: item.baseText })
+        collectGermanLeaf(entries, `${variantPrefix}:lessonItems[${idx}].baseText`, item.baseText)
       })
-      entries.push({ path: `${variantPrefix}:sceneCaption`, value: variant.sceneCaption })
-      const placeholderCaption = variant.placeholderMedia?.caption
-      if (typeof placeholderCaption === 'string' && placeholderCaption.length > 0) {
-        entries.push({ path: `${variantPrefix}:placeholderMedia.caption`, value: placeholderCaption })
-      }
-      entries.push({ path: `${variantPrefix}:speakTarget.baseCue`, value: variant.speakTarget.baseCue })
-      entries.push({ path: `${variantPrefix}:trophyWord.meaning`, value: variant.trophyWord.meaning })
-      entries.push({ path: `${variantPrefix}:trophyWord.example`, value: variant.trophyWord.example })
-      entries.push({ path: `${variantPrefix}:trophyWord.whyThisWord`, value: variant.trophyWord.whyThisWord })
+      collectGermanLeaf(entries, `${variantPrefix}:sceneCaption`, variant.sceneCaption)
+      collectGermanLeaf(entries, `${variantPrefix}:placeholderMedia.caption`, variant.placeholderMedia?.caption)
+      collectGermanLeaf(entries, `${variantPrefix}:speakTarget.baseCue`, variant.speakTarget.baseCue)
+      collectGermanLeaf(entries, `${variantPrefix}:trophyWord.meaning`, variant.trophyWord.meaning)
+      collectGermanLeaf(entries, `${variantPrefix}:trophyWord.whyThisWord`, variant.trophyWord.whyThisWord)
     }
   }
   return entries
+}
+
+function collectGermanLeaf(entries: GermanFieldEntry[], path: string, value: GuidedBaseContentValue | undefined) {
+  if (typeof value === 'string') {
+    if (value.length > 0) entries.push({ path, value })
+    return
+  }
+
+  const germanText = value?.de
+  if (typeof germanText === 'string' && germanText.length > 0) {
+    entries.push({ path, value: germanText })
+  }
 }
 
 function getScannedGermanFieldKinds(): string[] {
