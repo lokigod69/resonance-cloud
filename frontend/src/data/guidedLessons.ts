@@ -940,6 +940,16 @@ const GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-8',
+  title: 'Cebuano A1 Praxis 8',
+  shortTitle: 'A1 Praxis 8',
+  subtitle: 'Hotel, Zimmer und Ausruhen auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -39989,6 +39999,319 @@ const cebuanoA1Practical7Lessons: GuidedLessonDefinition[] = cebuanoA1Practical7
 })
 
 
+const cebuanoA1Practical8Inputs: CebuanoP2LessonInput[] = [
+  {
+    slug: 'i-have-a-reservation',
+    title: 'Ich habe eine Reservierung',
+    situation: { en: 'At a hotel desk, say that you have a reservation.', de: 'An der Hotelrezeption sagst du, dass du eine Reservierung hast.' },
+    pedagogicalGoal: 'Naa koy reserbasyon als einfache Hotel-Anmeldung verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Naa koy reserbasyon.', baseText: 'Ich habe eine Reservierung.' },
+      meaning: 'Eine kurze Rezeptionseröffnung ohne Buchungsdetails.',
+      chunks: [
+        { id: 'naa-koy', targetText: 'Naa koy', baseText: 'ich habe' },
+        { id: 'reserbasyon', targetText: 'reserbasyon.', baseText: 'eine Reservierung.' },
+      ],
+      lessonItems: [
+        { id: 'reserbasyon', targetText: 'reserbasyon', baseText: 'Reservierung', acceptedAnswers: cebuanoAnswers('reserbasyon', 'Reserbasyon', 'reservation', 'Reservation') },
+        { id: 'naa', targetText: 'naa', baseText: 'haben / es gibt', acceptedAnswers: cebuanoAnswers('naa', 'Naa') },
+        { id: 'koy', targetText: 'koy', baseText: 'ich habe (ko + y)', acceptedAnswers: cebuanoAnswers('koy', 'Koy', "ko'y", "Ko'y") },
+        { id: 'hotel', targetText: 'hotel', baseText: 'Hotel', acceptedAnswers: cebuanoAnswers('hotel', 'Hotel') },
+      ],
+      buildChips: ['Naa koy', 'reserbasyon.', 'hotel', 'kwarto'],
+      typeRecall: { before: 'Naa koy ', answer: 'reserbasyon', after: '.', acceptedAnswers: cebuanoAnswers('reserbasyon', 'Reserbasyon', 'reservation', 'Reservation'), fallbackChoices: ['reserbasyon', 'kwarto', 'yabi', 'pamahaw'] },
+      speakTarget: { baseCue: 'Ich habe eine Reservierung.', targetPhrase: 'Naa koy reserbasyon.', requiredTokens: ['naa', 'koy', 'reserbasyon'], optionalTokens: ['reservation'] },
+      sceneCaption: 'Sa hotel, moingon ka sa resepsyon: naa koy reserbasyon.',
+      trophyWord: { word: 'reserbasyon', meaning: 'Reservierung', example: 'Naa koy reserbasyon.', whyThisWord: 'Reserbasyon ist der klare Hotel-Anker für die Ankunft an der Rezeption.' },
+      placeholderCaption: 'Hotel desk with a simple reservation check-in.',
+      songMood: 'hotel arrival reservation',
+      visualNotes: 'Reception desk, small booking note, reserbasyon highlighted.',
+    }),
+  },
+  {
+    slug: 'i-need-a-room',
+    title: 'Ich brauche ein Zimmer',
+    situation: { en: 'Say that you need a room.', de: 'Du sagst, dass du ein Zimmer brauchst.' },
+    pedagogicalGoal: 'Kinahanglan ko og kwarto als einfache Zimmerfrage sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Kinahanglan ko og kwarto.', baseText: 'Ich brauche ein Zimmer.' },
+      meaning: 'Eine direkte Bedarfsphrase für ein Zimmer.',
+      chunks: [
+        { id: 'kinahanglan-ko', targetText: 'Kinahanglan ko', baseText: 'ich brauche' },
+        { id: 'og-kwarto', targetText: 'og kwarto.', baseText: 'ein Zimmer.' },
+      ],
+      lessonItems: [
+        { id: 'kwarto', targetText: 'kwarto', baseText: 'Zimmer', acceptedAnswers: cebuanoAnswers('kwarto', 'Kwarto', 'kuwarto', 'Kuwarto') },
+        { id: 'kinahanglan', targetText: 'kinahanglan', baseText: 'brauchen', acceptedAnswers: cebuanoAnswers('kinahanglan', 'Kinahanglan') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'lawak', targetText: 'lawak', baseText: 'Raum / Zimmer', acceptedAnswers: cebuanoAnswers('lawak', 'Lawak') },
+      ],
+      buildChips: ['Kinahanglan ko', 'og kwarto.', 'reserbasyon', 'yabi'],
+      typeRecall: { before: 'Kinahanglan ko og ', answer: 'kwarto', after: '.', acceptedAnswers: cebuanoAnswers('kwarto', 'Kwarto', 'kuwarto', 'Kuwarto'), fallbackChoices: ['kwarto', 'yabi', 'kasilyas', 'tualya'] },
+      speakTarget: { baseCue: 'Ich brauche ein Zimmer.', targetPhrase: 'Kinahanglan ko og kwarto.', requiredTokens: ['kinahanglan', 'ko', 'kwarto'], optionalTokens: ['kuwarto', 'og', 'ug', 'lawak'] },
+      sceneCaption: 'Kung wala pa kay lugar, klaro nga kinahanglan ko og kwarto.',
+      trophyWord: { word: 'kwarto', meaning: 'Zimmer', example: 'Kinahanglan ko og kwarto.', whyThisWord: 'Kwarto ist im Hotelkontext ein natürlicher Cebuano-Anker für Zimmer.' },
+      placeholderCaption: 'Asking for a room at a small hotel.',
+      songMood: 'asking for a room',
+      visualNotes: 'Room card and reception bell, kwarto highlighted.',
+    }),
+  },
+  {
+    slug: 'i-need-the-key',
+    title: 'Ich brauche einen Schlüssel',
+    situation: { en: 'Ask for a key at the desk.', de: 'Du bittest an der Rezeption um einen Schlüssel.' },
+    pedagogicalGoal: 'Kinahanglan ko og yabi als kurze Schlüsselbitte verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Kinahanglan ko og yabi.', baseText: 'Ich brauche einen Schlüssel.' },
+      meaning: 'Eine knappe Bitte um den Schlüssel oder die Schlüsselkarte.',
+      chunks: [
+        { id: 'kinahanglan-ko', targetText: 'Kinahanglan ko', baseText: 'ich brauche' },
+        { id: 'og-yabi', targetText: 'og yabi.', baseText: 'einen Schlüssel.' },
+      ],
+      lessonItems: [
+        { id: 'yabi', targetText: 'yabi', baseText: 'Schlüssel', acceptedAnswers: cebuanoAnswers('yabi', 'Yabi', 'yawi', 'Yawi', 'yawe', 'Yawe') },
+        { id: 'kard', targetText: 'kard', baseText: 'Karte', acceptedAnswers: cebuanoAnswers('kard', 'Kard', 'card', 'Card') },
+        { id: 'resepsyon', targetText: 'resepsyon', baseText: 'Rezeption', acceptedAnswers: cebuanoAnswers('resepsyon', 'Resepsyon', 'reception', 'Reception') },
+        { id: 'pultahan', targetText: 'pultahan', baseText: 'Tür', acceptedAnswers: cebuanoAnswers('pultahan', 'Pultahan') },
+      ],
+      buildChips: ['Kinahanglan ko', 'og yabi.', 'kwarto', 'hotel'],
+      typeRecall: { before: 'Kinahanglan ko og ', answer: 'yabi', after: '.', acceptedAnswers: cebuanoAnswers('yabi', 'Yabi', 'yawi', 'Yawi', 'yawe', 'Yawe'), fallbackChoices: ['yabi', 'kwarto', 'tualya', 'wi-fi'] },
+      speakTarget: { baseCue: 'Ich brauche einen Schlüssel.', targetPhrase: 'Kinahanglan ko og yabi.', requiredTokens: ['kinahanglan', 'ko', 'yabi'], optionalTokens: ['yawi', 'yawe', 'og', 'ug'] },
+      sceneCaption: 'Sa resepsyon, mangayo ka og yabi para sa kwarto.',
+      trophyWord: { word: 'yabi', meaning: 'Schlüssel', example: 'Kinahanglan ko og yabi.', whyThisWord: 'Yabi ist ein praktischer Schlüssel-Anker; yawi und yawe bleiben als regionale Varianten akzeptiert.' },
+      placeholderCaption: 'Receiving a hotel room key.',
+      songMood: 'room key request',
+      visualNotes: 'Key card and door number, yabi highlighted.',
+    }),
+  },
+  {
+    slug: 'is-there-wifi',
+    title: 'Gibt es WLAN?',
+    situation: { en: 'Ask whether there is Wi-Fi here.', de: 'Du fragst, ob es hier WLAN gibt.' },
+    pedagogicalGoal: 'Naay wifi diri? als moderne Hotel-Servicefrage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Naay wifi diri?', baseText: 'Gibt es hier WLAN?' },
+      meaning: 'Eine kurze Frage nach Internet im Hotel oder Café.',
+      chunks: [
+        { id: 'naay-wifi', targetText: 'Naay wifi', baseText: 'gibt es WLAN' },
+        { id: 'diri', targetText: 'diri?', baseText: 'hier?' },
+      ],
+      lessonItems: [
+        { id: 'wifi', targetText: 'wifi', baseText: 'WLAN', acceptedAnswers: cebuanoAnswers('wifi', 'Wifi', 'WiFi', 'Wi-Fi', 'wi-fi') },
+        { id: 'naay', targetText: 'naay', baseText: 'es gibt', acceptedAnswers: cebuanoAnswers('naay', 'Naay') },
+        { id: 'diri', targetText: 'diri', baseText: 'hier', acceptedAnswers: cebuanoAnswers('diri', 'Diri') },
+        { id: 'internet', targetText: 'internet', baseText: 'Internet', acceptedAnswers: cebuanoAnswers('internet', 'Internet') },
+      ],
+      buildChips: ['Naay wifi', 'diri?', 'kwarto', 'pamahaw'],
+      typeRecall: { before: 'Naay ', answer: 'wifi', after: ' diri?', acceptedAnswers: cebuanoAnswers('wifi', 'Wifi', 'WiFi', 'Wi-Fi', 'wi-fi'), fallbackChoices: ['wifi', 'Yabi', 'Kwarto', 'Tualya'] },
+      speakTarget: { baseCue: 'Gibt es hier WLAN?', targetPhrase: 'Naay wifi diri?', requiredTokens: ['naay', 'wifi', 'diri'], optionalTokens: ['internet'] },
+      sceneCaption: 'Sa hotel, mangutana ka kon naay wifi diri.',
+      trophyWord: { word: 'wifi', meaning: 'WLAN', example: 'Naay wifi diri?', whyThisWord: 'Wifi ist ein erwartbarer moderner Serviceanker und bleibt als Schreibvariante flexibel.' },
+      placeholderCaption: 'Asking for Wi-Fi in the hotel lobby.',
+      songMood: 'checking hotel wifi',
+      visualNotes: 'Lobby wifi icon, wifi highlighted.',
+    }),
+  },
+  {
+    slug: 'where-is-the-bathroom',
+    title: 'Wo ist die Toilette?',
+    situation: { en: 'Ask where the bathroom or toilet is.', de: 'Du fragst, wo die Toilette ist.' },
+    pedagogicalGoal: 'Asa ang kasilyas? als einfache Hotel-Ortsfrage sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Asa ang kasilyas?', baseText: 'Wo ist die Toilette?' },
+      meaning: 'Eine klare Frage nach Toilette oder Bad, ohne weitere Erklärung.',
+      chunks: [
+        { id: 'asa-ang', targetText: 'Asa ang', baseText: 'wo ist die' },
+        { id: 'kasilyas', targetText: 'kasilyas?', baseText: 'Toilette?' },
+      ],
+      lessonItems: [
+        { id: 'kasilyas', targetText: 'kasilyas', baseText: 'Toilette', acceptedAnswers: cebuanoAnswers('kasilyas', 'Kasilyas') },
+        { id: 'banyo', targetText: 'banyo', baseText: 'Bad', acceptedAnswers: cebuanoAnswers('banyo', 'Banyo') },
+        { id: 'asa', targetText: 'asa', baseText: 'wo', acceptedAnswers: cebuanoAnswers('asa', 'Asa') },
+        { id: 'sulod', targetText: 'sulod', baseText: 'drinnen', acceptedAnswers: cebuanoAnswers('sulod', 'Sulod') },
+      ],
+      buildChips: ['Asa ang', 'kasilyas?', 'kwarto', 'tualya'],
+      typeRecall: { before: 'Asa ang ', answer: 'kasilyas', after: '?', acceptedAnswers: cebuanoAnswers('kasilyas', 'Kasilyas'), fallbackChoices: ['kasilyas', 'kwarto', 'yabi', 'pamahaw'] },
+      speakTarget: { baseCue: 'Wo ist die Toilette?', targetPhrase: 'Asa ang kasilyas?', requiredTokens: ['asa', 'ang', 'kasilyas'], optionalTokens: ['banyo'] },
+      sceneCaption: 'Sa lobby o kwarto, mangutana ka: asa ang kasilyas?',
+      trophyWord: { word: 'kasilyas', meaning: 'Toilette', example: 'Asa ang kasilyas?', whyThisWord: 'Kasilyas ist ein direkter A1-Ortsanker für Toilette oder Badbedarf.' },
+      placeholderCaption: 'Looking for the bathroom in a hotel.',
+      songMood: 'finding the bathroom',
+      visualNotes: 'Simple bathroom sign, kasilyas highlighted.',
+    }),
+  },
+  {
+    slug: 'i-need-a-towel',
+    title: 'Ich brauche ein Handtuch',
+    situation: { en: 'Ask for a towel.', de: 'Du bittest um ein Handtuch.' },
+    pedagogicalGoal: 'Kinahanglan ko og tualya als einfache Zimmerbitte verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Kinahanglan ko og tualya.', baseText: 'Ich brauche ein Handtuch.' },
+      meaning: 'Eine einfache Bitte für etwas im Zimmer.',
+      chunks: [
+        { id: 'kinahanglan-ko', targetText: 'Kinahanglan ko', baseText: 'ich brauche' },
+        { id: 'og-tualya', targetText: 'og tualya.', baseText: 'ein Handtuch.' },
+      ],
+      lessonItems: [
+        { id: 'tualya', targetText: 'tualya', baseText: 'Handtuch', acceptedAnswers: cebuanoAnswers('tualya', 'Tualya', 'tuwalya', 'Tuwalya') },
+        { id: 'limpyo', targetText: 'limpyo', baseText: 'sauber', acceptedAnswers: cebuanoAnswers('limpyo', 'Limpyo') },
+        { id: 'usa', targetText: 'usa', baseText: 'eins / ein', acceptedAnswers: cebuanoAnswers('usa', 'Usa') },
+        { id: 'kwarto', targetText: 'kwarto', baseText: 'Zimmer', acceptedAnswers: cebuanoAnswers('kwarto', 'Kwarto') },
+      ],
+      buildChips: ['Kinahanglan ko', 'og tualya.', 'kasilyas', 'kwarto'],
+      typeRecall: { before: 'Kinahanglan ko og ', answer: 'tualya', after: '.', acceptedAnswers: cebuanoAnswers('tualya', 'Tualya', 'tuwalya', 'Tuwalya'), fallbackChoices: ['tualya', 'yabi', 'wi-fi', 'pamahaw'] },
+      speakTarget: { baseCue: 'Ich brauche ein Handtuch.', targetPhrase: 'Kinahanglan ko og tualya.', requiredTokens: ['kinahanglan', 'ko', 'tualya'], optionalTokens: ['tuwalya', 'og', 'ug'] },
+      sceneCaption: 'Kung kulang sa kwarto, diretso ka: kinahanglan ko og tualya.',
+      trophyWord: { word: 'tualya', meaning: 'Handtuch', example: 'Kinahanglan ko og tualya.', whyThisWord: 'Tualya ist ein konkreter Hotelbedarf und als tuwalya-Variante leicht wiederzuerkennen.' },
+      placeholderCaption: 'Requesting a towel for the room.',
+      songMood: 'simple room request',
+      visualNotes: 'Folded towel on bed, tualya highlighted.',
+    }),
+  },
+  {
+    slug: 'i-want-to-sleep',
+    title: 'Ich möchte schlafen',
+    situation: { en: 'Say that you want to sleep.', de: 'Du sagst, dass du schlafen möchtest.' },
+    pedagogicalGoal: 'Gusto ko matulog als kurze Ruhephrase nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Gusto ko matulog.', baseText: 'Ich möchte schlafen.' },
+      meaning: 'Eine einfache Aussage, wenn du müde bist und schlafen willst.',
+      chunks: [
+        { id: 'gusto-ko', targetText: 'Gusto ko', baseText: 'ich möchte' },
+        { id: 'matulog', targetText: 'matulog.', baseText: 'schlafen.' },
+      ],
+      lessonItems: [
+        { id: 'matulog', targetText: 'matulog', baseText: 'schlafen', acceptedAnswers: cebuanoAnswers('matulog', 'Matulog') },
+        { id: 'gusto', targetText: 'gusto', baseText: 'möchten / wollen', acceptedAnswers: cebuanoAnswers('gusto', 'Gusto') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'kapoy', targetText: 'kapoy', baseText: 'müde', acceptedAnswers: cebuanoAnswers('kapoy', 'Kapoy') },
+      ],
+      buildChips: ['Gusto ko', 'matulog.', 'tualya', 'pamahaw'],
+      typeRecall: { before: 'Gusto ko ', answer: 'matulog', after: '.', acceptedAnswers: cebuanoAnswers('matulog', 'Matulog'), fallbackChoices: ['matulog', 'pamahaw', 'mogawas', 'kasilyas'] },
+      speakTarget: { baseCue: 'Ich möchte schlafen.', targetPhrase: 'Gusto ko matulog.', requiredTokens: ['gusto', 'ko', 'matulog'], optionalTokens: ['kapoy'] },
+      sceneCaption: 'Human sa biyahe, diretso ka: gusto ko matulog.',
+      trophyWord: { word: 'matulog', meaning: 'schlafen', example: 'Gusto ko matulog.', whyThisWord: 'Matulog verbindet das Hotelzimmer mit dem eigentlichen Ziel: ausruhen und schlafen.' },
+      placeholderCaption: 'Getting ready to sleep in the room.',
+      songMood: 'ready to sleep',
+      visualNotes: 'Bedside lamp, quiet room, matulog highlighted.',
+    }),
+  },
+  {
+    slug: 'what-time-is-breakfast',
+    title: 'Wann ist Frühstück?',
+    situation: { en: 'Ask when breakfast is.', de: 'Du fragst, wann Frühstück ist.' },
+    pedagogicalGoal: 'Kanus-a ang pamahaw? als einfache Hotelfrage verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Kanus-a ang pamahaw?', baseText: 'Wann ist Frühstück?' },
+      meaning: 'Eine kurze Frage nach Frühstückszeit, ohne Uhrzeitdetails.',
+      chunks: [
+        { id: 'kanus-a-ang', targetText: 'Kanus-a ang', baseText: 'wann ist das' },
+        { id: 'pamahaw', targetText: 'pamahaw?', baseText: 'Frühstück?' },
+      ],
+      lessonItems: [
+        { id: 'pamahaw', targetText: 'pamahaw', baseText: 'Frühstück', acceptedAnswers: cebuanoAnswers('pamahaw', 'Pamahaw') },
+        { id: 'kanus-a', targetText: 'kanus-a', baseText: 'wann', acceptedAnswers: cebuanoAnswers('kanus-a', 'Kanus-a', 'kanusa', 'Kanusa') },
+        { id: 'buntag', targetText: 'buntag', baseText: 'Morgen', acceptedAnswers: cebuanoAnswers('buntag', 'Buntag') },
+        { id: 'oras', targetText: 'oras', baseText: 'Uhrzeit', acceptedAnswers: cebuanoAnswers('oras', 'Oras') },
+      ],
+      buildChips: ['Kanus-a ang', 'pamahaw?', 'matulog', 'wi-fi'],
+      typeRecall: { before: 'Kanus-a ang ', answer: 'pamahaw', after: '?', acceptedAnswers: cebuanoAnswers('pamahaw', 'Pamahaw'), fallbackChoices: ['pamahaw', 'tualya', 'kwarto', 'yabi'] },
+      speakTarget: { baseCue: 'Wann ist Frühstück?', targetPhrase: 'Kanus-a ang pamahaw?', requiredTokens: ['kanus', 'a', 'pamahaw'], optionalTokens: ['kanusa', 'ang', 'buntag'] },
+      sceneCaption: 'Sa resepsyon, mangutana ka kon kanus-a ang pamahaw.',
+      trophyWord: { word: 'pamahaw', meaning: 'Frühstück', example: 'Kanus-a ang pamahaw?', whyThisWord: 'Pamahaw ist der Morgenanker im Hotel und passt zu einer sehr kurzen Zeitfrage.' },
+      placeholderCaption: 'Asking about breakfast time.',
+      songMood: 'breakfast timing',
+      visualNotes: 'Breakfast table icon, pamahaw highlighted.',
+    }),
+  },
+  {
+    slug: 'i-am-checking-out',
+    title: 'Ich gehe jetzt raus',
+    situation: { en: 'Say that you are leaving now at checkout.', de: 'Beim Auschecken sagst du, dass du jetzt gehst.' },
+    pedagogicalGoal: 'Mogawas na ko als einfache Checkout-nahe Abschiedsphrase verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Mogawas na ko.', baseText: 'Ich gehe jetzt raus.' },
+      meaning: 'Eine einfache Abreisephrase am Ende des Aufenthalts.',
+      chunks: [
+        { id: 'mogawas-na', targetText: 'Mogawas na', baseText: 'gehe jetzt raus' },
+        { id: 'ko', targetText: 'ko.', baseText: 'ich.' },
+      ],
+      lessonItems: [
+        { id: 'mogawas', targetText: 'mogawas', baseText: 'hinausgehen / weggehen', acceptedAnswers: cebuanoAnswers('mogawas', 'Mogawas', 'mo-gawas', 'Mo-gawas') },
+        { id: 'gawas', targetText: 'gawas', baseText: 'draußen / hinaus', acceptedAnswers: cebuanoAnswers('gawas', 'Gawas') },
+        { id: 'na', targetText: 'na', baseText: 'jetzt / schon', acceptedAnswers: cebuanoAnswers('na', 'Na') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+      ],
+      buildChips: ['Mogawas na', 'ko.', 'pamahaw', 'kwarto'],
+      typeRecall: { before: '', answer: 'Mogawas', after: ' na ko.', acceptedAnswers: cebuanoAnswers('Mogawas', 'mogawas', 'Mo-gawas', 'mo-gawas'), fallbackChoices: ['Mogawas', 'Matulog', 'Pamahaw', 'Tualya'] },
+      speakTarget: { baseCue: 'Ich gehe jetzt raus.', targetPhrase: 'Mogawas na ko.', requiredTokens: ['mogawas', 'na', 'ko'], optionalTokens: ['mo', 'gawas'] },
+      sceneCaption: 'Sa katapusan sa pagpuyo, moingon ka: mogawas na ko.',
+      trophyWord: { word: 'mogawas', meaning: 'hinausgehen / weggehen', example: 'Mogawas na ko.', whyThisWord: 'Mogawas hält Checkout auf A1-Niveau: Du sagst nur, dass du jetzt gehst.' },
+      placeholderCaption: 'Leaving the hotel room at checkout.',
+      songMood: 'leaving the hotel',
+      visualNotes: 'Door and suitcase, mogawas highlighted.',
+    }),
+  },
+  {
+    slug: 'i-can-rest-now',
+    title: 'Ich kann mich jetzt ausruhen',
+    situation: { en: 'Say that you can rest now.', de: 'Du sagst, dass du dich jetzt ausruhen kannst.' },
+    pedagogicalGoal: 'Makapahuway na ko als ruhiger Abschluss des Hotelpfads verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Makapahuway na ko.', baseText: 'Ich kann mich jetzt ausruhen.' },
+      meaning: 'Ein ruhiger Abschluss, nachdem Zimmer, Schlüssel und Bedarf geklärt sind.',
+      chunks: [
+        { id: 'makapahuway-na', targetText: 'Makapahuway na', baseText: 'kann mich jetzt ausruhen' },
+        { id: 'ko', targetText: 'ko.', baseText: 'ich.' },
+      ],
+      lessonItems: [
+        { id: 'makapahuway', targetText: 'makapahuway', baseText: 'sich ausruhen können', acceptedAnswers: cebuanoAnswers('makapahuway', 'Makapahuway', 'maka-pahuway', 'Maka-pahuway') },
+        { id: 'pahuway', targetText: 'pahuway', baseText: 'Ruhe / Pause', acceptedAnswers: cebuanoAnswers('pahuway', 'Pahuway') },
+        { id: 'na', targetText: 'na', baseText: 'jetzt / schon', acceptedAnswers: cebuanoAnswers('na', 'Na') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+      ],
+      buildChips: ['Makapahuway na', 'ko.', 'matulog', 'kwarto'],
+      typeRecall: { before: '', answer: 'Makapahuway', after: ' na ko.', acceptedAnswers: cebuanoAnswers('Makapahuway', 'makapahuway', 'Maka-pahuway', 'maka-pahuway'), fallbackChoices: ['Makapahuway', 'Mogawas', 'Pamahaw', 'Yabi'] },
+      speakTarget: { baseCue: 'Ich kann mich jetzt ausruhen.', targetPhrase: 'Makapahuway na ko.', requiredTokens: ['makapahuway', 'na', 'ko'], optionalTokens: ['maka', 'pahuway'] },
+      sceneCaption: 'Human masulbad ang hotel, makapahuway na ko.',
+      trophyWord: { word: 'makapahuway', meaning: 'sich ausruhen können', example: 'Makapahuway na ko.', whyThisWord: 'Makapahuway schließt den Hotelpfad mit dem eigentlichen Nutzen des Zimmers: Ruhe.' },
+      placeholderCaption: 'Resting after hotel check-in.',
+      songMood: 'finally resting',
+      visualNotes: 'Quiet room, soft light, makapahuway highlighted.',
+    }),
+  },
+]
+
+const cebuanoA1Practical8Lessons: GuidedLessonDefinition[] = cebuanoA1Practical8Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-8-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = cebuanoA1Practical8Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA,
+    lessonMetadata: { id, sequence: lessonNumber, title: lessonInput.title },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 8 abgeschlossen.',
+    },
+    vibeVariants: { bright: lessonInput.variant },
+  }
+})
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -54337,6 +54660,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...cebuanoA1Practical6Lessons,
   ...indonesianA1Practical1Lessons,
   ...cebuanoA1Practical7Lessons,
+  ...cebuanoA1Practical8Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -54417,6 +54741,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA,
     GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA,
   ]
 }
 

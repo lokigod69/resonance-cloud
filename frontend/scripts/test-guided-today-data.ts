@@ -501,6 +501,8 @@ const indonesianPathOneId = 'indonesian-a1-practical-1'
 const indonesianPathOneLessons = getGuidedPathLessons(indonesianPathOneId)
 const cebuanoPathSevenId = 'cebuano-a1-practical-7'
 const cebuanoPathSevenLessons = getGuidedPathLessons(cebuanoPathSevenId)
+const cebuanoPathEightId = 'cebuano-a1-practical-8'
+const cebuanoPathEightLessons = getGuidedPathLessons(cebuanoPathEightId)
 assert('Cebuano A1 Practical 1 resolves 10 lessons', getGuidedPathLessons(cebuanoPathOneId).length === 10, getGuidedPathLessons(cebuanoPathOneId).length)
 assert('Cebuano A1 Practical 2 resolves 10 lessons', cebuanoPathTwoLessons.length === 10, cebuanoPathTwoLessons.length)
 assert('Cebuano A1 Practical 3 resolves 10 lessons', cebuanoPathThreeLessons.length === 10, cebuanoPathThreeLessons.length)
@@ -509,7 +511,8 @@ assert('Cebuano A1 Practical 5 resolves 10 lessons', cebuanoPathFiveLessons.leng
 assert('Cebuano A1 Practical 6 resolves 10 lessons', cebuanoPathSixLessons.length === 10, cebuanoPathSixLessons.length)
 assert('Indonesian A1 Practical 1 resolves 10 lessons', indonesianPathOneLessons.length === 10, indonesianPathOneLessons.length)
 assert('Cebuano A1 Practical 7 resolves 10 lessons', cebuanoPathSevenLessons.length === 10, cebuanoPathSevenLessons.length)
-assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, cebuanoPathFourId, germanPathNineId, cebuanoPathFiveId, germanPathTenId, cebuanoPathSixId, indonesianPathOneId, cebuanoPathSevenId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
+assert('Cebuano A1 Practical 8 resolves 10 lessons', cebuanoPathEightLessons.length === 10, cebuanoPathEightLessons.length)
+assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, cebuanoPathFourId, germanPathNineId, cebuanoPathFiveId, germanPathTenId, cebuanoPathSixId, indonesianPathOneId, cebuanoPathSevenId, cebuanoPathEightId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
 assert('lesson ids are unique', new Set(lessonIds).size === lessonIds.length, lessonIds)
 assert('lesson numbers 1-10 exist with no gaps', JSON.stringify(lessonNumbers) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), lessonNumbers)
 assert('A1 Practical 1 arc titles match product sequence', JSON.stringify(pathLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedTitles), pathLessons.map((lesson) => lesson.title))
@@ -522,7 +525,7 @@ assert('A1 Practical 7 arc titles match product sequence', JSON.stringify(pathSe
 assert('A1 Practical 8 arc titles match product sequence', JSON.stringify(pathEightLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathEightTitles), pathEightLessons.map((lesson) => lesson.title))
 assert('A1 Practical 9 arc titles match product sequence', JSON.stringify(pathNineLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathNineTitles), pathNineLessons.map((lesson) => lesson.title))
 assert('A1 Practical 10 arc titles match product sequence', JSON.stringify(pathTenLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathTenTitles), pathTenLessons.map((lesson) => lesson.title))
-assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, cebuanoPathFourId, germanPathNineId, cebuanoPathFiveId, germanPathTenId, cebuanoPathSixId, indonesianPathOneId, cebuanoPathSevenId]), getGuidedTodayPathOptions())
+assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, cebuanoPathFourId, germanPathNineId, cebuanoPathFiveId, germanPathTenId, cebuanoPathSixId, indonesianPathOneId, cebuanoPathSevenId, cebuanoPathEightId]), getGuidedTodayPathOptions())
 const indonesianPathOneBrightVariants = indonesianPathOneLessons.map((lesson) => lesson.vibeVariants.bright)
 const expectedIndonesianPathOneTrophies = ['selamat pagi', 'tidak', 'di mana', 'kopi', 'berapa', 'jam', 'tolong', 'di sini', 'besok', 'terima kasih']
 const indonesianPathOneTrophies = indonesianPathOneBrightVariants
@@ -816,6 +819,58 @@ assert('Cebuano A1 Practical 7 trophies are required in speech targets', cebuano
 const cebuanoP7TransitSafetyMarkers = ['emergency', 'driver license', 'contract', 'pakyao', 'pakiao', 'scam']
 assert('Cebuano A1 Practical 7 stays in basic transit phrases', cebuanoPathSevenTargetSurfaces.every((text) => !cebuanoP7TransitSafetyMarkers.some((marker) => normalizeGuidedAnswer(text).includes(normalizeGuidedAnswer(marker)))), cebuanoPathSevenTargetSurfaces)
 
+const cebuanoPathEightBrightVariants = cebuanoPathEightLessons.map((lesson) => lesson.vibeVariants.bright)
+const expectedCebuanoPathEightTrophies = ['reserbasyon', 'kwarto', 'yabi', 'wifi', 'kasilyas', 'tualya', 'matulog', 'pamahaw', 'mogawas', 'makapahuway']
+const priorCebuanoPathOneTwoThreeFourFiveSixSevenTrophies = new Set([
+  'kumusta', 'pasaylo', 'asa', 'palihug', 'tagpila', 'kanus a', 'tabang', 'nindot', 'ugma', 'salamat',
+  'kasabot', 'isulat', 'mapa', 'kana', 'naa', 'dawat', 'resibo', 'ngalan', 'husto', 'kadiyot',
+  'tuo', 'layo', 'abli', 'paingon', 'sunod', 'tiket', 'mosira', 'eskina', 'lakaw', 'milapas',
+  'lamesa', 'menu', 'tubig', 'asukar', 'presko', 'dugang', 'dad-on', 'lami', 'karon', 'bayranan',
+  'naulahi', 'nakalimot', 'tawag', 'nalipay', 'taga', 'nagpuyo', 'gabii', 'parke', 'tingali', 'amping',
+  'pamati', 'botika', 'tambal', 'sakit', 'ulo', 'moinom', 'doktor', 'alerdyi', 'motawag', 'maayo',
+  'pliti', 'bus', 'molarga', 'tren', 'taxi', 'moadto', 'hunong', 'estasyon', 'dugay', 'niabot',
+].map((word) => normalizeGuidedAnswer(word)))
+const cebuanoPathEightTrophies = cebuanoPathEightBrightVariants
+  .map((variant) => variant?.trophyWord.word ?? '')
+  .map((word) => normalizeGuidedAnswer(word))
+assert('Cebuano A1 Practical 8 trophy order is locked', JSON.stringify(cebuanoPathEightTrophies) === JSON.stringify(expectedCebuanoPathEightTrophies), cebuanoPathEightTrophies)
+assert('Cebuano A1 Practical 8 trophies avoid prior Cebuano trophies', cebuanoPathEightTrophies.every((word) => !priorCebuanoPathOneTwoThreeFourFiveSixSevenTrophies.has(word)), cebuanoPathEightTrophies)
+assert('Cebuano A1 Practical 8 uses ceb-PH in every speak target', cebuanoPathEightBrightVariants.every((variant) => variant?.speakTarget.language === 'ceb-PH'), cebuanoPathEightBrightVariants.map((variant) => variant?.speakTarget.language))
+const cebuanoPathEightTargetSurfaces = cebuanoPathEightBrightVariants.flatMap((variant) => [
+  variant?.corePhrase.targetText,
+  variant?.build.targetText,
+  variant?.typeRecall.before,
+  variant?.typeRecall.answer,
+  variant?.typeRecall.after,
+  variant?.speakTarget.targetPhrase,
+  variant?.trophyWord.example,
+  variant?.sceneCaption,
+  ...(variant?.build.chips ?? []),
+  ...(variant?.typeRecall.fallbackChoices ?? []),
+  ...(variant?.chunks.map((chunk) => chunk.targetText) ?? []),
+  ...(variant?.lessonItems.map((item) => item.targetText) ?? []),
+].filter((text): text is string => typeof text === 'string'))
+assert('Cebuano A1 Practical 8 has no Tagalog contamination markers', cebuanoPathEightTargetSurfaces.every((text) => !hasTagalogContaminationMarker(text)), cebuanoPathEightTargetSurfaces)
+assert('Cebuano A1 Practical 8 trophies live in productive target text', cebuanoPathEightBrightVariants.every((variant) => {
+  if (!variant) return false
+  const trophy = normalizeGuidedAnswer(variant.trophyWord.word)
+  return [variant.corePhrase.targetText, variant.build.targetText, variant.typeRecall.answer, variant.speakTarget.targetPhrase, variant.trophyWord.example]
+    .some((text) => normalizeGuidedAnswer(text).includes(trophy))
+}), cebuanoPathEightTrophies)
+assert('Cebuano A1 Practical 8 trophies are required in speech targets', cebuanoPathEightBrightVariants.every((variant) => {
+  if (!variant) return false
+  const trophy = normalizeGuidedAnswer(variant.trophyWord.word)
+  return variant.speakTarget.requiredTokens.map((token) => normalizeGuidedAnswer(token)).includes(trophy)
+}), cebuanoPathEightBrightVariants.map((variant) => ({ trophy: variant?.trophyWord.word, required: variant?.speakTarget.requiredTokens })))
+const cebuanoPathEightWifiSpeak = cebuanoPathEightLessons[3]?.vibeVariants.bright.speakTarget
+assert('Cebuano A1 Practical 8 Wi-Fi speech accepts wifi as one token', cebuanoPathEightWifiSpeak ? checkGuidedSpeechAnswer({
+  transcript: 'Naay wifi diri',
+  targetAnswer: cebuanoPathEightWifiSpeak.targetPhrase,
+  requiredTokens: cebuanoPathEightWifiSpeak.requiredTokens,
+  optionalTokens: cebuanoPathEightWifiSpeak.optionalTokens,
+}).status === 'correct' : false, cebuanoPathEightWifiSpeak)
+const cebuanoP8HotelOverreachMarkers = ['complaint', 'refund', 'passport number', 'credit card dispute', 'manager', 'police']
+assert('Cebuano A1 Practical 8 stays in basic hotel phrases', cebuanoPathEightTargetSurfaces.every((text) => !cebuanoP8HotelOverreachMarkers.some((marker) => normalizeGuidedAnswer(text).includes(normalizeGuidedAnswer(marker)))), cebuanoPathEightTargetSurfaces)
 const portuguesePathFiveBrightVariants = portuguesePathFiveLessons.map((lesson) => lesson.vibeVariants.bright)
 const expectedPortuguesePathFiveTrophies = ['atraso', 'esqueci', 'nome', 'prazer', 'cidade', 'mora', 'noite', 'parque', 'talvez', 'tchau']
 const priorPortugueseTrophies = new Set([
