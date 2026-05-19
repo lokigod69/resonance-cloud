@@ -308,6 +308,116 @@ const expectedPathTenTitles = [
   'Have a good night',
   'Goodbye for now',
 ]
+const expectedBrightPathTwoToTenPhrases: Record<string, string[]> = {
+  [pathTwoId]: [
+    "Hi there, I don't understand. Could you help me?",
+    'Could you write it down, please?',
+    'Could you show me on the map?',
+    'Which one is better, this one or that one?',
+    'Hi, is this available today?',
+    'Could I pay by card, please?',
+    'Could I get a receipt and a bag?',
+    'Hi, I have a booking.',
+    'Is this the right bus?',
+    "One moment! I'm almost ready.",
+  ],
+  [pathThreeId]: [
+    'Excuse me, should I turn left here?',
+    'Is it about five minutes away?',
+    'Is it open now?',
+    'Which bus goes to the museum, please?',
+    'Is the next stop Central Park?',
+    'Could I get one ticket to the city, please?',
+    'What time does it close today?',
+    'Is it on the corner?',
+    'Should we walk there or take a taxi?',
+    'Sorry, I missed my stop. Could you help me?',
+  ],
+  [pathFourId]: [
+    'Could we have a table for two, please?',
+    'Could I see the menu, please?',
+    "I'd like a tea with lemon, please.",
+    'No sugar for me, thank you.',
+    'Is it fresh today?',
+    'Yes, a croissant too, please.',
+    'Could I get that to go, please?',
+    'That was lovely, thank you.',
+    "Beautiful day, isn't it?",
+    'Could I have the bill, please?',
+  ],
+  [pathFiveId]: [
+    "I'm so sorry I'm late!",
+    'Oh, I forgot. Sorry!',
+    "What's your name?",
+    'Nice to meet you!',
+    'Where are you from?',
+    'Do you live here?',
+    'Are you free tonight?',
+    "Let's meet at the café!",
+    'Could we try tomorrow?',
+    'See you tomorrow!',
+  ],
+  [pathSixId]: [
+    "I don't feel well. Could you help me?",
+    'Could you show me a pharmacy nearby?',
+    'I need medicine, please.',
+    'It hurts here.',
+    'I have a headache.',
+    'Could I have some water, please?',
+    'Is there a doctor here?',
+    'I have an allergy.',
+    'Could you get help for me?',
+    'I feel better now, thank you.',
+  ],
+  [pathSevenId]: [
+    'I need a ticket, please.',
+    'Where is the bus stop?',
+    'What time does the bus leave?',
+    'Is this the right train?',
+    'I need a taxi, please.',
+    'Can we go there?',
+    'Please stop here.',
+    'I am going to the station.',
+    'How long does it take?',
+    'I have arrived, thank you.',
+  ],
+  [pathEightId]: [
+    'I have a reservation.',
+    'I need a room, please.',
+    'Where is my room?',
+    'I need the key, please.',
+    'Is there Wi-Fi here?',
+    'Where is the bathroom?',
+    'I need a towel, please.',
+    'I want to sleep now.',
+    'What time is breakfast?',
+    'I am checking out now.',
+  ],
+  [pathNineId]: [
+    "Hi, I'm really glad to meet you.",
+    'Are you free today?',
+    'Can we meet later?',
+    'What time works for you?',
+    "Let's meet here.",
+    'I am waiting outside.',
+    'I am running late.',
+    'Can we change the plan?',
+    'See you tomorrow.',
+    'Have a good evening.',
+  ],
+  [pathTenId]: [
+    'Today was good.',
+    'I liked this place.',
+    'Thank you for your help.',
+    'I learned a lot today.',
+    'I am tired now.',
+    'I need to go now.',
+    'See you next time.',
+    'Tomorrow works for me.',
+    'Have a good night.',
+    'Goodbye for now.',
+  ],
+}
 
 console.log('\n[path inventory]')
 assert('A1 Practical 1 resolves 10 lessons', pathLessons.length === 10, pathLessons.length)
@@ -636,6 +746,11 @@ assert('Portuguese A1 Practical 10 accepts diacritic variants for até a próxim
 assert('Portuguese A1 Practical 10 accepts nasal diacritic omission for amanhã funciona', ['amanha funciona'].every((answer) => portugueseP10LessonEightAmanhaFuncionaItem?.acceptedAnswers?.includes(answer)), portugueseP10LessonEightAmanhaFuncionaItem)
 assert('Portuguese A1 Practical 10 accepts diacritic omission for até logo', ['ate logo'].every((answer) => portugueseP10LessonTenAteLogoItem?.acceptedAnswers?.includes(answer)), portugueseP10LessonTenAteLogoItem)
 assert('A1 Practical 1 Bright phrase baseline matches PR4 product corrections', JSON.stringify(pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? '')) === JSON.stringify(expectedBrightPathOnePhrases), pathLessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? ''))
+for (const [pathId, expectedPhrases] of Object.entries(expectedBrightPathTwoToTenPhrases)) {
+  const lessons = getGuidedPathLessons(pathId)
+  const actualPhrases = lessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? '')
+  assert(`${pathId} Bright phrase baseline matches PR5 content QA`, JSON.stringify(actualPhrases) === JSON.stringify(expectedPhrases), actualPhrases)
+}
 
 console.log('\n[lesson definitions]')
 for (const lesson of pathLessons) {
