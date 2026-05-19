@@ -39247,7 +39247,7 @@ const indonesianA1Practical1Inputs: IndonesianP1LessonInput[] = [
         { id: 'murah', targetText: 'murah', baseText: 'billig / günstig', acceptedAnswers: indonesianAnswers('murah', 'Murah') },
         { id: 'mahal', targetText: 'mahal', baseText: 'teuer', acceptedAnswers: indonesianAnswers('mahal', 'Mahal') },
       ],
-      buildChips: ['Berapa', 'harganya?', 'di mana', 'murah'],
+      buildChips: ['Berapa', 'harganya?', 'rupiah', 'murah'],
       typeRecall: {
         before: '',
         answer: 'Berapa',
@@ -39450,7 +39450,7 @@ const indonesianA1Practical1Inputs: IndonesianP1LessonInput[] = [
         { id: 'tujuh', targetText: 'tujuh', baseText: 'sieben', acceptedAnswers: indonesianAnswers('tujuh', 'Tujuh') },
         { id: 'baik', targetText: 'baik', baseText: 'gut', acceptedAnswers: indonesianAnswers('baik', 'Baik') },
       ],
-      buildChips: ['Besok', 'jam tujuh?', 'Baik.', 'kemarin', 'sekarang'],
+      buildChips: ['Besok', 'jam tujuh?', 'Baik.', 'kemarin', 'pukul tujuh'],
       typeRecall: {
         before: '',
         answer: 'Besok',
@@ -39500,7 +39500,7 @@ const indonesianA1Practical1Inputs: IndonesianP1LessonInput[] = [
         { id: 'kembali', targetText: 'kembali', baseText: 'zurück / gern geschehen', acceptedAnswers: indonesianAnswers('kembali', 'Kembali') },
         { id: 'sama-sama', targetText: 'sama-sama', baseText: 'gern geschehen', acceptedAnswers: indonesianAnswers('sama-sama', 'Sama-sama', 'sama sama') },
       ],
-      buildChips: ['Terima kasih.', 'Sampai jumpa.', 'halo', 'maaf'],
+      buildChips: ['Terima kasih.', 'Sampai jumpa.', 'sama-sama', 'selamat tinggal'],
       typeRecall: {
         before: '',
         answer: 'Terima kasih',
@@ -39868,13 +39868,13 @@ const indonesianA1Practical2Inputs: IndonesianP1LessonInput[] = [
         { id: 'kartu', targetText: 'kartu', baseText: 'Karte', acceptedAnswers: indonesianAnswers('kartu', 'Kartu') },
         { id: 'kasir', targetText: 'kasir', baseText: 'Kasse / Kassierer', acceptedAnswers: indonesianAnswers('kasir', 'Kasir') },
       ],
-      buildChips: ['Bisa bayar', 'dengan kartu?', 'Tolong tulis', 'nama', 'ini'],
+      buildChips: ['Bisa bayar', 'dengan kartu?', 'uang tunai', 'kuitansi', 'tas'],
       typeRecall: {
         before: 'Bisa bayar dengan ',
         answer: 'kartu',
         after: '?',
         acceptedAnswers: indonesianAnswers('kartu', 'Kartu'),
-        fallbackChoices: ['kartu', 'peta', 'tas', 'nama'],
+        fallbackChoices: ['kartu', 'tunai', 'uang', 'kuitansi'],
       },
       speakTarget: {
         baseCue: 'Kann ich mit Karte bezahlen?',
@@ -39915,13 +39915,13 @@ const indonesianA1Practical2Inputs: IndonesianP1LessonInput[] = [
         { id: 'kuitansi', targetText: 'kuitansi', baseText: 'Quittung', acceptedAnswers: indonesianAnswers('kuitansi', 'Kuitansi', 'kwitansi') },
         { id: 'tas', targetText: 'tas', baseText: 'Tasche', acceptedAnswers: indonesianAnswers('tas', 'Tas') },
       ],
-      buildChips: ['Boleh minta', 'kuitansi dan tas?', 'Bisa bayar', 'dengan kartu?', 'peta'],
+      buildChips: ['Boleh minta', 'kuitansi dan tas?', 'Bisa bayar', 'dengan kartu?', 'uang'],
       typeRecall: {
         before: 'Boleh minta kuitansi dan ',
         answer: 'tas',
         after: '?',
         acceptedAnswers: indonesianAnswers('tas', 'Tas'),
-        fallbackChoices: ['tas', 'peta', 'kartu', 'nama'],
+        fallbackChoices: ['tas', 'uang', 'kartu', 'kuitansi'],
       },
       speakTarget: {
         baseCue: 'Kann ich bitte eine Quittung und eine Tasche bekommen?',
@@ -39962,13 +39962,13 @@ const indonesianA1Practical2Inputs: IndonesianP1LessonInput[] = [
         { id: 'atas-nama', targetText: 'atas nama', baseText: 'auf den Namen', acceptedAnswers: indonesianAnswers('atas nama', 'Atas nama') },
         { id: 'meyer', targetText: 'Meyer', baseText: 'Meyer', acceptedAnswers: indonesianAnswers('Meyer', 'meyer') },
       ],
-      buildChips: ['Saya punya', 'reservasi', 'atas nama Meyer.', 'Boleh minta', 'tas'],
+      buildChips: ['Saya punya', 'reservasi', 'atas nama Meyer.', 'Boleh minta', 'paspor'],
       typeRecall: {
         before: 'Saya punya ',
         answer: 'reservasi',
         after: ' atas nama Meyer.',
         acceptedAnswers: indonesianAnswers('reservasi', 'Reservasi'),
-        fallbackChoices: ['reservasi', 'kuitansi', 'peta', 'kartu'],
+        fallbackChoices: ['reservasi', 'kuitansi', 'paspor', 'kartu'],
       },
       speakTarget: {
         baseCue: 'Ich habe eine Reservierung auf den Namen Meyer.',
@@ -40401,13 +40401,13 @@ const indonesianA1Practical3Inputs: IndonesianP1LessonInput[] = [
         { id: 'buka', targetText: 'buka', baseText: 'offen / öffnen', acceptedAnswers: indonesianAnswers('buka', 'Buka') },
         { id: 'pukul', targetText: 'pukul', baseText: 'Uhr (Zeitangabe)', acceptedAnswers: indonesianAnswers('pukul', 'Pukul') },
       ],
-      buildChips: ['Jam berapa', 'tutup', 'hari ini?', 'buka', 'sekarang'],
+      buildChips: ['Jam berapa', 'tutup', 'hari ini?', 'buka', 'pukul lima'],
       typeRecall: {
         before: 'Jam berapa ',
         answer: 'tutup',
         after: ' hari ini?',
         acceptedAnswers: indonesianAnswers('tutup', 'Tutup'),
-        fallbackChoices: ['tutup', 'buka', 'jauh', 'kanan'],
+        fallbackChoices: ['tutup', 'buka', 'pukul lima', 'sore'],
       },
       speakTarget: {
         baseCue: 'Um wie viel Uhr schließt es heute?',
@@ -40602,7 +40602,7 @@ const indonesianA1Practical4Inputs: IndonesianP1LessonInput[] = [
         { id: 'dua', targetText: 'dua', baseText: 'zwei', acceptedAnswers: indonesianAnswers('dua', 'Dua') },
         { id: 'orang', targetText: 'orang', baseText: 'Person / Mensch', acceptedAnswers: indonesianAnswers('orang', 'Orang') },
       ],
-      buildChips: ['Meja', 'untuk dua orang,', 'tolong.', 'satu', 'menu'],
+      buildChips: ['Meja', 'untuk dua orang,', 'tolong.', 'kursi', 'nasi'],
       typeRecall: {
         before: '',
         answer: 'Meja',
@@ -40649,13 +40649,13 @@ const indonesianA1Practical4Inputs: IndonesianP1LessonInput[] = [
         { id: 'lihat', targetText: 'lihat', baseText: 'sehen', acceptedAnswers: indonesianAnswers('lihat', 'Lihat') },
         { id: 'pesan', targetText: 'pesan', baseText: 'bestellen', acceptedAnswers: indonesianAnswers('pesan', 'Pesan') },
       ],
-      buildChips: ['Boleh lihat', 'menu?', 'Meja', 'untuk dua orang', 'teh'],
+      buildChips: ['Boleh lihat', 'menu?', 'Meja', 'untuk dua orang', 'jus'],
       typeRecall: {
         before: 'Boleh lihat ',
         answer: 'menu',
         after: '?',
         acceptedAnswers: indonesianAnswers('menu', 'Menu'),
-        fallbackChoices: ['menu', 'meja', 'gula', 'tagihan'],
+        fallbackChoices: ['menu', 'meja', 'jus', 'nasi'],
       },
       speakTarget: {
         baseCue: 'Darf ich die Speisekarte sehen?',
@@ -40697,13 +40697,13 @@ const indonesianA1Practical4Inputs: IndonesianP1LessonInput[] = [
         { id: 'mau', targetText: 'mau', baseText: 'möchten / wollen', acceptedAnswers: indonesianAnswers('mau', 'Mau') },
         { id: 'minum', targetText: 'minum', baseText: 'trinken', acceptedAnswers: indonesianAnswers('minum', 'Minum') },
       ],
-      buildChips: ['Saya mau', 'teh panas,', 'tolong.', 'kopi', 'gula'],
+      buildChips: ['Saya mau', 'teh panas,', 'tolong.', 'susu', 'jus'],
       typeRecall: {
         before: 'Saya mau ',
         answer: 'teh',
         after: ' panas, tolong.',
         acceptedAnswers: indonesianAnswers('teh', 'Teh'),
-        fallbackChoices: ['teh', 'kopi', 'roti', 'gula'],
+        fallbackChoices: ['teh', 'susu', 'jus', 'air'],
       },
       speakTarget: {
         baseCue: 'Ich möchte heißen Tee, bitte.',
@@ -40750,7 +40750,7 @@ const indonesianA1Practical4Inputs: IndonesianP1LessonInput[] = [
         answer: 'gula',
         after: ', tolong.',
         acceptedAnswers: indonesianAnswers('gula', 'Gula'),
-        fallbackChoices: ['gula', 'teh', 'menu', 'roti'],
+        fallbackChoices: ['gula', 'susu', 'jus', 'nasi'],
       },
       speakTarget: {
         baseCue: 'Ohne Zucker, bitte.',
@@ -40839,13 +40839,13 @@ const indonesianA1Practical4Inputs: IndonesianP1LessonInput[] = [
         { id: 'satu', targetText: 'satu', baseText: 'eins', acceptedAnswers: indonesianAnswers('satu', 'Satu') },
         { id: 'ya', targetText: 'ya', baseText: 'ja', acceptedAnswers: indonesianAnswers('ya', 'Ya') },
       ],
-      buildChips: ['Ya,', 'satu roti juga,', 'tolong.', 'tidak', 'tagihan'],
+      buildChips: ['Ya,', 'satu roti juga,', 'tolong.', 'tidak', 'nasi'],
       typeRecall: {
         before: 'Ya, satu ',
         answer: 'roti',
         after: ' juga, tolong.',
         acceptedAnswers: indonesianAnswers('roti', 'Roti'),
-        fallbackChoices: ['roti', 'teh', 'menu', 'meja'],
+        fallbackChoices: ['roti', 'nasi', 'mi', 'buah'],
       },
       speakTarget: {
         baseCue: 'Ja, ein Brot auch, bitte.',
@@ -41028,13 +41028,13 @@ const indonesianA1Practical4Inputs: IndonesianP1LessonInput[] = [
         { id: 'bayar', targetText: 'bayar', baseText: 'bezahlen', acceptedAnswers: indonesianAnswers('bayar', 'Bayar') },
         { id: 'bon', targetText: 'bon', baseText: 'Bon / Beleg', acceptedAnswers: indonesianAnswers('bon', 'Bon') },
       ],
-      buildChips: ['Boleh minta', 'tagihan?', 'bayar', 'menu', 'taksi'],
+      buildChips: ['Boleh minta', 'tagihan?', 'bayar', 'menu', 'uang'],
       typeRecall: {
         before: 'Boleh minta ',
         answer: 'tagihan',
         after: '?',
         acceptedAnswers: indonesianAnswers('tagihan', 'Tagihan'),
-        fallbackChoices: ['tagihan', 'menu', 'meja', 'tiket'],
+        fallbackChoices: ['tagihan', 'menu', 'meja', 'uang'],
       },
       speakTarget: {
         baseCue: 'Kann ich bitte die Rechnung bekommen?',
@@ -41178,13 +41178,13 @@ const indonesianA1Practical5Inputs: IndonesianP1LessonInput[] = [
         { id: 'anda', targetText: 'Anda', baseText: 'Sie / du höflich', acceptedAnswers: indonesianAnswers('Anda', 'anda') },
         { id: 'saya', targetText: 'saya', baseText: 'ich', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
       ],
-      buildChips: ['Siapa', 'nama Anda?', 'Saya', 'bertemu', 'kafe'],
+      buildChips: ['Siapa', 'nama Anda?', 'alamat', 'telepon', 'teman'],
       typeRecall: {
         before: 'Siapa ',
         answer: 'nama',
         after: ' Anda?',
         acceptedAnswers: indonesianAnswers('nama', 'Nama'),
-        fallbackChoices: ['nama', 'malam', 'kafe', 'mungkin'],
+        fallbackChoices: ['nama', 'alamat', 'telepon', 'teman'],
       },
       speakTarget: {
         baseCue: 'Wie heißen Sie?',
@@ -41225,7 +41225,7 @@ const indonesianA1Practical5Inputs: IndonesianP1LessonInput[] = [
         { id: 'dengan', targetText: 'dengan', baseText: 'mit', acceptedAnswers: indonesianAnswers('dengan', 'Dengan') },
         { id: 'anda', targetText: 'Anda', baseText: 'Sie / du höflich', acceptedAnswers: indonesianAnswers('Anda', 'anda') },
       ],
-      buildChips: ['Senang', 'bertemu dengan Anda.', 'nama', 'sampai jumpa', 'malam'],
+      buildChips: ['Senang', 'bertemu dengan Anda.', 'teman baru', 'salam', 'nama'],
       typeRecall: {
         before: 'Senang ',
         answer: 'bertemu',
@@ -41507,13 +41507,13 @@ const indonesianA1Practical5Inputs: IndonesianP1LessonInput[] = [
         { id: 'besok', targetText: 'besok', baseText: 'morgen', acceptedAnswers: indonesianAnswers('besok', 'Besok') },
         { id: 'selamat-tinggal', targetText: 'selamat tinggal', baseText: 'auf Wiedersehen / Lebewohl', acceptedAnswers: indonesianAnswers('selamat tinggal', 'Selamat tinggal') },
       ],
-      buildChips: ['Sampai jumpa', 'besok.', 'mungkin', 'kafe', 'malam ini'],
+      buildChips: ['Sampai jumpa', 'besok.', 'selamat tinggal', 'lain kali', 'teman'],
       typeRecall: {
         before: '',
         answer: 'Sampai jumpa',
         after: ' besok.',
         acceptedAnswers: indonesianAnswers('Sampai jumpa', 'sampai jumpa', 'sampai bertemu'),
-        fallbackChoices: ['Sampai jumpa', 'Selamat pagi', 'Terima kasih', 'Mungkin'],
+        fallbackChoices: ['Sampai jumpa', 'Selamat pagi', 'Selamat tinggal', 'Lain kali'],
       },
       speakTarget: {
         baseCue: 'Bis morgen.',
@@ -41616,7 +41616,7 @@ const indonesianA1Practical6Inputs: IndonesianP1LessonInput[] = [
         answer: 'apotek',
         after: ' dekat sini?',
         acceptedAnswers: indonesianAnswers('apotek', 'Apotek', 'apotik'),
-        fallbackChoices: ['apotek', 'dokter', 'halte', 'kafe'],
+        fallbackChoices: ['apotek', 'dokter', 'klinik', 'obat'],
       },
       speakTarget: {
         baseCue: 'Gibt es eine Apotheke in der Nähe?',
@@ -41663,7 +41663,7 @@ const indonesianA1Practical6Inputs: IndonesianP1LessonInput[] = [
         answer: 'obat',
         after: '.',
         acceptedAnswers: indonesianAnswers('obat', 'Obat'),
-        fallbackChoices: ['obat', 'air', 'tiket', 'menu'],
+        fallbackChoices: ['obat', 'air', 'dokter', 'klinik'],
       },
       speakTarget: {
         baseCue: 'Ich brauche Medizin.',
@@ -41851,7 +41851,7 @@ const indonesianA1Practical6Inputs: IndonesianP1LessonInput[] = [
         answer: 'dokter',
         after: ' dekat sini?',
         acceptedAnswers: indonesianAnswers('dokter', 'Dokter'),
-        fallbackChoices: ['dokter', 'apotek', 'taksi', 'halte'],
+        fallbackChoices: ['dokter', 'apotek', 'klinik', 'obat'],
       },
       speakTarget: {
         baseCue: 'Gibt es einen Arzt in der Nähe?',
@@ -41993,7 +41993,7 @@ const indonesianA1Practical6Inputs: IndonesianP1LessonInput[] = [
         answer: 'baik',
         after: ', terima kasih.',
         acceptedAnswers: indonesianAnswers('baik', 'Baik'),
-        fallbackChoices: ['baik', 'sakit', 'dekat', 'panggil'],
+        fallbackChoices: ['baik', 'sehat', 'sakit', 'lelah'],
       },
       speakTarget: {
         baseCue: 'Ich fühle mich besser, danke.',
@@ -42191,7 +42191,7 @@ const indonesianA1Practical7Inputs: IndonesianP1LessonInput[] = [
         answer: 'kereta',
         after: ' yang tepat?',
         acceptedAnswers: indonesianAnswers('kereta', 'Kereta'),
-        fallbackChoices: ['kereta', 'bus', 'taksi', 'apotek'],
+        fallbackChoices: ['kereta', 'bus', 'taksi', 'halte'],
       },
       speakTarget: {
         baseCue: 'Ist das der richtige Zug?',
@@ -42373,13 +42373,13 @@ const indonesianA1Practical7Inputs: IndonesianP1LessonInput[] = [
         { id: 'ke', targetText: 'ke', baseText: 'nach / zu', acceptedAnswers: indonesianAnswers('ke', 'Ke') },
         { id: 'saya', targetText: 'saya', baseText: 'ich', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
       ],
-      buildChips: ['Saya pergi', 'ke stasiun.', 'taksi', 'kereta', 'sekarang'],
+      buildChips: ['Saya pergi', 'ke stasiun.', 'taksi', 'kereta', 'terminal'],
       typeRecall: {
         before: 'Saya pergi ke ',
         answer: 'stasiun',
         after: '.',
         acceptedAnswers: indonesianAnswers('stasiun', 'Stasiun'),
-        fallbackChoices: ['stasiun', 'apotek', 'kafe', 'halte'],
+        fallbackChoices: ['stasiun', 'terminal', 'halte', 'peron'],
       },
       speakTarget: {
         baseCue: 'Ich fahre zum Bahnhof.',
@@ -42467,7 +42467,7 @@ const indonesianA1Practical7Inputs: IndonesianP1LessonInput[] = [
         { id: 'saya', targetText: 'saya', baseText: 'ich', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
         { id: 'terima-kasih', targetText: 'terima kasih', baseText: 'danke', acceptedAnswers: indonesianAnswers('terima kasih', 'Terima kasih', 'terimakasih') },
       ],
-      buildChips: ['Saya sudah tiba,', 'terima kasih.', 'di stasiun', 'sudah sampai', 'baik'],
+      buildChips: ['Saya sudah tiba,', 'terima kasih.', 'di stasiun', 'sudah sampai', 'di terminal'],
       typeRecall: {
         before: 'Saya sudah ',
         answer: 'tiba',
@@ -42529,7 +42529,7 @@ const indonesianA1Practical8Inputs: IndonesianP1LessonInput[] = [
         answer: 'hotel',
         after: ' ini.',
         acceptedAnswers: indonesianAnswers('hotel', 'Hotel'),
-        fallbackChoices: ['hotel', 'kamar', 'stasiun', 'toilet'],
+        fallbackChoices: ['hotel', 'kamar', 'lobi', 'toilet'],
       },
       speakTarget: {
         baseCue: 'Ich habe eine Reservierung in diesem Hotel.',
@@ -42946,7 +42946,7 @@ const indonesianA1Practical8Inputs: IndonesianP1LessonInput[] = [
         { id: 'hotel', targetText: 'hotel', baseText: 'Hotel', acceptedAnswers: indonesianAnswers('hotel', 'Hotel') },
         { id: 'sekarang', targetText: 'sekarang', baseText: 'jetzt', acceptedAnswers: indonesianAnswers('sekarang', 'Sekarang') },
       ],
-      buildChips: ['Saya mau keluar', 'dari hotel sekarang.', 'terima kasih', 'kunci kamar', 'tagihan'],
+      buildChips: ['Saya mau keluar', 'dari hotel sekarang.', 'lobi', 'kunci kamar', 'tagihan'],
       typeRecall: {
         before: 'Saya mau ',
         answer: 'keluar',
@@ -43002,7 +43002,7 @@ const indonesianA1Practical9Inputs: IndonesianP1LessonInput[] = [
         { id: 'kamu', targetText: 'kamu', baseText: 'du / dich', acceptedAnswers: indonesianAnswers('kamu', 'Kamu') },
         { id: 'hai', targetText: 'hai', baseText: 'hi', acceptedAnswers: indonesianAnswers('hai', 'Hai') },
       ],
-      buildChips: ['Senang bertemu', 'kamu.', 'hai', 'saya', 'lagi'],
+      buildChips: ['Senang bertemu', 'kamu.', 'hai', 'teman', 'baru'],
       typeRecall: {
         before: '',
         answer: 'Senang',
@@ -43049,13 +43049,13 @@ const indonesianA1Practical9Inputs: IndonesianP1LessonInput[] = [
         { id: 'ada', targetText: 'ada', baseText: 'es gibt / haben', acceptedAnswers: indonesianAnswers('ada', 'Ada') },
         { id: 'kamu', targetText: 'kamu', baseText: 'du', acceptedAnswers: indonesianAnswers('kamu', 'Kamu') },
       ],
-      buildChips: ['Apakah kamu ada', 'waktu hari ini?', 'nanti', 'jam berapa', 'rencana'],
+      buildChips: ['Apakah kamu ada', 'waktu hari ini?', 'sore ini', 'jam berapa', 'rencana'],
       typeRecall: {
         before: 'Apakah kamu ada ',
         answer: 'waktu',
         after: ' hari ini?',
         acceptedAnswers: indonesianAnswers('waktu', 'Waktu'),
-        fallbackChoices: ['waktu', 'tempat', 'rencana', 'kunci'],
+        fallbackChoices: ['waktu', 'tempat', 'rencana', 'sibuk'],
       },
       speakTarget: {
         baseCue: 'Hast du heute Zeit?',
@@ -43096,13 +43096,13 @@ const indonesianA1Practical9Inputs: IndonesianP1LessonInput[] = [
         { id: 'bertemu', targetText: 'bertemu', baseText: 'treffen', acceptedAnswers: indonesianAnswers('bertemu', 'Bertemu') },
         { id: 'sore', targetText: 'sore', baseText: 'später Nachmittag', acceptedAnswers: indonesianAnswers('sore', 'Sore') },
       ],
-      buildChips: ['Kita bertemu', 'nanti?', 'hari ini', 'di luar', 'jam'],
+      buildChips: ['Kita bertemu', 'nanti?', 'hari ini', 'di luar', 'sore'],
       typeRecall: {
         before: 'Kita bertemu ',
         answer: 'nanti',
         after: '?',
         acceptedAnswers: indonesianAnswers('nanti', 'Nanti'),
-        fallbackChoices: ['nanti', 'sekarang', 'kemarin', 'lantai'],
+        fallbackChoices: ['nanti', 'sekarang', 'kemarin', 'sore'],
       },
       speakTarget: {
         baseCue: 'Treffen wir uns später?',
@@ -43143,13 +43143,13 @@ const indonesianA1Practical9Inputs: IndonesianP1LessonInput[] = [
         { id: 'untuk', targetText: 'untuk', baseText: 'für', acceptedAnswers: indonesianAnswers('untuk', 'Untuk') },
         { id: 'kamu', targetText: 'kamu', baseText: 'dich', acceptedAnswers: indonesianAnswers('kamu', 'Kamu') },
       ],
-      buildChips: ['Jam berapa', 'yang cocok', 'untuk kamu?', 'nanti', 'tempat'],
+      buildChips: ['Jam berapa', 'yang cocok', 'untuk kamu?', 'sore', 'jadwal'],
       typeRecall: {
         before: 'Jam berapa yang ',
         answer: 'cocok',
         after: ' untuk kamu?',
         acceptedAnswers: indonesianAnswers('cocok', 'Cocok'),
-        fallbackChoices: ['cocok', 'ramai', 'segar', 'sakit'],
+        fallbackChoices: ['cocok', 'sibuk', 'siang', 'sore'],
       },
       speakTarget: {
         baseCue: 'Welche Uhrzeit passt dir?',
@@ -43190,13 +43190,13 @@ const indonesianA1Practical9Inputs: IndonesianP1LessonInput[] = [
         { id: 'di-sini', targetText: 'di sini', baseText: 'hier', acceptedAnswers: indonesianAnswers('di sini', 'Di sini', 'disini') },
         { id: 'kita', targetText: 'kita', baseText: 'wir', acceptedAnswers: indonesianAnswers('kita', 'Kita') },
       ],
-      buildChips: ['Tempatnya', 'di sini.', 'kita bertemu', 'nanti', 'cocok'],
+      buildChips: ['Tempatnya', 'di sini.', 'kita bertemu', 'dekat pintu', 'alamat'],
       typeRecall: {
         before: '',
         answer: 'Tempatnya',
         after: ' di sini.',
         acceptedAnswers: indonesianAnswers('Tempatnya', 'tempatnya', 'tempat'),
-        fallbackChoices: ['Tempatnya', 'Waktunya', 'Kuncinya', 'Kamarnya'],
+        fallbackChoices: ['Tempatnya', 'Waktunya', 'Alamatnya', 'Jalannya'],
       },
       speakTarget: {
         baseCue: 'Der Treffpunkt ist hier.',
@@ -43237,13 +43237,13 @@ const indonesianA1Practical9Inputs: IndonesianP1LessonInput[] = [
         { id: 'menunggu', targetText: 'menunggu', baseText: 'warten', acceptedAnswers: indonesianAnswers('menunggu', 'Menunggu') },
         { id: 'saya', targetText: 'saya', baseText: 'ich', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
       ],
-      buildChips: ['Saya menunggu', 'di luar.', 'sekarang', 'tempatnya', 'kamu'],
+      buildChips: ['Saya menunggu', 'di luar.', 'dekat pintu', 'tempatnya', 'kamu'],
       typeRecall: {
         before: 'Saya menunggu di ',
         answer: 'luar',
         after: '.',
         acceptedAnswers: indonesianAnswers('luar', 'Luar'),
-        fallbackChoices: ['luar', 'sini', 'kamar', 'lantai'],
+        fallbackChoices: ['luar', 'sini', 'pintu', 'jalan'],
       },
       speakTarget: {
         baseCue: 'Ich warte draußen.',
@@ -43331,13 +43331,13 @@ const indonesianA1Practical9Inputs: IndonesianP1LessonInput[] = [
         { id: 'bisa', targetText: 'bisa', baseText: 'können', acceptedAnswers: indonesianAnswers('bisa', 'Bisa') },
         { id: 'kita', targetText: 'kita', baseText: 'wir', acceptedAnswers: indonesianAnswers('kita', 'Kita') },
       ],
-      buildChips: ['Bisa kita ubah', 'rencana?', 'waktu', 'tempat', 'nanti'],
+      buildChips: ['Bisa kita ubah', 'rencana?', 'waktu', 'tempat', 'jadwal'],
       typeRecall: {
         before: 'Bisa kita ubah ',
         answer: 'rencana',
         after: '?',
         acceptedAnswers: indonesianAnswers('rencana', 'Rencana'),
-        fallbackChoices: ['rencana', 'reservasi', 'tagihan', 'kunci'],
+        fallbackChoices: ['rencana', 'jadwal', 'waktu', 'tempat'],
       },
       speakTarget: {
         baseCue: 'Können wir den Plan ändern?',
@@ -43378,13 +43378,13 @@ const indonesianA1Practical9Inputs: IndonesianP1LessonInput[] = [
         { id: 'kita', targetText: 'kita', baseText: 'wir', acceptedAnswers: indonesianAnswers('kita', 'Kita') },
         { id: 'bertemu', targetText: 'bertemu', baseText: 'treffen', acceptedAnswers: indonesianAnswers('bertemu', 'Bertemu') },
       ],
-      buildChips: ['Besok kita bertemu', 'lagi.', 'sampai', 'nanti', 'selamat malam'],
+      buildChips: ['Besok kita bertemu', 'lagi.', 'sampai', 'sore', 'selamat malam'],
       typeRecall: {
         before: 'Besok kita bertemu ',
         answer: 'lagi',
         after: '.',
         acceptedAnswers: indonesianAnswers('lagi', 'Lagi'),
-        fallbackChoices: ['lagi', 'nanti', 'sedikit', 'luar'],
+        fallbackChoices: ['lagi', 'besok', 'sore', 'luar'],
       },
       speakTarget: {
         baseCue: 'Morgen sehen wir uns wieder.',
@@ -43575,7 +43575,7 @@ const indonesianA1Practical10Inputs: IndonesianP1LessonInput[] = [
         { id: 'anda', targetText: 'Anda', baseText: 'Sie', acceptedAnswers: indonesianAnswers('Anda', 'anda') },
         { id: 'terima-kasih', targetText: 'terima kasih', baseText: 'danke', acceptedAnswers: indonesianAnswers('terima kasih', 'Terima kasih', 'terimakasih') },
       ],
-      buildChips: ['Terima kasih atas', 'bantuan Anda.', 'maaf', 'baik', 'saya'],
+      buildChips: ['Terima kasih atas', 'bantuan Anda.', 'banyak', 'Pak', 'Ibu'],
       typeRecall: {
         before: 'Terima kasih atas ',
         answer: 'bantuan',
@@ -43622,7 +43622,7 @@ const indonesianA1Practical10Inputs: IndonesianP1LessonInput[] = [
         { id: 'hari-ini', targetText: 'hari ini', baseText: 'heute', acceptedAnswers: indonesianAnswers('hari ini', 'Hari ini', 'hariini') },
         { id: 'saya', targetText: 'saya', baseText: 'ich', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
       ],
-      buildChips: ['Saya belajar', 'banyak hari ini.', 'bagus', 'lagi', 'dulu'],
+      buildChips: ['Saya belajar', 'banyak hari ini.', 'latihan', 'pelajaran', 'kelas'],
       typeRecall: {
         before: 'Saya ',
         answer: 'belajar',
@@ -43716,7 +43716,7 @@ const indonesianA1Practical10Inputs: IndonesianP1LessonInput[] = [
         { id: 'sekarang', targetText: 'sekarang', baseText: 'jetzt', acceptedAnswers: indonesianAnswers('sekarang', 'Sekarang') },
         { id: 'saya', targetText: 'saya', baseText: 'ich', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
       ],
-      buildChips: ['Saya harus', 'pergi sekarang.', 'maaf', 'sampai', 'dulu'],
+      buildChips: ['Saya harus', 'pergi sekarang.', 'pulang', 'selamat tinggal', 'tas'],
       typeRecall: {
         before: 'Saya ',
         answer: 'harus',
@@ -43763,7 +43763,7 @@ const indonesianA1Practical10Inputs: IndonesianP1LessonInput[] = [
         { id: 'lain', targetText: 'lain', baseText: 'anders / anderer', acceptedAnswers: indonesianAnswers('lain', 'Lain') },
         { id: 'kali', targetText: 'kali', baseText: 'Mal', acceptedAnswers: indonesianAnswers('kali', 'Kali') },
       ],
-      buildChips: ['Sampai', 'lain kali.', 'besok', 'lagi', 'dulu'],
+      buildChips: ['Sampai', 'lain kali.', 'minggu depan', 'jumpa lagi', 'salam'],
       typeRecall: {
         before: 'Sampai ',
         answer: 'lain kali',
@@ -43857,7 +43857,7 @@ const indonesianA1Practical10Inputs: IndonesianP1LessonInput[] = [
         { id: 'tidur', targetText: 'tidur', baseText: 'schlafen', acceptedAnswers: indonesianAnswers('tidur', 'Tidur') },
         { id: 'istirahat', targetText: 'istirahat', baseText: 'ausruhen', acceptedAnswers: indonesianAnswers('istirahat', 'Istirahat') },
       ],
-      buildChips: ['Selamat', 'tidur.', 'selamat malam', 'istirahat', 'dulu'],
+      buildChips: ['Selamat', 'tidur.', 'selamat malam', 'istirahat', 'malam ini'],
       typeRecall: {
         before: 'Selamat ',
         answer: 'tidur',
