@@ -163,7 +163,12 @@ export default function Today() {
     setSessionKey((current) => current + 1)
   }
 
-  const handleStartSelectedLesson = () => {
+  const handleStartSelectedLesson = (lessonId?: string) => {
+    if (lessonId) {
+      setSelectedLessonId(lessonId)
+      setKnownItemIds(new Set())
+      setSessionKey((current) => current + 1)
+    }
     setSessionActive(true)
   }
 
