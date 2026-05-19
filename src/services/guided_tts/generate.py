@@ -146,6 +146,28 @@ EXPECTED_SCOPES: dict[str, dict[str, Any]] = {
         "expected_provider_calls_first_run": 256,
         "expected_provider_characters_first_run": 3586,
     },
+    "a1p2-p10-bright-trophyword": {
+        "path_id": None,
+        "path_ids": [
+            "english-a1-practical-2",
+            "english-a1-practical-3",
+            "english-a1-practical-4",
+            "english-a1-practical-5",
+            "english-a1-practical-6",
+            "english-a1-practical-7",
+            "english-a1-practical-8",
+            "english-a1-practical-9",
+            "english-a1-practical-10",
+        ],
+        "lesson_id": None,
+        "lesson_number": None,
+        "vibes": ["bright"],
+        "surfaces": ["trophyWord"],
+        "expected_rows": 90,
+        "expected_unique_normalized_texts": 90,
+        "expected_provider_calls_first_run": 90,
+        "expected_provider_characters_first_run": 516,
+    },
 }
 
 
