@@ -16,9 +16,9 @@ export type GuidedLessonMedia = {
   caption: string
 }
 
-export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German' | 'Cebuano'
+export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German' | 'Cebuano' | 'Indonesian'
 export type GuidedBaseLanguage = 'German' | 'English'
-export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH'
+export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH' | 'id-ID'
 
 export type GuidedPathMetadata = {
   id: string
@@ -882,6 +882,17 @@ const GUIDED_TODAY_PATH_GERMAN_NINE_METADATA: GuidedPathMetadata = {
   level: 'A1',
   baseLanguage: 'English',
   targetLanguage: 'German',
+  estimatedMinutes: 5,
+}
+
+const GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA: GuidedPathMetadata = {
+  id: 'indonesian-a1-practical-1',
+  title: 'Indonesisch A1 Praxis 1',
+  shortTitle: 'A1 Praxis 1',
+  subtitle: 'Erste Hilfsphrasen auf Indonesisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Indonesian',
   estimatedMinutes: 5,
 }
 
@@ -37164,6 +37175,611 @@ const cebuanoA1Practical4Lessons: GuidedLessonDefinition[] = cebuanoA1Practical4
   }
 })
 
+type IndonesianP1VariantInput = {
+  corePhrase: GuidedLessonVibeVariant['corePhrase']
+  meaning: string
+  chunks: PhraseChunk[]
+  lessonItems: LessonItem[]
+  buildChips: string[]
+  typeRecall: GuidedLessonVibeVariant['typeRecall']
+  speakTarget: Omit<GuidedLessonVibeVariant['speakTarget'], 'language' | 'passingThreshold'>
+  sceneCaption: string
+  trophyWord: GuidedLessonTrophyWord
+  placeholderCaption: string
+  songMood: string
+  visualNotes: string
+}
+
+type IndonesianP1LessonInput = {
+  slug: string
+  title: string
+  situation: GuidedLessonDefinition['situation']
+  pedagogicalGoal: string
+  variant: GuidedLessonVibeVariant
+}
+
+function indonesianAnswers(...answers: string[]) {
+  return answers
+}
+
+function makeBrightIndonesianP1Variant(input: IndonesianP1VariantInput): GuidedLessonVibeVariant {
+  return {
+    contentStatus: 'draft',
+    corePhrase: input.corePhrase,
+    meaning: input.meaning,
+    chunks: input.chunks,
+    lessonItems: input.lessonItems,
+    build: {
+      targetText: input.corePhrase.targetText,
+      chips: input.buildChips,
+    },
+    typeRecall: input.typeRecall,
+    speakTarget: {
+      ...input.speakTarget,
+      language: 'id-ID',
+      passingThreshold: 0.65,
+    },
+    sceneCaption: input.sceneCaption,
+    trophyWord: input.trophyWord,
+    placeholderMedia: {
+      type: 'video',
+      caption: input.placeholderCaption,
+    },
+    songSeed: {
+      genre: 'bright Indonesian acoustic',
+      mood: input.songMood,
+    },
+    visualNotes: input.visualNotes,
+  }
+}
+
+const indonesianA1Practical1Inputs: IndonesianP1LessonInput[] = [
+  {
+    slug: 'first-contact',
+    title: 'Erster Kontakt',
+    situation: {
+      en: 'At a morning information desk, politely ask whether the other person can speak English.',
+      de: 'Am Morgen am Infoschalter fragst du höflich, ob die andere Person Englisch sprechen kann.',
+    },
+    pedagogicalGoal: 'Mit selamat pagi und Anda eine formelle erste Frage auf Indonesisch öffnen.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Selamat pagi, apakah Anda bisa berbahasa Inggris?',
+        baseText: 'Guten Morgen, sprechen Sie Englisch?',
+      },
+      meaning: 'Eine höfliche Morgenbegrüßung plus eine sichere Frage nach Englisch.',
+      chunks: [
+        { id: 'selamat-pagi', targetText: 'Selamat pagi,', baseText: 'Guten Morgen,' },
+        { id: 'apakah-anda-bisa', targetText: 'apakah Anda bisa', baseText: 'ob Sie können' },
+        { id: 'berbahasa-inggris', targetText: 'berbahasa Inggris?', baseText: 'Englisch sprechen?' },
+      ],
+      lessonItems: [
+        { id: 'selamat-pagi', targetText: 'selamat pagi', baseText: 'guten Morgen', acceptedAnswers: indonesianAnswers('selamat pagi', 'Selamat pagi') },
+        { id: 'apakah', targetText: 'apakah', baseText: 'ob / Fragewort', acceptedAnswers: indonesianAnswers('apakah', 'Apakah') },
+        { id: 'anda', targetText: 'Anda', baseText: 'Sie / du (höflich)', acceptedAnswers: indonesianAnswers('Anda', 'anda') },
+        { id: 'berbahasa-inggris', targetText: 'berbahasa Inggris', baseText: 'Englisch sprechen', acceptedAnswers: indonesianAnswers('berbahasa Inggris', 'Berbahasa Inggris', 'berbahasa inggris') },
+      ],
+      buildChips: ['Selamat pagi,', 'apakah Anda bisa', 'berbahasa Inggris?', 'halo', 'terima kasih'],
+      typeRecall: {
+        before: '',
+        answer: 'selamat pagi',
+        after: ', apakah Anda bisa berbahasa Inggris?',
+        acceptedAnswers: indonesianAnswers('selamat pagi', 'Selamat pagi'),
+        fallbackChoices: ['selamat pagi', 'halo', 'sampai jumpa', 'terima kasih'],
+      },
+      speakTarget: {
+        baseCue: 'Guten Morgen, sprechen Sie Englisch?',
+        targetPhrase: 'Selamat pagi, apakah Anda bisa berbahasa Inggris?',
+        requiredTokens: ['selamat', 'pagi', 'anda', 'bisa', 'berbahasa', 'inggris'],
+        optionalTokens: ['apakah'],
+      },
+      sceneCaption: 'Di meja informasi pagi hari, sapaan selamat pagi membuka percakapan dengan sopan.',
+      trophyWord: {
+        word: 'selamat pagi',
+        meaning: 'guten Morgen',
+        example: 'Selamat pagi, apakah Anda bisa berbahasa Inggris?',
+        whyThisWord: 'Selamat pagi ist die Standardbegrüßung am Morgen. Für höfliche A1-Servicekontakte ist die Tageszeit natürlicher als nur halo.',
+      },
+      placeholderCaption: 'Heller Morgen am Infoschalter, höfliche erste Frage auf Indonesisch.',
+      songMood: 'polite morning start',
+      visualNotes: 'Morning light, service counter, selamat pagi highlighted before the question.',
+    }),
+  },
+  {
+    slug: 'repeat-slowly',
+    title: 'Langsam wiederholen',
+    situation: {
+      en: 'You did not understand and ask for the sentence to be repeated slowly.',
+      de: 'Du hast etwas nicht verstanden und bittest darum, es langsam zu wiederholen.',
+    },
+    pedagogicalGoal: 'Tidak für Verbverneinung verwenden und mit tolong eine einfache Wiederholungsbitte bilden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Maaf, saya tidak mengerti. Tolong ulangi pelan-pelan.',
+        baseText: 'Entschuldigung, ich verstehe nicht. Bitte wiederholen Sie langsam.',
+      },
+      meaning: 'Eine höfliche Reparaturphrase, wenn das Gespräch zu schnell war.',
+      chunks: [
+        { id: 'maaf', targetText: 'Maaf,', baseText: 'Entschuldigung,' },
+        { id: 'saya-tidak-mengerti', targetText: 'saya tidak mengerti.', baseText: 'ich verstehe nicht.' },
+        { id: 'tolong-ulangi-pelan-pelan', targetText: 'Tolong ulangi pelan-pelan.', baseText: 'Bitte wiederholen Sie langsam.' },
+      ],
+      lessonItems: [
+        { id: 'maaf', targetText: 'maaf', baseText: 'Entschuldigung', acceptedAnswers: indonesianAnswers('maaf', 'Maaf') },
+        { id: 'tidak', targetText: 'tidak', baseText: 'nicht (Verb/Adjektiv)', acceptedAnswers: indonesianAnswers('tidak', 'Tidak') },
+        { id: 'mengerti', targetText: 'mengerti', baseText: 'verstehen', acceptedAnswers: indonesianAnswers('mengerti', 'Mengerti') },
+        { id: 'pelan-pelan', targetText: 'pelan-pelan', baseText: 'langsam', acceptedAnswers: indonesianAnswers('pelan-pelan', 'Pelan-pelan', 'pelan pelan') },
+      ],
+      buildChips: ['Maaf,', 'saya tidak mengerti.', 'Tolong ulangi', 'pelan-pelan.', 'bukan'],
+      typeRecall: {
+        before: 'Maaf, saya ',
+        answer: 'tidak',
+        after: ' mengerti. Tolong ulangi pelan-pelan.',
+        acceptedAnswers: indonesianAnswers('tidak', 'Tidak'),
+        fallbackChoices: ['tidak', 'bukan', 'sudah', 'akan'],
+      },
+      speakTarget: {
+        baseCue: 'Entschuldigung, ich verstehe nicht. Bitte wiederholen Sie langsam.',
+        targetPhrase: 'Maaf, saya tidak mengerti. Tolong ulangi pelan-pelan.',
+        requiredTokens: ['maaf', 'saya', 'tidak', 'mengerti', 'tolong', 'ulangi', 'pelan'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Percakapan berhenti sebentar, lalu Anda meminta pengulangan dengan pelan-pelan.',
+      trophyWord: {
+        word: 'tidak',
+        meaning: 'nicht',
+        example: 'Saya tidak mengerti.',
+        whyThisWord: 'Tidak verneint Verben und Adjektive, wie mengerti. Für Identität oder Nomen wäre bukan richtig, etwa Saya bukan turis.',
+      },
+      placeholderCaption: 'Kurzer Stopp im Gespräch, freundliche Bitte um langsame Wiederholung.',
+      songMood: 'patient repair phrase',
+      visualNotes: 'Soft replay cue, pelan-pelan kept with hyphen, tidak contrasted with bukan.',
+    }),
+  },
+  {
+    slug: 'where-is-station',
+    title: 'Wo ist der Bahnhof?',
+    situation: {
+      en: 'On the sidewalk, politely ask where the station is.',
+      de: 'Auf dem Gehweg fragst du höflich, wo der Bahnhof ist.',
+    },
+    pedagogicalGoal: 'Die Ortsfrage di mana mit einem klaren A1-Ortsnomen verwenden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Maaf, di mana stasiun?',
+        baseText: 'Entschuldigung, wo ist der Bahnhof?',
+      },
+      meaning: 'Eine kurze Wegfrage mit höflichem Einstieg.',
+      chunks: [
+        { id: 'maaf', targetText: 'Maaf,', baseText: 'Entschuldigung,' },
+        { id: 'di-mana', targetText: 'di mana', baseText: 'wo' },
+        { id: 'stasiun', targetText: 'stasiun?', baseText: 'Bahnhof?' },
+      ],
+      lessonItems: [
+        { id: 'di-mana', targetText: 'di mana', baseText: 'wo', acceptedAnswers: indonesianAnswers('di mana', 'Di mana', 'dimana') },
+        { id: 'stasiun', targetText: 'stasiun', baseText: 'Bahnhof', acceptedAnswers: indonesianAnswers('stasiun', 'Stasiun') },
+        { id: 'kiri', targetText: 'kiri', baseText: 'links', acceptedAnswers: indonesianAnswers('kiri', 'Kiri') },
+        { id: 'kanan', targetText: 'kanan', baseText: 'rechts', acceptedAnswers: indonesianAnswers('kanan', 'Kanan') },
+      ],
+      buildChips: ['Maaf,', 'di mana', 'stasiun?', 'kiri', 'kanan'],
+      typeRecall: {
+        before: 'Maaf, ',
+        answer: 'di mana',
+        after: ' stasiun?',
+        acceptedAnswers: indonesianAnswers('di mana', 'Di mana', 'dimana'),
+        fallbackChoices: ['di mana', 'berapa', 'kapan', 'siapa'],
+      },
+      speakTarget: {
+        baseCue: 'Entschuldigung, wo ist der Bahnhof?',
+        targetPhrase: 'Maaf, di mana stasiun?',
+        requiredTokens: ['maaf', 'di', 'mana', 'stasiun'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Di trotoar, Anda bertanya dengan singkat: di mana stasiun?',
+      trophyWord: {
+        word: 'di mana',
+        meaning: 'wo',
+        example: 'Di mana stasiun?',
+        whyThisWord: 'Di mana ist die Standardfrage nach einem Ort. Die formale Schreibung ist getrennt, auch wenn Lernende oft dimana tippen.',
+      },
+      placeholderCaption: 'Sonnige Straßenecke, sichtbares Bahnhofsschild, kurze Ortsfrage.',
+      songMood: 'clear directions',
+      visualNotes: 'Street corner, station icon, di mana grouped as a two-word question.',
+    }),
+  },
+  {
+    slug: 'coffee-please',
+    title: 'Kaffee, bitte',
+    situation: {
+      en: 'At a cafe counter, order one coffee politely.',
+      de: 'Am Café-Tresen bestellst du höflich einen Kaffee.',
+    },
+    pedagogicalGoal: 'Eine einfache Bestellung mit saya mau, Zahlwort satu und tolong formulieren.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Saya mau satu kopi, tolong.',
+        baseText: 'Ich möchte einen Kaffee, bitte.',
+      },
+      meaning: 'Eine sehr praktische Bestellung ohne Verbkonjugation oder Artikel.',
+      chunks: [
+        { id: 'saya-mau', targetText: 'Saya mau', baseText: 'ich möchte' },
+        { id: 'satu-kopi', targetText: 'satu kopi,', baseText: 'einen Kaffee,' },
+        { id: 'tolong', targetText: 'tolong.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'saya', targetText: 'saya', baseText: 'ich', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
+        { id: 'mau', targetText: 'mau', baseText: 'möchten / wollen', acceptedAnswers: indonesianAnswers('mau', 'Mau') },
+        { id: 'satu', targetText: 'satu', baseText: 'eins', acceptedAnswers: indonesianAnswers('satu', 'Satu') },
+        { id: 'kopi', targetText: 'kopi', baseText: 'Kaffee', acceptedAnswers: indonesianAnswers('kopi', 'Kopi') },
+      ],
+      buildChips: ['Saya mau', 'satu kopi,', 'tolong.', 'dua', 'teh'],
+      typeRecall: {
+        before: 'Saya mau satu ',
+        answer: 'kopi',
+        after: ', tolong.',
+        acceptedAnswers: indonesianAnswers('kopi', 'Kopi'),
+        fallbackChoices: ['kopi', 'teh', 'air', 'roti'],
+      },
+      speakTarget: {
+        baseCue: 'Ich möchte einen Kaffee, bitte.',
+        targetPhrase: 'Saya mau satu kopi, tolong.',
+        requiredTokens: ['saya', 'mau', 'satu', 'kopi', 'tolong'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Di kafe, pesanan tetap pendek: satu kopi, tolong.',
+      trophyWord: {
+        word: 'kopi',
+        meaning: 'Kaffee',
+        example: 'Saya mau satu kopi, tolong.',
+        whyThisWord: 'Kopi ist ein naturalisiertes Standardwort für Kaffee. Es passt in A1-Bestellungen ohne Genus, Artikel oder Kasus.',
+      },
+      placeholderCaption: 'Heller Café-Tresen, eine Tasse Kaffee, kurze höfliche Bestellung.',
+      songMood: 'cafe order',
+      visualNotes: 'Coffee cup, one-count badge, tolong as polite request marker.',
+    }),
+  },
+  {
+    slug: 'how-much',
+    title: 'Wie viel kostet das?',
+    situation: {
+      en: 'In a small shop, ask the price of the item in front of you.',
+      de: 'In einem kleinen Laden fragst du nach dem Preis des Gegenstands vor dir.',
+    },
+    pedagogicalGoal: 'Mit berapa eine Preisfrage bilden und -nya als praktisches A1-Bezugssuffix erkennen.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Berapa harganya?',
+        baseText: 'Wie viel kostet das?',
+      },
+      meaning: 'Die knappe Standardfrage nach einem Preis im Laden.',
+      chunks: [
+        { id: 'berapa', targetText: 'Berapa', baseText: 'wie viel' },
+        { id: 'harganya', targetText: 'harganya?', baseText: 'der Preis davon?' },
+      ],
+      lessonItems: [
+        { id: 'berapa', targetText: 'berapa', baseText: 'wie viel', acceptedAnswers: indonesianAnswers('berapa', 'Berapa') },
+        { id: 'harga', targetText: 'harga', baseText: 'Preis', acceptedAnswers: indonesianAnswers('harga', 'Harga') },
+        { id: 'murah', targetText: 'murah', baseText: 'billig / günstig', acceptedAnswers: indonesianAnswers('murah', 'Murah') },
+        { id: 'mahal', targetText: 'mahal', baseText: 'teuer', acceptedAnswers: indonesianAnswers('mahal', 'Mahal') },
+      ],
+      buildChips: ['Berapa', 'harganya?', 'di mana', 'murah'],
+      typeRecall: {
+        before: '',
+        answer: 'Berapa',
+        after: ' harganya?',
+        acceptedAnswers: indonesianAnswers('Berapa', 'berapa'),
+        fallbackChoices: ['Berapa', 'Siapa', 'Kapan', 'Bagaimana'],
+      },
+      speakTarget: {
+        baseCue: 'Wie viel kostet das?',
+        targetPhrase: 'Berapa harganya?',
+        requiredTokens: ['berapa', 'harganya'],
+        optionalTokens: ['harga'],
+      },
+      sceneCaption: 'Di toko kecil, Anda menunjuk barang dan bertanya: berapa harganya?',
+      trophyWord: {
+        word: 'berapa',
+        meaning: 'wie viel / wie viele',
+        example: 'Berapa harganya?',
+        whyThisWord: 'Berapa deckt wie viel und wie viele ab. Das ist für Preise, Uhrzeiten und Mengen im A1-Alltag zentral.',
+      },
+      placeholderCaption: 'Kleiner Laden, Preisschild, kurze Frage nach harganya.',
+      songMood: 'shop price check',
+      visualNotes: 'Price tag, berapa highlighted, simple harganya suffix.',
+    }),
+  },
+  {
+    slug: 'train-time',
+    title: 'Wann kommt der Zug?',
+    situation: {
+      en: 'At the station, ask what time the train arrives.',
+      de: 'Am Bahnhof fragst du, um wie viel Uhr der Zug kommt.',
+    },
+    pedagogicalGoal: 'Jam berapa als Uhrzeitfrage mit kereta und datang verwenden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Jam berapa kereta datang?',
+        baseText: 'Um wie viel Uhr kommt der Zug?',
+      },
+      meaning: 'Eine klare Uhrzeitfrage am Bahnhof.',
+      chunks: [
+        { id: 'jam-berapa', targetText: 'Jam berapa', baseText: 'um wie viel Uhr' },
+        { id: 'kereta', targetText: 'kereta', baseText: 'der Zug' },
+        { id: 'datang', targetText: 'datang?', baseText: 'kommt?' },
+      ],
+      lessonItems: [
+        { id: 'jam', targetText: 'jam', baseText: 'Uhr / Stunde', acceptedAnswers: indonesianAnswers('jam', 'Jam') },
+        { id: 'berapa', targetText: 'berapa', baseText: 'wie viel', acceptedAnswers: indonesianAnswers('berapa', 'Berapa') },
+        { id: 'kereta', targetText: 'kereta', baseText: 'Zug', acceptedAnswers: indonesianAnswers('kereta', 'Kereta') },
+        { id: 'datang', targetText: 'datang', baseText: 'kommen', acceptedAnswers: indonesianAnswers('datang', 'Datang') },
+      ],
+      buildChips: ['Jam berapa', 'kereta', 'datang?', 'besok', 'satu'],
+      typeRecall: {
+        before: '',
+        answer: 'Jam berapa',
+        after: ' kereta datang?',
+        acceptedAnswers: indonesianAnswers('Jam berapa', 'jam berapa'),
+        fallbackChoices: ['Jam berapa', 'Di mana', 'Siapa', 'Apa'],
+      },
+      speakTarget: {
+        baseCue: 'Um wie viel Uhr kommt der Zug?',
+        targetPhrase: 'Jam berapa kereta datang?',
+        requiredTokens: ['jam', 'berapa', 'kereta', 'datang'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Di stasiun, papan waktu ada di depan Anda, lalu Anda bertanya jam berapa.',
+      trophyWord: {
+        word: 'jam',
+        meaning: 'Uhr / Stunde',
+        example: 'Jam berapa kereta datang?',
+        whyThisWord: 'Jam ist der A1-Anker für Uhrzeit. In jam berapa fragt es nach der Uhrzeit, ohne eine Verbform für Tempus zu ändern.',
+      },
+      placeholderCaption: 'Bahnhof mit Uhr und Zuganzeige, klare Frage nach der Uhrzeit.',
+      songMood: 'station timing',
+      visualNotes: 'Clock accent, train platform, jam berapa grouped as one time question.',
+    }),
+  },
+  {
+    slug: 'need-help',
+    title: 'Ich brauche Hilfe',
+    situation: {
+      en: 'At a pharmacy or help desk, ask a male attendant for help politely.',
+      de: 'In der Apotheke oder am Infoschalter bittest du einen Mitarbeiter höflich um Hilfe.',
+    },
+    pedagogicalGoal: 'Tolong als Bitte-Marker vor ein Verb setzen und Pak als respektvolle Anrede erkennen.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Tolong bantu saya, Pak.',
+        baseText: 'Bitte helfen Sie mir.',
+      },
+      meaning: 'Eine direkte, höfliche Hilfebitte in einer Service-Situation.',
+      chunks: [
+        { id: 'tolong', targetText: 'Tolong', baseText: 'bitte' },
+        { id: 'bantu-saya', targetText: 'bantu saya,', baseText: 'helfen Sie mir,' },
+        { id: 'pak', targetText: 'Pak.', baseText: 'Herr / Sir.' },
+      ],
+      lessonItems: [
+        { id: 'tolong', targetText: 'tolong', baseText: 'bitte / helfen', acceptedAnswers: indonesianAnswers('tolong', 'Tolong') },
+        { id: 'bantu', targetText: 'bantu', baseText: 'helfen', acceptedAnswers: indonesianAnswers('bantu', 'Bantu') },
+        { id: 'saya', targetText: 'saya', baseText: 'ich / mir', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
+        { id: 'pak', targetText: 'Pak', baseText: 'Herr / Sir', acceptedAnswers: indonesianAnswers('Pak', 'pak', 'Bapak', 'bapak') },
+      ],
+      buildChips: ['Tolong', 'bantu saya,', 'Pak.', 'maaf', 'silakan'],
+      typeRecall: {
+        before: '',
+        answer: 'Tolong',
+        after: ' bantu saya, Pak.',
+        acceptedAnswers: indonesianAnswers('Tolong', 'tolong'),
+        fallbackChoices: ['Tolong', 'Silakan', 'Maaf', 'Sampai'],
+      },
+      speakTarget: {
+        baseCue: 'Bitte helfen Sie mir.',
+        targetPhrase: 'Tolong bantu saya, Pak.',
+        requiredTokens: ['tolong', 'bantu', 'saya'],
+        optionalTokens: ['pak', 'bapak'],
+      },
+      sceneCaption: 'Di meja bantuan, Anda menyapa Pak dan meminta bantuan dengan tolong.',
+      trophyWord: {
+        word: 'tolong',
+        meaning: 'bitte / helfen',
+        example: 'Tolong bantu saya, Pak.',
+        whyThisWord: 'Tolong steht am Anfang einer Bitte: tolong plus Verb. Es ist für A1 nützlicher als das formellere mohon.',
+      },
+      placeholderCaption: 'Servicepult, respektvolle Anrede Pak, direkte Hilfebitte.',
+      songMood: 'asking for help',
+      visualNotes: 'Help desk, tolong before the verb, Pak as respectful address.',
+    }),
+  },
+  {
+    slug: 'nice-here',
+    title: 'Hier ist es schön',
+    situation: {
+      en: 'Inside a cafe or shop, make a short positive comment about the place.',
+      de: 'In einem Café oder Laden machst du einen kurzen positiven Kommentar über den Ort.',
+    },
+    pedagogicalGoal: 'Di sini als Ortsanker nutzen und ohne Kopulaverb einen einfachen A1-Kommentar bilden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Di sini bagus.',
+        baseText: 'Hier ist es schön.',
+      },
+      meaning: 'Ein kurzer positiver Small-Talk-Satz über den Ort.',
+      chunks: [
+        { id: 'di-sini', targetText: 'Di sini', baseText: 'hier' },
+        { id: 'bagus', targetText: 'bagus.', baseText: 'schön / gut.' },
+      ],
+      lessonItems: [
+        { id: 'di-sini', targetText: 'di sini', baseText: 'hier', acceptedAnswers: indonesianAnswers('di sini', 'Di sini', 'disini') },
+        { id: 'bagus', targetText: 'bagus', baseText: 'schön / gut', acceptedAnswers: indonesianAnswers('bagus', 'Bagus') },
+        { id: 'besar', targetText: 'besar', baseText: 'groß', acceptedAnswers: indonesianAnswers('besar', 'Besar') },
+        { id: 'kecil', targetText: 'kecil', baseText: 'klein', acceptedAnswers: indonesianAnswers('kecil', 'Kecil') },
+      ],
+      buildChips: ['Di sini', 'bagus.', 'di sana', 'mahal'],
+      typeRecall: {
+        before: '',
+        answer: 'Di sini',
+        after: ' bagus.',
+        acceptedAnswers: indonesianAnswers('Di sini', 'di sini', 'disini'),
+        fallbackChoices: ['Di sini', 'Di sana', 'Di mana', 'Besok'],
+      },
+      speakTarget: {
+        baseCue: 'Hier ist es schön.',
+        targetPhrase: 'Di sini bagus.',
+        requiredTokens: ['di', 'sini', 'bagus'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Di kafe yang terang, Anda memberi komentar singkat: di sini bagus.',
+      trophyWord: {
+        word: 'di sini',
+        meaning: 'hier',
+        example: 'Di sini bagus.',
+        whyThisWord: 'Di sini ist die Standardform für hier. Formal schreibt man di getrennt, auch wenn disini als Tippfehler häufig vorkommt.',
+      },
+      placeholderCaption: 'Helles Café, kurzer positiver Satz über den Ort.',
+      songMood: 'positive place comment',
+      visualNotes: 'Bright interior, di sini marker, no extra copula needed.',
+    }),
+  },
+  {
+    slug: 'tomorrow-seven',
+    title: 'Morgen um sieben',
+    situation: {
+      en: 'Confirm a simple plan for tomorrow at seven.',
+      de: 'Du bestätigst einen einfachen Plan für morgen um sieben.',
+    },
+    pedagogicalGoal: 'Besok als Zeitadverb für Zukunft verwenden, ohne das Verb zu flektieren.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Besok jam tujuh? Baik.',
+        baseText: 'Morgen um sieben? Gut.',
+      },
+      meaning: 'Eine knappe Bestätigung für einen Plan am nächsten Tag.',
+      chunks: [
+        { id: 'besok', targetText: 'Besok', baseText: 'morgen' },
+        { id: 'jam-tujuh', targetText: 'jam tujuh?', baseText: 'um sieben?' },
+        { id: 'baik', targetText: 'Baik.', baseText: 'gut.' },
+      ],
+      lessonItems: [
+        { id: 'besok', targetText: 'besok', baseText: 'morgen', acceptedAnswers: indonesianAnswers('besok', 'Besok') },
+        { id: 'jam-tujuh', targetText: 'jam tujuh', baseText: 'sieben Uhr', acceptedAnswers: indonesianAnswers('jam tujuh', 'Jam tujuh') },
+        { id: 'tujuh', targetText: 'tujuh', baseText: 'sieben', acceptedAnswers: indonesianAnswers('tujuh', 'Tujuh') },
+        { id: 'baik', targetText: 'baik', baseText: 'gut', acceptedAnswers: indonesianAnswers('baik', 'Baik') },
+      ],
+      buildChips: ['Besok', 'jam tujuh?', 'Baik.', 'kemarin', 'sekarang'],
+      typeRecall: {
+        before: '',
+        answer: 'Besok',
+        after: ' jam tujuh? Baik.',
+        acceptedAnswers: indonesianAnswers('Besok', 'besok'),
+        fallbackChoices: ['Besok', 'Kemarin', 'Sekarang', 'Nanti'],
+      },
+      speakTarget: {
+        baseCue: 'Morgen um sieben? Gut.',
+        targetPhrase: 'Besok jam tujuh? Baik.',
+        requiredTokens: ['besok', 'jam', 'tujuh', 'baik'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Rencana kecil jadi jelas: besok jam tujuh, baik.',
+      trophyWord: {
+        word: 'besok',
+        meaning: 'morgen',
+        example: 'Besok jam tujuh? Baik.',
+        whyThisWord: 'Besok zeigt Zukunft über ein Zeitadverb. Indonesisch braucht dafür keine Verbkonjugation.',
+      },
+      placeholderCaption: 'Kleiner Kalender, Uhrzeit sieben, freundliche Bestätigung.',
+      songMood: 'tomorrow plan',
+      visualNotes: 'Calendar chip, number seven, besok as future time adverb.',
+    }),
+  },
+  {
+    slug: 'thanks-goodbye',
+    title: 'Danke und auf Wiedersehen',
+    situation: {
+      en: 'Close the interaction with thanks and a neutral goodbye.',
+      de: 'Du schließt die Situation mit Dank und einem neutralen Abschied ab.',
+    },
+    pedagogicalGoal: 'Terima kasih und sampai jumpa als sichere Standardformeln für den Abschluss verwenden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: {
+        targetText: 'Terima kasih. Sampai jumpa.',
+        baseText: 'Danke. Auf Wiedersehen.',
+      },
+      meaning: 'Ein klarer Dank plus ein neutraler Abschied.',
+      chunks: [
+        { id: 'terima-kasih', targetText: 'Terima kasih.', baseText: 'Danke.' },
+        { id: 'sampai-jumpa', targetText: 'Sampai jumpa.', baseText: 'Auf Wiedersehen.' },
+      ],
+      lessonItems: [
+        { id: 'terima-kasih', targetText: 'terima kasih', baseText: 'danke', acceptedAnswers: indonesianAnswers('terima kasih', 'Terima kasih', 'terimakasih') },
+        { id: 'sampai-jumpa', targetText: 'sampai jumpa', baseText: 'auf Wiedersehen / bis bald', acceptedAnswers: indonesianAnswers('sampai jumpa', 'Sampai jumpa') },
+        { id: 'kembali', targetText: 'kembali', baseText: 'zurück / gern geschehen', acceptedAnswers: indonesianAnswers('kembali', 'Kembali') },
+        { id: 'sama-sama', targetText: 'sama-sama', baseText: 'gern geschehen', acceptedAnswers: indonesianAnswers('sama-sama', 'Sama-sama', 'sama sama') },
+      ],
+      buildChips: ['Terima kasih.', 'Sampai jumpa.', 'halo', 'maaf'],
+      typeRecall: {
+        before: '',
+        answer: 'Terima kasih',
+        after: '. Sampai jumpa.',
+        acceptedAnswers: indonesianAnswers('Terima kasih', 'terima kasih', 'terimakasih'),
+        fallbackChoices: ['Terima kasih', 'Selamat pagi', 'Tolong', 'Berapa'],
+      },
+      speakTarget: {
+        baseCue: 'Danke. Auf Wiedersehen.',
+        targetPhrase: 'Terima kasih. Sampai jumpa.',
+        requiredTokens: ['terima', 'kasih', 'sampai', 'jumpa'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Setelah dibantu, Anda menutup dengan terima kasih dan sampai jumpa.',
+      trophyWord: {
+        word: 'terima kasih',
+        meaning: 'danke',
+        example: 'Terima kasih. Sampai jumpa.',
+        whyThisWord: 'Terima kasih ist die Standardform für Danke. Die formale Schreibung ist getrennt, auch wenn terimakasih als Tippfehler vorkommt.',
+      },
+      placeholderCaption: 'Abschluss am Tresen, kurzer Dank, neutraler Abschied.',
+      songMood: 'thankful close',
+      visualNotes: 'Warm exit light, thank-you gesture, sampai jumpa as neutral goodbye.',
+    }),
+  },
+]
+
+const indonesianA1Practical1Lessons: GuidedLessonDefinition[] = indonesianA1Practical1Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `indonesian-a1-practical-1-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = indonesianA1Practical1Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Indonesisch A1 Praxis 1 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: lessonInput.variant,
+    },
+  }
+})
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -51028,6 +51644,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   ...cebuanoA1Practical3Lessons,
   ...cebuanoA1Practical4Lessons,
+  ...indonesianA1Practical1Lessons,
   {
     id: 'german-a1-practical-9-lesson-1-nice-to-meet-you',
     pathId: GUIDED_TODAY_PATH_GERMAN_NINE_METADATA.id,
@@ -51343,6 +51960,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA,
     GUIDED_TODAY_PATH_GERMAN_NINE_METADATA,
+    GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA,
   ]
 }
 
@@ -51372,6 +51990,7 @@ export const GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES: Record<GuidedTargetLanguage, 
   Portuguese: ['pt-BR'],
   German: ['de-DE'],
   Cebuano: ['ceb-PH'],
+  Indonesian: ['id-ID'],
 }
 
 export function getGuidedPathOverview(
