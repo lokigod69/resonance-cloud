@@ -25386,7 +25386,7 @@ const brightGermanLesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Entschuldigung, wo ist der Bahnhof?',
-    chips: ['Entschuldigung,', 'wo ist', 'der Bahnhof?', 'hier', 'links'],
+    chips: ['Entschuldigung,', 'wo ist', 'der Bahnhof?', 'geradeaus', 'links'],
   },
   typeRecall: {
     before: 'Entschuldigung, ',
@@ -25495,7 +25495,7 @@ const brightGermanLesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Wie viel kostet das?',
-    chips: ['Wie viel', 'kostet das?', 'bitte', 'hier', 'danke'],
+    chips: ['Wie viel', 'kostet das?', 'bitte', 'Euro', 'danke'],
   },
   typeRecall: {
     before: 'Wie viel ',
@@ -25550,7 +25550,7 @@ const brightGermanLesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Wann fährt der Zug nach Berlin?',
-    chips: ['Wann', 'fährt der Zug', 'nach Berlin?', 'heute', 'bitte'],
+    chips: ['Wann', 'fährt der Zug', 'nach Berlin?', 'Gleis 3', 'bitte'],
   },
   typeRecall: {
     before: 'Wann fährt der ',
@@ -25605,14 +25605,14 @@ const brightGermanLesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Entschuldigung, ich brauche Hilfe.',
-    chips: ['Entschuldigung,', 'ich brauche', 'Hilfe.', 'bitte', 'Wasser'],
+    chips: ['Entschuldigung,', 'ich brauche', 'Hilfe.', 'bitte', 'eine Frage'],
   },
   typeRecall: {
     before: 'Entschuldigung, ich brauche ',
     answer: 'Hilfe',
     after: '.',
     acceptedAnswers: ['Hilfe', 'hilfe'],
-    fallbackChoices: ['Hilfe', 'Wasser', 'Kaffee', 'Zeit'],
+    fallbackChoices: ['Hilfe', 'eine Frage', 'Kaffee', 'Zeit'],
   },
   speakTarget: {
     baseCue: 'Excuse me, I need help.',
@@ -25660,14 +25660,14 @@ const brightGermanLesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Es ist sehr schön hier.',
-    chips: ['Es ist', 'sehr schön', 'hier.', 'heute', 'okay'],
+    chips: ['Es ist', 'sehr schön', 'hier.', 'draußen', 'okay'],
   },
   typeRecall: {
     before: 'Es ist sehr ',
     answer: 'schön',
     after: ' hier.',
     acceptedAnswers: ['schön', 'schoen', 'Schön', 'Schoen'],
-    fallbackChoices: ['schön', 'gut', 'warm', 'ruhig'],
+    fallbackChoices: ['schön', 'hell', 'warm', 'ruhig'],
   },
   speakTarget: {
     baseCue: "It's really nice here.",
@@ -25879,7 +25879,7 @@ const brightGermanP2Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Können Sie das bitte aufschreiben?',
-    chips: ['Können Sie das', 'bitte', 'aufschreiben?', 'hier', 'danke'],
+    chips: ['Können Sie das', 'bitte', 'aufschreiben?', 'den Namen', 'danke'],
   },
   typeRecall: {
     before: 'Können Sie das bitte ',
@@ -25934,14 +25934,14 @@ const brightGermanP2Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Können Sie mir das auf der Karte zeigen?',
-    chips: ['Können Sie mir', 'das auf der Karte', 'zeigen?', 'hier', 'bitte'],
+    chips: ['Können Sie mir', 'das auf der Karte', 'zeigen?', 'den Weg', 'bitte'],
   },
   typeRecall: {
     before: 'Können Sie mir das auf der Karte ',
     answer: 'zeigen',
     after: '?',
     acceptedAnswers: ['zeigen', 'Zeigen'],
-    fallbackChoices: ['zeigen', 'sagen', 'sehen', 'finden'],
+    fallbackChoices: ['zeigen', 'sagen', 'erklären', 'finden'],
   },
   speakTarget: {
     baseCue: 'Can you show me that on the map?',
@@ -25989,14 +25989,14 @@ const brightGermanP2Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Was ist besser, dieses oder das?',
-    chips: ['Was ist', 'besser,', 'dieses oder das?', 'hier', 'bitte'],
+    chips: ['Was ist', 'besser,', 'dieses oder das?', 'billig', 'bitte'],
   },
   typeRecall: {
     before: 'Was ist ',
     answer: 'besser',
     after: ', dieses oder das?',
     acceptedAnswers: ['besser', 'Besser'],
-    fallbackChoices: ['besser', 'gut', 'mehr', 'neu'],
+    fallbackChoices: ['besser', 'billig', 'mehr', 'neu'],
   },
   speakTarget: {
     baseCue: 'What is better, this one or that one?',
@@ -26043,7 +26043,7 @@ const brightGermanP2Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Gibt es das hier?',
-    chips: ['Gibt es', 'das hier?', 'bitte', 'noch', 'auch'],
+    chips: ['Gibt es', 'das hier?', 'bitte', 'noch', 'im Laden'],
   },
   typeRecall: {
     before: '',
@@ -26152,7 +26152,7 @@ const brightGermanP2Lesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Die Quittung, bitte. Und eine Tüte?',
-    chips: ['Die Quittung, bitte.', 'Und eine Tüte?', 'danke', 'auch'],
+    chips: ['Die Quittung, bitte.', 'Und eine Tüte?', 'danke', 'bar'],
   },
   typeRecall: {
     before: 'Die ',
@@ -26213,7 +26213,7 @@ const brightGermanP2Lesson008: GuidedLessonVibeVariant = {
     answer: 'Reservierung',
     after: '.',
     acceptedAnswers: ['Reservierung', 'reservierung'],
-    fallbackChoices: ['Reservierung', 'Frage', 'Karte', 'Quittung'],
+    fallbackChoices: ['Reservierung', 'Frage', 'Karte', 'Adresse'],
   },
   speakTarget: {
     baseCue: 'I have a reservation.',
@@ -26421,14 +26421,14 @@ const brightGermanP3Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ist es weit?',
-    chips: ['Ist es', 'weit?', 'noch', 'hier', 'bitte'],
+    chips: ['Ist es', 'weit?', 'noch', 'zu Fuß', 'bitte'],
   },
   typeRecall: {
     before: 'Ist es ',
     answer: 'weit',
     after: '?',
     acceptedAnswers: ['weit', 'Weit'],
-    fallbackChoices: ['weit', 'nah', 'lang', 'gut'],
+    fallbackChoices: ['weit', 'nah', 'lang', 'kurz'],
   },
   speakTarget: {
     baseCue: 'Is it far?',
@@ -26531,7 +26531,7 @@ const brightGermanP3Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Welcher Bus fährt zum Hauptbahnhof?',
-    chips: ['Welcher Bus', 'fährt', 'zum Hauptbahnhof?', 'hier', 'bitte'],
+    chips: ['Welcher Bus', 'fährt', 'zum Hauptbahnhof?', 'am Bahnhof', 'bitte'],
   },
   typeRecall: {
     before: '',
@@ -26585,7 +26585,7 @@ const brightGermanP3Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ist die nächste Haltestelle der Hauptbahnhof?',
-    chips: ['Ist die nächste Haltestelle', 'der Hauptbahnhof?', 'hier', 'bitte', 'okay'],
+    chips: ['Ist die nächste Haltestelle', 'der Hauptbahnhof?', 'hinten', 'bitte', 'okay'],
   },
   typeRecall: {
     before: 'Ist die ',
@@ -26860,14 +26860,14 @@ const brightGermanP3Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ich habe die Haltestelle verpasst.',
-    chips: ['Ich habe', 'die Haltestelle', 'verpasst.', 'jetzt', 'okay'],
+    chips: ['Ich habe', 'die Haltestelle', 'verpasst.', 'zu spät', 'okay'],
   },
   typeRecall: {
     before: 'Ich habe die ',
     answer: 'Haltestelle',
     after: ' verpasst.',
     acceptedAnswers: ['Haltestelle', 'haltestelle'],
-    fallbackChoices: ['Haltestelle', 'Tür', 'Karte', 'Quittung'],
+    fallbackChoices: ['Haltestelle', 'Tür', 'Straßenbahn', 'U-Bahn'],
   },
   speakTarget: {
     baseCue: 'I missed the stop.',
@@ -26969,7 +26969,7 @@ const brightGermanP4Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Die Speisekarte, bitte.',
-    chips: ['Die Speisekarte,', 'bitte.', 'danke', 'auch', 'hier'],
+    chips: ['Die Speisekarte,', 'bitte.', 'danke', 'am Tisch', 'für zwei'],
   },
   typeRecall: {
     before: 'Die ',
@@ -27024,14 +27024,14 @@ const brightGermanP4Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ich möchte einen Tee, bitte.',
-    chips: ['Ich möchte', 'einen Tee,', 'bitte.', 'Wasser', 'danke'],
+    chips: ['Ich möchte', 'einen Tee,', 'bitte.', 'Saft', 'danke'],
   },
   typeRecall: {
     before: 'Ich möchte einen ',
     answer: 'Tee',
     after: ', bitte.',
     acceptedAnswers: ['Tee', 'tee'],
-    fallbackChoices: ['Tee', 'Kaffee', 'Wasser', 'Bier'],
+    fallbackChoices: ['Tee', 'Kaffee', 'Saft', 'Bier'],
   },
   speakTarget: {
     baseCue: "I'd like a tea, please.",
@@ -27132,14 +27132,14 @@ const brightGermanP4Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ist es frisch?',
-    chips: ['Ist es', 'frisch?', 'heute', 'gut', 'bitte'],
+    chips: ['Ist es', 'frisch?', 'Brot', 'Brötchen', 'bitte'],
   },
   typeRecall: {
     before: 'Ist es ',
     answer: 'frisch',
     after: '?',
     acceptedAnswers: ['frisch', 'Frisch'],
-    fallbackChoices: ['frisch', 'warm', 'kalt', 'gut'],
+    fallbackChoices: ['frisch', 'warm', 'kalt', 'alt'],
   },
   speakTarget: {
     baseCue: 'Is it fresh?',
@@ -27295,14 +27295,14 @@ const brightGermanP4Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Das war lecker.',
-    chips: ['Das war', 'lecker.', 'gut', 'okay', 'danke'],
+    chips: ['Das war', 'lecker.', 'sehr lecker', 'okay', 'danke'],
   },
   typeRecall: {
     before: 'Das war ',
     answer: 'lecker',
     after: '.',
     acceptedAnswers: ['lecker', 'Lecker'],
-    fallbackChoices: ['lecker', 'gut', 'okay', 'frisch'],
+    fallbackChoices: ['lecker', 'kalt', 'okay', 'frisch'],
   },
   speakTarget: {
     baseCue: 'That was delicious.',
@@ -27411,7 +27411,7 @@ const brightGermanP4Lesson010: GuidedLessonVibeVariant = {
     answer: 'Rechnung',
     after: ', bitte.',
     acceptedAnswers: ['Rechnung', 'rechnung'],
-    fallbackChoices: ['Rechnung', 'Quittung', 'Speisekarte', 'Karte'],
+    fallbackChoices: ['Rechnung', 'Speisekarte', 'Quittung', 'Kasse'],
   },
   speakTarget: {
     baseCue: 'The bill, please.',
@@ -27514,7 +27514,7 @@ const brightGermanP5Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ich habe es vergessen.',
-    chips: ['Ich habe', 'es', 'vergessen.', 'leider', 'sorry'],
+    chips: ['Ich habe', 'es', 'vergessen.', 'leider', 'zu Hause'],
   },
   typeRecall: {
     before: 'Ich habe es ',
@@ -28116,7 +28116,7 @@ const brightGermanP6Lesson003: GuidedLessonVibeVariant = {
     answer: 'Medikament',
     after: '.',
     acceptedAnswers: ['Medikament', 'medikament'],
-    fallbackChoices: ['Medikament', 'Wasser', 'Brot', 'Buch'],
+    fallbackChoices: ['Medikament', 'Rezept', 'Brot', 'Buch'],
   },
   speakTarget: {
     baseCue: 'I need a medicine.',
@@ -28333,7 +28333,7 @@ const brightGermanP6Lesson007: GuidedLessonVibeVariant = {
     answer: 'Arzt',
     after: ' in der Nähe?',
     acceptedAnswers: ['Arzt', 'arzt'],
-    fallbackChoices: ['Arzt', 'Mann', 'Bus', 'Tisch'],
+    fallbackChoices: ['Arzt', 'Mann', 'Krankenhaus', 'Bus'],
   },
   speakTarget: {
     baseCue: 'Is a doctor nearby?',
@@ -28443,7 +28443,7 @@ const brightGermanP6Lesson009: GuidedLessonVibeVariant = {
     answer: 'rufen',
     after: '?',
     acceptedAnswers: ['rufen', 'Rufen'],
-    fallbackChoices: ['rufen', 'holen', 'finden', 'sehen'],
+    fallbackChoices: ['rufen', 'holen', 'finden', 'sprechen'],
   },
   speakTarget: {
     baseCue: 'Can you call for help?',
@@ -28600,14 +28600,14 @@ const brightGermanP7Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Wo ist der Bus?',
-    chips: ['Wo ist', 'der Bus?', 'hier', 'dort', 'bitte'],
+    chips: ['Wo ist', 'der Bus?', 'an der Haltestelle', 'dort', 'bitte'],
   },
   typeRecall: {
     before: 'Wo ist der ',
     answer: 'Bus',
     after: '?',
     acceptedAnswers: ['Bus', 'bus'],
-    fallbackChoices: ['Bus', 'Zug', 'Tisch', 'Mann'],
+    fallbackChoices: ['Bus', 'Zug', 'Bahnhof', 'Mann'],
   },
   speakTarget: {
     baseCue: 'Where is the bus?',
@@ -28818,7 +28818,7 @@ const brightGermanP7Lesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Wir fahren zum Hotel.',
-    chips: ['Wir fahren', 'zum Hotel.', 'mit dem Taxi', 'jetzt', 'danke'],
+    chips: ['Wir fahren', 'zum Hotel.', 'mit dem Taxi', 'zum Bahnhof', 'danke'],
   },
   typeRecall: {
     before: 'Wir ',
@@ -28927,7 +28927,7 @@ const brightGermanP7Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ich fahre in die Stadt.',
-    chips: ['Ich fahre', 'in die Stadt.', 'jetzt', 'mit dem Taxi', 'bitte'],
+    chips: ['Ich fahre', 'in die Stadt.', 'zu Fuß', 'mit dem Taxi', 'bitte'],
   },
   typeRecall: {
     before: 'Ich fahre in die ',
@@ -29036,7 +29036,7 @@ const brightGermanP7Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Wir sind angekommen. Danke!',
-    chips: ['Wir sind', 'angekommen.', 'Danke!', 'da', 'jetzt'],
+    chips: ['Wir sind', 'angekommen.', 'Danke!', 'da', 'am Bahnhof'],
   },
   typeRecall: {
     before: 'Wir sind ',
@@ -29096,7 +29096,7 @@ const brightGermanP8Lesson001: GuidedLessonVibeVariant = {
     answer: 'Buchung',
     after: '.',
     acceptedAnswers: ['Buchung', 'buchung'],
-    fallbackChoices: ['Buchung', 'Frage', 'Karte', 'Quittung'],
+    fallbackChoices: ['Buchung', 'Frage', 'Nummer', 'Adresse'],
   },
   speakTarget: {
     baseCue: 'I have a booking.',
@@ -29150,7 +29150,7 @@ const brightGermanP8Lesson002: GuidedLessonVibeVariant = {
     answer: 'Zimmer',
     after: '.',
     acceptedAnswers: ['Zimmer', 'zimmer'],
-    fallbackChoices: ['Zimmer', 'Bett', 'Bad', 'Tisch'],
+    fallbackChoices: ['Zimmer', 'Bett', 'Bad', 'Telefon'],
   },
   speakTarget: {
     baseCue: 'I need a room.',
@@ -29251,14 +29251,14 @@ const brightGermanP8Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Den Schlüssel, bitte.',
-    chips: ['Den Schlüssel,', 'bitte.', 'für Zimmer zehn', 'danke', 'hier'],
+    chips: ['Den Schlüssel,', 'bitte.', 'für Zimmer zehn', 'danke', 'an der Rezeption'],
   },
   typeRecall: {
     before: 'Den ',
     answer: 'Schlüssel',
     after: ', bitte.',
     acceptedAnswers: ['Schlüssel', 'Schluessel', 'schlüssel', 'schluessel'],
-    fallbackChoices: ['Schlüssel', 'Code', 'Karte', 'Zettel'],
+    fallbackChoices: ['Schlüssel', 'Code', 'Pass', 'Zettel'],
   },
   speakTarget: {
     baseCue: 'The key, please.',
@@ -29359,7 +29359,7 @@ const brightGermanP8Lesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Wo ist die Toilette?',
-    chips: ['Wo ist', 'die Toilette?', 'das WC', 'hier', 'bitte'],
+    chips: ['Wo ist', 'die Toilette?', 'das WC', 'links', 'bitte'],
   },
   typeRecall: {
     before: 'Wo ist die ',
@@ -29420,7 +29420,7 @@ const brightGermanP8Lesson007: GuidedLessonVibeVariant = {
     answer: 'Handtuch',
     after: ', bitte.',
     acceptedAnswers: ['Handtuch', 'handtuch'],
-    fallbackChoices: ['Handtuch', 'Kissen', 'Decke', 'Wasser'],
+    fallbackChoices: ['Handtuch', 'Kissen', 'Decke', 'Bad'],
   },
   speakTarget: {
     baseCue: 'A towel, please.',
@@ -29742,14 +29742,14 @@ const brightGermanP9Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Sehen wir uns später?',
-    chips: ['Sehen wir uns', 'später?', 'heute', 'morgen', 'okay'],
+    chips: ['Sehen wir uns', 'später?', 'bald', 'morgen', 'okay'],
   },
   typeRecall: {
     before: 'Sehen wir uns ',
     answer: 'später',
     after: '?',
     acceptedAnswers: ['später', 'spaeter', 'Später', 'Spaeter'],
-    fallbackChoices: ['später', 'früher', 'jetzt', 'bald'],
+    fallbackChoices: ['später', 'früher', 'morgen', 'bald'],
   },
   speakTarget: {
     baseCue: 'Shall we see each other later?',
@@ -29797,7 +29797,7 @@ const brightGermanP9Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Wann passt es dir?',
-    chips: ['Wann', 'passt es', 'dir?', 'heute', 'um sieben'],
+    chips: ['Wann', 'passt es', 'dir?', 'später', 'um sieben'],
   },
   typeRecall: {
     before: 'Wann ',
@@ -29851,7 +29851,7 @@ const brightGermanP9Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Wir treffen uns hier.',
-    chips: ['Wir treffen uns', 'hier.', 'da', 'jetzt', 'um sieben'],
+    chips: ['Wir treffen uns', 'hier.', 'da', 'im Café', 'um sieben'],
   },
   typeRecall: {
     before: 'Wir ',
@@ -29905,7 +29905,7 @@ const brightGermanP9Lesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ich warte draußen.',
-    chips: ['Ich warte', 'draußen.', 'drinnen', 'hier', 'jetzt'],
+    chips: ['Ich warte', 'draußen.', 'drinnen', 'am Eingang', 'an der Tür'],
   },
   typeRecall: {
     before: 'Ich warte ',
@@ -29959,7 +29959,7 @@ const brightGermanP9Lesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ich bin schon unterwegs.',
-    chips: ['Ich bin schon', 'unterwegs.', 'gleich da', 'in fünf Minuten', 'sorry'],
+    chips: ['Ich bin schon', 'unterwegs.', 'gleich da', 'in fünf Minuten', 'fast da'],
   },
   typeRecall: {
     before: 'Ich bin schon ',
@@ -30239,7 +30239,7 @@ const brightGermanP10Lesson002: GuidedLessonVibeVariant = {
     answer: 'toll',
     after: ' hier!',
     acceptedAnswers: ['toll', 'Toll'],
-    fallbackChoices: ['toll', 'super', 'gut', 'schön'],
+    fallbackChoices: ['toll', 'super', 'ruhig', 'schön'],
   },
   speakTarget: {
     baseCue: 'It was great here!',
@@ -30294,7 +30294,7 @@ const brightGermanP10Lesson003: GuidedLessonVibeVariant = {
     answer: 'Danke',
     after: ' für deine Hilfe.',
     acceptedAnswers: ['Danke', 'danke'],
-    fallbackChoices: ['Danke', 'Bitte', 'Sorry', 'Hallo'],
+    fallbackChoices: ['Danke', 'Bitte', 'Ja', 'Hallo'],
   },
   speakTarget: {
     baseCue: 'Thanks for your help.',
@@ -30342,7 +30342,7 @@ const brightGermanP10Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ich habe viel gelernt.',
-    chips: ['Ich habe', 'viel', 'gelernt.', 'heute', 'danke'],
+    chips: ['Ich habe', 'viel', 'gelernt.', 'Deutsch', 'danke'],
   },
   typeRecall: {
     before: 'Ich habe viel ',
@@ -30450,7 +30450,7 @@ const brightGermanP10Lesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ich muss los.',
-    chips: ['Ich muss', 'los.', 'jetzt', 'gehen', 'sorry'],
+    chips: ['Ich muss', 'los.', 'jetzt', 'gehen', 'leider'],
   },
   typeRecall: {
     before: 'Ich ',
@@ -30511,7 +30511,7 @@ const brightGermanP10Lesson007: GuidedLessonVibeVariant = {
     answer: 'Mal',
     after: '!',
     acceptedAnswers: ['Mal', 'mal'],
-    fallbackChoices: ['Mal', 'Tag', 'Treffen', 'Moment'],
+    fallbackChoices: ['Mal', 'Tag', 'Treffen', 'Morgen'],
   },
   speakTarget: {
     baseCue: 'See you next time!',
