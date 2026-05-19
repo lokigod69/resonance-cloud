@@ -830,6 +830,17 @@ const GUIDED_TODAY_PATH_GERMAN_SEVEN_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-2',
+  title: 'Cebuano A1 Praxis 2',
+  shortTitle: 'A1 Praxis 2',
+  subtitle: 'Kurze Reparaturen und Servicefragen auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -7042,7 +7053,7 @@ const a1Practical7Inputs: A1P7LessonInput[] = [
         distractors: ['does it cost?', 'can it stop?'],
         typeRecall: recall('How long does it ', 'take', '?', ['take', 'leave', 'stop', 'wait']),
         sceneCaption: 'Bright fragt freundlich, wie lange es dauert.',
-        trophyWord: trophy('take', 'dauern / nehmen', 'How long does it take?', 'Take ist das nützliche Zeitwort in dieser Dauerfrage.'),
+        trophyWord: trophy('ride', 'Fahrt', 'Short ride.', 'Ride hält die Dauerfrage konkret im Taxi- oder Verkehrsmoment.'),
         mediaCaption: 'Fahrgastraum mit Uhr, freundliche Frage nach der Dauer.',
         songSeed: { genre: 'warm acoustic pop', mood: 'friendly duration ask' },
         visualNotes: 'Clock cue, route window, warm duration question.',
@@ -34330,6 +34341,607 @@ const cebuanoA1Practical1Lessons: GuidedLessonDefinition[] = cebuanoA1Practical1
   }
 })
 
+type CebuanoP2VariantInput = {
+  corePhrase: GuidedLessonVibeVariant['corePhrase']
+  meaning: string
+  chunks: PhraseChunk[]
+  lessonItems: LessonItem[]
+  buildChips: string[]
+  typeRecall: GuidedLessonVibeVariant['typeRecall']
+  speakTarget: Omit<GuidedLessonVibeVariant['speakTarget'], 'language' | 'passingThreshold'>
+  sceneCaption: string
+  trophyWord: GuidedLessonTrophyWord
+  placeholderCaption: string
+  songMood: string
+  visualNotes: string
+}
+
+type CebuanoP2LessonInput = {
+  slug: string
+  title: string
+  situation: GuidedLessonDefinition['situation']
+  pedagogicalGoal: string
+  variant: GuidedLessonVibeVariant
+}
+
+function makeBrightCebuanoP2Variant(input: CebuanoP2VariantInput): GuidedLessonVibeVariant {
+  return {
+    contentStatus: 'draft',
+    corePhrase: input.corePhrase,
+    meaning: input.meaning,
+    chunks: input.chunks,
+    lessonItems: input.lessonItems,
+    build: {
+      targetText: input.corePhrase.targetText,
+      chips: input.buildChips,
+    },
+    typeRecall: input.typeRecall,
+    speakTarget: {
+      ...input.speakTarget,
+      language: 'ceb-PH',
+      passingThreshold: 0.55,
+    },
+    sceneCaption: input.sceneCaption,
+    trophyWord: input.trophyWord,
+    placeholderMedia: {
+      type: 'video',
+      caption: input.placeholderCaption,
+    },
+    songSeed: {
+      genre: 'bright Cebuano acoustic',
+      mood: input.songMood,
+    },
+    visualNotes: input.visualNotes,
+  }
+}
+
+const cebuanoA1Practical2Inputs: CebuanoP2LessonInput[] = [
+  {
+    slug: 'i-do-not-understand-help',
+    title: 'Ich verstehe nicht',
+    situation: {
+      en: 'At a counter, admit that you do not understand and ask for simple help.',
+      de: 'Am Schalter sagst du, dass du nicht verstehst, und bittest kurz um Hilfe.',
+    },
+    pedagogicalGoal: 'Nichtverstehen ausdrücken und mit tabangi ko eine einfache Hilfebitte anschließen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Wala ko kasabot. Tabangi ko, palihug.',
+        baseText: 'Ich verstehe nicht. Hilf mir bitte.',
+      },
+      meaning: 'Eine klare Reparaturphrase, die nicht nur Wiederholung fordert, sondern Hilfe öffnet.',
+      chunks: [
+        { id: 'wala-ko-kasabot', targetText: 'Wala ko kasabot.', baseText: 'Ich verstehe nicht.' },
+        { id: 'tabangi-ko', targetText: 'Tabangi ko,', baseText: 'hilf mir,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'wala-ko', targetText: 'wala ko', baseText: 'ich verstehe nicht / ich habe nicht', acceptedAnswers: cebuanoAnswers('wala ko', 'Wala ko') },
+        { id: 'kasabot', targetText: 'kasabot', baseText: 'verstehen', acceptedAnswers: cebuanoAnswers('kasabot', 'Kasabot') },
+        { id: 'tabangi', targetText: 'tabangi', baseText: 'hilf', acceptedAnswers: cebuanoAnswers('tabangi', 'Tabangi') },
+        { id: 'tabangi-ko', targetText: 'tabangi ko', baseText: 'hilf mir', acceptedAnswers: cebuanoAnswers('tabangi ko', 'Tabangi ko') },
+      ],
+      buildChips: ['Wala ko kasabot.', 'Tabangi ko,', 'palihug.', 'isulat ni', 'mapa'],
+      typeRecall: {
+        before: 'Wala ko ',
+        answer: 'kasabot',
+        after: '. Tabangi ko, palihug.',
+        acceptedAnswers: cebuanoAnswers('kasabot', 'Kasabot'),
+        fallbackChoices: ['kasabot', 'mapa', 'husto', 'resibo'],
+      },
+      speakTarget: {
+        baseCue: 'Ich verstehe nicht. Hilf mir bitte.',
+        targetPhrase: 'Wala ko kasabot. Tabangi ko, palihug.',
+        requiredTokens: ['wala', 'ko', 'kasabot', 'tabangi'],
+        optionalTokens: ['palihug', 'palihog'],
+      },
+      sceneCaption: 'Sa tindahan, klaro nimo nga wala ka kasabot ug nangayo ka og simple nga tabang.',
+      trophyWord: {
+        word: 'kasabot',
+        meaning: 'verstehen',
+        example: 'Wala ko kasabot.',
+        whyThisWord: 'Kasabot ist der Cebuano-Anker für verstehen; die Phrase bleibt mit wala ko und tabangi ko klar Cebuano.',
+      },
+      placeholderCaption: 'Service counter, short pause, learner asks for simple help.',
+      songMood: 'asking for help clearly',
+      visualNotes: 'Counter scene, bright help cue, kasabot highlighted.',
+    }),
+  },
+  {
+    slug: 'write-this-down',
+    title: 'Bitte aufschreiben',
+    situation: {
+      en: 'Ask someone to write the information down.',
+      de: 'Du bittest darum, die Information aufzuschreiben.',
+    },
+    pedagogicalGoal: 'Eine knappe Bitte mit isulat ni für aufschreiben bilden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Palihug, isulat ni.',
+        baseText: 'Bitte schreib das hier auf.',
+      },
+      meaning: 'Eine praktische Bitte für Nummern, Adressen oder Namen.',
+      chunks: [
+        { id: 'palihug', targetText: 'Palihug,', baseText: 'bitte,' },
+        { id: 'isulat', targetText: 'isulat', baseText: 'schreib auf' },
+        { id: 'ni', targetText: 'ni.', baseText: 'das hier.' },
+      ],
+      lessonItems: [
+        { id: 'isulat', targetText: 'isulat', baseText: 'schreib auf', acceptedAnswers: cebuanoAnswers('isulat', 'Isulat') },
+        { id: 'sulat', targetText: 'sulat', baseText: 'schreiben / Schrift', acceptedAnswers: cebuanoAnswers('sulat', 'Sulat') },
+        { id: 'ni', targetText: 'ni', baseText: 'dies hier', acceptedAnswers: cebuanoAnswers('ni', 'Ni') },
+        { id: 'palihug', targetText: 'palihug', baseText: 'bitte', acceptedAnswers: cebuanoAnswers('palihug', 'Palihug', 'palihog', 'Palihog') },
+      ],
+      buildChips: ['Palihug,', 'isulat', 'ni.', 'kard', 'husto'],
+      typeRecall: {
+        before: 'Palihug, ',
+        answer: 'isulat',
+        after: ' ni.',
+        acceptedAnswers: cebuanoAnswers('isulat', 'Isulat'),
+        fallbackChoices: ['isulat', 'ipakita', 'mudawat', 'hulat'],
+      },
+      speakTarget: {
+        baseCue: 'Bitte schreib das hier auf.',
+        targetPhrase: 'Palihug, isulat ni.',
+        requiredTokens: ['isulat', 'ni'],
+        optionalTokens: ['palihug', 'palihog'],
+      },
+      sceneCaption: 'Sa desk, imong gihangyo nga isulat ang detalye aron makita nimo.',
+      trophyWord: {
+        word: 'isulat',
+        meaning: 'aufschreiben',
+        example: 'Palihug, isulat ni.',
+        whyThisWord: 'Isulat kommt aus sulat und ist die nützliche Befehlsform für etwas aufschreiben.',
+      },
+      placeholderCaption: 'Small desk, pen and paper, request to write it down.',
+      songMood: 'write it down',
+      visualNotes: 'Paper, pen, bright underline on isulat.',
+    }),
+  },
+  {
+    slug: 'show-on-map',
+    title: 'Auf der Karte zeigen',
+    situation: {
+      en: 'Ask someone to show a location on a map or phone.',
+      de: 'Du bittest darum, den Ort auf einer Karte oder am Handy zu zeigen.',
+    },
+    pedagogicalGoal: 'Mit ipakita und mapa eine sichtbare Ortsbitte stellen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Ipakita sa mapa, palihug.',
+        baseText: 'Zeig es bitte auf der Karte.',
+      },
+      meaning: 'Eine visuelle Reparatur, wenn gesprochene Wegbeschreibung zu schwer ist.',
+      chunks: [
+        { id: 'ipakita', targetText: 'Ipakita', baseText: 'zeige' },
+        { id: 'sa-mapa', targetText: 'sa mapa,', baseText: 'auf der Karte,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'ipakita', targetText: 'ipakita', baseText: 'zeigen', acceptedAnswers: cebuanoAnswers('ipakita', 'Ipakita') },
+        { id: 'pakita', targetText: 'pakita', baseText: 'zeigen', acceptedAnswers: cebuanoAnswers('pakita', 'Pakita') },
+        { id: 'mapa', targetText: 'mapa', baseText: 'Karte', acceptedAnswers: cebuanoAnswers('mapa', 'Mapa') },
+        { id: 'sa-mapa', targetText: 'sa mapa', baseText: 'auf der Karte', acceptedAnswers: cebuanoAnswers('sa mapa', 'Sa mapa') },
+      ],
+      buildChips: ['Ipakita', 'sa mapa,', 'palihug.', 'resibo', 'kani'],
+      typeRecall: {
+        before: 'Ipakita sa ',
+        answer: 'mapa',
+        after: ', palihug.',
+        acceptedAnswers: cebuanoAnswers('mapa', 'Mapa'),
+        fallbackChoices: ['mapa', 'kard', 'ngalan', 'kadiyot'],
+      },
+      speakTarget: {
+        baseCue: 'Zeig es bitte auf der Karte.',
+        targetPhrase: 'Ipakita sa mapa, palihug.',
+        requiredTokens: ['ipakita', 'mapa'],
+        optionalTokens: ['sa', 'palihug', 'palihog', 'pakita'],
+      },
+      sceneCaption: 'Gamit ang mapa sa telepono, imong gipakita nga gusto nimo makita ang dapit.',
+      trophyWord: {
+        word: 'mapa',
+        meaning: 'Karte',
+        example: 'Ipakita sa mapa, palihug.',
+        whyThisWord: 'Mapa ist ein transparenter Cebuano-Alltagsanker für Karten auf Papier oder Handy.',
+      },
+      placeholderCaption: 'Phone map on a counter, finger pointing to a location.',
+      songMood: 'show me on the map',
+      visualNotes: 'Phone map, clear location pin, mapa highlighted.',
+    }),
+  },
+  {
+    slug: 'this-or-that',
+    title: 'Dies oder das',
+    situation: {
+      en: 'Ask for a binary choice between two visible options.',
+      de: 'Du fragst nach einer Wahl zwischen zwei sichtbaren Optionen.',
+    },
+    pedagogicalGoal: 'Mit kani o kana eine einfache sichtbare Auswahl stellen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Kani o kana?',
+        baseText: 'Dies hier oder das dort?',
+      },
+      meaning: 'Eine sehr kurze Wahlfrage für zwei sichtbare Dinge.',
+      chunks: [
+        { id: 'kani', targetText: 'Kani', baseText: 'dies hier' },
+        { id: 'o', targetText: 'o', baseText: 'oder' },
+        { id: 'kana', targetText: 'kana?', baseText: 'das dort?' },
+      ],
+      lessonItems: [
+        { id: 'kani', targetText: 'kani', baseText: 'dies hier', acceptedAnswers: cebuanoAnswers('kani', 'Kani', 'kini', 'Kini') },
+        { id: 'kana', targetText: 'kana', baseText: 'das dort', acceptedAnswers: cebuanoAnswers('kana', 'Kana') },
+        { id: 'kani-o-kana', targetText: 'kani o kana', baseText: 'dies oder das', acceptedAnswers: cebuanoAnswers('kani o kana', 'Kani o kana') },
+        { id: 'maayo', targetText: 'maayo', baseText: 'gut', acceptedAnswers: cebuanoAnswers('maayo', 'Maayo') },
+      ],
+      buildChips: ['Kani', 'o', 'kana?', 'naa mo', 'husto'],
+      typeRecall: {
+        before: 'Kani o ',
+        answer: 'kana',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('kana', 'Kana'),
+        fallbackChoices: ['kana', 'mapa', 'resibo', 'kadiyot'],
+      },
+      speakTarget: {
+        baseCue: 'Dies hier oder das dort?',
+        targetPhrase: 'Kani o kana?',
+        requiredTokens: ['kani', 'kana'],
+        optionalTokens: ['kini', 'o'],
+      },
+      sceneCaption: 'Duha ka butang ang makita, ug imong gipangutana: kani o kana.',
+      trophyWord: {
+        word: 'kana',
+        meaning: 'das dort',
+        example: 'Kani o kana?',
+        whyThisWord: 'Kana ist ein Cebuano-Demonstrativ für etwas nahe bei der anderen Person oder weiter weg.',
+      },
+      placeholderCaption: 'Two visible options on a counter, learner asks this or that.',
+      songMood: 'choosing between two',
+      visualNotes: 'Two option labels, bright focus on kana.',
+    }),
+  },
+  {
+    slug: 'available-here',
+    title: 'Habt ihr das?',
+    situation: {
+      en: 'Ask whether the visible item is available or in stock.',
+      de: 'Du fragst, ob der sichtbare Artikel verfügbar ist.',
+    },
+    pedagogicalGoal: 'Naa mo ani? als einfache Verfügbarkeitsfrage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Naa mo ani?',
+        baseText: 'Habt ihr das hier?',
+      },
+      meaning: 'Eine kurze Ladenfrage, wenn du auf einen Artikel zeigst.',
+      chunks: [
+        { id: 'naa-mo', targetText: 'Naa mo', baseText: 'habt ihr' },
+        { id: 'ani', targetText: 'ani?', baseText: 'dies hier?' },
+      ],
+      lessonItems: [
+        { id: 'naa', targetText: 'naa', baseText: 'haben / vorhanden sein', acceptedAnswers: cebuanoAnswers('naa', 'Naa') },
+        { id: 'naa-mo', targetText: 'naa mo', baseText: 'ihr habt', acceptedAnswers: cebuanoAnswers('naa mo', 'Naa mo') },
+        { id: 'ani', targetText: 'ani', baseText: 'dieses hier', acceptedAnswers: cebuanoAnswers('ani', 'Ani') },
+        { id: 'mo', targetText: 'mo', baseText: 'ihr / euer', acceptedAnswers: cebuanoAnswers('mo', 'Mo') },
+      ],
+      buildChips: ['Naa mo', 'ani?', 'isulat', 'kadiyot'],
+      typeRecall: {
+        before: '',
+        answer: 'Naa',
+        after: ' mo ani?',
+        acceptedAnswers: cebuanoAnswers('Naa', 'naa'),
+        fallbackChoices: ['Naa', 'Mao', 'Hulat', 'Dawat'],
+      },
+      speakTarget: {
+        baseCue: 'Habt ihr das hier?',
+        targetPhrase: 'Naa mo ani?',
+        requiredTokens: ['naa', 'mo', 'ani'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Nagtudlo ka sa butang sa tindahan ug nangutana kon naa ba sila ani.',
+      trophyWord: {
+        word: 'naa',
+        meaning: 'haben / vorhanden sein',
+        example: 'Naa mo ani?',
+        whyThisWord: 'Naa ist ein Kernwort für vorhanden sein oder haben und trägt viele einfache Servicefragen.',
+      },
+      placeholderCaption: 'Small shop shelf, visible item, short availability question.',
+      songMood: 'asking if they have it',
+      visualNotes: 'Shelf item, small stock tag, naa highlighted.',
+    }),
+  },
+  {
+    slug: 'accept-card',
+    title: 'Karte akzeptieren',
+    situation: {
+      en: 'Ask whether card payment is accepted.',
+      de: 'Du fragst, ob Kartenzahlung akzeptiert wird.',
+    },
+    pedagogicalGoal: 'Mit mudawat mo eine moderne Ja-Nein-Frage zur Zahlung stellen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Mudawat mo og kard?',
+        baseText: 'Nehmt ihr Karte?',
+      },
+      meaning: 'Eine direkte Zahlungsfrage, bevor du zur Kasse gehst.',
+      chunks: [
+        { id: 'mudawat-mo', targetText: 'Mudawat mo', baseText: 'nehmt ihr an' },
+        { id: 'og-kard', targetText: 'og kard?', baseText: 'Karte?' },
+      ],
+      lessonItems: [
+        { id: 'mudawat', targetText: 'mudawat', baseText: 'annehmen / akzeptieren', acceptedAnswers: cebuanoAnswers('mudawat', 'Mudawat', 'modawat', 'Modawat') },
+        { id: 'dawat', targetText: 'dawat', baseText: 'annehmen', acceptedAnswers: cebuanoAnswers('dawat', 'Dawat') },
+        { id: 'kard', targetText: 'kard', baseText: 'Karte', acceptedAnswers: cebuanoAnswers('kard', 'Kard', 'card', 'Card') },
+        { id: 'og-kard', targetText: 'og kard', baseText: 'Karte', acceptedAnswers: cebuanoAnswers('og kard', 'Og kard', 'og card', 'Og card') },
+      ],
+      buildChips: ['Mudawat mo', 'og kard?', 'resibo', 'mapa'],
+      typeRecall: {
+        before: '',
+        answer: 'Mudawat',
+        after: ' mo og kard?',
+        acceptedAnswers: cebuanoAnswers('Mudawat', 'mudawat', 'Modawat', 'modawat'),
+        fallbackChoices: ['Mudawat', 'Isulat', 'Ipakita', 'Hulat'],
+      },
+      speakTarget: {
+        baseCue: 'Nehmt ihr Karte?',
+        targetPhrase: 'Mudawat mo og kard?',
+        requiredTokens: ['mudawat', 'mo', 'kard'],
+        optionalTokens: ['modawat', 'og', 'card'],
+      },
+      sceneCaption: 'Sa cashier, mangutana ka daan kon mudawat ba sila og kard.',
+      trophyWord: {
+        word: 'dawat',
+        meaning: 'annehmen / akzeptieren',
+        example: 'Mudawat mo og kard?',
+        whyThisWord: 'Dawat ist der Cebuano-Stamm für annehmen; mudawat mo macht daraus eine praktische Kassenfrage.',
+      },
+      placeholderCaption: 'Cash register and card terminal, short payment question.',
+      songMood: 'checking card payment',
+      visualNotes: 'Card terminal, bright accept marker, dawat highlighted.',
+    }),
+  },
+  {
+    slug: 'receipt-and-bag',
+    title: 'Quittung und Beutel',
+    situation: {
+      en: 'Ask for a receipt and, if useful, a paper bag.',
+      de: 'Du bittest um eine Quittung und bei Bedarf einen Papierbeutel.',
+    },
+    pedagogicalGoal: 'Resibo ug putos als kurze Abschlussbitte an der Kasse sprechen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Resibo ug putos, palihug.',
+        baseText: 'Eine Quittung und einen Papierbeutel, bitte.',
+      },
+      meaning: 'Eine Kassenbitte für Beleg und Verpackung.',
+      chunks: [
+        { id: 'resibo', targetText: 'Resibo', baseText: 'Quittung' },
+        { id: 'ug-putos', targetText: 'ug putos,', baseText: 'und Papierbeutel,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'resibo', targetText: 'resibo', baseText: 'Quittung', acceptedAnswers: cebuanoAnswers('resibo', 'Resibo') },
+        { id: 'putos', targetText: 'putos', baseText: 'Papierbeutel / Paket', acceptedAnswers: cebuanoAnswers('putos', 'Putos') },
+        { id: 'ug-putos', targetText: 'ug putos', baseText: 'und Beutel', acceptedAnswers: cebuanoAnswers('ug putos', 'Ug putos', 'og putos', 'Og putos') },
+        { id: 'palihug', targetText: 'palihug', baseText: 'bitte', acceptedAnswers: cebuanoAnswers('palihug', 'Palihug', 'palihog', 'Palihog') },
+      ],
+      buildChips: ['Resibo', 'ug putos,', 'palihug.', 'kard', 'husto'],
+      typeRecall: {
+        before: '',
+        answer: 'Resibo',
+        after: ' ug putos, palihug.',
+        acceptedAnswers: cebuanoAnswers('Resibo', 'resibo'),
+        fallbackChoices: ['Resibo', 'Mapa', 'Kani', 'Ngalan'],
+      },
+      speakTarget: {
+        baseCue: 'Eine Quittung und einen Papierbeutel, bitte.',
+        targetPhrase: 'Resibo ug putos, palihug.',
+        requiredTokens: ['resibo', 'putos'],
+        optionalTokens: ['ug', 'og', 'palihug', 'palihog'],
+      },
+      sceneCaption: 'Human sa bayad, mangayo ka og resibo ug putos sa mubo nga linya.',
+      trophyWord: {
+        word: 'resibo',
+        meaning: 'Quittung',
+        example: 'Resibo ug putos, palihug.',
+        whyThisWord: 'Resibo ist die natürliche Kassenform für receipt; putos deckt den einfachen Papierbeutel mit ab.',
+      },
+      placeholderCaption: 'Checkout counter, printed receipt, small paper bag.',
+      songMood: 'receipt and bag',
+      visualNotes: 'Receipt slip, simple bag icon, resibo highlighted.',
+    }),
+  },
+  {
+    slug: 'reservation-name',
+    title: 'Reservierung auf Namen',
+    situation: {
+      en: 'Announce that you have a booking under a name.',
+      de: 'Du sagst, dass du eine Reservierung auf einen Namen hast.',
+    },
+    pedagogicalGoal: 'Naa koy reserbasyon sa ngalan ni Ana als Ankunftssatz nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Naa koy reserbasyon sa ngalan ni Ana.',
+        baseText: 'Ich habe eine Reservierung auf den Namen Ana.',
+      },
+      meaning: 'Ein kurzer Check-in-Satz für Hotel, Restaurant oder Termin.',
+      chunks: [
+        { id: 'naa-koy-reserbasyon', targetText: 'Naa koy reserbasyon', baseText: 'ich habe eine Reservierung' },
+        { id: 'sa-ngalan', targetText: 'sa ngalan', baseText: 'auf den Namen' },
+        { id: 'ni-ana', targetText: 'ni Ana.', baseText: 'Ana.' },
+      ],
+      lessonItems: [
+        { id: 'naa-koy', targetText: 'naa koy', baseText: 'ich habe', acceptedAnswers: cebuanoAnswers('naa koy', 'Naa koy', 'naa ko y', 'Naa ko y') },
+        { id: 'reserbasyon', targetText: 'reserbasyon', baseText: 'Reservierung', acceptedAnswers: cebuanoAnswers('reserbasyon', 'Reserbasyon') },
+        { id: 'ngalan', targetText: 'ngalan', baseText: 'Name', acceptedAnswers: cebuanoAnswers('ngalan', 'Ngalan') },
+        { id: 'sa-ngalan', targetText: 'sa ngalan', baseText: 'auf den Namen', acceptedAnswers: cebuanoAnswers('sa ngalan', 'Sa ngalan') },
+      ],
+      buildChips: ['Naa koy reserbasyon', 'sa ngalan', 'ni Ana.', 'resibo', 'kani'],
+      typeRecall: {
+        before: 'Naa koy reserbasyon sa ',
+        answer: 'ngalan',
+        after: ' ni Ana.',
+        acceptedAnswers: cebuanoAnswers('ngalan', 'Ngalan'),
+        fallbackChoices: ['ngalan', 'mapa', 'kard', 'putos'],
+      },
+      speakTarget: {
+        baseCue: 'Ich habe eine Reservierung auf den Namen Ana.',
+        targetPhrase: 'Naa koy reserbasyon sa ngalan ni Ana.',
+        requiredTokens: ['naa', 'koy', 'reserbasyon', 'ngalan', 'ana'],
+        optionalTokens: ['ko', 'y', 'sa', 'ni'],
+      },
+      sceneCaption: 'Sa hotel o restawran, moabot ka ug mosulti sa reserbasyon sa ngalan ni Ana.',
+      trophyWord: {
+        word: 'ngalan',
+        meaning: 'Name',
+        example: 'Naa koy reserbasyon sa ngalan ni Ana.',
+        whyThisWord: 'Ngalan hält den Check-in-Satz konkret: die Reservierung ist an einen Namen gebunden.',
+      },
+      placeholderCaption: 'Reception desk, name on booking, learner checks in.',
+      songMood: 'arriving with a booking',
+      visualNotes: 'Reception desk, name label, ngalan highlighted.',
+    }),
+  },
+  {
+    slug: 'is-this-right',
+    title: 'Ist das richtig?',
+    situation: {
+      en: 'Confirm that the item, vehicle, or place is the correct one.',
+      de: 'Du bestätigst, dass Gegenstand, Fahrzeug oder Ort der richtige ist.',
+    },
+    pedagogicalGoal: 'Mit mao ni ang husto eine kurze Richtigkeitsfrage stellen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Mao ni ang husto?',
+        baseText: 'Ist das hier richtig?',
+      },
+      meaning: 'Eine Sicherheitsfrage, bevor du einsteigst, kaufst oder hineingehst.',
+      chunks: [
+        { id: 'mao-ni', targetText: 'Mao ni', baseText: 'ist dies' },
+        { id: 'ang-husto', targetText: 'ang husto?', baseText: 'das richtige?' },
+      ],
+      lessonItems: [
+        { id: 'mao', targetText: 'mao', baseText: 'es ist / genau das', acceptedAnswers: cebuanoAnswers('mao', 'Mao') },
+        { id: 'mao-ni', targetText: 'mao ni', baseText: 'das hier ist', acceptedAnswers: cebuanoAnswers('mao ni', 'Mao ni') },
+        { id: 'husto', targetText: 'husto', baseText: 'richtig / korrekt', acceptedAnswers: cebuanoAnswers('husto', 'Husto') },
+        { id: 'ang-husto', targetText: 'ang husto', baseText: 'das richtige', acceptedAnswers: cebuanoAnswers('ang husto', 'Ang husto') },
+      ],
+      buildChips: ['Mao ni', 'ang husto?', 'naa mo', 'isulat'],
+      typeRecall: {
+        before: 'Mao ni ang ',
+        answer: 'husto',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('husto', 'Husto'),
+        fallbackChoices: ['husto', 'resibo', 'mapa', 'kana'],
+      },
+      speakTarget: {
+        baseCue: 'Ist das hier richtig?',
+        targetPhrase: 'Mao ni ang husto?',
+        requiredTokens: ['mao', 'ni', 'husto'],
+        optionalTokens: ['ang'],
+      },
+      sceneCaption: 'Sa sakyanan o pultahan, mosiguro ka una: mao ni ang husto?',
+      trophyWord: {
+        word: 'husto',
+        meaning: 'richtig / korrekt',
+        example: 'Mao ni ang husto?',
+        whyThisWord: 'Husto ist eine klare Cebuano-Form für richtig oder korrekt und passt zu Bestätigungen.',
+      },
+      placeholderCaption: 'Door or vehicle sign, learner confirms it is the right one.',
+      songMood: 'confirming the right one',
+      visualNotes: 'Check mark, visible sign, husto highlighted.',
+    }),
+  },
+  {
+    slug: 'wait-a-moment',
+    title: 'Kurz warten',
+    situation: {
+      en: 'Ask someone to wait briefly.',
+      de: 'Du bittest jemanden, kurz zu warten.',
+    },
+    pedagogicalGoal: 'Mit hulat kadiyot eine kurze, höfliche Wartebitte sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Hulat kadiyot, palihug.',
+        baseText: 'Warte bitte kurz.',
+      },
+      meaning: 'Eine knappe Pausenbitte in einer laufenden Situation.',
+      chunks: [
+        { id: 'hulat', targetText: 'Hulat', baseText: 'warte' },
+        { id: 'kadiyot', targetText: 'kadiyot,', baseText: 'kurz / einen Moment,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'hulat', targetText: 'hulat', baseText: 'warten', acceptedAnswers: cebuanoAnswers('hulat', 'Hulat', 'huwat', 'Huwat') },
+        { id: 'kadiyot', targetText: 'kadiyot', baseText: 'kurz / einen Moment', acceptedAnswers: cebuanoAnswers('kadiyot', 'Kadiyot', 'kadyot', 'Kadyot') },
+        { id: 'hulat-kadiyot', targetText: 'hulat kadiyot', baseText: 'warte kurz', acceptedAnswers: cebuanoAnswers('hulat kadiyot', 'Hulat kadiyot', 'huwat kadiyot', 'Huwat kadiyot') },
+        { id: 'palihug', targetText: 'palihug', baseText: 'bitte', acceptedAnswers: cebuanoAnswers('palihug', 'Palihug', 'palihog', 'Palihog') },
+      ],
+      buildChips: ['Hulat', 'kadiyot,', 'palihug.', 'ngalan', 'resibo'],
+      typeRecall: {
+        before: 'Hulat ',
+        answer: 'kadiyot',
+        after: ', palihug.',
+        acceptedAnswers: cebuanoAnswers('kadiyot', 'Kadiyot', 'kadyot', 'Kadyot'),
+        fallbackChoices: ['kadiyot', 'mapa', 'dawat', 'kani'],
+      },
+      speakTarget: {
+        baseCue: 'Warte bitte kurz.',
+        targetPhrase: 'Hulat kadiyot, palihug.',
+        requiredTokens: ['hulat', 'kadiyot'],
+        optionalTokens: ['huwat', 'kadyot', 'palihug', 'palihog'],
+      },
+      sceneCaption: 'Naa kay kuhaon sa pitaka, mao nga mangayo ka og gamay nga hulat.',
+      trophyWord: {
+        word: 'kadiyot',
+        meaning: 'kurz / einen Moment',
+        example: 'Hulat kadiyot, palihug.',
+        whyThisWord: 'Kadiyot ist ein sehr nützlicher Zeitanker für einen kurzen Moment; kadyot bleibt als Sprechvariante akzeptiert.',
+      },
+      placeholderCaption: 'Checkout pause, learner asks for a brief wait.',
+      songMood: 'wait a moment',
+      visualNotes: 'Small pause icon, hand gesture, kadiyot highlighted.',
+    }),
+  },
+]
+
+const cebuanoA1Practical2Lessons: GuidedLessonDefinition[] = cebuanoA1Practical2Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-2-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = cebuanoA1Practical2Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 2 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: lessonInput.variant,
+    },
+  }
+})
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -47951,6 +48563,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     nextLessonTeaser: { title: 'Path complete', situation: 'You have completed German A1 Practical 7.' },
     vibeVariants: { bright: brightGermanP7Lesson010 },
   },
+  ...cebuanoA1Practical2Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -48021,6 +48634,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_GERMAN_SIX_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA,
     GUIDED_TODAY_PATH_GERMAN_SEVEN_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA,
   ]
 }
 
