@@ -961,6 +961,17 @@ const GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA: GuidedPathMetadata = {
   targetLanguage: 'Cebuano',
   estimatedMinutes: 5,
 }
+
+const GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-10',
+  title: 'Cebuano A1 Praxis 10',
+  shortTitle: 'A1 Praxis 10',
+  subtitle: 'Tagesabschluss, Dank und Abschied auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -40637,6 +40648,320 @@ const cebuanoA1Practical9Lessons: GuidedLessonDefinition[] = cebuanoA1Practical9
     vibeVariants: { bright: lessonInput.variant },
   }
 })
+
+const cebuanoA1Practical10Inputs: CebuanoP2LessonInput[] = [
+  {
+    slug: 'good-day',
+    title: 'Heute ist alles gut',
+    situation: { en: 'At the end of the day, say that everything is good today.', de: 'Am Ende des Tages sagst du, dass heute alles gut ist.' },
+    pedagogicalGoal: 'Maayo ang tanan karon als kurze positive Tagesbilanz nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Maayo ang tanan karon.', baseText: 'Heute ist alles gut.' },
+      meaning: 'Eine kurze positive Zusammenfassung des Tages.',
+      chunks: [
+        { id: 'maayo-ang-tanan', targetText: 'Maayo ang tanan', baseText: 'alles ist gut' },
+        { id: 'karon', targetText: 'karon.', baseText: 'heute / jetzt.' },
+      ],
+      lessonItems: [
+        { id: 'tanan', targetText: 'tanan', baseText: 'alles / alle', acceptedAnswers: cebuanoAnswers('tanan', 'Tanan') },
+        { id: 'maayo', targetText: 'maayo', baseText: 'gut', acceptedAnswers: cebuanoAnswers('maayo', 'Maayo') },
+        { id: 'karon', targetText: 'karon', baseText: 'heute / jetzt', acceptedAnswers: cebuanoAnswers('karon', 'Karon') },
+        { id: 'ang-tanan', targetText: 'ang tanan', baseText: 'alles', acceptedAnswers: cebuanoAnswers('ang tanan', 'Ang tanan') },
+      ],
+      buildChips: ['Maayo ang tanan', 'karon.', 'gikapoy', 'mopanamilit'],
+      typeRecall: { before: 'Maayo ang ', answer: 'tanan', after: ' karon.', acceptedAnswers: cebuanoAnswers('tanan', 'Tanan'), fallbackChoices: ['tanan', 'daghan', 'tulog', 'hangtod'] },
+      speakTarget: { baseCue: 'Heute ist alles gut.', targetPhrase: 'Maayo ang tanan karon.', requiredTokens: ['maayo', 'tanan', 'karon'], optionalTokens: ['ang'] },
+      sceneCaption: 'Sa katapusan sa praktis, mubo ra ang hunahuna: maayo ang tanan karon.',
+      trophyWord: { word: 'tanan', meaning: 'alles / alle', example: 'Maayo ang tanan karon.', whyThisWord: 'Tanan ist der Alles-Anker für eine ruhige positive Tagesbilanz.' },
+      placeholderCaption: 'A calm end-of-day reflection.',
+      songMood: 'good day reflection',
+      visualNotes: 'Warm evening light, tanan highlighted.',
+    }),
+  },
+  {
+    slug: 'i-like-this-place',
+    title: 'Mir gefällt dieser Ort',
+    situation: { en: 'When leaving, say that you like this place.', de: 'Beim Gehen sagst du, dass dir dieser Ort gefällt.' },
+    pedagogicalGoal: 'Ganahan ko ani nga lugar als kurzes Ortskompliment verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Ganahan ko ani nga lugar.', baseText: 'Mir gefällt dieser Ort.' },
+      meaning: 'Ein einfaches positives Urteil über einen Ort.',
+      chunks: [
+        { id: 'ganahan-ko', targetText: 'Ganahan ko', baseText: 'ich mag / mir gefällt' },
+        { id: 'ani-nga-lugar', targetText: 'ani nga lugar.', baseText: 'dieser Ort.' },
+      ],
+      lessonItems: [
+        { id: 'ganahan', targetText: 'ganahan', baseText: 'mögen / gefallen', acceptedAnswers: cebuanoAnswers('ganahan', 'Ganahan') },
+        { id: 'ani', targetText: 'ani', baseText: 'dieses hier', acceptedAnswers: cebuanoAnswers('ani', 'Ani') },
+        { id: 'lugar', targetText: 'lugar', baseText: 'Ort', acceptedAnswers: cebuanoAnswers('lugar', 'Lugar') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich / mir', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+      ],
+      buildChips: ['Ganahan ko', 'ani nga lugar.', 'tanan', 'nagpasalamat'],
+      typeRecall: { before: '', answer: 'Ganahan', after: ' ko ani nga lugar.', acceptedAnswers: cebuanoAnswers('Ganahan', 'ganahan'), fallbackChoices: ['Ganahan', 'Gikapoy', 'Uyon', 'Tulog'] },
+      speakTarget: { baseCue: 'Mir gefällt dieser Ort.', targetPhrase: 'Ganahan ko ani nga lugar.', requiredTokens: ['ganahan', 'ko', 'lugar'], optionalTokens: ['ani', 'nga'] },
+      sceneCaption: 'Sa pagbiya, mosulti ka nga ganahan ko ani nga lugar.',
+      trophyWord: { word: 'ganahan', meaning: 'mögen / gefallen', example: 'Ganahan ko ani nga lugar.', whyThisWord: 'Ganahan ist der natürliche Cebuano-Anker für mögen oder gefallen.' },
+      placeholderCaption: 'Leaving a place with a short compliment.',
+      songMood: 'liked this place',
+      visualNotes: 'Doorway of a pleasant place, ganahan highlighted.',
+    }),
+  },
+  {
+    slug: 'thanks-for-help',
+    title: 'Ich bedanke mich für die Hilfe',
+    situation: { en: 'Thank someone clearly for their help.', de: 'Du bedankst dich klar für die Hilfe.' },
+    pedagogicalGoal: 'Nagpasalamat ko sa tabang als klare Dankesformel abrufen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Nagpasalamat ko sa tabang.', baseText: 'Ich bedanke mich für die Hilfe.' },
+      meaning: 'Ein kurzer Dank für konkrete Hilfe.',
+      chunks: [
+        { id: 'nagpasalamat-ko', targetText: 'Nagpasalamat ko', baseText: 'ich bedanke mich' },
+        { id: 'sa-tabang', targetText: 'sa tabang.', baseText: 'für die Hilfe.' },
+      ],
+      lessonItems: [
+        { id: 'nagpasalamat', targetText: 'nagpasalamat', baseText: 'bedankt sich / dankt', acceptedAnswers: cebuanoAnswers('nagpasalamat', 'Nagpasalamat') },
+        { id: 'pasalamat', targetText: 'pasalamat', baseText: 'Dank / danken', acceptedAnswers: cebuanoAnswers('pasalamat', 'Pasalamat') },
+        { id: 'tabang', targetText: 'tabang', baseText: 'Hilfe', acceptedAnswers: cebuanoAnswers('tabang', 'Tabang') },
+        { id: 'sa-tabang', targetText: 'sa tabang', baseText: 'für die Hilfe', acceptedAnswers: cebuanoAnswers('sa tabang', 'Sa tabang') },
+      ],
+      buildChips: ['Nagpasalamat ko', 'sa tabang.', 'ganahan', 'daghan'],
+      typeRecall: { before: '', answer: 'Nagpasalamat', after: ' ko sa tabang.', acceptedAnswers: cebuanoAnswers('Nagpasalamat', 'nagpasalamat'), fallbackChoices: ['Nagpasalamat', 'Ganahan', 'Hangtod', 'Tulog'] },
+      speakTarget: { baseCue: 'Ich bedanke mich für die Hilfe.', targetPhrase: 'Nagpasalamat ko sa tabang.', requiredTokens: ['nagpasalamat', 'ko', 'tabang'], optionalTokens: ['sa', 'pasalamat'] },
+      sceneCaption: 'Human ka matabangan, klaro ang pasalamat: nagpasalamat ko sa tabang.',
+      trophyWord: { word: 'nagpasalamat', meaning: 'bedankt sich / dankt', example: 'Nagpasalamat ko sa tabang.', whyThisWord: 'Nagpasalamat hält den Dank als neue Cebuano-Handlung fest, statt den früheren salamat-Anker erneut zu vergeben.' },
+      placeholderCaption: 'Thanking someone for help.',
+      songMood: 'thanks for help',
+      visualNotes: 'Helpful counter moment, nagpasalamat highlighted.',
+    }),
+  },
+  {
+    slug: 'i-learned-a-lot',
+    title: 'Ich habe viel gelernt',
+    situation: { en: 'At the end of practice, say that you learned a lot.', de: 'Am Ende der Übung sagst du, dass du viel gelernt hast.' },
+    pedagogicalGoal: 'Daghan kog nakat-onan als kurze Lernbilanz verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Daghan kog nakat-onan.', baseText: 'Ich habe viel gelernt.' },
+      meaning: 'Eine einfache Lernbilanz ohne Grammatikvortrag zur Vergangenheit.',
+      chunks: [
+        { id: 'daghan-kog', targetText: 'Daghan kog', baseText: 'ich habe viel' },
+        { id: 'nakat-onan', targetText: 'nakat-onan.', baseText: 'gelernt.' },
+      ],
+      lessonItems: [
+        { id: 'daghan', targetText: 'daghan', baseText: 'viel / viele', acceptedAnswers: cebuanoAnswers('daghan', 'Daghan') },
+        { id: 'kog', targetText: 'kog', baseText: 'ich habe ein / von', acceptedAnswers: cebuanoAnswers('kog', 'Kog', 'ko og', 'Ko og') },
+        { id: 'nakat-onan', targetText: 'nakat-onan', baseText: 'gelernt', acceptedAnswers: cebuanoAnswers('nakat-onan', 'Nakat-onan', 'nakatonan', 'Nakatonan') },
+        { id: 'kat-on', targetText: 'kat-on', baseText: 'lernen', acceptedAnswers: cebuanoAnswers('kat-on', 'Kat-on', 'katon', 'Katon') },
+      ],
+      buildChips: ['Daghan kog', 'nakat-onan.', 'nagpasalamat', 'gikapoy'],
+      typeRecall: { before: '', answer: 'Daghan', after: ' kog nakat-onan.', acceptedAnswers: cebuanoAnswers('Daghan', 'daghan'), fallbackChoices: ['Daghan', 'Ganahan', 'Hangtod', 'Mopanamilit'] },
+      speakTarget: { baseCue: 'Ich habe viel gelernt.', targetPhrase: 'Daghan kog nakat-onan.', acceptedAnswers: ['Daghan ko og nakat-onan.'], requiredTokens: ['daghan', 'kog', 'nakat', 'onan'], optionalTokens: ['ko', 'og'] },
+      sceneCaption: 'Human sa praktis, mosulti ka: daghan kog nakat-onan.',
+      trophyWord: { word: 'daghan', meaning: 'viel / viele', example: 'Daghan kog nakat-onan.', whyThisWord: 'Daghan ist der einfache Mengenanker für viel und passt zur Lernbilanz.' },
+      placeholderCaption: 'A short note that you learned a lot.',
+      songMood: 'learned a lot reflection',
+      visualNotes: 'Notebook and check marks, daghan highlighted.',
+    }),
+  },
+  {
+    slug: 'i-am-tired-now',
+    title: 'Ich bin jetzt müde',
+    situation: { en: 'Say simply that you are tired now.', de: 'Du sagst schlicht, dass du jetzt müde bist.' },
+    pedagogicalGoal: 'Gikapoy na ko als klare Müdigkeitsmeldung nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Gikapoy na ko.', baseText: 'Ich bin jetzt müde.' },
+      meaning: 'Ein kurzer Zustandssatz am Ende des Tages.',
+      chunks: [
+        { id: 'gikapoy-na', targetText: 'Gikapoy na', baseText: 'jetzt müde' },
+        { id: 'ko', targetText: 'ko.', baseText: 'ich.' },
+      ],
+      lessonItems: [
+        { id: 'gikapoy', targetText: 'gikapoy', baseText: 'müde geworden / müde sein', acceptedAnswers: cebuanoAnswers('gikapoy', 'Gikapoy') },
+        { id: 'na', targetText: 'na', baseText: 'jetzt / schon', acceptedAnswers: cebuanoAnswers('na', 'Na') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'pahuway', targetText: 'pahuway', baseText: 'Ruhe / Pause', acceptedAnswers: cebuanoAnswers('pahuway', 'Pahuway') },
+      ],
+      buildChips: ['Gikapoy na', 'ko.', 'daghan', 'tulog'],
+      typeRecall: { before: '', answer: 'Gikapoy', after: ' na ko.', acceptedAnswers: cebuanoAnswers('Gikapoy', 'gikapoy'), fallbackChoices: ['Gikapoy', 'Tanan', 'Uyon', 'Ganahan'] },
+      speakTarget: { baseCue: 'Ich bin jetzt müde.', targetPhrase: 'Gikapoy na ko.', requiredTokens: ['gikapoy', 'na', 'ko'], optionalTokens: ['pahuway'] },
+      sceneCaption: 'Kung human na ang praktis, yano ra: gikapoy na ko.',
+      trophyWord: { word: 'gikapoy', meaning: 'müde geworden / müde sein', example: 'Gikapoy na ko.', whyThisWord: 'Gikapoy ist ein neuer Cebuano-Anker für müde sein und passt zur Abschlussrunde.' },
+      placeholderCaption: 'A tired end-of-day moment.',
+      songMood: 'tired now',
+      visualNotes: 'Evening chair and bag, gikapoy highlighted.',
+    }),
+  },
+  {
+    slug: 'i-need-to-go',
+    title: 'Ich muss jetzt gehen',
+    situation: { en: 'Signal that you need to go now.', de: 'Du signalisierst, dass du jetzt gehen musst.' },
+    pedagogicalGoal: 'Kinahanglan na ko molakaw als kurze Aufbruchslinie verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Kinahanglan na ko molakaw.', baseText: 'Ich muss jetzt gehen.' },
+      meaning: 'Eine klare, freundliche Aufbruchsmeldung.',
+      chunks: [
+        { id: 'kinahanglan-na-ko', targetText: 'Kinahanglan na ko', baseText: 'ich muss jetzt' },
+        { id: 'molakaw', targetText: 'molakaw.', baseText: 'gehen.' },
+      ],
+      lessonItems: [
+        { id: 'molakaw', targetText: 'molakaw', baseText: 'gehen / weggehen', acceptedAnswers: cebuanoAnswers('molakaw', 'Molakaw', 'mo-lakaw', 'Mo-lakaw') },
+        { id: 'kinahanglan', targetText: 'kinahanglan', baseText: 'müssen / brauchen', acceptedAnswers: cebuanoAnswers('kinahanglan', 'Kinahanglan') },
+        { id: 'na', targetText: 'na', baseText: 'jetzt / schon', acceptedAnswers: cebuanoAnswers('na', 'Na') },
+        { id: 'lakaw', targetText: 'lakaw', baseText: 'gehen', acceptedAnswers: cebuanoAnswers('lakaw', 'Lakaw') },
+      ],
+      buildChips: ['Kinahanglan na ko', 'molakaw.', 'gikapoy', 'hangtod'],
+      typeRecall: { before: 'Kinahanglan na ko ', answer: 'molakaw', after: '.', acceptedAnswers: cebuanoAnswers('molakaw', 'Molakaw', 'mo-lakaw', 'Mo-lakaw'), fallbackChoices: ['molakaw', 'matulog', 'moadto', 'motawag'] },
+      speakTarget: { baseCue: 'Ich muss jetzt gehen.', targetPhrase: 'Kinahanglan na ko molakaw.', acceptedAnswers: ['Kinahanglan na ko mo lakaw.'], requiredTokens: ['kinahanglan', 'ko', 'molakaw'], optionalTokens: ['na', 'lakaw', 'mo'] },
+      sceneCaption: 'Kung kinahanglan na ka mobiya, mosulti ka nga kinahanglan na ko molakaw.',
+      trophyWord: { word: 'molakaw', meaning: 'gehen / weggehen', example: 'Kinahanglan na ko molakaw.', whyThisWord: 'Molakaw ist die Aufbruchsform von lakaw und hält die Abschiedsszene praktisch.' },
+      placeholderCaption: 'A polite need-to-go moment.',
+      songMood: 'need to go',
+      visualNotes: 'Person reaching for bag, molakaw highlighted.',
+    }),
+  },
+  {
+    slug: 'until-next-time',
+    title: 'Bis zum nächsten Mal',
+    situation: { en: 'Say until next time without fixing a date.', de: 'Du verabschiedest dich bis zum nächsten Mal, ohne ein Datum festzulegen.' },
+    pedagogicalGoal: 'Hangtod sa sunod als kurzen offenen Abschied verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Hangtod sa sunod.', baseText: 'Bis zum nächsten Mal.' },
+      meaning: 'Ein offener Abschied für ein nächstes Wiedersehen.',
+      chunks: [
+        { id: 'hangtod-sa', targetText: 'Hangtod sa', baseText: 'bis zum' },
+        { id: 'sunod', targetText: 'sunod.', baseText: 'nächsten.' },
+      ],
+      lessonItems: [
+        { id: 'hangtod', targetText: 'hangtod', baseText: 'bis / bis zu', acceptedAnswers: cebuanoAnswers('hangtod', 'Hangtod') },
+        { id: 'sa-sunod', targetText: 'sa sunod', baseText: 'beim nächsten Mal', acceptedAnswers: cebuanoAnswers('sa sunod', 'Sa sunod') },
+        { id: 'sunod', targetText: 'sunod', baseText: 'nächste / folgend', acceptedAnswers: cebuanoAnswers('sunod', 'Sunod') },
+        { id: 'usab', targetText: 'usab', baseText: 'wieder', acceptedAnswers: cebuanoAnswers('usab', 'Usab') },
+      ],
+      buildChips: ['Hangtod sa', 'sunod.', 'molakaw', 'uyon'],
+      typeRecall: { before: '', answer: 'Hangtod', after: ' sa sunod.', acceptedAnswers: cebuanoAnswers('Hangtod', 'hangtod'), fallbackChoices: ['Hangtod', 'Daghan', 'Gikapoy', 'Mopanamilit'] },
+      speakTarget: { baseCue: 'Bis zum nächsten Mal.', targetPhrase: 'Hangtod sa sunod.', requiredTokens: ['hangtod', 'sunod'], optionalTokens: ['sa'] },
+      sceneCaption: 'Kung walay eksaktong petsa, igo na ang hangtod sa sunod.',
+      trophyWord: { word: 'hangtod', meaning: 'bis / bis zu', example: 'Hangtod sa sunod.', whyThisWord: 'Hangtod ist der Bis-Anker für einen offenen Abschied ohne genaue Planung.' },
+      placeholderCaption: 'Saying until next time.',
+      songMood: 'next time goodbye',
+      visualNotes: 'Open doorway and small wave, hangtod highlighted.',
+    }),
+  },
+  {
+    slug: 'tomorrow-works',
+    title: 'Morgen passt es für mich',
+    situation: { en: 'Confirm that tomorrow works for you.', de: 'Du bestätigst, dass morgen für dich passt.' },
+    pedagogicalGoal: 'Uyon ko ugma als kurze Zusage für morgen verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Uyon ko ugma.', baseText: 'Morgen passt es für mich.' },
+      meaning: 'Eine einfache Zustimmung, dass morgen für dich passt.',
+      chunks: [
+        { id: 'uyon-ko', targetText: 'Uyon ko', baseText: 'ich bin einverstanden / es passt für mich' },
+        { id: 'ugma', targetText: 'ugma.', baseText: 'morgen.' },
+      ],
+      lessonItems: [
+        { id: 'uyon', targetText: 'uyon', baseText: 'einverstanden / passt', acceptedAnswers: cebuanoAnswers('uyon', 'Uyon') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich / für mich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'ugma', targetText: 'ugma', baseText: 'morgen', acceptedAnswers: cebuanoAnswers('ugma', 'Ugma') },
+        { id: 'sige', targetText: 'sige', baseText: 'okay', acceptedAnswers: cebuanoAnswers('sige', 'Sige') },
+      ],
+      buildChips: ['Uyon ko', 'ugma.', 'hangtod', 'tanan'],
+      typeRecall: { before: '', answer: 'Uyon', after: ' ko ugma.', acceptedAnswers: cebuanoAnswers('Uyon', 'uyon'), fallbackChoices: ['Uyon', 'Gikapoy', 'Ganahan', 'Tulog'] },
+      speakTarget: { baseCue: 'Morgen passt es für mich.', targetPhrase: 'Uyon ko ugma.', requiredTokens: ['uyon', 'ko', 'ugma'], optionalTokens: ['sige'] },
+      sceneCaption: 'Sa simple nga plano, mosugot ka: uyon ko ugma.',
+      trophyWord: { word: 'uyon', meaning: 'einverstanden / passt', example: 'Uyon ko ugma.', whyThisWord: 'Uyon ist ein neuer Zustimmungsanker und sagt knapp, dass morgen für dich passt.' },
+      placeholderCaption: 'Confirming tomorrow works.',
+      songMood: 'tomorrow works',
+      visualNotes: 'Calendar tomorrow tick, uyon highlighted.',
+    }),
+  },
+  {
+    slug: 'sleep-well',
+    title: 'Schlaf gut',
+    situation: { en: 'Wish someone sleep well at night.', de: 'Du wünschst jemandem abends eine gute Nacht.' },
+    pedagogicalGoal: 'Tulog og maayo als kurze Schlaf-gut-Formel abrufen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Tulog og maayo.', baseText: 'Schlaf gut.' },
+      meaning: 'Ein kurzer Abendwunsch vor dem Schlafen.',
+      chunks: [
+        { id: 'tulog', targetText: 'Tulog', baseText: 'schlaf' },
+        { id: 'og-maayo', targetText: 'og maayo.', baseText: 'gut.' },
+      ],
+      lessonItems: [
+        { id: 'tulog', targetText: 'tulog', baseText: 'Schlaf / schlaf', acceptedAnswers: cebuanoAnswers('tulog', 'Tulog') },
+        { id: 'maayo', targetText: 'maayo', baseText: 'gut', acceptedAnswers: cebuanoAnswers('maayo', 'Maayo') },
+        { id: 'og-maayo', targetText: 'og maayo', baseText: 'gut / auf gute Weise', acceptedAnswers: cebuanoAnswers('og maayo', 'Og maayo', 'ug maayo', 'Ug maayo') },
+        { id: 'gabii', targetText: 'gabii', baseText: 'Abend / Nacht', acceptedAnswers: cebuanoAnswers('gabii', 'Gabii') },
+      ],
+      buildChips: ['Tulog', 'og maayo.', 'uyon', 'mopanamilit'],
+      typeRecall: { before: '', answer: 'Tulog', after: ' og maayo.', acceptedAnswers: cebuanoAnswers('Tulog', 'tulog'), fallbackChoices: ['Tulog', 'Gikapoy', 'Tanan', 'Hangtod'] },
+      speakTarget: { baseCue: 'Schlaf gut.', targetPhrase: 'Tulog og maayo.', requiredTokens: ['tulog', 'maayo'], optionalTokens: ['og', 'ug'] },
+      sceneCaption: 'Sa gabii, mubo ug buotan ang sulti: tulog og maayo.',
+      trophyWord: { word: 'tulog', meaning: 'Schlaf / schlaf', example: 'Tulog og maayo.', whyThisWord: 'Tulog ist der kurze Schlaf-Anker und unterscheidet sich vom Verb matulog aus dem Hotelpfad.' },
+      placeholderCaption: 'Wishing someone sleep well.',
+      songMood: 'sleep well',
+      visualNotes: 'Night lamp and quiet room, tulog highlighted.',
+    }),
+  },
+  {
+    slug: 'goodbye-for-now',
+    title: 'Ich verabschiede mich für jetzt',
+    situation: { en: 'Close the full arc with goodbye for now.', de: 'Du schließt den ganzen Bogen mit einem Abschied für jetzt.' },
+    pedagogicalGoal: 'Mopanamilit sa ko als einfachen Abschluss für jetzt verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Mopanamilit sa ko.', baseText: 'Ich verabschiede mich für jetzt.' },
+      meaning: 'Ein freundlicher, einfacher Abschied am Ende des Bogens.',
+      chunks: [
+        { id: 'mopanamilit-sa', targetText: 'Mopanamilit sa', baseText: 'verabschiede mich erst einmal' },
+        { id: 'ko', targetText: 'ko.', baseText: 'ich.' },
+      ],
+      lessonItems: [
+        { id: 'mopanamilit', targetText: 'mopanamilit', baseText: 'sich verabschieden', acceptedAnswers: cebuanoAnswers('mopanamilit', 'Mopanamilit', 'mo-panamilit', 'Mo-panamilit') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'sa', targetText: 'sa', baseText: 'erst einmal / kurz', acceptedAnswers: cebuanoAnswers('sa', 'Sa') },
+        { id: 'panamilit', targetText: 'panamilit', baseText: 'Abschied', acceptedAnswers: cebuanoAnswers('panamilit', 'Panamilit') },
+      ],
+      buildChips: ['Mopanamilit sa', 'ko.', 'tulog', 'nagpasalamat'],
+      typeRecall: { before: '', answer: 'Mopanamilit', after: ' sa ko.', acceptedAnswers: cebuanoAnswers('Mopanamilit', 'mopanamilit', 'Mo-panamilit', 'mo-panamilit'), fallbackChoices: ['Mopanamilit', 'Tulog', 'Uyon', 'Ganahan'] },
+      speakTarget: { baseCue: 'Ich verabschiede mich für jetzt.', targetPhrase: 'Mopanamilit sa ko.', acceptedAnswers: ['Mo panamilit sa ko.'], requiredTokens: ['mopanamilit', 'ko'], optionalTokens: ['mo', 'panamilit', 'sa'] },
+      sceneCaption: 'Sa katapusan sa praktis, igo na ang mopanamilit sa ko.',
+      trophyWord: { word: 'mopanamilit', meaning: 'sich verabschieden', example: 'Mopanamilit sa ko.', whyThisWord: 'Mopanamilit ist der Abschlussanker für sich verabschieden und beendet die praktische Runde sauber.' },
+      placeholderCaption: 'Final goodbye for now.',
+      songMood: 'final goodbye for now',
+      visualNotes: 'Bright final screen, mopanamilit highlighted.',
+    }),
+  },
+]
+
+const cebuanoA1Practical10Lessons: GuidedLessonDefinition[] = cebuanoA1Practical10Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-10-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = cebuanoA1Practical10Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA,
+    lessonMetadata: { id, sequence: lessonNumber, title: lessonInput.title },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 10 abgeschlossen.',
+    },
+    vibeVariants: { bright: lessonInput.variant },
+  }
+})
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -54987,6 +55312,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...cebuanoA1Practical7Lessons,
   ...cebuanoA1Practical8Lessons,
   ...cebuanoA1Practical9Lessons,
+  ...cebuanoA1Practical10Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -55069,6 +55395,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA,
   ]
 }
 
