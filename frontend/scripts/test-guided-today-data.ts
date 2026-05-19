@@ -493,11 +493,14 @@ const germanPathNineId = 'german-a1-practical-9'
 const cebuanoPathFourId = 'cebuano-a1-practical-4'
 const cebuanoPathFourLessons = getGuidedPathLessons(cebuanoPathFourId)
 const germanPathTenId = 'german-a1-practical-10'
+const cebuanoPathFiveId = 'cebuano-a1-practical-5'
+const cebuanoPathFiveLessons = getGuidedPathLessons(cebuanoPathFiveId)
 assert('Cebuano A1 Practical 1 resolves 10 lessons', getGuidedPathLessons(cebuanoPathOneId).length === 10, getGuidedPathLessons(cebuanoPathOneId).length)
 assert('Cebuano A1 Practical 2 resolves 10 lessons', cebuanoPathTwoLessons.length === 10, cebuanoPathTwoLessons.length)
 assert('Cebuano A1 Practical 3 resolves 10 lessons', cebuanoPathThreeLessons.length === 10, cebuanoPathThreeLessons.length)
 assert('Cebuano A1 Practical 4 resolves 10 lessons', cebuanoPathFourLessons.length === 10, cebuanoPathFourLessons.length)
-assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, germanPathNineId, cebuanoPathFourId, germanPathTenId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
+assert('Cebuano A1 Practical 5 resolves 10 lessons', cebuanoPathFiveLessons.length === 10, cebuanoPathFiveLessons.length)
+assert('static lessons belong only to active V0 paths', GUIDED_LESSONS.every((lesson) => [pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, germanPathNineId, cebuanoPathFourId, cebuanoPathFiveId, germanPathTenId].includes(lesson.pathId)), GUIDED_LESSONS.map((lesson) => lesson.pathId))
 assert('lesson ids are unique', new Set(lessonIds).size === lessonIds.length, lessonIds)
 assert('lesson numbers 1-10 exist with no gaps', JSON.stringify(lessonNumbers) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), lessonNumbers)
 assert('A1 Practical 1 arc titles match product sequence', JSON.stringify(pathLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedTitles), pathLessons.map((lesson) => lesson.title))
@@ -510,7 +513,7 @@ assert('A1 Practical 7 arc titles match product sequence', JSON.stringify(pathSe
 assert('A1 Practical 8 arc titles match product sequence', JSON.stringify(pathEightLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathEightTitles), pathEightLessons.map((lesson) => lesson.title))
 assert('A1 Practical 9 arc titles match product sequence', JSON.stringify(pathNineLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathNineTitles), pathNineLessons.map((lesson) => lesson.title))
 assert('A1 Practical 10 arc titles match product sequence', JSON.stringify(pathTenLessons.map((lesson) => lesson.title)) === JSON.stringify(expectedPathTenTitles), pathTenLessons.map((lesson) => lesson.title))
-assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, cebuanoPathFourId, germanPathNineId, germanPathTenId]), getGuidedTodayPathOptions())
+assert('path selector source exposes all active paths', JSON.stringify(getGuidedTodayPathOptions().map((path) => path.id)) === JSON.stringify([pathOneId, pathTwoId, pathThreeId, pathFourId, pathFiveId, pathSixId, pathSevenId, pathEightId, pathNineId, pathTenId, spanishPathOneId, spanishPathTwoId, spanishPathThreeId, spanishPathFourId, spanishPathFiveId, spanishPathSixId, spanishPathSevenId, spanishPathEightId, spanishPathNineId, spanishPathTenId, italianPathOneId, italianPathTwoId, italianPathThreeId, italianPathFourId, italianPathFiveId, italianPathSixId, italianPathSevenId, italianPathEightId, italianPathNineId, italianPathTenId, frenchPathOneId, frenchPathTwoId, frenchPathThreeId, frenchPathFourId, frenchPathFiveId, frenchPathSixId, frenchPathSevenId, frenchPathEightId, frenchPathNineId, frenchPathTenId, portuguesePathOneId, portuguesePathTwoId, portuguesePathThreeId, portuguesePathFourId, portuguesePathFiveId, portuguesePathSixId, portuguesePathSevenId, portuguesePathEightId, portuguesePathNineId, portuguesePathTenId, germanPathOneId, germanPathTwoId, germanPathThreeId, germanPathFourId, germanPathFiveId, germanPathSixId, cebuanoPathOneId, germanPathSevenId, cebuanoPathTwoId, germanPathEightId, cebuanoPathThreeId, cebuanoPathFourId, germanPathNineId, cebuanoPathFiveId, germanPathTenId]), getGuidedTodayPathOptions())
 const cebuanoPathTwoBrightVariants = cebuanoPathTwoLessons.map((lesson) => lesson.vibeVariants.bright)
 const expectedCebuanoPathTwoTrophies = ['kasabot', 'isulat', 'mapa', 'kana', 'naa', 'dawat', 'resibo', 'ngalan', 'husto', 'kadiyot']
 const priorCebuanoPathOneTrophies = new Set([
@@ -534,7 +537,15 @@ const cebuanoPathTwoTargetSurfaces = cebuanoPathTwoBrightVariants.flatMap((varia
   ...(variant?.lessonItems.map((item) => item.targetText) ?? []),
 ].filter((text): text is string => typeof text === 'string'))
 const tagalogContaminationMarkers = ['hindi', 'tulong', 'saan', 'magkano', 'kailan', 'maganda', 'bukas', 'ito', 'iyan', 'sandali', 'tama', 'paki', 'pakiusap', 'intindi']
-assert('Cebuano A1 Practical 2 has no Tagalog contamination markers', cebuanoPathTwoTargetSurfaces.every((text) => !tagalogContaminationMarkers.some((marker) => normalizeGuidedAnswer(text).split(/\s+/).includes(marker))), cebuanoPathTwoTargetSurfaces)
+const hasTagalogContaminationMarker = (text: string) => {
+  const tokens = normalizeGuidedAnswer(text)
+    .replace(/[^\p{L}\p{N}-]+/gu, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+  return tagalogContaminationMarkers.some((marker) => tokens.includes(marker))
+}
+assert('Cebuano Tagalog marker scan catches punctuation', hasTagalogContaminationMarker('paki, palihug') && hasTagalogContaminationMarker('tama.'), tagalogContaminationMarkers)
+assert('Cebuano A1 Practical 2 has no Tagalog contamination markers', cebuanoPathTwoTargetSurfaces.every((text) => !hasTagalogContaminationMarker(text)), cebuanoPathTwoTargetSurfaces)
 assert('Cebuano A1 Practical 2 trophies live in productive target text', cebuanoPathTwoBrightVariants.every((variant) => {
   if (!variant) return false
   const trophy = normalizeGuidedAnswer(variant.trophyWord.word)
@@ -570,7 +581,7 @@ const cebuanoPathThreeTargetSurfaces = cebuanoPathThreeBrightVariants.flatMap((v
   ...(variant?.chunks.map((chunk) => chunk.targetText) ?? []),
   ...(variant?.lessonItems.map((item) => item.targetText) ?? []),
 ].filter((text): text is string => typeof text === 'string'))
-assert('Cebuano A1 Practical 3 has no Tagalog contamination markers', cebuanoPathThreeTargetSurfaces.every((text) => !tagalogContaminationMarkers.some((marker) => normalizeGuidedAnswer(text).split(/\s+/).includes(marker))), cebuanoPathThreeTargetSurfaces)
+assert('Cebuano A1 Practical 3 has no Tagalog contamination markers', cebuanoPathThreeTargetSurfaces.every((text) => !hasTagalogContaminationMarker(text)), cebuanoPathThreeTargetSurfaces)
 assert('Cebuano A1 Practical 3 trophies live in productive target text', cebuanoPathThreeBrightVariants.every((variant) => {
   if (!variant) return false
   const trophy = normalizeGuidedAnswer(variant.trophyWord.word)
@@ -604,7 +615,7 @@ const cebuanoPathFourTargetSurfaces = cebuanoPathFourBrightVariants.flatMap((var
   ...(variant?.chunks.map((chunk) => chunk.targetText) ?? []),
   ...(variant?.lessonItems.map((item) => item.targetText) ?? []),
 ].filter((text): text is string => typeof text === 'string'))
-assert('Cebuano A1 Practical 4 has no Tagalog contamination markers', cebuanoPathFourTargetSurfaces.every((text) => !tagalogContaminationMarkers.some((marker) => normalizeGuidedAnswer(text).split(/\s+/).includes(marker))), cebuanoPathFourTargetSurfaces)
+assert('Cebuano A1 Practical 4 has no Tagalog contamination markers', cebuanoPathFourTargetSurfaces.every((text) => !hasTagalogContaminationMarker(text)), cebuanoPathFourTargetSurfaces)
 assert('Cebuano A1 Practical 4 trophies live in productive target text', cebuanoPathFourBrightVariants.every((variant) => {
   if (!variant) return false
   const trophy = normalizeGuidedAnswer(variant.trophyWord.word)
@@ -618,6 +629,41 @@ assert('Cebuano A1 Practical 4 takeaway speech requires dad-on', cebuanoPathFour
   requiredTokens: cebuanoPathFourTakeawaySpeak.requiredTokens,
   optionalTokens: cebuanoPathFourTakeawaySpeak.optionalTokens,
 }).status !== 'correct' : false, cebuanoPathFourTakeawaySpeak)
+const cebuanoPathFiveBrightVariants = cebuanoPathFiveLessons.map((lesson) => lesson.vibeVariants.bright)
+const expectedCebuanoPathFiveTrophies = ['naulahi', 'nakalimot', 'tawag', 'nalipay', 'taga', 'nagpuyo', 'gabii', 'parke', 'tingali', 'amping']
+const priorCebuanoPathOneTwoThreeFourTrophies = new Set([
+  'kumusta', 'pasaylo', 'asa', 'palihug', 'tagpila', 'kanus a', 'tabang', 'nindot', 'ugma', 'salamat',
+  'kasabot', 'isulat', 'mapa', 'kana', 'naa', 'dawat', 'resibo', 'ngalan', 'husto', 'kadiyot',
+  'tuo', 'layo', 'abli', 'paingon', 'sunod', 'tiket', 'mosira', 'eskina', 'lakaw', 'milapas',
+  'lamesa', 'menu', 'tubig', 'asukar', 'presko', 'dugang', 'dad-on', 'lami', 'karon', 'bayranan',
+].map((word) => normalizeGuidedAnswer(word)))
+const cebuanoPathFiveTrophies = cebuanoPathFiveBrightVariants
+  .map((variant) => variant?.trophyWord.word ?? '')
+  .map((word) => normalizeGuidedAnswer(word))
+assert('Cebuano A1 Practical 5 trophy order is locked', JSON.stringify(cebuanoPathFiveTrophies) === JSON.stringify(expectedCebuanoPathFiveTrophies), cebuanoPathFiveTrophies)
+assert('Cebuano A1 Practical 5 trophies avoid prior Cebuano trophies', cebuanoPathFiveTrophies.every((word) => !priorCebuanoPathOneTwoThreeFourTrophies.has(word)), cebuanoPathFiveTrophies)
+assert('Cebuano A1 Practical 5 uses ceb-PH in every speak target', cebuanoPathFiveBrightVariants.every((variant) => variant?.speakTarget.language === 'ceb-PH'), cebuanoPathFiveBrightVariants.map((variant) => variant?.speakTarget.language))
+const cebuanoPathFiveTargetSurfaces = cebuanoPathFiveBrightVariants.flatMap((variant) => [
+  variant?.corePhrase.targetText,
+  variant?.build.targetText,
+  variant?.typeRecall.before,
+  variant?.typeRecall.answer,
+  variant?.typeRecall.after,
+  variant?.speakTarget.targetPhrase,
+  variant?.trophyWord.example,
+  variant?.sceneCaption,
+  ...(variant?.build.chips ?? []),
+  ...(variant?.typeRecall.fallbackChoices ?? []),
+  ...(variant?.chunks.map((chunk) => chunk.targetText) ?? []),
+  ...(variant?.lessonItems.map((item) => item.targetText) ?? []),
+].filter((text): text is string => typeof text === 'string'))
+assert('Cebuano A1 Practical 5 has no Tagalog contamination markers', cebuanoPathFiveTargetSurfaces.every((text) => !hasTagalogContaminationMarker(text)), cebuanoPathFiveTargetSurfaces)
+assert('Cebuano A1 Practical 5 trophies live in productive target text', cebuanoPathFiveBrightVariants.every((variant) => {
+  if (!variant) return false
+  const trophy = normalizeGuidedAnswer(variant.trophyWord.word)
+  return [variant.corePhrase.targetText, variant.build.targetText, variant.typeRecall.answer, variant.speakTarget.targetPhrase, variant.trophyWord.example]
+    .some((text) => normalizeGuidedAnswer(text).includes(trophy))
+}), cebuanoPathFiveTrophies)
 const portuguesePathFiveBrightVariants = portuguesePathFiveLessons.map((lesson) => lesson.vibeVariants.bright)
 const expectedPortuguesePathFiveTrophies = ['atraso', 'esqueci', 'nome', 'prazer', 'cidade', 'mora', 'noite', 'parque', 'talvez', 'tchau']
 const priorPortugueseTrophies = new Set([
