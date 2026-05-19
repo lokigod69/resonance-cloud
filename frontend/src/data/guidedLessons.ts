@@ -13,7 +13,6 @@ export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' 
 export type GuidedBaseLanguage = 'German' | 'English'
 export type GuidedBaseContentLocale = 'en' | 'de'
 export type GuidedBaseContentText = Partial<Record<GuidedBaseContentLocale, string>>
-export type GuidedBaseContentValue = string | GuidedBaseContentText
 export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH' | 'id-ID'
 
 export const GUIDED_BASE_LANGUAGE_TO_CONTENT_LOCALE: Partial<Record<string, GuidedBaseContentLocale>> = {
@@ -31,12 +30,12 @@ export function guidedContentLocaleToBaseLanguage(locale: GuidedBaseContentLocal
   return locale === 'de' ? 'German' : 'English'
 }
 
-export function isGuidedBaseContentText(value: GuidedBaseContentValue | undefined): value is GuidedBaseContentText {
+export function isGuidedBaseContentText(value: unknown): value is GuidedBaseContentText {
   return typeof value === 'object' && value !== null
 }
 
 export function resolveGuidedBaseContent(
-  value: GuidedBaseContentValue | undefined,
+  value: GuidedBaseContentText | undefined,
   options: {
     preferredBaseLanguage?: string | null
     authoredBaseLanguage: GuidedBaseLanguage
@@ -50,38 +49,29 @@ export function resolveGuidedBaseContent(
   const authoredLocale = guidedBaseLanguageToContentLocale(options.authoredBaseLanguage) ?? 'en'
   const preferredLocale = guidedBaseLanguageToContentLocale(options.preferredBaseLanguage)
 
-  if (!isGuidedBaseContentText(value)) {
-    return {
-      text: value ?? '',
-      locale: authoredLocale,
-      language: guidedContentLocaleToBaseLanguage(authoredLocale),
-      isFallback: false,
-    }
-  }
-
-  const preferredText = preferredLocale ? value[preferredLocale]?.trim() : undefined
+  const preferredText = preferredLocale ? value?.[preferredLocale]?.trim() : undefined
   if (preferredLocale && preferredText) {
     return {
-      text: value[preferredLocale] ?? '',
+      text: value?.[preferredLocale] ?? '',
       locale: preferredLocale,
       language: guidedContentLocaleToBaseLanguage(preferredLocale),
       isFallback: false,
     }
   }
 
-  const authoredText = value[authoredLocale]?.trim()
+  const authoredText = value?.[authoredLocale]?.trim()
   if (authoredText) {
     return {
-      text: value[authoredLocale] ?? '',
+      text: value?.[authoredLocale] ?? '',
       locale: authoredLocale,
       language: guidedContentLocaleToBaseLanguage(authoredLocale),
       isFallback: preferredLocale !== undefined && preferredLocale !== authoredLocale,
     }
   }
 
-  const fallbackLocale = (['en', 'de'] as const).find((locale) => value[locale]?.trim()) ?? authoredLocale
+  const fallbackLocale = (['en', 'de'] as const).find((locale) => value?.[locale]?.trim()) ?? authoredLocale
   return {
-    text: value[fallbackLocale] ?? '',
+    text: value?.[fallbackLocale] ?? '',
     locale: fallbackLocale,
     language: guidedContentLocaleToBaseLanguage(fallbackLocale),
     isFallback: fallbackLocale !== preferredLocale,
@@ -92,14 +82,14 @@ export type GuidedLessonMedia = {
   type: LessonMediaType
   url: string
   posterUrl?: string
-  caption: GuidedBaseContentValue
+  caption: GuidedBaseContentText
 }
 
 export type GuidedPathMetadata = {
   id: string
   title: string
   shortTitle: string
-  subtitle: GuidedBaseContentValue
+  subtitle: GuidedBaseContentText
   level: 'A1'
   baseLanguage: GuidedBaseLanguage
   targetLanguage: GuidedTargetLanguage
@@ -109,13 +99,13 @@ export type GuidedPathMetadata = {
 export type GuidedLessonMetadata = {
   id: string
   sequence: number
-  title: GuidedBaseContentValue
+  title: GuidedBaseContentText
 }
 
 export type PhraseChunk = {
   id: string
   targetText: string
-  baseText: GuidedBaseContentValue
+  baseText: GuidedBaseContentText
 }
 
 export type GuidedMatchPair = PhraseChunk
@@ -123,7 +113,7 @@ export type GuidedMatchPair = PhraseChunk
 export type LessonItem = {
   id: string
   targetText: string
-  baseText: GuidedBaseContentValue
+  baseText: GuidedBaseContentText
   acceptedAnswers: string[]
   reviewDistractorIds?: string[]
 }
@@ -143,9 +133,9 @@ export type GuidedLessonStep = 'scene' | 'matchPairs' | 'build' | 'type' | 'spea
 
 export type GuidedLessonTrophyWord = {
   word: string
-  meaning: GuidedBaseContentValue
+  meaning: GuidedBaseContentText
   example: string
-  whyThisWord: GuidedBaseContentValue
+  whyThisWord: GuidedBaseContentText
 }
 
 export type GuidedLessonSongSeed = {
@@ -157,16 +147,16 @@ export type GuidedLessonPlaceholderMedia = {
   type?: LessonMediaType
   url?: string
   posterUrl?: string
-  caption?: GuidedBaseContentValue
+  caption?: GuidedBaseContentText
 }
 
 export type GuidedLessonVibeVariant = {
   contentStatus: 'final' | 'draft'
   corePhrase: {
     targetText: string
-    baseText: GuidedBaseContentValue
+    baseText: GuidedBaseContentText
   }
-  meaning: GuidedBaseContentValue
+  meaning: GuidedBaseContentText
   chunks: PhraseChunk[]
   lessonItems: LessonItem[]
   build: {
@@ -181,7 +171,7 @@ export type GuidedLessonVibeVariant = {
     fallbackChoices: string[]
   }
   speakTarget: {
-    baseCue: GuidedBaseContentValue
+    baseCue: GuidedBaseContentText
     targetPhrase: string
     displayAnswer?: string
     targetAnswer?: string
@@ -192,7 +182,7 @@ export type GuidedLessonVibeVariant = {
     language: GuidedSpeakLocale
     passingThreshold: number
   }
-  sceneCaption: GuidedBaseContentValue
+  sceneCaption: GuidedBaseContentText
   trophyWord: GuidedLessonTrophyWord
   videoUrl?: string
   placeholderMedia?: GuidedLessonPlaceholderMedia
@@ -210,7 +200,7 @@ export type GuidedLessonDefinition = {
   targetLanguage: GuidedTargetLanguage
   pathMetadata: GuidedPathMetadata
   lessonMetadata: GuidedLessonMetadata
-  title: GuidedBaseContentValue
+  title: GuidedBaseContentText
   situation: {
     en: string
     de: string
@@ -222,8 +212,8 @@ export type GuidedLessonDefinition = {
   fallbackVibeId: ActiveGuidedVibeId
   status: 'active' | 'coming-soon'
   nextLessonTeaser: {
-    title: GuidedBaseContentValue
-    situation: GuidedBaseContentValue
+    title: GuidedBaseContentText
+    situation: GuidedBaseContentText
   }
   vibeVariants: Partial<Record<ActiveGuidedVibeId, GuidedLessonVibeVariant>>
 }
@@ -242,7 +232,7 @@ export type GuidedLesson = GuidedLessonDefinition & {
   typeRecall: GuidedLessonVibeVariant['typeRecall']
   speak: GuidedLessonVibeVariant['speakTarget']
   trophyWord: GuidedLessonTrophyWord
-  sceneCaption: GuidedBaseContentValue
+  sceneCaption: GuidedBaseContentText
   songSeed?: GuidedLessonSongSeed
 }
 
@@ -2782,23 +2772,23 @@ const sharpLesson010: GuidedLessonVibeVariant = {
 
 type A1P2VariantInput = {
   targetText: string
-  baseText: GuidedBaseContentValue
-  meaning: GuidedBaseContentValue
+  baseText: GuidedBaseContentText
+  meaning: GuidedBaseContentText
   chunks: PhraseChunk[]
   extraLessonItems?: PhraseChunk[]
   targetChips: string[]
   distractors: string[]
   typeRecall: GuidedLessonVibeVariant['typeRecall']
-  sceneCaption: GuidedBaseContentValue
+  sceneCaption: GuidedBaseContentText
   trophyWord: GuidedLessonTrophyWord
-  mediaCaption: GuidedBaseContentValue
+  mediaCaption: GuidedBaseContentText
   songSeed: GuidedLessonSongSeed
   visualNotes: string
 }
 
 type A1P2LessonInput = {
   slug: string
-  title: GuidedBaseContentValue
+  title: GuidedBaseContentText
   situation: GuidedLessonDefinition['situation']
   pedagogicalGoal: string
   variants: Record<ActiveGuidedVibeId, A1P2VariantInput>
@@ -3487,7 +3477,7 @@ type A1P3VariantInput = A1P2VariantInput
 
 type A1P3LessonInput = {
   slug: string
-  title: GuidedBaseContentValue
+  title: GuidedBaseContentText
   situation: GuidedLessonDefinition['situation']
   pedagogicalGoal: string
   variants: Record<ActiveGuidedVibeId, A1P3VariantInput>
@@ -10158,11 +10148,11 @@ function createA1P2Variant(input: A1P2VariantInput): GuidedLessonVibeVariant {
   }
 }
 
-function chunk(id: string, targetText: string, baseText: GuidedBaseContentValue): PhraseChunk {
+function chunk(id: string, targetText: string, baseText: GuidedBaseContentText): PhraseChunk {
   return { id, targetText, baseText }
 }
 
-function lessonItem(id: string, targetText: string, baseText: GuidedBaseContentValue): LessonItem {
+function lessonItem(id: string, targetText: string, baseText: GuidedBaseContentText): LessonItem {
   return {
     id,
     targetText,
@@ -10198,9 +10188,9 @@ function recall(
 
 function trophy(
   word: string,
-  meaning: GuidedBaseContentValue,
+  meaning: GuidedBaseContentText,
   example: string,
-  whyThisWord: GuidedBaseContentValue,
+  whyThisWord: GuidedBaseContentText,
 ): GuidedLessonTrophyWord {
   return { word, meaning, example, whyThisWord }
 }
@@ -35576,7 +35566,7 @@ const brightFrenchP10Lesson010: GuidedLessonVibeVariant = {
 
 type CebuanoP1LessonInput = {
   slug: string
-  title: GuidedBaseContentValue
+  title: GuidedBaseContentText
   situation: GuidedLessonDefinition['situation']
   pedagogicalGoal: string
   variant: GuidedLessonVibeVariant
@@ -36274,22 +36264,22 @@ const cebuanoA1Practical1Lessons: GuidedLessonDefinition[] = cebuanoA1Practical1
 
 type CebuanoP2VariantInput = {
   corePhrase: GuidedLessonVibeVariant['corePhrase']
-  meaning: GuidedBaseContentValue
+  meaning: GuidedBaseContentText
   chunks: PhraseChunk[]
   lessonItems: LessonItem[]
   buildChips: string[]
   typeRecall: GuidedLessonVibeVariant['typeRecall']
   speakTarget: Omit<GuidedLessonVibeVariant['speakTarget'], 'language' | 'passingThreshold'>
-  sceneCaption: GuidedBaseContentValue
+  sceneCaption: GuidedBaseContentText
   trophyWord: GuidedLessonTrophyWord
-  placeholderCaption: GuidedBaseContentValue
+  placeholderCaption: GuidedBaseContentText
   songMood: string
   visualNotes: string
 }
 
 type CebuanoP2LessonInput = {
   slug: string
-  title: GuidedBaseContentValue
+  title: GuidedBaseContentText
   situation: GuidedLessonDefinition['situation']
   pedagogicalGoal: string
   variant: GuidedLessonVibeVariant
@@ -39046,22 +39036,22 @@ const cebuanoA1Practical6Lessons: GuidedLessonDefinition[] = cebuanoA1Practical6
 
 type IndonesianP1VariantInput = {
   corePhrase: GuidedLessonVibeVariant['corePhrase']
-  meaning: GuidedBaseContentValue
+  meaning: GuidedBaseContentText
   chunks: PhraseChunk[]
   lessonItems: LessonItem[]
   buildChips: string[]
   typeRecall: GuidedLessonVibeVariant['typeRecall']
   speakTarget: Omit<GuidedLessonVibeVariant['speakTarget'], 'language' | 'passingThreshold'>
-  sceneCaption: GuidedBaseContentValue
+  sceneCaption: GuidedBaseContentText
   trophyWord: GuidedLessonTrophyWord
-  placeholderCaption: GuidedBaseContentValue
+  placeholderCaption: GuidedBaseContentText
   songMood: string
   visualNotes: string
 }
 
 type IndonesianP1LessonInput = {
   slug: string
-  title: GuidedBaseContentValue
+  title: GuidedBaseContentText
   situation: GuidedLessonDefinition['situation']
   pedagogicalGoal: string
   variant: GuidedLessonVibeVariant

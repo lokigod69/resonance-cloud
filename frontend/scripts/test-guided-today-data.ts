@@ -26,7 +26,7 @@ import {
   normalizeGuidedAnswer,
   resolveGuidedBaseContent,
   resolveGuidedLessonVariant,
-  type GuidedBaseContentValue,
+  type GuidedBaseContentText,
   type GuidedBaseLanguage,
   type GuidedLessonDefinition,
   type GuidedLessonVibeVariant,
@@ -178,7 +178,7 @@ const pathSevenLessons = getGuidedPathLessons(pathSevenId)
 const pathEightLessons = getGuidedPathLessons(pathEightId)
 const pathNineLessons = getGuidedPathLessons(pathNineId)
 const pathTenLessons = getGuidedPathLessons(pathTenId)
-const authoredBaseText = (lesson: GuidedLessonDefinition, value: GuidedBaseContentValue) => resolveGuidedBaseContent(value, {
+const authoredBaseText = (lesson: GuidedLessonDefinition, value: GuidedBaseContentText) => resolveGuidedBaseContent(value, {
   authoredBaseLanguage: lesson.baseLanguage,
 }).text
 const lessonTitles = (lessons: GuidedLessonDefinition[]) => lessons.map((lesson) => authoredBaseText(lesson, lesson.title))
@@ -2292,12 +2292,6 @@ const mojibakeFlags = collectMojibakeFlags()
 assert('German learner-facing Guided Today fields avoid UTF-8 mojibake (Ã¶ etc.)', mojibakeFlags.length === 0, mojibakeFlags)
 
 console.log('\n[base content resolver]')
-const legacyString = resolveGuidedBaseContent(
-  'Legacy German cue',
-  { preferredBaseLanguage: 'English', authoredBaseLanguage: 'German' },
-)
-assert('legacy string content resolves as authored base during transition', legacyString.text === 'Legacy German cue' && legacyString.locale === 'de' && legacyString.language === 'German' && !legacyString.isFallback, legacyString)
-
 const preferredAvailable = resolveGuidedBaseContent(
   { de: 'Deutsch', en: 'English' },
   { preferredBaseLanguage: 'English', authoredBaseLanguage: 'German' },
@@ -2541,7 +2535,7 @@ function hasText(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0
 }
 
-function hasBaseContentText(value: GuidedBaseContentValue | undefined, authoredBaseLanguage: GuidedBaseLanguage) {
+function hasBaseContentText(value: GuidedBaseContentText | undefined, authoredBaseLanguage: GuidedBaseLanguage) {
   return hasText(resolveGuidedBaseContent(value, { authoredBaseLanguage }).text)
 }
 
@@ -2594,12 +2588,7 @@ function collectGermanFieldEntries(): GermanFieldEntry[] {
   return entries
 }
 
-function collectGermanLeaf(entries: GermanFieldEntry[], path: string, value: GuidedBaseContentValue | undefined) {
-  if (typeof value === 'string') {
-    if (value.length > 0) entries.push({ path, value })
-    return
-  }
-
+function collectGermanLeaf(entries: GermanFieldEntry[], path: string, value: GuidedBaseContentText | undefined) {
   const germanText = value?.de
   if (typeof germanText === 'string' && germanText.length > 0) {
     entries.push({ path, value: germanText })
@@ -2687,7 +2676,7 @@ function phraseContainsAnswer(lesson: ReturnType<typeof resolveGuidedLessonVaria
   return target.includes(normalizeGuidedAnswer(lesson.typeRecall.answer)) && phrase.includes(normalizeGuidedAnswer(lesson.typeRecall.answer))
 }
 
-function looksLikeGermanCue(value: GuidedBaseContentValue) {
+function looksLikeGermanCue(value: GuidedBaseContentText) {
   const text = resolveGuidedBaseContent(value, {
     authoredBaseLanguage: 'German',
   }).text
