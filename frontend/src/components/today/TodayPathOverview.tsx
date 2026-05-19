@@ -1,5 +1,5 @@
-import { Play, Settings } from 'lucide-react'
-import { useState } from 'react'
+import { CheckCircle2, ChevronDown, ChevronRight, Play, Settings } from 'lucide-react'
+import { type ReactNode, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   resolveGuidedBaseContent,
@@ -13,13 +13,15 @@ import { guidedVibes, type ActiveGuidedVibeId } from '@/data/guidedVibes'
 import { getTodayLessonVibeStatus, type TodayProgressState } from '@/lib/todayProgress'
 import { readGuidedSegmentReviewRecord, type GuidedSegmentReviewNumber } from '@/lib/guidedCheckpoint'
 import { formatGuidedPathLabel } from '@/lib/guidedPathLabels'
+import { readGuidedTrophyClozeRecord } from '@/lib/guidedTrophy'
 import { useAuth } from '@/hooks/useAuth'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
 import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
-import { SegmentTrophyTile } from '@/components/today/SegmentTrophyTile'
 import { cn } from '@/lib/utils'
+
+const TODAY_PATH_ORB_ASSET = '/guided/today/orb-hero.svg'
 
 const GUIDED_SEGMENT_REVIEWS = [
   {
@@ -58,6 +60,13 @@ type TodayPathOverviewProps = {
   onStartLesson: (lessonId?: string) => void
 }
 
+type SegmentRenderState = (typeof GUIDED_SEGMENT_REVIEWS)[number] & {
+  lessons: GuidedPathOverview['lessons']
+  completedCount: number
+  isReviewComplete: boolean
+  reviewHref: string
+}
+
 export function TodayPathOverview({
   overview,
   pathOptions,
@@ -89,50 +98,87 @@ export function TodayPathOverview({
       && overview.recommendedLesson
       && pathLesson.id !== overview.recommendedLesson.id,
   )
+  const headerProgressLabel = pathLesson
+    ? t('today.path.lessonProgressHero', {
+        current: pathLesson.lessonNumber,
+        total: overview.totalLessons,
+      })
+    : t('today.path.compactProgress', {
+        completed: overview.completedCount,
+        total: overview.totalLessons,
+      })
+  const segmentStates: SegmentRenderState[] = GUIDED_SEGMENT_REVIEWS.map((segment) => {
+    const segmentLessons = overview.lessons.filter((entry) => (
+      entry.lesson.lessonNumber >= segment.start && entry.lesson.lessonNumber <= segment.end
+    ))
+    const completedCount = segmentLessons.filter((entry) => (
+      getTodayLessonVibeStatus(progress, entry.lesson, selectedVibeId) === 'completed'
+    )).length
+    const reviewRecord = readGuidedSegmentReviewRecord(
+      selectedPathId,
+      segment.segment,
+      selectedVibeId,
+    )
+
+    return {
+      ...segment,
+      lessons: segmentLessons,
+      completedCount,
+      isReviewComplete: Boolean(reviewRecord),
+      reviewHref: `/today/checkpoint?mode=segment-review&path=${selectedPathId}&segment=${segment.segment}&vibe=${selectedVibeId}`,
+    }
+  })
 
   return (
-    <div className="grid gap-5">
-      <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-3 sm:p-5">
+    <div className="today-path-shell grid gap-4 sm:gap-5">
+      <section className="today-path-hero theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
+        <img
+          src={TODAY_PATH_ORB_ASSET}
+          alt=""
+          className="today-path-heroOrb"
+          draggable={false}
+          aria-hidden="true"
+        />
         <div className="today-path-header flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h1 className="break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
+            <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
               {formatGuidedPathLabel(overview.pathMetadata, t)}
             </h1>
-            <p className="mt-1 text-sm text-[var(--text-muted)]">
-              {t('today.path.compactProgress', {
-                completed: overview.completedCount,
-                total: overview.totalLessons,
-              })}
+            <p className="today-path-progressLine mt-2 text-sm text-[var(--text-muted)] sm:text-base">
+              {headerProgressLabel}
             </p>
           </div>
           <div className="today-path-actions flex shrink-0 flex-wrap gap-2 xl:justify-end">
             <Button
               type="button"
               variant="outline"
-              size="icon"
+              className="today-path-optionsButton"
               aria-label={t('today.path.changePath')}
               title={t('today.path.changePath')}
               onClick={() => setDirectoryOpen(true)}
             >
-              <Settings className="h-5 w-5" aria-hidden="true" />
+              <Settings className="h-4 w-4" aria-hidden="true" />
+              <span>{t('today.path.options')}</span>
+              <ChevronDown className="h-4 w-4" aria-hidden="true" />
             </Button>
           </div>
-          <GuidedPathDirectory
-            open={directoryOpen}
-            pathOptions={pathOptions}
-            selectedPathId={selectedPathId}
-            progress={progress}
-            pathCheckHref={pathCheckHref}
-            selectedLanguage={selectedLanguage}
-            availableLanguages={availableLanguages}
-            selectedVibeId={selectedVibeId}
-            onSelectPath={onSelectPath}
-            onSelectLanguage={onSelectLanguage}
-            onSelectVibe={onSelectVibe}
-            onClose={() => setDirectoryOpen(false)}
-          />
         </div>
       </section>
+
+      <GuidedPathDirectory
+        open={directoryOpen}
+        pathOptions={pathOptions}
+        selectedPathId={selectedPathId}
+        progress={progress}
+        pathCheckHref={pathCheckHref}
+        selectedLanguage={selectedLanguage}
+        availableLanguages={availableLanguages}
+        selectedVibeId={selectedVibeId}
+        onSelectPath={onSelectPath}
+        onSelectLanguage={onSelectLanguage}
+        onSelectVibe={onSelectVibe}
+        onClose={() => setDirectoryOpen(false)}
+      />
 
       {pathLesson && (
         <RecommendedLessonPanel
@@ -143,74 +189,97 @@ export function TodayPathOverview({
         />
       )}
 
-      <section className="grid gap-3">
-        <div className="flex flex-wrap items-end justify-between gap-2">
-          <div>
-            <p className="sr-only">
-              {t('today.path.yourPath')}
-            </p>
-          </div>
-        </div>
+      <section className="today-path-journey grid gap-4" aria-labelledby="today-path-journey-title">
+        <h2 id="today-path-journey-title" className="sr-only">
+          {t('today.path.yourPath')}
+        </h2>
 
-        <div className="today-path-segments grid gap-3">
-          {GUIDED_SEGMENT_REVIEWS.map((segment) => {
-            const segmentLessons = overview.lessons.filter((entry) => (
-              entry.lesson.lessonNumber >= segment.start && entry.lesson.lessonNumber <= segment.end
-            ))
-            const completedCount = segmentLessons.filter((entry) => (
-              getTodayLessonVibeStatus(progress, entry.lesson, selectedVibeId) === 'completed'
-            )).length
-            const reviewRecord = readGuidedSegmentReviewRecord(
-              selectedPathId,
-              segment.segment,
-              selectedVibeId,
-            )
-
-            return (
-              <div key={segment.segment} className="grid gap-2">
-                <div className="today-path-segmentGrid grid grid-cols-5 gap-2">
-                  {segmentLessons.map((entry) => (
-                    <LessonPathCard
-                      key={entry.lesson.id}
-                      lesson={entry.lesson}
-                      preferredBaseLanguage={preferredBaseLanguage}
-                      status={entry.status}
-                      isRecommended={entry.isRecommended}
-                      isSelected={entry.isSelected}
-                      isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
-                      completedVibeIds={entry.completedVibeIds}
-                      selectedVibeId={selectedVibeId}
-                      onSelectLesson={onSelectLesson}
-                      onStartLesson={onStartLesson}
-                    />
-                  ))}
-                </div>
-                <div className="today-path-reviewPair grid grid-cols-2 gap-2">
-                  <SegmentReviewTile
-                    href={`/today/checkpoint?mode=segment-review&path=${selectedPathId}&segment=${segment.segment}&vibe=${selectedVibeId}`}
-                    segment={segment.segment}
-                    label={t(segment.labelKey)}
-                    rangeLabel={t(segment.rangeKey)}
-                    completedCount={completedCount}
-                    selectedVibeId={selectedVibeId}
-                    isReviewComplete={Boolean(reviewRecord)}
-                  />
-                  <SegmentTrophyTile
-                    pathId={selectedPathId}
-                    segment={segment.segment}
-                    vibeId={selectedVibeId}
-                  />
-                </div>
+        <div className="today-path-mobileFlow">
+          {segmentStates.map((segment) => (
+            <div key={segment.segment} className="today-path-mobileSegment">
+              {segment.lessons.map((entry) => (
+                <LessonPathCard
+                  key={entry.lesson.id}
+                  lesson={entry.lesson}
+                  preferredBaseLanguage={preferredBaseLanguage}
+                  status={entry.status}
+                  isRecommended={entry.isRecommended}
+                  isSelected={entry.isSelected}
+                  isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
+                  completedVibeIds={entry.completedVibeIds}
+                  selectedVibeId={selectedVibeId}
+                  showRailLabel
+                  onSelectLesson={onSelectLesson}
+                  onStartLesson={onStartLesson}
+                />
+              ))}
+              <div className="today-path-mobileRewards">
+                <SegmentReviewTile
+                  href={segment.reviewHref}
+                  segment={segment.segment}
+                  label={t(segment.labelKey)}
+                  rangeLabel={t(segment.rangeKey)}
+                  completedCount={segment.completedCount}
+                  selectedVibeId={selectedVibeId}
+                  isReviewComplete={segment.isReviewComplete}
+                />
+                <SegmentTrophyTile
+                  pathId={selectedPathId}
+                  segment={segment.segment}
+                  vibeId={selectedVibeId}
+                />
               </div>
-            )
-          })}
-          {checkpointCard && (
-            <CheckpointCard
-              href={checkpointCard.href}
-              completedPathCount={checkpointCard.completedPathCount}
-            />
-          )}
+            </div>
+          ))}
         </div>
+
+        <div className="today-path-desktopFlow">
+          {segmentStates.map((segment) => (
+            <div key={segment.segment} className="today-path-desktopSegment">
+              <div className="today-path-desktopConnector" aria-hidden="true" />
+              <div className="today-path-segmentGrid grid grid-cols-5 gap-2">
+                {segment.lessons.map((entry) => (
+                  <LessonPathCard
+                    key={entry.lesson.id}
+                    lesson={entry.lesson}
+                    preferredBaseLanguage={preferredBaseLanguage}
+                    status={entry.status}
+                    isRecommended={entry.isRecommended}
+                    isSelected={entry.isSelected}
+                    isRecommendationQuiet={hasExplicitLessonSelection && entry.isRecommended && !entry.isSelected}
+                    completedVibeIds={entry.completedVibeIds}
+                    selectedVibeId={selectedVibeId}
+                    onSelectLesson={onSelectLesson}
+                    onStartLesson={onStartLesson}
+                  />
+                ))}
+              </div>
+              <div className="today-path-desktopRewards grid grid-cols-2 gap-3">
+                <SegmentReviewTile
+                  href={segment.reviewHref}
+                  segment={segment.segment}
+                  label={t(segment.labelKey)}
+                  rangeLabel={t(segment.rangeKey)}
+                  completedCount={segment.completedCount}
+                  selectedVibeId={selectedVibeId}
+                  isReviewComplete={segment.isReviewComplete}
+                />
+                <SegmentTrophyTile
+                  pathId={selectedPathId}
+                  segment={segment.segment}
+                  vibeId={selectedVibeId}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {checkpointCard && (
+          <CheckpointCard
+            href={checkpointCard.href}
+            completedPathCount={checkpointCard.completedPathCount}
+          />
+        )}
       </section>
     </div>
   )
@@ -237,23 +306,128 @@ function SegmentReviewTile({
   const assetName = isReviewComplete ? `${selectedVibeId}-review-complete.webp` : `${selectedVibeId}-review.webp`
 
   return (
+    <TodaySegmentNode
+      href={href}
+      segment={segment}
+      kind="review"
+      label={label}
+      rangeLabel={rangeLabel}
+      accessibleLabel={accessibleLabel}
+      completedCount={completedCount}
+      isComplete={isReviewComplete}
+      className="today-segment-reviewTile"
+    >
+      <img
+        src={`/guided/reviews/${assetName}`}
+        alt=""
+        className="today-segment-reviewImage today-path-reviewImage"
+        draggable={false}
+      />
+    </TodaySegmentNode>
+  )
+}
+
+function SegmentTrophyTile({
+  pathId,
+  segment,
+  vibeId,
+}: {
+  pathId: string
+  segment: GuidedSegmentReviewNumber
+  vibeId: ActiveGuidedVibeId
+}) {
+  const { t } = useTranslation()
+  const completionRecord = readGuidedTrophyClozeRecord(pathId, vibeId, segment)
+  const isComplete = Boolean(completionRecord)
+  const assetName = `${vibeId}-trophy.webp`
+  const accessibleLabel = t('today.trophy.tileAria', { segment })
+
+  return (
+    <TodaySegmentNode
+      href={`/today/checkpoint?mode=trophy-cloze&path=${pathId}&segment=${segment}&vibe=${vibeId}`}
+      segment={segment}
+      kind="trophy"
+      label={t('today.trophy.tileTitle')}
+      accessibleLabel={accessibleLabel}
+      isComplete={isComplete}
+      className="today-segment-trophyTile"
+    >
+      <img
+        src={`/guided/trophies/${assetName}`}
+        alt=""
+        className="today-segment-trophyImage"
+        draggable={false}
+      />
+    </TodaySegmentNode>
+  )
+}
+
+function TodaySegmentNode({
+  href,
+  segment,
+  kind,
+  label,
+  rangeLabel,
+  accessibleLabel,
+  completedCount = 0,
+  isComplete,
+  className,
+  children,
+}: {
+  href: string
+  segment: GuidedSegmentReviewNumber
+  kind: 'review' | 'trophy'
+  label: string
+  rangeLabel?: string
+  accessibleLabel: string
+  completedCount?: number
+  isComplete: boolean
+  className?: string
+  children: ReactNode
+}) {
+  const strength = isComplete ? 'complete' : completedCount > 0 ? 'partial' : 'fresh'
+
+  if (kind === 'review') {
+    return (
+      <Link
+        to={href}
+        aria-label={accessibleLabel}
+        title={accessibleLabel}
+        className={cn('today-path-nodeButton today-path-segmentNode border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]', className)}
+        data-node-kind="review"
+        data-review-segment={segment}
+        data-review-completed-count={completedCount}
+        data-review-complete={isComplete}
+        data-review-strength={strength}
+      >
+        <span className="today-path-nodeMarker today-segment-reviewMedia" aria-hidden="true">
+          {children}
+        </span>
+        <span className="today-path-nodeCopy">
+          <span className="today-path-nodeTitle">{label}</span>
+          {rangeLabel && <span className="today-path-nodeMeta">{rangeLabel}</span>}
+        </span>
+      </Link>
+    )
+  }
+
+  return (
     <Link
       to={href}
       aria-label={accessibleLabel}
       title={accessibleLabel}
-      className="today-segment-reviewTile flex min-w-0 items-center justify-center rounded-lg border px-2 py-2 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] sm:px-4 sm:py-3"
-      data-review-segment={segment}
-      data-review-completed-count={completedCount}
-      data-review-complete={isReviewComplete}
-      data-review-strength={isReviewComplete ? 'complete' : completedCount > 0 ? 'partial' : 'fresh'}
+      className={cn('today-path-nodeButton today-path-segmentNode border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]', className)}
+      data-node-kind="trophy"
+      data-trophy-segment={segment}
+      data-trophy-completed={isComplete}
     >
-      <span className="sr-only">{accessibleLabel}</span>
-      <img
-        src={`/guided/reviews/${assetName}`}
-        alt=""
-        className="today-segment-reviewImage"
-        draggable={false}
-      />
+      <span className="today-path-nodeMarker today-segment-trophyMedia" aria-hidden="true">
+        {children}
+      </span>
+      <span className="today-path-nodeCopy">
+        <span className="today-path-nodeTitle">{label}</span>
+      </span>
+      {isComplete && <CheckCircle2 className="today-segment-trophyComplete h-4 w-4 shrink-0 text-[#34d399]" aria-hidden="true" />}
     </Link>
   )
 }
@@ -276,8 +450,15 @@ function RecommendedLessonPanel({
   }).text
 
   return (
-    <section className="today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-3 sm:p-4">
-      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+    <section className="today-featuredLesson today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-5">
+      <img
+        src={TODAY_PATH_ORB_ASSET}
+        alt=""
+        className="today-featuredLessonOrb"
+        draggable={false}
+        aria-hidden="true"
+      />
+      <div className="today-featuredLessonContent grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
         <div className="min-w-0">
           <p className="sr-only">
             {isSelectedRecommendation ? t('today.path.nextLessonLabel') : t('today.path.selectedLessonLabel')}
@@ -285,11 +466,11 @@ function RecommendedLessonPanel({
           <p className="text-xs font-medium text-[var(--text-secondary)] sm:text-sm">
             {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
           </p>
-          <h2 className="mt-1 break-words text-lg font-semibold leading-tight text-[var(--text-primary)] sm:text-2xl">
+          <h2 className="today-featuredLessonTitle mt-1 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">
             {title}
           </h2>
         </div>
-        <Button size="lg" onClick={() => onStartLesson(lesson.id)}>
+        <Button size="lg" className="today-featuredLessonAction" onClick={() => onStartLesson(lesson.id)}>
           {t('today.nextLesson')}
           <Play className="h-4 w-4" />
         </Button>
@@ -307,6 +488,7 @@ function LessonPathCard({
   isRecommendationQuiet,
   completedVibeIds,
   selectedVibeId,
+  showRailLabel = false,
   onSelectLesson,
   onStartLesson,
 }: {
@@ -318,6 +500,7 @@ function LessonPathCard({
   isRecommendationQuiet: boolean
   completedVibeIds: ActiveGuidedVibeId[]
   selectedVibeId: ActiveGuidedVibeId
+  showRailLabel?: boolean
   onSelectLesson: (lessonId: string) => void
   onStartLesson: (lessonId?: string) => void
 }) {
@@ -342,7 +525,8 @@ function LessonPathCard({
         title,
       })}
       className={cn(
-        'today-path-card group flex min-w-0 items-center justify-center rounded-lg border p-1 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+        'today-path-card today-path-nodeButton group flex min-w-0 border text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+        showRailLabel ? 'today-path-railLesson' : 'today-path-gridLesson items-center justify-center p-1',
         isSelected
           ? 'border-[color-mix(in_srgb,var(--accent)_64%,transparent)] bg-[var(--accent-soft)] shadow-[0_0_0_1px_color-mix(in_srgb,var(--accent)_18%,transparent)]'
           : isRecommended && !isRecommendationQuiet
@@ -356,13 +540,22 @@ function LessonPathCard({
       data-start-target={isSelected}
       data-completed-selected-vibe={completedSelectedVibe}
     >
-      <span className="today-path-cardMarker" aria-hidden="true">
+      <span className="today-path-cardMarker today-path-nodeMarker" aria-hidden="true">
         <LessonCellMarker
           lessonNumber={lesson.lessonNumber}
           selectedVibeId={selectedVibeId}
           completedSelectedVibe={completedSelectedVibe}
         />
       </span>
+      {showRailLabel && (
+        <span className="today-path-railCopy" aria-hidden="true">
+          <span className="today-path-railIndex">{lesson.lessonNumber}</span>
+          <span className="today-path-railTitle">{title}</span>
+        </span>
+      )}
+      {showRailLabel && isSelected && (
+        <ChevronRight className="today-path-railChevron h-4 w-4" aria-hidden="true" />
+      )}
       <span className="sr-only">
         {t('today.compactLessonTitle', {
           sequence: lesson.lessonNumber,

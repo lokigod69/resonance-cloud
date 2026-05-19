@@ -401,6 +401,458 @@
   top: 0.45rem;
 }
 
+.today-path-shell {
+  margin-inline: auto;
+  max-width: min(100%, 72rem);
+  width: 100%;
+}
+
+.today-path-hero,
+.today-featuredLesson {
+  overflow: hidden;
+  position: relative;
+}
+
+.today-path-hero {
+  background:
+    radial-gradient(ellipse at 84% 30%, color-mix(in srgb, var(--today-glow) 38%, transparent), transparent 54%),
+    linear-gradient(145deg, color-mix(in srgb, var(--today-panel) 92%, transparent), color-mix(in srgb, var(--surface-1) 34%, transparent));
+  min-height: clamp(9rem, 18vw, 12rem);
+}
+
+.today-path-hero::after,
+.today-featuredLesson::after {
+  background:
+    linear-gradient(90deg, transparent, color-mix(in srgb, var(--today-accent-strong) 42%, transparent), transparent);
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 1.5rem;
+  opacity: 0.64;
+  position: absolute;
+  right: 1.5rem;
+}
+
+.today-path-heroOrb {
+  filter: drop-shadow(0 0 34px color-mix(in srgb, var(--today-glow) 58%, transparent));
+  opacity: 0.88;
+  pointer-events: none;
+  position: absolute;
+  right: clamp(-4.5rem, -7vw, -1.2rem);
+  top: clamp(-2.8rem, -4vw, -1.2rem);
+  width: clamp(14rem, 28vw, 22rem);
+  z-index: 0;
+}
+
+.today-path-header {
+  align-items: flex-start;
+  min-height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.today-path-progressLine {
+  color: color-mix(in srgb, var(--today-accent-strong) 72%, var(--text-secondary));
+}
+
+.today-path-actions {
+  max-width: 100%;
+}
+
+.today-path-optionsButton {
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--today-panel) 78%, transparent), color-mix(in srgb, var(--surface-1) 46%, transparent));
+  border-color: color-mix(in srgb, var(--today-accent-strong) 34%, var(--today-border));
+  border-radius: 999px;
+  color: var(--text-primary);
+  gap: 0.45rem;
+  min-height: 2.7rem;
+  padding-inline: 0.85rem;
+}
+
+.today-path-optionsButton:hover {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 62%, var(--today-border));
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--today-glow) 32%, transparent);
+}
+
+.today-featuredLesson {
+  background:
+    radial-gradient(ellipse at 82% 44%, color-mix(in srgb, var(--today-glow) 34%, transparent), transparent 56%),
+    linear-gradient(145deg, color-mix(in srgb, var(--today-panel) 88%, transparent), color-mix(in srgb, var(--surface-1) 32%, transparent));
+}
+
+.today-featuredLessonOrb {
+  filter: drop-shadow(0 0 22px color-mix(in srgb, var(--today-glow) 56%, transparent));
+  opacity: 0.64;
+  pointer-events: none;
+  position: absolute;
+  right: -2.4rem;
+  top: -3.1rem;
+  width: clamp(9rem, 18vw, 14rem);
+  z-index: 0;
+}
+
+.today-featuredLessonContent {
+  position: relative;
+  z-index: 1;
+}
+
+.today-featuredLessonTitle {
+  font-size: clamp(1.45rem, 3.2vw, 2rem);
+}
+
+.today-featuredLessonAction {
+  border-radius: 0.75rem;
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--today-glow) 42%, transparent);
+  min-width: min(100%, 12rem);
+}
+
+.today-path-journey {
+  position: relative;
+}
+
+.today-path-mobileFlow {
+  display: grid;
+  gap: 0.4rem;
+  padding-block: 0.2rem;
+  position: relative;
+}
+
+.today-path-mobileFlow::before {
+  background:
+    linear-gradient(180deg, transparent, color-mix(in srgb, var(--today-accent-strong) 70%, transparent) 8%, color-mix(in srgb, var(--today-accent-strong) 38%, transparent) 88%, transparent);
+  bottom: 1.7rem;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--today-glow) 42%, transparent);
+  content: "";
+  left: 1.7rem;
+  position: absolute;
+  top: 1.7rem;
+  width: 2px;
+  z-index: 0;
+}
+
+.today-path-mobileSegment {
+  display: grid;
+  gap: 0.36rem;
+  position: relative;
+  z-index: 1;
+}
+
+.today-path-mobileRewards {
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0.2rem 0 0.45rem;
+  padding-left: 0.1rem;
+}
+
+.today-path-desktopFlow {
+  display: none;
+}
+
+.today-path-nodeButton {
+  border-radius: 999px;
+}
+
+.today-path-card {
+  position: relative;
+}
+
+.today-path-gridLesson {
+  border-radius: 0.85rem;
+  justify-self: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.today-path-railLesson {
+  align-items: center;
+  aspect-ratio: auto;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--today-panel) 70%, transparent), color-mix(in srgb, var(--surface-1) 18%, transparent));
+  display: grid;
+  grid-template-columns: 3.35rem minmax(0, 1fr) auto;
+  gap: 0.65rem;
+  height: auto;
+  min-height: 3.45rem;
+  padding: 0.22rem 0.65rem 0.22rem 0;
+  text-align: left;
+  width: 100%;
+}
+
+.today-path-railLesson:hover {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--today-accent-soft) 50%, transparent), color-mix(in srgb, var(--surface-1) 26%, transparent));
+}
+
+.today-path-cardMarker {
+  border-radius: 999px;
+}
+
+.today-path-railLesson .today-path-cardMarker {
+  background:
+    radial-gradient(circle at 45% 24%, color-mix(in srgb, var(--today-glow) 72%, transparent), transparent 66%),
+    color-mix(in srgb, var(--surface-1) 66%, transparent);
+  border: 1px solid color-mix(in srgb, var(--today-accent-strong) 42%, var(--today-border));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--today-glow) 28%, transparent);
+  height: 3.15rem;
+  position: relative;
+  width: 3.15rem;
+  z-index: 1;
+}
+
+.today-path-gridLesson .today-path-cardMarker {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  height: 100%;
+  width: 100%;
+}
+
+.today-path-railLesson .today-path-cardNumberImage,
+.today-path-railLesson .today-path-cardCompletionImage {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.today-path-gridLesson .today-path-cardNumberImage {
+  height: clamp(2.25rem, 5vw, 3.1rem);
+  width: clamp(2.25rem, 5vw, 3.1rem);
+}
+
+.today-path-railCopy {
+  align-items: baseline;
+  display: flex;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.today-path-railIndex {
+  color: color-mix(in srgb, var(--text-primary) 78%, transparent);
+  font-size: 0.92rem;
+  min-width: 1.1rem;
+  text-align: right;
+}
+
+.today-path-railTitle {
+  color: var(--text-primary);
+  font-weight: 650;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.today-path-railChevron {
+  color: var(--today-accent-strong);
+}
+
+.today-path-card[data-selected="true"] .today-path-cardMarker,
+.today-path-card[data-recommended="true"][data-recommended-quiet="false"] .today-path-cardMarker {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 78%, var(--today-border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--today-accent) 28%, transparent),
+    0 0 24px color-mix(in srgb, var(--today-glow) 72%, transparent);
+}
+
+.today-path-railLesson[data-selected="true"] {
+  color: var(--today-accent-strong);
+}
+
+.today-path-segmentNode {
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 18% 50%, color-mix(in srgb, var(--today-glow) 36%, transparent), transparent 64%),
+    linear-gradient(135deg, color-mix(in srgb, var(--today-panel) 76%, transparent), color-mix(in srgb, var(--surface-1) 30%, transparent));
+  border-color: color-mix(in srgb, var(--today-accent-strong) 34%, var(--today-border));
+  color: var(--text-primary);
+  display: flex;
+  gap: 0.7rem;
+  justify-content: flex-start;
+  min-height: 3.25rem;
+  overflow: hidden;
+  padding: 0.35rem 0.65rem 0.35rem 0.35rem;
+  position: relative;
+  z-index: 1;
+}
+
+.today-path-segmentNode:hover {
+  border-color: color-mix(in srgb, var(--today-accent-strong) 62%, var(--today-border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--today-accent) 18%, transparent),
+    0 18px 38px color-mix(in srgb, var(--today-glow) 36%, transparent);
+}
+
+.today-path-nodeMarker {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  justify-content: center;
+}
+
+.today-path-segmentNode .today-path-nodeMarker {
+  background:
+    radial-gradient(ellipse at 50% 18%, color-mix(in srgb, var(--today-glow) 76%, transparent), transparent 68%),
+    color-mix(in srgb, var(--today-accent-soft) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--today-accent-strong) 50%, var(--today-border));
+  border-radius: 999px;
+  height: 2.8rem;
+  overflow: hidden;
+  width: 2.8rem;
+}
+
+.today-path-nodeCopy {
+  display: grid;
+  min-width: 0;
+}
+
+.today-path-nodeTitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.today-path-nodeMeta {
+  color: var(--today-text-soft);
+  font-size: 0.72rem;
+  line-height: 1.2;
+}
+
+.today-path-reviewImage {
+  max-height: 2.2rem;
+  max-width: 3.9rem;
+  object-fit: contain;
+  width: 3.9rem;
+}
+
+.today-segment-trophyImage {
+  display: block;
+  height: 2.25rem;
+  object-fit: contain;
+  position: relative;
+  width: 2.25rem;
+  z-index: 1;
+}
+
+.today-segment-trophyComplete {
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .today-path-hero .today-path-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .today-path-hero {
+    min-height: 8.6rem;
+    padding-right: 1rem;
+  }
+
+  .today-path-hero h1 {
+    font-size: clamp(1.85rem, 6vw, 2.1rem);
+    max-width: none;
+    overflow-wrap: normal;
+    padding-right: 7.7rem;
+    word-break: normal;
+  }
+
+  .today-path-heroOrb {
+    opacity: 0.76;
+    right: -6.7rem;
+    top: -1.8rem;
+    width: 17rem;
+  }
+
+  .today-path-optionsButton {
+    min-height: 2.45rem;
+    padding-inline: 0.7rem;
+  }
+
+  .today-featuredLesson {
+    padding: 0.95rem;
+  }
+
+  .today-featuredLessonContent {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .today-featuredLessonAction {
+    width: 100%;
+  }
+
+  .today-path-mobileRewards .today-path-nodeCopy {
+    display: none;
+  }
+
+  .today-path-mobileRewards .today-path-segmentNode {
+    justify-content: center;
+    min-height: 3.55rem;
+    padding-inline: 0.5rem;
+  }
+
+  .today-path-mobileRewards .today-path-nodeMarker {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .today-path-mobileFlow {
+    display: none;
+  }
+
+  .today-path-desktopFlow {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .today-path-desktopSegment {
+    display: grid;
+    gap: 0.65rem;
+    position: relative;
+  }
+
+  .today-path-desktopConnector {
+    background:
+      linear-gradient(90deg, transparent, color-mix(in srgb, var(--today-accent-strong) 58%, transparent) 12%, color-mix(in srgb, var(--today-accent-strong) 34%, transparent) 88%, transparent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--today-glow) 38%, transparent);
+    height: 2px;
+    left: 6%;
+    position: absolute;
+    right: 6%;
+    top: clamp(1.85rem, 4vw, 2.35rem);
+    z-index: 0;
+  }
+
+  .today-path-segmentGrid {
+    align-items: center;
+    gap: clamp(0.75rem, 3vw, 2.4rem);
+    justify-items: center;
+    padding-block: 0.3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .today-path-desktopRewards {
+    margin-top: 0.15rem;
+  }
+
+  .today-path-desktopRewards .today-path-segmentNode {
+    min-height: 4.2rem;
+    padding-inline: 0.8rem 1rem;
+  }
+
+  .today-path-desktopRewards .today-path-nodeMarker {
+    height: 3.1rem;
+    width: 3.1rem;
+  }
+}
+
 .today-checkpoint-card {
   border-color: color-mix(in srgb, var(--today-accent-strong) 52%, var(--today-border));
   background:
