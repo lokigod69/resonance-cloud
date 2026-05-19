@@ -160,7 +160,7 @@ export function useStudyUI({ videoRef, studyMode = 'video' }: UseStudyUIOptions)
     function onKey(e: KeyboardEvent) {
       if (sessionComplete) return
       const tag = (e.target as HTMLElement)?.tagName
-      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (e.target as HTMLElement)?.closest('[role="listbox"]')) return
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON' || (e.target as HTMLElement)?.closest('[role="listbox"]')) return
       if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault()
         if (!revealed) setRevealed(true)

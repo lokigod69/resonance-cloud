@@ -9,14 +9,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Check, X, RotateCcw, Sparkles, BookOpen } from 'lucide-react'
+import { Check, X, RotateCcw, Sparkles, BookOpen, Volume2 } from 'lucide-react'
 import { ParticleSpinner } from '@/components/ui/ParticleSpinner'
 import { useStudyUI } from '@/hooks/useStudyUI'
 import { useTranslation } from '@/hooks/useTranslation'
+import { usePronunciation } from '@/hooks/usePronunciation'
 
 export default function StudyFlashcard() {
   const navigate = useNavigate()
   const { t, tp } = useTranslation()
+  const { playWord } = usePronunciation()
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const {
@@ -148,7 +150,18 @@ export default function StudyFlashcard() {
             >
               {/* Flashcard */}
               <div className="rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card))]/50 backdrop-blur-sm min-h-[280px] sm:min-h-[340px] flex flex-col items-center justify-center px-6 py-10 mb-6">
-                <h2 className="text-3xl sm:text-4xl font-bold text-center long-copy">{current.word}</h2>
+                <button
+                  type="button"
+                  aria-label={`Play pronunciation for ${current.word}`}
+                  onClick={() => { void playWord(current) }}
+                  className="group flex max-w-full flex-col items-center justify-center gap-3 rounded-xl px-4 py-3 text-foreground transition-colors hover:text-foreground/85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--card))]"
+                >
+                  <h2 className="text-3xl sm:text-4xl font-bold text-center long-copy">{current.word}</h2>
+                  <Volume2
+                    className="h-5 w-5 text-muted-foreground/70 transition-colors group-hover:text-muted-foreground"
+                    aria-hidden="true"
+                  />
+                </button>
               </div>
 
               {/* Reveal area */}
