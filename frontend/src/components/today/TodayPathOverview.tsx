@@ -246,14 +246,14 @@ export function TodayPathOverview({
         <div className="today-path-desktopFlow">
           {segmentStates.map((segment) => (
             <div key={segment.segment} className="today-path-desktopSegment">
-              <img
-                src={TODAY_PATH_DESKTOP_RAIL_ASSET}
-                alt=""
-                className="today-path-desktopRailAsset"
-                draggable={false}
-                aria-hidden="true"
-              />
               <div className="today-path-segmentGrid grid grid-cols-5 gap-2">
+                <img
+                  src={TODAY_PATH_DESKTOP_RAIL_ASSET}
+                  alt=""
+                  className="today-path-desktopRailAsset"
+                  draggable={false}
+                  aria-hidden="true"
+                />
                 {segment.lessons.map((entry) => (
                   <LessonPathCard
                     key={entry.lesson.id}
@@ -327,7 +327,6 @@ function SegmentReviewTile({
       segment={segment}
       kind="review"
       label={label}
-      rangeLabel={rangeLabel}
       accessibleLabel={accessibleLabel}
       completedCount={completedCount}
       isComplete={isReviewComplete}
@@ -383,7 +382,6 @@ function TodaySegmentNode({
   segment,
   kind,
   label,
-  rangeLabel,
   accessibleLabel,
   completedCount = 0,
   isComplete,
@@ -394,7 +392,6 @@ function TodaySegmentNode({
   segment: GuidedSegmentReviewNumber
   kind: 'review' | 'trophy'
   label: string
-  rangeLabel?: string
   accessibleLabel: string
   completedCount?: number
   isComplete: boolean
@@ -418,10 +415,6 @@ function TodaySegmentNode({
       >
         <span className="today-path-nodeMedia today-segment-reviewMedia" aria-hidden="true">
           {children}
-        </span>
-        <span className="today-path-nodeCopy">
-          <span className="today-path-nodeTitle">{label}</span>
-          {rangeLabel && <span className="today-path-nodeMeta">{rangeLabel}</span>}
         </span>
       </Link>
     )

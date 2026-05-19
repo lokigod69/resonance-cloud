@@ -1,5 +1,6 @@
 import {
   CheckCircle2,
+  ChevronLeft,
   ChevronRight,
   Keyboard,
   Mic,
@@ -117,9 +118,23 @@ export function TodaySession({
               {resolvedLessonTitle}
             </h2>
           </div>
-          <span className="today-session-countPill">
-            {t('today.progressLabel', { current: stepIndex + 1, total: TODAY_SESSION_STEPS.length })}
-          </span>
+          <div className="today-session-topActions">
+            <button
+              type="button"
+              className="today-session-backPill"
+              onClick={onViewPath}
+              aria-label={t('today.path.backToPath')}
+              title={t('today.path.backToPath')}
+            >
+              <ChevronLeft className="today-session-backIcon" aria-hidden="true" />
+              <span className="today-session-backLabel">
+                {t('today.path.backToPath')}
+              </span>
+            </button>
+            <span className="today-session-countPill">
+              {t('today.progressLabel', { current: stepIndex + 1, total: TODAY_SESSION_STEPS.length })}
+            </span>
+          </div>
         </div>
         <TodayLessonProgressRail stepIndex={stepIndex} />
       </header>
