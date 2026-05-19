@@ -1,4 +1,3 @@
-import { XCircle } from 'lucide-react'
 import { useState } from 'react'
 import type { GuidedLesson } from '@/data/guidedLessons'
 import { guidedAnswerMatches } from '@/data/guidedLessons'
@@ -59,14 +58,15 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
   }
 
   return (
-    <div className="grid justify-items-center gap-5 text-center">
-      <p className="max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
+    <div className="today-type-step grid justify-items-center gap-5 text-center">
+      <p className="today-step-prompt max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
         {t('today.type.prompt')}
       </p>
 
       <div
+        data-type-state={status}
         className={cn(
-          'w-full rounded-lg border bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4 transition',
+          'today-type-card w-full rounded-lg border bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4 transition',
           status === 'correct'
             ? 'border-[color-mix(in_srgb,#34d399_54%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_28%,transparent)]'
             : status === 'wrong'
@@ -89,8 +89,8 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button onClick={handleCheck}>
+      <div className="today-type-actions flex flex-wrap items-center justify-center gap-3">
+        <Button className="today-type-checkButton" onClick={handleCheck}>
           {t('today.checkAnswer')}
         </Button>
         {!fallbackVisible && (
@@ -101,19 +101,14 @@ export function TypeRecallStep({ lesson, onCheckStateChange }: TypeRecallStepPro
       </div>
 
       {fallbackVisible && (
-        <p className="rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
+        <p className="today-type-answerLine rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] px-3 py-1.5 text-sm text-[var(--text-secondary)]">
           {t('today.type.answerLine', { answer: lesson.typeRecall.answer })}
         </p>
       )}
 
-      {status === 'wrong' && (
-        <div
-          className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] px-3 py-1.5 text-sm text-[var(--text-secondary)]"
-        >
-          <XCircle className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />
-          <span>{t('today.type.wrong')}</span>
-        </div>
-      )}
+      <div aria-live="polite" className="sr-only">
+        {status === 'wrong' ? t('today.type.wrong') : ''}
+      </div>
     </div>
   )
 }

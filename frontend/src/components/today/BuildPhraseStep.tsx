@@ -1,4 +1,4 @@
-import { RotateCcw, XCircle } from 'lucide-react'
+import { RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { getDeterministicBuildChips, type GuidedLesson } from '@/data/guidedLessons'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -83,14 +83,15 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
   }
 
   return (
-    <div className="grid gap-5">
-      <p className="max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
+    <div className="today-build-step grid gap-5">
+      <p className="today-step-prompt max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
         {t('today.build.prompt')}
       </p>
 
       <div
+        data-build-state={status}
         className={cn(
-          'rounded-lg border bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-3 transition sm:p-4',
+          'today-build-answerSurface rounded-lg border bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-3 transition sm:p-4',
           status === 'correct'
             ? 'border-[color-mix(in_srgb,#34d399_54%,transparent)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_28%,transparent)]'
             : status === 'wrong'
@@ -101,7 +102,7 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
         <p className="mb-3 text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
           {t('today.build.answerLabel')}
         </p>
-        <div className="flex min-h-16 flex-wrap items-center justify-center gap-2 rounded-lg border border-dashed border-[var(--border-strong)] bg-[color-mix(in_srgb,var(--app-bg)_28%,transparent)] p-3 text-center">
+        <div className="today-build-answerDrop flex min-h-16 flex-wrap items-center justify-center gap-2 rounded-lg border border-dashed border-[var(--border-strong)] bg-[color-mix(in_srgb,var(--app-bg)_28%,transparent)] p-3 text-center">
           {selectedIndexes.length === 0 ? (
             <span className="text-sm text-[var(--text-muted)]">{t('today.build.emptySelection')}</span>
           ) : (
@@ -125,7 +126,7 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="today-build-chipBank flex flex-wrap justify-center gap-2">
         {availableChips.map(({ chip, index }) => (
           <button
             key={`${chip}-${index}`}
@@ -142,21 +143,16 @@ export function BuildPhraseStep({ lesson, onCheckStateChange }: BuildPhraseStepP
         ))}
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-3">
+      <div className="today-step-resetRow flex flex-wrap items-center justify-center gap-3">
         <Button variant="ghost" onClick={handleClear} disabled={selectedIndexes.length === 0 || status === 'correct'}>
           <RotateCcw className="h-4 w-4" />
           {t('today.clearAnswer')}
         </Button>
       </div>
 
-      {status === 'wrong' && (
-        <div
-          className="mx-auto inline-flex w-fit items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_72%,transparent)] px-3 py-1.5 text-sm text-[var(--text-secondary)]"
-        >
-          <XCircle className="h-4 w-4 shrink-0 text-[var(--text-muted)]" />
-          <span>{t('today.build.wrong')}</span>
-        </div>
-      )}
+      <div aria-live="polite" className="sr-only">
+        {status === 'wrong' ? t('today.build.wrong') : ''}
+      </div>
     </div>
   )
 }

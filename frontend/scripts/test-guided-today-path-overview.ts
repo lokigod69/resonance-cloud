@@ -274,7 +274,7 @@ const todayCompactHeaderSource = sliceBetween(todayHeroSource, 'export function 
 const lessonPathCardSource = sliceBetween(todayPathOverviewSource, 'function LessonPathCard', 'function LessonCellMarker')
 const recommendedLessonPanelSource = sliceBetween(todayPathOverviewSource, 'function RecommendedLessonPanel', 'function LessonPathCard')
 const lessonCellMarkerSource = sliceBetween(todayPathOverviewSource, 'function LessonCellMarker', 'function LessonNumberMarker')
-const speakRecordingButtonSource = sliceBetween(guidedSpeechPromptSource, "className={cn(isRecording && 'today-speak-recordingButton')}", '</Button>')
+const speakRecordingButtonSource = sliceBetween(guidedSpeechPromptSource, "className={cn('today-speech-primaryAction', isRecording && 'today-speak-recordingButton')}", '</button>')
 const speakRecordingDotCss = sliceBetween(todayCssSource, '.today-speak-recordingDot {', '}')
 
 assert('overview lesson cards do not render trophy word labels', !containsAny(todayPathOverviewSource, ['today.path.trophyWord', 'lesson.trophyWord', '<Trophy']))
@@ -349,6 +349,23 @@ assert('compact vibe picker label is Vibe across locales', readSource('../src/li
 assert('Today page does not render a separate in-lesson compact path header', !todayPageSource.includes('TodayCompactHeader') && !todayPageSource.includes('<TodayCompactHeader'), todayPageSource)
 assert('session header omits top Back to path action', !sliceBetween(todaySessionSource, '<div className="mb-6', '<Progress').includes('today.path.backToPath'), todaySessionSource)
 assert('completion screen omits summary chips, green badge check, and restart action', !containsAny(completeStepSource, ['completionLines.map', 'today-completion-vibeBadgeCheck', 'today-completion-replayAction', 'onRestart', 'RotateCcw']), completeStepSource)
+assert('lesson session uses custom glass shell instead of generic progress panel', todaySessionSource.includes('today-session-shell') && todaySessionSource.includes('today-session-taskCard') && !todaySessionSource.includes("from '@/components/ui/progress'"), todaySessionSource)
+assert('lesson session renders a six-node progress rail with current count pill', todaySessionSource.includes('TodayLessonProgressRail') && todaySessionSource.includes('today-session-progressNode') && todaySessionSource.includes("t('today.progressLabel'") && todaySessionSource.includes('TODAY_SESSION_STEPS.map'), todaySessionSource)
+assert('lesson session header keeps lesson title compact with a step icon asset', todaySessionSource.includes('TodayLessonStepIcon') && todaySessionSource.includes('today-session-iconBadge') && todaySessionSource.includes('lesson.title'), todaySessionSource)
+assert('lesson session maps every step to a visual icon asset', todaySessionSource.includes('stepIconMap') && todaySessionSource.includes('matchPairs') && todaySessionSource.includes('build') && todaySessionSource.includes('type') && todaySessionSource.includes('speak'), todaySessionSource)
+assert('lesson task card receives stable status data for color-only feedback', todaySessionSource.includes('getStepVisualState') && todaySessionSource.includes('data-step-state={stepVisualState}') && todaySessionSource.includes('data-session-step={step}'), todaySessionSource)
+assert(
+  'build and type steps do not add visible wrong-result feedback blocks that resize the lesson card',
+  !containsAny(buildPhraseSource, ['<XCircle', 'today.build.expected'])
+    && !containsAny(typeRecallSource, ['<XCircle', 'today.type.expected'])
+    && buildPhraseSource.includes('aria-live="polite"')
+    && typeRecallSource.includes('aria-live="polite"')
+    && buildPhraseSource.includes("status === 'wrong' ? t('today.build.wrong') : ''")
+    && typeRecallSource.includes("status === 'wrong' ? t('today.type.wrong') : ''"),
+  { buildPhraseSource, typeRecallSource },
+)
+assert('speech prompt exposes a decorative microphone asset and waveform surface', guidedSpeechPromptSource.includes('today-speech-orb') && guidedSpeechPromptSource.includes('today-speech-waveform') && guidedSpeechPromptSource.includes('today-speech-primaryAction'), guidedSpeechPromptSource)
+assert('lesson session primary action is a full-width bottom bar button', todaySessionSource.includes('today-session-footerButton') && todayCssSource.includes('.today-session-footerButton'), todaySessionSource)
 
 console.log('\n[source-level atmosphere tokens]')
 assert('Today root exposes selected vibe as a data attribute', todayPageSource.includes('data-guided-vibe={selectedVibeId}'))

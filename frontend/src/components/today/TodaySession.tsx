@@ -1,4 +1,14 @@
-import { ChevronRight, Trophy, Volume2 } from 'lucide-react'
+import {
+  CheckCircle2,
+  ChevronRight,
+  Keyboard,
+  Mic,
+  MessageCircle,
+  Sparkles,
+  Trophy,
+  Volume2,
+  type LucideIcon,
+} from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { getGuidedMatchPairs, type GuidedLesson } from '@/data/guidedLessons'
 import { guidedVibes } from '@/data/guidedVibes'
@@ -6,14 +16,14 @@ import type { TodayLessonResult } from '@/lib/todayProgress'
 import { playGuidedAudio, stopGuidedAudio } from '@/lib/guidedAudio'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
-import { Progress } from '@/components/ui/progress'
 import { LessonMediaFrame } from '@/components/today/TodayHero'
 import { MatchPairsStep } from '@/components/today/MatchPairsStep'
 import { BuildPhraseStep, type BuildPhraseCheckState } from '@/components/today/BuildPhraseStep'
 import { TypeRecallStep, type TypeRecallCheckState } from '@/components/today/TypeRecallStep'
 import { SpeakStep, type SpeakCheckState } from '@/components/today/SpeakStep'
 import { canUseGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
-import { TODAY_SESSION_STEPS } from '@/components/today/sessionSteps'
+import { TODAY_SESSION_STEPS, type TodaySessionStep } from '@/components/today/sessionSteps'
+import { cn } from '@/lib/utils'
 
 type TodaySessionProps = {
   lesson: GuidedLesson
@@ -45,7 +55,13 @@ export function TodaySession({
     passed: false,
   }))
   const step = TODAY_SESSION_STEPS[stepIndex]
-  const progress = Math.round(((stepIndex + 1) / TODAY_SESSION_STEPS.length) * 100)
+  const stepVisualState = getStepVisualState(step, {
+    matchedPairIds,
+    matchPairCount: matchPairs.length,
+    buildState,
+    typeState,
+    speakState,
+  })
 
   useEffect(() => stopGuidedAudio, [])
 
@@ -82,22 +98,34 @@ export function TodaySession({
   }
 
   return (
-    <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6 lg:p-7">
-      <div className="mb-6 grid gap-3">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <h2 className="text-xl font-semibold text-[var(--text-primary)]">
-              {t('today.lessonInProgress')}
+    <section className="today-session-shell" data-session-step={step} data-step-state={stepVisualState}>
+      <header className="today-session-header">
+        <div className="today-session-titleRow">
+          <TodayLessonStepIcon step={step} />
+          <div className="min-w-0 flex-1">
+            <p className="today-session-kicker">
+              {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
+            </p>
+            <h2 className="today-session-title">
+              {lesson.title}
             </h2>
           </div>
-          <span className="text-sm text-[var(--text-muted)]">
+          <span className="today-session-countPill">
             {t('today.progressLabel', { current: stepIndex + 1, total: TODAY_SESSION_STEPS.length })}
           </span>
         </div>
-        <Progress value={progress} className="h-1.5 bg-[color-mix(in_srgb,var(--text-primary)_12%,transparent)]" />
-      </div>
+        <TodayLessonProgressRail stepIndex={stepIndex} />
+      </header>
 
-      <div className="min-w-0">
+      <div className="today-session-taskCard" data-session-step={step} data-step-state={stepVisualState}>
+        {step !== 'complete' && (
+          <div className="today-session-taskHeader">
+            <TodayLessonStepIcon step={step} compact />
+            <h3 className="today-session-taskTitle">
+              {t(getStepTitleKey(step))}
+            </h3>
+          </div>
+        )}
         {step === 'scene' && <SceneStep lesson={lesson} />}
         {step === 'matchPairs' && (
           <MatchPairsStep
@@ -126,8 +154,8 @@ export function TodaySession({
       </div>
 
       {step !== 'complete' && (
-        <div className="mt-7 flex flex-wrap items-center justify-end gap-3 border-t border-[var(--border-subtle)] pt-5">
-          <Button onClick={handleNext} disabled={!canContinue}>
+        <div className="today-session-footer">
+          <Button className="today-session-footerButton" onClick={handleNext} disabled={!canContinue}>
             {t('today.continue')}
             <ChevronRight className="h-4 w-4" />
           </Button>
@@ -135,6 +163,91 @@ export function TodaySession({
       )}
     </section>
   )
+}
+
+const stepIconMap: Record<TodaySessionStep, LucideIcon> = {
+  scene: MessageCircle,
+  matchPairs: Sparkles,
+  build: Sparkles,
+  type: Keyboard,
+  speak: Mic,
+  complete: Trophy,
+}
+
+function TodayLessonStepIcon({
+  step,
+  compact = false,
+}: {
+  step: TodaySessionStep
+  compact?: boolean
+}) {
+  const Icon = stepIconMap[step]
+
+  return (
+    <span className={cn('today-session-iconBadge', compact && 'today-session-iconBadge--compact')} aria-hidden="true">
+      <span className="today-session-iconAura" />
+      <Icon className="today-session-icon" />
+    </span>
+  )
+}
+
+function TodayLessonProgressRail({ stepIndex }: { stepIndex: number }) {
+  return (
+    <div className="today-session-progressRail" aria-hidden="true">
+      <span
+        className="today-session-progressFill"
+        style={{ width: `${(stepIndex / (TODAY_SESSION_STEPS.length - 1)) * 100}%` }}
+      />
+      {TODAY_SESSION_STEPS.map((sessionStep, index) => (
+        <span
+          key={sessionStep}
+          className="today-session-progressNode"
+          data-node-state={index < stepIndex ? 'complete' : index === stepIndex ? 'current' : 'upcoming'}
+          style={{ left: `${(index / (TODAY_SESSION_STEPS.length - 1)) * 100}%` }}
+        >
+          {index < stepIndex && <CheckCircle2 className="today-session-progressCheck" />}
+        </span>
+      ))}
+    </div>
+  )
+}
+
+function getStepTitleKey(step: TodaySessionStep) {
+  switch (step) {
+    case 'matchPairs':
+      return 'today.matchPairs.title'
+    case 'build':
+      return 'today.build.title'
+    case 'type':
+      return 'today.type.title'
+    case 'speak':
+      return 'today.speak.title'
+    case 'complete':
+      return 'today.completion.title'
+    case 'scene':
+    default:
+      return 'today.corePhrase'
+  }
+}
+
+function getStepVisualState(
+  step: TodaySessionStep,
+  state: {
+    matchedPairIds: Set<string>
+    matchPairCount: number
+    buildState: BuildPhraseCheckState
+    typeState: TypeRecallCheckState
+    speakState: SpeakCheckState
+  },
+) {
+  if (step === 'complete') return 'complete'
+  if (step === 'matchPairs') {
+    return state.matchedPairIds.size === state.matchPairCount ? 'correct' : 'active'
+  }
+  if (step === 'build') return state.buildState.status
+  if (step === 'type') return state.typeState.status
+  if (step === 'speak') return state.speakState.status
+  return 'active'
 }
 
 function SceneStep({ lesson }: { lesson: GuidedLesson }) {
@@ -152,9 +265,9 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.8fr)] lg:items-center">
+    <div className="today-scene-step grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.8fr)] lg:items-center">
       <LessonMediaFrame media={lesson.lessonMedia} />
-      <div className="grid gap-4">
+      <div className="today-scene-copy grid gap-4">
         <div>
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
             {t('today.scene.situation')}
@@ -163,7 +276,7 @@ function SceneStep({ lesson }: { lesson: GuidedLesson }) {
             {lesson.situation.de}
           </p>
         </div>
-        <div className="rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)] p-4">
+        <div className="today-scene-phraseCard rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)] p-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-[var(--text-muted)]">
               {t('today.corePhrase')}

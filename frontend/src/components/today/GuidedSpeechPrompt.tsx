@@ -169,12 +169,12 @@ export function GuidedSpeechPrompt({
     || (allowContinueWhenUnsupported && status === 'unsupported')
 
   return (
-    <div className="grid justify-items-center gap-5 text-center">
-      <p className="max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
+    <div className="today-speech-prompt grid justify-items-center gap-5 text-center" data-speech-state={status}>
+      <p className="today-step-prompt max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
         {prompt}
       </p>
 
-      <div className={cn('w-full max-w-2xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4', cueCardClassName)}>
+      <div className={cn('today-speech-cueCard w-full max-w-2xl rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_56%,transparent)] p-4', cueCardClassName)}>
         {cueLabel && (
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
             {cueLabel}
@@ -185,21 +185,22 @@ export function GuidedSpeechPrompt({
         </p>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        {showHintButton && (
-          <Button type="button" variant="outline" onClick={() => setHintVisible((current) => !current)}>
-            <Eye className="h-4 w-4" />
-            {hintButtonLabel}
-          </Button>
-        )}
+      <div className="today-speech-orbStage">
+        <span className="today-speech-waveform" aria-hidden="true" />
         {isSupported && (
           <div className="today-speak-recordingControl">
-            <Button
+            <button
               type="button"
-              variant={isRecording ? 'destructive' : 'default'}
-              className={cn(isRecording && 'today-speak-recordingButton')}
+              className={cn('today-speech-primaryAction', isRecording && 'today-speak-recordingButton')}
               onClick={isRecording ? handleStop : handleStart}
               disabled={isBusy}
+              aria-label={speech.status === 'requesting_permission'
+                ? t('today.speak.requestingPermission')
+                : speech.status === 'transcribing'
+                  ? t('today.speak.transcribing')
+                  : isRecording
+                    ? t('today.speak.stopRecording')
+                    : t('today.speak.startRecording')}
             >
               {speech.status === 'transcribing' ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -208,23 +209,48 @@ export function GuidedSpeechPrompt({
               ) : (
                 <Mic className="h-4 w-4" />
               )}
-              {speech.status === 'requesting_permission'
+              <span className="sr-only">
+                {speech.status === 'requesting_permission'
+                  ? t('today.speak.requestingPermission')
+                  : speech.status === 'transcribing'
+                    ? t('today.speak.transcribing')
+                    : isRecording
+                      ? t('today.speak.stopRecording')
+                      : t('today.speak.startRecording')}
+              </span>
+            </button>
+            <span className="today-speak-recordingDotSlot" aria-hidden="true">
+              <span className={cn('today-speak-recordingDot', !isRecording && 'today-speak-recordingDot--idle')} />
+            </span>
+          </div>
+        )}
+        {!isSupported && (
+          <span className="today-speech-primaryAction today-speech-primaryAction--unsupported" aria-hidden="true">
+            <Mic className="h-5 w-5" />
+          </span>
+        )}
+        <p className="today-speech-actionHint">
+          {speech.status === 'requesting_permission'
                 ? t('today.speak.requestingPermission')
                 : speech.status === 'transcribing'
                   ? t('today.speak.transcribing')
                   : isRecording
                     ? t('today.speak.stopRecording')
                     : t('today.speak.startRecording')}
-            </Button>
-            <span className="today-speak-recordingDotSlot" aria-hidden="true">
-              <span className={cn('today-speak-recordingDot', !isRecording && 'today-speak-recordingDot--idle')} />
-            </span>
-          </div>
+        </p>
+      </div>
+
+      <div className="today-speech-secondaryActions flex flex-wrap items-center justify-center gap-3">
+        {showHintButton && (
+          <Button type="button" variant="outline" onClick={() => setHintVisible((current) => !current)}>
+            <Eye className="h-4 w-4" />
+            {hintButtonLabel}
+          </Button>
         )}
       </div>
 
       {hintVisible && (
-        <div className="inline-flex w-fit max-w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] px-3 py-2 text-sm font-semibold text-[var(--text-primary)]">
+        <div className="today-speech-hint inline-flex w-fit max-w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] px-3 py-2 text-sm font-semibold text-[var(--text-primary)]">
           {expectedAnswer}
         </div>
       )}

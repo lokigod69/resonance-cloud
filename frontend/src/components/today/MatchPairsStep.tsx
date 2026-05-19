@@ -74,19 +74,19 @@ export function MatchPairsStep({
   }
 
   return (
-    <div className="grid gap-5">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <p className="max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
+    <div className="today-match-step grid gap-5">
+      <div className="today-step-intro flex flex-wrap items-start justify-between gap-3">
+        <p className="today-step-prompt max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
           {t('today.matchPairs.subtitle')}
         </p>
-        <Button type="button" variant="ghost" size="sm" onClick={handleReset} disabled={matchedPairIds.size === 0 && !selectedEnglishId}>
+        <Button className="today-match-reset" type="button" variant="ghost" size="sm" onClick={handleReset} disabled={matchedPairIds.size === 0 && !selectedEnglishId}>
           <RotateCcw className="h-4 w-4" />
           {t('today.reset')}
         </Button>
       </div>
 
-      <div className="mx-auto grid w-full max-w-2xl justify-center gap-4 sm:grid-cols-[minmax(9rem,15rem)_minmax(9rem,15rem)]">
-        <div className="grid content-start justify-items-center gap-2">
+      <div className="today-match-grid mx-auto grid w-full max-w-2xl justify-center gap-4 sm:grid-cols-[minmax(9rem,15rem)_minmax(9rem,15rem)]">
+        <div className="today-match-column grid content-start justify-items-center gap-2">
           <p className="text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
             {targetColumnLabel}
           </p>
@@ -105,7 +105,7 @@ export function MatchPairsStep({
           ))}
         </div>
 
-        <div className="grid content-start justify-items-center gap-2">
+        <div className="today-match-column grid content-start justify-items-center gap-2">
           <p className="text-center text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
             {baseColumnLabel}
           </p>
@@ -151,14 +151,15 @@ function MatchChip({
   const text = side === 'target' ? pair.targetText : pair.baseText
 
   return (
-    <div className="flex w-full max-w-full items-center justify-center gap-1.5">
+    <div className="today-match-chipRow flex w-full max-w-full items-center justify-center gap-1.5">
       <button
         type="button"
         onClick={onClick}
         disabled={isMatched}
         aria-pressed={isSelected || isMatched}
+        data-match-state={isMatched ? 'matched' : isWrong ? 'wrong' : isSelected ? 'selected' : 'idle'}
         className={cn(
-          'group flex min-h-10 min-w-[8rem] max-w-full flex-1 items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-sm font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+          'today-match-chip group flex min-h-10 min-w-[8rem] max-w-full flex-1 items-center justify-between gap-2 rounded-lg border px-3 py-2 text-left text-sm font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
           isMatched
             ? 'border-[color-mix(in_srgb,#34d399_58%,transparent)] bg-[color-mix(in_srgb,#34d399_13%,transparent)] text-[var(--text-primary)] shadow-[0_0_0_1px_color-mix(in_srgb,#34d399_24%,transparent)]'
             : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_64%,transparent)] text-[var(--text-primary)] hover:-translate-y-0.5',
@@ -174,7 +175,7 @@ function MatchChip({
         <button
           type="button"
           onClick={onListen}
-          className="inline-flex size-8 shrink-0 items-center justify-center rounded-md border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] text-[var(--text-secondary)] transition hover:bg-[color-mix(in_srgb,var(--accent-soft)_58%,transparent)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+          className="today-match-listenButton inline-flex size-8 shrink-0 items-center justify-center rounded-md border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] text-[var(--text-secondary)] transition hover:bg-[color-mix(in_srgb,var(--accent-soft)_58%,transparent)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
           aria-label={listenLabel}
           title={listenLabel}
         >
