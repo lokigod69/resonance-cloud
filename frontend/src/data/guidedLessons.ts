@@ -929,6 +929,17 @@ const GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-7',
+  title: 'Cebuano A1 Praxis 7',
+  shortTitle: 'A1 Praxis 7',
+  subtitle: 'Fahrgeld, Bus, Taxi und Ankommen auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -39437,6 +39448,547 @@ const indonesianA1Practical1Lessons: GuidedLessonDefinition[] = indonesianA1Prac
   }
 })
 
+const cebuanoA1Practical7Inputs: CebuanoP2LessonInput[] = [
+  {
+    slug: 'how-much-is-the-fare',
+    title: 'Wie viel kostet die Fahrt?',
+    situation: {
+      en: 'Ask how much the fare is before you ride.',
+      de: 'Du fragst vor der Fahrt, wie viel das Fahrgeld kostet.',
+    },
+    pedagogicalGoal: 'Pila ang pliti? als kurze Fahrgeldfrage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Pila ang pliti?',
+        baseText: 'Wie viel kostet die Fahrt?',
+      },
+      meaning: 'Eine einfache Frage nach dem Fahrgeld, bevor du einsteigst.',
+      chunks: [
+        { id: 'pila-ang', targetText: 'Pila ang', baseText: 'wie viel ist' },
+        { id: 'pliti', targetText: 'pliti?', baseText: 'das Fahrgeld?' },
+      ],
+      lessonItems: [
+        { id: 'pliti', targetText: 'pliti', baseText: 'Fahrgeld / Fahrpreis', acceptedAnswers: cebuanoAnswers('pliti', 'Pliti', 'plete', 'Plete', 'plite', 'Plite') },
+        { id: 'pila', targetText: 'pila', baseText: 'wie viel', acceptedAnswers: cebuanoAnswers('pila', 'Pila') },
+        { id: 'ang', targetText: 'ang', baseText: 'der / die / das', acceptedAnswers: cebuanoAnswers('ang', 'Ang') },
+        { id: 'pamasahe', targetText: 'pamasahe', baseText: 'Fahrpreis', acceptedAnswers: cebuanoAnswers('pamasahe', 'Pamasahe') },
+      ],
+      buildChips: ['Pila ang', 'pliti?', 'bus', 'taxi'],
+      typeRecall: {
+        before: 'Pila ang ',
+        answer: 'pliti',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('pliti', 'Pliti', 'plete', 'Plete', 'plite', 'Plite'),
+        fallbackChoices: ['pliti', 'bus', 'taxi', 'tren'],
+      },
+      speakTarget: {
+        baseCue: 'Wie viel kostet die Fahrt?',
+        targetPhrase: 'Pila ang pliti?',
+        requiredTokens: ['pila', 'ang', 'pliti'],
+        optionalTokens: ['plete', 'plite', 'pamasahe'],
+      },
+      sceneCaption: 'Sa jeep o taxi, mangutana ka daan: pila ang pliti?',
+      trophyWord: {
+        word: 'pliti',
+        meaning: 'Fahrgeld / Fahrpreis',
+        example: 'Pila ang pliti?',
+        whyThisWord: 'Pliti ist der direkte Cebuano-Anker für Fahrgeld und vermeidet eine Wiederholung von tagpila.',
+      },
+      placeholderCaption: 'Asking the fare before boarding.',
+      songMood: 'simple fare question',
+      visualNotes: 'Transport stop, small fare board, pliti highlighted.',
+    }),
+  },
+  {
+    slug: 'where-is-the-bus',
+    title: 'Wo ist der Bus?',
+    situation: {
+      en: 'Ask where the bus is at a stop or terminal.',
+      de: 'Du fragst an einer Haltestelle oder am Terminal, wo der Bus ist.',
+    },
+    pedagogicalGoal: 'Asa ang bus? als kurze Orientierung am Terminal verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Asa ang bus?',
+        baseText: 'Wo ist der Bus?',
+      },
+      meaning: 'Eine knappe Frage, wenn du am Terminal den richtigen Bus suchst.',
+      chunks: [
+        { id: 'asa-ang', targetText: 'Asa ang', baseText: 'wo ist der' },
+        { id: 'bus', targetText: 'bus?', baseText: 'Bus?' },
+      ],
+      lessonItems: [
+        { id: 'bus', targetText: 'bus', baseText: 'Bus', acceptedAnswers: cebuanoAnswers('bus', 'Bus') },
+        { id: 'asa', targetText: 'asa', baseText: 'wo', acceptedAnswers: cebuanoAnswers('asa', 'Asa') },
+        { id: 'terminal', targetText: 'terminal', baseText: 'Terminal', acceptedAnswers: cebuanoAnswers('terminal', 'Terminal') },
+        { id: 'sakyanan', targetText: 'sakyanan', baseText: 'Fahrzeug', acceptedAnswers: cebuanoAnswers('sakyanan', 'Sakyanan') },
+      ],
+      buildChips: ['Asa ang', 'bus?', 'pliti', 'tren'],
+      typeRecall: {
+        before: 'Asa ang ',
+        answer: 'bus',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('bus', 'Bus'),
+        fallbackChoices: ['bus', 'pliti', 'taxi', 'tren'],
+      },
+      speakTarget: {
+        baseCue: 'Wo ist der Bus?',
+        targetPhrase: 'Asa ang bus?',
+        requiredTokens: ['asa', 'ang', 'bus'],
+        optionalTokens: ['terminal', 'sakyanan'],
+      },
+      sceneCaption: 'Sa terminal, nangita ka ug bus ug mangutana: asa ang bus?',
+      trophyWord: {
+        word: 'bus',
+        meaning: 'Bus',
+        example: 'Asa ang bus?',
+        whyThisWord: 'Bus ist ein transparenter, alltäglicher Reiseanker im Cebuano-Terminalkontext.',
+      },
+      placeholderCaption: 'Looking for the bus at a terminal.',
+      songMood: 'finding the right bus',
+      visualNotes: 'Bus bay, terminal sign, bus highlighted.',
+    }),
+  },
+  {
+    slug: 'when-does-it-leave',
+    title: 'Wann fährt es ab?',
+    situation: {
+      en: 'Ask when the vehicle leaves.',
+      de: 'Du fragst, wann das Fahrzeug losfährt.',
+    },
+    pedagogicalGoal: 'Kanus-a molarga? als kurze Abfahrtsfrage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Kanus-a molarga?',
+        baseText: 'Wann fährt es ab?',
+      },
+      meaning: 'Eine einfache Frage nach der Abfahrt, ohne Fahrplan-Details.',
+      chunks: [
+        { id: 'kanus-a', targetText: 'Kanus-a', baseText: 'wann' },
+        { id: 'molarga', targetText: 'molarga?', baseText: 'fährt ab?' },
+      ],
+      lessonItems: [
+        { id: 'molarga', targetText: 'molarga', baseText: 'abfahren / losfahren', acceptedAnswers: cebuanoAnswers('molarga', 'Molarga', 'mo-larga', 'Mo-larga') },
+        { id: 'larga', targetText: 'larga', baseText: 'Abfahrt / los', acceptedAnswers: cebuanoAnswers('larga', 'Larga') },
+        { id: 'kanus-a', targetText: 'kanus-a', baseText: 'wann', acceptedAnswers: cebuanoAnswers('kanus-a', 'Kanus-a', 'kanusa', 'Kanusa') },
+        { id: 'oras', targetText: 'oras', baseText: 'Uhrzeit', acceptedAnswers: cebuanoAnswers('oras', 'Oras') },
+      ],
+      buildChips: ['Kanus-a', 'molarga?', 'bus', 'estasyon'],
+      typeRecall: {
+        before: 'Kanus-a ',
+        answer: 'molarga',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('molarga', 'Molarga', 'mo-larga', 'Mo-larga'),
+        fallbackChoices: ['molarga', 'pliti', 'hunong', 'dugay'],
+      },
+      speakTarget: {
+        baseCue: 'Wann fährt es ab?',
+        targetPhrase: 'Kanus-a molarga?',
+        requiredTokens: ['kanus', 'a', 'molarga'],
+        optionalTokens: ['kanus-a', 'kanusa', 'larga', 'oras'],
+      },
+      sceneCaption: 'Nag-atang ka sa biyahe ug mangutana: kanus-a molarga?',
+      trophyWord: {
+        word: 'molarga',
+        meaning: 'abfahren / losfahren',
+        example: 'Kanus-a molarga?',
+        whyThisWord: 'Molarga ist die konkrete Reisehandlung für Abfahrt und hält die Frage kurz.',
+      },
+      placeholderCaption: 'Asking when the ride leaves.',
+      songMood: 'departure timing',
+      visualNotes: 'Departure board, waiting passengers, molarga highlighted.',
+    }),
+  },
+  {
+    slug: 'is-this-the-train',
+    title: 'Ist das der Zug?',
+    situation: {
+      en: 'Check whether this is the right train.',
+      de: 'Du prüfst, ob das der richtige Zug ist.',
+    },
+    pedagogicalGoal: 'Mao ni ang tren? als einfache Identifikationsfrage verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Mao ni ang tren?',
+        baseText: 'Ist das der Zug?',
+      },
+      meaning: 'Eine kurze Frage, wenn du vor dem Einsteigen sicher sein willst.',
+      chunks: [
+        { id: 'mao-ni-ang', targetText: 'Mao ni ang', baseText: 'ist das der' },
+        { id: 'tren', targetText: 'tren?', baseText: 'Zug?' },
+      ],
+      lessonItems: [
+        { id: 'tren', targetText: 'tren', baseText: 'Zug', acceptedAnswers: cebuanoAnswers('tren', 'Tren', 'train', 'Train') },
+        { id: 'mao-ni', targetText: 'mao ni', baseText: 'das ist / ist das', acceptedAnswers: cebuanoAnswers('mao ni', 'Mao ni') },
+        { id: 'sakto', targetText: 'sakto', baseText: 'richtig', acceptedAnswers: cebuanoAnswers('sakto', 'Sakto') },
+        { id: 'sakyanan', targetText: 'sakyanan', baseText: 'Fahrzeug', acceptedAnswers: cebuanoAnswers('sakyanan', 'Sakyanan') },
+      ],
+      buildChips: ['Mao ni ang', 'tren?', 'bus', 'taxi'],
+      typeRecall: {
+        before: 'Mao ni ang ',
+        answer: 'tren',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('tren', 'Tren', 'train', 'Train'),
+        fallbackChoices: ['tren', 'bus', 'taxi', 'pliti'],
+      },
+      speakTarget: {
+        baseCue: 'Ist das der Zug?',
+        targetPhrase: 'Mao ni ang tren?',
+        requiredTokens: ['mao', 'ni', 'ang', 'tren'],
+        optionalTokens: ['train', 'sakto'],
+      },
+      sceneCaption: 'Sa plataporma, mangutana ka kon mao ni ang tren.',
+      trophyWord: {
+        word: 'tren',
+        meaning: 'Zug',
+        example: 'Mao ni ang tren?',
+        whyThisWord: 'Tren ist ein klarer Verkehrsmittelanker und bleibt von dem früheren tiket-Pokal getrennt.',
+      },
+      placeholderCaption: 'Checking the train before boarding.',
+      songMood: 'checking the train',
+      visualNotes: 'Train platform, open doors, tren highlighted.',
+    }),
+  },
+  {
+    slug: 'i-need-a-taxi',
+    title: 'Ich brauche ein Taxi',
+    situation: {
+      en: 'Say that you need a taxi.',
+      de: 'Du sagst, dass du ein Taxi brauchst.',
+    },
+    pedagogicalGoal: 'Kinahanglan ko og taxi als einfache Transport-Bedarfsphrase sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Kinahanglan ko og taxi.',
+        baseText: 'Ich brauche ein Taxi.',
+      },
+      meaning: 'Eine direkte Bedarfsphrase, wenn du nicht laufen oder Bus fahren willst.',
+      chunks: [
+        { id: 'kinahanglan-ko', targetText: 'Kinahanglan ko', baseText: 'ich brauche' },
+        { id: 'og-taxi', targetText: 'og taxi.', baseText: 'ein Taxi.' },
+      ],
+      lessonItems: [
+        { id: 'taxi', targetText: 'taxi', baseText: 'Taxi', acceptedAnswers: cebuanoAnswers('taxi', 'Taxi', 'taksi', 'Taksi') },
+        { id: 'kinahanglan', targetText: 'kinahanglan', baseText: 'brauchen', acceptedAnswers: cebuanoAnswers('kinahanglan', 'Kinahanglan') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'sakyanan', targetText: 'sakyanan', baseText: 'Fahrzeug', acceptedAnswers: cebuanoAnswers('sakyanan', 'Sakyanan') },
+      ],
+      buildChips: ['Kinahanglan ko', 'og taxi.', 'bus', 'tren'],
+      typeRecall: {
+        before: 'Kinahanglan ko og ',
+        answer: 'taxi',
+        after: '.',
+        acceptedAnswers: cebuanoAnswers('taxi', 'Taxi', 'taksi', 'Taksi'),
+        fallbackChoices: ['taxi', 'bus', 'tren', 'pliti'],
+      },
+      speakTarget: {
+        baseCue: 'Ich brauche ein Taxi.',
+        targetPhrase: 'Kinahanglan ko og taxi.',
+        requiredTokens: ['kinahanglan', 'ko', 'taxi'],
+        optionalTokens: ['taksi', 'og', 'ug'],
+      },
+      sceneCaption: 'Kung kapoy na ang biyahe, moingon ka nga kinahanglan ko og taxi.',
+      trophyWord: {
+        word: 'taxi',
+        meaning: 'Taxi',
+        example: 'Kinahanglan ko og taxi.',
+        whyThisWord: 'Taxi ist im Cebuano alltäglich und passt zu einer kurzen Transportbitte.',
+      },
+      placeholderCaption: 'Asking for a taxi after travel gets tiring.',
+      songMood: 'needing a taxi',
+      visualNotes: 'Taxi stand, tired traveler, taxi highlighted.',
+    }),
+  },
+  {
+    slug: 'can-we-go-there',
+    title: 'Können wir dorthin fahren?',
+    situation: {
+      en: 'Ask whether you can go there together.',
+      de: 'Du fragst, ob ihr dorthin fahren könnt.',
+    },
+    pedagogicalGoal: 'Pwede ta moadto didto? als kurze Bewegungsfrage verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Pwede ta moadto didto?',
+        baseText: 'Können wir dorthin fahren?',
+      },
+      meaning: 'Eine einfache Frage, ob das Ziel erreichbar ist.',
+      chunks: [
+        { id: 'pwede-ta', targetText: 'Pwede ta', baseText: 'können wir' },
+        { id: 'moadto-didto', targetText: 'moadto didto?', baseText: 'dorthin gehen/fahren?' },
+      ],
+      lessonItems: [
+        { id: 'moadto', targetText: 'moadto', baseText: 'hingehen / hinfahren', acceptedAnswers: cebuanoAnswers('moadto', 'Moadto', 'mo-adto', 'Mo-adto') },
+        { id: 'didto', targetText: 'didto', baseText: 'dort / dorthin', acceptedAnswers: cebuanoAnswers('didto', 'Didto') },
+        { id: 'pwede', targetText: 'pwede', baseText: 'können / möglich', acceptedAnswers: cebuanoAnswers('pwede', 'Pwede', 'puwede', 'Puwede') },
+        { id: 'ta', targetText: 'ta', baseText: 'wir', acceptedAnswers: cebuanoAnswers('ta', 'Ta') },
+      ],
+      buildChips: ['Pwede ta', 'moadto didto?', 'taxi', 'bus'],
+      typeRecall: {
+        before: 'Pwede ta ',
+        answer: 'moadto',
+        after: ' didto?',
+        acceptedAnswers: cebuanoAnswers('moadto', 'Moadto', 'mo-adto', 'Mo-adto'),
+        fallbackChoices: ['moadto', 'hunong', 'niabot', 'molarga'],
+      },
+      speakTarget: {
+        baseCue: 'Können wir dorthin fahren?',
+        targetPhrase: 'Pwede ta moadto didto?',
+        requiredTokens: ['pwede', 'ta', 'moadto', 'didto'],
+        optionalTokens: ['puwede', 'mo', 'adto'],
+      },
+      sceneCaption: 'Nagtan-aw ka sa lugar ug mangutana: pwede ta moadto didto?',
+      trophyWord: {
+        word: 'moadto',
+        meaning: 'hingehen / hinfahren',
+        example: 'Pwede ta moadto didto?',
+        whyThisWord: 'Moadto gibt der Reisefrage eine konkrete Richtung, ohne paingon als Pokal zu wiederholen.',
+      },
+      placeholderCaption: 'Asking if you can go there together.',
+      songMood: 'checking if a destination is possible',
+      visualNotes: 'Map pointer and road, moadto highlighted.',
+    }),
+  },
+  {
+    slug: 'please-stop-here',
+    title: 'Bitte halten Sie hier',
+    situation: {
+      en: 'Ask the driver to stop here.',
+      de: 'Du bittest den Fahrer, hier anzuhalten.',
+    },
+    pedagogicalGoal: 'Palihug hunong diri als kurze Haltebitte sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Palihug hunong diri.',
+        baseText: 'Bitte halten Sie hier.',
+      },
+      meaning: 'Eine klare, höfliche Bitte zum Anhalten.',
+      chunks: [
+        { id: 'palihug-hunong', targetText: 'Palihug hunong', baseText: 'bitte halten' },
+        { id: 'diri', targetText: 'diri.', baseText: 'hier.' },
+      ],
+      lessonItems: [
+        { id: 'hunong', targetText: 'hunong', baseText: 'halten / stoppen', acceptedAnswers: cebuanoAnswers('hunong', 'Hunong') },
+        { id: 'palihug', targetText: 'palihug', baseText: 'bitte', acceptedAnswers: cebuanoAnswers('palihug', 'Palihug', 'palihog', 'Palihog') },
+        { id: 'diri', targetText: 'diri', baseText: 'hier', acceptedAnswers: cebuanoAnswers('diri', 'Diri') },
+        { id: 'drayber', targetText: 'drayber', baseText: 'Fahrer', acceptedAnswers: cebuanoAnswers('drayber', 'Drayber', 'driver', 'Driver') },
+      ],
+      buildChips: ['Palihug hunong', 'diri.', 'taxi', 'bus'],
+      typeRecall: {
+        before: 'Palihug ',
+        answer: 'hunong',
+        after: ' diri.',
+        acceptedAnswers: cebuanoAnswers('hunong', 'Hunong'),
+        fallbackChoices: ['hunong', 'moadto', 'molarga', 'dugay'],
+      },
+      speakTarget: {
+        baseCue: 'Bitte halten Sie hier.',
+        targetPhrase: 'Palihug hunong diri.',
+        requiredTokens: ['palihug', 'hunong', 'diri'],
+        optionalTokens: ['palihog', 'drayber'],
+      },
+      sceneCaption: 'Sa taxi o bus, klaro nga moingon ka: palihug hunong diri.',
+      trophyWord: {
+        word: 'hunong',
+        meaning: 'halten / stoppen',
+        example: 'Palihug hunong diri.',
+        whyThisWord: 'Hunong ist die nötige Handlung, wenn der Fahrer anhalten soll.',
+      },
+      placeholderCaption: 'Asking the driver to stop here.',
+      songMood: 'polite stop request',
+      visualNotes: 'Vehicle slowing at curb, hunong highlighted.',
+    }),
+  },
+  {
+    slug: 'going-to-the-station',
+    title: 'Ich fahre zum Bahnhof',
+    situation: {
+      en: 'Say that you are going to the station.',
+      de: 'Du sagst, dass du zum Bahnhof fährst.',
+    },
+    pedagogicalGoal: 'Moadto ko sa estasyon als Zielphrase für Stationen verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Moadto ko sa estasyon.',
+        baseText: 'Ich fahre zum Bahnhof.',
+      },
+      meaning: 'Eine einfache Zielphrase für Bahnhof, Haltestelle oder Station.',
+      chunks: [
+        { id: 'moadto-ko-sa', targetText: 'Moadto ko sa', baseText: 'ich gehe/fahre zur' },
+        { id: 'estasyon', targetText: 'estasyon.', baseText: 'Station.' },
+      ],
+      lessonItems: [
+        { id: 'estasyon', targetText: 'estasyon', baseText: 'Station / Bahnhof', acceptedAnswers: cebuanoAnswers('estasyon', 'Estasyon', 'station', 'Station') },
+        { id: 'moadto', targetText: 'moadto', baseText: 'hingehen / hinfahren', acceptedAnswers: cebuanoAnswers('moadto', 'Moadto', 'mo-adto', 'Mo-adto') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'sa', targetText: 'sa', baseText: 'zu / in', acceptedAnswers: cebuanoAnswers('sa', 'Sa') },
+      ],
+      buildChips: ['Moadto ko sa', 'estasyon.', 'tren', 'bus'],
+      typeRecall: {
+        before: 'Moadto ko sa ',
+        answer: 'estasyon',
+        after: '.',
+        acceptedAnswers: cebuanoAnswers('estasyon', 'Estasyon', 'station', 'Station'),
+        fallbackChoices: ['estasyon', 'taxi', 'bus', 'pliti'],
+      },
+      speakTarget: {
+        baseCue: 'Ich fahre zum Bahnhof.',
+        targetPhrase: 'Moadto ko sa estasyon.',
+        requiredTokens: ['moadto', 'ko', 'estasyon'],
+        optionalTokens: ['mo', 'adto', 'sa', 'station'],
+      },
+      sceneCaption: 'Kung ihatag nimo ang destinasyon, moingon ka: moadto ko sa estasyon.',
+      trophyWord: {
+        word: 'estasyon',
+        meaning: 'Station / Bahnhof',
+        example: 'Moadto ko sa estasyon.',
+        whyThisWord: 'Estasyon ist ein nutzbarer Ortsanker für Bahn, Bus und andere Reisestellen.',
+      },
+      placeholderCaption: 'Giving the station as your destination.',
+      songMood: 'heading to the station',
+      visualNotes: 'Station entrance, destination arrow, estasyon highlighted.',
+    }),
+  },
+  {
+    slug: 'does-it-take-long',
+    title: 'Dauert es lange?',
+    situation: {
+      en: 'Ask whether the trip takes a long time.',
+      de: 'Du fragst, ob die Fahrt lange dauert.',
+    },
+    pedagogicalGoal: 'Dugay ba? als kurze Dauerfrage verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Dugay ba?',
+        baseText: 'Dauert es lange?',
+      },
+      meaning: 'Eine knappe Frage nach der Dauer, wenn du planen musst.',
+      chunks: [
+        { id: 'dugay', targetText: 'Dugay', baseText: 'lange' },
+        { id: 'ba', targetText: 'ba?', baseText: 'Fragepartikel?' },
+      ],
+      lessonItems: [
+        { id: 'dugay', targetText: 'dugay', baseText: 'lange / lange Zeit', acceptedAnswers: cebuanoAnswers('dugay', 'Dugay') },
+        { id: 'ba', targetText: 'ba', baseText: 'Fragepartikel', acceptedAnswers: cebuanoAnswers('ba', 'Ba') },
+        { id: 'biyahe', targetText: 'biyahe', baseText: 'Fahrt / Reise', acceptedAnswers: cebuanoAnswers('biyahe', 'Biyahe') },
+        { id: 'oras', targetText: 'oras', baseText: 'Zeit / Uhrzeit', acceptedAnswers: cebuanoAnswers('oras', 'Oras') },
+      ],
+      buildChips: ['Dugay', 'ba?', 'molarga', 'niabot'],
+      typeRecall: {
+        before: '',
+        answer: 'Dugay',
+        after: ' ba?',
+        acceptedAnswers: cebuanoAnswers('Dugay', 'dugay'),
+        fallbackChoices: ['Dugay', 'Hunong', 'Pliti', 'Taxi'],
+      },
+      speakTarget: {
+        baseCue: 'Dauert es lange?',
+        targetPhrase: 'Dugay ba?',
+        requiredTokens: ['dugay', 'ba'],
+        optionalTokens: ['biyahe', 'oras'],
+      },
+      sceneCaption: 'Sa dili pa mosakay, mangutana ka kon dugay ba.',
+      trophyWord: {
+        word: 'dugay',
+        meaning: 'lange / lange Zeit',
+        example: 'Dugay ba?',
+        whyThisWord: 'Dugay ist ein kurzer Daueranker für Fahrtzeit und Wartezeit.',
+      },
+      placeholderCaption: 'Asking if the trip will take long.',
+      songMood: 'checking travel duration',
+      visualNotes: 'Clock beside a route line, dugay highlighted.',
+    }),
+  },
+  {
+    slug: 'i-have-arrived',
+    title: 'Ich bin angekommen',
+    situation: {
+      en: 'Tell someone that you have arrived.',
+      de: 'Du sagst jemandem, dass du angekommen bist.',
+    },
+    pedagogicalGoal: 'Niabot na ko als kurze Ankunftsmeldung sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Niabot na ko.',
+        baseText: 'Ich bin angekommen.',
+      },
+      meaning: 'Eine kurze Nachricht am Ende der Fahrt.',
+      chunks: [
+        { id: 'niabot-na', targetText: 'Niabot na', baseText: 'bin schon angekommen' },
+        { id: 'ko', targetText: 'ko.', baseText: 'ich.' },
+      ],
+      lessonItems: [
+        { id: 'niabot', targetText: 'niabot', baseText: 'angekommen', acceptedAnswers: cebuanoAnswers('niabot', 'Niabot', 'miabot', 'Miabot', 'naabot', 'Naabot') },
+        { id: 'abot', targetText: 'abot', baseText: 'ankommen / erreichen', acceptedAnswers: cebuanoAnswers('abot', 'Abot') },
+        { id: 'na', targetText: 'na', baseText: 'schon / jetzt', acceptedAnswers: cebuanoAnswers('na', 'Na') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+      ],
+      buildChips: ['Niabot na', 'ko.', 'estasyon', 'dugay'],
+      typeRecall: {
+        before: '',
+        answer: 'Niabot',
+        after: ' na ko.',
+        acceptedAnswers: cebuanoAnswers('Niabot', 'niabot', 'Miabot', 'miabot', 'Naabot', 'naabot'),
+        fallbackChoices: ['Niabot', 'Molarga', 'Hunong', 'Moadto'],
+      },
+      speakTarget: {
+        baseCue: 'Ich bin angekommen.',
+        targetPhrase: 'Niabot na ko.',
+        requiredTokens: ['niabot', 'na', 'ko'],
+        optionalTokens: ['miabot', 'naabot', 'abot'],
+      },
+      sceneCaption: 'Sa katapusan sa biyahe, mopadala ka og mensahe: niabot na ko.',
+      trophyWord: {
+        word: 'niabot',
+        meaning: 'angekommen',
+        example: 'Niabot na ko.',
+        whyThisWord: 'Niabot schließt die Reisesequenz mit einer klaren Ankunftsmeldung.',
+      },
+      placeholderCaption: 'Sending a message after arriving.',
+      songMood: 'arrived safely',
+      visualNotes: 'Destination pin and phone message, niabot highlighted.',
+    }),
+  },
+]
+
+const cebuanoA1Practical7Lessons: GuidedLessonDefinition[] = cebuanoA1Practical7Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-7-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = cebuanoA1Practical7Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 7 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: lessonInput.variant,
+    },
+  }
+})
+
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -53784,6 +54336,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   ...cebuanoA1Practical6Lessons,
   ...indonesianA1Practical1Lessons,
+  ...cebuanoA1Practical7Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -53863,6 +54416,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_GERMAN_TEN_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA,
     GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA,
   ]
 }
 
