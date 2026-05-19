@@ -36,7 +36,7 @@ export type BrowserSpeechRecognizer = {
   abort: () => void
 }
 
-export type BrowserSpeechRecognizerLang = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE'
+export type BrowserSpeechRecognizerLang = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH'
 
 export type BrowserSpeechRecognizerOptions = {
   lang: BrowserSpeechRecognizerLang
