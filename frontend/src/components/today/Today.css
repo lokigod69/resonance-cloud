@@ -183,7 +183,7 @@
 }
 
 .today-path-header {
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 .today-path-actions {
@@ -199,7 +199,10 @@
 }
 
 .today-path-directoryCurrent,
-.today-path-directoryOption {
+.today-path-directoryOption,
+.today-path-directoryLanguage,
+.today-path-directoryVibe,
+.today-path-directoryLanguageOption {
   background:
     linear-gradient(145deg, color-mix(in srgb, var(--today-panel) 88%, transparent), color-mix(in srgb, var(--surface-1) 40%, transparent));
 }
@@ -239,16 +242,31 @@
   box-shadow: 0 14px 32px color-mix(in srgb, var(--today-glow) 42%, transparent);
 }
 
+.today-path-card {
+  aspect-ratio: 1 / 1;
+  min-height: 3rem;
+  height: clamp(3rem, 8vw, 4.75rem);
+}
+
 .today-path-card[data-selected="true"] {
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--today-accent) 24%, transparent),
     0 16px 34px color-mix(in srgb, var(--today-glow) 50%, transparent);
 }
 
+.today-path-card[data-lesson-status="not-started"] {
+  opacity: 0.44;
+}
+
+.today-path-card[data-lesson-status="complete"] {
+  opacity: 1;
+}
+
 .today-path-card[data-recommended="true"][data-selected="false"] {
   border-color: color-mix(in srgb, var(--today-accent) 30%, var(--today-border));
   background:
     linear-gradient(145deg, color-mix(in srgb, var(--today-accent-soft) 34%, transparent), color-mix(in srgb, var(--today-panel) 82%, transparent));
+  opacity: 0.92;
 }
 
 .today-path-card[data-recommended-quiet="true"][data-selected="false"] {
@@ -257,12 +275,27 @@
   box-shadow: none;
 }
 
+.today-path-cardMarker {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
 .today-path-cardNumberImage {
   display: block;
-  height: 2.35rem;
+  height: clamp(2rem, 6vw, 3.1rem);
   margin: -0.125rem;
   object-fit: contain;
-  width: 2.35rem;
+  width: clamp(2rem, 6vw, 3.1rem);
+}
+
+.today-path-cardCompletionImage {
+  display: block;
+  height: clamp(2rem, 5.6vw, 3rem);
+  object-fit: contain;
+  width: clamp(2rem, 5.6vw, 3rem);
 }
 
 .today-path-segmentGrid {
@@ -275,7 +308,7 @@
     linear-gradient(135deg, color-mix(in srgb, var(--today-panel) 72%, transparent), color-mix(in srgb, var(--surface-1) 24%, transparent));
   border-color: color-mix(in srgb, var(--today-accent-strong) 32%, var(--today-border));
   box-shadow: 0 12px 26px color-mix(in srgb, var(--today-glow) 20%, transparent);
-  min-height: 7rem;
+  min-height: 3.25rem;
   overflow: hidden;
   position: relative;
 }
@@ -297,10 +330,10 @@
 
 .today-segment-reviewImage {
   display: block;
-  max-height: 5.75rem;
-  max-width: min(100%, 42rem);
+  max-height: 2.65rem;
+  max-width: min(100%, 16rem);
   object-fit: contain;
-  width: min(100%, 42rem);
+  width: min(100%, 16rem);
 }
 
 .today-segment-reviewTile[data-review-complete="true"] {
@@ -319,7 +352,7 @@
     linear-gradient(135deg, color-mix(in srgb, var(--today-panel) 74%, transparent), color-mix(in srgb, var(--surface-1) 28%, transparent));
   border-color: color-mix(in srgb, var(--today-accent-strong) 32%, var(--today-border));
   box-shadow: 0 12px 26px color-mix(in srgb, var(--today-glow) 20%, transparent);
-  min-height: 7rem;
+  min-height: 3.25rem;
   overflow: hidden;
   position: relative;
 }
@@ -346,20 +379,26 @@
   border: 1px solid color-mix(in srgb, var(--today-accent-strong) 48%, var(--today-border));
   border-radius: 0.5rem;
   display: inline-flex;
-  height: 4.25rem;
+  height: 2.65rem;
   justify-content: center;
   overflow: hidden;
   position: relative;
-  width: 4.25rem;
+  width: 2.65rem;
 }
 
 .today-segment-trophyImage {
   display: block;
-  height: 3.75rem;
+  height: 2.3rem;
   object-fit: contain;
   position: relative;
-  width: 3.75rem;
+  width: 2.3rem;
   z-index: 1;
+}
+
+.today-segment-trophyComplete {
+  position: absolute;
+  right: 0.45rem;
+  top: 0.45rem;
 }
 
 .today-checkpoint-card {
@@ -549,17 +588,17 @@
 
 @media (max-width: 640px) {
   .today-segment-reviewTile {
-    min-height: 6.25rem;
+    min-height: 3.25rem;
   }
 
   .today-segment-trophyTile {
-    min-height: 6.25rem;
+    min-height: 3.25rem;
   }
 
   .today-segment-reviewImage {
-    max-height: 4.85rem;
-    max-width: min(100%, 34rem);
-    width: min(100%, 34rem);
+    max-height: 2.65rem;
+    max-width: min(100%, 13rem);
+    width: min(100%, 13rem);
   }
 }
 

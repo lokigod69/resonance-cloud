@@ -25,7 +25,7 @@ export function SegmentTrophyTile({ pathId, segment, vibeId }: SegmentTrophyTile
       aria-label={accessibleLabel}
       title={accessibleLabel}
       className={cn(
-        'today-segment-trophyTile flex min-w-0 items-center gap-3 rounded-lg border px-3 py-4 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] sm:px-5 sm:py-5',
+        'today-segment-trophyTile flex min-w-0 items-center justify-center rounded-lg border px-2 py-2 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] sm:px-4 sm:py-3',
         isComplete && 'is-complete',
       )}
       data-trophy-segment={segment}
@@ -39,12 +39,8 @@ export function SegmentTrophyTile({ pathId, segment, vibeId }: SegmentTrophyTile
           draggable={false}
         />
       </span>
-      <span className="min-w-0 flex-1">
-        <span className="block break-words text-base font-semibold leading-tight text-[var(--text-primary)]">
-          {t('today.trophy.tileTitle')}
-        </span>
-      </span>
-      {isComplete && <CheckCircle2 className="h-5 w-5 shrink-0 text-[#34d399]" aria-hidden="true" />}
+      <span className="sr-only">{t('today.trophy.tileTitle')}</span>
+      {isComplete && <CheckCircle2 className="today-segment-trophyComplete h-4 w-4 shrink-0 text-[#34d399]" aria-hidden="true" />}
     </Link>
   )
 }

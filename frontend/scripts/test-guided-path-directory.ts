@@ -106,6 +106,7 @@ assert('Quick Review remains unavailable with no completed path', buildGuidedChe
 
 console.log('\n[header integration]')
 assert('overview imports path directory component', overviewSource.includes("GuidedPathDirectory"))
+assert('overview delegates selected vibe and vibe handler into path directory', overviewSource.includes('selectedVibeId={selectedVibeId}') && overviewSource.includes('onSelectVibe={onSelectVibe}') && !overviewSource.includes('GuidedVibePicker'))
 assert('overview no longer defines inline PathSwitcher', !overviewSource.includes('function PathSwitcher'))
 assert('overview no longer renders permanent path chip row', !overviewSource.includes('today-path-switcher'))
 assert('overview renders compact Change path trigger', overviewSource.includes("today.path.changePath") && overviewSource.includes('setDirectoryOpen(true)'))
@@ -115,6 +116,7 @@ assert('Today page reads selected active vibe from query params', todaySource.in
 assert('Quick Review checkpoint link preserves current path and vibe for back navigation', todaySource.includes('path=${selectedPathId}') && todaySource.includes('vibe=${selectedVibeId}'))
 assert('main Today header no longer renders Path Check as a visible action', !sliceBetween(overviewSource, '<div className="today-path-actions', '<GuidedPathDirectory').includes('today.path.pathCheck'))
 assert('Path Check remains available from the path directory as a diagnostic action', overviewSource.includes('pathCheckHref') && directorySource.includes('pathCheckHref') && directorySource.includes('today.path.pathCheck'))
+assert('path directory exposes vibe selection only for English paths', directorySource.includes('GuidedVibePicker') && directorySource.includes("selectedLanguage === 'English'") && directorySource.includes('getPathVibesAvailable(selectedPathId)') && directorySource.includes('shouldShowVibePicker'))
 
 console.log('\n[selection state]')
 assert('overview detects explicit selected lesson competing with recommendation', overviewSource.includes('hasExplicitLessonSelection'))

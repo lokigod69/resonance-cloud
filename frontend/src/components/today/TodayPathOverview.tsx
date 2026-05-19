@@ -1,8 +1,7 @@
-import { CheckCircle2, Circle, Play } from 'lucide-react'
+import { Play, Settings } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  getPathVibesAvailable,
   type GuidedLesson,
   type GuidedPathLessonCardStatus,
   type GuidedPathMetadata,
@@ -16,10 +15,8 @@ import { formatGuidedPathLabel } from '@/lib/guidedPathLabels'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { CheckpointCard } from '@/components/today/CheckpointCard'
-import { GuidedLanguagePicker } from '@/components/today/GuidedLanguagePicker'
 import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
 import { SegmentTrophyTile } from '@/components/today/SegmentTrophyTile'
-import { GuidedVibePicker } from '@/components/today/TodayHero'
 import { cn } from '@/lib/utils'
 
 const GUIDED_SEGMENT_REVIEWS = [
@@ -56,7 +53,7 @@ type TodayPathOverviewProps = {
   onSelectVibe: (vibeId: ActiveGuidedVibeId) => void
   onSelectLanguage: (language: GuidedTargetLanguage) => void
   onSelectLesson: (lessonId: string) => void
-  onStartLesson: () => void
+  onStartLesson: (lessonId?: string) => void
 }
 
 export function TodayPathOverview({
@@ -77,9 +74,7 @@ export function TodayPathOverview({
 }: TodayPathOverviewProps) {
   const { t } = useTranslation()
   const [directoryOpen, setDirectoryOpen] = useState(false)
-  const pathLesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
-  const pathVibesAvailable = getPathVibesAvailable(selectedPathId)
-  const shouldShowVibePicker = pathLesson !== undefined && pathVibesAvailable.length > 1
+  const pathLesson = overview.recommendedLesson ?? overview.selectedLesson ?? overview.lessons[0]?.lesson
   const isSelectedRecommendation = Boolean(
     pathLesson
       && overview.recommendedLesson
@@ -93,22 +88,29 @@ export function TodayPathOverview({
 
   return (
     <div className="grid gap-5">
-      <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-6">
-        <div className="today-path-header flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+      <section className="theme-panel rounded-lg border border-[var(--border-subtle)] p-3 sm:p-5">
+        <div className="today-path-header flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
+            <h1 className="break-words text-2xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
               {formatGuidedPathLabel(overview.pathMetadata, t)}
             </h1>
-            <p className="mt-2 text-sm text-[var(--text-muted)]">
+            <p className="mt-1 text-sm text-[var(--text-muted)]">
               {t('today.path.compactProgress', {
                 completed: overview.completedCount,
                 total: overview.totalLessons,
               })}
             </p>
           </div>
-          <div className="today-path-actions flex flex-wrap gap-2 xl:justify-end">
-            <Button type="button" variant="outline" size="sm" onClick={() => setDirectoryOpen(true)}>
-              {t('today.path.changePath')}
+          <div className="today-path-actions flex shrink-0 flex-wrap gap-2 xl:justify-end">
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              aria-label={t('today.path.changePath')}
+              title={t('today.path.changePath')}
+              onClick={() => setDirectoryOpen(true)}
+            >
+              <Settings className="h-5 w-5" aria-hidden="true" />
             </Button>
           </div>
           <GuidedPathDirectory
@@ -117,32 +119,20 @@ export function TodayPathOverview({
             selectedPathId={selectedPathId}
             progress={progress}
             pathCheckHref={pathCheckHref}
-            targetLanguage={selectedLanguage}
+            selectedLanguage={selectedLanguage}
+            availableLanguages={availableLanguages}
+            selectedVibeId={selectedVibeId}
             onSelectPath={onSelectPath}
+            onSelectLanguage={onSelectLanguage}
+            onSelectVibe={onSelectVibe}
             onClose={() => setDirectoryOpen(false)}
           />
         </div>
       </section>
 
-      <GuidedLanguagePicker
-        availableLanguages={availableLanguages}
-        selectedLanguage={selectedLanguage}
-        onSelectLanguage={onSelectLanguage}
-      />
-
-      {shouldShowVibePicker && (
-        <GuidedVibePicker
-          selectedVibeId={selectedVibeId}
-          onSelectVibe={onSelectVibe}
-          compact
-        />
-      )}
-
       {pathLesson && (
         <RecommendedLessonPanel
           lesson={pathLesson}
-          progress={progress}
-          selectedVibeId={selectedVibeId}
           isSelectedRecommendation={isSelectedRecommendation}
           onStartLesson={onStartLesson}
         />
@@ -173,7 +163,7 @@ export function TodayPathOverview({
 
             return (
               <div key={segment.segment} className="grid gap-2">
-                <div className="today-path-segmentGrid grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+                <div className="today-path-segmentGrid grid grid-cols-5 gap-2">
                   {segmentLessons.map((entry) => (
                     <LessonPathCard
                       key={entry.lesson.id}
@@ -189,7 +179,7 @@ export function TodayPathOverview({
                     />
                   ))}
                 </div>
-                <div className="today-path-reviewPair grid gap-2 md:grid-cols-2">
+                <div className="today-path-reviewPair grid grid-cols-2 gap-2">
                   <SegmentReviewTile
                     href={`/today/checkpoint?mode=segment-review&path=${selectedPathId}&segment=${segment.segment}&vibe=${selectedVibeId}`}
                     segment={segment.segment}
@@ -245,7 +235,7 @@ function SegmentReviewTile({
       to={href}
       aria-label={accessibleLabel}
       title={accessibleLabel}
-      className="today-segment-reviewTile flex min-w-0 items-center justify-center rounded-lg border px-3 py-4 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] sm:px-5 sm:py-5"
+      className="today-segment-reviewTile flex min-w-0 items-center justify-center rounded-lg border px-2 py-2 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] sm:px-4 sm:py-3"
       data-review-segment={segment}
       data-review-completed-count={completedCount}
       data-review-complete={isReviewComplete}
@@ -264,37 +254,32 @@ function SegmentReviewTile({
 
 function RecommendedLessonPanel({
   lesson,
-  progress,
-  selectedVibeId,
   isSelectedRecommendation,
   onStartLesson,
 }: {
   lesson: GuidedLesson
-  progress: TodayProgressState
-  selectedVibeId: ActiveGuidedVibeId
   isSelectedRecommendation: boolean
-  onStartLesson: () => void
+  onStartLesson: (lessonId?: string) => void
 }) {
   const { t } = useTranslation()
-  const visibleStatus = getTodayLessonVibeStatus(progress, lesson, selectedVibeId)
 
   return (
-    <section className="today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-6">
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+    <section className="today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-3 sm:p-4">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
         <div className="min-w-0">
           <p className="sr-only">
             {isSelectedRecommendation ? t('today.path.nextLessonLabel') : t('today.path.selectedLessonLabel')}
           </p>
-          <p className="text-sm font-medium text-[var(--text-secondary)]">
+          <p className="text-xs font-medium text-[var(--text-secondary)] sm:text-sm">
             {t('today.lessonLabel', { sequence: lesson.lessonNumber })}
           </p>
-          <h2 className="mt-2 break-words text-2xl font-semibold leading-tight text-[var(--text-primary)]">
+          <h2 className="mt-1 break-words text-lg font-semibold leading-tight text-[var(--text-primary)] sm:text-2xl">
             {lesson.title}
           </h2>
         </div>
-        <Button size="lg" onClick={onStartLesson}>
-          {getActionLabel(t, visibleStatus)}
-          {visibleStatus === 'completed' ? <CheckCircle2 className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+        <Button size="lg" onClick={() => onStartLesson(lesson.id)}>
+          {t('today.nextLesson')}
+          <Play className="h-4 w-4" />
         </Button>
       </div>
     </section>
@@ -320,15 +305,14 @@ function LessonPathCard({
   completedVibeIds: ActiveGuidedVibeId[]
   selectedVibeId: ActiveGuidedVibeId
   onSelectLesson: (lessonId: string) => void
-  onStartLesson: () => void
+  onStartLesson: (lessonId?: string) => void
 }) {
   const { t } = useTranslation()
+  const completedSelectedVibe = completedVibeIds.includes(selectedVibeId)
 
   const handleLessonTap = () => {
     onSelectLesson(lesson.id)
-    if (isMobileViewport()) {
-      onStartLesson()
-    }
+    onStartLesson(lesson.id)
   }
 
   return (
@@ -340,50 +324,75 @@ function LessonPathCard({
         title: lesson.title,
       })}
       className={cn(
-        'today-path-card group flex min-h-32 min-w-0 flex-col rounded-lg border p-3 text-left transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
+        'today-path-card group flex min-w-0 items-center justify-center rounded-lg border p-1 text-center transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]',
         isSelected
           ? 'border-[color-mix(in_srgb,var(--accent)_64%,transparent)] bg-[var(--accent-soft)] shadow-[0_0_0_1px_color-mix(in_srgb,var(--accent)_18%,transparent)]'
           : isRecommended && !isRecommendationQuiet
           ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[var(--accent-soft)]'
           : 'border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_50%,transparent)]',
       )}
+      data-lesson-status={status}
       data-recommended={isRecommended}
       data-recommended-quiet={isRecommendationQuiet}
       data-selected={isSelected}
       data-start-target={isSelected}
+      data-completed-selected-vibe={completedSelectedVibe}
     >
-      <div className="flex h-full items-start gap-3">
-        <span className={cn(
-          'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border text-base font-semibold',
-          status === 'complete' && completedVibeIds.length === 0
-            ? 'border-[color-mix(in_srgb,#34d399_50%,transparent)] bg-[color-mix(in_srgb,#34d399_12%,transparent)] text-[#34d399]'
-            : isSelected
-              ? 'border-[color-mix(in_srgb,var(--accent)_58%,transparent)] bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]'
-              : isRecommended && !isRecommendationQuiet
-                ? 'border-[color-mix(in_srgb,var(--today-accent)_34%,transparent)] bg-[color-mix(in_srgb,var(--today-accent-soft)_42%,transparent)] text-[var(--today-text-soft)]'
-              : 'border-[var(--border-subtle)] text-[var(--text-muted)]',
-        )}>
-          <LessonNumberMarker lessonNumber={lesson.lessonNumber} selectedVibeId={selectedVibeId} />
-        </span>
-        <div className="flex min-w-0 flex-1 flex-col">
-          <div className="flex min-h-5 items-center justify-end">
-            <StatusIcon
-              isStartTarget={isSelected}
-              showCompletionFallback={status === 'complete' && completedVibeIds.length === 0}
-            />
-          </div>
-          <h3 className="mt-1 break-words text-base font-semibold leading-snug text-[var(--text-primary)]">
-            {lesson.title}
-          </h3>
-          <CompletedVibeBadges completedVibeIds={completedVibeIds} />
-        </div>
-      </div>
+      <span className="today-path-cardMarker" aria-hidden="true">
+        <LessonCellMarker
+          lessonNumber={lesson.lessonNumber}
+          selectedVibeId={selectedVibeId}
+          completedSelectedVibe={completedSelectedVibe}
+        />
+      </span>
+      <span className="sr-only">
+        {t('today.compactLessonTitle', {
+          sequence: lesson.lessonNumber,
+          title: lesson.title,
+        })}
+      </span>
     </button>
   )
 }
 
-function isMobileViewport() {
-  return typeof window !== 'undefined' && window.innerWidth < 768
+function LessonCellMarker({
+  lessonNumber,
+  selectedVibeId,
+  completedSelectedVibe,
+}: {
+  lessonNumber: number
+  selectedVibeId: ActiveGuidedVibeId
+  completedSelectedVibe: boolean
+}) {
+  if (completedSelectedVibe) {
+    return <CompletedLessonMarker lessonNumber={lessonNumber} selectedVibeId={selectedVibeId} />
+  }
+
+  return <LessonNumberMarker lessonNumber={lessonNumber} selectedVibeId={selectedVibeId} />
+}
+
+function CompletedLessonMarker({
+  lessonNumber,
+  selectedVibeId,
+}: {
+  lessonNumber: number
+  selectedVibeId: ActiveGuidedVibeId
+}) {
+  const emblemUrl = guidedVibes[selectedVibeId].emblem?.url
+
+  if (!emblemUrl) {
+    return <LessonNumberMarker lessonNumber={lessonNumber} selectedVibeId={selectedVibeId} />
+  }
+
+  return (
+    <img
+      src={emblemUrl}
+      alt=""
+      className="today-path-cardCompletionImage"
+      draggable={false}
+      data-completed-vibe-marker={selectedVibeId}
+    />
+  )
 }
 
 function LessonNumberMarker({
@@ -436,61 +445,4 @@ function LessonNumberMarker({
   }
 
   return <>{lessonNumber}</>
-}
-
-function CompletedVibeBadges({ completedVibeIds }: { completedVibeIds: ActiveGuidedVibeId[] }) {
-  if (completedVibeIds.length === 0) return <span className="mt-auto block min-h-7" aria-hidden="true" />
-
-  return (
-    <span className="today-vibe-completionBadges mt-auto flex min-h-7 flex-wrap items-end gap-1 pt-3" aria-hidden="true">
-      {completedVibeIds.map((vibeId) => {
-        const vibe = guidedVibes[vibeId]
-
-        return (
-          <span
-            key={vibeId}
-            className="today-vibe-completionBadge"
-            data-completed-vibe={vibeId}
-            title={vibe.label}
-          >
-            {guidedVibes[vibeId].emblem?.url && (
-              <img
-                src={guidedVibes[vibeId].emblem?.url}
-                alt=""
-                className="today-vibe-completionBadgeImage"
-                draggable={false}
-              />
-            )}
-          </span>
-        )
-      })}
-    </span>
-  )
-}
-
-function StatusIcon({
-  isStartTarget,
-  showCompletionFallback,
-}: {
-  isStartTarget: boolean
-  showCompletionFallback: boolean
-}) {
-  if (showCompletionFallback) {
-    return <CheckCircle2 className="h-5 w-5 shrink-0 text-[#34d399]" />
-  }
-
-  if (isStartTarget) {
-    return <Play className="h-5 w-5 shrink-0 text-[var(--accent)]" />
-  }
-
-  return <Circle className="h-5 w-5 shrink-0 text-[var(--text-muted)]" />
-}
-
-function getActionLabel(
-  t: ReturnType<typeof useTranslation>['t'],
-  status: ReturnType<typeof getTodayLessonVibeStatus>,
-) {
-  if (status === 'completed') return t('today.path.replayLesson')
-  if (status === 'skipped') return t('today.path.continueLesson')
-  return t('today.path.startLesson')
 }

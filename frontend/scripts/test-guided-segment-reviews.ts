@@ -66,7 +66,7 @@ assert('review assets are referenced by active vibe as WebPs', overviewSource.in
 assert('review tile references complete WebP asset from segment review completion state', overviewSource.includes('readGuidedSegmentReviewRecord') && overviewSource.includes('${selectedVibeId}-review-complete.webp') && overviewSource.includes('data-review-complete'))
 assert('review tiles no longer reference PNG review assets', !overviewSource.includes('-review.png'))
 assert('CSS defines separated segment review tile styling', cssSource.includes('.today-segment-reviewTile') && cssSource.includes('.today-path-segmentGrid'))
-assert('CSS constrains review banner size and keeps it object-contained', cssSource.includes('.today-segment-reviewImage') && cssSource.includes('max-height: 5.75rem') && cssSource.includes('max-width: min(100%, 42rem)') && cssSource.includes('object-fit: contain'))
+assert('CSS constrains compact review banner size and keeps it object-contained', cssSource.includes('.today-segment-reviewImage') && cssSource.includes('max-height: 2.65rem') && cssSource.includes('max-width: min(100%, 16rem)') && cssSource.includes('object-fit: contain'))
 
 console.log('\n[assets]')
 for (const vibeId of ['bright', 'wistful', 'sharp'] as const) {
