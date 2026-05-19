@@ -841,6 +841,17 @@ const GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-3',
+  title: 'Cebuano A1 Praxis 3',
+  shortTitle: 'A1 Praxis 3',
+  subtitle: 'Wege, Zeiten und Verkehr auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -34942,6 +34953,550 @@ const cebuanoA1Practical2Lessons: GuidedLessonDefinition[] = cebuanoA1Practical2
   }
 })
 
+const cebuanoA1Practical3Inputs: CebuanoP2LessonInput[] = [
+  {
+    slug: 'right-or-left',
+    title: 'Rechts oder links?',
+    situation: {
+      en: 'At a street corner, ask whether to go right or left.',
+      de: 'An einer Straßenecke fragst du, ob es rechts oder links geht.',
+    },
+    pedagogicalGoal: 'Mit tuo und wala eine sehr kurze Richtungswahl stellen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Sa tuo o sa wala?',
+        baseText: 'Nach rechts oder nach links?',
+      },
+      meaning: 'Eine knappe Wegfrage, wenn zwei Richtungen möglich sind.',
+      chunks: [
+        { id: 'sa-tuo', targetText: 'Sa tuo', baseText: 'nach rechts' },
+        { id: 'o', targetText: 'o', baseText: 'oder' },
+        { id: 'sa-wala', targetText: 'sa wala?', baseText: 'nach links?' },
+      ],
+      lessonItems: [
+        { id: 'tuo', targetText: 'tuo', baseText: 'rechts', acceptedAnswers: cebuanoAnswers('tuo', 'Tuo') },
+        { id: 'wala', targetText: 'wala', baseText: 'links', acceptedAnswers: cebuanoAnswers('wala', 'Wala') },
+        { id: 'sa-tuo', targetText: 'sa tuo', baseText: 'nach rechts', acceptedAnswers: cebuanoAnswers('sa tuo', 'Sa tuo') },
+        { id: 'sa-wala', targetText: 'sa wala', baseText: 'nach links', acceptedAnswers: cebuanoAnswers('sa wala', 'Sa wala') },
+      ],
+      buildChips: ['Sa tuo', 'o', 'sa wala?', 'abli', 'tiket'],
+      typeRecall: {
+        before: 'Sa ',
+        answer: 'tuo',
+        after: ' o sa wala?',
+        acceptedAnswers: cebuanoAnswers('tuo', 'Tuo'),
+        fallbackChoices: ['tuo', 'layo', 'abli', 'tiket'],
+      },
+      speakTarget: {
+        baseCue: 'Nach rechts oder nach links?',
+        targetPhrase: 'Sa tuo o sa wala?',
+        requiredTokens: ['tuo', 'wala'],
+        optionalTokens: ['sa', 'o'],
+      },
+      sceneCaption: 'Sa eskina, mangutana ka kon sa tuo o sa wala ang sakto nga agi.',
+      trophyWord: {
+        word: 'tuo',
+        meaning: 'rechts',
+        example: 'Sa tuo o sa wala?',
+        whyThisWord: 'Tuo ist der praktische Cebuano-Anker für rechts und passt direkt zur Wegentscheidung.',
+      },
+      placeholderCaption: 'Street corner with two clear direction choices.',
+      songMood: 'choosing right or left',
+      visualNotes: 'Corner sign, two arrows, tuo highlighted.',
+    }),
+  },
+  {
+    slug: 'is-it-far',
+    title: 'Ist es weit?',
+    situation: {
+      en: 'While navigating, ask if the place is far to walk.',
+      de: 'Unterwegs fragst du, ob der Ort zu Fuß weit ist.',
+    },
+    pedagogicalGoal: 'Layo ba ni lakwon? als kurze Distanzfrage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Layo ba ni lakwon?',
+        baseText: 'Ist das weit zu Fuß?',
+      },
+      meaning: 'Eine einfache Frage, bevor du entscheidest, ob du gehst.',
+      chunks: [
+        { id: 'layo-ba', targetText: 'Layo ba', baseText: 'ist es weit' },
+        { id: 'ni', targetText: 'ni', baseText: 'das hier' },
+        { id: 'lakwon', targetText: 'lakwon?', baseText: 'zu gehen?' },
+      ],
+      lessonItems: [
+        { id: 'layo', targetText: 'layo', baseText: 'weit / fern', acceptedAnswers: cebuanoAnswers('layo', 'Layo', 'layu', 'Layu') },
+        { id: 'lakwon', targetText: 'lakwon', baseText: 'zu Fuß zu gehen', acceptedAnswers: cebuanoAnswers('lakwon', 'Lakwon') },
+        { id: 'ba', targetText: 'ba', baseText: 'Fragepartikel', acceptedAnswers: cebuanoAnswers('ba', 'Ba') },
+        { id: 'ni', targetText: 'ni', baseText: 'dies hier', acceptedAnswers: cebuanoAnswers('ni', 'Ni') },
+      ],
+      buildChips: ['Layo ba', 'ni', 'lakwon?', 'sunod', 'taksi'],
+      typeRecall: {
+        before: '',
+        answer: 'Layo',
+        after: ' ba ni lakwon?',
+        acceptedAnswers: cebuanoAnswers('Layo', 'layo', 'Layu', 'layu'),
+        fallbackChoices: ['Layo', 'Abli', 'Sunod', 'Tuo'],
+      },
+      speakTarget: {
+        baseCue: 'Ist das weit zu Fuß?',
+        targetPhrase: 'Layo ba ni lakwon?',
+        requiredTokens: ['layo', 'ba', 'ni', 'lakwon'],
+        optionalTokens: ['layu'],
+      },
+      sceneCaption: 'Sa dalan, mosukod ka sa distansya una ka molakaw.',
+      trophyWord: {
+        word: 'layo',
+        meaning: 'weit / fern',
+        example: 'Layo ba ni lakwon?',
+        whyThisWord: 'Layo ist der sofort nutzbare Distanzanker für Wege und Entscheidungen zu Fuß.',
+      },
+      placeholderCaption: 'Sidewalk route check before walking farther.',
+      songMood: 'checking walking distance',
+      visualNotes: 'Map pin, walking line, layo highlighted.',
+    }),
+  },
+  {
+    slug: 'open-now',
+    title: 'Ist es geöffnet?',
+    situation: {
+      en: 'Outside a shop or office, check if it is open now.',
+      de: 'Vor einem Laden oder Büro fragst du, ob jetzt geöffnet ist.',
+    },
+    pedagogicalGoal: 'Abli ba karon? als direkte Öffnungsfrage sprechen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Abli ba karon?',
+        baseText: 'Ist es jetzt geöffnet?',
+      },
+      meaning: 'Eine kurze Frage an Tür, Schalter oder Ladenfront.',
+      chunks: [
+        { id: 'abli-ba', targetText: 'Abli ba', baseText: 'ist es geöffnet' },
+        { id: 'karon', targetText: 'karon?', baseText: 'jetzt?' },
+      ],
+      lessonItems: [
+        { id: 'abli', targetText: 'abli', baseText: 'offen / geöffnet', acceptedAnswers: cebuanoAnswers('abli', 'Abli') },
+        { id: 'karon', targetText: 'karon', baseText: 'jetzt', acceptedAnswers: cebuanoAnswers('karon', 'Karon') },
+        { id: 'sirado', targetText: 'sirado', baseText: 'geschlossen', acceptedAnswers: cebuanoAnswers('sirado', 'Sirado') },
+        { id: 'pultahan', targetText: 'pultahan', baseText: 'Tür', acceptedAnswers: cebuanoAnswers('pultahan', 'Pultahan') },
+      ],
+      buildChips: ['Abli ba', 'karon?', 'layo', 'eskina'],
+      typeRecall: {
+        before: '',
+        answer: 'Abli',
+        after: ' ba karon?',
+        acceptedAnswers: cebuanoAnswers('Abli', 'abli'),
+        fallbackChoices: ['Abli', 'Layo', 'Tiket', 'Sunod'],
+      },
+      speakTarget: {
+        baseCue: 'Ist es jetzt geöffnet?',
+        targetPhrase: 'Abli ba karon?',
+        requiredTokens: ['abli', 'ba', 'karon'],
+        optionalTokens: ['sirado'],
+      },
+      sceneCaption: 'Sa atubangan sa tindahan, mangutana ka una kon abli ba karon.',
+      trophyWord: {
+        word: 'abli',
+        meaning: 'offen / geöffnet',
+        example: 'Abli ba karon?',
+        whyThisWord: 'Abli ist die klare Cebuano-Form für offen und vermeidet die Tagalog-Form bukas.',
+      },
+      placeholderCaption: 'Shop door, open sign, learner checks before entering.',
+      songMood: 'checking if open',
+      visualNotes: 'Door sign, time marker, abli highlighted.',
+    }),
+  },
+  {
+    slug: 'which-bus',
+    title: 'Welcher Bus?',
+    situation: {
+      en: 'At a bus stop, ask which bus goes toward the market.',
+      de: 'An der Haltestelle fragst du, welcher Bus zum Markt fährt.',
+    },
+    pedagogicalGoal: 'Unsang bus plus paingon als einfache Verkehrsauswahl verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Unsang bus ang paingon sa merkado?',
+        baseText: 'Welcher Bus fährt zum Markt?',
+      },
+      meaning: 'Eine praktische Frage, wenn mehrere Busse möglich sind.',
+      chunks: [
+        { id: 'unsang-bus', targetText: 'Unsang bus', baseText: 'welcher Bus' },
+        { id: 'ang-paingon', targetText: 'ang paingon', baseText: 'geht in Richtung' },
+        { id: 'sa-merkado', targetText: 'sa merkado?', baseText: 'zum Markt?' },
+      ],
+      lessonItems: [
+        { id: 'unsang', targetText: 'unsang', baseText: 'welcher / welche', acceptedAnswers: cebuanoAnswers('unsang', 'Unsang') },
+        { id: 'bus', targetText: 'bus', baseText: 'Bus', acceptedAnswers: cebuanoAnswers('bus', 'Bus') },
+        { id: 'paingon', targetText: 'paingon', baseText: 'in Richtung / unterwegs nach', acceptedAnswers: cebuanoAnswers('paingon', 'Paingon') },
+        { id: 'merkado', targetText: 'merkado', baseText: 'Markt', acceptedAnswers: cebuanoAnswers('merkado', 'Merkado') },
+      ],
+      buildChips: ['Unsang bus', 'ang paingon', 'sa merkado?', 'tiket', 'layo'],
+      typeRecall: {
+        before: 'Unsang bus ang ',
+        answer: 'paingon',
+        after: ' sa merkado?',
+        acceptedAnswers: cebuanoAnswers('paingon', 'Paingon'),
+        fallbackChoices: ['paingon', 'abli', 'lakaw', 'tuo'],
+      },
+      speakTarget: {
+        baseCue: 'Welcher Bus fährt zum Markt?',
+        targetPhrase: 'Unsang bus ang paingon sa merkado?',
+        requiredTokens: ['unsang', 'bus', 'paingon', 'merkado'],
+        optionalTokens: ['ang', 'sa'],
+      },
+      sceneCaption: 'Sa hunonganan, daghang bus ang moagi ug mangutana ka sa paingon sa merkado.',
+      trophyWord: {
+        word: 'paingon',
+        meaning: 'in Richtung / unterwegs nach',
+        example: 'Unsang bus ang paingon sa merkado?',
+        whyThisWord: 'Paingon ist der nützliche Richtungsanker für Verkehr und Zielangaben.',
+      },
+      placeholderCaption: 'Bus stop with route signs toward the market.',
+      songMood: 'finding the bus direction',
+      visualNotes: 'Route board, bus icon, paingon highlighted.',
+    }),
+  },
+  {
+    slug: 'next-stop',
+    title: 'Nächste Haltestelle',
+    situation: {
+      en: 'On a bus, confirm whether this is the next stop.',
+      de: 'Im Bus bestätigst du, ob das die nächste Haltestelle ist.',
+    },
+    pedagogicalGoal: 'Sunod ba ni nga hunonganan? als Haltestellenfrage üben.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Sunod nga hunonganan ba ni?',
+        baseText: 'Ist das die nächste Haltestelle?',
+      },
+      meaning: 'Eine Sicherheitsfrage kurz vor dem Aussteigen.',
+      chunks: [
+        { id: 'sunod-nga-hunonganan', targetText: 'Sunod nga hunonganan', baseText: 'die nächste Haltestelle' },
+        { id: 'ba-ni', targetText: 'ba ni?', baseText: 'ist das?' },
+      ],
+      lessonItems: [
+        { id: 'sunod', targetText: 'sunod', baseText: 'nächste / folgend', acceptedAnswers: cebuanoAnswers('sunod', 'Sunod') },
+        { id: 'hunonganan', targetText: 'hunonganan', baseText: 'Haltestelle', acceptedAnswers: cebuanoAnswers('hunonganan', 'Hunonganan') },
+        { id: 'nga', targetText: 'nga', baseText: 'Bindewort', acceptedAnswers: cebuanoAnswers('nga', 'Nga') },
+        { id: 'ni', targetText: 'ni', baseText: 'dies hier', acceptedAnswers: cebuanoAnswers('ni', 'Ni') },
+      ],
+      buildChips: ['Sunod nga hunonganan', 'ba ni?', 'paingon', 'abli'],
+      typeRecall: {
+        before: '',
+        answer: 'Sunod',
+        after: ' nga hunonganan ba ni?',
+        acceptedAnswers: cebuanoAnswers('Sunod', 'sunod'),
+        fallbackChoices: ['Sunod', 'Layo', 'Tuo', 'Mosira'],
+      },
+      speakTarget: {
+        baseCue: 'Ist das die nächste Haltestelle?',
+        targetPhrase: 'Sunod nga hunonganan ba ni?',
+        requiredTokens: ['sunod', 'ni', 'hunonganan'],
+        optionalTokens: ['ba', 'nga'],
+      },
+      sceneCaption: 'Sulod sa bus, mosiguro ka kon sunod nga hunonganan ba ni.',
+      trophyWord: {
+        word: 'sunod',
+        meaning: 'nächste / folgend',
+        example: 'Sunod nga hunonganan ba ni?',
+        whyThisWord: 'Sunod trägt die praktische Idee von nächste und hilft bei Haltestellen und Reihenfolgen.',
+      },
+      placeholderCaption: 'Inside a bus approaching the next stop.',
+      songMood: 'confirming next stop',
+      visualNotes: 'Stop bell, route display, sunod highlighted.',
+    }),
+  },
+  {
+    slug: 'ticket-to-cebu',
+    title: 'Ein Ticket nach Cebu',
+    situation: {
+      en: 'At a transit counter, buy one ticket toward Cebu.',
+      de: 'Am Verkehrsschalter kaufst du ein Ticket nach Cebu.',
+    },
+    pedagogicalGoal: 'Usa ka tiket paingon sa Cebu als kurze Ticketbestellung sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Usa ka tiket paingon sa Cebu, palihug.',
+        baseText: 'Ein Ticket nach Cebu, bitte.',
+      },
+      meaning: 'Eine knappe Bestellung für Schalter, Hafen oder Busstation.',
+      chunks: [
+        { id: 'usa-ka-tiket', targetText: 'Usa ka tiket', baseText: 'ein Ticket' },
+        { id: 'paingon-sa-cebu', targetText: 'paingon sa Cebu,', baseText: 'nach Cebu,' },
+        { id: 'palihug', targetText: 'palihug.', baseText: 'bitte.' },
+      ],
+      lessonItems: [
+        { id: 'tiket', targetText: 'tiket', baseText: 'Ticket', acceptedAnswers: cebuanoAnswers('tiket', 'Tiket', 'ticket', 'Ticket') },
+        { id: 'usa-ka', targetText: 'usa ka', baseText: 'ein / eine Einheit', acceptedAnswers: cebuanoAnswers('usa ka', 'Usa ka') },
+        { id: 'paingon-sa', targetText: 'paingon sa', baseText: 'nach / in Richtung', acceptedAnswers: cebuanoAnswers('paingon sa', 'Paingon sa') },
+        { id: 'cebu', targetText: 'Cebu', baseText: 'Cebu', acceptedAnswers: cebuanoAnswers('Cebu', 'cebu') },
+      ],
+      buildChips: ['Usa ka tiket', 'paingon sa Cebu,', 'palihug.', 'resibo', 'eskina'],
+      typeRecall: {
+        before: 'Usa ka ',
+        answer: 'tiket',
+        after: ' paingon sa Cebu, palihug.',
+        acceptedAnswers: cebuanoAnswers('tiket', 'Tiket', 'ticket', 'Ticket'),
+        fallbackChoices: ['tiket', 'resibo', 'mapa', 'bus'],
+      },
+      speakTarget: {
+        baseCue: 'Ein Ticket nach Cebu, bitte.',
+        targetPhrase: 'Usa ka tiket paingon sa Cebu, palihug.',
+        requiredTokens: ['usa', 'ka', 'tiket', 'paingon', 'cebu'],
+        optionalTokens: ['ticket', 'palihug', 'palihog', 'sa'],
+      },
+      sceneCaption: 'Sa terminal, mopalit ka og usa ka tiket paingon sa Cebu.',
+      trophyWord: {
+        word: 'tiket',
+        meaning: 'Ticket',
+        example: 'Usa ka tiket paingon sa Cebu, palihug.',
+        whyThisWord: 'Tiket ist ein direkt nutzbarer Reiseanker und bleibt als ticket-Schreibung akzeptiert.',
+      },
+      placeholderCaption: 'Transit counter with one ticket to Cebu.',
+      songMood: 'buying a travel ticket',
+      visualNotes: 'Ticket window, destination label, tiket highlighted.',
+    }),
+  },
+  {
+    slug: 'when-closes',
+    title: 'Wann schließt es?',
+    situation: {
+      en: 'Outside a place, ask what time it closes.',
+      de: 'Vor einem Ort fragst du, um wie viel Uhr er schließt.',
+    },
+    pedagogicalGoal: 'Unsang orasa mosira? als einfache Schließzeitfrage verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Unsang orasa mosira?',
+        baseText: 'Um wie viel Uhr schließt es?',
+      },
+      meaning: 'Eine kurze Planungsfrage vor Laden, Museum oder Büro.',
+      chunks: [
+        { id: 'unsang-orasa', targetText: 'Unsang orasa', baseText: 'um wie viel Uhr' },
+        { id: 'mosira', targetText: 'mosira?', baseText: 'schließt es?' },
+      ],
+      lessonItems: [
+        { id: 'orasa', targetText: 'orasa', baseText: 'Uhrzeit', acceptedAnswers: cebuanoAnswers('orasa', 'Orasa') },
+        { id: 'mosira', targetText: 'mosira', baseText: 'schließt', acceptedAnswers: cebuanoAnswers('mosira', 'Mosira') },
+        { id: 'unsang-orasa', targetText: 'unsang orasa', baseText: 'um wie viel Uhr', acceptedAnswers: cebuanoAnswers('unsang orasa', 'Unsang orasa') },
+        { id: 'sira', targetText: 'sira', baseText: 'schließen', acceptedAnswers: cebuanoAnswers('sira', 'Sira') },
+      ],
+      buildChips: ['Unsang orasa', 'mosira?', 'abli', 'karon'],
+      typeRecall: {
+        before: 'Unsang orasa ',
+        answer: 'mosira',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('mosira', 'Mosira'),
+        fallbackChoices: ['mosira', 'abli', 'sunod', 'tiket'],
+      },
+      speakTarget: {
+        baseCue: 'Um wie viel Uhr schließt es?',
+        targetPhrase: 'Unsang orasa mosira?',
+        requiredTokens: ['unsang', 'orasa', 'mosira'],
+        optionalTokens: ['sira'],
+      },
+      sceneCaption: 'Sa gawas sa museyo o tindahan, mangutana ka sa oras sa pagsira.',
+      trophyWord: {
+        word: 'mosira',
+        meaning: 'schließt / wird schließen',
+        example: 'Unsang orasa mosira?',
+        whyThisWord: 'Mosira macht die Öffnungszeitfrage praktisch, ohne auf Tagalog-Vokabular auszuweichen.',
+      },
+      placeholderCaption: 'Door hours sign, learner asks closing time.',
+      songMood: 'checking closing time',
+      visualNotes: 'Clock and door sign, mosira highlighted.',
+    }),
+  },
+  {
+    slug: 'at-the-corner',
+    title: 'An der Ecke',
+    situation: {
+      en: 'Use a street corner as the landmark and turn right.',
+      de: 'Du nutzt die Ecke als Orientierungspunkt und biegst rechts ab.',
+    },
+    pedagogicalGoal: 'Sa eskina plus liko sa tuo als kurze Landmarken-Anweisung nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Sa eskina, liko sa tuo.',
+        baseText: 'An der Ecke, bieg rechts ab.',
+      },
+      meaning: 'Eine kurze Richtungsanweisung mit einem sichtbaren Orientierungspunkt.',
+      chunks: [
+        { id: 'sa-eskina', targetText: 'Sa eskina,', baseText: 'an der Ecke,' },
+        { id: 'liko-sa-tuo', targetText: 'liko sa tuo.', baseText: 'bieg rechts ab.' },
+      ],
+      lessonItems: [
+        { id: 'eskina', targetText: 'eskina', baseText: 'Ecke', acceptedAnswers: cebuanoAnswers('eskina', 'Eskina') },
+        { id: 'liko', targetText: 'liko', baseText: 'abbiegen', acceptedAnswers: cebuanoAnswers('liko', 'Liko') },
+        { id: 'sa-tuo', targetText: 'sa tuo', baseText: 'nach rechts', acceptedAnswers: cebuanoAnswers('sa tuo', 'Sa tuo') },
+        { id: 'sa-eskina', targetText: 'sa eskina', baseText: 'an der Ecke', acceptedAnswers: cebuanoAnswers('sa eskina', 'Sa eskina') },
+      ],
+      buildChips: ['Sa eskina,', 'liko sa tuo.', 'sunod', 'layo'],
+      typeRecall: {
+        before: 'Sa ',
+        answer: 'eskina',
+        after: ', liko sa tuo.',
+        acceptedAnswers: cebuanoAnswers('eskina', 'Eskina'),
+        fallbackChoices: ['eskina', 'tiket', 'abli', 'lakaw'],
+      },
+      speakTarget: {
+        baseCue: 'An der Ecke, bieg rechts ab.',
+        targetPhrase: 'Sa eskina, liko sa tuo.',
+        requiredTokens: ['eskina', 'liko', 'tuo'],
+        optionalTokens: ['sa'],
+      },
+      sceneCaption: 'Nakita nimo ang eskina ug mosulti ka nga didto moliko sa tuo.',
+      trophyWord: {
+        word: 'eskina',
+        meaning: 'Ecke',
+        example: 'Sa eskina, liko sa tuo.',
+        whyThisWord: 'Eskina ist ein sehr praktisches Landmarkenwort für Wegbeschreibungen in Cebuano.',
+      },
+      placeholderCaption: 'Street corner landmark with a right turn.',
+      songMood: 'turning at the corner',
+      visualNotes: 'Corner landmark, right arrow, eskina highlighted.',
+    }),
+  },
+  {
+    slug: 'walk-or-taxi',
+    title: 'Zu Fuß oder Taxi?',
+    situation: {
+      en: 'Choose between walking and taking a taxi.',
+      de: 'Du wählst zwischen Gehen und Taxi.',
+    },
+    pedagogicalGoal: 'Maglakaw ta o mag-taksi? als einfache Transportwahl sprechen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Maglakaw ta o mag-taksi?',
+        baseText: 'Gehen wir zu Fuß oder nehmen wir ein Taxi?',
+      },
+      meaning: 'Eine kurze Entscheidung zwischen zwei Fortbewegungsarten.',
+      chunks: [
+        { id: 'maglakaw-ta', targetText: 'Maglakaw ta', baseText: 'gehen wir zu Fuß' },
+        { id: 'o-mag-taksi', targetText: 'o mag-taksi?', baseText: 'oder nehmen wir ein Taxi?' },
+      ],
+      lessonItems: [
+        { id: 'lakaw', targetText: 'lakaw', baseText: 'gehen / laufen', acceptedAnswers: cebuanoAnswers('lakaw', 'Lakaw') },
+        { id: 'maglakaw', targetText: 'maglakaw', baseText: 'zu Fuß gehen', acceptedAnswers: cebuanoAnswers('maglakaw', 'Maglakaw') },
+        { id: 'taksi', targetText: 'taksi', baseText: 'Taxi', acceptedAnswers: cebuanoAnswers('taksi', 'Taksi', 'taxi', 'Taxi') },
+        { id: 'ta', targetText: 'ta', baseText: 'wir / lass uns', acceptedAnswers: cebuanoAnswers('ta', 'Ta') },
+      ],
+      buildChips: ['Maglakaw ta', 'o', 'mag-taksi?', 'tiket', 'paingon'],
+      typeRecall: {
+        before: 'Mag',
+        answer: 'lakaw',
+        after: ' ta o mag-taksi?',
+        acceptedAnswers: cebuanoAnswers('lakaw', 'Lakaw'),
+        fallbackChoices: ['lakaw', 'layo', 'sunod', 'tiket'],
+      },
+      speakTarget: {
+        baseCue: 'Gehen wir zu Fuß oder nehmen wir ein Taxi?',
+        targetPhrase: 'Maglakaw ta o mag-taksi?',
+        requiredTokens: ['maglakaw', 'ta', 'taksi'],
+        optionalTokens: ['lakaw', 'taxi', 'o', 'mag'],
+      },
+      sceneCaption: 'Sa kilid sa dalan, mopili mo kon maglakaw o mag-taksi.',
+      trophyWord: {
+        word: 'lakaw',
+        meaning: 'gehen / laufen',
+        example: 'Maglakaw ta o mag-taksi?',
+        whyThisWord: 'Lakaw ist ein Grundverb für Bewegung und macht die Taxi-oder-Gehen-Wahl sofort nutzbar.',
+      },
+      placeholderCaption: 'Sidewalk decision between walking and taxi.',
+      songMood: 'walking or taxi choice',
+      visualNotes: 'Footsteps, taxi sign, lakaw highlighted.',
+    }),
+  },
+  {
+    slug: 'missed-the-stop',
+    title: 'Haltestelle verpasst',
+    situation: {
+      en: 'Say that you went past the stop and need to recover.',
+      de: 'Du sagst, dass du an der Haltestelle vorbeigefahren bist.',
+    },
+    pedagogicalGoal: 'Milapas ko sa hunonganan als kurze Reparatur im Verkehr sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Milapas ko sa hunonganan.',
+        baseText: 'Ich bin an der Haltestelle vorbeigefahren.',
+      },
+      meaning: 'Ein kurzer Satz, wenn du eine Haltestelle verpasst hast.',
+      chunks: [
+        { id: 'milapas-ko', targetText: 'Milapas ko', baseText: 'ich bin vorbeigegangen / vorbeigefahren' },
+        { id: 'sa-hunonganan', targetText: 'sa hunonganan.', baseText: 'an der Haltestelle.' },
+      ],
+      lessonItems: [
+        { id: 'milapas', targetText: 'milapas', baseText: 'ging / fuhr vorbei', acceptedAnswers: cebuanoAnswers('milapas', 'Milapas') },
+        { id: 'lapas', targetText: 'lapas', baseText: 'vorbei / darüber hinaus', acceptedAnswers: cebuanoAnswers('lapas', 'Lapas') },
+        { id: 'hunonganan', targetText: 'hunonganan', baseText: 'Haltestelle', acceptedAnswers: cebuanoAnswers('hunonganan', 'Hunonganan') },
+        { id: 'milapas-ko', targetText: 'milapas ko', baseText: 'ich bin vorbei', acceptedAnswers: cebuanoAnswers('milapas ko', 'Milapas ko') },
+      ],
+      buildChips: ['Milapas ko', 'sa hunonganan.', 'sunod', 'tabang'],
+      typeRecall: {
+        before: '',
+        answer: 'Milapas',
+        after: ' ko sa hunonganan.',
+        acceptedAnswers: cebuanoAnswers('Milapas', 'milapas'),
+        fallbackChoices: ['Milapas', 'Sunod', 'Abli', 'Tiket'],
+      },
+      speakTarget: {
+        baseCue: 'Ich bin an der Haltestelle vorbeigefahren.',
+        targetPhrase: 'Milapas ko sa hunonganan.',
+        requiredTokens: ['milapas', 'ko', 'hunonganan'],
+        optionalTokens: ['lapas', 'sa'],
+      },
+      sceneCaption: 'Human molapas sa hunonganan, klaro nimo nga kinahanglan ka og tabang sa sunod nga lakang.',
+      trophyWord: {
+        word: 'milapas',
+        meaning: 'ging / fuhr vorbei',
+        example: 'Milapas ko sa hunonganan.',
+        whyThisWord: 'Milapas gibt dem verpassten Halt eine klare Cebuano-Handlung und passt zur Reparatur im Verkehr.',
+      },
+      placeholderCaption: 'Bus has passed the stop, learner explains what happened.',
+      songMood: 'recovering after missed stop',
+      visualNotes: 'Passed stop sign, route line, milapas highlighted.',
+    }),
+  },
+]
+
+const cebuanoA1Practical3Lessons: GuidedLessonDefinition[] = cebuanoA1Practical3Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-3-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = cebuanoA1Practical3Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 3 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: lessonInput.variant,
+    },
+  }
+})
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -48564,6 +49119,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     vibeVariants: { bright: brightGermanP7Lesson010 },
   },
   ...cebuanoA1Practical2Lessons,
+  ...cebuanoA1Practical3Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -48635,6 +49191,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_CEBUANO_ONE_METADATA,
     GUIDED_TODAY_PATH_GERMAN_SEVEN_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_TWO_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA,
   ]
 }
 
