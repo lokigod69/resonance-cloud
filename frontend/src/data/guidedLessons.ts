@@ -20380,7 +20380,7 @@ const brightFrenchLesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Bonjour, vous parlez français ?',
-    chips: ['Bonjour,', 'vous parlez', 'français ?', 'merci', 'pardon'],
+    chips: ['Bonjour,', 'vous parlez', 'français ?', 'bonsoir', 'pardon'],
   },
   typeRecall: {
     before: 'Bonjour, vous ',
@@ -20490,7 +20490,7 @@ const brightFrenchLesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Excusez-moi, où est la gare ?',
-    chips: ['Excusez-moi,', 'où est', 'la gare ?', 'ici', 'merci'],
+    chips: ['Excusez-moi,', 'où est', 'la gare ?', 'à gauche', 'tout droit'],
   },
   typeRecall: {
     before: 'Excusez-moi, ',
@@ -20545,7 +20545,7 @@ const brightFrenchLesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Je voudrais un café, s'il vous plaît.",
-    chips: ['Je voudrais', 'un café,', "s'il vous plaît.", 'merci', 'avec du lait'],
+    chips: ['Je voudrais', 'un café,', "s'il vous plaît.", 'un thé', 'avec du lait'],
   },
   typeRecall: {
     before: 'Je voudrais un ',
@@ -20600,7 +20600,7 @@ const brightFrenchLesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Combien ça coûte, s'il vous plaît ?",
-    chips: ['Combien', 'ça coûte,', "s'il vous plaît ?", 'cher', 'merci'],
+    chips: ['Combien', 'ça coûte,', "s'il vous plaît ?", 'cher', 'un euro'],
   },
   typeRecall: {
     before: '',
@@ -20655,7 +20655,7 @@ const brightFrenchLesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'À quelle heure part le train ?',
-    chips: ['À quelle heure', 'part', 'le train ?', 'gare', 'maintenant'],
+    chips: ['À quelle heure', 'part', 'le train ?', 'gare', 'demain matin'],
   },
   typeRecall: {
     before: 'À quelle heure part le ',
@@ -20710,7 +20710,7 @@ const brightFrenchLesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "J'ai besoin d'aide, s'il vous plaît.",
-    chips: ["J'ai besoin", "d'aide,", "s'il vous plaît.", 'ici', 'merci'],
+    chips: ["J'ai besoin", "d'aide,", "s'il vous plaît.", 'une adresse', 'un plan'],
   },
   typeRecall: {
     before: "J'ai besoin d'",
@@ -20765,7 +20765,7 @@ const brightFrenchLesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "C'est très joli ici.",
-    chips: ["C'est", 'très joli', 'ici.', 'calme', 'merci'],
+    chips: ["C'est", 'très joli', 'ici.', 'calme', 'lumineux'],
   },
   typeRecall: {
     before: "C'est très joli ",
@@ -20820,7 +20820,7 @@ const brightFrenchLesson009: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Demain à sept heures. D'accord !",
-    chips: ['Demain', 'à sept heures.', "D'accord !", 'merci', 'ici'],
+    chips: ['Demain', 'à sept heures.', "D'accord !", 'ce soir', 'à bientôt'],
   },
   typeRecall: {
     before: '',
@@ -31135,7 +31135,7 @@ const brightFrenchP2Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Excusez-moi, je ne comprends pas. Vous pouvez m'aider ?",
-    chips: ['Excusez-moi,', 'je ne comprends pas.', "Vous pouvez m'aider ?", 'répéter', 'merci'],
+    chips: ['Excusez-moi,', 'je ne comprends pas.', "Vous pouvez m'aider ?", 'répéter', 'lentement'],
   },
   typeRecall: {
     before: 'Excusez-moi, je ne ',
@@ -31191,7 +31191,7 @@ const brightFrenchP2Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Vous pouvez l'écrire, s'il vous plaît ?",
-    chips: ['Vous pouvez', "l'écrire,", "s'il vous plaît ?", 'ici', 'merci'],
+    chips: ['Vous pouvez', "l'écrire,", "s'il vous plaît ?", 'le numéro', 'votre nom'],
   },
   typeRecall: {
     before: 'Vous pouvez ',
@@ -31301,7 +31301,7 @@ const brightFrenchP2Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Ça ou ça, s'il vous plaît ?",
-    chips: ['Ça', 'ou ça,', "s'il vous plaît ?", 'celui-là', 'merci'],
+    chips: ['Ça', 'ou ça,', "s'il vous plaît ?", 'celui-là', 'lequel'],
   },
   typeRecall: {
     before: '',
@@ -31355,7 +31355,7 @@ const brightFrenchP2Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Vous avez ça ?',
-    chips: ['Vous avez', 'ça ?', 'en bleu', 'ici'],
+    chips: ['Vous avez', 'ça ?', 'en bleu', 'demain'],
   },
   typeRecall: {
     before: 'Vous ',
@@ -31409,7 +31409,7 @@ const brightFrenchP2Lesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Je peux payer par carte ?',
-    chips: ['Je peux payer', 'par carte ?', 'en espèces', 'merci'],
+    chips: ['Je peux payer', 'par carte ?', 'en espèces', 'sans contact'],
   },
   typeRecall: {
     before: 'Je peux payer par ',
@@ -31464,7 +31464,7 @@ const brightFrenchP2Lesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Un ticket et un sac, s'il vous plaît.",
-    chips: ['Un ticket', 'et un sac,', "s'il vous plaît.", 'merci', 'la carte'],
+    chips: ['Un ticket', 'et un sac,', "s'il vous plaît.", 'un reçu', 'la carte'],
   },
   typeRecall: {
     before: 'Un ',
@@ -31525,7 +31525,7 @@ const brightFrenchP2Lesson008: GuidedLessonVibeVariant = {
     answer: 'réservation',
     after: ' au nom de Martin.',
     acceptedAnswers: ['réservation', 'reservation', 'Réservation', 'Reservation'],
-    fallbackChoices: ['réservation', 'addition', 'carte', 'gare'],
+    fallbackChoices: ['réservation', 'chambre', 'nom', 'table'],
   },
   speakTarget: {
     baseCue: 'Ich habe eine Reservierung auf den Namen Martin.',
@@ -31573,14 +31573,14 @@ const brightFrenchP2Lesson009: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Excusez-moi, c'est le bon bus ?",
-    chips: ['Excusez-moi,', "c'est le bon", 'bus ?', 'train', 'merci'],
+    chips: ['Excusez-moi,', "c'est le bon", 'bus ?', 'train', 'la ligne'],
   },
   typeRecall: {
     before: "Excusez-moi, c'est le bon ",
     answer: 'bus',
     after: ' ?',
     acceptedAnswers: ['bus', 'Bus'],
-    fallbackChoices: ['bus', 'sac', 'ticket', 'plan'],
+    fallbackChoices: ['bus', 'train', 'métro', 'ligne'],
   },
   speakTarget: {
     baseCue: 'Entschuldigen Sie, ist das der richtige Bus?',
@@ -31627,14 +31627,14 @@ const brightFrenchP2Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Un instant, s'il vous plaît.",
-    chips: ['Un instant,', "s'il vous plaît.", 'attendez', 'merci'],
+    chips: ['Un instant,', "s'il vous plaît.", 'attendez', 'deux minutes'],
   },
   typeRecall: {
     before: 'Un ',
     answer: 'instant',
     after: ", s'il vous plaît.",
     acceptedAnswers: ['instant', 'Instant'],
-    fallbackChoices: ['instant', 'ticket', 'bus', 'plan'],
+    fallbackChoices: ['instant', 'minute', 'moment', 'pause'],
   },
   speakTarget: {
     baseCue: 'Einen Augenblick, bitte.',
@@ -31682,14 +31682,14 @@ const brightFrenchP3Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Je tourne à droite ou à gauche ?',
-    chips: ['Je tourne', 'à droite', 'ou à gauche ?', 'tout droit', 'merci'],
+    chips: ['Je tourne', 'à droite', 'ou à gauche ?', 'tout droit', "près d'ici"],
   },
   typeRecall: {
     before: 'Je tourne à ',
     answer: 'droite',
     after: ' ou à gauche ?',
     acceptedAnswers: ['droite', 'Droite'],
-    fallbackChoices: ['droite', 'gauche', 'loin', 'gare'],
+    fallbackChoices: ['droite', 'gauche', 'tout droit', 'rue'],
   },
   speakTarget: {
     baseCue: 'Biege ich rechts oder links ab?',
@@ -31736,14 +31736,14 @@ const brightFrenchP3Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "C'est loin à pied ?",
-    chips: ["C'est loin", 'à pied ?', 'en taxi', 'maintenant'],
+    chips: ["C'est loin", 'à pied ?', 'en taxi', "près d'ici"],
   },
   typeRecall: {
     before: "C'est ",
     answer: 'loin',
     after: ' à pied ?',
     acceptedAnswers: ['loin', 'Loin'],
-    fallbackChoices: ['loin', 'près', 'droite', 'heure'],
+    fallbackChoices: ['loin', 'près', 'rapide', 'court'],
   },
   speakTarget: {
     baseCue: 'Ist es zu Fuß weit?',
@@ -31790,14 +31790,14 @@ const brightFrenchP3Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "C'est ouvert maintenant ?",
-    chips: ["C'est ouvert", 'maintenant ?', 'demain', 'merci'],
+    chips: ["C'est ouvert", 'maintenant ?', 'demain', 'fermé'],
   },
   typeRecall: {
     before: "C'est ",
     answer: 'ouvert',
     after: ' maintenant ?',
     acceptedAnswers: ['ouvert', 'Ouvert'],
-    fallbackChoices: ['ouvert', 'fermé', 'loin', 'prochain'],
+    fallbackChoices: ['ouvert', 'fermé', 'vide', 'plein'],
   },
   speakTarget: {
     baseCue: 'Ist jetzt geöffnet?',
@@ -31845,7 +31845,7 @@ const brightFrenchP3Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Quel bus va au musée, s’il vous plaît ?',
-    chips: ['Quel bus', 'va au musée,', 's’il vous plaît ?', 'à pied', 'ici'],
+    chips: ['Quel bus', 'va au musée,', 's’il vous plaît ?', 'à pied', 'l’arrêt'],
   },
   typeRecall: {
     before: 'Quel bus va au ',
@@ -31906,7 +31906,7 @@ const brightFrenchP3Lesson005: GuidedLessonVibeVariant = {
     answer: 'prochain',
     after: ' arrêt ?',
     acceptedAnswers: ['prochain', 'Prochain'],
-    fallbackChoices: ['prochain', 'ouvert', 'loin', 'bon'],
+    fallbackChoices: ['prochain', 'dernier', 'premier', 'suivant'],
   },
   speakTarget: {
     baseCue: 'Ist das die nächste Haltestelle?',
@@ -31955,7 +31955,7 @@ const brightFrenchP3Lesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Je voudrais un billet, s’il vous plaît.',
-    chips: ['Je voudrais', 'un billet,', 's’il vous plaît.', 'deux cafés', 'merci'],
+    chips: ['Je voudrais', 'un billet,', 's’il vous plaît.', 'aller simple', 'deux cafés'],
   },
   typeRecall: {
     before: 'Je voudrais un ',
@@ -32009,7 +32009,7 @@ const brightFrenchP3Lesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'À quelle heure ça ferme ?',
-    chips: ['À quelle heure', 'ça ferme ?', 'maintenant', 'demain'],
+    chips: ['À quelle heure', 'ça ferme ?', 'ce soir', 'demain'],
   },
   typeRecall: {
     before: 'À quelle ',
@@ -32172,7 +32172,7 @@ const brightFrenchP3Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "J'ai raté mon arrêt. Vous pouvez m'aider ?",
-    chips: ["J'ai raté", 'mon arrêt.', "Vous pouvez m'aider ?", 'à droite', 'merci'],
+    chips: ["J'ai raté", 'mon arrêt.', "Vous pouvez m'aider ?", 'à droite', 'je suis perdu'],
   },
   typeRecall: {
     before: "J'ai raté mon ",
@@ -32227,14 +32227,14 @@ const brightFrenchP4Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Une table pour deux, s’il vous plaît.',
-    chips: ['Une table', 'pour deux,', 's’il vous plaît.', 'un billet', 'merci'],
+    chips: ['Une table', 'pour deux,', 's’il vous plaît.', 'une chaise', 'près de la fenêtre'],
   },
   typeRecall: {
     before: 'Une ',
     answer: 'table',
     after: ' pour deux, s’il vous plaît.',
     acceptedAnswers: ['table', 'Table'],
-    fallbackChoices: ['table', 'carte', 'addition', 'thé'],
+    fallbackChoices: ['table', 'chaise', 'fenêtre', 'terrasse'],
   },
   speakTarget: {
     baseCue: 'Einen Tisch für zwei, bitte.',
@@ -32288,7 +32288,7 @@ const brightFrenchP4Lesson002: GuidedLessonVibeVariant = {
     answer: 'carte',
     after: ', s’il vous plaît.',
     acceptedAnswers: ['carte', 'Carte'],
-    fallbackChoices: ['carte', 'table', 'thé', 'sucre'],
+    fallbackChoices: ['carte', 'menu', 'addition', 'dessert'],
   },
   speakTarget: {
     baseCue: 'Die Speisekarte, bitte.',
@@ -32343,7 +32343,7 @@ const brightFrenchP4Lesson003: GuidedLessonVibeVariant = {
     answer: 'thé',
     after: ', s’il vous plaît.',
     acceptedAnswers: ['thé', 'the', 'Thé', 'The'],
-    fallbackChoices: ['thé', 'sucre', 'carte', 'table'],
+    fallbackChoices: ['thé', 'café', 'eau', 'jus'],
   },
   speakTarget: {
     baseCue: 'Ich hätte gern einen Tee, bitte.',
@@ -32390,14 +32390,14 @@ const brightFrenchP4Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Sans sucre, s’il vous plaît.',
-    chips: ['Sans sucre,', 's’il vous plaît.', 'avec lait', 'merci'],
+    chips: ['Sans sucre,', 's’il vous plaît.', 'avec lait', 'avec citron'],
   },
   typeRecall: {
     before: 'Sans ',
     answer: 'sucre',
     after: ', s’il vous plaît.',
     acceptedAnswers: ['sucre', 'Sucre'],
-    fallbackChoices: ['sucre', 'thé', 'table', 'frais'],
+    fallbackChoices: ['sucre', 'lait', 'citron', 'sel'],
   },
   speakTarget: {
     baseCue: 'Ohne Zucker, bitte.',
@@ -32451,7 +32451,7 @@ const brightFrenchP4Lesson005: GuidedLessonVibeVariant = {
     answer: 'frais',
     after: ' ?',
     acceptedAnswers: ['frais', 'Frais', 'frai', 'Frai'],
-    fallbackChoices: ['frais', 'bon', 'beau', 'loin'],
+    fallbackChoices: ['frais', 'chaud', 'froid', 'sec'],
   },
   speakTarget: {
     baseCue: 'Ist das frisch?',
@@ -32505,7 +32505,7 @@ const brightFrenchP4Lesson006: GuidedLessonVibeVariant = {
     answer: 'tout',
     after: '.',
     acceptedAnswers: ['tout', 'Tout', 'tou', 'Tou'],
-    fallbackChoices: ['tout', 'sucre', 'carte', 'beau'],
+    fallbackChoices: ['tout', 'encore', 'assez', 'fini'],
   },
   speakTarget: {
     baseCue: 'Nein danke, das ist alles.',
@@ -32559,7 +32559,7 @@ const brightFrenchP4Lesson007: GuidedLessonVibeVariant = {
     answer: 'emporter',
     after: ', s’il vous plaît.',
     acceptedAnswers: ['emporter', 'Emporter'],
-    fallbackChoices: ['emporter', 'addition', 'table', 'frais'],
+    fallbackChoices: ['emporter', 'manger', 'payer', 'rester'],
   },
   speakTarget: {
     baseCue: 'Zum Mitnehmen, bitte.',
@@ -32606,14 +32606,14 @@ const brightFrenchP4Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "C'était très bon.",
-    chips: ["C'était", 'très bon.', 'sans sucre', 'merci'],
+    chips: ["C'était", 'très bon.', 'sans sucre', "l'addition"],
   },
   typeRecall: {
     before: "C'était très ",
     answer: 'bon',
     after: '.',
     acceptedAnswers: ['bon', 'Bon'],
-    fallbackChoices: ['bon', 'beau', 'frais', 'loin'],
+    fallbackChoices: ['bon', 'mauvais', 'chaud', 'froid'],
   },
   speakTarget: {
     baseCue: 'Es war sehr gut.',
@@ -32667,7 +32667,7 @@ const brightFrenchP4Lesson009: GuidedLessonVibeVariant = {
     answer: 'beau',
     after: " aujourd'hui.",
     acceptedAnswers: ['beau', 'Beau'],
-    fallbackChoices: ['beau', 'bon', 'frais', 'sucre'],
+    fallbackChoices: ['beau', 'chaud', 'gris', 'froid'],
   },
   speakTarget: {
     baseCue: 'Heute ist schönes Wetter.',
@@ -32721,7 +32721,7 @@ const brightFrenchP4Lesson010: GuidedLessonVibeVariant = {
     answer: 'addition',
     after: ", s'il vous plaît.",
     acceptedAnswers: ['addition', 'Addition'],
-    fallbackChoices: ['addition', 'table', 'carte', 'thé'],
+    fallbackChoices: ['addition', 'menu', 'dessert', 'café'],
   },
   speakTarget: {
     baseCue: 'Die Rechnung, bitte.',
@@ -32768,14 +32768,14 @@ const brightFrenchP5Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Désolé pour le retard.',
-    chips: ['Désolé', 'pour le retard.', 'à demain', 'merci'],
+    chips: ['Désolé', 'pour le retard.', 'à demain', 'excuse-moi'],
   },
   typeRecall: {
     before: 'Désolé pour le ',
     answer: 'retard',
     after: '.',
     acceptedAnswers: ['retard', 'Retard'],
-    fallbackChoices: ['retard', 'prénom', 'soir', 'parc'],
+    fallbackChoices: ['retard', 'minute', 'heure', 'excuse'],
   },
   speakTarget: {
     baseCue: 'Entschuldigung für die Verspätung.',
@@ -32876,14 +32876,14 @@ const brightFrenchP5Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Quel est ton prénom ?',
-    chips: ['Quel est', 'ton prénom ?', 'salut', 'merci'],
+    chips: ['Quel est', 'ton prénom ?', 'salut', "comment tu t'appelles"],
   },
   typeRecall: {
     before: 'Quel est ton ',
     answer: 'prénom',
     after: ' ?',
     acceptedAnswers: ['prénom', 'prenom', 'Prénom', 'Prenom'],
-    fallbackChoices: ['prénom', 'retard', 'soir', 'parc'],
+    fallbackChoices: ['prénom', 'nom', 'âge', 'adresse'],
   },
   speakTarget: {
     baseCue: 'Wie ist dein Vorname?',
@@ -32983,7 +32983,7 @@ const brightFrenchP5Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Tu viens d'où ?",
-    chips: ['Tu viens', "d'où ?", 'où est', 'ici'],
+    chips: ['Tu viens', "d'où ?", 'où est', 'de Paris'],
   },
   typeRecall: {
     before: 'Tu ',
@@ -33098,7 +33098,7 @@ const brightFrenchP5Lesson007: GuidedLessonVibeVariant = {
     answer: 'soir',
     after: ' ?',
     acceptedAnswers: ['soir', 'Soir'],
-    fallbackChoices: ['soir', 'parc', 'retard', 'prénom'],
+    fallbackChoices: ['soir', 'matin', 'midi', 'nuit'],
   },
   speakTarget: {
     baseCue: 'Hast du heute Abend Zeit?',
@@ -33145,14 +33145,14 @@ const brightFrenchP5Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'On se voit au parc ?',
-    chips: ['On se voit', 'au parc ?', 'à Paris', 'merci'],
+    chips: ['On se voit', 'au parc ?', 'à Paris', 'au café'],
   },
   typeRecall: {
     before: 'On se voit au ',
     answer: 'parc',
     after: ' ?',
     acceptedAnswers: ['parc', 'Parc'],
-    fallbackChoices: ['parc', 'soir', 'table', 'coin'],
+    fallbackChoices: ['parc', 'café', 'musée', 'gare'],
   },
   speakTarget: {
     baseCue: 'Treffen wir uns im Park?',
@@ -33260,7 +33260,7 @@ const brightFrenchP5Lesson010: GuidedLessonVibeVariant = {
     answer: 'revoir',
     after: '.',
     acceptedAnswers: ['revoir', 'Revoir'],
-    fallbackChoices: ['revoir', 'retard', 'soir', 'parc'],
+    fallbackChoices: ['revoir', 'demain', 'bientôt', 'salut'],
   },
   speakTarget: {
     baseCue: 'Bis morgen, auf Wiedersehen.',
@@ -33368,7 +33368,7 @@ const brightFrenchP6Lesson002: GuidedLessonVibeVariant = {
     answer: 'pharmacie',
     after: " près d'ici ?",
     acceptedAnswers: ['pharmacie', 'Pharmacie'],
-    fallbackChoices: ['pharmacie', 'table', 'gare', 'carte'],
+    fallbackChoices: ['pharmacie', 'hôpital', 'cabinet', 'adresse'],
   },
   speakTarget: {
     baseCue: 'Gibt es eine Apotheke in der Nähe?',
@@ -33423,7 +33423,7 @@ const brightFrenchP6Lesson003: GuidedLessonVibeVariant = {
     answer: 'médicament',
     after: ', s’il vous plaît.',
     acceptedAnswers: ['médicament', 'medicament', 'Médicament', 'Medicament'],
-    fallbackChoices: ['médicament', 'médecin', 'pharmacie', 'eau'],
+    fallbackChoices: ['médicament', 'médecin', 'sirop', 'comprimé'],
   },
   speakTarget: {
     baseCue: 'Ich hätte gern ein Medikament, bitte.',
@@ -33477,7 +33477,7 @@ const brightFrenchP6Lesson004: GuidedLessonVibeVariant = {
     answer: 'mal',
     after: ' ici.',
     acceptedAnswers: ['mal', 'Mal'],
-    fallbackChoices: ['mal', 'mieux', 'eau', 'sens'],
+    fallbackChoices: ['mal', 'mieux', 'douleur', 'sens'],
   },
   speakTarget: {
     baseCue: 'Ich habe hier Schmerzen.',
@@ -33524,14 +33524,14 @@ const brightFrenchP6Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "J'ai mal à la tête.",
-    chips: ["J'ai mal", 'à la tête.', 'un médicament', 'merci'],
+    chips: ["J'ai mal", 'à la tête.', 'un médicament', 'un médecin'],
   },
   typeRecall: {
     before: "J'ai mal à la ",
     answer: 'tête',
     after: '.',
     acceptedAnswers: ['tête', 'tete', 'Tête', 'Tete'],
-    fallbackChoices: ['tête', 'table', 'carte', 'eau'],
+    fallbackChoices: ['tête', 'bras', 'dos', 'ventre'],
   },
   speakTarget: {
     baseCue: 'Ich habe Kopfschmerzen.',
@@ -33585,7 +33585,7 @@ const brightFrenchP6Lesson006: GuidedLessonVibeVariant = {
     answer: 'eau',
     after: ", s'il vous plaît.",
     acceptedAnswers: ['eau', 'Eau'],
-    fallbackChoices: ['eau', 'thé', 'sucre', 'pain'],
+    fallbackChoices: ['eau', 'verre', 'jus', 'lait'],
   },
   speakTarget: {
     baseCue: 'Wasser, bitte.',
@@ -33686,7 +33686,7 @@ const brightFrenchP6Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Je suis allergique.',
-    chips: ['Je suis', 'allergique.', 'sans sucre', 'merci'],
+    chips: ['Je suis', 'allergique.', 'sans sucre', 'attention'],
   },
   typeRecall: {
     before: 'Je suis ',
@@ -33802,7 +33802,7 @@ const brightFrenchP6Lesson010: GuidedLessonVibeVariant = {
     answer: 'mieux',
     after: ', merci.',
     acceptedAnswers: ['mieux', 'Mieux'],
-    fallbackChoices: ['mieux', 'mal', 'eau', 'tête'],
+    fallbackChoices: ['mieux', 'mal', 'fatigué', 'calme'],
   },
   speakTarget: {
     baseCue: 'Es geht besser, danke.',
@@ -33857,7 +33857,7 @@ const brightFrenchP7Lesson001: GuidedLessonVibeVariant = {
     answer: 'ticket',
     after: ", s'il vous plaît.",
     acceptedAnswers: ['ticket', 'Ticket'],
-    fallbackChoices: ['ticket', 'café', 'plan', 'sac'],
+    fallbackChoices: ['ticket', 'billet', 'carte', 'reçu'],
   },
   speakTarget: {
     baseCue: 'Ich hätte gern ein Ticket, bitte.',
@@ -33912,7 +33912,7 @@ const brightFrenchP7Lesson002: GuidedLessonVibeVariant = {
     answer: 'quai',
     after: ", s'il vous plaît ?",
     acceptedAnswers: ['quai', 'Quai'],
-    fallbackChoices: ['quai', 'coin', 'parc', 'soir'],
+    fallbackChoices: ['quai', 'arrêt', 'voie', 'porte'],
   },
   speakTarget: {
     baseCue: 'An welchem Bussteig ist der Bus, bitte?',
@@ -34130,7 +34130,7 @@ const brightFrenchP7Lesson006: GuidedLessonVibeVariant = {
     answer: 'gare',
     after: ' ?',
     acceptedAnswers: ['gare', 'Gare'],
-    fallbackChoices: ['gare', 'pharmacie', 'table', 'carte'],
+    fallbackChoices: ['gare', 'station', 'centre', 'hôtel'],
   },
   speakTarget: {
     baseCue: 'Gehen/fahren wir zum Bahnhof?',
@@ -34293,7 +34293,7 @@ const brightFrenchP7Lesson009: GuidedLessonVibeVariant = {
     answer: 'temps',
     after: ' ?',
     acceptedAnswers: ['temps', 'Temps'],
-    fallbackChoices: ['temps', 'ticket', 'quai', 'soir'],
+    fallbackChoices: ['temps', 'minute', 'heure', 'trajet'],
   },
   speakTarget: {
     baseCue: 'Wie lange dauert das?',
@@ -34401,7 +34401,7 @@ const brightFrenchP8Lesson001: GuidedLessonVibeVariant = {
     answer: 'hôtel',
     after: '.',
     acceptedAnswers: ['hôtel', 'hotel', 'Hôtel', 'Hotel'],
-    fallbackChoices: ['hôtel', 'étage', 'gare', 'parc'],
+    fallbackChoices: ['hôtel', 'réception', 'chambre', 'entrée'],
   },
   speakTarget: {
     baseCue: 'Ich habe eine Reservierung im Hotel.',
@@ -34453,7 +34453,7 @@ const brightFrenchP8Lesson002: GuidedLessonVibeVariant = {
     answer: 'chambre',
     after: ", s'il vous plaît.",
     acceptedAnswers: ['chambre', 'Chambre'],
-    fallbackChoices: ['chambre', 'table', 'gare', 'pharmacie'],
+    fallbackChoices: ['chambre', 'lit', 'clé', 'hôtel'],
   },
   speakTarget: {
     baseCue: 'Ich hätte gern ein Zimmer, bitte.',
@@ -34494,14 +34494,14 @@ const brightFrenchP8Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Ma chambre est à quel étage ?",
-    chips: ['Ma chambre est', 'à quel étage ?', 'le bus', 'merci'],
+    chips: ['Ma chambre est', 'à quel étage ?', 'le bus', 'la réception'],
   },
   typeRecall: {
     before: 'Ma chambre est à quel ',
     answer: 'étage',
     after: ' ?',
     acceptedAnswers: ['étage', 'etage', 'Étage', 'Etage'],
-    fallbackChoices: ['étage', 'quai', 'coin', 'soir'],
+    fallbackChoices: ['étage', 'porte', 'ascenseur', 'couloir'],
   },
   speakTarget: {
     baseCue: 'Auf welcher Etage ist mein Zimmer?',
@@ -34549,7 +34549,7 @@ const brightFrenchP8Lesson004: GuidedLessonVibeVariant = {
     answer: 'clé',
     after: " de la chambre, s'il vous plaît.",
     acceptedAnswers: ['clé', 'cle', 'Clé', 'Cle'],
-    fallbackChoices: ['clé', 'carte', 'tête', 'eau'],
+    fallbackChoices: ['clé', 'carte', 'porte', 'réception'],
   },
   speakTarget: {
     baseCue: 'Den Zimmerschlüssel, bitte.',
@@ -34597,7 +34597,7 @@ const brightFrenchP8Lesson005: GuidedLessonVibeVariant = {
     answer: 'Wi-Fi',
     after: ' ici ?',
     acceptedAnswers: ['Wi-Fi', 'wifi', 'wi-fi', 'Wifi', 'WIFI'],
-    fallbackChoices: ['Wi-Fi', 'taxi', 'ticket', 'thé'],
+    fallbackChoices: ['Wi-Fi', 'code', 'mot de passe', 'réseau'],
   },
   speakTarget: {
     baseCue: 'Gibt es hier WLAN?',
@@ -34875,7 +34875,7 @@ const brightFrenchP9Lesson001: GuidedLessonVibeVariant = {
     { id: 'moi-cest', targetText: "moi, c'est", baseText: 'ich bin', acceptedAnswers: ["moi, c'est", "Moi, c'est", "moi c'est", "Moi c'est", 'moi c’est', 'Moi c’est', 'moi, c’est', 'Moi, c’est', 'moi cest'] },
   ],
   build: { targetText: "Salut, moi, c'est Marie.", chips: ['Salut,', "moi, c'est Marie.", 'bonjour', 'une chambre'] },
-  typeRecall: { before: '', answer: 'Salut', after: ", moi, c'est Marie.", acceptedAnswers: ['Salut', 'salut'], fallbackChoices: ['Salut', 'Merci', 'Pardon', 'Bonsoir'] },
+  typeRecall: { before: '', answer: 'Salut', after: ", moi, c'est Marie.", acceptedAnswers: ['Salut', 'salut'], fallbackChoices: ['Salut', 'Bonsoir', 'Bonjour', 'Coucou'] },
   speakTarget: { baseCue: 'Hi, ich bin Marie.', targetPhrase: "Salut, moi, c'est Marie.", language: 'fr-FR', passingThreshold: 0.8, requiredTokens: ['salut', 'marie'], optionalTokens: ['moi', 'cest', 'c', 'est'] },
   sceneCaption: 'Bei einem lockeren Treffen stellst du dich kurz mit Vornamen vor.',
   trophyWord: { word: 'salut', meaning: 'hi / hallo', example: "Salut, moi, c'est Marie.", whyThisWord: 'Salut ist informell. Es passt zu Gleichaltrigen oder lockeren Treffen, nicht an Rezeption oder Schalter.' },
@@ -34971,7 +34971,7 @@ const brightFrenchP9Lesson005: GuidedLessonVibeVariant = {
     { id: 'on-se-voit-ici', targetText: 'on se voit ici', baseText: 'wir sehen uns hier', acceptedAnswers: ['on se voit ici', 'On se voit ici'] },
   ],
   build: { targetText: 'Rendez-vous ici ?', chips: ['Rendez-vous', 'ici ?', 'je pars', 'à quel étage'] },
-  typeRecall: { before: '', answer: 'Rendez-vous', after: ' ici ?', acceptedAnswers: ['Rendez-vous', 'rendez-vous', 'Rendez vous', 'rendez vous'], fallbackChoices: ['Rendez-vous', 'Bonjour', 'Merci', 'Bonne soirée'] },
+  typeRecall: { before: '', answer: 'Rendez-vous', after: ' ici ?', acceptedAnswers: ['Rendez-vous', 'rendez-vous', 'Rendez vous', 'rendez vous'], fallbackChoices: ['Rendez-vous', 'Retrouvons-nous', 'Restons', 'Attendons'] },
   speakTarget: { baseCue: 'Treffen wir uns hier?', targetPhrase: 'Rendez-vous ici ?', language: 'fr-FR', passingThreshold: 0.8, requiredTokens: ['rendez', 'vous', 'ici'], optionalTokens: [] },
   sceneCaption: 'Direkt am Ort schlägst du ihn als Treffpunkt vor.',
   trophyWord: { word: 'rendez-vous', meaning: 'Treffen / Termin', example: 'Rendez-vous ici ?', whyThisWord: 'Rendez-vous ist ein Treffen oder Termin. Trotz vous im Wort ist es hier ein Nomen, keine formelle Anrede.' },
@@ -34995,7 +34995,7 @@ const brightFrenchP9Lesson006: GuidedLessonVibeVariant = {
     { id: 'je-suis-dehors', targetText: 'je suis dehors', baseText: 'ich bin draußen', acceptedAnswers: ['je suis dehors', 'Je suis dehors'] },
   ],
   build: { targetText: "J'attends dehors.", chips: ["J'attends", 'dehors.', 'dans la chambre', 'plus tard'] },
-  typeRecall: { before: "J'attends ", answer: 'dehors', after: '.', acceptedAnswers: ['dehors', 'Dehors'], fallbackChoices: ['dehors', 'dedans', 'ici', 'loin'] },
+  typeRecall: { before: "J'attends ", answer: 'dehors', after: '.', acceptedAnswers: ['dehors', 'Dehors'], fallbackChoices: ['dehors', 'dedans', 'devant', 'derrière'] },
   speakTarget: { baseCue: 'Ich warte draußen.', targetPhrase: "J'attends dehors.", language: 'fr-FR', passingThreshold: 0.8, requiredTokens: ['attends', 'dehors'], optionalTokens: ['jattends', 'j', 'attends'] },
   sceneCaption: 'An der Tür oder auf dem Gehweg sagst du, dass du draußen wartest.',
   trophyWord: { word: 'dehors', meaning: 'draußen', example: "J'attends dehors.", whyThisWord: 'Dehors ist draußen. J’attends zeigt die Pflichtelision von je vor Vokal.' },
@@ -35091,7 +35091,7 @@ const brightFrenchP9Lesson010: GuidedLessonVibeVariant = {
     { id: 'soir', targetText: 'soir', baseText: 'Abend', acceptedAnswers: ['soir', 'Soir'] },
   ],
   build: { targetText: 'Bonne soirée.', chips: ['Bonne', 'soirée.', 'à demain midi', 'je pars'] },
-  typeRecall: { before: 'Bonne ', answer: 'soirée', after: '.', acceptedAnswers: ['soirée', 'soiree', 'Soirée', 'Soiree'], fallbackChoices: ['soirée', 'journée', 'nuit', 'chambre'] },
+  typeRecall: { before: 'Bonne ', answer: 'soirée', after: '.', acceptedAnswers: ['soirée', 'soiree', 'Soirée', 'Soiree'], fallbackChoices: ['soirée', 'journée', 'nuit', 'route'] },
   speakTarget: { baseCue: 'Schönen Abend.', targetPhrase: 'Bonne soirée.', language: 'fr-FR', passingThreshold: 0.8, requiredTokens: ['bonne', 'soirée'], optionalTokens: ['soiree'] },
   sceneCaption: 'Am Abend verabschiedest du dich höflich, ohne bonne nuit zu sagen.',
   trophyWord: { word: 'soirée', meaning: 'Abend', example: 'Bonne soirée.', whyThisWord: 'Bonne soirée wünscht einen schönen Abend beim Weggehen. Bonne nuit passt erst zum Schlafengehen.' },
@@ -35115,7 +35115,7 @@ const brightFrenchP10Lesson001: GuidedLessonVibeVariant = {
     { id: 'une-bonne-journee', targetText: 'une bonne journée', baseText: 'ein guter Tag', acceptedAnswers: ['une bonne journée', 'une bonne journee', 'Une bonne journée', 'Une bonne journee'] },
   ],
   build: { targetText: "C'était une bonne journée.", chips: ["C'était", 'une bonne journée.', 'bonne nuit', 'pour le moment'] },
-  typeRecall: { before: "C'était une bonne ", answer: 'journée', after: '.', acceptedAnswers: ['journée', 'journee', 'Journée', 'Journee'], fallbackChoices: ['journée', 'nuit', 'chambre', 'gare'] },
+  typeRecall: { before: "C'était une bonne ", answer: 'journée', after: '.', acceptedAnswers: ['journée', 'journee', 'Journée', 'Journee'], fallbackChoices: ['journée', 'soirée', 'nuit', 'semaine'] },
   speakTarget: { baseCue: 'Es war ein guter Tag.', targetPhrase: "C'était une bonne journée.", language: 'fr-FR', passingThreshold: 0.8, requiredTokens: ['cétait', 'bonne', 'journée'], optionalTokens: ['cetait', 'journee', 'une'] },
   sceneCaption: 'Am Ende des Tages ziehst du ein kurzes positives Fazit.',
   trophyWord: { word: 'journée', meaning: 'Tag', example: "C'était une bonne journée.", whyThisWord: 'Journée meint den erlebten Tag. Bonne journée ist feminin; deshalb steht bonne, nicht bon.' },
@@ -35210,7 +35210,7 @@ const brightFrenchP10Lesson005: GuidedLessonVibeVariant = {
     { id: 'je-suis', targetText: 'je suis', baseText: 'ich bin', acceptedAnswers: ['je suis', 'Je suis'] },
     { id: 'suis-fatigue', targetText: 'suis fatigué', baseText: 'bin müde', acceptedAnswers: ['suis fatigué', 'suis fatigue', 'suis fatiguée', 'suis fatiguee'] },
   ],
-  build: { targetText: 'Je suis fatigué maintenant.', chips: ['Je suis', 'fatigué maintenant.', 'bonne nuit', 'merci'] },
+  build: { targetText: 'Je suis fatigué maintenant.', chips: ['Je suis', 'fatigué maintenant.', 'bonne nuit', 'je dois y aller'] },
   typeRecall: { before: 'Je suis ', answer: 'fatigué', after: ' maintenant.', acceptedAnswers: ['fatigué', 'fatigue', 'Fatigué', 'Fatigue', 'fatiguée', 'fatiguee', 'Fatiguée', 'Fatiguee'], fallbackChoices: ['fatigué', 'ouvert', 'prochain', 'allergique'] },
   speakTarget: { baseCue: 'Ich bin jetzt müde.', targetPhrase: 'Je suis fatigué maintenant.', language: 'fr-FR', passingThreshold: 0.8, requiredTokens: ['suis', 'fatigué', 'maintenant'], optionalTokens: ['fatigue', 'fatiguée', 'je'] },
   sceneCaption: 'Nach einem langen Tag sagst du schlicht, dass du müde bist.',
@@ -35259,7 +35259,7 @@ const brightFrenchP10Lesson007: GuidedLessonVibeVariant = {
     { id: 'la', targetText: 'la', baseText: 'die', acceptedAnswers: ['la', 'La'] },
   ],
   build: { targetText: 'À la prochaine.', chips: ['À la', 'prochaine.', 'demain midi', 'bonne soirée'] },
-  typeRecall: { before: 'À la ', answer: 'prochaine', after: '.', acceptedAnswers: ['prochaine', 'Prochaine'], fallbackChoices: ['prochaine', 'journée', 'chambre', 'gare'] },
+  typeRecall: { before: 'À la ', answer: 'prochaine', after: '.', acceptedAnswers: ['prochaine', 'Prochaine'], fallbackChoices: ['prochaine', 'semaine', 'fois', 'sortie'] },
   speakTarget: { baseCue: 'Bis zum nächsten Mal.', targetPhrase: 'À la prochaine.', language: 'fr-FR', passingThreshold: 0.8, requiredTokens: ['prochaine'], optionalTokens: ['à', 'a', 'la'] },
   sceneCaption: 'Du verabschiedest dich freundlich, ohne schon einen Termin festzulegen.',
   trophyWord: { word: 'prochaine', meaning: 'nächste', example: 'À la prochaine.', whyThisWord: 'À la prochaine ist die feste Abschiedsformel für bis zum nächsten Mal. Sie ist offen, anders als à demain.' },
