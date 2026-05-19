@@ -8,21 +8,9 @@ import {
   type CurriculumLevel,
   type CurriculumPerSourceEnrichment,
 } from '@/data/curriculumCategories'
+import { KNOWN_CURRICULUM_ENTRY_IMAGES } from '@/data/curriculumEntryImageManifest'
 import { curriculumEntryImagePath, normalizeCurriculumTerm } from '@/lib/curriculumImagePath'
 import { isoToWizardValue } from '@/lib/languages'
-
-// Pre-rendered pilot entry assets currently in public/curriculum/categories.
-// When more pilot assets land, expand this set. Terms not in the set get a
-// null thumbnail_url at import time and fall through to the existing
-// placeholder behavior on Canvas, DeckView, and the modal surfaces.
-const KNOWN_CURRICULUM_ENTRY_IMAGES: ReadonlySet<string> = new Set([
-  'en/familie_beziehungen/father',
-  'en/familie_beziehungen/mother',
-  'en/familie_beziehungen/brother',
-  'en/familie_beziehungen/sister',
-  'en/familie_beziehungen/son',
-  'en/familie_beziehungen/daughter',
-])
 
 export interface ImportedCurriculumDeckRow {
   id: string
