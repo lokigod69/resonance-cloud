@@ -15455,7 +15455,7 @@ const brightItalianLesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Salve, parla italiano?',
-    chips: ['Salve,', 'parla', 'italiano?', 'Lei', 'grazie'],
+    chips: ['Salve,', 'parla', 'italiano?', 'Lei', 'buongiorno'],
   },
   typeRecall: {
     before: 'Salve, ',
@@ -15510,7 +15510,7 @@ const brightItalianLesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Scusi, può ripetere?',
-    chips: ['Scusi,', 'può', 'ripetere?', 'più lentamente', 'grazie'],
+    chips: ['Scusi,', 'può', 'ripetere?', 'più lentamente', 'piano'],
   },
   typeRecall: {
     before: 'Scusi, può ',
@@ -15565,7 +15565,7 @@ const brightItalianLesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Scusi, dov'è la stazione?",
-    chips: ['Scusi,', "dov'è", 'la stazione?', 'qui vicino', 'grazie'],
+    chips: ['Scusi,', "dov'è", 'la stazione?', 'qui vicino', 'il bagno'],
   },
   typeRecall: {
     before: 'Scusi, ',
@@ -15620,7 +15620,7 @@ const brightItalianLesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Vorrei un caffè, per favore.',
-    chips: ['Vorrei', 'un caffè,', 'per favore.', 'macchiato', 'grazie'],
+    chips: ['Vorrei', 'un caffè,', 'per favore.', 'macchiato', 'zucchero'],
   },
   typeRecall: {
     before: 'Vorrei un ',
@@ -15729,7 +15729,7 @@ const brightItalianLesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'A che ora parte il treno?',
-    chips: ['A che ora', 'parte', 'il treno?', 'binario', 'adesso'],
+    chips: ['A che ora', 'parte', 'il treno?', 'binario', 'alle otto'],
   },
   typeRecall: {
     before: 'A che ora parte il ',
@@ -15784,7 +15784,7 @@ const brightItalianLesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ho bisogno di aiuto, per favore.',
-    chips: ['Ho bisogno', 'di aiuto,', 'per favore.', 'qui', 'grazie'],
+    chips: ['Ho bisogno', 'di aiuto,', 'per favore.', 'telefono', 'mappa'],
   },
   typeRecall: {
     before: 'Ho bisogno di ',
@@ -16057,7 +16057,7 @@ const brightItalianP2Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Può scriverlo, per favore?',
-    chips: ['Può', 'scriverlo,', 'per favore?', 'qui', 'grazie'],
+    chips: ['Può', 'scriverlo,', 'per favore?', 'penna', 'numero'],
   },
   typeRecall: {
     before: 'Può ',
@@ -16072,7 +16072,7 @@ const brightItalianP2Lesson002: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['può', 'scriverlo', 'per', 'favore'],
-    optionalTokens: ['qui', 'mi', 'lo'],
+    optionalTokens: ['penna', 'mi', 'lo'],
   },
   sceneCaption: 'Am Schalter reichst du Stift oder Notiz hin und bittest, etwas Wichtiges aufzuschreiben.',
   trophyWord: {
@@ -16111,7 +16111,7 @@ const brightItalianP2Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Mi può mostrare sulla mappa?',
-    chips: ['Mi può mostrare', 'sulla mappa?', 'qui', 'per favore'],
+    chips: ['Mi può mostrare', 'sulla mappa?', 'telefono', 'per favore'],
   },
   typeRecall: {
     before: 'Mi può mostrare sulla ',
@@ -16166,7 +16166,7 @@ const brightItalianP2Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Questo o quello?',
-    chips: ['Questo', 'o', 'quello?', 'meglio', 'qui'],
+    chips: ['Questo', 'o', 'quello?', 'meglio', 'altro'],
   },
   typeRecall: {
     before: '',
@@ -16221,14 +16221,14 @@ const brightItalianP2Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Questo è disponibile?',
-    chips: ['Questo', 'è', 'disponibile?', 'ancora', 'subito'],
+    chips: ['Questo', 'è', 'disponibile?', 'ancora', 'in negozio'],
   },
   typeRecall: {
     before: 'Questo è ',
     answer: 'disponibile',
     after: '?',
     acceptedAnswers: ['disponibile', 'Disponibile'],
-    fallbackChoices: ['disponibile', 'pronto', 'libero', 'aperto'],
+    fallbackChoices: ['disponibile', 'finito', 'libero', 'aperto'],
   },
   speakTarget: {
     baseCue: 'Ist das verfügbar?',
@@ -16236,7 +16236,7 @@ const brightItalianP2Lesson005: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['questo', 'disponibile'],
-    optionalTokens: ['è', 'ancora', 'subito', 'per', 'favore'],
+    optionalTokens: ['è', 'ancora', 'negozio', 'per', 'favore'],
   },
   sceneCaption: 'Im kleinen Laden zeigst du kurz auf etwas und fragst, ob es gerade noch zu haben ist.',
   trophyWord: {
@@ -16493,7 +16493,7 @@ const brightItalianP2Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Un momento, per favore.',
-    chips: ['Un momento,', 'per favore.', 'attimo', 'subito'],
+    chips: ['Un momento,', 'per favore.', 'attimo', 'alla cassa'],
   },
   typeRecall: {
     before: 'Un ',
@@ -16508,7 +16508,7 @@ const brightItalianP2Lesson010: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['momento', 'per', 'favore'],
-    optionalTokens: ['un', 'attimo', 'subito', 'scusi'],
+    optionalTokens: ['un', 'attimo', 'aspetti', 'scusi'],
   },
   sceneCaption: 'Mitten im Bezahlen suchst du kurz die Karte oder das Wort und bittest höflich um einen Moment.',
   trophyWord: {
@@ -16548,7 +16548,7 @@ const brightItalianP3Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Scusi, a destra o a sinistra?',
-    chips: ['Scusi,', 'a destra', 'o a sinistra?', 'dritto', 'qui'],
+    chips: ['Scusi,', 'a destra', 'o a sinistra?', 'dritto', 'incrocio'],
   },
   typeRecall: {
     before: 'Scusi, a ',
@@ -16610,7 +16610,7 @@ const brightItalianP3Lesson002: GuidedLessonVibeVariant = {
     answer: 'lontano',
     after: '?',
     acceptedAnswers: ['lontano', 'Lontano'],
-    fallbackChoices: ['lontano', 'vicino', 'aperto', 'pronto'],
+    fallbackChoices: ['lontano', 'vicino', 'aperto', 'dietro'],
   },
   speakTarget: {
     baseCue: 'Entschuldigung, ist es weit?',
@@ -16657,14 +16657,14 @@ const brightItalianP3Lesson003: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'È aperto?',
-    chips: ['È', 'aperto?', 'oggi', 'ancora'],
+    chips: ['È', 'aperto?', 'orario', 'ancora'],
   },
   typeRecall: {
     before: 'È ',
     answer: 'aperto',
     after: '?',
     acceptedAnswers: ['aperto', 'Aperto'],
-    fallbackChoices: ['aperto', 'chiuso', 'pronto', 'libero'],
+    fallbackChoices: ['aperto', 'chiuso', 'tardi', 'presto'],
   },
   speakTarget: {
     baseCue: 'Ist es geöffnet?',
@@ -16672,7 +16672,7 @@ const brightItalianP3Lesson003: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['aperto'],
-    optionalTokens: ['è', 'oggi', 'ancora', 'scusi'],
+    optionalTokens: ['è', 'orario', 'ancora', 'scusi'],
   },
   sceneCaption: 'Vor einem kleinen Laden hebst du kurz den Blick zur Tür und prüfst, ob jetzt geöffnet ist.',
   trophyWord: {
@@ -16712,7 +16712,7 @@ const brightItalianP3Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Quale autobus va in centro?',
-    chips: ['Quale autobus', 'va', 'in centro?', 'qui', 'grazie'],
+    chips: ['Quale autobus', 'va', 'in centro?', 'fermata', 'biglietto'],
   },
   typeRecall: {
     before: 'Quale ',
@@ -16767,7 +16767,7 @@ const brightItalianP3Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Scusi, è la prossima fermata?',
-    chips: ['Scusi,', 'è la prossima', 'fermata?', 'qui', 'scendo'],
+    chips: ['Scusi,', 'è la prossima', 'fermata?', 'uscita', 'scendo'],
   },
   typeRecall: {
     before: 'Scusi, è la prossima ',
@@ -16875,7 +16875,7 @@ const brightItalianP3Lesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'A che ora chiude?',
-    chips: ['A che ora', 'chiude?', 'oggi', 'stasera'],
+    chips: ['A che ora', 'chiude?', 'orario', 'stasera'],
   },
   typeRecall: {
     before: 'A che ora ',
@@ -16890,7 +16890,7 @@ const brightItalianP3Lesson007: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['ora', 'chiude'],
-    optionalTokens: ['a', 'che', 'oggi', 'stasera'],
+    optionalTokens: ['a', 'che', 'orario', 'stasera'],
   },
   sceneCaption: 'Vor dem Museum prüfst du kurz, wann zugemacht wird, bevor du eintrittst.',
   trophyWord: {
@@ -16929,7 +16929,7 @@ const brightItalianP3Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: "Devo girare all'angolo?",
-    chips: ['Devo girare', "all'angolo?", 'dopo', 'qui'],
+    chips: ['Devo girare', "all'angolo?", 'incrocio', 'semaforo'],
   },
   typeRecall: {
     before: "Devo girare all'",
@@ -16944,7 +16944,7 @@ const brightItalianP3Lesson008: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['devo', 'girare', 'angolo'],
-    optionalTokens: ['qui', 'dopo', 'scusi'],
+    optionalTokens: ['incrocio', 'semaforo', 'scusi'],
   },
   sceneCaption: 'Am Gehweg-Eck zeigst du kurz und fragst, ob hier der Abbiegepunkt ist.',
   trophyWord: {
@@ -17263,7 +17263,7 @@ const brightItalianP4Lesson004: GuidedLessonVibeVariant = {
     answer: 'Senza',
     after: ' zucchero, per favore.',
     acceptedAnswers: ['senza', 'Senza'],
-    fallbackChoices: ['Senza', 'Con', 'Solo', 'Molto'],
+    fallbackChoices: ['Senza', 'Con', 'Poco', 'Latte'],
   },
   speakTarget: {
     baseCue: 'Ohne Zucker, bitte.',
@@ -17310,14 +17310,14 @@ const brightItalianP4Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'È fresco?',
-    chips: ['È', 'fresco?', 'oggi', 'pane'],
+    chips: ['È', 'fresco?', 'pane', 'frutta'],
   },
   typeRecall: {
     before: 'È ',
     answer: 'fresco',
     after: '?',
     acceptedAnswers: ['fresco', 'Fresco'],
-    fallbackChoices: ['fresco', 'caldo', 'buono', 'pronto'],
+    fallbackChoices: ['fresco', 'caldo', 'secco', 'freddo'],
   },
   speakTarget: {
     baseCue: 'Ist es frisch?',
@@ -17325,7 +17325,7 @@ const brightItalianP4Lesson005: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['fresco'],
-    optionalTokens: ['è', 'oggi', 'pane', 'scusi'],
+    optionalTokens: ['è', 'pane', 'frutta', 'scusi'],
   },
   sceneCaption: 'Am Bäckerei-Tresen zeigst du kurz auf ein Stück Brot und prüfst die Frische.',
   trophyWord: {
@@ -17371,7 +17371,7 @@ const brightItalianP4Lesson006: GuidedLessonVibeVariant = {
     answer: 'altro',
     after: ', grazie.',
     acceptedAnswers: ['altro', 'Altro'],
-    fallbackChoices: ['altro', 'tutto', 'basta', 'solo'],
+    fallbackChoices: ['altro', 'tutto', 'basta', 'conto'],
   },
   speakTarget: {
     baseCue: 'Nichts mehr, danke.',
@@ -17418,7 +17418,7 @@ const brightItalianP4Lesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Da portare via, per favore.',
-    chips: ['Da portare via,', 'per favore.', 'qui', 'grazie'],
+    chips: ['Da portare via,', 'per favore.', 'al tavolo', 'sacchetto'],
   },
   typeRecall: {
     before: 'Da ',
@@ -17473,7 +17473,7 @@ const brightItalianP4Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Era molto buono!',
-    chips: ['Era', 'molto', 'buono!', 'davvero', 'grazie'],
+    chips: ['Era', 'molto', 'buono!', 'caldo', 'servizio'],
   },
   typeRecall: {
     before: 'Era molto ',
@@ -17488,7 +17488,7 @@ const brightItalianP4Lesson008: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['era', 'buono'],
-    optionalTokens: ['molto', 'davvero', 'grazie'],
+    optionalTokens: ['molto', 'caldo', 'servizio'],
   },
   sceneCaption: 'Am Tisch nach dem Essen drehst du dich kurz zur Bedienung und lobst die Mahlzeit.',
   trophyWord: {
@@ -17527,14 +17527,14 @@ const brightItalianP4Lesson009: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Che bella giornata oggi!',
-    chips: ['Che bella giornata', 'oggi!', 'davvero', 'sole'],
+    chips: ['Che bella giornata', 'oggi!', 'vento', 'sole'],
   },
   typeRecall: {
     before: 'Che bella giornata ',
     answer: 'oggi',
     after: '!',
     acceptedAnswers: ['oggi', 'Oggi'],
-    fallbackChoices: ['oggi', 'ieri', 'domani', 'sempre'],
+    fallbackChoices: ['oggi', 'ieri', 'domani', 'sole'],
   },
   speakTarget: {
     baseCue: 'Was für ein schöner Tag heute!',
@@ -17542,7 +17542,7 @@ const brightItalianP4Lesson009: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['bella', 'giornata', 'oggi'],
-    optionalTokens: ['che', 'davvero', 'sole'],
+    optionalTokens: ['che', 'vento', 'sole'],
   },
   sceneCaption: 'Am Tresen drehst du dich locker zur Bedienung und teilst eine kurze positive Bemerkung.',
   trophyWord: {
@@ -17636,14 +17636,14 @@ const brightItalianP5Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Scusa, sono in ritardo.',
-    chips: ['Scusa,', 'sono', 'in ritardo.', 'tardi', 'davvero'],
+    chips: ['Scusa,', 'sono', 'in ritardo.', 'tardi', 'mi dispiace'],
   },
   typeRecall: {
     before: 'Sono ',
     answer: 'tardi',
     after: '.',
     acceptedAnswers: ['tardi', 'Tardi'],
-    fallbackChoices: ['tardi', 'presto', 'qui', 'pronto'],
+    fallbackChoices: ['tardi', 'presto', 'scusa', 'ritardo'],
   },
   speakTarget: {
     baseCue: 'Entschuldige, ich bin spät dran.',
@@ -17651,7 +17651,7 @@ const brightItalianP5Lesson001: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['scusa', 'sono', 'ritardo'],
-    optionalTokens: ['in', 'tardi', 'davvero'],
+    optionalTokens: ['in', 'tardi', 'scusa'],
   },
   sceneCaption: 'Du trittst etwas später ein und entschuldigst dich locker bei einem Freund.',
   trophyWord: {
@@ -17690,7 +17690,7 @@ const brightItalianP5Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Ho dimenticato il nome.',
-    chips: ['Ho dimenticato', 'il nome.', 'numero', 'davvero'],
+    chips: ['Ho dimenticato', 'il nome.', 'numero', 'documento'],
   },
   typeRecall: {
     before: 'Ho ',
@@ -17705,7 +17705,7 @@ const brightItalianP5Lesson002: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['ho', 'dimenticato', 'nome'],
-    optionalTokens: ['il', 'davvero', 'scusa'],
+    optionalTokens: ['il', 'documento', 'scusa'],
   },
   sceneCaption: 'Mitten im Gespräch gibst du ruhig zu, dass dir der Name entfallen ist.',
   trophyWord: {
@@ -17798,7 +17798,7 @@ const brightItalianP5Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Piacere di conoscerti.',
-    chips: ['Piacere', 'di conoscerti.', 'anche', 'davvero'],
+    chips: ['Piacere', 'di conoscerti.', 'ugualmente', 'nome'],
   },
   typeRecall: {
     before: '',
@@ -17813,7 +17813,7 @@ const brightItalianP5Lesson004: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['piacere', 'conoscerti'],
-    optionalTokens: ['di', 'anche', 'molto'],
+    optionalTokens: ['di', 'ugualmente', 'piacere'],
   },
   sceneCaption: 'Nach der ersten Vorstellung gibst du ein warmes, kurzes Echo zurück.',
   trophyWord: {
@@ -17967,7 +17967,7 @@ const brightItalianP5Lesson007: GuidedLessonVibeVariant = {
     answer: 'stasera',
     after: '?',
     acceptedAnswers: ['stasera', 'Stasera'],
-    fallbackChoices: ['stasera', 'oggi', 'domani', 'adesso'],
+    fallbackChoices: ['stasera', 'oggi', 'domani', 'dopo'],
   },
   speakTarget: {
     baseCue: 'Hast du heute Abend Zeit?',
@@ -18083,7 +18083,7 @@ const brightItalianP5Lesson009: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['magari', 'domani'],
-    optionalTokens: ['allora', 'va', 'bene'],
+    optionalTokens: ['allora', 'va', "d'accordo"],
   },
   sceneCaption: 'Du verschiebst den Plan höflich-locker auf einen anderen Tag.',
   trophyWord: {
@@ -18175,14 +18175,14 @@ const brightItalianP6Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Non sto bene, mi può aiutare?',
-    chips: ['Non sto bene,', 'mi può aiutare?', 'male', 'davvero'],
+    chips: ['Non sto bene,', 'mi può aiutare?', 'male', 'farmacia'],
   },
   typeRecall: {
     before: 'Non sto ',
     answer: 'bene',
     after: ', mi può aiutare?',
     acceptedAnswers: ['bene', 'Bene'],
-    fallbackChoices: ['bene', 'male', 'pronto', 'sicuro'],
+    fallbackChoices: ['bene', 'male', 'aiuto', 'farmacia'],
   },
   speakTarget: {
     baseCue: 'Mir geht es nicht gut, können Sie mir helfen?',
@@ -18339,14 +18339,14 @@ const brightItalianP6Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Mi fa male qui.',
-    chips: ['Mi fa male', 'qui.', 'molto', 'davvero'],
+    chips: ['Mi fa male', 'qui.', 'molto', 'braccio'],
   },
   typeRecall: {
     before: 'Mi fa ',
     answer: 'male',
     after: ' qui.',
     acceptedAnswers: ['male', 'Male'],
-    fallbackChoices: ['male', 'bene', 'caldo', 'freddo'],
+    fallbackChoices: ['male', 'dolore', 'caldo', 'freddo'],
   },
   speakTarget: {
     baseCue: 'Es tut mir hier weh.',
@@ -18354,7 +18354,7 @@ const brightItalianP6Lesson004: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['fa', 'male', 'qui'],
-    optionalTokens: ['mi', 'molto', 'davvero'],
+    optionalTokens: ['mi', 'molto', 'braccio'],
   },
   sceneCaption: 'Am Empfang oder Tresen zeigst du kurz auf die schmerzende Stelle.',
   trophyWord: {
@@ -18408,7 +18408,7 @@ const brightItalianP6Lesson005: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['ho', 'mal', 'testa'],
-    optionalTokens: ['di', 'molto', 'davvero'],
+    optionalTokens: ['di', 'forte', 'gola'],
   },
   sceneCaption: 'An der Apothekentheke nennst du knapp dein Symptom — Kopfschmerzen.',
   trophyWord: {
@@ -18612,7 +18612,7 @@ const brightItalianP6Lesson009: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Può chiamare qualcuno, per favore?',
-    chips: ['Può chiamare', 'qualcuno,', 'per favore?', 'subito', 'grazie'],
+    chips: ['Può chiamare', 'qualcuno,', 'per favore?', 'aiuto', 'telefono'],
   },
   typeRecall: {
     before: 'Può ',
@@ -18627,7 +18627,7 @@ const brightItalianP6Lesson009: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['può', 'chiamare', 'qualcuno', 'per', 'favore'],
-    optionalTokens: ['subito', 'scusi'],
+    optionalTokens: ['aiuto', 'scusi'],
   },
   sceneCaption: 'Im öffentlichen Raum bittest du eine andere Person, jemanden zu rufen, der weiterhelfen kann.',
   trophyWord: {
@@ -18667,7 +18667,7 @@ const brightItalianP6Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Adesso sto meglio, grazie.',
-    chips: ['Adesso', 'sto meglio,', 'grazie.', 'molto meglio', 'davvero'],
+    chips: ['Adesso', 'sto meglio,', 'grazie.', "un po' meglio", 'riposo'],
   },
   typeRecall: {
     before: 'Adesso sto ',
@@ -18682,7 +18682,7 @@ const brightItalianP6Lesson010: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['sto', 'meglio', 'grazie'],
-    optionalTokens: ['adesso', 'molto', 'davvero'],
+    optionalTokens: ['adesso', 'poco', 'riposo'],
   },
   sceneCaption: 'Beim Verlassen der Apotheke drehst du dich kurz um und bestätigst, dass es besser geht.',
   trophyWord: {
@@ -18941,7 +18941,7 @@ const brightItalianP7Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Mi serve un taxi, per favore.',
-    chips: ['Mi serve', 'un taxi,', 'per favore.', 'subito', 'autista'],
+    chips: ['Mi serve', 'un taxi,', 'per favore.', 'hotel', 'autista'],
   },
   typeRecall: {
     before: 'Mi serve un ',
@@ -19010,7 +19010,7 @@ const brightItalianP7Lesson006: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['andiamo', 'stazione'],
-    optionalTokens: ['alla', 'aeroporto', 'subito'],
+    optionalTokens: ['alla', 'aeroporto', 'insieme'],
   },
   sceneCaption: 'Am Bordstein wendest du dich zum Mitreisenden und kündigst das Ziel an.',
   trophyWord: {
@@ -19212,7 +19212,7 @@ const brightItalianP7Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Siamo arrivati. Grazie!',
-    chips: ['Siamo arrivati.', 'Grazie!', 'finalmente', 'davvero'],
+    chips: ['Siamo arrivati.', 'Grazie!', 'finalmente', 'biglietti'],
   },
   typeRecall: {
     before: 'Siamo ',
@@ -19227,7 +19227,7 @@ const brightItalianP7Lesson010: GuidedLessonVibeVariant = {
     language: 'it-IT',
     passingThreshold: 0.8,
     requiredTokens: ['siamo', 'arrivati', 'grazie'],
-    optionalTokens: ['finalmente', 'davvero'],
+    optionalTokens: ['finalmente', 'biglietti'],
   },
   sceneCaption: 'Beim Aussteigen drehst du dich kurz um, bestätigst die Ankunft und dankst.',
   trophyWord: {
@@ -19320,14 +19320,14 @@ const brightItalianP8Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Avete una camera libera?',
-    chips: ['Avete', 'una camera libera?', 'stanotte', 'libero'],
+    chips: ['Avete', 'una camera libera?', 'stanotte', 'letto'],
   },
   typeRecall: {
     before: 'Avete una camera ',
     answer: 'libera',
     after: '?',
     acceptedAnswers: ['libera', 'Libera'],
-    fallbackChoices: ['libera', 'occupata', 'pronta', 'piccola'],
+    fallbackChoices: ['libera', 'occupata', 'grande', 'piccola'],
   },
   speakTarget: {
     baseCue: 'Haben Sie ein freies Zimmer?',
@@ -19808,7 +19808,7 @@ const brightItalianP9Lesson001: GuidedLessonVibeVariant = {
     targetText: 'Ciao, come stai?',
     chips: ['Ciao,', 'come stai?', 'tutto bene', 'sto bene'],
   },
-  typeRecall: { before: '', answer: 'Ciao', after: ', come stai?', acceptedAnswers: ['ciao', 'Ciao'], fallbackChoices: ['Ciao', 'Salve', 'Buongiorno', 'Pronto'] },
+  typeRecall: { before: '', answer: 'Ciao', after: ', come stai?', acceptedAnswers: ['ciao', 'Ciao'], fallbackChoices: ['Ciao', 'Salve', 'Buongiorno', 'A presto'] },
   speakTarget: { baseCue: 'Hallo, wie geht es dir?', targetPhrase: 'Ciao, come stai?', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['ciao', 'come', 'stai'], optionalTokens: ['tutto', 'bene'] },
   sceneCaption: 'Beim Treffen mit einem Freund öffnest du locker mit einer kurzen Wie-geht\'s-Frage.',
   trophyWord: {
@@ -19866,7 +19866,7 @@ const brightItalianP9Lesson003: GuidedLessonVibeVariant = {
     { id: 'subito-item-p9', targetText: 'subito', baseText: 'sofort', acceptedAnswers: ['subito', 'Subito'] },
   ],
   build: { targetText: 'Ci vediamo dopo?', chips: ['Ci vediamo', 'dopo?', 'più tardi', 'fra poco'] },
-  typeRecall: { before: 'Ci vediamo ', answer: 'dopo', after: '?', acceptedAnswers: ['dopo', 'Dopo'], fallbackChoices: ['dopo', 'prima', 'subito', 'sempre'] },
+  typeRecall: { before: 'Ci vediamo ', answer: 'dopo', after: '?', acceptedAnswers: ['dopo', 'Dopo'], fallbackChoices: ['dopo', 'prima', 'a pranzo', 'domani'] },
   speakTarget: { baseCue: 'Sehen wir uns später?', targetPhrase: 'Ci vediamo dopo?', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['vediamo', 'dopo'], optionalTokens: ['ci', 'più', 'tardi'] },
   sceneCaption: 'Im Vorbeigehen verabredest du dich locker für später am Tag.',
   trophyWord: {
@@ -19983,7 +19983,7 @@ const brightItalianP9Lesson007: GuidedLessonVibeVariant = {
   ],
   build: { targetText: 'Sono in ritardo, scusa!', chips: ['Sono in ritardo,', 'scusa!', 'sto arrivando', 'cinque minuti'] },
   typeRecall: { before: 'Sono in ', answer: 'ritardo', after: ', scusa!', acceptedAnswers: ['ritardo', 'Ritardo'], fallbackChoices: ['ritardo', 'orario', 'fretta', 'pausa'] },
-  speakTarget: { baseCue: 'Ich bin spät dran, entschuldige!', targetPhrase: 'Sono in ritardo, scusa!', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['sono', 'ritardo', 'scusa'], optionalTokens: ['in', 'davvero', 'arrivando'] },
+  speakTarget: { baseCue: 'Ich bin spät dran, entschuldige!', targetPhrase: 'Sono in ritardo, scusa!', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['sono', 'ritardo', 'scusa'], optionalTokens: ['in', 'cinque', 'arrivando'] },
   sceneCaption: 'Unterwegs schickst du schnell eine Nachricht, dass du etwas später kommst.',
   trophyWord: {
     word: 'ritardo',
@@ -20069,7 +20069,7 @@ const brightItalianP9Lesson010: GuidedLessonVibeVariant = {
   ],
   build: { targetText: 'Buona serata!', chips: ['Buona serata!', 'buona giornata', 'buonanotte', 'grazie'] },
   typeRecall: { before: 'Buona ', answer: 'serata', after: '!', acceptedAnswers: ['serata', 'Serata'], fallbackChoices: ['serata', 'sera', 'giornata', 'notte'] },
-  speakTarget: { baseCue: 'Schönen Abend!', targetPhrase: 'Buona serata!', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['buona', 'serata'], optionalTokens: ['grazie', 'a', 'lei'] },
+  speakTarget: { baseCue: 'Schönen Abend!', targetPhrase: 'Buona serata!', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['buona', 'serata'], optionalTokens: ['grazie', 'a', 'Lei'] },
   sceneCaption: 'Beim Verlassen des Cafés am Abend schließt du höflich mit der italienischen Standard-Wendung ab.',
   trophyWord: {
     word: 'serata',
@@ -20096,9 +20096,9 @@ const brightItalianP10Lesson001: GuidedLessonVibeVariant = {
     { id: 'e-stata-item', targetText: 'è stata', baseText: 'es war (f.)', acceptedAnswers: ['è stata', 'e stata'] },
     { id: 'tranquilla', targetText: 'tranquilla', baseText: 'ruhig (f.)', acceptedAnswers: ['tranquilla', 'Tranquilla'] },
   ],
-  build: { targetText: 'È stata una bella giornata.', chips: ['È stata', 'una bella giornata.', 'tranquilla', 'davvero'] },
+  build: { targetText: 'È stata una bella giornata.', chips: ['È stata', 'una bella giornata.', 'tranquilla', 'sera'] },
   typeRecall: { before: 'È stata una bella ', answer: 'giornata', after: '.', acceptedAnswers: ['giornata', 'Giornata'], fallbackChoices: ['giornata', 'serata', 'mattina', 'sera'] },
-  speakTarget: { baseCue: 'Es war ein schöner Tag.', targetPhrase: 'È stata una bella giornata.', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['bella', 'giornata'], optionalTokens: ['è', 'stata', 'davvero', 'tranquilla'] },
+  speakTarget: { baseCue: 'Es war ein schöner Tag.', targetPhrase: 'È stata una bella giornata.', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['bella', 'giornata'], optionalTokens: ['è', 'stata', 'sera', 'tranquilla'] },
   sceneCaption: 'Am Tagesende drehst du dich kurz um und benennst ruhig, dass der Tag schön war.',
   trophyWord: {
     word: 'giornata',
@@ -20125,9 +20125,9 @@ const brightItalianP10Lesson002: GuidedLessonVibeVariant = {
     { id: 'bellissimo', targetText: 'bellissimo', baseText: 'wunderschön', acceptedAnswers: ['bellissimo', 'Bellissimo'] },
     { id: 'davvero-p10', targetText: 'davvero', baseText: 'wirklich', acceptedAnswers: ['davvero', 'Davvero'] },
   ],
-  build: { targetText: 'Che bello qui!', chips: ['Che bello', 'qui!', 'bellissimo', 'davvero'] },
+  build: { targetText: 'Che bello qui!', chips: ['Che bello', 'qui!', 'bellissimo', 'posto'] },
   typeRecall: { before: 'Che ', answer: 'bello', after: ' qui!', acceptedAnswers: ['bello', 'Bello'], fallbackChoices: ['bello', 'bella', 'belli', 'belle'] },
-  speakTarget: { baseCue: 'Wie schön hier!', targetPhrase: 'Che bello qui!', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['bello', 'qui'], optionalTokens: ['che', 'davvero', 'bellissimo'] },
+  speakTarget: { baseCue: 'Wie schön hier!', targetPhrase: 'Che bello qui!', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['bello', 'qui'], optionalTokens: ['che', 'posto', 'bellissimo'] },
   sceneCaption: 'Beim Verlassen des Cafés drehst du dich noch einmal um und lobst kurz den Ort.',
   trophyWord: {
     word: 'bello',
@@ -20154,7 +20154,7 @@ const brightItalianP10Lesson003: GuidedLessonVibeVariant = {
     { id: 'tante-grazie', targetText: 'tante grazie', baseText: 'vielen Dank (Variante)', acceptedAnswers: ['tante grazie', 'Tante grazie'] },
     { id: 'di-cuore', targetText: 'di cuore', baseText: 'von Herzen', acceptedAnswers: ['di cuore', 'Di cuore'] },
   ],
-  build: { targetText: 'Grazie per tutto.', chips: ['Grazie', 'per tutto.', 'di cuore', 'davvero'] },
+  build: { targetText: 'Grazie per tutto.', chips: ['Grazie', 'per tutto.', 'di cuore', 'aiuto'] },
   typeRecall: { before: '', answer: 'Grazie', after: ' per tutto.', acceptedAnswers: ['grazie', 'Grazie'], fallbackChoices: ['Grazie', 'Prego', 'Scusa', 'Salve'] },
   speakTarget: { baseCue: 'Danke für alles.', targetPhrase: 'Grazie per tutto.', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['grazie', 'tutto'], optionalTokens: ['per', 'di', 'cuore'] },
   sceneCaption: 'Am Ende einer Hilfe oder Begegnung sagst du ruhig Danke für die ganze Unterstützung.',
@@ -20183,9 +20183,9 @@ const brightItalianP10Lesson004: GuidedLessonVibeVariant = {
     { id: 'capito', targetText: 'capito', baseText: 'verstanden (Partizip)', acceptedAnswers: ['capito', 'Capito'] },
     { id: 'molto-item-p10', targetText: 'molto', baseText: 'viel', acceptedAnswers: ['molto', 'Molto'] },
   ],
-  build: { targetText: 'Ho imparato molto oggi.', chips: ['Ho imparato', 'molto oggi.', 'capito', 'davvero'] },
+  build: { targetText: 'Ho imparato molto oggi.', chips: ['Ho imparato', 'molto oggi.', 'capito', 'lezione'] },
   typeRecall: { before: 'Ho ', answer: 'imparato', after: ' molto oggi.', acceptedAnswers: ['imparato', 'Imparato'], fallbackChoices: ['imparato', 'capito', 'visto', 'sentito'] },
-  speakTarget: { baseCue: 'Ich habe heute viel gelernt.', targetPhrase: 'Ho imparato molto oggi.', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['ho', 'imparato', 'oggi'], optionalTokens: ['molto', 'davvero'] },
+  speakTarget: { baseCue: 'Ich habe heute viel gelernt.', targetPhrase: 'Ho imparato molto oggi.', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['ho', 'imparato', 'oggi'], optionalTokens: ['molto', 'lezione'] },
   sceneCaption: 'Auf dem Heimweg oder im stillen Moment hältst du kurz inne und bilanzierst den Tag.',
   trophyWord: {
     word: 'imparato',
@@ -20212,9 +20212,9 @@ const brightItalianP10Lesson005: GuidedLessonVibeVariant = {
     { id: 'stanchi', targetText: 'stanchi', baseText: 'müde (m. Pl.)', acceptedAnswers: ['stanchi', 'Stanchi'] },
     { id: 'stanche', targetText: 'stanche', baseText: 'müde (f. Pl.)', acceptedAnswers: ['stanche', 'Stanche'] },
   ],
-  build: { targetText: 'Sono stanco adesso.', chips: ['Sono stanco', 'adesso.', 'stanca', 'davvero'] },
-  typeRecall: { before: 'Sono ', answer: 'stanco', after: ' adesso.', acceptedAnswers: ['stanco', 'Stanco'], fallbackChoices: ['stanco', 'stanca', 'stanchi', 'pronto'] },
-  speakTarget: { baseCue: 'Ich bin jetzt müde.', targetPhrase: 'Sono stanco adesso.', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['sono', 'stanco'], optionalTokens: ['adesso', 'stanca', 'davvero'] },
+  build: { targetText: 'Sono stanco adesso.', chips: ['Sono stanco', 'adesso.', 'stanca', 'sera'] },
+  typeRecall: { before: 'Sono ', answer: 'stanco', after: ' adesso.', acceptedAnswers: ['stanco', 'Stanco'], fallbackChoices: ['stanco', 'stanca', 'stanchi', 'stanche'] },
+  speakTarget: { baseCue: 'Ich bin jetzt müde.', targetPhrase: 'Sono stanco adesso.', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['sono', 'stanco'], optionalTokens: ['adesso', 'stanca', 'sera'] },
   sceneCaption: 'Am späten Abend wendest du dich zur Begleitung und nennst ruhig deinen Zustand.',
   trophyWord: {
     word: 'stanco',
@@ -20356,9 +20356,9 @@ const brightItalianP10Lesson010: GuidedLessonVibeVariant = {
     { id: 'per-ora-item', targetText: 'per ora', baseText: 'fürs Erste', acceptedAnswers: ['per ora', 'Per ora'] },
     { id: 'grazie-mille-p10', targetText: 'grazie mille', baseText: 'vielen Dank', acceptedAnswers: ['grazie mille', 'Grazie mille'] },
   ],
-  build: { targetText: 'Addio, per ora.', chips: ['Addio,', 'per ora.', 'arrivederci', 'grazie mille'] },
+  build: { targetText: 'Addio, per ora.', chips: ['Addio,', 'per ora.', 'arrivederci', 'a presto'] },
   typeRecall: { before: '', answer: 'Addio', after: ', per ora.', acceptedAnswers: ['addio', 'Addio'], fallbackChoices: ['Addio', 'Arrivederci', 'Ciao', 'Salve'] },
-  speakTarget: { baseCue: 'Auf Wiedersehen, fürs Erste.', targetPhrase: 'Addio, per ora.', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['addio', 'ora'], optionalTokens: ['per', 'arrivederci', 'grazie'] },
+  speakTarget: { baseCue: 'Auf Wiedersehen, fürs Erste.', targetPhrase: 'Addio, per ora.', language: 'it-IT', passingThreshold: 0.8, requiredTokens: ['addio', 'ora'], optionalTokens: ['per', 'arrivederci', 'presto'] },
   sceneCaption: 'Am Ende des ganzen Lernwegs schließt du ruhig mit einem warmen, leicht feierlichen Abschied.',
   trophyWord: {
     word: 'addio',
