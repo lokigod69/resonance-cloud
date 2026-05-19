@@ -552,6 +552,31 @@ def test_bright_path_one_scope_is_explicitly_allowlisted():
     assert spec["expected_provider_characters_first_run"] == 598
 
 
+def test_bright_paths_two_to_ten_phrase_scope_is_explicitly_allowlisted():
+    spec = EXPECTED_SCOPES["a1p2-p10-bright-core-chunks"]
+    assert spec["path_ids"] == [
+        "english-a1-practical-2",
+        "english-a1-practical-3",
+        "english-a1-practical-4",
+        "english-a1-practical-5",
+        "english-a1-practical-6",
+        "english-a1-practical-7",
+        "english-a1-practical-8",
+        "english-a1-practical-9",
+        "english-a1-practical-10",
+    ]
+    assert spec["path_id"] is None
+    assert spec["lesson_id"] is None
+    assert spec["lesson_number"] is None
+    assert spec["vibes"] == ["bright"]
+    assert spec["surfaces"] == ["corePhrase", "chunks"]
+    assert "trophyWord" not in spec["surfaces"]
+    assert spec["expected_rows"] == 301
+    assert spec["expected_unique_normalized_texts"] == 253
+    assert spec["expected_provider_calls_first_run"] == 256
+    assert spec["expected_provider_characters_first_run"] == 3586
+
+
 def test_commit_allows_unscoped_when_explicitly_opted_in():
     sb = _make_sb_with_profiles()
     calls: list[dict[str, Any]] = []

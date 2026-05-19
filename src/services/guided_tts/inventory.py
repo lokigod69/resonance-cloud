@@ -653,13 +653,17 @@ def filter_lessons(
     lessons: Sequence[dict[str, Any]],
     *,
     path_id: str | None = None,
+    path_ids: Iterable[str] | None = None,
     lesson_number: int | None = None,
     lesson_id: str | None = None,
 ) -> list[dict[str, Any]]:
     """Narrow a list of lesson dicts by path, lesson number, and/or lesson id."""
     out: list[dict[str, Any]] = []
+    path_id_set = set(path_ids or [])
     for lesson in lessons:
         if path_id is not None and lesson.get("pathId") != path_id:
+            continue
+        if path_id_set and lesson.get("pathId") not in path_id_set:
             continue
         if lesson_number is not None and int(lesson.get("lessonNumber", -1)) != lesson_number:
             continue

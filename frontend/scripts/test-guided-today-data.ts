@@ -311,11 +311,11 @@ const expectedPathTenTitles = [
 const expectedBrightPathTwoToTenPhrases: Record<string, string[]> = {
   [pathTwoId]: [
     "Hi there, I don't understand. Could you help me?",
-    'Could you write it down, please?',
+    'Could you write it down?',
     'Could you show me on the map?',
     'Which one is better, this one or that one?',
     'Hi, is this available today?',
-    'Could I pay by card, please?',
+    'Could I pay by card?',
     'Could I get a receipt and a bag?',
     'Hi, I have a booking.',
     'Is this the right bus?',
@@ -325,25 +325,25 @@ const expectedBrightPathTwoToTenPhrases: Record<string, string[]> = {
     'Excuse me, should I turn left here?',
     'Is it about five minutes away?',
     'Is it open now?',
-    'Which bus goes to the museum, please?',
+    'Which bus goes to the museum?',
     'Is the next stop Central Park?',
-    'Could I get one ticket to the city, please?',
+    'One ticket to the city, please.',
     'What time does it close today?',
     'Is it on the corner?',
     'Should we walk there or take a taxi?',
     'Sorry, I missed my stop. Could you help me?',
   ],
   [pathFourId]: [
-    'Could we have a table for two, please?',
-    'Could I see the menu, please?',
-    "I'd like a tea with lemon, please.",
+    'Could we have a table for two?',
+    'Could I see the menu?',
+    "I'd like a tea with lemon.",
     'No sugar for me, thank you.',
     'Is it fresh today?',
-    'Yes, a croissant too, please.',
-    'Could I get that to go, please?',
+    'Yes, a croissant too.',
+    'Could I get that to go?',
     'That was lovely, thank you.',
     "Beautiful day, isn't it?",
-    'Could I have the bill, please?',
+    'Could I have the bill?',
   ],
   [pathFiveId]: [
     "I'm so sorry I'm late!",
@@ -360,35 +360,35 @@ const expectedBrightPathTwoToTenPhrases: Record<string, string[]> = {
   [pathSixId]: [
     "I don't feel well. Could you help me?",
     'Could you show me a pharmacy nearby?',
-    'I need medicine, please.',
+    'I need medicine.',
     'It hurts here.',
     'I have a headache.',
-    'Could I have some water, please?',
+    'Could I have some water?',
     'Is there a doctor here?',
     'I have an allergy.',
     'Could you get help for me?',
     'I feel better now, thank you.',
   ],
   [pathSevenId]: [
-    'I need a ticket, please.',
+    'I need a ticket.',
     'Where is the bus stop?',
     'What time does the bus leave?',
     'Is this the right train?',
-    'I need a taxi, please.',
+    'I need a taxi.',
     'Can we go there?',
-    'Please stop here.',
+    'Could you stop here?',
     'I am going to the station.',
     'How long does it take?',
     'I have arrived, thank you.',
   ],
   [pathEightId]: [
     'I have a reservation.',
-    'I need a room, please.',
+    'I need a room.',
     'Where is my room?',
     'I need the key, please.',
     'Is there Wi-Fi here?',
     'Where is the bathroom?',
-    'I need a towel, please.',
+    'I need a towel.',
     'I want to sleep now.',
     'What time is breakfast?',
     'I am checking out now.',
@@ -1524,8 +1524,13 @@ assert('A1 Practical 1 Bright phrase baseline matches PR4 product corrections', 
 for (const [pathId, expectedPhrases] of Object.entries(expectedBrightPathTwoToTenPhrases)) {
   const lessons = getGuidedPathLessons(pathId)
   const actualPhrases = lessons.map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? '')
-  assert(`${pathId} Bright phrase baseline matches PR5 content QA`, JSON.stringify(actualPhrases) === JSON.stringify(expectedPhrases), actualPhrases)
+  assert(`${pathId} Bright phrase baseline matches PR6 please cleanup`, JSON.stringify(actualPhrases) === JSON.stringify(expectedPhrases), actualPhrases)
 }
+const brightPathTwoToTenPleaseCount = Object.keys(expectedBrightPathTwoToTenPhrases)
+  .flatMap((pathId) => getGuidedPathLessons(pathId))
+  .map((lesson) => lesson.vibeVariants.bright?.corePhrase.targetText ?? '')
+  .reduce((count, phrase) => count + (phrase.match(/\bplease\b/gi)?.length ?? 0), 0)
+assert('Bright A1 Practical P2-P10 core phrases keep please usage sparse', brightPathTwoToTenPleaseCount <= 4, brightPathTwoToTenPleaseCount)
 
 console.log('\n[lesson definitions]')
 for (const lesson of pathLessons) {

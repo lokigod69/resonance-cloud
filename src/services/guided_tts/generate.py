@@ -124,16 +124,44 @@ EXPECTED_SCOPES: dict[str, dict[str, Any]] = {
         "expected_provider_calls_first_run": 42,
         "expected_provider_characters_first_run": 598,
     },
+    "a1p2-p10-bright-core-chunks": {
+        "path_id": None,
+        "path_ids": [
+            "english-a1-practical-2",
+            "english-a1-practical-3",
+            "english-a1-practical-4",
+            "english-a1-practical-5",
+            "english-a1-practical-6",
+            "english-a1-practical-7",
+            "english-a1-practical-8",
+            "english-a1-practical-9",
+            "english-a1-practical-10",
+        ],
+        "lesson_id": None,
+        "lesson_number": None,
+        "vibes": ["bright"],
+        "surfaces": ["corePhrase", "chunks"],
+        "expected_rows": 301,
+        "expected_unique_normalized_texts": 253,
+        "expected_provider_calls_first_run": 256,
+        "expected_provider_characters_first_run": 3586,
+    },
 }
 
 
 def _identify_scope(
     *, path_id: str | None, lesson_id: str | None, lesson_number: int | None,
-    vibes: list[str], surfaces: list[str],
+    vibes: list[str], surfaces: list[str], path_ids: list[str] | None = None,
 ) -> str | None:
     """Return the named scope key if this exactly matches one in EXPECTED_SCOPES."""
     for key, spec in EXPECTED_SCOPES.items():
-        if path_id != spec["path_id"]:
+        expected_path_ids = spec.get("path_ids")
+        if expected_path_ids is not None:
+            if path_id is not None:
+                continue
+            if sorted(path_ids or []) != sorted(expected_path_ids):
+                continue
+        elif path_id != spec["path_id"]:
             continue
         if lesson_id is not None and lesson_id != spec["lesson_id"]:
             continue
@@ -159,6 +187,7 @@ async def run_async(
     vibes: list[str],
     surfaces: list[str],
     path_id: str | None,
+    path_ids: list[str] | None = None,
     lesson_id: str | None,
     lesson_number: int | None,
     target_language_code: str = "en-US",
@@ -173,9 +202,13 @@ async def run_async(
     ``EXPECTED_SCOPES`` (override with ``allow_unscoped_commit=True`` for
     future scopes — PR #2 leaves it off).
     """
+    if path_id is not None and path_ids:
+        raise RuntimeError("Use either path_id or path_ids, not both")
+
     filtered = filter_lessons(
         lessons,
         path_id=path_id,
+        path_ids=path_ids,
         lesson_number=lesson_number,
         lesson_id=lesson_id,
     )
@@ -210,6 +243,7 @@ async def run_async(
 
     scope = {
         "path_id": path_id,
+        "path_ids": list(path_ids or []),
         "lesson_id": lesson_id,
         "lesson_number": lesson_number,
         "vibes": list(vibes),
@@ -218,7 +252,7 @@ async def run_async(
     }
     scope_key = _identify_scope(
         path_id=path_id, lesson_id=lesson_id, lesson_number=lesson_number,
-        vibes=vibes, surfaces=surfaces,
+        vibes=vibes, surfaces=surfaces, path_ids=path_ids,
     )
 
     totals = inventory["totals"]
@@ -475,6 +509,7 @@ def _build_parser() -> argparse.ArgumentParser:
         description="Guided Today TTS inventory + canary generation",
     )
     p.add_argument("--path", default=None, help="Restrict to this path id")
+    p.add_argument("--paths", default=None, help="Restrict to comma-separated path ids")
     p.add_argument("--lesson", type=int, default=None, help="Restrict to this lesson number")
     p.add_argument("--lesson-id", default=None, help="Restrict to this lesson id")
     p.add_argument(
@@ -502,12 +537,21 @@ def _split_csv(value: str) -> list[str]:
     return [v.strip() for v in value.split(",") if v.strip()]
 
 
+def _split_optional_csv(value: str | None) -> list[str] | None:
+    if value is None:
+        return None
+    return _split_csv(value)
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = _build_parser()
     args = parser.parse_args(argv)
 
     vibes = _split_csv(args.vibes)
     surfaces = _split_csv(args.surfaces)
+    path_ids = _split_optional_csv(args.paths)
+    if args.path and path_ids:
+        parser.error("use either --path or --paths, not both")
     for v in vibes:
         if v not in VALID_VIBES:
             parser.error(f"unknown vibe {v!r}")
@@ -536,6 +580,7 @@ def main(argv: list[str] | None = None) -> int:
             vibes=vibes,
             surfaces=surfaces,
             path_id=args.path,
+            path_ids=path_ids,
             lesson_id=args.lesson_id,
             lesson_number=args.lesson,
             dry_run=dry_run,
