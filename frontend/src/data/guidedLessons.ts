@@ -9973,7 +9973,7 @@ const brightSpanishLesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Hola, ¿habla español?',
-    chips: ['Hola,', '¿habla', 'español?', 'usted', 'gracias'],
+    chips: ['Hola,', '¿habla', 'español?', 'usted', 'alemán'],
   },
   typeRecall: {
     before: 'Hola, ¿',
@@ -10028,7 +10028,7 @@ const brightSpanishLesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Perdón, ¿puede repetirlo?',
-    chips: ['Perdón,', '¿puede', 'repetirlo?', 'más despacio', 'gracias'],
+    chips: ['Perdón,', '¿puede', 'repetirlo?', 'más despacio', 'despacio'],
   },
   typeRecall: {
     before: 'Perdón, ¿puede ',
@@ -10137,7 +10137,7 @@ const brightSpanishLesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Un café, por favor.',
-    chips: ['Un café,', 'por favor.', 'con leche', 'gracias'],
+    chips: ['Un café,', 'por favor.', 'con leche', 'solo'],
   },
   typeRecall: {
     before: 'Un ',
@@ -10247,7 +10247,7 @@ const brightSpanishLesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: '¿A qué hora sale el tren?',
-    chips: ['¿A qué hora', 'sale', 'el tren?', 'andén', 'ahora'],
+    chips: ['¿A qué hora', 'sale', 'el tren?', 'andén', 'billete'],
   },
   typeRecall: {
     before: '¿A qué hora sale el ',
@@ -10302,7 +10302,7 @@ const brightSpanishLesson007: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Necesito ayuda, por favor.',
-    chips: ['Necesito', 'ayuda,', 'por favor.', 'señor', 'gracias'],
+    chips: ['Necesito', 'ayuda,', 'por favor.', 'señor', 'farmacia'],
   },
   typeRecall: {
     before: 'Necesito ',
@@ -10521,7 +10521,7 @@ const brightSpanishP2Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'No entiendo, ¿me puede ayudar?',
-    chips: ['No entiendo,', '¿me puede', 'ayudar?', 'gracias', 'por favor'],
+    chips: ['No entiendo,', '¿me puede', 'ayudar?', 'despacio', 'otra vez'],
   },
   typeRecall: {
     before: 'No ',
@@ -10576,7 +10576,7 @@ const brightSpanishP2Lesson002: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: '¿Me lo puede escribir aquí, por favor?',
-    chips: ['¿Me lo puede', 'escribir aquí,', 'por favor?', 'gracias'],
+    chips: ['¿Me lo puede', 'escribir aquí,', 'por favor?', 'número'],
   },
   typeRecall: {
     before: '¿Me lo puede ',
@@ -10686,7 +10686,7 @@ const brightSpanishP2Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: '¿Cuál es mejor, este o ese?',
-    chips: ['¿Cuál es', 'mejor,', 'este o ese?', 'gracias', 'por favor'],
+    chips: ['¿Cuál es', 'mejor,', 'este o ese?', 'igual', 'nuevo'],
   },
   typeRecall: {
     before: '¿Cuál es ',
@@ -10741,7 +10741,7 @@ const brightSpanishP2Lesson005: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: '¿Tiene más, por favor?',
-    chips: ['¿Tiene', 'más,', 'por favor?', 'otro', 'gracias'],
+    chips: ['¿Tiene', 'más,', 'por favor?', 'otro', 'barato'],
   },
   typeRecall: {
     before: '¿',
@@ -10906,7 +10906,7 @@ const brightSpanishP2Lesson008: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Tengo una reserva a las ocho.',
-    chips: ['Tengo una', 'reserva', 'a las ocho.', 'gracias', 'por favor'],
+    chips: ['Tengo una', 'reserva', 'a las ocho.', 'nombre', 'mesa'],
   },
   typeRecall: {
     before: 'Tengo una ',
@@ -10960,7 +10960,7 @@ const brightSpanishP2Lesson009: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: '¿Es este el correcto?',
-    chips: ['¿Es este', 'el correcto?', 'seguro', 'por favor', 'gracias'],
+    chips: ['¿Es este', 'el correcto?', 'seguro', 'autobús', 'tren'],
   },
   typeRecall: {
     before: '¿Es este el ',
@@ -11015,7 +11015,7 @@ const brightSpanishP2Lesson010: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Un momento, por favor. Ya casi.',
-    chips: ['Un momento,', 'por favor.', 'Ya casi.', 'gracias', 'segundo'],
+    chips: ['Un momento,', 'por favor.', 'Ya casi.', 'minuto', 'segundo'],
   },
   typeRecall: {
     before: 'Un ',
@@ -11344,7 +11344,7 @@ const brightSpanishP3Lesson006: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Un billete, por favor.',
-    chips: ['Un billete,', 'por favor.', 'sencillo', 'ida', 'gracias'],
+    chips: ['Un billete,', 'por favor.', 'sencillo', 'ida', 'ida y vuelta'],
   },
   typeRecall: {
     before: 'Un ',
@@ -11618,7 +11618,7 @@ const brightSpanishP4Lesson001: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Una mesa para dos, por favor.',
-    chips: ['Una mesa', 'para dos,', 'por favor.', 'gracias', 'fuera'],
+    chips: ['Una mesa', 'para dos,', 'por favor.', 'dentro', 'fuera'],
   },
   typeRecall: {
     before: 'Una ',
@@ -11780,7 +11780,7 @@ const brightSpanishP4Lesson004: GuidedLessonVibeVariant = {
   ],
   build: {
     targetText: 'Sin azúcar, por favor.',
-    chips: ['Sin azúcar,', 'por favor.', 'con leche', 'dulce', 'gracias'],
+    chips: ['Sin azúcar,', 'por favor.', 'con leche', 'dulce', 'hielo'],
   },
   typeRecall: {
     before: 'Sin ',
