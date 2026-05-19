@@ -885,6 +885,17 @@ const GUIDED_TODAY_PATH_GERMAN_NINE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_CEBUANO_FIVE_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-5',
+  title: 'Cebuano A1 Praxis 5',
+  shortTitle: 'A1 Praxis 5',
+  subtitle: 'Kennenlernen und einfache Pläne auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -37164,6 +37175,546 @@ const cebuanoA1Practical4Lessons: GuidedLessonDefinition[] = cebuanoA1Practical4
   }
 })
 
+const cebuanoA1Practical5Inputs: CebuanoP2LessonInput[] = [
+  {
+    slug: 'a-little-late',
+    title: 'Ein bisschen spät',
+    situation: {
+      en: 'Arriving to meet someone, say that you are a little late.',
+      de: 'Beim Treffen sagst du, dass du ein bisschen spät bist.',
+    },
+    pedagogicalGoal: 'Naulahi ko gamay als kurze Erklärung für Verspätung nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Naulahi ko gamay.',
+        baseText: 'Ich bin ein bisschen spät.',
+      },
+      meaning: 'Eine knappe Entschuldigungssituation ohne lange Erklärung.',
+      chunks: [
+        { id: 'naulahi-ko', targetText: 'Naulahi ko', baseText: 'ich bin spät dran' },
+        { id: 'gamay', targetText: 'gamay.', baseText: 'ein bisschen.' },
+      ],
+      lessonItems: [
+        { id: 'naulahi', targetText: 'naulahi', baseText: 'spät dran sein', acceptedAnswers: cebuanoAnswers('naulahi', 'Naulahi') },
+        { id: 'gamay', targetText: 'gamay', baseText: 'klein / ein bisschen', acceptedAnswers: cebuanoAnswers('gamay', 'Gamay') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'ulahi', targetText: 'ulahi', baseText: 'spät / zuletzt', acceptedAnswers: cebuanoAnswers('ulahi', 'Ulahi') },
+      ],
+      buildChips: ['Naulahi ko', 'gamay.', 'gabii', 'amping'],
+      typeRecall: {
+        before: '',
+        answer: 'Naulahi',
+        after: ' ko gamay.',
+        acceptedAnswers: cebuanoAnswers('Naulahi', 'naulahi'),
+        fallbackChoices: ['Naulahi', 'Nalipay', 'Tingali', 'Taga'],
+      },
+      speakTarget: {
+        baseCue: 'Ich bin ein bisschen spät.',
+        targetPhrase: 'Naulahi ko gamay.',
+        requiredTokens: ['naulahi', 'ko', 'gamay'],
+        optionalTokens: ['ulahi'],
+      },
+      sceneCaption: 'Moabot ka sa tagboanan ug klaro nga naulahi ko gamay.',
+      trophyWord: {
+        word: 'naulahi',
+        meaning: 'spät dran sein',
+        example: 'Naulahi ko gamay.',
+        whyThisWord: 'Naulahi macht eine kleine Verspätung sofort sagbar, ohne komplizierte Begründung.',
+      },
+      placeholderCaption: 'Arriving a little late to meet someone.',
+      songMood: 'arriving late but calm',
+      visualNotes: 'Meeting point, clock, naulahi highlighted.',
+    }),
+  },
+  {
+    slug: 'forgot-your-name',
+    title: 'Namen vergessen',
+    situation: {
+      en: 'You have met before but forgot the person’s name.',
+      de: 'Du hast die Person schon getroffen, aber ihren Namen vergessen.',
+    },
+    pedagogicalGoal: 'Nakalimot ko sa imong ngalan als einfache soziale Reparatur sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Nakalimot ko sa imong ngalan.',
+        baseText: 'Ich habe deinen Namen vergessen.',
+      },
+      meaning: 'Eine direkte Reparatur, wenn dir der Name nicht einfällt.',
+      chunks: [
+        { id: 'nakalimot-ko', targetText: 'Nakalimot ko', baseText: 'ich habe vergessen' },
+        { id: 'sa-imong-ngalan', targetText: 'sa imong ngalan.', baseText: 'deinen Namen.' },
+      ],
+      lessonItems: [
+        { id: 'nakalimot', targetText: 'nakalimot', baseText: 'vergessen haben', acceptedAnswers: cebuanoAnswers('nakalimot', 'Nakalimot') },
+        { id: 'imong', targetText: 'imong', baseText: 'dein / deine', acceptedAnswers: cebuanoAnswers('imong', 'Imong') },
+        { id: 'ngalan', targetText: 'ngalan', baseText: 'Name', acceptedAnswers: cebuanoAnswers('ngalan', 'Ngalan') },
+        { id: 'kalimot', targetText: 'kalimot', baseText: 'vergessen', acceptedAnswers: cebuanoAnswers('kalimot', 'Kalimot') },
+      ],
+      buildChips: ['Nakalimot ko', 'sa imong ngalan.', 'tawag', 'nalipay'],
+      typeRecall: {
+        before: '',
+        answer: 'Nakalimot',
+        after: ' ko sa imong ngalan.',
+        acceptedAnswers: cebuanoAnswers('Nakalimot', 'nakalimot'),
+        fallbackChoices: ['Nakalimot', 'Naulahi', 'Nagpuyo', 'Amping'],
+      },
+      speakTarget: {
+        baseCue: 'Ich habe deinen Namen vergessen.',
+        targetPhrase: 'Nakalimot ko sa imong ngalan.',
+        requiredTokens: ['nakalimot', 'ko', 'imong', 'ngalan'],
+        optionalTokens: ['sa', 'kalimot'],
+      },
+      sceneCaption: 'Sa pag-istorya pag-usab, matinud-anon ka nga nakalimot ko sa imong ngalan.',
+      trophyWord: {
+        word: 'nakalimot',
+        meaning: 'vergessen haben',
+        example: 'Nakalimot ko sa imong ngalan.',
+        whyThisWord: 'Nakalimot ist der soziale Reparaturanker, wenn dir ein Detail entfallen ist.',
+      },
+      placeholderCaption: 'Friendly moment after forgetting a name.',
+      songMood: 'repairing a forgotten name',
+      visualNotes: 'Two people reconnecting, name tag, nakalimot highlighted.',
+    }),
+  },
+  {
+    slug: 'what-are-you-called',
+    title: 'Wie nenne ich dich?',
+    situation: {
+      en: 'Ask what someone is called in a casual setting.',
+      de: 'In einer lockeren Situation fragst du, wie du jemanden nennen sollst.',
+    },
+    pedagogicalGoal: 'Unsa’y itawag nako nimo? als einfache Namensfrage verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Unsa’y itawag nako nimo?',
+        baseText: 'Wie soll ich dich nennen?',
+      },
+      meaning: 'Eine kurze Frage, wenn du den Namen der Person brauchst.',
+      chunks: [
+        { id: 'unsay-itawag', targetText: 'Unsa’y itawag', baseText: 'wie soll genannt werden' },
+        { id: 'nako-nimo', targetText: 'nako nimo?', baseText: 'von mir für dich?' },
+      ],
+      lessonItems: [
+        { id: 'tawag', targetText: 'tawag', baseText: 'Ruf / nennen', acceptedAnswers: cebuanoAnswers('tawag', 'Tawag') },
+        { id: 'unsa-y', targetText: 'unsa’y', baseText: 'was ist', acceptedAnswers: cebuanoAnswers('unsa’y', 'Unsa’y', 'unsay', 'Unsay') },
+        { id: 'nimo', targetText: 'nimo', baseText: 'von dir / dich', acceptedAnswers: cebuanoAnswers('nimo', 'Nimo') },
+        { id: 'itawag', targetText: 'itawag', baseText: 'nennen', acceptedAnswers: cebuanoAnswers('itawag', 'Itawag') },
+      ],
+      buildChips: ['Unsa’y itawag', 'nako nimo?', 'taga', 'gabii'],
+      typeRecall: {
+        before: 'Unsa’y i',
+        answer: 'tawag',
+        after: ' nako nimo?',
+        acceptedAnswers: cebuanoAnswers('tawag', 'Tawag'),
+        fallbackChoices: ['tawag', 'taga', 'tingali', 'amping'],
+      },
+      speakTarget: {
+        baseCue: 'Wie soll ich dich nennen?',
+        targetPhrase: 'Unsa’y itawag nako nimo?',
+        requiredTokens: ['unsa', 'y', 'itawag', 'nako', 'nimo'],
+        optionalTokens: ['unsay', 'tawag'],
+      },
+      sceneCaption: 'Sa bag-ong kaila, mangutana ka kon unsa’y itawag nimo kaniya.',
+      trophyWord: {
+        word: 'tawag',
+        meaning: 'Ruf / nennen',
+        example: 'Unsa’y itawag nako nimo?',
+        whyThisWord: 'Tawag bleibt der Kern für Namen und Anrede, ohne ngalan als neuen Pokal zu wiederholen.',
+      },
+      placeholderCaption: 'Casual introduction with a name question.',
+      songMood: 'asking a name gently',
+      visualNotes: 'Two people introducing themselves, tawag highlighted.',
+    }),
+  },
+  {
+    slug: 'pleased-we-met',
+    title: 'Freut mich',
+    situation: {
+      en: 'After an introduction, say you are pleased that you met.',
+      de: 'Nach der Vorstellung sagst du, dass du dich über das Treffen freust.',
+    },
+    pedagogicalGoal: 'Nalipay ko nga nagkita ta als freundliche Kennenlernformel sprechen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Nalipay ko nga nagkita ta.',
+        baseText: 'Es freut mich, dass wir uns getroffen haben.',
+      },
+      meaning: 'Eine warme Rückmeldung nach einer Vorstellung.',
+      chunks: [
+        { id: 'nalipay-ko', targetText: 'Nalipay ko', baseText: 'ich freue mich' },
+        { id: 'nga-nagkita-ta', targetText: 'nga nagkita ta.', baseText: 'dass wir uns getroffen haben.' },
+      ],
+      lessonItems: [
+        { id: 'nalipay', targetText: 'nalipay', baseText: 'sich gefreut haben', acceptedAnswers: cebuanoAnswers('nalipay', 'Nalipay') },
+        { id: 'nagkita', targetText: 'nagkita', baseText: 'sich getroffen haben', acceptedAnswers: cebuanoAnswers('nagkita', 'Nagkita') },
+        { id: 'ta', targetText: 'ta', baseText: 'wir / uns', acceptedAnswers: cebuanoAnswers('ta', 'Ta') },
+        { id: 'lipay', targetText: 'lipay', baseText: 'Freude', acceptedAnswers: cebuanoAnswers('lipay', 'Lipay') },
+      ],
+      buildChips: ['Nalipay ko', 'nga nagkita ta.', 'tawag', 'amping'],
+      typeRecall: {
+        before: '',
+        answer: 'Nalipay',
+        after: ' ko nga nagkita ta.',
+        acceptedAnswers: cebuanoAnswers('Nalipay', 'nalipay'),
+        fallbackChoices: ['Nalipay', 'Naulahi', 'Nagpuyo', 'Tingali'],
+      },
+      speakTarget: {
+        baseCue: 'Es freut mich, dass wir uns getroffen haben.',
+        targetPhrase: 'Nalipay ko nga nagkita ta.',
+        requiredTokens: ['nalipay', 'ko', 'nagkita', 'ta'],
+        optionalTokens: ['nga', 'lipay'],
+      },
+      sceneCaption: 'Human magpailaila, moingon ka nga nalipay ko nga nagkita ta.',
+      trophyWord: {
+        word: 'nalipay',
+        meaning: 'sich gefreut haben',
+        example: 'Nalipay ko nga nagkita ta.',
+        whyThisWord: 'Nalipay macht eine freundliche Kennenlernreaktion einfach und positiv.',
+      },
+      placeholderCaption: 'Warm first meeting after introductions.',
+      songMood: 'pleased to meet',
+      visualNotes: 'Handshake, friendly smiles, nalipay highlighted.',
+    }),
+  },
+  {
+    slug: 'from-cebu',
+    title: 'Aus Cebu?',
+    situation: {
+      en: 'Ask if someone is from Cebu.',
+      de: 'Du fragst, ob jemand aus Cebu kommt.',
+    },
+    pedagogicalGoal: 'Taga Cebu ka? als einfache Herkunftsfrage verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Taga Cebu ka?',
+        baseText: 'Kommst du aus Cebu?',
+      },
+      meaning: 'Eine kurze Herkunftsfrage ohne lange Biografie.',
+      chunks: [
+        { id: 'taga-cebu', targetText: 'Taga Cebu', baseText: 'aus Cebu' },
+        { id: 'ka', targetText: 'ka?', baseText: 'bist du?' },
+      ],
+      lessonItems: [
+        { id: 'taga', targetText: 'taga', baseText: 'aus / stammend aus', acceptedAnswers: cebuanoAnswers('taga', 'Taga') },
+        { id: 'cebu', targetText: 'Cebu', baseText: 'Cebu', acceptedAnswers: cebuanoAnswers('Cebu', 'cebu') },
+        { id: 'ka', targetText: 'ka', baseText: 'du', acceptedAnswers: cebuanoAnswers('ka', 'Ka') },
+        { id: 'dapit', targetText: 'dapit', baseText: 'Gegend / Nähe', acceptedAnswers: cebuanoAnswers('dapit', 'Dapit') },
+      ],
+      buildChips: ['Taga Cebu', 'ka?', 'nagpuyo', 'tawag'],
+      typeRecall: {
+        before: '',
+        answer: 'Taga',
+        after: ' Cebu ka?',
+        acceptedAnswers: cebuanoAnswers('Taga', 'taga'),
+        fallbackChoices: ['Taga', 'Tawag', 'Gabii', 'Amping'],
+      },
+      speakTarget: {
+        baseCue: 'Kommst du aus Cebu?',
+        targetPhrase: 'Taga Cebu ka?',
+        requiredTokens: ['taga', 'cebu', 'ka'],
+        optionalTokens: ['dapit'],
+      },
+      sceneCaption: 'Sa bag-ong kaila, mangutana ka kaniya kon taga Cebu ba siya.',
+      trophyWord: {
+        word: 'taga',
+        meaning: 'aus / stammend aus',
+        example: 'Taga Cebu ka?',
+        whyThisWord: 'Taga ist der kurze Herkunftsanker für Stadt, Insel oder Gegend.',
+      },
+      placeholderCaption: 'Casual question about being from Cebu.',
+      songMood: 'asking where someone is from',
+      visualNotes: 'Cebu map pin, conversation, taga highlighted.',
+    }),
+  },
+  {
+    slug: 'live-here',
+    title: 'Wohnst du hier?',
+    situation: {
+      en: 'Ask whether someone lives here.',
+      de: 'Du fragst, ob jemand hier wohnt.',
+    },
+    pedagogicalGoal: 'Nagpuyo ka diri? als einfache Wohnortfrage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Nagpuyo ka diri?',
+        baseText: 'Wohnst du hier?',
+      },
+      meaning: 'Eine kurze Frage über den aktuellen Ort.',
+      chunks: [
+        { id: 'nagpuyo-ka', targetText: 'Nagpuyo ka', baseText: 'wohnst du' },
+        { id: 'diri', targetText: 'diri?', baseText: 'hier?' },
+      ],
+      lessonItems: [
+        { id: 'nagpuyo', targetText: 'nagpuyo', baseText: 'wohnt / lebt', acceptedAnswers: cebuanoAnswers('nagpuyo', 'Nagpuyo') },
+        { id: 'puyo', targetText: 'puyo', baseText: 'wohnen / bleiben', acceptedAnswers: cebuanoAnswers('puyo', 'Puyo') },
+        { id: 'diri', targetText: 'diri', baseText: 'hier', acceptedAnswers: cebuanoAnswers('diri', 'Diri') },
+        { id: 'ka', targetText: 'ka', baseText: 'du', acceptedAnswers: cebuanoAnswers('ka', 'Ka') },
+      ],
+      buildChips: ['Nagpuyo ka', 'diri?', 'taga', 'gabii'],
+      typeRecall: {
+        before: '',
+        answer: 'Nagpuyo',
+        after: ' ka diri?',
+        acceptedAnswers: cebuanoAnswers('Nagpuyo', 'nagpuyo'),
+        fallbackChoices: ['Nagpuyo', 'Nalipay', 'Naulahi', 'Parke'],
+      },
+      speakTarget: {
+        baseCue: 'Wohnst du hier?',
+        targetPhrase: 'Nagpuyo ka diri?',
+        requiredTokens: ['nagpuyo', 'ka', 'diri'],
+        optionalTokens: ['puyo'],
+      },
+      sceneCaption: 'Sa duol nga lugar, mangutana ka kaniya kon nagpuyo ba siya diri.',
+      trophyWord: {
+        word: 'nagpuyo',
+        meaning: 'wohnt / lebt',
+        example: 'Nagpuyo ka diri?',
+        whyThisWord: 'Nagpuyo verbindet Menschen mit Orten und passt zu einfachen Kennenlernfragen.',
+      },
+      placeholderCaption: 'Neighborhood conversation about living nearby.',
+      songMood: 'asking if someone lives here',
+      visualNotes: 'Street corner, homes nearby, nagpuyo highlighted.',
+    }),
+  },
+  {
+    slug: 'free-tonight',
+    title: 'Heute Abend frei?',
+    situation: {
+      en: 'Ask if someone is free tonight.',
+      de: 'Du fragst, ob jemand heute Abend Zeit hat.',
+    },
+    pedagogicalGoal: 'Libre ka karong gabii? als einfache Abendfrage sprechen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Libre ka karong gabii?',
+        baseText: 'Hast du heute Abend Zeit?',
+      },
+      meaning: 'Eine lockere Frage, bevor du einen kleinen Plan vorschlägst.',
+      chunks: [
+        { id: 'libre-ka', targetText: 'Libre ka', baseText: 'bist du frei' },
+        { id: 'karong-gabii', targetText: 'karong gabii?', baseText: 'heute Abend?' },
+      ],
+      lessonItems: [
+        { id: 'gabii', targetText: 'gabii', baseText: 'Abend / Nacht', acceptedAnswers: cebuanoAnswers('gabii', 'Gabii') },
+        { id: 'libre', targetText: 'libre', baseText: 'frei', acceptedAnswers: cebuanoAnswers('libre', 'Libre') },
+        { id: 'karong-gabii', targetText: 'karong gabii', baseText: 'heute Abend', acceptedAnswers: cebuanoAnswers('karong gabii', 'Karong gabii') },
+        { id: 'ka', targetText: 'ka', baseText: 'du', acceptedAnswers: cebuanoAnswers('ka', 'Ka') },
+      ],
+      buildChips: ['Libre ka', 'karong gabii?', 'parke', 'tingali'],
+      typeRecall: {
+        before: 'Libre ka karong ',
+        answer: 'gabii',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('gabii', 'Gabii'),
+        fallbackChoices: ['gabii', 'parke', 'taga', 'amping'],
+      },
+      speakTarget: {
+        baseCue: 'Hast du heute Abend Zeit?',
+        targetPhrase: 'Libre ka karong gabii?',
+        requiredTokens: ['libre', 'ka', 'gabii'],
+        optionalTokens: ['karong'],
+      },
+      sceneCaption: 'Sa pagplano, mangutana ka kaniya kon libre ba siya karong gabii.',
+      trophyWord: {
+        word: 'gabii',
+        meaning: 'Abend / Nacht',
+        example: 'Libre ka karong gabii?',
+        whyThisWord: 'Gabii öffnet einfache Abendpläne und Small Talk über Zeit.',
+      },
+      placeholderCaption: 'Evening plan question in a casual chat.',
+      songMood: 'asking about tonight',
+      visualNotes: 'Evening street lights, phone plan, gabii highlighted.',
+    }),
+  },
+  {
+    slug: 'meet-at-park',
+    title: 'Im Park treffen?',
+    situation: {
+      en: 'Suggest meeting at the park.',
+      de: 'Du schlägst vor, euch im Park zu treffen.',
+    },
+    pedagogicalGoal: 'Magkita ta sa parke? als einfacher Treffpunktvorschlag nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Magkita ta sa parke?',
+        baseText: 'Treffen wir uns im Park?',
+      },
+      meaning: 'Ein kurzer Vorschlag mit einem konkreten Ort.',
+      chunks: [
+        { id: 'magkita-ta', targetText: 'Magkita ta', baseText: 'treffen wir uns' },
+        { id: 'sa-parke', targetText: 'sa parke?', baseText: 'im Park?' },
+      ],
+      lessonItems: [
+        { id: 'parke', targetText: 'parke', baseText: 'Park', acceptedAnswers: cebuanoAnswers('parke', 'Parke', 'park', 'Park') },
+        { id: 'magkita', targetText: 'magkita', baseText: 'sich treffen', acceptedAnswers: cebuanoAnswers('magkita', 'Magkita') },
+        { id: 'ta', targetText: 'ta', baseText: 'wir / uns', acceptedAnswers: cebuanoAnswers('ta', 'Ta') },
+        { id: 'sa-parke', targetText: 'sa parke', baseText: 'im Park', acceptedAnswers: cebuanoAnswers('sa parke', 'Sa parke') },
+      ],
+      buildChips: ['Magkita ta', 'sa parke?', 'gabii', 'taga'],
+      typeRecall: {
+        before: 'Magkita ta sa ',
+        answer: 'parke',
+        after: '?',
+        acceptedAnswers: cebuanoAnswers('parke', 'Parke', 'park', 'Park'),
+        fallbackChoices: ['parke', 'gabii', 'tawag', 'tingali'],
+      },
+      speakTarget: {
+        baseCue: 'Treffen wir uns im Park?',
+        targetPhrase: 'Magkita ta sa parke?',
+        requiredTokens: ['magkita', 'ta', 'parke'],
+        optionalTokens: ['sa', 'park'],
+      },
+      sceneCaption: 'Human mangutana sa oras, mosugyot ka nga magkita ta sa parke.',
+      trophyWord: {
+        word: 'parke',
+        meaning: 'Park',
+        example: 'Magkita ta sa parke?',
+        whyThisWord: 'Parke ist ein leichter Treffpunktanker für soziale Pläne.',
+      },
+      placeholderCaption: 'Simple plan to meet at the park.',
+      songMood: 'meeting at the park',
+      visualNotes: 'Park gate, meeting marker, parke highlighted.',
+    }),
+  },
+  {
+    slug: 'maybe-later',
+    title: 'Vielleicht später',
+    situation: {
+      en: 'Answer a plan softly with maybe later.',
+      de: 'Du antwortest auf einen Plan vorsichtig mit vielleicht später.',
+    },
+    pedagogicalGoal: 'Tingali unya als kurze, weiche Planantwort verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Tingali unya.',
+        baseText: 'Vielleicht später.',
+      },
+      meaning: 'Eine kurze Antwort, wenn du noch nicht fest zusagen willst.',
+      chunks: [
+        { id: 'tingali', targetText: 'Tingali', baseText: 'vielleicht' },
+        { id: 'unya', targetText: 'unya.', baseText: 'später.' },
+      ],
+      lessonItems: [
+        { id: 'tingali', targetText: 'tingali', baseText: 'vielleicht', acceptedAnswers: cebuanoAnswers('tingali', 'Tingali') },
+        { id: 'unya', targetText: 'unya', baseText: 'später', acceptedAnswers: cebuanoAnswers('unya', 'Unya') },
+        { id: 'plano', targetText: 'plano', baseText: 'Plan', acceptedAnswers: cebuanoAnswers('plano', 'Plano') },
+        { id: 'pwede', targetText: 'pwede', baseText: 'kann / möglich', acceptedAnswers: cebuanoAnswers('pwede', 'Pwede', 'puwede', 'Puwede') },
+      ],
+      buildChips: ['Tingali', 'unya.', 'gabii', 'parke'],
+      typeRecall: {
+        before: '',
+        answer: 'Tingali',
+        after: ' unya.',
+        acceptedAnswers: cebuanoAnswers('Tingali', 'tingali'),
+        fallbackChoices: ['Tingali', 'Nalipay', 'Naulahi', 'Amping'],
+      },
+      speakTarget: {
+        baseCue: 'Vielleicht später.',
+        targetPhrase: 'Tingali unya.',
+        requiredTokens: ['tingali', 'unya'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Dili pa sigurado ang plano, busa motubag ka og tingali unya.',
+      trophyWord: {
+        word: 'tingali',
+        meaning: 'vielleicht',
+        example: 'Tingali unya.',
+        whyThisWord: 'Tingali ist ein weicher Planungsanker, wenn du noch nicht fest zusagen willst.',
+      },
+      placeholderCaption: 'Casual maybe-later reply to a plan.',
+      songMood: 'soft maybe later',
+      visualNotes: 'Phone chat, flexible plan, tingali highlighted.',
+    }),
+  },
+  {
+    slug: 'take-care',
+    title: 'Pass auf dich auf',
+    situation: {
+      en: 'End a casual meeting with take care.',
+      de: 'Du beendest ein lockeres Treffen mit einem Pass-auf-dich-auf.',
+    },
+    pedagogicalGoal: 'Amping pirmi als kurze, warme Verabschiedung sagen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: {
+        targetText: 'Amping pirmi.',
+        baseText: 'Pass immer auf dich auf.',
+      },
+      meaning: 'Ein freundlicher Abschied am Ende einer Begegnung.',
+      chunks: [
+        { id: 'amping', targetText: 'Amping', baseText: 'pass auf dich auf' },
+        { id: 'pirmi', targetText: 'pirmi.', baseText: 'immer.' },
+      ],
+      lessonItems: [
+        { id: 'amping', targetText: 'amping', baseText: 'pass auf dich auf', acceptedAnswers: cebuanoAnswers('amping', 'Amping') },
+        { id: 'pirmi', targetText: 'pirmi', baseText: 'immer', acceptedAnswers: cebuanoAnswers('pirmi', 'Pirmi') },
+        { id: 'ayo-ayo', targetText: 'ayo-ayo', baseText: 'mach es gut', acceptedAnswers: cebuanoAnswers('ayo-ayo', 'Ayo-ayo', 'ayo ayo', 'Ayo ayo') },
+        { id: 'sunod', targetText: 'sunod', baseText: 'nächstes Mal / folgend', acceptedAnswers: cebuanoAnswers('sunod', 'Sunod') },
+      ],
+      buildChips: ['Amping', 'pirmi.', 'tingali', 'nalipay'],
+      typeRecall: {
+        before: '',
+        answer: 'Amping',
+        after: ' pirmi.',
+        acceptedAnswers: cebuanoAnswers('Amping', 'amping'),
+        fallbackChoices: ['Amping', 'Tingali', 'Tawag', 'Gabii'],
+      },
+      speakTarget: {
+        baseCue: 'Pass immer auf dich auf.',
+        targetPhrase: 'Amping pirmi.',
+        requiredTokens: ['amping', 'pirmi'],
+        optionalTokens: ['ayo', 'ayo-ayo'],
+      },
+      sceneCaption: 'Sa katapusan sa tagbo, moingon ka og amping pirmi.',
+      trophyWord: {
+        word: 'amping',
+        meaning: 'pass auf dich auf',
+        example: 'Amping pirmi.',
+        whyThisWord: 'Amping ist ein warmer Cebuano-Abschiedsanker für kurze soziale Begegnungen.',
+      },
+      placeholderCaption: 'Friendly goodbye after a casual meeting.',
+      songMood: 'warm take care goodbye',
+      visualNotes: 'Two people leaving, small wave, amping highlighted.',
+    }),
+  },
+]
+
+const cebuanoA1Practical5Lessons: GuidedLessonDefinition[] = cebuanoA1Practical5Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-5-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = cebuanoA1Practical5Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_FIVE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_FIVE_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_FIVE_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_FIVE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_FIVE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_FIVE_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 5 abgeschlossen.',
+    },
+    vibeVariants: {
+      bright: lessonInput.variant,
+    },
+  }
+})
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -51268,6 +51819,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     nextLessonTeaser: { title: 'Path complete', situation: 'You have completed German A1 Practical 9.' },
     vibeVariants: { bright: brightGermanP9Lesson010 },
   },
+  ...cebuanoA1Practical5Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -51343,6 +51895,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_CEBUANO_THREE_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_FOUR_METADATA,
     GUIDED_TODAY_PATH_GERMAN_NINE_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_FIVE_METADATA,
   ]
 }
 
