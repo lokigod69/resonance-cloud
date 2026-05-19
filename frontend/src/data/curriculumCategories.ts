@@ -135,8 +135,8 @@ const VENDORED_ENRICHMENT = [
 // Keep this list flat; Generate's CATEGORY_GROUPS taxonomy is intentionally separate.
 const CURRICULUM_CATEGORIES: CurriculumCategory[] = VENDORED_CURRICULUM.map((data) => {
   const totalEntries = data.levels.reduce((sum, level) => sum + level.entries.length, 0)
-  const title = data.category_display.de ?? data.category_display.en ?? data.category_slug
-  const description = localizedText(data.description_short ?? data.description, 'de') ?? title
+  const title = stripParentheticalQualifier(data.category_display.de ?? data.category_display.en ?? data.category_slug)
+  const description = stripParentheticalQualifier(localizedText(data.description_short ?? data.description, 'de') ?? title)
 
   return {
     slug: data.category_slug,
@@ -208,4 +208,8 @@ function localizedText(value: Record<string, string> | string | undefined, prefe
   if (!value) return null
   if (typeof value === 'string') return value
   return value[preferredIso] ?? value.en ?? Object.values(value)[0] ?? null
+}
+
+function stripParentheticalQualifier(value: string): string {
+  return value.replace(/\s*\([^)]*\)\s*$/u, '').trim()
 }
