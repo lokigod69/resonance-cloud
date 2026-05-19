@@ -950,6 +950,17 @@ const GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA: GuidedPathMetadata = {
   targetLanguage: 'Cebuano',
   estimatedMinutes: 5,
 }
+
+const GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA: GuidedPathMetadata = {
+  id: 'cebuano-a1-practical-9',
+  title: 'Cebuano A1 Praxis 9',
+  shortTitle: 'A1 Praxis 9',
+  subtitle: 'Treffen, Zeit und einfache Planänderungen auf Cebuano',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -40312,6 +40323,320 @@ const cebuanoA1Practical8Lessons: GuidedLessonDefinition[] = cebuanoA1Practical8
     vibeVariants: { bright: lessonInput.variant },
   }
 })
+
+const cebuanoA1Practical9Inputs: CebuanoP2LessonInput[] = [
+  {
+    slug: 'i-am-new-here',
+    title: 'Ich bin neu hier',
+    situation: { en: 'At a casual gathering, say that you are new here.', de: 'Bei einem lockeren Treffen sagst du, dass du hier neu bist.' },
+    pedagogicalGoal: 'Bag-o ko diri als einfache soziale Einstiegslinie verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Bag-o ko diri.', baseText: 'Ich bin neu hier.' },
+      meaning: 'Eine kurze, sichere Vorstellung ohne Namen oder lange Erklärung.',
+      chunks: [
+        { id: 'bag-o-ko', targetText: 'Bag-o ko', baseText: 'ich bin neu' },
+        { id: 'diri', targetText: 'diri.', baseText: 'hier.' },
+      ],
+      lessonItems: [
+        { id: 'diri', targetText: 'diri', baseText: 'hier', acceptedAnswers: cebuanoAnswers('diri', 'Diri') },
+        { id: 'bag-o', targetText: 'bag-o', baseText: 'neu', acceptedAnswers: cebuanoAnswers('bag-o', 'Bag-o', 'bago', 'Bago') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'kaila', targetText: 'kaila', baseText: 'kennen / bekannt', acceptedAnswers: cebuanoAnswers('kaila', 'Kaila') },
+      ],
+      buildChips: ['Bag-o ko', 'diri.', 'libre', 'unya'],
+      typeRecall: { before: 'Bag-o ko ', answer: 'diri', after: '.', acceptedAnswers: cebuanoAnswers('diri', 'Diri'), fallbackChoices: ['diri', 'libre', 'orasa', 'plano'] },
+      speakTarget: { baseCue: 'Ich bin neu hier.', targetPhrase: 'Bag-o ko diri.', acceptedAnswers: ['Bago ko diri'], requiredTokens: ['bag', 'o', 'ko', 'diri'], optionalTokens: ['bago'] },
+      sceneCaption: 'Sa bag-ong grupo, mubo ra ang imong sulti: bag-o ko diri.',
+      trophyWord: { word: 'diri', meaning: 'hier', example: 'Bag-o ko diri.', whyThisWord: 'Diri hält die soziale Einstiegslinie räumlich klar und bleibt Cebuano statt Tagalog dito.' },
+      placeholderCaption: 'A casual group setting with a short new-here line.',
+      songMood: 'new person at a casual meetup',
+      visualNotes: 'Small group, warm doorway, diri highlighted.',
+    }),
+  },
+  {
+    slug: 'are-you-free-today',
+    title: 'Hast du heute Zeit?',
+    situation: { en: 'In casual planning, ask whether someone is free today.', de: 'In einer lockeren Planung fragst du, ob jemand heute Zeit hat.' },
+    pedagogicalGoal: 'Libre ka karon? als kurze Verfügbarkeitsfrage abrufen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Libre ka karon?', baseText: 'Hast du heute Zeit?' },
+      meaning: 'Eine direkte Frage, ob die andere Person gerade heute frei ist.',
+      chunks: [
+        { id: 'libre-ka', targetText: 'Libre ka', baseText: 'bist du frei' },
+        { id: 'karon', targetText: 'karon?', baseText: 'heute / jetzt?' },
+      ],
+      lessonItems: [
+        { id: 'libre', targetText: 'libre', baseText: 'frei / verfügbar', acceptedAnswers: cebuanoAnswers('libre', 'Libre') },
+        { id: 'ka', targetText: 'ka', baseText: 'du', acceptedAnswers: cebuanoAnswers('ka', 'Ka') },
+        { id: 'karon', targetText: 'karon', baseText: 'heute / jetzt', acceptedAnswers: cebuanoAnswers('karon', 'Karon') },
+        { id: 'oras', targetText: 'oras', baseText: 'Zeit / Uhrzeit', acceptedAnswers: cebuanoAnswers('oras', 'Oras') },
+      ],
+      buildChips: ['Libre ka', 'karon?', 'diri', 'unya'],
+      typeRecall: { before: '', answer: 'Libre', after: ' ka karon?', acceptedAnswers: cebuanoAnswers('Libre', 'libre'), fallbackChoices: ['Libre', 'Diri', 'Unya', 'Plano'] },
+      speakTarget: { baseCue: 'Hast du heute Zeit?', targetPhrase: 'Libre ka karon?', requiredTokens: ['libre', 'ka', 'karon'], optionalTokens: ['oras'] },
+      sceneCaption: 'Sa chat o kung magkita mo, mangutana ka kon libre ka karon.',
+      trophyWord: { word: 'libre', meaning: 'frei / verfügbar', example: 'Libre ka karon?', whyThisWord: 'Libre ist ein geläufiger Cebuano-Planungsanker für freie Zeit oder Verfügbarkeit.' },
+      placeholderCaption: 'Checking whether someone is free today.',
+      songMood: 'asking if someone is free',
+      visualNotes: 'Phone chat bubbles, calendar hint, libre highlighted.',
+    }),
+  },
+  {
+    slug: 'see-you-later',
+    title: 'Sehen wir uns später?',
+    situation: { en: 'Suggest seeing each other later the same day.', de: 'Du schlägst vor, euch später am selben Tag zu sehen.' },
+    pedagogicalGoal: 'Magkita ta unya? als lockeren Später-Vorschlag verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Magkita ta unya?', baseText: 'Sehen wir uns später?' },
+      meaning: 'Eine knappe soziale Frage für ein späteres Wiedersehen.',
+      chunks: [
+        { id: 'magkita-ta', targetText: 'Magkita ta', baseText: 'sehen wir uns' },
+        { id: 'unya', targetText: 'unya?', baseText: 'später?' },
+      ],
+      lessonItems: [
+        { id: 'unya', targetText: 'unya', baseText: 'später / nachher', acceptedAnswers: cebuanoAnswers('unya', 'Unya') },
+        { id: 'magkita', targetText: 'magkita', baseText: 'sich sehen / treffen', acceptedAnswers: cebuanoAnswers('magkita', 'Magkita') },
+        { id: 'ta', targetText: 'ta', baseText: 'wir / lass uns', acceptedAnswers: cebuanoAnswers('ta', 'Ta') },
+        { id: 'hapon', targetText: 'hapon', baseText: 'Nachmittag', acceptedAnswers: cebuanoAnswers('hapon', 'Hapon') },
+      ],
+      buildChips: ['Magkita ta', 'unya?', 'libre', 'orasa'],
+      typeRecall: { before: 'Magkita ta ', answer: 'unya', after: '?', acceptedAnswers: cebuanoAnswers('unya', 'Unya'), fallbackChoices: ['unya', 'diri', 'libre', 'maayong'] },
+      speakTarget: { baseCue: 'Sehen wir uns später?', targetPhrase: 'Magkita ta unya?', requiredTokens: ['magkita', 'ta', 'unya'], optionalTokens: [] },
+      sceneCaption: 'Human sa unang istorya, mangutana ka: magkita ta unya?',
+      trophyWord: { word: 'unya', meaning: 'später / nachher', example: 'Magkita ta unya?', whyThisWord: 'Unya ist der einfache Cebuano-Zeitanker für später, passend zu lockerer Planung.' },
+      placeholderCaption: 'Suggesting a later casual meet-up.',
+      songMood: 'later meet-up suggestion',
+      visualNotes: 'Two people leaving a cafe, unya highlighted.',
+    }),
+  },
+  {
+    slug: 'what-time-works',
+    title: 'Welche Uhrzeit passt dir?',
+    situation: { en: 'Ask which time works for the other person.', de: 'Du fragst, welche Uhrzeit der anderen Person passt.' },
+    pedagogicalGoal: 'Unsang orasa ang maayo nimo? als einfache Zeitwahlfrage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Unsang orasa ang maayo nimo?', baseText: 'Welche Uhrzeit passt dir?' },
+      meaning: 'Eine einfache Frage nach einer passenden Zeit, ohne komplexe Terminplanung.',
+      chunks: [
+        { id: 'unsang-orasa', targetText: 'Unsang orasa', baseText: 'welche Uhrzeit' },
+        { id: 'ang-maayo-nimo', targetText: 'ang maayo nimo?', baseText: 'ist gut für dich?' },
+      ],
+      lessonItems: [
+        { id: 'orasa', targetText: 'orasa', baseText: 'Uhrzeit', acceptedAnswers: cebuanoAnswers('orasa', 'Orasa') },
+        { id: 'unsang', targetText: 'unsang', baseText: 'welche / welcher', acceptedAnswers: cebuanoAnswers('unsang', 'Unsang') },
+        { id: 'maayo', targetText: 'maayo', baseText: 'gut / passend', acceptedAnswers: cebuanoAnswers('maayo', 'Maayo') },
+        { id: 'nimo', targetText: 'nimo', baseText: 'für dich / dein', acceptedAnswers: cebuanoAnswers('nimo', 'Nimo') },
+      ],
+      buildChips: ['Unsang orasa', 'ang maayo nimo?', 'unya', 'diri'],
+      typeRecall: { before: 'Unsang ', answer: 'orasa', after: ' ang maayo nimo?', acceptedAnswers: cebuanoAnswers('orasa', 'Orasa'), fallbackChoices: ['orasa', 'libre', 'plano', 'gawas'] },
+      speakTarget: { baseCue: 'Welche Uhrzeit passt dir?', targetPhrase: 'Unsang orasa ang maayo nimo?', requiredTokens: ['unsang', 'orasa', 'maayo', 'nimo'], optionalTokens: ['ang'] },
+      sceneCaption: 'Kung siya ang mopili sa oras, pangutana: unsang orasa ang maayo nimo?',
+      trophyWord: { word: 'orasa', meaning: 'Uhrzeit', example: 'Unsang orasa ang maayo nimo?', whyThisWord: 'Orasa macht die Zeitfrage konkret und bleibt auf A1-Niveau.' },
+      placeholderCaption: 'Asking which time works.',
+      songMood: 'choosing a simple time',
+      visualNotes: 'Simple clock card, orasa highlighted.',
+    }),
+  },
+  {
+    slug: 'we-meet-here',
+    title: 'Wir treffen uns hier',
+    situation: { en: 'Suggest the current place as the meeting spot.', de: 'Du schlägst den aktuellen Ort als Treffpunkt vor.' },
+    pedagogicalGoal: 'Dinhi ta magkita als einfachen Treffpunktvorschlag abrufen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Dinhi ta magkita.', baseText: 'Wir treffen uns hier.' },
+      meaning: 'Eine klare Treffpunktlinie für den Ort, an dem du gerade bist.',
+      chunks: [
+        { id: 'dinhi-ta', targetText: 'Dinhi ta', baseText: 'hier werden wir' },
+        { id: 'magkita', targetText: 'magkita.', baseText: 'uns treffen.' },
+      ],
+      lessonItems: [
+        { id: 'dinhi', targetText: 'dinhi', baseText: 'hier', acceptedAnswers: cebuanoAnswers('dinhi', 'Dinhi') },
+        { id: 'magkita', targetText: 'magkita', baseText: 'sich treffen / sehen', acceptedAnswers: cebuanoAnswers('magkita', 'Magkita') },
+        { id: 'ta', targetText: 'ta', baseText: 'wir / lass uns', acceptedAnswers: cebuanoAnswers('ta', 'Ta') },
+        { id: 'lugar', targetText: 'lugar', baseText: 'Ort', acceptedAnswers: cebuanoAnswers('lugar', 'Lugar') },
+      ],
+      buildChips: ['Dinhi ta', 'magkita.', 'orasa', 'gawas'],
+      typeRecall: { before: '', answer: 'Dinhi', after: ' ta magkita.', acceptedAnswers: cebuanoAnswers('Dinhi', 'dinhi'), fallbackChoices: ['Dinhi', 'Libre', 'Unya', 'Usbon'] },
+      speakTarget: { baseCue: 'Wir treffen uns hier.', targetPhrase: 'Dinhi ta magkita.', requiredTokens: ['dinhi', 'ta', 'magkita'], optionalTokens: ['diri'] },
+      sceneCaption: 'Sa klarong lugar, mosugyot ka: dinhi ta magkita.',
+      trophyWord: { word: 'dinhi', meaning: 'hier', example: 'Dinhi ta magkita.', whyThisWord: 'Dinhi ist ein Cebuano-Ortsanker für hier und passt sehr gut zu Treffpunkten.' },
+      placeholderCaption: 'Choosing the current spot as the meeting place.',
+      songMood: 'settling on a meeting place',
+      visualNotes: 'Street corner marker, dinhi highlighted.',
+    }),
+  },
+  {
+    slug: 'i-am-waiting-outside',
+    title: 'Ich warte draußen',
+    situation: { en: 'By phone or message, say that you are waiting outside.', de: 'Am Telefon oder per Nachricht sagst du, dass du draußen wartest.' },
+    pedagogicalGoal: 'Naghulat ko sa gawas als kurze Standortmeldung verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Naghulat ko sa gawas.', baseText: 'Ich warte draußen.' },
+      meaning: 'Eine einfache Nachricht, wo du wartest.',
+      chunks: [
+        { id: 'naghulat-ko', targetText: 'Naghulat ko', baseText: 'ich warte' },
+        { id: 'sa-gawas', targetText: 'sa gawas.', baseText: 'draußen.' },
+      ],
+      lessonItems: [
+        { id: 'naghulat', targetText: 'naghulat', baseText: 'warte / wartend', acceptedAnswers: cebuanoAnswers('naghulat', 'Naghulat', 'nag-hulat', 'Nag-hulat') },
+        { id: 'hulat', targetText: 'hulat', baseText: 'warten', acceptedAnswers: cebuanoAnswers('hulat', 'Hulat', 'huwat', 'Huwat') },
+        { id: 'gawas', targetText: 'gawas', baseText: 'draußen', acceptedAnswers: cebuanoAnswers('gawas', 'Gawas') },
+        { id: 'sa-gawas', targetText: 'sa gawas', baseText: 'draußen / im Außenbereich', acceptedAnswers: cebuanoAnswers('sa gawas', 'Sa gawas') },
+      ],
+      buildChips: ['Naghulat ko', 'sa gawas.', 'dinhi', 'padulong'],
+      typeRecall: { before: '', answer: 'Naghulat', after: ' ko sa gawas.', acceptedAnswers: cebuanoAnswers('Naghulat', 'naghulat', 'Nag-hulat', 'nag-hulat'), fallbackChoices: ['Naghulat', 'Padulong', 'Magkita', 'Libre'] },
+      speakTarget: { baseCue: 'Ich warte draußen.', targetPhrase: 'Naghulat ko sa gawas.', requiredTokens: ['naghulat', 'ko', 'gawas'], optionalTokens: ['hulat', 'sa'] },
+      sceneCaption: 'Sa gawas sa lugar, imong i-update: naghulat ko sa gawas.',
+      trophyWord: { word: 'naghulat', meaning: 'warte / wartend', example: 'Naghulat ko sa gawas.', whyThisWord: 'Naghulat ist der produktive Warte-Anker für kurze Standortmeldungen.' },
+      placeholderCaption: 'Waiting outside and sending a short update.',
+      songMood: 'waiting outside update',
+      visualNotes: 'Outside doorway and phone, naghulat highlighted.',
+    }),
+  },
+  {
+    slug: 'i-am-on-my-way',
+    title: 'Ich bin unterwegs',
+    situation: { en: 'Send a short update that you are on your way.', de: 'Unterwegs sendest du eine kurze Nachricht, dass du auf dem Weg bist.' },
+    pedagogicalGoal: 'Padulong na ko als einfache Unterwegs-Meldung verwenden.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Padulong na ko.', baseText: 'Ich bin unterwegs.' },
+      meaning: 'Eine kurze beruhigende Nachricht, dass du schon auf dem Weg bist.',
+      chunks: [
+        { id: 'padulong-na', targetText: 'Padulong na', baseText: 'schon unterwegs' },
+        { id: 'ko', targetText: 'ko.', baseText: 'ich.' },
+      ],
+      lessonItems: [
+        { id: 'padulong', targetText: 'padulong', baseText: 'unterwegs / in Richtung', acceptedAnswers: cebuanoAnswers('padulong', 'Padulong') },
+        { id: 'na', targetText: 'na', baseText: 'jetzt / schon', acceptedAnswers: cebuanoAnswers('na', 'Na') },
+        { id: 'ko', targetText: 'ko', baseText: 'ich', acceptedAnswers: cebuanoAnswers('ko', 'Ko') },
+        { id: 'dalan', targetText: 'dalan', baseText: 'Weg / Straße', acceptedAnswers: cebuanoAnswers('dalan', 'Dalan') },
+      ],
+      buildChips: ['Padulong na', 'ko.', 'naghulat', 'plano'],
+      typeRecall: { before: '', answer: 'Padulong', after: ' na ko.', acceptedAnswers: cebuanoAnswers('Padulong', 'padulong'), fallbackChoices: ['Padulong', 'Naghulat', 'Dinhi', 'Orasa'] },
+      speakTarget: { baseCue: 'Ich bin unterwegs.', targetPhrase: 'Padulong na ko.', requiredTokens: ['padulong', 'na', 'ko'], optionalTokens: ['dalan'] },
+      sceneCaption: 'Kung hapit na ka moabot, simple ra: padulong na ko.',
+      trophyWord: { word: 'padulong', meaning: 'unterwegs / in Richtung', example: 'Padulong na ko.', whyThisWord: 'Padulong ist ein natürlicher Cebuano-Anker für eine Unterwegs-Nachricht.' },
+      placeholderCaption: 'Sending an on-my-way update.',
+      songMood: 'on my way message',
+      visualNotes: 'Moving phone map, padulong highlighted.',
+    }),
+  },
+  {
+    slug: 'change-the-plan',
+    title: 'Können wir den Plan ändern?',
+    situation: { en: 'Ask whether you can change a simple plan.', de: 'Du fragst, ob ihr einen einfachen Plan ändern könnt.' },
+    pedagogicalGoal: 'Pwede nato usbon ang plano? als einfache Planänderungsfrage nutzen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Pwede nato usbon ang plano?', baseText: 'Können wir den Plan ändern?' },
+      meaning: 'Eine kurze, höfliche Frage nach einer kleinen Planänderung.',
+      chunks: [
+        { id: 'pwede-nato-usbon', targetText: 'Pwede nato usbon', baseText: 'können wir ändern' },
+        { id: 'ang-plano', targetText: 'ang plano?', baseText: 'den Plan?' },
+      ],
+      lessonItems: [
+        { id: 'usbon', targetText: 'usbon', baseText: 'ändern', acceptedAnswers: cebuanoAnswers('usbon', 'Usbon') },
+        { id: 'pwede', targetText: 'pwede', baseText: 'können / möglich', acceptedAnswers: cebuanoAnswers('pwede', 'Pwede', 'puwede', 'Puwede') },
+        { id: 'nato', targetText: 'nato', baseText: 'unser / wir', acceptedAnswers: cebuanoAnswers('nato', 'Nato') },
+        { id: 'plano', targetText: 'plano', baseText: 'Plan', acceptedAnswers: cebuanoAnswers('plano', 'Plano', 'plan', 'Plan') },
+      ],
+      buildChips: ['Pwede nato usbon', 'ang plano?', 'padulong', 'unya'],
+      typeRecall: { before: 'Pwede nato ', answer: 'usbon', after: ' ang plano?', acceptedAnswers: cebuanoAnswers('usbon', 'Usbon'), fallbackChoices: ['usbon', 'libre', 'dinhi', 'gawas'] },
+      speakTarget: { baseCue: 'Können wir den Plan ändern?', targetPhrase: 'Pwede nato usbon ang plano?', requiredTokens: ['pwede', 'nato', 'usbon', 'plano'], optionalTokens: ['puwede', 'ang'] },
+      sceneCaption: 'Kung mausab ang sitwasyon, mangutana ka: pwede nato usbon ang plano?',
+      trophyWord: { word: 'usbon', meaning: 'ändern', example: 'Pwede nato usbon ang plano?', whyThisWord: 'Usbon hält die Planänderung konkret, ohne in komplexe Terminverhandlung zu gehen.' },
+      placeholderCaption: 'Asking to change a simple plan.',
+      songMood: 'gentle plan change',
+      visualNotes: 'Small calendar note, usbon highlighted.',
+    }),
+  },
+  {
+    slug: 'see-you-tomorrow',
+    title: 'Wir sehen uns morgen',
+    situation: { en: 'Close a casual plan with see you tomorrow.', de: 'Du beendest eine lockere Planung mit wir sehen uns morgen.' },
+    pedagogicalGoal: 'Kita ta ugma als kurzen Abschluss für morgen abrufen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Kita ta ugma.', baseText: 'Wir sehen uns morgen.' },
+      meaning: 'Ein knapper sozialer Abschluss für einen Plan am nächsten Tag.',
+      chunks: [
+        { id: 'kita-ta', targetText: 'Kita ta', baseText: 'wir sehen uns' },
+        { id: 'ugma', targetText: 'ugma.', baseText: 'morgen.' },
+      ],
+      lessonItems: [
+        { id: 'kita', targetText: 'kita', baseText: 'sehen / uns sehen', acceptedAnswers: cebuanoAnswers('kita', 'Kita') },
+        { id: 'ugma', targetText: 'ugma', baseText: 'morgen', acceptedAnswers: cebuanoAnswers('ugma', 'Ugma') },
+        { id: 'ta', targetText: 'ta', baseText: 'wir / uns', acceptedAnswers: cebuanoAnswers('ta', 'Ta') },
+        { id: 'sunod', targetText: 'sunod', baseText: 'nächste / folgend', acceptedAnswers: cebuanoAnswers('sunod', 'Sunod') },
+      ],
+      buildChips: ['Kita ta', 'ugma.', 'plano', 'gabii'],
+      typeRecall: { before: '', answer: 'Kita', after: ' ta ugma.', acceptedAnswers: cebuanoAnswers('Kita', 'kita'), fallbackChoices: ['Kita', 'Padulong', 'Naghulat', 'Maayong'] },
+      speakTarget: { baseCue: 'Wir sehen uns morgen.', targetPhrase: 'Kita ta ugma.', requiredTokens: ['kita', 'ta', 'ugma'], optionalTokens: [] },
+      sceneCaption: 'Sa katapusan sa plano, klaro ang panamilit: kita ta ugma.',
+      trophyWord: { word: 'kita', meaning: 'sehen / uns sehen', example: 'Kita ta ugma.', whyThisWord: 'Kita ta ist ein kurzer Cebuano-Abschluss für bis morgen oder see you tomorrow.' },
+      placeholderCaption: 'Closing with see you tomorrow.',
+      songMood: 'tomorrow plan close',
+      visualNotes: 'Calendar tomorrow mark, kita highlighted.',
+    }),
+  },
+  {
+    slug: 'nice-evening',
+    title: 'Schönen Abend',
+    situation: { en: 'Close an evening interaction politely.', de: 'Du schließt eine Abend-Szene freundlich ab.' },
+    pedagogicalGoal: 'Maayong gabii als einfachen Abendgruß abrufen.',
+    variant: makeBrightCebuanoP2Variant({
+      corePhrase: { targetText: 'Maayong gabii.', baseText: 'Schönen Abend.' },
+      meaning: 'Ein kurzer, freundlicher Abendgruß zum Abschluss.',
+      chunks: [
+        { id: 'maayong', targetText: 'Maayong', baseText: 'guten / schönen' },
+        { id: 'gabii', targetText: 'gabii.', baseText: 'Abend.' },
+      ],
+      lessonItems: [
+        { id: 'maayong', targetText: 'maayong', baseText: 'guten / schönen', acceptedAnswers: cebuanoAnswers('maayong', 'Maayong') },
+        { id: 'gabii', targetText: 'gabii', baseText: 'Abend / Nacht', acceptedAnswers: cebuanoAnswers('gabii', 'Gabii') },
+        { id: 'buntag', targetText: 'buntag', baseText: 'Morgen', acceptedAnswers: cebuanoAnswers('buntag', 'Buntag') },
+        { id: 'adlaw', targetText: 'adlaw', baseText: 'Tag', acceptedAnswers: cebuanoAnswers('adlaw', 'Adlaw') },
+      ],
+      buildChips: ['Maayong', 'gabii.', 'magkita', 'ugma'],
+      typeRecall: { before: '', answer: 'Maayong', after: ' gabii.', acceptedAnswers: cebuanoAnswers('Maayong', 'maayong'), fallbackChoices: ['Maayong', 'Magkita', 'Libre', 'Usbon'] },
+      speakTarget: { baseCue: 'Schönen Abend.', targetPhrase: 'Maayong gabii.', requiredTokens: ['maayong', 'gabii'], optionalTokens: ['adlaw'] },
+      sceneCaption: 'Sa gabii, hapsay ang panamilit: maayong gabii.',
+      trophyWord: { word: 'maayong', meaning: 'guten / schönen', example: 'Maayong gabii.', whyThisWord: 'Maayong ist der Cebuano-Grußbaustein für gute oder schöne Tageszeiten.' },
+      placeholderCaption: 'Closing the evening with a polite wish.',
+      songMood: 'warm evening close',
+      visualNotes: 'Evening street lights, maayong highlighted.',
+    }),
+  },
+]
+
+const cebuanoA1Practical9Lessons: GuidedLessonDefinition[] = cebuanoA1Practical9Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `cebuano-a1-practical-9-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = cebuanoA1Practical9Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA.title,
+    level: GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA,
+    lessonMetadata: { id, sequence: lessonNumber, title: lessonInput.title },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? 'Pfad abgeschlossen',
+      situation: nextInput?.situation.de ?? 'Du hast Cebuano A1 Practical 9 abgeschlossen.',
+    },
+    vibeVariants: { bright: lessonInput.variant },
+  }
+})
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -54661,6 +54986,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...indonesianA1Practical1Lessons,
   ...cebuanoA1Practical7Lessons,
   ...cebuanoA1Practical8Lessons,
+  ...cebuanoA1Practical9Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -54742,6 +55068,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA,
+    GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA,
   ]
 }
 
