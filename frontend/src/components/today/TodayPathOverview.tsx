@@ -21,7 +21,10 @@ import { CheckpointCard } from '@/components/today/CheckpointCard'
 import { GuidedPathDirectory } from '@/components/today/GuidedPathDirectory'
 import { cn } from '@/lib/utils'
 
-const TODAY_PATH_ORB_ASSET = '/guided/today/orb-hero.svg'
+const TODAY_PATH_HERO_ASSET = '/guided/today/today-orb-hero.png'
+const TODAY_PATH_LESSON_ORB_ASSET = '/guided/today/today-lesson-orb.png'
+const TODAY_PATH_MOBILE_RAIL_ASSET = '/guided/today/today-path-rail-mobile.png'
+const TODAY_PATH_DESKTOP_RAIL_ASSET = '/guided/today/today-path-rail-desktop.png'
 
 const GUIDED_SEGMENT_REVIEWS = [
   {
@@ -133,13 +136,13 @@ export function TodayPathOverview({
     <div className="today-path-shell grid gap-4 sm:gap-5">
       <section className="today-path-hero theme-panel rounded-lg border border-[var(--border-subtle)] p-4 sm:p-5">
         <img
-          src={TODAY_PATH_ORB_ASSET}
+          src={TODAY_PATH_HERO_ASSET}
           alt=""
           className="today-path-heroOrb"
           draggable={false}
           aria-hidden="true"
         />
-        <div className="today-path-header flex items-start justify-between gap-3">
+        <div className="today-path-header">
           <div className="min-w-0">
             <h1 className="break-words text-3xl font-semibold leading-tight text-[var(--text-primary)] sm:text-4xl">
               {formatGuidedPathLabel(overview.pathMetadata, t)}
@@ -148,20 +151,20 @@ export function TodayPathOverview({
               {headerProgressLabel}
             </p>
           </div>
-          <div className="today-path-actions flex shrink-0 flex-wrap gap-2 xl:justify-end">
-            <Button
-              type="button"
-              variant="outline"
-              className="today-path-optionsButton"
-              aria-label={t('today.path.changePath')}
-              title={t('today.path.changePath')}
-              onClick={() => setDirectoryOpen(true)}
-            >
-              <Settings className="h-4 w-4" aria-hidden="true" />
-              <span>{t('today.path.options')}</span>
-              <ChevronDown className="h-4 w-4" aria-hidden="true" />
-            </Button>
-          </div>
+        </div>
+        <div className="today-path-actions">
+          <Button
+            type="button"
+            variant="outline"
+            className="today-path-optionsButton"
+            aria-label={t('today.path.changePath')}
+            title={t('today.path.changePath')}
+            onClick={() => setDirectoryOpen(true)}
+          >
+            <Settings className="h-4 w-4" aria-hidden="true" />
+            <span>{t('today.path.options')}</span>
+            <ChevronDown className="h-4 w-4" aria-hidden="true" />
+          </Button>
         </div>
       </section>
 
@@ -195,6 +198,13 @@ export function TodayPathOverview({
         </h2>
 
         <div className="today-path-mobileFlow">
+          <img
+            src={TODAY_PATH_MOBILE_RAIL_ASSET}
+            alt=""
+            className="today-path-mobileRailAsset"
+            draggable={false}
+            aria-hidden="true"
+          />
           {segmentStates.map((segment) => (
             <div key={segment.segment} className="today-path-mobileSegment">
               {segment.lessons.map((entry) => (
@@ -236,7 +246,13 @@ export function TodayPathOverview({
         <div className="today-path-desktopFlow">
           {segmentStates.map((segment) => (
             <div key={segment.segment} className="today-path-desktopSegment">
-              <div className="today-path-desktopConnector" aria-hidden="true" />
+              <img
+                src={TODAY_PATH_DESKTOP_RAIL_ASSET}
+                alt=""
+                className="today-path-desktopRailAsset"
+                draggable={false}
+                aria-hidden="true"
+              />
               <div className="today-path-segmentGrid grid grid-cols-5 gap-2">
                 {segment.lessons.map((entry) => (
                   <LessonPathCard
@@ -400,7 +416,7 @@ function TodaySegmentNode({
         data-review-complete={isComplete}
         data-review-strength={strength}
       >
-        <span className="today-path-nodeMarker today-segment-reviewMedia" aria-hidden="true">
+        <span className="today-path-nodeMedia today-segment-reviewMedia" aria-hidden="true">
           {children}
         </span>
         <span className="today-path-nodeCopy">
@@ -421,7 +437,7 @@ function TodaySegmentNode({
       data-trophy-segment={segment}
       data-trophy-completed={isComplete}
     >
-      <span className="today-path-nodeMarker today-segment-trophyMedia" aria-hidden="true">
+      <span className="today-path-nodeMedia today-segment-trophyMedia" aria-hidden="true">
         {children}
       </span>
       <span className="today-path-nodeCopy">
@@ -452,7 +468,7 @@ function RecommendedLessonPanel({
   return (
     <section className="today-featuredLesson today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-5">
       <img
-        src={TODAY_PATH_ORB_ASSET}
+        src={TODAY_PATH_LESSON_ORB_ASSET}
         alt=""
         className="today-featuredLessonOrb"
         draggable={false}

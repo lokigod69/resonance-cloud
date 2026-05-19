@@ -27,7 +27,7 @@ import {
   setSelectedGuidedVibe,
   todayGuidedVibeKey,
 } from '../src/lib/todayVibe.ts'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 
 let failures = 0
@@ -263,7 +263,10 @@ const todaySessionSource = readSource('../src/components/today/TodaySession.tsx'
 const todayHeroSource = readSource('../src/components/today/TodayHero.tsx')
 const todayPageSource = readSource('../src/pages/Today.tsx')
 const todayCssSource = readOptionalSource('../src/components/today/Today.css')
-const todayOrbAssetSource = readOptionalSource('../public/guided/today/orb-hero.svg')
+const todayHeroOrbAsset = '../public/guided/today/today-orb-hero.png'
+const todayLessonOrbAsset = '../public/guided/today/today-lesson-orb.png'
+const todayMobileRailAsset = '../public/guided/today/today-path-rail-mobile.png'
+const todayDesktopRailAsset = '../public/guided/today/today-path-rail-desktop.png'
 const buildPhraseSource = readSource('../src/components/today/BuildPhraseStep.tsx')
 const matchPairsSource = readSource('../src/components/today/MatchPairsStep.tsx')
 const speakStepSource = readSource('../src/components/today/SpeakStep.tsx')
@@ -313,9 +316,9 @@ for (const path of getGuidedTodayPathOptions()) {
 assert('Today page stores selected path id and passes path options to overview', containsAny(todayPageSource, ['selectedPathId', 'getGuidedTodayPathOptions']) && todayPathOverviewSource.includes('pathOptions'))
 assert('path overview opens gear settings instead of permanent path chips', todayPathOverviewSource.includes('Settings') && todayPathOverviewSource.includes('GuidedPathDirectory') && todayPathOverviewSource.includes("aria-label={t('today.path.changePath')}") && !todayPathOverviewSource.includes('today-path-switcher'))
 assert('path overview shows a visible Options gear control', todayPathOverviewSource.includes('today-path-optionsButton') && todayPathOverviewSource.includes("t('today.path.options')") && todayPathOverviewSource.includes('<Settings') && todayPathOverviewSource.includes('<ChevronDown'), todayPathOverviewSource)
-assert('path overview uses a reusable transparent orb hero asset', todayPathOverviewSource.includes('TODAY_PATH_ORB_ASSET') && todayPathOverviewSource.includes('today-path-heroOrb') && todayOrbAssetSource.includes('<svg') && todayOrbAssetSource.includes('radialGradient') && todayOrbAssetSource.includes('orb-glass'), todayOrbAssetSource)
-assert('path overview separates mobile vertical flow from desktop horizontal rows', todayPathOverviewSource.includes('today-path-mobileFlow') && todayPathOverviewSource.includes('today-path-desktopFlow') && todayCssSource.includes('.today-path-mobileFlow::before') && todayCssSource.includes('.today-path-desktopConnector'), todayPathOverviewSource)
-assert('path overview renders review and trophy as round path nodes instead of boxed rows', todayPathOverviewSource.includes('TodaySegmentNode') && todayPathOverviewSource.includes('data-node-kind="review"') && todayPathOverviewSource.includes('data-node-kind="trophy"') && todayCssSource.includes('.today-path-nodeButton') && todayCssSource.includes('border-radius: 999px'), todayPathOverviewSource)
+assert('path overview uses reusable transparent PNG orb assets', todayPathOverviewSource.includes('TODAY_PATH_HERO_ASSET') && todayPathOverviewSource.includes('TODAY_PATH_LESSON_ORB_ASSET') && todayPathOverviewSource.includes('today-path-heroOrb') && assetHasBytes(todayHeroOrbAsset, 100000) && assetHasBytes(todayLessonOrbAsset, 60000), todayPathOverviewSource)
+assert('path overview uses transparent PNG rail assets instead of CSS connector lines', todayPathOverviewSource.includes('TODAY_PATH_MOBILE_RAIL_ASSET') && todayPathOverviewSource.includes('TODAY_PATH_DESKTOP_RAIL_ASSET') && todayPathOverviewSource.includes('today-path-mobileRailAsset') && todayPathOverviewSource.includes('today-path-desktopRailAsset') && assetHasBytes(todayMobileRailAsset, 20000) && assetHasBytes(todayDesktopRailAsset, 30000) && !todayCssSource.includes('.today-path-mobileFlow::before') && !todayCssSource.includes('.today-path-desktopConnector'), todayPathOverviewSource)
+assert('path overview renders review and trophy with raw media inside compact pills', todayPathOverviewSource.includes('TodaySegmentNode') && todayPathOverviewSource.includes('data-node-kind="review"') && todayPathOverviewSource.includes('data-node-kind="trophy"') && todayPathOverviewSource.includes('today-path-nodeMedia') && !todayPathOverviewSource.includes('today-path-nodeMarker today-segment-reviewMedia') && !todayPathOverviewSource.includes('today-path-nodeMarker today-segment-trophyMedia'), todayPathOverviewSource)
 assert('path overview keeps selected lesson details inside a glass featured card', todayPathOverviewSource.includes('today-featuredLesson') && todayPathOverviewSource.includes('today-featuredLessonOrb') && todayCssSource.includes('.today-featuredLesson'), todayPathOverviewSource)
 assert('path overview consolidates language picker into gear settings', !todayPathOverviewSource.includes('GuidedLanguagePicker') && todayPathOverviewSource.includes('availableLanguages={availableLanguages}') && todayPathOverviewSource.includes('onSelectLanguage={onSelectLanguage}'))
 assert('path overview consolidates English vibe picker into gear settings', !todayPathOverviewSource.includes('GuidedVibePicker') && todayPathOverviewSource.includes('selectedVibeId={selectedVibeId}') && todayPathOverviewSource.includes('onSelectVibe={onSelectVibe}'))
@@ -480,6 +483,11 @@ function countOccurrences(value: string, needle: string) {
 
 function readSource(relativePath: string) {
   return readFileSync(fileURLToPath(new URL(relativePath, import.meta.url)), 'utf8').replace(/\r\n/g, '\n')
+}
+
+function assetHasBytes(relativePath: string, minimumBytes: number) {
+  const path = fileURLToPath(new URL(relativePath, import.meta.url))
+  return existsSync(path) && statSync(path).size >= minimumBytes
 }
 
 function readOptionalSource(relativePath: string) {
