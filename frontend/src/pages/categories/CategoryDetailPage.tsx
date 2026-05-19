@@ -112,7 +112,6 @@ export default function CategoryDetailPage() {
                   ) : null}
                 </span>
                 {description && <p className={styles.rowDescription}>{description}</p>}
-                <span className={styles.rowMeta}>{tp('categories.entryCount', level.entries.length)}</span>
               </div>
               <span className={styles.rowAction}>
                 <ChevronRight className="h-4 w-4" aria-hidden="true" />

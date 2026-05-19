@@ -32,7 +32,7 @@ function CategoryHero({ category }: { category: CurriculumCategory }) {
 }
 
 export default function CategoryListPage() {
-  const { t, tp } = useTranslation()
+  const { t } = useTranslation()
   const { user } = useAuth()
   const categories = listCurriculumCategories()
   const [importedCategorySlugs, setImportedCategorySlugs] = useState<Set<string>>(new Set())
@@ -96,16 +96,14 @@ export default function CategoryListPage() {
                   <span className={styles.tileEmoji} aria-hidden="true">{category.icon}</span>
                   <span>{category.title}</span>
                 </h2>
-                <div className={styles.tileMeta}>
-                  <span className={styles.chip}>{tp('categories.levelCount', category.levelCount)}</span>
-                  <span className={styles.chip}>{tp('categories.entryCount', category.totalEntries)}</span>
-                  {isImported ? (
+                {isImported ? (
+                  <div className={styles.tileMeta}>
                     <span className={styles.tileImportedBadge}>
                       <Check className="h-3 w-3" aria-hidden="true" />
                       {t('categories.imported')}
                     </span>
-                  ) : null}
-                </div>
+                  </div>
+                ) : null}
               </div>
             </Link>
           )

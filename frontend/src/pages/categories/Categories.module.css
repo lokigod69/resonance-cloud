@@ -112,17 +112,17 @@
 }
 
 .tileBody {
-  padding: 1rem;
+  padding: 1.15rem 1rem 1.25rem;
 }
 
 .tileTitle {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  margin: 0 0 0.75rem;
-  font-size: 1.08rem;
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.12;
 }
 
 .tileEmoji {
@@ -133,6 +133,7 @@
 .tileMeta {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 0.85rem;
   gap: 0.5rem;
   color: var(--text-muted);
   font-size: 0.86rem;
