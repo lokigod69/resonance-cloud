@@ -929,6 +929,17 @@ const GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA: GuidedPathMetadata = {
   estimatedMinutes: 5,
 }
 
+const GUIDED_TODAY_PATH_INDONESIAN_TWO_METADATA: GuidedPathMetadata = {
+  id: 'indonesian-a1-practical-2',
+  title: 'Indonesisch A1 Praxis 2',
+  shortTitle: 'A1 Praxis 2',
+  subtitle: 'Kleine Hilfe und einfache Entscheidungen auf Indonesisch',
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Indonesian',
+  estimatedMinutes: 5,
+}
+
 const GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA: GuidedPathMetadata = {
   id: 'cebuano-a1-practical-7',
   title: 'Cebuano A1 Praxis 7',
@@ -39458,6 +39469,531 @@ const indonesianA1Practical1Lessons: GuidedLessonDefinition[] = indonesianA1Prac
   }
 })
 
+function makeIndonesianPracticalLessons(
+  metadata: GuidedPathMetadata,
+  inputs: IndonesianP1LessonInput[],
+  completionSituation: string,
+): GuidedLessonDefinition[] {
+  return inputs.map((lessonInput, index) => {
+    const lessonNumber = index + 1
+    const pathNumber = metadata.id.replace('indonesian-a1-practical-', '')
+    const id = `indonesian-a1-practical-${pathNumber}-lesson-${lessonNumber}-${lessonInput.slug}`
+    const nextInput = inputs[index + 1]
+
+    return {
+      id,
+      pathId: metadata.id,
+      courseTitle: metadata.title,
+      level: metadata.level,
+      lessonNumber,
+      baseLanguage: metadata.baseLanguage,
+      targetLanguage: metadata.targetLanguage,
+      pathMetadata: metadata,
+      lessonMetadata: {
+        id,
+        sequence: lessonNumber,
+        title: lessonInput.title,
+      },
+      title: lessonInput.title,
+      situation: lessonInput.situation,
+      pedagogicalGoal: lessonInput.pedagogicalGoal,
+      modeSet: 'guided-today-v0',
+      steps: GUIDED_TODAY_STEPS,
+      estimatedMinutes: 5,
+      fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+      status: 'active',
+      nextLessonTeaser: {
+        title: nextInput?.title ?? 'Pfad abgeschlossen',
+        situation: nextInput?.situation.de ?? completionSituation,
+      },
+      vibeVariants: {
+        bright: lessonInput.variant,
+      },
+    }
+  })
+}
+
+const indonesianA1Practical2Inputs: IndonesianP1LessonInput[] = [
+  {
+    slug: 'confused-help',
+    title: 'Offen um Hilfe bitten',
+    situation: {
+      en: 'At a small counter, admit that you are confused and ask for simple help.',
+      de: 'An einem kleinen Tresen sagst du, dass du verwirrt bist, und bittest einfach um Hilfe.',
+    },
+    pedagogicalGoal: 'Mit bingung eine offene Verstehenslücke nennen, ohne schon um Wiederholung zu bitten.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Maaf, saya bingung. Bisa bantu saya?', baseText: 'Entschuldigung, ich bin verwirrt. Können Sie mir helfen?' },
+      meaning: 'Ein natürlicher A1-Satz, wenn du nicht nur Wiederholung brauchst, sondern einfache Hilfe.',
+      chunks: [
+        { id: 'maaf-saya-bingung', targetText: 'Maaf, saya bingung.', baseText: 'Entschuldigung, ich bin verwirrt.' },
+        { id: 'bisa-bantu-saya', targetText: 'Bisa bantu saya?', baseText: 'Können Sie mir helfen?' },
+      ],
+      lessonItems: [
+        { id: 'maaf', targetText: 'maaf', baseText: 'Entschuldigung', acceptedAnswers: indonesianAnswers('maaf', 'Maaf') },
+        { id: 'bingung', targetText: 'bingung', baseText: 'verwirrt', acceptedAnswers: indonesianAnswers('bingung', 'Bingung') },
+        { id: 'bantu', targetText: 'bantu', baseText: 'helfen', acceptedAnswers: indonesianAnswers('bantu', 'Bantu') },
+        { id: 'saya', targetText: 'saya', baseText: 'ich / mir', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
+      ],
+      buildChips: ['Maaf,', 'saya bingung.', 'Bisa bantu saya?', 'Saya mau', 'kartu'],
+      typeRecall: {
+        before: 'Maaf, saya ',
+        answer: 'bingung',
+        after: '. Bisa bantu saya?',
+        acceptedAnswers: indonesianAnswers('bingung', 'Bingung'),
+        fallbackChoices: ['bingung', 'tersedia', 'benar', 'sebentar'],
+      },
+      speakTarget: {
+        baseCue: 'Entschuldigung, ich bin verwirrt. Können Sie mir helfen?',
+        targetPhrase: 'Maaf, saya bingung. Bisa bantu saya?',
+        requiredTokens: ['maaf', 'saya', 'bingung', 'bisa', 'bantu'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Di toko kecil, Anda berkata maaf, saya bingung, lalu meminta bantuan sederhana.',
+      trophyWord: {
+        word: 'bingung',
+        meaning: 'verwirrt',
+        example: 'Saya bingung.',
+        whyThisWord: 'Bingung ist ein Standardwort für Verwirrung. Es passt zu A1, weil es den Zustand nennt, ohne komplizierte Grammatik zu verlangen.',
+      },
+      placeholderCaption: 'Counter exchange where the learner pauses and asks for help.',
+      songMood: 'open and careful help request',
+      visualNotes: 'Small shop counter, learner gestures gently, bingung highlighted as the emotional state.',
+    }),
+  },
+  {
+    slug: 'write-it-down',
+    title: 'Etwas aufschreiben lassen',
+    situation: {
+      en: 'At a desk, ask a staff member to write down exact information.',
+      de: 'An einem Schalter bittest du eine Mitarbeiterin, genaue Informationen aufzuschreiben.',
+    },
+    pedagogicalGoal: 'Tulis als einfachen Schreib-Imperativ in einer höflichen Bitte mit Bu verwenden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Tolong tulis nama ini, Bu.', baseText: 'Bitte schreiben Sie diesen Namen auf, Ma’am.' },
+      meaning: 'Eine höfliche, direkte Bitte, etwas Genaues schriftlich festzuhalten.',
+      chunks: [
+        { id: 'tolong-tulis', targetText: 'Tolong tulis', baseText: 'Bitte schreiben Sie' },
+        { id: 'nama-ini', targetText: 'nama ini,', baseText: 'diesen Namen' },
+        { id: 'bu', targetText: 'Bu.', baseText: 'Ma’am.' },
+      ],
+      lessonItems: [
+        { id: 'tulis', targetText: 'tulis', baseText: 'schreiben', acceptedAnswers: indonesianAnswers('tulis', 'Tulis') },
+        { id: 'nama', targetText: 'nama', baseText: 'Name', acceptedAnswers: indonesianAnswers('nama', 'Nama') },
+        { id: 'ini', targetText: 'ini', baseText: 'dies / dieser', acceptedAnswers: indonesianAnswers('ini', 'Ini') },
+        { id: 'bu', targetText: 'Bu', baseText: 'Ma’am / Frau', acceptedAnswers: indonesianAnswers('Bu', 'bu', 'Ibu', 'ibu') },
+      ],
+      buildChips: ['Tolong tulis', 'nama ini,', 'Bu.', 'Bisa bayar', 'di peta'],
+      typeRecall: {
+        before: 'Tolong ',
+        answer: 'tulis',
+        after: ' nama ini, Bu.',
+        acceptedAnswers: indonesianAnswers('tulis', 'Tulis'),
+        fallbackChoices: ['tulis', 'bantu', 'tunggu', 'bayar'],
+      },
+      speakTarget: {
+        baseCue: 'Bitte schreiben Sie diesen Namen auf, Ma’am.',
+        targetPhrase: 'Tolong tulis nama ini, Bu.',
+        requiredTokens: ['tolong', 'tulis', 'nama', 'ini'],
+        optionalTokens: ['bu', 'ibu'],
+      },
+      sceneCaption: 'Di meja layanan, Anda meminta Bu untuk menulis nama supaya informasinya tepat.',
+      trophyWord: {
+        word: 'tulis',
+        meaning: 'schreiben',
+        example: 'Tolong tulis nama ini.',
+        whyThisWord: 'Tulis ist die einfache Grundform für Schreiben. Indonesisch braucht hier keine Personen-Konjugation.',
+      },
+      placeholderCaption: 'A service desk with a pen and paper for exact information.',
+      songMood: 'precise and polite',
+      visualNotes: 'Pen, paper, service desk, tulis highlighted as the action.',
+    }),
+  },
+  {
+    slug: 'show-on-map',
+    title: 'Auf der Karte zeigen',
+    situation: {
+      en: 'With a phone map open, ask someone to show the place on the map.',
+      de: 'Mit einer geöffneten Handykarte bittest du jemanden, den Ort auf der Karte zu zeigen.',
+    },
+    pedagogicalGoal: 'Peta als konkretes Kartenwort mit der höflichen Zeige-Bitte tunjukkan kombinieren.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Bisa tunjukkan di peta?', baseText: 'Können Sie es auf der Karte zeigen?' },
+      meaning: 'Eine kurze Bitte, wenn Karte oder Handy sichtbar sind.',
+      chunks: [
+        { id: 'bisa-tunjukkan', targetText: 'Bisa tunjukkan', baseText: 'Können Sie zeigen' },
+        { id: 'di-peta', targetText: 'di peta?', baseText: 'auf der Karte?' },
+      ],
+      lessonItems: [
+        { id: 'tunjukkan', targetText: 'tunjukkan', baseText: 'zeigen Sie', acceptedAnswers: indonesianAnswers('tunjukkan', 'Tunjukkan', 'tunjukan') },
+        { id: 'peta', targetText: 'peta', baseText: 'Karte', acceptedAnswers: indonesianAnswers('peta', 'Peta') },
+        { id: 'di', targetText: 'di', baseText: 'in / an / auf', acceptedAnswers: indonesianAnswers('di', 'Di') },
+        { id: 'bisa', targetText: 'bisa', baseText: 'können', acceptedAnswers: indonesianAnswers('bisa', 'Bisa') },
+      ],
+      buildChips: ['Bisa tunjukkan', 'di peta?', 'Maaf,', 'nama ini', 'kuitansi'],
+      typeRecall: {
+        before: 'Bisa tunjukkan di ',
+        answer: 'peta',
+        after: '?',
+        acceptedAnswers: indonesianAnswers('peta', 'Peta'),
+        fallbackChoices: ['peta', 'kartu', 'tas', 'nama'],
+      },
+      speakTarget: {
+        baseCue: 'Können Sie es auf der Karte zeigen?',
+        targetPhrase: 'Bisa tunjukkan di peta?',
+        requiredTokens: ['bisa', 'tunjukkan', 'peta'],
+        optionalTokens: ['tunjukan'],
+      },
+      sceneCaption: 'Anda membuka peta di ponsel dan meminta orang itu menunjukkan tempatnya.',
+      trophyWord: {
+        word: 'peta',
+        meaning: 'Karte',
+        example: 'Tunjukkan di peta.',
+        whyThisWord: 'Peta ist das Standardwort für eine Landkarte oder digitale Karte und passt exakt zur sichtbaren A1-Situation.',
+      },
+      placeholderCaption: 'Phone map on a counter, with a finger pointing at a place.',
+      songMood: 'clear direction request',
+      visualNotes: 'Phone map, finger pointing, peta highlighted.',
+    }),
+  },
+  {
+    slug: 'this-or-that',
+    title: 'Zwischen zwei Dingen wählen',
+    situation: {
+      en: 'At a bakery counter, ask between two visible options.',
+      de: 'An der Bäckereitheke fragst du zwischen zwei sichtbaren Optionen.',
+    },
+    pedagogicalGoal: 'Mit yang ini / yang itu eine einfache indonesische Demonstrativ-Entscheidung bilden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Yang ini atau yang itu?', baseText: 'Dieses hier oder jenes dort?' },
+      meaning: 'Die natürliche kurze Frage, wenn zwei Dinge sichtbar sind.',
+      chunks: [
+        { id: 'yang-ini', targetText: 'Yang ini', baseText: 'dieses hier' },
+        { id: 'atau', targetText: 'atau', baseText: 'oder' },
+        { id: 'yang-itu', targetText: 'yang itu?', baseText: 'jenes dort?' },
+      ],
+      lessonItems: [
+        { id: 'yang-ini', targetText: 'yang ini', baseText: 'dieses hier', acceptedAnswers: indonesianAnswers('yang ini', 'Yang ini') },
+        { id: 'atau', targetText: 'atau', baseText: 'oder', acceptedAnswers: indonesianAnswers('atau', 'Atau') },
+        { id: 'yang-itu', targetText: 'yang itu', baseText: 'jenes dort', acceptedAnswers: indonesianAnswers('yang itu', 'Yang itu') },
+        { id: 'itu', targetText: 'itu', baseText: 'das / jenes', acceptedAnswers: indonesianAnswers('itu', 'Itu') },
+      ],
+      buildChips: ['Yang ini', 'atau', 'yang itu?', 'Bisa bantu', 'saya'],
+      typeRecall: {
+        before: 'Yang ini atau yang ',
+        answer: 'itu',
+        after: '?',
+        acceptedAnswers: indonesianAnswers('itu', 'Itu'),
+        fallbackChoices: ['itu', 'ini', 'peta', 'tas'],
+      },
+      speakTarget: {
+        baseCue: 'Dieses hier oder jenes dort?',
+        targetPhrase: 'Yang ini atau yang itu?',
+        requiredTokens: ['yang', 'ini', 'atau', 'itu'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Di toko roti, Anda menunjuk dua pilihan dan bertanya: yang ini atau yang itu?',
+      trophyWord: {
+        word: 'itu',
+        meaning: 'das / jenes',
+        example: 'Yang ini atau yang itu?',
+        whyThisWord: 'Itu ist der Standard-Demonstrativ für etwas weiter Entferntes. In der Paarung ini/itu sieht man die indonesische Nähe-Distanz-Logik.',
+      },
+      placeholderCaption: 'Two pastries in a case, one near and one farther away.',
+      songMood: 'simple choice',
+      visualNotes: 'Two visible options, near/far contrast, itu highlighted on the far item.',
+    }),
+  },
+  {
+    slug: 'available-now',
+    title: 'Verfügbarkeit prüfen',
+    situation: {
+      en: 'In a small shop, ask whether the item is available now.',
+      de: 'In einem kleinen Laden fragst du, ob der Artikel jetzt verfügbar ist.',
+    },
+    pedagogicalGoal: 'Tersedia als standardsprachliches Verfügbarkeitswort in einer einfachen Ja/Nein-Frage verwenden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Apakah ini tersedia?', baseText: 'Ist das verfügbar?' },
+      meaning: 'Eine klare Service-Frage nach aktueller Verfügbarkeit.',
+      chunks: [
+        { id: 'apakah-ini', targetText: 'Apakah ini', baseText: 'ist das' },
+        { id: 'tersedia', targetText: 'tersedia?', baseText: 'verfügbar?' },
+      ],
+      lessonItems: [
+        { id: 'apakah', targetText: 'apakah', baseText: 'ob / Fragewort', acceptedAnswers: indonesianAnswers('apakah', 'Apakah') },
+        { id: 'ini', targetText: 'ini', baseText: 'dies / das hier', acceptedAnswers: indonesianAnswers('ini', 'Ini') },
+        { id: 'tersedia', targetText: 'tersedia', baseText: 'verfügbar', acceptedAnswers: indonesianAnswers('tersedia', 'Tersedia') },
+        { id: 'sekarang', targetText: 'sekarang', baseText: 'jetzt', acceptedAnswers: indonesianAnswers('sekarang', 'Sekarang') },
+      ],
+      buildChips: ['Apakah ini', 'tersedia?', 'Yang ini', 'atau', 'kartu'],
+      typeRecall: {
+        before: 'Apakah ini ',
+        answer: 'tersedia',
+        after: '?',
+        acceptedAnswers: indonesianAnswers('tersedia', 'Tersedia'),
+        fallbackChoices: ['tersedia', 'bingung', 'benar', 'sebentar'],
+      },
+      speakTarget: {
+        baseCue: 'Ist das verfügbar?',
+        targetPhrase: 'Apakah ini tersedia?',
+        requiredTokens: ['apakah', 'ini', 'tersedia'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Di toko kecil, Anda menunjuk barang dan bertanya apakah barang ini tersedia.',
+      trophyWord: {
+        word: 'tersedia',
+        meaning: 'verfügbar',
+        example: 'Apakah ini tersedia?',
+        whyThisWord: 'Tersedia ist Standard-Indonesisch für verfügbar. Es ist natürlicher als ein erzwungenes englisches Stock-Wort.',
+      },
+      placeholderCaption: 'Small shop shelf, one item under discussion.',
+      songMood: 'checking availability',
+      visualNotes: 'Shelf item with a subtle question mark, tersedia highlighted.',
+    }),
+  },
+  {
+    slug: 'pay-by-card',
+    title: 'Mit Karte zahlen',
+    situation: {
+      en: 'At the till, ask whether card payment is possible.',
+      de: 'An der Kasse fragst du, ob Kartenzahlung möglich ist.',
+    },
+    pedagogicalGoal: 'Kartu als natürliches Zahlungswort in der Struktur bayar dengan kartu verwenden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Bisa bayar dengan kartu?', baseText: 'Kann ich mit Karte bezahlen?' },
+      meaning: 'Eine kurze, natürliche Frage am Ende eines Kaufs.',
+      chunks: [
+        { id: 'bisa-bayar', targetText: 'Bisa bayar', baseText: 'Kann man zahlen' },
+        { id: 'dengan-kartu', targetText: 'dengan kartu?', baseText: 'mit Karte?' },
+      ],
+      lessonItems: [
+        { id: 'bayar', targetText: 'bayar', baseText: 'bezahlen', acceptedAnswers: indonesianAnswers('bayar', 'Bayar') },
+        { id: 'dengan', targetText: 'dengan', baseText: 'mit', acceptedAnswers: indonesianAnswers('dengan', 'Dengan') },
+        { id: 'kartu', targetText: 'kartu', baseText: 'Karte', acceptedAnswers: indonesianAnswers('kartu', 'Kartu') },
+        { id: 'kasir', targetText: 'kasir', baseText: 'Kasse / Kassierer', acceptedAnswers: indonesianAnswers('kasir', 'Kasir') },
+      ],
+      buildChips: ['Bisa bayar', 'dengan kartu?', 'Tolong tulis', 'nama', 'ini'],
+      typeRecall: {
+        before: 'Bisa bayar dengan ',
+        answer: 'kartu',
+        after: '?',
+        acceptedAnswers: indonesianAnswers('kartu', 'Kartu'),
+        fallbackChoices: ['kartu', 'peta', 'tas', 'nama'],
+      },
+      speakTarget: {
+        baseCue: 'Kann ich mit Karte bezahlen?',
+        targetPhrase: 'Bisa bayar dengan kartu?',
+        requiredTokens: ['bisa', 'bayar', 'dengan', 'kartu'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Di kasir, Anda memegang kartu dan bertanya apakah bisa bayar dengan kartu.',
+      trophyWord: {
+        word: 'kartu',
+        meaning: 'Karte',
+        example: 'Bisa bayar dengan kartu?',
+        whyThisWord: 'Kartu ist das normale indonesische Wort für Karte. Im Zahlungskontext ist dengan kartu die klare A1-Form.',
+      },
+      placeholderCaption: 'Card held at the cashier counter.',
+      songMood: 'checkout question',
+      visualNotes: 'Payment terminal and card, kartu highlighted.',
+    }),
+  },
+  {
+    slug: 'receipt-and-bag',
+    title: 'Beleg und Tasche',
+    situation: {
+      en: 'At the end of a purchase, ask for a receipt and a bag.',
+      de: 'Am Ende eines Einkaufs bittest du um Beleg und Tasche.',
+    },
+    pedagogicalGoal: 'Tas als konkretes Einkaufswort mit boleh minta in einer Service-Bitte verwenden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Boleh minta kuitansi dan tas?', baseText: 'Kann ich bitte eine Quittung und eine Tasche bekommen?' },
+      meaning: 'Eine höfliche Abschlussbitte nach Kaufbeleg und Tasche.',
+      chunks: [
+        { id: 'boleh-minta', targetText: 'Boleh minta', baseText: 'Darf ich bekommen' },
+        { id: 'kuitansi-dan-tas', targetText: 'kuitansi dan tas?', baseText: 'Quittung und Tasche?' },
+      ],
+      lessonItems: [
+        { id: 'boleh', targetText: 'boleh', baseText: 'dürfen / können', acceptedAnswers: indonesianAnswers('boleh', 'Boleh') },
+        { id: 'minta', targetText: 'minta', baseText: 'bitten um', acceptedAnswers: indonesianAnswers('minta', 'Minta') },
+        { id: 'kuitansi', targetText: 'kuitansi', baseText: 'Quittung', acceptedAnswers: indonesianAnswers('kuitansi', 'Kuitansi', 'kwitansi') },
+        { id: 'tas', targetText: 'tas', baseText: 'Tasche', acceptedAnswers: indonesianAnswers('tas', 'Tas') },
+      ],
+      buildChips: ['Boleh minta', 'kuitansi dan tas?', 'Bisa bayar', 'dengan kartu?', 'peta'],
+      typeRecall: {
+        before: 'Boleh minta kuitansi dan ',
+        answer: 'tas',
+        after: '?',
+        acceptedAnswers: indonesianAnswers('tas', 'Tas'),
+        fallbackChoices: ['tas', 'peta', 'kartu', 'nama'],
+      },
+      speakTarget: {
+        baseCue: 'Kann ich bitte eine Quittung und eine Tasche bekommen?',
+        targetPhrase: 'Boleh minta kuitansi dan tas?',
+        requiredTokens: ['boleh', 'minta', 'kuitansi', 'tas'],
+        optionalTokens: ['kwitansi'],
+      },
+      sceneCaption: 'Di akhir belanja, Anda meminta kuitansi dan tas dengan tenang.',
+      trophyWord: {
+        word: 'tas',
+        meaning: 'Tasche',
+        example: 'Boleh minta tas?',
+        whyThisWord: 'Tas ist ein sehr häufiges, standardsprachliches Einkaufswort. Es bleibt konkret und leicht aussprechbar.',
+      },
+      placeholderCaption: 'Checkout counter with a receipt and shopping bag.',
+      songMood: 'purchase closing',
+      visualNotes: 'Receipt and bag on the counter, tas highlighted.',
+    }),
+  },
+  {
+    slug: 'reservation-arrival',
+    title: 'Mit Reservierung ankommen',
+    situation: {
+      en: 'At a restaurant host stand, say that you have a reservation.',
+      de: 'Am Empfang eines Restaurants sagst du, dass du eine Reservierung hast.',
+    },
+    pedagogicalGoal: 'Reservasi als naturalisiertes indonesisches Servicewort in saya punya reservasi verwenden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Saya punya reservasi atas nama Meyer.', baseText: 'Ich habe eine Reservierung auf den Namen Meyer.' },
+      meaning: 'Ein klarer Servicesatz am Empfang, ohne Hotel-spezifische Zimmerwörter.',
+      chunks: [
+        { id: 'saya-punya-reservasi', targetText: 'Saya punya reservasi', baseText: 'Ich habe eine Reservierung' },
+        { id: 'atas-nama-meyer', targetText: 'atas nama Meyer.', baseText: 'auf den Namen Meyer.' },
+      ],
+      lessonItems: [
+        { id: 'punya', targetText: 'punya', baseText: 'haben', acceptedAnswers: indonesianAnswers('punya', 'Punya') },
+        { id: 'reservasi', targetText: 'reservasi', baseText: 'Reservierung', acceptedAnswers: indonesianAnswers('reservasi', 'Reservasi') },
+        { id: 'atas-nama', targetText: 'atas nama', baseText: 'auf den Namen', acceptedAnswers: indonesianAnswers('atas nama', 'Atas nama') },
+        { id: 'meyer', targetText: 'Meyer', baseText: 'Meyer', acceptedAnswers: indonesianAnswers('Meyer', 'meyer') },
+      ],
+      buildChips: ['Saya punya', 'reservasi', 'atas nama Meyer.', 'Boleh minta', 'tas'],
+      typeRecall: {
+        before: 'Saya punya ',
+        answer: 'reservasi',
+        after: ' atas nama Meyer.',
+        acceptedAnswers: indonesianAnswers('reservasi', 'Reservasi'),
+        fallbackChoices: ['reservasi', 'kuitansi', 'peta', 'kartu'],
+      },
+      speakTarget: {
+        baseCue: 'Ich habe eine Reservierung auf den Namen Meyer.',
+        targetPhrase: 'Saya punya reservasi atas nama Meyer.',
+        requiredTokens: ['saya', 'punya', 'reservasi', 'nama'],
+        optionalTokens: ['atas', 'meyer'],
+      },
+      sceneCaption: 'Di depan restoran, Anda memberi tahu staf bahwa ada reservasi atas nama Meyer.',
+      trophyWord: {
+        word: 'reservasi',
+        meaning: 'Reservierung',
+        example: 'Saya punya reservasi.',
+        whyThisWord: 'Reservasi ist ein naturalisiertes indonesisches Servicewort. Es ist kein Englisch-Mix, sondern Standardgebrauch im Restaurant- und Hotelkontext.',
+      },
+      placeholderCaption: 'Restaurant host stand with a reservation list.',
+      songMood: 'arriving prepared',
+      visualNotes: 'Host stand, reservation list, reservasi highlighted.',
+    }),
+  },
+  {
+    slug: 'is-this-correct',
+    title: 'Das Richtige bestätigen',
+    situation: {
+      en: 'Before committing to an item or vehicle, confirm that it is the correct one.',
+      de: 'Bevor du dich festlegst, bestätigst du, dass es das Richtige ist.',
+    },
+    pedagogicalGoal: 'Benar als allgemeines Bestätigungswort in einer einfachen Ja/Nein-Frage verwenden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Apakah ini benar?', baseText: 'Ist das richtig?' },
+      meaning: 'Eine kurze Sicherheitsfrage vor Kauf, Einstieg oder Auswahl.',
+      chunks: [
+        { id: 'apakah-ini', targetText: 'Apakah ini', baseText: 'ist das' },
+        { id: 'benar', targetText: 'benar?', baseText: 'richtig?' },
+      ],
+      lessonItems: [
+        { id: 'benar', targetText: 'benar', baseText: 'richtig', acceptedAnswers: indonesianAnswers('benar', 'Benar') },
+        { id: 'apakah', targetText: 'apakah', baseText: 'ob / Fragewort', acceptedAnswers: indonesianAnswers('apakah', 'Apakah') },
+        { id: 'ini', targetText: 'ini', baseText: 'dies / das hier', acceptedAnswers: indonesianAnswers('ini', 'Ini') },
+        { id: 'ya', targetText: 'ya', baseText: 'ja', acceptedAnswers: indonesianAnswers('ya', 'Ya') },
+      ],
+      buildChips: ['Apakah ini', 'benar?', 'Yang ini', 'atau', 'yang itu?'],
+      typeRecall: {
+        before: 'Apakah ini ',
+        answer: 'benar',
+        after: '?',
+        acceptedAnswers: indonesianAnswers('benar', 'Benar'),
+        fallbackChoices: ['benar', 'bingung', 'tersedia', 'sebentar'],
+      },
+      speakTarget: {
+        baseCue: 'Ist das richtig?',
+        targetPhrase: 'Apakah ini benar?',
+        requiredTokens: ['apakah', 'ini', 'benar'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Sebelum memilih, Anda bertanya apakah ini benar.',
+      trophyWord: {
+        word: 'benar',
+        meaning: 'richtig',
+        example: 'Apakah ini benar?',
+        whyThisWord: 'Benar ist das Standardwort für richtig. Es bestätigt eine Sache, ohne eine reisespezifische Form wie kereta zu erzwingen.',
+      },
+      placeholderCaption: 'A learner checks an item before committing.',
+      songMood: 'careful confirmation',
+      visualNotes: 'Choice moment with a confirmation gesture, benar highlighted.',
+    }),
+  },
+  {
+    slug: 'one-moment',
+    title: 'Kurz warten lassen',
+    situation: {
+      en: 'At a counter, ask for a brief moment while you find a card.',
+      de: 'An einem Tresen bittest du kurz um Zeit, während du eine Karte suchst.',
+    },
+    pedagogicalGoal: 'Sebentar als feste kurze Warteformel mit saya cari kartu verbinden.',
+    variant: makeBrightIndonesianP1Variant({
+      corePhrase: { targetText: 'Sebentar, saya cari kartu.', baseText: 'Einen Moment, ich suche die Karte.' },
+      meaning: 'Eine natürliche kurze Pause, ohne lange Erklärung.',
+      chunks: [
+        { id: 'sebentar', targetText: 'Sebentar,', baseText: 'einen Moment,' },
+        { id: 'saya-cari-kartu', targetText: 'saya cari kartu.', baseText: 'ich suche die Karte.' },
+      ],
+      lessonItems: [
+        { id: 'sebentar', targetText: 'sebentar', baseText: 'einen Moment / kurz', acceptedAnswers: indonesianAnswers('sebentar', 'Sebentar') },
+        { id: 'cari', targetText: 'cari', baseText: 'suchen', acceptedAnswers: indonesianAnswers('cari', 'Cari') },
+        { id: 'kartu', targetText: 'kartu', baseText: 'Karte', acceptedAnswers: indonesianAnswers('kartu', 'Kartu') },
+        { id: 'saya', targetText: 'saya', baseText: 'ich', acceptedAnswers: indonesianAnswers('saya', 'Saya') },
+      ],
+      buildChips: ['Sebentar,', 'saya cari', 'kartu.', 'Apakah ini', 'benar?'],
+      typeRecall: {
+        before: '',
+        answer: 'Sebentar',
+        after: ', saya cari kartu.',
+        acceptedAnswers: indonesianAnswers('Sebentar', 'sebentar'),
+        fallbackChoices: ['Sebentar', 'Tersedia', 'Reservasi', 'Kuitansi'],
+      },
+      speakTarget: {
+        baseCue: 'Einen Moment, ich suche die Karte.',
+        targetPhrase: 'Sebentar, saya cari kartu.',
+        requiredTokens: ['sebentar', 'saya', 'cari', 'kartu'],
+        optionalTokens: [],
+      },
+      sceneCaption: 'Di kasir, Anda berkata sebentar sambil mencari kartu.',
+      trophyWord: {
+        word: 'sebentar',
+        meaning: 'einen Moment / kurz',
+        example: 'Sebentar, saya cari kartu.',
+        whyThisWord: 'Sebentar ist die normale kurze Warteformel. Sie ist höflich genug im Servicekontext und braucht kein zusätzliches Mohon.',
+      },
+      placeholderCaption: 'Checkout pause while looking for a card.',
+      songMood: 'brief pause',
+      visualNotes: 'Wallet at counter, quick pause gesture, sebentar highlighted.',
+    }),
+  },
+]
+
+const indonesianA1Practical2Lessons = makeIndonesianPracticalLessons(
+  GUIDED_TODAY_PATH_INDONESIAN_TWO_METADATA,
+  indonesianA1Practical2Inputs,
+  'Du hast Indonesisch A1 Praxis 2 abgeschlossen.',
+)
+
 const cebuanoA1Practical7Inputs: CebuanoP2LessonInput[] = [
   {
     slug: 'how-much-is-the-fare',
@@ -54659,6 +55195,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   },
   ...cebuanoA1Practical6Lessons,
   ...indonesianA1Practical1Lessons,
+  ...indonesianA1Practical2Lessons,
   ...cebuanoA1Practical7Lessons,
   ...cebuanoA1Practical8Lessons,
 ]
@@ -54740,6 +55277,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_GERMAN_TEN_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_SIX_METADATA,
     GUIDED_TODAY_PATH_INDONESIAN_ONE_METADATA,
+    GUIDED_TODAY_PATH_INDONESIAN_TWO_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_SEVEN_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA,
   ]
