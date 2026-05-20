@@ -25,6 +25,7 @@
     "test:card-generation-progress": "tsx scripts/test-card-generation-progress.ts",
     "test:word-metadata": "tsx scripts/test-word-display-metadata.ts",
     "test:study-flashcard-pronunciation": "tsx scripts/test-study-flashcard-pronunciation.ts",
+    "test:generate-category-picker-flow": "tsx scripts/test-generate-category-picker-flow.ts",
     "test:phase1f:admin": "tsx scripts/test-phase1f-admin-rpcs.ts",
     "test:phase1g:storage-cleanup": "tsx scripts/test-storage-cleanup.ts",
     "test:phase1h1:admin-config": "tsx scripts/test-phase1h1-admin-config-rpcs.ts",

@@ -1,46 +1,50 @@
-import { Fragment, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Loader2, RefreshCw, Plus, X } from 'lucide-react'
+import { ChevronDown, Loader2, Sparkles } from 'lucide-react'
 import PillButton from '../shared/PillButton'
 import { CATEGORY_GROUPS, PINNED_BOTTOM_CATEGORIES, type Category } from '@/data/categories'
 import { useAuth } from '@/hooks/useAuth'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { supabase } from '@/lib/supabase'
 import { useTranslation } from '@/hooks/useTranslation'
-import { wordsEqual } from '@/lib/wordEquality'
-import { MAX_WORDS } from '../wizardData'
 import type { WizardState } from '../useWizardState'
 
-interface FilledSlot {
-  kind: 'filled'
-  word: string
-  translation: string
-}
-interface EmptySlot {
-  kind: 'empty'
-  word: string
-  translation: string
-}
-type Slot = FilledSlot | EmptySlot
+const MIN_CATEGORY_WORD_COUNT = 5
+const DEFAULT_CATEGORY_WORD_COUNT = 5
+const MAX_CATEGORY_WORD_COUNT = 10
 
-type ExpansionStatus = 'idle' | 'loading' | 'preview' | 'error'
+type ExpansionStatus = 'idle' | 'loading' | 'error'
 
 interface CategoryPickerProps {
   state: WizardState
   onMergeWords: (words: string[]) => void
 }
 
+type SuggestWordsResponse = {
+  words?: Array<{ word?: unknown; translation?: unknown } | string>
+}
+
+function extractSuggestedWords(data: SuggestWordsResponse, requestedCount: number): string[] {
+  if (!Array.isArray(data.words)) return []
+  return data.words
+    .map((entry) => {
+      if (typeof entry === 'string') return entry.trim()
+      return typeof entry.word === 'string' ? entry.word.trim() : ''
+    })
+    .filter((word) => word.length > 0)
+    .slice(0, requestedCount)
+}
+
 export default function CategoryPicker({ state, onMergeWords }: CategoryPickerProps) {
   const { profile } = useAuth()
   const { activeLanguage } = useLanguage()
-  const { t, tp } = useTranslation()
+  const { t } = useTranslation()
 
-  const [activeCategoryName, setActiveCategoryName] = useState<string | null>(null)
-  const [suggestCount, setSuggestCount] = useState<number>(10)
-  const [slots, setSlots] = useState<Slot[]>([])
+  const [isOpen, setIsOpen] = useState(false)
+  const [activeCategory, setActiveCategory] = useState<Category | null>(null)
+  const [suggestCount, setSuggestCount] = useState<number>(DEFAULT_CATEGORY_WORD_COUNT)
   const [status, setStatus] = useState<ExpansionStatus>('idle')
   const [error, setError] = useState<string | null>(null)
-  const [notice, setNotice] = useState<string | null>(null)
 
   // Fetch sequence number so a stale resolve (from a previous category the
   // user already switched away from) cannot overwrite the active expansion.
@@ -49,40 +53,37 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
   const targetLanguage = state.language || activeLanguage
   const baseLanguage = profile?.base_language || 'English'
 
-  const visibleSlots = slots.slice(0, suggestCount)
-  const displaySlots: Slot[] = [
-    ...visibleSlots,
-    ...Array.from({ length: Math.max(0, suggestCount - visibleSlots.length) }, (): Slot => ({
-      kind: 'empty',
-      word: '',
-      translation: '',
-    })),
-  ]
-
   function resetExpansion() {
     fetchSeq.current += 1
-    setActiveCategoryName(null)
-    setSlots([])
+    setIsOpen(false)
+    setActiveCategory(null)
+    setSuggestCount(DEFAULT_CATEGORY_WORD_COUNT)
     setStatus('idle')
     setError(null)
-    setNotice(null)
+  }
+
+  function toggleDrawer() {
+    setIsOpen((current) => {
+      if (current) {
+        fetchSeq.current += 1
+        setActiveCategory(null)
+        setSuggestCount(DEFAULT_CATEGORY_WORD_COUNT)
+        setStatus('idle')
+        setError(null)
+      }
+      return !current
+    })
   }
 
   function handleTileClick(category: Category) {
-    if (activeCategoryName === category.name) {
-      // Toggle to close — discard local slot state for this category.
-      resetExpansion()
-      return
-    }
-    setSuggestCount(10) // Per-expansion default; not persistent across switches.
-    setSlots([])
+    fetchSeq.current += 1
+    setActiveCategory(category)
+    setSuggestCount(DEFAULT_CATEGORY_WORD_COUNT)
+    setStatus('idle')
     setError(null)
-    setNotice(null)
-    setActiveCategoryName(category.name)
-    fetchSuggestions(category.name, 10)
   }
 
-  async function fetchSuggestions(category: string, count: number) {
+  async function fetchSuggestions(category: Category, count: number) {
     const requestedCount = count
     if (!targetLanguage) {
       setError(t('generate.words.pickTargetLanguageFirst'))
@@ -91,7 +92,6 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
     }
     const seq = ++fetchSeq.current
     setError(null)
-    setNotice(null)
     setStatus('loading')
     try {
       const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
@@ -106,28 +106,23 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
           Authorization: `Bearer ${sessionData.session.access_token}`,
         },
         body: JSON.stringify({
-          category,
+          category: category.name,
           target_language: targetLanguage,
           base_language: baseLanguage,
           count: requestedCount,
         }),
       })
-      // Stale-fetch guard: if the user switched categories mid-flight, drop the result.
       if (seq !== fetchSeq.current) return
       if (!res.ok) {
         const errorBody = await res.json().catch(() => null) as { detail?: string; error?: string } | null
         throw new Error(errorBody?.detail || errorBody?.error || `HTTP ${res.status}`)
       }
-      const suggestionData = (await res.json()) as { words: Array<{ word: string; translation: string }> }
+      const suggestionData = (await res.json()) as SuggestWordsResponse
       if (seq !== fetchSeq.current) return
-      const next: Slot[] = (suggestionData.words || []).slice(0, requestedCount).map((w) => ({
-        kind: 'filled',
-        word: w.word,
-        translation: w.translation,
-      }))
-      if (next.length === 0) throw new Error(t('generate.words.noSuggestionsReturned'))
-      setSlots(next)
-      setStatus('preview')
+      const suggestedWords = extractSuggestedWords(suggestionData, requestedCount)
+      if (suggestedWords.length === 0) throw new Error(t('generate.words.noSuggestionsReturned'))
+      onMergeWords(suggestedWords)
+      resetExpansion()
     } catch (e) {
       if (seq !== fetchSeq.current) return
       setError(e instanceof Error ? e.message : t('generate.words.fetchSuggestionsFailed'))
@@ -135,56 +130,18 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
     }
   }
 
-  function removeSlot(index: number) {
-    setSlots((prev) => prev.filter((_, i) => i !== index))
-  }
-
-  function updateEmptySlot(index: number, field: 'word' | 'translation', value: string) {
-    setNotice(null)
-    setSlots((prev) => {
-      const next = [...prev]
-      while (next.length <= index) {
-        next.push({ kind: 'empty', word: '', translation: '' })
-      }
-      const current = next[index]
-      if (current.kind === 'empty') {
-        next[index] = { ...current, [field]: value }
-      }
-      return next
-    })
-  }
-
-  function handleAddToList() {
-    const extracted = displaySlots
-      .map((s) => s.word.trim())
-      .filter((w) => w.length > 0)
-    if (extracted.length === 0) {
-      setError(t('generate.words.addAtLeastOne'))
-      return
-    }
-    const novel = extracted.filter(
-      (incoming) => !state.words.some((existing) => wordsEqual(existing, incoming)),
-    )
-    if (novel.length === 0) {
-      setNotice(t('generate.words.allAlreadyAdded'))
-      return
-    }
-    onMergeWords(extracted)
-    resetExpansion()
-  }
-
   function renderTile(cat: Category) {
-    const isActive = activeCategoryName === cat.name
+    const isActive = activeCategory?.name === cat.name
     return (
       <button
         key={cat.name}
         type="button"
         onClick={() => handleTileClick(cat)}
-        aria-expanded={isActive}
-        className={`inline-flex items-center gap-1 rounded-full px-4 py-2 min-h-[44px] text-sm transition ${
+        aria-pressed={isActive}
+        className={`inline-flex min-h-[44px] items-center gap-1 rounded-full border px-4 py-2 text-sm transition ${
           isActive
-            ? 'bg-accent text-foreground border border-accent'
-            : 'bg-card text-foreground/80 border border-border hover:bg-accent hover:border-accent'
+            ? 'border-accent bg-accent text-foreground shadow-[0_0_18px_rgba(138,167,199,0.22)]'
+            : 'border-border bg-card text-foreground/80 hover:border-accent hover:bg-accent'
         }`}
       >
         <span aria-hidden="true">{cat.emoji}</span> {t(cat.labelKey)}
@@ -192,166 +149,122 @@ export default function CategoryPicker({ state, onMergeWords }: CategoryPickerPr
     )
   }
 
-  function renderExpansion() {
-    return (
-      <motion.div
-        key={`expansion-${activeCategoryName}`}
-        initial={{ opacity: 0, height: 0 }}
-        animate={{ opacity: 1, height: 'auto' }}
-        exit={{ opacity: 0, height: 0 }}
-        transition={{ duration: 0.18 }}
-        className="w-full overflow-hidden"
-      >
-        <div className="w-full space-y-4 rounded-xl border border-border bg-card/40 p-4 mt-3">
-          <div className="word-count-slider-wrap">
-            <label htmlFor="suggest-count-slider" className="text-sm text-foreground/70">
-              {tp('generate.wordCountSlider', suggestCount)}
-            </label>
-            <input
-              id="suggest-count-slider"
-              type="range"
-              min={1}
-              max={MAX_WORDS}
-              step={1}
-              value={suggestCount}
-              disabled={status === 'loading'}
-              onChange={(e) => {
-                const nextCount = Number(e.target.value)
-                setSuggestCount(nextCount)
-                setSlots((prev) => prev.slice(0, nextCount))
-              }}
-              className="word-count-slider"
-            />
-            <div className="word-count-slider-endpoints" aria-hidden="true">
-              <span>1</span>
-              <span>{t('generate.words.maxCount', { max: MAX_WORDS })}</span>
-            </div>
-          </div>
+  const selectedLabel = activeCategory ? t(activeCategory.labelKey) : null
 
-          {status === 'loading' && (
-            <div className="flex flex-col items-center gap-3 py-6 text-muted-foreground">
-              <Loader2 className="h-6 w-6 animate-spin" />
-              <p className="text-sm">{t('generate.words.findingWords')}</p>
-            </div>
-          )}
-
-          {(status === 'preview' || status === 'error') && (
-            <ul className="space-y-2">
-              <AnimatePresence initial={false}>
-                {displaySlots.map((slot, i) => (
-                  <motion.li
-                    key={i}
-                    layout
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="flex items-center gap-2 min-h-[52px] rounded-xl bg-card border border-border px-3 py-2"
-                  >
-                    {slot.kind === 'filled' ? (
-                      <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center sm:gap-2">
-                        <span className="text-sm text-foreground/90 break-words">{slot.word}</span>
-                        <span className="text-xs text-muted-foreground break-words">{slot.translation}</span>
-                      </div>
-                    ) : (
-                      <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center sm:gap-2">
-                        <input
-                          type="text"
-                          placeholder={t('generate.words.wordPlaceholder')}
-                          value={slot.word}
-                          onChange={(e) => updateEmptySlot(i, 'word', e.target.value)}
-                          className="flex-1 min-w-0 bg-transparent text-sm text-foreground/90 placeholder:text-muted-foreground outline-none py-1"
-                        />
-                        <input
-                          type="text"
-                          placeholder={t('generate.words.translationPlaceholder')}
-                          value={slot.translation}
-                          onChange={(e) => updateEmptySlot(i, 'translation', e.target.value)}
-                          className="flex-1 sm:w-28 sm:flex-none min-w-0 bg-transparent text-xs text-foreground/60 placeholder:text-muted-foreground outline-none sm:text-right py-1"
-                        />
-                      </div>
-                    )}
-                    <button
-                      type="button"
-                      onClick={() => removeSlot(i)}
-                      className="flex-shrink-0 w-11 h-11 flex items-center justify-center text-muted-foreground hover:text-foreground transition"
-                      aria-label={t('generate.words.removeWordAriaLabel')}
-                    >
-                      <X className="h-5 w-5" />
-                    </button>
-                  </motion.li>
-                ))}
-              </AnimatePresence>
-            </ul>
-          )}
-
-          {error && <p className="text-xs text-red-400">{error}</p>}
-          {notice && <p className="text-xs text-foreground/70">{notice}</p>}
-
-          {(status === 'preview' || status === 'error') && (
-            <div className="flex flex-col items-center gap-2 pt-1">
-              <PillButton
-                glow
-                onClick={handleAddToList}
-                className="px-8 py-3 text-sm font-semibold"
-              >
-                <Plus className="h-4 w-4" />
-                {t('generate.words.addToList')}
-              </PillButton>
-              <PillButton
-                variant="secondary"
-                onClick={() => activeCategoryName && fetchSuggestions(activeCategoryName, suggestCount)}
-                className="px-5 py-2 text-xs"
-              >
-                <RefreshCw className="h-3.5 w-3.5" />
-                {t('generate.words.regenerateAll')}
-              </PillButton>
-            </div>
-          )}
-        </div>
-      </motion.div>
-    )
-  }
-
-  // Render: each group's tile row, with the expansion inserted directly under
-  // the group whose tile is currently active. Pinned-bottom categories render
-  // as a free-floating row below all groups.
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="w-full space-y-5"
+      className="w-full space-y-3"
     >
-      <div className="w-full space-y-5 rounded-xl border border-border bg-card/40 p-4">
-        {CATEGORY_GROUPS.map((group) => {
-          const activeInGroup = group.categories.some((c) => c.name === activeCategoryName)
-          return (
-            <div key={group.label}>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3 text-center">
-                <span aria-hidden="true">{group.emoji}</span> {t(group.groupKey)}
-              </h3>
-              <div className={`flex flex-wrap gap-2 ${group.categories.length === 1 ? 'justify-center' : ''}`}>
-                {group.categories.map((cat) => renderTile(cat))}
-              </div>
-              <AnimatePresence initial={false}>
-                {activeInGroup && <Fragment key="exp">{renderExpansion()}</Fragment>}
-              </AnimatePresence>
-            </div>
-          )
-        })}
+      <button
+        type="button"
+        onClick={toggleDrawer}
+        aria-expanded={isOpen}
+        className="flex w-full items-center justify-between gap-3 rounded-2xl border border-border bg-card/60 px-4 py-3 text-left transition hover:border-accent hover:bg-card"
+      >
+        <span className="min-w-0">
+          <span className="block text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+            {t('generate.words.categoryDrawerTitle')}
+          </span>
+          <span className="mt-1 block text-sm text-foreground/80">
+            {selectedLabel ?? t('generate.words.categoryDrawerHint')}
+          </span>
+        </span>
+        <ChevronDown
+          className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          aria-hidden="true"
+        />
+      </button>
 
-        {PINNED_BOTTOM_CATEGORIES.length > 0 && (
-          <div>
-            <div className="flex flex-wrap justify-center gap-2 pt-1">
-              {PINNED_BOTTOM_CATEGORIES.map((cat) => renderTile(cat))}
-            </div>
-            <AnimatePresence initial={false}>
-              {PINNED_BOTTOM_CATEGORIES.some((c) => c.name === activeCategoryName) && (
-                <Fragment key="exp-pinned">{renderExpansion()}</Fragment>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="category-drawer"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.18 }}
+            className="overflow-hidden"
+          >
+            <div className="w-full space-y-5 rounded-xl border border-border bg-card/40 p-4">
+              {activeCategory && selectedLabel && (
+                <div className="rounded-2xl border border-accent/50 bg-accent/10 p-4 shadow-[0_0_28px_rgba(138,167,199,0.14)]">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                        {t('generate.words.selectedCategoryLabel')}
+                      </p>
+                      <p className="mt-1 text-lg font-semibold text-foreground">
+                        <span aria-hidden="true">{activeCategory.emoji}</span> {selectedLabel}
+                      </p>
+                    </div>
+                    <PillButton
+                      glow
+                      onClick={() => { void fetchSuggestions(activeCategory, suggestCount) }}
+                      disabled={status === 'loading'}
+                      className="px-5 py-3 text-sm font-semibold"
+                    >
+                      {status === 'loading' ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <Sparkles className="h-4 w-4" />
+                      )}
+                      {t('generate.words.addCategoryWords', { count: suggestCount })}
+                    </PillButton>
+                  </div>
+
+                  <div className="word-count-slider-wrap mt-5">
+                    <label htmlFor="suggest-count-slider" className="text-sm font-semibold text-foreground">
+                      {t('generate.words.categoryAmountLabel', { count: suggestCount })}
+                    </label>
+                    <input
+                      id="suggest-count-slider"
+                      type="range"
+                      min={MIN_CATEGORY_WORD_COUNT}
+                      max={MAX_CATEGORY_WORD_COUNT}
+                      step={1}
+                      value={suggestCount}
+                      disabled={status === 'loading'}
+                      onChange={(e) => setSuggestCount(Number(e.target.value))}
+                      className="word-count-slider"
+                    />
+                    <div className="word-count-slider-endpoints" aria-hidden="true">
+                      <span>{MIN_CATEGORY_WORD_COUNT}</span>
+                      <span>{t('generate.words.maxCount', { max: MAX_CATEGORY_WORD_COUNT })}</span>
+                    </div>
+                  </div>
+
+                  {status === 'loading' && (
+                    <p className="mt-3 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      {t('generate.words.findingWords')}
+                    </p>
+                  )}
+                  {error && <p className="mt-3 text-sm text-red-400">{error}</p>}
+                </div>
               )}
-            </AnimatePresence>
-          </div>
+
+              {CATEGORY_GROUPS.map((group) => (
+                <div key={group.label}>
+                  <h3 className="mb-3 text-center text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                    <span aria-hidden="true">{group.emoji}</span> {t(group.groupKey)}
+                  </h3>
+                  <div className={`flex flex-wrap gap-2 ${group.categories.length === 1 ? 'justify-center' : ''}`}>
+                    {group.categories.map((cat) => renderTile(cat))}
+                  </div>
+                </div>
+              ))}
+
+              {PINNED_BOTTOM_CATEGORIES.length > 0 && (
+                <div className="flex flex-wrap justify-center gap-2 pt-1">
+                  {PINNED_BOTTOM_CATEGORIES.map((cat) => renderTile(cat))}
+                </div>
+              )}
+            </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </motion.div>
   )
 }

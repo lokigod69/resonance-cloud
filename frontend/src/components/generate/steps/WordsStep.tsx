@@ -105,6 +105,9 @@ export default function WordsStep({
       </motion.p>
 
       <div className={`w-full min-w-0 space-y-5 ${state.productLane === 'card_premium' ? 'max-w-xl' : 'max-w-md'}`}>
+        {/* Categories section - collapsed until the user wants generated suggestions */}
+        <CategoryPicker state={state} onMergeWords={handleMergeWords} />
+
         {/* Always-visible input */}
         {!isFull && (
           <GlassInput
@@ -115,7 +118,7 @@ export default function WordsStep({
           />
         )}
 
-        {/* Locked words */}
+        {/* Locked words - generated category words land here and stay editable */}
         {wordCount > 0 && (
           <WordChips
             words={state.words}
@@ -136,14 +139,6 @@ export default function WordsStep({
             </motion.p>
           )}
         </AnimatePresence>
-
-        {/* Categories section — always visible */}
-        <div className="pt-2">
-          <p className="text-xs uppercase tracking-wider text-muted-foreground text-center mb-3">
-            {t('generate.words.categoriesSubhead')}
-          </p>
-          <CategoryPicker state={state} onMergeWords={handleMergeWords} />
-        </div>
 
         {/* Action buttons — appear after first word */}
         <AnimatePresence>
