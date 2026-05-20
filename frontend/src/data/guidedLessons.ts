@@ -1178,6 +1178,17 @@ const GUIDED_TODAY_PATH_POLISH_THREE_METADATA: GuidedPathMetadata = {
   targetLanguage: 'Polish',
   estimatedMinutes: 5,
 }
+
+const GUIDED_TODAY_PATH_POLISH_FOUR_METADATA: GuidedPathMetadata = {
+  id: 'polish-a1-practical-4',
+  title: 'Polnisch A1 Praxis 4',
+  shortTitle: 'A1 Praxis 4',
+  subtitle: { de: 'Restaurant, Getränke und kurze Gespräche auf Polnisch' },
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Polish',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -47206,6 +47217,517 @@ const polishA1Practical3Lessons = makePolishPracticalLessons(
   'Du hast Polnisch A1 Praxis 3 abgeschlossen.',
 )
 
+const polishA1Practical4Inputs: PolishP1LessonInput[] = [
+  {
+    slug: 'table-for-two',
+    title: { de: 'Ein Tisch für zwei' },
+    situation: {
+      en: 'At a restaurant entrance, ask for a table for two people.',
+      de: 'Am Restauranteingang fragst du nach einem Tisch für zwei Personen.',
+    },
+    pedagogicalGoal: 'Mit Poproszę stolik dla dwóch osób eine A1-Tischreservierung mit Genitiv-Plural einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę stolik dla dwóch osób.',
+        baseText: { de: 'Einen Tisch für zwei Personen, bitte.' },
+      },
+      meaning: { de: 'Die A1-Standardphrase, um einen Tisch im Restaurant zu erfragen.' },
+      chunks: [
+        { id: 'poprosze-stolik', targetText: 'Poproszę stolik', baseText: { de: 'Einen Tisch, bitte' } },
+        { id: 'dla-dwoch-osob', targetText: 'dla dwóch osób.', baseText: { de: 'für zwei Personen.' } },
+      ],
+      lessonItems: [
+        { id: 'stolik', targetText: 'stolik', baseText: { de: 'Tisch (Diminutiv von stół)' }, acceptedAnswers: polishAnswers('stolik', 'Stolik') },
+        { id: 'dla', targetText: 'dla', baseText: { de: 'für (mit Genitiv)' }, acceptedAnswers: polishAnswers('dla', 'Dla') },
+        { id: 'dwoch', targetText: 'dwóch', baseText: { de: 'zwei (Genitiv)' }, acceptedAnswers: polishAnswers('dwóch', 'Dwóch', 'dwoch', 'Dwoch') },
+        { id: 'osob', targetText: 'osób', baseText: { de: 'Personen (Genitiv Pl.)' }, acceptedAnswers: polishAnswers('osób', 'Osób', 'osob', 'Osob') },
+      ],
+      buildChips: ['Poproszę stolik', 'dla dwóch osób.', 'dla jednej osoby.', 'tutaj', 'tam'],
+      typeRecall: {
+        before: 'Poproszę ',
+        answer: 'stolik',
+        after: ' dla dwóch osób.',
+        acceptedAnswers: polishAnswers('stolik', 'Stolik'),
+        fallbackChoices: ['stolik', 'pokój', 'menu', 'bilet'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Einen Tisch für zwei Personen, bitte.' },
+        targetPhrase: 'Poproszę stolik dla dwóch osób.',
+        requiredTokens: ['poproszę', 'stolik', 'dla', 'dwóch', 'osób'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Restauranteingang, ruhige Anfrage nach einem Tisch für zwei.' },
+      trophyWord: {
+        word: 'stolik',
+        meaning: { de: 'Tisch (Restaurant-Diminutiv)' },
+        example: 'Poproszę stolik dla dwóch osób.',
+        whyThisWord: { de: 'Stolik ist die Diminutiv-Form von stół (Tisch) — maskulin unbelebt, im Restaurant-Polnischen Standard für Gasttisch. Akkusativ Singular gleich Nominativ: stolik. Plural: stoliki. Die Wendung dla + Genitiv (für + Genitiv) regiert die Anzahl: dwóch osób (Genitiv Plural). Für eine Person: dla jednej osoby (Genitiv Singular feminin).' },
+      },
+      placeholderCaption: { de: 'Restauranteingang am Abend, ruhige Reservierungsanfrage.' },
+      songMood: 'restaurant arrival',
+      visualNotes: 'Host stand, table icon, stolik paired with dla dwóch osób in Gen.Pl.',
+    }),
+  },
+  {
+    slug: 'see-the-menu',
+    title: { de: 'Die Speisekarte, bitte' },
+    situation: {
+      en: 'Seated at a restaurant table, ask to see the menu.',
+      de: 'Am Tisch im Restaurant bittest du um die Speisekarte.',
+    },
+    pedagogicalGoal: 'Mit Czy mogę zobaczyć menu? eine A1-Bitte um die Speisekarte formulieren und das unflektierbare Lehnwort menu einführen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Czy mogę zobaczyć menu?',
+        baseText: { de: 'Kann ich die Speisekarte sehen?' },
+      },
+      meaning: { de: 'Die höfliche A1-Bitte um die Speisekarte am Tisch.' },
+      chunks: [
+        { id: 'czy-moge', targetText: 'Czy mogę', baseText: { de: 'Kann ich' } },
+        { id: 'zobaczyc', targetText: 'zobaczyć', baseText: { de: 'sehen' } },
+        { id: 'menu', targetText: 'menu?', baseText: { de: 'die Speisekarte?' } },
+      ],
+      lessonItems: [
+        { id: 'zobaczyc', targetText: 'zobaczyć', baseText: { de: 'sehen (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('zobaczyć', 'Zobaczyć', 'zobaczyc', 'Zobaczyc') },
+        { id: 'menu', targetText: 'menu', baseText: { de: 'Speisekarte (Lehnwort, neutrum, unflektierbar)' }, acceptedAnswers: polishAnswers('menu', 'Menu') },
+        { id: 'jadlospis', targetText: 'jadłospis', baseText: { de: 'Speisekarte (polnische Form)' }, acceptedAnswers: polishAnswers('jadłospis', 'Jadłospis', 'jadlospis', 'Jadlospis') },
+        { id: 'kelnerka', targetText: 'kelnerka', baseText: { de: 'Kellnerin' }, acceptedAnswers: polishAnswers('kelnerka', 'Kelnerka') },
+      ],
+      buildChips: ['Czy mogę', 'zobaczyć', 'menu?', 'jadłospis?', 'kartę win?'],
+      typeRecall: {
+        before: 'Czy mogę zobaczyć ',
+        answer: 'menu',
+        after: '?',
+        acceptedAnswers: polishAnswers('menu', 'Menu'),
+        fallbackChoices: ['menu', 'jadłospis', 'kartę', 'rachunek'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Kann ich die Speisekarte sehen?' },
+        targetPhrase: 'Czy mogę zobaczyć menu?',
+        requiredTokens: ['czy', 'mogę', 'zobaczyć', 'menu'],
+        optionalTokens: ['jadłospis'],
+      },
+      sceneCaption: { de: 'Restauranttisch nach dem Setzen, ruhige Bitte um die Karte.' },
+      trophyWord: {
+        word: 'menu',
+        meaning: { de: 'Speisekarte (Lehnwort, unflektierbar)' },
+        example: 'Czy mogę zobaczyć menu?',
+        whyThisWord: { de: 'Menu ist ein französisches Lehnwort, im Polnischen neutrum und vollständig unflektierbar — wie centrum oder taxi (das im Polnischen meist taksówka heißt). Das polnische Wort ist jadłospis (maskulin); in modernen Restaurants ist menu jedoch häufiger und ebenfalls A1-akzeptiert. Im Satz steht es im Akkusativ (Form gleich Nominativ).' },
+      },
+      placeholderCaption: { de: 'Restauranttisch, geschlossene Speisekarte sichtbar.' },
+      songMood: 'ordering opener',
+      visualNotes: 'Menu booklet on table, menu highlighted as invariant loanword.',
+    }),
+  },
+  {
+    slug: 'tea-with-lemon',
+    title: { de: 'Tee mit Zitrone' },
+    situation: {
+      en: 'At a café table, order tea with lemon.',
+      de: 'Am Café-Tisch bestellst du Tee mit Zitrone.',
+    },
+    pedagogicalGoal: 'Mit Poproszę herbatę z cytryną den A1-Instrumental nach z (mit) einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę herbatę z cytryną.',
+        baseText: { de: 'Einen Tee mit Zitrone, bitte.' },
+      },
+      meaning: { de: 'Eine A1-Bestellung mit Beilagen-Spezifikation via Instrumental.' },
+      chunks: [
+        { id: 'poprosze-herbate', targetText: 'Poproszę herbatę', baseText: { de: 'Einen Tee, bitte' } },
+        { id: 'z-cytryna', targetText: 'z cytryną.', baseText: { de: 'mit Zitrone.' } },
+      ],
+      lessonItems: [
+        { id: 'herbata', targetText: 'herbata', baseText: { de: 'Tee (Grundform / Nominativ)' }, acceptedAnswers: polishAnswers('herbata', 'Herbata') },
+        { id: 'herbate', targetText: 'herbatę', baseText: { de: 'Tee (Akkusativ Sg.)' }, acceptedAnswers: polishAnswers('herbatę', 'Herbatę', 'herbate', 'Herbate') },
+        { id: 'cytryna', targetText: 'cytryna', baseText: { de: 'Zitrone' }, acceptedAnswers: polishAnswers('cytryna', 'Cytryna') },
+        { id: 'mleko', targetText: 'mleko', baseText: { de: 'Milch (neutrum)' }, acceptedAnswers: polishAnswers('mleko', 'Mleko') },
+      ],
+      buildChips: ['Poproszę herbatę', 'z cytryną.', 'z mlekiem.', 'z cukrem.'],
+      typeRecall: {
+        before: 'Poproszę ',
+        answer: 'herbatę',
+        after: ' z cytryną.',
+        acceptedAnswers: polishAnswers('herbatę', 'Herbatę', 'herbate', 'Herbate'),
+        fallbackChoices: ['herbatę', 'kawę', 'wodę', 'piwo'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Einen Tee mit Zitrone, bitte.' },
+        targetPhrase: 'Poproszę herbatę z cytryną.',
+        requiredTokens: ['poproszę', 'herbatę', 'z', 'cytryną'],
+        optionalTokens: ['mlekiem', 'cukrem'],
+      },
+      sceneCaption: { de: 'Café-Tisch, Servierwagen in der Nähe, ruhige Tee-Bestellung.' },
+      trophyWord: {
+        word: 'herbata',
+        meaning: { de: 'Tee' },
+        example: 'Poproszę herbatę z cytryną.',
+        whyThisWord: { de: 'Herbata ist feminin. Akkusativ Singular: herbatę (-a → -ę). Im Satz steht das Nomen im Akkusativ als direktes Objekt von poproszę. Die Beilage wird mit z + Instrumental angeschlossen: z cytryną (Instrumental Singular von cytryna), z mlekiem (Instrumental Singular von mleko, neutrum), z cukrem (Instrumental Singular von cukier, maskulin).' },
+      },
+      placeholderCaption: { de: 'Café-Tisch, Tasse, Zitronenscheibe daneben.' },
+      songMood: 'cafe order detail',
+      visualNotes: 'Tea cup with lemon slice, z cytryną paired with Instr.',
+    }),
+  },
+  {
+    slug: 'no-sugar',
+    title: { de: 'Ohne Zucker' },
+    situation: {
+      en: 'At a café counter, specify that you want your drink without sugar.',
+      de: 'An der Café-Theke gibst du an, dass du dein Getränk ohne Zucker möchtest.',
+    },
+    pedagogicalGoal: 'Mit bez + Genitiv das A1-Verneinungs-/Verzichts-Schema einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę bez cukru.',
+        baseText: { de: 'Ohne Zucker, bitte.' },
+      },
+      meaning: { de: 'Die kürzeste A1-Verzichtsphrase bei einer Bestellung.' },
+      chunks: [
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Bitte' } },
+        { id: 'bez-cukru', targetText: 'bez cukru.', baseText: { de: 'ohne Zucker.' } },
+      ],
+      lessonItems: [
+        { id: 'bez', targetText: 'bez', baseText: { de: 'ohne (mit Genitiv)' }, acceptedAnswers: polishAnswers('bez', 'Bez') },
+        { id: 'cukier', targetText: 'cukier', baseText: { de: 'Zucker (Grundform)' }, acceptedAnswers: polishAnswers('cukier', 'Cukier') },
+        { id: 'cukru', targetText: 'cukru', baseText: { de: 'Zucker (Genitiv Sg.)' }, acceptedAnswers: polishAnswers('cukru', 'Cukru') },
+        { id: 'mleka', targetText: 'mleka', baseText: { de: 'Milch (Genitiv Sg.)' }, acceptedAnswers: polishAnswers('mleka', 'Mleka') },
+      ],
+      buildChips: ['Poproszę', 'bez cukru.', 'bez mleka.', 'z miodem.'],
+      typeRecall: {
+        before: 'Poproszę bez ',
+        answer: 'cukru',
+        after: '.',
+        acceptedAnswers: polishAnswers('cukru', 'Cukru'),
+        fallbackChoices: ['cukru', 'mleka', 'soli', 'wody'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ohne Zucker, bitte.' },
+        targetPhrase: 'Poproszę bez cukru.',
+        requiredTokens: ['poproszę', 'bez', 'cukru'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Café-Theke, kurzes Modifizieren der Bestellung.' },
+      trophyWord: {
+        word: 'cukier',
+        meaning: { de: 'Zucker' },
+        example: 'Poproszę bez cukru.',
+        whyThisWord: { de: 'Cukier ist maskulin unbelebt. Nominativ Singular: cukier. Genitiv Singular: cukru (Vokal-Schwund "e" → "ø"). Nach bez (ohne) steht immer der Genitiv — daher bez cukru. Genauso: bez mleka (ohne Milch), bez soli (ohne Salz). Diese Verzichts-Spezifikation ist A1-Standard im Service-Polnisch.' },
+      },
+      placeholderCaption: { de: 'Café-Theke, Zuckerdose im Hintergrund, Bestellmodifikation.' },
+      songMood: 'simple modifier',
+      visualNotes: 'Sugar shaker pushed away, bez cukru with Gen.',
+    }),
+  },
+  {
+    slug: 'is-it-fresh',
+    title: { de: 'Ist das frisch?' },
+    situation: {
+      en: 'At a bakery counter, ask whether a baked good is fresh.',
+      de: 'An der Bäckerei-Theke fragst du, ob ein Backwerk frisch ist.',
+    },
+    pedagogicalGoal: 'Mit Czy to świeże? eine A1-Frischeprüfung am Tresen formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Czy to świeże?',
+        baseText: { de: 'Ist das frisch?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage zur Frische einer Ware.' },
+      chunks: [
+        { id: 'czy-to', targetText: 'Czy to', baseText: { de: 'Ist das' } },
+        { id: 'swieze', targetText: 'świeże?', baseText: { de: 'frisch?' } },
+      ],
+      lessonItems: [
+        { id: 'swiezy', targetText: 'świeży', baseText: { de: 'frisch (maskulin)' }, acceptedAnswers: polishAnswers('świeży', 'Świeży', 'swiezy', 'Swiezy') },
+        { id: 'swieza', targetText: 'świeża', baseText: { de: 'frisch (feminin)' }, acceptedAnswers: polishAnswers('świeża', 'Świeża', 'swieza', 'Swieza') },
+        { id: 'swieze', targetText: 'świeże', baseText: { de: 'frisch (neutrum)' }, acceptedAnswers: polishAnswers('świeże', 'Świeże', 'swieze', 'Swieze') },
+        { id: 'wczorajsze', targetText: 'wczorajsze', baseText: { de: 'von gestern (neutrum)' }, acceptedAnswers: polishAnswers('wczorajsze', 'Wczorajsze') },
+      ],
+      buildChips: ['Czy to', 'świeże?', 'wczorajsze?', 'dzisiejsze?'],
+      typeRecall: {
+        before: 'Czy to ',
+        answer: 'świeże',
+        after: '?',
+        acceptedAnswers: polishAnswers('świeże', 'Świeże', 'swieze', 'Swieze'),
+        fallbackChoices: ['świeże', 'świeży', 'świeża', 'wczorajsze'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ist das frisch?' },
+        targetPhrase: 'Czy to świeże?',
+        requiredTokens: ['czy', 'to', 'świeże'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Bäckerei-Theke am Morgen, kurzer prüfender Blick auf die Ware.' },
+      trophyWord: {
+        word: 'świeży',
+        meaning: { de: 'frisch (Adjektiv-Lemma, maskulin)' },
+        example: 'Czy to świeże?',
+        whyThisWord: { de: 'Świeży ist die maskuline Grundform des Adjektivs (Lemma). Polnische Adjektive flektieren nach Geschlecht: maskulin świeży (chleb świeży — frisches Brot), feminin świeża (bułka świeża — frisches Brötchen), neutrum świeże (pieczywo świeże — frisches Backwerk). Bei einer allgemeinen Frage Czy to świeże? steht das Adjektiv im Neutrum (Default-Geschlecht für unbestimmte "Sache").' },
+      },
+      placeholderCaption: { de: 'Bäckereitresen, prüfender Blick, Frischeabfrage.' },
+      songMood: 'freshness check',
+      visualNotes: 'Bakery counter, bread highlighted, świeże adj predicate in neuter.',
+    }),
+  },
+  {
+    slug: 'thats-everything',
+    title: { de: 'Das ist alles' },
+    situation: {
+      en: 'After a small order, confirm that nothing else is needed.',
+      de: 'Nach einer kleinen Bestellung bestätigst du, dass nichts mehr benötigt wird.',
+    },
+    pedagogicalGoal: 'Mit Tak, to wszystko die A1-Standardantwort auf "noch etwas?" sicher geben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Tak, to wszystko, dziękuję.',
+        baseText: { de: 'Ja, das ist alles, danke.' },
+      },
+      meaning: { de: 'Die A1-Bestellabschluss-Antwort, wenn der Kellner "noch etwas?" fragt.' },
+      chunks: [
+        { id: 'tak-to', targetText: 'Tak, to', baseText: { de: 'Ja, das' } },
+        { id: 'wszystko', targetText: 'wszystko,', baseText: { de: 'ist alles,' } },
+        { id: 'dziekuje', targetText: 'dziękuję.', baseText: { de: 'danke.' } },
+      ],
+      lessonItems: [
+        { id: 'tak', targetText: 'tak', baseText: { de: 'ja' }, acceptedAnswers: polishAnswers('tak', 'Tak') },
+        { id: 'wszystko', targetText: 'wszystko', baseText: { de: 'alles (Indefinitpronomen, neutrum)' }, acceptedAnswers: polishAnswers('wszystko', 'Wszystko') },
+        { id: 'nic', targetText: 'nic', baseText: { de: 'nichts' }, acceptedAnswers: polishAnswers('nic', 'Nic') },
+        { id: 'jeszcze', targetText: 'jeszcze', baseText: { de: 'noch' }, acceptedAnswers: polishAnswers('jeszcze', 'Jeszcze') },
+      ],
+      buildChips: ['Tak, to', 'wszystko,', 'dziękuję.', 'jeszcze coś', 'nic więcej'],
+      typeRecall: {
+        before: 'Tak, to ',
+        answer: 'wszystko',
+        after: ', dziękuję.',
+        acceptedAnswers: polishAnswers('wszystko', 'Wszystko'),
+        fallbackChoices: ['wszystko', 'nic', 'coś', 'jeszcze'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ja, das ist alles, danke.' },
+        targetPhrase: 'Tak, to wszystko, dziękuję.',
+        requiredTokens: ['tak', 'to', 'wszystko', 'dziękuję'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Tisch nach kurzer Bestellung, ruhige Abschlussantwort.' },
+      trophyWord: {
+        word: 'wszystko',
+        meaning: { de: 'alles' },
+        example: 'To wszystko, dziękuję.',
+        whyThisWord: { de: 'Wszystko ist ein Indefinitpronomen im Neutrum und unveränderlich in dieser Funktion (Akkusativ und Nominativ identisch). Gegenpole: nic (nichts), coś (etwas), wszyscy (alle Menschen, maskulin Plural). Im Service-Kontext beendet to wszystko (das ist alles) die Bestellung höflich.' },
+      },
+      placeholderCaption: { de: 'Tisch mit Bestellung, ruhige Schlussantwort an den Kellner.' },
+      songMood: 'order close',
+      visualNotes: 'Server gesture, table fully ordered, wszystko as closing marker.',
+    }),
+  },
+  {
+    slug: 'to-go',
+    title: { de: 'Zum Mitnehmen' },
+    situation: {
+      en: 'At a café counter, specify that the order is to take away rather than dine in.',
+      de: 'An der Café-Theke gibst du an, dass die Bestellung zum Mitnehmen ist.',
+    },
+    pedagogicalGoal: 'Mit Poproszę na wynos die feste A1-Wendung für Takeaway-Bestellungen einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę na wynos.',
+        baseText: { de: 'Zum Mitnehmen, bitte.' },
+      },
+      meaning: { de: 'Die feste A1-Wendung für Takeaway im Service-Polnisch.' },
+      chunks: [
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Bitte' } },
+        { id: 'na-wynos', targetText: 'na wynos.', baseText: { de: 'zum Mitnehmen.' } },
+      ],
+      lessonItems: [
+        { id: 'wynos', targetText: 'wynos', baseText: { de: 'Mitnahme (Grundform)' }, acceptedAnswers: polishAnswers('wynos', 'Wynos') },
+        { id: 'na-wynos', targetText: 'na wynos', baseText: { de: 'zum Mitnehmen (feste Wendung)' }, acceptedAnswers: polishAnswers('na wynos', 'Na wynos') },
+        { id: 'na-miejscu', targetText: 'na miejscu', baseText: { de: 'vor Ort' }, acceptedAnswers: polishAnswers('na miejscu', 'Na miejscu') },
+        { id: 'tutaj', targetText: 'tutaj', baseText: { de: 'hier' }, acceptedAnswers: polishAnswers('tutaj', 'Tutaj') },
+      ],
+      buildChips: ['Poproszę', 'na wynos.', 'na miejscu.', 'tutaj'],
+      typeRecall: {
+        before: 'Poproszę na ',
+        answer: 'wynos',
+        after: '.',
+        acceptedAnswers: polishAnswers('wynos', 'Wynos'),
+        fallbackChoices: ['wynos', 'miejscu', 'później', 'teraz'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Zum Mitnehmen, bitte.' },
+        targetPhrase: 'Poproszę na wynos.',
+        requiredTokens: ['poproszę', 'na', 'wynos'],
+        optionalTokens: ['miejscu'],
+      },
+      sceneCaption: { de: 'Café-Theke, Becher zum Mitnehmen sichtbar, kurze Spezifikation.' },
+      trophyWord: {
+        word: 'wynos',
+        meaning: { de: 'Mitnahme (zum Mitnehmen)' },
+        example: 'Poproszę na wynos.',
+        whyThisWord: { de: 'Wynos ist maskulin unbelebt. In der festen A1-Wendung na wynos (zum Mitnehmen) steht das Nomen im Akkusativ; na + Akkusativ markiert hier Zweck/Ziel. Pendant: na miejscu (vor Ort / hier essen), mit Lokativ (miejsce → miejscu). Beide Formen sind A1-Standard in Cafés und kleinen Restaurants.' },
+      },
+      placeholderCaption: { de: 'Mitnahmebecher auf Theke, kurze Spezifikation.' },
+      songMood: 'takeaway specification',
+      visualNotes: 'Take-away cup, wynos paired with na + Akk.',
+    }),
+  },
+  {
+    slug: 'tasty',
+    title: { de: 'Es war lecker' },
+    situation: {
+      en: 'After eating or drinking, give a brief positive verdict.',
+      de: 'Nach dem Essen oder Trinken gibst du eine kurze positive Rückmeldung.',
+    },
+    pedagogicalGoal: 'Mit Bardzo smaczne ein A1-Lob mit Neutrum-Prädikatsadjektiv formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Bardzo smaczne, dziękuję.',
+        baseText: { de: 'Sehr lecker, danke.' },
+      },
+      meaning: { de: 'Ein kurzes A1-Lob am Ende einer Bestellung.' },
+      chunks: [
+        { id: 'bardzo-smaczne', targetText: 'Bardzo smaczne,', baseText: { de: 'Sehr lecker,' } },
+        { id: 'dziekuje', targetText: 'dziękuję.', baseText: { de: 'danke.' } },
+      ],
+      lessonItems: [
+        { id: 'smaczne', targetText: 'smaczne', baseText: { de: 'lecker (neutrum)' }, acceptedAnswers: polishAnswers('smaczne', 'Smaczne') },
+        { id: 'smaczny', targetText: 'smaczny', baseText: { de: 'lecker (maskulin)' }, acceptedAnswers: polishAnswers('smaczny', 'Smaczny') },
+        { id: 'pyszne', targetText: 'pyszne', baseText: { de: 'köstlich (neutrum)' }, acceptedAnswers: polishAnswers('pyszne', 'Pyszne') },
+        { id: 'dobre', targetText: 'dobre', baseText: { de: 'gut (neutrum)' }, acceptedAnswers: polishAnswers('dobre', 'Dobre') },
+      ],
+      buildChips: ['Bardzo smaczne,', 'dziękuję.', 'pyszne', 'dobre'],
+      typeRecall: {
+        before: 'Bardzo ',
+        answer: 'smaczne',
+        after: ', dziękuję.',
+        acceptedAnswers: polishAnswers('smaczne', 'Smaczne'),
+        fallbackChoices: ['smaczne', 'pyszne', 'dobre', 'świeże'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Sehr lecker, danke.' },
+        targetPhrase: 'Bardzo smaczne, dziękuję.',
+        requiredTokens: ['bardzo', 'smaczne', 'dziękuję'],
+        optionalTokens: ['pyszne', 'dobre'],
+      },
+      sceneCaption: { de: 'Tisch nach dem Essen, leerer Teller, freundliches Lob.' },
+      trophyWord: {
+        word: 'smaczne',
+        meaning: { de: 'lecker (Neutrum-Prädikatsform)' },
+        example: 'Bardzo smaczne, dziękuję.',
+        whyThisWord: { de: 'Smaczne ist die Neutrum-Form von smaczny (lecker). In Polnisch wird das Adjektiv ans Geschlecht des Bezugswortes angeglichen: smaczny obiad (leckeres Mittagessen — maskulin), smaczna zupa (leckere Suppe — feminin), smaczne ciasto (leckerer Kuchen — neutrum). Bei einer allgemeinen Aussage über das Gegessene (kein konkretes Substantiv) wird Neutrum gewählt. Alternativen: dobre (gut), pyszne (köstlich).' },
+      },
+      placeholderCaption: { de: 'Leerer Teller nach gutem Essen, ruhige Anerkennung.' },
+      songMood: 'satisfied verdict',
+      visualNotes: 'Empty plate, satisfied glance, smaczne neuter predicate.',
+    }),
+  },
+  {
+    slug: 'nice-weather',
+    title: { de: 'Schönes Wetter heute' },
+    situation: {
+      en: 'At a café counter, share a small-talk line about the weather.',
+      de: 'An der Café-Theke streust du eine kurze Small-Talk-Bemerkung zum Wetter ein.',
+    },
+    pedagogicalGoal: 'Mit Ładna pogoda dzisiaj ein A1-Smalltalk-Kompliment mit Geschlechts-Übereinstimmung formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Ładna pogoda dzisiaj.',
+        baseText: { de: 'Schönes Wetter heute.' },
+      },
+      meaning: { de: 'Ein kurzer A1-Smalltalk über das Wetter im Service-Kontext.' },
+      chunks: [
+        { id: 'ladna-pogoda', targetText: 'Ładna pogoda', baseText: { de: 'Schönes Wetter' } },
+        { id: 'dzisiaj', targetText: 'dzisiaj.', baseText: { de: 'heute.' } },
+      ],
+      lessonItems: [
+        { id: 'pogoda', targetText: 'pogoda', baseText: { de: 'Wetter (feminin)' }, acceptedAnswers: polishAnswers('pogoda', 'Pogoda') },
+        { id: 'ladna', targetText: 'ładna', baseText: { de: 'schön (feminin)' }, acceptedAnswers: polishAnswers('ładna', 'Ładna', 'ladna', 'Ladna') },
+        { id: 'dzisiaj', targetText: 'dzisiaj', baseText: { de: 'heute' }, acceptedAnswers: polishAnswers('dzisiaj', 'Dzisiaj') },
+        { id: 'slonce', targetText: 'słońce', baseText: { de: 'Sonne (neutrum)' }, acceptedAnswers: polishAnswers('słońce', 'Słońce', 'slonce', 'Slonce') },
+      ],
+      buildChips: ['Ładna pogoda', 'dzisiaj.', 'jest słońce.', 'zimno'],
+      typeRecall: {
+        before: 'Ładna ',
+        answer: 'pogoda',
+        after: ' dzisiaj.',
+        acceptedAnswers: polishAnswers('pogoda', 'Pogoda'),
+        fallbackChoices: ['pogoda', 'noc', 'kawa', 'mapa'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Schönes Wetter heute.' },
+        targetPhrase: 'Ładna pogoda dzisiaj.',
+        requiredTokens: ['ładna', 'pogoda', 'dzisiaj'],
+        optionalTokens: ['słońce'],
+      },
+      sceneCaption: { de: 'Café-Theke am sonnigen Morgen, kurzer Smalltalk übers Wetter.' },
+      trophyWord: {
+        word: 'pogoda',
+        meaning: { de: 'Wetter' },
+        example: 'Ładna pogoda dzisiaj.',
+        whyThisWord: { de: 'Pogoda ist feminin. Achtung: das deutsche "Wetter" ist neutrum, das polnische pogoda ist FEMININ — das beeinflusst die Adjektiv-Endung: ładna pogoda (schönes Wetter, feminin -a), nicht ładny / ładne. Im Smalltalk-Polnischen ist das die natürlichste Wetter-Bemerkung. Synonyme: piękna pogoda (wunderschönes Wetter), brzydka pogoda (schlechtes Wetter).' },
+      },
+      placeholderCaption: { de: 'Sonniger Café-Eingang, freundlicher Wetter-Smalltalk.' },
+      songMood: 'casual small-talk',
+      visualNotes: 'Sun through window, pogoda highlighted with fem agreement.',
+    }),
+  },
+  {
+    slug: 'the-bill',
+    title: { de: 'Die Rechnung, bitte' },
+    situation: {
+      en: 'At a restaurant table after the meal, ask for the bill.',
+      de: 'Am Restauranttisch nach dem Essen bittest du um die Rechnung.',
+    },
+    pedagogicalGoal: 'Mit Poproszę rachunek die A1-Standardphrase für die Rechnung am Restauranttisch sichern.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę rachunek.',
+        baseText: { de: 'Die Rechnung, bitte.' },
+      },
+      meaning: { de: 'Die kürzeste A1-Bitte um die Restaurantrechnung.' },
+      chunks: [
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Bitte' } },
+        { id: 'rachunek', targetText: 'rachunek.', baseText: { de: 'die Rechnung.' } },
+      ],
+      lessonItems: [
+        { id: 'rachunek', targetText: 'rachunek', baseText: { de: 'Rechnung (Restaurant)' }, acceptedAnswers: polishAnswers('rachunek', 'Rachunek') },
+        { id: 'paragon', targetText: 'paragon', baseText: { de: 'Quittung (Kassenbon)' }, acceptedAnswers: polishAnswers('paragon', 'Paragon') },
+        { id: 'faktura', targetText: 'faktura', baseText: { de: 'Rechnung (Geschäft / Beleg)' }, acceptedAnswers: polishAnswers('faktura', 'Faktura') },
+        { id: 'napiwek', targetText: 'napiwek', baseText: { de: 'Trinkgeld' }, acceptedAnswers: polishAnswers('napiwek', 'Napiwek') },
+      ],
+      buildChips: ['Poproszę', 'rachunek.', 'paragon.', 'fakturę.', 'napiwek'],
+      typeRecall: {
+        before: 'Poproszę ',
+        answer: 'rachunek',
+        after: '.',
+        acceptedAnswers: polishAnswers('rachunek', 'Rachunek'),
+        fallbackChoices: ['rachunek', 'paragon', 'menu', 'bilet'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Die Rechnung, bitte.' },
+        targetPhrase: 'Poproszę rachunek.',
+        requiredTokens: ['poproszę', 'rachunek'],
+        optionalTokens: ['paragon', 'fakturę'],
+      },
+      sceneCaption: { de: 'Restauranttisch nach dem Essen, kurze ruhige Bitte um die Rechnung.' },
+      trophyWord: {
+        word: 'rachunek',
+        meaning: { de: 'Rechnung (im Restaurant)' },
+        example: 'Poproszę rachunek.',
+        whyThisWord: { de: 'Rachunek ist maskulin unbelebt; Plural rachunki. Akkusativ gleich Nominativ. Wichtige Abgrenzung zu P2-Trophäen: rachunek ist die Rechnung im Restaurant; paragon ist der Kassenbon (Quittung beim Bezahlen im Laden); faktura ist der formelle Geschäftsbeleg. Im Restaurant-Polnisch fragt man fast immer nach dem rachunek.' },
+      },
+      placeholderCaption: { de: 'Restauranttisch nach dem Essen, Servietten und Gläser.' },
+      songMood: 'meal close',
+      visualNotes: 'Bill folder on table, rachunek paired with rachunek lemma anchor.',
+    }),
+  },
+]
+
+const polishA1Practical4Lessons = makePolishPracticalLessons(
+  GUIDED_TODAY_PATH_POLISH_FOUR_METADATA,
+  polishA1Practical4Inputs,
+  'Du hast Polnisch A1 Praxis 4 abgeschlossen.',
+)
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -61569,6 +62091,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...polishA1Practical1Lessons,
   ...polishA1Practical2Lessons,
   ...polishA1Practical3Lessons,
+  ...polishA1Practical4Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -61664,6 +62187,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_POLISH_ONE_METADATA,
     GUIDED_TODAY_PATH_POLISH_TWO_METADATA,
     GUIDED_TODAY_PATH_POLISH_THREE_METADATA,
+    GUIDED_TODAY_PATH_POLISH_FOUR_METADATA,
   ]
 }
 
