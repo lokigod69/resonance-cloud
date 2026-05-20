@@ -1244,6 +1244,17 @@ const GUIDED_TODAY_PATH_POLISH_NINE_METADATA: GuidedPathMetadata = {
   targetLanguage: 'Polish',
   estimatedMinutes: 5,
 }
+
+const GUIDED_TODAY_PATH_POLISH_TEN_METADATA: GuidedPathMetadata = {
+  id: 'polish-a1-practical-10',
+  title: 'Polnisch A1 Praxis 10',
+  shortTitle: 'A1 Praxis 10',
+  subtitle: { de: 'Tagesabschluss, Dank und Abschied auf Polnisch' },
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Polish',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -50346,6 +50357,517 @@ const polishA1Practical9Lessons = makePolishPracticalLessons(
   'Du hast Polnisch A1 Praxis 9 abgeschlossen.',
 )
 
+const polishA1Practical10Inputs: PolishP1LessonInput[] = [
+  {
+    slug: 'good-day-recap',
+    title: { de: 'Das war ein guter Tag' },
+    situation: {
+      en: 'At the end of the day, share a short positive wrap-up.',
+      de: 'Am Ende des Tages teilst du eine kurze positive Rückschau.',
+    },
+    pedagogicalGoal: 'Mit To był dobry dzień die A1-Tagesrückschau im Perfekt formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'To był dobry dzień.',
+        baseText: { de: 'Das war ein guter Tag.' },
+      },
+      meaning: { de: 'Eine A1-Tagesrückschau mit positiver Bewertung.' },
+      chunks: [
+        { id: 'to-byl', targetText: 'To był', baseText: { de: 'Das war' } },
+        { id: 'dobry-dzien', targetText: 'dobry dzień.', baseText: { de: 'ein guter Tag.' } },
+      ],
+      lessonItems: [
+        { id: 'dzien', targetText: 'dzień', baseText: { de: 'Tag (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('dzień', 'Dzień', 'dzien', 'Dzien') },
+        { id: 'byl', targetText: 'był', baseText: { de: 'war (maskulin 3. Pers. Sg.)' }, acceptedAnswers: polishAnswers('był', 'Był', 'byl', 'Byl') },
+        { id: 'byla', targetText: 'była', baseText: { de: 'war (feminin 3. Pers. Sg.)' }, acceptedAnswers: polishAnswers('była', 'Była', 'byla', 'Byla') },
+        { id: 'bylo', targetText: 'było', baseText: { de: 'war (neutrum 3. Pers. Sg.)' }, acceptedAnswers: polishAnswers('było', 'Było', 'bylo', 'Bylo') },
+      ],
+      buildChips: ['To był', 'dobry dzień.', 'dobra noc.', 'dobre miejsce.'],
+      typeRecall: {
+        before: 'To był dobry ',
+        answer: 'dzień',
+        after: '.',
+        acceptedAnswers: polishAnswers('dzień', 'Dzień', 'dzien', 'Dzien'),
+        fallbackChoices: ['dzień', 'tydzień', 'wieczór', 'weekend'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Das war ein guter Tag.' },
+        targetPhrase: 'To był dobry dzień.',
+        requiredTokens: ['to', 'był', 'dobry', 'dzień'],
+        optionalTokens: ['była', 'było'],
+      },
+      sceneCaption: { de: 'Goldenes Abendlicht, ruhige Tagesrückschau.' },
+      trophyWord: {
+        word: 'dzień',
+        meaning: { de: 'Tag' },
+        example: 'To był dobry dzień.',
+        whyThisWord: { de: 'Dzień ist maskulin unbelebt. Akkusativ gleich Nominativ. Genitiv Singular: dnia. Plural Nominativ: dni. Wichtig zu unterscheiden von der zweiteiligen Begrüßung dzień dobry (siehe P1 L1 — die wird im Test als ein anderes Lexem behandelt). Die Vergangenheitsform być richtet sich nach dem Geschlecht: był (maskulin), była (feminin), było (neutrum). To był dobry dzień — maskulin, weil dzień maskulin ist.' },
+      },
+      placeholderCaption: { de: 'Sonnenuntergang vom Balkon, ruhige Bilanz.' },
+      songMood: 'evening recap',
+      visualNotes: 'Sunset over rooftops, dzień as masc inanim, past tense agreement.',
+    }),
+  },
+  {
+    slug: 'pleasant-here',
+    title: { de: 'Es war angenehm hier' },
+    situation: {
+      en: 'Before leaving a café or venue, give a brief positive past-tense compliment.',
+      de: 'Vor dem Verlassen eines Cafés oder Lokals machst du ein kurzes Vergangenheits-Kompliment.',
+    },
+    pedagogicalGoal: 'Mit Tu było bardzo przyjemnie ein A1-Vergangenheits-Kompliment mit Neutrum-Adverb formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Tu było bardzo przyjemnie, dziękuję.',
+        baseText: { de: 'Es war hier sehr angenehm, danke.' },
+      },
+      meaning: { de: 'Eine A1-Verabschiedungs-Phrase mit Vergangenheits-Kompliment.' },
+      chunks: [
+        { id: 'tu-bylo', targetText: 'Tu było', baseText: { de: 'Es war hier' } },
+        { id: 'bardzo-przyjemnie', targetText: 'bardzo przyjemnie,', baseText: { de: 'sehr angenehm,' } },
+        { id: 'dziekuje', targetText: 'dziękuję.', baseText: { de: 'danke.' } },
+      ],
+      lessonItems: [
+        { id: 'przyjemnie', targetText: 'przyjemnie', baseText: { de: 'angenehm (Adverb)' }, acceptedAnswers: polishAnswers('przyjemnie', 'Przyjemnie') },
+        { id: 'fajnie', targetText: 'fajnie', baseText: { de: 'cool / nett (Adverb, informell)' }, acceptedAnswers: polishAnswers('fajnie', 'Fajnie') },
+        { id: 'milo-byo', targetText: 'miło', baseText: { de: 'angenehm (siehe P5 L4)' }, acceptedAnswers: polishAnswers('miło', 'Miło', 'milo', 'Milo') },
+        { id: 'bylo', targetText: 'było', baseText: { de: 'es war (neutrum 3. Pers. Sg.)' }, acceptedAnswers: polishAnswers('było', 'Było', 'bylo', 'Bylo') },
+      ],
+      buildChips: ['Tu było', 'bardzo przyjemnie,', 'dziękuję.', 'fajnie', 'miło'],
+      typeRecall: {
+        before: 'Tu było bardzo ',
+        answer: 'przyjemnie',
+        after: ', dziękuję.',
+        acceptedAnswers: polishAnswers('przyjemnie', 'Przyjemnie'),
+        fallbackChoices: ['przyjemnie', 'fajnie', 'miło', 'dobrze'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Es war hier sehr angenehm, danke.' },
+        targetPhrase: 'Tu było bardzo przyjemnie, dziękuję.',
+        requiredTokens: ['tu', 'było', 'bardzo', 'przyjemnie', 'dziękuję'],
+        optionalTokens: ['fajnie'],
+      },
+      sceneCaption: { de: 'Café-Schluss am Abend, warmer Verabschiedungs-Kommentar.' },
+      trophyWord: {
+        word: 'przyjemnie',
+        meaning: { de: 'angenehm (Adverb)' },
+        example: 'Tu było bardzo przyjemnie.',
+        whyThisWord: { de: 'Przyjemnie ist das A1-Adverb für "angenehm" — invariant. Adjektiv-Pendant: przyjemny / przyjemna / przyjemne. Synonyme: miło (siehe P5 L4 — nett, freundlich), fajnie (informell, eher unter jungen Leuten). Mit było (neutrum-Default für unbestimmtes Subjekt) drückt es die Vergangenheits-Bewertung aus.' },
+      },
+      placeholderCaption: { de: 'Café-Eingang beim Verlassen, sanftes Abendlicht.' },
+      songMood: 'past-tense compliment',
+      visualNotes: 'Cafe exit, warm reflection, przyjemnie as adverb.',
+    }),
+  },
+  {
+    slug: 'cordial-thanks',
+    title: { de: 'Herzlichen Dank' },
+    situation: {
+      en: 'Thank someone heartily for their help.',
+      de: 'Du dankst jemandem herzlich für die Hilfe.',
+    },
+    pedagogicalGoal: 'Mit Dziękuję serdecznie eine A1-warmherzige Dankesformel formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Dziękuję serdecznie za wszystko.',
+        baseText: { de: 'Herzlichen Dank für alles.' },
+      },
+      meaning: { de: 'Eine warmherzige A1-Dankesformel am Ende einer Interaktion.' },
+      chunks: [
+        { id: 'dziekuje-serdecznie', targetText: 'Dziękuję serdecznie', baseText: { de: 'Herzlichen Dank' } },
+        { id: 'za-wszystko', targetText: 'za wszystko.', baseText: { de: 'für alles.' } },
+      ],
+      lessonItems: [
+        { id: 'serdecznie', targetText: 'serdecznie', baseText: { de: 'herzlich (Adverb)' }, acceptedAnswers: polishAnswers('serdecznie', 'Serdecznie') },
+        { id: 'za', targetText: 'za', baseText: { de: 'für (mit Akkusativ)' }, acceptedAnswers: polishAnswers('za', 'Za') },
+        { id: 'wielkie-dzieki', targetText: 'wielkie dzięki', baseText: { de: 'großen Dank (informell)' }, acceptedAnswers: polishAnswers('wielkie dzięki', 'Wielkie dzięki', 'wielkie dzieki', 'Wielkie dzieki') },
+        { id: 'pomoc-acc', targetText: 'pomoc', baseText: { de: 'Hilfe (siehe P1 L7)' }, acceptedAnswers: polishAnswers('pomoc', 'Pomoc') },
+      ],
+      buildChips: ['Dziękuję serdecznie', 'za wszystko.', 'za pomoc.', 'wielkie dzięki!'],
+      typeRecall: {
+        before: 'Dziękuję ',
+        answer: 'serdecznie',
+        after: ' za wszystko.',
+        acceptedAnswers: polishAnswers('serdecznie', 'Serdecznie'),
+        fallbackChoices: ['serdecznie', 'bardzo', 'wielce', 'pięknie'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Herzlichen Dank für alles.' },
+        targetPhrase: 'Dziękuję serdecznie za wszystko.',
+        requiredTokens: ['dziękuję', 'serdecznie', 'za', 'wszystko'],
+        optionalTokens: ['pomoc'],
+      },
+      sceneCaption: { de: 'Warme Dankesgeste am Abschluss eines guten Treffens.' },
+      trophyWord: {
+        word: 'serdecznie',
+        meaning: { de: 'herzlich (Adverb)' },
+        example: 'Dziękuję serdecznie za wszystko.',
+        whyThisWord: { de: 'Serdecznie ist das A1-Adverb für "herzlich" — vom Wortstamm serce (Herz). Verstärkt dziękuję (danke) zu einer warmherzigen Dankesformel. Synonyme verstärkende Adverbien: bardzo (sehr, siehe P1 L8), pięknie (schön — auch als Verstärkung), wielce (sehr — formell). Mit za + Akkusativ wird die Dankesbegründung angeschlossen: za pomoc (für Hilfe), za wszystko (für alles), za zaproszenie (für die Einladung).' },
+      },
+      placeholderCaption: { de: 'Herzlicher Dank am Tisch oder beim Verabschieden.' },
+      songMood: 'warm gratitude',
+      visualNotes: 'Hand on heart, warm thank-you, serdecznie as adv. of warmth.',
+    }),
+  },
+  {
+    slug: 'something-new',
+    title: { de: 'Heute war etwas Neues' },
+    situation: {
+      en: 'Reflect that today brought something new.',
+      de: 'Du reflektierst, dass heute etwas Neues kam.',
+    },
+    pedagogicalGoal: 'Mit Dziś było coś nowego die A1-Reflexion mit coś + Genitiv-Adjektiv formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Dziś było coś nowego.',
+        baseText: { de: 'Heute war etwas Neues.' },
+      },
+      meaning: { de: 'Eine A1-Tagesreflexion mit Vergangenheits-Neutrum und Genitiv-Adjektiv.' },
+      chunks: [
+        { id: 'dzis-bylo', targetText: 'Dziś było', baseText: { de: 'Heute war' } },
+        { id: 'cos-nowego', targetText: 'coś nowego.', baseText: { de: 'etwas Neues.' } },
+      ],
+      lessonItems: [
+        { id: 'nowy', targetText: 'nowy', baseText: { de: 'neu (maskulin)' }, acceptedAnswers: polishAnswers('nowy', 'Nowy') },
+        { id: 'nowa', targetText: 'nowa', baseText: { de: 'neu (feminin)' }, acceptedAnswers: polishAnswers('nowa', 'Nowa') },
+        { id: 'nowego', targetText: 'nowego', baseText: { de: 'neu (Genitiv Sg. maskulin/neutrum)' }, acceptedAnswers: polishAnswers('nowego', 'Nowego') },
+        { id: 'cos', targetText: 'coś', baseText: { de: 'etwas (Indefinit)' }, acceptedAnswers: polishAnswers('coś', 'Coś', 'cos', 'Cos') },
+      ],
+      buildChips: ['Dziś było', 'coś nowego.', 'coś dobrego.', 'coś innego'],
+      typeRecall: {
+        before: 'Dziś było coś ',
+        answer: 'nowego',
+        after: '.',
+        acceptedAnswers: polishAnswers('nowego', 'Nowego'),
+        fallbackChoices: ['nowego', 'dobrego', 'innego', 'starego'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Heute war etwas Neues.' },
+        targetPhrase: 'Dziś było coś nowego.',
+        requiredTokens: ['dziś', 'było', 'coś', 'nowego'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Ruhige Reflexion am Tagesende, milde Anerkennung.' },
+      trophyWord: {
+        word: 'nowy',
+        meaning: { de: 'neu (Adjektiv-Lemma, maskulin)' },
+        example: 'Dziś było coś nowego.',
+        whyThisWord: { de: 'Nowy ist die maskuline Grundform. Flexion: nowy (maskulin), nowa (feminin), nowe (neutrum). Achtung: nach coś (etwas) steht das Adjektiv im GENITIV — coś nowego (etwas Neues), coś dobrego (etwas Gutes), coś innego (etwas anderes). Diese Genitiv-Adjektiv-Konstruktion ist A1-spezifisch und hat im Deutschen kein direktes Pendant. Gegenstücke: stary (alt), znany (bekannt), nieznany (unbekannt).' },
+      },
+      placeholderCaption: { de: 'Warmer Reflexionsmoment, sanftes Tageslicht.' },
+      songMood: 'gentle reflection',
+      visualNotes: 'Quiet contemplation, nowy with adj. flexion + coś + Gen.',
+    }),
+  },
+  {
+    slug: 'i-am-tired',
+    title: { de: 'Ich bin müde' },
+    situation: {
+      en: 'At the end of the day, say you are tired (no drama).',
+      de: 'Am Tagesende sagst du, dass du müde bist (ohne Drama).',
+    },
+    pedagogicalGoal: 'Mit Jestem zmęczony die A1-Befindensphrase mit geschlechtsmarkiertem Adjektiv formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Jestem trochę zmęczony.',
+        baseText: { de: 'Ich bin ein bisschen müde.' },
+      },
+      meaning: { de: 'Eine ruhige A1-Befindensphrase am Tagesende.' },
+      chunks: [
+        { id: 'jestem-troche', targetText: 'Jestem trochę', baseText: { de: 'Ich bin ein bisschen' } },
+        { id: 'zmeczony', targetText: 'zmęczony.', baseText: { de: 'müde.' } },
+      ],
+      lessonItems: [
+        { id: 'zmeczony', targetText: 'zmęczony', baseText: { de: 'müde (maskulin)' }, acceptedAnswers: polishAnswers('zmęczony', 'Zmęczony', 'zmeczony', 'Zmeczony') },
+        { id: 'zmeczona', targetText: 'zmęczona', baseText: { de: 'müde (feminin)' }, acceptedAnswers: polishAnswers('zmęczona', 'Zmęczona', 'zmeczona', 'Zmeczona') },
+        { id: 'glodny', targetText: 'głodny', baseText: { de: 'hungrig (maskulin)' }, acceptedAnswers: polishAnswers('głodny', 'Głodny', 'glodny', 'Glodny') },
+        { id: 'spragniony', targetText: 'spragniony', baseText: { de: 'durstig (maskulin)' }, acceptedAnswers: polishAnswers('spragniony', 'Spragniony') },
+      ],
+      buildChips: ['Jestem trochę', 'zmęczony.', 'zmęczona.', 'głodny.', 'spragniony.'],
+      typeRecall: {
+        before: 'Jestem trochę ',
+        answer: 'zmęczony',
+        after: '.',
+        acceptedAnswers: polishAnswers('zmęczony', 'Zmęczony', 'zmeczony', 'Zmeczony'),
+        fallbackChoices: ['zmęczony', 'zmęczona', 'głodny', 'spragniony'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ich bin ein bisschen müde.' },
+        targetPhrase: 'Jestem trochę zmęczony.',
+        requiredTokens: ['jestem', 'trochę', 'zmęczony'],
+        optionalTokens: ['zmęczona'],
+      },
+      sceneCaption: { de: 'Tagesende, gemütlicher Sessel, ruhige Befindensphrase.' },
+      trophyWord: {
+        word: 'zmęczony',
+        meaning: { de: 'müde (Adjektiv, maskulin)' },
+        example: 'Jestem trochę zmęczony.',
+        whyThisWord: { de: 'Zmęczony ist die maskuline Grundform. Frau: jestem zmęczona. Wie alle polnischen Adjektive flektiert es nach Geschlecht und Zahl. Verwandte A1-Befindens-Adjektive: głodny / głodna (hungrig), spragniony / spragniona (durstig), wyspany / wyspana (ausgeschlafen), zestresowany / zestresowana (gestresst). Trochę (siehe P9 L7) dämpft die Aussage — A1-Standardabschwächung.' },
+      },
+      placeholderCaption: { de: 'Sessel am Abend, sanftes Innenlicht, ruhige Müdigkeitsangabe.' },
+      songMood: 'gentle tiredness',
+      visualNotes: 'Comfy chair, warm light, zmęczony with gender variants.',
+    }),
+  },
+  {
+    slug: 'must-go',
+    title: { de: 'Ich muss los' },
+    situation: {
+      en: 'Announce politely that you need to leave.',
+      de: 'Du sagst höflich an, dass du gehen musst.',
+    },
+    pedagogicalGoal: 'Mit Muszę już iść das A1-Modalverb musieć und das Aspekt-Adverb już festigen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Muszę już iść.',
+        baseText: { de: 'Ich muss schon los.' },
+      },
+      meaning: { de: 'Eine A1-Aussage, dass du jetzt gehen musst.' },
+      chunks: [
+        { id: 'musze', targetText: 'Muszę', baseText: { de: 'Ich muss' } },
+        { id: 'juz', targetText: 'już', baseText: { de: 'schon' } },
+        { id: 'isc', targetText: 'iść.', baseText: { de: 'gehen.' } },
+      ],
+      lessonItems: [
+        { id: 'musze', targetText: 'muszę', baseText: { de: 'ich muss (1. Person Sg.)' }, acceptedAnswers: polishAnswers('muszę', 'Muszę', 'musze', 'Musze') },
+        { id: 'musisz', targetText: 'musisz', baseText: { de: 'du musst (2. Person Sg.)' }, acceptedAnswers: polishAnswers('musisz', 'Musisz') },
+        { id: 'isc', targetText: 'iść', baseText: { de: 'gehen (Infinitiv, zu Fuß)' }, acceptedAnswers: polishAnswers('iść', 'Iść', 'isc', 'Isc') },
+        { id: 'jechac', targetText: 'jechać', baseText: { de: 'fahren (Infinitiv, Fahrzeug)' }, acceptedAnswers: polishAnswers('jechać', 'Jechać', 'jechac', 'Jechac') },
+      ],
+      buildChips: ['Muszę', 'już', 'iść.', 'jechać.', 'wracać.'],
+      typeRecall: {
+        before: '',
+        answer: 'Muszę',
+        after: ' już iść.',
+        acceptedAnswers: polishAnswers('Muszę', 'muszę', 'Musze', 'musze'),
+        fallbackChoices: ['Muszę', 'Mogę', 'Chcę', 'Wolę'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ich muss schon los.' },
+        targetPhrase: 'Muszę już iść.',
+        requiredTokens: ['muszę', 'już', 'iść'],
+        optionalTokens: ['jechać'],
+      },
+      sceneCaption: { de: 'Lockerer Abschied im Stehen, freundliche Mitteilung.' },
+      trophyWord: {
+        word: 'muszę',
+        meaning: { de: 'ich muss (1. Person Sg.)' },
+        example: 'Muszę już iść.',
+        whyThisWord: { de: 'Muszę ist die 1. Person Singular Präsens von musieć (müssen — modal, imperfektiv, keine perfektive Form). Anders als deutsches "müssen" ist musieć stark — drückt eine Notwendigkeit aus. Variante: 2. Person musisz, 1. Plural musimy. Mit Infinitiv: muszę iść (zu Fuß), muszę jechać (mit Fahrzeug), muszę pracować (arbeiten). Achtung: für freundlich/höflich kann auch chciałbym wyjść (ich würde gerne gehen) verwendet werden, aber das ist A2.' },
+      },
+      placeholderCaption: { de: 'Tür im Hintergrund, ruhige Abschiedsansage.' },
+      songMood: 'gentle departure',
+      visualNotes: 'Ready-to-go gesture, muszę as 1sg modal.',
+    }),
+  },
+  {
+    slug: 'see-you-next-time',
+    title: { de: 'Bis zum nächsten Mal' },
+    situation: {
+      en: 'Close with an open-ended see-you-next-time farewell.',
+      de: 'Du verabschiedest dich mit einem offenen "Bis zum nächsten Mal".',
+    },
+    pedagogicalGoal: 'Mit Do następnego razu! die A1-offene Abschiedsformel mit Genitiv-Adjektiv festigen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Do następnego razu!',
+        baseText: { de: 'Bis zum nächsten Mal!' },
+      },
+      meaning: { de: 'Eine A1-offene Abschiedsformel ohne festes Wiedersehen.' },
+      chunks: [
+        { id: 'do-nastepnego', targetText: 'Do następnego', baseText: { de: 'Bis zum nächsten' } },
+        { id: 'razu', targetText: 'razu!', baseText: { de: 'Mal!' } },
+      ],
+      lessonItems: [
+        { id: 'nastepny', targetText: 'następny', baseText: { de: 'nächste(r) (maskulin)' }, acceptedAnswers: polishAnswers('następny', 'Następny', 'nastepny', 'Nastepny') },
+        { id: 'nastepnego', targetText: 'następnego', baseText: { de: 'nächste(r) (Genitiv Sg.)' }, acceptedAnswers: polishAnswers('następnego', 'Następnego', 'nastepnego', 'Nastepnego') },
+        { id: 'raz', targetText: 'raz', baseText: { de: 'Mal (Grundform, maskulin)' }, acceptedAnswers: polishAnswers('raz', 'Raz') },
+        { id: 'razu', targetText: 'razu', baseText: { de: 'Mal (Genitiv Sg.)' }, acceptedAnswers: polishAnswers('razu', 'Razu') },
+      ],
+      buildChips: ['Do następnego', 'razu!', 'do soboty!', 'do zobaczenia!'],
+      typeRecall: {
+        before: 'Do ',
+        answer: 'następnego',
+        after: ' razu!',
+        acceptedAnswers: polishAnswers('następnego', 'Następnego', 'nastepnego', 'Nastepnego'),
+        fallbackChoices: ['następnego', 'tego', 'innego', 'wczorajszego'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Bis zum nächsten Mal!' },
+        targetPhrase: 'Do następnego razu!',
+        requiredTokens: ['do', 'następnego', 'razu'],
+        optionalTokens: ['zobaczenia'],
+      },
+      sceneCaption: { de: 'Lockerer Abschied ohne festes Wiedersehen-Datum, freundliche Geste.' },
+      trophyWord: {
+        word: 'następny',
+        meaning: { de: 'nächste(r) (Adjektiv-Lemma, maskulin)' },
+        example: 'Do następnego razu!',
+        whyThisWord: { de: 'Następny ist die maskuline Grundform. In der festen Wendung Do następnego razu! steht es im Genitiv (następnego), weil do mit Genitiv konstruiert wird. Das Substantiv raz (Mal, maskulin) ebenfalls Genitiv: razu. Vergleichbare offene Abschiede: do soboty (bis Samstag), do następnego tygodnia (bis nächste Woche), do zobaczenia (bis bald, siehe P9 L9).' },
+      },
+      placeholderCaption: { de: 'Warme Geste beim offenen Abschied, kein Datum festgelegt.' },
+      songMood: 'open farewell',
+      visualNotes: 'Gentle wave, undated calendar, następny with Gen. case.',
+    }),
+  },
+  {
+    slug: 'weekend-works',
+    title: { de: 'Wochenende passt' },
+    situation: {
+      en: 'Confirm that the weekend works for a future plan.',
+      de: 'Du bestätigst, dass das Wochenende für einen Plan passt.',
+    },
+    pedagogicalGoal: 'Mit Weekend mi pasuje die A1-Wochenend-Bestätigung mit Dativ-Konstruktion formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Weekend mi pasuje.',
+        baseText: { de: 'Das Wochenende passt mir.' },
+      },
+      meaning: { de: 'Eine A1-Bestätigung, dass das Wochenende für einen Plan passt.' },
+      chunks: [
+        { id: 'weekend', targetText: 'Weekend', baseText: { de: 'Wochenende' } },
+        { id: 'mi-pasuje', targetText: 'mi pasuje.', baseText: { de: 'passt mir.' } },
+      ],
+      lessonItems: [
+        { id: 'weekend', targetText: 'weekend', baseText: { de: 'Wochenende (Lehnwort, maskulin)' }, acceptedAnswers: polishAnswers('weekend', 'Weekend') },
+        { id: 'sobota', targetText: 'sobota', baseText: { de: 'Samstag (feminin)' }, acceptedAnswers: polishAnswers('sobota', 'Sobota') },
+        { id: 'niedziela', targetText: 'niedziela', baseText: { de: 'Sonntag (feminin)' }, acceptedAnswers: polishAnswers('niedziela', 'Niedziela') },
+        { id: 'pasuje', targetText: 'pasuje', baseText: { de: 'passt (3. Person Sg.)' }, acceptedAnswers: polishAnswers('pasuje', 'Pasuje') },
+      ],
+      buildChips: ['Weekend', 'mi pasuje.', 'sobota', 'niedziela'],
+      typeRecall: {
+        before: '',
+        answer: 'Weekend',
+        after: ' mi pasuje.',
+        acceptedAnswers: polishAnswers('Weekend', 'weekend'),
+        fallbackChoices: ['Weekend', 'Sobota', 'Niedziela', 'Poniedziałek'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Das Wochenende passt mir.' },
+        targetPhrase: 'Weekend mi pasuje.',
+        requiredTokens: ['weekend', 'mi', 'pasuje'],
+        optionalTokens: ['sobota', 'niedziela'],
+      },
+      sceneCaption: { de: 'Lockere Bestätigung in einem Planungsgespräch.' },
+      trophyWord: {
+        word: 'weekend',
+        meaning: { de: 'Wochenende' },
+        example: 'Weekend mi pasuje.',
+        whyThisWord: { de: 'Weekend ist ein vollständig integriertes englisches Lehnwort im Polnischen — maskulin, Plural weekendy. Wird oft groß geschrieben am Satzanfang, sonst klein. Polnische Synonyme: koniec tygodnia (formell — "Ende der Woche"). Polnische Wochentage: poniedziałek, wtorek, środa, czwartek, piątek, sobota, niedziela. Sobota und niedziela bilden den Weekend zusammen.' },
+      },
+      placeholderCaption: { de: 'Kalender mit Wochenend-Markierung, ruhige Bestätigung.' },
+      songMood: 'weekend confirmation',
+      visualNotes: 'Calendar weekend highlighted, weekend as masc loanword.',
+    }),
+  },
+  {
+    slug: 'good-night',
+    title: { de: 'Gute Nacht' },
+    situation: {
+      en: 'Close the evening with a polite good-night.',
+      de: 'Du schließt den Abend mit einem höflichen Gute-Nacht.',
+    },
+    pedagogicalGoal: 'Mit Dobranoc, śpij dobrze die A1-Nachtabschluss-Phrase mit Imperativ-Wunsch formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Dobranoc, śpij dobrze.',
+        baseText: { de: 'Gute Nacht, schlaf gut.' },
+      },
+      meaning: { de: 'Eine A1-Nachtabschluss-Phrase im T-Register.' },
+      chunks: [
+        { id: 'dobranoc', targetText: 'Dobranoc,', baseText: { de: 'Gute Nacht,' } },
+        { id: 'spij-dobrze', targetText: 'śpij dobrze.', baseText: { de: 'schlaf gut.' } },
+      ],
+      lessonItems: [
+        { id: 'dobranoc', targetText: 'dobranoc', baseText: { de: 'gute Nacht (festes Wort)' }, acceptedAnswers: polishAnswers('dobranoc', 'Dobranoc') },
+        { id: 'spij', targetText: 'śpij', baseText: { de: 'schlaf (Imperativ 2. Person Sg.)' }, acceptedAnswers: polishAnswers('śpij', 'Śpij', 'spij', 'Spij') },
+        { id: 'dobrze', targetText: 'dobrze', baseText: { de: 'gut (Adverb)' }, acceptedAnswers: polishAnswers('dobrze', 'Dobrze') },
+        { id: 'slodkich-snow', targetText: 'słodkich snów', baseText: { de: 'süße Träume' }, acceptedAnswers: polishAnswers('słodkich snów', 'Słodkich snów', 'slodkich snow', 'Slodkich snow') },
+      ],
+      buildChips: ['Dobranoc,', 'śpij dobrze.', 'słodkich snów.', 'do jutra'],
+      typeRecall: {
+        before: '',
+        answer: 'Dobranoc',
+        after: ', śpij dobrze.',
+        acceptedAnswers: polishAnswers('Dobranoc', 'dobranoc'),
+        fallbackChoices: ['Dobranoc', 'Dzień dobry', 'Dobry wieczór', 'Cześć'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Gute Nacht, schlaf gut.' },
+        targetPhrase: 'Dobranoc, śpij dobrze.',
+        requiredTokens: ['dobranoc', 'śpij', 'dobrze'],
+        optionalTokens: ['słodkich', 'snów'],
+      },
+      sceneCaption: { de: 'Nachtschluss, warme Schlafens-Wunschphrase.' },
+      trophyWord: {
+        word: 'dobranoc',
+        meaning: { de: 'gute Nacht' },
+        example: 'Dobranoc, śpij dobrze.',
+        whyThisWord: { de: 'Dobranoc ist ein festes, zusammengeschriebenes Wort (eigentlich Dobra + noc — gute Nacht). Wird nur am Abend vor dem Schlafen verwendet, NICHT als allgemeines "gute Nacht" wie Englisch good night als Verabschiedung. Für die normale Abendverabschiedung: dobry wieczór (siehe P5/P9). Für süße Träume: słodkich snów (Genitiv Plural — A1-natürliche Erweiterung).' },
+      },
+      placeholderCaption: { de: 'Schlafzimmertür, sanftes Nachtlicht.' },
+      songMood: 'tender night',
+      visualNotes: 'Bedside lamp, warm tone, dobranoc as fixed bedtime form.',
+    }),
+  },
+  {
+    slug: 'see-you-later',
+    title: { de: 'Mach\'s gut, bis später!' },
+    situation: {
+      en: 'Final wrap-up of the A1 Practical path — a warm "take care, see you later".',
+      de: 'Finaler Abschluss des A1-Praktisch-Bogens — herzliches "mach\'s gut, bis später".',
+    },
+    pedagogicalGoal: 'Mit Trzymaj się, na razie! eine A1-finale informelle Verabschiedung formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Trzymaj się, na razie!',
+        baseText: { de: 'Mach\'s gut, bis später!' },
+      },
+      meaning: { de: 'Eine warmherzige A1-Schluss-Verabschiedung im T-Register.' },
+      chunks: [
+        { id: 'trzymaj-sie', targetText: 'Trzymaj się,', baseText: { de: 'Mach\'s gut,' } },
+        { id: 'na-razie', targetText: 'na razie!', baseText: { de: 'bis später!' } },
+      ],
+      lessonItems: [
+        { id: 'na-razie', targetText: 'na razie', baseText: { de: 'bis später (informell)' }, acceptedAnswers: polishAnswers('na razie', 'Na razie') },
+        { id: 'trzymaj-sie', targetText: 'trzymaj się', baseText: { de: 'mach\'s gut (Imperativ informell)' }, acceptedAnswers: polishAnswers('trzymaj się', 'Trzymaj się', 'trzymaj sie', 'Trzymaj sie') },
+        { id: 'pa', targetText: 'pa', baseText: { de: 'tschüss (sehr informell)' }, acceptedAnswers: polishAnswers('pa', 'Pa') },
+        { id: 'do-jutra', targetText: 'do jutra', baseText: { de: 'bis morgen (siehe P1 L9)' }, acceptedAnswers: polishAnswers('do jutra', 'Do jutra') },
+      ],
+      buildChips: ['Trzymaj się,', 'na razie!', 'pa!', 'do jutra!'],
+      typeRecall: {
+        before: 'Trzymaj się, ',
+        answer: 'na razie',
+        after: '!',
+        acceptedAnswers: polishAnswers('na razie', 'Na razie'),
+        fallbackChoices: ['na razie', 'do jutra', 'do widzenia', 'cześć'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Mach\'s gut, bis später!' },
+        targetPhrase: 'Trzymaj się, na razie!',
+        requiredTokens: ['trzymaj', 'się', 'na', 'razie'],
+        optionalTokens: ['pa'],
+      },
+      sceneCaption: { de: 'Goldenes Sonnenuntergangslicht, herzlicher informeller Abschied am Ende der Reise.' },
+      trophyWord: {
+        word: 'na razie',
+        meaning: { de: 'bis später (informell)' },
+        example: 'Trzymaj się, na razie!',
+        whyThisWord: { de: 'Na razie ist eine feste A1-Verabschiedungsformel im informellen Register — wörtlich "auf jetzt / einstweilen", offen und sehr beliebt unter Freunden, jungen Leuten und auf Polnisch-Social-Media. Pendants: cześć (siehe P5 L10 — kombinierter Hi/Tschüss), trzymaj się (mach\'s gut — Imperativ), pa (sehr informell, oft am Telefon), do zobaczenia (siehe P9 L9). Formell: do widzenia (siehe P1 L10). Diese Phrase schließt den polnischen A1-Praxis-Bogen warm und einladend.' },
+      },
+      placeholderCaption: { de: 'Goldener Sonnenuntergang am Schluss eines guten Tages.' },
+      songMood: 'final warm farewell',
+      visualNotes: 'Golden hour over rooftops, gentle waves, na razie as A1 final marker for the entire curriculum.',
+    }),
+  },
+]
+
+const polishA1Practical10Lessons = makePolishPracticalLessons(
+  GUIDED_TODAY_PATH_POLISH_TEN_METADATA,
+  polishA1Practical10Inputs,
+  'Du hast Polnisch A1 Praxis 10 abgeschlossen — und damit den gesamten A1-Praxis-Bogen.',
+)
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -64715,6 +65237,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...polishA1Practical7Lessons,
   ...polishA1Practical8Lessons,
   ...polishA1Practical9Lessons,
+  ...polishA1Practical10Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -64816,6 +65339,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_POLISH_SEVEN_METADATA,
     GUIDED_TODAY_PATH_POLISH_EIGHT_METADATA,
     GUIDED_TODAY_PATH_POLISH_NINE_METADATA,
+    GUIDED_TODAY_PATH_POLISH_TEN_METADATA,
   ]
 }
 
