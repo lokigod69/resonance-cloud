@@ -9,11 +9,11 @@ import type { TodayProgressState } from '@/lib/todayProgress'
 
 export type LessonMediaType = 'image' | 'video' | 'music_video'
 
-export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German' | 'Cebuano' | 'Indonesian'
+export type GuidedTargetLanguage = 'English' | 'Spanish' | 'Italian' | 'French' | 'Portuguese' | 'German' | 'Cebuano' | 'Indonesian' | 'Polish'
 export type GuidedBaseLanguage = 'German' | 'English'
 export type GuidedBaseContentLocale = 'en' | 'de'
 export type GuidedBaseContentText = Partial<Record<GuidedBaseContentLocale, string>>
-export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH' | 'id-ID'
+export type GuidedSpeakLocale = 'en-US' | 'en-GB' | 'es-ES' | 'it-IT' | 'fr-FR' | 'pt-BR' | 'de-DE' | 'ceb-PH' | 'id-ID' | 'pl-PL'
 
 export const GUIDED_BASE_LANGUAGE_TO_CONTENT_LOCALE: Partial<Record<string, GuidedBaseContentLocale>> = {
   English: 'en',
@@ -1143,6 +1143,17 @@ const GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA: GuidedPathMetadata = {
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'Cebuano',
+  estimatedMinutes: 5,
+}
+
+const GUIDED_TODAY_PATH_POLISH_ONE_METADATA: GuidedPathMetadata = {
+  id: 'polish-a1-practical-1',
+  title: 'Polnisch A1 Praxis 1',
+  shortTitle: 'A1 Praxis 1',
+  subtitle: { de: 'Erste Hilfsphrasen auf Polnisch' },
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Polish',
   estimatedMinutes: 5,
 }
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
@@ -45494,6 +45505,613 @@ const cebuanoA1Practical10Lessons: GuidedLessonDefinition[] = cebuanoA1Practical
     vibeVariants: { bright: lessonInput.variant },
   }
 })
+
+type PolishP1VariantInput = {
+  corePhrase: GuidedLessonVibeVariant['corePhrase']
+  meaning: GuidedBaseContentText
+  chunks: PhraseChunk[]
+  lessonItems: LessonItem[]
+  buildChips: string[]
+  typeRecall: GuidedLessonVibeVariant['typeRecall']
+  speakTarget: Omit<GuidedLessonVibeVariant['speakTarget'], 'language' | 'passingThreshold'>
+  sceneCaption: GuidedBaseContentText
+  trophyWord: GuidedLessonTrophyWord
+  placeholderCaption: GuidedBaseContentText
+  songMood: string
+  visualNotes: string
+}
+
+type PolishP1LessonInput = {
+  slug: string
+  title: GuidedBaseContentText
+  situation: GuidedLessonDefinition['situation']
+  pedagogicalGoal: string
+  variant: GuidedLessonVibeVariant
+}
+
+function polishAnswers(...answers: string[]) {
+  return answers
+}
+
+function makeBrightPolishP1Variant(input: PolishP1VariantInput): GuidedLessonVibeVariant {
+  return {
+    contentStatus: 'draft',
+    corePhrase: input.corePhrase,
+    meaning: input.meaning,
+    chunks: input.chunks,
+    lessonItems: input.lessonItems,
+    build: {
+      targetText: input.corePhrase.targetText,
+      chips: input.buildChips,
+    },
+    typeRecall: input.typeRecall,
+    speakTarget: {
+      ...input.speakTarget,
+      language: 'pl-PL',
+      passingThreshold: 0.65,
+    },
+    sceneCaption: input.sceneCaption,
+    trophyWord: input.trophyWord,
+    placeholderMedia: {
+      type: 'video',
+      caption: input.placeholderCaption,
+    },
+    songSeed: {
+      genre: 'bright Polish acoustic',
+      mood: input.songMood,
+    },
+    visualNotes: input.visualNotes,
+  }
+}
+
+const polishA1Practical1Inputs: PolishP1LessonInput[] = [
+  {
+    slug: 'first-contact',
+    title: { de: 'Erster Kontakt' },
+    situation: {
+      en: 'At a café counter, politely ask whether the staff member speaks English.',
+      de: 'Am Café-Tresen fragst du höflich, ob die Person Englisch spricht.',
+    },
+    pedagogicalGoal: 'Mit Dzień dobry und der höflichen pan/pani-Anrede eine A1-Service-Frage auf Polnisch eröffnen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Dzień dobry, czy mówi pan po angielsku?',
+        baseText: { de: 'Guten Tag, sprechen Sie Englisch?' },
+      },
+      meaning: { de: 'Eine höfliche Tagesbegrüßung plus die sichere Frage nach Englisch im Service-Kontext.' },
+      chunks: [
+        { id: 'dzien-dobry', targetText: 'Dzień dobry,', baseText: { de: 'Guten Tag,' } },
+        { id: 'czy-mowi-pan', targetText: 'czy mówi pan', baseText: { de: 'sprechen Sie (Herr)' } },
+        { id: 'po-angielsku', targetText: 'po angielsku?', baseText: { de: 'Englisch?' } },
+      ],
+      lessonItems: [
+        { id: 'dzien-dobry', targetText: 'dzień dobry', baseText: { de: 'guten Tag' }, acceptedAnswers: polishAnswers('dzień dobry', 'Dzień dobry', 'dzien dobry', 'Dzien dobry') },
+        { id: 'mowi', targetText: 'mówi', baseText: { de: 'spricht (3. Person Sg.)' }, acceptedAnswers: polishAnswers('mówi', 'Mówi', 'mowi', 'Mowi') },
+        { id: 'pan', targetText: 'pan', baseText: { de: 'Herr / Sie (formell, männlich)' }, acceptedAnswers: polishAnswers('pan', 'Pan') },
+        { id: 'pani', targetText: 'pani', baseText: { de: 'Frau / Sie (formell, weiblich)' }, acceptedAnswers: polishAnswers('pani', 'Pani') },
+      ],
+      buildChips: ['Dzień dobry,', 'czy mówi pan', 'po angielsku?', 'cześć', 'dziękuję'],
+      typeRecall: {
+        before: '',
+        answer: 'Dzień dobry',
+        after: ', czy mówi pan po angielsku?',
+        acceptedAnswers: polishAnswers('Dzień dobry', 'dzień dobry', 'Dzien dobry', 'dzien dobry'),
+        fallbackChoices: ['Dzień dobry', 'Dobry wieczór', 'Cześć', 'Na razie'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Guten Tag, sprechen Sie Englisch?' },
+        targetPhrase: 'Dzień dobry, czy mówi pan po angielsku?',
+        requiredTokens: ['dzień', 'dobry', 'czy', 'mówi', 'pan', 'po', 'angielsku'],
+        optionalTokens: ['pani', 'przepraszam'],
+      },
+      sceneCaption: { de: 'Heller Morgen am Café-Tresen, höfliche erste Frage auf Polnisch.' },
+      trophyWord: {
+        word: 'dzień dobry',
+        meaning: { de: 'guten Tag' },
+        example: 'Dzień dobry, czy mówi pan po angielsku?',
+        whyThisWord: { de: 'Dzień dobry ist die Standardbegrüßung am Tag (Morgen bis frühen Abend). Im Service-Kontext ist die formelle pan/pani-Anrede mit Verb in der 3. Person die A1-Norm; für eine Frau lautet die Frage czy mówi pani po angielsku?. Achtung: Polnisch hat kein direktes du/Sie wie Deutsch, sondern arbeitet mit den Höflichkeitsnomen pan (Herr) und pani (Frau).' },
+      },
+      placeholderCaption: { de: 'Heller Café-Morgen, höfliche erste Frage auf Polnisch.' },
+      songMood: 'polite morning start',
+      visualNotes: 'Morning light, café counter, dzień dobry highlighted before the pan/pani question.',
+    }),
+  },
+  {
+    slug: 'repeat-slowly',
+    title: { de: 'Langsam wiederholen' },
+    situation: {
+      en: 'You did not understand and ask the other person to repeat slowly.',
+      de: 'Du hast etwas nicht verstanden und bittest darum, es langsam zu wiederholen.',
+    },
+    pedagogicalGoal: 'Mit Proszę + Infinitiv die kanonische höfliche Wiederholungsbitte auf Polnisch bilden.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, nie rozumiem. Proszę powtórzyć powoli.',
+        baseText: { de: 'Entschuldigung, ich verstehe nicht. Bitte langsam wiederholen.' },
+      },
+      meaning: { de: 'Eine höfliche Reparaturphrase, wenn das Gespräch zu schnell war.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'nie-rozumiem', targetText: 'nie rozumiem.', baseText: { de: 'ich verstehe nicht.' } },
+        { id: 'prosze-powtorzyc-powoli', targetText: 'Proszę powtórzyć powoli.', baseText: { de: 'Bitte langsam wiederholen.' } },
+      ],
+      lessonItems: [
+        { id: 'przepraszam', targetText: 'przepraszam', baseText: { de: 'Entschuldigung' }, acceptedAnswers: polishAnswers('przepraszam', 'Przepraszam') },
+        { id: 'nie', targetText: 'nie', baseText: { de: 'nicht / nein' }, acceptedAnswers: polishAnswers('nie', 'Nie') },
+        { id: 'rozumiem', targetText: 'rozumiem', baseText: { de: 'ich verstehe' }, acceptedAnswers: polishAnswers('rozumiem', 'Rozumiem') },
+        { id: 'powoli', targetText: 'powoli', baseText: { de: 'langsam' }, acceptedAnswers: polishAnswers('powoli', 'Powoli') },
+      ],
+      buildChips: ['Przepraszam,', 'nie rozumiem.', 'Proszę powtórzyć', 'powoli.', 'głośno'],
+      typeRecall: {
+        before: 'Przepraszam, nie rozumiem. ',
+        answer: 'Proszę',
+        after: ' powtórzyć powoli.',
+        acceptedAnswers: polishAnswers('Proszę', 'proszę', 'Prosze', 'prosze'),
+        fallbackChoices: ['Proszę', 'Dziękuję', 'Przepraszam', 'Cześć'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, ich verstehe nicht. Bitte langsam wiederholen.' },
+        targetPhrase: 'Przepraszam, nie rozumiem. Proszę powtórzyć powoli.',
+        requiredTokens: ['przepraszam', 'nie', 'rozumiem', 'proszę', 'powtórzyć', 'powoli'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Das Gespräch stockt kurz, dann bittest du höflich um eine langsame Wiederholung.' },
+      trophyWord: {
+        word: 'proszę',
+        meaning: { de: 'bitte / hier bitte / gern geschehen' },
+        example: 'Proszę powtórzyć powoli.',
+        whyThisWord: { de: 'Proszę ist die wichtigste A1-Höflichkeitsmarkierung im Polnischen. Es bedeutet bitte (Anrede), hier bitte (etwas übergeben), gern geschehen (Antwort auf Dank) und auch wie bitte? (Nachfrage). Mit Infinitiv (proszę powtórzyć) bildet es höfliche Bitten. Achtung: poproszę ist die perfektive Form derselben Wurzel und im Service-Kontext der natürliche Bestell-Marker.' },
+      },
+      placeholderCaption: { de: 'Café-Tresen, freundliche Bitte um langsame Wiederholung.' },
+      songMood: 'patient repair phrase',
+      visualNotes: 'Soft replay cue, proszę highlighted as multifunction politeness marker, powoli paired with calm gesture.',
+    }),
+  },
+  {
+    slug: 'where-is-station',
+    title: { de: 'Wo ist der Bahnhof?' },
+    situation: {
+      en: 'On the sidewalk, politely ask where the train station is.',
+      de: 'Auf dem Gehweg fragst du höflich, wo der Bahnhof ist.',
+    },
+    pedagogicalGoal: 'Die Ortsfrage gdzie jest...? mit dworzec als A1-Bahnhofswort im Nominativ sicher bilden.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, gdzie jest dworzec?',
+        baseText: { de: 'Entschuldigung, wo ist der Bahnhof?' },
+      },
+      meaning: { de: 'Eine kurze Wegfrage mit höflichem Einstieg.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'gdzie-jest', targetText: 'gdzie jest', baseText: { de: 'wo ist' } },
+        { id: 'dworzec', targetText: 'dworzec?', baseText: { de: 'der Bahnhof?' } },
+      ],
+      lessonItems: [
+        { id: 'gdzie', targetText: 'gdzie', baseText: { de: 'wo' }, acceptedAnswers: polishAnswers('gdzie', 'Gdzie') },
+        { id: 'jest', targetText: 'jest', baseText: { de: 'ist (3. Person Sg.)' }, acceptedAnswers: polishAnswers('jest', 'Jest') },
+        { id: 'dworzec', targetText: 'dworzec', baseText: { de: 'Bahnhof' }, acceptedAnswers: polishAnswers('dworzec', 'Dworzec') },
+        { id: 'przystanek', targetText: 'przystanek', baseText: { de: 'Haltestelle' }, acceptedAnswers: polishAnswers('przystanek', 'Przystanek') },
+      ],
+      buildChips: ['Przepraszam,', 'gdzie jest', 'dworzec?', 'tutaj', 'tam'],
+      typeRecall: {
+        before: 'Przepraszam, gdzie jest ',
+        answer: 'dworzec',
+        after: '?',
+        acceptedAnswers: polishAnswers('dworzec', 'Dworzec'),
+        fallbackChoices: ['dworzec', 'sklep', 'hotel', 'park'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, wo ist der Bahnhof?' },
+        targetPhrase: 'Przepraszam, gdzie jest dworzec?',
+        requiredTokens: ['przepraszam', 'gdzie', 'jest', 'dworzec'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Sonnige Straßenecke, sichtbares Bahnhofsschild, kurze höfliche Wegfrage.' },
+      trophyWord: {
+        word: 'dworzec',
+        meaning: { de: 'Bahnhof' },
+        example: 'Gdzie jest dworzec?',
+        whyThisWord: { de: 'Dworzec ist das A1-Standardwort für Bahnhof (typischerweise Zugbahnhof, auch Busbahnhof als dworzec autobusowy). Maskulinum unbelebt; Plural dworce. Im Satz Gdzie jest dworzec? steht es im Nominativ als Subjekt von jest. Vorsicht: stacja ist allgemeiner (Radio-Station, U-Bahn-Station, Tankstelle).' },
+      },
+      placeholderCaption: { de: 'Klare Wegfrage am Gehweg, Bahnhofsrichtung im Hintergrund.' },
+      songMood: 'clear directions',
+      visualNotes: 'Street corner, station icon, gdzie jest grouped as a two-word question lead.',
+    }),
+  },
+  {
+    slug: 'coffee-please',
+    title: { de: 'Einen Kaffee, bitte' },
+    situation: {
+      en: 'At a café counter, politely order one coffee.',
+      de: 'Am Café-Tresen bestellst du höflich einen Kaffee.',
+    },
+    pedagogicalGoal: 'Mit Poproszę + Akkusativ eine A1-Bestellung im Service-Polnisch formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę kawę.',
+        baseText: { de: 'Einen Kaffee, bitte.' },
+      },
+      meaning: { de: 'Die natürlichste A1-Bestellung im Service-Polnisch: poproszę plus Akkusativ-Objekt.' },
+      chunks: [
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'einen ... bitte' } },
+        { id: 'kawe', targetText: 'kawę.', baseText: { de: 'Kaffee.' } },
+      ],
+      lessonItems: [
+        { id: 'kawa', targetText: 'kawa', baseText: { de: 'Kaffee (Grundform / Nominativ)' }, acceptedAnswers: polishAnswers('kawa', 'Kawa') },
+        { id: 'kawe', targetText: 'kawę', baseText: { de: 'Kaffee (Akkusativ Sg.)' }, acceptedAnswers: polishAnswers('kawę', 'Kawę', 'kawe', 'Kawe') },
+        { id: 'herbata', targetText: 'herbata', baseText: { de: 'Tee' }, acceptedAnswers: polishAnswers('herbata', 'Herbata') },
+        { id: 'woda', targetText: 'woda', baseText: { de: 'Wasser' }, acceptedAnswers: polishAnswers('woda', 'Woda') },
+      ],
+      buildChips: ['Poproszę', 'kawę.', 'herbatę', 'wodę', 'dwie kawy'],
+      typeRecall: {
+        before: 'Poproszę ',
+        answer: 'kawę',
+        after: '.',
+        acceptedAnswers: polishAnswers('kawę', 'Kawę', 'kawe', 'Kawe'),
+        fallbackChoices: ['kawę', 'herbatę', 'wodę', 'piwo'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Einen Kaffee, bitte.' },
+        targetPhrase: 'Poproszę kawę.',
+        requiredTokens: ['poproszę', 'kawę'],
+        optionalTokens: ['proszę'],
+      },
+      sceneCaption: { de: 'Heller Café-Tresen, kurze höfliche Bestellung mit poproszę.' },
+      trophyWord: {
+        word: 'kawa',
+        meaning: { de: 'Kaffee' },
+        example: 'Poproszę kawę.',
+        whyThisWord: { de: 'Kawa ist feminin. Im Satz Poproszę kawę steht das Nomen im Akkusativ Singular (kawę), weil es direktes Objekt der höflichen Bestellbitte ist. Plural: kawy. Für zwei Kaffees: Poproszę dwie kawy. Poproszę ist die perfektive Form von prosić — im Service-Kontext fast immer die richtige Wahl, weil eine einmalige, abgeschlossene Bitte gemeint ist.' },
+      },
+      placeholderCaption: { de: 'Café-Tresen, eine Tasse Kaffee, kurze höfliche Bestellung.' },
+      songMood: 'cafe order',
+      visualNotes: 'Coffee cup, single-order badge, poproszę paired with kawę in accusative to teach case.',
+    }),
+  },
+  {
+    slug: 'how-much',
+    title: { de: 'Wie viel kostet das?' },
+    situation: {
+      en: 'At a small shop, ask the price of the item in front of you.',
+      de: 'In einem kleinen Laden fragst du nach dem Preis des Gegenstands.',
+    },
+    pedagogicalGoal: 'Mit Ile to kosztuje? eine knappe A1-Preisfrage im Laden formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Ile to kosztuje?',
+        baseText: { de: 'Wie viel kostet das?' },
+      },
+      meaning: { de: 'Die kürzeste Preisfrage im Laden ohne Verbkomplexität.' },
+      chunks: [
+        { id: 'ile', targetText: 'Ile', baseText: { de: 'wie viel' } },
+        { id: 'to', targetText: 'to', baseText: { de: 'das' } },
+        { id: 'kosztuje', targetText: 'kosztuje?', baseText: { de: 'kostet?' } },
+      ],
+      lessonItems: [
+        { id: 'ile', targetText: 'ile', baseText: { de: 'wie viel / wie viele' }, acceptedAnswers: polishAnswers('ile', 'Ile') },
+        { id: 'to', targetText: 'to', baseText: { de: 'das / dies' }, acceptedAnswers: polishAnswers('to', 'To') },
+        { id: 'kosztuje', targetText: 'kosztuje', baseText: { de: 'kostet' }, acceptedAnswers: polishAnswers('kosztuje', 'Kosztuje') },
+        { id: 'zloty', targetText: 'złoty', baseText: { de: 'Złoty (polnische Währung)' }, acceptedAnswers: polishAnswers('złoty', 'Złoty', 'zloty', 'Zloty') },
+      ],
+      buildChips: ['Ile', 'to kosztuje?', 'złotych', 'tanio'],
+      typeRecall: {
+        before: '',
+        answer: 'Ile',
+        after: ' to kosztuje?',
+        acceptedAnswers: polishAnswers('Ile', 'ile'),
+        fallbackChoices: ['Ile', 'Gdzie', 'Co', 'Kto'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Wie viel kostet das?' },
+        targetPhrase: 'Ile to kosztuje?',
+        requiredTokens: ['ile', 'to', 'kosztuje'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Kleiner Laden, Ware in der Hand, knappe Preisfrage am Tresen.' },
+      trophyWord: {
+        word: 'ile',
+        meaning: { de: 'wie viel / wie viele' },
+        example: 'Ile to kosztuje?',
+        whyThisWord: { de: 'Ile ist das A1-Standardfragewort für Mengen und Preise — unveränderlich und meist am Satzanfang. Zählbar wie unzählbar, beides funktioniert. Andere A1-Fragewörter zur Abgrenzung: co (was), gdzie (wo), kto (wer), kiedy (wann), jak (wie), dlaczego (warum). Achtung: ile selbst ist invariant, aber das gezählte Nomen steht im Genitiv (z. B. ile kawy — wie viel Kaffee).' },
+      },
+      placeholderCaption: { de: 'Kleiner Laden mit Waren, Preisfrage am Tresen.' },
+      songMood: 'simple price check',
+      visualNotes: 'Shop item highlighted, price tag visible, ile leading the short question.',
+    }),
+  },
+  {
+    slug: 'train-time',
+    title: { de: 'Wann fährt der Zug?' },
+    situation: {
+      en: 'At a train station information desk, politely ask when the train departs.',
+      de: 'Am Bahnhofs-Infoschalter fragst du höflich, wann der Zug abfährt.',
+    },
+    pedagogicalGoal: 'Mit der A1-Zeitfrage o której...? eine Abfahrtszeit erfragen und pociąg im Nominativ verwenden.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, o której odjeżdża pociąg?',
+        baseText: { de: 'Entschuldigung, wann fährt der Zug?' },
+      },
+      meaning: { de: 'Die kanonische A1-Frage nach einer Abfahrtszeit im Zugverkehr.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'o-ktorej', targetText: 'o której', baseText: { de: 'um wie viel Uhr' } },
+        { id: 'odjezdza-pociag', targetText: 'odjeżdża pociąg?', baseText: { de: 'fährt der Zug?' } },
+      ],
+      lessonItems: [
+        { id: 'o-ktorej', targetText: 'o której', baseText: { de: 'um wie viel Uhr' }, acceptedAnswers: polishAnswers('o której', 'O której', 'o ktorej', 'O ktorej') },
+        { id: 'odjezdza', targetText: 'odjeżdża', baseText: { de: 'fährt ab' }, acceptedAnswers: polishAnswers('odjeżdża', 'Odjeżdża', 'odjezdza', 'Odjezdza') },
+        { id: 'pociag', targetText: 'pociąg', baseText: { de: 'Zug' }, acceptedAnswers: polishAnswers('pociąg', 'Pociąg', 'pociag', 'Pociag') },
+        { id: 'autobus', targetText: 'autobus', baseText: { de: 'Bus' }, acceptedAnswers: polishAnswers('autobus', 'Autobus') },
+      ],
+      buildChips: ['Przepraszam,', 'o której', 'odjeżdża pociąg?', 'autobus', 'tramwaj'],
+      typeRecall: {
+        before: 'Przepraszam, o której odjeżdża ',
+        answer: 'pociąg',
+        after: '?',
+        acceptedAnswers: polishAnswers('pociąg', 'Pociąg', 'pociag', 'Pociag'),
+        fallbackChoices: ['pociąg', 'autobus', 'tramwaj', 'taksówka'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, wann fährt der Zug?' },
+        targetPhrase: 'Przepraszam, o której odjeżdża pociąg?',
+        requiredTokens: ['przepraszam', 'o', 'której', 'odjeżdża', 'pociąg'],
+        optionalTokens: ['godzinie'],
+      },
+      sceneCaption: { de: 'Bahnhofshalle, Anzeigetafel im Hintergrund, ruhige Frage am Infoschalter.' },
+      trophyWord: {
+        word: 'pociąg',
+        meaning: { de: 'Zug' },
+        example: 'O której odjeżdża pociąg?',
+        whyThisWord: { de: 'Pociąg ist das A1-Standardwort für Eisenbahn-Zug. Maskulinum unbelebt; Plural pociągi. Im Satz O której odjeżdża pociąg? steht es im Nominativ als Subjekt von odjeżdża; das Verb ist imperfektiv, weil Fahrpläne wiederkehrende Vorgänge beschreiben. Keine falschen Freunde im Deutschen — pociąg heißt nur Zug.' },
+      },
+      placeholderCaption: { de: 'Bahnhof, Fahrplan-Anzeige sichtbar, höfliche Zeitfrage.' },
+      songMood: 'platform timing',
+      visualNotes: 'Departure board, simple clock motif, pociąg highlighted as masculine inanimate noun.',
+    }),
+  },
+  {
+    slug: 'need-help',
+    title: { de: 'Ich brauche Hilfe' },
+    situation: {
+      en: 'At a service counter, politely state that you need help, without specifying what.',
+      de: 'An einem Servicepunkt sagst du höflich, dass du Hilfe brauchst, ohne Details.',
+    },
+    pedagogicalGoal: 'Mit potrzebować + Genitiv die A1-Kasusregel "potrzebować regiert Genitiv" einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, potrzebuję pomocy.',
+        baseText: { de: 'Entschuldigung, ich brauche Hilfe.' },
+      },
+      meaning: { de: 'Eine offene A1-Bitte um Hilfe, bewusst ohne Detailangabe.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'potrzebuje', targetText: 'potrzebuję', baseText: { de: 'ich brauche' } },
+        { id: 'pomocy', targetText: 'pomocy.', baseText: { de: 'Hilfe.' } },
+      ],
+      lessonItems: [
+        { id: 'potrzebuje', targetText: 'potrzebuję', baseText: { de: 'ich brauche' }, acceptedAnswers: polishAnswers('potrzebuję', 'Potrzebuję', 'potrzebuje', 'Potrzebuje') },
+        { id: 'pomoc', targetText: 'pomoc', baseText: { de: 'Hilfe (Grundform / Nominativ)' }, acceptedAnswers: polishAnswers('pomoc', 'Pomoc') },
+        { id: 'pomocy', targetText: 'pomocy', baseText: { de: 'Hilfe (Genitiv Sg.)' }, acceptedAnswers: polishAnswers('pomocy', 'Pomocy') },
+        { id: 'tutaj', targetText: 'tutaj', baseText: { de: 'hier' }, acceptedAnswers: polishAnswers('tutaj', 'Tutaj') },
+      ],
+      buildChips: ['Przepraszam,', 'potrzebuję', 'pomocy.', 'wody', 'lekarza'],
+      typeRecall: {
+        before: 'Przepraszam, potrzebuję ',
+        answer: 'pomocy',
+        after: '.',
+        acceptedAnswers: polishAnswers('pomocy', 'Pomocy'),
+        fallbackChoices: ['pomocy', 'wody', 'kawy', 'jutra'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, ich brauche Hilfe.' },
+        targetPhrase: 'Przepraszam, potrzebuję pomocy.',
+        requiredTokens: ['przepraszam', 'potrzebuję', 'pomocy'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Ruhiger Servicepunkt, höfliche Bitte um Unterstützung ohne Drama.' },
+      trophyWord: {
+        word: 'pomoc',
+        meaning: { de: 'Hilfe' },
+        example: 'Potrzebuję pomocy.',
+        whyThisWord: { de: 'Pomoc ist feminin (Nominativ: pomoc, Genitiv: pomocy). Wichtig: das Verb potrzebować (brauchen) regiert den GENITIV — Potrzebuję pomocy heißt wörtlich "ich brauche der Hilfe". Genauso: potrzebuję wody (ich brauche Wasser), potrzebuję czasu (ich brauche Zeit). Das ist eine zentrale A1-Kasusregel, die im Deutschen kein Pendant hat.' },
+      },
+      placeholderCaption: { de: 'Servicepunkt, ruhige A1-Hilfsanfrage.' },
+      songMood: 'calm help request',
+      visualNotes: 'Counter, calm posture, potrzebuję paired with pomocy in genitive to teach case rule.',
+    }),
+  },
+  {
+    slug: 'i-like-it-here',
+    title: { de: 'Mir gefällt es hier' },
+    situation: {
+      en: 'Inside a café or shop, share a short positive comment about the place.',
+      de: 'In einem Café oder Laden machst du eine kurze positive Bemerkung zum Ort.',
+    },
+    pedagogicalGoal: 'Mit der unpersönlichen podobać się-Konstruktion auf A1 ein positives Smalltalk-Kompliment formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Bardzo mi się tu podoba.',
+        baseText: { de: 'Mir gefällt es hier sehr.' },
+      },
+      meaning: { de: 'Die kürzeste A1-Phrase für "ich mag es hier" auf Polnisch.' },
+      chunks: [
+        { id: 'bardzo', targetText: 'Bardzo', baseText: { de: 'sehr' } },
+        { id: 'mi-sie', targetText: 'mi się', baseText: { de: 'mir' } },
+        { id: 'tu-podoba', targetText: 'tu podoba.', baseText: { de: 'hier gefällt.' } },
+      ],
+      lessonItems: [
+        { id: 'bardzo', targetText: 'bardzo', baseText: { de: 'sehr' }, acceptedAnswers: polishAnswers('bardzo', 'Bardzo') },
+        { id: 'mi', targetText: 'mi', baseText: { de: 'mir (Dativ von ja)' }, acceptedAnswers: polishAnswers('mi', 'Mi') },
+        { id: 'sie', targetText: 'się', baseText: { de: 'sich (Reflexiv-Partikel)' }, acceptedAnswers: polishAnswers('się', 'Się', 'sie', 'Sie') },
+        { id: 'tu', targetText: 'tu', baseText: { de: 'hier' }, acceptedAnswers: polishAnswers('tu', 'Tu') },
+      ],
+      buildChips: ['Bardzo', 'mi się', 'tu podoba.', 'pięknie', 'wcale'],
+      typeRecall: {
+        before: '',
+        answer: 'Bardzo',
+        after: ' mi się tu podoba.',
+        acceptedAnswers: polishAnswers('Bardzo', 'bardzo'),
+        fallbackChoices: ['Bardzo', 'Trochę', 'Wcale', 'Może'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Mir gefällt es hier sehr.' },
+        targetPhrase: 'Bardzo mi się tu podoba.',
+        requiredTokens: ['bardzo', 'mi', 'się', 'tu', 'podoba'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Helle Atmosphäre im Café, kurzes positives Kompliment.' },
+      trophyWord: {
+        word: 'bardzo',
+        meaning: { de: 'sehr' },
+        example: 'Bardzo mi się tu podoba.',
+        whyThisWord: { de: 'Bardzo (sehr) ist Polens wichtigster A1-Intensitäts-Adverb. Es modifiziert Verben (bardzo lubię — ich mag sehr), Adjektive (bardzo dobry — sehr gut) und Adverbien (bardzo dobrze — sehr gut so). Mit der unpersönlichen podobać się-Konstruktion (etwas gefällt jemandem) entsteht das natürliche "mir gefällt es hier sehr". Achtung: Polnisch trennt lubić (jemand mag etwas — transitiv) und podobać się (etwas gefällt jemandem — impersonal) klarer als Deutsch.' },
+      },
+      placeholderCaption: { de: 'Warmes Café-Innere, kurzes positives Smalltalk-Kompliment.' },
+      songMood: 'warm small-talk',
+      visualNotes: 'Soft interior light, smiling glance around, bardzo highlighted as universal intensifier.',
+    }),
+  },
+  {
+    slug: 'tomorrow-at-six',
+    title: { de: 'Morgen um sechs' },
+    situation: {
+      en: 'Confirm a casual meet-up for tomorrow at a specific time.',
+      de: 'Du bestätigst ein lockeres Treffen für morgen zu einer bestimmten Uhrzeit.',
+    },
+    pedagogicalGoal: 'Mit do jutra + Genitiv und o szóstej + Lokativ eine A1-Verabredung formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Świetnie, do jutra o szóstej.',
+        baseText: { de: 'Super, bis morgen um sechs.' },
+      },
+      meaning: { de: 'Eine positive Bestätigung plus Verabredung mit Tagesanker und Uhrzeit.' },
+      chunks: [
+        { id: 'swietnie', targetText: 'Świetnie,', baseText: { de: 'Super,' } },
+        { id: 'do-jutra', targetText: 'do jutra', baseText: { de: 'bis morgen' } },
+        { id: 'o-szostej', targetText: 'o szóstej.', baseText: { de: 'um sechs.' } },
+      ],
+      lessonItems: [
+        { id: 'swietnie', targetText: 'świetnie', baseText: { de: 'super / großartig' }, acceptedAnswers: polishAnswers('świetnie', 'Świetnie', 'swietnie', 'Swietnie') },
+        { id: 'jutro', targetText: 'jutro', baseText: { de: 'morgen (Adverb / Nominativ)' }, acceptedAnswers: polishAnswers('jutro', 'Jutro') },
+        { id: 'jutra', targetText: 'jutra', baseText: { de: 'morgen (Genitiv nach do)' }, acceptedAnswers: polishAnswers('jutra', 'Jutra') },
+        { id: 'szosta', targetText: 'szósta', baseText: { de: 'sechs / sechste Stunde' }, acceptedAnswers: polishAnswers('szósta', 'Szósta', 'szosta', 'Szosta') },
+      ],
+      buildChips: ['Świetnie,', 'do jutra', 'o szóstej.', 'dzisiaj', 'wczoraj'],
+      typeRecall: {
+        before: 'Świetnie, do ',
+        answer: 'jutra',
+        after: ' o szóstej.',
+        acceptedAnswers: polishAnswers('jutra', 'Jutra'),
+        fallbackChoices: ['jutra', 'dzisiaj', 'wczoraj', 'rana'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Super, bis morgen um sechs.' },
+        targetPhrase: 'Świetnie, do jutra o szóstej.',
+        requiredTokens: ['świetnie', 'do', 'jutra', 'o', 'szóstej'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Ende eines Gesprächs, kurze positive Verabredung für den nächsten Tag.' },
+      trophyWord: {
+        word: 'jutro',
+        meaning: { de: 'morgen' },
+        example: 'Do jutra o szóstej.',
+        whyThisWord: { de: 'Jutro (morgen) ist neben dzisiaj (heute) und wczoraj (gestern) der zentrale A1-Zeitanker. Achtung: in der festen Verabschiedung Do jutra! steht das Wort im Genitiv (jutra), weil die Präposition do mit Genitiv konstruiert wird. Gleiches Muster: Do zobaczenia! (Auf Wiedersehen — wörtlich "bis zum Sehen"), Do widzenia! Im Satz selbst (als Adverb) bleibt jutro unverändert: Spotykamy się jutro (wir treffen uns morgen).' },
+      },
+      placeholderCaption: { de: 'Warmer Tagesausklang, kurze freundliche Verabredung.' },
+      songMood: 'cheerful confirmation',
+      visualNotes: 'Soft evening light, calendar/clock motif, jutra in genitive after do to teach the case.',
+    }),
+  },
+  {
+    slug: 'thanks-goodbye',
+    title: { de: 'Danke, auf Wiedersehen' },
+    situation: {
+      en: 'Close the encounter with thanks and a polite formal goodbye.',
+      de: 'Du beendest die Situation mit Dank und einem höflichen Abschied.',
+    },
+    pedagogicalGoal: 'Mit dziękuję und do widzenia eine A1-Service-Begegnung höflich schließen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Bardzo dziękuję. Do widzenia.',
+        baseText: { de: 'Vielen Dank. Auf Wiedersehen.' },
+      },
+      meaning: { de: 'Die klassische A1-Verabschiedung nach einer Service-Begegnung.' },
+      chunks: [
+        { id: 'bardzo-dziekuje', targetText: 'Bardzo dziękuję.', baseText: { de: 'Vielen Dank.' } },
+        { id: 'do-widzenia', targetText: 'Do widzenia.', baseText: { de: 'Auf Wiedersehen.' } },
+      ],
+      lessonItems: [
+        { id: 'bardzo', targetText: 'bardzo', baseText: { de: 'sehr / vielen' }, acceptedAnswers: polishAnswers('bardzo', 'Bardzo') },
+        { id: 'dziekuje', targetText: 'dziękuję', baseText: { de: 'danke' }, acceptedAnswers: polishAnswers('dziękuję', 'Dziękuję', 'dziekuje', 'Dziekuje') },
+        { id: 'do-widzenia', targetText: 'do widzenia', baseText: { de: 'auf Wiedersehen' }, acceptedAnswers: polishAnswers('do widzenia', 'Do widzenia') },
+        { id: 'dobranoc', targetText: 'dobranoc', baseText: { de: 'gute Nacht' }, acceptedAnswers: polishAnswers('dobranoc', 'Dobranoc') },
+      ],
+      buildChips: ['Bardzo dziękuję.', 'Do widzenia.', 'Cześć', 'Dobranoc'],
+      typeRecall: {
+        before: 'Bardzo ',
+        answer: 'dziękuję',
+        after: '. Do widzenia.',
+        acceptedAnswers: polishAnswers('dziękuję', 'Dziękuję', 'dziekuje', 'Dziekuje'),
+        fallbackChoices: ['dziękuję', 'proszę', 'przepraszam', 'cześć'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Vielen Dank. Auf Wiedersehen.' },
+        targetPhrase: 'Bardzo dziękuję. Do widzenia.',
+        requiredTokens: ['bardzo', 'dziękuję', 'do', 'widzenia'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Tagesabschluss am Tresen, warmer Dank und höflicher Abschied.' },
+      trophyWord: {
+        word: 'do widzenia',
+        meaning: { de: 'auf Wiedersehen (formell)' },
+        example: 'Bardzo dziękuję. Do widzenia.',
+        whyThisWord: { de: 'Do widzenia ist die kanonische formelle Verabschiedung — wörtlich "bis zum Sehen" (do + Genitiv von widzenie). Passt zu Service-Kontexten, fremden Erwachsenen und Geschäftssituationen. Lockerer: cześć (funktioniert auch als Hallo!), na razie (bis später), do zobaczenia (bis bald). Tageszeit-Varianten: dobry wieczór (guten Abend) als Begrüßung, dobranoc (gute Nacht) als Abschied vor dem Schlafen.' },
+      },
+      placeholderCaption: { de: 'Warmer Abschied am Tresen, sanftes Tageslicht.' },
+      songMood: 'warm farewell',
+      visualNotes: 'Soft golden hour, gentle wave, do widzenia as bookend trophy of the path.',
+    }),
+  },
+]
+
+const polishA1Practical1Lessons: GuidedLessonDefinition[] = polishA1Practical1Inputs.map((lessonInput, index) => {
+  const lessonNumber = index + 1
+  const id = `polish-a1-practical-1-lesson-${lessonNumber}-${lessonInput.slug}`
+  const nextInput = polishA1Practical1Inputs[index + 1]
+
+  return {
+    id,
+    pathId: GUIDED_TODAY_PATH_POLISH_ONE_METADATA.id,
+    courseTitle: GUIDED_TODAY_PATH_POLISH_ONE_METADATA.title,
+    level: GUIDED_TODAY_PATH_POLISH_ONE_METADATA.level,
+    lessonNumber,
+    baseLanguage: GUIDED_TODAY_PATH_POLISH_ONE_METADATA.baseLanguage,
+    targetLanguage: GUIDED_TODAY_PATH_POLISH_ONE_METADATA.targetLanguage,
+    pathMetadata: GUIDED_TODAY_PATH_POLISH_ONE_METADATA,
+    lessonMetadata: {
+      id,
+      sequence: lessonNumber,
+      title: lessonInput.title,
+    },
+    title: lessonInput.title,
+    situation: lessonInput.situation,
+    pedagogicalGoal: lessonInput.pedagogicalGoal,
+    modeSet: 'guided-today-v0',
+    steps: GUIDED_TODAY_STEPS,
+    estimatedMinutes: 5,
+    fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
+    status: 'active',
+    nextLessonTeaser: {
+      title: nextInput?.title ?? { de: 'Pfad abgeschlossen' },
+      situation: { de: nextInput?.situation.de ?? 'Du hast Polnisch A1 Praxis 1 abgeschlossen.' },
+    },
+    vibeVariants: {
+      bright: lessonInput.variant,
+    },
+  }
+})
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -59854,6 +60472,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...cebuanoA1Practical8Lessons,
   ...cebuanoA1Practical9Lessons,
   ...cebuanoA1Practical10Lessons,
+  ...polishA1Practical1Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -59946,6 +60565,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_CEBUANO_EIGHT_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_NINE_METADATA,
     GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA,
+    GUIDED_TODAY_PATH_POLISH_ONE_METADATA,
   ]
 }
 
@@ -59980,6 +60600,7 @@ export const GUIDED_TARGET_LANGUAGE_SPEAK_LOCALES: Record<GuidedTargetLanguage, 
   German: ['de-DE'],
   Cebuano: ['ceb-PH'],
   Indonesian: ['id-ID'],
+  Polish: ['pl-PL'],
 }
 
 export function getGuidedPathOverview(
