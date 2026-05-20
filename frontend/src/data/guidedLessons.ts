@@ -1189,6 +1189,17 @@ const GUIDED_TODAY_PATH_POLISH_FOUR_METADATA: GuidedPathMetadata = {
   targetLanguage: 'Polish',
   estimatedMinutes: 5,
 }
+
+const GUIDED_TODAY_PATH_POLISH_FIVE_METADATA: GuidedPathMetadata = {
+  id: 'polish-a1-practical-5',
+  title: 'Polnisch A1 Praxis 5',
+  shortTitle: 'A1 Praxis 5',
+  subtitle: { de: 'Entschuldigung, Kennenlernen und einfache Pläne auf Polnisch' },
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Polish',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -47728,6 +47739,518 @@ const polishA1Practical4Lessons = makePolishPracticalLessons(
   'Du hast Polnisch A1 Praxis 4 abgeschlossen.',
 )
 
+const polishA1Practical5Inputs: PolishP1LessonInput[] = [
+  {
+    slug: 'sorry-im-late',
+    title: { de: 'Entschuldigung, ich bin zu spät' },
+    situation: {
+      en: 'Walking into a casual meet-up after the agreed time, apologize for being late.',
+      de: 'Du kommst zu einem lockeren Treffen nach der vereinbarten Zeit und entschuldigst dich.',
+    },
+    pedagogicalGoal: 'Mit Przepraszam, jestem spóźniony eine A1-Verspätungsentschuldigung mit geschlechtsmarkiertem Adjektiv formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, jestem spóźniony.',
+        baseText: { de: 'Entschuldigung, ich bin zu spät.' },
+      },
+      meaning: { de: 'Eine kurze A1-Entschuldigung für eine verspätete Ankunft.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'jestem', targetText: 'jestem', baseText: { de: 'ich bin' } },
+        { id: 'spozniony', targetText: 'spóźniony.', baseText: { de: 'zu spät.' } },
+      ],
+      lessonItems: [
+        { id: 'jestem', targetText: 'jestem', baseText: { de: 'ich bin' }, acceptedAnswers: polishAnswers('jestem', 'Jestem') },
+        { id: 'spozniony', targetText: 'spóźniony', baseText: { de: 'zu spät (maskulin)' }, acceptedAnswers: polishAnswers('spóźniony', 'Spóźniony', 'spozniony', 'Spozniony') },
+        { id: 'spozniona', targetText: 'spóźniona', baseText: { de: 'zu spät (feminin)' }, acceptedAnswers: polishAnswers('spóźniona', 'Spóźniona', 'spozniona', 'Spozniona') },
+        { id: 'troche', targetText: 'trochę', baseText: { de: 'ein bisschen' }, acceptedAnswers: polishAnswers('trochę', 'Trochę', 'troche', 'Troche') },
+      ],
+      buildChips: ['Przepraszam,', 'jestem', 'spóźniony.', 'spóźniona.', 'trochę'],
+      typeRecall: {
+        before: 'Przepraszam, jestem ',
+        answer: 'spóźniony',
+        after: '.',
+        acceptedAnswers: polishAnswers('spóźniony', 'Spóźniony', 'spozniony', 'Spozniony'),
+        fallbackChoices: ['spóźniony', 'spóźniona', 'gotowy', 'tutaj'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, ich bin zu spät.' },
+        targetPhrase: 'Przepraszam, jestem spóźniony.',
+        requiredTokens: ['przepraszam', 'jestem', 'spóźniony'],
+        optionalTokens: ['spóźniona', 'trochę'],
+      },
+      sceneCaption: { de: 'Eingangstür eines kleinen Cafés, freundliche Verspätungsentschuldigung.' },
+      trophyWord: {
+        word: 'spóźniony',
+        meaning: { de: 'zu spät (Adjektiv, maskulin)' },
+        example: 'Jestem spóźniony.',
+        whyThisWord: { de: 'Spóźniony ist die maskuline Form des Adjektivs (Lemma). Polnische Adjektive flektieren nach Geschlecht und Zahl. Frau: jestem spóźniona; Plural mixed/maskulin: jesteśmy spóźnieni. Anders als im Deutschen verbindet sich das Adjektiv direkt mit być (sein) — keine Hilfskonstruktion mit "habe". Vorsicht: spóźniony ist Adjektiv, das verwandte spóźnienie ist das Substantiv (Verspätung).' },
+      },
+      placeholderCaption: { de: 'Café-Tür, hereinkommend, ruhige Entschuldigung.' },
+      songMood: 'late arrival apology',
+      visualNotes: 'Door opening, glance at clock, spóźniony with gender variants.',
+    }),
+  },
+  {
+    slug: 'i-forgot',
+    title: { de: 'Ich habe vergessen' },
+    situation: {
+      en: 'Mid-conversation, admit that you forgot something.',
+      de: 'Mitten im Gespräch gibst du zu, dass du etwas vergessen hast.',
+    },
+    pedagogicalGoal: 'Mit Przepraszam, zapomniałem das A1-Geständnis mit perfektivem Verb in der 1. Person Vergangenheit üben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, zapomniałem.',
+        baseText: { de: 'Entschuldigung, ich habe vergessen.' },
+      },
+      meaning: { de: 'Eine A1-Phrase zum Eingeständnis eines kleinen Vergessens.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'zapomnialem', targetText: 'zapomniałem.', baseText: { de: 'ich habe vergessen.' } },
+      ],
+      lessonItems: [
+        { id: 'zapomniec', targetText: 'zapomnieć', baseText: { de: 'vergessen (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('zapomnieć', 'Zapomnieć', 'zapomniec', 'Zapomniec') },
+        { id: 'zapomnialem', targetText: 'zapomniałem', baseText: { de: 'ich habe vergessen (maskulin)' }, acceptedAnswers: polishAnswers('zapomniałem', 'Zapomniałem', 'zapomnialem', 'Zapomnialem') },
+        { id: 'zapomnialam', targetText: 'zapomniałam', baseText: { de: 'ich habe vergessen (feminin)' }, acceptedAnswers: polishAnswers('zapomniałam', 'Zapomniałam', 'zapomnialam', 'Zapomnialam') },
+        { id: 'pamietac', targetText: 'pamiętać', baseText: { de: 'erinnern (Infinitiv, imperfektiv)' }, acceptedAnswers: polishAnswers('pamiętać', 'Pamiętać', 'pamietac', 'Pamietac') },
+      ],
+      buildChips: ['Przepraszam,', 'zapomniałem.', 'zapomniałam.', 'pamiętam'],
+      typeRecall: {
+        before: 'Przepraszam, ',
+        answer: 'zapomniałem',
+        after: '.',
+        acceptedAnswers: polishAnswers('zapomniałem', 'Zapomniałem', 'zapomnialem', 'Zapomnialem'),
+        fallbackChoices: ['zapomniałem', 'zapomniałam', 'pamiętam', 'wiem'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, ich habe vergessen.' },
+        targetPhrase: 'Przepraszam, zapomniałem.',
+        requiredTokens: ['przepraszam', 'zapomniałem'],
+        optionalTokens: ['zapomniałam'],
+      },
+      sceneCaption: { de: 'Gesprächsmoment, kurzes Innehalten beim Bemerken des Versäumnisses.' },
+      trophyWord: {
+        word: 'zapomnieć',
+        meaning: { de: 'vergessen (Infinitiv, perfektiv)' },
+        example: 'Przepraszam, zapomniałem.',
+        whyThisWord: { de: 'Zapomnieć ist die perfektive Form des Verb-Paares pamiętać/zapomnieć (erinnern/vergessen). Vergessen wird im Polnischen meist perfektiv ausgedrückt — der Akt des Vergessens ist abgeschlossen. Die 1. Person Vergangenheit wird geschlechtsmarkiert: zapomniałem (Mann) / zapomniałam (Frau). Anders als im Deutschen kein Hilfsverb — die Verbendung trägt die Bedeutung allein.' },
+      },
+      placeholderCaption: { de: 'Pause im Gespräch, kurzes Eingestehen des Versäumnisses.' },
+      songMood: 'gentle admission',
+      visualNotes: 'Hand to forehead, calm admission, zapomniałem with gender variant.',
+    }),
+  },
+  {
+    slug: 'whats-your-name',
+    title: { de: 'Wie heißt du?' },
+    situation: {
+      en: 'In a casual meeting, ask a stranger for their first name.',
+      de: 'Bei einer lockeren Begegnung fragst du eine fremde Person nach ihrem Vornamen.',
+    },
+    pedagogicalGoal: 'Mit Jak masz na imię? eine A1-T-Form-Vorstellungsfrage formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Jak masz na imię?',
+        baseText: { de: 'Wie heißt du?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach dem Vornamen im informellen "du".' },
+      chunks: [
+        { id: 'jak', targetText: 'Jak', baseText: { de: 'Wie' } },
+        { id: 'masz', targetText: 'masz', baseText: { de: 'hast du' } },
+        { id: 'na-imie', targetText: 'na imię?', baseText: { de: 'als Vornamen?' } },
+      ],
+      lessonItems: [
+        { id: 'jak', targetText: 'jak', baseText: { de: 'wie' }, acceptedAnswers: polishAnswers('jak', 'Jak') },
+        { id: 'masz', targetText: 'masz', baseText: { de: 'du hast (2. Person Sg., informell)' }, acceptedAnswers: polishAnswers('masz', 'Masz') },
+        { id: 'imie', targetText: 'imię', baseText: { de: 'Vorname (neutrum)' }, acceptedAnswers: polishAnswers('imię', 'Imię', 'imie', 'Imie') },
+        { id: 'nazywam-sie', targetText: 'nazywam się', baseText: { de: 'ich heiße' }, acceptedAnswers: polishAnswers('nazywam się', 'Nazywam się', 'nazywam sie', 'Nazywam sie') },
+      ],
+      buildChips: ['Jak', 'masz', 'na imię?', 'nazywam się', 'mam'],
+      typeRecall: {
+        before: '',
+        answer: 'Jak',
+        after: ' masz na imię?',
+        acceptedAnswers: polishAnswers('Jak', 'jak'),
+        fallbackChoices: ['Jak', 'Skąd', 'Co', 'Kto'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Wie heißt du?' },
+        targetPhrase: 'Jak masz na imię?',
+        requiredTokens: ['jak', 'masz', 'na', 'imię'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Lockerer Treffpunkt, freundlicher erster Austausch zum Namen.' },
+      trophyWord: {
+        word: 'jak',
+        meaning: { de: 'wie' },
+        example: 'Jak masz na imię?',
+        whyThisWord: { de: 'Jak ist das A1-Standardfragewort für Art und Weise (wie). Invariant. In der festen Wendung Jak masz na imię? (wörtlich "wie hast du als Vornamen?") fragt man im T-Register (du) nach dem Vornamen. Höfliche V-Form: Jak pan / pani ma na imię? Antwort: Mam na imię Anna (Ich heiße Anna) oder Nazywam się Kowalski (Mein Nachname ist Kowalski).' },
+      },
+      placeholderCaption: { de: 'Lockerer Treffpunkt, erste Begegnung, ruhige Namensfrage.' },
+      songMood: 'casual introduction',
+      visualNotes: 'Two people meeting casually, jak as A1 interrogative.',
+    }),
+  },
+  {
+    slug: 'nice-to-meet-you',
+    title: { de: 'Freut mich' },
+    situation: {
+      en: 'After being introduced, reply warmly.',
+      de: 'Nach einer Vorstellung antwortest du herzlich.',
+    },
+    pedagogicalGoal: 'Mit Miło mi die feste A1-Antwortphrase nach einer Vorstellung einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Miło mi.',
+        baseText: { de: 'Freut mich.' },
+      },
+      meaning: { de: 'Die kürzeste A1-Antwort nach einer Vorstellung — "freut mich".' },
+      chunks: [
+        { id: 'milo', targetText: 'Miło', baseText: { de: 'Es freut' } },
+        { id: 'mi', targetText: 'mi.', baseText: { de: 'mich.' } },
+      ],
+      lessonItems: [
+        { id: 'milo', targetText: 'miło', baseText: { de: 'angenehm / freundlich (Adverb)' }, acceptedAnswers: polishAnswers('miło', 'Miło', 'milo', 'Milo') },
+        { id: 'mi', targetText: 'mi', baseText: { de: 'mir (Dativ Sg.)' }, acceptedAnswers: polishAnswers('mi', 'Mi') },
+        { id: 'mnie-tez', targetText: 'mnie też', baseText: { de: 'mich auch' }, acceptedAnswers: polishAnswers('mnie też', 'Mnie też', 'mnie tez', 'Mnie tez') },
+        { id: 'cieszy', targetText: 'cieszy', baseText: { de: 'es freut' }, acceptedAnswers: polishAnswers('cieszy', 'Cieszy') },
+      ],
+      buildChips: ['Miło', 'mi.', 'Mnie też.', 'Cieszę się.'],
+      typeRecall: {
+        before: '',
+        answer: 'Miło',
+        after: ' mi.',
+        acceptedAnswers: polishAnswers('Miło', 'miło', 'Milo', 'milo'),
+        fallbackChoices: ['Miło', 'Bardzo', 'Trochę', 'Dobrze'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Freut mich.' },
+        targetPhrase: 'Miło mi.',
+        requiredTokens: ['miło', 'mi'],
+        optionalTokens: ['też'],
+      },
+      sceneCaption: { de: 'Vorstellungsmoment, warmer kurzer Antwort.' },
+      trophyWord: {
+        word: 'miło',
+        meaning: { de: 'angenehm / freundlich (Adverb)' },
+        example: 'Miło mi.',
+        whyThisWord: { de: 'Miło ist das Adverb zu miły (nett, freundlich). Adverbien sind im Polnischen invariant. In der festen Vorstellungsantwort Miło mi (es ist mir angenehm) wird die Adverb-Form mit Dativ-Pronomen mi kombiniert — wörtlich "angenehm mir". Antwortbar mit Mnie też (mir auch) oder Cieszę się (ich freue mich). Diese Phrase ist im A1-Polnischen die universelle Reaktion nach Vorstellungen.' },
+      },
+      placeholderCaption: { de: 'Erste Begegnung, kurzes warmes Lächeln.' },
+      songMood: 'warm reply',
+      visualNotes: 'Handshake or nod, miło highlighted as adverb of warmth.',
+    }),
+  },
+  {
+    slug: 'where-are-you-from',
+    title: { de: 'Woher kommst du?' },
+    situation: {
+      en: 'In casual conversation, ask where the other person is from.',
+      de: 'Im lockeren Gespräch fragst du, woher die andere Person kommt.',
+    },
+    pedagogicalGoal: 'Mit Skąd jesteś? eine A1-Herkunftsfrage im T-Register stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Skąd jesteś?',
+        baseText: { de: 'Woher kommst du?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach der Herkunft im informellen "du".' },
+      chunks: [
+        { id: 'skad', targetText: 'Skąd', baseText: { de: 'Woher' } },
+        { id: 'jestes', targetText: 'jesteś?', baseText: { de: 'kommst du?' } },
+      ],
+      lessonItems: [
+        { id: 'skad', targetText: 'skąd', baseText: { de: 'woher (Interrogativ)' }, acceptedAnswers: polishAnswers('skąd', 'Skąd', 'skad', 'Skad') },
+        { id: 'jestes', targetText: 'jesteś', baseText: { de: 'du bist (2. Person Sg., informell)' }, acceptedAnswers: polishAnswers('jesteś', 'Jesteś', 'jestes', 'Jestes') },
+        { id: 'polski', targetText: 'Polski', baseText: { de: 'Polnisch / polnisch (maskulin)' }, acceptedAnswers: polishAnswers('Polski', 'polski') },
+        { id: 'niemiec', targetText: 'Niemiec', baseText: { de: 'Deutscher (Mann)' }, acceptedAnswers: polishAnswers('Niemiec', 'niemiec') },
+      ],
+      buildChips: ['Skąd', 'jesteś?', 'z Polski', 'z Niemiec'],
+      typeRecall: {
+        before: '',
+        answer: 'Skąd',
+        after: ' jesteś?',
+        acceptedAnswers: polishAnswers('Skąd', 'skąd', 'Skad', 'skad'),
+        fallbackChoices: ['Skąd', 'Gdzie', 'Jak', 'Kiedy'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Woher kommst du?' },
+        targetPhrase: 'Skąd jesteś?',
+        requiredTokens: ['skąd', 'jesteś'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Lockeres Gespräch, freundliche Herkunftsfrage.' },
+      trophyWord: {
+        word: 'skąd',
+        meaning: { de: 'woher (Richtungs-Interrogativ)' },
+        example: 'Skąd jesteś?',
+        whyThisWord: { de: 'Skąd ist das A1-Interrogativ für Herkunfts-Richtung (woher). Invariant. Antwort: z + Genitiv (z Polski — aus Polen, z Niemiec — aus Deutschland). Pendant für Ort: gdzie (wo), für Ziel: dokąd (wohin). Vorsicht: skąd unterscheidet sich klar von gdzie — gdzie jesteś? fragt nach dem aktuellen Standort, skąd jesteś? nach der Herkunft.' },
+      },
+      placeholderCaption: { de: 'Lockeres Gespräch im Café, ruhige Herkunftsfrage.' },
+      songMood: 'origin question',
+      visualNotes: 'Casual seated chat, world map subtle in background, skąd as direction interrogative.',
+    }),
+  },
+  {
+    slug: 'are-you-local',
+    title: { de: 'Bist du von hier?' },
+    situation: {
+      en: 'In casual conversation, check whether the other person is local.',
+      de: 'Im lockeren Gespräch prüfst du, ob die andere Person von hier ist.',
+    },
+    pedagogicalGoal: 'Mit Czy jesteś stąd? die A1-Wohnort-Frage formulieren und stąd / skąd unterscheiden.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Czy jesteś stąd?',
+        baseText: { de: 'Bist du von hier?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach lokalem Wohnsitz im T-Register.' },
+      chunks: [
+        { id: 'czy', targetText: 'Czy', baseText: { de: 'Ist es so, dass' } },
+        { id: 'jestes-stad', targetText: 'jesteś stąd?', baseText: { de: 'du von hier bist?' } },
+      ],
+      lessonItems: [
+        { id: 'stad', targetText: 'stąd', baseText: { de: 'von hier' }, acceptedAnswers: polishAnswers('stąd', 'Stąd', 'stad', 'Stad') },
+        { id: 'jestes', targetText: 'jesteś', baseText: { de: 'du bist' }, acceptedAnswers: polishAnswers('jesteś', 'Jesteś', 'jestes', 'Jestes') },
+        { id: 'stamtad', targetText: 'stamtąd', baseText: { de: 'von dort' }, acceptedAnswers: polishAnswers('stamtąd', 'Stamtąd', 'stamtad', 'Stamtad') },
+        { id: 'mieszkasz', targetText: 'mieszkasz', baseText: { de: 'du wohnst' }, acceptedAnswers: polishAnswers('mieszkasz', 'Mieszkasz') },
+      ],
+      buildChips: ['Czy', 'jesteś', 'stąd?', 'stamtąd?', 'tutaj'],
+      typeRecall: {
+        before: 'Czy jesteś ',
+        answer: 'stąd',
+        after: '?',
+        acceptedAnswers: polishAnswers('stąd', 'Stąd', 'stad', 'Stad'),
+        fallbackChoices: ['stąd', 'stamtąd', 'tutaj', 'tam'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Bist du von hier?' },
+        targetPhrase: 'Czy jesteś stąd?',
+        requiredTokens: ['czy', 'jesteś', 'stąd'],
+        optionalTokens: ['mieszkasz'],
+      },
+      sceneCaption: { de: 'Lockerer Treffpunkt, ruhige Frage nach lokalem Wohnsitz.' },
+      trophyWord: {
+        word: 'stąd',
+        meaning: { de: 'von hier' },
+        example: 'Czy jesteś stąd?',
+        whyThisWord: { de: 'Stąd ist das pronominale Adverb der Herkunft am Sprechort — "von hier" (statisch ortsbezogen). Pendant: stamtąd (von dort). Unterscheide stąd (Herkunfts-Richtung von diesem Ort) von tu / tutaj (statischer Ort hier). Achtung: skąd ist das Interrogativ (woher), stąd ist die Antwort (von hier) — gleiche Wurzel, unterschiedliche Funktion.' },
+      },
+      placeholderCaption: { de: 'Lockeres Gespräch, freundliche Wohnort-Frage.' },
+      songMood: 'local check',
+      visualNotes: 'Casual chat, soft local landmark in background, stąd paired with stamtąd.',
+    }),
+  },
+  {
+    slug: 'do-you-have-time',
+    title: { de: 'Hast du Zeit?' },
+    situation: {
+      en: 'In casual conversation, ask whether the other person has time.',
+      de: 'Im lockeren Gespräch fragst du, ob die andere Person Zeit hat.',
+    },
+    pedagogicalGoal: 'Mit Masz czas? eine A1-Frage nach Verfügbarkeit im T-Register kurz und direkt stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Masz teraz czas?',
+        baseText: { de: 'Hast du jetzt Zeit?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach Verfügbarkeit am gleichen Tag.' },
+      chunks: [
+        { id: 'masz', targetText: 'Masz', baseText: { de: 'Hast du' } },
+        { id: 'teraz', targetText: 'teraz', baseText: { de: 'jetzt' } },
+        { id: 'czas', targetText: 'czas?', baseText: { de: 'Zeit?' } },
+      ],
+      lessonItems: [
+        { id: 'masz', targetText: 'masz', baseText: { de: 'du hast (informell)' }, acceptedAnswers: polishAnswers('masz', 'Masz') },
+        { id: 'czas', targetText: 'czas', baseText: { de: 'Zeit (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('czas', 'Czas') },
+        { id: 'chwilke', targetText: 'chwilkę', baseText: { de: 'einen kleinen Moment (Akk. Dim.)' }, acceptedAnswers: polishAnswers('chwilkę', 'Chwilkę', 'chwilke', 'Chwilke') },
+        { id: 'wieczorem', targetText: 'wieczorem', baseText: { de: 'abends (Instrumental)' }, acceptedAnswers: polishAnswers('wieczorem', 'Wieczorem') },
+      ],
+      buildChips: ['Masz', 'teraz', 'czas?', 'chwilkę?', 'wieczorem?'],
+      typeRecall: {
+        before: 'Masz teraz ',
+        answer: 'czas',
+        after: '?',
+        acceptedAnswers: polishAnswers('czas', 'Czas'),
+        fallbackChoices: ['czas', 'chwilkę', 'pomysł', 'pytanie'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Hast du jetzt Zeit?' },
+        targetPhrase: 'Masz teraz czas?',
+        requiredTokens: ['masz', 'teraz', 'czas'],
+        optionalTokens: ['wieczorem', 'chwilkę'],
+      },
+      sceneCaption: { de: 'Lockerer Treffpunkt, kurze freundliche Verfügbarkeitsfrage.' },
+      trophyWord: {
+        word: 'czas',
+        meaning: { de: 'Zeit' },
+        example: 'Masz teraz czas?',
+        whyThisWord: { de: 'Czas ist maskulin unbelebt. Akkusativ gleich Nominativ. Plural: czasy (selten im Alltag, meist abstrakte Bedeutung "Zeiten / Epoche"). In der Frage Masz czas? steht es als direktes Objekt von mieć (haben). Andere A1-Zeitausdrücke: wieczorem (abends, Instrumental als adverbiale Form), w weekend (am Wochenende), dzisiaj (heute).' },
+      },
+      placeholderCaption: { de: 'Lockere Pause im Gespräch, ruhige Frage nach Verfügbarkeit.' },
+      songMood: 'casual availability',
+      visualNotes: 'Two people talking, watch glance, czas highlighted as direct object.',
+    }),
+  },
+  {
+    slug: 'lets-meet',
+    title: { de: 'Treffen wir uns im Café?' },
+    situation: {
+      en: 'Suggest meeting at a specific place.',
+      de: 'Du schlägst vor, sich an einem bestimmten Ort zu treffen.',
+    },
+    pedagogicalGoal: 'Mit Spotkajmy się w kawiarni eine A1-Treffvereinbarung mit Lokativ-Ortsangabe formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Spotkajmy się w kawiarni.',
+        baseText: { de: 'Treffen wir uns im Café.' },
+      },
+      meaning: { de: 'Ein A1-Vorschlag, sich an einem konkreten Ort zu treffen.' },
+      chunks: [
+        { id: 'spotkajmy-sie', targetText: 'Spotkajmy się', baseText: { de: 'Treffen wir uns' } },
+        { id: 'w-kawiarni', targetText: 'w kawiarni.', baseText: { de: 'im Café.' } },
+      ],
+      lessonItems: [
+        { id: 'spotkac', targetText: 'spotkać', baseText: { de: 'treffen (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('spotkać', 'Spotkać', 'spotkac', 'Spotkac') },
+        { id: 'spotkajmy-sie', targetText: 'spotkajmy się', baseText: { de: 'treffen wir uns (Imperativ 1. Person Pl.)' }, acceptedAnswers: polishAnswers('spotkajmy się', 'Spotkajmy się', 'spotkajmy sie', 'Spotkajmy sie') },
+        { id: 'kawiarnia', targetText: 'kawiarnia', baseText: { de: 'Café (Grundform)' }, acceptedAnswers: polishAnswers('kawiarnia', 'Kawiarnia') },
+        { id: 'kawiarni', targetText: 'kawiarni', baseText: { de: 'Café (Lokativ Sg.)' }, acceptedAnswers: polishAnswers('kawiarni', 'Kawiarni') },
+      ],
+      buildChips: ['Spotkajmy się', 'w kawiarni.', 'w parku.', 'na rynku.'],
+      typeRecall: {
+        before: 'Spotkajmy się w ',
+        answer: 'kawiarni',
+        after: '.',
+        acceptedAnswers: polishAnswers('kawiarni', 'Kawiarni'),
+        fallbackChoices: ['kawiarni', 'parku', 'mieście', 'sklepie'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Treffen wir uns im Café.' },
+        targetPhrase: 'Spotkajmy się w kawiarni.',
+        requiredTokens: ['spotkajmy', 'się', 'w', 'kawiarni'],
+        optionalTokens: ['parku', 'rynku'],
+      },
+      sceneCaption: { de: 'Lockerer Plan am Ende eines Gesprächs, freundlicher Treffvorschlag.' },
+      trophyWord: {
+        word: 'spotkać',
+        meaning: { de: 'treffen (perfektiv, Infinitiv)' },
+        example: 'Spotkajmy się w kawiarni.',
+        whyThisWord: { de: 'Spotkać ist die perfektive Form des Verbs spotykać/spotkać (treffen). Mit dem Reflexiv-Partikel się: spotkać się (sich treffen). Die 1. Person Plural Imperativ ist spotkajmy się — "treffen wir uns". Die Präposition w (in) mit Lokativ markiert den Treffort: w kawiarni (im Café, Lok. von kawiarnia), w parku (im Park, Lok. von park), na rynku (auf dem Marktplatz, Lok. von rynek). Schnellere Alternative: Zobaczymy się w kawiarni.' },
+      },
+      placeholderCaption: { de: 'Treffpunkt am Ende eines Gesprächs, freundliche Verabredung.' },
+      songMood: 'meet-up suggestion',
+      visualNotes: 'Two people parting with plan, café in background, spotkać paired with Loc.',
+    }),
+  },
+  {
+    slug: 'maybe-tomorrow',
+    title: { de: 'Vielleicht morgen?' },
+    situation: {
+      en: 'When you cannot commit now, politely propose tomorrow as an alternative.',
+      de: 'Wenn du dich jetzt nicht festlegen kannst, schlägst du höflich morgen als Alternative vor.',
+    },
+    pedagogicalGoal: 'Mit Może jutro? eine A1-höfliche Verschiebung auf den nächsten Tag formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Może jutro?',
+        baseText: { de: 'Vielleicht morgen?' },
+      },
+      meaning: { de: 'Eine sanfte A1-Verschiebung des Plans auf den nächsten Tag.' },
+      chunks: [
+        { id: 'moze', targetText: 'Może', baseText: { de: 'Vielleicht' } },
+        { id: 'jutro', targetText: 'jutro?', baseText: { de: 'morgen?' } },
+      ],
+      lessonItems: [
+        { id: 'moze', targetText: 'może', baseText: { de: 'vielleicht / es kann sein' }, acceptedAnswers: polishAnswers('może', 'Może', 'moze', 'Moze') },
+        { id: 'pojutrze', targetText: 'pojutrze', baseText: { de: 'übermorgen' }, acceptedAnswers: polishAnswers('pojutrze', 'Pojutrze') },
+        { id: 'innym-razem', targetText: 'innym razem', baseText: { de: 'ein anderes Mal' }, acceptedAnswers: polishAnswers('innym razem', 'Innym razem') },
+        { id: 'wkrotce', targetText: 'wkrótce', baseText: { de: 'bald' }, acceptedAnswers: polishAnswers('wkrótce', 'Wkrótce', 'wkrotce', 'Wkrotce') },
+      ],
+      buildChips: ['Może', 'jutro?', 'pojutrze?', 'innym razem?'],
+      typeRecall: {
+        before: '',
+        answer: 'Może',
+        after: ' jutro?',
+        acceptedAnswers: polishAnswers('Może', 'może', 'Moze', 'moze'),
+        fallbackChoices: ['Może', 'Pojutrze', 'Teraz', 'Wkrótce'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Vielleicht morgen?' },
+        targetPhrase: 'Może jutro?',
+        requiredTokens: ['może', 'jutro'],
+        optionalTokens: ['pojutrze', 'wkrótce'],
+      },
+      sceneCaption: { de: 'Gesprächspause, sanfter Vorschlag zum Aufschieben.' },
+      trophyWord: {
+        word: 'może',
+        meaning: { de: 'vielleicht / es kann sein' },
+        example: 'Może jutro?',
+        whyThisWord: { de: 'Może hat zwei Funktionen im A1-Polnischen: (1) als modale Partikel "vielleicht / möglicherweise" (Może jutro?), und (2) als 3. Person Sg. Präsens von móc (er/sie/es kann — Może pan pomóc? Können Sie helfen?). Der Kontext entscheidet. Als Verschiebungs-Marker ist może eine sehr A1-natürliche, höflich-vorsichtige Form.' },
+      },
+      placeholderCaption: { de: 'Sanfte Geste beim Aufschieben, freundlicher Vorschlag.' },
+      songMood: 'soft postponement',
+      visualNotes: 'Open hand gesture, calendar subtle hint, może highlighted as soft modal.',
+    }),
+  },
+  {
+    slug: 'see-you-tomorrow',
+    title: { de: 'Bis morgen, tschüss!' },
+    situation: {
+      en: 'Close a casual interaction with an informal goodbye.',
+      de: 'Du schließt eine lockere Begegnung mit einem informellen Abschied.',
+    },
+    pedagogicalGoal: 'Mit Cześć, do jutra eine A1-informelle Abschiedsphrase formulieren und den Dual-Use von cześć einführen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Cześć, do jutra!',
+        baseText: { de: 'Tschüss, bis morgen!' },
+      },
+      meaning: { de: 'Eine A1-informelle Verabschiedung mit Verweis auf das nächste Treffen.' },
+      chunks: [
+        { id: 'czesc', targetText: 'Cześć,', baseText: { de: 'Tschüss,' } },
+        { id: 'do-jutra', targetText: 'do jutra!', baseText: { de: 'bis morgen!' } },
+      ],
+      lessonItems: [
+        { id: 'czesc', targetText: 'cześć', baseText: { de: 'hallo / tschüss (informell)' }, acceptedAnswers: polishAnswers('cześć', 'Cześć', 'czesc', 'Czesc') },
+        { id: 'na-razie', targetText: 'na razie', baseText: { de: 'bis später (informell)' }, acceptedAnswers: polishAnswers('na razie', 'Na razie') },
+        { id: 'do-zobaczenia', targetText: 'do zobaczenia', baseText: { de: 'auf Wiedersehen (lockerer als do widzenia)' }, acceptedAnswers: polishAnswers('do zobaczenia', 'Do zobaczenia') },
+        { id: 'pa', targetText: 'pa', baseText: { de: 'tschüss (sehr informell)' }, acceptedAnswers: polishAnswers('pa', 'Pa') },
+      ],
+      buildChips: ['Cześć,', 'do jutra!', 'na razie!', 'do zobaczenia!'],
+      typeRecall: {
+        before: '',
+        answer: 'Cześć',
+        after: ', do jutra!',
+        acceptedAnswers: polishAnswers('Cześć', 'cześć', 'Czesc', 'czesc'),
+        fallbackChoices: ['Cześć', 'Dzień dobry', 'Do widzenia', 'Dobranoc'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Tschüss, bis morgen!' },
+        targetPhrase: 'Cześć, do jutra!',
+        requiredTokens: ['cześć', 'do', 'jutra'],
+        optionalTokens: ['razie', 'zobaczenia'],
+      },
+      sceneCaption: { de: 'Ende einer lockeren Begegnung, freundlicher Abschied.' },
+      trophyWord: {
+        word: 'cześć',
+        meaning: { de: 'hallo / tschüss (informell, Dual-Use)' },
+        example: 'Cześć, do jutra!',
+        whyThisWord: { de: 'Cześć hat im A1-Polnischen einen einzigartigen Dual-Use: es ist sowohl Begrüßung (hi) als auch Verabschiedung (tschüss) im T-Register. Verwende es mit Personen, die du duzst — Freunde, junge Leute, Kollegen auf Augenhöhe. Im Service oder mit Fremden bleibt dzień dobry (formal) und do widzenia (formal) der Standard. Verwandte informelle Abschiede: na razie (bis später), do zobaczenia (bis bald), pa (sehr informell, oft am Telefon).' },
+      },
+      placeholderCaption: { de: 'Warmer Abschied, kurze Geste, helles Tageslicht.' },
+      songMood: 'casual goodbye',
+      visualNotes: 'Friendly wave at parting, cześć as informal dual-use marker.',
+    }),
+  },
+]
+
+const polishA1Practical5Lessons = makePolishPracticalLessons(
+  GUIDED_TODAY_PATH_POLISH_FIVE_METADATA,
+  polishA1Practical5Inputs,
+  'Du hast Polnisch A1 Praxis 5 abgeschlossen.',
+)
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -62092,6 +62615,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...polishA1Practical2Lessons,
   ...polishA1Practical3Lessons,
   ...polishA1Practical4Lessons,
+  ...polishA1Practical5Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -62188,6 +62712,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_POLISH_TWO_METADATA,
     GUIDED_TODAY_PATH_POLISH_THREE_METADATA,
     GUIDED_TODAY_PATH_POLISH_FOUR_METADATA,
+    GUIDED_TODAY_PATH_POLISH_FIVE_METADATA,
   ]
 }
 
