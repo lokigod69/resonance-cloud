@@ -109,7 +109,6 @@ export function TodaySession({
     <section className="today-session-shell" data-session-step={step} data-step-state={stepVisualState}>
       <header className="today-session-header">
         <div className="today-session-titleRow">
-          <TodayLessonStepIcon step={step} />
           <div className="min-w-0 flex-1">
             <p className="today-session-kicker">
               {t('today.lessonLabel', { sequence: lesson.lessonNumber })}

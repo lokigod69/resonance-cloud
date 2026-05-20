@@ -1,4 +1,4 @@
-import { CheckCircle2, ChevronDown, ChevronRight, Play, Settings } from 'lucide-react'
+import { ChevronDown, ChevronRight, Play, Settings } from 'lucide-react'
 import { Fragment, type ReactNode, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -88,7 +88,7 @@ export function TodayPathOverview({
   const { profile } = useAuth()
   const preferredBaseLanguage = profile?.base_language
   const [directoryOpen, setDirectoryOpen] = useState(false)
-  const pathLesson = overview.recommendedLesson ?? overview.selectedLesson ?? overview.lessons[0]?.lesson
+  const pathLesson = overview.selectedLesson ?? overview.recommendedLesson ?? overview.lessons[0]?.lesson
   const isSelectedRecommendation = Boolean(
     pathLesson
       && overview.recommendedLesson
@@ -211,7 +211,6 @@ export function TodayPathOverview({
                     selectedVibeId={selectedVibeId}
                     showRailLabel
                     onSelectLesson={onSelectLesson}
-                    onStartLesson={onStartLesson}
                   />
                   {index < segment.lessons.length - 1 && (
                     <span className="today-path-mobileConnectorSegment" aria-hidden="true" />
@@ -254,7 +253,6 @@ export function TodayPathOverview({
                       completedVibeIds={entry.completedVibeIds}
                       selectedVibeId={selectedVibeId}
                       onSelectLesson={onSelectLesson}
-                      onStartLesson={onStartLesson}
                     />
                     {index < segment.lessons.length - 1 && (
                       <span className="today-path-desktopConnectorSegment" aria-hidden="true" />
@@ -318,7 +316,6 @@ function SegmentReviewTile({
       href={href}
       segment={segment}
       kind="review"
-      label={label}
       accessibleLabel={accessibleLabel}
       completedCount={completedCount}
       isComplete={isReviewComplete}
@@ -354,7 +351,6 @@ function SegmentTrophyTile({
       href={`/today/checkpoint?mode=trophy-cloze&path=${pathId}&segment=${segment}&vibe=${vibeId}`}
       segment={segment}
       kind="trophy"
-      label={t('today.trophy.tileTitle')}
       accessibleLabel={accessibleLabel}
       isComplete={isComplete}
       className="today-segment-trophyTile"
@@ -373,7 +369,6 @@ function TodaySegmentNode({
   href,
   segment,
   kind,
-  label,
   accessibleLabel,
   completedCount = 0,
   isComplete,
@@ -383,7 +378,6 @@ function TodaySegmentNode({
   href: string
   segment: GuidedSegmentReviewNumber
   kind: 'review' | 'trophy'
-  label: string
   accessibleLabel: string
   completedCount?: number
   isComplete: boolean
@@ -412,25 +406,25 @@ function TodaySegmentNode({
     )
   }
 
-  return (
-    <Link
-      to={href}
-      aria-label={accessibleLabel}
-      title={accessibleLabel}
-      className={cn('today-path-nodeButton today-path-segmentNode border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]', className)}
-      data-node-kind="trophy"
-      data-trophy-segment={segment}
-      data-trophy-completed={isComplete}
-    >
-      <span className="today-path-nodeMedia today-segment-trophyMedia" aria-hidden="true">
-        {children}
-      </span>
-      <span className="today-path-nodeCopy">
-        <span className="today-path-nodeTitle">{label}</span>
-      </span>
-      {isComplete && <CheckCircle2 className="today-segment-trophyComplete h-4 w-4 shrink-0 text-[#34d399]" aria-hidden="true" />}
-    </Link>
-  )
+  if (kind === 'trophy') {
+    return (
+      <Link
+        to={href}
+        aria-label={accessibleLabel}
+        title={accessibleLabel}
+        className={cn('today-path-nodeButton today-path-segmentNode border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]', className)}
+        data-node-kind="trophy"
+        data-trophy-segment={segment}
+        data-trophy-completed={isComplete}
+      >
+        <span className="today-path-nodeMedia today-segment-trophyMedia" aria-hidden="true">
+          {children}
+        </span>
+      </Link>
+    )
+  }
+
+  return null
 }
 
 function RecommendedLessonPanel({
@@ -449,6 +443,7 @@ function RecommendedLessonPanel({
     preferredBaseLanguage,
     authoredBaseLanguage: lesson.baseLanguage,
   }).text
+  const actionLabel = isSelectedRecommendation ? t('today.nextLesson') : t('today.startLesson')
 
   return (
     <section className="today-featuredLesson today-recommended-panel theme-panel rounded-lg border border-[color-mix(in_srgb,var(--accent)_42%,var(--border-subtle))] p-4 sm:p-5">
@@ -472,7 +467,7 @@ function RecommendedLessonPanel({
           </h2>
         </div>
         <Button size="lg" className="today-featuredLessonAction" onClick={() => onStartLesson(lesson.id)}>
-          {t('today.nextLesson')}
+          {actionLabel}
           <Play className="h-4 w-4" />
         </Button>
       </div>
@@ -491,7 +486,6 @@ function LessonPathCard({
   selectedVibeId,
   showRailLabel = false,
   onSelectLesson,
-  onStartLesson,
 }: {
   lesson: GuidedLesson
   preferredBaseLanguage?: string | null
@@ -503,7 +497,6 @@ function LessonPathCard({
   selectedVibeId: ActiveGuidedVibeId
   showRailLabel?: boolean
   onSelectLesson: (lessonId: string) => void
-  onStartLesson: (lessonId?: string) => void
 }) {
   const { t } = useTranslation()
   const completedSelectedVibe = completedVibeIds.includes(selectedVibeId)
@@ -514,7 +507,6 @@ function LessonPathCard({
 
   const handleLessonTap = () => {
     onSelectLesson(lesson.id)
-    onStartLesson(lesson.id)
   }
 
   return (
@@ -550,7 +542,6 @@ function LessonPathCard({
       </span>
       {showRailLabel && (
         <span className="today-path-railCopy" aria-hidden="true">
-          <span className="today-path-railIndex">{lesson.lessonNumber}</span>
           <span className="today-path-railTitle">{title}</span>
         </span>
       )}
