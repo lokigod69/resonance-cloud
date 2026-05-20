@@ -46382,7 +46382,7 @@ const polishA1Practical2Inputs: PolishP1LessonInput[] = [
         { id: 'mapie', targetText: 'mapie', baseText: { de: 'Karte (Lokativ Sg.)' }, acceptedAnswers: polishAnswers('mapie', 'Mapie') },
         { id: 'tu', targetText: 'tu', baseText: { de: 'hier' }, acceptedAnswers: polishAnswers('tu', 'Tu') },
       ],
-      buildChips: ['Proszę pokazać', 'na mapie.', 'tutaj', 'w telefonie'],
+      buildChips: ['Proszę pokazać', 'na mapie.', 'na ekranie', 'w telefonie'],
       typeRecall: {
         before: 'Proszę pokazać na ',
         answer: 'mapie',
@@ -46797,7 +46797,7 @@ const polishA1Practical3Inputs: PolishP1LessonInput[] = [
         { id: 'prosto', targetText: 'prosto', baseText: { de: 'geradeaus' }, acceptedAnswers: polishAnswers('prosto', 'Prosto') },
         { id: 'czy', targetText: 'czy', baseText: { de: 'oder (in Fragen)' }, acceptedAnswers: polishAnswers('czy', 'Czy') },
       ],
-      buildChips: ['Przepraszam,', 'w lewo', 'czy w prawo?', 'prosto', 'tutaj'],
+      buildChips: ['Przepraszam,', 'w lewo', 'czy w prawo?', 'prosto', 'do tyłu'],
       typeRecall: {
         before: 'Przepraszam, w ',
         answer: 'lewo',
@@ -47308,7 +47308,7 @@ const polishA1Practical4Inputs: PolishP1LessonInput[] = [
         { id: 'dwoch', targetText: 'dwóch', baseText: { de: 'zwei (Genitiv)' }, acceptedAnswers: polishAnswers('dwóch', 'Dwóch', 'dwoch', 'Dwoch') },
         { id: 'osob', targetText: 'osób', baseText: { de: 'Personen (Genitiv Pl.)' }, acceptedAnswers: polishAnswers('osób', 'Osób', 'osob', 'Osob') },
       ],
-      buildChips: ['Poproszę stolik', 'dla dwóch osób.', 'dla jednej osoby.', 'tutaj', 'tam'],
+      buildChips: ['Poproszę stolik', 'dla dwóch osób.', 'dla jednej osoby.', 'przy oknie', 'tam'],
       typeRecall: {
         before: 'Poproszę ',
         answer: 'stolik',
@@ -47616,7 +47616,7 @@ const polishA1Practical4Inputs: PolishP1LessonInput[] = [
         answer: 'wynos',
         after: '.',
         acceptedAnswers: polishAnswers('wynos', 'Wynos'),
-        fallbackChoices: ['wynos', 'miejscu', 'później', 'teraz'],
+        fallbackChoices: ['wynos', 'miejscu', 'później', 'w środku'],
       },
       speakTarget: {
         baseCue: { de: 'Zum Mitnehmen, bitte.' },
@@ -47826,7 +47826,7 @@ const polishA1Practical5Inputs: PolishP1LessonInput[] = [
         answer: 'spóźniony',
         after: '.',
         acceptedAnswers: polishAnswers('spóźniony', 'Spóźniony', 'spozniony', 'Spozniony'),
-        fallbackChoices: ['spóźniony', 'spóźniona', 'gotowy', 'tutaj'],
+        fallbackChoices: ['spóźniony', 'spóźniona', 'gotowy', 'prawie'],
       },
       speakTarget: {
         baseCue: { de: 'Entschuldigung, ich bin zu spät.' },
@@ -47977,7 +47977,7 @@ const polishA1Practical5Inputs: PolishP1LessonInput[] = [
         answer: 'Miło',
         after: ' mi.',
         acceptedAnswers: polishAnswers('Miło', 'miło', 'Milo', 'milo'),
-        fallbackChoices: ['Miło', 'Bardzo', 'Trochę', 'Dobrze'],
+        fallbackChoices: ['Miło', 'Bardzo', 'Trochę', 'Witaj'],
       },
       speakTarget: {
         baseCue: { de: 'Freut mich.' },
@@ -48071,7 +48071,7 @@ const polishA1Practical5Inputs: PolishP1LessonInput[] = [
         { id: 'stamtad', targetText: 'stamtąd', baseText: { de: 'von dort' }, acceptedAnswers: polishAnswers('stamtąd', 'Stamtąd', 'stamtad', 'Stamtad') },
         { id: 'mieszkasz', targetText: 'mieszkasz', baseText: { de: 'du wohnst' }, acceptedAnswers: polishAnswers('mieszkasz', 'Mieszkasz') },
       ],
-      buildChips: ['Czy', 'jesteś', 'stąd?', 'stamtąd?', 'tutaj'],
+      buildChips: ['Czy', 'jesteś', 'stąd?', 'stamtąd?', 'z Polski'],
       typeRecall: {
         before: 'Czy jesteś ',
         answer: 'stąd',
@@ -49872,7 +49872,7 @@ const polishA1Practical9Inputs: PolishP1LessonInput[] = [
         { id: 'co-slychac', targetText: 'co słychać', baseText: { de: 'was gibt es Neues' }, acceptedAnswers: polishAnswers('co słychać', 'Co słychać', 'co slychac', 'Co slychac') },
         { id: 'dobrze', targetText: 'dobrze', baseText: { de: 'gut (Antwort)' }, acceptedAnswers: polishAnswers('dobrze', 'Dobrze') },
       ],
-      buildChips: ['Hej,', 'jak się masz?', 'co słychać?', 'dobrze'],
+      buildChips: ['Hej,', 'jak się masz?', 'co słychać?', 'super'],
       typeRecall: {
         before: '',
         answer: 'Hej',
@@ -50439,7 +50439,7 @@ const polishA1Practical10Inputs: PolishP1LessonInput[] = [
         answer: 'przyjemnie',
         after: ', dziękuję.',
         acceptedAnswers: polishAnswers('przyjemnie', 'Przyjemnie'),
-        fallbackChoices: ['przyjemnie', 'fajnie', 'miło', 'dobrze'],
+        fallbackChoices: ['przyjemnie', 'fajnie', 'miło', 'super'],
       },
       speakTarget: {
         baseCue: { de: 'Es war hier sehr angenehm, danke.' },
