@@ -28,6 +28,7 @@ import {
   BarChart3,
   Mic,
   Beaker,
+  Images,
 } from 'lucide-react'
 import { useDialogs } from '@/contexts/DialogContext'
 import { useTranslation } from '@/hooks/useTranslation'
@@ -41,6 +42,7 @@ const adminNav = [
   { to: '/admin/metrics', label: 'Metrics', icon: BarChart3 },
   { to: '/admin/observability/aggregate', label: 'Observability', icon: BarChart3 },
   { to: '/admin/layer2-lab', label: 'Layer 2 Lab', icon: Beaker },
+  { to: '/admin/curriculum', label: 'Curriculum Images', icon: Images },
 ]
 
 export function AppHeader() {

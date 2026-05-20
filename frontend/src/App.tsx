@@ -49,6 +49,7 @@ import Profiles from '@/pages/admin/Profiles'
 import Voices from '@/pages/admin/Voices'
 import Quotas from '@/pages/admin/Quotas'
 import Layer2Lab from '@/pages/admin/Layer2Lab'
+import CurriculumImageSets from '@/pages/admin/CurriculumImageSets'
 import ObservabilityAggregate from '@/pages/admin/ObservabilityAggregate'
 import ObservabilityWordDetail from '@/pages/admin/ObservabilityWordDetail'
 import Music from '@/pages/Music'
@@ -229,6 +230,7 @@ function AppRoutes() {
             <Route path="/admin/voices" element={<Voices />} />
             <Route path="/admin/quotas" element={<Quotas />} />
             <Route path="/admin/layer2-lab" element={<Layer2Lab />} />
+            <Route path="/admin/curriculum" element={<CurriculumImageSets />} />
           </Route>
         </Route>
 

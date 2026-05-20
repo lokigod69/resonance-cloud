@@ -15,6 +15,7 @@ import {
   DollarSign,
   ShieldCheck,
   Beaker,
+  Images,
 } from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
@@ -38,6 +39,7 @@ const adminNav = [
   { to: '/admin/quotas', label: 'Quotas', icon: ShieldCheck },
   { to: '/admin/costs', label: 'Costs', icon: DollarSign },
   { to: '/admin/layer2-lab', label: 'Layer 2 Lab', icon: Beaker },
+  { to: '/admin/curriculum', label: 'Curriculum Images', icon: Images },
 ]
 
 function NavContent({ onNavigate }: { onNavigate?: () => void }) {

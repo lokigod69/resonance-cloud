@@ -21,6 +21,7 @@ import {
   getImportedCurriculumDeck,
   importCurriculumLevel,
 } from '@/lib/curriculumDeckBridge'
+import { useActiveCurriculumImageSet } from '@/lib/curriculumImageSetConfig'
 import styles from './Categories.module.css'
 
 export default function LevelDetailPage() {
@@ -36,6 +37,10 @@ export default function LevelDetailPage() {
   const category = getCurriculumCategoryBySlug(categorySlug)
   const level = getCurriculumLevel(categorySlug, levelNumber)
   const baseLanguageIso = profileBaseLanguageToIso(profile?.base_language)
+  const { activeSetKey } = useActiveCurriculumImageSet(
+    category?.data.target_language ?? 'en',
+    category?.slug ?? null,
+  )
   const enrichment = getCurriculumEnrichmentBySlug(categorySlug)
   const enrichmentByTerm = useMemo(() => {
     const result = new Map<string, CurriculumEnrichmentEntry>()
@@ -205,6 +210,7 @@ export default function LevelDetailPage() {
                 fallbackEmoji={category.icon}
                 alt=""
                 className={styles.entryImage}
+                activeImageSet={activeSetKey}
               />
               <div className={styles.entryTopline}>
                 <h2 className={styles.term}>{entry.term}</h2>
@@ -221,6 +227,7 @@ export default function LevelDetailPage() {
         categorySlug={category.slug}
         languageIso={category.data.target_language}
         baseLanguageIso={baseLanguageIso}
+        activeImageSet={activeSetKey}
         onClose={() => setSelectedEntry(null)}
       />
     </section>
