@@ -1257,6 +1257,14 @@ const GUIDED_TODAY_PATH_POLISH_TEN_METADATA: GuidedPathMetadata = {
 }
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
+const A1P1_CAFE_VIDEO_URLS = {
+  firstContact: 'https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/object/public/videos/guided-today/a1p1/cafe/v1/s01_first_contact.mp4',
+  politeFollowup: 'https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/object/public/videos/guided-today/a1p1/cafe/v1/s02_polite_followup.mp4',
+  coffeeOrder: 'https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/object/public/videos/guided-today/a1p1/cafe/v1/s03_coffee_order.mp4',
+  priceQuestion: 'https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/object/public/videos/guided-today/a1p1/cafe/v1/s04_price_question.mp4',
+  cafeExit: 'https://rkiucrrusrwgcviodysp.supabase.co/storage/v1/object/public/videos/guided-today/a1p1/cafe/v1/s05_cafe_exit.mp4',
+} as const
+
 const LESSON_001_SPEAK_CORE = {
   displayAnswer: 'Do you speak English?',
   acceptedAnswers: [
@@ -1306,7 +1314,7 @@ const brightLesson001: GuidedLessonVibeVariant = {
     passingThreshold: 0.8,
     ...LESSON_001_SPEAK_CORE,
   },
-  sceneCaption: { de: "Morgenlicht im Café, ein offener Blick, und die erste Frage klingt wie ein freundlicher Start." },
+  sceneCaption: { de: "Im Café beginnt die Begegnung mit einer einfachen Frage." },
   trophyWord: {
     word: "delighted",
     meaning: { de: "erfreut" },
@@ -1315,7 +1323,8 @@ const brightLesson001: GuidedLessonVibeVariant = {
   },
   placeholderMedia: {
     type: "video",
-    caption: { de: "Goldenes Cafélicht, offenes Fenster, kurzer Gruß vor der Frage." },
+    url: A1P1_CAFE_VIDEO_URLS.firstContact,
+    caption: { de: "Im Café beginnt die Begegnung mit einer einfachen Frage." },
   },
   songSeed: {
     genre: "sunny indie pop",
@@ -1323,6 +1332,8 @@ const brightLesson001: GuidedLessonVibeVariant = {
   },
   visualNotes: "Warm whites, honey light, soft coral accent on Hi there.",
 }
+
+
 
 const brightLesson002: GuidedLessonVibeVariant = {
   contentStatus: "draft",
@@ -1358,7 +1369,7 @@ const brightLesson002: GuidedLessonVibeVariant = {
     language: "en-US",
     passingThreshold: 0.8,
   },
-  sceneCaption: { de: "Die Nachfrage bleibt hell: kurz bitten, klar bleiben, weiter zuhören." },
+  sceneCaption: { de: "Der andere spricht zu schnell, und die Nachfrage bleibt ruhig und freundlich." },
   trophyWord: {
     word: "marvelous",
     meaning: { de: "großartig" },
@@ -1367,7 +1378,8 @@ const brightLesson002: GuidedLessonVibeVariant = {
   },
   placeholderMedia: {
     type: "video",
-    caption: { de: "Helles Café, Barista wiederholt geduldig, die Bitte bleibt kurz und freundlich." },
+    url: A1P1_CAFE_VIDEO_URLS.politeFollowup,
+    caption: { de: "Der andere spricht zu schnell, und die Nachfrage bleibt ruhig und freundlich." },
   },
   songSeed: {
     genre: "upbeat acoustic",
@@ -1376,58 +1388,59 @@ const brightLesson002: GuidedLessonVibeVariant = {
   visualNotes: "Warm yellow replay pulse, generous spacing around again, clear friendly pause.",
 }
 
+
+
 const brightLesson003: GuidedLessonVibeVariant = {
   contentStatus: "draft",
   corePhrase: {
-    targetText: "Hi, could you help me? Where is the station?",
-    baseText: { de: "Hallo, könnten Sie mir helfen? Wo ist der Bahnhof?" },
+    targetText: "Where is the train station?",
+    baseText: { de: "Wo ist der Bahnhof?" },
   },
-  meaning: { de: "Eine offene Wegfrage, die Hilfe freundlich einlädt." },
+  meaning: { de: "Eine kurze Wegfrage nach dem Bahnhof." },
   chunks: [
-    { id: "hi", targetText: "Hi", baseText: { de: "hallo" } },
-    { id: "could-you-help-me", targetText: "could you help me", baseText: { de: "könnten Sie mir helfen" } },
-    { id: "where-is-the-station", targetText: "where is the station", baseText: { de: "wo ist der Bahnhof" } },
+    { id: "where-is", targetText: "Where is", baseText: { de: "wo ist" } },
+    { id: "the-train-station", targetText: "the train station", baseText: { de: "der Bahnhof" } },
   ],
   lessonItems: [
-    { id: "hi", targetText: "hi", baseText: { de: "hallo" }, acceptedAnswers: ["hi"] },
-    { id: "help-me", targetText: "help me", baseText: { de: "mir helfen" }, acceptedAnswers: ["help me"] },
     { id: "where", targetText: "where", baseText: { de: "wo" }, acceptedAnswers: ["where"] },
+    { id: "train", targetText: "train", baseText: { de: "Zug" }, acceptedAnswers: ["train"] },
     { id: "station", targetText: "station", baseText: { de: "Bahnhof" }, acceptedAnswers: ["station"] },
+    { id: "direction", targetText: "direction", baseText: { de: "Richtung" }, acceptedAnswers: ["direction"] },
     { id: "glad", targetText: "glad", baseText: { de: "froh" }, acceptedAnswers: ["glad"] },
   ],
   build: {
-    targetText: "Hi, could you help me? Where is the station?",
-    chips: ["Hi,", "could you help me?", "Where is", "the station?", "glad"],
+    targetText: "Where is the train station?",
+    chips: ["Where is", "the train", "station?", "direction", "glad"],
   },
   typeRecall: {
-    before: "Hi, could you help me? Where is the ",
+    before: "Where is the train ",
     answer: "station",
     after: "?",
     acceptedAnswers: ["station", "Station"],
-    fallbackChoices: ["station", "café", "glad", "wonderful"],
+    fallbackChoices: ["station", "caf?", "glad", "wonderful"],
   },
   speakTarget: {
-    baseCue: { de: "Hallo, könnten Sie mir helfen? Wo ist der Bahnhof?" },
-    targetPhrase: "Hi, could you help me? Where is the station?",
+    baseCue: { de: "Wo ist der Bahnhof?" },
+    targetPhrase: "Where is the train station?",
     language: "en-US",
     passingThreshold: 0.8,
   },
-  sceneCaption: { de: "Auf der Straße geht Bright zuerst auf den Menschen zu, dann auf das Ziel." },
+  sceneCaption: { de: "Auf der Straße fragt Bright direkt nach dem Bahnhof." },
   trophyWord: {
-    word: "glad",
-    meaning: { de: "froh" },
-    example: "I'm glad you can help.",
-    whyThisWord: { de: "Glad zeigt Brights soziale Offenheit: Hilfe wird willkommen geheißen, nicht nur benutzt." },
+    word: "station",
+    meaning: { de: "Bahnhof" },
+    example: "Where is the train station?",
+    whyThisWord: { de: "Station ist der klare Ortsanker für die Wegfrage." },
   },
   placeholderMedia: {
     type: "video",
-    caption: { de: "Sonnige Straßenecke, offener Stand, ein sichtbares Bahnhofsschild in der Ferne." },
+    caption: { de: "Sonnige Straßenecke, sichtbarer Weg zum Bahnhof, eine klare Richtungsfrage." },
   },
   songSeed: {
     genre: "sunny indie pop",
     mood: "open and moving",
   },
-  visualNotes: "Golden directional line, warm map cue, smile before the station question.",
+  visualNotes: "Golden directional line, warm map cue, clear train-station destination.",
 }
 
 const brightLesson004: GuidedLessonVibeVariant = {
@@ -1466,7 +1479,7 @@ const brightLesson004: GuidedLessonVibeVariant = {
     language: "en-US",
     passingThreshold: 0.8,
   },
-  sceneCaption: { de: "Am Tresen klingt die Bestellung nach Vorfreude, nicht nach Pflicht." },
+  sceneCaption: { de: "Am Tresen bestellt der Reisende höflich einen Kaffee." },
   trophyWord: {
     word: "eager",
     meaning: { de: "eifrig" },
@@ -1475,7 +1488,8 @@ const brightLesson004: GuidedLessonVibeVariant = {
   },
   placeholderMedia: {
     type: "video",
-    caption: { de: "Frischer Kaffee, warmes Morgenlicht, Bestellung mit sichtbarer Vorfreude." },
+    url: A1P1_CAFE_VIDEO_URLS.coffeeOrder,
+    caption: { de: "Am Tresen bestellt der Reisende höflich einen Kaffee." },
   },
   songSeed: {
     genre: "upbeat acoustic",
@@ -1483,6 +1497,8 @@ const brightLesson004: GuidedLessonVibeVariant = {
   },
   visualNotes: "Coffee object cue, peach highlight, gentle blooming confirmation.",
 }
+
+
 
 const brightLesson005: GuidedLessonVibeVariant = {
   contentStatus: "draft",
@@ -1518,7 +1534,7 @@ const brightLesson005: GuidedLessonVibeVariant = {
     language: "en-US",
     passingThreshold: 0.8,
   },
-  sceneCaption: { de: "Im Laden fragt Bright hell und direkt nach dem Preis." },
+  sceneCaption: { de: "Der Kaffee steht bereit, und der Reisende fragt nach dem Preis." },
   trophyWord: {
     word: "splendid",
     meaning: { de: "großartig" },
@@ -1527,7 +1543,8 @@ const brightLesson005: GuidedLessonVibeVariant = {
   },
   placeholderMedia: {
     type: "video",
-    caption: { de: "Sonniger Laden, klares Preisschild, kurze Frage vor der Entscheidung." },
+    url: A1P1_CAFE_VIDEO_URLS.priceQuestion,
+    caption: { de: "Der Kaffee steht bereit, und der Reisende fragt nach dem Preis." },
   },
   songSeed: {
     genre: "sunny indie pop",
@@ -1536,41 +1553,44 @@ const brightLesson005: GuidedLessonVibeVariant = {
   visualNotes: "Warm price tag highlight, bright question beat, soft coral focus on this.",
 }
 
+
+
 const brightLesson006: GuidedLessonVibeVariant = {
   contentStatus: "draft",
   corePhrase: {
-    targetText: "Hi, what time is the train?",
-    baseText: { de: "Hallo, wann fährt der Zug?" },
+    targetText: "What time is the train, please?",
+    baseText: { de: "Wann fährt der Zug bitte?" },
   },
   meaning: { de: "Eine helle, kurze Frage nach der Abfahrtszeit." },
   chunks: [
-    { id: "hi", targetText: "Hi", baseText: { de: "hallo" } },
-    { id: "what-time-is-the-train", targetText: "what time is the train", baseText: { de: "wann fährt der Zug" } },
+    { id: "what-time", targetText: "What time", baseText: { de: "wann" } },
+    { id: "is-the-train", targetText: "is the train", baseText: { de: "fährt der Zug" } },
+    { id: "please", targetText: "please", baseText: { de: "bitte" } },
   ],
   lessonItems: [
-    { id: "hi", targetText: "hi", baseText: { de: "hallo" }, acceptedAnswers: ["hi"] },
+    { id: "what-time", targetText: "what time", baseText: { de: "wann / um wie viel Uhr" }, acceptedAnswers: ["what time"] },
     { id: "train", targetText: "train", baseText: { de: "Zug" }, acceptedAnswers: ["train"] },
-    { id: "time", targetText: "time", baseText: { de: "Uhrzeit" }, acceptedAnswers: ["time"] },
+    { id: "please", targetText: "please", baseText: { de: "bitte" }, acceptedAnswers: ["please"] },
     { id: "ready", targetText: "ready", baseText: { de: "bereit" }, acceptedAnswers: ["ready"] },
   ],
   build: {
-    targetText: "Hi, what time is the train?",
-    chips: ["Hi,", "what time is", "the train?", "ready"],
+    targetText: "What time is the train, please?",
+    chips: ["What time is", "the train,", "please?", "ready"],
   },
   typeRecall: {
-    before: "Hi, what time is the ",
+    before: "What time is the ",
     answer: "train",
-    after: "?",
+    after: ", please?",
     acceptedAnswers: ["train", "Train"],
     fallbackChoices: ["train", "station", "ready", "wonderful"],
   },
   speakTarget: {
-    baseCue: { de: "Hallo, wann fährt der Zug?" },
-    targetPhrase: "Hi, what time is the train?",
+    baseCue: { de: "Wann fährt der Zug bitte?" },
+    targetPhrase: "What time is the train, please?",
     language: "en-US",
     passingThreshold: 0.8,
   },
-  sceneCaption: { de: "Am Bahnhof hält Bright die Energie oben: schnell fragen, bereit weitergehen." },
+  sceneCaption: { de: "Am Bahnhof fragt Bright freundlich nach der Zugzeit." },
   trophyWord: {
     word: "platform",
     meaning: { de: "Bahnsteig" },
@@ -1698,45 +1718,45 @@ const brightLesson008: GuidedLessonVibeVariant = {
 const brightLesson009: GuidedLessonVibeVariant = {
   contentStatus: "draft",
   corePhrase: {
-    targetText: "Tomorrow at seven? Great!",
-    baseText: { de: "Morgen um sieben? Großartig!" },
+    targetText: "Tomorrow at seven? Wonderful!",
+    baseText: { de: "Morgen um sieben? Wunderbar!" },
   },
   meaning: { de: "Eine warme Zusage für einen Plan am nächsten Tag." },
   chunks: [
     { id: "tomorrow", targetText: "Tomorrow", baseText: { de: "morgen" } },
     { id: "at-seven", targetText: "at seven", baseText: { de: "um sieben" } },
-    { id: "great", targetText: "Great", baseText: { de: "großartig" } },
+    { id: "wonderful", targetText: "Wonderful", baseText: { de: "wunderbar" } },
   ],
   lessonItems: [
     { id: "tomorrow", targetText: "tomorrow", baseText: { de: "morgen" }, acceptedAnswers: ["tomorrow"] },
     { id: "seven", targetText: "seven", baseText: { de: "sieben" }, acceptedAnswers: ["seven", "7"] },
-    { id: "great", targetText: "great", baseText: { de: "großartig" }, acceptedAnswers: ["great"] },
+    { id: "wonderful", targetText: "wonderful", baseText: { de: "wunderbar" }, acceptedAnswers: ["wonderful"] },
     { id: "brilliant", targetText: "brilliant", baseText: { de: "brillant" }, acceptedAnswers: ["brilliant"] },
     { id: "ready", targetText: "ready", baseText: { de: "bereit" }, acceptedAnswers: ["ready"] },
   ],
   build: {
-    targetText: "Tomorrow at seven? Great!",
-    chips: ["Tomorrow", "at seven?", "Great!", "ready", "glad"],
+    targetText: "Tomorrow at seven? Wonderful!",
+    chips: ["Tomorrow", "at seven?", "Wonderful!", "ready", "glad"],
   },
   typeRecall: {
     before: "Tomorrow at seven? ",
-    answer: "Great",
+    answer: "Wonderful",
     after: "!",
-    acceptedAnswers: ["Great", "great"],
-    fallbackChoices: ["Great", "Ready", "Glad", "Now"],
+    acceptedAnswers: ["Wonderful", "wonderful"],
+    fallbackChoices: ["Wonderful", "Ready", "Glad", "Now"],
   },
   speakTarget: {
-    baseCue: { de: "Morgen um sieben? Großartig!" },
-    targetPhrase: "Tomorrow at seven? Great!",
+    baseCue: { de: "Morgen um sieben? Wunderbar!" },
+    targetPhrase: "Tomorrow at seven? Wonderful!",
     language: "en-US",
     passingThreshold: 0.8,
   },
   sceneCaption: { de: "Beim Planen nimmt Bright die Uhrzeit und macht daraus Vorfreude." },
   trophyWord: {
-    word: "great",
-    meaning: { de: "großartig" },
-    example: "Tomorrow at seven? Great!",
-    whyThisWord: { de: "Great ist Brights kurze, natürliche Zusage für einen einfachen Plan." },
+    word: "wonderful",
+    meaning: { de: "wunderbar" },
+    example: "Tomorrow at seven? Wonderful!",
+    whyThisWord: { de: "Wonderful ist Brights warme Zusage für einen einfachen Plan." },
   },
   placeholderMedia: {
     type: "video",
@@ -1746,7 +1766,7 @@ const brightLesson009: GuidedLessonVibeVariant = {
     genre: "sunny indie pop",
     mood: "forward and delighted",
   },
-  visualNotes: "Golden calendar highlight, light bloom on Great, buoyant confirmation state.",
+  visualNotes: "Golden calendar highlight, light bloom on Wonderful, buoyant confirmation state.",
 }
 
 const brightLesson010: GuidedLessonVibeVariant = {
@@ -1785,7 +1805,7 @@ const brightLesson010: GuidedLessonVibeVariant = {
     language: "en-US",
     passingThreshold: 0.8,
   },
-  sceneCaption: { de: "Der Abschied hat Lift: verstanden, froh, dankbar, weiter in den Tag." },
+  sceneCaption: { de: "Der Moment endet freundlich: bezahlt, bedankt und verabschiedet." },
   trophyWord: {
     word: "wonderful",
     meaning: { de: "wunderbar" },
@@ -1794,7 +1814,8 @@ const brightLesson010: GuidedLessonVibeVariant = {
   },
   placeholderMedia: {
     type: "video",
-    caption: { de: "Goldenes Licht an Tür oder Tresen, ein dankbarer Abschied mit sichtbarer Wärme." },
+    url: A1P1_CAFE_VIDEO_URLS.cafeExit,
+    caption: { de: "Der Moment endet freundlich: bezahlt, bedankt und verabschiedet." },
   },
   songSeed: {
     genre: "soft folk-pop",
@@ -1802,6 +1823,8 @@ const brightLesson010: GuidedLessonVibeVariant = {
   },
   visualNotes: "Warm completion bloom, honey-and-coral palette, buoyant goodbye gesture.",
 }
+
+
 
 const wistfulLesson001: GuidedLessonVibeVariant = {
   contentStatus: "draft",
@@ -50896,7 +50919,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     status: 'active',
     nextLessonTeaser: {
       title: { de: "Polite follow-up" },
-      situation: { de: "Im Café bittest du jemanden, etwas noch einmal oder langsamer zu sagen." },
+      situation: { de: "Im Café bittest du jemanden, etwas noch einmal zu sagen." },
     },
     vibeVariants: {
       bright: brightLesson001,
@@ -50920,18 +50943,18 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     },
     title: { de: "Polite follow-up" },
     situation: {
-      en: "In a cafe, ask someone to repeat or slow down.",
-      de: "Im Café bittest du jemanden, etwas noch einmal oder langsamer zu sagen.",
+      en: "In a cafe, ask someone to say that again.",
+      de: "Im Café bittest du jemanden, das noch einmal zu sagen.",
     },
-    pedagogicalGoal: "Recover politely when speech is too fast by asking for repetition or slower delivery.",
+    pedagogicalGoal: "Recover politely when speech is too fast by asking for repetition.",
     modeSet: 'guided-today-v0',
     steps: GUIDED_TODAY_STEPS,
     estimatedMinutes: 5,
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: "Where is...?" },
-      situation: { de: "Auf der Straße fragst du nach dem Bahnhof oder einer Richtung." },
+      title: { de: "Coffee order" },
+      situation: { de: "Am Tresen bestellst du höflich einen Kaffee." },
     },
     vibeVariants: {
       bright: brightLesson002,
@@ -50944,29 +50967,29 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
     level: GUIDED_TODAY_PATH_ONE_METADATA.level,
-    lessonNumber: 3,
+    lessonNumber: 7,
     baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
     targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
     pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-003-where-is",
-      sequence: 3,
-      title: { de: "Where is...?" },
+      sequence: 7,
+      title: { de: "Train station" },
     },
-    title: { de: "Where is...?" },
+    title: { de: "Train station" },
     situation: {
-      en: "On the street, ask for the station or a direction.",
-      de: "Auf der Straße fragst du nach dem Bahnhof oder einer Richtung.",
+      en: "On the street, ask where the train station is.",
+      de: "Auf der Straße fragst du nach dem Bahnhof.",
     },
-    pedagogicalGoal: "Ask a simple where-question for directions and recognize core direction words.",
+    pedagogicalGoal: "Ask a simple where-question for the train station.",
     modeSet: 'guided-today-v0',
     steps: GUIDED_TODAY_STEPS,
     estimatedMinutes: 5,
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: "I'd like..." },
-      situation: { de: "Im Café oder Restaurant bestellst du ein einfaches Getränk." },
+      title: { de: "Train time" },
+      situation: { de: "Am Bahnhof fragst du nach der Zugzeit." },
     },
     vibeVariants: {
       bright: brightLesson003,
@@ -50979,29 +51002,29 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
     level: GUIDED_TODAY_PATH_ONE_METADATA.level,
-    lessonNumber: 4,
+    lessonNumber: 3,
     baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
     targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
     pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-004-id-like",
-      sequence: 4,
-      title: { de: "I'd like..." },
+      sequence: 3,
+      title: { de: "Coffee order" },
     },
-    title: { de: "I'd like..." },
+    title: { de: "Coffee order" },
     situation: {
-      en: "In a cafe or restaurant, order a simple drink.",
-      de: "Im Café oder Restaurant bestellst du ein einfaches Getränk.",
+      en: "At a cafe counter, order a coffee politely.",
+      de: "Am Tresen bestellst du höflich einen Kaffee.",
     },
-    pedagogicalGoal: "Make a short A1 order with a clear item and basic courtesy.",
+    pedagogicalGoal: "Make a short A1 coffee order with a clear item and basic courtesy.",
     modeSet: 'guided-today-v0',
     steps: GUIDED_TODAY_STEPS,
     estimatedMinutes: 5,
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: "How much?" },
-      situation: { de: "Im Laden fragst du nach einem Preis." },
+      title: { de: "Price question" },
+      situation: { de: "Der Kaffee steht bereit, und du fragst nach dem Preis." },
     },
     vibeVariants: {
       bright: brightLesson004,
@@ -51014,19 +51037,19 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
     level: GUIDED_TODAY_PATH_ONE_METADATA.level,
-    lessonNumber: 5,
+    lessonNumber: 4,
     baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
     targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
     pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-005-how-much",
-      sequence: 5,
-      title: { de: "How much?" },
+      sequence: 4,
+      title: { de: "Price question" },
     },
-    title: { de: "How much?" },
+    title: { de: "Price question" },
     situation: {
-      en: "In a shop, ask about a price.",
-      de: "Im Laden fragst du nach einem Preis.",
+      en: "At the cafe counter, ask about the price.",
+      de: "Am Café-Tresen fragst du nach dem Preis.",
     },
     pedagogicalGoal: "Ask a simple price question and connect it to the item in front of you.",
     modeSet: 'guided-today-v0',
@@ -51035,8 +51058,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: "The train" },
-      situation: { de: "Am Bahnhof fragst du nach Uhrzeit oder Bahnsteig." },
+      title: { de: "Café exit" },
+      situation: { de: "Du bedankst dich und verabschiedest dich freundlich." },
     },
     vibeVariants: {
       bright: brightLesson005,
@@ -51049,29 +51072,29 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
     level: GUIDED_TODAY_PATH_ONE_METADATA.level,
-    lessonNumber: 6,
+    lessonNumber: 8,
     baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
     targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
     pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-006-the-train",
-      sequence: 6,
-      title: { de: "The train" },
+      sequence: 8,
+      title: { de: "Train time" },
     },
-    title: { de: "The train" },
+    title: { de: "Train time" },
     situation: {
-      en: "At a station, ask about train time or platform.",
-      de: "Am Bahnhof fragst du nach Uhrzeit oder Bahnsteig.",
+      en: "At a station, ask what time the train is.",
+      de: "Am Bahnhof fragst du nach der Zugzeit.",
     },
-    pedagogicalGoal: "Ask for essential train information with short time and platform language.",
+    pedagogicalGoal: "Ask for essential train time information with short A1 language.",
     modeSet: 'guided-today-v0',
     steps: GUIDED_TODAY_STEPS,
     estimatedMinutes: 5,
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: "I need..." },
-      situation: { de: "In der Apotheke oder am Infoschalter bittest du um Hilfe." },
+      title: { de: "Small talk" },
+      situation: { de: "Im Small Talk sagst du etwas Einfaches über den Ort." },
     },
     vibeVariants: {
       bright: brightLesson006,
@@ -51084,29 +51107,29 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
     level: GUIDED_TODAY_PATH_ONE_METADATA.level,
-    lessonNumber: 7,
+    lessonNumber: 6,
     baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
     targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
     pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-007-i-need",
-      sequence: 7,
-      title: { de: "I need..." },
+      sequence: 6,
+      title: { de: "Ask for help" },
     },
-    title: { de: "I need..." },
+    title: { de: "Ask for help" },
     situation: {
-      en: "At a pharmacy or help desk, ask for help.",
-      de: "In der Apotheke oder am Infoschalter bittest du um Hilfe.",
+      en: "At a help desk, ask for help politely.",
+      de: "Am Infoschalter bittest du höflich um Hilfe.",
     },
-    pedagogicalGoal: "State a basic need for help in a practical service situation.",
+    pedagogicalGoal: "Open a simple help request with one practical A1 sentence.",
     modeSet: 'guided-today-v0',
     steps: GUIDED_TODAY_STEPS,
     estimatedMinutes: 5,
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: "I like..." },
-      situation: { de: "Im Small Talk sagst du etwas Einfaches über einen Ort." },
+      title: { de: "Train station" },
+      situation: { de: "Auf der Straße fragst du nach dem Bahnhof." },
     },
     vibeVariants: {
       bright: brightLesson007,
@@ -51119,16 +51142,16 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
     level: GUIDED_TODAY_PATH_ONE_METADATA.level,
-    lessonNumber: 8,
+    lessonNumber: 9,
     baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
     targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
     pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-008-i-like",
-      sequence: 8,
-      title: { de: "I like..." },
+      sequence: 9,
+      title: { de: "Small talk" },
     },
-    title: { de: "I like..." },
+    title: { de: "Small talk" },
     situation: {
       en: "In small talk, say something simple about a place.",
       de: "Im Small Talk sagst du etwas Einfaches über einen Ort.",
@@ -51154,13 +51177,13 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
     level: GUIDED_TODAY_PATH_ONE_METADATA.level,
-    lessonNumber: 9,
+    lessonNumber: 10,
     baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
     targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
     pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-009-tomorrow-at-seven",
-      sequence: 9,
+      sequence: 10,
       title: { de: "Tomorrow at seven" },
     },
     title: { de: "Tomorrow at seven" },
@@ -51168,15 +51191,15 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
       en: "When making plans, confirm tomorrow at seven.",
       de: "Beim Planen bestätigst du morgen um sieben.",
     },
-    pedagogicalGoal: "Confirm a simple future plan with day and time language.",
+    pedagogicalGoal: "Confirm a simple future plan with day, time, and a warm reaction.",
     modeSet: 'guided-today-v0',
     steps: GUIDED_TODAY_STEPS,
     estimatedMinutes: 5,
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: "Thank you, goodbye" },
-      situation: { de: "Du schließt die Szene mit Dank und Abschied ab." },
+      title: { de: "Guided Today Path Overview V1" },
+      situation: { de: "Wiederhole die zehn praktischen A1-Szenen und wähle die nächste Lektion." },
     },
     vibeVariants: {
       bright: brightLesson009,
@@ -51189,29 +51212,29 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     pathId: GUIDED_TODAY_PATH_ONE_METADATA.id,
     courseTitle: GUIDED_TODAY_PATH_ONE_METADATA.title,
     level: GUIDED_TODAY_PATH_ONE_METADATA.level,
-    lessonNumber: 10,
+    lessonNumber: 5,
     baseLanguage: GUIDED_TODAY_PATH_ONE_METADATA.baseLanguage,
     targetLanguage: GUIDED_TODAY_PATH_ONE_METADATA.targetLanguage,
     pathMetadata: GUIDED_TODAY_PATH_ONE_METADATA,
     lessonMetadata: {
       id: "english-a1-practical-010-thank-you-goodbye",
-      sequence: 10,
-      title: { de: "Thank you, goodbye" },
+      sequence: 5,
+      title: { de: "Café exit" },
     },
-    title: { de: "Thank you, goodbye" },
+    title: { de: "Café exit" },
     situation: {
-      en: "Close the scene by thanking someone and saying goodbye.",
-      de: "Du schließt die Szene mit Dank und Abschied ab.",
+      en: "Close the cafe interaction with thanks and goodbye.",
+      de: "Du schließt die Café-Szene mit Dank und Abschied ab.",
     },
-    pedagogicalGoal: "End a practical interaction with a short thank-you and goodbye phrase.",
+    pedagogicalGoal: "End a practical interaction with a warm thank-you and goodbye phrase.",
     modeSet: 'guided-today-v0',
     steps: GUIDED_TODAY_STEPS,
     estimatedMinutes: 5,
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: "Guided Today Path Overview V1" },
-      situation: { de: "Wiederhole die zehn praktischen A1-Szenen und wähle die nächste Lektion." },
+      title: { de: "Ask for help" },
+      situation: { de: "Am Infoschalter bittest du um einfache Hilfe." },
     },
     vibeVariants: {
       bright: brightLesson010,

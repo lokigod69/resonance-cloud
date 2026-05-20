@@ -297,7 +297,6 @@ const sessionTaskHeaderSource = sliceBetween(todaySessionSource, '<div className
 const sessionTaskCardCss = sliceBetween(todayCssSource, '.today-session-taskCard {', '}')
 const speakRecordingButtonSource = sliceBetween(guidedSpeechPromptSource, "className={cn('today-speech-primaryAction'", '</button>')
 const speechSecondaryActionsSource = sliceBetween(guidedSpeechPromptSource, '<div className="today-speech-secondaryActions', '</div>')
-const speechOrbStageCss = sliceBetween(todayCssSource, '.today-speech-orbStage {', '}')
 const speechMicAssetCss = sliceBetween(todayCssSource, '.today-speech-micAsset {', '}')
 
 assert('overview lesson cards do not render trophy word labels', !containsAny(todayPathOverviewSource, ['today.path.trophyWord', 'lesson.trophyWord', '<Trophy']))
@@ -487,7 +486,7 @@ const coherenceFlags = collectCoherenceFlags()
 for (const flag of coherenceFlags) {
   console.warn(`  review ${flag}`)
 }
-assert('Lesson 8 variants avoid known incoherent review items and chips', !coherenceFlags.some((flag) => flag.includes('lesson 8')), coherenceFlags)
+assert('Lesson 9 variants avoid known incoherent review items and chips', !coherenceFlags.some((flag) => flag.includes('lesson 9')), coherenceFlags)
 
 console.log(`\n${passes} passed, ${failures} failed`)
 if (failures > 0) process.exit(1)
@@ -541,8 +540,8 @@ function sliceBetween(source: string, start: string, end: string) {
 function collectCoherenceFlags() {
   const flags: string[] = []
   const weakGenericItems = new Set(['almost', 'focused', 'decided'])
-  const knownLesson8OddPhrases = ['right call', 'good or odd']
-  const lesson8AllowedItems = new Set(['i love', 'i like', 'it', 'here', 'nice', 'good', 'place', 'quiet'])
+  const knownLesson9OddPhrases = ['right call', 'good or odd']
+  const lesson9AllowedItems = new Set(['i love', 'i like', 'it', 'here', 'nice', 'good', 'place', 'quiet'])
 
   for (const lessonDefinition of lessons) {
     for (const vibeId of ACTIVE_GUIDED_VIBE_IDS) {
@@ -577,23 +576,23 @@ function collectCoherenceFlags() {
           flags.push(`lesson ${lessonDefinition.lessonNumber}/${vibeId}: weak generic lesson item "${item.targetText}"`)
         }
 
-        if (knownLesson8OddPhrases.some((phrase) => target.includes(phrase))) {
+        if (knownLesson9OddPhrases.some((phrase) => target.includes(phrase))) {
           flags.push(`lesson ${lessonDefinition.lessonNumber}/${vibeId}: suspicious lesson item "${item.targetText}"`)
         }
 
         const targetWords = target.split(/\s+/).filter((word) => word.length > 2)
-        const relatedToContext = lessonDefinition.lessonNumber === 8 && lesson8AllowedItems.has(target)
+        const relatedToContext = lessonDefinition.lessonNumber === 9 && lesson9AllowedItems.has(target)
           ? true
           : targetWords.some((word) => searchableContext.includes(word))
-        if (lessonDefinition.lessonNumber === 8 && !relatedToContext) {
-          flags.push(`lesson 8/${vibeId}: lesson item may be disconnected from I like/place context: "${item.targetText}"`)
+        if (lessonDefinition.lessonNumber === 9 && !relatedToContext) {
+          flags.push(`lesson 9/${vibeId}: lesson item may be disconnected from I like/place context: "${item.targetText}"`)
         }
       }
 
       for (const chip of variant.build.chips) {
         const normalizedChip = chip.toLowerCase().replace(/[.!?,]/g, '').trim()
-        if (lessonDefinition.lessonNumber === 8 && knownLesson8OddPhrases.some((phrase) => normalizedChip.includes(phrase))) {
-          flags.push(`lesson 8/${vibeId}: suspicious build chip "${chip}"`)
+        if (lessonDefinition.lessonNumber === 9 && knownLesson9OddPhrases.some((phrase) => normalizedChip.includes(phrase))) {
+          flags.push(`lesson 9/${vibeId}: suspicious build chip "${chip}"`)
         }
       }
     }
