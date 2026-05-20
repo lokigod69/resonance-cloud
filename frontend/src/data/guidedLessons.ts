@@ -1167,6 +1167,17 @@ const GUIDED_TODAY_PATH_POLISH_TWO_METADATA: GuidedPathMetadata = {
   targetLanguage: 'Polish',
   estimatedMinutes: 5,
 }
+
+const GUIDED_TODAY_PATH_POLISH_THREE_METADATA: GuidedPathMetadata = {
+  id: 'polish-a1-practical-3',
+  title: 'Polnisch A1 Praxis 3',
+  shortTitle: 'A1 Praxis 3',
+  subtitle: { de: 'Wegfragen, Verkehr und einfache Fahrtentscheidungen auf Polnisch' },
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Polish',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -46683,6 +46694,518 @@ const polishA1Practical2Lessons = makePolishPracticalLessons(
   'Du hast Polnisch A1 Praxis 2 abgeschlossen.',
 )
 
+const polishA1Practical3Inputs: PolishP1LessonInput[] = [
+  {
+    slug: 'right-or-left',
+    title: { de: 'Rechts oder links?' },
+    situation: {
+      en: 'On the sidewalk, ask whether to turn right or left.',
+      de: 'Auf dem Gehweg fragst du, ob du nach rechts oder links musst.',
+    },
+    pedagogicalGoal: 'Mit w lewo / w prawo (Akkusativ der Richtung) das A1-Richtungspaar einführen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, w lewo czy w prawo?',
+        baseText: { de: 'Entschuldigung, nach links oder nach rechts?' },
+      },
+      meaning: { de: 'Eine kurze A1-Richtungsfrage mit dem Polnischen Richtungspaar.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'w-lewo', targetText: 'w lewo', baseText: { de: 'nach links' } },
+        { id: 'czy-w-prawo', targetText: 'czy w prawo?', baseText: { de: 'oder nach rechts?' } },
+      ],
+      lessonItems: [
+        { id: 'lewo', targetText: 'lewo', baseText: { de: 'links' }, acceptedAnswers: polishAnswers('lewo', 'Lewo') },
+        { id: 'prawo', targetText: 'prawo', baseText: { de: 'rechts' }, acceptedAnswers: polishAnswers('prawo', 'Prawo') },
+        { id: 'prosto', targetText: 'prosto', baseText: { de: 'geradeaus' }, acceptedAnswers: polishAnswers('prosto', 'Prosto') },
+        { id: 'czy', targetText: 'czy', baseText: { de: 'oder (in Fragen)' }, acceptedAnswers: polishAnswers('czy', 'Czy') },
+      ],
+      buildChips: ['Przepraszam,', 'w lewo', 'czy w prawo?', 'prosto', 'tutaj'],
+      typeRecall: {
+        before: 'Przepraszam, w ',
+        answer: 'lewo',
+        after: ' czy w prawo?',
+        acceptedAnswers: polishAnswers('lewo', 'Lewo'),
+        fallbackChoices: ['lewo', 'prawo', 'prosto', 'tam'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, nach links oder nach rechts?' },
+        targetPhrase: 'Przepraszam, w lewo czy w prawo?',
+        requiredTokens: ['przepraszam', 'w', 'lewo', 'czy', 'prawo'],
+        optionalTokens: ['prosto'],
+      },
+      sceneCaption: { de: 'Kreuzung in der Sonne, kurze Richtungsfrage an einen Passanten.' },
+      trophyWord: {
+        word: 'lewo',
+        meaning: { de: 'links (Richtung)' },
+        example: 'Przepraszam, w lewo czy w prawo?',
+        whyThisWord: { de: 'Lewo ist ein Richtungs-Nomen im Neutrum (Akkusativ-Form), eingebettet in der festen Wendung w lewo (nach links). Gegenstück: w prawo (nach rechts). Weitere A1-Richtungen: prosto (geradeaus), w tył (nach hinten). Vorsicht: prawo bedeutet zusätzlich "Recht / Gesetz", aus dem Kontext klar.' },
+      },
+      placeholderCaption: { de: 'Sonnige Kreuzung, Richtungsfrage an einen Passanten.' },
+      songMood: 'simple direction check',
+      visualNotes: 'Crossroads in daylight, hand pointing left and right, lewo paired with prawo.',
+    }),
+  },
+  {
+    slug: 'is-it-far',
+    title: { de: 'Ist das weit?' },
+    situation: {
+      en: 'During navigation, ask whether the destination is far.',
+      de: 'Während der Wegfindung fragst du, ob das Ziel weit ist.',
+    },
+    pedagogicalGoal: 'Mit Czy to daleko? eine knappe A1-Distanzfrage formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Czy to daleko?',
+        baseText: { de: 'Ist das weit?' },
+      },
+      meaning: { de: 'Die kürzeste A1-Distanzfrage während der Wegfindung.' },
+      chunks: [
+        { id: 'czy-to', targetText: 'Czy to', baseText: { de: 'Ist das' } },
+        { id: 'daleko', targetText: 'daleko?', baseText: { de: 'weit?' } },
+      ],
+      lessonItems: [
+        { id: 'daleko', targetText: 'daleko', baseText: { de: 'weit (Adverb)' }, acceptedAnswers: polishAnswers('daleko', 'Daleko') },
+        { id: 'blisko', targetText: 'blisko', baseText: { de: 'nah (Adverb)' }, acceptedAnswers: polishAnswers('blisko', 'Blisko') },
+        { id: 'minut', targetText: 'minut', baseText: { de: 'Minuten (Genitiv Pl.)' }, acceptedAnswers: polishAnswers('minut', 'Minut') },
+        { id: 'godzina', targetText: 'godzina', baseText: { de: 'Stunde' }, acceptedAnswers: polishAnswers('godzina', 'Godzina') },
+      ],
+      buildChips: ['Czy to', 'daleko?', 'blisko?', 'piętnaście minut'],
+      typeRecall: {
+        before: 'Czy to ',
+        answer: 'daleko',
+        after: '?',
+        acceptedAnswers: polishAnswers('daleko', 'Daleko'),
+        fallbackChoices: ['daleko', 'blisko', 'tutaj', 'tam'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ist das weit?' },
+        targetPhrase: 'Czy to daleko?',
+        requiredTokens: ['czy', 'to', 'daleko'],
+        optionalTokens: ['blisko'],
+      },
+      sceneCaption: { de: 'Gehweg am Nachmittag, Wegüberlegung mit ruhiger Distanzfrage.' },
+      trophyWord: {
+        word: 'daleko',
+        meaning: { de: 'weit (Adverb)' },
+        example: 'Czy to daleko?',
+        whyThisWord: { de: 'Daleko ist ein invariantes A1-Adverb der Distanz. Gegenstück: blisko (nah). Beides bleibt unverändert, unabhängig von Geschlecht oder Zahl des Bezugswortes. Verwandte A1-Wendungen: jak daleko? (wie weit?), niedaleko (nicht weit), gdzieś daleko (irgendwo weit weg).' },
+      },
+      placeholderCaption: { de: 'Gehweg, Stadtbild, kurze Distanzfrage.' },
+      songMood: 'quick distance check',
+      visualNotes: 'Sidewalk perspective, distance line, daleko paired with blisko.',
+    }),
+  },
+  {
+    slug: 'is-it-open',
+    title: { de: 'Ist es jetzt offen?' },
+    situation: {
+      en: 'In front of a shop or café, ask whether it is currently open.',
+      de: 'Vor einem Laden oder Café fragst du, ob es jetzt geöffnet ist.',
+    },
+    pedagogicalGoal: 'Mit dem Prädikatsadjektiv otwarte (neutrum) eine A1-Öffnungsfrage stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Czy teraz jest otwarte?',
+        baseText: { de: 'Ist es jetzt geöffnet?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage vor dem Betreten eines Ladens.' },
+      chunks: [
+        { id: 'czy-teraz', targetText: 'Czy teraz', baseText: { de: 'Ist es jetzt' } },
+        { id: 'jest-otwarte', targetText: 'jest otwarte?', baseText: { de: 'geöffnet?' } },
+      ],
+      lessonItems: [
+        { id: 'otwarte', targetText: 'otwarte', baseText: { de: 'offen (neutrum)' }, acceptedAnswers: polishAnswers('otwarte', 'Otwarte') },
+        { id: 'zamkniete', targetText: 'zamknięte', baseText: { de: 'geschlossen (neutrum)' }, acceptedAnswers: polishAnswers('zamknięte', 'Zamknięte', 'zamkniete', 'Zamkniete') },
+        { id: 'czynne', targetText: 'czynne', baseText: { de: 'in Betrieb / geöffnet (neutrum)' }, acceptedAnswers: polishAnswers('czynne', 'Czynne') },
+        { id: 'teraz', targetText: 'teraz', baseText: { de: 'jetzt' }, acceptedAnswers: polishAnswers('teraz', 'Teraz') },
+      ],
+      buildChips: ['Czy teraz', 'jest otwarte?', 'zamknięte?', 'czynne?'],
+      typeRecall: {
+        before: 'Czy teraz jest ',
+        answer: 'otwarte',
+        after: '?',
+        acceptedAnswers: polishAnswers('otwarte', 'Otwarte'),
+        fallbackChoices: ['otwarte', 'zamknięte', 'czynne', 'dobrze'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ist es jetzt geöffnet?' },
+        targetPhrase: 'Czy teraz jest otwarte?',
+        requiredTokens: ['czy', 'teraz', 'jest', 'otwarte'],
+        optionalTokens: ['czynne'],
+      },
+      sceneCaption: { de: 'Vor einem kleinen Café, prüfender Blick aufs Schild, kurze Öffnungsfrage.' },
+      trophyWord: {
+        word: 'otwarte',
+        meaning: { de: 'offen / geöffnet (neutrum)' },
+        example: 'Czy teraz jest otwarte?',
+        whyThisWord: { de: 'Otwarte ist die Neutrum-Form des Adjektivs otwarty (offen). Da das implizite Subjekt der Frage allgemein "das Geschäft / es" ist, steht das Adjektiv im Neutrum. Maskulin: otwarty (sklep otwarty), feminin: otwarta (apteka otwarta). Pendant: zamknięte (geschlossen). Im Schaufenster steht oft czynne (in Betrieb) als äquivalente Anzeige.' },
+      },
+      placeholderCaption: { de: 'Schaufenster mit Öffnungszeiten, kurze Prüfung vor dem Eintreten.' },
+      songMood: 'opening hours check',
+      visualNotes: 'Shop window with sign, otwarte highlighted as neuter predicate.',
+    }),
+  },
+  {
+    slug: 'which-bus',
+    title: { de: 'Welcher Bus ins Zentrum?' },
+    situation: {
+      en: 'At a bus stop, ask which bus goes to the centre.',
+      de: 'An der Haltestelle fragst du, welcher Bus ins Zentrum fährt.',
+    },
+    pedagogicalGoal: 'Mit Który autobus jedzie do centrum? die A1-Routenfrage und do + Genitiv festigen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Który autobus jedzie do centrum?',
+        baseText: { de: 'Welcher Bus fährt ins Zentrum?' },
+      },
+      meaning: { de: 'Die A1-Routenfrage am Bussteig.' },
+      chunks: [
+        { id: 'ktory-autobus', targetText: 'Który autobus', baseText: { de: 'Welcher Bus' } },
+        { id: 'jedzie', targetText: 'jedzie', baseText: { de: 'fährt' } },
+        { id: 'do-centrum', targetText: 'do centrum?', baseText: { de: 'ins Zentrum?' } },
+      ],
+      lessonItems: [
+        { id: 'ktory', targetText: 'który', baseText: { de: 'welcher (maskulin)' }, acceptedAnswers: polishAnswers('który', 'Który', 'ktory', 'Ktory') },
+        { id: 'autobus', targetText: 'autobus', baseText: { de: 'Bus' }, acceptedAnswers: polishAnswers('autobus', 'Autobus') },
+        { id: 'jedzie', targetText: 'jedzie', baseText: { de: 'fährt (3. Person Sg., Fahrzeug)' }, acceptedAnswers: polishAnswers('jedzie', 'Jedzie') },
+        { id: 'centrum', targetText: 'centrum', baseText: { de: 'Zentrum (neutrum, unflektiert)' }, acceptedAnswers: polishAnswers('centrum', 'Centrum') },
+      ],
+      buildChips: ['Który autobus', 'jedzie', 'do centrum?', 'tramwaj', 'dworca'],
+      typeRecall: {
+        before: 'Który ',
+        answer: 'autobus',
+        after: ' jedzie do centrum?',
+        acceptedAnswers: polishAnswers('autobus', 'Autobus'),
+        fallbackChoices: ['autobus', 'tramwaj', 'pociąg', 'pociąg'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Welcher Bus fährt ins Zentrum?' },
+        targetPhrase: 'Który autobus jedzie do centrum?',
+        requiredTokens: ['który', 'autobus', 'jedzie', 'do', 'centrum'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Bussteig, Linienschild im Hintergrund, ruhige Routenfrage.' },
+      trophyWord: {
+        word: 'autobus',
+        meaning: { de: 'Bus' },
+        example: 'Który autobus jedzie do centrum?',
+        whyThisWord: { de: 'Autobus ist maskulin unbelebt; Plural autobusy. Im Satz steht es im Nominativ als Subjekt von jedzie (fährt — 3. Person Sg. imperfektiv von jechać). Die Präposition do regiert den Genitiv — bei centrum (Lehnwort, unflektierbar) bleibt die Form allerdings konstant. Andere A1-Verkehrsmittel: tramwaj (Straßenbahn), metro (U-Bahn, ebenfalls unflektierbar).' },
+      },
+      placeholderCaption: { de: 'Bussteig, Linienschild, ruhige Frage am Wartebereich.' },
+      songMood: 'transit routing',
+      visualNotes: 'Bus stop with route sign, autobus highlighted, do + centrum invariant.',
+    }),
+  },
+  {
+    slug: 'my-stop',
+    title: { de: 'Ist das meine Haltestelle?' },
+    situation: {
+      en: 'Aboard a bus or tram, confirm whether the upcoming stop is yours.',
+      de: 'Im Bus oder in der Tram bestätigst du, ob die nächste Haltestelle deine ist.',
+    },
+    pedagogicalGoal: 'Mit Czy to mój przystanek? eine A1-Vergewisserung im fahrenden Verkehrsmittel formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, czy to mój przystanek?',
+        baseText: { de: 'Entschuldigung, ist das meine Haltestelle?' },
+      },
+      meaning: { de: 'Eine ruhige A1-Vergewisserung kurz vor dem Aussteigen.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'czy-to', targetText: 'czy to', baseText: { de: 'ist das' } },
+        { id: 'moj-przystanek', targetText: 'mój przystanek?', baseText: { de: 'meine Haltestelle?' } },
+      ],
+      lessonItems: [
+        { id: 'moj', targetText: 'mój', baseText: { de: 'mein (maskulin)' }, acceptedAnswers: polishAnswers('mój', 'Mój', 'moj', 'Moj') },
+        { id: 'moja', targetText: 'moja', baseText: { de: 'meine (feminin)' }, acceptedAnswers: polishAnswers('moja', 'Moja') },
+        { id: 'przystanek', targetText: 'przystanek', baseText: { de: 'Haltestelle' }, acceptedAnswers: polishAnswers('przystanek', 'Przystanek') },
+        { id: 'nastepny', targetText: 'następny', baseText: { de: 'nächste(r) (maskulin)' }, acceptedAnswers: polishAnswers('następny', 'Następny', 'nastepny', 'Nastepny') },
+      ],
+      buildChips: ['Przepraszam,', 'czy to', 'mój przystanek?', 'następny', 'tutaj'],
+      typeRecall: {
+        before: 'Przepraszam, czy to mój ',
+        answer: 'przystanek',
+        after: '?',
+        acceptedAnswers: polishAnswers('przystanek', 'Przystanek'),
+        fallbackChoices: ['przystanek', 'pociąg', 'autobus', 'dworzec'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, ist das meine Haltestelle?' },
+        targetPhrase: 'Przepraszam, czy to mój przystanek?',
+        requiredTokens: ['przepraszam', 'czy', 'to', 'mój', 'przystanek'],
+        optionalTokens: ['następny'],
+      },
+      sceneCaption: { de: 'Im Bus an der Tür, kurzer prüfender Blick auf das Haltestellenschild.' },
+      trophyWord: {
+        word: 'przystanek',
+        meaning: { de: 'Haltestelle (Bus / Tram)' },
+        example: 'Czy to mój przystanek?',
+        whyThisWord: { de: 'Przystanek ist maskulin unbelebt; Plural przystanki. Im Satz Czy to mój przystanek? steht es im Nominativ als Prädikatsnomen nach to. Das Possessivpronomen mój (mein, maskulin) richtet sich nach dem Geschlecht von przystanek. Für eine feminine Haltestelle (z. B. stacja) wäre moja stacja korrekt.' },
+      },
+      placeholderCaption: { de: 'Im Bus, ruhige Vergewisserung kurz vor dem Aussteigen.' },
+      songMood: 'careful stop confirmation',
+      visualNotes: 'Inside bus, door area, przystanek highlighted with possessive agreement.',
+    }),
+  },
+  {
+    slug: 'buy-ticket',
+    title: { de: 'Eine Fahrkarte, bitte' },
+    situation: {
+      en: 'At a ticket counter or machine, buy a single ticket.',
+      de: 'Am Fahrkartenschalter oder -automaten kaufst du eine einzelne Fahrkarte.',
+    },
+    pedagogicalGoal: 'Mit Poproszę jeden bilet eine A1-Fahrkarte ohne Verbkonjugation kaufen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę jeden bilet.',
+        baseText: { de: 'Eine Fahrkarte, bitte.' },
+      },
+      meaning: { de: 'Die A1-Standardphrase für den Kauf einer einzelnen Fahrkarte.' },
+      chunks: [
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Ich hätte gern' } },
+        { id: 'jeden-bilet', targetText: 'jeden bilet.', baseText: { de: 'eine Fahrkarte.' } },
+      ],
+      lessonItems: [
+        { id: 'bilet', targetText: 'bilet', baseText: { de: 'Fahrkarte (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('bilet', 'Bilet') },
+        { id: 'jeden', targetText: 'jeden', baseText: { de: 'ein / eins (maskulin Akk. unbelebt)' }, acceptedAnswers: polishAnswers('jeden', 'Jeden') },
+        { id: 'dwa', targetText: 'dwa', baseText: { de: 'zwei (maskulin unbelebt)' }, acceptedAnswers: polishAnswers('dwa', 'Dwa') },
+        { id: 'normalny', targetText: 'normalny', baseText: { de: 'normal (Normaltarif)' }, acceptedAnswers: polishAnswers('normalny', 'Normalny') },
+      ],
+      buildChips: ['Poproszę', 'jeden bilet.', 'dwa bilety.', 'normalny', 'ulgowy'],
+      typeRecall: {
+        before: 'Poproszę jeden ',
+        answer: 'bilet',
+        after: '.',
+        acceptedAnswers: polishAnswers('bilet', 'Bilet'),
+        fallbackChoices: ['bilet', 'paragon', 'pokój', 'klucz'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Eine Fahrkarte, bitte.' },
+        targetPhrase: 'Poproszę jeden bilet.',
+        requiredTokens: ['poproszę', 'jeden', 'bilet'],
+        optionalTokens: ['normalny'],
+      },
+      sceneCaption: { de: 'Fahrkartenschalter, ruhige Bestellung einer einzelnen Karte.' },
+      trophyWord: {
+        word: 'bilet',
+        meaning: { de: 'Fahrkarte / Eintrittskarte' },
+        example: 'Poproszę jeden bilet.',
+        whyThisWord: { de: 'Bilet ist maskulin unbelebt; Akkusativ Singular gleich Nominativ (bilet). Plural Nominativ: bilety. Im Satz Poproszę jeden bilet steht bilet im Akkusativ als direktes Objekt; das Zahlwort jeden ist die maskulin-unbelebte Akkusativ-Form von "eins". Für zwei: Poproszę dwa bilety (Plural).' },
+      },
+      placeholderCaption: { de: 'Fahrkartenschalter, eine Karte auf dem Tresen.' },
+      songMood: 'simple ticket purchase',
+      visualNotes: 'Ticket window, single ticket, bilet paired with jeden in accusative.',
+    }),
+  },
+  {
+    slug: 'when-do-you-close',
+    title: { de: 'Wann schließen Sie?' },
+    situation: {
+      en: 'Outside a shop or restaurant, ask when they close.',
+      de: 'Vor einem Geschäft oder Restaurant fragst du, wann sie schließen.',
+    },
+    pedagogicalGoal: 'Mit Kiedy zamykacie? die A1-Fragestellung nach Schließzeiten mit 2. Person Plural einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Kiedy zamykacie?',
+        baseText: { de: 'Wann schließen Sie?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach Schließzeiten im Service-Polnisch.' },
+      chunks: [
+        { id: 'kiedy', targetText: 'Kiedy', baseText: { de: 'Wann' } },
+        { id: 'zamykacie', targetText: 'zamykacie?', baseText: { de: 'schließt ihr / schließen Sie?' } },
+      ],
+      lessonItems: [
+        { id: 'kiedy', targetText: 'kiedy', baseText: { de: 'wann' }, acceptedAnswers: polishAnswers('kiedy', 'Kiedy') },
+        { id: 'zamykacie', targetText: 'zamykacie', baseText: { de: 'schließt (2. Person Pl.)' }, acceptedAnswers: polishAnswers('zamykacie', 'Zamykacie') },
+        { id: 'otwieracie', targetText: 'otwieracie', baseText: { de: 'öffnet (2. Person Pl.)' }, acceptedAnswers: polishAnswers('otwieracie', 'Otwieracie') },
+        { id: 'godzinach', targetText: 'godzinach', baseText: { de: 'Uhr / Stunden (Lokativ Pl.)' }, acceptedAnswers: polishAnswers('godzinach', 'Godzinach') },
+      ],
+      buildChips: ['Kiedy', 'zamykacie?', 'otwieracie?', 'dzisiaj'],
+      typeRecall: {
+        before: '',
+        answer: 'Kiedy',
+        after: ' zamykacie?',
+        acceptedAnswers: polishAnswers('Kiedy', 'kiedy'),
+        fallbackChoices: ['Kiedy', 'Gdzie', 'Co', 'Jak'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Wann schließen Sie?' },
+        targetPhrase: 'Kiedy zamykacie?',
+        requiredTokens: ['kiedy', 'zamykacie'],
+        optionalTokens: ['otwieracie'],
+      },
+      sceneCaption: { de: 'Vor dem Schaufenster am Spätnachmittag, ruhige Frage nach den Schließzeiten.' },
+      trophyWord: {
+        word: 'kiedy',
+        meaning: { de: 'wann' },
+        example: 'Kiedy zamykacie?',
+        whyThisWord: { de: 'Kiedy ist das A1-Standardfragewort für Zeitpunkte (wann). Es bleibt invariant. Pendant für Uhrzeit ist o której (um wie viel Uhr — siehe P1). Die Form zamykacie ist 2. Person Plural von zamykać (imperfektiv: schließen — als Gewohnheit, z. B. Öffnungszeiten); im Service-Kontext fragst du das Personal kollektiv als "ihr / Sie". Pendant: otwieracie (öffnet ihr).' },
+      },
+      placeholderCaption: { de: 'Schaufenster bei Spätlicht, Frage nach den Schließzeiten.' },
+      songMood: 'opening hours check',
+      visualNotes: 'Shop sign with hours, kiedy as A1 interrogative anchor.',
+    }),
+  },
+  {
+    slug: 'at-the-corner',
+    title: { de: 'An der Ecke' },
+    situation: {
+      en: 'In a direction explanation, use the street corner as a landmark.',
+      de: 'In einer Wegerklärung verwendest du eine Straßenecke als Orientierungspunkt.',
+    },
+    pedagogicalGoal: 'Mit na rogu (Lokativ nach na) den Landmarkenbezug auf A1 üben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Proszę skręcić na rogu.',
+        baseText: { de: 'Bitte biegen Sie an der Ecke ab.' },
+      },
+      meaning: { de: 'Eine A1-Wegerklärung mit der Straßenecke als Orientierungspunkt.' },
+      chunks: [
+        { id: 'prosze-skrecic', targetText: 'Proszę skręcić', baseText: { de: 'Bitte abbiegen' } },
+        { id: 'na-rogu', targetText: 'na rogu.', baseText: { de: 'an der Ecke.' } },
+      ],
+      lessonItems: [
+        { id: 'skrecic', targetText: 'skręcić', baseText: { de: 'abbiegen (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('skręcić', 'Skręcić', 'skrecic', 'Skrecic') },
+        { id: 'rog', targetText: 'róg', baseText: { de: 'Ecke (Grundform)' }, acceptedAnswers: polishAnswers('róg', 'Róg', 'rog', 'Rog') },
+        { id: 'rogu', targetText: 'rogu', baseText: { de: 'Ecke (Lokativ Sg.)' }, acceptedAnswers: polishAnswers('rogu', 'Rogu') },
+        { id: 'ulica', targetText: 'ulica', baseText: { de: 'Straße' }, acceptedAnswers: polishAnswers('ulica', 'Ulica') },
+      ],
+      buildChips: ['Proszę skręcić', 'na rogu.', 'w lewo', 'w prawo'],
+      typeRecall: {
+        before: 'Proszę skręcić na ',
+        answer: 'rogu',
+        after: '.',
+        acceptedAnswers: polishAnswers('rogu', 'Rogu'),
+        fallbackChoices: ['rogu', 'ulicy', 'placu', 'mieście'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Bitte biegen Sie an der Ecke ab.' },
+        targetPhrase: 'Proszę skręcić na rogu.',
+        requiredTokens: ['proszę', 'skręcić', 'na', 'rogu'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Straßenkreuzung mit klarer Ecke, ruhige Wegerklärung.' },
+      trophyWord: {
+        word: 'róg',
+        meaning: { de: 'Ecke (Straßenecke)' },
+        example: 'Proszę skręcić na rogu.',
+        whyThisWord: { de: 'Róg ist maskulin unbelebt. Nominativ Singular: róg (mit ó!). Lokativ Singular: rogu. Nach na (an / auf) für Orientierungspunkte steht der Lokativ — daher na rogu (an der Ecke). Plural Nominativ: rogi. Vorsicht: róg bedeutet auch "Horn" (Tier / Musikinstrument), aus dem Kontext klar.' },
+      },
+      placeholderCaption: { de: 'Straßenecke, klarer Punkt für Abbiegen.' },
+      songMood: 'directional landmark',
+      visualNotes: 'Street corner highlighted, róg paired with na + locative.',
+    }),
+  },
+  {
+    slug: 'on-foot-or-taxi',
+    title: { de: 'Zu Fuß oder mit dem Taxi?' },
+    situation: {
+      en: 'At the end of an evening, decide between walking and taking a taxi.',
+      de: 'Am Ende des Abends überlegst du zwischen Zu-Fuß-Gehen und Taxi.',
+    },
+    pedagogicalGoal: 'Mit pieszo / taksówką den A1-Kontrast zwischen Adverb (zu Fuß) und Instrumental-Mittel üben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Pieszo czy taksówką?',
+        baseText: { de: 'Zu Fuß oder mit dem Taxi?' },
+      },
+      meaning: { de: 'Eine knappe A1-Entscheidung zwischen zwei Fortbewegungsarten.' },
+      chunks: [
+        { id: 'pieszo', targetText: 'Pieszo', baseText: { de: 'Zu Fuß' } },
+        { id: 'czy-taksowka', targetText: 'czy taksówką?', baseText: { de: 'oder mit dem Taxi?' } },
+      ],
+      lessonItems: [
+        { id: 'pieszo', targetText: 'pieszo', baseText: { de: 'zu Fuß (Adverb)' }, acceptedAnswers: polishAnswers('pieszo', 'Pieszo') },
+        { id: 'taksowka', targetText: 'taksówka', baseText: { de: 'Taxi (Grundform)' }, acceptedAnswers: polishAnswers('taksówka', 'Taksówka', 'taksowka', 'Taksowka') },
+        { id: 'taksowka-instr', targetText: 'taksówką', baseText: { de: 'mit dem Taxi (Instrumental)' }, acceptedAnswers: polishAnswers('taksówką', 'Taksówką', 'taksowka', 'Taksowka') },
+        { id: 'rower', targetText: 'rower', baseText: { de: 'Fahrrad' }, acceptedAnswers: polishAnswers('rower', 'Rower') },
+      ],
+      buildChips: ['Pieszo', 'czy taksówką?', 'rowerem', 'autobusem'],
+      typeRecall: {
+        before: 'Pieszo czy ',
+        answer: 'taksówką',
+        after: '?',
+        acceptedAnswers: polishAnswers('taksówką', 'Taksówką', 'taksowka', 'Taksowka'),
+        fallbackChoices: ['taksówką', 'autobusem', 'tramwajem', 'pociągiem'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Zu Fuß oder mit dem Taxi?' },
+        targetPhrase: 'Pieszo czy taksówką?',
+        requiredTokens: ['pieszo', 'czy', 'taksówką'],
+        optionalTokens: ['rowerem', 'autobusem'],
+      },
+      sceneCaption: { de: 'Bürgersteig am Abend, kurze Überlegung zur Heimfahrt.' },
+      trophyWord: {
+        word: 'taksówka',
+        meaning: { de: 'Taxi' },
+        example: 'Pieszo czy taksówką?',
+        whyThisWord: { de: 'Taksówka ist feminin. Nominativ Singular: taksówka. Instrumental Singular: taksówką. Bei der Frage nach Fortbewegungsmitteln steht das Nomen im Instrumental — wörtlich "mit dem Taxi". Genauso: autobusem (mit dem Bus), tramwajem (mit der Tram), rowerem (mit dem Rad). Das Adverb pieszo (zu Fuß) bleibt unverändert.' },
+      },
+      placeholderCaption: { de: 'Bürgersteig am Abend, ruhige Heimfahrt-Entscheidung.' },
+      songMood: 'evening choice',
+      visualNotes: 'Streetlight, taxi vs walking icons, taksówką in instrumental.',
+    }),
+  },
+  {
+    slug: 'missed-the-stop',
+    title: { de: 'Was jetzt?' },
+    situation: {
+      en: 'After missing a stop or making a small mistake, ask what to do now.',
+      de: 'Nach einer verpassten Haltestelle oder kleinen Verwirrung fragst du, was jetzt zu tun ist.',
+    },
+    pedagogicalGoal: 'Mit Co teraz? die kürzeste A1-Frage zur Lagebewältigung formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, co teraz?',
+        baseText: { de: 'Entschuldigung, was jetzt?' },
+      },
+      meaning: { de: 'Die A1-Kurzfrage in einer kleinen Notlage ohne Drama.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'co-teraz', targetText: 'co teraz?', baseText: { de: 'was jetzt?' } },
+      ],
+      lessonItems: [
+        { id: 'co', targetText: 'co', baseText: { de: 'was' }, acceptedAnswers: polishAnswers('co', 'Co') },
+        { id: 'teraz', targetText: 'teraz', baseText: { de: 'jetzt' }, acceptedAnswers: polishAnswers('teraz', 'Teraz') },
+        { id: 'pozniej', targetText: 'później', baseText: { de: 'später' }, acceptedAnswers: polishAnswers('później', 'Później', 'pozniej', 'Pozniej') },
+        { id: 'wracac', targetText: 'wracać', baseText: { de: 'zurückgehen (Infinitiv, imperfektiv)' }, acceptedAnswers: polishAnswers('wracać', 'Wracać', 'wracac', 'Wracac') },
+      ],
+      buildChips: ['Przepraszam,', 'co teraz?', 'później', 'wracać'],
+      typeRecall: {
+        before: 'Przepraszam, co ',
+        answer: 'teraz',
+        after: '?',
+        acceptedAnswers: polishAnswers('teraz', 'Teraz'),
+        fallbackChoices: ['teraz', 'później', 'dziś', 'rano'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, was jetzt?' },
+        targetPhrase: 'Przepraszam, co teraz?',
+        requiredTokens: ['przepraszam', 'co', 'teraz'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Nach einer verpassten Haltestelle, ruhige Frage am Aussteigepunkt.' },
+      trophyWord: {
+        word: 'teraz',
+        meaning: { de: 'jetzt' },
+        example: 'Co teraz?',
+        whyThisWord: { de: 'Teraz ist der A1-Zeitanker für die unmittelbare Gegenwart. Invariant (kein Kasus, kein Geschlecht). Pendants: później (später), wkrótce (bald), zaraz (sofort / gleich). Vorsicht: das deutsche "jetzt eben" ist im Polnischen am ehesten teraz, der Bezug auf den Sprechzeitpunkt.' },
+      },
+      placeholderCaption: { de: 'Nach dem verpassten Halt, ruhige Lageklärung.' },
+      songMood: 'calm recovery',
+      visualNotes: 'Person at bus stop missed, calm posture, teraz highlighted as time anchor.',
+    }),
+  },
+]
+
+const polishA1Practical3Lessons = makePolishPracticalLessons(
+  GUIDED_TODAY_PATH_POLISH_THREE_METADATA,
+  polishA1Practical3Inputs,
+  'Du hast Polnisch A1 Praxis 3 abgeschlossen.',
+)
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -61045,6 +61568,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...cebuanoA1Practical10Lessons,
   ...polishA1Practical1Lessons,
   ...polishA1Practical2Lessons,
+  ...polishA1Practical3Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -61139,6 +61663,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_CEBUANO_TEN_METADATA,
     GUIDED_TODAY_PATH_POLISH_ONE_METADATA,
     GUIDED_TODAY_PATH_POLISH_TWO_METADATA,
+    GUIDED_TODAY_PATH_POLISH_THREE_METADATA,
   ]
 }
 
