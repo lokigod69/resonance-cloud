@@ -1,11 +1,13 @@
-import { AlertCircle, CheckCircle2, Eye, Loader2, Mic, Square, XCircle } from 'lucide-react'
+import { AlertCircle, Eye, Loader2, Mic, Square } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from '@/hooks/useTranslation'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { checkGuidedSpeechAnswer, type GuidedSpeechCheckResult } from '@/lib/guidedSpeechCheck'
+import { checkGuidedSpeechAnswer } from '@/lib/guidedSpeechCheck'
 import { canUseGuidedSpeechRecognition, useGuidedSpeechRecognition } from '@/hooks/useGuidedSpeechRecognition'
 import type { GuidedSpeakLocale } from '@/data/guidedLessons'
+
+const TODAY_SPEECH_MIC_ASSET = '/guided/today/speech-microphone-orb.png'
 
 export type GuidedSpeechPromptCheckState = {
   status: 'idle' | 'requesting_permission' | 'recording' | 'transcribing' | 'passed' | 'close' | 'failed' | 'continued' | 'unsupported' | 'error'
@@ -56,7 +58,6 @@ export function GuidedSpeechPrompt({
   const statusRef = useRef<GuidedSpeechPromptCheckState['status']>(canUseGuidedSpeechRecognition() ? 'idle' : 'unsupported')
   const [status, setStatus] = useState<GuidedSpeechPromptCheckState['status']>(statusRef.current)
   const [transcriptMatch, setTranscriptMatch] = useState(0)
-  const [checkResult, setCheckResult] = useState<GuidedSpeechCheckResult | null>(null)
   const [hintVisible, setHintVisible] = useState(false)
   const speech = useGuidedSpeechRecognition({ language, maxRecordingSeconds })
   const isSupported = speech.isSupported
@@ -97,7 +98,6 @@ export function GuidedSpeechPrompt({
 
     attemptsRef.current = nextAttempts
     setTranscriptMatch(nextMatch)
-    setCheckResult(nextCheckResult)
     updateStatus(nextStatus)
     publishState(nextStatus, nextAttempts, nextMatch)
   }
@@ -132,7 +132,6 @@ export function GuidedSpeechPrompt({
       return
     }
     setTranscriptMatch(0)
-    setCheckResult(null)
     void speech.startRecording()
   }
 
@@ -146,27 +145,28 @@ export function GuidedSpeechPrompt({
     onContinueAnyway?.()
   }
 
+  const handleTryAgain = () => {
+    speech.reset()
+    setTranscriptMatch(0)
+    updateStatus(isSupported ? 'idle' : 'unsupported')
+    publishState(isSupported ? 'idle' : 'unsupported', attemptsRef.current, 0)
+  }
+
   const feedbackVisible = status === 'passed' || status === 'close' || status === 'failed' || status === 'continued'
-  const hintButtonLabel = hintVisible
-    ? t('today.speak.hideHint')
-    : isSupported
-      ? t('today.speak.showHint')
-      : t('today.speak.showSentence')
+  const hintButtonLabel = isSupported ? t('today.speak.showHint') : t('today.speak.showSentence')
   const isRecording = speech.status === 'recording'
   const isBusy = speech.status === 'requesting_permission' || speech.status === 'transcribing'
   const expectedAnswer = displayAnswer ?? targetAnswer
-  const transcriptFeedbackVisible = Boolean(feedbackVisible && speech.transcript)
+  const resultVisible = Boolean(feedbackVisible && speech.transcript)
+  const canRetry = status === 'failed' || status === 'close' || status === 'error'
   const transcriptFeedbackLabel = status === 'passed'
     ? t('today.speak.passed')
     : status === 'close'
       ? t('today.speak.close')
       : status === 'continued'
-        ? t('today.speak.continued')
-        : t('today.speak.failed')
-  const canShowContinueAnyway = status === 'failed'
-    || status === 'close'
-    || status === 'error'
-    || (allowContinueWhenUnsupported && status === 'unsupported')
+      ? t('today.speak.continued')
+      : t('today.speak.failed')
+  const canShowContinueAnyway = allowContinueWhenUnsupported && status === 'unsupported'
 
   return (
     <div className="today-speech-prompt grid justify-items-center gap-5 text-center" data-speech-state={status}>
@@ -185,75 +185,99 @@ export function GuidedSpeechPrompt({
         </p>
       </div>
 
-      <div className="today-speech-orbStage">
-        <span className="today-speech-waveform" aria-hidden="true" />
-        {isSupported && (
-          <div className="today-speak-recordingControl">
-            <button
-              type="button"
-              className={cn('today-speech-primaryAction', isRecording && 'today-speak-recordingButton')}
-              onClick={isRecording ? handleStop : handleStart}
-              disabled={isBusy}
-              aria-label={speech.status === 'requesting_permission'
-                ? t('today.speak.requestingPermission')
-                : speech.status === 'transcribing'
-                  ? t('today.speak.transcribing')
-                  : isRecording
-                    ? t('today.speak.stopRecording')
-                    : t('today.speak.startRecording')}
-            >
-              {speech.status === 'transcribing' ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : isRecording ? (
-                <Square className="h-3.5 w-3.5 fill-current" />
-              ) : (
-                <Mic className="h-4 w-4" />
-              )}
-              <span className="sr-only">
-                {speech.status === 'requesting_permission'
-                  ? t('today.speak.requestingPermission')
-                  : speech.status === 'transcribing'
-                    ? t('today.speak.transcribing')
-                    : isRecording
-                      ? t('today.speak.stopRecording')
-                      : t('today.speak.startRecording')}
-              </span>
-            </button>
-            <span className="today-speak-recordingDotSlot" aria-hidden="true">
-              <span className={cn('today-speak-recordingDot', !isRecording && 'today-speak-recordingDot--idle')} />
-            </span>
+      <div className="today-speech-orbStage" data-result-visible={resultVisible}>
+        {resultVisible ? (
+          <div className="today-speech-resultStage" aria-live="polite">
+            <p className="today-speech-resultLabel">
+              {transcriptFeedbackLabel}
+            </p>
+            <p className="today-speech-resultPhrase">
+              {expectedAnswer}
+            </p>
+            <p className="today-speech-heardLine">
+              {t('today.speak.heardLabel')}: &quot;{speech.transcript}&quot;
+            </p>
+            {canRetry && (
+              <Button type="button" variant="outline" className="today-speech-retryButton" onClick={handleTryAgain}>
+                {t('speak.tapRetry')}
+              </Button>
+            )}
           </div>
+        ) : (
+          <>
+            <img
+              src={TODAY_SPEECH_MIC_ASSET}
+              alt=""
+              className="today-speech-micAsset"
+              draggable={false}
+              aria-hidden="true"
+            />
+            {isSupported && (
+              <div className="today-speak-recordingControl">
+                <button
+                  type="button"
+                  className={cn('today-speech-primaryAction', isRecording && 'today-speak-recordingButton')}
+                  data-recording={isRecording}
+                  onClick={isRecording ? handleStop : handleStart}
+                  disabled={isBusy}
+                  aria-label={speech.status === 'requesting_permission'
+                    ? t('today.speak.requestingPermission')
+                    : speech.status === 'transcribing'
+                      ? t('today.speak.transcribing')
+                      : isRecording
+                        ? t('today.speak.stopRecording')
+                        : t('today.speak.startRecording')}
+                >
+                  {speech.status === 'transcribing' ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : isRecording ? (
+                    <Square className="h-3.5 w-3.5 fill-current" />
+                  ) : (
+                    <span className="today-speech-buttonHotspot" aria-hidden="true" />
+                  )}
+                  <span className="sr-only">
+                    {speech.status === 'requesting_permission'
+                      ? t('today.speak.requestingPermission')
+                      : speech.status === 'transcribing'
+                        ? t('today.speak.transcribing')
+                        : isRecording
+                          ? t('today.speak.stopRecording')
+                          : t('today.speak.startRecording')}
+                  </span>
+                </button>
+              </div>
+            )}
+            {!isSupported && (
+              <span className="today-speech-primaryAction today-speech-primaryAction--unsupported" aria-hidden="true">
+                <Mic className="h-5 w-5" />
+              </span>
+            )}
+            <p className="today-speech-actionHint">
+              {speech.status === 'requesting_permission'
+                    ? t('today.speak.requestingPermission')
+                    : speech.status === 'transcribing'
+                      ? t('today.speak.transcribing')
+                      : isRecording
+                        ? t('today.speak.stopRecording')
+                        : t('today.speak.startRecording')}
+            </p>
+          </>
         )}
-        {!isSupported && (
-          <span className="today-speech-primaryAction today-speech-primaryAction--unsupported" aria-hidden="true">
-            <Mic className="h-5 w-5" />
-          </span>
-        )}
-        <p className="today-speech-actionHint">
-          {speech.status === 'requesting_permission'
-                ? t('today.speak.requestingPermission')
-                : speech.status === 'transcribing'
-                  ? t('today.speak.transcribing')
-                  : isRecording
-                    ? t('today.speak.stopRecording')
-                    : t('today.speak.startRecording')}
-        </p>
       </div>
 
       <div className="today-speech-secondaryActions flex flex-wrap items-center justify-center gap-3">
-        {showHintButton && (
-          <Button type="button" variant="outline" onClick={() => setHintVisible((current) => !current)}>
+        {showHintButton && !hintVisible && (
+          <Button type="button" variant="outline" onClick={() => setHintVisible(true)}>
             <Eye className="h-4 w-4" />
             {hintButtonLabel}
           </Button>
         )}
+        {showHintButton && hintVisible && (
+          <div className="today-speech-hint inline-flex w-fit max-w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] px-3 py-2 text-sm font-semibold text-[var(--text-primary)]">
+            {expectedAnswer}
+          </div>
+        )}
       </div>
-
-      {hintVisible && (
-        <div className="today-speech-hint inline-flex w-fit max-w-full rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-1)_58%,transparent)] px-3 py-2 text-sm font-semibold text-[var(--text-primary)]">
-          {expectedAnswer}
-        </div>
-      )}
 
       {!isSupported && (
         <div className="grid gap-3 rounded-lg border border-[var(--border-subtle)] bg-[color-mix(in_srgb,var(--surface-2)_70%,transparent)] p-4 text-sm leading-6 text-[var(--text-secondary)]">
@@ -266,51 +290,6 @@ export function GuidedSpeechPrompt({
           <AlertCircle className="h-4 w-4 shrink-0 text-[#f59e0b]" />
           <span>{speech.error}</span>
         </div>
-      )}
-
-      {speech.transcript && (
-        <div
-          className={cn(
-            'today-speak-transcriptCard w-full max-w-2xl rounded-lg border p-4 text-left',
-            status === 'passed' && 'today-speak-transcriptCard--passed',
-            status === 'close' && 'today-speak-transcriptCard--close',
-            (status === 'failed' || status === 'continued') && 'today-speak-transcriptCard--failed',
-          )}
-        >
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--text-muted)]">
-              {t('today.speak.heardLabel')}
-            </p>
-            {transcriptFeedbackVisible && (
-              <span
-                className={cn(
-                  'today-speak-transcriptResult inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold',
-                  status === 'passed' && 'today-speak-transcriptResult--passed',
-                  status === 'close' && 'today-speak-transcriptResult--close',
-                  (status === 'failed' || status === 'continued') && 'today-speak-transcriptResult--failed',
-                )}
-              >
-                {status === 'passed' ? (
-                  <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-                ) : status === 'close' ? (
-                  <AlertCircle className="h-3.5 w-3.5 shrink-0" />
-                ) : (
-                  <XCircle className="h-3.5 w-3.5 shrink-0" />
-                )}
-                {transcriptFeedbackLabel}
-              </span>
-            )}
-          </div>
-          <p className="mt-2 break-words text-base leading-7 text-[var(--text-primary)]">
-            &quot;{speech.transcript}&quot;
-          </p>
-        </div>
-      )}
-
-      {(status === 'failed' || status === 'close') && checkResult && (
-        <p className="max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
-          {t('today.speak.expected', { answer: expectedAnswer })}
-        </p>
       )}
 
       {canShowContinueAnyway && (

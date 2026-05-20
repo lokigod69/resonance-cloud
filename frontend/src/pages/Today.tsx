@@ -32,6 +32,14 @@ import {
 } from '@/lib/todayLanguage'
 import '@/components/today/Today.css'
 
+function scrollTodayToTop() {
+  if (typeof window === 'undefined') return
+
+  window.requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  })
+}
+
 export default function Today() {
   const { user } = useAuth()
   const [searchParams] = useSearchParams()
@@ -170,6 +178,7 @@ export default function Today() {
       setSessionKey((current) => current + 1)
     }
     setSessionActive(true)
+    scrollTodayToTop()
   }
 
   const handleOpenNextLesson = () => {
@@ -182,6 +191,7 @@ export default function Today() {
     setKnownItemIds(new Set())
     setSessionKey((current) => current + 1)
     setSessionActive(true)
+    scrollTodayToTop()
   }
 
   return (
