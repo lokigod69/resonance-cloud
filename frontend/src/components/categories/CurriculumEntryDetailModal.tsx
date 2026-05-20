@@ -1,5 +1,9 @@
 import CardDetailModal, { type CardDetailField, type CardDetailModel } from '@/components/common/CardDetailModal'
 import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
+import {
+  resolveCurriculumImageSetAsset,
+  type CurriculumImageSetKey,
+} from '@/lib/curriculumImageSets'
 import { useTranslation } from '@/hooks/useTranslation'
 import {
   getCurriculumCategoryBySlug,
@@ -14,6 +18,8 @@ type CurriculumEntryDetailModalProps = {
   categorySlug: string
   languageIso: string
   baseLanguageIso: string
+  // Admin-resolved active image set for this language/category.
+  activeImageSet?: CurriculumImageSetKey
   onClose: () => void
 }
 
@@ -42,6 +48,7 @@ export default function CurriculumEntryDetailModal({
   categorySlug,
   languageIso,
   baseLanguageIso,
+  activeImageSet,
   onClose,
 }: CurriculumEntryDetailModalProps) {
   const { t } = useTranslation()
@@ -171,12 +178,18 @@ export default function CurriculumEntryDetailModal({
   const article = clean(enrichment?.article)
   if (article) chipsBelowTitle.push(article)
 
+  const setResolution = activeImageSet
+    ? resolveCurriculumImageSetAsset(entry.term, { activeSetKey: activeImageSet, languageIso })
+    : null
+  const imageSrc =
+    setResolution?.publicPath ?? curriculumEntryImagePath(languageIso, categorySlug, entry.term)
+
   const model: CardDetailModel = {
     title: entry.term,
     ipa: clean(enrichment?.ipa) ?? undefined,
     posChip: enrichment?.pos ? { label: posLabel(enrichment.pos, t) } : undefined,
     image: {
-      src: curriculumEntryImagePath(languageIso, categorySlug, entry.term),
+      src: imageSrc,
       alt: t('categories.modal.imageAlt', { term: entry.term }),
       fallbackEmoji: category?.icon,
       aspect: '16:9',

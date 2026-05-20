@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import { curriculumEntryImagePath } from '@/lib/curriculumImagePath'
+import {
+  resolveCurriculumImageSetAsset,
+  type CurriculumImageSetKey,
+} from '@/lib/curriculumImageSets'
 
 type CurriculumEntryImageProps = {
   languageIso: string
@@ -9,6 +13,9 @@ type CurriculumEntryImageProps = {
   alt: string
   className?: string
   aspect?: '16:9' | '4:5'
+  // Admin-resolved active image set for this language/category. When omitted,
+  // the component renders the legacy curriculum image path.
+  activeImageSet?: CurriculumImageSetKey
 }
 
 export default function CurriculumEntryImage({
@@ -19,9 +26,15 @@ export default function CurriculumEntryImage({
   alt,
   className,
   aspect = '16:9',
+  activeImageSet,
 }: CurriculumEntryImageProps) {
-  const [failed, setFailed] = useState(false)
   const aspectRatio = aspect === '4:5' ? '4 / 5' : '16 / 9'
+  const resolved = activeImageSet
+    ? resolveCurriculumImageSetAsset(term, { activeSetKey: activeImageSet, languageIso })
+    : null
+  const src = resolved?.publicPath ?? curriculumEntryImagePath(languageIso, categorySlug, term)
+  const [failedSrc, setFailedSrc] = useState<string | null>(null)
+  const failed = failedSrc === src
 
   if (failed) {
     return (
@@ -49,12 +62,12 @@ export default function CurriculumEntryImage({
 
   return (
     <img
-      src={curriculumEntryImagePath(languageIso, categorySlug, term)}
+      src={src}
       alt={alt}
       loading="lazy"
       className={className}
       style={{ aspectRatio }}
-      onError={() => setFailed(true)}
+      onError={() => setFailedSrc(src)}
     />
   )
 }
