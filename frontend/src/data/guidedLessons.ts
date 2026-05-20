@@ -446,7 +446,7 @@ const GUIDED_TODAY_PATH_SPANISH_SEVEN_METADATA: GuidedPathMetadata = {
   id: 'spanish-a1-practical-7',
   title: 'Spanish A1 Practical 7',
   shortTitle: 'A1 Practical 7',
-  subtitle: { de: 'Reise, Tickets, einfache Bewegung' },
+  subtitle: { de: 'Reise, Tickets, einfache Bewegung', en: 'Travel, tickets, and getting around' },
   level: 'A1',
   baseLanguage: 'German',
   targetLanguage: 'Spanish',
@@ -13479,19 +13479,19 @@ const brightSpanishP7Lesson001: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Un billete de ida y vuelta, por favor.',
-    baseText: { de: 'Eine Hin- und Rückfahrkarte, bitte.' },
+    baseText: { de: 'Eine Hin- und Rückfahrkarte, bitte.', en: 'A round-trip ticket, please.' },
   },
-  meaning: { de: 'Eine kurze, klare Bestellung einer Hin- und Rückfahrkarte am Schalter.' },
+  meaning: { de: 'Eine kurze, klare Bestellung einer Hin- und Rückfahrkarte am Schalter.', en: 'A clear station-counter request for a round-trip ticket.' },
   chunks: [
-    { id: 'un-billete', targetText: 'Un billete', baseText: { de: 'Eine Fahrkarte' } },
-    { id: 'de-ida-y-vuelta', targetText: 'de ida y vuelta,', baseText: { de: 'Hin und Rück,' } },
-    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.' } },
+    { id: 'un-billete', targetText: 'Un billete', baseText: { de: 'Eine Fahrkarte', en: 'A ticket' } },
+    { id: 'de-ida-y-vuelta', targetText: 'de ida y vuelta,', baseText: { de: 'Hin und Rück,', en: 'round trip,' } },
+    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'ida', targetText: 'ida', baseText: { de: 'Hinfahrt' }, acceptedAnswers: ['ida', 'Ida'] },
-    { id: 'vuelta', targetText: 'vuelta', baseText: { de: 'Rückfahrt' }, acceptedAnswers: ['vuelta', 'Vuelta'] },
-    { id: 'y', targetText: 'y', baseText: { de: 'und' }, acceptedAnswers: ['y', 'Y'] },
-    { id: 'sencillo', targetText: 'sencillo', baseText: { de: 'einfach (nur hin)' }, acceptedAnswers: ['sencillo', 'Sencillo'] },
+    { id: 'ida', targetText: 'ida', baseText: { de: 'Hinfahrt', en: 'outward trip' }, acceptedAnswers: ['ida', 'Ida'] },
+    { id: 'vuelta', targetText: 'vuelta', baseText: { de: 'Rückfahrt', en: 'return trip' }, acceptedAnswers: ['vuelta', 'Vuelta'] },
+    { id: 'y', targetText: 'y', baseText: { de: 'und', en: 'and' }, acceptedAnswers: ['y', 'Y'] },
+    { id: 'sencillo', targetText: 'sencillo', baseText: { de: 'einfach (nur hin)', en: 'one-way' }, acceptedAnswers: ['sencillo', 'Sencillo'] },
   ],
   build: {
     targetText: 'Un billete de ida y vuelta, por favor.',
@@ -13505,23 +13505,23 @@ const brightSpanishP7Lesson001: GuidedLessonVibeVariant = {
     fallbackChoices: ['vuelta', 'sencillo', 'directo', 'expreso'],
   },
   speakTarget: {
-    baseCue: { de: 'Eine Hin- und Rückfahrkarte, bitte.' },
+    baseCue: { de: 'Eine Hin- und Rückfahrkarte, bitte.', en: 'A round-trip ticket, please.' },
     targetPhrase: 'Un billete de ida y vuelta, por favor.',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['billete', 'ida', 'vuelta', 'por', 'favor'],
     optionalTokens: ['un', 'de', 'y', 'sencillo'],
   },
-  sceneCaption: { de: 'Am Schalter im Bahnhof sagst du kurz, dass du eine Hin- und Rückfahrkarte brauchst.' },
+  sceneCaption: { de: 'Am Schalter im Bahnhof sagst du kurz, dass du eine Hin- und Rückfahrkarte brauchst.', en: 'At the station ticket window, you briefly ask for a round-trip ticket.' },
   trophyWord: {
     word: 'vuelta',
-    meaning: { de: 'Rückfahrt / Rückkehr' },
+    meaning: { de: 'Rückfahrt / Rückkehr', en: 'return trip / return' },
     example: 'Un billete de ida y vuelta.',
-    whyThisWord: { de: 'Vuelta ist auf A1 das eindeutige Wort für Rückfahrt — bildet mit „ida" die feste Iberische Schalter-Wendung.' },
+    whyThisWord: { de: 'Vuelta ist auf A1 das eindeutige Wort für Rückfahrt — bildet mit „ida" die feste Iberische Schalter-Wendung.', en: 'Vuelta means return. In ida y vuelta, it makes the fixed Spanish phrase for a round-trip ticket.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Schalterfenster im Bahnhof, Hand reicht eine Doppel-Karte, ruhige Übergabe.' },
+    caption: { de: 'Schalterfenster im Bahnhof, Hand reicht eine Doppel-Karte, ruhige Übergabe.', en: 'A station ticket window, a hand passing over a round-trip ticket, and a calm exchange.' },
   },
   songSeed: {
     genre: 'upbeat acoustic',
@@ -13534,19 +13534,19 @@ const brightSpanishP7Lesson002: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: '¿Dónde está la estación, por favor?',
-    baseText: { de: 'Wo ist der Bahnhof, bitte?' },
+    baseText: { de: 'Wo ist der Bahnhof, bitte?', en: 'Where is the station, please?' },
   },
-  meaning: { de: 'Eine kurze, höfliche Frage nach dem Standort des Bahnhofs oder der Bushaltestelle.' },
+  meaning: { de: 'Eine kurze, höfliche Frage nach dem Standort des Bahnhofs oder der Bushaltestelle.', en: 'A polite location question for finding the station.' },
   chunks: [
-    { id: 'donde-esta', targetText: '¿Dónde está', baseText: { de: 'Wo ist' } },
-    { id: 'la-estacion', targetText: 'la estación,', baseText: { de: 'der Bahnhof,' } },
-    { id: 'por-favor', targetText: 'por favor?', baseText: { de: 'bitte?' } },
+    { id: 'donde-esta', targetText: '¿Dónde está', baseText: { de: 'Wo ist', en: 'Where is' } },
+    { id: 'la-estacion', targetText: 'la estación,', baseText: { de: 'der Bahnhof,', en: 'the station,' } },
+    { id: 'por-favor', targetText: 'por favor?', baseText: { de: 'bitte?', en: 'please?' } },
   ],
   lessonItems: [
-    { id: 'estacion', targetText: 'estación', baseText: { de: 'Bahnhof / Station' }, acceptedAnswers: ['estación', 'estacion', 'Estación', 'Estacion'] },
-    { id: 'esta', targetText: 'está', baseText: { de: 'ist (Ort)' }, acceptedAnswers: ['está', 'esta', 'Está', 'Esta'] },
-    { id: 'la', targetText: 'la', baseText: { de: 'die' }, acceptedAnswers: ['la', 'La'] },
-    { id: 'aqui', targetText: 'aquí', baseText: { de: 'hier' }, acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+    { id: 'estacion', targetText: 'estación', baseText: { de: 'Bahnhof / Station', en: 'station' }, acceptedAnswers: ['estación', 'estacion', 'Estación', 'Estacion'] },
+    { id: 'esta', targetText: 'está', baseText: { de: 'ist (Ort)', en: 'is / is located' }, acceptedAnswers: ['está', 'esta', 'Está', 'Esta'] },
+    { id: 'la', targetText: 'la', baseText: { de: 'die', en: 'the' }, acceptedAnswers: ['la', 'La'] },
+    { id: 'aqui', targetText: 'aquí', baseText: { de: 'hier', en: 'here' }, acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
   ],
   build: {
     targetText: '¿Dónde está la estación, por favor?',
@@ -13560,23 +13560,23 @@ const brightSpanishP7Lesson002: GuidedLessonVibeVariant = {
     fallbackChoices: ['estación', 'terminal', 'oficina', 'plaza'],
   },
   speakTarget: {
-    baseCue: { de: 'Wo ist der Bahnhof, bitte?' },
+    baseCue: { de: 'Wo ist der Bahnhof, bitte?', en: 'Where is the station, please?' },
     targetPhrase: '¿Dónde está la estación, por favor?',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['dónde', 'está', 'estación', 'por', 'favor'],
     optionalTokens: ['la', 'metro'],
   },
-  sceneCaption: { de: 'Du sprichst jemanden ruhig an und fragst nach dem Bahnhof oder der Hauptstation.' },
+  sceneCaption: { de: 'Du sprichst jemanden ruhig an und fragst nach dem Bahnhof oder der Hauptstation.', en: 'You calmly ask someone where the station or main stop is.' },
   trophyWord: {
     word: 'estación',
-    meaning: { de: 'Bahnhof / Station' },
+    meaning: { de: 'Bahnhof / Station', en: 'station' },
     example: 'La estación está cerca.',
-    whyThisWord: { de: 'Estación ist auf A1 der allgemeine Begriff für Bahnhof und größere Verkehrs-Anlaufstellen — funktioniert für Zug, Metro und Hauptbus.' },
+    whyThisWord: { de: 'Estación ist auf A1 der allgemeine Begriff für Bahnhof und größere Verkehrs-Anlaufstellen — funktioniert für Zug, Metro und Hauptbus.', en: 'Estacion is the general Spanish word for station. It works for train, metro, and main bus contexts.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Straßenecke mit Bahnhofsschild im Hintergrund, ruhige Frage in den Raum.' },
+    caption: { de: 'Straßenecke mit Bahnhofsschild im Hintergrund, ruhige Frage in den Raum.', en: 'A street corner with a station sign in the background and a calm question.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -13589,18 +13589,18 @@ const brightSpanishP7Lesson003: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: '¿A qué hora sale?',
-    baseText: { de: 'Wann fährt es ab?' },
+    baseText: { de: 'Wann fährt es ab?', en: 'What time does it leave?' },
   },
-  meaning: { de: 'Eine kurze Frage nach der Abfahrtszeit eines Verkehrsmittels.' },
+  meaning: { de: 'Eine kurze Frage nach der Abfahrtszeit eines Verkehrsmittels.', en: 'A short question about the departure time.' },
   chunks: [
-    { id: 'a-que-hora', targetText: '¿A qué hora', baseText: { de: 'Um wie viel Uhr' } },
-    { id: 'sale', targetText: 'sale?', baseText: { de: 'fährt es ab?' } },
+    { id: 'a-que-hora', targetText: '¿A qué hora', baseText: { de: 'Um wie viel Uhr', en: 'What time' } },
+    { id: 'sale', targetText: 'sale?', baseText: { de: 'fährt es ab?', en: 'does it leave?' } },
   ],
   lessonItems: [
-    { id: 'a-que-hora', targetText: 'a qué hora', baseText: { de: 'um wie viel Uhr' }, acceptedAnswers: ['a qué hora', 'a que hora'] },
-    { id: 'sale', targetText: 'sale', baseText: { de: 'fährt ab (3 Pers. Sg.)' }, acceptedAnswers: ['sale', 'Sale'] },
-    { id: 'llega', targetText: 'llega', baseText: { de: 'kommt an' }, acceptedAnswers: ['llega', 'Llega'] },
-    { id: 'siguiente', targetText: 'siguiente', baseText: { de: 'der nächste' }, acceptedAnswers: ['siguiente', 'Siguiente'] },
+    { id: 'a-que-hora', targetText: 'a qué hora', baseText: { de: 'um wie viel Uhr', en: 'at what time' }, acceptedAnswers: ['a qué hora', 'a que hora'] },
+    { id: 'sale', targetText: 'sale', baseText: { de: 'fährt ab (3 Pers. Sg.)', en: 'leaves' }, acceptedAnswers: ['sale', 'Sale'] },
+    { id: 'llega', targetText: 'llega', baseText: { de: 'kommt an', en: 'arrives' }, acceptedAnswers: ['llega', 'Llega'] },
+    { id: 'siguiente', targetText: 'siguiente', baseText: { de: 'der nächste', en: 'next' }, acceptedAnswers: ['siguiente', 'Siguiente'] },
   ],
   build: {
     targetText: '¿A qué hora sale?',
@@ -13614,23 +13614,23 @@ const brightSpanishP7Lesson003: GuidedLessonVibeVariant = {
     fallbackChoices: ['sale', 'llega', 'pasa', 'viene'],
   },
   speakTarget: {
-    baseCue: { de: 'Wann fährt es ab?' },
+    baseCue: { de: 'Wann fährt es ab?', en: 'What time does it leave?' },
     targetPhrase: '¿A qué hora sale?',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['qué', 'hora', 'sale'],
     optionalTokens: ['a', 'siguiente', 'por', 'favor'],
   },
-  sceneCaption: { de: 'Am Schalter oder auf dem Bahnsteig fragst du kurz nach der Abfahrtszeit.' },
+  sceneCaption: { de: 'Am Schalter oder auf dem Bahnsteig fragst du kurz nach der Abfahrtszeit.', en: 'At the counter or on the platform, you ask for the departure time.' },
   trophyWord: {
     word: 'sale',
-    meaning: { de: 'fährt ab / geht raus (3. Pers. Sg. salir)' },
+    meaning: { de: 'fährt ab / geht raus (3. Pers. Sg. salir)', en: 'leaves / departs' },
     example: 'El tren sale a las ocho.',
-    whyThisWord: { de: 'Sale ist auf A1 die direkte Abfahrts-Form — zentral für Zug, Bus, Flug, Schiff. Bildet das Paar mit „llega" (kommt an).' },
+    whyThisWord: { de: 'Sale ist auf A1 die direkte Abfahrts-Form — zentral für Zug, Bus, Flug, Schiff. Bildet das Paar mit „llega" (kommt an).', en: 'Sale is the travel word for leaves or departs. It pairs with llega, arrives.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Anzeigetafel mit Abfahrtszeiten, Blick zur Uhr, ruhige Pause vor der Fahrt.' },
+    caption: { de: 'Anzeigetafel mit Abfahrtszeiten, Blick zur Uhr, ruhige Pause vor der Fahrt.', en: 'A departure board and a clock, with a quiet pause before the trip.' },
   },
   songSeed: {
     genre: 'upbeat acoustic',
@@ -13643,18 +13643,18 @@ const brightSpanishP7Lesson004: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: '¿Es este el andén?',
-    baseText: { de: 'Ist das der Bahnsteig?' },
+    baseText: { de: 'Ist das der Bahnsteig?', en: 'Is this the platform?' },
   },
-  meaning: { de: 'Eine kurze Sicherheitsfrage vor dem Einsteigen, ob du auf dem richtigen Bahnsteig stehst.' },
+  meaning: { de: 'Eine kurze Sicherheitsfrage vor dem Einsteigen, ob du auf dem richtigen Bahnsteig stehst.', en: 'A quick check that you are at the right platform before boarding.' },
   chunks: [
-    { id: 'es-este', targetText: '¿Es este', baseText: { de: 'Ist das' } },
-    { id: 'el-anden', targetText: 'el andén?', baseText: { de: 'der Bahnsteig?' } },
+    { id: 'es-este', targetText: '¿Es este', baseText: { de: 'Ist das', en: 'Is this' } },
+    { id: 'el-anden', targetText: 'el andén?', baseText: { de: 'der Bahnsteig?', en: 'the platform?' } },
   ],
   lessonItems: [
-    { id: 'anden', targetText: 'andén', baseText: { de: 'Bahnsteig' }, acceptedAnswers: ['andén', 'anden', 'Andén', 'Anden'] },
-    { id: 'este', targetText: 'este', baseText: { de: 'dieser' }, acceptedAnswers: ['este', 'Este'] },
-    { id: 'es', targetText: 'es', baseText: { de: 'ist' }, acceptedAnswers: ['es', 'Es'] },
-    { id: 'numero', targetText: 'número', baseText: { de: 'Nummer' }, acceptedAnswers: ['número', 'numero', 'Número', 'Numero'] },
+    { id: 'anden', targetText: 'andén', baseText: { de: 'Bahnsteig', en: 'platform' }, acceptedAnswers: ['andén', 'anden', 'Andén', 'Anden'] },
+    { id: 'este', targetText: 'este', baseText: { de: 'dieser', en: 'this' }, acceptedAnswers: ['este', 'Este'] },
+    { id: 'es', targetText: 'es', baseText: { de: 'ist', en: 'is' }, acceptedAnswers: ['es', 'Es'] },
+    { id: 'numero', targetText: 'número', baseText: { de: 'Nummer', en: 'number' }, acceptedAnswers: ['número', 'numero', 'Número', 'Numero'] },
   ],
   build: {
     targetText: '¿Es este el andén?',
@@ -13668,23 +13668,23 @@ const brightSpanishP7Lesson004: GuidedLessonVibeVariant = {
     fallbackChoices: ['andén', 'vagón', 'coche', 'asiento'],
   },
   speakTarget: {
-    baseCue: { de: 'Ist das der Bahnsteig?' },
+    baseCue: { de: 'Ist das der Bahnsteig?', en: 'Is this the platform?' },
     targetPhrase: '¿Es este el andén?',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['es', 'este', 'andén'],
     optionalTokens: ['el', 'número', 'por', 'favor'],
   },
-  sceneCaption: { de: 'Vor dem Einstieg prüfst du kurz, ob das wirklich der richtige Bahnsteig ist.' },
+  sceneCaption: { de: 'Vor dem Einstieg prüfst du kurz, ob das wirklich der richtige Bahnsteig ist.', en: 'Before boarding, you check whether this is really the right platform.' },
   trophyWord: {
     word: 'andén',
-    meaning: { de: 'Bahnsteig' },
+    meaning: { de: 'Bahnsteig', en: 'platform' },
     example: 'El andén número tres.',
-    whyThisWord: { de: 'Andén ist auf A1 das eindeutige Iberische Wort für Bahnsteig — zentral für jede Zug-Orientierung. Demonstrativ „este" ohne Akzent (RAE 2010).' },
+    whyThisWord: { de: 'Andén ist auf A1 das eindeutige Iberische Wort für Bahnsteig — zentral für jede Zug-Orientierung. Demonstrativ „este" ohne Akzent (RAE 2010).', en: 'Anden is the train platform. The accent marks the final stress: anden.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Bahnsteigkante mit Nummer-Schild, kurze prüfende Pause vor dem Schritt.' },
+    caption: { de: 'Bahnsteigkante mit Nummer-Schild, kurze prüfende Pause vor dem Schritt.', en: 'A platform edge with a number sign and a quick check before stepping forward.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -13697,19 +13697,19 @@ const brightSpanishP7Lesson005: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Necesito un taxi, por favor.',
-    baseText: { de: 'Ich brauche ein Taxi, bitte.' },
+    baseText: { de: 'Ich brauche ein Taxi, bitte.', en: 'I need a taxi, please.' },
   },
-  meaning: { de: 'Eine kurze, klare Bitte um ein Taxi am Bürgersteig, Hotel-Ausgang oder Bahnhofsvorplatz.' },
+  meaning: { de: 'Eine kurze, klare Bitte um ein Taxi am Bürgersteig, Hotel-Ausgang oder Bahnhofsvorplatz.', en: 'A direct polite request for a taxi.' },
   chunks: [
-    { id: 'necesito', targetText: 'Necesito', baseText: { de: 'Ich brauche' } },
-    { id: 'un-taxi', targetText: 'un taxi,', baseText: { de: 'ein Taxi,' } },
-    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.' } },
+    { id: 'necesito', targetText: 'Necesito', baseText: { de: 'Ich brauche', en: 'I need' } },
+    { id: 'un-taxi', targetText: 'un taxi,', baseText: { de: 'ein Taxi,', en: 'a taxi,' } },
+    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'necesito', targetText: 'necesito', baseText: { de: 'ich brauche' }, acceptedAnswers: ['necesito', 'Necesito'] },
-    { id: 'taxi', targetText: 'taxi', baseText: { de: 'Taxi' }, acceptedAnswers: ['taxi', 'Taxi'] },
-    { id: 'aeropuerto', targetText: 'aeropuerto', baseText: { de: 'Flughafen' }, acceptedAnswers: ['aeropuerto', 'Aeropuerto'] },
-    { id: 'hotel', targetText: 'hotel', baseText: { de: 'Hotel' }, acceptedAnswers: ['hotel', 'Hotel'] },
+    { id: 'necesito', targetText: 'necesito', baseText: { de: 'ich brauche', en: 'I need' }, acceptedAnswers: ['necesito', 'Necesito'] },
+    { id: 'taxi', targetText: 'taxi', baseText: { de: 'Taxi', en: 'taxi' }, acceptedAnswers: ['taxi', 'Taxi'] },
+    { id: 'aeropuerto', targetText: 'aeropuerto', baseText: { de: 'Flughafen', en: 'airport' }, acceptedAnswers: ['aeropuerto', 'Aeropuerto'] },
+    { id: 'hotel', targetText: 'hotel', baseText: { de: 'Hotel', en: 'hotel' }, acceptedAnswers: ['hotel', 'Hotel'] },
   ],
   build: {
     targetText: 'Necesito un taxi, por favor.',
@@ -13723,23 +13723,23 @@ const brightSpanishP7Lesson005: GuidedLessonVibeVariant = {
     fallbackChoices: ['Necesito', 'Quiero', 'Busco', 'Pido'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich brauche ein Taxi, bitte.' },
+    baseCue: { de: 'Ich brauche ein Taxi, bitte.', en: 'I need a taxi, please.' },
     targetPhrase: 'Necesito un taxi, por favor.',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['necesito', 'taxi', 'por', 'favor'],
     optionalTokens: ['un', 'aeropuerto', 'hotel'],
   },
-  sceneCaption: { de: 'Am Hotelausgang oder am Bahnhofsvorplatz bittest du kurz um ein Taxi.' },
+  sceneCaption: { de: 'Am Hotelausgang oder am Bahnhofsvorplatz bittest du kurz um ein Taxi.', en: 'At a hotel exit or station forecourt, you briefly ask for a taxi.' },
   trophyWord: {
     word: 'necesito',
-    meaning: { de: 'ich brauche (1. Pers. Sg. necesitar)' },
+    meaning: { de: 'ich brauche (1. Pers. Sg. necesitar)', en: 'I need' },
     example: 'Necesito un taxi al aeropuerto.',
-    whyThisWord: { de: 'Necesito ist auf A1 die direkte Iberische Bedürfnis-Form — kürzer und natürlicher als „quiero" für konkrete Service-Bitten.' },
+    whyThisWord: { de: 'Necesito ist auf A1 die direkte Iberische Bedürfnis-Form — kürzer und natürlicher als „quiero" für konkrete Service-Bitten.', en: 'Necesito is the direct A1 way to state a need. It is clearer than quiero when you are asking for a service.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Hotelausgang am Abend, ein Taxi rollt vor, ruhige Geste in Richtung Auto.' },
+    caption: { de: 'Hotelausgang am Abend, ein Taxi rollt vor, ruhige Geste in Richtung Auto.', en: 'A hotel entrance in evening light, a taxi pulling up, and a calm gesture toward the car.' },
   },
   songSeed: {
     genre: 'upbeat acoustic',
@@ -13752,18 +13752,18 @@ const brightSpanishP7Lesson006: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Vamos a la estación.',
-    baseText: { de: 'Lass uns zur Station fahren.' },
+    baseText: { de: 'Lass uns zur Station fahren.', en: 'Let\'s go to the station.' },
   },
-  meaning: { de: 'Eine lockere Aussage im Taxi oder beim Aufbruch: wir fahren zu einem bestimmten Ziel.' },
+  meaning: { de: 'Eine lockere Aussage im Taxi oder beim Aufbruch: wir fahren zu einem bestimmten Ziel.', en: 'A casual line for moving together toward a destination.' },
   chunks: [
-    { id: 'vamos', targetText: 'Vamos', baseText: { de: 'Wir gehen / fahren' } },
-    { id: 'a-la-estacion', targetText: 'a la estación.', baseText: { de: 'zur Station.' } },
+    { id: 'vamos', targetText: 'Vamos', baseText: { de: 'Wir gehen / fahren', en: 'Let\'s go / we are going' } },
+    { id: 'a-la-estacion', targetText: 'a la estación.', baseText: { de: 'zur Station.', en: 'to the station.' } },
   ],
   lessonItems: [
-    { id: 'vamos', targetText: 'vamos', baseText: { de: 'wir gehen / wir fahren' }, acceptedAnswers: ['vamos', 'Vamos'] },
-    { id: 'a-la', targetText: 'a la', baseText: { de: 'zur (fem.)' }, acceptedAnswers: ['a la', 'A la'] },
-    { id: 'al', targetText: 'al', baseText: { de: 'zum (masc.)' }, acceptedAnswers: ['al', 'Al'] },
-    { id: 'centro', targetText: 'centro', baseText: { de: 'Zentrum' }, acceptedAnswers: ['centro', 'Centro'] },
+    { id: 'vamos', targetText: 'vamos', baseText: { de: 'wir gehen / wir fahren', en: 'let\'s go / we go' }, acceptedAnswers: ['vamos', 'Vamos'] },
+    { id: 'a-la', targetText: 'a la', baseText: { de: 'zur (fem.)', en: 'to the' }, acceptedAnswers: ['a la', 'A la'] },
+    { id: 'al', targetText: 'al', baseText: { de: 'zum (masc.)', en: 'to the' }, acceptedAnswers: ['al', 'Al'] },
+    { id: 'centro', targetText: 'centro', baseText: { de: 'Zentrum', en: 'center' }, acceptedAnswers: ['centro', 'Centro'] },
   ],
   build: {
     targetText: 'Vamos a la estación.',
@@ -13777,23 +13777,23 @@ const brightSpanishP7Lesson006: GuidedLessonVibeVariant = {
     fallbackChoices: ['Vamos', 'Voy', 'Vienen', 'Llegamos'],
   },
   speakTarget: {
-    baseCue: { de: 'Lass uns zur Station fahren.' },
+    baseCue: { de: 'Lass uns zur Station fahren.', en: 'Let\'s go to the station.' },
     targetPhrase: 'Vamos a la estación.',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['vamos', 'estación'],
     optionalTokens: ['a', 'la', 'al', 'centro'],
   },
-  sceneCaption: { de: 'Beim Aufbruch zu zweit oder im Taxi sagst du kurz, wo es als nächstes hingeht.' },
+  sceneCaption: { de: 'Beim Aufbruch zu zweit oder im Taxi sagst du kurz, wo es als nächstes hingeht.', en: 'With another traveler or in a taxi, you say where you are going next.' },
   trophyWord: {
     word: 'vamos',
-    meaning: { de: 'wir gehen / wir fahren (1. Pers. Pl. ir)' },
+    meaning: { de: 'wir gehen / wir fahren (1. Pers. Pl. ir)', en: 'let\'s go / we go' },
     example: 'Vamos al centro.',
-    whyThisWord: { de: 'Vamos ist auf A1 die einfache 1.-Person-Plural-Form von „ir" — Iberisch wird sie häufig auch als Aufforderung „los geht\'s!" verwendet.' },
+    whyThisWord: { de: 'Vamos ist auf A1 die einfache 1.-Person-Plural-Form von „ir" — Iberisch wird sie häufig auch als Aufforderung „los geht\'s!" verwendet.', en: 'Vamos is the we-form of ir and also the everyday Spanish let us go. It is useful for shared movement.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Innenraum eines Taxis, kurzer Blick nach vorn, ruhige Anweisung an den Fahrer.' },
+    caption: { de: 'Innenraum eines Taxis, kurzer Blick nach vorn, ruhige Anweisung an den Fahrer.', en: 'Inside a taxi, a short look forward, and the city moving outside the window.' },
   },
   songSeed: {
     genre: 'sunny indie pop',
@@ -13806,19 +13806,19 @@ const brightSpanishP7Lesson007: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Pare aquí, por favor.',
-    baseText: { de: 'Halten Sie hier an, bitte.' },
+    baseText: { de: 'Halten Sie hier an, bitte.', en: 'Stop here, please.' },
   },
-  meaning: { de: 'Eine kurze, höfliche Anweisung an den Fahrer, an dieser Stelle anzuhalten.' },
+  meaning: { de: 'Eine kurze, höfliche Anweisung an den Fahrer, an dieser Stelle anzuhalten.', en: 'A polite instruction to a driver to stop at this spot.' },
   chunks: [
-    { id: 'pare', targetText: 'Pare', baseText: { de: 'Halten Sie an' } },
-    { id: 'aqui', targetText: 'aquí,', baseText: { de: 'hier,' } },
-    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.' } },
+    { id: 'pare', targetText: 'Pare', baseText: { de: 'Halten Sie an', en: 'Stop' } },
+    { id: 'aqui', targetText: 'aquí,', baseText: { de: 'hier,', en: 'here,' } },
+    { id: 'por-favor', targetText: 'por favor.', baseText: { de: 'bitte.', en: 'please.' } },
   ],
   lessonItems: [
-    { id: 'pare', targetText: 'pare', baseText: { de: 'halten Sie an (höflich)' }, acceptedAnswers: ['pare', 'Pare'] },
-    { id: 'aqui', targetText: 'aquí', baseText: { de: 'hier' }, acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
-    { id: 'semaforo', targetText: 'semáforo', baseText: { de: 'Ampel' }, acceptedAnswers: ['semáforo', 'semaforo', 'Semáforo', 'Semaforo'] },
-    { id: 'puerta', targetText: 'puerta', baseText: { de: 'Tür' }, acceptedAnswers: ['puerta', 'Puerta'] },
+    { id: 'pare', targetText: 'pare', baseText: { de: 'halten Sie an (höflich)', en: 'stop' }, acceptedAnswers: ['pare', 'Pare'] },
+    { id: 'aqui', targetText: 'aquí', baseText: { de: 'hier', en: 'here' }, acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+    { id: 'semaforo', targetText: 'semáforo', baseText: { de: 'Ampel', en: 'traffic light' }, acceptedAnswers: ['semáforo', 'semaforo', 'Semáforo', 'Semaforo'] },
+    { id: 'puerta', targetText: 'puerta', baseText: { de: 'Tür', en: 'door' }, acceptedAnswers: ['puerta', 'Puerta'] },
   ],
   build: {
     targetText: 'Pare aquí, por favor.',
@@ -13832,23 +13832,23 @@ const brightSpanishP7Lesson007: GuidedLessonVibeVariant = {
     fallbackChoices: ['Pare', 'Espere', 'Siga', 'Vaya'],
   },
   speakTarget: {
-    baseCue: { de: 'Halten Sie hier an, bitte.' },
+    baseCue: { de: 'Halten Sie hier an, bitte.', en: 'Stop here, please.' },
     targetPhrase: 'Pare aquí, por favor.',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['pare', 'aquí', 'por', 'favor'],
     optionalTokens: ['esquina', 'puerta'],
   },
-  sceneCaption: { de: 'Im Taxi sagst du dem Fahrer kurz und höflich, dass er hier anhalten soll.' },
+  sceneCaption: { de: 'Im Taxi sagst du dem Fahrer kurz und höflich, dass er hier anhalten soll.', en: 'In a taxi or bus, you politely ask the driver to stop here.' },
   trophyWord: {
     word: 'pare',
-    meaning: { de: 'halten Sie an (Imperativ, usted)' },
+    meaning: { de: 'halten Sie an (Imperativ, usted)', en: 'stop' },
     example: 'Pare en la esquina, por favor.',
-    whyThisWord: { de: 'Pare ist die Iberische usted-Imperativ-Form von „parar" — höflich-direkt im Taxi und Bus. Nicht zu verwechseln mit „para" (für / um zu).' },
+    whyThisWord: { de: 'Pare ist die Iberische usted-Imperativ-Form von „parar" — höflich-direkt im Taxi und Bus. Nicht zu verwechseln mit „para" (für / um zu).', en: 'Pare is the polite usted command from parar. Do not confuse pare with para, which means for or in order to.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Taxi-Innenraum, Hand zeigt auf eine Stelle vor dem Fenster, ruhige Bremse.' },
+    caption: { de: 'Taxi-Innenraum, Hand zeigt auf eine Stelle vor dem Fenster, ruhige Bremse.', en: 'Inside a taxi, a hand points toward the stop outside the window.' },
   },
   songSeed: {
     genre: 'upbeat acoustic',
@@ -13861,18 +13861,18 @@ const brightSpanishP7Lesson008: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Voy a la estación.',
-    baseText: { de: 'Ich fahre zur Station.' },
+    baseText: { de: 'Ich fahre zur Station.', en: 'I\'m going to the station.' },
   },
-  meaning: { de: 'Eine kurze Aussage über dein Ziel, zum Beispiel zum Taxifahrer oder einem Mitreisenden.' },
+  meaning: { de: 'Eine kurze Aussage über dein Ziel, zum Beispiel zum Taxifahrer oder einem Mitreisenden.', en: 'A simple traveler line for naming your destination.' },
   chunks: [
-    { id: 'voy', targetText: 'Voy', baseText: { de: 'Ich gehe / fahre' } },
-    { id: 'a-la-estacion', targetText: 'a la estación.', baseText: { de: 'zur Station.' } },
+    { id: 'voy', targetText: 'Voy', baseText: { de: 'Ich gehe / fahre', en: 'I\'m going' } },
+    { id: 'a-la-estacion', targetText: 'a la estación.', baseText: { de: 'zur Station.', en: 'to the station.' } },
   ],
   lessonItems: [
-    { id: 'voy', targetText: 'voy', baseText: { de: 'ich gehe / fahre (1 Pers. Sg. ir)' }, acceptedAnswers: ['voy', 'Voy'] },
-    { id: 'a-la', targetText: 'a la', baseText: { de: 'zur (fem.)' }, acceptedAnswers: ['a la', 'A la'] },
-    { id: 'aeropuerto', targetText: 'aeropuerto', baseText: { de: 'Flughafen' }, acceptedAnswers: ['aeropuerto', 'Aeropuerto'] },
-    { id: 'hotel', targetText: 'hotel', baseText: { de: 'Hotel' }, acceptedAnswers: ['hotel', 'Hotel'] },
+    { id: 'voy', targetText: 'voy', baseText: { de: 'ich gehe / fahre (1 Pers. Sg. ir)', en: 'I go / I am going' }, acceptedAnswers: ['voy', 'Voy'] },
+    { id: 'a-la', targetText: 'a la', baseText: { de: 'zur (fem.)', en: 'to the' }, acceptedAnswers: ['a la', 'A la'] },
+    { id: 'aeropuerto', targetText: 'aeropuerto', baseText: { de: 'Flughafen', en: 'airport' }, acceptedAnswers: ['aeropuerto', 'Aeropuerto'] },
+    { id: 'hotel', targetText: 'hotel', baseText: { de: 'Hotel', en: 'hotel' }, acceptedAnswers: ['hotel', 'Hotel'] },
   ],
   build: {
     targetText: 'Voy a la estación.',
@@ -13886,23 +13886,23 @@ const brightSpanishP7Lesson008: GuidedLessonVibeVariant = {
     fallbackChoices: ['Voy', 'Vamos', 'Vengo', 'Salgo'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich fahre zur Station.' },
+    baseCue: { de: 'Ich fahre zur Station.', en: 'I\'m going to the station.' },
     targetPhrase: 'Voy a la estación.',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['voy', 'estación'],
     optionalTokens: ['a', 'la', 'aeropuerto', 'hotel'],
   },
-  sceneCaption: { de: 'Beim Aufbruch sagst du locker, wohin du jetzt fährst.' },
+  sceneCaption: { de: 'Beim Aufbruch sagst du locker, wohin du jetzt fährst.', en: 'In traveler small talk or to a driver, you say where you are going.' },
   trophyWord: {
     word: 'voy',
-    meaning: { de: 'ich gehe / ich fahre (1. Pers. Sg. ir)' },
+    meaning: { de: 'ich gehe / ich fahre (1. Pers. Sg. ir)', en: 'I go / I am going' },
     example: 'Voy al hotel.',
-    whyThisWord: { de: 'Voy ist auf A1 die 1.-Person-Sg.-Form von „ir" und Iberisch der natürliche Marker für „ich bin auf dem Weg zu ...".' },
+    whyThisWord: { de: 'Voy ist auf A1 die 1.-Person-Sg.-Form von „ir" und Iberisch der natürliche Marker für „ich bin auf dem Weg zu ...".', en: 'Voy is the I-form of ir. Spanish uses it for I go and for near-future movement, like I am going to the station.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Bürgersteig mit Hand auf einem Taxi-Türgriff, kurze Ansage an den Fahrer.' },
+    caption: { de: 'Bürgersteig mit Hand auf einem Taxi-Türgriff, kurze Ansage an den Fahrer.', en: 'A sidewalk beside a taxi door, with a short destination line to the driver.' },
   },
   songSeed: {
     genre: 'sunny indie pop',
@@ -13915,18 +13915,18 @@ const brightSpanishP7Lesson009: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: '¿Cuánto se tarda?',
-    baseText: { de: 'Wie lange dauert es?' },
+    baseText: { de: 'Wie lange dauert es?', en: 'How long does it take?' },
   },
-  meaning: { de: 'Eine kurze Frage nach der Dauer einer Fahrt oder Strecke.' },
+  meaning: { de: 'Eine kurze Frage nach der Dauer einer Fahrt oder Strecke.', en: 'A short question about the length of a ride or route.' },
   chunks: [
-    { id: 'cuanto', targetText: '¿Cuánto', baseText: { de: 'Wie lange' } },
-    { id: 'se-tarda', targetText: 'se tarda?', baseText: { de: 'dauert es?' } },
+    { id: 'cuanto', targetText: '¿Cuánto', baseText: { de: 'Wie lange', en: 'How long' } },
+    { id: 'se-tarda', targetText: 'se tarda?', baseText: { de: 'dauert es?', en: 'does it take?' } },
   ],
   lessonItems: [
-    { id: 'tarda', targetText: 'tarda', baseText: { de: 'dauert (3 Pers. Sg. tardar)' }, acceptedAnswers: ['tarda', 'Tarda'] },
-    { id: 'se', targetText: 'se', baseText: { de: 'man / es' }, acceptedAnswers: ['se', 'Se'] },
-    { id: 'minutos', targetText: 'minutos', baseText: { de: 'Minuten' }, acceptedAnswers: ['minutos', 'Minutos'] },
-    { id: 'horas', targetText: 'horas', baseText: { de: 'Stunden' }, acceptedAnswers: ['horas', 'Horas'] },
+    { id: 'tarda', targetText: 'tarda', baseText: { de: 'dauert (3 Pers. Sg. tardar)', en: 'takes / lasts' }, acceptedAnswers: ['tarda', 'Tarda'] },
+    { id: 'se', targetText: 'se', baseText: { de: 'man / es', en: 'one / it' }, acceptedAnswers: ['se', 'Se'] },
+    { id: 'minutos', targetText: 'minutos', baseText: { de: 'Minuten', en: 'minutes' }, acceptedAnswers: ['minutos', 'Minutos'] },
+    { id: 'horas', targetText: 'horas', baseText: { de: 'Stunden', en: 'hours' }, acceptedAnswers: ['horas', 'Horas'] },
   ],
   build: {
     targetText: '¿Cuánto se tarda?',
@@ -13940,23 +13940,23 @@ const brightSpanishP7Lesson009: GuidedLessonVibeVariant = {
     fallbackChoices: ['tarda', 'dura', 'queda', 'pasa'],
   },
   speakTarget: {
-    baseCue: { de: 'Wie lange dauert es?' },
+    baseCue: { de: 'Wie lange dauert es?', en: 'How long does it take?' },
     targetPhrase: '¿Cuánto se tarda?',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['cuánto', 'tarda'],
     optionalTokens: ['se', 'minutos', 'horas'],
   },
-  sceneCaption: { de: 'Vor der Fahrt fragst du den Fahrer oder die Schalterfrau kurz nach der Dauer.' },
+  sceneCaption: { de: 'Vor der Fahrt fragst du den Fahrer oder die Schalterfrau kurz nach der Dauer.', en: 'Before or during the ride, you ask the driver or staff how long it takes.' },
   trophyWord: {
     word: 'tarda',
-    meaning: { de: 'dauert (3. Pers. Sg. tardar)' },
+    meaning: { de: 'dauert (3. Pers. Sg. tardar)', en: 'takes / lasts' },
     example: '¿Cuánto se tarda en llegar?',
-    whyThisWord: { de: 'Tarda ist auf A1 die direkte Iberische Dauer-Form — bildet in der impersonalen „se"-Konstruktion die natürlichste A1-Zeitfrage.' },
+    whyThisWord: { de: 'Tarda ist auf A1 die direkte Iberische Dauer-Form — bildet in der impersonalen „se"-Konstruktion die natürlichste A1-Zeitfrage.', en: 'Tarda is the time word in cuanto se tarda. It asks about duration, not clock time.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Blick auf die Uhr und dann auf den Fahrer, ruhige Frage in den Raum.' },
+    caption: { de: 'Blick auf die Uhr und dann auf den Fahrer, ruhige Frage in den Raum.', en: 'A quick look at a watch, then a calm question to the driver.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -13969,18 +13969,18 @@ const brightSpanishP7Lesson010: GuidedLessonVibeVariant = {
   contentStatus: 'draft',
   corePhrase: {
     targetText: 'Ya he llegado. Todo bien.',
-    baseText: { de: 'Ich bin angekommen. Alles gut.' },
+    baseText: { de: 'Ich bin angekommen. Alles gut.', en: 'I\'ve arrived. All good.' },
   },
-  meaning: { de: 'Ein warmer Abschluss nach einer Fahrt — du steigst aus und sagst kurz Bescheid.' },
+  meaning: { de: 'Ein warmer Abschluss nach einer Fahrt — du steigst aus und sagst kurz Bescheid.', en: 'A warm closing line after arriving safely.' },
   chunks: [
-    { id: 'ya-he-llegado', targetText: 'Ya he llegado.', baseText: { de: 'Ich bin angekommen.' } },
-    { id: 'todo-bien', targetText: 'Todo bien.', baseText: { de: 'Alles gut.' } },
+    { id: 'ya-he-llegado', targetText: 'Ya he llegado.', baseText: { de: 'Ich bin angekommen.', en: 'I\'ve arrived.' } },
+    { id: 'todo-bien', targetText: 'Todo bien.', baseText: { de: 'Alles gut.', en: 'All good.' } },
   ],
   lessonItems: [
-    { id: 'llegado', targetText: 'llegado', baseText: { de: 'angekommen (feste A1-Wendung „he llegado")' }, acceptedAnswers: ['llegado', 'Llegado'] },
-    { id: 'he', targetText: 'he', baseText: { de: 'ich habe (Hilfsverb)' }, acceptedAnswers: ['he', 'He'] },
-    { id: 'aqui', targetText: 'aquí', baseText: { de: 'hier' }, acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
-    { id: 'todo-bien', targetText: 'todo bien', baseText: { de: 'alles gut' }, acceptedAnswers: ['todo bien', 'Todo bien'] },
+    { id: 'llegado', targetText: 'llegado', baseText: { de: 'angekommen (feste A1-Wendung „he llegado")', en: 'arrived' }, acceptedAnswers: ['llegado', 'Llegado'] },
+    { id: 'he', targetText: 'he', baseText: { de: 'ich habe (Hilfsverb)', en: 'I have' }, acceptedAnswers: ['he', 'He'] },
+    { id: 'aqui', targetText: 'aquí', baseText: { de: 'hier', en: 'here' }, acceptedAnswers: ['aquí', 'aqui', 'Aquí', 'Aqui'] },
+    { id: 'todo-bien', targetText: 'todo bien', baseText: { de: 'alles gut', en: 'all good' }, acceptedAnswers: ['todo bien', 'Todo bien'] },
   ],
   build: {
     targetText: 'Ya he llegado. Todo bien.',
@@ -13994,23 +13994,23 @@ const brightSpanishP7Lesson010: GuidedLessonVibeVariant = {
     fallbackChoices: ['llegado', 'salido', 'pasado', 'venido'],
   },
   speakTarget: {
-    baseCue: { de: 'Ich bin angekommen. Alles gut.' },
+    baseCue: { de: 'Ich bin angekommen. Alles gut.', en: 'I\'ve arrived. All good.' },
     targetPhrase: 'Ya he llegado. Todo bien.',
     language: 'es-ES',
     passingThreshold: 0.8,
     requiredTokens: ['llegado'],
     optionalTokens: ['ya', 'he', 'todo', 'bien'],
   },
-  sceneCaption: { de: 'Beim Aussteigen aus dem Taxi gibst du dem Fahrer kurz eine ruhige Rückmeldung.' },
+  sceneCaption: { de: 'Beim Aussteigen aus dem Taxi gibst du dem Fahrer kurz eine ruhige Rückmeldung.', en: 'As you get out of the taxi or train, you briefly say you have arrived and all is fine.' },
   trophyWord: {
     word: 'llegado',
-    meaning: { de: 'angekommen (Partizip „llegar"; feste A1-Wendung „he llegado")' },
+    meaning: { de: 'angekommen (Partizip „llegar"; feste A1-Wendung „he llegado")', en: 'arrived' },
     example: 'Ya he llegado al hotel.',
-    whyThisWord: { de: 'Llegado in der festen Iberischen Wendung „he llegado" markiert die Ankunft auf A1 — als ganzer Chunk lernen, nicht Grammatik dahinter zerlegen.' },
+    whyThisWord: { de: 'Llegado in der festen Iberischen Wendung „he llegado" markiert die Ankunft auf A1 — als ganzer Chunk lernen, nicht Grammatik dahinter zerlegen.', en: 'Llegado is the arrived part of he llegado, the Spain Spanish chunk for I have arrived. Learn the whole chunk for arrival messages.' },
   },
   placeholderMedia: {
     type: 'video',
-    caption: { de: 'Taxi-Tür beim Aussteigen, ruhiger Dank zum Fahrer, sanftes Stadtlicht.' },
+    caption: { de: 'Taxi-Tür beim Aussteigen, ruhiger Dank zum Fahrer, sanftes Stadtlicht.', en: 'A taxi door opening at arrival, a calm thank-you moment, and soft city light.' },
   },
   songSeed: {
     genre: 'sunny acoustic',
@@ -47846,9 +47846,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-001-ida-vuelta',
       sequence: 1,
-      title: { de: 'Hin- und Rückfahrkarte' },
+      title: { de: 'Hin- und Rückfahrkarte', en: 'Round-trip ticket' },
     },
-    title: { de: 'Hin- und Rückfahrkarte' },
+    title: { de: 'Hin- und Rückfahrkarte', en: 'Round-trip ticket' },
     situation: {
       en: 'At a station counter, ask for a return ticket.',
       de: 'Am Schalter bestellst du eine Hin- und Rückfahrkarte.',
@@ -47860,8 +47860,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wo ist der Bahnhof?' },
-      situation: { de: 'Du fragst nach der Station.' },
+      title: { de: 'Wo ist der Bahnhof?', en: 'Where is the station?' },
+      situation: { de: 'Du fragst nach der Station.', en: 'You ask where the station is.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson001,
@@ -47879,9 +47879,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-002-donde-estacion',
       sequence: 2,
-      title: { de: 'Wo ist die Station?' },
+      title: { de: 'Wo ist die Station?', en: 'Where is the station?' },
     },
-    title: { de: 'Wo ist die Station?' },
+    title: { de: 'Wo ist die Station?', en: 'Where is the station?' },
     situation: {
       en: 'Near a station, ask politely where it is.',
       de: 'Nahe der Station fragst du höflich nach dem Standort.',
@@ -47893,8 +47893,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wann fährt es ab?' },
-      situation: { de: 'Du fragst nach der Abfahrtszeit.' },
+      title: { de: 'Wann fährt es ab?', en: 'What time does it leave?' },
+      situation: { de: 'Du fragst nach der Abfahrtszeit.', en: 'You ask about the departure time.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson002,
@@ -47912,9 +47912,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-003-a-que-hora-sale',
       sequence: 3,
-      title: { de: 'Wann fährt es ab?' },
+      title: { de: 'Wann fährt es ab?', en: 'What time does it leave?' },
     },
-    title: { de: 'Wann fährt es ab?' },
+    title: { de: 'Wann fährt es ab?', en: 'What time does it leave?' },
     situation: {
       en: 'At a station counter or platform, ask the departure time.',
       de: 'Am Schalter oder Bahnsteig fragst du nach der Abfahrtszeit.',
@@ -47926,8 +47926,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ist das der Bahnsteig?' },
-      situation: { de: 'Du prüfst den richtigen Bahnsteig.' },
+      title: { de: 'Ist das der Bahnsteig?', en: 'Is this the platform?' },
+      situation: { de: 'Du prüfst den richtigen Bahnsteig.', en: 'You check the right platform.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson003,
@@ -47945,9 +47945,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-004-es-este-anden',
       sequence: 4,
-      title: { de: 'Ist das der Bahnsteig?' },
+      title: { de: 'Ist das der Bahnsteig?', en: 'Is this the platform?' },
     },
-    title: { de: 'Ist das der Bahnsteig?' },
+    title: { de: 'Ist das der Bahnsteig?', en: 'Is this the platform?' },
     situation: {
       en: 'On a station platform, confirm this is the right one.',
       de: 'Auf dem Bahnsteig prüfst du, ob du richtig stehst.',
@@ -47959,8 +47959,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ich brauche ein Taxi' },
-      situation: { de: 'Du bittest um ein Taxi.' },
+      title: { de: 'Ich brauche ein Taxi', en: 'I need a taxi' },
+      situation: { de: 'Du bittest um ein Taxi.', en: 'You ask for a taxi.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson004,
@@ -47978,9 +47978,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-005-necesito-taxi',
       sequence: 5,
-      title: { de: 'Ich brauche ein Taxi' },
+      title: { de: 'Ich brauche ein Taxi', en: 'I need a taxi' },
     },
-    title: { de: 'Ich brauche ein Taxi' },
+    title: { de: 'Ich brauche ein Taxi', en: 'I need a taxi' },
     situation: {
       en: 'On the sidewalk or at a hotel, ask for a taxi.',
       de: 'Auf dem Gehweg oder vor dem Hotel bittest du um ein Taxi.',
@@ -47992,8 +47992,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wir fahren zur Station' },
-      situation: { de: 'Du gibst eine gemeinsame Richtung an.' },
+      title: { de: 'Wir fahren zur Station', en: 'Let\'s go to the station' },
+      situation: { de: 'Du gibst eine gemeinsame Richtung an.', en: 'You name the shared direction.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson005,
@@ -48011,9 +48011,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-006-vamos-estacion',
       sequence: 6,
-      title: { de: 'Wir fahren zur Station' },
+      title: { de: 'Wir fahren zur Station', en: 'Let\'s go to the station' },
     },
-    title: { de: 'Wir fahren zur Station' },
+    title: { de: 'Wir fahren zur Station', en: 'Let\'s go to the station' },
     situation: {
       en: 'In a shared moment, name where the two of you are heading.',
       de: 'Zu zweit benennst du locker das gemeinsame Ziel.',
@@ -48025,8 +48025,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Halten Sie hier an' },
-      situation: { de: 'Du gibst dem Fahrer die Anweisung anzuhalten.' },
+      title: { de: 'Halten Sie hier an', en: 'Stop here' },
+      situation: { de: 'Du gibst dem Fahrer die Anweisung anzuhalten.', en: 'You ask the driver to stop.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson006,
@@ -48044,9 +48044,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-007-pare-aqui',
       sequence: 7,
-      title: { de: 'Halten Sie hier an' },
+      title: { de: 'Halten Sie hier an', en: 'Stop here' },
     },
-    title: { de: 'Halten Sie hier an' },
+    title: { de: 'Halten Sie hier an', en: 'Stop here' },
     situation: {
       en: 'In a taxi or bus, ask the driver to stop here.',
       de: 'Im Taxi oder Bus bittest du den Fahrer anzuhalten.',
@@ -48058,8 +48058,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ich fahre zur Station' },
-      situation: { de: 'Du nennst dein Ziel.' },
+      title: { de: 'Ich fahre zur Station', en: 'I\'m going to the station' },
+      situation: { de: 'Du nennst dein Ziel.', en: 'You name your destination.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson007,
@@ -48077,9 +48077,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-008-voy-estacion',
       sequence: 8,
-      title: { de: 'Ich fahre zur Station' },
+      title: { de: 'Ich fahre zur Station', en: 'I\'m going to the station' },
     },
-    title: { de: 'Ich fahre zur Station' },
+    title: { de: 'Ich fahre zur Station', en: 'I\'m going to the station' },
     situation: {
       en: 'In casual traveler talk or to a driver, name where you are heading.',
       de: 'Im lockeren Reisegespräch oder im Taxi nennst du dein Ziel.',
@@ -48091,8 +48091,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Wie lange dauert es?' },
-      situation: { de: 'Du fragst nach der Dauer der Fahrt.' },
+      title: { de: 'Wie lange dauert es?', en: 'How long does it take?' },
+      situation: { de: 'Du fragst nach der Dauer der Fahrt.', en: 'You ask how long the ride takes.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson008,
@@ -48110,9 +48110,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-009-cuanto-se-tarda',
       sequence: 9,
-      title: { de: 'Wie lange dauert es?' },
+      title: { de: 'Wie lange dauert es?', en: 'How long does it take?' },
     },
-    title: { de: 'Wie lange dauert es?' },
+    title: { de: 'Wie lange dauert es?', en: 'How long does it take?' },
     situation: {
       en: 'Before or during a ride, ask the duration.',
       de: 'Vor oder während der Fahrt fragst du nach der Dauer.',
@@ -48124,8 +48124,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Ich bin angekommen' },
-      situation: { de: 'Du schließt die Fahrt warm ab.' },
+      title: { de: 'Ich bin angekommen', en: 'I\'ve arrived' },
+      situation: { de: 'Du schließt die Fahrt warm ab.', en: 'You close the ride warmly.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson009,
@@ -48143,9 +48143,9 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     lessonMetadata: {
       id: 'spanish-a1-practical-7-010-ya-he-llegado',
       sequence: 10,
-      title: { de: 'Ich bin angekommen' },
+      title: { de: 'Ich bin angekommen', en: 'I\'ve arrived' },
     },
-    title: { de: 'Ich bin angekommen' },
+    title: { de: 'Ich bin angekommen', en: 'I\'ve arrived' },
     situation: {
       en: 'Stepping out of a taxi or train, announce arrival politely.',
       de: 'Beim Aussteigen aus Taxi oder Zug schließt du die Fahrt höflich ab.',
@@ -48157,8 +48157,8 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
     fallbackVibeId: DEFAULT_GUIDED_VIBE_ID,
     status: 'active',
     nextLessonTeaser: {
-      title: { de: 'Pfad abgeschlossen' },
-      situation: { de: 'Du hast Spanish A1 Practical 7 abgeschlossen.' },
+      title: { de: 'Pfad abgeschlossen', en: 'Path complete' },
+      situation: { de: 'Du hast Spanish A1 Practical 7 abgeschlossen.', en: 'You finished Spanish A1 Practical 7.' },
     },
     vibeVariants: {
       bright: brightSpanishP7Lesson010,
