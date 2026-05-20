@@ -1200,6 +1200,17 @@ const GUIDED_TODAY_PATH_POLISH_FIVE_METADATA: GuidedPathMetadata = {
   targetLanguage: 'Polish',
   estimatedMinutes: 5,
 }
+
+const GUIDED_TODAY_PATH_POLISH_SIX_METADATA: GuidedPathMetadata = {
+  id: 'polish-a1-practical-6',
+  title: 'Polnisch A1 Praxis 6',
+  shortTitle: 'A1 Praxis 6',
+  subtitle: { de: 'Gesundheit, Apotheke und kleine Bedürfnisse auf Polnisch' },
+  level: 'A1',
+  baseLanguage: 'German',
+  targetLanguage: 'Polish',
+  estimatedMinutes: 5,
+}
 const GUIDED_TODAY_STEPS: GuidedLessonStep[] = ['scene', 'matchPairs', 'build', 'type', 'speak', 'complete']
 
 const LESSON_001_SPEAK_CORE = {
@@ -48251,6 +48262,520 @@ const polishA1Practical5Lessons = makePolishPracticalLessons(
   'Du hast Polnisch A1 Praxis 5 abgeschlossen.',
 )
 
+const polishA1Practical6Inputs: PolishP1LessonInput[] = [
+  {
+    slug: 'feel-unwell',
+    title: { de: 'Mir geht es nicht gut' },
+    situation: {
+      en: 'At a pharmacy or hotel desk, say that you do not feel well.',
+      de: 'An der Apotheke oder Hotel-Rezeption sagst du, dass es dir nicht gut geht.',
+    },
+    pedagogicalGoal: 'Mit Czuję się źle eine A1-Befindenskommunikation im Gesundheitskontext formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, czuję się źle.',
+        baseText: { de: 'Entschuldigung, mir geht es nicht gut.' },
+      },
+      meaning: { de: 'Eine ruhige A1-Befindenskommunikation ohne medizinische Details.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'czuje-sie', targetText: 'czuję się', baseText: { de: 'mir geht es' } },
+        { id: 'zle', targetText: 'źle.', baseText: { de: 'nicht gut.' } },
+      ],
+      lessonItems: [
+        { id: 'czuje-sie', targetText: 'czuję się', baseText: { de: 'ich fühle mich' }, acceptedAnswers: polishAnswers('czuję się', 'Czuję się', 'czuje sie', 'Czuje sie') },
+        { id: 'zle', targetText: 'źle', baseText: { de: 'schlecht (Adverb)' }, acceptedAnswers: polishAnswers('źle', 'Źle', 'zle', 'Zle') },
+        { id: 'chory', targetText: 'chory', baseText: { de: 'krank (maskulin)' }, acceptedAnswers: polishAnswers('chory', 'Chory') },
+        { id: 'chora', targetText: 'chora', baseText: { de: 'krank (feminin)' }, acceptedAnswers: polishAnswers('chora', 'Chora') },
+      ],
+      buildChips: ['Przepraszam,', 'czuję się', 'źle.', 'chory.', 'chora.'],
+      typeRecall: {
+        before: 'Przepraszam, czuję się ',
+        answer: 'źle',
+        after: '.',
+        acceptedAnswers: polishAnswers('źle', 'Źle', 'zle', 'Zle'),
+        fallbackChoices: ['źle', 'dobrze', 'lepiej', 'gorzej'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, mir geht es nicht gut.' },
+        targetPhrase: 'Przepraszam, czuję się źle.',
+        requiredTokens: ['przepraszam', 'czuję', 'się', 'źle'],
+        optionalTokens: ['chory', 'chora'],
+      },
+      sceneCaption: { de: 'Hotel-Rezeption oder Apotheke, ruhige Befindenskommunikation.' },
+      trophyWord: {
+        word: 'źle',
+        meaning: { de: 'schlecht / nicht gut (Adverb)' },
+        example: 'Czuję się źle.',
+        whyThisWord: { de: 'Źle ist das Adverb zu zły (schlecht). Im Polnischen wird das Befinden mit der reflexiven Konstruktion czuć się + Adverb ausgedrückt: czuję się źle (mir geht es schlecht), czuję się dobrze (mir geht es gut). Pendant für Steigerung: gorzej (schlechter), lepiej (besser). Achtung: das Adjektiv zły verändert sich nach Geschlecht (zły / zła / złe); das Adverb źle bleibt immer gleich.' },
+      },
+      placeholderCaption: { de: 'Ruhige Befindenskommunikation an einem Hilfspunkt.' },
+      songMood: 'gentle health admission',
+      visualNotes: 'Subdued lighting, hand on stomach, źle as adverbial state.',
+    }),
+  },
+  {
+    slug: 'pharmacy-nearby',
+    title: { de: 'Gibt es hier eine Apotheke?' },
+    situation: {
+      en: 'On the sidewalk, ask whether a pharmacy is nearby.',
+      de: 'Auf dem Gehweg fragst du, ob hier eine Apotheke ist.',
+    },
+    pedagogicalGoal: 'Mit Czy tu jest apteka? eine A1-Lokationsfrage nach einer Apotheke stellen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, czy tu jest apteka?',
+        baseText: { de: 'Entschuldigung, gibt es hier eine Apotheke?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach einer Apotheke im Umkreis.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'czy-tu-jest', targetText: 'czy tu jest', baseText: { de: 'gibt es hier' } },
+        { id: 'apteka', targetText: 'apteka?', baseText: { de: 'eine Apotheke?' } },
+      ],
+      lessonItems: [
+        { id: 'tu', targetText: 'tu', baseText: { de: 'hier' }, acceptedAnswers: polishAnswers('tu', 'Tu') },
+        { id: 'apteka', targetText: 'apteka', baseText: { de: 'Apotheke (Grundform)' }, acceptedAnswers: polishAnswers('apteka', 'Apteka') },
+        { id: 'aptece', targetText: 'aptece', baseText: { de: 'Apotheke (Lokativ Sg.)' }, acceptedAnswers: polishAnswers('aptece', 'Aptece') },
+        { id: 'sklep', targetText: 'sklep', baseText: { de: 'Geschäft' }, acceptedAnswers: polishAnswers('sklep', 'Sklep') },
+      ],
+      buildChips: ['Przepraszam,', 'czy tu jest', 'apteka?', 'szpital?', 'sklep?'],
+      typeRecall: {
+        before: 'Przepraszam, czy tu jest ',
+        answer: 'apteka',
+        after: '?',
+        acceptedAnswers: polishAnswers('apteka', 'Apteka'),
+        fallbackChoices: ['apteka', 'szpital', 'sklep', 'kawiarnia'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, gibt es hier eine Apotheke?' },
+        targetPhrase: 'Przepraszam, czy tu jest apteka?',
+        requiredTokens: ['przepraszam', 'czy', 'tu', 'jest', 'apteka'],
+        optionalTokens: [],
+      },
+      sceneCaption: { de: 'Gehweg, prüfender Blick zur Seite, ruhige Lokationsfrage.' },
+      trophyWord: {
+        word: 'apteka',
+        meaning: { de: 'Apotheke' },
+        example: 'Czy tu jest apteka?',
+        whyThisWord: { de: 'Apteka ist feminin. Nominativ Singular: apteka. Lokativ Singular: aptece. Im Satz Czy tu jest apteka? steht apteka im Nominativ als Subjekt von jest. Für "in der Apotheke" verwendet man w aptece (w + Lokativ). Plural Nominativ: apteki. In Polen sind Apotheken meist mit grünem Kreuz oder rotem Apteka-Schild markiert.' },
+      },
+      placeholderCaption: { de: 'Bürgersteig, im Hintergrund vielleicht ein grünes Apothekenschild.' },
+      songMood: 'practical pharmacy search',
+      visualNotes: 'Sidewalk, green pharmacy cross icon, apteka as fem. noun.',
+    }),
+  },
+  {
+    slug: 'medicine-please',
+    title: { de: 'Ein Medikament, bitte' },
+    situation: {
+      en: 'At a pharmacy counter, ask for medicine in a general way.',
+      de: 'An der Apothekentheke fragst du allgemein nach einem Medikament.',
+    },
+    pedagogicalGoal: 'Mit Poproszę lekarstwo eine A1-Bitte um Medikament mit Neutrum-Akkusativ formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę lekarstwo.',
+        baseText: { de: 'Ein Medikament, bitte.' },
+      },
+      meaning: { de: 'Eine bewusst unterspezifizierte A1-Bitte um Medikament an der Apothekentheke.' },
+      chunks: [
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Bitte' } },
+        { id: 'lekarstwo', targetText: 'lekarstwo.', baseText: { de: 'ein Medikament.' } },
+      ],
+      lessonItems: [
+        { id: 'lekarstwo', targetText: 'lekarstwo', baseText: { de: 'Medikament (neutrum)' }, acceptedAnswers: polishAnswers('lekarstwo', 'Lekarstwo') },
+        { id: 'lek', targetText: 'lek', baseText: { de: 'Arznei (maskulin, kürzer)' }, acceptedAnswers: polishAnswers('lek', 'Lek') },
+        { id: 'tabletki', targetText: 'tabletki', baseText: { de: 'Tabletten (Plural)' }, acceptedAnswers: polishAnswers('tabletki', 'Tabletki') },
+        { id: 'recepta', targetText: 'recepta', baseText: { de: 'Rezept' }, acceptedAnswers: polishAnswers('recepta', 'Recepta') },
+      ],
+      buildChips: ['Poproszę', 'lekarstwo.', 'tabletki.', 'na receptę.'],
+      typeRecall: {
+        before: 'Poproszę ',
+        answer: 'lekarstwo',
+        after: '.',
+        acceptedAnswers: polishAnswers('lekarstwo', 'Lekarstwo'),
+        fallbackChoices: ['lekarstwo', 'tabletki', 'wodę', 'paragon'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ein Medikament, bitte.' },
+        targetPhrase: 'Poproszę lekarstwo.',
+        requiredTokens: ['poproszę', 'lekarstwo'],
+        optionalTokens: ['tabletki', 'receptę'],
+      },
+      sceneCaption: { de: 'Apothekentheke, ruhige unspezifische Bitte am Anfang des Gesprächs.' },
+      trophyWord: {
+        word: 'lekarstwo',
+        meaning: { de: 'Medikament' },
+        example: 'Poproszę lekarstwo.',
+        whyThisWord: { de: 'Lekarstwo ist neutrum. Akkusativ Singular gleich Nominativ Singular: lekarstwo. Plural: lekarstwa. Verwandte A1-Wörter: lek (Arznei, maskulin, kürzer), tabletki (Tabletten, Plural), recepta (Rezept, feminin). Im A1-Polnischen ist lekarstwo der allgemeinste Begriff; an der Theke öffnet er das Gespräch, bevor spezifische Details folgen.' },
+      },
+      placeholderCaption: { de: 'Apothekentheke, neutrale Bitte um Medikament.' },
+      songMood: 'pharmacy opener',
+      visualNotes: 'Counter with shelf of boxes, lekarstwo as neut. noun.',
+    }),
+  },
+  {
+    slug: 'it-hurts-here',
+    title: { de: 'Hier tut es weh' },
+    situation: {
+      en: 'At a pharmacy or doctor reception, point to a body location and say it hurts.',
+      de: 'An der Apotheken- oder Arztrezeption zeigst du auf eine Körperstelle und sagst, dass es wehtut.',
+    },
+    pedagogicalGoal: 'Mit Boli mnie tu die A1-Schmerz-Konstruktion mit Akkusativ-Pronomen einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Boli mnie tu.',
+        baseText: { de: 'Hier tut es mir weh.' },
+      },
+      meaning: { de: 'Die A1-Standardphrase für die ortsbezogene Schmerzangabe.' },
+      chunks: [
+        { id: 'boli', targetText: 'Boli', baseText: { de: 'Es tut weh' } },
+        { id: 'mnie', targetText: 'mnie', baseText: { de: 'mir' } },
+        { id: 'tu', targetText: 'tu.', baseText: { de: 'hier.' } },
+      ],
+      lessonItems: [
+        { id: 'boli', targetText: 'boli', baseText: { de: 'es tut weh (3. Person Sg.)' }, acceptedAnswers: polishAnswers('boli', 'Boli') },
+        { id: 'mnie', targetText: 'mnie', baseText: { de: 'mich (Akkusativ)' }, acceptedAnswers: polishAnswers('mnie', 'Mnie') },
+        { id: 'tu', targetText: 'tu', baseText: { de: 'hier' }, acceptedAnswers: polishAnswers('tu', 'Tu') },
+        { id: 'reka', targetText: 'ręka', baseText: { de: 'Hand / Arm (feminin)' }, acceptedAnswers: polishAnswers('ręka', 'Ręka', 'reka', 'Reka') },
+      ],
+      buildChips: ['Boli', 'mnie', 'tu.', 'ręka', 'noga'],
+      typeRecall: {
+        before: '',
+        answer: 'Boli',
+        after: ' mnie tu.',
+        acceptedAnswers: polishAnswers('Boli', 'boli'),
+        fallbackChoices: ['Boli', 'Mam', 'Czuję', 'Bardzo'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Hier tut es mir weh.' },
+        targetPhrase: 'Boli mnie tu.',
+        requiredTokens: ['boli', 'mnie', 'tu'],
+        optionalTokens: ['tutaj'],
+      },
+      sceneCaption: { de: 'Behandlungsraum oder Apotheke, ruhige Schmerzlokalisierung mit Geste.' },
+      trophyWord: {
+        word: 'boli',
+        meaning: { de: 'es tut weh (3. Person Sg., imperfektiv)' },
+        example: 'Boli mnie tu.',
+        whyThisWord: { de: 'Boli ist die 3. Person Singular Präsens des imperfektiven Verbs boleć (wehtun). Die A1-Schmerz-Konstruktion ist eigenartig: das schmerzende Körperteil ist Subjekt (im Nominativ), die leidende Person steht im Akkusativ. Boli mnie głowa wörtlich "es-schmerzt mich Kopf". Plural: bolą mnie nogi (mir tun die Beine weh). Diese Konstruktion gibt es im Deutschen nicht direkt — kein "ich habe", sondern "es schmerzt mich".' },
+      },
+      placeholderCaption: { de: 'Pointing gesture toward a body location, gentle health complaint.' },
+      songMood: 'localised discomfort',
+      visualNotes: 'Hand on body part, calm posture, boli construction explained.',
+    }),
+  },
+  {
+    slug: 'headache',
+    title: { de: 'Mir tut der Kopf weh' },
+    situation: {
+      en: 'At a pharmacy counter, state a common symptom: a headache.',
+      de: 'An der Apothekentheke nennst du ein häufiges Symptom: Kopfschmerzen.',
+    },
+    pedagogicalGoal: 'Mit Boli mnie głowa die A1-Kopfweh-Konstruktion und das Nomen głowa festigen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Boli mnie głowa.',
+        baseText: { de: 'Mir tut der Kopf weh.' },
+      },
+      meaning: { de: 'Die A1-Standardphrase für Kopfschmerzen ohne Hilfsmittel.' },
+      chunks: [
+        { id: 'boli-mnie', targetText: 'Boli mnie', baseText: { de: 'Mir tut weh' } },
+        { id: 'glowa', targetText: 'głowa.', baseText: { de: 'der Kopf.' } },
+      ],
+      lessonItems: [
+        { id: 'glowa', targetText: 'głowa', baseText: { de: 'Kopf (feminin)' }, acceptedAnswers: polishAnswers('głowa', 'Głowa', 'glowa', 'Glowa') },
+        { id: 'brzuch', targetText: 'brzuch', baseText: { de: 'Bauch (maskulin)' }, acceptedAnswers: polishAnswers('brzuch', 'Brzuch') },
+        { id: 'gardlo', targetText: 'gardło', baseText: { de: 'Hals (neutrum)' }, acceptedAnswers: polishAnswers('gardło', 'Gardło', 'gardlo', 'Gardlo') },
+        { id: 'zeby', targetText: 'zęby', baseText: { de: 'Zähne (Plural)' }, acceptedAnswers: polishAnswers('zęby', 'Zęby', 'zeby', 'Zeby') },
+      ],
+      buildChips: ['Boli mnie', 'głowa.', 'brzuch.', 'gardło.', 'zęby.'],
+      typeRecall: {
+        before: 'Boli mnie ',
+        answer: 'głowa',
+        after: '.',
+        acceptedAnswers: polishAnswers('głowa', 'Głowa', 'glowa', 'Glowa'),
+        fallbackChoices: ['głowa', 'brzuch', 'gardło', 'noga'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Mir tut der Kopf weh.' },
+        targetPhrase: 'Boli mnie głowa.',
+        requiredTokens: ['boli', 'mnie', 'głowa'],
+        optionalTokens: ['gardło', 'brzuch'],
+      },
+      sceneCaption: { de: 'Apothekentheke, ruhige Erklärung der Kopfschmerzen.' },
+      trophyWord: {
+        word: 'głowa',
+        meaning: { de: 'Kopf' },
+        example: 'Boli mnie głowa.',
+        whyThisWord: { de: 'Głowa ist feminin (Polish anatomy is full of unexpected genders for German learners — Kopf ist deutsch maskulin, polnisch feminin). Nominativ Singular: głowa. In der Schmerz-Konstruktion bleibt głowa im Nominativ als Subjekt von boli. Andere A1-Körperteile: brzuch (Bauch, maskulin), gardło (Hals/Rachen, neutrum), zęby (Zähne, Plural), noga (Bein, feminin), ręka (Hand/Arm, feminin).' },
+      },
+      placeholderCaption: { de: 'Apothekentheke, Hand an der Stirn, ruhige Kopfschmerzangabe.' },
+      songMood: 'common symptom',
+      visualNotes: 'Hand to forehead, pharmacy shelves behind, głowa with fem. gender flag.',
+    }),
+  },
+  {
+    slug: 'water-please',
+    title: { de: 'Wasser, bitte' },
+    situation: {
+      en: 'At a pharmacy or café, ask for water politely.',
+      de: 'In Apotheke oder Café bittest du höflich um Wasser.',
+    },
+    pedagogicalGoal: 'Mit Poproszę wodę die einfache Bestellung von Wasser im Akkusativ einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Poproszę wodę.',
+        baseText: { de: 'Wasser, bitte.' },
+      },
+      meaning: { de: 'Die kürzeste A1-Bitte um Wasser.' },
+      chunks: [
+        { id: 'poprosze', targetText: 'Poproszę', baseText: { de: 'Bitte' } },
+        { id: 'wode', targetText: 'wodę.', baseText: { de: 'Wasser.' } },
+      ],
+      lessonItems: [
+        { id: 'woda', targetText: 'woda', baseText: { de: 'Wasser (Grundform)' }, acceptedAnswers: polishAnswers('woda', 'Woda') },
+        { id: 'wode', targetText: 'wodę', baseText: { de: 'Wasser (Akkusativ Sg.)' }, acceptedAnswers: polishAnswers('wodę', 'Wodę', 'wode', 'Wode') },
+        { id: 'sok', targetText: 'sok', baseText: { de: 'Saft (maskulin)' }, acceptedAnswers: polishAnswers('sok', 'Sok') },
+        { id: 'szklanke', targetText: 'szklankę', baseText: { de: 'Glas (Akkusativ Sg.)' }, acceptedAnswers: polishAnswers('szklankę', 'Szklankę', 'szklanke', 'Szklanke') },
+      ],
+      buildChips: ['Poproszę', 'wodę.', 'sok.', 'szklankę wody'],
+      typeRecall: {
+        before: 'Poproszę ',
+        answer: 'wodę',
+        after: '.',
+        acceptedAnswers: polishAnswers('wodę', 'Wodę', 'wode', 'Wode'),
+        fallbackChoices: ['wodę', 'kawę', 'herbatę', 'sok'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Wasser, bitte.' },
+        targetPhrase: 'Poproszę wodę.',
+        requiredTokens: ['poproszę', 'wodę'],
+        optionalTokens: ['sok', 'szklankę'],
+      },
+      sceneCaption: { de: 'Theke, Glas Wasser im Hintergrund, kurze freundliche Bitte.' },
+      trophyWord: {
+        word: 'woda',
+        meaning: { de: 'Wasser' },
+        example: 'Poproszę wodę.',
+        whyThisWord: { de: 'Woda ist feminin (Polish — wieder ein deutsch-neutrum / polnisch-feminin: Wasser ist DE Neutrum, PL Feminin). Akkusativ Singular: wodę. Im Satz Poproszę wodę steht das Nomen im Akkusativ als direktes Objekt der Bestellbitte. Genitiv: wody (z. B. szklanka wody — ein Glas Wasser, weil Mengen-Genitiv). A1-Service-Standard für Wasserbestellung.' },
+      },
+      placeholderCaption: { de: 'Theke, Glas mit Wasser, kurze Wasserbestellung.' },
+      songMood: 'simple water order',
+      visualNotes: 'Water glass on counter, woda with fem.gender note.',
+    }),
+  },
+  {
+    slug: 'doctor-nearby',
+    title: { de: 'Ist hier ein Arzt?' },
+    situation: {
+      en: 'At a hotel desk or public place, ask whether a doctor is available (non-emergency).',
+      de: 'An der Hotel-Rezeption oder einem öffentlichen Ort fragst du, ob ein Arzt da ist (nicht-Notfall).',
+    },
+    pedagogicalGoal: 'Mit Czy tu jest lekarz? die A1-Frage nach einem Arzt formulieren und maskulin-belebt einführen.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Przepraszam, czy tu jest lekarz?',
+        baseText: { de: 'Entschuldigung, ist hier ein Arzt?' },
+      },
+      meaning: { de: 'Die A1-Standardfrage nach einem Arzt ohne Notfall-Eskalation.' },
+      chunks: [
+        { id: 'przepraszam', targetText: 'Przepraszam,', baseText: { de: 'Entschuldigung,' } },
+        { id: 'czy-tu-jest', targetText: 'czy tu jest', baseText: { de: 'ist hier' } },
+        { id: 'lekarz', targetText: 'lekarz?', baseText: { de: 'ein Arzt?' } },
+      ],
+      lessonItems: [
+        { id: 'lekarz', targetText: 'lekarz', baseText: { de: 'Arzt (maskulin belebt)' }, acceptedAnswers: polishAnswers('lekarz', 'Lekarz') },
+        { id: 'lekarka', targetText: 'lekarka', baseText: { de: 'Ärztin (feminin)' }, acceptedAnswers: polishAnswers('lekarka', 'Lekarka') },
+        { id: 'pielegniarka', targetText: 'pielęgniarka', baseText: { de: 'Krankenschwester' }, acceptedAnswers: polishAnswers('pielęgniarka', 'Pielęgniarka', 'pielegniarka', 'Pielegniarka') },
+        { id: 'szpital', targetText: 'szpital', baseText: { de: 'Krankenhaus' }, acceptedAnswers: polishAnswers('szpital', 'Szpital') },
+      ],
+      buildChips: ['Przepraszam,', 'czy tu jest', 'lekarz?', 'lekarka?', 'szpital?'],
+      typeRecall: {
+        before: 'Przepraszam, czy tu jest ',
+        answer: 'lekarz',
+        after: '?',
+        acceptedAnswers: polishAnswers('lekarz', 'Lekarz'),
+        fallbackChoices: ['lekarz', 'lekarka', 'szpital', 'apteka'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Entschuldigung, ist hier ein Arzt?' },
+        targetPhrase: 'Przepraszam, czy tu jest lekarz?',
+        requiredTokens: ['przepraszam', 'czy', 'tu', 'jest', 'lekarz'],
+        optionalTokens: ['lekarka'],
+      },
+      sceneCaption: { de: 'Hotel-Rezeption oder Empfang, ruhige Bitte um ärztliche Hilfe.' },
+      trophyWord: {
+        word: 'lekarz',
+        meaning: { de: 'Arzt' },
+        example: 'Czy tu jest lekarz?',
+        whyThisWord: { de: 'Lekarz ist maskulin BELEBT (anders als bisherige maskulin-unbelebte Trophäen wie dworzec, autobus, pociąg). Bei maskulinen belebten Nomen unterscheidet sich der Akkusativ vom Nominativ (Akkusativ Singular: lekarza — wie der Genitiv). Plural Nominativ: lekarze. Feminine Form: lekarka. Im Hotel- und Tourismuskontext wird auf Englisch oft doctor verwendet — auf Polnisch bleibt lekarz Standard.' },
+      },
+      placeholderCaption: { de: 'Hotel-Rezeption, Telefon zur Hand, ruhige Anfrage.' },
+      songMood: 'non-emergency call',
+      visualNotes: 'Reception desk, calm posture, lekarz with masc. animate flag.',
+    }),
+  },
+  {
+    slug: 'allergy',
+    title: { de: 'Ich habe eine Allergie' },
+    situation: {
+      en: 'At a pharmacy or restaurant, disclose an allergy in plain A1 terms.',
+      de: 'In Apotheke oder Restaurant gibst du in einfachen A1-Worten eine Allergie an.',
+    },
+    pedagogicalGoal: 'Mit Mam alergię eine A1-Allergie-Mitteilung mit Akkusativ einüben.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Mam alergię.',
+        baseText: { de: 'Ich habe eine Allergie.' },
+      },
+      meaning: { de: 'Eine kurze A1-Mitteilung einer Allergie ohne medizinische Details.' },
+      chunks: [
+        { id: 'mam', targetText: 'Mam', baseText: { de: 'Ich habe' } },
+        { id: 'alergie', targetText: 'alergię.', baseText: { de: 'eine Allergie.' } },
+      ],
+      lessonItems: [
+        { id: 'alergia', targetText: 'alergia', baseText: { de: 'Allergie (Grundform)' }, acceptedAnswers: polishAnswers('alergia', 'Alergia') },
+        { id: 'alergie', targetText: 'alergię', baseText: { de: 'Allergie (Akkusativ Sg.)' }, acceptedAnswers: polishAnswers('alergię', 'Alergię', 'alergie', 'Alergie') },
+        { id: 'orzechy', targetText: 'orzechy', baseText: { de: 'Nüsse (Plural)' }, acceptedAnswers: polishAnswers('orzechy', 'Orzechy') },
+        { id: 'gluten', targetText: 'gluten', baseText: { de: 'Gluten' }, acceptedAnswers: polishAnswers('gluten', 'Gluten') },
+      ],
+      buildChips: ['Mam', 'alergię.', 'na orzechy.', 'na gluten.'],
+      typeRecall: {
+        before: 'Mam ',
+        answer: 'alergię',
+        after: '.',
+        acceptedAnswers: polishAnswers('alergię', 'Alergię', 'alergie', 'Alergie'),
+        fallbackChoices: ['alergię', 'pytanie', 'gorączkę', 'kaszel'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Ich habe eine Allergie.' },
+        targetPhrase: 'Mam alergię.',
+        requiredTokens: ['mam', 'alergię'],
+        optionalTokens: ['orzechy', 'gluten'],
+      },
+      sceneCaption: { de: 'Apotheke oder Restauranttisch, ruhige Allergie-Mitteilung.' },
+      trophyWord: {
+        word: 'alergia',
+        meaning: { de: 'Allergie' },
+        example: 'Mam alergię.',
+        whyThisWord: { de: 'Alergia ist feminin (Lehnwort aus dem Griechischen / Lateinischen). Akkusativ Singular: alergię (-a → -ę). Für die Spezifikation der Allergie folgt na + Akkusativ: mam alergię na orzechy (ich habe eine Allergie gegen Nüsse), na gluten (gegen Gluten), na mleko (gegen Milch). Diese Konstruktion ist wichtig im Restaurant- und Apothekenkontext.' },
+      },
+      placeholderCaption: { de: 'Restauranttisch oder Apothekentheke, ruhige Allergiemitteilung.' },
+      songMood: 'health disclosure',
+      visualNotes: 'Plate with allergen icons, alergia with na + Akk.',
+    }),
+  },
+  {
+    slug: 'call-someone',
+    title: { de: 'Bitte rufen Sie jemanden an' },
+    situation: {
+      en: 'Politely ask someone to make a phone call for assistance (non-emergency).',
+      de: 'Du bittest jemanden höflich, einen Anruf zur Unterstützung zu machen (nicht-Notfall).',
+    },
+    pedagogicalGoal: 'Mit Proszę zadzwonić eine A1-Bitte um Anruf mit Perfektiv-Infinitiv formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Proszę zadzwonić.',
+        baseText: { de: 'Bitte rufen Sie an.' },
+      },
+      meaning: { de: 'Eine A1-höfliche Bitte um einen Anruf zur Unterstützung.' },
+      chunks: [
+        { id: 'prosze', targetText: 'Proszę', baseText: { de: 'Bitte' } },
+        { id: 'zadzwonic', targetText: 'zadzwonić.', baseText: { de: 'anrufen.' } },
+      ],
+      lessonItems: [
+        { id: 'zadzwonic', targetText: 'zadzwonić', baseText: { de: 'anrufen (Infinitiv, perfektiv)' }, acceptedAnswers: polishAnswers('zadzwonić', 'Zadzwonić', 'zadzwonic', 'Zadzwonic') },
+        { id: 'dzwonic', targetText: 'dzwonić', baseText: { de: 'telefonieren (Infinitiv, imperfektiv)' }, acceptedAnswers: polishAnswers('dzwonić', 'Dzwonić', 'dzwonic', 'Dzwonic') },
+        { id: 'telefon', targetText: 'telefon', baseText: { de: 'Telefon' }, acceptedAnswers: polishAnswers('telefon', 'Telefon') },
+        { id: 'numer', targetText: 'numer', baseText: { de: 'Nummer' }, acceptedAnswers: polishAnswers('numer', 'Numer') },
+      ],
+      buildChips: ['Proszę', 'zadzwonić.', 'po pomoc.', 'na 112'],
+      typeRecall: {
+        before: 'Proszę ',
+        answer: 'zadzwonić',
+        after: '.',
+        acceptedAnswers: polishAnswers('zadzwonić', 'Zadzwonić', 'zadzwonic', 'Zadzwonic'),
+        fallbackChoices: ['zadzwonić', 'napisać', 'powtórzyć', 'pokazać'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Bitte rufen Sie an.' },
+        targetPhrase: 'Proszę zadzwonić.',
+        requiredTokens: ['proszę', 'zadzwonić'],
+        optionalTokens: ['pomoc'],
+      },
+      sceneCaption: { de: 'Ruhiger Ort, freundliche Bitte um einen Anruf zur Unterstützung.' },
+      trophyWord: {
+        word: 'zadzwonić',
+        meaning: { de: 'anrufen (perfektiv, Infinitiv)' },
+        example: 'Proszę zadzwonić.',
+        whyThisWord: { de: 'Zadzwonić ist die perfektive Form des Verbpaars dzwonić/zadzwonić (telefonieren/anrufen). Perfektiv: ein konkreter, einmaliger Anruf — daher mit Proszę für die höfliche Service-Bitte. Imperfektiv dzwonić wäre der Vorgang oder die Gewohnheit (codziennie dzwonię — ich telefoniere täglich). Mit po + Akkusativ wird das Ziel des Anrufs angegeben: zadzwonić po pomoc (Hilfe holen), po lekarza (einen Arzt holen).' },
+      },
+      placeholderCaption: { de: 'Telefon in der Hand, ruhige Bitte um einen Anruf.' },
+      songMood: 'calm assistance call',
+      visualNotes: 'Hand offering phone, calm posture, zadzwonić as perf. inf.',
+    }),
+  },
+  {
+    slug: 'feel-better',
+    title: { de: 'Mir geht es besser' },
+    situation: {
+      en: 'At the end of a brief pharmacy or first-aid interaction, say you feel better.',
+      de: 'Am Ende einer kurzen Apotheken- oder Erste-Hilfe-Situation sagst du, dass es dir besser geht.',
+    },
+    pedagogicalGoal: 'Mit Czuję się lepiej eine A1-Befindensbesserung mit Komparativ-Adverb formulieren.',
+    variant: makeBrightPolishP1Variant({
+      corePhrase: {
+        targetText: 'Czuję się lepiej, dziękuję.',
+        baseText: { de: 'Mir geht es besser, danke.' },
+      },
+      meaning: { de: 'Eine ruhige A1-Schlussphrase nach einer kleinen Gesundheitssituation.' },
+      chunks: [
+        { id: 'czuje-sie', targetText: 'Czuję się', baseText: { de: 'Mir geht es' } },
+        { id: 'lepiej', targetText: 'lepiej,', baseText: { de: 'besser,' } },
+        { id: 'dziekuje', targetText: 'dziękuję.', baseText: { de: 'danke.' } },
+      ],
+      lessonItems: [
+        { id: 'lepiej', targetText: 'lepiej', baseText: { de: 'besser (Komparativ-Adverb)' }, acceptedAnswers: polishAnswers('lepiej', 'Lepiej') },
+        { id: 'gorzej', targetText: 'gorzej', baseText: { de: 'schlechter (Komparativ-Adverb)' }, acceptedAnswers: polishAnswers('gorzej', 'Gorzej') },
+        { id: 'troche', targetText: 'trochę', baseText: { de: 'ein bisschen' }, acceptedAnswers: polishAnswers('trochę', 'Trochę', 'troche', 'Troche') },
+        { id: 'zdrowy', targetText: 'zdrowy', baseText: { de: 'gesund (maskulin)' }, acceptedAnswers: polishAnswers('zdrowy', 'Zdrowy') },
+      ],
+      buildChips: ['Czuję się', 'lepiej,', 'dziękuję.', 'trochę', 'gorzej'],
+      typeRecall: {
+        before: 'Czuję się ',
+        answer: 'lepiej',
+        after: ', dziękuję.',
+        acceptedAnswers: polishAnswers('lepiej', 'Lepiej'),
+        fallbackChoices: ['lepiej', 'gorzej', 'dobrze', 'źle'],
+      },
+      speakTarget: {
+        baseCue: { de: 'Mir geht es besser, danke.' },
+        targetPhrase: 'Czuję się lepiej, dziękuję.',
+        requiredTokens: ['czuję', 'się', 'lepiej', 'dziękuję'],
+        optionalTokens: ['trochę'],
+      },
+      sceneCaption: { de: 'Ende einer ruhigen Gesundheitssituation, warmer Schlussdank.' },
+      trophyWord: {
+        word: 'lepiej',
+        meaning: { de: 'besser (Komparativ-Adverb)' },
+        example: 'Czuję się lepiej, dziękuję.',
+        whyThisWord: { de: 'Lepiej ist das Komparativ-Adverb zu dobrze (gut). Der polnische Komparativ ist unregelmäßig — kein "-iej" / "-iejszy" wie bei manchen Adjektiven (z. B. szybciej von szybko). Pendant: gorzej (schlechter, Komparativ zu źle). Im A1-Befindenskontext ist Czuję się lepiej die natürliche Bestätigung der Besserung. Stärker: dużo lepiej (viel besser), trochę lepiej (etwas besser).' },
+      },
+      placeholderCaption: { de: 'Ruhiger Schluss am Empfang, freundlicher Dank.' },
+      songMood: 'gentle recovery',
+      visualNotes: 'Calm thank-you gesture, lepiej as comparative adverb.',
+    }),
+  },
+]
+
+const polishA1Practical6Lessons = makePolishPracticalLessons(
+  GUIDED_TODAY_PATH_POLISH_SIX_METADATA,
+  polishA1Practical6Inputs,
+  'Du hast Polnisch A1 Praxis 6 abgeschlossen.',
+)
+
 export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   {
     id: "english-a1-practical-001-first-contact",
@@ -62616,6 +63141,7 @@ export const GUIDED_LESSONS: GuidedLessonDefinition[] = [
   ...polishA1Practical3Lessons,
   ...polishA1Practical4Lessons,
   ...polishA1Practical5Lessons,
+  ...polishA1Practical6Lessons,
 ]
 
 export function getCurrentGuidedLesson(vibeId?: GuidedVibeId | string | null) {
@@ -62713,6 +63239,7 @@ export function getGuidedTodayPathOptions(): GuidedPathMetadata[] {
     GUIDED_TODAY_PATH_POLISH_THREE_METADATA,
     GUIDED_TODAY_PATH_POLISH_FOUR_METADATA,
     GUIDED_TODAY_PATH_POLISH_FIVE_METADATA,
+    GUIDED_TODAY_PATH_POLISH_SIX_METADATA,
   ]
 }
 
